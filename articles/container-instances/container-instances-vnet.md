@@ -2,14 +2,14 @@
 title: Tároló csoport üzembe helyezése az Azure Virtual Networkben
 description: Megtudhatja, hogyan helyezhet üzembe tároló csoportokat egy új vagy meglévő Azure-beli virtuális hálózaton.
 ms.topic: article
-ms.date: 12/17/2019
+ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 9c9f1d114ea3883a947fb454d5958c1479bd4a4e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442248"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887956"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -24,7 +24,7 @@ Az Azure-beli virtuális hálózatba üzembe helyezett tároló-csoportok a köv
 * Helyszíni erőforrásokkal való kommunikáció a [VPN-átjárón](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy [ExpressRoute](../expressroute/expressroute-introduction.md) keresztül
 
 > [!IMPORTANT]
-> Ez a funkció jelenleg előzetes verzióban érhető el, és bizonyos [korlátozások érvényesek](#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A szolgáltatás néhány eleme megváltozhat a nyilvános rendelkezésre állás előtt.
+> A virtuális hálózatra való tároló csoportok üzembe helyezése általánosan elérhető az éles számítási feladatokhoz a következő régiókban: **USA keleti régiója, az USA déli középső régiója és az USA 2. nyugati**régiója. Más régiókban, ahol a szolgáltatás elérhető, a virtuális hálózatok üzembe helyezése jelenleg előzetes verzióban érhető el, a közeljövőben tervezett általános elérhetőséggel. Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. 
 
 
 ## <a name="virtual-network-deployment-limitations"></a>A virtuális hálózat központi telepítésére vonatkozó korlátozások
@@ -33,11 +33,7 @@ Bizonyos korlátozások akkor lépnek érvénybe, ha a tároló-csoportokat virt
 
 * A tároló-csoportok alhálózatra történő telepítéséhez az alhálózat nem tartalmazhat más típusú erőforrásokat. Távolítsa el a meglévő alhálózatból az összes meglévő erőforrást a tároló-csoportok üzembe helyezése előtt, vagy hozzon létre egy új alhálózatot.
 * Nem használhat [felügyelt identitást](container-instances-managed-identity.md) egy virtuális hálózatra központilag telepített tároló csoportba.
-* Az érintett további hálózati erőforrások miatt a tároló-csoportok virtuális hálózatra történő telepítése általában valamivel lassabb, mint a standard Container-példányok üzembe helyezése.
-
-## <a name="preview-limitations"></a>Előzetes verzió korlátozásai
-
-Habár ez a funkció előzetes verzióban érhető el, a következő korlátozások érvényesek a tárolók virtuális hálózatra történő telepítésekor. 
+* A további hálózati erőforrások miatt a tároló-csoportok virtuális hálózatra történő telepítése általában lassabb, mint a standard Container-példányok üzembe helyezése.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
 
@@ -46,8 +42,10 @@ A tárolók erőforrásainak korlátai eltérőek lehetnek a nem hálózati tár
 ### <a name="unsupported-networking-scenarios"></a>Nem támogatott hálózatkezelési forgatókönyvek 
 
 * **Azure Load Balancer** – a hálózati tárolóban található tároló példányai előtt egy Azure Load Balancer elhelyezése nem támogatott
-* A **virtuális hálózat** VNet-társítása nem fog működni az ACI-ban, ha a hálózat, amelyre az ACI-VNet nyilvános IP-címet használ. A társ hálózatnak egy RFC1918 magánhálózati IP-tárterületre van szüksége ahhoz, hogy a társítás működjön. Emellett jelenleg csak egy másik VNet lehet VNet.
-* **Virtuális hálózati forgalom útválasztása** – az ügyfél útvonalak nem állíthatók be nyilvános IP-címek köré. Útvonalakat lehet beállítani azon delegált alhálózat magánhálózati IP-címén belül, amelyben az ACI-erőforrások telepítve vannak 
+* **Társviszony létesítése virtuális hálózatok között**
+  * A VNet-társítás nem fog működni az ACI-hoz, ha a hálózat, amelyen az ACI-VNet a nyilvános IP-címet használja. A társ hálózatnak RFC 1918 magánhálózati IP-tárterületre van szüksége ahhoz, hogy a VNet-társítás működjön. 
+  * A VNet csak egy másik VNet lehet megtekinteni
+* **Virtuális hálózati forgalom útválasztása** – az egyéni útvonalak nem állíthatók be a nyilvános IP-címek köré. Útvonalakat lehet beállítani azon delegált alhálózat magánhálózati IP-címén belül, amelyben az ACI-erőforrások telepítve vannak 
 * **Hálózati biztonsági csoportok** – a nsg egy Azure Container instances delegált alhálózatra alkalmazott kimenő biztonsági szabályok jelenleg nincsenek kényszerítve 
 * A virtuális hálózatra telepített **nyilvános IP-cím vagy DNS** -tároló csoportok jelenleg nem támogatják a tárolók közvetlen közzétételét nyilvános IP-címmel vagy teljes tartománynévvel.
 * **Belső névfeloldás** – a virtuális hálózatban lévő Azure-erőforrások névfeloldása belső Azure DNS használatával nem támogatott
@@ -99,7 +97,7 @@ Miután telepítette az első tároló csoportját ezzel a módszerrel, a virtu�
 
 Tároló csoport üzembe helyezése meglévő virtuális hálózaton:
 
-1. Hozzon létre egy alhálózatot a meglévő virtuális hálózaton belül, vagy Ürítse ki az *összes* többi erőforrás meglévő alhálózatát.
+1. Hozzon létre egy alhálózatot a meglévő virtuális hálózaton belül, használjon olyan meglévő alhálózatot, amelyben már telepítve van egy tároló csoport, vagy használjon egy meglévő alhálózatot, amely az *összes* többi erőforrást kiüríti
 1. Helyezzen üzembe egy tároló csoportot az [az Container Create][az-container-create] paranccsal, és határozza meg a következők egyikét:
    * Virtuális hálózat neve és alhálózatának neve
    * Virtuális hálózati erőforrás-azonosító és alhálózati erőforrás-azonosító, amely lehetővé teszi, hogy egy másik erőforráscsoporthoz tartozó virtuális hálózatot használjon.
@@ -115,7 +113,7 @@ Az alábbi szakaszok azt ismertetik, hogyan helyezhetők üzembe tároló csopor
 
 Először telepítsen egy tároló csoportot, és határozza meg az új virtuális hálózat és alhálózat paramétereit. Ha megadja ezeket a paramétereket, az Azure létrehozza a virtuális hálózatot és az alhálózatot, delegálja az alhálózatot az Azure Container instances szolgáltatásba, és létrehoz egy hálózati profilt is. Miután létrehozta ezeket az erőforrásokat, a rendszer üzembe helyezi a tároló csoportot az alhálózaton.
 
-Futtassa az alábbi az [Container Create][az-container-create] parancsot, amely az új virtuális hálózat és alhálózat beállításait adja meg. Meg kell adnia egy olyan erőforráscsoport nevét, amely egy virtuális hálózatban lévő tároló csoportokat [támogató](#preview-limitations) régióban lett létrehozva. Ez a parancs üzembe helyezi a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weboldalt kiszolgáló kis Node. js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
+Futtassa az alábbi az [Container Create][az-container-create] parancsot, amely az új virtuális hálózat és alhálózat beállításait adja meg. Meg kell adnia egy olyan erőforráscsoport nevét, amely egy olyan régióban lett létrehozva, amelyben a tároló csoport központi telepítései [elérhetők](#virtual-network-deployment-limitations)a virtuális hálózaton. Ez a parancs üzembe helyezi a nyilvános Microsoft [ACI-HelloWorld][aci-helloworld] tárolót, amely egy statikus weboldalt kiszolgáló kis Node. js webkiszolgálót futtat. A következő szakaszban egy második tároló csoportot fog telepíteni ugyanahhoz az alhálózathoz, és tesztelni a két tároló példány közötti kommunikációt.
 
 ```azurecli
 az container create \
@@ -180,7 +178,7 @@ A napló kimenetének azt kell megmutatnia, hogy `wget` tudott csatlakozni, és 
 
 ### <a name="deploy-to-existing-virtual-network---yaml"></a>Üzembe helyezés meglévő virtuális hálózatban – YAML
 
-YAML-fájl használatával is üzembe helyezhet egy tároló csoportot egy meglévő virtuális hálózaton. Ha egy virtuális hálózatban lévő alhálózatra kíván üzembe helyezni, több további tulajdonságot is meg kell adnia a YAML:
+YAML-fájl, Resource Manager-sablon vagy más programozott módszer, például a Python SDK használatával is üzembe helyezhet egy tároló csoportot egy meglévő virtuális hálózaton. Ha egy virtuális hálózatban lévő alhálózatra kíván üzembe helyezni, több további tulajdonságot is meg kell adnia a YAML:
 
 * `ipAddress`: a tároló csoport IP-címének beállításai.
   * `ports`: a megnyitni kívánt portok, ha vannak ilyenek.
@@ -225,7 +223,7 @@ properties:
     - protocol: tcp
       port: '80'
   networkProfile:
-    id: /subscriptions/<Subscription ID>/resourceGroups/container/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
+    id: /subscriptions/<Subscription ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkProfiles/aci-network-profile-aci-vnet-subnet
   osType: Linux
   restartPolicy: Always
 tags: null
@@ -263,9 +261,9 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Ha hibaüzenet jelenik meg a hálózati profil eltávolítására tett kísérlet során, akkor 2-3 nap elteltével a platform automatikusan elháríthatja a problémát, és újból próbálkozhat a törléssel. Ha továbbra is problémák léptek fel a hálózati profil eltávolításával, [Nyisson meg egy támogatási reqest.](https://azure.microsoft.com/support/create-ticket/)
+> Ha hibaüzenet jelenik meg a hálózati profil eltávolítására tett kísérlet során, engedélyezze a 2-3 nap elteltével, hogy a platform automatikusan csökkentse a problémát, és próbálkozzon újra a törléssel. Ha továbbra is problémába ütközik a hálózati profil eltávolításával, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/create-ticket/).
 
-Ennek a funkciónak a kezdeti előzetes verziójához több további parancs szükséges a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat.
+Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat.
 
 A parancsfájl végrehajtása előtt állítsa a `RES_GROUP` változót a törölni kívánt virtuális hálózatot és alhálózatot tartalmazó erőforráscsoport nevére. Frissítse a virtuális hálózat nevét, ha nem a korábban javasolt `aci-vnet` nevet használta. A parancsfájl a bash-rendszerhéjhoz van formázva. Ha inkább egy másik rendszerhéjt, például a PowerShellt vagy a parancssort részesíti előnyben, akkor ennek megfelelően módosítania kell a változó hozzárendelés és a hozzáférési jogosultságokat.
 

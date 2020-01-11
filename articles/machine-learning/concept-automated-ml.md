@@ -10,12 +10,12 @@ ms.reviewer: jmartens
 author: cartacioS
 ms.author: sacartac
 ms.date: 11/04/2019
-ms.openlocfilehash: c4177e4310be3e03b64c260d88239de71f70c17a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 778b369e08ff6b0c6e4075c5a8d3d2a234bde70e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720140"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894887"
 ---
 # <a name="what-is-automated-machine-learning"></a>Mi az az automatizált gépi tanulás?
 
@@ -95,7 +95,7 @@ Az automatizált gépi tanulási kísérletek során az adatok automatikusan mé
 
 ### <a name="advanced-preprocessing-optional-featurization"></a>Speciális előfeldolgozás: opcionális featurization
 
-További speciális előfeldolgozási és featurization is elérhetők, például a hiányzó értékek: imputálási, kódolás és átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
+További speciális előfeldolgozási és featurization is elérhetők, például az adatguardrails, a kódolás és az átalakítások. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess). A beállítás engedélyezése a következővel:
 
 + Azure Machine Learning Studio: az [alábbi lépésekkel](how-to-create-portal-experiments.md)kiválaszthatja a **featurization beállításainak megtekintése** a **konfigurációs Futtatás** szakaszban.
 
@@ -161,7 +161,7 @@ További információ: az [automatikus gépi tanulásra vonatkozó példa az id�
 
 * üdülés észlelése és featurization
 * idősorozat-és DNN-tanulók (Auto-ARIMA, próféta, ForecastTCN)
-* számos modell-támogatás csoportosításon keresztül
+* számos modell támogatja a csoportosítást
 * gördülő-eredetű kereszt-ellenőrzés
 * konfigurálható késések
 * a gördülő ablak összesített funkciói

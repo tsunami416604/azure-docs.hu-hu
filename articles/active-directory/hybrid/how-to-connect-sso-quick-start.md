@@ -16,12 +16,12 @@ ms.date: 04/16/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8cf1e5f9f47ebdc132bdc826af3e54d206095085
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 3ec56d37ca2c0a199968707b3d93f4797be2beca
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73603403"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888668"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyors üzembe helyezés
 
@@ -115,7 +115,7 @@ Alapértelmezés szerint a böngésző automatikusan kiszámítja a megfelelő z
 
 A felhasználók intranetes zónájának beállításai kétféleképpen módosíthatók:
 
-| Beállítás | Rendszergazdai megfontolás | Felhasználói élmény |
+| Lehetőség | Rendszergazdai megfontolás | Felhasználói feladatok |
 | --- | --- | --- |
 | Csoportházirend | A rendszergazda lezárja az intranetes zóna beállításainak szerkesztését | A felhasználók nem módosíthatják a saját beállításait |
 | Csoportházirend-beállítások |  A rendszergazda engedélyezi az intranetes zóna beállításainak szerkesztését | A felhasználók módosíthatják a saját beállításait |
@@ -124,7 +124,7 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
 
 1. Nyissa meg az Csoportházirend-felügyeleti szerkesztő eszközt.
 2. Szerkessze az egyes felhasználókra alkalmazott csoportházirendet. Ez a példa az **alapértelmezett tartományi házirendet**használja.
-3. Tallózással keresse meg a **felhasználói konfiguráció** > **házirend** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** >  **Biztonság lapon**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
+3. Tallózással keresse meg a **felhasználói konfiguráció** > **házirend** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** > **biztonsági oldal**. Ezután válassza **a hely – zóna hozzárendelési lista**lehetőséget.
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso6.png)
 4. Engedélyezze a szabályzatot, majd adja meg a következő értékeket a párbeszédpanelen:
    - **Érték neve**: a Kerberos-jegyek továbbítására szolgáló Azure ad URL-cím.
@@ -140,11 +140,11 @@ A felhasználók intranetes zónájának beállításai kétféleképpen módos�
    > Ha szeretné letiltani egyes felhasználók számára a zökkenőmentes egyszeri bejelentkezést (például ha ezek a felhasználók megosztott kioszkokra jelentkeznek be), állítsa a fenti értékeket **4**értékre. Ez a művelet hozzáadja az Azure AD URL-címét a korlátozott zónához, és minden alkalommal sikertelen lesz a zökkenőmentes egyszeri bejelentkezés.
    >
 
-5. Kattintson **az OK gombra**, majd kattintson ismét **az OK gombra** .
+5. Válassza az **OK**, majd újra az **OK** elemet.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso7.png)
 
-6. Tallózással keresse meg a **felhasználói konfiguráció** > **házirend** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** >  **Biztonsági oldal** > **intranet zóna**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
+6. Tallózással keresse meg a **felhasználói konfiguráció** > **házirend** > **Felügyeleti sablonok** > **Windows-összetevők** > **Internet Explorer** > **Internet Vezérlőpult** > **biztonsági oldal** > **intranet zóna**. Ezután válassza **a frissítések engedélyezése állapotsoron parancsfájl használatával**lehetőséget.
 
     ![Egyszeri bejelentkezés](./media/how-to-connect-sso-quick-start/sso11.png)
 
@@ -213,7 +213,7 @@ Egy adott felhasználó szolgáltatásának teszteléséhez győződjön meg arr
   - A felhasználó bejelentkezik egy vállalati eszközre.
   - Az eszköz csatlakoztatva van a Active Directory tartományhoz. Az eszköznek _nem_ kell csatlakoznia az [Azure ad-hez](../active-directory-azureadjoin-overview.md).
   - Az eszköz közvetlen kapcsolattal rendelkezik a tartományvezérlővel (DC) a vállalati vezetékes vagy vezeték nélküli hálózaton, vagy egy távelérési kapcsolaton keresztül, például egy VPN-kapcsolaton keresztül.
-  - A funkciót a Csoportházirendon keresztül [építették ki a](##step-3-roll-out-the-feature) felhasználó számára.
+  - A funkciót a Csoportházirendon keresztül [építették ki a](#step-3-roll-out-the-feature) felhasználó számára.
 
 A forgatókönyv teszteléséhez, ahol a felhasználó csak a felhasználónevet adja meg, nem pedig a jelszót:
    - Jelentkezzen be `https://myapps.microsoft.com/`ra egy új privát böngésző-munkamenetben.
@@ -234,7 +234,7 @@ A kulcsok átadására vonatkozó utasításokért lásd [: Azure Active Directo
 >[!IMPORTANT]
 >Ezt a lépést nem kell _azonnal_ végrehajtania, miután engedélyezte a szolgáltatást. A Kerberos-visszafejtési kulcsok legalább 30 naponkénti átadása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Részletes [technikai](how-to-connect-sso-how-it-works.md)tudnivalók: a zökkenőmentes egyszeri bejelentkezési funkció működésének megismerése.
 - [Gyakori kérdések](how-to-connect-sso-faq.md): válaszokat kaphat a zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.

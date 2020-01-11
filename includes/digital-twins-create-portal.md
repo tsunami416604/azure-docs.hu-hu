@@ -9,28 +9,28 @@ ms.service: digital-twins
 ms.topic: include
 ms.date: 01/07/2020
 ms.custom: include file
-ms.openlocfilehash: afce629cc4aa5e3bb62bd2cf2eeaf8af12dc7d9f
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9ccdc7a438d1dade534d39dc97a39a3bdae37dc4
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751600"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895429"
 ---
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 1. Válassza ki a kezdőlapot, majd az **+ erőforrás létrehozása**lehetőséget. 
 
-   [![bontsa ki a Kezdőlap sávot, majd válassza az + erőforrás létrehozása lehetőséget.](./media/create-digital-twins-portal/create-a-resource.png)](./media/create-digital-twins-portal/create-a-resource.png#lightbox)
+   [![bontsa ki a Kezdőlap sávot, majd válassza az + erőforrás létrehozása lehetőséget.](./media/create-digital-twins-portal/azure-portal-create-a-resource.png)](./media/create-digital-twins-portal/azure-portal-create-a-resource.png#lightbox)
 
 1. Keressen rá a **digitális ikrek**kifejezésre, és válassza a **digitális ikrek**lehetőséget. 
 
-   [új digitális Twins-példány létrehozásához ![kiválasztása](./media/create-digital-twins-portal/create-digital-twins.png)](./media/create-digital-twins-portal/create-digital-twins.png#lightbox)
+   [új digitális Twins-példány létrehozásához ![kiválasztása](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png)](./media/create-digital-twins-portal/azure-portal-create-digital-twins.png#lightbox)
 
    Másik lehetőségként válassza a **eszközök internetes hálózata**lehetőséget, majd válassza a **digitális Twins (előzetes verzió)** lehetőséget.
 
 1. Az üzembehelyezési folyamat elindításához válassza a **Létrehozás** elemet.
 
-   [![az erőforrás központi telepítésének létrehozása és megerősítése](./media/create-digital-twins-portal/create-and-confirm-resource.png)](./media/create-digital-twins-portal/create-and-confirm-resource.png#lightbox)
+   [![az erőforrás központi telepítésének létrehozása és megerősítése](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png)](./media/create-digital-twins-portal/azure-create-and-confirm-resource.png#lightbox)
 
 1. A **Digital Twins** panelen adja meg a következő adatokat:
    * **Erőforrás neve**: Adjon meg egy egyedi nevet a Digital Twins-példány számára.

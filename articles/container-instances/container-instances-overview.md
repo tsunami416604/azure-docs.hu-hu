@@ -4,12 +4,12 @@ description: A Azure Container Instances szolgáltatás az elkülönített táro
 ms.topic: overview
 ms.date: 04/25/2019
 ms.custom: seodec18, mvc
-ms.openlocfilehash: 040f246fa687dfe3ca56877c11c140ddb40247a4
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: c871c09e29b64c4f0dcd107361154efdce306481
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552321"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888033"
 ---
 # <a name="what-is-azure-container-instances"></a>Mi az az Azure Container Instances?
 
@@ -54,7 +54,7 @@ Egyes funkciók jelenleg csak Linux-tárolók:
 * Több tároló tárolócsoportonként
 * Kötet csatlakoztatása ([Azure Files](container-instances-volume-azure-files.md), [emptyDir](container-instances-volume-emptydir.md), [gitrepo típusú](container-instances-volume-gitrepo.md), [Secret](container-instances-volume-secret.md))
 * [Erőforrás-használati metrikák](container-instances-monitor.md) Azure monitor
-* [Virtuális hálózat üzembe helyezése](container-instances-vnet.md) (előzetes verzió)
+* [Virtuális hálózat központi telepítése](container-instances-vnet.md)
 * [GPU-erőforrások](container-instances-gpu.md) (előzetes verzió)
 
 A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Windows alapképek](container-instances-faq.md#what-windows-base-os-images-are-supported)alapján kell használni.
@@ -66,12 +66,9 @@ A Windows-tárolók központi telepítése esetén a lemezképeket a gyakori [Wi
 
 Az Azure Container Instances támogatja az olyan [több tárolóból álló csoportok](container-instances-container-groups.md) ütemezését, amelyek osztoznak a gazdagépen, a helyi hálózaton és a tárolón, valamint azonos az életciklusuk. Ennek segítéségével kombinálhatja a fő alkalmazástárolóját más, támogató szerepű tárolókkal, például naplózó oldalkocsikkal.
 
-## <a name="virtual-network-deployment-preview"></a>Virtuális hálózat üzembe helyezése (előzetes verzió)
+## <a name="virtual-network-deployment"></a>Virtuális hálózat központi telepítése
 
-Ez a jelenleg előzetes verzióban lévő Azure Container Instances-funkció lehetővé teszi [tárolópéldányok üzembe helyezését egy Azure virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
-
-> [!IMPORTANT]
-> A Azure Container Instances bizonyos funkciói előzetes verzióban érhetők el, és bizonyos [korlátozások érvényesek](container-instances-vnet.md#preview-limitations). Az előzetes verziók azzal a feltétellel érhetők el, hogy Ön beleegyezik a [kiegészítő használati feltételekbe][terms-of-use]. A funkciók bizonyos aspektusai megváltozhatnak az általánosan elérhetővé válás előtt.
+Az Azure-régiók egy részében jelenleg az éles számítási feladatokhoz érhető el, Azure Container Instances ez a szolgáltatás lehetővé teszi [a Container instances üzembe helyezését egy Azure-beli virtuális hálózatban](container-instances-vnet.md). Ha a tárolópéldányokat a virtuális hálózat egyik alhálózatában helyezi üzembe, biztonságosan tudnak majd kommunikálni a virtuális hálózat más erőforrásaival, így a helyszíniekkel is (a [VPN Gateway-en](../vpn-gateway/vpn-gateway-about-vpngateways.md) vagy az [ExpressRoute-on](../expressroute/expressroute-introduction.md) keresztül).
 
 ## <a name="next-steps"></a>Következő lépések
 

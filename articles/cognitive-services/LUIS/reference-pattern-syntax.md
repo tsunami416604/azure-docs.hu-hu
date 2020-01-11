@@ -10,12 +10,12 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: e1393b02948f2d86329263504d582fe78a474377
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 696f4bdc22bed01a4b5be8bff63ade482a8dbe0a
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974342"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75890261"
 ---
 # <a name="pattern-syntax"></a>Minta szintaxisa
 
@@ -142,7 +142,7 @@ A központozás (`?`, `!`, `.`) figyelmen kívül hagyható, és a mintázatok s
 További információ a mintákról:
 
 * [Mintázatok hozzáadása](luis-how-to-model-intent-pattern.md)
-* [Minta hozzáadása bármely entitáshoz](luis-how-to-add-entities.md##add-a-patternany-entity)
+* [Minta hozzáadása bármely entitáshoz](luis-how-to-add-entities.md#add-a-patternany-entity)
 * [Minták – fogalmak](luis-concept-patterns.md)
 
 Ismerje meg, hogy a. JSON válasz hogyan adja vissza a [véleményét](luis-reference-prebuilt-sentiment.md) .

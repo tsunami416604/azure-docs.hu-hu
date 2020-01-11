@@ -12,12 +12,12 @@ manager: celestedg
 ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f5b6e99c803fb703f18b61200c28cbdac3282750
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 036c8361af3f6631b6151782fa18495542d2e3f6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74272740"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888889"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
 |     |
@@ -83,23 +83,23 @@ Először is a partnervállalat a szükséges jogcímekhez és a függő entitá
 Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd: [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
-> Vegye figyelembe, hogy a közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban, vagy egy engedélyezett identitás-szolgáltató tartományának kell lennie. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
+> A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban, vagy egy engedélyezett identitás-szolgáltató tartományának kell lennie. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
 
 #### <a name="required-saml-20-attributes-and-claims"></a>Szükséges SAML 2,0 attribútumok és jogcímek
 Az alábbi táblázatokban a harmadik féltől származó identitás-szolgáltatónál konfigurálni kívánt attribútumok és jogcímek követelményei láthatók. Közvetlen összevonás beállításához a következő attribútumoknak kell szerepelniük az SAML 2,0-válaszban az identitás-szolgáltatótól. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is.
 
 Az SAML 2,0 válaszához szükséges attribútumok a identitásszolgáltató:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value (Díj)  |
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
-|Célközönség     |`urn:federation:MicrosoftOnline`         |
+|Közönség     |`urn:federation:MicrosoftOnline`         |
 |Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 A identitásszolgáltató által kiadott SAML 2,0-tokenhez szükséges jogcímek:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value (Díj)  |
 |---------|---------|
 |NameID formátuma     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -116,15 +116,15 @@ Az alábbi táblázatokban az adott attribútumokra és jogcímekre vonatkozó k
 
 Szükséges attribútumok a WS-fed üzenetben a identitásszolgáltató:
  
-|Attribútum  |Érték  |
+|Attribútum  |Value (Díj)  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
-|Célközönség     |`urn:federation:MicrosoftOnline`         |
+|Közönség     |`urn:federation:MicrosoftOnline`         |
 |Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 A identitásszolgáltató által kiadott WS-fed jogkivonat számára szükséges jogcímek:
 
-|Attribútum  |Érték  |
+|Attribútum  |Value (Díj)  |
 |---------|---------|
 |ImmutableID     |`http://schemas.microsoft.com/LiveID/Federation/2008/05/ImmutableID`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
@@ -137,7 +137,7 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 
 ### <a name="to-configure-direct-federation-in-the-azure-ad-portal"></a>Közvetlen összevonás konfigurálása az Azure AD-portálon
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**lehetőséget, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
 
@@ -185,7 +185,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
  
 ## <a name="how-do-i-edit-a-direct-federation-relationship"></a>Hogyan a közvetlen összevonási kapcsolat szerkesztését?
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. **Identitás-szolgáltatók** kiválasztása
 4. Az **SAML/ws-fed identitás-szolgáltatók**területen válassza ki a szolgáltatót.
@@ -196,7 +196,7 @@ Most tesztelje a közvetlen összevonási telepítőt egy új B2B vendég felhas
 ## <a name="how-do-i-remove-direct-federation"></a>Hogyan a közvetlen összevonás eltávolítása?
 Törölheti a közvetlen összevonási telepítést. Ha így tesz, a meghívónak már beváltott felhasználók nem fognak tudni bejelentkezni. Ha azonban ismét hozzáférést ad az erőforrásokhoz, törölje őket a címtárból, és hívja fel őket. Az Azure AD-portálon lévő közvetlen összevonás eltávolítása az identitás-szolgáltatóval:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). A bal oldali panelen válassza az **Azure Active Directory** lehetőséget. 
 2. Válassza a **szervezeti kapcsolatok**lehetőséget.
 3. Válassza az **identitás-szolgáltatók**elemet.
 4. Válassza ki az identitás-szolgáltatót, majd válassza a **Törlés**lehetőséget. 

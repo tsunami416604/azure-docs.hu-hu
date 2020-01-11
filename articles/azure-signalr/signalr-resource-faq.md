@@ -6,12 +6,12 @@ ms.service: signalr
 ms.topic: overview
 ms.date: 11/13/2019
 ms.author: zhshang
-ms.openlocfilehash: 013cf619edd998752265b8fa7e58e36869c830c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dde11b6097dddb1568f5adfea811606214a9759e
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450216"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891252"
 ---
 # <a name="azure-signalr-service-faq"></a>Azure Signaler szolgáltatás – gyakori kérdések
 
@@ -37,7 +37,7 @@ Ha az alkalmazás-kiszolgálókkal rendelkezik, ez a hibaüzenet azt jelenti, ho
 A lehetséges okok a következők:
 - Nem kapcsolódik alkalmazáskiszolgáló a Signaler szolgáltatáshoz. A lehetséges csatlakoztatási hibákért keresse fel az alkalmazáskiszolgáló naplóit. Ez az eset ritka a magas rendelkezésre állási beállításban egynél több alkalmazás-kiszolgálóval.
 - A Signaler szolgáltatás példányaihoz kapcsolódási problémák léptek fel. Ez a probléma átmeneti, és a rendszer automatikusan helyreállítja.
-Ha több mint egy órát tart fenn, nyisson meg [egy problémát a githubon](https://github.com/Azure/azure-signalr/issues/new) , vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request).
+Ha több mint egy órát tart fenn, nyisson meg [egy problémát a githubon](https://github.com/Azure/azure-signalr/issues/new) , vagy [hozzon létre egy támogatási kérést az Azure-ban](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request).
 
 ## <a name="when-there-are-multiple-application-servers-are-client-messages-sent-to-all-servers-or-just-one-of-them"></a>Ha több alkalmazás-kiszolgáló is van, az összes kiszolgálónak vagy csak az egyiknek küldi az üzeneteket?
 

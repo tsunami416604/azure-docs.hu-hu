@@ -3,19 +3,19 @@ title: Gyakori kérdések
 description: A Azure Container Instances szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
 author: dkkapur
 ms.topic: article
-ms.date: 4/25/2019
-ms.openlocfilehash: b5888efe210ab0f3794895d350c5647b6f685880
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a3fb4c1818d86f7fe2913790fd9e573c630cbfd
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484138"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888022"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
 Ez a cikk a Azure Container Instancesával kapcsolatos gyakori kérdéseket tárgyalja.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="how-large-can-my-container-image-be"></a>Mekkora méretű lehet a tároló képe?
 
@@ -69,7 +69,7 @@ Igen (néha). Tekintse meg a [kvótákat és a korlátozásokat](container-insta
 
 ### <a name="can-i-deploy-with-more-than-4-cores-and-16-gb-of-ram"></a>Telepíthetek több mint 4 maggal és 16 GB RAM-mal?
 
-még nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét követelményekkel vagy kérésekkel forduljon az Azure ügyfélszolgálatához. 
+Jelenleg nem. Jelenleg ezek a tároló csoportok maximális száma. Konkrét követelményekkel vagy kérésekkel forduljon az Azure ügyfélszolgálatához. 
 
 ### <a name="when-will-aci-be-in-a-specific-region"></a>Mikor lesz az ACI egy adott régióban?
 
@@ -83,7 +83,7 @@ Jelenleg a méretezés nem érhető el a tárolók és a tárolók csoportjai sz
 
 ### <a name="what-features-are-available-to-instances-running-in-a-custom-vnet"></a>Milyen funkciók érhetők el az egyéni VNet futó példányok számára?
 
-A tároló csoportokat üzembe helyezheti egy tetszőleges Azure-beli virtuális hálózatban, és delegálhatja a privát IP-címeket a VNet az Azure-erőforrások közötti forgalom irányításához. A tárolók csoportjának virtuális hálózatra történő telepítése jelenleg előzetes verzióban érhető el, és a szolgáltatás néhány aspektusa az általános elérhetőség előtt változhat. Tekintse meg a frissített információk előzetes verziójának [korlátozásait](container-instances-vnet.md#preview-limitations) .
+A [tároló csoportokat üzembe helyezheti egy tetszőleges Azure-beli virtuális hálózatban](container-instances-vnet.md) , és delegálhatja a privát IP-címeket a VNet az Azure-erőforrások közötti forgalom irányításához. A tárolók csoportjának virtuális hálózatra történő telepítése jelenleg az Azure-régiók egy részhalmazában érhető el az éles számítási feladatokhoz.
 
 ## <a name="pricing"></a>Díjszabás
 

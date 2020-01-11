@@ -1,5 +1,5 @@
 ---
-title: Egy Windows virtuális gép alapértelmezett felügyelt identitás használata az Azure Storage eléréséhez |} A Microsoft Docs
+title: Azure Storage elérése a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használatával | Microsoft Docs
 description: Az oktatóanyag azt ismerteti, hogyan férhet hozzá az Azure Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással.
 services: active-directory
 documentationcenter: ''
@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/12/2018
+ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e7d7200dd89d51817a5d146ff4d33e2501ed2826
-ms.sourcegitcommit: 9a699d7408023d3736961745c753ca3cec708f23
+ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/16/2019
-ms.locfileid: "68278013"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888583"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -40,7 +40,7 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Win
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-a-storage-account"></a>Tárfiók létrehozása
+## <a name="create-account"></a>Fiók létrehozása
 
 Ebben a szakaszban egy új tárfiókot fog létrehozni.
 
@@ -69,25 +69,25 @@ A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egy
 7. A **Blob feltöltése** panel **Fájlok** területén kattintson a mappa ikonra, keresse meg a **hello_world.txt** fájlt a helyi gépen, válassza ki a fájlt, majd kattintson a **Feltöltés** gombra.
     ![Szövegfájl feltöltése](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-your-vm-access-to-an-azure-storage-container"></a>Hozzáférés engedélyezése a virtuális gép számára egy Azure Storage-tárolóhoz
+## <a name="grant-access"></a>Hozzáférés biztosítása
 
-A VM rendszer által hozzárendelt felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
+Ez a szakasz bemutatja, hogyan biztosítható a virtuális gép hozzáférése egy Azure Storage-tárolóhoz. A VM rendszer által hozzárendelt felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
 
 1. Lépjen vissza az újonnan létrehozott tárfiókra.
 2. Kattintson a **Hozzáférés-vezérlés (IAM)** hivatkozásra a bal oldali panelen.
-3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** az oldalra egy új szerepkör-hozzárendelés hozzáadása a virtuális gép felett.
-4. A **szerepkör**, a legördülő listából válassza ki a **Storage-Blobadatok olvasója**.
+3. Kattintson a **+ szerepkör-hozzárendelés hozzáadása** lehetőségre a lap tetején egy új szerepkör-hozzárendelés hozzáadásához a virtuális géphez.
+4. A **szerepkör**alatt a legördülő listából válassza a **Storage blob-Adatolvasó**lehetőséget.
 5. A következő legördülő menüben, a **Hozzáférés hozzárendelése** területen válassza ki a **Virtuális gép** elemet.
 6. Ezután ellenőrizze, hogy a megfelelő előfizetés szerepel-e az **Előfizetés** legördülő menüben, majd állítsa az **Erőforráscsoport** értékét a **Minden erőforráscsoport** értékre.
 7. A **Kiválasztás** mezőben válassza ki a virtuális gépet, majd kattintson a **Mentés** gombra.
 
     ![Engedélyek kiosztása](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token-and-use-it-to-call-azure-storage"></a>Hozzáférési jogkivonat lekérése, majd azzal az Azure Storage meghívása 
+## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése 
 
 Az Azure Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így közvetlenül is elfogadhatja a felügyelt identitás használatával beszerzett hozzáférési jogkivonatokat. Ez az Azure Storage és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
-A .NET kód példa kapcsolat megnyitása az Azure Storage-hozzáférési token használatával, és a korábban létrehozott fájl tartalmát olvassa. Ennek a kódnak kell futnia a virtuális gépen a VM felügyelt identitásához tartozó végpont eléréséhez. .NET-keretrendszer 4.6-os vagy magasabb, az access-token módszer használatához szükséges. Cserélje le az `<URI to blob file>` értékét a megfelelőre. Az érték lekéréséhez keresse meg a létrehozott és a blobtárolóba feltöltött fájlt, és másolja ki az **Áttekintés** oldalon lévő **Tulajdonságok** területen szereplő **URL** értéket.
+Az alábbi .NET-kód példa az Azure Storage-hoz való kapcsolódás hozzáférési jogkivonat használatával történő megnyitására, majd a korábban létrehozott fájl tartalmának olvasására mutat. Ennek a kódnak kell futnia a virtuális gépen a VM felügyelt identitásához tartozó végpont eléréséhez. A hozzáférési jogkivonat metódusának használatához a .NET-keretrendszer 4,6-es vagy újabb verziója szükséges. Cserélje le az `<URI to blob file>` értékét a megfelelőre. Az érték lekéréséhez keresse meg a létrehozott és a blobtárolóba feltöltött fájlt, és másolja ki az **Áttekintés** oldalon lévő **Tulajdonságok** területen szereplő **URL** értéket.
 
 ```csharp
 using System;
@@ -161,7 +161,7 @@ A válasz tartalmazza a fájl tartalmát:
 
 `Hello world! :)`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag bemutatta, hogyan gondoskodhat róla, hogy egy Windows rendszerű virtuális gép rendszer által hozzárendelt identitása hozzá tudjon férni az Azure Storage-hoz.  További információ az Azure Storage-ról:
 

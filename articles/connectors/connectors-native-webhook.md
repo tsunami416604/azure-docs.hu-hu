@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/10/2019
 tags: connectors
-ms.openlocfilehash: 7ff411ae082acfe2d465ab9d3371982b0693c226
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 14daa37a414e814ed6de036bbb625933ce2532e0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787046"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888124"
 ---
 # <a name="create-and-run-automated-event-based-workflows-by-using-http-webhooks-in-azure-logic-apps"></a>Automatizált eseményvezérelt munkafolyamatok létrehozása és futtatása HTTP-webhookok használatával Azure Logic Apps
 
@@ -38,7 +38,7 @@ Például az Office 365 Outlook Connector [**Küldés-jóváhagyási e-mail-** ]
 > [!NOTE]
 > A Logic Apps a Transport Layer Security (TLS) 1,2 kényszeríti, ha a hívást a HTTP webhook-triggerre vagy műveletre fogadja. Ha az SSL-kézfogás hibáit látja, ügyeljen arra, hogy a TLS 1,2-et használja.
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
 * [HTTP webhook-trigger paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger)
 * [Webhookok és előfizetések](../logic-apps/logic-apps-workflow-actions-triggers.md#webhooks-and-subscriptions)
@@ -100,7 +100,7 @@ Ez a beépített művelet regisztrálja a visszahívási URL-címet a megadott s
 
    Ez a példa átnevezi a műveletet "HTTP webhook művelet" névre, hogy a lépésnek legyen egy leíró neve.
 
-1. Adja meg a HTTP webhook műveleti paramétereinek értékeit, amelyek az előfizetési és leiratkozási hívásokhoz használni kívánt [http-webhook-trigger paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger) hasonlók, például:
+1. Adja meg a HTTP webhook műveleti paramétereinek értékeit, amelyek az előfizetési és leiratkozási hívásokhoz használni kívánt [http-webhook-trigger paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger) hasonlók, például:
 
    ![Adja meg a HTTP-webhook műveleti paramétereit](./media/connectors-native-webhook/http-webhook-action-parameters.png)
 
@@ -114,7 +114,7 @@ Ez a beépített művelet regisztrálja a visszahívási URL-címet a megadott s
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-További információ az aktiválási és műveleti paraméterekről, amelyek hasonlóak egymáshoz: [http webhook paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md##http-webhook-trigger).
+További információ az aktiválási és műveleti paraméterekről, amelyek hasonlóak egymáshoz: [http webhook paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-webhook-trigger).
 
 ### <a name="output-details"></a>Kimenet részletei
 
@@ -123,14 +123,14 @@ Itt talál további információt egy HTTP webhook-triggerből vagy-műveletből
 | Tulajdonság neve | Type (Típus) | Leírás |
 |---------------|------|-------------|
 | fejlécek | objektum | A kérelemben szereplő fejlécek |
-| törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| törzs | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
 | Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Elfogadott |
+| 202 | Elfogadva |
 | 400 | Hibás kérelem |
 | 401 | Nem engedélyezett |
 | 403 | Forbidden |

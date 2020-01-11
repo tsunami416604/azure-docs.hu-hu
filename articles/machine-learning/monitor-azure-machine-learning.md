@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 11/04/2019
-ms.openlocfilehash: e8a2a00014d0118301193337cc9bb544e4a07690
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1c5b2879659305e55bb01e4cfab27c7a1b343155
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770815"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894850"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Figyelés Azure Machine Learning
 
@@ -25,7 +25,7 @@ Ez a cikk a Azure Machine Learning által generált figyelési információkat i
 >
 > * [Betanítási futtatások indítása, figyelése és megszakítása](how-to-manage-runs.md)
 > * [A betanítási futtatások naplózási mérőszámai](how-to-track-experiments.md)
-> * [Eexperiments követése a MLflow](how-to-use-mlflow.md)
+> * [Kísérletek követése a MLflow](how-to-use-mlflow.md)
 > * [A futtatások megjelenítése a TensorBoard](how-to-monitor-tensorboard.md)
 
 ## <a name="azure-monitor"></a>Azure Monitor

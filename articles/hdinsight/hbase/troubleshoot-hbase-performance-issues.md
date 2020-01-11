@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
-ms.openlocfilehash: 0466b08e551a5fa9da37afe2e5ad175ef28c804e
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529564"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887155"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase-teljesítménnyel kapcsolatos problémák elhárítása az Azure HDInsight
 
@@ -57,7 +57,7 @@ Ha a lekérdezések hirtelen megkezdése sokkal rosszabb, mint korábban, ellen�
 
 ## <a name="migration-issues"></a>Áttelepítési problémák
 
-Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a Migrálás szisztematikusan és pontosan, lehetőleg automatizáláson keresztül történik. Kerülje a manuális áttelepítést. Ügyeljen rá, hogy:
+Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a Migrálás szisztematikusan és pontosan, lehetőleg automatizáláson keresztül történik. Kerülje a manuális áttelepítést. Ellenőrizze a következőket:
 
 - A tábla attribútumai pontosan települnek át. Az attribútumok tartalmazhatnak tömörítést, virágzási szűrőket stb.
 
@@ -75,7 +75,7 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 
 - Növelje a tömörítéshez dedikált szálak számát az alapértelmezett **1** és **4**közötti értékkel. Ez a beállítás akkor fontos, ha betartjuk a gyakori kisebb tömörítést.
 
-- Ne blokkolja a `memstore` ürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100**-re.
+- Ne blokkolja a `memstore` kiürítést a tároló korlátja miatt. A puffer megadásához növelje a `Hbase.hstore.blockingStoreFiles` beállítást **100**-re.
 
 - A kiürítések szabályozásához használja az alábbi beállításokat:
 
@@ -124,4 +124,4 @@ Ha a probléma továbbra is megoldatlan marad, további támogatásért látogas
 
 - Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport). Ez a hivatalos Microsoft Azure fiók a felhasználói élmény javításához. Összekapcsolja az Azure-Közösséget a megfelelő erőforrásokkal: válaszokkal, támogatással és szakértőkkel.
 
-- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+- Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. A Microsoft Azure-előfizetés az előfizetés-kezeléshez és a számlázási támogatáshoz biztosít hozzáférést, a technikai támogatás pedig az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: ''
-ms.openlocfilehash: 63b778379dda39a795cccdcfa0c1443870d50365
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 653e57a69e1c7ff8dbeadb14cda6e415ff3a9ee9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440981"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887563"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -110,7 +110,7 @@ Az egyéni ajánlatokból (például utólagos elszámolású és kapcsolódó t
 
 Az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik és kezelhetik a számlázási adatait, például a számlákat és a kifizetéseket a [Azure Fiókközpont](https://account.azure.com/subscriptions). Azonban nem tekinthetik meg a költségeket, és nem kezelhetik az erőforrásokat a Azure Portalban. Ha hozzáférést szeretne adni a fiók rendszergazdájához, használja a korábban említett Cost Management-szerepköröket.
 
-Az EA-vel ellentétben az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik a számlákat a Azure Portalban. Ne feledje, hogy Cost Management olvasó-és Cost Management közreműködői szerepkörök nem biztosítanak hozzáférést a számlákhoz. További információ: [hozzáférés engedélyezése a számlákhoz](../billing/billing-manage-access.md##give-read-only-access-to-billing).
+Az EA-vel ellentétben az egyes Azure-előfizetési fiókok rendszergazdái megtekinthetik a számlákat a Azure Portalban. Ne feledje, hogy Cost Management olvasó-és Cost Management közreműködői szerepkörök nem biztosítanak hozzáférést a számlákhoz. További információ: [hozzáférés engedélyezése a számlákhoz](../billing/billing-manage-access.md#give-read-only-access-to-billing).
 
 ## <a name="microsoft-customer-agreement-scopes"></a>Microsoft Customer Agreement-hatókörök
 

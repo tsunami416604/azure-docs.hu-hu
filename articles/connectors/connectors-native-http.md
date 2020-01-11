@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 07/05/2019
 tags: connectors
-ms.openlocfilehash: 971d7432c841c4ef984c7bbd7899fce733512303
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 232b17852e89ebdfa6f81b5aadcdbcd9c83d4055
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74787182"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888141"
 ---
 # <a name="send-outgoing-calls-to-http-or-https-endpoints-by-using-azure-logic-apps"></a>Kimenő hívások küldése HTTP-vagy HTTPS-végpontoknak Azure Logic Apps használatával
 
@@ -48,7 +48,7 @@ Ez a beépített trigger egy HTTP-hívást kezdeményez a végpont megadott URL-
 
    Ez a példa átnevezi a triggert a "HTTP trigger" névre, hogy a lépésnek legyen egy leíró neve. A példa később egy HTTP-műveletet is felvesz, és mindkét névnek egyedinek kell lennie.
 
-1. Adja meg a http- [trigger azon paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger) értékeit, amelyeket a célként megadott végpont felé irányuló hívásba kíván foglalni. Állítsa be az ismétlődést, hogy milyen gyakran szeretné, hogy az eseményindító ellenőrizzék a célként megadott végpontot.
+1. Adja meg a http- [trigger azon paramétereinek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger) értékeit, amelyeket a célként megadott végpont felé irányuló hívásba kíván foglalni. Állítsa be az ismétlődést, hogy milyen gyakran szeretné, hogy az eseményindító ellenőrizzék a célként megadott végpontot.
 
    Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -78,7 +78,7 @@ Ez a beépített művelet HTTP-hívást kezdeményez egy végpont megadott URL-c
 
    Ez a példa átnevezi a műveletet "HTTP-művelet" névre, hogy a lépésnek legyen egy leíró neve.
 
-1. Adja meg azoknak a [http-műveleti paramétereknek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action) az értékeit, amelyeket fel szeretne venni a célként megadott végpontba.
+1. Adja meg azoknak a [http-műveleti paramétereknek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action) az értékeit, amelyeket fel szeretne venni a célként megadott végpontba.
 
    Ha a **none**értéktől eltérő hitelesítési típust választ, a hitelesítési beállítások a kijelöléstől függően eltérőek. További információ: [hitelesítés hozzáadása kimenő hívásokhoz](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound).
 
@@ -138,8 +138,8 @@ Az alábbi példa a HTTP-művelet JSON-definícióját mutatja be az alapul szol
 
 Az trigger-és műveleti paraméterekkel kapcsolatos további információkért tekintse meg a következő részeket:
 
-* [HTTP-trigger paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md##http-trigger)
-* [HTTP-műveleti paraméterek](../logic-apps/logic-apps-workflow-actions-triggers.md##http-action)
+* [HTTP-trigger paraméterei](../logic-apps/logic-apps-workflow-actions-triggers.md#http-trigger)
+* [HTTP-műveleti paraméterek](../logic-apps/logic-apps-workflow-actions-triggers.md#http-action)
 
 ### <a name="output-details"></a>Kimenet részletei
 
@@ -148,14 +148,14 @@ Itt talál további információt a HTTP-triggerből vagy-műveletből származ�
 | Tulajdonság neve | Type (Típus) | Leírás |
 |---------------|------|-------------|
 | fejlécek | objektum | A kérelemben szereplő fejlécek |
-| törzse | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
+| törzs | objektum | JSON-objektum | A kérelem szövegtörzsét tartalmazó objektum |
 | állapotkód | int | A kérelemben szereplő állapotkód |
 |||
 
 | Állapotkód | Leírás |
 |-------------|-------------|
 | 200 | OK |
-| 202 | Elfogadott |
+| 202 | Elfogadva |
 | 400 | Hibás kérelem |
 | 401 | Nem engedélyezett |
 | 403 | Forbidden |

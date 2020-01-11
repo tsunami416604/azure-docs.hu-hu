@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 10/03/2019
 ms.author: helohr
-ms.openlocfilehash: 90b871c2b75f7ed40c290231ef822258c6b4e6d4
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 28111e45d365069f80f10b88c38618dbb2b4651d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606873"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896225"
 ---
 # <a name="deploy-a-windows-7-virtual-machine-on-windows-virtual-desktop"></a>Windows 7 rendszerű virtuális gép üzembe helyezése a Windows Virtual Desktopban
 
@@ -35,22 +35,23 @@ Windows 7 rendszerű virtuális gép beállítása Windows rendszerű virtuális
 5. Nyissa meg a Windows Updatet a virtuális gépen.
 6. Telepítse az összes Windows-frissítést a fontos kategóriába.
 7. Telepítse az összes Windows-frissítést a választható kategóriába (kivéve a nyelvi csomagokat). Ezzel telepíti a RDP protokoll 8,0 frissítést ([KB2592687](https://www.microsoft.com/download/details.aspx?id=35393)), amelyre el kell végeznie ezeket az utasításokat.
-8. Nyissa meg a Helyicsoportházirend-szerkesztőt, és navigáljon a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > távoli asztal **munkamenet-gazdagép**  > **távoli munkamenet-környezet**.
+8. Nyissa meg a Helyicsoportházirend-szerkesztőt, és navigáljon a **Számítógép konfigurációja** > **Felügyeleti sablonok** > **Windows-összetevők** > **Távoli asztali szolgáltatások** > távoli asztal **munkamenet-gazdagép** > **távoli munkamenet-környezet**.
 9. Engedélyezze a RDP protokoll 8,0 szabályzatot.
-10. Indítsa újra a virtuális gépet a következő parancs futtatásával:
+10. Csatlakoztassa a virtuális gépet a Active Directory tartományhoz.
+11. Indítsa újra a virtuális gépet a következő parancs futtatásával:
     
      ```cmd
      shutdown /r /t 0
      ```
     
-11. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) található utasításokat.
-12. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
-13. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
-14. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 11. lépésben létrehozott regisztrációs kulcsot.
-15. Nyissa meg a Windows rendszerű virtuális asztali telepítőt, és kövesse az utasításokat.
-16. Ha szeretné, tiltsa le a TCP/3389 portot a virtuális géphez való közvetlen RDP protokoll-hozzáférés eltávolításához.
+12. A regisztrációs jogkivonat beszerzéséhez kövesse az [itt](https://docs.microsoft.com/powershell/module/windowsvirtualdesktop/export-rdsregistrationinfo) található utasításokat.
+13. [Töltse le a Windows 7 rendszerhez készült Windows Virtual Desktop Agent ügynököt](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3JZCm).
+14. [Töltse le a Windows virtuális asztali ügynök kezelőjét a Windows 7](https://query.prod.cms.rt.microsoft.com/cms/api/am/binary/RE3K2e3)rendszerhez.
+15. Nyissa meg a Windows rendszerű virtuális asztali ügynök telepítőjét, és kövesse az utasításokat. Ha a rendszer kéri, adja meg a 12. lépésben létrehozott regisztrációs kulcsot.
+16. Nyissa meg a Windows rendszerű virtuális asztali telepítőt, és kövesse az utasításokat.
+17. Ha szeretné, tiltsa le a TCP/3389 portot a virtuális géphez való közvetlen RDP protokoll-hozzáférés eltávolításához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows rendszerű virtuális asztal üzembe helyezése most már készen áll a használatra. A kezdéshez [töltse le a Windows rendszerű virtuális asztali ügyfél legújabb verzióját](https://aka.ms/wvd/clients/windows) .
 

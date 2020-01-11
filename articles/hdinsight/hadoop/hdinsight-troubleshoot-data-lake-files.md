@@ -7,18 +7,18 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
-ms.openlocfilehash: 7b511ab0c3093747d6e713754c04533e5f25b6ad
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71087398"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894163"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nem lehet hozzáférni Data Lake Storage-fájlokhoz az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-## <a name="issue-acl-verification-failed"></a>Probléma: Az ACL ellenőrzése nem sikerült
+## <a name="issue-acl-verification-failed"></a>Probléma: az ACL ellenőrzése nem sikerült
 
 A következőhöz hasonló hibaüzenet jelenik meg:
 
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 Előfordulhat, hogy a felhasználó visszavonta az egyszerű szolgáltatásnév (SP) engedélyeit a fájlokon vagy mappákon.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 1. Győződjön meg arról, hogy az SP "x" engedélyekkel rendelkezik az elérési út mentén való bejáráshoz. További információ: [engedélyek](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Példa a DFS-parancsra a Data Lake Storage-fiókban található fájlokhoz vagy mappákhoz való hozzáférés vizsgálatához:
 
@@ -42,7 +42,7 @@ Előfordulhat, hogy a felhasználó visszavonta az egyszerű szolgáltatásnév 
 
 ---
 
-## <a name="issue-service-principal-certificate-expiry"></a>Probléma: Egyszerű szolgáltatásnév-tanúsítvány lejárata
+## <a name="issue-service-principal-certificate-expiry"></a>Probléma: az egyszerű szolgáltatás tanúsítványának lejárata
 
 A következőhöz hasonló hibaüzenet jelenik meg:
 
@@ -66,7 +66,7 @@ Előfordulhat, hogy a szolgáltatásnév eléréséhez megadott tanúsítvány �
     {"stderr": "-ls: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://gw0-abccluster.24ajrd4341lebfgq5unsrzq0ue.fx.internal.cloudapp.net:909/api/oauthtoken}}...
     ```
 
-1. Az egyik URL-cím beolvasása a következőből `core-site.xml property`  -  `fs.azure.datalake.token.provider.service.urls`:.
+1. Szerezze be a `core-site.xml property` - `fs.azure.datalake.token.provider.service.urls`URL-címeinek egyikét.
 
 1. Futtassa a következő cURL-parancsot az OAuth-jogkivonat lekéréséhez.
 
@@ -99,7 +99,7 @@ Előfordulhat, hogy a szolgáltatásnév eléréséhez megadott tanúsítvány �
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Felbontás
 
 Hozzon létre egy új tanúsítványt, vagy rendeljen hozzá meglévő tanúsítványt a következő PowerShell-parancsfájl használatával:
 
@@ -165,12 +165,12 @@ Meglévő tanúsítvány hozzárendeléséhez hozzon létre egy tanúsítványt,
 
 Futtassa a PowerShell-parancsot a paramétereknek a tényleges értékekkel való helyettesítése után.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 
 * Azure-szakértőktől kaphat válaszokat az [Azure közösségi támogatásával](https://azure.microsoft.com/support/community/).
 
-* Kapcsolódjon [@AzureSupport](https://twitter.com/azuresupport) a-a hivatalos Microsoft Azure fiókhoz a felhasználói élmény javítása érdekében. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
+* Kapcsolódjon a [@AzureSupporthoz](https://twitter.com/azuresupport) – a hivatalos Microsoft Azure fiókot a felhasználói élmény javításához. Az Azure-Közösség összekapcsolása a megfelelő erőforrásokkal: válaszok, támogatás és szakértők.
 
-* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.
+* Ha további segítségre van szüksége, támogatási kérést küldhet a [Azure Portaltól](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade/). Válassza a menüsor **támogatás** elemét, vagy nyissa meg a **Súgó + támogatás** hubot. Részletesebb információkért tekintse át az [Azure-támogatási kérelem létrehozását](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)ismertető témakört. Az előfizetés-kezeléshez és a számlázási támogatáshoz való hozzáférés a Microsoft Azure-előfizetés része, és a technikai támogatás az egyik [Azure-támogatási csomagon](https://azure.microsoft.com/support/plans/)keresztül érhető el.

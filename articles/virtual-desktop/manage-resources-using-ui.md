@@ -1,25 +1,22 @@
 ---
-title: Felügyeleti eszköz üzembe helyezése – Azure
-description: Felhasználói felületi eszköz telepítése a Windows rendszerű virtuális asztali erőforrások kezeléséhez.
+title: Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal – Azure
+description: Felhasználói felületi eszköz telepítése Azure Resource Manager sablonnal a Windows rendszerű virtuális asztali erőforrások kezeléséhez.
 services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
-ms.topic: tutorial
-ms.date: 11/09/2019
+ms.topic: conceptual
+ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: ad0c67cea6a5a9b487cd47aa7c10d10da1438050
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 187c92f8e5b0148577f204f68077c58ea9ab9a3d
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74384282"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887359"
 ---
-# <a name="tutorial-deploy-a-management-tool"></a>Oktatóanyag: felügyeleti eszköz üzembe helyezése
+# <a name="deploy-a-management-tool-with-an-azure-resource-manager-template"></a>Felügyeleti eszköz üzembe helyezése Azure Resource Manager sablonnal
 
-A felügyeleti eszköz felhasználói felületet (UI) biztosít a Microsoft virtuális asztali erőforrásainak kezeléséhez. Ebből az oktatóanyagból megtudhatja, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz.
-
->[!NOTE]
->Ezek az utasítások egy olyan Windows rendszerű virtuális asztali konfigurációra vonatkoznak, amelyet a szervezet meglévő folyamataihoz használhat.
+A cikkben szereplő utasítások alapján megtudhatja, hogyan helyezheti üzembe a felhasználói felületet egy Azure Resource Manager sablon használatával.
 
 ## <a name="important-considerations"></a>Fontos szempontok
 
@@ -33,18 +30,17 @@ A következő böngészők kompatibilisek a felügyeleti eszközzel:
 - Mozilla Firefox 52,0 vagy újabb verzió
 - Safari 10 vagy újabb (csak macOS)
 
-## <a name="what-you-need-to-run-the-azure-resource-manager-template"></a>Mire van szükség a Azure Resource Manager sablon futtatásához
+## <a name="what-you-need-to-deploy-the-management-tool"></a>A felügyeleti eszköz üzembe helyezéséhez szükséges tudnivalók
 
-A Azure Resource Manager sablon telepítése előtt szüksége lesz egy Azure Active Directory felhasználóra a felügyeleti felhasználói felület telepítéséhez. A felhasználónak a következőket kell tennie:
+A felügyeleti eszköz telepítése előtt szüksége lesz egy Azure Active Directory (Azure AD) felhasználóra az alkalmazások regisztrálásának létrehozásához és a felügyeleti felhasználói felület telepítéséhez. A felhasználónak a következőket kell tennie:
 
 - Az Azure Multi-Factor Authentication (MFA) le van tiltva
 - Engedéllyel rendelkezik erőforrások létrehozásához az Azure-előfizetésében
-- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. A következő lépésekkel ellenőrizheti, hogy a felhasználó rendelkezik-e a [szükséges engedélyekkel](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+- Engedéllyel rendelkezik Azure AD-alkalmazás létrehozásához. Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a felhasználó rendelkezik-e a szükséges engedélyekkel a [szükséges engedélyek](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#required-permissions)utasításait követve.
 
-A Azure Resource Manager sablon üzembe helyezése után el kell indítania a felügyeleti felhasználói felületet az ellenőrzéshez. A felhasználónak a következőket kell tennie:
-- Szerepkör-hozzárendeléssel megtekintheti vagy szerkesztheti a Windows rendszerű virtuális asztali bérlőt
+A felügyeleti eszköz üzembe helyezése és konfigurálása után javasoljuk, hogy kérje meg a felhasználót, hogy indítsa el a felügyeleti felhasználói felületet, és győződjön meg róla, hogy minden működik. A felügyeleti felhasználói felületet indító felhasználónak szerepkör-hozzárendeléssel kell rendelkeznie, amely lehetővé teszi a Windows rendszerű virtuális asztali bérlő megtekintését vagy szerkesztését.
 
-## <a name="run-the-azure-resource-manager-template-to-provision-the-management-ui"></a>A felügyeleti felhasználói felület kiépítéséhez futtassa a Azure Resource Manager sablont
+## <a name="deploy-the-management-tool"></a>A felügyeleti eszköz üzembe helyezése
 
 Mielőtt elkezdené, győződjön meg arról, hogy a kiszolgáló és az ügyfélalkalmazások beleegyeznek a Azure Active Directory (HRE) által képviselt [Windows virtuális asztali engedélyezési oldalára](https://rdweb.wvd.microsoft.com) .
 
@@ -52,26 +48,24 @@ Az Azure Resource Management-sablon üzembe helyezéséhez kövesse az alábbi u
 
 1. Nyissa meg a [GitHub Azure RDS-templates oldalt](https://github.com/Azure/RDS-Templates/tree/master/wvd-templates/wvd-management-ux/deploy).
 2. A sablon üzembe helyezése az Azure-ban.
-    - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget. Lásd: [útmutató a sablon paramétereinek](#guidance-for-template-parameters)megtekintéséhez.
+    - Ha vállalati előfizetésben végez üzembe helyezést, görgessen le, és válassza **az üzembe helyezés az Azure**-ban lehetőséget. 
     - Ha felhőalapú megoldás-szolgáltatói előfizetést használ, kövesse az alábbi utasításokat az Azure-ba történő üzembe helyezéshez:
         1. Görgessen le, és kattintson **a jobb gombbal az Azure**-ba, majd válassza a **hivatkozás helyének másolása**lehetőséget.
         2. Nyisson meg egy szövegszerkesztőt, például a jegyzettömböt, és illessze be a hivatkozást.
         3. Közvetlenül a <https://portal.azure.com/> után és a hashtag (#) előtt adjon meg egy kukac (@) jelet, majd a bérlői tartománynevet. Íme egy példa a következő formátumra: <https://portal.azure.com/@Contoso.onmicrosoft.com#create/>.
         4. Jelentkezzen be a Azure Portal felhasználóként rendszergazdai/közreműködői engedélyekkel a felhőalapú megoldás-szolgáltató előfizetéséhez.
         5. Illessze be a szövegszerkesztőbe másolt hivatkozást a címsorba.
-
-### <a name="guidance-for-template-parameters"></a>Útmutató a sablon paramétereinek megadásához
-A következő módon adhatja meg az eszköz konfigurálásához szükséges paramétereket:
-
-- A **isServicePrincipal** paraméternél válassza a **false (hamis**) lehetőséget.
-- A hitelesítő adatok esetében adja meg a Azure Active Directory hitelesítő adatait a multi-Factor Authentication szolgáltatás letiltásával. Ezek a hitelesítő adatok az Azure-ba való bejelentkezéshez és az Azure AD-alkalmazás és az Azure-webalkalmazás-erőforrások létrehozásához használhatók. További információ: [Mi szükséges a Azure Resource Manager sablon futtatásához](#what-you-need-to-run-the-azure-resource-manager-template).
-- Az **applicationName**esetében használjon egy egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directoryban. Ezt a nevet a rendszer a webalkalmazás URL-címére is felhasználja. Használhatja például a "Apr3UX" nevet.
+3. A paraméterek megadásakor tegye a következőket:
+    - A **isServicePrincipal** paraméternél válassza a **false (hamis**) lehetőséget.
+    - A hitelesítő adatok esetében adja meg az Azure AD-beli hitelesítő adatait a multi-Factor Authentication szolgáltatás letiltásával. A rendszer ezeket a hitelesítő adatokat fogja használni az Azure AD-alkalmazás és az Azure-erőforrások létrehozásához. További információért lásd: [mire van szükség a felügyeleti eszköz telepítéséhez](#what-you-need-to-deploy-the-management-tool).
+    - Az **applicationName**esetében használjon egy egyedi nevet az alkalmazás számára, amely regisztrálva lesz a Azure Active Directoryban. Ezt a nevet a rendszer a webalkalmazás URL-címére is felhasználja. Használhatja például a "Apr3UX" nevet.
+4. A paraméterek megadása után fogadja el a használati feltételeket, majd válassza a **vásárlás**lehetőséget.
 
 ## <a name="provide-consent-for-the-management-tool"></a>Adja meg a felügyeleti eszköz beleegyezikét
 
 A GitHub-Azure Resource Manager sablon befejezése után egy olyan erőforráscsoportot talál, amely a Azure Portal egy app Service-csomaggal együtt két app Services-csomagot tartalmaz.
 
-A bejelentkezés és a felügyeleti eszköz használata előtt meg kell adnia a felügyeleti eszközhöz társított új Azure Active Directory alkalmazáshoz való hozzájárulásukat. A beleegyezik, hogy lehetővé teszi a felügyeleti eszköz számára, hogy a Windows virtuális asztali felügyeleti hívásokat az eszközbe bejelentkezett felhasználó nevében végezze el.
+A bejelentkezés és a felügyeleti eszköz használata előtt meg kell adnia a felügyeleti eszközhöz társított új Azure AD-alkalmazáshoz való hozzájárulásukat. A belefoglalt engedély lehetővé teszi, hogy a felügyeleti eszköz a Windows virtuális asztali felügyeleti hívásokat a felhasználó nevében az eszközre bejelentkezett felhasználó nevében végezze el.
 
 ![Képernyőkép, amely a felhasználói felületi felügyeleti eszközhöz való hozzáféréskor megadott engedélyeket mutatja.](media/management-ui-delegated-permissions.png)
 
@@ -102,18 +96,15 @@ Az eszköz elindításához kövesse az alábbi utasításokat:
 1. Válassza ki az Azure App Services erőforrást a sablonban megadott névvel (például Apr3UX), és navigáljon a hozzá társított URL-címhez. például <https://rdmimgmtweb-210520190304.azurewebsites.net>.
 2. Jelentkezzen be a Windows rendszerű virtuális asztali hitelesítő adataival.
 3. Amikor a rendszer kéri, hogy válasszon ki egy bérlői csoportot, válassza ki az **alapértelmezett bérlői csoportot** a legördülő listából.
-4. Amikor kiválasztja az alapértelmezett bérlői csoportot, az ablak jobb oldalán megjelenik egy menü. Ezen a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
-
-> [!NOTE]
-> Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
+4. Amikor kiválasztja az **alapértelmezett bérlői csoportot**, egy menü jelenik meg az ablak bal oldalán. Ebben a menüben keresse meg a bérlői csoport nevét, és jelölje ki.
+  
+  > [!NOTE]
+  > Ha egyéni bérlői csoporttal rendelkezik, a legördülő listából válassza a nevet manuálisan.
 
 ## <a name="report-issues"></a>Problémák jelentése
 
-Ha problémák merülnek fel a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatban, kövesse az [ARM-sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez távoli asztali szolgáltatások.
+Ha a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökkel kapcsolatos problémákba ütközik, kövesse az [Azure Resource Manager-távoli asztali szolgáltatások sablonok](https://github.com/Azure/RDS-Templates/blob/master/README.md) című témakör utasításait a githubon való jelentéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja a Azure Service Healtht a szolgáltatási problémák és az állapot-útmutatók figyelésére.
-
-> [!div class="nextstepaction"]
-> [A szolgáltatási riasztások oktatóanyagának beállítása](./set-up-service-alerts.md)
+Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja az Azure szolgáltatás súgóját a szolgáltatással kapcsolatos problémák és az egészségügyi tanácsadók figyelésére. További információ: [set up Service riasztások oktatóanyaga](./set-up-service-alerts.md).

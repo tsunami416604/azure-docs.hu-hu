@@ -4,12 +4,12 @@ description: További információ a Azure Container Instances lévő tárolók 
 ms.topic: article
 ms.date: 11/01/2019
 ms.custom: mvc
-ms.openlocfilehash: 19fa50f83a2593b8914931e25fa99cb2e4896227
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73781418321c3932bf3e0190b646dcd3bb178195
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770271"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888056"
 ---
 # <a name="container-groups-in-azure-container-instances"></a>Tároló-csoportok a Azure Container Instances
 
@@ -32,7 +32,7 @@ Ez a példa tároló Csoport:
 * A két Azure-fájlmegosztást tartalmaz kötet-csatlakoztatásként, és mindegyik tároló helyileg csatlakoztatja az egyik megosztást.
 
 > [!NOTE]
-> A több tárolóból álló csoportok jelenleg csak a Linux-tárolókat támogatják. A Windows-tárolók esetében Azure Container Instances csak egyetlen példány üzembe helyezését támogatja. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, megkeresheti a platform aktuális eltéréseit a szolgáltatás [áttekintésében](container-instances-overview.md#linux-and-windows-containers).
+> A több tárolóból álló csoportok jelenleg csak a Linux-tárolókat támogatják. A Windows-tárolók esetében Azure Container Instances csak egyetlen tároló példány üzembe helyezését támogatja. Miközben dolgozunk a Windows-tárolók összes funkciójának bekapcsolásán, megkeresheti a platform aktuális eltéréseit a szolgáltatás [áttekintésében](container-instances-overview.md#linux-and-windows-containers).
 
 ## <a name="deployment"></a>Üzembe helyezés
 
@@ -44,19 +44,19 @@ A tároló csoport konfigurációjának megőrzése érdekében exportálhatja a
 
 ## <a name="resource-allocation"></a>Erőforrás-kiosztás
 
-A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy többtárolós csoportba úgy, hogy hozzáadja a csoport példányainak [erőforrás-kérelmeit][resource-requests] . Ha például két példánnyal rendelkező tároló csoportot hoz létre a CPU-erőforrások számára, a tároló csoport 2 CPU-t foglal le.
+A Azure Container Instances erőforrásokat, például CPU-t, memóriát és opcionálisan [GPU][gpus] -t (előzetes verzió) foglal le egy többtárolós csoportba úgy, hogy hozzáadja a csoport példányainak [erőforrás-kérelmeit][resource-requests] . A CPU-erőforrások például akkor vesznek részt, ha két tároló-példánnyal rendelkező tároló csoportot hoz létre, amelyek mindegyike 1 PROCESSZORt kér, a tároló csoport 2 processzort foglal le.
 
-### <a name="resource-usage-by-instances"></a>Erőforrás-használat példányok szerint
+### <a name="resource-usage-by-container-instances"></a>Erőforrás-használat Container instances alapján
 
-A csoport minden tároló példánya lefoglalja az erőforrás-kérelmében megadott erőforrásokat. A csoportban lévő példányok által használt maximális erőforrások azonban eltérőek lehetnek, ha a választható [erőforrás-korlát][resource-limits] tulajdonságot konfigurálja. Egy példány erőforrás-korlátjának nagyobbnak vagy egyenlőnek kell lennie a kötelező [erőforrás-kérelem][resource-requests] tulajdonsággal.
+A csoport minden tároló példánya lefoglalja az erőforrás-kérelmében megadott erőforrásokat. Egy csoportban lévő tároló-példány által használt erőforrások maximális száma azonban eltérő lehet, ha a választható [erőforrás-korlát][resource-limits] tulajdonságot konfigurálja. Egy tároló példány erőforrás-korlátjának nagyobbnak vagy egyenlőnek kell lennie a kötelező [erőforrás-kérelem][resource-requests] tulajdonsággal.
 
-* Ha nem ad meg erőforrás-korlátot, a példány maximális Erőforrás-kihasználtsága megegyezik az erőforrás-kérelemmel.
+* Ha nem ad meg erőforrás-korlátot, a tároló-példány maximális Erőforrás-kihasználtsága megegyezik az erőforrás-kérelemmel.
 
-* Ha egy példányra vonatkozó korlátot ad meg, a példány maximális kihasználtsága a megadott korlátnál nagyobb lehet. Ennek megfelelően a csoport más példányai által használt erőforrás-használat csökkenhet. Egy példányhoz beállítható maximális erőforrás-korlát a csoport számára lefoglalt összes erőforrás.
+* Ha egy tároló példányra vonatkozó korlátot ad meg, a példány maximális kihasználtsága a megadott korlátnál nagyobb lehet. Ennek megfelelően a csoport más tároló példányai által használt erőforrás-használat csökkenhet. A tároló-példányhoz beállítható maximális erőforrás-korlát a csoport számára lefoglalt összes erőforrás.
     
-Például egy olyan csoportban, amelyben az 1 CPU-t kérő két példány található, az egyik tároló olyan munkaterhelést futtathat, amelynek több processzort kell futtatnia a többinél.
+Például egy olyan csoportban, amelyben az 1 CPU-t igénylő két tároló példány található, az egyik tároló olyan munkaterhelést futtathat, amelynek több processzort kell futtatnia a többinél.
 
-Ebben az esetben beállíthatja a példányhoz tartozó 2 processzoros erőforrás-korlátot. Ez a konfiguráció lehetővé teszi, hogy a tároló a teljes 2 CPU-t használja, ha van ilyen.
+Ebben az esetben beállíthatja a Container-példányhoz tartozó 2 processzoros erőforrás-korlátot. Ez a konfiguráció lehetővé teszi, hogy a tároló példánya a teljes 2 CPU-t használja, ha elérhető.
 
 ### <a name="minimum-and-maximum-allocation"></a>Minimális és maximális kiosztás
 
@@ -68,9 +68,9 @@ Ebben az esetben beállíthatja a példányhoz tartozó 2 processzoros erőforr�
 
 A Container groups megoszthat egy külső elérésű IP-címet, egy vagy több portot az adott IP-címen, valamint egy teljes tartománynevet (FQDN) tartalmazó DNS-címkét is. Ahhoz, hogy a külső ügyfelek elérjék a csoporton belüli tárolókat, ki kell jelölnie a portot az IP-címen és a tárolóból. Mivel a csoportba tartozó tárolók a portok névterét használják, a port megfeleltetése nem támogatott. A rendszer a tároló csoportjának IP-címét és teljes tartománynevét fogja felszabadítani a Container Group törlésekor. 
 
-A tárolók csoportjain belül a containers-példányok a localhost-on keresztül bármely porton elérhetők, még akkor is, ha ezek a portok nincsenek kitéve a csoport IP-címén vagy a tárolóból.
+Egy tároló csoporton belül a Container instances a localhost-on keresztül bármilyen portot elér, még akkor is, ha ezek a portok nem jelennek meg a csoport IP-címén vagy a tárolón kívülről.
 
-A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] (előzetes verzió), amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
+A tároló-csoportok üzembe helyezése egy Azure-beli [virtuális hálózatban][virtual-network] , amely lehetővé teszi, hogy a tárolók biztonságosan kommunikáljanak a virtuális hálózat más erőforrásaival.
 
 ## <a name="storage"></a>Adattárolás
 

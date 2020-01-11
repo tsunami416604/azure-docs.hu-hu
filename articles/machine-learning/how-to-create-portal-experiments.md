@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c05b29dd5909d1371c71bffb9db555c15c5d23ed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764643"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894023"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -150,11 +150,12 @@ Variancia| Az oszlop adatainak kiszóródásának mértéke az átlagos értékt
 Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
 Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben lett összehasonlítva a normál eloszlással.
 
+
 <a name="preprocess"></a>
 
 ## <a name="advanced-preprocessing-options"></a>Speciális előfeldolgozási beállítások
 
-A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `Preprocess`. Ez azt jelenti, hogy a következő adatfeldolgozási és featurization lépések végrehajtása automatikusan történik.
+A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `Preprocess`. Ez azt jelenti, hogy a következő guardrails-és featurization-lépések előfeldolgozásának részeként a rendszer automatikusan végrehajtja a lépéseket.
 
 |&nbsp;lépések előfeldolgozása| Leírás |
 | ------------- | ------------- |
@@ -167,6 +168,20 @@ A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `Pr
 |Szöveges cél kódolása|Szöveges bevitel esetén a rendszer egy halmozott lineáris modellt használ, amelyben a rendszer az egyes osztályok valószínűségét állítja elő.|
 |Bizonyítékok súlyozása (jaj)|Kiszámítja a jaj-et a kategorikus oszlopok korrelációja alapján a cél oszlophoz. A számítás az osztályban és az osztályon kívüli valószínűségek arányának naplója. Ez a lépés egy numerikus funkció oszlopát jeleníti meg, és eltávolítja a hiányzó értékek és a kiugró eljárás explicit módon történő bevonásának szükségességét.|
 |Fürt távolsága|A k – a csoportosítási modellt jelenti az összes numerikus oszlopon.  Az új funkciók megjelenítése, egy új numerikus szolgáltatás, amely az egyes minták távolságát az egyes fürtök középpontját tartalmazza.|
+
+### <a name="data-guardrails"></a>Az adatguardrails
+
+Az automatizált gépi tanulás olyan adatok guardrails, amelyek segítségével azonosíthatja az adatokkal kapcsolatos lehetséges problémákat (például a hiányzó értékeket, az osztály egyensúlyhiányát), és segítheti a javítási műveleteket a jobb eredmények érdekében. Számos ajánlott eljárás érhető el, és a megbízható eredmények elérésére is alkalmazható. 
+
+A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint azokat a társított állapotokat, amelyeket a felhasználók a kísérlet elküldésekor megkaphatnak.
+
+Guardrail|Állapot|&nbsp;trigger feltétele&nbsp;
+---|---|---
+Hiányzó&nbsp;érték&nbsp;imputálási |**Telt** <br> <br> **Rögzített**|    Nincs hiányzó érték a bemeneti&nbsp;oszlopaiban <br> <br> Egyes oszlopokban hiányoznak értékek
+Több érvényesítés|**Tenni**|Ha nincs megadva explicit ellenőrzési készlet
+Magas&nbsp;kardinális&nbsp;funkció&nbsp;észlelése|  **Telt** <br> <br>**Tenni**|   A rendszer nem észlelt magas szintű sarkalatos funkciókat <br><br> A rendszer a magas kardinális bemeneti oszlopokat észlelte
+Osztályok egyenlegének észlelése |**Telt** <br><br><br>**Riasztást kap** |Az osztályok a betanítási adatként vannak kiegyenlítettek; Az adatkészletek akkor tekinthetők kiegyensúlyozottnak, ha az egyes osztályok jó ábrázolással rendelkeznek az adatkészletben, a minták számának és arányának alapján mérve <br> <br> A betanítási adatkészletek osztályai kiegyensúlyozva vannak
+Időbeli adatsorozat-konzisztencia|**Telt** <br><br><br><br> **Rögzített** |<br> A kiválasztott {Horizon, lag, Rolling Window} érték elemzése megtörtént, és a rendszer nem észlelt memóriabeli problémákat. <br> <br>A kiválasztott {Horizon, lag, Rolling Window} értékek elemzése megtörtént, és a kísérlet valószínűleg kifogy a memóriából. A késés vagy a legördülő ablak ki van kapcsolva.
 
 ## <a name="run-experiment-and-view-results"></a>Kísérlet futtatása és eredmények megtekintése
 

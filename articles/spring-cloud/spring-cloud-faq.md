@@ -6,18 +6,18 @@ ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: jeconnoc
-ms.openlocfilehash: 6835132192040b4b943b156fb78ae1547522be0c
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 12786f59db9644fd54e812687d27443c250aec05
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229253"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75891844"
 ---
 # <a name="azure-spring-cloud-faq"></a>Azure Spring Cloud – gyakori kérdések
 
 Ez a cikk az Azure Spring Cloud szolgáltatással kapcsolatos gyakori kérdésekre ad választ. 
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="why-azure-spring-cloud"></a>Az Azure Spring Cloud bemutatása
 
@@ -63,7 +63,7 @@ Az előzetes verzióban az Azure Spring Cloud a következő ismert korlátozáso
 
 ### <a name="how-can-i-provide-feedback-and-report-issues"></a>Hogyan adhatok visszajelzést és jelenthetem a jelentéssel kapcsolatos problémákat?
 
-Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létre egy [Azure-támogatási kérelmet](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request). Ha beküld egy szolgáltatási kérelmet, vagy visszajelzést szeretne küldeni, ugorjon az [Azure-visszajelzések](https://feedback.azure.com/forums/34192--general-feedback)lehetőségre.
+Ha problémák merülnek fel az Azure Spring Cloudtel kapcsolatban, hozzon létre egy [Azure-támogatási kérelmet](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request). Ha beküld egy szolgáltatási kérelmet, vagy visszajelzést szeretne küldeni, ugorjon az [Azure-visszajelzések](https://feedback.azure.com/forums/34192--general-feedback)lehetőségre.
 
 ## <a name="development"></a>Fejlesztés
 
@@ -93,7 +93,7 @@ Jelenleg három szolgáltatás támogatott: Azure Cosmos DB, Azure Database for 
 
 Igen.
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="does-azure-spring-cloud-support-blue-green-deployment"></a>Támogatja az Azure Spring Cloud a Blue-Green üzembe helyezést?
 Igen. További információ: [átmeneti környezet beállítása](spring-cloud-howto-staging-environment.md).

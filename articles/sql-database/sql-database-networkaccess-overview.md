@@ -12,12 +12,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 08/05/2019
-ms.openlocfilehash: 16de1d9fcf86459b6bcadd9d8c372e436aad0915
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 44fcaa0a4292ac86c7371c27f29faf0e7246e9d5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802941"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894795"
 ---
 # <a name="azure-sql-database-and-data-warehouse-network-access-controls"></a>A Azure SQL Database és az adatraktár hálózati hozzáférés-vezérlése
 
@@ -47,24 +47,53 @@ Ezt a beállítást a tűzfal panelen is módosíthatja az Azure-SQL Server lét
 
 Ha az Azure SQL Server- **ra** van beállítva, az Azure határán belüli összes erőforrásról folytatott kommunikációt tesz lehetővé, amely esetleg nem része az előfizetésnek.
 
-Sok esetben a **on** beállítás nagyobb mértékben megengedhető, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást ki szeretné **kapcsolni** , és lecseréli az IP-tűzfalszabályok szigorúbb szabályaira vagy Virtual Network tűzfalszabályok megadására. Ennek hatására a következő funkciók érvényesek:
+Sok esetben a **on** beállítás nagyobb mértékben megengedhető, mint amit a legtöbb ügyfél szeretne. Előfordulhat, hogy ezt a beállítást ki szeretné **kapcsolni** , és lecseréli az IP-tűzfalszabályok szigorúbb szabályaira vagy Virtual Network tűzfalszabályok megadására. Ez hatással van az Azure-beli virtuális gépeken futó alábbi szolgáltatásokra, amelyek nem részei a VNet, így az SQL Database-hez egy Azure IP-címen keresztül csatlakozhatnak.
 
 ### <a name="import-export-service"></a>Exportálási szolgáltatás importálása
+Az importálási exportálási szolgáltatás nem működik **, így az Azure-szolgáltatások nem férnek** hozzá a kiszolgálóhoz. A probléma megoldásához azonban a [sqlpackage. exe fájlt manuálisan is futtathatja egy Azure-beli virtuális](https://docs.microsoft.com/azure/sql-database/import-export-from-vm) gépről, vagy közvetlenül a kódban végezheti el az exportálást a DACFx API használatával.
 
-Azure SQL Database importálási exportálási szolgáltatás az Azure-beli virtuális gépeken fut. Ezek a virtuális gépek nem a VNet találhatók, ezért Azure-beli IP-címet kapnak az adatbázishoz való csatlakozáskor. Ha eltávolítja az **Azure-szolgáltatások elérésének engedélyezése kiszolgálót,** ezek a virtuális gépek nem fognak tudni hozzáférni az adatbázisokhoz.
-A probléma megkerüléséhez futtassa a BACPAC importálását, vagy exportálja közvetlenül a kódban a DACFx API használatával.
+### <a name="data-sync"></a>Adatszinkronizálás
+Ha az adatszinkronizálási funkciót szeretné használni az **Azure-szolgáltatások elérésének engedélyezése a kiszolgáló** számára beállítás kikapcsolásához, egyéni tűzfalszabály-bejegyzéseket kell létrehoznia az [IP-címek hozzáadásához](sql-database-server-level-firewall-rule.md) az **SQL-szolgáltatás címkéjén** a **hub** -adatbázist üzemeltető régió számára.
+Adja hozzá ezeket a kiszolgálói szintű tűzfalszabályok azokhoz a logikai kiszolgálókhoz, amelyek mind a **hub** , mind a **tag** adatbázisait üzemeltetik (amelyek különböző régiókban lehetnek)
 
-### <a name="sql-database-query-editor"></a>SQL Database lekérdezés-szerkesztő
+Az alábbi PowerShell-szkripttel hozhatja elő az SQL Service-címkének megfelelő IP-címeket az USA nyugati régiójában.
+```powershell
+PS C:\>  $serviceTags = Get-AzNetworkServiceTag -Location eastus2
+PS C:\>  $sql = $serviceTags.Values | Where-Object { $_.Name -eq "Sql.WestUS" }
+PS C:\> $sql.Properties.AddressPrefixes.Count
+70
+PS C:\> $sql.Properties.AddressPrefixes
+13.86.216.0/25
+13.86.216.128/26
+13.86.216.192/27
+13.86.217.0/25
+13.86.217.128/26
+13.86.217.192/27
+```
 
-A Azure SQL Database lekérdezés-szerkesztő üzembe helyezése az Azure-beli virtuális gépeken történik. Ezek a virtuális gépek nem a VNet találhatók. Ezért a virtuális gépek Azure-beli IP-címet kapnak az adatbázishoz való csatlakozáskor. Ha eltávolítja az **Azure-szolgáltatások elérésének engedélyezése kiszolgálót**, ezek a virtuális gépek nem fognak tudni hozzáférni az adatbázisokhoz.
+> [!TIP]
+> A Get-AzNetworkServiceTag az SQL Service-címke globális tartományát adja vissza a Location paraméter megadása ellenére. Ügyeljen arra, hogy a szinkronizálási csoport által használt hub-adatbázist üzemeltető régióra szűrje
 
-### <a name="table-auditing"></a>Tábla naplózása
+Vegye figyelembe, hogy a PowerShell-parancsfájl kimenete osztály nélküli tartományok közötti útválasztás (CIDR) jelöléssel van megadva, és ezt a kezdő és a záró IP-cím formátumára kell konvertálni a [Get-IPrangeStartEnd. ps1 használatával.](https://gallery.technet.microsoft.com/scriptcenter/Start-and-End-IP-addresses-bcccc3a9) ehhez hasonlóan
+```powershell
+PS C:\> Get-IPrangeStartEnd -ip 52.229.17.93 -cidr 26                                                                   
+start        end
+-----        ---
+52.229.17.64 52.229.17.127
+```
 
-Jelenleg két módon engedélyezheti a naplózást a SQL Databaseon. A tábla naplózása meghiúsul, miután engedélyezte a szolgáltatási végpontokat az Azure-SQL Server. Az itt található megoldás a Blobok naplózására való áttérés.
+A következő további lépéseket követve alakítsa át az összes IP-címet a CIDR-ből a kezdő és a záró IP-cím formátumára.
 
-### <a name="impact-on-data-sync"></a>Az adatszinkronizálás hatása
+```powershell
+PS C:\>foreach( $i in $sql.Properties.AddressPrefixes) {$ip,$cidr= $i.split('/') ; Get-IPrangeStartEnd -ip $ip -cidr $cidr;}                                                                                                                
+start          end
+-----          ---
+13.86.216.0    13.86.216.127
+13.86.216.128  13.86.216.191
+13.86.216.192  13.86.216.223
+```
+Mostantól megadhatja ezeket különálló tűzfalszabályokként, majd beállíthatja, **hogy az Azure-szolgáltatások hozzáférjenek a kiszolgálóhoz** .
 
-Azure SQL Database rendelkezik az adatszinkronizálási funkcióval, amely az Azure IP-címek használatával csatlakozik az adatbázisokhoz. A szolgáltatási végpontok használatakor ki kell kapcsolni az **Azure-szolgáltatások hozzáférésének engedélyezése** a SQL Database kiszolgálóhoz való hozzáférést, és meg kell szüntetnie az adatszinkronizálási funkciót.
 
 ## <a name="ip-firewall-rules"></a>IP-tűzfalszabályok
 Az IP-alapú tűzfal az Azure SQL Server egyik funkciója, amely megakadályozza az adatbázis-kiszolgáló elérését, amíg explicit módon nem [adja hozzá az ügyfélszámítógépek IP-címeit](sql-database-server-level-firewall-rule.md) .
@@ -100,7 +129,7 @@ A virtuális hálózati szabályok egyszerűbben használhatók a virtuális gé
 > [!NOTE]
 > Még nem rendelkezhet SQL Database alhálózaton. Ha a Azure SQL Database-kiszolgáló a virtuális hálózat egyik alhálózatának csomópontja volt, a virtuális hálózaton belüli összes csomópont kommunikálhat a SQL Databaseval. Ebben az esetben a virtuális gépek kommunikálhatnak a SQL Database anélkül, hogy virtuális hálózati szabályokat vagy IP-szabályokat kellene megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kiszolgálói szintű IP-Tűzfalszabályok létrehozásával kapcsolatos rövid útmutató: [Azure SQL Database létrehozása](sql-database-single-database-get-started.md).
 

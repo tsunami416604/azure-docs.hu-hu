@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 70cbc761c7e334ed9b13e3cd7d915102917ff149
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 0266c08052cd3db7d9081d6b617da94703b9ab77
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75780198"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896318"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -86,8 +86,11 @@ A következő szakasz ismerteti a naplózás konfigurációját a Azure Portal h
     ![Navigációs ablaktábla][3]
 
 5. **Új** – mostantól több beállítással is konfigurálhatja, hogy a rendszer hol írja be a naplókat. Naplókat írhat egy Azure Storage-fiókba, Log Analytics munkaterületre Azure Monitor naplók általi felhasználáshoz, vagy az Event hub használatával történő felhasználásra. Ezen beállítások bármely kombinációját konfigurálhatja, és a rendszer a naplókat is megírja a naplókba.
-
-   > [!WARNING]
+  
+  > [!NOTE]
+   >Az ügyfél számára, hogy egy nem módosítható napló-tárolót konfiguráljanak a kiszolgálói vagy adatbázis-szintű naplózási események esetében, kövesse az [Azure Storage által biztosított utasítások] (https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage)
+  
+  > [!WARNING]
    > A Log Analytics naplózásának engedélyezése a betöltési díjak alapján jár. Vegye figyelembe a kapcsolódó költségeket ezzel a [lehetőséggel](https://azure.microsoft.com/pricing/details/monitor/), vagy a naplókat egy Azure Storage-fiókban kell tárolnia.
 
     ![tárolási beállítások](./media/sql-database-auditing-get-started/auditing-select-destination.png)

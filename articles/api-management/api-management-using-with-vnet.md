@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: apimpm
-ms.openlocfilehash: 4a188a8de4f1cbf9d5bc20f7e514e3f5a2c752dc
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 26a353251bd85a30ab26c86f3d6b363b0a84e074
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74074630"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889533"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Az Azure API Management használata virtuális hálózatokkal
 Az Azure-beli virtuális hálózatokkal (VNET-ekkel) olyan nem internetalapú, irányítható hálózatokra helyezheti át Azure-erőforrásait, amelyekhez való hozzáférést Ön szabályozza. Ezek a hálózatok ezután különböző VPN-technológiákkal csatlakozhatnak a helyszíni hálózatokhoz. Az Azure Virtual Networks szolgáltatással kapcsolatos további információkért tekintse meg az alábbi információkat: [azure Virtual Network – áttekintés](../virtual-network/virtual-networks-overview.md).
@@ -45,44 +45,47 @@ A cikkben ismertetett lépések végrehajtásához a következőket kell tennie:
 
 ### <a name="enable-vnet-connectivity-using-the-azure-portal"></a>VNET-kapcsolat engedélyezése a Azure Portal használatával
 
-1. Navigáljon a [Azure Portal](https://portal.azure.com/)APIM-példányához.
-2. Válassza a **Virtual Network**lehetőséget.
-3. Konfigurálja a API Management példányt egy virtuális hálózaton belül üzembe helyezéshez.
+1. Az API Management-példány megkereséséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki **API Management szolgáltatásokat**.
+
+2. Válassza ki API Management-példányát.
+
+3. Válassza ki a **Virtuális hálózatot**.
+4. Konfigurálja a API Management példányt egy virtuális hálózaton belül üzembe helyezéshez.
 
     ![API Management virtuális hálózatának menüje][api-management-using-vnet-menu]
-4. Válassza ki a kívánt hozzáférési típust:
+5. Válassza ki a kívánt hozzáférési típust:
 
-   * **Kikapcsolva**: ez az alapértelmezett. API Management nincs üzembe helyezve virtuális hálózatban.
+    * **Kikapcsolva**: ez az alapértelmezett. API Management nincs üzembe helyezve virtuális hálózatban.
 
-   * **Külső**: a API Management átjáró és a fejlesztői portál a nyilvános internetről külső terheléselosztó használatával érhető el. Az átjáró hozzáférhet a virtuális hálózaton belüli erőforrásokhoz.
+    * **Külső**: a API Management átjáró és a fejlesztői portál a nyilvános internetről külső terheléselosztó használatával érhető el. Az átjáró hozzáférhet a virtuális hálózaton belüli erőforrásokhoz.
 
-     ![Nyilvános társviszony-létesítés][api-management-vnet-public]
+        ![Nyilvános társviszony-létesítés][api-management-vnet-public]
 
-   * **Belső**: a API Management átjáró és a fejlesztői portál csak a virtuális hálózaton belülről érhető el belső terheléselosztó használatával. Az átjáró hozzáférhet a virtuális hálózaton belüli erőforrásokhoz.
+    * **Belső**: a API Management átjáró és a fejlesztői portál csak a virtuális hálózaton belülről érhető el belső terheléselosztó használatával. Az átjáró hozzáférhet a virtuális hálózaton belüli erőforrásokhoz.
 
-     ![Magánhálózati társviszony-létesítés][api-management-vnet-private]
+        ![Magánhálózati társviszony-létesítés][api-management-vnet-private]
 
-     Ekkor megjelenik az összes olyan régió listája, ahol a API Management szolgáltatás kiépítve. Válasszon egy VNET és alhálózatot minden régióhoz. A lista az Azure-előfizetésekben elérhető klasszikus és Resource Manager-alapú virtuális hálózatokkal együtt van feltöltve, amelyek a konfigurált régióban vannak beállítva.
+6. Ha a **külső** vagy a **belső**lehetőséget választotta, megjelenik az összes olyan régió listája, ahol a API Management szolgáltatás kiépítve van. Válasszon egy **helyet**, majd válassza ki a **virtuális hálózatot** és az **alhálózatot**. A virtuális hálózatok listája a klasszikus és a Resource Manager virtuális hálózatokkal együtt érhető el az Ön által konfigurált régióban beállított Azure-előfizetésekben.
 
-     > [!IMPORTANT]
-     > Ha Azure API Management-példányt telepít egy Resource Manager-VNET, a szolgáltatásnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrásokat, kivéve az Azure API Management-példányokat. Ha egy Azure API Management-példány üzembe helyezésére tett kísérletet egy olyan Resource Manager VNET-alhálózatra, amely más erőforrásokat is tartalmaz, a telepítés sikertelen lesz.
-     >
+    > [!IMPORTANT]
+    > Ha Azure API Management-példányt telepít egy Resource Manager-VNET, a szolgáltatásnak olyan dedikált alhálózaton kell lennie, amely nem tartalmaz más erőforrásokat, kivéve az Azure API Management-példányokat. Ha egy Azure API Management-példány üzembe helyezésére tett kísérletet egy olyan Resource Manager VNET-alhálózatra, amely más erőforrásokat is tartalmaz, a telepítés sikertelen lesz.
 
-     ![VPN kiválasztása][api-management-setup-vpn-select]
+    Ezután válassza az **Alkalmaz** lehetőséget. A API Management példány **virtuális hálózat** lapja frissül az új virtuális hálózattal és az alhálózattal.
 
-5. Kattintson a felső navigációs sávban a **Mentés** gombra.
-6. A felső navigációs sávon kattintson a **hálózati konfiguráció alkalmazása** lehetőségre.
+    ![VPN kiválasztása][api-management-setup-vpn-select]
+
+7. A felső navigációs sávon válassza a **Mentés**lehetőséget, majd válassza a **hálózati konfiguráció alkalmazása**lehetőséget.
 
 > [!NOTE]
 > A API Management példány virtuális IP-címe minden alkalommal megváltozik, amikor a VNET engedélyezve vagy le van tiltva.
-> A virtuális IP-cím akkor is megváltozik, ha a API Management **külsőről** **belsőre** vagy fordítva van áthelyezve
+> A virtuális IP-cím akkor is megváltozik, ha a API Management **kívülről** **belsőre**kerül, vagy fordítva.
 >
 
 > [!IMPORTANT]
 > Ha eltávolítja a API Management egy VNET, vagy megváltoztatja azt, akkor a korábban használt VNET akár hat óráig is zárolható maradhat. Ebben az időszakban nem lehet törölni a VNET, vagy új erőforrást telepíteni. Ez a viselkedés a 2018-01-01-es és korábbi API-verziót használó ügyfelek esetében igaz. A 2019-01-01-es és újabb verziójú API-t használó ügyfelek a társított API Management szolgáltatás törlése után azonnal felszabadul a VNET.
 
 ## <a name="enable-vnet-powershell"> </a>VNET-kapcsolatok engedélyezése a PowerShell-parancsmagok használatával
-A VNET-kapcsolatot a PowerShell-parancsmagok használatával is engedélyezheti
+A VNET-kapcsolatot a PowerShell-parancsmagok használatával is engedélyezheti.
 
 * **API Management szolgáltatás létrehozása egy VNET belül**: a [New-AzApiManagement](/powershell/module/az.apimanagement/new-azapimanagement) parancsmaggal hozzon létre egy Azure API Management-szolgáltatást egy VNET belül.
 
@@ -107,19 +110,19 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 | Forrás/cél port (ok) | Irány          | Átviteli protokoll |   [Szolgáltatás címkéi](../virtual-network/security-overview.md#service-tags) <br> Forrás/cél   | Cél (*)                                                 | Virtual Network típusa |
 |------------------------------|--------------------|--------------------|---------------------------------------|-------------------------------------------------------------|----------------------|
-| * / 80, 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
-| * / 3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
-| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | **Függőség az Azure Storage-ban**                             | Külső & belső  |
-| * / 80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Azure Active Directory (ha van ilyen)                   | Külső & belső  |
-| * / 1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
+| */80, 443                  | Bejövő            | TCP                | INTERNET/VIRTUAL_NETWORK            | Ügyfél-kommunikáció API Management                      | Külső             |
+| */3443                     | Bejövő            | TCP                | ApiManagement/VIRTUAL_NETWORK       | Felügyeleti végpont a Azure Portal és a PowerShell számára         | Külső & belső  |
+| */80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | **Függőség az Azure Storage-ban**                             | Külső & belső  |
+| */80, 443                  | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureActiveDirectory | Azure Active Directory (ha van ilyen)                   | Külső & belső  |
+| */1433                     | Kimenő           | TCP                | VIRTUAL_NETWORK/SQL                 | **Hozzáférés az Azure SQL-végpontokhoz**                           | Külső & belső  |
 | */5671, 5672, 443          | Kimenő           | TCP                | VIRTUAL_NETWORK/EventHub            | Az Event hub-házirend és a figyelési ügynök közötti függőség | Külső & belső  |
-| * / 445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a GIT-hez készült Azure-Fájlmegosztástól                      | Külső & belső  |
-| * / 1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | A Resource Health állapotának közzétételéhez szükséges.          | Külső & belső  |
+| */445                      | Kimenő           | TCP                | VIRTUAL_NETWORK/tárterület             | Függőség a GIT-hez készült Azure-Fájlmegosztástól                      | Külső & belső  |
+| */1886                     | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | A Resource Health állapotának közzétételéhez szükséges.          | Külső & belső  |
 | */443                     | Kimenő           | TCP                | VIRTUAL_NETWORK/AzureMonitor         | Diagnosztikai naplók és mérőszámok közzététele                        | Külső & belső  |
 | */25                       | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
 | */587                      | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| * / 25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
-| * / 6381 - 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Az Azure cache elérése a Redis-példányok között a RoleInstances között          | Külső & belső  |
+| */25028                    | Kimenő           | TCP                | VIRTUAL_NETWORK/INTERNET            | Kapcsolódás az SMTP Relayhez az e-mailek küldéséhez                    | Külső & belső  |
+| */6381 – 6383              | Bejövő & kimenő | TCP                | VIRTUAL_NETWORK/VIRTUAL_NETWORK     | Az Azure cache elérése a Redis-példányok között a RoleInstances között          | Külső & belső  |
 | * / *                        | Bejövő            | TCP                | AZURE_LOAD_BALANCER/VIRTUAL_NETWORK | Azure-infrastruktúra Load Balancer                          | Külső & belső  |
 
 >[!IMPORTANT]
@@ -131,7 +134,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 + **Metrikák és állapot-figyelés**: kimenő hálózati kapcsolat az Azure monitoring-végpontokkal, amelyek a következő tartományokban oldhatók fel:
 
-    | Azure-környezet | Végpontok                                                                                                                                                                                                                                                                                                                                                              |
+    | Azure-környezet | Endpoints (Végpontok)                                                                                                                                                                                                                                                                                                                                                              |
     |-------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Azure Public      | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li><li>prod3-black.prod3.metrics.nsatc.net</li><li>prod3-red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com, ahol a `East US 2` eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government  | <ul><li>fairfax.warmpath.usgovcloudapi.net</li><li>shoebox2.metrics.nsatc.net</li><li>prod3.metrics.nsatc.net</li></ul>                                                                                                                                                                                                                                                |
@@ -163,7 +166,7 @@ A következő lista felsorolja azokat a gyakori konfigurációs problémákat, a
 
 ## <a name="troubleshooting"> </a>Hibaelhárítás
 * **Kezdeti beállítás**: ha a API Management szolgáltatás központi telepítése egy alhálózatba nem sikerül, azt javasoljuk, hogy először helyezzen üzembe egy virtuális gépet ugyanahhoz az alhálózathoz. A következő Távoli asztalt a virtuális gépre, és ellenőrizze, hogy van-e kapcsolat az Azure-előfizetésében található egyes erőforrások valamelyikével
-    * Azure Storage blob
+    * Azure Storage-blob
     * Azure SQL Database
     * Azure Storage-tábla
 

@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: 3febdbc8f55f6ccd65eba97de984a9a38ddf214e
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74129315"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888989"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks szolgáltatással kapcsolatos gyakori kérdések
 
@@ -48,7 +48,7 @@ Itt talál néhány problémát, amely felmerülhet a Databricks.
 
 #### <a name="solution"></a>Megoldás
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Válassza ki az **előfizetéseket**, a használt előfizetést, majd az **erőforrás-szolgáltatókat**. 
 1. Az erőforrás-szolgáltatók listájában, a **Microsoft. Databricks**, válassza a **regisztráció**lehetőséget. Az erőforrás-szolgáltató regisztrálásához az előfizetés közreműködői vagy tulajdonosi szerepkörének kell lennie.
 
@@ -92,7 +92,7 @@ Ha nem hozta létre a munkaterületet, és felhasználóként adja hozzá, fordu
 
 #### <a name="solution"></a>Megoldás
 
-A Databricks-fürtök csomópontonként egy nyilvános IP-címet használnak. Ha az előfizetése már használta az összes nyilvános IP-címet, akkor [a kvóta növelését kell kérnie](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request). Válassza a **kvóta** lehetőséget a **probléma típusaként**, és a **hálózatkezelés: ARM** **értéket a kvóta típusaként**. A **részletek**területen kérjen egy nyilvános IP-cím kvótájának növekedését. Ha például a korlátja jelenleg 60, és egy 100 csomópontos fürtöt szeretne létrehozni, igényeljen határérték-növekedést 160-ra.
+A Databricks-fürtök csomópontonként egy nyilvános IP-címet használnak. Ha az előfizetése már használta az összes nyilvános IP-címet, akkor [a kvóta növelését kell kérnie](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request). Válassza a **kvóta** lehetőséget a **probléma típusaként**, és a **hálózatkezelés: ARM** **értéket a kvóta típusaként**. A **részletek**területen kérjen egy nyilvános IP-cím kvótájának növekedését. Ha például a korlátja jelenleg 60, és egy 100 csomópontos fürtöt szeretne létrehozni, igényeljen határérték-növekedést 160-ra.
 
 ### <a name="issue-a-second-type-of-cloud-provider-launch-failure-while-setting-up-the-cluster-missingsubscriptionregistration"></a>Probléma: a Cloud Provider indításának második típusa a fürt beállításakor (MissingSubscriptionRegistration)
 
@@ -103,7 +103,7 @@ Azure-hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizet�
 
 #### <a name="solution"></a>Megoldás
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Válassza ki az **előfizetéseket**, a használt előfizetést, majd az **erőforrás-szolgáltatókat**. 
 1. Az erőforrás-szolgáltatók listájában a **Microsoft. számítás**lapon válassza a **regisztráció**lehetőséget. Az erőforrás-szolgáltató regisztrálásához az előfizetés közreműködői vagy tulajdonosi szerepkörének kell lennie.
 
@@ -119,7 +119,7 @@ Azure Databricks integrálva van Azure Active Directorysal. Az Azure AD-beli fel
 
 Jelentkezzen be globális rendszergazdaként a Azure Portalba. Azure Active Directory esetében lépjen a **felhasználói beállítások** lapra, és győződjön meg arról, hogy a **felhasználók jóváhagyják az alkalmazások számára a vállalati adatokhoz való hozzáférést** az **Igen**értékre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Gyors útmutató: az Azure Databricks használatának első lépései](quickstart-create-databricks-workspace-portal.md)
 - [Mi az Azure Databricks?](what-is-azure-databricks.md)

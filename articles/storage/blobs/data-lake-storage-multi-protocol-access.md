@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
 ms.reviewer: stewu
-ms.openlocfilehash: aebd7b58a2107ac109a03d3ce12f27d65ba0ab90
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: f34c5d5069a158579864320d0fbf965de8936d9c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769812"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896113"
 ---
 # <a name="multi-protocol-access-on-azure-data-lake-storage"></a>Több protokollos hozzáférés Azure Data Lake Storage
 
@@ -52,12 +52,12 @@ Az ebben a táblázatban megjelenő elemek a blob Storage-szolgáltatások támo
 |BLOB SDK-k |Általánosan elérhető|
 |[PowerShell (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-powershell) |Általánosan elérhető|
 |[CLI (blob)](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-cli) |Általánosan elérhető|
+|[Értesítések Azure Event Grid keresztül](data-lake-storage-events.md)|Általánosan elérhető|
 |BLOB SDK-k fájlrendszer-szemantikai szolgáltatással ([.net](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-dotnet) &vert; [Python](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-python) &vert; [Java](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-java))|Előzetes verzió|
 |[PowerShell fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-powershell)|Előzetes verzió|
 |[CLI fájlrendszer-szemantikai beállításokkal](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-directory-file-acl-cli)|Előzetes verzió|
 |[Diagnosztikai naplók](../common/storage-analytics-logging.md)| Előzetes verzió|
 |[Életciklus-kezelési szabályzatok](storage-lifecycle-management-concepts.md)| Előzetes verzió|
-|[Értesítések Azure Event Grid keresztül](data-lake-storage-events.md)|Előzetes verzió|
 |[Archivált adatok hozzáférési szintje](storage-blob-storage-tiers.md)| Előzetes verzió|
 |[blobfuse](storage-how-to-mount-container-linux.md)|Még nem támogatott|
 |[Megváltoztathatatlan tároló](storage-blob-immutable-storage.md)|Még nem támogatott|

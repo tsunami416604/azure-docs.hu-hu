@@ -9,13 +9,13 @@ services: digital-twins
 ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc seodec18
-ms.date: 11/12/2019
-ms.openlocfilehash: 621b02363310ccc6f3dc1b32807874307210e964
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6c9c5df27f4a361e534bac2fe21b2c470f8d0186
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861132"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895584"
 ---
 # <a name="quickstart-find-available-rooms-by-using-azure-digital-twins"></a>Gyors útmutató: elérhető szobák keresése az Azure Digital Twins használatával
 
@@ -23,7 +23,7 @@ Az Azure Digital Twins szolgáltatás lehetővé teszi a fizikai környezet digi
 
 Ez a rövid útmutató [a .net-minták egy pár változatát](https://github.com/Azure-Samples/digital-twins-samples-csharp) használja egy képzeletbeli irodaház kialakításához. Bemutatja, hogyan találhat elérhető szobákat az adott épületben. A digitális ikrek segítségével számos érzékelőt társíthat a környezetéhez. Azt is megtudhatja, hogy a rendelkezésre álló helyiség légminősége optimális-e egy szimulált érzékelővel a széndioxid esetében. Az egyik minta alkalmazás véletlenszerű szenzor-adatmennyiséget hoz létre a forgatókönyv megjelenítéséhez.
 
-A következő videó a rövid útmutatóban ismertetett beállítási folyamatot foglalja össze:
+A következő videó összefoglalja a gyors üzembe helyezési beállítást:
 
 >[!VIDEO https://www.youtube.com/embed/1izK266tbMI]
 
@@ -83,11 +83,11 @@ A térbeli gráf a [provisionSample. YAML](https://github.com/Azure-Samples/digi
 
 1. A kiépítési lépés eltarthat néhány percig. Emellett egy IoT Hub is kiépít a digitális Twins-példányon belül. Ez a ciklus egészen addig, amíg a IoT Hub megjeleníti az állapot =`Running`.
 
-    [![kiépíteni a minta-status = futást](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png)](media/quickstart-view-occupancy-dotnet/digital-twins-provision-sample.png#lightbox)
+    [![kiépíteni a minta-status = futást](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-provision-sample.png#lightbox)
 
 1. A végrehajtás végén másolja az eszköz `ConnectionString` a Device Simulator-mintában való használatra. Csak az ebben a képen vázolt karakterláncot másolja.
 
-    [![a kapcsolatok karakterláncának másolása](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png)](media/quickstart-view-occupancy-dotnet/digital-twins-connection-string.png#lightbox)
+    [![a kapcsolatok karakterláncának másolása](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-connection-string.png#lightbox)
 
     >[!TIP]
     > A térbeli gráfot az [Azure Digital Twins Graph Viewer](https://github.com/Azure/azure-digital-twins-graph-viewer)használatával tekintheti meg és módosíthatja.
@@ -104,7 +104,7 @@ Az alábbi lépéseket követve hozza létre és futtassa az Sensor Simulator es
 1. Szerkessze a [appSettings. JSON](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/device-connectivity/appsettings.json) fájlt a **DeviceConnectionString** frissítéséhez az előző `ConnectionString`. Mentse a módosított fájlt.
 1. `dotnet run` futtatása az érzékelői adatok küldésének megkezdéséhez. A rendszer a következő képen látható módon küldi el az Azure digitális Twins-nek.
 
-     [![eszköz kapcsolata](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/digital-twins-device-connectivity.png#lightbox)
+     [![eszköz kapcsolata](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-device-connectivity.png#lightbox)
 
 1. Futtassa ezt a szimulátort úgy, hogy a következő lépés művelettel megtekintheti az eredményeket egymás mellett. Ebben az ablakban láthatók a digitális ikreknek elküldett szimulált érzékelő-adathalmazok. A következő lépés valós időben kérdezi le a rendelkezésre álló szobákat a friss levegővel.
 
@@ -123,7 +123,7 @@ Az érzékelő minta szimulálja a két érzékelő véletlenszerű adatértéke
    - `Room is available and air is fresh`
    - `Room is not available or air quality is poor`
 
-     [![rendelkezésre álló tárhelyek lekérése friss levegővel](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png)](media/quickstart-view-occupancy-dotnet/digital-twins-get-available.png#lightbox)
+     [![rendelkezésre álló tárhelyek lekérése friss levegővel](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png)](media/quickstart-view-occupancy-dotnet/azure-digital-twins-quickstart-get-available.png#lightbox)
 
 Ha meg szeretné tudni, hogy mi történt ebben a rövid útmutatóban, és milyen API-kat hívott meg, nyissa meg a [Visual Studio Code](https://code.visualstudio.com/Download) -ot a `digital-twins-samples-csharp`címen található Code Workspace- Használja az alábbi parancsot:
 

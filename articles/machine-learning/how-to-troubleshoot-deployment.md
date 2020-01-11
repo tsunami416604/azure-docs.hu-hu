@@ -11,34 +11,28 @@ ms.author: clauren
 ms.reviewer: jmartens
 ms.date: 10/25/2019
 ms.custom: seodec18
-ms.openlocfilehash: f9361f1ca998d32a998794a7e95220ee5c7ac623
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: bf86826d77c690b60c7b091d6250a85fffd21fc0
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834772"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896342"
 ---
 # <a name="troubleshooting-azure-machine-learning-azure-kubernetes-service-and-azure-container-instances-deployment"></a>Az Azure Kubernetes Service és a Azure Container Instances üzemelő példány hibaelhárítása Azure Machine Learning
 
 Megtudhatja, hogyan használhatja a Docker-telepítési hibákat a Azure Container Instances (ACI) és az Azure Kubernetes szolgáltatással (ak) a Azure Machine Learning használatával.
 
-Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre. A központi telepítési feladatok a következők:
+Azure Machine Learning-modell telepítésekor a rendszer számos feladatot hajt végre.
+
+Az ajánlott és a legmodernebb módszer a modell üzembe helyezéséhez a [Model. Deploy () API-](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) t használja egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektum használatával bemeneti paraméterként. Ebben az esetben a szolgáltatás létrehoz egy alap Docker-rendszerképet az üzembe helyezési fázisban, és egy hívásban csatlakoztatja a szükséges modelleket. Az alapszintű üzembe helyezési feladatok a következők:
 
 1. Regisztrálja a modellt a munkaterület-modell beállításjegyzékében.
 
-2. Hozzon létre egy Docker-rendszerképet, beleértve a következőket:
-    1. Töltse le a regisztrált modellt a beállításjegyzékből. 
-    2. Hozzon létre egy Docker egy Python-környezettel a környezeti YAML fájlban megadott függőségek alapján.
-    3. Adja hozzá a modell fájljait és a Docker megadott pontozási szkriptet.
-    4. Hozzon létre egy új Docker-rendszerképet a Docker használatával.
-    5. Regisztrálja a Docker-rendszerképet a munkaterülethez társított Azure Container Registry.
+2. Következtetési konfiguráció meghatározása:
+    1. Hozzon létre egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektumot a környezeti YAML fájlban megadott függőségek alapján, vagy használja a beszerzett környezetek egyikét.
+    2. Hozzon létre egy következtetési konfigurációt (InferenceConfig-objektumot) a környezet és a pontozási parancsfájl alapján.
 
-    > [!IMPORTANT]
-    > A programkódtól függően a rendszerkép létrehozása automatikusan történik a bevitel nélkül.
-
-3. Telepítse a Docker-rendszerképet az Azure Container instance (ACI) szolgáltatásba vagy az Azure Kubernetes szolgáltatásba (ak).
-
-4. Indítson el egy új tárolót (vagy tárolót) ACI-ban vagy AK-ban. 
+3. A modell üzembe helyezése az Azure Container instance (ACI) szolgáltatásban vagy az Azure Kubernetes szolgáltatásban (ak).
 
 További információ a folyamatról a [modellkezelés](concept-model-management-and-deployment.md) bevezetésében.
 
@@ -56,11 +50,14 @@ További információ a folyamatról a [modellkezelés](concept-model-management
 
 Ha bármilyen problémába ütközik, az első lépés az, hogy az üzembe helyezési feladatot (előző Leírás) a probléma elkülönítése érdekében egyedi lépésekbe bontsa.
 
-Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-workspace--name--model-paths--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API-t, vagy a [webszolgáltatást. deploy_from_model ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice%28class%29?view=azure-ml-py#deploy-from-model-workspace--name--models--image-config--deployment-config-none--deployment-target-none--overwrite-false-) API-t használja, akkor az üzembe helyezés a feladatok során is hasznos lehet, mivel mindkét függvény egyetlen műveletként hajtja végre a fenti lépéseket. Általában ezek az API-k kényelmesek, de segít megszüntetni az alábbi API-hívásokkal végzett hibaelhárítási lépéseket.
+Feltételezve, hogy az új/ajánlott telepítési módszert használja a [Model. Deploy ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model%28class%29?view=azure-ml-py#deploy-workspace--name--models--inference-config-none--deployment-config-none--deployment-target-none--overwrite-false-) API-val egy [környezeti](https://docs.microsoft.com/azure/machine-learning/service/how-to-use-environments) objektummal bemeneti paraméterként, a kód három fő lépésből bontható:
 
 1. Regisztrálja a modellt. Íme néhány mintakód:
 
     ```python
+    from azureml.core.model import Model
+
+
     # register a model out of a run record
     model = best_run.register_model(model_name='my_best_model', model_path='outputs/my_model.pkl')
 
@@ -68,99 +65,35 @@ Ha a [webszolgáltatás. Deploy ()](https://docs.microsoft.com/python/api/azurem
     model = Model.register(model_path='my_model.pkl', model_name='my_best_model', workspace=ws)
     ```
 
-2. Hozza létre a rendszerképet. Íme néhány mintakód:
+2. Következtetési konfiguráció megadása a központi telepítéshez:
 
     ```python
-    # configure the image
-    image_config = ContainerImage.image_configuration(runtime="python",
-                                                      entry_script="score.py",
-                                                      conda_file="myenv.yml")
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    # create the image
-    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
-    # wait for image creation to finish
-    image.wait_for_creation(show_output=True)
+    # create inference configuration based on the requirements defined in the YAML
+    myenv = Environment.from_conda_specification(name="myenv", file_path="myenv.yml")
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
     ```
 
-3. A rendszerkép üzembe helyezése szolgáltatásként. Íme néhány mintakód:
+3. Telepítse a modellt az előző lépésben létrehozott következtetési konfiguráció használatával:
 
     ```python
-    # configure an ACI-based deployment
-    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    from azureml.core.webservice import AciWebservice
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
-                                               image=image, 
-                                               name='mysvc', 
-                                               workspace=ws)
-    aci_service.wait_for_deployment(show_output=True)    
+
+    # deploy the model
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_service = Model.deploy(workspace=ws,
+                           name='my-service',
+                           models=[model],
+                           inference_config=inference_config,
+                           deployment_config=aci_config)
+    aci_service.wait_for_deployment(show_output=True)
     ```
 
 Miután megszakította az üzembe helyezés folyamatát az egyes feladatokra, megvizsgáljuk a leggyakoribb hibákat.
-
-## <a name="image-building-fails"></a>A rendszerkép kiépítése sikertelen
-
-Ha nem tudja felépíteni a Docker-rendszerképet, a [rendszerkép. wait_for_creation ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.image(class)?view=azure-ml-py#wait-for-creation-show-output-false-) vagy a [Service. wait_for_deployment ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice(class)?view=azure-ml-py#wait-for-deployment-show-output-false-) hívása meghiúsul, és néhány olyan hibaüzenetet jelez, amely némi nyomokat tud nyújtani. További részleteket a rendszerkép-létrehozási napló hibáiról is talál. Alább látható egy példa, amely bemutatja, hogyan derítheti fel a rendszerkép-létrehozási napló URI-ját.
-
-```python
-# if you already have the image object handy
-print(image.image_build_log_uri)
-
-# if you only know the name of the image (note there might be multiple images with the same name but different version number)
-print(ws.images['myimg'].image_build_log_uri)
-
-# list logs for all images in the workspace
-for name, img in ws.images.items():
-    print(img.name, img.version, img.image_build_log_uri)
-```
-
-A képnapló URI-ja egy, az Azure Blob Storage-ban tárolt naplófájlra mutató SAS URL-cím. Egyszerűen másolja ki és illessze be az URI-t egy böngészőablakba, és töltse le és tekintse meg a naplófájlt.
-
-### <a name="azure-key-vault-access-policy-and-azure-resource-manager-templates"></a>Azure Key Vault hozzáférési szabályzat és Azure Resource Manager sablonok
-
-A rendszerkép létrehozása a Azure Key Vault hozzáférési házirendjének problémája miatt is sikertelen lehet. Ez a helyzet akkor fordulhat elő, ha Azure Resource Manager sablonnal hozza létre a munkaterületet és a kapcsolódó erőforrásokat (beleértve Azure Key Vault), többször is. Például a sablon többszöri használata ugyanazzal a paraméterekkel, mint a folyamatos integráció és üzembe helyezési folyamat részeként.
-
-A sablonokon keresztül a legtöbb erőforrás-létrehozási művelet idempotens, de Key Vault törli a hozzáférési házirendeket a sablon használatakor. A hozzáférési házirendek törlése megszakítja a hozzáférést a Key Vault az azt használó meglévő munkaterületekhez. Ez az állapot hibákat eredményez, amikor új rendszerképeket próbál létrehozni. A következő példák a kapott hibákra mutatnak:
-
-__Portál__:
-```text
-Create image "myimage": An internal server error occurred. Please try again. If the problem persists, contact support.
-```
-
-__SDK__:
-```python
-image = ContainerImage.create(name = "myimage", models = [model], image_config = image_config, workspace = ws)
-Creating image
-Traceback (most recent call last):
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 341, in create
-    resp.raise_for_status()
-  File "C:\Python37\lib\site-packages\requests\models.py", line 940, in raise_for_status
-    raise HTTPError(http_error_msg, response=self)
-requests.exceptions.HTTPError: 500 Server Error: Internal Server Error for url: https://eastus.modelmanagement.azureml.net/api/subscriptions/<subscription-id>/resourceGroups/<resource-group>/providers/Microsoft.MachineLearningServices/workspaces/<workspace-name>/images?api-version=2018-11-19
-
-Traceback (most recent call last):
-  File "<stdin>", line 1, in <module>
-  File "C:\Python37\lib\site-packages\azureml\core\image\image.py", line 346, in create
-    'Content: {}'.format(resp.status_code, resp.headers, resp.content))
-azureml.exceptions._azureml_exception.WebserviceException: Received bad response from Model Management Service:
-Response Code: 500
-Headers: {'Date': 'Tue, 26 Feb 2019 17:47:53 GMT', 'Content-Type': 'application/json', 'Transfer-Encoding': 'chunked', 'Connection': 'keep-alive', 'api-supported-versions': '2018-03-01-preview, 2018-11-19', 'x-ms-client-request-id': '3cdcf791f1214b9cbac93076ebfb5167', 'x-ms-client-session-id': '', 'Strict-Transport-Security': 'max-age=15724800; includeSubDomains; preload'}
-Content: b'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}'
-```
-
-__CLI__:
-```text
-ERROR: {'Azure-cli-ml Version': None, 'Error': WebserviceException('Received bad response from Model Management Service:\nResponse Code: 500\nHeaders: {\'Date\': \'Tue, 26 Feb 2019 17:34:05
-GMT\', \'Content-Type\': \'application/json\', \'Transfer-Encoding\': \'chunked\', \'Connection\': \'keep-alive\', \'api-supported-versions\': \'2018-03-01-preview, 2018-11-19\', \'x-ms-client-request-id\':
-\'bc89430916164412abe3d82acb1d1109\', \'x-ms-client-session-id\': \'\', \'Strict-Transport-Security\': \'max-age=15724800; includeSubDomains; preload\'}\nContent:
-b\'{"code":"InternalServerError","statusCode":500,"message":"An internal server error occurred. Please try again. If the problem persists, contact support"}\'',)}
-```
-
-A probléma elkerüléséhez a következő módszerek egyikét javasoljuk:
-
-* A sablont ne telepítse többször ugyanarra a paraméterekre. Vagy törölje a meglévő erőforrásokat, mielőtt a sablon használatával újra létrehozza őket.
-* Vizsgálja meg a Key Vault hozzáférési házirendeket, majd használja ezeket a házirendeket a sablon `accessPolicies` tulajdonságának beállításához.
-* Ellenőrizze, hogy a Key Vault erőforrás már létezik-e. Ha igen, ne hozza létre újra a sablonon keresztül. Hozzáadhat például egy olyan paramétert, amely lehetővé teszi, hogy letiltsa a Key Vault erőforrás létrehozását, ha az már létezik.
 
 ## <a name="debug-locally"></a>Helyi hibakeresés
 
@@ -169,17 +102,17 @@ Ha olyan problémák merülnek fel, amelyek a modell ACI-vagy AK-beli üzembe he
 > [!WARNING]
 > A helyi webszolgáltatások üzembe helyezése éles környezetben nem támogatott.
 
-A helyileg történő üzembe helyezéshez módosítsa a kódot a `LocalWebservice.deploy_configuration()` használatára a telepítési konfiguráció létrehozásához. Ezután a `Model.deploy()` használatával telepítse a szolgáltatást. A következő példa egy modellt helyez üzembe (a `model` változóban) helyi webszolgáltatásként:
+A helyileg történő üzembe helyezéshez módosítsa a kódot a `LocalWebservice.deploy_configuration()` használatára a telepítési konfiguráció létrehozásához. Ezután a `Model.deploy()` használatával telepítse a szolgáltatást. A következő példa egy modellt helyez üzembe a modell változójában helyi webszolgáltatásként:
 
 ```python
-from azureml.core.model import InferenceConfig, Model
 from azureml.core.environment import Environment
+from azureml.core.model import InferenceConfig, Model
 from azureml.core.webservice import LocalWebservice
+
 
 # Create inference configuration based on the environment definition and the entry script
 myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
 inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
-
 # Create a local deployment, using port 8890 for the web service endpoint
 deployment_config = LocalWebservice.deploy_configuration(port=8890)
 # Deploy the service
@@ -329,13 +262,12 @@ Két olyan dolog van, amely segíthet megelőzni a 503-es állapotkódot:
 
 A `autoscale_target_utilization`, `autoscale_max_replicas`és `autoscale_min_replicas` beállításával kapcsolatos további információkért tekintse meg a [AksWebservice](https://docs.microsoft.com/python/api/azureml-core/azureml.core.webservice.akswebservice?view=azure-ml-py) -modul referenciáját.
 
-
 ## <a name="advanced-debugging"></a>Speciális hibakeresés
 
 Bizonyos esetekben előfordulhat, hogy interaktívan kell hibakeresést végeznie a modell üzembe helyezésében található Python-kóddal. Ha például a bejegyzési parancsfájl meghibásodik, és az ok nem határozható meg további naplózással. A Visual Studio Code és a Python Tools for Visual Studio (PTVSD) használatával csatlakoztathatja a Docker-tárolón belül futó kódot.
 
 > [!IMPORTANT]
-> Ez a hibakeresési módszer nem működik, ha a `Model.deploy()` és `LocalWebservice.deploy_configuration` használatával helyileg helyezi üzembe a modellt. Ehelyett létre kell hoznia egy rendszerképet a [ContainerImage](https://docs.microsoft.com/python/api/azureml-core/azureml.core.image.containerimage?view=azure-ml-py) osztály használatával. 
+> Ez a hibakeresési módszer nem működik, ha a `Model.deploy()` és `LocalWebservice.deploy_configuration` használatával helyileg helyezi üzembe a modellt. Ehelyett létre kell hoznia egy rendszerképet a [Model. package ()](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-) metódus használatával.
 
 A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Docker-telepítés szükséges. A Docker használatával kapcsolatos további információkért lásd a [Docker dokumentációját](https://docs.docker.com/).
 
@@ -384,13 +316,14 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
 
     ```python
     from azureml.core.conda_dependencies import CondaDependencies 
-    
+
+
     # Usually a good idea to choose specific version numbers
     # so training is made on same packages as scoring
     myenv = CondaDependencies.create(conda_packages=['numpy==1.15.4',            
                                 'scikit-learn==0.19.1', 'pandas==0.23.4'],
-                                 pip_packages = ['azureml-defaults==1.0.17', 'ptvsd'])
-    
+                                 pip_packages = ['azureml-defaults==1.0.45', 'ptvsd'])
+
     with open("myenv.yml","w") as f:
         f.write(myenv.serialize_to_string())
     ```
@@ -406,70 +339,33 @@ A helyi webszolgáltatás üzembe helyezéséhez a helyi rendszeren működő Do
     print("Debugger attached...")
     ```
 
-1. A hibakeresés során érdemes lehet módosításokat végezni a rendszerképben anélkül, hogy újból létre kellene hoznia. Ha egy szövegszerkesztőt (VIM) szeretne telepíteni a Docker-rendszerképbe, hozzon létre egy `Dockerfile.steps` nevű új szövegfájlt, és használja a következőt a fájl tartalmához:
-
-    ```text
-    RUN apt-get update && apt-get -y install vim
-    ```
-
-    A szövegszerkesztő lehetővé teszi a Docker-rendszerképben lévő fájlok módosítását a módosítások teszteléséhez új rendszerkép létrehozása nélkül.
-
-1. A `Dockerfile.steps` fájlt használó rendszerképek létrehozásához használja a `docker_file` paramétert a rendszerkép létrehozásakor. Az alábbi példa bemutatja, hogyan teheti meg ezt:
+1. Hozzon létre egy rendszerképet a környezeti definíció alapján, és kérje le a rendszerképet a helyi beállításjegyzékbe. A hibakeresés során érdemes lehet módosításokat végezni a rendszerképben anélkül, hogy újból létre kellene hoznia. Ha a Docker-rendszerképben szeretne egy szövegszerkesztőt (VIM) telepíteni, használja a `Environment.docker.base_image` és `Environment.docker.base_dockerfile` tulajdonságokat:
 
     > [!NOTE]
     > Ez a példa azt feltételezi, hogy `ws` a Azure Machine Learning munkaterületre mutat, és az `model` az üzembe helyezett modell. A `myenv.yml` fájl az 1. lépésben létrehozott Conda-függőségeket tartalmazza.
 
     ```python
-    from azureml.core.image import Image, ContainerImage
-    image_config = ContainerImage.image_configuration(runtime= "python",
-                                 execution_script="score.py",
-                                 conda_file="myenv.yml",
-                                 docker_file="Dockerfile.steps")
+    from azureml.core.conda_dependencies import CondaDependencies
+    from azureml.core.model import InferenceConfig
+    from azureml.core.environment import Environment
 
-    image = Image.create(name = "myimage",
-                     models = [model],
-                     image_config = image_config, 
-                     workspace = ws)
-    # Print the location of the image in the repository
-    print(image.image_location)
+
+    myenv = Environment.from_conda_specification(name="env", file_path="myenv.yml")
+    myenv.docker.base_image = NONE
+    myenv.docker.base_dockerfile = "FROM mcr.microsoft.com/azureml/base:intelmpi2018.3-ubuntu16.04\nRUN apt-get update && apt-get install vim -y"
+    inference_config = InferenceConfig(entry_script="score.py", environment=myenv)
+    package = Model.package(ws, [model], inference_config)
+    package.wait_for_creation(show_output=True)  # Or show_output=False to hide the Docker build logs.
+    package.pull()
     ```
 
-A rendszerkép létrehozása után megjelenik a rendszerkép helye a beállításjegyzékben. A hely az alábbi szöveghez hasonló:
+    A rendszerkép létrehozása és letöltése után a rendszerkép elérési útja (tartalmazza az adattárat, a nevet és a címkét is, amely ebben az esetben a kivonata is) a következőhöz hasonló üzenetben jelenik meg:
 
-```text
-myregistry.azurecr.io/myimage:1
-```
-
-Ebben a példában a beállításjegyzék neve `myregistry`, és a rendszerkép neve `myimage`. A rendszerkép verziója `1`.
-
-### <a name="download-the-image"></a>A rendszerkép letöltése
-
-1. Nyisson meg egy parancssort, egy terminált vagy egy másik rendszerhéjat, és használja a következő [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -parancsot a Azure Machine learning munkaterületet tartalmazó Azure-előfizetésben való hitelesítéshez:
-
-    ```azurecli
-    az login
+    ```text
+    Status: Downloaded newer image for myregistry.azurecr.io/package@sha256:<image-digest>
     ```
 
-1. A rendszerképet tartalmazó Azure Container Registry (ACR) hitelesítéséhez használja a következő parancsot. Cserélje le a `myregistry`t a rendszerkép regisztrálásakor visszaadott értékre:
-
-    ```azurecli
-    az acr login --name myregistry
-    ```
-
-1. A rendszerkép helyi Docker-re való letöltéséhez használja a következő parancsot. Cserélje le a `myimagepath`t a rendszerkép regisztrálásakor visszaadott helyre:
-
-    ```bash
-    docker pull myimagepath
-    ```
-
-    A rendszerkép elérési útjának a `myregistry.azurecr.io/myimage:1`hoz hasonlónak kell lennie. Ahol a `myregistry` a beállításjegyzékben, `myimage` a rendszerkép, és a `1` a rendszerkép verziója.
-
-    > [!TIP]
-    > Az előző lépésből való hitelesítés nem tart örökké. Ha a hitelesítési parancs és a lekérési parancs között elég hosszú ideig várakozik, a rendszer hitelesítési hibát fog kapni. Ha ez történik, végezze el a hitelesítést.
-
-    A letöltés befejezéséhez szükséges idő a internetkapcsolat sebességétől függ. A folyamat során a letöltési állapot jelenik meg. A letöltés befejeződése után a `docker images` paranccsal ellenőrizheti, hogy letöltötte-e a fájlt.
-
-1. Ahhoz, hogy könnyebben működjön a rendszerképpel, a következő paranccsal adhat hozzá egy címkét. Cserélje le a `myimagepath` értéket a 2. lépésben szereplő Location értékre.
+1. Ahhoz, hogy könnyebben működjön a rendszerképpel, a következő paranccsal adhat hozzá egy címkét. Cserélje le a `myimagepath` értéket az előző lépésben megadott Location értékre.
 
     ```bash
     docker tag myimagepath debug:1

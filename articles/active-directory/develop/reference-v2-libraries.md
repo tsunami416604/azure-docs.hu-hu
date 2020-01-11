@@ -18,12 +18,12 @@ ms.author: negoe
 ms.reviewer: jmprieur, saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d2b2ea9d878db8284aa44cdbdacb92c8cd4fabe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e7ff9e2015b4621c89b6a831cf7000aa32db5ea6
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424005"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888942"
 ---
 # <a name="microsoft-identity-platform-authentication-libraries"></a>Microsoft Identity platform hitelesítési kódtárak
 
@@ -108,7 +108,7 @@ Bármely szabványnak megfelelő kódtár esetében használhatja a Microsoft Id
 * A problémákkal és az új szolgáltatási kérelmekkel kapcsolatban a könyvtár kódjában forduljon a könyvtár tulajdonosához.
 * A szolgáltatási oldali protokollok megvalósításával kapcsolatos problémákról és új szolgáltatásokra vonatkozó kérésekhez forduljon a Microsofthoz.
 * A protokollban megjelenő további funkciókra vonatkozó [szolgáltatás kérése](https://feedback.azure.com/forums/169401-azure-active-directory) .
-* [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-supportability/how-to-create-azure-support-request) , ha olyan problémát talál, amelyben a Microsoft Identity platform végpontja nem felel meg a OAuth 2,0 vagy az OpenID Connect 1,0-nek.
+* [Hozzon létre egy támogatási kérést](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request) , ha olyan problémát talál, amelyben a Microsoft Identity platform végpontja nem felel meg a OAuth 2,0 vagy az OpenID Connect 1,0-nek.
 
 ## <a name="related-content"></a>Kapcsolódó tartalom
 

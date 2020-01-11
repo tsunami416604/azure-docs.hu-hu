@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: dc79582efd2f009f1715e04b769d030cfd36561f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e85696afde5f0332ff6481bfadabbde5ac2d4800
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74972462"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75894906"
 ---
 # <a name="azure-data-factory---json-scripting-reference"></a>Azure Data Factory – JSON-parancsfájlok leírása
 > [!NOTE]
@@ -249,7 +249,7 @@ A következő táblázat a tevékenység JSON-definíciójában található tula
 | tulajdonságok – típus | A társított szolgáltatás típusa. Például: Azure Storage, Azure SQL Database. |
 | typeProperties | A typeProperties szakasz az egyes adattárakhoz és számítási környezetekhez eltérő elemeket tartalmaz. Tekintse meg az adattárak szakaszt az összes adattárhoz társított szolgáltatáshoz és [számítási környezethez](#compute-environments) az összes számítási társított szolgáltatáshoz |
 
-## <a name="dataset"></a>Adathalmaz
+## <a name="dataset"></a>Adatkészlet
 Azure Data Factoryban található adatkészlet a következőképpen van meghatározva:
 
 ```json
@@ -288,8 +288,8 @@ A fenti JSON-tulajdonságokat a következő táblázat ismerteti:
 | type | Az adatkészlet típusa. A Azure Data Factory által támogatott típusok egyikét kell megadnia (például: AzureBlob, tulajdonsága azuresqltable). A Data Factory által támogatott adattárakkal és adatkészletekkel kapcsolatos információk az [adattárak](#data-stores) szakaszban találhatók. |
 | struktúra | Az adatkészlet sémája. Oszlopokat, azok típusait stb. tartalmaz. | Nem |n/a |
 | typeProperties | A kiválasztott típusnak megfelelő tulajdonságok Tekintse meg a támogatott típusok és tulajdonságaik című szakaszt az [adattárak](#data-stores) szakaszban. |Igen |n/a |
-| external | Logikai jelző annak megadásához, hogy az adatkészletet explicit módon állították-e be egy adat-előállító folyamat vagy sem. |Nem |hamis |
-| rendelkezésre állás | Meghatározza a feldolgozási időszakot vagy a szeletelő modelljét az adatkészlet termeléséhez. Az adatkészlet szeletelő modelljével kapcsolatos részletekért lásd: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |n/a |
+| external | Logikai jelző annak megadásához, hogy az adatkészletet explicit módon állították-e be egy adat-előállító folyamat vagy sem. |Nem |false |
+| availability | Meghatározza a feldolgozási időszakot vagy a szeletelő modelljét az adatkészlet termeléséhez. Az adatkészlet szeletelő modelljével kapcsolatos részletekért lásd: [Ütemezés és végrehajtás](data-factory-scheduling-and-execution.md) cikk. |Igen |n/a |
 | szabályzat |Meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell. <br/><br/>Részletekért lásd: adatkészlet-házirend szakasz. |Nem |n/a |
 
 A **struktúra** szakasz minden oszlopa a következő tulajdonságokat tartalmazza:
@@ -298,7 +298,7 @@ A **struktúra** szakasz minden oszlopa a következő tulajdonságokat tartalmaz
 | --- | --- | --- |
 | név |Az oszlop neve. |Igen |
 | type |Az oszlop adattípusa.  |Nem |
-| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, amely a .NET-típus `Datetime` vagy `Datetimeoffset`. Az alapértelmezett érték a `en-us`. |Nem |
+| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, amely a .NET-típus `Datetime` vagy `Datetimeoffset`. Az alapértelmezett szint a `en-us`. |Nem |
 | formátum |A típus megadásakor használandó formázó karakterlánc, amely .NET-típus `Datetime` vagy `Datetimeoffset`. |Nem |
 
 A következő példában az adatkészlet három oszloppal rendelkezik `slicetimestamp`, `projectname`és `pageviews`, és ezek a következők: string, string és decimális.
@@ -452,7 +452,7 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 
 További információ ezekről a társított szolgáltatásokról: [Azure Blob Storage-összekötő](data-factory-azure-blob-connector.md#linked-service-properties) című cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Az Azure Blob-adatkészlet definiálásához állítsa az adatkészlet **típusát** a **AzureBlob**értékre. Ezután adja meg a következő Azure Blob-specifikus tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -635,7 +635,7 @@ Azure Data Lake Store társított szolgáltatás definiálásához állítsa be 
 
 További információ: Azure Data Lake Store- [összekötő](data-factory-azure-datalake-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Azure Data Lake Store adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **AzureDataLakeStore**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -803,7 +803,7 @@ Azure Cosmos DB társított szolgáltatás definiálásához állítsa be a tár
 ```
 További információ: Azure Cosmos DB- [összekötő](data-factory-azure-documentdb-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Azure Cosmos DB adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **DocumentDbCollection**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | **Tulajdonság** | **Leírás** | **Kötelező** |
@@ -953,7 +953,7 @@ Azure SQL Database társított szolgáltatás definiálásához állítsa be a t
 
 További információ: [Azure SQL Connector](data-factory-azure-sql-connector.md#linked-service-properties) – cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Azure SQL Database adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **tulajdonsága azuresqltable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1127,7 +1127,7 @@ Azure SQL Data Warehouse társított szolgáltatás definiálásához állítsa 
 
 További információ: Azure SQL Data Warehouse- [összekötő](data-factory-azure-sql-data-warehouse-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Azure SQL Data Warehouse adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **AzureSqlDWTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1306,7 +1306,7 @@ Az Azure Cognitive Search társított szolgáltatás definiálásához állítsa
 
 További információt az [Azure Cognitive Search-összekötő](data-factory-azure-search-connector.md#linked-service-properties) című cikkben talál.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Az Azure Cognitive Search adatkészlet definiálásához állítsa az adatkészlet **típusát** a **AzureSearchIndex**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1340,7 +1340,7 @@ Ha Adatmásolást végez egy keresési indexbe, állítsa a másolási tevékeny
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
 | -------- | ----------- | -------------- | -------- |
-| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. | egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
+| writeBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. | Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
 | writeBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. | 1 – 1 000. Az alapértelmezett érték a 1000. | Nem |
 
 #### <a name="example"></a>Példa
@@ -1439,7 +1439,7 @@ Az Azure Storage SAS társított szolgáltatása lehetővé teszi egy Azure Stor
 
 További információ ezekről a társított szolgáltatásokról: [Azure Table Storage-összekötő](data-factory-azure-table-connector.md#linked-service-properties) című cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Egy Azure Table adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **AzureTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1618,7 +1618,7 @@ Az Amazon vöröseltolódás társított szolgáltatásának definiálásához �
 
 További információ: Amazon vöröseltolódás-összekötő.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Amazon Vöröseltolódási adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1732,7 +1732,7 @@ Az IBM DB2 társított szolgáltatás definiálásához állítsa a társított 
 ```
 További információ: az IBM DB2-összekötő cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Egy DB2-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1850,7 +1850,7 @@ A MySQL-hez társított szolgáltatás definiálásához állítsa be a társít
 
 További információ: MySQL- [összekötő](data-factory-onprem-mysql-connector.md#linked-service-properties) cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 A MySQL-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -1963,7 +1963,7 @@ Egy Oracle-alapú társított szolgáltatás definiálásához állítsa be a t�
 
 További információ: [Oracle Connector](data-factory-onprem-oracle-connector.md#linked-service-properties) -cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Egy Oracle-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **OracleTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2140,7 +2140,7 @@ A PostgreSQL-hez társított szolgáltatás definiálásához állítsa be a tá
 ```
 További információ: PostgreSQL- [összekötő](data-factory-onprem-postgresql-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 A PostgreSQL-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2259,7 +2259,7 @@ encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring
 
 További információ: az [SAP Business Warehouse-összekötő](data-factory-sap-business-warehouse-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 SAP BW adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre. Nincs olyan Type-specifikus tulajdonság, amely a **RelationalTable**típusú SAP BW adatkészlet esetében nem támogatott.
 
 #### <a name="example"></a>Példa
@@ -2367,7 +2367,7 @@ encryptedCredential | A titkosított hitelesítő adat karakterlánca. | sztring
 ```
 További információ: SAP HANA- [összekötő](data-factory-sap-hana-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 SAP HANA adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre. Nincs olyan Type-specifikus tulajdonság, amely a **RelationalTable**típusú SAP HANA adatkészlet esetében nem támogatott.
 
 #### <a name="example"></a>Példa
@@ -2500,7 +2500,7 @@ Ha a Felhasználónév és a jelszó meg van adva, az átjáró a megadott felha
 
 További információ: SQL Server- [összekötő](data-factory-sqlserver-connector.md#linked-service-properties) cikke.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 SQL Server adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **SqlServerTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2698,7 +2698,7 @@ Egy Sybase-társított szolgáltatás definiálásához állítsa be a társíto
 
 További információ: Sybase- [összekötő](data-factory-onprem-sybase-connector.md#linked-service-properties) cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 A Sybase-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -2814,7 +2814,7 @@ Teradata társított szolgáltatás definiálásához állítsa a társított sz
 
 További információ: Teradata- [összekötő](data-factory-onprem-teradata-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 A Teradata blob-adatkészlet definiálásához állítsa az adatkészlet **típusát** **RelationalTable**értékre. Jelenleg nem támogatottak a Teradata adatkészlet típusának tulajdonságai.
 
 #### <a name="example"></a>Példa
@@ -2932,7 +2932,7 @@ A Cassandra társított szolgáltatás definiálásához állítsa a társított
 
 További információ: Cassandra- [összekötő](data-factory-onprem-cassandra-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 A Cassandra-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **CassandraTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3063,7 +3063,7 @@ MongoDB társított szolgáltatás definiálásához állítsa a társított szo
 
 További információ: MongoDB- [összekötői cikk](data-factory-on-premises-mongodb-connector.md#linked-service-properties)
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 MongoDB adatkészlet definiálásához állítsa az adatkészlet **típusát** **MongoDbCollection**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3170,7 +3170,7 @@ Egy Amazon S3-beli társított szolgáltatás definiálásához állítsa be a t
 
 További információkért lásd az [Amazon S3-összekötőt ismertető cikket](data-factory-amazon-simple-storage-service-connector.md#linked-service-properties).
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Az Amazon S3-adatkészletek definiálásához állítsa az adatkészlet **típusát** a **AmazonS3**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Megengedett értékek | Szükséges |
@@ -3365,7 +3365,7 @@ Helyszíni fájlrendszert kapcsolhat egy Azure-beli adatgyárhoz a helyszíni **
 
 További információ: fájlrendszer- [összekötő cikk](data-factory-onprem-file-system-connector.md#linked-service-properties).
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Fájlrendszerbeli adatkészlet definiálásához állítsa az adatkészlet **típusát** a **fájlmegosztás**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3631,7 +3631,7 @@ Egy FTP-hez társított szolgáltatás definiálásához állítsa be a társít
 
 További információ: FTP- [összekötő](data-factory-ftp-connector.md#linked-service-properties) cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Az FTP-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **fájlmegosztás**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3773,7 +3773,7 @@ HDFS társított szolgáltatás definiálásához állítsa a társított szolg�
 
 További információ: HDFS-összekötő.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 HDFS adatkészlet definiálásához állítsa az adatkészlet **típusát** **fájlmegosztás**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -3973,7 +3973,7 @@ Az alapszintű hitelesítés használatához állítsa a `authenticationType` as
 
 További információ: SFTP- [összekötő](data-factory-sftp-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Az SFTP-adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **fájlmegosztás**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4154,15 +4154,15 @@ Ez a társított szolgáltatás az adatgyárat egy helyszíni HTTP-webkiszolgál
 
 További információt a http- [összekötő](data-factory-http-connector.md#linked-service-properties) című cikkben talál.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 HTTP-adatkészlet definiálásához állítsa az adatkészlet **típusát** **http**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | relativeUrl | Az adatforrást tartalmazó erőforrás relatív URL-címe. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. <br><br> A dinamikus URL-cím létrehozásához [Data Factory függvényeket és rendszerváltozókat](data-factory-functions-variables.md)használhat, például: `"relativeUrl": "$$Text.Format('/my/report?month={0:yyyy}-{0:MM}&fmt=csv', SliceStart)"`. | Nem |
-| requestMethod | Http-metódus. Az engedélyezett értékek a **Get** vagy a **post**. | Nem. Az alapértelmezett érték a `GET`. |
+| requestMethod | Http-metódus. Az engedélyezett értékek a **Get** vagy a **post**. | Nem. Az alapértelmezett szint a `GET`. |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
+| RequestBody | A HTTP-kérelem törzse. | Nem |
 | formátum | Ha egyszerűen **le szeretné kérdezni a http-végpont adatait** az elemzés nélkül, ugorja át ezt a formázási beállítást. <br><br> Ha a HTTP-válasz tartalmát a másolás során szeretné elemezni, a következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. További információkért lásd: [Szövegformátum](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és a [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) című rész. |Nem |
 | tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). |Nem |
 
@@ -4344,12 +4344,12 @@ OData társított szolgáltatás definiálásához állítsa a társított szolg
 
 További információ: OData- [összekötő](data-factory-odata-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 OData adatkészlet definiálásához állítsa az adatkészlet **típusát** **ODataResource**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 | --- | --- | --- |
-| elérési út |A OData erőforrás elérési útja |Nem |
+| path |A OData erőforrás elérési útja |Nem |
 
 #### <a name="example"></a>Példa
 
@@ -4499,7 +4499,7 @@ A hitelesítő adatokat a [New-AzDataFactoryEncryptValue](https://docs.microsoft
 
 További információ: ODBC- [összekötő](data-factory-odbc-connector.md#linked-service-properties) cikk.
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 ODBC-adatkészlet definiálásához állítsa az adatkészlet **típusát** a **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4616,7 +4616,7 @@ Salesforce társított szolgáltatás definiálásához állítsa a társított 
 
 További információ: Salesforce- [összekötő](data-factory-salesforce-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Salesforce adatkészlet definiálásához állítsa az adatkészlet **típusát** **RelationalTable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
@@ -4738,13 +4738,13 @@ Webes társított szolgáltatás definiálásához állítsa be a társított sz
 
 További információ: a [webes táblázat összekötője](data-factory-web-table-connector.md#linked-service-properties) .
 
-### <a name="dataset"></a>Adathalmaz
+### <a name="dataset"></a>Adatkészlet
 Webes adatkészlet definiálásához állítsa be az adatkészlet **típusát** a **webtable**értékre, és adja meg a következő tulajdonságokat a **typeProperties** szakaszban:
 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
-| type |Az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
-| elérési út |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
+| type |az adatkészlet típusa. a **webtable** értékre kell beállítani |Igen |
+| path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
 | index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: index beolvasása egy HTML-oldalon. |Igen |
 
 #### <a name="example"></a>Példa
@@ -4909,7 +4909,7 @@ A következő táblázat a Azure Batch társított szolgáltatás Azure JSON-def
 | --- | --- | --- |
 | type |A Type tulajdonságot **AzureBatch**értékre kell beállítani. |Igen |
 | accountName |A Azure Batch fiók neve. |Igen |
-| accessKey |A Azure Batch fiók elérési kulcsa. |Igen |
+| AccessKey |A Azure Batch fiók elérési kulcsa. |Igen |
 | poolName |A virtuális gépek készletének neve. |Igen |
 | linkedServiceName |Az ehhez a Azure Batch társított szolgáltatáshoz társított Azure Storage társított szolgáltatás neve. Ez a társított szolgáltatás a tevékenység futtatásához és a tevékenység-végrehajtási naplók tárolásához szükséges átmeneti fájlokhoz használatos. |Igen |
 
@@ -5303,7 +5303,7 @@ Megadhatja a következő tulajdonságokat egy Spark-tevékenység JSON-definíci
 | proxyUser | A Spark-program végrehajtásához megszemélyesíteni kívánt felhasználói fiók | Nem |
 | sparkConfig | Spark-konfiguráció tulajdonságai. | Nem |
 | getDebugInfo | Megadja, hogy a rendszer mikor másolja a Spark-naplófájlokat a sparkJobLinkedService által meghatározott HDInsight-fürt (vagy) által használt Azure-tárolóba. Megengedett értékek: nincs, mindig vagy sikertelen. Alapértelmezett érték: nincs. | Nem |
-| SparkJobLinkedService | Az Azure Storage társított szolgáltatása, amely tartalmazza a Spark-feladatot tartalmazó fájlt, a függőségeket és a naplókat.  Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. | Nem |
+| sparkJobLinkedService | Az Azure Storage társított szolgáltatása, amely tartalmazza a Spark-feladatot tartalmazó fájlt, a függőségeket és a naplókat.  Ha nem ad meg értéket ehhez a tulajdonsághoz, a rendszer a HDInsight-fürthöz társított tárolót használja. | Nem |
 
 ### <a name="json-example"></a>JSON-példa
 
@@ -5552,7 +5552,7 @@ A **typeProperties** szakaszban a következő tulajdonságok támogatottak, amik
 
 Ha megad egy bemeneti adatkészletet, a tárolt eljárási tevékenység futtatásához elérhetőnek kell lennie ("Ready" (kész) állapotban). A bemeneti adatkészlet nem használható paraméterként a tárolt eljárásban. A rendszer csak a tárolt eljárási tevékenység megkezdése előtt használja a függőség ellenőrzését. Meg kell adnia egy kimeneti adatkészletet egy tárolt eljárási tevékenységhez.
 
-A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység ([láncolási tevékenységek](data-factory-scheduling-and-execution.md##multiple-activities-in-a-pipeline)) további feldolgozásához a folyamatban. A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál.
+A kimeneti adatkészlet meghatározza a tárolt eljárási tevékenység **ütemtervét** (óránként, hetente, havonta stb.). A kimeneti adatkészletnek olyan **társított szolgáltatást** kell használnia, amely egy Azure SQL Database vagy egy Azure SQL Data Warehouse vagy egy SQL Server adatbázisra hivatkozik, amelyben a tárolt eljárást futtatni kívánja. A kimeneti adatkészlet képes arra, hogy átadja a tárolt eljárás eredményét egy másik tevékenység ([láncolási tevékenységek](data-factory-scheduling-and-execution.md#multiple-activities-in-a-pipeline)) további feldolgozásához a folyamatban. A Data Factory azonban nem ír automatikusan egy tárolt eljárás kimenetét erre az adatkészletre. Ez a tárolt eljárás, amely egy SQL-táblába ír, amelyre a kimeneti adatkészlet mutat. Bizonyos esetekben a kimeneti adatkészlet lehet egy **próbabábu-adatkészlet**is, amely kizárólag a tárolt eljárási tevékenység futtatási ütemtervének megadására szolgál.
 
 ### <a name="json-example"></a>JSON-példa
 

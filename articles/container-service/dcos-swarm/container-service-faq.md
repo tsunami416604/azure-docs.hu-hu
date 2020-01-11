@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 03/28/2017
 ms.author: mlearned
 ms.custom: H1Hack27Feb201
-ms.openlocfilehash: 0165ace1d373d267658c78e020356816fb9cc02f
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 317862b694b93de44422ac3c28575c732ffc5be5
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286475"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75887920"
 ---
 # <a name="deprecated-container-service-frequently-asked-questions"></a>ELAVULT Tároló szolgáltatás – gyakori kérdések
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-## <a name="orchestrators"></a>Vezénylők
+## <a name="orchestrators"></a>Szervezők
 
 ### <a name="which-container-orchestrators-do-you-support-on-azure-container-service"></a>Mely tárolóvezénylőket támogatja az Azure Container Service? 
 
@@ -64,7 +64,7 @@ Ha az [Azure CLI-parancsokat](../../container-service/dcos-swarm/container-servi
 1, 3 vagy 5 fő csomóponttal rendelkező fürtöket hozhat létre. Legfeljebb 100 ügynökcsomópontot használhat.
 
 > [!IMPORTANT]
-> Nagyobb fürtök esetén és a virtuális gép a csomópontokhoz választott méretétől függően esetleg növelnie kell előfizetése magkvótáját. Ha kérni szeretné a kvóta növelését, hozzon létre egy ingyenes [támogatási kérést](../../azure-supportability/how-to-create-azure-support-request.md) az interneten. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
+> Nagyobb fürtök esetén és a virtuális gép a csomópontokhoz választott méretétől függően esetleg növelnie kell előfizetése magkvótáját. Ha kérni szeretné a kvóta növelését, hozzon létre egy ingyenes [támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md) az interneten. Amennyiben [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) használ, csak korlátozott számú számítási magot használhat az Azure-ban.
 > 
 
 ### <a name="how-do-i-increase-the-number-of-masters-after-a-cluster-is-created"></a>Hogyan növelhetem a főkiszolgálók számát a fürt létrehozása után? 
@@ -104,7 +104,7 @@ A kapcsolati sztringet az Azure Portalon vagy az Azure parancssori eszközök se
 
 4. A **Summary** (Összefoglalás) lapon az **Outputs** (Kimenetek) részben számos fürthivatkozás található. Az **SSHMaster0** biztosítja a Container Service-fürt első főkiszolgálójához tartozó SSH kapcsolati sztringet. 
 
-A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Például:
+A fent említetteknek megfelelően Azure-eszközöket is használhat a főkiszolgálók teljes tartománynevének megkeresésére. Létesítsen SSH-kapcsolatot a főkiszolgálóval a főkiszolgáló teljes tartománynevét és a fürt létrehozásakor megadott felhasználónevet használva. Példa:
 
 ```bash
 ssh userName@masterFQDN –A –p 22 

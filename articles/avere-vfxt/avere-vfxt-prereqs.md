@@ -6,12 +6,12 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: rohogue
-ms.openlocfilehash: 27b0fd1e6a9238e978518e06ab7f0aeeae5501d2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414391"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889174"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -43,7 +43,7 @@ Alternatív megoldásként hozzon létre egy egyéni szerepköralapú hozzáfér
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta a vFXT-fürthöz
 
-A következő Azure-összetevőkhöz elegendő kvótával kell rendelkeznie. Ha szükséges, [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
+A következő Azure-összetevőkhöz elegendő kvótával kell rendelkeznie. Ha szükséges, [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
 > Az itt felsorolt virtuális gépek és SSD-összetevők a vFXT-fürthöz tartoznak. A számítási farmhoz használni kívánt virtuális gépek és SSD-k esetében további kvótára lesz szüksége.  Győződjön meg arról, hogy a kvóta engedélyezve van ahhoz a régióhoz, amelyen futtatni kívánja a munkafolyamatot.

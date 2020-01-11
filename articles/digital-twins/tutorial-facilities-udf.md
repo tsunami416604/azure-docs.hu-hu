@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/13/2019
-ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/10/2020
+ms.openlocfilehash: 6cf6a8f7de181a81d60028e33ba2631815c8ca04
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860894"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895367"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: az Azure Digital Twins előzetes verziójának kiépítése és a munkafeltételek monitorozása
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag feltételezi, hogy [befejezte az Azure digitális Twins-telep
 - [.Net Core SDK 2.1.403 vagy újabb verziót](https://www.microsoft.com/net/download) a fejlesztői gépen a minta létrehozásához és futtatásához. A `dotnet --version` futtatásával ellenőrizze, hogy telepítve van-e a megfelelő verzió. 
 - [Visual Studio Code](https://code.visualstudio.com/) a mintakód vizsgálatához. 
 
-> [!TIP]
+>[!TIP]
 > Új példány kiépítés esetén használjon egyedi digitális Twins-példány nevét.
 
 ## <a name="define-conditions-to-monitor"></a>A monitorozni kívánt feltételek meghatározása
@@ -74,7 +74,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület r
 
    Módosítsa a JavaScript-fájlt a hőmérséklet és más feltételek figyelésére. Adja hozzá a következő sornyi kódot a feltételek megkereséséhez, ha a helyiségben nem észlelhető mozgás, a szén-dioxid szintje 1 000 ppm, és a hőmérséklet a 78 fokos Fahrenheit-fok alá esik.
 
-   > [!NOTE]
+   >[!NOTE]
    > Ez a szakasz módosítja a *src\actions\userDefinedFunctions\availability.js* fájlt, így részletesen megismerheti egy felhasználó által definiált függvény írására szolgáló módszert. Azonban dönthet úgy is, hogy közvetlenül a telepítőben használja a [src\actions\userDefinedFunctions\availabilityForTutorial.js](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availabilityForTutorial.js) fájlt. Ebben a fájlban szerepel az oktatóanyaghoz szükséges összes módosítás. Ha ehelyett ezt a fájlt használja, ügyeljen arra, hogy a [src\actions\provisionSample.YAML](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/provisionSample.yaml)a **parancsfájlhoz** a megfelelő fájlnevet használja.
 
     a. A fájl elején adja hozzá a következő sorokat a hőmérséklethez az `// Add your sensor type here` megjegyzés alá:
@@ -178,7 +178,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület r
     dotnet run ProvisionSample
     ```
 
-   > [!IMPORTANT]
+   >[!IMPORTANT]
    > Ha meg szeretné akadályozni, hogy a digitális Twins felügyeleti API jogosulatlanul hozzáférhessen, a **foglalást** kérő alkalmazás használatához be kell jelentkeznie az Azure-fiók hitelesítő adataival. Egy rövid ideig elmenti a hitelesítő adatait, így előfordulhat, hogy nem kell minden egyes futtatásakor bejelentkeznie. A program első futtatásakor, amikor a mentett hitelesítő adatok lejárnak, az alkalmazás egy bejelentkezési oldalra irányítja, és egy munkamenet-specifikus kódot ad meg az adott oldalon. Az utasításokat követve jelentkezzen be Azure-fiókjával.
 
 1. A fiók hitelesítése után az alkalmazás megkezdi a *provisionSample. YAML*-ben konfigurált minta térbeli gráf létrehozását. Várjon, amíg befejeződik a kiépítés. Néhány percet is igénybe vehet. Ezután figyelje meg az üzeneteket a parancsablakban, és figyelje meg, hogyan jött létre a térbeli gráf. Figyelje meg, hogy az alkalmazás hogyan hoz létre egy IoT hubot a legfelső szintű csomóponton vagy a `Venue`.
@@ -187,7 +187,7 @@ A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület r
 
     [![kiépítési minta](./media/tutorial-facilities-udf/run-provision-sample.png)](./media/tutorial-facilities-udf/run-provision-sample.png#lightbox)
 
-> [!TIP]
+>[!TIP]
 > Ha a kiépítés során egy szál kilépése vagy egy alkalmazásra vonatkozó kérelem miatt megszakadt az I/O-művelethez hasonló hibaüzenet, próbálkozzon újra a parancs futtatásával. Ez akkor fordulhat elő, ha a HTTP-ügyfél hálózati hiba esetén időtúllépést okoz.
 
 ## <a name="simulate-sensor-data"></a>Az érzékelőadatok szimulálása
@@ -229,7 +229,7 @@ Ebben a szakaszban az *eszköz-kapcsolat* nevű projektet fogja használni a min
     dotnet run
     ```
 
-   > [!NOTE]
+   >[!NOTE]
    > Mivel a szimulációs minta nem kommunikál közvetlenül a digitális Twins-példánnyal, nem szükséges hitelesítenie.
 
 ## <a name="get-results-of-the-user-defined-function"></a>A felhasználó által definiált függvény eredményeinek beolvasása
@@ -246,7 +246,7 @@ A felhasználó által meghatározott függvény mindig fut, amikor a példány 
 
 A kimenet ablakban látható, hogy a felhasználó által definiált függvény hogyan fut, és az eszköz szimulációjában eseményeket észlel. 
 
-   [az UDF ![kimenete](./media/tutorial-facilities-udf/udf-running.png)](./media/tutorial-facilities-udf/udf-running.png#lightbox)
+   [az UDF ![kimenete](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png)](./media/tutorial-facilities-udf/adt-tutorial-udf-running.png#lightbox)
 
 Ha a figyelt feltétel teljesül, a felhasználó által definiált függvény megadja a terület értékét a megfelelő üzenettel, ahogy [korábban](#create-a-user-defined-function)láttuk. A `GetAvailableAndFreshSpaces` függvény kinyomtatja az üzenetet a konzolon.
 
@@ -256,7 +256,7 @@ Ha ezen a ponton szeretné leállítani az Azure digitális Twins felfedezését
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins-erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
-    > [!TIP]
+    >[!TIP]
     > Ha hibát észlelt a digitális Twins-példány törlésével kapcsolatban, a javítás a szolgáltatásban frissült. Próbálkozzon újra a példány törlésével.
 
 2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.

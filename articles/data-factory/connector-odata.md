@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
-ms.openlocfilehash: e70cd6d7745b2754bdda6992c587c5c72643869b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 0cc9328fa08f7e9125ecb41576c67f95382bc1bf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912513"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75892380"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Adatok másolása OData-forrásból Azure Data Factory használatával
 
@@ -206,7 +206,7 @@ Az adatok OData való másolásához állítsa az adatkészlet **Type (típus** 
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | Az adatkészlet **Type** tulajdonságát **ODataResource**értékre kell állítani. | Igen |
-| elérési út | A OData-erőforrás elérési útja. | Igen |
+| path | A OData-erőforrás elérési útja. | Igen |
 
 **Példa**
 
@@ -310,4 +310,4 @@ A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevék
 
 ## <a name="next-steps"></a>Következő lépések
 
-A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md##supported-data-stores-and-formats)című témakörben.
+A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintse meg a [támogatott adattárak és-formátumok](copy-activity-overview.md#supported-data-stores-and-formats)című témakörben.

@@ -14,12 +14,12 @@ ms.date: 11/14/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 80b90a22a793c15104bba3eb91e88f851158e13f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 301fe9c213ec6d78d32d6ccde84a689c4659acb3
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106941"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888983"
 ---
 # <a name="custom-installation-of-azure-ad-connect"></a>Az Azure AD Connect testreszabott telepítése
 Az Azure AD Connect **Custom settings** (Egyéni beállítások) menüje akkor használható, ha részletesebb beállításokra van szükség a telepítéshez. Akkor van rá szükség, ha több erdővel rendelkezik vagy ha választható szolgáltatásokat kíván konfigurálni, amelyeket a gyorstelepítés nem tartalmaz. Minden olyan esetben szükséges, ahol a [**gyorstelepítés**](how-to-connect-install-express.md) beállítás nem megfelelő az üzemelő példányhoz vagy a topológiához.
@@ -79,10 +79,10 @@ Az Active Directory tartományi szolgáltatások csatlakoztatásához az Azure A
 
 Miután beírta az erdő nevét és a **Címtár hozzáadása** gombra kattintott, megjelenik egy felugró párbeszédpanel a következő lehetőségekkel:
 
-| Beállítás | Leírás |
+| Lehetőség | Leírás |
 | --- | --- |
 | Új fiók létrehozása | Válassza ezt a lehetőséget, ha az Azure AD Connect varázslójával szeretné létrehozni az AD DS-fiókot az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. Ha ezt a lehetőséget választja, adja meg egy vállalati rendszergazdai fiók felhasználónevét és jelszavát. Az Azure AD Connect varázsló a megadott vállalati rendszergazdai fiók használatával hozza létre a szükséges AD DS-fiókot. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\rendszergazda vagy fabrikam.com\rendszergazda alakban. |
-| Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md##create-the-ad-ds-connector-account). |
+| Meglévő fiók használata | Válassza ezt a lehetőséget, ha meglévő AD DS-fiókot szeretne megadni az Azure AD Connect számára, amellyel csatlakozhat az AD-erdőhöz a címtár szinkronizálása során. A tartományrészt megadhatja NetBios- vagy FQDN-formátumban, vagyis FABRIKAM\syncuser vagy fabrikam.com\syncuser alakban. A fiók lehet normál felhasználói fiók is, mivel csupán az alapértelmezett olvasási engedélyek szükségesek. A forgatókönyvtől függően azonban más engedélyekre is szüksége lehet. További információkért lásd: [Azure AD Connect-fiókok és -engedélyek](reference-connect-accounts-permissions.md#create-the-ad-ds-connector-account). |
 
 ![Címtár csatlakoztatása](./media/how-to-connect-install-custom/connectdir02.png)
 
@@ -283,7 +283,7 @@ Határozza meg a webalkalmazás-proxy kiszolgálóként használni kívánt kisz
 > <li> A hitelesítési kérések zavartalan áramlása érdekében győződjön meg róla, hogy fennáll a HTTP/HTTPS kapcsolat a webalkalmazás-kiszolgáló és az AD FS-kiszolgáló közt.</li>
 >
 
-![Webalkalmazás](./media/how-to-connect-install-custom/adfs3.png)
+![Web App](./media/how-to-connect-install-custom/adfs3.png)
 
 A rendszer kéri a hitelesítő adatok megadását, hogy a webalkalmazás-kiszolgáló létrehozhasson egy biztonságos kapcsolatot az AD FS-kiszolgálóval. Ezeknek helyi rendszergazdai hitelesítő adatoknak kell lenniük az AD FS kiszolgálón.
 
@@ -382,7 +382,7 @@ Amikor a Verify (Ellenőrzés) gombra kattint, az Azure AD Connect ellenőrzi a 
 
 * Összevonási FQDN feloldása: Az Azure AD Connect ellenőrzi, hogy az összevonási FQDN feloldható-e DNS-sel a kapcsolat létrehozásához.
 
-![Befejezve](./media/how-to-connect-install-custom/completed.png)
+![Teljes körű](./media/how-to-connect-install-custom/completed.png)
 
 ![Ellenőrzés](./media/how-to-connect-install-custom/adfs7.png)
 
@@ -415,7 +415,7 @@ Végül törölje az adatbázist.  Ehhez használja a **Microsoft SQL Server Man
 
 Miután törölte az **ADSync** adatbázist, a **Telepítés** gombra kattintva újból megkísérelheti a telepítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a telepítés befejeződött, jelentkezzen ki, majd ismét jelentkezzen be a Windowsba, mielőtt a Synchronization Service Managert (Szinkronizálási szolgáltatás kezelőjét) vagy a Synchronization Rule Editort (Szinkronizálási szabályok szerkesztőjét) használná.
 
 Miután az Azure AD Connect telepítése megtörtént, [ellenőrizheti a telepítést, és hozzárendelheti a licenceket](how-to-connect-post-installation.md).

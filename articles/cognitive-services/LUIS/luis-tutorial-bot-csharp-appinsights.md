@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 036ecbbbd2ea562f3e809691a1b3af62578893f5
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b9c47685253e2a70c7b5e947debaac6f5f3264b2
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73498974"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75888294"
 ---
 # <a name="tutorial-add-luis-results-to-application-insights-from-a-bot-in-c"></a>Oktatóanyag: a LUIS-eredmények hozzáadása a Application Insights egy robotbólC#
 
@@ -162,7 +162,7 @@ Az Application-elemzésekhez való adathozzáadáshoz szükség van a kialakít�
 1. A Visual Studióban hozza létre és futtassa a robotot. 
 1. Indítsa el a robot-emulátort, és nyissa meg a robotot. Ez a [lépés](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
-1. Kérdezze meg a robot kérdését. Ez a [lépés](luis-csharp-tutorial-bf-v4.md##use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
+1. Kérdezze meg a robot kérdését. Ez a [lépés](luis-csharp-tutorial-bf-v4.md#use-the-bot-emulator-to-test-the-bot) az előző oktatóanyagban van megadva.
 
 ## <a name="view-luis-entries-in-application-insights"></a>LUIS-bejegyzések megtekintése Application Insights
 
@@ -195,7 +195,7 @@ Tudjon meg többet a [Kusto lekérdezési nyelvéről](https://docs.microsoft.co
 
 További információ a [bot Framework](https://dev.botframework.com/)-ről.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Application Insight-adatokhoz esetlegesen felvenni kívánt egyéb információk közé tartozik az alkalmazás azonosítója, a verziószám, az utolsó modell változásának dátuma, az utolsó betanítás dátuma, a legutóbbi közzététel dátuma. Ezek az értékek lekérhető a végpont URL-címéről (az alkalmazás azonosítója és a verziószáma), vagy egy szerzői API-hívásból, majd a webalkalmazás bot-beállításaiban, majd onnan kihúzva.  
 

@@ -14,12 +14,12 @@ ms.subservice: users-groups-roles
 ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 87cdd5ff303cbb001e482137df1d4241487fc6d2
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 12391df7e3b8540b775d8c56b5d5c4e648722faf
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900800"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75889607"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Az Azure AD-ben a hibrid és a Felhőbeli üzemelő példányokhoz való emelt szintű hozzáférés biztonságossá tétele
 
@@ -375,7 +375,7 @@ A terv tökéletesítése érdekében a Microsoft azt javasolja, hogy rendszeres
 
 3. Az Azure AD-be való bejelentkezéshez nyissa meg az "break Glass" fiók Felhasználónév/jelszó kombinációját. 
 
-4. Kérjen segítséget a Microsofttól [egy Azure-támogatási kérelem megnyitásával](../../azure-supportability/how-to-create-azure-support-request.md).
+4. Kérjen segítséget a Microsofttól [egy Azure-támogatási kérelem megnyitásával](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
 5. Tekintse meg az [Azure ad bejelentkezési jelentéseit](../reports-monitoring/overview-reports.md). Előfordulhat, hogy a jelentésben szereplő események között késés történik.
 
