@@ -1,29 +1,29 @@
 ---
-title: A csapat adatelemzési folyamat csapatával az vezethet a csapat feladatok
+title: A csapat adatelemzési folyamatának csapatának vezető feladatai
 description: Egy csapat adatelemzési folyamatának csapatával kapcsolatos feladatok részletes áttekintése
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/23/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 9c6d0fcc20afc613094f10e9f3fb7c917ec6fa73
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71327253"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864281"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
 
 Ez a cikk azokat a feladatokat ismerteti, amelyekkel a *csapat vezeti* az adatelemzési csapatot. A csapat vezető célja, hogy olyan együttműködő csapatmunka-környezetet hozzon létre, amely a [csoportos adatelemzési folyamat](overview.md) (TDSP) szabványosítására szolgál. A TDSP célja az együttműködés és a csapatmunka fejlesztése. 
 
-A TDSP egy agilis, ismétlődő adatelemzési módszer a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása érdekében. A folyamat a Microsoft és az iparág ajánlott eljárásainak és struktúráinak egyike, amely az adatelemzési kezdeményezések sikeres megvalósításához szükséges, így a vállalatok teljes mértékben kihasználhatják az elemzési programjaik előnyeit. A munkatársak szerepköreinek és a TDSP szabványosított adatelemzési csapathoz kapcsolódó feladatoknak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
+A TDSP egy agilis, ismétlődő adatelemzési módszer a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása érdekében. A folyamat a Microsoft és az iparág által ajánlott eljárásokat és struktúrákat is felhasználja.  A cél az adatelemzési kezdeményezések sikeres megvalósítása és az elemzési programok előnyeinek teljes körű megvalósítása. A munkatársak szerepköreinek és a TDSP szabványosított adatelemzési csapathoz kapcsolódó feladatoknak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
-A csapat vezetője a vállalat adattudományi egységében számos adatszakértőből álló csapatot kezel. Az adattudományi egység méretétől és struktúrájától függően a [csoportvezető](group-manager-tasks.md) és a csapat vezetője is lehet ugyanaz a személy, vagy a feladataikat helyetteseknek delegálhatja. De a feladatok ne módosítsa. 
+A csapat vezetője a vállalat adattudományi egységében számos adatszakértőből álló csapatot kezel. Az adattudományi egység méretétől és struktúrájától függően a [csoportvezető](group-manager-tasks.md) és a csapat vezetője is lehet ugyanaz a személy, vagy a feladataikat helyetteseknek delegálhatja. A feladatok azonban nem változnak. 
 
 Az alábbi ábrán a csapat által vezetett feladatok munkafolyamata látható a Team-környezet beállításához:
 
@@ -60,7 +60,7 @@ Ez az oktatóanyag azt feltételezi, hogy a következő erőforrásokat és enge
 A Tárházak klónozásához és a tartalmak helyi gépen vagy DSVM való módosításához, illetve az Azure file Storage beállításához és a DSVM való csatlakoztatásához a következőkre lesz szüksége:
 
 - Azure-előfizetés.
-- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
 - Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
@@ -81,7 +81,7 @@ Ha a csapatok úgy döntenek, hogy a csoportra jellemző adattárak egyetlen cso
 
 A csapatnak minden esetben meg kell adnia, hogy a csapat tagjai tudják, hogy mely sablon és segédprogramok tárházat állítanak be a beállításhoz és a klónozáshoz. A projekt-érdeklődőknek követniük kell az [adatelemzési csapat projekt-vezető feladatait](project-lead-tasks.md) a projekt-Tárházak létrehozásához, akár külön projektek, akár egyetlen projekt keretében. 
 
-### <a name="create-the-myteam-project"></a>A MyTeam-projekt létrehozása
+### <a name="create-the-myteam-project"></a>A MyTeam projekt létrehozása
 
 Különálló projekt létrehozása a csapat számára:
 
@@ -142,7 +142,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
 1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https:\//\<kiszolgáló neve >/\<szervezet neve >/_git/\<adattár neve >* . Például: *https:\//dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Válassza az **Importálás**lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
+1. Kattintson az **Importálás** gombra. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
    ![Csoport általános sablonjának importálása adattár](./media/team-lead-tasks/import-repo-2.png)
    
@@ -226,7 +226,7 @@ git push
 ```
 
 > [!NOTE]
-> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa az alábbi két parancsot:
+> Ha első alkalommal hajt végre egy git-tárházat, előfordulhat, hogy a `git commit` parancs futtatása előtt konfigurálnia kell a globális paramétereket a *User.name* és a *User. e-mailben.* Futtassa a következő két parancsot:
 > 
 > `git config --global user.name <your name>`
 > 
@@ -328,6 +328,6 @@ További információ a csapattal (például Azure HDInsight Spark-fürtökkel) 
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
-- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
-- [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
+- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
+- [Az adatelemzési csapat projekt-vezető feladatai](project-lead-tasks.md)
 - [Az adatelemzési csapat egyedi közreműködő feladatainak projektje](project-ic-tasks.md)

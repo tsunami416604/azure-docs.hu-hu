@@ -8,40 +8,64 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c5a16d957f1e0414f92d0cc03442d88d438e4c92
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72793629"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863104"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
 Az indexelő több problémát is futtathat az Azure Cognitive Searchba való adatindexelés során. A hiba fő kategóriái a következők:
 
-* [Kapcsolódás adatforráshoz](#data-source-connection-errors)
+* [Csatlakozás adatforráshoz vagy más erőforráshoz](#connection-errors)
 * [Dokumentumok feldolgozása](#document-processing-errors)
 * [Dokumentumok betöltése egy indexbe](#index-errors)
 
-## <a name="data-source-connection-errors"></a>Adatforrás-csatlakoztatási hibák
+## <a name="connection-errors"></a>Csatlakozási hibák
 
-### <a name="blob-storage"></a>Blob Storage
+> [!NOTE]
+> Az indexelő korlátozott támogatást biztosít az Azure hálózati biztonsági mechanizmusok által védett adatforrásokhoz és egyéb erőforrásokhoz való hozzáféréshez. Jelenleg az indexelő csak a megfelelő IP-címtartomány korlátozási mechanizmusai vagy NSG-szabályok segítségével férhetnek hozzá az adatforrásokhoz, ha van ilyen. Az egyes támogatott adatforrásokhoz való hozzáférés részleteit alább találja.
+>
+> A keresési szolgáltatás IP-címét a teljes tartománynév (például `<your-search-service-name>.search.windows.net`) pingelésével tekintheti meg.
+>
+> Megtalálhatja `AzureCognitiveSearch` [szolgáltatási címke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címét azon régió esetében, amelyben az Azure Cognitive Search szolgáltatás a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül érhető el. Az IP-címtartomány hetente frissül.
 
-#### <a name="storage-account-firewall"></a>Storage-fiók tűzfala
+### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 
-Az Azure Storage konfigurálható tűzfalat biztosít. Alapértelmezés szerint a tűzfal le van tiltva, így az Azure Cognitive Search tud csatlakozni a Storage-fiókhoz.
+Az Azure Storage, a CosmosDB és az Azure SQL konfigurálható tűzfalat biztosít. Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. Általában a tűzfal hibái általánosak, és úgy néznek ki, mint a `The remote server returned an error: (403) Forbidden` vagy `Credentials provided in the connection string are invalid or have expired`.
 
-Nincs konkrét hibaüzenet, ha a tűzfal engedélyezve van. A tűzfal hibái általában úgy néznek ki, mint a `The remote server returned an error: (403) Forbidden`.
+A következő két lehetőség közül választhat, amelyek lehetővé teszik az indexelő számára ezen erőforrások elérését egy adott példányban:
 
-A [portálon](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal)ellenőrizheti, hogy a tűzfal engedélyezve van-e. Az egyetlen támogatott megkerülő megoldás, ha letiltja a tűzfalat úgy, hogy engedélyezi a hozzáférést az [összes hálózatról](https://docs.microsoft.com/azure/storage/common/storage-network-security#azure-portal).
+* Tiltsa le a tűzfalat azáltal, hogy engedélyezi a hozzáférést az **összes hálózatról** (ha lehetséges).
+* Azt is megteheti, hogy engedélyezi a keresési szolgáltatás IP-címét, valamint az erőforrás tűzfalszabályok (az IP-címtartomány korlátozása) `AzureCognitiveSearch` [szolgáltatás címkéjének](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány használatát.
 
-Ha az indexelő nem rendelkezik csatolt készségkészlet, akkor _Előfordulhat_ , hogy a keresési szolgáltatás IP-címeihez [kivételt próbál hozzáadni](https://docs.microsoft.com/azure/storage/common/storage-network-security#managing-ip-network-rules) . Ez a forgatókönyv azonban nem támogatott, és nem garantáltan működik.
+Az IP-címtartomány korlátozásának az egyes adatforrások esetében történő konfigurálásával kapcsolatos részletek a következő hivatkozásokban találhatók:
 
-A keresési szolgáltatás IP-címét a teljes tartománynév (`<your-search-service-name>.search.windows.net`) pingelésével tekintheti meg.
+* [Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-### <a name="cosmos-db"></a>Cosmos DB
+* [Cosmos DB](https://docs.microsoft.com/azure/storage/common/storage-network-security#grant-access-from-an-internet-ip-range)
 
-#### <a name="indexing-isnt-enabled"></a>Az indexelés nincs engedélyezve
+* [Azure SQL](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure#create-and-manage-ip-firewall-rules)
+
+**Korlátozás**: az Azure Storage fenti dokumentációjában leírtaknak megfelelően az IP-címtartomány korlátozásai csak akkor működnek, ha a keresési szolgáltatás és a Storage-fiók különböző régiókban található.
+
+Az Azure functions (amely [egyéni webes API-képességként](cognitive-search-custom-skill-web-api.md)használható) az [IP-címek korlátozásait](https://docs.microsoft.com/azure/azure-functions/ip-addresses#ip-address-restrictions)is támogatja. A konfigurálni kívánt IP-címek listája a keresési szolgáltatás IP-címe és az `AzureCognitiveSearch` szolgáltatási címke IP-címtartomány.
+
+Az Azure-beli virtuális gépen futó SQL Server-adatokhoz való hozzáférés részleteit [itt](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md) találja:
+
+### <a name="configure-network-security-group-nsg-rules"></a>Hálózati biztonsági csoport (NSG) szabályainak konfigurálása
+
+Ha egy SQL felügyelt példányban lévő adatokhoz fér hozzá, vagy ha egy Azure-beli virtuális gépet webszolgáltatási URI-ként használ egy [egyéni webes API-képességhez](cognitive-search-custom-skill-web-api.md), az ügyfeleknek nem kell konkrét IP-címmel foglalkoznia.
+
+Ilyen esetekben az Azure-beli virtuális gép vagy az SQL felügyelt példánya konfigurálható úgy, hogy a virtuális hálózaton belül legyen. Ezután egy hálózati biztonsági csoport konfigurálható úgy, hogy szűrje a virtuális hálózati alhálózatok és hálózati adapterek bejövő és kimenő hálózati forgalmának típusát.
+
+A `AzureCognitiveSearch` szolgáltatás címkéje közvetlenül is használható a bejövő [NSG-szabályokban](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group#work-with-security-rules) anélkül, hogy meg kellene keresnie az IP-címtartományt.
+
+A felügyelt SQL-példányokban tárolt adatokhoz való hozzáférés további részleteit [itt](search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers.md) találja
+
+### <a name="cosmosdb-indexing-isnt-enabled"></a>Az "indexelés" CosmosDB nincs engedélyezve
 
 Az Azure Cognitive Search implicit függőséggel rendelkezik Cosmos DB indexeléshez. Ha kikapcsolja az automatikus indexelést Cosmos DBban, az Azure Cognitive Search sikeres állapotot ad vissza, de nem tudja indexelni a tároló tartalmát. A beállítások vizsgálatával és az indexelés bekapcsolásával kapcsolatos utasításokért lásd: [az indexelés kezelése Azure Cosmos DBban](https://docs.microsoft.com/azure/cosmos-db/how-to-manage-indexing-policy#use-the-azure-portal).
 

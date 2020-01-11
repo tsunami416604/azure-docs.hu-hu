@@ -1,46 +1,46 @@
 ---
-title: Útmutatók a csoportos adatelemzési folyamat végrehajtása az Azure-ban
-description: Hogyan kombinálhatja a felhőalapú és helyszíni eszközök és szolgáltatások munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására.
+title: Útmutató a csoportos adatelemzési folyamat végrehajtásához az Azure-ban
+description: A felhő és a helyszíni eszközök és szolgáltatások összevonása munkafolyamatba vagy folyamatba egy intelligens alkalmazás létrehozásához.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 08/17/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 98595ea0ef5b6d9d4cef0f239390b364fb1e4e75
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 8fa21cc690742a71100c53b4e5b6ce122d1a6147
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589059"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864077"
 ---
-# <a name="walkthroughs-executing-the-team-data-science-process"></a>A csoportos adatelemzési folyamat végrehajtása forgatókönyvek
+# <a name="walkthroughs-executing-the-team-data-science-process"></a>Útmutató a csoportos adatelemzési folyamat végrehajtásához
 
-Ezek **végpontok közötti forgatókönyvek** bizonyos forgatókönyvek esetén a csoportos adatelemzési folyamat lépéseit mutatja be. Ezek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközök és szolgáltatások munkafolyamat vagy folyamat létrehozása egy **intelligens alkalmazások**. A forgatókönyvek szerint vannak csoportosítva **platform** használnak.
-
-
-## <a name="walkthrough-descriptions"></a>Forgatókönyv leírása
-
-Az alábbiakban a platformokban mi bemutató példákból adjon meg rövid leírása:
+Ezek az **átfogó** útmutatók a csoportos adatelemzési folyamat lépéseit mutatják be adott forgatókönyvek esetén. Bemutatják, hogyan kombinálhatók a felhő, a helyszíni eszközök és a szolgáltatások egy munkafolyamatban egy **intelligens alkalmazáshoz**. A forgatókönyvek az általuk használt **platform** szerint vannak csoportosítva.
 
 
-- [HDInsight Spark-útmutatók használatával Pysparkkal és Scalával](walkthroughs-spark.md) ezek a forgatókönyvek használata Pysparkkal és Scalával Azure Spark-fürt a prediktív elemzések.
-- [Hive használatával egy HDInsight Hadoop-forgatókönyvek](walkthroughs-hdinsight-hadoop.md) ezek az útmutatók a Hive használata a HDInsight Hadoop-fürt prediktív elemzések.
-- [U-SQL használatával az Azure Data Lake-forgatókönyvek](walkthroughs-azure-data-lake.md) ezek a forgatókönyvek használata a U-SQL az Azure Data Lake prediktív elemzések.
-- [Az SQL Server](walkthroughs-sql-server.md) ezek a forgatókönyvek használata az SQL Server, SQL Server R Services és az SQL Server Python Services prediktív elemzések.
-- [Az SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) ezek a forgatókönyvek az SQL Data Warehouse segítségével prediktív elemzések. 
+## <a name="walkthrough-descriptions"></a>Útmutató – leírások
+
+Íme néhány rövid leírás arról, hogy a forgatókönyvek milyen példákat biztosítanak a saját platformokon:
+
+
+- [HDInsight Spark-útmutató a PySpark és a Scala használatával](walkthroughs-spark.md) Ezek a forgatókönyvek a PySpark és a Scala használatával egy Azure Spark-fürtön végzik a prediktív elemzést.
+- [HDInsight Hadoop-forgatókönyvek a kaptár használatával](walkthroughs-hdinsight-hadoop.md) Ezek a forgatókönyvek a kaptárt egy HDInsight Hadoop-fürttel használják a prediktív elemzések elvégzéséhez.
+- [A U-SQL használatával Azure Data Lake útmutató](walkthroughs-azure-data-lake.md) Ezek a forgatókönyvek a U-SQL-t használják Azure Data Lake a prediktív elemzések elvégzéséhez.
+- [SQL Server](walkthroughs-sql-server.md) Ezek a forgatókönyvek a SQL Server, SQL Server R Services és SQL Server Python-szolgáltatásokat használják a prediktív elemzések elvégzéséhez.
+- [SQL Data Warehouse](walkthroughs-sql-data-warehouse.md) Ezek a forgatókönyvek a prediktív elemzések SQL Data Warehouseét használják. 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A csoportos adatelemzési folyamat alkotó főbb összetevőit, lásd: [csoportos adatelemzési folyamat áttekintése](overview.md).
+A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
 
-A csoportos adatelemzési folyamat életciklusa, amelyek segítségével az adatelemzési projektek strukturálása tárgyalását lásd: [csoportos adatelemzési folyamat életciklusa](lifecycle.md). Az életciklus elejétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit ismerteti. 
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 
 
-Témakörök, amelyek végigvezetik a feladatokat az Azure-ban az adatelemzési folyamat alkotó áttekintését lásd: [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
+Az áttekintést lásd: [adatelemzési folyamat](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/). 
 

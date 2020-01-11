@@ -3,12 +3,12 @@ title: Vendég-konfigurációs szabályzatok létrehozása
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs szabályzatot Windows vagy Linux rendszerű virtuális gépekhez a Azure PowerShell használatával.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: f2e611998e42510eccde64ff6f945f58133fc4e9
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608524"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867341"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -65,7 +65,7 @@ Amikor a vendég konfigurációja naplóz egy gépet, először a `Test-TargetRe
 
 #### <a name="configuration-requirements"></a>Konfigurációs követelmények
 
-Az egyetlen követelmény, hogy a vendég konfiguráció egyéni konfigurációt használjon, hogy a konfiguráció neve mindenhol konzisztens legyen a használatban.  Ez magában foglalja a Content csomag. zip fájljának nevét, a Content csomagban tárolt MOF-fájlban található konfiguráció nevét, valamint az ARM-ben a vendég-hozzárendelés neveként használt konfiguráció nevét.
+Az egyetlen követelmény, hogy a vendég konfigurációja egyéni konfigurációt használjon, hogy a konfiguráció neve mindenhol konzisztens legyen a használatban. Ez a name követelmény tartalmazza a Content csomag. zip fájljának nevét, a Content csomagban tárolt MOF-fájlban található konfiguráció nevét, valamint egy Resource Manager-sablonban használt konfigurációs nevet a vendég-hozzárendelés neveként.
 
 #### <a name="get-targetresource-requirements"></a>A Get-TargetResource követelményei
 
@@ -181,7 +181,7 @@ A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../sto
 
 Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelésének optimális módja, ha a Azure Key Vault tárolja őket. Ez a kialakítás az egyéni DSC-erőforrásokon belül valósítható meg.
 
-1. Először hozzon létre egy felhasználó által hozzárendelt felügyelt identitást az Azure-ban.
+1. Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure-ban.
 
    Az identitást a gépek használják a Key Vaultban tárolt titkos kódok elérésére. A részletes lépésekért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure PowerShell használatával](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
 
@@ -193,9 +193,9 @@ Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelés�
 1. Rendelje hozzá a felhasználó által hozzárendelt identitást a számítógéphez.
 
    A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)Azure-beli virtuális gépeken a PowerShell használatával.
-   A skálán ezt az identitást a Azure Resource Manager segítségével Azure Policy használatával rendelheti hozzá. A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)Azure-beli virtuális gépeken sablon használatával.
+   Az identitás kiosztása Azure Resource Manager használatával Azure Policy-on keresztül. A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)Azure-beli virtuális gépeken sablon használatával.
 
-1. Végül az egyéni erőforráson belül a fentiekben generált ügyfél-azonosítót használva férhet hozzá Key Vault a számítógépről elérhető token használatával.
+1. Használja az egyéni erőforráson belül generált ügyfél-azonosítót a Key Vault a számítógépről elérhető jogkivonat használatával való eléréséhez.
 
    A Key Vault példányhoz tartozó `client_id` és URL-cím [tulajdonságokként](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) adható át az erőforrásnak, így az erőforrást nem kell több környezet esetében frissíteni, vagy ha az értékeket módosítani kell.
 
@@ -305,7 +305,7 @@ New-GuestConfigurationPolicy
     -Verbose
 ```
 
-Linux-szabályzatok esetén a konfigurációban adja meg a **AttributesYmlContent** tulajdonságot, és ennek megfelelően írja felül az értékeket. A vendég konfigurációs ügynök automatikusan létrehozza a YaML-fájlt, amelyet az inspec az attribútumok tárolására használ. Tekintse meg az alábbi példát.
+Linux-házirendek esetében adja meg a konfiguráció **AttributesYmlContent** tulajdonságát, és szükség szerint írja felül az értékeket. A vendég konfigurációs ügynök automatikusan létrehozza a YAML-fájlt, amelyet az inspec az attribútumok tárolására használ. Tekintse meg az alábbi példát.
 
 ```powershell
 Configuration FirewalldEnabled {

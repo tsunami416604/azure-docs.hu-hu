@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 1dfd9a8d2723136ef68d983eb99bf2391fb87879
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 159f79e61b43761db5a65c101928d4e6ac5b4d29
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894784"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861778"
 ---
 # <a name="send-events-to-a-time-series-insights-environment-by-using-an-event-hub"></a>Események küldése egy Time Series Insights-környezetbe az Event hub használatával
 
@@ -24,7 +24,7 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
 ## <a name="configure-an-event-hub"></a>Eseményközpont konfigurálása
 
-1. Az Event hub létrehozásával kapcsolatos információkért tekintse meg a [Event Hubs dokumentációját](https://docs.microsoft.com/azure/event-hubs/).
+1. Az Event hub létrehozásának megismeréséhez olvassa el a [Event Hubs dokumentációját](https://docs.microsoft.com/azure/event-hubs/).
 1. A keresőmezőbe keressen **Event Hubs**. A visszaadott listában válassza a **Event Hubs**lehetőséget.
 1. Válassza ki az Event hub-t.
 1. Az Event hub létrehozásakor egy Event hub-névteret hoz létre. Ha még nem hozott létre egy Event hubot a névtéren belül, a menüben az **entitások**alatt hozzon létre egy Event hubot.  
@@ -55,13 +55,13 @@ Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat egy Event hub-t az 
 
 ## <a name="add-a-time-series-insights-instance"></a>Time Series Insights példány hozzáadása
 
-A Time Series Insights-frissítés példányokkal adja hozzá a környezetfüggő adatbevitelt a bejövő telemetria-adatértékekhez. Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használatos minta szélmalmok projekt **idősorozat-azonosítója** `id`. Ha többet szeretne megtudni a Time Series Insight-példányokról és az **idősorozat-azonosítóról**, tekintse meg az [Idősorozat-modelleket](./time-series-insights-update-tsm.md).
+A Time Series Insights-frissítés példányokkal adja hozzá a környezetfüggő adatbevitelt a bejövő telemetria-adatértékekhez. Az adatai egy **Idősorozat-azonosító**használatával csatlakoznak a lekérdezési időponthoz. A jelen cikk későbbi részében használatos minta szélmalmok projekt **idősorozat-azonosítója** `id`. Ha többet szeretne megtudni a Time Series Insight instances és az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./time-series-insights-update-tsm.md).
 
 ### <a name="create-a-time-series-insights-event-source"></a>Time Series Insights eseményforrás létrehozása
 
 1. Ha még nem hozott létre egy eseményforrás, hajtsa végre az [eseményforrás létrehozásához](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-eventhub)szükséges lépéseket.
 
-1. `timeSeriesId`értékének beállítása. Ha többet szeretne megtudni az **idősorozat-azonosítóról**, olvassa el a [Time Series-modellek](./time-series-insights-update-tsm.md)című témakört.
+1. `timeSeriesId`értékének beállítása. Ha többet szeretne megtudni az **idősorozat-azonosítóról**, olvassa el a [Time Series-modelleket](./time-series-insights-update-tsm.md).
 
 ### <a name="push-events-to-windmills-sample"></a>Leküldéses események a szélmalmok mintába
 
@@ -80,7 +80,7 @@ A Time Series Insights-frissítés példányokkal adja hozzá a környezetfügg�
 
 1. Válassza **a Start gombra**. A szimulátor létrehoz egy példány JSON-t, amelyet közvetlenül használhat.
 
-1. Térjen vissza az Event hubhoz a Azure Portal. Az **Áttekintés** oldalon az Event hub által fogadott új események láthatók.
+1. Térjen vissza az Event hubhoz a Azure Portal. Az **Áttekintés** oldalon az Event hub által fogadott új események jelennek meg.
 
     [![az Event hub áttekintési oldalát, amely az Event hub metrikáit jeleníti meg](media/send-events/review-windmill-telemetry.png)](media/send-events/review-windmill-telemetry.png#lightbox)
 

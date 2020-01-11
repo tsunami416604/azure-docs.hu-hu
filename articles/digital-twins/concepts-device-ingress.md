@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: f9f0a74a6ca57f90ed8bd217d0d2f57e4bc16749
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 5c2c519ece9806b92c3e455d5f550bc2abfc9f3b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660341"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862475"
 ---
 # <a name="device-connectivity-and-telemetry-ingress"></a>Eszközkapcsolatok és bemenő telemetriaadatok
 
@@ -21,7 +21,7 @@ Az eszközök és érzékelők által továbbított telemetria-adatmennyiség b�
 
 Első lépésként hozzon létre egy Azure IoT Hub-erőforrást a térbeli gráf gyökerében. A IoT Hub erőforrás lehetővé teszi az összes eszköz számára a legfelső szintű terület elérését az üzenetek küldéséhez. A IoT Hub létrehozása után regisztrálja az eszközöket a digitális Twins-példányon belüli érzékelőkkel. Az eszközök az [Azure IoT ESZKÖZOLDALI SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-sdks)-n keresztül küldhetnek az adatfájlokat egy digitális Twins szolgáltatásba.
 
-Az eszközök előkészítésének lépésenkénti útmutatója a [digitális ikrek üzembe helyezését és konfigurálását ismertető oktatóanyagban](tutorial-facilities-setup.md)található. Egy pillantással a lépések a következők:
+Az eszközök előkészítésének lépésenkénti útmutatója a [digitális ikrek üzembe helyezését és konfigurálását ismertető oktatóanyagban](tutorial-facilities-setup.md)olvasható. Egy pillantással a lépések a következők:
 
 - Helyezzen üzembe egy digitális Twins-példányt a [Azure Portal](https://portal.azure.com).
 - Hozzon létre szóközt a gráfban.

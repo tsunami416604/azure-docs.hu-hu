@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan állíthatja be a replikációt és a feladatá
 author: sujayt
 manager: rochakm
 ms.service: site-recovery
-ms.date: 06/30/2019
+ms.date: 01/10/2020
 ms.topic: conceptual
 ms.author: sutalasi
-ms.openlocfilehash: 9546ae590918cdf6f3a6a95b9a68e9208054dcee
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: d2dfaab3d01ea29b0f9ecba1e9d748415bed2edc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953930"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861285"
 ---
 # <a name="set-up-disaster-recovery-of-vmware-vms-to-azure-with-powershell"></a>A VMware virtuális gépek vész-helyreállításának beállítása az Azure-ba a PowerShell használatával
 
@@ -118,7 +118,7 @@ Az alábbi példában a $vault változóból származó tár adatait a rendszer 
    VMwareDRToAzurePs VMwareDRToAzurePs Microsoft.RecoveryServices vaults
    ```
 
-As an alternative to the Set-ASRVaultContext cmdlet, one can also use the Import-AzRecoveryServicesAsrVaultSettingsFile cmdlet to set the vault context. Itt adhatja meg azt az elérési utat, amelyen a tároló regisztrációs kulcsa a-Path paraméterként található az import-AzRecoveryServicesAsrVaultSettingsFile parancsmaghoz. Például:
+A set-ASRVaultContext parancsmag alternatívájaként az egyik az import-AzRecoveryServicesAsrVaultSettingsFile parancsmagot is használhatja a tár környezetének beállításához. Itt adhatja meg azt az elérési utat, amelyen a tároló regisztrációs kulcsa a-Path paraméterként található az import-AzRecoveryServicesAsrVaultSettingsFile parancsmaghoz. Példa:
 
    ```azurepowershell
    Get-AzRecoveryServicesVaultSettingsFile -SiteRecovery -Vault $Vault -Path "C:\Work\"
@@ -342,7 +342,7 @@ A felderített virtuális gépek elleni védelemhez a következő adatokra lesz 
 * A replikálható védett elemek.
 * A virtuális gép (csak a Storage-fiókba való replikálás esetén) replikálására szolgáló Storage-fiók. 
 * A virtuális gépek Premium Storage-fiókba vagy felügyelt lemezre való védeleméhez naplófájlra van szükség.
-* A replikáláshoz használandó folyamat-kiszolgáló. A folyamat rendelkezésre álló kiszolgálók listáját olvassa és menti a ***$ProcessServers [0]***  *(horizontális Felskálázás-ProcessServer)* és ***$ProcessServers [1]*** *(ConfigurationServer)* változókat.
+* A replikáláshoz használandó folyamat-kiszolgáló. A rendszer beolvasta és mentette a rendelkezésre álló folyamat-kiszolgálók listáját a ***$ProcessServers [0]***  *(horizontális felskálázás-ProcessServer)* és a ***$ProcessServers [1]*** *(ConfigurationServer)* változóban.
 * Az a fiók, amellyel leküldheti a mobilitási szolgáltatás szoftverét a gépekre. Az elérhető fiókok listája a ***$AccountHandles*** változóban lett beolvasva és tárolva.
 * A replikáláshoz használni kívánt replikációs házirend védelmi tárolójának leképezése.
 * Az az erőforráscsoport, amelyben a virtuális gépeket létre kell hozni a feladatátvétel során.
@@ -351,11 +351,11 @@ A felderített virtuális gépek elleni védelemhez a következő adatokra lesz 
 Most replikálja a következő virtuális gépeket az ebben a táblázatban megadott beállítások használatával.
 
 
-|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Cél erőforráscsoport  | Célként megadott virtuális hálózat  |Célként megadott alhálózat  |
+|Virtuális gép  |Kiszolgáló feldolgozása        |Tárfiók              |Log Storage-fiók  |Szabályzat           |Fiók a mobilitási szolgáltatás telepítéséhez|Célzott erőforráscsoport  | Cél virtuális hálózata  |Célként megadott alhálózat  |
 |-----------------|----------------------|-----------------------------|---------------------|-----------------|-----------------------------------------|-----------------------|-------------------------|---------------|
-|CentOSVM1       |ConfigurationServer   |N/A| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |
-|Win2K12VM1       |ScaleOut-ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
-|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| N/A                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR-vnet                 |Alhálózat – 1       |   
+|CentOSVM1       |ConfigurationServer   |–| logstorageaccount1                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |
+|Win2K12VM1       |Horizontális felskálázás – ProcessServer|premiumstorageaccount1       |logstorageaccount1   |ReplicationPolicy|WindowsAccount                           |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |   
+|CentOSVM2       |ConfigurationServer   |replicationstdstorageaccount1| –                 |ReplicationPolicy|LinuxAccount                             |VMwareDRToAzurePs      |ASR – vnet                 |1\. alhálózat       |   
 
 
 ```azurepowershell
@@ -372,9 +372,13 @@ $PolicyMap  = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionCon
 #Get the protectable item corresponding to the virtual machine CentOSVM1
 $VM1 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "CentOSVM1"
 
-# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0
+# Enable replication for virtual machine CentOSVM1 using the Az.RecoveryServices module 2.0.0 onwards to replicate to managed disks
 # The name specified for the replicated item needs to be unique within the protection container. Using a random GUID to ensure uniqueness
 $Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
+
+# Alternatively, if the virtual machine CentOSVM1 has CMK enabled disks, enable replication using Az module 3.3.0 onwards as below
+# $diskID is the Disk Encryption Set ID to be used for all replica managed disks and target managed disks in the target region
+$Job_EnableReplication1 = New-AzRecoveryServicesAsrReplicationProtectedItem -VMwareToAzure -ProtectableItem $VM1 -Name (New-Guid).Guid -ProtectionContainerMapping $PolicyMap -ProcessServer $ProcessServers[1] -Account $AccountHandles[2] -RecoveryResourceGroupId $ResourceGroup.ResourceId -logStorageAccountId -DiskEncryptionSetId $diskId $LogStorageAccount.Id -RecoveryAzureNetworkId $RecoveryVnet.Id -RecoveryAzureSubnetName "Subnet-1"
 
 #Get the protectable item corresponding to the virtual machine Win2K12VM1
 $VM2 = Get-AzRecoveryServicesAsrProtectableItem -ProtectionContainer $ProtectionContainer -FriendlyName "Win2K12VM1"

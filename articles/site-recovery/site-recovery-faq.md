@@ -2,13 +2,14 @@
 title: Általános kérdések a Azure Site Recovery szolgáltatással kapcsolatban
 description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű általános kérdéseket tárgyalja.
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: f64b885e82d2f790d7d146e16bb6ccb44e207465
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497533"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863563"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -101,7 +102,8 @@ Igen. Amikor létrehoz egy Site Recovery tárolót egy régióban, biztosítjuk,
 ### <a name="does-site-recovery-encrypt-replication"></a>A Site Recovery titkosítja a replikációt?
 A virtuális gépek és a fizikai kiszolgálók esetében a replikálása a helyszíni helyek között a titkosítás-átvitel során támogatott. Az Azure-ba replikált virtuális gépek és fizikai kiszolgálók esetében a titkosítást és a [titkosítást](https://docs.microsoft.com/azure/storage/storage-service-encryption) is támogatja az Azure-ban.
 
-
+### <a name="how-can-i-enforce-tls-12-on-all-on-premises-azure-site-recovery-components"></a>Hogyan állíthatom be a TLS 1,2-et az összes helyszíni Azure Site Recovery-összetevőn?
+A replikált elemekre telepített mobilitási ügynökök csak a TLS 1,2-es adatfeldolgozási kiszolgálóval kommunikálnak. A konfigurációs kiszolgálóról az Azure-ra és a Process Serverről az Azure-ra való kommunikáció azonban a TLS 1,1-es vagy 1,0-es verziójában lehet. Kövesse az [útmutatást](https://support.microsoft.com/en-us/help/3140245/update-to-enable-tls-1-1-and-tls-1-2-as-default-secure-protocols-in-wi) a TLS 1,2 betartatásához az Ön által beállított konfigurációs kiszolgálókon és folyamat-kiszolgálókon.
 
 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás

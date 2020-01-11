@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 387f3df7313c26c5cd8f7fee7c9b58ec3b5c4552
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 83462d47af49a02817dcfa05afcd8fdb5e0beab1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872409"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863706"
 ---
 # <a name="tutorial-create-an-azure-time-series-insights-environment"></a>Oktatóanyag: Azure Time Series Insights-környezet létrehozása
 
@@ -32,7 +32,7 @@ Ez az oktatóanyag végigvezeti egy olyan Azure Time Series Insights-környezet 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információ: [hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md).
+* Az Azure bejelentkezési fiókjának az előfizetés **tulajdonosi** szerepkörének is tagja kell lennie. További információért olvassa el [a hozzáférés kezelése szerepköralapú hozzáférés-vezérléssel és a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)című témakört.
 
 ## <a name="review-video"></a>Videó áttekintése
 
@@ -72,7 +72,7 @@ Először hozza létre az eszköz-szimulációs megoldást, amely tesztelési ad
 
    [az eszköz-szimulációs megoldás kiépítése ![](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png)](media/tutorial-create-populate-tsi-environment/iot-solution-accelerators-configuration.png#lightbox)
 
-1. A kiépítés befejezése után két frissítés jelenik meg, amely azt jeleníti meg, hogy az üzembe helyezési állapot a **kiépítés** után **készre**került. 
+1. A kiépítés befejezése után két frissítés jelenik meg, amely értesíti, hogy a központi telepítési állapot a **kiépítés** után **készre**került. 
 
    >[!IMPORTANT]
    > Még ne adja meg a megoldás-gyorssegédet! Tartsa meg ezt a weblapot, mert később vissza fog térni.
@@ -162,7 +162,7 @@ Ebben a végső szakaszban ellenőrzi, hogy a telemetria-adatbázis létrejött 
 
    [![Time Series Insights Explorer](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png)](media/tutorial-create-populate-tsi-environment/ap-view-tsi-env-explorer-url.png#lightbox)
 
-1. A Time Series Insights Explorer betölti és hitelesíti magát a Azure Portal-fiók használatával. A kezdeti nézetben a diagram területén láthatja, hogy a Time Series Insights környezet szimulált telemetria-adatokkal lett feltöltve. A szűkebb időtartam szűréséhez válassza a bal felső sarokban lévő legördülő listát. Adjon meg egy időtartományt, amely elég nagy az eszköz szimulációjának időtartamára. Ezután válassza a keresés Nagyítót.
+1. A Time Series Insights Explorer betölti és hitelesíti magát a Azure Portal-fiók használatával. Kezdetben a Time Series Insightsi környezet és a szimulált telemetria adatokkal együtt kitöltött diagramterület is megjelenik. A szűkebb időtartam szűréséhez válassza a bal felső sarokban lévő legördülő listát. Adjon meg egy időtartományt, amely elég nagy az eszköz szimulációjának időtartamára. Ezután válassza a keresés Nagyítót.
 
    [![Time Series Insights Explorer időtartomány-szűrője](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png)](media/tutorial-create-populate-tsi-environment/tsie-filter-time-range.png#lightbox)
 
@@ -198,4 +198,4 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 Most, hogy már tudja, hogyan hozhat létre saját Time Series Insights környezetet, megtudhatja, hogyan készíthet olyan webalkalmazást, amely egy Time Series Insights-környezetből származó adatokkal rendelkezik:
 
 > [!div class="nextstepaction"]
-> [Lásd: az üzemeltetett ügyféloldali SDK vizualizációs mintái](https://tsiclientsample.azurewebsites.net/)
+> [Az üzemeltetett ügyfél SDK vizualizációs mintáinak olvasása](https://tsiclientsample.azurewebsites.net/)

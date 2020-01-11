@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: alkohli
-ms.openlocfilehash: 38aa45a9fe9e182fa98756725a8b20d737929d23
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 654ca34ae4c0e393920965083567e3d9c71148d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585367"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863631"
 ---
 # <a name="what-is-azure-stack-edge"></a>Mi az Azure Stack Edge? 
 
@@ -23,11 +23,11 @@ Az Azure Stack Edge a hálózati adatátviteli képességekkel rendelkező AI-ko
 
 Az Azure Stack Edge egy szolgáltatásként nyújtott hardveres megoldás. A Microsoft a felhőben felügyelt eszközön egy beépített, programozható Gate array (FPGA) tömböt biztosít, amely lehetővé teszi a gyorsított mesterséges intelligenciát, és rendelkezik a hálózati tárolók átjárójának összes képességével. 
 
-## <a name="use-cases"></a>Használati esetek
+## <a name="use-cases"></a>Használati példák
 
 Az alábbi forgatókönyvek olyan helyzetekben használhatók, ahol a Azure Stack Edge gyors Machine Learning (ML), amely a peremhálózat szélén és az adatok előfeldolgozása előtt, az Azure-ba való küldés előtt is felhasználható.
 
-- **Következtetés a Azure Machine learning** -Azure stack Edge használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)-ben című témakörben talál.
+- **Következtetés a Azure Machine learning** -Azure stack Edge használatával: ml-modellek futtatásával gyors eredményeket érhet el, amelyek a felhőbe való adatküldés előtt is elhelyezhetők. A teljes adatkészletet igény szerint átviheti, hogy továbbra is újratanítsa és javítsa a ML-modelleket. Az Azure ML hardveres gyorsított modellek az Azure Stack Edge-eszközön történő használatáról további információt az [Azure ml hardveres gyorsított modellek üzembe helyezése Azure stack Edge](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#deploy-to-a-local-edge-server)-ben című témakörben talál.
 
 - Adatátalakítási adatok **előfeldolgozása** az Azure-ba való elküldés előtt, amely egy hatékonyabb adatkészlet létrehozásához szükséges. Az előfeldolgozás az alábbiakra használható: 
 
@@ -43,12 +43,12 @@ Az alábbi forgatókönyvek olyan helyzetekben használhatók, ahol a Azure Stac
 
 Azure Stack Edge a következő képességekkel rendelkezik:
 
-|Képesség |Leírás  |
+|Szolgáltatás |Leírás  |
 |---------|---------|
 |Gyorsított AI-következtetés| A beépített FPGA engedélyezte.|
 |Számítás       |Lehetővé teszi az adatok elemzését, feldolgozását és szűrését.|
-|Nagy teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
-|Az adatok elérése     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
+|Kiemelkedő teljesítmény | Nagy teljesítményű számítási és adatforgalom.|
+|Adathozzáférés     | Az adatok közvetlen elérése az Azure Storage-blobokból és az Azure Filesból felhőalapú API-k használatával az adatok további feldolgozásához a felhőben. Az eszköz helyi gyorsítótára a legutóbb használt fájlok gyors elérésére szolgál.|
 |Felhő által felügyelt     |Az eszköz és a szolgáltatás kezelése a Azure Portal keresztül történik.  |
 |Offline feltöltés     | A kapcsolat nélküli mód támogatja az offline feltöltési forgatókönyveket.|
 |Támogatott protokollok     | A standard SMB és NFS protokollok támogatása az adatbetöltéshez. <br> A támogatott verziókról a [Azure stack Edge rendszerkövetelményei](data-box-edge-system-requirements.md)című témakörben olvashat bővebben.|
@@ -85,7 +85,7 @@ Azure Stack Edge fizikai eszköz, az Azure-erőforrás és a célként megadott 
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok tárolásához Azure Stack peremhálózati adatnak közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át az [Azure stack Edge rendszerkövetelményeit](data-box-edge-system-requirements.md).
 - Az [Azure stack Edge korlátainak](data-box-edge-limits.md)megismerése.

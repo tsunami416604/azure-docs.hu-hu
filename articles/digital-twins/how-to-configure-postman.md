@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 784e31b823c65c0b908dc07582805e7a69d19563
-ms.sourcegitcommit: 8a2949267c913b0e332ff8675bcdfc049029b64b
+ms.openlocfilehash: d87112697bfa3aa7bb6b4c8f14420598ccd914cb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74304807"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864315"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -37,7 +37,7 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
 1. Nyissa meg az **API-engedélyek** panelt az alkalmazás regisztrálásához. Válassza **az engedély hozzáadása** gombot. A **kérelem API-engedélyek** ablaktáblán válassza a **saját szervezet által használt API** -k fület, majd keresse meg a következőt:
     
-    1. `Azure Digital Twins`. Válassza ki az **Azure Digital Twins** API-t.
+    1. `Azure Digital Twins` kérdésre adott válaszban foglalt lépéseket. Válassza ki az **Azure Digital Twins** API-t.
 
         [![Search API vagy Azure digitális Twins](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png)](../../includes/media/digital-twins-permissions/aad-aap-search-api-dt.png#lightbox)
 
@@ -86,27 +86,27 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
     https://login.microsoftonline.com/YOUR_AZURE_TENANT.onmicrosoft.com/oauth2/authorize?resource=0b07f429-9f4b-4714-9392-cc5e8e80c8b0
     ```
 
-    | Name (Név)  | Csere erre | Példa |
+    | Név  | Csere erre | Példa |
     |---------|---------|---------|
     | YOUR_AZURE_TENANT | A bérlő vagy szervezet neve | `microsoft` |
 
 1. Válassza az **Engedélyezés** lapot, válassza a **OAuth 2,0**, majd az **új hozzáférési jogkivonat beolvasása**elemet.
 
-    | Mező  | Érték |
+    | Mező  | Value (Díj) |
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
-    | Visszahívási URL-cím | `https://www.getpostman.com/oauth2/callback` |
+    | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a **2. lépésből** |
     | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy újrafelhasznált Azure Active Directory **alkalmazás azonosítójának** használata |
     | Hatókör | Hagyja üresen |
-    | Állapot | Hagyja üresen |
+    | Állami | Hagyja üresen |
     | Ügyfél-hitelesítés | `Send as Basic Auth header` |
 
 1. Az ügyfélnek ekkor a következőképpen kell megjelennie:
 
     [![Poster-ügyfél jogkivonat-példája](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Válassza a **kérelem tokenje**elemet.
+1. Válassza a **Request Token** (Jogkivonat kérése) lehetőséget.
   
 1. Görgessen le, és válassza a **token használata**lehetőséget.
 
@@ -130,7 +130,7 @@ Az előző lépések elvégzése után konfigurálja a Poster-t egy hitelesítet
    > * Az egyes részekhez nem kell megadnia ezeket a fejléceket.
    > * Ki kell választania `multipart/mixed` vagy egy másik megfelelő **tartalomtípust** a teljes kérelemhez.
 
-1. Végül válassza a **Küldés** lehetőséget a többrészes http post-kérelem elküldéséhez. `200` vagy `201` állapotkód sikeres kérést jelez. A megfelelő válaszüzenet is megjelenik.
+1. Végül válassza a **Küldés** lehetőséget a többrészes http post-kérelem elküldéséhez. `200` vagy `201` állapotkód sikeres kérést jelez. A megfelelő válaszüzenet megjelenik az ügyfél felületén.
 
 ## <a name="next-steps"></a>Következő lépések
 

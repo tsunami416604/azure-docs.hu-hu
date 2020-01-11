@@ -8,12 +8,12 @@ ms.topic: conceptual
 description: Használjon privát Helm-tárházat egy Azure fejlesztői tárhelyen.
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók, Helm
 manager: gwallace
-ms.openlocfilehash: f212df74ab8102391e4170ccef6b0c3b1129b046
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: dddec69dc019f286c714a09e6f1a7e47240d5572
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74279923"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867290"
 ---
 # <a name="use-a-private-helm-repository-in-azure-dev-spaces"></a>Privát Helm-tárház használata az Azure dev Spaces szolgáltatásban
 
@@ -35,6 +35,9 @@ Navigáljon a projekt könyvtárába, és futtassa `azds prep`.
 ```cmd
 azds prep --public
 ```
+
+> [!TIP]
+> A `prep` parancs megkísérli [egy Docker és egy Helm-diagram](../how-dev-spaces-works.md#prepare-your-code) létrehozását a projekthez. Az Azure dev Spaces ezeket a fájlokat használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
 Hozzon létre egy [követelmény. YAML][helm-requirements] fájlt a diagrammal az alkalmazás diagramjának könyvtárában. Ha például az alkalmazás neve *App1*, akkor létre kell hoznia a *diagramok/App1/követelmények. YAML*.
 

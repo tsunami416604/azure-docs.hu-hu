@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.author: normesta
-ms.openlocfilehash: c7223274417ef4c911c32acbcde1511682d6d9e0
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: de57776ea3bcc7486c5c26182c7e2a65e643d81c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796070"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863002"
 ---
 # <a name="integrate-azure-data-lake-storage-with-azure-services"></a>Azure Data Lake Storage integrálása az Azure-szolgáltatásokkal
 
@@ -28,7 +28,7 @@ A következő táblázat felsorolja a Azure Data Lake Storage Gen2 támogató Az
 |Azure Databricks | [Használat Azure Databricks](https://docs.azuredatabricks.net/data/data-sources/azure/azure-datalake-gen2.html) <br> [Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával](data-lake-storage-quickstart-create-databricks-account.md) <br>[Oktatóanyag: adatok kinyerése, átalakítása és betöltése a Azure Databricks használatával](https://docs.microsoft.com/azure/azure-databricks/databricks-extract-load-sql-data-warehouse) <br>[Oktatóanyag: Data Lake Storage Gen2-adatelérés Azure Databricks a Spark használatával](data-lake-storage-use-databricks-spark.md) |
 |Azure Event Hubs rögzítés| [Események rögzítése Azure-Event Hubs az Azure-ban Blob Storage vagy Azure Data Lake Storage](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview)|
 |Azure Logic Apps | [Áttekintés – mi az Azure Logic Apps?](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview)|
-|Azure Machine Learning|[Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](https://docs.microsoft.com/azure/machine-learning/service/how-to-access-data)|
+|Azure Machine Learning|[Az Azure Storage-szolgáltatásokban tárolt adathozzáférés](https://docs.microsoft.com/azure/machine-learning/how-to-access-data)|
 |Azure Cognitive Search | [Azure Data Lake Storage Gen2 dokumentumok indexelése és keresése (előzetes verzió)](https://docs.microsoft.com/azure/search/search-howto-index-azure-data-lake-storage)|
 |Azure Stream Analytics| [Gyors útmutató: Stream Analytics-feladatok létrehozása a Azure Portal használatával](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-quick-create-portal) <br> [Kimenő Azure Data Lake Gen2](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-define-outputs#blob-storage-and-azure-data-lake-gen2) |
 |Data Box|  [A helyszíni HDFS-tárolóból az Azure Storage-ba történő Migrálás Azure Data Box használata](data-lake-storage-migrate-on-premises-hdfs-cluster.md)|
@@ -38,7 +38,7 @@ A következő táblázat felsorolja a Azure Data Lake Storage Gen2 támogató Az
 |SQL Data Warehouse | [Használat Azure SQL Data Warehouse](https://docs.microsoft.com/azure/sql-database/sql-database-vnet-service-endpoint-rule-overview?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#azure-sql-data-warehouse-polybase)|
 |SQL Server Integration Services (SSIS) | [Azure Storage-kapcsolatkezelő](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-storage-connection-manager?view=sql-server-2017)|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ arról, hogy mely eszközök használhatók a adattárban tárolt adatfeldolgozáshoz. Lásd: [a Azure Data Lake Storage Gen2 használata Big Data követelményekhez](data-lake-storage-data-scenarios.md).
 

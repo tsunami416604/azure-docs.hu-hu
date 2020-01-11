@@ -4,14 +4,14 @@ description: Az Azure HPC cache kezelése és frissítése a Azure Portal haszn�
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/18/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 9cd5ad151c977838fea30f52c7d4a93b4663c8ff
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: a166a904b2e63419efd5803fd54be1d1b59836fb
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166714"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867078"
 ---
 # <a name="manage-your-cache-from-the-azure-portal"></a>A gyorsítótár kezelése a Azure Portal
 
@@ -23,7 +23,7 @@ Az Áttekintés lap megnyitásához válassza ki a gyorsítótár-erőforrást a
 
 A lap tetején található gombok segítenek a gyorsítótár kezelésében:
 
-* [**Flush**](#flush-cached-data) – az összes gyorsítótárazott adatot a tárolási célokba írja
+* [**Ürítés**](#flush-cached-data) – módosított adatot ír a tárolási célokba
 * [**Frissítés**](#upgrade-cache-software) – frissíti a gyorsítótár szoftverét
 * **Frissítés** – újratölti az Áttekintés oldalt
 * [**Delete (Törlés**](#delete-the-cache) ) – véglegesen elpusztítja a gyorsítótárat
@@ -63,9 +63,18 @@ A szoftverfrissítés megkezdéséhez kattintson a **frissítés** gombra. A gyo
 
 A **Törlés** gomb megsemmisíti a gyorsítótárat. Ha töröl egy gyorsítótárat, a rendszer minden erőforrását megsemmisíti, és többé nem számít fel fiókra vonatkozó díjat.
 
-A gyorsítótár törlése nem érinti a tárolási célokat. Később hozzáadhatja őket egy későbbi gyorsítótárhoz, vagy elvégezheti őket külön leszereléssel.
+A tárolási célokként használt háttérbeli tárolási kötetek nem érintik a gyorsítótár törlésekor. Később hozzáadhatja őket egy későbbi gyorsítótárhoz, vagy elvégezheti őket külön leszereléssel.
 
-A gyorsítótár a végleges leállítás részeként automatikusan kiüríti a nem mentett adatmennyiségeket a tárolási célokba.
+> [!NOTE]
+> Az Azure HPC-gyorsítótár nem ír automatikusan módosított adatokból a gyorsítótárból a háttér-tárolási rendszerbe a gyorsítótár törlése előtt.
+>
+> Az alábbi eljárást követve győződjön meg arról, hogy a gyorsítótárban lévő összes adattal a hosszú távú tárolásra lett írva:
+>
+> 1. [Távolítsa el](hpc-cache-edit-storage.md#remove-a-storage-target) az egyes tárolási célokat az Azure HPC-gyorsítótárból a tárolási célok lapon található törlés gombbal. A rendszer automatikusan a gyorsítótárból a háttér-tárolási rendszerbe írja a módosult adatot a cél eltávolítása előtt.
+> 1. Várjon, amíg a tárolási cél teljesen el lesz távolítva. A folyamat akár egy órát is igénybe vehet, ha sok adattal kell írni a gyorsítótárból. Ha elkészült, a portál értesítése szerint a törlési művelet sikeres volt, és a tárolási cél eltűnik a listából.
+> 1. Miután az összes érintett tárolási cél törölve lett, biztonságosan törölheti a gyorsítótárat.
+>
+> Azt is megteheti, hogy a [kiürítési](#flush-cached-data) lehetőséggel menti a gyorsítótárazott adatot, de az elveszítés kis kockázattal jár, ha az ügyfél a kiürítés befejeződése után módosítja a gyorsítótárat, de megsemmisíti a gyorsítótár-példányt.
 
 ## <a name="cache-metrics-and-monitoring"></a>Gyorsítótár-metrikák és-figyelés
 

@@ -2,24 +2,24 @@
 title: A csoportos adatelemzési folyamat projektjei előrehaladásának nyomon követése
 description: Hogyan követheti nyomon az adatelemzési projektek előrehaladását az adattudományi csoport kezelői, a Team-érdeklődők és a projekt-érdeklődők.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/26/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 28bd3e558294c000ba65a1c60fe227bbae7e82dd
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 8cf1e5a4d97b882e7a8d0c81041bbcde709760d1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244056"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864196"
 ---
 # <a name="track-the-progress-of-data-science-projects"></a>Az adatelemzési projektek előrehaladásának nyomon követése
 
-Az adatelemzési csoport kezelői, a csapat-és a projekt-érdeklődők nyomon követhetik a projektjeik állapotát, például hogy milyen munkát végeztek, ki végezte el a munkát, és mi marad a munka. 
+Az adatelemzési csoport kezelői, a Team-érdeklődők és a projekt-érdeklődők nyomon követhetik projektjeik előrehaladását.  A vezetők szeretnék tudni, hogy milyen munkát végeztek el, ki a munkát, és mi marad a munka.   Az elvárások kezelése a siker fontos eleme.
 
 ## <a name="azure-devops-dashboards"></a>Azure DevOps-irányítópultok
 
@@ -30,7 +30,7 @@ Az irányítópultok és widgetek Azure DevOps való létrehozásával és testr
 - [Irányítópultok hozzáadása és kezelése](/azure/devops/report/dashboards/dashboards)
 - [Widgetek hozzáadása az irányítópulthoz](/azure/devops/report/dashboards/add-widget-to-dashboard)
 
-## <a name="example-dashboard"></a>Példa irányítópultra
+## <a name="example-dashboard"></a>Minta irányítópult
 
 Íme egy egyszerű példa az irányítópultra, amely egy agilis adatelemzési projekt Sprint-tevékenységeit követi nyomon, beleértve a társított adattárakhoz való véglegesítés számát is. 
 
@@ -50,4 +50,4 @@ Az irányítópultok és widgetek Azure DevOps való létrehozásával és testr
 
 ## <a name="next-steps"></a>Következő lépések
 
-[A csoportos adatelemzési folyamattal](walkthroughs.md) kapcsolatos útmutatók azokat a bemutatókat ismertetik, amelyek bemutatják a folyamat összes lépését adott forgatókönyvekhez, hivatkozásokat és miniatűr leírást. A hivatkozott forgatókönyvek bemutatják, hogyan kombinálhatja a Felhőbeli és a helyszíni eszközöket és szolgáltatásokat munkafolyamatokban vagy folyamatokban intelligens alkalmazások létrehozásához. 
+[A csoportos adatelemzési folyamathoz](walkthroughs.md) tartozó útmutatók a folyamat lépéseinek bemutatására szolgáló útmutatókat listázza. A hivatkozott forgatókönyvek bemutatják, hogyan kezelheti a Felhőbeli és a helyszíni erőforrásokat intelligens alkalmazásokba. 

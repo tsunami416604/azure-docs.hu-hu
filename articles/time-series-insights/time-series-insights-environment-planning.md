@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 13bff4abcb308e4d5ea55f360d979e3e67d313c4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452862"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863376"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -32,7 +32,7 @@ Ez a cikk azt ismerteti, hogyan tervezze meg a Azure Time Series Insights által
 
 A Azure Time Series Insightsének megkezdéséhez érdemes megismerni, hogy mennyi adattal kell leküldeni a percben, és hogy mennyi ideig kell tárolnia az adatait.  
 
-A Time Series Insights SKU kapacitásával és megtartásával kapcsolatos további információkért lásd a [Time Series Insights díjszabását](https://azure.microsoft.com/pricing/details/time-series-insights/).
+A Time Series Insights SKU kapacitásával és megtartásával kapcsolatos további információkért olvassa el [Time Series Insights díjszabását](https://azure.microsoft.com/pricing/details/time-series-insights/).
 
 Az Time Series Insights-környezet hosszú távú sikeres megtervezéséhez vegye figyelembe a következő attribútumokat:
 
@@ -71,7 +71,7 @@ Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapj�
    [![a megőrzés konfigurálása](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
 
 > [!TIP]
-> Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, tekintse meg a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.
+> Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, olvassa el a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.
 
 ## <a name="ingress-capacity"></a>Bejövő kapacitás
 
@@ -103,7 +103,7 @@ A bejövő forgalomra vonatkozó követelmények kiszámítása:
 
 ### <a name="mitigate-throttling-and-latency"></a>A szabályozás és a késés csökkentése
 
-További információ a szabályozás és a késés megakadályozásáról: a [késés és a szabályozás mérséklése](time-series-insights-environment-mitigate-latency.md).
+A szabályozás és a késés elkerülésével kapcsolatos további információkért olvassa el a [késés és a szabályozás mérséklését](time-series-insights-environment-mitigate-latency.md)ismertető témakört.
 
 ## <a name="shape-your-events"></a>Az események formázása
 
@@ -119,7 +119,7 @@ A *hivatkozási adatkészlet* olyan elemek gyűjteménye, amelyek kibővítik az
 > [!NOTE]
 > A hivatkozási adathivatkozások nincsenek visszamenőlegesen csatlakoztatva. A rendszer csak a jelenlegi és a jövőbeli bejövő adatokat egyezteti és csatlakoztatja a hivatkozási adatkészlethez a konfigurálás és a feltöltés után. Ha nagy mennyiségű korábbi adatmennyiséget szeretne elküldeni a Time Series Insightsba, és nem szeretné először feltölteni vagy létrehozni referenciákat a Time Series Insightsban, előfordulhat, hogy meg kell ismételni a munkát (Tipp: nem szórakoztató).  
 
-Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel és kezelhetők a Time Series Insightsban található hivatkozási adatok, tekintse meg a [hivatkozási adatkészlet dokumentációját](time-series-insights-add-reference-data-set.md).
+Ha szeretne többet megtudni arról, hogyan hozhatók létre, tölthetők fel és kezelhetők a Time Series Insightsban található hivatkozási adatok, olvassa el a [hivatkozási adatkészlet dokumentációját](time-series-insights-add-reference-data-set.md).
 
 [!INCLUDE [business-disaster-recover](../../includes/time-series-insights-business-recovery.md)]
 

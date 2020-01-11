@@ -9,12 +9,12 @@ ms.custom: mvc
 ms.service: iot-pnp
 services: iot-pnp
 manager: philmea
-ms.openlocfilehash: 43fc928b1274159839dc0df395e86d065f84b4c7
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 2dae0a31ad53a777f5ae88c1c12f988d2f80630a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550266"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867423"
 ---
 # <a name="build-an-iot-plug-and-play-preview-device-thats-ready-for-certification"></a>IoT Plug and Play előnézeti eszköz létrehozása, amely készen áll a minősítésre
 
@@ -35,7 +35,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 - [Visual Studio Code](https://code.visualstudio.com/download)
 - [Azure IoT-eszközök a vs Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools) Extension Packhez
 
-Szüksége lesz a IoT Plug and Play eszközre is, amelyet a rövid útmutatóban hoz létre [: eszköz-képesség modell használata eszköz létrehozásához](quickstart-create-pnp-device-windows.md).
+A Windows rendszerhez készült [eszköz-gyors útmutató létrehozásához az eszköz képességeinek modelljét](quickstart-create-pnp-device-windows.md) is be kell fejeznie. A rövid útmutató bemutatja, hogyan állíthatja be a fejlesztési környezetet a Vcpkg használatával, és hogyan hozhat létre egy minta projektet.
 
 ## <a name="store-a-capability-model-and-interfaces"></a>Képesség-modell és felületek tárolása
 
@@ -107,20 +107,53 @@ Az eszköz hitelesítéséhez engedélyeznie kell az üzembe [helyezést az Azur
 
 1. Válassza ki azt a DCM-fájlt, amelyet az eszköz kódjának létrehozásához használni kíván.
 
-1. Adja meg a projekt nevét, amely az eszköz alkalmazásának neve.
+1. Adja meg a projekt nevét, például **sample_device**. Ez az eszköz-alkalmazás neve.
 
 1. Válassza az **ANSI C** nyelvet.
 
 1. Válasszon a következőn **keresztül: DPS (Device kiépítési szolgáltatás) szimmetrikus kulcs** , mint a kapcsolatok módszere.
 
-1. Az eszköz operációs rendszertől függően válassza a **Windows** rendszeren vagy a CMAK-projekten a **Linuxon** a projekt sablonja lehetőséget.
+1. Válassza a **Windows rendszerhez készült CMAK-projekt** lehetőséget a Project sablonként.
+
+1. Válassza a **Vcpkg-on keresztül** lehetőséget az eszköz SDK-val való felvételéhez.
 
 1. A VS Code egy új ablakot nyit meg a generált kódlap-fájlokkal.
 
-1. A kód felépítése után adja meg a DPS hitelesítő adatait (DPS-**azonosító hatóköre**, **DPS szimmetrikus kulcs**, **eszköz azonosítója**) az alkalmazás paramétereinek megfelelően. A hitelesítő adatoknak a minősítési portálról való lekéréséhez tekintse [meg a IoT Plug and Play eszköz csatlakoztatása és tesztelése](tutorial-certification-test.md#connect-and-discover-interfaces)című témakört.
+## <a name="build-and-run-the-code"></a>A kód létrehozása és futtatása
 
-    ```cmd/sh
-    .\your_pnp_app.exe [DPS ID Scope] [DPS symmetric key] [device ID]
+A létrehozott Vcpkg-csomag használatával létrehozza a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
+
+1. Hozzon létre egy `cmake` alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
+
+    ```cmd
+    mkdir cmake
+    cd cmake
+    ```
+
+1. Futtassa a következő parancsokat a generált kód létrehozásához (a helyőrzőt cserélje le a Vcpkg-tárház könyvtárára):
+
+    ```cmd
+    cmake .. -G "Visual Studio 16 2019" -A Win32 -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="<directory of your Vcpkg repo>\scripts\buildsystems\vcpkg.cmake"
+
+    cmake --build .
+    ```
+    
+    > [!NOTE]
+    > A Visual Studio 2017-es vagy a 2015-es verziójának használata esetén meg kell adnia a CMak-generátort az Ön által használt build-eszközök alapján:
+    >```cmd
+    ># Either
+    >cmake .. -G "Visual Studio 15 2017" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    ># or
+    >cmake .. -G "Visual Studio 14 2015" -Duse_prov_client=ON -Dhsm_type_symm_key:BOOL=ON -DCMAKE_TOOLCHAIN_FILE="{directory of your Vcpkg repo}\scripts\buildsystems\vcpkg.cmake"
+    >```
+
+    > [!NOTE]
+    > Ha a Csatlakozáskezelő felügyeleti csomag nem C++ találja a fordítót, az előző parancs futtatásakor hibaüzeneteket kaphat. Ha ez történik, próbálja meg futtatni ezt a parancsot a [Visual Studio parancssorában](https://docs.microsoft.com/dotnet/framework/tools/developer-command-prompt-for-vs).
+
+1. A létrehozás sikeres befejezése után adja meg a DPS hitelesítő adatait (DPS-**azonosító hatóköre**, **DPS szimmetrikus kulcs**, **eszköz azonosítója**) az alkalmazás paramétereinek megfelelően. A hitelesítő adatoknak a minősítési portálról való lekéréséhez tekintse [meg a IoT Plug and Play eszköz csatlakoztatása és tesztelése](tutorial-certification-test.md#connect-and-discover-interfaces)című témakört.
+
+    ```cmd\sh
+    .\Debug\sample_device.exe [Device ID] [DPS ID Scope] [DPS symmetric key]
     ```
 
 ### <a name="implement-standard-interfaces"></a>Standard felületek implementálása

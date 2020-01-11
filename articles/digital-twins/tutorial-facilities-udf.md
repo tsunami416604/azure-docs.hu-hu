@@ -9,18 +9,18 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 80fd1275f3bf9585ff8e40a94d0de2d422baec71
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b988d500ed2a201bb31f0d3a7cbeb7df00af9faf
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383222"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860894"
 ---
 # <a name="tutorial-provision-your-building-and-monitor-working-conditions-with-azure-digital-twins-preview"></a>Oktatóanyag: az Azure Digital Twins előzetes verziójának kiépítése és a munkafeltételek monitorozása
 
 Ez az oktatóanyag azt mutatja be, hogyan használható az Azure Digital Twins Preview a szóközök a kívánt hőmérsékleti feltételek és a komfort szintjének figyeléséhez. A [minta-összeállítás konfigurálása](tutorial-facilities-setup.md)után kiépítheti az összeállítást, és egyéni függvényeket futtathat az érzékelők adatain az oktatóanyag lépéseinek használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Határozza meg a figyelni kívánt feltételeket.
@@ -64,7 +64,7 @@ A minta *provisionSample. YAML* fájlban keressen egy olyan szakaszt, amely a **
 
 A **roleassignments** nevű szakaszt is figyelje meg. Hozzárendeli a terület rendszergazdai szerepkört a felhasználó által definiált függvényhez. Ez a szerepkör lehetővé teszi az informatikai részleg számára a kiépített szóközökből származó események elérését. 
 
-1. Konfigurálja úgy az UDF-et, hogy tartalmazza a hőmérséklet-megfeleltetőt. Ehhez adja hozzá az alábbi sort, vagy távolítsa el a megjegyzést az alábbi sorból a `matcherNames`provisionSample.yaml*fájl* csomópontjában:
+1. Konfigurálja úgy az UDF-et, hogy tartalmazza a hőmérséklet-megfeleltetőt. Ehhez adja hozzá az alábbi sort, vagy távolítsa el a megjegyzést az alábbi sorból a *provisionSample.yaml* fájl `matcherNames` csomópontjában:
 
     ```yaml
             - Matcher Temperature
@@ -234,7 +234,7 @@ Ebben a szakaszban az *eszköz-kapcsolat* nevű projektet fogja használni a min
 
 ## <a name="get-results-of-the-user-defined-function"></a>A felhasználó által definiált függvény eredményeinek beolvasása
 
-A felhasználó által meghatározott függvény mindig fut, amikor a példány eszköz- és érzékelőadatokat fogad. Ez a szakasz lekérdezi az Azure Digital Twins-példányt, hogy beolvassa a felhasználó által definiált függvény eredményét. A közel valós időben jelenik meg, amikor egy helyiség elérhetővé válik, hogy a levegő friss, a hőmérséklet pedig megfelelő legyen. 
+A felhasználó által meghatározott függvény mindig fut, amikor a példány eszköz- és érzékelőadatokat fogad. Ez a szakasz lekérdezi az Azure Digital Twins-példányt, hogy beolvassa a felhasználó által definiált függvény eredményét. Közel valós időben értesítjük, ha rendelkezésre áll egy helyiség, hogy a levegő friss, a hőmérséklet pedig megfelelő. 
 
 1. Nyissa meg a minta kiépítéséhez használt parancssorablakot vagy egy új parancssorablakot, és lépjen a minta **Occupancy-quickstart\src** mappájába.
 
@@ -252,12 +252,12 @@ Ha a figyelt feltétel teljesül, a felhasználó által definiált függvény m
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha azt szeretné, ezen a ponton felfedezése az Azure digitális Twins leállítására, nyugodtan ebben az oktatóanyagban létrehozott erőforrások törléséhez:
+Ha ezen a ponton szeretné leállítani az Azure digitális Twins felfedezését, nyugodtan törölheti az ebben az oktatóanyagban létrehozott erőforrásokat:
 
 1. A [Azure Portal](https://portal.azure.com)bal oldali menüjében válassza a **minden erőforrás**elemet, válassza ki a digitális Twins-erőforráscsoportot, és válassza a **Törlés**lehetőséget.
 
     > [!TIP]
-    > Ha törli a digitális Twins-példány problémajegyek tapasztal, szolgáltatás frissítése lett állítva a javítás. Ismételje meg a példány törlése.
+    > Ha hibát észlelt a digitális Twins-példány törlésével kapcsolatban, a javítás a szolgáltatásban frissült. Próbálkozzon újra a példány törlésével.
 
 2. Ha szükséges, törölje a mintául szolgáló alkalmazásokat a munkahelyi gépen.
 

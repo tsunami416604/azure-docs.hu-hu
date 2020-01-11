@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: b79ca1d93baf1941d5de8db0c314f9cd21e51056
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c7a70d8209c5c349fc082d939a24deac23fa954d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74328043"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863427"
 ---
 # <a name="grant-data-access-to-an-environment"></a>Az adathozzáférés biztosítása egy környezethez
 
@@ -27,7 +27,7 @@ Ez a cikk a Azure Time Series Insights előzetes verziójának hozzáférési h�
 
 ## <a name="sign-in-to-time-series-insights"></a>Bejelentkezés Time Series Insights
 
-1. Jelentkezzen be az [Azure Portal](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 1. Keresse meg Time Series Insights-környezetét. Írja be a `Time Series` **kifejezést a keresőmezőbe** . Válassza az **idősorozat-környezet** lehetőséget a keresési eredmények között.
 1. Válassza ki az Azure Time Series Insights környezetet a listából.
 
@@ -113,7 +113,7 @@ Kövesse az alábbi lépéseket, ha vendég hozzáférést szeretne biztosítani
 
 1. A vendég most már hozzáférhet a megosztott környezethez a rendszergazda által biztosított környezeti URL-címmel. Az URL-címet megadhatják a böngészőjében azonnali hozzáférés céljából.
 
-1. A vendég felhasználó megtekintheti a rendszergazda bérlőjét, ha kiválasztja a profil ikont a Time Series Explorer jobb felső sarkában.
+1. A rendszergazda bérlője megjelenik a vendég felhasználó számára, miután kiválasztja a profil ikont a Time Series Explorer jobb felső sarkában.
 
     [![avatár kiválasztása a insights.azure.com](media/data-access/data-access-select-tenant-and-instance.png)](media/data-access/data-access-select-tenant-and-instance.png#lightbox)
 

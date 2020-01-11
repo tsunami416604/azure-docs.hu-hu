@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 01/25/2019
-ms.openlocfilehash: deefc1cc1d8fe82eab9ec0085b3a11ccd2fe7840
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6b70eb1a6e51c98311ae51648b1a9618f9c3349d
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820596"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861336"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Elastic Database feladatok létrehozása és kezelése a Transact-SQL (T-SQL) használatával
 
@@ -350,7 +350,7 @@ ORDER BY start_time DESC
 ```
 
 
-## <a name="cancel-a-job"></a>Feladat megszakítása
+## <a name="cancel-a-job"></a>Feladatok megszakítása
 
 A következő példa egy feladat megszakítását mutatja be.  
 Kapcsolódjon a [*feladatok adatbázisához*](sql-database-job-automation-overview.md#job-database) , és futtassa a következő parancsot:
@@ -1192,7 +1192,7 @@ GO
 A [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database)a következő nézetek érhetők el.
 
 
-|Nézet  |Leírás  |
+|Megtekintés  |Leírás  |
 |---------|---------|
 |[job_executions](#job_executions-view)     |  A feladatok végrehajtási előzményeit jeleníti meg.      |
 |[feladatok](#jobs-view)     |   Megjeleníti az összes feladatot.      |
@@ -1200,7 +1200,7 @@ A [feladatok adatbázisban](sql-database-job-automation-overview.md#job-database
 |[feladatlépésnél](#jobsteps-view)     |     Megjeleníti az egyes feladatok aktuális verziójának összes lépését.    |
 |[jobstep_versions](#jobstep_versions-view)     |     Megjeleníti az egyes feladatok összes verziójának összes lépését.    |
 |[target_groups](#target_groups-view)     |      Megjeleníti az összes célcsoportot.   |
-|[target_group_members](#target_groups_members-view)     |   Megjeleníti az összes célcsoport összes tagját.      |
+|[target_group_members](#target_group_members-view)     |   Megjeleníti az összes célcsoport összes tagját.      |
 
 
 ### <a name="job_executions-view"></a>job_executions nézet
@@ -1217,7 +1217,7 @@ A feladatok végrehajtási előzményeit jeleníti meg.
 |**job_id** |uniqueidentifier|  A feladatokhoz tartozó egyedi azonosító.
 |**job_version**    |int    |A feladatokhoz tartozó verzió (a feladatok minden módosításakor automatikusan frissülnek).
 |**step_id**    |int|   A lépéshez tartozó egyedi (ehhez a feladathoz) azonosító. NULL érték azt jelzi, hogy ez a fölérendelt feladatok végrehajtása.
-|**is_active**| bites |Azt jelzi, hogy az adatok aktívak vagy inaktívak-e. 1 az aktív feladatokat jelöli, a 0 pedig inaktív értéket jelez.
+|**is_active**| bit |Azt jelzi, hogy az adatok aktívak vagy inaktívak-e. 1 az aktív feladatokat jelöli, a 0 pedig inaktív értéket jelez.
 |**életciklus**| nvarchar (50)|A (z) "létrehozva", "folyamatban", "sikertelen", "sikeres", "kihagyott", "SucceededWithSkipped" művelet állapotát jelző érték.|
 |**create_time**|   datetime2 (7)|   A feladatok létrehozásának dátuma és időpontja.
 |**start_time** |datetime2 (7)|  A feladatok végrehajtásának dátuma és időpontja. NULL, ha a feladatot még nem hajtották végre.
@@ -1284,7 +1284,7 @@ Megjeleníti az egyes feladatok aktuális verziójának összes lépését.
 |**target_group_id**|   uniqueidentifier|   A célcsoport egyedi azonosítója.|
 |**initial_retry_interval_seconds**|    int |Az első újrapróbálkozási kísérlet előtti késleltetés. Az alapértelmezett érték 1.|
 |**maximum_retry_interval_seconds** |int|   Az újrapróbálkozási kísérletek közötti maximális késleltetés. Ha az újrapróbálkozások közötti késleltetés nagyobb mértékben növekedni fog, mint ez az érték, akkor ez az érték nem éri el a határértéket. Az alapértelmezett érték a 120.|
-|**retry_interval_backoff_multiplier**  |valós|  Az újrapróbálkozási késleltetésre alkalmazandó szorzó, ha több feladat-végrehajtási kísérlet meghiúsul. Az alapértelmezett érték a 2,0.|
+|**retry_interval_backoff_multiplier**  |real|  Az újrapróbálkozási késleltetésre alkalmazandó szorzó, ha több feladat-végrehajtási kísérlet meghiúsul. Az alapértelmezett érték a 2,0.|
 |**retry_attempts** |int|   Az újrapróbálkozási kísérletek száma, ha ez a lépés meghiúsul. Az alapértelmezett érték 10, amely nem kísérli meg az újrapróbálkozási kísérleteket.|
 |**step_timeout_seconds**   |int|   Az újrapróbálkozási kísérletek közötti idő (percben). Az alapértelmezett érték 0, amely 0 perces intervallumot jelez.|
 |**output_type**    |nvarchar (11)|  A parancs helye. Az aktuális előzetes verzióban a "inline" az alapértelmezett és az egyetlen elfogadott érték.|
@@ -1315,9 +1315,9 @@ Felsorolja az összes célcsoportot.
 |**target_group_name**| nvarchar (128)   |A célcsoport neve, adatbázisok gyűjteménye. 
 |**target_group_id**    |uniqueidentifier   |A célcsoport egyedi azonosítója.
 
-### <a name="target_groups_members-view"></a>target_groups_members nézet
+### <a name="target_group_members-view"></a>target_group_members nézet
 
-[feladatok]. [target_groups_members]
+[feladatok]. [target_group_members]
 
 Megjeleníti az összes célcsoport összes tagját.
 
@@ -1337,12 +1337,12 @@ Megjeleníti az összes célcsoport összes tagját.
 |**shard_map_name** |nvarchar (128)| A célcsoportban található szegmens-hozzárendelés neve. Csak akkor van megadva, ha target_type "SqlShardMap".|
 
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 
  - ![Témakör hivatkozás ikon](https://docs.microsoft.com/sql/database-engine/configure-windows/media/topic-link.gif "Témakör hivatkozásának ikonja") [Transact-SQL szintaxisának konvenciói](https://docs.microsoft.com/sql/t-sql/language-elements/transact-sql-syntax-conventions-transact-sql)  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Rugalmas feladatok létrehozása és kezelése a PowerShell használatával](elastic-jobs-powershell.md)
 - [Engedélyezés és engedélyek SQL Server](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/authorization-and-permissions-in-sql-server)

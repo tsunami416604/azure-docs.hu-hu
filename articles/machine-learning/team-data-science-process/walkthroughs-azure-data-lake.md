@@ -1,37 +1,37 @@
 ---
-title: Analytics U-SQL használatával az Azure Data Lake - csoportos adatelemzési folyamat
-description: A prediktív elemzések az Azure Data Lake U-SQL használatával bejárása példái.
+title: Elemzés a U-SQL használatával Azure Data Lake-Team adatelemzési folyamaton
+description: Példák az U-SQL on Azure Data Lake használatára a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b0599317d09a1757b3c86372cb7ed8ea78d4cdd7
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2e5eb0acd2a94f7726fbacefbe6e1022c8cebae2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60804693"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864179"
 ---
-# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>U-SQL használatával az Azure Data Lake adatelemzési útmutatók
+# <a name="azure-data-lake-data-science-walkthroughs-using-u-sql"></a>Adatelemzési útmutató Azure Data Lake a U-SQL használatával
 
-Ezek a forgatókönyvek az Azure Data Lake U-SQL segítségével prediktív elemzések. A csoportos adatelemzési folyamat lépéseinek követik. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). Bevezetés az Azure Data Lake, lásd: [az Azure Data Lake Store áttekintése](../../data-lake-store/data-lake-store-overview.md).
+Ezek a forgatókönyvek a U-SQL-t használják Azure Data Lake a prediktív elemzések elvégzéséhez. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A Azure Data Lake bevezetését lásd: [Azure Data Lake Store áttekintése](../../data-lake-store/data-lake-store-overview.md).
 
-További adatelemzési útmutatók, a csoportos adatelemzési folyamat végrehajtható szerint vannak csoportosítva a **platform** használnak. Lásd: [forgatókönyvek végrehajtása a csoportos adatelemzési folyamat](walkthroughs.md) a példák egy részletezéshez.
-
-
-## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Előrejelezheti a taxi tippek az Azure Data Lake U-SQL használatával
-
-A [használata az Azure Data Lake adatelemzés](data-lake-walkthrough.md) forgatókönyv bemutatja, hogyan használhatja az Azure Data Lake az adatok feltárása és a bináris osztályozási műveletek a NYC mintát taxiköltség adatkészlet előrejelzési e tipp egy ügyfél fizeti. 
+A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="predict-taxi-tips-using-u-sql-with-azure-data-lake"></a>Az U-SQL és a Azure Data Lake használatával megjósolható a taxi
 
-A csoportos adatelemzési folyamat alkotó főbb összetevőit, lásd: [csoportos adatelemzési folyamat áttekintése](overview.md).
+Az [adatelemzési útmutató Azure Data Lake használata](data-lake-walkthrough.md) című cikk azt mutatja be, hogyan használhatók az adatfelderítési és a bináris besorolási feladatok Azure Data Lake.  Az adat a New York-i taxi adatkészletének mintája.  A feladat előre jelzi, hogy az ügyfél fizetett-e borravalót. 
 
-A csoportos adatelemzési folyamat életciklusa, amelyek segítségével az adatelemzési projektek strukturálása tárgyalását lásd: [csoportos adatelemzési folyamat életciklusa](lifecycle.md). Az életciklus elejétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit ismerteti. 
+
+## <a name="next-steps"></a>Következő lépések
+
+A csoportos adatelemzési folyamat áttekintését lásd: a [csoportos adatelemzési folyamat áttekintése](overview.md).
+
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus azokat a lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk során követnek. 

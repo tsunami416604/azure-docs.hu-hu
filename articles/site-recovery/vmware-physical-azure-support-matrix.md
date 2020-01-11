@@ -3,13 +3,14 @@ title: Támogatási mátrix a VMware/fizikai vész-helyreállításhoz Azure Sit
 description: Összefoglalja a VMware virtuális gépek és a fizikai kiszolgálók vész-helyreállításának támogatását az Azure-ban Azure Site Recovery használatával.
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: 752f2276f23aa22feac870493e1ea5c1fdc4ca98
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 1/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1d6f5df59a318388a7a5fea75d1fd17e18cb7745
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645939"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864332"
 ---
 # <a name="support-matrix-for-disaster-recovery--of-vmware-vms-and-physical-servers-to-azure"></a>A VMware virtuális gépek és fizikai kiszolgálók Azure-ba való vész-helyreállítási mátrixának támogatása
 
@@ -226,7 +227,7 @@ Ritkán használt tároló | Nem
 Gyors tárolás| Nem
 Blokkblobok | Nem
 Titkosítás – Rest (SSE)| Igen
-Titkosítás – Rest (CMK)| Nem
+Titkosítás – Rest (CMK)| Igen (a PowerShell az 3.3.0 modultól kezdődően)
 Prémium szintű Storage | Igen
 Importálási/exportálási szolgáltatás | Nem
 Azure Storage-tűzfalak a virtuális hálózatok | Igen.<br/> A cél Storage/cache Storage-fiókra van konfigurálva (a replikációs adattároláshoz használatos).

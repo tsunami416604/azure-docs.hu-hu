@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: quickstart
-ms.date: 10/23/2019
+ms.date: 01/09/2020
 ms.author: diberry
-ms.openlocfilehash: 91aee7f4a110490495a3cf840e6b3ef3282c91c5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bec68cbb88a9acacbc1a9a081ce3d8612b709d18
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446371"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860231"
 ---
 # <a name="quickstart-personalizer-client-library-for-nodejs"></a>Rövid útmutató: személyre szabott ügyféloldali kódtár a Node. js-hez
 
@@ -26,7 +26,7 @@ Ismerkedjen meg a következővel: Node. js-hez készült személyre szabott ügy
  * A személyre szabási műveletek listájának rangsorolása.
  * A legjobb rangsorolt művelet sikerességét jelző jelentés jutalmazási pontszáma.
 
-[Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-personalizer/?view=azure-node-latest) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-personalizer) | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-personalizer) | [minták](https://github.com/Azure-Samples/cognitive-services-personalizer-samples/blob/master/quickstarts/node/sample.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -49,7 +49,7 @@ A rövid útmutató használatának számos lépése van:
 
 Az Azure Cognitive Services a-ra előfizetett Azure-erőforrások képviselik. Hozzon létre egy erőforrást a személyre szabáshoz a [Azure Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) vagy az [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli) használatával a helyi gépen. További lehetőségek:
 
-* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).  
+* A [próbaverziós kulcs](https://azure.microsoft.com/try/cognitive-services) ingyenes 7 napig érvényes. A regisztráció után elérhető lesz az [Azure webhelyén](https://azure.microsoft.com/try/cognitive-services/my-apis/).
 * Tekintse meg az erőforrást a [Azure Portalon](https://portal.azure.com/).
 
 A próbaverziós előfizetésből vagy erőforrásból származó kulcs lekérése után hozzon létre két [környezeti változót](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication):
@@ -62,13 +62,13 @@ A Azure Portal mind a kulcs, mind a végpont értéke elérhető a **gyors üzem
 
 ## <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-`package.json` fájl létrehozásához futtassa a `npm init -y` parancsot. 
+`package.json` fájl létrehozásához futtassa a `npm init -y` parancsot.
 
 ```console
 npm init -y
@@ -100,11 +100,11 @@ Ha a rendszer először létrehoz egy személyre szabott hurkot, nem áll rendel
 
 A személyre szabott ügyfél egy PersonalizerClient objektum, amely a kulcsot tartalmazó Microsoft. Rest. ServiceClientCredentials használatával hitelesíti az Azure-t.
 
-A tartalom rangjának megadásához hozzon létre egy RankRequest, majd továbbítsa azt az ügyfélnek. Rangsor metódusa. A Rank metódus egy RankResponse ad vissza, amely a rangsorolt tartalmat tartalmazza. 
+A tartalom rangjának megadásához hozzon létre egy RankRequest, majd továbbítsa azt az ügyfélnek. Rangsor metódusa. A Rank metódus egy RankResponse ad vissza, amely a rangsorolt tartalmat tartalmazza.
 
-A személyre szabott jutalom elküldéséhez hozzon létre egy RewardRequest, majd továbbítsa azt az ügyfélnek. Jutalmazási módszer. 
+A személyre szabott jutalom elküldéséhez hozzon létre egy RewardRequest, majd továbbítsa azt az ügyfélnek. Jutalmazási módszer.
 
-A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek az egyik elsődleges tervezési döntésnek kell lennie a személyre szabott architektúrában. 
+A jutalom meghatározása ebben a rövid útmutatóban triviális. Éles rendszerekben annak meghatározása, hogy milyen hatással van a [jutalom pontszáma](concept-rewards.md) , és hogy mekkora mértékben lehet egy összetett folyamat, dönthet úgy, hogy idővel változhat. Ennek az egyik elsődleges tervezési döntésnek kell lennie a személyre szabott architektúrában.
 
 ## <a name="code-examples"></a>Kódpéldák
 
@@ -116,7 +116,7 @@ Ezek a kódrészletek megmutatják, hogyan hajthatja végre a következőket a k
 
 ## <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Hozzon létre egy új Node. js-alkalmazást az előnyben részesített szerkesztőben vagy `sample.js`nevű IDE. 
+Hozzon létre egy új Node. js-alkalmazást az előnyben részesített szerkesztőben vagy `sample.js`nevű IDE.
 
 ## <a name="add-the-dependencies"></a>Függőségek hozzáadása
 
@@ -146,7 +146,7 @@ A műveletek a személyre szabáshoz használni kívánt tartalmi beállítások
 
 ## <a name="create-the-learning-loop"></a>A tanulási hurok létrehozása
 
-A személyre szabott tanulási hurok a [Range](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat. 
+A személyre szabott tanulási hurok a [Range](#request-a-rank) és a [jutalmazási](#send-a-reward) hívások ciklusa. Ebben a rövid útmutatóban a tartalom személyre szabásához a rangsorban megjelenő minden egyes hívást egy jutalmazási hívás követ, amely azt jelzi, hogy a szolgáltatás milyen jól rangsorolja a tartalmat.
 
 A következő hurkos kód hurkokat mutat egy ciklusban, amellyel a felhasználó a parancssorban megkérdezi a felhasználót, hogy az információt a személyre szabhatja a rangsorban, és megjelenítheti az ügyfélnek a listában kiválasztott kiválasztási lehetőséget, majd elküldheti a jutalmat Személyre szabott jelzés arról, hogy a szolgáltatás milyen mértékben volt rangsorolva a kijelölésben.
 
@@ -161,9 +161,9 @@ Adja hozzá a következő metódusokat, amelyek [megkapják a tartalom választ�
 
 ## <a name="request-a-rank"></a>Rangsor igénylése
 
-A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat olyan tartalmat hozhat létre, amely kizárható a rangsorból, `excludeActions`ként jelenik meg. A rangsorolási kérelemnek szüksége van a [műveletekre](concepts-features.md#actions-represent-a-list-of-options), a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-azonosítóra (GUID) a rangsorolt válasz fogadásához. 
+A rangsorolási kérelem teljesítéséhez a program megkéri a felhasználó beállításait, hogy hozzon létre tartalmakat. A folyamat olyan tartalmat hozhat létre, amely kizárható a rangsorból, `excludeActions`ként jelenik meg. A rangsorolási kérelemnek szüksége van a [műveletekre](concepts-features.md#actions-represent-a-list-of-options), a LicenseManager CurrentContext, a excludeActions és az egyedi rangsorolt esemény-azonosítóra (GUID) a rangsorolt válasz fogadásához.
 
-Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](concepts-features.md) meghatározása és [értékelése](concept-feature-evaluation.md) nem triviális kérdés lehet.  
+Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások egyszerű kontextusát tartalmazza. Az éles rendszerekben a [műveletek és szolgáltatások](concepts-features.md) meghatározása és [értékelése](concept-feature-evaluation.md) nem triviális kérdés lehet.
 
 [!code-javascript[The Personalizer learning loop ranks the request.](~/samples-personalizer/quickstarts/node/sample.js?name=rank)]
 
@@ -171,7 +171,7 @@ Ez a rövid útmutató a napszak és a felhasználói élelmiszer-beállítások
 
 A jutalmazási kérelem elvégzéséhez a program beolvassa a felhasználó kijelölését a parancssorból, hozzárendel egy numerikus értéket az egyes kijelölésekhez, majd elküldi az egyedi rangú esemény AZONOSÍTÓját és a numerikus értéket a jutalmazási metódusnak.
 
-Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés lehet annak meghatározása, hogy mikor és mit kell elküldeni a [jutalmazási](concept-rewards.md) hívásnak. 
+Ez a rövid útmutató egy egyszerű számot rendel hozzá jutalomként, akár nulla, akár 1. Az éles rendszerekben az adott igényektől függően nem triviális kérdés lehet annak meghatározása, hogy mikor és mit kell elküldeni a [jutalmazási](concept-rewards.md) hívásnak.
 
 [!code-javascript[The Personalizer learning loop sends a reward.](~/samples-personalizer/quickstarts/node/sample.js?name=reward)]
 

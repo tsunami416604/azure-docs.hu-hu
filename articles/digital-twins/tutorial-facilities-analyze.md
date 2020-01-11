@@ -9,12 +9,12 @@ ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
 ms.date: 11/12/2019
-ms.openlocfilehash: cab13fd65e9fdbd7179e6ba759b1aa696ef95fa1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: d955711c44e3822f9c37d47b390b928701ab773b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790332"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860996"
 ---
 # <a name="tutorial-visualize-and-analyze-events-from-azure-digital-twins-by-using-time-series-insights"></a>Oktatóanyag: az Azure Digital Twins eseményeinek megjelenítése és elemzése Time Series Insights használatával
 
@@ -157,7 +157,7 @@ Az [Event Hubs](../event-hubs/event-hubs-about.md) szolgáltatással folyamatoka
 
 1. A **Ugrás a környezetre** gombra kattintva megnyílik a [Time Series Insights Explorer](../time-series-insights/time-series-insights-explorer.md). Ha nem jelenít meg eseményeket, szimulálja az eszköz eseményeit, és megkeresi a digitális Twins **-minta eszköz-csatlakozási** projektjét, és futtatja `dotnet run`.
 
-1. Néhány szimulált esemény generálása után térjen vissza a Time Series Insights Explorerrel, és kattintson a felül található frissítés gombra. Meg kell jelennie a szimulált érzékelő adataihoz létrehozott analitikai diagramoknak. 
+1. Néhány szimulált esemény generálása után térjen vissza a Time Series Insights Explorerrel, és kattintson a felül található frissítés gombra. Ekkor megjelennek a szimulált érzékelők adataihoz létrehozott analitikus diagramok. 
 
     [![diagram a Time Series Insights Explorerben](./media/tutorial-facilities-analyze/tsi-explorer.png)](./media/tutorial-facilities-analyze/tsi-explorer.png#lightbox)
 

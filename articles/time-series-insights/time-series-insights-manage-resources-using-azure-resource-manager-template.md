@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: 4edf5189b54a5b1fb1b953064c5db1cd50930b84
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452847"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861846"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -26,7 +26,7 @@ A Time Series Insights a következő erőforrásokat támogatja:
 
    | Erőforrás | Leírás |
    | --- | --- |
-   | Környezet | A Time Series Insights-környezetek az események olyan logikai csoportjai, amelyeket az esemény-átvitelszervezők, a tárolt és a lekérdezés számára elérhetővé tettek. További információ: [a Azure Time Series Insights környezet megtervezése](time-series-insights-environment-planning.md) |
+   | Környezet | A Time Series Insights-környezetek az események olyan logikai csoportjai, amelyeket az esemény-átvitelszervezők, a tárolt és a lekérdezés számára elérhetővé tettek. További információért olvassa el [a Azure Time Series Insights-környezet megtervezése](time-series-insights-environment-planning.md) című témakört. |
    | Eseményforrás | Az eseményforrás egy olyan esemény-közvetítőhöz való kapcsolat, amelyből a Time Series Insights beolvassa és betölti az eseményeket a környezetbe. A jelenleg támogatott eseményforrás a IoT Hub és az Event hub. |
    | Hivatkozási adathalmaz | A hivatkozási adatkészletek metaadatokat biztosítanak a környezetben lévő eseményekről. A rendszer a hivatkozási adatkészletekben lévő metaadatokat a beléptetéskor zajló eseményekhez fogja csatlakoztatni. A hivatkozási adatkészletek az esemény kulcsának tulajdonságai alapján határozzák meg az erőforrásokat. A hivatkozási adatkészletet alkotó tényleges metaadatokat a rendszer az adatsík API-kkal feltölti vagy módosítja. |
    | Hozzáférési szabályzat | A hozzáférési házirendek engedélyeket biztosítanak az adatlekérdezések kiküldéséhez, a környezetben lévő hivatkozási adat kezeléséhez, valamint a környezethez társított mentett lekérdezések és perspektívák megosztásához. További információért olvassa el az [adathozzáférés engedélyezése Time Series Insights környezethez Azure Portal használatával](time-series-insights-data-access.md) című témakört. |
@@ -75,8 +75,8 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      | --- | --- |
      | existingEventHubResourceId | Egy meglévő Event hub nem kötelező erőforrás-azonosítója, amely az eseményforrás használatával fog csatlakozni a Time Series Insights környezethez. **Megjegyzés:** A sablont telepítő felhasználónak jogosultságokkal kell rendelkeznie a listkeys műveletének beolvasása művelet végrehajtásához az Event hub-on. Ha a rendszer nem ad át értéket, a sablon létrehoz egy új Event hub-t. |
      | environmentDisplayName | A környezet neve helyett az eszközökön vagy a felhasználói felületeken megjelenítendő, nem kötelezően megadandó felhasználóbarát név. |
-     | environmentSkuName | A termékváltozat neve. További információkért tekintse meg a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
-     | environmentSkuCapacity | Az SKU egységnyi kapacitása. További információkért tekintse meg a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).|
+     | environmentSkuName | A termékváltozat neve. További információért olvassa el a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).  |
+     | environmentSkuCapacity | Az SKU egységnyi kapacitása. További információért olvassa el a [Time Series Insights díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/time-series-insights/).|
      | environmentDataRetentionTime | A környezet eseményeinek minimális TimeSpan lesznek elérhetők a lekérdezéshez. Az értéket ISO 8601 formátumban kell megadni, például `P30D` egy 30 napos adatmegőrzési házirendhez. |
      | eventSourceDisplayName | Az eseményforrás neve helyett az eszközön vagy a felhasználói felületeken megjelenítendő, nem kötelezően megadandó felhasználóbarát név. |
      | eventSourceTimestampPropertyName | Az eseményforrás időbélyegzőként használt esemény tulajdonsága. Ha nincs megadva érték a timestampPropertyName, vagy null vagy üres karakterlánc van megadva, akkor a rendszer az esemény létrehozásának idejét fogja használni. |
@@ -86,7 +86,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
    * Példaként a következő paramétereket fogja használni egy környezet és egy olyan eseményforrás létrehozásához, amely egy meglévő Event hub eseményeinek olvasására szolgál. Emellett két olyan hozzáférési szabályzatot is létrehoz, amelyek közreműködői hozzáférést biztosítanak a környezethez.
 
-     ```json
+     ```JSON
      {
          "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
          "contentVersion": "1.0.0.0",
@@ -119,7 +119,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
      }
      ```
   
-    * További információkért lásd a [paramétereket](../azure-resource-manager/templates/parameter-files.md) ismertető cikket.
+    * További információért olvassa el a [paraméterekkel](../azure-resource-manager/templates/parameter-files.md) kapcsolatos cikket.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>A gyors üzembe helyezési sablon központi telepítése a PowerShell használatával
 
@@ -174,7 +174,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 1. A központi telepítés létrehozása
 
-    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információ: [növekményes és teljes telepítések](../azure-resource-manager/deployment-modes.md).
+    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információért olvassa el a [növekményes és a teljes telepítések](../azure-resource-manager/deployment-modes.md)című témakört.
 
     * A következő parancs a PowerShell-ablak öt szükséges paraméterének megadását kéri:
 
@@ -252,4 +252,4 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A Time Series Insights erőforrások REST API-kkal történő programozott kezelésével kapcsolatos információkért lásd: [Time Series Insights Management](https://docs.microsoft.com/rest/api/time-series-insights-management/).
+- A REST API-k használatával történő Time Series Insights erőforrások programozott kezelésével kapcsolatos információkért olvassa el [Time Series Insights felügyelet](https://docs.microsoft.com/rest/api/time-series-insights-management/)című témakört.

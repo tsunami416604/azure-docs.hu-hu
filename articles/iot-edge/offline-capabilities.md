@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: ba64dcdadc5fa670c4502a7d8d92cb35e3b0cacd
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 951c81b2d65fe17f6e79dbdd699051ba43b86c49
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924855"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867379"
 ---
 # <a name="understand-extended-offline-capabilities-for-iot-edge-devices-modules-and-child-devices"></a>A IoT Edge eszközök, modulok és alárendelt eszközök kibővített offline képességeinek megismerése
 
@@ -20,21 +20,21 @@ Azure IoT Edge támogatja a kibővített offline műveleteket a IoT Edge-eszköz
 
 ## <a name="how-it-works"></a>Működési elv
 
-Amikor egy IoT Edge eszköz offline módba kerül, a IoT Edge hub három szerepkört vesz igénybe. Először tárolja az összes olyan üzenetet, amely feljebb kerülne, és az eszköz újracsatlakoztatása után menti azokat. Másodszor, IoT Hub nevében hajtja végre a modulok és a gyermek eszközök hitelesítését, hogy azok továbbra is működőképesek legyenek. Harmadszor, lehetővé teszi az olyan alárendelt eszközök közötti kommunikációt, amelyek általában a IoT Hubon keresztül mennek keresztül. 
+Amikor egy IoT Edge eszköz offline módba kerül, a IoT Edge hub három szerepkört vesz igénybe. Először tárolja az összes olyan üzenetet, amely feljebb kerülne, és az eszköz újracsatlakoztatása után menti azokat. Másodszor, IoT Hub nevében hajtja végre a modulok és a gyermek eszközök hitelesítését, hogy azok továbbra is működőképesek legyenek. Harmadszor, lehetővé teszi az olyan alárendelt eszközök közötti kommunikációt, amelyek általában a IoT Hubon keresztül mennek keresztül.
 
 Az alábbi példa azt szemlélteti, hogyan működik egy IoT Edge-forgatókönyv kapcsolat nélküli módban:
 
 1. **Eszközök konfigurálása**
 
-   IoT Edge eszközök automatikusan offline képességekkel rendelkeznek. Ha ezt a képességet más IoT-eszközökre szeretné kiterjeszteni, a IoT Hub lévő eszközök között szülő-gyermek kapcsolatot kell deklarálnia. Ezt követően konfigurálja úgy a gyermek eszközöket, hogy megbízzanak a hozzárendelt fölérendelt eszközön, és irányítsa az eszközről a felhőbe irányuló kommunikációt a szülőn keresztül átjáróként. 
+   IoT Edge eszközök automatikusan offline képességekkel rendelkeznek. Ha ezt a képességet más IoT-eszközökre szeretné kiterjeszteni, a IoT Hub lévő eszközök között szülő-gyermek kapcsolatot kell deklarálnia. Ezt követően konfigurálja úgy a gyermek eszközöket, hogy megbízzanak a hozzárendelt fölérendelt eszközön, és irányítsa az eszközről a felhőbe irányuló kommunikációt a szülőn keresztül átjáróként.
 
 2. **Szinkronizálás IoT Hub**
 
-   Legalább egyszer a IoT Edge futtatókörnyezet telepítését követően a IoT Edge eszköznek online állapotban kell lennie a IoT Hubval való szinkronizáláshoz. Ebben a szinkronizálásban a IoT Edge eszköz beolvassa a hozzá rendelt összes alárendelt eszköz adatait. A IoT Edge eszköz emellett a helyi gyorsítótárat is biztonságosan frissíti az offline műveletek engedélyezéséhez és a telemetria-üzenetek helyi tárolásához szükséges beállítások lekéréséhez. 
+   Legalább egyszer a IoT Edge futtatókörnyezet telepítését követően a IoT Edge eszköznek online állapotban kell lennie a IoT Hubval való szinkronizáláshoz. Ebben a szinkronizálásban a IoT Edge eszköz beolvassa a hozzá rendelt összes alárendelt eszköz adatait. A IoT Edge eszköz emellett a helyi gyorsítótárat is biztonságosan frissíti az offline műveletek engedélyezéséhez és a telemetria-üzenetek helyi tárolásához szükséges beállítások lekéréséhez.
 
 3. **Kapcsolat nélküli üzemmód**
 
-   A IoT Hub, a IoT Edge eszköz, az üzembe helyezett modulok és az összes gyermek IoT-eszköz korlátlanul működhet. A modulok és a gyermek eszközök elindíthatók és újraindíthatók, ha kapcsolat nélküli üzemmódban végeznek hitelesítést az IoT Edge hub használatával. A telemetria kötött felfelé irányuló IoT Hub helyileg van tárolva. A modulok és a gyermek IoT közötti kommunikáció közvetlen metódusokkal vagy üzenetekkel tartható karban. 
+   A IoT Hub, a IoT Edge eszköz, az üzembe helyezett modulok és az összes gyermek IoT-eszköz korlátlanul működhet. A modulok és a gyermek eszközök elindíthatók és újraindíthatók, ha kapcsolat nélküli üzemmódban végeznek hitelesítést az IoT Edge hub használatával. A telemetria kötött felfelé irányuló IoT Hub helyileg van tárolva. A modulok és a gyermek IoT közötti kommunikáció közvetlen metódusokkal vagy üzenetekkel tartható karban.
 
 4. **Újrakapcsolás és Újraszinkronizálás IoT Hub**
 
@@ -44,13 +44,11 @@ Az alábbi példa azt szemlélteti, hogyan működik egy IoT Edge-forgatókönyv
 
 ## <a name="restrictions-and-limits"></a>Korlátozások és korlátozások
 
-A jelen cikkben ismertetett kibővített offline képességek [IoT Edge 1.0.7 vagy újabb verzióban](https://github.com/Azure/azure-iotedge/releases)érhetők el. A korábbi verziók az offline funkciók egy részhalmazát alkotják. A bővített offline képességekkel nem rendelkező meglévő IoT Edge-eszközök nem frissíthetők a futtatókörnyezet verziójának módosításával, de a funkciók megszerzéséhez újra kell konfigurálni egy új IoT Edge-eszköz identitását. 
+A jelen cikkben ismertetett kibővített offline képességek [IoT Edge 1.0.7 vagy újabb verzióban](https://github.com/Azure/azure-iotedge/releases)érhetők el. A korábbi verziók az offline funkciók egy részhalmazát alkotják. A bővített offline képességekkel nem rendelkező meglévő IoT Edge-eszközök nem frissíthetők a futtatókörnyezet verziójának módosításával, de a funkciók megszerzéséhez újra kell konfigurálni egy új IoT Edge-eszköz identitását.
 
-A bővített offline támogatás minden olyan régióban elérhető, ahol a IoT Hub az **USA keleti** régiójában érhető el.
+Csak a nem IoT Edge eszközök adhatók hozzá alárendelt eszközökként.
 
-Csak a nem IoT Edge eszközök adhatók hozzá alárendelt eszközökként. 
-
-Az eszközök és a hozzájuk rendelt alárendelt eszközök IoT Edge a kezdeti, egyszeri szinkronizálást követően a kapcsolat nélküli üzemmódban nem működnek. Az üzenetek tárolása azonban az élettartam (TTL) beállítástól és az üzenetek tárolására rendelkezésre álló lemezterülettől függ. 
+Az eszközök és a hozzájuk rendelt alárendelt eszközök IoT Edge a kezdeti, egyszeri szinkronizálást követően a kapcsolat nélküli üzemmódban nem működnek. Az üzenetek tárolása azonban az élettartam (TTL) beállítástól és az üzenetek tárolására rendelkezésre álló lemezterülettől függ.
 
 ## <a name="set-up-parent-and-child-devices"></a>Szülő és gyermek eszközök beállítása
 
@@ -104,7 +102,8 @@ Végül a szülő-gyermek kapcsolatokat programozott módon kezelheti a vagy C#a
 
 Úgy gondolja, hogy egy szülő/gyermek kapcsolat transzparens átjáróként van, ahol a gyermek eszköz saját identitással rendelkezik IoT Hub de a szülőn keresztül kommunikál a felhőben. A biztonságos kommunikációhoz a gyermek eszköznek képesnek kell lennie annak ellenőrzésére, hogy a fölérendelt eszköz megbízható forrásból származik-e. Ellenkező esetben a harmadik felek rosszindulatú eszközöket állíthatnak be a szülők megszemélyesítésére és a kommunikáció elfogására. 
 
-A megbízhatósági kapcsolat létrehozásának egyik módját a következő cikkekben részletesen ismertetjük: 
+A megbízhatósági kapcsolat létrehozásának egyik módját a következő cikkekben részletesen ismertetjük:
+
 * [IoT Edge-eszköz konfigurálása transzparens átjáróként való működéshez](how-to-create-transparent-gateway.md)
 * [Alárendelt (gyermek) eszköz csatlakoztatása Azure IoT Edge átjáróhoz](how-to-connect-downstream-device.md)
 

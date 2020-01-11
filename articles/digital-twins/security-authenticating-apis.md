@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: 6c2b0ec5165652e77c92426bb62a30468eef04c2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 0aed84dc4d78f8e83f568ff3e73d1300aaedbcaa
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456900"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860962"
 ---
 # <a name="connect-to-and-authenticate-with-apis"></a>Kapcsolódás és hitelesítés API-kkal
 
@@ -49,7 +49,7 @@ Amikor a fejlesztők a digitális Twins-megoldásokat használják, általában 
 
 1. A rendszer ezután a beszerzett jogkivonatot használja a hitelesítéshez vagy hívja meg azokat az API-kat, amelyek további alsóbb rétegbeli folyamatokat használnak
 
-A folyamaton belüli folyamat előkészítésével kapcsolatos utasításokért lásd: [OAuth 2,0](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow)-alapú folyamat. Az [alárendelt webes API-k meghívásakor](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)is megtekintheti a kód mintáit.
+A folyamaton kívüli folyamat előkészítésével kapcsolatos utasításokért olvassa el [a OAuth 2,0-as folyamatát](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-on-behalf-of-flow). Az [alárendelt webes API-k meghívásakor](https://github.com/Azure-Samples/active-directory-dotnet-webapi-onbehalfof)is megtekintheti a kód mintáit.
 
 ## <a name="next-steps"></a>Következő lépések
 

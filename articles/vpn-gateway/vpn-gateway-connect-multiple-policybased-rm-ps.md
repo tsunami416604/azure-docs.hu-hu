@@ -2,18 +2,17 @@
 title: 'Azure VPN Gateway: átjárók csatlakoztatása több helyszíni házirend-alapú VPN-eszközhöz'
 description: Konfiguráljon egy Azure Route-alapú VPN-átjárót több házirend alapú VPN-eszközre a Azure Resource Manager és a PowerShell használatával.
 services: vpn-gateway
-documentationcenter: na
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 10/17/2019
 ms.author: yushwang
-ms.openlocfilehash: f307e37debe47d2d352b1a375259fe7a0d6dd3cd
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 029b7ce31e7e3f1c71d9fbe806b2d76d8a98d24b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74146716"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863740"
 ---
 # <a name="connect-azure-vpn-gateways-to-multiple-on-premises-policy-based-vpn-devices-using-powershell"></a>Azure VPN-átjárók csatlakoztatása több helyszíni, a PowerShell-t használó helyi házirend-alapú VPN-eszközhöz
 
@@ -25,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat egy Azure Route-alapú VPN-
 
 A házirend- *és útvonal-alapú VPN-eszközök* különböznek az IPSec-forgalom választóinak a kapcsolaton való beállításakor:
 
-* **Házirend-alapú** A VPN-eszközök mindkét hálózat előtagjainak kombinációit használják annak meghatározására, hogy a forgalom titkosítása/visszafejtése hogyan történjen az IPsec-alagutakon keresztül. Ez általában a csomagszűrés által elvégezhető tűzfalakon épül fel. A rendszer az IPsec-alagút titkosítását és visszafejtését adja hozzá a Csomagszűrés és a feldolgozó motorhoz.
+* **Házirend-alapú** A VPN-eszközök mindkét hálózat előtagjainak kombinációit használják annak meghatározására, hogy a forgalom titkosítása/visszafejtése hogyan történjen az IPsec-alagutakon keresztül. Ez általában a csomagszűrés által elvégezhető tűzfalakon épül fel. Az IPsec-alagút titkosítási és visszafejtési műveletei hozzáadódnak a csomagok szűrését és feldolgozását végző motorhoz.
 * **Route-alapú** A VPN-eszközök bármilyen típusú (helyettesítő) forgalmi választót használnak, és lehetővé teszik a különböző IPsec-alagutakra irányuló útválasztási/továbbítási táblák közvetlen forgalmát. Ez általában olyan útválasztó platformokra épül, ahol az egyes IPsec-alagutak hálózati adapterként vagy VTI (virtuális bújtatási felületen) vannak modellezve.
 
 A következő diagramok kiemelik a két modellt:
@@ -41,7 +40,7 @@ Jelenleg az Azure a VPN-átjárók mindkét üzemmódját támogatja: Route-alap
 
 |                          | **Házirendalapú VPN Gateway** | **Útvonalalapú VPN Gateway**       |**Útvonalalapú VPN Gateway**                          |
 | ---                      | ---                         | ---                              |---                                                 |
-| **Azure Gateway SKU**    | Alapszintű                       | Alapszintű                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
+| **Azure Gateway SKU**    | Basic                       | Basic                            | Standard, HighPerformance, VpnGw1, VpnGw2, VpnGw3  |
 | **IKE-verzió**          | IKEv1                       | IKEv2                            | IKEv1 és IKEv2                                    |
 | **Max. S2S-kapcsolatok** | **1**                       | 10                               |Standard: 10<br> Egyéb SKU-i: 30                     |
 |                          |                             |                                  |                                                    |
@@ -71,7 +70,7 @@ A kapcsolódást engedélyező munkafolyamat:
 3. Alkalmazza a házirendet a S2S vagy a VNet-VNet közötti kapcsolatok létrehozásakor, és **engedélyezze a házirend-alapú forgalom-választókat** a kapcsolatban.
 4. Ha a kapcsolódás már létrejött, a szabályzatot alkalmazhatja vagy frissítheti egy meglévő kapcsolatban.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
 
@@ -214,7 +213,7 @@ $connection6  = Get-AzVirtualNetworkGatewayConnection -Name $Connection16 -Resou
 Set-AzVirtualNetworkGatewayConnection -VirtualNetworkGatewayConnection $connection6 -UsePolicyBasedTrafficSelectors $False
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. A lépésekért lásd: [Virtuális gép létrehozása](../virtual-machines/virtual-machines-windows-hero-tutorial.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
 
 Tekintse át az [IPSec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet-VNet kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md) című témakört az egyéni IPSec/IKE-házirendekkel kapcsolatos további részletekért.

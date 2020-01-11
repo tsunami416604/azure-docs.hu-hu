@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 094a3a838269921339dcd6c2c3b551720f394251
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 65b760eaf28d907fab3654ed92f960be7556b0d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660324"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862356"
 ---
 # <a name="routing-iot-events-and-messages"></a>IoT-események és-üzenetek továbbítása
 
@@ -53,7 +53,7 @@ Az Azure Digital Twins jelenleg a következő **EventTypes** támogatja, amelyek
 
 > [!IMPORTANT]  
 > Nem minden **EndpointTypes** támogatja az összes **EventTypes**.
-> Az egyes **EndpointType**engedélyezett **EventTypes** a következő táblázat tartalmazza.
+> Tekintse át a következő táblázatot az egyes **EndpointType**engedélyezett **EventTypes** .
 
 |             | DeviceMessages | TopologyOperation | SpaceChange | SensorChange | UdfCustom |
 | ----------- | -------------- | ----------------- | ----------- | ------------ | --------- |
@@ -62,10 +62,10 @@ Az Azure Digital Twins jelenleg a következő **EventTypes** támogatja, amelyek
 | EventGrid|               |         X         |     X       |      X       |   X       |
 
 >[!NOTE]  
->A végpontok és az események sémájának létrehozásával kapcsolatos további információkért lásd: [kimenő és végpontok](how-to-egress-endpoints.md).
+>További információ a végpontok és az események sémájának létrehozásáról: a [kimenő forgalom és a végpontok](how-to-egress-endpoints.md)beolvasása.
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az Azure Digital Twins előzetes verziójának korlátairól további információt a [nyilvános előzetes verzió szolgáltatási korlátai](concepts-service-limits.md)című témakörben talál.
+- Az Azure Digital Twins előzetes verziójának korlátaival kapcsolatos információkért tekintse meg a [nyilvános előzetes verzió szolgáltatási korlátozásait](concepts-service-limits.md)ismertető témakört.
 
-- Egy Azure-beli digitális Twins-minta kipróbálásához tekintse meg a gyors üzembe helyezési lehetőséget a [rendelkezésre álló szobák megtalálásához](quickstart-view-occupancy-dotnet.md).
+- Egy Azure-beli digitális Twins-minta kipróbálásához olvassa el a gyors üzembe helyezést a [rendelkezésre álló szobák megtalálásához](quickstart-view-occupancy-dotnet.md).

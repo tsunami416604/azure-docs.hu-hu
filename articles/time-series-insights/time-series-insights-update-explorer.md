@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
 ms.custom: seodec18
-ms.openlocfilehash: d94daa5fbda4ee60ffc6671f7b50126662416043
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c117510749abcf997e414371faa6dea1dc79ea7a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746600"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861761"
 ---
 # <a name="azure-time-series-insights-preview-explorer"></a>Azure Time Series Insights Preview Explorer
 
@@ -48,7 +48,7 @@ A Azure Time Series Insights Preview Explorer a következő hét elemből áll:
 
 ## <a name="1-environment-panel"></a>1. környezeti panel
 
-A környezet panel megjeleníti az összes Time Series Insights környezetét, amelyhez hozzáfér. A lista az utólagos elszámolású (előzetes verzió) környezeteket, valamint az S1/S2 környezeteket (általánosan elérhető) tartalmazza. Egyszerűen kattintson arra a Time Series Insights-környezetre, amelyet azonnal el szeretne végezni.
+A környezet panel megjeleníti az összes Time Series Insights környezetét, amelyhez hozzáfér. A lista az utólagos elszámolású (előzetes verzió) környezeteket, valamint az S1/S2 környezeteket (általánosan elérhető) tartalmazza. Egyszerűen válassza ki a használni kívánt Time Series Insights-környezetet, amelyet azonnal el szeretne végezni.
 
 1. Válassza ki a megjelenített környezet melletti legördülő nyilat.
 
@@ -75,7 +75,7 @@ A Azure Time Series Insights előzetes verziója támogatja a teljes létrehozá
 * **Idősorozat-modell hierarchiája**: a hierarchiák az adataik szisztematikus szervezetei. A hierarchiák ábrázolják a Time Series Insights adataiban lévő különböző entitások közötti kapcsolatokat.
 * **Idősorozat-modell példány**: a példányok maguk az idősorozatok. A legtöbb esetben ezek a **DeviceID** vagy a **assetid**, amely az eszköz egyedi azonosítója a környezetben.
 
-Az idősorozat modelljével kapcsolatos további információkért lásd: [Times Series-modellek](./time-series-insights-update-tsm.md).
+Az idősorozat modelljével kapcsolatos további információkért olvassa el a [Times Series-modelleket](./time-series-insights-update-tsm.md).
 
 ## <a name="3-hierarchy-tree-and-search-panel"></a>3. hierarchia faszerkezete és keresési panelje
 
@@ -110,9 +110,9 @@ A diagram lehetővé teszi, hogy a Time Series-példányokat vonalakként jelen�
 
 1. **Diagram típusa**: meghatározza, hogy mely adatelemek érhetők el a vizualizációhoz.
 
-1. **Intervallum mérete**: az intervallum mérete csúszka eszköz lehetővé teszi az intervallumok közötti nagyítást és kicsinyítést az adott időtartományon belül. Így pontosabban szabályozhatja a mozgást a nagy szeletek között, amelyek az ezredmásodpercben lévő, kis méretű szeleteket mutatják, így a részletes, nagy felbontású adatmennyiségeket láthatja. A csúszka alapértelmezett kiindulási pontja a kiválasztott adatok legoptimálisabb nézete lesz. az elosztás feloldása, a lekérdezés sebessége és a részletesség.
+1. **Intervallum mérete**: az intervallum mérete csúszka eszköz lehetővé teszi az intervallumok közötti nagyítást és kicsinyítést az adott időtartományon belül. Ez precízebb vezérlést biztosít a nagy szeletek közötti mozgáshoz, amely az ezredmásodpercben lévő, kis méretű szeleteket mutatja, és lehetővé teszi a részletes, nagy felbontású adatmennyiségek áttekintését. A csúszka alapértelmezett kiindulási pontja a kiválasztott adatok legoptimálisabb nézete lesz. az elosztás feloldása, a lekérdezés sebessége és a részletesség.
 
-1. **Nagyítás és pásztázás**: kattintson erre a vezérlőre a diagram nagyításához és pásztázásához.
+1. **Nagyítás és pásztázás**: válassza ezt a vezérlőt a diagram nagyításához és pásztázásához.
 
 1. **Y tengely vezérlőelem**: az elérhető y tengelyes nézet beállításai:
 
@@ -122,15 +122,15 @@ A diagram lehetővé teszi, hogy a Time Series-példányokat vonalakként jelen�
 
 1. **Jelölő elem**: az aktuálisan kijelölt adatelem és a hozzájuk tartozó részletek.
 
-További részletezést adhat egy adott adatszelethez, ha az egér **bal oldali gombjával kattint** egy adatpontra, és lenyomja az egeret, majd a kijelölt területre húzza a kívánt végpontot. **Kattintson a jobb gombbal** a kék, a kijelölt területen, majd kattintson az alább látható **Nagyítás** lehetőségre. A kiválasztott TimeSpan is megtekintheti és letöltheti a telemetria eseményeket.
+További részletezést adhat egy adott adatszelethez, ha az egér **bal oldali gombjával kattint** egy adatpontra, és lenyomja az egeret, majd a kijelölt területre húzza a kívánt végpontot. **Kattintson a jobb gombbal** a kék, a kijelölt területen, majd válassza a **Nagyítás** lehetőséget az alább látható módon. A kiválasztott TimeSpan is megtekintheti és letöltheti a telemetria eseményeket.
 
   [![előnézeti diagram nagyítása](media/v2-update-explorer/preview-chart-zoom.png)](media/v2-update-explorer/preview-chart-zoom.png#lightbox)
 
-A **nagyítási** művelet elvégzése után megjelenik a kiválasztott adathalmaz. Válassza ki a formátum vezérlőelemet, hogy a Time Series Insights-adatainak három y tengelyes ábrázolását adja át.
+A **nagyítási** művelet elvégzése után a kiválasztott adatkészlet jelenik meg. Válassza ki a formátum vezérlőelemet, hogy a Time Series Insights-adatainak három y tengelyes ábrázolását adja át.
 
   [![előnézeti diagram y tengelye](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png)](media/v2-update-explorer/tsi-preview-explorer-standard-chart.png#lightbox)
 
-Itt láthat egy **átfedő diagramra**vonatkozó példát:
+Íme egy példa az **átfedésben lévő diagramra** :
 
   [![átfedésben lévő diagram lehetőség](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png)](media/v2-update-explorer/tsi-preview-explorer-overlapping-chart.png#lightbox)
 
@@ -207,7 +207,7 @@ Azure Time Series Insights előzetes verzió két témát támogat:
 
 Ez a szakasz csak olyan meglévő S1/S2 környezetekre vonatkozik, amelyek a frissített felhasználói felületen használják a Explorert. Előfordulhat, hogy az általánosan elérhető termék és az előzetes verzió együttes használatát szeretné használni. Felvettünk néhány funkciót a meglévő felhasználói felületről a frissített Explorerbe, de az S1/S2 környezet teljes felhasználói felületi élményét a meglévő Time Series Insights Explorerben is elérheti. 
 
-A hierarchia helyett a Time Series Insights feltételek panel jelenik meg, ahol lekérdezéseket határozhat meg a környezetben. Használatával szűrheti az adatait egy predikátum alapján.
+A hierarchia helyett megjelenik a Time Series Insights feltételek panel. A feltételek panel lehetővé teszi lekérdezések definiálását a környezetben. Az adathalmaz alapján is szűrheti az adatszűrést.
 
   [![a lekérdezési panel](media/v2-update-explorer/s1-s2-preview-query.png)](media/v2-update-explorer/s1-s2-preview-query.png#lightbox)
 
@@ -222,7 +222,7 @@ A Time Series Insights előzetes verziójának használati feltételeinek szerke
 | `IN` | Karakterlánc, bool, Double, DateTime, TimeSpan, NULL | Az összes operandusnak azonos típusúnak vagy NULL konstansnak kell lennie. |
 | `HAS` | Sztring | A jobb oldalon csak konstans karakterlánc-literálok engedélyezettek. Üres karakterlánc és NULL érték nem engedélyezett. |
 
-A támogatott lekérdezési műveletekkel és adattípusokkal kapcsolatos további tudnivalókért lásd a [Time Series kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)című témakört.
+Ha többet szeretne megtudni a támogatott lekérdezési műveletekről és az adattípusokról, olvassa el a [Time Series kifejezés (TSX)](https://docs.microsoft.com/rest/api/time-series-insights/preview#time-series-expression-and-syntax)című témakört.
 
 ### <a name="examples-of-where-clauses"></a>Példák a WHERE záradékokra
 

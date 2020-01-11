@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: f29bd4ab679d734c3acce967a5d60784b9884ba6
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561400"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863393"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
@@ -74,11 +74,11 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
 
 ## <a name="throttling-and-ingress-management"></a>Szabályozás és bejövő forgalom kezelése
 
-* Ha a szabályozása alatt áll, megjelenik a *Bejövő üzenetek fogadásának időkorlátja*, amely arról tájékoztatja, hogy hány másodpercig tart az idősorozat-elemzési környezete, és a tényleges idő, amikor az üzenet megkeresi az esemény forrását (kivéve a Appx indexelési idejét. 30-60 másodperc).  
+* Ha szabályozza a szabályozást, akkor a rendszer a *beérkező üzenetek időkorlátja* értékének megadásával értesíti arról, hogy hány másodpercig tart az idősorozat-elemzési környezete, és hogy az üzenet mikor kapja meg az esemény forrását (a Appx indexelési idejének kivételével). 30-60 másodperc).  
 
   A *bejövő fogadott üzenetek számának késési* értékének is szerepelnie kell, ami lehetővé teszi, hogy megtudja, hány üzenet mögött van.  A legkönnyebben elsajátítható, hogy növelje a környezet kapacitását olyan méretre, amely lehetővé teszi a különbség leküzdését.  
 
-  Ha például úgy látja, hogy S1-környezete 5 000 000-üzenetek késését mutatja be, a környezet méretét akár hat egységre is növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
+  Ha például az S1-környezet 5 000 000-üzenetek késését mutatja be, akkor a környezet méretét akár hat egységre is növelheti, hogy felkészüljön.  A gyorsabb felzárkózás érdekében még tovább növelheti. A felmerülési időszak gyakori esemény, amikor először telepítenek egy környezetet, különösen akkor, ha olyan eseménnyel csatlakozik, amely már rendelkezik eseményekkel, vagy ha nagy mennyiségű előzményt tölt fel.
 
 * Egy másik módszer egy **bejövő tárolt események** riasztásának beállítása > = egy küszöbérték kis mértékben a teljes környezeti kapacitás alatt 2 órán keresztül.  Ez a riasztás segít megismerni, hogy folyamatosan van-e kapacitása, ami nagy valószínűséggel jelzi a késést. 
 
@@ -86,11 +86,11 @@ A riasztások segíthetnek a környezete által okozott késési problémák dia
 
 * Ha azt gyanítja, hogy a szabályozása folyamatban van, összehasonlíthatja a **bejövő beérkező üzeneteket** az eseményforrás egressed üzeneteivel.  Ha az Event hub-ba való belépés nagyobb, mint a **bejövő fogadott üzenetek**, a Time Series Insights valószínűleg szabályozva lesznek.
 
-## <a name="improving-performance"></a>A teljesítmény javítása
+## <a name="improving-performance"></a>A teljesítmény fokozása
 
 A szabályozás és a késések csökkentése érdekében a legjobb megoldás a környezet kapacitásának növelésére.
 
-A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet. A kapacitásnak a környezethez való hozzáadásával kapcsolatos további információkért lásd: [a környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
+A késleltetés és a szabályozás elkerülése érdekében az elemezni kívánt adatmennyiséghez megfelelően konfigurálja a környezetet. Ha további információt szeretne arról, hogyan adhat hozzá kapacitást a környezethez, olvassa el [a környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 09/26/2019
 ms.author: alkohli
-ms.openlocfilehash: 365507f482217bd804bbd5017d4dbbaf8c187ad2
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 9e1a7f7cd2643aae61e60d77ad74f4a08266a977
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326882"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863597"
 ---
 # <a name="azure-data-box-edge-technical-specifications"></a>Technikai specifikációk Azure Data Box Edge
 
@@ -23,19 +23,19 @@ A Microsoft Azure Data Box Edge eszköz hardveres összetevői megfelelnek a jel
 
 A Data Box Edge eszköz a következő specifikációkkal rendelkezik a számításhoz és a memóriához:
 
-| Specifikáció           | Value                  |
+| Specifikáció           | Value (Díj)                  |
 |-------------------------|----------------------------|
 | CPU    | 2 X 10 mag CPU                     |
-| Memory (Memória)              | 128 GB RAM                  |
+| Memória              | 128 GB RAM                  |
 
 
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
 A rendszer minden Data Box Edge eszközön tartalmaz egy programozható Gate tömböt (FPGA), amely lehetővé teszi Machine Learning (ML) forgatókönyvek használatát. 
 
-| Specifikáció           | Value                  |
+| Specifikáció           | Value (Díj)                  |
 |-------------------------|----------------------------|
-| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
+| FPGA   | Intel Arria 10 <br> A rendelkezésre álló Deep neurális hálózati (DNN) modellek ugyanazok, mint a [Cloud FPGA-példányok által támogatottak](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-fpga-web-service#whats-supported-on-azure).| 
 
 
 ## <a name="power-supply-unit-specifications"></a>Tápegység-egységek specifikációi
@@ -45,8 +45,8 @@ A Data Box Edge eszközön két 100-240 V tápegység (PSUs) áll a nagy teljes�
 | Specifikáció           | 750 W PSU                  |
 |-------------------------|----------------------------|
 | Maximális kimeneti teljesítmény    | 750 W                     |
-| Gyakoriság               | 50/60 Hz                   |
-| Feszültség-tartomány kiválasztása | Automatikus sorbaállítás: 100-240 V AC |
+| Frequency               | 50/60 Hz                   |
+| Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
 | Gyors csatlakoztatás           | Igen                        |
 
 <!--## Power consumption statistics
@@ -57,14 +57,14 @@ The following table lists the typical power consumption data (actual values may 
 
 A Data Box Edge eszközökön 9 X 2,5 "NVMe SSD-k tartoznak, amelyek mindegyike 1,6 TB kapacitással rendelkezik. Ezek az SSD-k, 1 egy operációsrendszer-lemez, a másik 8 pedig adatlemez. Az eszköz teljes felhasználható kapacitása körülbelül 12,5 TB. Az alábbi táblázat az eszköz tárolókapacitásának részleteit tartalmazza.
 
-|     Specifikáció                          |     Value             |
+|     Specifikáció                          |     Value (Díj)             |
 |--------------------------------------------|-----------------------|
 |    SSD-meghajtók száma     |    8                  |
 |    Egyetlen SSD-kapacitás                     |    1,6 TB             |
 |    Teljes kapacitás                          |    12,8 TB            |
 |    Teljes felhasználható kapacitás *                  |    ~ 12,5 TB            |
 
-**Bizonyos területek belső használatra vannak fenntartva.*
+* *, hogy egyes területek belső használatra vannak fenntartva.*
 
 ## <a name="enclosure-dimensions-and-weight-specifications"></a>A bekerítés méretei és súlyozási jellemzői
 
@@ -105,8 +105,8 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 
 |     Ház         |     Környezeti hőmérséklet tartománya     |     Környezeti relatív páratartalom     |     Maximális harmatpont     |
 |-----------------------|--------------------------------------|--------------------------------------|---------------------------|
-|    Működik        |    10 °C – 35 °C (50 °F-86 °F)         |    10%-80% nem kondenzációs.         |    29 °C (84 °F)            |
-|    Nem működő    |    -40 °C-tól 65 °C-ig (-40 °F-149 °F)     |    5%-95%-os nem kondenzációs.          |    33°C (91°F)            |
+|    Operatív        |    10 °C – 35 °C (50 °F-86 °F)         |    10%-80% nem kondenzációs.         |    29 °C (84 °F)            |
+|    Nem működő    |    -40 °C-tól 65 °C-ig (-40 °F-149 °F)     |    5%-95%-os nem kondenzációs.          |    33 °C (91 °F)            |
 
 ### <a name="airflow-altitude-shock-vibration-orientation-safety-and-emc"></a>Légáram, magasság, sokk, vibráció, orientáció, biztonság és EMC
 
@@ -135,6 +135,6 @@ Ez a szakasz felsorolja a bekerítési környezettel kapcsolatos specifikációk
 |    40 °C-ról 45 °C-ra (104 °F – 113 °F)           |    A maximális hőmérsékletet 1 °C/125 m (1 °F/228 Ft) csökkenti 950 m felett (3 117 Ft).    |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Azure Data Box Edge üzembe helyezése](data-box-edge-deploy-prep.md)

@@ -1,19 +1,18 @@
 ---
-title: Örökölt Azure Virtual Network VPN Gateway SKU-i | Microsoft Docs
+title: Örökölt Azure Virtual Network VPN Gateway SKU-i
 description: A régi virtuális hálózati átjáró SKU-i használata; Alapszintű, standard és HighPerformance.
 services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.workload: infrastructure-services
 ms.date: 08/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: 5c745258929d495c1e568a156690f569de9f0e36
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 9c5e6d5aca51bd560a46837ba47de86362665773
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69533905"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861914"
 ---
 # <a name="working-with-virtual-network-gateway-skus-legacy-skus"></a>A Virtual Network Gateway SKU-i (örökölt SKU) használata
 
@@ -37,7 +36,7 @@ Az örökölt átjáró díjszabását a [ExpressRoute díjszabása lapon](https
 
 Az átjárót átméretezheti egy olyan átjáró SKU-ra, amely ugyanazon SKU-családon belül található. Ha például standard SKU-t használ, átméretezheti a HighPerformance SKU-ra. A VPN-átjárót azonban nem lehet átméretezni a régi SKU-és az új SKU-család között. Például nem mehet át standard SKU-ról egy VpnGw2 SKU-ra vagy egy alapszintű SKU-VpnGw1.
 
-### <a name="resource-manager"></a>Resource Manager
+### <a name="resource-manager"></a>Erőforrás-kezelő
 
 Ha át szeretné méretezni a Resource Manager-alapú üzemi modell átjáróját a PowerShell használatával, használja a következő parancsot:
 
@@ -60,7 +59,7 @@ Resize-AzureVirtualNetworkGateway -GatewayId <Gateway ID> -GatewaySKU HighPerfor
 
 [!INCLUDE [Change to the new SKUs](../../includes/vpn-gateway-gwsku-change-legacy-sku-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az átjárók új SKU-ról: [átjáró SKU](vpn-gateway-about-vpngateways.md#gwsku)-i.
 

@@ -1,33 +1,27 @@
 ---
-title: Az Azure pont – hely kapcsolati problémák elhárítása | Microsoft Docs
+title: Az Azure pont – hely kapcsolati problémák elhárítása
+titleSuffix: Azure VPN Gateway
 description: Útmutató a pont – hely kapcsolati problémák elhárításához.
 services: vpn-gateway
-documentationcenter: na
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 09/30/2019
 ms.author: genli
-ms.openlocfilehash: cfa95f2aab5ba270aea0a36b037ae293b36c7b28
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 2c5e8b344cad6928ee586dc5a5b69095f0b14552
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695529"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863648"
 ---
-# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás Azure pont – hely kapcsolati problémák
+# <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Hibaelhárítás: Azure pont – hely kapcsolati problémák
 
 Ez a cikk az esetlegesen felmerülő, pont – hely kapcsolatokkal kapcsolatos gyakori problémákat sorolja fel. Emellett a problémák lehetséges okait és megoldásait is tárgyalja.
 
-## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN-ügyfél hiba: Nem található tanúsítvány
+## <a name="vpn-client-error-a-certificate-could-not-be-found"></a>VPN-ügyfél hiba: A tanúsítvány nem található.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Amikor a VPN-ügyféllel próbál csatlakozni egy Azure-beli virtuális hálózathoz, a következő hibaüzenet jelenik meg:
 
@@ -41,16 +35,16 @@ Ez a probléma akkor fordul elő, ha az ügyféltanúsítvány hiányzik a **tan
 
 A probléma megoldásához kövesse az alábbi lépéseket:
 
-1. A Tanúsítványkezelő megnyitása: Kattintson a **Start**gombra, írja be a **számítógép-tanúsítványok kezelése**kifejezést, majd kattintson a keresési eredmény **számítógép-tanúsítványok kezelése** elemére.
+1. Nyissa meg a Tanúsítványkezelőt: kattintson a **Start**gombra, írja be a **számítógép-tanúsítványok kezelése**kifejezést, majd kattintson a keresési eredmény **számítógép-tanúsítványok kezelése** elemére.
 
 2. Győződjön meg arról, hogy a következő tanúsítványok a megfelelő helyen vannak:
 
-    | Tanúsítvány | Location |
+    | Tanúsítvány | Földrajzi egység |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Aktuális User\Personal\Certificates |
+    | AzureClient. pfx  | Aktuális User\Personal\Certificates |
     | AzureRoot. cer    | Helyi tárolóba legfelső szintű hitelesítésszolgáltatók|
 
-3. Lépjen a C:\Users\<Felhasználónév > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*. cer fájlt) a felhasználó és a számítógép tárolóján.
+3. Lépjen a C:\Users\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, manuálisan telepítse a tanúsítványt (*. cer fájlt) a felhasználó és a számítógép tárolóján.
 
 Az ügyféltanúsítvány telepítésével kapcsolatos további információkért lásd: [tanúsítványok létrehozása és exportálása pont – hely kapcsolatokhoz](vpn-gateway-certificates-point-to-site.md).
 
@@ -59,7 +53,7 @@ Az ügyféltanúsítvány telepítésével kapcsolatos további információkér
 
 ## <a name="the-network-connection-between-your-computer-and-the-vpn-server-could-not-be-established-because-the-remote-server-is-not-responding"></a>Nem lehet létrehozni a számítógép és a VPN-kiszolgáló közötti hálózati kapcsolatot, mert a távoli kiszolgáló nem válaszol
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Amikor egy Azure-beli virtuális hálózati átjáróhoz próbál csatlakozni a Windows IKEv2 használatával, a következő hibaüzenet jelenik meg:
 
@@ -77,7 +71,7 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
 1. Telepítse a frissítést.
 
-   | Operációs rendszer verziója | Date | Szám/hivatkozás |
+   | Operációs rendszer verziója | Dátum | Szám/hivatkozás |
    |---|---|---|---|
    | Windows Server 2016<br>Windows 10, 1607-es verzió | 2018. január 17. | [KB4057142](https://support.microsoft.com/help/4057142/windows-10-update-kb4057142) |
    | Windows 10, 1703-as verzió | 2018. január 17. | [KB4057144](https://support.microsoft.com/help/4057144/windows-10-update-kb4057144) |
@@ -86,9 +80,9 @@ A Windows 10 vagy a Server 2016 előkészítése az IKEv2 használatára:
 
 2. Adja meg a beállításkulcs értékét. Hozzon létre vagy állítson be `HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\RasMan\ IKEv2\DisableCertReqPayload` REG_DWORD kulcsot a beállításjegyzékben 1 értékre.
 
-## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-ügyfél hiba: A kapott üzenet váratlan vagy helytelen formátumú volt.
+## <a name="vpn-client-error-the-message-received-was-unexpected-or-badly-formatted"></a>VPN-ügyfél hiba: a kapott üzenet váratlan vagy helytelen formátumú volt.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Amikor a VPN-ügyféllel próbál csatlakozni egy Azure-beli virtuális hálózathoz, a következő hibaüzenet jelenik meg:
 
@@ -109,9 +103,9 @@ A probléma megoldásához kövesse az alábbi lépéseket:
 1. Távolítsa el a UDR az átjáró-alhálózaton. Győződjön meg arról, hogy a UDR megfelelően továbbítja az összes forgalmat.
 2. Ellenőrizze a főtanúsítvány állapotát a Azure Portalban, hogy megjelenjen-e a visszavonás. Ha a rendszer nem vonja vissza, törölje a főtanúsítványt, és töltse fel újból a feltöltést. További információt a [tanúsítványok létrehozása](vpn-gateway-howto-point-to-site-classic-azure-portal.md#generatecerts)című témakörben talál.
 
-## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-ügyfél hiba: Egy tanúsítványlánc feldolgozott, de leállt 
+## <a name="vpn-client-error-a-certificate-chain-processed-but-terminated"></a>VPN-ügyfél hiba: A tanúsítványlánc feldolgozva, de leállt 
 
-### <a name="symptom"></a>Jelenség 
+### <a name="symptom"></a>Hibajelenség 
 
 Amikor a VPN-ügyféllel próbál csatlakozni egy Azure-beli virtuális hálózathoz, a következő hibaüzenet jelenik meg:
 
@@ -121,17 +115,17 @@ Amikor a VPN-ügyféllel próbál csatlakozni egy Azure-beli virtuális hálóza
 
 1. Győződjön meg arról, hogy a következő tanúsítványok a megfelelő helyen vannak:
 
-    | Tanúsítvány | Location |
+    | Tanúsítvány | Földrajzi egység |
     | ------------- | ------------- |
-    | AzureClient.pfx  | Aktuális User\Personal\Certificates |
-    | Azuregateway-*GUID*.cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
-    | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Helyi tárolóba legfelső szintű hitelesítésszolgáltatók|
+    | AzureClient. pfx  | Aktuális User\Personal\Certificates |
+    | Azuregateway –*GUID*. cloudapp.net  | Aktuális User\Trusted legfelső szintű hitelesítésszolgáltatók|
+    | AzureGateway –*GUID*. Cloudapp.net, AzureRoot. cer    | Helyi tárolóba legfelső szintű hitelesítésszolgáltatók|
 
 2. Ha a tanúsítványok már a helyen vannak, próbálja meg törölni a tanúsítványokat, majd telepítse újra. A **azuregateway-*GUID*. CLOUDAPP.net** tanúsítvány a VPN-ügyfél konfigurációs csomagjában található, amelyet a Azure Portal letöltött. A fájlok archiválásával kinyerheti a fájlokat a csomagból.
 
-## <a name="file-download-error-target-uri-is-not-specified"></a>Fájl letöltési hiba: Nincs megadva a cél URI azonosítója.
+## <a name="file-download-error-target-uri-is-not-specified"></a>Fájl letöltési hiba: nincs megadva a cél URI azonosítója.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 A következő hibaüzenet jelenik meg:
 
@@ -145,13 +139,13 @@ Ez a probléma helytelen átjáró típusa miatt fordul elő.
 
 A VPN-átjáró típusának **VPN**-nek kell lennie, és a VPN-típusnak **útvonalalapú**kell lennie.
 
-## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-ügyfél hiba: Az Azure VPN egyéni parancsfájlja sikertelen 
+## <a name="vpn-client-error-azure-vpn-custom-script-failed"></a>VPN-ügyfél hiba: az Azure VPN egyéni parancsfájlja sikertelen 
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Amikor a VPN-ügyféllel próbál csatlakozni egy Azure-beli virtuális hálózathoz, a következő hibaüzenet jelenik meg:
 
-**Az egyéni parancsfájl (az útválasztási táblázat frissítéséhez) sikertelen volt. (Error 8007026f)**
+**Az egyéni parancsfájl (az útválasztási táblázat frissítéséhez) sikertelen volt. (Hiba 8007026f)**
 
 ### <a name="cause"></a>Ok
 
@@ -173,18 +167,18 @@ Bontsa ki a VPN-ügyfél konfigurációs csomagját, és keresse meg a. cer fáj
 
 1. Nyissa meg az MMC. exe fájlt.
 2. Adja hozzá a **tanúsítványok** beépülő modult.
-3. Válassza ki a helyi számítógép számítógépfiókját.
-4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson a **minden tevékenység** > **importálása**lehetőségre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
+3. Válassza ki **a helyi számítógép számítógépfiókját.**
+4. Kattintson a jobb gombbal a **megbízható legfelső szintű hitelesítésszolgáltatók** csomópontra. Kattintson az **összes feladat** > **Importálás**elemre, és keresse meg a VPN-ügyfél konfigurációs csomagjából kinyert. cer fájlt.
 5. Indítsa újra a számítógépet. 
 6. Próbálja meg telepíteni a VPN-ügyfelet.
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure Portal hiba: Nem sikerült menteni a VPN-átjárót, és az adatértékek érvénytelenek.
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-data-is-invalid"></a>Azure Portal hiba: nem sikerült menteni a VPN-átjárót, és az adatértékek érvénytelenek
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Ha a Azure Portal a VPN-átjáró módosításait próbálja menteni, a következő hibaüzenet jelenik meg:
 
-**Nem sikerült menteni a virtuális hálózati &lt;átjáró *átjárójának nevét*&gt;. A tanúsítvány &lt;- *tanúsítvány azonosítójának azonosítója* &gt; érvénytelen.**
+**Nem sikerült menteni a virtuális hálózati átjárót &lt;*átjáró nevét*&gt;. A tanúsítvány &lt;*tanúsítvány-azonosító*&gt; érvénytelen.**
 
 ### <a name="cause"></a>Ok 
 
@@ -213,21 +207,21 @@ Győződjön meg arról, hogy a tanúsítványban szereplő adatok nem tartalmaz
     e8Jcej7mzunzyjz4chN0/WVF94MtxbUkLkqP
     -----END CERTIFICATE-----
 
-## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure Portal hiba: Nem sikerült menteni a VPN-átjárót, és az erőforrás neve érvénytelen.
+## <a name="azure-portal-error-failed-to-save-the-vpn-gateway-and-the-resource-name-is-invalid"></a>Azure Portal hiba: nem sikerült menteni a VPN-átjárót, és az erőforrás neve érvénytelen.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Ha a Azure Portal a VPN-átjáró módosításait próbálja menteni, a következő hibaüzenet jelenik meg: 
 
-**Nem sikerült menteni a virtuális hálózati &lt;átjáró *átjárójának nevét*&gt;. A feltölteni &lt;** kívánterőforrásnevenemérvényes.&gt;
+**Nem sikerült menteni a virtuális hálózati átjárót &lt;*átjáró nevét*&gt;. Az erőforrás neve &lt;a *feltölteni* kívánt&gt; érvénytelen**.
 
 ### <a name="cause"></a>Ok
 
 Ez a probléma azért fordul elő, mert a tanúsítvány neve érvénytelen karaktert tartalmaz, például szóközt. 
 
-## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure Portal hiba: VPN-csomag fájljának letöltése 503-es hiba
+## <a name="azure-portal-error-vpn-package-file-download-error-503"></a>Azure Portal hiba: VPN-csomagfájl letöltése 503-es hiba
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 A VPN-ügyfél konfigurációs csomagjának letöltésekor a következő hibaüzenet jelenik meg:
 
@@ -237,7 +231,7 @@ A VPN-ügyfél konfigurációs csomagjának letöltésekor a következő hibaüz
 
 Ezt a hibát egy ideiglenes hálózati probléma okozhatja. Próbálja meg újra letölteni a VPN-csomagot néhány perc múlva.
 
-## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway verziófrissítés: Az összes pont – hely ügyfél nem tud csatlakozni
+## <a name="azure-vpn-gateway-upgrade-all-point-to-site-clients-are-unable-to-connect"></a>Azure VPN Gateway verziófrissítés: az összes pont – hely ügyfél nem tud csatlakozni
 
 ### <a name="cause"></a>Ok
 
@@ -253,7 +247,7 @@ Elérte az engedélyezett kapcsolatok maximális számát. A csatlakoztatott üg
 
 ## <a name="vpn-client-cannot-access-network-file-shares"></a>A VPN-ügyfél nem fér hozzá a hálózati fájlmegosztás
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 A VPN-ügyfél kapcsolódott az Azure-beli virtuális hálózathoz. Az ügyfél azonban nem fér hozzá a hálózati megosztásokhoz.
 
@@ -261,7 +255,7 @@ A VPN-ügyfél kapcsolódott az Azure-beli virtuális hálózathoz. Az ügyfél 
 
 Az SMB protokoll a fájlmegosztás elérésére szolgál. A kapcsolat kezdeményezése után a VPN-ügyfél hozzáadja a munkamenet hitelesítő adatait, és a hiba történik. A kapcsolódás után az ügyfélnek a Kerberos-hitelesítéshez tartozó gyorsítótárazási hitelesítő adatok használatára kell kényszeríteni. Ez a folyamat kezdeményezi a kulcsszolgáltató (tartományvezérlő) lekérdezéseit a jogkivonat lekéréséhez. Mivel az ügyfél az internetről csatlakozik, előfordulhat, hogy nem tudja elérni a tartományvezérlőt. Ezért az ügyfél nem végezhet feladatátvételt Kerberos-kapcsolaton keresztül az NTLM-re. 
 
-Az ügyfélnek csak akkor kell megadnia a hitelesítő adatokat, ha érvényes tanúsítvánnyal rendelkezik (SAN = UPN), amelyhez a tartomány csatlakozik. Az ügyfélnek fizikailag is csatlakoztatva kell lennie a tartományi hálózathoz. Ebben az esetben az ügyfél megpróbálja használni a tanúsítványt, és eléri a tartományvezérlőt. Ezután a kulcsszolgáltató "KDC_ERR_C_PRINCIPAL_UNKNOWN" hibaüzenetet ad vissza. Az ügyfélnek az NTLM-re való feladatátvételre van kényszerítve. 
+Az ügyfélnek csak akkor kell megadnia a hitelesítő adatokat, ha érvényes tanúsítvánnyal rendelkezik (SAN = UPN), amelyhez a tartomány csatlakozik. Az ügyfélnek fizikailag is csatlakoztatva kell lennie a tartományi hálózathoz. Ebben az esetben az ügyfél megpróbálja használni a tanúsítványt, és eléri a tartományvezérlőt. Ezután a kulcsszolgáltató "KDC_ERR_C_PRINCIPAL_UNKNOWN" hibát ad vissza. Az ügyfélnek az NTLM-re való feladatátvételre van kényszerítve. 
 
 ### <a name="solution"></a>Megoldás
 
@@ -272,17 +266,17 @@ A probléma megoldásához tiltsa le a tartományi hitelesítő adatok gyorsít�
 
 ## <a name="cannot-find-the-point-to-site-vpn-connection-in-windows-after-reinstalling-the-vpn-client"></a>Nem található a pont – hely VPN-kapcsolat a Windowsban a VPN-ügyfél újratelepítése után
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Távolítsa el a pont – hely VPN-kapcsolatát, majd telepítse újra a VPN-ügyfelet. Ebben az esetben a VPN-kapcsolat konfigurálása nem sikerült. A VPN-kapcsolat nem jelenik meg a Windows **hálózati kapcsolatok** beállításai között.
 
 ### <a name="solution"></a>Megoldás
 
-A probléma megoldásához törölje a régi VPN-ügyfél konfigurációs fájljait **a\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId >** , majd futtassa újra a VPN-ügyfél telepítőjét.
+A probléma megoldásához törölje a régi VPN-ügyfél konfigurációs fájljait a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >ból**, majd futtassa újra a VPN-ügyfél telepítőjét.
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Pont – hely típusú VPN-ügyfél nem tudja feloldani a helyi tartományban lévő erőforrások teljes tartománynevét.
 
-### <a name="symptom"></a>Jelenség
+### <a name="symptom"></a>Hibajelenség
 
 Amikor az ügyfél pont – hely VPN-kapcsolat használatával csatlakozik az Azure-hoz, nem tudja feloldani a helyi tartományban lévő erőforrások teljes tartománynevét.
 
@@ -304,16 +298,16 @@ Ez a probléma akkor fordulhat elő, ha a VPN-ügyfél nem kapja meg az útvonal
 
 A probléma megoldásához [állítsa alaphelyzetbe az Azure VPN Gatewayt](vpn-gateway-resetgw-classic.md). Annak érdekében, hogy az új útvonalakat használják, a pont – hely VPN-ügyfeleket újra le kell tölteni a virtuális hálózati társítás sikeres konfigurálása után.
 
-## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "A visszavonás funkció nem tudta megnézni a visszavonást, mert a visszavonási kiszolgáló offline állapotban volt. (Hiba 0x80092013) "
+## <a name="error-the-revocation-function-was-unable-to-check-revocation-because-the-revocation-server-was-offlineerror-0x80092013"></a>Hiba: "a visszavonás funkció nem tudta megnézni a visszavonást, mert a visszavonási kiszolgáló offline állapotban volt. (Hiba 0x80092013) "
 
 ### <a name="causes"></a>Okok
-Ez a hibaüzenet akkor jelenik meg, ha az http://crl3.digicert.com/ssca-sha2-g1.crl ügyfél http://crl4.digicert.com/ssca-sha2-g1.crl nem fér hozzá és.  A visszavonási vizsgálathoz hozzáféréssel kell rendelkeznie ehhez a két helyhez.  Ez a probléma általában a proxykiszolgálót futtató ügyfélen történik. Bizonyos környezetekben, ha a kérések nem a proxykiszolgálón keresztül mennek át, a rendszer megtagadja a hozzáférést a peremhálózati tűzfalon.
+Ez a hibaüzenet akkor fordul elő, ha az ügyfél nem fér hozzá http://crl3.digicert.com/ssca-sha2-g1.crl hoz és http://crl4.digicert.com/ssca-sha2-g1.crl hoz.  A visszavonási vizsgálathoz hozzáféréssel kell rendelkeznie ehhez a két helyhez.  Ez a probléma általában a proxykiszolgálót futtató ügyfélen történik. Bizonyos környezetekben, ha a kérések nem a proxykiszolgálón keresztül mennek át, a rendszer megtagadja a hozzáférést a peremhálózati tűzfalon.
 
 ### <a name="solution"></a>Megoldás
 
-Ellenőrizze a proxykiszolgáló beállításait, és győződjön meg arról, hogy az ügyfél http://crl3.digicert.com/ssca-sha2-g1.crl hozzáférhet http://crl4.digicert.com/ssca-sha2-g1.crl a és a rendszerhez.
+Ellenőrizze a proxykiszolgáló beállításait, győződjön meg arról, hogy az ügyfél hozzáférhet http://crl3.digicert.com/ssca-sha2-g1.crl hoz és http://crl4.digicert.com/ssca-sha2-g1.crl hoz.
 
-## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-ügyfél hiba: A kapcsolat megakadályozása a RAS/VPN-kiszolgálón konfigurált szabályzat miatt megszakadt. (812-es hiba)
+## <a name="vpn-client-error-the-connection-was-prevented-because-of-a-policy-configured-on-your-rasvpn-server-error-812"></a>VPN-ügyfél hiba: a kapcsolat megakadályozása a RAS/VPN-kiszolgálón konfigurált házirend miatt megszakadt. (812-es hiba)
 
 ### <a name="cause"></a>Ok
 
@@ -329,7 +323,7 @@ Győződjön meg arról, hogy a RADIUS-kiszolgáló megfelelően van konfigurál
 
 A főtanúsítvány nincs telepítve. A főtanúsítvány telepítve van az ügyfél **megbízható tanúsítványok** tárolójába.
 
-## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN-ügyfél hiba: A távoli kapcsolat nem történt meg, mert a megkísérelt VPN-alagutak sikertelenek voltak. (Error 800) 
+## <a name="vpn-client-error-the-remote-connection-was-not-made-because-the-attempted-vpn-tunnels-failed-error-800"></a>VPN-ügyfél hiba: a távoli kapcsolat nem történt meg, mert a megkísérelt VPN-alagutak sikertelenek voltak. (800-es hiba) 
 
 ### <a name="cause"></a>Ok
 
@@ -339,13 +333,13 @@ A hálózati adapter illesztőprogramja elavult.
 
 A hálózati adapter illesztőprogramjának frissítése:
 
-1. Kattintson a **Start**gombra, írja be a **Eszközkezelő**parancsot, majd válassza ki az eredmények listájából. Ha a rendszer rendszergazdai jelszót vagy megerősítést kér, írja be a jelszót, vagy adja meg a megerősítést.
+1. Kattintson a **Start**gombra, írja be a **Eszközkezelő**parancsot, majd válassza ki az eredmények listájából. Ha a számítógép rendszergazdai jelszót vagy megerősítést kér, adja meg a jelszót, illetve erősítse meg a műveletet.
 2. A **hálózati adapterek** kategóriájában keresse meg a frissíteni kívánt NIC-t.  
 3. Kattintson duplán az eszköz nevére, válassza az **Illesztőprogram frissítése**lehetőséget, majd válassza a **Keresés automatikusan lehetőséget a frissített illesztőprogram-szoftverekhez**.
-4. Ha a Windows nem talál új illesztőprogramot, akkor próbáljon meg egyet az eszköz gyártójának webhelyén, és kövesse az utasításokat.
+4. Ha a Windows nem talál új illesztőprogramot, próbáljon meg az eszköz gyártójának webhelyén frissítést keresni, majd kövesse a megadott útmutatást.
 5. Indítsa újra a számítógépet, majd próbálja megismételni a műveletet.
 
-## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hiba: Nincs megadva a fájl letöltési hiba cél URI azonosítója.
+## <a name="error-file-download-error-target-uri-is-not-specified"></a>Hiba: nincs megadva a fájl letöltési hibájának cél URI azonosítója.
 
 ### <a name="cause"></a>Ok
 
@@ -363,7 +357,7 @@ Ezt a problémát az előző VPN-ügyfél telepítése okozhatta.
 
 ### <a name="solution"></a>Megoldás
 
-Törölje a régi VPN-ügyfél konfigurációs fájljait a **\<C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections VirtualNetworkId >** , majd futtassa újra a VPN-ügyfél telepítőjét. 
+Törölje a régi VPN-ügyfél konfigurációs fájljait a **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** , és futtassa újra a VPN-ügyfél telepítőjét. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>A VPN-ügyfél egy kis idő elteltével hibernálja vagy alvó állapotba lép
 

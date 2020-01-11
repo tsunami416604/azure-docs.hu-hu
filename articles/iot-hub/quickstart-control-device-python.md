@@ -9,13 +9,13 @@ services: iot-hub
 ms.devlang: python
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 06/21/2019
-ms.openlocfilehash: bef259aa741e9c50ffaf28c6f81f63658ebda0a2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.date: 01/09/2020
+ms.openlocfilehash: 11768a0d72549d917d93c0f6f7f4d0c7e8217da4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778073"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864404"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-python"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (Python)
 
@@ -122,7 +122,7 @@ A szimulálteszköz-alkalmazás az IoT Hubon található eszközspecifikus végp
 
     A következő képernyőképen az a kimenet látható, amikor a szimulálteszköz-alkalmazás telemetriát küld az IoT Hubnak:
 
-    ![A szimulált eszköz futtatása](./media/quickstart-control-device-python/SimulatedDevice-1.png)
+    ![A szimulált eszköz futtatása](./media/quickstart-control-device-python/simulated-device-1.png)
 
 ## <a name="call-the-direct-method"></a>A közvetlen metódus meghívása
 
@@ -148,11 +148,11 @@ A háttéralkalmazás az IoT Hubon található szolgáltatásoldali végponthoz 
 
     Az alábbi képernyőfelvételen a kimenet látható, mivel az alkalmazás közvetlen metódust hív meg az eszköznek, és nyugtát kap:
 
-    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-python/BackEndApplication.png)
+    ![A háttéralkalmazás futtatása](./media/quickstart-control-device-python/backend-application.png)
 
     A háttéralkalmazás futtatása után megjelenik egy üzenet a szimulált eszközt futtató konzolablakban, és megváltozik az üzenetküldések gyakorisága:
 
-    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-python/SimulatedDevice-2.png)
+    ![Változás a szimulált ügyfélben](./media/quickstart-control-device-python/simulated-device-2.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

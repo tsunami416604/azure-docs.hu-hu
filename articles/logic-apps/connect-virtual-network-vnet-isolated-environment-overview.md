@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 12/16/2019
-ms.openlocfilehash: d6bb57c8163f7653f4b10142d7ec2b34f50456f1
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: d8d57c15fffaa6a9d18ad3c83716f99247512c15
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527858"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860749"
 ---
 # <a name="access-to-azure-virtual-network-resources-from-azure-logic-apps-by-using-integration-service-environments-ises"></a>Hozzáférés az Azure Virtual Network-erőforrásokhoz a Azure Logic Apps integrációs szolgáltatási környezetek (ISEs) használatával
 
@@ -23,7 +23,7 @@ Az ISE létrehozása után a logikai alkalmazás vagy integrációs fiók létre
 
 ![Integrációs szolgáltatási környezet kiválasztása](./media/connect-virtual-network-vnet-isolated-environment-overview/select-logic-app-integration-service-environment.png)
 
-A logikai alkalmazás mostantól közvetlenül hozzáférhet a virtuális hálózathoz tartozó vagy azokhoz csatlakozó rendszerekhez a következő elemek bármelyikének használatával:
+A logikai alkalmazás mostantól közvetlenül hozzáférhet a virtuális hálózathoz tartozó vagy azokhoz csatlakozó rendszerekhez ezen elemek bármelyikének használatával, amelyek a logikai alkalmazással megegyező ISE-ben futnak:
 
 * A rendszer **ISE**-címkével ellátott összekötője
 * Egy alapcímkével **ellátott beépített**trigger vagy művelet, például a http-trigger vagy a művelet
@@ -43,23 +43,21 @@ Ez az Áttekintés további részleteket tartalmaz arról, hogy az ISE Hogyan bi
 
 Ha az Azure-ban létrehoz egy integrált szolgáltatási környezetet (ISE), akkor kiválaszthatja azt az Azure-beli virtuális hálózatot, ahová az ISE-t be szeretné *szúrni* . Az Azure ezután beadja vagy telepíti a Logic Apps szolgáltatás privát példányát a virtuális hálózatba. Ez a művelet egy elkülönített környezetet hoz létre, ahol a logikai alkalmazásokat dedikált erőforrásokon lehet létrehozni és futtatni. A logikai alkalmazás létrehozásakor kiválaszthatja az ISE-t az alkalmazás helyeként, így a logikai alkalmazás közvetlen hozzáférést biztosít a virtuális hálózathoz és a hálózatban lévő erőforrásokhoz.
 
-Az ISE logikai alkalmazásai ugyanazt a felhasználói élményt és hasonló képességeket nyújtják, mint a globális Logic Apps szolgáltatás. Nem csupán ugyanazokat a beépített eseményindítókat, beépített műveleteket és összekötőket használhatja a globális Logic Apps szolgáltatásból, de az ISE-specifikus összekötőket is használhatja. Íme például néhány szabványos összekötő, amely az ISE-ben futó verziókat kínál:
+Az ISE logikai alkalmazásai ugyanazt a felhasználói élményt és hasonló képességeket nyújtják, mint a nyilvános globális Logic Apps szolgáltatás. Az összes olyan beépített eseményindítót, műveletet és felügyelt összekötőt használhatja, amelyek elérhetők a globális Logic Apps szolgáltatásban. Egyes felügyelt összekötők további ISE-verziókat is biztosítanak. A különbség abban rejlik, hogy hol futnak, és a Logic app Designerben megjelenített címkék, amikor az ISE-n belül dolgozik.
 
-* Azure Blob Storage, File Storage és Table Storage
-* Azure Queues, Azure Service Bus, Azure Event Hubs és IBM MQ
-* FTP és SFTP – SSH
-* SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
-* AS2, X12 és EDIFACT
+![Olyan összekötők, amelyeken címkék találhatók az ISE-ben](./media/connect-virtual-network-vnet-isolated-environment-overview/labeled-built-in-actions-triggers-managed-connectors.png)
 
-Az ISE és a nem ISE összekötők közötti különbség az eseményindítók és műveletek futtatási helyein található:
+* A beépített eseményindítók és műveletek megjelenítik az alapcímkét, és mindig ugyanabban az ISE-ben futnak, **mint a logikai** alkalmazás. Az **ISE** -címkét megjelenítő felügyelt összekötők a logikai alkalmazással megegyező ISE-ben is futnak.
 
-* Az ISE-ben a beépített eseményindítók és műveletek (például a HTTP) mindig ugyanabban az ISE-ben futnak, mint a logikai alkalmazás, és megjeleníti az **alapvető** címkét.
+  Íme például néhány összekötő, amely az ISE-verziókat kínálja:
 
-  ![Alapszintű beépített eseményindítók és műveletek kiválasztása](./media/connect-virtual-network-vnet-isolated-environment-overview/select-core-built-in-actions-triggers.png)
+  * Azure Blob Storage, File Storage és Table Storage
+  * Azure Queues, Azure Service Bus, Azure Event Hubs és IBM MQ
+  * FTP és SFTP – SSH
+  * SQL Server, Azure SQL Data Warehouse, Azure Cosmos DB
+  * AS2, X12 és EDIFACT
 
-* Az ISE-ben futó összekötők nyilvánosan üzemeltetett verzióit elérhetővé válnak a globális Logic Apps szolgáltatásban. Az olyan összekötők esetében, amelyek két verziót kínálnak, az **ISE** -címkével rendelkező összekötők mindig UGYANABBAN az ISE-ben futnak, mint a logikai alkalmazás. Az **ISE** címke nélküli összekötők a globális Logic apps szolgáltatásban futnak.
-
-  ![ISE-összekötők kiválasztása](./media/connect-virtual-network-vnet-isolated-environment-overview/select-ise-connectors.png)
+* Azok a felügyelt összekötők, amelyek nem jelenítenek meg további címkéket, mindig a nyilvános globális Logic Apps szolgáltatásban futnak, de ezek az összekötők továbbra is használhatók ISE-alapú logikai alkalmazásokban.
 
 Az ISE nagyobb korlátokat biztosít a futtatási időtartam, a tárolás megőrzése, az átviteli sebesség, a HTTP-kérés és a válasz időtúllépése, az üzenetek mérete és az egyéni összekötői kérelmek esetében. További információ: [Azure Logic apps korlátai és konfigurálása](logic-apps-limits-and-config.md).
 

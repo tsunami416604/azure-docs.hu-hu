@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: fd57231901c157ffc0d5a3d4219d827629b401f3
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: c8f123871f1e87a18dadfa82ad6bb27d1c145dc4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764171"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863342"
 ---
 # <a name="add-an-event-hub-event-source-to-your-time-series-insights-environment"></a>Event hub-eseményforrás hozzáadása a Time Series Insights-környezethez
 
@@ -28,9 +28,9 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményf
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Hozzon létre egy Time Series Insights környezetet a [Azure Time Series Insights-környezet létrehozása](./time-series-insights-update-create-environment.md)című témakörben leírtak szerint.
-- Eseményközpont létrehozása. Lásd: [Event Hubs névtér és az Event hub létrehozása a Azure Portal használatával](../event-hubs/event-hubs-create.md).
+- Eseményközpont létrehozása. [A Azure Portal használatával olvassa el a Event Hubs névtér és az Event hub létrehozása című cikk utasításait](../event-hubs/event-hubs-create.md).
 - Az Event hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie. Ismerje meg, hogyan [küldhet eseményeket az Azure Event Hubs a .NET-keretrendszer használatával](../event-hubs/event-hubs-dotnet-framework-getstarted-send.md).
-- Hozzon létre egy dedikált fogyasztói csoportot az Event hub-ban, amelyet a Time Series Insights-környezet képes használni. Minden Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog látni. Az Event hub-ban legfeljebb 20 fogyasztói csoport lehet. Részletekért lásd: [Event Hubs programozási útmutató](../event-hubs/event-hubs-programming-guide.md).
+- Hozzon létre egy dedikált fogyasztói csoportot az Event hub-ban, amelyet a Time Series Insights-környezet képes használni. Minden Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Az Event hub-ban legfeljebb 20 fogyasztói csoport lehet. Részletekért olvassa el a [Event Hubs programozási útmutatót](../event-hubs/event-hubs-programming-guide.md).
 
 ### <a name="add-a-consumer-group-to-your-event-hub"></a>Fogyasztói csoport hozzáadása az Event hub-hoz
 
@@ -102,7 +102,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-Event Hubsb
        | Tulajdonság | Leírás |
        | --- | --- |
        | Event hub fogyasztói csoport | Az Event hub eseményeinek olvasására szolgáló fogyasztói csoport. Javasoljuk, hogy használjon egy dedikált fogyasztói csoportot az eseményforrás számára. |
-       | Esemény szerializálási formátuma | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az esemény üzeneteinek ebben a formátumban kell lenniük, vagy nem olvashatók be az adatforrások. |
+       | Eseményszerializációs formátum | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az esemény üzeneteinek ebben a formátumban kell lenniük, vagy nem olvashatók be az adatforrások. |
        | Időbélyeg-tulajdonság neve | Az érték meghatározásához meg kell ismernie az Event hub számára küldött üzenet-adatformátumot. Ez az érték annak az üzenetnek a **neve** , amelyet az esemény időbélyegzőként használni kíván. Az érték megkülönbözteti a kis-és nagybetűket. Ha üresen hagyja, a rendszer az eseményforrás **sorba helyezni időt** használja az esemény időbélyegzője. |
 
 1. Adja hozzá az Event hub-hoz hozzáadott dedikált Time Series Insights fogyasztói csoport nevét.

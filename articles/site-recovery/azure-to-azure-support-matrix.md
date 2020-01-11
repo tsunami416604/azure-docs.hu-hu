@@ -2,13 +2,14 @@
 title: Támogatási mátrix az Azure-beli virtuális gépek vész-helyreállításához Azure Site Recovery
 description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállításának támogatását egy másodlagos régióba Azure Site Recovery használatával.
 ms.topic: article
-ms.date: 12/23/2019
-ms.openlocfilehash: b8809682f4d2bed72eec1d64b2ac40b664237632
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 01/10/2020
+ms.author: raynew
+ms.openlocfilehash: 1e30170f521fa21cb69fb1879ea4335025d8d959
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551590"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863927"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Támogatási mátrix az Azure-beli virtuális gépek Azure-régiók közötti vész-helyreállításához
 
@@ -202,7 +203,7 @@ Redundancia | A LRS és a GRS támogatottak.<br/><br/> A ZRS nem támogatott.
 Ritka elérésű és gyors tárolás | Nem támogatott | A virtuálisgép-lemezek nem támogatottak a ritka elérésű és a gyors tárolásban
 Tárolóhelyek | Támogatott |
 Titkosítás nyugalmi állapotban (SSE) | Támogatott | Az SSE a Storage-fiókok alapértelmezett beállítása.   
-Inaktív titkosítás (CMK) | Nem támogatott |   
+Inaktív titkosítás (CMK) | Támogatott | A felügyelt lemezek esetében a szoftveres és a HSM-kulcsok is támogatottak    
 Azure Disk Encryption (ADE) Windows operációs rendszerhez | Felügyelt lemezekkel rendelkező virtuális gépek esetén támogatott. A nem felügyelt lemezeket használó virtuális gépek nem támogatottak |
 Azure Disk Encryption (ADE) Linux operációs rendszerhez | Támogatott |
 Gyors Hozzáadás | Támogatott | A replikált Azure-beli virtuális géphez hozzáadott adatlemez replikálásának engedélyezése támogatott a felügyelt lemezeket használó virtuális gépek esetében.

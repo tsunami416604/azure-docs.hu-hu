@@ -5,14 +5,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 06/18/2019
+ms.date: 01/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 73f5f64a64ab28cdb4b57d0904911f62c2020cf0
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 548fa8181c4841d8f57de485c0a4e714b5e9321a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082675"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863910"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-hyper-v-vms-using-powershell-and-azure-resource-manager"></a>Az Azure-ba irányuló vész-helyreállítás beállítása a Hyper-V virtuális gépekhez a PowerShell és a Azure Resource Manager használatával
 
@@ -188,7 +188,13 @@ Mielőtt elkezdené, vegye figyelembe, hogy a megadott Storage-fióknak ugyanabb
 
         Succeeded
 
-
+> [!NOTE]
+> Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
+>
+> 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
+> 2. A Get-AsrReplicationProtectedItem parancsmag használatával beolvashatja a védett elemek lemezének AZONOSÍTÓját
+> 3. Hozzon létre egy szótár objektumot a New-Object "System. Collections. Generic. Dictionary" "2 [System. string, System. string]" parancsmag használatával, hogy tartalmazza a lemez titkosítási készletének leképezését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 4. Frissítse a virtuális gép tulajdonságait a set-AsrReplicationProtectedItem parancsmaggal a DiskIdToDiskEncryptionSetMap paraméterben található szótár objektum átadásával.
 
 ## <a name="step-8-run-a-test-failover"></a>8\. lépés: feladatátvételi teszt futtatása
 1. Futtasson egy feladatátvételi tesztet a következőképpen:

@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 11/27/2018
+ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: 2fc66514bdf33611f9e6266d35a2d537fe3b9261
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084908"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867035"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
 
@@ -29,7 +29,7 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 - Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](site-recovery-support-matrix-to-sec-site.md).
 
 
-## <a name="prepare-for-network-mapping"></a>A hálózatleképezés előkészítése
+## <a name="prepare-for-network-mapping"></a>Hálózatleképezés előkészítése
 
 [Hálózati leképezési](hyper-v-vmm-network-mapping.md) térképek a helyszíni Virtual Machine Manager virtuálisgép-hálózatok között a forrás-és a cél felhőkben. A leképezés a következőket hajtja végre:
 
@@ -194,6 +194,14 @@ Miután a kiszolgálók, a felhők és a hálózatok megfelelően vannak konfigu
 3. Engedélyezze a virtuális gép replikálását.
 
           $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+
+> [!NOTE]
+> Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
+>
+> 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
+> 2. A Get-AsrReplicationProtectedItem parancsmag használatával beolvashatja a védett elemek lemezének AZONOSÍTÓját
+> 3. Hozzon létre egy szótár objektumot a New-Object "System. Collections. Generic. Dictionary" "2 [System. string, System. string]" parancsmag használatával, hogy tartalmazza a lemez titkosítási készletének leképezését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 4. Frissítse a virtuális gép tulajdonságait a set-AsrReplicationProtectedItem parancsmaggal a DiskIdToDiskEncryptionSetMap paraméterben található szótár objektum átadásával.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 

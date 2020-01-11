@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/15/2019
-ms.openlocfilehash: f3ecb3bedb8e0f55590aca1aa1c0e0c185f9acc3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2146b1bd782aba5d98729a2d37d956744e469ba1
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369252"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860248"
 ---
 # <a name="choose-a-real-time-analytics-and-streaming-processing-technology-on-azure"></a>Valós idejű elemzési és adatfolyam-feldolgozási technológia kiválasztása az Azure-ban
 
@@ -41,10 +41,6 @@ A Azure Stream Analytics gazdag felülettel rendelkezik. A további beállítás
 * A Event Hubsra érkező bemenettől kezdve a végpontok közötti késéstől a Event Hubsbe való beérkezésig, beleértve a hálózati késleltetést és a Event Hubs, a tartós nagy átviteli sebesség 100
 
 ## <a name="when-to-use-other-technologies"></a>Mikor kell más technológiákat használni
-
-### <a name="you-need-to-input-from-or-output-to-kafka"></a>A Kafka-be vagy kimenetbe kell bejelentkeznie
-
-A Azure Stream Analytics nem rendelkezik Apache Kafka bemeneti vagy kimeneti adapterrel. Ha olyan eseményekre van szüksége, amelyek a Kafka-nek való elküldéséhez vagy a saját Kafka-fürt futtatásához szükségesek, akkor továbbra is használhatja a Stream Analyticst, ha az esemény küldőjének módosítása nélkül küld Event Hubs eseményeket az Event Hubs Kafka API-val. Ha saját Kafka-fürtöt kell futtatnia, használhatja a Spark strukturált streamet, amely teljes mértékben támogatott a [Azure Databrickson](../azure-databricks/index.yml)vagy a Storm on [Azure HDInsight](../hdinsight/storm/apache-storm-overview.md).
 
 ### <a name="you-want-to-write-udfs-udas-and-custom-deserializers-in-a-language-other-than-javascript-or-c"></a>UDF, uda és egyéni deszerializáló szeretne írni a JavaScripten kívül más nyelven, vagyC#
 

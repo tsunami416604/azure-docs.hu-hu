@@ -5,12 +5,12 @@ ms.date: 07/25/2019
 ms.topic: conceptual
 description: Ismerje meg, hogyan futtathat Azure dev-helyeket meglévő fürtön Windows-tárolókkal
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Windows-tárolók
-ms.openlocfilehash: 7410c0e38b84979f0977973b2d6ccf588e2b1230
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 855b877653d4cf60c8165af3094fe0e68ca5e6dd
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483998"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867292"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Windows-tárolók használata az Azure dev Spaces használatával
 
@@ -146,7 +146,12 @@ azds prep --public
 azds up
 ```
 
-Az `azds prep --public` parancs a Helm diagramot és a Dockerfiles hozza létre az alkalmazáshoz. A `azds up` parancs futtatja a szolgáltatást a névtérben.
+Az `azds prep --public` parancs a Helm diagramot és a Dockerfiles hozza létre az alkalmazáshoz.
+
+> [!TIP]
+> A projekthez tartozó [Docker és Helm diagramot](../how-dev-spaces-works.md#prepare-your-code) az Azure dev Spaces használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
+
+A `azds up` parancs futtatja a szolgáltatást a névtérben.
 
 ```console
 $ azds up

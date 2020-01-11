@@ -1,37 +1,37 @@
 ---
-title: Az SQL Data Warehouse a T-SQL, Python - Analytics csoportos adatelemzési folyamat
-description: Példák, amely be azokat az SQL Data Warehouse prediktív elemzések révén.
+title: Analitika SQL Data Warehouse a T-SQL, Python-Team adatelemzési folyamattal
+description: Példák az SQL Data Warehouse használatára a prediktív elemzések elvégzéséhez.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c545e73e51ea33db1ced546bf47465197b3fb8e4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c8be715391f71e281ca41cc68428a2d29d78783
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60589131"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864128"
 ---
-# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>T-SQL és Python használatával Azure SQL Data Warehouse adatelemzési útmutatók
+# <a name="sql-data-warehouse-data-science-walkthroughs-using-t-sql-and-python-on-azure"></a>Adatelemzési útmutató SQL Data Warehouse a T-SQL és a Python használatával az Azure-ban
 
-Ezek a forgatókönyvek használatával az SQL Data Warehouse prediktív elemzések. A csoportos adatelemzési folyamat lépéseinek követik. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). Az SQL Data Warehouse bevezetésért lásd: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
+Ezek a forgatókönyvek a prediktív elemzések elvégzéséhez SQL Data Warehouse használatát ismertetik. Ezek követik a csoportos adatelemzési folyamat lépéseit. A csoportos adatelemzési folyamat áttekintését lásd: [adatelemzési folyamat](overview.md). A SQL Data Warehouse bemutatása: [Mi az Azure SQL Data Warehouse?](../../sql-data-warehouse/sql-data-warehouse-overview-what-is.md)
 
-További adatelemzési útmutatók, a csoportos adatelemzési folyamat végrehajtható szerint vannak csoportosítva a **platform** használnak. Lásd: [forgatókönyvek végrehajtása a csoportos adatelemzési folyamat](walkthroughs.md) a példák egy részletezéshez.
-
-
-## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>Az SQL Data Warehouse a T-SQL és az IPython-jegyzetfüzeteket használatával taxi tippek előrejelzése
-
-A [használja az SQL Data Warehouse bemutató](sqldw-walkthrough.md) bemutatja, hogyan hozhat létre, és a machine learning üzembe helyezése az SQL Data Warehouse (az SQL DW) a nyilvánosan elérhető NYC besorolási és regressziós modellek taxiköltség utazást és diszkont adatkészlet.
+A csoportos adatelemzési folyamatokat végrehajtó további adatelemzési útmutatókat az általuk használt **platform** szerint csoportosítjuk. A példák részletezés tekintse meg [a csoportos adatelemzési folyamat végrehajtásához szükséges útmutatókat](walkthroughs.md) .
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="predict-taxi-tips-using-t-sql-and-ipython-notebooks-with-sql-data-warehouse"></a>A taxi tippek előrejelzése T-SQL-és IPython-jegyzetfüzetek használatával SQL Data Warehouse
 
-A csoportos adatelemzési folyamat alkotó főbb összetevőit, lásd: [csoportos adatelemzési folyamat áttekintése](overview.md).
+A [Use SQL Data Warehouse útmutató](sqldw-walkthrough.md) bemutatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási besorolást és regressziós modelleket SQL Data WAREHOUSE (SQL DW) használatával.  Az adat egy nyilvánosan elérhető NYC taxi Trip és fare adatkészlet.
 
-A csoportos adatelemzési folyamat életciklusa, amelyek segítségével az adatelemzési projektek strukturálása tárgyalását lásd: [csoportos adatelemzési folyamat életciklusa](lifecycle.md). Az életciklus elejétől a végéig, projektek általában követve azok végrehajtásakor, lépéseit ismerteti. 
+
+## <a name="next-steps"></a>Következő lépések
+
+A csoportos adatelemzési folyamatot alkotó főbb összetevőkről a [csoportos adatelemzési folyamat áttekintésében](overview.md)talál további információt.
+
+A csoportos adatelemzési folyamat életciklusának megvitatására a [csoportos adatelemzési folyamat életciklusa](lifecycle.md)című témakörben olvashat. Ez az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. 

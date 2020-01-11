@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/21/2019
 ms.author: allensu
-ms.openlocfilehash: 5a4240065039bd6e0633a19c8aad00604970c216
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 68f95c893646d76a80a4edfeb557064660ff9f1c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834677"
+ms.locfileid: "75864264"
 ---
 # <a name="azure-standard-load-balancer-overview"></a>Az Azure standard Load Balancer áttekintése
 
@@ -38,20 +38,6 @@ A Load Balancer erőforrás funkciói mindig előtérként, szabályként, álla
 Az egyik kulcsfontosságú szempont az erőforráshoz tartozó virtuális hálózat hatóköre.  Míg az alapszintű Load Balancer a rendelkezésre állási csoport hatókörén belül van, a standard Load Balancer teljes mértékben integrálva van a virtuális hálózat és az összes virtuális hálózati koncepció alkalmazási körébe.
 
 Load Balancer erőforrások olyan objektumok, amelyeken belül kipróbálhatja, hogy az Azure hogyan programba hozza a több-bérlős infrastruktúrát a létrehozni kívánt forgatókönyv eléréséhez.  Nincs közvetlen kapcsolat a Load Balancer erőforrások és a tényleges infrastruktúra között; Load Balancer létrehozása nem hoz létre példányt, a kapacitás mindig rendelkezésre áll, és nincs szükség indítási vagy méretezési késésre. 
-
-## <a name="why-use-standard-load-balancer"></a>Miért érdemes standard Load Balancer?
-
-A Standard Load Balancer használatával skálázhatók az alkalmazások, és magas rendelkezésre állás érhető el akár kis méretű üzemelő példányoknál, akár nagy és összetett, többzónás architektúrák esetében.
-
-Tekintse át az alábbi táblázatot a standard Load Balancer és az alapszintű Load Balancer közötti különbségek áttekintéséhez:
-
->[!NOTE]
-> Az új kialakítások során a Standard Load Balancert érdemes alkalmazni. 
-
-[!INCLUDE [comparison table](../../includes/load-balancer-comparison-table.md)]
-
-Tekintse át [a Load Balancerra vonatkozó szolgáltatási korlátozásokat](https://aka.ms/lblimits), valamint a [díjszabást](https://aka.ms/lbpricing)és az [SLA](https://aka.ms/lbsla)-t.
-
 
 ### <a name="backend"></a>Háttér-készlet
 
@@ -184,12 +170,6 @@ Az SKU-ket nem változtathatók meg. Kövesse az ebben a szakaszban található 
 4. Csatolja az összes VM-példányt az új szabványos SKU-erőforrásokhoz.
 
 >[!IMPORTANT]
->
->Az alapszintű és a standard SKU-ra vonatkozó korlátozások vannak érvényben.
->
->HA a standard SKU ports és Diagnostics szolgáltatás csak a standard SKU-ban érhető el. A standard SKU-ból nem lehet áttelepíteni az alapszintű SKU-ra, és meg is őrzi ezeket a funkciókat.
->
->Az alapszintű és a standard SKU számos eltérést tartalmaz a jelen cikkben ismertetett módon.  Győződjön meg róla, hogy megértette és felkészítse őket.
 >
 >Az egyező SKU-ket Load Balancer és nyilvános IP-erőforrásokhoz kell használni. Az alapszintű SKU-erőforrások és a szabványos SKU-erőforrások keveréke nem lehetséges. Nem csatolhat mindkét SKU-hoz egyszerre önálló virtuális gépeket, rendelkezésre állási csoportban lévő virtuális gépeket vagy virtuálisgép-méretezési csoport típusú erőforrásokat.
 

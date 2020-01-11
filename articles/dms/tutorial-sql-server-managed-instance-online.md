@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 88bc90a50fb9579e29b8b31b4be23052275b2b28
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/10/2020
+ms.openlocfilehash: e9a24daeeab906419416a3a10fda901c91d9fb33
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746852"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863223"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-database-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL Database felügyelt példányra online a DMS használatával
 
@@ -44,7 +44,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > Az optimális áttelepítési élmény érdekében a Microsoft azt javasolja, hogy Azure Database Migration Service-példányt hozzon létre ugyanabban az Azure-régióban, mint a célként megadott adatbázis. Az adatok különböző régiók és földrajzi helyek közötti áthelyezése lelassíthatja a migrálási folyamatot, és hibákat eredményezhet.
 
 > [!IMPORTANT]
-> Fontos, hogy a lehető legnagyobb mértékben csökkentse az online áttelepítési folyamat időtartamát, hogy minimalizálja a példányok újrakonfigurálásának vagy tervezett karbantartásának okozta megszakítás kockázatát. Ilyen esemény esetén az áttelepítési folyamat kezdete az elejétől kezdődik. Tervezett karbantartás esetén az áttelepítési folyamat újraindítása előtt 36 óra türelmi időszak áll rendelkezésre.
+> A lehető legnagyobb mértékben csökkentheti az online áttelepítési folyamat időtartamát, hogy minimalizálja a példányok újrakonfigurálásának vagy tervezett karbantartásának okozta megszakítás kockázatát. Ilyen esemény esetén az áttelepítési folyamat kezdete az elejétől kezdődik. Tervezett karbantartás esetén az áttelepítési folyamat újraindítása előtt 36 óra türelmi időszak áll rendelkezésre.
 
 [!INCLUDE [online-offline](../../includes/database-migration-service-offline-online.md)]
 
@@ -70,7 +70,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     > [!IMPORTANT]
     > A Migrálás részeként használt Storage-fiókkal kapcsolatban a következők valamelyikét kell megadnia:
     > * A Storage-fiók elérésének engedélyezéséhez válassza az összes hálózat lehetőséget.
-    > * Állítsa be a virtuális hálózat ACL-jeit. További információkért tekintse meg az [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security)című cikket.
+    > * Kapcsolja be az [alhálózat-delegálást](https://docs.microsoft.com/azure/virtual-network/manage-subnet-delegation) a mi alhálózaton, és frissítse a Storage-fiók tűzfalszabályok beállításait az alhálózat engedélyezéséhez.
 
 * Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-networks-nsg)című cikket.
 * Konfigurálja a [Windows tűzfalat a forrásadatbázis-motorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
@@ -208,7 +208,7 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     | | |
     |--------|---------|
-    |**SMB hálózatihely-megosztás** | A helyi SMB hálózati megosztás vagy az Azure-fájlmegosztás, amely tartalmazza a teljes adatbázis biztonsági mentési fájljait és a tranzakciónapló biztonsági mentési fájljait, amelyeket Azure Database Migration Service használhat az áttelepítéshez. A forrásként szolgáló SQL Server-példányt futtató szolgáltatásfióknak olvasási és írási jogosultságokkal kell rendelkeznie ehhez a hálózati megosztáshoz. Adja meg a hálózati megosztáson található kiszolgáló FQDN- vagy IP-címét, például \\\servername.domainname.com\backupfolder vagy \\\IP address\backupfolder.|
+    |**SMB hálózatihely-megosztás** | A helyi SMB hálózati megosztás vagy az Azure-fájlmegosztás, amely tartalmazza a teljes adatbázis biztonsági mentési fájljait és a tranzakciónapló biztonsági mentési fájljait, amelyeket Azure Database Migration Service használhat az áttelepítéshez. A forrásként szolgáló SQL Server-példányt futtató szolgáltatásfióknak olvasási és írási jogosultságokkal kell rendelkeznie ehhez a hálózati megosztáshoz. Adja meg a hálózati megosztáson található kiszolgáló FQDN- vagy IP-címét, például \\\servername.domainname.com\backupfolder vagy \\\IP address\backupfolder. A jobb teljesítmény érdekében ajánlott külön mappát használni az áttelepíteni kívánt adatbázisokhoz. Az adatbázis-szintű fájlmegosztás elérési útját a **Speciális beállítások** lehetőség használatával adhatja meg. |
     |**Felhasználónév** | Győződjön meg arról, hogy a Windows-felhasználó teljes körű jogosultságokkal rendelkezik a fent megadott hálózati megosztáson. A Azure Database Migration Service megszemélyesíti a felhasználói hitelesítő adatokat, hogy feltöltse a biztonságimásolat-fájlokat az Azure Storage-tárolóba a visszaállítási művelethez. Ha az Azure-fájlmegosztást használja, használja az AZURE \ gyobb mértékben nevű Storage-fiók nevét a felhasználónévként. |
     |**Jelszó** | A felhasználó jelszava. Ha az Azure-fájlmegosztást használja, használja a Storage-fiók kulcsát jelszóként. |
     |**Az Azure Storage-tárfiók előfizetése** | Válassza ki az Azure Storage-tárfiókot tartalmazó előfizetést. |
@@ -216,10 +216,11 @@ Keresse meg a létrehozott szolgáltatáspéldányt az Azure Portalon, nyissa me
 
     ![Migrálási beállítások konfigurálása](media/tutorial-sql-server-to-managed-instance-online/dms-configure-migration-settings4.png)
 
+    > [!NOTE]
+    > Ha Azure Database Migration Service a "rendszerhiba 53" vagy a "rendszerhiba 57" hibaüzenetet jeleníti meg, az ok miatt előfordulhat, hogy az Azure Database Migration Service nem tud hozzáférni az Azure-fájlmegosztás eléréséhez. Ha ezen hibák valamelyikével találkozik, adjon hozzáférést a virtuális hálózat Storage-fiókjához az [itt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)leírt utasítások alapján.
 
-> [!NOTE]
-  > Ha Azure Database Migration Service a "rendszerhiba 53" vagy a "rendszerhiba 57" hibaüzenetet jeleníti meg, akkor előfordulhat, hogy az ok miatt a Azure Database Migration Service nem tud hozzáférni az Azure-fájlmegosztás eléréséhez. Ha ezen hibák valamelyikével találkozik, adjon hozzáférést a virtuális hálózat Storage-fiókjához az [itt](https://docs.microsoft.com/azure/storage/common/storage-network-security?toc=%2fazure%2fvirtual-network%2ftoc.json#grant-access-from-a-virtual-network)leírt utasítások alapján.
-
+    > [!IMPORTANT]
+    > Ha a visszacsatolási ellenőrzési funkció engedélyezve van, és a forrás SQL Server és a fájlmegosztás ugyanazon a számítógépen található, akkor a forrás nem fogja tudni elérni a fájlokat a teljes tartománynév használatával. A probléma megoldásához tiltsa le a visszacsatolási ellenőrzés funkcióit az [itt](https://support.microsoft.com/help/926642/error-message-when-you-try-to-access-a-server-locally-by-using-its-fqd)leírt utasítások alapján.
 
 2. Kattintson a **Mentés** gombra.
 

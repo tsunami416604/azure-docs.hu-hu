@@ -12,20 +12,20 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/12/2019
+ms.date: 01/10/2020
 ms.author: b-juche
-ms.openlocfilehash: 94fc4906478e44365d03e9c8eeadd7cb1946a43a
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: 6b1946cdaebd01a0742f9ce2b2efb5054ac9d2a8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300531"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867437"
 ---
 # <a name="create-an-smb-volume-for-azure-netapp-files"></a>SMB-kötet létrehozása az Azure NetApp Files számára
 
 Azure NetApp Files támogatja az NFS-és SMBv3-köteteket. A kötet kapacitásfogyasztása beleszámít a készlet kiosztott kapacitásába. Ez a cikk bemutatja, hogyan hozhat létre SMBv3-köteteket. Ha NFS-kötetet szeretne létrehozni, tekintse [meg az NFS-kötet létrehozása Azure NetApp Fileshoz](azure-netapp-files-create-volumes.md)című témakört. 
 
-## <a name="before-you-begin"></a>Előkészületek 
+## <a name="before-you-begin"></a>Előzetes teendők 
 A cikk előfeltételeinek részeként korábban már be kellett állítania egy kapacitáskészletet.   
 [Kapacitási készlet beállítása](azure-netapp-files-set-up-capacity-pool.md)   
 Az alhálózatot delegálni kell Azure NetApp Files.  
@@ -40,12 +40,12 @@ Az alhálózatot delegálni kell Azure NetApp Files.
 * A megfelelő portokat meg kell nyitni a megfelelő Windows Active Directory (AD) kiszolgálón.  
     A szükséges portok a következők: 
 
-    |     Szolgáltatás           |     Port     |     Protokoll     |
+    |     Szolgáltatás           |     Port     |     Protocol (Protokoll)     |
     |-----------------------|--------------|------------------|
     |    AD Web Services    |    9389      |    TCP           |
     |    DNS                |    53        |    TCP           |
     |    DNS                |    53        |    UDP           |
-    |    ICMPv4             |    N/A       |    Visszhangos válasz    |
+    |    ICMPv4             |    –       |    Visszhangos válasz    |
     |    Kerberos           |    464       |    TCP           |
     |    Kerberos           |    464       |    UDP           |
     |    Kerberos           |    88        |    TCP           |
@@ -56,8 +56,6 @@ Az alhálózatot delegálni kell Azure NetApp Files.
     |    NetBIOS-név       |    138       |    UDP           |
     |    SAM/LSA            |    445       |    TCP           |
     |    SAM/LSA            |    445       |    UDP           |
-    |    Biztonságos LDAP        |    636       |    TCP           |
-    |    Biztonságos LDAP        |    3269      |    TCP           |
     |    W32Time            |    123       |    UDP           |
 
 * A célként megadott Active Directory tartományi szolgáltatások helyének topológiájának meg kell felelnie az ajánlott eljárásoknak, különösen az Azure-VNet, ahol a Azure NetApp Files telepítve van.  

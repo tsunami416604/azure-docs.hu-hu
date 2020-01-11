@@ -8,12 +8,12 @@ ms.author: victliu
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 16daf4a79252134703715ccd88f0b10dda7f4fa6
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 0f91775e0175b4b4af9b57fa96e389c3a2a22564
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72792157"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863121"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-managed-instance"></a>Azure Cognitive Search indexelő és SQL felügyelt példány közötti kapcsolatok konfigurálása
 
@@ -33,6 +33,13 @@ A nyilvános végpontot egy meglévő SQL felügyelt példányon is engedélyezh
 Győződjön meg arról, hogy a hálózati biztonsági csoport rendelkezik a megfelelő **bejövő biztonsági szabályokkal** , amelyek engedélyezik az Azure-szolgáltatásokból érkező kapcsolatokat.
 
    ![NSG – bejövő biztonsági szabály](media/search-howto-connecting-azure-sql-mi-to-azure-search-using-indexers/nsg-rule.png "NSG – bejövő biztonsági szabály")
+
+> [!NOTE]
+> A felügyelt SQL-példányhoz való bejövő hozzáférésnél szigorúbb korlátozást is megadhat, ha az aktuális szabályt (`public_endpoint_inbound`) 2 szabállyal helyettesíti:
+>
+> * Bejövő hozzáférés engedélyezése a `AzureCognitiveSearch` [szolgáltatási címkéből](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) ("forrás" = `AzureCognitiveSearch`)
+>
+> * A keresési szolgáltatás IP-címéről érkező bejövő hozzáférés engedélyezése, amelyet a teljes tartománynév (például `<your-search-service-name>.search.windows.net`) pingelésével lehet beszerezni. ("Forrás" = `IP address`)
 
 ## <a name="get-public-endpoint-connection-string"></a>Nyilvános végponti kapcsolatok karakterláncának beolvasása
 Győződjön meg arról, hogy a **nyilvános végpont** (3342-as port, nem a 1433-es port) csatlakozási karakterláncát használja.

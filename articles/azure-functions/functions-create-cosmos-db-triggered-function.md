@@ -5,12 +5,12 @@ ms.assetid: bc497d71-75e7-47b1-babd-a060a664adca
 ms.topic: quickstart
 ms.date: 10/02/2018
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 922babb4b9b80c91ea99062170cf224346df192a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 830c7cdee247118ed24fc9b3a2a9efe8609c75d0
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769421"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863281"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
 
@@ -64,10 +64,10 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | Beállítás      | Ajánlott érték  | Leírás                                |
     | ------------ | ---------------- | ------------------------------------------ |
     | **Name (Név)** | Alapértelmezett | Használja a sablonban javasolt alapértelmezett függvénynevet.|
-    | **Azure Cosmos DB-fiók kapcsolata** | Új beállítás | Válassza ki az **Új** gombot, majd válassza ki az **előfizetését**, a korábban létrehozott **adatbázisfiókot**, és a **Kiválasztás** lehetőséget. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást a kötés használja az adatbázishoz való kapcsolódáshoz. |
-    | **Gyűjtemény neve** | Elemek | A monitorozni kívánt gyűjtemény neve. |
-    | **A bérletek gyűjteményének létrehozása, ha az nem létezik** | Bejelölve | A gyűjtemény még nem létezik, hozza létre. |
-    | **Adatbázis neve** | Feladatok | A monitorozni kívánt gyűjteményt tartalmazó adatbázis neve. |
+    | **Azure Cosmos DB-fiók kapcsolata** | Új beállítás | Válassza ki az **Új** gombot, majd válassza ki az **előfizetését**, a korábban létrehozott **adatbázisfiókot**, és a **Kiválasztás** lehetőséget. Ezzel létrehoz egy alkalmazásbeállítást a fiókkapcsolathoz. Ezt a beállítást használja a kötés, hogy kapcsolódjon az adatbázishoz. |
+    | **Tároló neve** | Elemek | A figyelni kívánt tároló neve. |
+    | **Bérleti tároló létrehozása, ha nem létezik** | Bejelölve | A tároló még nem létezik, ezért hozza létre. |
+    | **Adatbázis neve** | Feladatok | A figyelni kívánt tárolót tartalmazó adatbázis neve. |
 
 1. Kattintson a **Létrehozás** elemre az Azure Cosmos DB által aktivált függvény létrehozásához. Miután a függvény létrejött, megjelenik a sablonalapú függvénykód.  
 
@@ -75,9 +75,9 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
     Ez a függvénysablon a naplókba írja a dokumentumok számát és az első dokumentumazonosítót.
 
-Ezután csatlakozzon Azure Cosmos DB-fiókjához, és hozza létre az `Items` gyűjteményt a `Tasks` adatbázisban.
+Ezután kapcsolódjon a Azure Cosmos DB-fiókjához, és hozza létre a `Items` tárolót a `Tasks` adatbázisban.
 
-## <a name="create-the-items-collection"></a>Az Elemek gyűjtemény létrehozása
+## <a name="create-the-items-container"></a>Az Items tároló létrehozása
 
 1. Nyissa meg az [Azure Portal](https://portal.azure.com) egy újabb példányát egy új böngészőlapon.
 
@@ -87,33 +87,32 @@ Ezután csatlakozzon Azure Cosmos DB-fiókjához, és hozza létre az `Items` gy
 
 1. Válassza ki Azure Cosmos DB-fiókját, majd válassza az**Adatkezelő** lehetőséget. 
 
-1. A **Gyűjtemények** területen válassza a **taskDatabase**, majd az **Új gyűjtemény** elemet.
+1. Az **SQL API**alatt válassza a **feladatok** adatbázis lehetőséget, és válassza az **új tároló**elemet.
 
-    ![Katalógus létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection.png)
+    ![Tároló létrehozása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container.png)
 
-1. A **Gyűjtemény hozzáadása** területen használja az ábra alatti táblázatban látható beállításokat. 
+1. A **tároló hozzáadása**területen használja a rendszerkép alatti táblázatban látható beállításokat. 
 
-    ![A taskCollection elem meghatározása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-collection2.png)
+    ![A feladatok tárolójának megadása](./media/functions-create-cosmos-db-triggered-function/cosmosdb-create-container2.png)
 
     | Beállítás|Ajánlott érték|Leírás |
     | ---|---|--- |
     | **Adatbázis-azonosító** | Feladatok |Az új adatbázis neve. A névnek meg kell egyeznie a függvénykötésben meghatározott névvel. |
-    | **Gyűjtemény azonosítója** | Elemek | Az új gyűjtemény neve. A névnek meg kell egyeznie a függvénykötésben meghatározott névvel.  |
-    | **Tárkapacitás** | Rögzített méretű (10 GB)|Használja az alapértelmezett értéket. Ez az érték az adatbázis tárkapacitása. |
-    | **Átviteli sebesség** |400 kérelemegység| Használja az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. |
-    | **[Partíciókulcs](../cosmos-db/partition-data.md)** | /kategória|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciókulcs kiválasztása fontos a nagy teljesítményű gyűjtemények létrehozásához. | 
+    | **Tároló azonosítója** | Elemek | Az új tároló neve. A névnek meg kell egyeznie a függvénykötésben meghatározott névvel.  |
+    | **[Partíciókulcs](../cosmos-db/partition-data.md)** | /kategória|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciós kulcs kiválasztásával fontos szerepet játszik a teljesítményű tárolók létrehozásában. | 
+    | **Átviteli sebesség** |400 kérelemegység| Használja az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. |    
 
-1. Az Elemek gyűjtemény létrehozásához kattintson az **OK** gombra. A gyűjtemény létrehozása egy kis időt vehet igénybe.
+1. Az elemek tároló létrehozásához kattintson **az OK** gombra. Eltarthat egy rövid ideig, amíg a tároló létre nem kerül.
 
-A függvénykötésben megadott gyűjtemény létrejötte után tesztelheti a függvényt úgy, hogy dokumentumokat ad az új gyűjteményhez.
+Ha a függvény kötésében megadott tároló létezik, akkor tesztelheti a függvényt, ha elemeket ad hozzá az új tárolóhoz.
 
 ## <a name="test-the-function"></a>A függvény tesztelése
 
-1. Bontsa ki az új **taskCollection** gyűjteményt az Adatkezelőben, és válassza a **Dokumentumok**, majd az **Új dokumentum** elemet.
+1. Bontsa ki az új **elemek** tárolót Adatkezelőban, majd válassza az **elemek**, majd az **új elem**lehetőséget.
 
-    ![Dokumentum létrehozása a taskCollection gyűjteményben](./media/functions-create-cosmos-db-triggered-function/create-document-in-collection.png)
+    ![Elem létrehozása az elemek tárolóban](./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png)
 
-1. Cserélje le az új dokumentum tartalmát a következő tartalomra, majd válassza a **Mentés** elemet.
+1. Cserélje le az új elem tartalmát a következő tartalomra, majd válassza a **Mentés**lehetőséget.
 
         {
             "id": "task1",

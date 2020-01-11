@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/31/2019
 ms.custom: seodec18
-ms.openlocfilehash: dada1a8ed8b1725905ee2ad159e385d1bee62fc6
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1deca696ba576849701eb8719de7fbaa7895a26a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615097"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861404"
 ---
 # <a name="data-storage-and-ingress-in-azure-time-series-insights-preview"></a>Adattárolás és bejövő forgalom Azure Time Series Insights előzetes verzióban
 
@@ -117,8 +117,8 @@ Előfordulhat, hogy a Time Series Insights Preview Explorerben a más szolgálta
 Az adatai három általános módon érhetők el:
 
 * A Time Series Insights Preview Explorerben. Az adatok CSV-fájlként is exportálhatók az Intézőből. További információ: [Time Series Insights Preview Explorer](./time-series-insights-update-explorer.md).
-* A Time Series Insights Preview API-ból. Az API-végpont `/getRecorded`címen érhető el. Ha többet szeretne megtudni erről az API-ról, tekintse meg a [Time Series lekérdezését](./time-series-insights-update-tsq.md).
-* Közvetlenül egy Azure Storage-fiókból. Olvasási hozzáféréssel kell rendelkeznie a Time Series Insights előnézeti adataihoz való hozzáféréshez használt fiókhoz. További információ: [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md).
+* A Time Series Insights Preview API-ból. Az API-végpont `/getRecorded`címen érhető el. Ha többet szeretne megtudni erről az API-ról, olvassa el a [Time Series-lekérdezés](./time-series-insights-update-tsq.md)című témakört.
+* Közvetlenül egy Azure Storage-fiókból. Olvasási hozzáféréssel kell rendelkeznie a Time Series Insights előnézeti adataihoz való hozzáféréshez használt fiókhoz. További információért olvassa el [a Storage-fiók erőforrásaihoz való hozzáférés kezelése](../storage/blobs/storage-manage-access-to-resources.md)című témakört.
 
 ### <a name="data-deletion"></a>Adattörlés
 
@@ -128,7 +128,7 @@ Ne törölje a Time Series Insights előnézeti fájljait. A kapcsolódó adatok
 
 A Parquet egy nyílt forráskódú, oszlopos fájlformátum, amely hatékony tároláshoz és teljesítményhez lett tervezve. Time Series Insights az előzetes verzió a parkettát használja az alábbi okok miatt. Idősorozat-azonosító alapján particionálja az adatmennyiséget a lekérdezési teljesítményhez a skálán.  
 
-A Parquet fájltípussal kapcsolatos további információkért tekintse meg a [parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
+A Parquet fájltípussal kapcsolatos további információkért olvassa el a [parketta dokumentációját](https://parquet.apache.org/documentation/latest/).
 
 Time Series Insights az alábbi módon tárolja az adatai másolatait:
 

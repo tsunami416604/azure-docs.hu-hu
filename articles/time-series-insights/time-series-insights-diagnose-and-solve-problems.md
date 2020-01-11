@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: ff723f490a3f6d34f652e0b21e5f6e0b16f0a841
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: 3e73afa89ee61243784c5952eeda26a79d508dee
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74900271"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863410"
 ---
 # <a name="diagnose-and-solve-issues-in-your-time-series-insights-environment"></a>A Time Series Insights-környezet problémáinak diagnosztizálása és megoldása
 
@@ -34,7 +34,7 @@ A [Azure Time Series Insights Explorer](https://insights.timeseries.azure.com) s
 
 ### <a name="cause-a-event-source-data-isnt-in-json-format"></a>A ok: az eseményforrás-adatforrások nem JSON formátumúak
 
-A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+A Azure Time Series Insights csak a JSON-adatkezelést támogatja. JSON-minták esetén olvassa el a [támogatott JSON-alakzatokat](./how-to-shape-query-json.md).
 
 ### <a name="cause-b-the-event-source-key-is-missing-a-required-permission"></a>B ok: az eseményforrás kulcsa hiányzik egy szükséges engedély
 
@@ -69,7 +69,7 @@ Ha a régi események szerepelnek az eseményforrásban, kétféleképpen is meg
 - Módosítsa az eseményforrás megőrzési korlátait, hogy eltávolítsa a régi, Time Series Insightsban nem megjeleníteni kívánt eseményeket.
 - A régi események átviteli sebességének növeléséhez hozzon létre nagyobb méretű környezeti méretet (egységek száma). Ha ugyanezt az S1-környezetet egy nap alatt 5 egységre emeli, akkor az előző példában a környezetnek egy napon belül kell megjelennie. Ha az állandó állapotú események termelése naponta 1 000 000 vagy kevesebb eseményt mutat be, akkor az esemény kapacitását egy egységre csökkentheti.
 
-A szabályozási korlátot a környezet SKU-típusa és kapacitása alapján kényszerítjük ki. A környezetben lévő összes eseményforrás megosztja ezt a kapacitást. Ha az IoT hub vagy az Event hub eseményforrás a kényszerített határértékeken felül küldi az adatforrást, akkor a szabályozás és a késés is megjelenik.
+A szabályozási korlátot a környezet SKU-típusa és kapacitása alapján kényszerítjük ki. A környezetben lévő összes eseményforrás megosztja ezt a kapacitást. Ha az IoT hub vagy az Event hub eseményforrás a kényszerített határértékeken felül küldi az adatforrást, a szabályozás és a késés is megtapasztalható.
 
 Az alábbi ábrán egy olyan Time Series Insights-környezet látható, amely egy S1-es SKU-t és 3 kapacitást tartalmaz. Naponta 3 000 000 eseményt tud beáramlani.
 
@@ -82,11 +82,11 @@ Tegyük fel például, hogy egy környezet az Event hub üzeneteit tölti be. A 
 
 A 3 kapacitású S1 SKU-környezetek percenként csak 2 100 eseményt tudnak beáramlani (naponta 1 000 000 esemény = 700 esemény percenként három egységben = 2 100 esemény percenként). 
 
-A következő témakörben tájékozódhat arról, hogyan működik a kisimítási logika: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+Ha magas szintű ismereteket kíván arról, hogyan működik az összevonási logika, olvassa el a [támogatott JSON-alakzatok](./how-to-shape-query-json.md)című témakört.
 
 #### <a name="recommended-resolutions-for-excessive-throttling"></a>Ajánlott megoldások a túlzott szabályozáshoz
 
-A késés kijavításához növelje a környezet SKU-kapacitását. További információ: [a Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md).
+A késés kijavításához növelje a környezet SKU-kapacitását. További információért olvassa el [a Time Series Insights-környezet skálázása](time-series-insights-how-to-scale-your-environment.md)című témakört.
 
 ### <a name="cause-b-initial-ingestion-of-historical-data-slows-ingress"></a>B ok: a korábbi adatmennyiség kezdeti betöltése lassú a bejövő forgalomtól
 
@@ -109,9 +109,9 @@ Győződjön meg arról, hogy az időbélyeg-tulajdonság neve és értéke megf
 
 Az időbélyeg-tulajdonságnév rögzítésének és megfelelő működésének legegyszerűbb módja a Time Series Insights Explorer használata. A Time Series Insights Explorerben a diagramot használva válasszon ki egy időszakot, miután megadta az időbélyeg-tulajdonság nevét. Kattintson a jobb gombbal a kijelölésre, majd válassza az **események feltárása** lehetőséget.
 
-Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A szó **időbélyege**mellett a következő jelenik meg: **($TS)** .
+Az első oszlop fejlécének az időbélyeg-tulajdonságnév kell lennie. A Word **időbélyeg**mellett **($TS)** jelenik meg.
 
-A következő értékek nem láthatók:
+A következő értékek nem jelennek meg:
 
 - *(ABC)* : azt jelzi, hogy Time Series Insights karakterláncként olvassa be az adatértékeket.
 - *Naptár ikonja*: azt jelzi, hogy Time Series Insights az adatértéket *datetime*típusúként olvassa.

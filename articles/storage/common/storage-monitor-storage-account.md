@@ -4,16 +4,16 @@ description: Megtudhatja, hogyan figyelheti a Storage-fiókot az Azure-ban a Azu
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 07/31/2018
+ms.date: 01/09/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
-ms.openlocfilehash: 143574ff02960fcd0fd33ccaed5a80a9bb4f3147
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: e9ef700e45acc55f476d72883107b0c5c958fa7f
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71211853"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862832"
 ---
 # <a name="monitor-a-storage-account-in-the-azure-portal"></a>Storage-fiók figyelése a Azure Portal
 
@@ -53,7 +53,7 @@ A metrikák alapértelmezett készlete a Storage-fiók panelen, valamint az egye
 A metrikák gyűjtését és naplózását letilthatja, ha az **állapot** beállítás **ki**értékre van állítva.
 
 > [!NOTE]
-> Az Azure Storage a [Table Storage](storage-introduction.md#table-storage) használatával tárolja a Storage-fiók metrikáit, és a fiókban lévő táblákban tárolja a metrikákat. További információ:. [A metrikák tárolása](storage-analytics-metrics.md#how-metrics-are-stored)
+> Az Azure Storage a [Table Storage](storage-introduction.md#table-storage) használatával tárolja a Storage-fiók metrikáit, és a fiókban lévő táblákban tárolja a metrikákat. További információ: . [A metrikák tárolása](storage-analytics-metrics.md#how-metrics-are-stored)
 >
 
 ## <a name="customize-metrics-charts"></a>Metrikák diagramjainak testreszabása
@@ -109,10 +109,10 @@ Riasztásokat hozhat létre, amelyekkel értesítést kaphat, ha elérte a táro
 Bármelyik Storage-fiókhoz hozzáadhat Azure Storage metrikai diagramokat a portál irányítópultján.
 
 1. Válassza az **irányítópult szerkesztése** lehetőséget az irányítópult megtekintésekor a [Azure Portal](https://portal.azure.com).
-1. A csempe- **gyűjteményben**válassza a **csempék keresése** > **típus**szerint lehetőséget.
+1. A csempe- **gyűjteményben**válassza a **csempék keresése** > **típus**alapján lehetőséget.
 1. Válassza a **típus** > **Storage-fiókok**lehetőséget.
 1. Az **erőforrások**területen válassza ki azt a Storage-fiókot, amelynek metrikáit hozzá szeretné adni az irányítópulthoz.
-1. Válassza ki a **Kategóriák** > **figyelése**elemet.
+1. Válassza ki a **kategóriákat** > a **figyelés**lehetőséget.
 1. Húzza a diagram csempét az Irányítópultra a megjelenő mérőszámhoz. Ismételje meg az összes olyan mérőszámot, amelyet meg szeretne jeleníteni az irányítópulton. A következő ábrán a "Blobok – összes kérelem" diagram ki van emelve példaként, de az irányítópulton az összes diagram elérhetővé válik.
 
    ![Csempe-gyűjtemény Azure Portal](./media/storage-monitor-storage-account/storage-customize-dashboard.png)
@@ -129,19 +129,19 @@ A blob-, tábla-és üzenetsor-szolgáltatásokhoz tartozó olvasási, írási �
 >
 
 1. A [Azure Portal](https://portal.azure.com)válassza ki a Storage- **fiókok**elemet, majd a Storage-fiók nevét a Storage-fiók panel megnyitásához.
-1. Válassza a **diagnosztika** lehetőséget a menü panel **figyelés** szakaszában.
+1. Válassza a **diagnosztikai beállítások (klasszikus)** lehetőséget a menü panel **monitorozás (klasszikus)** szakaszában.
 
     ![Diagnosztika menüpont a Azure Portal figyelés területén.](./media/storage-monitor-storage-account/storage-enable-metrics-00.png)
 
 1. Győződjön **meg**arról, hogy az **állapot** beállítás be értékre van állítva, majd válassza ki azokat a **szolgáltatásokat** , amelyeknek engedélyezni szeretné a naplózást.
 
     ![Konfigurálja a naplózást a Azure Portalban.](./media/storage-monitor-storage-account/enable-diagnostics.png)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 A diagnosztikai naplókat a rendszer egy *$logs* nevű blob-tárolóba menti a Storage-fiókjában. A naplófájlokat a [Microsoft Storage Explorerhoz](https://storageexplorer.com)hasonló Storage Explorerrel, vagy programozott módon, a Storage ügyféloldali kódtár vagy a PowerShell használatával tekintheti meg.
 
 További információ a $logs tároló eléréséről: [Storage Analytics naplózása](storage-analytics-logging.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a Storage Analytics [metrikákkal, naplózással és számlázással](storage-analytics.md) kapcsolatban.

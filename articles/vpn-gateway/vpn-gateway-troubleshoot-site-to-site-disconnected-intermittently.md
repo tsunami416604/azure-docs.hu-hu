@@ -1,27 +1,21 @@
 ---
-title: Az Azure-helyek közötti VPN-kapcsolat hibáinak megoldása időnként leszakad | Microsoft Docs
+title: Az Azure-helyek közötti VPN-kapcsolat hibáinak megoldása időnként leszakad
 description: Ismerje meg, hogy miként lehet elhárítani a két hálózat közötti pont-pont típusú VPN-kapcsolat által rendszeresen leválasztott problémát.
 services: vpn-gateway
-documentationcenter: na
+titleSuffix: Azure VPN Gateway
 author: chadmath
-manager: dcscontentpm
-editor: ''
-tags: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: infrastructure-services
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: 394062257f09bb0b8cfa6875795b88d35404f87c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058842"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862560"
 ---
-# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás Az Azure-helyek közötti VPN-kapcsolat időnként megszakad
+# <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: az Azure helyek közötti VPN-kapcsolata időnként megszakad
 
 Előfordulhat, hogy a probléma az, hogy egy új vagy meglévő Microsoft Azure helyek közötti VPN-kapcsolat nem stabil, vagy rendszeresen bontja a kapcsolatot. Ez a cikk hibaelhárítási lépéseket tartalmaz a probléma okának azonosításához és megoldásához. 
 
@@ -70,7 +64,7 @@ A házirend-alapú virtuális hálózati átjáró 200 alhálózati biztonsági 
 
 A **tökéletes továbbítási titoktartási** funkció a leválasztási problémákhoz vezethet. Ha a VPN-eszközön engedélyezve van a megfelelő **továbbítási titoktartás** , tiltsa le a szolgáltatást. Ezután [frissítse a virtuális hálózati átjáró IPsec-házirendjét](vpn-gateway-ipsecikepolicy-rm-powershell.md#managepolicy).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Helyek közötti kapcsolat konfigurálása virtuális hálózathoz](vpn-gateway-howto-site-to-site-resource-manager-portal.md)
 - [IPsec/IKE-szabályzat konfigurálása két hálózat közötti pont-pont típusú VPN-kapcsolatokhoz](vpn-gateway-ipsecikepolicy-rm-powershell.md)

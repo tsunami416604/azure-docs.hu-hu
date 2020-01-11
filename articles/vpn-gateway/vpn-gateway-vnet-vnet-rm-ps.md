@@ -1,5 +1,5 @@
 ---
-title: 'Azure-beli virtuális hálózat összekapcsolása egy másik VNet egy VNet – VNet kapcsolat használatával: PowerShell | Microsoft Docs'
+title: 'VNet csatlakoztatása egy másik VNet Azure VPN Gateway VNet – VNet kapcsolat használatával: PowerShell'
 description: Egymáshoz csatlakoztathatja a virtuális hálózatokat a virtuális hálózatok közötti kapcsolat és a PowerShell használatával.
 services: vpn-gateway
 author: cherylmc
@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 02/15/2019
 ms.author: cherylmc
-ms.openlocfilehash: dbf59740af64bf8d403b6596a17646304c0f1eb0
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: eebe66ca038b31f23ca864b107816b8cf761b29c
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68385790"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860520"
 ---
 # <a name="configure-a-vnet-to-vnet-vpn-gateway-connection-using-powershell"></a>Virtuális hálózatok közötti VPN Gateway-kapcsolat konfigurálása a PowerShell használatával
 
@@ -40,7 +40,7 @@ Virtuális hálózatok közötti kapcsolat konfigurálásával könnyedén kapcs
 
 Amikor bonyolult hálózati konfigurációkkal dolgozik, a virtuális hálózatok közötti kapcsolatok konfigurációs lépései helyett érdemesebb lehet a [helyek közötti kapcsolat](vpn-gateway-create-site-to-site-rm-powershell.md) lépéseit használni virtuális hálózatai összekapcsolására. A helyek közötti kapcsolatokra vonatkozó lépésekkel manuálisan hozhatja létre és konfigurálhatja a helyi hálózati átjárókat. Az egyes virtuális hálózatok helyi hálózati átjárója helyi helyként kezeli a többi virtuális hálózatot. Így további címtereket határozhat meg a helyi hálózati átjáróhoz a forgalom irányítása érdekében. Ha egy virtuális hálózat címtere megváltozik, frissítenie kell a megfelelő helyi hálózati átjárót a változás tükrözése érdekében. Az átjáró nem frissül automatikusan.
 
-### <a name="vnet-peering"></a>Társviszony létesítése virtuális hálózatok között
+### <a name="vnet-peering"></a>Társviszony-létesítés virtuális hálózatok között
 
 Érdemes megfontolni a virtuális hálózatok virtuális hálózatok közötti társviszony útján történő összekötését. A virtuális hálózatok közötti társviszony nem használ VPN-átjárót, és más korlátozásokkal rendelkezik. Emellett a [virtuális hálózatok közötti társviszony díjszabásának](https://azure.microsoft.com/pricing/details/virtual-network) kiszámítása máshogy történik, mint a [virtuális hálózatok közötti VPN-átjáró](https://azure.microsoft.com/pricing/details/vpn-gateway) esetén. További információ: [Társviszony létesítése virtuális hálózatok között](../virtual-network/virtual-network-peering-overview.md).
 
@@ -65,17 +65,17 @@ A kettő között az egyik legfőbb különbség az, hogy az eltérő előfizet�
 
 Ebben a gyakorlatban igény szerint kombinálhatja a konfigurációkat, vagy csak kiválaszthat egyet, amelyet használni kíván. Az összes konfiguráció a virtuális hálózatok közötti kapcsolattípust használja. A hálózati adatforgalom a közvetlenül egymáshoz csatlakoztatott virtuális hálózatok között zajlik. Ebben a gyakorlatban a TestVNet4 forgalma nem a TestVNet5 felé irányul.
 
-* [Azonos előfizetésben található virtuális hálózatok](#samesub): A konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
+* [Azonos előfizetésben található virtuális hálózatok](#samesub): a konfiguráció lépései a TestVNet1 és TestVNet4 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vrmps.png)
 
-* [Eltérő előfizetésekben található virtuális hálózatok](#difsub): A konfiguráció lépései a következőt használják: TestVNet1 és TestVNet5.
+* [Eltérő előfizetésben található virtuális hálózatok](#difsub): a konfiguráció lépései a TestVNet1 és TestVNet5 hálózatot használják.
 
   ![v2v ábra](./media/vpn-gateway-vnet-vnet-rm-ps/v2vdiffsub.png)
 
 ## <a name="samesub"></a>Azonos előfizetésben található virtuális hálózatok összekapcsolása
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -94,31 +94,31 @@ A példákban a következő értékeket használjuk:
 * Virtuális hálózat neve: TestVNet1
 * Erőforráscsoport: TestRG1
 * Hely: East US
-* TestVNet1 10.11.0.0/16 & 10.12.0.0/16
-* FrontEnd 10.11.0.0/24
-* BackEnd 10.12.0.0/24
-* GatewaySubnet tartománya 10.12.255.0/27
-* Átjáró neve VNet1GW
+* TestVNet1: 10.11.0.0/16 és 10.12.0.0/16
+* Előtér: 10.11.0.0/24
+* Háttér: 10.12.0.0/24
+* Átjáróalhálózat: 10.12.255.0/27
+* Átjáró neve: VNet1GW
 * Nyilvános IP-cím: VNet1GWIP
-* VPNType Útvonalalapú
-* Kapcsolatok (1to4): VNet1toVNet4
-* Kapcsolatok (1 – 5): VNet1toVNet5 (különböző előfizetésekben lévő virtuális hálózatok esetén)
-* ConnectionType VNet2VNet
+* VPN típusa: RouteBased
+* Kapcsolat (1–4): VNet1toVNet4
+* Kapcsolat (1–5): VNet1toVNet5 (virtuális hálózatokhoz eltérő előfizetésekben)
+* Kapcsolat típusa: VNet2VNet
 
 **Értékek a TestVNet4-hez:**
 
 * Virtuális hálózat neve: TestVNet4
-* TestVNet2: 10.41.0.0/16 & 10.42.0.0/16
-* FrontEnd 10.41.0.0/24
-* BackEnd 10.42.0.0/24
-* GatewaySubnet 10.42.255.0/27
+* TestVNet2: 10.41.0.0/16 és 10.42.0.0/16
+* Előtér: 10.41.0.0/24
+* Háttér: 10.42.0.0/24
+* Átjáróalhálózat: 10.42.255.0/27
 * Erőforráscsoport: TestRG4
-* Hely: USA nyugati régiója
-* Átjáró neve VNet4GW
+* Hely: West US
+* Átjáró neve: VNet4GW
 * Nyilvános IP-cím: VNet4GWIP
-* VPNType Útvonalalapú
+* VPN típusa: RouteBased
 * Kapcsolat: VNet4toVNet1
-* ConnectionType VNet2VNet
+* Kapcsolat típusa: VNet2VNet
 
 
 ### <a name="Step2"></a>2. lépés – A TestVNet1 létrehozása és konfigurálása
@@ -168,7 +168,7 @@ A példákban a következő értékeket használjuk:
    ```
 4. Hozza létre a TestVNet1 alhálózat-konfigurációit. Ez a példa létrehoz egy TestVNet1 nevű virtuális hálózatot és három alhálózatot, amelyek neve a következő: GatewaySubnet, FrontEnd és Backend. Az értékek behelyettesítésekor fontos, hogy az átjáróalhálózat neve mindenképp GatewaySubnet legyen. Ha ezt másként nevezi el, az átjáró létrehozása meghiúsul. Ezért nem az alábbi változón keresztül van hozzárendelve.
 
-   A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Bár lehetséges akár /29-es átjáróalhálózatot is létrehozni, javasolt egy ennél nagyobb, több címmel rendelkező alhálózatot létrehozni: legalább /28-asat vagy /27-eset. Ez elegendő címet biztosít az esetleges későbbi konfigurációkhoz.
+   A következő példa a korábban beállított változókat használja. A példában az átjáróalhálózat /27-es alhálózatot használ. Ugyan létrehozhat kicsi, akár /29-es méretű átjáró-alhálózatot is, a /28-as vagy /27-es lehetőség választásával ajánlott nagyobb alhálózatot létrehozni, amely több címet tartalmaz. Ez elegendő címet biztosít ahhoz, hogy az esetleges további konfigurációkat is elbírják.
 
    ```azurepowershell-interactive
    $fesub1 = New-AzVirtualNetworkSubnetConfig -Name $FESubName1 -AddressPrefix $FESubPrefix1
@@ -195,7 +195,7 @@ A példákban a következő értékeket használjuk:
    $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 `
    -Subnet $subnet1 -PublicIpAddress $gwpip1
    ```
-8. Hozza létre a TestVNet1 átjáróját. Ebben a lépésben a TestVNet1 virtuális hálózati átjáróját fogja létrehozni. A virtuális hálózatok közötti konfigurációkhoz a VpnType paraméternek RouteBased értékűnek kell lennie. Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+8. Hozza létre a TestVNet1 átjáróját. Ebben a lépésben a TestVNet1 virtuális hálózati átjáróját fogja létrehozni. A virtuális hálózatok közötti konfigurációkhoz a VpnType paraméternek RouteBased értékűnek kell lennie. Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 `
@@ -258,7 +258,7 @@ A TestVNet1 konfigurálása után a hozza létre a TestVNet4 virtuális hálóza
    $subnet4 = Get-AzVirtualNetworkSubnetConfig -Name "GatewaySubnet" -VirtualNetwork $vnet4
    $gwipconf4 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName4 -Subnet $subnet4 -PublicIpAddress $gwpip4
    ```
-7. A TestVNet4 átjárójának létrehozása Az átjáró létrehozása akár 45 percet is igénybe vehet, az átjáró kiválasztott termékváltozatától függően.
+7. A TestVNet4 átjárójának létrehozása Az átjáró létrehozása akár 45 percet vagy hosszabb időt is igénybe vehet a választott átjáró-termékváltozattól függően.
 
    ```azurepowershell-interactive
    New-AzVirtualNetworkGateway -Name $GWName4 -ResourceGroupName $RG4 `
@@ -312,16 +312,16 @@ Fontos ügyelni arra, hogy az új virtuális hálózat (TestVNet5) IP-címtere n
 
 * Virtuális hálózat neve: TestVNet5
 * Erőforráscsoport: TestRG5
-* Hely: Kelet-Japán
-* TestVNet5 10.51.0.0/16 & 10.52.0.0/16
-* FrontEnd 10.51.0.0/24
-* BackEnd 10.52.0.0/24
-* GatewaySubnet 10.52.255.0.0/27
-* Átjáró neve VNet5GW
+* Hely: Japan East
+* TestVNet5: 10.51.0.0/16 és 10.52.0.0/16
+* Előtér: 10.51.0.0/24
+* Háttér: 10.52.0.0/24
+* Átjáróalhálózat: 10.52.255.0.0/27
+* Átjáró neve: VNet5GW
 * Nyilvános IP-cím: VNet5GWIP
-* VPNType Útvonalalapú
+* VPN típusa: RouteBased
 * Kapcsolat: VNet5toVNet1
-* ConnectionType VNet2VNet
+* Kapcsolat típusa: VNet2VNet
 
 ### <a name="step-7---create-and-configure-testvnet5"></a>7\. lépés – A TestVNet5 létrehozása és konfigurálása
 
@@ -481,7 +481,7 @@ Ebben a példában, mivel az átjárók különböző előfizetésekben találha
 
 [!INCLUDE [vpn-gateway-vnet-vnet-faq](../../includes/vpn-gateway-faq-vnet-vnet-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Miután a kapcsolat létrejött, hozzáadhat virtuális gépeket a virtuális hálózataihoz. További információkért tekintse meg a [Virtual Machines-dokumentációt](https://docs.microsoft.com/azure/).
 * Információk a BGP-ről: [A BGP áttekintése](vpn-gateway-bgp-overview.md) és [A BGP konfigurálása](vpn-gateway-bgp-resource-manager-ps.md).

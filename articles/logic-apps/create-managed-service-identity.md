@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
-ms.openlocfilehash: 49c925cfe61084d8fedfdf953d469db4bd2c10b1
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 714faa43f34de965055ceba80de08972dd4192ac
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792675"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861200"
 ---
 # <a name="authenticate-access-to-azure-resources-by-using-managed-identities-in-azure-logic-apps"></a>Az Azure-erőforrásokhoz való hozzáférés hitelesítése felügyelt identitások használatával Azure Logic Apps
 
 Ha más Azure Active Directory-(Azure AD-) bérlők erőforrásaihoz szeretne hozzáférni, és hitelesítés nélkül hitelesíti az identitást, a logikai alkalmazás a hitelesítő adatok vagy titkos kódok helyett a rendszerhez rendelt [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) (korábbi nevén Managed Service Identity vagy msi) is használhatja. Az Azure kezeli ezt az identitást, és segít a hitelesítő adatok biztonságossá tételében, mert nem kell a titkokat megadnia vagy elforgatnia. Ez a cikk bemutatja, hogyan állíthatja be és használhatja a rendszerhez rendelt felügyelt identitást a logikai alkalmazásban. A felügyelt identitások jelenleg csak [meghatározott beépített eseményindítókkal és műveletekkel](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-to-outbound-calls)működnek, nem felügyelt összekötőket és kapcsolatokat.
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
 * [A felügyelt identitásokat támogató eseményindítók és műveletek](../logic-apps/logic-apps-securing-a-logic-app.md#add-authentication-outbound)
 * [Az Azure AD-hitelesítést támogató Azure-szolgáltatások felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md#azure-services-that-support-azure-ad-authentication)
@@ -40,10 +40,8 @@ További információkért tekintse meg a következő témaköröket:
 
 A felhasználó által hozzárendelt identitásokkal ellentétben nem kell manuálisan létrehoznia a rendszer által hozzárendelt identitást. A logikai alkalmazás rendszerhez rendelt identitásának beállításához a következő lehetőségek használhatók:
 
-* [Azure Portalra](#azure-portal-system-logic-app)
+* [Azure Portal](#azure-portal-system-logic-app)
 * [Azure Resource Manager sablonok](#template-system-logic-app)
-* [Azure PowerShell](../active-directory/managed-identities-azure-resources/howto-assign-access-powershell.md)
-* [Azure CLI](../active-directory/managed-identities-azure-resources/howto-assign-access-cli.md)
 
 <a name="azure-portal-system-logic-app"></a>
 
@@ -115,7 +113,17 @@ Amikor az Azure létrehozza a logikai alkalmazás erőforrás-definícióját, a
 
 ## <a name="give-identity-access-to-resources"></a>Identitás-hozzáférés biztosítása az erőforrásokhoz
 
-Miután beállította egy felügyelt identitást a logikai alkalmazáshoz, megadhatja, [hogy az identitás hozzáférjen más Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/howto-assign-access-portal.md). Ezt az identitást használhatja a hitelesítéshez.
+Ahhoz, hogy használni tudja a logikai alkalmazás rendszerhez rendelt felügyelt identitását a hitelesítéshez, adja meg az identitás hozzáférését azon Azure-erőforráshoz, ahol az identitást használni szeretné. A feladat elvégzéséhez rendelje hozzá a megfelelő szerepkört az identitáshoz a cél Azure-erőforráson. A következő lehetőségek használhatók:
+
+* [Azure Portal](#azure-portal-assign-access)
+* [Azure Resource Manager-sablon](../role-based-access-control/role-assignments-template.md)
+* Azure PowerShell ([New-AzRoleAssignment](https://docs.microsoft.com/powershell/module/az.resources/new-azroleassignment)) – További információ: szerepkör- [hozzárendelés hozzáadása az Azure RBAC és a Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md).
+* Azure CLI ([az szerepkör-hozzárendelés létrehozása](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-create)) – További információ: [szerepkör-hozzárendelés hozzáadása az Azure RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
+* [Azure REST API](../role-based-access-control/role-assignments-rest.md)
+
+<a name="azure-portal-assign-access"></a>
+
+### <a name="assign-access-in-the-azure-portal"></a>Hozzáférés kiosztása a Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com)nyissa meg azt az Azure-erőforrást, ahol a felügyelt identitásának hozzáférése van.
 
@@ -185,7 +193,7 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
    |----------|----------|---------------|-------------|
    | **Metódus** | Igen | `PUT`| A pillanatkép-blob művelet által használt HTTP-metódus |
    | **URI** | Igen | `https://{storage-account-name}.blob.core.windows.net/{blob-container-name}/{folder-name-if-any}/{blob-file-name-with-extension}` | Egy Azure-Blob Storage fájl erőforrás-azonosítója az Azure globális (nyilvános) környezetében, amely ezt a szintaxist használja |
-   | **Fejlécek** | Igen, az Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Az Azure Storage-műveletekhez szükséges `x-ms-blob-type` és `x-ms-version` fejléc-értékek. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-hoz kapcsolódó műveleti kérelmekben a fejlécben a futtatni kívánt művelet `x-ms-version` tulajdonsága és API-verziója szükséges. <p>További információkért tekintse meg a következő témaköröket: <p><p>- [kérések fejlécei – pillanatkép-blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[Az Azure Storage szolgáltatásainak - verziószámozása](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
+   | **Fejlécek** | Igen, az Azure Storage-hoz | `x-ms-blob-type` = `BlockBlob` <p>`x-ms-version` = `2019-02-02` | Az Azure Storage-műveletekhez szükséges `x-ms-blob-type` és `x-ms-version` fejléc-értékek. <p><p>**Fontos**: a kimenő http-triggerben és az Azure Storage-hoz kapcsolódó műveleti kérelmekben a fejlécben a futtatni kívánt művelet `x-ms-version` tulajdonsága és API-verziója szükséges. <p>További információt az alábbi témakörökben talál: <p><p>- [kérések fejlécei – pillanatkép-blob](https://docs.microsoft.com/rest/api/storageservices/snapshot-blob#request) <br>[Az Azure Storage szolgáltatásainak - verziószámozása](https://docs.microsoft.com/rest/api/storageservices/versioning-for-the-azure-storage-services#specifying-service-versions-in-requests) |
    | **Lekérdezések** | Igen, ehhez a művelethez | `comp` = `snapshot` | A lekérdezési paraméter neve és értéke a pillanatkép-blob művelethez. |
    | **Hitelesítés** | Igen | `Managed Identity` | Az Azure-blobhoz való hozzáférés hitelesítéséhez használandó hitelesítési típus |
    |||||
@@ -225,7 +233,7 @@ Ezek a lépések bemutatják, hogyan használható a felügyelt identitás egy t
 
 A logikai alkalmazás rendszer által hozzárendelt identitásának leállításához a következő lehetőségek közül választhat:
 
-* [Azure Portalra](#azure-portal-disable)
+* [Azure Portal](#azure-portal-disable)
 * [Azure Resource Manager sablonok](#template-disable)
 * [Azure PowerShell](https://docs.microsoft.com/powershell/module/az.resources/remove-azroleassignment)
 * [Azure CLI](https://docs.microsoft.com/cli/azure/role/assignment?view=azure-cli-latest#az-role-assignment-delete)

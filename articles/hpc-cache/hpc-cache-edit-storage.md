@@ -4,16 +4,28 @@ description: Az Azure HPC cache tárolási céljainak szerkesztése
 author: ekpgh
 ms.service: hpc-cache
 ms.topic: conceptual
-ms.date: 11/4/2019
+ms.date: 1/08/2020
 ms.author: rohogue
-ms.openlocfilehash: 115e75c0149a35104d9c3696710bf8231a98743d
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 5635bfc6ea5faea41b125037c76c0b8635e0f528
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168513"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867009"
 ---
 # <a name="edit-storage-targets"></a>Céltárolók szerkesztése
+
+A tárolási célokat a gyorsítótár **tárolási célok** lapjáról távolíthatja el vagy módosíthatja.
+
+## <a name="remove-a-storage-target"></a>Tárolási cél eltávolítása
+
+A tárolási cél eltávolításához jelölje ki azt a listában, majd kattintson a **Törlés** gombra.
+
+Ez a művelet eltávolítja a tárolási cél társítását ezzel az Azure HPC cache-rendszerrel, de nem módosítja a háttér-tárolási rendszereket. Ha például egy Azure Blob Storage-tárolót használ, a tároló és annak tartalma továbbra is fennáll, miután törölte a gyorsítótárból. A tárolót hozzáadhatja egy másik Azure HPC-gyorsítótárhoz, hozzáadhatja újra a gyorsítótárhoz, vagy törölheti a Azure Portal.
+
+A gyorsítótárban tárolt összes változás a tárolási cél eltávolítása előtt a háttérrendszer tárolási rendszerébe íródik. Ez a folyamat akár egy órát is igénybe vehet, ha a módosult adatmennyiségek nagy része a gyorsítótárban van.
+
+## <a name="update-storage-targets"></a>Tárolási célok frissítése
 
 Szerkesztheti a tárolási célokat, hogy módosítsa a tulajdonságait. A különböző tulajdonságok a különböző típusú tárolók számára szerkeszthetők:
 

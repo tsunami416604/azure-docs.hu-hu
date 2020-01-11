@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 11/19/2019
-ms.openlocfilehash: f5c0f6d9f6f7f35722f3df5f35dc1da945f21b9a
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74229035"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75860945"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins – ajánlott biztonsági eljárások
 
@@ -29,7 +29,7 @@ Ez a cikk a követendő ajánlott eljárásokat foglalja össze.
 > [!TIP]
 > A IoT biztonsági fenyegetések és biztonsági rések észleléséhez használja [a IoT Azure Security Center](https://docs.microsoft.com/azure/asc-for-iot/) .
 
-## <a name="iot-security-best-practices"></a>Ajánlott biztonsági eljárások az IoT-hez
+## <a name="iot-security-best-practices"></a>IoT – ajánlott biztonsági eljárások
 
 Néhány kulcsfontosságú eljárás a IoT-eszközök biztonságos biztonságossá tételéhez a következők:
 
@@ -46,7 +46,7 @@ A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető 
 > [!div class="checklist"]
 > * Mentett, tárolt vagy állandó adattitkosítás.
 > * A jelszavak vagy kulcsok rendszeres módosításának vagy frissítésének megkövetelése.
-> * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Tekintse meg az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#role-based-access-control-best-practices) .
+> * A hozzáférés és az engedélyek körültekintő korlátozása szerepkör alapján. Olvassa el az alábbi, [szerepköralapú hozzáférés-vezérléssel kapcsolatos ajánlott eljárásokat](#role-based-access-control-best-practices) .
 > * Vegye fontolóra egy megosztott hálózati topológiát, hogy az egyes hálózatokon lévő eszközök el legyenek különítve a többitől.
 > * Hatékony titkosítás használata. Hosszú jelszavak megkövetelése, biztonságos protokollok és [multi-Factor Authentication](https://docs.microsoft.com/azure/active-directory/authentication/concept-mfa-howitworks)használata.
 
@@ -56,7 +56,7 @@ A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető 
 > Tekintse meg az Azure [IoT ajánlott biztonsági eljárásait](../iot-fundamentals/iot-security-best-practices.md) egy átfogó IoT biztonsági stratégia elindításához.
 
 > [!NOTE]
-> Az események feldolgozásával és figyelésével kapcsolatos további információkért lásd: [események és üzenetek átirányítása az Azure Digital Twins szolgáltatással](./concepts-events-routing.md).
+> Az események feldolgozásával és figyelésével kapcsolatos további információkért olvassa el az [útválasztási eseményeket és üzeneteket az Azure digitális Twins](./concepts-events-routing.md)szolgáltatásban.
 
 ## <a name="azure-active-directory-best-practices"></a>Azure Active Directory ajánlott eljárások
 

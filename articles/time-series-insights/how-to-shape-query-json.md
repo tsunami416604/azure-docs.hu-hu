@@ -9,12 +9,12 @@ ms.service: time-series-insights
 ms.topic: article
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 3d611806d31719899d249b29ed4b0ea499280252
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 3b8c25c09b87dc8e9874870881173944fea1ee73
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894916"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75864349"
 ---
 # <a name="shape-json-to-maximize-query-performance"></a>A lekérdezési teljesítmény maximalizálása a JSON alakzat használatával 
 
@@ -50,7 +50,7 @@ A következő útmutató segítséget nyújt a lehető legjobb lekérdezési tel
 
 ## <a name="example-overview"></a>Példa – áttekintés
 
-Az alábbi két példa azt szemlélteti, hogyan küldhet eseményeket az előző javaslatok kiemeléséhez. Az alábbi példákban láthatja a javaslatok alkalmazásának módját.
+Az alábbi két példa azt szemlélteti, hogyan küldhet eseményeket az előző javaslatok kiemeléséhez. Az egyes példákat követve áttekintheti a javaslatok alkalmazásának módját.
 
 A példák olyan forgatókönyveken alapulnak, ahol több eszköz is küld méréseket vagy jeleket. A mérések vagy jelek áramlási sebessége, a motor olajnyomás, a hőmérséklet és a páratartalom lehet. Az első példában néhány mérés van az összes eszközön. A második példában számos eszköz van, és minden eszköz sok egyedi mérést küld.
 
@@ -95,14 +95,14 @@ Vegye figyelembe a következő JSON-adattartalomot, amelyet a rendszer az Azure-
 
 * A (z) **deviceId**Key tulajdonsággal rendelkező hivatkozási adattábla:
 
-   | deviceId | messageId | deviceLocation |
+   | deviceId | messageId | DeviceLocation |
    | --- | --- | --- |
    | FXXX | SOROK\_ | EU |
    | FYYY | SOROK\_ | Egyesült Államok |
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | messageId | deviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
+   | deviceId | messageId | DeviceLocation | időbélyeg | sorozat. Áramlási sebesség FT3/s | sorozat. Motor olajnyomás PSI |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 1.0172575712203979 | 34,7 |
    | FXXX | SOROK\_ | EU | 2018-01-17T01:17:00Z | 2.445906400680542 | 49,2 |
@@ -165,7 +165,7 @@ Példa JSON-adattartalomra:
 
 * A Key Properties **deviceId** és a **Series. tagId**kulcsot tartalmazó hivatkozási adattábla:
 
-   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | mennyiség |
+   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | mennyiség |
    | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s |
    | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi |
@@ -174,7 +174,7 @@ Példa JSON-adattartalomra:
 
 * Time Series Insights Event Table az összeolvasztás után:
 
-   | deviceId | adatsorozat. tagId | messageId | deviceLocation | type | mennyiség | időbélyeg | adatsorozat. érték |
+   | deviceId | adatsorozat. tagId | messageId | DeviceLocation | type | mennyiség | időbélyeg | adatsorozat. érték |
    | --- | --- | --- | --- | --- | --- | --- | --- |
    | FXXX | pumpRate | SOROK\_ | EU | Áramlási sebesség | FT3/s | 2018-01-17T01:17:00Z | 1.0172575712203979 | 
    | FXXX | oilPressure | SOROK\_ | EU | Motor olajnyomás | psi | 2018-01-17T01:17:00Z | 34,7 |

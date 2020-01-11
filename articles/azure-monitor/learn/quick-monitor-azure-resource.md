@@ -1,18 +1,18 @@
 ---
-title: Adatok gyűjtése egy Azure-beli virtuális gépről Azure Monitorsal | Microsoft Docs
-description: Itt megtudhatja, hogyan engedélyezheti a Log Analytics-ügynök virtuálisgép-bővítményét, és ezzel az adatok összegyűjtését az Azure-beli virtuális gépekről a Log Analytics segítségével.
+title: Azure-erőforrás figyelése Azure Monitor
+description: Megtudhatja, hogyan gyűjthet és elemezheti az Azure-erőforrások adatait Azure Monitorban.
 ms.service: azure-monitor
 ms. subservice: logs
 ms.topic: quickstart
 author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
-ms.openlocfilehash: 85c953c4acdc31cc6d79600951ba745346771b0c
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 3081c0f8fa8450643a992c8e82840a44db263f76
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533971"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863978"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
 [Azure monitor](../overview.md) elindítja az adatok gyűjtését az Azure-erőforrásokból a létrehozásuk pillanatában. Ez a rövid útmutató egy adott erőforráshoz automatikusan összegyűjtött és a Azure Portalban megtekinthető adatokat ismerteti. Később további adatokat is hozzáadhat a konfigurációhoz, és a Azure Monitor menüben megtekintheti az előfizetéshez tartozó összes erőforráshoz gyűjtött adatokat.

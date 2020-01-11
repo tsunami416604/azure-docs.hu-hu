@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 824fe611867216233e223e505f5321b23b7406fb
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74383312"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863512"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
@@ -69,9 +69,9 @@ JSON-törzstel:
 }
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
-| YOUR_SPACE_IDENTIFIER | Melyik kiszolgáló régióban lévő üzemeltetett a példány |
+| YOUR_SPACE_IDENTIFIER | A példány által üzemeltetett kiszolgálói régió |
 
 ## <a name="create-a-user-defined-function"></a>Felhasználó által meghatározott függvény létrehozása
 
@@ -109,7 +109,7 @@ function process(telemetry, executionContext) {
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Egy többrészes tartalom határának neve |
 | YOUR_SPACE_IDENTIFIER | A szóköz azonosítója  |
@@ -193,11 +193,11 @@ function process(telemetry, executionContext) {
 }
 ```
 
-Az összetettebb, felhasználó által definiált függvényekre vonatkozó példákért tekintse meg a használati [útmutatót.](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
+Egy összetettebb, felhasználó által definiált Function code-minta esetén olvassa el a használati [útmutatót.](https://github.com/Azure-Samples/digital-twins-samples-csharp/blob/master/occupancy-quickstart/src/actions/userDefinedFunctions/availability.js)
 
 ## <a name="create-a-role-assignment"></a>Szerepkör-hozzárendelés létrehozása
 
-Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált függvény számára a futtatásához. Ha nem létezik szerepkör-hozzárendelés a felhasználó által definiált függvényhez, akkor nem rendelkezik a megfelelő engedélyekkel a felügyeleti API-val való interakcióhoz, illetve a Graph-objektumokon végzett műveletek végrehajtásához. A felhasználó által definiált függvény által elvégezhető műveletek az Azure digitális Twins felügyeleti API-kon belül szerepköralapú hozzáférés-vezérléssel határozhatók meg és definiálhatók. A felhasználó által definiált függvények például bizonyos szerepkörök vagy bizonyos hozzáférés-vezérlési útvonalak megadásával korlátozhatók a hatókörben. További információt a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációjában talál.
+Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált függvény számára a futtatásához. Ha nem létezik szerepkör-hozzárendelés a felhasználó által definiált függvényhez, akkor nem rendelkezik a megfelelő engedélyekkel a felügyeleti API-val való interakcióhoz, illetve a Graph-objektumokon végzett műveletek végrehajtásához. A felhasználó által definiált függvény által elvégezhető műveletek az Azure digitális Twins felügyeleti API-kon belül szerepköralapú hozzáférés-vezérléssel határozhatók meg és definiálhatók. A felhasználó által definiált függvények például bizonyos szerepkörök vagy bizonyos hozzáférés-vezérlési útvonalak megadásával korlátozhatók a hatókörben. További információért olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-role-based-access-control.md) dokumentációját.
 
 1. A felhasználó által definiált függvényhez hozzárendelni kívánt szerepkör-azonosító lekérése az összes szerepkörhöz tartozó [System API lekérdezésével](./security-create-manage-role-assignments.md#retrieve-all-roles) . Ezt úgy teheti meg, hogy hitelesített HTTP GET kérelmet küld a következőnek:
 
@@ -214,7 +214,7 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
     YOUR_MANAGEMENT_API_URL/spaces?name=YOUR_SPACE_NAME&includes=fullpath
     ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_SPACE_NAME | A használni kívánt hely neve |
 
@@ -234,7 +234,7 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
     }
     ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_DESIRED_ROLE_IDENTIFIER | A kívánt szerepkör azonosítója |
     | YOUR_USER_DEFINED_FUNCTION_ID | A használni kívánt felhasználó által definiált függvény azonosítója |

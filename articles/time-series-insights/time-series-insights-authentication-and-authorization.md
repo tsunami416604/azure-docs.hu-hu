@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: seodec18
-ms.openlocfilehash: b54034dc8828fb8a96f488197e517ef07ed55ab5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 960eb9b48a158358a076202db0d435feb918a6c8
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460427"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863478"
 ---
 # <a name="authentication-and-authorization-for-azure-time-series-insights-api"></a>Hitelesítés és engedélyezés Azure Time Series Insights API-hoz
 
@@ -87,7 +87,7 @@ A **3. lépésben**az alkalmazás és a felhasználói hitelesítő adatok elkü
 
    1. A jogkivonat az alkalmazás nevében történő beszerzéséhez használja az **alkalmazás-azonosító** és az **ügyfél titkos** kulcsát (application Key) a Azure Active Directory-alkalmazás regisztrációja szakaszban.
 
-   1. A C#-ben a következő kód beolvashatja a jogkivonatot az alkalmazás nevében. Teljes minta: az [adatlekérdezés a használatával C# ](time-series-insights-query-data-csharp.md).
+   1. A C#-ben a következő kód beolvashatja a jogkivonatot az alkalmazás nevében. Teljes minta: [lekérdezési információk C# ](time-series-insights-query-data-csharp.md)olvasása a használatával.
 
         [!code-csharp[csharpquery-example](~/samples-tsi/csharp-tsi-ga-sample/Program.cs?range=170-199)]
 
@@ -107,7 +107,7 @@ Ez a szakasz a gyakori HTTP-kérelmek fejléceit és paramétereit ismerteti a T
 Ha hitelesített lekérdezéseket szeretne végrehajtani a [Time Series INSIGHTS REST API](https://docs.microsoft.com/rest/api/time-series-insights/)-kkal szemben, egy érvényes OAuth 2,0 tulajdonosi jogkivonatot kell átadni az [engedélyezési fejlécben](/rest/api/apimanagement/2019-01-01/authorizationserver/createorupdate) az Ön által választott Rest-ügyfél C#(Poster, JavaScript,) használatával. 
 
 > [!TIP]
-> Tekintse meg az üzemeltetett Azure Time Series Insights [ügyfél SDK-minta vizualizációját](https://tsiclientsample.azurewebsites.net/) , amelyből megtudhatja, hogyan végezheti el a hitelesítést az Time Series Insights API-kkal programozott módon a [JavaScript ügyféloldali SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) -val a diagramok és a diagramok használatával.
+> Tekintse át az üzemeltetett Azure Time Series Insights [Client SDK minta vizualizációját](https://tsiclientsample.azurewebsites.net/) , amelyből megtudhatja, hogyan végezheti el a hitelesítést az Time Series Insights API-kkal programozott módon a [JavaScript ügyféloldali SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md) -val a diagramok és diagramok használatával.
 
 ### <a name="http-headers"></a>HTTP-fejlécek
 
@@ -135,7 +135,7 @@ Nem kötelező, de az ajánlott válasz fejlécek az alábbiakban olvashatók.
 
 | Válasz fejléce | Leírás |
 | --- | --- |
-| Content-Type | Csak `application/json` támogatott. |
+| Content-Type | csak `application/json` támogatott. |
 | x-MS-Request-ID | Kiszolgáló által generált kérelem azonosítója. Felhasználható arra, hogy felvegye a kapcsolatot a Microsofttal egy kérelem kivizsgálására. |
 | x-MS-Property – nem található – viselkedés | A GA API opcionális válaszának fejléce. A lehetséges értékek a következők: `ThrowError` (alapértelmezett) vagy `UseNull`. |
 
@@ -161,10 +161,10 @@ A nem kötelező URL-lekérdezési karakterlánc paraméterei közé tartozik a 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A GA Time Series Insights API-t meghívó mintakód: az [adatlekérdezés a C#használatával ](./time-series-insights-query-data-csharp.md).
+- A GA Time Series Insights API-t meghívó mintakód esetében olvassa el a [lekérdezési adatai C# ](./time-series-insights-query-data-csharp.md)a következő használatával:.
 
-- Az előzetes verziójú Time Series Insights API-kódokra vonatkozó példákat lásd: az [előzetes verziójú adatlekérdezés használata C# ](./time-series-insights-update-query-data-csharp.md).
+- Az előzetes verziójú Time Series Insights API-kódok mintáinak megtekintéséhez olvassa el a [lekérdezés-előnézeti adatai C# ](./time-series-insights-update-query-data-csharp.md)a következővel:
 
-- Az API-referenciák információit a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) -dokumentációban találja.
+- Az API-referenciákkal kapcsolatos információkért olvassa el a [lekérdezési API](https://docs.microsoft.com/rest/api/time-series-insights/ga-query-api) dokumentációját.
 
 - Megtudhatja, hogyan [hozhat létre egyszerű szolgáltatásnevet](../active-directory/develop/howto-create-service-principal-portal.md).

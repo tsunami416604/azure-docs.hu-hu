@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/13/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0e4ec63ffe715b17f55fde2a53c15d96d391cdba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1fc3aa6caa6266d2cd42e4783e8e39d5cc92c220
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452540"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861574"
 ---
 # <a name="diagnose-and-troubleshoot-a-preview-environment"></a>Előzetes verziójú környezet diagnosztizálása és megoldása
 
@@ -29,7 +29,7 @@ Ez a probléma akkor fordulhat elő, ha nem rendelkezik a Time Series Insights-k
 
 ## <a name="problem-no-data-is-seen-in-the-preview-explorer"></a>Probléma: az előnézeti Explorerben nem láthatók az adathalmazok
 
-Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time Series Insights Preview Explorerben](https://insights.timeseries.azure.com/preview).
+Számos gyakori oka lehet annak, hogy az adatai nem jelennek meg a [Azure Time Series Insights Preview Explorerben](https://insights.timeseries.azure.com/preview).
 
 - Előfordulhat, hogy az eseményforrás nem fogadja az adatgyűjtést.
 
@@ -39,7 +39,7 @@ Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time
 
 - Az eseményforrás-adatforrás nem JSON formátumú.
 
-    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetében lásd: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+    A Time Series Insights csak a JSON-fájlokat támogatja. JSON-minták esetén olvassa el a [támogatott JSON-alakzatokat](./how-to-shape-query-json.md).
 
 - Az eseményforrás kulcsa hiányzik egy szükséges engedély.
 
@@ -67,7 +67,7 @@ Számos gyakori oka lehet annak, hogy miért nem látja az adatait a [Azure Time
 
 Előfordulhat, hogy az idősorozat-azonosító nélkül küld adatokat.
 
-- Ez a probléma akkor fordulhat elő, ha a hasznos adatok idősorozat-azonosítója mező nélkül küld eseményeket. További információ: [támogatott JSON-alakzatok](./how-to-shape-query-json.md).
+- Ez a probléma akkor fordulhat elő, ha a hasznos adatok idősorozat-azonosítója mező nélkül küld eseményeket. További információért olvassa el a [támogatott JSON-alakzatok](./how-to-shape-query-json.md)című témakört.
 - Ez a probléma akkor fordulhat elő, ha a környezetét szabályozzák.
 
     > [!NOTE]
@@ -97,7 +97,7 @@ Ha az időbélyegző tulajdonság nincs explicit módon megadva, az esemény IoT
 
 - Lehet, hogy egy Time Series Insights S1 vagy S2 környezethez fér hozzá.
 
-   Az idősorozat-modellek csak utólagos elszámolású környezetekben támogatottak. Az S1 vagy S2 környezet Time Series Insights Preview Explorerben való elérésével kapcsolatos további információkért lásd: [adatok megjelenítése az Explorerben](./time-series-insights-update-explorer.md).
+   Az idősorozat-modellek csak utólagos elszámolású környezetekben támogatottak. Az S1 vagy S2 környezet a Time Series Insights Preview Explorerben való elérésével kapcsolatos további információkért olvassa el [az adatok megjelenítése az Explorerben című részt](./time-series-insights-update-explorer.md).
 
    [![nincs esemény a környezetben.](media/preview-troubleshoot/troubleshoot-no-events.png)](media/preview-troubleshoot/troubleshoot-no-events.png#lightbox)
 

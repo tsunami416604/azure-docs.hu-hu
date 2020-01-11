@@ -1,26 +1,19 @@
 ---
-title: Közösség – javasolt harmadik féltől származó VPN-vagy tűzfal-eszközbeállítások az Azure VPN Gateway-hez | Microsoft Docs
+title: Közösség – a harmadik féltől származó VPN-vagy tűzfal-eszköz beállításai az Azure VPN Gateway
 description: Ismerje meg a Közösség által javasolt külső VPN-vagy tűzfal-eszköz beállításait az Azure VPN Gateway-hez.
 services: vpn-gateway
-documentationcenter: ''
 author: chadmath
 manager: dcscontentpm
-editor: ''
-tags: azure-vpn-gateway
-ms.assetid: ''
 ms.service: vpn-gateway
-ms.devlang: na
 ms.topic: troubleshooting
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 06/15/2018
 ms.author: delhan
-ms.openlocfilehash: aa4650897abcd38fec4d45f57969d4bf30b9d773
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: b87340fbb3f94eee106fc5d0d72117d30e331035
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058860"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862713"
 ---
 # <a name="community-suggested-third-party-vpn-or-firewall-device-settings-for-azure-vpn-gateway"></a>Közösség – a harmadik féltől származó VPN-vagy tűzfal-eszköz beállításai az Azure VPN gatewayhez
 
@@ -33,7 +26,7 @@ Ez a cikk számos javasolt megoldást nyújt az Azure VPN Gateway szolgáltatás
 
 Az alábbi táblázat néhány gyakori eszközt és kapcsolódó súgót sorol fel:
 
-|Product    |Hivatkozás                                                |
+|Termék    |Leírások                                                |
 |-----------|-----------------------------------------------------------|
 |Cisco ASA  |[Közösségi megoldások a Cisco ASA-hez az Azure VPN-en](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ASA&locale=enUS&tab=Cisco)   |
 |Cisco ISR  |[A Közösség által javasolt megoldások az Azure VPN Cisco ISR](https://search.cisco.com/search?query=%22Azure%20VPN%22%20ISR&locale=enUS&tab=Cisco)   |

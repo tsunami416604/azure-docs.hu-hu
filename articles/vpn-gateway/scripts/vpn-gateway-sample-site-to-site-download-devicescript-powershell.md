@@ -3,18 +3,18 @@ title: Azure PowerShell-példaszkript – Eszközkonfigurációs sablon letölt�
 description: Eszközkonfigurációs sablon letöltése.
 services: vpn-gateway
 documentationcenter: vpn-gateway
-author: anzaman
+author: yushwang
 ms.service: vpn-gateway
 ms.devlang: powershell
 ms.topic: sample
-ms.date: 04/17/2018
-ms.author: alzam
-ms.openlocfilehash: a4cec6661750935cefd3767be7e10e2674ee8473
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/09/2020
+ms.author: yushwang
+ms.openlocfilehash: 11906dfa8a3d7c49b71ff1cdcc51d8ae5c6cbdc6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66113666"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862416"
 ---
 # <a name="download-vpn-device-template-using-powershell"></a>VPN-eszközsablon letöltése a PowerShell használatával
 
@@ -38,7 +38,7 @@ Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript -Name $Connection -Re
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szüksége a létrehozott erőforrásokat, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport törléséhez. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
+Ha már nincs szüksége a létrehozott erőforrásokra, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport törléséhez. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name TestRG1
@@ -53,6 +53,6 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [Get-AzVirtualNetworkGatewaySupportedVpnDevice](/powershell/module/az.network/Get-azVirtualNetworkGatewaySupportedVpnDevice) | Felsorolja az összes elérhető VPN-eszközmodellt és verziót. |
 | [Get-AzVirtualNetworkGatewayConnectionVpnDeviceConfigScript](/powershell/module/az.network/Get-azVirtualNetworkGatewayConnectionVpnDeviceConfigScript) | Letölti a kapcsolat konfigurációs sablonját. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/overview).

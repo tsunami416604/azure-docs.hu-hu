@@ -5,12 +5,12 @@ author: deepakpalled
 ms.author: dpalled
 manager: cshankar
 ms.date: 12/06/2019
-ms.openlocfilehash: 8d0c1edd2766d5fa46603d241c4f769fe5777cd1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: dec7f022a73c5eb47c99b2d2d38e1a3258bcf14e
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980709"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861462"
 ---
 ## <a name="business-disaster-recovery"></a>Üzleti katasztrófák helyreállítása
 
@@ -55,7 +55,7 @@ Azonban előfordulhat, hogy az Azure Time Series-környezet teljes biztonsági m
 
 Ismétlődő környezet létrehozásához:
 
-1. Hozzon létre egy környezetet egy második régióban. További információ: [új Time Series Insights-környezet létrehozása a Azure Portalban](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+1. Hozzon létre egy környezetet egy második régióban. További információért olvassa el [a Azure Portal új Time Series Insights környezet létrehozása](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started)című témakört.
 1. Hozzon létre egy második dedikált fogyasztói csoportot az eseményforrás számára.
 1. Az eseményforrás összekötése az új környezettel. Győződjön meg arról, hogy a második dedikált fogyasztói csoportot jelölte ki.
 1. Tekintse át a Time Series Insights [IoT hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) és [Event Hubs](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access) dokumentációját.
@@ -71,5 +71,5 @@ Ha egy esemény következik be:
 > * Késés is előfordulhat.
 > * Előfordulhat, hogy a rendszer a műveletek átirányítása közben az üzenet feldolgozásának pillanatnyi csúcsát is felhasználja.
 > 
-> További információ: [a késés csökkentése Time Series Insightsban](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency).
+> További információért olvassa el a [Time Series Insights késleltetésének enyhítését](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)ismertető témakört.
 

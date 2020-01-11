@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: b447a0328de210caeb23a1beb91c532853c180bc
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e80194f53a406b8b378d0fb787df627937125a27
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75550451"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867493"
 ---
 # <a name="quickstart-use-a-device-capability-model-to-create-an-iot-plug-and-play-preview-device-windows"></a>Gyors útmutató: eszköz-képesség modell használata IoT Plug and Play előnézeti eszköz (Windows) létrehozásához
 
@@ -85,9 +85,9 @@ Ebben a rövid útmutatóban a [Vcpkg](https://github.com/microsoft/vcpkg) Libra
 
 Ebben a rövid útmutatóban egy meglévő minta-eszköz képesség modellt és társított csatolókat használ.
 
-1. Hozzon létre egy `pnp_app` könyvtárat a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
+1. Hozzon létre egy `pnp_app` mappát a helyi meghajtón. Ezt a mappát kell használnia az eszköz modell fájljaihoz és az eszköz kódjához.
 
-1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) [, és mentse](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) a fájlokat `pnp_app` mappába.
+1. Töltse le az [eszköz képességeinek modelljét és a felületi minta fájljait](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/SampleDevice.capabilitymodel.json) és a [felületét](https://github.com/Azure/IoTPlugandPlay/blob/master/samples/EnvironmentalSensor.interface.json) , és mentse a fájlokat a `pnp_app` mappába.
 
     > [!TIP]
     > Egy fájl GitHubról való letöltéséhez navigáljon a fájlhoz, kattintson a jobb gombbal a **RAW**elemre, majd válassza a **hivatkozás mentése másként**lehetőséget.
@@ -109,7 +109,7 @@ Most, hogy már rendelkezik DCM-rel és a hozzá tartozó csatolókkal, létreho
 
 1. Válassza ki az **SampleDevice. capabilitymodel. JSON** fájlt, amelyet az eszköz kódjának generálásához kíván használni.
 
-1. Adja meg a projekt nevét **sample_device**. Ez lesz az eszköz-alkalmazás neve.
+1. Adja meg a projekt nevét **sample_device**. Ez az eszköz-alkalmazás neve.
 
 1. Válassza az **ANSI C** nyelvet.
 
@@ -124,7 +124,7 @@ Most, hogy már rendelkezik DCM-rel és a hozzá tartozó csatolókkal, létreho
 
 ## <a name="build-and-run-the-code"></a>A kód létrehozása és futtatása
 
-Az eszköz SDK forráskódját a generált eszköz kódjának összeállításához használhatja. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
+A létrehozott Vcpkg-csomag használatával létrehozza a generált eszköz kódját. Az Ön által létrehozott alkalmazás szimulál egy olyan eszközt, amely egy IoT hubhoz csatlakozik. Az alkalmazás telemetria és tulajdonságokat küld, és parancsokat fogad.
 
 1. Hozzon létre egy `cmake` alkönyvtárat a `sample_device` mappában, és navigáljon a következő mappába:
 

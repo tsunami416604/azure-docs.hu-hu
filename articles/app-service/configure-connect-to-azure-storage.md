@@ -5,12 +5,12 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 7/01/2019
 ms.author: msangapu
-ms.openlocfilehash: ad70bbe36369c03225079d1194043e6ceb109c6f
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: c5543470f790d00158297cb7c3f0c06c5fc05e14
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671014"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75866984"
 ---
 # <a name="configure-azure-files-in-a-windows-container-on-app-service"></a>Azure Files konfigurálása Windows-tárolóban App Service
 
@@ -31,6 +31,15 @@ Ez az útmutató bemutatja, hogyan érheti el az Azure Storage-t Windows-tárol�
 > A Azure Files nem alapértelmezett tároló, és a webalkalmazásban nem szereplő külön számlázható. Az infrastruktúra-korlátozások miatt nem támogatja a tűzfal konfigurációját.
 >
 
+## <a name="limitations"></a>Korlátozások
+
+- Az Azure Storage a Windows-tárolókban **előzetes** verzióban érhető el, és **éles környezetekben** **nem támogatott** .
+- Az Azure Storage a Windows-tárolókban csak a **Azure Files tárolók** (írható/olvasható) csatlakoztatását támogatja.
+- Az Azure Storage a Windows-tárolókban jelenleg **nem támogatott** a Windows app Service-csomagok saját programkódjának használata esetén.
+- Az Azure Storage a Windows-tárolókban **nem támogatja** a **tárolási tűzfal** konfigurációjának használatát az infrastruktúra korlátai miatt.
+- Az Azure Storage a Windows-tárolókban alkalmazásban **legfeljebb öt** csatlakoztatási pontot határozhat meg.
+- Az Azure Storage szolgáltatás számlázása egymástól függetlenül történik, és **nem szerepel** a webalkalmazásban. További információ az [Azure Storage díjszabásáról](https://azure.microsoft.com/pricing/details/storage).
+
 ## <a name="link-storage-to-your-web-app-preview"></a>Tárterület csatolása a webalkalmazáshoz (előzetes verzió)
 
  Ha Azure Files-megosztást szeretne csatlakoztatni egy címtárhoz a App Service alkalmazásban, használja a [`az webapp config storage-account add`](https://docs.microsoft.com/cli/azure/webapp/config/storage-account?view=azure-cli-latest#az-webapp-config-storage-account-add) parancsot. A tárolási típusnak AzureFiles kell lennie.
@@ -48,7 +57,6 @@ Ha egy Azure Files-megosztás egy webalkalmazáshoz van társítva, akkor a köv
 ```azurecli
 az webapp config storage-account list --resource-group <resource_group> --name <app_name>
 ```
-
 
 ## <a name="next-steps"></a>Következő lépések
 

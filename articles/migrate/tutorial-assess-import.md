@@ -7,14 +7,14 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: raynew
-ms.openlocfilehash: 7bf47731f2a3621e7bbdc1b104d94e97f2d03099
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: b9ad5ea6def79c4d7f132558b8b5339bac6f1bc3
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158648"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861302"
 ---
-# <a name="assess-servers-using-imported-data"></a>Kiszolgálók felmérése importált adatszolgáltatásokkal
+# <a name="assess-servers-using-imported-data"></a>Kiszolgálók értékelése importált adatokkal
 
 Ez a cikk bemutatja, hogyan értékelheti a helyszíni kiszolgálókat a [Azure Migrate: kiszolgáló-értékeléssel](migrate-services-overview.md#azure-migrate-server-assessment-tool), a kiszolgálói metaadatok CSV használatával történő importálásával. Ezzel az értékelési módszersel nem kell beállítania a Azure Migrate berendezést az értékelés létrehozásához. Ez a következő esetekben hasznos:
 
@@ -33,7 +33,7 @@ Vegye figyelembe:
 - A kiszolgálói adatok több alkalommal is feltölthetők a CSV használatával Azure Migrate kiszolgáló értékeléséhez.
 - Bár az alkalmazásadatok összegyűjtése hasznos lehet a helyszíni környezet áttelepítésre való kiértékelése során, Azure Migrate Server Assessment jelenleg nem hajtja végre az alkalmazás szintű értékelést, és nem veszi figyelembe az alkalmazásokat, ha Értékelés létrehozása.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Töltsön ki egy CSV-fájlt a kiszolgáló adataival.
@@ -77,7 +77,7 @@ Az Azure-fióknak engedélyre van szüksége Azure Migrate projekt létrehozás�
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/migrate-project.png)
 
 
-7. Kattintson a **Tovább**gombra.
+7. Kattintson a **Tovább** gombra.
 8. Az **Assessment (kiértékelés) eszközben**válassza a **Azure Migrate: Server Assessment** > **Next (tovább**) lehetőséget.
 
     ![Azure Migrate projekt létrehozása](./media/tutorial-assess-import/assessment-tool.png)
@@ -96,7 +96,7 @@ Töltse le a CSV-sablont, és adja hozzá a kiszolgáló adatait.
 
 1. Az **áttelepítési célok** > **kiszolgálók** > **Azure Migrate: kiszolgáló értékelése**területen kattintson a **felderítés**gombra.
 2. A **gépek felderítése**területen válassza az **Importálás a használatával lehetőséget. CSV**.
-3. Kattintson a **Letöltés** gombra a letöltéséhez. CSV-sablon. Azt is megteheti, hogy [közvetlenül letölti](https://go.microsoft.com/fwlink/?linkid=2108404).
+3. Kattintson a **Letöltés** gombra a letöltéséhez. CSV-sablon. Azt is megteheti, hogy [közvetlenül letölti](https://go.microsoft.com/fwlink/?linkid=2109031).
 
     ![Letöltés. CSV-sablon](./media/tutorial-assess-import/download-template.png)
 
@@ -188,7 +188,7 @@ Opcionálisan hozzáadhat konkrét mezőket csak az alkalmazásokhoz.
 Miután hozzáadta az adatokat a CSV-sablonhoz, importálja a kiszolgálókat Azure Migrateba: Server Assessment.
 
 1. A Azure Migrate > **gépek felderítése**területen keresse meg a kitöltött sablont.
-2. Kattintson a **importálás**.
+2. Kattintson az **Importálás** gombra.
 3. Megjelenik az importálás állapota.
     - Ha figyelmeztetések jelennek meg az állapotában, megjavíthatja őket, vagy folytathatja a kezelés nélkül.
     - A kiszolgálói információk javítása a figyelmeztetések által javasolt módon javítja az értékelési pontosságot.
@@ -231,7 +231,7 @@ Az értékelést a következőképpen futtathatja:
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
 
-    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
+    ![Értékelés](./media/tutorial-assess-physical/assess.png)
 
 2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 3. A **felderítési forrás**területen válassza a **Azure Migrate importálással hozzáadott gépek** lehetőséget.
@@ -295,7 +295,7 @@ Ez a nézet az Azure-ban futó virtuális gépek becsült számítási és táro
 
 ## <a name="supported-operating-system-names"></a>Támogatott operációs rendszerek nevei
 
-Name (Név) | Name (Név)
+Név | Név
 --- | ---
 **A – H** |
 Apple Mac OS X 10 | 3\. Asianux<br/>4\. Asianux<br/>5\. Asianux
@@ -310,12 +310,12 @@ SCO OpenServer 5<br/>SCO OpenServer 6<br/>SCO UnixWare 7 | Serenity Systems eCom
 Sun Microsystems Solaris 8<br/>Sun Microsystems Solaris 9 | SUSE Linux Enterprise 10<br/> SUSE Linux Enterprise 11<br/>SUSE Linux Enterprise 12<br/>SUSE Linux Enterprise 8/9<br/>SUSE Linux Enterprise 11<br/>SUSE openSUSE
 **U-Z** |
 Ubuntu Linux | VMware ESXi 4<br/>VMware ESXi 5<br/>VMware ESXi 6
-Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server küszöbértéke<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
+Windows 10<br/>Windows 2000<br/>Windows 3<br/>Windows 7 rendszeren<br/>Windows 8<br/>Windows 95<br/>Windows 98<br/>Windows NT<br/>Windows Server (R) 2008<br/>Windows Server 2003 | Windows Server 2008 rendszeren<br/>Windows Server 2008 R2<br/>Windows Server 2012<br/>Windows Server 2012 R2<br/>Windows Server 2016<br/>Windows Server 2019<br/>Windows Server küszöbértéke<br/>Windows Vista<br/>Windows Web Server 2008 R2<br/>Windows XP Professional
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Importált kiszolgálók Azure Migrate: a kiszolgáló értékelése CSV használatával.

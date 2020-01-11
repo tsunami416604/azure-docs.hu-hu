@@ -4,16 +4,16 @@ description: Az Azure-VPN Gateway kiértékelésére szolgáló biztonsági elle
 services: sql-database
 author: msmbaldwin
 manager: rkarlin
-ms.service: load-balancer
+ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 1babb892063da6d460ea2bc4c567da954731956f
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 2c32f46ca85007608b5e17f2bf77b0a8f0fb8397
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70886663"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862747"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Az Azure VPN Gateway biztonsági vezérlői
 
@@ -38,12 +38,12 @@ Ez a cikk az Azure VPN Gateway beépített biztonsági vezérlőket dokumentálj
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Azure Resource Manager tevékenység naplója. |
 | Adatsíkok naplózása és naplózása | Igen | [Azure monitor diagnosztikai naplók](../azure-resource-manager/resource-group-audit.md) a VPN-kapcsolat naplózásához és naplózásához. |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Authentication| Igen | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) a szolgáltatás kezeléséhez és az Azure VPN Gateway konfigurálásához. |
-| Authorization| Igen | Támogatás engedélyezése a [RBAC](../role-based-access-control/overview.md)-on keresztül. |
+| Hitelesítés| Igen | [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) a szolgáltatás kezeléséhez és az Azure VPN Gateway konfigurálásához. |
+| Engedélyezés| Igen | Támogatás engedélyezése a [RBAC](../role-based-access-control/overview.md)-on keresztül. |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -61,6 +61,6 @@ Ez a cikk az Azure VPN Gateway beépített biztonsági vezérlőket dokumentálj
 |---|---|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Felügyeleti műveletek esetében az Azure VPN Gateway konfigurációjának állapota exportálható Azure Resource Manager sablonként, és az idő múlásával is elvégezhető. | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

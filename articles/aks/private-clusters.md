@@ -1,5 +1,5 @@
 ---
-title: Privát Azure Kubernetes Service-fürt
+title: Privát Azure Kubernetes Service-fürt létrehozása
 description: Ismerje meg, hogyan hozhat létre egy privát Azure Kubernetes Service-(ak-) fürtöt
 services: container-service
 author: mlearned
@@ -7,30 +7,30 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: 6152becb8debd0700ddab6190284514c6d6cf69d
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: d7b1d82f88afd8ac3d94cbdd2d117834c12d0b96
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830054"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867157"
 ---
-# <a name="public-preview---private-azure-kubernetes-service-cluster"></a>Nyilvános előzetes verzió – privát Azure Kubernetes Service-fürt
+# <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
-Egy privát fürtben a vezérlő síkja/API-kiszolgáló belső IP-címmel fog rendelkezni a [RFC1918](https://tools.ietf.org/html/rfc1918)-ben.  Privát fürt használatával biztosíthatja, hogy az API-kiszolgáló és a csomópont-készletek közötti hálózati forgalom csak a magánhálózaton maradjon.
+Egy privát fürtben a vezérlő síkja vagy az API-kiszolgáló belső IP-címekkel rendelkezik, amelyek a [magánhálózati internetes dokumentumok RFC1918](https://tools.ietf.org/html/rfc1918) vannak meghatározva. Privát fürt használatával biztosíthatja, hogy az API-kiszolgáló és a csomópont-készletek közötti hálózati forgalom csak a magánhálózaton maradjon.
 
-A vezérlési sík/API-kiszolgáló, amely egy AK által felügyelt Azure-előfizetésben található, és az ügyfél-előfizetésben lévő ügyfelek fürt/csomópont-készlete képes kommunikálni egymással az API-kiszolgáló VNET található [privát kapcsolati szolgáltatáson][private-link-service] keresztül, valamint az ügyfél AK-fürt alhálózatában elérhető privát végpontok közötti kommunikációt.
+A vezérlő síkja vagy az API-kiszolgáló egy Azure Kubernetes szolgáltatásban (ak) felügyelt Azure-előfizetésben található. Az ügyfél fürtje vagy csomópont-készlete az ügyfél előfizetésében található. A kiszolgáló és a fürt vagy a csomópont-készlet képes kommunikálni egymással az API-kiszolgáló virtuális hálózatának [Azure Private link szolgáltatásával][private-link-service] , valamint egy olyan privát végponttal, amely az ügyfél AK-fürt alhálózatán van kitéve.
 
 > [!IMPORTANT]
-> Az AK előzetes verziójának funkciói önkiszolgáló opt-in. Az előzetes verziók az "adott állapotban" és "ahogy elérhető" módon vannak kizárva, és ki vannak zárva a szolgáltatói szerződésekből és a korlátozott jótállásból. A következő részben az ügyfélszolgálat a lehető leghatékonyabban foglalkozik. Ezért ezeket a funkciókat nem éles használatra szánták. További részletekért tekintse meg a következő támogatási cikkeket:
+> Az AK előzetes verziójának funkciói önkiszolgáló szolgáltatás, és a rendszer opt-alapon is elérhető. Az előzetes verziók az elérhető *módon* és a *rendelkezésre álló módon érhetők el* , és ki vannak zárva a szolgáltatói szerződéssel (SLA) és a korlátozott jótállással. A kétrészes előzetes verziókat az ügyfélszolgálat a *lehető legalkalmasabb* módon kezeli. A funkciók ezért nem használhatók éles környezetben. További információkért lásd a következő támogatási cikkeket:
 >
 > * [AK-támogatási szabályzatok](support-policies.md)
 > * [Azure-támogatás – gyakori kérdések](faq.md)
 
-## <a name="before-you-begin"></a>Előzetes teendők
+## <a name="prerequisites"></a>Előfeltételek
 
-* Szüksége lesz az Azure CLI 2.0.77 vagy újabb verziójára, valamint az AK-előnézet 0.4.18-bővítményre
+* Az Azure CLI 2.0.77-es vagy újabb verziója, valamint az Azure CLI-bővítmény előzetes verziója 0.4.18
 
-## <a name="current-supported-regions"></a>Jelenleg támogatott régiók
+## <a name="currently-supported-regions"></a>Jelenleg támogatott régiók
 * USA nyugati régiója
 * USA 2. nyugati régiója
 * USA 2. keleti régiója
@@ -39,9 +39,9 @@ A vezérlési sík/API-kiszolgáló, amely egy AK által felügyelt Azure-előfi
 * Nyugat-Európa
 * Ausztrália keleti régiója
 
-## <a name="install-latest-aks-cli-preview-extension"></a>A legújabb AK CLI előnézet bővítmény telepítése
+## <a name="install-the-latest-azure-cli-aks-preview-extension"></a>Az Azure CLI legújabb előzetes verziójának telepítése
 
-Privát fürtök használatához szüksége van a CLI *-előnézeti parancssori* felület 0.4.18 vagy újabb verziójára. Telepítse az *AK – előzetes* verzió Azure CLI bővítményét az az [Extension Add][az-extension-add] paranccsal, majd az az [Extension Update][az-extension-update] paranccsal keresse meg az elérhető frissítéseket:
+A privát fürtök használatához szüksége lesz az Azure CLI-bővítmény előzetes verziójának 0.4.18 vagy újabb verziójára. Telepítse az Azure CLI AK előzetes verzióját az az [Extension Add][az-extension-add] paranccsal, majd a következő az [Extension Update][az-extension-update] paranccsal keresse meg a rendelkezésre álló frissítéseket:
 
 ```azurecli-interactive
 # Install the aks-preview extension
@@ -51,19 +51,19 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 > [!CAUTION]
-> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az alapértelmezett beállítások az előfizetésben létrehozott összes AK-fürthöz használhatók. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
+> Ha regisztrál egy szolgáltatást egy előfizetéshez, jelenleg nem tudja regisztrálni a szolgáltatást. Az előzetes verziójú funkciók engedélyezése után az előfizetésben létrehozott összes AK-fürthöz alapértelmezett beállításokat használhat. Ne engedélyezze az előzetes verziójú funkciókat az éles előfizetésekben. Használjon külön előfizetést az előzetes verziójú funkciók tesztelésére és visszajelzések gyűjtésére.
 
 ```azurecli-interactive
 az feature register --name AKSPrivateLinkPreview --namespace Microsoft.ContainerService
 ```
 
-A *regisztrált*állapot megjelenítéséhez több percet is igénybe vehet. A regisztrációs állapotot az az [Feature List][az-feature-list] parancs használatával tekintheti meg:
+Több percet is igénybe vehet, amíg a regisztrációs állapot *regisztrálva*jelenik meg. Az állapotot a következő az [Feature List][az-feature-list] parancs használatával végezheti el:
 
 ```azurecli-interactive
 az feature list -o table --query "[?contains(name, 'Microsoft.ContainerService/AKSPrivateLinkPreview')].{Name:name,State:properties.state}"
 ```
 
-Ha az állapot regisztrálva van, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját az az [Provider Register][az-provider-register] parancs használatával:
+Ha az állapot regisztrálva van, frissítse a *Microsoft. tárolószolgáltatás* erőforrás-szolgáltató regisztrációját a következő az [Provider Register][az-provider-register] parancs használatával:
 
 ```azurecli-interactive
 az provider register --namespace Microsoft.ContainerService
@@ -71,14 +71,14 @@ az provider register --namespace Microsoft.Network
 ```
 ## <a name="create-a-private-aks-cluster"></a>Privát AK-fürt létrehozása
 
-#### <a name="default-basic-networking"></a>Alapértelmezett alapszintű hálózatkezelés 
+### <a name="default-basic-networking"></a>Alapértelmezett alapszintű hálózatkezelés 
 
 ```azurecli-interactive
 az aks create -n <private-cluster-name> -g <private-cluster-resource-group> --load-balancer-sku standard --enable-private-cluster  
 ```
-Where--enable-Private-cluster kötelező jelző egy privát fürthöz 
+Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz. 
 
-#### <a name="advanced-networking"></a>Speciális hálózatkezelés  
+### <a name="advanced-networking"></a>Speciális hálózatkezelés  
 
 ```azurecli-interactive
 az aks create \
@@ -92,43 +92,53 @@ az aks create \
     --dns-service-ip 10.2.0.10 \
     --service-cidr 10.2.0.0/24 
 ```
-Where--enable-Private-cluster kötelező jelző egy privát fürthöz 
+Where *--enable-Private-cluster* kötelező jelző egy privát fürthöz. 
 
-## <a name="steps-to-connect-to-the-private-cluster"></a>A privát fürthöz való kapcsolódás lépései
-Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következtében a felhasználóknak létre kell hozniuk egy Azure-beli virtuális gépet egy virtuális hálózatban, és csatlakozniuk kell az API-kiszolgálóhoz. A következő lépései:
+> [!NOTE]
+> Ha a Docker-híd CIDR (172.17.0.1/16) ütközne az alhálózati CIDR, módosítsa a Docker-híd megfelelőjét.
 
-* Hitelesítő adatok beszerzése a fürthöz való kapcsolódáshoz
+## <a name="connect-to-the-private-cluster"></a>Kapcsolódás a privát fürthöz
+Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következtében létre kell hoznia egy Azure-beli virtuális gépet (VM) egy virtuális hálózatban, és kapcsolódnia kell az API-kiszolgálóhoz. Ehhez tegye a következőket:
+
+1. Hitelesítő adatok beszerzése a fürthöz való kapcsolódáshoz.
 
    ```azurecli-interactive
    az aks get-credentials --name MyManagedCluster --resource-group MyResourceGroup
    ```
-* Hozzon létre egy virtuális gépet ugyanabban a VNET, mint az AK-fürtöt, vagy hozzon létre egy virtuális gépet egy másik VNET, és egyenrangúan ez a VNET az AK-fürt VNET
-* Ha egy másik VNET hoz létre virtuális gépet, be kell állítania egy hivatkozást a VNET és a saját DNS zóna között
-    * Ugrás a MC_ * erőforráscsoporthoz a portálon 
-    * kattintson a saját DNS zónára 
-    * Válassza ki a virtuális hálózat hivatkozást a bal oldali panelen
-    * hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép VNET a saját DNS zónához *(néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik)*
-    * Visszatérés a portál MC_ * erőforráscsoporthoz
-    * Válassza ki a virtuális hálózatot a jobb oldali ablaktáblán. A virtuális hálózat neve AK-vnet-* formátumban lesz.
-    * a bal oldali ablaktáblán válassza a társak lehetőséget
-    * kattintson a Hozzáadás gombra, és adja hozzá a virtuális gép virtuális hálózatát, és hozza létre a társítást.
-    * Nyissa meg azt a vnet, ahol a virtuális gép, majd kattintson a társaik elemre, és válassza ki az AK-beli virtuális hálózatot, és hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózatban és a virtuális gép virtuális hálózati összeütközései között mozog, akkor a társítás sikertelen lesz. A virtuális hálózatokkal kapcsolatos további információkért tekintse meg ezt a [dokumentumot][virtual-network-peering] .
-* SSH a virtuális géphez
-* A Kubectl eszköz telepítése és a Kubectl parancsok futtatása
+
+1. A következő lehetőségek közül választhat:
+   * Hozzon létre egy virtuális GÉPET ugyanabban a virtuális hálózatban, mint az AK-fürtöt.  
+   * Hozzon létre egy virtuális GÉPET egy másik virtuális hálózatban, és a virtuális hálózatot az AK-fürt virtuális hálózatával.
+
+     Ha egy másik virtuális hálózatban hoz létre egy virtuális GÉPET, állítson be egy hivatkozást a virtuális hálózat és a magánhálózati DNS-zóna között. Ehhez tegye a következőket:
+    
+     a. Lépjen a Azure Portal MC_ * erőforráscsoporthoz.  
+     b. Válassza ki a magánhálózati DNS-zónát.   
+     c. A bal oldali ablaktáblán válassza ki a **virtuális hálózati** kapcsolatot.  
+     d. Hozzon létre egy új hivatkozást, amely hozzáadja a virtuális gép virtuális hálózatát a magánhálózati DNS-zónához. Néhány percet vesz igénybe, amíg a DNS-zóna hivatkozása elérhetővé válik.  
+     e. Térjen vissza a Azure Portal MC_ * erőforráscsoporthoz.  
+     f. A jobb oldali ablaktáblában válassza ki a virtuális hálózatot. A virtuális hálózat neve: *AK-vnet-\** .  
+     g. A bal oldali ablaktáblán válassza **a**társítások lehetőséget.  
+     h. Válassza a **Hozzáadás**lehetőséget, adja hozzá a virtuális gép virtuális hálózatát, majd hozza létre a társítást.  
+     i. Nyissa meg a virtuális hálózatot, ahol a virtuális gép rendelkezik **, válassza a társítások lehetőséget,** válassza ki az AK-beli virtuális hálózatot, majd hozza létre a társítást. Ha a címtartomány az AK-beli virtuális hálózaton és a virtuális gép virtuális hálózatának összevonásán alapul, a társítás sikertelen lesz. További információ: [Virtual Network peering][virtual-network-peering].
+
+1. A virtuális gép a Secure Shell (SSH) használatával érhető el.
+1. Telepítse a Kubectl eszközt, és futtassa a Kubectl-parancsokat.
+
 
 ## <a name="dependencies"></a>Függőségek  
-* Csak standard LB – az alapszintű Load Balancer támogatása nem támogatott  
+* A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
 
 ## <a name="limitations"></a>Korlátozások 
-* Ugyanaz az [Azure Private link Service-korlátozás][private-link-service] vonatkozik a privát fürtökre, az Azure Private-végpontokra és a Virtual Network szolgáltatás-végpontokra jelenleg nem támogatott ugyanazon a VNET
-* Egy privát fürtben lévő virtuális csomópontok nem támogatják a privát ACI-példányok kipörgetését egy privát Azure-VNET
-* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból
-* Ha az ügyfeleknek engedélyezniük kell az ACR-t a privát AK-k használatával való együttműködéshez, az ACR VNET az ügynök fürt VNET kell összekapcsolni.
-* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz
-* Nem támogatott a meglévő AK-fürtök privát fürtökre való konvertálása  
+* Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontokra és a virtuális hálózati szolgáltatás-végpontokra vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
+* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokban lévő saját Cisco Application centrikus-(ACI-) példányok kiépítését.
+* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból.
+* Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
+* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz.
+* Nem támogatott a meglévő AK-fürtök privát fürtökre való konvertálása.  
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
-* A tárolók élő adatAzure Monitor jelenleg nem támogatottak
-* Saját DNS használata jelenleg nem támogatott
+* A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
+* *A saját DNS* használata jelenleg nem támogatott.
 
 
 <!-- LINKS - internal -->

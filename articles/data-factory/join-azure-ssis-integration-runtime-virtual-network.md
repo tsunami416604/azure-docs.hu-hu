@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: a4b0debc712504e8cb3c6d61372bd3a82c7932bb
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b068eeeada842f2439f6135bfa8567a6c9709d12
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497031"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862815"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -30,10 +30,20 @@ Ha SQL Server Integration Servicest (SSIS) használ a Azure Data Factoryban, akk
 
 - Az IP-tűzfalszabályok által konfigurált adattárakhoz/erőforrásokhoz szeretne csatlakozni a Azure-SSIS IRon futó SSIS-csomagokból.
 
-Data Factory lehetővé teszi a Azure-SSIS IR csatlakoztatását a klasszikus üzemi modellen vagy a Azure Resource Manager üzemi modellen keresztül létrehozott virtuális hálózathoz. 
+Data Factory lehetővé teszi a Azure-SSIS IR csatlakoztatását a klasszikus üzemi modellen vagy a Azure Resource Manager üzemi modellen keresztül létrehozott virtuális hálózathoz.
 
 > [!IMPORTANT]
 > A klasszikus virtuális hálózat elavult, ezért inkább a Azure Resource Manager virtuális hálózatot használja.  Ha már használja a klasszikus virtuális hálózatot, a lehető leghamarabb váltson a Azure Resource Manager virtuális hálózatra.
+
+Az [Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) konfigurálása egy virtuális hálózathoz való csatlakozáshoz](tutorial-deploy-ssis-virtual-network.md) oktatóanyag a minimális lépéseket mutatja be a Azure Portalon keresztül. Ez a cikk az oktatóanyagon alapul, és ismerteti az összes választható feladatot:
+
+- Virtuális hálózat (klasszikus) használata esetén.
+- Ha saját nyilvános IP-címeit hozza a Azure-SSIS IRhoz.
+- Ha saját tartománynévrendszer-(DNS-) kiszolgálót használ.
+- Ha hálózati biztonsági csoportot (NSG) használ az alhálózaton.
+- Ha az Azure ExpressRoute vagy egy felhasználó által megadott útvonalat (UDR) használ.
+- Ha testreszabott Azure-SSIS IR használ.
+- Ha az Azure PowerShell üzembe helyezését használja.
 
 ## <a name="access-to-on-premises-data-stores"></a>Hozzáférés a helyszíni adattárakhoz
 
@@ -319,7 +329,7 @@ Miután konfigurálta a Azure Resource Manager virtuális hálózatot vagy a kla
 
    ![Az adatüzemek listája](media/join-azure-ssis-integration-runtime-virtual-network/data-factories-list.png)
 
-1. Válassza ki az adatgyárat a listában szereplő Azure-SSIS IR. Megjelenik a saját adatelőállítójának kezdőlapja. Válassza ki a **szerző & üzembe helyezés** csempét. A Data Factory felhasználói felület külön lapon jelenik meg. 
+1. Válassza ki az adatgyárat a listában szereplő Azure-SSIS IR. Megjelenik a saját adatelőállítójának kezdőlapja. Válassza ki a **szerző & figyelés** csempét. A Data Factory felhasználói felület külön lapon jelenik meg. 
 
    ![Data factory kezdőlap](media/join-azure-ssis-integration-runtime-virtual-network/data-factory-home-page.png)
 

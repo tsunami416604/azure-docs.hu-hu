@@ -9,12 +9,12 @@ services: digital-twins
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 66be29b6d16e422eebd381cddb83ce94adf9f76e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 38f5af3cb2006e4b029f8979a213c0af10f1ed8a
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745446"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863580"
 ---
 # <a name="how-to-configure-monitoring-in-azure-digital-twins"></a>A monitorozás konfigurálása az Azure digitális Twins szolgáltatásban
 
@@ -109,7 +109,7 @@ A **log Analytics munkaterület** -példány üzembe helyezése után hatékony 
 
    [![naplózás kezelése](media/how-to-configure-monitoring/log-analytics-management.png)](media/how-to-configure-monitoring/log-analytics-management.png#lightbox)
 
-A hatékony lekérdezési műveletekkel kapcsolatos további információkért lásd: [Bevezetés a lekérdezések](../azure-monitor/log-query/get-started-queries.md)használatába.
+A hatékony lekérdezési műveletekkel kapcsolatos további információkért olvassa el a [lekérdezések első lépéseivel foglalkozó](../azure-monitor/log-query/get-started-queries.md)témakört.
 
 > [!NOTE]
 > Egy 5 perces késleltetést tapasztalhat, amikor első alkalommal küld eseményeket **log Analytics munkaterületre** .
@@ -123,7 +123,7 @@ Azure Monitor a naplók hatékony és riasztási értesítési szolgáltatásoka
 
 ## <a name="other-options"></a>Egyéb lehetőségek
 
-Az Azure Digital Twins az alkalmazásspecifikus naplózást és a biztonsági naplózást is támogatja. Az Azure-beli digitális Twins-példányok Azure-naplózási lehetőségeinek részletes áttekintését az [Azure napló naplózási](../security/fundamentals/log-audit.md) cikkében találja.
+Az Azure Digital Twins az alkalmazásspecifikus naplózást és a biztonsági naplózást is támogatja. Az Azure-beli digitális Twins-példányhoz elérhető összes Azure-naplózási lehetőség részletes áttekintését az [Azure log-naplóban](../security/fundamentals/log-audit.md) tekintheti meg.
 
 ## <a name="next-steps"></a>Következő lépések
 

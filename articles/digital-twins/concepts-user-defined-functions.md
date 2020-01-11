@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/03/2020
-ms.openlocfilehash: 5b1c3e6dcd106e16ab07f707729f31ee1e269461
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 75ed2029582438ede43687addfd54c0a187e0120
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660307"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861098"
 ---
 # <a name="data-processing-and-user-defined-functions"></a>Adatfeldolgozás és felhasználó által definiált függvények
 
@@ -104,7 +104,7 @@ A felhasználó által definiált függvények a JavaScriptben is megírhatók. 
 - Értesítés létrehozása, ha bizonyos feltételek teljesülnek egy bejövő érzékelő olvasásakor.
 - Csatolja a Graph-metaadatokat az érzékelő olvasásához, mielőtt elküld egy értesítést.
 
-További információ: [a felhasználó által definiált függvények használata](./how-to-user-defined-functions.md).
+További információt a [felhasználó által definiált függvények használata](./how-to-user-defined-functions.md)című témakörben olvashat.
 
 #### <a name="examples"></a>Példák
 
@@ -114,7 +114,7 @@ A [digitális Twins C# minta GitHub](https://github.com/Azure-Samples/digital-tw
 
 ### <a name="role-assignment"></a>Szerepkör-kijelölés
 
-A felhasználó által definiált függvény műveletei az Azure Digital Twins [szerepköralapú hozzáférés-vezérlése](./security-role-based-access-control.md) alá esnek, hogy a szolgáltatáson belül is biztonságossá tegye az adataikat. A szerepkör-hozzárendelések meghatározzák, hogy mely felhasználó által definiált függvények rendelkeznek a megfelelő engedélyekkel a térbeli gráf és az entitások használatához. Előfordulhat például, hogy egy felhasználó által definiált függvénynek lehetősége van arra, hogy egy adott lemezterület alapján *hozzon létre*, *Olvasson*, *frissítsen*vagy *töröljön* egy gráf-adattípust. A felhasználó által definiált függvény hozzáférési szintje akkor van bejelölve, ha a felhasználó által definiált függvény megkéri a diagramot az adatra, vagy megkísérli a műveletet. További információ: [szerepköralapú hozzáférés-vezérlés](./security-create-manage-role-assignments.md).
+A felhasználó által definiált függvény műveletei az Azure Digital Twins [szerepköralapú hozzáférés-vezérlése](./security-role-based-access-control.md) alá esnek, hogy a szolgáltatáson belül is biztonságossá tegye az adataikat. A szerepkör-hozzárendelések meghatározzák, hogy mely felhasználó által definiált függvények rendelkeznek a megfelelő engedélyekkel a térbeli gráf és az entitások használatához. Előfordulhat például, hogy egy felhasználó által definiált függvénynek lehetősége van arra, hogy egy adott lemezterület alapján *hozzon létre*, *Olvasson*, *frissítsen*vagy *töröljön* egy gráf-adattípust. A felhasználó által definiált függvény hozzáférési szintje akkor van bejelölve, ha a felhasználó által definiált függvény megkéri a diagramot az adatra, vagy megkísérli a műveletet. További információért olvassa el a [szerepköralapú hozzáférés-vezérlés](./security-create-manage-role-assignments.md)című témakört.
 
 Lehetséges, hogy egy Matcher olyan felhasználó által definiált függvényt aktivál, amely nem rendelkezik szerepkör-hozzárendeléssel. Ebben az esetben a felhasználó által definiált függvény nem tudja beolvasni a gráfból származó összes adatát.
 

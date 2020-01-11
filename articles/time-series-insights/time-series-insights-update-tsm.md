@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 7d588e11525e5087f8667da4602797e5299c76f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1f560a7aa746ce7c6262dcaddf74c9d573332fa6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374717"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75861387"
 ---
 # <a name="time-series-model-in-azure-time-series-insights-preview"></a>Idősorozat-modell Azure Time Series Insights előzetes verzióban
 
@@ -129,7 +129,7 @@ A példányok a következő JSON-ábrázolással rendelkeznek:
 ```
 
 > [!TIP]
-> A Time Series Insights-példány API-hoz és a létrehozásához, olvasásához, frissítéséhez és törléséhez (szifilisz) támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
+> A Time Series Insights-példány API-hoz és a létrehozás, olvasás, frissítés és törlés (szifilisz) támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [példány API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#instances-api).
 
 ## <a name="time-series-model-hierarchies"></a>Idősorozat-modell hierarchiái
 
@@ -186,7 +186,7 @@ Az előző JSON-példában:
 * a `ManufactureDate` szülő `year` és gyermek `month`rendelkező hierarchiát határoz meg. Minden `ManufactureDate` több `years`is rendelkezhet, ami viszont több `months`is rendelkezhet.
 
 > [!TIP]
-> A Time Series Insights-példány API-hoz és a szifilisz támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
+> Time Series Insights instance API és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és a [hierarchia API Rest dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#hierarchies-api).
 
 ### <a name="hierarchy-example"></a>Példa hierarchia
 
@@ -231,7 +231,7 @@ A [contoso szélerőműpark bemutatója](https://insights.timeseries.azure.com/p
 [![idősorozat-modell típusának példája](media/v2-update-tsm/time-series-model-types.png)](media/v2-update-tsm/time-series-model-types.png#lightbox)
 
 > [!TIP]
-> Time Series Insights instance API és a szifilisz támogatásához tekintse meg az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és az [API Rest-dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
+> Time Series Insights instance API és a szifilisz támogatásához olvassa el az [Adatlekérdezési](time-series-insights-update-tsq.md#time-series-model-query-tsm-q-apis) cikket és az [API Rest-dokumentációját](https://docs.microsoft.com/rest/api/time-series-insights/preview-model#types-api).
 
 ### <a name="type-properties"></a>Típus tulajdonságai
 
@@ -391,7 +391,7 @@ A változók egy idősorozat-modell definíciójában tárolódnak, és a [leké
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Lásd: [Azure Time Series Insights előnézeti tároló és bejövő](./time-series-insights-update-storage-ingress.md)forgalom.
+- Olvassa el [Azure Time Series Insights előnézeti tárolót és a bejövő](./time-series-insights-update-storage-ingress.md)forgalmat.
 
 - Ismerkedjen meg a gyakori idősorozat-modellezési műveletekkel [Azure Time Series Insights előzetes](./time-series-insights-update-how-to-tsm.md) verzióban
 

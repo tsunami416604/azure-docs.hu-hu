@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.custom: seodec18
-ms.openlocfilehash: fa3bcb0ba16c976706c70bbc76daeb8b418a74ea
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9aace01e2f3d514ee5f4b406f4067e104151e5d6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764042"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863325"
 ---
 # <a name="add-an-iot-hub-event-source-to-your-time-series-insights-environment"></a>IoT hub-esemény forrásának hozzáadása a Time Series Insights-környezethez
 
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy olyan eseményf
 * Hozzon létre egy [Azure Time Series Insights környezetet](time-series-insights-update-create-environment.md).
 * Hozzon létre egy [IoT hubot a Azure Portal használatával](../iot-hub/iot-hub-create-through-portal.md).
 * Az IoT hub-nak aktív üzenetküldési eseményekkel kell rendelkeznie.
-* Hozzon létre egy dedikált fogyasztói csoportot az IoT hub-ban ahhoz a Time Series Insights-környezethez, amelyről a alkalmazást használni szeretné. Minden Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog látni. Részletekért tekintse meg az [Azure IoT hub fejlesztői útmutatóját](../iot-hub/iot-hub-devguide.md).
+* Hozzon létre egy dedikált fogyasztói csoportot az IoT hub-ban ahhoz a Time Series Insights-környezethez, amelyről a alkalmazást használni szeretné. Minden Time Series Insights eseményforrás saját dedikált fogyasztói csoportjának kell lennie, amely nincs más fogyasztóval megosztva. Ha több olvasó is felhasználja az azonos fogyasztói csoportból származó eseményeket, az összes olvasó valószínűleg hibákat fog kimutatni. Részletekért olvassa el az [Azure IoT hub fejlesztői útmutatóját](../iot-hub/iot-hub-devguide.md).
 
 ### <a name="add-a-consumer-group-to-your-iot-hub"></a>Fogyasztói csoport hozzáadása az IoT hub-hoz
 
@@ -96,7 +96,7 @@ Az alkalmazások fogyasztói csoportokat használnak az adatok Azure-IoT Hubból
        | Tulajdonság | Leírás |
        | --- | --- |
        | IoT hub fogyasztói csoport | Az IoT hub eseményeinek olvasására szolgáló fogyasztói csoport. Javasoljuk, hogy használjon egy dedikált fogyasztói csoportot az eseményforrás számára. |
-       | Esemény szerializálási formátuma | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az esemény üzeneteinek ebben a formátumban kell lenniük, vagy egyetlen adattal sem lehet olvasni. |
+       | Eseményszerializációs formátum | Jelenleg a JSON az egyetlen elérhető szerializálási formátum. Az esemény üzeneteinek ebben a formátumban kell lenniük, vagy egyetlen adattal sem lehet olvasni. |
        | Időbélyeg-tulajdonság neve | Az érték meghatározásához meg kell ismernie az IoT hub számára küldött üzenet formátumát. Ez az érték annak az üzenetnek a **neve** , amelyet az esemény időbélyegzőként használni kíván. Az érték megkülönbözteti a kis-és nagybetűket. Ha üresen hagyja, a rendszer az eseményforrás **sorba helyezni időt** használja az esemény időbélyegzője. |
 
 

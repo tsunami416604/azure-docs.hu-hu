@@ -3,12 +3,12 @@ title: Oktatóanyag – Application Gateway bejövő adatkezelő létrehozása a
 description: Az oktatóanyag bemutatja, hogyan hozhat létre Kubernetes-fürtöt az Azure Kubernetes szolgáltatással a bejövő adatforgalom-vezérlővel Application Gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 6d07fc6becf76453de792c69b25aea49c39775ae
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74159097"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867403"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Oktatóanyag: Application Gateway bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban
 
@@ -33,7 +33,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan hajthatja végre a következő fe
 
 - **Azure-erőforráscsoport**: Ha nem rendelkezik a bemutatóhoz használni kívánt Azure-erőforráscsoporthoz, [hozzon létre egy Azure-erőforráscsoportot](/azure/azure-resource-manager/manage-resource-groups-portal#create-resource-groups). Jegyezze fel az erőforráscsoport nevét és helyét, mivel ezek az értékek a bemutatóban szerepelnek.
 
-- **Azure-beli szolgáltatásnév**: Kövesse az **Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel** című cikk [a szolgáltatásnév létrehozását](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) ismertető szakaszában foglaltakat. Jegyezze fel a appId, a displayName és a jelszó értékeit.
+- **Azure-beli szolgáltatásnév**: Kövesse az [Azure-beli szolgáltatásnév létrehozása az Azure CLI-vel](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest) című cikk **a szolgáltatásnév létrehozását** ismertető szakaszában foglaltakat. Jegyezze fel a appId, a displayName és a jelszó értékeit.
 
 - Adja meg **az egyszerű szolgáltatásnév objektum azonosítóját**: futtassa a következő parancsot a Cloud Shellban: `az ad sp list --display-name <displayName>`
 
@@ -261,7 +261,7 @@ Hozzon létre egy Terraform-konfigurációs fájlt, amely létrehozza az összes
       name = var.resource_group_name
     }
 
-    # User Assigned Idntities 
+    # User Assigned Identities 
     resource "azurerm_user_assigned_identity" "testIdentity" {
       resource_group_name = data.azurerm_resource_group.rg.name
       location            = data.azurerm_resource_group.rg.location
@@ -543,7 +543,7 @@ A Terraform helyileg követi nyomon az állapotot a `terraform.tfstate` fájlon 
 
     ![Tárfiók menüje](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account.png)
 
-1. Jegyezze fel a **key1** **key** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
+1. Jegyezze fel a **key1** **kulcs** értékét. (A kulcs jobb oldalán található ikonra kattintva a vágólapra másolhatja az értéket.)
 
     ![Tárfiók hozzáférési kulcsa](./media/terraform-k8s-cluster-appgw-with-tf-aks/storage-account-access-key.png)
 

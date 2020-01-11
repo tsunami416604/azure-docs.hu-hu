@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 11/20/2019
 ms.author: jingwang
-ms.openlocfilehash: 34abb93dd54245e03baaa6efe0130d951f7565bf
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 3e0dd6e0bb81aef340dc83288e6e5c0af0bf11c6
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927724"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75867372"
 ---
 # <a name="copy-data-from-a-rest-endpoint-by-using-azure-data-factory"></a>Adatok másolása REST-végpontból Azure Data Factory használatával
 
@@ -211,7 +211,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 | type | A másolási tevékenység forrásának **Type** tulajdonságát **RestSource**értékre kell állítani. | Igen |
 | requestMethod | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | Nem |
 | additionalHeaders | További HTTP-kérelmek fejlécei. | Nem |
-| requestBody | A HTTP-kérelem törzse. | Nem |
+| RequestBody | A HTTP-kérelem törzse. | Nem |
 | paginationRules | A következő lapra irányuló kérelmek összeállításához szükséges tördelési szabályok. A részletekért tekintse meg a [tördelés támogatását](#pagination-support) ismertető szakaszt. | Nem |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Az alapértelmezett érték a **00:01:40**.  | Nem |
 | requestInterval | Az a várakozási idő, ameddig a következő lapra küldött kérelem elküldése előtt elküldve. Az alapértelmezett érték **00:00:01** |  Nem |
@@ -371,6 +371,75 @@ A megfelelő REST másolási tevékenység forrásának konfigurációja, külö
     }
 }
 ```
+
+## <a name="use-oauth"></a>Az OAuth használata
+Ez a szakasz azt ismerteti, hogyan használható megoldás-sablon az adatok REST-összekötőről Azure Data Lake Storageba való másolásához JSON formátumban a OAuth használatával. 
+
+### <a name="about-the-solution-template"></a>Tudnivalók a megoldási sablonról
+
+A sablon két tevékenységet tartalmaz:
+- A **webes** tevékenység beolvassa a tulajdonosi jogkivonatot, majd továbbítja azt a későbbi másolási tevékenységnek engedélyezésként.
+- A **másolási** tevékenység átmásolja az adatait a többiből a Azure Data Lake Storageba.
+
+A sablon két paramétert határoz meg:
+- A **SinkContainer** a gyökérmappa elérési útja, ahová a rendszer átmásolja az adatait a Azure Data Lake Storageba. 
+- A **SinkDirectory** az a könyvtár elérési útja, amelynek a gyökerében az adatait másolja a rendszer a Azure Data Lake Storageba. 
+
+### <a name="how-to-use-this-solution-template"></a>A megoldás sablonjának használata
+
+1. Lépjen a **Másolás Rest vagy http használatával OAuth** sablonnal. Hozzon létre egy új kapcsolatokat a forrás-kapcsolatok számára. 
+    ![új kapcsolatok létrehozása](media/solution-template-copy-from-rest-or-http-using-oauth/source-connection.png)
+
+    Alább láthatók az új társított szolgáltatás (REST) beállításainak főbb lépései:
+    
+     1. Az **alap URL-cím**területen adja meg a saját forrás Rest-szolgáltatás URL-címét. 
+     2. A **Hitelesítés típusa mezőben**válassza a *Névtelen*lehetőséget.
+        ![új REST-kapcsolatok](media/solution-template-copy-from-rest-or-http-using-oauth/new-rest-connection.png)
+
+2. Hozzon létre egy új kapcsolatokat a cél-kapcsolatok számára.  
+    ![Új Gen2-kapcsolatok](media/solution-template-copy-from-rest-or-http-using-oauth/destination-connection.png)
+
+3. Kattintson a **Sablon használata** lehetőségre.
+    ![ezt a sablont használja](media/solution-template-copy-from-rest-or-http-using-oauth/use-this-template.png)
+
+4. A folyamat a következő példában látható módon jelenik meg: ![folyamat](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline.png)
+
+5. Válassza a **webes** tevékenység lehetőséget. A **Beállítások**területen adja meg a megfelelő **URL-címet**, **metódust**, **fejlécet**és **törzset** , hogy beolvassa a OAuth tulajdonosi jogkivonatot azon szolgáltatás bejelentkezési API-ból, amelyről adatokat szeretne másolni. A sablonban található helyőrző Azure Active Directory (HRE) OAuth mutatja be. Megjegyzés: a REST-összekötő natív módon támogatja a HRE-hitelesítést, itt csak egy példa a OAuth folyamatra. 
+
+    | Tulajdonság | Leírás |
+    |:--- |:--- |:--- |
+    | URL-cím |Adja meg a OAuth tulajdonosi jogkivonatának beolvasásához használandó URL-címet. például a mintában itt https://login.microsoftonline.com/microsoft.onmicrosoft.com/oauth2/token |. 
+    | Módszer | A HTTP-metódus. Az engedélyezett értékek: **post** és **Get**. | 
+    | Fejlécek | A fejléc felhasználó által definiált, amely egy fejléc nevére hivatkozik a HTTP-kérelemben. | 
+    | Törzs | A HTTP-kérelem törzse. | 
+
+    ![Folyamat](media/solution-template-copy-from-rest-or-http-using-oauth/web-settings.png)
+
+6. Az **adatok másolása** tevékenységben válassza a *forrás* fület, és láthatja, hogy az előző lépésben beolvasott tulajdonosi jogkivonat (access_token) át lesz adva az adatok másolása tevékenységnek a további fejlécek szerinti **engedélyezéséhez** . A folyamat futtatásának megkezdése előtt erősítse meg a következő tulajdonságok beállításait.
+
+    | Tulajdonság | Leírás |
+    |:--- |:--- |:--- | 
+    | Kérelem metódusa | A HTTP-metódus. Az engedélyezett értékek: **Get** (alapértelmezett) és **post**. | 
+    | További fejlécek | További HTTP-kérelmek fejlécei.| 
+
+   ![Forrás-hitelesítés másolása](media/solution-template-copy-from-rest-or-http-using-oauth/copy-data-settings.png)
+
+7. Válassza a **hibakeresés**lehetőséget, adja meg a **paramétereket**, majd kattintson a **Befejezés gombra**.
+   ![folyamat futtatása](media/solution-template-copy-from-rest-or-http-using-oauth/pipeline-run.png) 
+
+8. A folyamat futásának sikeres befejeződése után az alábbi példához hasonló eredményt láthat: ![a folyamat futási eredményét](media/solution-template-copy-from-rest-or-http-using-oauth/run-result.png) 
+
+9. Kattintson a webaktivitás "output" ikonjára a **műveletek** oszlopban, a szolgáltatás által visszaadott access_token jelenik meg.
+
+   ![Jogkivonat kimenete](media/solution-template-copy-from-rest-or-http-using-oauth/token-output.png) 
+
+10. Kattintson a **műveletek** oszlopban található CopyActivity "bemenet" ikonjára, és a CopyActivity által beolvasott access_token a hitelesítéshez adja át a rendszer. 
+
+    ![Jogkivonat bemenete](media/solution-template-copy-from-rest-or-http-using-oauth/token-input.png)
+        
+    >[!CAUTION] 
+    >Ha el szeretné kerülni a token egyszerű szövegbe való naplózását, engedélyezze a "biztonságos kimenet" lehetőséget a webes tevékenységben, és a "biztonságos bevitel" lehetőséget a másolási tevékenységben.
+
 
 ## <a name="export-json-response-as-is"></a>JSON-válasz exportálása a következőképpen:
 

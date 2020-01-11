@@ -1,18 +1,18 @@
 ---
-title: Az Azure felügyelete és az Operations Management Suite (OMS) | Microsoft Docs
-description: Az Azure-alkalmazások felügyeleti területeinek, valamin olyan Azure felügyeleti eszközökre mutató erőforrások hivatkozásainak áttekintése, amelyek korábban az Operations Management Suite (OMS) csomagban szerepeltek.
+title: Azure-felügyelet
+description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos területek áttekintése, amelyek az Azure felügyeleti eszközein található tartalmakra mutató hivatkozásokat tartalmaznak.
 ms.service: azure-monitor
 ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/07/2018
-ms.openlocfilehash: 7f515c1c5d44058e14f02f7681bfbb7fd2787c6f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: f68838e271e51c37985f55b40b140e279c1df2a4
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72597350"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862543"
 ---
 # <a name="azure-management---monitoring"></a>Az Azure felügyelete – Monitorozás
 

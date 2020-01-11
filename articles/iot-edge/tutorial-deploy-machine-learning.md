@@ -9,18 +9,18 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 3d46e0695238ed7a09f180fe59063f8e2590f307
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 47a84e11149d9c54d335fe09f3c56532f2aaf58b
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701925"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75862866"
 ---
 # <a name="tutorial-deploy-azure-machine-learning-as-an-iot-edge-module-preview"></a>Oktatóanyag: Az Azure Machine Learning üzembe helyezése IoT Edge-modulként (előzetes verzió)
 
 A Azure Notebooks használatával fejlesztheti a Machine learning modult, és üzembe helyezheti azt egy Azure IoT Edge rendszert futtató linuxos eszközön. 
 
-Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. A IoT Edge Azure Machine Learningával kapcsolatos további információkért tekintse meg a [Azure Machine learning dokumentációját](../machine-learning/service/how-to-deploy-to-iot.md).
+Az IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy olyan Azure Machine Learning-modul üzembe helyezésén, amely előrejelzi az eszközök meghibásodását szimulált géphőmérsékleti adatok alapján. A IoT Edge Azure Machine Learningával kapcsolatos további információkért tekintse meg a [Azure Machine learning dokumentációját](../machine-learning/how-to-deploy-and-where.md).
 
 Az ebben az oktatóanyagban létrehozott Azure Machine Learning-modul kiolvassa az eszköz által előállított környezeti adatokat, illetve rendellenesként vagy nem rendellenesként jelöli meg az üzeneteket.
 
@@ -49,7 +49,7 @@ Egy Azure IoT Edge-eszköz:
 Felhőerőforrások:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
-* Egy Azure Machine Learning-munkaterület. Kövesse a Azure Portal használatának első lépései című témakör útmutatását, és Ismerje meg, hogyan használhatja [a Azure Machine learning](../machine-learning/service/quickstart-get-started.md) .
+* Egy Azure Machine Learning-munkaterület. Kövesse a Azure Portal használatának első lépései című témakör útmutatását, és Ismerje meg, hogyan használhatja [a Azure Machine learning](../machine-learning/tutorial-1st-experiment-sdk-setup.md) .
    * Jegyezze fel a munkaterület nevét, az erőforráscsoportot és az előfizetés AZONOSÍTÓját. Ezek az értékek a Azure Portal munkaterület áttekintésében érhetők el. Az oktatóanyag későbbi részében ezeket az értékeket fogja használni az Azure-jegyzetfüzetek munkaterület-erőforrásokhoz való összekapcsolásához. 
 
 
@@ -62,7 +62,7 @@ Ebben a szakaszban a betanított gépi tanulási modell fájljait és egy Azure 
 
 2. Válassza a GitHub-tárház **feltöltése**lehetőséget.
 
-3. Adja meg a következő GitHub-adattár nevét: `Azure/ai-toolkit-iot-edge`. Ha meg szeretné őrizni a saját projektet, törölje a **nyilvános** mezőt. Válassza az **Importálás**lehetőséget. 
+3. Adja meg a következő GitHub-adattár nevét: `Azure/ai-toolkit-iot-edge`. Ha meg szeretné őrizni a saját projektet, törölje a **nyilvános** mezőt. Kattintson az **Importálás** gombra. 
 
 4. Az importálás befejezése után navigáljon az új **AI-Toolkit-IOT-Edge** projekthez, és nyissa meg a **IoT Edge anomália észlelése oktatóanyag** mappát. 
 
