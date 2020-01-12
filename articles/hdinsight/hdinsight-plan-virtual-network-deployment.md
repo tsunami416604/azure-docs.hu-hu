@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: d337d026e89d2383e25498288ba11a9c60f77b39
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bb60d22c62096725e29b9351bf304504861d9bf1
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228990"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902519"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -69,7 +69,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
     
     A meglévő biztonsági beállítások megkereséséhez használja a következő Azure PowerShell vagy Azure CLI-parancsokat:
 
-    * Network security groups (Hálózati biztonsági csoportok)
+    * Hálózati biztonsági csoportok
 
         Cserélje le a `RESOURCEGROUP`t a virtuális hálózatot tartalmazó erőforráscsoport nevére, majd írja be a parancsot:
     
@@ -86,7 +86,7 @@ Az ebben a szakaszban ismertetett lépések segítségével megtudhatja, hogyan 
         > [!IMPORTANT]  
         > A hálózati biztonsági csoport szabályait a rendszer a szabály prioritása alapján alkalmazza. A forgalmi mintának megfelelő első szabály lesz alkalmazva, és a rendszer nem alkalmazza másokat erre a forgalomra. A legtöbb engedékenység és a legkevésbé megengedő szabályok sorrendje. További információ: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md) dokumentum.
 
-    * Felhasználó által megadott útvonalak
+    * Felhasználó által definiált útvonalak
 
         Cserélje le a `RESOURCEGROUP`t a virtuális hálózatot tartalmazó erőforráscsoport nevére, majd írja be a parancsot:
 
@@ -252,6 +252,12 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 ## <a name="load-balancing"></a>Terheléselosztás
 
 HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/load-balancer-overview.md#skus) van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
+
+## <a name="transport-layer-security"></a>Transport Layer Security
+
+A fürtön a nyilvános fürt végpontján keresztül létesített kapcsolatok `https://<clustername>.azurehdinsight.net` a fürt átjárójának csomópontjain keresztül. Ezek a kapcsolatok a TLS nevű protokoll használatával biztonságosak. A TLS magasabb verzióinak kényszerítése az átjárók esetében javítja a kapcsolatok biztonságát. További információ a TLS újabb verzióinak használatáról: [a tls 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
+
+A HDInsight-fürt átjáró-csomópontjain támogatott minimális TLS-verzió (ka) t a *minSupportedTlsVersion* tulajdonsággal szabályozhatja egy Resource Manager-sablonban a telepítési idő alatt. Minta sablon: [HDInsight minimális TLS 1,2 rövid útmutató sablon](https://github.com/Azure/azure-quickstart-templates/tree/master/101-hdinsight-minimum-tls). Ez a tulajdonság három értéket támogat: "1,0", "1,1" és "1,2", amely a TLS 1.0 +, a TLS 1.1 + és a TLS 1.2 + értéknek felel meg. Alapértelmezés szerint a tulajdonság megadása nélkül az Azure HDInsight-fürtök elfogadják a TLS 1,2-kapcsolatokat a nyilvános HTTPS-végpontokon, valamint a régebbi verziókat a visszamenőleges kompatibilitás érdekében. A HDInsight végül a TLS 1,2-es vagy újabb verzióját fogja érvényesíteni az összes átjáró csomópont-kapcsolaton.
 
 ## <a name="next-steps"></a>Következő lépések
 

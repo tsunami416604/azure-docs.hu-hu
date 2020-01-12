@@ -5,12 +5,12 @@ author: tfitzmac
 ms.topic: tutorial
 ms.date: 10/04/2018
 ms.author: tomfitz
-ms.openlocfilehash: de2b79c5016b44011a14c1071eab6579f3a0b6df
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e756617a700d258078e84a3fa11c8aceb6f4dd88
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75650253"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903272"
 ---
 # <a name="create-and-publish-a-managed-application-definition"></a>Felügyelt alkalmazás definíciójának létrehozása és közzététele
 
@@ -18,7 +18,7 @@ ms.locfileid: "75650253"
 
 Létrehozhat és közzétehet a vállalat tagjainak szánt Azure-beli [felügyelt alkalmazásokat](overview.md). Az informatikai részleg közzétehet például olyan felügyelt alkalmazásokat, amelyek megfelelnek a vállalati szabványoknak. Ezeket a felügyelt alkalmazásokat a szolgáltatáskatalóguson keresztül lehet elérni az Azure Marketplace helyett.
 
-A felügyelt alkalmazás szolgáltatáskatalógusban való közzétételéhez a következőket kell tennie:
+A felügyelt alkalmazások Azure-szolgáltatásbeli katalógusba való közzétételéhez a következőket kell tennie:
 
 * Létre kell hoznia egy sablont, amely meghatározza a felügyelt alkalmazással üzembe helyezendő erőforrásokat.
 * Meg kell határoznia a felhasználói felület elemeit a portál számára, amikor üzembe helyezi a felügyelt alkalmazást.
@@ -207,6 +207,108 @@ New-AzManagedApplicationDefinition `
   -Authorization "${groupID}:$ownerID" `
   -PackageFileUri $blob.ICloudBlob.StorageUri.PrimaryUri.AbsoluteUri
 ```
+
+## <a name="bring-your-own-storage-for-the-managed-application-definition"></a>Saját tárterület használata a felügyelt alkalmazás definíciója számára
+Megadhatja, hogy a felügyelt alkalmazás definícióját a létrehozás során megadott Storage-fiókon belül tárolja, hogy a hely és a hozzáférés teljes körűen kezelhető legyen a szabályozási igényei szerint.
+
+> [!NOTE]
+> Saját tárterület használata csak a felügyelt alkalmazás definíciójának ARM-sablonnal vagy REST API-példányával támogatott.
+
+### <a name="select-your-storage-account"></a>Válassza ki a Storage-fiókját
+Létre kell [hoznia egy Storage-fiókot](../../storage/common/storage-account-create.md) , amely tartalmazza a felügyelt alkalmazás definícióját a Service Catalog szolgáltatással való használatra.
+
+Másolja a Storage-fiók erőforrás-AZONOSÍTÓját. A definíció telepítésekor később lesz használatban.
+
+### <a name="set-the-role-assignment-for-appliance-resource-provider-in-your-storage-account"></a>A "készülék erőforrás-szolgáltatója" szerepkör-hozzárendelésének beállítása a Storage-fiókban
+Mielőtt a felügyelt alkalmazás definíciója üzembe helyezhető a Storage-fiókjában, közreműködői engedélyeket kell adnia a **készülék erőforrás-szolgáltatói** szerepkörének, hogy a definiált fájlokat a Storage-fiók tárolójában lehessen írni.
+
+1. Az [Azure Portalon](https://portal.azure.com) lépjen a tárfiókra.
+1. Válassza a **hozzáférés-vezérlés (iam)** lehetőséget a Storage-fiók hozzáférés-vezérlési beállításainak megjelenítéséhez. Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
+1. A **szerepkör-hozzárendelés hozzáadása** ablakban válassza ki a **közreműködő** szerepkört. 
+1. A **hozzáférés kiosztása** mezőben válassza az **Azure ad-felhasználó,-csoport vagy egyszerű szolgáltatásnév**elemet.
+1. Válassza ki a **készülék erőforrás-szolgáltatói** szerepkörének keresése **lehetőséget** , majd jelölje ki.
+1. Mentse a szerepkör-hozzárendelést.
+
+### <a name="deploy-the-managed-application-definition-with-an-arm-template"></a>A felügyelt alkalmazás definíciójának üzembe helyezése ARM-sablonnal 
+
+A következő ARM-sablon segítségével telepítheti a csomagolt felügyelt alkalmazást új felügyelt alkalmazás-definícióként a Service Catalog szolgáltatásban, amelynek a definíciós fájljait a saját Storage-fiókjában tárolja és tartja karban:
+   
+```json
+    {
+    "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "location": {
+            "type": "string",
+            "defaultValue": "[resourceGroup().location]"
+        },
+        "applicationName": {
+            "type": "string",
+            "metadata": {
+                "description": "Managed Application name"
+            }
+        },
+        "storageAccountType": {
+      "type": "string",
+      "defaultValue": "Standard_LRS",
+      "allowedValues": [
+        "Standard_LRS",
+        "Standard_GRS",
+        "Standard_ZRS",
+        "Premium_LRS"
+      ],
+      "metadata": {
+        "description": "Storage Account type"
+      }
+    },
+        "definitionStorageResourceID": {
+            "type": "string",
+            "metadata": {
+                "description": "Storage account resource ID for where you're storing your definition"
+            }
+        },
+        "_artifactsLocation": {
+            "type": "string",
+            "metadata": {
+                "description": "The base URI where artifacts required by this template are located."
+            }
+        }
+    },
+    "variables": {
+        "lockLevel": "None",
+        "description": "Sample Managed application definition",
+        "displayName": "Sample Managed application definition",
+        "managedApplicationDefinitionName": "[parameters('applicationName')]",
+        "packageFileUri": "[parameters('_artifactsLocation')]",
+        "defLocation": "[parameters('definitionStorageResourceID')]",
+        "managedResourceGroupId": "[concat(subscription().id,'/resourceGroups/', concat(parameters('applicationName'),'_managed'))]",
+        "applicationDefinitionResourceId": "[resourceId('Microsoft.Solutions/applicationDefinitions',variables('managedApplicationDefinitionName'))]"
+    },
+    "resources": [
+        {
+            "type": "Microsoft.Solutions/applicationDefinitions",
+            "apiVersion": "2019-07-01",
+            "name": "[variables('managedApplicationDefinitionName')]",
+            "location": "[parameters('location')]",
+            "properties": {
+                "lockLevel": "[variables('lockLevel')]",
+                "description": "[variables('description')]",
+                "displayName": "[variables('displayName')]",
+                "packageFileUri": "[variables('packageFileUri')]",
+                "storageAccountId": "[variables('defLocation')]"
+            }
+        }
+    ],
+    "outputs": {}
+}
+```
+
+Hozzáadunk egy **storageAccountId** nevű új tulajdonságot a applicationDefintion tulajdonságaihoz, és megadják a Storage-fiók azonosítóját, amelyben a definícióját a következőképpen szeretné tárolni:
+
+Ellenőrizheti, hogy az alkalmazás-definíciós fájlok a megadott Storage-fiókban vannak-e mentve a **applicationdefinitions**című tárolóban.
+
+> [!NOTE]
+> A további biztonság érdekében létrehozhat egy felügyelt alkalmazások definícióját egy [Azure Storage-fiók blobjában, ahol engedélyezve](../../storage/common/storage-service-encryption.md)van a titkosítás. A definíció tartalmának titkosítása a Storage-fiók titkosítási beállításain keresztül történik. Csak a fájlra vonatkozó engedélyekkel rendelkező felhasználók tekinthetik meg a szolgáltatás-katalógus definícióját.
 
 ### <a name="make-sure-users-can-see-your-definition"></a>Győződjön meg arról, hogy a definíció a felhasználók számára látható
 

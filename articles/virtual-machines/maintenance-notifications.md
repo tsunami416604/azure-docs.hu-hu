@@ -11,12 +11,12 @@ ms.workload: infrastructure-services
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: shants
-ms.openlocfilehash: 60d9c7fb57e079fde54d60df9b90266ccb94acdc
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 83a1f3921272f5ec15ae4d1f4220652f56679c96
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895828"
+ms.locfileid: "75903226"
 ---
 # <a name="handling-planned-maintenance-notifications"></a>Tervezett karbantartási értesítések feldolgozása
 
@@ -29,7 +29,7 @@ Az Azure rendszeresen végez frissítéseket a virtuális gépeket futtató infr
 
 Az újraindítást igénylő tervezett karbantartás hullámokban van ütemezve. Minden egyes hullám különböző hatókörrel (régiókkal) rendelkezik.
 
-- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld az előfizetés tulajdonosának és a közös tulajdonosoknak. A [műveletnapló értesítéseivel](../service-health/alerts-activity-log-service-notifications.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
+- A Wave az ügyfeleknek küldött értesítésekkel kezdődik. Alapértelmezés szerint a rendszer értesítést küld a szolgáltatás administator és a társ-rendszergazdáknak. A [műveletnapló értesítéseivel](../service-health/alerts-activity-log-service-notifications.md)további címzetteket és üzenetküldési lehetőségeket, például e-maileket, SMS-t és webhookokat adhat hozzá.  
 - Ha egy értesítés bekerül, az *önkiszolgáló ablak* elérhetővé válik. Ebben az ablakban lekérdezheti, hogy mely virtuális gépek érintettek, és hogyan kezdheti el a karbantartást a saját ütemezési igényei alapján. Az önkiszolgáló ablak általában körülbelül 35 nap.
 - Az önkiszolgáló ablak után megkezdődik az *ütemezett karbantartási* időszak. Ezen az időszakon belül az Azure ütemezni fogja a szükséges karbantartást a virtuális gépen. 
 
@@ -84,7 +84,7 @@ További információ a magas rendelkezésre állásról: [virtuális gépek ren
 
 **K: Hogyan értesítést kap a tervezett karbantartásról?**
 
-**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Hamarosan e-mailben értesítést küldünk az előfizetés tulajdonosainak (egy e-mail-cím/előfizetés). Az értesítéshez tartozó további csatornákat és címzetteket a műveletnapló riasztásai használatával lehet konfigurálni. Ha olyan régióba helyez üzembe egy virtuális gépet, ahol a tervezett karbantartás már ütemezve van, nem fogja tudni megkapni az értesítést, hanem a virtuális gép karbantartási állapotát.
+**A:** Egy tervezett karbantartási hullám egy vagy több Azure-régióra vonatkozó ütemterv beállításával kezdődik. Hamarosan e-mailben értesítést küldünk az előfizetés-rendszergazdáknak (egy e-mail-cím/előfizetés). Az értesítéshez tartozó további csatornákat és címzetteket a műveletnapló riasztásai használatával lehet konfigurálni. Ha olyan régióba helyez üzembe egy virtuális gépet, ahol a tervezett karbantartás már ütemezve van, nem fogja tudni megkapni az értesítést, hanem a virtuális gép karbantartási állapotát.
 
 **K: nem látom a tervezett karbantartást a portálon, a PowerShellben vagy a CLI-ben. mi a baj?**
 

@@ -5,14 +5,14 @@ services: vpn-gateway
 author: yushwang
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 10/17/2019
+ms.date: 01/10/2020
 ms.author: yushwang
-ms.openlocfilehash: f1d30ef56350c3e1df796f20e3f9f39fdbc6428a
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 93e13592d9c434b159ad4f4c10ef30328941c64e
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666494"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75902827"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
 
@@ -34,7 +34,7 @@ Az Azure VPN Gateway alapértelmezett házirendjének beállítása: [Tudnivaló
 
 ## <a name="cryptographic-requirements"></a>Titkosítási követelmények
 
-Az egyes titkosítási algoritmusokat vagy paramétereket igénylő kommunikációhoz, jellemzően a megfelelőségi vagy biztonsági követelmények miatt, mostantól konfigurálhatja az Azure VPN-átjárókat, hogy egyéni IPsec/IKE-házirendet használjanak bizonyos titkosítási algoritmusokkal és az alapértelmezett Azure-szabályzatok helyett a legfontosabb erősségek.
+Az egyes titkosítási algoritmusokat vagy paramétereket igénylő kommunikációhoz – jellemzően a megfelelőségi vagy biztonsági követelmények miatt – mostantól konfigurálhatja az Azure-beli VPN-átjárókat, hogy egyéni IPsec/IKE-házirendet használjanak az adott titkosítási algoritmusokkal és kulcsokkal, nem pedig az Azure alapértelmezett házirendjének készleteit.
 
 Az Azure VPN-átjárók IKEv2 alapmódú házirendjei például csak a Diffie-Hellman csoport 2 (1024 bit) használatát használják, míg előfordulhat, hogy az IKE-ben használni kívánt erősebb csoportokat kell megadnia, például a 14. csoport (2048 bites verzió), a csoport 24 (2048 bites MODP csoport) vagy az ECP (elliptikus görbe csoportok) 256 vagy 384 bit (19. csoport és 20. csoport). A hasonló követelmények az IPsec-alapú gyorsmódú házirendekre is érvényesek.
 

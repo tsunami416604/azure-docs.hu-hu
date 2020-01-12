@@ -8,14 +8,14 @@ author: axisc
 ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: aschhab
-ms.openlocfilehash: 356f825524192c3b6cf7df7f0460975f23ea4f7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 6d20d4031f0ed4d1be4dddf9e33946251d6dd523
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74852288"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903320"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal-preview"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal (előzetes verzió) használatával
+# <a name="configure-customer-managed-keys-for-encrypting-azure-service-bus-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával
 A Azure Service Bus Premium az Azure Storage Service Encryption (Azure SSE) szolgáltatásban tárolt adatok titkosítását teszi lehetővé. Service Bus Premium az Azure Storage szolgáltatásban tárolja az adattárolást, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal a Microsoft által felügyelt kulcsokkal titkosítva van. 
 
 ## <a name="overview"></a>Áttekintés
@@ -27,7 +27,6 @@ A BYOK funkció engedélyezése egy egyszeri telepítési folyamat a névtérben
 > Az ügyfél által felügyelt kulcs a szolgáltatás oldalának titkosítására vonatkozik. 
 >   * Ezt a funkciót [Azure Service Bus prémium](service-bus-premium-messaging.md) szint támogatja. A standard szintű Service Bus névterek esetében nem engedélyezhető.
 >   * A titkosítás csak új vagy üres névterekhez engedélyezhető. Ha a névtér tartalmaz egy adatkészletet, akkor a titkosítási művelet sikertelen lesz.
->   * Ha a [Virtual Network (VNet) szolgáltatási végpontok](service-bus-service-endpoints.md) konfigurálva vannak a Service Bus névtér Azure Key Vault, a BYOK nem lesz támogatott. 
 
 A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulcshasználat. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../key-vault/key-vault-overview.md)
 
@@ -40,7 +39,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által fe
 Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
 
 1. Navigáljon a Service Bus Premium-névtérhez.
-2. A Service Bus névtér **Beállítások** lapján válassza a **titkosítás (előzetes verzió)** lehetőséget.
+2. A Service Bus névtér **Beállítások** lapján válassza a **titkosítás**lehetőséget.
 3. Válassza ki az **ügyfél által felügyelt kulcs titkosítását a nyugalmi** állapotban, ahogy az az alábbi képen is látható.
 
     ![Ügyfél által felügyelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -106,9 +105,6 @@ A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgat
 A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Service Busból származó adatok törlését. Azonban az adatok nem érhetők el a Service Bus névtérből. A titkosítási kulcsot a hozzáférési házirendben vagy a kulcs törlésével vonhatja vissza. További információ a hozzáférési házirendekről és a Key Vault biztonságossá [tételéről a kulcstartó biztonságos eléréséről](../key-vault/key-vault-secure-your-key-vault.md).
 
 A titkosítási kulcs visszavonása után a titkosított névtér Service Bus szolgáltatása inműködőképes lesz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törölt kulcs vissza lett állítva, Service Bus a szolgáltatás kiválasztja a kulcsot, hogy hozzáférjen az adatokhoz a titkosított Service Bus névtérből.
-
-> [!NOTE]
-> Ha töröl egy meglévő titkosítási kulcsot a kulcstartóból, és lecseréli a Service Bus névtér egy új kulcsára, mivel a törlési kulcs továbbra is érvényes (mivel gyorsítótárazva van) akár egy óráig is, a régi (a régi kulccsal titkosított) adatok továbbra is elérhetők a következővel: Alon g az új adattal, amely most már csak az új kulcs használatával érhető el. Ezt a viselkedést a szolgáltatás előzetes verziójában tervezték meg. 
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:

@@ -8,18 +8,15 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a5aa6a2e2578a995e4ef00489557fc02623e2d6a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 50d12a0aba9018b1ecb30c018249e8f94ebe6d95
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75744826"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903291"
 ---
-# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal-preview"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure-Event Hubs inaktív adatok titkosításához a Azure Portal (előzetes verzió) használatával
+# <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
 Az Azure Event Hubs az Azure Storage Service Encryption (Azure SSE) segítségével titkosítja az inaktív adatok titkosítását. Event Hubs az Azure Storage-ra támaszkodik az adattárolásra, és alapértelmezés szerint az Azure Storage-ban tárolt összes adattal titkosították a Microsoft által felügyelt kulcsokkal. 
-
->[!NOTE]
-> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. Javasoljuk, hogy éles környezetben ne használja a-t.
 
 ## <a name="overview"></a>Áttekintés
 Az Azure Event Hubs mostantól támogatja az inaktív adatok titkosítását a Microsoft által felügyelt kulcsokkal vagy az ügyfél által felügyelt kulcsok használatával (Bring Your Own Key – BYOK). Ez a funkció lehetővé teszi az Azure Event Hubs-adatok inaktív állapotban való titkosításához használt ügyfél által felügyelt kulcsok elérésének létrehozását, elforgatását, letiltását és visszavonását.
@@ -41,7 +38,7 @@ Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kö
 
 1. Navigáljon a dedikált Event Hubs-fürthöz.
 1. Válassza ki azt a névteret, amelyen engedélyezni szeretné a BYOK.
-1. A Event Hubs névtér **Beállítások** lapján válassza a **titkosítás (előzetes verzió)** lehetőséget. 
+1. A Event Hubs névtér **Beállítások** lapján válassza a **titkosítás**lehetőséget. 
 1. Válassza ki az **ügyfél által felügyelt kulcs titkosítását a nyugalmi** állapotban, ahogy az az alábbi képen is látható. 
 
     ![Ügyfél által felügyelt kulcs engedélyezése](./media/configure-customer-managed-key/enable-customer-managed-key.png)
@@ -72,8 +69,6 @@ Az ügyfél által felügyelt kulcsok engedélyezése után hozzá kell rendelni
         ![Kulcs kiválasztása a Key vaultból](./media/configure-customer-managed-key/select-key-from-key-vault.png)
     1. Adja meg a kulcs részleteit, és kattintson a **kiválasztás**elemre. Ez lehetővé teszi a névtérben tárolt adatok titkosítását az ügyfél által felügyelt kulccsal. 
 
-        > [!NOTE]
-        > Az előzetes verzióban csak egyetlen kulcsot választhat ki. 
 
 ## <a name="rotate-your-encryption-keys"></a>A titkosítási kulcsok elforgatása
 A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgathatja el a kulcsot. További információkért lásd: a [kulcs rotációjának és naplózásának beállítása](../key-vault/key-vault-key-rotation-log-monitoring.md). Az aktiválási és a lejárati dátumok is megadhatók a kulcs elforgatásának automatizálására. A Event Hubs szolgáltatás felderíti az új kulcs-verziókat, és automatikusan elkezdi használni őket.
@@ -82,9 +77,6 @@ A Key vaultban az Azure Key Vaults rotációs mechanizmus használatával forgat
 A titkosítási kulcsokhoz való hozzáférés visszavonása nem törli az Event Hubsból származó adatok törlését. Azonban az adatok nem érhetők el a Event Hubs névtérből. A titkosítási kulcsot a hozzáférési házirendben vagy a kulcs törlésével vonhatja vissza. További információ a hozzáférési házirendekről és a Key Vault biztonságossá [tételéről a kulcstartó biztonságos eléréséről](../key-vault/key-vault-secure-your-key-vault.md).
 
 A titkosítási kulcs visszavonása után a titkosított névtér Event Hubs szolgáltatása inműködőképes lesz. Ha a kulcshoz való hozzáférés engedélyezve van, vagy a törlési kulcs vissza van állítva, Event Hubs szolgáltatás a kulcsot fogja kiválasztani, hogy hozzáférhessen az adatokhoz a titkosított Event Hubs névtérből.
-
-> [!NOTE]
-> Ha töröl egy meglévő titkosítási kulcsot a kulcstartóból, és lecseréli a Event Hubs névtér egy új kulcsára, mivel a törlési kulcs továbbra is érvényes (mivel gyorsítótárazva van) akár egy óráig is, a régi (a régi kulccsal titkosított) adatok továbbra is elérhetők  az új adattal, amely most már csak az új kulcs használatával érhető el. Ezt a viselkedést a szolgáltatás előzetes verziójában tervezték meg. 
 
 ## <a name="set-up-diagnostic-logs"></a>Diagnosztikai naplók beállítása 
 A diagnosztikai naplók beállítása a BYOK-kompatibilis névterekhez megadja a szükséges információkat a műveletekről, amikor egy névtér az ügyfél által felügyelt kulcsokkal van titkosítva. Ezeket a naplókat engedélyezheti és később továbbíthatja az Event hub számára, vagy elemezheti a log Analytics szolgáltatásban, vagy továbbíthatja a tárolóba a testreszabott elemzések elvégzéséhez. További információ a diagnosztikai naplókról: [Az Azure diagnosztikai naplók áttekintése](../azure-monitor/platform/platform-logs-overview.md).
@@ -171,10 +163,6 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 
 > [!IMPORTANT]
 > Ha engedélyezni szeretné, hogy a Geo-DR olyan névtérben legyen, amely a BYOK-titkosítást használja, a párosítás másodlagos névterének dedikált fürtben kell lennie, és rendelkeznie kell egy hozzá tartozó, rendszerhez rendelt felügyelt identitással. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
-
-> [!NOTE]
-> Ha a Virtual Network (VNet) szolgáltatási végpontok konfigurálva vannak a Event Hubs névtér Azure Key Vault, a BYOK nem lesz támogatott. 
-
 
 ## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:

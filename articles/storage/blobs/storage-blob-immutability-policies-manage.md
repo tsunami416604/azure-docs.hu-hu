@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: 79d7454722900eb1d9d6280e35313ef2f4a5cd54
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 68b144a838f0c6e65f3e399f610644315d109fde
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555677"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903473"
 ---
 # <a name="set-and-manage-immutability-policies-for-blob-storage"></a>BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése
 
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blob Storage-ban lé
 
 ## <a name="set-retention-policies-and-legal-holds"></a>Adatmegőrzési szabályzatok és jogcímek beállítása
 
-### <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+### <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. Hozzon létre egy új tárolót, vagy válasszon ki egy már meglévőt a nem módosítható állapotban tartandó blobok tárolására. A tárolónak egy általános célú v2-vagy blob Storage-fiókban kell lennie.
 
@@ -57,7 +57,7 @@ Ez a cikk bemutatja, hogyan állíthatja be és kezelheti a blob Storage-ban lé
 
     !["Címke neve" mező a házirend típusa alatt](media/storage-blob-immutability-policies-manage/portal-image-set-legal-hold-tags.png)
 
-9. A jogi megtartás törléséhez egyszerűen távolítsa el az alkalmazott jogi megtartási azonosító címkét.
+9. A jogi megtartási szabály törléséhez távolítsa el az alkalmazott jogi megtartási azonosító címkét.
 
 ### <a name="azure-clitabazure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -73,7 +73,7 @@ Az az. Storage modul támogatja a nem módosítható tárolókat.  A szolgáltat
 2. Távolítsa el a Azure PowerShell korábbi telepítését.
 3. Azure PowerShell telepítése: `Install-Module Az –Repository PSGallery –AllowClobber`.
 
-A következő PowerShell-parancsfájl a hivatkozás. Ez a szkript létrehoz egy új Storage-fiókot és-tárolót. Ezután bemutatja, hogyan állíthatja be és törölheti a jogcímeket, hogyan hozhat létre és zárolhat egy időalapú adatmegőrzési szabályzatot (más néven módosíthatatlansági szabályzat), és kiterjesztheti a megőrzési időt.
+A következő PowerShell-parancsfájl a hivatkozás. Ez a szkript létrehoz egy új Storage-fiókot és-tárolót. Ezután bemutatjuk, hogyan lehet beállítani és törölni az időalapú adatmegőrzési szabályzatokat (más néven módosíthatatlansági-szabályzatokat), és ki kell zárnia a megőrzési időt.
 
 Először hozzon létre egy Azure Storage-fiókot:
 
@@ -165,6 +165,20 @@ Remove-AzRmStorageContainerImmutabilityPolicy -ImmutabilityPolicy $policy
 ```
 
 ---
+
+## <a name="enabling-allow-protected-append-blobs-writes"></a>A védett hozzáfűzési Blobok írásának engedélyezése
+
+Jelenleg csak az időalapú adatmegőrzési szabályzatok `allowProtectedAppendWrites` beállítását érheti el ezen a [portálon](https://aka.ms/immutableappendblobs)keresztül. 
+
+> [!IMPORTANT] 
+>  A védett hozzáfűzési Blobok írási beállítása az időalapú megőrzés alatt jelenleg elérhető, és csak a következő régiókban látható:
+> - USA keleti régiója
+> - USA déli középső régiója
+> - USA 2. nyugati régiója
+>
+> További információ: a [védett hozzáfűzési Blobok írásainak engedélyezése](storage-blob-immutable-storage.md#allow-protected-append-blobs-writes).
+
+![További hozzáfűzési írások engedélyezése](media/storage-blob-immutability-policies-manage/immutable-allow-additional-append-writes.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

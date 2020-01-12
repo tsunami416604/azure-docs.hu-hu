@@ -3,12 +3,12 @@ title: Python fejlesztői referenciája Azure Functions
 description: Ismerje meg, hogyan fejlesztheti a függvényeket a Python használatával
 ms.topic: article
 ms.date: 12/13/2019
-ms.openlocfilehash: adea5603c997380dde6731b53bc99ba7443e310b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 374770c50300b9ca37253b3323a02c3371bfa521
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769003"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903237"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
 
@@ -322,7 +322,7 @@ A FUNCTIONS_WORKER_PROCESS_COUNT minden olyan gazdagépre vonatkozik, amelyet a 
 
 Ha egy függvény hívási környezetét szeretné lekérni a végrehajtás során, adja meg az [`context`](/python/api/azure-functions/azure.functions.context?view=azure-python) argumentumot az aláírásában. 
 
-Például:
+Példa:
 
 ```python
 import azure.functions
@@ -382,7 +382,7 @@ Helyi fejlesztés esetén az Alkalmazásbeállítások a [Local. Settings. JSON 
 
 ## <a name="python-version"></a>Python-verzió 
 
-A Azure Functions jelenleg a Python 3.6. x és 3.7. x (hivatalos CPython-eloszlások) használatát támogatja. Helyileg futtatva a futtatókörnyezet a rendelkezésre álló Python-verziót használja. Ha egy adott Python-verziót szeretne kérni a Function alkalmazás Azure-ban való létrehozásakor, használja a [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) parancs `--runtime-version` lehetőségét.  
+A Azure Functions jelenleg a Python 3.6. x és 3.7. x (hivatalos CPython-eloszlások) használatát támogatja. Helyileg futtatva a futtatókörnyezet a rendelkezésre álló Python-verziót használja. Ha egy adott Python-verziót szeretne kérni a Function alkalmazás Azure-ban való létrehozásakor, használja a [`az functionapp create`](/cli/azure/functionapp#az-functionapp-create) parancs `--runtime-version` lehetőségét. A verzió módosítása csak függvényalkalmazás létrehozáskor engedélyezett.  
 
 ## <a name="package-management"></a>Csomagkezelés
 
@@ -643,7 +643,7 @@ Győződjön meg arról, hogy a function. JSON fájlt is frissíti a beállítá
 
 Ezt a HTTP-metódust a böngészők használják az engedélyezett Origins lista egyeztetésére. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkért lásd a következőket:
 

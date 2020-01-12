@@ -9,16 +9,16 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 9d0919651842a6f6f935c9f1e338c9d335b80f47
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749163"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903447"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
-Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a felhasználók üzleti szempontból kritikus fontosságú adatobjektumokat tároljanak egy FÉREGben (egyszer írható, olvasható) állapot. Ez az állapot a felhasználó által megadott intervallumban nem törölhető és nem módosítható adatvesztést tesz lehetővé. A megőrzési időtartam időtartama alatt a Blobok létrehozhatók és olvashatók, de nem módosíthatók és nem törölhetők. A nem módosítható tárterület az összes Azure-régióban az általános célú v2 és a blob Storage-fiókok esetében érhető el.
+Az Azure Blob Storage nem módosítható tárolója lehetővé teszi, hogy a felhasználók üzleti szempontból kritikus fontosságú adatobjektumokat tároljanak egy FÉREGben (egyszer írható, olvasható) állapot. Ez az állapot a felhasználó által megadott intervallumban nem törölhető és nem módosítható adatvesztést tesz lehetővé. A megőrzési időtartam időtartama alatt a Blobok létrehozhatók és olvashatók, de nem módosíthatók és nem törölhetők. A nem módosítható tárterület az összes Azure-régióban általános célú v1-, általános célú v2-, BlobStorage-és BlockBlobStorage-fiókokhoz érhető el.
 
 A jogcímek beállításával és törlésével, illetve a Azure Portal, a PowerShell vagy az Azure CLI használatával történő időalapú adatmegőrzési szabályzat létrehozásával kapcsolatos további információkért lásd: [módosíthatatlansági házirendek beállítása és kezelése a blob Storage](storage-blob-immutability-policies-manage.md)-hoz.
 
@@ -48,53 +48,77 @@ A nem módosítható tároló a következő funkciókat támogatja:
 
 ## <a name="how-it-works"></a>Működési elv
 
-Az Azure Blob Storage nem módosítható tárolási funkciója két típusú WORM vagy nem módosítható szabályzatot támogat: az időalapú adatmegőrzést és a jogi célú visszatartást. Ha egy tárolón időalapú adatmegőrzési szabályzatot vagy jogi megtartást alkalmaz, az összes meglévő blob nem módosítható féreg állapotba kerül 30 másodpercnél kevesebb ideig. A tárolóba feltöltött összes új blob is a nem módosítható állapotba kerül. Ha az összes blobot áthelyezte a megváltoztathatatlan állapotba, a rendszer megerősíti a megváltoztathatatlan házirendet, és a nem módosítható tárolóban lévő meglévő és új objektumok összes felülírási vagy törlési művelete nem engedélyezett.
+Az Azure Blob Storage nem módosítható tárolási funkciója két típusú WORM vagy nem módosítható szabályzatot támogat: az időalapú adatmegőrzést és a jogi célú visszatartást. Ha egy tárolón időalapú adatmegőrzési szabályzatot vagy jogi megtartást alkalmaz, az összes meglévő blob nem módosítható féreg állapotba kerül 30 másodpercnél kevesebb ideig. A házirend által védett tárolóba feltöltött összes új blob nem változtatható állapotba kerül. Ha az összes blob megváltoztathatatlan állapotban van, a rendszer megerősíti a megváltoztathatatlan házirendet, és a nem módosítható tárolóban lévő felülírási vagy törlési műveletek nem engedélyezettek.
 
-A tároló-és a Storage-fiók törlése nem engedélyezett, ha a tárolóban vagy a Storage-fiókban egy nem módosítható házirend által védett blob található. A tároló törlési művelete sikertelen lesz, ha legalább egy blob zárolt időalapú adatmegőrzési házirenddel vagy jogi megtartással van ellátva. A Storage-fiók törlési művelete sikertelen lesz, ha van legalább egy olyan féreg tárolója, amelynek van jogi korlátja, vagy egy blob aktív megőrzési intervallummal rendelkezik.
+A tároló-és a Storage-fiók törlése szintén nem engedélyezett, ha a tárolóban olyan Blobok vannak, amelyeket jogi vagy zárolt időalapú szabályzat véd. A jogi tartási szabályzat a Blobok, tárolók és a Storage-fiókok törlésével szembeni védelmet nyújt. A feloldva és a zárolt időalapú házirendek is védelmet kapnak a Blobok törlésével a megadott ideig. A feloldva és a zárolt időalapú házirendek is csak akkor védik a tároló törlését, ha legalább egy blob létezik a tárolón belül. Csak a *zárolt* időalapú házirenddel rendelkező tároló fogja védeni a Storage-fiókok törlését; a zárolt időalapú házirendekkel rendelkező tárolók nem kínálnak a Storage-fiókok törlésének védelmét és megfelelőségét.
 
-### <a name="time-based-retention-policies"></a>Időalapú adatmegőrzési szabályzatok
+Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával kapcsolatos további információkért lásd: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](storage-blob-immutability-policies-manage.md).
+
+## <a name="time-based-retention-policies"></a>Időalapú adatmegőrzési szabályzatok
 
 > [!IMPORTANT]
 > Az időalapú adatmegőrzési szabályzatot *zárolni* kell ahhoz, hogy a blob megfelelő, megváltoztathatatlan (írási és törlési) állapotban legyen a SEC 17a-4 (f) és más szabályozási megfelelőség esetében. Javasoljuk, hogy a szabályzatot ésszerű időn belül, általában 24 óránál rövidebb ideig zárolja. Az alkalmazott időalapú adatmegőrzési szabályzat kezdeti állapota *zárolva*van, így a zárolása előtt tesztelheti a szolgáltatást, és módosíthatja a szabályzatot. Míg a *zárolt* állapot módosíthatatlansági védelmet biztosít, a rövid távú szolgáltatásokra vonatkozó kísérletektől eltérő célra nem ajánlott a *feloldva* állapotot használni. 
 
-Ha egy tárolón időalapú adatmegőrzési szabályt alkalmaz, a tárolóban lévő összes blob a *tényleges* megőrzési időtartamig nem változtatható állapotban marad. A meglévő blobok esetében a tényleges adatmegőrzési időtartam megegyezik a blob létrehozási ideje és a felhasználó által megadott megőrzési intervallum különbözetével.
+Ha egy tárolón időalapú adatmegőrzési szabályt alkalmaz, a tárolóban lévő összes blob a *tényleges* megőrzési időtartamig nem változtatható állapotban marad. A Blobok tényleges megőrzési időtartama megegyezik a blob **létrehozási ideje** és a felhasználó által megadott megőrzési időtartam közötti különbséggel. Mivel a felhasználóknak lehetőségük van meghosszabbítani az adatmegőrzési időtartamot, a nem módosítható tárolás a felhasználó által legutóbb megadott adatmegőrzési időtartamot fogja használni a tényleges megőrzési időtartam kiszámolásakor.
 
-Az új blobok esetében az adatmegőrzési időtartam egyenlő a felhasználó által megadott adatmegőrzési intervallummal. Mivel a felhasználóknak lehetőségük van meghosszabbítani az adatmegőrzési időtartamot, a nem módosítható tárolás a felhasználó által legutóbb megadott adatmegőrzési időtartamot fogja használni a tényleges megőrzési időtartam kiszámolásakor.
+Tegyük fel például, hogy egy felhasználó egy időalapú adatmegőrzési szabályzatot hoz létre öt év megőrzési időtartammal. A tárolóban meglévő blob, a _testblob1_egy éve jött létre. tehát a _testblob1_ érvényes megőrzési ideje négy év. Amikor új blobot töltenek fel a tárolóba, a _testblob2_ érvényes megőrzési idő a létrehozástól számított öt év a _testblob2_.
 
-Tegyük fel például, hogy egy felhasználó egy időalapú adatmegőrzési szabályzatot hoz létre öt év megőrzési időtartammal. A tárolóban meglévő blob, a _testblob1_egy éve jött létre. A _testblob1_ érvényes megőrzési ideje négy év. Amikor új blobot töltenek fel a tárolóba, a rendszer öt évig az új blob tényleges megőrzési időszakát _testblob2_.
-
-A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások tesztelésére ajánlott, és a házirendet zárolni kell ahhoz, hogy meg lehessen felelni a SEC 17a-4 (f) és más szabályozási megfelelőségnek. Az időalapú adatmegőrzési szabályzat zárolása után a szabályzat nem távolítható el, és a tényleges megőrzési időtartam legfeljebb öt nő lehet. Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával kapcsolatos további információkért lásd: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](storage-blob-immutability-policies-manage.md).
+A kinyitott időalapú adatmegőrzési szabályzat csak a szolgáltatások tesztelésére ajánlott, és a házirendet zárolni kell ahhoz, hogy meg lehessen felelni a SEC 17a-4 (f) és más szabályozási megfelelőségnek. Az időalapú adatmegőrzési szabályzat zárolása után a szabályzat nem távolítható el, és a tényleges megőrzési időtartam legfeljebb öt nő lehet.
 
 Az adatmegőrzési szabályokra az alábbi korlátozások vonatkoznak:
 
-- A Storage-fiók esetében a zárolt, időalapú, rögzített házirendekkel rendelkező tárolók maximális száma 1 000.
+- A Storage-fiók esetében a zárolt, időalapú, rögzített házirendekkel rendelkező tárolók maximális száma 10 000.
 - A minimális megőrzési időköz egy nap. A maximális érték 146 000 nap (400 év).
 - Tároló esetén a zárolt időalapú megváltoztathatatlan házirendek megőrzési időtartamának meghosszabbítására szolgáló szerkesztési adatok maximális száma 5.
 - Tároló esetén a zárolt szabályzatok számára legfeljebb hét időalapú adatmegőrzési szabály van megtartva.
 
-### <a name="legal-holds"></a>Jogi célú visszatartások
+### <a name="allow-protected-append-blobs-writes"></a>Védett hozzáfűző Blobok írásának engedélyezése
 
-A jogi szabályozás beállításakor minden meglévő és új blob nem módosítható állapotban marad mindaddig, amíg nem törli a jogi megtartást. A jogcímek beállításával és törlésével kapcsolatos további információkért lásd: [módosíthatatlansági-szabályzatok beállítása és kezelése a blob Storage-hoz](storage-blob-immutability-policies-manage.md).
+A hozzáfűző Blobok adatblokkokból állnak, és a naplózási és naplózási forgatókönyvekhez szükséges adathozzáfűzési műveletekre vannak optimalizálva. A hozzáfűző Blobok csak az új blokkoknak a blob végéhez való hozzáadását teszik lehetővé. A módosíthatatlansági függetlenül a meglévő blokkok módosítása vagy törlése alapvetően nem engedélyezett a hozzáfűző blobokban. A Blobok hozzáfűzésével kapcsolatos további tudnivalókért tekintse meg [a hozzáfűző Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs#about-append-blobs)című témakört.
+
+Csak az időalapú adatmegőrzési szabályzatok rendelkeznek olyan `allowProtectedAppendWrites` beállítással, amely lehetővé teszi, hogy új blokkokat írjon egy hozzáfűzési blobhoz a módosíthatatlansági-védelem és a megfelelőség megőrzése mellett. Ha engedélyezve van, létrehozhat egy hozzáfűzési blobot közvetlenül a szabályzat által védett tárolóban, és továbbra is hozzáadhat új adatblokkokat a meglévő hozzáfűzési Blobok végéhez a *AppendBlock* API használatával. Csak új blokkok vehetők fel, és minden meglévő blokk nem módosítható és nem törölhető. Az időmegőrzés módosíthatatlansági védelme továbbra is érvényes, így megelőzhető a hozzáfűző blob törlése, amíg a tényleges megőrzési időszak el nem telik.  
+
+Mivel ez a beállítás egy időalapú adatmegőrzési szabályzat részét képezi, a hozzáfűző Blobok továbbra is megváltoztathatatlan állapotban maradnak a *hatályos* megőrzési időtartam alatt. Mivel az új adatok hozzáfűzhető a hozzáfűző blob kezdeti létrehozása után, némi különbség van a megőrzési időszak meghatározásakor. A tényleges megőrzés a blob **utolsó módosításának** és a felhasználó által megadott megőrzési időtartamnak a különbsége. Hasonlóképpen, ha a megőrzési időtartam ki van bővítve, a nem módosítható tároló a felhasználó által megadott megőrzési időtartam legutóbbi értékét használja a tényleges megőrzési időtartam kiszámításához.
+
+Tegyük fel például, hogy egy felhasználó időalapú adatmegőrzési szabályzatot hoz létre `allowProtectedAppendWrites` engedélyezve és 90 napos megőrzési időtartammal. A tárolóban a _logblob1_-ben létrehozott hozzáfűző Blobok még ma is létrejönnek, az új naplók továbbra is a következő 10 napra lesznek hozzáadva a hozzáfűzési blobhoz; így a _logblob1_ érvényes megőrzési ideje 100 nap a mai naptól számítva (az utolsó módosítás/Hozzáfűzés időpontja).
+
+A zárolt időalapú adatmegőrzési házirendek lehetővé teszik a `allowProtectedAppendWrites` beállítás engedélyezését és letiltását. Az időalapú adatmegőrzési szabály zárolása után a `allowProtectedAppendWrites` beállítás nem módosítható.
+
+A jogszabályi szabályok nem engedélyezhetik `allowProtectedAppendWrites` és nem engedélyezik az új blokkok hozzáfűzését a Blobok hozzáfűzéséhez. Ha a jogi megtartást olyan időalapú adatmegőrzési szabályzatra alkalmazza, amelynek `allowProtectedAppendWrites` engedélyezve van, akkor a *AppendBlock* API nem fog működni, amíg meg nem szünteti a jogi megtartást.
+
+> [!IMPORTANT] 
+> A védett hozzáfűzési Blobok írási beállításának engedélyezése az időalapú megőrzés alatt jelenleg a következő régiókban érhető el:
+> - USA keleti régiója
+> - USA déli középső régiója
+> - USA 2. nyugati régiója
+>
+> Jelenleg erősen ajánljuk, hogy ne engedélyezze a `allowProtectedAppendWrites`t más régiókban a megadott feltételek mellett, mivel ez időszakos hibákat okozhat, és hatással lehet a hozzáfűzési Blobok megfelelőségére. Az időalapú adatmegőrzési szabályzatok beállításával és zárolásával kapcsolatos további információkért lásd: a [védett hozzáfűző Blobok írásának](storage-blob-immutability-policies-manage.md#enabling-allow-protected-append-blobs-writes)engedélyezése.
+
+## <a name="legal-holds"></a>Jogi célú visszatartások
+
+A jogi tartalékok olyan ideiglenes tárolók, amelyek jogi nyomozási célokra vagy általános védelmi házirendekhez használhatók. Minden jogszabályhoz tartozó szabályzatot egy vagy több címkével kell társítani. A címkék névvel ellátott azonosítóként, például egy eset AZONOSÍTÓJAként vagy eseményként használatosak, hogy kategorizálják és leírják a tartás célját.
 
 Egy tároló egyszerre rendelkezhet jogi és időalapú adatmegőrzési házirenddel is. Az adott tárolóban található összes blob mindaddig nem módosítható állapotban marad, amíg az összes jogi célú visszatartást fel nem oldják, még akkor is, ha azok tényleges adatmegőrzési időtartama lejár. A blobok továbbá mindaddig nem módosítható állapotban maradnak, amíg a tényleges megőrzési időtartamuk le nem jár, még a jogi célú visszatartások feloldását követően is.
 
-A következő táblázat a blob Storage-műveletek azon típusait mutatja be, amelyek a különböző változtathatatlan forgatókönyvek esetében le vannak tiltva. További információkért tekintse meg az [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációját.
-
-|Alkalmazási helyzet  |BLOB állapota  |A blob-műveletek nem engedélyezettek  |
-|---------|---------|---------|
-|A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Helyezze az<sup>1. blobot</sup>, helyezze<sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a Letiltás         |
-|A blobon beállított tényleges megőrzési időtartam lejárt     |Csak írásvédett (a törlési műveletek engedélyezettek)         |Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a blokk hozzáfűzése         |
-|Minden jogi eszköz törölve van, és a tárolón nincs megadva időalapú adatmegőrzési szabály     |Változtatható         |None         |
-|Nincs létrehozva féreg-házirend (időalapú megőrzés vagy jogi megtartási idő)     |Változtatható         |None         |
-
-<sup>1</sup> az alkalmazás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
-
 A következő korlátozások érvényesek a jogi részesedésre:
 
-- A Storage-fiók esetében a jogszabályi megtartási beállítással rendelkező tárolók maximális száma 1 000.
+- A Storage-fiók esetében a jogszabályi megtartási beállítással rendelkező tárolók maximális száma 10 000.
 - A tárolók esetében a jogi megtartó címkék maximális száma 10.
 - A jogi megtartási címke minimális hossza három alfanumerikus karakter. A maximális hossz 23 alfanumerikus karakter.
 - A tárolók esetében a szabályzat időtartama alatt legfeljebb 10 jogszabályi szabályzatot tartalmazó napló marad.
+
+## <a name="scenarios"></a>Alkalmazási helyzetek
+A következő táblázat a blob Storage-műveletek azon típusait mutatja be, amelyek a különböző változtathatatlan forgatókönyvek esetében le vannak tiltva. További információkért tekintse meg az [Azure Blob Service REST API](https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api) dokumentációját.
+
+|Alkalmazási helyzet  |BLOB állapota  |Megtagadott blob-műveletek  |Tároló és fiók védelme
+|---------|---------|---------|---------|
+|A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Helyezze az 1<sup>. blobot, helyezze</sup><sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép blob, a növekményes másolási blob, a<sup>2</sup> .         |A tároló törlése megtagadva; A Storage-fiók törlése megtagadva         |
+|Lejárt a tényleges megőrzési időköz a blobon, és nincs beállítva jogi fenntartás    |Csak írásvédett (a törlési műveletek engedélyezettek)         |Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a<sup>2</sup> . Hozzáfűzés         |A tároló törlése megtagadva, ha legalább 1 blob található a védett tárolóban; A Storage-fiók törlése csak a *zárolt* időalapú házirendek esetében megtagadva         |
+|Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke)     |Változtatható         |None         |None         |
+
+<sup>1</sup> a blob szolgáltatás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
+
+<sup>2</sup> a hozzáfűző blokk csak olyan időalapú adatmegőrzési házirendek esetében engedélyezett, amelyeken engedélyezve van a `allowProtectedAppendWrites` tulajdonság. További információ: a [védett hozzáfűző Blobok írási engedélyezése](#allow-protected-append-blobs-writes) szakasz.
 
 ## <a name="pricing"></a>Díjszabás
 
@@ -104,15 +128,15 @@ A szolgáltatás használata nem jár további díjszabással. A megváltoztatha
 
 **Megadhatja a féreg megfelelőségének dokumentációját?**
 
-Igen. A megfelelőség dokumentálása érdekében a Microsoft megőrizte a nyilvántartások kezelésével és az Cohasset-társításokkal foglalkozó vezető független értékelő vállalatot, amellyel kiértékelheti a nem módosítható blob-tárolókat, és megfelel a pénzügyi szolgáltatások iparága. A Cohasset ellenőrizte, hogy a nem módosítható blob-tároló, amikor az időalapú Blobok egy féreg állapotában való megőrzésére szolgál, megfelel a CFTC-szabály 1.31 (c)-(d), a FINRA szabály 4511-es és a SEC szabály 17a-4. A Microsoft ezt a szabályt célozza meg, mivel a pénzügyi intézmények számára a rekordok megőrzésére leginkább jellemző útmutatást jelentik. A Cohasset-jelentés a [Microsoft szolgáltatás-Adatvédelmi központban](https://aka.ms/AzureWormStorage)érhető el. Ha a Microsoft igazolást kér a féreg megfelelőségéről, forduljon az Azure ügyfélszolgálatához.
+Igen. A megfelelőség dokumentálása érdekében a Microsoft megőrizte a nyilvántartások kezelésével és az Cohasset-társításokkal foglalkozó vezető független értékelő vállalatot, amellyel kiértékelheti a nem módosítható blob-tárolókat, és megfelel a pénzügyi szolgáltatások iparága. A Cohasset ellenőrizte, hogy a nem módosítható blob-tároló, amikor az időalapú Blobok egy féreg állapotában való megőrzésére szolgál, megfelel a CFTC-szabály 1.31 (c)-(d), a FINRA szabály 4511-es és a SEC szabály 17a-4. A Microsoft ezt a szabályt célozza meg, mivel a pénzügyi intézmények számára a rekordok megőrzésére leginkább jellemző útmutatást jelentik. A Cohasset-jelentés a [Microsoft szolgáltatás-Adatvédelmi központban](https://aka.ms/AzureWormStorage)érhető el. Ha a Microsofttól igazolást szeretne kérni a féreg módosíthatatlansági megfelelőségével kapcsolatban, forduljon az Azure ügyfélszolgálatához.
 
-**A szolgáltatás csak a Blobok blokkolására, illetve a Blobok oldalára és hozzáfűzésére is vonatkozik?**
+**A szolgáltatás csak a Blobok letiltására és Blobok hozzáfűzésére, vagy a Blobok oldalára vonatkozik?**
 
-A nem módosítható tároló bármely blob-típussal használható, mert a tároló szintjén van beállítva, de javasoljuk, hogy a féreg olyan tárolókat használjon, amelyek főleg a blokk blobokat tárolják. A blokk Blobokkal ellentétben az új lapokat tartalmazó blobokat és a hozzáfűzési blobokat a féreg-tárolón kívül kell létrehozni, majd az-ba kell másolni. Miután átmásolta ezeket a blobokat egy férget tárolóba, a hozzáfűzési blobhoz vagy egy oldal blobjának módosításaihoz való további *Hozzáfűzés* nem engedélyezett. Ha olyan tárolón állít be egy WORM Policy-szabályzatot, amely minden aktív virtuális gép számára tárolja a VHD-ket (blobokat), akkor a rendszer nem veszi igénybe a virtuálisgép-lemez zárolását.
+A nem módosítható tároló bármely blob-típussal használható, mert a tároló szintjén van beállítva, de javasoljuk, hogy a férget olyan tárolók esetén használja, amelyek főleg a blokk Blobok tárolására és a Blobok hozzáfűzésére szolgálnak. Egy tárolóban lévő meglévő Blobok védelme egy újonnan beállított féreg-szabályzattal történik. Az új blobokat azonban létre kell hozni a WORM tárolón kívül, majd a vágólapra kell másolni. A féreg tárolóba való másolás után az oldal blobjának további módosítása nem engedélyezett. Ha olyan tárolón állít be egy WORM Policy-szabályzatot, amely minden aktív virtuális gép számára tárolja a VHD-ket (blobokat), akkor a rendszer nem veszi igénybe a virtuálisgép-lemez zárolását. Javasoljuk, hogy alaposan tekintse át a dokumentációt, és az időalapú házirendek zárolása előtt tesztelje a forgatókönyveit.
 
 **Létre kell hozni egy új Storage-fiókot a funkció használatához?**
 
-Nem, a nem módosítható tárterületet bármilyen meglévő vagy újonnan létrehozott általános célú v2-vagy blob Storage-fiókkal használhatja. Ez a funkció a GPv2 és a blob Storage-fiókokban lévő blokkos Blobokkal való használatra szolgál. Az általános célú v1 Storage-fiókok nem támogatottak, de egyszerűen frissíthetők az általános célú v2-re. Egy meglévő általános célú v1 Storage-fiók frissítésével kapcsolatos információkért lásd: [Storage-fiók frissítése](../common/storage-account-upgrade.md).
+Nem, a már meglévő vagy újonnan létrehozott általános célú v1-, általános célú v2-, BlobStorage-vagy BlockBlobStorage-fiókokkal is használhatja a nem módosítható tárolókat. Az általános célú v1 Storage-fiókok támogatottak, de javasoljuk, hogy frissítsen az általános célú v2-re, hogy kihasználhassa a további funkciókat is. Egy meglévő általános célú v1 Storage-fiók frissítésével kapcsolatos információkért lásd: [Storage-fiók frissítése](../common/storage-account-upgrade.md).
 
 **Alkalmazhatok jogi és időalapú adatmegőrzési szabályzatot is?**
 
@@ -126,15 +150,15 @@ Nem, a jogi fenntartás csak a nem időalapú adatmegőrzési szabályhoz haszn�
 
 Csak a zárolt időalapú adatmegőrzési szabályzatok távolíthatók el a tárolóból. Az időalapú adatmegőrzési szabályzat zárolása után nem távolítható el; csak a tényleges megőrzési időszakra vonatkozó bővítmények engedélyezettek. A jogi megtartási címkék törölhetők. Ha az összes jogi címkét törli, a rendszer eltávolítja a jogi megtartást.
 
-**Mi történik, ha megpróbálok törölni egy tárolót, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
+**Mi történik, ha egy olyan tárolót próbálok törölni, amely időalapú adatmegőrzési szabályzattal vagy jogi feladatokkal rendelkezik?**
 
-A tároló törlése művelet sikertelen lesz, ha legalább egy blob már létezik zárolt időalapú adatmegőrzési házirenddel vagy jogi megtartással. A tároló törlése művelet csak akkor lesz sikeres, ha nincs aktív megőrzési intervallummal rendelkező blob, és nincs jogi tartalék. A tároló törlése előtt törölnie kell a blobokat.
+A tároló törlése művelet sikertelen lesz, ha legalább egy blob létezik a tárolón a zárolt vagy az időalapú adatmegőrzési szabályzattal, vagy ha a tároló rendelkezik jogi megtartással. A tároló törlése művelet csak akkor lesz sikeres, ha a tárolón belül nem találhatók Blobok, és nincs jogi tartalék. 
 
-**Mi történik, ha megpróbálok törölni egy olyan WORM-tárolót tartalmazó tárfiókot, amelyre *zárolt* időalapú adatmegőrzési szabályzat vagy jogi célú visszatartás vonatkozik?**
+**Mi történik, ha olyan tárolóval próbálok törölni egy Storage-fiókot, amely időalapú adatmegőrzési szabályzattal vagy jogi megtartással rendelkezik?**
 
-A tárfiók törlése sikertelen lesz, ha legalább egy jogi célú visszatartással ellátott WORM-tárolót vagy aktív adatmegőrzési időtartammal rendelkező blobot tartalmaz. A Storage-fiók törlése előtt törölnie kell az összes férget tartalmazó tárolót. További információ a tárolók törléséről: előző kérdés.
+A Storage-fiók törlése sikertelen lesz, ha van legalább egy olyan tároló, amely rendelkezik egy jogszabályi készlettel vagy egy **zárolt** időalapú házirenddel. A zárolt időalapú házirenddel rendelkező tárolók nem védik a Storage-fiókok törlését. A Storage-fiók törlése előtt el kell távolítania az összes jogi birtokot, és törölnie kell az összes **zárolt** tárolót. További információ a tárolók törléséről: előző kérdés. A Storage-fiókra vonatkozóan további törlési védelmet is alkalmazhat [Azure Resource Manager zárolásokkal](../../azure-resource-manager/resource-group-lock-resources.md).
 
-**Áthelyezhetem az adatokat különböző blobrétegek között (gyakran, ritkán és alig használt rétegek), ha a blob nem módosítható állapotban van?**
+**Áthelyezhetem az adatok között különböző blob-rétegeket (gyakori, ritka, archív), ha a blob nem módosítható állapotban van?**
 
 Igen, a blob-rétegek beállítása paranccsal áthelyezheti az adategységeket a blob szintjeire, miközben a megfelelő, megváltoztathatatlan állapotban tartja az adategységeket. A nem módosítható tárolók a gyakori, ritka elérésű és archív blob-szinteken támogatottak.
 
@@ -148,12 +172,11 @@ Igen. Időalapú adatmegőrzési szabály létrehozásakor a rendszer *zárolt* 
 
 **Használhatom a Soft delete szolgáltatást a nem módosítható blob-házirendek mellett?**
 
-Igen. Az [Azure Blob Storage](storage-blob-soft-delete.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
-
-**Hol érhető el a funkció?**
-
-A nem módosítható tárterület az Azure nyilvános, Kínában és kormányzati régióiban érhető el. Ha a nem módosítható tároló nem érhető el a régióban, forduljon az ügyfélszolgálathoz és az e-mail-azurestoragefeedback@microsoft.comhoz.
+Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete engedélyezését. Az [Azure Blob Storage](storage-blob-soft-delete.md) -hoz készült Soft delete egy Storage-fiókban lévő összes tárolóra érvényes, függetlenül a jogi vagy időalapú adatmegőrzési szabályoktól. Javasoljuk, hogy a nem módosítható féreg-házirendek alkalmazása és megerősítése előtt a további védelem érdekében engedélyezze a Soft delete használatát.
 
 ## <a name="next-steps"></a>Következő lépések
 
-[BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](storage-blob-immutability-policies-manage.md)
+- [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](storage-blob-immutability-policies-manage.md)
+- [Szabályok beállítása a blob-adatkészletek automatikus előállításához és törléséhez az életciklus-kezeléssel](storage-lifecycle-management-concepts.md)
+- [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)
+- [Az előfizetések, erőforráscsoportok és erőforrások Azure Resource Manager zárolásokkal való](../../azure-resource-manager/resource-group-lock-resources.md)ellátása.

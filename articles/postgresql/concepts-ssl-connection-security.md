@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/27/2019
-ms.openlocfilehash: 21b4dffa135e1311be8c738c634de22304665695
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 4f7fd3ea1c83e1bf5183aedf4fe894809884414c
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768146"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903502"
 ---
 # <a name="configure-ssl-connectivity-in-azure-database-for-postgresql---single-server"></a>Az SSL-kapcsolat konfigurálása Azure Database for PostgreSQL – egyetlen kiszolgálón
 Azure Database for PostgreSQL az ügyfélalkalmazások a PostgreSQL szolgáltatáshoz való csatlakoztatását részesíti előnyben SSL (SSL) használatával. Az adatbázis-kiszolgáló és az ügyfélalkalmazások közötti SSL-kapcsolatok kényszerítésével megvédheti a védelmet a kiszolgáló és az alkalmazás közötti adatfolyam titkosításával.
@@ -26,8 +26,11 @@ Hasonlóképpen, a "kapcsolati karakterláncok" beállításokban előre defini�
 ## <a name="configure-enforcement-of-ssl"></a>Az SSL kényszerítésének konfigurálása
 Igény szerint letilthatja az SSL-kapcsolat kényszerítését. Microsoft Azure azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat kikényszerített** beállítását a fokozott biztonság érdekében.
 
+> [!NOTE]
+> Jelenleg a Azure Database for PostgreSQL által támogatott TLS-verzió a TLS 1,0, a TLS 1,1, a TLS 1,2.
+
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
-Keresse fel Azure Database for PostgreSQL-kiszolgálóját, és kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást. Ezután kattintson a **Mentés**gombra. 
+Keresse fel Azure Database for PostgreSQL-kiszolgálóját, és kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást. Ezután kattintson a **Mentés** gombra. 
 
 ![Kapcsolatbiztonsági – a kényszerített SSL letiltása](./media/concepts-ssl-connection-security/1-disable-ssl.png)
 

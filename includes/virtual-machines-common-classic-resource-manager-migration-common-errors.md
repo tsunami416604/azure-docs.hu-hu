@@ -4,12 +4,12 @@ ms.service: virtual-machines
 ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
-ms.openlocfilehash: 9b47d3bde4c4c5ef7fd3d41c038ea078c19db900
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: e590c07c3969865d573838352a8a778caa1cc799
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005732"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901844"
 ---
 Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből Azure Resource Manager verembe történő migrálása során leggyakrabban előforduló hibákat és kezelési lehetőségeiket.
 
@@ -19,9 +19,9 @@ Ez a cikk összegyűjti az IaaS-erőforrások klasszikus Azure üzemi modellből
 
 | Hibasztring | Kezelés |
 | --- | --- |
-| Belső kiszolgálóhiba |Bizonyos esetekben ez egy átmeneti hiba, ami újbóli próbálkozással megszűnik. Ha továbbra is fennáll, [vegye fel a kapcsolatot az Azure ügyfélszolgálatával](../articles/azure-supportability/how-to-create-azure-support-request.md), mivel a platformnaplók vizsgálata szükséges. <br><br> **MEGJEGYZÉS:** Miután a támogatási csapat azonosította a hibát, ne próbálkozzon további javító intézkedésekkel, mivel azoknak nem várt következményei lehetnek a környezetben. |
+| Belső kiszolgálóhiba |Bizonyos esetekben ez egy átmeneti hiba, ami újbóli próbálkozással megszűnik. Ha továbbra is fennáll, [vegye fel a kapcsolatot az Azure ügyfélszolgálatával](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), mivel a platformnaplók vizsgálata szükséges. <br><br> **MEGJEGYZÉS:** Miután a támogatási csapat azonosította a hibát, ne próbálkozzon további javító intézkedésekkel, mivel azoknak nem várt következményei lehetnek a környezetben. |
 | A migrálás az {üzemeltetett szolgáltatás} üzemeltetett szolgáltatás {üzemelő példány neve} üzemelő példánya esetében nem támogatott, mivel ez egy PaaS üzemelő példány (webes/feldolgozó). |Ez akkor fordul elő, ha az üzemelő példány egy webes/feldolgozói szerepkört tartalmaz. Mivel a migrálás csak a Virtual Machines esetében támogatott, távolítsa el a webes/feldolgozói szerepkört az üzemelő példányból, és próbálkozzon újra a migrálással. |
-| A {sablonnév} sablon üzembe helyezése meghiúsult. CorrelationId={guid} |A migrálási szolgáltatás hátterében Azure Resource Manager-sablonok használatával hozunk létre erőforrásokat az Azure Resource Manager veremben. Mivel a sablonok idempotensek, ezért általában a migrálási művelet ismételt végrehajtásával biztonságosan megkerülheti ezt a hibát. Ha a hiba továbbra is fennáll, [forduljon az Azure ügyfélszolgálatához](../articles/azure-supportability/how-to-create-azure-support-request.md), és adja meg számokra a CorrelationId azonosítót. <br><br> **MEGJEGYZÉS:** Miután a támogatási csapat azonosította a hibát, ne próbálkozzon további javító intézkedésekkel, mivel azoknak nem várt következményei lehetnek a környezetben. |
+| A {sablonnév} sablon üzembe helyezése meghiúsult. CorrelationId={guid} |A migrálási szolgáltatás hátterében Azure Resource Manager-sablonok használatával hozunk létre erőforrásokat az Azure Resource Manager veremben. Mivel a sablonok idempotensek, ezért általában a migrálási művelet ismételt végrehajtásával biztonságosan megkerülheti ezt a hibát. Ha a hiba továbbra is fennáll, [forduljon az Azure ügyfélszolgálatához](../articles/azure-portal/supportability/how-to-create-azure-support-request.md), és adja meg számokra a CorrelationId azonosítót. <br><br> **MEGJEGYZÉS:** Miután a támogatási csapat azonosította a hibát, ne próbálkozzon további javító intézkedésekkel, mivel azoknak nem várt következményei lehetnek a környezetben. |
 | A {virtuális hálózat neve} virtuális hálózat nem létezik. |Ez akkor fordulat elő, ha a Virtual Network hálózatot az új Azure Portalon hozta létre. A tényleges Virtual Network neve a következő mintát követi: "csoport * \<VNET neve >" |
 | Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a {bővítmény neve} bővítményt, amely az Azure Resource Managerben nem támogatott. Javasolt a virtuális gépről eltávolítani a bővítményt, mielőtt folytatná a migrálást. |XML-bővítmények, például BGInfo 1. a\* Azure Resource Manager nem támogatottak. Ezért az ilyen bővítmények nem migrálhatók. Ha az ilyen bővítmények telepítve maradnak a virtuális gépen, a rendszer automatikusan eltávolítja azokat a migrálás befejezése előtt. |
 | Az {üzemeltetett szolgáltatás neve} üzemeltetett szolgáltatás {virtuális gép neve} virtuális gépe tartalmazza a VMSnapshot/VMSnapshotLinux bővítményt, amely jelenleg a migrálási szolgáltatásban nem támogatott. Távolítsa el a bővítményt a virtuális gépről, majd a migrálás befejezése után adja újra hozzá az Azure Resource Manager használatával |Ez az a forgatókönyv, amelyikben a virtuális gép konfigurálva van az Azure Backup szolgáltatáshoz. Mivel ez jelenleg nem támogatott forgatókönyv, kövesse a megkerülő megoldást https://aka.ms/vmbackupmigration |
@@ -169,7 +169,7 @@ $vm = Get-AzVM -ResourceGroupName "MyRG" -Name "MyVM"
 Remove-AzVMSecret -VM $vm
 Update-AzVM -ResourceGroupName "MyRG" -VM $vm
 ```
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 
 ```bash
 az vm update -g "myrg" -n "myvm" --set osProfile.Secrets=[]

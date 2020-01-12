@@ -1,18 +1,18 @@
 ---
 title: Azure-beli virtuális gépek replikálásának hibája Azure Site Recovery
 description: Hibák elhárítása az Azure-beli virtuális gépek vész-helyreállításra való replikálásakor.
-author: asgang
+author: rochakm
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 04/08/2019
-ms.author: asgangal
-ms.openlocfilehash: efa05f5769bcd174992a7a91a522c5f30ce6e448
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: rochakm
+ms.openlocfilehash: 3f97975f09d846cd3277bb8a53a4ad922f1b5b69
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895007"
+ms.locfileid: "75902550"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-replication-errors"></a>Az Azure-ról az Azure-ba irányuló virtuális gépek replikációs hibáinak elhárítása
 
@@ -66,7 +66,7 @@ További információ: [megbízható gyökerek és nem engedélyezett tanúsítv
 
 Kövesse a Linux operációs rendszer verziójának forgalmazója által biztosított útmutatást a legújabb megbízható főtanúsítványok és a tanúsítvány-visszavonási lista a virtuális gépen való lekéréséhez.
 
-Mivel a SuSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a tanúsítványok listájának karbantartásához, kövesse az alábbi lépéseket:
+Mivel a SUSE Linux szimbolikus hivatkozásokat (vagy *symlinkeket*) használ a tanúsítványok listájának karbantartásához, kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be root felhasználóként.
 

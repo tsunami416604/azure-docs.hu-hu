@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/07/2019
 ms.author: allensu
-ms.openlocfilehash: e7ddb548d8dad5bdcc3021941877903377af9318
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9e585f7d13e1686f125055056fd1e2d88e2bf8ff
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771478"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903335"
 ---
 # <a name="standard-load-balancer-and-availability-zones"></a>A Standard Load Balancer és a rendelkezésre állási zónák
 
@@ -209,10 +209,6 @@ A redundáns zóna egyszerűvé teheti az egyszerűséget, és a szolgáltatásh
 A zónák explicit módon biztosítanak egy zónát, explicit módon megosztják a sorsot a zóna állapotával. Egy Load Balancer szabály létrehozása egy zónákra épülő IP-cím vagy a többhelyes belső Load Balancer előtérben lehet kívánatos, különösen, ha a csatlakoztatott erőforrás egy azonos zónában található, egy régióban lévő virtuális gép.  Vagy lehet, hogy az alkalmazásnak explicit módon kell megismernie, hogy az adott erőforrás melyik zónában van, és a kifejezetten külön zónákban lévő rendelkezésre állást kívánja indokolni.  Dönthet úgy, hogy több, zónákra osztott, végpontok közötti szolgáltatás számára elérhetővé teheti a többzónás felületet (ez a zóna zónákhoz tartozó, több Zona virtuálisgép-méretezési csoportokra vonatkozóan).  Ha pedig a zóna-előtérben nyilvános IP-címek vannak, akkor használhatja ezeket a több zóna-előtérbeli felületet a szolgáltatás [Traffic Manager](../traffic-manager/traffic-manager-overview.md)való kimutatása érdekében.  Vagy több, a zóna számára elérhetővé tett felületi felületet is használhat, amelyek külső figyelési megoldásokon keresztül érhetik el a zónák állapotát A zónákhoz csak az ugyanahhoz a zónához igazított, zónákra kiterjedő előtér-erőforrásokat kell kiszolgálni, és el kell kerülnie a zónákon belüli erőforrások potenciálisan káros, több zóna közötti forgatókönyveit.  Csak a rendelkezésre állási zónákat tartalmazó régiókban találhatók a zónákhoz tartozó erőforrások.
 
 Nincs általános útmutatás arra, hogy az egyik a szolgáltatás architektúrájának ismerete nélkül jobb választás.  Tekintse át az [Azure Cloud design-mintákat](https://docs.microsoft.com/azure/architecture/patterns/) az alkalmazás meghibásodási forgatókönyvek rugalmasságának javítása érdekében.
-
-## <a name="limitations"></a>Korlátozások
-
-- Míg az adatsík teljesen redundáns zónában van (kivéve, ha meg van adva a zónákhoz való hozzáférés), a vezérlési sík műveletei nem teljesen redundáns zónában vannak.
 
 ## <a name="next-steps"></a>Következő lépések
 - További információ a [Availability Zones](../availability-zones/az-overview.md)

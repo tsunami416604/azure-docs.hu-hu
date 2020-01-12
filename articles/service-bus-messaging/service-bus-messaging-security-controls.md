@@ -7,12 +7,12 @@ author: spelluru
 ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: spelluru
-ms.openlocfilehash: d0118f815a2ceb149c62363fa334c16d28c6d615
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: af119ef026b70fcb4a56b4f823d20c0e9eddddc8
+ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74894401"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75903250"
 ---
 # <a name="security-controls-for-azure-service-bus-messaging"></a>Azure Service Bus üzenetkezelés biztonsági vezérlői
 
@@ -49,7 +49,7 @@ Ez a cikk a Azure Service Bus Üzenetkezelésbe beépített biztonsági vezérl�
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
 |---|---|--|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok |  Igen, alapértelmezés szerint a kiszolgálóoldali titkosításhoz. |  |  |
-| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. Jelenleg előzetes verzióban érhető el | Az Azure kulcstartóban lévő ügyfél által felügyelt kulcs segítségével titkosíthatja a Service Bus névtérben tárolt adatok inaktív állapotban lévő adattitkosítását. | [Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal (előzetes verzió) használatával](configure-customer-managed-key.md)  |
+| Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen. | Az Azure kulcstartóban lévő ügyfél által felügyelt kulcs segítségével titkosíthatja a Service Bus névtérben tárolt adatok inaktív állapotban lévő adattitkosítását. | [Ügyfél által felügyelt kulcsok konfigurálása a Azure Service Bus adatok titkosításához a Azure Portal használatával](configure-customer-managed-key.md)  |
 | Oszlop szintű titkosítás (Azure Data Services)| – | |   |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Támogatja a szabványos HTTPS/TLS-mechanizmust. |   |
 | Titkosított API-hívások| Igen | Az API-hívások [Azure Resource Manager](../azure-resource-manager/index.yml) és HTTPS protokollon keresztül történnek. |   |

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/11/2019
 ms.author: cynthn;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 9b08dd60020dad6f747167f35e8d172fdc24a59e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9637265d263a75949d5a70c3e4f0ce06044d93c
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75752195"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75901930"
 ---
 A GPU-ra optimalizált virtuálisgép-méretek olyan speciális virtuális gépek, amelyek egy vagy több NVIDIA GPU-val érhetők el. Ezek a méretek nagy számítási igényű, grafikus igényű és vizualizációs munkaterhelésekhez készültek. Ez a cikk a GPU-k, a vCPU, az adatlemezek és a hálózati adapterek számáról és típusáról nyújt információt. A rendszer a tároló átviteli sebességét és a hálózati sávszélességet is tartalmazza a csoportosítás minden egyes méretéhez.
 
@@ -56,7 +56,7 @@ Az NCv2 sorozatú virtuális gépeket [NVIDIA Tesla P100](https://www.nvidia.com
 A NC24rs v2-konfiguráció alacsony késleltetésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz.
 
 > [!IMPORTANT]
-> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
 | Méret | vCPU | Memória: GiB | Temp Storage (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma |
@@ -79,7 +79,7 @@ Premium Storage gyorsítótárazás: támogatott
 Az NCv3 sorozatú virtuális gépeket [NVIDIA Tesla V100](https://www.nvidia.com/en-us/data-center/tesla-v100/) GPU-k működtetik. Ezek a GPU-k 1,5 x-t biztosítanak a NCv2 sorozat számítási teljesítményéhez. Az ügyfelek igénybe vehetik a frissített GPU-ket a hagyományos HPC-számítási feladatokhoz, mint például a tározó modellezése, a DNS-szekvencia, a protein-elemzés, a Monte Carlo-szimulációk és egyebek. Az NC24rs v3 konfiguráció alacsony késésű, nagy átviteli sebességű hálózati adaptert biztosít a szorosan összekapcsolt párhuzamos számítási feladatokhoz. A GPU-k mellett az Intel Xeon E5-2690 v4 (Broadwell) processzorok is a NCv3 sorozatú virtuális gépeket használják.
 
 > [!IMPORTANT]
-> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó vCPU (mag) kvóta kezdetben az egyes régiókban 0 értékre van állítva. [VCPU-kvóta növelésének kérése](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
 | Méret | vCPU | Memória: GiB | Temp Storage (SSD): GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma |
@@ -131,7 +131,7 @@ Premium Storage gyorsítótárazás: támogatott
 Az ND sorozatú Virtual Machines az AI-hoz készült GPU-család, valamint a Deep learning számítási feladatainak egy új kiegészítése. Kiváló teljesítményt nyújtanak a képzéshez és a következtetésekhez. Az ND-példányokat az [NVIDIA Tesla P40](https://images.nvidia.com/content/pdf/tesla/184427-Tesla-P40-Datasheet-NV-Final-Letter-Web.pdf) GPU-k és az Intel Xeon E5-2690 v4 (Broadwell) processzorok működtetik. Ezek a példányok kiváló teljesítményt biztosítanak az egyszeres pontosságú lebegőpontos műveletekhez, a Microsoft Cognitive Toolkit, TensorFlow, Cafe és más keretrendszereket használó AI-munkaterhelésekhez. Az ND sorozat jóval nagyobb GPU-memóriával rendelkezik (24 GB), így jelentősen nagyobb neurálishálózat-modellekhez is alkalmazható. Az NC sorozathoz hasonlóan az ND sorozat egy olyan konfigurációt kínál, amely egy másodlagos, kis késleltetésű, nagy átviteli sebességű hálózattal rendelkezik a RDMA-on keresztül, és InfiniBand a kapcsolatot, így nagy léptékű, több GPU-ra kiterjedő képzési feladatokat is futtathat.
 
 > [!IMPORTANT]
-> Ennél a méretnél az előfizetéshez tartozó régiónként az vCPU (Core) kvóta beállítása kezdetben 0. [VCPU-kvóta növelésének kérése](../articles/azure-supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
+> Ennél a méretnél az előfizetéshez tartozó régiónként az vCPU (Core) kvóta beállítása kezdetben 0. [VCPU-kvóta növelésének kérése](../articles/azure-portal/supportability/resource-manager-core-quotas-request.md) a család számára egy [elérhető régióban](https://azure.microsoft.com/regions/services/).
 >
 
 | Méret | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | GPU | GPU memória: GiB | Adatlemezek max. száma | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma |
