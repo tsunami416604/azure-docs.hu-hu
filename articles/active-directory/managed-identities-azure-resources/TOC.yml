@@ -20,8 +20,6 @@
           href: tutorial-windows-vm-access-datalake.md
         - name: Az Azure Storage elérése
           href: tutorial-vm-windows-access-storage.md
-        - name: Az Azure Storage elérése hozzáférési kulcs használatával
-          href: tutorial-windows-vm-access-storage.md
         - name: Az Azure SQL elérése
           href: tutorial-windows-vm-access-sql.md
         - name: Az Azure Key Vault elérése
