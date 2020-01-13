@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 12/18/2018
 ms.reviewer: yalavi
-ms.openlocfilehash: 1eebb41c83071f34cf367826a21c4bfbf0189394
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c556f726cd63971abe1e9b6d8b87117bb3e378db
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749000"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912840"
 ---
 # <a name="smart-detection---failure-anomalies"></a>Intelligens észlelés – hibák rendellenességei
 [Application Insights](../../azure-monitor/app/app-insights-overview.md) automatikusan riasztást küld a közel valós időben, ha a webalkalmazása rendellenes növekedést tapasztal a sikertelen kérések arányában. Ez a művelet szokatlanul megnövekszik a HTTP-kérelmek vagy a sikertelenként jelentett függőségi hívások gyakorisága. A kérelmek esetében a sikertelen kérelmek általában 400-as vagy magasabb szintű hibakódokkal rendelkeznek. A probléma osztályozásának és diagnosztizálásának elősegítése érdekében a riasztás részleteiben a hibák és a kapcsolódó alkalmazásadatok jellemzőinek elemzése szerepel. További diagnosztizálásra a Application Insights portálra mutató hivatkozások is rendelkezésre állnak. A szolgáltatásnak nincs szüksége beállításra és konfigurációra, mivel gépi tanulási algoritmusokat használ a normál meghibásodási arány előrejelzéséhez.
@@ -48,13 +48,11 @@ Az elemzések indításakor a szolgáltatás a sikertelen kérelemhez tartozó f
 
 A fenti példában az elemzés felderítette, hogy a legtöbb hiba egy adott eredmény kódjára, a kérelem nevére, a kiszolgáló URL-címére és a szerepkör-példányra vonatkozik. 
 
-Ezzel szemben az elemzés azt észlelte, hogy az ügyfél operációs rendszerének tulajdonsága több érték között van elosztva, ezért nem szerepel a listáján.
-
 Ha a szolgáltatás ezekkel a hívásokkal van kialakítva, az elemző kivételt és függőségi hibát keres az általa azonosított fürt kéréseivel kapcsolatban, valamint egy példát a kérelmekhez társított nyomkövetési naplókra.
 
 Az eredményül kapott elemzést riasztásként küldi el a rendszer, ha nem konfigurálta.
 
-A [manuálisan beállított riasztásokhoz](../../azure-monitor/app/alerts.md)hasonlóan ellenőrizheti a riasztás állapotát, és konfigurálhatja a Application Insights erőforrás riasztások lapján. Más riasztásokkal ellentétben azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja vagy módosíthatja a cél e-mail-címeit.
+A [manuálisan beállított riasztásokhoz](../../azure-monitor/app/alerts.md)hasonlóan megtekintheti a kilőtt riasztás állapotát, amely feloldható, ha a probléma kijavítva van. Adja meg a riasztási szabályokat a Application Insights erőforrás riasztások lapján. Más riasztásokkal ellentétben azonban nem kell beállítania vagy konfigurálnia az intelligens észlelést. Ha szeretné, letilthatja vagy módosíthatja a cél e-mail-címeit.
 
 ### <a name="alert-logic-details"></a>Riasztási logika részletei
 
@@ -63,6 +61,7 @@ A riasztásokat a szabadalmaztatott gépi tanulási algoritmus váltja ki, így 
 * A kérelmek/függőségek sikertelen százalékos arányának elemzése 20 percen belül egy gördülő időablakban.
 * Az elmúlt 20 perc hibájának az elmúlt 40 percben és az elmúlt hét napban való összehasonlítása, valamint olyan jelentős eltérések keresése, amelyek meghaladják a szórást.
 * A minimális meghibásodási arányra vonatkozó adaptív korlát használata, amely az alkalmazás kérelmek/függőségek mennyisége alapján változik.
+* Létezik olyan logika, amely képes automatikusan feloldani a kilőtt riasztások figyelő feltételét, ha a probléma már nem észlelhető 8-24 órán keresztül.
 
 ## <a name="configure-alerts"></a>Riasztások konfigurálása
 
@@ -83,7 +82,7 @@ A beállításhoz kattintson a riasztásra.
 
 [![](./media/proactive-failure-diagnostics/032.png "Rule configuration screen")](./media/proactive-failure-diagnostics/032.png#lightbox)
 
-Figyelje meg, hogy letilthatja az intelligens észlelést, de nem törölheti (vagy létrehozhat egy újat).
+Figyelje meg, hogy letilthatja vagy törölheti a hiba rendellenességét jelző riasztási szabályt, de nem hozhat létre egy másikat ugyanazon a Application Insights erőforráson.
 
 ## <a name="example-of-failure-anomalies-alert-webhook-payload"></a>Hiba – példa a riasztások webhook-adatforgalmára
 

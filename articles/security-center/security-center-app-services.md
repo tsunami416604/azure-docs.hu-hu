@@ -10,12 +10,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 01/27/2019
 ms.author: memildin
-ms.openlocfilehash: be9331ccd548628bfc27172c4f6e625bdba1632c
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 81ef598c846d98548be2d3e7647166d655398921
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74158929"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912815"
 ---
 # <a name="protect-your-azure-app-service-web-apps-and-apis"></a>A Azure App Service webalkalmazások és API-k elleni védelem
 
@@ -29,7 +29,7 @@ A Azure App Service-csomag komplex veszélyforrások elleni védelmének engedé
 
 Ha a App Servicei terv engedélyezve van, Security Center értékeli a App Service-csomag által érintett erőforrásokat, és a megállapításai alapján biztonsági javaslatokat hoz létre. Security Center védi a virtuális gép azon példányát, amelyben a App Service fut, és a felügyeleti felületet. Emellett figyeli a App Service-ban futó alkalmazásaitól érkező és onnan érkező kérelmeket és válaszokat.
 
-A Security Center kihasználja a felhő méretezését, és azt, hogy az Azure hogyan rendelkezik felhőalapú szolgáltatóként, hogy figyelje a gyakori webalkalmazás-támadásokat. A Security Center képes észlelni az alkalmazásai támadásait, és azonosítani a feltörekvő támadásokat – még a felderítési fázisban is, miközben a támadók a biztonsági réseket több Azure által üzemeltetett alkalmazásban azonosítják. Az Azure-natív szolgáltatásként a Security Center egy egyedi pozícióban is elérhető, amely lehetővé teszi, hogy a gazdagépen alapuló biztonsági elemzések is elérhetők legyenek, amelyek a kihasználatlan számítási csomópontokra vonatkoznak, így Security Center a már kiaknázott webalkalmazások elleni támadások észlelésére.
+A Security Center kihasználja a felhő méretezését, és azt, hogy az Azure hogyan rendelkezik felhőalapú szolgáltatóként, hogy figyelje a gyakori webalkalmazás-támadásokat. A Security Center képes észlelni az alkalmazásai támadásait, és azonosítani a feltörekvő támadásokat – még a felderítési fázisban is, miközben a támadók a biztonsági réseket több Azure által üzemeltetett alkalmazásban azonosítják. Az Azure-natív szolgáltatásként a Security Center egy egyedi pozícióban is elérhető, amely lehetővé teszi, hogy a gazdagépen alapuló biztonsági elemzések is elérhetők legyenek, amelyek a kihasználatlan számítási csomópontokra vonatkoznak, így Security Center a már kiaknázott webalkalmazások elleni támadások észlelésére. A Security Center veszélyforrások észlelésével kapcsolatos riasztásokról a Azure App Serviceről a [fenyegetések észlelése a Felhőbeli natív számítástechnika](security-center-alerts-compute.md#azure-app-service-)esetében című témakörben talál további információt.
 
 
 ## <a name="enabling-monitoring-and-protection-of-app-service"></a>A App Service monitorozásának és védelmének engedélyezése
@@ -57,7 +57,7 @@ Ha le szeretné tiltani a App Service figyelését és javaslatait, ismételje m
 
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 Ebben a cikkben megismerkedhetett az Azure Security Center figyelési funkcióinak használatával. Ha többet szeretne megtudni a Azure Security Centerről, tekintse meg a következő cikkeket:
 
 * [Biztonsági szabályzatok beállítása az Azure Security Centerben](tutorial-security-policy.md): Ez a cikk bemutatja, hogyan konfigurálhat biztonsági beállításokat az Azure Security Centerben.

@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: 61a8cf366d5ae03f5267718f8ab20580295ddab5
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 473f1d12188a8686748d19c8c35d4421f9477ae9
+ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75903447"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75912799"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -80,7 +80,7 @@ Csak az időalapú adatmegőrzési szabályzatok rendelkeznek olyan `allowProtec
 
 Mivel ez a beállítás egy időalapú adatmegőrzési szabályzat részét képezi, a hozzáfűző Blobok továbbra is megváltoztathatatlan állapotban maradnak a *hatályos* megőrzési időtartam alatt. Mivel az új adatok hozzáfűzhető a hozzáfűző blob kezdeti létrehozása után, némi különbség van a megőrzési időszak meghatározásakor. A tényleges megőrzés a blob **utolsó módosításának** és a felhasználó által megadott megőrzési időtartamnak a különbsége. Hasonlóképpen, ha a megőrzési időtartam ki van bővítve, a nem módosítható tároló a felhasználó által megadott megőrzési időtartam legutóbbi értékét használja a tényleges megőrzési időtartam kiszámításához.
 
-Tegyük fel például, hogy egy felhasználó időalapú adatmegőrzési szabályzatot hoz létre `allowProtectedAppendWrites` engedélyezve és 90 napos megőrzési időtartammal. A tárolóban a _logblob1_-ben létrehozott hozzáfűző Blobok még ma is létrejönnek, az új naplók továbbra is a következő 10 napra lesznek hozzáadva a hozzáfűzési blobhoz; így a _logblob1_ érvényes megőrzési ideje 100 nap a mai naptól számítva (az utolsó módosítás/Hozzáfűzés időpontja).
+Tegyük fel például, hogy egy felhasználó időalapú adatmegőrzési szabályzatot hoz létre `allowProtectedAppendWrites` engedélyezve és 90 napos megőrzési időtartammal. A tárolóban a _logblob1_-ben létrehozott hozzáfűző Blobok még ma is létrejönnek, az új naplók továbbra is a következő 10 napra lesznek hozzáadva a hozzáfűzési blobhoz; így a _logblob1_ érvényes megőrzési ideje 100 nap a mai naptól számítva (az utolsó hozzáfűzés + 90 nap időpontjában).
 
 A zárolt időalapú adatmegőrzési házirendek lehetővé teszik a `allowProtectedAppendWrites` beállítás engedélyezését és letiltását. Az időalapú adatmegőrzési szabály zárolása után a `allowProtectedAppendWrites` beállítás nem módosítható.
 
