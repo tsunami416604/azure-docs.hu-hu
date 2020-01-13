@@ -5,17 +5,17 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 9ec3a6b39a857f888514b0a3872ae411e1819f3a
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
-ms.translationtype: HT
+ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671826"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422136"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan alkalmazásokat, amelyekben a [Azure app Service](https://azure.microsoft.com/services/app-service/) egy egységként, a [JSON-erőforráscsoportok](https://en.wikipedia.org/wiki/Microservices) és a PowerShell-parancsfájlok használatával kiszámítható módon használható. 
 
-A nagy teljesítményű, nagymértékben leválasztott szolgáltatásokból álló alkalmazások kiépítése és üzembe helyezése, valamint az ismételhetőség és a kiszámíthatóság kulcsfontosságú a siker szempontjából. A [Azure app Service](https://azure.microsoft.com/services/app-service/) lehetővé teszi, hogy webalkalmazásokat, mobil-és API-alkalmazásokat is tartalmazó-szolgáltatásokat hozzon létre. A [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md) lehetővé teszi, hogy az összes szolgáltatást egységként kezelje, valamint az erőforrás-függőségeket, például az adatbázis-és a verziókövetés beállításait. Mostantól a JSON-sablonokkal és az egyszerű PowerShell-parancsfájlokkal is üzembe helyezhet egy ilyen alkalmazást. 
+A nagy teljesítményű, nagymértékben leválasztott szolgáltatásokból álló alkalmazások kiépítése és üzembe helyezése, valamint az ismételhetőség és a kiszámíthatóság kulcsfontosságú a siker szempontjából. A [Azure app Service](https://azure.microsoft.com/services/app-service/) lehetővé teszi, hogy webalkalmazásokat, mobil-és API-alkalmazásokat is tartalmazó-szolgáltatásokat hozzon létre. A [Azure Resource Manager](../azure-resource-manager/management/overview.md) lehetővé teszi, hogy az összes szolgáltatást egységként kezelje, valamint az erőforrás-függőségeket, például az adatbázis-és a verziókövetés beállításait. Mostantól a JSON-sablonokkal és az egyszerű PowerShell-parancsfájlokkal is üzembe helyezhet egy ilyen alkalmazást. 
 
 ## <a name="what-you-will-do"></a>Mit fog tenni?
 Az oktatóanyagban egy olyan alkalmazást fog telepíteni, amely a következőket tartalmazza:
@@ -29,7 +29,7 @@ Az oktatóanyagban egy olyan alkalmazást fog telepíteni, amely a következőke
 Ebben az oktatóanyagban az alábbi eszközöket fogja használni. Mivel az eszközök nem teljes körű vitát végeznek, a végpontok közötti forgatókönyvre fogok ragaszkodni, és csak egy rövid bevezetőt adunk hozzá, ahol további információkat talál. 
 
 ### <a name="azure-resource-manager-templates-json"></a>Azure Resource Manager sablonok (JSON)
-Minden alkalommal, amikor létrehoz egy alkalmazást a Azure App Serviceban, például Azure Resource Manager JSON-sablonnal hozza létre a teljes erőforráscsoportot az összetevő-erőforrásokkal. Az [Azure Marketplace](/azure/marketplace) -en található összetett sablon magában foglalhatja az adatbázist, a Storage-fiókokat, a app Service tervet, az alkalmazást, a riasztási szabályokat, az Alkalmazásbeállítások, az automatikusan méretezhető beállításokat és egyebeket, és az összes ilyen sablon elérhető a PowerShell használatával. A Azure Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
+Minden alkalommal, amikor létrehoz egy alkalmazást a Azure App Serviceban, például Azure Resource Manager JSON-sablonnal hozza létre a teljes erőforráscsoportot az összetevő-erőforrásokkal. Az [Azure Marketplace](/azure/marketplace) -en található összetett sablon magában foglalhatja az adatbázist, a Storage-fiókokat, a app Service tervet, az alkalmazást, a riasztási szabályokat, az Alkalmazásbeállítások, az automatikusan méretezhető beállításokat és egyebeket, és az összes ilyen sablon elérhető a PowerShell használatával. A Azure Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
 
 ### <a name="azure-sdk-26-for-visual-studio"></a>A Visual studióhoz készült Azure SDK 2,6
 A legújabb SDK a JSON-szerkesztőben a Resource Manager-sablon támogatásának újdonságait tartalmazza. Ezzel gyorsan létrehozhat egy erőforráscsoport-sablont a semmiből, vagy megnyithat egy meglévő JSON-sablont (például egy letöltött katalógus-sablont) a módosításhoz, feltöltheti a paramétereket tartalmazó fájlt, és akár közvetlenül is üzembe helyezheti az erőforráscsoportot egy Azure-erőforrásból. Csoportos megoldás.
@@ -117,14 +117,13 @@ Vegye figyelembe a következőket a Kiemelt JSON-kóddal kapcsolatban:
 * A `“resources”: […]`belsejében lévő beágyazott erőforrások, amelyekben az adatbázis és a tűzfalszabályok meg vannak határozva, `dependsOn` elemmel rendelkeznek, amely megadja a gyökérszintű SQLServer erőforrás-AZONOSÍTÓját. Ez azt mondja Azure Resource Manager, "az erőforrás létrehozása előtt, hogy a másik erőforrásnak már léteznie kell; Ha más erőforrás van definiálva a sablonban, akkor hozzon létre egyet.
   
   > [!NOTE]
-  > Az `resourceId()` függvény használatáról az [Azure Resource Manager template functions](../azure-resource-manager/resource-group-template-functions-resource.md#resourceid)című témakörben olvashat bővebben.
+  > Az `resourceId()` függvény használatáról az [Azure Resource Manager template functions](../azure-resource-manager/templates/template-functions-resource.md#resourceid)című témakörben olvashat bővebben.
   > 
   > 
 * A `dependsOn` elem hatása, hogy Azure Resource Manager tudja, hogy mely erőforrások hozhatók létre párhuzamosan, és hogy mely erőforrásokat kell egymás után létrehozni. 
 
 #### <a name="app-service-app"></a>App Service-alkalmazás
-Most térjünk át a tényleges alkalmazásokra, amelyek bonyolultabbak. A JSON-vázlatban kattintson a [változók (' apiSiteName ')] alkalmazásra a JSON-kód kiemeléséhez.
- Megfigyelheti, hogy a dolgok sokkal érdekesebbek. Erre a célra az alábbi funkciókkal fogunk beszélni:
+Most térjünk át a tényleges alkalmazásokra, amelyek bonyolultabbak. A JSON-vázlatban kattintson a [változók (' apiSiteName ')]] alkalmazásra a JSON-kód kiemeléséhez. Megfigyelheti, hogy a dolgok sokkal érdekesebbek. Erre a célra az alábbi funkciókkal fogunk beszélni:
 
 ##### <a name="root-resource"></a>Gyökérszintű erőforrás
 Az alkalmazás két különböző erőforrástól függ. Ez azt jelenti, hogy a Azure Resource Manager csak akkor hozza létre az alkalmazást, ha a App Service tervet és a SQL Server példányt is létrehozták.
@@ -221,7 +220,7 @@ Az **üzembe helyezés az Azure** -ban gomb nagyszerű, de lehetővé teszi, hog
     Most már szerkesztheti a sablonban definiált összes paramétert egy szép táblázatban. Az alapértelmezett értékeket meghatározó paraméterek már rendelkeznek alapértelmezett értékekkel, és az engedélyezett értékek listáját meghatározó paraméterek legördülő listaként jelennek meg.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-10-parametereditor.png)
-15. Töltse ki az összes üres paramétert, és használja a GitHub-tárházat a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) a **repouring**szolgáltatásban. Ezután kattintson a **Mentés**gombra.
+15. Töltse ki az összes üres paramétert, és használja a GitHub-tárházat a [ToDoApp](https://github.com/azure-appservice-samples/ToDoApp.git) a **repouring**szolgáltatásban. Ezután kattintson a **Mentés** gombra.
     
     ![](./media/app-service-deploy-complex-application-predictably/deploy-11-parametereditorfilled.png)
     
@@ -251,8 +250,8 @@ A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely e
 <a name="resources"></a>
 
 ## <a name="more-resources"></a>További források
-* [Azure Resource Manager sablon nyelve](../azure-resource-manager/resource-group-authoring-templates.md)
-* [Azure Resource Manager sablonok készítése](../azure-resource-manager/resource-group-authoring-templates.md)
+* [Azure Resource Manager sablon nyelve](../azure-resource-manager/templates/template-syntax.md)
+* [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager sablon függvények](../azure-resource-manager/resource-group-template-functions.md)
 * [Alkalmazás üzembe helyezése Azure Resource Manager sablonnal](../azure-resource-manager/resource-group-template-deploy.md)
 * [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)

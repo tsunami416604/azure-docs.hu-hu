@@ -11,12 +11,12 @@ ms.date: 07/17/2019
 ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f58623ec179965c8f8f165805cb181f8c102e746
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: a2adc2acdb9c1d850bb12833540ed8da51701e58
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74132365"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75370136"
 ---
 # <a name="tutorial-load-data-to-azure-sql-data-warehouse"></a>Oktatóanyag: Adatok betöltése az Azure SQL Data Warehouse-ba
 
@@ -35,23 +35,23 @@ Ez az oktatóanyag a PolyBase segítségével tölti be a WideWorldImportersDW a
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Az oktatóanyag megkezdése előtt töltse le és telepítse az [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS) legújabb verzióját.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-blank-sql-data-warehouse"></a>Üres SQL Data Warehouse létrehozása
 
-Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-features.md) jön létre. 
 
 Az alábbi lépéseket követve hozzon létre egy üres SQL Data Warehouse. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új**oldal**Kiemelt**területén válassza az**SQL Data Warehouse** lehetőséget.
 
     ![adattárház létrehozása](media/load-data-wideworldimportersdw/create-empty-data-warehouse.png)
 
@@ -120,7 +120,7 @@ Az SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szi
 
 4.  Az aktuális IP-címét az eszköztár **Ügyfél IP-címének hozzáadása** elemére kattintva veheti fel egy új tűzfalszabályba. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
-5. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+5. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
 
 6. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -133,7 +133,7 @@ Mostantól csatlakozhat az SQL-kiszolgálóhoz és annak adattárházaihoz errő
 
 Kérje le az SQL-kiszolgáló teljes kiszolgálónevét az Azure Portalon. Később ezt a teljes nevet fogja majd használni a kiszolgálóhoz való kapcsolódás során.
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Válassza az **SQL-adatbázisok** elemet a bal oldali menüben, majd kattintson az új adatbázisra az **SQL-adatbázisok** oldalon. 
 3. Az Azure Portalon az adatbázishoz tartozó lap **Alapvető erőforrások** ablaktábláján keresse meg, majd másolja ki a **Kiszolgáló nevét**. Ebben a példában a teljes név a következő: mynewserver-20171113.database.windows.net. 
 
@@ -151,9 +151,9 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
     | ------------ | --------------- | ----------- | 
     | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
     | Kiszolgálónév | A teljes kiszolgálónév | A **sample-svr.database.windows.net** például egy teljes kiszolgálónév. |
-    | Authentication | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
+    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
     | Bejelentkezés | A kiszolgálói rendszergazdafiók | Ezt a fiókot adta meg a kiszolgáló létrehozásakor. |
-    | Jelszó | A kiszolgálói rendszergazdafiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
+    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | Ez az a jelszó, amely a kiszolgáló létrehozásakor lett megadva. |
 
     ![kapcsolódás a kiszolgálóhoz](media/load-data-wideworldimportersdw/connect-to-server.png)
 
@@ -182,7 +182,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     CREATE USER LoaderRC60 FOR LOGIN LoaderRC60;
     ```
 
-3. Kattintson az **Execute** (Végrehajtás) parancsra.
+3. Kattintson a **Végrehajtás** parancsra.
 
 4. Kattintson a jobb gombbal a **SampleDW** elemre, majd válassza a **New Query** (Új lekérdezés) elemet. Megnyílik egy új lekérdezési ablak.  
 
@@ -196,7 +196,7 @@ Mivel jelenleg a kiszolgálói rendszergazdaként csatlakozik, létrehozhat beje
     EXEC sp_addrolemember 'staticrc60', 'LoaderRC60';
     ```
 
-6. Kattintson az **Execute** (Végrehajtás) parancsra.
+6. Kattintson a **Végrehajtás** parancsra.
 
 ## <a name="connect-to-the-server-as-the-loading-user"></a>Csatlakozás a kiszolgálóhoz a betöltést végző felhasználóként
 
@@ -1107,7 +1107,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 
 5. Az erőforráscsoport törléséhez kattintson a **SampleRG** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ennek az oktatóanyagnak a segítségével megtanulta, hogyan hozhat létre egy adattárházat, illetve egy felhasználót az adatok betöltéséhez. Külső táblákat hozott létre, hogy definiálhassa az Azure Storage-blobban tárolt adatok struktúráját, majd a PolyBase CREATE TABLE AS SELECT utasításával adatokat töltött be az adattárházába. 
 
 A következőket hajtotta végre:

@@ -9,28 +9,28 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: pabutler
-ms.openlocfilehash: 610673c548294f875ca70edb8ab26b1fdeb41cb6
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 8b2a24b6f2d7df92f1c8ea1b22432471aa432011
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838082"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75644902"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager – Tesztverzió
 
-Ez a cikk a kiadók, akik az ajánlatot az Azure piactéren, illetve akik az appsource-on rendelkezik, de létre szeretné hozni a Test Drive csak Azure-erőforrásokkal való szól.
+Ez a cikk azoknak a kiadóknak szól, akik rendelkeznek az Azure Marketplace-en, vagy akik a AppSource, de csak Azure-erőforrásokkal szeretnék felépíteni a tesztelési meghajtót.
 
 A Azure Resource Manager (Resource Manager) sablon az Azure-erőforrások olyan kódolt tárolója, amelyet a legjobban a megoldásához terveztek. Ha nem ismeri a Resource Manager-sablonokat, olvassa el a [Resource Manager-sablonok ismertetése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) és a [Resource Manager-sablonok készítése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authoring-templates) című témakört, amelyből megtudhatja, hogyan hozhat létre és tesztelheti saját sablonjait.
 
-Test Drive funkciója, hogy a megadott Resource Manager-sablon vesz igénybe, és lehetővé teszi egy erőforrás-csoportba a Resource Manager-sablon a szükséges összes erőforrást üzembe helyezése.
+Mi a tesztvezetés, hogy a megadott Resource Manager-sablont veszi át, és a Resource Manager-sablonból szükséges összes erőforrást egy erőforráscsoporthoz helyezi üzembe.
 
-Ha hozhat létre egy Azure Resource Manager Test Drive választja, a követelmények a következők meg:
+Ha úgy dönt, hogy létrehoz egy Azure Resource Manager tesztelési meghajtót, a követelmények a következők:
 
-- Összeállítását, tesztelését és majd töltse fel a teszt meghajtó Resource Manager-sablont.
-- Az összes szükséges metaadatokat és a Test Drive engedélyezéséhez beállításainak konfigurálása.
-- Tegye közzé újra az ajánlatot a Test Drive engedélyezve van.
+- Hozza létre, tesztelje, majd töltse fel a test Drive Resource Manager-sablont.
+- Konfigurálja az összes szükséges metaadatot és beállítást a tesztelési meghajtó engedélyezéséhez.
+- Az ajánlat ismételt közzététele engedélyezve van a test Drive szolgáltatásban.
 
-## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Hogyan hozhat létre egy Azure Resource Manager kipróbálása
+## <a name="how-to-build-an-azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó létrehozása
 
 A Azure Resource Manager tesztvezetés létrehozási folyamata:
 
@@ -44,27 +44,27 @@ A Azure Resource Manager tesztvezetés létrehozási folyamata:
     1. Milyen kimeneteket kapnak a felhasználói élmény.
 1. Közzététel, tesztelés és élő indítás.
 
-A legfontosabb eleme egy Azure Resource Manager Test Drive létrehozásával kapcsolatos, hogy megadhatja, milyen eset az ügyfelek tapasztalhat. Ön egy tűzfal terméket, és szeretné bemutató arról, hogy kezeli a parancsfájl-injektálási támadások? Azok a tárolási termék, és szeretné bemutató milyen gyors és egyszerű a megoldás akkor tömöríti a fájlokat?
+A Azure Resource Manager tesztvezetés létrehozásának legfontosabb része az ügyfelek által tapasztalható forgatókönyv (ek) meghatározása. Ön egy tűzfal termék, és szeretné bemutatni, milyen jól kezeli a parancsfájl-befecskendezéses támadásokat? Ön egy tárolási termék, és szeretné bemutatni, hogy a megoldás milyen gyorsan és egyszerűen tömöríti a fájlokat?
 
 Ügyeljen arra, hogy elegendő időt töltsön ki a termék megjelenítésének legjobb módjainak kiértékelésével. Kifejezetten az összes szükséges erőforrásra vonatkozóan, mivel a Resource Manager-sablon megfelelő csomagolását teszi lehetővé.
 
-A tűzfal példát folytatva, az architektúra lehet, hogy van szüksége egy nyilvános IP a szolgáltatás és egy másik nyilvános IP URL-címe a webhelyet, amelyet a tűzfal védi. Minden egyes IP üzembe helyezett virtuális gépen, és együtt egy hálózati biztonsági csoport és a hálózati adapter csatlakozik.
+A tűzfal példájának folytatásához az architektúra az lehet, hogy szüksége van egy nyilvános IP URL-címre a szolgáltatáshoz és egy másik nyilvános IP-címet a tűzfal által védett webhelyhez. Minden IP-cím egy virtuális gépen van telepítve, és egy hálózati biztonsági csoport + hálózati adapterrel van csatlakoztatva.
 
 Miután megtervezte a kívánt erőforrás-csomagot, most megjelenik a test Drive Resource Manager-sablon írása és létrehozása.
 
-## <a name="writing-test-drive-resource-manager-templates"></a>Írás a Test Drive Resource Manager-sablonok
+## <a name="writing-test-drive-resource-manager-templates"></a>A test Drive Resource Manager-sablonok írása
 
-Egy teljesen automatizált módban, és miatt, amely futtatja a test Drive központi telepítések, a Test Drive-sablonok az alábbiakban néhány korlátozás.
+A tesztvezetés teljesen automatizált módban futtatja az üzemelő példányokat, ezért a test Drive-sablonokhoz az alábbiakban ismertetett korlátozások vonatkoznak.
 
 ### <a name="parameters"></a>Paraméterek
 
-A legtöbb sablonok paraméterek készletével rendelkeznek. Paraméterek és így tovább definiálása erőforrásnevek, erőforrások méretek (például a storage-fiókok vagy virtuálisgép-méretek esetében), felhasználói neveket és jelszavakat, DNS-neveket. Megoldások az Azure portal használatával történő telepítésekor, manuálisan is feltölti ezeket a paramétereket, válasszon az elérhető DNS-nevét vagy a tárfiókok nevének, és így tovább.
+A legtöbb sablonhoz paraméterek vannak megadva. A paraméterek az erőforrásnevek, az erőforrások mérete (például a Storage-fiókok vagy a virtuális gépek méretei), a felhasználónevek és a jelszavak, a DNS-nevek és így tovább definiálják a paramétereket. Ha Azure Portal használatával telepít megoldásokat, manuálisan is feltöltheti ezeket a paramétereket, kiválaszthatja a rendelkezésre álló DNS-neveket vagy a Storage-fiókok nevét, és így tovább.
 
-![Az Azure Resource Manager-paramétereinek listáját](./media/azure-resource-manager-test-drive/param1.png)
+![A Azure Resource Manager paramétereinek listája](./media/azure-resource-manager-test-drive/param1.png)
 
-Azonban Test Drive módban működik egy teljesen automatikus, emberi beavatkozás nélkül, csak korlátozott számú paraméter kategóriák támogatja. Ha a Test Drive Resource Manager-sablon egyik paraméterének nem tartozik a támogatott kategóriák közül, meg kell **változó vagy állandó értéket cserélje le ezt a paramétert.**
+A test Drive azonban teljesen automatikus módban működik, emberi beavatkozás nélkül, így csak korlátozott számú paramétert támogat. Ha a test Drive Resource Manager-sablon egyik paramétere nem tartozik a támogatott kategóriák valamelyikébe, a **paramétert változó vagy konstans értékkel kell helyettesítenie.**
 
-Használhat bármilyen érvényes nevet a paramétereket, Test Drive paraméter kategória felismeri a metaadat-típusú érték. Ön **kell adnia minden sablonparaméterhez metaadattípus**, ellenkező esetben a sablon nem felel meg érvényesítési:
+Bármelyik érvényes nevet használhatja a paraméterekhez, a test Drive felismeri a paraméter kategóriáját a metaadat típusú érték használatával. **Minden sablon paraméterhez meg kell adni a metaadat-típust**, ellenkező esetben a sablon nem fogja átadni az ellenőrzést:
 
 ```json
 "parameters": {
@@ -79,20 +79,20 @@ Használhat bármilyen érvényes nevet a paramétereket, Test Drive paraméter 
 }
 ```
 
-Emellett az is fontos megjegyezni, hogy **minden paraméter megadása nem kötelező**, ha nem így\'t szeretné használni, megosztához\'t kell.
+Azt is fontos megjegyezni, hogy az **összes paraméter nem kötelező**, így ha nem\'t-t szeretne használni, nem\'t.
 
-### <a name="accepted-parameter-metadata-types"></a>Elfogadott paramétertípusok metaadatok
+### <a name="accepted-parameter-metadata-types"></a>Elfogadott paraméterek metaadatainak típusai
 
-| Metaadat típusa   | Paraméter típusa  | Leírás     | Mintaérték    |
+| Metaadat típusa   | Paraméter típusa  | Leírás     | Minta értéke    |
 |---|---|---|---|
-| **BaseUri**     | sztring          | Alap URI-t, a központi telepítési csomag| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
-| **felhasználónév**    | sztring          | Új véletlenszerű felhasználónevet.| admin68876      |
-| **jelszó**    | a biztonságos karakterláncot    | Új véletlenszerű jelszó | LP! ACS\^2kh     |
-| **A munkamenet-azonosító**   | sztring          | Egyedi Azonosítóját (GUID) Test Drive-munkamenet    | b8c8693e-5673-449c-badd-257a405a6dee |
+| **BaseUri**     | sztring          | A központi telepítési csomag alap URI-ja| https:\//\<\..\>. blob.core.windows.net/\<\..\> |
+| **username**    | sztring          | Új véletlenszerű Felhasználónév.| admin68876      |
+| **jelszó**    | biztonságos karakterlánc    | Új véletlenszerű jelszó | LP! ACS\^2kh     |
+| **munkamenet-azonosító**   | sztring          | Egyedi tesztelési meghajtó munkamenet-azonosítója (GUID)    | b8c8693e-5673-449c-badd-257a405a6dee |
 
 #### <a name="username"></a>felhasználónév
 
-Test Drive inicializálja ezt a paramétert egy **alap Uri** a központi telepítési csomag, így minden fájlhoz, a csomagba foglalt Uri létrehozásához is használhatja ezt a paramétert.
+A test Drive inicializálja ezt a paramétert a központi telepítési csomag **alapszintű URI-ja** használatával, így ezzel a paraméterrel a csomagban található bármely fájl URI-ját is létrehozhatja.
 
 ```json
 "parameters": {
@@ -108,7 +108,7 @@ Test Drive inicializálja ezt a paramétert egy **alap Uri** a központi telepí
 }
 ```
 
-A sablon belül a paraméter használatával hozhat létre egy URI-t minden fájlhoz, a Test Drive központi telepítési csomag. Az alábbi példa bemutatja, hogyan hozhat létre a társított sablon Uri:
+A sablonban ezt a paramétert használhatja bármely fájl URI-azonosítójának létrehozásához a test Drive-alapú központi telepítési csomagból. Az alábbi példa bemutatja, hogyan hozhat létre egy URI-t a csatolt sablonhoz:
 
 ```json
 "templateLink": {
@@ -119,7 +119,7 @@ A sablon belül a paraméter használatával hozhat létre egy URI-t minden fáj
 
 #### <a name="username"></a>felhasználónév
 
-Test Drive inicializálja ezt a paramétert, amely új véletlenszerű felhasználónévvel:
+A test Drive inicializálja ezt a paramétert egy új véletlenszerű felhasználónévvel:
 
 ```json
 "parameters": {
@@ -135,15 +135,15 @@ Test Drive inicializálja ezt a paramétert, amely új véletlenszerű felhaszn�
 }
 ```
 
-Mintaérték:
+Minta értéke:
 
     admin68876
 
-A megoldás véletlenszerű vagy állandó felhasználónevek is használhatja.
+A megoldáshoz véletlenszerű vagy állandó felhasználónevet is használhat.
 
 #### <a name="password"></a>jelszó
 
-Test Drive inicializálja a paraméternél adja meg az új véletlenszerű jelszó:
+A test Drive inicializálja ezt a paramétert egy új véletlenszerű jelszóval:
 
 ```json
 "parameters": {
@@ -159,15 +159,15 @@ Test Drive inicializálja a paraméternél adja meg az új véletlenszerű jelsz
 }
 ```
 
-Mintaérték:
+Minta értéke:
 
     Lp!ACS^2kh
 
-A megoldás állandó vagy véletlenszerű jelszavakat is használhatja.
+A megoldáshoz véletlenszerű vagy állandó jelszavakat is használhat.
 
-#### <a name="session-id"></a>A munkamenet-azonosító
+#### <a name="session-id"></a>munkamenet-azonosító
 
-Próbálja ki ezt a paramétert inicializálása jelölő Test Drive munkamenet-azonosító egy egyedi GUID:
+A test Drive inicializálja ezt a paramétert egy olyan egyedi GUID azonosítóval, amely a teszt meghajtó munkamenet-AZONOSÍTÓját jelképezi
 
 ```json
 "parameters": {
@@ -183,17 +183,17 @@ Próbálja ki ezt a paramétert inicializálása jelölő Test Drive munkamenet-
 }
 ```
 
-Mintaérték:
+Minta értéke:
 
     b8c8693e-5673-449c-badd-257a405a6dee
 
-Használhatja ezt a paramétert a Test Drive munkamenet egyedi azonosításához, ha szükséges.
+Ezzel a paraméterrel egyedileg azonosíthatja a tesztelési meghajtó munkamenetét, ha szükséges.
 
 ### <a name="unique-names"></a>Egyedi nevek
 
-Egyes Azure-erőforrások, például a storage-fiókok vagy DNS-nevek, globálisan egyedi nevek van szükség.
+Egyes Azure-erőforrások, például a Storage-fiókok vagy a DNS-nevek globálisan egyedi neveket igényelnek.
 
-Ez azt jelenti, hogy minden alkalommal, amikor a Test Drive üzembe helyezte a Resource Manager-sablon, létrehoz egy **egy egyedi nevet az új erőforráscsoport** összes annak\' erőforrásokat. Ezért azt kell használnia a [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) függvény és a változók nevében erőforráscsoporton azonosítókat létrehozni véletlenszerű egyedi értékeket:
+Ez azt jelenti, hogy minden alkalommal, amikor a test Drive telepíti a Resource Manager-sablont, létrehoz egy új erőforráscsoportot, amely minden\' erőforráshoz **egyedi névvel** rendelkezik. Ezért a [uniquestring](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-functions#uniquestring) függvényt kell használnia az erőforráscsoport-azonosítókban szereplő változók neveivel, hogy véletlenszerű egyedi értékeket állítson elő:
 
 ```json
 "variables": {
@@ -204,17 +204,17 @@ Ez azt jelenti, hogy minden alkalommal, amikor a Test Drive üzembe helyezte a R
 }
 ```
 
-Győződjön meg arról, hogy a paraméter vagy változó karakterlánc összefűzésére (\'contosovm\') és egy egyedi karakterlánc-kimenet (\'resourceGroup () .id\'), mert ez garantálja, hogy az egyedi-e, és a megbízhatóság az egyes.
+Ügyeljen arra, hogy a paraméter/változó sztringeket (\'contosovm\') egyedi karakterlánc-kimenettel (\'resourceGroup (). id\') fűzze össze, mivel ez garantálja az egyes változók egyediségét és megbízhatóságát.
 
-Például a legtöbb erőforrás neve nem kezdődhet számjeggyel, de egyedi karakterlánc függvény visszaadhat egy karakterláncot, amely egy számjegyet kezdődik. Tehát ha nyers egyedi karakterlánc kimeneti használja, az üzembe helyezések meghiúsulnak. 
+Például a legtöbb erőforrás neve nem kezdődhet számjegyekkel, de az egyedi karakterlánc függvény egy számjegyből álló karakterláncot ad vissza. Ha tehát nyers egyedi karakterlánc-kimenetet használ, a központi telepítések sikertelenek lesznek. 
 
-Erőforrás elnevezési szabályokat és korlátozásokat a további információt talál [Ez a cikk](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging).
+Az erőforrás-elnevezési szabályokkal és korlátozásokkal kapcsolatos további információkat [ebben a cikkben](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging)talál.
 
-### <a name="deployment-location"></a>Üzembe helyezés helye
+### <a name="deployment-location"></a>Központi telepítés helye
 
-Elérhetővé teheti, Test Drive különböző Azure-régióban. A cél, hogy lehetővé teszi, hogy válassza ki a legközelebbi régió, a beast felhasználói élményt biztosít.
+A tesztelési meghajtót különböző Azure-régiókban is elérhetővé teheti. Az a gondolat, hogy lehetővé teszi a felhasználó számára a legközelebbi régió kiválasztását a Beast felhasználói élmény biztosításához.
 
-Test Drive létrehoz egy példányt a labor létrehozása, ha mindig létrehoz egy erőforráscsoportot a felhasználó által a régiót válassza, és végrehajtja a központi telepítési sablont a csoport a környezetben. Így a sablon ki kell választania a központi telepítési helye az erőforráscsoport:
+Amikor a test Drive létrehozza a labor egy példányát, az mindig létrehoz egy erőforráscsoportot egy felhasználó által választott régióban, majd végrehajtja a telepítési sablont a csoport környezetében. Ezért a sablonnak ki kell választania a központi telepítési helyet az erőforráscsoporthoz:
 
 ```json
 "variables": {
@@ -224,7 +224,7 @@ Test Drive létrehoz egy példányt a labor létrehozása, ha mindig létrehoz e
 }
 ```
 
-Majd ezen a helyen minden erőforrás egy adott labor-példány:
+Ezután használja ezt a helyet minden erőforráshoz egy adott labor-példány esetében:
 
 ```json
 "resources": [
@@ -256,15 +256,15 @@ Majd ezen a helyen minden erőforrás egy adott labor-példány:
 ]
 ```
 
-Győződjön meg arról, hogy engedélyezett-e az előfizetés tulajdonosaként tulajdonképpen kiválasztja régióban üzembe helyezni kívánt erőforrások üzembe helyezéséhez, szüksége. Szüksége győződjön meg arról, hogy a virtuálisgép-rendszerképek érhetők el szeretné engedélyezni, minden régióban, ellenkező esetben a központi telepítési sablont nem működnek az egyes régiókban.
+Győződjön meg arról, hogy az előfizetése jogosult a kiválasztott régiókban üzembe helyezni kívánt összes erőforrás üzembe helyezésére. Emellett meg kell győződnie arról, hogy a virtuálisgép-lemezképek elérhetők az összes engedélyezni kívánt régióban, ellenkező esetben a telepítési sablon egyes régiókban nem fog működni.
 
 ### <a name="outputs"></a>Kimenetek
 
-Általában Resource Manager-sablonok, üzembe helyezheti nélkül állít elő kimenetet. Ennek oka, hogy ismeri az összes Sablonparaméterek tölti ki értéket, és bármely erőforrás tulajdonságainak mindig manuálisan ellenőrizheti.
+A Resource Manager-sablonokkal általában bármilyen kimenet létrehozása nélkül is üzembe helyezhető. Ennek az az oka, hogy ismeri az összes olyan értéket, amelyet a sablon paramétereinek feltöltéséhez használ, és bármikor manuálisan megvizsgálhatja bármelyik erőforrás tulajdonságait.
 
-A Test Drive Resource Manager-sablonok azonban azt\'s fontos, hogy térjen vissza Test Drive minden az adatokat, amelyek a laborhoz (webhely URI-k, a virtuális gép állomásnevek, felhasználói neveket és jelszavakat) hozzáférés szükséges. Ellenőrizze, hogy az összes kimeneti név olvashatók legyenek, mivel ezeket a változókat az ügyfélnek.
+A test Drive Resource Manager-sablonok esetében azonban\'s fontos, hogy visszatérjen az összes információ teszteléséhez, ami szükséges ahhoz, hogy hozzáférést kapjon a laborhoz (webhely URI-k, virtuális gépek állomásneve, felhasználónevek és jelszavak). Győződjön meg arról, hogy az összes kimeneti név olvasható, mert ezek a változók az ügyfél számára jelennek meg.
 
-Nem vonatkoznak minden olyan korlátozások kapcsolatos sablon következő kimeneteit. Ne feledje, minden kimenetének értékeket cserélheti le Test Drive alakíthatók át egymásba **karakterláncok**, így a kimeneti objektum küld, ha a felhasználó megjelenik-e JSON karakterlánc.
+Nincsenek a sablon kimenetével kapcsolatos korlátozások. Ne feledje, hogy a test Drive minden kimeneti értéket **sztringbe**konvertál, így ha egy objektumot küld a kimenetre, a felhasználó a JSON-karakterláncot fogja látni.
 
 Példa:
 
@@ -285,145 +285,145 @@ Példa:
 }
 ```
 
-### <a name="subscription-limits"></a>Előfizetés korlátai
+### <a name="subscription-limits"></a>Előfizetési korlátok
 
-Egy dolog, figyelembe kell venni az előfizetés és szolgáltatási korlátait. Például ha azt szeretné, akár tíz 4 magos virtuális gépek üzembe helyezéséhez, szüksége, hogy a labor használt előfizetés lehetővé teszi, hogy 40 mag.
+Még egy dolog, amit figyelembe kell vennie az előfizetés és a szolgáltatás korlátai. Ha például akár tíz 4 magos virtuális gépet szeretne üzembe helyezni, győződjön meg arról, hogy a laborhoz használt előfizetés lehetővé teszi a 40 magok használatát.
 
-További információ az Azure-előfizetések és -szolgáltatások korlátozásait, az annak [Ez a cikk](https://docs.microsoft.com/azure/azure-subscription-service-limits). Mivel több Tesztverzió elvégezhet egy időben, győződjön meg arról, hogy az előfizetés képes kezelni a \# egyidejű Tesztverzió elvégezhet teljes száma szorozva magok.
+[Ebben a cikkben](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits)további információt talál az Azure-előfizetéssel és a szolgáltatási korlátozásokkal kapcsolatban. Egyszerre több tesztvezetés is elvégezhető. Ellenőrizze, hogy az előfizetése képes-e kezelni a magok \#ét, szorozva az egyidejű tesztelési meghajtók teljes számával.
 
-### <a name="what-to-upload"></a>Mi a feltöltése
+### <a name="what-to-upload"></a>Mi a feltöltés?
 
-Test Drive Resource Manager-sablon, egy zip-fájlt, amely különböző üzembe helyezési összetevők is tartalmazhat, de rendelkeznie kell egy fájlt töltenek fel **main-template.json**. Ezt a fájlt az Azure Resource Manager üzembe helyezési sablon, és a Test Drive segítségével a labor-példányt létrehozni.
+A test Drive Resource Manager-sablon zip-fájlként lett feltöltve, amely különböző üzembe helyezési összetevőket tartalmazhat, de rendelkeznie kell egy **Main-template. JSON**nevű fájllal. Ez a fájl Azure Resource Manager telepítési sablon, a test Drive pedig egy labor létrehozásához használja.
 
-Ha ez a fájl túl további erőforrások, a sablonban lévő külső erőforrásként hivatkozhasson rá, vagy az erőforrás belefoglalhatja a zip-fájlt.
+Ha a fájlon kívül további erőforrásokkal is rendelkezik, hivatkozhat külső erőforrásként a sablonban, vagy felveheti az erőforrást a zip-fájlba.
 
-A közzétételi hitelesítő során a Test Drive unzips a központi telepítési csomagot, és helyezi a tartalmat egy belső Test Drive blobtárolóba. Tároló struktúráját tükrözi a központi telepítési csomag szerkezete:
+A közzétételi minősítés során a test Drive kibontja a telepítési csomagot, és egy belső tesztvezetés blob-tárolóba helyezi a tartalmát. A tároló szerkezete a telepítési csomag szerkezetét tükrözi:
 
-| Package.zip                       | Test Drive blob-tároló         |
+| Package. zip                       | Tesztvezetés blob-tárolója         |
 |---|---|
-| Main-template.json                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-template.JSON  |
-| Templates/Solution.JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/templates/Solution.JSON |
-| scripts/warmup.ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Scripts/warmup.ps1  |
+| Main-template. JSON                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Main-template.JSON  |
+| sablonok/megoldás. JSON           | https:\//\<\..\>. blob.core.windows.net/\<\..\>/templates/Solution.JSON |
+| Scripts/bemelegedési. ps1                | https:\//\<\..\>. blob.core.windows.net/\<\..\>/Scripts/warmup.ps1  |
 
 
-Ez a blobtároló alap URI-t egy URI-nevezzük. Minden változatban a labor létrehozása a saját blobtárolót rendelkezik, és ezért a minden változatban a labor létrehozása a saját alap Uri tartozik. Test Drive továbbíthatja egy alap Uri-ját a kicsomagolt központi telepítési csomagot a sablonhoz a sablon paraméterei.
+Meghívjuk a blob Container alap URI azonosítójának URI-ját. A tesztkörnyezet minden változatának saját blob-tárolója van, ezért a labor minden változata saját alap URI-val rendelkezik. A test Drive a sablon paramétereinek használatával átadhatja a kibontott telepítési csomag alapszintű URI-ját a sablonba.
 
-## <a name="transforming-template-examples-for-test-drive"></a>A Test Drive alkalmazásán át a sablon példák
+## <a name="transforming-template-examples-for-test-drive"></a>Példák a tesztelési meghajtón a sablon átalakítására
 
-A folyamat ne tudják bekapcsolni az architektúra az erőforrások Test Drive Resource Manager-sablonnal történő ijesztőnek tűnhet. Segítse a folyamat megkönnyítése, azt\'tenni példákkal arról, hogyan legjobb [aktuális központi telepítési sablonok itt átalakítása](./transforming-examples-for-test-drive.md).
+Az erőforrások architektúrájának a test Drive Resource Manager-sablonba való bekapcsolásának folyamata ijesztő lehet. Ennek a folyamatnak a megkönnyítése érdekében\'tettük a [jelenlegi központi telepítési sablonok legjobb átalakítását](./transforming-examples-for-test-drive.md).
 
-## <a name="how-to-publish-a-test-drive"></a>A Test Drive közzététele
+## <a name="how-to-publish-a-test-drive"></a>Tesztelési meghajtó közzététele
 
-Most, hogy a beépített Test Drive, ez a szakasz végigvezeti Önt a mezőkben ahhoz, hogy a Test Drive közzététele sikertelen.
+Most, hogy elkészítette a tesztelési meghajtót, ez a szakasz végigvezeti a tesztelési meghajtó sikeres közzétételéhez szükséges összes mezőn.
 
-![Próbálja ki a felhasználói felületen engedélyezése](./media/azure-resource-manager-test-drive/howtopub1.png)
+![A test Drive engedélyezése a felhasználói felületen](./media/azure-resource-manager-test-drive/howtopub1.png)
 
-Az első és legfontosabb mezőt, hogy állíthatja be, hogy azt szeretné, hogy a Test Drive az ajánlatban engedélyezve van-e. Ha az Igen lehetőséget választja **,** az űrlap többi részét az összes kötelező mezővel kitöltheti. Ha a nem lehetőséget választja **,** az űrlap le lesz tiltva, és ha újból közzéteszi a tesztelési meghajtót, a rendszer eltávolítja a tesztelési meghajtót az éles környezetből.
+Az első és legfontosabb mező az, hogy be kell-e állítani, hogy a test Drive engedélyezve van-e az ajánlathoz. Ha az Igen lehetőséget választja **,** az űrlap többi részét az összes kötelező mezővel kitöltheti. Ha a nem lehetőséget választja **,** az űrlap le lesz tiltva, és ha újból közzéteszi a tesztelési meghajtót, a rendszer eltávolítja a tesztelési meghajtót az éles környezetből.
 
-Megjegyzés: Ha bármely felhasználó által aktívan használt tesztek meghajtók, ezeket a Tesztverzió továbbra is futni, amíg a munkamenet lejár.
+Megjegyzés: ha vannak olyan tesztek, amelyeket aktívan használnak a felhasználók, ezek a tesztelési meghajtók továbbra is futni fognak, amíg a munkamenet le nem jár.
 
 ### <a name="details"></a>Részletek
 
-Töltse ki a következő szakaszban a Test Drive részleteit kínálnak.
+A kitöltendő következő szakasz a tesztelési meghajtó ajánlatának részleteit tartalmazza.
 
-![Test Drive részletes információk](./media/azure-resource-manager-test-drive/howtopub2.png)
+![A tesztvezetés részletes adatai](./media/azure-resource-manager-test-drive/howtopub2.png)
 
-**Leírás –** *szükséges* Ez az, ahol ír a fő leírást arról, mi van a Test Drive. Az ügyfél milyen helyzetekben a Test Drive fog lefedő, a termékkel kapcsolatos elolvasható itt fognak érkezni. 
+**Leírás –** *itt kell* megírnia a tesztelési meghajtón található fő leírást. Az ügyfél itt olvashatja el, hogy milyen forgatókönyveket fog a tesztvezetés a termékre vonatkozóan. 
 
-**Felhasználó manuális –** *szükséges* Ez az a Test Drive felhasználói élmény részletes leírását. Az ügyfél megnyílik ez, és pontosan mit azt szeretné, hajtsa végre a Test Drive alatt is végig. Fontos, hogy ez a tartalom így könnyen megismerhető és hajtsa végre a! (.Pdf fájlnak kell lennie)
+**Felhasználói kézikönyv –** *a* tesztelési teljesítmény részletes útmutatója. Az ügyfél ekkor megnyithatja ezt, és pontosan megtekintheti, hogy mit szeretne tenni a tesztelési meghajtón. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen! (. PDF-fájlnak kell lennie)
 
-**Tesztelje a meghajtó – bemutató videó -** *ajánlott* hasonló felhasználói kézikönyvet, a legjobb, ha egy videó-oktatóanyag, a Test Drive felhasználói élmény. Az ügyfél figyelni ezen előzetes vagy a Test Drive során, és pontosan mit azt szeretné, hajtsa végre a Test Drive alatt is végig. Fontos, hogy ez a tartalom így könnyen megismerhető és hajtsa végre a!
+A **teszt Drive bemutató videója –** a felhasználói kézikönyvhez hasonló módon *ajánlott* , a legjobb megoldás, ha a tesztelési meghajtóval kapcsolatos videós oktatóanyagot tartalmaz. Az ügyfél ezt megelőzően vagy a tesztelési meghajtón tekinti meg, és pontosan megmutatja, mit szeretne tenni a tesztelési meghajtón. Fontos, hogy ez a tartalom könnyen érthető és követhető legyen!
 
-- **Név** – a videó címe
-- **Hivatkozás** -kell lennie egy beágyazott cső vagy videó URL-CÍMÉT. A beágyazott URL-cím beszerzése a példában nem éri el:
-- **Miniatűr** -képnek kell lennie egy kiváló minőségű (533 x 324) képpont. Javasoljuk, hogy egy része a Test Drive felhasználói élmény képernyőképe itt is.
+- A videó **neve** – cím
+- **Hivatkozás** – a cső vagy videó beágyazott URL-címének kell lennie. Példa a beágyazott URL-cím beszerzésére:
+- **Miniatűr** – magas minőségi képpontnak (533x324) kell lennie. A test Drive-élmény néhány részének képernyőképét javasoljuk.
 
-Az alábbi, hogyan ezek a mezők meg az ügyfelek számára a Test Drive során.
+Alább látható, hogyan jelennek meg ezek a mezők az ügyfél számára a test Drive-élményben.
 
-![A Marketplace-ajánlat a Test Drive mezők helyét](./media/azure-resource-manager-test-drive/howtopub4.png)
+![A test Drive-mezők helye a Piactéri ajánlatban](./media/azure-resource-manager-test-drive/howtopub4.png)
 
 ### <a name="technical-configuration"></a>Technikai konfiguráció
 
-Töltse ki a következő szakaszban, ahol, töltse fel a Test Drive Resource Manager-sablont, és hogyan kifejezetten határozza meg a Test Drive instances munka.
+A kitöltés következő szakasza a test Drive Resource Manager-sablon feltöltése, valamint a tesztvezetés-példányok működésének meghatározása.
 
 ![](./media/azure-resource-manager-test-drive/howtopub5.png)
 
-**Példányok –** *szükséges* itt konfigurálhatja, hogy hány példánya ez szeretne, mit régió(k) a, és az ügyfelek milyen gyorsan kérheti le a Test Drive.
+**Példányok –** *itt* megadhatja, hogy hány példányt szeretne, milyen régió (k) ban, és hogy az ügyfelek milyen gyorsan kapják meg a tesztelési meghajtót.
 
-- **Példányok** -régiók kiválasztása a, ahol, válassza ki a Test Drive Resource Manager-sablon a telepítési helyét. Javasoljuk, hogy egyszerűen válasszon ki egy adott régióban, ahol várhatóan leggyakrabban az ügyfelei számára, a következő helyen található.
-- **Gyakori elérésű** -Test Drive-példányok, amelyek már központilag telepítve és Várakozás a kiválasztott régiónként eléréséhez. Ügyfelek azonnal hozzáférhetnek a Tesztverzió várnia a központi telepítés helyett. A hosszabb, hogy ezek a példányok mindig futtat az Azure-előfizetést, akkor számítunk fel a költségek nagyobb rendelkezésre állását. Erősen javasoljuk, hogy **legalább egy gyakran használt adatok példány**, mint az ügyfelek többsége nem szeretne várni teljes központi telepítés befejezéséhez, és így az ügyfelek általi használatot egy Gyűjtőtár.
-- **Meleg** - Test Drive-példányok alkalmazott régiónként és majd a virtuális gép lett leállítva és az Azure storage tárolja. A várakozási idő a meleg példányokhoz lassabb, mint a gyakori elérésű példányok, de hasznos üzemidőt, a tárolási költség is kevesebb költséggel jár.
-- **Ritkán használt** -Test Drive-példányok, valószínűleg telepíthető régiónként. Ritkán használt példány a teljes teszt meghajtó Resource Manager-sablon egy ügyfél a Test Drive kér, ezért létfontosságú a lassabb, mint a gyakori vagy a meleg példányok a időpontban központi telepítési lépés szükséges. Azonban az egyensúlyt a is, hogy csak akkor kell fizetnie, a Test Drive időtartama.
+- **Példányok** – a válassza ki a régiókat, ahol kiválaszthatja a test Drive Resource Manager-sablon üzembe helyezésének helyét. Azt javasoljuk, hogy csak egy olyan régiót válasszon ki, ahol a legnagyobb elvárás, hogy az ügyfelek hol találhatók.
+- A már üzembe helyezett és a kiválasztott régióhoz való hozzáférésre váró tesztelési meghajtók példányainak száma. Az ügyfelek azonnal hozzáférhetnek a tesztelési meghajtókhoz, és nem kell megvárniuk az üzembe helyezést. A kompromisszum azt eredményezi, hogy ezek a példányok mindig az Azure-előfizetésen futnak, így a költségek nagyobb üzemidőt jelentenek. Erősen ajánlott **legalább egy gyors példányt**használni, mivel az ügyfelek többsége nem szeretné megvárni a teljes üzembe helyezést, és így az ügyfél-használatban van egy legördülő lista.
+- Az üzembe helyezett, régiónként üzemelő, és az Azure Storage-ban tárolt tesztelési meghajtó példányainak száma. A meleg példányok várakozási ideje lassabb, mint a gyakran használt példányok száma, de a tárterületre vonatkozó üzemidő ára is kevésbé költséges.
+- A valószínűleg üzembe helyezhető, régión belüli tesztelési meghajtók példányainak száma. A hideg példányok esetében a teljes test Drive Resource Manager-sablonnak meg kell haladnia egy központi telepítésen a tesztelési meghajtót kérő ügyfélen, hogy lassabb legyen, mint a gyors vagy a meleg példány. A kompromisszum azonban az, hogy csak a tesztvezetés időtartamára kell fizetnie.
 
-Jelenleg számítja ki a teljes száma a lehetséges egyidejű Tesztverzió fog elérhetővé, és győződjön meg arról, hogy az előfizetéshez tartozó kvótahatárt képes kezelni a párhuzamos összeg:
+Ekkor kiszámítja az elérhetővé tenni kívánt egyidejű tesztelési meghajtók teljes számát, és ellenőrzi, hogy az előfizetéshez tartozó kvóta korlátja képes-e az egyidejű mennyiség kezelésére:
 
-**(Száma a kiválasztott régióban x gyakori elérésű példányok) + (szám / régiókban kijelölt x meleg példányok) + (szám / régiók kijelölt x hideg példányok)**
+**(A kiválasztott régiók száma x forró példányok esetén) + (a kiválasztott régiók száma x meleg példányok esetén) +**
 
-**Tesztelje a meghajtó időtartama (óra) –** *szükséges* mennyi ideig a Test Drive aktív marad, az időtartam \# óra. A Test Drive Ez az időtartam lejárta után automatikusan leáll.
+**Tesztelési meghajtó időtartama (óra) –** a tesztelési meghajtó működésének *időtartamát* \# órán belül. A tesztelési meghajtó automatikusan leáll az adott időszak lejárta után.
 
-**Test Drive Resource Manager-sablon –** *szükséges* Itt a Resource Manager-sablon feltöltése. Ez az a fenti az előző szakaszban létrehozott fájlt. A fő sablon fájl neve: "main-template.json", és győződjön meg arról, hogy a Resource Manager-sablon szükséges kulcs változókat kimeneti paramétereket tartalmaz. (.Zip kiterjesztésű fájlnak kell lennie)
+**Test Drive Resource Manager-sablon –** ide *kell* feltöltenie a Resource Manager-sablont. Ez az előző szakaszban létrehozott fájl. A fő sablonfájl neve: "Main-template. JSON", és győződjön meg arról, hogy a Resource Manager-sablon tartalmazza a szükséges kulcs-változók kimeneti paramétereit. (. Zip-fájlnak kell lennie)
 
-**Információ - hozzáférés** *szükséges* után az ügyfél lekéri a Test Drive, a hozzáférési információk jelennek-e meg a számukra. Ezeket az utasításokat úgy van kialakítva, hogy a hasznos a kimeneti paraméterek a Test Drive Resource Manager-sablon megosztása. Adja meg a kimeneti paraméterek, használja a kapcsos zárójelek (például **{{outputname}}** ), és azok kerül beillesztésre megfelelően a helyen. (HTML karakterlánc-formátum ajánlott Itt jelennek meg az előtér).
+**Hozzáférési információk –** az ügyfél által a tesztelési meghajtó beszerzése *után a* hozzáférési információk jelennek meg. Ezek az utasítások célja, hogy megosszák a hasznos kimeneti paramétereket a test Drive Resource Manager-sablonból. A kimeneti paraméterek belefoglalásához használjon dupla kapcsos zárójeleket (például **{{outputname}}** ), és a helyükön helyesen lesznek beszúrva. (A HTML-karakterlánc formázását érdemes az előtérben megjeleníteni).
 
-### <a name="test-drive-deployment-subscription-details"></a>Tesztelés üzembe helyezési előfizetés részletei
+### <a name="test-drive-deployment-subscription-details"></a>Tesztelési meghajtó üzembe helyezésének előfizetése – részletek
 
-Az utolsó szakaszban adja meg, hogy tud érvénybe léptetni a Tesztverzió automatikusan csatlakozzon az Azure-előfizetés és az Azure Active Directory (AD).
+A kitöltendő utolsó szakasz az Azure-előfizetés és a Azure Active Directory (AD) összekapcsolásával automatikusan képes lesz a tesztelési meghajtók üzembe helyezésére.
 
-![Teszt telepítési előfizetés részletei](./media/azure-resource-manager-test-drive/subdetails1.png)
+![Tesztelési meghajtó üzembe helyezésének előfizetése – részletek](./media/azure-resource-manager-test-drive/subdetails1.png)
 
-**Az Azure előfizetés-azonosító –** *szükséges* Ez hozzáférést biztosít az Azure-szolgáltatások és az Azure Portalon. Az előfizetés, ahol készüljön jelentés, erőforrás-használat és a szolgáltatás számlázása. Ha Ön még nem rendelkezik egy **külön** Azure előfizetés Tesztverzió csak, lépjen tovább, és hozzon létre egyet. Az Azure-előfizetés azonosítókat megkereséséhez az Azure Portalra jelentkezik be, és ellenőrizheti, hogy az előfizetések, a bal oldali menüben. (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")
+**Azure-előfizetés azonosítója –** ehhez hozzáférést kell *adnia* az Azure-szolgáltatásokhoz és a Azure Portalhoz. Az előfizetés az erőforrás-használat jelentését és a szolgáltatások számlázását jelenti. Ha még nem rendelkezik **külön** Azure-előfizetéssel csak tesztelési meghajtókhoz, folytassa a következő lépéssel. Az Azure-előfizetési azonosítók megkereséséhez jelentkezzen be Azure Portal és navigáljon a bal oldali menüben lévő előfizetésekhez. (Példa: "a83645ac-1234-5ab6-6789-1h234g764ghty")
 
 ![Azure-előfizetések](./media/azure-resource-manager-test-drive/subdetails2.png)
 
-**Az Azure AD-bérlő azonosítója –** *szükséges* Ha a bérlő Azonosítóját már rendelkezésre álló tulajdonságok, azt alább találhatja\> címtár-azonosító
+**Azure ad-bérlő azonosítója –** *kötelező* , ha már elérhető a bérlő azonosítója, a Properties-\> Directory-azonosítóban találhatja meg.
 
-![Az Azure Active Directory-tulajdonságok](./media/azure-resource-manager-test-drive/subdetails3.png)
+![Azure Active Directory tulajdonságai](./media/azure-resource-manager-test-drive/subdetails3.png)
 
-Máskülönben hozzon létre egy új bérlőt az Azure Active Directoryban.
+Ellenkező esetben hozzon létre egy új bérlőt Azure Active Directory.
 
-![A lista az Azure Active Directory-bérlők](./media/azure-resource-manager-test-drive/subdetails4.png)
+![Azure Active Directory bérlők listája](./media/azure-resource-manager-test-drive/subdetails4.png)
 
 ![Az Azure AD-bérlő szervezetének, tartományának és országának/régiójának megadása](./media/azure-resource-manager-test-drive/subdetails5.png)
 
-![A kijelölés megerősítéséhez](./media/azure-resource-manager-test-drive/subdetails6.png)
+![A kijelölés megerősítése](./media/azure-resource-manager-test-drive/subdetails6.png)
 
-**Az Azure AD-Alkalmazásazonosító -** *szükséges* hozhat létre, és a egy új alkalmazás regisztrálása a következő lépéssel. Ezt az alkalmazást használjuk a Test Drive-példány műveletek végrehajtásához.
+**Azure ad alkalmazás azonosító –** *kötelező* következő lépés egy új alkalmazás létrehozása és regisztrálása. Ezt az alkalmazást fogjuk használni a test Drive-példányon végrehajtott műveletek végrehajtásához.
 
-1. Lépjen abba a könyvtárba, újonnan létrehozott vagy már meglévő könyvtár, és válassza ki az Azure Active directory szűrő ablaktáblát.
-2. Keressen az "Alkalmazásregisztrációk", és kattintson a "Hozzáadás" gombra
-3. Adjon meg egy alkalmazásnevet.
-4. Adja meg, mint "webalkalmazás / API"
-5. Adja meg a bejelentkezési URL-értéket, megnyert\'t használja ezt a mezőt.
+1. Navigáljon az újonnan létrehozott címtárhoz vagy már meglévő címtárhoz, és válassza az Azure Active Directory elemet a szűrő ablaktáblán.
+2. Keressen rá a "Alkalmazásregisztrációk" kifejezésre, és kattintson a "Hozzáadás" gombra.
+3. Adja meg az alkalmazás nevét.
+4. Válassza ki a "Web App/API" típust
+5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, mi nyerte el\'t a mező használatával.
 6. Kattintson a Létrehozás gombra.
-7. Miután létrehozta az alkalmazást, válassza a Tulajdonságok –\> állítja be az alkalmazás több-bérlős, és kattintson a Mentés gombra.
+7. Az alkalmazás létrehozása után lépjen a Properties-\> az alkalmazás beállítása több-bérlős elemre, és kattintson a Save (Mentés) gombra.
 
-Kattintson a Mentés gombra. Az utolsó lépés, hogy az Alkalmazásazonosítót, a regisztrált alkalmazás megnyitása, és illessze be ide a Test Drive mező.
+Kattintson a Mentés gombra. Az utolsó lépés az alkalmazás AZONOSÍTÓjának beolvasása a regisztrált alkalmazáshoz, és beillesztés a test Drive (tesztelési meghajtó) mezőbe.
 
-![Az Azure AD application ID részletei](./media/azure-resource-manager-test-drive/subdetails7.png)
+![Azure AD-alkalmazás AZONOSÍTÓjának részletei](./media/azure-resource-manager-test-drive/subdetails7.png)
 
-Adott használjuk az alkalmazás üzembe helyezéséhez az előfizetéshez, hozzá kell adnunk a az alkalmazás az előfizetés közreműködője. A következő útmutatót: ezek a következők alatt:
+Mivel az alkalmazást az előfizetésre való központi telepítésre használjuk, az alkalmazást közreműködőként kell hozzáadni az előfizetéshez. Az alábbi utasítások a következők:
 
-1. Az előfizetések panelen keresse meg, és válassza ki a megfelelő előfizetést, amely csak a Test Drive használja.
+1. Navigáljon az előfizetések panelre, és válassza ki a megfelelő előfizetést, amelyet csak a tesztelési meghajtóhoz használ.
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 1. Kattintson a **szerepkör-hozzárendelések** fülre.  ![új Access Control rendszerbiztonsági tag hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_1.jpg)
-1. Kattintson a **szerepkör-hozzárendelés hozzáadása**.
-1. Állítsa be a szerepkört, **közreműködői**.
-1. Írja be az Azure AD-alkalmazás nevét, és válassza ki a szerepkör hozzárendelése az alkalmazást.
-    ![Az engedélyek hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **szerepkör-hozzárendelés hozzáadása**lehetőségre.
+1. Adja meg a szerepkört **közreműködőként**.
+1. Írja be az Azure AD-alkalmazás nevét, és válassza ki azt az alkalmazást, amelyhez hozzá szeretné rendelni a szerepkört.
+    ![az engedélyek hozzáadása](./media/azure-resource-manager-test-drive/SetupSub7_2.jpg)
+1. Kattintson a **Mentés** gombra.
 
-**Az Azure AD-Alkalmazáskulcs -** *szükséges* az utolsó mezőt, hogy a hitelesítési kulcs létrehozásához. A kulcsok adjon meg egy kulcs leírást az időtartamot, soha nem jár le, majd válassza a mentés. Ez **fontos** ne kelljen egy lejárt kulcs, amely megszakítja a test drive éles környezetben. Másolja ezt az értéket, és illessze be a Test Drive kötelező mező.
+**Azure ad alkalmazás Key –** *kötelező* a végső mező egy hitelesítési kulcs létrehozása. A kulcsok területen adja meg a kulcs leírását, állítsa be az időtartamot, hogy soha ne járjon le, majd válassza a mentés lehetőséget. **Fontos** elkerülni, hogy a rendszer ne jelentsen egy lejárt kulcsot, így a tesztelési meghajtót éles környezetben fogja megszüntetni. Másolja ezt az értéket, és illessze be a szükséges tesztvezetés mezőjébe.
 
-![A kulcsok az Azure AD-alkalmazás látható](./media/azure-resource-manager-test-drive/subdetails8.png)
+![Megjeleníti az Azure AD-alkalmazás kulcsait](./media/azure-resource-manager-test-drive/subdetails8.png)
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy az összes a Test Drive mezőket kitölteni, mennek keresztül és **tegye közzé újra** az ajánlatot. A Test Drive hitelesítő letelte után meg kell haladnia egy alaposan tesztelje az ügyfélélmény a **előzetes** az Ön ajánlatát. Indítsa el a Test Drive a felhasználói felületen, majd nyissa meg az Azure előfizetését az Azure Portalon, és győződjön meg arról, hogy a Tesztverzió rendszer teljes mértékben telepíti megfelelően.
+Most, hogy kitöltötte az összes tesztelési meghajtó mezőjét, ugorjon át, és **tegye közzé újból** az ajánlatot. Ha a tesztvezetés megfelelt a minősítésnek, az ajánlat **előzetes** verziójában alaposan tesztelni kell a felhasználói élményt. Indítsa el a tesztelési meghajtót a felhasználói felületen, majd nyissa meg az Azure-előfizetését a Azure Portal belül, és ellenőrizze, hogy a tesztelési meghajtók teljes mértékben telepítve vannak-e.
 
-![Azure Portal](./media/azure-resource-manager-test-drive/subdetails9.png)
+![Azure portál](./media/azure-resource-manager-test-drive/subdetails9.png)
 
-Fontos megjegyezni, hogy nem törli bármely Test Drive instances, kiépítésüket ügyfelei, így az ügyfél azt befejezése után a Test Drive szolgáltatás automatikusan tiszta ezeket az erőforráscsoportokat.
+Fontos megjegyezni, hogy nem törli az ügyfelek számára kiépített tesztvezetés-példányokat, így a test Drive szolgáltatás automatikusan törli ezeket az erőforráscsoportokat, miután az ügyfél befejezte azt.
 
-Ha úgy gondolja, hogy tisztában az előzetes verzió ajánlathoz, most már, ideje **élesben**! Van a Microsoft végső lektorálásra folyamat után az ajánlat már közzétett kettős ellenőrizze a teljes teljes körű felhasználói élményt. Ha valamilyen okból az ajánlat beolvasása visszautasítja, küldeni fogunk egy értesítést a engineering contact az ajánlatban elmagyarázza, mit lehet javítani kell.
+Ha már elégedett az előzetes verzió ajánlatával, most itt az ideje, hogy **élj**! A Microsoft végső felülvizsgálati folyamata az ajánlat közzétételét követően, a teljes végpontok közötti élmény ellenőrzéséhez. Ha valamilyen okból elutasítják az ajánlatot, elküldünk egy értesítést az ajánlat mérnöki kapcsolattartójának, amely elmagyarázza, mit kell megjavítania.
 
-Ha további kérdése van, hibaelhárítási tanácsokat keres, vagy kívánja-e a Test Drive sokkal sikeresebb lenne, nyissa meg [– gyakori kérdések, hibaelhárítási és ajánlott eljárások](./marketing-and-best-practices.md).
+Ha további kérdései vannak, hibaelhárítási tanácsokat talál, vagy ha szeretné, hogy a tesztvezetés sikeres legyen, tekintse meg a [Gyakori kérdések, hibaelhárítás és & ajánlott eljárásokat](./marketing-and-best-practices.md).

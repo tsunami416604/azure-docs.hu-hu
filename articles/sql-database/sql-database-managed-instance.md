@@ -11,12 +11,12 @@ author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
 ms.date: 11/27/2019
-ms.openlocfilehash: 1a9c24846606c53fefa1ffc1de59f358524020c4
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
-ms.translationtype: HT
+ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707621"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "75614944"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -45,7 +45,7 @@ A felügyelt példány ötvözi a Azure SQL Database és SQL Server adatbázismo
 | **Pásti előnyei** | **Az üzletmenet folytonossága** |
 | --- | --- |
 |Nincs hardveres vásárlás és felügyelet <br>Nincs felügyeleti terhelés a mögöttes infrastruktúra kezeléséhez <br>Gyors kiépítés és a szolgáltatás skálázása <br>Automatikus javítás és verziófrissítés <br>Integráció más Pásti adatszolgáltatásokkal |99,99%-os rendelkezésre állási SLA  <br>Beépített [magas rendelkezésre állás](sql-database-high-availability.md) <br>[Automatizált biztonsági mentéssel](sql-database-automated-backups.md) védett adatvédelem <br>Ügyfél által konfigurálható biztonsági másolatok megőrzési ideje <br>Felhasználó által kezdeményezett [biztonsági másolatok](https://docs.microsoft.com/sql/t-sql/statements/backup-transact-sql?view=azuresqldb-mi-current) <br>[Időponthoz tartozó adatbázis-visszaállítási](sql-database-recovery-using-backups.md#point-in-time-restore) képesség |
-|**Biztonság és megfelelőség** | **Felügyeleti**|
+|**Biztonság és megfelelőség** | **Kezelés**|
 |Elszigetelt környezet ([VNet-integráció](sql-database-managed-instance-connectivity-architecture.md), egybérlős szolgáltatás, dedikált számítás és tárolás) <br>[Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Azure ad-hitelesítés](sql-database-aad-authentication.md), egyszeri bejelentkezés támogatása <br> <a href="/sql/t-sql/statements/create-login-transact-sql?view=azuresqldb-mi-current">Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések)</a>  <br>Megfelel a megfelelőségi szabványoknak, mint az Azure SQL Database <br>[SQL-naplózás](sql-database-managed-instance-auditing.md) <br>[Advanced Threat Protection](sql-database-managed-instance-threat-detection.md) |Azure Resource Manager API a szolgáltatások kiosztásának és méretezésének automatizálásához <br>A szolgáltatás kézi üzembe helyezéséhez és méretezéséhez Azure Portal funkció <br>Adatáttelepítési szolgáltatás
 
 > [!IMPORTANT]
@@ -154,12 +154,12 @@ A következő táblázat összefoglalja a műveleteket és a jellemző általán
 |Üzembe helyezés |4 virtuális mag első példányának létrehozása üres vagy nem üres alhálózatban|Virtuális fürt létrehozása * *|a műveletek 90%-a 4 órán belül befejeződik|
 |Üzembe helyezés |A következő példány létrehozása a nem üres alhálózaton belül (2., 3. stb. példány)|Virtuális fürtök átméretezése|a műveletek 90%-a befejezve 2,5 órában|
 |**Update** |Példány tulajdonságainak módosítása (rendszergazdai jelszó, HRE bejelentkezés, Azure Hybrid Benefit jelző)|–|Legfeljebb 1 perc|
-|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú szolgáltatási szintet)|Adatbázisfájlok csatolása|a műveletek 90%-a befejeződik 5 percen belül|
 |Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus szolgáltatási szintet)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
 |Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú)|– A virtuális fürtök átméretezése<br>– Adatbázisfájlok csatolása|a műveletek 90%-a befejezve 2,5 órában|
 |Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
 |Frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>– Adatbázisfájlok csatolása|a műveletek 90%-a 4 óra 5 percben * *|
-|Frissítés |Példány leskálázása 4 virtuális mag (általános célú)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>-Always On rendelkezésre állási csoport bevetése|a műveletek 90%-a 4 órán belül befejeződik + az összes adatbázis kivetéséhez szükséges idő (220 GB/óra)|
+|Frissítés |Példány leskálázása 4 virtuális mag (üzletileg kritikus)|– A virtuális fürtök átméretezése (ha első alkalommal végzett, a virtuális fürtök létrehozásához * *) szükséges<br>-Always On rendelkezésre állási csoport bevetése|a műveletek 90%-a 4 órán belül befejeződik + az összes adatbázis kivetéséhez szükséges idő (220 GB/óra)|
 |Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva)|– A virtuális fürtök átméretezése<br>-Always On rendelkezésre állási csoport bevetése|az összes adatbázis 90%-ának befejezése 2,5 óra + idő alatt az összes adatbázis kivetéséhez (220 GB/óra)|
 |**Törlés**|Példány törlése|Az összes adatbázis biztonsági másolatának naplózása|90%-os művelet akár 1 percenként is befejeződik.<br>Megjegyzés: Ha az alhálózat utolsó példánya törölve lett, a művelet a virtuális fürt törlését 12 óra elteltével * * * fogja ütemezni. * * *|
 |Törlés|Virtuális fürt törlése (felhasználó által kezdeményezett művelet)|Virtuális fürt törlése|a műveletek 90%-a befejezve legfeljebb 1,5 óra|
@@ -174,14 +174,45 @@ a \*\*\* 12 óra az aktuális konfiguráció, de a jövőben változhat, így ne
 
 A felügyelt példányok nem érhetők el az ügyfélalkalmazások számára az üzembe helyezési és törlési műveletek során.
 
-A felügyelt példányok elérhetők a frissítési műveletek során, de a feladatátvétel által okozott rövid állásidőt a frissítések végén, amely általában legfeljebb 10 másodpercig tart.
+A felügyelt példányok elérhetők a frissítési műveletek során, de a feladatátvétel által okozott rövid állásidőt a frissítések végén, amely általában legfeljebb 10 másodpercig tart. Ez alól kivételt képez a általános célú szolgáltatási szinten lévő fenntartott tárterület frissítése, amely nem jár feladatátvételsel, és nem befolyásolja a példány rendelkezésre állását.
 
 > [!IMPORTANT]
 > A feladatátvétel időtartama jelentősen változhat abban az esetben, ha az adatbázisokon hosszan futó tranzakciók történnek, a hosszú távú [helyreállítási idő](sql-database-accelerated-database-recovery.md#the-current-database-recovery-process)miatt. Ezért nem ajánlott Azure SQL Database felügyelt példány számítási vagy tárolási kapacitásának méretezésére, vagy a szolgáltatási réteg módosítására egy időben a hosszan futó tranzakciók (adatimportálás, adatfeldolgozási feladatok, indexek újraépítése stb.) alapján. A művelet végén elvégezhető adatbázis-feladatátvétel megszakítja a folyamatban lévő tranzakciókat, és hosszan tartó helyreállítási időt eredményez.
 
+> [!TIP]
+> Általános célú szolgáltatási szinten foglalt tárterület frissítése nem jár feladatátvételsel, és nem befolyásolja a példány rendelkezésre állását.
+
 A [gyorsított adatbázis-helyreállítás](sql-database-accelerated-database-recovery.md) jelenleg nem érhető el Azure SQL Database felügyelt példányok számára. Ha engedélyezve van, ez a funkció jelentősen csökkenti a feladatátvételi idő változékonyságát, még a hosszan futó tranzakciók esetében is.
 
+### <a name="canceling-management-operations"></a>Felügyeleti műveletek megszakítása
 
+Az alábbi táblázat összefoglalja az adott felügyeleti műveletek és a jellemző általános időtartamok törlésének képességét:
+
+Kategória  |Művelet  |Kampány  |Becsült megszakítási időtartam  |
+|---------|---------|---------|---------|
+|Üzembe helyezés |Példány létrehozása |Nem |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (általános célú) |Nem |  |
+|Frissítés |A példány tárolási felskálázása felfelé/lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (általános célú) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
+|Frissítés |A példány számítási (virtuális mag) méretezése felfelé és lefelé (üzletileg kritikus) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
+|Frissítés |Példány szolgáltatási szintjeinek változása (általános célú üzletileg kritikus és fordítva) |Igen |a műveletek 90%-a befejeződik 5 percen belül |
+|Törlés |Példány törlése |Nem |  |
+|Törlés |Virtuális fürt törlése (felhasználó által kezdeményezett művelet) |Nem |  |
+
+A kezelési művelet megszakításához lépjen az Áttekintés panelre, és kattintson a folyamatban lévő értesítési mezőre. A jobb oldalon megjelenik a folyamatban lévő művelettel rendelkező képernyő, és a művelet megszakítására szolgáló gomb jelenik meg. Az első kattintás után a rendszer kérni fogja, hogy kattintson újra, és erősítse meg, hogy meg kívánja szüntetni a műveletet.
+
+[![](./media/sql-database-managed-instance/canceling-operation.png)](./media/sql-database-managed-instance/canceling-operation.png#lightbox)
+
+A megszakítási kérelem elküldését és feldolgozását követően értesítést kap, ha a megszakítás beküldése sikeres volt. 
+
+A sikeres megszakítás esetén a felügyeleti művelet néhány percen belül megszakad, ami hibát eredményez.
+
+![művelet eredményének megszakítása](./media/sql-database-managed-instance/canceling-operation-result.png)
+
+Ha a megszakítási kérelem meghiúsul, vagy a Mégse gomb nem aktív, az azt jelenti, hogy a felügyeleti művelet nem megszakítható állapotba került, és néhány percen belül befejeződik. A felügyeleti művelet addig folytatja a végrehajtást, amíg be nem fejeződik.
+
+> [!IMPORTANT]
+> A megszakítási művelet jelenleg csak a portálon támogatott.
 
 ## <a name="advanced-security-and-compliance"></a>Magas szintű biztonság és megfelelőség
 
@@ -227,7 +258,7 @@ A felügyelt példány központi telepítési lehetősége támogatja a hagyomá
 
 A felügyelt példányok központi telepítésének beállításával központilag kezelheti az adatbázis-felhasználó és más Microsoft-szolgáltatások identitásait [Azure Active Directory integrációval](sql-database-aad-authentication.md). Ez a funkció egyszerűsíti az engedélyek kezelését és fokozza a biztonságot. Az Azure Active Directory a [többtényezős hitelesítés](sql-database-ssms-mfa-authentication-configure.md) (MFA) támogatásával javítja az adatok és alkalmazások biztonságát, miközben támogatja az egyszeri bejelentkezést.
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A felügyelt példányok hitelesítése arra utal, hogy a felhasználók hogyan igazolják identitásukat az adatbázishoz való csatlakozáskor. Az SQL Database két hitelesítési típust támogat:  
 
@@ -268,7 +299,7 @@ A felügyelt példány központi telepítési lehetősége támogatja az SQL 200
   
 Az alábbi ábrán a felügyelt példányok felületének kompatibilitása látható:  
 
-![áttelepítési](./media/sql-database-managed-instance/migration.png)
+![áttelepítés](./media/sql-database-managed-instance/migration.png)
 
 ### <a name="key-differences-between-sql-server-on-premises-and-in-a-managed-instance"></a>SQL Server helyszíni és felügyelt példány közötti fő különbségek
 
@@ -297,8 +328,7 @@ A következő táblázat több, a Transact SQL szolgáltatáson keresztül elér
 |`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>``<dnsPrefix>`. database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)
-|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>`.`<dnsPrefix>`. database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2017
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bebdd8beacb3b5fc91802fb41055df7e24b93218
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 0fbff3679004b8278b7634c2dc21253973cf34d0
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078954"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647662"
 ---
 # <a name="azure-virtual-machines-high-availability-for-sap-netweaver"></a>Azure Virtual Machines magas rendelkezésre állás az SAP NetWeaver számára
 
@@ -33,8 +33,8 @@ ms.locfileid: "70078954"
 
 [sap-installation-guides]:http://service.sap.com/instguides
 
-[azure-subscription-service-limits]:../../../azure-subscription-service-limits.md
-[azure-subscription-service-limits-subscription]:../../../azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
+[azure-resource-manager/management/azure-subscription-service-limits-subscription]:../../../azure-resource-manager/management/azure-subscription-service-limits.md
 
 [dbms-guide]:../../virtual-machines-windows-sap-dbms-guide.md
 
@@ -148,7 +148,7 @@ ms.locfileid: "70078954"
 [sap-templates-3-tier-multisid-apps-marketplace-image]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps%2Fazuredeploy.json
 [sap-templates-3-tier-multisid-apps-marketplace-image-md]:https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2Fsap-3-tier-marketplace-image-multi-sid-apps-md%2Fazuredeploy.json
 
-[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/resource-group-overview.md#the-benefits-of-using-resource-manager
+[virtual-machines-azure-resource-manager-architecture-benefits-arm]:../../../azure-resource-manager/management/overview.md#the-benefits-of-using-resource-manager
 
 [virtual-machines-manage-availability]:../../virtual-machines-windows-manage-availability.md
 
@@ -168,7 +168,7 @@ Ebben a cikkben a magas rendelkezésre állású SAP-rendszerek üzembe helyezé
 
 Az üzembe helyezés és a konfiguráció egyszerűsítése érdekében ebben a cikkben a SAP háromrétegű magas rendelkezésre állású Resource Manager-sablonokat használjuk. A sablonok a magas rendelkezésre állású SAP-rendszerhez szükséges teljes infrastruktúra üzembe helyezését automatizálják. Az infrastruktúra Emellett támogatja az SAP-rendszeren az SAP Application Performance standard (NEDV) méretezését is.
 
-## <a name="217c5479-5595-4cd8-870d-15ab00d4f84c"></a> Előfeltételek
+## </a> Előfeltételek
 Mielőtt elkezdené, győződjön meg arról, hogy megfelel az alábbi szakaszokban ismertetett előfeltételeknek. Ügyeljen arra is, hogy ellenőrizze az [erőforrások][sap-ha-guide-2] szakaszban felsorolt összes erőforrást.
 
 Ebben a cikkben Azure Resource Manager sablonokat használunk a [HÁROMRÉTEGŰ SAP NetWeaver-hoz a Managed Disks használatával](https://github.com/Azure/azure-quickstart-templates/tree/master/sap-3-tier-marketplace-image-md/). A sablonok hasznos áttekintését lásd: [SAP Azure Resource Manager-sablonok](https://blogs.msdn.microsoft.com/saponsqlserver/2016/05/16/azure-quickstart-templates-for-sap/).
@@ -197,7 +197,7 @@ Ezek az SAP-megjegyzések a SAP Azure-beli témaköréhez kapcsolódnak:
 | [1999351] |Virtualizáció Windows rendszeren: továbbfejlesztett figyelés |
 | [2243692] |Az Azure prémium SSD Storage használata az SAP adatbázis-kezelő példányához |
 
-További információ az [Azure-előfizetések korlátairól][azure-subscription-service-limits-subscription], beleértve az általános alapértelmezett korlátozásokat és a maximális korlátozásokat.
+További információ az [Azure-előfizetések korlátairól][azure-resource-manager/management/azure-subscription-service-limits-subscription], beleértve az általános alapértelmezett korlátozásokat és a maximális korlátozásokat.
 
 ## <a name="42156640c6-01cf-45a9-b225-4baa678b24f1"></a>Magas rendelkezésre állású SAP a Azure Resource Manager és a klasszikus Azure üzemi modellel
 A Azure Resource Manager és a klasszikus Azure-beli üzembe helyezési modellek a következő területeken különböznek:
@@ -207,7 +207,7 @@ A Azure Resource Manager és a klasszikus Azure-beli üzembe helyezési modellek
 - SAP multi-SID-forgatókönyvek támogatása
 
 ### <a name="f76af273-1993-4d83-b12d-65deeae23686"></a>Erőforráscsoportok
-Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. Egy adott erőforráscsoport integrált megközelítése minden erőforrásnak azonos életciklusa van. Például az összes erőforrás ugyanabban az időben jön létre, és egyszerre törlődik. További információk az [erőforráscsoportokról](../../../azure-resource-manager/resource-group-overview.md#resource-groups).
+Az Azure Resource Manager az Azure-előfizetésében lévő összes alkalmazás-erőforrást az erőforráscsoportok használatával kezelheti. Egy adott erőforráscsoport integrált megközelítése minden erőforrásnak azonos életciklusa van. Például az összes erőforrás ugyanabban az időben jön létre, és egyszerre törlődik. További információk az [erőforráscsoportokról](../../../azure-resource-manager/management/overview.md#resource-groups).
 
 ### <a name="3e85fbe0-84b1-4892-87af-d9b65ff91860"></a>Azure-beli belső terheléselosztó-függőség az Azure-erőforráscsoporthoz
 
@@ -419,9 +419,9 @@ _**11. ábra:** SAP magas rendelkezésre állású Azure Resource Manager param�
     * Adatbázis-kezelő fürt: <*SAPSystemSID*>-db-<*szám*>
 
   * **Hálózati kártyák az összes virtuális géphez, társított IP-címekkel**:
-    * <*SAPSystemSID*>-nic-di-<*Number*>
-    * <*SAPSystemSID*>-nic-ascs-<*Number*>
-    * <*SAPSystemSID*>-nic-db-<*Number*>
+    * <*SAPSystemSID*>-NIC-di-<*szám*>
+    * <*SAPSystemSID*>-NIC-ascs-<*szám*>
+    * <*SAPSystemSID*>-NIC-db-<*szám*>
 
   * **Azure Storage-fiókok (csak nem felügyelt lemezek esetén)**
 
@@ -516,7 +516,7 @@ A ASCS/SCS-sablon két virtuális gépet telepít, amelyek segítségével több
 A ASCS/SCS multi-SID sablon beállításához a [ASCS/SCS multi-SID sablonban][sap-templates-3-tier-multisid-xscs-marketplace-image] vagy a [ASCS/SCS multi-SID Managed Disks sablonban][sap-templates-3-tier-multisid-xscs-marketplace-image-md]adja meg az értékeket a következő paraméterekhez:
 
   - **Erőforrás-előtag**.  Állítsa be az erőforrás-előtagot, amely az üzembe helyezés során létrehozott összes erőforrás előállítására szolgál. Mivel az erőforrások nem csak egy SAP-rendszerhez tartoznak, az erőforrás előtagja nem egy SAP-rendszer SID-azonosítója.  Az előtagnak **három és hat karakter**közöttinek kell lennie.
-  - **Verem típusa** Válassza ki az SAP-rendszerek halmozási típusát. Depending on the stack type, Azure Load Balancer has one (ABAP or Java only) or two (ABAP+Java) private IP addresses per SAP system.
+  - **Verem típusa** Válassza ki az SAP-rendszerek halmozási típusát. A verem típusától függően Azure Load Balancer rendelkezik egy (ABAP vagy Java only) vagy két (ABAP + Java) magánhálózati IP-címmel SAP-rendszeren.
   -  **Operációs rendszer típusa**. Válassza ki a virtuális gépek operációs rendszerét.
   -  Az **SAP-rendszerek száma**. Válassza ki a fürtben telepíteni kívánt SAP-rendszerek számát.
   -  A **rendszerek rendelkezésre állása**. Válassza a **Ha**lehetőséget.
@@ -606,8 +606,8 @@ A példánkban a DNS szolgáltatás telepítve van és konfigurálva van ezeken 
 
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első DNS-kiszolgáló |domcontr-0 |pr1-nic-domcontr-0 |10.0.0.10 |
-| Második DNS-kiszolgáló |domcontr-1 |pr1-nic-domcontr-1 |10.0.0.11 |
+| Első DNS-kiszolgáló |domcontr – 0 |PR1-NIC-domcontr-0 |10.0.0.10 |
+| Második DNS-kiszolgáló |domcontr – 1 |PR1-NIC-domcontr-1 |10.0.0.11 |
 
 ### <a name="9fbd43c0-5850-4965-9726-2a921d85d73f"></a>Az SAP ASCS/SCS fürtözött példány és az adatbázis-kezelő fürtözött példány állomásneve és statikus IP-címei
 
@@ -615,9 +615,9 @@ Helyszíni központi telepítés esetén ezekre a fenntartott állomásnévekre 
 
 | Virtuális gazdagép neve szerepkör | Virtuális gazdagép neve | Virtuális statikus IP-cím |
 | --- | --- | --- |
-| SAP ASCS/SCS első fürt virtuális gazdagépének neve (fürtözési felügyelethez) |pr1-ascs-vir |10.0.0.42 |
-| SAP-ASCS/SCS-példány virtuális gazdagépének neve |pr1-ascs-sap |10.0.0.43 |
-| SAP adatbázis-kezelő második fürt virtuális gazdagépének neve (fürtszolgáltatás) |pr1-dbms-vir |10.0.0.32 |
+| SAP ASCS/SCS első fürt virtuális gazdagépének neve (fürtözési felügyelethez) |PR1-ASCs-VIR |10.0.0.42 |
+| SAP-ASCS/SCS-példány virtuális gazdagépének neve |PR1-ASCs-SAP |10.0.0.43 |
+| SAP adatbázis-kezelő második fürt virtuális gazdagépének neve (fürtszolgáltatás) |PR1 – adatbázis-kezelő – VIR |10.0.0.32 |
 
 A fürt létrehozásakor hozza létre a **PR1-ASCs-VIR** és a **PR1-adatbázis-VIR** nevű virtuális gazdagép nevét, valamint a FÜRTÖt kezelő társított IP-címeket. Ennek módjával kapcsolatos további információkért lásd: fürtcsomópontok [gyűjtése a fürt konfigurációjában][sap-ha-guide-8.12.1].
 
@@ -644,14 +644,14 @@ A példánkban a következő virtuális gépek és statikus IP-címek vannak:
 
 | Virtuális gépi szerepkör | Virtuális gép gazdagépének neve | Hálózati kártya neve | Statikus IP-cím |
 | --- | --- | --- | --- |
-| Első SAP Application Server-példány |pr1-di-0 |pr1-nic-di-0 |10.0.0.50 |
-| Második SAP Application Server-példány |pr1-di-1 |pr1-nic-di-1 |10.0.0.51 |
+| Első SAP Application Server-példány |PR1-di-0 |PR1-NIC-di-0 |10.0.0.50 |
+| Második SAP Application Server-példány |PR1-di-1 |PR1-NIC-di-1 |10.0.0.51 |
 | ... |... |... |... |
-| Utolsó SAP Application Server-példány |pr1-di-5 |pr1-nic-di-5 |10.0.0.55 |
-| Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |pr1-nic-ascs-0 |10.0.0.40 |
-| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |pr1-nic-ascs-1 |10.0.0.41 |
-| Első fürtcsomópont az adatbázis-kezelő példányhoz |pr1-db-0 |pr1-nic-db-0 |10.0.0.30 |
-| Második fürtcsomópont az adatbázis-kezelő példányhoz |pr1-db-1 |pr1-nic-db-1 |10.0.0.31 |
+| Utolsó SAP Application Server-példány |PR1-di-5 |PR1-NIC-di-5 |10.0.0.55 |
+| Első fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-0 |PR1-NIC-ASCs-0 |10.0.0.40 |
+| Második fürtcsomópont a ASCS/SCS-példányhoz |PR1-ASCs-1 |PR1-NIC-ASCs-1 |10.0.0.41 |
+| Első fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-0 |PR1-NIC-db-0 |10.0.0.30 |
+| Második fürtcsomópont az adatbázis-kezelő példányhoz |PR1-db-1 |PR1-NIC-db-1 |10.0.0.31 |
 
 ### <a name="7a8f3e9b-0624-4051-9e41-b73fff816a9e"></a>Statikus IP-cím beállítása az Azure belső terheléselosztó számára
 
@@ -678,7 +678,7 @@ A példánkban két Azure belső terheléselosztó van, amelyek rendelkeznek eze
 | Azure belső terheléselosztó szerepkör | Azure belső terheléselosztó neve | Statikus IP-cím |
 | --- | --- | --- |
 | SAP ASCS/SCS-példány belső terheléselosztó |PR1-LB – ASCs |10.0.0.43 |
-| SAP adatbázis-kezelő belső terheléselosztó |pr1-lb-dbms |10.0.0.33 |
+| SAP adatbázis-kezelő belső terheléselosztó |PR1-LB – adatbázis-kezelő |10.0.0.33 |
 
 
 ### <a name="f19bd997-154d-4583-a46e-7f5a69d0153c"></a>Alapértelmezett ASCS/SCS terheléselosztási szabályok az Azure belső terheléselosztó számára
@@ -699,11 +699,11 @@ A szükséges belső terheléselosztási végpontok létrehozásához először 
 | ABAP üzenetkezelő kiszolgáló/ *lbrule3600* |36 <*példányszám*> |3600 |
 | Belső ABAP üzenet/ *lbrule3900* |39 <*példányszám*> |3900 |
 | Message Server HTTP/ *Lbrule8100* |81 <*példányszám*> |8100 |
-| SAP Start Service ASCS HTTP / *Lbrule50013* |5 <*példányszám*> 13 |50013 |
-| SAP Start Service ASCS HTTPS / *Lbrule50014* |5 <*példányszám*> 14 |50014 |
+| SAP Start Service ASCS HTTP/ *Lbrule50013* |5 <*példányszám*> 13 |50013 |
+| SAP Start Service ASCS HTTPS/ *Lbrule50014* |5 <*példányszám*> 14 |50014 |
 | Sorba helyezni-replikáció/ *Lbrule50016* |5 <*példányszám*> 16 |50016 |
-| SAP Start Service ERS HTTP *Lbrule51013* |5 <*példányszám*> 13 |51013 |
-| SAP Start Service ERS HTTP *Lbrule51014* |5 <*példányszám*> 14 |51014 |
+| SAP Start Service ERS HTTP- *Lbrule51013* |5 <*példányszám*> 13 |51013 |
+| SAP Start Service ERS HTTP- *Lbrule51014* |5 <*példányszám*> 14 |51014 |
 | Win RM *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
@@ -716,12 +716,12 @@ Ezután hozza létre ezeket a terheléselosztási végpontokat az SAP NetWeaver 
 | Sorba helyezni-kiszolgáló/ *lbrule3201* |32 <*példányszám*> |3201 |
 | Átjárókiszolgáló/ *lbrule3301* |33 <*példányszám*> |3301 |
 | Java-üzenet kiszolgálója/ *lbrule3900* |39 <*példányszám*> |3901 |
-| Message Server HTTP / *Lbrule8101* |81 <*példányszám*> |8101 |
-| SAP Start Service SCS HTTP / *Lbrule50113* |5 <*példányszám*> 13 |50113 |
-| SAP Start Service SCS HTTPS / *Lbrule50114* |5 <*példányszám*> 14 |50114 |
+| Message Server HTTP/ *Lbrule8101* |81 <*példányszám*> |8101 |
+| SAP Start Service SCS HTTP/ *Lbrule50113* |5 <*példányszám*> 13 |50113 |
+| SAP Start Service SCS HTTPS/ *Lbrule50114* |5 <*példányszám*> 14 |50114 |
 | Sorba helyezni-replikáció/ *Lbrule50116* |5 <*példányszám*> 16 |50116 |
-| SAP Start Service ERS HTTP *Lbrule51113* |5 <*példányszám*> 13 |51113 |
-| SAP Start Service ERS HTTP *Lbrule51114* |5 <*példányszám*> 14 |51114 |
+| SAP Start Service ERS HTTP- *Lbrule51113* |5 <*példányszám*> 13 |51113 |
+| SAP Start Service ERS HTTP- *Lbrule51114* |5 <*példányszám*> 14 |51114 |
 | Win RM *Lbrule5985* | |5985 |
 | Fájlmegosztás *Lbrule445* | |445 |
 
@@ -740,7 +740,7 @@ Ha az SAP-ASCS vagy az SCS-példányokhoz eltérő számokat szeretne használni
 1. A Azure Portal válassza ki **<*SID*>-LB-ascs Load Balancer** > terheléselosztási **szabályokat**.
 2. Az SAP-ASCS vagy az SCS-példányhoz tartozó összes terheléselosztási szabály esetében módosítsa a következő értékeket:
 
-   * Name (Név)
+   * Név
    * Port
    * Háttérbeli port
 
@@ -770,7 +770,7 @@ Ha az SAP ASCS/SCS-példányt mindkét fürtcsomóponton szeretné felvenni, el�
 | --- | --- |
 | Változó neve |`KeepAliveTime` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Value (Díj) |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957549.aspx](https://technet.microsoft.com/library/cc957549.aspx) |
 
 _**3. táblázat:** Az első TCP/IP-paraméter módosítása_
@@ -781,7 +781,7 @@ Ezt követően adja hozzá ezt a Windows-beállításjegyzékbeli bejegyzést a 
 | --- | --- |
 | Változó neve |`KeepAliveInterval` |
 | Változó típusa |REG_DWORD (decimális) |
-| Érték |120000 |
+| Value (Díj) |120000 |
 | Hivatkozás a dokumentációra |[https://technet.microsoft.com/library/cc957548.aspx](https://technet.microsoft.com/library/cc957548.aspx) |
 
 _**4. táblázat:** A második TCP/IP-paraméter módosítása_
@@ -1268,7 +1268,7 @@ Mintavételi Port hozzáadása:
    }
    ```
 
-   Miután tenné a **SAP <*SID*>** a fürt hálózatra, ellenőrizze, hogy **ProbePort** az új értékre van állítva.
+   Miután az **SAP <*SID*>** a fürt szerepkörét online állapotba helyezte, ellenőrizze, hogy a **ProbePort** az új értékre van-e állítva.
 
    ```powershell
    $SAPSID = "PR1"     # SAP <SID>

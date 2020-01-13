@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 06/13/2019
 ms.author: ashishth
-ms.openlocfilehash: d19640d19c3b7fa611f5bfe0e4fd0868924650c5
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71066936"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75435778"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -25,7 +25,7 @@ A HDInsight az ETL-folyamatban való használatát a következő folyamat össze
 
 A következő szakaszok az ETL fázisok és a hozzájuk társított összetevők megismerését ismertetik.
 
-## <a name="orchestration"></a>Vezénylés
+## <a name="orchestration"></a>Adat-előkészítés
 
 Az összehangolás az ETL-folyamat minden fázisában megível. A HDInsight-ben található ETL-feladatok gyakran több különböző, egymással együtt működő terméket is tartalmaznak.  A kaptár használatával törölheti az egyes adatrészeket, míg a Pig egy másik részt is megtisztít.  Előfordulhat, hogy a Azure Data Factory használatával tölti be az adatait a Azure Data Lake Store Azure SQL Databaseba.
 
@@ -51,11 +51,11 @@ A Azure Data Factoryről a [dokumentációban](../../data-factory/introduction.m
 
 ## <a name="ingest-file-storage-and-result-storage"></a>Fájlok tárolási és eredményes tárterületének beolvasása
 
-A forrásadatok fájljai általában az Azure Storage-ban vagy Azure Data Lake Storage-ban vannak betöltve. A fájlok bármilyen formátumban megadhatók, de általában egyszerű fájlok, például CSV. 
+A forrásadatok fájljai általában az Azure Storage-ban vagy Azure Data Lake Storage-ban vannak betöltve. A fájlok bármilyen formátumban megadhatók, de általában egyszerű fájlok, például CSV.
 
-### <a name="azure-storage"></a>Azure Storage 
+### <a name="azure-storage"></a>Azure Storage
 
-Az [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) -ban [konkrét skálázhatósági célok](../../storage/common/storage-scalability-targets.md)vannak.  A legtöbb analitikus csomópont esetében az Azure Storage a legjobbat méretezi a sok kisebb fájl kezelésekor.  Az Azure Storage ugyanazt a teljesítményt biztosítja, függetlenül attól, hogy hány fájl vagy mekkora a fájl mérete (ha az Ön korlátain belül van).  Ez azt jelenti, hogy több terabájtos adat is tárolható, és továbbra is konzisztens teljesítményt biztosít, függetlenül attól, hogy az adathalmazt vagy az összes adatát használja-e.
+Az [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) -ban konkrét skálázhatósági célok vannak. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../../storage/blobs/scalability-targets.md)ismertető témakört. A legtöbb analitikus csomópont esetében az Azure Storage a legjobbat méretezi a sok kisebb fájl kezelésekor.  Az Azure Storage ugyanazt a teljesítményt biztosítja, függetlenül attól, hogy hány fájl vagy mekkora a fájl mérete (ha az Ön korlátain belül van).  Ez azt jelenti, hogy több terabájtos adat is tárolható, és továbbra is konzisztens teljesítményt biztosít, függetlenül attól, hogy az adathalmazt vagy az összes adatát használja-e.
 
 Az Azure Storage számos különböző típusú blobot tartalmaz.  A *hozzáfűző blob* nagyszerű lehetőség webnaplók vagy érzékelők-adattárolók tárolására.  
 
@@ -77,7 +77,7 @@ A ADLS az Azure Event hub vagy a Apache Storm használatával is optimalizált a
 
 Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati késés lehet jelentős probléma, különösen akkor, ha az adatok egy helyszíni helyről érkeznek.  Ilyen esetekben az alábbi lehetőségeket használhatja:
 
-* Azure ExpressRoute:  Az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok megbízható lehetőséget biztosítanak nagy mennyiségű adatátvitelre. További információ: az [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
+* Azure ExpressRoute: az Azure ExpressRoute lehetővé teszi privát kapcsolatok létrehozását az Azure-adatközpontok és a helyszíni infrastruktúra között. Ezek a kapcsolatok megbízható lehetőséget biztosítanak nagy mennyiségű adatátvitelre. További információ: az [Azure ExpressRoute dokumentációja](../../expressroute/expressroute-introduction.md).
 
 * "Kapcsolat nélküli" adatok feltöltése. Az [Azure import/export szolgáltatást](../../storage/common/storage-import-export-service.md) használhatja az Azure-adatközpontba felhasználható merevlemez-meghajtók továbbítására. Az adatait először feltölti az Azure Storage-Blobokra. Ezután a [Azure Data Factory](../../data-factory/connector-azure-data-lake-store.md) vagy a [AdlCopy](../../data-lake-store/data-lake-store-copy-data-azure-storage-blob.md) eszközzel másolhat adatokat az Azure Storage-blobokból a Data Lake Storageba.
 
@@ -129,11 +129,11 @@ Az Apache Flume egy elosztott, megbízható és elérhető szolgáltatás a nagy
 
 Az Apache Flume nem használható az Azure HDInsight.  A helyszíni Hadoop-telepítés a Flume használatával küldheti el az Azure Storage-blobokat vagy a Azure Data Lake Storage.  További információ: az [Apache Flume és a HDInsight használata](https://web.archive.org/web/20190217104751/https://blogs.msdn.microsoft.com/bigdatasupport/2014/03/18/using-apache-flume-with-hdinsight/).
 
-## <a name="transform"></a>átalakítási
+## <a name="transform"></a>Átalakítás
 
 Miután az adatok megtalálhatók a kiválasztott helyen, meg kell tisztítania, össze kell állítania, vagy elő kell készítenie egy adott használati mintához.  A kaptár, a Pig és a Spark SQL minden jó választás az adott típusú munkához.  Ezek mind támogatottak a HDInsight. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Apache Pig használata a Apache Hadoop on HDInsight](hdinsight-use-pig.md)
 * [Apache Hive használata ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 

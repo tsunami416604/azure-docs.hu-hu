@@ -11,12 +11,12 @@ ms.date: 05/28/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 4ae1d9ce8a4683f8d55962843fb1070ef24b3a87
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: 841041cb9fa20b034dd4522a5231813b71558bd7
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815799"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75457809"
 ---
 # <a name="quickstart-create-and-query-an-azure-sql-data-warehouse-in-the-azure-portal"></a>Gyors útmutató: Azure SQL Data Warehouse létrehozása és lekérdezése a Azure Portal
 
@@ -37,13 +37,13 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-data-warehouse"></a>Adattárház létrehozása
 
-Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/resource-group-overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-logical-servers.md) jön létre. 
+Egy Azure SQL Data Warehouse [számítási erőforrások](memory-concurrency-limits.md)meghatározott készletével jön létre. Az adatbázis egy [Azure-erőforráscsoporton](../azure-resource-manager/management/overview.md) belül egy [Azure SQL logikai kiszolgálón](../sql-database/sql-database-logical-servers.md) jön létre. 
 
 Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, amely tartalmazza a AdventureWorksDW. 
 
 1. Kattintson az Azure Portal bal felső sarkában található **Erőforrás létrehozása** gombra.
 
-2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új** oldal **Kiemelt** területén válassza az **SQL Data Warehouse** lehetőséget.
+2. Az **Új** oldalon válassza az **Adatbázisok** elemet, majd az **Új**oldal**Kiemelt**területén válassza az**SQL Data Warehouse** lehetőséget.
 
     ![üres adattárház létrehozása](media/load-data-from-azure-blob-storage-using-polybase/create-empty-data-warehouse.png)
 
@@ -78,7 +78,7 @@ Kövesse az alábbi lépéseket egy olyan SQL Data Warehouse létrehozásához, 
 
     ![teljesítmény konfigurálása](media/load-data-from-azure-blob-storage-using-polybase/configure-performance.png)
 
-8. Kattintson az **Apply** (Alkalmaz) gombra.
+8. Kattintson az **Alkalmaz** gombra.
 
 9. Most, hogy végrehajtotta a SQL Data Warehouse űrlap alapismeretek lapját, kattintson a **felülvizsgálat + létrehozás** elemre az adatbázis kiépítéséhez. Az üzembe helyezés eltarthat néhány percig.
 
@@ -111,7 +111,7 @@ A SQL Data Warehouse szolgáltatás egy tűzfalat hoz létre a kiszolgáló szin
 
 1. Az aktuális IP-címét az eszköztár **Ügyfél IP-címének hozzáadása** elemére kattintva veheti fel egy új tűzfalszabályba. A tűzfalszabály az 1433-as portot egy egyedi IP-cím vagy egy IP-címtartomány számára nyithatja meg.
 
-1. Kattintson a **Save** (Mentés) gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
+1. Kattintson a **Mentés** gombra. A rendszer létrehoz egy kiszolgálószintű tűzfalszabályt az aktuális IP-címhez, és megnyitja az 1433-as portot a logikai kiszolgálón.
 
 1. Kattintson az **OK** gombra, majd zárja be a **Tűzfalbeállítások** lapot.
 
@@ -143,13 +143,13 @@ Ebben a részben az [SQL Server Management Studio](/sql/ssms/download-sql-server
    | Kiszolgáló típusa | Adatbázismotor | Kötelezően megadandó érték |
    | Kiszolgálónév | A teljes kiszolgálónév | Íme egy példa: **mynewserver-20180430.database.Windows.net**. |
    | Hitelesítés | SQL Server-hitelesítés | Ebben az oktatóanyagban az SQL-hitelesítésen kívül más hitelesítéstípus nincs konfigurálva. |
-   | Bejelentkezés | A kiszolgálói rendszergazdai fiók | A kiszolgáló létrehozásakor megadott fiók. |
+   | Bejelentkezés | A kiszolgálói rendszergazdafiók | A kiszolgáló létrehozásakor megadott fiók. |
    | Jelszó | A kiszolgálói rendszergazdai fiók jelszava | A kiszolgáló létrehozásakor megadott jelszó. |
    ||||
 
     ![kapcsolódás a kiszolgálóhoz](media/load-data-from-azure-blob-storage-using-polybase/connect-to-server.png)
 
-3. Kattintson a **Connect** (Csatlakozás) gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
+3. Kattintson a **Csatlakozás** gombra. Megnyílik az Object Explorer ablak az SSMS-ben. 
 
 4. Az Object Explorerben bontsa ki a **Databases** (Adatbázisok) elemet. Ezután bontsa ki a **mySampleDatabase** csomópontot az új adatbázisban található objektumok megtekintéséhez.
 

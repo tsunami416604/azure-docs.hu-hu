@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 05/25/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 88094e7ade688505bb971dd85505ddfacb1d8859
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
-ms.translationtype: HT
+ms.openlocfilehash: 9ca44b1917cfaed5d01c31f8f06d98e5e4b611a8
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926803"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75438924"
 ---
 # <a name="copy-activity-performance-and-tuning-guide"></a>Másolási tevékenység teljesítményének és finomhangolásának útmutatója
 
@@ -242,8 +242,7 @@ Az alábbi példa a másolási tevékenység definícióját tartalmazza az elő
 ### <a name="billing-impact"></a>Számlázási hatás
 A díj két lépésből áll: a másolási időtartam és a másolás típusa alapján.
 
-* Ha a Felhőbeli másolás során (az adatok egy Felhőbeli adattárból egy másik Felhőbeli adattárba való másolásával) való átmeneti tárolást használ, akkor az [1. lépés és a 2. lépés] x [Felhőbeli másolási egység ára] a másolás időtartamának összegét kell megfizetnie.
-
+* Ha a Felhőbeli másolás során (az adatok egy Felhőbeli adattárból egy másik Felhőbeli adattárba való másolásával) való átmeneti tárolást használ, akkor az [1. lépés és a 2. lépés] x [Felhőbeli másolási egység ára] [a másolás időtartamának összegét kell megfizetnie.
 * Ha hibrid másolás során (az adatok egy helyszíni adattárból egy Felhőbeli adattárba történő másolásával) végez előkészítést, akkor a [hibrid másolási időtartam] x [hibrid másolási egység ára] + [Felhőbeli másolás időtartama] x [Felhőbeli másolási egység ára].
 
 ## <a name="performance-tuning-steps"></a>Teljesítmény-finomhangolási lépések
@@ -417,7 +416,8 @@ Ebben az esetben a bzip2 adattömörítés a teljes folyamat lelassulását okoz
 ## <a name="reference"></a>Leírások
 Az alábbiakban a támogatott adattárakkal kapcsolatos Teljesítményfigyelés és hangolási referenciák találhatók:
 
-* Azure Storage (a blob Storage és a Table Storage szolgáltatással együtt): az [Azure Storage skálázhatósági céljai](../../storage/common/storage-scalability-targets.md) és az [Azure Storage teljesítmény-és méretezhetőségi ellenőrzőlistája](../../storage/common/storage-performance-checklist.md)
+* Azure Blob Storage: a blob Storage-hoz szükséges [méretezhetőségi és teljesítményi célok](../../storage/blobs/scalability-targets.md) , valamint a blob Storage-hoz kapcsolódó [teljesítmény-és méretezhetőségi ellenőrzőlista](../../storage/blobs/storage-performance-checklist.md).
+* Azure Table Storage: a táblázatos tároláshoz [szükséges méretezhetőségi](../../storage/tables/scalability-targets.md) és teljesítményi célok, [valamint a Table Storage teljesítményére és méretezhetőségére vonatkozó ellenőrzőlista](../../storage/tables/storage-performance-checklist.md).
 * Azure SQL Database: nyomon követheti [a teljesítményt](../../sql-database/sql-database-single-database-monitor.md) , és ellenőrizheti az adatbázis-tranzakciós egység (DTU) százalékos arányát.
 * Azure SQL Data Warehouse: a képesség mérése adatraktár-egységekben (DWU) történik. Lásd: [a számítási teljesítmény kezelése a Azure SQL Data Warehouseban (áttekintés)](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md)
 * Azure Cosmos DB: [a Azure Cosmos db teljesítmény szintjei](../../cosmos-db/performance-levels.md)

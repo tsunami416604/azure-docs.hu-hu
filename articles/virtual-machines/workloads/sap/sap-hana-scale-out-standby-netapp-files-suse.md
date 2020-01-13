@@ -13,14 +13,14 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 11/21/2019
+ms.date: 01/10/2020
 ms.author: radeltch
-ms.openlocfilehash: 49e7fd49e000a3d4475c60a0c58cf6a2c7455fa5
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 243bbd431b7332d06a4e14581aa5c02bae2b7cba
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74531415"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75896282"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
 
@@ -184,7 +184,7 @@ Az adatokhoz és a naplóhoz szükséges minimális teljesítménybeli követelm
 
 | Kötet | Méret<br>Premium Storagei szintű | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
+| /hana/log/ | 4 TiB | 2 tebibájt | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
 
@@ -192,11 +192,11 @@ A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files 
 
 | Kötet | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 TiB | v 4.1 |
-| /hana/log/mnt00002 | 2 TiB | v 4.1 |
+| /hana/log/mnt00001 | 2 tebibájt | v 4.1 |
+| /hana/log/mnt00002 | 2 tebibájt | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 TiB | v3 vagy v 4.1 |
+| /hana/shared | 2 tebibájt | v3 vagy v 4.1 |
 
 > [!NOTE]
 > Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP által az infrastruktúra-szolgáltatók számára javasolt minimális követelményeknek. A valós ügyfelek központi telepítései és számítási feladatainak esetében ezek a méretek nem elégségesek. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  
@@ -429,7 +429,9 @@ Konfigurálja és készítse elő az operációs rendszert a következő lépés
     mount 10.23.1.4:/HN1-shared /mnt/tmp
     umount  /mnt/tmp
     echo "Y" > /sys/module/nfs/parameters/nfs4_disable_idmapping
-    </code></pre>`
+    # Make the configuration permanent
+    echo "options nfs nfs4_disable_idmapping=Y" >> /etc/modprobe.d/nfs.conf
+    </code></pre>
 
 5. **[A]** manuálisan hozza létre a SAP HANA csoportot és a felhasználót. A Group sapsys és a User **hn1**adm azonosítóit ugyanahhoz az azonosítóhoz kell beállítani, amelyek a bevezetéskor vannak megadva. (Ebben a példában az azonosítók értéke **1001**.) Ha az azonosítók nincsenek megfelelően beállítva, akkor nem fog tudni hozzáférni a kötetekhez. A Group sapsys és a **hn1**adm és sapadm felhasználói fiókjainak azonosítóinak azonosnak kell lenniük az összes virtuális gépen.  
 

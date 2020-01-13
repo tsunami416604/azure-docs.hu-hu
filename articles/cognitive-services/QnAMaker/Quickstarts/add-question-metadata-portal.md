@@ -1,7 +1,7 @@
 ---
 title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
 titleSuffix: Azure Cognitive Services
-description: ''
+description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: bf88928ca24a1205ec7a1ddd2fd20af0d0e91468
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422669"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75447678"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
@@ -23,7 +23,7 @@ Miután létrehozta a tudásbázist, adjon hozzá metaadatokat tartalmazó kérd
 
 A megfelelő válasz egyetlen válasz, de többféleképpen is megteheti, hogy az ügyfél felteheti az adott válaszhoz vezető kérdést.
 
-Az alábbi táblázatban szereplő kérdések például az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure-szolgáltatással kell rendelkezniük. 
+Az alábbi táblázatban szereplő kérdések például az Azure szolgáltatási korlátaival kapcsolatosak, de mindegyiknek egy másik Azure-szolgáltatással kell rendelkezniük.
 
 <a name="qna-table"></a>
 
@@ -38,7 +38,7 @@ Miután hozzáadta a metaadatokat egy kérdés-válasz készlethez, az ügyféla
 * Olyan válaszokat kér, amelyek csak bizonyos metaadatokat egyeznek meg.
 * Fogadja az összes választ, de a válaszokat az egyes válaszok metaadataitól függően feldolgozhatja.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
+Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,11 +53,11 @@ Mindkettőt az [első](../how-to/create-knowledge-base.md)gyors útmutatóban ho
 
 1. Válassza ki a meglévő tudásbázist. Ha nem rendelkezik tudásbázissal, térjen vissza az [előző](../how-to/create-knowledge-base.md) rövid útmutatóhoz, és fejezze be a Tudásbázis létrehozásához szükséges lépéseket.
 
-## <a name="add-additional-alternatively-phrased-questions"></a>További megfogalmazott kérdések hozzáadása 
+## <a name="add-additional-alternatively-phrased-questions"></a>További megfogalmazott kérdések hozzáadása
 
-Az [előző](../how-to/create-knowledge-base.md)rövid útmutatóból származó aktuális Tudásbázis rendelkezik a QnA Maker hibaelhárítási kérdésekkel és válaszokkal. Ezek a készletek akkor jöttek létre, amikor az URL-címet hozzáadták a tudásbázishoz a létrehozási folyamat során. 
+Az [előző](../how-to/create-knowledge-base.md)rövid útmutatóból származó aktuális Tudásbázis rendelkezik a QnA Maker hibaelhárítási kérdésekkel és válaszokkal. Ezek a készletek akkor jöttek létre, amikor az URL-címet hozzáadták a tudásbázishoz a létrehozási folyamat során.
 
-Az URL-cím importálása után csak egy kérdés lett létrehozva. 
+Az URL-cím importálása után csak egy kérdés lett létrehozva.
 
 Ebben az eljárásban további kérdéseket is megadhat.
 
@@ -68,9 +68,9 @@ Ebben az eljárásban további kérdéseket is megadhat.
     |Alternatív megfogalmazás|
     |--|
     |`What is the max size of a knowledge base?`|
-    |`How many GB of data can a knowledge base hold?`| 
+    |`How many GB of data can a knowledge base hold?`|
 
-1. A Tudásbázis újratanításához válassza a **Mentés és a tanítás** lehetőséget. 
+1. A Tudásbázis újratanításához válassza a **Mentés és a tanítás** lehetőséget.
 
 1. Válassza a **teszt**lehetőséget, majd adjon meg egy olyan kérdést, amely az új alternatív megfogalmazások egyikéhez közeledik, de nem pontosan ugyanaz a megfogalmazás:
 
@@ -78,7 +78,7 @@ Ebben az eljárásban további kérdéseket is megadhat.
 
     A megfelelő választ a rendszer Markdown formátumban adja vissza: `The size of the knowledge base depends on the SKU of Azure search you choose when creating the QnA Maker service. Read [here](https://docs.microsoft.com/azure/cognitive-services/qnamaker/tutorials/choosing-capacity-qnamaker-deployment) for more details.`
 
-    Ha a visszaadott válasz alatt bejelöli a **vizsgálat** lehetőséget, további válaszok jelenhetnek meg a kérdésben, de nem ugyanazzal a magas szintű megbízhatósággal. 
+    Ha a visszaadott válasz alatt bejelöli a **vizsgálat** lehetőséget, további válaszok jelenhetnek meg a kérdésben, de nem ugyanazzal a magas szintű megbízhatósággal.
 
     Ne adja meg az alternatív megfogalmazás minden lehetséges kombinációját. A QnA Maker [aktív tanulásának](../how-to/improve-knowledge-base.md)bekapcsolása megkeresi azokat az alternatív megfogalmazásokat, amelyek segítenek a Tudásbázisban a felhasználók igényeinek kielégítésében.
 
@@ -88,26 +88,26 @@ Ebben az eljárásban további kérdéseket is megadhat.
 
 Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalkalmazás szűrt válaszokat kér. Ezt a szűrőt az [első és a második rangsor](../concepts/knowledge-base.md#ranker-process) alkalmazása előtt alkalmazza a rendszer.
 
-1. Adja hozzá a második kérdést és választ a metaadatok nélkül a rövid útmutató [első táblájából](#qna-table), majd folytassa a következő lépésekkel. 
+1. Adja hozzá a második kérdést és választ a metaadatok nélkül a rövid útmutató [első táblájából](#qna-table), majd folytassa a következő lépésekkel.
 
-1. Válassza a **megtekintési beállítások**, majd a **metaadatok megjelenítése**lehetőséget. 
+1. Válassza a **megtekintési beállítások**, majd a **metaadatok megjelenítése**lehetőséget.
 
 1. Az imént hozzáadott kérdéshez és válaszhoz válassza a **metaadatok hozzáadása**lehetőséget, majd adja hozzá a `service` nevét és `search``service:search`értékét.
 
 1. Adjon hozzá egy másik metaadat-címkét, amelynek a neve `link_in_answer` és értéke `false`, `link_in_answer:false`.
 
-1. Keresse meg az első választ a táblázatban, `How large a knowledge base can I create?`. 
+1. Keresse meg az első választ a táblázatban, `How large a knowledge base can I create?`.
 1. Metaadat-párok hozzáadása ugyanahhoz a két metaadat-címkéhez:
 
     `link_in_answer`: `true`<br>
     `server`: `qna_maker`
 
-    Most már két kérdés van ugyanazzal a metaadatokkal, amelyek különböző értékeket tartalmaznak. 
+    Most már két kérdés van ugyanazzal a metaadatokkal, amelyek különböző értékeket tartalmaznak.
 
-1. A Tudásbázis újratanításához válassza a **Mentés és a tanítás** lehetőséget. 
+1. A Tudásbázis újratanításához válassza a **Mentés és a tanítás** lehetőséget.
 
-1. Válassza a **Közzététel** lehetőséget a felső menüben a közzétételi lapra való ugráshoz. 
-1. A **Közzététel** gombra kattintva közzéteheti az aktuális tudásbázist egy lekérdezhető végponton. 
+1. Válassza a **Közzététel** lehetőséget a felső menüben a közzétételi lapra való ugráshoz.
+1. A **Közzététel** gombra kattintva közzéteheti az aktuális tudásbázist egy lekérdezhető végponton.
 1. Miután közzétette a tudásbázist, válassza a **curl (fürt** ) fület, és tekintse meg a Tudásbázisból a válasz létrehozásához használt cURL-parancsot.
 1. Másolja a parancsot egy jegyzetfüzetbe vagy más szerkeszthető környezetbe, hogy a parancs szerkeszthető legyen. Szerkessze a saját erőforrás nevét, a Tudásbázis AZONOSÍTÓját és a végpont kulcsát:
 
@@ -121,11 +121,11 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
     curl -X POST https://your-resource-name.azurewebsites.net/qnamaker/knowledgebases/your-knowledge-base-id/generateAnswer -H "Authorization: EndpointKey your-endpoint-key" -H "Content-type: application/json" -d "{'top':30, 'question':'size','strictFilters': [{'name':'service','value':'qna_maker'}]}"
     ```
 
-    Figyelje meg, hogy a kérdés csak egyetlen szó, `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` Array azt jelzi, hogy a válasz csak a `qna_maker` válaszokra van korlátozva. 
+    Figyelje meg, hogy a kérdés csak egyetlen szó, `size`, amely a kérdést és a válaszadási készletet is visszaadja. A `strictFilters` Array azt jelzi, hogy a válasz csak a `qna_maker` válaszokra van korlátozva.
 
     [!INCLUDE [Tip for debug property to JSON request](../includes/tip-debug-json.md)]
 
-1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek. 
+1. A válasz csak azt a választ tartalmazza, amely megfelel a szűrési feltételeknek.
 
     A következő cURL-válasz formázva lett az olvashatóság érdekében:
 
@@ -164,7 +164,7 @@ Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalk
 
     Ha van olyan kérdés-és Levelesláda, amely nem felelt meg a keresési kifejezésnek, de megfelel a szűrőnek, akkor a rendszer nem adja vissza. Ehelyett a rendszer az általános válasz `No good match found in KB.` adja vissza.
 
-    Ügyeljen rá, hogy a metaadatok neve és értéke párokat a szükséges korlátok között tartsa. 
+    Ügyeljen rá, hogy a metaadatok neve és értéke párokat a szükséges korlátok között tartsa.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

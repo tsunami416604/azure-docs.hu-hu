@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezés hozzáadása az Azure AD ASP.NET-webalkalmazáshoz
+title: Bejelentkezés felvétele a Microsoft Identity platform ASP.NET-webalkalmazásba
 titleSuffix: Microsoft identity platform
 description: Microsoft-bejelentkezés megvalósítása ASP.NET-megoldásban hagyományos webböngésző-alapú alkalmazás és OpenID Connect standard használatával
 services: active-directory
@@ -17,18 +17,18 @@ ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9ff89d3c11ca88db14d2efd772be44aef7165a8a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74964735"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75423469"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
 Ez az útmutató bemutatja, hogyan valósítható meg a bejelentkezés a Microsoftnak egy ASP.NET MVC-megoldással egy hagyományos webböngésző-alapú alkalmazás és az OpenID Connect használatával.
 
-Az útmutató elvégzése után az alkalmazás el tudja fogadni a személyes fiókok bejelentkezési adatait a outlook.com és a live.com. Továbbá a Azure Active Directory (Azure AD) szolgáltatással integrált vállalat vagy szervezet munkahelyi és iskolai fiókjai is bejelentkezhetnek az alkalmazásba.
+Az útmutató elvégzése után az alkalmazás el tudja fogadni a személyes fiókok bejelentkezési adatait a outlook.com és a live.com. Továbbá a Microsoft Identity platformmal integrált bármely vállalattól vagy szervezettől származó munkahelyi és iskolai fiókok bejelentkezhetnek az alkalmazásba.
 
 > Ehhez az útmutatóhoz a Microsoft Visual Studio 2019 szükséges.  Nincs telepítve?  [Töltse le ingyen a Visual Studio 2019](https://www.visualstudio.com/downloads/)-es verzióját.
 
@@ -86,7 +86,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
 > 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza a **hozzáadás** > **új elem** > **OWIN indítási osztály**elemet.<br/>
 > 2. Nevezze el **Startup.cs**.
 >
->> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)] a névtér fölött.
+>> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)]]] a névtér fölött.
 
 1. Adja hozzá a *OWIN* és a *Microsoft. IdentityModel* hivatkozásokat a Startup.cs-hez:
 
@@ -106,7 +106,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
     ```csharp
     public class Startup
     {
-        // The Client ID is used by the application to uniquely identify itself to Azure AD.
+        // The Client ID is used by the application to uniquely identify itself to Microsoft identity platform.
         string clientId = System.Configuration.ConfigurationManager.AppSettings["ClientId"];
 
         // RedirectUri is the URL where the user will be redirected to after they sign in.
@@ -115,7 +115,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
         // Tenant is the tenant ID (e.g. contoso.onmicrosoft.com, or 'common' for multi-tenant)
         static string tenant = System.Configuration.ConfigurationManager.AppSettings["Tenant"];
 
-        // Authority is the URL for authority, composed by Azure Active Directory v2.0 endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
+        // Authority is the URL for authority, composed by Microsoft identity platform endpoint and the tenant name (e.g. https://login.microsoftonline.com/contoso.onmicrosoft.com/v2.0)
         string authority = String.Format(System.Globalization.CultureInfo.InvariantCulture, System.Configuration.ConfigurationManager.AppSettings["Authority"], tenant);
 
         /// <summary>
@@ -175,7 +175,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Az *OpenIDConnectAuthenticationOptions* alatt megadott paraméterek koordinátaként szolgálnak az alkalmazás számára az Azure AD-vel való kommunikációhoz. Mivel az OpenID Connect middleware cookie-kat használ a háttérben, be kell állítania a cookie-hitelesítést is, mivel az előző kód jelenik meg. A *ValidateIssuer* érték azt jelzi, hogy a OpenIdConnect nem korlátozza a hozzáférést egy adott szervezethez.
+> A *OpenIDConnectAuthenticationOptions* által megadott paraméterek koordinátákként szolgálnak az alkalmazás számára a Microsoft Identity platformmal folytatott kommunikációhoz. Mivel az OpenID Connect middleware cookie-kat használ a háttérben, be kell állítania a cookie-hitelesítést is, mivel az előző kód jelenik meg. A *ValidateIssuer* érték azt jelzi, hogy a OpenIdConnect nem korlátozza a hozzáférést egy adott szervezethez.
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-handle-sign-in-and-sign-out-requests"></a>Vezérlő hozzáadása a bejelentkezési és kijelentkezési kérelmek kezeléséhez
@@ -270,7 +270,7 @@ A Visual Studióban hozzon létre egy új nézetet a bejelentkezési gomb hozzá
 
 <!--start-collapse-->
 > ### <a name="more-information"></a>További információ
-> Ezen az oldalon egy fekete háttérrel rendelkező bejelentkezési gomb található az SVG formátumban:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Ba randing iránymutatásai ").
+> Ezen az oldalon egy fekete háttérrel rendelkező bejelentkezési gomb található az SVG formátumban:<br/>![Bejelentkezés Microsoft-fiókkal](media/active-directory-develop-guidedsetup-aspnetwebapp-use/aspnetsigninbuttonsample.png)<br/> További bejelentkezési gombokért lépjen a [branding (védjegyezés) irányelvre](https://docs.microsoft.com/azure/active-directory/develop/active-directory-branding-guidelines "Védjegyzési útmutató").
 <!--end-collapse-->
 
 ## <a name="add-a-controller-to-display-users-claims"></a>Vezérlő hozzáadása a felhasználói jogcímek megjelenítéséhez
@@ -407,7 +407,7 @@ Ha készen áll a teszt futtatására, használjon Azure AD-fiókot (munkahelyi 
 
 <!--start-collapse-->
 > ###  <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
->  A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Miután egy felhasználó az Azure AD-val az alkalmazáshoz fér hozzá, a rendszer kérni fogja, hogy az alkalmazás által kért engedélyekkel ("az alapszintű Profil megtekintése" és a "hozzáférés fenntartása az Ön által megadott adatokhoz") való hozzáférést kérje. Az engedélyek elfogadása után a felhasználó folytatja az alkalmazás eredményét. Előfordulhat azonban, hogy a felhasználót a **szükséges rendszergazdai engedélyekkel** rendelkező oldalon kell megadnia, ha a következők valamelyike történik:
+>  A Microsoft Identity platformmal integrált alkalmazások olyan engedélyezési modellt követnek, amely lehetővé teszi a felhasználók és a rendszergazdák számára az adatok elérésének szabályozását. Miután a felhasználó a Microsoft Identity platformmal hitelesíti az alkalmazást, a rendszer felszólítja az alkalmazás által kért engedélyek megadására ("az alapszintű Profil megtekintése" és a "hozzáférés megtartása az Ön által megadott adatokhoz"). Az engedélyek elfogadása után a felhasználó folytatja az alkalmazás eredményét. Előfordulhat azonban, hogy a felhasználót a **szükséges rendszergazdai engedélyekkel** rendelkező oldalon kell megadnia, ha a következők valamelyike történik:
 >  > - Az alkalmazás fejlesztője olyan további engedélyeket ad hozzá, amelyekhez **rendszergazdai**jogosultság szükséges.
 >  > - Vagy a bérlő konfigurálva van (a **vállalati alkalmazások – > felhasználói beállítások**), ahol a felhasználók nem engedélyezhetik az alkalmazások számára a vállalati adatok elérését a nevükben.
 >
@@ -433,7 +433,7 @@ A vezérlő nézet megkeresése után a felhasználó alapszintű tulajdonságai
 |**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
 |**Bérlő azonosítója** |GUID | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|
 
-Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információkért tekintse meg az [Azure ad ID-tokenben található jogcímek listáját](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
+Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információ: [azonosító jogkivonatban található jogcímek listája](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
 ### <a name="test-access-to-a-method-that-has-an-authorize-attribute-optional"></a>Hozzáférés tesztelése egy engedélyező attribútummal rendelkező metódushoz (nem kötelező)
 
@@ -459,7 +459,7 @@ GlobalFilters.Filters.Add(new AuthorizeAttribute());
 
 ### <a name="restrict-who-can-sign-in-to-your-application"></a>Annak korlátozása, hogy ki jelentkezhet be az alkalmazásba
 
-Alapértelmezés szerint az útmutató alapján létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van Azure AD. Ez egy ajánlott megoldás az SaaS-alkalmazásokhoz.
+Alapértelmezés szerint az útmutató alapján létrehozott alkalmazás létrehozásakor az alkalmazás elfogadja a személyes fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi és iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely integrálva van Microsoft Identity platform. Ez egy ajánlott megoldás az SaaS-alkalmazásokhoz.
 
 Az alkalmazás felhasználói bejelentkezési hozzáférésének korlátozásához több lehetőség is rendelkezésre áll.
 
