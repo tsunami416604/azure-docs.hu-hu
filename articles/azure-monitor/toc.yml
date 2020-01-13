@@ -91,6 +91,8 @@
       items:
         - name: Naplóadatok
           href: platform/data-security.md
+        - name: Felhasználó által kezelt kulcsok
+          href: platform/customer-managed-keys.md
         - name: Személyes naplóadatok kezelése
           href: platform/personal-data-mgmt.md
         - name: 'Alkalmazásadatok gyűjtése, megőrzése és tárolása'

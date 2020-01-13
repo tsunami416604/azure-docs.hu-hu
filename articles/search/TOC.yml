@@ -113,6 +113,8 @@
       items:
         - name: Biztonsági áttekintés
           href: search-security-overview.md
+        - name: Privát végpont létrehozása
+          href: service-create-private-endpoint.md
         - name: Szolgáltatáskulcsok kezelése
           href: search-security-api-keys.md
         - name: Szerepköralapú rendszergazdai hozzáférés
@@ -333,7 +335,7 @@
       items:
         - name: API-verzió (2019-05-06) előnézete
           href: search-api-preview.md
-        - name: ResetSkills API
+        - name: Reset Skills API
           href: preview-api-resetskills.md
     - name: Resource Manager-sablon
       href: /azure/templates/microsoft.search/searchservices
