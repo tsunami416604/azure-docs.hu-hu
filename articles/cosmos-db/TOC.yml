@@ -82,6 +82,8 @@
       href: resource-manager-samples.md
 - name: Alapelvek
   items:
+    - name: NoSQL vagy relációs adatbázisok
+      href: relational-nosql.md
     - name: Globális terjesztés
       items:
         - name: Áttekintés
@@ -976,6 +978,8 @@
           href: certificate-based-authentication.md
         - name: Felhasználói hozzáférés korlátozása az adatműveletekre
           href: how-to-restrict-user-data.md
+        - name: Ügyfél által felügyelt kulcsok konfigurálása
+          href: how-to-setup-cmk.md
     - name: Alkalmasság vállalati használatra
       items:
         - name: Adatok visszaállítása biztonsági mentésből
@@ -1058,6 +1062,8 @@
           href: cassandra-migrate-cosmos-db-blitzz.md
         - name: Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be
           href: migrate-cosmosdb-data.md
+        - name: „One-to-few” típusú relációs adatok migrálása
+          href: migrate-relational-to-cosmos-db-sql-api.md
     - name: Tömeges végrehajtói könyvtár
       items:
         - name: A tömeges végrehajtói kódtár ismertetése

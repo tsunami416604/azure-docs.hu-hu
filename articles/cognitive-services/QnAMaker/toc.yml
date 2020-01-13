@@ -147,6 +147,8 @@
       href: troubleshooting.md
     - name: Fájlformátumok
       items:
+        - name: Markdown-referencia
+          href: reference-markdown-format.md
         - name: TSV kötegelt tesztelése
           href: reference-tsv-format-batch-testing.md
     - name: REST API-referencia

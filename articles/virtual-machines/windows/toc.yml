@@ -184,7 +184,7 @@
           items:
             - name: GPU-optimalizált
               href: sizes-gpu.md
-            - name: GPU-illesztők beállítása
+            - name: NVIDIA GPU-illesztők beállítása
               href: n-series-driver-setup.md
             - name: AMD GPU-illesztők beállítása
               href: n-series-amd-driver-setup.md

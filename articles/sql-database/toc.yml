@@ -337,6 +337,8 @@
               href: sql-database-design-first-database-csharp.md
         - name: Adatok betöltése és áthelyezése
           items:
+            - name: Importálás vagy exportálás Azure-beli virtuális gépről
+              href: import-export-from-vm.md
             - name: Adatbázis importálása BACPAC-fájlból
               href: sql-database-import.md
             - name: Adatbázis exportálása BACPAC-fájlba

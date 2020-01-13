@@ -32,6 +32,30 @@
       href: azure-portal-export-delete-settings.md
     - name: Az Azure Portal útmutató videósorozata
       href: azure-portal-video-series.md
+    - name: Támogatási kérések létrehozása és kezelése
+      items:
+        - name: Azure-támogatáskérés létrehozása
+          href: supportability/how-to-create-azure-support-request.md
+        - name: Fájlok feltöltése támogatáskérésekhez
+          href: supportability/how-to-use-file-uploader.md
+        - name: Kvótanövelések kérése
+          items:
+            - name: Számítási vCPU-korlátok növelése
+              items:
+                - name: Resource Manager-alapú üzemi modell
+                  items:
+                    - name: Virtuálisgép-sorozatok vCPU-korlátjának növelése
+                      href: supportability/per-vm-quota-requests.md
+                    - name: A teljes regionális vCPU-korlát növelése
+                      href: supportability/regional-quota-requests.md
+                    - name: Spot-kvótakorlát növelése
+                      href: supportability/low-priority-quota.md
+                - name: Klasszikus üzemi modell
+                  href: supportability/classic-deployment-model-quota-increase-requests.md
+            - name: Hálózatkezelési korlátok növelése
+              href: supportability/networking-quota-requests.md
+        - name: A régióval vagy termékváltozattal kapcsolatos előfizetési problémák elhárítása
+          href: supportability/sku-series-unavailable.md
 - name: Referencia
   items:
     - name: Billentyűparancsok

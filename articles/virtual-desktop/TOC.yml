@@ -16,9 +16,7 @@
       href: manage-app-groups.md
     - name: 5. Gazdagépcsoport létrehozása a szolgáltatásfrissítések érvényesítéséhez
       href: create-validation-host-pool.md
-    - name: 6. Felügyeleti eszköz üzembe helyezése
-      href: manage-resources-using-ui.md
-    - name: 7. Szolgáltatásriasztások beállítása
+    - name: 6. Szolgáltatásriasztások beállítása
       href: set-up-service-alerts.md
 - name: Használati útmutató
   items:
@@ -70,6 +68,12 @@
       href: set-up-scaling-script.md
     - name: Csatorna testreszabása
       href: customize-feed-for-virtual-desktop-users.md
+    - name: A felügyeleti eszköz üzembe helyezése
+      items:
+        - name: Azure Resource Manager-sablon
+          href: manage-resources-using-ui.md
+        - name: PowerShell
+          href: manage-resources-using-ui-powershell.md
     - name: Szolgáltatásdiagnosztika használata
       items:
         - name: A diagnosztikai eszköz üzembe helyezése

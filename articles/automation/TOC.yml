@@ -15,6 +15,8 @@
       displayName: certificate renewal
     - name: Hitelesítés beállítása az AWS használatával
       href: automation-config-aws-account.md
+    - name: Biztonságos eszközök titkosítása az Azure Automationben
+      href: automation-secure-asset-encryption.md
     - name: Szerepköralapú hozzáférés-vezérlés kezelése
       href: automation-role-based-access-control.md
       displayName: RBAC
@@ -40,7 +42,7 @@
           displayName: 'graphical, python, powershell, powershell workflow'
         - name: A PowerShell-munkafolyamat megismerése
           href: automation-powershell-workflow.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Runbook létrehozása
           href: automation-quickstart-create-runbook.md
@@ -243,7 +245,7 @@
       items:
         - name: PowerShell DSC
           href: /powershell/dsc/overview/overview
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
         - name: Első lépések
           href: automation-dsc-getting-started.md

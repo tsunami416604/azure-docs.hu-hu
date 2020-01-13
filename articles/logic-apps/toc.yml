@@ -4,7 +4,7 @@
   items:
     - name: Mi az Azure Logic Apps?
       href: logic-apps-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Logikai alkalmazások létrehozása – Azure Portal
@@ -111,6 +111,8 @@
           href: connect-virtual-network-vnet-set-up-single-ip-address.md
         - name: Összetevők felvétele integrációs szolgáltatási környezetekbe
           href: add-artifacts-integration-service-environment-ise.md
+        - name: Ügyfél által felügyelt titkosítási kulcsok beállítása integrációs szolgáltatási környezetekben
+          href: customer-managed-keys-integration-service-environment.md
     - name: Helyszíni adatok elérése
       items:
         - name: Adatátjáró telepítése

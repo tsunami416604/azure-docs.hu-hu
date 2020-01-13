@@ -177,6 +177,8 @@
               href: azure-to-azure-how-to-enable-replication.md
             - name: Azure-ról Azure-ba történő replikálás engedélyezése titkosított virtuális gépekhez
               href: azure-to-azure-how-to-enable-replication-ade-vms.md
+            - name: Azure-ról Azure-ba történő replikálás engedélyezése CMK-kompatibilis lemezekkel ellátott virtuális gépek esetében
+              href: azure-to-azure-how-to-enable-replication-cmk-disks.md
             - name: Azure-ról Azure-ba történő replikálás engedélyezése S2D-virtuálisgépekhez
               href: azure-to-azure-how-to-enable-replication-s2d-vms.md
             - name: Replikáció engedélyezése a hozzáadott lemezen

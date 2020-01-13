@@ -229,6 +229,8 @@
           href: certificate-rotation.md
         - name: Privát fürt létrehozása
           href: private-clusters.md
+        - name: BYOK lemezekhez
+          href: azure-disk-customer-managed-keys.md
     - name: Monitorozás és naplózás
       items:
         - name: Azure Monitor tárolókhoz

@@ -36,6 +36,8 @@
       href: architecture-smart-inventory-management-pnp.md
     - name: Az üzlethelyiség-elemzés architektúrája
       href: store-analytics-architecture.md
+    - name: Mikro-teljesítési központ kezelésére szolgáló alkalmazás sablonjának architektúrája
+      href: architecture-micro-fulfillment-center-pnp.md
     - name: Kapcsolatok
       href: ../preview/overview-iot-central-get-connected.md?toc=/azure/iot-central/retail/toc.json&bc=/azure/iot-central/retail/breadcrumb/toc.json
     - name: Mik azok az alkalmazássablonok?

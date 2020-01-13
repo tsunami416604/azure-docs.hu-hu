@@ -61,6 +61,8 @@
           href: how-dev-spaces-works.md
         - name: A VS Code és a Dev Spaces együttes használata
           href: how-vs-code-works-with-dev-spaces.md
+        - name: Hálózati konfiguráció különböző hálózati topológiák esetében
+          href: configure-networking.md
     - name: Útmutató
       items:
         - name: Az Azure Dev Spaces telepítése
