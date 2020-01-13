@@ -1,20 +1,20 @@
 ---
-title: Webalkalmazás migrálása a Google Maps szolgáltatásból | Microsoft Docs
-description: Egy webalkalmazás Google Mapsből Microsoft Azure Maps-be történő áttelepítésével kapcsolatos oktatóanyag.
+title: 'Oktatóanyag: webalkalmazás migrálása a Google Maps szolgáltatásból | Microsoft Azure térképek'
+description: Webalkalmazások áttelepítésének módja a Google Maps szolgáltatásból Microsoft Azure Maps-be.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 12/17/2019
-ms.topic: conceptual
+ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: a414d7b15f81ab81783b66f8297a207afe569365
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 08566283181a4bb15f77016834c4dc0dffc184b7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562170"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910869"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
 

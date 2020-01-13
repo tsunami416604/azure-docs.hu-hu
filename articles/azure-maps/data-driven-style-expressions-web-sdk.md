@@ -1,6 +1,6 @@
 ---
-title: Adatvezérelt stílusú kifejezések a Azure Maps web SDK-ban | Microsoft Docs
-description: Adatvezérelt stílusú kifejezések használata a Azure Maps web SDK-ban.
+title: Adatvezérelt stílusú kifejezések a Azure Maps web SDK-ban | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan használhatja az adatvezérelt stílusú kifejezéseket a Microsoft Azure Maps web SDK-ban.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 4/4/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendleton
 ms.custom: codepen
-ms.openlocfilehash: 6cd69ba8abe243daadf5d517ab7c5a224953cc99
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 8372012734d937da99c32d2d18fed91ae52c7444
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480645"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911778"
 ---
 # <a name="data-driven-style-expressions-web-sdk"></a>Adatvezérelt stílusú kifejezések (web SDK)
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 06/25/2019
 ms.author: wesmc
-ms.openlocfilehash: 3cdeecd5b7698274b899832d7a66a5572a114e4b
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 139d1a470c67d5dab310c4fa2a9171f433df2061
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954519"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912366"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>A IoT fejlesztői készlet AZ3166 összekapcsolásával az Azure IoT Hub
 
@@ -174,7 +174,7 @@ A következő lépésekkel készítheti elő a fejlesztési környezetet a fejle
     > [Az Azure IoT Tools Extension Pack telepítése](vscode:extension/vsciot-vscode.azure-iot-tools)
 
     > [!NOTE]
-    > Az Azure IoT Tools Extension Pack tartalmazza az [Azure IoT Device workbencht](https://aka.ms/iot-workbench) , amely különböző IoT-fejlesztői készlet eszközök fejlesztésére és hibakeresésére szolgál. Az Azure [IoT hub Toolkit](https://aka.ms/iot-toolkit), amelyet az Azure IoT Tools Extension Pack is tartalmaz, az Azure IoT hubok felügyeletére és kezelésére szolgál.
+    > Az Azure IoT Tools Extension Pack tartalmazza az [Azure IoT Device workbencht](https://aka.ms/iot-workbench) , amely különböző IoT-fejlesztői készlet eszközök fejlesztésére és hibakeresésére szolgál. Az Azure [IoT hub-bővítmény](https://aka.ms/iot-toolkit)az Azure IoT Tools Extension Pack csomagban is megtalálható, amely az Azure IoT-hubok felügyeletére és kezelésére szolgál.
 
 5. Állítsa be a VS Code-ot az Arduino-beállításokkal.
 
@@ -270,7 +270,7 @@ Az Azure IoT Hub és az eszköznek a Azure Portalból való kiépítése helyett
 
     ![IoT Hub kiválasztása](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/select-iot-hub.png)
 
-    ![Selected IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
+    ![Kiválasztott IoT Hub](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/iot-hub-selected.png)
 
 1. A kimeneti ablakban megjelenik az Azure IoT Hub kiépítve.
 
@@ -328,7 +328,7 @@ Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-
 
 1. Jelentkezzen be [Azure Portal](https://portal.azure.com/), keresse meg a létrehozott IoT hub.
 
-    ![Azure Portal](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
+    ![Azure portál](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/azure-iot-hub-portal.png)
 
 1. A **megosztott elérési házirendek** ablaktáblán kattintson a **iothubowner házirendre**, és jegyezze fel az IoT hub kapcsolati karakterláncát.
 

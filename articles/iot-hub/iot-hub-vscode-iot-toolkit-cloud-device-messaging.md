@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 01/18/2019
 ms.author: junhan
-ms.openlocfilehash: 785c6f2b36396558cc21ce6c025be59c456ff32d
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 0b081229dcb382786fea03dff358b5cc47d77ee7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083256"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912019"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-to-send-and-receive-messages-between-your-device-and-iot-hub"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata üzenetek küldéséhez és fogadásához az eszköz és a IoT Hub között
 
@@ -64,11 +64,11 @@ Az eszközről az IoT hubhoz küldött üzenetek figyeléséhez kövesse az alá
 
 1. Kattintson a jobb gombbal az eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget.
 
-2. A figyelt üzenetek megjelennek a **kimenet** > **Azure IoT hub Toolkit** nézetben.
+2. A figyelt üzenetek megjelennek a **kimenet** > **Azure IoT hub** nézetben.
 
 3. A figyelés leállításához kattintson a jobb gombbal a **kimenet** nézetre, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
 
-## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
+## <a name="send-cloud-to-device-messages"></a>Üzenetek küldése a felhőből eszközökre
 
 Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
@@ -76,7 +76,7 @@ Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub Toolkit** nézetben jelennek meg.
+3. Az eredmények megjelennek a **kimenet** > **Azure IoT hub** nézetben.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,18 +1,18 @@
 ---
 title: Azure Adatkezelő-fürt és-adatbázis létrehozása a Python használatával
 description: Ismerje meg, hogyan hozhat létre Azure Adatkezelő-fürtöt és-adatbázist a Python használatával.
-author: oflipman
-ms.author: oflipman
+author: lucygoldbergmicrosoft
+ms.author: lugoldbe
 ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b3329ccb3edb3077a45e3bbf9ba7b48d7e3a93a2
-ms.sourcegitcommit: 9f330c3393a283faedaf9aa75b9fcfc06118b124
+ms.openlocfilehash: 5a3a7d79e43a4e0b4a160837be4d7f3cc33f4a91
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2019
-ms.locfileid: "71996230"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911939"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-python"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a Python használatával
 
@@ -24,7 +24,7 @@ ms.locfileid: "71996230"
 > * [Python](create-cluster-database-python.md)
 > * [ARM-sablon](create-cluster-database-resource-manager.md)
 
-Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet többek között alkalmazások, webhelyek és IoT-eszközök nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a Python használatával.
+Az Azure Data Explorer egy gyors, teljes mértékben felügyelt adatelemző szolgáltatás, amellyel valós idejű elemzést végezhet alkalmazások, webhelyek, IoT-eszközök és egyebek nagy mennyiségű adatfolyamain. Az Azure Adatkezelő használatához először létre kell hoznia egy fürtöt, és létre kell hoznia egy vagy több adatbázist a fürtben. Ezután betöltheti az adatterhelést egy adatbázisba, így lekérdezéseket futtathat. Ebben a cikkben egy fürtöt és egy adatbázist hoz létre a Python használatával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,8 +38,8 @@ Az Azure Adatkezelő (Kusto) Python-csomagjának telepítéséhez nyisson meg eg
 pip install azure-common
 pip install azure-mgmt-kusto
 ```
-## <a name="authentication"></a>Authentication
-A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Az Azure ad- [alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) létrehozásával hozzon létre egy ingyenes Azure ad-alkalmazást, és adja hozzá a szerepkör-hozzárendelést az előfizetési hatókörhöz. Azt is bemutatja, hogyan kérheti le a `Directory (tenant) ID`, `Application ID` és `Client Secret` értéket.
+## <a name="authentication"></a>Hitelesítés
+A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmazásra és egy egyszerű szolgáltatásra, amely hozzáférhet az erőforrásokhoz. Az Azure ad- [alkalmazás](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) létrehozásával hozzon létre egy ingyenes Azure ad-alkalmazást, és adja hozzá a szerepkör-hozzárendelést az előfizetési hatókörhöz. Azt is bemutatja, hogyan kérhető le a `Directory (tenant) ID`, a `Application ID`és a `Client Secret`.
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása
 
@@ -87,7 +87,7 @@ A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmaz�
    | resource_group_name | *testrg* | Az erőforráscsoport neve, amelyben a fürt létre lesz hozva. |
 
     > [!NOTE]
-    > **A fürt létrehozása** hosszú ideig futó művelet. A **create_or_update** metódus a LROPoller egy példányát adja vissza. További információ: [LROPoller osztály](/python/api/msrest/msrest.polling.lropoller?view=azure-python) .
+    > **A fürt létrehozása** hosszú ideig futó művelet. A metódus **create_or_update** a LROPoller egy példányát adja vissza: a [LROPoller osztály](/python/api/msrest/msrest.polling.lropoller?view=azure-python) további információkat kaphat.
 
 1. A következő parancs futtatásával győződjön meg arról, hogy a fürt létrehozása sikeres volt-e:
 
@@ -95,7 +95,7 @@ A cikkben szereplő példák futtatásához szükség van egy Azure AD-alkalmaz�
     cluster_operations.get(resource_group_name = resource_group_name, cluster_name= clusterName, custom_headers=None, raw=False)
     ```
 
-Ha az eredmény `provisioningState` értéket tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása sikeresen megtörtént.
+Ha az eredmény `provisioningState`t tartalmaz a `Succeeded` értékkel, akkor a fürt létrehozása sikeresen megtörtént.
 
 ## <a name="create-the-database-in-the-azure-data-explorer-cluster"></a>Az adatbázis létrehozása az Azure Adatkezelő-fürtben
 
@@ -143,6 +143,6 @@ Most már rendelkezik egy fürttel és egy adatbázissal.
     cluster_operations.delete(resource_group_name = resource_group_name, cluster_name = clusterName)
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Adatbevitel az Azure Adatkezelő Python Library használatával](python-ingest-data.md)

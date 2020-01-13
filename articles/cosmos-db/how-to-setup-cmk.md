@@ -4,14 +4,15 @@ description: Ismerje meg, hogyan konfigurálhatja az ügyfél által felügyelt 
 author: ThomasWeiss
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 01/09/2020
+ms.date: 01/11/2020
 ms.author: thweiss
-ms.openlocfilehash: 32266abd5bcf8d7e137095d130ee872cc07edaf0
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ROBOTS: noindex, nofollow
+ms.openlocfilehash: 964c3e4e2de43e6bcae353f0b525eb62e6613361
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904080"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911865"
 ---
 # <a name="configure-customer-managed-keys-for-your-azure-cosmos-db-account"></a>Ügyfél által felügyelt kulcsok konfigurálása a Azure Cosmos DB-fiókhoz
 
@@ -30,13 +31,13 @@ Az ügyfél által felügyelt kulcsok jelenleg csak az új fiókok számára ér
 
 ### <a name="1-make-sure-the-azure-cosmos-db-resource-provider-is-registered-for-your-azure-subscription"></a>1. Győződjön meg arról, hogy a Azure Cosmos DB erőforrás-szolgáltató regisztrálva van az Azure-előfizetéséhez
 
-A Azure Portal nyissa meg az Azure-előfizetését, és válassza az "erőforrás-szolgáltatók" lehetőséget a bal oldali menüben:
+A Azure Portal nyissa meg az Azure-előfizetését, és válassza az **erőforrás-szolgáltatók** lehetőséget a bal oldali menüben:
 
 !["Erőforrás-szolgáltatók" bejegyzés a bal oldali menüben](./media/how-to-setup-cmk/portal-rp.png)
 
-Keresse meg a "Microsoft. DocumentDB" erőforrás-szolgáltatót.
+Keresse meg a **Microsoft. DocumentDB** erőforrás-szolgáltatót.
 - Ha az erőforrás-szolgáltató már regisztráltként van megjelölve, semmit nem kell végrehajtania.
-- Ha nem, válassza ki, majd kattintson a "regisztráció" gombra:
+- Ha nem, jelölje ki, majd kattintson a **regisztrálás**gombra:
 
     ![A Microsoft. DocumentDB erőforrás-szolgáltató regisztrálása](./media/how-to-setup-cmk/portal-rp-register.png)
 
@@ -50,34 +51,34 @@ Ha meg szeretné tudni, hogyan engedélyezheti ezeket a tulajdonságokat egy meg
 
 ### <a name="3-add-an-access-policy-to-your-azure-key-vault-instance"></a>3. hozzáférési szabályzat hozzáadása az Azure Key Vault-példányhoz
 
-A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. Ezután válassza a bal oldali menüben a "hozzáférési szabályzatok" elemet:
+A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. Ezután válassza a bal oldali menü **hozzáférési szabályzatok** elemét:
 
 !["Hozzáférési szabályzatok" a bal oldali menüben](./media/how-to-setup-cmk/portal-akv-ap.png)
 
-- Kattintson a "+ hozzáférési szabályzat hozzáadása" elemre.
-- A "kulcs engedélyei" legördülő menüben válassza a "Get", "kicsomagolási kulcs" és "wrap Key" lehetőséget:
+- Válassza a **+ hozzáférési házirend hozzáadása** lehetőséget
+- A **kulcs engedélyei** legördülő menüben válassza a **beolvasás**, **kulcs kicsomagolása** és **becsomagolási kulcs**elemet:
 
     ![A megfelelő engedélyek kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap-perm2.png)
 
-- A "tag kiválasztása" területen kattintson a "nincs kijelölt" elemre, keresse meg és válassza ki a "Azure Cosmos DB" rendszerbiztonsági tag elemet, majd kattintson alul a "kiválasztás" gombra (ha a "Azure Cosmos DB" rendszerbiztonsági tag nem található, akkor előfordulhat, hogy újra regisztrálnia kell a "Microsoft. DocumentDB" erőforrást. szolgáltató a 2. lépésben):
+- A **rendszerbiztonsági tag kiválasztása**területen válassza a **nincs kiválasztva**lehetőséget. Ezután keresse meg és válassza ki a **Azure Cosmos db** rendszerbiztonsági tag. Végül kattintson a lenti **kijelölés** gombra (ha a **Azure Cosmos db** rendszerbiztonsági tag nem található, előfordulhat, hogy újra regisztrálnia kell a **Microsoft. DocumentDB** erőforrás-szolgáltatót az 1. lépésben):
 
     ![A Azure Cosmos DB rendszerbiztonsági tag kiválasztása](./media/how-to-setup-cmk/portal-akv-add-ap.png)
 
-- Az új hozzáférési szabályzat hozzáadásához kattintson a "Hozzáadás" gombra.
+- Válassza a **Hozzáadás** lehetőséget az új hozzáférési szabályzat hozzáadásához
 
 ### <a name="4-generate-a-key-in-azure-key-vault"></a>4. kulcs létrehozása a Azure Key Vaultban
 
-A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. Ezután válassza a "kulcsok" lehetőséget a bal oldali menüben:
+A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kívánt Azure Key Vault-példányra. Ezután válassza a bal oldali menü **kulcsok** elemét:
 
 !["Keys" bejegyzés a bal oldali menüben](./media/how-to-setup-cmk/portal-akv-keys.png)
 
-- Kattintson a "létrehozó/Importálás" elemre.
-- Adja meg az új kulcs nevét, válasszon ki egy RSA-kulcs méretét (legalább 3072 ajánlott a legjobb biztonság érdekében), majd kattintson a "létrehozás" gombra:
+- **Előállítási/importálási** lehetőség kiválasztása
+- Adja meg az új kulcs nevét, válasszon ki egy RSA-kulcs méretét (legalább 3072 ajánlott a legjobb biztonság érdekében), majd válassza a **Létrehozás**lehetőséget:
 
     ![Új kulcs létrehozása](./media/how-to-setup-cmk/portal-akv-gen.png)
 
 - A kulcs létrehozása után kattintson az újonnan létrehozott kulcsra, majd a jelenlegi verziójára
-- Másolja a kulcs azonosítóját a legutolsó perjel utáni rész kivételével:
+- Másolja a kulcs **azonosítóját** a legutolsó perjel utáni rész kivételével:
 
     ![A kulcs kulcs-azonosítójának másolása](./media/how-to-setup-cmk/portal-akv-keyid.png)
 
@@ -85,15 +86,18 @@ A Azure Portal lépjen a titkosítási kulcsok üzemeltetéséhez használni kí
 
 #### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
-Amikor új Azure Cosmos DB fiókot hoz létre a Azure Portal, a "titkosítás" lépésnél válassza az "ügyfél által felügyelt kulcs" lehetőséget. A "kulcs URI-ja" mezőben adja meg a 4. lépésből másolt Azure Key Vault kulcs URI-JÁT:
+Amikor új Azure Cosmos DB fiókot hoz létre a Azure Portalból, válassza az **ügyfél által felügyelt kulcs** elemet a **titkosítási** lépésnél. A **kulcs URI** mezőjében adja meg a 4. lépésből másolt Azure Key Vault kulcs URI-ját:
 
 ![CMK paraméterek beállítása a Azure Portalban](./media/how-to-setup-cmk/portal-cosmos-enc.png)
 
 #### <a name="using-powershell"></a>A PowerShell használata
 
 Új Azure Cosmos DB-fiók létrehozásakor a PowerShell-lel
-- a "PropertyObject" "keyVaultKeyUri" tulajdonságában a 4. lépésben átmásolt Azure Key Vault kulcs URI-JÁT adja át.
+- adja át a **PropertyObject** **keyVaultKeyUri** tulajdonsága alatt a 4. lépésből másolt Azure Key Vault kulcs URI-ját.
 - Győződjön meg arról, hogy az "2019-12-12" API-verzióként használja.
+
+> [!IMPORTANT]
+> A `Location` paramétert explicit módon kell megadni ahhoz, hogy a fiók sikeresen létre legyen hozva a CMK használatával.
 
 ```powershell
 $resourceGroupName = "myResourceGroup"
@@ -118,10 +122,13 @@ New-AzResource -ResourceType "Microsoft.DocumentDb/databaseAccounts" `
 #### <a name="using-azure-resource-manager-templates"></a>Azure Resource Manager-sablonok használata
 
 Új Azure Cosmos DB fiók létrehozásakor Azure Resource Manager sablonon keresztül:
-- adja át a "tulajdonságok" objektum "keyVaultKeyUri" tulajdonságában a 4. lépésben átmásolt Azure Key Vault kulcs URI-JÁT.
+- adja át a 4. lépésből másolt Azure Key Vault kulcs URI-JÁT a **Tulajdonságok** objektum **keyVaultKeyUri** tulajdonságában.
 - Ügyeljen arra, hogy az "2019-12-12" API-verzióként használja
 
-```
+> [!IMPORTANT]
+> A `location` paramétert explicit módon kell megadni ahhoz, hogy a fiók sikeresen létre legyen hozva a CMK használatával.
+
+```json
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",

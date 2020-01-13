@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
-ms.openlocfilehash: 78b73688306fb51278afba7283a1ea82af603349
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7705ea3b60d8c8e2b189ad555d1b53fa395aa1fb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459165"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912522"
 ---
 Az Azure Compute olyan virtuálisgép-méreteket kínál, amelyek egy meghatározott hardvertípusban vannak elkülönítve, és egyetlen ügyfél számára vannak fenntartva.  Ezek a virtuálisgép-méretek olyan számítási feladatokhoz megfelelőek, amelyeket magas szintű izolációval szükséges elkülöníteni más ügyfelek számítási feladataitól, beleértve olyan elemeket is mint a megfelelőség vagy a jogszabályi előírások betartása.  Az ügyfelek emellett dönthetnek úgy is, hogy a [beágyazott virtuális gépek Azure-támogatásának](https://azure.microsoft.com/blog/nested-virtualization-in-azure/)használatával tovább alcsoportba helyezik az elkülönített virtuális gépek erőforrásait.
 
@@ -30,7 +30,7 @@ Az elkülönített méret kihasználása garantálja, hogy a virtuális gép az 
 Az összes rendelkezésre álló elszigetelt méretről [itt](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)olvashat bővebben.
 
 ## <a name="retiring-d15_v2ds15_v2-isolation-on-february-15-2020"></a>D15_v2/DS15_v2 elkülönítés kivonása 2020. február 15-én
-Az Azure dedikált gazdagép most már GA, amely lehetővé teszi a szervezet Linux és Windows rendszerű virtuális gépei futtatását egybérlős fizikai kiszolgálókon. Azt tervezzük, hogy az elkülönített Azure-beli virtuális gépeket teljesen lecseréljük az Azure dedikált gazdagépre. A **2020. február 15** . után az Azure-beli virtuális gépek D15_v2/DS15_v2 már nem különíthető el a hardver.
+Az Azure dedikált gazdagép most már GA, amely lehetővé teszi a szervezet Linux és Windows rendszerű virtuális gépei futtatását egybérlős fizikai kiszolgálókon. Azt tervezzük, hogy az elkülönített Azure-beli virtuális gépeket teljesen lecseréljük az Azure dedikált gazdagépre. **Február 2020 15.** után a D15_v2/DS15_v2 Azure-beli virtuális gépek többé nem lesznek elkülönítve a hardveren.
 
 ## <a name="how-does-this-affect-me"></a>Hogyan érint ez engem?
 2020. február 15-én már nem biztosítunk elkülönítési garanciát a D15_v2/DS15_v2 Azure-beli virtuális gépekhez. 

@@ -1,6 +1,6 @@
 ---
-title: Fürtözési pontra vonatkozó adatAzure Maps | Microsoft Docs
-description: A fürtözési pontok adatkezelése a web SDK-ban
+title: A csoportosítási pontra vonatkozó adatelemek | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg a fürtökkel kapcsolatos információkat, és hogyan teheti azt egy térképen a Microsoft Azure Maps web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: 56d9a9a629e64430c97cf392ee4381e1ad7ca906
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 846abb61511ae1d5aedf77059ed2f1e9f4e5dbfb
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433034"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911742"
 ---
 # <a name="clustering-point-data"></a>Fürtözési pontra vonatkozó adatértékek
 

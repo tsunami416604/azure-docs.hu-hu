@@ -1,6 +1,6 @@
 ---
-title: Adatforrás létrehozása Azure Mapsban | Microsoft Docs
-description: Adatforrás létrehozása és használata Azure Maps web SDK-val.
+title: Adatforrás létrehozása térképhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan hozhat létre egy adatforrást, és hogyan adhatja hozzá egy térképhez a Microsoft Azure Maps web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 08/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: codepen
-ms.openlocfilehash: b83a66296d54a179a56e37de199ec900ae23a1db
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 74b45d3f7fa7d0e13b8767d4a887d8a22cad3a30
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433013"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911721"
 ---
 # <a name="create-a-data-source"></a>Adatforrás létrehozása
 

@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2019
 ms.author: sharadag
-ms.openlocfilehash: 39051014e5e474264a44983fb366bc08f02c31e0
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dd315277e6e8f29a103760d605a7da4603190c20
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639854"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908868"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door-service"></a>Gyakori kérdések az Azure-előtérben szolgáltatásról
 
@@ -99,7 +99,7 @@ Ha úgy szeretné zárolni az alkalmazást, hogy csak a megadott bejárati ajtó
     > Előfordulhat, hogy a bejárati ajtó háttérbeli IP-címe később is változhat, ezért a megjelenő esetekben biztosítani fogjuk, hogy az [Azure IP-címtartományok és a szolgáltatási címkék](https://www.microsoft.com/download/details.aspx?id=56519)integrálva lennének. Javasoljuk, hogy az [Azure IP-címtartományok és a szolgáltatás-címkék](https://www.microsoft.com/download/details.aspx?id=56519) esetében minden módosítást és frissítést előfizessen.
 
 -   Szűrje a bejárati ajtó által küldött "**X-Forwarded-Host**" fejléc értékeit. A fejléc csak a bejárati ajtó konfigurációjában meghatározott összes előtér-gazdagépet tartalmazhat. Valójában még pontosabban csak azok az állomásnevek szerepelnek, amelyekről el szeretné fogadni a forgalmat.
-    - Példa – tegyük fel, hogy a bejárati ajtó konfigurációja a következő előtér-gazdagépekkel rendelkezik _`contoso.azurefd.net`_ (A), a _`www.contoso.com`_ (B), a _ (C) és a _`notifications.contoso.com`_ (D). Tegyük fel, hogy van két háttér X és Y. 
+    - Példa – tegyük fel, hogy a bejárati ajtó konfigurációja a következő előtér-gazdagépekkel rendelkezik _`contoso.azurefd.net`_ (A), a _`www.contoso.com`_ (B), a _`api.contoso.com`_ (C) és a _`notifications.contoso.com`_ (D). Tegyük fel, hogy van két háttér X és Y. 
     - Az X háttérrendszer csak az A és B állomásnévből származó forgalmat veszi át. A háttér Y az A, C és D adatforgalomból is elvégezhető.
     - Tehát az X háttérrendszer esetében csak olyan forgalmat kell fogadnia, amelynél a "**X-Forwarded-Host**" fejléc van beállítva _`contoso.azurefd.net`_ vagy _`www.contoso.com`_ . Minden más esetében a háttér-X-nek el kell utasítania a forgalmat.
     - Hasonlóképpen, a háttérbeli Y-ben csak olyan forgalmat kell fogadnia, amelynél a "**X-Forwarded-Host**" fejléc van beállítva _`contoso.azurefd.net`_ , _`api.contoso.com`_ vagy _`notifications.contoso.com`_ . Minden más esetében a háttérbeli Y-nek el kell utasítania a forgalmat.

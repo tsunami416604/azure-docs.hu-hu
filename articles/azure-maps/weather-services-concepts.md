@@ -1,6 +1,6 @@
 ---
-title: Időjárási szolgáltatások – fogalmak a Azure Mapsban | Microsoft Docs
-description: További információ a Azure Maps időjárási szolgáltatásairól
+title: Időjárási szolgáltatások – fogalmak | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, milyen fogalmakat kell alkalmazni a Microsoft Azure Maps időjárási szolgáltatásokra vonatkozóan.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 9d464ab172fcb375d62b9928818362574a485231
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4bf13477bfee39b5be39715374592811e8f8cc89
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382310"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911029"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
 
@@ -26,8 +26,8 @@ A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, h
 |unitType|Leírás         |
 |--------|--------------------|
 |0       |méter                |
-|1       |hüvelyk              |
-|2       |mérföldre               |
+|1       |Hüvelyk              |
+|2       |mérföld               |
 |3       |milliméter          |
 |4       |centiméter          |
 |5       |mérő               |
@@ -54,7 +54,7 @@ A Weather Service API-k némelyike lehetővé teszi a felhasználó számára, h
 
 Néhány időjárási szolgáltatás API-k visszatérési ikon kódok (iconCode) a válaszban, egy numerikus érték, amely az ikon definiálására használható. Ne hivatkozzon közvetlenül az alkalmazásokból származó rendszerképekre, az URL-címek módosíthatók és módosíthatók.
 
-| Ikon száma |Ikon| Day | éjszaka | Szöveg |
+| Ikon száma |Ikon| Nap | Éjszaka | Szöveg |
 |-------------|:----:|-----|-------|------|
 | 1           |![](./media/weather-services-concepts/sunny-i.png)                      | Igen |  Nem    | Sunny|
 | 2           |![](./media/weather-services-concepts/mostly-sunny.png)                | Igen |  Nem    | Többnyire napos|
@@ -77,12 +77,12 @@ Néhány időjárási szolgáltatás API-k visszatérési ikon kódok (iconCode)
 | 21           |![](./media/weather-services-concepts/partly-sunny-flurries.png)       | Igen |  Nem    | Részben Sunny a Flurries|
 | 22           |![](./media/weather-services-concepts/snow-i.png)                      | Igen |  Igen   | Vízisízni|
 | 23           |![](./media/weather-services-concepts/mostly-cloudy-snow.png)          | Igen |  Nem    | Jórészt Felhőbeli|
-| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Igen |  Igen   | Jég |
+| 24           |![](./media/weather-services-concepts/ice-i.png)                       | Igen |  Igen   | Ice |
 | 25           |![](./media/weather-services-concepts/sleet-i.png)                     | Igen |  Igen   | Ónos eső|
 | 26           |![](./media/weather-services-concepts/freezing-rain.png)              | Igen |  Igen   | Fagyasztási eső|
 | 29           |![](./media/weather-services-concepts/rain-snow.png)                  | Igen |  Igen   | Eső és hó|
 | 30           |![](./media/weather-services-concepts/hot-i.png)                       | Igen |  Igen   | Gyakori|
-| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Igen |  Igen   | Hideg|
+| 31           |![](./media/weather-services-concepts/cold-i.png)                      | Igen |  Igen   | Ritka elérésű|
 | 32           |![](./media/weather-services-concepts/windy-i.png)                     | Igen |  Igen   | Szeles|
 | 33           |![](./media/weather-services-concepts/clear-night.png)                | Nem  |  Igen   | Törlés|
 | 34           |![](./media/weather-services-concepts/mostly-clear-night.png)          | Nem  |  Igen   | Többnyire egyértelmű|

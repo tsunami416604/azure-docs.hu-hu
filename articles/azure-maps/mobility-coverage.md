@@ -1,6 +1,6 @@
 ---
-title: Mobilitási lefedettség a Azure Mapsban | Microsoft Docs
-description: Tudnivalók a mobilitási lefedettségről Azure Maps
+title: Mobilitási (tranzit) lefedettség | Microsoft Azure térképek
+description: Ebben a cikkben megismerheti a mobilitási lefedettséget Microsoft Azure Maps-ben
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1fcad7d3d0cc45f0cfdc0d6523d5fdbc8f573fe2
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 658d282260b6c9c427527fdc07bf05a0218fda4a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73576995"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910706"
 ---
 # <a name="azure-maps-mobility-coverage"></a>Azure Maps mobilitási lefedettség
 
@@ -28,7 +28,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 |--------|---------|
 | *      |Szinte teljes lefedettség az ország/régió számára.|
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió |  Város (metró) |
 |----------------|---------|
@@ -46,7 +46,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Peru | Cusco, Lima |
 | Puerto Rico | San Juan |
 | Uruguay | Montevideo, Punta del este |
-| Amerika Egyesült Államok | <p>Albany (NY), Albuquerque (NM), Anchorage (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Athén (OH), Atlanta (GA), Austin (TX), a Bakersfield (CA), a Baltimore), a Bellevue (WA), a Berkshire megyei (MA), Birmingham (AL), Bloomington (IN), Boise (ID), Boston ( MA), Boulder (CO) Brevard County (FL), Buffalo (NY), Butte (MT), Cape Cod), középső megye (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (OH), Citrus County (FL), Cleveland (OH), Coachella Valley (CA), Colorado Springs (CO), Columbia (TN), Columbus (OH), Corpus Christi (TX), Dallas/Forth Worth (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (MN), el Paso (TX), Eugene (vagy ), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (AZ), Flint (MI) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), Grand Forks (ND), Grand Rapids (MI), Green Bay (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), Hampton Roads (VA ), Hanford (CA), Hartford (CT), Hernando megye (FL), Honolulu (HI), Houston (TX), Humboldt megye (CA), Huntsville (AL), Indianapolis (IN), Ithaca (), Ithaca (NY), Jackson (MS), Jackson (TN), Jacksonville – St. John 's County (FL), Johnson City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Lee County (FL), Lexington (KY), Lincoln County (vagy), Little Rock (AR), Los Angeles ( CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe County (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navajo Nation), New Haven (CT), New Orleans (LA), NYC-NJ), Ocala (FL), Okaloosa County (FL), Oklahoma City (OK), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), Portland (ME), Portland (vagy), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke-völgy (VA-Lynchburg), Rochester (NY), Rocky Mountain National Park), gazember völgy (vagy), Roseburg (OR), Roseville (CA), Sacramento (CA), Salem (vagy), Salt Lake City (UT), San Antonio (TX), San Diego ( CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast Region (NH), Seattle-Tacoma-Bellevue (WA), SF Bay terület (CA), Sioux City (IA), Sioux Falls (SD), Sitka (AK), Spokane (WA), Springfield (IL), Springfield (Mass), St. George (UT), St. Louis (MO), Stockton (CA), Siracusa-Utica (NY), Tallahassee (FL), Tampa-Szentpétervár (FL), Terre Haute (IN), Toledo (OH), Topeka (KS), Traversing City (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia County (FL), Waco (TX), Washington (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York megye (PA), Yuma megye (AZ)</p>|
+| Amerikai Egyesült Államok | <p>Albany (NY), Albuquerque (NM), Anchorage (AK), Appleton-Oshkosh-Neenah (WI), Asheville (NC), Athén (OH), Atlanta (GA), Austin (TX), Bakersfield (CA), Baltimore), Bellevue (WA), Berkshire County (MA), Birmingham (AL), Bloomington (IN), Boise (ID), Boston (MA), Boulder (CO) Brevard County (FL), Buffalo (NY), Butte (MT), Cape Cod), középső megye (PA), Champaign-Urbana (IL), Charleston (SC), Charleston (WV), Charlotte (NC), Charlottesville (VA), Chattanooga (TN), Cheyenne (WY), Chicago (IL), Cincinnati (OH), Citrus County (FL), Cleveland (OH), Coachella Valley (CA), Colorado Springs (CO), Columbia (TN), Columbus (OH), Corpus Christi (TX), Dallas/Forth Worth (TX), Dayton (OH), Delaware, Denver (CO), Des Moines (IA), Detroit (MN), el Paso (TX), Eugene (vagy), Fairbanks (AK), Fargo (ND), Fayetteville (NC), Flagstaff (az), Flint (MI) Fort Collins (CO), Fort Wayne (IN), Fresno (CA), Gainesville (FL), Grand Forks (ND), Grand Rapids (MI), Green Bay (WI), Greensboro (NC), Greenville (SC), Gunnison (CO), Hampton Roads (VA ), Hanford (CA), Hartford (CT), Hernando megye (FL), Honolulu (HI), Houston (TX), Humboldt County (CA), Huntsville (AL), Indianapolis (IN), Ithaca (NY), Jackson (MS), Jackson (TN), Jacksonville-St. John 's County (FL), Johnson City (TN), Jonesboro (AR), Joplin (MO), Juneau (AK), Kalamazoo (MI), Kansas City (MO), Kauai (HI), Ketchum (ID), Knoxville (TN), Lafayette (IN), Lancaster (PA), Lansing (MI), Las Vegas (NV), Lawrence (KS), Lee County (FL), Lexington (KY), Lincoln County (vagy), Little Rock (AR), Los Angeles (CA), Louisville (KY), Madison (WI), McAllen (TX), Memphis (TN), Miami (FL), Milwaukee/Waukesha (WI), Minneapolis-St. Paul (MN), Missoula (MT), Modesto (USA), Moline (IL), Monroe County (PA), Montgomery (AL), Morgantown (WV), Nashville (TN), Navajo Nation), New Haven (CT), New Orleans (LA), New York-NJ), Ocala (FL), Okaloosa County (FL), Oklahoma City (OK), Omaha (NE), Orlando (FL), Panama City (FL), Pensacola (FL), Peoria (IL), Philadelphia (PA), Phoenix (AZ), Pittsburgh (PA), Portland (ME), Portland (vagy), Racine (WI), Raleigh (NC), Redding (CA), Reno & Lake Tahoe (NV), Roanoke Valley (VA-Lynchburg), Rochester (NY), Rocky Mountain National Park), Vadóc-völgy (vagy), Roseburg (vagy), Roseville (CA), Sacramento (CA), Salem (vagy), Salt Lake City (UT), San Antonio (TX), San Diego (CA), San Luis Obispo (CA), Santa Barbara (CA), Santa Fe (NM), Sarasota (FL), Savannah (GA), Seacoast Region (NH), Seattle-Tacoma-Bellevue (WA), SF Bay terület (CA), Sioux City (IA), Sioux Falls (SD), Sitka (AK), Spokane (WA), Springfield (IL), Springfield (Mass), St. George (UT), St. Louis (MO), Stockton (CA), Syracuse-Utica (NY), Tallahassee (FL), Tampa-Szentpétervár (FL), Terre Haute (IN), Toledo (OH), Topeka (KS), bejárási város (MI), Tucson (AZ), Tulsa (OK), Vermont, Victorville (CA), Volusia County (FL), Waco (TX), Washington (DC), Waterbury (CT), Wichita (KS), Wilmington (NC), Yakima (WA), York megye (PA), Yuma County (AZ)</p>|
 | \+ Amerikai Virgin-szigetek | Amerikai Virgin-szigetek * |
 
 
@@ -56,8 +56,8 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 |--------|---------|
 | Ausztrália      | <p>Adelaide, Alice Springs, Bowen, Brisbane, Bundaberg QLD, Burnie, Cairns, Canberra, Darwin, Gladstone, Hobart, Innisfail, Launceston, Mackay, Magnetic Island, Maryborough-Hervey Bay, Melbourne, új-Dél-Wales, Perth, RockHampton, Dél-Kelet Queensland, Sydney, Toowoomba, Townsville, Victoria, Warwick, Yeppoon</p> |
 | Kína | <p> Changchun, Changsha, Chengdu, Chongqing, Dalian, Datong, Dongguan, Hangzhou, Jiangyin, Jinan, Nanjing, Nantong, Ningbo, Pingdingshan, Qingdao, Shenyang, Suzhou, Tangshan, Tianjin, Weifang, Wuhan, Wuxi, Yantai, yixing, Zhuhai, Shanghai, Peking, Guangzhou, Shenzhen, Zhengzhou</P>| 
-| Hongkong (KKT) | Hongkong KKT *|
-| Makaó KKT | Makaó KKT *|
+| Hongkong KKT | Hongkong KKT *|
+| Makaó (KKT) | Makaó KKT *|
 | India | Ahmedabad, Bengaluru, Delhi, Mumbai, Mysuru|
 | Indonézia | Bandung, Banyuwangi, Batam, Denpasar, Jakarta, Kediri, Malang, Palembang, Semarang, Surabaya, Surakarta, Yogyakarta |
 | Japán | Shizuoka prefektúra, Tokió, Wakkanai, Yamanashi Prefektúra |
@@ -85,7 +85,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Bulgária       | <p>Balchik, Blagoevgrad, Burgas, Dobrich, Gabrovo, Haskovo, Kardzhali, Lovech, Nessebar, Pazardzhik, Pleven, Plovdiv, Ruse, Shumen, Szliven, Stara Zagora, Vratsa, Jambol, Várna, Veliko, Szófia</P> |
 | Horvátország | Crikvenica, Dubrovnik, Rijeka, Slovanski Brod, Zágráb | 
 | Ciprus | Larnaca, Limassol, Nicosia | 
-| Cseh Köztársaság | Brno, Jablonec, Karlovy Vary, Liberec, Ostrava, Prága | 
+| Csehország | Brno, Jablonec, Karlovy Vary, Liberec, Ostrava, Prága | 
 | Dánia   | Dánia |
 | Észtország   | Észtország |   
 | Finnország   | Hämeenlinna, Helsinki, Joensuu, Jyväskylä, Kajani, Kouvola-Kotka, Kuopio, Lappeenranta, Mikkeli, Oulu, Seinäjoki, Tampere, Turku, Vaasa|
@@ -138,7 +138,7 @@ Az alábbi táblázat a Azure Maps mobilitási szolgáltatás lefedettségi info
 | Egyesült Arab Emírségek  | Abu Dhabi, Dubaj |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 

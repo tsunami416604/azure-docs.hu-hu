@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 03997bb6999af9ebaad36cc95f7834e3b9ed4569
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 9d4d82472664900c96b77b31740573d0463465b8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953198"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911910"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez
 
@@ -71,7 +71,7 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 2. Adja meg a metódus nevét és a hasznos adatokat a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub Toolkit** nézetben jelennek meg.
+3. Az eredmények megjelennek a **kimenet** > **Azure IoT hub** nézetben.
 
 ## <a name="read-device-twin"></a>Írásvédett eszköz – Twin
 
@@ -87,7 +87,7 @@ A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző fel�
 
 3. Válassza az **eszköz Twin frissítése** lehetőséget az eszköz dupla frissítéséhez.
 
-## <a name="send-cloud-to-device-messages"></a>Üzenetküldés a felhőből az eszközökre
+## <a name="send-cloud-to-device-messages"></a>Üzenetek küldése a felhőből eszközökre
 
 Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
  
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve küldhet üzenetet az IoT hub-ról az eszközre:
 
 2. Adja meg az üzenetet a beviteli mezőben.
 
-3. Az eredmények a **kimenet** > **Azure IoT hub Toolkit** nézetben jelennek meg.
+3. Az eredmények megjelennek a **kimenet** > **Azure IoT hub** nézetben.
 
 ## <a name="next-steps"></a>Következő lépések
 

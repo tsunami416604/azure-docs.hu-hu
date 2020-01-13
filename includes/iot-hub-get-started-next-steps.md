@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 02/14/2019
 ms.author: robinsh
 ms.custom: include file
-ms.openlocfilehash: fc4b613eb9e77acef4568ef93b7606fb43568f82
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c8bf7f3a423b97f6cd84f0b575d00d60776c598c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66476013"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911930"
 ---
-Ismerkedés az Azure IoT Hub és az összes kiterjesztett IoT-forgatókönyvek megismerése a folytatáshoz tekintse meg a következőket:
+Az Azure IoT Hub használatának megkezdéséhez és az összes kiterjesztett IoT-forgatókönyv megismeréséhez tekintse meg a következőket:
 
-- [Eszközök felhőalapú üzenetkezelése az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
+- [Felhőalapú eszközök üzenetkezelésének kezelése az Azure IoT Hub bővítménnyel a Visual Studio Code-hoz](../articles/iot-hub/iot-hub-vscode-iot-toolkit-cloud-device-messaging.md)
 
-- [Eszközök kezelése az Azure IoT Hub-eszközkészlet bővítmény a Visual Studio Code](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
+- [Eszközök kezelése az Azure IoT Hub bővítménnyel a Visual Studio Code-hoz](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)
 
-- [Állítsa be a üzenet-útválasztása](../articles/iot-hub/tutorial-routing.md)
+- [Üzenet-útválasztás beállítása](../articles/iot-hub/tutorial-routing.md)
 
 - [Az IoT Hub valós idejű érzékelői adatainak megjelenítése a Power BI használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)
 
-- [Az IoT hub valós idejű érzékelői adatainak megjelenítése a web app használatával](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
+- [Webalkalmazás használata az IoT hub valós idejű érzékelői adatainak megjelenítéséhez](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)
 
 - [Időjárás-előrejelzés az IoT Hub érzékelői adataival az Azure Machine Learningben](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)
 

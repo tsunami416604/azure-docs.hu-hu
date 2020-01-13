@@ -9,12 +9,12 @@ ms.service: iot-dps
 services: iot-dps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 73d2e075dd4d3cf9e9b37aa9131ab5f4c822e140
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 4e84a43f8984e2adeac916e467a8cac693ee453d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895914"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912437"
 ---
 # <a name="quickstart-provision-a-simulated-device-with-symmetric-keys"></a>Rövid útmutató: Szimmetrikus kulcs kiosztása szimulált eszköz számára
 
@@ -51,6 +51,8 @@ Az SDK tartalmaz szimulált eszközök esetében használható mintakódokat is.
 1. Töltse le a [Csatlakozáskezelő felügyeleti csomag Build-szolgáltatását](https://cmake.org/download/).
 
     Fontos, hogy a Visual Studio előfeltételei (Visual Studio és az „Asztali fejlesztés C++ használatával” számítási feladat) telepítve legyenek a gépen, **mielőtt** megkezdené a `CMake` telepítését. Ha az előfeltételek telepítve vannak, és ellenőrizte a letöltött fájlt, telepítse a CMake buildelési rendszert.
+
+    A CMak-Build rendszer korábbi verziói nem tudják létrehozni a cikkben használt megoldási fájlt. Ügyeljen arra, hogy a CMak újabb verzióját használja.
 
 2. Kattintson a **címkék** elemre, és keresse meg a legújabb kiadáshoz tartozó címke nevét az [Azure IoT C SDK kiadás oldalán](https://github.com/Azure/azure-iot-sdk-c/releases/latest).
 
@@ -136,6 +138,8 @@ Ebben a szakaszban frissítjük a mintakódot, hogy leküldje az eszköz rendsze
     ```
     \azure-iot-sdk-c\cmake\azure_iot_sdks.sln
     ```
+
+    Ha a fájl nem lett létrehozva a CMAK-címtárban, győződjön meg arról, hogy a CMak-Build rendszer legújabb verzióját használta.
 
 3. A Visual Studio *Solution Explorer* (Megoldáskezelő) ablakában lépjen a **Provision\_Samples** (Kiépítés > Minták) mappára. Bontsa ki a **prov\_dev\_client\_sample** nevű mintaprojektet. Bontsa ki a **Source Files** (Forrásfájlok) elemet, és nyissa meg a **prov\_dev\_client\_sample.c** nevű forrásfájlt.
 

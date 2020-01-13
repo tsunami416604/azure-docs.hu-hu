@@ -1,6 +1,6 @@
 ---
-title: Lefedettség megjelenítése Azure Mapsban | Microsoft Docs
-description: További tudnivalók a megjelenítési lefedettségről Azure Maps
+title: Megjelenítési lefedettség | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogy mely régiókban Microsoft Azure Maps rendering lefedettséggel és a megjelenített részletek szintjével együtt.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 03/22/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5affc9952cfe13ebfeede126051f2236499d1343
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 84d5d7fc6490420857032ead964f5bccea8f397a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72934296"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910668"
 ---
 # <a name="azure-maps-render-coverage"></a>Azure Maps megjelenítési lefedettség
 
@@ -44,7 +44,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Kamerun                         | ✓ | ✓ |
 | Közép-afrikai Köztársaság         | ✓ | Ø |
 | Csád                             | ✓ | Ø |
-| Comore                          | ✓ | Ø |
+| Comore-szigetek                          | ✓ | Ø |
 | Kongói Demokratikus Köztársaság | ✓ | ✓ |
 | Côte d’Ivoire                    | ✓ | Ø |
 | Dzsibuti                         | ✓ | Ø |
@@ -75,7 +75,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Réunion                          | ✓ | ✓ |
 | Ruanda                           | ✓ | ✓ |
 | Szent Ilona, Ascension és Tristan da Cunha | ✓ | Ø |
-| São Tomé és Príncipe            | ✓ | Ø |
+| Sao Tome és Principe            | ✓ | Ø |
 | Szenegál                          | ✓ | ✓ |
 | Sierra Leone                     | ✓ | ✓ |
 | Szomália                          | ✓ | ✓ |
@@ -139,7 +139,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Saint Kitts és Nevis     | ✓ | ✓ |
 | Saint Lucia               | ✓ | ✓ |
 | Saint Martin (francia)     | ✓ | ✓ |
-| Saint-Pierre és Miquelon | ✓ | ✓ |
+| Saint Pierre és Miquelon | ✓ | ✓ |
 | Saint Vincent és Grenadine-szigetek | ✓ | ✓ |
 | Sint Maarten (holland)      | ✓ | ✓ |
 | Déli-Georgia és Déli-Sandwich-szigetek | ✓ | ✓ |
@@ -164,9 +164,9 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Brunei                    | ✓ | ✓ |
 | Kambodzsa                  |   | Ø |
 | Kína                     |   | Ø |
-| Kókusz (Keeling)-szigetek   |   | Ø |
+| Cocos (Keeling)-szigetek   |   | Ø |
 | Koreai Népi Demokratikus Köztársaság |   | Ø |
-| Hongkong (KKT)             | ✓ | ✓ |
+| Hongkong KKT             | ✓ | ✓ |
 | India                     | Ø | ✓ | 
 | Indonézia                 | ✓ | ✓ |
 | Irán                      |   | Ø |
@@ -179,7 +179,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Kirgizisztán                |   | Ø |
 | Laoszi Népi Demokratikus Köztársaság |   | Ø |
 | Libanon                   | ✓ | ✓ |
-| Makaó KKT                 | ✓ | ✓ |
+| Makaó (KKT)                 | ✓ | ✓ |
 | Malajzia                  | ✓ | ✓ |
 | Maldív-szigetek                  |   | Ø |
 | Mongólia                  |   | Ø |
@@ -198,7 +198,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Tajvan                    | ✓ | ✓ |
 | Tádzsikisztán                |   | Ø |
 | Thaiföld                  | ✓ | ✓ |
-| Kelet-Timor               |   | Ø |
+| Timor-Leste               |   | Ø |
 | Türkmenisztán              |   | Ø |
 | Egyesült Arab Emírségek      | ✓ | ✓ |
 | Az Amerikai Egyesült Államok lakatlan külbirtokai |   | Ø |
@@ -206,7 +206,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Vietnam                   | ✓ | ✓ |
 | Jemen                     | ✓ | ✓ |
 
-## <a name="oceania"></a>Oceania
+## <a name="oceania"></a>Óceánia
 
 | Ország/régió | Raszteres csempék egyesített | Vektoros csempék egyesített |
 | ------ | :------------------: | :------------------: |
@@ -218,7 +218,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Guam                      | ✓ | ✓ |
 | Kiribati                  |   | Ø |
 | Marshall-szigetek          |   | Ø |
-| Mikronéziai szövetséges Államok                |   | Ø |
+| Mikronézia                |   | Ø |
 | Nauru                     |   | Ø |
 | Új-Kaledónia             |   | Ø |
 | Új-Zéland               | ✓ | ✓ |
@@ -226,14 +226,14 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Norfolk-sziget            |   | Ø |
 | Palau                     |   | Ø |
 | Pápua Új-Guinea          |   | Ø |
-| Pitcairn                  |   | Ø |
+| Pitcairn-szigetek                  |   | Ø |
 | Szamoa                     |   | Ø |
 | Salamon-szigetek           |   | Ø|
 | Tokelau                   |   | Ø |
 | Tonga                     |   | Ø |
 | Tuvalu                    |   | Ø |
 | Vanuatu                   |   | Ø |
-| Wallis és Futuna         |   | Ø |
+| Wallis- és Futuna-szigetek         |   | Ø |
 
 
 ## <a name="europe"></a>Európa
@@ -296,7 +296,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 | Törökország                    | ✓ | ✓ |
 | Ukrajna                   | ✓ | ✓ |
 | Egyesült Királyság            | ✓ | ✓ |
-| Vatikáni Városállam              | ✓ | ✓ |
+| Vatikán              | ✓ | ✓ |
 
 ## <a name="next-steps"></a>Következő lépések
 

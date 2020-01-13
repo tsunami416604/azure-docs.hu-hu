@@ -8,16 +8,16 @@ ms.service: internet-peering
 ms.topic: overview
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: c5fd37c532e2abf2697c741e4dab10a945926e2b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 576bc3e37711851acd7d6c7ac811a10e40080710
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775690"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908913"
 ---
 # <a name="internet-peering-overview"></a>Internetes peering – áttekintés
 
-A társítás a Microsoft globális hálózata (AS8075) és a hálózat közötti kapcsolat a Microsoft online szolgáltatások és Microsoft Azure szolgáltatások internetes forgalmának cseréje céljából. A szolgáltatók vagy szolgáltatók kérhetik a Microsofttal való kapcsolódást a saját peremhálózati helyeink bármelyikén. Az egyes kérelmeket Microsoft Azure hálózatkezelés ellenőrzi, így biztosítva, hogy az megfeleljen a társi házirendnek. Kétféle módon állíthat be Microsoft Network hálózatot:
+A társítás a Microsoft globális hálózata (AS8075) és a hálózat közötti kapcsolat a Microsoft online szolgáltatások és Microsoft Azure szolgáltatások internetes forgalmának cseréje céljából. A szolgáltatók vagy szolgáltatók kérhetik a Microsofttal való kapcsolódást a saját peremhálózati helyeink bármelyikén. Az egyes kérelmeket a Microsoft ellenőrzi, hogy az megfelel-e a társi házirendnek. Kétféle módon állíthat be Microsoft Network hálózatot:
 
 * **Közvetlen társítás:**
 
@@ -33,7 +33,7 @@ A társítás a Microsoft globális hálózata (AS8075) és a hálózat között
 * A Microsoft által redundáns helyekkel való összevonással biztosíthatja az ügyfelek adatforgalmát a hálózat vagy az átviteli szolgáltató hálózatának meghibásodása esetén.
 * Megtudhatja, hogyan használhatók a kapcsolati mérőszámok, és hogyan használhatók a hálózattal kapcsolatos hibák.
 
-## <a name="benefits-of-using-azure"></a>Az Azure használatának előnyei
+## <a name="benefits-of-using-azure-to-set-up-peering"></a>Az Azure használatának előnyei a peering beállításához
 
 A Microsoft Azure PowerShell vagy portál használatával való összevonását kérheti. Az ily módon beállított társítás Azure-erőforrásként kezelhető, és a következő előnyöket biztosítja:
 * Egyszerűsített és automatizálható lépések a Microsofttal való egyenrangúság beállításához és kezeléséhez.

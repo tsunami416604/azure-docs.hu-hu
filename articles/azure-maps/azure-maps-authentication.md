@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés Azure Mapssal | Microsoft Docs
-description: Azure Active Directory (Azure AD) vagy megosztott kulcsos hitelesítés a Microsoft Azure Maps Services használatával. Útmutató Azure Maps előfizetési kulcs beszerzéséhez.
+title: Hitelesítési módszerek | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan Azure Active Directory (Azure AD) vagy a megosztott kulcsos hitelesítést a Microsoft Azure Maps Services használatával. Útmutató Azure Maps előfizetési kulcs beszerzéséhez.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/30/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: a58436063009b732a15e74c8a3fc3f95b8df29cf
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 006adae99b2430f4c08ce5fc692598e48f45c239
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834201"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911828"
 ---
 # <a name="authentication-with-azure-maps"></a>Hitelesítés az Azure Maps használatával
 

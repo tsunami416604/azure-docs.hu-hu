@@ -1,6 +1,6 @@
 ---
-title: A mobilitási szolgáltatás adatstruktúrákat az Azure Maps |} A Microsoft Docs
-description: Az Azure Maps a mobilitási szolgáltatás adatstruktúrák
+title: Mobilitási szolgáltatás adatstruktúrája Azure Mapsban | Microsoft Azure térképek
+description: Ebből a cikkből megismerheti a Microsoft Azure Maps mobilitási szolgáltatásaival visszaadott általános mezőket és adatstruktúrákat.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 06/05/2019
@@ -8,63 +8,63 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 29e8a9d7555ca836b6266879f3b3c1e32ffd3980
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 213910ee2439fa958b9f1d4926883eb8e066ba41
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66735556"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910727"
 ---
-# <a name="data-structures-in-azure-maps-mobility-service"></a>Az Azure Maps a mobilitási szolgáltatás adatstruktúrák
+# <a name="data-structures-in-azure-maps-mobility-service"></a>Adatstruktúrák a Azure Maps mobilitási szolgáltatásban
 
-Ez a cikk bemutatja a Metro területet [Azure Maps a mobilitási szolgáltatás](https://aka.ms/AzureMapsMobilityService) és néhány gyakori mezőt ad vissza, a szolgáltatások, ha vannak lekérdezve az nyilvános átvitel leállítja és vonalak. Javasoljuk, hogy ez a cikk keresztül a mobilitási szolgáltatás API-kkal megkezdése előtt. Ezek az alábbi általános mezők tárgyaljuk.
+Ez a cikk bemutatja a Metro terület koncepcióját a [Azure Maps mobilitási szolgáltatásban](https://aka.ms/AzureMapsMobilityService) , valamint a szolgáltatásokon keresztül visszaadott általános mezőket, ha lekérdezi a nyilvános tranzitot és a sorokat. Javasoljuk, hogy a mobilitási szolgáltatás API-jai megkezdése előtt végezze el ezt a cikket. Az alábbi általános mezőket tárgyaljuk.
 
-## <a name="metro-area"></a>Metro terület
+## <a name="metro-area"></a>Metro térség
 
-A mobilitási szolgáltatás adatainak támogatott metro területek van felosztva. Metro területek nem követik a város határokat, metro terület tartalmazhat több város, például sűrűn lakott város és a feldolgozóiszerepkör városok; és a egy adott ország/régió egyetlen metro területen lehet. 
+A mobilitási szolgáltatáshoz tartozó Adatelosztás a támogatott metró területekre oszlik. A Metro-területek nem követik a város határait, a Metro terület több várost is tartalmazhat, például sűrűn kitöltött városokat és a környező városokat. egy ország/régió lehet egy metró terület is. 
 
-A `metroID` metro terület azonosítója, amely hívja használhatók a [első Metro terület adatait API](https://aka.ms/AzureMapsMobilityMetroAreaInfo) támogatott kérések átvitel típusa és a további részleteket a metro terület, például az átviteli szervek és aktív riasztások. Az Azure Maps első Metro API segítségével a támogatott metro területek és metroIDs igényelhetnek. Metro terület azonosítók változhatnak.
+A `metroID` egy Metro-területi azonosító, amellyel meghívhatja a [beolvasás Metro környék info API](https://aka.ms/AzureMapsMobilityMetroAreaInfo) -t a támogatott átviteli típusok és a metró, például az árutovábbítási ügynökségek és az aktív riasztások további részleteinek kéréséhez. A Azure Maps Get Metro API-val a támogatott Metro-területeket és metroIDs kérheti le. A Metro-területek azonosítói változhatnak.
 
 **metroID:** 522 **neve:** Seattle-Tacoma-Bellevue
 
-![Seattle-metro-area](./media/mobility-service-data-structure/seattle-metro.png)
+![Seattle – Metro-térség](./media/mobility-service-data-structure/seattle-metro.png)
 
-## <a name="stop-ids"></a>Állítsa le az azonosítók
+## <a name="stop-ids"></a>Azonosítók leállítása
 
-Átvitel leáll azonosítóval, kétféle szerint lehet hivatkozni a [általános átvitel hírcsatorna-specifikáció (GFTS)](https://gtfs.org/) (néven stopKey) Azonosítóját és az Azure Maps leállítása (néven stopId) azonosítója. Idővel leáll kontextusban való megnevezésekor, ajánlott az Azure Maps stop-azonosító, használja ezt az Azonosítót több stabil és nem valószínű változik, amennyiben a fizikai stop létezik. A GTFS stop azonosító frissül gyakrabban, például abban az esetben a GTFS szolgáltatót kell módosítani, vagy új GTFS verziója, bár a fizikai leállítása nem változik.
+A továbbítási leállítások két típusú azonosítóval, az [általános átviteli hírcsatorna specifikációjának (GFTS)](https://gtfs.org/) azonosítójának (stopKey) és a Azure Maps leállítás azonosítójának (ún. stopId) nevezik. Amikor a rendszer az idő múlásával késlelteti a leállást, javasolt a Azure Maps leállítás AZONOSÍTÓjának használata, mivel ez az azonosító stabilabb, és nem valószínű, hogy a fizikai leállítás nem változik. A GTFS leállítása azonosító gyakrabban frissül, például abban az esetben, ha a GTFS-szolgáltatónak módosítania kell vagy új GTFS-verziót szabadít fel, bár a fizikai leállítás nem változott.
 
-Szeretné elindítani, kérheti a közeli átvitel közben leállítja a [közeli átvitel API első](https://aka.ms/AzureMapsMobilityNearbyTransit).
+Az indításhoz a közeli tranzit [API](https://aka.ms/AzureMapsMobilityNearbyTransit)-k használatával leállíthatja a lekéréses útvonalakat.
 
-## <a name="line-groups-and-lines"></a>Sor csoportok és az olvasandó sorok
+## <a name="line-groups-and-lines"></a>Sorok és sorok
 
-A mobilitási szolgáltatás egy párhuzamos modellt használ a sorok és a változások kezelésére jobban sor csoportok csoporttól [GTFS](https://gtfs.org/) útvonalakat, és lelassítja az adatmodellbe.
-
-
-### <a name="line-groups"></a>Sor csoportok
-
-Egy csoport egy entitás, amely csoportosítja együtt, amelyek logikailag ugyanabba a csoportba tartozó összes sor. Általában egy sor csoportot fogja tartalmazni, két sort, b, pont egy folyamatban lévő és az egyéb pont b visszatér A, mind az azonos nyilvános átviteli Ügynökség, tartozó és ugyanannyi sort kellene. Azonban előfordulhatnak olyan esetek, amelyben egy sor csoportot már több mint két sort vagy a benne lévő csak egyetlen sor.
+A mobilitási szolgáltatás egy párhuzamos adatmodellt használ a vonalak és a sorok csoportjaihoz, hogy jobban kezeljék a [GTFS](https://gtfs.org/) útvonalak és a TRIPS adatmodell által örökölt változásokat.
 
 
-### <a name="lines"></a>sorok
+### <a name="line-groups"></a>Sorcsoportok
 
-Mint már említettük, minden egyes sorokból áll. Gyakran az egyes sorok ismerteti egy irányát, valamint az egyes sorok csoport tevődik össze két sort. Vannak azonban olyan esetekben, mely további sorokat tartalmazza egy sor csoportot, például van egy-egy vonal néha elkerülő megoldásokhoz egy bizonyos hálózatok keresztül, és néha nem létezik, és mindkét esetben sor azonos számú üzemeltetik és más esetekben, amelyben egy sor g virtuális csoportosítás egy egysoros, például egy egyetlen irányú. kör alakú vonal tevődik össze.
-
-Első lépésként kérheti sor csoportok használatával a [első átvitel sor API](https://aka.ms/AzureMapsMobilityTransitLine) és újabb verziók válassza a sorokat.
+A Sorcsoportok olyan entitások, amelyek az összes olyan sort csoportosítják, amelyek logikailag ugyanahhoz a csoporthoz tartoznak. Általában egy sor két sort fog tartalmazni, amelyek közül az "A" és a "B" pont lesz, a másik pedig a B pontról A-re tér vissza, és mindkettő ugyanahhoz a nyilvános szállítási ügynökhöz tartozik, és azonos sorszámmal rendelkezik. Előfordulhatnak azonban olyan esetek, amikor egy csoport kettőnél több sora van, vagy csak egyetlen sor van bennük.
 
 
-## <a name="next-steps"></a>További lépések
+### <a name="lines"></a>Vonalak
 
-Ismerje meg, hogyan igényelhető az átvitt adatok a mobilitási szolgáltatás használatával:
+A fentiekben leírtak szerint az egyes sorok egy sor halmazból állnak. Az egyes sorok gyakran leírnak egy irányt, az egyes sorok pedig két sorból állnak. Vannak azonban olyan esetek, amikor több sor is tartalmaz egy sornyi csoportot, például egy olyan sort, amely néha egy bizonyos környéken halad át, és néha nem, és mindkét esetben ugyanabban a sorban van üzemeltetve, és vannak olyan esetek is, amikor a g. sorban a oport egyetlen sorból áll, például egy körkörös vonallal, egyetlen iránysal.
 
-> [!div class="nextstepaction"]
-> [Hogyan kérhetnek az átvitt adatok](how-to-request-transit-data.md)
+Első lépésként a [beolvasás vonal API](https://aka.ms/AzureMapsMobilityTransitLine) -val és a sorokra lebontott részletezéssel is kérheti a csoportok használatát.
 
-Ismerje meg, hogyan kérhetnek a mobilitási szolgáltatás használatával valós idejű adatokat:
+
+## <a name="next-steps"></a>Következő lépések
+
+Ismerje meg, hogyan kérhet továbbítási információkat a mobilitási szolgáltatással:
 
 > [!div class="nextstepaction"]
-> [Hogyan kérhetnek a valós idejű adatok](how-to-request-real-time-data.md)
+> [Adatátviteli adatkérés](how-to-request-transit-data.md)
 
-Ismerkedés az Azure Maps a mobilitási szolgáltatás API-dokumentáció
+Megtudhatja, hogyan kérhet valós idejű adatgyűjtést a mobilitási szolgáltatás használatával:
 
 > [!div class="nextstepaction"]
-> [A mobilitási szolgáltatás API-dokumentáció](https://aka.ms/AzureMapsMobilityService)
+> [Valós idejű adatkérések igénylése](how-to-request-real-time-data.md)
+
+A Azure Maps mobilitási szolgáltatás API dokumentációjának megismerése
+
+> [!div class="nextstepaction"]
+> [A mobilitási szolgáltatás API-dokumentációja](https://aka.ms/AzureMapsMobilityService)

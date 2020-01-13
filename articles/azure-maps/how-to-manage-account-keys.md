@@ -1,6 +1,6 @@
 ---
-title: A Azure Maps-fiók kezelése | Microsoft Docs
-description: A Azure Portal segítségével kezelheti Azure Maps-fiókját.
+title: Azure Maps-fiók kezelése az Azure Portalon | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan kezelheti a Microsoft Azure Maps-fiókját a Azure Portal használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 02/14/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: a5697989696d0d375e52baeb9f7332e7013d16bf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 92c76780473372c3e2ef87cdf4da0f21a22d9ac6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768843"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911502"
 ---
 # <a name="manage-your-azure-maps-account"></a>Azure Maps fiók kezelése
 
@@ -31,13 +31,13 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 4. Adja meg az új fiók adatait.
 
-![Adja meg a fiók adatait a portálon](./media/how-to-manage-account-keys/new-account-portal.png)
+![Adja meg Azure Maps fiók adatait a Azure Portal](./media/how-to-manage-account-keys/new-account-portal.png)
 
 ## <a name="delete-an-account"></a>Fiók eltávolítása
 
 A Azure Portal törölheti a fiókot. Navigáljon a fiók áttekintése lapra, és válassza a **Törlés**lehetőséget.
 
-![Fiók törlése a portálon](./media/how-to-manage-account-keys/account-delete-portal.png)
+![Azure Maps fiók törlése a Azure Portal](./media/how-to-manage-account-keys/account-delete-portal.png)
 
 Ekkor megjelenik egy megerősítő oldal. A fiók törlését úgy ellenőrizheti, hogy beírja a nevét.
 

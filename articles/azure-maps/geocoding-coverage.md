@@ -1,6 +1,6 @@
 ---
-title: A helymeghatározáshoz lefedettsége Azure Mapsban | Microsoft Docs
-description: Ismerje meg a helymeghatározáshoz lefedettségét Microsoft Azure Maps-ben, illetve hogy mely régiókban/országokban használható Azure Maps geocoder.
+title: Helymeghatározáshoz lefedettség | Microsoft Azure térképek
+description: A hely címe szélességi és hosszúsági koordinátákra történő átalakításának folyamata helymeghatározáshoz néven ismert. Ebben a cikkben megismerheti a helymeghatározáshoz-lefedettséggel rendelkező régiókat Microsoft Azure Maps-ben.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/31/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 4def947c13588cde57b55aeaa9d958eafa923093
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 38d25b7494f8b2f3e1abdac959edde8969d7d4c7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768809"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911624"
 ---
 # <a name="azure-maps-geocoding-coverage"></a>Azure Maps helymeghatározáshoz lefedettsége
 
@@ -25,7 +25,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 * **Utca szintű** – a címek a címet tartalmazó utca szélességi/hosszúsági koordinátáihoz vannak feloldva. Lehetséges, hogy a házszám nem dolgozható fel.
 * A **városi szintű** nevek támogatottak.
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
 | Ország/régió                                       | Címzési pontok | Házszámok | Utca szintje | Városi szint | Érdekes pontok |
 |-----------------------------------------------------|:---------------:|:--------------:|:------------:|:----------:|:------------------:|
@@ -48,7 +48,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Costa Rica                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Kuba                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Dominika                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Dominicana                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Rigán                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Ecuador                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Salvador                                         |                 |                |       ✓      |      ✓     |          ✓         |
 | Falkland-szigetek                                    |                 |                |              |      ✓     |          ✓         |
@@ -73,14 +73,14 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Saint Kitts és Nevis                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Lucia                                         |                 |                |              |      ✓     |          ✓         |
 | Saint Martin                                        |                 |                |       ✓      |      ✓     |          ✓         |
-| Saint-Pierre és Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
+| Saint Pierre és Miquelon                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Saint Vincent és Grenadine-szigetek                    |                 |                |              |      ✓     |          ✓         |
 | Sint Maarten                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Déli-Georgia és Déli-Sandwich-szigetek        |                 |                |              |      ✓     |          ✓         |
 | Suriname                                            |                 |                |              |      ✓     |          ✓         |
 | Trinidad és Tobago                                 |                 |                |       ✓      |      ✓     |          ✓         |
-| Egyesült Államok kisebb kifelé húzódó szigetek                |                 |                |              |      ✓     |          ✓         |
-| Amerika Egyesült Államok                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Az Amerikai Egyesült Államok lakatlan külbirtokai                |                 |                |              |      ✓     |          ✓         |
+| Amerikai Egyesült Államok                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Uruguay                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Venezuela                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Brit Virgin-szigetek                              |                 |                |              |      ✓     |          ✓         |
@@ -94,27 +94,27 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Ausztrália                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Banglades                                          |                 |                |              |      ✓     |          ✓         |
 | Bhután                                              |                 |                |              |      ✓     |          ✓         |
-| Brit Indiai-óceáni terület                      |                 |                |              |      ✓     |          ✓         |
+| Brit Indiai-óceáni Terület                      |                 |                |              |      ✓     |          ✓         |
 | Brunei                                              |        ✓        |                |       ✓      |      ✓     |          ✓         |
 | Kambodzsa                                            |                 |                |              |      ✓     |          ✓         |
 | Kína                                               |                 |                |              |      ✓     |          ✓         |
 | Karácsony-sziget                                    |        ✓        |                |       ✓      |      ✓     |          ✓         |
-| Kókusz (Keeling)-szigetek                             |                 |                |              |      ✓     |          ✓         |
-| Comore                                             |                 |                |              |      ✓     |          ✓         |
+| Cocos (Keeling)-szigetek                             |                 |                |              |      ✓     |          ✓         |
+| Comore-szigetek                                             |                 |                |              |      ✓     |          ✓         |
 | Cook-szigetek                                        |                 |                |              |      ✓     |          ✓         |
 | Fidzsi                                                |                  |                |              |      ✓     |          ✓        |
 | Francia Polinézia                                    |                 |                |              |      ✓     |          ✓         |
-| Heard-sziget és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
-| Hongkong (KKT)                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Heard- és McDonald-szigetek                   |                 |                |              |      ✓     |          ✓         |
+| Hongkong KKT                                       |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Indonézia                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | India                                               |        ✓        |        ✓       |       ✓      |      ✓     |                   |
 | Japán                                               |                 |                |              |      ✓     |          ✓         |
 | Kiribati                                            |                 |                |              |      ✓     |          ✓         |
-| Korea                                         |                 |                |              |      ✓     |          ✓         |
+| Dél-Korea                                         |                 |                |              |      ✓     |          ✓         |
 | Laosz                                                |                 |                |              |      ✓     |          ✓         |
-| Makaó KKT                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Makaó (KKT)                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Malajzia                                            |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Mikronéziai szövetséges Államok                                          |                 |                |              |      ✓     |          ✓         |
+| Mikronézia                                          |                 |                |              |      ✓     |          ✓         |
 | Mongólia                                            |                 |                |              |      ✓     |          ✓         |
 | Nauru                                               |                 |                |              |      ✓     |          ✓         |
 | Nepál                                               |                 |                |              |      ✓     |          ✓         |
@@ -128,7 +128,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Palau                                               |                 |                |              |      ✓     |          ✓         |
 | Pápua Új-Guinea                                    |                 |                |              |      ✓     |          ✓         |
 | Fülöp-szigetek                                         |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Pitcairn                                            |                 |                |              |      ✓     |          ✓         |
+| Pitcairn-szigetek                                            |                 |                |              |      ✓     |          ✓         |
 | Szamoa                                               |                 |                |              |      ✓     |          ✓         |
 | Senkaku-szigetek                                     |        ✓        |                |              |      ✓     |          ✓         |
 | Szingapúr                                           |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -143,7 +143,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Tuvalu                                              |                 |                |              |      ✓     |          ✓         |
 | Vanuatu                                             |                 |                |              |      ✓     |          ✓         |
 | Vietnam                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Wallis és Futuna                                   |                 |                |              |      ✓     |          ✓         |
+| Wallis- és Futuna-szigetek                                   |                 |                |              |      ✓     |          ✓         |
 
 ## <a name="europe"></a>Európa
 
@@ -160,7 +160,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Belarusz                                             |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Horvátország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Ciprus                                              |                 |        ✓       |       ✓      |      ✓     |          ✓         |
-| Cseh Köztársaság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
+| Csehország                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Dánia                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Észtország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Feröer-szigetek                                       |                 |                |              |      ✓     |          ✓         |
@@ -168,7 +168,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Franciaország                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Grúzia                                             |        ✓        |        ✓       |              |      ✓     |          ✓         |
 | Németország                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
-| Gibraltári                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
+| Gibraltár                                           |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Görögország                                              |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Grönland                                           |                 |                |              |      ✓     |          ✓         |
 | Guernsey                                            |                 |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -212,7 +212,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Ukrajna                                             |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Egyesült Királyság                                      |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Üzbegisztán                                          |                 |                |              |      ✓     |          ✓         |
-| Vatikáni Városállam                                        |                 |                |       ✓      |      ✓     |          ✓         |
+| Vatikán                                        |                 |                |       ✓      |      ✓     |          ✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
@@ -232,15 +232,15 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Cabo Verde                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Közép-afrikai Köztársaság                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Csád                                                |                 |                |       ✓      |      ✓     |          ✓         |
-| Kongói                                               |                 |                |       ✓      |      ✓     |          ✓         |
-| Elefántcsontparti                                       |                 |                |       ✓      |      ✓     |          ✓         |
+| Kongó                                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Côte d’Ivoire                                       |                 |                |       ✓      |      ✓     |          ✓         |
 | Kongói Demokratikus Köztársaság                    |                 |                |       ✓      |      ✓     |          ✓         |
 | Dzsibuti                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Egyiptom                                               |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
 | Egyenlítői-Guinea, Köztársaság                      |                 |                |       ✓      |      ✓     |          ✓         |
 | Eritrea                                             |                 |                |       ✓      |      ✓     |          ✓         |
 | Etiópia                                            |                 |                |       ✓      |      ✓     |          ✓         |
-| Francia déli területek|                        |                |              |      ✓     |          ✓         |
+| Francia Déli Területek|                        |                |              |      ✓     |          ✓         |
 | Gabon                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Gambia                                              |                 |                |              |      ✓     |          ✓         |
 | Ghána                                               |                 |                |       ✓      |      ✓     |          ✓         |
@@ -277,7 +277,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Szent Ilona                                        |                 |                |              |      ✓     |          ✓         |
 | Szaúd-Arábia                                        |                 |        ✓       |       ✓      |      ✓     |          ✓         |
 | Szenegál                                             |                 |                |       ✓      |      ✓     |          ✓         |
-| Seychelle                                          |                 |                |       ✓      |      ✓     |          ✓         |
+| Seychelle-szigetek                                          |                 |                |       ✓      |      ✓     |          ✓         |
 | Sierra Leone                                        |                 |                |       ✓      |      ✓     |          ✓         |
 | Szomália                                             |                 |                |              |      ✓     |          ✓         |
 | Dél-Afrika                                        |        ✓        |        ✓       |       ✓      |      ✓     |          ✓         |
@@ -285,7 +285,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 | Szudán                                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Szváziföld                                           |                 |                |       ✓      |      ✓     |          ✓         |
 | Szíria                                               |                 |                |              |      ✓     |          ✓         |
-| São Tomé és Príncipe                               |                 |                |       ✓      |      ✓     |          ✓         |
+| Sao Tome és Principe                               |                 |                |       ✓      |      ✓     |          ✓         |
 | Tanzánia                                            |                 |                |       ✓      |      ✓     |          ✓         |
 | Togo                                                |                 |                |       ✓      |      ✓     |          ✓         |
 | Tunézia                                             |        ✓        |                |       ✓      |      ✓     |          ✓         |
@@ -297,7 +297,7 @@ Az országokban/régiókban való geocode a közúti adatlefedettségtől és a 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Maps helymeghatározáshoz kapcsolatos további információkért tekintse meg a [keresési](https://docs.microsoft.com/rest/api/maps/search) segédletek oldalain.
 

@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 2a5a5bc91e4d83975d05d63dbab4b621734a0ac5
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 8d2e0b4683261a06c39b9a5f335d7f4f22a2fd05
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75494709"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912337"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
@@ -201,7 +201,7 @@ Tekintse meg a hőmérséklet-érzékelő modulból küldött üzeneteket:
 
    ![A modulból származó adatok megtekintése](./media/quickstart-linux/iotedge-logs.png)
 
-Megtekintheti az IoT hub-ra érkező üzeneteket a [Visual Studio Code-hoz készült azure IoT hub Toolkit bővítménnyel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit) (korábbi nevén Azure IoT Toolkit Extension) is.
+A [Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit)-hoz készült Azure IoT hub-bővítmény használatával megtekintheti az IoT hub-ra érkező üzeneteket is.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -1,7 +1,6 @@
 ---
-title: Térkép stílusának beállítása Azure Maps az Android SDK használatával
-titleSuffix: Azure Maps
-description: Ismerje meg az Android SDK Azure Maps stílussal kapcsolatos funkcióit.
+title: Térkép stílusának beállítása a Azure Maps Android SDK-val | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan használhatók az Android SDK-hoz készült Microsoft Azure Maps stílussal kapcsolatos funkciók.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 1a898508e5c99f6cb8be46605c156106b47c08f3
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: fe0aa662234166249433634ccb45d1931d176319
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528096"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910487"
 ---
 # <a name="set-map-style-using-azure-maps-android-sdk"></a>Térkép stílusának beállítása a Azure Maps Android SDK-val
 

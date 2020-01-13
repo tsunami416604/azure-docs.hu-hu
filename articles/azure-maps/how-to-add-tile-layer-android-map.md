@@ -1,6 +1,6 @@
 ---
-title: Csempe réteg hozzáadása Android-térképekhez Azure Mapsban | Microsoft Docs
-description: Csempe réteg hozzáadása térképhez Azure Maps Android SDK használatával
+title: Csempe réteg hozzáadása Android-térképekhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg egy csempe rétegét a térképeken a Microsoft Azure Maps Android SDK használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,34 +8,34 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 5d5f50a38db95f6e62bdd8c51aefd5957041e682
-ms.sourcegitcommit: aa042d4341054f437f3190da7c8a718729eb675e
+ms.openlocfilehash: e54eeaa6dafd60e5fc481f2f4b45929edda77c44
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/09/2019
-ms.locfileid: "68886610"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911514"
 ---
 # <a name="add-a-tile-layer-to-a-map-using-the-azure-maps-android-sdk"></a>Csempe réteg hozzáadása térképhez a Azure Maps Android SDK használatával
 
-Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csempéket a térképeken a Azure Maps Android SDK használatával. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és](zoom-levels-and-tile-grid.md) a csempék rácsának dokumentációját.
+Ebből a cikkből megtudhatja, hogyan jelenítheti meg a csempéket a térképeken a Azure Maps Android SDK használatával. A csempe rétegek lehetővé teszik, hogy az alapszintű Térkép csempék fölé írja a képeket Azure Maps. Azure Maps csempe rendszerével kapcsolatos további információkért tekintse meg a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md) dokumentációját.
 
 Egy csempe réteg tölti be a csempéket egy kiszolgálóról. Ezeket a lemezképeket előre megjelenítheti és tárolhatja, mint bármely más rendszerkép egy kiszolgálón a csempe rétege által értelmezett elnevezési konvencióval vagy olyan dinamikus szolgáltatással, amely menet közben hozza létre a képeket. Az Azure Maps TileLayer osztály három különböző csempe-szolgáltatási elnevezési konvenciót támogat. 
 
 * X, Y, nagyítási jelölés – a nagyítási szint alapján az x az oszlop, az Y pedig a csempén lévő csempe sor pozíciója.
 * Quadkey jelölés – x, y és nagyítási információ egyetlen karakterlánc-értékre, amely egy csempe egyedi azonosítója.
-* A határolókerethoz tartozó határoló mező koordinátáit a [webes leképezési szolgáltatások (WMS)](https://www.opengeospatial.org/standards/wms)által gyakran `{west},{south},{east},{north}` használt formátumú rendszerképek megadására lehet használni.
+* A határoló mezőhöz kötött koordináták a következő formátumban adhatók meg: `{west},{south},{east},{north}` amelyet általában a [web Mapping Services (WMS)](https://www.opengeospatial.org/standards/wms)használ.
 
 > [!TIP]
 > A TileLayer nagyszerű lehetőséget mutat a nagyméretű adathalmazok megjelenítésére a térképen. Nem csak a csempe réteg hozható létre egy képből, de a vektoros adatok csempe rétegként is megjeleníthető. A vektoros adattároló rétegként való megjelenítésével a Térkép vezérlőelemnek csak be kell töltenie a csempéket, ami sokkal kisebb lehet a fájlméretnél, mint az általuk képviselt adatmennyiség. Ezt a technikát sokan használják, akiknek több millió sornyi adatsort kell megjeleníteniük a térképen.
 
 A csempe rétegbe átadott csempe URL-címének HTTP/HTTPS URL-címnek kell lennie egy TileJSON-erőforráshoz vagy egy csempe URL-sablonhoz, amely a következő paramétereket használja: 
 
-* `{x}`-A csempe X pozíciója A és `{y}` a `{z}`is szükséges.
-* `{y}`-A csempe Y pozíciója A és `{x}` a `{z}`is szükséges.
-* `{z}`– A csempe nagyítási szintje A és `{x}` a `{y}`is szükséges.
-* `{quadkey}`– Csempe quadkey-azonosítója a Bing Maps csempe rendszerelnevezési konvenciója alapján.
-* `{bbox-epsg-3857}`– Egy határolókeret karakterlánca, amely a EPSG `{west},{south},{east},{north}` 3857 térbeli hivatkozási rendszer formátumát jelöli.
-* `{subdomain}`-A megadott altartomány-értékeket tartalmazó helyőrzőt adja hozzá a rendszer.
+* a csempe `{x}`-X pozíciója `{y}` és `{z}`is szükséges.
+* a csempe `{y}` – Y pozíciója `{x}` és `{z}`is szükséges.
+* `{z}` – a csempe nagyítási szintje. `{x}` és `{y}`is szükséges.
+* `{quadkey}` csempe quadkey azonosítóját a Bing Maps csempe rendszer-elnevezési konvenciója alapján.
+* `{bbox-epsg-3857}` – egy, a EPSG 3857 térbeli hivatkozási rendszerében `{west},{south},{east},{north}` formátumú határolókeret-karakterlánc.
+* `{subdomain}` – itt adható meg az altartomány értékeit tartalmazó helyőrző.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy az a következőhöz hasonlóan néz ki:
+1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -71,7 +71,7 @@ Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára.
 
     ```Java
     mapControl.onReady(map -> {
@@ -84,9 +84,9 @@ Az alábbi lépéseket követve hozzáadhat egy csempe réteget a térképhez.
     });
     ```
     
-    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja egy formázott **XYZ** csempe URL- `tileUrl` címét a lehetőséghez. A réteg opacitása úgy van beállítva, `0.8` hogy a csempe szolgáltatás által használt csempék 256 képpont csempék legyenek, ez az információ átkerül `tileSize` a lehetőségbe. Ezután a csempe réteget a Maps Layer Manager továbbítja.
+    A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy `TileLayer` objektumot, és átadja a formázott **XYZ** csempe URL-címét a `tileUrl` lehetőségnek. A réteg opacitása `0.8`re van állítva, és mivel a csempe szolgáltatásból származó csempék 256 képpont csempék, a rendszer ezeket az információkat átadja a `tileSize` lehetőségnek. Ezután a csempe réteget a Maps Layer Manager továbbítja.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a kódrészletet a fenti kódrészlethez, a `MainActivity.java`nek az alábbihoz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;
@@ -172,9 +172,9 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 
 <center>
 
-![Androidos Térkép sora](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
+![androidos térképes vonal](./media/how-to-add-tile-layer-android-map/xyz-tile-layer-android.png)</center>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Térkép stílusainak beállításával kapcsolatos további tudnivalókért tekintse meg a következő cikket.
 

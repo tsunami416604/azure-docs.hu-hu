@@ -1,6 +1,6 @@
 ---
-title: Szimbólum hozzáadása a Azure Mapshoz | Microsoft Docs
-description: Szimbólumok hozzáadása a Azure Maps web SDK-hoz.
+title: Szimbólum-réteg hozzáadása térképhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan szabhatja testre és hogyan adhat hozzá szimbólumokat a térképeken a Microsoft Azure Maps web SDK használatával.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: fff73801d20333a6df5e7952d02ed664c17fe40b
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 744d5ecd3aab02071f7c3aaff7dd760fc14a2a62
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480607"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911159"
 ---
 # <a name="add-a-symbol-layer-to-a-map"></a>Szimbólum réteg hozzáadása térképhez
 
@@ -91,7 +91,7 @@ A szimbólum rétegben számos lehetőség áll rendelkezésre. Az alábbi eszk�
 > [!TIP]
 > Ha csak szimbólum réteggel kívánja megjeleníteni a szöveget, elrejtheti a ikont úgy, hogy az ikon beállításainak `image` tulajdonságát `'none'`értékre állítja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a cikkben használt osztályokról és módszerekről:
 

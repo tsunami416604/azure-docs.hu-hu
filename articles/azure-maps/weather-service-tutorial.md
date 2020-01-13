@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Docs'
-description: 'Oktatóanyag: ez az oktatóanyag bemutatja, hogyan csatlakoztathatja az érzékelő adatait Azure Maps időjárási szolgáltatásból származó időjárás-előrejelzési adatokkal Azure Notebooks (Python) használatával.'
+title: 'Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan csatlakoztathatja az érzékelő adatait a Microsoft Azure Maps időjárási szolgáltatásból a Azure Notebooks (Python) használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 12/09/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 809c188dc37aba64de27e89e38acd8692c7de032
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 1a1493033717b18bef5d80b28d06004c901ffb29
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613567"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910797"
 ---
 # <a name="tutorial-join-sensor-data-with-weather-forecast-data-by-using-azure-notebooks-python"></a>Oktatóanyag: az érzékelő adataihoz való csatlakozás időjárás-előrejelzési adataival Azure Notebooks (Python) használatával
 

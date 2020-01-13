@@ -1,6 +1,6 @@
 ---
-title: Nagyítási szintek és csempék rácsa Azure Mapsban | Microsoft Docs
-description: Tudnivalók a nagyítási szintekről és a csempék rácsáról Azure Maps
+title: Nagyítási szintek és csempék rácsa | Microsoft Azure térképek
+description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 05/07/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 68fbb9b8cd65e24d0fea0c571e5cf01b53560ba7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407569"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910777"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
@@ -26,7 +26,7 @@ A Térkép lekérésének és megjelenítésének teljesítményének optimaliz�
 
 <center>
 
-![World csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
+![World Map csempe](./media/zoom-levels-and-tile-grid/world0.png)</center>
 
 A nagyítási szint 1 négy csempét használ a világ megjelenítéséhez: 2 x 2 négyzet
 

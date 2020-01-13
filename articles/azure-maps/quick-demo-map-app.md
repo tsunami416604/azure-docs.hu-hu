@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: interaktív térképes keresés a Azure Maps'
-description: Azure rövid útmutató – bemutató interaktív térképes keresés létrehozása Azure Maps használatával
+title: 'Gyors útmutató: interaktív térképes keresés a Azure Maps segítségével | Microsoft Azure térképek'
+description: Megtudhatja, hogyan hozhat létre bemutató webalkalmazást interaktív térképes kereséshez Microsoft Azure Maps web SDK használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/08/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 7553499dc9aba8d20bee126204b6d19f2386d295
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408414"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910684"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rövid útmutató: interaktív keresési Térkép létrehozása Azure Maps használatával
 
@@ -57,7 +57,7 @@ A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely l
 2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
 3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
 
-![Elsődleges kulcs lekérése a portálon](./media/quick-demo-map-app/get-key.png)
+![Elsődleges kulcs Azure Maps kulcs beolvasása Azure Portal](./media/quick-demo-map-app/get-key.png)
 
 ## <a name="download-the-application"></a>Az alkalmazás letöltése
 
@@ -73,7 +73,7 @@ A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely l
 4. Próbálja ki az interaktív keresést. A bemutató webalkalmazás bal felső sarkában található keresőmezőbe keressen az **éttermek**kifejezésre.
 5. Vigye az egérmutatót a keresési mező alatt megjelenő címek és helyszínek listájára. Figyelje meg, hogy a térképen a megfelelő PIN-kód jelenik meg. A magánvállalkozások adatainak védelme érdekében az itt látható nevek és címek nem valósak.
 
-    ![Interaktív keresési webalkalmazás](./media/quick-demo-map-app/interactive-search.png)
+    ![Interaktív térképes keresési webalkalmazás](./media/quick-demo-map-app/interactive-search.png)
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

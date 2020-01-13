@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: d3737be5a3186774f230aef9d932464a27a764f4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: cee548aff49cd5e4a57eed994b8ade2d157c6313
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775640"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912151"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Peer ASN társítása az Azure-előfizetéshez a portál használatával
 
@@ -25,6 +25,34 @@ Ha szeretné, a [PowerShell](howto-subscription-association-powershell.md)haszn�
 
 ### <a name="sign-in-to-the-portal"></a>Bejelentkezés a portálra
 [!INCLUDE [Account](./includes/account-portal.md)]
+
+### <a name="register-for-peering-resource-provider"></a>Regisztrálás a társ erőforrás-szolgáltatónál
+Regisztráljon az előfizetésben az alábbi lépésekkel: Ha nem hajtja végre ezt, akkor a társítás beállításához szükséges Azure-erőforrások nem érhetők el.
+
+1. Kattintson az **előfizetések** elemre a portál bal felső sarkában. Ha nem jelenik meg, kattintson a **További szolgáltatások** lehetőségre, és keressen rá.
+
+    > [!div class="mx-imgBorder"]
+    > ![nyitott előfizetések](./media/rp-subscriptions-open.png)
+
+1. Kattintson a társításhoz használni kívánt előfizetésre.
+
+    > [!div class="mx-imgBorder"]
+    > ![indítási előfizetés](./media/rp-subscriptions-launch.png)
+
+1. Az előfizetés megnyitása után kattintson a bal oldalon az erőforrás- **szolgáltatók**elemre. A jobb oldali ablaktáblában *Keresse meg a keresés a keresési* ablakban, vagy a görgetősáv használatával keresse meg a **Microsoft. peering** kifejezést, és tekintse meg az **állapotot**. Ha az állapot ***regisztrálva***van, ugorja át az alábbi lépéseket, és folytassa a **PeerAsn létrehozása**című szakasszal. Ha az állapot ***NotRegistered***, válassza a **Microsoft. peering** lehetőséget, majd kattintson a **regisztráció**gombra.
+
+    > [!div class="mx-imgBorder"]
+    > ![regisztráció indítása](./media/rp-register-start.png)
+
+1. Figyelje meg, hogy az állapot ***regisztrálása***megtörtént.
+
+    > [!div class="mx-imgBorder"]
+    > ![a regisztráció folyamatban van](./media/rp-register-progress.png)
+
+1. Várjon egy percig, amíg be nem fejeződik a regisztráció. Ezután kattintson a **frissítés** elemre, és ellenőrizze, hogy az állapot ***regisztrálva***van-e.
+
+    > [!div class="mx-imgBorder"]
+    > ![a regisztráció befejeződött](./media/rp-register-completed.png)
 
 ### <a name="create-peerasn"></a>PeerAsn létrehozása
 Létrehozhat egy új PeerAsn-erőforrást, amely az Azure-előfizetéssel rendelkező autonóm rendszerbeli szám (ASN) társítására használható. Egy előfizetéshez több ASN is hozzárendelhet, ehhez létre kell hoznia egy **PeerAsn** a társítandó ASN-hez.

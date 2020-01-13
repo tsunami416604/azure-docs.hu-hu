@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával'
-description: 'Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával.'
+title: 'Oktatóanyag: áruházbeli lokátor alkalmazás létrehozása Azure Maps használatával | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre áruházbeli lokátor webalkalmazást Microsoft Azure Maps web SDK használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b5ce78e95d139cf16b6193fedffc563513b39719
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 830641ae1421b799ab8e7d8b47a1c1a6e38419cf
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408039"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910951"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
 
@@ -43,13 +43,13 @@ A kód beugrása előtt érdemes megkezdeni a kialakítást. Az áruház lokáto
 
 <center>
 
-![a contoso Coffee Coffee Shop helyeihez tartozó tároló-lokátor drótváza](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
+![a contoso Coffee Shop helyeihez tartozó áruházi lokátor alkalmazás drótváza](./media/tutorial-create-store-locator/SimpleStoreLocatorWireframe.png)</center>
 
 Az áruház kereső hasznosságának maximalizálása érdekében olyan rugalmas elrendezést is tartalmazunk, amely akkor módosítható, ha a felhasználó képernyő szélessége kisebb, mint 700 képpont. A rugalmas elrendezés megkönnyíti az áruházbeli lokátor használatát egy kis képernyőn, például egy mobileszközön. Íme egy kis képernyős elrendezés drótváza:  
 
 <center>
 
-a contoso Coffee Store-lokátor ![drótváza egy mobileszközön](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
+a contoso Coffee Store-lokátor alkalmazás ![drótváza egy mobileszközön](./media/tutorial-create-store-locator/SimpleStoreLocatorMobileWireframe.png)</center>
 
 A drótváz egy meglehetősen egyszerű alkalmazást mutat be. Az alkalmazás tartalmaz egy keresőmezőt, a közeli áruházak listáját, egy olyan térképet, amely tartalmaz néhány jelölőt (szimbólumot), valamint egy előugró ablakot, amely további információkat jelenít meg, amikor a felhasználó kiválaszt egy jelölőt. Részletesebben itt láthatók a következő oktatóanyagban az áruház-lokátorban felépített funkciók:
 

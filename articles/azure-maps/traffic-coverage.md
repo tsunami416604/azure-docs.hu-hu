@@ -1,6 +1,6 @@
 ---
-title: Forgalom lefedettsége Azure Mapsban | Microsoft Docs
-description: Tudnivalók a forgalom lefedettségéről Azure Maps
+title: Forgalom lefedettsége | Microsoft Azure térképek
+description: Ebben a cikkben megtudhatja, hogyan tekintheti meg Microsoft Azure Maps forgalom lefedettségét.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 09/22/2018
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: cb7ebe5d9519f1a3967a29f4c883c420a892817f
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 544cae7f33bfb1077bfdf7f215fb313974334216
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73958004"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910405"
 ---
 # <a name="azure-maps-traffic-coverage"></a>Azure Maps forgalom lefedettsége
 
@@ -21,9 +21,9 @@ A Azure Maps a forgalom és az **incidensek**formájában biztosít **részletes
 
 A Maps azonban nem rendelkezik azonos szintű információval és pontossággal az összes országra vagy régióra vonatkozóan. Az alábbi táblázat az egyes országokból vagy régióktól kérhető forgalmi információkról nyújt információt: 
 
-## <a name="americas"></a>Amerika
+## <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Ország/régió  |Események  |Folyamat  |
+|Ország/régió  |Incidensek  |Flow  |
 |---------|:---------:|:---------:|
 |Argentína      |✓         |✓         |
 |Brazília     |✓         |✓         |
@@ -33,20 +33,20 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Mexikó     |✓         |✓         |
 |Peru       |✓         |✓         | 
 |Egyesült Államok     |✓         |✓        |
-|+Puerto Rico     |✓         |✓         |
+|\+ Puerto Rico     |✓         |✓         |
 |Uruguay |✓         |✓         |
 
 
 ## <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség
 
-|Ország/régió   |Események  |Folyamat  |
+|Ország/régió   |Incidensek  |Flow  |
 |---------|:---------:|:---------:|
 |Ausztrália     |✓         |✓        |
 |Brunei   |✓         |✓        |
-|Hongkong (KKT)     |✓         |✓         |
+|Hongkong KKT     |✓         |✓         |
 |India   |✓         |✓         |
 |Indonézia     |✓         |✓         |
-|Makaó KKT     |✓         |✓         |
+|Makaó (KKT)     |✓         |✓         |
 |Malajzia     |✓         |✓         |
 |Új-Zéland     |✓         |✓         |
 |Fülöp-szigetek  |✓         |✓         |
@@ -58,7 +58,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 
 ## <a name="europe"></a>Európa
 
-|Ország/régió   |Események  |Folyamat  |
+|Ország/régió   |Incidensek  |Flow  |
 |---------|:---------:|:---------:|
 |Andorra   |✓         |✓         |
 |Ausztria     |✓         |✓         |
@@ -67,7 +67,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Bosznia-Hercegovina    |✓         |✓         |
 |Bulgária     |✓         |✓         |
 |Horvátország     |✓         |✓         |
-|Cseh Köztársaság     |✓         |✓         |
+|Csehország     |✓         |✓         |
 |Dánia     |✓         |✓         |
 |Észtország     |         | ✓        |
 |Finnország     |✓         |✓         |
@@ -100,7 +100,7 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |Szlovákia     |✓         |✓         |
 |Szlovénia     |✓         |✓         |
 |Spanyolország     |✓         |✓         |
-|+Andorra     |✓         |✓         |
+|\+ Andorra     |✓         |✓         |
 |\+ Baleár-szigetek     |✓         |✓         |
 |\+ Kanári-szigetek     |✓         |✓         |
 |Svédország     |✓         |✓         |
@@ -111,12 +111,12 @@ A Maps azonban nem rendelkezik azonos szintű információval és pontossággal 
 |\+ Gibraltár     |✓         |✓         |
 |\+ Guernsey & Jersey     |✓         |✓         |
 |\+ Man-sziget     |✓         |✓         |
-|Vatikáni Városállam   |✓         |✓         |
+|Vatikán   |✓         |✓         |
 
 
 ## <a name="middle-east-and-africa"></a>Közel-Kelet és Afrika
 
-|Ország/régió |Események  |Folyamat  |
+|Ország/régió |Incidensek  |Flow  |
 |---------|:---------:|:---------:|
 |Bahrein     |✓         |✓         |
 |Egyiptom     |✓         |✓         |

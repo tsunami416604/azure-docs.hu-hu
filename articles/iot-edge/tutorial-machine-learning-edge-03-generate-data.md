@@ -8,12 +8,12 @@ ms.date: 11/11/2019
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: d51a577b8a460e872b2baddcb668b13981609e40
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 1c56dd23084feabeb72f084b03e055d4aa09a11d
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707747"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912262"
 ---
 # <a name="tutorial-generate-simulated-device-data"></a>Oktatóanyag: szimulált eszköz-adatértékek előállítása
 
@@ -111,7 +111,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
    Ha nem jelenik meg a kérdés, kattintson az ENTER gombra.
 
-1. Adja meg a `dotnet run` a terminálon.
+1. A terminálban írja be a következőt: `dotnet run`.
 
 1. Amikor a rendszer kéri a IoT Hub kapcsolódási karakterláncot, illessze be az előző szakaszban másolt kapcsolódási karakterláncot.
 
@@ -123,7 +123,7 @@ Most, hogy létrehoztuk a projektet, kapcsolódjon az IoT hub-hoz a kapcsolati s
 
 1. Megtekintheti az adott hubhoz küldött üzeneteket, ha a jobb gombbal rákattint bármelyik eszközre, és kiválasztja a **beépített esemény-végpont figyelése**lehetőséget. Az üzenetek a Visual Studio Code kimenet paneljén jelennek meg.
 
-1. A figyelés leállításához kattintson az **Azure IoT hub Toolkit** kimenet paneljére, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
+1. A figyelés leállításához kattintson az **Azure IoT hub** kimenet ablaktáblára, és válassza a **beépített esemény-végpont figyelésének leállítása**lehetőséget.
 
 1. Hagyja, hogy az alkalmazás végrehajtsa a befejezést, ami néhány percet vesz igénybe.
 

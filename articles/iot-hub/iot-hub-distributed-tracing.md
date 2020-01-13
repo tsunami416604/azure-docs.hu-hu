@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/06/2019
 ms.author: jlian
-ms.openlocfilehash: 4cd4cffdb0357b1cd73b1613e52c2a6c1a60f71e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc861126cd723bbb0f7c43d5d2db4eed1503605a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457049"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911895"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
 
@@ -208,15 +208,15 @@ A felhőből nyomon követett üzenetek százalékos arányának módosításáh
 
 1. Választható Módosítsa a mintavételezési sebességet egy másik értékre, és figyelje meg, hogy az üzenetek milyen gyakorisággal rendelkeznek `tracestate` az alkalmazás tulajdonságai között.
 
-### <a name="update-using-azure-iot-hub-toolkit-for-vs-code"></a>Frissítés a VS Code-hoz készült Azure IoT Hub Toolkit használatával
+### <a name="update-using-azure-iot-hub-for-vs-code"></a>Frissítés az Azure IoT Hub a VS Code-hoz
 
-1. Telepítse a VS Code-ot, majd telepítse az Azure IoT Hub Toolkit legújabb [verzióját a vs](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)Code-hoz.
+1. Telepítse a VS [Code-ot](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools), majd telepítse az Azure IoT hub legújabb verzióját a vs Code-hoz.
 
 1. Nyissa meg a VS Code-ot, és [állítsa be IoT hub a kapcsolatok karakterláncát](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit#user-content-prerequisites).
 
 1. Bontsa ki az eszközt, és keresse meg az **elosztott nyomkövetési beállítást (előzetes verzió)** . Alatta kattintson az alcsomópontok **elosztott nyomkövetési beállításainak frissítése (előzetes verzió)** elemre.
 
-    ![Elosztott nyomkövetés engedélyezése az Azure IoT Hub Toolkit-ben](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
+    ![Elosztott nyomkövetés engedélyezése az Azure IoT Hub bővítményben](./media/iot-hub-distributed-tracing/update-distributed-tracing-setting-1.png)
 
 1. Az előugró ablakban válassza az **Engedélyezés**lehetőséget, majd az ENTER billentyű lenyomásával erősítse meg az 100-as mintavételezési arányt.
 

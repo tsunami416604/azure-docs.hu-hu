@@ -1,6 +1,6 @@
 ---
-title: Adatvisszajelzés biztosítása a Azure Maps számára | Microsoft Docs
-description: Adatvisszajelzés biztosítása Azure Maps visszajelzési eszköz használatával.
+title: Adatvisszajelzés biztosítása a Azure Maps számára | Microsoft Azure térképek
+description: Adatvisszajelzés nyújtása Microsoft Azure Maps feedback eszköz használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/19/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: 28c463204080296e431edb3c30b4fdd66f07a189
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 59670742586f596a817ad52383160a38358a6786
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74776592"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911381"
 ---
 # <a name="provide-data-feedback-to-azure-maps"></a>Adatvisszajelzés biztosítása Azure Maps
 
@@ -54,7 +54,7 @@ Ha a hely PIN-kódjának helye nem megfelelő, jelölje be az "olyan hely kijav�
 
 A tartózkodási hely keresése mellett a visszajelzési eszköz is lehetővé teszi, hogy a helyhez kapcsolódó részletekhez adjon hozzá egy ingyenes szöveges megjegyzést. Ha megjegyzést szeretne adni a helyhez, vagy kattintson a "Megjegyzés hozzáadása" gombra, írja be a megjegyzést, és kattintson a "Küldés" gombra. 
 
-  ![Megjegyzés hozzáadása](./media/how-to-use-feedback-tool/add-comment.png)
+  ![és megjegyzés](./media/how-to-use-feedback-tool/add-comment.png)
 
 ## <a name="track-status"></a>Állapot nyomon követése 
 

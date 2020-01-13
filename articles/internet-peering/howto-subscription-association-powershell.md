@@ -8,12 +8,12 @@ ms.service: internet-peering
 ms.topic: article
 ms.date: 11/27/2019
 ms.author: prmitiki
-ms.openlocfilehash: e7239fdedafedc96a382de6c3c2f90b5da4df00c
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 77cc4732e017d95cbae19578cf26b1111b08fdde
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75774249"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75908992"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-powershell"></a>Társközi ASN társítása az Azure-előfizetéshez a PowerShell használatával
 
@@ -29,7 +29,24 @@ Ha szeretné, ezt az útmutatót a [portálon](howto-subscription-association-po
 ### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
 [!INCLUDE [Account](./includes/account-powershell.md)]
 
+### <a name="register-for-peering-resource-provider"></a>Regisztrálás a társ erőforrás-szolgáltatónál
+Regisztráljon az előfizetésben az alábbi parancs használatával a társ erőforrás-szolgáltatóhoz. Ha nem hajtja végre ezt, akkor a társítás beállításához szükséges Azure-erőforrások nem érhetők el.
+
+```powershell
+Register-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+A regisztrációs állapotot az alábbi parancsokkal tekintheti meg:
+```powershell
+Get-AzResourceProvider -ProviderNamespace Microsoft.Peering
+```
+
+> [!IMPORTANT]
+> Várjon, amíg a *RegistrationState* bekapcsolja a "regisztráció" kifejezést a folytatás előtt. A parancs végrehajtása után 5 – 30 percet is igénybe vehet.
+
 ### <a name="update-the-peer-information-associated-with-this-subscription"></a>Az előfizetéshez társított társ-információ frissítése
+
+Az alábbi példa a társ-információk frissítésére szolgál.
 
 ```powershell
 New-AzPeerAsn `

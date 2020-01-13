@@ -1,6 +1,6 @@
 ---
-title: Honosítási támogatás a Azure Mapsban | Microsoft Docs
-description: Ismerje meg Azure Maps szolgáltatásainak támogatott nyelveit
+title: Honosítási támogatás | Microsoft Azure térképek
+description: Ebből a cikkből megismerheti a Microsoft Azure Maps szolgáltatásainak támogatott nyelveit.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/20/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 64197cc85822997926a8011af8cb3b981fa9064d
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: 4926cb2bb4cb1aa15b212cc7130e0db995a24ed9
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286421"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910435"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
 
@@ -25,42 +25,42 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 A Azure Maps különböző nyelveken lettek honosítva a szolgáltatások között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID         | Név                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID (Azonosító)         | Név                   |  Térképek | Search | Útvonaltervezés | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
-| af-ZA      | afrikaans              |       |    ✓   |    ✓    |         |                   |                |
+| AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | BN – BD      | Bangla (Banglades)    |       |       |         |     ✓    |                   |                |
 | BN – a      | Bangla (India)         |       |       |         |     ✓    |                   |                |
-| BS-BA      | boszniai                 |       |       |         |     ✓    |                   |                |
-| eu-ES      | baszk                 |       |    ✓   |         |         |                   |                |
+| BS-BA      | bosnyák                 |       |       |         |     ✓    |                   |                |
+| EU – ES      | Baszk                 |       |    ✓   |         |         |                   |                |
 | bg-BG      | bolgár              |   ✓   |    ✓   |    ✓    |     ✓     |                   |        ✓       |
-| CA-ES      | katalán                |       |    ✓   |         |    ✓      |                   |                |
+| ca-ES      | katalán                |       |    ✓   |         |    ✓      |                   |                |
 | zh-HanS    | kínai (egyszerűsített)   |       |  zh-CN |         |     zh-CN   |                   |                |
-| zh-HanT    | Kínai (Hongkong KKT)  |  |   |    |    zh-HK   |                   |           |
-| zh-HanT    | kínai (tajvani)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
+| zh-HanT    | Kínai (Hongkong (KKT))  |  |   |    |    ZH-HK   |                   |           |
+| zh-HanT    | Kínai (Tajvan)  | zh-TW |  zh-TW |  zh-TW  |    zh-TW   |                   |      zh-TW     |
 | hr-HR      | horvát               |       |    ✓   |         |    ✓      |                   |                |
-| cs-CZ      | cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
+| cs-CZ      | Cseh                  |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
 | da-DK      | dán                 |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | nl-BE      | Holland (Belgium)        |       |    ✓   |         |      ✓    |                   |                |
-| NL-NL      | holland (Hollandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-Ausztrália      | angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
-| en-NZ      | angol (Új-Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| nl-NL      | holland (Hollandia)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-AU      | Angol (Ausztrália)    |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
+| EN-NZ      | Angol (Új-Zéland)  |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-GB      | Angol (Nagy-Britannia) |   ✓   |    ✓   |    ✓    |     ✓     |         ✓         |        ✓       |
 | en-US      | Angol (USA)          |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
 | et-EE      | észt               |       |    ✓   |         |      ✓    |         ✓         |                |
 | Fil – PH     | filippínó               |       |       |         |     ✓    |                   |                |
 | fi-FI      | finn                |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| FR-FR      | francia                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
-| FR-hitelesítésszolgáltató      | francia (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
-| GL-ES      | galíciai               |       |    ✓   |         |         |                   |                |
-| de-DE      | német                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
+| fr-FR      | Francia                 |   ✓   |    ✓   |    ✓    |      ✓    |         ✓         |        ✓       |
+| fr – CA      | Francia (Kanada)      |       |    ✓   |         |     ✓     |                   |                |
+| gl-ES      | gallego               |       |    ✓   |         |         |                   |                |
+| de-DE      | Német                 |   ✓   |    ✓   |    ✓    |   ✓      |         ✓         |        ✓       |
 | el-GR      | görög                  |   ✓   |    ✓   |    ✓    |    ✓     |         ✓         |        ✓       |
 | Gu – a      | gudzsaráti                |       |       |         |     ✓    |                   |                |
-| He-IL      | héber                 |       |    ✓   |         |     ✓    |         ✓         |                |
-| Üdvözöljük – India      | hindi                  |       |        |         |     ✓    |                   |                |
+| he-IL      | héber                 |       |    ✓   |         |     ✓    |         ✓         |                |
+| hi-IN      | hindi                  |       |        |         |     ✓    |                   |                |
 | hu-HU      | magyar              |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| a ()      | izlandi              |       |       |         |     ✓    |                   |                |
-| ID-Azonosítóját      | indonéz             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
+| a ()      | Izlandi              |       |       |         |     ✓    |                   |                |
+| id-ID      | indonéz             |   ✓   |    ✓    |    ✓    |     ✓    |         ✓         |        ✓       |
 | it-IT      | olasz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | ja-JP      | japán               |       |        |         |     ✓    |                   |                |
 | KN – a      | kannada                |       |       |         |     ✓    |                   |                |
@@ -70,30 +70,30 @@ A Azure Maps különböző nyelveken lettek honosítva a szolgáltatások közö
 | lv-LV      | lett                |       |    ✓   |         |     ✓    |         ✓         |                |
 | lt-LT      | litván             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | MK-MK      | Macedón             |       |       |         |     ✓    |                   |                |
-| MS-saját      | Maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
+| ms-MY      | Maláj (latin betűs)          |   ✓   |    ✓   |    ✓    |    ✓   |                   |        ✓       |
 | Mr-IN      | marathi                 |       |       |         |     ✓    |                   |                |
-| nb-NO      | Norvég nyelven       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| nb-NO      | Norvég (bokmål)       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Semleges földelési igazság – hivatalos nyelvek a helyi parancsfájlok minden régiója számára, ha elérhető |   ✓     |        |         |       |        |      ✓          |
 | NGT – Latn   | Semleges földelési igazság – latin exonyms. Ha elérhető, a latin szkriptet fogja használni |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | lengyel                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| pt-BR      | portugál (brazíliai)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
-| PT-PT      | portugál (általános)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| pt-BR      | Portugál (brazíliai)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
+| pt-PT      | portugál (Portugália)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | PA-IN      | pandzsábi                 |       |       |         |     ✓    |                   |                |
 | ro-RO      | román               |       |    ✓    |         |     ✓    |         ✓         |                |
-| ru-RU      | Orosz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
-| sr-Cyrl-RS | szerb (cirill betűs)     |       |   SR-RS  |         |    SR-RS     |                   |                |
+| ru-RU      | orosz                |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
+| sr-Cyrl-RS | Szerb (cirill betűs)     |       |   SR-RS  |         |    SR-RS     |                   |                |
 | sr-Latn-RS | szerb (latin betűs)        |       |       |         |     SR-Latn    |                   |                |
-| SK-SK      | szlovák             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| sl-SL      | szlovén              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
-| es-ES      | spanyol                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| es-MX      | spanyol (Mexikó)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
-| SV-SE      | svéd                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| TA-India      | tamil (India)                 |       |       |         |     ✓    |                   |                |
-| Te-India      | telugu (India)                 |       |       |         |     ✓    |                   |                |
-| cs-EDIK      | thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| sk-SK      | szlovák             |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| SL-SL      | szlovén              |   ✓   |    ✓   |    ✓    |     ✓    |                   |        ✓       |
+| es-ES      | Spanyol                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| es-MX      | Spanyol (Mexikó)       |   ✓   |        |    ✓    |     ✓    |                   |        ✓       |
+| sv-SE      | svéd                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
+| ta-be      | Tamil (India)                 |       |       |         |     ✓    |                   |                |
+| te-a      | Telugu (India)                 |       |       |         |     ✓    |                   |                |
+| th-TH      | thai                   |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | tr-TR      | török                |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
-| Egyesült Királyság – UA      | ukrán               |       |    ✓   |         |     ✓    |                   |                |
-| az Ön-PK      | urdu                 |       |       |         |     ✓    |                   |                |
+| uk-UA      | ukrán               |       |    ✓   |         |     ✓    |                   |                |
+| az Ön-PK      | Urdu                 |       |       |         |     ✓    |                   |                |
 | Uz-Latn-UZ | Üzbég                 |       |       |         |     ✓    |                   |                |
 | vi-VN      | vietnami             |       |    ✓   |         |      ✓    |                  |                |
 
@@ -137,7 +137,7 @@ A Azure Maps különböző nyelveken lettek honosítva a szolgáltatások közö
 >
 >  Győződjön meg arról, hogy szükség szerint állította be a View paramétert, és a web SDK és az Android SDK legújabb verziója van telepítve. Érintett SDK-k:
 >
->    * Azure Maps Web SDK
+>    * Azure Maps web SDK
 >    * Azure Maps Android SDK
 
 
@@ -148,7 +148,7 @@ Alapértelmezés szerint a View paraméter a **Unified**értékre van állítva,
 
 A következő táblázat a támogatott nézeteket tartalmazza.
 
-| Nézet         | Leírás                            |  Maps | Keresés | JS térképkezelés |
+| Megtekintés         | Leírás                            |  Térképek | Search | JS térképkezelés |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
 | AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |
@@ -166,5 +166,5 @@ A következő táblázat a támogatott nézeteket tartalmazza.
 | SA           | Szaúd-Arábia (arab nézet)            |   ✓   |        |     ✓          |
 | SY           | Szíria (arab nézet)                   |   ✓   |        |     ✓          |
 | TI           | Jemeni (arab nézet)                   |   ✓   |        |     ✓          |
-| automatikus         | A leképezési adatmennyiséget a kérés IP-címe alapján küldi vissza.|   ✓   |    ✓   |     ✓          |
+| Automatikus         | A leképezési adatmennyiséget a kérés IP-címe alapján küldi vissza.|   ✓   |    ✓   |     ✓          |
 | Egységes      | Egyesített nézet (egyéb)                  |   ✓   |   ✓     |     ✓          |

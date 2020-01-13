@@ -1,6 +1,6 @@
 ---
-title: Bevezetés az Android Térkép vezérlőelem használatába Azure Mapsban | Microsoft Docs
-description: Az Android Térkép vezérlőelem a Azure Mapsban.
+title: Bevezetés az Android Map Control használatába | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan kezdheti el az Android Map Control használatát a Microsoft Azure Maps Android SDK-val.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: cb79b24a37758307657c1245622fa980123cc5c9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb9dc16eabbd6065e05d26258c1421aa7a46dbd7
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432923"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911402"
 ---
 # <a name="getting-started-with-azure-maps-android-sdk"></a>Ismerkedés a Azure Maps Android SDK-val
 
@@ -43,7 +43,7 @@ Először hozzon létre egy új projektet egy üres tevékenységgel. Android St
 
 A Android Studio telepítésével és új projekt létrehozásával kapcsolatos további segítségért tekintse meg a [Android Studio dokumentációját](https://developer.android.com/studio/intro/) .
 
-![Projekt létrehozása](./media/how-to-use-android-map-control-library/form-factor-android.png)
+![Projekt létrehozása az Android Studióban ](./media/how-to-use-android-map-control-library/form-factor-android.png)
 
 ## <a name="set-up-a-virtual-device"></a>Virtuális eszköz beállítása
 
@@ -217,7 +217,7 @@ Android Studio eltarthat néhány másodpercig az alkalmazás felépítéséhez.
 
 <center>
 
-![Android Térkép](./media/how-to-use-android-map-control-library/android-map.png)</center>
+![Azure Maps az Android-alkalmazásban](./media/how-to-use-android-map-control-library/android-map.png)</center>
 
 ## <a name="localizing-the-map"></a>A Térkép honosítása
 
@@ -263,7 +263,7 @@ Itt látható egy példa arra, hogy Azure Maps a "fr-FR" és a regionális néze
 
 <center>
 
-![Térkép képe, amely a feliratokat ábrázolja franciául](./media/how-to-use-android-map-control-library/android-localization.png)
+![Azure Maps, Térkép ábrázolása francia nyelvű feliratokkal](./media/how-to-use-android-map-control-library/android-localization.png)
 </center>
 
 A támogatott nyelvek és regionális nézetek teljes listáját [itt](supported-languages.md)dokumentáljuk.

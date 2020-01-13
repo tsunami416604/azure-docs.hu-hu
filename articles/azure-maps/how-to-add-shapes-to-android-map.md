@@ -1,6 +1,6 @@
 ---
-title: Alakzatok hozzáadása Android-térképekhez Azure Mapsban | Microsoft Docs
-description: Alakzatok hozzáadása térképhez Azure Maps Android SDK használatával
+title: Alakzatok hozzáadása Android-térképekhez | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan jelenítheti meg különböző alakzatokat a térképeken a Microsoft Azure Maps Android SDK használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 04/26/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: c8e3f16b939d05a4c055fba3a9f1ab5e47e54070
-ms.sourcegitcommit: 62bd5acd62418518d5991b73a16dca61d7430634
+ms.openlocfilehash: 8135d11624fa57547528b023b6d2dc5c3caecb39
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68976596"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911604"
 ---
 # <a name="add-a-shape-to-a-map-using-azure-maps-android-sdk"></a>Alakzat hozzáadása térképhez Azure Maps Android SDK használatával
 
@@ -28,7 +28,7 @@ A cikkben szereplő folyamat elvégzéséhez telepítenie kell [Azure Maps Andro
 
 Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**használatával.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy az a következőhöz hasonlóan néz ki:
+1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -51,7 +51,7 @@ Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**hasz
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja az alábbi kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára.
 
     ```Java
     mapControl.onReady(map -> {
@@ -78,7 +78,7 @@ Az alábbi lépésekkel adhat hozzá sort a térképhez egy vonal **réteg**hasz
     
     A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ezután létrehozza a **pont** objektumainak listáját. A rendszer létrehoz egy **LineString** a pontok listájából, és hozzáadja az adatforráshoz. A **sorok** a térképen egy adatforrásba burkolt vonali objektumokat jelenítenek meg. Ekkor létrejön egy sor réteg, és hozzá lesz adva az adatforrás.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a kódrészletet a fenti kódrészlethez, a `MainActivity.java`nek az alábbihoz hasonlóan kell kinéznie:
     
     ```Java
     package com.example.myapplication;
@@ -178,14 +178,14 @@ Ha most futtatja az alkalmazást, látnia kell egy vonalat a térképen az aláb
 
 <center>
 
-![Androidos Térkép sora](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
+![egy Android-térképen megjelenített sort](./media/how-to-add-shapes-to-android-map/android-map-line.png)</center>
 
 
 ## <a name="add-a-polygon-to-the-map"></a>Sokszög hozzáadása a térképhez
 
 A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítését a térképre. Az alábbi lépéseket követve hozzáadhat egy sokszöget a térképhez.
 
-1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy az a következőhöz hasonlóan néz ki:
+1. Szerkessze a **res > elrendezést > activity_main. xml fájlt** úgy, hogy a következőképpen néz ki:
 
     ```XML
     <?xml version="1.0" encoding="utf-8"?>
@@ -208,7 +208,7 @@ A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítésé
     </FrameLayout>
     ```
 
-2. Másolja az alábbi kódrészletet az `MainActivity.java` osztály **onCreate ()** metódusára.
+2. Másolja a következő kódrészletet a `MainActivity.java` osztály **onCreate ()** metódusára.
 
     ```Java
     mapControl.onReady(map -> {
@@ -240,7 +240,7 @@ A **sokszög réteg** lehetővé teszi a sokszög területének megjelenítésé
 
     A fenti kódrészlet először a **onReady ()** callback metódus használatával szerzi be Azure Maps Térkép vezérlőelem-példányát. Ezután létrehoz egy adatforrás-objektumot a **DataSource** osztály használatával, és hozzáadja azt a térképhez. Ekkor létrejön egy **sokszög** -objektum a **pont** objektumainak listájából, és az adatforráshoz kerül. A **sokszög réteg** a térképen lévő adatforrásba burkolt adatfeliratokat jeleníti meg. Ezután létrehoz egy sokszög réteget a sokszög terület megjelenítéséhez, és hozzáadja az adatforrást. A **sortörések** egy adatforrásba burkolt vonalas objektumokat jelenítenek meg. A kódrészlet utolsó része egy sor réteget hoz létre a sokszög körvonalának megjelenítéséhez és az adatforrás hozzáadásához.
 
-    Miután hozzáadta a fenti kódrészletet, `MainActivity.java` a következőhöz hasonlóan kell kinéznie:
+    Miután hozzáadta a kódrészletet a fenti kódrészlethez, a `MainActivity.java`nek az alábbihoz hasonlóan kell kinéznie:
 
     ```Java
     package com.example.myapplication;
@@ -350,10 +350,10 @@ Ha most futtatja az alkalmazást, akkor a térképen egy sokszög látható a le
 
 <center>
 
-![Android térképes sokszög](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
+![egy Android-térképen megjelenített sokszöget](./media/how-to-add-shapes-to-android-map/android-map-polygon.png)</center>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ hozzáadása a térképhez:
 

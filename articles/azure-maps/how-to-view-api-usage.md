@@ -1,6 +1,6 @@
 ---
-title: Az Azure Maps API-használat megtekintése |} A Microsoft Docs
-description: Ismerje meg, a metrikák az Azure Maps API-hívások megtekintése a portálon.
+title: A Azure Maps API használati metrikáinak megtekintése | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan tekintheti meg Microsoft Azure Maps API-hívások metrikáit a Azure Portal.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/06/2018
@@ -8,62 +8,62 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 716f9fbc02905a8981771c2fd9dd2be0baeb8196
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 7ba50f63fb015a8696904df3decd13c811625459
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67460197"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911338"
 ---
-# <a name="view-azure-maps-api-usage"></a>Azure Maps API-használati adatok megtekintése
+# <a name="view-azure-maps-api-usage-metrics"></a>Az Azure Maps API használati metrikáinak megtekintése
 
-Ez a cikk bemutatja, hogyan az API-t az Azure Maps-fiók, a használati metrikáinak megtekintéséhez a [portál](https://portal.azure.com). A metrikákat egy testreszabható időtartam mentén kényelmesen használható grafikus formátumban jelennek meg.
+Ez a cikk bemutatja, hogyan tekintheti meg Azure Maps-fiókjához tartozó API-használati metrikákat a [portálon](https://portal.azure.com). A metrikák kényelmes gráf formátumban jelennek meg, a testreszabható idő időtartama alatt.
 
-## <a name="view-metric-snapshot"></a>Metrika pillanatkép megtekintése
+## <a name="view-metric-snapshot"></a>Metrika pillanatképének megtekintése
 
-Tekintheti meg néhány gyakori metrikák az **áttekintése** a Maps-fiók oldalán. Jelenleg látható *kérések teljes*, *az összes hiba*, és *rendelkezésre állási* választható időtartam alatt.
+A Maps-fiók **áttekintő** lapján néhány gyakori mérőszámot láthat. Jelenleg a *teljes kérelmeket*, a *teljes hibákat*és a *rendelkezésre állást* jeleníti meg egy kijelölhető időtartamon keresztül.
 
-![Az Azure Maps Méretmetrikák – áttekintés](media/how-to-view-api-usage/portal-overview.png)
+![Azure Maps használati metrikák áttekintése](media/how-to-view-api-usage/portal-overview.png)
 
-Ha testre kell szabnia az adott elemzéshez diagramokra továbbra is a következő szakaszban.
+Folytassa a következő szakasszal, ha testre kell szabnia ezeket a diagramokat az adott elemzéshez.
 
-## <a name="view-detailed-metrics"></a>Részletes metrikák megtekintése
+## <a name="view-detailed-metrics"></a>Részletes mérőszámok megtekintése
 
-1. Jelentkezzen be az Azure-előfizetését a [portál](https://portal.azure.com).
+1. Jelentkezzen be az Azure-előfizetésbe a [portálon](https://portal.azure.com).
 
-2. Kattintson a **összes erőforrás** elemet a bal oldali menüben, és keresse meg a *Azure Maps-fiók*.
+2. Kattintson a **minden erőforrás** menüpontra a bal oldali oldalon, és navigáljon a *Azure Maps-fiókjához*.
 
-3. Ha a Maps-fiók meg nyitva, kattintson a a **metrikák** a bal oldali menüben.
+3. Miután megnyitotta a Maps-fiókját, kattintson a bal oldali **mérőszámok** menüre.
 
-4. Az a **metrikák** ablaktáblán választhat a következők egyikét:
+4. A **metrikák** panelen válasszon az alábbiak közül:
 
-   1. **Rendelkezésre állási** – amely bemutatja a *átlagos* API rendelkezésre állás egy időszakon belül.
-   2. **Használati** – amely bemutatja hogyan a használati *száma* a fiókjához.
+   1. **Rendelkezésre állás** – az API rendelkezésre állásának *átlagát* mutatja egy adott időszakban.
+   2. **Használat** – ez azt mutatja, hogy a fiók használati *száma* hogyan használható.
 
-      ![Azure Maps-metrikák panelje](media/how-to-view-api-usage/portal-metrics.png)
+      ![Azure Maps használati metrikák panel](media/how-to-view-api-usage/portal-metrics.png)
 
-5. Ezután választhat a *időtartomány* kattintva **(automatikus) az elmúlt 24 órából**. Alapértelmezés szerint az időtartomány 24 óra értéke. Gombra kattintva megjelenik a választható időintervallumok. Kiválaszthatja a *idő részletessége* is megjelenítheti az időt, majd *helyi* vagy *GMT* az azonos legördülő. Kattintson az **Alkalmaz** gombra.
+5. Ezután kiválaszthatja az *időtartományt* az **elmúlt 24 óra (automatikus)** lehetőségre kattintva. Alapértelmezés szerint az időtartomány 24 órára van beállítva. A gombra kattintva megjelenik az összes választható időtartomány. Kiválaszthatja az *idő részletességét* , és kiválaszthatja, hogy a *helyi* vagy a *GMT* időpontot jelenítse meg ugyanabban a legördülő listában. Kattintson az **Alkalmaz** gombra.
 
-    ![Az Azure Maps metrikák időtartomány](media/how-to-view-api-usage/time-range.png)
+    ![Azure Maps metrikák időtartománya](media/how-to-view-api-usage/time-range.png)
 
-6. Miután hozzáadta a metrika, ezek közül **szűrő hozzáadása** többek között a tulajdonságokat, amelyek a metrika, és válassza ki a kívánt tulajdonság értéke látható a graph számára.
+6. Miután hozzáadta a metrikát, **hozzáadhat szűrőt** a metrikához tartozó tulajdonságok közül, majd kiválaszthatja annak a tulajdonságnak az értékét, amelynek a diagramját meg szeretné jeleníteni.
 
-    ![Az Azure Maps metrikák szűrése](media/how-to-view-api-usage/filter.png)
+    ![Azure Maps használati metrikák szűrője](media/how-to-view-api-usage/filter.png)
 
-7. Lehetősége van **alkalmazni a felosztás** a metrika a kiválasztott metrika tulajdonság alapján. Ez lehetővé teszi a gráf több diagramok, egyet-egyet mindegyik érték a tulajdonság felosztva. A következő képen látható az egyes színét felel meg a tulajdonság értéke, a diagram alján látható.
+7. A mérőszám felosztását a kiválasztott metrikai tulajdonság alapján is **alkalmazhatja** . Ez lehetővé teszi, hogy a gráf több gráfra legyen felosztva, egyet pedig az adott tulajdonság minden értékéhez. Az alábbi képen az egyes diagramok színe a gráf alján látható tulajdonság értékének felel meg.
 
-    ![Azure Maps Metrics Splitting](media/how-to-view-api-usage/splitting.png)
+    ![Azure Maps használati metrikák felosztása](media/how-to-view-api-usage/splitting.png)
 
-8. Azt is megfigyelheti az ugyanazon a grafikonon több metrikát kattintva a **metrika hozzáadása** felül gombra.
+8. Ugyanezen a gráfon több mérőszám is megfigyelhető, egyszerűen kattintson a felül található **metrika hozzáadása** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az Azure Maps API-k használatának nyomon követéséhez szeretné:
+Ismerkedjen meg a Azure Maps API-kkal, amelyeken nyomon szeretné követni a használatot:
 > [!div class="nextstepaction"] 
-> [Az Azure Maps Web SDK-útmutató](how-to-use-map-control.md)
+> [Azure Maps web SDK – útmutató](how-to-use-map-control.md)
 
 > [!div class="nextstepaction"] 
-> [Az Azure Maps Android SDK-útmutató](how-to-use-android-map-control-library.md)
+> [Azure Maps Android SDK – útmutató](how-to-use-android-map-control-library.md)
 
 > [!div class="nextstepaction"]
-> [Az Azure Maps REST API dokumentációja](https://docs.microsoft.com/rest/api/maps)
+> [Azure Maps REST API dokumentációja](https://docs.microsoft.com/rest/api/maps)

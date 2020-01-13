@@ -9,12 +9,12 @@ ms.author: deli
 ms.reviewer: klam, LADocs
 ms.topic: article
 ms.date: 09/23/2019
-ms.openlocfilehash: 3d748e1625f27be27b7f403fbab3e213b16c4dd6
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: c5de7b7bf30726dbfbf165799280ad892eca628a
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890182"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911998"
 ---
 # <a name="migrate-azure-scheduler-jobs-to-azure-logic-apps"></a>Azure Scheduler-feladatok migrálása a Azure Logic Appsba
 
@@ -191,9 +191,9 @@ Ha az Azure Schedulerben nem sikerül futtatni az alapértelmezett műveletet, f
 
 1. Ha elkészült, válassza a **Kész** lehetőséget.
 
-További információ a kivételek kezeléséről: [hibák és kivételek kezelése – RunAfter tulajdonság](../logic-apps/logic-apps-exception-handling.md#catch-and-handle-failures-with-the-runafter-property).
+További információ a kivételek kezeléséről: [hibák és kivételek kezelése – RunAfter tulajdonság](../logic-apps/logic-apps-exception-handling.md#control-run-after-behavior).
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 
 <a name="retire-date"></a>
 
@@ -220,21 +220,21 @@ Ha az Azure-előfizetése fizetős támogatási csomaggal rendelkezik, technikai
 
 1. A **támogatás** menüben válassza az **új támogatási kérelem**lehetőséget. Adja meg a kérelmére vonatkozó információkat:
 
-   | Tulajdonság | Érték |
+   | Tulajdonság | Value (Díj) |
    |---------|-------|
    | **Probléma típusa** | **Technikai** |
    | **Előfizetés** | <*Az Azure-előfizetések*> |
-   | **Szolgáltatás** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
+   | **Service** | A **figyelés &** felügyelet területen válassza az **ütemező**lehetőséget. Ha nem találja a **Feladatütemezőt**, először válassza **a minden szolgáltatás** lehetőséget. |
    ||| 
 
 1. Válassza ki a kívánt támogatási lehetőséget. Ha fizetős támogatási csomaggal rendelkezik, válassza a **tovább**lehetőséget.
 
-**Közösségi**
+**Közösség**
 
 * [Azure Logic Apps fórum](https://social.msdn.microsoft.com/Forums/en-US/home?forum=azurelogicapps)
 * [Stack Overflow](https://stackoverflow.com/questions/tagged/azure-scheduler)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rendszeresen futó feladatok és munkafolyamatok létrehozása Azure Logic Apps](../connectors/connectors-native-recurrence.md)
 * [Oktatóanyag: a forgalom ellenőrzését egy ütemezett logikai alkalmazással](../logic-apps/tutorial-build-schedule-recurring-logic-app-workflow.md)

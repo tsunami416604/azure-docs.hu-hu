@@ -1,6 +1,6 @@
 ---
-title: Hitelesítés kezelése Azure Mapsban | Microsoft Docs
-description: A Azure Portal segítségével kezelheti a hitelesítést a Azure Mapsban.
+title: Hitelesítés kezelése | Microsoft Azure térképek
+description: A Azure Portal a Microsoft Azure Maps-ben történő hitelesítés kezelésére használható.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 10/24/2019
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: b44b48b504fc080971a2797b89026e14be5cdd17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a38c970f3c9fa5b90032f5816f8e541b305531c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432998"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911549"
 ---
 # <a name="manage-authentication-in-azure-maps"></a>Hitelesítés kezelése Azure Maps
 

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: geokerítésen létrehozása Azure Maps használatával'
-description: 'Oktatóanyag: geokerítésen beállítása Azure Maps használatával.'
+title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követése térképeken | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan telepítheti a geokerítésen, és nyomon követheti az eszközöket a geokerítésen képest a Microsoft Azure Maps térbeli szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 2998c67bf00c74422baa19af0b389118600ba1c7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407834"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910947"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
@@ -58,7 +58,7 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
 
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps kulcsra.
    
-    ![Kulcs-érték paraméterek Poster](./media/tutorial-geofence/postman-key-vals.png)
+    ![Az adatok feltöltésének paraméterei (geokerítésen) a Poster-ben](./media/tutorial-geofence/postman-key-vals.png)
 
 4. Kattintson a **törzs** elemre, majd válassza a nyers bemeneti formátum lehetőséget, majd a legördülő listából válassza a JSON lehetőséget. Adja meg a következő JSON-t a feltöltött adatként:
 
@@ -177,7 +177,7 @@ További információért tekintse meg az összes [támogatott eseménykezelőt]
 
 1. Logikai alkalmazás létrehozása Azure Portal
 
-   ![Logic Apps létrehozása](./media/tutorial-geofence/logic-app.png)
+   ![Azure Logic Apps létrehozása a geokerítésen-események kezeléséhez](./media/tutorial-geofence/logic-app.png)
 
 2. Válasszon egy HTTP-kérelem triggert, majd válassza az "e-mail küldése" műveletet az Outlook-összekötőben
   
@@ -185,7 +185,7 @@ További információért tekintse meg az összes [támogatott eseménykezelőt]
 
 3. Mentse a logikai alkalmazást a HTTP URL-cím végpontjának létrehozásához és a HTTP URL-cím másolásához.
 
-   ![Logic Apps végpont](./media/tutorial-geofence/logic-app-endpoint.png)
+   ![Logic Apps végpont létrehozása](./media/tutorial-geofence/logic-app-endpoint.png)
 
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps esemény-előfizetés létrehozása
@@ -196,15 +196,15 @@ Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geoke
 
 1. Navigáljon a Azure Maps-fiókjához [ezen a portálon](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) keresztül, és válassza az események lapot.
 
-   ![Események Azure Maps](./media/tutorial-geofence/events-tab.png)
+   ![Azure Maps-fiók eseményeinek megkeresése](./media/tutorial-geofence/events-tab.png)
 
 2. Esemény-előfizetés létrehozásához válassza az események lap esemény-előfizetés elemét.
 
-   ![Azure Maps esemény-előfizetés](./media/tutorial-geofence/create-event-subscription.png)
+   ![Azure Maps esemény-előfizetés létrehozása](./media/tutorial-geofence/create-event-subscription.png)
 
 3. Nevezze el az események előfizetését, és fizessen elő az ENTER eseménytípus típusra. Most válassza ki a "végpont típusa" nevű webhookot, és másolja a logikai alkalmazás HTTP URL-végpontját a "Endpoint" értékre.
 
-   ![Események előfizetése](./media/tutorial-geofence/events-subscription.png)
+   ![Azure Maps események előfizetés részletei](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>A Geokerítésen API használata
@@ -214,7 +214,7 @@ A Geokerítésen API-val ellenőrizhető, hogy egy **eszköz** (a berendezés az
 > [!Note]
 > A fenti forgatókönyv és viselkedés ugyanazon az **eszköz-azonosítón** alapul, hogy az az alábbi ábrán látható módon tükrözze az öt különböző helyet.
 
-![Geokerítésen Térkép](./media/tutorial-geofence/geofence.png)
+![Geokerítésen-leképezés Azure Maps](./media/tutorial-geofence/geofence.png)
 
 A Poster alkalmazásban nyisson meg egy új fület a fent létrehozott gyűjteményben. Válassza a HTTP-módszer beolvasása lehetőséget a szerkesztő lapon:
 

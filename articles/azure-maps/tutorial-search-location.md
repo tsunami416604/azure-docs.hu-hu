@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Keresés a Azure Maps'
-description: 'Oktatóanyag: a közeli érdeklődési pont keresése Azure Maps használatával'
+title: 'Oktatóanyag: a közeli helyszínek keresése térképen | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan kereshet a közeli helyeken (érdekes helyek) a térképeken Microsoft Azure térképeket használva.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: ae2d7b3d855f1c06397d4eb0f977dd04aa841942
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432745"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910829"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
@@ -49,7 +49,7 @@ Hozzon létre egy új Maps-fiókot az alábbi lépésekkel:
     * Olvassa el a *licencfeltételeket* és az *adatvédelmi nyilatkozatot*, és jelölje be az azok elfogadását jelző jelölőnégyzetet.
     * Kattintson a **Létrehozás** gombra.
 
-![Maps-fiók létrehozása a portálon](./media/tutorial-search-location/create-account.png)
+![Azure Maps fiók létrehozása Azure Portal](./media/tutorial-search-location/create-account.png)
 
 <a id="getkey"></a>
 
@@ -61,7 +61,7 @@ A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely l
 2. A beállítások szakaszban válassza a **hitelesítés**lehetőséget.
 3. Másolja ki az **elsődleges kulcsot** a vágólapra. Mentse a helyi gépre, hogy később felhasználhassa ebben az oktatóanyagban.
 
-![Elsődleges kulcs lekérése a portálon](./media/tutorial-search-location/get-key.png)
+![Elsődleges kulcs lekérése Azure Portal](./media/tutorial-search-location/get-key.png)
 
 A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](how-to-manage-authentication.md).
 

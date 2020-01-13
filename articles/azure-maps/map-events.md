@@ -1,6 +1,6 @@
 ---
-title: Események kezelése a Azure Mapskal | Microsoft Docs
-description: Interaktív web SDK-Térkép készítése térképi eseményekkel
+title: Kezelő Térkép eseményei | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan készíthet interaktív webes SDK-térképet térképi eseményekkel a Microsoft Azure Maps web SDK használatával.
 author: jingjing-z
 ms.author: jinzh
 ms.date: 09/10/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 99ef5aa0ee8fa542b0aa807cc536ebfbee369e10
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 742cb76f491e76db6dc9ec415c6718066b46f137
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74484292"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911081"
 ---
 # <a name="interact-with-the-map"></a>A térképpel való interakció
 
@@ -109,7 +109,7 @@ A következő táblázat felsorolja az összes támogatott leképezési osztály
 | `zoomstart`         | Közvetlenül a Térkép megkezdése előtt az egyik nagyítási szintről a másikra vált, a felhasználói interakció vagy módszerek eredményeképpen.|
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő cikkekben talál részletes példákat:
 

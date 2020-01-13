@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
-ms.openlocfilehash: 3fe4dfae2e86d549056805e87c0fd3927697fe24
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 668087ae596688e86b7b84a16bc5c0fd0f9fcef6
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73890571"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75912244"
 ---
 # <a name="create-an-iot-hub-using-the-azure-iot-tools-for-visual-studio-code"></a>IoT hub létrehozása a Visual Studio Code-hoz készült Azure IoT Tools használatával
 
@@ -56,7 +56,7 @@ A cikk elvégzéséhez a következőkre lesz szüksége:
 
 11. Várjon néhány percet, amíg a IoT Hub létre nem jön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most üzembe helyezett egy IoT hubot a Visual Studio Code-hoz készült Azure IoT Tools használatával. További információkért tekintse meg a következő cikkeket:
 
@@ -64,4 +64,4 @@ Most üzembe helyezett egy IoT hubot a Visual Studio Code-hoz készült Azure Io
 
 * [A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez](iot-hub-device-management-iot-toolkit.md)
 
-* [Tekintse meg az Azure IoT hub Toolkit wiki oldalát](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).
+* [Tekintse meg az Azure IoT hub a vs Code wikihöz lapot](https://github.com/microsoft/vscode-azure-iot-toolkit/wiki).

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: útvonal keresése Azure Maps'
-description: 'Oktatóanyag: egy hasznos ponthoz való továbbítás Azure Maps használatával'
+title: 'Oktatóanyag: útvonal megkeresése egy helyhez | Microsoft Azure térképek'
+description: Ebből az oktatóanyagból megtudhatja, hogyan teheti át az útvonalat egy adott helyre (érdekes hely) a Microsoft Azure Maps útválasztási szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 11/12/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: efc60acae78c96983e79044ae1ba7399154f3568
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7f13e5342e880a9ed5e2cb35ebaf558a1641618b
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613601"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75910838"
 ---
 # <a name="tutorial-route-to-a-point-of-interest-using-azure-maps"></a>Oktatóanyag: egy hasznos ponthoz való továbbítás Azure Maps használatával
 
@@ -168,7 +168,7 @@ Ebben az oktatóanyagban a program egy egyszerű útvonalat jelenít meg. Az út
 
 3. Mentse a **MapRoute.html** fájlt, és frissítse a böngészőt. A Térkép középpontba került a Seattle-ben, és láthatja, hogy a kiindulási pontot és a kerek kék PIN-kódot jelölő kék PIN-kód megjelöli a befejezési pontot.
 
-   ![A kiindulási és végpontokat jelölő térkép megtekintése](media/tutorial-route-location/map-pins.png)
+   ![Útvonalak megnézetének kezdete és vége a térképen](media/tutorial-route-location/map-pins.png)
 
 <a id="getroute"></a>
 

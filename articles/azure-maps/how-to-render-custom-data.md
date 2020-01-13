@@ -1,6 +1,6 @@
 ---
-title: Egyéni adathalmazok renderelése raszteres térképeken a Azure Mapsban | Microsoft Docs
-description: Ebből a cikkből megtudhatja, hogyan teheti elérhetővé a raszteres térképeken lévő egyéni adatok Azure Maps statikus rendszerkép-szolgáltatás használatával.
+title: Egyéni adathalmazok renderelése raszteres térképeken | Microsoft Azure térképek
+description: Ebből a cikkből megtudhatja, hogyan teheti elérhetővé az egyéni adatok egy raszteres térképen a Microsoft Azure Maps statikus rendszerkép-szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
 ms.date: 07/29/2019
@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: b77cb73f08852768d10de8c76cde5e299f0776c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
+ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75408904"
+ms.lasthandoff: 01/12/2020
+ms.locfileid: "75911476"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
