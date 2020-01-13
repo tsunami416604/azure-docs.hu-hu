@@ -14,16 +14,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/21/2018
 ms.author: spelluru
-ms.openlocfilehash: 207f73bbf9a92d26be1791fc11ce81fe68252705
-ms.sourcegitcommit: 198c3a585dd2d6f6809a1a25b9a732c0ad4a704f
+ms.openlocfilehash: 066ac1080f7ea378efe1665e7ebc70e57118191c
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2019
-ms.locfileid: "68422957"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75459103"
 ---
 # <a name="azure-relay-faqs"></a>Azure Relay GYIK
 
-Ez a cikk a [Azure Relay](https://azure.microsoft.com/services/service-bus/)kapcsolatos gyakori kérdésekre (GYIK) ad választ. Az Azure-díjszabással és-támogatással kapcsolatos általános információkért tekintse meg az Azure-támogatással kapcsolatos [gyakori kérdéseket](https://azure.microsoft.com/support/faq/).
+Ez a cikk a [Azure Relay](https://azure.microsoft.com/services/service-bus/)kapcsolatos gyakori kérdésekre (GYIK) ad választ. Az Azure-díjszabással és-támogatással kapcsolatos általános információkért tekintse meg az [Azure-támogatással kapcsolatos gyakori kérdéseket](https://azure.microsoft.com/support/faq/).
 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
@@ -47,7 +47,7 @@ A Relay díjszabásával kapcsolatos információkért tekintse meg a [hibrid ka
 ### <a name="how-am-i-billed-for-hybrid-connections"></a>Mennyit kell fizetnem a Hibrid kapcsolatokért?
 Íme három példa számlázási forgatókönyv a Hibrid kapcsolatok:
 
-*   forgatókönyv 1:
+*   1\. forgatókönyv:
     *   Egyetlen figyelővel rendelkezik, mint például a Hibrid kapcsolatok Manager egy példánya, amely a teljes hónapra folyamatosan fut.
     *   A hónap során 3 GB-nyi adat küldhető el a hálózaton. 
     *   A teljes díj $5.
@@ -80,10 +80,10 @@ Ha üzenetet küld egy Service Bus továbbítónak, a rendszer az üzenetet foga
 A **netTCPRelay** WCF-kötéssel megnyitott továbbítások nem önálló üzenetekként, hanem a rendszeren keresztül áramló adatfolyamként jelennek meg. Ha ezt a kötést használja, csak a küldő és a figyelő tekintheti meg az elküldött és fogadott üzenetek kialakítását. Az **netTCPRelay** -kötést használó relék esetében az összes adattal adatfolyamként kezeli a számlázandó üzenetek kiszámítását. Ebben az esetben a Service Bus 5 percenként kiszámítja az egyes továbbításokon keresztül küldött vagy fogadott adatmennyiséget. Ezt követően a 64 KB-ra osztja el az összes adatmennyiséget, hogy meghatározza a továbbításhoz tartozó számlázandó üzenetek számát az adott időszakban.
 
 ## <a name="quotas"></a>Kvóták
-| Kvóta neve | Scope |  Megjegyzések | Érték |
+| Kvóta neve | Hatókör |  Megjegyzések | Value (Díj) |
 | --- | --- | --- | --- |
-| Párhuzamos figyelők egy továbbítón |Entitás |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
-| Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5,000 |
+| Párhuzamos figyelők egy továbbítón |Jogi személy |A további kapcsolatokra vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |25 |
+| Egyidejű továbbítási kapcsolatok egy szolgáltatási névtér összes továbbítási végpontján |Névtér |- |5000 |
 | Továbbító végpontok szolgáltatási névtérben |Névtér |- |10,000 |
 | Az üzenetek mérete a [NetOnewayRelayBinding](/dotnet/api/microsoft.servicebus.netonewayrelaybinding) és a [NetEventRelayBinding](/dotnet/api/microsoft.servicebus.neteventrelaybinding) relék számára |Névtér |Az ezeket a kvótákat meghaladó bejövő üzenetek elutasításra kerülnek, és a hívó kód kivételt kap. |64 KB |
 | Az üzenetek mérete a [HttpRelayTransportBindingElement](/dotnet/api/microsoft.servicebus.httprelaytransportbindingelement) és a [NetTcpRelayBinding](/dotnet/api/microsoft.servicebus.nettcprelaybinding) relék számára |Névtér |Nincs korlátozva az üzenetek mérete. |Korlátlan |
@@ -104,9 +104,9 @@ A továbbítási névtér nevének 6 és 50 karakter közöttinek kell lennie.
 
 Ha egy névteret át szeretne helyezni egy Azure-előfizetésből egy másik előfizetésbe, használhatja a [Azure Portal](https://portal.azure.com) vagy használhatja a PowerShell-parancsokat. Ha egy névteret át szeretne helyezni egy másik előfizetésbe, a névtérnek már aktívnak kell lennie. A parancsokat futtató felhasználónak rendszergazdai felhasználónak kell lennie a forrás-és a cél előfizetésekben.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portál
 
-Ha a Azure Portal használatával szeretné áttelepíteni Azure Relay névtereket az egyik előfizetésből egy másik előfizetésbe, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy](../azure-resource-manager/resource-group-move-resources.md#use-the-portal)előfizetésbe című témakört. 
+Ha a Azure Portal használatával szeretné áttelepíteni Azure Relay névtereket az egyik előfizetésből egy másik előfizetésbe, olvassa el az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md#use-the-portal)című témakört. 
 
 #### <a name="powershell"></a>PowerShell
 
@@ -131,9 +131,9 @@ A gyakori kivételek és a javasolt műveletek leírását a [továbbítási kiv
 A közös hozzáférésű aláírások (SAS) az SHA-256 biztonságos kivonatokon vagy URI-kon alapuló hitelesítési mechanizmus. További információ a saját aláírások létrehozásáról a Node. js, a PHP, a Python, a Java, a C#C és a alkalmazásban: [Service Bus hitelesítés közös hozzáférési aláírásokkal][Shared Access Signatures].
 
 ### <a name="is-it-possible-to-whitelist-relay-endpoints"></a>Lehetséges a továbbítási végpontok engedélyezési lehetősége?
-Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy bejegyzést `*.servicebus.windows.net` a DNS-engedélyezési szolgáltatást támogató tűzfalakhoz.
+Igen. A továbbító ügyfél teljes tartománynevek használatával kapcsolatot létesít a Azure Relay szolgáltatással. Az ügyfelek hozzáadhatnak egy bejegyzést `*.servicebus.windows.net` a DNS-engedélyezési szolgáltatást támogató tűzfalakon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Névtér létrehozása](relay-create-namespace-portal.md)
 * [Ismerkedés a .NET-tel](relay-hybrid-connections-dotnet-get-started.md)
 * [Bevezetés a Node használatába](relay-hybrid-connections-node-get-started.md)

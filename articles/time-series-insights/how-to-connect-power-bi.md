@@ -8,12 +8,12 @@ services: time-series-insights
 ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: 1f6b753052b882b75884503f8c05f34b8cead821
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 22053bdc3a9836b76aa92303234a095cac6448ef
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749389"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863842"
 ---
 # <a name="visualize-data-from-time-series-insights-in-power-bi"></a>Adatok megjelenítése Time Series Insightsról Power BI
 
@@ -51,7 +51,7 @@ A Time Series Insights-környezet Power BIhoz való összekapcsolásához köves
 Első lépések:
 
 1. Nyissa meg a Time Series Insights Preview Explorer alkalmazást, és adja meg az adatait.
-1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és kattintson a **Kapcsolódás Power bi**elemre.
+1. Miután létrehozta a megfelelő nézetet, navigáljon a **További műveletek** legördülő menüre, és válassza a **Kapcsolódás Power bi**lehetőséget.
 
     [![Time Series Insights Preview Explorer exportálás](media/how-to-connect-power-bi/time-series-insights-export-option.png)](media/how-to-connect-power-bi/time-series-insights-export-option.png#lightbox)
 
@@ -118,7 +118,7 @@ Most, hogy importálta az adatPower BIba, ideje, hogy készítsen egy jelentést
 
     [![diagram létrehozása](media/how-to-connect-power-bi/power-bi-line-chart.png)](media/how-to-connect-power-bi/power-bi-line-chart.png#lightbox)
 
-1.  Ha egy másik diagramot szeretne felvenni a vászonra, kattintson a vászonon a vásznon kívül bárhová, majd ismételje meg a folyamatot.
+1.  Ha egy másik diagramot szeretne hozzáadni a vászonhoz, válassza a vászonon bárhol a vásznon, és ismételje meg a folyamatot.
 
     [![további diagramokat hozhat létre a megosztáshoz](media/how-to-connect-power-bi/power-bi-additional-charts.png)](media/how-to-connect-power-bi/power-bi-additional-charts.png#lightbox)
 
@@ -138,7 +138,7 @@ Ha már betöltött egy adatkészletet a Power BIban, de módosítani szeretné 
 1. Módosítsa a JSON-adattartalmat a kívánt módon.
 1. Válassza a **kész** lehetőséget, majd a **Power Query szerkesztő ablakában**kattintson a **& Bezárás** gombra.
 
-Ekkor meg kell jelennie a kívánt változtatásoknak.  
+A kezelőfelület ekkor az alkalmazott kívánt módosításokat tükrözi.  
 
 ## <a name="next-steps"></a>Következő lépések
 
@@ -146,4 +146,4 @@ Ekkor meg kell jelennie a kívánt változtatásoknak.
 
 * További információ a [Power bi asztalról](https://docs.microsoft.com/power-bi/desktop-query-overview).
 
-* Lásd: [Time Series INSIGHTS GA Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) és [Time Series Insights Preview Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).
+* Olvassa el [Time Series Insights a ga Explorer](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart) és a [Time Series Insights Preview Explorer programot](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-update-quickstart).

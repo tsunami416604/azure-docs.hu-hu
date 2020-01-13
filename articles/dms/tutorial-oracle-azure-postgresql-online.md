@@ -1,5 +1,6 @@
 ---
-title: 'Oktatóanyag: az Oracle online áttelepítésének elvégzéséhez Azure Database Migration Service használata az Azure Database for PostgreSQLba | Microsoft Docs'
+title: 'Oktatóanyag: Oracle online migrálása a Azure Database for PostgreSQLba'
+titleSuffix: Azure Database Migration Service
 description: Megtudhatja, hogyan hajthat végre egy online áttelepítést a helyszíni Oracle-ből vagy a virtuális gépekről, hogy Azure Database Migration Service használatával Azure Database for PostgreSQL.
 services: dms
 author: HJToland3
@@ -8,26 +9,26 @@ manager: craigg
 ms.reviewer: craigg
 ms.service: dms
 ms.workload: data-services
-ms.custom: mvc, tutorial
+ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 09/10/2019
-ms.openlocfilehash: 1ac5e4dd28f7565f546c700a4bbb0076fd793bb7
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.date: 01/08/2020
+ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163432"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770645"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
 A Azure Database Migration Service segítségével áttelepítheti az adatbázisokat a helyszíni vagy virtuális gépeken üzemeltetett Oracle-adatbázisokból, hogy minimális állásidővel [Azure Database for PostgreSQL](https://docs.microsoft.com/azure/postgresql/) . Más szóval az áttelepítés minimális állásidővel is elvégezhető az alkalmazáshoz. Ebben az oktatóanyagban a **HR** mintaadatbázis helyszíni vagy virtuálisgép-példányáról telepíti át a Azure Database for PostgreSQL a Azure Database Migration Service Online áttelepítési tevékenységének használatával.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 >
 > * Mérje fel az áttelepítési erőfeszítést a ora2pg eszközzel.
 > * Telepítse át a minta sémát a ora2pg eszköz használatával.
-> * Azure Database Migration Service-példány létrehozása.
+> * Hozzon létre egy Azure Database Migration Service-példányt.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
@@ -51,21 +52,22 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 * Töltse le és telepítse a ora2pg-t [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) vagy [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf)rendszeren.
 * [Példány létrehozása Azure Database for PostgreSQL-ben](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Kapcsolódjon a példányhoz, és hozzon létre egy adatbázist a jelen [dokumentum](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)utasításai alapján.
-* Hozzon létre egy Azure-Virtual Network (VNet) a Azure Database Migration Servicehez a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN használatával ](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). A VNet létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
+* Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
 
   > [!NOTE]
-  > Ha a VNet telepítése során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
+  > Ha a virtuális hálózat beállítása során ExpressRoute használ a Microsoft számára, adja hozzá a következő szolgáltatási [végpontokat](https://docs.microsoft.com/azure/virtual-network/virtual-network-service-endpoints-overview) ahhoz az alhálózathoz, amelyben a szolgáltatást kiépíti:
+  >
   > * Céladatbázis végpontja (például SQL-végpont, Cosmos DB végpont stb.)
   > * Tárolási végpont
   > * Service Bus-végpont
   >
   > Erre a konfigurációra azért van szükség, mert Azure Database Migration Service nem rendelkezik internetkapcsolattal.
 
-* Győződjön meg arról, hogy a VNet hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő bejövő kommunikációs portokat a Azure Database Migration Service: 443, 53, 9354, 445, 12000. Az Azure VNet NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)című cikket.
+* Győződjön meg arról, hogy a virtuális hálózati hálózati biztonsági csoport (NSG) szabályai nem gátolják meg a következő bejövő kommunikációs portok Azure Database Migration Service: 443, 53, 9354, 445, 12000. A Virtual Network NSG-forgalom szűrésével kapcsolatos további információkért tekintse meg a [hálózati forgalom szűrése hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/virtual-network-vnet-plan-design-arm)című cikket.
 * Konfigurálja a [Windows tűzfalat az adatbázismotorhoz való hozzáféréshez](https://docs.microsoft.com/sql/database-engine/configure-windows/configure-a-windows-firewall-for-database-engine-access).
 * Nyissa meg a Windows tűzfalat, hogy a Azure Database Migration Service hozzáférhessen a forrás Oracle-kiszolgálóhoz, amely alapértelmezés szerint a 1521-es TCP-port.
 * Ha a forrásadatbázis (ok) előtt tűzfal-berendezést használ, előfordulhat, hogy olyan tűzfalszabályok hozzáadására van szükség, amelyek lehetővé teszik a Azure Database Migration Service számára a forrás-adatbázis (ok) elérését az áttelepítéshez.
-* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for PostgreSQL számára, hogy lehetővé tegye Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Servicehoz használt VNet alhálózati tartományát.
+* Hozzon létre egy kiszolgálói szintű [Tűzfalszabály-szabályt](https://docs.microsoft.com/azure/sql-database/sql-database-firewall-configure) a Azure Database for PostgreSQL számára, hogy lehetővé tegye Azure Database Migration Service hozzáférést a célként megadott adatbázisokhoz. Adja meg a Azure Database Migration Service használt virtuális hálózat alhálózati tartományát.
 * Engedélyezze a hozzáférést a forrás Oracle-adatbázisokhoz.
 
   > [!NOTE]
@@ -172,7 +174,7 @@ Javasoljuk, hogy a ora2pg használatával mérje fel az Oracle-ből a Azure Data
 
 A legtöbb ügyfelünk jelentős időt tölt az értékelési jelentés áttekintésével, és figyelembe veszi az automatikus és a manuális átalakítási erőfeszítést.
 
-A ora2pg konfigurálásához és futtatásához értékelési jelentés létrehozásához tekintse meg az Oracle előzetes **áttelepítését: Assessment** című szakaszát, [hogy Azure Database for PostgreSQL a Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). [Itt](http://ora2pg.darold.net/report.html)a minta ora2pg-értékelő jelentés is elérhető.
+A ora2pg konfigurálásához és futtatásához értékelési jelentés létrehozásához tekintse meg az Oracle előzetes **áttelepítését: Assessment** című szakaszát, [hogy Azure Database for PostgreSQL a Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf). [Itt](https://ora2pg.darold.net/report.html)a minta ora2pg-értékelő jelentés is elérhető.
 
 ## <a name="export-the-oracle-schema"></a>Az Oracle-séma exportálása
 
@@ -184,7 +186,7 @@ A ora2pg futtatásával exportálhatja az egyes adatbázis-objektumokat. SQL-fá
 psql -f [FILENAME] -h [AzurePostgreConnection] -p 5432 -U [AzurePostgreUser] -d database 
 ```
 
-Például:
+Példa:
 
 ```
 psql -f %namespace%\schema\sequences\sequence.sql -h server1-server.postgres.database.azure.com -p 5432 -U username@server1-server -d database
@@ -237,7 +239,7 @@ Első lépések:
 
     Ha a séma neve az Oracle-forrásban található, és megfelel a Azure Database for PostgreSQLban szereplőnek, akkor Azure Database Migration Service a *tábla sémáját a célként megadott módon hozza létre*.
 
-    Például:
+    Példa:
 
     | Forrás Oracle-séma | Cél PostgreSQL-adatbázis. séma | DMS létrehozva Schema. table. Column |
     | ------------- | ------------- | ------------- |
@@ -275,11 +277,11 @@ Első lépések:
   
 3. **A migrálási szolgáltatás létrehozása** képernyőn adja meg a szolgáltatás, az előfizetés és egy új vagy meglévő erőforráscsoport nevét.
 
-4. Válasszon ki egy meglévő VNet, vagy hozzon létre egy újat.
+4. Válasszon egy meglévő virtuális hálózatot, vagy hozzon létre egy újat.
 
-    A VNet Azure Database Migration Service biztosít hozzáférést az Oracle forrásához és a cél Azure Database for PostgreSQL példányhoz.
+    A virtuális hálózat Azure Database Migration Service hozzáférést biztosít a forrás Oracle és a TARGET Azure Database for PostgreSQL példányhoz.
 
-    További információ a VNet létrehozásáról a Azure Portalban: [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet).
+    Ha további információt szeretne arról, hogyan hozhat létre virtuális hálózatot a Azure Portalban, tekintse meg a [virtuális hálózat létrehozása a Azure Portal használatával](https://aka.ms/DMSVnet)című cikket.
 
 5. Válasszon tarifacsomagot.
 
@@ -381,7 +383,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
  > [!NOTE]
  > Mivel a PostgreSQL alapértelmezés szerint a Schema. table. Column altípust használja, a jelen cikk korábbi részében a **Azure Database for PostgreSQL séma beállítása a sémában** című részében található parancsfájl használatával visszaállíthatja a nagybetűs esetről a kisbetűsre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * A Azure Database Migration Service kapcsolatos információkért tekintse meg a [Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview)című cikket.

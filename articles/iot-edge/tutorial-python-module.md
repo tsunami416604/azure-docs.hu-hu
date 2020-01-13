@@ -10,16 +10,16 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: c37d778fe9ad7d21943ed92452fae34b4b8771e7
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: e353a65544e86e702bd216db5c8b5f81f033c46a
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74560927"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75772244"
 ---
 # <a name="tutorial-develop-and-deploy-a-python-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Python IoT Edge modul fejlesztése és üzembe helyezése Linux-eszközökhöz
 
-A Visual Studio Code használatával C kódot fejleszthet, és a Azure IoT Edge rendszert futtató linuxos eszközre telepítheti. 
+A Visual Studio Code használatával Python-kódokat fejleszthet, és üzembe helyezheti Azure IoT Edge-t futtató linuxos eszközön. 
 
 Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül az IoT Edge-eszközökön implementálja az üzleti logikát. Ez az oktatóanyag végigvezeti egy IoT Edge modul létrehozásán és üzembe helyezésén, amely a gyors útmutatóban beállított IoT Edge eszközön szűri az érzékelőket. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:    
 
@@ -33,9 +33,6 @@ Az Azure IoT Edge-modulokkal olyan kódot helyezhet üzembe, amely közvetlenül
 Az ebben az oktatóanyagban létrehozott IoT Edge-modul szűri az eszköze által létrehozott hőmérsékletadatokat. Csak akkor küld felfelé irányuló üzeneteket, amikor a hőmérséklet egy megadott küszöbérték felett van. Ez a fajta peremhálózati elemzés a felhőbe küldött és ott tárolt adatok mennyiségének csökkentésére használható. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
-
-> [!NOTE]
-> A következő útmutató a v1 Python SDK-hoz készült, amely azóta elavult. Jelenleg dolgozunk azon, hogy ez az útmutató v2 kompatibilis legyen. Tekintse meg ezt a helyet a frissítésekhez.
 
 ## <a name="solution-scope"></a>Megoldás hatóköre
 
@@ -103,7 +100,7 @@ A környezeti fájl tárolja a tárolóadattár hitelesítő adatait, és megosz
 
 ### <a name="select-your-target-architecture"></a>Válassza ki a cél architektúrát
 
-A Visual Studio Code jelenleg Linux AMD64 és Linux rendszerű ARM32v7-eszközökhöz is fejleszt C modulokat. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64. 
+A Visual Studio Code jelenleg Python-modulokat fejleszthet Linux AMD64 és Linux ARM32v7-eszközökhöz. Ki kell választania, hogy melyik architektúrát célozza meg az egyes megoldásokkal, mivel a tárolót az egyes architektúrák típusainál eltérően építették és futtatják. Az alapértelmezett érték a Linux AMD64. 
 
 1. Nyissa meg a parancssort, és keressen rá **Azure IoT Edge: állítsa be az alapértelmezett cél platformot az Edge megoldáshoz**, vagy válassza a parancsikon ikont az ablak alján található oldalsó sávban. 
 

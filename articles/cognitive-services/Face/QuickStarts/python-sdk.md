@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Face ügyféloldali kódtár a Pythonhoz | Microsoft Docs'
-description: Ebből a cikkből megtudhatja, hogyan használhatja a Pythonhoz készült Face ügyféloldali kódtárat, hogy felderítse, megkeresse a hasonló, az azonosítást, a további ellenőrzéseket
+title: 'Rövid útmutató: Face ügyféloldali kódtár a Pythonhoz'
+description: Ebben a rövid útmutatóban megismerheti a Pythonhoz készült Face ügyféloldali kódtár észlelését, a hasonló, azonosítási és ellenőrzési műveleteket.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: cd797567b381fb89c568b06dc8b056648e5c734a
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977811"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770356"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rövid útmutató: Face ügyféloldali kódtár a Pythonhoz
 
@@ -153,7 +153,7 @@ Miután beállította a lemezképeket, Definiáljon egy címkét a szkript tetej
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroupvars)]
 
-Ezután adja hozzá a következő kódot a szkript aljához. Ez a kód egy **PersongGroup** és három **személy** objektumot hoz létre.
+Ezután adja hozzá a következő kódot a szkript aljához. Ez a kód egy **PersonGroup** és három **személy** objektumot hoz létre.
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_persongroup_create)]
 
@@ -272,7 +272,7 @@ python quickstart-file.py
 
 Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek.
 
-* [Portal](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
+* [Portál](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#clean-up-resources)
 * [Azure CLI](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account-cli#clean-up-resources)
 
 Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, futtassa a következő kódot a parancsfájlban:

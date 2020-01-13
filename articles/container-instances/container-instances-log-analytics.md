@@ -1,21 +1,21 @@
 ---
-title: A tárolók csoportjaihoz tartozó erőforrás-naplók
+title: Erőforrás-naplók & gyűjtése
 description: Megtudhatja, hogyan küldhet erőforrás-naplókat és-eseményeket a Azure Container Instances lévő tároló-csoportokból Azure Monitor naplókba
 ms.topic: article
-ms.date: 09/02/2019
+ms.date: 01/08/2020
 ms.author: danlep
-ms.openlocfilehash: 02f950917f43b514f83bd7e10078c79634c6c751
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 304e98fff386911b878877d2f03d489d0eef5dd7
+ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533738"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75770543"
 ---
 # <a name="container-group-and-instance-logging-with-azure-monitor-logs"></a>Tároló csoport és példány naplózása Azure Monitor naplókkal
 
-Log Analytics-munkaterületek központi helyet biztosítanak a naplófájlok adatainak tárolásához és lekérdezéséhez nem csak az Azure-erőforrások, hanem a helyszíni erőforrások és erőforrások között más felhőkben is. A Azure Container Instances beépített támogatást biztosít a naplók és az események Azure Monitor naplókba küldéséhez.
+Log Analytics munkaterületek központi helyet biztosítanak a naplózási adatok tárolásához és lekérdezéséhez, nem csak az Azure-erőforrásokból, hanem a helyszíni erőforrásokból és az egyéb felhőkben lévő erőforrásokból is. A Azure Container Instances beépített támogatást biztosít a naplók és az események Azure Monitor naplókba küldéséhez.
 
-Ha a tárolók csoportjának naplóját és az eseményeket Azure Monitor naplókba kívánja küldeni, meg kell adnia egy Log Analytics-munkaterület AZONOSÍTÓját és a munkaterület kulcsát egy tároló-csoport létrehozásakor. A következő szakaszok egy naplózható tárolócsoport létrehozásának és a naplók lekérdezésének menetét ismertetik.
+Ha a tárolók csoportjának naplóját és az eseményeket Azure Monitor naplókba szeretné küldeni, akkor a tárolók létrehozásakor meg kell adnia egy meglévő Log Analytics-munkaterület AZONOSÍTÓját és a munkaterület kulcsát. A következő szakaszok bemutatják, hogyan hozhat létre naplózási képességgel rendelkező tároló csoportot, és hogyan kérdezheti le a naplókat.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
@@ -46,7 +46,7 @@ A log Analytics-munkaterület AZONOSÍTÓjának és elsődleges kulcsának besze
 
 Most, hogy megkapta a log Analytics-munkaterület AZONOSÍTÓját és az elsődleges kulcsot, készen áll egy naplózásra képes tároló csoport létrehozására.
 
-Az alábbi példák két módszert mutatnak be egy olyan tároló-csoport létrehozására, amely egyetlen [Fluent][fluentd] -tárolóval rendelkezik: az Azure CLI és az Azure CLI egy YAML sablonnal. A Fluentd tároló az alapértelmezett konfiguráció szerint több sornyi kimenetet hoz létre. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
+Az alábbi példák két módszert mutatnak be egy olyan tároló-csoport létrehozására, amely egyetlen [folyékonyan][fluentd] használt tárolóból áll: az Azure CLI és az Azure CLI egy YAML sablonnal. A Fluent tároló több sornyi kimenetet hoz létre az alapértelmezett konfigurációban. Mivel ez a kimenet a Log Analytics-munkaterületre lesz elküldve, jól használható a naplók megtekintésének és lekérdezésének bemutatásához.
 
 ### <a name="deploy-with-azure-cli"></a>Üzembe helyezés az Azure parancssori felületén keresztül
 

@@ -1,5 +1,5 @@
 ---
-title: Hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez – Azure Active Directory | Microsoft Docs
+title: A feltételes hozzáférési szabályzatokból kizárt felhasználók kezelése – Azure AD
 description: Ismerje meg, hogyan használhatja a Azure Active Directory (Azure AD) hozzáférési felülvizsgálatokat a feltételes hozzáférési házirendből kizárt felhasználók kezeléséhez
 services: active-directory
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 09/25/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 246503fec6436bf49dcd5fb89c2dc0ed345a43ca
-ms.sourcegitcommit: a0b37e18b8823025e64427c26fae9fb7a3fe355a
+ms.openlocfilehash: d1d7bce940f2b614c239e8b5e5719d96da10a6c0
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/25/2019
-ms.locfileid: "68499918"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75422709"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
 
@@ -97,7 +97,7 @@ Mostantól létrehozhat egy olyan feltételes hozzáférési szabályzatot, amel
 
 Ismerkedjen meg két példával, amelyekkel a hozzáférési felülvizsgálatok segítségével kezelheti a feltételes hozzáférési szabályzatok kizárásait.
 
-## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1\. példa: A tiltott országokból/régiókból hozzáférő felhasználók hozzáférési felülvizsgálata
+## <a name="example-1-access-review-for-users-accessing-from-blocked-countriesregions"></a>1\. példa: a letiltott országokból/régiókból hozzáférő felhasználók hozzáférési felülvizsgálata
 
 Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkolja bizonyos országok/régiók hozzáférését. Tartalmaz egy csoportot, amely ki van zárva a szabályzatból. Az alábbiakban egy ajánlott hozzáférési felülvizsgálatot talál, ahol a csoport tagjait vizsgálják felül.
 
@@ -118,7 +118,7 @@ Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkol
 
     ![Hozzáférés-felülvizsgálati ablaktábla létrehozása az 1. példában](./media/conditional-access-exclusion/create-access-review-1.png)
 
-## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2\. példa Örökölt hitelesítéssel rendelkező felhasználók hozzáférési felülvizsgálata
+## <a name="example-2-access-review-for-users-accessing-with-legacy-authentication"></a>2\. példa: a korábbi hitelesítéssel hozzáférő felhasználók hozzáférési felülvizsgálata
 
 Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkolja a felhasználók hozzáférését az örökölt hitelesítést és a régebbi verziójú ügyfeleket használó felhasználók számára. Tartalmaz egy csoportot, amely ki van zárva a szabályzatból. Az alábbiakban egy ajánlott hozzáférési felülvizsgálatot talál, ahol a csoport tagjait vizsgálják felül.
 
@@ -136,7 +136,7 @@ Tegyük fel, hogy van egy feltételes hozzáférési szabályzata, amely blokkol
 
     ![Hozzáférési felülvizsgálati ablaktábla létrehozása a 2. példához](./media/conditional-access-exclusion/create-access-review-2.png)
 
-**Pro-tipp**: Ha sok kizárási csoporttal rendelkezik, és ezért több hozzáférési felülvizsgálatra van szükség, most már van egy API a Microsoft Graph Beta-végponton, amely lehetővé teszi a programozott módon történő létrehozását és kezelését. Első lépésként tekintse meg az [Azure ad hozzáférési felülvizsgálatok API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) -referenciáját, és [példát az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096)lekérésére.
+**Pro tipp**: ha sok kizárási csoporttal rendelkezik, és ezért több hozzáférési felülvizsgálatra van szükség, most már rendelkezik egy API-val a Microsoft Graph Beta-végponton, amely lehetővé teszi, hogy programozott módon hozza létre és kezelje őket. Első lépésként tekintse meg az [Azure ad hozzáférési felülvizsgálatok API-referenciáját](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/accessreviews_root) , és [példát az Azure ad hozzáférési felülvizsgálatok Microsoft Graph használatával történő lekérésére](https://techcommunity.microsoft.com/t5/Azure-Active-Directory/Example-of-retrieving-Azure-AD-access-reviews-via-Microsoft/td-p/236096).
 
 ## <a name="access-review-results-and-audit-logs"></a>Hozzáférési felülvizsgálati eredmények és naplók
 
@@ -156,7 +156,7 @@ Most, hogy mindent megtesz a hely, a csoport, a feltételes hozzáférési szab�
 
 Rendszergazdaként biztos lehet abban, hogy a kizárási csoportok a szabályzatokhoz való kezelése időnként elkerülhetetlen. Azonban a csoportok fenntartása, az üzleti tulajdonos vagy a felhasználók rendszeresen felülvizsgálják azokat, és az Azure AD hozzáférési felülvizsgálatok révén könnyebben naplózzák ezeket a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

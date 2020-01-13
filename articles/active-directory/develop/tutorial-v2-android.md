@@ -1,5 +1,5 @@
 ---
-title: Bejelentkezési felhasználók & hívás Microsoft Graph (Android) – Microsoft Identity platform | Azure
+title: Felhasználók be-és kijelentkezése & hívási Microsoft Graph (Android) – Microsoft Identity platform | Azure
 description: Hozzáférési token beszerzése és a Microsoft Identity platform (Android) hozzáférési jogkivonatait igénylő API-k meghívása Microsoft Graph
 services: active-directory
 documentationcenter: dev-center-name
@@ -11,30 +11,31 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 10/10/2019
-ms.author: jmprieur
+ms.date: 11/26/2019
+ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7feefc368815b1bfe57b67db2cd94702db799d78
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b4c4c9bc025e8fd506b298ed676674899e318481
+ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961557"
+ms.lasthandoff: 01/07/2020
+ms.locfileid: "75689343"
 ---
-# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból
+# <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból 
 
-> [!NOTE]
-> Ez az oktatóanyag még nem frissült, hogy működjön a MSAL for Android 1,0-es verziójának könyvtárával. Ez az oktatóanyag egy korábbi verziójával működik.
+>[!NOTE]
+>Ez az oktatóanyag bemutatja, hogyan használható az Android rendszerhez készült MSAL. Az egyszerűség kedvéért ez az oktatóanyag csak egy fiók üzemmódot használ. A tárházat megtekintheti, és [az előre konfigurált minta alkalmazás](https://github.com/Azure-Samples/ms-identity-android-java/) klónozásával összetettebb forgatókönyveket is megvizsgálhat. Tekintse [meg a rövid](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v2-android) útmutatót a minta alkalmazásról, a konfigurációról és a regisztrációról. 
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhat egy Android-alkalmazást a Microsoft Identity platformmal. Az alkalmazás bejelentkezik egy felhasználóval, hozzáférési jogkivonatot kap a Microsoft Graph API meghívásához, és kérelmet küld a Microsoft Graph API-nak.  
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Android-alkalmazását a Microsoft Identity platformmal az Androidhoz készült Microsoft Authentication Library használatával. Megtudhatja, hogyan jelentkezhet be és kijelentkezhet egy felhasználót, hogyan kérhet hozzáférési jogkivonatot a Microsoft Graph API meghívásához, és kérjen egy kérést a Graph API. 
 
 > [!div class="checklist"]
-> * Android-alkalmazás integrálása a Microsoft Identity platformmal
-> * Bejelentkezés felhasználóként
-> * Hozzáférési jogkivonat beszerzése a Microsoft Graph API meghívásához
-> * Hívja meg a Microsoft Graph API-t.  
+> * Android-alkalmazás integrálása a Microsoft Identity platformmal 
+> * Bejelentkezés felhasználóként 
+> * Hozzáférési jogkivonat beszerzése a Microsoft Graph API meghívásához 
+> * A Microsoft Graph API meghívása 
+> * Felhasználó kijelentkezése 
 
 Az oktatóanyag elvégzése után az alkalmazás elfogadja a személyes Microsoft-fiókok (például a outlook.com, a live.com és mások) bejelentkezési adatait, valamint a munkahelyi vagy iskolai fiókokat bármely olyan vállalattól vagy szervezettől, amely Azure Active Directoryt használ.
 
@@ -44,7 +45,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ![Bemutatja, hogyan működik az oktatóanyag által generált minta alkalmazás](../../../includes/media/active-directory-develop-guidedsetup-android-intro/android-intro.svg)
 
-Az oktatóanyagban szereplő alkalmazás bejelentkezik a felhasználók számára, és az Ön nevében kéri le az adatkérést.  Ezek az adatok egy olyan védett API-n (Microsoft Graph API) keresztül érhetők el, amely az engedélyezést igényli, és a Microsoft Identity platform védi.
+Az oktatóanyagban szereplő alkalmazás bejelentkezik a felhasználók számára, és az Ön nevében kéri le az adatkérést. Ezek az adatok egy olyan védett API-n (Microsoft Graph API) keresztül érhetők el, amely az engedélyezést igényli, és a Microsoft Identity platform védi.
 
 Pontosabban:
 
@@ -58,13 +59,12 @@ Ez a példa az Androidhoz készült Microsoft Authentication Library (MSAL) hasz
 
  A MSAL automatikusan megújítja a tokeneket, egyszeri bejelentkezést (SSO) tesz elérhetővé az eszköz más alkalmazásai között, és felügyeli a fiók (oka) t.
 
-## <a name="prerequisites"></a>Előfeltételek
+### <a name="prerequisites"></a>Előfeltételek
 
-* Az oktatóanyaghoz Android Studio 3,5-es verzió szükséges.
+* Ehhez az oktatóanyaghoz Android Studio 3.5-ös vagy újabb verzió szükséges
 
 ## <a name="create-a-project"></a>Projekt létrehozása
-
-Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktatóanyagot szeretné letölteni, [töltse le a kódot](https://github.com/Azure-Samples/ms-identity-android-java/archive/master.zip).
+Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket egy új projekt beállításához. 
 
 1. Nyissa meg Android Studio, majd válassza **az új Android Studio projekt indítása**lehetőséget.
 2. Válassza az **alaptevékenység** lehetőséget, majd kattintson a **Tovább gombra**.
@@ -74,11 +74,13 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 6. Állítsa a **minimális API** -szintet **API 19** vagy újabb értékre, majd kattintson a **Befejezés**gombra.
 7. A Project (projekt) nézetben a legördülő menüben válassza a **projekt** lehetőséget a forrás-és a nem forrásként szolgáló projektfájlok megjelenítéséhez, nyissa meg az **app/Build. gradle** fájlt, és állítsa a `targetSdkVersion` `28`re.
 
-## <a name="register-your-application"></a>Alkalmazás regisztrálása
+## <a name="integrate-with-microsoft-authentication-library"></a>Integrálás a Microsoft hitelesítési függvénytárával 
 
-1. Nyissa meg az [Azure Portal](https://aka.ms/MobileAppReg).
-2. Nyissa meg a [Alkalmazásregisztrációk](https://ms.portal.azure.com/?feature.broker=true#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/RegisteredAppsPreview) panelt, és kattintson az **+ új regisztráció**elemre.
-3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása nélkül kattintson a **regisztráció**elemre.
+### <a name="register-your-application"></a>Alkalmazás regisztrálása
+
+1. Nyissa meg az [Azure Portalt](https://aka.ms/MobileAppReg).
+2. Nyissa meg a [Alkalmazásregisztrációk](https://ms.portal.azure.com/#blade/Microsoft_AAD_RegisteredApps/ApplicationsListBlade) panelt, és kattintson az **+ új regisztráció**elemre.
+3. Adja meg az alkalmazás **nevét** , majd az átirányítási URI beállítása **nélkül** kattintson a **regisztráció**elemre.
 4. A megjelenő panel **kezelés** szakaszában válassza a **hitelesítés** >  **+ platform hozzáadása** > **Android**lehetőséget. (Előfordulhat, hogy a panel tetején a "váltás az új felületre" lehetőséget kell választani a szakasz megtekintéséhez)
 5. Adja meg a projekt csomagjának nevét. Ha letöltötte a kódot, ez az érték `com.azuresamples.msalandroidapp`.
 6. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában kattintson a **fejlesztési aláírás kivonatának létrehozása** lehetőségre. és másolja a Főeszköz parancsot a platformhoz való használatra.
@@ -89,13 +91,38 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
 7. Adja meg a Főeszköz által generált **aláírási kivonatot** .
 8. Kattintson a `Configure` elemre, és mentse az Android- **konfiguráció** lapon megjelenő **MSAL-konfigurációt** , hogy később is megadhatja azt az alkalmazás konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
 
-## <a name="build-your-app"></a>Alkalmazás létrehozása
-
-### <a name="add-your-app-registration"></a>Az alkalmazás regisztrációjának hozzáadása
+### <a name="configure-your-application"></a>Az alkalmazás konfigurálása 
 
 1. A Android Studio projekt ablaktábláján navigáljon a **app\src\main\res**elemre.
 2. Kattintson a jobb gombbal a **res** elemre, és válassza az **új** > **Directory**lehetőséget. Adja meg az `raw` nevet az új könyvtárnévként, majd kattintson **az OK**gombra.
-3. Az **app** > **src** > **Main** > **res** > **RAW**területen hozzon létre egy `auth_config.json` nevű új JSON-fájlt, és illessze be a korábban mentett MSAL-konfigurációt. [További információért](https://github.com/AzureAD/microsoft-authentication-library-for-android/wiki/Configuring-your-app)lásd: MSAL-konfiguráció.
+3. Az **app** > **src** > **Main** > **res** > **RAW**területen hozzon létre egy `auth_configbn_single_account.json` nevű új JSON-fájlt, és illessze be a korábban mentett MSAL-konfigurációt. 
+
+    Az átirányítási URI alatt illessze be a következőt: 
+    ```json
+      "account_mode" : "SINGLE",
+    ```
+    A konfigurációs fájlnak a következő példához hasonlónak kell lennie: 
+    ```json   
+    {
+      "client_id" : "0984a7b6-bc13-4141-8b0d-8f767e136bb7",
+      "authorization_user_agent" : "DEFAULT",
+      "redirect_uri" : "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D",
+      "account_mode" : "SINGLE",
+      "authorities" : [
+        {
+          "type": "AAD",
+          "audience": {
+            "type": "AzureADandPersonalMicrosoftAccount",
+            "tenant_id": "common"
+          }
+        }
+      ]
+    }
+   ```
+    
+   >[!NOTE]
+   >Ez az oktatóanyag csak azt mutatja be, hogyan konfigurálható egy alkalmazás egy fiók módban. Tekintse meg a dokumentációt, ahol további információkat talál az egyetlen és a [több fiók üzemmódról](https://docs.microsoft.com/azure/active-directory/develop/single-multi-account) , valamint [az alkalmazás konfigurálásáról](https://docs.microsoft.com/azure/active-directory/develop/msal-configuration)
+   
 4. Az **app** > **src** > **Main** > **AndroidManifest. xml fájlban**adja hozzá az alábbi `BrowserTabActivity` tevékenységet az alkalmazás törzséhez. Ez a bejegyzés lehetővé teszi, hogy a Microsoft visszahívjon az alkalmazásba a hitelesítés befejezése után:
 
     ```xml
@@ -114,43 +141,402 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
     ```
 
     Helyettesítse be a Azure Portal regisztrált csomag nevét a `android:host=` értékhez.
-    Helyettesítse be a `android:path=` érték Azure Portalban regisztrált kulcs kivonatát. Az aláírási kivonat nem lehet URL-kódolású.
+    Helyettesítse be a `android:path=` érték Azure Portalban regisztrált kulcs kivonatát. Az aláírási kivonat **nem** lehet URL-kódolású. Győződjön meg arról, hogy az aláírás kivonatának elején van egy vezető `/`. 
+    >[!NOTE]
+    >A "csomag neve" helyett a `android:host` értéket kell kinéznie a következőhöz hasonlóan: "com. azuresamples. msalandroidapp" az "aláírási kivonat" a `android:path` értékét a következőhöz hasonlóan kell kinéznie: "/1wIqXSqBj7w + h11ZifsnqwgyKrY =". ezeket az értékeket az alkalmazás regisztrációjának hitelesítés paneljén is megtalálhatja. Vegye figyelembe, hogy az átirányítási URI a következőhöz hasonlóan fog kinézni: "msauth://com.azuresamples.msalandroidapp/1wIqXSqBj7w%2Bh11ZifsnqwgyKrY%3D". Míg az aláírás kivonata az érték végén található URL-cím, az aláírás-kivonat **nem** lehet a `android:path` értékében kódolt URL-cím. 
 
-5. A **AndroidManifest. XML fájlon**belül, közvetlenül a `<application>` címke felett adja hozzá a következő engedélyeket:
+## <a name="use-msal"></a>MSAL használata 
 
-    ```xml
-    <uses-permission android:name="android.permission.INTERNET" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+### <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
+
+1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **Build. gradle** elemre, és adja hozzá a következőket: 
+
+    ```gradle
+    repositories{
+        jcenter()
+    }  
+    dependencies{
+        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
     ```
+    [További információ a Microsoft Graph SDK-ról](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-### <a name="create-the-apps-ui"></a>Az alkalmazás felhasználói felületének létrehozása
+### <a name="required-imports"></a>A szükséges importálások 
 
-1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **fő** > **res** > **elrendezés** elemre, és nyissa meg a **activity_main. xml fájlt** , és nyissa meg a **szöveges** nézetet.
-2. Módosítsa a tevékenység elrendezését, például: `<androidx.coordinatorlayout.widget.CoordinatorLayout` `<androidx.coordinatorlayout.widget.DrawerLayout`. 
-3. Adja hozzá a `android:orientation="vertical"` tulajdonságot a `LinearLayout` csomóponthoz.
-4. Illessze be a következő kódot a `LinearLayout` csomópontba, és cserélje le az aktuális tartalmat:
+Adja hozzá a következőt az **app** > **src** > **fő**> **Java** > **com. example (yourapp)**  > **MainActivity. Java** 
 
-    ```xml
-    <TextView
-        android:text="Welcome, "
-        android:textColor="#3f3f3f"
-        android:textSize="50px"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="10dp"
-        android:layout_marginTop="15dp"
-        android:id="@+id/welcome"
-        android:visibility="invisible"/>
+```java
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+import android.widget.Toast;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
+import com.google.gson.JsonObject;
+import com.microsoft.graph.authentication.IAuthenticationProvider; //Imports the Graph sdk Auth interface
+import com.microsoft.graph.concurrency.ICallback;
+import com.microsoft.graph.core.ClientException;
+import com.microsoft.graph.http.IHttpRequest;
+import com.microsoft.graph.models.extensions.*;
+import com.microsoft.graph.requests.extensions.GraphServiceClient;
+import com.microsoft.identity.client.AuthenticationCallback; // Imports MSAL auth methods
+import com.microsoft.identity.client.*;
+import com.microsoft.identity.client.exception.*;
+```
 
-    <Button
-        android:id="@+id/callGraph"
-        android:text="Call Microsoft Graph"
-        android:textColor="#FFFFFF"
-        android:background="#00a1f1"
+## <a name="instantiate-publicclientapplication"></a>PublicClientApplication példányának példányai
+#### <a name="initialize-variables"></a>Változók inicializálása 
+```java
+private final static String[] SCOPES = {"User.Read"};
+/* Azure AD v2 Configs */
+final static String AUTHORITY = "https://login.microsoftonline.com/common";
+private ISingleAccountPublicClientApplication mSingleAccountApp;
+
+private static final String TAG = MainActivity.class.getSimpleName();
+
+/* UI & Debugging Variables */
+Button signInButton;
+Button signOutButton;
+Button callGraphApiInteractiveButton;
+Button callGraphApiSilentButton;
+TextView logTextView;
+TextView currentUserTextView;
+```
+
+### <a name="oncreate"></a>onCreate
+A `MainActivity` osztályban tekintse meg a következő onCreate () metódust, amely a `SingleAccountPublicClientApplication`használatával hozza létre a MSAL.
+
+```java
+@Override
+protected void onCreate(Bundle savedInstanceState) {
+    super.onCreate(savedInstanceState);
+    setContentView(R.layout.activity_main);
+
+    initializeUI();
+
+    PublicClientApplication.createSingleAccountPublicClientApplication(getApplicationContext(),
+            R.raw.auth_config_single_account, new IPublicClientApplication.ISingleAccountApplicationCreatedListener() {
+                @Override
+                public void onCreated(ISingleAccountPublicClientApplication application) {
+                    mSingleAccountApp = application;
+                    loadAccount();
+                }
+                @Override
+                public void onError(MsalException exception) {
+                    displayError(exception);
+                }
+            });
+}
+```
+
+### <a name="loadaccount"></a>loadAccount 
+
+```java
+//When app comes to the foreground, load existing account to determine if user is signed in 
+private void loadAccount() {
+    if (mSingleAccountApp == null) {
+        return;
+    }
+
+    mSingleAccountApp.getCurrentAccountAsync(new ISingleAccountPublicClientApplication.CurrentAccountCallback() {
+        @Override
+        public void onAccountLoaded(@Nullable IAccount activeAccount) {
+            // You can use the account data to update your UI or your app database.
+            updateUI(activeAccount);
+        }
+        
+        @Override
+        public void onAccountChanged(@Nullable IAccount priorAccount, @Nullable IAccount currentAccount) {
+            if (currentAccount == null) {
+                // Perform a cleanup task as the signed-in account changed.
+                performOperationOnSignOut();
+            }
+        }
+
+        @Override
+        public void onError(@NonNull MsalException exception) {
+            displayError(exception);
+        }
+    });
+}
+```
+
+### <a name="initializeui"></a>initializeUI
+Hallgassa meg a gombokat, hívja meg a metódusokat, vagy a hibákat naplózza. 
+```java
+private void initializeUI(){
+        signInButton = findViewById(R.id.signIn);
+        callGraphApiSilentButton = findViewById(R.id.callGraphSilent);
+        callGraphApiInteractiveButton = findViewById(R.id.callGraphInteractive);
+        signOutButton = findViewById(R.id.clearCache);
+        logTextView = findViewById(R.id.txt_log);
+        currentUserTextView = findViewById(R.id.current_user);
+        
+        //Sign in user 
+        signInButton.setOnClickListener(new View.OnClickListener(){
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.signIn(MainActivity.this, null, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+        
+        //Sign out user
+        signOutButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.signOut(new ISingleAccountPublicClientApplication.SignOutCallback() {
+                    @Override
+                    public void onSignOut() {
+                        updateUI(null);
+                        performOperationOnSignOut();
+                    }
+                    @Override
+                    public void onError(@NonNull MsalException exception){
+                        displayError(exception);
+                    }
+                });
+            }
+        });
+        
+        //Interactive 
+        callGraphApiInteractiveButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null) {
+                    return;
+                }
+                mSingleAccountApp.acquireToken(MainActivity.this, SCOPES, getAuthInteractiveCallback());
+            }
+        });
+
+        //Silent
+        callGraphApiSilentButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mSingleAccountApp == null){
+                    return;
+                }
+                mSingleAccountApp.acquireTokenSilentAsync(SCOPES, AUTHORITY, getAuthSilentCallback());
+            }
+        });
+    }
+```
+
+> [!Important]
+> A MSAL-ből való kijelentkezés eltávolítja az alkalmazással kapcsolatos összes ismert információt, de a felhasználó továbbra is aktív munkamenettel fog rendelkezni az eszközön. Ha a felhasználó ismét megkísérli a bejelentkezést, láthatják a bejelentkezési felhasználói felületet, de előfordulhat, hogy nem kell újra megadniuk a hitelesítő adataikat, mert az eszköz munkamenete még aktív. 
+
+### <a name="getauthinteractivecallback"></a>getAuthInteractiveCallback
+Az interaktív kérelmekhez használt visszahívás.
+
+```java 
+private AuthenticationCallback getAuthInteractiveCallback() {
+    return new AuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            /* Successfully got a token, use it to call a protected resource - MSGraph */
+            Log.d(TAG, "Successfully authenticated");
+            /* Update UI */
+            updateUI(authenticationResult.getAccount());
+            /* call graph */
+            callGraphAPI(authenticationResult);
+        }
+
+        @Override
+        public void onError(MsalException exception) {
+            /* Failed to acquireToken */
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+        @Override
+        public void onCancel() {
+            /* User canceled the authentication */
+            Log.d(TAG, "User cancelled login.");
+        }
+    };
+}
+```
+
+### <a name="getauthsilentcallback"></a>getAuthSilentCallback
+Csendes kérelmekhez használt visszahívás 
+```java 
+private SilentAuthenticationCallback getAuthSilentCallback() {
+    return new SilentAuthenticationCallback() {
+        @Override
+        public void onSuccess(IAuthenticationResult authenticationResult) {
+            Log.d(TAG, "Successfully authenticated");
+            callGraphAPI(authenticationResult);
+        }
+        @Override
+        public void onError(MsalException exception) {
+            Log.d(TAG, "Authentication failed: " + exception.toString());
+            displayError(exception);
+        }
+    };
+}
+```
+
+## <a name="call-microsoft-graph-api"></a>Microsoft Graph API meghívása 
+
+A következő kód bemutatja, hogyan hívhatja meg a GraphAPI a Graph SDK használatával. 
+
+### <a name="callgraphapi"></a>callGraphAPI 
+
+```java
+private void callGraphAPI(IAuthenticationResult authenticationResult) {
+
+    final String accessToken = authenticationResult.getAccessToken();
+
+    IGraphServiceClient graphClient =
+            GraphServiceClient
+                    .builder()
+                    .authenticationProvider(new IAuthenticationProvider() {
+                        @Override
+                        public void authenticateRequest(IHttpRequest request) {
+                            Log.d(TAG, "Authenticating request," + request.getRequestUrl());
+                            request.addHeader("Authorization", "Bearer " + accessToken);
+                        }
+                    })
+                    .buildClient();
+    graphClient
+            .me()
+            .drive()
+            .buildRequest()
+            .get(new ICallback<Drive>() {
+                @Override
+                public void success(final Drive drive) {
+                    Log.d(TAG, "Found Drive " + drive.id);
+                    displayGraphResult(drive.getRawObject());
+                }
+
+                @Override
+                public void failure(ClientException ex) {
+                    displayError(ex);
+                }
+            });
+}
+```
+
+## <a name="add-ui"></a>Felhasználói felület hozzáadása
+### <a name="activity"></a>Tevékenység 
+Ha ki szeretné próbálni a felhasználói felületet az oktatóanyagból, az alábbi módszerek útmutatást nyújtanak a szövegek frissítéséhez és a gombok figyeléséhez.
+
+#### <a name="updateui"></a>updateUI
+A bejelentkezési állapot alapján engedélyezheti vagy tilthatja le a gombokat, és beállíthatja a szöveget.  
+```java 
+private void updateUI(@Nullable final IAccount account) {
+    if (account != null) {
+        signInButton.setEnabled(false);
+        signOutButton.setEnabled(true);
+        callGraphApiInteractiveButton.setEnabled(true);
+        callGraphApiSilentButton.setEnabled(true);
+        currentUserTextView.setText(account.getUsername());
+    } else {
+        signInButton.setEnabled(true);
+        signOutButton.setEnabled(false);
+        callGraphApiInteractiveButton.setEnabled(false);
+        callGraphApiSilentButton.setEnabled(false);
+        currentUserTextView.setText("");
+        logTextView.setText("");
+    }
+}
+```
+#### <a name="displayerror"></a>displayError
+```java 
+private void displayError(@NonNull final Exception exception) {
+       logTextView.setText(exception.toString());
+   }
+```
+
+#### <a name="displaygraphresult"></a>displayGraphResult
+
+```java
+private void displayGraphResult(@NonNull final JsonObject graphResponse) {
+      logTextView.setText(graphResponse.toString());
+  }
+```
+#### <a name="performoperationonsignout"></a>performOperationOnSignOut
+Módszer a felhasználói felületen lévő szöveg frissítésére a kijelentkezéshez. 
+
+```java
+private void performOperationOnSignOut() {
+    final String signOutText = "Signed Out.";
+    currentUserTextView.setText("");
+    Toast.makeText(getApplicationContext(), signOutText, Toast.LENGTH_SHORT)
+            .show();
+}
+```
+### <a name="layout"></a>Layout 
+
+Példa `activity_main.xml` fájlra a gombok és szövegmezők megjelenítéséhez. 
+
+```xml 
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="200dp"
-        android:textAllCaps="false" />
+        android:orientation="horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="5dp"
+        android:weightSum="10">
+
+        <Button
+            android:id="@+id/signIn"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign In"/>
+
+        <Button
+            android:id="@+id/clearCache"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:gravity="center"
+            android:text="Sign Out"
+            android:enabled="false"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/callGraphInteractive"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Interactively"
+            android:enabled="false"/>
+
+        <Button
+            android:id="@+id/callGraphSilent"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="5"
+            android:text="Get Graph Data Silently"
+            android:enabled="false"/>
+    </LinearLayout>
 
     <TextView
         android:text="Getting Graph Data..."
@@ -161,379 +547,23 @@ Ez az oktatóanyag egy új projektet fog létrehozni. Ha ehelyett a kész oktat�
         android:id="@+id/graphData"
         android:visibility="invisible"/>
 
-    <LinearLayout
+    <TextView
+        android:id="@+id/current_user"
         android:layout_width="match_parent"
-        android:layout_height="0dip"
-        android:layout_weight="1"
-        android:gravity="center|bottom"
-        android:orientation="vertical" >
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Account info goes here..." />
 
-        <Button
-            android:text="Sign Out"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="15dp"
-            android:textColor="#FFFFFF"
-            android:background="#00a1f1"
-            android:textAllCaps="false"
-            android:id="@+id/clearCache"
-            android:visibility="invisible" />
-    </LinearLayout>
-    ```
-
-### <a name="add-msal-to-your-project"></a>MSAL hozzáadása a projekthez
-
-1. A Android Studio projekt ablakban navigáljon az **app** > **src** > **Build. gradle**elemre.
-2. A **függőségek**alatt illessze be a következőt:
-
-    ```gradle  
-    implementation 'com.android.volley:volley:1.1.1'
-    implementation 'com.microsoft.identity.client:msal:0.3+'
-    ```
-
-### <a name="use-msal"></a>MSAL használata
-
-Most végezze el a módosításokat a `MainActivity.java`on a MSAL hozzáadásához és használatához az alkalmazásban.
-A Android Studio projekt ablakban navigáljon az **app** > **src** > **fő** > **Java** > **com. example. ( az alkalmazás)** , és nyissa meg `MainActivity.java`.
-
-#### <a name="required-imports"></a>Szükséges importálások
-
-Adja hozzá az alábbi importálásokat a `MainActivity.java`tetejéhez:
-
-```java
-import android.app.Activity;
-import android.content.Intent;
-import android.util.Log;
-import android.view.View;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-import com.android.volley.*;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.Volley;
-import org.json.JSONObject;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import com.microsoft.identity.client.*;
-import com.microsoft.identity.client.exception.*;
+    <TextView
+        android:id="@+id/txt_log"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_marginTop="20dp"
+        android:layout_weight="0.8"
+        android:text="Output goes here..." />
+</LinearLayout>
 ```
-
-#### <a name="instantiate-msal"></a>MSAL példányának példányai
-
-A `MainActivity` osztályban létre kell hoznia az MSAL-t, valamint néhány konfigurációt arról, hogy mit tesznek az alkalmazások, beleértve az elérni kívánt hatóköröket és webes API-kat.
-
-Másolja a következő változókat a `MainActivity` osztályban belül:
-
-```java
-final static String SCOPES [] = {"https://graph.microsoft.com/User.Read"};
-final static String MSGRAPH_URL = "https://graph.microsoft.com/v1.0/me";
-
-/* UI & Debugging Variables */
-private static final String TAG = MainActivity.class.getSimpleName();
-Button callGraphButton;
-Button signOutButton;
-
-/* Azure AD Variables */
-private PublicClientApplication sampleApp;
-private IAuthenticationResult authResult;
-```
-
-Cserélje le `onCreate()` tartalmát a következő kódra a MSAL létrehozásához:
-
-```java
-super.onCreate(savedInstanceState);
-setContentView(R.layout.activity_main);
-
-callGraphButton = (Button) findViewById(R.id.callGraph);
-signOutButton = (Button) findViewById(R.id.clearCache);
-
-callGraphButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onCallGraphClicked();
-    }
-});
-
-signOutButton.setOnClickListener(new View.OnClickListener() {
-    public void onClick(View v) {
-        onSignOutClicked();
-    }
-});
-
-/* Configure your sample app and save state for this activity */
-sampleApp = new PublicClientApplication(
-        this.getApplicationContext(),
-        R.raw.auth_config);
-
-/* Attempt to get a user and acquireTokenSilent */
-sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-    @Override
-    public void onAccountsLoaded(final List<IAccount> accounts) {
-        if (!accounts.isEmpty()) {
-            /* This sample doesn't support multi-account scenarios, use the first account */
-            sampleApp.acquireTokenSilentAsync(SCOPES, accounts.get(0), getAuthSilentCallback());
-        } else {
-            /* No accounts */
-        }
-    }
-});
-```
-
-A fenti kód a felhasználók csendes bejelentkezését kísérli meg, amikor megnyitják az alkalmazást `getAccounts()`, és ha ez sikeres, `acquireTokenSilentAsync()`.  A következő néhány szakaszban végre fogjuk hajtani a visszahívási kezelőt arra az esetre, ha nincsenek bejelentkezett fiókok.
-
-#### <a name="use-msal-to-get-tokens"></a>A MSAL használata a jogkivonatok lekéréséhez
-
-Most megvalósíthatja az alkalmazás felhasználói felületének feldolgozási logikáját, és interaktív módon lekérdezheti a tokeneket a MSAL-on keresztül.
-
-A MSAL két elsődleges módszert tesz elérhetővé a tokenek beszerzéséhez: `acquireTokenSilentAsync()` és `acquireToken()`.  
-
-a felhasználók a felhasználói beavatkozások nélkül beszerezhetik a felhasználókat, és a jogkivonatokat is lekérhetik, ha vannak ilyenek. `acquireTokenSilentAsync()` Ha ez sikeres, a MSAL handoff a tokeneket az alkalmazásba, ha az sikertelen, akkor a rendszer létrehoz egy `MsalUiRequiredException`.  Ha ez a kivétel létrejön, vagy azt szeretné, hogy a felhasználó interaktív bejelentkezési élményt biztosítson (a hitelesítő adatok, az MFA vagy más feltételes hozzáférési szabályzatok esetleg nem szükségesek), akkor használja a `acquireToken()`.  
-
-`acquireToken()` megjeleníti a felhasználói FELÜLETET, amikor megpróbál bejelentkezni a felhasználóba, és jogkivonatokat kap. A böngészőben azonban munkamenet-cookie-kat, illetve a Microsoft-hitelesítő egyik fiókját is használhatja az interaktív egyszeri bejelentkezés élményének biztosításához.
-
-Hozza létre a következő három FELHASZNÁLÓIFELÜLET-módszert a `MainActivity` osztályban:
-
-```java
-/* Set the UI for successful token acquisition data */
-private void updateSuccessUI() {
-    callGraphButton.setVisibility(View.INVISIBLE);
-    signOutButton.setVisibility(View.VISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.VISIBLE);
-    ((TextView) findViewById(R.id.welcome)).setText("Welcome, " +
-            authResult.getAccount().getUsername());
-    findViewById(R.id.graphData).setVisibility(View.VISIBLE);
-}
-
-/* Set the UI for signed out account */
-private void updateSignedOutUI() {
-    callGraphButton.setVisibility(View.VISIBLE);
-    signOutButton.setVisibility(View.INVISIBLE);
-    findViewById(R.id.welcome).setVisibility(View.INVISIBLE);
-    findViewById(R.id.graphData).setVisibility(View.INVISIBLE);
-    ((TextView) findViewById(R.id.graphData)).setText("No Data");
-
-    Toast.makeText(getBaseContext(), "Signed Out!", Toast.LENGTH_SHORT)
-            .show();
-}
-
-/* Use MSAL to acquireToken for the end-user
- * Callback will call Graph api w/ access token & update UI
- */
-private void onCallGraphClicked() {
-    sampleApp.acquireToken(getActivity(), SCOPES, getAuthInteractiveCallback());
-}
-```
-
-Adja hozzá a következő metódusokat az aktuális tevékenység beszerzéséhez és a folyamat csendes & interaktív visszahívásához:
-
-```java
-public Activity getActivity() {
-    return this;
-}
-
-/* Callback used in for silent acquireToken calls.
- * Looks if tokens are in the cache (refreshes if necessary and if we don't forceRefresh)
- * else errors that we need to do an interactive request.
- */
-private AuthenticationCallback getAuthSilentCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-
-            /* Store the authResult */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            } else if (exception instanceof MsalUiRequiredException) {
-                /* Tokens expired or no session, retry with interactive */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-
-/* Callback used for interactive request.  If succeeds we use the access
- * token to call the Microsoft Graph. Does not check cache
- */
-private AuthenticationCallback getAuthInteractiveCallback() {
-    return new AuthenticationCallback() {
-
-        @Override
-        public void onSuccess(IAuthenticationResult authenticationResult) {
-            /* Successfully got a token, call graph now */
-            Log.d(TAG, "Successfully authenticated");
-            Log.d(TAG, "ID Token: " + authenticationResult.getIdToken());
-
-            /* Store the auth result */
-            authResult = authenticationResult;
-
-            /* call graph */
-            callGraphAPI();
-
-            /* update the UI to post call graph state */
-            updateSuccessUI();
-        }
-
-        @Override
-        public void onError(MsalException exception) {
-            /* Failed to acquireToken */
-            Log.d(TAG, "Authentication failed: " + exception.toString());
-
-            if (exception instanceof MsalClientException) {
-                /* Exception inside MSAL, more info inside the exception */
-            } else if (exception instanceof MsalServiceException) {
-                /* Exception when communicating with the STS, likely config issue */
-            }
-        }
-
-        @Override
-        public void onCancel() {
-            /* User cancelled the authentication */
-            Log.d(TAG, "User cancelled login.");
-        }
-    };
-}
-```
-
-#### <a name="use-msal-for-sign-out"></a>MSAL használata a kijelentkezéshez
-
-Ezután vegyen fel támogatást a kijelentkezéshez.
-
-> [!Important]
-> A MSAL-ből való kijelentkezés eltávolítja az alkalmazással kapcsolatos összes ismert információt, de a felhasználó továbbra is aktív munkamenettel fog rendelkezni az eszközön. Ha a felhasználó ismét megkísérli a bejelentkezést, láthatják a bejelentkezési felhasználói felületet, de előfordulhat, hogy nem kell újra megadniuk a hitelesítő adataikat, mert az eszköz munkamenete még aktív.
-
-A kijelentkezési képesség hozzáadásához adja hozzá a következő metódust a `MainActivity` osztályon belül. Ez a módszer az összes fiókra váltást hajt végre, és eltávolítja azokat:
-
-```java
-/* Clears an account's tokens from the cache.
- * Logically similar to "sign out" but only signs out of this app.
- * User will get interactive SSO if trying to sign back-in.
- */
-private void onSignOutClicked() {
-    /* Attempt to get a user and acquireTokenSilent
-     * If this fails we do an interactive request
-     */
-    sampleApp.getAccounts(new PublicClientApplication.AccountsLoadedCallback() {
-        @Override
-        public void onAccountsLoaded(final List<IAccount> accounts) {
-
-            if (accounts.isEmpty()) {
-                /* No accounts to remove */
-
-            } else {
-                for (final IAccount account : accounts) {
-                    sampleApp.removeAccount(
-                            account,
-                            new PublicClientApplication.AccountsRemovedCallback() {
-                        @Override
-                        public void onAccountsRemoved(Boolean isSuccess) {
-                            if (isSuccess) {
-                                /* successfully removed account */
-                            } else {
-                                /* failed to remove account */
-                            }
-                        }
-                    });
-                }
-            }
-
-            updateSignedOutUI();
-        }
-    });
-}
-```
-
-#### <a name="call-the-microsoft-graph-api"></a>A Microsoft Graph API meghívása
-
-Miután megkaptuk a jogkivonatot, a [Microsoft Graph API](https://graph.microsoft.com) -hoz a hozzáférési token a hitelesítési visszahívás `onSuccess()` metódusában található `AuthenticationResult` belül lesz. Egy jogosult kérelem létrehozásához az alkalmazásnak hozzá kell adnia a hozzáférési jogkivonatot a HTTP-fejléchez:
-
-| fejléc kulcsa    | érték                 |
-| ------------- | --------------------- |
-| Engedélyezés | Tulajdonos \<hozzáférés-token > |
-
-Adja hozzá a következő két módszert a `MainActivity` osztályban a Graph meghívásához és a felhasználói felület frissítéséhez:
-
-```java
-/* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
-private void callGraphAPI() {
-    Log.d(TAG, "Starting volley request to graph");
-
-    /* Make sure we have a token to send to graph */
-    if (authResult.getAccessToken() == null) {return;}
-
-    RequestQueue queue = Volley.newRequestQueue(this);
-    JSONObject parameters = new JSONObject();
-
-    try {
-        parameters.put("key", "value");
-    } catch (Exception e) {
-        Log.d(TAG, "Failed to put parameters: " + e.toString());
-    }
-    JsonObjectRequest request = new JsonObjectRequest(Request.Method.GET, MSGRAPH_URL,
-            parameters,new Response.Listener<JSONObject>() {
-        @Override
-        public void onResponse(JSONObject response) {
-            /* Successfully called graph, process data and send to UI */
-            Log.d(TAG, "Response: " + response.toString());
-
-            updateGraphUI(response);
-        }
-    }, new Response.ErrorListener() {
-        @Override
-        public void onErrorResponse(VolleyError error) {
-            Log.d(TAG, "Error: " + error.toString());
-        }
-    }) {
-        @Override
-        public Map<String, String> getHeaders() {
-            Map<String, String> headers = new HashMap<>();
-            headers.put("Authorization", "Bearer " + authResult.getAccessToken());
-            return headers;
-        }
-    };
-
-    Log.d(TAG, "Adding HTTP GET to Queue, Request: " + request.toString());
-
-    request.setRetryPolicy(new DefaultRetryPolicy(
-            3000,
-            DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
-            DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
-    queue.add(request);
-}
-
-/* Sets the graph response */
-private void updateGraphUI(JSONObject graphResponse) {
-    TextView graphText = findViewById(R.id.graphData);
-    graphText.setText(graphResponse.toString());
-}
-```
-
-#### <a name="multi-account-applications"></a>Több fiókból álló alkalmazások
-
-Ez az alkalmazás egyetlen fiókra épül. A MSAL támogatja a többfiókos forgatókönyveket is, de az alkalmazások további munkája szükséges. Létre kell hoznia egy felhasználói FELÜLETET, amellyel a felhasználó kiválaszthatja, hogy melyik fiókot szeretné használni a jogkivonatokat igénylő műveletekhez. Azt is megteheti, hogy az alkalmazás egy heurisztikus eszközt is megvalósíthat, hogy kiválassza, melyik fiókot szeretné használni a `getAccounts()` metódus segítségével.
 
 ## <a name="test-your-app"></a>Az alkalmazás tesztelése
 
@@ -543,9 +573,9 @@ Az alkalmazás létrehozása és üzembe helyezése tesztelési eszközön vagy 
 
 A bejelentkezést követően az alkalmazás megjeleníti a Microsoft Graph `/me` végpont által visszaadott adatok megjelenítését.
 
-### <a name="consent"></a>hozzájárulása
+### <a name="consent"></a>Hozzájárulása
 
-Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett.  Habár a legtöbb felhasználó képes hozzájárulni, néhány Azure AD-bérlő letiltotta a felhasználói beleegyezését, amelyhez a rendszergazdáknak minden felhasználó nevében hozzá kell járulniuk. A forgatókönyv támogatásához regisztrálja az alkalmazás hatóköreit a Azure Portalban.
+Amikor a felhasználó először jelentkezik be az alkalmazásba, a Microsoft Identity a kért engedélyekkel való beleegyezett. Néhány Azure AD-bérlő letiltotta a felhasználói beleegyezik, amely megköveteli, hogy a rendszergazdák az összes felhasználó nevében hozzájárulásukat adjanak. Ennek a forgatókönyvnek a támogatásához létre kell hoznia egy saját bérlőt, vagy rendszergazdai engedélyt kell kapnia. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -2,19 +2,15 @@
 title: Azure Automation – Hibrid runbook-feldolgozó
 description: Ez a cikk a hibrid Runbook-feldolgozók telepítéséről és használatáról nyújt információt, amely a Azure Automation szolgáltatása, amellyel a runbookok a helyi adatközpontban vagy a felhőalapú szolgáltatóban található gépeken is futtathatók.
 services: automation
-ms.service: automation
 ms.subservice: process-automation
-author: mgoedtel
-ms.author: magoedte
 ms.date: 04/05/2019
 ms.topic: conceptual
-manager: carmonm
-ms.openlocfilehash: 7329d32c01f005f4f5a727f80c6af0b58982b41f
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: fd90b98f4df195297e31a5dda91f64efcc1f5212
+ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74850261"
+ms.lasthandoff: 01/04/2020
+ms.locfileid: "75658037"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Erőforrások automatizálása az adatközpontban vagy a felhőben hibrid Runbook-feldolgozók használatával
 
@@ -26,7 +22,7 @@ A következő ábra szemlélteti ezt a funkciót:
 
 A hibrid Runbook-feldolgozók az ügynök telepítésekor megadott hibrid Runbook Worker Group tagjai. Egy csoport tartalmazhat egyetlen ügynököt, de a magas rendelkezésre állás érdekében több ügynököt is telepíthet egy csoportba. Mindegyik gép egyetlen Automation-fiókba egyetlen hibrid feldolgozót tud üzemeltetni.
 
-Ha hibrid Runbook-feldolgozón indítja el a runbook, akkor azt a csoportot kell megadnia, amelyen az fut. A csoport minden munkatársa lekérdezi Azure Automation, hogy van-e elérhető feladat. Ha egy feladatot elérhetővé tesz, az első feldolgozónak kell megszereznie a feladatot. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozói hardverprofil és a betöltéstől függ. Nem adhat meg egy adott dolgozót. A hibrid Runbook-feldolgozók nem osztják meg az Azure-beli munkaterületek számos korlátját. Nem rendelkeznek a lemezterülettel, a memóriával vagy a hálózati szoftvercsatornával kapcsolatos korlátozásokkal. A hibrid Runbook-feldolgozók csak a hibrid Runbook dolgozó erőforrásai korlátozzák. Emellett a hibrid Runbook-feldolgozók nem osztják meg az Azure-beli munkaterületek 180 perces, [valós idejű megosztásának](automation-runbook-execution.md#fair-share) korlátját. Ha többet szeretne megtudni az Azure-beli munkaterületek és a hibrid Runbook-feldolgozók szolgáltatási korlátairól, tekintse át a feladatok [korlátai](../azure-subscription-service-limits.md#automation-limits) lapot.
+Ha hibrid Runbook-feldolgozón indítja el a runbook, akkor azt a csoportot kell megadnia, amelyen az fut. A csoport minden munkatársa lekérdezi Azure Automation, hogy van-e elérhető feladat. Ha egy feladatot elérhetővé tesz, az első feldolgozónak kell megszereznie a feladatot. A feladatok várólistájának feldolgozási ideje a hibrid feldolgozói hardverprofil és a betöltéstől függ. Nem adhat meg egy adott dolgozót. A hibrid Runbook-feldolgozók nem osztják meg az Azure-beli munkaterületek számos korlátját. Nem rendelkeznek a lemezterülettel, a memóriával vagy a hálózati szoftvercsatornával kapcsolatos korlátozásokkal. A hibrid Runbook-feldolgozók csak a hibrid Runbook dolgozó erőforrásai korlátozzák. Emellett a hibrid Runbook-feldolgozók nem osztják meg az Azure-beli munkaterületek 180 perces, [valós idejű megosztásának](automation-runbook-execution.md#fair-share) korlátját. Ha többet szeretne megtudni az Azure-beli munkaterületek és a hibrid Runbook-feldolgozók szolgáltatási korlátairól, tekintse át a feladatok [korlátai](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) lapot.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Hibrid Runbook-feldolgozó telepítése
 

@@ -1,5 +1,5 @@
 ---
-title: Váltás az alkalmazásregisztrációs portálról az új Alkalmazásregisztrációk felületre az Azure Portalon
+title: Új alkalmazásregisztráció az Azure Portalon – felület
 titleSuffix: Microsoft identity platform
 description: Bevezetés az új alkalmazás regisztrációs felületére a Azure Portal
 services: active-directory
@@ -14,27 +14,27 @@ ms.author: aragra
 ms.reviewer: lenalepa, alamaral
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 93af32e99e725a72c20c05690b2a96c74082e2ff
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 2f7ed8902da40dc7b5783ebb116a6c993bbbba5b
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74844516"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75424642"
 ---
-# <a name="transitioning-from-application-registration-portal-to-the-new-app-registrations-experience-in-the-azure-portal"></a>Váltás az alkalmazásregisztrációs portálról az új Alkalmazásregisztrációk felületre az Azure Portalon
+# <a name="the-new-azure-portal-app-registration-experience"></a>Az új Azure Portal alkalmazás regisztrációs felülete
 
 A Azure Portal új [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületének számos újdonsága van. Ha még jobban ismeri az alkalmazás-regisztrációs portál (apps.dev.microsoft.com) használatát a konvergens alkalmazások regisztrálásához vagy kezeléséhez, amelyet a régi felhasználói élménynek nevezünk, az útmutató segítségével megkezdheti az új felhasználói élmény megszerzését.
 
 ## <a name="whats-not-changing"></a>Mi nem változik?
 
--   Az alkalmazások és a kapcsolódó konfigurációk az új felületén is megtalálhatók. Nem kell újból regisztrálnia az alkalmazásokat, és az alkalmazások felhasználóinak újra be kell jelentkezniük.
+- Az alkalmazások és a kapcsolódó konfigurációk az új felületén is megtalálhatók. Nem kell újból regisztrálnia az alkalmazásokat, és az alkalmazások felhasználóinak újra be kell jelentkezniük.
 
     > [!NOTE]
     > Be kell jelentkeznie azzal a fiókkal, amelyet az alkalmazások regisztrálásához használt a Azure Portalban való kereséshez. Javasoljuk, hogy tekintse meg a bejelentkezett felhasználót a Azure Portal az alkalmazás regisztrációs portálra bejelentkezett felhasználóval egyeztetve az e-mail-cím a profilból való összehasonlításával.
     > 
     > Bizonyos esetekben, különösen akkor, ha személyes Microsoft-fiókokat (például Outlook, Live, Xbox stb.) használ egy Azure AD-beli e-mail-címmel, azt találtuk, hogy amikor a régi felhasználói felületről bejelentkezik a Azure Portalba, egy másik fiókba jelentkezik be. e-mail-cím az Azure AD-bérlőben. Ha továbbra is úgy gondolja, hogy az alkalmazásai hiányoznak, jelentkezzen ki, és jelentkezzen be a megfelelő fiókkal.
 
--   A személyes Microsoft-fiókokkal létrehozott élő SDK-alkalmazások még nem támogatottak a Azure Portalban, és a közeljövőben továbbra is a régi élményben maradnak.
+- A személyes Microsoft-fiókokkal létrehozott élő SDK-alkalmazások még nem támogatottak a Azure Portalban, és a közeljövőben továbbra is a régi élményben maradnak.
 
 ## <a name="key-changes"></a>Legfontosabb változások
 

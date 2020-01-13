@@ -5,14 +5,14 @@ services: vpn-gateway
 author: anzaman
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 11/07/2019
+ms.date: 12/18/2019
 ms.author: alzam
-ms.openlocfilehash: 2836a89f491d731a11e6bc6fc56e0d049f01ac9a
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 59af4189b52c2ad7a1109ffb03accedbc69dc6c6
+ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74151403"
+ms.lasthandoff: 01/03/2020
+ms.locfileid: "75647917"
 ---
 # <a name="configure-a-vpn-client-for-p2s-openvpn-protocol-connections-azure-ad-authentication-preview"></a>VPN-ügyfél konfigurálása a P2S OpenVPN protokoll kapcsolataihoz: Azure AD-hitelesítés (előzetes verzió)
 
@@ -39,6 +39,10 @@ Tanúsítványalapú profillal való munka esetén győződjön meg arról, hogy
 ### <a name="radius"></a>RADIUS-ügyfél profiljának létrehozása
 
   ![RADIUS-](./media/openvpn-azure-ad-client/create/create-radius1.jpg)
+  
+> [!NOTE]
+> A kiszolgáló titkos kulcsa exportálható a P2S VPN-ügyfél profiljában.  Az ügyféloldali profilok exportálásával kapcsolatban [itt](about-vpn-profile-download.md)talál útmutatást.
+>
 
 ### <a name="export"></a>Ügyféloldali profil exportálása és terjesztése
 
@@ -56,23 +60,23 @@ Ha van egy működő profilja, és el kell terjesztenie más felhasználóknak, 
 
 1. A lapon válassza az **Importálás**lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-client/import/import1.jpg)
+    ![importálás](./media/openvpn-azure-ad-client/import/import1.jpg)
 
 2. Keresse meg a profil XML-fájlját, és jelölje ki. A fájl kijelölése után válassza a **Megnyitás**lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-client/import/import2.jpg)
+    ![importálás](./media/openvpn-azure-ad-client/import/import2.jpg)
 
 3. Adja meg a profil nevét, majd válassza a **Mentés**lehetőséget.
 
-    ![importálása](./media/openvpn-azure-ad-client/import/import3.jpg)
+    ![importálás](./media/openvpn-azure-ad-client/import/import3.jpg)
 
 4. Válassza a **Csatlakozás** lehetőséget a VPN-hez való csatlakozáshoz.
 
-    ![importálása](./media/openvpn-azure-ad-client/import/import4.jpg)
+    ![importálás](./media/openvpn-azure-ad-client/import/import4.jpg)
 
 5. A csatlakozás után az ikon zöldre vált, és a rendszer a **csatlakozást**.
 
-    ![importálása](./media/openvpn-azure-ad-client/import/import5.jpg)
+    ![importálás](./media/openvpn-azure-ad-client/import/import5.jpg)
 
 ### <a name="delete"></a>Ügyféloldali profil törlése
 
@@ -144,6 +148,26 @@ Ezekkel a lépésekkel konfigurálhatja a kapcsolatot úgy, hogy automatikusan k
 
     ![diagnosztizálása](./media/openvpn-azure-ad-client/diagnose/diagnose4.jpg)
 
-## <a name="next-steps"></a>További lépések
+## <a name="faq"></a>Gyakori kérdések
+
+### <a name="how-do-i-add-dns-suffixes-to-the-vpn-client"></a>Hogyan DNS-utótagokat hozzáadni a VPN-ügyfélhez?
+
+Megváltoztathatja a letöltött profil XML-fájlját, és hozzáadhatja a **\<dnssuffixes >\<dnssufix > \</dnssufix >\</dnssuffixes >** címkét
+
+```
+<azvpnprofile>
+<clientconfig>
+
+    <dnssuffixes>
+          <dnssuffix>.mycorp.com</dnssuffix>
+          <dnssuffix>.xyz.com</dnssuffix>
+          <dnssuffix>.etc.net</dnssuffix>
+    </dnssuffixes>
+    
+</clientconfig>
+</azvpnprofile>
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 További információ: [Azure Active Directory-bérlő létrehozása az Azure ad-hitelesítést használó P2S nyitott VPN-kapcsolatokhoz](openvpn-azure-ad-tenant.md).

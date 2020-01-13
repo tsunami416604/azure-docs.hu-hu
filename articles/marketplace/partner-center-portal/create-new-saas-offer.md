@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: b59600ffa6a83d00a83d642ab337df2e71cbee06
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
+ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75777903"
+ms.lasthandoff: 01/10/2020
+ms.locfileid: "75863805"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -374,7 +374,8 @@ A **technikai konfiguráció** lap az ajánlathoz való kapcsolódáshoz haszná
 
 - **Azure ad-alkalmazás azonosítója** (kötelező): az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) és egy hitelesítési kulcsra is szüksége lesz. Az értékek beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok**lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
 
- Vegye figyelembe, hogy az Azure-alkalmazás azonosítója a közzétevő AZONOSÍTÓhoz van társítva, ezért ügyeljen arra, hogy ugyanazt az azonosítót használja az összes ajánlatában.
+>[!Note]
+>Az Azure-alkalmazás azonosítója a közzétevő AZONOSÍTÓhoz van társítva, ezért ügyeljen arra, hogy ugyanazt az azonosítót használja az összes ajánlatában.
 
 ## <a name="plan-overview"></a>A terv áttekintése
 

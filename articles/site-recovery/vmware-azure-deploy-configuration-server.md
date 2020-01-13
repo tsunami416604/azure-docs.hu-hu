@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
-ms.openlocfilehash: f2e9387af3c5922ec5eb0dded3d0d1d4bcee6a01
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 5209dab5e0934cc98bb1334a1565cc13998a7d2e
+ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084147"
+ms.lasthandoff: 12/25/2019
+ms.locfileid: "75376290"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
 
@@ -132,7 +132,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 7. Adja meg a konfigurációs kiszolgáló által a VMware-kiszolgálóhoz való csatlakozáshoz használt hitelesítő adatokat. A Site Recovery ezeknek a hitelesítő adatoknak a használatával automatikusan deríti fel a replikáláshoz elérhető VMware virtuális gépeket. Válassza a **hozzáadás** > **Folytatás**lehetőséget. Az itt megadott hitelesítő adatok helyileg mentve.
 8. A **virtuális gép hitelesítő adatainak konfigurálása**területen adja meg a virtuális gépek felhasználónevét és jelszavát, hogy a replikáció során automatikusan telepítse a mobilitási szolgáltatást. **Windows rendszerű** gépek esetén a fióknak helyi rendszergazdai jogosultságokkal kell rendelkeznie a replikálni kívánt gépeken. **Linux**esetén adja meg a legfelső szintű fiók részleteit.
 9. Válassza a **Konfiguráció véglegesítése** elemet a regisztráció befejezéséhez.
-10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services** -tárolóban >  > **Site Recovery infrastruktúra** **kezelése** >  **Konfigurációs kiszolgálók**.
+10. A regisztráció befejeződése után nyissa meg a Azure Portal, és ellenőrizze, hogy a konfigurációs kiszolgáló és a VMware-kiszolgáló szerepel-e a **Recovery Services** -tárolóban >  > **site Recovery infrastruktúra** > **konfigurációs kiszolgálók** **kezelése** .
 
 ## <a name="upgrade-the-configuration-server"></a>A konfigurációs kiszolgáló frissítése
 
@@ -141,6 +141,10 @@ A konfigurációs kiszolgáló legújabb verzióra történő frissítésével k
 ## <a name="manage-the-configuration-server"></a>A konfigurációs kiszolgáló kezelése
 
 A folyamatban lévő replikáció megszakításának elkerülése érdekében győződjön meg arról, hogy a konfigurációs kiszolgáló IP-címe nem változik, miután a konfigurációs kiszolgáló regisztrálva van egy tárolóban. A gyakori konfigurációs kiszolgáló felügyeleti feladatokkal kapcsolatos további tudnivalókért lásd: [a konfigurációs kiszolgáló kezelése a VMWare virtuális](vmware-azure-manage-configuration-server.md)gépek vész-helyreállítási feladataihoz.
+
+## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
+
+Az üzembe helyezési & kapcsolódási problémák megoldásához tekintse meg a [hibaelhárítással](vmware-azure-troubleshoot-configuration-server.md) foglalkozó cikket.
 
 ## <a name="faqs"></a>Gyakori kérdések
 
@@ -183,13 +187,11 @@ A folyamatban lévő replikáció megszakításának elkerülése érdekében gy
 
     Állítsa be a konfigurációs kiszolgálót egy helyszíni környezetben közvetlen, a v-központtal ellátott, és az adatátviteli késések csökkentése érdekében. A konfigurációs kiszolgáló ütemezett biztonsági mentését feladat- [visszavételi célokra](vmware-azure-manage-configuration-server.md#failback-requirements)is elvégezheti.
 
+* Módosíthatom a gyorsítótár-illesztőprogramot a konfigurációs kiszolgálón vagy a kibővíthető folyamat kiszolgálóján?
+
+    Nem, a gyorsítótár-illesztőprogram nem módosítható a beállítás befejeződése után.
+
 További gyakori kérdések a konfigurációs kiszolgálókról: [konfigurációs kiszolgáló gyakori kérdései](vmware-azure-common-questions.md#configuration-server).
-
-## <a name="troubleshoot-deployment-issues"></a>Üzembe helyezési problémák elhárítása
-
-[!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
-
-
 
 ## <a name="next-steps"></a>Következő lépések
 
