@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: babanisa
-ms.openlocfilehash: 6a0e24ce7fa11c6373fbaada40cd9f1b1e7f55a2
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 78498f06a1ec921813d886b426d62452f850f5e5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325473"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922743"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma használata Event Grid
 
@@ -26,7 +26,7 @@ Ez a cikk azt ismerteti, hogyan használható a CloudEvents séma a Event Grid h
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-## <a name="install-preview-feature"></a>Előzetes verziójú funkció telepítése
+## <a name="install-preview-feature"></a>Az előzetes verzió funkciójának telepítése
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
@@ -60,7 +60,7 @@ Ez a cikk azt ismerteti, hogyan használható a CloudEvents séma a Event Grid h
 }
 ```
 
-[Itt](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)található az elérhető mezők, azok típusai és definíciói részletes leírása a CloudEvents v 0.1-ben.
+[Itt](https://github.com/cloudevents/spec/blob/v1.0/spec.md#required-attributes)találja a CloudEvents 1.0-s verziójában elérhető mezők, típusok és definíciók részletes leírását.
 
 A CloudEvents-sémában és a Event Grid sémában szállított események fejlécének értékei megegyeznek a `content-type`kivételével. A CloudEvents séma esetében a fejléc értéke `"content-type":"application/cloudevents+json; charset=utf-8"`. Event Grid séma esetében a fejléc értéke `"content-type":"application/json; charset=utf-8"`.
 
@@ -145,7 +145,7 @@ New-AzureRmEventGridSubscription `
 
 Ha már ismeri a Event Gridt, érdemes lehet Event Grid végpont-ellenőrzési kézfogását a visszaélések megelőzésére. A CloudEvents 1.0-s verziójában a HTTP-beállítások módszer használatával valósítja meg a saját [visszaélés elleni védelem szemantikai](security-authentication.md#webhook-event-delivery) beállításait. További információk [itt](https://github.com/cloudevents/spec/blob/v1.0/http-webhook.md#4-abuse-protection). Ha a kimenethez a CloudEvents sémát használja, a Event Grid a Event Grid érvényesítési esemény mechanizmusa helyett az CloudEvents 1.0-s verziójának védelme szolgáltatást használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * Javasoljuk, hogy tesztelje, véleményezze és [járuljon hozzá](https://github.com/cloudevents/spec/blob/master/CONTRIBUTING.md) a CloudEvents.

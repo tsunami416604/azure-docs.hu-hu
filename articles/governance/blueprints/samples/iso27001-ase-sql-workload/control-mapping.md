@@ -1,14 +1,14 @@
 ---
 title: ISO 27001-es bekészítés/SQL munkaterhelés-terv minta-vezérlők
 description: Az ISO 27001 App Service Environment/SQL Database munkaterhelés tervezetének vezérlése Azure Policy-és RBAC.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 5c5b83669a477255f0cdce45993a5871b5a9c6f8
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: bc370170374654bf8bc9ae9ed3f1b545f4db8cba
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546774"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920705"
 ---
 # <a name="control-mapping-of-the-iso-27001-asesql-workload-blueprint-sample"></a>Az ISO 27001-es beosztási/SQL-számítási terv leképezésének vezérlése minta
 
@@ -53,7 +53,7 @@ Ez a terv segít a privilegizált hozzáférési jogosultságok korlátozásába
 - \[előzetes verzió\]: fiókok naplózása olyan írási engedélyekkel, akik nem engedélyezett az MFA-előfizetés
 - \[előzetes verzió\]: az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező külső fiókok naplózása
 - \[előzetes verzió\]: az előfizetésre vonatkozó írási engedélyekkel rendelkező külső fiókok naplózása
-- Az SQL Server Azure Active Directory-rendszergazdájának kiépítés naplózása
+- Azure Active Directory-rendszergazda-fiók kiépítésének naplózása az SQL-kiszolgálón
 - Azure Active Directory használatának naplózása az ügyfél-hitelesítéshez Service Fabric
 - Egyéni RBAC-szabályok használatának naplózása
 

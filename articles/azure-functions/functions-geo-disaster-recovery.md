@@ -6,12 +6,12 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: jehollan
-ms.openlocfilehash: db072d90c39b3856127925306cb1407c5837a0bb
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: bdeff0194bda620250481a215c145b1ec3b2207e
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226977"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920796"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
 
@@ -34,7 +34,7 @@ A függvények aktív/aktív üzembe helyezéséhez olyan összetevőre van szü
 
 ## <a name="activeactive-for-non-https-functions"></a>Aktív/aktív a nem HTTPS függvények esetében
 
-A nem HTTPS függvények esetében továbbra is aktív/aktív üzemelő példányok érhetők el.  Azonban érdemes megfontolnia, hogy a két régió hogyan kommunikáljon egymással, illetve hogyan koordinálja őket egymással.  Ha ugyanezt a függvényt két régióba telepítette, az egyes aktiválások ugyanarra a Service Bus várólistára kerülnek, akkor azok versengő fogyasztóként működhetnek a várólistán.  Ez azt jelenti, hogy az egyes üzeneteket csak az egyik példány dolgozza fel, ez azt is jelenti, hogy az egyetlen Service Bus esetében még mindig van egy meghibásodási pont.  Ha két Service Bus-várólistát helyez üzembe (egyet egy elsődleges régióban, egy másodlagos régióban), és a két függvény alkalmazás a régiók várólistájára mutat, a kihívás mostantól azt mutatja be, hogy a Várólista üzenetei hogyan oszlanak el a két régió között.  Ez gyakran azt jelenti, hogy minden közzétevő megpróbál *mindkét* régióba közzétenni egy üzenetet, és az egyes üzeneteket az aktív Function apps is dolgozza fel.  Míg ez aktív/aktív mintát hoz létre, a számítási feladatok ismétlődését, valamint az adatok összesítésének időpontját és módját is létrehozhatja.  Ezen okok miatt ajánlott a nem HTTPS-eseményindítók használata az aktív/passzív minta használatára.
+A nem HTTPS függvények esetében továbbra is aktív/aktív üzemelő példányok érhetők el.  Azonban érdemes megfontolnia, hogy a két régió hogyan kommunikáljon egymással, illetve hogyan koordinálja őket egymással.  Ha ugyanezt a függvényt két régióba telepítette, az egyes aktiválások ugyanarra a Service Bus várólistára kerülnek, akkor azok versengő fogyasztóként működhetnek a várólistán.  Ez azt jelenti, hogy az egyes üzeneteket csak az egyik példány dolgozza fel, ez azt is jelenti, hogy az adott Service Buson továbbra is egyetlen meghibásodási pont van.  Ha két Service Bus várólistát helyez üzembe (egyet egy elsődleges régióban, egy másodlagos régióban), és a két Function-alkalmazás a régiók várólistájára mutat, a kérdés most a két régió között a várólista-üzenetek terjesztésének módját mutatja be.  Ez gyakran azt jelenti, hogy minden közzétevő megpróbál *mindkét* régióba közzétenni egy üzenetet, és az egyes üzeneteket az aktív Function apps is dolgozza fel.  Míg ez aktív/aktív mintát hoz létre, a számítási feladatok ismétlődését, valamint az adatok összesítésének időpontját és módját is létrehozhatja.  Ezen okok miatt ajánlott a nem HTTPS-eseményindítók használata az aktív/passzív minta használatára.
 
 ## <a name="activepassive-for-non-https-functions"></a>Aktív/passzív a nem HTTPS függvények esetében
 
@@ -52,7 +52,7 @@ Az Azure Event Hubs Triggerek használata például az aktív/passzív minta a k
 
 A feladatátvétel előtt a megosztott aliasnak küldött közzétevők átirányítják az elsődleges esemény központját.  Az elsődleges Function alkalmazás kizárólag az elsődleges Event hub-t figyeli.  A másodlagos Function alkalmazás passzív és tétlen lesz.  Amint a feladatátvételt kezdeményezik, a megosztott aliasra küldött közzétevők most a másodlagos esemény központját fogják irányítani.  A másodlagos Function alkalmazás mostantól aktív lesz, és automatikusan elindítja az indítást.  A másodlagos régióra történő hatékony feladatátvétel kizárólag az Event hub-ból hajtható végre, és csak akkor válik aktívvá a függvények, ha a megfelelő Event hub aktív.
 
-A [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)feladatátvételével kapcsolatos információkat és szempontokat itt olvashatja.
+A feladatátvételsel kapcsolatos tudnivalókat és szempontokat a [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)című témakörben olvashatja.
 
 ## <a name="next-steps"></a>Következő lépések
 

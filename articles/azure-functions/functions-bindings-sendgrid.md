@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: a0731a66af32b45215145c1d4f4404eb008cf897
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75410040"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922354"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -27,9 +27,6 @@ A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https:/
 ## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
 A SendGrid-kötések a [Microsoft. Azure. webjobs. Extensions. SendGrid](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.SendGrid) NuGet csomagban, 3. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK-Extensions GitHub-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.SendGrid/) tárházban található.
-
-> [!NOTE]
-> A 2. x és újabb verziók nem hozza létre a `ServiceBusTrigger`-példányban konfigurált témakört vagy előfizetést. Ezek a verziók a [Microsoft. Azure. ServiceBus](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus) alapulnak, amely nem kezeli a várólista-kezelést.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -351,10 +348,10 @@ A következő táblázat a *function. JSON* fájlban és a `SendGrid` attribútu
 
 | *function. JSON* -tulajdonság | Attribútum/Megjegyzés tulajdonság | Leírás | Választható |
 |--------------------------|-------------------------------|-------------|----------|
-| type || `sendGrid`értékre kell állítani.| Nem |
-| irány || `out`értékre kell állítani.| Nem |
-| név || A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
-| apiKey | ApiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
+| type |–| `sendGrid`értékre kell állítani.| Nem |
+| irány |–| `out`értékre kell állítani.| Nem |
+| név |–| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
+| apiKey | apiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
 | erre:| – | A címzett e-mail-címe. | Igen |
 | forrás| Kezdő ár | A feladó e-mail-címe. |  Igen |
 | tárgy| Tárgy | Az e-mail tárgya. | Igen |

@@ -1,21 +1,20 @@
 ---
 title: 'Rövid útmutató: beszéd felismerése mikrofonból C++ , (Linux) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Ismerje meg, hogyan ismerheti C++ fel a beszédfelismerést Linux rendszeren a Speech SDK használatával
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 42f4b093ddec763bddb651e2ff24d51b613d5009
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: b2b59eb4c81f28a0bb74aca11d925405256c16a5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818676"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75928083"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 

@@ -4,12 +4,12 @@ description: Az első egyéni Windows-tároló üzembe helyezése Azure App Serv
 ms.topic: quickstart
 ms.date: 08/30/2019
 ms.custom: seodec18
-ms.openlocfilehash: 0b618c4f1a24e4089cac2ddf34e61bab156aefdd
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 7901498772b8e746fb2c87a5237f06ab279e3b64
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74671350"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922299"
 ---
 # <a name="run-a-custom-windows-container-in-azure-preview"></a>Egyéni Windows-tároló futtatása az Azure-ban (előzetes verzió)
 
@@ -103,7 +103,7 @@ Hozzon létre egy ASP.NET-webalkalmazást a következő lépések végrehajtás�
 
 Értesítés jelenik meg, ha az Azure befejezte a művelet végrehajtását.
 
-![Az üzembe helyezés sikerült](media/app-service-web-get-started-windows-container/portal-create-finished.png)
+![Üzembe helyezés sikeres](media/app-service-web-get-started-windows-container/portal-create-finished.png)
 
 1. Kattintson az **Erőforrás megnyitása** elemre.
 
@@ -163,7 +163,7 @@ A streamelt naplók a következőképpen néznek ki:
 
 ## <a name="use-a-different-parent-image"></a>Másik szülőrendszerkép használata
 
-Egy másik egyéni Docker-rendszerképet is használhat az alkalmazás futtatásához. Előbb ki kell azonban választania a kívánt keretrendszernek megfelelő [szülőrendszerképet](https://docs.docker.com/develop/develop-images/baseimages/):
+Egy másik egyéni Docker-rendszerképet is használhat az alkalmazás futtatásához. A kívánt keretrendszerhez azonban ki kell választania a megfelelő [szülő rendszerképet (alaprendszerkép)](https://docs.docker.com/develop/develop-images/baseimages/) :
 
 - A .NET-keretrendszerbeli alkalmazások telepítéséhez a Windows Server Core 2019 [hosszú távú karbantartási csatorna (LTSC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#long-term-servicing-channel-ltsc) kiadásán alapuló szülő lemezképet használjon. 
 - A .NET Core-alkalmazások telepítéséhez a Windows Server Nano 1809 [féléves karbantartási csatorna (SAC)](https://docs.microsoft.com/windows-server/get-started-19/servicing-channels-19#semi-annual-channel) kiadásán alapuló szülő lemezképet használjon. 
@@ -171,7 +171,7 @@ Egy másik egyéni Docker-rendszerképet is használhat az alkalmazás futtatás
 Az alkalmazás indításakor a szülőrendszerkép letöltése hosszabb időbe telhet. Az indítási időt azonban lecsökkentheti az alábbi, az Azure App Service-ben már gyorsítótárazott szülőrendszerképek egyikének használatával:
 
 - [MCR.microsoft.com/DotNet/Framework/ASPNET](https://hub.docker.com/_/microsoft-dotnet-framework-aspnet/): 4.7.2-windowsservercore-ltsc2019
-- [MCR.microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – ez a rendszerkép a Microsoft [ASP.net Core](https://hub.docker.com/_microsoft-dotnet-cores-aspnet) Microsoft Windows Nano Server rendszerképein használt alaptároló.
+- [MCR.microsoft.com/Windows/nanoserver](https://hub.docker.com/_/microsoft-windows-nanoserver/): 1809 – ez a rendszerkép a Microsoft [ASP.net Core](https://hub.docker.com/_/microsoft-dotnet-core-aspnet/) Microsoft Windows Nano Server rendszerképein használt alaptároló.
 
 ## <a name="next-steps"></a>Következő lépések
 

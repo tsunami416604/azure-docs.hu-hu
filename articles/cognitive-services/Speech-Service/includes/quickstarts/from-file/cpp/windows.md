@@ -1,21 +1,20 @@
 ---
 title: 'Rövid útmutató: beszéd felismerése egy hangfájlból C++ (Windows) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan ismerheti fel a beszédfelismerést C++ a Windows asztalon a Speech SDK használatával
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 08/19/2019
-ms.author: wolfma
-ms.openlocfilehash: 005d3c36525546443f96ec2134a2c8f9ad44b4dd
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.topic: include
+ms.date: 12/17/2019
+ms.author: wolfma61
+ms.openlocfilehash: 470792432c9180766df990c0bcff624e5337148a
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819324"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927836"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 

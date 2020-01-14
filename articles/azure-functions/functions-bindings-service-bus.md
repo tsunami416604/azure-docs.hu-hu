@@ -6,16 +6,16 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: c4e3ce148b3cc2db9681bd9c7a7ba0e33335d2cc
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: a64f680adbfca08e334f51697a305c93a408e1e4
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925756"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922377"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Service Bus
 
-Ez a cikk azt ismerteti, hogyan használhatók Azure Service Bus kötések a Azure Functionsban. Azure Functions támogatja az aktiválási és kimeneti kötéseket Service Bus várólistákhoz és témakörökhöz.
+Ez a cikk azt ismerteti, hogyan használhatók Azure Service Bus kötések a Azure Functionsban. Az Azure Functions támogatja a triggerek és kimenetek kötését a Service Bus-üzenetsorok és -témakörök esetében.
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 

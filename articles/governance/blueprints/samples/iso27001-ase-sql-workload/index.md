@@ -1,14 +1,14 @@
 ---
 title: Az ISO 27001 ASE/SQL-számításifeladat tervmintája – Áttekintés
 description: Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése és architektúrája.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: 749304f332bc5c65a9a1cd18aae3131f024b4f53
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: d77029b93b1e77bdba85c5dd5608cbdc5d6543a5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546742"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920775"
 ---
 # <a name="overview-of-the-iso-27001-app-service-environmentsql-database-workload-blueprint-sample"></a>Az ISO 27001 App Service Environment/SQL Database-számításifeladat tervmintájának áttekintése
 

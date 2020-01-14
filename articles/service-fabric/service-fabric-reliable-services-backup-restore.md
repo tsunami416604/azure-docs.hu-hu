@@ -5,12 +5,12 @@ author: mcoskun
 ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: mcoskun
-ms.openlocfilehash: 712069a34b6bc5d8aa4bcbab3fdbf9fc9cd8958b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ac6bb14517b67a4b308460583e8c9fb99a2df9f0
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645548"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922774"
 ---
 # <a name="backup-and-restore-reliable-services-and-reliable-actors"></a>Reliable Services és Reliable Actors biztonsági mentése és visszaállítása
 Az Azure Service Fabric egy magas rendelkezésre állású platform, amely a magas rendelkezésre állás fenntartása érdekében replikálja az állapotot több csomópont között.  Így még akkor is, ha a fürt egyik csomópontja meghibásodik, a szolgáltatások továbbra is elérhetők maradnak. Habár a platform által biztosított beépített redundancia elegendő lehet bizonyos esetekben, bizonyos esetekben kívánatos, hogy a szolgáltatás biztonsági másolatot készíteni (külső tárolóba).
@@ -64,7 +64,7 @@ Ahogy az alábbi ábrán is látható, `BackupAsync` egy `BackupDescription` obj
 
 ```csharp
 
-BackupDescription myBackupDescription = new BackupDescription(backupOption.Incremental,this.BackupCallbackAsync);
+BackupDescription myBackupDescription = new BackupDescription(BackupOption.Incremental,this.BackupCallbackAsync);
 
 await this.BackupAsync(myBackupDescription);
 

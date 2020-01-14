@@ -10,7 +10,7 @@
       href: event-hubs-capture-overview.md
     - name: Dedikált Event Hubs
       href: event-hubs-dedicated-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Eseményközpont létrehozása
@@ -164,7 +164,7 @@
           href: event-hubs-service-endpoints.md
         - name: Virtuális hálózati integráció és a tűzfalak engedélyezése Event Hubs-névtérben
           href: event-hubs-tutorial-virtual-networks-firewalls.md
-        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához (előzetes verzió)
+        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív adatok titkosításához
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:

@@ -5,12 +5,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: sisirap
 ms.custom: seodec18
-ms.openlocfilehash: 3569c6a066b09daa0c24975b9de840a844b6ba2c
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 28bd45b0e9bdaf87c29b0118c47595db9179edc5
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670228"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921156"
 ---
 # <a name="deploy-your-app-to-azure-app-service-with-a-zip-or-war-file"></a>Az alkalmazás üzembe helyezése egy ZIP-vagy WAR-fájllal való Azure App Service
 
@@ -88,6 +88,8 @@ További információ: kudu- [dokumentáció](https://github.com/projectkudu/kud
 ## <a name="deploy-war-file"></a>WAR-fájl üzembe helyezése
 
 Ha a WAR-fájlt App Servicere szeretné telepíteni, küldjön egy POST-kérést `https://<app_name>.scm.azurewebsites.net/api/wardeploy`. A POST kérelem üzenettörzsének tartalmaznia kell a .war fájlt. Az alkalmazás üzembehelyezési hitelesítő adatai a kérelemben alapszintű HTTP-hitelesítéssel vannak megadva.
+
+A WAR-fájlok telepítésekor mindig használjon `/api/wardeploy`. Ez az API kibővíti a WAR-fájlt, és elhelyezi a megosztott fájl meghajtóján. más telepítési API-k használata inkonzisztens viselkedést eredményezhet. 
 
 Az egyszerű HTTP-hitelesítéshez szükség van a App Service központi telepítési hitelesítő adataira. A központi telepítési hitelesítő adatok beállításával kapcsolatban lásd: [felhasználói szintű hitelesítő adatok beállítása és alaphelyzetbe állítása](deploy-configure-credentials.md#userscope).
 

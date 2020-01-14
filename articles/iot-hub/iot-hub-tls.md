@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: rezas
 ms.custom: Azure IoT Hub TLS
-ms.openlocfilehash: 62fdfc4277b44a502206eb37466e6409521186a5
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: eb6b04a476ac6100962e1103af37d75b719dd546
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839529"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921249"
 ---
 # <a name="tls-support-in-iot-hub"></a>TLS-támogatás a IoT Hub
 
@@ -77,6 +77,19 @@ A csak a TLS 1,2 használatára konfigurált IoT hubok a következő ajánlott t
 * `TLS_ECDHE_RSA_WITH_AES_256_GCM_SHA384`
 * `TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256`
 * `TLS_ECDHE_RSA_WITH_AES_256_CBC_SHA384`
+
+
+### <a name="use-tls-12-in-your-iot-hub-sdks"></a>A TLS 1,2 használata a IoT Hub SDK-ban
+
+Az alábbi hivatkozásokkal konfigurálhatja a TLS 1,2 és az engedélyezett titkosítási algoritmusokat IoT Hub ügyféloldali SDK-k használatával.
+
+| Nyelv | TLS 1,2 támogatott | Dokumentáció |
+|----------|-------------------|---------------|
+| C#        | Igen               | [Hivatkozás](https://aka.ms/Tls_C_SDK_IoT) |
+| Python   | Igen               | [Hivatkozás](https://aka.ms/Tls_Python_SDK_IoT) |
+| C#       | Igen               | [Hivatkozás](https://aka.ms/Tls_CSharp_SDK_IoT) |
+| Java     | Igen               | [Hivatkozás](https://aka.ms/Tls_Java_SDK_IoT) |
+| NodeJS   | Igen               | [Hivatkozás](https://aka.ms/Tls_Node_SDK_IoT) |
 
 
 ### <a name="use-tls-12-in-your-iot-edge-setup"></a>A TLS 1,2 használata a IoT Edge-telepítőben

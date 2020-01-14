@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/07/2020
-ms.openlocfilehash: 2627e4be20d80251e3753e46624c58a0c6244aba
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863087"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921012"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -33,7 +33,11 @@ Az API-verziók, a Nuget-csomagok, a névterek és a végpontok változatlanok. 
 
 + Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-t használ, `api-version=2019-05-06`használatával érheti el a szolgáltatást. A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
 
-+ A keresési szolgáltatás végpontján a *korlátozott IP-hozzáférés és a magánhálózati végpont (előzetes verzió)* már elérhető az **API-Version = 2019-10 -01-Preview-** ban. A biztonságos végpontot a [Létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate) felügyeleti REST API új **IpRule** és **NetworkRuleSet** tulajdonságaival állíthatja be. További információ az API-verziókról és a regionális elérhetőségről: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
++ A keresési szolgáltatásokhoz való privát hozzáférés két mechanizmuson keresztül érhető el:
+
+  + A szolgáltatás létrehozásához a felügyeleti REST API `api-version=2019-10-01-Preview` használatával korlátozhatja a hozzáférést adott IP-címekhez. Az előzetes verziójú API új **IpRule** és **NetworkRuleSet** tulajdonságokkal rendelkezik a [CreateOrUpdate API](https://docs.microsoft.com/rest/api/searchmanagement/services/createorupdate)-ban. Ez az előzetes verziójú funkció a kiválasztott régiókban érhető el. További információ: [a felügyeleti REST API használata](https://docs.microsoft.com/rest/api/searchmanagement/search-howto-management-rest-api).
+
+  + Jelenleg korlátozott hozzáférésű előzetes verzióban érhető el, ha olyan Azure Search szolgáltatást is kiépít, amely támogatja az Azure Private-végpontot az azonos virtuális hálózatban lévő ügyfelekkel létesített kapcsolatokhoz. További információ: [privát végpont létrehozása biztonságos kapcsolatban](service-create-private-endpoint.md).
 
 ### <a name="december-2019"></a>2019. december
 

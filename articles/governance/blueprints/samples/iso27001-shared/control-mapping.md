@@ -1,14 +1,14 @@
 ---
 title: ISO 27001 megosztott szolgáltatások tervrajz mintájának vezérlői
 description: Az ISO 27001 megosztott szolgáltatások tervrajzi mintájának vezérlése. Mindegyik vezérlő egy vagy több olyan Azure-szabályzatra van leképezve, amely segítséget nyújt az értékeléshez.
-ms.date: 11/18/2019
+ms.date: 01/13/2020
 ms.topic: sample
-ms.openlocfilehash: b484bdc2fdaa346e5137b31e3225dc913f43ed0c
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: 6c03da7d5d4caada9ef47a828163a79a003bea93
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546726"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922527"
 ---
 # <a name="control-mapping-of-the-iso-27001-shared-services-blueprint-sample"></a>Az ISO 27001 megosztott szolgáltatások tervrajzi mintájának vezérlése
 
@@ -53,7 +53,7 @@ Ez a terv segít a privilegizált hozzáférési jogosultságok korlátozásába
 - \[előzetes verzió\]: fiókok naplózása olyan írási engedélyekkel, akik nem engedélyezett az MFA-előfizetés
 - \[előzetes verzió\]: az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező külső fiókok naplózása
 - \[előzetes verzió\]: az előfizetésre vonatkozó írási engedélyekkel rendelkező külső fiókok naplózása
-- Az SQL Server Azure Active Directory-rendszergazdájának kiépítés naplózása
+- Azure Active Directory-rendszergazda-fiók kiépítésének naplózása az SQL-kiszolgálón
 - Azure Active Directory használatának naplózása az ügyfél-hitelesítéshez Service Fabric
 - Egyéni RBAC-szabályok használatának naplózása
 

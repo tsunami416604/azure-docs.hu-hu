@@ -3,12 +3,12 @@ title: Oktatóanyag – Azure Files fájlmegosztás biztonsági mentése
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Azure Portal egy Recovery Services-tároló konfigurálására és az Azure-fájlmegosztás biztonsági mentésére.
 ms.date: 06/10/2019
 ms.topic: tutorial
-ms.openlocfilehash: f3c1956a0344d300fff9a745a4733b7bef45a367
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: b002d1ea092d2d0507dc761f56ca7835f1521fb3
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171872"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75921645"
 ---
 # <a name="back-up-azure-file-shares-in-the-azure-portal"></a>Azure-fájlmegosztás biztonsági mentése a Azure Portal
 
@@ -28,7 +28,6 @@ Mielőtt biztonsági mentést készít egy Azure-fájlmegosztásról, győződj�
 
 Az Azure-fájlmegosztások biztonsági mentése jelenleg előzetes verzióban érhető el. Az Azure-fájlmegosztás az általános célú v1 és az általános célú v2 Storage-fiókok esetében is támogatott. Az Azure-fájlmegosztások nem támogatják az alábbi biztonsági mentési forgatókönyveket:
 
-* Nem biztosítható az Azure-fájlmegosztások védelme olyan tárfiókokban, amelyeken engedélyezve vannak a virtuális hálózatok vagy a tűzfal.
 * Azure Backup használatával nem érhető el a CLI a Azure Files védelméhez.
 * Az ütemezett biztonsági mentések maximális száma naponta egy.
 * Az igény szerinti biztonsági mentések maximális száma naponta négy.

@@ -4,16 +4,16 @@ description: Egy függvényalkalmazás létrehozása és függvénykód üzembe 
 ms.date: 07/03/2018
 ms.topic: sample
 ms.custom: mvc
-ms.openlocfilehash: 37dc0235b258f6d47f8813546fe953e92799454a
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: e424737b67be58ac0c3880ad2454c87fab803a15
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74532806"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922737"
 ---
 # <a name="create-a-function-app-in-azure-that-is-deployed-from-github"></a>GitHubról üzembe helyezett függvényalkalmazás létrehozása az Azure-ban
 
-Ez az Azure Functions-példaszkript létrehoz egy függvényalkalmazást, valamint az ahhoz kapcsolódó erőforrásokat, a [használatalapú csomag segítségével](../functions-scale.md#consumption-plan). Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
+Ez a Azure Functions minta szkript létrehoz egy Function alkalmazást a használati [terv](../functions-scale.md#consumption-plan)használatával, valamint a kapcsolódó erőforrásait. Ezután egy GitHub-adattárból konfigurálja a függvénykódot folyamatos üzembe helyezéshez. 
 
 A példához a következők szükségesek:
 
@@ -42,7 +42,7 @@ A táblázatban lévő összes parancs a hozzá tartozó dokumentációra hivatk
 |---|---|
 | [az group create](/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az storage account create](/cli/azure/storage/account#az-storage-account-create) | Létrehozza a tárfiókot, amely a függvényalkalmazáshoz szükséges. |
-| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Létrehoz egy függvényalkalmazást a kiszolgáló nélküli [használatalapú csomagban](../functions-scale.md#consumption-plan), és társítja egy Git- vagy Mercurial-adattárhoz. |
+| [az functionapp create](/cli/azure/functionapp#az-functionapp-create) | Egy Function-alkalmazást hoz létre a kiszolgáló nélküli [felhasználási tervben](../functions-scale.md#consumption-plan) , és társítja azt egy git vagy Mercurial adattárral. |
 
 ## <a name="next-steps"></a>Következő lépések
 

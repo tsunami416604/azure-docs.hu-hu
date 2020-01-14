@@ -1,21 +1,20 @@
 ---
 title: 'Rövid útmutató: beszéd felismerése hangfájlból C++ (MacOS) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
-description: Megtudhatja, hogyan ismerheti fel a beszédfelismerést a macOS-ben C++ a Speech SDK használatával
 services: cognitive-services
 author: wolfma61
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.topic: quickstart
-ms.date: 07/05/2019
+ms.topic: include
+ms.date: 12/17/2019
 ms.author: wolfma
-ms.openlocfilehash: 5cd7173d2df6f08b79d544a3a371039c24d5882a
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 41c3c0242bb0bf8fb5761aa2bf6f3b8080cc8c0a
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819260"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75927939"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 

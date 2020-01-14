@@ -5,12 +5,12 @@ ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: seodec18
-ms.openlocfilehash: b8de6df5761baef79310062614f578a92f17b826
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 2570e3753dd93173166c6b563e9add69bed3f862
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74670484"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922278"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
 
@@ -50,7 +50,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="container-characteristics"></a>A tároló jellemzői
 
-A Linuxon App Service rendszerre telepített Python-alkalmazások a GitHub-tárházban, a [python 3,6](https://github.com/Azure-App-Service/python/tree/master/3.6.6) -ban vagy a [Python 3,7](https://github.com/Azure-App-Service/python/tree/master/3.7.0)-ben meghatározott Docker-tárolón belül futnak.
+A Linuxon App Service rendszerbe telepített Python-alkalmazások a [Python GitHub-tárházban](https://github.com/Azure-App-Service/python)meghatározott docker app Service-tárolón belül futnak. A rendszerkép-konfigurációk a verziószámozási könyvtárakban találhatók.
 
 Ez a tároló a következő jellemzőkkel rendelkezik:
 
@@ -80,7 +80,7 @@ Django-alkalmazások esetén az App Service a(z) `wsgi.py` nevű fájlt keresi a
 gunicorn --bind=0.0.0.0 --timeout 600 <module>.wsgi
 ```
 
-Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [egyéni indítási parancsot](#customize-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
+Ha az indítási parancsot szeretné jobban szabályozni, használjon egy [ egyéni indítási parancsot](#customize-startup-command), és cserélje le a(z) `<module>` modult annak a modulnak a nevével, amely tartalmazza a *wsgi.py* fájlt.
 
 ### <a name="flask-app"></a>Flask-alkalmazás
 
@@ -132,7 +132,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 > [!Note]
 > Az App Service figyelmen kívül hagyja az egyéni parancsfájl feldolgozásakor előforduló hibákat, majd az indítási folyamat következő lépéseként megkeresi a Django- és a Flask-alkalmazásokat. Ha nem várt viselkedést tapasztal, ellenőrizze, hogy az indítási fájl telepítve lett-e az App Service-be, és hogy az nem tartalmaz-e hibákat.
 
-## <a name="access-environment-variables"></a>Hozzáférési környezeti változók
+## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
 App Service az [Alkalmazásbeállítások](../configure-common.md?toc=%2fazure%2fapp-service%2fcontainers%2ftoc.json#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy `WEBSITE_SITE_NAME`nevű alkalmazás-beállítást szeretne elérni, használja a következő kódot:
 
@@ -159,7 +159,7 @@ A népszerű webes keretrendszerek lehetővé teszik a szabványos alkalmazási 
 
 [!INCLUDE [Open SSH session in browser](../../../includes/app-service-web-ssh-connect-builtin-no-h.md)]
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 - **Saját alkalmazáskódjának telepítése után megjelenik az alapértelmezett alkalmazás.** Az alapértelmezett alkalmazás jelenik meg, mert vagy nem telepítette az alkalmazás kódját App Servicere, vagy App Service nem találta meg az alkalmazás kódját, és nem futtatta az alapértelmezett alkalmazást.
 - Indítsa újra az App Service-t, várjon 15-20 másodpercet, és ellenőrizze újra az alkalmazást.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 17cefdd5976efdd86d9f171f4eb1518f63fe043b
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0d2fca7b46cd0392fe8e94c1371443e7fcebc2fd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754295"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75922484"
 ---
 # <a name="what-is-azure-cognitive-search"></a>Mi az az Azure Cognitive Search?
 
@@ -68,7 +68,7 @@ Az Azure Cognitive Search kiválóan alkalmas a következő alkalmazási forgat�
 |-------------------|----------|
 | Eszközök prototípus-készítéshez és vizsgálatokhoz | A portálon az [**Adatok importálása varázsló**](search-import-data-portal.md) segítségével konfigurálhatja az indexelőket, az indextervezővel új indexeket tervezhet, a [**Keresési ablakban**](search-explorer.md) pedig keresési kifejezéseket tesztelhet a pontozási profilok finomításához. Emellett bármelyik indexet megnyithatja a séma megtekintéséhez. |
 | Figyelés és diagnosztika | A [**figyelési funkciók lehetővé teszik**](search-monitor-usage.md) , hogy a portálon mindig megjelenjenek a metrikák – dióhéjban. Emellett a rendszer alapértelmezés szerint gyűjti a lekérdezések másodpercenkénti számának, a késésnek és a leszabályozásnak a metrikáit, melyek megtekinthetők jelentésként a portállapokon.|
-| Kiszolgálóoldali titkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encrypted-transmission-and-storage) a belső tároló rétegbe van beépítve, és visszavonhatatlan. Igény szerint az alapértelmezett titkosítást az [**ügyfél által felügyelt titkosítási kulcsokkal (előzetes verzió)** ](search-security-manage-encryption-keys.md)is kiegészítheti. Az Azure Key Vault-ben létrehozott és kezelt kulcsok az indexek és a szinonimák leképezésének titkosítására használhatók az Azure Cognitive Searchban. |
+| Kiszolgálóoldali titkosítás | A [**Microsoft által felügyelt titkosítás**](search-security-overview.md#encrypted-transmission-and-storage) a belső tároló rétegbe van beépítve, és visszavonhatatlan. Opcionálisan az [**ügyfél által felügyelt titkosítási kulcsokkal**](search-security-manage-encryption-keys.md)kiegészítheti az alapértelmezett titkosítást is. Az Azure Key Vault-ben létrehozott és kezelt kulcsok az indexek és a szinonimák leképezésének titkosítására használhatók az Azure Cognitive Searchban. |
 | Infrastruktúra | A **nagy rendelkezésre állású platform** rendkívül megbízható keresési szolgáltatást szavatol. Ha megfelelően méretezhető, az [Azure Cognitive Search 99,9%-os SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/)-t biztosít.<br/><br/> **Teljes körűen felügyelt és méretezhető** , az Azure Cognitive Search teljesen infrastruktúra-felügyeletet igényel. A szolgáltatást két dimenzió méretezésével szabhatja az igényeihez: konfigurálhat nagyobb méretű dokumentumtárat vagy magasabb lekérdezés-feldolgozási kapacitást, vagy mindkettőt.<br/><br/>|
 
 ## <a name="how-to-use-azure-cognitive-search"></a>Az Azure Cognitive Search használata

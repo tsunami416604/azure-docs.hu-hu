@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: ab851f3156f09a808833c0b31f8c5ce2b7dd5138
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
+ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74230484"
+ms.lasthandoff: 01/13/2020
+ms.locfileid: "75920664"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
 
@@ -83,7 +83,7 @@ func kubernetes remove --namespace keda
 
 A KEDA a következő Azure Function triggereket támogatja:
 
-* [Azure Storage-várólisták](functions-bindings-storage-queue.md)
+* [Azure Storage-üzenetsorok](functions-bindings-storage-queue.md)
 * [Azure Service Bus várólisták](functions-bindings-service-bus.md)
 * [Azure Event/IoT hubok](functions-bindings-event-hubs.md)
 * [Apache Kafka](https://github.com/azure/azure-functions-kafka-extension)
@@ -93,7 +93,7 @@ A KEDA a következő Azure Function triggereket támogatja:
 
 Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A Azure Functions Core Tools egy kapcsolódó projektet telepít, amely lehetővé teszi a HTTP-végpontok 0 és 1 közötti skálázását.  Az 1 és *n* közötti skálázás a hagyományos Kubernetes skálázási szabályzatokra támaszkodik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért lásd a következőket:
 
 * [Függvény létrehozása egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md)
