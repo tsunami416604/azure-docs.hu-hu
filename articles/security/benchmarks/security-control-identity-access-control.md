@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 9081f74aee7ff503c7fe29cef6ca76e6d6b46a4f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 543573610c2ea3ab0bcd89e1b8f4ee5f5a34dbc0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564269"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934426"
 ---
 # <a name="security-control-identity-and-access-control"></a>Biztonsági ellenőrzés: identitás-és Access Control
 
@@ -63,9 +63,11 @@ További információ: https://docs.microsoft.com/azure/active-directory/privile
 
 Ha lehetséges, használja a Azure Active Directory SSO-t ahelyett, hogy egyéni, különálló hitelesítő adatokat konfiguráljon a szolgáltatáson kívül. Azure Security Center identitás-és hozzáférés-kezelési javaslatok használata.
 
-Az egyszeri bejelentkezés ismertetése az Azure AD-vel: https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+Az SSO megismerése az Azure AD-vel:
 
-## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: többtényezős hitelesítés használata az összes Azure Active Directory-alapú hozzáféréshez.
+https://docs.microsoft.com/azure/active-directory/manage-apps/what-is-single-sign-on
+
+## <a name="35-use-multi-factor-authentication-for-all-azure-active-directory-based-access"></a>3,5: Multi-Factor Authentication használata az összes Azure Active Directory-alapú hozzáféréshez
 
 | Azure-azonosító | CIS-azonosítók | Feladatkörök |
 |--|--|--|
@@ -89,9 +91,13 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 Az Azure-erőforrások bejelentkezéséhez és konfigurálásához használja az MFA-t (emelt szintű hozzáférési munkaállomások).
 
-További tudnivalók az emelt szintű hozzáférésű munkaállomásokról: https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+További tudnivalók az emelt szintű hozzáférésű munkaállomásokról:
 
-Az MFA engedélyezése az Azure-ban: https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
+https://docs.microsoft.com/windows-server/identity/securing-privileged-access/privileged-access-workstations
+
+Az MFA engedélyezése az Azure-ban:
+
+https://docs.microsoft.com/azure/active-directory/authentication/howto-mfa-getstarted
 
 
 ## <a name="37-log-and-alert-on-suspicious-activity-from-administrative-accounts"></a>3,7: naplózás és riasztás a gyanús tevékenységekről a rendszergazdai fiókoktól
@@ -130,19 +136,25 @@ https://docs.microsoft.com/azure/active-directory/reports-monitoring/quickstart-
 
 A Azure Active Directory (HRE) központi hitelesítési és engedélyezési rendszerrel használható. A HRE erős titkosítással védi az adatok védelmét a nyugalmi és átviteli állapotban lévő adatokhoz. A HRE a felhasználó hitelesítő adatait is sók, kivonatok és biztonságosan tárolja.
 
-HRE-példány létrehozása és konfigurálása: https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
+HRE-példány létrehozása és konfigurálása:
+
+https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-access-create-new-tenant
 
 ## <a name="310-regularly-review-and-reconcile-user-access"></a>3,10: a felhasználói hozzáférés rendszeres áttekintése és egyeztetése
 
 | Azure-azonosító | CIS-azonosítók | Feladatkörök |
 |--|--|--|
-| 3.1 | 16,9, 16,10 | Ügyfél |
+| 3,10 | 16,9, 16,10 | Ügyfél |
 
 Az Azure AD olyan naplókat biztosít, amelyek segítenek az elavult fiókok felderítésében. Emellett az Azure Identity Access Reviews használatával hatékonyan kezelheti a csoporttagságok kezelését, a vállalati alkalmazásokhoz való hozzáférést és a szerepkör-hozzárendeléseket. A felhasználói hozzáférés rendszeresen felülvizsgálható, hogy csak a megfelelő felhasználók férhessenek hozzá. 
 
-Azure AD jelentéskészítési https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+Azure AD-jelentéskészítés:
 
-Az Azure Identity hozzáférési felülvizsgálatok használata: https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
+https://docs.microsoft.com/azure/active-directory/reports-monitoring/
+
+Az Azure Identity hozzáférési felülvizsgálatok használata:
+
+https://docs.microsoft.com/azure/active-directory/governance/access-reviews-overview
 
 ## <a name="311-monitor-attempts-to-access-deactivated-accounts"></a>3,11: az inaktivált fiókok elérésére irányuló kísérletek figyelése
 
@@ -186,7 +198,7 @@ https://docs.microsoft.com/azure/sentinel/quickstart-onboard
 
 A támogatási forgatókönyvek esetében, ahol a Microsoftnak hozzá kell férnie az ügyféladatok eléréséhez, Ügyfélszéf biztosít egy felületet, amellyel áttekintheti, jóváhagyhatja vagy elutasíthatja az ügyféladatok hozzáférési kérelmeit.
 
-A Ügyfélszéf ismertetése:
+Ügyfélszéf ismertetése:
 
 https://docs.microsoft.com/azure/security/fundamentals/customer-lockbox-overview
 

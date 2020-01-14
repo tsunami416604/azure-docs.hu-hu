@@ -2,19 +2,19 @@
 title: Gyakori problémák a VHD-k létrehozásakor (GYIK) az Azure Marketplace-en
 description: A VHD-létrehozással és a kapcsolódó problémákkal kapcsolatos gyakori kérdések.
 services: Azure Marketplace
-author: HannibalSII
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 10/02/2018
-ms.author: hascipio
+ms.author: evansma
 ms.reviewer: v-divte; v-miclar
-ms.openlocfilehash: 1d4224d8f1f735ecef3d4551e3032b916e81dc3c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 152a2f6fda081b2612197cc4848207b336adf8dc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826619"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934259"
 ---
 # <a name="common-issues-during-vhd-creation-faq"></a>Gyakori problémák a VHD létrehozásakor (GYIK)
 
@@ -73,7 +73,7 @@ A következő cikk részletesen ismerteti, hogyan használhatók az egyéni szkr
 
 ## <a name="are-32-bit-applications-or-services-supported-in-the-azure-marketplace"></a>Támogatottak-e a 32 bites alkalmazások vagy szolgáltatások az Azure piactéren?
 
-Általánosságban nem.  Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja a visszamenőleges kompatibilitás érdekében az alkalmazások 32 bites verzióinak futtatását.  A virtuálisgép-megoldás részeként azonban a 32 bites alkalmazások használata nem támogatott, *ezért nem ajánlott.*  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
+Általában nem.  Az Azure-beli virtuális gépekhez támogatott operációs rendszerek és standard szolgáltatások mind 64 bitesek.  Technikai szempontból azonban a legtöbb 64 bites operációs rendszer támogatja a visszamenőleges kompatibilitás érdekében az alkalmazások 32 bites verzióinak futtatását.  A virtuálisgép-megoldás részeként azonban a 32 bites alkalmazások használata nem támogatott, *ezért nem ajánlott.*  Ehelyett fordítsa újra az alkalmazást 64 bites projektként.
 
 További információkért tekintse át a következő cikkeket:
 - [32 bites alkalmazások futtatása](https://docs.microsoft.com/windows/desktop/WinProg64/running-32-bit-applications)

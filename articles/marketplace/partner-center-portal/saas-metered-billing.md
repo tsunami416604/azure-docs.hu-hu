@@ -1,19 +1,19 @@
 ---
 title: Mért számlázás a Marketplace-mérési szolgáltatás használatával | Azure piactér
 description: Ez a dokumentáció az SaaS-ajánlatok rugalmas számlázási modellel történő közzétételének útmutatója.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/10/2019
-ms.openlocfilehash: 54b59cfecbbba6b71cf301aa4872892825d4b675
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f1b60831e08383ee455cd3afbfbc21ed27445ffc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827932"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934171"
 ---
 # <a name="metered-billing-using-the-marketplace-metering-service"></a>Mért számlázás a Marketplace-mérési szolgáltatás használatával
 
@@ -73,7 +73,7 @@ A számlázási dimenziók az ajánlat minden csomagjában meg vannak osztva.  E
 
 A dimenziót definiáló attribútumok az ajánlat minden csomagjában meg vannak osztva.  Mielőtt közzéteszi az ajánlatot, az ezen attribútumok bármely csomag kontextusában történt módosítása hatással lesz az összes csomag dimenziójának meghatározására.  Miután közzétette az ajánlatot, ezek az attribútumok többé nem lesznek szerkeszthetve.  Ezek az attribútumok a következők:
 
-* Azonosító
+* Identifier
 * Név
 * Mértékegység
 
@@ -103,7 +103,7 @@ Mivel a piactér-mérési szolgáltatáshoz használt dimenzió azt jelenti, hog
   
 Ha egy ajánlatot közzétesznek egy dimenzióval, az adott dimenzióra vonatkozó ajánlati szintű adatok már nem módosíthatók:
 
-* Azonosító
+* Identifier
 * Név
 * Mértékegység
 
@@ -136,6 +136,6 @@ A támogatási jegy beküldéséhez kövesse az alábbi lépéseket:
 
 További közzétevői támogatási lehetőségekért lásd: [a kereskedelmi piactér program támogatása a partner Centerben](https://docs.microsoft.com/azure/marketplace/partner-center-portal/support) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

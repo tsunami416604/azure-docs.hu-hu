@@ -1,9 +1,9 @@
 ---
-title: Sharepointhoz készült StorSimple-Adapter telepítése |} A Microsoft Docs
-description: Ismerteti, hogyan lehet telepíteni és konfigurálni, vagy távolítsa el a StorSimple Adapter for SharePoint a SharePoint-kiszolgálófarm.
+title: StorSimple-adapter telepítése a SharePointhoz | Microsoft Docs
+description: Leírja, hogyan telepítheti és konfigurálhatja a SharePoint-StorSimple-adaptert a SharePoint-farmban.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 36c20b75-f2e5-4184-a6b5-9c5e618f79b2
@@ -13,247 +13,247 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/06/2017
-ms.author: v-sharos
-ms.openlocfilehash: a2f8e75578e396085e7d80f43c1180e158967061
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: twooley
+ms.openlocfilehash: a841ce8b664389ccd8fdf55de9965f09412fecf5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60633289"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930209"
 ---
-# <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>Telepítse és konfigurálja a StorSimple Adapter for SharePoint
+# <a name="install-and-configure-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése és konfigurálása
 ## <a name="overview"></a>Áttekintés
-A StorSimple Adapter for SharePoint egy összetevő, amely lehetővé teszi a Microsoft Azure StorSimple rugalmas tárolás és adatok védelme a SharePoint-kiszolgálófarmok. Az adapter segítségével bináris nagyméretű objektum (BLOB) tartalom a Microsoft Azure StorSimple hibrid felhőalapú tárolóeszköz a tartalom az SQL Server-adatbázisok áthelyezéséhez.
+A SharePointhoz készült StorSimple-adapter olyan összetevő, amely lehetővé teszi, hogy Microsoft Azure StorSimple rugalmas tárterületet és adatvédelmet biztosítson a SharePoint Server-farmok számára. Az adapter használatával áthelyezheti a bináris nagyméretű objektum-(BLOB-) tartalmakat a SQL Server tartalmi adatbázisaiból a Microsoft Azure StorSimple Hybrid Cloud Storage-eszközre.
 
-A StorSimple Adapter for SharePoint működik, mint egy BLOB Storage (RBS) szolgáltató, és használja az SQL Server távoli BLOB Storage szolgáltatás strukturálatlan SharePoint-tartalom tárolására (Blobok formájában) egy fájlkiszolgálón, amely a StorSimple eszköz használatával.
+A SharePointhoz készült StorSimple-adapter távoli BLOB Storage-(RBS-) szolgáltatóként működik, és a SQL Server távoli BLOB Storage szolgáltatással tárolja a strukturálatlan SharePoint-tartalmakat (Blobok formájában) egy olyan fájlkiszolgálón, amelyet egy StorSimple-eszköz támogat.
 
 > [!NOTE]
-> A StorSimple Adapter for SharePoint támogatja a SharePoint Server 2010 távoli BLOB Storage (RBS). Nem támogatja a SharePoint Server 2010 külső BLOB Storage (EBS).
+> A SharePointhoz készült StorSimple-adapter támogatja a SharePoint Server 2010 távoli BLOB Storage (RBS) használatát. Nem támogatja a SharePoint Server 2010 külső BLOB Storage (EBS) használatát.
 
 
-* A StorSimple Adapter for SharePoint letöltéséhez keresse fel [StorSimple Adapter for SharePoint] [ 1] a Microsoft Download Center.
-* Korlátozások RBS és RBS tervezésével kapcsolatos további információkért lépjen [a SharePoint 2013-ban RBS használata mellett döntenek] [ 2] vagy [RBS (SharePoint Server 2010) tervezése] [ 3].
+* A SharePointhoz készült StorSimple-adapter letöltéséhez nyissa meg a [sharepointhoz készült StorSimple-adaptert][1] a Microsoft letöltőközpontban.
+* Az RBS és az RBS korlátozásának megtervezéséről az [RBS használata a sharepoint 2013-ben][2] vagy [az RBS-terv (SharePoint Server 2010)][3]című témakörben tájékozódhat.
 
-Ez az Áttekintés a többi röviden ismerteti a StorSimple Adapter szerepe a SharePoint és a SharePoint kapacitás és teljesítmény korlátokat, érdemes figyelembe vennie, mielőtt telepíti és konfigurálja az adaptert. Miután ellenőrizze ezeket az információkat, lépjen be [StorSimple Adapter for SharePoint telepítési](#storsimple-adapter-for-sharepoint-installation) az adapter beállítása a kezdéshez.
+Az Áttekintés további része röviden leírja a SharePointhoz készült StorSimple-adapter szerepét, valamint a SharePoint-kapacitást és a teljesítményre vonatkozó korlátozásokat, amelyeket az adapter telepítése és konfigurálása előtt érdemes tudnia. Az információk áttekintése után nyissa meg a [StorSimple-adapter a SharePoint rendszerhez](#storsimple-adapter-for-sharepoint-installation) című témakört az adapter beállításának megkezdéséhez.
 
-### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple Adapter for SharePoint előnyeit
-SharePoint-webhelyre, a tartalom egy vagy több tartalom-adatbázisokban lévő strukturált Blobadatok van tárolva. Alapértelmezés szerint ezek az adatbázisok az SQL Servert futtató és a SharePoint-kiszolgálófarm található számítógépek üzemel. Blobok is villámgyorsan nő a időt foglal le a helyi tárterület mérete. Emiatt érdemes egy másik, kevésbé költséges tárolási megoldás. Az SQL Server egy távoli Blob Storage (RBS), amely lehetővé teszi, BLOB-tartalmak a fájlrendszer kívül az SQL Server-adatbázis nevű technológiát kínál. Az RBS Blobok is találhatók, a fájlrendszer azon a számítógépen, amelyen az SQL Server vagy a fájlrendszer egy másik kiszolgálón tárolhatók.
+### <a name="storsimple-adapter-for-sharepoint-benefits"></a>StorSimple-adapter SharePoint-előnyökhöz
+Egy SharePoint-webhelyen a tartalom strukturálatlan BLOB-adatként tárolódik egy vagy több tartalmi adatbázisban. Alapértelmezés szerint ezek az adatbázisok a SQL Server rendszert futtató számítógépeken vannak tárolva, és a SharePoint Server-farmban találhatók. A Blobok gyorsan növelhetik a méretet, így nagy mennyiségű helyszíni tárterületet igényelnek. Emiatt előfordulhat, hogy egy másik, kevésbé költséges tárolási megoldást szeretne találni. A SQL Server olyan távoli Blob Storage (RBS) nevű technológiát biztosít, amely lehetővé teszi a BLOBok tartalmának tárolását a fájlrendszerben a SQL Server-adatbázison kívül. Az RBS használatával a Blobok a SQL Server rendszert futtató számítógép fájlrendszerében találhatók, vagy egy másik kiszolgáló számítógépének fájlrendszerében is tárolhatók.
 
-RBS van szüksége egy RBS szolgáltató, például a StorSimple Adapter for SharePoint, a SharePoint RBS engedélyezése. A StorSimple Adapter for SharePoint együttműködik RBS, helyezze át a blobokat egy kiszolgálóra, biztonsági másolatot készít a Microsoft Azure StorSimple rendszerbe, ami lehetővé teszi. A Microsoft Azure StorSimple majd tárol a BLOB-adatokat helyben vagy a felhőben, használat alapján. Blobok, amelyek nagyon aktív (általában úgy nevezik 1. réteg vagy gyakran használt adatokkal) találhatók. Kevésbé aktív és archiválási adatok a felhőben találhatók. Miután engedélyezte a RBS a tartalom-adatbázist, a StorSimple eszközön, és nem a tartalom-adatbázist a Sharepointban való létrehozásakor új BLOB tartalmak tárolja.
+Az RBS használatához RBS-szolgáltatót kell használni, például a SharePointhoz készült StorSimple-adaptert, hogy az RBS engedélyezve legyen a SharePointban. A SharePointhoz készült StorSimple-adapter az RBS használatával működik, és lehetővé teszi a Blobok áthelyezését a Microsoft Azure StorSimple rendszer által készített kiszolgálóra. Microsoft Azure StorSimple a BLOB-adatokat helyileg vagy a felhőben tárolja a használat alapján. A nagyon aktív Blobok (általában az 1. réteg vagy a forró adatok) helyileg találhatók. A felhőben kevesebb aktív adat és archiválási adat található. Miután engedélyezte az RBS-t egy tartalmi adatbázisban, a SharePointban létrehozott összes új BLOB-tartalmat a rendszer a StorSimple-eszközön tárolja, és nem a tartalom-adatbázisba.
 
-A Microsoft Azure StorSimple RBS végrehajtása a következő előnyöket nyújtja:
+Az RBS Microsoft Azure StorSimple megvalósítása a következő előnyöket biztosítja:
 
-* BLOB tartalma áthelyezése egy másik kiszolgálóra csökkentheti a lekérdezés betöltése SQL-kiszolgálón, ami javíthatja az SQL Server válaszképességét. 
-* Az Azure StorSimple adatméret csökkentése érdekében a deduplikáció és a tömörítést használ.
-* Az Azure StorSimple a helyi űrlap és a felhőbeli pillanatképekkel védelmet biztosít. Is ha maga az adatbázis a StorSimple eszközön, akkor is készítsen biztonsági másolatot a tartalom-adatbázist és a Blobok együtt egy összeomlás-konzisztens módon. (A tartalom-adatbázis áthelyezése az eszköz csak az támogatja a StorSimple 8000 sorozatú eszköz. Ez a funkció nem támogatott a 5000 és 7000-es sorozathoz.)
-* Az Azure StorSimple vész helyreállítási funkciókat, beleértve a feladatátvétel (beleértve a tesztelési helyreállítási) fájl- és helyreállítási és az adatok gyors helyreállításának tartalmazza.
-* Data recovery szoftver Kroll Ontrack PowerControls, például a SharePoint-tartalom elemszintű helyreállítás végrehajtásához a blobadat StorSimple pillanatképekkel is használhatja. (A data recovery szoftver a külön vásárolható.)
-* A StorSimple Adapter for SharePoint rendkívüli a SharePoint központi felügyeleti portálján, amely lehetővé teszi a teljes SharePoint-megoldás kezelését egy központi helyről.
+* Ha áthelyezi a BLOB tartalmát egy különálló kiszolgálóra, csökkentheti a lekérdezés terhelését SQL Serveron, ami javíthatja SQL Server a rugalmasságot. 
+* Az Azure StorSimple a deduplikálás és a tömörítés használatával csökkenti az adatméretet.
+* Az Azure StorSimple helyi és Felhőbeli Pillanatképek formájában biztosítja az adatvédelmet. Ha maga a StorSimple-eszközre helyezi az adatbázist, biztonsági mentést készíthet a tartalom-adatbázisról, és összekapcsolhatja a blobokat az összeomlás-konzisztens módon. (A tartalom-adatbázisnak az eszközre való áthelyezése csak a StorSimple 8000 sorozatú eszközön támogatott. Ez a funkció a 5000-es vagy a 7000-es sorozat esetében nem támogatott.)
+* Az Azure StorSimple olyan vész-helyreállítási funkciókat tartalmaz, mint például a feladatátvétel, a fájlok és a kötetek helyreállítása (beleértve a teszt helyreállítást is) és az adatfeldolgozások gyors helyreállítása.
+* Használhatja az adat-helyreállítási szoftvert, például a Kroll Ontrack PowerControls, a BLOB-adatok StorSimple pillanatképeit a SharePoint-tartalmak elemszintű helyreállításának elvégzéséhez. (Ez az adathelyreállítási szoftver egy külön vásárlás.)
+* A SharePoint rendszerhez készült StorSimple-adapter a SharePoint központi felügyeleti portálján található, amely lehetővé teszi a teljes SharePoint-megoldás központi helyről történő kezelését.
 
-Egyéb költség megtakarítást és előnyöket biztosíthat a BLOB tartalma áthelyezése a fájlrendszer. Például RBS használatával csökkentheti a költséges 1. szintű tárhelyre van szükség, és a tartalom-adatbázist, csökken, mert RBS csökkentheti a szükséges a SharePoint-kiszolgálófarm adatbázisok száma. Azonban más tényezők, például az adatbázis méretbeli korlátokat, és nem RBS tartalom mennyisége is befolyásolhatja tárolási követelményeit. További információ a költségeit és RBS használatának előnyei: [RBS (a SharePoint Foundation 2010) tervezése] [ 4] és [a SharePoint 2013-ban RBS használata mellett döntenek] [5].
+A BLOB tartalmának a fájlrendszerbe való áthelyezése további költségmegtakarítást és előnyöket biztosít. Az RBS használata például csökkentheti a költséges 1. szintű tárolók szükségességét, mivel ez csökkenti a tartalom-adatbázist, az RBS csökkentheti a SharePoint-kiszolgálófarm számára szükséges adatbázisok számát. Azonban más tényezők, például az adatbázis méretére vonatkozó korlátozások és a nem RBS-tartalom mennyisége is befolyásolhatja a tárolási követelményeket. További információ az RBS használatának költségeiről és előnyeiről: az [RBS tervezése (SharePoint Foundation 2010)][4] , valamint az [RBS használatának eldöntése a SharePoint 2013-ben][5].
 
-### <a name="capacity-and-performance-limits"></a>Kapacitás és teljesítmény korlátok
-Mielőtt RBS fontolóra a SharePoint-megoldásban, érdemes figyelembe vennie a tesztelt teljesítmény és a SharePoint Server 2010 és a SharePoint Server 2013 és az hogyan kapcsolódik egymáshoz ezeket a korlátokat elfogadható teljesítményt kapacitásának korlátjáig. További információkért lásd: [szoftver határok és a SharePoint 2013-hoz készült korlátok](https://technet.microsoft.com/library/cc262787.aspx).
+### <a name="capacity-and-performance-limits"></a>Kapacitás és teljesítménybeli korlátok
+Mielőtt fontolóra veszi az RBS használatát a SharePoint-megoldásban, ismernie kell a SharePoint Server 2010 és a SharePoint Server 2013 tesztelt teljesítmény-és kapacitási korlátait, valamint azt, hogy ezek a korlátok hogyan kapcsolódnak az elfogadható teljesítményhez. További információ: [a szoftver határai és korlátai a SharePoint 2013-](https://technet.microsoft.com/library/cc262787.aspx)hoz.
 
-RBS konfigurálása előtt tekintse meg az alábbiakat:
+Az RBS konfigurálása előtt tekintse át a következőket:
 
-* Győződjön meg arról, hogy a tartalom (a tartalom-adatbázis mérete) és minden kapcsolódó externalized Blobok méretének teljes mérete nem haladja meg a SharePoint által támogatott maximális RBS mérete. Ez a korlát 200 GB-os. 
+* Győződjön meg arról, hogy a tartalom teljes mérete (a tartalom-adatbázis mérete és a társított külső Blobok mérete) nem lépi túl a SharePoint által támogatott RBS-mérethatárt. Ez a korlát 200 GB. 
   
-    **Mérték tartalom-adatbázist és a BLOB mérete**
+    **A tartalom-adatbázis és a BLOB méretének mérése**
   
-  1. Ez a lekérdezés futtatása a központi adminisztrációs előtér-Webkiszolgálón. Indítsa el a SharePoint felügyeleti rendszerhéjat, és adja meg a tartalom-adatbázisok méretének lekérése a következő Windows PowerShell-parancsot:
+  1. Futtassa ezt a lekérdezést a központi adminisztrációs WFE. Indítsa el a SharePoint felügyeleti rendszerhéját, majd írja be a következő Windows PowerShell-parancsot a tartalom-adatbázisok méretének lekéréséhez:
      
      `Get-SPContentDatabase | Select-Object -ExpandProperty DiskSizeRequired`
      
-      Ebben a lépésben a tartalom-adatbázis mérete lekérdezi a lemezen.
-  2. Az egyes tartalom-adatbázist az SQL server be az SQL Management Studióban futtassa a következő SQL-lekérdezések egyikét, és adja hozzá az eredmény a számot kapott az 1. lépés.
+      Ez a lépés lekéri a tartalom-adatbázis méretét a lemezen.
+  2. Futtassa a következő SQL-lekérdezések egyikét az SQL Management Studioban az egyes tartalom-adatbázisokban található SQL Server-kiszolgálón, és adja hozzá az 1. lépésben kapott értéket.
      
-     Adja meg a SharePoint 2013 tartalom-adatbázisok:
+     A SharePoint 2013 tartalmi adatbázisaiban írja be a következőt:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[DocStreams] WHERE [Content] IS NULL`
      
-     Adja meg a SharePoint 2010 tartalom-adatbázisok:
+     A SharePoint 2010 tartalmi adatbázisaiban írja be a következőt:
      
      `SELECT SUM([Size]) FROM [ContentDatabaseName].[dbo].[AllDocs] WHERE [Content] IS NULL`
      
-     Ebben a lépésben a Blobok, amely rendelkezik lett externalized méretének beolvasása.
-* Javasoljuk, hogy minden BLOB és az adatbázis-tartalom helyileg tárolja a StorSimple eszközön. A StorSimple-eszközhöz egy két csomópontos fürt magas rendelkezésre állás érdekében. A tartalom-adatbázisok és a Blobok elhelyezése a StorSimple-eszközt a magas rendelkezésre állást biztosít.
+     Ez a lépés beolvassa a külsőleg kihelyezett Blobok méretét.
+* Javasoljuk, hogy az összes BLOB-és adatbázis-tartalmat helyileg tárolja a StorSimple-eszközön. A StorSimple-eszköz egy két csomópontos fürt a magas rendelkezésre állás érdekében. A tartalmi adatbázisok és Blobok elhelyezése a StorSimple-eszközön magas rendelkezésre állást biztosít.
   
-    Hagyományos SQL-kiszolgáló áttelepítési – ajánlott eljárások használatával helyezze át a tartalom-adatbázist a StorSimple-eszköz. Helyezze át az adatbázist, csak után az adatbázis összes BLOB tartalma RBS került, a fájlmegosztás. Ha a tartalom-adatbázis áthelyezése a StorSimple-eszköz, azt javasoljuk, hogy konfigurálja-e a tartalom-adatbázist tároló mint elsődleges kötet az eszközön.
-* A Microsoft Azure StorSimple, ha rétegzett köteteket használó nem garantáljuk a StorSimple-eszköz nem lesz rétegzett, a Microsoft Azure felhőalapú tárolást helyben tárolt tartalom semmilyen módon nem lehet. Ezért javasoljuk a StorSimple a helyileg rögzített kötetek SharePoint RBS együtt. Ez biztosítja, hogy az összes BLOB tartalma továbbra is helyben a StorSimple eszközön, és nem kerül a Microsoft Azure-bA.
-* Ha a tartalom-adatbázisokban nem a StorSimple eszközön tárolja, használja a hagyományos SQL Server magas rendelkezésre állású ajánlott eljárásokat, amelyek támogatják a RBS. RBS SQL Server-fürtszolgáltatás támogatja, miközben az SQL Server-tükrözés nem létezik. 
+    A hagyományos SQL Server áttelepítéssel kapcsolatos ajánlott eljárások segítségével áthelyezheti a tartalom-adatbázist a StorSimple-eszközre. Az adatbázis áthelyezése csak azután, hogy az adatbázisból származó összes BLOB-tartalmat áthelyezte a fájlmegosztás RBS használatával. Ha úgy dönt, hogy a tartalom-adatbázist a StorSimple-eszközre helyezi át, javasoljuk, hogy a tartalom-adatbázis tárterületét elsődleges kötetként konfigurálja az eszközön.
+* Ha Microsoft Azure StorSimple, a többkötetes kötetek használata esetén nincs mód annak biztosítására, hogy a StorSimple-eszközön helyileg tárolt tartalom ne legyen feldolgozva a felhőalapú tárolás Microsoft Azure. Ezért javasoljuk, hogy a StorSimple helyileg rögzített köteteket a SharePoint RBS-sel együtt használja. Ez biztosítja, hogy az összes BLOB-tartalom helyileg maradjon a StorSimple-eszközön, és nem kerül át Microsoft Azureba.
+* Ha nem tárolja a tartalom-adatbázisokat a StorSimple-eszközön, használja az RBS-t támogató hagyományos SQL Server magas rendelkezésre állású ajánlott eljárásokat. SQL Server fürtszolgáltatás támogatja az RBS-t, míg a SQL Server tükrözés nem. 
 
 > [!WARNING]
-> Ha nem engedélyezte a RBS, a tartalom-adatbázis áthelyezése a StorSimple-eszköz nem javasoljuk. Ez az egy nem tesztelt konfigurációt.
+> Ha nem engedélyezte az RBS használatát, nem javasoljuk a tartalom-adatbázis áthelyezését a StorSimple-eszközre. Ez egy nem tesztelt konfiguráció.
 
-## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple Adapter for SharePoint telepítés
-A StorSimple Adapter for SharePoint telepítése előtt konfigurálni kell a StorSimple-eszközt, és győződjön meg róla, hogy a SharePoint-kiszolgálófarm és SQL-kiszolgáló a példányosítás megfelelnek-e minden előfeltétele. Ebben az oktatóanyagban a konfigurációs követelményeinek, valamint telepítése és frissítése a StorSimple Adapter for SharePoint eljárásait ismerteti.
+## <a name="storsimple-adapter-for-sharepoint-installation"></a>StorSimple-adapter a SharePoint telepítéséhez
+Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, konfigurálnia kell a StorSimple eszközt, és meg kell győződnie arról, hogy a SharePoint-kiszolgálófarm és a SQL Server példánya megfelel az összes előfeltételnek. Ez az oktatóanyag ismerteti a konfigurációs követelményeket, valamint a SharePointhoz készült StorSimple-adapter telepítésének és frissítésének eljárásait.
 
 ## <a name="configure-prerequisites"></a>Előfeltételek konfigurálása
-A StorSimple Adapter for SharePoint telepítése előtt győződjön meg róla, hogy a StorSimple eszköz-, SharePoint-kiszolgálófarm és SQL-kiszolgáló a példányosítás megfelelnek-e a következő előfeltételek vonatkoznak.
+Mielőtt telepítené a SharePointhoz készült StorSimple-adaptert, győződjön meg arról, hogy a StorSimple-eszköz, a SharePoint-kiszolgálófarm és a SQL Server példánya megfelel a következő előfeltételeknek.
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
-A StorSimple Adapter for SharePoint működik együtt a következő hardverre és szoftverekre:
+A SharePointhoz készült StorSimple-adapter a következő hardverekkel és szoftverekkel működik:
 
 * Támogatott operációs rendszer – Windows Server 2008 R2 SP1, Windows Server 2012 vagy Windows Server 2012 R2
-* Támogatott SharePoint-verziók – SharePoint Server 2010 vagy a SharePoint Server 2013
-* Támogatott SQL Server-verziók – SQL Server 2008 Enterprise Edition, az SQL Server 2008 R2 Enterprise Edition vagy SQL Server 2012 Enterprise Edition
-* A StorSimple-eszközök – támogatott a StorSimple 8000 sorozat, a StorSimple 7000-es sorozat és a StorSimple 5000-es sorozat.
+* Támogatott SharePoint-verziók – SharePoint Server 2010 vagy SharePoint Server 2013
+* Támogatott SQL Server verziók – SQL Server 2008 Enterprise Edition, SQL Server 2008 R2 Enterprise Edition vagy SQL Server 2012 Enterprise Edition
+* Támogatott StorSimple-eszközök – StorSimple 8000 sorozat, StorSimple 7000 sorozat vagy StorSimple 5000 sorozat.
 
-### <a name="storsimple-device-configuration-prerequisites"></a>A StorSimple eszköz konfigurációs Előfeltételek
-A StorSimple-eszköz letiltása eszköz, és ilyen fájlkiszolgálót, amelyen az adatok lehet üzemeltetni. Javasoljuk, hogy használjon helyett egy meglévő kiszolgálót külön kiszolgálóra a SharePoint-farmból. A fájlkiszolgáló az SQL Server-számítógép, amelyen a tartalom-adatbázisokban az azonos helyi hálózatra (LAN) kell lennie.
+### <a name="storsimple-device-configuration-prerequisites"></a>StorSimple-eszközök konfigurálásának előfeltételei
+A StorSimple eszköz egy blokkos eszköz, ezért olyan fájlkiszolgálón van szükség, amelyen az adott adattároló található. Javasoljuk, hogy a SharePoint-farmról egy meglévő kiszolgáló helyett egy különálló kiszolgálót használjon. Ennek a kiszolgálónak ugyanazon a helyi hálózaton (LAN) kell lennie, mint a tartalom-adatbázisokat futtató SQL Server számítógépnek.
 
 > [!TIP]
-> * Ha magas rendelkezésre állású SharePoint-farm konfigurálásához, üzembe kell helyeznie a magas rendelkezésre állású fájlkiszolgálóra is.
-> * Ha a tartalom-adatbázis nem a StorSimple eszközön tárolja, használja a hagyományos, magas rendelkezésre állású ajánlott eljárásokat, amelyek támogatják a RBS. RBS SQL Server-fürtszolgáltatás támogatja, miközben az SQL Server-tükrözés nem létezik. 
+> * Ha a SharePoint-farmot magas rendelkezésre állásra konfigurálja, akkor a fájlkiszolgáló a magas rendelkezésre állás érdekében is üzembe helyezhető.
+> * Ha nem tárolja a tartalom-adatbázist a StorSimple-eszközön, használja az RBS-t támogató hagyományos magas rendelkezésre állású ajánlott eljárásokat. SQL Server fürtszolgáltatás támogatja az RBS-t, míg a SQL Server tükrözés nem. 
 
 
-Győződjön meg arról, hogy a StorSimple-eszköz megfelelően van konfigurálva, és, hogy a SharePoint üzemelő példányok támogatására, és megfelelő kötetek vannak konfigurálva, és elérhető-e az SQL Server-számítógépről. Lépjen a [a helyszíni StorSimple eszköz üzembe helyezése](storsimple-8000-deployment-walkthrough-u2.md) Ha még nincs telepítve és konfigurálva a StorSimple-eszköz. Megjegyzés: a StorSimple-eszköz; IP-címe szüksége lesz rá során a StorSimple Adapter for SharePoint telepítés.
+Győződjön meg arról, hogy a StorSimple-eszköz megfelelően van konfigurálva, és hogy a SharePoint-telepítést támogató megfelelő kötetek konfigurálva vannak és elérhetők a SQL Server számítógépről. Ha még nem telepítette és konfigurálta a StorSimple-eszközt, folytassa a helyszíni [StorSimple-eszköz üzembe helyezésével](storsimple-8000-deployment-walkthrough-u2.md) . Jegyezze fel a StorSimple-eszköz IP-címét; szüksége lesz rá a SharePoint-telepítés StorSimple-adaptere során.
 
-Emellett győződjön meg arról, hogy a kötet BLOB externalizációja használandó megfelel-e a következő követelményeknek:
+Továbbá győződjön meg arról, hogy a BLOB externalizációja használni kívánt kötet megfelel a következő követelményeknek:
 
-* A kötet fájlrendszerrel egy 64 KB-os foglalási egység méretét.
-* A webes kezelőfelület (WFE) és az alkalmazáskiszolgálókat kell tudni elérni a kötetet egy univerzális elnevezési konvenció (UNC) szerinti elérési útján.
-* A kötet írni a SharePoint-kiszolgálófarm kell konfigurálni.
+* A kötetet 64 KB-os kiosztási egység méretével kell formázni.
+* A webes előtér (WFE) és az alkalmazáskiszolgáló számára elérhetőnek kell lennie a kötethez egy univerzális elnevezési konvenció (UNC) elérési útján.
+* A SharePoint-kiszolgálófarmot úgy kell konfigurálni, hogy a kötetre írjon.
 
 > [!NOTE]
-> Után telepítse és konfigurálja az adaptert, az összes BLOB externalizációja a StorSimple-eszköz kell áthaladnia (az eszköz lesz a kötetek jelenik meg az SQL Server és a tárolási Rétegek kezelése). BLOB externalizációja semmilyen más célra nem használható.
+> Miután telepítette és konfigurálta az adaptert, az összes BLOB-externalizációja át kell haladnia a StorSimple-eszközön (az eszköz bemutatja a köteteket a tárolási rétegek SQL Server és kezeléséhez). Nem használhat más célokat a BLOB-externalizációja.
 
 
-Ha azt tervezi, a BLOBOK és az adatbázis adatait pillanatképek készítése a StorSimple Snapshot Manager használatával, mindenképpen telepítse a StorSimple Snapshot Manager adatbázis-kiszolgálón, hogy a Windows kötet árnyékmásolata szolgáltatás (VSS) végrehajtásához használhatja az SQL-írószolgáltatás.
+Ha azt tervezi, hogy StorSimple-Snapshot Manager használ a BLOB-és adatbázis-adatpillanatképek készítéséhez, akkor ügyeljen arra, hogy az adatbázis-kiszolgálón telepítse a StorSimple-Snapshot Manager, hogy az SQL-író szolgáltatás a Windows Kötet árnyékmásolata szolgáltatás (VSS) megvalósítására is használható legyen.
 
 > [!IMPORTANT]
-> A StorSimple Snapshot Manager nem támogatja a SharePoint VSS-író, és nem tudja átvenni a SharePoint-adatok alkalmazáskonzisztens pillanatképeket. A SharePoint forgatókönyvekben a StorSimple Snapshot Manager csak összeomlás-konzisztens biztonsági másolatok biztosít.
+> A StorSimple Snapshot Manager nem támogatja a SharePoint VSS-író használatát, és nem tudja az alkalmazással konzisztens pillanatképeket készíteni a SharePoint-adatbázisról. Egy SharePoint-forgatókönyvben a StorSimple Snapshot Manager csak az összeomlás-konzisztens biztonsági mentéseket biztosítja.
 
 
-## <a name="sharepoint-farm-configuration-prerequisites"></a>A SharePoint-farm konfigurációs Előfeltételek
-Győződjön meg arról, hogy a SharePoint-kiszolgálófarm megfelelően van konfigurálva, a következő:
+## <a name="sharepoint-farm-configuration-prerequisites"></a>A SharePoint-farm konfigurálásának előfeltételei
+Győződjön meg arról, hogy a SharePoint-kiszolgálófarm megfelelően van konfigurálva, a következőképpen:
 
-* Győződjön meg arról, hogy a SharePoint-kiszolgálófarm kifogástalan állapotban van-e, és ellenőrizze az alábbiakat:
-* Minden SharePoint előtér-Webkiszolgálón és alkalmazáskiszolgálók, a farm regisztrált futnak, és a kiszolgálóról, amelyen telepíteni fogja a StorSimple Adapter for SharePoint pingelhető.
-* A SharePoint időzítő szolgáltatása (SPTimerV3 vagy SPTimerV4) minden egyes ELŐTÉR-webkiszolgálón, és az alkalmazáskiszolgáló fut.
-* A SharePoint időzítő szolgáltatása, mind az IIS-alkalmazáskészlet, amelyben a SharePoint központi felügyeleti webhely fut-e rendszergazdai jogosultságokkal kell rendelkeznie.
-* Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági környezet (IE ESC) le van tiltva. Kövesse az alábbi lépéseket az IE ESC letiltása:
+* Győződjön meg arról, hogy a SharePoint-kiszolgálófarm kifogástalan állapotban van, és ellenőrizze a következőket:
+* A farmban regisztrált összes SharePoint-WFE és-alkalmazáskiszolgáló fut, és a kiszolgálóról pingelhető, amelyre telepíteni fogja a SharePoint rendszerhez készült StorSimple-adaptert.
+* A SharePoint időzítő szolgáltatása (SPTimerV3 vagy SPTimerV4) minden WFE-kiszolgálón és alkalmazáskiszolgálón fut.
+* Mind a SharePoint-időzítő szolgáltatás, mind az IIS-alkalmazáskészlet, amely alatt a SharePoint központi felügyeleti hely fut, rendszergazdai jogosultságokkal rendelkezik.
+* Győződjön meg arról, hogy az Internet Explorer fokozott biztonsági környezete (IE ESC) le van tiltva. Az IE ESC letiltásához kövesse az alábbi lépéseket:
   
-  1. Zárja be az Internet Explorer az összes példányát.
-  2. A Kiszolgálókezelő elindítása.
-  3. A bal oldali ablaktáblán kattintson a **helyi kiszolgáló**.
-  4. A jobb oldali melletti **Internet Explorer fokozott biztonsági beállításai**, kattintson a **a**.
-  5. A **rendszergazdák**, kattintson a **ki**.
+  1. Az Internet Explorer összes példányának lezárása.
+  2. Indítsa el a Kiszolgálókezelő alkalmazást.
+  3. A bal oldali ablaktáblán kattintson a **helyi kiszolgáló**elemre.
+  4. A jobb oldali ablaktáblán, az **Internet Explorer fokozott biztonsági beállításai**mellett kattintson **a be**gombra.
+  5. A **rendszergazdák**területen kattintson a **ki**gombra.
   6. Kattintson az **OK** gombra.
 
-## <a name="remote-blob-storage-rbs-prerequisites"></a>Távoli BLOB Storage (RBS) előfeltételei
-Győződjön meg arról, hogy használ-e az SQL Server támogatott verziója. Csak a következő verziók a következők: támogatott és RBS használhatja:
+## <a name="remote-blob-storage-rbs-prerequisites"></a>Távoli BLOB Storage-(RBS-) előfeltételek
+Győződjön meg arról, hogy a SQL Server támogatott verzióját használja. Csak a következő verziók támogatottak, és képesek az RBS használatára:
 
 * SQL Server 2008 Enterprise Edition
 * SQL Server 2008 R2 Enterprise Edition
 * SQL Server 2012 Enterprise Edition
 
-Blobok csak a, amely a StorSimple-eszköz jeleníti meg az SQL Server köteteken externalized is lehet. Nincs más célértékei BLOB externalizációja támogatottak.
+A Blobok csak azokon a köteteken helyezhetők el, amelyeket a StorSimple-eszköz a SQL Server számára jelent. A BLOB-externalizációja nem támogatottak más célok.
 
-Ha végrehajtotta az összes előfeltételként szükséges konfigurációs lépések, Ugrás a [telepítse a StorSimple Adapter for SharePoint](#install-the-storsimple-adapter-for-sharepoint).
+Az összes előfeltételként szükséges konfigurációs lépés elvégzése után nyissa meg [a StorSimple-adapter telepítése a SharePoint rendszerhez](#install-the-storsimple-adapter-for-sharepoint)című részt.
 
-## <a name="install-the-storsimple-adapter-for-sharepoint"></a>Telepítse a StorSimple Adapter for SharePoint
-Az alábbi lépések segítségével telepítse a StorSimple Adapter for SharePoint. Ha a rendszer újratelepíteni a szoftvert, tekintse meg [frissítése, vagy telepítse újra a StorSimple Adapter for SharePoint](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint). A telepítéshez szükséges idő attól függ, hogy a SharePoint server farm SharePoint-adatbázisok teljes száma.
+## <a name="install-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter telepítése
+A SharePointhoz készült StorSimple-adapter telepítéséhez kövesse az alábbi lépéseket. Ha újratelepíti a szoftvert, tekintse [meg a StorSimple-adapter frissítése vagy újratelepítése a sharepointhoz](#upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint)című témakört. A telepítéshez szükséges idő a SharePoint-kiszolgálófarm SharePoint-adatbázisainak teljes számától függ.
 
 [!INCLUDE [storsimple-install-sharepoint-adapter](../../includes/storsimple-install-sharepoint-adapter.md)]
 
 ## <a name="configure-rbs"></a>RBS konfigurálása
-Miután telepítette a StorSimple Adapter for SharePoint, a következő eljárásban leírtak szerint konfigurálja a RBS.
+Miután telepítette a StorSimple-adaptert a SharePointhoz, konfigurálja az RBS-t az alábbi eljárásban leírtak szerint.
 
 > [!TIP]
-> A StorSimple Adapter for SharePoint rendkívüli a SharePoint központi felügyelet lapján engedélyezve van vagy le van tiltva, a SharePoint-farm minden egyes tartalom-adatbázist a RBS lehetővé teszi. Engedélyezés vagy letiltás RBS a tartalom-adatbázist a hatására IIS alaphelyzetbe állítása, amely függően a webfarm-konfigurációt, rövid ideig megzavarhatja a SharePoint webes előtér (WFE) rendelkezésre állását. (A tényezőket, például a előtérbeli terheléselosztót, és a jelenlegi kiszolgáló munkaterhelését korlátozhatja, vagy megszüntetheti a megszakítás.) Felhasználók szembeni zavar, azt javasoljuk, hogy engedélyezi vagy letiltja a RBS csak egy tervezett karbantartási időszak alatt.
+> A SharePoint rendszerhez készült StorSimple-adapter a SharePoint központi felügyelet lapjára csatlakozik, amely lehetővé teszi, hogy az RBS engedélyezve legyen vagy le legyen tiltva a SharePoint-farm minden tartalmi adatbázisán. Az RBS engedélyezése vagy letiltása azonban a tartalmi adatbázisban az IIS alaphelyzetbe állítását eredményezi, amely a farm konfigurációjától függően megszakíthatja a SharePoint webes kezelőfelületének (WFE) rendelkezésre állását. (Például az előtér-terheléselosztó használata, az aktuális kiszolgáló munkaterhelése stb.) korlátozhatja vagy elháríthatja ezt a megszakadást.) A felhasználók megszakadásának megakadályozása érdekében javasoljuk, hogy csak a tervezett karbantartási időszakban engedélyezze vagy tiltsa le az RBS-t.
 
 
 [!INCLUDE [storsimple-sharepoint-adapter-configure-rbs](../../includes/storsimple-sharepoint-adapter-configure-rbs.md)]
 
-## <a name="configure-garbage-collection"></a>A szemétgyűjtés konfigurálása
-Ha egy SharePoint-webhelyről törölt objektumok, nem automatikusan törli a RBS tároló kötetről. Ehelyett egy aszinkron, háttér karbantartási programot törli az árva Blobok a fájl áruházból. A rendszergazdák a folyamat futtatása rendszeres időközönként ütemezheti, illetve indításához, amikor szükséges.
+## <a name="configure-garbage-collection"></a>A Garbage-gyűjtemény konfigurálása
+Ha egy SharePoint-webhelyről töröl objektumokat, azokat a rendszer nem törli automatikusan az RBS-tároló kötetéről. Ehelyett egy aszinkron, háttérben futó karbantartási program törli az árva blobokat a fájl tárolójából. A rendszergazdák rendszeres időközönként ütemezhetik ezt a folyamatot, vagy ha szükséges, elindíthatják azt.
 
-A karbantartási program (Microsoft.Data.SqlRemoteBlobs.Maintainer.exe) automatikusan települ a SharePoint ELŐTÉR-webkiszolgáló és az alkalmazáskiszolgálók RBS engedélyezésekor. A program telepítve van a következő helyen: *rendszerindítási meghajtó*: \Program Files\Microsoft SQL távoli Blob Storage 10.50\Maintainer\
+Az RBS engedélyezésekor a karbantartási program (Microsoft. adat. SqlRemoteBlobs. karbantartó. exe) automatikusan települ az összes SharePoint WFE-kiszolgálóra és-alkalmazás-kiszolgálóra. A program a következő helyen van telepítve: *rendszerindító meghajtó*: \PROGRAM Files\Microsoft SQL távoli Blob Storage 10.50 \ karbantartó \
 
-Konfigurálásával és a karbantartási programmal kapcsolatos további információkért lásd: [RBS karbantartása, a SharePoint Server 2013][8].
+További információ a karbantartási program konfigurálásáról és használatáról: az [RBS megőrzése a SharePoint Server 2013-ben][8].
 
 > [!IMPORTANT]
-> RBS karbantartó program erőforrás-igényesek. Olyan időszakra ütemezze, hogy világos tevékenységű időszakok során csak a SharePoint-farm futtatása.
+> Az RBS-karbantartó program erőforrás-igényes. A SharePoint-farmon csak a fénytevékenységi időszakok alatt kell ütemeznie a futtatást.
 
 
-### <a name="delete-orphaned-blobs-immediately"></a>Azonnal törli az árva Blobok
-Ha azonnal törli az árva Blobok van szüksége, használhatja az alábbi utasításokat. Vegye figyelembe, hogy ezeket az utasításokat ennek menetét a következő összetevőket, a SharePoint 2013 környezetben egy példát:
+### <a name="delete-orphaned-blobs-immediately"></a>Árva Blobok azonnali törlése
+Ha azonnal törölni kell az árva blobokat, az alábbi utasításokat használhatja. Vegye figyelembe, hogy ez az útmutató a SharePoint 2013-környezetekben a következő összetevőkkel végezhető el:
 
-* A tartalom-adatbázist név WSS_Content.
-* Az SQL Server-név SHRPT13-SQL12\SHRPT13.
-* A webalkalmazás neve a SharePoint – 80-as.
+* A tartalom-adatbázis neve WSS_Content.
+* A SQL Server neve SHRPT13-SQL12\SHRPT13.
+* A webalkalmazás neve SharePoint – 80.
 
 [!INCLUDE [storsimple-sharepoint-adapter-garbage-collection](../../includes/storsimple-sharepoint-adapter-garbage-collection.md)]
 
-## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>Frissítse és telepítse újra a StorSimple Adapter for SharePoint
-A következő eljárással, majd telepítse újra a StorSimple Adapter for SharePoint a SharePoint server, illetve a egyszerűen frissítése, vagy telepítse újra a SharePoint-kiszolgálófarm adaptert.
+## <a name="upgrade-or-reinstall-the-storsimple-adapter-for-sharepoint"></a>A SharePointhoz készült StorSimple-adapter frissítése vagy újratelepítése
+A következő eljárással frissítheti a SharePoint-kiszolgálót, majd újratelepítheti a SharePoint StorSimple-adapterét, vagy egyszerűen frissítheti vagy újratelepítheti az adaptert egy meglévő SharePoint Server-farmon.
 
 > [!IMPORTANT]
-> Mielőtt megkísérli a SharePoint szoftver és/vagy a frissítés frissítéséhez, vagy telepítse újra a StorSimple Adapter for SharePoint, tekintse át a következő információkat:
+> A SharePoint szoftver frissítése és/vagy a SharePoint StorSimple-adapterének frissítése vagy újratelepítése előtt tekintse át a következő információkat:
 > 
-> * Azokat a fájlokat, korábban helyezett át a külső tárhelyen RBS nem lesz elérhető, amíg az újratelepítés befejezését, és a RBS szolgáltatás újra engedélyezve van-e. Korlátozza a felhasználókra gyakorolt hatás, hajtsa végre minden frissítés vagy újratelepítésre tervezett karbantartási időszak alatt.
-> * A frissítés/újratelepítése szükséges idő a SharePoint server farm SharePoint-adatbázisok száma függően változhat.
-> * Miután befejeződött a frissítés/újratelepítése, akkor a tartalom-adatbázisokhoz RBS engedélyeznie kell. Lásd: [konfigurálása RBS](#configure-rbs) további információt.
-> * Ha nagyon nagy számú (több mint 200),-adatbázisok SharePoint-farm RBS konfigurálása a **SharePoint központi felügyelet** lap előfordulhat, hogy időtúllépés. Ha ez bekövetkezik, frissítse az oldalt. Ez nem befolyásolja a konfigurációs folyamat.
+> * A korábban az RBS-n keresztül külső tárolóba áthelyezett fájlok mindaddig nem lesznek elérhetők, amíg az újratelepítés be nem fejeződik, és az RBS szolgáltatás újból engedélyezve lesz. A felhasználói hatás korlátozásához hajtson végre minden frissítést vagy újratelepítést egy tervezett karbantartási időszak alatt.
+> * A frissítés/újratelepítéshez szükséges idő a SharePoint-kiszolgálófarm SharePoint-adatbázisainak teljes számától függően változhat.
+> * A frissítés/újratelepítés befejezése után engedélyeznie kell az RBS-t a tartalom-adatbázisok számára. További információkért lásd: az [RBS konfigurálása](#configure-rbs) .
+> * Ha olyan SharePoint-farm esetében konfigurálja az RBS-t, amely nagyon sok adatbázissal rendelkezik (200-nál nagyobb), akkor előfordulhat, hogy a **SharePoint központi felügyelet** lapja időtúllépést okoz. Ha ez történik, frissítse a lapot. Ez nincs hatással a konfigurációs folyamatra.
 
 
 [!INCLUDE [storsimple-upgrade-sharepoint-adapter](../../includes/storsimple-upgrade-sharepoint-adapter.md)]
 
-## <a name="storsimple-adapter-for-sharepoint-removal"></a>StorSimple Adapter for SharePoint eltávolítása
-A következő eljárások bemutatják, hogyan helyezze vissza a blobokat a tartalom az SQL Server-adatbázisok és majd távolítsa el a StorSimple Adapter for SharePoint. 
+## <a name="storsimple-adapter-for-sharepoint-removal"></a>StorSimple-adapter a SharePoint eltávolításához
+Az alábbi eljárások azt írják le, hogyan helyezheti át a blobokat a SQL Server Content Database-be, majd távolítsa el a SharePointhoz készült StorSimple-adaptert. 
 
 > [!IMPORTANT]
-> Hogy visszahelyezése a blobokat a tartalom-adatbázisokban az adapter szoftverek eltávolítása előtt.
+> Az adapter szoftverének eltávolítása előtt a blobokat vissza kell helyezni a tartalmi adatbázisba.
 
 
-### <a name="before-you-begin"></a>Előkészületek
-Gyűjtse össze a következő információkat, lépjen vissza az adatokat az SQL Server-adatbázisokhoz és az adapter eltávolító folyamat megkezdése előtt:
+### <a name="before-you-begin"></a>Előzetes teendők
+Gyűjtse össze az alábbi információkat, mielőtt visszahelyezi az adatokat a SQL Server tartalom-adatbázisaiba, és megkezdi az adapter-eltávolítási folyamatot:
 
-* A nevét, amelyhez RBS engedélyezve van minden adatbázis
-* Az UNC elérési utat a megadott BLOB-tároló
+* Az összes olyan adatbázis neve, amelyhez az RBS engedélyezve van
+* A beállított BLOB-tároló UNC elérési útja
 
-### <a name="move-the-blobs-back-to-the-content-databases"></a>Lépjen vissza a blobokat a tartalom-adatbázisokhoz
-A StorSimple Adapter for SharePoint szoftver eltávolítás előtt át kell telepítenie az összes szükséges blobokat is externalized vissza a tartalom az SQL Server-adatbázisok. Ha megpróbálja távolítsa el a a StorSimple Adapter for SharePoint előtt összes blobjának vissza a tartalom-adatbázisokhoz, látni fogja a következő figyelmeztető üzenet.
+### <a name="move-the-blobs-back-to-the-content-databases"></a>A Blobok visszaállítása a tartalom adatbázisaiba
+A SharePoint szoftverhez készült StorSimple-adapter eltávolítása előtt át kell telepítenie az összes olyan blobot, amely vissza lett mentve a SQL Server tartalom-adatbázisokra. Ha megkísérli eltávolítani a SharePointhoz készült StorSimple-adaptert, mielőtt az összes blobot visszahelyezi a tartalom-adatbázisba, a következő figyelmeztető üzenet jelenik meg.
 
 ![Figyelmeztető üzenet](./media/storsimple-adapter-for-sharepoint/sasp1.png)
 
-#### <a name="to-move-the-blobs-back-to-the-content-databases"></a>A Blobok a tartalom-adatbázisokhoz való visszatéréshez
-1. Töltse le a externalized objektumok mindegyike.
-2. Nyissa meg a **SharePoint központi felügyelet** lapon, és keresse meg a **rendszerbeállítások**.
-3. A **Azure StorSimple**, kattintson a **konfigurálása a StorSimple Adapter**.
-4. Az a **konfigurálása a StorSimple Adapter** lap, kattintson a **letiltása** külső BLOB storage-ból eltávolítani kívánt tartalom-adatbázisok mindegyike az alábbi gombra. 
-5. Az objektumok törlése a Sharepointból, és ezután töltse fel őket újra.
+#### <a name="to-move-the-blobs-back-to-the-content-databases"></a>A Blobok visszahelyezése a tartalom-adatbázisba
+1. Töltse le a külsőleg kihelyezett objektumokat.
+2. Nyissa meg a **Központi SharePoint-felügyelet** oldalt, és keresse meg a **Rendszerbeállítások**lapot.
+3. Az **Azure StorSimple**alatt kattintson a **StorSimple-adapter konfigurálása**elemre.
+4. Az **StorSimple-adapter konfigurálása** lapon kattintson a **Letiltás** gombra az egyes tartalmi adatbázisok alatt, amelyeket el szeretne távolítani a külső blob-tárolóból. 
+5. Törölje az objektumokat a SharePointból, majd töltse fel újra.
 
-Másik lehetőségként használhatja a Microsoft `RBS Migrate()` SharePoint mellékelt PowerShell-parancsmagot. További információkért lásd: [tartalmainak Migrálása, vagy onnan máshová RBS](https://technet.microsoft.com/library/ff628255.aspx).
+Másik lehetőségként használhatja a SharePointhoz mellékelt Microsoft `RBS Migrate()` PowerShell-parancsmagot is. További információ: [tartalom migrálása az RBS-be vagy](https://technet.microsoft.com/library/ff628255.aspx)abból.
 
-A Blobok vissza helyezi a tartalom-adatbázist, nyissa meg a következő lépés: [Távolítsa el az adapter](#uninstall-the-adapter).
+Miután visszahelyezte a blobokat a tartalom-adatbázisba, ugorjon a következő lépésre: [távolítsa el az adaptert](#uninstall-the-adapter).
 
 ### <a name="uninstall-the-adapter"></a>Az adapter eltávolítása
-Lépjen vissza a blobokat a SQL Server tartalom-adatbázisok, az alábbi lehetőségek közül történő után távolítsa el a StorSimple Adapter for SharePoint.
+Miután visszahelyezte a blobokat a SQL Server tartalom-adatbázisba, az alábbi lehetőségek egyikével távolítsa el a SharePointhoz készült StorSimple-adaptert.
 
-#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>A telepítőprogram használatával a adapter eltávolítása
-1. Rendszergazdai jogosultságokkal rendelkező fiók használatával jelentkezzen be a webes előtér-webkiszolgálójára (WFE).
-2. Kattintson duplán a StorSimple Adapter for SharePoint-telepítő. A telepítő varázsló elindul.
+#### <a name="to-use-the-installation-program-to-uninstall-the-adapter"></a>A telepítőprogram használata az adapter eltávolításához
+1. Rendszergazdai jogosultságokkal rendelkező fiókot használhat a webes előtér-(WFE-) kiszolgálóra való bejelentkezéshez.
+2. Kattintson duplán a SharePoint Installer StorSimple-adapterére. Elindul a telepítővarázsló.
    
-    ![A telepítő varázsló](./media/storsimple-adapter-for-sharepoint/sasp2.png)
-3. Kattintson a **tovább**. A következő oldal jelenik meg.
+    ![Telepítővarázsló](./media/storsimple-adapter-for-sharepoint/sasp2.png)
+3. Kattintson a **Tovább** gombra. Megjelenik a következő oldal.
    
-    ![A telepítő varázsló remove lapja](./media/storsimple-adapter-for-sharepoint/sasp3.png)
-4. Kattintson a **eltávolítása** jelölje be az eltávolítási folyamat. A következő oldal jelenik meg.
+    ![Telepítővarázsló eltávolítása lap](./media/storsimple-adapter-for-sharepoint/sasp3.png)
+4. Az eltávolítási folyamat kiválasztásához kattintson az **Eltávolítás** gombra. Megjelenik a következő oldal.
    
-    ![A telepítő varázsló megerősítő oldal](./media/storsimple-adapter-for-sharepoint/sasp4.png)
-5. Kattintson a **eltávolítása** az eltávolítás megerősítéséhez. A folyamat következő oldal jelenik meg.
+    ![Telepítővarázsló megerősítése lap](./media/storsimple-adapter-for-sharepoint/sasp4.png)
+5. Az Eltávolítás megerősítéséhez kattintson az **Eltávolítás** gombra. Megjelenik a következő folyamat lap.
    
-    ![A telepítő varázsló állapotlapja](./media/storsimple-adapter-for-sharepoint/sasp5.png)
-6. Az eltávolítás befejeződése után a Befejezés lapon jelenik meg. Kattintson a **Befejezés** a varázsló bezárásához.
+    ![A telepítővarázsló állapotjelző lapja](./media/storsimple-adapter-for-sharepoint/sasp5.png)
+6. Az Eltávolítás befejezésekor megjelenik a Befejezés lap. A telepítővarázsló bezárásához kattintson a **Befejezés** gombra.
 
-#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>Az adapter eltávolítása a Vezérlőpult segítségével
-1. Nyissa meg a Vezérlőpultot, és kattintson **programok és szolgáltatások**.
-2. Válassza ki **StorSimple Adapter for SharePoint**, és kattintson a **Eltávolítás**.
+#### <a name="to-use-the-control-panel-to-uninstall-the-adapter"></a>A Vezérlőpult használata az adapter eltávolításához
+1. Nyissa meg a Vezérlőpultot, majd kattintson a **programok és szolgáltatások**elemre.
+2. Válassza **a StorSimple-adapter a sharepointhoz**lehetőséget, majd kattintson az **Eltávolítás**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [További információ a StorSimple](storsimple-overview.md).
 
 <!--Reference links-->

@@ -1,19 +1,19 @@
 ---
 title: Közös értékesítések állapotának kódjai | Azure piactér
 description: Ezeket az állapot-/tartományi kódokat használhatja, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: 38dcfe04473e8d2fbd81614908adef9636c44b19
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: c64fc161108560e893ef7b207782d79b6c3c01d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812853"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934362"
 ---
 # <a name="co-sell-state-codes"></a>Közös értékesítések állapotának kódjai
 
@@ -23,7 +23,7 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 
 |   Állam/megye neve               |   Kód    |
 |-------------------------------------|-----------|
-| Alabamát                             | USA – AL     |
+| Alabama                             | USA – AL     |
 | Alaszka                              | USA – AK     |
 | Arizona                             | USA – AZ     |
 | Arkansas                            | USA – AR     |
@@ -31,7 +31,7 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 | Colorado                            | USA – CO     |
 | Connecticut                         | USA – CT     |
 | Delaware                            | USA – DE     |
-| Floridai                             | USA – FL     |
+| Florida                             | USA – FL     |
 | Grúzia                             | USA – GA     |
 | Hawaii                              | USA – HI     |
 | Idaho                               | US-ID     |
@@ -45,7 +45,7 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 | Maryland                            | USA – MD     |
 | Massachusetts                       | USA – MA     |
 | Michigan                            | USA – MI     |
-| Minnesotai                           | USA – MN     |
+| Minnesota                           | USA – MN     |
 | Mississippi                         | USA – MS     |
 | Missouri                            | USA – MO     |
 | Montana                             | USA – MT     |
@@ -57,7 +57,7 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 | New York                            | USA – NY     |
 | Észak-Karolina                      | USA – NC     |
 | Észak-Dakota                        | USA – ND     |
-| Ohióban                                | USA – OH     |
+| Ohio                                | USA – OH     |
 | Oklahoma                            | USA – OK     |
 | Oregon                              | USA – VAGY     |
 | Pennsylvania                        | USA – PA     |
@@ -71,9 +71,9 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 | Virginia                            | USA – VA     |
 | Washington                          | USA – WA     |
 | Nyugat-Virginia                       | USA – WV     |
-| Wisconsini                           | USA – WI     |
+| Wisconsin                           | USA – WI     |
 | Wyoming                             | USA – WY     |
-| Columbia körzet                | USA – DC     |
+| District of Columbia                | USA – DC     |
 | Amerikai Szamoa                      | USA – AS     |
 | Guam                                | USA – GU     |
 | Északi Mariana-szigetek            | USA – MP     |
@@ -81,6 +81,6 @@ Ha szükséges, használja ezeket a kódokat az állam/tartomány adatainak mega
 | Az Amerikai Egyesült Államok lakatlan külbirtokai | USA – UM    |
 |Amerikai Virgin-szigetek                 | USA – VI     |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

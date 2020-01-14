@@ -1,19 +1,19 @@
 ---
 title: Partneri szerepvállalások közös értékesítése | Azure piactér
 description: A Microsoft a partnereknek szóló közös értékesítési program segítségével jelentős ügyfélkört érhet el, és új értékesítéseket hozhat.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: fcc275b7534ebbfd65b28cbfce170dc6e1b926d9
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 389e6f512f05c7bd1a6e9963e60afbcf27067fb3
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823052"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934677"
 ---
 # <a name="co-sell-partner-engagement"></a>Együttes értékesítési partnerek bevonása
 
@@ -31,7 +31,7 @@ Három partner értékesítési indítványa van:
 
 ![Közös értékesítés történik](./media/marketplace-publishers-guide/marketplace-co-sell.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Microsofttal való értékesítésről](https://partner.microsoft.com/membership/sell-with-microsoft).
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./partner-center-portal/commercial-marketplace-co-sell.md) .

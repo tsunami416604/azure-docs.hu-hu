@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 12/20/2019
-ms.openlocfilehash: 0fd299ea6ceb9631ff473ec2ac9f37be2f6be215
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 3ec50acc693452fe73d929effcea98b12fc5ff8b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495733"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933930"
 ---
 # <a name="work-in-the-apache-hadoop-ecosystem-on-hdinsight-from-a-windows-pc"></a>Munka Apache Hadoop ökoszisztémán a HDInsight Windows rendszerű SZÁMÍTÓGÉPRŐL
 
@@ -58,7 +58,7 @@ Példák a Visual Studióval és a Visual Studióval Data Lake eszközökkel elv
 A Visual Studio és a .NET SDK segítségével kezelheti a fürtöket, és big data alkalmazásokat fejleszthet. A következő feladatokhoz más ide-ket is használhat, de a Visual Studióban példák láthatók.
 
 Példák a Visual Studióban a .NET SDK-val elvégezhető feladatokra:
-* [Fürtök létrehozása és HDInsight használata .net-keretrendszerbeli alkalmazásokból](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md).
+* [Azure HDINSIGHT SDK a .net-hez](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 * [Apache Hive lekérdezések futtatása a .net SDK használatával](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
 * [A C# felhasználó által definiált függvények használata a Apache Hive és az Apache Pig streaming használatával Apache Hadoopon](hadoop/apache-hadoop-hive-pig-udf-dotnet-csharp.md).
 

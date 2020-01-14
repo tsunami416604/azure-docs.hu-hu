@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a956638e8bd74c974012834ca650195e5bee37e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 24aa0d3d3f12934c54ac9aaa5ab8ae5c0d710825
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949440"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930508"
 ---
 # <a name="secure-your-restful-services-by-using-http-basic-authentication"></a>A REST-szolgáltatások biztonságossá tétele HTTP alapszintű hitelesítés használatával
 
@@ -303,17 +303,19 @@ Miután a REST-alapú szolgáltatást az ügyfél-azonosító (username) és a t
 
 ## <a name="step-5-upload-the-policy-to-your-tenant"></a>5\. lépés: a szabályzat feltöltése a bérlőbe
 
-1. A [Azure Portal](https://portal.azure.com)váltson a [Azure ad B2C bérlő kontextusára](active-directory-b2c-navigate-to-b2c-context.md), majd nyissa meg **Azure ad B2C**.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-2. Válassza az **identitási élmény keretrendszert**.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 
-3. Nyissa meg **az összes szabályzatot**.
+1. Válassza az **identitási élmény keretrendszert**.
 
-4. Válassza a **szabályzat feltöltése**lehetőséget.
+1. Nyissa meg **az összes szabályzatot**.
 
-5. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
+1. Válassza a **szabályzat feltöltése**lehetőséget.
 
-6. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
+1. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
+
+1. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
 
 ## <a name="step-6-test-the-custom-policy-by-using-run-now"></a>6\. lépés: az egyéni házirend tesztelése a Futtatás most használatával
 

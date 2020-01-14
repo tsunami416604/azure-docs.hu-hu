@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: c3251cb26f5ab6dc211c61bc0a6d02b283de6ae5
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770339"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932971"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -30,7 +30,7 @@ ms.locfileid: "75770339"
 > Az Azure AD-napló gyűjteménye Azure Monitor díjszabás alá esik.  További információért tekintse meg a [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/) .
 >
 > Az Azure Sentinel Office 365 megoldás használata:
-> 1. Az összekötő használata hatással van a munkaterület díjszabására. További információ: az [Azure Sentinel díjszabása](https://azure.microsoft.com/pricing/details/azure-sentinel/).
+> 1. Az Office 365 Connector használata az Azure Sentinelben hatással van a munkaterület díjszabására. További információ: az [Azure Sentinel díjszabása](https://azure.microsoft.com/pricing/details/azure-sentinel/).
 > 2. Ha már használja a Azure Monitor Office 365 megoldást, először el kell távolítania azt az [Eltávolítás szakaszban](#uninstall)található parancsfájl használatával.
 > 3. [Engedélyezze az Azure Sentinel-megoldást](../../sentinel/quickstart-onboard.md) a munkaterületen.
 > 4. Nyissa meg az Azure Sentinel **adatösszekötők** lapját, és engedélyezze az **Office 365** -összekötőt.

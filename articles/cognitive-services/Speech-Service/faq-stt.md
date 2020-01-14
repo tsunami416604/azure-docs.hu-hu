@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/4/2019
 ms.author: panosper
-ms.openlocfilehash: 575dda47b5e6fc0d70ef80dfd7a1baba0f63be2d
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: a96a3de7c8ad309986417e21a13d5e18f56cbd24
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74814856"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934129"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Beszéd szöveggel kapcsolatos gyakori kérdések
 
@@ -77,9 +77,9 @@ Válasz **: Ön**dönthet úgy, hogy a nyomkövetés kikapcsolásához létrehoz
 
 **A**: a REST API 5 másodpercenként 25 másodpercenként korlátozza a kérelmeket. A részletek megtalálhatók az oldalain a [szövegre való beszédhez](speech-to-text.md).
 
-**K: Hogyan számítunk fel díjat a kettős csatornás hangért?**
+**K: hogyan kell fizetnem a kettős csatornás hangért?**
 
-Válasz: Ha az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), **a rendszer a**fájl időtartamára számítja fel. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie.
+Válasz **: Ha**az egyes csatornákat külön küldi el (mindegyik csatornát a saját fájljában), a rendszer az egyes fájlok időtartamára díjat számít fel. Ha egyetlen fájlt küld el minden egyes csatornával együtt, akkor az adott fájl időtartamára kell fizetnie. A díjszabással kapcsolatos részletekért tekintse meg az [Azure Cognitive Services díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/cognitive-services/speech-services/).
 
 > [!IMPORTANT]
 > Ha további adatvédelmi kérdései vannak, amelyek tiltják a Custom Speech Service használatát, lépjen kapcsolatba az egyik támogatási csatornával.
@@ -198,4 +198,4 @@ Az Office 365-ben beépített beszédfelismerési élmények, például a diktá
 ## <a name="next-steps"></a>Következő lépések
 
 - [hibaelhárítással](troubleshooting.md)
-- [Kiadási megjegyzések](releasenotes.md)
+- [Kibocsátási megjegyzések](releasenotes.md)

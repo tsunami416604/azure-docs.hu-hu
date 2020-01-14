@@ -5,21 +5,20 @@ author: msangapu-msft
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: msangapu
-ms.openlocfilehash: 0a1e811787a43be76f94b13a6ec9886510c47d1d
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 752c9dfd1ae67397713cdffce9ba530ad6a2c159
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75866974"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930014"
 ---
 # <a name="serve-content-from-azure-storage-in-app-service-on-linux"></a>Tartalom kiszolgálása az Azure Storage-ban App Service Linuxon
 
-Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t a Linux App Serviceához. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, az állandó tárolás, a több alkalmazáshoz való hozzáférés és a több átadási módszer.
-
-
-> [!IMPORTANT]
-> A Linuxon futó Azure Storage szolgáltatás az **előzetes** verzióban elérhető App Service. Ez a funkció **éles környezetekben nem támogatott**.
+> [!NOTE]
+> Ez a cikk a Linux-tárolók esetében érvényes. Egyéni Windows-tárolók üzembe helyezéséhez tekintse [meg a Azure Files konfigurálása a app Service Windows-tárolóban](../configure-connect-to-azure-storage.md)című témakört. A Linuxon futó Azure Storage szolgáltatás az **előzetes** verzióban elérhető App Service. Ez a funkció **éles környezetekben nem támogatott**.
 >
+
+Ez az útmutató bemutatja, hogyan csatlakoztathatja az Azure Storage-t a Linux App Serviceához. Az előnyök közé tartozik a biztonságos tartalom, a tartalom hordozhatósága, az állandó tárolás, a több alkalmazáshoz való hozzáférés és a több átadási módszer.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

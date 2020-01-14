@@ -1,9 +1,9 @@
 ---
-title: A StorSimple Snapshot Manager MMC menü műveletek |} A Microsoft Docs
-description: Ismerteti, hogyan használhatja a Microsoft Management Console (MMC) szokásos menü műveletek a StorSimple Snapshot Managerben.
+title: StorSimple Snapshot Manager MMC menü műveletei | Microsoft Docs
+description: Ismerteti, hogyan használható a Microsoft Management Console (MMC) szabványos StorSimple Snapshot Manager.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 78ef81af-0d3a-4802-be54-ad192f9ac8a6
@@ -13,92 +13,92 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: be761f0a2e59878139ae54dba62634a53b172711
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: ced075395c4f2a51308d5d3b0cbe4c0153a17816
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64715276"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931469"
 ---
-# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Az MMC-menü műveletek használata a StorSimple Snapshot Managerben
+# <a name="use-the-mmc-menu-actions-in-storsimple-snapshot-manager"></a>Használja az MMC menü műveleteit a StorSimple Snapshot Manager
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple Snapshot Managerben, látni fogja a következő műveletek felsorolt összes művelet menü, és minden változata a **műveletek** ablaktáblán.
+A StorSimple Snapshot Manager a következő műveleteket fogja látni az összes művelet menüiben és a **műveletek** ablaktábla összes változatában.
 
-* Nézet
-* Itt új ablakban 
+* Megtekintés
+* Új ablak innen 
 * Frissítés 
-* Lista exportálása 
-* Súgó 
+* Exportálási lista 
+* Segítség 
 
-Ezek a műveletek részei a Microsoft Management Console (MMC), és a nem konkrétan a StorSimple Snapshot Manager. Ez az oktatóanyag ismerteti ezeket a műveleteket, és ismerteti, hogyan azok a StorSimple Snapshot Managerben.
+Ezek a műveletek a Microsoft Management Console (MMC) részét képezik, és nem kifejezetten a StorSimple Snapshot Manager. Ez az oktatóanyag ismerteti ezeket a műveleteket, és elmagyarázza, hogyan használhatja őket a StorSimple Snapshot Manager.
 
-## <a name="view"></a>Nézet
-Használhatja a **nézet** lehetőséggel módosíthatja a **eredmények** ablakban és a konzol ablakot nézetet. 
+## <a name="view"></a>Megtekintés
+A **View (megtekintés** ) lehetőséggel módosíthatja az **eredmények** ablaktábla nézetét, és módosíthatja a konzol ablak nézetét. 
 
-#### <a name="to-change-the-results-pane-view"></a>Az eredmények ablaktáblán nézet módosítása
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópont, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemet a **eredmények** ablaktáblán, és kattintson a **nézet** lehetőséget. 
-3. Hozzáadása vagy eltávolítása a megjelenő oszlopok a **eredmények** ablaktáblán kattintson a **oszlopok hozzáadása és eltávolítása**. A **oszlopok hozzáadása és eltávolítása** párbeszédpanel jelenik meg.
+#### <a name="to-change-the-results-pane-view"></a>Az eredmények ablaktábla nézetének módosítása
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **nézet** lehetőségre. 
+3. Az **eredmények** ablaktáblán megjelenő oszlopok hozzáadásához vagy eltávolításához kattintson az **Oszlopok hozzáadása/eltávolítása**elemre. Megjelenik az **Oszlopok hozzáadása/eltávolítása** párbeszédpanel.
    
-    ![Oszlopok hozzáadása vagy törlése az eredmények ablaktáblán](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
+    ![Oszlopok hozzáadása vagy eltávolítása az eredmények ablaktáblájából](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Add_remove_columns.png) 
 4. Töltse ki az űrlapot a következőképpen:
    
-   * Válassza ki azokat az elemeket a **elérhető** oszlopok listában, és kattintson a **Hozzáadás** adja hozzá őket a **megjelenő oszlopok** listája. 
-   * Kattintson a elemekre a **megjelenő oszlopok** listában, és kattintson a **eltávolítása** eltávolítja őket a listából. 
-   * Válasszon ki egy elemet a a **megjelenő** oszlopok listában, és kattintson a **feljebb** vagy **lejjebb** az elem áthelyezése felfelé vagy lefelé a listában. 
-   * Kattintson a **alapértelmezett értékek visszaállítása** térjen vissza az alapértelmezett **eredmények** konfigurációs panelen. 
-5. Amikor végzett a a beállításokat, kattintson a **OK**. 
+   * Jelölje ki az **elérhető** oszlopok listából az elemeket, majd a **Hozzáadás** gombra kattintva vegye fel őket a **megjelenített oszlopok** listájára. 
+   * A **megjelenített oszlopok** listában kattintson az elemek elemre, majd az **Eltávolítás** gombra kattintva távolítsa el őket a listáról. 
+   * Jelöljön ki egy elemet a **megjelenített** oszlopok listájában, **és kattintson a feljebb vagy** **lejjebb gombra, hogy az** elemet feljebb vagy lejjebb helyezze a listában. 
+   * Kattintson az **Alapértelmezések visszaállítása** lehetőségre az alapértelmezett **eredmények** ablaktábla konfigurációjához való visszatéréshez. 
+5. Ha végzett a beállításokkal, kattintson **az OK**gombra. 
 
-#### <a name="to-change-the-console-window-view"></a>A konzol ablakot nézetet
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal minden olyan csomópontot, kattintson a **nézet**, és kattintson a **Testreszabás**. A **Testreszabás** párbeszédpanel jelenik meg.
+#### <a name="to-change-the-console-window-view"></a>A konzol ablak nézetének módosítása
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, kattintson a **nézet**elemre, majd kattintson a **Testreszabás**elemre. Megjelenik a **Testreszabás** párbeszédpanel.
    
-    ![A konzolablakban testreszabása](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
-3. Válassza ki, vagy törölje a jelet a jelölőnégyzetből, megjelenítése vagy elrejtése a konzolablakban elemek. Amikor végzett a a beállításokat, kattintson a **OK**.
+    ![A konzol ablakának testreszabása](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Customize.png) 
+3. Jelölje be a jelölőnégyzetet, vagy törölje a jelölést az elemek megjelenítéséhez vagy elrejtéséhez a konzol ablakban. Ha végzett a beállításokkal, kattintson **az OK**gombra.
 
-## <a name="new-window-from-here"></a>Itt új ablakban
-Használhatja a **itt új ablakban** lehetőséget egy új ablakot is megnyit.
+## <a name="new-window-from-here"></a>Új ablak innen
+Új konzolablak megnyitásához az **itt található új ablak** lehetőséget használhatja.
 
-#### <a name="to-open-a-new-console-window"></a>Egy új konzolablak megnyitása
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópont, és kattintson **itt új ablakban**. 
+#### <a name="to-open-a-new-console-window"></a>Új konzolablak megnyitása
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, majd kattintson az **új ablak**innen elemre. 
    
-    Egy új ablakban megjelenik, a hatókör csak a kijelölt. Például, ha a jobb gombbal a **biztonsági mentési szabályzatok** csomópont, az új ablakban jelennek meg csak a **biztonsági mentési szabályzatok** csomópontja a **hatókör** ablaktábla és a egy meghatározott biztonsági mentés listája a szabályzatok a **eredmények** ablaktáblán. Tekintse meg a következő példát.
+    Ekkor megjelenik egy új ablak, amely csak a kiválasztott hatókört jeleníti meg. Ha például a jobb gombbal a **biztonsági mentési házirendek** csomópontra kattint, az új ablak csak a **biztonsági mentési házirendek** csomópontot jeleníti meg a **hatókör** ablaktáblán, valamint az **eredményeket** tartalmazó ablaktáblán található meghatározott biztonsági mentési szabályzatok listáját. Tekintse meg a következő példát.
    
-    ![Itt új ablakban](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
+    ![Új ablak innen](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_NewWindow.png) 
 
 ## <a name="refresh"></a>Frissítés
-Használhatja a **frissítése** művelettel a konzolablakot.
+A **frissítési** művelettel frissítheti a konzolablak ablakát.
 
-#### <a name="to-update-the-console-window"></a>A konzolablakban frissítése
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópont, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemet a **eredmények** ablaktáblán, és kattintson **frissítése**. 
+#### <a name="to-update-the-console-window"></a>A konzol ablakának frissítése
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **frissítés**parancsra. 
 
-## <a name="export-list"></a>Lista exportálása
-Használhatja a **lista exportálása** művelet listáját egy vesszővel tagolt (CSV) fájl mentéséhez. Ha például a biztonsági mentési szabályzatok és a biztonságimásolat-katalógus listája exportálhatja. Ezután importálhatja a CSV-fájl egy számolótábla alkalmazásba elemzés céljából.
+## <a name="export-list"></a>Exportálási lista
+A lista **exportálása** művelettel egy vesszővel tagolt (CSV-) fájlba mentheti a listákat. Exportálhatja például a biztonsági mentési szabályzatok listáját vagy a biztonsági mentési katalógust. Ezután importálhatja a CSV-fájlt egy táblázatkezelő alkalmazásba elemzés céljából.
 
-#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>Listáját egy vesszővel tagolt (CSV) fájl mentéséhez
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához. 
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópont, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemet a **eredmények** ablaktáblán, és kattintson **lista exportálása**. 
-3. A **lista exportálása** párbeszédpanel jelenik meg. Töltse ki az űrlapot a következőképpen: 
+#### <a name="to-save-a-list-in-a-comma-separated-value-csv-file"></a>Lista mentése vesszővel tagolt (CSV-) fájlba
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára. 
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **lista exportálása**parancsra. 
+3. Megjelenik az **exportálási lista** párbeszédpanel. Töltse ki az űrlapot a következőképpen: 
    
-   1. Az a **Fájlnév** mezőbe írja be a CSV-fájl nevét, vagy kattintson a nyílra kattintva válassza ki a legördülő listából.
-   2. Az a **Fájltípus** mezőbe, kattintson a nyílra, és a legördülő listából válassza ki a fájl típusa.
-   3. Csak a kijelölt elemek mentése, a sorok kiválasztásához, majd kattintson a **mentése csak a kijelölt sorok** jelölőnégyzetet. Mentse az összes exportált listák, törölje a jelet a **mentése csak a kijelölt sorok** jelölőnégyzetet.
-   4. Kattintson a **Save** (Mentés) gombra.
+   1. A **fájlnév** mezőben adja meg a CSV-fájl nevét, vagy kattintson a nyílra a legördülő listából való kiválasztáshoz.
+   2. A fájltípus **mezőben kattintson** a nyílra, és válassza ki a kívánt fájltípust a legördülő listából.
+   3. Csak a kijelölt elemek mentéséhez jelölje ki a sorokat, majd kattintson a **csak a kijelölt sorok mentése** jelölőnégyzetre. Az összes exportált lista mentéséhez törölje a jelölést a **csak a kijelölt sorok mentése** jelölőnégyzetből.
+   4. Kattintson a **Mentés** gombra.
       
-      ![Lista exportálása egy vesszővel tagolt fájl](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
+      ![Lista exportálása vesszővel elválasztott érték fájlként](./media/storsimple-snapshot-manager-mmc-menu/HCS_SSM_Export_List.png) 
 
-## <a name="help"></a>Súgó
-Használhatja a **súgó** menüben elérhető online a StorSimple Snapshot Manager és az MMC súgójának megtekintéséhez.
+## <a name="help"></a>Segítség
+A **Súgó** menü használatával megtekintheti a StorSimple Snapshot Manager és az MMC-hez elérhető online súgót.
 
-#### <a name="to-view-available-online-help"></a>Elérhető online súgójának megtekintéséhez
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópont, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemet a **eredmények** ablaktáblán, és kattintson **súgó**. 
+#### <a name="to-view-available-online-help"></a>Az elérhető online Súgó megtekintése
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal bármelyik csomópontra, vagy bontsa ki a csomópontot, és kattintson a jobb gombbal egy elemre az **eredmények** ablaktábláján, majd kattintson a **Súgó**elemre. 
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet a [StorSimple Snapshot Manager felhasználói felületén](storsimple-use-snapshot-manager.md).
-* Tudjon meg többet [felügyelete a StorSimple megoldás StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md).
+## <a name="next-steps"></a>Következő lépések
+* További információ a [StorSimple Snapshot Manager felhasználói felületéről](storsimple-use-snapshot-manager.md).
+* További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
 

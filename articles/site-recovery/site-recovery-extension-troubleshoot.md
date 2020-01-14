@@ -1,114 +1,114 @@
 ---
-title: Az Azure Site Recovery-ügynökökkel kapcsolatos problémák elhárítása |} A Microsoft Docs
-description: Tünetek, az az oka, és a megoldások az Azure Site Recovery-ügynök hibáinak arról nyújt tájékoztatást.
-author: asgang
+title: Azure Site Recovery ügynökökkel kapcsolatos problémák elhárítása | Microsoft Docs "
+description: Információt nyújt a Azure Site Recovery-ügynök meghibásodásának tüneteiről, okairól és megoldásáról.
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5ea701682c03370cea46f9126ecf78427a776371
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: carmonm
+ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61280671"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930135"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>Az Azure Site Recovery-ügynök hibáinak elhárítása
+# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>A Azure Site Recovery ügynökkel kapcsolatos problémák elhárítása
 
-Ez a cikk ismerteti a hibaelhárítási lépéseket tartalmaz, amely segítségével kapcsolódó Virtuálisgép-ügynök és a bővítmény az Azure Site Recovery-hibák elhárításához.
+Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megoldhatja a virtuálisgép-ügynökkel és-bővítménysel kapcsolatos Azure Site Recovery hibákat.
 
 
-## <a name="azure-site-recovery-extension-time-out"></a>Az Azure Site Recovery bővítmény időtúllépés  
+## <a name="azure-site-recovery-extension-time-out"></a>Azure Site Recovery bővítmény időtúllépése  
 
-Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben"<br>
+Hibaüzenet: "a feladat végrehajtása túllépte az időkorlátot a bővítmény műveletének elindításához."<br>
 Hibakód: "151076"
 
- Az Azure Site Recovery-bővítmény telepítése a virtuális gépen a védelemengedélyezési feladatot részeként. Az alábbi feltételek bármelyike megakadályozhatja, hogy a védelem aktiválása és a feladat sikertelen lesz. A következő hibaelhárítási lépéseket, és ismételje meg a műveletet:
+ Azure Site Recovery telepítsen egy bővítményt a virtuális gépen a védelem engedélyezése művelet részeként. A következő feltételek bármelyike megakadályozhatja a védelem indítását, és a feladat sikertelen lehet. Hajtsa végre az alábbi hibaelhárítási lépéseket, majd próbálja megismételni a műveletet:
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. ok: [A Site Recovery-bővítmény frissítése és betöltése sikertelen](#the-site-recovery-extension-fails-to-update-or-load)**  
+**1. ok: [az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**2. ok: [a virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. ok: [a site Recovery bővítmény frissítése vagy betöltése sikertelen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Hibaüzenet jelenik meg: "Előző site recovery bővítmény műveletét tart a vártnál több időt."<br>
+Hibaüzenet: "a site Recovery-bővítmény előző műveletének végrehajtása a vártnál több időt vesz figyelembe."<br>
 Hibakód: "150066"<br>
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-**3. ok: [A Site Recovery bővítmény állapota nem megfelelő](#the-site-recovery-extension-fails-to-update-or-load)**  
+**1. ok: [az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**2. ok: [a virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**3. ok: [a site Recovery bővítmény állapota helytelen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>Védelem sikertelen lesz, mivel a Virtuálisgép-ügynök nem válaszol
+## <a name="protection-fails-because-the-vm-agent-is-unresponsive"></a>A védelem sikertelen, mert a virtuálisgép-ügynök nem válaszol
 
-Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
+Hibaüzenet: "a feladat végrehajtása túllépte az időkorlátot a bővítmény műveletének elindításához."<br>
 Hibakód: "151099"<br>
 
-Ez a hiba akkor fordulhat elő, ha az Azure-vendégügynök a virtuális gép nem üzemkész állapotba kerül.
-Ellenőrizheti az állapotát az Azure-vendégügynök [az Azure portal](https://portal.azure.com/). Nyissa meg a virtuális gép védelmét, majd ellenőrizze kívánt "virtuális gép > Beállítások > Tulajdonságok > ügynök állapota". A legtöbbször az ügynök állapotát felkészülésére a virtuális gép újraindítása után. Azonban ha az újraindítás nem használható lehetőség, vagy a probléma továbbra is fennálló, majd hajtsa végre az alábbi hibaelhárítási lépésekkel.
+Ez a hiba akkor fordulhat elő, ha a virtuális gépen lévő Azure Guest Agent ügynök nem üzemkész állapotban van.
+Az Azure Guest Agent állapotát [Azure Portalban](https://portal.azure.com/)is megtekintheti. Nyissa meg a védelemmel ellátni kívánt virtuális gépet, és tekintse meg az állapotot a "VM > Beállítások > Tulajdonságok > ügynök állapota". Az ügynök állapota az idő nagy részében a virtuális gép újraindítása után válik üzemkész állapotba. Ha azonban az újraindítás nem lehetséges, vagy a probléma továbbra is fennáll, hajtsa végre az alábbi hibaelhárítási lépéseket.
 
-**1. ok: [Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
-**2. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+**1. ok: [az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     
+**2. ok: [a virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 
 
-Hibaüzenet jelenik meg: "A feladat végrehajtása túllépte az időkorlátot elindítandó bővítményművelet nyomon követése közben."<br>
+Hibaüzenet: "a feladat végrehajtása túllépte az időkorlátot a bővítmény műveletének elindításához."<br>
 Hibakód: "151095"<br>
 
-Ez történhet, ha az ügynök verziója, a Linux rendszerű gépen régi. Kérjük, végezze el a következő hibaelhárítási lépéseket.<br>
-  **1. ok: [Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
-## <a name="causes-and-solutions"></a>Okait és megoldásait
+Ez akkor fordul elő, ha a Linux rendszerű gépen található ügynök verziója régi. Kérjük, végezze el az alábbi hibaelhárítási lépést.<br>
+  **1. ok: [a virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
+## <a name="causes-and-solutions"></a>Okok és megoldások
 
-### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépen, de nem válaszoló (Windows virtuális gépek esetén)
-
-#### <a name="solution"></a>Megoldás
-A Virtuálisgép-ügynök sérült, vagy a szolgáltatás előfordulhat, hogy leállt. A Virtuálisgép-ügynök újbóli telepítése révén a legújabb verzióra. Emellett segít, indítsa újra a szolgáltatással való kommunikáció.
-
-1. Határozza meg hogy a "Windows Azure Guest Agent szolgáltatás" fut a virtuális gép szolgáltatások között (services.msc). Próbálja meg újraindítani a "Windows Azure Guest Agent szolgáltatás".    
-2. Ha a Windows Azure Guest Agent szolgáltatás nem látható a szolgáltatások, a Vezérlőpulton **programok és szolgáltatások** meghatározni, hogy telepítve van-e a Windows Vendégügynöke szolgáltatást.
-4. Ha megjelenik a Windows Azure-Vendégügynök **programok és szolgáltatások**, távolítsa el a Windows Vendégügynöke.
-5. Töltse le és telepítse a [az ügynök MSI legfrissebb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
-6. Ellenőrizze, hogy a Windows Azure-Vendégügynök services szolgáltatások megjelenik-e.
-7. Indítsa újra a feladatot.
-
-Emellett ellenőrizze, hogy [telepítve van a Microsoft .NET 4.5-ös](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) a virtuális gépen. .NET 4.5-ös szükség a Virtuálisgép-ügynök a szolgáltatással való kommunikációra.
-
-### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>Az ügynök telepítve van a virtuális gépen nem naprakész (a Linux rendszerű virtuális gépek)
+### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)
 
 #### <a name="solution"></a>Megoldás
-Legtöbb ügynök vagy bővítmény kapcsolatos hibák Linux rendszerű virtuális gépek egy elavult Virtuálisgép-ügynök érintő problémák okozzák. A probléma elhárításához kövesse az alábbi általános irányelveket:
+Lehet, hogy a virtuálisgép-ügynök sérült, vagy a szolgáltatást leállították. A virtuálisgép-ügynök újratelepítése segíti a legújabb verzió beszerzését. A szolgáltatással folytatott kommunikáció újraindítását is lehetővé teszi.
 
-1. Kövesse az utasításokat [Linux rendszerű virtuális gép-ügynök frissítése](../virtual-machines/linux/update-agent.md).
+1. Állapítsa meg, hogy a "Windows Azure Guest Agent Service" fut-e a VM-szolgáltatásokban (Services. msc). Próbálja meg újraindítani a "Windows Azure Guest Agent Service" szolgáltatást.    
+2. Ha a Windows Azure Guest Agent ügynök szolgáltatás nem látható a szolgáltatások területen, a Vezérlőpulton lépjen a **programok és szolgáltatások** elemre, és állapítsa meg, hogy telepítve van-e a Windows Guest Agent szolgáltatás.
+4. Ha a Windows Azure Guest Agent ügynök megjelenik a **programok és szolgáltatások szolgáltatásban**, távolítsa el a Windows vendég ügynököt.
+5. Töltse le és telepítse az [Agent MSI legújabb verzióját](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409). A telepítés befejezéséhez rendszergazdai jogosultságokkal kell rendelkeznie.
+6. Ellenőrizze, hogy a Windows Azure Guest Agent szolgáltatás megjelenik-e a szolgáltatások között.
+7. Indítsa újra a védelmi feladatot.
+
+Ellenőrizze azt is, hogy a [Microsoft .NET 4,5 telepítve van](https://docs.microsoft.com/dotnet/framework/migration-guide/how-to-determine-which-versions-are-installed) -e a virtuális gépen. A .NET 4,5 szükséges ahhoz, hogy a virtuálisgép-ügynök kommunikáljon a szolgáltatással.
+
+### <a name="the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms"></a>A virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)
+
+#### <a name="solution"></a>Megoldás
+A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolatos vagy kiterjesztéssel kapcsolatos hibát az elavult virtuálisgép-ügynököt érintő problémák okozzák. A probléma megoldásához kövesse az alábbi általános irányelveket:
+
+1. Kövesse a Linux rendszerű [virtuális gép ügynökének frissítésével](../virtual-machines/linux/update-agent.md)kapcsolatos utasításokat.
 
    > [!NOTE]
-   > Hogy *erősen ajánlott* frissíteni az ügynök csak egy terjesztési tárház keresztül. A kód letöltése a közvetlenül a githubból, és frissítéskor nem ajánlott. Ha a legújabb ügynököt a disztribúció nem érhető el, forduljon terjesztési támogatása útmutatást a telepítéshez. A legújabb ügynök ellenőrzéséhez nyissa meg a [Windows Azure Linux-ügynök](https://github.com/Azure/WALinuxAgent/releases) lap a GitHub-adattárában.
+   > Javasoljuk *, hogy csak* terjesztési tárházon keresztül frissítse az ügynököt. Nem javasoljuk, hogy közvetlenül a GitHubról töltse le az ügynököt, és frissítse azt. Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. A legutóbbi ügynök kereséséhez nyissa meg a [Windows Azure Linux Agent](https://github.com/Azure/WALinuxAgent/releases) lapot a GitHub-tárházban.
 
-2. Győződjön meg arról, hogy az Azure-ügynököt a virtuális gépen fut a következő parancs futtatásával: `ps -e`
+2. A következő parancs futtatásával győződjön meg arról, hogy az Azure-ügynök fut a virtuális gépen: `ps -e`
 
-   Ha a folyamat nem fut, indítsa újra a következő parancsokat:
+   Ha a folyamat nem fut, indítsa újra a következő parancsok használatával:
 
-   * Az ubuntu rendszeren: `service walinuxagent start`
-   * Más disztribúciók: `service waagent start`
+   * Ubuntu esetén: `service walinuxagent start`
+   * Egyéb disztribúciók esetén: `service waagent start`
 
-3. [Az automatikus újraindítás ügynök konfigurálása](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
-4. Lehetővé teszi a virtuális gép védelmét.
+3. [Konfigurálja az automatikus újraindítási ügynököt](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
+4. Engedélyezze a virtuális gép védelmét.
 
 
 
-### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>A Site Recovery-bővítmény frissítése és betöltése sikertelen
-Ha bővítményeket állapota "üres", "NotReady" vagy az áttérés.
+### <a name="the-site-recovery-extension-fails-to-update-or-load"></a>A Site Recovery bővítmény frissítése vagy betöltése sikertelen
+Ha a bővítmények állapota "Empty", "nem taposó" vagy áttérés.
 
 #### <a name="solution"></a>Megoldás
 
-Távolítsa el a bővítményt, és indítsa újra a műveletet.
+Távolítsa el a bővítményt, majd indítsa újra a műveletet.
 
 A bővítmény eltávolítása:
 
-1. Az a [az Azure portal](https://portal.azure.com/), nyissa meg a virtuális gép, amelyen a biztonsági mentési hiba jelentkezik.
-2. Válassza ki **beállítások**.
+1. A [Azure Portal](https://portal.azure.com/)lépjen a biztonsági mentési hibát észlelő virtuális gépre.
+2. Válassza a **Beállítások** lehetőséget.
 3. Kattintson az **Extensions** (Bővítmények) gombra.
-4. Válassza ki **Site Recovery-bővítmény**.
-5. Válassza ki **eltávolítása**.
+4. Válassza ki **site Recovery bővítményt**.
+5. Válassza az **Eltávolítás** lehetőséget.
 
-A Linux rendszerű virtuális gép, ha a VMSnapshot-bővítményt nem jeleníti meg az Azure Portalon [az Azure Linux-ügynök frissítése](../virtual-machines/linux/update-agent.md), és futtassa újra a védelmet. 
+Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a védelmet. 
 
-Ezen lépések elvégzése hatására a védelem során újra kell telepíteni a bővítményt.
+A lépések végrehajtásával a bővítmény újratelepíthető a védelem során.
 
 

@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: af6848e85db5d2a557835b063a499e3439557eb6
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 93a70bf0d9189368135b8007e95627fc64064c51
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690428"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932186"
 ---
 # <a name="reuse-environments-for-training--deployment-with-azure-machine-learning"></a>Környezetek újrafelhasználása & üzembe helyezésének betanításához Azure Machine Learningsal.
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -344,6 +344,34 @@ service = Model.deploy(
 ## <a name="example-notebooks"></a>Jegyzetfüzetek – példa
 
 Ez a [példa](https://github.com/Azure/MachineLearningNotebooks/tree/master/how-to-use-azureml/training/using-environments) a jelen cikkben ismertetett fogalmakat és metódusokat mutatja be.
+
+## <a name="create-and-manage-environments-with-the-cli"></a>Környezetek létrehozása és kezelése a parancssori felülettel
+
+A [Azure Machine learning CLI](reference-azure-machine-learning-cli.md) a Python SDK funkcióinak többségét tükrözi, és a környezet létrehozásához és felügyeletéhez is használható. Az alábbi parancsok alapszintű funkciókat mutatnak be.
+
+A következő parancs a megadott könyvtár alapértelmezett környezeti definíciójának fájljait összefoglalja. Ezek a fájlok olyan JSON-fájlok, amelyek az SDK megfelelő osztályához hasonlóan működnek, és új környezetek létrehozására használhatók egyéni beállításokkal. 
+
+```azurecli-interactive
+az ml environment scaffold -n myenv -d myenvdir
+```
+
+Futtassa a következő parancsot egy környezet egy adott címtárból való regisztrálásához.
+
+```azurecli-interactive
+az ml environment register -d myenvdir
+```
+
+A következő parancs futtatásával listázhatja az összes regisztrált környezetet.
+
+```azurecli-interactive
+az ml environment list
+```
+
+Töltse le a regisztrált környezetet a következő paranccsal.
+
+```azurecli-interactive
+az ml environment download -n myenv -d downloaddir
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 12/5/2019
+ms.date: 1/13/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 7b2751957bf341b37527697f92931bacfb425c09
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397341"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932887"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -555,7 +555,12 @@ az group deployment create \
 
 Az újabb metrikai riasztások támogatják a többdimenziós metrikák riasztásait, valamint a több feltétel támogatását. A következő sablonnal további speciális metrikai riasztási szabályt hozhat létre a dimenziós mérőszámokra vonatkozóan, és több feltételt is megadhat.
 
-Vegye figyelembe, hogy ha a riasztási szabály több feltételt is tartalmaz, a dimenziók használata az egyes feltételeken belül egy értékre van korlátozva.
+Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, vegye figyelembe a következő korlátozásokat:
+- Minden egyes feltételhez csak egy értéket lehet kijelölni.
+- A "\*" nem használható dimenzió értékként.
+- Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
+    - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája rendelkezik **API-névvel** , és a *criterion1* meghatározza az **API-név** dimenzió *"GetBlob"* értékét, majd a *criterion2* az **API-név** dimenzió *"GetBlob"* értékét is be kell állítania.
+
 
 Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató céljára.
 
@@ -784,9 +789,6 @@ az group deployment create \
     --parameters @advancedstaticmetricalert.parameters.json
 ```
 
->[!NOTE]
->
-> Ha egy riasztási szabály több feltételt tartalmaz, a dimenziók használata az egyes feltételeken belül egy értékre van korlátozva.
 
 ## <a name="template-for-a-static-metric-alert-that-monitors-multiple-dimensions"></a>Több dimenziót figyelő statikus metrikai riasztás sablonja
 

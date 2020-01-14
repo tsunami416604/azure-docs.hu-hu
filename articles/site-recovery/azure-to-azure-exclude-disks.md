@@ -1,18 +1,18 @@
 ---
 title: Azure VM-lemezek kizárása a replikációból Azure Site Recovery és Azure PowerShell
 description: Ismerje meg, hogyan zárja ki az Azure-beli virtuális gépek lemezeit a Azure Site Recovery során Azure PowerShell használatával.
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 02/18/2019
-ms.author: asgang
-ms.openlocfilehash: beb4ee6fcf6413634d7d728e3f070294e8ce3787
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.author: carmonm
+ms.openlocfilehash: ead46368db68cf11facfe437b3ea0ef77171d548
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084972"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929808"
 ---
 # <a name="exclude-disks-from-powershell-replication-of-azure-vms"></a>Lemezek kizárása az Azure-beli virtuális gépek PowerShell-replikálásával
 

@@ -1,18 +1,18 @@
 ---
 title: Kereskedelmi piactér – kifizetési összefoglalás | Azure piactér
 description: A nyeremények összegzése az ajánlatával kapcsolatban szerzett pénz részleteit jeleníti meg. Azt is megtudhatja, hogy mikor kapja meg a befizetéseket és mennyit fizet.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 3836e815d296456ff95f87f0592e3277503420fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427146"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931817"
 ---
 # <a name="payout-reporting"></a>Kifizetési jelentések
 
@@ -162,7 +162,7 @@ Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus,
 | taxZipCode       | Eladva a Customer zip-be                                                                                                                  |
 | LicensingProgramName       |                                                                                                                   |
 | Programkód       | A program nevével leképezhető karakterlánc                                                                                                                   |
-| EarningAmountInLastPaymentCurrency       | Az utolsó fizetési pénznemben befizetett összeg (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
+| earningAmountInLastPaymentCurrency       | Az utolsó fizetési pénznemben befizetett összeg (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
 | lastPaymentCurrency       | Utolsó fizetési pénznem (a mező üres lesz, ha nem fizettek ki előzetes fizetést)                                                                                                                   |
 | AssetId       | A Piactéri szolgáltatáshoz tartozó ügyfelek rendeléseinek egyedi azonosítója.  Ez a megvásárolt beszerzési sorokhoz tartozó elemeket jelöli. Több eszköz is lehet.                                                                                                                   |
 | OrderId       | az ügyfél számlára vonatkozik                                                                                                                   |

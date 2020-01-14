@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/21/2019
-ms.openlocfilehash: baef54fc5c8fd03ea190da2023dcba2e96abb982
-ms.sourcegitcommit: dd0304e3a17ab36e02cf9148d5fe22deaac18118
+ms.openlocfilehash: e641340ac04415ee4a20cda2bc09bbdbef9802a6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74406276"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931398"
 ---
 # <a name="customize-hdinsight-clusters-using-bootstrap"></a>HDInsight-fürtök testreszabása a bootstrap használatával
 
@@ -21,26 +21,26 @@ A rendszerindítási parancsfájlok lehetővé teszik, hogy programozott módon 
 
 A HDInsight-fürt létrehozásakor három módszer van a konfigurációs fájlok beállításainak beállítására:
 
-* Azure PowerShell használatával
+* Az Azure PowerShell használata
 * A .NET SDK használata
 * Az Azure Resource Manager sablonjainak használata
 
 Ilyen programozási módszerek használatával például a következő fájlokban konfigurálhatja a beállításokat:
 
-* clusterIdentity.xml
+* clusterIdentity. XML
 * Core-site. XML
-* gateway.xml
-* hbase-env.xml
-* hbase-site.xml
-* hdfs-site.xml
-* hive-env.xml
-* hive-site.xml
+* Gateway. XML
+* hbase-env. XML
+* hbase-site. XML
+* hdfs-site. XML
+* Hive-env. XML
+* Hive-site. XML
 * mapred – hely
 * oozie-site. XML
-* oozie-env.xml
+* oozie-env. XML
 * Storm-site. XML
-* tez-site.xml
-* webhcat-site.xml
+* Tez-site. XML
+* webhcat-site. XML
 * yarn-site. XML
 * Server. Properties (Kafka-Broker konfiguráció)
 
@@ -50,7 +50,7 @@ További információ a HDInsight-fürt további összetevőinek a létrehozás 
 
 * Ha a PowerShellt használja, szüksége lesz az az [modulra](https://docs.microsoft.com/powershell/azure/overview).
 
-## <a name="use-azure-powershell"></a>Azure PowerShell használatával
+## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
 A következő PowerShell-kód testreszab egy [Apache Hive](https://hive.apache.org/) konfigurációt:
 
@@ -108,7 +108,7 @@ $OozieConfigValues = @{ "oozie.service.coord.normal.default.timeout"="150" }  # 
 
 ## <a name="use-net-sdk"></a>A .NET SDK használata
 
-Lásd: [Linux-alapú fürtök létrehozása a HDInsight a .net SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-bootstrap).
+Lásd: [Az Azure HDINSIGHT SDK for .net](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet).
 
 ## <a name="use-resource-manager-template"></a>Resource Manager-sablon használata
 
@@ -126,7 +126,7 @@ A Bootstrap a Resource Manager-sablonban használható:
 
 ![A Hadoop testreszabja a fürt rendszerindítási Azure Resource Manager sablonját](./media/hdinsight-hadoop-customize-cluster-bootstrap/hdinsight-customize-cluster-bootstrap-arm.png)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md) útmutatást nyújt a HDInsight-fürtök más egyéni beállítások használatával történő létrehozásához.
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)

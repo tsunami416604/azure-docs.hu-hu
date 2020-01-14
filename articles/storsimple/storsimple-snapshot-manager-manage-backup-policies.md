@@ -1,9 +1,9 @@
 ---
-title: A StorSimple Snapshot Manager biztonsági mentési szabályzatok |} A Microsoft Docs
-description: Ismerteti, hogyan hozhat létre, és az ütemezett biztonsági mentések szabályozó biztonsági mentési házirendek kezelése a StorSimple Snapshot Manager MMC beépülő modul használatához.
+title: StorSimple Snapshot Manager biztonsági mentési szabályzatok | Microsoft Docs
+description: Ismerteti, hogyan használható a StorSimple Snapshot Manager MMC beépülő modul az ütemezett biztonsági mentést vezérlő biztonsági mentési házirendek létrehozásához és kezeléséhez.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 04415d0b-42f0-4737-8afa-257fb2dbe5d0
@@ -13,84 +13,84 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 06/05/2017
-ms.author: v-sharos
-ms.openlocfilehash: 7dac26b058b959011e38b4373369b8a1115d2705
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: twooley
+ms.openlocfilehash: 7b2df6c8384e78094d80a17d8982b0db9edf73e1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687280"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933355"
 ---
-# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>A StorSimple Snapshot Manager segítségével létrehozhat, és a biztonsági mentési házirendek kezelése
+# <a name="use-storsimple-snapshot-manager-to-create-and-manage-backup-policies"></a>Biztonsági mentési szabályzatok létrehozása és kezelése StorSimple Snapshot Manager használatával
 ## <a name="overview"></a>Áttekintés
-Biztonsági mentési szabályzat helyi vagy felhőbeli biztonsági mentéséről adatmennyiség ütemezés hoz létre. Biztonsági mentési szabályzat létrehozásakor megadhat egy adatmegőrzési szabályt is. (Legfeljebb 64 pillanatképek is megőrizheti.) További információ a biztonsági mentési szabályzatok: [biztonsági mentési típusok](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) a [a StorSimple 8000 sorozat: egy hibrid felhőmegoldás](storsimple-overview.md).
+A biztonsági mentési szabályzat létrehoz egy ütemtervet a kötetek adatai helyi vagy Felhőbeli biztonsági mentéséhez. Biztonsági mentési szabályzat létrehozásakor megadhat egy adatmegőrzési szabályt is. (Legfeljebb 64 pillanatképet tárolhat.) A biztonsági mentési szabályzatokkal kapcsolatos további információkért lásd: [biztonsági mentési típusok](storsimple-what-is-snapshot-manager.md#backup-types-and-backup-policies) a [StorSimple 8000 sorozatban: hibrid felhőalapú megoldás](storsimple-overview.md).
 
 Ez az oktatóanyag a következőket ismerteti:
 
-* A biztonsági mentési szabályzat létrehozása
+* Biztonsági mentési szabályzat létrehozása
 * Biztonsági mentési szabályzat szerkesztése
-* A biztonsági mentési szabályzat törlése
+* Biztonsági mentési szabályzat törlése
 
-## <a name="create-a-backup-policy"></a>A biztonsági mentési szabályzat létrehozása
-A következő eljárással hozhat létre egy új biztonsági mentési szabályzat.
+## <a name="create-a-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
+Új biztonsági mentési szabályzat létrehozásához kövesse az alábbi eljárást.
 
 #### <a name="to-create-a-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a jobb gombbal **biztonsági mentési házirendek**, és kattintson a **biztonsági mentési házirend létrehozása**.
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a jobb gombbal a **biztonsági mentési házirendek**elemre, majd kattintson a **biztonsági mentési házirend létrehozása**parancsra.
 
-    ![A biztonsági mentési szabályzat létrehozása](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
+    ![Biztonsági mentési szabályzat létrehozása](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_BU_policy.png)
 
-    A **hozzon létre egy házirendet** párbeszédpanel jelenik meg.
+    Megjelenik a **házirend létrehozása** párbeszédpanel.
 
-    ![Hozzon létre egy házirendet – Általános lap](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
-3. Az a **általános** lapra, végezze el a következő információkat:
+    ![Házirend létrehozása – Általános lap](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_general.png)
+3. Az **általános** lapon végezze el a következő információkat:
 
-   1. Az a **neve** szövegmezőbe írja be a házirend nevét.
-   2. Az a **kötetcsoport** beviteli mező, írja be a szabályzathoz társított a kötet csoport neve.
-   3. Ezek közül bármelyikre **helyi pillanatkép** vagy **Felhőbeli pillanatkép**.
-   4. Válassza ki a megőrizni a pillanatképek számát. Ha **összes**, 64 pillanatképek lesz (maximum) őrződnek meg.
-4. Kattintson a **ütemezés** fülre.
+   1. A **név** szövegmezőbe írja be a szabályzat nevét.
+   2. A **kötet csoport** szövegmezőbe írja be a házirendhez társított kötet csoport nevét.
+   3. Válassza a **helyi pillanatfelvétel** vagy a **Felhőbeli pillanatkép**lehetőséget.
+   4. Válassza ki a megőrizni kívánt Pillanatképek számát. Ha az **összes**lehetőséget választja, a 64-es Pillanatképek megmaradnak (a maximumot).
+4. Kattintson az **Ütemezés** lapra.
 
-    ![Hozzon létre egy házirend - Ütemezés lap](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
-5. Az a **ütemezés** lapra, végezze el a következő információkat:
+    ![Szabályzat létrehozása – ütemterv lap](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Create_policy_schedule.png)
+5. Az **ütemterv** lapon hajtsa végre a következő információkat:
 
-   1. Kattintson a **engedélyezése** melletti jelölőnégyzetet, hogy a következő biztonsági mentés ütemezése.
-   2. A **beállítások**válassza **egyszer**, **napi**, **heti**, vagy **havi**.
-   3. Az a **Start** szövegbeviteli mezőben kattintson a naptár ikonra, és válassza ki a kezdő dátum.
-   4. A **speciális beállítások**, opcionális ismétlési ütemezések és a befejező dátum lehet beállítani.
+   1. Ha a következő biztonsági mentést szeretné ütemezni, kattintson az **Engedélyezés** jelölőnégyzetre.
+   2. A **Beállítások**területen válasszon ki **egy időpontot**, **naponta**, **hetente**vagy **havonta**.
+   3. A **Start** szövegmezőben kattintson a naptár ikonra, és válassza ki a kezdő dátumot.
+   4. A **Speciális beállítások**területen beállíthatja a választható ismétlési ütemterveket és a befejezési dátumot.
    5. Kattintson az **OK** gombra.
 
-Miután létrehozott egy biztonsági mentési szabályzatot, a következő információkat megjelenik a **eredmények** panelen:
+A biztonsági mentési szabályzat létrehozása után az alábbi információk jelennek meg az **eredmények** ablaktáblájában:
 
-* **Név** – biztonsági mentési szabályzat neve.
-* **Típus** – helyi pillanatfelvétel és felhőbeli pillanatkép.
-* **Kötetcsoport** – a kötet csoport a szabályzathoz társított.
-* **Adatmegőrzési** – pillanatképek számának őrződnek meg; a maximális 64.
-* **Létrehozott** – Ez a szabályzat létrehozásának dátumát.
-* **Engedélyezett** – -e a házirend van érvényben: **Igaz** jelzi, hogy érvényben; **Hamis** azt jelzi, hogy azt ne legyen hatással.
+* **Name (név** ) – a biztonsági mentési szabályzat neve.
+* **Típus** – helyi pillanatfelvétel vagy Felhőbeli pillanatkép.
+* **Kötet csoport** – a házirendhez társított kötet csoport.
+* **Megőrzés** – a megőrzött Pillanatképek száma; a maximális érték 64.
+* **Létrehozva** – a szabályzat létrehozásának dátuma.
+* **Engedélyezve** – azt határozza meg, hogy a házirend jelenleg érvényben van-e: az **igaz** érték azt jelzi, hogy az érvényes; A **false (hamis** ) érték azt jelzi, hogy nincs érvényben.
 
 ## <a name="edit-a-backup-policy"></a>Biztonsági mentési szabályzat szerkesztése
-Az alábbi eljárás segítségével egy meglévő biztonsági mentési szabályzatot.
+A meglévő biztonsági mentési szabályzat szerkesztéséhez kövesse az alábbi eljárást.
 
 #### <a name="to-edit-a-backup-policy"></a>Biztonsági mentési szabályzat szerkesztése
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a **biztonsági mentési házirendek** csomópont. A biztonsági mentési házirendek megjelennek a **eredmények** ablaktáblán.
-3. Kattintson a jobb gombbal a szabályzat szerkesztéséhez, és kattintson a kívánt **szerkesztése**.
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a **biztonsági mentési házirendek** csomópontra. Az **eredmény** ablaktáblán megjelenik az összes biztonsági mentési szabályzat.
+3. Kattintson a jobb gombbal a szerkeszteni kívánt szabályzatra, majd kattintson a **Szerkesztés**parancsra.
 
     ![Biztonsági mentési szabályzat szerkesztése](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Edit_BU_policy.png)
-4. Ha a **hozzon létre egy házirendet** ablak, írja be a módosításokat, és kattintson a **OK**.
+4. Amikor megjelenik a **házirend létrehozása** ablak, írja be a módosításokat, majd kattintson **az OK**gombra.
 
-## <a name="delete-a-backup-policy"></a>A biztonsági mentési szabályzat törlése
-Az alábbi eljárás segítségével egy biztonsági mentési szabályzat törlése.
+## <a name="delete-a-backup-policy"></a>Biztonsági mentési szabályzat törlése
+A biztonsági mentési szabályzat törléséhez kövesse az alábbi eljárást.
 
 #### <a name="to-delete-a-backup-policy"></a>Biztonsági mentési szabályzat törlése
-1. Kattintson az asztali ikonra a StorSimple Snapshot Manager elindításához.
-2. Az a **hatókör** ablaktáblán kattintson a **biztonsági mentési házirendek** csomópont. A biztonsági mentési házirendek megjelennek a **eredmények** ablaktáblán.
-3. Kattintson a jobb gombbal a biztonsági mentési szabályzat törlése, és kattintson a kívánt **törlése**.
-4. A megerősítést kérő üzenet megjelenésekor kattintson **Igen**.
+1. A StorSimple Snapshot Manager indításához kattintson az asztal ikonjára.
+2. A **hatókör** ablaktáblán kattintson a **biztonsági mentési házirendek** csomópontra. Az **eredmény** ablaktáblán megjelenik az összes biztonsági mentési szabályzat.
+3. Kattintson a jobb gombbal a törölni kívánt biztonsági mentési házirendre, majd kattintson a **Törlés**parancsra.
+4. Amikor megjelenik a megerősítő üzenet, kattintson az **Igen**gombra.
 
-    ![Megerősítés a biztonsági mentési szabályzat törlése](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
+    ![Biztonsági mentési szabályzat törlésének megerősítése](./media/storsimple-snapshot-manager-manage-backup-policies/HCS_SSM_Delete_BU_policy.png)
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [felügyelete a StorSimple megoldás StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md).
-* Ismerje meg, hogyan [biztonsági mentési feladatok megtekintése és kezelése a StorSimple Snapshot Manager használata](storsimple-snapshot-manager-manage-backup-jobs.md).
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg, hogyan kezelheti [a StorSimple-megoldást a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-admin.md).
+* Ismerje meg, hogyan [tekintheti meg és kezelheti a biztonsági mentési feladatokat a StorSimple Snapshot Manager használatával](storsimple-snapshot-manager-manage-backup-jobs.md).

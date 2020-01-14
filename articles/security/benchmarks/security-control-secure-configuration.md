@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 08458777d8a8c5c74ac20a63245135ffaf0a5c04
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 03564effeee36ddb3316d48329ccab8ccfce75b9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564113"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934301"
 ---
 # <a name="security-control-secure-configuration"></a>Biztonsági ellenőrzés: biztonságos konfiguráció
 
@@ -27,7 +27,9 @@ Az Azure-erőforrások biztonsági konfigurációjának létrehozása, implement
 
 Az összes Azure-erőforrás biztonsági konfigurációjának megőrzése Azure Policy vagy Azure Security Center használatával.
 
-Azure Policy konfigurálása és kezelése: https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
+Azure Policy konfigurálása és kezelése:
+
+https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
 ## <a name="72-establish-secure-operating-system-configurations"></a>7,2: biztonságos operációsrendszer-konfigurációk létrehozása
 
@@ -57,7 +59,7 @@ Azure Policy konfigurálása és kezelése:
 
 https://docs.microsoft.com/azure/governance/policy/tutorials/create-and-manage
 
-Azure Policy hatások ismertetése:
+Azure Policy effektusok ismertetése:
 
 https://docs.microsoft.com/azure/governance/policy/concepts/effects
 
@@ -85,7 +87,7 @@ https://docs.microsoft.com/azure/virtual-machines/extensions/dsc-overview
 |--|--|--|
 | 7.5 | 5.3 | Ügyfél |
 
-Ha egyéni Azure Policy-definíciókat használ, az Azure Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
+Ha egyéni Azure Policy-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
 Kód tárolása az Azure DevOps:
 
@@ -171,11 +173,17 @@ https://docs.microsoft.com/azure/security-center/security-center-container-recom
 
 A Felhőbeli alkalmazások titkos felügyeletének egyszerűbbé és biztonságossá tételéhez használja a Managed Service Identityt a Azure Key Vaultvel együtt.
 
-Integráció az Azure felügyelt identitásokkal: https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
+Integráció az Azure felügyelt identitásokkal:
 
-Key Vault létrehozása: https://docs.microsoft.com/azure/key-vault/quick-create-portal
+https://docs.microsoft.com/azure/azure-app-configuration/howto-integrate-azure-managed-service-identity
 
-Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: https://docs.microsoft.com/azure/key-vault/managed-identity
+Key Vault létrehozása:
+
+https://docs.microsoft.com/azure/key-vault/quick-create-portal
+
+Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása:
+
+https://docs.microsoft.com/azure/key-vault/managed-identity
 
 ## <a name="712-manage-identities-securely-and-automatically"></a>7,12: az identitások biztonságos és automatikus kezelése
 
@@ -185,7 +193,9 @@ Felügyelt identitással rendelkező Key Vault hitelesítés biztosítása: http
 
 Felügyelt identitások használatával biztosíthatja az Azure-szolgáltatások automatikus felügyelt identitását az Azure AD-ben. A felügyelt identitások lehetővé teszik bármely olyan szolgáltatás hitelesítését, amely támogatja az Azure AD-hitelesítést, beleértve a Key Vault is, a kódban szereplő hitelesítő adatok nélkül.
 
-Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
+Felügyelt identitások konfigurálása:
+
+https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm
 
 ## <a name="713-eliminate-unintended-credential-exposure"></a>7,13: a hitelesítő adatok nem szándékolt expozíciójának megszüntetése
 
@@ -195,7 +205,9 @@ Felügyelt identitások konfigurálása: https://docs.microsoft.com/azure/active
 
 Hitelesítő adatok beolvasása a kódban a hitelesítő adatok azonosításához. A hitelesítő adatok beolvasása azt is javasolja, hogy a felderített hitelesítő adatokat biztonságosabb helyszínekre (például Azure Key Vault) helyezze. 
 
-Hitelesítőadat-olvasó beállítása: https://secdevtools.azurewebsites.net/helpcredscan.html
+A hitelesítőadat-olvasó beállítása:
+
+https://secdevtools.azurewebsites.net/helpcredscan.html
 
 ## <a name="next-steps"></a>Következő lépések
 

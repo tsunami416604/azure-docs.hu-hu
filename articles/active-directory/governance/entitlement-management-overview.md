@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 10/24/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: markwahl-msft
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b0a99b9089e568351cf736310e778ba477441407
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1d1faf501aff8960a4b1961b34164be07b1d685d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422576"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932476"
 ---
 # <a name="what-is-azure-ad-entitlement-management"></a>Mi az az Azure AD-jogosultságkezelés?
 
@@ -134,17 +134,32 @@ A jogosultságok kezelésének és dokumentációjának jobb megismeréséhez te
 
 A speciális felhők, például a Azure Government, az Azure Germany és az Azure China 21Vianet jelenleg nem használhatók.
 
-### <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
+### <a name="how-many-licenses-must-you-have"></a>Hány licencre van szükség?
 
-A bérlőnek legalább annyi prémium szintű Azure AD P2-licenccel kell rendelkeznie, hogy a jogosultságok kezelésében a felhasználók aktívak legyenek. Az aktív tag felhasználói a jogosultságok kezelésében a következők:
+Győződjön meg arról, hogy a címtár legalább annyi prémium szintű Azure AD P2-licenccel rendelkezik, mint a következő feladatokat végző alkalmazottakkal:
 
-- Az a felhasználó, aki egy hozzáférési csomagra vonatkozó kérelmet indít vagy fogad el.
-- Olyan felhasználó, akinek hozzáférési csomagja van hozzárendelve.
-- A hozzáférési csomagokat kezelő felhasználó.
+- Azok a felhasználók **, akik hozzáférési csomagot igényelhetnek** .
+- Egy hozzáférési csomagot kérő tag és vendég felhasználók.
+- Egy hozzáférési csomagra vonatkozó kérelmeket jóváhagyó tagok és vendég felhasználók.
 
-A tagok felhasználói számára a licencek részeként több vendég is engedélyezheti a jogosultságok felügyeletét. További információ a felvehető vendég felhasználók számának kiszámításáról: [Azure Active Directory B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő feladatokhoz:
 
-További információ a licenceknek a felhasználókhoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md). Vegye figyelembe, hogy a jogosultságok kezelése jelenleg nem kényszeríti ki a felhasználók licenc-hozzárendelését.
+- A globális rendszergazdai szerepkörrel rendelkező felhasználók számára nem szükséges licencek a kezdeti katalógusok, a hozzáférési csomagok és a házirendek beállítására, valamint a felügyeleti feladatok más felhasználóknak való delegálására.
+- Nem szükségesek licencek olyan felhasználók számára, akik delegáltak felügyeleti feladatokat, például a katalógus létrehozóját, a katalógus tulajdonosát és a hozzáférés csomagkezelő kezelőjét.
+- Nincs szükség licencre azon vendégek számára **, akik hozzáférési csomagokat igényelhetnek** , de **nem** igényelnek hozzáférési csomagot.
+
+Az Azure AD B2B szolgáltatással legfeljebb 5 vendéget hívhat meg, ha minden fizetős prémium szintű Azure AD P2-licenccel rendelkezik, amelyet a felhasználó (alkalmazottai) számára vásárolt. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+
+További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Példa licencelési forgatókönyvekre
+
+Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
+
+| Alkalmazási helyzet | Számítás | Licencek száma |
+| --- | --- | --- |
+| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. 150 az alkalmazottak a hozzáférési csomagokat kérik. | 2 000 **olyan** alkalmazottak, akik igényelhetik a hozzáférési csomagokat | 2,000 |
+| A Woodgrove Bank globális rendszergazdája kezdeti katalógusokat hoz létre, és rendszergazdai feladatokat delegál a 6 másik felhasználó számára. Az egyik házirend azt határozza meg, hogy **minden alkalmazott** (2 000 alkalmazott) egy adott hozzáférési csomagot igényelhet. Egy másik házirend azt határozza meg, hogy a partner contoso (vendég) **felhasználóinak** néhány felhasználója a jóváhagyás alá eső hozzáférési csomagokat is kérheti. A contoso 30 000 felhasználóval rendelkezik. 150 az alkalmazottak a contoso-kérések hozzáférési csomagjait és 10 500 felhasználóit kérik. | 2 000 Employees + 500 vendég a Contosotól, amely meghaladja a 1:5 arányt (10 500-(2 000 * 5)) | 2500 |
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: d052226470042d374544de0b7e1ced4ca0f48a14
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 376d7c1a9d2fe2ebce857362fd216e2047eb1f7b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564152"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934330"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
 
@@ -29,7 +29,9 @@ Győződjön meg arról, hogy az összes Virtual Network alhálózati üzemelő 
 
 Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azure Firewall megvalósításával lehetséges.
 
-Általános információk a privát kapcsolatról: https://docs.microsoft.com/azure/private-link/private-link-overview
+Általános információk a privát hivatkozásról:
+
+https://docs.microsoft.com/azure/private-link/private-link-overview
 
 Virtual Network létrehozása:
 
@@ -97,11 +99,11 @@ Az Azure Security Center integrált veszélyforrások felderítésének ismertet
 
 https://docs.microsoft.com/azure/security-center/security-center-alerts-service-layer
 
-Azure Security Center adaptív hálózat megerősítésének ismertetése
+Azure Security Center adaptív hálózat megerősítésének ismertetése:
 
 https://docs.microsoft.com/azure/security-center/security-center-adaptive-network-hardening
 
-Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése
+Azure Security Center az időponthoz tartozó hálózati Access Control ismertetése:
 
 https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
@@ -113,9 +115,13 @@ https://docs.microsoft.com/azure/security-center/security-center-just-in-time
 
 Rögzítse a NSG folyamat naplóit a flow-rekordok létrehozásához. Ha a rendellenes tevékenységek kivizsgálásához szükséges, engedélyezze Network Watcher csomagok rögzítését.
 
-NSG flow-naplók engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+A NSG folyamat naplófájljainak engedélyezése:
 
-A Network Watcher engedélyezése: https://docs.microsoft.com/azure/network-watcher/network-watcher-create
+https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-portal
+
+A Network Watcher engedélyezése:
+
+https://docs.microsoft.com/azure/network-watcher/network-watcher-create
 
 ## <a name="16-deploy-network-based-intrusion-detectionintrusion-prevention-systems-idsips"></a>1,6: hálózati alapú behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 
@@ -137,11 +143,17 @@ Riasztások konfigurálása Azure Firewall használatával: https://docs.microso
 
 Azure-Application Gateway üzembe helyezése a megbízható tanúsítványokhoz engedélyezett HTTPS/SSL-alapú webalkalmazásokhoz.
 
-Application Gateway üzembe helyezése: https://docs.microsoft.com/azure/application-gateway/quick-create-portal
+Application Gateway üzembe helyezése:
 
-A Application Gateway konfigurálása a HTTPS használatára: https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+https://docs.microsoft.com/azure/application-gateway/quick-create-portal
 
-A 7. rétegbeli terheléselosztás az Azure webalkalmazás-átjárókkal való ismertetése: https://docs.microsoft.com/azure/application-gateway/overview
+A Application Gateway konfigurálása a HTTPS használatára:
+
+https://docs.microsoft.com/azure/application-gateway/create-ssl-portal
+
+A 7. rétegbeli terheléselosztás az Azure Web Application Gateways használatával:
+
+https://docs.microsoft.com/azure/application-gateway/overview
 
 ## <a name="18-minimize-complexity-and-administrative-overhead-of-network-security-rules"></a>1,8: a hálózati biztonsági szabályok bonyolultságának és adminisztratív terhelésének csökkentése
 
@@ -149,9 +161,11 @@ A 7. rétegbeli terheléselosztás az Azure webalkalmazás-átjárókkal való i
 |--|--|--|
 | 1.8 | 1.5 | Ügyfél |
 
-A hálózati biztonsági csoportokon vagy Azure Firewalleken a hálózati hozzáférés-vezérlés meghatározásához használja Virtual Network szolgáltatás-címkék &nbsp;. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
+A hálózati biztonsági csoportokon vagy Azure Firewall a hálózati hozzáférés-vezérlések definiálásához használja Virtual Network szolgáltatás címkéit. Biztonsági szabályok létrehozása során szolgáltatáscímkéket használhat bizonyos IP-címek helyett. Ha egy szabály megfelelő forrás vagy cél mezőjében megadja a szolgáltatási címke nevét (például ApiManagement), akkor engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát. A Microsoft kezeli a szolgáltatási címke által felölelt címek előtagjait, és automatikusan frissíti a szolgáltatási címkét a címek változásával.
 
-A szolgáltatási címkék megismerése és használata: https://docs.microsoft.com/azure/virtual-network/service-tags-overview
+A szolgáltatási címkék megismerése és használata:
+
+https://docs.microsoft.com/azure/virtual-network/service-tags-overview
 
 ## <a name="19-maintain-standard-security-configurations-for-network-devices"></a>1,9: a hálózati eszközök szabványos biztonsági konfigurációinak fenntartása
 
@@ -161,7 +175,7 @@ A szolgáltatási címkék megismerése és használata: https://docs.microsoft.
 
 A hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy.
 
-Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, így például Azure Resource Manager sablonokat, RBAC-vezérlőket és házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre és környezetekre alkalmazhatja, és az irányítás és felügyelet finomhangolását a verziószámozás segítségével végezheti el.
+Az Azure-tervezetek segítségével leegyszerűsítheti a nagyméretű Azure-környezetek nagy léptékű üzembe helyezését, így például Azure Resource Manager sablonokat, RBAC-vezérlőket és házirendeket egyetlen terv definíciójában. A tervrajzot új előfizetésekre alkalmazhatja, és a verziószámozással finomhangolást és felügyeletet is alkalmazhat.
 
 Azure Policy konfigurálása és kezelése:
 

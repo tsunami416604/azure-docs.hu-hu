@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/28/2019
-ms.openlocfilehash: 8a644beede4089133f88b824fd8d34dddec3b15e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 69acfd4f2edab9be1b1dcfbb52eafbd00aec712f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751118"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934561"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>A Hue telepítése és használata a HDInsight Hadoop-fürtökön
 
@@ -127,6 +127,4 @@ Az SSH-bújtatás az egyetlen módszer a színárnyalat elérésére a fürtön,
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Telepítse az Apache Giraph-t a HDInsight-fürtökre](hdinsight-hadoop-giraph-install-linux.md). A Giraph telepítése a HDInsight Hadoop-fürtökön a fürt testreszabása segítségével. A Giraph lehetővé teszi a Hadoop használatával végzett gráf-feldolgozást, és az Azure HDInsight használható.
-
-* [Telepítse az R-t a HDInsight-fürtökön](hdinsight-hadoop-r-scripts-linux.md). A fürt testreszabásával telepítse az R-t a HDInsight Hadoop-fürtökön. Az R egy nyílt forráskódú nyelv és környezet statisztikai számítástechnikai szolgáltatásokhoz. Több száz beépített statisztikai funkciót és saját programozási nyelvet biztosít, amely ötvözi a funkcionális és az objektumorientált programozás szempontjait. Emellett kiterjedt grafikus képességeket is biztosít.
+[Telepítse az R-t a HDInsight-fürtökön](hdinsight-hadoop-r-scripts-linux.md). A fürt testreszabásával telepítse az R-t a HDInsight Hadoop-fürtökön. Az R egy nyílt forráskódú nyelv és környezet statisztikai számítástechnikai szolgáltatásokhoz. Több száz beépített statisztikai funkciót és saját programozási nyelvet biztosít, amely ötvözi a funkcionális és az objektumorientált programozás szempontjait. Emellett kiterjedt grafikus képességeket is biztosít.

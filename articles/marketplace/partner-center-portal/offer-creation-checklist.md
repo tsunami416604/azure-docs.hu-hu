@@ -1,19 +1,19 @@
 ---
 title: SaaS-ajánlat létrehozása ellenőrzőlista – kereskedelmi piactér az Azure-hoz
 description: Az SaaS-ajánlat létrehozási folyamatában megadható részletek. -Kereskedelmi piactér az Azure-hoz
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 1643a1e309ecc2bcfc440e3553fcffef54cfb038
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8b01f15673f68bcc3fb0b205b9dd85a276c9b972
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824625"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930300"
 ---
 # <a name="saas-offer-creation-checklist"></a>SaaS-ajánlatlétrehozási ellenőrzőlista
 
@@ -67,7 +67,7 @@ A Tulajdonságok lapon megadhatja az ajánlatnak a piactéren való csoportosít
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------|  
-| Kategória és Alkategória | Kötelező 1 és Max 3. Alapértelmezés: nincs kiválasztva. |
+| Kategória és alkategória | Kötelező 1 és Max 3. Alapértelmezés: nincs kiválasztva. |
 | Iparágak és alágazatok | Választható. legfeljebb 2 L1 iparág és legfeljebb 2 alágazat az egyes L1 iparban, alapértelmezett: nincs kiválasztva |
 | Az alkalmazás verziója  | Választható. Alapértelmezett: nincs. |
 | Normál szerződés használata  | Választható. Alapértelmezett: nincs kiválasztva.  | |
@@ -111,7 +111,7 @@ A technikai konfiguráció lapon megadhatja a Microsoft által az ajánlathoz va
 | :---------------- | :-----------| 
 | Kezdőlap URL-címe | A Microsofton keresztüli értékesítés esetén kötelező. |
 | Kapcsolat webhook | A Microsofton keresztüli értékesítés esetén kötelező. |
-| Azure AD-bérlő azonosítója | A Microsofton keresztüli értékesítés esetén kötelező. |
+| Az Azure AD-bérlő azonosítója | A Microsofton keresztüli értékesítés esetén kötelező. |
 | Azure AD-alkalmazás azonosítója | A Microsofton keresztüli értékesítés esetén kötelező. |
 
 ## <a name="plan-identity-modal"></a>Identity modális csomag
@@ -159,8 +159,8 @@ Csak akkor érhető el, ha kijelöli az ajánlata tesztelésére szolgáló megh
 
 | **Mező neve**    | **Megjegyzések**   | 
 | :---------------- | :-----------| 
-| Megjegyzések a minősítéshez  | Választható. |
+| A minősítéssel kapcsolatos megjegyzések  | Választható. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Új SaaS-ajánlat létrehozása](./create-new-saas-offer.md)

@@ -11,21 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 12/02/2019
+ms.date: 01/10/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: f728338284c755116414a03cbc586915e1cc9325
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ec3153e5b1bfbe04a079d1cfc44e8e8709784d4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462214"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931149"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-azure-powershell"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure PowerShell használatával
 
 [!INCLUDE [Azure RBAC definition list access](../../includes/role-based-access-control-definition-list.md)] ez a cikk azt ismerteti, hogyan lehet a szerepkör-hozzárendeléseket Azure PowerShell használatával listázni.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
+
+> [!NOTE]
+> Ha a szervezete egy Azure-beli [delegált erőforrás-kezelést](../lighthouse/concepts/azure-delegated-resource-management.md)használó szolgáltatónál kiszervezett felügyeleti funkciókat használ, az adott szolgáltató által meghatalmazott szerepkör-hozzárendelések nem jelennek meg.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

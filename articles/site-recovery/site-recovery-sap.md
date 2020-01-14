@@ -1,18 +1,18 @@
 ---
 title: SAP NetWeaver vész-helyreállítás beállítása Azure Site Recovery
 description: Ez a cikk azt ismerteti, hogyan állíthatja be a vész-helyreállítást az SAP NetWeaver alkalmazás-telepítésekhez Azure Site Recovery használatával.
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 29b3e4af33702c75e92b5e36c5521d9af12b1013
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.author: carmonm
+ms.openlocfilehash: 3ae9a92a27da1b736bf9db6dff88660f7d40143b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533848"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934446"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
 

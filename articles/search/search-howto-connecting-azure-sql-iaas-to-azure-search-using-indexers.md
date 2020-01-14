@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 12e642e59a1341926a0c4d66533465cecfc21709
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7933e2608ae0b59a6dce89169f4bb1faba0aa25e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863138"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934150"
 ---
 # <a name="configure-a-connection-from-an-azure-cognitive-search-indexer-to-sql-server-on-an-azure-vm"></a>Azure Cognitive Search indexelő használatával létesített kapcsolatok konfigurálása Azure-beli virtuális gépeken való SQL Server
 
@@ -77,7 +77,7 @@ Javasoljuk, hogy a SQL Azure virtuális gépeknek az összes kapcsolódási kér
 
 A keresési szolgáltatás teljes tartománynevének (például `<your-search-service-name>.search.windows.net`) pingelésével megtekintheti az IP-címet.
 
-A `AzureCognitiveSearch` [szolgáltatási címke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címének megkeresése az adott régióban, ahol az Azure Cognitive Search szolgáltatás a [letölthető JSON-fájlokkal](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-val érhető el. Az IP-címtartomány hetente frissül.
+A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány a [letölthető JSON-fájlokkal](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-val is megtekinthető. Az IP-címtartomány hetente frissül.
 
 #### <a name="managing-ip-address-fluctuations"></a>IP-címek ingadozásának kezelése
 Ha a keresési szolgáltatásnak csak egy keresési egysége van (azaz egy replika és egy partíció), az IP-cím a rutin szolgáltatás újraindításakor módosul, és a keresési szolgáltatás IP-címével érvényteleníti a meglévő ACL-t.

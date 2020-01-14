@@ -1,6 +1,6 @@
 ---
-title: A .NET SDK használatával – Azure HDInsight az Apache Hadoop-fürtök kezelése
-description: Ismerje meg, hogyan hajthat végre felügyeleti feladatokat a HDInsight .NET SDK-val a HDInsight az Apache Hadoop-fürtök.
+title: Apache Hadoop-fürtök kezelése a HDInsight-ben .NET SDK-val – Azure
+description: Ismerje meg, hogyan hajthat végre rendszergazdai feladatokat a HDInsight Apache Hadoop-fürtökhöz a HDInsight .NET SDK használatával.
 ms.reviewer: jasonh
 author: hrasheed-msft
 ms.service: hdinsight
@@ -8,18 +8,18 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: hrasheed
-ms.openlocfilehash: abfbac552cc5cb4449a75c45d0c1ffdbcf6b770c
-ms.sourcegitcommit: 79496a96e8bd064e951004d474f05e26bada6fa0
+ms.openlocfilehash: 432b8855ffb9542a1e052c8c97b52bcddeb5c824
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2019
-ms.locfileid: "67508105"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934740"
 ---
-# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>A HDInsight Apache Hadoop-fürtök kezelése a .NET SDK-val
+# <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-net-sdk"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a .NET SDK használatával
 
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Útmutató a HDInsight-fürtök használata kezelheti [HDInsight.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight).
+Ismerje meg, hogyan kezelheti a HDInsight-fürtöket a [HDINSIGHT.net SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)-val.
 
 **Előfeltételek**
 
@@ -27,9 +27,9 @@ A cikk elkezdéséhez az alábbiakkal kell rendelkeznie:
 
 * **Azure-előfizetés**. Lásd: [Ingyenes Azure-fiók létrehozása](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-## <a name="connect-to-azure-hdinsight"></a>Csatlakozás az Azure HDInsight
+## <a name="connect-to-azure-hdinsight"></a>Kapcsolódás az Azure HDInsight
 
-A következő NuGet-csomagok lesz szüksége:
+A következő NuGet-csomagok szükségesek:
 
 ```powershell
 Install-Package Microsoft.Rest.ClientRuntime.Azure.Authentication -Pre
@@ -37,7 +37,7 @@ Install-Package Microsoft.Azure.Management.ResourceManager -Pre
 Install-Package Microsoft.Azure.Management.HDInsight
 ```
 
-Az alábbi példakód bemutatja, hogyan kapcsolódhat az Azure HDInsight-fürtök felügyelete az Azure-előfizetéshez előtt.
+Az alábbi mintakód bemutatja, hogyan csatlakozhat az Azure-hoz, mielőtt az Azure-előfizetéshez tartozó HDInsight-fürtöket tudja felügyelni.
 
 ```csharp
 using System;
@@ -106,15 +106,12 @@ namespace HDInsightManagement
 }
 ```
 
-Egy üzenet kell jelenik meg, amikor a program futtatása.  Ha nem szeretné a üzenet jelenik meg, tekintse meg [nem interaktív hitelesítéssel .NET HDInsight-alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md).
+Ezt a programot a program futtatásakor kell megtekinteni.  Ha nem szeretné megtekinteni a kérdést, tekintse meg a [nem interaktív hitelesítéssel rendelkező .net HDInsight-alkalmazások létrehozása](hdinsight-create-non-interactive-authentication-dotnet-applications.md)című témakört.
 
-## <a name="create-clusters"></a>Fürtök létrehozása
-
-Lásd: [létrehozása Linux-alapú fürtök a HDInsight .NET SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)
 
 ## <a name="list-clusters"></a>Fürtök listázása
 
-A következő kódrészletet a fürtök és az egyes tulajdonságok sorolja fel:
+A következő kódrészlet felsorolja a fürtöket és néhány tulajdonságot:
 
 ```csharp
 var results = _hdiManagementClient.Clusters.List();
@@ -128,7 +125,7 @@ foreach (var name in results.Clusters) {
 
 ## <a name="delete-clusters"></a>Fürtök törlése
 
-Használja a következő kódrészlet törli egy fürt szinkron vagy aszinkron módon: 
+A következő kódrészlettel törölheti a fürtöket szinkron vagy aszinkron módon: 
 
 ```csharp
 _hdiManagementClient.Clusters.Delete("<Resource Group Name>", "<Cluster Name>");
@@ -137,21 +134,21 @@ _hdiManagementClient.Clusters.DeleteAsync("<Resource Group Name>", "<Cluster Nam
 
 ## <a name="scale-clusters"></a>Fürtök méretezése
 
-A fürtméretezés egy funkció lehetővé teszi, hogy a fürt újbóli létrehozása nélkül fut az Azure HDInsight-fürt által használt munkavégző csomópontok számának módosítását.
+A fürt skálázási funkciója lehetővé teszi az Azure HDInsight-ben futó fürt által használt munkavégző csomópontok számának módosítását anélkül, hogy újra létre kellene hozni a fürtöt.
 
 > [!NOTE]  
-> Csak 3.1.3 verziójú HDInsight-fürtök vagy újabb verziója támogatott. Ha biztos benne, hogy a fürt verziója, a Tulajdonságok lapon ellenőrizheti.  Lásd: [fürtök listázása és megjelenítése](hdinsight-administer-use-portal-linux.md#showClusters).
+> Csak a 3.1.3-es vagy újabb verziójú HDInsight-fürtök támogatottak. Ha nem tudja biztosan a fürt verzióját, akkor ellenőrizze a tulajdonságok lapot.  Lásd: [fürtök listázása és megjelenítése](hdinsight-administer-use-portal-linux.md#showClusters).
 
-A fürt a HDInsight által támogatott különböző típusú adatok csomópontok számának módosításával hatásai:
+Az adatcsomópontok számának a HDInsight által támogatott különböző típusú fürtökön való módosításának következményei:
 
 * Apache Hadoop
   
-    Zökkenőmentesen lehet növelni egy Hadoop-fürtöt, amely a folyamatban lévő vagy futó feladatok befolyásolása nélkül fut-e a munkavégző csomópontok számát. Új feladatok is lehet beküldeni, amíg a művelet folyamatban van. A skálázási művelet hibák szabályosan kezeli, úgy, hogy a fürt minden esetben működőképes állapotban marad.
+    A Hadoop-fürtben futó munkavégző csomópontok száma zökkenőmentesen megnövelhető a függőben lévő vagy futó feladatok hatása nélkül. A művelet végrehajtása közben új feladatokat is el lehet küldeni. A skálázási művelet során fellépő hibák szabályosan kezelhetők, így a fürt mindig működőképes állapotban marad.
   
-    Ha egy Hadoop-fürtöt az adatcsomópontok száma csökkentésével vertikálisan leskálázni, a fürtben a szolgáltatások újra lesz indítva. Ennek hatására a összes futó és a függőben lévő feladatok meghiúsulhatnak, a skálázási művelet befejezése után. A feladatok újból elküldheti, azonban a művelet befejeződése után.
+    Ha a Hadoop-fürtöket az adatcsomópontok számának csökkentésével csökkentették, a fürt egyes szolgáltatásai újraindulnak. Ez azt eredményezi, hogy az összes futó és függőben lévő feladat meghiúsul a skálázási művelet befejezésekor. A művelet befejezését követően azonban újra elküldheti a feladatokat.
 * Apache HBase
   
-    Zökkenőmentesen adja hozzá vagy távolíthat el csomópontokat a HBase-fürt futás közben. Regionális kiszolgáló automatikusan kiegyensúlyozott vannak a skálázási művelet befejezése néhány percen belül. Azonban, manuálisan is eloszthatja a regionális kiszolgálók jelentkezik be a fürt átjárócsomópontjával, és a egy parancssori ablakot a következő parancsokat futtatni:
+    A futása közben zökkenőmentesen hozzáadhat vagy eltávolíthat csomópontokat a HBase-fürthöz. A regionális kiszolgálók a skálázási művelet befejezését követően néhány percen belül automatikusan egyensúlyban vannak. A regionális kiszolgálókat azonban manuálisan is kiegyensúlyozhatja, ha bejelentkezik a fürt átjárócsomóponthoz, és futtatja a következő parancsokat egy parancssori ablakból:
   
 
     ```bash
@@ -162,20 +159,20 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
 
 * Apache Storm
   
-    Zökkenőmentesen adja hozzá vagy távolít el a Storm-fürt adatcsomópontok futás közben. Azonban a topológia újraegyensúlyozására kell a skálázási művelet a sikeres telepítést követően.
+    A futása közben zökkenőmentesen hozzáadhat vagy eltávolíthat adatcsomópontokat a Storm-fürthöz. A skálázási művelet sikeres befejezése után azonban újra kell osztania a topológiát.
   
-    Az újraegyensúlyozás két módon is elvégezhető:
+    Az újraelosztás kétféleképpen végezhető el:
   
-  * A Storm webes felhasználói felületen
+  * Storm webes felhasználói felület
   * Parancssori felület (CLI) eszköz
     
-    Tekintse meg a [Apache Storm-dokumentáció](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) további részletekért.
+    További részletekért tekintse meg az [Apache Storm dokumentációját](https://storm.apache.org/documentation/Understanding-the-parallelism-of-a-Storm-topology.html) .
     
-    A Storm webes felhasználói felületen a HDInsight-fürtön érhető el:
+    A Storm webes felhasználói felülete elérhető a HDInsight-fürtön:
     
-    ![HDInsight Storm méretezési újraegyensúlyozási](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
+    ![HDInsight Storm skálázási egyensúly](./media/hdinsight-administer-use-powershell/hdinsight-portal-scale-cluster-storm-rebalance.png)
     
-    Íme egy példa a Storm-topológia újraegyensúlyozására a CLI-parancs használatával:
+    Az alábbi példa bemutatja, hogyan használhatja a CLI-parancsot a Storm-topológia újraelosztásához:
     
 
     ```cli
@@ -185,24 +182,24 @@ A fürt a HDInsight által támogatott különböző típusú adatok csomóponto
     $ storm rebalance mytopology -n 5 -e blue-spout=3 -e yellow-bolt=10
     ```
 
-A következő kódrészletet bemutatja, hogyan méretezheti át egy fürt szinkron vagy aszinkron módon:
+A következő kódrészlet bemutatja, hogyan méretezheti át a fürtöket szinkronban vagy aszinkron módon:
 
 ```csharp
 _hdiManagementClient.Clusters.Resize("<Resource Group Name>", "<Cluster Name>", <New Size>);   
 _hdiManagementClient.Clusters.ResizeAsync("<Resource Group Name>", "<Cluster Name>", <New Size>);   
 ```
 
-## <a name="grantrevoke-access"></a>GRANT/revoke-access
+## <a name="grantrevoke-access"></a>Hozzáférés engedélyezése/visszavonása
 
-HDInsight-fürtök a következő HTTP webes szolgáltatások (ezen szolgáltatások mindegyikéhez kell RESTful végpontokon) rendelkezik:
+A HDInsight-fürtök a következő HTTP-webszolgáltatásokkal rendelkeznek (az összes szolgáltatás REST-végpontokkal rendelkezik):
 
 * ODBC
 * JDBC
 * Apache Ambari
-* Az Apache Oozie
-* Az Apache templeton eszközön keresztül végzett
+* Apache Oozie
+* Apache Templeton
 
-Alapértelmezés szerint ezek a szolgáltatások hozzáférés kapnak. Akkor is visszavonása/biztosítása a hozzáférést. Visszavonásához:
+Alapértelmezés szerint ezek a szolgáltatások hozzáférést kapnak. Visszavonhatja vagy megadhatja a hozzáférést. Visszavonás:
 
 ```csharp
 var httpParams = new HttpSettingsParameters
@@ -214,7 +211,7 @@ var httpParams = new HttpSettingsParameters
 _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Cluster Name>, httpParams);
 ```
 
-Megadását:
+A következő megadása:
 
 ```csharp
 var httpParams = new HttpSettingsParameters
@@ -227,17 +224,17 @@ _hdiManagementClient.Clusters.ConfigureHttpSettings("<Resource Group Name>, <Clu
 ```
 
 > [!NOTE]  
-> A hozzáférés biztosítása/visszavonása, visszaállítja, a fürthöz tartozó felhasználónevet és jelszót.
+> A hozzáférés megadásával/visszavonásával alaphelyzetbe állítja a fürt felhasználónevét és jelszavát.
 
-Ez a portálon keresztül is elvégezhető. Lásd: [kezelése az Apache Hadoop-fürtök a HDInsight az Azure portal használatával](hdinsight-administer-use-portal-linux.md).
+Ezt a portálon keresztül is megteheti. Lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md).
 
-## <a name="update-http-user-credentials"></a>A HTTP felhasználói hitelesítő adatok frissítése
+## <a name="update-http-user-credentials"></a>HTTP-felhasználói hitelesítő adatok frissítése
 
-Ugyanezt az eljárást, mint a Grant/revoke HTTP-access.  Ha a fürt a HTTP-hozzáférést kapott, meg kell először visszavonják.  És adja meg a hozzáférés az új HTTP-felhasználónál használt.
+Ez ugyanaz az eljárás, mint a HTTP-hozzáférés engedélyezése/visszavonása.  Ha a fürtön engedélyezve van a HTTP-hozzáférés, először vissza kell vonnia azt.  Ezután adja meg a hozzáférést az új HTTP-felhasználói hitelesítő adatokkal.
 
-## <a name="find-the-default-storage-account"></a>Keresse meg az alapértelmezett tárfiókot
+## <a name="find-the-default-storage-account"></a>Az alapértelmezett Storage-fiók keresése
 
-A következő kódrészletet bemutatja, hogyan juthat az alapértelmezett tárfiók neve és a fürt alapértelmezett tárfiókkulcs.
+A következő kódrészlet bemutatja, hogyan kérhető le egy fürt alapértelmezett Storage-fiókjának neve és alapértelmezett Storage-fiók kulcsa.
 
 ```csharp
 var results = _hdiManagementClient.Clusters.GetClusterConfigurations(<Resource Group Name>, <Cluster Name>, "core-site");
@@ -249,34 +246,34 @@ foreach (var key in results.Configuration.Keys)
 
 ## <a name="submit-jobs"></a>Feladatok elküldése
 
-**A MapReduce-feladatok elküldése**
+**MapReduce-feladatok elküldése**
 
-Lásd: [futtatása MapReduce-minták a HDInsight](hadoop/apache-hadoop-run-samples-linux.md).
+Lásd: [MapReduce-minták futtatása a HDInsight-ben](hadoop/apache-hadoop-run-samples-linux.md).
 
-**Az Apache Hive-feladatok elküldése** 
+**Apache Hive feladatok elküldése** 
 
-Lásd: [.NET SDK használatával futtassa az Apache Hive lekérdezések](hadoop/apache-hadoop-use-hive-dotnet-sdk.md).
+Lásd: [Apache Hive lekérdezések futtatása a .net SDK](hadoop/apache-hadoop-use-hive-dotnet-sdk.md)-val.
 
-**Az Apache Sqoop-feladatok elküldése**
+**Apache Sqoop-feladatok elküldése**
 
-Lásd: [Apache Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
+Lásd: [az Apache Sqoop használata a HDInsight](hadoop/apache-hadoop-use-sqoop-dotnet-sdk.md).
 
-**Az Apache Oozie-feladatok elküldése**
+**Apache Oozie-feladatok elküldése**
 
-Lásd: [használata Apache Oozie megadásához és a munkafolyamat futtatása a HDInsight Hadoop-keretrendszerrel](hdinsight-use-oozie-linux-mac.md).
+Lásd: az [Apache Oozie és a Hadoop használata munkafolyamatok definiálásához és futtatásához a HDInsight-ben](hdinsight-use-oozie-linux-mac.md).
 
-## <a name="upload-data-to-azure-blob-storage"></a>Az Azure Blob storage-adatok feltöltése
+## <a name="upload-data-to-azure-blob-storage"></a>Adatok feltöltése az Azure Blob Storage-ba
 
 Lásd: [adatok feltöltése a HDInsight][hdinsight-upload-data].
 
 ## <a name="see-also"></a>Lásd még:
 
-* [HDInsight .NET SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
-* [A HDInsight Apache Hadoop-fürtök kezelése az Azure portal használatával](hdinsight-administer-use-portal-linux.md)
-* [Felügyelheti a HDInsight egy parancssori felülettel][hdinsight-admin-cli]
+* [A HDInsight .NET SDK dokumentációja](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight)
+* [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](hdinsight-administer-use-portal-linux.md)
+* [HDInsight felügyelete parancssori felületen keresztül][hdinsight-admin-cli]
 * [HDInsight-fürtök létrehozása][hdinsight-provision]
 * [Adatok feltöltése a HDInsight][hdinsight-upload-data]
-* [Az Azure HDInsight – első lépések][hdinsight-get-started]
+* [Ismerkedés az Azure HDInsight][hdinsight-get-started]
 
 [azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
 [azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/

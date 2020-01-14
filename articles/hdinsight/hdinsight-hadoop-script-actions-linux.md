@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/28/2019
-ms.openlocfilehash: 23d2c771c8918099c0db2b68c290e7d90077932a
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: ad9b4b69b0be34c89d03b677c1889e486aae0379
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687726"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931695"
 ---
 # <a name="script-action-development-with-hdinsight"></a>Parancsfájl-műveletek fejlesztése a HDInsight
 
@@ -26,7 +26,7 @@ A parancsfájlok műveletei a következő módszerekkel alkalmazhatók:
 
 | Ezzel a módszerrel alkalmazhat egy parancsfájlt... | Fürt létrehozása közben... | Futó fürtön... |
 | --- |:---:|:---:|
-| Azure Portal |✓ |✓ |
+| Azure portál |✓ |✓ |
 | Azure PowerShell |✓ |✓ |
 | Azure klasszikus parancssori felület |&nbsp; |✓ |
 | HDInsight .NET SDK |✓ |✓ |
@@ -313,7 +313,7 @@ A következő lépésekkel végezheti el a parancsfájlok üzembe helyezésének
 
 A HDInsight-fürtöket a következő módszerekkel testreszabhatja parancsfájl-műveletek használatával:
 
-* Azure Portal
+* Azure portál
 * Azure PowerShell
 * Azure Resource Manager-sablonok
 * A HDInsight .NET SDK-t.
@@ -322,12 +322,9 @@ További információ az egyes módszerek használatáról: a [parancsfájl-műv
 
 ## <a name="sampleScripts"></a>Egyéni parancsfájlok mintái
 
-A Microsoft példákat biztosít a HDInsight-fürtön található összetevők telepítéséhez. Az alábbi hivatkozásokra kattintva további példákat talál a parancsfájl-műveletekre.
+A Microsoft példákat biztosít a HDInsight-fürtön található összetevők telepítéséhez. Lásd: [a Hue telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md) példaként szolgáló parancsfájl-művelet.
 
-* [A Hue telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-hue-linux.md)
-* [Apache Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
-
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 A fejlesztett parancsfájlok használatakor a következő hibák merülhetnek fel:
 

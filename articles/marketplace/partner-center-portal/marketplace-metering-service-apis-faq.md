@@ -1,19 +1,19 @@
 ---
 title: Marketplace-mérési szolgáltatás API-k – GYIK | Azure piactér
 description: SaaS-ajánlat használatának kibocsátása az Azure piactéren.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: c4f51adbcaa5e5b750169f53a1333544365fd4f3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 044d92e79d8a885f553a7d081ce40c8b6de880a1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825495"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931218"
 ---
 # <a name="marketplace-metering-service-apis---faq"></a>Marketplace metering service API-k – GYIK
 
@@ -50,6 +50,6 @@ A Piactéri platformra kibocsátott használati események nem lesznek elfogadva
 
 Igen, ha meghívja a `GET /saas/subscriptions` API-t, az tartalmazza az összes SaaS-előfizetés listáját. Az egyes SaaS-előfizetések válaszában az állapot mező rögzíti, hogy az előfizetés aktív vagy leiratkozott állapotban van-e. Az előfizetések listázására irányuló hívás legfeljebb 100 előfizetést ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért lásd: [Marketplace-mérési szolgáltatás API](./marketplace-metering-service-apis.md) -k.

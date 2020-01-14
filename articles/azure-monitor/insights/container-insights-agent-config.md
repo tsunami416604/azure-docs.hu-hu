@@ -2,19 +2,23 @@
 title: Azure Monitor konfigurálása a containers Agent adatgyűjtéshez | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a Azure Monitor for containers Agent az stdout/stderr és a környezeti változók naplózási gyűjteményének vezérléséhez.
 ms.topic: conceptual
-ms.date: 10/15/2019
-ms.openlocfilehash: 0bde696f39af22f864500e0c79b5e03ca66cc7f0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: 28b93190298ae61732ff7d2e297899af4ba0e5f2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405684"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933021"
 ---
 # <a name="configure-agent-data-collection-for-azure-monitor-for-containers"></a>Az ügynök adatgyűjtésének konfigurálása a tárolók számára Azure Monitor
 
-A tárolók Azure Monitor az stdout, a stderr és a környezeti változókat gyűjtik az Azure Kubernetes Service-ben (ak) üzemeltetett felügyelt Kubernetes-fürtökön üzembe helyezett tároló munkaterhelésekről a tároló ügynökből. Az ügynök adatgyűjtési beállításainak konfigurálásához létrehozhat egy egyéni Kubernetes-ConfigMaps a felhasználói élmény szabályozása érdekében. 
+A tárolók Azure Monitor az stdout, a stderr és a környezeti változókat gyűjtik a felügyelt Kubernetes-fürtökre telepített tároló-munkaterhelésekről a tároló ügynökből. Az ügynök adatgyűjtési beállításainak konfigurálásához létrehozhat egy egyéni Kubernetes-ConfigMaps a felhasználói élmény szabályozása érdekében. 
 
 Ez a cikk bemutatja, hogyan hozhat létre ConfigMap, és hogyan konfigurálhatja az adatgyűjtést a követelmények alapján.
+
+>[!NOTE]
+>Az Azure Red Hat OpenShift esetében a sablon ConfigMap-fájlját a *OpenShift-Azure-Logging* névtérben hozza létre a rendszer. 
+>
 
 ## <a name="configmap-file-settings-overview"></a>A ConfigMap-fájlok beállításai – áttekintés
 
@@ -44,9 +48,12 @@ A ConfigMaps egy globális lista, és csak egy ConfigMap alkalmazható az ügyn�
 
 A következő lépések végrehajtásával konfigurálja és telepítheti a ConfigMap konfigurációs fájlját a fürtön.
 
-1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablon ConfigMap YAML fájlt, és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven.  
+1. [Töltse le](https://github.com/microsoft/OMS-docker/blob/ci_feature_prod/Kubernetes/container-azm-ms-agentconfig.yaml) a sablon ConfigMap YAML fájlt, és mentse azt tároló-Keresztesné Gréczi Ágnes-MS-agentconfig. YAML néven. 
 
-2. Szerkessze a ConfigMap YAML-fájlt a testreszabásokkal az stdout, a stderr és/vagy a környezeti változók összegyűjtéséhez.
+   >[!NOTE]
+   >Ez a lépés nem szükséges az Azure Red Hat OpenShift használata esetén, mivel a ConfigMap sablon már létezik a fürtön.
+
+2. Szerkessze a ConfigMap YAML-fájlt a testreszabásokkal az stdout, a stderr és/vagy a környezeti változók összegyűjtéséhez. Ha a ConfigMap YAML-fájlt szerkeszti az Azure Red Hat OpenShift, először futtassa a parancsot `oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging` a fájl megnyitásához egy szövegszerkesztőben.
 
     - Ha ki szeretné zárni az stdout-naplók adott névtereit, a következő példa alapján konfigurálja a kulcsot/értéket: `[log_collection_settings.stdout] enabled = true exclude_namespaces = ["my-namespace-1", "my-namespace-2"]`.
     
@@ -54,15 +61,17 @@ A következő lépések végrehajtásával konfigurálja és telepítheti a Conf
     
     - A stderr-naplók fürtre kiterjedő letiltásához konfigurálja a kulcsot/értéket a következő példa használatával: `[log_collection_settings.stderr] enabled = false`.
 
-3. Hozzon létre ConfigMap a következő kubectl-parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml>`.
+3. Az Azure Red Hat OpenShift eltérő fürtök esetén a következő kubectl parancs futtatásával hozzon létre ConfigMap: `kubectl apply -f <configmap_yaml_file.yaml>` az Azure Red Hat OpenShift-től eltérő fürtökön. 
     
     Példa: `kubectl apply -f container-azm-ms-agentconfig.yaml`. 
-    
-    A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezésekor megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
 
-## <a name="verify-configuration"></a>Konfiguráció ellenőrzése 
+    Az Azure Red Hat OpenShift mentse a módosításokat a szerkesztőben.
 
-A konfiguráció sikeres alkalmazásának ellenőrzéséhez használja a következő parancsot a naplók áttekintéséhez egy ügynök pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Ha konfigurációs hibák vannak a omsagent hüvelyből, a kimenet az alábbihoz hasonló hibákat jelenít meg:
+A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezésekor megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" created`.
+
+## <a name="verify-configuration"></a>Konfiguráció ellenőrzése
+
+Annak ellenőrzéséhez, hogy a konfiguráció sikeresen alkalmazva lett-e az Azure Red Hat OpenShift eltérő fürtre, a következő paranccsal tekintheti át a naplókat egy ügynök pod: `kubectl logs omsagent-fdf58 -n=kube-system`. Ha konfigurációs hibák vannak a omsagent hüvelyből, a kimenet az alábbihoz hasonló hibákat jelenít meg:
 
 ``` 
 ***************Start Config Processing******************** 
@@ -73,6 +82,10 @@ A konfigurációs módosítások alkalmazásával kapcsolatos hibák a felülviz
 
 - Egy Agent Pod-naplókból ugyanazzal a `kubectl logs` parancs használatával. 
 
+    >[!NOTE]
+    >Ez a parancs nem alkalmazható az Azure Red Hat OpenShift-fürtre.
+    > 
+
 - Élő naplókból. Az élő naplók az alábbihoz hasonló hibákat mutatnak:
 
     ```
@@ -81,11 +94,21 @@ A konfigurációs módosítások alkalmazásával kapcsolatos hibák a felülviz
 
 - A Log Analytics munkaterület **KubeMonAgentEvents** táblájában. Az adatküldés óránként, a konfigurációs *hibák súlyossága miatt.* Ha nincsenek hibák, a táblázatban szereplő *bejegyzés súlyossági adatokkal*fog rendelkezni, ami nem jelent hibát. A **címkék** tulajdonság további információkat tartalmaz a pod és a Container azonosítóról, amelyen a hiba történt, valamint az első előfordulást, az utolsó előfordulást és a számlálást is az elmúlt órában.
 
-Hibák miatt a omsagent nem elemezheti a fájlt, ezért az újraindítást és az alapértelmezett konfigurációt használja. Miután kijavította a hibát (ka) t a ConfigMap-ben, mentse a YAML-fájlt, és alkalmazza a frissített ConfigMaps a következő parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml`.
+- Az Azure Red Hat OpenShift ellenőrizze a omsagent naplóit, ha a **ContainerLog** táblában ellenőrzi, hogy a OpenShift naplózási gyűjteménye engedélyezve van-e.
+
+Miután kijavította a hibát (ka) t az Azure Red Hat OpenShift eltérő fürtökön lévő ConfigMap, mentse a YAML-fájlt, és alkalmazza a frissített ConfigMaps a következő parancs futtatásával: `kubectl apply -f <configmap_yaml_file.yaml`. Az Azure Red Hat OpenShift szerkessze és mentse a frissített ConfigMaps a következő parancs futtatásával:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 ## <a name="applying-updated-configmap"></a>Frissített ConfigMap alkalmazása
 
-Ha már telepített egy ConfigMap a fürtön, és egy újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`.
+Ha már telepített egy ConfigMap az Azure Red Hat OpenShift eltérő fürtökön, és újabb konfigurációval szeretné frissíteni, akkor szerkesztheti a korábban használt ConfigMap-fájlt, majd alkalmazhatja ugyanazt a parancsot, mint korábban, `kubectl apply -f <configmap_yaml_file.yaml`. Az Azure Red Hat OpenShift szerkessze és mentse a frissített ConfigMaps a következő parancs futtatásával:
+
+``` bash
+oc edit configmaps container-azm-ms-agentconfig -n openshift-azure-logging
+```
 
 A konfiguráció módosítása több percet is igénybe vehet, mielőtt érvénybe lépnek, és a fürtben lévő összes omsagent-hüvely újra fog indulni. Az újraindítás az összes omsagent-hüvely működés közbeni újraindítása, és nem minden újraindítási idő. Az újraindítások befejezésekor megjelenik egy üzenet, amely a következőhöz hasonló, és az eredményt tartalmazza: `configmap "container-azm-ms-agentconfig" updated`.
 

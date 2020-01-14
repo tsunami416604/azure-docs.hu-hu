@@ -13,19 +13,22 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: pim
-ms.date: 11/08/2019
+ms.date: 01/10/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2585457d22b773407c41bb6ea82c30a25fbfb88e
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.openlocfilehash: 905acd206ba574e092f41707c9a5625bcaed7f8d
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73847151"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932377"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management
 
 Azure Active Directory (Azure AD) Privileged Identity Management (PIM) használatával megtekintheti a szervezeten belüli Azure-erőforrások szerepköreinek tevékenységeit, aktiválásait és naplózási előzményeit. Ide tartoznak az előfizetések, az erőforráscsoportok és a virtuális gépek is. A Azure Portalon belüli, az Azure szerepköralapú hozzáférés-vezérlést (RBAC) használó összes erőforrás kihasználhatja Privileged Identity Management biztonsági és életciklus-kezelési funkcióit.
+
+> [!NOTE]
+> Ha a szervezete egy Azure-beli [delegált erőforrás-kezelést](../../lighthouse/concepts/azure-delegated-resource-management.md)használó szolgáltatónál kiszervezett felügyeleti funkciókat használ, az adott szolgáltató által meghatalmazott szerepkör-hozzárendelések nem jelennek meg.
 
 ## <a name="view-activity-and-activations"></a>Tevékenységek és aktiválások megtekintése
 
@@ -109,7 +112,7 @@ A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekin
 
     ![Az aktuális felhasználó naplózási listája](media/azure-pim-resource-rbac/my-audit-time.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management](pim-resource-roles-assign-roles.md)
 - [Azure-beli erőforrás-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management](pim-resource-roles-approval-workflow.md)

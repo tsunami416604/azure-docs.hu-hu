@@ -16,12 +16,12 @@ ms.date: 12/13/2018
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 562a94bbbd1999b9ca9cf0c65cdb816848648133
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bf2f9503ae704110786a1e73aec3da18c17e4ea
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422471"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932426"
 ---
 # <a name="manage-guest-access-with-azure-ad-access-reviews"></a>A vendég hozzáférésének kezelése az Azure AD hozzáférési felülvizsgálatokkal
 
@@ -37,7 +37,7 @@ Azt is megteheti, hogy a vendég felhasználói megfelelő hozzáféréssel rend
 
 - Prémium szintű Azure AD P2
 
-További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
+További információk a [licencekre vonatkozó követelmények](access-reviews-overview.md#license-requirements).
 
 ## <a name="create-and-perform-an-access-review-for-guests"></a>Hozzáférési felülvizsgálat létrehozása és végrehajtása a vendégek számára
 

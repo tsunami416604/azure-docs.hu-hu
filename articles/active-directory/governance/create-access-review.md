@@ -15,12 +15,12 @@ ms.date: 05/21/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 583eb62e6eeaaa799d2ea75261ee511fb8ddb7ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e65eb08873da71c7683fe3347484831dfff58793
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422671"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932623"
 ---
 # <a name="create-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>Csoportok és alkalmazások hozzáférési felülvizsgálatának létrehozása az Azure AD hozzáférési felülvizsgálatokban
 
@@ -33,7 +33,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy vagy több hozzáférési fel�
 - Prémium szintű Azure AD P2
 - Globális rendszergazda vagy felhasználói rendszergazda
 
-További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
+További információkért lásd a [licencekre vonatkozó követelményeket](access-reviews-overview.md#license-requirements).
 
 ## <a name="create-one-or-more-access-reviews"></a>Egy vagy több hozzáférési felülvizsgálat létrehozása
 

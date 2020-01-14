@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/13/2019
+ms.date: 01/10/2020
 ms.custom: seodec18
-ms.openlocfilehash: 6ab9d0ae07978e69bebb0fc24c8965cce971cfd5
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: c85db05e6feeea43023c2391998f837348caed4e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082336"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929644"
 ---
 # <a name="add-blobs-to-objects-in-azure-digital-twins"></a>Blobok hozzáadása objektumokhoz az Azure digitális Ikrekben
 
@@ -36,7 +36,7 @@ A **Content-Type** és a **Content-hajlam**mellett az Azure digitális Twins blo
 
 A négy fő JSON-séma a következők:
 
-[JSON-sémák ![](media/how-to-add-blobs/blob-models-img.png)](media/how-to-add-blobs/blob-models-img.png#lightbox)
+[JSON-sémák ![](media/how-to-add-blobs/blob-models-swagger-img.png)](media/how-to-add-blobs/blob-models-swagger-img.png#lightbox)
 
 A JSON-blob metaadatai a következő modellnek felelnek meg:
 
@@ -51,16 +51,16 @@ A JSON-blob metaadatai a következő modellnek felelnek meg:
   }
 ```
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Type (Típus) | Leírás |
 | --- | --- | --- |
 | **parentId** | Sztring | A blob és a (szóközök, eszközök vagy felhasználók) hozzárendelése a szülő entitáshoz |
-| **name** |Sztring | A blob egy emberi felhasználóbarát neve |
+| **név** |Sztring | A blob egy emberi felhasználóbarát neve |
 | **type** | Sztring | A blob típusa – a *típus* -és *typeId* nem használható  |
 | **typeId** | Egész szám | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
-| **subtype** | Sztring | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
+| **altípus** | Sztring | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
 | **subtypeId** | Egész szám | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
-| **description** | Sztring | A blob testreszabott leírása |
-| **sharing** | Sztring | Azt határozza meg, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
+| **Leírás** | Sztring | A blob testreszabott leírása |
+| **megosztása** | Sztring | Azt határozza meg, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
 
 A blob metaadatait mindig a **Content-Type** `application/json` vagy egy `.json` fájlnak megfelelő első adattömbként adja meg a rendszer. A rendszer a második adattömbben adja meg a fájlhoz tartozó adatmennyiséget, és bármilyen támogatott MIME-típust tartalmazhat.
 
@@ -106,17 +106,17 @@ Az egyénileg visszaadott Blobok megfelelnek a következő JSON-sémának:
 }
 ```
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Type (Típus) | Leírás |
 | --- | --- | --- |
 | **id** | Sztring | A blob egyedi azonosítója |
-| **name** |Sztring | A blob egy emberi felhasználóbarát neve |
+| **név** |Sztring | A blob egy emberi felhasználóbarát neve |
 | **parentId** | Sztring | A blob és a (szóközök, eszközök vagy felhasználók) hozzárendelése a szülő entitáshoz |
 | **type** | Sztring | A blob típusa – a *típus* -és *typeId* nem használható  |
 | **typeId** | Egész szám | A blob típusának azonosítója – nem használható a *Type* és a *typeId* |
-| **subtype** | Sztring | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
+| **altípus** | Sztring | A blob altípusa-nem használhatja az *altípust* és a *subtypeId* |
 | **subtypeId** | Egész szám | A blob altípusának azonosítója – nem használható *altípus* és *subtypeId* |
-| **sharing** | Sztring | Azt határozza meg, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
-| **description** | Sztring | A blob testreszabott leírása |
+| **megosztása** | Sztring | Azt határozza meg, hogy a blob osztható-e: Enum [`None`, `Tree`, `Global`] |
+| **Leírás** | Sztring | A blob testreszabott leírása |
 | **contentInfos** | Tömb | Strukturálatlan metaadatokat ad meg, beleértve a verziószámot is |
 | **fullName** | Sztring | A blob teljes neve |
 | **spacePaths** | Sztring | A terület elérési útja |
@@ -133,7 +133,7 @@ Ha egy szövegfájlt blobként kíván feltölteni, és egy szóközzel társít
 YOUR_MANAGEMENT_API_URL/spaces/blobs
 ```
 
-A következő szervezethez:
+A következő törzstel:
 
 ```plaintext
 --USER_DEFINED_BOUNDARY
@@ -157,7 +157,7 @@ This is my blob content. In this case, some text, but I could also be uploading 
 --USER_DEFINED_BOUNDARY--
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | USER_DEFINED_BOUNDARY | Egy többrészes tartalom határának neve |
 
@@ -190,13 +190,13 @@ curl -X POST "YOUR_MANAGEMENT_API_URL/spaces/blobs" \
  -F "text=PATH_TO_FILE;type=text/plain"
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_TOKEN | Az érvényes OAuth 2,0-token |
 | YOUR_SPACE_ID | Annak a helynek az azonosítója, amelyhez a blob társítva van |
 | PATH_TO_FILE | A szövegfájl elérési útja |
 
-[![cURL – példa](media/how-to-add-blobs/curl-img.png)](media/how-to-add-blobs/curl-img.png#lightbox)
+[![cURL – példa](media/how-to-add-blobs/http-blob-post-through-curl-img.png)](media/how-to-add-blobs/http-blob-post-through-curl-img.png#lightbox)
 
 A sikeres közzététel az új blob AZONOSÍTÓját adja vissza.
 
@@ -208,7 +208,7 @@ A következő szakaszok a Blobokkal kapcsolatos alapvető API-végpontokat és a
 
 Blobokat csatolhat az eszközökhöz. Az alábbi képen a felügyeleti API-k felületi dokumentációja látható. Megadja az eszközökhöz kapcsolódó API-végpontokat a Blobok felhasználásához, valamint a szükséges elérésiút-paramétereket.
 
-[![eszköz Blobok](media/how-to-add-blobs/blobs-device-api-img.png)](media/how-to-add-blobs/blobs-device-api-img.png#lightbox)
+[![eszköz Blobok](media/how-to-add-blobs/blobs-device-api-swagger-img.png)](media/how-to-add-blobs/blobs-device-api-swagger-img.png#lightbox)
 
 Ha például egy blobot szeretne frissíteni vagy létrehozni, és a blobot egy eszközhöz szeretné csatlakoztatni, a következőhöz hitelesített HTTP-javítási kérelmet kell tennie:
 
@@ -226,7 +226,7 @@ A sikeres kérések JSON-objektumot adnak vissza a [korábban leírtaknak](#blob
 
 Blobokat is csatolhat a szóközökhöz. Az alábbi képen a Blobok kezeléséért felelős összes szóköz API-végpont szerepel. Emellett felsorolja a végpontokra átadni kívánt elérésiút-paramétereket is.
 
-[![terület Blobok](media/how-to-add-blobs/blobs-space-api-img.png)](media/how-to-add-blobs/blobs-space-api-img.png#lightbox)
+[![terület Blobok](media/how-to-add-blobs/blobs-space-api-swagger-img.png)](media/how-to-add-blobs/blobs-space-api-swagger-img.png#lightbox)
 
 Ha például egy tárhelyhez csatolt blobot szeretne visszaadni, akkor a következőre hitelesített HTTP GET kérelmet kell tennie:
 
@@ -246,7 +246,7 @@ Az ugyanahhoz a végponthoz tartozó frissítési kérések metaadat-leírásai 
 
 Blobokat csatolhat felhasználói modellekhez (például egy profilhoz tartozó kép hozzárendeléséhez). Az alábbi képen a releváns felhasználói API-végpontok és a szükséges elérésiút-paraméterek láthatók, például `id`:
 
-[Felhasználói Blobok ![](media/how-to-add-blobs/blobs-users-api-img.png)](media/how-to-add-blobs/blobs-users-api-img.png#lightbox)
+[Felhasználói Blobok ![](media/how-to-add-blobs/blobs-users-api-swagger-img.png)](media/how-to-add-blobs/blobs-users-api-swagger-img.png#lightbox)
 
 Ha például egy felhasználóhoz csatolt blobot szeretne beolvasni, hozzon végre egy hitelesített HTTP GET-kérést az összes szükséges űrlapadatokat:
 
@@ -262,23 +262,41 @@ A sikeres kérések JSON-objektumot adnak vissza a [korábban leírtaknak](#blob
 
 ## <a name="common-errors"></a>Gyakori hibák
 
-Gyakori hiba, hogy nem adja meg a helyes fejléc-információkat:
+* Gyakori hiba, hogy nem adja meg a helyes fejléc-információkat:
 
-```JSON
-{
-    "error": {
-        "code": "400.600.000.000",
-        "message": "Invalid media type in first section."
-    }
-}
-```
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "Invalid media type in first section."
+      }
+  }
+  ```
 
-A hiba megoldásához ellenőrizze, hogy a teljes kérelem megfelelő **Content-Type** fejlécet tartalmaz-e:
+  A hiba megoldásához ellenőrizze, hogy a teljes kérelem megfelelő **Content-Type** fejlécet tartalmaz-e:
 
-* `multipart/mixed`
-* `multipart/form-data`
+     * `multipart/mixed`
+     * `multipart/form-data`
 
-Győződjön meg arról is, hogy a többrészes adattömbök esetében szükség van egy megfelelő **tartalomtípusra** .
+  Győződjön meg arról is, hogy minden *többrészes adattömb* megfelelő **tartalomtípussal**rendelkezik.
+
+* A második gyakori hiba akkor fordul elő, ha több blob van hozzárendelve ugyanahhoz az erőforráshoz a [térbeli intelligencia gráfban](concepts-objectmodel-spatialgraph.md):
+
+  ```JSON
+  {
+      "error": {
+          "code": "400.600.000.000",
+          "message": "SpaceBlobMetadata already exists."
+      }
+  }
+  ```
+
+  > [!NOTE]
+  > Az **üzenet** attribútuma az erőforrástól függően változhat. 
+
+  A térbeli gráfon belül csak egy blobot lehet csatolni az egyes erőforrásokhoz. 
+
+  A hiba megoldásához frissítse a meglévő blobot a megfelelő API HTTP-javítási művelettel. Ha így tesz, a rendszer lecseréli a meglévő blob-adatfájlokat a kívánt értékekre.
 
 ## <a name="next-steps"></a>Következő lépések
 

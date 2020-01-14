@@ -12,16 +12,16 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.subservice: compliance
-ms.date: 08/05/2019
+ms.date: 01/10/2020
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4d9922f1c4cbb0afca74c911d9b2bc9f0eab0714
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7e77f507f2a3bd89069f25bf984cf4059009faa6
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422779"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932644"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
 
@@ -97,27 +97,34 @@ Ha készen áll a hozzáférési felülvizsgálatok üzembe helyezésére a szer
 
 [!INCLUDE [Azure AD Premium P2 license](../../../includes/active-directory-p2-license.md)]
 
-### <a name="which-users-must-have-licenses"></a>Mely felhasználóknak kell licenccel rendelkezniük?
+### <a name="how-many-licenses-must-you-have"></a>Hány licencre van szükség?
 
-Minden, a hozzáférési felülvizsgálattal kommunikáló felhasználónak fizetős prémium szintű Azure AD P2 licenccel kell rendelkeznie. Példák:
+Győződjön meg arról, hogy a címtár legalább annyi prémium szintű Azure AD P2-licenccel rendelkezik, mint a következő feladatokat végző alkalmazottakkal:
 
-- Hozzáférési felülvizsgálatot létrehozó rendszergazdák
+- Felülvizsgáló hozzárendelt tagok és vendég felhasználók
+- Önellenőrzést végző tagok és vendég felhasználók
 - Hozzáférési felülvizsgálatot végző tulajdonosok csoportosítása
-- Felülvizsgáló hozzárendelt felhasználók
-- Önellenőrzést végző felhasználók
+- Hozzáférési felülvizsgálatot végző alkalmazások tulajdonosai
 
-Megkérheti a vendég felhasználókat, hogy vizsgálják felül a saját hozzáférését. Minden, a saját szervezete felhasználói számára hozzárendelt fizetett prémium szintű Azure AD P2-licenc esetében használhatja az Azure AD Business-to-Business (B2B) használatát, hogy a külső felhasználói támogatás keretében legfeljebb öt vendéget hívjon fel. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+Prémium szintű Azure AD P2-licencek **nem** szükségesek a következő feladatokhoz:
 
-Íme néhány példa a szükséges licencek számának meghatározására.
+- A globális rendszergazdai vagy felhasználói rendszergazdai szerepkörrel rendelkező felhasználók számára nem szükséges licenc, amely a hozzáférési felülvizsgálatokat állítja be, konfigurálja a beállításokat, vagy alkalmazza a döntéseket a felülvizsgálatok alapján.
 
-| Alkalmazási helyzet | Számítás | Szükséges licencek száma |
+Minden, a saját szervezete felhasználói számára hozzárendelt fizetett prémium szintű Azure AD P2-licenc esetében használhatja az Azure AD Business-to-Business (B2B) használatát, hogy a külső felhasználói támogatás keretében legfeljebb öt vendéget hívjon fel. Ezek a vendég felhasználók prémium szintű Azure AD P2 funkciókat is használhatják. További információ: [Azure ad B2B együttműködés licencelési útmutatója](../b2b/licensing-guidance.md).
+
+További információ a licencekről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
+
+### <a name="example-license-scenarios"></a>Példa licencelési forgatókönyvekre
+
+Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
+
+| Alkalmazási helyzet | Számítás | Licencek száma |
 | --- | --- | --- |
-| A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban, 500 felhasználóval. A 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 1 licenc a rendszergazda + 3 licenchez minden csoport tulajdonosának felülvizsgáló való használata esetén. | 4 |
-| A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban, 500 felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 500-licencekhez az egyes felhasználókhoz, mint önellenőrzéses. | 501 |
-| A rendszergazda 5 felhasználót és 25 vendég felhasználót hoz létre a B csoport hozzáférési felülvizsgálatával. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 5 licenchez minden felhasználóhoz, mint önellenőrzési.<br/>(a vendég felhasználói a szükséges 1:5-os arányban szerepelnek) | 6 |
-| A rendszergazda a C csoport hozzáférési felülvizsgálatát 5 felhasználóval és 108 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 1 licenc a rendszergazda + 5 licenc minden felhasználóhoz, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára.<br/>1 + 5 = 6 licenc, amely 5\*6 = 30 vendég felhasználóra vonatkozik. A fennmaradó (108-5\*6) = 78 vendég felhasználó, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
-
-További információ a licencek felhasználási módjaihoz való hozzárendeléséről: [licencek kiosztása vagy eltávolítása a Azure Active Directory portál használatával](../fundamentals/license-users-groups.md).
+| A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
+| A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |
+| A rendszergazda 500 felhasználóval hoz létre hozzáférési felülvizsgálatot a B csoport számára. Saját felülvizsgálatot tesz lehetővé. | 500 licenc az egyes felhasználókhoz, mint önfelülvizsgáló | 500 |
+| A rendszergazda a C csoport hozzáférési felülvizsgálatát 50 tag felhasználókkal és 25 vendég felhasználóval hozza létre. Saját felülvizsgálatot tesz lehetővé. | 50 licenc minden felhasználóhoz, mint önellenőrzési.<br/>(a vendég felhasználói a szükséges 1:5-os arányban szerepelnek) | 50 |
+| A rendszergazda a D csoporthoz tartozó hozzáférési felülvizsgálatot hoz létre 6 tagú felhasználóval és 108 vendég felhasználóval. Saját felülvizsgálatot tesz lehetővé. | 6 licenc minden felhasználó számára, mint önálló véleményezők + 16 további licencek a szükséges 1:5 arányban az összes 108 vendég felhasználó számára. 6 licenc, amely 6\*5 = 30 vendég felhasználóra vonatkozik. A fennmaradó (108-6\*5) = 78 vendég felhasználó, 78/5 = 16 további licenc szükséges. Így összesen 6 + 16 = 22 licenc szükséges. | 22 |
 
 ## <a name="next-steps"></a>Következő lépések
 

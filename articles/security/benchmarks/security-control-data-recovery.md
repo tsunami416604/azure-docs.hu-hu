@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1cd3e39fd504b5095a83192a4a6314c71d3ca980
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: c585ebd903d4070f6247456e06efffbc6ec45270
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564295"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934496"
 ---
 # <a name="security-control-data-recovery"></a>Biztonsági ellenőrzés: Adathelyreállítás
 
@@ -27,7 +27,9 @@ Győződjön meg arról, hogy a rendszeradatok, a konfigurációk és a titkos k
 
 Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (Azure-beli virtuális gépek, SQL Server vagy fájlmegosztás), valamint a kívánt gyakoriságot és megőrzési időt.
 
-A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup/
+A Azure Backup engedélyezése:
+
+https://docs.microsoft.com/azure/backup/
 
 ## <a name="92-perform-complete-system-backups-and-backup-any-customer-managed-keys"></a>9,2: teljes rendszerbiztonsági mentés és biztonsági másolat készítése bármely ügyfél által felügyelt kulcsról
 
@@ -37,9 +39,13 @@ A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup/
 
 Engedélyezze Azure Backup és a célként megadott virtuális gép (ek) et, valamint a kívánt gyakoriságot és megőrzési időt. Ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton belül.
 
-A Azure Backup engedélyezése: https://docs.microsoft.com/azure/backup/
+A Azure Backup engedélyezése:
 
-Key Vault-kulcsok biztonsági mentése az Azure-ban: https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
+https://docs.microsoft.com/azure/backup/
+
+Key Vault-kulcsok biztonsági mentése az Azure-ban:
+
+https://docs.microsoft.com/powershell/module/azurerm.keyvault/backup-azurekeyvaultkey?view=azurermps-6.13.0
 
 ## <a name="93-validate-all-backups-including-customer-managed-keys"></a>9,3: az összes biztonsági másolat ellenőrzése, beleértve az ügyfél által felügyelt kulcsokat
 

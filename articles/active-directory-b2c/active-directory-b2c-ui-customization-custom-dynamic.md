@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/20/2017
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: dbc932bd7a68212ce94f2ad07de6e625d26c0918
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: ae29a068ef29898c3fa27d3620d1e6be0be4bf3b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950238"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931205"
 ---
 # <a name="azure-active-directory-b2c-configure-the-ui-with-dynamic-content-by-using-custom-policies"></a>Azure Active Directory B2C: a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával
 
@@ -217,17 +217,19 @@ A HTML5-sablon használatra kész. Ez azonban nem érhető el a `ContentDefiniti
     ![Példa XML-kódrészletre Kiemelt Tartalomdefinícióban elemmel](media/active-directory-b2c-ui-customization-custom-dynamic/aadb2c-ief-ui-customization-content-definition.png)
 
 ## <a name="step-6-upload-the-policy-to-your-tenant"></a>6\. lépés: a szabályzat feltöltése a bérlőbe
-1. A [Azure Portal](https://portal.azure.com)váltson a [Azure ad B2C bérlő kontextusára](active-directory-b2c-navigate-to-b2c-context.md), majd válassza a **Azure ad B2C**lehetőséget.
+1. A [Azure Portal](https://portal.azure.com)válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 
-2. Válassza az **identitási élmény keretrendszert**.
+1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 
-3. Válassza **az összes szabályzat**lehetőséget.
+1. Válassza az **identitási élmény keretrendszert**.
 
-4. Válassza a **szabályzat feltöltése**lehetőséget.
+1. Válassza **az összes szabályzat**lehetőséget.
 
-5. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
+1. Válassza a **szabályzat feltöltése**lehetőséget.
 
-6. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
+1. Jelölje be a **házirend felülírása, ha létezik** jelölőnégyzetet.
+
+1. Töltse fel a *TrustFrameworkExtensions. XML* fájlt, és ellenőrizze, hogy átadja-e az érvényesítést.
 
 ## <a name="step-7-test-the-custom-policy-by-using-run-now"></a>7\. lépés: az egyéni házirend tesztelése a Futtatás most használatával
 1. Válassza ki **Azure ad B2C beállításokat**, majd válassza az **identitási élmény keretrendszert**.
@@ -345,7 +347,3 @@ Ha bejelöli a **regisztráció most** hivatkozást a bejelentkezési oldalon, a
 ## <a name="optional-download-the-complete-policy-files-and-code"></a>Választható A teljes szabályzat fájljainak és kódjának letöltése
 * Miután elvégezte az [Egyéni szabályzatok használatának első lépései útmutatót](active-directory-b2c-get-started-custom.md) , javasoljuk, hogy a saját egyéni házirend-fájljaival hozza létre a forgatókönyvet. Az Ön referenciája alapján megadta a [minta házirend-fájlokat](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
 * A Visual Studio-megoldás teljes kódját a [következő hivatkozásra töltheti le: minta](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/aadb2c-ief-ui-customization).
-
-
-
-

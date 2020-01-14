@@ -2,18 +2,18 @@
 title: A Azrue virtuális gépek folyamatos replikálásának megoldása Azure Site Recovery
 description: Az Azure Virtual Machines szolgáltatás vész-helyreállításra való replikálásával kapcsolatos hibák és problémák elhárítása
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: asgang
-ms.openlocfilehash: 7b9da202704b20e5770343f857c044ea19ae696a
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620887"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930738"
 ---
 # <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Az Azure – Azure virtuális gépek replikálásának folyamatban lévő problémáinak elhárítása
 
@@ -88,7 +88,7 @@ A leggyakoribb problémák némelyike alább látható
 #### <a name="cause-1-known-issue-in-sql-server-20082008-r2"></a>1\. ok: ismert probléma az SQL Server 2008/2008 R2-ben 
 **Javítás** : az SQL Server 2008/2008 R2 ismert hibája. Tekintse meg ezt a TUDÁSBÁZISCIKK [Azure site Recovery Agent vagy más, nem összetevővel rendelkező VSS biztonsági mentést, amely a SQL Server 2008 R2-t futtató kiszolgálókon meghiúsul.](https://support.microsoft.com/help/4504103/non-component-vss-backup-fails-for-server-hosting-sql-server-2008-r2)
 
-#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. ok: Azure Site Recovery feladatok meghiúsulnak a SQL Server példányok bármely verzióját üzemeltető kiszolgálókon a AUTO_CLOSE-adatbázisok segítségével 
+#### <a name="cause-2-azure-site-recovery-jobs-fail-on-servers-hosting-any-version-of-sql-server-instances-with-auto_close-dbs"></a>2\. ok: Azure Site Recovery feladatok meghiúsulnak a SQL Server példányok bármely verzióját üzemeltető kiszolgálókon AUTO_CLOSE-adatbázisok 
 **Javítási útmutató** [: tudásbáziscikk](https://support.microsoft.com/help/4504104/non-component-vss-backups-such-as-azure-site-recovery-jobs-fail-on-ser) 
 
 
@@ -132,8 +132,8 @@ A fenti példában a **2147754994** a hibakód, amely az alább látható hibáv
 **Javítás**: az alkalmazás konzisztencia-címkézésének létrehozásához Azure site Recovery a Microsoft Kötet árnyékmásolata szolgáltatást (VSS) használja. Ellenőrizze, hogy telepítve van-e a Azure Site Recovery VSS-szolgáltató szolgáltatás. </br>
 
 - Próbálja megismételni a szolgáltató telepítését a következő parancsok használatával:
-- Meglévő szolgáltató eltávolítása: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Uninstall.cmd
-- Újratelepítés: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\InMageVSSProvider_Install.cmd
+- Meglévő szolgáltató eltávolítása: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Uninstall. cmd
+- Újratelepítés: C:\Program Files (x86) \Microsoft Azure site Recovery\agent\ InMageVSSProvider_Install. cmd
  
 Ellenőrizze, hogy a VSS-szolgáltató szolgáltatás indítási típusa **automatikus**értékre van-e állítva.
     - Indítsa újra a következő szolgáltatásokat:

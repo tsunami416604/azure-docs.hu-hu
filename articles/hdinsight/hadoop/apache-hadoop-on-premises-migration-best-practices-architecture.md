@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 9f532e7bbf9e24e431341344b3172c988f69bfc3
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2d0d5bb871612bc5e16a26eb49808c39661ffb50
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951530"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934692"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
 
@@ -38,12 +38,12 @@ A következő táblázat a HDInsight-fürtök létrehozásához használható k�
 
 |Eszköz|Böngésző-alapú|Parancssor|REST API|SDK|
 |---|---|---|---|---|
-|[Azure Portalra](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||
 |[cURL](../hdinsight-hadoop-create-linux-clusters-curl-rest.md)||X|X||
-|[.NET SDK](../hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md)||||X|
+|[.NET SDK](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet)||||X|
 |[Python SDK](https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python)||||X|
 |[Java SDK](https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-stable)||||X|
 |[Azure Resource Manager sablonok](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)||X|||

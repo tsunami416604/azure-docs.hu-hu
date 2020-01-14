@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/03/2019
-ms.openlocfilehash: df5dbfc9c86294c7ec046d3a02832192bf67b4ce
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 555596ba1040fcbd5c9131869fd275d749e0d734
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747088"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934028"
 ---
 # <a name="customize-azure-hdinsight-clusters-by-using-script-actions"></a>Azure HDInsight-fürtök testreszabása parancsfájl-műveletek használatával
 
@@ -148,7 +148,6 @@ A HDInsight parancsfájlokat biztosít a következő összetevők telepítéséh
 | --- | --- |
 | Azure Storage-fiók hozzáadása |`https://hdiconfigactions.blob.core.windows.net/linuxaddstorageaccountv01/add-storage-account-v01.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [további Storage-fiókok hozzáadása a HDInsight](hdinsight-hadoop-add-storage.md). |
 | A Hue telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxhueconfigactionv02/install-hue-uber-v02.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [a Hue telepítése és használata a HDInsight Hadoop-fürtökön](hdinsight-hadoop-hue-linux.md). |
-| A Giraph telepítése |`https://hdiconfigactions.blob.core.windows.net/linuxgiraphconfigactionv01/giraph-installer-v01.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [az Apache Giraph telepítése a HDInsight Hadoop-fürtökön](hdinsight-hadoop-giraph-install-linux.md). |
 | Betöltési struktúra kódtárai |`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh` kérdésre adott válaszban foglalt lépéseket. Lásd: [egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor](hdinsight-hadoop-add-hive-libraries.md). |
 
 ## <a name="use-a-script-action-during-cluster-creation"></a>Parancsfájl-művelet használata a fürt létrehozása során
@@ -221,7 +220,7 @@ A fürt létrehozása előtt több percet is igénybe vehet.
 
 ### <a name="use-a-script-action-during-cluster-creation-from-the-hdinsight-net-sdk"></a>Parancsfájl-művelet használata fürt létrehozásakor a HDInsight .NET SDK-ból
 
-A HDInsight .NET SDK olyan ügyféloldali kódtárakat biztosít, amelyek megkönnyítik a .NET-alkalmazások HDInsight való együttműködését. A kód minta: [Linux-alapú fürtök létrehozása a HDInsight-ben a .net SDK használatával](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md#use-script-action).
+A HDInsight .NET SDK olyan ügyféloldali kódtárakat biztosít, amelyek megkönnyítik a .NET-alkalmazások HDInsight való együttműködését. A kód minta esetében lásd: [parancsfájlok műveletei](https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet#script-actions).
 
 ## <a name="apply-a-script-action-to-a-running-cluster"></a>Parancsfájl-művelet alkalmazása futó fürtre
 
@@ -507,7 +506,6 @@ Ez alól két kivétel van:
 ## <a name="next-steps"></a>Következő lépések
 
 * [Parancsfájl-műveleti parancsfájlok fejlesztése a HDInsight](hdinsight-hadoop-script-actions-linux.md)
-* [Apache Giraph telepítése és használata HDInsight-fürtökön](hdinsight-hadoop-giraph-install-linux.md)
 * [További tárterület hozzáadása egy HDInsight-fürthöz](hdinsight-hadoop-add-storage.md)
 
 [img-hdi-cluster-states]: ./media/hdinsight-hadoop-customize-cluster-linux/cluster-provisioning-states.png "Szakaszok a fürt létrehozása során"

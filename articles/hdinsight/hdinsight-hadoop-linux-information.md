@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/14/2019
-ms.openlocfilehash: 21acbde147d5c1751480332e5cd9c89cdb43f8e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 3d9dec0065bb62821fcedcbc4f6e5b578c061caf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644953"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934554"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -254,11 +254,7 @@ A HDInsight egy felügyelt szolgáltatás. Ha az Azure problémát észlel a fü
 * Szolgáltatás vagy webhely telepítése és konfigurálása.
 * Telepítsen és konfiguráljon olyan összetevőt, amely a fürt több csomópontján is konfigurációs módosításokat igényel.
 
-A parancsfájl-műveletek bash-parancsfájlok. A parancsfájlok a fürt létrehozása során futnak, és további összetevők telepítésére és konfigurálására szolgálnak. Példa parancsfájlok a következő összetevők telepítéséhez:
-
-* [Apache Giraph](hdinsight-hadoop-giraph-install-linux.md)
-
-Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információkért lásd: [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Parancsfájlműveletek fejlesztése a HDInsighttal).
+A parancsfájl-műveletek bash-parancsfájlok. A parancsfájlok a fürt létrehozása során futnak, és további összetevők telepítésére és konfigurálására szolgálnak. Az egyéni parancsfájlművelet-fejlesztéssel kapcsolatos további információkért lásd: [Script Action development with HDInsight](hdinsight-hadoop-script-actions-linux.md) (Parancsfájlműveletek fejlesztése a HDInsighttal).
 
 ### <a name="jar-files"></a>JAR-fájlok
 

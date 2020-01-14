@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/27/2017
 ms.author: mikeray
-ms.openlocfilehash: ac62ec49803bf55bbe61e08e60b648dd6c268510
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f58bb534728660b85f7d16910dde7a37914fd571
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357991"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933960"
 ---
 # <a name="high-availability-and-disaster-recovery-for-sql-server-in-azure-virtual-machines"></a>Magas rendelkezésre állás és vészhelyreállítás az Azure-beli SQL Server-alapú virtuális gépeken
 
@@ -77,7 +77,7 @@ A rendelkezésre állási csoportokkal, adatbázis-tükrözéssel, naplózással
 
 ## <a name="free-dr-replica-in-azure"></a>Ingyenes DR-replika az Azure-ban
 
-Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), hibrid vész-helyreállítási (Dr) terveket is alkalmazhat SQL Server az Always On rendelkezésre állási csoportokkal vagy a feladatátvevő fürt példányaival anélkül, hogy további licencelési költségeket kellene kihasználnia a passzív Dr példányra vonatkozóan.
+Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?rtc=1&activetab=software-assurance-default-pivot:primaryr3), hibrid vész-helyreállítási (Dr) terveket is alkalmazhat SQL Server a passzív Dr-példányra vonatkozó további licencelési költségek nélkül.
 
 Az alábbi képen a telepítő az Azure-beli virtuális gépeken futó SQL Server a 12 maggal rendelkező helyszíni SQL Server üzemelő példányok vész-helyreállítási replikájának használatával futtatja. A múltban a helyszíni és az Azure-beli virtuális gépek üzembe helyezéséhez SQL Server 12 maggal kell rendelkeznie. Az új előny az Azure-beli virtuális gépeken futó passzív replika előnyeit kínálja. Most csak a helyszínen futó SQL Server 12 magot kell használnia, amennyiben az Azure-beli virtuális gépen található passzív replika vész-helyreállítási feltételei teljesülnek.
 

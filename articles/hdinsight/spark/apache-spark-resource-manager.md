@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
-ms.openlocfilehash: 8c4306b9fb7a6f45ccad45083b6efc019e9a2920
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3aab89f86dcd48328771cd0fda03d1c9de4bc2c2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951647"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932110"
 ---
 # <a name="manage-resources-for-apache-spark-cluster-on-azure-hdinsight"></a>Apache Spark-fürt erőforrásainak kezelése az Azure HDInsight
 
@@ -150,7 +150,6 @@ Indítsa el a fonal felhasználói felületét a cikk elején látható módon. 
 * [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 * [Az Application Insight telemetria-adatelemzési szolgáltatásának használata a HDInsight-ben Apache Spark](apache-spark-analyze-application-insight-logs.md)
-* [A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz](apache-spark-deep-learning-caffe.md)
 
 ### <a name="for-apache-spark-developers"></a>Apache Spark fejlesztőknek
 

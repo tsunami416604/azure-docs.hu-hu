@@ -3,18 +3,18 @@ Description: Ahhoz, hogy pénzt kapjon a kereskedelmi piactéren elérhető ajá
 title: A kifizetési fiók és az adózási űrlapok beállítása | Azure piactér
 ms.date: 12/10/2019
 ms.topic: article
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
-ms.openlocfilehash: 73ee800a837e7cd201025c93c7e88ad46f7fe256
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a6ef9711d6047a75ca5058f12e95d72a79628e30
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74980217"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934158"
 ---
-# <a name="set-up-your-payout-account-and-tax-forms"></a>A kifizetési fiók és az adózási űrlapok beállítása
+# <a name="set-up-your-payout-account-and-tax-forms"></a>Kifizetési számla és űrlapok beállítása
 
 Ahhoz, hogy pénzt kapjon a kereskedelmi piactéren elérhető ajánlatokból, be kell állítania a kifizetési fiókját, és ki kell töltenie a [partner Center](https://partner.microsoft.com/dashboard)szükséges adózási űrlapait.
 

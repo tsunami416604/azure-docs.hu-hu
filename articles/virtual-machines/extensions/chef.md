@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 2b69a17c7f9de62187d9dc99f7c1d5c5b74c25ad
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073192"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933610"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
@@ -67,26 +67,26 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ### <a name="core-property-values"></a>Alapvető tulajdonságok értékei
 
-| Name (Név) | Érték és példa | Adattípus
+| Név | Érték/példa | Adattípus
 | ---- | ---- | ----
-| apiVersion | `2017-12-01` | string (date) |
-| publisher | `Chef.Bootstrap.WindowsAzure` | sztring |
+| apiVersion | `2017-12-01` | karakterlánc (dátum) |
+| közzétevő | `Chef.Bootstrap.WindowsAzure` | sztring |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
-| typeHandlerVersion | `1210.12` | string (double) |
+| typeHandlerVersion | `1210.12` | karakterlánc (dupla) |
 
 ### <a name="settings"></a>Beállítások
 
-| Name (Név) | Érték és példa | Adattípus | Kötelező?
+| Név | Érték/példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ----
-| settings/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | string (url) | I |
-| settings/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
-| settings/runlist | `recipe[mycookbook::default]` | sztring | I |
+| beállítások/bootstrap_options/chef_server_url | `https://api.chef.io/organizations/myorg` | karakterlánc (URL) | I |
+| beállítások/bootstrap_options/validation_client_name | `myorg-validator` | sztring | I |
+| beállítások/Runlist | `recipe[mycookbook::default]` | sztring | I |
 
 ### <a name="protected-settings"></a>Védett beállítások
 
-| Name (Név) | Példa | Adattípus | Kötelező?
+| Név | Példa | Adattípus | Kötelező?
 | ---- | ---- | ---- | ---- |
-| protectedSettings/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
+| Protectedsettingsfromkeyvault/validation_key | `-----BEGIN RSA PRIVATE KEY-----\nKEYDATA\n-----END RSA PRIVATE KEY-----` | sztring | I |
 
 <!--
 ### Linux-specific settings
@@ -102,13 +102,13 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. A sablonokat egy vagy több virtuális gép üzembe helyezésére, a Chef-ügyfél telepítésére, a Chef-kiszolgálóhoz való kapcsolódásra, valamint a [futtatási lista](https://docs.chef.io/run_lists.html) által meghatározott kezdeti konfiguráció végrehajtására használhatja.
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. A sablonokat egy vagy több virtuális gép üzembe helyezésére, a Chef-ügyfél telepítésére, a Chef-kiszolgálóhoz való kapcsolódásra, valamint a [futtatási lista](https://docs.chef.io/run_lists.html) által meghatározott kezdeti konfiguráció végrehajtására használhatja.
 
 A Chef VM-bővítményt tartalmazó példa Resource Manager-sablon az [Azure](https://github.com/Azure/azure-quickstart-templates/tree/master/chef-json-parameters-linux-vm)rövid útmutatójában található.
 
-Virtuálisgép-bővítmények JSON konfigurációjának a virtuális gép típusú erőforrást belülre, vagy elhelyezve, a legfelső szintű vagy a legfelső szintű Resource Managerből származó JSON-sablon. A JSON konfigurációs elhelyezését hatással van az erőforrás nevét, és írja be az értékét. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/resource-manager-template-child-resource.md).
+A virtuálisgép-bővítmény JSON-konfigurációja beágyazható a virtuális gép erőforrásaiba, vagy egy Resource Manager JSON-sablon legfelső szintű vagy legfelső szintjén helyezhető el. A JSON-konfiguráció elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/resource-manager-template-child-resource.md).
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 Az Azure CLI használatával üzembe helyezheti a Chef virtuálisgép-bővítményt egy meglévő virtuális gépre. Cserélje le a **validation_keyt** az érvényesítési kulcs tartalmára (ez a fájl `.pem` kiterjesztésként).  Cserélje le a **validation_client_name**, **chef_server_url** és **run_list** értékeket az alapszintű csomagban lévő `knife.rb` fájlból.
 
@@ -124,13 +124,13 @@ az vm extension set \
 
 ## <a name="troubleshooting-and-support"></a>Hibaelhárítás és támogatás
 
-Bővítmény központi telepítések állapotát lehet adatokat beolvasni az Azure Portalról, és az Azure parancssori felület használatával. Adott Virtuálisgép-bővítmények központi telepítési állapotának megtekintéséhez futtassa a következő parancsot az Azure CLI használatával.
+A bővítmények állapotával kapcsolatos adatok a Azure Portalból és az Azure CLI használatával kérhetők le. Egy adott virtuális gép bővítményeinek telepítési állapotának megtekintéséhez futtassa az alábbi parancsot az Azure CLI használatával.
 
 ```azurecli
 az vm extension list --resource-group myResourceGroup --vm-name myExistingVM -o table
 ```
 
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájlt:
+A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ### <a name="linux"></a>Linux
 
@@ -144,14 +144,17 @@ Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájl
 C:\Packages\Plugins\Chef.Bootstrap.WindowsAzure.ChefClient\
 ```
 
-### <a name="error-codes-and-their-meanings"></a>Hibakódok és azok jelentését
+### <a name="error-codes-and-their-meanings"></a>Hibakódok és jelentéseik
 
-| Hibakód | Jelentés | A művelet lehetséges |
+| Hibakód | Jelentés | Lehetséges művelet |
 | :---: | --- | --- |
 | 51 | Ez a bővítmény nem támogatott a virtuális gép operációs rendszerében | |
 
 További hibaelhárítási információk a [Chef VM-bővítmény readme](https://github.com/chef-partners/azure-chef-extension)-ban találhatók.
 
-## <a name="next-steps"></a>További lépések
+> [!NOTE]
+> A Chefhez közvetlenül kapcsolódó bármilyen más esetben forduljon a [Chef ügyfélszolgálatához](https://www.chef.io/support/).
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Másik lehetőségként a egy Azure-támogatási esemény is fájl. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+## <a name="next-steps"></a>Következő lépések
+
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Másik lehetőségként egy Azure-támogatási incidenst is megadhat. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

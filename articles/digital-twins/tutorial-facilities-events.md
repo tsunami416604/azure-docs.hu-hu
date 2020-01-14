@@ -8,13 +8,13 @@ manager: bertvanhoof
 ms.custom: seodec18
 ms.service: digital-twins
 ms.topic: tutorial
-ms.date: 11/12/2019
-ms.openlocfilehash: 7700c61a978532a63fc5b3298d45b8e7041dba40
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/10/2020
+ms.openlocfilehash: 1cd617204bbc12a99b6ae9e3b55fbc59b0e0578a
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790342"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933706"
 ---
 # <a name="tutorial-receive-notifications-from-your-azure-digital-twins-spaces-by-using-logic-apps"></a>Oktatóanyag: értesítések fogadása Azure digitális Twins-tárhelyekről Logic Apps használatával
 
@@ -65,7 +65,7 @@ Az [Event Grid-témakör](../event-grid/concepts.md#topics) egy felületet bizto
 
 1. Válassza a **hozzáférési kulcsok**lehetőséget, és másolja az **1** . és a **2** . kulcsot egy ideiglenes fájlba. Ezekre az értékekre szüksége lesz a végpont létrehozásához a következő szakaszban.
 
-    [Event Grid kulcsok ![](./media/tutorial-facilities-events/event-grid-keys.png)](./media/tutorial-facilities-events/event-grid-keys.png#lightbox)
+    [Event Grid kulcsok ![](./media/tutorial-facilities-events/tutorial-event-grid-keys.png)](./media/tutorial-facilities-events/tutorial-event-grid-keys.png#lightbox)
 
 ### <a name="create-an-endpoint-for-the-event-grid-topic"></a>Végpont létrehozása az Event Grid-témakörhöz
 
@@ -114,7 +114,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
 1. Adja meg a logikai alkalmazás erőforrásának **nevét** , majd válassza ki az **előfizetését**, az **erőforráscsoportot**és a **helyet**. Kattintson a **Létrehozás** gombra.
 
-    [Logic Apps erőforrás létrehozása ![](./media/tutorial-facilities-events/create-logic-app.png)](./media/tutorial-facilities-events/create-logic-app.png#lightbox)
+    [Logic Apps erőforrás létrehozása ![](./media/tutorial-facilities-events/tutorial-create-logic-app.png)](./media/tutorial-facilities-events/tutorial-create-logic-app.png#lightbox)
 
 1. Az üzembe helyezéskor nyissa meg Logic Apps erőforrását, majd nyissa meg a **Logic app Designer** panelt. 
 
@@ -172,7 +172,7 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    c. A második **válasszon egy értéket** szövegmezőbe írja be a `UdfCustom`elemet.
 
-   [![kiválasztott feltételek](./media/tutorial-facilities-events/logic-app-condition.png)](./media/tutorial-facilities-events/logic-app-condition.png#lightbox)
+   [![kiválasztott feltételek](./media/tutorial-facilities-events/tutorial-logic-app-condition.png)](./media/tutorial-facilities-events/tutorial-logic-app-condition.png#lightbox)
 
 1. A **Ha igaz** ablakban:
 
@@ -182,9 +182,9 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) szolgáltatással aut
 
    c. A **Címzett** mezőben adja meg az e-mail-azonosítóját az értesítések fogadásához. A **Tárgy**mezőben adja meg a szöveges **digitális ikrek értesítését a térben található gyenge levegőminőség tekintetében**. Ezután válassza a **TopologyObjectId** lehetőséget a **dinamikus tartalmak** listájából a **JSON elemzéséhez**.
 
-   d. Az ugyanabban az ablakban található **törzs** területen adja meg a következőhöz hasonló szöveget: **a rendszer a helyiségben észlelt gyenge levegőminőség észlelését és a hőmérsékletet is módosítani**kell. A **dinamikus tartalmak** listájából származó elemek használatával dolgozhat.
+   d. Ugyanebben az ablakban a **törzs** alatt írja be a következőhöz hasonló szöveget: **egy helyiségben észlelt gyenge levegőminőség, a hőmérsékletet pedig módosítani**kell. A **dinamikus tartalmak** listájából származó elemek használatával dolgozhat.
 
-   [![Logic Apps "e-mail küldése" választás](./media/tutorial-facilities-events/logic-app-send-email.png)](./media/tutorial-facilities-events/logic-app-send-email.png#lightbox)
+   [![Logic Apps "e-mail küldése" választás](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png)](./media/tutorial-facilities-events/tutorial-logic-app-send-email.png#lightbox)
 
 1. Kattintson a **Save (Mentés** ) gombra a **Logic app Designer** panel tetején.
 

@@ -1,19 +1,19 @@
 ---
 title: Új Azure apps-ajánlat létrehozása a kereskedelmi piactéren
 description: Új Azure-alkalmazások létrehozása az Azure Marketplace-en, a AppSource-on vagy a Cloud Solution Provider (CSP) programon keresztül, a kereskedelmi piactér portál használatával a Microsoft partner Centerben.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: d7e05f12c04136c8394dbcb27b7a950fc5ce85d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 60a3392474d11c306d28b9d95668a1e783cdfbb0
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74281271"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930711"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -50,7 +50,7 @@ Az összes Azure-alkalmazás legalább két fájlt tartalmaz egy `.zip` Archívu
 
 Minden új Azure-alkalmazás ajánlatának tartalmaznia kell egy [Azure-partner ügyfél-használati azonosítóját (GUID](??)).
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 Tekintse át a következő Azure-alkalmazás dokumentációját, amely rövid útmutatók, oktatóanyagok és minták áttekintését nyújtja.
 
@@ -179,7 +179,7 @@ Meg kell határoznia a piactér részleteit (az ajánlat nevét, leírását, k�
 > [!NOTE]
 > Az ajánlat tartalmának listázása (például a leírás, a dokumentumok, a képernyőképek, a használati feltételek stb.) nem kötelező angol nyelven lennie, amennyiben az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is elfogadható, hogy egy *hasznos hivatkozási URL-címet* adjon meg, amely nem az ajánlatban szereplő tartalomban használt tartalmat tartalmazza.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
 Az itt megadott név jelenik meg az ügyfelek számára az ajánlati lista címének megfelelően. Ez a mező előre fel van töltve az ajánlat- **aliashoz** megadott szöveggel az ajánlat létrehozásakor, de ez az érték módosítható. Ez a név lehet védjeggyel ellátott (és előfordulhat, hogy védjegyeket vagy szerzői jogi szimbólumokat is tartalmaz). A név nem lehet hosszabb 50 karakternél, és nem tartalmazhat hangulatjelek.
 
@@ -218,7 +218,7 @@ Ez a szakasz olyan hivatkozásokat tartalmaz, amelyek segítségével az ügyfel
 
 Adja meg a szervezete adatvédelmi szabályzatának URL-címét. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson.
 
-#### <a name="useful-links"></a>Hasznos hivatkozások
+#### <a name="useful-links"></a>Hasznos oldalak
 
 Adjon meg opcionális kiegészítő online dokumentumokat a megoldásáról.  További hasznos hivatkozások hozzáadásához kattintson **a + hivatkozás hozzáadása**lehetőségre.
 
@@ -319,7 +319,7 @@ Azure Government a szolgáltatások bizonyos kormányzati szabályozások és k�
 
 A **csomag listázása** lap a csomagra vonatkozó olyan listaelemeket jeleníti meg, amelyek eltérőek lehetnek az azonos ajánlat különböző csomagjai között.
 
-### <a name="name"></a>Name (Név)
+### <a name="name"></a>Név
 
 Előre kitöltve a saját neve alapján, amikor létrehozta a tervét.  Ez a név fog megjelenni a piactéren megjelenített "szoftvercsomag" címmel.  Legfeljebb 100 karaktert tartalmazhat.
 
@@ -333,7 +333,7 @@ Ez a leírás egy olyan lehetőség, amely ismerteti, hogy mi teszi ezt a csomag
 
 A mezők befejezése után válassza a **Mentés** lehetőséget.
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 A **rendelkezésre állás** lap csak a megoldási sablon csomagjai számára látható.  A tervet mindenki számára elérhetővé teheti, csak bizonyos ügyfelek (privát célközönségek) számára, valamint azt, hogy a tervet más megoldási sablon vagy csak felügyelt alkalmazások általi használatra szeretné-e ellátni.
 
@@ -352,7 +352,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 Ha a megoldás sablonja kizárólag központilag telepíthető, ha egy másik megoldási sablon vagy egy felügyelt alkalmazás hivatkozik rá, jelölje be ezt a jelölőnégyzetet a megoldás sablonjának közzétételéhez, de az ügyfelek általi keresés és Tallózás közvetlenül a felhasználók elől való elrejtéséhez.
 
-## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
+## <a name="pricing-and-availability"></a>Árazás és elérhetőség
 
 A **díjszabás és rendelkezésre állás** lap csak a felügyelt alkalmazások csomagjai számára látható.  Konfigurálhatja azokat a piacokat, amelyekre ez a csomag elérhető lesz, a megoldás felügyeletének havi díja, valamint azt, hogy a tervet mindenki számára vagy csak bizonyos ügyfeleknek (privát célközönségnek) kívánja-e megjeleníteni.
 
@@ -461,7 +461,7 @@ Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD be
 
 Alkalmazza az [Azure-szabályzatokat](https://docs.microsoft.com/azure/governance/policy/overview) a felügyelt alkalmazásra a telepített megoldás megfelelőségi követelményeinek meghatározásához.  A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](https://docs.microsoft.com/azure/governance/policy/samples/index).  Legfeljebb öt házirendet konfigurálhat, és az egyes házirendek közül csak egy példányt lehet beállítani.  Egyes házirendek további paramétereket igényelnek.  A naplózási házirendekhez a szabványos SKU szükséges.  A szabályzat neve legfeljebb 50 karakter hosszú lehet.
 
-## <a name="co-sell"></a>Közös értékesítés
+## <a name="co-sell"></a>Együttes értékesítés
 
 Az ajánlat közzétételéhez teljes mértékben nem kötelező megadni a beadás lapon található információkat. A közös értékesítésre kész és az IP közös értékesítésre kész állapotot kell elérni. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy a megoldásra vonatkozó további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek.
 
@@ -501,7 +501,7 @@ A test Drive (tesztelési meghajtó) **lapon található** tesztelési **meghajt
 
 - **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- **Videók: videók hozzáadása** (nem kötelező): a videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfelek megtekinthetik az információk áttekintését, így könnyebben megismerhetik a tesztelési meghajtót, beleértve a az ajánlat funkcióinak sikeres használata és az előnyeiket kiemelő forgatókönyvek megismerése.
+- **Videók: videók hozzáadása** (nem kötelező): a videók a YouTube vagy a Vimeo webhelyre tölthetők fel, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfél megtekintheti az információk áttekintését, így könnyebben megismerheti a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
   - **Miniatűr (533 x 324 px)** : a képfájlnak png formátumúnak kell lennie.

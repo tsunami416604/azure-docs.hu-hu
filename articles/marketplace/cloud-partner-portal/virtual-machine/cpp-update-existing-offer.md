@@ -2,18 +2,18 @@
 title: Meglévő VM-ajánlat frissítése az Azure Marketplace-en
 description: Ismerteti, hogyan lehet frissíteni egy meglévő virtuálisgép-ajánlatot az Azure Marketplace-en.
 services: Azure, Marketplace, Cloud Partner Portal,
-author: v-miclar
+author: MaggiePucciEvans
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 08/27/2018
-ms.author: ansud
-ms.openlocfilehash: 5cbee909b4bd6353ad8fbe9fcbc126dc4a245012
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 1ba2abb3fbeb1d08ed780669fb94a2ef83cbfb1b
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73823991"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934243"
 ---
 # <a name="update-an-existing-vm-offer-on-azure-marketplace"></a>Meglévő VM-ajánlat frissítése az Azure Marketplace-en
 
@@ -129,7 +129,7 @@ Az utólagos elszámolású ajánlat közzététele után nem növelheti közvet
 
 4.  Ha a díjszabást a 1x1 grafikus felhasználói felületén állította be, akkor az árat közvetlenül a felhasználói felületen módosíthatja. Ha a díjszabást Importálás/exportálás táblázaton keresztül állítja be, csak az importálási/exportálási funkció használatával csökkentheti az árakat.
 
-3.  Kattintson a **Save** (Mentés) gombra.
+3.  Kattintson a **Mentés** gombra.
 
 4.  Kattintson a **Közzététel** gombra a munkafolyamat elindításához a módosítások közzétételéhez.
 

@@ -2,19 +2,19 @@
 title: Az Azure Marketplace és a AppSource támogatása | Azure
 description: Az Azure Marketplace és a AppSource támogatási információi és hivatkozásai
 services: Azure, Marketplace, Compute, Storage, Networking, Blockchain, Security
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 7/25/2019
-ms.author: v-qiwe
-ms.openlocfilehash: b036f7f7455d265849db3c0b82a21471ed1a902c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.author: evansma
+ms.openlocfilehash: 40d466bd4e5959453f8c3042c4b14f6c3ef605bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822622"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933463"
 ---
 # <a name="support-for-the-marketplace"></a>A piactér támogatása  
 Az alábbi lista a piactér támogatási lehetőségeit sorolja fel.  
@@ -27,7 +27,7 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 
 ## <a name="partner-center-or-cloud-partner-portal"></a>Partner központ vagy Cloud Partner Portal  
 
-| Támogatási csatorna | Leírás | Rendelkezésre állás |  
+| Támogatási csatorna | Leírás | Elérhetőség |  
 |:--- |:--- |:--- |  
 | Segítségért látogasson el az incidens létrehozása lapra, amely a [piactér-támogatásban](https://go.microsoft.com/fwlink/?linkid=844975) található.</li> </ul> | A partner központ vagy a Cloud Partner Portal támogatása. | A támogatás 6 – 6 – 6 PST között biztosítható. |  
 
@@ -40,14 +40,14 @@ Nyisson meg egy jegyet a Microsoft [Marketplace kiadó támogatásával](https:/
 
 ## <a name="marketing-resources"></a>Marketing-erőforrások  
 
-| Támogatási csatorna | Leírás | Rendelkezésre állás |  
+| Támogatási csatorna | Leírás | Elérhetőség |  
 |:--- |:--- |:--- |  
 | E-mail: [cosell@microsoft.com](mailto:cosell@microsoft.com) | A közös értékesítési programhoz kapcsolódó bevezetési folyamatok és kérdések támogatása. | A csendes-óceáni időzóna alapján. |  
 | E-mail: [gtm@microsoft.com](mailto:gtm@microsoft.com) | Támogatás a GTM előnyeinek és programjának kérdéseire. | A munkaidő a csendes-óceáni időzónában található. |  
 | E-mail: [cebrand@microsoft.com](mailto:cebrand@microsoft.com) | Válaszok az Azure-emblémákkal és-arculattal kapcsolatos használati kérdésekre. |  |  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Látogasson el az [Azure Marketplace és a AppSource kiadói útmutató](./marketplace-publishers-guide.md) oldalára.  
  
 ---

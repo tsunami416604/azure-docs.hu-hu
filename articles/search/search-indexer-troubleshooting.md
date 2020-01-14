@@ -8,12 +8,12 @@ ms.author: magottei
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: d1efd44614cc2384043b32da20f38c91f006459c
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 5f646b4cef782b569910bdf881208c9984194589
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863104"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75931119"
 ---
 # <a name="troubleshooting-common-indexer-issues-in-azure-cognitive-search"></a>Az Azure Cognitive Search gyakori indexelő problémáinak elhárítása
 
@@ -30,7 +30,7 @@ Az indexelő több problémát is futtathat az Azure Cognitive Searchba való ad
 >
 > A keresési szolgáltatás IP-címét a teljes tartománynév (például `<your-search-service-name>.search.windows.net`) pingelésével tekintheti meg.
 >
-> Megtalálhatja `AzureCognitiveSearch` [szolgáltatási címke](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címét azon régió esetében, amelyben az Azure Cognitive Search szolgáltatás a [letölthető JSON-fájlok](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) használatával vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-n keresztül érhető el. Az IP-címtartomány hetente frissül.
+> A `AzureCognitiveSearch` [Service tag](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#available-service-tags) IP-címtartomány a [letölthető JSON-fájlokkal](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#discover-service-tags-by-using-downloadable-json-files) vagy a [Service tag Discovery API](https://docs.microsoft.com/azure/virtual-network/service-tags-overview#use-the-service-tag-discovery-api-public-preview)-val is megtekinthető. Az IP-címtartomány hetente frissül.
 
 ### <a name="configure-firewall-rules"></a>Tűzfalszabályok konfigurálása
 

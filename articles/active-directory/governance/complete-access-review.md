@@ -16,12 +16,12 @@ ms.date: 07/23/2019
 ms.author: ajburnle
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6f3405354136e11600ae059f3e05890d3534ce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 266234f2872cfe99509d564c9460bfba4a0e2bf2
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422722"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932552"
 ---
 # <a name="complete-an-access-review-of-groups-and-applications-in-azure-ad-access-reviews"></a>A csoportok és alkalmazások hozzáférési felülvizsgálatának befejezése az Azure AD hozzáférési felülvizsgálatokban
 
@@ -34,7 +34,7 @@ Rendszergazdaként [létre kell hoznia a csoportok vagy alkalmazások hozzáfér
 - Prémium szintű Azure AD P2
 - Globális rendszergazda, felhasználói rendszergazda, biztonsági rendszergazda vagy biztonsági olvasó
 
-További információ: [mely felhasználóknak kell licenceket tartalmazniuk?](access-reviews-overview.md#which-users-must-have-licenses)
+További információkért lásd a [licencekre vonatkozó követelményeket](access-reviews-overview.md#license-requirements).
 
 ## <a name="view-an-access-review"></a>Hozzáférési felülvizsgálat megtekintése
 

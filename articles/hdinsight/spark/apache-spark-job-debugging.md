@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
-ms.openlocfilehash: 110a8e86fc1916254ab914630ce10d2b7ae073b7
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bcf2f97e855126c86dbb1d74cd430704e2af3af1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74775333"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932138"
 ---
 # <a name="debug-apache-spark-jobs-running-on-azure-hdinsight"></a>Az Azure HDInsight futó Apache Spark-feladatok hibakeresése
 
@@ -88,7 +88,7 @@ A Spark felhasználói felületén megtekintheti azokat a Spark-feladatokat, ame
      * Scala verziója
      * A fürthöz társított Eseménynapló-könyvtár
      * Az alkalmazás végrehajtó magjainak száma
-     * Stb.
+     * Etc.
 
 ## <a name="find-information-about-completed-jobs-using-the-spark-history-server"></a>A befejezett feladatokkal kapcsolatos információk megkeresése a Spark History Server használatával
 
@@ -116,7 +116,7 @@ A feladatok elvégzése után a rendszer megőrzi a feladattal kapcsolatos infor
 * [Apache Spark a Machine Learning használatával: az élelmiszer-ellenőrzési eredmények előrejelzéséhez használja a Spark in HDInsight](apache-spark-machine-learning-mllib-ipython.md)
 * [Webhely-naplózási elemzés Apache Spark használatával a HDInsight-ben](apache-spark-custom-library-website-log-analysis.md)
 * [Az Application Insight telemetria-adatelemzési szolgáltatásának használata a HDInsight-ben Apache Spark](apache-spark-analyze-application-insight-logs.md)
-* [A Cafe on Azure HDInsight Spark használata elosztott mély tanuláshoz](apache-spark-deep-learning-caffe.md)
+
 
 ### <a name="for-spark-developers"></a>Spark-fejlesztőknek
 

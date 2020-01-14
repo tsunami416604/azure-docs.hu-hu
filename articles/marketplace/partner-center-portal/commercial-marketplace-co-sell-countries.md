@@ -1,19 +1,19 @@
 ---
 title: Ország-és régiókódok közös értékesítése | Azure piactér
 description: Használja ezt a kétbetűs ország-/régiókódot, ha az ajánlat közös értékesítési oldalán található kapcsolattartási adatokat biztosít.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/27/2019
-ms.openlocfilehash: dc27756cd231bc744e539321af7884cc85ca1e9a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 925218879ce0dc1c69054f861e37e86c122d47f9
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73812927"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934354"
 ---
 # <a name="co-sell-country-and-region-codes"></a>Ország-és régiókódok közös értékesítése
 
@@ -76,11 +76,11 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Chile                               | CL        |
 | Kína                               | CN        |
 | Karácsony-sziget                    | CX        |
-| Kókusz (Keeling)-szigetek             | CC        |
+| Cocos (Keeling)-szigetek             | CC        |
 | Kolumbia                            | CO        |
-| Comore                             | KM        |
-| Kongói                               | CG        |
-| Kongói Demokratikus Köztársaság                         | CD        |
+| Comore-szigetek                             | KM        |
+| Kongó                               | CG        |
+| Kongó (KDK)                         | CD        |
 | Cook-szigetek                        | CK        |
 | Costa Rica                          | CR        |
 | Côte d’Ivoire                       | CI        |
@@ -106,9 +106,9 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Franciaország                              | JK        |
 | Francia Guyana                       | GF        |
 | Francia Polinézia                    | PF        |
-| Francia déli területek         | TF        |
+| Francia Déli Területek         | TF        |
 | Gabon                               | FE        |
-| Gambia                              | SZÁZALÉKOS bruttó ÁRRÉSE        |
+| Gambia                              | GM        |
 | Grúzia                             | GE        |
 | Németország                             | DE        |
 | Ghána                               | GH        |
@@ -124,9 +124,9 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Bissau-Guinea                       | GW        |
 | Guyana                              | GY        |
 | Haiti                               | HT        |
-| Heard-sziget és McDonald-szigetek   | HM        |
+| Heard- és McDonald-szigetek   | HM        |
 | Honduras                            | HN        |
-| Hongkong (KKT)                       | HK        |
+| Hongkong KKT                       | HK        |
 | Magyarország                             | HU        |
 | Izland                             | IS        |
 | India                               | IN        |
@@ -134,7 +134,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Irán                                | IR        |
 | Irak                                | IQ        |
 | Írország                             | IE        |
-| Man-sziget                         | CSEVEGÉSI        |
+| Man-sziget                         | Csevegés        |
 | Izrael                              | IL        |
 | Olaszország                               | IT        |
 | Jamaica                             | JM        |
@@ -147,7 +147,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Dél-Korea                       | KR        |
 | Kuvait                              | KW        |
 | Kirgizisztán                          | KG        |
-| Laosz                                | LA        |
+| Laosz                                | LATIN-AMERIKA        |
 | Lettország                              | LV        |
 | Libanon                             | LB        |
 | Lesotho                             | LS        |
@@ -156,7 +156,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Liechtenstein                       | LI        |
 | Litvánia                           | LT        |
 | Luxemburg                          | LU        |
-| Makaó KKT                           | MO        |
+| Makaó (KKT)                           | MO        |
 | Madagaszkár                          | MG        |
 | Malawi                              | MW        |
 | Malajzia                            | MY        |
@@ -169,16 +169,16 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Mauritius                           | MU        |
 | Mayotte                             | YT        |
 | Mexikó                              | MX        |
-| Mikronéziai szövetséges Államok                          | FM        |
+| Mikronézia                          | FM        |
 | Moldova                             | MD        |
 | Monaco                              | MC        |
 | Mongólia                            | MN        |
-| Montenegró                          | Nekem        |
+| Montenegró                          | ME        |
 | Montserrat                          | MS        |
 | Marokkó                             | MA        |
 | Mozambik                          | MZ        |
 | Mianmar                             | MM        |
-| Namíbia                             | NA        |
+| Namíbia                             | n/a        |
 | Nauru                               | NR        |
 | Nepál                               | NP        |
 | Hollandia                         | NL        |
@@ -187,7 +187,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Nicaragua                           | NI        |
 | Niger                               | NE        |
 | Nigéria                             | NG        |
-| Niue                                | SZÁ        |
+| Niue                                | NU        |
 | Norfolk-sziget                      | NF        |
 | Észak-Korea                         | KP        |
 | Északi Mariana-szigetek            | MP        |
@@ -215,15 +215,15 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Saint Kitts és Nevis               | KN        |
 | Saint Lucia                         | LC        |
 | Saint Martin                        | MF        |
-| Saint-Pierre és Miquelon           | PM        |
+| Saint Pierre és Miquelon           | PM        |
 | Saint Vincent és Grenadine-szigetek    | VC        |
 | Szamoa                               | WS        |
 | San Marino                          | SM        |
-| São Tomé és Príncipe               | ST        |
+| Sao Tome és Principe               | ST        |
 | Szaúd-Arábia                        | SA        |
 | Szenegál                             | SN        |
 | Szerbia                              | RS        |
-| Seychelle                          | SC        |
+| Seychelle-szigetek                          | SC        |
 | Sierra Leone                        | SL        |
 | Szingapúr                           | SG        |
 | Sint Maarten                        | SX        |
@@ -247,7 +247,7 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Tádzsikisztán                          | TJ        |
 | Tanzánia                            | TZ        |
 | Thaiföld                            | TH        |
-| Kelet-Timor                         | TL        |
+| Timor-Leste                         | TL        |
 | Togo                                | TG        |
 | Tokelau                             | TK        |
 | Tonga                               | HOGY        |
@@ -256,26 +256,26 @@ Ha egy névjegy egynél több országot vagy régiót érint, adja meg a két be
 | Törökország                              | TR        |
 | Türkmenisztán                        | TM        |
 | Turks- és Caicos-szigetek            | TC        |
-| Tuvalu                              | TV        |
+| Tuvalu                              | Tévéműsorok        |
 | Uganda                              | UG        |
 | Ukrajna                             | UA        |
 | Egyesült Arab Emírségek                | AE        |
 | Egyesült Királyság                      | GB        |
-| Egyesült Államok                       | USA        |
+| Egyesült Államok                       | Egyesült Államok        |
 | Uruguay                             | UY        |
-| Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
+| Az Amerikai Egyesült Államok lakatlan külbirtokai               | UM        |
 | Amerikai Virgin-szigetek                 | VI        |
 | Üzbegisztán                          | UZ        |
 | Vanuatu                             | JE        |
-| Vatikáni Városállam                        | VA        |
+| Vatikán                        | VA        |
 | Venezuela                           | VE        |
 | Vietnam                             | VN        |
-| Wallis és Futuna                   | WF        |
+| Wallis- és Futuna-szigetek                   | WF        |
 | Jemen                               | TI        |
 | Zambia                              | ZM        |
 | Zimbabwe                            | ZW        |
 |   |   |   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [partneri központ közös értékesítéssel kapcsolatos lehetőségéről](./commercial-marketplace-co-sell.md).

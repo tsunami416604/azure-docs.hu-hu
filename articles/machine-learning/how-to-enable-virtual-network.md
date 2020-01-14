@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
-ms.date: 01/03/2020
-ms.openlocfilehash: 333d7faacfb5965e74eae69f07ff974a8fff8f25
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.date: 01/13/2020
+ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894012"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75934386"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -167,7 +167,7 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
    - Azure Storage a __Storage. Region_Name__ (például Storage. EastUS) __szolgáltatás címkéjével__
    - Azure Container Registry a __AzureContainerRegistry. Region_Name__ __szolgáltatás címkéjével__ (például AzureContainerRegistry. EastUS)
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
-   - Számítási példány esetén az Azure Cloud a __AzureCloud. Region_Name__ __szolgáltatás címkéjén__ keresztül (például AzureCloud. NorthCentralUS)
+   - Számítási példány esetén az Azure Cloud a __AzureResourceManager__ __szolgáltatási címkéje__ használatával
 
 A Azure Portal NSG-szabályának konfigurációja a következő képen látható:
 

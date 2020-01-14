@@ -10,12 +10,12 @@ ms.workload: identity
 ms.date: 10/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 844b62f9575249c7b99672e9e67c94cea7ec9f99
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 32897994e4ef22845b1d19d6e0eb3e6b2c968c01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72931423"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930733"
 ---
 # <a name="billing-model-for-azure-active-directory-b2c"></a>Számlázási modell Azure Active Directory B2C
 
@@ -134,7 +134,7 @@ A szerepköralapú hozzáférés-vezérlést használó Azure AD B2C felügyelet
 
 Azure AD B2C bérlők áthelyezhetők egy másik előfizetésbe, ha a forrás-és a cél-előfizetések ugyanabban a Azure Active Directory-bérlőn belül vannak.
 
-Ha szeretné megismerni, hogyan helyezhetők át az Azure-erőforrások, például a Azure AD B2C bérlője egy másik előfizetésbe, tekintse meg az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md)
+Ha szeretné megismerni, hogyan helyezhetők át az Azure-erőforrások, például a Azure AD B2C bérlője egy másik előfizetésbe, tekintse meg az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md)
 
 Mielőtt elkezdené az áthelyezést, olvassa el a teljes cikket, amely részletesen ismerteti az ilyen áthelyezésre vonatkozó korlátozásokat és követelményeket. Az erőforrások áthelyezésére vonatkozó utasítások mellett olyan kritikus információkat is tartalmaz, mint például az áthelyezés előtti ellenőrzőlista, valamint a mozgatási művelet ellenőrzése.
 

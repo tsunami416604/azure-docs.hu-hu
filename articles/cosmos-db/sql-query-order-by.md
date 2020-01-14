@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: 5cae2bdd7d1f2f26e626c81ea95d2cee3cc8ae13
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc5c875f4ae54ed334318efc5a1d5610b89bdda5
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444795"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75929579"
 ---
 # <a name="order-by-clause-in-azure-cosmos-db"></a>ORDER BY záradék Azure Cosmos DB
 
@@ -52,7 +52,7 @@ ORDER BY <sort_specification>
    Az ORDER BY záradék megköveteli, hogy az indexelési házirend tartalmazzon egy indexet a rendezés alatt álló mezőkhöz. A Azure Cosmos DB lekérdezési futtatókörnyezet támogatja a tulajdonságok neve szerinti rendezést, és nem a számított tulajdonságokkal. Azure Cosmos DB több SORRENDet is támogat a tulajdonságok alapján. Ha több SORRENDet tartalmazó lekérdezést szeretne futtatni, definiálnia kell egy [összetett indexet](index-policy.md#composite-indexes) a rendezés alatt álló mezőkben.
    
 > [!Note] 
-> Ha a .NET SDK 3.4.0 vagy újabb verzióját használja, előfordulhat, hogy egyes dokumentumok esetében nem definiált tulajdonságok vannak meghatározva, akkor ezeket a tulajdonságokat explicit módon létre kell hoznia. Az alapértelmezett indexelési házirend nem engedélyezi a dokumentumok lekérését, ha a rendezési tulajdonság nincs definiálva.
+> Ha előfordulhat, hogy a rendezés alatt álló tulajdonságok egyes dokumentumok esetében nem definiáltak, és lekérdezési sorrendben szeretné lekérni őket, explicit módon létre kell hoznia egy indexet ezekhez a tulajdonságokhoz. Az alapértelmezett indexelési házirend nem engedélyezi a dokumentumok lekérését, ha a rendezési tulajdonság nincs definiálva.
 
 ## <a name="examples"></a>Példák
 

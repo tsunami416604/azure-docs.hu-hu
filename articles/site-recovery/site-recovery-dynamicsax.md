@@ -1,18 +1,18 @@
 ---
 title: Vész-helyreállítás egy többrétegű Dynamics AX-telepítéshez Azure Site Recovery-vel | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan állíthatja be a Dynamics AX vész-helyreállítását Azure Site Recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 11/27/2018
-ms.author: asgang
-ms.openlocfilehash: 5b8aaff3a3418177f92c3b54fb3bb3e99f93810e
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620754"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930184"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
 
@@ -183,5 +183,5 @@ A feladat-visszavétel végrehajtásával kapcsolatos további információkért
 ## <a name="summary"></a>Összefoglalás
 Site Recovery használatával létrehozhat egy teljes automatikus vész-helyreállítási tervet a Dynamics AX-alkalmazáshoz. Megszakítás esetén másodpercek alatt kezdeményezheti a feladatátvételt, és percek alatt üzembe helyezheti és futtathatja az alkalmazást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni a vállalati munkaterhelések Site Recovery használatával történő védelméről, tekintse meg a [milyen számítási feladatokat?](site-recovery-workload.md)című témakört.

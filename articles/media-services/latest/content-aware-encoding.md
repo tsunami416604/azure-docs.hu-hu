@@ -12,12 +12,12 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: 9389466b6291542563c068706479bf981c5880da
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75692757"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933484"
 ---
 # <a name="experimental-preset-for-content-aware-encoding"></a>Kísérleti beállításkészlet a Content-Aware kódoláshoz
 
@@ -29,7 +29,9 @@ Az egy előre definiált – az összes videós megközelítésre való áttér�
 
 A 2017-es évek elején a Microsoft kiadta az [adaptív adatfolyam](autogen-bitrate-ladder.md) -készletet, amely a forrásként szolgáló videók minőségének és megoldásának változékonyságával kapcsolatos problémát orvosolja. Ügyfeleink többféle tartalommal rendelkeztek, néhányat 1080p-ra, másokat pedig 720p-ra, és néhányat SD és alacsonyabb felbontásban. Továbbá, nem minden forrás tartalma kiváló minőségű, film-vagy TV-stúdiókból készült. Az adaptív adatfolyam-készlet ezeket a problémákat úgy oldja meg, hogy a bitráta-létrán soha nem haladja meg a bemeneti időpontok felbontását vagy az átlagos bitrátát.
 
-A kísérleti tartalommal kompatibilis kódolási beállításkészlet kiterjeszti ezt a mechanizmust olyan egyéni logika beépítésével, amely lehetővé teszi, hogy a kódoló egy adott megoldás optimális sebességének megadását, de kiterjedt számítási elemzést ne igényel. A nettó eredmény az, hogy ez az új beállításkészlet alacsonyabb sávszélességű kimenetet eredményez, mint az adaptív adatfolyam-készlet, de magasabb színvonalú. Tekintse meg a következő, a minőségi mérőszámokkal (például [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) és [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)) való összehasonlítást bemutató ábrákat. A forrást úgy hozták létre, hogy összefűzött néhány rövid klipet a nagy komplexitású felvételektől a filmek és a TÉVÉMŰSORok alapján, hogy kihangsúlyozzák a kódolót. A definíció szerint ez a készlet olyan eredményeket hoz létre, amelyek a tartalomtól a tartalomtól függően változnak – ez azt is jelenti, hogy egyes tartalmak esetében nem lehet jelentős mértékben csökkenteni a bitrátát vagy javítani a minőséget.
+Az új, tartalmakat támogató kódolási beállításkészlet kiterjeszti ezt a mechanizmust olyan egyéni logika beépítésével, amely lehetővé teszi, hogy a kódoló egy adott megoldás optimális sebességét adja meg, azonban anélkül, hogy kiterjedt számítási elemzésre lenne szükség. Ez a beállításkészlet GOP-igazítású MP4 állít elő. A szolgáltatás a bemeneti tartalom kezdeti könnyű elemzését, valamint az eredmények használatával határozza meg a rétegek optimális számát, a megfelelő bitrátát és a megoldási beállításokat az adaptív adatfolyam-továbbítással. Ez a beállításkészlet különösen alacsony és közepes komplexitású videók esetében érvényes, ahol a kimeneti fájlok alacsonyabb sávszélességű lesznek, mint az adaptív adatfolyam-készlet, de olyan minőségben, amely továbbra is jó élményt nyújt a nézők számára. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni
+
+Tekintse meg a következő, a minőségi mérőszámokkal (például [PSNR](https://en.wikipedia.org/wiki/Peak_signal-to-noise_ratio) és [VMAF](https://en.wikipedia.org/wiki/Video_Multimethod_Assessment_Fusion)) való összehasonlítást bemutató ábrákat. A forrást úgy hozták létre, hogy összefűzött néhány rövid klipet a nagy komplexitású felvételektől a filmek és a TÉVÉMŰSORok alapján, hogy kihangsúlyozzák a kódolót. A definíció szerint ez a készlet olyan eredményeket hoz létre, amelyek a tartalomtól a tartalomtól függően változnak – ez azt is jelenti, hogy egyes tartalmak esetében nem lehet jelentős mértékben csökkenteni a bitrátát vagy javítani a minőséget.
 
 ![A torzítás (RD) görbéje a PSNR használatával](media/cae-experimental/msrv1.png)
 
@@ -39,7 +41,7 @@ A kísérleti tartalommal kompatibilis kódolási beállításkészlet kiterjesz
 
 **2. ábra: a ráta-torzítás (RD) görbe használata a VMAF metrikával a nagy komplexitású forráshoz**
 
-A készlet jelenleg nagy bonyolultságú, jó minőségű forrás-videókhoz (filmek, TÉVÉMŰSORok) van beállítva. A munka folyamatban van az alacsony bonyolultságú tartalmakhoz (például PowerPoint-bemutatók) és a gyengébb minőségű videókhoz való alkalmazkodáshoz. Ez a beállításkészlet ugyanazokat a felbontásokat használja, mint az adaptív streaming-készlet. A Microsoft azon módszerekkel dolgozik, amelyekkel a tartalom alapján kiválaszthatja a minimálisan szükséges megoldásokat. A következőkben a forrás tartalmának egy másik kategóriájára vonatkozó eredmények láthatók, ahol a kódoló meghatározta, hogy a bemenet gyenge minőségű volt-e (sok tömörítési összetevő a kis sávszélesség miatt). Vegye figyelembe, hogy a kísérleti beállításkészlettel a kódoló úgy döntött, hogy csak egy kimeneti réteget hoz létre – egy elég alacsony bitráta mellett, hogy a legtöbb ügyfél elakadása nélkül tudja lejátszani az adatfolyamot.
+Az alábbiakban láthatók a tartalomforrás egy másik kategóriájára vonatkozó eredmények, ahol a kódoló meghatározta, hogy a bemenet gyenge minőségű-e (az alacsony sávszélesség miatt sok tömörítési összetevő). Vegye figyelembe, hogy a "Content-Aware" készlettel a kódoló úgy döntött, hogy csak egy kimeneti réteget hoz létre – egy elég alacsony bitráta mellett, így a legtöbb ügyfél nem fog tudni lejátszani az adatfolyamot.
 
 ![Távoli asztali görbe a PSNR használatával](media/cae-experimental/msrv3.png)
 
@@ -62,16 +64,16 @@ TransformOutput[] output = new TransformOutput[]
       // You can customize the encoding settings by changing this to use "StandardEncoderPreset" class.
       Preset = new BuiltInStandardEncoderPreset()
       {
-         // This sample uses the new experimental preset for content-aware encoding
-         PresetName = EncoderNamedPreset.ContentAwareEncodingExperimental
+         // This sample uses the new preset for content-aware encoding
+         PresetName = EncoderNamedPreset.ContentAwareEncoding
       }
    }
 };
 ```
 
 > [!NOTE]
-> A "kísérleti" előtag itt található, hogy jelezze, hogy az alapul szolgáló algoritmusok továbbra is fejlődnek. Előfordulhat, hogy az idő múlásával módosul a bitráta-létrák generálásához használt logika, azzal a céllal, hogy egy robusztus algoritmusra legyen átszervezve, és alkalmazkodik a különböző bemeneti feltételekhez. Az ezt az beállításkészletet használó kódolási feladatok továbbra is a kimeneti percek alapján lesznek kiszámlázva, és a kimeneti eszköz továbbítható az adatfolyam-végpontokról a protokollok, például a DASH és a HLS.
+> A mögöttes algoritmusok további fejlesztéseknek vannak kitéve. Az idő múlásával módosulhat a bitráta-létrák generálásához használt logika, amelynek célja, hogy egy robusztus algoritmust biztosítson, és alkalmazkodjon a különböző bemeneti feltételekhez. Az ezt az beállításkészletet használó kódolási feladatok továbbra is a kimeneti percek alapján lesznek kiszámlázva, és a kimeneti eszköz továbbítható az adatfolyam-végpontokról a protokollok, például a DASH és a HLS.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte a videók optimalizálására szolgáló új lehetőséget, meghívjuk, hogy próbálja ki. A jelen cikk végén található hivatkozásokkal küldhet nekünk visszajelzést, vagy közvetlenül a <amsved@microsoft.com>.
+Most, hogy megismerte a videók optimalizálására szolgáló új lehetőséget, meghívjuk, hogy próbálja ki. A jelen cikk végén található hivatkozásokkal küldhet nekünk visszajelzést.

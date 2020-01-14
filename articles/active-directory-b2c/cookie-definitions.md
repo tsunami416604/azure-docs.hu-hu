@@ -1,6 +1,6 @@
 ---
-title: Cookie-definíciók – Azure Active Directory B2C |} A Microsoft Docs
-description: Az Azure Active Directory B2C-vel használt cookie-kra vonatkozó definíciókat biztosítja.
+title: Cookie-definíciók – Azure Active Directory B2C | Microsoft Docs
+description: A Azure Active Directory B2C használt cookie-k definícióit tartalmazza.
 services: active-directory-b2c
 author: mmacy
 manager: celestedg
@@ -10,27 +10,26 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af3244a32e9d02a1ba5053da85547bf614053127
-ms.sourcegitcommit: ccb9a7b7da48473362266f20950af190ae88c09b
+ms.openlocfilehash: 66de4559ed006735f53ff993cce29370428b9998
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2019
-ms.locfileid: "67587418"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930894"
 ---
-# <a name="cookies-definitions-for-azure-active-directory-b2c"></a>Cookie-k Azure Active Directory B2C-definíciói
+# <a name="cookies-definitions-for-azure-active-directory-b2c"></a>A Azure Active Directory B2C cookie-definíciói
 
-Az alábbi táblázat a cookie-kat az Azure Active Directory B2C-t használja.
+A következő táblázat felsorolja a Azure Active Directory B2C használt cookie-kat.
 
-| Name (Név) | Domain | lejárati | Cél |
+| Név | Domain | Lejárat | Rendeltetés |
 | ----------- | ------ | -------------------------- | --------- |
-| x-ms-cpim-admin | main.b2cadmin.ext.azure.com | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Tárolja a felhasználó csoporttagsági adatai bérlők között. A bérlők egy felhasználó tagja, és a szolgáltatói tagságot (a rendszergazda vagy a felhasználó). |
-| x-ms-cpim-slice | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Használja a megfelelő üzemi példány átirányíthatja a kéréseket. |
-| x-ms-cpim-trans | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | A tranzakciók (Azure AD B2C a hitelesítési kérések száma) és az aktuális tranzakció nyomon követésére használt. |
-| x-ms-cpim-sso:{Id} | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Használja az egyszeri bejelentkezési munkamenetek fenntartását. |
-| x-ms-cpim-cache:{id}_n | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md), a sikeres hitelesítés | A kérés állapot fenntartására használható. |
-| x-ms-cpim-csrf | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Webhelyközi kérések hamisításának megakadályozása token CRSF védelemhez használt. |
-| x-ms-cpim-dc | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Azure AD B2C-hálózati útválasztáshoz használt. |
-| x-ms-cpim-ctx | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Környezet |
-| x-ms-cpim-rp | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | Az erőforrás-szolgáltató bérlő tagsági adatai tárolására szolgál. |
-| x-ms-cpim-rc | login.microsoftonline.com, b2clogin.com, branded domain | Az End [böngésző-munkamenet](active-directory-b2c-token-session-sso.md) | A relay cookie-k tárolására szolgál. |
-
+| x-MS-cpim-admin | main.b2cadmin.ext.azure.com | Böngésző- [munkamenet](session-behavior.md) vége | Felhasználói tagsági adattárolást tart fenn a bérlők között. A bérlők a felhasználók és a tagsági szint (rendszergazda vagy felhasználó) tagjai. |
+| x-MS-cpim-slice | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A kérelmeknek a megfelelő éles példányra való továbbítására szolgál. |
+| x-MS-cpim-Trans | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A tranzakciók nyomon követésére szolgál (a Azure AD B2C hitelesítési kérések száma) és az aktuális tranzakcióval. |
+| x-MS-cpim-SSO: {ID} | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | Az SSO-munkamenet fenntartásához használatos. |
+| x-MS-cpim-cache: {ID} _n | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md)vége, sikeres hitelesítés | A kérelem állapotának fenntartásához használatos. |
+| x-MS-cpim-CSRF | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A CRSF-védelemhez használt, helyek közötti kérelem hamis jogkivonata. |
+| x-MS-cpim-DC | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | Azure AD B2C hálózati útválasztáshoz használatos. |
+| x-MS-cpim-CTX | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | Környezet |
+| x-MS-cpim-RP | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | Az erőforrás-szolgáltató bérlő tagsági adattárolására szolgál. |
+| x-MS-cpim-RC | login.microsoftonline.com, b2clogin.com, márkás tartomány | Böngésző- [munkamenet](session-behavior.md) vége | A Relay cookie tárolására szolgál. |

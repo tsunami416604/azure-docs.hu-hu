@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: Átmenő hitelesítés – gyakori kérdések | Microsoft Docs'
+title: 'Azure AD Connect: átmenő hitelesítés – gyakori kérdések | Microsoft Docs'
 description: Válaszok Azure Active Directory átmenő hitelesítéssel kapcsolatos gyakori kérdésekre
 services: active-directory
 keywords: Azure AD Connect átmenő hitelesítés, telepítési Active Directory, szükséges összetevők az Azure AD-hez, egyszeri bejelentkezéshez, egyszeri bejelentkezéshez
@@ -16,14 +16,14 @@ ms.date: 04/15/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d21bf0f2ba7c93a35952d2eb2dd4df49bb3260b
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 06dfe1e76682d70170bfea104050b1000269c38f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71290765"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75932390"
 ---
-# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: Gyakori kérdések
+# <a name="azure-active-directory-pass-through-authentication-frequently-asked-questions"></a>Azure Active Directory átmenő hitelesítés: gyakori kérdések
 
 Ez a cikk az Azure Active Directory (Azure AD) átmenő hitelesítéssel kapcsolatos gyakori kérdéseket tárgyalja. A frissített tartalom ellenőrzésének visszatartása.
 
@@ -44,7 +44,7 @@ Nem. Az átmenő hitelesítés csak az Azure AD világméretű példányában é
 Igen. Az összes feltételes hozzáférési képesség, beleértve az Azure Multi-Factor Authentication is, az átmenő hitelesítéssel dolgozhat.
 
 ## <a name="does-pass-through-authentication-support-alternate-id-as-the-username-instead-of-userprincipalname"></a>Az áteresztő hitelesítés támogatja a "másodlagos azonosító" nevet a "userPrincipalName" helyett?
-Az átmenő hitelesítés korlátozott mértékben támogatja a helyettesítő azonosító használatát, ha Azure AD Connect konfigurálja a felhasználónevet. Előfeltételként Azure ad Connect kell szinkronizálnia a helyszíni Active Directory `UserPrincipalName` attribútumot az Azure ad-vel. `UserPrincipalName` Így a helyszíni ad és az Azure ad azonos lesz. Ha egy másik attribútummal szeretne szinkronizálni a helyszíni AD-ből az Azure AD-beli egyszerű felhasználónévként, akkor a jelszó-kivonatoló szinkronizálást vagy a AD FSt kell használnia. További információkért lásd: [az Azure AD Connect egyéni telepítési](how-to-connect-install-custom.md). Nem minden Office 365-alkalmazás `Alternate ID`támogatja. Tekintse meg az adott alkalmazás dokumentációs támogatási nyilatkozatát.
+Az átmenő hitelesítés korlátozott mértékben támogatja a helyettesítő azonosító használatát, ha Azure AD Connect konfigurálja a felhasználónevet. Előfeltételként Azure AD Connect kell szinkronizálnia a helyszíni Active Directory `UserPrincipalName` attribútumot az Azure AD-vel. Így a `UserPrincipalName` a helyszíni AD-ben és az Azure AD-ben is megegyező lesz. Ha egy másik attribútummal szeretne szinkronizálni a helyszíni AD-ből az Azure AD-beli egyszerű felhasználónévként, akkor a jelszó-kivonatoló szinkronizálást vagy a AD FSt kell használnia. További információ: [Azure ad Connect egyéni telepítése](how-to-connect-install-custom.md). Nem minden Office 365-alkalmazás támogatja a `Alternate ID`. Tekintse meg az adott alkalmazás dokumentációs támogatási nyilatkozatát.
 
 ## <a name="does-password-hash-synchronization-act-as-a-fallback-to-pass-through-authentication"></a>A jelszó-kivonatolási szinkronizálás tartalékként viselkedik az átmenő hitelesítéshez?
 
@@ -66,7 +66,7 @@ Ahhoz, hogy ez a funkció működjön, a 1.1.750.0 vagy újabb verzióra van sz�
 
 Ha beállította a [jelszó visszaírási](../authentication/concept-sspr-writeback.md) egy adott felhasználó számára, és ha a felhasználó átmenő hitelesítéssel jelentkezik be, a jelszavukat módosíthatja vagy alaphelyzetbe állíthatja. A jelszavakat a rendszer a várt módon visszaírja a helyszíni Active Directoryba.
 
-Ha nem konfigurálta a jelszó-visszaírási egy adott felhasználóhoz, vagy ha a felhasználónak nincs hozzárendelt érvényes Azure AD-licence, a felhasználó nem tudja frissíteni a jelszavát a felhőben. Nem tudják frissíteni a jelszavukat, még akkor sem, ha a jelszó lejárt. A felhasználó Ehelyett a következő üzenetet látja: "A szervezet nem teszi lehetővé a jelszó frissítését ezen a helyen. Frissítse a szervezet által ajánlott módszernek megfelelően, vagy kérje meg a rendszergazdát, ha segítségre van szüksége. " A felhasználónak vagy a rendszergazdának vissza kell állítania a jelszavát a helyszíni Active Directoryban.
+Ha nem konfigurálta a jelszó-visszaírási egy adott felhasználóhoz, vagy ha a felhasználónak nincs hozzárendelt érvényes Azure AD-licence, a felhasználó nem tudja frissíteni a jelszavát a felhőben. Nem tudják frissíteni a jelszavukat, még akkor sem, ha a jelszó lejárt. A felhasználó Ehelyett ezt az üzenetet látja: "a szervezet nem teszi lehetővé a jelszó frissítését ezen a webhelyen. Frissítse a szervezet által ajánlott módszernek megfelelően, vagy kérje meg a rendszergazdát, ha segítségre van szüksége. " A felhasználónak vagy a rendszergazdának vissza kell állítania a jelszavát a helyszíni Active Directoryban.
 
 ## <a name="how-does-pass-through-authentication-protect-you-against-brute-force-password-attacks"></a>Hogyan biztosítja az átmenő hitelesítés a találgatásos jelszavak elleni támadásokat?
 
@@ -78,7 +78,7 @@ Ha nem konfigurálta a jelszó-visszaírási egy adott felhasználóhoz, vagy ha
 - A hitelesítési ügynökök a 80-as porton keresztül HTTP-kérelmeket tesznek elérhetővé az SSL-tanúsítványok visszavonási listái (CRL) letöltéséhez.
 
      >[!NOTE]
-     >A legutóbbi frissítések csökkentik a szolgáltatás által igényelt portok számát. Ha Azure AD Connect vagy a hitelesítési ügynök régebbi verzióit használja, tartsa nyitva a következő portokat is: 5671, 8080, 9090, 9091, 9350, 9352 és 10100-10120.
+     >A legutóbbi frissítések csökkentik a szolgáltatás által igényelt portok számát. Ha a Azure AD Connect vagy a hitelesítési ügynök régebbi verzióit használja, tartsa nyitva ezeket a portokat is: 5671, 8080, 9090, 9091, 9350, 9352 és 10100-10120.
 
 ## <a name="can-the-pass-through-authentication-agents-communicate-over-an-outbound-web-proxy-server"></a>Kommunikálhat a továbbított hitelesítési ügynökök egy kimenő webproxy-kiszolgálón?
 
@@ -87,7 +87,7 @@ Igen. Ha a webproxy automatikus felderítése (WPAD) engedélyezve van a helysz�
 Ha nem rendelkezik WPAD-környezettel a környezetben, akkor az áteresztő hitelesítési ügynök az Azure AD-vel való kommunikáció engedélyezéséhez (az alább látható módon) adhat hozzá proxy-információkat:
 - Konfigurálja a proxybeállításokat az Internet Explorerben, mielőtt telepítené a továbbítási hitelesítési ügynököt a kiszolgálón. Ez lehetővé teszi a hitelesítési ügynök telepítésének befejezését, de továbbra is **inaktívként** jelenik meg a felügyeleti portálon.
 - A kiszolgálón navigáljon a "C:\Program Files\Microsoft Azure AD Connect Authentication Agent" elemre.
-- Szerkessze a "AzureADConnectAuthenticationAgentService" konfigurációs fájlt, és adja hozzá a következő sorokat (\:cserélje le a "http//contosoproxy.com:8080" kifejezést a tényleges proxy-címmé):
+- Szerkessze a "AzureADConnectAuthenticationAgentService" konfigurációs fájlt, és adja hozzá a következő sorokat (cserélje le a "http\://contosoproxy.com:8080" kifejezést a tényleges proxy-címekre):
 
 ```
    <system.net>
@@ -111,7 +111,7 @@ Az egyes áteresztő hitelesítési ügynökök és az Azure AD közötti kommun
 
 ## <a name="how-do-i-remove-a-pass-through-authentication-agent"></a>Hogyan egy átmenő hitelesítési ügynököt?
 
-Amíg egy átmenő hitelesítési ügynök fut, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmeket. Ha el kívánja távolítani a hitelesítési ügynököt, lépjen a **Vezérlőpult – > programok > programok és szolgáltatások elemre** , és távolítsa el mind a **Microsoft Azure ad csatlakozási hitelesítési ügynököt** , mind a **Microsoft Azure ad összekötő ügynök frissítését** . programok.
+Amíg egy átmenő hitelesítési ügynök fut, aktív marad, és folyamatosan kezeli a felhasználói bejelentkezési kérelmeket. Ha el kívánja távolítani a hitelesítési ügynököt, lépjen a **Vezérlőpult – > programok > programok és szolgáltatások elemre** , és távolítsa el mind a **Microsoft Azure ad csatlakozási hitelesítési ügynököt** , mind a **Microsoft Azure ad összekapcsolási ügynök frissítési** programját.
 
 Ha az előző lépés elvégzése után a [Azure Active Directory felügyeleti központban](https://aad.portal.azure.com) bejelöli a átmenő hitelesítés panelt, akkor a hitelesítési ügynök **inaktívként**jelenik meg. Ez a _várt_érték. A hitelesítési ügynök néhány nap múlva automatikusan el lesz dobva a listából.
 
@@ -134,7 +134,7 @@ Több áteresztő hitelesítési ügynök telepítése biztosítja a [magas rend
 Vegye figyelembe a bérlőn megtekinteni kívánt bejelentkezési kérelmek maximális és átlagos terhelését. Viszonyítási alapként egyetlen hitelesítési ügynök a 300-400 hitelesítések másodpercenkénti kezelésére alkalmas standard 4 magos CPU, 16 GB RAM-kiszolgáló esetén.
 
 A hálózati forgalom becsléséhez használja a következő méretezési útmutatót:
-- Minden kérelemhez tartozik egy (0,5 K + 1K * num_of_agents) bájtos adattartalom mérete; például az Azure AD-ből származó adatok a hitelesítési ügynöknek. Itt a "num_of_agents" a bérlőn regisztrált hitelesítési ügynökök számát jelzi.
+- Minden kérelemhez tartozik egy adattartalom mérete (0,5 K + 1K * num_of_agents) bájt; például az Azure AD-ből származó adatok a hitelesítési ügynöknek. Itt a "num_of_agents" a bérlőn regisztrált hitelesítési ügynökök számát jelzi.
 - Minden válaszhoz a hasznos adatok mérete 1K bájt; azaz a hitelesítési ügynök adatait az Azure AD-be.
 
 A legtöbb ügyfél esetében az összesen kettő vagy három hitelesítési ügynök elegendő a magas rendelkezésre álláshoz és a kapacitáshoz. A bejelentkezési késés javítása érdekében telepítse a hitelesítési ügynököket a tartományvezérlőhöz közel.
@@ -160,7 +160,7 @@ Ha egy kiszolgálóról távolít el egy átmenő hitelesítési ügynököt, a 
 
 ## <a name="i-have-an-older-tenant-that-was-originally-setup-using-ad-fs--we-recently-migrated-to-pta-but-now-are-not-seeing-our-upn-changes-synchronizing-to-azure-ad--why-are-our-upn-changes-not-being-synchronized"></a>Olyan régi Bérlővel rendelkezem, amely eredetileg AD FS használatával lett beállítva.  A közelmúltban áttelepítettük a PTA ESP-t, de most nem látják az UPN-módosításokat az Azure AD-vel való szinkronizálásra.  Miért nem szinkronizálja az UPN-módosításokat?
 
-V: A következő esetekben előfordulhat, hogy a helyszíni UPN-módosítások nem szinkronizálhatók, ha:
+A: a következő esetekben előfordulhat, hogy a helyszíni UPN-módosítások nem szinkronizálhatók, ha:
 
 - Azure AD-bérlőjét a 2015. június 15. előtt hozták létre
 - Először összevontuk az Azure AD-Bérlővel AD FS használatával a hitelesítéshez
@@ -168,20 +168,20 @@ V: A következő esetekben előfordulhat, hogy a helyszíni UPN-módosítások n
 
 Ennek az az oka, hogy a 2015. június 15. előtt létrehozott bérlők alapértelmezett viselkedése az UPN-változások blokkolása volt.  Ha le kell tiltania az UPN-módosítások blokkolását, a következő PowerShell-parancsmagot kell futtatnia:  
 
-`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers-Enable $True`
+`Set-MsolDirSyncFeature -Feature SynchronizeUpnForManagedUsers -Enable $True`
 
 A június 15-től 2015-ig létrehozott bérlők alapértelmezett viselkedése az UPN-változások szinkronizálása.   
 
 
 
-## <a name="next-steps"></a>További lépések
-- [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): Ismerje meg, hogy mely forgatókönyvek támogatottak, és melyek nem.
-- [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): Megkezdheti az Azure AD átmenő hitelesítését.
+## <a name="next-steps"></a>Következő lépések
+- [Jelenlegi korlátozások](how-to-connect-pta-current-limitations.md): megtudhatja, hogy mely forgatókönyvek támogatottak, és melyek nem.
+- [Gyors üzembe helyezés](how-to-connect-pta-quick-start.md): megkezdheti az Azure ad átmenő hitelesítését.
 - [Migrálás ad FSról áteresztő hitelesítésre](https://github.com/Identity-Deployment-Guides/Identity-Deployment-Guides/blob/master/Authentication/Migrating%20from%20Federated%20Authentication%20to%20Pass-through%20Authentication.docx?raw=true) – részletes útmutató a AD FS (vagy más összevonási technológiákból) áttelepített hitelesítéshez.
-- [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): Megtudhatja, hogyan konfigurálhatja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
-- [Technikai részletes merülés](how-to-connect-pta-how-it-works.md): Az átmenő hitelesítés funkció működésének megismerése.
-- [Hibák megoldása](tshoot-connect-pass-through-authentication.md): Megtudhatja, Hogyan oldhatók fel az átmenő hitelesítés szolgáltatással kapcsolatos gyakori problémák.
-- [Biztonsági mély merülés](how-to-connect-pta-security-deep-dive.md): Részletes technikai információkat kaphat az átmenő hitelesítés funkcióról.
+- [Intelligens zárolás](../authentication/howto-password-smart-lockout.md): megtudhatja, hogyan konfigurálhatja az intelligens zárolási funkciót a bérlőn a felhasználói fiókok védetté tételéhez.
+- [Technikai](how-to-connect-pta-how-it-works.md)részletes információ: az átmenő hitelesítés funkciójának megismerése.
+- [Hibaelhárítás](tshoot-connect-pass-through-authentication.md): megtudhatja, Hogyan oldhatók fel az áteresztő hitelesítési szolgáltatással kapcsolatos gyakori problémák.
+- [Biztonsági](how-to-connect-pta-security-deep-dive.md)részletes információk: részletes technikai információkat kaphat az átmenő hitelesítés funkcióról.
 - [Azure ad – zökkenőmentes egyszeri bejelentkezés](how-to-connect-sso.md): További információ erről a kiegészítő funkcióról.
-- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): Az új szolgáltatásokra vonatkozó kérelmeket a Azure Active Directory fórum használatával teheti meg.
+- [UserVoice](https://feedback.azure.com/forums/169401-azure-active-directory/category/160611-directory-synchronization-aad-connect): használja a Azure Active Directory fórumot az új szolgáltatásokra vonatkozó kérelmek fájljának megjelenítéséhez.
 

@@ -1,19 +1,19 @@
 ---
 title: Marketplace-mérési szolgáltatás API-k | Azure piactér
 description: Az SaaS-ajánlatok használati eseménye az Azure piactéren.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 07/11/2019
-ms.openlocfilehash: 36ca95191e0e6422bd93360b98243393acad8147
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dea950ff72eff2372fc10f989d4ce77fa746c4bf
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825479"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933574"
 ---
 # <a name="marketplace-metering-service-apis"></a>Marketplace metering service API-k
 
@@ -234,6 +234,6 @@ A felhasználó jogosulatlanul teszi ezt a hívást
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: Saas- [mért számlázás](./saas-metered-billing.md).

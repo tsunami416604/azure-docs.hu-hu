@@ -1,19 +1,19 @@
 ---
 title: Szoftverek vásárlása a AppSource-on | Azure piactér
 description: A szoftver megvásárlásának lépései a AppSource-on | Az Azure Marketplace-en.
-author: qianw211
+author: MaggiePucciEvans
 manager: evansma
-ms.author: v-qiwe
+ms.author: evansma
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 06/05/2019
-ms.openlocfilehash: 3ca07f060aebcea82895f0463cac693c66f0c629
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 70e51d7c05e93e7d5f4451fa383023605a02af99
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73827737"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933497"
 ---
 # <a name="how-to-purchase-software-on-microsoft-appsource"></a>Szoftverek vásárlása Microsoft AppSource
 
@@ -41,7 +41,7 @@ Az SaaS-ajánlatok megvásárlásához a következőkre van szüksége:
     > [!Note]
     > A AppSource a választható alkalmazások közül választhat, beleértve az ingyenes, a próbaverziókat és a fizetős előfizetéseket. Ez a cikk azt ismerteti, hogyan vásárolhatók meg a fizetős előfizetések a AppSource használatával.
 
-1. Válassza a **Letöltés most**lehetőséget.
+1. Válassza a **Letöltés most** lehetőséget.
 1. Válassza ki a csomagot:
 
     1. Ülőhelyek számának beállítása
@@ -63,12 +63,12 @@ A megrendelés kézhezvételét követően több másodpercig is eltarthat, amí
     > [!Note]
     > Ez a lépés kötelező, és bármikor elvégezhető.
 
-## <a name="contact-support"></a>Kapcsolatfelvétel a támogatási szolgáltatással
+## <a name="contact-support"></a>Kapcsolatfelvétel az ügyfélszolgálattal
 
 Egy támogatási jegyet a Microsoft 365 felügyeleti központon keresztül [küldhet be](https://admin.microsoft.com/Adminportal/Home?source=applauncher#/homepage) .
 
 Üzleti termékek esetén [forduljon az ügyfélszolgálathoz](https://docs.microsoft.com/office365/admin/contact-support-for-business-products?view=o365-worldwide&tabs=phone).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információért tekintse meg a [kereskedelmi piactér dokumentációját](https://docs.microsoft.com/azure/marketplace/partner-center-portal/commercial-marketplace-overview) .

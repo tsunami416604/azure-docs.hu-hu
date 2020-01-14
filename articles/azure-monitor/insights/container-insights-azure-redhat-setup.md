@@ -1,14 +1,14 @@
 ---
 title: Azure Red Hat OpenShift-fürtök konfigurálása az Azure Monitor for containers szolgáltatással | Microsoft Docs
-description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára az Azure Red Hat OpenShift üzemeltetett Kubernetes-fürtök figyelésére.
+description: Ez a cikk bemutatja, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
-ms.date: 11/21/2019
-ms.openlocfilehash: 6922cb7b143989ba329df972a06825629c4c5020
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405573"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930365"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift-fürtök konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -27,10 +27,8 @@ A tárolók Azure Monitor a következő támogatott módszerek használatával e
 
 A tárolók Azure Monitor támogatja az Azure Red Hat OpenShift figyelését az [Áttekintés](container-insights-overview.md) című cikkben leírtak szerint, a következő funkciók kivételével:
 
-- Élő adatértékek
-- Prometheus-metrikák selejtezése
+- Élő adatértékek (előzetes verzió)
 - A fürtcsomópontok és a hüvelyek [metrikáinak összegyűjtése](container-insights-update-metrics.md) és tárolása a Azure monitor metrikai adatbázisban
-- Állapot funkció
 
 ## <a name="prerequisites"></a>Előfeltételek
 

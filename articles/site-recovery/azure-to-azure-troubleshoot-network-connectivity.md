@@ -2,18 +2,18 @@
 title: Az Azure-hoz való kapcsolódás hibáinak elhárítása az Azure-ban Azure Site Recovery
 description: Hibák és problémák elhárítása az Azure-beli virtuális gépek vész-helyreállításhoz való replikálásakor
 services: site-recovery
-author: asgang
+author: carmonmills
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
 ms.date: 08/05/2019
-ms.author: asgang
-ms.openlocfilehash: 4995a4086c471a06fe859febfd2d1af7fbb22a76
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.author: carmonm
+ms.openlocfilehash: 41b5203c328243c9ef7cc74e6b9771c677a54c7c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73622456"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933404"
 ---
 # <a name="troubleshoot-azure-to-azure-vm-network-connectivity-issues"></a>Az Azure – Azure virtuálisgép-hálózat csatlakozási problémáinak elhárítása
 
@@ -114,9 +114,9 @@ Ezek a szabályok azért szükségesek, hogy a replikáció engedélyezhető leg
                 *Port = 567*</br>
   4. Azure Site Recovery mobilitási szolgáltatás ügynöke csak a nem ***hitelesített proxykat***támogatja.
 
-### <a name="fix-the-problem"></a>Javítsa ki a problémát
+### <a name="fix-the-problem"></a>A probléma javítása
 [A szükséges URL-címek](azure-to-azure-about-networking.md#outbound-connectivity-for-urls) vagy a [szükséges IP-tartományok](azure-to-azure-about-networking.md#outbound-connectivity-for-ip-address-ranges)engedélyezéséhez kövesse a [hálózatkezelési útmutató dokumentum](site-recovery-azure-to-azure-networking-guidance.md)lépéseit.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Azure-alapú virtuális gépek replikálása](site-recovery-replicate-azure-to-azure.md)

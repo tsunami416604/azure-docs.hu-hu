@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 1354bd2895a8fe6e8aa1f12cd92295c77ca2d4b2
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: ceb82bf729470f9996bc9ecc766329a0d1242ec4
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564165"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930034"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Biztonsági ellenőrzés: naplózás és figyelés
 
@@ -79,9 +79,13 @@ https://docs.microsoft.com/azure/azure-monitor/platform/platform-logs-overview
 
 Ha a számítási erőforrás a Microsoft tulajdonában van, akkor a Microsoft feladata a figyelése. Ha a számítási erőforrás a szervezet tulajdonában van, akkor az Ön felelőssége, hogy figyelje. A Azure Security Center az operációs rendszer figyelésére használható. Az operációs rendszer Security Center által összegyűjtött adatok közé tartozik az operációs rendszer típusa és verziója, az operációs rendszer (Windows-eseménynaplók), a futó folyamatok, a gép neve, az IP-címek és a bejelentkezett felhasználó. A Log Analytics ügynök az összeomlási memóriaképek fájljait is gyűjti.
 
-Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése Azure Monitor használatával: https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+Az Azure-beli virtuális gépek belső gazdagép-naplóinak összegyűjtése a Azure Monitor használatával:
 
-Az Azure Security Center adatgyűjtés ismertetése: https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
+https://docs.microsoft.com/azure/azure-monitor/learn/quick-collect-azurevm
+
+Azure Security Center adatgyűjtés ismertetése:
+
+https://docs.microsoft.com/azure/security-center/security-center-enable-data-collection
 
 ## <a name="25-configure-security-log-storage-retention"></a>2,5: a biztonsági napló tárolási adatmegőrzésének konfigurálása
 
@@ -91,7 +95,9 @@ Az Azure Security Center adatgyűjtés ismertetése: https://docs.microsoft.com/
 
 Azure Monitor belül állítsa be a Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi szabályainak megfelelően. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 
-Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása: https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
+Log Analytics-munkaterületek naplózási megőrzési paramétereinek beállítása:
+
+https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#change-the-data-retention-period
 
 ## <a name="26-monitor-and-review-logs"></a>2,6: naplók figyelése és áttekintése
 
@@ -153,7 +159,7 @@ A Microsoft antimalware konfigurálása a Cloud Serviceshoz:
 
 https://docs.microsoft.com/powershell/module/servicemanagement/azure/set-azureserviceantimalwareextension?view=azuresmps-4.0.0
 
-A Microsoft antimalware ismertetése:
+A Microsoft antimalware megismerése:
 
 https://docs.microsoft.com/azure/security/fundamentals/antimalware
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: 95c1834e997caae13e650df5b588df898a1e361d
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 2f24012a69a7673426644a8ded6162cd1021938e
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564178"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75930064"
 ---
 # <a name="security-control-inventory-and-asset-management"></a>Biztonság-ellenőrzés: leltár-és eszközkezelés
 
@@ -193,7 +193,9 @@ https://docs.microsoft.com/azure/role-based-access-control/conditional-access-az
 
 Az operációs rendszer-specifikus konfigurációk vagy harmadik féltől származó erőforrások használatával korlátozhatja, hogy a felhasználók képesek legyenek parancsfájlokat végrehajtani az Azure számítási erőforrásokon belül.
 
-Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben: https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
+Például a PowerShell-parancsfájlok végrehajtásának szabályozása Windows-környezetekben:
+
+https://docs.microsoft.com/powershell/module/microsoft.powershell.security/set-executionpolicy?view=powershell-6
 
 ## <a name="613-physically-or-logically-segregate-high-risk-applications"></a>6,13: fizikailag vagy logikailag elkülöníthető a nagy kockázatú alkalmazások
 

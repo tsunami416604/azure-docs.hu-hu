@@ -1,9 +1,9 @@
 ---
 title: Mi az a StorSimple Snapshot Manager? | Microsoft Docs
-description: A StorSimple Snapshot Managerben, architektúrájának és funkcióit ismerteti.
+description: Ismerteti a StorSimple Snapshot Manager, annak architektúráját és funkcióit.
 services: storsimple
 documentationcenter: NA
-author: SharS
+author: twooley
 manager: timlt
 editor: ''
 ms.assetid: 6094c31e-e2d9-4592-8a15-76bdcf60a754
@@ -13,131 +13,131 @@ ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 02/27/2017
-ms.author: v-sharos
+ms.author: twooley
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f7436bb63f52c9c2b697c8e7031922ce89d786b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: e58e2d929dd1e4db16ce495ad54045e9dc3a6fb1
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60789614"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933636"
 ---
-# <a name="an-introduction-to-storsimple-snapshot-manager"></a>A StorSimple Snapshot Manager bemutatása
+# <a name="an-introduction-to-storsimple-snapshot-manager"></a>Bevezetés a StorSimple Snapshot Manager
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modulja, amely leegyszerűsíti az adatok védelme és a biztonságimásolat-felügyelet a Microsoft Azure StorSimple-környezetben. A StorSimple Snapshot Managerrel kezelheti az adatközpontban és a felhőben a Microsoft Azure StorSimple data egyetlen integrált tárolási megoldás, így leegyszerűsíti a biztonsági mentési folyamatokat és költségeit.
+A StorSimple Snapshot Manager egy Microsoft Management Console (MMC) beépülő modul, amely leegyszerűsíti az adatvédelmet és a biztonsági mentési felügyeletet egy Microsoft Azure StorSimple környezetben. A StorSimple Snapshot Manager segítségével egyetlen integrált tárolási megoldásként kezelheti az adatközpontban és a felhőben tárolt Microsoft Azure StorSimple-adatmennyiségeket, így egyszerűsítve a biztonsági mentési folyamatokat, és csökkentheti a költségeket.
 
-Ez az Áttekintés vezet be a StorSimple Snapshot Managerben, annak szolgáltatásait ismerteti, és ismerteti a szerepét a Microsoft Azure StorSimple. 
+Ez az áttekintés bemutatja a StorSimple Snapshot Manager, ismerteti a funkcióit, és ismerteti a szerepkörét Microsoft Azure StorSimpleban. 
 
-A teljes Microsoft Azure StorSimple rendszerbe, amely többek között a StorSimple-eszköz, a StorSimple Manager szolgáltatás, a StorSimple Snapshot Manager és a StorSimple Adapter for SharePoint, az áttekintést lásd: [a StorSimple 8000 sorozat: hibrid felhő tárolási megoldás](storsimple-overview.md). 
+A teljes Microsoft Azure StorSimple rendszer áttekintéséhez, beleértve a StorSimple-eszközt, StorSimple Manager szolgáltatást, a StorSimple Snapshot Manager és a SharePoint StorSimple-adapterét, lásd [: StorSimple 8000 sorozat: hibrid felhőalapú tárolási megoldás](storsimple-overview.md). 
 
 > [!NOTE]
-> * A StorSimple Snapshot Manager kezelése a Microsoft Azure StorSimple Virtual Arrayt (más néven a StorSimple helyszíni virtuális eszköz) nem használható.
-> * Ha azt tervezi, a StorSimple eszköz StorSimple Update 2 telepítése, ügyeljen arra, hogy a StorSimple Snapshot Manager legújabb verzió letöltése és telepítése azt **2. frissítés telepítése előtt**. A legújabb verzióra a StorSimple Snapshot Manager visszamenőlegesen kompatibilis és együttműködik a Microsoft Azure StorSimple kiadott verzióihoz. A StorSimple Snapshot Manager korábbi verziót használ, ha (nem kell az új verzió telepítése előtt, távolítsa el az előző verzió) frissíteni kell.
+> * A StorSimple Snapshot Manager nem használhatók Microsoft Azure StorSimple virtuális tömbök (más néven StorSimple-alapú virtuális eszközök) kezelésére.
+> * Ha a StorSimple 2. frissítését tervezi telepíteni a StorSimple-eszközön, töltse le a Snapshot Manager StorSimple legújabb verzióját, és telepítse a **StorSimple Update 2 telepítése előtt**. A StorSimple Snapshot Manager legújabb verziója visszamenőlegesen kompatibilis, és a Microsoft Azure StorSimple összes kiadott verziójával működik. Ha a StorSimple Snapshot Manager korábbi verzióját használja, frissítenie kell (az új verzió telepítése előtt nem kell eltávolítania a korábbi verziót).
 > 
 > 
 
-## <a name="storsimple-snapshot-manager-purpose-and-architecture"></a>A StorSimple Snapshot Manager célú és architektúra
-A StorSimple Snapshot Manager biztosít egy központi kezelőkonzol segítségével létrehozhat egységes, időponthoz – biztonsági másolatok a helyi és felhőbeli adatok. Ha például a konzolt is használhatja:
+## <a name="storsimple-snapshot-manager-purpose-and-architecture"></a>StorSimple Snapshot Manager célja és architektúrája
+A StorSimple Snapshot Manager egy központi felügyeleti konzolt biztosít, amellyel konzisztens, időponthoz kötött biztonsági másolatokat hozhat létre a helyi és a Felhőbeli adatmennyiségekről. A konzollal például a következőket végezheti el:
 
-* Konfigurálja, biztonsági mentése és kötetek törlése.
-* Konfigurálja a kötet csoportokat, győződjön meg arról, hogy a biztonsági másolatba mentett adatok alkalmazáskonzisztens.
-* Biztonsági mentési házirendek kezelése, így az adatok biztonsági mentésének előre meghatározott ütemezés szerint.
-* Hozza létre a helyi és felhőalapú pillanatfelvételek, amely a felhőben tárolt, és a vészhelyreállításhoz használt.
+* Kötetek konfigurálása, biztonsági mentése és törlése.
+* Konfigurálja a mennyiségi csoportokat annak biztosítására, hogy a biztonsági másolatok az alkalmazások konzisztensek legyenek.
+* Biztonsági mentési házirendek kezelése, hogy az adatbiztonsági mentés előre meghatározott ütemterv szerint történjen.
+* Helyi és Felhőbeli pillanatképeket hozhat létre, amelyek a felhőben tárolhatók, és a katasztrófa utáni helyreállításhoz használhatók.
 
-A StorSimple Snapshot Manager beolvassa a VSS-szolgáltatót a gazdagép regisztrált alkalmazások listáját. Ezután alkalmazásfüggő biztonsági másolatok létrehozásához, a köteteket, az alkalmazás ellenőrzi, és javaslatot tesz a kötet csoportjait a konfiguráláshoz. A StorSimple Snapshot Manager ezek kötet csoportokat használ, amelyek alkalmazáskonzisztens biztonsági másolatok készítése. (Alkalmazáskonzisztencia létezik, amikor az összes kapcsolódó fájlokat, és adatbázisok szinkronizálása, és az alkalmazás egy adott időpontban időben igaz állapotát.) 
+A StorSimple Snapshot Manager lekéri a VSS-szolgáltatónál regisztrált alkalmazások listáját a gazdagépen. Ezután az alkalmazással konzisztens biztonsági másolatok létrehozásához ellenőrzi az alkalmazás által használt köteteket, és javaslatot tesz a kötet-csoportok konfigurálására. A StorSimple Snapshot Manager ezeket a köteteket használja az alkalmazás-konzisztens biztonsági másolatok létrehozásához. (Az alkalmazás konzisztenciája akkor áll fenn, ha az összes kapcsolódó fájl és adatbázis szinkronizálva van, és az alkalmazás valódi állapotát jelzi egy adott időpontban.) 
 
-A StorSimple Snapshot Manager biztonsági másolatokat, növekményes pillanatkép, amely csak a változások rögzítésére a legutóbbi biztonsági mentés óta formájában. Ennek eredményeképpen biztonsági mentések kisebb tárolási szükséges, és létrehozhatók és gyorsan vissza. A StorSimple Snapshot Manager a Windows kötet árnyékmásolata szolgáltatás (VSS) használja annak érdekében, hogy a pillanatképek alkalmazáskonzisztens adatok rögzítéséhez. (További információért keresse fel az integráció a Windows a kötet árnyékmásolata szolgáltatás szakaszban.) A StorSimple Snapshot Managerrel, létrehozhat biztonsági mentési ütemezéseket, vagy azonnali biztonsági mentés időpontjának, igény szerint. Ha egy biztonsági mentési és a StorSimple Snapshot Manager lehetővé teszi az adatokat vissza kell állítania egy katalógus, helyi vagy felhőbeli pillanatképek közül választhat. Az Azure StorSimple visszaállítása csak a adatokhoz, szükséges, amely megakadályozza az késleltetések az adatok rendelkezésre állását visszaállítási műveletek során.)
+A StorSimple Snapshot Manager a biztonsági mentések növekményes Pillanatképek formájában jelennek meg, amelyek a legutóbbi biztonsági mentés óta csak a változásokat rögzítik. Ennek eredményeképpen a biztonsági másolatok kevesebb tárterületet igényelnek, és gyorsan létrehozhatók és visszaállíthatók. A StorSimple Snapshot Manager a Windows Kötet árnyékmásolata szolgáltatás (VSS) használatával biztosítja, hogy a pillanatképek alkalmazás-konzisztens adatmennyiséget rögzítsen. (További információért látogasson el az integráció a Windows Kötet árnyékmásolata szolgáltatás szakaszra.) A StorSimple Snapshot Manager segítségével biztonsági mentési ütemezéseket hozhat létre, vagy igény szerint azonnal készíthet biztonsági másolatokat. Ha vissza kell állítania az adatok biztonsági mentését, a StorSimple Snapshot Manager lehetővé teszi a helyi vagy Felhőbeli Pillanatképek katalógusból való kiválasztását. Az Azure StorSimple csak azokat az adatok visszaállítását állítja helyre, amelyekre szükség van, ami megakadályozza az adatok rendelkezésre állásának késleltetését a visszaállítási műveletek során.)
 
-![A StorSimple Snapshot Manager-architektúra](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
+![StorSimple Snapshot Manager architektúra](./media/storsimple-what-is-snapshot-manager/HCS_SSM_Overview.png)
 
-**A StorSimple Snapshot Manager-architektúra** 
+**StorSimple Snapshot Manager architektúra** 
 
-## <a name="support-for-multiple-volume-types"></a>Több kötet típusok támogatása
-A StorSimple Snapshot Manager használatával konfigurálhatja, és készítsen biztonsági másolatot a következő típusú kötetek: 
+## <a name="support-for-multiple-volume-types"></a>Több mennyiségi típus támogatása
+A StorSimple Snapshot Manager a következő típusú kötetek konfigurálására és biztonsági mentésére használható: 
 
-* **Alapszintű kötetek** – alaplemezek egy partíció egy alaplemezen. 
-* **Egyszerű kötetekkel** – egy egyszerű kötet dinamikus kötet, amely tartalmaz egyetlen dinamikus lemez szabad lemezterület. Egyszerű kötet áll egy adott régióban lemezen vagy több régióban, amelyek össze vannak kapcsolva azon a lemezen. (Hozhat létre egyszerű kötet dinamikus lemezeken.) Egyszerű kötet nem, hibatűrő.
-* **A dinamikus köteteket** – egy dinamikus kötet olyan kötet dinamikus lemezen létrehozni. A dinamikus lemezek egy adatbázis használatával nyomon követheti a köteteket, amelyek tartalmazzák a számítógépben található dinamikus lemezeken. 
-* **A dinamikus köteteket a tükrözés** – tükrözés a dinamikus köteteket a RAID 1 architektúra épül. RAID-1 azonos adatokat két vagy több lemez, egy tükrözött set előállító van megírva. Minden olyan lemezt, amely tartalmazza a kért adatok alapján lehet kezelni, egy olvasási kérést.
-* **Megosztott fürtkötetek-** – a fürt megosztott köteteinek (CSV), a feladatátvevő fürt is egyszerre olvasása vagy ugyanarra a lemezre írási több csomópont. Feladatátvétel egyik csomópontjáról egy másik csomópontra fordulhat elő, gyorsan, anélkül, hogy a meghajtó tulajdonosát vagy csatlakoztatási, leválasztásához és eltávolítása a kötet változása. 
+* **Alapszintű kötetek** – az alapszintű kötet egy alapszintű lemez egyetlen partíciója. 
+* **Egyszerű kötetek** – az egyszerű kötet egy dinamikus kötet, amely egyetlen dinamikus lemezről tartalmaz lemezterületet. Egy egyszerű kötet egy lemez egyetlen régiójából vagy több, ugyanazon a lemezen összekapcsolt régióból áll. (Csak dinamikus lemezeken hozhat létre egyszerű köteteket.) Az egyszerű kötetek nem hibatűrők.
+* **Dinamikus kötetek** – a dinamikus kötet egy dinamikus lemezen létrehozott kötet. A dinamikus lemezek egy adatbázis használatával követik nyomon a számítógép dinamikus lemezei által tárolt kötetekkel kapcsolatos információkat. 
+* **Dinamikus kötetek tükrözéssel** – a tükrözött dinamikus KÖTETEK a RAID 1 architektúrára épülnek. A RAID 1 esetében az azonos adatbevitel két vagy több lemezen történik, tükrözött készlet létrehozásával. Ezután egy olvasási kérést bármely olyan lemez képes kezelni, amely tartalmazza a kért adattípust.
+* **Fürt megosztott kötetei** – a fürt megosztott köteteivel (CSV) a feladatátvevő fürt több csomópontja egyszerre tud olvasni vagy írni ugyanahhoz a lemezhez. Az egyik csomópontról egy másik csomópontra történő feladatátvétel gyorsan elvégezhető, anélkül, hogy módosítani kellene a meghajtó tulajdonjogát vagy a csatlakoztatást, a leválasztást és a kötet eltávolítását. 
 
 > [!IMPORTANT]
-> Ne keverje a CSV-k és a CSV a pillanatképeket. CSV-k és CSV-pillanatkép nem támogatott. 
+> Ne keverje össze a CSV és a nem CSV ugyanabban a pillanatképben. A CSV és a nem CSV egy pillanatképben való keverése nem támogatott. 
 > 
 > 
 
-A StorSimple Snapshot Manager használatával állítsa vissza a teljes kötet csoportok vagy az egyes kötetek klónozása és az egyes fájlok helyreállítása.
+A StorSimple Snapshot Manager használatával visszaállíthatja a teljes kötet-csoportokat, vagy megoszthatja az egyes köteteket, és helyreállíthatja az egyes fájlokat.
 
-* [Kötetek és a kötet csoportok](#volumes-and-volume-groups) 
-* [Biztonsági mentési típusok és a biztonsági mentési szabályzatok](#backup-types-and-backup-policies) 
+* [Kötetek és mennyiségi csoportok](#volumes-and-volume-groups) 
+* [Biztonsági mentési típusok és biztonsági mentési szabályzatok](#backup-types-and-backup-policies) 
 
-A StorSimple Snapshot Manager funkciók és a használatukkal kapcsolatos további információkért lásd: [StorSimple Snapshot Manager felhasználói felületén](storsimple-use-snapshot-manager.md).
+További információ a StorSimple Snapshot Manager szolgáltatásairól és használatáról: a [StorSimple Snapshot Manager felhasználói felülete](storsimple-use-snapshot-manager.md).
 
-## <a name="volumes-and-volume-groups"></a>Kötetek és a kötet csoportok
-A StorSimple Snapshot Managerrel, akkor hozzon létre köteteket, majd válassza az őket kötet csoportokba. 
+## <a name="volumes-and-volume-groups"></a>Kötetek és mennyiségi csoportok
+A StorSimple Snapshot Manager segítségével kötetek hozhatók létre, majd konfigurálhatók a kötetek csoportjaiba. 
 
-A StorSimple Snapshot Manager kötet csoportokat használ, amelyek alkalmazáskonzisztens biztonsági másolatot készíteni. Alkalmazáskonzisztencia létezik, amikor az összes kapcsolódó fájlokat, és adatbázisok szinkronizálása, és a egy alkalmazás egy adott időpontban időben igaz állapotát. Kötet csoportok (más néven minősülő *konzisztenciacsoportok*) alapját a biztonsági mentési vagy visszaállítási feladat.
+A StorSimple Snapshot Manager a mennyiségi csoportok használatával hozza létre az alkalmazás-konzisztens biztonsági másolatokat. Az alkalmazás konzisztenciája akkor áll fenn, ha minden kapcsolódó fájl és adatbázis szinkronizálva van, és egy adott időpontban egy alkalmazás valódi állapotát jelöli. A mennyiségi csoportok (amelyek más néven *konzisztencia-csoportok*) a biztonsági mentési vagy visszaállítási feladatok alapját képezik.
 
-Kötet csoportok nem azonosak, kötettárolók. A kötettároló tartalmaz egy vagy több kötet, amely egy felhős társzolgáltatás fiókjába, és más jellemzőket, például a titkosítás és a sávszélesség-felhasználás. Egyetlen kötettároló legfeljebb 256 dinamikusan kiosztott StorSimple-köteteket is tartalmazhat. Kötettárolók kapcsolatos további információkért látogasson el [a kötettárolók kezelése](storsimple-manage-volume-containers.md). Kötet csoportok kötetek konfigurált biztonsági mentési műveletek megkönnyítésére gyűjteményei. Különböző kötettárolókhoz tartozó, egy kötetet csoportba helyezi át őket, és majd hozzon létre egy biztonsági mentési szabályzatot, az adott kötet csoporthoz két kötet választása esetén minden olyan kötetre a megfelelő kötetet tárolóban, a megfelelő tárolási fiók használatával kell készíteni.
+A kötetek csoportjai nem egyeznek a mennyiségi tárolókkal. A mennyiségi tárolók egy vagy több olyan kötetet tartalmaznak, amelyek osztoznak egy felhőalapú Storage-fiókban és más attribútumokon, például a titkosítás és a sávszélesség használatában. Egyetlen mennyiségi tároló legfeljebb 256, dinamikusan kiosztott StorSimple-kötetet tartalmazhat. A mennyiségi tárolókkal kapcsolatos további információkért nyissa [meg a mennyiségi tárolók kezelése](storsimple-manage-volume-containers.md)című témakört. A kötetek a biztonsági mentési műveletek megkönnyítésére konfigurált kötetek gyűjteményei. Ha két, különböző kötet-tárolóhoz tartozó kötetet választ, helyezze azokat egyetlen kötet csoportba, majd hozzon létre egy biztonsági mentési szabályzatot az adott kötethez, majd minden kötetről készítsen biztonsági mentést a megfelelő méretű tárolóban a megfelelő tárolási fiók használatával.
 
 > [!NOTE]
-> Egy kötet csoportban található összes kötetet egyetlen felhőszolgáltató kell származnia.
+> Egy mennyiségi csoport összes kötetének egyetlen felhőalapú szolgáltatótól kell származnia.
 > 
 > 
 
-## <a name="integration-with-windows-volume-shadow-copy-service"></a>Integráció a Windows a kötet árnyékmásolata szolgáltatás
-A StorSimple Snapshot Manager alkalmazáskonzisztens adatok rögzítése a Windows kötet árnyékmásolata szolgáltatás (VSS) használja. VSS segíti az alkalmazáskonzisztencia kommunikálva Kötetárnyékmásolat-felismerésre képes alkalmazások koordinálása a növekményes pillanatképek létrehozása. VSS biztosítja, hogy az alkalmazások ideiglenesen inaktív vagy videokártyának, amikor a pillanatképeket készít. 
+## <a name="integration-with-windows-volume-shadow-copy-service"></a>Integráció a Windows Kötet árnyékmásolata szolgáltatás
+A StorSimple Snapshot Manager a Windows Kötet árnyékmásolata szolgáltatás (VSS) használatával rögzíti az alkalmazás-konzisztens adatmennyiséget. A VSS a VSS-t támogató alkalmazásokkal folytatott kommunikáció révén megkönnyíti az alkalmazások konzisztenciáját a növekményes Pillanatképek létrehozásának koordinálásához. A VSS gondoskodik arról, hogy az alkalmazások átmenetileg inaktívak vagy nyugalmi legyenek a pillanatképek készítésekor. 
 
-A StorSimple Snapshot Manager megvalósítási VSS együttműködik az SQL Server és az általános NTFS-kötetekről. A folyamat a következőképpen történik: 
+A StorSimple Snapshot Manager a VSS implementálása SQL Server és általános NTFS-kötetekkel működik. A folyamat a következő: 
 
-1. A kérelmező, amely általában egy adatkezelés és adatvédelmi megoldás (például a StorSimple Snapshot Manager) vagy biztonsági mentési alkalmazást, VSS hív meg, és megkérdezi, hogy információkat gyűjtsön a célalkalmazás író szoftverek.
-2. VSS kapcsolatba lép az író összetevővel, egy leírást az adatok lekéréséhez. Az író az adatok biztonsági mentése a leírását adja eredményül. 
-3. VSS az alkalmazás biztonsági mentésének előkészítése az író jelzi. Az író, az adatok biztonsági mentésének előkészíti a nyitott tranzakciók végrehajtásával, frissítése, a tranzakciós naplókhoz, és így tovább, és értesíti a VSS
-4. VSS arra utasítja, hogy az író ideiglenesen állítsa le az alkalmazás adattárak, és győződjön meg arról, hogy nincs adatok írása a kötet árnyékmásolata hozza létre. Ez a lépés biztosítja az adatok konzisztenciáját, és legfeljebb 60 másodpercet vesz igénybe.
-5. VSS arra utasítja a szolgáltatót, hogy az árnyékmásolat létrehozása. Szolgáltatók, amely lehet a szoftver vagy hardver-alapú, a köteteket, azokat az árnyékmásolatokat aktuálisan futó és igény szerinti kezelése. A szolgáltató hoz létre az árnyékmásolatot, és a VSS értesíti, ha elkészült.
-6. VSS kapcsolatba lép az író értesíti az alkalmazást, amelyet i/o folytathatja, valamint győződjön meg arról, hogy i/o felfüggesztése sikerült árnyékmásolat létrehozása során. 
-7. Ha a másolási sikeres volt, a VSS hely a másolása a kérelmező adja vissza. 
-8. Ha az adatok írták, amíg az árnyékmásolat létrejött, a biztonsági mentés inkonzisztens lesz. VSS törli az árnyékmásolatot, és értesítést küld a kérelmezőnek. A kérelmező ismételje meg a biztonsági mentési folyamat automatikusan vagy értesítse a rendszergazdát, hogy egy későbbi időpontban újra elindítani.
+1. A kérelmező, amely általában egy adatkezelési és védelmi megoldás (például StorSimple Snapshot Manager) vagy egy biztonságimásolat-készítő alkalmazás, meghívja a VSS-t, és kéri, hogy gyűjtsön adatokat a célalkalmazás írója szoftverből.
+2. A VSS kapcsolatba lép az író összetevővel az adatleírás lekéréséhez. Az író a biztonsági mentésre kerülő adatok leírását adja vissza. 
+3. A VSS jelzi az író számára, hogy előkészítse az alkalmazást a biztonsági mentéshez. Az író a nyitott tranzakciók, a tranzakciónaplók frissítése és így tovább, majd értesíti a VSS-t a biztonsági mentéshez.
+4. A VSS arra utasítja az íróot, hogy ideiglenesen állítsa le az alkalmazás adattárait, és győződjön meg arról, hogy az árnyékmásolat létrehozásakor a köteten nem történik az adatírás. Ez a lépés biztosítja az adatkonzisztenciaot, és legfeljebb 60 másodpercet vesz igénybe.
+5. A VSS arra utasítja a szolgáltatót, hogy hozza létre az árnyékmásolatot. A szoftver-vagy hardver-alapú szolgáltatók, a jelenleg futó kötetek kezelése, valamint igény szerint árnyékmásolatok készítése. A szolgáltató létrehozza az árnyékmásolatot, és a befejezéskor értesíti a VSS-t.
+6. A VSS kapcsolatba lép az írómal, hogy értesítse az I/O-t folytató alkalmazást, és ellenőrizze, hogy az I/O felfüggesztése sikeresen megtörtént-e az árnyékmásolat létrehozásakor. 
+7. Ha a másolás sikeres volt, a VSS visszaadja a másolás helyét a kérelmezőnek. 
+8. Ha az árnyékmásolat létrehozása közben megírta az adatírást, a biztonsági mentés inkonzisztens lesz. A VSS törli az árnyékmásolat-példányt, és értesíti a kérelmezőt. A kérelmező elvégezheti a biztonsági mentési folyamat automatikus megismétlését, vagy értesítheti a rendszergazdát, hogy később újra próbálkozik.
 
-Tekintse meg az alábbi ábrán is látható.
+Lásd az alábbi ábrát.
 
 ![VSS-folyamat](./media/storsimple-what-is-snapshot-manager/HCS_SSM_VSS_process.png)
 
-**Kötet árnyékmásolata szolgáltatás Windows-folyamat** 
+**Windows Kötet árnyékmásolata szolgáltatás folyamat** 
 
-## <a name="backup-types-and-backup-policies"></a>Biztonsági mentési típusok és a biztonsági mentési szabályzatok
-A StorSimple Snapshot Managerrel biztonsági másolatokat és tárolására is használható, helyben és a felhőben. A StorSimple Snapshot Managert használhatja a biztonsági másolatokat közvetlenül, vagy egy biztonsági mentési házirend használatával ütemezheti az automatikus biztonsági másolatok készítése. Biztonsági mentési szabályzatok is engedélyezheti, hogy adja meg, hány pillanatfelvételek megmaradnak. 
+## <a name="backup-types-and-backup-policies"></a>Biztonsági mentési típusok és biztonsági mentési szabályzatok
+A StorSimple Snapshot Manager segítségével biztonsági mentést készíthet, és helyileg és a felhőben is tárolhatja azokat. Az StorSimple Snapshot Manager használatával azonnal biztonsági másolatot készíthet az adatairól, vagy biztonsági mentési szabályzattal létrehozhat egy ütemezést, amely automatikusan készít biztonsági mentést. A biztonsági mentési szabályzatok segítségével megadhatja, hogy hány pillanatképet őrizzen meg a rendszer. 
 
-### <a name="backup-types"></a>Biztonsági mentési típusok
-A StorSimple Snapshot Manager segítségével a következő típusú biztonsági másolatok létrehozása:
+### <a name="backup-types"></a>A biztonsági mentés típusai
+A StorSimple Snapshot Manager a következő típusú biztonsági másolatok létrehozására használható:
 
-* **A helyi pillanatképeket** – helyi pillanatképei a StorSimple eszközön tárolt adatmennyiség időponthoz példányban. Általában ilyen típusú biztonsági mentés létrehozott is, és gyorsan vissza. Helyi pillanatképet is használhat, mint egy helyi biztonsági másolat.
-* **Felhőalapú pillanatfelvételek** – Felhőbeli pillanatképek a felhőben tárolt adatmennyiség időponthoz példányban. Felhőbeli pillanatkép megegyezik egy másik, külső helyszínen lévő tárolórendszer replikált pillanatképet. Felhőbeli pillanatképek különösen hasznosak a vész-helyreállítási helyzetekben.
+* **Helyi Pillanatképek** – a helyi Pillanatképek a StorSimple-eszközön tárolt mennyiségi adatmennyiségek időponthoz kötött példányai. Az ilyen típusú biztonsági másolatok általában gyorsan létrehozhatók és visszaállíthatók. Helyi biztonsági másolat készítésekor helyi pillanatképet is használhat.
+* **Felhőbeli Pillanatképek** – a felhőalapú Pillanatképek a felhőben tárolt mennyiségi adatmennyiségek időponthoz kötődő példányai. A Felhőbeli Pillanatképek egy másik, nem helyszíni tárolási rendszeren replikált pillanatképnek felelnek meg. A Felhőbeli Pillanatképek különösen hasznosak a vész-helyreállítási helyzetekben.
 
-### <a name="on-demand-and-scheduled-backups"></a>Igény szerinti és ütemezett biztonsági mentések tiltása
-A StorSimple Snapshot Managerrel egy egyszeri biztonsági mentést hozhatók létre azonnal is kezdeményezhető, vagy ütemezhet rendszeres biztonsági mentési műveletek használhatja a biztonsági mentési szabályzat.
+### <a name="on-demand-and-scheduled-backups"></a>Igény szerinti és ütemezett biztonsági mentések
+A StorSimple Snapshot Manager használatával azonnal létrehozhat egy egyszeri biztonsági mentést, vagy használhat biztonsági mentési szabályzatot is az ismétlődő biztonsági mentési műveletek elindításához.
 
-Biztonsági mentési szabályzat egy automatikus szabályokat, amelyek segítségével rendszeres biztonsági mentések ütemezéséhez. Biztonsági mentési szabályzat lehetővé teszi a gyakoriság és pillanatképeket készít egy adott kötet csoport paramétereinek megadása. Házirendek segítségével adja meg a kezdő és lejárati dátumok, időpontok, gyakoriságot és adatmegőrzési követelmények, mind a helyi és felhőbeli pillanatképeket. Definiálja azt követően azonnal egy szabályzat érvényes. 
+A biztonsági mentési szabályzat olyan automatizált szabályok összessége, amelyek segítségével rendszeres biztonsági mentéseket ütemezhet. A biztonsági mentési szabályzat lehetővé teszi, hogy meghatározza a gyakoriságot és a paramétereket egy adott mennyiségi csoport pillanatképének készítéséhez. Házirendekkel megadhatja a kezdő és a lejárati dátumokat, az időpontokat, a gyakoriságokat és a megőrzési követelményeket mind a helyi, mind a Felhőbeli pillanatképekhez A szabályzatot a definiálását követően azonnal alkalmazza a rendszer. 
 
-A StorSimple Snapshot Manager segítségével konfigurálhatja, vagy konfigurálja újra a biztonsági mentési házirendeket, amikor szükséges. 
+Ha szükséges, a StorSimple Snapshot Manager használatával konfigurálhatja vagy újrakonfigurálhatja a biztonsági mentési házirendeket. 
 
-Konfigurálja az egyes biztonsági mentési házirendet hoz létre a következő információkat:
+A következő információkat kell konfigurálnia minden létrehozott biztonsági mentési szabályzathoz:
 
-* **Név** – a kiválasztott biztonsági mentési szabályzat egyedi nevét.
-* **Típus** – biztonsági mentési szabályzat; helyi pillanatfelvétel és felhőbeli pillanatkép típusa.
-* **Kötetcsoport** – a kötet csoport, amely a kijelölt biztonsági mentési szabályzat hozzá van rendelve.
-* **Adatmegőrzési** – biztonsági másolatok megőrzése száma. Ha bejelöli a **összes** mezőben minden biztonsági másolatok megmaradnak, amíg a biztonsági másolatok kötetenkénti maximális számának elérésekor, ekkor a szabályzat meghiúsul, és hozzon létre egy hibaüzenet. Másik lehetőségként megadhatja a biztonsági másolatok megőrzése (1 – 64) között számos.
-* **Dátum** – a biztonsági mentési szabályzat létrehozásának dátumát.
+* **Name (név** ) – a kiválasztott biztonsági mentési szabályzat egyedi neve.
+* **Type (típus** ) – a biztonsági mentési szabályzat típusa; helyi pillanatkép vagy Felhőbeli pillanatkép.
+* **Kötet csoport** – az a kötet, amelyhez a kiválasztott biztonsági mentési szabályzat hozzá van rendelve.
+* **Megőrzés** – a megőrizni kívánt biztonsági másolatok száma. Ha bejelöli a **minden** biztonsági másolatot, a rendszer minden biztonsági másolatot megtart, amíg a biztonsági másolatok maximális száma elérte a kötetet, és ekkor a házirend sikertelen lesz, és hibaüzenetet fog eredményezni. Másik lehetőségként megadhatja a megőrizni kívánt biztonsági másolatok számát (1 és 64 között).
+* **Date (dátum** ) – a biztonsági mentési szabályzat létrehozásának dátuma.
 
-Biztonsági mentési szabályzatok konfigurálásával kapcsolatos további információkért látogasson el [használata a StorSimple Snapshot Manager hozhat létre, és a biztonsági mentési házirendek kezelése](storsimple-snapshot-manager-manage-backup-policies.md).
+A biztonsági mentési szabályzatok konfigurálásával kapcsolatos információkért lépjen a [StorSimple Snapshot Manager használatára a biztonsági mentési házirendek létrehozásához és kezeléséhez](storsimple-snapshot-manager-manage-backup-policies.md).
 
-### <a name="backup-job-monitoring-and-management"></a>Biztonsági mentési feladat figyelése és kezelése
-A StorSimple Snapshot Managerrel segítségével figyelheti és közelgő, ütemezett és befejeződött a biztonsági mentési feladatok kezelése. A StorSimple Snapshot Manager emellett egy katalógus, akár 64 befejezett biztonsági mentéseket. A katalógus segítségével megkeresését és helyreállítását a kötetek vagy csak egyes fájlokat. 
+### <a name="backup-job-monitoring-and-management"></a>Biztonsági mentési feladatok figyelése és kezelése
+A StorSimple Snapshot Manager segítségével figyelheti és kezelheti a közelgő, ütemezett és befejezett biztonsági mentési feladatokat. Emellett a StorSimple Snapshot Manager katalógusa akár 64 befejezett biztonsági mentést is biztosít. A katalógus használatával kötetek vagy egyedi fájlok kereshetők és állíthatók vissza. 
 
-Biztonsági mentési feladatok figyelésével kapcsolatos további információkért lépjen [használata a StorSimple Snapshot Manager biztonsági mentési feladatok megtekintése és kezelése a](storsimple-snapshot-manager-manage-backup-jobs.md).
+További információ a biztonsági mentési feladatok figyeléséről: a [StorSimple Snapshot Manager használata a biztonsági mentési feladatok megtekintéséhez és kezeléséhez](storsimple-snapshot-manager-manage-backup-jobs.md).
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [felügyelete a StorSimple megoldás StorSimple Snapshot Manager használata](storsimple-snapshot-manager-admin.md).
-* Töltse le [a StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
+## <a name="next-steps"></a>Következő lépések
+* További információ a [StorSimple Snapshot Manager használatáról a StorSimple-megoldás felügyeletéhez](storsimple-snapshot-manager-admin.md).
+* Töltse le a [StorSimple Snapshot Manager](https://www.microsoft.com/download/details.aspx?id=44220).
 

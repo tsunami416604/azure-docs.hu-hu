@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: reference
 ms.date: 11/08/2019
 ms.author: alkarche
-ms.openlocfilehash: a947ff11fbbe418af84ff49033cba3857bb8447f
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 108294e3f125da9fb009eb0a85585dab026c8d01
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74925186"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75933319"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
 
@@ -30,11 +30,11 @@ A [Microsoft. Azure. webjobs. Extensions](https://www.nuget.org/packages/Microso
 
 ## <a name="trigger"></a>Eseményindító
 
-A bemelegedési trigger lehetővé teszi, hogy Definiáljon egy olyan függvényt, amely egy példányon fog futni, amikor hozzáadja őket a futó alkalmazáshoz. A bemelegedési függvény használatával megnyithatja a kapcsolatokat, betöltheti a függőségeket, vagy bármilyen más egyéni logikát futtathat, mielőtt az alkalmazás megkapja a forgalmat. 
+A bemelegedési trigger lehetővé teszi, hogy Definiáljon egy függvényt, amely egy új példányon fog futni, amikor bekerül a futó alkalmazásba. A bemelegedési függvény használatával megnyithatja a kapcsolatokat, betöltheti a függőségeket, vagy bármilyen más egyéni logikát futtathat, mielőtt az alkalmazás megkapja a forgalmat. 
 
 A bemelegedési trigger olyan megosztott függőségek létrehozására szolgál, amelyeket az alkalmazás egyéb funkciói fognak használni. [Tekintse meg a megosztott függőségek példáit](./manage-connections.md#client-code-examples).
 
-Vegye figyelembe, hogy a bemelegedési triggert csak a méretezési műveletek során hívja meg a rendszer az újraindítások vagy más nem léptékű indítások során. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
+Vegye figyelembe, hogy a bemelegedési trigger csak a kibővített műveletekben, az újraindítások vagy más nem léptékű indítások során hívható meg. A bemelegedési trigger használata nélkül gondoskodnia kell arról, hogy a logikája az összes szükséges függőséget be tudja tölteni. A lusta betöltés jó példa ennek megvalósítására.
 
 ## <a name="trigger---example"></a>Trigger – példa
 
