@@ -617,6 +617,8 @@
           href: solution-template-copy-new-files-lastmodifieddate.md
         - name: Tömeges másolás adatbázisból
           href: solution-template-bulk-copy-with-control-table.md
+        - name: Tömeges másolás fájlokból adatbázisba
+          href: solution-template-bulk-copy-from-files-to-database.md
         - name: Változásadatok másolása adatbázisból
           href: solution-template-delta-copy-with-control-table.md
         - name: Adatok migrálása az Amazon S3-ból az Azure Storage-ba

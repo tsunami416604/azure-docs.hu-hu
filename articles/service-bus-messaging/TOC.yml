@@ -7,7 +7,7 @@
     - name: Üzenetküldő szolgáltatások összehasonlítása
       href: ../event-grid/compare-messaging-services.md
       maintainContext: true
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Service Bus-üzenetsorok
       items:
@@ -205,7 +205,7 @@
               href: service-bus-resource-manager-namespace-topic-with-rule.md
     - name: Biztonságos
       items:
-        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív állapotban történő titkosításhoz (előzetes verzió)
+        - name: Ügyfél által kezelt kulcsok konfigurálása inaktív állapotban történő titkosításhoz
           href: configure-customer-managed-key.md
     - name: Hibaelhárítás
       items:

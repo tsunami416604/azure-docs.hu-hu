@@ -63,7 +63,7 @@
           href: security-center-alerts-data-services.md
         - name: Azure-szolgáltatásrétegek fenyegetésészlelése
           href: security-center-alerts-service-layer.md
-        - name: Az Azure WAF és Azure DDoS Protection fenyegetésészlelése
+        - name: Az Azure WAF és az Azure DDoS Protection fenyegetésészlelési riasztásai
           href: security-center-alerts-integration.md
         - name: Felhőbeli intelligens riasztások korrelációi (incidensek)
           href: security-center-alerts-cloud-smart.md

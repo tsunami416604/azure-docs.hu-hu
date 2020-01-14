@@ -144,9 +144,9 @@
                   href: ../common/storage-rest-api-auth.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
             - name: Azure Storage-titkosítás kezelése
               items:
-                - name: A fiók titkosításikulcs-modelljének ellenőrzése
-                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
-                - name: Ügyfél által kezelt titkosítási kulcsok konfigurálása
+                - name: Ügyfél által felügyelt kulcsok használatát támogató fiók létrehozása
+                  href: ../common/account-encryption-key-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: Ügyfél által felügyelt kulcsok konfigurálása
                   items:
                     - name: Portál
                       href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
@@ -154,6 +154,8 @@
                       href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
                     - name: Azure CLI
                       href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
+                - name: A fiók titkosításikulcs-modelljének ellenőrzése
+                  href: ../common/storage-encryption-key-model-get.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json
         - name: Ügyféloldali titkosítás konfigurálása
           items:
             - name: .NET
