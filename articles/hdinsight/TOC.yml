@@ -73,8 +73,6 @@
               href: ./hdinsight-hadoop-create-linux-clusters-azure-powershell.md
             - name: Fürtök létrehozása a REST API használatával
               href: ./hdinsight-hadoop-create-linux-clusters-curl-rest.md
-            - name: Fürtök létrehozása a .NET használatával
-              href: ./hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md
             - name: Fürtlétrehozási hibák
               href: ./create-cluster-error-dictionary.md
               title: null
@@ -102,8 +100,6 @@
               href: hdinsight-hadoop-script-actions-linux.md
             - name: Apache Hive-kódtárak hozzáadása
               href: hdinsight-hadoop-add-hive-libraries.md
-            - name: Az Apache Giraph használata
-              href: hdinsight-hadoop-giraph-install-linux.md
             - name: A Hue használata
               href: hdinsight-hadoop-hue-linux.md
             - name: HDInsight-alkalmazások fejlesztése
@@ -330,8 +326,6 @@
                   href: ./spark/apache-spark-machine-learning-mllib-ipython.md
                 - name: Webhelynaplók elemzése
                   href: ./spark/apache-spark-custom-library-website-log-analysis.md
-                - name: Mély tanulás a Caffe használatával
-                  href: ./spark/apache-spark-deep-learning-caffe.md
                 - name: Használat a Microsoft Cognitive Toolkittel
                   href: ./spark/apache-spark-microsoft-cognitive-toolkit.md
                 - name: Apache Spark Machine Learning-folyamat létrehozása

@@ -1,5 +1,5 @@
 - name: Áttekintés
-  href: redhat-overview.md
+  href: overview.md
 - name: Red Hat Enterprise Linux-rendszerképek
   items:
     - name: Red Hat Enterprise Linux-rendszerkép áttekintése
@@ -9,4 +9,4 @@
 - name: A Red Hat frissítési infrastruktúrája az Azure-ban
   href: redhat-rhui.md
 - name: Red Hat Enterprise Linux BYOS-rendszerképajánlat
-  href: redhat-byos.md
+  href: byos.md
