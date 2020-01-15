@@ -7,12 +7,12 @@ ms.date: 03/21/2018
 ms.service: storage
 ms.subservice: blobs
 ms.topic: conceptual
-ms.openlocfilehash: be3dc27823c09823133d5b9a3a3f34afe52ec57d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0a9015e33f5456efeac7f7c887995ac4a69f0259
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227904"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941812"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>A blob Storage használata a következővel:C++
 
@@ -39,7 +39,7 @@ Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az al�
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-A következő útmutatóból megtudhatja, hogyan hozhatja létre a forráskódot, és hogyan exportálhat Nuget a [readme](https://github.com/Azure/azure-storage-cpp#download--install) fájlban.
+A következő útmutatóból megtudhatja, hogyan hozhatja létre a forráskódot, és hogyan exportálhat NuGet a [readme](https://github.com/Azure/azure-storage-cpp#download--install) fájlban.
 
 ## <a name="configure-your-application-to-access-blob-storage"></a>Az alkalmazás konfigurálása a blob Storage eléréséhez
 Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az Azure Storage API-kat szeretné használni a Blobok eléréséhez:  

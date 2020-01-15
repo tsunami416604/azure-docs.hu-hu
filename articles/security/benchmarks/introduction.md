@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: mbaldwin
 ms.custom: security-baselines
-ms.openlocfilehash: 3169959250eb45346456c64e606f25efb0ea44f0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8f65eb008d5df6ea3f2f85778d538023e6ce98eb
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934231"
+ms.locfileid: "75945337"
 ---
 # <a name="azure-security-benchmark-introduction"></a>Az Azure Security teljesítményteszt bemutatása
 
@@ -27,7 +27,7 @@ Az Azure biztonsági teljesítményteszt olyan nagy hatású biztonsági javasla
 
 Az Azure Security benchmark dokumentációja a biztonsági vezérlőket és a szolgáltatási javaslatokat tartalmazza.
 
-- **Biztonsági vezérlők**: az Azure biztonsági teljesítménytesztekre vonatkozó javaslatokat a biztonsági vezérlők kategorizálják. A biztonsági vezérlők magas szintű gyártótól független biztonsági követelményeket jelentenek, például a hálózati biztonságot és az adatvédelmet. Az egyes biztonsági vezérlők számos biztonsági javaslattal és útmutatással rendelkeznek, amelyek segítségével implment ezeket az ajánlásokat. 
+- **Biztonsági vezérlők**: az Azure biztonsági teljesítménytesztekre vonatkozó javaslatokat a biztonsági vezérlők kategorizálják. A biztonsági vezérlők magas szintű gyártótól független biztonsági követelményeket jelentenek, például a hálózati biztonságot és az adatvédelmet. Az egyes biztonsági vezérlők számos biztonsági javaslattal és útmutatással rendelkeznek, amelyek segítenek a javaslatok megvalósításában. 
 - **Szolgáltatási javaslatok**: ha elérhető, az Azure-szolgáltatásokra vonatkozó teljesítményteszt-javaslatok tartalmazzák az Azure-beli biztonsági teljesítménytesztek ajánlásait, amelyek kifejezetten az adott szolgáltatáshoz vannak igazítva. 
 
 A "Control", a "benchmark" és az "Baseline" kifejezések gyakran az Azure biztonsági teljesítményteszt dokumentációjában használatosak, és fontos tisztában lenni azzal, hogy az Azure hogyan használja ezeket a feltételeket. 

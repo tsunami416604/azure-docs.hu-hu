@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 804eb63406b33b94e70ef56e0066fa213be04708
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997054"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940909"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -71,6 +71,7 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
 
 - **Forrásoldali attribútum** – a felhasználói attribútum a forrásoldali rendszerből (példa: Azure Active Directory).
 - **Target attribútum** – a felhasználói attribútum a célként megadott rendszeren (például: ServiceNow).
+- **Alapértelmezett érték, ha Null (nem kötelező)** – a célként megadott rendszernek átadandó érték, ha a forrás attribútum értéke null. Ez az érték csak a felhasználó létrehozásakor lesz kiépítve. Egy meglévő felhasználó frissítésekor az "alapértelmezett érték, ha null" nem lesz kiépítve. Ha például a célrendszer összes meglévő felhasználóját egy adott feladathoz tartozó címmel szeretné kiépíteni (ha a forrásrendszer null értékű, akkor a következő [kifejezést](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)használhatja: Switch (IsPresent ([beosztás]), "DefaultValue", "true", [beosztás]). Ügyeljen arra, hogy a "default Value" értéket cserélje le a forrásrendszer null értékének megadásához. 
 - **Objektumok egyeztetése ezzel az attribútummal** – azt határozza meg, hogy ez a leképezés használható-e a felhasználók egyedi azonosítására a forrás-és a célként megadott rendszerek között. Általában az Azure AD userPrincipalName vagy mail attribútumára van beállítva, amely általában egy célalkalmazás username mezőjére van leképezve.
 - **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, azok kiértékelése a mező által meghatározott sorrendben történik. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 - **A leképezés alkalmazása**

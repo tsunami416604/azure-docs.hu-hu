@@ -9,16 +9,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/13/2019
-ms.openlocfilehash: 394c674da63bbda643246c3d61fb670d6ac8d1f7
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d1a59e7ad86191bcc30b7d898d00f327c20fbc5e
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928615"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945620"
 ---
 # <a name="azure-hybrid-benefit"></a>Azure Hybrid Benefit
 
-A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy Azure SQL Database akár 30%-ot is megtakaríthat a helyszíni SQL Server-licencek frissítési garanciával való használatával. 
+A virtuális mag-alapú vásárlási modell kiépített számítási szintjein a meglévő licenceket a [SQL Server Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/)használatával SQL Database kedvezményes díjszabásra cserélheti fel. Ez az Azure-kedvezmény lehetővé teszi, hogy a helyszíni SQL Server-licencek frissítési garanciával való használatával akár 30%-ot vagy akár magasabbat is megtakarítson Azure SQL Database. A megfelelő értékek megadásához használja a Azure Hybrid Benefit számológépet. 
 
 > [!NOTE]
 > A Azure Hybrid Benefitra való váltás nem igényel állásidőt.

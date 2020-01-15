@@ -1,18 +1,16 @@
 ---
-title: Vész-helyreállítás egy többrétegű Dynamics AX-telepítéshez Azure Site Recovery-vel | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan állíthatja be a Dynamics AX vész-helyreállítását Azure Site Recovery
-author: carmonmills
+title: A Dynamics AX vész-helyreállítása Azure Site Recovery
+description: Ismerje meg, hogyan állíthatja be a Dynamics AX vész-helyreállítását Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
-ms.topic: article
+ms.topic: how-to
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 089edd1f408494f59c8f0042b57d2d79c7faffae
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0b32f00374aa8ce6c41415e28f319e3e7d5abddb
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930184"
+ms.locfileid: "75941587"
 ---
 # <a name="set-up-disaster-recovery-for-a-multitier-dynamics-ax-application"></a>Vész-helyreállítás beállítása többplatformos Dynamics AX-alkalmazáshoz   
 
@@ -39,7 +37,7 @@ A Dynamics AX-alkalmazások vész-helyreállításának a Site Recovery használ
 
 ## <a name="site-recovery-support"></a>Site Recovery támogatása
 
-Ennek a cikknek a létrehozása céljából a VMware virtuális gépeket a Dynamics AX 2012 R3 verzióval használtuk a Windows Server 2012 R2 Enterprise rendszeren. Mivel a site Recovery replikációja az Application agnosztikus, a következő forgatókönyvek esetében az itt megadott ajánlásokat várjuk.
+Ennek a cikknek a létrehozása céljából a VMware virtuális gépeket a Dynamics AX 2012 R3 verzióval használtuk a Windows Server 2012 R2 Enterprise rendszeren. Mivel Site Recovery replikáció az alkalmazás agnosztikusja, a következő forgatókönyvek esetében az itt megadott ajánlásokat várjuk.
 
 ### <a name="source-and-target"></a>Forrás és cél
 

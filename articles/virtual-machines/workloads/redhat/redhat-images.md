@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 27cd5b775fbd2af58d93d539420262665d70ead4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 211ac68fd10cd745faf68a5efae7392345008d7b
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486325"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941446"
 ---
 # <a name="overview-of-red-hat-enterprise-linux-images"></a>Red Hat Enterprise Linux rendszerképek áttekintése
 Ez a cikk az Azure Marketplace-en elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképeket ismerteti, valamint az elnevezési és adatmegőrzési szabályzatok körét.
@@ -154,5 +154,5 @@ Aktuális szabályzatunk az összes korábban közzétett rendszerkép megőrzé
 ## <a name="next-steps"></a>Következő lépések
 * Tekintse meg a [RHEL-lemezképek teljes listáját az Azure-ban](./redhat-imagelist.md).
 * További információ az Azure Red Hat [frissítési infrastruktúráról](https://aka.ms/rhui-update).
-* További információ a [RHEL BYOS ajánlatáról](./redhat-byos.md).
+* További információ a [RHEL BYOS ajánlatáról](./byos.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

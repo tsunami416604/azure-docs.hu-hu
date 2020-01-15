@@ -9,12 +9,12 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: e05557b0391a1d698dad000aa9df54424588afe0
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: ede43e3ed939083e7b5ff94899d12f6f4795a880
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892260"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941484"
 ---
 # <a name="acquire-a-token-from-azure-ad-for-authorizing-requests-from-a-client-application"></a>Jogkivonat beszerzése az Azure AD-ből az ügyfélalkalmazástól érkező kérések engedélyezéséhez
 
@@ -124,7 +124,7 @@ Egy befejezett minta webalkalmazás, amely tokent vásárol, és az Azure Storag
 
 #### <a name="add-references-and-using-statements"></a>Hivatkozások hozzáadása és utasítások használata  
 
-Telepítse az Azure Storage ügyféloldali kódtárat a Visual studióból. Az **eszközök** menüben válassza a **Nuget csomagkezelő**, majd a **Package Manager konzol**elemet. Írja be a következő parancsokat a konzol ablakába a szükséges csomagok telepítéséhez a .NET-hez készült Azure Storage ügyféloldali kódtáraból:
+Telepítse az Azure Storage ügyféloldali kódtárat a Visual studióból. A **Tools** (Eszközök) menüben válassza a **NuGet Package Manager** (NuGet-csomagkezelő), majd a **Package Manager Console** (Csomagkezelői konzol) lehetőséget. Írja be a következő parancsokat a konzol ablakába a szükséges csomagok telepítéséhez a .NET-hez készült Azure Storage ügyféloldali kódtáraból:
 
 ```console
 Install-Package Microsoft.Azure.Storage.Blob

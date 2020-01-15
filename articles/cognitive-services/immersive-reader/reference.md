@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 09244b634fa2603a7dc92af3c78d171f8d6bd9df
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903112"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945276"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
@@ -41,14 +41,14 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="parameters"></a>Paraméterek
 
-| Name (Név) | Típus | Leírás |
+| Név | Type (Típus) | Leírás |
 | ---- | ---- |------------ |
-| `token` | sztring | Az Azure AD hitelesítési jogkivonata. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
-| `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. Lásd: [Azure ad-hitelesítés – útmutató](./azure-active-directory-authentication.md). |
+| `token` | sztring | Az Azure AD hitelesítési jogkivonata. |
+| `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. |
 | `content` | [Tartalom](#content) | Egy objektum, amely a magába foglaló olvasóban megjelenítendő tartalmat tartalmazza. |
 | `options` | [Beállítások](#options) | Beállítások a magával ragadó olvasó bizonyos viselkedésének konfigurálásához. Választható. |
 
-### <a name="returns"></a>Adja vissza
+### <a name="returns"></a>Visszatérési érték
 
 Egy `Promise<HTMLDivElement>`ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` egy olyan `div` elemre oldódik fel, amelynek csak a gyermeke egy `iframe` elem, amely tartalmazza az olvasói oldalt.
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Name (Név) | Típus | Leírás |
+| Név | Type (Típus) | Leírás |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -97,7 +97,7 @@ A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 }
 ```
 
-### <a name="chunk"></a>Darab
+### <a name="chunk"></a>Adattömb
 
 Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 
@@ -109,20 +109,28 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 }
 ```
 
+### <a name="cookiepolicy-enum"></a>CookiePolicy enumerálása
+
+Az olvasó cookie-k használatára vonatkozó szabályzat beállítására szolgáló enumerálás. Lásd: [Beállítások](#options).
+
+```typescript
+enum CookiePolicy { Disable, Enable }
+```
+
 #### <a name="supported-mime-types"></a>Támogatott MIME-típusok
 
 | MIME-típus | Leírás |
 | --------- | ----------- |
-| szöveg/egyszerű | Egyszerű szöveg. |
-| szöveg/html | HTML-tartalom. [Részletek](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](https://developer.mozilla.org/en-US/docs/Web/MathML).
+| text/plain | Egyszerű szöveg. |
+| szöveg/html | HTML-tartalom. [További információ](#html-support)|
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](./how-to/display-math.md).
 | Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
 | HTML | Támogatott tartalom |
 | --------- | ----------- |
 | Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
-| Rendezetlen felsorolások | Lemez, kör, négyzet |
+| Rendezetlen listák | Lemez, kör, négyzet |
 | Rendezett felsorolások | Decimális, felső-alfa, alsó-alfa, felső-római, alsó-római |
 | Hivatkozások | Hamarosan |
 
@@ -142,6 +150,7 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
     customDomain?: string;     // Reserved for internal use. Custom domain where the Immersive Reader webapp is hosted (default is null).
     allowFullscreen?: boolean; // The ability to toggle fullscreen (default is true).
     hideExitButton?: boolean;  // Whether or not to hide the Immersive Reader's exit button arrow (default is false). This should only be true if there is an alternative mechanism provided to exit the Immersive Reader (e.g a mobile toolbar's back arrow).
+    cookiePolicy?: CookiePolicy; // Setting for the Immersive Reader's cookie usage (default is CookiePolicy.Disable). It's the responsibility of the host application to obtain any necessary user consent in accordance with EU Cookie Compliance Policy.
 }
 ```
 
@@ -171,7 +180,7 @@ A hibával kapcsolatos információkat tartalmaz.
 | Kód | Leírás |
 | ---- | ----------- |
 | BadArgument | A megadott argumentum érvénytelen. további részletekért tekintse meg a `message`. |
-| Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
+| Időkorlát | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
 | TokenExpired | A megadott jogkivonat lejárt. |
 | Szabályozott | Túllépte a hívási sebesség korlátját. |
 
@@ -193,7 +202,7 @@ A gomb megjelenésének és működésének konfigurálásához használja a kö
 | `data-locale` | Beállítja a területi beállítást. Például `en-US` vagy `fr-FR`. Az alapértelmezett érték az angol `en`. |
 | `data-icon-px-size` | Beállítja az ikon méretét képpontban megadva. Az alapértelmezett érték a 20px. |
 
-## <a name="browser-support"></a>Böngésző-támogatás
+## <a name="browser-support"></a>Böngészőtámogatás
 
 Használja az alábbi böngészők legújabb verzióit a legjobb élmény érdekében a teljes olvasóval.
 

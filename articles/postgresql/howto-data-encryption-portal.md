@@ -1,17 +1,17 @@
 ---
 title: Adattitkosítás Azure Database for PostgreSQL egyetlen kiszolgálón a portál használatával
-description: Megtudhatja, hogyan állíthatja be és kezelheti az Azure Database for PostgreSQL egy kiszolgáló adattitkosítását Azure Portal használatával
+description: Megtudhatja, hogyan állíthatja be és kezelheti a Azure Database for PostgreSQL önálló kiszolgáló adattitkosítását Azure Portal használatával.
 author: kummanish
 ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 01/10/2020
-ms.openlocfilehash: e579866b1df6d32dc2b90a19ac001c381da625a6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.date: 01/13/2020
+ms.openlocfilehash: c836139047b83220e571842b6f365ab568f81e93
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922803"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941602"
 ---
 # <a name="data-encryption-for-azure-database-for-postgresql-single-server-using-portal"></a>Adattitkosítás Azure Database for PostgreSQL egyetlen kiszolgálón a portál használatával
 
@@ -21,39 +21,39 @@ Ebből a cikkből megtudhatja, hogyan állíthatja be és kezelheti a Azure Port
 
 * Rendelkeznie kell egy Azure-előfizetéssel, és rendszergazdának kell lennie az előfizetésben.
 * Hozzon létre egy Azure Key Vault és egy kulcsot, amelyet az ügyfél által felügyelt kulcshoz szeretne használni.
-* A Key vaultnak a következő tulajdonsággal kell rendelkeznie, amelyet ügyfél által felügyelt kulcsként kell használni
-    * [Helyreállítható törlés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
+* A Key vaultnak a következő tulajdonsággal kell rendelkeznie, amelyet ügyfél által felügyelt kulcsként kell használni:
+  * [Helyreállítható törlés](../key-vault/key-vault-ovw-soft-delete.md)
 
-        ```azurecli-interactive
-        az resource update --id $(az keyvault show --name \ <key_valut_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
-        ```
-    
-    * [Védett kiürítés](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete#purge-protection)
+    ```azurecli-interactive
+    az resource update --id $(az keyvault show --name \ <key_vault_name> -test -o tsv | awk '{print $1}') --set \ properties.enableSoftDelete=true
+    ```
 
-        ```azurecli-interactive
-        az keyvault update --name <key_valut_name> --resource-group <resource_group_name>  --enable-purge-protection true
-        ```
+  * [Védett kiürítés](../key-vault/key-vault-ovw-soft-delete.md#purge-protection)
+
+    ```azurecli-interactive
+    az keyvault update --name <key_vault_name> --resource-group <resource_group_name>  --enable-purge-protection true
+    ```
 
 * A kulcsnak a következő attribútumokat kell használnia az ügyfél által felügyelt kulcshoz.
-    * Nincs lejárati dátum
-    * Nincs letiltva
-    * Képes a Get, a wrap Key, a dewrap Key Operations művelet végrehajtására
+  * Nincs lejárati dátum
+  * Nincs letiltva
+  * Képes a _Get_, a _wrap Key_és a _dewrap Key_ művelet végrehajtására
 
 ## <a name="setting-the-right-permissions-for-key-operations"></a>A megfelelő engedélyek beállítása a kulcsfontosságú műveletekhez
 
-1. A Azure Key Vault válassza ki a hozzáférési házirendeket, és **adja hozzá a hozzáférési** **szabályzatot** . 
+1. A Azure Key Vault válassza ki a hozzáférési házirendeket, majd **adja hozzá a hozzáférési** **szabályzatot**.
 
    ![Hozzáférési szabályzat – áttekintés](media/concepts-data-access-and-security-data-encryption/show-access-policy-overview.png)
 
-2. A **kulcs engedélyei** területen válassza **a beolvasás**, **becsomagolás**, **kicsomagolás** és a **résztvevő**, a PostgreSQL-kiszolgáló neve lehetőséget. Ha a kiszolgáló rendszerbiztonsági tagja nem található a meglévő rendszerbiztonsági tag listájában, akkor regisztrálnia kell, ha első alkalommal állítja be az adattitkosítást, ami sikertelen lesz.  
+2. A **kulcs engedélyei**területen válassza a **beolvasás**, **becsomagolás**, **kicsomagolás** és a **rendszerbiztonsági tag**lehetőséget, amely a PostgreSQL-kiszolgáló neve. Ha a kiszolgáló rendszerbiztonsági tagja nem található a meglévő rendszerbiztonsági tag listájában, akkor regisztrálnia kell, ha első alkalommal állítja be az adattitkosítást, ami sikertelen lesz.  
 
-   ![Hozzáférési szabályzat – áttekintés](media/concepts-data-access-and-security-data-encryption/access-policy-warp-unwrap.png)
+   ![Hozzáférési szabályzat – áttekintés](media/concepts-data-access-and-security-data-encryption/access-policy-wrap-unwrap.png)
 
 3. **Mentse** a beállításokat.
 
 ## <a name="setting-data-encryption-for-azure-database-for-postgresql-single-server"></a>Adattitkosítás beállítása Azure Database for PostgreSQL önálló kiszolgálóhoz
 
-1. A **Azure Database for PostgreSQL**válassza ki az **adattitkosítást** a beállított ügyfél által felügyelt kulcs beállításához.
+1. A **Azure Database for PostgreSQL**válassza ki az **adattitkosítást** az ügyfél által felügyelt kulcs beállításának beállításához.
 
    ![Az adattitkosítás beállítása](media/concepts-data-access-and-security-data-encryption/data-encryption-overview.png)
 
@@ -73,23 +73,22 @@ Ha egy Azure Database for PostgreSQL önálló kiszolgálót az ügyfél felügy
 
    ![Indítás kezdeményezése – visszaállítás](media/concepts-data-access-and-security-data-encryption/show-restore.png)
 
-   Vagy egy replikálásra alkalmas kiszolgáló esetén a **Beállítások** fejléc alatt válassza a **replikálás** elemet.
+   Vagy egy replikálásra alkalmas kiszolgáló esetén a **Beállítások** fejléc alatt válassza a **replikáció**lehetőséget, ahogy az itt látható:
 
    ![Kezdeményezés – replika](media/concepts-data-access-and-security-data-encryption/postgresql-replica.png)
 
-2. A visszaállítási művelet befejezése után a létrehozott új kiszolgáló az elsődleges kiszolgáló kulcsával titkosított adatforgalom. A kiszolgáló szolgáltatásai és beállításai azonban le vannak tiltva, és a kiszolgáló **elérhetetlen** állapotban van megjelölve. Ez megakadályozza az adatkezelést, mivel az új kiszolgáló identitása még nem kapott engedélyt a Key Vault elérésére.
+2. A visszaállítási művelet befejezése után a létrehozott új kiszolgáló az elsődleges kiszolgáló kulcsával titkosított adatforgalom. A kiszolgáló szolgáltatásai és beállításai azonban le vannak tiltva, és a kiszolgáló **elérhetetlen** állapotban van megjelölve. Ez a viselkedés úgy van kialakítva, hogy megakadályozza az adatkezelést, mivel az új kiszolgáló identitása még nem kapott engedélyt a Key Vault elérésére.
 
    ![A kiszolgáló nem érhető el megjelölve](media/concepts-data-access-and-security-data-encryption/show-restore-data-encryption.png)
 
-
-3. A nem elérhető állapot javításához újra kell érvényesíteni a kulcsot a visszaállított kiszolgálón. Kattintson az **adattitkosítás** panelre, majd a **kulcs újraérvényesítése** gombra.
+3. A nem elérhető állapot javításához újra kell érvényesíteni a kulcsot a visszaállított kiszolgálón. Válassza ki az **adattitkosítás** ablaktáblát, majd a **kulcs újraérvényesítése** gombot.
 
    > [!NOTE]
-   > Az első újraellenőrzési kísérlet sikertelen lesz, mert az új kiszolgáló egyszerű szolgáltatásának hozzáférést kell adni a kulcstartóhoz. Az egyszerű szolgáltatásnév létrehozásához kattintson a **kulcs újraellenőrzése**gombra, amely hibát jelez, de létrehozza az egyszerű szolgáltatásnevet. Ezt követően tekintse át a fenti [2. szakaszban található](https://docs.microsoft.com/azure/postgresql/howto-data-encryption-portal#setting-the-right-permissions-for-key-operations) lépéseket.
+   > Az első újraellenőrzési kísérlet sikertelen lesz, mert az új kiszolgáló egyszerű szolgáltatásának hozzáférést kell adni a kulcstartóhoz. Az egyszerű szolgáltatásnév létrehozásához válassza a **kulcs újraérvényesítése**lehetőséget, amely hibaüzenetet ad, de létrehozza az egyszerű szolgáltatásnevet. Ezt követően tekintse át a fenti [2. szakaszban található](#setting-the-right-permissions-for-key-operations) lépéseket.
 
    ![kiszolgáló újraérvényesítése](media/concepts-data-access-and-security-data-encryption/show-revalidate-data-encryption.png)
 
-   Hozzáférést kell biztosítania az új kiszolgálóhoz a Key Vaulthoz. 
+   Hozzáférést kell biztosítania az új kiszolgálóhoz a Key Vaulthoz.
 
 4. Az egyszerű szolgáltatás regisztrálását követően újra kell érvényesíteni a kulcsot, és a kiszolgáló folytatja a normál működést.
 

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: 0190b94cc6195163de4d428c2cae0de3620bdb01
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e84a6c93ad8757b302670af202f9d4b407f3ef57
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422695"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945318"
 ---
 # <a name="get-an-answer-with-the-generateanswer-api-and-metadata"></a>Válasz kérése a GenerateAnswer API-val és a metaadatokkal
 
@@ -41,7 +41,7 @@ A [GENERATEANSWER API](https://docs.microsoft.com/rest/api/cognitiveservices/qna
 
 <a name="generateanswer-endpoint"></a>
 
-## <a name="publish-to-get-generateanswer-endpoint"></a>Közzététel a GenerateAnswer-végpont beszerzéséhez 
+## <a name="publish-to-get-generateanswer-endpoint"></a>Közzététel a GenerateAnswer-végpont beszerzéséhez
 
 Miután közzétette a tudásbázist, vagy a [QnA Maker portálról](https://www.qnamaker.ai)vagy az [API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase/publish)használatával, megtekintheti az GenerateAnswer-végpont részleteit.
 
@@ -59,15 +59,15 @@ A végpont adatait a Tudásbázis **Settings (beállítások** ) lapjáról is l
 
 ## <a name="generateanswer-request-configuration"></a>GenerateAnswer-kérelem konfigurálása
 
-A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívását bemutató mintakód: gyors [útmutató.](../quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base) 
+A GenerateAnswer HTTP POST-kéréssel hívható meg. A GenerateAnswer meghívását bemutató mintakód: gyors [útmutató.](../quickstarts/quickstart-sdk.md#generate-an-answer-from-the-knowledge-base)
 
 A POST kérelem a következőket használja:
 
 * Szükséges [URI-paraméterek](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#uri-parameters)
 * Szükséges [fejléc-tulajdonság](https://docs.microsoft.com/azure/cognitive-services/qnamaker/quickstarts/get-answer-from-knowledge-base-nodejs#add-a-post-request-to-send-question-and-get-an-answer), `Authorization`, biztonsági
-* A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto). 
+* A [törzs szükséges tulajdonságai](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/train#feedbackrecorddto).
 
-A GenerateAnswer URL-címének formátuma a következő: 
+A GenerateAnswer URL-címének formátuma a következő:
 
 ```
 https://{QnA-Maker-endpoint}/knowledgebases/{knowledge-base-ID}/generateAnswer
@@ -95,7 +95,7 @@ A JSON-törzs például a következőképpen néz ki:
 
 További információ a [rankerType](../concepts/best-practices.md#choosing-ranker-type).
 
-Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte.
 
 <a name="generateanswer-response"></a>
 
@@ -125,7 +125,7 @@ A [Válasz](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntim
 }
 ```
 
-Az előző JSON egy, a 38,5%-os pontszámmal válaszol. 
+Az előző JSON egy, a 38,5%-os pontszámmal válaszol.
 
 ## <a name="use-qna-maker-with-a-bot-in-c"></a>QnA Maker használata a robottalC#
 
@@ -144,7 +144,7 @@ qnaOptions.ScoreThreshold = 0.3F;
 var response = await _services.QnAServices[QnAMakerKey].GetAnswersAsync(turnContext, qnaOptions);
 ```
 
-Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte.
 
 A támogatási robotnak van [egy példája](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-support/csharp_dotnetcore/Service/SupportBotService.cs#L418) ezzel a kóddal.
 
@@ -164,7 +164,7 @@ var qnaMakerOptions = {
 var qnaResults = await this.qnaMaker.getAnswers(stepContext.context, qnaMakerOptions);
 ```
 
-Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte. 
+Az előző JSON-kérelem csak a 30%-os vagy a küszöbérték feletti válaszokat kérte.
 
 A támogatási robotnak van [egy példája](https://github.com/microsoft/BotBuilder-Samples/blob/master/experimental/qnamaker-activelearning/javascript_nodejs/Helpers/dialogHelper.js#L36) ezzel a kóddal.
 
@@ -200,7 +200,7 @@ Mivel az eredmények csak a "Paradise" étterem esetében szükségesek, beáll�
 
 ## <a name="use-question-and-answer-results-to-keep-conversation-context"></a>Kérdések és válaszok eredményeinek használata a beszélgetési környezet megőrzése érdekében
 
-A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és a válaszfájl megfelelő metaadat-információit. Ezt az információt használhatja az ügyfélalkalmazás számára, hogy az előző beszélgetés kontextusát tárolja a későbbi beszélgetések során való használatra. 
+A GenerateAnswer válasza tartalmazza az egyeztetett kérdés és a válaszfájl megfelelő metaadat-információit. Ezt az információt használhatja az ügyfélalkalmazás számára, hogy az előző beszélgetés kontextusát tárolja a későbbi beszélgetések során való használatra.
 
 ```json
 {
@@ -248,14 +248,14 @@ A közzétett Tudásbázisban `isTest=false`vagy a tesztelési Tudásbázisban k
 |Kód|Magyarázat|
 |:--|--|
 |2xx|Sikeres|
-|400|kérés paraméterei helytelen, ami azt jelenti, a szükséges paraméterek: hiányzó, hibás vagy túl nagy|
-|400|kérelem törzse nem megfelelő, ami azt jelenti, a JSON-ja hiányzik, hibás vagy túl nagy|
+|400|A kérelem paraméterei helytelenek, mert a szükséges paraméterek hiányoznak, helytelenül formázottak vagy túl nagyok.|
+|400|A kérelem törzse helytelen, mert a JSON hiányzik, helytelenül formázott vagy túl nagy.|
 |401|Érvénytelen kulcs|
-|403|-Tiltott nem rendelkezik megfelelő engedélyekkel|
-|404|KB nem létezik.|
+|403|Tiltott – nem rendelkezik megfelelő engedélyekkel|
+|404|A KB nem létezik|
 |410|Ez az API elavult, és már nem érhető el|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A **közzétételi** oldal olyan információkat is tartalmaz, amelyekkel a Poster vagy a curl segítségével [választ](../Quickstarts/get-answer-from-knowledge-base-using-url-tool.md) kaphat.
 

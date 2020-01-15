@@ -11,12 +11,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 40b9bc0fb63e99d9cfb0b5447b5e4300af421aed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1a63b388725823695c41339ae173c8d8e34839ef
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479435"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941398"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -30,7 +30,7 @@ A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes v
 ## <a name="important-information-about-azure-rhui"></a>Fontos információk az Azure RHUI
 
 * Az Azure RHUI a frissítési infrastruktúra, amely támogatja az Azure-ban létrehozott összes RHEL TB virtuális gépet. Ez nem zárja ki, hogy regisztrálja a TB RHEL-alapú virtuális gépeket az előfizetés-kezelővel, illetve a műholdon vagy más frissítési forrásokkal, de a TB virtuális géppel való használata esetén a rendszer közvetett kettős számlázást eredményez. A részletekért tekintse meg a következő pontot.
-* Az Azure által üzemeltetett RHUI a RHEL TB rendszerképének ára tartalmazza. Ha töröl egy TB RHEL virtuális gépet az Azure által üzemeltetett RHUI, amely nem alakítja át a virtuális gépet saját Licences (BYOL) virtuálisgép-típusra. Ha ugyanezt a virtuális gépet egy másik frissítési forrással regisztrálja, a rendszer _közvetett_ kettős díjat is felmerülhet. Az Azure RHEL szoftver díját először számoljuk fel. A korábban megvásárolt Red Hat-előfizetések esetében a második alkalommal kell fizetnie. Ha az Azure által üzemeltetett RHUI eltérő frissítési infrastruktúrát kell használnia, érdemes regisztrálni a [RHEL BYOS-lemezképek](https://aka.ms/rhel-byos)használatára.
+* Az Azure által üzemeltetett RHUI a RHEL TB rendszerképének ára tartalmazza. Ha töröl egy TB RHEL virtuális gépet az Azure által üzemeltetett RHUI, amely nem alakítja át a virtuális gépet saját Licences (BYOL) virtuálisgép-típusra. Ha ugyanezt a virtuális gépet egy másik frissítési forrással regisztrálja, a rendszer _közvetett_ kettős díjat is felmerülhet. Az Azure RHEL szoftver díját először számoljuk fel. A korábban megvásárolt Red Hat-előfizetések esetében a második alkalommal kell fizetnie. Ha az Azure által üzemeltetett RHUI eltérő frissítési infrastruktúrát kell használnia, érdemes regisztrálni a [RHEL BYOS-lemezképek](./byos.md)használatára.
 
 * Az Azure-ban elérhető SAP-TB (RHEL for SAP, RHEL for SAP HANA és RHEL for SAP Business Applications) olyan dedikált RHUI-csatornákhoz csatlakoznak, amelyek az adott RHEL alverzióban maradnak, és az SAP-minősítéshez szükségesek.
 

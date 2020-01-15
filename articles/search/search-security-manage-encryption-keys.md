@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2663e6c37819acf7cb781779107673b8ee3aec53
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832245"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945716"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search-ban található, az ügyfél által felügyelt kulcsokat használó tartalom titkosítása Azure Key Vault
 
@@ -32,7 +32,7 @@ A kulcsoknak nem kell ugyanabban a Key Vault lennie. Egyetlen keresési szolgál
 
 Ebben a példában a következő szolgáltatásokat használjuk. 
 
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. Ehhez az oktatóanyaghoz használhatja az ingyenes szolgáltatást.
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. A Search szolgáltatást január 2019 után kell létrehozni, és nem lehet ingyenes (megosztott) szolgáltatás.
 
 + [Hozzon létre egy Azure Key Vault erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) , vagy keressen egy meglévő tárat az előfizetése alatt.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/06/2019
 ms.author: alkohli
 ms.subservice: common
-ms.openlocfilehash: bd15e406cdbee57112ff8ecba158d503e908b73f
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: cab9d309d052acca493e112965c8477a325d8c88
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73178018"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75944757"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
 
@@ -31,7 +31,7 @@ Mielőtt létrehoz egy importálási feladatot az adatok Azure Blob Storageba va
 - Egy [támogatott operációsrendszer-verzióval](storage-import-export-requirements.md#supported-operating-systems)rendelkező Windows rendszerre van telepítve. 
 - Engedélyezze a BitLockert a Windows rendszeren. Lásd: [a BitLocker engedélyezése](https://thesolving.com/storage/how-to-enable-bitlocker-on-windows-server-2012-r2/).
 - [Töltse le a WAImportExport 1-es verzióját](https://www.microsoft.com/download/details.aspx?id=42659) a Windows rendszerre. Bontsa ki az alapértelmezett mappát `waimportexportv1`. Például: `C:\WaImportExportV1`.
-- Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen: `adbops@microsoft.com`.  
+- Van egy FedEx/DHL-fiókja. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, vegye fel a kapcsolatot Azure Data Box operatív csapatával a következő címen: `adbops@microsoft.com`.  
     - A fióknak érvényesnek kell lennie, egyensúlyt kell tartalmaznia, és vissza kell adni a szállítási képességeket.
     - Nyomkövetési szám létrehozása az exportálási feladatokhoz.
     - Minden feladattípusnak külön nyomkövetési számmal kell rendelkeznie. Nem támogatott több feladat ugyanazzal a követési számmal.
@@ -68,11 +68,11 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
     |---------|---------|
     |/j     |A naplófájl neve, a. jrn kiterjesztéssel. Egy naplófájl jön létre egy meghajtón. Javasoljuk, hogy a lemez sorozatszámát használja a naplófájl neveként.         |
     |/ID     |A munkamenet-azonosító. A parancs minden példányához használjon egyedi munkamenet-számot.      |
-    |/t     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D`.         |
+    |/t:     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D`.         |
     |BK     |A meghajtó BitLocker-kulcsa. A `manage-bde -protectors -get D:` kimenetének numerikus jelszava      |
     |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd `:\`. Például: `D:\`.         |
     |/dstdir:     |A cél tároló neve az Azure Storage-ban.         |
-    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez `BlockBlob`, és az oldal Blobok esetében `PagaBlob`.         |
+    |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez `BlockBlob`, és az oldal Blobok esetében `PageBlob`.         |
     |/skipwrite:     |Ez a beállítás azt határozza meg, hogy nincs szükség új adatmásolásra és a lemezen lévő meglévő adatfeldolgozásra.          |
     |/enablecontentmd5:     |Ha a beállítás engedélyezve van, biztosítja, hogy az MD5 kiszámításra kerüljön, és az egyes blobokon `Content-md5` tulajdonságként legyen beállítva. Ezt a lehetőséget csak akkor használja, ha a `Content-md5` mezőt szeretné használni az Azure-ba való feltöltés után. <br> Ez a beállítás nincs hatással az adatintegritás-ellenőrzésre (alapértelmezés szerint ez történik). A beállítással megnövelhető az adatok felhőbe való feltöltéséhez szükséges idő.          |
 7. Ismételje meg az előző lépést minden egyes leszállításra szoruló lemez esetében. A rendszer a megadott névvel rendelkező naplófájlt hoz létre a parancssor minden futtatásához.
@@ -84,7 +84,7 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
 Az alábbi lépések végrehajtásával hozzon létre egy importálási feladatot a Azure Portal.
 
-1. Jelentkezzen be https://portal.azure.com/ -ra.
+1. Jelentkezzen be https://portal.azure.com/ ra.
 2. Lépjen az **összes szolgáltatás > Storage > importálási/exportálási feladatok lehetőségre**. 
     
     ![Ugrás az importálási/exportálási feladatokra](./media/storage-import-export-data-to-blobs/import-to-blob1.png)
@@ -114,7 +114,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
 4. **Visszaszállítási adatok**:
 
-   - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Vegye fel a kapcsolatot Azure Data Box operatív csapattal a `adbops@microsoft.com` címen a használni kívánt szolgáltatóval kapcsolatos információkkal.
+   - Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com` címen a használni kívánt szolgáltatóval kapcsolatos információkkal.
    - Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
    - Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót. 
         

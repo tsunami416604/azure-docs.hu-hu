@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: b74943ce3e3e67855a07fa32f15612bbb2351170
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: abb9325510b52672027338314e02466f2d28e701
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913095"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942202"
 ---
 # <a name="azure-storage-encryption-for-data-at-rest"></a>Azure Storage-titkosítás a REST-adatokhoz
 
@@ -67,7 +67,7 @@ Alapértelmezés szerint a Storage-fiók a Microsoft által felügyelt titkosít
 
 A Storage-fiók szintjén a saját kulcsaival kezelheti az Azure Storage-titkosítást. Ha ügyfél által felügyelt kulcsot ad meg a Storage-fiók szintjén, a rendszer a kulcs használatával védi és szabályozza a hozzáférést a Storage-fiókhoz tartozó gyökérszintű titkosítási kulcshoz, amely viszont az összes blob és fájl adatainak titkosítására és visszafejtésére szolgál. Az ügyfél által felügyelt kulcsok nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
 
-Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
+Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Storage-fióknak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](../../key-vault/key-vault-overview.md)
 
 Ez az ábra azt mutatja, hogy az Azure Storage hogyan használja az Azure Active Directory és Azure Key Vault a kérelmeket az ügyfél által felügyelt kulcs használatával:
 
@@ -96,15 +96,13 @@ Az alábbi cikkekből megtudhatja, hogyan használhatók az ügyfelek által fel
 - [Ügyfél által felügyelt kulcsok konfigurálása Key Vault Azure Storage-titkosításhoz az Azure CLI-vel](storage-encryption-keys-cli.md)
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok az Azure-erőforrások felügyelt identitásait, Azure Active Directory (Azure AD) funkcióját használják. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt lévő Storage-fiókhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a Storage-fiókot egyik Azure AD-címtárból a másikba, a Storage-fiókhoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok többé nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
+> Az ügyfél által felügyelt kulcsok az Azure AD szolgáltatásban az Azure-erőforrások felügyelt identitásait használják. A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket. Ha az ügyfél által felügyelt kulcsokat a Azure Portal konfigurálja, a rendszer automatikusan hozzárendel egy felügyelt identitást a borítók alatt lévő Storage-fiókhoz. Ha ezt követően áthelyezi az előfizetést, az erőforráscsoportot vagy a Storage-fiókot egyik Azure AD-címtárból a másikba, a Storage-fiókhoz társított felügyelt identitás nem kerül át az új bérlőre, így az ügyfél által felügyelt kulcsok többé nem fognak működni. További információ: **előfizetés továbbítása Azure ad-címtárak között** [Gyakori kérdések és ismert problémák az Azure-erőforrások felügyelt identitásával](../../active-directory/managed-identities-azure-resources/known-issues.md#transferring-a-subscription-between-azure-ad-directories)kapcsolatban.  
 
 ### <a name="store-customer-managed-keys-in-azure-key-vault"></a>Ügyfél által felügyelt kulcsok tárolása Azure Key Vault
 
 Az ügyfél által felügyelt kulcsok Storage-fiókban való engedélyezéséhez Azure Key Vault kell használnia a kulcsok tárolásához. Engedélyeznie kell a **Soft delete** és a No **Purge** tulajdonságot a Key vaulton.
 
 Az Azure Storage-titkosítás csak a 2048 méretű RSA-kulcsokat támogatja. A kulcsokkal kapcsolatos további információkért tekintse meg a kulcsok [, titkos kódok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md#key-vault-keys) **Key Vault kulcsait** Azure Key Vault ismertető témakört.
-
-A Key vaultnak ugyanabban az előfizetésben kell lennie, mint a Storage-fióknak. Az Azure Storage felügyelt identitásokat használ az Azure-erőforrások számára a titkosítási és visszafejtési műveletek Key vaultba való hitelesítéséhez. A felügyelt identitások jelenleg nem támogatják a könyvtárak közötti forgatókönyveket.
 
 ### <a name="rotate-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok elforgatása
 

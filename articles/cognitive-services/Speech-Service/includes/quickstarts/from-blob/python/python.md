@@ -1,32 +1,25 @@
 ---
-title: 'Gyors útmutató: a blob Storage C# -ban tárolt beszéd felismerése – beszédfelismerési szolgáltatás'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 2f06d0015bd80b37407df28045d4ced4a128e47e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: bfecfa1918d2e9199971b2f9738530dc1b4e3c4c
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468233"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942729"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
-> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
-> * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md)
+> * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
+> * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
 
 ## <a name="download-and-install-the-api-client-library"></a>Az API ügyféloldali kódtár letöltése és telepítése
 
@@ -43,7 +36,8 @@ Kövesse az alábbi lépéseket a telepítéshez:
 1. Telepítse a kinyert Python-Client modult a Python-környezetben a pip: `pip install path/to/package/python-client`használatával.
 1. A telepített csomag neve `swagger_client`. A `python -c "import swagger_client"`parancs használatával megtekintheti, hogy a telepítés működik-e.
 
-> **Megjegyzés:** A [hencegő autogeneráció ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, hogy a `swagger_client`-csomag importálásával kapcsolatos hibák merülhetnek fel.
+> [!NOTE]
+> A [hencegő autogeneráció ismert hibája](https://github.com/swagger-api/swagger-codegen/issues/7541)miatt előfordulhat, hogy a `swagger_client`-csomag importálásával kapcsolatos hibák merülhetnek fel.
 > Ezeket úgy lehet megjavítani, ha törli a sort a tartalommal.
 > ```py
 > from swagger_client.models.model import Model  # noqa: F401,E501
@@ -67,7 +61,8 @@ pip install requests
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 [!code-python[](~/samples-cognitive-services-speech-sdk/quickstart/python/from-blob/python-client/main.py?range=1-2,7-34,115-119)]
-(`YourSubscriptionKey`, `YourServiceRegion`és `YourFileUrl` értékeit a saját értékeire kell cserélnie.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="create-and-configure-an-http-client"></a>Http-ügyfél létrehozása és konfigurálása
 Első lépésként egy olyan http-ügyfélre van szükségünk, amely megfelelő alap URL-címmel és hitelesítési készlettel rendelkezik.

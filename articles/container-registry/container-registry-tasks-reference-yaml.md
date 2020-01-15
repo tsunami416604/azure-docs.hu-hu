@@ -3,12 +3,12 @@ title: YAML-hivatkozás – ACR-feladatok
 description: Az ACR-feladatok YAML kapcsolatos feladatok definiálásának referenciája, beleértve a feladatok tulajdonságait, a lépések típusát, a lépés tulajdonságait és a beépített változókat.
 ms.topic: article
 ms.date: 10/23/2019
-ms.openlocfilehash: da1b1613d880b9edf6ec6d6018011f43a7ac69a5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d86eb0e24233afb536d27f5d0938d4748941e88a
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445694"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945743"
 ---
 # <a name="acr-tasks-reference-yaml"></a>ACR-feladatok leírása: YAML
 
@@ -79,7 +79,7 @@ A feladat tulajdonságai általában egy `acr-task.yaml` fájl tetején jelennek
 | -------- | ---- | -------- | ----------- | ------------------ | ------------- |
 | `version` | sztring | Igen | Az ACR Tasks szolgáltatás által elemzett `acr-task.yaml` fájl verziója. Míg az ACR-feladatok a visszamenőleges kompatibilitás fenntartására törekednek, ez az érték lehetővé teszi az ACR-feladatok számára a kompatibilitás fenntartását egy meghatározott verzión belül. Ha nincs megadva, az alapértelmezett érték a legújabb verzió. | Nem | None |
 | `stepTimeout` | int (másodperc) | Igen | A lépés által futtatható másodpercek maximális száma. Ha a tulajdonság meg van adva egy feladathoz, az az összes lépés alapértelmezett `timeout` tulajdonságát állítja be. Ha a `timeout` tulajdonság meg van adva egy lépésben, a felülbírálja a feladat által megadott tulajdonságot. | Igen | 600 (10 perc) |
-| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az összes lépés alapértelmezett `workingDirectory` tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `$HOME` |
+| `workingDirectory` | sztring | Igen | A tároló munkakönyvtára a futtatókörnyezetben. Ha a tulajdonság meg van adva egy feladathoz, az az összes lépés alapértelmezett `workingDirectory` tulajdonságát állítja be. Ha egy lépésben meg van adva, a felülbírálja a feladat által megadott tulajdonságot. | Igen | `/workspace` |
 | `env` | [karakterlánc, karakterlánc,...] | Igen |  Karakterláncok tömbje `key=value` formátumban, amely meghatározza a feladat környezeti változóit. Ha a tulajdonság meg van adva egy feladathoz, az az összes lépés alapértelmezett `env` tulajdonságát állítja be. Ha egy lépésben meg van adva, akkor felülbírálja a feladatból örökölt környezeti változókat. | None |
 | `secrets` | [titok, titkos kód,...] | Igen | [Titkos](#secret) objektumok tömbje. | None |
 | `networks` | [hálózat, hálózat,...] | Igen | [Hálózati](#network) objektumok tömbje. | None |
@@ -379,7 +379,7 @@ Az egyes lépésekhez tartozó típusok több, a típusához megfelelő tulajdon
 | `timeout` | int (másodperc) | Igen | A lépés megszakítása előtt legfeljebb ennyi másodpercig futhat. | 600 |
 | [`when`](#example-when) | [karakterlánc, karakterlánc,...] | Igen | A feladat egy vagy több lépésének függőségét konfigurálja. | None |
 | `user` | sztring | Igen | Egy tároló felhasználóneve vagy UID azonosítója | None |
-| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `$HOME` |
+| `workingDirectory` | sztring | Igen | Egy lépés munkakönyvtárának beállítása. Alapértelmezés szerint az ACR-feladatok létrehoznak egy gyökérkönyvtárat munkakönyvtárként. Ha azonban a Build több lépésből áll, a korábbi lépések megoszthatják az összetevőket a későbbi lépésekkel, ha ugyanazt a munkakönyvtárat adja meg. | `/workspace` |
 
 ### <a name="examples-task-step-properties"></a>Példák: tevékenység lépés tulajdonságai
 

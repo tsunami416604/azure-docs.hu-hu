@@ -3,14 +3,14 @@ title: Update Management megoldás az Azure-ban
 description: Ez a cikk bemutatja, hogyan kezelheti a Windows-és Linux-számítógépek frissítéseit az Azure Update Management megoldással.
 services: automation
 ms.subservice: update-management
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.topic: conceptual
-ms.openlocfilehash: 924f5bee94544c533f3a2548d931fce292469567
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420338"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945127"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -237,7 +237,9 @@ A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kié
 sudo yum -q --security check-update
 ```
 
-Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást nyújtja azoknak az ügyfeleknek, akik saját maguk is engedélyezték ezt.
+Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást nyújtja azoknak az ügyfeleknek, akik saját maguk is engedélyezték ezt. 
+
+A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 
@@ -251,7 +253,7 @@ A Update Management a helyileg konfigurált frissítési tárházra támaszkodik
 
 ## <a name="patch-linux-machines"></a>Linux rendszerű gépek javítása
 
-A következő szakasz ismerteti a Linux-javítások lehetséges problémáit.
+A következő szakaszokban a Linux-disztribúciók javításával kapcsolatos lehetséges problémák ismertetése olvasható.
 
 ### <a name="unexpected-os-level-upgrades"></a>Váratlan operációsrendszer-szintű frissítések
 

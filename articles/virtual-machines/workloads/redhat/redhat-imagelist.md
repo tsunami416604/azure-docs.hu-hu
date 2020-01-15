@@ -12,12 +12,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/18/2019
 ms.author: alsin
-ms.openlocfilehash: 61991e271a68c9160a34d0de99fe4c9259ca41cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32df17ffed400af80eadadbdeaafbaa1e3e1dbce
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75486338"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941706"
 ---
 # <a name="red-hat-enterprise-linux-rhel-images-available-in-azure"></a>Az Azure-ban elérhető Red Hat Enterprise Linux-(RHEL-) rendszerképek
 Az Azure különféle RHEL-rendszerképeket kínál különböző használati esetekhez.
@@ -66,5 +66,5 @@ RHEL – BYOS     |RHEL – lvm74| LVM    | Linux-ügynök | A RHEL 7,4 BYOS-lem
 ## <a name="next-steps"></a>Következő lépések
 * További információ az [Azure-beli Red Hat-lemezképekről](./redhat-images.md).
 * További információ a [Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
-* További információ a [RHEL BYOS ajánlatáról](./redhat-byos.md).
+* További információ a [RHEL BYOS ajánlatáról](./byos.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.

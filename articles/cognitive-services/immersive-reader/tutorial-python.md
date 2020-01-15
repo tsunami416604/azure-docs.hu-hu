@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/02/2019
 ms.author: dylankil
-ms.openlocfilehash: 6404a5d49bd7af1ed5d74299f03eda8d0bb14b89
-ms.sourcegitcommit: e9936171586b8d04b67457789ae7d530ec8deebe
+ms.openlocfilehash: 3293c4ea76010e5f39c793a1faee14d9a74226a0
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71326445"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945230"
 ---
 # <a name="tutorial-launch-the-immersive-reader-using-the-python-sample-project"></a>Oktatóanyag: a részletes olvasó elindítása a Python Sample Project használatával
 
-Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Python-webalkalmazást, amely elindítja a magával ragadó olvasót. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Az [Áttekintés](./overview.md)során megtanulta, hogy a magával ragadó olvasó Hogyan valósítja meg a bevált technikákat a nyelvtanulás, a feltörekvő olvasók és a tanulók tanulási különbségekkel való megismerésének javításához. Ez az oktatóanyag bemutatja, hogyan hozhat létre egy olyan Python-webalkalmazást, amely elindítja a magával ragadó olvasót. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Python-Webalkalmazás létrehozása a pip, a lombik, a Jinja és a virtualenv használatával egy minta projekt segítségével
@@ -30,7 +30,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A Azure Active Directory-(Azure AD-) hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./azure-active-directory-authentication.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
+* A Azure Active Directory hitelesítéshez konfigurált, magával ragadó olvasó erőforrás. A beállításhoz kövesse az [alábbi utasításokat](./how-to-create-immersive-reader.md) . A környezeti tulajdonságok konfigurálásakor itt létrehozott értékek némelyikére szüksége lesz. Mentse a munkamenet kimenetét szövegfájlba későbbi használatra.
 * [Git](https://git-scm.com/)
 * [Magával ragadó olvasói SDK](https://github.com/microsoft/immersive-reader-sdk)
 * [Python](https://www.python.org/downloads/) és [pip](https://docs.python.org/3/installing/index.html). A Python 3,4-től kezdődően a pip alapértelmezés szerint a Python bináris telepítők részét képezi.
@@ -40,20 +40,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 * [kérelmek modulja](https://pypi.org/project/requests/2.7.0/)
 * IDE, például a [Visual Studio Code](https://code.visualstudio.com/)
 
-## <a name="acquire-an-azure-ad-authentication-token"></a>Azure AD-hitelesítési jogkivonat beszerzése
+## <a name="configure-authentication-credentials"></a>Hitelesítő adatok konfigurálása
 
-Háttérbeli API írása Azure AD-hitelesítési jogkivonat lekéréséhez.
-
-Ehhez a részhez az Azure AD Auth konfigurációjának előfeltétele lépésének néhány értékét kell megadnia. Nézze vissza az adott munkamenetből mentett szövegfájlt.
-
-````text
-TenantId     => Azure subscription TenantId
-ClientId     => Azure AD ApplicationId
-ClientSecret => Azure AD Application Service Principal password
-Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the resource was created in the Azure portal, or 'CustomSubDomain' option if the resource was created with Azure CLI Powershell. Check the Azure portal for the subdomain on the Endpoint in the resource Overview page, for example, 'https://[SUBDOMAIN].cognitiveservices.azure.com/')
-````
-
-Ha már rendelkezik ezekkel az értékekkel, hozzon létre egy _. env_nevű új fájlt, és illessze be a következő kódot, és adja meg az egyéni tulajdonságértékek értékét a fentiek közül. Cserélje le a _. env_ -t. a minta alkalmazásban található fájl az újonnan létrehozott fájllal.
+Hozzon létre egy _. env_nevű új fájlt, és illessze be a következő kódot, és adja meg a magával ragadó olvasó erőforrás létrehozásakor megadott értékeket.
 
 ```text
 TENANT_ID={YOUR_TENANT_ID}

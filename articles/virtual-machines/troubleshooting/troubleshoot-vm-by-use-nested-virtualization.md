@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: genli
-ms.openlocfilehash: 4565eb86727e768ba894d701cbc5e0073c07ee01
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 87faea5385f5b0fd2c481c6aa7c45a9867b34163
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74185527"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942180"
 ---
 # <a name="troubleshoot-a-problem-azure-vm-by-using-nested-virtualization-in-azure"></a>Azure-beli virtuális gép hibáinak elhárítása beágyazott virtualizálás használatával az Azure-ban
 
@@ -29,8 +29,6 @@ Ez a cikk bemutatja, hogyan hozhat létre beágyazott virtualizációs környeze
 A probléma virtuális gép csatlakoztatásához a mentési virtuális gépnek meg kell felelnie a következő előfeltételeknek:
 
 -   A mentési virtuális gépnek a probléma virtuális géppel azonos helyen kell lennie.
-
--   A mentési virtuális gépnek ugyanabban az erőforráscsoporthoz kell tartoznia, mint a probléma virtuális gépnek.
 
 -   A mentési virtuális gépnek ugyanolyan típusú Storage-fiókot (standard vagy prémium) kell használnia, mint a probléma virtuális gépe.
 

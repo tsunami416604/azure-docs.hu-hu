@@ -7,20 +7,24 @@ manager: femila
 ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: 9b6c3fb03f696f4142721284a14001eb51153a77
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: c4fa9e6038f4007246552610f537825f9def92a8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720553"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75939950"
 ---
 # <a name="quickstart-send-and-receive-events-with-event-hubs-using-python"></a>Gyors útmutató: események küldése és fogadása Event Hubs a Python használatával
 
 Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs az elosztott szoftverekről és eszközökről származó eseményeket, adatok vagy telemetria feldolgozását és tárolását is elvégezheti. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. További információ a Event Hubsről: [azure Event Hubs](event-hubs-about.md) és [szolgáltatások és terminológia az azure-ban Event Hubs](event-hubs-features.md).
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre olyan Python-alkalmazásokat, amelyek események küldésére és fogadására szolgáló eseményeket küldenek az Event hub-ból. 
+
+> [!IMPORTANT]
+> Ez a rövid útmutató az Azure Event Hubs Python SDK 1. verzióját használja. Ha még nem ismeri az Azure Event Hubs, használja a Python SDK 5-ös verzióját. A Python SDK 5. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](get-started-python-send-v2.md). Az 1. verzióról az 5-ös verzióra való áttelepítéshez lásd: [áttelepítési útmutató](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
+
 
 > [!NOTE]
 > A gyors üzembe helyezés helyett a GitHubról töltheti le és futtathatja a [minta alkalmazásokat](https://github.com/Azure/azure-event-hubs-python/tree/master/examples) . Cserélje le a `EventHubConnectionString` és `EventHubName` sztringeket az Event hub értékeire. 
@@ -168,7 +172,7 @@ A parancsfájl futtatásához a *recv.py*mentett könyvtárból futtassa a köve
 start python recv.py
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Event Hubsról a következő cikkekben talál további információt:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

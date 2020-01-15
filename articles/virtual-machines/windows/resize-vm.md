@@ -1,6 +1,6 @@
 ---
-title: Windows rendszerű virtuális gép átméretezése a PowerShell használatával az Azure-ban
-description: A Resource Manager-alapú üzemi modellben létrehozott Windows rendszerű virtuális gépek átméretezése az Azure PowerShell használatával.
+title: Windows rendszerű virtuális gép átméretezése az Azure-ban
+description: Az Azure-beli virtuális gépekhez használt virtuálisgép-méret módosítása.
 services: virtual-machines-windows
 documentationcenter: ''
 author: cynthn
@@ -12,26 +12,34 @@ ms.service: virtual-machines-windows
 ms.workload: na
 ms.tgt_pltfrm: vm-windows
 ms.topic: article
-ms.date: 05/30/2018
+ms.date: 01/13/2020
 ms.author: cynthn
-ms.openlocfilehash: 4b30f2fd8e095b00898e083e33c23c7c9a915b99
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 6718804d4635edb2628b53017ab9d377928afad8
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073368"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941724"
 ---
 # <a name="resize-a-windows-vm"></a>Windows rendszerű virtuális gép átméretezése
 
-Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy másik virtuálisgép- [méretre](sizes.md) az Azure PowerShell használatával.
+Ez a cikk bemutatja, hogyan helyezhet át egy virtuális gépet egy másik virtuálisgép- [méretre](sizes.md).
 
 Miután létrehozta a virtuális gépet (VM), a virtuálisgép-méret módosításával felfelé vagy lefelé méretezheti a virtuális gépet. Bizonyos esetekben először fel kell szabadítania a virtuális gépet. Ez akkor fordulhat elő, ha az új méret nem érhető el azon a hardveres fürtön, amely jelenleg a virtuális gépet üzemelteti.
 
 Ha a virtuális gép Premium Storaget használ, győződjön meg arról, hogy a Premium Storage támogatásához **a méret egyik verzióját kell** választania. Válassza például a Standard_E4**s**_v3 a Standard_E4_v3 helyett.
 
- 
+## <a name="use-the-portal"></a>A portál használata
 
-## <a name="resize-a-windows-vm-not-in-an-availability-set"></a>Rendelkezésre állási csoportba nem tartozó Windows rendszerű virtuális gép átméretezése
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
+1. Nyissa meg a virtuális gép lapját.
+1. A bal oldali menüben válassza a **méret**lehetőséget.
+1. Válasszon új méretet az elérhető méretek listájából, majd válassza az **átméretezés**lehetőséget.
+
+
+Ha a virtuális gép jelenleg fut, a méret módosításakor a rendszer újraindítást eredményez. A virtuális gép leállítása további méreteket jelezhet.
+
+## <a name="use-powershell-to-resize-a-vm-not-in-an-availability-set"></a>A PowerShell használata a rendelkezésre állási csoportba nem tartozó virtuális gépek átméretezéséhez
 
 Állítson be néhány változót. Cserélje le az értékeket a saját adataira.
 
@@ -69,7 +77,7 @@ Start-AzVM -ResourceGroupName $resourceGroup -Name $vmName
 > 
 > 
 
-## <a name="resize-a-windows-vm-in-an-availability-set"></a>Windows rendszerű virtuális gép átméretezése rendelkezésre állási csoportba
+## <a name="use-powershell-to-resize-a-vm-in-an-availability-set"></a>Virtuális gép átméretezése rendelkezésre állási csoportokban a PowerShell használatával
 
 Ha egy rendelkezésre állási csoportba tartozó virtuális gép új mérete nem érhető el a virtuális gépet futtató hardveres fürtön, akkor a rendelkezésre állási csoportba tartozó összes virtuális gépet fel kell osztani a virtuális gép átméretezéséhez. Előfordulhat, hogy frissítenie kell más virtuális gépek méretét a rendelkezésre állási csoportba egy virtuális gép átméretezése után. A virtuális gép rendelkezésre állási csoportba való átméretezéséhez hajtsa végre a következő lépéseket.
 
@@ -122,7 +130,7 @@ $vmIds = $as.VirtualMachinesReferences
     }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További méretezhetőség érdekében futtasson több virtuálisgép-példányt és horizontális felskálázást. További információkért lásd: Windows rendszerű [gépek automatikus méretezése virtuálisgép-méretezési csoportokban](../../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md).
 

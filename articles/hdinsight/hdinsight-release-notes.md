@@ -8,12 +8,12 @@ ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: 37b49b3fbe91d199b13f548e8aaf72a6a2f0f848
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f0dd7160ae41ac004564ea21300945e135d31689
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895293"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945537"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -34,7 +34,7 @@ Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás 
 ### <a name="tls-12-enforcement"></a>A TLS 1.2 kényszerítése
 A Transport Layer Security (TLS) és a SSL (SSL) olyan titkosítási protokollok, amelyek kommunikációs biztonságot biztosítanak a számítógép hálózatán. További információ a [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security#SSL_1.0.2C_2.0_and_3.0)-ről. A HDInsight TLS 1,2-t használ a nyilvános HTTPs-végpontokon, de a TLS 1,1 továbbra is támogatott a visszamenőleges kompatibilitás érdekében. 
 
-Ettől a kiadástól kezdve az ügyfelek a TLS 1,2-en keresztül minden kapcsolathoz igénybe vehetik a TLS 1,2 enformence. A **minSupportedTlsVersion** új tulajdonsága Azure Resource Manager sablonon keresztül lett bevezetve a fürt létrehozásához. Ha a tulajdonság nincs beállítva, a fürt továbbra is támogatja a 1,0, 1,1 és 1,2-et, mint a mai viselkedés. Az ügyfelek a tulajdonság értékét "1,2" értékre állíthatja, ami azt jelenti, hogy a fürt csak a TLS 1,2-es vagy újabb verzióját támogatja. 
+Ebben a kiadásban az ügyfelek csak a nyilvános fürt végpontján keresztül csatlakozhatnak a TLS 1,2-es kapcsolatokhoz. Ennek támogatásához a **minSupportedTlsVersion** új tulajdonsága be van vezetve, és a fürt létrehozása során megadható. Ha a tulajdonság nincs beállítva, a fürt továbbra is támogatja a TLS 1,0, 1,1 és 1,2 protokollt, amely megegyezik a mai viselkedésével. Az ügyfelek a tulajdonság értékét "1,2" értékre állíthatja, ami azt jelenti, hogy a fürt csak a TLS 1,2-es vagy újabb verzióját támogatja. 
 
 ### <a name="bring-your-own-key-for-disk-encryption"></a>Saját kulcs használata a lemezes titkosításhoz
 A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) védelemmel van ellátva. A lemezeken tárolt adatforgalom alapértelmezés szerint a Microsoft által felügyelt kulcsokkal van titkosítva. Ettől a kiadástól kezdve a lemezes titkosításhoz Bring Your Own Key (BYOK) és a Azure Key Vault használatával felügyelheti. A BYOK-titkosítás egy egylépéses konfiguráció a fürt létrehozása során, többletköltség nélkül. Csak regisztrálja a HDInsight felügyelt identitásként Azure Key Vault és adja hozzá a titkosítási kulcsot a fürt létrehozásakor. 

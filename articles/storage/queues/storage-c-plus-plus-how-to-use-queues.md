@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: queues
 ms.topic: conceptual
 ms.reviewer: cbrooks
-ms.openlocfilehash: 6c6e092f16111f3f54ed17e19d28775e35eedc96
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4fe543010df9514cb2b22c56482a4b592574e917
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227806"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941783"
 ---
 # <a name="how-to-use-queue-storage-from-c"></a>A Queue Storage használata C++-szal
 [!INCLUDE [storage-selector-queue-include](../../../includes/storage-selector-queue-include.md)]
@@ -46,7 +46,7 @@ Az Azure Storage C++ programnyelvhez készült ügyféloldali kódtárát az al�
 .\vcpkg.exe install azure-storage-cpp
 ```
 
-A következő útmutatóból megtudhatja, hogyan hozhatja létre a forráskódot, és hogyan exportálhat Nuget a [readme](https://github.com/Azure/azure-storage-cpp#download--install) fájlban.
+A következő útmutatóból megtudhatja, hogyan hozhatja létre a forráskódot, és hogyan exportálhat NuGet a [readme](https://github.com/Azure/azure-storage-cpp#download--install) fájlban.
 
 ## <a name="configure-your-application-to-access-queue-storage"></a>Az alkalmazás konfigurálása Queue Storage eléréséhez
 Adja hozzá a következő include utasításokat a C++ fájl elejéhez, ahol az Azure Storage API-kat szeretné használni a várólisták eléréséhez:  

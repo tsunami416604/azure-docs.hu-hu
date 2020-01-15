@@ -7,12 +7,12 @@ ms.subservice: cosmosdb-mongo
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: lbosq
-ms.openlocfilehash: ef3d56b4ec7e4dbe5f6f4097fdd5d8d125b074dc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 73ac1a6ffd5fc2b2d52f169e1e0332044638f9f7
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932285"
+ms.locfileid: "75942077"
 ---
 # <a name="pre-migration-steps-for-data-migrations-from-mongodb-to-azure-cosmos-dbs-api-for-mongodb"></a>Áttelepítés előtti lépések a MongoDB-ből Azure Cosmos DB API-MongoDB való áttelepítéshez
 
@@ -24,15 +24,19 @@ Mielőtt áttelepíti az adatait a MongoDB-ből (akár a helyszínen, akár a fe
 4. [Válasszon ki egy optimális partíciós kulcsot az adataihoz](#partitioning)
 5. [Az adataihoz beállítható indexelési szabályzat ismertetése](#indexing)
 
-Ha már elvégezte a fenti előfeltételeket az áttelepítéshez, [áttelepítheti a MongoDB-Azure Cosmos db API-ját a MongoDB Azure Database Migration Service használatával](../dms/tutorial-mongodb-cosmos-db.md). Emellett, ha még nem hozott létre fiókot, böngészhet bármely rövid útmutatóban. [](create-mongodb-dotnet.md)
+Ha már elvégezte a fenti előfeltételeket az áttelepítéshez, [áttelepítheti a MongoDB-Azure Cosmos db API-ját a MongoDB Azure Database Migration Service használatával](../dms/tutorial-mongodb-cosmos-db.md). Ha még nem hozott létre fiókot, böngészhet bármely olyan rövid útmutatóban [, amely megjeleníti a fiók](create-mongodb-dotnet.md) létrehozásának lépéseit.
 
-## <a id="considerations"></a>A Azure Cosmos DB API-MongoDB való használatának fő szempontjai
+## <a id="considerations"></a>Szempontok a Azure Cosmos DB API-MongoDB való használatához
 
 A MongoDB Azure Cosmos DB API-ját a következők konkrét jellemzőkkel bírnak:
+
 - **Kapacitási modell**: az Azure Cosmos db adatbázis-kapacitása egy átviteli alapú modellen alapul. Ez a modell másodpercenkénti [kérelmeken](request-units.md)alapul, ami egy olyan egység, amely az adatbázis-műveletek másodpercenkénti számát mutatja. Ezt a kapacitást [adatbázis vagy gyűjtemény szintjén](set-throughput.md)lehet lefoglalni, és kiosztási modellben vagy az [Autopilot modell](provision-throughput-autopilot.md)használatával is kiépíthető.
-- **Kérelmek egységei**: minden adatbázis-művelethez tartozik egy társított kérési egység (RUs) díja Azure Cosmos db. A művelet végrehajtásakor a rendszer kivonja az elérhető kérelmek egységének szintjéről az adott másodpercben. Ha egy kérelem több RUs-t igényel, mint amennyi jelenleg le van foglalva, a két lehetőség növeli az RUs mennyiségét, vagy a következő másodpercre várakozik, majd újrapróbálkozik a művelettel.
+
+- **Kérelmek egységei**: minden adatbázis-művelethez tartozik egy társított kérési egység (RUs) díja Azure Cosmos db. A művelet végrehajtásakor a rendszer kivonja az elérhető kérelmek egységének szintjéről az adott másodpercben. Ha egy kérelem több RUs-t igényel, mint a jelenleg lefoglalt RU/s, két lehetőség van a probléma megoldására – növelje az RUs mennyiségét, vagy várjon, amíg a következő másodperc elindul, majd próbálja megismételni a műveletet.
+
 - **Rugalmas kapacitás**: egy adott gyűjtemény vagy adatbázis kapacitása bármikor megváltozhat. Ez lehetővé teszi, hogy az adatbázis rugalmasan alkalmazkodjon a számítási feladatok átviteli követelményeihez.
-- **Automatikus**horizontális skálázás: a Azure Cosmos db egy automatikus particionálási rendszer, amely csak a szegmens (vagy particionáló) kulcs használatát igényli. Az [automatikus particionálási mechanizmus](partition-data.md) minden Azure Cosmos db API-ban meg van osztva, és lehetővé teszi a zökkenőmentes adattárolást és a horizontális eloszláson keresztüli teljes méretezést.
+
+- **Automatikus**skálázás: a Azure Cosmos db egy automatikus particionálási rendszer, amely csak egy szegmens (vagy egy partíciós kulcs) megadását igényli. Az [automatikus particionálási mechanizmus](partition-data.md) az összes Azure Cosmos db API-ban meg van osztva, és lehetővé teszi a zökkenőmentes adattárolást és a horizontális eloszláson keresztüli teljes méretezést.
 
 ## <a id="options"></a>Áttelepítési lehetőségek a Azure Cosmos DB API-MongoDB
 
@@ -54,7 +58,9 @@ A [Azure Cosmos db kapacitás-kalkulátor](https://cosmos.azure.com/capacitycalc
 
 A következő kulcsfontosságú tényezők befolyásolják a szükséges RUs-ket:
 - **Dokumentum mérete**: az elem/dokumentum méretének növekedésével az elem/dokumentum olvasásához vagy írásához felhasznált RUs száma is nő.
+
 - **Dokumentum tulajdonságainak száma**: a dokumentumok létrehozásához vagy frissítéséhez felhasznált RUs száma a tulajdonságok számával, összetettségével és hosszával kapcsolatos. Az [indexelt tulajdonságok számának korlátozásával](mongodb-indexing.md)csökkentheti a kérések egység általi felhasználását írási műveletekhez.
+
 - **Lekérdezési minták**: a lekérdezés bonyolultsága befolyásolja, hogy a lekérdezés hány kérési egységet használ fel. 
 
 A lekérdezési költségek megismerésének legjobb módja a Azure Cosmos DBban található mintaadatok használata, és a [MongoDB-rendszerhéjból](connect-mongodb-account.md) a `getLastRequestStastistics` parancs használatával a kérések díjainak lekérdezése, amely a felhasznált RUs mennyiségét fogja kiadni:

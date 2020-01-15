@@ -1,5 +1,5 @@
 ---
-title: Számítási feladatok kezelése
+title: Terheléskezelés
 description: Útmutató a számítási feladatok kezelésének megvalósításához Azure SQL Data Warehouseban.
 services: sql-data-warehouse
 author: ronortloff
@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 10/30/2019
+ms.date: 01/13/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 2563ea4ab498c11c846cfe79f0e668f7d491c2e7
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 66edde9591d4491fa630772f99372f9901319b2f
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692359"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940579"
 ---
 # <a name="what-is-workload-management"></a>Mi az a számítási feladatok kezelése?
 
@@ -49,8 +49,9 @@ A számítási feladatok fontossága befolyásolja a kérések erőforrásokhoz 
 A munkaterhelés elkülönítése erőforrásokat foglal le egy munkaterhelés-csoport számára.  A munkaterhelési csoport számára fenntartott erőforrások kizárólag erre a számítási feladatokra vonatkoznak a végrehajtás biztosításához.  A munkaterhelési csoportok lehetővé teszik a kérelmekhez hozzárendelt erőforrások mennyiségének meghatározását is, hasonlóan az erőforrás-osztályokhoz.  A munkaterhelési csoportok lehetővé teszi az erőforrások mennyiségének lefoglalását vagy letiltását.  Végezetül a munkaterhelési csoportok olyan mechanizmust alkalmaznak, amely a kérelmekre vonatkozó szabályokat, például a lekérdezés időtúllépését alkalmazza.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A számítási feladatok besorolásával kapcsolatos további információkért lásd: [munkaterhelés besorolása](sql-data-warehouse-workload-classification.md).  
 - További információ a munkaterhelés elkülönítéséről: [munkaterhelés elkülönítése](sql-data-warehouse-workload-isolation.md).  
 - A számítási feladatok fontosságával kapcsolatos további információkért lásd: [munkaterhelés fontossága](sql-data-warehouse-workload-importance.md).  
+- További információ a munkaterhelés-kezelés figyeléséről: [munkaterhelés felügyeleti portál monitorozása](sql-data-warehouse-workload-management-portal-monitor.md).  

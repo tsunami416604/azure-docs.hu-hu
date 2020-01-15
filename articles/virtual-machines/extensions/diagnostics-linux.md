@@ -2,19 +2,19 @@
 title: Azure-beli számítás – Linux diagnosztikai bővítmény
 description: Az Azure Linux diagnosztikai bővítmény (LAD) konfigurálása az Azure-ban futó Linux rendszerű virtuális gépek metrikáinak és naplózási eseményeinek összegyűjtéséhez.
 services: virtual-machines-linux
-author: abhijeetgaiha
+author: MicahMcKittrick-MSFT
 manager: gwallace
 ms.service: virtual-machines-linux
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
-ms.author: gwallace
-ms.openlocfilehash: 046e61d82893bf1fcdb2d6697cfaaa9f5bde8c2c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: mimckitt
+ms.openlocfilehash: 96ec4f2a76616cf4bb1d824faa4e4ca0fff1ff62
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359362"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941882"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -197,7 +197,7 @@ Ha a SAS-t a 2018-as éjféli UTC szerint hozta létre, akkor a sas URL értéke
 https://contosohub.servicebus.windows.net/syslogmsgs?sr=contosohub.servicebus.windows.net%2fsyslogmsgs&sig=xxxxxxxxxxxxxxxxxxxxxxxxx&se=1514764800&skn=writer
 ```
 
-A Event Hubs SAS-jogkivonatok létrehozásával kapcsolatos további információkért tekintse meg [ezt a weblapot](../../event-hubs/event-hubs-authentication-and-security-model-overview.md).
+További információ a Event Hubs SAS-jogkivonatokkal kapcsolatos információk létrehozásáról és beolvasásáról: [Ez a weblap](https://docs.microsoft.com/rest/api/eventhub/generate-sas-token#powershell).
 
 #### <a name="the-jsonblob-sink"></a>A JsonBlob fogadó
 

@@ -117,6 +117,8 @@
       items:
         - name: Az alkalmazás üzembe helyezése
           items:
+            - name: Futtatás csomagból
+              href: deploy-run-package.md
             - name: ZIP- vagy WAR-fájl telepítése
               href: deploy-zip.md
             - name: Üzembe helyezés FTP használatával

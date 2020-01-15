@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/17/2018
 ms.author: sedusch
-ms.openlocfilehash: ee67c811835d99bf2f4c00dc59b43e29f63c81d6
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 9ccbd67348a8dae7391471ccd1dcc1ba9b135ea2
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533813"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941823"
 ---
 # <a name="setting-up-pacemaker-on-red-hat-enterprise-linux-in-azure"></a>A pacemaker beállítása Red Hat Enterprise Linux az Azure-ban
 
@@ -88,7 +88,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    sudo subscription-manager attach --pool=&lt;pool id&gt;
    </code></pre>
 
-   Vegye figyelembe, hogy a készletnek egy Azure Marketplace-TB RHEL-rendszerképhez való csatolásával a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információ [itt](https://aka.ms/rhel-byos)található.
+   Vegye figyelembe, hogy a készletnek egy Azure Marketplace-TB RHEL-rendszerképhez való csatolásával a RHEL-használat után gyakorlatilag egyszer kell fizetnie, és egyszer kell megadnia a RHEL jogosultságot a csatolni kívánt készletben. Ennek enyhítése érdekében az Azure mostantól BYOS RHEL-lemezképeket biztosít. További információ [itt](../redhat/byos.md)található.
 
 1. **[A]** RHEL engedélyezése az SAP-repók számára
 
@@ -250,7 +250,7 @@ Rendelje hozzá az előző fejezetben az egyszerű szolgáltatásnév számára 
 1. Kattintson a szerepkör-hozzárendelés hozzáadása elemre.
 1. Válassza ki a "Linux kerítési ügynök szerepkör" szerepkört
 1. Adja meg a fent létrehozott alkalmazás nevét
-1. Kattintson a Save (Mentés) gombra.
+1. Kattintson a Mentés gombra
 
 Ismételje meg a fenti lépéseket a második fürtcsomóponton.
 

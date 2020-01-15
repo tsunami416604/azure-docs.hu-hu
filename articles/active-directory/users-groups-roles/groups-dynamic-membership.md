@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f5be34a58d8f0416a31cd575ef0fea614b3d43e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768714"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940989"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -97,10 +97,10 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | --- | --- | --- |
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
-| CompanyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
+| companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
 | Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
-| displayName |Bármely karakterlánc-érték |(User. displayName-EQ "value") |
-| Alkalmazottkód |Bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
+| displayName |bármely karakterlánc-érték |(User. displayName-EQ "value") |
+| Alkalmazottkód |bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
@@ -119,14 +119,14 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | surname |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
-| userPrincipalName |Bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
+| userPrincipalName |bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
 | userType |tag vendég *Null* |(User. userType-EQ "tag") |
 
 ### <a name="properties-of-type-string-collection"></a>String típusú gyűjtemény tulajdonságai
 
 | Tulajdonságok | Megengedett értékek | Használat |
 | --- | --- | --- |
-| otherMails |Bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: "alias@domain") |
+| otherMails |bármely karakterlánc-érték |(User. otherMails – a következőt tartalmazza: "alias@domain") |
 | proxyAddresses |SMTP: alias@domain SMTP: alias@domain |(User. proxyAddresses – az "SMTP: alias@domain" kifejezést tartalmazza) |
 
 Az eszköz szabályaihoz használt tulajdonságokért lásd: [eszközök szabályai](#rules-for-devices).
@@ -321,7 +321,12 @@ Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes felhasználó
 A "minden felhasználó" szabályt egyetlen kifejezéssel kell kiépíteni a-ne operátor és a Null érték használatával. Ez a szabály VÁLLALATKÖZI vendég felhasználókat, valamint a csoport felhasználóit adja hozzá.
 
 ```
-user.objectid -ne null
+user.objectId -ne null
+```
+Ha azt szeretné, hogy a csoport kizárjon vendég felhasználókat, és csak a bérlő tagjait tartalmazza, a következő szintaxist használhatja:
+
+```
+(user.objectId -ne null) -and (user.userType -eq “Member”)
 ```
 
 ### <a name="create-an-all-devices-rule"></a>"Minden eszköz" szabály létrehozása
@@ -331,7 +336,7 @@ Létrehozhat egy olyan csoportot, amely a bérlőn belüli összes eszközt egy 
 A "minden eszköz" szabályt egyetlen kifejezéssel kell kiépíteni a-ne operátor és a Null érték használatával:
 
 ```
-device.objectid -ne null
+device.objectId -ne null
 ```
 
 ## <a name="extension-properties-and-custom-extension-properties"></a>Bővítmény tulajdonságai és egyéni bővítmény tulajdonságai

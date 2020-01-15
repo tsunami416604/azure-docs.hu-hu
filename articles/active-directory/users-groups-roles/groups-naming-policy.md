@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b3a9300148f4ac2adf6b95ef0afb500af5bc9284
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: a9136ce26f0070c8822292c741be59de537d3667
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74027037"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941061"
 ---
 # <a name="enforce-a-naming-policy-on-office-365-groups-in-azure-active-directory"></a>Elnevezési szabályzat érvénybe léptetése az Office 365-csoportokban Azure Active Directory
 
@@ -65,7 +65,12 @@ Tiltott szólisták szabályai:
 - A letiltott szavakat nem korlátozzák a karakterek.
 - A letiltott szavak listájában legfeljebb 5000 kifejezés állítható be. 
 
-### <a name="administrator-override"></a>Rendszergazdai felülbírálás
+### <a name="roles-and-permissions"></a>Szerepkörök és engedélyek
+
+Az elnevezési házirend konfigurálásához a következő szerepkörök egyike szükséges:
+- Globális rendszergazda
+- Csoport rendszergazdája
+- Felhasználói rendszergazda
 
 A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes csoportos munkaterhelésre és végpontra vonatkozóan, így a csoportok a letiltott szavak és a saját elnevezési konvencióik alapján hozhatók létre. A következő lista a csoport elnevezési házirendjé alól mentesített rendszergazdai szerepkörök listáját tartalmazza.
 
@@ -77,7 +82,7 @@ A kiválasztott rendszergazdák mentesülnek a szabályzatokból, az összes cso
 
 ## <a name="configure-naming-policy-in-azure-portal"></a>Elnevezési házirend konfigurálása a Azure Portalban
 
-1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) globális rendszergazdai fiókkal.
+1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) egy csoport-rendszergazdai fiókkal.
 1. Válassza a **csoportok**lehetőséget, majd válassza az **elnevezési házirend** elemet az elnevezési házirend lap megnyitásához.
 
     ![az elnevezési szabályzat lap megnyitása a felügyeleti központban](./media/groups-naming-policy/policy.png)
@@ -216,7 +221,7 @@ Set-AzureADDirectorySetting -Id $Settings.Id -DirectorySetting $Settings
    $Setting["CustomBlockedWordsList"]=""
    ```
   
-1. A beállítások mentéséhez.
+1. Mentse a beállításokat.
   
    ``` PowerShell
    Set-AzureADDirectorySetting -Id (Get-AzureADDirectorySetting | where -Property DisplayName -Value "Group.Unified" -EQ).id -DirectorySetting $Setting
@@ -241,7 +246,7 @@ Outlook iOS-és Android-alkalmazás | Az Outlook-alkalmazásokban létrehozott c
 A Mobile App csoportok | A groups Mobile alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek. A groups Mobile App nem jeleníti meg az elnevezési házirend előnézetét, és nem ad vissza egyéni blokkolt Word-hibákat, amikor a felhasználó belép a csoport nevére. Az elnevezési házirendet azonban automatikusan alkalmazza a rendszer a csoportok létrehozásakor vagy szerkesztésekor, és a felhasználók a megfelelő hibákkal jelennek meg, ha a csoport neve vagy aliasa egyéni tiltott szavakat tartalmaz.
 Planner | A Planner megfelel az elnevezési házirendnek. A Planner megjeleníti a névadási házirend előzetes verzióját a csomag nevének megadásakor. Ha egy felhasználó egyéni letiltott szót ad meg, a terv létrehozásakor hibaüzenet jelenik meg.
 Dynamics 365 for Customer Engagement | A Dynamics 365 for Customer engagement megfelel az elnevezési házirendnek. A Dynamics 365 megjeleníti az elnevezési szabályzatot, amely akkor lép érvénybe, ha a felhasználó a csoport nevét vagy a csoport e-mail aliasát adja meg. Ha a felhasználó egy egyéni letiltott szót ad meg, hibaüzenet jelenik meg a letiltott Szóval, így a felhasználó el tudja távolítani.
-School Data Sync (SDS) | Az SDS használatával létrehozott csoportok megtartják az elnevezési házirendet, de az elnevezési házirend nincs automatikusan alkalmazva. Az SDS-rendszergazdáknak hozzá kell fűzni az előtagokat és az utótagokat azokhoz a csoportokhoz, amelyekhez létre kell hozni, majd fel kell tölteni őket az SDS-be. A csoport létrehozása vagy szerkesztése másként nem fog működni.
+School-adatszinkronizálás (SDS) | Az SDS használatával létrehozott csoportok megtartják az elnevezési házirendet, de az elnevezési házirend nincs automatikusan alkalmazva. Az SDS-rendszergazdáknak hozzá kell fűzni az előtagokat és az utótagokat azokhoz a csoportokhoz, amelyekhez létre kell hozni, majd fel kell tölteni őket az SDS-be. A csoport létrehozása vagy szerkesztése másként nem fog működni.
 Outlook Customer Manager (VÁLASZTHATÓÖSSZETEVŐ) | Az Outlook Customer Manager megfelel az elnevezési házirendnek, amely automatikusan az Outlook Customer Managerben létrehozott csoportra lesz alkalmazva. Ha a rendszer egy egyéni blokkolt szót észlel, a VÁLASZTHATÓÖSSZETEVŐ-ben való csoportos létrehozás le van tiltva, és a felhasználó le van tiltva a VÁLASZTHATÓÖSSZETEVŐ alkalmazás használatával.
 Tantermi alkalmazás | Az osztályterem alkalmazásban létrehozott csoportok megfelelnek az elnevezési házirendnek, de az elnevezési házirend nem lesz automatikusan alkalmazva, és az elnevezési szabályzat előzetes verziója nem jelenik meg a felhasználók számára az osztályterem csoport nevének megadásakor. A felhasználóknak meg kell adniuk a kényszerített osztályterem csoport nevét előtagokkal és utótagokkal. Ha nem, az osztályterem csoport létrehozás vagy szerkesztés művelete hibákkal meghiúsul.
 Power BI | Power BI munkaterületek megfelelnek az elnevezési házirendnek.    

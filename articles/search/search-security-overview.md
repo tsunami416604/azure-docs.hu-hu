@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4788dc700324637d69ffbcb4308df3a323b9590c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934073"
+ms.locfileid: "75945684"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Biztonság és adatvédelem az Azure Cognitive Search
 
@@ -43,7 +43,7 @@ A titkosítás a teljes indexelési folyamat során kiterjed: a kapcsolatokból,
 |----------------|-------------|
 | Titkosítás az átvitel során <br>(HTTPS/SSL/TLS) | Az Azure Cognitive Search a 443-es HTTPS-portot figyeli. A platformon az Azure-szolgáltatásokkal létesített kapcsolatok titkosítva vannak. <br/><br/>Az összes ügyfél és szolgáltatás közötti Azure Cognitive Search-interakció SSL/TLS 1,2-kompatibilis.  Ügyeljen arra, hogy az TLS 1.2-es verzióját használja az SSL-kapcsolatokhoz a szolgáltatáshoz.|
 | Titkosítás inaktív állapotban <br>Microsoft által felügyelt kulcsok | A titkosítás teljes mértékben az indexelési folyamatba kerül, és nem befolyásolja az indexelési idő – befejezés vagy az index méretének mérését. Automatikusan megtörténik az összes indexelésnél, beleértve az olyan index növekményes frissítését is, amely nem teljesen titkosított (január 2018. előtt jött létre).<br><br>Belsőleg a titkosítás az [Azure Storage Service Encryptionon](https://docs.microsoft.com/azure/storage/common/storage-service-encryption)alapul, és 256 bites AES- [titkosítást](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard)használ.<br><br> A titkosítás az Azure Cognitive Search-ban, a Microsoft által belsőleg felügyelt tanúsítványokkal és titkosítási kulcsokkal, valamint univerzálisan alkalmazható. A titkosítás be-és kikapcsolható, kezelheti vagy helyettesítheti a saját kulcsait, vagy megtekintheti a portál titkosítási beállításait vagy programozott módon.<br><br>A inaktív adatok titkosítása 2018. január 24-én jelent meg, és minden szolgáltatási szinten érvényes, beleértve az ingyenes szintet is minden régióban. A teljes titkosításhoz az adott dátum előtt létrehozott indexeket el kell dobni, és újból létre kell hozni a titkosítás megkezdése érdekében. Ellenkező esetben csak a január 24 után hozzáadott új adatforgalom titkosítva van.|
-| Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Az ügyfél által felügyelt kulcsokkal történő titkosítás mostantól általánosan elérhető a január 2019-on vagy azt követően létrehozott keresési szolgáltatásokhoz.<br><br>Az Azure Cognitive Search indexek és a szinonimák leképezései mostantól titkosítva lehetnek a Azure Key Vaultban az ügyfél kulcsok felügyelt kulcsaival. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).<br><br>Ez a funkció nem helyettesíti az alapértelmezett titkosítást a nyugalmi állapotban, hanem az alkalmazáson kívül is alkalmazza.<br><br>A funkció engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van.
+| Titkosítás inaktív állapotban <br>Felhasználó által kezelt kulcsok | Az ügyfél által felügyelt kulcsokkal történő titkosítás mostantól általánosan elérhető a január 2019-on vagy azt követően létrehozott keresési szolgáltatásokhoz. Ingyenes (megosztott) szolgáltatásokban nem támogatott.<br><br>Az Azure Cognitive Search indexek és a szinonimák leképezései mostantól titkosítva lehetnek a Azure Key Vaultban az ügyfél kulcsok felügyelt kulcsaival. További információ: [titkosítási kulcsok kezelése az Azure Cognitive Searchban](search-security-manage-encryption-keys.md).<br><br>Ez a funkció nem helyettesíti az alapértelmezett titkosítást a nyugalmi állapotban, hanem az alkalmazáson kívül is alkalmazza.<br><br>A funkció engedélyezése növeli az index méretét és csökkenti a lekérdezési teljesítményt. Az eddigi megfigyelések alapján a lekérdezési időpontokban 30%-60%-os növekedés várható, bár a tényleges teljesítmény az index definíciója és a lekérdezések típusaitól függően változhat. A teljesítményre gyakorolt hatás miatt javasoljuk, hogy ezt a funkciót csak olyan indexeken engedélyezze, amelyekhez valóban szükség van.
 
 ## <a name="azure-wide-user-access-controls"></a>Azure-szintű felhasználói hozzáférés-vezérlés
 

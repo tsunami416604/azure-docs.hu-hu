@@ -9,14 +9,14 @@ ms.reviewer: douglasl
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 11/20/2019
+ms.date: 01/14/2020
 ms.author: jingwang
-ms.openlocfilehash: 6dd0734d39237545b7a9bc2553fcd9dea75b8ee0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 3d3a1704b75de53bf65012329fba5f8522adff3a
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892820"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941751"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -46,11 +46,6 @@ Pontosabban, ez a DB2-összekötő a következő IBM DB2 platformokat és verzi�
 * IBM DB2 a LUW 10,5
 * IBM DB2 a LUW 10,1
 
-> [!TIP]
-> Ha a következő hibaüzenet jelenik meg: "az SQL-utasítás végrehajtási kérelmének megfelelő csomag nem található. SQLSTATE = 51002 SQLCODE =-805 ", ezért a szükséges csomag nem jön létre a normál felhasználó számára az adott operációs rendszeren. Kövesse az alábbi utasításokat a DB2-kiszolgáló típusa szerint:
-> - DB2 for i (AS400): hagyja, hogy a Power User a másolási tevékenység használata előtt hozzon létre gyűjteményt a bejelentkezési felhasználó számára. Parancs: `create collection <username>`
-> - DB2 a z/OS-vagy LUW-hez: magas jogosultsági szintű fiók használata – Kiemelt felhasználó vagy rendszergazda a csomaggal rendelkező hatóságok és a kötés, a BINDADD, a hozzáférés engedélyezése a nyilvános engedélyekhez – a másolási tevékenység futtatásához a rendszer automatikusan létrehozza a szükséges csomagot a másolás során. Ezt követően visszaválthat a normál felhasználóra a későbbi másolási futtatásokhoz.
-
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [data-factory-v2-integration-runtime-requirements](../../includes/data-factory-v2-integration-runtime-requirements.md)]
@@ -75,9 +70,12 @@ A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 | authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű**. |Igen |
 | felhasználónév |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
 | jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
-| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat | Nem |
+| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. | Nem |
 | certificateCommonName | Ha SSL (SSL) vagy Transport Layer Security (TLS) titkosítást használ, meg kell adnia egy értéket a tanúsítvány köznapi neveként. | Nem |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
+
+> [!TIP]
+> Ha `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805`állapotot jelző hibaüzenetet kap, akkor a rendszer nem hoz létre egy szükséges csomagot a felhasználó számára. Alapértelmezés szerint az ADF megpróbál létrehozni egy csomagot a nevű gyűjteményben, amely a DB2-hez való kapcsolódáshoz használt felhasználó. Adja meg a Package Collection tulajdonságot, amely azt jelzi, hogy hol szeretné létrehozni az ADF-t a szükséges csomagok létrehozásához az adatbázis lekérdezése során.
 
 **Példa**
 

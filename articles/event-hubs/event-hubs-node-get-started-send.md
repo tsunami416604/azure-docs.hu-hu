@@ -8,20 +8,23 @@ ms.service: event-hubs
 ms.workload: core
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: ded2c83bc648e509c8cf00236cdf453b9c61af53
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 39087b189c424866fffcc3ea8723c712883f288c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73720573"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940722"
 ---
 # <a name="quickstart-send-events-to-or-receive-events-from-azure-event-hubs-using-nodejs"></a>Gyors útmutató: események küldése vagy fogadása az Azure Event Hubs a Node. js használatával
 
-Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok vagy telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs egy Big streaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet Node. js-alkalmazásokat létrehozni események küldésére vagy események fogadására az Event hub-ból.
+
+> [!IMPORTANT]
+> Ez a rövid útmutató az Azure Event Hubs Java script SDK 2. verzióját használja. Ha még nem ismeri az Azure Event Hubs, használja a Java script SDK 5-ös verzióját. A Java script SDK 5. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](get-started-node-send-v2.md). Ha meglévő kódot kell áttelepítenie a 2. verzióról az 5-ös verzióra, tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md).
 
 > [!NOTE]
 > A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs-node/tree/master/client). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
@@ -31,16 +34,16 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet Node. js-alkalmazásokat létreho
 Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
 
 - Aktív Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio) a virtuális gép létrehozásának megkezdése előtt.
-- A Node. js 8. x vagy újabb verziója. Töltse le a legújabb LTS-verziót [https://nodejs.orgról ](https://nodejs.org).
+- A Node. js 8. x vagy újabb verziója. Töltse le a legújabb LTS-verziót [https://nodejs.org ról ](https://nodejs.org).
 - Visual Studio Code (ajánlott) vagy bármely más IDE
 - **Hozzon létre egy Event Hubs névteret és egy Event hubot**. Első lépésként az [Azure Portalon](https://portal.azure.com) hozzon létre egy Event Hubs típusú névteret, és szerezze be az alkalmazása és az eseményközpont közötti kommunikációhoz szükséges felügyeleti hitelesítő adatokat. A névtér és az Event hub létrehozásához kövesse az [ebben a cikkben](event-hubs-create.md)ismertetett eljárást, majd folytassa az oktatóanyag következő lépéseivel. Ezután szerezze be a kapcsolati karakterláncot az Event hub-névtérhez a következő cikk utasításait követve: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az oktatóanyag későbbi részében a kapcsolatok karakterláncát kell használnia.
 
 
 ### <a name="install-npm-package"></a>NPM-csomag telepítése
-A [Event Hubs NPM-csomagjának](https://www.npmjs.com/package/@azure/event-hubs)telepítéséhez nyisson meg egy parancssort, amely az elérési útjában `npm` van, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
+A [Event Hubs NPM-csomagjának](https://www.npmjs.com/package/@azure/event-hubs/v/2.1.0)telepítéséhez nyisson meg egy parancssort, amely az elérési útjában `npm` van, módosítsa a könyvtárat arra a mappára, ahol a mintákat használni szeretné, majd futtassa ezt a parancsot.
 
 ```shell
-npm install @azure/event-hubs
+npm install @azure/event-hubs@2
 ```
 
 Ha telepíteni szeretné az [NPM csomagot az Event Processor Host számára](https://www.npmjs.com/package/@azure/event-processor-host), futtassa inkább az alábbi parancsot.
@@ -57,7 +60,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást
 2. Hozzon létre egy `send.js` nevű fájlt, és illessze be az alábbi kódot. Az Event hub-névtér kapcsolati karakterláncának beszerzéséhez kövesse a következő cikk utasításait: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). 
 
     ```javascript
-    const { EventHubClient } = require("@azure/event-hubs");
+    const { EventHubClient } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -95,7 +98,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy Node. js-alkalmazást
 1. Nyissa meg a kedvenc szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com)-ot. 
 2. Hozzon létre egy `receive.js` nevű fájlt, és illessze be az alábbi kódot.
     ```javascript
-    const { EventHubClient, delay } = require("@azure/event-hubs");
+    const { EventHubClient, delay } = require("@azure/event-hubs@2");
 
     // Connection string - primary key of the Event Hubs namespace. 
     // For example: Endpoint=sb://myeventhubns.servicebus.windows.net/;SharedAccessKeyName=RootManageSharedAccessKey;SharedAccessKey=XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
@@ -186,7 +189,7 @@ Ez a szakasz bemutatja, hogyan fogadhat eseményeket egy Event hub-ból az Azure
 
 Gratulálunk! Az Event hub eseményeit az Event Processor Host használatával fogadta el. Ez a művelet az Event hub alapértelmezett fogyasztói csoportjának összes partíciójának eseményeit fogadja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

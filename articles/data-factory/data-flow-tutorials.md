@@ -5,13 +5,13 @@ author: djpmsft
 ms.author: daperlov
 ms.service: data-factory
 ms.topic: tutorial
-ms.date: 01/08/2020
-ms.openlocfilehash: 3f2dcce4a3907084f8cb1b5ace1ace6ab795f85a
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 01/13/2020
+ms.openlocfilehash: 8350a42bc5f72adec135b2b39c5dde36e408c174
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929473"
+ms.locfileid: "75942134"
 ---
 # <a name="mapping-data-flow-video-tutorials"></a>Adatfolyam-videó-oktatóanyagok leképezése
 
@@ -60,6 +60,12 @@ Mivel a termék folyamatosan frissül, bizonyos funkciók a jelenlegi Azure Data
 [Az átalakítás unpivot](http://youtu.be/KFYkxcpB8b0?hd=1)
 
 [Ablak átalakítása](https://www.youtube.com/watch?v=m6zgbtY5AYQ)
+
+[Szűrő átalakítása](https://youtu.be/OhbKDOXSfeE)
+
+[Feltételes felosztás átalakítása](https://youtu.be/OhbKDOXSfeE)
+
+[Létező átalakítás](http://youtu.be/GS8JVgNBMfs?hd=1)
 
 ## <a name="source-and-sink"></a>Forrás és fogadó
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/04/2019
+ms.date: 01/14/2020
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 8cb644495d99b331ec95eb0a9759be45a65e97a6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: bab95f6494fad86c9fdfc0b8fb044c22a7c5a628
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895336"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945455"
 ---
 # <a name="designing-highly-available-applications-using-read-access-geo-redundant-storage"></a>A magasan elérhető alkalmazások tervezése olvasási hozzáférésű geo-redundáns tárolással
 
@@ -99,7 +99,7 @@ A frissítési kérelmek többféleképpen is kezelhetnek, ha csak olvasható m�
 
 ## <a name="handling-retries"></a>Újrapróbálkozások kezelésére
 
-Az Azure Storage ügyféloldali kódtár segítségével meghatározhatja, hogy mely hibákat lehet újrapróbálni. Például egy 404-es hiba (az erőforrás nem található) újrapróbálkozhat, mert az újrapróbálkozások valószínűleg nem fognak sikert okozni. Másfelől a 500-es hiba nem próbálkozható újra, mert kiszolgálóhiba miatt előfordulhat, hogy egyszerűen átmeneti probléma lehet. További részletekért tekintse meg a [ExponentialRetry osztály nyílt forráskódját](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) a .net Storage ügyféloldali kódtáraban. (Keresse meg a ShouldRetry metódust.)
+Az Azure Storage ügyféloldali kódtár segítségével meghatározhatja, hogy mely hibákat lehet újrapróbálni. Például egy 404-es hiba (az erőforrás nem található) nem próbálkozik újra, mert a próbálkozás nem valószínű, hogy sikeres. Másrészről egy 500-es hiba is újrapróbálkozhat, mert kiszolgálóhiba miatt a probléma egyszerűen átmeneti probléma lehet. További részletekért tekintse meg a [ExponentialRetry osztály nyílt forráskódját](https://github.com/Azure/azure-storage-net/blob/87b84b3d5ee884c7adc10e494e2c7060956515d0/Lib/Common/RetryPolicies/ExponentialRetry.cs) a .net Storage ügyféloldali kódtáraban. (Keresse meg a ShouldRetry metódust.)
 
 ### <a name="read-requests"></a>Olvasási kérelmek
 

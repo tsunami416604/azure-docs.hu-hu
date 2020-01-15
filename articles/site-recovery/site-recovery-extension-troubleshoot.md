@@ -1,20 +1,18 @@
 ---
-title: Azure Site Recovery ügynökökkel kapcsolatos problémák elhárítása | Microsoft Docs "
-description: Információt nyújt a Azure Site Recovery-ügynök meghibásodásának tüneteiről, okairól és megoldásáról.
-author: carmonmills
+title: A vész-helyreállítási Azure-beli virtuálisgép-bővítmény hibáinak elhárítása Azure Site Recovery
+description: Az Azure virtuálisgép-bővítményével kapcsolatos hibák elhárítása Azure Site Recovery-mel.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.author: carmonm
-ms.openlocfilehash: 0de5a9843b8029c1e1926ae296f43fc95b48106c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930135"
+ms.locfileid: "75941540"
 ---
-# <a name="troubleshoot-issues-with-the-azure-site-recovery-agent"></a>A Azure Site Recovery ügynökkel kapcsolatos problémák elhárítása
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémák elhárítása
 
 Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megoldhatja a virtuálisgép-ügynökkel és-bővítménysel kapcsolatos Azure Site Recovery hibákat.
 
@@ -30,7 +28,7 @@ Hibakód: "151076"
 **2. ok: [a virtuális gépen telepített ügynök elavult (Linux rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-is-out-of-date-for-linux-vms)**  
 **3. ok: [a site Recovery bővítmény frissítése vagy betöltése sikertelen](#the-site-recovery-extension-fails-to-update-or-load)**  
 
-Hibaüzenet: "a site Recovery-bővítmény előző műveletének végrehajtása a vártnál több időt vesz figyelembe."<br>
+Hibaüzenet: "az előző Site Recovery bővítmény művelet a vártnál több időt vesz figyelembe."<br>
 Hibakód: "150066"<br>
 
 **1. ok: [az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)](#the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms)**     

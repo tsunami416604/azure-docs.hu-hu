@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: b3c355219fcbebc5fda38c33d6eb7f9126b3b2b8
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 9fe0875f34745b0b5b8b1b7e8b352116b6cbf997
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073820"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941914"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéni parancsfájl-bővítmény a Windowshoz
 
@@ -63,7 +63,7 @@ Az egyéni szkriptek bővítményének konfigurációja meghatározza a parancsf
 
 A bizalmas adatokat egy védett konfigurációban tárolhatja, amely titkosítva van, és csak a virtuális gépen végez visszafejtést. A védett konfiguráció akkor hasznos, ha a végrehajtási parancs titkos kódokat, például jelszót tartalmaz.
 
-Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bővítmények által védett beállítások konfigurációjában. Az Azure VM-bővítmény védett beállítás adatok titkosítva, és csak az átjárót tartalmazó a cél virtuális gépen.
+Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bővítmények által védett beállítások konfigurációjában. Az Azure virtuálisgép-bővítmény védett beállítási adatbeállításai titkosítottak, és csak a célként megadott virtuális gépen lettek visszafejtve.
 
 ```json
 {
@@ -81,7 +81,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
     "properties": {
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
-        "typeHandlerVersion": "1.9",
+        "typeHandlerVersion": "1.10",
         "autoUpgradeMinorVersion": true,
         "settings": {
             "fileUris": [
@@ -92,11 +92,15 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
         "protectedSettings": {
             "commandToExecute": "myExecutionCommand",
             "storageAccountName": "myStorageAccountName",
-            "storageAccountKey": "myStorageAccountKey"
+            "storageAccountKey": "myStorageAccountKey",
+            "managedIdentity" : {}
         }
     }
 }
 ```
+
+> [!NOTE]
+> a managedIdentity tulajdonság **nem** használható a storageAccountName vagy a storageAccountKey tulajdonsággal együtt.
 
 > [!NOTE]
 > Egy adott időpontban csak egy bővítmény telepíthető egy virtuális gépre, így az azonos virtuális géphez tartozó Resource Manager-sablonban kétszer is megadható az egyéni parancsfájl.
@@ -104,19 +108,20 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 > [!NOTE]
 > Ezt a sémát a VirtualMachine-erőforráson belül vagy önálló erőforrásként is használhatja. Az erőforrás nevének "virtualMachineName/extensionName" formátumúnak kell lennie, ha ez a bővítmény önálló erőforrásként van használatban az ARM-sablonban. 
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték és példa | Adattípus |
+| Név | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
-| publisher | Microsoft.Compute | sztring |
+| közzétevő | Microsoft.Compute | sztring |
 | type | CustomScriptExtension | sztring |
-| typeHandlerVersion | 1.9 | int |
+| typeHandlerVersion | 1.10 | int |
 | fileUris (például) | https://raw.githubusercontent.com/Microsoft/dotnet-core-sample-templates/master/dotnet-core-music-windows/scripts/configure-music-app.ps1 | tömb |
-| timestamp (például:) | 123456789 | 32 bites egész szám |
-| commandToExecute (például) | powershell -ExecutionPolicy Unrestricted -File configure-music-app.ps1 | sztring |
-| storageAccountName (például:) | examplestorageacct | sztring |
-| storageAccountKey (például) | TmJK/1N3AbAZ3q/+hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg== | sztring |
+| időbélyeg (például) | 123456789 | 32 bites egész szám |
+| commandToExecute (például) | PowerShell – ExecutionPolicy nem korlátozott – fájl configure-Music-app. ps1 | sztring |
+| storageAccountName (például) | examplestorageacct | sztring |
+| storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
+| managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 >[!NOTE]
 >Ezek a tulajdonságok nevei megkülönböztetik a kis-és nagybetűket. Az üzembe helyezési problémák elkerüléséhez használja az itt látható neveket.
@@ -128,6 +133,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 * `timestamp` (opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újrafuttatásának indítására használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
 * `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris`nak az Azure-Blobok URL-címeinek kell lennie.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
+* `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  * `clientId`: (nem kötelező, karakterlánc) a felügyelt identitás ügyfél-azonosítója
+  * `objectId`: (nem kötelező, karakterlánc) a felügyelt identitás objektumának azonosítója
 
 A következő értékek a nyilvános vagy a védett beállításokban állíthatók be, a bővítmény elveti az összes olyan konfigurációt, ahol az alábbi értékek a nyilvános és a védett beállításokban is be vannak állítva.
 
@@ -137,9 +145,49 @@ A nyilvános beállítások használata hasznos lehet a hibakereséshez, de java
 
 A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a virtuális gépre, amelyen a parancsfájl végre lesz hajtva.  A védett beállítások titkosítása csak az Azure-ban és a virtuális gépen ismert kulcs használatával történik. A rendszer elküldte a beállításokat a virtuális gépre, vagyis ha a beállítások titkosítva lettek, a virtuális gépen titkosítva lesznek. A titkosított értékek visszafejtéséhez használt tanúsítványt a virtuális gépen tárolja a rendszer, és a beállításokat (ha szükséges) a futtatáskor használja.
 
+####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
+
+A CustomScript (1.10.4-es verzió) támogatja a [felügyelt identitáson](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) alapuló RBAC, amely a "fileUris" beállításban megadott URL-címekről tölti le a fájl (oka) t. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok/tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
+
+Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, állítsa a "managedidentity" mezőt egy üres JSON-objektumra. 
+
+> Példa:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
+
+> Példák:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.ps1"],
+>   "commandToExecute": "powershell.exe script1.ps1",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> a managedIdentity tulajdonság **nem** használható a storageAccountName vagy a storageAccountKey tulajdonsággal együtt.
+
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
-Az Azure Virtuálisgép-bővítmények is üzembe helyezhetők az Azure Resource Manager-sablonok. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni szkriptek bővítmény futtatásához az üzembe helyezés során. Az alábbi példák azt mutatják be, hogyan használható az egyéni szkriptek bővítménye:
+Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni szkriptek bővítmény futtatásához az üzembe helyezés során. Az alábbi példák azt mutatják be, hogyan használható az egyéni szkriptek bővítménye:
 
 * [Oktatóanyag: virtuálisgép-bővítmények üzembe helyezése Azure Resource Manager-sablonokkal](../../azure-resource-manager/resource-manager-tutorial-deploy-vm-extensions.md)
 * [Kétszintű alkalmazás üzembe helyezése a Windowsban és az Azure SQL DB-ben](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-windows)
@@ -181,7 +229,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "buildserver1" `
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -Settings $settings    `
     -ProtectedSettings $protectedSettings `
 ```
@@ -199,7 +247,7 @@ Set-AzVMExtension -ResourceGroupName <resourceGroupName> `
     -Name "serverUpdate"
     -Publisher "Microsoft.Compute" `
     -ExtensionType "CustomScriptExtension" `
-    -TypeHandlerVersion "1.9" `
+    -TypeHandlerVersion "1.10" `
     -ProtectedSettings $protectedSettings
 
 ```
@@ -225,7 +273,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Az egyéni szkriptek klasszikus virtuális gépeken való üzembe helyezéséhez használhatja a Azure Portal vagy a klasszikus Azure PowerShell parancsmagokat.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 Navigáljon a klasszikus VM-erőforráshoz. Válassza a **bővítmények** lehetőséget a **Beállítások**területen.
 
@@ -251,7 +299,7 @@ Set-AzureVMCustomScriptExtension -VM $vm -FileUri $fileUri -Run 'Create-File.ps1
 $vm | Update-AzureVM
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -277,7 +325,7 @@ ahol a `<n>` decimális egész szám, amely a bővítmény végrehajtásai köz�
 
 A `commandToExecute` parancs végrehajtásakor a bővítmény beállítja ezt a könyvtárat (például `...\Downloads\2`) az aktuális munkakönyvtárként. Ez a folyamat lehetővé teszi a relatív elérési utak használatát, hogy megkeresse a letöltött fájlokat a `fileURIs` tulajdonságon keresztül. Példákért tekintse meg az alábbi táblázatot.
 
-Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet a relatív parancsfájl-/fájlelérési útvonalakat a `commandToExecute` sztringben választani, ha lehetséges. Például:
+Mivel az abszolút letöltési útvonal az idő múlásával változhat, érdemes lehet a relatív parancsfájl-/fájlelérési útvonalakat a `commandToExecute` sztringben választani, ha lehetséges. Példa:
 
 ```json
 "commandToExecute": "powershell.exe . . . -File \"./scripts/myscript.ps1\""
@@ -296,4 +344,4 @@ Az elérési út adatai az első URI-szegmens megtartása után a `fileUris`-tul
 
 ### <a name="support"></a>Támogatás
 
-Ha ebben a cikkben bármikor további segítségre van szüksége, forduljon az Azure-szakértőket a a [MSDN Azure-ban és a Stack Overflow-fórumok](https://azure.microsoft.com/support/forums/). Egy Azure-támogatási incidens is benyújtható. Nyissa meg a [Azure támogatási webhelyén](https://azure.microsoft.com/support/options/) , és válassza ki a Get-támogatást. Azure-támogatási használatával kapcsolatos információkért olvassa el a [Microsoft Azure-támogatás – gyakori kérdések](https://azure.microsoft.com/support/faq/).
+Ha a cikk bármely pontján további segítségre van szüksége, vegye fel a kapcsolatot az Azure-szakértőkkel az [MSDN Azure-ban, és stack overflow fórumokat](https://azure.microsoft.com/support/forums/)is. Egy Azure-támogatási incidens is benyújtható. Nyissa meg az [Azure támogatási webhelyét](https://azure.microsoft.com/support/options/) , és válassza a támogatás kérése lehetőséget. További információ az Azure-támogatás használatáról: [Microsoft Azure támogatással kapcsolatos gyakori kérdések](https://azure.microsoft.com/support/faq/).

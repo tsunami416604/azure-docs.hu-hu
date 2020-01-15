@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: 696bba195ac3902a3a90a82bcc7665591eba643f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4ef2987ee72348fb4353ba735d6da76fb218f01e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922341"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942154"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -97,6 +97,7 @@ A riasztások tábla alatti táblázat a riasztások szándékának kategorizál
 |**A Storage-fiókból kinyert adatok szokatlan mennyisége**|Azt jelzi, hogy a tárolón a legutóbbi tevékenységhez képest szokatlanul nagy mennyiségű adattal lett kibontva. A lehetséges ok az, hogy egy támadó nagy mennyiségű adatmennyiséget adott ki egy olyan tárolóból, amely blob Storage-tárolót tárol.|Adatok kinyerése|
 |**Szokatlan törlés egy Storage-fiókban**|Azt jelzi, hogy egy vagy több váratlan törlési művelet történt egy Storage-fiókban, a fiókhoz tartozó legutóbbi tevékenységhez képest. Ennek lehetséges oka, hogy egy támadó törölte az adatait a Storage-fiókjából.|Adatok kinyerése|
 |**A. cspkg szokatlan feltöltése a Storage-fiókba**|Azt jelzi, hogy egy Azure Cloud Services csomag (. cspkg fájl) szokatlan módon lett feltöltve egy Storage-fiókba, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó arra készül, hogy rosszindulatú kódot helyezzen üzembe a Storage-fiókból egy Azure Cloud Service-be.|LateralMovement/végrehajtás|
+|**Szokatlan feltöltés az. exe fájlból egy Storage-fiókba**|Azt jelzi, hogy egy. exe-fájl szokatlan módon lett feltöltve egy Storage-fiókba, a fiókban lévő legutóbbi tevékenységhez képest. Ennek lehetséges oka, hogy egy támadó rosszindulatú végrehajtható fájlt töltött fel a Storage-fiókjába, vagy ha egy megbízható felhasználó feltöltött egy végrehajtható fájlt.|LateralMovement/végrehajtás|
 |**A hozzáférési engedélyek szokatlan módosítása egy Storage-fiókban**|Azt jelzi, hogy a tároló hozzáférési engedélyei szokatlan módon módosultak. Ennek lehetséges oka, hogy egy támadó megváltoztatta a tárolók engedélyeit, hogy gyengítse biztonsági állapotát, vagy az adatmegőrzést.|Perzisztencia|
 |**Szokatlan hozzáférés-ellenőrzés egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|Gyűjtemény|
 |**Szokatlan adatfeltárás egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók rendellenes módon vannak felsorolva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|Gyűjtemény|

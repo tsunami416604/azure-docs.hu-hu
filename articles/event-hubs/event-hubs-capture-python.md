@@ -13,20 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/08/2020
 ms.author: shvija
-ms.openlocfilehash: ade4aa79b2de005bfecd7a5882f06cb491ea4e6d
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73717845"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75940763"
 ---
 # <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python
 
 A capture az Azure Event Hubs egyik funkciója. A capture használatával automatikusan továbbíthatja az adatátviteli adatait az Event hub-ban egy tetszőleges Azure Blob Storage-fiókba. Ez a funkció megkönnyíti a kötegelt feldolgozást a valós idejű adatfolyam-továbbítási adatátvitelhez. Ez a cikk azt ismerteti, hogyan használható a Event Hubs Capture a Python használatával. További információ a Event Hubs rögzítéséről: [események rögzítése az Azure Event Hubs használatával][Overview of Event Hubs Capture].
 
 Ez az útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* program a szimulált környezeti telemetria JSON formátumban küldi Event Hubs. Az Event hub a rögzítési funkcióval írja be ezeket az adattárakba a blob Storage-ba. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, létrehoz egy hozzáfűzési fájlt az összes eszközhöz, és az adatokat *. csv* fájlba írja az egyes eszközökön.
+
+> [!IMPORTANT]
+> Ez a rövid útmutató az Azure Event Hubs Python SDK 1. verzióját használja. Ha még nem ismeri az Azure Event Hubs, használja a Python SDK 5-ös verzióját. A Python SDK 5. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](get-started-capture-python-v2.md). Ha meglévő kódot kell áttelepítenie az 1. verzióról az 5-ös verzióra, tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
 
 Ebben az útmutatóban a következőket végezheti el: 
 
@@ -186,7 +189,7 @@ Ez a szkript beolvassa a rögzített fájlokat, és létrehoz egy fájlt az egye
 
    A rögzítési processzor letölti az összes nem üres blobot a Storage-fiók tárolójából, és az eredményeket *. csv* -fájlként írja a helyi könyvtárba. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Event Hubsról további információt a következő témakörben talál: 
 

@@ -12,12 +12,12 @@ author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
 ms.date: 03/04/2019
-ms.openlocfilehash: 2ff2dfe6384acc8a56558e6e7ba0fc5cc05f7783
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b3f3aef66af056ca06d066c5235b0d23a2f39ecc
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73819973"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945770"
 ---
 # <a name="dynamic-data-masking-for-azure-sql-database-and-data-warehouse"></a>Dinamikus adatmaszkolás a Azure SQL Database és az adatraktárban
 
@@ -29,7 +29,7 @@ Előfordulhat például, hogy a Call Center egyik szolgáltatása a hívókat a 
 
 ## <a name="dynamic-data-masking-basics"></a>Dinamikus adatmaszkolás alapjai
 
-A dinamikus adatmaszkolási szabályzatot a Azure Portal a dinamikus adatmaszkolási művelet kiválasztásával a SQL Database konfiguráció paneljén vagy a beállítások panelen.
+A dinamikus adatmaszkolási szabályzatot a Azure Portal a dinamikus adatmaszkolási művelet kiválasztásával a SQL Database konfiguráció paneljén vagy a beállítások panelen. Ez a funkció nem állítható be az SQL DW portál használatával (a PowerShell vagy a REST API használata)
 
 ### <a name="dynamic-data-masking-permissions"></a>Dinamikus adatmaszkolási engedélyek
 
@@ -46,12 +46,12 @@ A dinamikus adatmaszkolás konfigurálható a Azure SQL Database-rendszergazda, 
 | **Alapértelmezett** |**Teljes maszkolás a kijelölt mezők adattípusainak megfelelően**<br/><br/>• Az XXXX vagy kevesebb XS használata, ha a mező mérete kisebb, mint 4 karakter a sztring adattípusok esetében (NCHAR, ntext, nvarchar).<br/>• Nulla értéket használhat a numerikus adattípusokhoz (bigint, bit, decimális, int, Money, numerikus, smallint, túlcsordulási, tinyint, float, Real).<br/>• Az 01-01-1900-as dátum/idő adattípusok (dátum, datetime2, datetime, DateTimeOffset, idő adattípusúra, Time) használata.<br/>• Az SQL Variant esetében az aktuális típus alapértelmezett értéke lesz használatban.<br/>• Az XML esetében a \<maszkolt/> a dokumentum.<br/>• Üres értéket használhat a speciális adattípusokhoz (timestamp-tábla, hierarchyid, GUID, Binary, képek, varbinary térbeli típusok). |
 | **Bankkártya** |**Maszkolási módszer, amely a kijelölt mezők utolsó négy számjegyét teszi elérhetővé** , és egy konstans karakterláncot hoz létre egy hitelkártya formájában.<br/><br/>XXXX-XXXX-XXXX-1234 |
 | **E-mail** |**Maszkolási módszer, amely az első betűt teszi elérhetővé, és lecseréli a tartományt a xxx.com** egy állandó karakterlánc-előtaggal e-mail-cím formájában.<br/><br/>aXX@XXXX.com |
-| **Véletlenszerű szám** |**Maszkolási módszer, amely** a kiválasztott határok és a tényleges adattípusok alapján véletlenszerűen generált számot hoz létre. Ha a kijelölt határok egyenlőek, akkor a maszkolási függvény állandó szám.<br/><br/>![navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
-| **Egyéni szöveg** |**Maszkolási módszer, amely az első és az utolsó karaktert teszi elérhetővé** , és egy egyéni kitöltési karakterláncot helyez el a közepén. Ha az eredeti sztring rövidebb a megjelenő előtagnál és utótagnál, csak a kitöltés karakterláncot használja a rendszer. <br/>előtag [kitöltés] utótag<br/><br/>![navigációs ablaktábla](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
+| **Véletlenszerű szám** |**Maszkolási módszer, amely** a kiválasztott határok és a tényleges adattípusok alapján véletlenszerűen generált számot hoz létre. Ha a kijelölt határok egyenlőek, akkor a maszkolási függvény állandó szám.<br/><br/>![Navigációs panel](./media/sql-database-dynamic-data-masking-get-started/1_DDM_Random_number.png) |
+| **Egyéni szöveg** |**Maszkolási módszer, amely az első és az utolsó karaktert teszi elérhetővé** , és egy egyéni kitöltési karakterláncot helyez el a közepén. Ha az eredeti sztring rövidebb a megjelenő előtagnál és utótagnál, csak a kitöltés karakterláncot használja a rendszer. <br/>előtag [kitöltés] utótag<br/><br/>![Navigációs panel](./media/sql-database-dynamic-data-masking-get-started/2_DDM_Custom_text.png) |
 
 <a name="Anchor1"></a>
 
-### <a name="recommended-fields-to-mask"></a>Maszk ajánlott mezői
+### <a name="recommended-fields-to-mask"></a>Ajánlott maszkolandó mezők
 
 A DDM-javaslatok motorja az adatbázis egyes mezőit potenciálisan bizalmas mezőként adja meg, ami valószínűleg a maszkoláshoz is jó választás lehet. A portál dinamikus adatmaszkolás paneljén látni fogja az adatbázis ajánlott oszlopait. Mindössze annyit kell tennie, hogy a **maszk hozzáadása** egy vagy több oszlophoz lehetőséget választja, majd a **Mentés** gombra kattint a mezőkhöz tartozó maszk alkalmazásához.
 

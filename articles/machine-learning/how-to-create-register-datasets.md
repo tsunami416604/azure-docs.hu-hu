@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 65bc164f344090894622a7b2db62336b19d3599e
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540671"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945705"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -67,21 +67,10 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 1. Ellenőrizze, hogy van-e `contributor` vagy `owner` hozzáférése a regisztrált Azure adattárhoz.
 
-1. Hozza létre az adatkészletet az adattárra mutató hivatkozással:
+2. Hozza létre az adatkészletet az adattár elérési útjaira hivatkozó hivatkozásokkal.
+> [!Note]
+> Több adattárból is létrehozhat adatkészletet több adattárolóban. Az adatkészletek létrehozásához használt fájlok vagy adatméretek száma nem korlátozott. Az egyes adatelérési útvonalak esetében azonban a rendszer néhány kérelmet küld a tárolási szolgáltatásnak, hogy meggyőződjön róla, hogy egy fájlra vagy mappára mutat. Ez a terhelés csökkentheti a teljesítményt vagy a hibát. Egy 1000-fájlon belüli, egy mappára hivatkozó adatkészlet egy adatútvonalra hivatkozik. Javasoljuk, hogy az optimális teljesítmény érdekében az adattárolókban kevesebb mint 100 útvonalra hivatkozó adatkészletet hozzon létre.
 
-    ```Python
-    from azureml.core.workspace import Workspace
-    from azureml.core.datastore import Datastore
-    from azureml.core.dataset import Dataset
-    
-    datastore_name = 'your datastore name'
-    
-    # get existing workspace
-    workspace = Workspace.from_config()
-    
-    # retrieve an existing datastore in the workspace by name
-    datastore = Datastore.get(workspace, datastore_name)
-    ```
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
@@ -90,12 +79,20 @@ TabularDatasets az SDK-n keresztül vagy a Azure Machine Learning Studio haszná
 A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metódusával olvassa be a. csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve.
 
 ```Python
-# create a TabularDataset from multiple paths in datastore
-datastore_paths = [
-                  (datastore, 'weather/2018/11.csv'),
-                  (datastore, 'weather/2018/12.csv'),
-                  (datastore, 'weather/2019/*.csv')
-                 ]
+from azureml.core import Workspace, Datastore, Dataset
+
+datastore_name = 'your datastore name'
+
+# get existing workspace
+workspace = Workspace.from_config()
+    
+# retrieve an existing datastore in the workspace by name
+datastore = Datastore.get(workspace, datastore_name)
+
+# create a TabularDataset from 3 paths in datastore
+datastore_paths = [(datastore, 'ather/2018/11.csv'),
+                   (datastore, 'weather/2018/12.csv'),
+                   (datastore, 'weather/2019/*.csv')]
 weather_ds = Dataset.Tabular.from_delimited_files(path=datastore_paths)
 ```
 
@@ -156,16 +153,12 @@ A `FileDatasetFactory` osztály [`from_files()`](https://docs.microsoft.com/pyth
 
 ```Python
 # create a FileDataset pointing to files in 'animals' folder and its subfolders recursively
-datastore_paths = [
-                  (datastore, 'animals')
-                 ]
+datastore_paths = [(datastore, 'animals')]
 animal_ds = Dataset.File.from_files(path=datastore_paths)
 
 # create a FileDataset from image and label files behind public web urls
-web_paths = [
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
-            'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz'
-           ]
+web_paths = ['https://azureopendatastorage.blob.core.windows.net/mnist/train-images-idx3-ubyte.gz',
+             'https://azureopendatastorage.blob.core.windows.net/mnist/train-labels-idx1-ubyte.gz']
 mnist_ds = Dataset.File.from_files(path=web_paths)
 ```
 
@@ -248,10 +241,8 @@ Az adatkészlet mostantól elérhető a munkaterületen az **adatkészletek**ter
 Egy új verzió létrehozásával regisztrálhat egy új adatkészletet ugyanazon a néven. Az adatkészlet verziója lehetővé teszi az adathalmazok könyvjelzővel való megjelölését, hogy az adatkészlet egy adott verzióját a kísérletezéshez vagy a későbbi sokszorosításhoz lehessen alkalmazni. További információ az [adatkészletek verzióiról](how-to-version-track-datasets.md).
 ```Python
 # create a TabularDataset from Titanic training data
-web_paths = [
-            'https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
-            'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv'
-           ]
+web_paths = ['https://dprepdata.blob.core.windows.net/demo/Titanic.csv',
+             'https://dprepdata.blob.core.windows.net/demo/Titanic2.csv']
 titanic_ds = Dataset.Tabular.from_delimited_files(path=web_paths)
 
 # create a new version of titanic_ds

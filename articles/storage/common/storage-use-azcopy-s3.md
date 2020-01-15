@@ -5,15 +5,15 @@ services: storage
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 04/23/2019
+ms.date: 01/13/2020
 ms.author: normesta
 ms.subservice: common
-ms.openlocfilehash: 21f11b9175566fc020ad21e1983a9bef64ebbae3
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: a3180593eaf8c01c772fd761d88b5f5b9f7657ee
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327855"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941501"
 ---
 # <a name="copy-data-from-amazon-s3-to-azure-storage-by-using-azcopy"></a>Adatok másolása az Amazon S3-ból az Azure Storage-ba a AzCopy használatával
 
@@ -56,12 +56,17 @@ A AzCopy a [put blokkot használja az URL API-ból](https://docs.microsoft.com/r
 > [!TIP]
 > Az ebben a szakaszban szereplő példák egyetlen idézőjelekkel (' ') rendelkeznek a Path argumentumokkal. A Windows parancs-rendszerhéj (Cmd. exe) kivételével használjon szimpla idézőjeleket az összes parancs-rendszerhéjban. Ha Windows parancs-rendszerhéjt (Cmd. exe) használ, az idézőjelek ("") helyett idézőjelek ("") közé kell foglalni az elérésiút-argumentumokat.
 
+ Ezek a példák olyan fiókokkal is működnek, amelyek hierarchikus névtérrel rendelkeznek. A [többprotokollos hozzáférés Data Lake Storage](../blobs/data-lake-storage-multi-protocol-access.md) lehetővé teszi, hogy ugyanazt az URL-szintaxist (`blob.core.windows.net`) használja a fiókokon. 
+
 ### <a name="copy-an-object"></a>Objektum másolása
+
+Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<object-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<blob-name>'` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
+| **Példa** (hierarchikus névtér) | `azcopy copy 'https://s3.amazonaws.com/mybucket/myobject' 'https://mystorageaccount.blob.core.windows.net/mycontainer/myblob'` |
 
 > [!NOTE]
 > A jelen cikkben szereplő példák az AWS S3-gyűjtők elérési útja stílusú URL-címeket használják (például: `http://s3.amazonaws.com/<bucket-name>`). 
@@ -72,31 +77,43 @@ A AzCopy a [put blokkot használja az URL API-ból](https://docs.microsoft.com/r
 
 ### <a name="copy-a-directory"></a>Könyvtár másolása
 
+Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
+
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>/<directory-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>/<directory-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-a-bucket"></a>Gyűjtő másolása
+
+Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://s3.amazonaws.com/<bucket-name>' 'https://<storage-account-name>.blob.core.windows.net/<container-name>' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com/mybucket' 'https://mystorageaccount.blob.core.windows.net/mycontainer' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-all-regions"></a>Összes gyűjtő másolása minden régióban
+
+Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://s3.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ### <a name="copy-all-buckets-in-a-specific-s3-region"></a>Az összes gyűjtő másolása egy adott S3 régióban
+
+Használja ugyanazt az URL-szintaxist (`blob.core.windows.net`) olyan fiókokhoz, amelyek hierarchikus névtérrel rendelkeznek.
 
 |    |     |
 |--------|-----------|
 | **Szintaxis** | `azcopy copy 'https://s3-<region-name>.amazonaws.com/' 'https://<storage-account-name>.blob.core.windows.net' --recursive=true` |
 | **Példa** | `azcopy copy 'https://s3-rds.eu-north-1.amazonaws.com' 'https://mystorageaccount.blob.core.windows.net' --recursive=true` |
+| **Példa** (hierarchikus névtér)| `azcopy copy 'https://s3.amazonaws.com/mybucket/mydirectory' 'https://mystorageaccount.blob.core.windows.net/mycontainer/mydirectory' --recursive=true` |
 
 ## <a name="handle-differences-in-object-naming-rules"></a>Az objektumok elnevezési szabályai közötti különbségek kezelése
 
@@ -138,7 +155,7 @@ A AzCopy a következő lépéseket hajtja végre:
 
 További példákat a következő cikkekben talál:
 
-- [Ismerkedés a AzCopy](storage-use-azcopy-v10.md)
+- [Bevezetés az AzCopy használatába](storage-use-azcopy-v10.md)
 
 - [Adatok átvitele a AzCopy és a blob Storage szolgáltatással](storage-use-azcopy-blobs.md)
 

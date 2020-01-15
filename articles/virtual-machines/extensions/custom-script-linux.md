@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: da7ade4b4724f8d155deb1c109587a311d03375c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: dcc9e63eba605e87a14ba4f09c61a00e9629bd23
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931013"
+ms.locfileid: "75941213"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
@@ -87,7 +87,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       "skipDos2Unix":false,
@@ -98,11 +98,15 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
        "script": "<base64-script-to-execute>",
        "storageAccountName": "<storage-account-name>",
        "storageAccountKey": "<storage-account-key>",
-       "fileUris": ["https://.."]  
+       "fileUris": ["https://.."],
+        "managedIdentity" : "<managed-identity-identifier>"
     }
   }
 }
 ```
+
+>[!NOTE]
+> a managedIdentity tulajdonság **nem** használható a storageAccountName vagy a storageAccountKey tulajdonsággal együtt.
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
@@ -111,7 +115,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | apiVersion | 2019-03-01 | dátum |
 | közzétevő | Microsoft. számítás. bővítmények | sztring |
 | type | CustomScript | sztring |
-| typeHandlerVersion | 2.0 | int |
+| typeHandlerVersion | 2.1 | int |
 | fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
 | commandToExecute (például) | Python MyPythonScript.py \<My-param1 > | sztring |
 | szkriptet. | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
@@ -119,6 +123,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
+| managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 ### <a name="property-value-details"></a>Tulajdonság értékének részletei
 * `apiVersion`: a legnaprakészebb apiVersion a [erőforrás-kezelő](https://resources.azure.com/) vagy az Azure CLI használatával a következő paranccsal található meg `az provider list -o json`
@@ -129,6 +134,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 * `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
 * `storageAccountName`: (nem kötelező, karakterlánc) a Storage-fiók neve. Ha tárolási hitelesítő adatokat ad meg, az összes `fileUris`nak az Azure-Blobok URL-címeinek kell lennie.
 * `storageAccountKey`: (nem kötelező, karakterlánc) a Storage-fiók elérési kulcsa
+* `managedIdentity`: (nem kötelező, JSON-objektum) a fájl (ok) letöltésének [felügyelt identitása](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
+  * `clientId`: (nem kötelező, karakterlánc) a felügyelt identitás ügyfél-azonosítója
+  * `objectId`: (nem kötelező, karakterlánc) a felügyelt identitás objektumának azonosítója
 
 
 A következő értékek a nyilvános vagy a védett beállításokban állíthatók be, a bővítmény elveti az összes olyan konfigurációt, ahol az alábbi értékek a nyilvános és a védett beállításokban is be vannak állítva.
@@ -200,6 +208,45 @@ A CustomScript a következő algoritmust használja a parancsfájlok végrehajt�
  1. a dekódolású (és opcionálisan kibontott) érték írása a lemezre (/var/lib/waagent/Custom-script/#/script.sh)
  1. a szkript végrehajtása _/bin/sh-c/var/lib/waagent/Custom-script/#/script.sh. használatával
 
+####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
+
+A CustomScript (2.1.2-es verzió) támogatja a [felügyelt identitáson](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) alapuló RBAC, amely a "fileUris" beállításban megadott URL-címekről tölti le a fájl (oka) t. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok/tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
+
+Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
+
+Ha a rendszer által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, állítsa a "managedidentity" mezőt egy üres JSON-objektumra. 
+
+> Példa:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : {}
+> }
+> ```
+
+Ha a felhasználó által hozzárendelt identitást szeretné használni a cél virtuális gépen/VMSS, konfigurálja a "managedidentity" mezőt az ügyfél-AZONOSÍTÓval vagy a felügyelt identitás objektum-azonosítójával.
+
+> Példák:
+>
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232" }
+> }
+> ```
+> ```json
+> {
+>   "fileUris": ["https://mystorage.blob.core.windows.net/privatecontainer/script1.sh"],
+>   "commandToExecute": "sh script1.sh",
+>   "managedIdentity" : { "objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b" }
+> }
+> ```
+
+> [!NOTE]
+> a managedIdentity tulajdonság **nem** használható a storageAccountName vagy a storageAccountKey tulajdonsággal együtt.
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üzembe helyezhetők. Az előző szakaszban részletezett JSON-séma használható Azure Resource Manager sablonban az egyéni parancsfájl-bővítmény futtatásához Azure Resource Manager sablon központi telepítésekor. Az egyéni szkriptek kiterjesztését tartalmazó minta sablon itt található, [GitHub](https://github.com/Microsoft/dotnet-core-sample-templates/tree/master/dotnet-core-music-linux).
@@ -220,7 +267,7 @@ Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal is üz
   "properties": {
     "publisher": "Microsoft.Azure.Extensions",
     "type": "CustomScript",
-    "typeHandlerVersion": "2.0",
+    "typeHandlerVersion": "2.1",
     "autoUpgradeMinorVersion": true,
     "settings": {
       },

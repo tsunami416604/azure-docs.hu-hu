@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/18/2019
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: d198ee2e1fa8d3afeacda53c2ad6b91d69abca2a
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: 14e33bf77144e4cd5728ec85d3012dc0ba717ece
+ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74195767"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75945651"
 ---
 # <a name="deploy-and-configure-azure-firewall-in-a-hybrid-network-using-azure-powershell"></a>Az Azure Firewall üzembe helyezése és konfigurálása hibrid hálózatban az Azure PowerShell használatával
 
@@ -53,7 +53,7 @@ Ehhez a cikkhez helyileg kell futtatni a PowerShellt. Telepítenie kell a Azure 
 
 Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv megfelelően működjön:
 
-- Egy felhasználó által megadott útvonal (UDR) a küllő alhálózaton, amely a Azure Firewall IP-címére mutat alapértelmezett átjáróként. A BGP-útvonalpropagálásnak **letiltott** állapotúnak kell lennie ebben az útválasztási táblázatban.
+- Egy felhasználó által megadott útvonal (UDR) a küllő alhálózaton, amely a Azure Firewall IP-címére mutat alapértelmezett átjáróként. Ezen az útválasztási táblázatban **le kell tiltani** a virtuális hálózati átjáró útvonalának propagálását.
 - A központi átjáró alhálózatán található UDR a tűzfal IP-címére kell mutatnia a küllő hálózatok következő ugrásakor.
 
    Nem szükséges UDR a Azure Firewall alhálózaton, mivel a BGP-ből tanulja meg az útvonalakat.
@@ -355,7 +355,7 @@ Set-AzVirtualNetwork
 
 #Now create the default route
 
-#Create a table, with BGP route propagation disabled
+#Create a table, with BGP route propagation disabled. The property is now called "Virtual network gateway route propagation," but the API still refers to the parameter as "DisableBgpRoutePropagation."
 $routeTableSpokeDG = New-AzRouteTable `
   -Name 'UDR-DG' `
   -ResourceGroupName $RG1 `
@@ -493,7 +493,7 @@ Most futtassa újra az ellenőrzéseket. Ezúttal mindegyiknek sikertelennek kel
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

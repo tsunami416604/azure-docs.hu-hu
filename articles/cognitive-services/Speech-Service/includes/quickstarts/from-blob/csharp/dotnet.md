@@ -1,32 +1,25 @@
 ---
-title: 'Gyors útmutató: a blob Storage C# -ban tárolt beszéd felismerése – beszédfelismerési szolgáltatás'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: b8b650920c03b14c7d55aafd6ecdb43dafaafafe
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1022a744564ed61a90973f7bba3eb32e9a632b46
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468210"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942664"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
+> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=vs&pivots=programmming-language-csharp)
+> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?pivots=programmming-language-csharp)
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnet)
 
 ## <a name="open-your-project-in-visual-studio"></a>A projekt megnyitása a Visual Studióban
 
@@ -35,7 +28,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 1. Indítsa el a Visual Studio 2019-es kiadását.
 2. Töltse be a projektet, és nyissa meg `Program.cs`.
 
-## <a name="add-a-reference-to-newtonsoftjson"></a>NewtonSoftJSon mutató hivatkozás hozzáadása
+## <a name="add-a-reference-to-newtonsoftjson"></a>Hivatkozás hozzáadása a Newtonsoft. JSON fájlhoz
 
 1. A Megoldáskezelő kattintson a jobb gombbal a **HelloWorld** projektre, majd válassza a **NuGet-csomagok kezelése** lehetőséget a NuGet csomagkezelő megjelenítéséhez.
 
@@ -45,7 +38,7 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 1. A keresőmezőbe írja be a *newtonsoft. JSON* kifejezést, és válassza az **ENTER billentyűt**.
 
-1. A keresési eredmények közül válassza ki a **Newtonsoft. JSON** csomagot, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
+1. A keresési eredmények közül válassza ki a [**Newtonsoft. JSON**](https://www.nuget.org/packages/Newtonsoft.Json) csomagot, majd válassza a **telepítés** lehetőséget a legújabb stabil verzió telepítéséhez.
 
 1. A telepítés elindításához fogadja el az összes szerződést és licencet.
 
@@ -56,7 +49,9 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 [!code-csharp[](~/samples-cognitive-services-speech-sdk/quickstart/csharp/dotnet/from-blob/program.cs?range=6-43,138,277)]
-(`YourSubscriptionKey`, `YourServiceRegion`és `YourFileUrl` értékeit a saját értékeire kell cserélnie.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
+
 ## <a name="json-wrappers"></a>JSON-burkolók
 
 Mivel a REST API JSON formátumban fogadja a kérelmeket, és a JSON eredményeit is visszaküldi, csak karakterláncok használatával kezelhetjük őket, de ez nem ajánlott.

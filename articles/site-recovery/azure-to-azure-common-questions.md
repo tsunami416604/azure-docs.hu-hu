@@ -1,18 +1,16 @@
 ---
 title: Gyakori kérdések az Azure-beli virtuális gépek vész-helyreállításáról Azure Site Recovery
-description: Ez a cikk az Azure-beli virtuális gépeknek egy másik Azure-régióba való vész-helyreállításával kapcsolatos gyakori kérdésekre ad választ Azure Site Recovery
-author: carmonmills
+description: Ez a cikk az Azure-beli virtuális gépek vész-helyreállításával kapcsolatos gyakori kérdésekre ad választ Azure Site Recovery használatával.
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.author: carmonm
-ms.openlocfilehash: 2e1689a4f6d3a2271da868350263bef098562127
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75929903"
+ms.locfileid: "75941896"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
@@ -45,7 +43,7 @@ A Site Recovery csapat együttműködik az Azure Capacity Management csapatával
 Igen, Site Recovery támogatja a virtuális gépek vész-helyreállítását az Azure Disk Encryption (ADE) engedélyezésével. Ha engedélyezi a replikációt, a rendszer az összes szükséges lemez-titkosítási kulcsot és titkot átmásolja a forrás régiójából a felhasználói környezetben lévő célként megadott régióba. Ha nem rendelkezik megfelelő engedélyekkel, a rendszer használatra kész parancsfájlt adhat a biztonsági rendszergazdának a kulcsok és a titkos kódok másolásához.
 
 - Site Recovery támogatja az ADE használatát a Windows rendszerű Azure-beli virtuális gépekhez.
-- A site Recovery támogatja az ADE 0,1-es verzióját, amelynek sémája Azure Active Directory (HRE) és 1,1-es verzióval rendelkezik, HRE nélkül. [További információk](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
+- Site Recovery támogatja az ADE 0,1-es verzióját, amelynek sémája Azure Active Directory (HRE) és 1,1-es verzióval rendelkezik, HRE nélkül. [További információk](../virtual-machines/extensions/azure-disk-enc-windows.md#extension-schemata).
 - Az ADE 1,1-es verziója a Windows rendszerű virtuális gépeken felügyelt lemezeket kell használni.
 - [További](azure-to-azure-how-to-enable-replication-ade-vms.md) információ a titkosított virtuális gépek replikálásának engedélyezéséről.
 

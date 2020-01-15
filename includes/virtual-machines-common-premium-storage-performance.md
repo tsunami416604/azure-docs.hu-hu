@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/08/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 32c1ca95c01edec74f22fc051e453f2ac0dbd03f
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 88b19257a6a7d335e6a928a9eaf7526fbfd5b02e
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564765"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942712"
 ---
 ## <a name="application-performance-indicators"></a>Alkalmazás-teljesítménymutatók
 
@@ -126,7 +126,7 @@ A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a
 | **IO-méret** |A kisebb IO-méret magasabb IOPS eredményez. |Nagyobb IO-méret, amely magasabb átviteli sebességet eredményez. | &nbsp;|
 | **Virtuális gép mérete** |Használjon olyan virtuálisgép-méretet, amely IOPS nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amelynek átviteli korlátja nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amely az alkalmazásra vonatkozó követelménynél nagyobb skálázási korlátokat biztosít. |
 | **Lemez mérete** |Használjon olyan méretű IOPS, amely nagyobb, mint az alkalmazásra vonatkozó követelmény. |Az alkalmazásra vonatkozó követelménynél nagyobb méretű adatátviteli korláttal rendelkező lemezeket használjon. |Használjon olyan méretű lemezt, amely az alkalmazás követelményeinél nagyobb léptéket biztosít. |
-| **VIRTUÁLIS gépek és lemezek méretezési korlátai** |A kiválasztott virtuálisgép-méret IOPS-korlátjának nagyobbnak kell lennie, mint az ahhoz csatolt Premium Storage-lemezek által vezérelt teljes IOPS. |A kiválasztott virtuális gép maximális átviteli sebességének nagyobbnak kell lennie, mint a Premium Storage-lemezek által csatlakoztatott teljes átviteli sebesség. |A kiválasztott virtuálisgép-méret skálázási korlátjának nagyobbnak kell lennie a csatolt Premium Storage-lemezek teljes méretezési korlátainál. |
+| **VIRTUÁLIS gépek és lemezek méretezési korlátai** |A kiválasztott virtuálisgép-méret IOPS-korlátjának nagyobbnak kell lennie, mint a IOPS csatlakoztatott tárolók teljes száma. |A kiválasztott virtuális gép maximális átviteli sebességének nagyobbnak kell lennie, mint a Premium Storage-lemezek által csatlakoztatott teljes átviteli sebesség. |A kiválasztott virtuálisgép-méret skálázási korlátjának nagyobbnak kell lennie a csatolt Premium Storage-lemezek teljes méretezési korlátainál. |
 | **Lemezes gyorsítótárazás** |A magasabb olvasási IOPS érdekében engedélyezze az írásvédett gyorsítótárat a prémium szintű Storage-lemezeken. | &nbsp; |A prémium szintű Storage-lemezek írásvédett gyorsítótárazásának engedélyezése kész, nagy mennyiségű olvasási késést biztosító műveletekkel. |
 | **Lemezek csíkozása** |Több lemezt is használhat, és összekapcsolhatja őket, hogy egy kombinált, magasabb szintű IOPS és adatátviteli korlátot kapjon. A virtuális gépek összesített korlátjának nagyobbnak kell lennie, mint a csatlakoztatott prémium szintű lemezek összesített korlátai. | &nbsp; | &nbsp; |
 | **Sáv mérete** |Kisebb szalagos méret a OLTP-alkalmazásokban látott véletlenszerű, kisméretű i/o-mintákhoz. Például a 64 KB-os sáv méretének használata SQL Server OLTP alkalmazáshoz. |Nagyobb szalagos méret az adatraktár-alkalmazásokban látott szekvenciális, nagy i/o-mintázathoz. Például 256 KB-os sáv méretet használhat SQL Server adatraktár-alkalmazáshoz. | &nbsp; |

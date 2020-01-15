@@ -1,21 +1,18 @@
 ---
-title: A Azrue virtuális gépek folyamatos replikálásának megoldása Azure Site Recovery
-description: Az Azure Virtual Machines szolgáltatás vész-helyreállításra való replikálásával kapcsolatos hibák és problémák elhárítása
-services: site-recovery
-author: carmonmills
+title: Azure-beli virtuális gépek replikálásának hibája Azure Site Recovery
+description: Az Azure-beli virtuális gép vész-helyreállítással való replikálásának elhárítása Azure Site Recovery
+author: sideeksh
 manager: rochakm
-ms.service: site-recovery
 ms.topic: troubleshooting
 ms.date: 8/2/2019
-ms.author: carmonm
-ms.openlocfilehash: b738ffc36334fc540582ba29e803eb2790e2119e
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: fe300c1efc8f5802397a59296f8b127c321bd871
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930738"
+ms.locfileid: "75941568"
 ---
-# <a name="troubleshoot-ongoing-problems-in-azure-to-azure-vm-replication"></a>Az Azure – Azure virtuális gépek replikálásának folyamatban lévő problémáinak elhárítása
+# <a name="troubleshoot-replication-in-azure-vm-disaster-recovery"></a>Az Azure-beli virtuális gép vész-helyreállítási replikációjának elhárítása
 
 Ez a cikk az Azure-beli virtuális gépek egyik régióból egy másik régióba való replikálásával és helyreállításával kapcsolatos gyakori problémákat ismerteti Azure Site Recovery. Emellett azt is ismerteti, hogyan lehet elhárítani ezeket. További információ a támogatott konfigurációkról: Azure-beli [virtuális gépek replikálásának támogatási mátrixa](site-recovery-support-matrix-azure-to-azure.md).
 
@@ -67,7 +64,7 @@ Ha egy tüske alkalmi adattörésből származik, és az adatváltozások arány
     - Navigáljon az érintett replikált gép lemezek paneljére, és másolja a replika lemez nevét
     - Navigáljon a replika felügyelt lemezéhez
     - Előfordulhat, hogy megjelenik egy szalagcím az Áttekintés panelen, amely azt jelzi, hogy egy SAS URL-cím lett létrehozva. Kattintson erre a szalagcímre, és szakítsa meg az exportálást. Ha nem látja a szalagcímet, hagyja figyelmen kívül ezt a lépést.
-    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy az ASR támogassa a forrás lemezen megfigyelt adatforgalom mértékét.
+    - Amint visszavonják a SAS URL-címét, lépjen a felügyelt lemez konfiguráció paneljére, és növelje a méretet, hogy a Site Recovery támogassa a megfigyelt adatforgalom mértékét a forrásoldali lemezen
 
 ## <a name="Network-connectivity-problem"></a>Hálózati kapcsolati problémák
 

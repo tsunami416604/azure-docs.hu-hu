@@ -5,14 +5,14 @@ services: expressroute
 author: charwen
 ms.service: expressroute
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 01/13/2018
 ms.author: charwen
-ms.openlocfilehash: b14b8a9a2bc43c33095bf07e7fb7ebcc2d6c1ffa
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 9f32eb439872de9e4687d046745c03bafd86b2fa
+ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769523"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75941743"
 ---
 # <a name="reset-expressroute-circuit-peerings"></a>ExpressRoute-áramköri társítások alaphelyzetbe állítása
 
@@ -20,7 +20,7 @@ Ez a cikk bemutatja, hogyan tilthatja le és engedélyezheti egy ExpressRoute-á
 
 Van néhány olyan forgatókönyv, ahol hasznos lehet a ExpressRoute-társítások alaphelyzetbe állítása.
 * Tesztelje a vész-helyreállítási tervét és megvalósítását. Tegyük fel, hogy két ExpressRoute-áramkörrel rendelkezik. Letilthatja egy áramkör társításait, és kényszerítheti a hálózati forgalmat, hogy átadja a feladatátvételt a másik áramkörnek.
-* Engedélyezze a kétirányú továbbítási észlelést (BFD) az ExpressRoute-áramkör Azure-beli privát hálózatán. A BFD alapértelmezés szerint engedélyezve van, ha a ExpressRoute-áramkör létrehozása 2018. augusztus 1-től történik. Ha az áramkört korábban már létrehozták, a BFD nem volt engedélyezve. A BFD engedélyezéséhez tiltsa le a társítást, és engedélyezze újra. Érdemes megjegyezni, hogy a BFD csak az Azure-beli privát kiszolgálókon támogatott.
+* Engedélyezze a kétirányú továbbítási észlelést (BFD) a ExpressRoute-áramkör Azure-beli privát vagy Microsoft-hálózatán. A BFD alapértelmezés szerint engedélyezve van az Azure-beli privát kapcsolatok esetében, ha a ExpressRoute-áramkört a 1 2018-es és a Microsoft-partneri kapcsolat alapján hozza létre, ha a ExpressRoute-áramkört január 10 2020 után hozták létre. Ha az áramkört korábban már létrehozták, a BFD nem volt engedélyezve. A BFD engedélyezéséhez tiltsa le a társítást, és engedélyezze újra. 
 
 ### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
 

@@ -1,32 +1,26 @@
 ---
-title: 'Rövid útmutató: a blob Storage-ban tárolt beszédfelismerés felismerése, Java-Speech Service'
-titleSuffix: Azure Cognitive Services
-description: TBD
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
-ms.subservice: speech-service
 ms.topic: include
-ms.date: 10/28/2019
-ms.author: erhopf
-zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e110c87835cdf517bdd54adda0ef6d9168a44d52
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/13/2020
+ms.author: dapine
+ms.openlocfilehash: 1225a1e528b32401f350374fb9393c52225c49e8
+ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75468132"
+ms.lasthandoff: 01/14/2020
+ms.locfileid: "75942650"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt ügyeljen a következőre:
 
 > [!div class="checklist"]
+> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=jre&pivots=programmming-language-java)
+> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?pivots=programmming-language-java)
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [Forrásfájl feltöltése Azure-blobba](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-portal)
-> * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnet)
+
 
 ## <a name="open-your-project-in-eclipse"></a>A projekt megnyitása az Eclipse-ben
 
@@ -45,7 +39,8 @@ Nyissa meg a Pom. xml fájlt, és adja hozzá a következő hivatkozást: [!code
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/from-blob/src/quickstart/Main.java?range=1-13,95-105,206-207)]
-(`YourSubscriptionKey`, `YourServiceRegion`és `YourFileUrl` értékeit a saját értékeire kell cserélnie.)
+
+[!INCLUDE [placeholder-replacements](../placeholder-replacement.md)]
 
 ## <a name="json-wrappers"></a>JSON-burkolók
 
