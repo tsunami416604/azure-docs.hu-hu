@@ -77,7 +77,7 @@
         - name: Adaptív sávszélességi skála automatikus létrehozása
           href: autogen-bitrate-ladder.md
         - name: Tartalomfüggő kódolás
-          href: cae-experimental.md
+          href: content-aware-encoding.md
     - name: Tartalomelemzés (Video Indexer)
       items:
         - name: Áttekintés

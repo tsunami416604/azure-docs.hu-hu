@@ -666,7 +666,7 @@
         - name: Biztonság
           items:
             - name: Tárolóbiztonság – áttekintés
-              href: ../common/storage-security-guide.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
             - name: Hozzáférés-vezérlés
               href: data-lake-storage-access-control.md
         - name: Naplózás
