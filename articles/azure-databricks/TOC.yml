@@ -730,6 +730,9 @@
                 - name: Hyperopt és HorovodRunner
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-distributed-ml
                   maintainContext: true
+                - name: Ajánlott eljárások a Hyperopthoz
+                  href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-best-practices
+                  maintainContext: true
                 - name: Modell keresése elosztott Hyperopttal
                   href: /azure/databricks/applications/machine-learning/automl/hyperopt/hyperopt-model-selection
                   maintainContext: true
@@ -993,6 +996,12 @@
             - name: Példa titkos munkafolyamatra
               href: /azure/databricks/security/secrets/example-secret-workflow
               maintainContext: true
+        - name: A fürt feldolgozó csomópontjai közötti forgalom titkosítása
+          href: /azure/databricks/security/encrypt-otw
+        - name: Felhasználó által kezelt kulcsok engedélyezése notebookokhoz
+          href: /azure/databricks/security/customer-managed-key-notebook
+        - name: Felhasználó által kezelt kulcsok engedélyezése DBFS-hez
+          href: /azure/databricks/security/customer-managed-keys-dbfs
     - name: Adminisztráció
       items:
         - name: Az adminisztráció áttekintése

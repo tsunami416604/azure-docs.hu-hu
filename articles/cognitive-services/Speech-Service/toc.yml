@@ -7,7 +7,7 @@
       href: overview.md
     - name: Nyelvi és régiós támogatás
       href: language-support.md
-      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code'
+      displayName: 'languages,locales,region,voice,gender,language code,locale,locale code,neural voice,standard voice'
 - name: Diktálás
   expanded: false
   items:
@@ -27,6 +27,8 @@
       items:
         - name: Beszédfelismerési forrásnyelv módosítása
           href: how-to-specify-source-language.md
+        - name: Beszédfelismerési mód kiválasztása
+          href: how-to-choose-recognition-mode.md
         - name: Pontosság javítása Custom Speech segítségével
           href: how-to-custom-speech.md
         - name: Pontosság javítása kifejezéslistákkal
@@ -102,6 +104,7 @@
           href: speech-synthesis-markup.md
         - name: Kimenet javítása a Custom Voices használatával
           href: how-to-custom-voice.md
+          displayName: custom voice
         - name: Beszédszintézis a Long Audio API-val
           href: long-audio-api.md
         - name: Beszédszintézis használata Docker-tárolókkal
@@ -363,6 +366,7 @@
           items:
             - name: Bevezetés a Custom Voice szolgáltatásba
               href: how-to-custom-voice.md
+              displayName: 'custom voice, neural voice'
             - name: Adatok előkészítése
               href: how-to-custom-voice-prepare-data.md
             - name: Custom Voice-modellek létrehozása és használata

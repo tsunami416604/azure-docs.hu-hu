@@ -22,7 +22,7 @@
       href: release-notes-10-0-10106-0.md
     - name: Gen2 régió frissítésének ütemezése
       href: gen2-migration-schedule.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Létrehozás és csatlakozás
@@ -225,6 +225,8 @@
           href: sql-data-warehouse-workload-importance.md
         - name: Számítási feladatok elkülönítése
           href: sql-data-warehouse-workload-isolation.md
+        - name: Számítási feladatok kezelésének felügyelete
+          href: sql-data-warehouse-workload-management-portal-monitor.md
         - name: Memória- és egyidejűségi korlátok
           href: memory-concurrency-limits.md
         - name: Erőforrásosztályok

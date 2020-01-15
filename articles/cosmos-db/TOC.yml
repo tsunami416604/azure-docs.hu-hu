@@ -869,6 +869,9 @@
         - name: Kérelemegység-díjszabás keresése
           displayName: 'request units, RUs, RU, charge, consumption'
           href: find-request-unit-charge.md
+        - name: Skálázás az Azure Functions időzítőjével
+          displayName: 'request units, RUs, RU, timer'
+          href: scale-on-schedule.md
     - name: A tárolók és elemek használata
       items:
         - name: Cosmos DB-adatok használata

@@ -31,9 +31,9 @@
         - name: Java
           href: event-hubs-java-get-started-send.md
         - name: Python
-          href: event-hubs-python-get-started-send.md
+          href: get-started-python-send-v2.md
         - name: Node.js
-          href: event-hubs-node-get-started-send.md
+          href: get-started-node-send-v2.md
         - name: Indítás
           href: event-hubs-go-get-started-send.md
         - name: C (csak küldés)
@@ -49,7 +49,7 @@
         - name: Az Event Hubs Capture engedélyezése Resource Manager-sablonnal
           href: event-hubs-resource-manager-namespace-event-hub-enable-capture.md
         - name: Event Hubs-adatok rögzítése Python használatával
-          href: event-hubs-capture-python.md
+          href: get-started-capture-python-v2.md
     - name: Streamelés az Apache Kafkához készült Event Hubsba
       href: event-hubs-quickstart-kafka-enabled-event-hubs.md
     - name: Dedikált fürt létrehozása
@@ -114,10 +114,22 @@
           href: event-hubs-get-connection-string.md
         - name: Események közvetítése különböző protokollokat használó alkalmazások között
           href: event-hubs-exchange-events-different-protocols.md
-        - name: .NET programozási útmutató
-          href: event-hubs-programming-guide.md
-        - name: 'Események küldése, fogadása és rögzítése a Python használatával'
-          href: event-hubs-python.md
+        - name: Programozási útmutatók
+          items:
+            - name: Python
+              href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/README.md'
+            - name: JavaScript
+              href: 'https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/eventhubs/azure-messaging-eventhubs/README.md'
+            - name: .NET programozási útmutató
+              href: event-hubs-programming-guide.md
+        - name: A rögzített adatok olvasása Pythonnal (örökölt)
+          href: event-hubs-capture-python.md
+        - name: Események küldése és fogadása (örökölt)
+          items:
+            - name: Python (örökölt)
+              href: event-hubs-python-get-started-send.md
+            - name: Node.js (örökölt)
+              href: event-hubs-node-get-started-send.md
     - name: Adatok feldolgozása
       items:
         - name: Adatok feldolgozása az Azure Stream Analytics használatával
@@ -193,7 +205,15 @@
         - name: Microsoft.Azure.Management.EventHub
           href: /dotnet/api/microsoft.azure.management.eventhub
     - name: Node.js
-      href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+      items:
+        - name: Áttelepítés a 2. verzióról az 5. verzióra
+          href: 'https://github.com/Azure/azure-sdk-for-js/blob/master/sdk/eventhub/event-hubs/migrationguide.md'
+        - name: API-referencia
+          href: /javascript/api/overview/azure/event-hub?view=azure-node-latest
+    - name: Python
+      items:
+        - name: Áttelepítés a 1. verzióról az 5. verzióra
+          href: 'https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md'
     - name: REST
       href: /rest/api/eventhub
     - name: Resource Manager-sablon

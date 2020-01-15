@@ -11,12 +11,12 @@ metadata:
   services: cognitive-services
   title: A QnA Maker dokumentációja
   description: A QnA Maker egy olyan felhőalapú API-szolgáltatás, amely egy beszélgetés típusú, kérdésekből és válaszokból álló réteget hoz létre az adatok alapján. A QnA Maker lehetővé teszi egy kérdés-válasz szolgáltatás működtetését olyan félig strukturált tartalomból, mint a GYIK-dokumentumok, URL-címek és termékútmutatók. A QnA Maker szolgáltatás egyezteti a felhasználók természetes nyelvi kérdéseit a Tudásbázisban szereplő kérdésekkel és válaszokkal, majd a lehető legjobban megfelelő választ adja vissza.
-  ms.openlocfilehash: f88336107203a166b61df98c55b680f1f11f79f6
-  ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+  ms.openlocfilehash: 03518a1d7156d57424b28980d05bb03bfef56503
+  ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/23/2019
-  ms.locfileid: "74422641"
+  ms.lasthandoff: 01/14/2020
+  ms.locfileid: "75945606"
 landingContent:
 - title: A QnA Maker bemutatása
   linkLists:
@@ -68,8 +68,8 @@ landingContent:
       url: quickstarts/get-answer-from-knowledge-base-using-url-tool.md
     - text: 'Gyorsútmutató: A REST és a C# használata'
       url: quickstarts/get-answer-from-knowledge-base-csharp.md
-    - text: 'Gyorsútmutató: A NuGet és a C# használata'
-      url: quickstarts/create-publish-kb-csharp-sdk.md#generate-an-answer-from-the-knowledge-base
+    - text: 'Gyorsútmutató: Az SDK használata'
+      url: quickstarts/quickstart-sdk.md
   - linkListType: how-to-guide
     links:
     - text: Metaadatokkal rendelkező válaszok lekérése

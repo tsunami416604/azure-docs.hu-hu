@@ -4,31 +4,37 @@
   items:
     - name: Mi az a Modern olvasó?
       href: Overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: 'A C# használata'
       href: Quickstart.md
+    - name: A Node.js használata
+      href: quickstart-nodejs.md
     - name: A Swift használata (iOS)
       href: ios-quickstart.md
 - name: Oktatóanyagok
   items:
-    - name: A Modern olvasó indítása (Node.js)
-      href: tutorial-nodejs.md
     - name: A Modern olvasó indítása (Python)
       href: tutorial-python.md
-    - name: Kép küldése a Modern olvasónak (Swift)
-      href: tutorial-ios-picture-immersive-reader.md
 - name: Útmutató
   items:
-    - name: Hitelesítés Azure Active Directory-fiókkal
-      href: azure-active-directory-authentication.md
+    - name: Erőforrás létrehozása a Modern olvasóhoz
+      href: how-to-create-immersive-reader.md
+    - name: A cookie-kra vonatkozó irányelv beállítása
+      href: how-to/set-cookie-policy.md
+    - name: Matematikai jelek megjelenítése
+      href: how-to/display-math.md
+    - name: A Modern olvasó indítása HTML-tartalommal
+      href: how-to-launch-with-html.md
+    - name: A Modern olvasó gombjának testreszabása
+      href: how-to-customize-launch-button.md
+    - name: A hitelesítési jogkivonat gyorsítótárazása
+      href: how-to-cache-token.md
 - name: Referencia
   items:
     - name: SDK-referencia
       href: reference.md
-    - name: iOS SDK-referencia
-      href: ios-reference.md
 - name: További források
   items:
     - name: Azure-ütemterv

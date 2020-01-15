@@ -44,6 +44,8 @@
       href: openvpn-azure-ad-mfa.md
     - name: Azure AD-hitelesítés konfigurálása felhasználói VPN-hez (előzetes verzió)
       href: virtual-wan-point-to-site-azure-ad.md
+    - name: Több alkalmazásra kiterjedő Azure AD-hitelesítés konfigurálása felhasználói VPN-hez (előzetes verzió)
+      href: openvpn-azure-ad-tenant-multi-app.md
     - name: Automatizálás konfigurálása (virtuális WAN-partnerek)
       href: virtual-wan-configure-automation-providers.md
     - name: Útválasztás konfigurálása
