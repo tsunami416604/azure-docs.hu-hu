@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 03/28/2018
 ms.author: wgries
 ms.custom: include file
-ms.openlocfilehash: a09e9206b3ecd23a6208572a88c16b149033f123
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: d4054760c77a7a70b7ed84a9f95b88a3bcf2bda3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "68699451"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021156"
 ---
-A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. A tárfiókok korlátlan számú megosztást tartalmazhatnak, Egy megosztás korlátlan számú fájl tárolására használható, egészen a tárfiók kapacitásának korlátjáig.
+A tárfiókok az Azure-fájlmegosztások vagy más tárolási erőforrások, például blobok vagy üzenetsorok üzembe helyezéséhez használható tárolók közös készletei. A tárfiókok korlátlan számú megosztást tartalmazhatnak, a megosztásokban pedig tetszőleges számú fájlt tárolhat, egészen a tárfiókja kapacitásának korlátjáig.
 
 Tárfiók létrehozása:
 
@@ -24,7 +24,7 @@ Tárfiók létrehozása:
     ![Az erőforrás-keresési párbeszédpanelen megjelenő tárfiókbejegyzés kinézetének képernyőképe](../articles/storage/files/media/storage-how-to-use-files-portal/create-storage-account-1.png)
 
 3. A **Név** mezőbe írja be a *mystorageacct* kifejezést, majd írjon utána néhány véletlenszerű számot, amíg meg nem jelenik a név egyediségét jelző zöld pipa. A tárfiók nevének globálisan egyedinek kell lennie, és csak kisbetűkből állhat. Jegyezze fel a tárfiók nevét. Erre később még szüksége lesz. 
-4. Az **Üzembe helyezési modell** mezőben hagyja meg az alapértelmezett **Erőforrás-kezelő** értéket. További információ az Azure Resource Manager és a klasszikus üzembe helyezési modell közötti különbségekről: [Az üzembe helyezési modellek és az erőforrások állapotának ismertetése](../articles/azure-resource-manager/resource-manager-deployment-model.md).
+4. Az **Üzembe helyezési modell** mezőben hagyja meg az alapértelmezett **Erőforrás-kezelő** értéket. További információ az Azure Resource Manager és a klasszikus üzembe helyezési modell közötti különbségekről: [Az üzembe helyezési modellek és az erőforrások állapotának ismertetése](../articles/azure-resource-manager/management/deployment-models.md).
 5. A **Fiók típusa** mezőben válassza a **StorageV2** lehetőséget. További információ a különböző típusú tárfiókokkal kapcsolatban: [Az Azure-tárfiókok ismertetése](../articles/storage/common/storage-account-options.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json).
 6. A **Teljesítmény** mezőben hagyja meg a **Standard szintű Storage** alapértelmezett értéket. Az Azure Files jelenleg csak a Standard szintű tárolást támogatja, és a fájlmegosztás akkor is Standard szintű tárolóban lesz tárolva, ha az Azure Premium Storage lehetőséget választja.
 7. A **Replikáció** mezőben válassza a **Helyileg redundáns tárolás (LRS)** lehetőséget. 

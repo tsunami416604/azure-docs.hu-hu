@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 9ecffc25461a909d47329d536d1c19724b3c22ac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718069"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982182"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -38,7 +38,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
    ![Tárhely kiválasztása](./media/blob-event-quickstart-portal/create-storage.png)
 
-1. Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre. További információ: [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md).
+1. Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre. További információ: [Tárfiók létrehozása](../storage/common/storage-account-create.md).
 
    ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
 
@@ -136,7 +136,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

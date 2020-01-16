@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.date: 12/02/2019
 ms.author: sngun
 ms.subservice: tables
-ms.openlocfilehash: 4cfb44964b06c811d6d587f2a406cdcfb8048a42
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 63495206ffffc57a895a9ec1efc88410a02ea097
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793334"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979953"
 ---
 # <a name="quickstart-create-an-azure-storage-table-in-the-azure-portal"></a>Rövid útmutató: Azure Storage-tábla létrehozása az Azure Portalon 
 
@@ -23,7 +23,7 @@ Ez a rövid útmutató ismerteti, hogyan hozhat létre táblákat és entitások
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez előbb hozzon létre egy Azure-tárfiókot az [Azure Portalon](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-quickstart-create-account.md) ismertető szakaszt.
+A rövid útmutató elvégzéséhez előbb hozzon létre egy Azure-tárfiókot az [Azure Portalon](https://portal.azure.com/#create/Microsoft.StorageAccount-ARM). A fiók létrehozásával kapcsolatos útmutatóért lásd a [tárfiók létrehozását](../common/storage-account-create.md) ismertető szakaszt.
 
 ## <a name="add-a-table"></a>Tábla hozzáadása
 
@@ -31,15 +31,15 @@ Az Azure Portal Table Service már táblák létrehozására is használható.
 
 1. Kattintson az Áttekintés > Táblák elemre.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
+   ![Azure portál](media/table-storage-quickstart-portal/table-storage-quickstart-01.png)
 
 2. Kattintson a **+ Tábla** elemre.
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
+   ![Azure portál](media/table-storage-quickstart-portal/table-storage-quickstart-02.png)
 
 3. Adjon nevet a táblának a **Tábla neve** mezőben, majd kattintson az **OK** gombra. 
 
-   ![Azure Portal](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
+   ![Azure portál](media/table-storage-quickstart-portal/table-storage-quickstart-03.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -5,12 +5,12 @@ ms.devlang: azurecli
 ms.topic: quickstart
 ms.date: 05/14/2019
 ms.custom: mvc
-ms.openlocfilehash: 7218b496a3cd94362d27b1883fa5055b819768c3
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 721213dcdd4751de936968b7e67a4b5d31b8d9ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74171939"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980652"
 ---
 # <a name="back-up-a-virtual-machine-in-azure-with-resource-manager-template"></a>Virtuális gépek biztonsági mentése az Azure-ban Resource Manager-sablonnal
 
@@ -40,7 +40,7 @@ New-AzResourceGroup -Name $resourceGroupName -Location $location
 New-AzResourceGroupDeployment -ResourceGroupName $resourceGroupName -TemplateUri $templateUri -projectName $projectName -adminUsername $adminUsername -adminPassword $adminPassword -dnsLabelPrefix $dnsPrefix
 ```
 
-A Azure PowerShell a Resource Manager-sablon üzembe helyezéséhez használható ebben a rövid útmutatóban. A [Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md), az [Azure CLI](../azure-resource-manager/resource-group-template-deploy-cli.md)és a [REST API](../azure-resource-manager/resource-group-template-deploy-rest.md) is használható sablonok telepítéséhez.
+A Azure PowerShell a Resource Manager-sablon üzembe helyezéséhez használható ebben a rövid útmutatóban. A [Azure Portal](../azure-resource-manager/templates/deploy-portal.md), az [Azure CLI](../azure-resource-manager/templates/deploy-cli.md)és a [REST API](../azure-resource-manager/templates/deploy-rest.md) is használható sablonok telepítéséhez.
 
 ## <a name="start-a-backup-job"></a>Biztonsági mentési feladat indítása
 

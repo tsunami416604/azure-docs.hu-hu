@@ -2,20 +2,20 @@
 title: Azure rövid útmutató – Batch-feladat futtatása – .NET
 description: A Batch .NET ügyféloldali függvénytárával gyorsan futtathat egy Azure Batch C# -minta feladatot és feladatot egy alkalmazásból.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 11/29/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 613f771af71c4f03f7ccf9283b98c09836c312cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a11bc1d7b9c1f3443e9d066ac18d172ff027169e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390319"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029392"
 ---
 # <a name="quickstart-run-your-first-azure-batch-job-with-the-net-api"></a>Rövid útmutató: Az első Azure Batch-feladat futtatása a .NET API használatával
 

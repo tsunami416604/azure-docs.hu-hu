@@ -2,21 +2,21 @@
 title: Azure rövid útmutató – Batch-feladat futtatása – portál
 description: Rövid áttekintést kaphat arról, hogyan futtathat Batch-feladatokat az Azure Portalon.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: quickstart
 ms.date: 07/03/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 92f8499a10c07e7d5ea74e49c374cef192b8a47f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 294d1658559dd426245cf66a47a8791f8b370533
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094125"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029412"
 ---
-# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Gyors útmutató: Futtassa az első batch-feladatot a Azure Portal
+# <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
 
 Ez a rövid útmutató ismerteti, hogyan lehet létrehozni az Azure Portalon Batch-fiókot, számítási csomópontok (virtuális gépek) *készletét*, valamint egy olyan *feladatot*, amely alapszintű *tevékenységeket* futtat a készleten. A rövid útmutatóból megismerheti a Batch szolgáltatás fő fogalmait, és készen áll majd a Batch szolgáltatás használatára realisztikusabb számítási feladatokkal, nagyobb léptékben.
 
@@ -56,10 +56,10 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
 
 3. Az **Operációs rendszer** területen válassza ki az alábbi beállításokat (más beállításokat is kipróbálhat).
   
-   |Beállítás  |Value  |
+   |Beállítás  |Value (Díj)  |
    |---------|---------|
    |**Rendszerkép típusa**|Marketplace (Linux/Windows)|
-   |**Publisher**     |MicrosoftWindowsServer|
+   |**Közzétevő**     |MicrosoftWindowsServer|
    |**Ajánlat**     |WindowsServer|
    |**Termékváltozat**     |2012-R2-Datacenter-smalldisk|
 
@@ -67,7 +67,7 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
 
 4. Görgessen le a **Csomópontméret** és a **Méretezés** beállítás megadásához. A javasolt csomópontméret jó teljesítmény/költség arányt kínál a jelen rövid példában.
   
-   |Beállítás  |Value  |
+   |Beállítás  |Value (Díj)  |
    |---------|---------|
    |**Csomópont tarifacsomagja**     |Standard_A1|
    |**Dedikált célcsomópontok**     |2|
@@ -108,7 +108,7 @@ Az első tevékenység létrehozása:
 
 3. A **parancssorban** adja meg a következő parancsot: `cmd /c "set AZ_BATCH & timeout /t 90 > NUL"`. Tartsa meg az alapértelmezett értékeket a többi beállításnál, és válassza az **OK** lehetőséget.
 
-   ![Feladat létrehozása][task_create]
+   ![Tevékenység létrehozása][task_create]
 
 Tevékenység létrehozása után a Batch várólistára helyezi azt a készleten való futtatáshoz. Amint egy csomópont készen áll a futtatásra, a rendszer futtatja a tevékenységet.
 
@@ -130,7 +130,7 @@ A készletért díjat számítunk fel, amíg a csomópontok futnak, még akkor i
 
 Törölje az erőforráscsoportot, a Batch-fiókot és az összes kapcsolódó erőforrást, ha már nincs rá szüksége. Ehhez válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és válassza az **Erőforráscsoport törlése** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Batch-fiókot, egy Batch-készletet és egy Batch-feladatot hozott létre. A feladat mintatevékenységeket futtatott, Ön pedig megtekintette az egyik csomóponton létrejött kimenetet. Most, hogy megismerkedett a Batch szolgáltatás fő fogalmaival, készen áll a Batch szolgáltatás realisztikusabb számítási feladatokkal, nagyobb léptékben történő kipróbálására. Az Azure Batchről további információt az Azure Batch-oktatóanyagokban találhat. 
 

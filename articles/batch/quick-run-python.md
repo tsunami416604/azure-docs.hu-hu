@@ -2,22 +2,22 @@
 title: 'Gyors útmutató: Azure Batch-feladatok futtatása – Python API'
 description: A Batch Python ügyféloldali kódtár használatával gyorsan futtathat egy Azure Batch-minta feladatot és feladatot. Ismerje meg a Batch szolgáltatás legfontosabb fogalmait.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/27/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom:
 - seo-python-october2019
 - mvc
-ms.openlocfilehash: ab628ebe81592e7d5b2e6c79de5a62b368ee772d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3e87649e82bba295d8baaf06a71ace222ceeb0be
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75390239"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029384"
 ---
 # <a name="quickstart-run-your-first-batch-job-with-the-python-api"></a>Rövid útmutató: Az első Batch-feladat futtatása a Python API használatával
 

@@ -3,12 +3,12 @@ title: Function-alkalmazás létrehozása Linux rendszeren a Azure Portal
 description: Ismerje meg, hogyan hozhatja létre az első Azure-függvényét kiszolgáló nélküli végrehajtáshoz az Azure Portalon.
 ms.topic: quickstart
 ms.date: 02/28/2019
-ms.openlocfilehash: 1bae205c5d0466d06b499711c7af5bf7f3bbd88f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7689b24a4f9bf17d495917bbf4078d6e5fe4fcff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769744"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971452"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Function-alkalmazás létrehozása Linux rendszeren egy Azure App Service tervben
 
@@ -44,7 +44,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     | **[Szolgáltatási csomag](functions-scale.md)** | App Service-csomag | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Ha App Service csomagot futtat, akkor szabályozhatja a [Function alkalmazás skálázását](functions-scale.md).  |
     | **App Service-csomag/Hely** | Csomag létrehozása | Válassza az **új létrehozása** elemet, és adjon meg egy **app Service-csomag** nevét. Válasszon egy **helyet** az Ön közelében lévő [régióban](https://azure.microsoft.com/regions/) vagy a funkciókhoz hozzáférő egyéb szolgáltatások közelében. Válassza ki a kívánt **[árképzési szintet](https://azure.microsoft.com/pricing/details/app-service/linux/)** . <br/>A Linux és a Windows rendszerű függvények alkalmazásai nem futtathatók ugyanabban a App Service tervben. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
-    | **[Tárolás](../storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](functions-scale.md#storage-account-requirements). |
+    | **[Tárolás](../storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](functions-scale.md#storage-account-requirements). |
     | **[Application Insights](functions-monitoring.md)** | Engedélyezve | A Application Insights alapértelmezés szerint le van tiltva. Javasoljuk, hogy most engedélyezze a Application Insights integrációt, és válasszon egy üzemeltetési helyet a App Service-csomag helyének közelében. Ha ezt később szeretné elvégezni, tekintse meg a [Azure functions figyelése](functions-monitoring.md)című témakört.  |
 
 3. Kattintson a **Létrehozás** elemre a függvényalkalmazás kiépítéséhez és üzembe helyezéséhez.

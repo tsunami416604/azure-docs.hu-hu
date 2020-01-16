@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: quickstart
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: bc8141b951dbc27972dc2efb6819a7c0137ea7fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 491ba986c6ca71be0bc5b13e2f9f0717ffec99a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459934"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028892"
 ---
 # <a name="quickstart-create-a-private-endpoint-using-azure-portal"></a>Rövid útmutató: privát végpont létrehozása Azure Portal használatával
 
@@ -162,7 +162,7 @@ Ebben a szakaszban létre fog hozni egy SQL-kiszolgálót, és hozzá kell adnia
     | ------- | ----- |
     |**HÁLÓZATI**| |
     | Virtuális hálózat| Válassza a *MyVirtualNetwork*lehetőséget. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
+    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
     |**MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
     |saját DNS zóna |Válassza az *(új) privatelink. database. Windows. net* elemet |
@@ -199,9 +199,9 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 
 ## <a name="access-the-sql-database-server-privately-from-the-vm"></a>Az SQL Database-kiszolgáló magánhálózati elérése a virtuális gépről
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+1. A *myVM*távoli asztal nyissa meg a PowerShellt.
 
-2. Adja meg a `nslookup myserver.database.windows.net`. 
+2. Írja be a `nslookup myserver.database.windows.net` (igen) kifejezést. 
 
     Ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
@@ -227,11 +227,11 @@ A **myVm**létrehozása után az alábbi módon csatlakozhat az internetről:
 1. Kattintson a **Csatlakozás** gombra.
 2. A bal oldali menüben lévő adatbázisok tallózása.
 3. Opcionálisan Információk létrehozása vagy lekérdezése a mydatabase.
-4. A távoli asztali kapcsolat bezárásával *myVm*. 
+4. A távoli asztali kapcsolat bezárásával *myVm*. 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha végzett a magánhálózati végpont, az SQL Server és a virtuális gép használatával, törölje az erőforráscsoportot és az összes benne lévő erőforrást: 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza ki a *myResourceGroup* a keresési eredmények közül. 
+1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 
 3. Írja be **a myResourceGroup nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 

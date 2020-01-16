@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/02/2018
 ms.author: glenga
 ms.custom: include file
-ms.openlocfilehash: 327a7689e0297002f1ce3f48d2bd367104277680
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 689889588aba4da888a7d66f5e1d45dfde71d520
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769700"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021265"
 ---
 1. A **Megoldáskezelőben** kattintson a jobb gombbal a projektre, és válassza a **Publish** (Közzététel) lehetőséget.
 
@@ -38,9 +38,9 @@ ms.locfileid: "75769700"
     | ------------ |  ------- | -------------------------------------------------- |
     | **Name (Név)** | Globálisan egyedi név | Az új függvényalkalmazást azonosító egyedi név. Érvényes karakterek: `a-z`, `0-9` és `-`. |
     | **Előfizetés** | Válassza ki az előfizetését | A használandó előfizetés. |
-    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** | myResourceGroup |  Az erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Válassza az **Új** elemet egy új erőforráscsoport létrehozásához.|
+    | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** | myResourceGroup |  Az erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. Válassza az **Új** elemet egy új erőforráscsoport létrehozásához.|
     | **[Üzemeltetési csomag](../articles/azure-functions/functions-scale.md)** | Használatalapú csomag | Az **új** elemre kattintva hozzon létre egy kiszolgáló nélküli tervet, és válassza a **méret** alatti **felhasználás** lehetőséget. Ezenkívül válasszon ki egy **Helyet** egy, a közelben, vagy a függvények által elért más szolgáltatások közelében található [régióban](https://azure.microsoft.com/regions/). Ha nem **használatalapú** csomagot használ, foglalkoznia kell a [függvényalkalmazás méretezésével](../articles/azure-functions/functions-scale.md).  |
-    | **[Azure Storage](../articles/storage/common/storage-quickstart-create-account.md)** | Általános célú Storage-fiók | A Functions futtatókörnyezetének szüksége van egy Azure Storage-fiókra. Az **új** gombra kattintva hozzon létre egy általános célú Storage-fiókot. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
+    | **[Azure Storage](../articles/storage/common/storage-account-create.md)** | Általános célú Storage-fiók | A Functions futtatókörnyezetének szüksége van egy Azure Storage-fiókra. Az **új** gombra kattintva hozzon létre egy általános célú Storage-fiókot. Meglévő fiókot is használhat, amennyiben az megfelel a [tárfiókokra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements).  |
 
 5. A **Létrehozás** gombra kattintva létrehozhat egy Function alkalmazást és kapcsolódó erőforrásokat az Azure-ban ezekkel a beállításokkal, és üzembe helyezheti a függvény projekt kódját. 
 

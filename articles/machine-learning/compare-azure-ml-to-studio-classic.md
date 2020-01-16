@@ -8,12 +8,12 @@ ms.topic: overview
 author: j-martens
 ms.author: jmartens
 ms.date: 10/29/2019
-ms.openlocfilehash: 6c174faaad5d7d33a837d6399be27444ab0556c6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a3122a3ae1687369b87d193efc693b3b7c659aac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771972"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974137"
 ---
 # <a name="how-azure-machine-learning-differs-from-machine-learning-studio-classic"></a>Miben különbözik a Azure Machine Learning Machine Learning Studiotól (klasszikus)
 
@@ -29,7 +29,7 @@ Eközben [Azure Machine learning](overview-what-is-azure-ml.md) a Designer (elő
 A Azure Machine Learning Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, méretezhető és teljes mértékben integrálva van Azure Machine Learningba.  
 
 > [!TIP]
-> A jelenleg Machine Learning Studiot (klasszikus) használó ügyfeleket javasoljuk a [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/ui-concept-visual-interface) (előzetes verzió) kipróbálására, amely a drag and drop ml modulokat, __valamint__ a skálázhatóságot, a verziókövetés és a vállalati biztonságot is biztosítja.
+> A jelenleg Machine Learning Studiot (klasszikus) használó ügyfeleket javasoljuk a [Azure Machine learning Designer](https://docs.microsoft.com/azure/machine-learning/concept-designer) (előzetes verzió) kipróbálására, amely a drag and drop ml modulokat, __valamint__ a skálázhatóságot, a verziókövetés és a vállalati biztonságot is biztosítja.
 
 ## <a name="comparison-azure-machine-learning-vs-machine-learning-studio-classic"></a>Összehasonlítás: Azure Machine Learning vs. Machine Learning Studio (klasszikus)
 
