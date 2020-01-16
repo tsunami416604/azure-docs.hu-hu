@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-windows
 ms.subservice: disks
-ms.openlocfilehash: 84bb33f724622ba994c81b1d09c99b6399fd36ac
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 38459e76cc8f9df8bfb7c15750e138cfd55c453c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913121"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028456"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -54,29 +54,24 @@ A következő lista a diagramot mutatja be még részletesebben:
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához lásd: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Storage-fiókban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs nem érhető el az Azure Storage-ban.
 
-### <a name="supported-scenarios-and-restrictions"></a>Támogatott forgatókönyvek és korlátozások
+### <a name="supported-regions"></a>Támogatott régiók
 
-Egyelőre csak az alábbi forgatókönyvek támogatottak:
-
-- Hozzon létre egy virtuális gépet (VM) egy Azure Marketplace-rendszerképből, és titkosítsa az operációsrendszer-lemezt kiszolgálóoldali titkosítással az ügyfél által felügyelt kulcsok használatával.
-- Hozzon létre egy, a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképet.
-- Hozzon létre egy virtuális gépet egy egyéni rendszerképből, és titkosítsa az operációsrendszer-lemezt kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsok használatával.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított adatlemezeket hozhat létre.
-- (Csak CLI/PowerShell) A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított pillanatképek létrehozása.
-- Hozzon létre a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított virtuálisgép-méretezési csoportokat.
-- A 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak.
-
-Jelenleg a következő korlátozásokkal rendelkezünk:
+Jelenleg csak a következő régiók támogatottak:
 
 - Elérhető az USA keleti régiójában, az USA 2. nyugati régiójában és az USA déli középső régiójában.
-- Elérhető nyilvános előzetesként az USA nyugati középső régiójában, az USA 2. keleti régiójában, Közép-Kanada és Észak-Európa területén.
+- Elérhető nyilvános előzetesként az USA nyugati középső régiójában, az USA 2. keleti régiójában, Közép-Kanada és Észak-Európa régióban.
+
+### <a name="restrictions"></a>Korlátozások
+
+Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások vonatkoznak:
+
+- Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, nincsenek más kulcsok vagy méretek.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani, és ugyanahhoz az előfizetéshez kell tartoznia.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott lemezképek gyűjteményében.
 - Az ügyfél által felügyelt kulcsokhoz (Azure Key Vaultok, lemez titkosítási készletek, virtuális gépek, lemezek és Pillanatképek) kapcsolódó összes erőforrásnak ugyanabban az előfizetésben és régióban kell lennie.
 - Az ügyfél által felügyelt kulcsokkal titkosított lemezek, Pillanatképek és lemezképek nem helyezhetők át másik előfizetésbe.
 - Ha a Azure Portal használatával hozza létre a lemez titkosítási készletét, a pillanatképek jelenleg nem használhatók.
-- Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, nincsenek más kulcsok vagy méretek.
 
 ### <a name="powershell"></a>PowerShell
 

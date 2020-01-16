@@ -3,7 +3,7 @@ title: Magas rendelkezésre állás és vész-helyreállítás – Azure Batch |
 description: Megtudhatja, hogyan tervezheti meg a Batch-alkalmazást regionális leállás esetén
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,13 +12,13 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/29/2019
-ms.author: lahugh
-ms.openlocfilehash: 11446f5f23d470234b5dba641dc16e0bf71d9b72
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.author: jushiman
+ms.openlocfilehash: f30d2d8e7d08277a5782c3fc39c10fcdff9463f2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094036"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029553"
 ---
 # <a name="design-your-application-for-high-availability"></a>Magas rendelkezésre állású alkalmazás tervezése
 
@@ -47,7 +47,7 @@ A feladatátvételt biztosító megoldás tervezésekor vegye figyelembe a köve
 - Az alkalmazásban a Batch, a Storage és bármely más szolgáltatás meghívásával egyszerűen átkapcsolhatja az ügyfeleket vagy a terhelést a másik régióba.
 - Ajánlott eljárás a feladatátvétel sikerességének biztosítására, hogy a normál működés részeként gyakran váltson át egy másik régióba. Ha például két üzemelő példány külön régióban található, a rendszer minden hónapban átvált a másodlagos régióba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Batch-fiókok [Azure Portal](batch-account-create-portal.md), az [Azure CLI](cli-samples.md), a [POWERSHELL](batch-powershell-cmdlets-get-started.md)vagy a [Batch Management API](batch-management-dotnet.md)használatával történő létrehozásáról.
 - Az alapértelmezett kvóták egy batch-fiókhoz vannak társítva; [Ez a cikk](batch-quota-limit.md) az alapértelmezett kvóta-értékeket részletezi, és leírja, hogyan lehet növelni a kvótákat.

@@ -1,17 +1,14 @@
 ---
 title: VMware áttelepítési lehetőség kiválasztása Azure Migrate kiszolgáló áttelepítésével | Microsoft Docs
 description: Áttekintést nyújt a VMware virtuális gépek Azure-ba való áttelepítésének lehetőségeiről Azure Migrate Server áttelepítéssel
-author: rayne-wiselman
-ms.service: azure-migrate
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.author: raynew
-ms.openlocfilehash: 68026af5b96728ea66fd9e584e67e5e596e690fb
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 52e7103ea3ebcd83369a866cc3f75b0bf0e889a2
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974665"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028712"
 ---
 # <a name="select-a-vmware-migration-option"></a>VMware áttelepítési lehetőség kiválasztása
 
@@ -25,7 +22,7 @@ A VMware virtuális gépeket áttelepítheti az Azure-ba az Azure Migrate Server
 
 ## <a name="compare-migration-methods"></a>Áttelepítési módszerek összehasonlítása
 
-A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik módszert kell használni. Az [ügynök](migrate-support-matrix-vmware.md#agentless-migration-vmware-server-requirements) nélküli és az [ügynök-alapú](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) áttelepítés teljes támogatási követelményeit is ellenőrizheti.
+A kiválasztott összehasonlítások segítségével eldöntheti, hogy melyik módszert kell használni. Az [ügynök](migrate-support-matrix-vmware-migration.md#agentless-vmware-servers) nélküli és az [ügynök-alapú](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) áttelepítés teljes támogatási követelményeit is ellenőrizheti.
 
 **Beállítás** | **Ügynök nélküli** | **Ügynök-alapú**
 --- | --- | ---

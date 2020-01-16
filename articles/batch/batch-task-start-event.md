@@ -2,7 +2,7 @@
 title: Azure Batch feladat indítása esemény | Microsoft Docs
 description: A Batch-feladat indítási eseményének hivatkozása.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 04/20/2017
-ms.author: lahugh
-ms.openlocfilehash: ffad1696bc2c85a1a150ac87d90c2fb9c34e1519
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.author: jushiman
+ms.openlocfilehash: e8265286a5d33c9a8a118dafa66a83b5ed36f8a6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258548"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029620"
 ---
 # <a name="task-start-event"></a>Tevékenység indítása esemény
 
@@ -47,7 +47,7 @@ ms.locfileid: "70258548"
 }
 ```
 
-|Elem neve|Type|Megjegyzések|
+|Elem neve|Type (Típus)|Megjegyzések|
 |------------------|----------|-----------|
 |`jobId`|Sztring|A feladatot tartalmazó feladat azonosítója.|
 |`id`|Sztring|A feladat azonosítója.|
@@ -60,25 +60,25 @@ ms.locfileid: "70258548"
 
 ###  <a name="nodeInfo"></a>nodeInfo
 
-|Elem neve|Type|Megjegyzések|
+|Elem neve|Type (Típus)|Megjegyzések|
 |------------------|----------|-----------|
 |`poolId`|Sztring|Annak a készletnek az azonosítója, amelyen a feladat futott.|
 |`nodeId`|Sztring|Annak a csomópontnak az azonosítója, amelyen a feladat futott.|
 
 ###  <a name="multiInstanceSettings"></a>multiInstanceSettings
 
-|Elem neve|Type|Megjegyzések|
+|Elem neve|Type (Típus)|Megjegyzések|
 |------------------|----------|-----------|
 |`numberOfInstances`|Int|A feladat által igényelt számítási csomópontok száma.|
 
 ###  <a name="constraints"></a>korlátok
 
-|Elem neve|Type|Megjegyzések|
+|Elem neve|Type (Típus)|Megjegyzések|
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|A feladat újrapróbálkozásának maximális száma. A Batch szolgáltatás újrapróbálkozik a feladattal, ha a kilépési kód nem nulla.<br /><br /> Vegye figyelembe, hogy ez az érték kifejezetten meghatározza az újrapróbálkozások számát. A Batch szolgáltatás egyszer próbálkozik a feladattal, és ezt követően újra próbálkozik a korláttal. Ha például az újrapróbálkozások maximális száma 3, a Batch 4 alkalommal próbálkozik a feladattal (egy kezdeti próbálkozás és 3 újrapróbálkozás).<br /><br /> Ha a maximális újrapróbálkozások száma 0, a Batch szolgáltatás nem próbálkozik újra a tevékenységekkel.<br /><br /> Ha a maximális újrapróbálkozások száma-1, a Batch szolgáltatás korlátozás nélkül újrapróbálkozik a feladatokkal.<br /><br /> Az alapértelmezett érték: 0 (nincs újrapróbálkozás).|
 
 ###  <a name="executionInfo"></a>executionInfo
 
-|Elem neve|Type|Megjegyzések|
+|Elem neve|Type (Típus)|Megjegyzések|
 |------------------|----------|-----------|
 |`retryCount`|Int32|A Batch szolgáltatás által újrapróbált feladatok száma. A feladat újra próbálkozik, ha a nullától eltérő kilépési kóddal kilép a megadott MaxTaskRetryCount|

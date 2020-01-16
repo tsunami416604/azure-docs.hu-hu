@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/20/2019
-ms.openlocfilehash: b5b7b69f49efa6cc0d5f3e42fc8a3aca855bca9a
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 44371c78a4d02588eef21aae5a4bba3d033763d7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74912996"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029992"
 ---
 # <a name="create-predictive-pipelines-using-azure-machine-learning-and-azure-data-factory"></a>Prediktív folyamatok létrehozása Azure Machine Learning és Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -24,19 +24,19 @@ ms.locfileid: "74912996"
 
 [Azure Machine learning](https://azure.microsoft.com/documentation/services/machine-learning/) lehetővé teszi prediktív elemzési megoldások összeállítását, tesztelését és üzembe helyezését. A magas szintű nézetből három lépésben végezhető el:
 
-1. **Hozzon létre egy képzési kísérletet**. Ezt a lépést a Azure Machine Learning Studio használatával hajthatja végre. A Azure Machine Learning Studio egy együttműködésen alapuló vizuális fejlesztési környezet, amely a prediktív elemzési modellek betanítására és tesztelésére használható a képzési adatai segítségével.
+1. **Hozzon létre egy képzési kísérletet**. Ezt a lépést a Azure Machine Learning Studio (klasszikus) használatával hajthatja végre. A Azure Machine Learning Studio (klasszikus) egy együttműködési vizuális fejlesztési környezet, amely a prediktív elemzési modellek betanítására és tesztelésére használható.
 2. **Alakítsa át prediktív kísérletre**. Ha a modell már meglévő adataival lett betanítva, és készen áll arra, hogy az új adatait is felhasználja, előkészíti és egyszerűsíti a kísérletet a pontozáshoz.
 3. **Webszolgáltatásként való üzembe helyezése**. A pontozási kísérletet Azure-webszolgáltatásként teheti közzé. Ezt a webszolgáltatás-végponton keresztül is elküldheti a modellnek, és a modellből eredményül kapott előrejelzéseket kaphat.
 
 ### <a name="data-factory-and-machine-learning-together"></a>Data Factory és Machine Learning együtt
-Azure Data Factory lehetővé teszi, hogy könnyedén hozzon létre olyan folyamatokat, amelyek közzétett [Azure Machine learning](https://azure.microsoft.com/documentation/services/machine-learning) webszolgáltatást használnak a prediktív elemzésekhez. A **Batch végrehajtási tevékenység** Azure Data Factory folyamatokban való használatával meghívhat egy Azure Machine learning Studio-webszolgáltatást, hogy előrejelzéseket készítsen a Batch-ben lévő adatairól.
+Azure Data Factory lehetővé teszi, hogy könnyedén hozzon létre olyan folyamatokat, amelyek közzétett [Azure Machine learning](https://azure.microsoft.com/documentation/services/machine-learning) webszolgáltatást használnak a prediktív elemzésekhez. A **Batch végrehajtási tevékenység** Azure Data Factory folyamatokban való használatával meghívhat egy Azure Machine learning Studio (klasszikus) webszolgáltatást, hogy előrejelzéseket készítsen a Batch-ben lévő adatairól.
 
-Idővel a Azure Machine Learning Studio-pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Az alábbi lépések végrehajtásával Újrataníthatja a modelleket egy Data Factory folyamatból:
+Idővel a Azure Machine Learning Studio (klasszikus) pontozási kísérletek prediktív modelljeit új bemeneti adatkészletek használatával kell áttanítani. Az alábbi lépések végrehajtásával Újrataníthatja a modelleket egy Data Factory folyamatból:
 
-1. Tegye közzé a betanítási kísérletet (nem prediktív kísérletet) webszolgáltatásként. Ezt a lépést a Azure Machine Learning Studióban végezheti el, mivel a prediktív kísérletet webszolgáltatásként teszi elérhetővé az előző forgatókönyvben.
-2. A Azure Machine Learning Studio batch végrehajtási tevékenységével meghívja a webszolgáltatást a betanítási kísérlethez. Alapvetően a Azure Machine Learning Studio batch végrehajtási tevékenységgel is meghívhatja a betanítási webszolgáltatás és a pontozási webszolgáltatás szolgáltatást.
+1. Tegye közzé a betanítási kísérletet (nem prediktív kísérletet) webszolgáltatásként. Ezt a lépést a Azure Machine Learning Studioon (klasszikus) kell végrehajtania, mivel a prediktív kísérletet webszolgáltatásként teszi elérhetővé az előző forgatókönyvben.
+2. A betanítási kísérlethez használja a Azure Machine Learning Studio (klasszikus) batch-végrehajtási tevékenységet a webszolgáltatás meghívásához. Alapvetően a Azure Machine Learning Studio (klasszikus) batch-végrehajtási tevékenységet használhatja a betanítási webszolgáltatás és a pontozási webszolgáltatás meghívásához is.
 
-Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](update-machine-learning-models.md) című cikkben.
+Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel a **Azure Machine learning Studio (klasszikus) frissítési erőforrás-tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](update-machine-learning-models.md) című cikkben.
 
 ## <a name="azure-machine-learning-linked-service"></a>Társított szolgáltatás Azure Machine Learning
 
@@ -131,14 +131,14 @@ A következő JSON-kódrészlet definiál egy Azure Machine Learning batch végr
 | linkedServiceName | Társított szolgáltatások a Azure Machine Learning társított szolgáltatáshoz. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk. | Igen      |
 | webServiceInputs  | Kulcs-érték párok, Azure Machine Learning webszolgáltatás-bemenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált bemeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a bemeneti Blobok helyét adja meg. | Nem       |
 | webServiceOutputs | Kulcs, érték párok, Azure Machine Learning webszolgáltatás-kimenetek nevének leképezése. A kulcsnak meg kell egyeznie a közzétett Azure Machine Learning webszolgáltatásban definiált kimeneti paraméterekkel. Az érték egy Azure Storage-beli társított szolgáltatások és FilePath tulajdonságok pár, amely a kimeneti Blobok helyét adja meg. | Nem       |
-| globalParameters  | A Azure Machine Learning Studio batch végrehajtási szolgáltatási végpontjának átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Azure Machine Learning Studio webszolgáltatásban definiált webszolgáltatás-paraméterek neveivel. Az értékek a Azure Machine Learning Studio batch-végrehajtási kérelem GlobalParameters tulajdonságában lesznek átadva | Nem       |
+| globalParameters  | A Azure Machine Learning Studio (klasszikus) batch-végrehajtási szolgáltatási végpontnak átadandó kulcs-érték párok. A kulcsoknak meg kell egyezniük a közzétett Azure Machine Learning Studio (klasszikus) webszolgáltatásban definiált webszolgáltatás-paraméterek neveivel. Az értékek a Azure Machine Learning Studio (klasszikus) batch-végrehajtási kérelem GlobalParameters tulajdonságában lesznek átadva | Nem       |
 
 ### <a name="scenario-1-experiments-using-web-service-inputsoutputs-that-refer-to-data-in-azure-blob-storage"></a>1\. forgatókönyv: az Azure-ban tárolt adatokra hivatkozó webszolgáltatási bemeneteket/kimeneteket használó kísérletek Blob Storage
 
-Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést készít az Azure Blob Storage-ból származó fájlból származó adatokról, és az előrejelzési eredményeket a blob Storage-ban tárolja. A következő JSON egy Data Factory folyamatot határoz meg egy AzureMLBatchExecution-tevékenységgel. A bemeneti és kimeneti adatok az Azure blog Storage-ban LinkedName és FilePath pár használatával hivatkoznak. A bemenetek és a kimenetek mintául szolgáló társított szolgáltatásában különböző társított szolgáltatások használhatók a Data Factory összes bemenete/kimenete számára, hogy a megfelelő fájlokat lehessen kiválasztani, és elküldjük Azure Machine Learning Studio webszolgáltatásnak.
+Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést készít az Azure Blob Storage-ból származó fájlból származó adatokról, és az előrejelzési eredményeket a blob Storage-ban tárolja. A következő JSON egy Data Factory folyamatot határoz meg egy AzureMLBatchExecution-tevékenységgel. A bemeneti és kimeneti adatok az Azure blog Storage-ban LinkedName és FilePath pár használatával hivatkoznak. A bemenetek és a kimenetek mintául szolgáló társított szolgáltatásában különböző társított szolgáltatások használhatók a Data Factory összes bemenetéhez/kimenetéhez, hogy képes legyen a megfelelő fájlok felvételére és a Azure Machine Learning Studio (klasszikus) webszolgáltatásba való küldésre.
 
 > [!IMPORTANT]
-> A Azure Machine Learning Studio-kísérletben a webszolgáltatás bemeneti és kimeneti portjai, valamint a globális paraméterek alapértelmezett neve ("input1", "input2") testreszabható. A webServiceInputs, a webServiceOutputs és a globalParameters-beállításokhoz használt névnek pontosan egyeznie kell a kísérletekben szereplő nevekkel. Az Azure Machine Learning Studio-végpont batch-végrehajtás Súgó lapján megtekintheti a minta kérések hasznos adatait a várt leképezés ellenőrzéséhez.
+> A Azure Machine Learning Studio (klasszikus) kísérlet, a webszolgáltatás bemeneti és kimeneti portjai, valamint a globális paraméterek alapértelmezett neve ("input1", "input2") a testre szabható. A webServiceInputs, a webServiceOutputs és a globalParameters-beállításokhoz használt névnek pontosan egyeznie kell a kísérletekben szereplő nevekkel. Az Azure Machine Learning Studio (klasszikus) végpontjának batch-végrehajtási Súgó lapján megtekintheti a minta kérések hasznos adatait a várt leképezés ellenőrzéséhez.
 >
 >
 
@@ -188,12 +188,12 @@ Ebben az esetben a Azure Machine Learning webszolgáltatás előrejelzést kész
 }
 ```
 ### <a name="scenario-2-experiments-using-readerwriter-modules-to-refer-to-data-in-various-storages"></a>2\. forgatókönyv: az olvasó/író modulok használatával végzett kísérletek különböző tárolókban lévő adataira
-Azure Machine Learning Studio-kísérletek létrehozásakor egy másik gyakori forgatókönyv az adatimportálás és a kimeneti adatmodulok használata. Az adatok importálása modul használatával betöltheti az adatokat egy kísérletbe, és a kimeneti adatok modulban adatokat menthet a kísérletekből. Az adatok és a kimeneti adatmodulok importálásával kapcsolatos további információkért lásd: adatok és [kimeneti adatok](https://msdn.microsoft.com/library/azure/dn905984.aspx) [importálása](https://msdn.microsoft.com/library/azure/dn905997.aspx) témakörök az MSDN Library webhelyen.
+Azure Machine Learning Studio (klasszikus) kísérletek létrehozásakor egy másik gyakori forgatókönyv az adatimportálás és a kimeneti adatmodulok használata. Az adatok importálása modul használatával betöltheti az adatokat egy kísérletbe, és a kimeneti adatok modulban adatokat menthet a kísérletekből. Az adatok és a kimeneti adatmodulok importálásával kapcsolatos további információkért lásd: adatok és [kimeneti adatok](https://msdn.microsoft.com/library/azure/dn905984.aspx) [importálása](https://msdn.microsoft.com/library/azure/dn905997.aspx) témakörök az MSDN Library webhelyen.
 
 Az Adatimportálási és-kimeneti adatmodulok használatakor célszerű webszolgáltatási paramétert használni a modulok minden tulajdonságához. Ezek a webes paraméterek lehetővé teszik az értékek konfigurálását futásidőben. Létrehozhat például egy kísérletet egy olyan adatimportálási modullal, amely Azure SQL Database: XXX.database.windows.net-t használ. A webszolgáltatás üzembe helyezése után engedélyezni szeretné a webszolgáltatás felhasználói számára egy másik Azure-SQL Server megadását `YYY.database.windows.net`néven. Webszolgáltatási paraméter használatával engedélyezheti ezt az értéket.
 
 > [!NOTE]
-> A webszolgáltatások bemenete és kimenete eltér a webszolgáltatás paramétereinek. Az első forgatókönyvben azt tapasztalja, hogyan adható meg egy Azure Machine Learning Studio webszolgáltatás bemenete és kimenete. Ebben a forgatókönyvben egy olyan webszolgáltatás paramétereit adja át, amely megfelel az importálási adatok/kimeneti adatmodulok tulajdonságainak.
+> A webszolgáltatások bemenete és kimenete eltér a webszolgáltatás paramétereinek. Az első forgatókönyvben azt tapasztalja, hogy egy Azure Machine Learning Studio (klasszikus) webszolgáltatás bemenete és kimenete megadható. Ebben a forgatókönyvben egy olyan webszolgáltatás paramétereit adja át, amely megfelel az importálási adatok/kimeneti adatmodulok tulajdonságainak.
 >
 >
 
@@ -214,7 +214,7 @@ Nézzük meg a webszolgáltatási paraméterek használatának forgatókönyvét
 > A webszolgáltatás paraméterei megkülönböztetik a kis-és nagybetűket, ezért ügyeljen arra, hogy a JSON-tevékenységben megadott nevek megfeleljenek a webszolgáltatás által elérhetőnek.
 >
 
-Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel az **Azure Machine learning Studio Update Resource tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](update-machine-learning-models.md) című cikkben.
+Miután elvégezte a betanítást, frissítse a pontozási webszolgáltatást (webszolgáltatásként elérhető prediktív kísérlet) az újonnan betanított modellel a **Azure Machine learning Studio (klasszikus) frissítési erőforrás-tevékenység**használatával. Részletekért lásd: [modellek frissítése a frissítés erőforrás-tevékenységgel](update-machine-learning-models.md) című cikkben.
 
 ## <a name="next-steps"></a>Következő lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást:

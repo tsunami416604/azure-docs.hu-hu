@@ -5,12 +5,12 @@ services: automation
 ms.subservice: process-automation
 ms.date: 12/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: e37b6b800cbe0b4272df227e1411257b33a3e0cb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 37fee7f96a27942a1295cb8c2315fedffc5bdefe
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420810"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76030161"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Start/Stop VMs during off-hours megoldás a Azure Automation
 
@@ -33,7 +33,7 @@ A jelenlegi megoldás korlátai a következők:
 > [!NOTE]
 > Ha a megoldást a klasszikus virtuális gépekhez használja, akkor az összes virtuális gép soronként lesz feldolgozva a Cloud Service-ben. A virtuális gépeket a rendszer továbbra is párhuzamosan dolgozza fel a különböző felhőalapú szolgáltatások között. Ha a Cloud Service-ben több mint 20 virtuális gép van, javasoljuk, hogy több ütemtervet hozzon létre a szülő runbook **ScheduledStartStop_Parent** és ütemezzen 20 virtuális gépet. Az ütemterv tulajdonságainál válassza a vesszővel tagolt listaként a virtuális gépek nevét a **VMList** paraméterben. Ellenkező esetben, ha a megoldás automatizálási feladata több mint három órát futtat, átmenetileg el lesz távolítva vagy leállítva a [méltányos megosztási](automation-runbook-execution.md#fair-share) korláton belül.
 >
-> Azure Cloud Solution Provider (Azure CSP) előfizetések csak a Azure Resource Manager modellt támogatják, a nem Azure Resource Manager szolgáltatások nem érhetők el a programban. Ha a Start/Stop megoldás fut, előfordulhat, hogy hibákat kap, mivel parancsmagokkal rendelkezik a klasszikus erőforrások kezeléséhez. A CSP-vel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)című témakört. Ha CSP-előfizetést használ, az üzembe helyezés után a [**External_EnableClassicVMs**](#variables) változót **false (hamis** ) értékre kell módosítania.
+> Azure Cloud Solution Provider (Azure CSP) előfizetések csak a Azure Resource Manager modellt támogatják, a nem Azure Resource Manager szolgáltatások nem érhetők el a programban. Ha a Start/Stop megoldás fut, előfordulhat, hogy hibákat kap, mivel parancsmagokkal rendelkezik a klasszikus erőforrások kezeléséhez. A CSP-vel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)című témakört. Ha CSP-előfizetést használ, az üzembe helyezés után a [**External_EnableClassicVMs**](#variables) változót **false (hamis** ) értékre kell módosítania.
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 

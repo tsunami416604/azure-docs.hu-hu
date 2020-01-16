@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan telepíthet és konfigurálhat helyszíni adat�
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 37658ea6b94d6369d282c49f79947a1f183b61c7
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 019da1810851c730ea8bfe4cf5eea0cfa900bea0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572850"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029897"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
 
@@ -22,16 +22,16 @@ Ha többet szeretne megtudni az átjáróról és a Azure Analysis Services hasz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-**Minimális követelmények:**
+**Rendszerkövetelmények:**
 
-* .NET 4,5-keretrendszer
-* a Windows 7 és a Windows Server 2008 R2 64 bites verziója (vagy újabb)
+* .NET-keretrendszer 4.5-ös verziója
+* a Windows 8/Windows Server 2012 R2 64 bites verziója (vagy újabb)
 
-**Ajánlott**
+**Ajánlott:**
 
 * 8 magos processzor
 * 8 GB memória
-* a Windows 2012 R2 64 bites verziója (vagy újabb)
+* a Windows 8/Windows Server 2012 R2 64 bites verziója (vagy újabb)
 
 **Fontos szempontok:**
 
@@ -75,14 +75,14 @@ Az Azure-beli átjáró-erőforrások létrehozásához regisztrálnia kell az �
 
 1.  Válassza **az új átjáró regisztrálása ezen a számítógépen**lehetőséget.
 
-    ![Regisztráljon](media/analysis-services-gateway-install/aas-gateway-register-new.png)
+    ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-new.png)
 
 2. Adja meg az átjáró nevét és helyreállítási kulcsát. Alapértelmezés szerint az átjáró az előfizetés alapértelmezett régióját használja. Ha másik régiót kell kiválasztania, válassza a **régió módosítása**lehetőséget.
 
     > [!IMPORTANT]
     > Mentse a helyreállítási kulcsot biztonságos helyen. A helyreállítási kulcs szükséges az átjáró átvételéhez, átmigrálához vagy visszaállításához. 
 
-   ![Regisztráljon](media/analysis-services-gateway-install/aas-gateway-register-name.png)
+   ![Regisztráció](media/analysis-services-gateway-install/aas-gateway-register-name.png)
 
 
 ## <a name="create-resource"></a>Azure Gateway-erőforrás létrehozása
@@ -129,7 +129,7 @@ Az átjáró telepítése és regisztrálása után létre kell hoznia egy átj�
 
 Ennyi az egész. Ha portok megnyitására vagy hibaelhárításra van szüksége, mindenképpen tekintse [meg a helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Analysis Services felügyelete](analysis-services-manage.md)   
 * [Adatok lekérése Azure Analysis Servicesról](analysis-services-connect.md)   

@@ -1,17 +1,14 @@
 ---
-title: A helyszíni kiszolgálókra telepített alkalmazások, szerepkörök és szolgáltatások felderítése Azure Migrate Server Assessment használatával
-description: Ismerteti, hogyan lehet alkalmazásokat, szerepköröket és szolgáltatásokat felderíteni a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
-author: snehaamicrosoft
-ms.service: azure-migrate
+title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszíni kiszolgálókon Azure Migrate
+description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 11/20/2019
-ms.author: snehaa
-ms.openlocfilehash: 279e326ace308b354d7bcb8366d3286980e7b8c6
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278476"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029074"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -30,14 +27,14 @@ Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló érté
 1. Tekintse át az alkalmazás szintű felderítés [támogatási korlátozásait](migrate-support-matrix-vmware.md#application-discovery) .
 2. Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
 3. Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-4. A VMWare virtuális gépeknek a Azure Migrate berendezéssel való felfedésére és értékelésére vonatkozó [VMware-követelmények](migrate-support-matrix-vmware.md#assessment-vcenter-server-requirements) ellenőrzése.
-4. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-support-matrix-vmware.md#assessment-appliance-requirements) megtekintése.
+4. A VMWare virtuális gépeknek a Azure Migrate berendezéssel való felfedésére és értékelésére vonatkozó [VMware-követelmények](migrate-support-matrix-vmware.md#vmware-requirements) ellenőrzése.
+4. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
 
 ## <a name="prepare-for-app-discovery"></a>Az alkalmazások felderítésének előkészítése
 
-1. [Felkészülés a berendezések üzembe helyezésére](https://docs.microsoft.com/azure/migrate/tutorial-prepare-vmware). Az előkészítés magában foglalja a berendezés beállításainak ellenőrzését, valamint egy olyan fiók beállítását, amelyet a készülék a vCenter Server eléréséhez használ majd.
+1. [Felkészülés a berendezések üzembe helyezésére](tutorial-prepare-vmware.md). Az előkészítés magában foglalja a berendezés beállításainak ellenőrzését, valamint egy olyan fiók beállítását, amelyet a készülék a vCenter Server eléréséhez használ majd.
 2. Győződjön meg arról, hogy rendelkezik egy felhasználói fiókkal (amely a Windows-és Linux-kiszolgálókon van), és rendszergazdai jogosultságokkal rendelkezik azokon a gépeken, amelyeken alkalmazásokat, szerepköröket és szolgáltatásokat kíván felderíteni.
-3. [Telepítse a VMware készüléket](how-to-set-up-appliance-vmware.md) a felderítés elindításához. A készülék üzembe helyezéséhez le kell töltenie és importálnia kell egy PETESEJT-sablont a VMware-be a készülék VMware virtuális gépként való létrehozásához. Konfigurálja a készüléket, majd regisztrálja azt a Azure Migrate.
+3. [Telepítse a Azure Migrate készüléket](how-to-set-up-appliance-vmware.md) a felderítés elindításához. A készülék üzembe helyezéséhez le kell töltenie és importálnia kell egy PETESEJT-sablont a VMware-be a készülék VMware virtuális gépként való létrehozásához. Konfigurálja a készüléket, majd regisztrálja azt a Azure Migrate.
 2. A berendezés üzembe helyezésekor a folyamatos felderítés elindításához a következőket kell megadnia:
     - Annak a vCenter Server a neve, amelyhez csatlakozni szeretne.
     - A készülékhez a vCenter Serverhoz való kapcsolódáshoz létrehozott hitelesítő adatok.

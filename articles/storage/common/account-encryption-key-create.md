@@ -10,12 +10,12 @@ ms.date: 01/10/2020
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 39568d65978592b360512db2e556cfa6b59760b6
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 8cf1f8ecb68e31f93c19d93d6ebc4f8ef37724e7
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921222"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028452"
 ---
 # <a name="create-an-account-that-supports-customer-managed-keys-for-tables-and-queues"></a>Olyan fiók létrehozása, amely támogatja az ügyfél által felügyelt kulcsokat a táblákhoz és a várólistákhoz
 
@@ -149,7 +149,7 @@ Miután létrehozott egy fiókot, amely a fiók titkosítási kulcsára támaszk
 
 ## <a name="verify-the-account-encryption-key"></a>A fiók titkosítási kulcsának ellenőrzése
 
-Annak ellenőrzéséhez, hogy az új Storage-fiók használja-e a fiók titkosítási kulcsát, hívja meg az Azure CLI az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságainak és értékeinek listáját adja vissza. Keresse meg a `keyType` tulajdonságot, és ellenőrizze, hogy az `Account`értékre van-e állítva.
+Annak ellenőrzéséhez, hogy a Storage-fiókban lévő szolgáltatás a fiók titkosítási kulcsát használja-e, hívja meg az Azure CLI az [Storage Account](/cli/azure/storage/account#az-storage-account-show) parancsot. Ez a parancs a Storage-fiók tulajdonságait és azok értékeit adja vissza. Keresse meg az egyes szolgáltatások `keyType` mezőjét a titkosítási tulajdonságon belül, és ellenőrizze, hogy az `Account`értékre van-e állítva.
 
 ```azurecli
 az storage account show /
