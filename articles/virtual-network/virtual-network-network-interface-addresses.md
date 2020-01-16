@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: kumud
-ms.openlocfilehash: 1a6fb5d2b27996d67e0bf27eb57d16f4d2fb2797
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: dc5b1f2f8e8b529149184ce173bcdd315311bad4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647254"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975325"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címeinek hozzáadása, módosítása vagy eltávolítása
 
@@ -146,7 +146,7 @@ Vannak olyan forgatókönyvek, amelyekkel manuálisan kell beállítani egy hál
 4. Indítsa el a virtuális gépet.
 5. A másodlagos IP-címeket [manuálisan konfigurálja](virtual-network-multiple-ip-addresses-portal.md#os-config) az operációs rendszeren belül (és a Windowson belüli elsődleges IP-címen is) az Azure-ban beállított értékeknek megfelelően.
 
-Az előző lépések követésével az Azure-on belüli hálózati adapterhez rendelt magánhálózati IP-cím és a virtuális gép operációs rendszerén belül maradnak. Ha nyomon szeretné követni, hogy az előfizetésben lévő virtuális gépeket manuálisan állította be az operációs rendszeren belüli IP-címekre, érdemes lehet hozzáadni egy Azure- [címkét](../azure-resource-manager/resource-group-using-tags.md) a virtuális gépekhez. Használhatja például az "IP-cím hozzárendelése: static" kifejezést. Így könnyedén megtalálhatja az előfizetésében lévő virtuális gépeket, hogy az operációs rendszeren belül manuálisan beállította az IP-címet.
+Az előző lépések követésével az Azure-on belüli hálózati adapterhez rendelt magánhálózati IP-cím és a virtuális gép operációs rendszerén belül maradnak. Ha nyomon szeretné követni, hogy az előfizetésben lévő virtuális gépeket manuálisan állította be az operációs rendszeren belüli IP-címekre, érdemes lehet hozzáadni egy Azure- [címkét](../azure-resource-manager/management/tag-resources.md) a virtuális gépekhez. Használhatja például az "IP-cím hozzárendelése: static" kifejezést. Így könnyedén megtalálhatja az előfizetésében lévő virtuális gépeket, hogy az operációs rendszeren belül manuálisan beállította az IP-címet.
 
 Amellett, hogy a virtuális gép más erőforrásokkal is kommunikálni fog ugyanazon vagy csatlakoztatott virtuális hálózatokon, egy magánhálózati IP-cím is lehetővé teszi, hogy a virtuális gép továbbítsa a kimenő forgalmat az internethez. A kimenő kapcsolatok az Azure által a nem kiszámítható nyilvános IP-címekhez fordított forrásoldali hálózati címek. Ha többet szeretne megtudni az Azure kimenő internetkapcsolatával kapcsolatban, olvassa el az [Azure kimenő internetkapcsolatát](../load-balancer/load-balancer-outbound-connections.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ismertető cikket. Az internetről nem tud kommunikálni a virtuális gép magánhálózati IP-címével. Ha a kimenő kapcsolatok kiszámítható nyilvános IP-címet igényelnek, rendeljen hozzá egy nyilvános IP-cím típusú erőforrást egy hálózati adapterhez.
 

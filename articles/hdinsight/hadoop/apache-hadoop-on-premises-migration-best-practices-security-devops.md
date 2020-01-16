@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/19/2019
-ms.openlocfilehash: 441c45d0f77ab825c35e24056b09d0d33b675eea
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 4ceefcbbbb53e3ae13f8ced930ae8417fb00965f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75496399"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974410"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---security-and-devops-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – biztonsági és DevOps – ajánlott eljárások
 
@@ -86,7 +86,7 @@ További információkért tekintse át a következő cikkeket:
 - [Azure Virtual Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure hálózati biztonsági csoportok – áttekintés](../../virtual-network/security-overview.md)
 - [Azure Virtual Network-társítás](../../virtual-network/virtual-network-peering-overview.md)
-- [Biztonsági útmutató az Azure Storage-hoz](../../storage/common/storage-security-guide.md)
+- [Biztonsági útmutató az Azure Storage-hoz](../../storage/blobs/security-recommendations.md)
 - [Azure Storage Service Encryption a nyugalmi állapotban](../../storage/common/storage-service-encryption.md)
 
 ## <a name="use-monitoring--alerting"></a>Figyelési & riasztások használata

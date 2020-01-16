@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 11/22/2019
-ms.openlocfilehash: a1bd9b8cbcbc785425c2d1870dc555ff91f695f7
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 02dc9e1ad9ee46b1a400e44b6ef737e70571a17a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74485080"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972588"
 ---
 # <a name="security-in-azure-database-for-postgresql---single-server"></a>Biztonság Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -36,6 +36,9 @@ Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítan
 
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for PostgreSQL-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-and-security-vnet.md)című témakörben talál.
+
+### <a name="private-ip"></a>Magánhálózati IP-cím
+A privát hivatkozás lehetővé teszi, hogy egy privát végponton keresztül kapcsolódjon az Azure-beli Azure Database for PostgreSQL egyetlen kiszolgálóhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A Péter-erőforrások a magánhálózati IP-cím használatával ugyanúgy érhetők el, mint a VNet lévő többi erőforráshoz. További információt a [privát hivatkozások áttekintése](concepts-data-access-and-security-private-link.md) című témakörben talál.
 
 
 ## <a name="access-management"></a>Hozzáférés-kezelés

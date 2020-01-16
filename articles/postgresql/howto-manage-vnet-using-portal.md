@@ -6,12 +6,12 @@ ms.author: mbolz
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: e3146554cf9fa49e50f6ae24d3c0984bbc081760
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 413c3a7b6fdcda996d3db548fb53f358eb8c71e0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770254"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978278"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-and-vnet-rules-in-azure-database-for-postgresql---single-server-by-using-the-azure-portal"></a>VNet-szolgáltatási végpontok és VNet-szabályok létrehozása és kezelése Azure Database for PostgreSQL – egyetlen kiszolgálón a Azure Portal használatával
 Virtual Network (VNet) szolgáltatási végpontok és szabályok kiterjesztik a Virtual Network privát címterület-területét a Azure Database for PostgreSQL-kiszolgálóra. Az Azure Database for PostgreSQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for PostgreSQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for PostgreSQL összes támogatott régiójában elérhetők.
@@ -61,4 +61,4 @@ Virtual Network (VNet) szolgáltatási végpontok és szabályok kiterjesztik a 
 - Ha segítségre van a Azure Database for PostgreSQL kiszolgálóhoz való csatlakozáshoz, tekintse meg a [Azure Database for PostgreSQLhoz tartozó kapcsolódási kódtárakat](./concepts-connection-libraries.md) .
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

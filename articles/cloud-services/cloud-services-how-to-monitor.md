@@ -8,12 +8,12 @@ ms.service: cloud-services
 ms.topic: article
 ms.date: 01/29/2018
 ms.author: tagore
-ms.openlocfilehash: 096077550a426d7eb77ed0d71e720149dd103a55
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 61c794ba03934ae1828ba310f3f776bfb61b652b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386068"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972948"
 ---
 # <a name="introduction-to-cloud-service-monitoring"></a>Bevezetés a Cloud Service Monitorozásba
 
@@ -52,7 +52,7 @@ Az egyes szerepkörök létrehozásakor a Visual Studio hozzáadja a Azure Diagn
 
 ## <a name="setup-diagnostics-extension"></a>Beállítási diagnosztikai bővítmény
 
-Először is, ha nem rendelkezik **klasszikus** Storage-fiókkal, [hozzon létre egyet](../storage/common/storage-quickstart-create-account.md). Győződjön meg arról, hogy a Storage-fiók a megadott **klasszikus üzembehelyezési modellel** lett létrehozva.
+Először is, ha nem rendelkezik **klasszikus** Storage-fiókkal, [hozzon létre egyet](../storage/common/storage-account-create.md). Győződjön meg arról, hogy a Storage-fiók a megadott **klasszikus üzembehelyezési modellel** lett létrehozva.
 
 Ezután navigáljon a **Storage-fiók (klasszikus)** erőforráshoz. Válassza a **beállítások** > **hozzáférési kulcsok** lehetőséget, és másolja az **elsődleges kapcsolati sztring** értéket. Erre az értékre szüksége lesz a Cloud Service-hez. 
 

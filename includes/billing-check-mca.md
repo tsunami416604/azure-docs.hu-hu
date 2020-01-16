@@ -4,23 +4,23 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 42aaacca4ceb59e38687c8396a6c384d107e8038
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
-ms.translationtype: HT
+ms.openlocfilehash: 58bf7c300d7f52807bd255da62bf1cc452883811
+ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75388157"
+ms.lasthandoff: 01/09/2020
+ms.locfileid: "75779348"
 ---
 A szerződéstípusra kattintva megállapíthatja, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz.
  
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a számlázási fiók hozzáférés ellenőrzéséhez. Keresse meg és válassza ki a **Költségkezelés + számlázás** lehetőséget.
+1. Lépjen a [Azure Portal](https://portal.azure.com) a Számlázási fiók hozzáférésének kereséséhez. Keresse meg és válassza ki a **Cost Management + számlázás**lehetőséget.
 
-   ![Keresse meg a Költségkezelés és számlázás elemet a Microsoft Azure Portalon.](./media/billing-check-mca/billing-search-cost-management-billing.png)
+   ![Cost Management és számlázás keresése, Microsoft Azure Portal](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
-2. Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a menü **Tulajdonságok** elemét. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-ügyfélszerződés**.
+2. Ha csak egy számlázási hatókörhöz fér hozzá, válassza a menü **Tulajdonságok** elemét. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-ügyfélszerződés**.
  
-    ![Microsoft-ügyfélszerződés, Számlázási fiók típusa, Tulajdonságok, Microsoft Azure Portal](./media/billing-check-mca/billing-mca-property.png)
+    ![Microsoft Customer Agreement, számlázási fiók típusa, tulajdonságok, Microsoft Azure Portal](./media/billing-check-mca/billing-mca-property.png)
  
 3. Ha több számlázási hatókörhöz van hozzáférése, a számlázási fiók oszlopában ellenőrizheti a fiók típusát. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha bármelyik hatókör számlázási fiókjának típusa **Microsoft-ügyfélszerződés**.
  
-    ![Microsoft-ügyfélszerződés, Számlázási fiók típusa, Számlázási fiókok listája, Microsoft Azure Portal](./media/billing-check-mca/billing-mca-in-the-list.png)
+    [![Microsoft ügyfél-szerződés, számlázási fiók típusa, számlázási fiók listája, Microsoft Azure Portal](./media/billing-check-mca/billing-mca-in-the-list.png)](./media/billing-check-mca/billing-mca-in-the-list-zoomed-in.png#lightbox)

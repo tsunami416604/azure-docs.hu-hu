@@ -3,12 +3,12 @@ title: Power BI-jelentések konfigurálása
 description: Recovery Services-tároló használatával konfigurálhatja Azure Backup Power BI jelentéseit.
 ms.topic: conceptual
 ms.date: 07/09/2019
-ms.openlocfilehash: 9b6ef62a924761642ef3217ff8af64ac6847c766
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4f8a2dd927f996ea09e40c7db2e43b46c17f6258
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978372"
 ---
 # <a name="configure-azure-backup-reports"></a>Azure Backup-jelentések konfigurálása
 
@@ -30,7 +30,7 @@ A probléma elkerüléséhez töltse le a legújabb alkalmazást (1,8-es verzió
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md) a jelentések konfigurálásához. Ez a Storage-fiók a jelentések kapcsolódó adatainak tárolására szolgál.
+- Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md) a jelentések konfigurálásához. Ez a Storage-fiók a jelentések kapcsolódó adatainak tárolására szolgál.
 - [Hozzon létre egy Power bi fiókot](https://powerbi.microsoft.com/landing/signin/) a saját jelentések megtekintéséhez, testreszabásához és létrehozásához a Power bi portál használatával.
 - Regisztrálja az erőforrás-szolgáltatót a **Microsoft. ininsights**szolgáltatásban, ha még nincs regisztrálva. Használja a Storage-fiók és a Recovery Services-tároló előfizetéseit, hogy a jelentéskészítési adatforgalom a Storage-fiókba. Ehhez a lépéshez lépjen a Azure Portal, válassza az **előfizetés** > erőforrás- **szolgáltatók**lehetőséget, és keresse meg a szolgáltatót a regisztráláshoz.
 

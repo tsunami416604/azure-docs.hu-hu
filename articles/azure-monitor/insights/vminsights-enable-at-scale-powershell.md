@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 10/14/2019
-ms.openlocfilehash: 5f37971e9680468c29efd5733517cb900852431f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4fc5afe3bbb4b2ccf2329432347b23fe9a69c5ea
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75400756"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977675"
 ---
 # <a name="enable-azure-monitor-for-vms-preview-using-azure-powershell-or-resource-manager-templates"></a>Azure Monitor for VMs (előzetes verzió) engedélyezése Azure PowerShell vagy Resource Manager-sablonok használatával
 
@@ -20,7 +20,7 @@ ms.locfileid: "75400756"
 
 Ez a cikk azt ismerteti, hogyan engedélyezhető a Azure Monitor for VMs (előzetes verzió) Azure-beli virtuális gépekhez vagy virtuálisgép-méretezési csoportokhoz Azure PowerShell vagy Azure Resource Manager sablonok használatával. A folyamat végén sikeresen megkezdődött az összes virtuális gép figyelése, és megtudhatja, hogy vannak-e teljesítmény-vagy rendelkezésre állási problémák.
 
-## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics munkaterület beállítása 
+## <a name="set-up-a-log-analytics-workspace"></a>Log Analytics munkaterület beállítása
 
 Ha nem rendelkezik Log Analytics munkaterülettel, létre kell hoznia egyet. Tekintse át az [Előfeltételek](vminsights-enable-overview.md#log-analytics) szakaszban javasolt módszereket, mielőtt folytatná a konfigurálásához szükséges lépéseket. Ezután befejezheti Azure Monitor for VMs telepítését a Azure Resource Manager sablon metódus használatával.
 
@@ -35,8 +35,8 @@ Ha a megoldás által hivatkozott Log Analytics munkaterület még nincs konfigu
 Ez a metódus egy JSON-sablont tartalmaz, amely meghatározza a megoldás összetevőinek a Log Analytics munkaterületen való engedélyezésének konfigurációját.
 
 Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, tekintse meg a következőt:
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
 Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
@@ -91,7 +91,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
 1. Rögzítse a *WorkspaceName*, a *ResourceGroupName*és a *WorkspaceLocation*értékeit. A *WorkspaceName* értéke a log Analytics munkaterület neve. A *WorkspaceLocation* értéke az a régió, amelyben a munkaterület definiálva van.
 
 1. Most már készen áll a sablon üzembe helyezésére.
- 
+
     * Használja a következő PowerShell-parancsokat a sablont tartalmazó mappában:
 
         ```powershell
@@ -105,7 +105,7 @@ Az Azure CLI használatához először telepítenie és használnia kell a CLI-t
         ```
 
     * A következő parancs futtatása az Azure CLI használatával:
-    
+
         ```azurecli
         az login
         az account set --subscription "Subscription Name"
@@ -126,14 +126,14 @@ Létrehoztuk például Azure Resource Manager sablonokat a virtuális gépek és
 >A sablonnak ugyanabban az erőforráscsoporthoz kell lennie, mint a fedélzeten üzembe helyezni kívánt erőforrásnak.
 
 Ha nem tudja, hogyan helyezhet üzembe erőforrásokat sablon használatával, tekintse meg a következőt:
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
 Az Azure CLI használatához először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.27 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Az Azure CLI telepítéséhez vagy frissítéséhez tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 ### <a name="download-templates"></a>Sablonok letöltése
 
-A Azure Resource Manager-sablonok a GitHub-tárházból [letölthető](https://aka.ms/VmInsightsARMTemplates) archív fájlban (. zip) vannak megadva. A fájl tartalma olyan mappákat tartalmaz, amelyek az egyes telepítési forgatókönyveket egy sablon és egy paraméter fájlja alapján jelölik. A futtatása előtt módosítsa a paramétereket tartalmazó fájlt, és adja meg a szükséges értékeket. Csak akkor módosítsa a sablonfájlt, ha testre szeretné szabni az adott követelmények támogatásához. A paraméterérték módosítása után a cikk későbbi részében ismertetett módszerek használatával telepítheti azt. 
+A Azure Resource Manager-sablonok a GitHub-tárházból [letölthető](https://aka.ms/VmInsightsARMTemplates) archív fájlban (. zip) vannak megadva. A fájl tartalma olyan mappákat tartalmaz, amelyek az egyes telepítési forgatókönyveket egy sablon és egy paraméter fájlja alapján jelölik. A futtatása előtt módosítsa a paramétereket tartalmazó fájlt, és adja meg a szükséges értékeket. Csak akkor módosítsa a sablonfájlt, ha testre szeretné szabni az adott követelmények támogatásához. A paraméterérték módosítása után a cikk későbbi részében ismertetett módszerek használatával telepítheti azt.
 
 A letöltési fájl a következő sablonokat tartalmazza különböző forgatókönyvekhez:
 
@@ -180,7 +180,7 @@ provisioningState       : Succeeded
 Több virtuális gép vagy virtuálisgép-méretezési csoport Azure Monitor for VMsának engedélyezéséhez használja a [install-VMInsights. Ps1](https://www.powershellgallery.com/packages/Install-VMInsights/1.0)PowerShell-szkriptet. A Azure PowerShell katalógusból érhető el. Ez a szkript a következő lépésekből áll:
 
 - Minden virtuális gép és virtuálisgép-méretezési csoport az előfizetésben.
-- A *ResourceGroup*által megadott hatókörön belüli erőforráscsoport. 
+- A *ResourceGroup*által megadott hatókörön belüli erőforráscsoport.
 - Egyetlen virtuális gép vagy virtuálisgép-méretezési csoport, amelyet a *név*határoz meg.
 
 A parancsfájl minden virtuális gép vagy virtuálisgép-méretezési csoport esetében ellenőrzi, hogy a virtuális gép bővítménye már telepítve van-e. Ha a virtuálisgép-bővítmény telepítve van, a parancsfájl megpróbálja újratelepíteni. Ha a virtuálisgép-bővítmény nincs telepítve, a parancsfájl telepíti a Log Analytics és a függőségi ügynök virtuálisgép-bővítményeit.
@@ -341,7 +341,7 @@ Failed: (0)
 ## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a figyelés engedélyezve van a virtuális gépek számára, ezek az információk a Azure Monitor for VMssal való elemzéshez érhetők el.
- 
-- A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md). 
 
-- Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:. 
+- A felderített alkalmazások függőségeinek megtekintéséhez lásd: [Azure monitor for VMS Térkép megtekintése](vminsights-maps.md).
+
+- Az Azure-beli [virtuális gépek teljesítményének megtekintése](vminsights-performance.md)a szűk keresztmetszetek és a virtuális gépek teljesítményének teljes kihasználtsága alapján:.

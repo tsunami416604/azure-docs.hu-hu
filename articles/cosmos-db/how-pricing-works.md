@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/01/2019
-ms.openlocfilehash: 0e0adef2728ef75dc67f02fdf38b6638965df62f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 7efae8fb3c00868e2740eac2d4d5bcb3c82f663a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72756874"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977538"
 ---
 # <a name="pricing-model-in-azure-cosmos-db"></a>Díjszabási modell a Azure Cosmos DB 
 
@@ -43,7 +43,7 @@ Ahogy az előző táblázatban is látható, a Azure Cosmos DB minimális átvit
 
 Azure Cosmos DB számos lehetőséget kínál a fejlesztők számára ingyenesen. Ezek a lehetőségek a következők:
 
-* **Ingyenes Azure-fiók**: az Azure [ingyenes szintet](https://azure.microsoft.com/free/) kínál, amely az első 30 nap során $200 az Azure-kreditekben, és korlátozott mennyiségű ingyenes szolgáltatást biztosít 12 hónapig. További információkért lásd az [ingyenes Azure-fiókot](../billing/billing-avoid-charges-free-account.md) ismertető cikket. Azure Cosmos DB az ingyenes Azure-fiók része. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. 
+* **Ingyenes Azure-fiók**: az Azure [ingyenes szintet](https://azure.microsoft.com/free/) kínál, amely az első 30 nap során $200 az Azure-kreditekben, és korlátozott mennyiségű ingyenes szolgáltatást biztosít 12 hónapig. További információkért lásd az [ingyenes Azure-fiókot](../cost-management-billing/manage/avoid-charges-free-account.md) ismertető cikket. Azure Cosmos DB az ingyenes Azure-fiók része. Kifejezetten a Azure Cosmos DB esetében ez az ingyenes fiók 5 GB tárhelyet és 400 RUs-t biztosít az egész évre kiépített átviteli sebességhez. 
 
 * **Próbálja ki a Azure Cosmos db**ingyen: Azure Cosmos db az ingyenes fiókok kipróbálása Azure Cosmos db használatával korlátozott időt kínál. Létrehozhat egy Azure Cosmos DB fiókot, létrehozhat adatbázisokat és gyűjteményeket, és futtathat egy minta alkalmazást a rövid útmutatók és oktatóanyagok segítségével. A minta alkalmazást futtathatja egy Azure-fiókra való feliratkozás vagy a bankkártya használata nélkül is. [Próbálja ki a Azure Cosmos db ingyenes](https://azure.microsoft.com/try/cosmosdb/) ajánlatokat egy hónapig Azure Cosmos db a fiókját tetszőleges számú alkalommal megújíthatja.
 

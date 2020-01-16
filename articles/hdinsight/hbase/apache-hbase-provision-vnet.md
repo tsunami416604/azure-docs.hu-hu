@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
-ms.openlocfilehash: c128f17a3d2c4f5461a04ae375e05336cc994b4b
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: e4e15d1c6554fc567f668b2033bff5b5664db918
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552304"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972798"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-fürtök létrehozása a HDInsight-ben az Azure-ban Virtual Network
 
@@ -29,7 +29,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="create-apache-hbase-cluster-into-virtual-network"></a>Apache HBase-fürt létrehozása virtuális hálózatban
 
-Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-beli virtuális hálózatban található függő Azure Storage-fiókkal egy [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-template-deploy.md)használatával. Más fürtök létrehozási módszereivel és a beállítások megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md). A Apache Hadoop-fürtök HDInsight való létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Resource Manager sablonok használatával](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
+Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-beli virtuális hálózatban található függő Azure Storage-fiókkal egy [Azure Resource Manager sablon](../../azure-resource-manager/templates/deploy-powershell.md)használatával. Más fürtök létrehozási módszereivel és a beállítások megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](../hdinsight-hadoop-provision-linux-clusters.md). A Apache Hadoop-fürtök HDInsight való létrehozásával kapcsolatos további információkért lásd: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Resource Manager sablonok használatával](../hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
 > [!NOTE]  
 > Néhány tulajdonságot a sablonban rögzítettek. Példa:

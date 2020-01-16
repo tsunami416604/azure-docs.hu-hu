@@ -9,12 +9,12 @@ ms.service: azure-databricks
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 10/25/2018
-ms.openlocfilehash: f4164966d1a9662a72d41fefcb7cfbb1b444d614
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c2cb7a90f0fe57efcd8f4d75aff3b5ee375abd07
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888989"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971500"
 ---
 # <a name="frequently-asked-questions-about-azure-databricks"></a>Az Azure Databricks szolgáltatással kapcsolatos gyakori kérdések
 
@@ -107,7 +107,7 @@ Azure-hibakód: MissingSubscriptionRegistration Azure-hibaüzenet: az előfizet�
 1. Válassza ki az **előfizetéseket**, a használt előfizetést, majd az **erőforrás-szolgáltatókat**. 
 1. Az erőforrás-szolgáltatók listájában a **Microsoft. számítás**lapon válassza a **regisztráció**lehetőséget. Az erőforrás-szolgáltató regisztrálásához az előfizetés közreműködői vagy tulajdonosi szerepkörének kell lennie.
 
-Részletesebb útmutatásért lásd: [erőforrás-szolgáltatók és-típusok](../azure-resource-manager/resource-manager-supported-services.md).
+Részletesebb útmutatásért lásd: [erőforrás-szolgáltatók és-típusok](../azure-resource-manager/management/resource-providers-and-types.md).
 
 ### <a name="issue-azure-databricks-needs-permissions-to-access-resources-in-your-organization-that-only-an-admin-can-grant"></a>Probléma: Azure Databricks engedélyekre van szükség a szervezet erőforrásaihoz való hozzáféréshez, csak a rendszergazda adhat meg.
 

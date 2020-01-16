@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2019
-ms.openlocfilehash: fd020755ec579b2553bca42db5d050bd442bf6fc
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 6cbbe63d7968816de78256f5a8408517bb8da278
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942307"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973801"
 ---
 # <a name="enable-replication-for-a-disk-added-to-an-azure-vm"></a>Azure-beli virtuális géphez hozzáadott lemez replikálásának engedélyezése
 
@@ -31,9 +31,9 @@ Amikor új lemezt ad hozzá egy másik Azure-régióba replikált Azure-beli vir
 
 ## <a name="before-you-start"></a>Előkészületek
 
-Ez a cikk azt feltételezi, hogy már beállította a vész-helyreállítást arra a virtuális gépre vonatkozóan, amelyhez hozzáadja a lemezt. Ha még nem tette meg, kövesse az [Azure-ról az Azure vész-helyreállítási oktatóanyagát](azure-to-azure-tutorial-enable-replication.md). 
+Ez a cikk azt feltételezi, hogy már beállította a vész-helyreállítást arra a virtuális gépre vonatkozóan, amelyhez hozzáadja a lemezt. Ha még nem tette meg, kövesse az [Azure-ról az Azure vész-helyreállítási oktatóanyagát](azure-to-azure-tutorial-enable-replication.md).
 
-## <a name="enable-replication-for-an-added-disk"></a>Replikáció engedélyezése a hozzáadott lemezen 
+## <a name="enable-replication-for-an-added-disk"></a>Replikáció engedélyezése a hozzáadott lemezen
 
 Egy hozzáadott lemez replikálásának engedélyezéséhez tegye a következőket:
 

@@ -5,12 +5,12 @@ ms.assetid: 70fb0e6e-8727-4cca-ba82-98a4d21586ff
 ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
-ms.openlocfilehash: 0723a3b0c96339ba86b98ab851c44d2a65e6f34b
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 6bc6f1ca29343e027730cbbd99d210f911fcb492
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672381"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967302"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása Azure App Service
 
@@ -23,7 +23,7 @@ Azure-beli virtuális gép vagy Azure Storage esetében lásd: [app Service tart
 Az oktatóanyag elvégzéséhez:
 
 * [Hozzon létre egy App Service-alkalmazást](/azure/app-service/), vagy használjon egy másik oktatóanyaghoz létrehozott alkalmazást.
-* [Távolítsa el az előfizetés](../billing/billing-spending-limit.md#remove)költségkeretét. Ingyenes előfizetési Kredittel rendelkező App Service-tartományok nem vásárolhatók meg.
+* [Távolítsa el az előfizetés](../cost-management-billing/manage/spending-limit.md#remove)költségkeretét. Ingyenes előfizetési Kredittel rendelkező App Service-tartományok nem vásárolhatók meg.
 
 ## <a name="prepare-the-app"></a>Az alkalmazás előkészítése
 
@@ -59,7 +59,7 @@ Ha az App Service-csomag nem az **F1** -es szinten található, akkor a vertiká
 
 Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokhoz kattintson a **További lehetőségek megjelenítése** lehetőségre.
 
-Kattintson az **Apply** (Alkalmaz) gombra.
+Kattintson az **Alkalmaz** gombra.
 
 ![A tarifacsomag ellenőrzése](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

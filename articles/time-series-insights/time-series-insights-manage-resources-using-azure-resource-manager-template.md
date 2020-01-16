@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 12/06/2019
 ms.custom: seodec18
-ms.openlocfilehash: c4902ff5194c1648a8353b2a21ea559d15d574b3
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b60b036954691bdea12dfff559ceee86f179d44d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861846"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973227"
 ---
 # <a name="create-time-series-insights-resources-using-azure-resource-manager-templates"></a>Time Series Insights erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -33,8 +33,8 @@ A Time Series Insights a következő erőforrásokat támogatja:
 
 A Resource Manager-sablon egy olyan JSON-fájl, amely meghatározza az erőforráscsoport erőforrásainak infrastruktúráját és konfigurációját. A következő dokumentumok részletesebben ismertetik a sablonfájlokat:
 
-- [Azure Resource Manager sablon központi telepítése](../azure-resource-manager/template-deployment-overview.md)
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/resource-group-template-deploy.md)
+- [Azure Resource Manager sablon központi telepítése](../azure-resource-manager/templates/overview.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../azure-resource-manager/templates/deploy-powershell.md)
 - [Microsoft. TimeSeriesInsights erőforrástípusok](/azure/templates/microsoft.timeseriesinsights/allversions)
 
 Az [201-timeseriesinsights-Environment-with-eventhub](https://github.com/Azure/azure-quickstart-templates/tree/master/201-timeseriesinsights-environment-with-eventhub) gyors üzembe helyezési sablont a githubon tesszük közzé. Ez a sablon létrehoz egy Time Series Insights környezetet, egy alárendelt eseményforrás, amely az Event hub eseményeinek felhasználására van konfigurálva, és olyan hozzáférési házirendeket hoz létre, amelyek hozzáférést biztosítanak a környezeti adatokhoz. Ha nincs megadva egy meglévő Event hub, a rendszer létrehoz egyet a telepítéssel.
@@ -118,7 +118,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
          }
      }
      ```
-  
+
     * További információért olvassa el a [paraméterekkel](../azure-resource-manager/templates/parameter-files.md) kapcsolatos cikket.
 
 ## <a name="deploy-the-quickstart-template-locally-using-powershell"></a>A gyors üzembe helyezési sablon központi telepítése a PowerShell használatával
@@ -174,12 +174,12 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
 
 1. A központi telepítés létrehozása
 
-    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információért olvassa el a [növekményes és a teljes telepítések](../azure-resource-manager/deployment-modes.md)című témakört.
+    * Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információért olvassa el a [növekményes és a teljes telepítések](../azure-resource-manager/templates/deployment-modes.md)című témakört.
 
     * A következő parancs a PowerShell-ablak öt szükséges paraméterének megadását kéri:
 
       ```powershell
-      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json 
+      New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
       ```
 
     * Ha ehelyett a paramétereket szeretné megadni, használja a következő parancsot:
@@ -194,7 +194,7 @@ Az alábbi eljárás azt ismerteti, hogyan használható a PowerShell egy olyan 
       New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
       ```
 
-    * A [teljes](../azure-resource-manager/deployment-modes.md) telepítés futtatásához állítsa a **Mode** paramétert a **befejezéshez**:
+    * A [teljes](../azure-resource-manager/templates/deployment-modes.md) telepítés futtatásához állítsa a **Mode** paramétert a **befejezéshez**:
 
       ```powershell
       New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json

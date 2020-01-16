@@ -14,18 +14,18 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: c37c49d8f7e09334014af290bf3a8c8e6d35f04b
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: a13a0a54e9ded48cc5848843f4c329b2dea90f65
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058353"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975220"
 ---
 # <a name="how-to-set-a-static-internal-private-ip-address-using-powershell-classic"></a>Statikus belső magánhálózati IP-cím beállítása a PowerShell (klasszikus) használatával
 A legtöbb esetben nem kell statikus belső IP-címet megadnia a virtuális géphez. A virtuális hálózatban lévő virtuális gépek automatikusan egy belső IP-címet kapnak egy megadott tartományból. Bizonyos esetekben azonban egy adott virtuális géphez statikus IP-címet kell megadni. Ha például a virtuális gép a DNS-t futtatja, vagy tartományvezérlőként fog futni. A statikus belső IP-címek a virtuális géppel együtt maradnak, még leállítás/megszüntetési állapotban is. 
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a [Resource Manager](virtual-networks-static-private-ip-arm-ps.md)-alapú üzemi modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a [Resource Manager](virtual-networks-static-private-ip-arm-ps.md)-alapú üzemi modellt használja.
 > 
 > 
 > ## <a name="install-the-azure-powershell-service-management-module"></a>A Azure PowerShell Service Management modul telepítése
@@ -51,7 +51,7 @@ Annak ellenőrzéséhez, hogy az IP- *10.0.0.7* elérhető-e egy *TestVnet*nevű
 > 
 
 ## <a name="how-to-specify-a-static-internal-ip-when-creating-a-vm"></a>Statikus belső IP-cím megadása virtuális gép létrehozásakor
-Az alábbi PowerShell-szkript létrehoz egy *TestService*nevű új felhőalapú szolgáltatást, majd beolvas egy rendszerképet az Azure-ból, majd létrehoz egy *TestVM* nevű virtuális gépet az új felhőalapú szolgáltatásban a beolvasott képpel, beállítja, hogy a virtuális gép az *alhálózat-1*alhálózatban legyen. és a *10.0.0.7* beállítása statikus belső IP-ként a virtuális géphez:
+Az alábbi PowerShell-szkript létrehoz egy *TestService*nevű új felhőalapú szolgáltatást, majd beolvas egy rendszerképet az Azure-ból, majd létrehoz egy *TestVM* nevű virtuális gépet az új Cloud Service-ben a beolvasott rendszerkép használatával, beállítja a virtuális gépet egy *alhálózat-1*alhálózatba, és a *10.0.0.7* statikus belső IP-ként állítja be a virtuális géphez:
 
     New-AzureService -ServiceName TestService -Location "Central US"
     $image = Get-AzureVMImage|?{$_.ImageName -like "*RightImage-Windows-2012R2-x64*"}
@@ -107,7 +107,7 @@ Ha statikus belső IP-címet szeretne hozzáadni a fenti szkript használatával
     | Set-AzureStaticVNetIP -IPAddress 10.10.0.7 `
     | Update-AzureVM
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Fenntartott IP](virtual-networks-reserved-public-ip.md)
 
 [Példány szintű nyilvános IP-cím (ILPIP)](virtual-networks-instance-level-public-ip.md)

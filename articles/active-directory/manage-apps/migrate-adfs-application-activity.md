@@ -10,15 +10,15 @@ ms.topic: conceptual
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.date: 11/22/2019
+ms.date: 01/14/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: de64385e21604188a5c9002f2e007dad86b2674c
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 333e440fdd5f5062dda45fb12a83543c63e66c04
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74420429"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978036"
 ---
 # <a name="use-the-ad-fs-application-activity-report-preview-to-migrate-applications-to-azure-ad"></a>Alkalmazások áttelepíthetők az Azure AD-be a AD FS alkalmazás-tevékenységi jelentés (előzetes verzió) használatával
 
@@ -63,7 +63,7 @@ A AD FS alkalmazás tevékenységéről szóló jelentés az Azure AD- **haszná
 
 1. Az áttelepítési adatok megnyitása a AD FS alkalmazási tevékenység listában kattintson az **áttelepítés állapota** oszlopban található állapotra. Ekkor megjelenik az átadott konfigurációs tesztek összegzése, valamint az esetleges áttelepítési problémák.
 
-   ![Áttelepítési adatok](media/migrate-adfs-application-activity/migration-details.png)
+   ![A migrálás részletei](media/migrate-adfs-application-activity/migration-details.png)
 
 2. Kattintson egy üzenetre további áttelepítési szabály részleteinek megnyitásához. A tesztelt tulajdonságok teljes listájáért tekintse meg az alábbi [AD FS alkalmazás-konfigurációs tesztek](#ad-fs-application-configuration-tests) táblázatban.
 
@@ -124,6 +124,7 @@ A következő táblázat felsorolja a AD FS alkalmazásokon végrehajtott össze
 
 ## <a name="next-steps"></a>Következő lépések
 
+- [Videó: az alkalmazások áttelepítésére szolgáló AD FS tevékenység jelentés használata](https://www.youtube.com/watch?v=OThlTA239lU)
 - [Alkalmazások kezelése az Azure Active Directoryval](what-is-application-management.md)
 - [Alkalmazások hozzáférésének kezelése](what-is-access-management.md)
 - [Azure AD Connect-összevonás](../hybrid/how-to-connect-fed-whatis.md)

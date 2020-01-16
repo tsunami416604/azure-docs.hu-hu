@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 01/29/2019
-ms.openlocfilehash: 465c0ddd91e81bb597a996637fdc2147e90464de
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 9f394fa8d618c97d74a47ff6e42a002f177cf7d9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942212"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973664"
 ---
 # <a name="replicate-azure-vms-running-storage-spaces-direct-to-another-region"></a>Közvetlen tárolóhelyek-t futtató Azure-beli virtuális gépek replikálása egy másik régióba
 
@@ -30,7 +30,7 @@ Az alábbi ábra egy két csomópontos Azure VM feladatátvevő fürtöt mutat b
 
 ![storagespacesdirect](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacedirect.png)
 
- 
+
 - Két Azure-beli virtuális gép egy Windows feladatátvevő fürtben, és mindegyik virtuális gép két vagy több adatlemezzel rendelkezik.
 - A S2D szinkronizálja az adatokat az adatlemezen, és a szinkronizált tárolót tárolóként jeleníti meg.
 - A Storage-készlet fürt megosztott kötete (CSV) segítségével a feladatátvevő fürtben található.
@@ -51,7 +51,7 @@ Az alábbi ábra egy két csomópontos Azure VM feladatátvevő fürtöt mutat b
 
    ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/multivmgroup.png)
 
-2. Nyissa meg a replikált elemeket, és láthatja a virtuális gép állapotát is. 
+2. Nyissa meg a replikált elemeket, és láthatja a virtuális gép állapotát is.
 3. A virtuális gépek védelme is megtörténik, és a több virtuális GÉPRE kiterjedő konzisztencia-csoport részeként is megjelenik.
 
    ![storagespacesdirect-védelem](./media/azure-to-azure-how-to-enable-replication-s2d-vms/storagespacesdirectgroup.PNG)

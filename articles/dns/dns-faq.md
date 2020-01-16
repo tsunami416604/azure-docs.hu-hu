@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 6/15/2019
 ms.author: allensu
-ms.openlocfilehash: c194d47842c927d3f8049a424dc08a34424a8a31
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 743715da51f2e8c77b81faba1bd8d6979e4f2aab
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74212031"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974548"
 ---
 # <a name="azure-dns-faq"></a>Azure DNS GYIK
 
@@ -42,7 +42,7 @@ További információ: [Azure DNS SLA oldal](https://azure.microsoft.com/support
 
 A tartomány a tartománynévrendszer egyedi neve. Például: contoso.com.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a www\.contoso.com egy webhelyhez. Ezek a rekordok a DNS-zóna contoso.com futnak.
+A DNS-zóna egy adott tartomány DNS-rekordjainak üzemeltetésére szolgál. A tartomány contoso.com például több DNS-rekordot is tartalmazhat. A rekordok tartalmazhatnak mail.contoso.com a levelezési kiszolgálóhoz és a www\.contoso.com egy webhelyhez. Ezek a rekordok a DNS-zóna contoso.com futnak.
 
 A tartománynév *csak egy név*. A DNS-zónák olyan adatforrások, amelyek egy tartománynév DNS-rekordjait tartalmazzák. Az Azure DNS használatával DNS-zónákat üzemeltethet, és kezelheti a tartomány DNS-rekordjait az Azure felületén. Emellett DNS-névkiszolgálók számára is lehetővé teszi az internetről érkező DNS-lekérdezések megválaszolását.
 
@@ -167,7 +167,7 @@ Igen. A DNS-zónák az erőforráscsoportok vagy az előfizetések között hely
 
 DNS-zónák áthelyezésekor nincs hatása a DNS-lekérdezésekre. A zónához hozzárendelt névkiszolgálók megmaradnak. A DNS-lekérdezések feldolgozása a szokásos módon történik.
 
-A DNS-zónák áthelyezésével kapcsolatos további információkért és útmutatásért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md).
+A DNS-zónák áthelyezésével kapcsolatos további információkért és útmutatásért lásd: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 ### <a name="how-long-does-it-take-for-dns-changes-to-take-effect"></a>Mennyi ideig tart a DNS-módosítások érvénybe léptetése?
 

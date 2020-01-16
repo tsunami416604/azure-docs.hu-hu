@@ -5,16 +5,16 @@ author: sideeksh
 manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: 8ed5df15b8ae8e9836c5b8ac8e7d6ad0111f63e1
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 051e8b0add7cf7ab2c4cb2f02ed4e33ea9a23c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941896"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973803"
 ---
 # <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
 
-Ez a cikk az Azure-beli virtuális gépeknek egy másik Azure-régióba való vész-helyreállításával kapcsolatos gyakori kérdésekre ad választ a [site Recovery](site-recovery-overview.md)használatával. 
+Ez a cikk az Azure-beli virtuális gépeknek egy másik Azure-régióba való vész-helyreállításával kapcsolatos gyakori kérdésekre ad választ a [site Recovery](site-recovery-overview.md)használatával.
 
 
 ## <a name="general"></a>Általános
@@ -26,7 +26,7 @@ Az Azure Site Recovery szolgáltatás által védett példányok a védelem els�
 ### <a name="during-the-first-31-days-will-i-incur-any-other-azure-charges"></a>Az első 31 nap során kell valamilyen más Azure-díjat fizetni?
 Igen. Bár az Azure Site Recovery szolgáltatás a védett példányok tekintetében díjmentes az első 31 nap során, az Azure Storage szolgáltatás, a tárolási tranzakciók és az adatforgalom díjkötelesek lehetnek. Továbbá a helyreállított virtuális gépekre is vonatkozhatnak Azure-díjak a számítási idő alapján. A díjszabással kapcsolatos részletes információkat [itt](https://azure.microsoft.com/pricing/details/site-recovery) talál
 
-### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Hol találhatok bevált eljárásokat az Azure-beli virtuális gépek vész-helyreállításához? 
+### <a name="where-can-i-find-best-practices-for-azure-vm-disaster-recovery"></a>Hol találhatok bevált eljárásokat az Azure-beli virtuális gépek vész-helyreállításához?
 1. [Az Azure – Azure architektúra megismerése](azure-to-azure-architecture.md)
 2. [Tekintse át a támogatott és nem támogatott konfigurációkat](azure-to-azure-support-matrix.md)
 3. [Vész-helyreállítás beállítása Azure-beli virtuális gépekhez](azure-to-azure-how-to-enable-replication.md)

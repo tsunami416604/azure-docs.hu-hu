@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ccdd234f951327aeb5baa6aabcac4314b9de7b34
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 0b938de0fec099b3f964eae60dc94d059e05a1c6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517107"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973487"
 ---
 # <a name="deploy-storsimple-virtual-array---prepare-the-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – a Azure Portal előkészítése
 
@@ -37,7 +37,7 @@ A beállítási és konfigurációs folyamat befejezéséhez rendszergazdai jogo
 
 A cikkben közzétett információk a StorSimple virtuális tömbök üzembe helyezésére vonatkoznak a Azure Portal és Microsoft Azure Government felhőben.
 
-### <a name="get-started"></a>Bevezetés
+### <a name="get-started"></a>Az első lépések
 Az üzembe helyezési munkafolyamat a portál előkészítését, virtuális tömb kiépítését a virtualizált környezetben, valamint a telepítés befejezését foglalja magában. Ha a StorSimple Virtual Array üzemelő példányát fájlkiszolgáló vagy iSCSI-kiszolgálóként szeretné elindítani, tekintse át a következő táblázatos erőforrásokat.
 
 #### <a name="deployment-articles"></a>Üzembe helyezési cikkek
@@ -87,7 +87,7 @@ Virtuális tömb üzembe helyezése előtt győződjön meg a következőket:
 
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
-* Az adatközpont hálózata a StorSimple-eszköz hálózati követelményeinek megfelelően van konfigurálva. További információt a [StorSimple virtuális tömb](storsimple-ova-system-requirements.md)rendszerkövetelményei című témakörben talál.
+* Az adatközpont hálózata a StorSimple-eszköz hálózati követelményeinek megfelelően van konfigurálva. További információt a [StorSimple virtuális tömb rendszerkövetelményei](storsimple-ova-system-requirements.md)című témakörben talál.
 * A StorSimple Virtual Array dedikált 5 Mbps Internet-sávszélességgel (vagy több) érhető el. Ez a sávszélesség nem osztható meg más alkalmazásokkal.
 
 ## <a name="step-by-step-preparation"></a>Lépésenkénti előkészítés
@@ -96,7 +96,7 @@ A következő lépésenkénti útmutatást követve készítse elő a portált a
 
 ## <a name="step-1-create-a-new-service"></a>1\. lépés: Új szolgáltatás létrehozása
 
-A StorSimple Eszközkezelő-szolgáltatás egyetlen példánya képes több StorSimple virtuális tömb kezelésére. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát. Ha rendelkezik meglévő StorSimple Eszközkezelő szolgáltatással a virtuális tömbök felügyeletéhez, hagyja ki ezt a lépést, és folytassa [a 2. lépéssel: Szerezze be a szolgáltatás regisztrációs](#step-2-get-the-service-registration-key)kulcsát.
+A StorSimple Eszközkezelő-szolgáltatás egyetlen példánya képes több StorSimple virtuális tömb kezelésére. Az alábbi lépések végrehajtásával hozza létre a StorSimple-eszközkezelő szolgáltatás egy példányát. Ha rendelkezik meglévő StorSimple Eszközkezelő szolgáltatással a virtuális tömbök felügyeletéhez, hagyja ki ezt a lépést, és folytassa a [2. lépés: a szolgáltatás regisztrációs kulcsának beszerzésével](#step-2-get-the-service-registration-key).
 
 [!INCLUDE [storsimple-virtual-array-create-new-service](../../includes/storsimple-virtual-array-create-new-service.md)]
 
@@ -104,7 +104,7 @@ A StorSimple Eszközkezelő-szolgáltatás egyetlen példánya képes több Stor
 > Ha nem engedélyezte a tárfiók automatikus létrehozását a szolgáltatással, akkor legalább egy tárfiókot létre kell hoznia, miután sikeresen létrehozott egy szolgáltatást.
 > 
 > * Ha nem hozott létre automatikusan egy tárfiókot, a részletes utasításokat az [Új tárfiók konfigurálása a szolgáltatáshoz](#optional-step-configure-a-new-storage-account-for-the-service) című szakaszban tekintheti meg.
-> * Ha engedélyezte a Storage-fiók automatikus létrehozását, folytassa [a 2. lépéssel: Szerezze be a szolgáltatás regisztrációs](#step-2-get-the-service-registration-key)kulcsát.
+> * Ha engedélyezte a tárfiók automatikus létrehozását, folytassa a [2. lépés: Szolgáltatásregisztrációs kulcs lekérése](#step-2-get-the-service-registration-key) című szakasszal.
 > 
 > 
 
@@ -121,7 +121,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 > 
 > 
 
-## <a name="step-3-download-the-virtual-array-image"></a>3\. lépés: A virtuális tömb lemezképének letöltése
+## <a name="step-3-download-the-virtual-array-image"></a>3\. lépés: a virtuális tömb rendszerképének letöltése
 
 A szolgáltatás regisztrációs kulcsának elvégzése után le kell töltenie a megfelelő virtuális tömb képét a virtuális tömb kiépítéséhez a gazdagép rendszerén. A virtuális tömb lemezképei operációs rendszer-specifikusak, és a Azure Portal gyorskonfigurálás lapjáról tölthetők le.
 
@@ -135,7 +135,7 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
 #### <a name="to-get-the-virtual-array-image"></a>A virtuális tömb rendszerképének beolvasása
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/). 
-2. A Azure Portal kattintson a **tallózás > StorSimple**-eszközkezelők elemre.
+2. A Azure Portal kattintson a **tallózás > StorSimple-eszközkezelők**elemre.
 3. Válasszon ki egy meglévő StorSimple Eszközkezelő szolgáltatást. A **StorSimple Eszközkezelő** panelen kattintson az **gyorskonfigurálás**elemre. 
 4. Kattintson a Microsoft letöltőközpontból letölteni kívánt rendszerképhez tartozó hivatkozásra. A rendszerképfájlok mérete körülbelül 4,8 GB.
    
@@ -144,11 +144,11 @@ Hajtsa végre a következő lépéseket az [Azure Portalon](https://portal.azure
    * VMDK VMWare ESXi 5,0, 5,5, 6,0 vagy 6,5
 5. Töltse le a fájlt egy helyi meghajtóra, csomagolja ki, és jegyezze fel, hol található a kicsomagolt fájl.
 
-## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Nem kötelező lépés: Új tárfiók konfigurálása a szolgáltatáshoz
+## <a name="optional-step-configure-a-new-storage-account-for-the-service"></a>Választható lépés: új Storage-fiók konfigurálása a szolgáltatáshoz
 
 Ez a lépés nem kötelező, és csak akkor hajtható végre, ha nem engedélyezte egy Storage-fiók automatikus létrehozását a szolgáltatással.
 
-Ha egy másik régióban kell létrehoznia egy Azure Storage-fiókot, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md) lépésről lépésre című témakört.
+Ha egy másik régióban kell létrehoznia egy Azure Storage-fiókot, tekintse meg [a Storage-fiók létrehozása](../storage/common/storage-account-create.md) lépésről lépésre című témakört.
 
 Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a következő lépéseket a StorSimple Eszközkezelő szolgáltatás lapjának [Azure Portal](https://ms.portal.azure.com/) .
 
@@ -156,7 +156,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
 
 1. Navigáljon a Eszközkezelő szolgáltatáshoz, válassza ki, majd kattintson rá duplán. Ekkor megnyílik az **Áttekintés** panel.
 2. A **konfigurációs** szakaszban válassza ki a **Storage-fiók hitelesítő adatait** .
-3. Kattintson a **Hozzáadás**lehetőségre.
+3. Kattintson a **Hozzáadás** parancsra.
 4. A **Storage-fiók hozzáadása** panelen tegye a következőket:
    
    1. Az **előfizetés**mezőben válassza az **aktuális**lehetőséget.
@@ -165,7 +165,7 @@ Meglévő Microsoft Azure Storage-fiók hozzáadásához hajtsa végre a követk
    
    3. Az **Engedélyezés** gombra kattintva biztonságos csatornát hozhat létre a StorSimple-eszköz és a felhő közötti hálózati kommunikációhoz. Csak akkor válassza a **Letiltás** lehetőséget, ha privát felhőben működik.
    
-   4. Kattintson a **Hozzáadás**lehetőségre. A rendszer értesítést küld arról, hogy a Storage-fiók létrehozása sikeres volt.<br></br>
+   4. Kattintson a **Hozzáadás** parancsra. A rendszer értesítést küld arról, hogy a Storage-fiók létrehozása sikeres volt.<br></br>
    
       ![Meglévő Storage-fiók hitelesítő adatainak hozzáadása](./media/storsimple-virtual-array-manage-storage-accounts/ova-add-storageacct.png)
 

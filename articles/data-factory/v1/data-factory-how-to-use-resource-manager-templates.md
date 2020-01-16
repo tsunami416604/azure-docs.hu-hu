@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 96adcfa4bbfc4ed0066ccfbdbe57f9840e8b07f8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 930a3f0cf629c99fc03a84c701bcf7b2807c77c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438812"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972866"
 ---
 # <a name="use-templates-to-create-azure-data-factory-entities"></a>Sablonok használata Azure Data Factory entitások létrehozásához
 > [!NOTE]
@@ -32,7 +32,7 @@ Ebben az esetben egy feladatot ugyanabban a környezetben kell megismételni, de
 Továbbá, mivel a szervezet a 10 adatfeldolgozót többször szeretné telepíteni különböző környezetekben, a sablonok a fejlesztési, tesztelési és éles környezetekhez külön paraméter-fájlok használatával is használhatják ezt a **felhasználhatóságot** .
 
 ## <a name="templating-with-azure-resource-manager"></a>Sablon Azure Resource Manager
-A [Azure Resource Manager-sablonok](../../azure-resource-manager/template-deployment-overview.md) nagyszerű lehetőséget biztosítanak a sablonoknak a Azure Data Factory való megvalósítására. A Resource Manager-sablonok JSON-fájl segítségével határozzák meg az Azure-megoldás infrastruktúráját és konfigurációját. Mivel Azure Resource Manager sablonok az összes/legtöbb Azure-szolgáltatással működnek, széles körben használható az Azure-eszközök összes erőforrásának egyszerű kezelése. A Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../azure-resource-manager/templates/template-syntax.md) .
+A [Azure Resource Manager-sablonok](../../azure-resource-manager/templates/overview.md) nagyszerű lehetőséget biztosítanak a sablonoknak a Azure Data Factory való megvalósítására. A Resource Manager-sablonok JSON-fájl segítségével határozzák meg az Azure-megoldás infrastruktúráját és konfigurációját. Mivel Azure Resource Manager sablonok az összes/legtöbb Azure-szolgáltatással működnek, széles körben használható az Azure-eszközök összes erőforrásának egyszerű kezelése. A Resource Manager-sablonokkal kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok készítése](../../azure-resource-manager/templates/template-syntax.md) .
 
 ## <a name="tutorials"></a>Oktatóanyagok
 A következő oktatóanyagok részletes útmutatást biztosítanak Data Factory entitások Resource Manager-sablonok használatával történő létrehozásához:

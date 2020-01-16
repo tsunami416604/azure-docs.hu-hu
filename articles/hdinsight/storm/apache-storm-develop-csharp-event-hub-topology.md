@@ -2,18 +2,17 @@
 title: Események feldolgozása Event Hubsról a Storm-Azure HDInsight
 description: Ismerje meg, hogyan dolgozhat fel az Azure Event Hubsból C# származó adatok a Visual Studióban létrehozott Storm-topológiával, a Visual studióhoz készült HDInsight Tools használatával.
 author: hrasheed-msft
+ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 11/27/2017
-ms.author: hrasheed
-ROBOTS: NOINDEX
-ms.openlocfilehash: 62d65a4f004494ac4ce4ecd3df0f091460028d8f
-ms.sourcegitcommit: be8e2e0a3eb2ad49ed5b996461d4bff7cba8a837
+ms.date: 01/14/2020
+ms.openlocfilehash: 85b7093df99127b690c51e8f2f28d18e3f5f3c95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72800054"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981643"
 ---
 # <a name="process-events-from-azure-event-hubs-with-apache-storm-on-hdinsight-c"></a>Események feldolgozása az Azure Event Hubs és az Apache Storm on HDInsightC#()
 
@@ -26,19 +25,11 @@ Megtudhatja, hogyan dolgozhat az Azure Event Hubs [Apache Storm](https://storm.a
 
 A jelen dokumentumban ismertetett lépések a SCP.NET NuGet-csomagot használják, amely megkönnyíti a C# topológiák és összetevők létrehozását a HDInsight-alapú Storm használatával.
 
-> [!IMPORTANT]  
-> Habár a jelen dokumentumban ismertetett lépések a Visual Studióval rendelkező Windows fejlesztési környezetre támaszkodnak, a lefordított projektet a Linux rendszerű HDInsight-fürtökön is elküldheti. Csak a 2016. október 28. után létrehozott Linux-alapú fürtök támogatják a SCP.NET-topológiákat.
-
 A HDInsight 3,4 és a nagyobb monó használatával C# futtatja a topológiákat. A dokumentumban használt példa a HDInsight 3,6-es verzióval működik. Ha saját .NET-megoldásokat kíván létrehozni a HDInsight-hez, tekintse meg a [mono kompatibilitási](https://www.mono-project.com/docs/about-mono/compatibility/) dokumentumot az esetleges inkompatibilitás érdekében.
 
 ### <a name="cluster-versioning"></a>Fürt verziószámozása
 
 A projekthez használt Microsoft. SCP. net. SDK NuGet-csomagnak meg kell egyeznie a HDInsight-on telepített Storm fő verziójával. A HDInsight 3,5-es és 3,6-es verziója a Storm 1. x-es verzióját használja, ezért ezeket a fürtöket az 1.0. x. x SCP.NET kell használnia.
-
-> [!IMPORTANT]  
-> A dokumentumban szereplő példa egy HDInsight 3,5 vagy 3,6-fürtöt vár.
->
-> A Linux az egyetlen operációs rendszer, amely a HDInsight 3.4-es vagy újabb verziói esetében használható. 
 
 C#a topológiák esetében a .NET 4,5-et is meg kell célozni.
 
@@ -109,9 +100,6 @@ Az ebben a cikkben létrehozott projekt teljes verzióját letöltheti a [github
 
 * Egy Apache Storm-fürt a HDInsight-on. Lásd: [hozzon létre Apache Hadoop fürtöket a Azure Portal használatával](../hdinsight-hadoop-create-linux-clusters-portal.md) , és válassza a **Storm** a **fürt típusa**lehetőséget.
 
-    > [!WARNING]  
-    > Az ebben a dokumentumban használt példa a HDInsight 3,5-es vagy 3,6-es verziójának Storm-verzióját igényli. Ez a HDInsight régebbi verzióival nem működik, mert az osztály nevének változása megszakadt. A jelen példa régebbi fürtökkel használható verziója: [GitHub](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub/releases).
-
 * Egy [Azure Event hub](../../event-hubs/event-hubs-create.md).
 
 * Az [Azure .net SDK](https://azure.microsoft.com/downloads/)-t.
@@ -133,7 +121,7 @@ Hozzon létre egy `eventhubspout`nevű könyvtárat, és mentse a fájlt a köny
 
 Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](../../event-hubs/event-hubs-create.md)"az Event hub létrehozása" című szakaszának információit.
 
-1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek**elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok hozzáadásához:
+1. Az Event hub létrehozása után tekintse meg a **EventHub** beállításait a Azure Portalban, és válassza a **megosztott hozzáférési házirendek**elemet. Válassza a **+ Hozzáadás** lehetőséget a következő szabályzatok létrehozásához:
 
    | Név | Engedélyek |
    | --- | --- |
@@ -146,11 +134,11 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 ## <a name="configure-the-eventhubwriter"></a>A EventHubWriter konfigurálása
 
-1. Ha még nem telepítette a HDInsight Tools for Visual Studio legújabb verzióját, tekintse meg az első [lépések a Visual studióhoz készült HDInsight-eszközök használatát](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)ismertető témakört.
+1. Ha még nem telepítette a HDInsight Tools for Visual Studio legújabb verzióját, tekintse meg a [HDInsight Tools for Visual Studio használatának első lépései](../hadoop/apache-hadoop-visual-studio-tools-get-started.md)című témakört.
 
 2. Töltse le a megoldást a [eventhub-Storm-Hybrid-](https://github.com/Azure-Samples/hdinsight-dotnet-java-storm-eventhub)ból.
 
-3. A **EventHubWriter** projektben nyissa meg az **app. config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
+3. Nyissa meg a **EventHubExample. SLN**. A **EventHubWriter** projektben nyissa meg az **app. config** fájlt. Használja a korábban konfigurált Event hub információit a következő kulcsok értékének kitöltéséhez:
 
    | Jelmagyarázat | Value (Díj) |
    | --- | --- |
@@ -204,9 +192,11 @@ Event Hubs a példa adatforrása. Használja a [Event Hubs első lépéseinek](.
 
 9. A **végrehajtók** szakaszban válassza ki az egyik hivatkozást a **port** oszlopban. Ez az összetevő által naplózott információkat jeleníti meg. A naplózott adatok az alábbi szöveghez hasonlóak:
 
-        2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
-        2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
-        2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```output
+    2017-03-02 14:51:29.255 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,255 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1830978598,"deviceId":"8566ccbc-034d-45db-883d-d8a31f34068e"}
+    2017-03-02 14:51:29.283 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,283 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1756413275,"deviceId":"647a5eff-823d-482f-a8b4-b95b35ae570b"}
+    2017-03-02 14:51:29.313 m.s.p.TaskHost [INFO] Received C# STDOUT: 2017-03-02 14:51:29,312 [1] INFO  EventHubReader_LogBolt [(null)] - Received data: {"deviceValue":1108478910,"deviceId":"206a68fa-8264-4d61-9100-bfdb68ee8f0a"}
+    ```
 
 ## <a name="stop-the-topologies"></a>A topológiák leállítása
 
@@ -220,7 +210,7 @@ A topológiák leállításához jelölje ki az egyes topológiákat a **Storm t
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a dokumentumból megtanulta, hogyan használhatja a Java Event Hubs kiöntőt és a C# boltot egy topológiából az Azure-Event Hubsban lévő adatokkal való munkához. A topológiák létrehozásával C# kapcsolatos további tudnivalókért tekintse meg a következőket:
+Ebből a dokumentumból megtudhatta, hogyan használhatja a Java Event Hubs kiöntőt és a C# boltot a topológiából az Azure-beli adatokkal való munkavégzéshez Event Hubs. A topológiák létrehozásával C# kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 * [A C# Visual Studio használatával HDInsight Apache Storm-topológiák fejlesztése](apache-storm-develop-csharp-visual-studio-topology.md)
 * [SCP programozási útmutató](apache-storm-scp-programming-guide.md)

@@ -3,7 +3,7 @@ title: Linux futtatása virtuális gépek számítási csomópontjain – Azure 
 description: Ismerje meg, hogyan dolgozhat párhuzamos számítási feladatait a Azure Batch Linux rendszerű virtuális gépek készletén.
 services: batch
 documentationcenter: python
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: dc6ba151-1718-468a-b455-2da549225ab2
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: na
 ms.date: 06/01/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 18df43ebf3a20547917ddd372d922741b4cee849
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 27273fecc9d117079cfda58d537cf7342d3c5dc4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71350106"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027074"
 ---
 # <a name="provision-linux-compute-nodes-in-batch-pools"></a>Linuxos számítási csomópontok kiépítése a Batch-készletekben
 
@@ -31,9 +31,9 @@ A Azure Batch használatával párhuzamos számítási feladatokat futtathat Lin
 >
 
 ## <a name="virtual-machine-configuration"></a>Virtuális gép konfigurációja
-Amikor számítási csomópontok készletét hozza létre a Batchben, két lehetőség közül választhat, amelyekből kiválaszthatja a csomópont méretét és operációs rendszerét: Cloud Services a konfigurációt és a virtuális gép konfigurációját.
+Amikor számítási csomópontok készletét hozza létre a Batchben, két lehetőség közül választhat, amelyekből kiválaszthatja a csomópont méretét és operációs rendszerét: Cloud Services konfigurációt és a virtuális gép konfigurációját.
 
-A **Cloud Services-konfiguráció** *kizárólag* windowsos számítási csomópontok létrehozására használható. Az elérhető számítási csomópontok méretei a [Cloud Services méretében](../cloud-services/cloud-services-sizes-specs.md)vannak felsorolva, és a rendelkezésre álló operációs rendszerek az [Azure vendég operációs rendszer kiadásaiban és az SDK-kompatibilitási mátrixban](../cloud-services/cloud-services-guestos-update-matrix.md)szerepelnek. Ha Azure Cloud Services csomópontokat tartalmazó készletet hoz létre, akkor a csomópont méretét és az operációsrendszer-családot kell megadnia, amelyek a korábban említett cikkekben vannak leírva. A Windows számítási csomópontok készletei esetében a Cloud Services leggyakrabban használatos.
+A **Cloud Services-konfiguráció***kizárólag* windowsos számítási csomópontok létrehozására használható. Az elérhető számítási csomópontok méretei a [Cloud Services méretében](../cloud-services/cloud-services-sizes-specs.md)vannak felsorolva, és a rendelkezésre álló operációs rendszerek az [Azure vendég operációs rendszer kiadásaiban és az SDK-kompatibilitási mátrixban](../cloud-services/cloud-services-guestos-update-matrix.md)szerepelnek. Ha Azure Cloud Services csomópontokat tartalmazó készletet hoz létre, akkor a csomópont méretét és az operációsrendszer-családot kell megadnia, amelyek a korábban említett cikkekben vannak leírva. A Windows számítási csomópontok készletei esetében a Cloud Services leggyakrabban használatos.
 
 A **virtuálisgép-konfiguráció** Linux-és Windows-rendszerképeket is biztosít a számítási csomópontokhoz. Az elérhető számítási csomópontok méretei az Azure-beli [virtuális gépek](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux) és az Azure-ban (Windows) lévő [virtuális gépek méretei](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) szerint vannak felsorolva. Ha virtuális gépek konfigurációs csomópontjait tartalmazó készletet hoz létre, meg kell adnia a csomópontok méretét, a virtuális gép képhivatkozását és a csomópontokra telepítendő batch-csomóponti ügynök SKU-t.
 
@@ -45,10 +45,10 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 
 | **Képhivatkozás tulajdonságai** | **Példa** |
 | --- | --- |
-| Kiadó |Canonical |
+| Gyártó/kiadó |Canonical |
 | Ajánlat |UbuntuServer |
-| SKU |14.04.4-LTS |
-| Version |legújabb |
+| SKU (Cikkszám) |14.04.4-LTS |
+| Verzió |legutóbbi |
 
 > [!TIP]
 > További információt ezekről a tulajdonságokról és a Piactéri rendszerképek listázásáról és az Azure-beli [linuxos virtuálisgép-rendszerképek kiválasztásáról a CLI vagy a PowerShell](../virtual-machines/linux/cli-ps-findimage.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)használatával című témakörben talál. Vegye figyelembe, hogy a Piactéri lemezképek jelenleg nem kompatibilisek a Batch szolgáltatással. További információ: [Node Agent SKU](#node-agent-sku).
@@ -58,16 +58,16 @@ A virtuálisgép-rendszerképek hivatkozásának konfigurálásakor meg kell adn
 ### <a name="node-agent-sku"></a>Csomópont-ügynök SKU
 A Batch-csomóponti ügynök egy olyan program, amely a készlet minden egyes csomópontján fut, és a parancs-és vezérlési felületet biztosítja a csomópont és a Batch szolgáltatás között. A csomópont-ügynök különböző implementációkat mutat be különböző operációs rendszerekhez. Alapvetően a virtuálisgép-konfiguráció létrehozásakor először meg kell adnia a virtuális gép rendszerképének hivatkozását, majd meg kell adnia a rendszerképre telepítendő csomópont-ügynököt. Az egyes csomópontok ügynökei általában több virtuálisgép-lemezképtel kompatibilisek. Íme néhány példa a Node Agent-SKU-ra:
 
-* batch.node.ubuntu 14.04
+* Batch. Node. Ubuntu 14,04
 * Batch. Node. CentOS 7
-* batch.node.windows amd64
+* Batch. Node. Windows amd64
 
 > [!IMPORTANT]
-> Nem minden, a piactéren elérhető virtuálisgép-rendszerkép kompatibilis a jelenleg elérhető batch Node-ügynökökkel. A Batch SDK-k segítségével listázhatja az elérhető csomópont-ügynök SKU-kat, valamint azokat a virtuálisgép-lemezképeket, amelyekkel kompatibilisek. A jelen cikk későbbi részében található [virtuálisgép](#list-of-virtual-machine-images) -rendszerképek listájáról további információt és példákat talál az érvényes rendszerképek listájának lekéréséhez futásidőben.
+> Nem minden, a piactéren elérhető virtuálisgép-rendszerkép kompatibilis a jelenleg elérhető batch Node-ügynökökkel. A Batch SDK-k segítségével listázhatja az elérhető csomópont-ügynök SKU-kat, valamint azokat a virtuálisgép-lemezképeket, amelyekkel kompatibilisek. A jelen cikk későbbi részében található [virtuálisgép-rendszerképek listájáról](#list-of-virtual-machine-images) további információt és példákat talál az érvényes rendszerképek listájának lekéréséhez futásidőben.
 >
 >
 
-## <a name="create-a-linux-pool-batch-python"></a>Linux-készlet létrehozása: Batch Python
+## <a name="create-a-linux-pool-batch-python"></a>Linux-készlet létrehozása: batch Python
 A következő kódrészlet azt mutatja be, hogyan használható a [Python Microsoft Azure batch ügyféloldali kódtára][py_batch_package] az Ubuntu Server számítási csomópontok készletének létrehozásához. A Batch Python modul dokumentációja az [Azure. batch csomagban][py_batch_docs] található a docs beolvasásához.
 
 Ez a kódrészlet explicit módon létrehoz egy [ImageReference][py_imagereference] , és meghatározza a hozzá tartozó tulajdonságokat (közzétevő, ajánlat, SKU, verzió). Az éles kódban azonban azt javasoljuk, hogy a [list_node_agent_skus][py_list_skus] metódus használatával határozza meg és válassza ki az elérhető rendszerkép-és csomópont-ügynök SKU-kombinációit futásidőben.
@@ -215,35 +215,35 @@ A következő táblázat felsorolja azokat a Piactéri virtuálisgép-rendszerk�
 >
 >
 
-| **Publisher** | **Ajánlat** | **Rendszerkép SKU** | **Verzió** | **Csomóponti ügynök SKU-azonosítója** |
+| **Közzétevő** | **Ajánlat** | **Rendszerkép SKU** | **Verzió** | **Csomóponti ügynök SKU-azonosítója** |
 | ------------- | --------- | ------------- | ----------- | --------------------- |
-| kötegelt | rendering-centos73 | renderelési | legújabb | Batch. Node. CentOS 7 |
-| kötegelt | rendering-windows2016 | renderelési | legújabb | batch.node.windows amd64 |
-| Canonical | UbuntuServer | 16.04-LTS | legújabb | batch.node.ubuntu 16.04 |
-| Canonical | UbuntuServer | 14.04.5-LTS | legújabb | batch.node.ubuntu 14.04 |
-| credativ | Debian | 9 | legújabb | Batch. Node. Debian 9 |
-| credativ | Debian | 8 | legújabb | Batch. Node. Debian 8 |
-| microsoft-ads | linux-data-science-vm | linuxdsvm | legújabb | Batch. Node. CentOS 7 |
-| microsoft-ads | standard-data-science-vm | standard-data-science-vm | legújabb | batch.node.windows amd64 |
-| microsoft-azure-batch | centos-container | 7-4 | legújabb | Batch. Node. CentOS 7 |
-| microsoft-azure-batch | centos-container-rdma | 7-4 | legújabb | Batch. Node. CentOS 7 |
-| microsoft-azure-batch | ubuntu-server-container | 16-04 – LTS | legújabb | batch.node.ubuntu 16.04 |
-| microsoft-azure-batch | ubuntu-server-container-rdma | 16-04 – LTS | legújabb | batch.node.ubuntu 16.04 |
-| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-smalldisk | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2016-Datacenter-with-Containers | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter-smalldisk | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1 | legújabb | batch.node.windows amd64 |
-| MicrosoftWindowsServer | WindowsServer | 2008-R2-SP1-smalldisk | legújabb | batch.node.windows amd64 |
-| OpenLogic | CentOS | 7.4 | legújabb | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.4 | legújabb | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.3 | legújabb | Batch. Node. CentOS 7 |
-| OpenLogic | CentOS – HPC | 7.1 | legújabb | Batch. Node. CentOS 7 |
-| Oracle | Oracle-Linux | 7.4 | legújabb | Batch. Node. CentOS 7 |
-| SUSE | SLES-HPC | 12-SP2 | legújabb | Batch. Node. openSUSE 42,1 |
+| batch | renderelés – centos73 | renderelési | legutóbbi | Batch. Node. CentOS 7 |
+| batch | renderelés – windows2016 | renderelési | legutóbbi | Batch. Node. Windows amd64 |
+| Canonical | UbuntuServer | 16.04-LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
+| Canonical | UbuntuServer | 14.04.5-LTS | legutóbbi | Batch. Node. Ubuntu 14,04 |
+| Credativ | Debian | 9 | legutóbbi | Batch. Node. Debian 9 |
+| Credativ | Debian | 8 | legutóbbi | Batch. Node. Debian 8 |
+| Microsoft – ADS | Linux – adattudomány – virtuális gép | linuxdsvm | legutóbbi | Batch. Node. CentOS 7 |
+| Microsoft – ADS | Standard – adattudomány – virtuális gép | Standard – adattudomány – virtuális gép | legutóbbi | Batch. Node. Windows amd64 |
+| Microsoft-Azure-batch | CentOS – tároló | 7-4 | legutóbbi | Batch. Node. CentOS 7 |
+| Microsoft-Azure-batch | CentOS-Container-RDMA | 7-4 | legutóbbi | Batch. Node. CentOS 7 |
+| Microsoft-Azure-batch | Ubuntu – kiszolgáló – tároló | 16-04 – LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
+| Microsoft-Azure-batch | Ubuntu-Server-Container-RDMA | 16-04 – LTS | legutóbbi | Batch. Node. Ubuntu 16,04 |
+| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2016 – Datacenter – tárolók | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-R2-Datacenter-smalldisk | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012-Datacenter | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2012 – Datacenter – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 | legutóbbi | Batch. Node. Windows amd64 |
+| MicrosoftWindowsServer | WindowsServer | 2008 – R2 – SP1 – smalldisk | legutóbbi | Batch. Node. Windows amd64 |
+| OpenLogic | CentOS | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
+| OpenLogic | CentOS – HPC | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
+| OpenLogic | CentOS – HPC | 7.3 | legutóbbi | Batch. Node. CentOS 7 |
+| OpenLogic | CentOS – HPC | 7.1 | legutóbbi | Batch. Node. CentOS 7 |
+| Oracle | Oracle – Linux | 7.4 | legutóbbi | Batch. Node. CentOS 7 |
+| SUSE | SLES – HPC | 12 – SP2 | legutóbbi | Batch. Node. openSUSE 42,1 |
 
 ## <a name="connect-to-linux-nodes-using-ssh"></a>Kapcsolódás Linux-csomópontokhoz SSH használatával
 A fejlesztés során vagy a hibaelhárítás során előfordulhat, hogy be kell jelentkeznie a készletben lévő csomópontokra. A Windows számítási csomópontjaitól eltérően az RDP protokoll (RDP) nem használható Linux-csomópontokhoz való kapcsolódáshoz. Ehelyett a Batch szolgáltatás engedélyezi az SSH-hozzáférést az egyes csomópontokon a távoli kapcsolathoz.
@@ -324,7 +324,7 @@ Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológi�
 
 Ha [alkalmazáscsomag](batch-application-packages.md)használatával helyezi üzembe az alkalmazásokat a Batch-csomópontokon, akkor az alkalmazáscsomag által felhasznált Azure Storage-erőforrásokért is fizetnie kell. Általánosságban elmondható, hogy az Azure Storage-költségek minimálisak. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GitHubon az [Azure-batch-Samples][github_samples] adattárában található [Python-kód][github_samples_py] olyan parancsfájlokat tartalmaz, amelyek bemutatják, hogyan hajtható végre az általános batch-műveletek, például a készlet, a feladat és a feladat létrehozása. A Python-mintákhoz tartozó [readme][github_py_readme] tartalmazza a szükséges csomagok telepítésének részleteit.
 

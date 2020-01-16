@@ -2,7 +2,7 @@
 title: Feladat futásidejű környezeti változói – Azure Batch | Microsoft Docs
 description: A feladat futásidejű környezeti változóinak útmutatója és referenciája Azure Batch elemzésekhez.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 09/12/2019
-ms.author: lahugh
-ms.openlocfilehash: cb087b261780ba88bd26bea3e14fc875e5c63566
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.author: jushiman
+ms.openlocfilehash: fd3c8ac9e65f7f77be070e1d1d108490e61eb248
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73177152"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027186"
 ---
 # <a name="azure-batch-runtime-environment-variables"></a>Azure Batch futtatókörnyezet környezeti változói
 
@@ -48,7 +48,7 @@ A számítási csomópontokon végzett feladatok által végrehajtott parancssor
 |-----------------------------------|--------------------------------------------------------------------------|--------------|---------|
 | AZ_BATCH_ACCOUNT_NAME           | Annak a Batch-fióknak a neve, amelyhez a feladat tartozik.                  | Minden feladat.   | mybatchaccount |
 | AZ_BATCH_ACCOUNT_URL            | A Batch-fiók URL-címe. | Minden feladat. | `https://myaccount.westus.batch.azure.com` |
-| AZ_BATCH_APP_PACKAGE            | Az alkalmazáscsomag környezeti változóinak előtagja. Ha például a "FOO" "1" verziójú alkalmazás egy készletre van telepítve, a környezeti változó AZ_BATCH_APP_PACKAGE_FOO_1. A AZ_BATCH_APP_PACKAGE_FOO_1 arra a helyre mutat, amelyre a csomag le lett töltve (egy mappa). Az alkalmazáscsomag alapértelmezett verziójának használatakor használja a AZ_BATCH_APP_PACKAGE környezeti változót a verziószámok nélkül. | A társított alkalmazáscsomag feladatainak egyike. Az összes feladathoz is elérhető, ha a csomópontnak van alkalmazáscsomag. | AZ_BATCH_APP_PACKAGE_FOO_1 |
+| AZ_BATCH_APP_PACKAGE            | Az alkalmazáscsomag környezeti változóinak előtagja. Ha például a "FOO" "1" nevű alkalmazás egy készletre van telepítve, akkor a környezeti változó AZ_BATCH_APP_PACKAGE_FOO_1. AZ_BATCH_APP_PACKAGE_FOO_1 mutat a csomag letöltésének helyére (egy mappába). Az alkalmazáscsomag alapértelmezett verziójának használatakor használja a AZ_BATCH_APP_PACKAGE környezeti változót a verziószámok nélkül. | A társított alkalmazáscsomag feladatainak egyike. Az összes feladathoz is elérhető, ha a csomópontnak van alkalmazáscsomag. | AZ_BATCH_APP_PACKAGE_FOO_1 |
 | AZ_BATCH_AUTHENTICATION_TOKEN   | Egy hitelesítési jogkivonat, amely hozzáférést biztosít a Batch szolgáltatási műveleteinek korlátozott készletéhez. Ez a környezeti változó csak akkor jelenik meg, ha a [authenticationTokenSettings](/rest/api/batchservice/task/add#authenticationtokensettings) be van állítva a [feladat hozzáadásakor](/rest/api/batchservice/task/add#request-body). A jogkivonat értékét a Batch API-k hitelesítő adatként használják a Batch-ügyfél létrehozásához, például a [BatchClient. Open () .NET API](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.batchclient.open#Microsoft_Azure_Batch_BatchClient_Open_Microsoft_Azure_Batch_Auth_BatchTokenCredentials_)-ban. | Minden feladat. | OAuth2 hozzáférési token |
 | AZ_BATCH_CERTIFICATES_DIR       | Egy könyvtár a [feladat munkakönyvtárában][files_dirs] , amelyben a rendszer a Linux számítási csomópontjain tárolja a tanúsítványokat. Ez a környezeti változó nem vonatkozik a Windows számítási csomópontjaira.                                                  | Minden feladat.   |  /mnt/batch/tasks/workitems/batchjob001/job-1/task001/certs |
 | AZ_BATCH_HOST_LIST              | A [többpéldányos feladat][multi_instance] számára a `nodeIP,nodeIP`formátumban lefoglalt csomópontok listája. | Több példányos elsődleges és alfeladatok. | `10.0.0.4,10.0.0.5` |

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/28/2019
 ms.author: martinco
-ms.openlocfilehash: d62704feaaa46f6780c302f5564b112dd1badbc1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353237"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973914"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -47,11 +47,11 @@ Az ebben a dokumentumban ismertetett javaslatok az Azure AD-bérlő identitás-b
 
 Mielőtt elkezdené ezt a feladatlistát, győződjön meg róla, hogy az ellenőrzőlista elolvasása közben nem sérül. Először gondoskodnia kell a Kiemelt jogosultságú fiókok biztonságáról.
 
-A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
+A Kiemelt fiókok felügyeletét befogadó támadók óriási károkat okozhatnak, ezért fontos, hogy először megvédje ezeket a fiókokat. [Azure multi-Factor Authentication](../../active-directory/authentication/multi-factor-authentication.md) (MFA) engedélyezése és megkövetelése a szervezetben lévő összes rendszergazda számára az [Azure ad-beli biztonsági beállítások](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md) vagy a [feltételes hozzáférés](../../active-directory/conditional-access/plan-conditional-access.md)használatával. Ha még nem implementálta az MFA-t, tegye meg most! Ez fontos.
 
 Minden készlet? Ismerkedjen meg az ellenőrzőlista első lépéseivel.
 
-## <a name="step-1---strengthen-your-credentials"></a>1\. lépés – a hitelesítő adatok megerősítése 
+## <a name="step-1---strengthen-your-credentials"></a>1\. lépés – a hitelesítő adatok megerősítése
 
 A legtöbb nagyvállalati biztonsági rést egy olyan fiók okozta, amely a jelszó spray, a megsértőség vagy az adathalászat megsértésével van ellátva. További információ ezekről a támadásokról ebben a videóban (45 perc):
 > [!VIDEO https://www.youtube.com/embed/uy0j1_t5Hd4]
@@ -60,7 +60,7 @@ A legtöbb nagyvállalati biztonsági rést egy olyan fiók okozta, amely a jels
 
 A kitalált jelszavak gyakorisága, az adathalászás, a kártevő szoftverrel való ellopás vagy az újbóli használat miatt kritikus fontosságú a jelszó visszaállítása valamilyen erős hitelesítő adat használatával – további információ az [Azure multi-Factor Authenticationról](../../active-directory/authentication/multi-factor-authentication.md).
 
-Az Identitáskezelés alapvető szintjének egyszerű engedélyezéséhez használhatja az egykattintásos engedélyezést az [Azure ad biztonsági alapértelmezett beállításaival](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md). A biztonsági alapértékek az Azure MFA-t a bérlő összes felhasználója számára kikényszerítik, és blokkolja a régi protokolloktól a bérlőre kiterjedő bejelentkezéseket.
+Az Identitáskezelés alapvető szintjének egyszerű engedélyezéséhez használhatja az egykattintásos engedélyezést az [Azure ad biztonsági alapértelmezett beállításaival](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md). A biztonsági alapértékek az Azure MFA-t a bérlő összes felhasználója számára kikényszerítik, és blokkolja a régi protokolloktól a bérlőre kiterjedő bejelentkezéseket.
 
 ### <a name="start-banning-commonly-attacked-passwords-and-turn-off-traditional-complexity-and-expiration-rules"></a>Indítsa el a gyakran megtámadott jelszavak betiltását, és kapcsolja ki a hagyományos összetettséget és a lejárati szabályokat.
 
@@ -86,7 +86,7 @@ Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel 
 További információ a [jelszó-kivonatolási szinkronizálás](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) működéséről.
 
 > [!NOTE]
-> Ha engedélyezi a jelszó-kivonatolási szinkronizálást, és az Azure AD tartományi szolgáltatásokat használja, a Kerberos (AES 256) kivonatok és opcionálisan NTLM (RC4, nem Salt) kivonatok is titkosítva lesznek, és szinkronizálva lesznek az Azure AD-vel. 
+> Ha engedélyezi a jelszó-kivonatolási szinkronizálást, és az Azure AD tartományi szolgáltatásokat használja, a Kerberos (AES 256) kivonatok és opcionálisan NTLM (RC4, nem Salt) kivonatok is titkosítva lesznek, és szinkronizálva lesznek az Azure AD-vel.
 
 ### <a name="implement-ad-fs-extranet-smart-lockout"></a>AD FS extranetes intelligens zárolás implementálása
 
@@ -106,7 +106,7 @@ A saját örökölt módszereiket használó alkalmazások az Azure AD-vel való
 
 1. [Az örökölt hitelesítés letiltása, ha AD FS használ](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/access-control-policies-w2k12).
 2. [A SharePoint Online és az Exchange Online beállítása modern hitelesítés használatára](../../active-directory/conditional-access/conditional-access-for-exo-and-spo.md).
-3. Ha prémium szintű Azure AD rendelkezik, használja a [feltételes hozzáférési szabályzatokat](../../active-directory/conditional-access/conditions.md) az örökölt hitelesítés blokkolására, ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/conditional-access/concept-conditional-access-security-defaults.md).
+3. Ha prémium szintű Azure AD rendelkezik, használja a [feltételes hozzáférési szabályzatokat](../../active-directory/conditional-access/conditions.md) az örökölt hitelesítés blokkolására, ellenkező esetben használja az [Azure ad biztonsági alapértelmezéseit](../../active-directory/fundamentals/concept-fundamentals-security-defaults.md).
 
 ### <a name="block-invalid-authentication-entry-points"></a>Érvénytelen hitelesítési belépési pontok blokkolása
 
@@ -123,7 +123,7 @@ Győződjön meg arról, hogy a felhasználók az új alkalmazások számára re
 
 ### <a name="implement-azure-ad-privileged-identity-management"></a>Azure AD Privileged Identity Management implementálása
 
-A "jogsértés feltételezése" egy másik következménye annak a valószínűsége, hogy a feltört fiók valószínűleg egy kiemelt szerepkörrel működhet. 
+A "jogsértés feltételezése" egy másik következménye annak a valószínűsége, hogy a feltört fiók valószínűleg egy kiemelt szerepkörrel működhet.
 
 A [Azure ad Privileged Identity Management (PIM)](../../active-directory/privileged-identity-management/pim-configure.md) segítséget nyújt a fiókok minimálisra csökkentése érdekében:
 
@@ -172,13 +172,13 @@ A [Azure ad Identity Protection](../../active-directory/identity-protection/over
 
 Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshez:
 1. A kockázatos bejelentkezési jelentések felszínre kerülnek a felhasználói bejelentkezési tevékenységek, amelyeket meg kell vizsgálnia. Előfordulhat, hogy a legitim tulajdonos nem végezte el a bejelentkezést.
-2. A kockázatos felhasználói jelentések olyan felszíni felhasználói fiókokat érintenek, amelyek biztonsága esetleg sérült, például a észlelt hitelesítő adatok, vagy a felhasználó különböző helyekről való bejelentkezett, ami lehetetlenné teszi az utazási eseményt. 
+2. A kockázatos felhasználói jelentések olyan felszíni felhasználói fiókokat érintenek, amelyek biztonsága esetleg sérült, például a észlelt hitelesítő adatok, vagy a felhasználó különböző helyekről való bejelentkezett, ami lehetetlenné teszi az utazási eseményt.
 
 ![Kockázatosként megjelölt felhasználók](./media/steps-secure-identity/azure-ad-sec-steps3.png)
 
 ### <a name="audit-apps-and-consented-permissions"></a>Az alkalmazások és a beleegyezett engedélyek naplózása
 
-A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat. 
+A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat.
 
 A felhasználók által megadott engedélyek naplózása mellett a szolgáltatás a prémium szintű környezetek számára elérhetővé teszi a [kockázatos vagy nemkívánatos OAuth-alkalmazások](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)kipróbálását és konkrét megkeresését.
 

@@ -14,13 +14,14 @@ ms.workload: iaas-sql-server
 ms.date: 01/31/2017
 ms.author: mathoma
 ms.reviewer: jroth
+experimental: true
 experimental_id: d51f3cc6-753b-4e
-ms.openlocfilehash: 5fef230d99b871dc54ee85e8c35189a2c745502f
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 4627d9c4fa5c87e8e80ab80892062dabd77e9229
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100449"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978206"
 ---
 # <a name="connect-to-a-sql-server-virtual-machine-on-azure-classic-deployment"></a>Csatlakozás Azure-beli SQL Server-alapú virtuális géphez (hagyományos üzembe helyezési modell)
 > [!div class="op_single_selector"]
@@ -30,10 +31,10 @@ ms.locfileid: "70100449"
 > 
 
 ## <a name="overview"></a>Áttekintés
-Ez a témakör azt ismerteti, hogyan lehet csatlakozni az Azure-beli virtuális gépen futó SQL Server-példányhoz. [Általános csatlakozási forgatókönyveket](#connection-scenarios) tartalmaz, és részletesen ismerteti [a SQL Server-kapcsolatok Azure-beli virtuális gépen](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm)való konfigurálásának lépéseit.
+Ez a témakör azt ismerteti, hogyan lehet csatlakozni az Azure-beli virtuális gépen futó SQL Server-példányhoz. [Általános csatlakozási forgatókönyveket](#connection-scenarios) tartalmaz, és [részletesen ismerteti a SQL Server-kapcsolatok Azure-beli virtuális gépen való konfigurálásának lépéseit](#steps-for-configuring-sql-server-connectivity-in-an-azure-vm).
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Resource Manager-alapú virtuális gépeket használ, tekintse meg a következőt: [kapcsolódás SQL Server virtuális géphez az Azure-ban a Resource Manager használatával](../sql/virtual-machines-windows-sql-connect.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Ha Resource Manager-alapú virtuális gépeket használ, tekintse meg a következőt: [kapcsolódás SQL Server virtuális géphez az Azure-ban a Resource Manager használatával](../sql/virtual-machines-windows-sql-connect.md).
 
 ## <a name="connection-scenarios"></a>Kapcsolatok forgatókönyvei
 Az ügyfélnek a virtuális gépen futó SQL Serverhoz való csatlakozásának módja eltér az ügyfél helyétől és a számítógép/hálózat konfigurációjától függően. Ezek a forgatókönyvek a következőket biztosítják:
@@ -48,7 +49,7 @@ Az ügyfélnek a virtuális gépen futó SQL Serverhoz való csatlakozásának m
 > 
 
 ### <a name="connect-to-sql-server-in-the-same-cloud-service"></a>Kapcsolódás SQL Server ugyanahhoz a felhőalapú szolgáltatáshoz
-Ugyanabban a felhőalapú szolgáltatásban több virtuális gép is létrehozható. A virtuális gépek példájának megismeréséhez tekintse meg a virtuális [gépek virtuális hálózattal vagy felhőalapú szolgáltatással](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service)való összekapcsolását ismertető témakört. Ez a forgatókönyv akkor fordul elő, ha egy virtuális gépen lévő ügyfél megpróbál csatlakozni egy másik virtuális gépen futó SQL Serverhoz ugyanazon a felhőalapú szolgáltatásban.
+Ugyanabban a felhőalapú szolgáltatásban több virtuális gép is létrehozható. A virtuális gépek példájának megismeréséhez tekintse meg a virtuális [gépek virtuális hálózattal vagy felhőalapú szolgáltatással való összekapcsolását](/previous-versions/azure/virtual-machines/windows/classic/connect-vms-classic#connect-vms-in-a-standalone-cloud-service)ismertető témakört. Ez a forgatókönyv akkor fordul elő, ha egy virtuális gépen lévő ügyfél megpróbál csatlakozni egy másik virtuális gépen futó SQL Serverhoz ugyanazon a felhőalapú szolgáltatásban.
 
 Ebben az esetben a virtuális gép **neve** (a portálon **számítógépnév** vagy **állomásnév** ) használatával kapcsolódhat. A virtuális gép számára a létrehozás során megadott név. Ha például az SQL-alapú virtuális gép **mysqlvm**nevezte el, akkor az azonos felhőalapú szolgáltatásban lévő ügyfél virtuális gépe a következő kapcsolati karakterláncot használhatja a kapcsolódáshoz:
 
@@ -102,7 +103,7 @@ A következő ábra összegzi a kapcsolatok elérési útját:
 
 [!INCLUDE [Connect to SQL Server in a VM Classic Steps](../../../../includes/virtual-machines-sql-server-connection-steps-classic.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha a magas rendelkezésre állás és a vész-helyreállítás AlwaysOn rendelkezésre állási csoportok használatát is tervezi, érdemes fontolóra vennie egy figyelő megvalósítását. Az adatbázis-ügyfelek nem közvetlenül az egyik SQL Server példányhoz csatlakoznak a figyelőhöz. A figyelő a rendelkezésre állási csoportban lévő elsődleges replikára irányítja az ügyfeleket. További információ: [ILB-figyelő konfigurálása AlwaysOn rendelkezésre állási csoportokhoz az Azure-ban](../classic/ps-sql-int-listener.md).
 
 Fontos, hogy áttekintse az Azure-beli virtuális gépeken futó SQL Serverra vonatkozó összes ajánlott biztonsági gyakorlatot. További információkért lásd [az SQL Server Azure-beli virtuális gépeken történő futtatásának biztonsági szempontjait](../sql/virtual-machines-windows-sql-security.md).

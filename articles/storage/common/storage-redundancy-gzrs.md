@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: e1789122079d5cbc6f5914a6fd6a69a38df04e45
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748254"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973366"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -51,7 +51,7 @@ Ha az GZRS vagy RA-GZRS engedélyezett Storage-fiókba írja az adatírást, a r
 > [!IMPORTANT]
 > Az aszinkron replikáció az adatírások és az elsődleges régió közötti késleltetés, valamint a másodlagos régióba való replikálás időpontját jelenti. Regionális katasztrófa esetén előfordulhat, hogy a másodlagos régióba még nem replikált módosítások elvesznek, ha az adatok nem állíthatók helyre az elsődleges régióból.
 
-A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiók naprakész információit az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)című témakörben tekintheti meg. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
+A Storage-fiók létrehozásakor meg kell adnia, hogy a rendszer hogyan replikálja az adott fiókban lévő adatkészleteket, és megadja az adott fiók elsődleges régióját is. Egy földrajzilag replikált fiók párosított másodlagos régiója az elsődleges régió alapján van meghatározva, és nem módosítható. Az Azure által támogatott régiók naprakész információit az [üzletmenet folytonossága és a vész-helyreállítási (BCDR): Azure párosított régiók](https://docs.microsoft.com/azure/best-practices-availability-paired-regions)című témakörben tekintheti meg. A Storage-fiókok GZRS vagy RA-GZRS használatával történő létrehozásával kapcsolatos információkért lásd: [Storage-fiók létrehozása](storage-account-create.md).
 
 ### <a name="use-ra-gzrs-for-high-availability"></a>Az RA-GZRS használata magas rendelkezésre álláshoz
 

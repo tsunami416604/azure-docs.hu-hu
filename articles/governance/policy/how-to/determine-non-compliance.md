@@ -3,12 +3,12 @@ title: A nemmegfelelőség okainak meghatározása
 description: Ha egy erőforrás nem megfelelő, számos lehetséges oka lehet. Ismerje meg, hogy mi okozta a meg nem felelés okait.
 ms.date: 04/26/2019
 ms.topic: how-to
-ms.openlocfilehash: 213797a1eafda10d5e97fbc60fc143de975fe221
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: c931831ddf3cc727b9861e75969eac3bf00c9e45
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74873131"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972821"
 ---
 # <a name="determine-causes-of-non-compliance"></a>A nemmegfelelőség okainak meghatározása
 
@@ -31,7 +31,7 @@ Ha egy erőforrás nem megfelelő, az adott erőforrás megfelelőségi adatai a
 
 A megfelelőségi adatok megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
 1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot olyan **megfelelőségi állapotban** , amely _nem megfelelő_.
 
@@ -111,7 +111,7 @@ A _vendég konfiguráció_ kategóriájában a _auditIfNotExists_ házirendek es
 
 Előfordulhat, hogy nem fér hozzá közvetlenül a virtuális géphez, de jelentenie kell, hogy a virtuális gép miért _nem megfelelő_.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 A szabályzat megfelelőségi részleteinek megtekintéséhez kövesse a fenti szakasz lépéseit.
 
@@ -190,9 +190,9 @@ Audit that an application is installed inside Windows VMs                 NonCom
 
 ## <a name="a-namechange-historychange-history-preview"></a><a name="change-history"/>változási előzmények (előzetes verzió)
 
-Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
+Egy új **nyilvános előzetes**verzió részeként az utolsó 14 nap változási előzményei minden olyan Azure-erőforráshoz elérhetők, amely támogatja a [teljes módú törlést](../../../azure-resource-manager/templates/complete-mode-deletion.md). A változási előzmények részletesen ismertetik a változás észlelését és az egyes változtatások _vizuális_ eltéréseit. A változás észlelése akkor aktiválódik, ha a Resource Manager-tulajdonságok hozzáadása, eltávolítása vagy módosítása történik.
 
-1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
+1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg és válassza ki a **Szabályzat** elemet.
 
 1. Az **Áttekintés** vagy **megfelelőség** lapon válassza ki a szabályzatot bármilyen **megfelelőségi állapotban**.
 

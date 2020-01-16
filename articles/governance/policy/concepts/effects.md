@@ -3,12 +3,12 @@ title: A hatások működésének megismerése
 description: Azure Policy definíciók különböző effektusokkal rendelkeznek, amelyek meghatározzák a megfelelőség felügyeletének és jelentésének módját.
 ms.date: 11/04/2019
 ms.topic: conceptual
-ms.openlocfilehash: fec2f966260d997b45be50554e0f41d5fd0491aa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2b588cfb7c13a63e3fa5d3a65d9ccb24a2e854fd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75436369"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972816"
 ---
 # <a name="understand-azure-policy-effects"></a>Azure Policy effektusok ismertetése
 
@@ -367,7 +367,7 @@ A DeployIfNotExists-effektus **részletek** tulajdonsága az összes olyan altul
   - Ennek a tulajdonságnak tartalmaznia kell egy olyan karakterlánc-tömböt, amely megfelel az előfizetés által elérhető szerepköralapú hozzáférés-vezérlési szerepkör-AZONOSÍTÓnak. További információ: [szervizelés – házirend-definíció konfigurálása](../how-to/remediate-resources.md#configure-policy-definition).
 - **DeploymentScope** (nem kötelező)
   - Az engedélyezett értékek az _előfizetések_ és a _ResourceGroup_.
-  - Az aktiválni kívánt központi telepítés típusának beállítása. Az _előfizetés_ az [előfizetési szinten](../../../azure-resource-manager/deploy-to-subscription.md)üzemelő telepítést jelzi, a _ResourceGroup_ pedig egy erőforráscsoporthoz történő központi telepítést jelez.
+  - Az aktiválni kívánt központi telepítés típusának beállítása. Az _előfizetés_ az [előfizetési szinten](../../../azure-resource-manager/templates/deploy-to-subscription.md)üzemelő telepítést jelzi, a _ResourceGroup_ pedig egy erőforráscsoporthoz történő központi telepítést jelez.
   - Az előfizetések szintjén üzemelő példányok használatakor meg kell adni egy _Location_ tulajdonságot a _központi telepítésben_ .
   - Az alapértelmezett érték a _ResourceGroup_.
 - **Üzembe helyezés** [kötelező]

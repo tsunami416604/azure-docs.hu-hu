@@ -8,18 +8,18 @@ ms.topic: conceptual
 ms.date: 12/15/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b6a687fc7ddf5eeacdfe3480a252598c6f9e773e
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e99a0e8e42bcfb5c7967a9cb1c91631bacbea53a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750389"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980077"
 ---
 # <a name="archive-azure-resource-logs-to-storage-account"></a>Azure-beli erőforrás-naplók archiválása a Storage-fiókba
 Az Azure [platform-naplói](platform-logs-overview.md) , beleértve az Azure-tevékenységeket és az erőforrás-naplókat, részletes diagnosztikai és naplózási információkat biztosítanak az Azure-erőforrásokról és az azoktól függő Azure-platformról.  Ez a cikk ismerteti a platform-naplók Azure Storage-fiókba való gyűjtését az archiváláshoz szükséges adatok megőrzése érdekében.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Azure Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) . A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
+Ha még nem rendelkezik ilyennel, [létre kell hoznia egy Azure Storage-fiókot](../../storage/common/storage-account-create.md) . A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az erőforrás-küldési naplók, feltéve, hogy a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
 
 
 > [!IMPORTANT]

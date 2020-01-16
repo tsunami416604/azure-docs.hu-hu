@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 12/03/2019
+ms.date: 01/14/2020
 ms.author: juliako
-ms.openlocfilehash: beb44c469aa8a03430cd5cb5a162966855aad448
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74815397"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972629"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -40,6 +40,7 @@ A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a c
 - A `videoURL` paraméterben megadott URL-címet kódolni kell.
 - Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése.
 - A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlra vonatkozóan.
+- Percenként akár 60 filmet is feltölthet.
 
 > [!Tip]
 > Javasoljuk, hogy a .NET-keretrendszer 4.6.2-es vagy újabb verzióját használja, mivel a régebbi verziók nem a TLS 1.2-t használják alapértelmezés szerint.
@@ -313,7 +314,7 @@ A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi 
 
 |Állapotkód|Hibatípus (a válasz törzsében)|Leírás|
 |---|---|---|
-|400|VIDEO_ALREADY_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
+|409|VIDEO_INDEXING_IN_PROGRESS|Ugyanannak a videónak a feldolgozása már folyamatban van az adott fiókban.|
 |400|VIDEO_ALREADY_FAILED|Ugyanannak a videónak a feldolgozása már meghiúsult az adott fiókban 2 órán belül. Az API-ügyfeleknek legalább 2 órát várniuk kell a videó ismételt feltöltése előtt.|
 
 ## <a name="next-steps"></a>Következő lépések

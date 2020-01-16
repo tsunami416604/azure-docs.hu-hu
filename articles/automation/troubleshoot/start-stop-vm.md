@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 04/04/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eeaf44b9abe5c8f0343325454f599d282be6c743
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: aa71e1e6b58906953dfa22d08405c05c10c83242
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769846"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966690"
 ---
 # <a name="troubleshoot-the-startstop-vms-during-off-hours-solution"></a>A virtuális gépek indítása és leállítása a munkaidőn kívüli megoldással – problémamegoldás
 
@@ -67,13 +67,13 @@ A központi telepítések a következő okok egyike miatt sikertelenek lehetnek:
 Tekintse át az alábbi listát a lehetséges megoldásokról a problémára vagy a helyekre:
 
 1. Az Automation-fiókoknak egyedinek kell lenniük egy Azure-régión belül, még akkor is, ha azok különböző erőforráscsoportok. Keresse meg a meglévő Automation-fiókokat a célhelyen.
-2. Egy meglévő szabályzat megakadályozza a virtuálisgép-megoldás üzembe helyezésének megkezdéséhez/leállításához szükséges erőforrást. Lépjen a Azure Portal házirend-hozzárendeléseire, és győződjön meg arról, hogy rendelkezik-e olyan házirend-hozzárendeléssel, amely nem engedélyezi az erőforrás központi telepítését. További információ: [RequestDisallowedByPolicy](../../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md).
+2. Egy meglévő szabályzat megakadályozza a virtuálisgép-megoldás üzembe helyezésének megkezdéséhez/leállításához szükséges erőforrást. Lépjen a Azure Portal házirend-hozzárendeléseire, és győződjön meg arról, hogy rendelkezik-e olyan házirend-hozzárendeléssel, amely nem engedélyezi az erőforrás központi telepítését. További információ: [RequestDisallowedByPolicy](../../azure-resource-manager/templates/error-policy-requestdisallowedbypolicy.md).
 3. A virtuálisgép-indítási és leállítási megoldás üzembe helyezéséhez regisztrálnia kell az előfizetést a következő Azure-beli erőforrás-névterekben:
     * `Microsoft.OperationsManagement`
     * `Microsoft.Insights`
     * `Microsoft.Automation`
 
-   Az [erőforrás-szolgáltató regisztrálásával kapcsolatos hibák elhárításával](../../azure-resource-manager/resource-manager-register-provider-errors.md) kapcsolatos további információkért tekintse meg a szolgáltatók regisztrálásakor fellépő hibákat.
+   Az [erőforrás-szolgáltató regisztrálásával kapcsolatos hibák elhárításával](../../azure-resource-manager/templates/error-register-resource-provider.md) kapcsolatos további információkért tekintse meg a szolgáltatók regisztrálásakor fellépő hibákat.
 4. Ha zárolva van a Log Analytics munkaterületen, lépjen a munkaterületre a Azure Portalban, és távolítsa el az erőforrás összes zárolását.
 5. Ha a fenti állásfoglalások nem oldják meg a problémát, kövesse a [megoldás frissítése](../automation-solution-vm-management.md#update-the-solution) című témakör útmutatását a Start/Stop megoldás újbóli üzembe helyezéséhez.
 

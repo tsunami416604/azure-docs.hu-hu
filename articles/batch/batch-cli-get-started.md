@@ -3,7 +3,7 @@ title: A Batch Azure CLI használatának első lépései | Microsoft Docs
 description: Gyors bevezetést olvashat Azure Batch szolgáltatás erőforrásainak kezelésére szolgáló Batch parancsokhoz az Azure CLI-ben
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: fcd76587-1827-4bc8-a84d-bba1cd980d85
@@ -12,14 +12,14 @@ ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 07/24/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: dd4a93b9829d69d9d0262428d23d2156d732c006
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d6d625e092618d1190c3dcdf9997b1ce35211d75
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095408"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027284"
 ---
 # <a name="manage-batch-resources-with-azure-cli"></a>Batch-erőforrássok kezelése az Azure CLI-vel
 
@@ -167,10 +167,10 @@ Az következő tippek segíthetnek az Azure CLI használata során felmerülő p
 
 * A `-h` segítségével **súgószöveget** kérhet bármely CLI parancshoz
 * A `-v` és a `-vv` segítségével **részletes** parancskimenetet jeleníthet meg. Ha a parancs tartalmazza a `-vv` jelzőt, az Azure CLI megjeleníti a tényleges REST-kérelmeket és válaszokat is. Ezek a kapcsolók jól jönnek a teljes hibakimenet megjelenítéséhez.
-* A **kapcsolóval megtekintheti a**parancskimenetet JSON-fájlként`--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezután átmásolhatja és módosíthatja ezt a kimenetet `--json-file` (lásd a jelen cikk korábbi részében található JSON-fájlokat).
+* A **kapcsolóval megtekintheti a** parancskimenetet JSON-fájlként `--json`. Például az `az batch pool show pool001 --json` JSON-formátumban jeleníti meg a pool001 tulajdonságait. Ezután másolhatja és módosíthatja ezt a kimenetet egy `--json-file`ban való használatra (lásd a cikk korábbi, JSON-fájljait).
 <!---Loc Comment: Please, check link [JSON files] since it's not redirecting to any location.--->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információt az Azure CLI-vel kapcsolatban az [Azure CLI dokumentációjában](https://docs.microsoft.com/cli/azure) talál.
 * További információt a Batch-erőforrásokkal kapcsolatban a [Az Azure Batch áttekintése fejlesztők számára](batch-api-basics.md) című cikkben talál.

@@ -7,12 +7,12 @@ ms.service: postgresql
 ms.devlang: azurecli
 ms.topic: conceptual
 ms.date: 5/6/2019
-ms.openlocfilehash: 75a11cb5d513438824773a3bfba3b7443300dc05
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 5e80b48e43e72bc3eda16a5dcc64f980065c923f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74770339"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974123"
 ---
 # <a name="create-and-manage-vnet-service-endpoints-for-azure-database-for-postgresql---single-server-using-azure-cli"></a>VNet-szolgáltatási végpontok létrehozása és kezelése az Azure CLI-vel való Azure Database for PostgreSQL – egyetlen kiszolgáló esetén
 Virtual Network (VNet) szolgáltatási végpontok és szabályok kiterjesztik a Virtual Network privát címterület-területét a Azure Database for PostgreSQL-kiszolgálóra. A kényelmes Azure parancssori felületi (CLI) parancsok használatával létrehozhat, frissíthet, törölhet, listázhat és megjeleníthet VNet szolgáltatási végpontokat és szabályokat a kiszolgáló kezeléséhez. Az Azure Database for PostgreSQL VNet szolgáltatásbeli végpontok, például a korlátozások áttekintését lásd: [Azure Database for PostgreSQL Server VNet Service-végpontok](concepts-data-access-and-security-vnet.md). A VNet szolgáltatási végpontok a Azure Database for PostgreSQL összes támogatott régiójában elérhetők.
@@ -66,4 +66,4 @@ A példaszkript futtatása után a következő paranccsal távolítható el az e
 [!code-azurecli-interactive[main](../../cli_scripts/postgresql/create-postgresql-server-vnet/delete-postgresql.sh "Delete the resource group.")]
 
 <!-- Link references, to text, Within this same GitHub repo. --> 
-[resource-manager-portal]: ../azure-resource-manager/resource-manager-supported-services.md
+[resource-manager-portal]: ../azure-resource-manager/management/resource-providers-and-types.md

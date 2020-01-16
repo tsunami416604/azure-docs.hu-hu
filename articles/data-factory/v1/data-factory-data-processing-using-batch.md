@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
-ms.openlocfilehash: 699aab617e56ab87eb0bd6d6c4ceabf9aac4c4fa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: afc7a7406831568304c2ebd8d9a6c72b497e04e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75438893"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972878"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
 > [!NOTE]
@@ -91,7 +91,7 @@ A minta megoldás szándékosan egyszerű. A szolgáltatás célja, hogy bemutas
 Ha nem rendelkezik Azure-előfizetéssel, gyorsan létrehozhat egy ingyenes próbaverziós fiókot. További információ: [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
 
 #### <a name="azure-storage-account"></a>Azure Storage-fiók
-Az ebben az oktatóanyagban tárolt adattárolási fiók használatával tárolhatja az adattárakat. Ha nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)című témakört. A minta megoldás blob Storage-t használ.
+Az ebben az oktatóanyagban tárolt adattárolási fiók használatával tárolhatja az adattárakat. Ha nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](../../storage/common/storage-account-create.md)című témakört. A minta megoldás blob Storage-t használ.
 
 #### <a name="azure-batch-account"></a>Azure Batch-fiók
 Hozzon létre egy batch-fiókot a [Azure Portal](https://portal.azure.com/)használatával. További információ: [Batch-fiók létrehozása és kezelése](../../batch/batch-account-create-portal.md). Jegyezze fel a Batch-fiók nevét és a fiók kulcsát. A [New-AzBatchAccount](https://docs.microsoft.com/powershell/module/az.batch/new-azbatchaccount) parancsmaggal létrehozhat egy batch-fiókot is. A parancsmag használatáról a következő témakörben talál útmutatást: a [Batch PowerShell-parancsmagok használatának első](../../batch/batch-powershell-cmdlets-get-started.md)lépései.
@@ -211,10 +211,10 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
     using System.Globalization;
     using System.Diagnostics;
     using System.Linq;
-    
+
     using Microsoft.Azure.Management.DataFactories.Models;
     using Microsoft.Azure.Management.DataFactories.Runtime;
-    
+
     using Microsoft.WindowsAzure.Storage;
     using Microsoft.WindowsAzure.Storage.Blob;
     ```
@@ -241,15 +241,15 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
        Activity activity,
        IActivityLogger logger)
     {
-    
+
        // Declare types for the input and output data stores.
        AzureStorageLinkedService inputLinkedService;
-    
+
        Dataset inputDataset = datasets.Single(dataset => dataset.Name == activity.Inputs.Single().Name);
-    
+
        foreach (LinkedService ls in linkedServices)
            logger.Write("linkedService.Name {0}", ls.Name);
-    
+
        // Use the First method instead of Single because we are using the same
        // Azure Storage linked service for input and output.
        inputLinkedService = linkedServices.First(
@@ -257,15 +257,15 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
            linkedService.Name ==
            inputDataset.Properties.LinkedServiceName).Properties.TypeProperties
            as AzureStorageLinkedService;
-    
+
        string connectionString = inputLinkedService.ConnectionString; // To create an input storage client.
        string folderPath = GetFolderPath(inputDataset);
        string output = string.Empty; // for use later.
-    
+
        // Create the storage client for input. Pass the connection string.
        CloudStorageAccount inputStorageAccount = CloudStorageAccount.Parse(connectionString);
        CloudBlobClient inputClient = inputStorageAccount.CreateCloudBlobClient();
-    
+
        // Initialize the continuation token before using it in the do-while loop.
        BlobContinuationToken continuationToken = null;
        do
@@ -277,34 +277,34 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
                                     continuationToken,
                                     null,
                                     null);
-    
+
            // The Calculate method returns the number of occurrences of
            // the search term "Microsoft" in each blob associated
            // with the data slice.
            //
            // The definition of the method is shown in the next step.
            output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
        } while (continuationToken != null);
-    
+
        // Get the output dataset by using the name of the dataset matched to a name in the Activity output collection.
        Dataset outputDataset = datasets.Single(dataset => dataset.Name == activity.Outputs.Single().Name);
-    
+
        folderPath = GetFolderPath(outputDataset);
-    
+
        logger.Write("Writing blob to the folder: {0}", folderPath);
-    
+
        // Create a storage object for the output blob.
        CloudStorageAccount outputStorageAccount = CloudStorageAccount.Parse(connectionString);
        // Write the name of the file.
        Uri outputBlobUri = new Uri(outputStorageAccount.BlobEndpoint, folderPath + "/" + GetFileName(outputDataset));
-    
+
        logger.Write("output blob URI: {0}", outputBlobUri.ToString());
        // Create a blob and upload the output text.
        CloudBlockBlob outputBlob = new CloudBlockBlob(outputBlobUri, outputStorageAccount.Credentials);
        logger.Write("Writing {0} to the output blob", output);
        outputBlob.UploadText(output);
-    
+
        // The dictionary can be used to chain custom activities together in the future.
        // This feature is not implemented yet, so just return an empty dictionary.
        return new Dictionary<string, string>();
@@ -322,41 +322,41 @@ A metódusnak néhány kulcsfontosságú összetevője van, amelyeket meg kell �
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FolderPath;
     }
-    
+
     /// <summary>
     /// Gets the fileName value from the input/output dataset.
     /// </summary>
-    
+
     private static string GetFileName(Dataset dataArtifact)
     {
        if (dataArtifact == null || dataArtifact.Properties == null)
        {
            return null;
        }
-    
+
        AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
        if (blobDataset == null)
        {
            return null;
        }
-    
+
        return blobDataset.FileName;
     }
-    
+
     /// <summary>
     /// Iterates through each blob (file) in the folder, counts the number of instances of the search term in the file,
     /// and prepares the output text that is written to the output blob.
     /// </summary>
-    
+
     public static string Calculate(BlobResultSegment Bresult, IActivityLogger logger, string folderPath, ref BlobContinuationToken token, string searchTerm)
     {
        string output = string.Empty;
@@ -416,7 +416,7 @@ Ez a szakasz további részleteket tartalmaz a kód végrehajtásához a végreh
     {
     // Get the list of input blobs from the input storage client object.
     BlobResultSegment blobList = inputClient.ListBlobsSegmented(folderPath,
-    
+
                          true,
                                    BlobListingDetails.Metadata,
                                    null,
@@ -424,9 +424,9 @@ Ez a szakasz további részleteket tartalmaz a kód végrehajtásához a végreh
                                    null,
                                    null);
     // Return a string derived from parsing each blob.
-    
+
      output = Calculate(blobList, logger, folderPath, ref continuationToken, "Microsoft");
-    
+
     } while (continuationToken != null);
 
     ```
@@ -454,14 +454,14 @@ Ez a szakasz további részleteket tartalmaz a kód végrehajtásához a végreh
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FolderPath;
     ```
 1. A kód meghívja a **GetFileName** metódust a fájl nevének lekéréséhez (blob neve). A kód hasonlít a mappa elérési útjának beolvasására használt korábbi kódhoz.
 
     ```csharp
     AzureBlobDataset blobDataset = dataArtifact.Properties.TypeProperties as AzureBlobDataset;
-    
+
     return blobDataset.FileName;
     ```
 1. A fájl nevét egy URI-objektum létrehozásával kell megírni. Az URI-konstruktor a **BlobEndpoint** tulajdonság használatával adja vissza a tároló nevét. A rendszer hozzáadja a mappa elérési útját és fájlnevét a kimeneti blob URI létrehozásához.  
@@ -590,7 +590,7 @@ Ebben a lépésben létrehoz egy társított szolgáltatást a Batch-fiókjához
       > A Data Factory szolgáltatás nem támogatja az igény szerinti beállítást a Batch esetében, mivel az a HDInsight esetében működik. Csak a saját batch-készletét használhatja egy adatelőállítóban.
       >
       >
-   
+
    e. **StorageLinkedService** megadása a **linkedServiceName** tulajdonsághoz. Ezt a társított szolgáltatást az előző lépésben hozta létre. Ez a tároló a fájlok és naplók előkészítési részeként használatos.
 
 1. A társított szolgáltatás üzembe helyezéséhez kattintson a parancssáv **Üzembe helyezés** elemére.
@@ -900,11 +900,11 @@ A hibakeresés néhány alapvető módszerből áll.
 
     ```
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Loading assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Creating an instance of MyDotNetActivityNS.MyDotNetActivity from assembly file MyDotNetActivity...
-    
+
     Trace\_T\_D\_12/6/2015 1:43:35 AM\_T\_D\_\_T\_D\_Verbose\_T\_D\_0\_T\_D\_Executing Module
-    
+
     Trace\_T\_D\_12/6/2015 1:43:38 AM\_T\_D\_\_T\_D\_Information\_T\_D\_0\_T\_D\_Activity e3817da0-d843-4c5c-85c6-40ba7424dce2 finished successfully
     ```
 1. Adja meg a **PDB** -fájlt a zip-fájlban, hogy a hiba részletei olyan információkkal rendelkezzenek, mint a hívási verem, ha hiba történik.
@@ -936,13 +936,13 @@ Ezt a mintát kiterjesztheti Data Factory és a Batch funkcióinak megismerésé
 
 1. Hozzon létre egy készletet **virtuális gépenként magasabb/alacsonyabb maximális feladatokkal**. A létrehozott új készlet használatához frissítse a Batch társított szolgáltatást a Refactory megoldásban. A **virtuális gépek maximális feladataival** kapcsolatos további információkért tekintse meg a "4. lépés: a folyamat létrehozása és futtatása egyéni tevékenységgel" című témakört.
 
-1. Hozzon létre egy batch-készletet az **autoscale** funkcióval. A számítási csomópontok automatikus méretezése egy batch-készletben az alkalmazás által használt feldolgozási teljesítmény dinamikus beállítása. 
+1. Hozzon létre egy batch-készletet az **autoscale** funkcióval. A számítási csomópontok automatikus méretezése egy batch-készletben az alkalmazás által használt feldolgozási teljesítmény dinamikus beállítása.
 
     A minta képlet itt a következő viselkedést éri el. A készlet első létrehozásakor egy virtuális géppel kezdődik. A $PendingTasks metrika meghatározza a futó és az aktív (várólistán lévő) állapotú feladatok számát. A képlet megkeresi a függőben lévő feladatok átlagos számát az utolsó 180 másodpercben, és ennek megfelelően beállítja a TargetDedicated. Biztosítja, hogy a TargetDedicated soha ne haladja meg a 25 virtuális gépet. Az új feladatok elküldésekor a készlet automatikusan növekszik. A feladatok elvégzése után a virtuális gépek csak egyszer válnak szabaddá, és az automatikus skálázás csökkenti ezeket a virtuális gépeket. Igény szerint módosíthatja a startingNumberOfVMs és a maxNumberofVMs.
- 
+
     Autoskálázási képlet:
 
-    ``` 
+    ```
     startingNumberOfVMs = 1;
     maxNumberofVMs = 25;
     pendingTaskSamplePercent = $PendingTasks.GetSamplePercent(180 * TimeInterval_Second);

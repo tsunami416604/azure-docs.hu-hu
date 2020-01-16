@@ -5,15 +5,15 @@ services: virtual-machines
 author: roygara
 ms.service: virtual-machines
 ms.topic: include
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: a799339f2780c2bc372c39120a6e20b34d907326
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 662b2792a2e09603425b1988138326799334f323
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912763"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973458"
 ---
 ### <a name="portal"></a>Portál
 
@@ -88,3 +88,27 @@ A virtuális gép telepítési folyamata hasonló a normál telepítési folyama
 1. Végezze el a többi kijelölést úgy, ahogy szeretné.
 
     ![SSE-Create-VM-Select-CMK-encryption-set. png](media/virtual-machines-disk-encryption-portal/sse-create-vm-select-cmk-encryption-set.png)
+
+#### <a name="enable-on-an-existing-disk"></a>Engedélyezés meglévő lemezen
+
+A lemezek titkosításának kezeléséhez és konfigurálásához a meglévő lemezeken a következő hivatkozást kell használnia: https://aka.ms/diskencryptionsets. Az ügyfél által felügyelt kulcsok a meglévő lemezeken való engedélyezése még nem érhető el a globális Azure Portalban.
+
+> [!CAUTION]
+> A virtuális géphez csatlakoztatott lemezeken a lemez titkosításának engedélyezéséhez le kell állítania a virtuális gépet.
+
+1. Navigáljon egy olyan virtuális gépre, amely ugyanabban a régióban található, mint az egyik lemezes titkosítási csoport.
+1. Nyissa meg a virtuális gépet, és válassza a **Leállítás**lehetőséget.
+
+    ![sse-stop-VM-to-encrypt-disk. png](media/virtual-machines-disk-encryption-portal/sse-stop-VM-to-encrypt-disk.png)
+
+1. A virtuális gép leállítása után válassza a **lemezek** lehetőséget, majd válassza ki a titkosítani kívánt lemezt.
+
+    ![SSE-existing-Disk-Select. png](media/virtual-machines-disk-encryption-portal/sse-existing-disk-select.png)
+
+1. Válassza a **titkosítás** lehetőséget, majd válassza a titkosítás lehetőséget az **ügyfél által felügyelt kulccsal** , majd válassza ki a lemez titkosítási készletét a legördülő listából.
+1. Kattintson a **Mentés** gombra.
+
+    ![SSE-encrypt-existing-Disk-Customer-Managed-Key. png](media/virtual-machines-disk-encryption-portal/sse-encrypt-existing-disk-customer-managed-key.png)
+
+1. Ismételje meg ezt a folyamatot a titkosítani kívánt virtuális géphez csatlakoztatott bármely más lemez esetében.
+1. Ha a lemezek befejezik a váltást az ügyfél által felügyelt kulcsokra, ha nincsenek olyan csatlakoztatott lemezek, amelyeket titkosítani szeretne, elindíthatja a virtuális gépet.

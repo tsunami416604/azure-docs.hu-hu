@@ -10,21 +10,24 @@ editor: ''
 ms.service: api-management
 ms.workload: integration
 ms.topic: article
-ms.date: 08/12/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 8fe07318d33980ad3ec9fc3d6e8749c6c9aed42e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3c2cc3c280ba0da474898bed93bb8533a42ab07f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967344"
 ---
 # <a name="configure-a-custom-domain-name"></a>Egyéni tartománynév beállítása
 
-Azure API Management Service-példány létrehozásakor az Azure a azure-api.net altartományát rendeli hozzá (például `apim-service-name.azure-api.net`). Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
+Azure API Management Service-példány létrehozásakor az Azure `azure-api.net` altartományát rendeli hozzá (például `apim-service-name.azure-api.net`). Az API Management-végpontokat azonban a saját egyéni tartománynevével, például a **contoso.com**teheti elérhetővé. Ez az oktatóanyag bemutatja, hogyan képezhető le egy meglévő egyéni DNS-név egy API Management-példány által közzétett végpontokra.
+
+> [!IMPORTANT]
+> A API Management csak olyan kérelmeket fogad el, amelyek [állomásfejléc](https://tools.ietf.org/html/rfc2616#section-14.23) -értékei megfelelnek az alapértelmezett tartománynévnek vagy a konfigurált egyéni tartományneveknek.
 
 > [!WARNING]
-> Azok az ügyfelek, akik a tanúsítvány-rögzítést szeretnék használni az alkalmazásaik biztonságának javítása érdekében, egyéni tartománynevet > és az általuk kezelt tanúsítványokat kell használniuk, nem az alapértelmezett tanúsítványt. Azok az ügyfelek, amelyek az alapértelmezett tanúsítványt rögzítik, > a nem felügyelt tanúsítvány tulajdonságaitól függenek, ami nem ajánlott eljárás.
+> Azok az ügyfelek, akik a tanúsítvány-rögzítést szeretnék használni az alkalmazásaik biztonságának javítása érdekében, egyéni tartománynevet > és az általuk kezelt tanúsítványokat kell használniuk, nem az alapértelmezett tanúsítványt. Azok az ügyfelek, amelyek az alapértelmezett tanúsítványt rögzítik, a nem felügyelt tanúsítvány tulajdonságaitól, illetve a nem javasolt eljárástól függenek.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
