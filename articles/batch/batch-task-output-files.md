@@ -2,7 +2,7 @@
 title: Feladatok és feladatok kimenetének megőrzése az Azure Storage-ban a Batch szolgáltatás API-Azure Batch használatával | Microsoft Docs
 description: Megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a Batch-feladat és a feladat kimenetének Azure Storage-ba való megőrzéséhez.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.service: batch
@@ -10,14 +10,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 03/05/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e4a2af09b432961211a5f38ecd2d9dacd89d3868
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 8d77da2a0298758dad3eff1a61aff45796bfb6c5
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094441"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029637"
 ---
 # <a name="persist-task-data-to-azure-storage-with-the-batch-service-api"></a>Tevékenységadatok megőrzése az Azure Storage-ban a Batch szolgáltatás API-val
 
@@ -51,7 +51,7 @@ await container.CreateIfNotExists();
 
 ## <a name="get-a-shared-access-signature-for-the-container"></a>Megosztott hozzáférési aláírás beszerzése a tárolóhoz
 
-A tároló létrehozása után szerezzen be egy közös hozzáférésű aláírást (SAS), amely írási hozzáféréssel rendelkezik a tárolóhoz. A SAS delegált hozzáférést biztosít a tárolóhoz. Az SAS hozzáférést biztosít a megadott engedélyekkel, és egy adott időintervallumon belül. A Batch szolgáltatásnak szüksége van egy írási engedéllyel rendelkező SAS-re a feladat kimenetének tárolóba írásához. Az SAS-vel kapcsolatos további információkért lásd: a [közös \(hozzáférésű aláírások\) használata az Azure Storage-ban](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+A tároló létrehozása után szerezzen be egy közös hozzáférésű aláírást (SAS), amely írási hozzáféréssel rendelkezik a tárolóhoz. A SAS delegált hozzáférést biztosít a tárolóhoz. Az SAS hozzáférést biztosít a megadott engedélyekkel, és egy adott időintervallumon belül. A Batch szolgáltatásnak szüksége van egy írási engedéllyel rendelkező SAS-re a feladat kimenetének tárolóba írásához. Az SAS-vel kapcsolatos további információkért lásd: a [közös hozzáférésű aláírások használata \(sas-\) az Azure Storage-ban](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 Ha az Azure Storage API-k használatával kap SAS-t, az API SAS-jogkivonat karakterláncot ad vissza. Ez a jogkivonat-karakterlánc tartalmazza az SAS összes paraméterét, beleértve az engedélyeket és a SAS érvényességi időtartamát. Ahhoz, hogy az SAS-t egy tároló Azure Storage-beli eléréséhez használja, hozzá kell fűzni az SAS-jogkivonat karakterláncát az erőforrás URI azonosítóhoz. Az erőforrás URI-ja a hozzáfűzött SAS-jogkivonattal együtt hitelesített hozzáférést biztosít az Azure Storage-hoz.
 
@@ -71,7 +71,7 @@ string containerSasUrl = container.Uri.AbsoluteUri + containerSasToken;
 
 Egy feladat kimeneti fájljainak megadásához hozzon létre egy [OutputFile](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile) -objektumot, és rendelje hozzá a [CloudTask. OutputFiles](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles#Microsoft_Azure_Batch_CloudTask_OutputFiles) tulajdonsághoz a feladat létrehozásakor.
 
-A következő C# mintakód egy olyan feladatot hoz létre, amely véletlenszerű számokat ír egy nevű `output.txt`fájlba. A példa létrehoz egy kimeneti fájlt `output.txt` a tárolóba való íráshoz. A példa `std*.txt` a fájl mintájának megfelelő naplófájlok kimeneti fájljait is létrehozza ( `stdout.txt` például és `stderr.txt`). A tároló URL-címéhez a tárolóhoz korábban létrehozott SAS szükséges. A Batch szolgáltatás az SAS használatával hitelesíti a tárolóhoz való hozzáférést:
+A következő C# mintakód egy olyan feladatot hoz létre, amely véletlenszerű számokat ír egy `output.txt`nevű fájlba. A példa létrehoz egy kimeneti fájlt `output.txt` a tárolóba való íráshoz. A példa emellett kimeneti fájlokat is létrehoz minden olyan naplófájlhoz, amely megfelel a fájl mintának `std*.txt`nek (_például_`stdout.txt` és `stderr.txt`). A tároló URL-címéhez a tárolóhoz korábban létrehozott SAS szükséges. A Batch szolgáltatás az SAS használatával hitelesíti a tárolóhoz való hozzáférést:
 
 ```csharp
 new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,100000) DO (ECHO !RANDOM!)) > output.txt\"")
@@ -101,11 +101,11 @@ new CloudTask(taskId, "cmd /v:ON /c \"echo off && set && (FOR /L %i IN (1,1,1000
 
 Ha kimeneti fájlt ad meg, a [OutputFile. FilePattern](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfile.filepattern#Microsoft_Azure_Batch_OutputFile_FilePattern) tulajdonsággal határozhatja meg a megfeleltetéshez használandó fájl mintázatát. A fájl mintája nulla fájlokhoz, egyetlen fájlhoz vagy a feladat által létrehozott fájlok készletéhez is tartozhat.
 
-A **FilePattern** tulajdonság a standard fájlrendszerbeli helyettesítő karaktereket `*` (például nem rekurzív egyezések esetén) és `**` (rekurzív egyezések esetén) támogatja. A fenti mintakód például a nem rekurzív módon való egyezésre `std*.txt` szolgáló fájl mintát adja meg:
+A **FilePattern** tulajdonság támogatja a standard fájlrendszerbeli helyettesítő karaktereket (például `*` (nem rekurzív egyezések esetén) és `**` (rekurzív egyezések esetén). A fenti mintakód például az `std*.txt` nem rekurzív módon való egyeztetésére szolgáló fájl mintát adja meg:
 
 `filePattern: @"..\std*.txt"`
 
-Egyetlen fájl feltöltéséhez egy helyettesítő karakter nélküli fájlt kell megadnia. A fenti mintakód például a következőnek megfelelő `output.txt`fájltípust adja meg:
+Egyetlen fájl feltöltéséhez egy helyettesítő karakter nélküli fájlt kell megadnia. A fenti mintakód például meghatározza a `output.txt`egyeztetésére szolgáló fájl mintáját:
 
 `filePattern: @"output.txt"`
 
@@ -121,11 +121,11 @@ További beállításokért tekintse meg a [OutputFileUploadCondition](https://d
 
 ### <a name="disambiguate-files-with-the-same-name"></a>Azonos nevű egyértelműsítse-fájlok
 
-A feladat feladatai létrehozhatnak azonos nevű fájlokat. Például `stdout.txt` a és `stderr.txt` a egy feladatban futó minden feladathoz jönnek létre. Mivel minden egyes feladat a saját környezetében fut, ezek a fájlok nem ütköznek a csomópont fájlrendszerével. Ha azonban több feladatból is tölt fel fájlokat egy megosztott tárolóba, a fájlokat ugyanazzal a névvel kell egyértelműsítse.
+A feladat feladatai létrehozhatnak azonos nevű fájlokat. Például `stdout.txt` és `stderr.txt` jön létre a feladatban futó összes feladathoz. Mivel minden egyes feladat a saját környezetében fut, ezek a fájlok nem ütköznek a csomópont fájlrendszerével. Ha azonban több feladatból is tölt fel fájlokat egy megosztott tárolóba, a fájlokat ugyanazzal a névvel kell egyértelműsítse.
 
 A [OutputFileBlobContainerDestination. Path](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.outputfileblobcontainerdestination.path#Microsoft_Azure_Batch_OutputFileBlobContainerDestination_Path) tulajdonság a kimeneti fájlok céljának blobját vagy virtuális könyvtárát adja meg. A **path** tulajdonság segítségével úgy nevezheti el a blobot vagy a virtuális könyvtárat, hogy az azonos nevű fájlok egyedi névvel vannak ellátva az Azure Storage-ban. Az elérési úton található feladat-azonosító használata jó módszer az egyedi nevek biztosítására és a fájlok egyszerű azonosítására.
 
-Ha a **FilePattern** tulajdonság egy helyettesítő kifejezésre van beállítva, akkor a mintázatnak megfelelő összes fájl fel lesz töltve a **path** tulajdonság által megadott virtuális könyvtárba. Ha például a tároló `mycontainer`, a feladat `mytask`azonosítója, `..\std*.txt`és a fájl mintája, akkor az Azure Storage-ban a kimeneti fájlok abszolút URI-azonosítói a következőkhöz hasonlóak lesznek:
+Ha a **FilePattern** tulajdonság egy helyettesítő kifejezésre van beállítva, akkor a mintázatnak megfelelő összes fájl fel lesz töltve a **path** tulajdonság által megadott virtuális könyvtárba. Ha például a tároló `mycontainer`, a feladat azonosítója `mytask`, és a fájl mintája `..\std*.txt`, akkor az Azure Storage-ban lévő kimeneti fájlok abszolút URI-azonosítói a következőkhöz hasonlóak lesznek:
 
 ```
 https://myaccount.blob.core.windows.net/mycontainer/mytask/stderr.txt
@@ -155,11 +155,11 @@ Code: FileUploadContainerNotFound
 Message: One of the specified Azure container(s) was not found while attempting to upload an output file
 ```
 
-Minden fájl feltöltésekor a Batch két naplófájlt ír a számítási csomópontba, `fileuploadout.txt` és. `fileuploaderr.txt` Megvizsgálhatja ezeket a naplófájlokat, ha többet szeretne megtudni egy adott hibáról. Azokban az esetekben, amikor a fájlfeltöltés soha nem történt meg, például azért, mert maga a feladat nem tudott futni, akkor ezek a naplófájlok nem fognak létezni.
+Minden fájl feltöltésekor a Batch két naplófájlt ír a számítási csomópontba, `fileuploadout.txt` és `fileuploaderr.txt`. Megvizsgálhatja ezeket a naplófájlokat, ha többet szeretne megtudni egy adott hibáról. Azokban az esetekben, amikor a fájlfeltöltés soha nem történt meg, például azért, mert maga a feladat nem tudott futni, akkor ezek a naplófájlok nem fognak létezni.
 
 ## <a name="diagnose-file-upload-performance"></a>Fájlfeltöltés teljesítményének diagnosztizálása
 
-A `fileuploadout.txt` fájl naplófájlok feltöltésének folyamata folyamatban van. Ezt a fájlt megvizsgálva további információkat tudhat meg arról, hogy mennyi ideig tart a fájlfeltöltés. Ne feledje, hogy a teljesítmény feltöltésének számos tényezője van, beleértve a csomópont méretét, a csomópont más tevékenységeit a feltöltés időpontjában, attól függetlenül, hogy a cél tároló ugyanabban a régióban található-e, mint a Batch-készlet, hány csomópontot töltenek fel a Stora-re a GE-fiók egy időben, és így tovább.
+A `fileuploadout.txt` fájl a feltöltés folyamatát naplózza. Ezt a fájlt megvizsgálva további információkat tudhat meg arról, hogy mennyi ideig tart a fájlfeltöltés. Ne feledje, hogy a teljesítmény feltöltésének számos tényezője van, beleértve a csomópont méretét, a csomópont más tevékenységeit a feltöltés időpontjában, attól függetlenül, hogy a cél tároló ugyanabban a régióban található-e, mint a Batch-készlet, hány csomópontot töltenek fel a Stora-re a GE-fiók egy időben, és így tovább.
 
 ## <a name="use-the-batch-service-api-with-the-batch-file-conventions-standard"></a>A Batch szolgáltatás API használata a Batch file Conventions standard használatával
 
@@ -181,13 +181,13 @@ A [PersistOutputs][github_persistoutputs] minta projekt a githubon lévő [Azure
 
 1. Nyissa meg a projektet a **Visual Studio 2019**-ben.
 2. Adja hozzá a Batch és a Storage- **fiók hitelesítő adatait** a Microsoft. Azure. Batch. Samples. Common projekt **AccountSettings. Settings** eleméhez.
-3. **Build** (de ne fusson) a megoldás. Ha a rendszer kéri, állítsa vissza az NuGet-csomagokat.
-4. A Azure Portal használatával töltse fel a **PersistOutputsTask** [alkalmazási csomagját](batch-application-packages.md) . Adja meg a és a függő szerelvényeit a. zip csomagban, állítsa az alkalmazás azonosítóját "PersistOutputsTask" értékre, az alkalmazáscsomag verzióját pedig "1,0"-re. `PersistOutputsTask.exe`
-5. **Indítás** (futtassa) a **PersistOutputs** projektet.
+3. A megoldás **létrehozása** (de ne fusson). Ha a rendszer kéri, állítsa vissza az NuGet-csomagokat.
+4. A Azure Portal használatával töltse fel a **PersistOutputsTask** [alkalmazási csomagját](batch-application-packages.md) . Adja meg a `PersistOutputsTask.exe` és a függő szerelvényeit a. zip csomagban, állítsa az alkalmazás AZONOSÍTÓját "PersistOutputsTask" értékre, az alkalmazáscsomag verzióját pedig "1,0"-re.
+5. **Indítsa el** (futtassa) a **PersistOutputs** projektet.
 6. Amikor a rendszer kéri, hogy válassza ki a minta futtatásához használni kívánt adatmegőrzési technológiát, írja be a **2** értéket a minta futtatásához a Batch szolgáltatás API használatával a feladat kimenetének megőrzése érdekében.
 7. Ha szeretné, futtassa újra a mintát, és a **3** érték megadásával maradjon meg a Batch szolgáltatás API-val, és nevezze el a cél tárolót és a blob elérési útját a file Conventions standard utasításnak megfelelően.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információk a feladatok kimenetének a .NET-hez készült file Conventions Library-vel való [megőrzéséről: feladatok és feladatok adatainak megőrzése az Azure Storage szolgáltatásban a .net-hez készült batch file Conventions Library használatával](batch-task-output-file-conventions.md).
 - További információ a Azure Batch kimeneti adatainak megőrzésével kapcsolatos egyéb módszerekről: [feladatok és tevékenységek kimenetének megőrzése az Azure Storage](batch-task-output.md)-ban.

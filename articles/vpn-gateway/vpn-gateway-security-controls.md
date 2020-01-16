@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 2c32f46ca85007608b5e17f2bf77b0a8f0fb8397
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: cdf616b29a93e786ef26af83b5d3b3541f94d67c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75862747"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972277"
 ---
 # <a name="security-controls-for-azure-vpn-gateway"></a>Az Azure VPN Gateway biztonsági vezérlői
 
@@ -36,7 +36,7 @@ Ez a cikk az Azure VPN Gateway beépített biztonsági vezérlőket dokumentálj
 |---|---|--|
 | Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | Lásd: [Azure monitor diagnosztikai naplók/riasztás](vpn-gateway-howto-setup-alerts-virtual-network-gateway-log.md) & [Azure monitor metrikák/riasztások](vpn-gateway-howto-setup-alerts-virtual-network-gateway-metric.md).  |
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | Azure Resource Manager tevékenység naplója. |
-| Adatsíkok naplózása és naplózása | Igen | [Azure monitor diagnosztikai naplók](../azure-resource-manager/resource-group-audit.md) a VPN-kapcsolat naplózásához és naplózásához. |
+| Adatsíkok naplózása és naplózása | Igen | [Azure monitor diagnosztikai naplók](../azure-resource-manager/management/view-activity-logs.md) a VPN-kapcsolat naplózásához és naplózásához. |
 
 ## <a name="identity"></a>Identitáskezelés
 
@@ -59,7 +59,7 @@ Ez a cikk az Azure VPN Gateway beépített biztonsági vezérlőket dokumentálj
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Felügyeleti műveletek esetében az Azure VPN Gateway konfigurációjának állapota exportálható Azure Resource Manager sablonként, és az idő múlásával is elvégezhető. | 
+| Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Felügyeleti műveletek esetében az Azure VPN Gateway konfigurációjának állapota exportálható Azure Resource Manager sablonként, és az idő múlásával is elvégezhető. |
 
 ## <a name="next-steps"></a>Következő lépések
 

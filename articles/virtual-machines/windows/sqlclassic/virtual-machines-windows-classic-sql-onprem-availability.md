@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
-ms.openlocfilehash: 48848fbacdc0e205604bb163aa36bdafcd175b0b
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 4521c2c112c93e83144cfc84d600208817b2ccac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72173543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978049"
 ---
 # <a name="extend-on-premises-always-on-availability-groups-to-azure"></a>Helyszíni always on rendelkezésre állási csoportok kiterjesztése az Azure-ra
 Az Always On rendelkezésre állási csoportok magas rendelkezésre állást biztosítanak az adatbázis-csoportok számára másodlagos replikák hozzáadásával. Ezek a replikák meghibásodás esetén lehetővé teszik az adatbázisok feladatátvételét. Emellett az olvasási munkaterhelések vagy a biztonsági mentési feladatok kiszervezésére is használhatók.
@@ -33,7 +33,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következőkkel:
 * Kapcsolat a helyszíni hálózat és az Azure-beli virtuális hálózat között. A virtuális hálózat létrehozásával kapcsolatos további információkért lásd: [helyek közötti kapcsolat létrehozása a Azure Portal használatával (klasszikus)](../../../vpn-gateway/vpn-gateway-howto-site-to-site-classic-portal.md).
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 ## <a name="add-azure-replica-wizard"></a>Azure-replika hozzáadása varázsló
 Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzáadása varázslót** az Always On rendelkezésre állási csoport kibővítésére az Azure-replikák belefoglalásához.
@@ -63,9 +63,9 @@ Ebből a szakaszból megtudhatja, hogyan használhatja az **Azure replika hozzá
    | **Virtuális gép felhasználóneve** |Adjon meg egy felhasználónevet, amely a virtuális gépen rendszergazdai fiók lesz. |
    | **VM-rendszergazda jelszava** |Új fiók jelszavának megadása |
    | **Jelszó megerősítése** |Az új fiók jelszavának megerősítése |
-   | **Virtual Network** |Itt adhatja meg azt az Azure-beli virtuális hálózatot, amelyet az új virtuális gépnek használnia kell. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../../../virtual-network/virtual-networks-overview.md)). |
+   | **Virtuális hálózat** |Itt adhatja meg azt az Azure-beli virtuális hálózatot, amelyet az új virtuális gépnek használnia kell. További információ a virtuális hálózatokról: [Virtual Network Overview (áttekintés](../../../virtual-network/virtual-networks-overview.md)). |
    | **Alhálózat Virtual Network** |Itt adhatja meg azt a virtuális hálózati alhálózatot, amelyet az új virtuális gépnek használnia kell |
-   | **Tartományi** |Ellenőrizze, hogy helyes-e a tartomány előre megadott értéke. |
+   | **Tartomány** |Ellenőrizze, hogy helyes-e a tartomány előre megadott értéke. |
    | **Tartományi Felhasználónév** |Olyan fiókot válasszon, amely a helyi fürt csomópontjain a helyi Rendszergazdák csoportban található |
    | **Jelszó** |Adja meg a tartományi felhasználónévhez tartozó jelszót |
 8. A központi telepítési beállítások érvényesítéséhez kattintson **az OK** gombra.

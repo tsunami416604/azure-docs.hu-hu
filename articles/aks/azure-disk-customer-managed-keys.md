@@ -7,23 +7,23 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 96e7c401578ca8311bfe0e6b5477a9d8cab1a24e
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: 1359f645c634f401f139fe1cd559f23aa4126c22
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912731"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029971"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
 Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az [ügyfél által felügyelt kulcsokat][customer-managed-keys] az AK-fürtökhöz tartozó operációs rendszer és az adatlemezek titkosításához.
 
 > [!NOTE]
-> A Linux-és Windows-alapú AK-fürtök egyaránt támogatottak.
+> A Linux-és Windows-alapú BYOK-fürtök az Azure Managed Disks kiszolgálóoldali titkosítását támogató [Azure-régiókban][supported-regions] érhetők el.
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-* Ez a cikk azt feltételezi, hogy *új AK-fürtöt*hoz létre.  A titkosítási kulcsok tárolásához a Azure Key Vault egy példányát is használni kell, vagy létre kell hoznia.
+* Ez a cikk azt feltételezi, hogy *új AK-fürtöt*hoz létre.
 
 * Ha Key Vault használatával titkosítja a felügyelt lemezeket, engedélyeznie kell a Soft Delete (Törlés) és a kiürítési *Azure Key Vault* védelmét.
 
@@ -47,16 +47,18 @@ az extension add --name aks-preview
 az extension update --name aks-preview
 ```
 
-## <a name="create-an-azure-key-vault-instance-to-store-your-keys"></a>Azure Key Vault-példány létrehozása a kulcsok tárolásához
+## <a name="create-an-azure-key-vault-instance"></a>Azure Key Vault példány létrehozása
 
-Igény szerint az [ügyfél által felügyelt kulcsok konfigurálására][byok-azure-portal] is használhatja a Azure Portal Azure Key Vault
+A kulcsok tárolásához használjon Azure Key Vault-példányt.  Igény szerint az [ügyfél által felügyelt kulcsok konfigurálására][byok-azure-portal] is használhatja a Azure Portal Azure Key Vault
 
-Hozzon létre egy új *erőforráscsoportot*, majd hozzon létre egy új *Key Vault* példányt, és engedélyezze a Soft delete és a kiürítés védelmet.
+Hozzon létre egy új *erőforráscsoportot*, majd hozzon létre egy új *Key Vault* példányt, és engedélyezze a Soft delete és a kiürítés védelmet.  Ügyeljen arra, hogy az egyes parancsokhoz ugyanazt a régiót és erőforráscsoport-nevet használja.
 
 ```azurecli-interactive
 # Optionally retrieve Azure region short names for use on upcoming commands
 az account list-locations
+```
 
+```azurecli-interactive
 # Create new resource group in a supported Azure region
 az group create -l myAzureRegionName -n myResourceGroup
 
@@ -66,7 +68,7 @@ az keyvault create -n myKeyVaultName -g myResourceGroup -l myAzureRegionName  --
 
 ## <a name="create-an-instance-of-a-diskencryptionset"></a>DiskEncryptionSet-példány létrehozása
 
-A következő lépések elvégzéséhez szüksége lesz egy Azure Key Vault tárolt *kulcsra* .  Tárolja a meglévő kulcsot a létrehozott Key Vaultban, vagy [hozzon létre egy kulcsot][key-vault-generate]
+Cserélje le a *myKeyVaultName* nevet a kulcstartó nevére.  A következő lépések elvégzéséhez szüksége lesz egy Azure Key Vault tárolt *kulcsra* is.  Tárolja a meglévő kulcsot az előző lépésekben létrehozott Key Vaulton, vagy [hozzon létre egy új kulcsot][key-vault-generate] , és cserélje le az alábbi *myKeyName* a kulcs nevével.
     
 ```azurecli-interactive
 # Retrieve the Key Vault Id and store it in a variable
@@ -79,7 +81,7 @@ keyVaultKeyUrl=$(az keyvault key show --vault-name myKeyVaultName  --name myKeyN
 az disk-encryption-set create -n myDiskEncryptionSetName  -l myAzureRegionName  -g myResourceGroup --source-vault $keyVaultId --key-url $keyVaultKeyUrl 
 ```
 
-## <a name="grant-the-diskencryptionset-resource-access-to-the-key-vault"></a>A Key vaulthoz való hozzáférés biztosítása a DiskEncryptionSet-erőforráshoz
+## <a name="grant-the-diskencryptionset-access-to-key-vault"></a>A DiskEncryptionSet hozzáférésének engedélyezése a Key vaulthoz
 
 Használja az előző lépésekben létrehozott DiskEncryptionSet és erőforráscsoportokat, és adja meg a DiskEncryptionSet-erőforráshoz való hozzáférést a Azure Key Vaulthoz.
 
@@ -94,52 +96,85 @@ az keyvault set-policy -n myKeyVaultName -g myResourceGroup --object-id $desIden
 az role assignment create --assignee $desIdentity --role Reader --scope $keyVaultId
 ```
 
-## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk-with-a-customer-manged-key"></a>Hozzon létre egy új AK-fürtöt, és titkosítsa az operációsrendszer-lemezt egy ügyfél-összekeveredésű kulccsal
+## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Új AK-fürt létrehozása és az operációsrendszer-lemez titkosítása
 
-Hozzon létre egy új erőforráscsoportot és egy AK-fürtöt, majd használja a kulcsot az operációsrendszer-lemez titkosításához. Az ügyfél által felügyelt kulcs csak a 1,17-nál nagyobb kubernetes-verziók esetén támogatott.
+Hozzon létre egy **új erőforráscsoportot** és egy AK-fürtöt, majd használja a kulcsot az operációsrendszer-lemez titkosításához. Az ügyfél által felügyelt kulcsok csak a 1,17-nél nagyobb kubernetes-verziókban támogatottak. 
+
+> [!IMPORTANT]
+> Győződjön meg arról, hogy létrehoz egy új erőforrások-csoportot az AK-fürthöz
 
 ```azurecli-interactive
 # Retrieve the DiskEncryptionSet value and set a variable
 diskEncryptionSetId=$(az resource show -n diskEncryptionSetName -g myResourceGroup --resource-type "Microsoft.Compute/diskEncryptionSets" --query [id] -o tsv)
 
 # Create a resource group for the AKS cluster
-az group create -n myResourceGroup-l myAzureRegionName
+az group create -n myResourceGroup -l myAzureRegionName
 
 # Create the AKS cluster
-az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0
+az aks create -n myAKSCluster -g myResourceGroup --node-osdisk-diskencryptionset-id $diskEncryptionSetId --kubernetes-version 1.17.0 --generate-ssh-keys
 ```
 
 Ha új csomópont-készleteket ad hozzá a fent létrehozott fürthöz, a létrehozás során megadott ügyfél által felügyelt kulcs az operációsrendszer-lemez titkosítására szolgál.
 
-## <a name="encrypt-your-aks-cluster-data-disk-with-a-customer-managed-key"></a>Az AK-alapú fürt adatlemezének titkosítása ügyfél által felügyelt kulccsal
+## <a name="encrypt-your-aks-cluster-data-disk"></a>Az AK-fürt adatlemezének titkosítása
 
-Az AK-adatlemezeket a saját kulcsaival is titkosíthatja.  Cserélje le a myResourceGroup és a myDiskEncryptionSetName értéket a valós értékekre, és alkalmazza a YAML.
+Az AK-adatlemezeket a saját kulcsaival is titkosíthatja.
 
-Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik. Az egyszerű szolgáltatásnak közreműködői hozzáféréssel kell rendelkeznie ahhoz az erőforráscsoporthoz, ahol a diskencryptionset megtalálható. Ellenkező esetben hibaüzenet jelenik meg, amely arra utal, hogy az egyszerű szolgáltatásnév nem rendelkezik engedéllyel.
+> [!IMPORTANT]
+> Győződjön meg arról, hogy megfelelő AK-beli hitelesítő adatokkal rendelkezik. Az egyszerű szolgáltatásnak közreműködői hozzáféréssel kell rendelkeznie ahhoz az erőforráscsoporthoz, amelyben a diskencryptionset telepítve van. Ellenkező esetben hibaüzenet jelenik meg, amely arra utal, hogy az egyszerű szolgáltatásnév nem rendelkezik engedéllyel.
 
-Hozzon létre egy **byok-Azure-Disk. YAML** nevű fájlt, amely az alábbi információkat tartalmazza.  Cserélje le a myResourceGroup és a myDiskEncrptionSetName értékeket az értékekre.
+```azurecli-interactive
+# Retrieve your Azure Subscription Id from id property as shown below
+az account list
+```
+
+```
+someuser@Azure:~$ az account list
+[
+  {
+    "cloudName": "AzureCloud",
+    "id": "666e66d8-1e43-4136-be25-f25bb5de5893",
+    "isDefault": true,
+    "name": "MyAzureSubscription",
+    "state": "Enabled",
+    "tenantId": "3ebbdf90-2069-4529-a1ab-7bdcb24df7cd",
+    "user": {
+      "cloudShellID": true,
+      "name": "someuser@azure.com",
+      "type": "user"
+    }
+  }
+]
+```
+
+Hozzon létre egy **byok-Azure-Disk. YAML** nevű fájlt, amely az alábbi információkat tartalmazza.  Cserélje le az értékeket a myAzureSubscriptionId, a myResourceGroup és a myDiskEncrptionSetName értékekre, és alkalmazza a YAML.  Ügyeljen arra, hogy az erőforráscsoportot használja, ahol a DiskEncryptionSet telepítve van.  Ha a Azure Cloud Shell használja, akkor ez a fájl a VI vagy a nano használatával hozható létre, mintha virtuális vagy fizikai rendszeren dolgozik:
 
 ```
 kind: StorageClass
-apiVersion: storage.k8s.io/v1
+apiVersion: storage.k8s.io/v1  
 metadata:
   name: hdd
 provisioner: kubernetes.io/azure-disk
 parameters:
   skuname: Standard_LRS
   kind: managed
-  diskEncryptionSetID: "/subscriptions/{subs-id}/resourceGroups/{myResourceGroup}/providers/Microsoft.Compute/diskEncryptionSets/{myDiskEncryptionSetName}"
+  diskEncryptionSetID: "/subscriptions/{myAzureSubscriptionId}/resourceGroups/{myResourceGroup}/providers/Microsoft.Compute/diskEncryptionSets/{myDiskEncryptionSetName}"
 ```
 Ezután futtassa ezt az üzembe helyezést az AK-fürtben:
 ```azurecli-interactive
+# Get credentials
+az aks get-credentials --name myAksCluster --resource-group myResourceGroup --output table
+
+# Update cluster
 kubectl apply -f byok-azure-disk.yaml
 ```
 
 ## <a name="limitations"></a>Korlátozások
 
+* A BYOK jelenleg csak a GA-ban érhető el, és az előzetes verzió bizonyos [Azure-régiókban][supported-regions]
 * Az operációsrendszer-lemez titkosítása a 1,17-es és újabb verziójú Kubernetes-verzióval támogatott   
 * Csak azokon a régiókban érhető el, ahol a BYOK támogatott
-* Ez jelenleg csak az új AK-fürtök esetében érhető el, a meglévő fürtöket nem lehet frissíteni
+* Az ügyfél által felügyelt kulcsokkal való titkosítás jelenleg csak az új AK-fürtök esetében lehetséges, a meglévő fürtök nem frissíthetők.
 * A Virtual Machine Scale Setst használó AK-fürtök szükségesek, a virtuális gépek rendelkezésre állási csoportjai nem támogatottak
 
 
@@ -154,5 +189,6 @@ kubectl apply -f byok-azure-disk.yaml
 [az-extension-update]: /cli/azure/extension#az-extension-update
 [best-practices-security]: /azure/aks/operator-best-practices-cluster-security
 [byok-azure-portal]: /azure/storage/common/storage-encryption-keys-portal
-[customer-managed-keys]: /azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview
+[customer-managed-keys]: /azure/virtual-machines/windows/disk-encryption#customer-managed-keys
 [key-vault-generate]: /azure/key-vault/key-vault-manage-with-cli2
+[supported-regions]: /azure/virtual-machines/windows/disk-encryption#supported-scenarios-and-restrictions

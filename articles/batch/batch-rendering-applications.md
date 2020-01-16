@@ -3,16 +3,16 @@ title: Alkalmazások renderelése – Azure Batch
 description: Előre telepített batch renderelési alkalmazások
 services: batch
 ms.service: batch
-author: laurenhughes
-ms.author: lahugh
+author: ju-shim
+ms.author: jushiman
 ms.date: 09/19/2019
 ms.topic: conceptual
-ms.openlocfilehash: 30a365b36645dfe79f35b4bb889c0a06535a4c73
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 367f7655c32c30f11b37c86c098d76e146fec69c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212722"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026571"
 ---
 # <a name="pre-installed-applications-on-rendering-vm-images"></a>Előre telepített alkalmazások a virtuálisgép-lemezképek megjelenítéséhez
 
@@ -64,7 +64,7 @@ A következő lista a Windows Server 2016-es verziójának 1.3.8-megjelenítési
 * AZ 10
 
 > [!IMPORTANT]
-> A V-Ray és a Maya [Azure batch-bővítmény sablonjain](https://github.com/Azure/batch-extension-templates)kívüli futtatásához kezdje `vrayses.exe` a renderelés futtatása előtt. A vrayses. exe sablonon kívüli elindításához használhatja a következő parancsot `%MAYA_2017%\vray\bin\vrayses.exe"`.
+> A V-Ray és a Maya [Azure batch-bővítmény sablonjain](https://github.com/Azure/batch-extension-templates)kívüli futtatásához indítsa el `vrayses.exe` a renderelés futtatása előtt. A vrayses. exe sablonon kívüli elindításához használhatja a következő parancsot `%MAYA_2017%\vray\bin\vrayses.exe"`.
 >
 > Példaként tekintse meg a [Maya és a V-Ray sablon](https://github.com/Azure/batch-extension-templates/blob/master/templates/maya/render-vray-windows/pool.template.json) indítási feladatát a githubon.
 
@@ -89,6 +89,6 @@ A következő lista a Windows Server 2016-es verziójának 1.3.7-megjelenítési
 > [!NOTE]
 > A Chaos-csoport V-Ray for 3ds Max 2019 (4.10.01 verzió) bevezeti a V-Ray változásait. Az előző verzió (3.60.02-verzió) használatához használja a Windows Server 2016-es verzióját, a 1.3.2 renderelési csomópontokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A renderelési virtuálisgép-lemezképek használatához a készlet létrehozásakor meg kell adni őket a készlet konfigurációjában. Tekintse [meg a Batch-készlet képességeit a rendereléshez](https://docs.microsoft.com/azure/batch/batch-rendering-functionality#batch-pools).

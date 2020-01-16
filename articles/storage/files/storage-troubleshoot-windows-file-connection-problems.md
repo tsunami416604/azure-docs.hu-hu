@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 4a5ab0b0ae76f3c646df42953c1602c63a274824
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457391"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968274"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
@@ -185,7 +185,7 @@ Előfordulhat, hogy a lassú teljesítmény jelenik meg, amikor fájlokat prób�
 -   Ha ismeri az írásokkal kiterjeszthető fájl végső méretét, és a szoftver nem rendelkezik kompatibilitási problémákkal, ha a fájl íratlan farka nulla értéket tartalmaz, a fájl méretét előre állítsa be ahelyett, hogy minden írási kibővítést ír.
 -   Használja a megfelelő másolási módszert:
     -   Használjon [AzCopy](../common/storage-use-azcopy.md?toc=%2fazure%2fstorage%2ffiles%2ftoc.json) a két fájlmegosztás közötti átvitelhez.
-    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](https://blogs.msdn.microsoft.com/granth/2009/12/07/multi-threaded-robocopy-for-faster-copies/) szolgáltatást.
+    -   Egy helyszíni számítógépen lévő fájlmegosztás esetén használja a [Robocopy](/azure/storage/files/storage-files-deployment-guide#robocopy) szolgáltatást.
 
 ### <a name="considerations-for-windows-81-or-windows-server-2012-r2"></a>A Windows 8,1 vagy a Windows Server 2012 R2 szempontjai
 

@@ -9,16 +9,16 @@ ms.author: magoedte
 ms.date: 03/11/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 2d1c747a52a1e8dedd0b5ba411b673eee463a2b6
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 1aa759a2984764169eb28935e095d0f7c0f90c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849581"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969831"
 ---
 # <a name="move-your-azure-automation-account-to-another-subscription"></a>Azure Automation-fiók áthelyezése másik előfizetésre
 
-Az Azure lehetővé teszi bizonyos erőforrások áthelyezését egy új erőforráscsoporthoz vagy előfizetésbe. Az erőforrásokat a Azure Portal, a PowerShell, az Azure CLI vagy a REST API használatával helyezheti át. További információ a folyamatról: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/resource-group-move-resources.md).
+Az Azure lehetővé teszi bizonyos erőforrások áthelyezését egy új erőforráscsoporthoz vagy előfizetésbe. Az erőforrásokat a Azure Portal, a PowerShell, az Azure CLI vagy a REST API használatával helyezheti át. További információ a folyamatról: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 A Azure Automation fiókok az egyik áthelyezhető erőforrás. Ebben a cikkben megismerheti az Automation-fiókok másik erőforrásba vagy előfizetésbe való áthelyezésének lépéseit.
 
@@ -147,4 +147,4 @@ Ha az áthelyezés befejeződött, ellenőrizze az alábbi, ellenőrzött felada
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ az erőforrások Azure-beli áthelyezéséről: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/move-support-resources.md).
+További információ az erőforrások Azure-beli áthelyezéséről: [erőforrások áthelyezése az Azure-ban](../../azure-resource-manager/management/move-support-resources.md).

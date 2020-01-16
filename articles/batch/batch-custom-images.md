@@ -2,18 +2,18 @@
 title: Egyéni készlet kiépítése felügyelt rendszerképből – Azure Batch | Microsoft Docs
 description: Hozzon létre egy batch-készletet egy felügyelt rendszerkép-erőforrásból, hogy kiépítse a számítási csomópontokat az alkalmazás szoftverével és adataival.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/16/2019
-ms.author: lahugh
-ms.openlocfilehash: 82a5f79ca7b7a16cd8f7294ebd1f70816b40ad82
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: 3c7aafb5cfdd2e0127aa9969b904976cb93db614
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "73519251"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029749"
 ---
 # <a name="use-a-managed-image-to-create-a-pool-of-virtual-machines"></a>Felügyelt rendszerkép használata virtuális gépek készletének létrehozásához
 
@@ -116,6 +116,6 @@ Ha a rendszerkép vagy a mögöttes erőforrás el lett távolítva, a következ
 
 További információ a virtuális gép létrehozásáról a csomagoló használatával: Linux- [rendszerkép létrehozása a csomagolóval](../virtual-machines/linux/build-image-with-packer.md) vagy Windows- [rendszerkép készítése a csomagolóval](../virtual-machines/windows/build-image-with-packer.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).

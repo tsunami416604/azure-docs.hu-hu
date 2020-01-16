@@ -2,21 +2,21 @@
 title: Feladatok végpontok közötti futtatása a sablonok használatával – Azure Batch | Microsoft Docs
 description: Hozzon létre batch-készleteket,-feladatokat és-feladatokat a sablonfájlok és az Azure CLI használatával.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.topic: article
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 4733cf1a83bec472baae42f2ac29636bff5fc324
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 2612986491268651222e51646e75cdecc95dc40c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095312"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029731"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
@@ -47,7 +47,7 @@ Az [FFmpeg](https://ffmpeg.org/) például egy népszerű alkalmazás, amely a h
 
 ## <a name="installation"></a>Telepítés
 
-A Azure Batch CLI-bővítmény telepítéséhez először [telepítse az Azure cli 2,0](/cli/azure/install-azure-cli)-es verzióját, vagy futtassa az [](../cloud-shell/overview.md)azure CLI-t Azure Cloud Shellban.
+A Azure Batch CLI-bővítmény telepítéséhez először [telepítse az Azure cli 2,0](/cli/azure/install-azure-cli)-es verzióját, vagy futtassa az Azure CLI-t [Azure Cloud Shellban](../cloud-shell/overview.md).
 
 Telepítse a Batch bővítmény legújabb verzióját az alábbi Azure CLI-parancs használatával:
 
@@ -143,7 +143,7 @@ Ha a sablonfájl neve _Pool-ffmpeg. JSON_, akkor a következő módon hívja meg
 az batch pool create --template pool-ffmpeg.json
 ```
 
-A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja. Példa:
+A CLI megkéri, hogy adjon meg értékeket a `poolId` és a `nodeCount` paraméterek számára. A paramétereket egy JSON-fájlban is megadhatja. Példa:
 
 ```json
 {
@@ -260,7 +260,7 @@ Batch-készlet vagy-feladatok létrehozásához feltölthet egy batch CLI-sablon
 
 Sablon feltöltése:
 
-1. A Batch Explorer területen válassza > a katalógus**helyi sablonok**lehetőséget.
+1. A Batch Explorer **területen válassza a** katalógus > **helyi sablonok**lehetőséget.
 
 2. Válasszon ki vagy húzzon át egy helyi készletet vagy sablont.
 
@@ -284,13 +284,13 @@ az batch file download --file-group ffmpeg-output --local-path
 
 A készlet-és a feladatütemezés lehetővé teszi a Fájlcsoportok számára tárolt fájlok megadását a Pool-csomópontokra való másoláshoz, illetve a készlet csomópontjain lévő fájlokhoz való visszatéréshez. A korábban megadott feladat sablonjában például a rendszer az *FFmpeg-input* fájlrendszert adja meg a feladat-előállító számára, mivel a forrásként átmásolt fájlok helye az átkódoláshoz a csomópontra. A file Group *FFmpeg-output* az a hely, ahol a rendszer átmásolt kimeneti fájlokat másol az egyes feladatokat futtató csomópontról.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 A sablon-és fájlátviteli támogatás jelenleg csak az Azure CLI-hez lett hozzáadva. A cél a Batch olyan felhasználók számára való kibontása, akik a Batch API-k, például a kutatók és az informatikai felhasználók használatával nem szükséges programkódot fejleszteni. A kódolás nélkül az Azure-t, batch-t és a Batch által futtatandó alkalmazásokat használó felhasználók sablonokat hozhatnak létre a készlethez és a feladatok létrehozásához. A sablon paraméterei segítségével a felhasználók a Batch részletes ismerete nélkül, az alkalmazások pedig használhatják a sablonokat.
 
 Próbálja ki az Azure CLI batch-bővítményét, és küldjön visszajelzést vagy javaslatokat a jelen cikkhez vagy a [Batch közösségi](https://github.com/Azure/Batch)tárházhoz tartozó megjegyzésekben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes telepítési és használati dokumentáció, példák és forráskódok az [Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházban érhetők el.
 

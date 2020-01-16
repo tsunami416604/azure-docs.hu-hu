@@ -1,64 +1,39 @@
 ---
-title: A fizikai kiszolgáló értékelésének és áttelepítésének támogatása Azure Migrate
-description: Összefoglalja a fizikai kiszolgálók értékelésének/áttelepítésének támogatását Azure Migrateokkal.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
+title: A fizikai kiszolgáló értékelésének támogatása a Azure Migrate
+description: Ismerje meg a fizikai kiszolgálók értékelésének támogatását a Azure Migrate.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: 9e749297d831aeae7d785a9a9a29bea1f8c6d5e3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.openlocfilehash: 32080605217cde78bd648ca6192f73d1025dea4c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454624"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028776"
 ---
-# <a name="support-matrix-for-physical-server-assessment-and-migration"></a>A fizikai kiszolgálók felmérésének és migrálásának támogatási mátrixa
+# <a name="support-matrix-for-physical-server-assessment"></a>A fizikai kiszolgáló értékelésének támogatási mátrixa 
 
 A [Azure Migrate szolgáltatással](migrate-overview.md) a gépeket kivizsgálhatja és áttelepítheti a Microsoft Azure felhőbe. Ez a cikk a helyszíni fizikai kiszolgálók értékelésére és áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze.
 
 
+## <a name="overview"></a>Áttekintés
 
-## <a name="physical-server-scenarios"></a>Fizikai kiszolgálói forgatókönyvek
+Ha a helyszíni gépeket az Azure-ba való áttelepítésre szeretné felmérni, adja hozzá a Azure Migrate: Server Assessment eszközt egy Azure Migrate projekthez. Üzembe helyezi a [Azure Migrate berendezést](migrate-appliance.md). A készülék folyamatosan felfedi a helyszíni gépeket, és konfigurációs és teljesítményadatokat küld az Azure-nak. A gép felderítése után összegyűjtheti a felderített gépeket csoportokba, és értékelést futtathat egy csoport számára.
 
-A táblázat összefoglalja a fizikai kiszolgálók támogatott forgatókönyveit.
-
-**Üzembe helyezés** | **Részletek***
---- | ---
-**Helyszíni fizikai kiszolgálók értékelése** | [Állítsa be](tutorial-prepare-physical.md) az első értékelést.<br/><br/> Értékelés [futtatása](tutorial-assess-physical.md) .
-**Fizikai kiszolgálók áttelepítése az Azure-ba** | [Próbálja ki](tutorial-migrate-physical-virtual-machines.md) az Azure-ba való áttelepítést.
-
-
-## <a name="azure-migrate-projects"></a>Azure Migrate projektek
+## <a name="limitations"></a>Korlátozások
 
 **Támogatás** | **Részletek**
 --- | ---
-**Azure-engedélyek** | Azure Migrate projekt létrehozásához közreműködői vagy tulajdonosi engedélyekkel kell rendelkeznie az előfizetésben.
-**Fizikai kiszolgálók** | Akár 35 000 fizikai kiszolgálót is megvizsgálhat egyetlen projektben. Egy Azure-előfizetéshez több projekt is tartozhat. Egy projekt tartalmazhatja a fizikai kiszolgálókat, a VMware virtuális gépeket és a Hyper-V virtuális gépeket, akár az értékelési korlátokig is.
-**Régiócsoport** | Azure Migrate-projekteket számos földrajzi régióban is létrehozhatja. Bár bizonyos földrajzi területeken létrehozhat projekteket, a gépeket más célhelyekre is felhasználhatja vagy áttelepítheti. A projekt földrajza csak a felderített metaadatok tárolására szolgál.
+**Értékelési korlátok**| Akár 35 000 fizikai kiszolgálót is felderítheti és felbecsülheti egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects).
+**Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A projektek tartalmazhatják a VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat, akár az értékelési korlátokig is.
+**Felderítés** | A Azure Migrate berendezés akár 250 fizikai kiszolgálót is képes észlelni.
+**Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
 
-  **Régiócsoport** | **Metaadatok tárolási helye**
-  --- | ---
-  Azure Government | US Gov Virginia
-  Ázsia és a Csendes-óceáni térség | Kelet-Ázsia vagy Délkelet-Ázsia
-  Ausztrália | Kelet-Ausztrália vagy Délkelet-Ausztrália
-  Brazília | Dél-Brazília
-  Kanada | Közép-Kanada vagy Kelet-Kanada
-  Európa | Észak-Európa vagy Nyugat-Európa
-  Franciaország | Közép-Franciaország
-  India | Közép-India vagy Dél-India
-  Japán |  Kelet-japán vagy Nyugat-Japán
-  Dél-Korea | Korea középső régiója vagy Dél-Korea
-  Egyesült Királyság | Egyesült Királyság déli régiója vagy Egyesült Királyság nyugati régiója
-  Egyesült Államok | USA középső régiója vagy USA 2. nyugati régiója
+[További](concepts-assessment-calculation.md) információ az értékelésekről.
 
 
- > [!NOTE]
- > A Azure Government támogatása jelenleg csak a Azure Migrate [régebbi verziójához](https://docs.microsoft.com/azure/migrate/migrate-services-overview#azure-migrate-versions) érhető el.
 
 
-## <a name="assessment-physical-server-requirements"></a>Értékelés – fizikai kiszolgálói követelmények
+## <a name="physical-server-requirements"></a>A fizikai kiszolgáló követelményei
 
 | **Támogatás**                | **Részletek**               
 | :-------------------       | :------------------- |
@@ -67,42 +42,14 @@ A táblázat összefoglalja a fizikai kiszolgálók támogatott forgatókönyvei
 | **Operációs rendszer** | Az összes [Windows](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines) -és [Linux](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) -operációs rendszer támogatott, a következők kivételével:<br/> Windows Server 2003 <br/> SUSE Linux|
 
 
-## <a name="assessment-appliance-requirements"></a>Felmérés – készülékre vonatkozó követelmények
+## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate készülékre vonatkozó követelmények
 
-Az értékeléshez Azure Migrate egy könnyű berendezést futtat a fizikai kiszolgálók felderítéséhez, valamint a kiszolgálói metaadatok és teljesítményadatok küldéséhez a Azure Migrate. A készülék fizikai kiszolgálón vagy virtuális gépen is futtatható, és a Azure Portalból letöltött PowerShell-parancsfájl használatával állíthatja be. A következő táblázat összefoglalja a készülékre vonatkozó követelményeket.
+A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja a felderítéshez és értékeléshez. A fizikai kiszolgálók berendezése virtuális gépen vagy fizikai gépen is futtatható. A Azure Portalból letöltött PowerShell-parancsfájl használatával állíthatja be.
 
-| **Támogatás**                | **Részletek**               
-| :-------------------       | :------------------- |
-| **Berendezések üzembe helyezése**   |  A készülék telepítőjének parancsfájlját a portálról töltheti le (tömörített mappában). <br/> A mappát kibonthatja, és a PowerShell-szkriptet (AzureMigrateInstaller. ps1) futtathatja egy dedikált fizikai kiszolgálón vagy virtuális gépen a készülék beállításához.<br/>  A készülék telepítéséhez kiválasztott gépnek Windows Server 2016 rendszernek kell futnia.<br/> A gépnek elegendő hely szükséges ahhoz, hogy 16 GB RAM-ot, 8 vCPU, körülbelül 80 GB tárterületet és külső kapcsolót foglaljon le a készülék virtuális géphez.<br/> A készüléknek statikus vagy dinamikus IP-címnek, valamint internet-hozzáférésre van szüksége.
-| **Azure Migrate projekt**  |  Egy készülék egyetlen projekthez is társítható.<br/> Tetszőleges számú berendezés társítható egyetlen projekthez.<br/> Egy projektben legfeljebb 35 000 gépet lehet felmérni.
-| **Felderítés**              | Egyetlen készülék akár 250-kiszolgálót is képes felderíteni.
-| **Értékelési csoport**       | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.
-| **Értékelés**             | Egyetlen értékeléssel akár 35 000 gépet is megvizsgálhat.
+- Ismerje meg a fizikai kiszolgálók [készülékre vonatkozó követelményeit](migrate-appliance.md#appliance---physical) .
+- További információ a készülék eléréséhez szükséges [URL-címekről](migrate-appliance.md#url-access) .
 
-
-## <a name="assessment-appliance-url-access"></a>Felmérés – készülék URL-hozzáférése
-
-A virtuális gépek felméréséhez az Azure Migrate berendezésnek internetkapcsolatra van szüksége.
-
-- A berendezés telepítésekor a Azure Migrate az alábbi táblázatban összefoglalt URL-címek kapcsolatát.
-- Ha URL-alapú proxyt használ, engedélyezze a hozzáférést a táblázatban lévő URL-címekhez, és győződjön meg arról, hogy a proxy feloldja az URL-címek keresése során fogadott CNAME-rekordokat.
-- Ha elfogó proxyval rendelkezik, előfordulhat, hogy importálnia kell a kiszolgálói tanúsítványt a proxykiszolgálóhoz a készülékre.
-
-
-**URL-cím** | **Részletek**  
---- | ---
-*.portal.azure.com | Navigálás a Azure Portal
-*.windows.net <br/> *.msftauth.net <br/> *.msauth.net <br/> *.microsoft.com <br/> *. live.com  | Jelentkezzen be az Azure-előfizetésébe
-*.microsoftonline.com <br/> *.microsoftonline-p.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
-management.azure.com | Azure Active Directory-alkalmazások létrehozása a berendezés és a szolgáltatások közötti kommunikációhoz.
-dc.services.visualstudio.com | Naplózás és figyelés
-*.vault.azure.net | Azure Key Vault titkok kezelése a készülék és a szolgáltatás közötti kommunikáció során.
-aka.ms/* | Hozzáférés engedélyezése az aka hivatkozásokhoz.
-https://download.microsoft.com/download/* | A letölthető fájlok letöltése a Microsoft letöltési webhelyéről.
-
-
-
-## <a name="assessment-port-requirements"></a>Értékelés – portra vonatkozó követelmények
+## <a name="port-access"></a>Port-hozzáférés
 
 A következő táblázat összefoglalja az értékeléshez szükséges portokra vonatkozó követelményeket.
 
@@ -114,4 +61,4 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Felkészülés a fizikai kiszolgáló](tutorial-prepare-physical.md) értékelésére a fizikai kiszolgálók értékeléséhez és áttelepítéséhez.
+[Felkészülés a fizikai kiszolgáló értékelésére](tutorial-prepare-physical.md).

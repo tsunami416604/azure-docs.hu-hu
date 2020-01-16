@@ -8,12 +8,12 @@ ms.author: vikurpad
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: a5b12a426e52c3b80c58a30b320b2f746bbe990d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 285b3608bc57d88ca2e81ed14355923436ed9d8d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832195"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028511"
 ---
 # <a name="introduction-to-incremental-enrichment-and-caching-in-azure-cognitive-search"></a>Bevezetés a növekményes bővítés és a gyorsítótárazás az Azure-ban Cognitive Search
 
@@ -56,14 +56,16 @@ A gyorsítótár életciklusát az indexelő kezeli. Ha az indexelő `cache` tul
 
 Míg a növekményes bővítés úgy van kialakítva, hogy észlelje és reagáljon a változásokra az Ön részéről beavatkozás nélkül, vannak olyan paraméterek, amelyek segítségével felülbírálhatja az alapértelmezett viselkedéseket:
 
-+ Gyorsítótárazás felfüggesztése
++ Új dokumentumok rangsorolása
 + Készségkészlet-ellenőrzések mellőzése
 + Adatforrás-ellenőrzések megkerülése
 + Készségkészlet kiértékelésének kényszerítése
 
-### <a name="suspend-caching"></a>Gyorsítótárazás felfüggesztése
+### <a name="prioritize-new-documents"></a>Új dokumentumok rangsorolása
 
-Ideiglenesen felfüggesztheti a növekményes bővítést úgy, hogy a gyorsítótárban lévő `enableReprocessing` tulajdonságot `false`re állítja, és később a növekményes bővítést is folytatja, és a végső konzisztencia-szabályozást úgy állítja be, hogy `true`. Ez a vezérlő különösen akkor hasznos, ha rangsorolni szeretné az új dokumentumok indexelését, így biztosítva a teljes körű dokumentumok közötti konzisztenciát.
+A `enableReprocessing` tulajdonság beállításával szabályozhatja a gyorsítótárban már megjelenő bejövő dokumentumok feldolgozását. Ha `true` (alapértelmezett), akkor a gyorsítótárban már meglévő dokumentumok újra fel lesznek dolgozva az indexelő újrafuttatásakor, feltéve, hogy a szakértelem frissítése hatással van erre a doc-ra. 
+
+Ha `false`, a meglévő dokumentumokat nem dolgozza fel újra, és az új, a meglévő tartalomhoz képest hatékonyan rangsorolja a tartalmat. A `enableReprocessing`t csak ideiglenesen `false` kell beállítania. A corpuson keresztüli konzisztencia biztosítása érdekében `enableReprocessing` az idő nagy részében `true`, hogy az új és a meglévő dokumentumok is érvényesek legyenek a jelenlegi készségkészlet-definíció alapján.
 
 ### <a name="bypass-skillset-evaluation"></a>Kikerülő készségkészlet kiértékelése
 
@@ -93,9 +95,9 @@ PUT https://customerdemos.search.windows.net/datasources/callcenter-ds?api-versi
 
 ### <a name="force-skillset-evaluation"></a>Készségkészlet kiértékelésének kényszerítése
 
-A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet vagy készségkészlet adott meg, amelyet az indexelő nem érzékel (például a külső összetevők módosításai, például az egyéni készségkészlet). 
+A gyorsítótár célja, hogy elkerülje a szükségtelen feldolgozást, de tegyük fel, hogy olyan képességet módosít, amelyet az indexelő nem érzékel (például egy másikat a külső kódban, például egy egyéni képességet).
 
-Ebben az esetben a [képességek alaphelyzetbe állítása](preview-api-resetskills.md) API használatával kényszerítheti ki egy adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott képesség kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni és futtatni kell. A képességek alaphelyzetbe állítása után futtassa az indexelő a művelet végrehajtásához.
+Ebben az esetben a [képességek alaphelyzetbe állításával](preview-api-resetskills.md) kényszerítheti az adott képesség újrafeldolgozását, beleértve az olyan alsóbb rétegbeli képességeket is, amelyek függőséggel rendelkeznek az adott szakértelem kimenetével. Ez az API egy POST-kérést fogad el azoknak a szakismereteknek a listájával, amelyeket érvényteleníteni kell, és meg kell adni az újrafeldolgozáshoz. A képességek alaphelyzetbe állítása után futtassa az indexelő a folyamat meghívásához.
 
 ## <a name="change-detection"></a>Változás észlelése
 
@@ -158,7 +160,7 @@ Az [Indexelő létrehozása](https://docs.microsoft.com/rest/api/searchservice/c
 
 ### <a name="datasources"></a>Adatforrások
 
-+ Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-datasource) egy új paramétert támogat egy kérés `ignoreResetRequirement`ján, amelyet `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat.
++ Egyes indexelő lekérdezéseken keresztül kérik le az adatforrásokat. Az Adatlekérdezési lekérdezések esetében az adatforrás [frissítése](https://docs.microsoft.com/rest/api/searchservice/update-data-source) egy új paramétert támogat egy kérés `ignoreResetRequirement`ján, amelyet `true` kell beállítani, ha a frissítési művelet nem érvényteleníti a gyorsítótárat.
 
 Az `ignoreResetRequirement`t takarékosan használhatja, mivel az olyan nem kívánt inkonzisztenciát eredményezhet az adataiban, amelyeket nem lehet könnyen észlelni.
 

@@ -4,16 +4,19 @@ description: A Hyperledger Fabric Consortium hálózati megoldási sablonjának 
 ms.date: 05/09/2019
 ms.topic: article
 ms.reviewer: caleteet
-ms.openlocfilehash: be35cfa26204b36ad65da91252144b9167cb9e54
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 3e7dcd3cdcfa636c0b23ac6643bd7732e7f8ada0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325136"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029164"
 ---
 # <a name="hyperledger-fabric-consortium-network"></a>Hyperledger Fabric Consortium-hálózat
 
 A Hyperledger Fabric Consortium megoldás sablonnal üzembe helyezhet és konfigurálhat egy Hyperledger Fabric Consortium-hálózatot az Azure-ban.
+
+> [!IMPORTANT]
+> Az [Azure-sablon Hyperledger-hálója](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-azure-blockchain.azure-blockchain-hyperledger-fabric) elavult. Ehelyett használja a [Hyperledger-hálót az Azure Kubernetes szolgáltatásban](hyperledger-fabric-consortium-azure-kubernetes-service.md) .  
 
 A cikk elolvasása után:
 
@@ -58,7 +61,7 @@ Ha már rendelkezik előfizetéssel, lépjen a [Azure Portal](https://portal.azu
 
 ![Hyperledger-háló egyetlen tag Blockchain Marketplace-sablon](./media/hyperledger-fabric-consortium-blockchain/marketplace-template.png)
 
-## <a name="deployment"></a>Környezet
+## <a name="deployment"></a>Üzembe helyezés
 
 A **Hyperledger Fabric Consortium** sablonban válassza a **Létrehozás**elemet.
 
@@ -93,7 +96,7 @@ A **hálózati beállítások**területen adja meg a meglévő konzorcium-háló
 |---|---|---|
 **Hálózati konfiguráció** |Dönthet úgy is, hogy létrehoz egy új hálózatot, vagy egy meglévőt csatlakoztat. Ha a *Csatlakozás meglévőt*választja, további értékeket kell megadnia. |Új hálózat <br/> Csatlakozás meglévőhöz |
 **HLF HITELESÍTÉSSZOLGÁLTATÓ jelszava** |Az üzembe helyezés részeként létrehozott hitelesítésszolgáltatók által létrehozott tanúsítványokhoz használt jelszó. A jelszónak a következő karakterek közül hármat tartalmaznia kell: 1 nagybetűs karakter, 1 kisbetűs karakter, 1 szám és 1 speciális karakter.<br /><br />Habár az összes virtuális gép kezdetben ugyanazzal a jelszóval rendelkezik, a kiépítés után megváltoztathatja a jelszót.|1-25 karakter |
-**Szervezet beállítása** |Testreszabhatja a szervezet nevét és tanúsítványát, vagy megadhatja a használni kívánt alapértelmezett értékeket.|Alapértelmezett <br/> Speciális |
+**Szervezet beállítása** |Testreszabhatja a szervezet nevét és tanúsítványát, vagy megadhatja a használni kívánt alapértelmezett értékeket.|Alapértelmezett <br/> Extra szintű |
 **VPN-hálózat beállításai** | VPN-alagút átjárójának kiépítése a virtuális gépek eléréséhez | Igen <br/> Nem |
 
 Kattintson az **OK** gombra.
@@ -115,9 +118,9 @@ A háló **konfigurációjában**konfigurálja a hálózati méretet és a telje
 
 | Paraméter neve | Leírás | Megengedett értékek |
 |---|---|---|
-**A rendezési csomópontok száma** |Azon csomópontok száma, amelyek egy blokkba rendezik a tranzakciókat. <br />A rendezési szolgáltatással kapcsolatos további részletekért tekintse meg a Hyperledger [dokumentációját](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) . |1 – 4 |
+**A rendezési csomópontok száma** |Azon csomópontok száma, amelyek egy blokkba rendezik a tranzakciókat. <br />A rendezési szolgáltatással kapcsolatos további részletekért tekintse meg a Hyperledger [dokumentációját](https://hyperledger-fabric.readthedocs.io/en/release-1.1/ordering-service-faq.html) . |1-4 |
 **A rendezési csomópont virtuális gép mérete** |A hálózatban található, a rendelést használó csomópontok számára használt virtuális gép mérete|Standard BS,<br />Standard DS,<br />Szabványos FS |
-**Társ-csomópontok száma** | Azok a csomópontok, amelyek a tranzakciókat végrehajtó konzorcium tagjai, valamint az állapotot és a Főkönyv egy másolatát futtatják.<br />A rendezési szolgáltatással kapcsolatos további részletekért tekintse meg a Hyperledger [dokumentációját](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1 – 4 |
+**Társ-csomópontok száma** | Azok a csomópontok, amelyek a tranzakciókat végrehajtó konzorcium tagjai, valamint az állapotot és a Főkönyv egy másolatát futtatják.<br />A rendezési szolgáltatással kapcsolatos további részletekért tekintse meg a Hyperledger [dokumentációját](https://hyperledger-fabric.readthedocs.io/en/latest/glossary.html).|1-4 |
 **Csomópont állapotának megőrzése** |A társ-csomópontok által használt adatmegőrzési motor. Ezt a motort a társ-csomóponton konfigurálhatja. A részleteket lásd alább több társ-csomóponthoz.|CouchDB <br />LevelDB |
 **Társ csomópont virtuális gép mérete** |A hálózatban lévő összes csomóponthoz használt virtuális gép mérete|Standard BS,<br />Standard DS,<br />Szabványos FS |
 

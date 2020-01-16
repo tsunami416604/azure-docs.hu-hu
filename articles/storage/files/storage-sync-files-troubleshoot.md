@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f60d9714db71325bd9c67cae6e2f82d54f8e5eb3
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753912"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027782"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -182,8 +182,6 @@ Azon a kiszolgálón, amely a "kapcsolat nélküli állapotban" üzenet jelenik 
     ```powershell
     Reset-AzStorageSyncServerCertificate -ResourceGroupName <string> -StorageSyncServiceName <string>
     ```
-
-
 <a id="endpoint-noactivity-sync"></a>**A kiszolgálói végpont állapota "nincs tevékenység", a kiszolgáló állapota pedig a regisztrált kiszolgálók panelen "online"**  
 
 A "nincs tevékenység" kiszolgálói végpont állapota azt jelenti, hogy a kiszolgálói végpont nem naplózta a szinkronizálási tevékenységet az elmúlt két órában.
@@ -393,6 +391,22 @@ Ez a hiba azért fordul elő, mert az Azure File Sync-ügynök nem fér hozzá a
 3. [Győződjön meg arról, Azure File Sync hozzáfér a Storage-fiókhoz.](#troubleshoot-rbac)
 4. [Győződjön meg arról, hogy a tárfiók tűzfal- és virtuális hálózati beállításai megfelelően vannak konfigurálva (ha engedélyezve vannak).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
 
+<a id="-2134351804"></a>**A szinkronizálás nem sikerült, mert a kérelem nem jogosult a művelet végrehajtására.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c86044 |
+| **HRESULT (decimális)** | – 2134351804 |
+| **Hiba karakterlánca** | ECS_E_AZURE_AUTHORIZATION_FAILED |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba azért fordul elő, mert a Azure File Sync ügynöknek nincs engedélye az Azure-fájlmegosztás elérésére. A hiba elhárításához végezze el a következő lépéseket:
+
+1. [Ellenőrizze, hogy létezik-e a Storage-fiók.](#troubleshoot-storage-account)
+2. [Győződjön meg arról, hogy az Azure-fájlmegosztás létezik.](#troubleshoot-azure-file-share)
+3. [Győződjön meg arról, hogy a tárfiók tűzfal- és virtuális hálózati beállításai megfelelően vannak konfigurálva (ha engedélyezve vannak).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+4. [Győződjön meg arról, Azure File Sync hozzáfér a Storage-fiókhoz.](#troubleshoot-rbac)
+
 <a id="-2134364064"></a><a id="cannot-resolve-storage"></a>**A használt Storage-fiók neve nem oldható fel.**  
 
 | | |
@@ -495,7 +509,7 @@ Ha az Azure-fájlmegosztás törölve lett, létre kell hoznia egy új fájlmego
 | **Hiba karakterlánca** | ECS_E_SYNC_BLOCKED_ON_SUSPENDED_SUBSCRIPTION |
 | **Szervizelés szükséges** | Igen |
 
-Ez a hiba akkor fordul elő, ha az Azure-előfizetés fel van függesztve. A szinkronizálás újból engedélyezve lesz, ha az Azure-előfizetés visszaáll. Lásd: [Miért van letiltva az Azure-előfizetés, és hogyan lehet újraaktiválni?](../../billing/billing-subscription-become-disable.md) további információ.
+Ez a hiba akkor fordul elő, ha az Azure-előfizetés fel van függesztve. A szinkronizálás újból engedélyezve lesz, ha az Azure-előfizetés visszaáll. Lásd: [Miért van letiltva az Azure-előfizetés, és hogyan lehet újraaktiválni?](../../cost-management-billing/manage/subscription-disabled.md) további információ.
 
 <a id="-2134364052"></a>**A Storage-fiókhoz tűzfal vagy virtuális hálózat van konfigurálva.**  
 

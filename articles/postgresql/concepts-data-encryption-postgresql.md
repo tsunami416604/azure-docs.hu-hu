@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: f9e60b2f1685e03a9daa7a4801f43799a21eb411
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 263fdda178752ee22997a03a11902a7bff4791dc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028609"
 ---
 # <a name="azure-database-for-postgresql-single-server-data-encryption-with-customer-managed-key"></a>Egyetlen kiszolgálóból álló adattitkosítás Azure Database for PostgreSQL ügyfél által felügyelt kulccsal
 
@@ -41,7 +41,7 @@ Azure Database for PostgreSQL egyetlen kiszolgáló adattitkosítása a követke
 
 **Kulcs titkosítási kulcsa (KEK)** – az adattitkosítási kulcsok titkosításához használt titkosítási kulcs. Olyan kulcs-titkosítási kulcs használata, amely soha nem hagy Key Vault, lehetővé teszi, hogy az adattitkosítási kulcsok titkosítva és szabályozva legyenek. Előfordulhat, hogy a KEK-hez hozzáférő entitás nem azonos a ADATTITKOSÍTÁSI kulcsot igénylő entitással. Mivel a KEK a DEKs visszafejtéséhez szükséges, a KEK gyakorlatilag egyetlen pont, amellyel a DEKs hatékonyan törölhető a KEK törlésével.
 
-A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer külön tárolja, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások tudják visszafejteni ezeket az adattitkosítási kulcsokat. További információ: [Biztonság a titkosításban a REST-ben](../security/fundamentals/encryption-atrest.md).
+A kulcs titkosítási kulcsokkal titkosított adattitkosítási kulcsokat (ADATTITKOSÍTÁSI kulcsot) külön tárolja a rendszer, és csak a kulcs titkosítási kulcshoz hozzáféréssel rendelkező entitások tudják visszafejteni ezeket az adattitkosítási kulcsokat. További információ: [Biztonság a titkosításban a REST-ben](../security/fundamentals/encryption-atrest.md).
 
 ## <a name="how-data-encryption-with-customer-managed-key-works"></a>Az ügyfél által felügyelt kulccsal való adattitkosítás működése
 
@@ -50,8 +50,8 @@ A titkosítási kulcsokkal titkosított adattitkosítási kulcsokat a rendszer k
 Ahhoz, hogy egy PostgreSQL-kiszolgáló használhassa a AKV-ben tárolt, az ügyfél által felügyelt kulcsokat a ADATTITKOSÍTÁSI kulcsot titkosításához, egy Key Vault rendszergazdának a következő hozzáférési jogosultságokat kell biztosítania a kiszolgálóhoz az egyedi identitása használatával:
 
 * **Get** – a nyilvános rész és a kulcs tulajdonságainak lekérése a Key Vault
-* **wrapKey** – a adattitkosítási kulcsot védelme (titkosítása)
-* **unwrapKey** – a adattitkosítási kulcsot feloldása (visszafejtés)
+* **wrapKey** – a adattitkosítási kulcsot titkosítása
+* **unwrapKey** – a adattitkosítási kulcsot visszafejtése
 
 Key Vault [a rendszergazda engedélyezheti Key Vault naplózási események naplózását](../azure-monitor/insights/azure-key-vault.md)is, így később is naplózhatja őket.
 

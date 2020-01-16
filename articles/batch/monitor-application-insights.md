@@ -2,7 +2,7 @@
 title: Batch figyelése az Azure Application Insights segítségével | Microsoft Docs
 description: Ismerje meg, hogyan hozhat Azure Batch .NET-alkalmazást az Azure Application Insights Library használatával.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
@@ -10,13 +10,13 @@ ms.devlang: .NET
 ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
-ms.author: lahugh
-ms.openlocfilehash: 8d896785a2f000a22f68611d5b3b1162c2021236
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: c69ef0bf20e2ade15d2278d0fc2fabd75f39153b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322572"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029499"
 ---
 # <a name="monitor-and-debug-an-azure-batch-net-application-with-application-insights"></a>Azure Batch .NET-alkalmazás figyelése és hibakeresése Application Insights
 
@@ -24,7 +24,7 @@ A [Application Insights](../azure-monitor/app/app-insights-overview.md) elegáns
 
 Ez a cikk bemutatja, hogyan adhatja hozzá és konfigurálhatja a Application Insights könyvtárat a Azure Batch .NET-megoldásba, és hogyan állíthatja be az alkalmazás kódját. Emellett azt is bemutatja, hogyan figyelheti meg az alkalmazást a Azure Portalon keresztül, és hogyan hozhat létre egyéni irányítópultokat. Más nyelveken való Application Insights támogatáshoz tekintse meg a [nyelveket, platformokat és integrációs dokumentációt](../azure-monitor/app/platforms.md).
 
-A githubon elérhető egy, a cikkhez tartozó, kóddal [](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights)ellátott minta C# megoldás. Ez a példa Application Insights rendszerállapot-kódot adja hozzá a [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) példához. Ha még nem ismeri ezt a példát, próbálja meg először kiépíteni és futtatni a TopNWords. Ez segít megérteni egy alapszintű batch-munkafolyamatot, amely a bemeneti Blobok egy csoportjának párhuzamos feldolgozását végzi több számítási csomóponton. 
+A C# [githubon](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/ApplicationInsights)elérhető egy, a cikkhez tartozó, kóddal ellátott minta megoldás. Ez a példa Application Insights rendszerállapot-kódot adja hozzá a [TopNWords](https://github.com/Azure/azure-batch-samples/tree/master/CSharp/TopNWords) példához. Ha még nem ismeri ezt a példát, próbálja meg először kiépíteni és futtatni a TopNWords. Ez segít megérteni egy alapszintű batch-munkafolyamatot, amely a bemeneti Blobok egy csoportjának párhuzamos feldolgozását végzi több számítási csomóponton. 
 
 > [!TIP]
 > Alternatív megoldásként konfigurálhatja a Batch-megoldást úgy, hogy az Application Insights adatait, például a virtuális gépek teljesítményszámlálói a Batch Explorerben jelenjenek meg. A [Batch Explorer](https://github.com/Azure/BatchExplorer) egy ingyenes, gazdag funkcionalitású, önálló ügyfél-eszköz, amely a Azure batch alkalmazások létrehozását, hibakeresését és figyelését segíti elő. Töltse le a [telepítőcsomagot](https://azure.github.io/BatchExplorer/) Mac, Linux vagy Windows rendszerre. A Application Insights-adatBatch Explorerokban való engedélyezésének gyors lépéseiért tekintse meg a [Batch-](https://github.com/Azure/batch-insights) elemzések tárházát. 
@@ -42,12 +42,12 @@ A githubon elérhető egy, a cikkhez tartozó, kóddal [](https://github.com/Azu
    * Másolja a kialakítási [kulcsot](../azure-monitor/app/create-new-resource.md #copy-the-instrumentation-key) a portálról. A cikk későbbi részében kötelező megadni.
   
   > [!NOTE]
-  > Előfordulhat, hogy [](https://azure.microsoft.com/pricing/details/application-insights/) a Application Insights tárolt adatmennyiségért kell fizetnie. Ebbe beletartozik a jelen cikkben ismertetett diagnosztikai és figyelési adatértékek is.
+  > Előfordulhat, hogy a Application Insights tárolt adatmennyiségért kell [fizetnie](https://azure.microsoft.com/pricing/details/application-insights/) . Ebbe beletartozik a jelen cikkben ismertetett diagnosztikai és figyelési adatértékek is.
   > 
 
 ## <a name="add-application-insights-to-your-project"></a>Az Application Insights hozzáadása a projekthez
 
-A projekthez a **Microsoft. ApplicationInsights. windowsserver** NuGet-csomag és annak függőségei szükségesek. Adja hozzá vagy állítsa vissza az alkalmazás projektjét. A csomag telepítéséhez használja a parancsot vagy `Install-Package` a NuGet csomagkezelő eszközt.
+A projekthez a **Microsoft. ApplicationInsights. windowsserver** NuGet-csomag és annak függőségei szükségesek. Adja hozzá vagy állítsa vissza az alkalmazás projektjét. A csomag telepítéséhez használja a `Install-Package` parancsot vagy a NuGet csomagkezelő eszközt.
 
 ```powershell
 Install-Package Microsoft.ApplicationInsights.WindowsServer
@@ -56,7 +56,7 @@ A .NET-alkalmazásból a **Microsoft. ApplicationInsights** névtér használat�
 
 ## <a name="instrument-your-code"></a>A kód műszere
 
-A kód megadásához a megoldásnak létre kell hoznia egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját az [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlból. Ügyeljen arra, hogy a következő projektekben frissítse a ApplicationInsights. config fájlt a Application Insights kialakítási kulcsával: Microsoft.Azure.Batch.Samples.TelemetryStartTask and TopNWordsSample.
+A kód megadásához a megoldásnak létre kell hoznia egy Application Insights [TelemetryClient](/dotnet/api/microsoft.applicationinsights.telemetryclient). A példában a TelemetryClient betölti a konfigurációját az [ApplicationInsights. config](../azure-monitor/app/configuration-with-applicationinsights-config.md) fájlból. Ügyeljen arra, hogy a következő projektekben frissítse a ApplicationInsights. config fájlt a Application Insights-kialakítási kulcsával: Microsoft. Azure. Batch. Samples. TelemetryStartTask és TopNWordsSample.
 
 ```xml
 <InstrumentationKey>YOUR-IKEY-GOES-HERE</InstrumentationKey>
@@ -64,9 +64,9 @@ A kód megadásához a megoldásnak létre kell hoznia egy Application Insights 
 Adja hozzá a kialakítási kulcsot is a TopNWords.cs fájlhoz.
 
 A TopNWords.cs példa a következő rendszerállapot- [hívásokat](../azure-monitor/app/api-custom-events-metrics.md) használja a Application Insights API-ból:
-* `TrackMetric()`-Nyomon követi, hogy a számítási csomópontok átlagosan mennyi ideig tartanak a szükséges szövegfájl letöltésével.
-* `TrackTrace()`– Hibakeresési hívásokat szúr be a kódra.
-* `TrackEvent()`– Nyomon követi a rögzítendő érdekes eseményeket.
+* `TrackMetric()` – nyomon követi, hogy a számítási csomópontok átlagosan mennyi ideig tartanak a szükséges szövegfájl letöltéséhez.
+* `TrackTrace()` – hibakeresési hívásokat szúr be a kódra.
+* `TrackEvent()` – nyomon követi a rögzítendő érdekes eseményeket.
 
 Ez a példa szándékosan kihagyja a kivételek kezelését. Ehelyett Application Insights automatikusan jelentést készít a nem kezelt kivételekről, ami jelentősen javítja a hibakeresési élményt. 
 
@@ -288,11 +288,11 @@ A következő képernyőképek azt mutatják be, hogyan Application Insights nap
 Az egyéni metrikák szintén értékes eszköznek bizonyulnak a portálon. Megjelenítheti például az egyes számítási csomópontok átlagos időpontját, hogy letöltse a feldolgozás alatt lévő szükséges szövegfájlt.
 
 Minta diagram létrehozása:
-1. A Application Insights erőforrásban kattintson a **Metrikaböngésző** > **diagram hozzáadása**lehetőségre.
+1. A Application Insights erőforrásban kattintson a **Metrikaböngésző** > **diagram hozzáadása**elemre.
 2. Kattintson a **Szerkesztés** elemre a hozzáadott diagramon.
 2. A diagram részleteit a következőképpen frissítheti:
    * **Diagram típusának** beállítása **rácsra**
-   * Állítsa az összesítést **átlag**értékre.
+   * Állítsa az **összesítést** **átlag**értékre.
    * Állítsa be a **Group By** **NodeId**.
    * A **metrikák**területen válassza az **Egyéni** > **blob Letöltés másodpercben**lehetőséget.
    * A megjelenítési **színpaletta** beállítása tetszés szerinti értékre 
@@ -341,7 +341,7 @@ pool.StartTask = new StartTask()
 Az éles környezetben futó Azure Batch alkalmazások nagy léptékű jellege miatt érdemes korlátozni a Application Insights által összegyűjtött adatok mennyiségét a költségek kezelésére. Ennek eléréséhez tekintse meg a [mintavétel Application Insightsban](../azure-monitor/app/sampling.md) című témakört.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [Application Insightsról](../azure-monitor/app/app-insights-overview.md).
 
 * Más nyelveken való Application Insights támogatáshoz tekintse meg a [nyelveket, platformokat és integrációs dokumentációt](../azure-monitor/app/platforms.md).

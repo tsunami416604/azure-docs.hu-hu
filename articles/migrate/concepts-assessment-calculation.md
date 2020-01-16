@@ -3,12 +3,12 @@ title: Értékelések a Azure Migrate
 description: Ismerje meg a Azure Migrate értékeléseit.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 6950050be3c6fb812a6ade47e98f2d1ed479e61f
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720242"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029117"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>A Azure Migrate értékelései
 
@@ -23,7 +23,7 @@ A számítási beállítások teljesítményadatait a következőképpen gyűjti
 
 1. A [Azure Migrate készülék](migrate-appliance.md) valós idejű mintavételi pontot gyűjt:
 
-    - *VMWare virtuális gépek**: VMWare virtuális gépek esetén a Azure Migrate berendezés egy valós idejű mintavételi pontot gyűjt minden 20 másodperces intervallumban.
+    - **VMWare virtuális gépek**: VMWare virtuális gépek esetén a Azure Migrate készülék minden 20 másodperces intervallumban gyűjt valós idejű mintavételi pontot.
     - **Hyper-v virtuális gépek**: a Hyper-v rendszerű virtuális gépek esetében a valós idejű mintavételi pont gyűjtése minden 30 másodperces intervallumban történik.
     - **Fizikai kiszolgálók**: a fizikai kiszolgálók esetében a valós idejű mintavételi pont gyűjtése minden öt percenként történik. 
     
@@ -58,7 +58,7 @@ A teljesítményadatok gyűjtése a következőképpen történik:
 
 1. A [Azure Migrate készülék](migrate-appliance.md) valós idejű mintavételi pontot gyűjt:
 
-    - *VMWare virtuális gépek**: VMWare virtuális gépek esetén a Azure Migrate berendezés egy valós idejű mintavételi pontot gyűjt minden 20 másodperces intervallumban.
+    - **VMWare virtuális gépek**: VMWare virtuális gépek esetén a Azure Migrate készülék minden 20 másodperces intervallumban gyűjt valós idejű mintavételi pontot.
     - **Hyper-v virtuális gépek**: a Hyper-v rendszerű virtuális gépek esetében a valós idejű mintavételi pont gyűjtése minden 30 másodperces intervallumban történik.
     - **Fizikai kiszolgálók**: a fizikai kiszolgálók esetében a valós idejű mintavételi pont gyűjtése minden öt percenként történik. 
     
@@ -73,24 +73,23 @@ A teljesítményadatok gyűjtése a következőképpen történik:
 5. Ennek az értéknek a megszorozza a komforttal, hogy az egyes mérőszámok (CPU-kihasználtság, memória kihasználtsága, lemez IOPS (olvasási és írási), lemez átviteli sebessége (olvasási és írási) és hálózati átviteli sebesség ( a készülék gyűjti.
 ## <a name="whats-in-an-assessment"></a>Mit tartalmaz egy értékelés?
 
-A Azure Migrate értékelésében a következők szerepelnek: kiszolgáló értékelése
+A Azure Migrate értékelésében az alábbiak szerepelnek: kiszolgáló értékelése.
 
 **Tulajdonság** | **Részletek**
 --- | ---
-**Célhely** | Az áttelepíteni kívánt hely.<br/><br/>A Server Assessment jelenleg a következő Azure-régiókat támogatja: Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, Kelet-USA, Kelet-RÉGIÓJA, Közép-Németország, Németország Északkelet, Kelet-Japán, Nyugat-Japán, Közép-Korea, Dél-Korea, USA északi középső régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, US Gov Arizona, US Gov Texas, US Gov Virginia, az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója Régiója.
-**Cél Storage-lemez: a méretezés** | Az Azure-beli tároláshoz használandó lemezek típusa. <br/><br/> A célként megadott Storage-lemezt prémium szintű felügyelt, standard SSD felügyelt vagy standard szintű HDD-ként kell megadni.<br/><br/> 
-**Cél Storage-lemez: teljesítmény alapú méretezés** | Adja meg a célként megadott Storage-lemez típusát automatikus, prémium szintű felügyelt, standard HDD által felügyelt vagy standard SSD által felügyelt módon.<br/><br/> **Automatikus**: a lemezre vonatkozó javaslat a lemezek teljesítményadatok (a másodpercenkénti bemeneti/kimeneti műveletek (IOPS) és az átviteli sebesség) alapján történik. <br/><br/>**Prémium/standard**: az értékelés a kiválasztott tárolási típuson belül a lemez SKU-t javasolja.<br/><br/> Ha a prémium szintű Managed Disks szolgáltatással kívánja elérni a 99,9%-os virtuális gépre vonatkozó SLA-t. Ez biztosítja, hogy az értékelés összes lemeze prémium szintű felügyelt lemezként legyen ajánlott.<br/><br/> Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
+**Célhely** | Az áttelepíteni kívánt hely. A kiszolgáló értékelése jelenleg a következő Azure-régiókat támogatja:<br/><br/> Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Brazília, Közép-Kanada, Kelet-Kanada, Közép-India, USA középső régiója, Kelet-Kína, Észak-Kína, Kelet-Ázsia, USA keleti régiója, Kelet-RÉGIÓJA, Közép-Németország, Északkelet-Németország, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea, Észak USA középső régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Dél-India, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, US Gov Arizona, US Gov Texas, US Gov Virginia, az USA nyugati középső régiója, Nyugat-Európa, Nyugat-India, USA nyugati régiója és Nyugat-RÉGIÓJA.
+*Cél Storage-lemez (méretezés)* * | Az Azure-beli tároláshoz használandó lemezek típusa. <br/><br/> A célként megadott Storage-lemezt prémium szintű felügyelt, standard SSD felügyelt vagy standard szintű HDD-ként kell megadni.
+**Cél Storage-lemez (teljesítmény-alapú méretezés)** | Adja meg a célként megadott Storage-lemez típusát automatikus, prémium szintű felügyelt, standard HDD által felügyelt vagy standard SSD által felügyelt módon.<br/><br/> **Automatikus**: a lemezre vonatkozó javaslat a lemezek teljesítményadatok (a másodpercenkénti bemeneti/kimeneti műveletek (IOPS) és az átviteli sebesség) alapján történik.<br/><br/>**Prémium/standard**: az értékelés a kiválasztott tárolási típuson belül a lemez SKU-t javasolja.<br/><br/> Ha a prémium szintű Managed Disks szolgáltatással kívánja elérni a 99,9%-os virtuális gépre vonatkozó SLA-t. Ez biztosítja, hogy az értékelés összes lemeze prémium szintű felügyelt lemezként legyen ajánlott.<br/><br/> Az Azure Migrate kizárólag a felügyelt lemezek migrálásfelmérését támogatja.
 **Fenntartott példányok (RIs)** | A [fenntartott példányokat](https://azure.microsoft.com/pricing/reserved-vm-instances/) az Azure-ban adhatja meg, így az értékelésben szereplő költségbecslés a bekerülési időszakra vonatkozó kedvezményeket veszi figyelembe.<br/><br/> A RIs jelenleg csak az utólagos elszámolású ajánlatokhoz támogatott Azure Migrateban.
 **Méretezési feltételek** | A virtuális gép az Azure-ban való jobb méretezésére szolgál.<br/><br/> Használat a következőképpen: méretezés vagy teljesítmény-alapú méretezés.
 **Teljesítményelőzmények** | Teljesítmény-alapú méretezéssel használatos. A teljesítményadatok kiértékelése során használt időtartam megadása.
 **Százalékos kihasználtság** | Teljesítmény-alapú méretezéssel használatos. Meghatározza a jobb méretezéshez használandó teljesítményi minta százalékos értékét. 
 **Virtuálisgép-sorozatok** | Itt adhatja meg azt az Azure-beli virtuálisgép-sorozatot, amelyet a jobb méretezés érdekében érdemes figyelembe venni. Ha például nem rendelkezik olyan éles környezettel, amely az Azure-beli sorozatú virtuális gépeket igényli, kizárhatja a sorozatot a listából vagy adatsorozatból.
-**Kényelmi faktor** | Az értékelés során használt puffer. A virtuális gépek (CPU, memória, lemez és hálózat) számítógép-kihasználtsági adataira alkalmazva. 
-A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítményű előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> A 20%-os kihasználtságú 10 Magos virtuális gép például általában egy kétmagos virtuális gépet eredményez. A 2.0 x kényelmi tényezővel az eredmény egy négy Magos virtuális gép.
+**Kényelmi faktor** | Az értékelés során használt puffer. A virtuális gépek (CPU, memória, lemez és hálózat) számítógép-kihasználtsági adataira alkalmazva. A szolgáltatás olyan problémákhoz vezetett, mint például a szezonális használat, a rövid teljesítményű előzmények és a jövőbeli használat valószínű növekedése.<br/><br/> A 20%-os kihasználtságú 10 Magos virtuális gép például általában egy kétmagos virtuális gépet eredményez. A 2.0 x kényelmi tényezővel az eredmény egy négy Magos virtuális gép.
 **Ajánlat** | Megjeleníti azt az [Azure-ajánlatot](https://azure.microsoft.com/support/legal/offer-details/) , amelyben regisztrálva van. A kiszolgáló értékelése ennek megfelelően becsüli a költségeket.
 **Pénznem** | A fiók számlázási pénzneme.
 **Kedvezmény (%)** | Felsorolja az Azure-ajánlaton felül kapott előfizetési kedvezményeket. Az alapértelmezett beállítás 0%.
-**Virtuális gép üzemidő** | Ha az Azure-beli virtuális gépek a nap 24 órájában nem futnak, a héten 7 napon belül megadhatja az időtartamot (havonta és órában naponta), amelyet a rendszer futtat. A becsült költségeket ennek megfelelően kezeli a rendszer.<br/><br/> Az alapértelmezett érték havi 31 nap, és naponta 24 óra.
+**Virtuális gép üzemideje** | Ha az Azure-beli virtuális gépek a nap 24 órájában nem futnak, a héten 7 napon belül megadhatja az időtartamot (havonta és órában naponta), amelyet a rendszer futtat. A becsült költségeket ennek megfelelően kezeli a rendszer.<br/><br/> Az alapértelmezett érték havi 31 nap, és naponta 24 óra.
 **Azure Hybrid Benefit** | Megadja, hogy rendelkezik-e frissítési garanciával, és jogosult-e a [Azure Hybrid Benefitre](https://azure.microsoft.com/pricing/hybrid-use-benefit/). Ha az Igen értékre van állítva (az alapértelmezett beállítás), a nem Windows Azure-árakat a Windows rendszerű virtuális gépeknek számítjuk.
 
 [Tekintse át az](best-practices-assessment.md) értékelés létrehozásával kapcsolatos ajánlott eljárásokat a kiszolgáló értékelésével.

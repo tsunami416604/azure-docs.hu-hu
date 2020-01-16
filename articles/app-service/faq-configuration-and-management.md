@@ -8,12 +8,12 @@ ms.assetid: 2fa5ee6b-51a6-4237-805f-518e6c57d11b
 ms.topic: article
 ms.date: 10/30/2018
 ms.author: genli
-ms.openlocfilehash: fc13b0939563f93c31683b432b0410035d892de0
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: 047579550172995378d92327ecf22d63712bf407
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672504"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967131"
 ---
 # <a name="configuration-and-management-faqs-for-web-apps-in-azure"></a>Konfigurációs és felügyeleti GYIK az Azure-beli Web Apps
 
@@ -23,7 +23,7 @@ Ez a cikk válaszokat tartalmaz a [Azure App Service Web Apps funkciójának](ht
 
 ## <a name="are-there-limitations-i-should-be-aware-of-if-i-want-to-move-app-service-resources"></a>Van-e korlátozás arra vonatkozóan, ha App Service erőforrásokat szeretnék áthelyezni?
 
-Ha App Service erőforrásait új erőforráscsoporthoz vagy előfizetésbe szeretné helyezni, néhány korlátozást érdemes figyelembe vennie. További információ: [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Ha App Service erőforrásait új erőforráscsoporthoz vagy előfizetésbe szeretné helyezni, néhány korlátozást érdemes figyelembe vennie. További információ: [app Service korlátozások](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="how-do-i-use-a-custom-domain-name-for-my-web-app"></a>Hogyan használhat egyéni tartománynevet a webalkalmazáshoz?
 
@@ -49,11 +49,11 @@ Az App Service webalkalmazás SSL-tanúsítványának megvásárlásáról és b
 
 Az Azure Application Insights jelenleg nem támogatja az áthelyezési műveletet. Ha az eredeti erőforráscsoport Application Insights erőforrást tartalmaz, nem helyezheti át az adott erőforrást. Ha a Application Insights erőforrást egy App Service alkalmazás áthelyezésére való kísérlet során is felveszi, a teljes áthelyezési művelet meghiúsul. Azonban Application Insights és a App Service tervnek nem kell ugyanabban az erőforráscsoporthoz lennie, mint az alkalmazás megfelelő működéséhez.
 
-További információ: [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+További információ: [app Service korlátozások](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 ## <a name="where-can-i-find-a-guidance-checklist-and-learn-more-about-resource-move-operations"></a>Hol találhatok útmutatási ellenőrzőlistát, és többet tudhat meg az erőforrás-áthelyezési műveletekről?
 
-A [app Service korlátozások](../azure-resource-manager/move-limitations/app-service-move-limitations.md) azt mutatják be, hogy miként helyezhetők át erőforrások egy új előfizetésbe vagy egy új erőforráscsoporthoz ugyanabba az előfizetésbe. Az erőforrás-áthelyezési ellenőrzőlistával kapcsolatos információkat megtudhatja, hogy mely szolgáltatások támogatják az áthelyezési műveletet, valamint további tudnivalókat App Service korlátozásokról és egyéb témakörökről.
+A [app Service korlátozások](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md) azt mutatják be, hogy miként helyezhetők át erőforrások egy új előfizetésbe vagy egy új erőforráscsoporthoz ugyanabba az előfizetésbe. Az erőforrás-áthelyezési ellenőrzőlistával kapcsolatos információkat megtudhatja, hogy mely szolgáltatások támogatják az áthelyezési műveletet, valamint további tudnivalókat App Service korlátozásokról és egyéb témakörökről.
 
 ## <a name="how-do-i-set-the-server-time-zone-for-my-web-app"></a>Hogyan beállítani a webalkalmazás kiszolgálói időzónáját?
 

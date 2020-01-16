@@ -3,7 +3,7 @@ title: Többpéldányos feladatok használata MPI-alkalmazások futtatásához �
 description: Megtudhatja, hogyan hajthat végre Message Passing Interface (MPI) alkalmazásokat a többpéldányos feladattípus használatával Azure Batchban.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 83e34bd7-a027-4b1b-8314-759384719327
@@ -11,14 +11,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.date: 03/13/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1f54f5d5265508bb3716ff4ffd4d1d741d3bfa2e
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: fd58a18b4926d911df8493670ccd7da97708e075
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70094970"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029662"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Message Passing Interface-(MPI-) alkalmazások futtatása többpéldányos feladatokkal a Batch szolgáltatásban
 
@@ -30,25 +30,25 @@ A többpéldányos feladatok lehetővé teszik, hogy egy Azure Batch feladatot e
 >
 
 ## <a name="multi-instance-task-overview"></a>A többpéldányos feladatok áttekintése
-A Batch-ben minden feladat általában egyetlen számítási csomóponton fut – több feladatot küld egy feladatba, és a Batch szolgáltatás ütemezi az egyes feladatokat egy csomóponton végzett végrehajtásra. A feladatok többpéldányos **beállításainak**konfigurálásával azonban megadhatja, hogy a Batch ne hozzon létre egy elsődleges feladatot és több alfeladatot, amelyek ezután több csomóponton lesznek végrehajtva.
+A Batch-ben minden feladat általában egyetlen számítási csomóponton fut – több feladatot küld egy feladatba, és a Batch szolgáltatás ütemezi az egyes feladatokat egy csomóponton végzett végrehajtásra. A feladatok **többpéldányos beállításainak**konfigurálásával azonban megadhatja, hogy a Batch ne hozzon létre egy elsődleges feladatot és több alfeladatot, amelyek ezután több csomóponton lesznek végrehajtva.
 
 ![A többpéldányos feladatok áttekintése][1]
 
 Ha többpéldányos beállításokkal rendelkező feladatot küld egy feladathoz, a Batch a többpéldányos feladatok esetében több lépést hajt végre:
 
-1. A Batch szolgáltatás egy **elsődleges** és több alfeladatot hoz létre a több példányos beállítások alapján. A feladatok teljes száma (az elsődleges és az összes Alfeladat) megegyezik a többpéldányos beállításokban megadott **példányok** (számítási csomópontok) számával.
-2. A Batch kijelöli az egyik számítási csomópontot afőkiszolgálóként, és az elsődleges feladatot a főkiszolgálón hajtja végre. A többpéldányos feladathoz lefoglalt számítási csomópontok hátralévő részén hajtja végre az altevékenységeket, és a csomópontok egy alfeladata.
+1. A Batch szolgáltatás egy **elsődleges** és több **alfeladatot** hoz létre a több példányos beállítások alapján. A feladatok teljes száma (az elsődleges és az összes Alfeladat) megegyezik a többpéldányos beállításokban megadott **példányok** (számítási csomópontok) számával.
+2. A Batch kijelöli az egyik számítási csomópontot a **főkiszolgálóként**, és az elsődleges feladatot a főkiszolgálón hajtja végre. A többpéldányos feladathoz lefoglalt számítási csomópontok hátralévő részén hajtja végre az altevékenységeket, és a csomópontok egy alfeladata.
 3. Az elsődleges és az összes Alfeladat letölti a több példányos beállításokban megadott **általános erőforrás-fájlokat** .
-4. A közös erőforrás-fájlok letöltése után az elsődleges és alfeladatok végrehajtják a több példányos beállításokban megadott **koordinációs parancsot** . A koordinációs parancs általában a csomópontok előkészítéséhez használatos a feladat végrehajtásához. Ebbe beletartozhatnak a háttérben futó szolgáltatások (például a [Microsoft MPI][msmpi_msdn]-k `smpd.exe`) indítása, és ellenőrizhető, hogy a csomópontok készen állnak-e a csomópontok közötti üzenetek feldolgozására.
-5. Az elsődleges feladat végrehajtja az **alkalmazás parancsát** a főcsomóponton, *miután* az elsődleges és az összes Alfeladat sikeresen végrehajtotta a koordinációs parancsot. Az Application parancs maga a több példányból álló feladat parancssora, amelyet csak az elsődleges feladat hajt végre. Egy [MS-MPI][msmpi_msdn]-alapú megoldásban itt hajthatja végre az MPI-kompatibilis alkalmazást a használatával `mpiexec.exe`.
+4. A közös erőforrás-fájlok letöltése után az elsődleges és alfeladatok végrehajtják a több példányos beállításokban megadott **koordinációs parancsot** . A koordinációs parancs általában a csomópontok előkészítéséhez használatos a feladat végrehajtásához. Ebbe beletartozhatnak a háttérben futó szolgáltatások (például a [Microsoft MPI][msmpi_msdn]`smpd.exe`) indítása, és ellenőrizhető, hogy a csomópontok készen állnak-e a csomópontok közötti üzenetek feldolgozására.
+5. Az elsődleges feladat végrehajtja az **alkalmazás parancsát** a főcsomóponton, *miután* az elsődleges és az összes Alfeladat sikeresen végrehajtotta a koordinációs parancsot. Az Application parancs maga a több példányból álló feladat parancssora, amelyet csak az elsődleges feladat hajt végre. Egy [MS-MPI][msmpi_msdn]-alapú megoldásban itt hajthatja végre az MPI-kompatibilis alkalmazást `mpiexec.exe`használatával.
 
 > [!NOTE]
-> Bár ez a függvény eltérő, a "többpéldányos feladat" nem egyedi feladattípus, például a [StartTask][net_starttask] vagy a [JobPreparationTask][net_jobprep]. A többpéldányos feladat egyszerűen egy standard batch-feladat ([CloudTask][net_task] a Batch .net-ben), amelynek a többpéldányos beállításai konfigurálva vannak. Ebben a cikkben erre a többpéldányos feladatra hivatkozunk.
+> Bár ez a függvény eltérő, a "többpéldányos feladat" nem egyedi feladattípus, például a [StartTask][net_starttask] vagy a [JobPreparationTask][net_jobprep]. A többpéldányos feladat egyszerűen egy standard batch-feladat ([CloudTask][net_task] a Batch .net-ben), amelynek a többpéldányos beállításai konfigurálva vannak. Ebben a cikkben erre a **többpéldányos feladatra**hivatkozunk.
 >
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>A többpéldányos feladatokra vonatkozó követelmények
-A többpéldányos feladatok esetében engedélyezni kell a **csomópontok közötti kommunikációt**, és az egyidejű feladat- **végrehajtás le van tiltva**. Az egyidejű feladatok végrehajtásának letiltásához állítsa a [CloudPool. MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonságot 1-re.
+A többpéldányos feladatok esetében engedélyezni kell a **csomópontok közötti kommunikációt**, és az **egyidejű feladat-végrehajtás le van tiltva**. Az egyidejű feladatok végrehajtásának letiltásához állítsa a [CloudPool. MaxTasksPerComputeNode](https://docs.microsoft.com/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonságot 1-re.
 
 > [!NOTE]
 > A Batch [korlátozza](batch-quota-limit.md#pool-size-limits) a csomópontok közötti kommunikációt engedélyező készlet méretét.
@@ -75,7 +75,7 @@ myCloudPool.MaxTasksPerComputeNode = 1;
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>StartTask használata az MPI telepítéséhez
-Ha MPI-alkalmazásokat szeretne futtatni egy többpéldányos feladattal, először telepítenie kell egy MPI-implementációt (például MS-MPI vagy Intel MPI) a készlet számítási csomópontjaira. Ez egy jó alkalom a [StartTask][net_starttask]használatára, amely akkor fut le, amikor egy csomópont egy készlethez csatlakozik, vagy újraindul. Ez a kódrészlet egy StartTask hoz létre, amely az MS-MPI telepítési csomagot adja [][net_resourcefile]meg erőforrásfájlként. Az indítási tevékenység parancssora akkor fut le, amikor az erőforrást letölti a csomópontra. Ebben az esetben a parancssor az MS-MPI felügyelet nélküli telepítését végzi.
+Ha MPI-alkalmazásokat szeretne futtatni egy többpéldányos feladattal, először telepítenie kell egy MPI-implementációt (például MS-MPI vagy Intel MPI) a készlet számítási csomópontjaira. Ez egy jó alkalom a [StartTask][net_starttask]használatára, amely akkor fut le, amikor egy csomópont egy készlethez csatlakozik, vagy újraindul. Ez a kódrészlet egy StartTask hoz létre, amely az MS-MPI telepítési csomagot adja meg [erőforrásfájlként][net_resourcefile]. Az indítási tevékenység parancssora akkor fut le, amikor az erőforrást letölti a csomópontra. Ebben az esetben a parancssor az MS-MPI felügyelet nélküli telepítését végzi.
 
 ```csharp
 // Create a StartTask for the pool which we use for installing MS-MPI on
@@ -101,11 +101,11 @@ Keresse meg a "RDMA-kompatibilis" értékkel megadott méreteket a következő c
 
 * **CloudServiceConfiguration** -készletek
 
-  * [Méretek Cloud Services](../cloud-services/cloud-services-sizes-specs.md) (Csak Windows)
+  * [Cloud Services mérete](../cloud-services/cloud-services-sizes-specs.md) (csak Windows esetén)
 * **VirtualMachineConfiguration** -készletek
 
-  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Linux
-  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) Windows
+  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Linux)
+  * [Virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
 > A Linux-alapú [számítási csomópontok](batch-linux-nodes.md)RDMA kihasználásához az **Intel MPI** -t kell használnia a csomópontokon. 
@@ -138,7 +138,7 @@ await myBatchClient.JobOperations.AddTaskAsync("mybatchjob", myMultiInstanceTask
 ```
 
 ## <a name="primary-task-and-subtasks"></a>Elsődleges feladat és alfeladatok
-Amikor létrehoz egy tevékenység többpéldányos beállításait, a feladat végrehajtásához szükséges számítási csomópontok számát kell megadnia. Ha a feladatot egy feladatba küldi, a Batch szolgáltatás létrehoz egy **elsődleges** feladatot és elegendő alfeladatot, amelyek együttesen egyeznek a megadott csomópontok számával.
+Amikor létrehoz egy tevékenység többpéldányos beállításait, a feladat végrehajtásához szükséges számítási csomópontok számát kell megadnia. Ha a feladatot egy feladatba küldi, a Batch szolgáltatás létrehoz egy **elsődleges** feladatot és elegendő **alfeladatot** , amelyek együttesen egyeznek a megadott csomópontok számával.
 
 Ezek a feladatok a 0 és *numberOfInstances* -1 közötti egész szám-azonosítóhoz vannak rendelve. A 0 azonosítójú feladat az elsődleges feladat, és az összes többi azonosító Alfeladat. Ha például a következő többpéldányos beállításokat hozza létre egy feladathoz, az elsődleges feladat 0 azonosítóval fog rendelkezni, és az alfeladatok 1 – 9 azonosítóval rendelkeznek.
 
@@ -159,19 +159,19 @@ A koordinációs parancs meghívása blokkolja a-Batch nem hajtja végre az alka
 cmd /c start cmd /c ""%MSMPI_BIN%\smpd.exe"" -d
 ```
 
-Jegyezze `start` fel a használatát ebben a koordinációs parancsban. Erre azért van szükség, `smpd.exe` mert az alkalmazás nem ad vissza azonnal a végrehajtás után. A [Start][cmd_start] parancs használata nélkül ez a koordinációs parancs nem tér vissza, ezért az alkalmazás futtatását letiltja.
+Jegyezze fel `start` használatát ebben a koordinációs parancsban. Erre azért van szükség, mert a `smpd.exe` alkalmazás nem közvetlenül a végrehajtás után tér vissza. A [Start][cmd_start] parancs használata nélkül ez a koordinációs parancs nem tér vissza, ezért az alkalmazás futtatását letiltja.
 
 ## <a name="application-command"></a>Alkalmazás parancs
 Miután az elsődleges feladat és az összes Alfeladat befejezte a koordinációs parancs végrehajtását, a több példányból álló tevékenység parancssorát *csak*az elsődleges feladat hajtja végre. Ezt az alkalmazás- **parancsot** hívjuk a koordinációs parancsból való megkülönböztetéshez.
 
-MS-MPI-alkalmazások esetén az Application paranccsal futtassa az MPI-kompatibilis alkalmazást `mpiexec.exe`a következővel:. Íme például egy, az MS-MPI 7-es verziót használó megoldáshoz tartozó alkalmazási parancs:
+MS-MPI-alkalmazások esetében az Application paranccsal futtassa az MPI-kompatibilis alkalmazást `mpiexec.exe`használatával. Íme például egy, az MS-MPI 7-es verziót használó megoldáshoz tartozó alkalmazási parancs:
 
 ```
 cmd /c ""%MSMPI_BIN%\mpiexec.exe"" -c 1 -wdir %AZ_BATCH_TASK_SHARED_DIR% MyMPIApplication.exe
 ```
 
 > [!NOTE]
-> Mivel az MS-MPI `mpiexec.exe` -k `CCP_NODES` alapértelmezés szerint a változót használják (lásd: [környezeti változók](#environment-variables)), a fenti példában szereplő alkalmazás-parancssor kizárja azt.
+> Mivel az MS-MPI `mpiexec.exe` alapértelmezés szerint a `CCP_NODES` változót használja (lásd: [környezeti változók](#environment-variables)), a fenti példában szereplő alkalmazás-parancssor kizárja azt.
 >
 >
 
@@ -194,15 +194,15 @@ Ezen és a többi batch számítási csomópont környezeti változóinak részl
 >
 >
 
-## <a name="resource-files"></a>Erőforrásfájlok
-A többpéldányos feladatokhoz két erőforrás-készletet kell figyelembe venni: az *összes* feladat által letöltött **általános erőforrások** (elsődleges és alfeladatok) és a többpéldányos feladathoz *megadott erőforrás-fájlok. csak az elsődleges* feladat letöltése.
+## <a name="resource-files"></a>Erőforrás-fájlok
+A többpéldányos feladatok esetében két erőforrás-fájl található: az *összes* feladat által letöltött **általános erőforrás-fájlok** (elsődleges és alfeladatok), valamint a többpéldányos feladathoz megadott **erőforrás-fájlok** , amelyek *csak az elsődleges* feladat letöltését jelentik.
 
-Egy vagy több **általános erőforrás-fájlt** is megadhat egy adott tevékenység többpéldányos beállításaiban. Ezeket az általános erőforrás-fájlokat az [Azure Storage](../storage/common/storage-introduction.md) -ból az elsődleges és az összes alfeladatnak az egyes csomópontok **megosztott könyvtárába** való letöltésével tölti le a rendszer. A feladat megosztott könyvtárát az alkalmazás-és koordinációs parancssorból a `AZ_BATCH_TASK_SHARED_DIR` környezeti változó használatával érheti el. Az `AZ_BATCH_TASK_SHARED_DIR` elérési út megegyezik a többpéldányos feladathoz lefoglalt összes csomóponton, így egyetlen koordinációs parancsot is megoszthat az elsődleges és az összes Alfeladat között. A Batch nem "osztja meg" a könyvtárat a távoli elérési értelemben, de azt csatlakoztatási vagy megosztási pontként is használhatja, ahogy azt korábban említettük a környezeti változókra vonatkozó tippben.
+Egy vagy több **általános erőforrás-fájlt** is megadhat egy adott tevékenység többpéldányos beállításaiban. Ezeket az általános erőforrás-fájlokat az [Azure Storage](../storage/common/storage-introduction.md) -ból az elsődleges és az összes alfeladatnak az egyes csomópontok **megosztott könyvtárába** való letöltésével tölti le a rendszer. A feladat megosztott könyvtárát az alkalmazás-és koordinációs parancssorból a `AZ_BATCH_TASK_SHARED_DIR` környezeti változó használatával érheti el. A `AZ_BATCH_TASK_SHARED_DIR` elérési útja megegyezik a többpéldányos feladathoz lefoglalt összes csomóponton, így egyetlen koordinációs parancsot is megoszthat az elsődleges és az összes Alfeladat között. A Batch nem "osztja meg" a könyvtárat a távoli elérési értelemben, de azt csatlakoztatási vagy megosztási pontként is használhatja, ahogy azt korábban említettük a környezeti változókra vonatkozó tippben.
 
-A több példányos feladathoz megadott erőforrás-fájlokat a rendszer alapértelmezés szerint letölti a feladat munkakönyvtárára `AZ_BATCH_TASK_WORKING_DIR`. Ahogy azt korábban említettük, a közös erőforrás-fájlokkal szemben csak az elsődleges feladat tölti le a több példányos feladathoz megadott erőforrás-fájlokat.
+A több példányos feladathoz megadott erőforrás-fájlokat a rendszer alapértelmezés szerint letölti a feladat munkakönyvtárára, `AZ_BATCH_TASK_WORKING_DIR`. Ahogy azt korábban említettük, a közös erőforrás-fájlokkal szemben csak az elsődleges feladat tölti le a több példányos feladathoz megadott erőforrás-fájlokat.
 
 > [!IMPORTANT]
-> Mindig használja a környezeti `AZ_BATCH_TASK_SHARED_DIR` változókat `AZ_BATCH_TASK_WORKING_DIR` , és a parancssorban tekintse át ezeket a címtárakat. Ne próbálja meg manuálisan létrehozni az elérési utakat.
+> Mindig használja a környezeti változókat `AZ_BATCH_TASK_SHARED_DIR` és `AZ_BATCH_TASK_WORKING_DIR` a parancssorban tekintse át ezeket a címtárakat. Ne próbálja meg manuálisan létrehozni az elérési utakat.
 >
 >
 
@@ -270,11 +270,11 @@ A GitHubon a [MultiInstanceTasks][github_mpi] -kód minta azt mutatja be, hogyan
 ### <a name="preparation"></a>Előkészítés
 1. Kövesse az [egyszerű MS-MPI-program fordításának és futtatásának][msmpi_howto]első két lépését. Ez megfelel a következő lépés előfeltételeinek.
 2. Hozza létre a [MPIHelloWorld][helloworld_proj] minta MPI-program *kiadásának* verzióját. Ez az a program, amely a többpéldányos feladat számítási csomópontjain fut majd.
-3. Hozzon létre egy zip `MPIHelloWorld.exe` -fájlt, amely tartalmazza a (2 `MSMpiSetup.exe` . lépés) és (amelyről az 1. lépést letöltötte). A következő lépésben feltöltheti a zip-fájlt alkalmazáscsomagként.
+3. Hozzon létre egy `MPIHelloWorld.exe` tartalmazó zip-fájlt (melyet 2. lépés) és `MSMpiSetup.exe` (amelyet az 1. lépéssel töltött le). A következő lépésben feltöltheti a zip-fájlt alkalmazáscsomagként.
 4. A [Azure Portal][portal] használatával hozzon létre egy "MPIHelloWorld" nevű batch- [alkalmazást](batch-application-packages.md) , és az alkalmazáscsomag "1,0" verziójával hozza létre az előző lépésben létrehozott zip-fájlt. További információt az [alkalmazások feltöltése és kezelése](batch-application-packages.md#upload-and-manage-applications) című témakörben talál.
 
 > [!TIP]
-> Hozzon létre egy kiadási verziót `MPIHelloWorld.exe` , így nem kell további függőségeket `msvcp140d.dll` (például vagy `vcruntime140d.dll`) felvennie az alkalmazáscsomagba.
+> Hozzon létre `MPIHelloWorld.exe` *kiadását* , hogy ne kelljen további függőségeket (például `msvcp140d.dll` vagy `vcruntime140d.dll`) felvennie az alkalmazáscsomagba.
 >
 >
 
@@ -283,16 +283,16 @@ A GitHubon a [MultiInstanceTasks][github_mpi] -kód minta azt mutatja be, hogyan
 2. Nyissa meg a MultiInstanceTasks **megoldást** a Visual Studio 2019-ben. A `MultiInstanceTasks.sln` megoldás fájljának helye:
 
     `azure-batch-samples\CSharp\ArticleProjects\MultiInstanceTasks\`
-3. Adja meg a Batch-és a Storage- `AccountSettings.settings` fiók hitelesítő adatait a **Microsoft. Azure. Batch. Samples. Common** projektben.
+3. Adja meg a Batch-és a Storage-fiók hitelesítő adatait a **Microsoft. Azure. Batch. Samples. Common** projektben `AccountSettings.settings`.
 4. Hozza **létre és futtassa** a MultiInstanceTasks-megoldást az MPI-minta alkalmazás batch-készletben lévő számítási csomópontokon való végrehajtásához.
-5. Nem *kötelező*: Az erőforrások törlése előtt a [Azure Portal][portal] vagy [Batch Explorer][batch_labs] segítségével vizsgálja meg a minta készletét, a feladatot és a feladatot ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask").
+5. Nem *kötelező*: a [Azure Portal][portal] vagy [Batch Explorer][batch_labs] használatával vizsgálja meg a minta készletet, a feladatot és a feladatot ("MultiInstanceSamplePool", "MultiInstanceSampleJob", "MultiInstanceSampleTask") az erőforrások törlése előtt.
 
 > [!TIP]
 > Ha nem rendelkezik a Visual Studióval, ingyenesen letöltheti a [Visual Studio Communityt][visual_studio] .
 >
 >
 
-`MultiInstanceTasks.exe` A kimenete a következőhöz hasonló:
+`MultiInstanceTasks.exe` kimenete a következőhöz hasonló:
 
 ```
 Creating pool [MultiInstanceSamplePool]...
@@ -327,8 +327,8 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
-* A Microsoft HPC & Azure Batch csapatának blogja a Azure Batch-alapú [Linux MPI][blog_mpi_linux]-támogatását tárgyalja, és információt tartalmaz a [OpenFOAM][openfoam] a Batch használatával történő használatáról. A GitHubon a [OpenFOAM][github_mpi]-példához Python-kódrészletek is megtalálhatók.
+## <a name="next-steps"></a>Következő lépések
+* A Microsoft HPC & Azure Batch csapatának blogja a Azure Batch-alapú [Linux MPI-támogatását][blog_mpi_linux]tárgyalja, és információt tartalmaz a [OpenFOAM][openfoam] a Batch használatával történő használatáról. A [githubon a OpenFOAM-példához][github_mpi]Python-kódrészletek is megtalálhatók.
 * Ismerje meg, hogyan [hozhat létre a Linux számítási csomópontok készleteit](batch-linux-nodes.md) az Azure batch MPI-megoldásokban való használatra.
 
 [helloworld_proj]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/MultiInstanceTasks/MPIHelloWorld

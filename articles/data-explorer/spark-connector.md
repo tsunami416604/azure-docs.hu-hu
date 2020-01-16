@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: michazag
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 4/29/2019
-ms.openlocfilehash: 6a95cbad161906bd12a608880ac694d6bdf1ed27
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.date: 1/14/2020
+ms.openlocfilehash: 868e9e068244af91e218d906bee115b58906152f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70383054"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027902"
 ---
 # <a name="azure-data-explorer-connector-for-apache-spark-preview"></a>Azure Adatkezelő-összekötő a Apache Sparkhoz (előzetes verzió)
 
@@ -33,7 +33,7 @@ Az Azure Adatkezelő Spark-összekötő egy [nyílt forráskódú projekt](https
 * Telepítse az Azure Adatkezelő Connector kódtárat és a [függőségekben](https://github.com/Azure/azure-kusto-spark#dependencies) felsorolt könyvtárakat, beleértve a következő [Kusto Java SDK](/azure/kusto/api/java/kusto-java-client-library) -kódtárakat:
     * [Kusto-alapú adatügyfél](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-data)
     * [Kusto-ügyfél betöltése](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/kusto-ingest)
-* Előre elkészített kódtárak a [Spark 2,4, a Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases)
+* Előre elkészített kódtárak a [Spark 2,4-hez, a Scala 2,11](https://github.com/Azure/azure-kusto-spark/releases) -hoz és a [Maven](https://mvnrepository.com/artifact/com.microsoft.azure.kusto/spark-kusto-connector) -tárházhoz
 
 ## <a name="how-to-build-the-spark-connector"></a>A Spark-összekötő létrehozása
 
@@ -82,34 +82,27 @@ További információ: [összekötő használata](https://github.com/Azure/azure
 > [!NOTE]
 > A következő lépések végrehajtásakor ajánlott a legújabb Azure Adatkezelő Spark-összekötő kiadásának használata:
 
-1. Állítsa be a következő Spark-fürt beállításait Azure Databricks fürt alapján, a Spark 2,4 és a Scala 2,11 használatával: 
+1. Adja meg a következő Spark-fürt beállításait Azure Databricks-fürtön alapuló Spark 2.4.4 és Scala 2,11 használatával: 
 
     ![Databricks-fürt beállításai](media/spark-connector/databricks-cluster.png)
-
-1. Az Azure Adatkezelő Connector-függvénytár importálása:
+    
+1. Telepítse a legújabb Spark-kusto-Connector függvénytárat a Mavenből:
 
     ![Azure Adatkezelő-függvénytár importálása](media/spark-connector/db-create-library.png)
-
-1. További függőségek hozzáadása (a Maven használata esetén nem szükséges):
-
-    ![Függőségek hozzáadása](media/spark-connector/db-dependencies.png)
-
-    > [!TIP]
-    > Az egyes Spark-kiadásokhoz tartozó Java-kiadás megfelelő verziója [itt](https://github.com/Azure/azure-kusto-spark#dependencies)található.
 
 1. Ellenőrizze, hogy telepítve van-e az összes szükséges könyvtár:
 
     ![A telepített könyvtárak ellenőrzése](media/spark-connector/db-libraries-view.png)
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
-Az Azure Adatkezelő Spark Connector lehetővé teszi, hogy az Azure ad- [alkalmazással](#azure-ad-application-authentication), az [Azure ad hozzáférési jogkivonatával](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), az [eszköz-hitelesítéssel](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (nem éles környezetekben) vagy az Azure-kulccsal hitelesítse Azure Active Directory (Azure ad-val). [ ](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault)Tároló. A felhasználónak telepítenie kell az Azure-kulcstartó csomagot, és meg kell adnia az alkalmazás hitelesítő adatait a Key Vault erőforrás eléréséhez.
+Az Azure Adatkezelő Spark Connector lehetővé teszi, hogy az Azure ad- [alkalmazással](#azure-ad-application-authentication), az [Azure ad hozzáférési jogkivonatával](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#direct-authentication-with-access-token), az [eszköz-hitelesítéssel](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#device-authentication) (nem éles környezetekben) vagy [Azure Key Vault](https://github.com/Azure/azure-kusto-spark/blob/dev/docs/Authentication.md#key-vault)használatával hitelesítse magát Azure Active Directory (Azure ad-val). A felhasználónak telepítenie kell az Azure-kulcstartó csomagot, és meg kell adnia az alkalmazás hitelesítő adatait a Key Vault erőforrás eléréséhez.
 
 ### <a name="azure-ad-application-authentication"></a>Azure AD-alkalmazás hitelesítése
 
 A legegyszerűbb és gyakori hitelesítési módszer. Ez a módszer az Azure Adatkezelő Spark-összekötő használata esetén ajánlott.
 
-|properties  |Leírás  |
+|Tulajdonságok  |Leírás  |
 |---------|---------|
 |**KUSTO_AAD_CLIENT_ID**     |   Azure AD-alkalmazás (ügyfél) azonosítója.      |
 |**KUSTO_AAD_AUTHORITY_ID**     |  Azure AD-hitelesítési szolgáltató. Azure AD-címtár (bérlő) azonosítója.        |
@@ -124,7 +117,7 @@ Az Azure Adatkezelő-fürtön a következő jogosultságokat kell megadni:
  
 Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további információkért lásd: [szerepköralapú hitelesítés](/azure/kusto/management/access-control/role-based-authorization). A biztonsági szerepkörök kezelésével kapcsolatban lásd: [biztonsági szerepkörök kezelése](/azure/kusto/management/security-roles).
 
-## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-fogadó: Írás az Azure Adatkezelőba
+## <a name="spark-sink-writing-to-azure-data-explorer"></a>Spark-fogadó: az Azure Adatkezelőba való írás
 
 1. Fogadó paramétereinek beállítása:
 
@@ -144,19 +137,19 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
 
     ```scala
     import com.microsoft.kusto.spark.datasink.KustoSinkOptions
-    val conf = Map(
-            KustoSinkOptions.KUSTO_CLUSTER -> cluster,
-            KustoSinkOptions.KUSTO_TABLE -> table,
-            KustoSinkOptions.KUSTO_DATABASE -> database,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_ID -> appId,
-            KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD -> appKey,
-            KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID -> authorityId)
-    
+    import org.apache.spark.sql.{SaveMode, SparkSession}
+
     df.write
       .format("com.microsoft.kusto.spark.datasource")
-      .options(conf)
-      .save()
-      
+      .option(KustoSinkOptions.KUSTO_CLUSTER, cluster)
+      .option(KustoSinkOptions.KUSTO_DATABASE, database)
+      .option(KustoSinkOptions.KUSTO_TABLE, "Demo3_spark")
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_ID, appId)
+      .option(KustoSinkOptions.KUSTO_AAD_CLIENT_PASSWORD, appKey)
+      .option(KustoSinkOptions.KUSTO_AAD_AUTHORITY_ID, authorityId)
+      .option(KustoSinkOptions.KUSTO_TABLE_CREATE_OPTIONS, "CreateIfNotExist")
+      .mode(SaveMode.Append)
+      .save()  
     ```
     
    Vagy használja az egyszerűsített szintaxist:
@@ -189,10 +182,9 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
           .option(KustoSinkOptions.KUSTO_WRITE_ENABLE_ASYNC, "true") // Optional, better for streaming, harder to handle errors
           .trigger(Trigger.ProcessingTime(TimeUnit.SECONDS.toMillis(10))) // Sync this with the ingestionBatching policy of the database
           .start()
-    
     ```
 
-## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-forrás: Olvasás az Azure Adatkezelő
+## <a name="spark-source-reading-from-azure-data-explorer"></a>Spark-forrás: olvasás az Azure Adatkezelő
 
 1. Kis mennyiségű adat olvasásakor adja meg az adat-lekérdezést:
 
@@ -252,3 +244,9 @@ Az Azure Adatkezelő rendszerbiztonsági szerepkörrel kapcsolatos további info
     
     display(dfFiltered)
     ```
+
+## <a name="next-steps"></a>Következő lépések
+
+* További információ az [Azure adatkezelő Spark-összekötőről](https://github.com/Azure/azure-kusto-spark/tree/master/docs)
+* [Mintakód](https://github.com/Azure/azure-kusto-spark/tree/master/samples/src/main)
+

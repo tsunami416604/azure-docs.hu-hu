@@ -3,7 +3,7 @@ title: VIRTUÁLIS gépek méretének kiválasztása készletekhez – Azure Batc
 description: Az elérhető virtuálisgép-méretek közül választhat a Azure Batch készletekben lévő számítási csomópontok számára
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 09/12/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: e3d96ad7783c43dba6b69f6b11acccf790d0d6c9
-ms.sourcegitcommit: 909ca340773b7b6db87d3fb60d1978136d2a96b0
+ms.openlocfilehash: 34ab09f7d8d47804992b8ef6864bfea60d1c9b4d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70983746"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026610"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
 
@@ -40,47 +40,47 @@ A nem felsorolt promóciós vagy előnézeti virtuálisgép-méretek támogatás
 
 | Virtuálisgép-sorozat  | Támogatott méretek | Batch-fiók készletének kiosztási módja<sup>1</sup> |
 |------------|---------|-----------------|
-| Alapszintű A sorozat | Az összes méret, *kivéve* a Basic_A0 (a0) | Any |
-| A-sorozat | A Standard_A0 *kivételével* minden méret | Any |
-| Av2-sorozat | Minden méret | Any |
-| B sorozat | Nincsenek | Nincs |
-| DC sorozat | Nincsenek | Nincs |
-| Dv2, DSv2 sorozat | Minden méret | Any |
-| Dv3, Dsv3 sorozat | Minden méret | Any |
-| Ev3, Esv3 sorozat | Minden méret | Any |
-| Fsv2-sorozat | Minden méret | Any |
-| H-sorozat | Minden méret | Any |
-| HB –<sup>2</sup> . sorozat | Minden méret | Any |
-| HC-sorozat<sup>2</sup> | Minden méret | Any |
-| Ls-sorozat | Minden méret | Any |
-| Lsv2 sorozat | Nincsenek | Nincs |
-| M sorozat | Standard m64ms (csak alacsony prioritású), standard m128s (csak alacsony prioritású) | Any |
-| Mv2 sorozat | Nincsenek | Nincs |
-| NC sorozat | Minden méret | Any |
-| NCv2 –<sup>2</sup> . sorozat | Minden méret | Any |
-| NCv3 –<sup>2</sup> . sorozat | Minden méret | Any |
-| ND sorozat<sup>2</sup> | Minden méret | Any |
+| Alapszintű A sorozat | Minden méret, *kivéve* a Basic_A0 (a0) | Bármelyik |
+| A-sorozat | Minden méret, *kivéve* Standard_A0 | Bármelyik |
+| Av2-sorozat | Minden méret | Bármelyik |
+| B sorozat | None | Nincs |
+| DC sorozat | None | Nincs |
+| Dv2, DSv2 sorozat | Minden méret | Bármelyik |
+| Dv3, Dsv3 sorozat | Minden méret | Bármelyik |
+| Ev3, Esv3 sorozat | Minden méret | Bármelyik |
+| Fsv2 sorozat | Minden méret | Bármelyik |
+| H-sorozat | Minden méret | Bármelyik |
+| HB –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
+| HC-sorozat<sup>2</sup> | Minden méret | Bármelyik |
+| Ls sorozat | Minden méret | Bármelyik |
+| Lsv2 sorozat | None | Nincs |
+| M sorozat | Standard_M64ms (csak alacsony prioritású), Standard_M128s (csak alacsony prioritású) | Bármelyik |
+| Mv2 sorozat | None | Nincs |
+| NC sorozat | Minden méret | Bármelyik |
+| NCv2 –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
+| NCv3 –<sup>2</sup> . sorozat | Minden méret | Bármelyik |
+| ND sorozat<sup>2</sup> | Minden méret | Bármelyik |
 | NDv2 sorozat | Minden méret | Felhasználói előfizetés mód |
-| NV sorozat | Minden méret | Any |
-| NVv3 sorozat | Nincsenek | Nincs |
-| SAP HANA | Nincsenek | Nincs |
+| NV sorozat | Minden méret | Bármelyik |
+| NVv3 sorozat | None | Nincs |
+| SAP HANA | None | Nincs |
 
-<sup>1</sup> az újabb virtuálisgép-sorozatok kezdetben részlegesen támogatottak. Ezeket a virtuálisgép-sorozatokat a Batch-fiókok a **felhasználói**előfizetésre beállított kiosztási **móddal** tudják lefoglalni. A Batch-fiók konfigurálásával kapcsolatos további információkért lásd: [Batch-fiókok kezelése](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . Tekintse meg a [kvóták és korlátok](batch-quota-limit.md) című témakört, amelyből megtudhatja, hogyan kérhet kvótát a részben támogatott virtuálisgép-sorozatokhoz a **felhasználói előfizetés** batch  
+<sup>1</sup> az újabb virtuálisgép-sorozatok kezdetben részlegesen támogatottak. Ezeket a virtuálisgép-sorozatokat a Batch-fiókok a **felhasználói előfizetésre**beállított **kiosztási móddal** tudják lefoglalni. A Batch-fiók konfigurálásával kapcsolatos további információkért lásd: [Batch-fiókok kezelése](batch-account-create-portal.md#additional-configuration-for-user-subscription-mode) . Tekintse meg a [kvóták és korlátok](batch-quota-limit.md) című témakört, amelyből megtudhatja, hogyan kérhet kvótát a részben támogatott virtuálisgép-sorozatokhoz a **felhasználói előfizetés** batch  
 
 <sup>2</sup> ezek a virtuálisgép-méretek lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de az adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie.
 
 ### <a name="pools-in-cloud-service-configuration"></a>Készletek a Cloud Service-konfigurációban
 
-A Cloud Service-konfigurációban a Batch-készletek támogatják a [Cloud Services](../cloud-services/cloud-services-sizes-specs.md) összes virtuálisgép-méretét, a következők **kivételével** :
+A Cloud Service-konfigurációban a Batch-készletek támogatják a Cloud Services összes virtuálisgép- [méretét](../cloud-services/cloud-services-sizes-specs.md) , a következők **kivételével** :
 
 | Virtuálisgép-sorozat  | Nem támogatott méretek |
 |------------|-------------------|
 | A-sorozat   | Extra kicsi       |
 | Av2-sorozat | Standard_A1_v2, Standard_A2_v2, Standard_A2m_v2 |
 
-## <a name="size-considerations"></a>Mérettel kapcsolatos megfontolások
+## <a name="size-considerations"></a>Mérettel kapcsolatos szempontok
 
-* **Alkalmazásokra vonatkozó követelmények** – vegye figyelembe a csomópontokon futtatandó alkalmazás jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI](batch-mpi.md) -munkaterhelések vagy a CUDA-alkalmazások esetében érdemes lehet speciális [HPC](../virtual-machines/linux/sizes-hpc.md) [-vagy GPU-kompatibilis virtuálisgép-](../virtual-machines/linux/sizes-gpu.md) méreteket használni. (Lásd: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).)
+* **Alkalmazásokra vonatkozó követelmények** – vegye figyelembe a csomópontokon futtatandó alkalmazás jellemzőit és követelményeit. Az olyan szempontok, mint hogy az alkalmazás többszálú-e vagy mennyi memóriát fogyaszt, segíthetnek meghatározni a legmegfelelőbb és legköltséghatékonyabb csomópontméretet. A többpéldányos [MPI-munkaterhelések](batch-mpi.md) vagy a CUDA-alkalmazások esetében érdemes lehet speciális [HPC](../virtual-machines/linux/sizes-hpc.md) [-vagy GPU-kompatibilis virtuálisgép-](../virtual-machines/linux/sizes-gpu.md) méreteket használni. (Lásd: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).)
 
 * **Feladatok/csomópont** – tipikusan a csomópontok méretének kiválasztását feltételezve, hogy egyszerre egy tevékenység fut egy csomóponton. Azonban érdemes lehet több feladatot (és így több alkalmazás-példányt) [párhuzamosan futtatni](batch-parallel-node-tasks.md) a számítási csomópontokon a feladat végrehajtása során. Ebben az esetben gyakori, hogy egy többprocesszoros csomópontot válasszon a párhuzamos feladat-végrehajtás megnövekedett igényének kielégítéséhez.
 
@@ -92,7 +92,7 @@ A Cloud Service-konfigurációban a Batch-készletek támogatják a [Cloud Servi
 
 * **Készlet konfigurációja** – általánosságban több virtuálisgép-méretezési lehetőség is rendelkezésre áll, ha a virtuális gép konfigurációjában hoz létre készletet, a Cloud Service-konfigurációhoz képest.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
-* További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch](batch-pool-compute-intensive-sizes.md)-készletekben.
+* További információ a számítási igényű virtuálisgép-méretek használatáról: [RDMA-kompatibilis vagy GPU-kompatibilis példányok használata batch-készletekben](batch-pool-compute-intensive-sizes.md).

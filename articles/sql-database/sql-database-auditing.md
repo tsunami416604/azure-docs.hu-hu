@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: aeca4499a41adf37ba78452f1cf76047dd8c6592
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931929"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028529"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -246,6 +246,14 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 - HRE-hitelesítés használata esetén a sikertelen bejelentkezések rekordjai *nem* jelennek meg az SQL-naplóban. A sikertelen bejelentkezési naplózási rekordok megtekintéséhez látogasson el a [Azure Active Directory portálra]( ../active-directory/reports-monitoring/reference-sign-ins-error-codes.md), amely az események adatait naplózza.
 
 - Azure SQL Database naplózás a rendelkezésre állási & teljesítményére van optimalizálva. A nagyon magas tevékenység Azure SQL Database lehetővé teszi a műveletek folytatását, és előfordulhat, hogy nem rögzítik a naplózott eseményeket.
+
+- A nem módosítható naplózás a Storage-fiókban való konfigurálásával kapcsolatban lásd: [védett hozzáfűzési Blobok írásának engedélyezése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Vegye figyelembe, hogy a naplózási tároló neve **sqldbauditlogs**.
+
+> [!IMPORTANT] 
+>  A védett hozzáfűzési Blobok írási beállítása az időalapú megőrzés alatt jelenleg elérhető, és csak a következő régiókban látható:
+> - USA keleti régiója
+> - USA déli középső régiója
+> - USA 2. nyugati régiója
 
 
 ## <a id="subheading-7"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure PowerShell használatával

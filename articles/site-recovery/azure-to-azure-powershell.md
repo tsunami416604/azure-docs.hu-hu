@@ -4,19 +4,17 @@ description: Ismerje meg, hogyan állíthatja be a vész-helyreállítást az Az
 services: site-recovery
 author: sujayt
 manager: rochakm
-ms.service: site-recovery
 ms.topic: article
 ms.date: 3/29/2019
 ms.author: sutalasi
-ms.openlocfilehash: aa91725daf36113334849dd15dd01b6ce6ed4389
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 0afee7c5931f06545cd282af11107f660f17e1df
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621090"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968362"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Az Azure-beli virtuális gépek vész-helyreállításának beállítása Azure PowerShell használatával
-
 
 Ebből a cikkből megtudhatja, hogyan telepítheti és tesztelheti az Azure-beli virtuális gépek vész-helyreállítását Azure PowerShell használatával.
 
@@ -34,8 +32,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 > [!NOTE]
 > Előfordulhat, hogy a portálon keresztül elérhető összes funkció nem érhető el Azure PowerShellon keresztül. A Azure PowerShell által jelenleg nem támogatott forgatókönyv-funkciók némelyike:
-> - Annak a lehetősége, hogy a virtuális gép összes lemezét replikálni kell, anélkül, hogy explicit módon meg kellene adni a virtuális gép egyes lemezeit.  
-
+> - Annak a lehetősége, hogy a virtuális gép összes lemezét replikálni kell, anélkül, hogy explicit módon meg kellene adni a virtuális gép egyes lemezeit.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
@@ -48,26 +45,27 @@ Előkészületek:
 
 ## <a name="log-in-to-your-microsoft-azure-subscription"></a>Jelentkezzen be Microsoft Azure-előfizetésbe
 
-Jelentkezzen be az Azure-előfizetésbe a kapcsolódás-AzAccount parancsmag használatával
+Jelentkezzen be az Azure-előfizetésbe a `Connect-AzAccount` parancsmag használatával.
 
 ```azurepowershell
 Connect-AzAccount
 ```
-Válassza ki az Azure-előfizetését. A Get-AzSubscription parancsmag használatával lekérheti azon Azure-előfizetések listáját, amelyekhez hozzáfér. Válassza ki azt az Azure-előfizetést, amelyet a Select-AzSubscription parancsmaggal szeretne használni.
+
+Válassza ki az Azure-előfizetését. Használja a `Get-AzSubscription` parancsmagot azon Azure-előfizetések listájának lekéréséhez, amelyekhez hozzáfér. Válassza ki azt az Azure-előfizetést, amellyel dolgozni szeretne a `Set-AzContext` parancsmag használatával.
 
 ```azurepowershell
-Select-AzSubscription -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
+Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
 ```
 
 ## <a name="get-details-of-the-virtual-machines-to-be-replicated"></a>A replikálni kívánt virtuális gép (ek) részleteinek beolvasása
 
-A cikkben szereplő példában az USA keleti régiójában található virtuális gép az USA 2. nyugati régiójában lesz replikálva és helyreállítva. A replikált virtuális gép egy operációsrendszer-lemezzel és egyetlen adatlemezzel rendelkező virtuális gép. A példában használt virtuális gép neve AzureDemoVM.
+A cikkben szereplő példában az USA keleti régiójában található virtuális gép az USA 2. nyugati régiójában lesz replikálva és helyreállítva. A replikált virtuális gép egy operációsrendszer-lemezzel és egyetlen adatlemezzel rendelkező virtuális gép. A példában használt virtuális gép neve `AzureDemoVM`.
 
 ```azurepowershell
 # Get details of the virtual machine
 $VM = Get-AzVM -ResourceGroupName "A2AdemoRG" -Name "AzureDemoVM"
 
-Write-Output $VM     
+Write-Output $VM
 ```
 
 ```
@@ -108,6 +106,7 @@ A cikkben szereplő példában a védett virtuális gép az USA keleti régiój�
 #Create a resource group for the recovery services vault in the recovery Azure region
 New-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 ```
+
 ```
 ResourceGroupName : a2ademorecoveryrg
 Location          : westus2
@@ -116,7 +115,7 @@ Tags              :
 ResourceId        : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg
 ```
 
-Hozzon létre egy Recovery Services-tárolót. Az alábbi példában egy a2aDemoRecoveryVault nevű Recovery Services-tároló jön létre az USA 2. nyugati régiójában.
+Hozzon létre egy Recovery Services-tárolót. Az alábbi példában egy `a2aDemoRecoveryVault` nevű Recovery Services-tároló jön létre az USA 2. nyugati régiójában.
 
 ```azurepowershell
 #Create a new Recovery services vault in the recovery region
@@ -124,6 +123,7 @@ $vault = New-AzRecoveryServicesVault -Name "a2aDemoRecoveryVault" -ResourceGroup
 
 Write-Output $vault
 ```
+
 ```
 Name              : a2aDemoRecoveryVault
 ID                : /subscriptions/xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx/resourceGroups/a2ademorecoveryrg/providers/Microsoft.RecoveryServices/vaults/a2aDemoRecoveryVault
@@ -133,20 +133,20 @@ ResourceGroupName : a2ademorecoveryrg
 SubscriptionId    : xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx
 Properties        : Microsoft.Azure.Commands.RecoveryServices.ARSVaultProperties
 ```
-## <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
+## <a name="set-the-vault-context"></a>A tár környezetének beállítása
 
 Állítsa be a tár környezetét a PowerShell-munkamenetben való használatra. A beállítás után a rendszer a PowerShell-munkamenet következő Azure Site Recovery műveleteit a kijelölt tároló környezetében hajtja végre.
 
- ```azurepowershell
+```azurepowershell
 #Setting the vault context.
-Set-AsrVaultSettings -Vault $vault
-
+Set-AzRecoveryServicesAsrVaultContext -Vault $vault
 ```
+
 ```
 ResourceName         ResourceGroupName ResourceNamespace          ResourceType
 ------------         ----------------- -----------------          -----------
-a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults     
+a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 ```
 
 ```azurepowershell
@@ -154,13 +154,11 @@ a2aDemoRecoveryVault a2ademorecoveryrg Microsoft.RecoveryServices Vaults
 Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 
-Azure – Azure áttelepítéshez a tár környezetét beállíthatja az újonnan létrehozott tárolóra: 
+Azure – Azure áttelepítéshez a tár környezetét beállíthatja az újonnan létrehozott tárolóra:
 
 ```azurepowershell
-
 #Set the vault context for the PowerShell session.
 Set-AzRecoveryServicesAsrVaultContext -Vault $vault
-
 ```
 
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>A tároló előkészítése az Azure-beli virtuális gépek replikálásának megkezdéséhez
@@ -172,25 +170,25 @@ A tároló háló objektuma egy Azure-régiót jelöl. Az elsődleges háló obj
 - Régiónként csak egy Fabric-objektum hozható létre.
 - Ha korábban engedélyezte Site Recovery replikációt a Azure Portal egy virtuális géphez, a Site Recovery automatikusan létrehoz egy háló objektumot. Ha egy adott régióban létezik egy Fabric-objektum, nem hozhat létre újat.
 
-
-Mielőtt elkezdené, vegye figyelembe, hogy Site Recovery műveleteket aszinkron módon hajtja végre. Amikor műveletet kezdeményez, egy Azure Site Recovery feladatot küld, és a rendszer visszaadja a feladatok követésére szolgáló objektumot. A feladatok követése objektum használatával lekérheti a feladatokhoz tartozó legújabb állapotot (Get-ASRJob), és figyelheti a művelet állapotát.
+Mielőtt elkezdené, vegye figyelembe, hogy Site Recovery műveleteket aszinkron módon hajtja végre. Amikor műveletet kezdeményez, egy Azure Site Recovery feladatot küld, és a rendszer visszaadja a feladatok követésére szolgáló objektumot. A feladatok követése objektummal beolvashatja a feladatokhoz tartozó legutóbbi állapotot (`Get-AzRecoveryServicesAsrJob`), és figyelheti a művelet állapotát.
 
 ```azurepowershell
 #Create Primary ASR fabric
-$TempASRJob = New-ASRFabric -Azure -Location 'East US'  -Name "A2Ademo-EastUS"
+$TempASRJob = New-AzRecoveryServicesAsrFabric -Azure -Location 'East US'  -Name "A2Ademo-EastUS"
 
 # Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         #If the job hasn't completed, sleep for 10 seconds before checking the job status again
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
 
-$PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
+$PrimaryFabric = Get-AzRecoveryServicesAsrFabric -Name "A2Ademo-EastUS"
 ```
+
 Ha több Azure-régióból származó virtuális gép védelmét ugyanahhoz a tárolóhoz kívánja védeni, hozzon létre egy Fabric-objektumot mindegyik forrás Azure-régióban.
 
 ### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Site Recovery Fabric-objektum létrehozása a helyreállítási régió képviseletéhez
@@ -199,19 +197,18 @@ A helyreállítási háló objektum a helyreállítási Azure helyét jelöli. A
 
 ```azurepowershell
 #Create Recovery ASR fabric
-$TempASRJob = New-ASRFabric -Azure -Location 'West US 2'  -Name "A2Ademo-WestUS"
+$TempASRJob = New-AzRecoveryServicesAsrFabric -Azure -Location 'West US 2'  -Name "A2Ademo-WestUS"
 
 # Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
 
-$RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
-
+$RecoveryFabric = Get-AzRecoveryServicesAsrFabric -Name "A2Ademo-WestUS"
 ```
 
 ### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Site Recovery védelmi tároló létrehozása az elsődleges hálóban
@@ -225,13 +222,14 @@ $TempASRJob = New-AzRecoveryServicesAsrProtectionContainer -InputObject $Primary
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 Write-Output $TempASRJob.State
 
-$PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
+$PrimaryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
+
 ### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Site Recovery védelmi tároló létrehozása a helyreállítási hálóban
 
 ```azurepowershell
@@ -241,51 +239,52 @@ $TempASRJob = New-AzRecoveryServicesAsrProtectionContainer -InputObject $Recover
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 
 Write-Output $TempASRJob.State
 
-$RecoveryProtContainer = Get-ASRProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
+$RecoveryProtContainer = Get-AzRecoveryServicesAsrProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
 ### <a name="create-a-replication-policy"></a>Replikációs házirend létrehozása
 
 ```azurepowershell
 #Create replication policy
-$TempASRJob = New-ASRPolicy -AzureToAzure -Name "A2APolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4
+$TempASRJob = New-AzRecoveryServicesAsrPolicy -AzureToAzure -Name "A2APolicy" -RecoveryPointRetentionInHours 24 -ApplicationConsistentSnapshotFrequencyInHours 4
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
 
-$ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
+$ReplicationPolicy = Get-AzRecoveryServicesAsrPolicy -Name "A2APolicy"
 ```
+
 ### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Védelmi tárolók leképezésének létrehozása az elsődleges és a helyreállítási védelmi tároló között
 
 A védelmi tárolók leképezése az elsődleges védelmi tárolót egy helyreállítási védelmi tárolóval és egy replikációs házirenddel társítja. Hozzon létre egy leképezést minden olyan replikációs házirendhez, amelyet a virtuális gépek védelmi tároló pár közötti replikálásához fog használni.
 
 ```azurepowershell
 #Create Protection container mapping between the Primary and Recovery Protection Containers with the Replication policy
-$TempASRJob = New-ASRProtectionContainerMapping -Name "A2APrimaryToRecovery" -Policy $ReplicationPolicy -PrimaryProtectionContainer $PrimaryProtContainer -RecoveryProtectionContainer $RecoveryProtContainer
+$TempASRJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "A2APrimaryToRecovery" -Policy $ReplicationPolicy -PrimaryProtectionContainer $PrimaryProtContainer -RecoveryProtectionContainer $RecoveryProtContainer
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
 
-$EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
+$EusToWusPCMapping = Get-AzRecoveryServicesAsrProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
 ### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Védelmi tároló leképezésének létrehozása a feladat-visszavételhez (feladatátvétel utáni visszirányú replikálás)
@@ -294,12 +293,12 @@ Feladatátvétel után, amikor készen áll arra, hogy a feladatátviteli virtu�
 
 ```azurepowershell
 #Create Protection container mapping (for failback) between the Recovery and Primary Protection Containers with the Replication policy
-$TempASRJob = New-ASRProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
+$TempASRJob = New-AzRecoveryServicesAsrProtectionContainerMapping -Name "A2ARecoveryToPrimary" -Policy $ReplicationPolicy -PrimaryProtectionContainer $RecoveryProtContainer -RecoveryProtectionContainer $PrimaryProtContainer
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
@@ -320,14 +319,13 @@ A **felügyelt lemezeket nem használó**virtuális gépek esetében a cél Stor
 ```azurepowershell
 #Create Target storage account in the recovery region. In this case a Standard Storage account
 $WestUSTargetStorageAccount = New-AzStorageAccount -Name "a2atargetstorage" -ResourceGroupName "a2ademorecoveryrg" -Location 'West US 2' -SkuName Standard_LRS -Kind Storage
-
 ```
 
 ## <a name="create-network-mappings"></a>Hálózati leképezések létrehozása
 
 A hálózati leképezések az elsődleges régióban lévő virtuális hálózatokat a helyreállítási régióban lévő virtuális hálózatokra képezik le. A hálózati megfeleltetés megadja a helyreállítási régióban lévő Azure-beli virtuális hálózatot, hogy az elsődleges virtuális hálózatban lévő virtuális gépnek feladatátvételt kell biztosítania. Egyetlen Azure-beli virtuális hálózat csak egyetlen Azure-beli virtuális hálózatra képezhető le egy helyreállítási régióban.
 
-- Hozzon létre egy Azure-beli virtuális hálózatot a helyreállítási régióban a feladatátvételhez
+- Hozzon létre egy Azure-beli virtuális hálózatot a helyreállítási régióban a feladatátvételhez:
 
    ```azurepowershell
     #Create a Recovery Network in the recovery region
@@ -337,7 +335,9 @@ A hálózati leképezések az elsődleges régióban lévő virtuális hálózat
 
     $WestUSRecoveryNetwork = $WestUSRecoveryVnet.Id
    ```
-- Az elsődleges virtuális hálózat (azon vnet beolvasása, amelyhez a virtuális gép csatlakozik)
+
+- Kérje le az elsődleges virtuális hálózatot (azon VNet, amelyhez a virtuális gép csatlakoztatva van):
+
    ```azurepowershell
     #Retrieve the virtual network that the virtual machine is connected to
 
@@ -357,32 +357,35 @@ A hálózati leképezések az elsődleges régióban lévő virtuális hálózat
     $PrimarySubnet = $NIC.IpConfigurations[0].Subnet
 
     # Extract the resource ID of the Azure virtual network the nic is connected to from the subnet ID
-    $EastUSPrimaryNetwork = (Split-Path(Split-Path($PrimarySubnet.Id))).Replace("\","/")  
+    $EastUSPrimaryNetwork = (Split-Path(Split-Path($PrimarySubnet.Id))).Replace("\","/")
    ```
-- Hálózati leképezés létrehozása az elsődleges virtuális hálózat és a helyreállítási virtuális hálózat között
+
+- Hozzon létre hálózati leképezést az elsődleges virtuális hálózat és a helyreállítási virtuális hálózat között:
+
    ```azurepowershell
     #Create an ASR network mapping between the primary Azure virtual network and the recovery Azure virtual network
-    $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
+    $TempASRJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "A2AEusToWusNWMapping" -PrimaryFabric $PrimaryFabric -PrimaryAzureNetworkId $EastUSPrimaryNetwork -RecoveryFabric $RecoveryFabric -RecoveryAzureNetworkId $WestUSRecoveryNetwork
 
     #Track Job status to check for completion
     while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
             sleep 10;
-            $TempASRJob = Get-ASRJob -Job $TempASRJob
+            $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
     }
 
     #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
     Write-Output $TempASRJob.State
-
    ```
-- Hálózati leképezés létrehozása a fordított irányhoz (feladat-visszavétel)
+
+- Hálózati leképezés létrehozása a fordított irányhoz (feladat-visszavétel):
+
     ```azurepowershell
     #Create an ASR network mapping for failback between the recovery Azure virtual network and the primary Azure virtual network
-    $TempASRJob = New-ASRNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
+    $TempASRJob = New-AzRecoveryServicesAsrNetworkMapping -AzureToAzure -Name "A2AWusToEusNWMapping" -PrimaryFabric $RecoveryFabric -PrimaryAzureNetworkId $WestUSRecoveryNetwork -RecoveryFabric $PrimaryFabric -RecoveryAzureNetworkId $EastUSPrimaryNetwork
 
     #Track Job status to check for completion
     while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
             sleep 10;
-            $TempASRJob = Get-ASRJob -Job $TempASRJob
+            $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
     }
 
     #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
@@ -394,7 +397,6 @@ A hálózati leképezések az elsődleges régióban lévő virtuális hálózat
 Az Azure-beli virtuális gép replikálása **felügyelt lemezekkel**.
 
 ```azurepowershell
-
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
@@ -422,10 +424,8 @@ $DataDisk1ReplicationConfig  = New-AzRecoveryServicesAsrAzureToAzureDiskReplicat
 $diskconfigs = @()
 $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 
-
 #Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
-$TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
-
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 ```
 
 Az Azure-beli virtuális gép replikálása nem **felügyelt lemezekkel**.
@@ -446,15 +446,14 @@ $diskconfigs += $OSDiskReplicationConfig, $DataDisk1ReplicationConfig
 #Get the resource group that the virtual machine must be created in when failed over.
 $RecoveryRG = Get-AzResourceGroup -Name "a2ademorecoveryrg" -Location "West US 2"
 
-#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.  
-$TempASRJob = New-ASRReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
+#Start replication by creating replication protected item. Using a GUID for the name of the replication protected item to ensure uniqueness of name.
+$TempASRJob = New-AzRecoveryServicesAsrReplicationProtectedItem -AzureToAzure -AzureVmId $VM.Id -Name (New-Guid).Guid -ProtectionContainerMapping $EusToWusPCMapping -AzureToAzureDiskReplicationConfiguration $diskconfigs -RecoveryResourceGroupId $RecoveryRG.ResourceId
 
 #Track Job status to check for completion
 while (($TempASRJob.State -eq "InProgress") -or ($TempASRJob.State -eq "NotStarted")){
         sleep 10;
-        $TempASRJob = Get-ASRJob -Job $TempASRJob
+        $TempASRJob = Get-AzRecoveryServicesAsrJob -Job $TempASRJob
 }
-
 
 #Check if the Job completed successfully. The updated job state of a successfully completed job should be "Succeeded"
 Write-Output $TempASRJob.State
@@ -464,21 +463,23 @@ Miután a replikálás megkezdése sikeres volt, a rendszer replikálja a virtu�
 
 A replikálási folyamat kezdetben a helyreállítási régióban lévő virtuális gép replikáló lemezének egy másolatát indítja el. Ezt a fázist a kezdeti replikálási fázisnak nevezzük.
 
-A kezdeti replikálás befejeződése után a replikálás a különbözeti szinkronizálási fázisba kerül. Ezen a ponton a virtuális gép védett, és tesztelhető feladatátvételi művelet is végezhető rajta. A virtuális gépet jelképező replikált elem replikációs állapota "védett" állapotba kerül a kezdeti replikálás befejeződése után.
+A kezdeti replikálás befejeződése után a replikálás a különbözeti szinkronizálási fázisba kerül. Ezen a ponton a virtuális gép védett, és tesztelhető feladatátvételi művelet is végezhető rajta. A virtuális gépet jelképező replikált elem replikációs állapota a kezdeti replikálás befejeződése után **védett** állapotba kerül.
 
 A virtuális gép replikációs állapotának és replikálási állapotának figyeléséhez a hozzá tartozó replikációval védett elem részleteit kell beszereznie.
+
 ```azurepowershell
- Get-ASRReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
+Get-AzRecoveryServicesAsrReplicationProtectedItem -ProtectionContainer $PrimaryProtContainer | Select FriendlyName, ProtectionState, ReplicationHealth
 ```
+
 ```
 FriendlyName ProtectionState ReplicationHealth
 ------------ --------------- -----------------
-AzureDemoVM  Protected       Normal           
+AzureDemoVM  Protected       Normal
 ```
 
 ## <a name="perform-a-test-failover-validate-and-cleanup-test-failover"></a>Feladatátvételi teszt, ellenőrzés és törlési teszt végrehajtása
 
-Miután a virtuális gép replikálása elérte a védett állapotot, a virtuális gépen végezhető feladatátvételi teszt művelet (a virtuális gép replikált védett elemén).
+Miután a virtuális gép replikálása elérte a védett állapotot, a virtuális gépen (a virtuális gép replikált védett elemén) elvégezhető egy teszt feladatátvételi művelet.
 
 ```azurepowershell
 #Create a separate network for test failover (not connected to my DR network)
@@ -490,17 +491,17 @@ $TFONetwork= $TFOVnet.Id
 ```
 
 Végezzen feladatátvételi tesztet.
+
 ```azurepowershell
-$ReplicationProtectedItem = Get-ASRReplicationProtectedItem -FriendlyName "AzureDemoVM" -ProtectionContainer $PrimaryProtContainer
+$ReplicationProtectedItem = Get-AzRecoveryServicesAsrReplicationProtectedItem -FriendlyName "AzureDemoVM" -ProtectionContainer $PrimaryProtContainer
 
-$TFOJob = Start-ASRTestFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -AzureVMNetworkId $TFONetwork -Direction PrimaryToRecovery
-
-
+$TFOJob = Start-AzRecoveryServicesAsrTestFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -AzureVMNetworkId $TFONetwork -Direction PrimaryToRecovery
 ```
 
 Várjon, amíg a feladatátvételi teszt művelet befejeződik.
+
 ```azurepowershell
-Get-ASRJob -Job $TFOJob
+Get-AzRecoveryServicesAsrJob -Job $TFOJob
 ```
 
 ```
@@ -522,18 +523,20 @@ AllowedActions   :
 Tasks            : {Prerequisites check for test failover, Create test virtual machine, Preparing the virtual machine, Start the virtual machine}
 Errors           : {}
 ```
+
 Miután a feladatátvételi teszt sikeresen befejeződik, csatlakozhat a feladatátvételi teszthez a virtuális gépen, és ellenőrizheti a feladatátvételi tesztet.
 
 Ha a tesztelés befejeződött a feladatátvételi teszt során a virtuális gépen, törölje a teszt másolatát a feladatátvételi teszt feladatátvételi műveletének elindításával. Ez a művelet törli a feladatátvételi teszt által létrehozott virtuális gép tesztelési példányát.
 
 ```azurepowershell
-$Job_TFOCleanup = Start-ASRTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem
+$Job_TFOCleanup = Start-AzRecoveryServicesAsrTestFailoverCleanupJob -ReplicationProtectedItem $ReplicationProtectedItem
 
-Get-ASRJob -Job $Job_TFOCleanup | Select State
+Get-AzRecoveryServicesAsrJob -Job $Job_TFOCleanup | Select State
 ```
+
 ```
-State    
------    
+State
+-----
 Succeeded
 ```
 
@@ -542,36 +545,38 @@ Succeeded
 A virtuális gép feladatátvétele egy adott helyreállítási pontra.
 
 ```azurepowershell
-$RecoveryPoints = Get-ASRRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
+$RecoveryPoints = Get-AzRecoveryServicesAsrRecoveryPoint -ReplicationProtectedItem $ReplicationProtectedItem
 
 #The list of recovery points returned may not be sorted chronologically and will need to be sorted first, in order to be able to find the oldest or the latest recovery points for the virtual machine.
 "{0} {1}" -f $RecoveryPoints[0].RecoveryPointType, $RecoveryPoints[-1].RecoveryPointTime
 ```
+
 ```
 CrashConsistent 4/24/2018 11:10:25 PM
 ```
 
-
 ```azurepowershell
 #Start the failover job
-$Job_Failover = Start-ASRUnplannedFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[-1]
+$Job_Failover = Start-AzRecoveryServicesAsrUnplannedFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem -Direction PrimaryToRecovery -RecoveryPoint $RecoveryPoints[-1]
 
 do {
-        $Job_Failover = Get-ASRJob -Job $Job_Failover;
+        $Job_Failover = Get-AzRecoveryServicesAsrJob -Job $Job_Failover;
         sleep 30;
 } while (($Job_Failover.State -eq "InProgress") -or ($JobFailover.State -eq "NotStarted"))
 
 $Job_Failover.State
 ```
+
 ```
 Succeeded
 ```
 
 A feladatátvételi művelet sikeres végrehajtása után véglegesítheti a feladatátvételi műveletet.
-```azurepowershell
-$CommitFailoverJOb = Start-ASRCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
 
-Get-ASRJOb -Job $CommitFailoverJOb
+```azurepowershell
+$CommitFailoverJOb = Start-AzRecoveryServicesAsrCommitFailoverJob -ReplicationProtectedItem $ReplicationProtectedItem
+
+Get-AzRecoveryServicesAsrJob -Job $CommitFailoverJOb
 ```
 
 ```
@@ -596,7 +601,7 @@ Errors           : {}
 
 ## <a name="reprotect-and-failback-to-source-region"></a>Ismételt védelem és feladat-visszavétel a forrásoldali régióban
 
-Feladatátvétel után, amikor készen áll arra, hogy visszalépjen az eredeti régióba, az Update-AzRecoveryServicesAsrProtectionDirection parancsmag használatával indítsa el a replikációval védett elem visszirányú replikálását.
+A feladatátvétel után, amikor készen áll arra, hogy visszalépjen az eredeti régióba, a `Update-AzRecoveryServicesAsrProtectionDirection` parancsmag használatával indítsa el a replikációval védett elem visszirányú replikálását.
 
 ```azurepowershell
 #Create Cache storage account for replication logs in the primary region
@@ -613,11 +618,12 @@ Miután befejeződött a védelem, megkezdheti a feladatátvételt fordított ir
 
 ## <a name="disable-replication"></a>A replikálás letiltása
 
-A Remove-ASRReplicationProtectedItem parancsmag használatával letilthatja a replikációt.
+A replikációt letilthatja a `Remove-AzRecoveryServicesAsrReplicationProtectedItem` parancsmag használatával.
 
 ```azurepowershell
-Remove-ASRReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
+Remove-AzRecoveryServicesAsrReplicationProtectedItem -ReplicationProtectedItem $ReplicatedItem
 ```
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg a [Azure site Recovery PowerShell-hivatkozást](https://docs.microsoft.com/powershell/module/az.RecoveryServices) , amelyből megtudhatja, hogyan hajthat végre más feladatokat, például helyreállítási terveket hozhat létre, és hogyan tesztelheti a helyreállítási terveket a PowerShell használatával.
+## <a name="next-steps"></a>Következő lépések
+
+Tekintse meg a [Azure site Recovery PowerShell-hivatkozást](/powershell/module/az.RecoveryServices) , amelyből megtudhatja, hogyan hajthat végre más feladatokat, például helyreállítási terveket hozhat létre, és hogyan tesztelheti a helyreállítási terveket a PowerShell használatával.

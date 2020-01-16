@@ -3,7 +3,7 @@ title: Az Azure Virtual Machine Agent áttekintése
 description: Az Azure Virtual Machine Agent áttekintése
 services: virtual-machines-windows
 documentationcenter: virtual-machines
-author: axayjo
+author: MicahMcKittrick-MSFT
 manager: gwallace
 editor: tysonn
 tags: azure-resource-manager
@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: b003f2823ffceebecdb2af681a3bdbb4cf25704c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615076"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027644"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
 
-Ez a cikk az Azure-beli virtuális gép ügynökének telepítését, észlelését és eltávolítását ismerteti.
+Ez a cikk az Azure-beli virtuális gépek ügynökének telepítését és észlelését ismerteti.
 
 ## <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
@@ -61,8 +61,17 @@ Ha nincsenek telepítve az ügynökök, nem használhat bizonyos Azure-szolgált
 ### <a name="manual-installation"></a>Manuális telepítés
 A Windows rendszerű virtuális gép ügynöke manuálisan is telepíthető Windows Installer-csomaggal. Az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezkép létrehozásakor szükség lehet manuális telepítésre. A Windows rendszerű virtuális gép ügynökének manuális telepítéséhez [töltse le a virtuálisgép-ügynök telepítőjét](https://go.microsoft.com/fwlink/?LinkID=394789). A virtuálisgép-ügynök a Windows Server 2008 R2 és újabb rendszereken támogatott.
 
+> [Megjegyzés!] Fontos, hogy frissítse a AllowExtensionOperations beállítást, miután manuálisan telepítette a VMAgent egy olyan virtuális gépre, amely a ProvisionVMAgent engedélyezése nélkül lett üzembe helyezve a lemezképből.
+
+```powershell
+$vm.OSProfile.AllowExtensionOperations = $true
+$vm | Update-AzVM
+```
+
 ### <a name="prerequisites"></a>Előfeltételek
-A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 R2 (64-BITS) futtatásához szükségesnek kell lennie a .NET-keretrendszer 4,0-as verziójával. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 R2 (64-BITS) futtatásához szükségesnek kell lennie a .NET-keretrendszer 4,0-as verziójával. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+
+- Győződjön meg arról, hogy a virtuális gép rendelkezik hozzáféréssel az IP-168.63.129.16. További információ: [Mi az IP-168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16).
 
 ## <a name="detect-the-vm-agent"></a>A virtuálisgép-ügynök észlelése
 

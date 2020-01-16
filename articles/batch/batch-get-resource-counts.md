@@ -2,25 +2,25 @@
 title: Feladatokhoz és csomópontokhoz tartozó állapotok száma – Azure Batch | Microsoft Docs
 description: Azure Batch feladatok és számítási csomópontok állapotának megszámlálása a Batch-megoldások kezeléséhez és figyeléséhez.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 09/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 7b41be8c325cd238592f33369499348885de1778
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 5e90045b7863968e8c61c3cbc382434bc8be415a
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323545"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029700"
 ---
 # <a name="monitor-batch-solutions-by-counting-tasks-and-nodes-by-state"></a>Batch-megoldások figyelése a feladatok és a csomópontok állapot szerinti számlálásával
 
 A nagyméretű Azure Batch megoldások monitorozásához és kezeléséhez a különböző állapotokban lévő erőforrások pontos darabszámára van szükség. Azure Batch hatékony műveleteket biztosít a Batch- *feladatok* és a *számítási csomópontok*számára. Ezeket a műveleteket a lehetséges időigényes lista-lekérdezések helyett használhatja, amelyek részletes információkat adnak vissza a feladatok vagy csomópontok nagy gyűjteményéről.
 
-* A feladatok beolvasása érték a feladat aktív, futó és befejezett feladatai, valamint a sikeres vagy sikertelen feladatok összesített számát [mutatja][rest_get_task_counts] be. 
+* A feladatok [beolvasása][rest_get_task_counts] érték a feladat aktív, futó és befejezett feladatai, valamint a sikeres vagy sikertelen feladatok összesített számát mutatja be. 
 
   Az egyes állapotokban megjelenő feladatok megszámlálásával egyszerűbben jelenítheti meg a feladat előrehaladását egy felhasználónál, vagy észlelheti a feladattal esetlegesen befolyásoló váratlan késéseket és hibákat. A lekérési feladatok száma a Batch Service API 2017 -06-01.5.1 és a kapcsolódó SDK-k és eszközök használatával érhető el.
 
@@ -34,11 +34,11 @@ Ha a szolgáltatás olyan verzióját használja, amely nem támogatja a feladat
 
 A lekérési feladatok számlálása művelet a következő állapotok szerint számítja ki a feladatokat:
 
-- **Aktív** – a várólistára helyezett és futtatandó feladat, de jelenleg nincs hozzárendelve számítási csomóponthoz. A feladat akkor is `active` fennáll, ha [egy olyan fölérendelt feladattól függ](batch-task-dependencies.md) , amely még nem fejeződött be. 
-- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. A feladatok akkor számítanak bele `running` , ha az állapota `preparing` vagy `running`a, ahogy azt a feladat műveletével kapcsolatos [információk][rest_get_task] lekérése jelzi.
+- **Aktív** – a várólistára helyezett és futtatandó feladat, de jelenleg nincs hozzárendelve számítási csomóponthoz. A feladat akkor is `active`, ha [egy olyan fölérendelt feladattól függ](batch-task-dependencies.md) , amely még nem fejeződött be. 
+- **Futtatás** – egy számítási csomóponthoz rendelt feladat, de még nem fejeződött be. Egy feladat akkor számít `running`nak, ha az állapota `preparing` vagy `running`, ahogyan azt a feladat-végrehajtással kapcsolatos [információk lekérése][rest_get_task] jelzi.
 - **Befejezve** – olyan feladat, amely már nem jogosult a futtatásra, mert az sikeresen befejeződött, vagy a művelet sikertelenül fejeződött be, és kimerítette az újrapróbálkozási korlátot is. 
-- **Sikeres** – A feladat végrehajtásának `success`eredményét eredményező feladat. A Batch meghatározza, hogy a feladat sikeres volt-e, vagy `TaskExecutionResult` sikertelen volt-e a [executionInfo][rest_get_exec_info] tulajdonság tulajdonságának ellenőrzésével.
-- **Sikertelen művelet** Egy feladat, amelynek eredményeként a feladat végrehajtása `failure`történik.
+- **Sikeres** – A feladat végrehajtásának eredményét `success`. A Batch meghatározza, hogy a feladat sikeres volt-e, vagy sikertelen volt-e, ha ellenőrizte a [executionInfo][rest_get_exec_info] tulajdonság `TaskExecutionResult` tulajdonságát.
+- **Sikertelen művelet** Egy feladat, amelynek eredményeként a feladat végrehajtása `failure`.
 
 A következő .NET-kód minta bemutatja, hogyan lehet lekérdezni a tevékenységek számát állapot szerint: 
 
@@ -55,7 +55,7 @@ Console.WriteLine("Failed task count: {0}", taskCounts.Failed);
 A REST és más támogatott nyelvek esetében hasonló mintát használhat a feladatok számának lekéréséhez. 
 
 > [!NOTE]
-> A Batch szolgáltatás API-verziói 2018 előtt -08-01.7.0 egy `validationStatus` tulajdonságot is visszaadnak a feladat lekérése válaszban. Ez a tulajdonság azt jelzi, hogy a Batch bejelölte-e az állapotot a List Tasks API-ban jelentett állapotokkal való konzisztencia érdekében. A érték `validated` azt jelzi, hogy a rendszer csak azt a köteget ellenőrzi, hogy legalább egyszer konzisztencia van-e a feladatokhoz. A `validationStatus` tulajdonság értéke nem jelzi, hogy a lekérési feladatokhoz tartozó Counts függvény aktuálisan naprakész-e.
+> A Batch szolgáltatás API-verziói 2018 előtt -08-01.7.0 egy `validationStatus` tulajdonságot is visszaállítanak a feladat lekérése válaszban. Ez a tulajdonság azt jelzi, hogy a Batch bejelölte-e az állapotot a List Tasks API-ban jelentett állapotokkal való konzisztencia érdekében. A `validated` értéke csak azt jelzi, hogy az adott köteg legalább egyszer konzisztencia-ellenőrzésre kerül a feladatokhoz. A `validationStatus` tulajdonság értéke nem jelzi, hogy a lekérési feladatokhoz tartozó Counts érték jelenleg naprakész-e.
 >
 
 ## <a name="node-state-counts"></a>Csomópont-állapotok száma
@@ -66,15 +66,15 @@ A címkészlet-csomópontok számlálása művelet a következő állapotok alap
 - **Tétlen** – egy olyan rendelkezésre álló számítási csomópont, amely jelenleg nem futtat feladatot.
 - **LeavingPool** – egy csomópont, amely elhagyja a készletet, vagy azért, mert a felhasználó explicit módon eltávolította, vagy mert a készlet átméretezés vagy automatikus skálázás.
 - **Offline** – olyan csomópont, amelyet a Batch nem használhat az új feladatok beosztására.
-- **Előzik** – egy alacsony prioritású csomópont, amely el lett távolítva a készletből, mert az Azure visszaigényelte a virtuális gépet. A `preempted` csomópontok újrainicializálása akkor lehetséges, ha az alacsony prioritású virtuális gép kapacitása elérhető.
+- **Előzik** – egy alacsony prioritású csomópont, amely el lett távolítva a készletből, mert az Azure visszaigényelte a virtuális gépet. Egy `preempted` csomópont újrainicializálható, ha az alacsony prioritású virtuális gép kapacitása elérhető.
 - **Újraindítás** – újraindítást biztosító csomópont.
 - **Reimaging** – a csomópont, amelyen az operációs rendszer újratelepítése zajlik.
 - **Futtatás** – egy vagy több feladatot futtató csomópont (az indítási tevékenységen kívül).
 - **Indítás** – a Batch szolgáltatást indító csomópont. 
-- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat][rest_start_task] meghiúsult, és az összes újrapróbálkozást kimerítette, és amelyen `waitForSuccess` az indítási tevékenység van beállítva. A csomópont nem használható a feladatok futtatásához.
+- **StartTaskFailed** – olyan csomópont, amelyen az [indítási feladat][rest_start_task] meghiúsult, és minden újrapróbálkozást kimerítettek, és amelyeken a `waitForSuccess` be van állítva az indítási tevékenységre. A csomópont nem használható a feladatok futtatásához.
 - **Ismeretlen** – egy olyan csomópont, amely elvesztette a kapcsolatot a Batch szolgáltatással, és amelynek állapota nem ismert.
 - **Használhatatlan** – olyan csomópont, amely hibák miatt nem használható a feladatok végrehajtásához.
-- **WaitingForStartTask** – olyan csomópont, amelyen az indítási tevékenység fut, de `waitForSuccess` be van állítva, és az indítási tevékenység nem fejeződött be.
+- **WaitingForStartTask** – az indítási feladatot futtató csomópont, de `waitForSuccess` be van állítva, és az indítási tevékenység nem fejeződött be.
 
 A következő C# kódrészlet azt mutatja be, hogyan listázható a csomópontok száma az aktuális fiókban található összes készletnél:
 
@@ -118,7 +118,7 @@ foreach (var nodeCounts in batchClient.PoolOperations.ListPoolNodeCounts(new ODA
 ```
 A REST és más támogatott nyelvek esetében hasonló mintát használhat a készletek csomópontjainak megszerzéséhez.
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch szolgáltatás fogalmairól és funkcióiról további információt [a Batch funkcióinak áttekintésében](batch-api-basics.md) talál. A cikk az elsődleges batch-erőforrásokat, például a készleteket, a számítási csomópontokat, a feladatokat és a feladatokat ismerteti, és áttekintést nyújt a szolgáltatás szolgáltatásairól.
 

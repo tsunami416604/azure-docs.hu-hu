@@ -5,16 +5,16 @@ services: batch
 ms.service: batch
 author: davefellows
 manager: gwallace
-ms.author: lahugh
+ms.author: jushiman
 ms.date: 02/07/2019
 ms.topic: conceptual
 ms.custom: seodec18
-ms.openlocfilehash: fa2d59b2a6d2dea72276ab38a5cb1ca7bfb579a4
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a04f59983aca4b7db1a58ab4e8b8a2da47a52783
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68323109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026309"
 ---
 # <a name="reference-architectures-for-azure-rendering"></a>Az Azure rendering architektúrái
 
@@ -26,9 +26,9 @@ Az alábbi ábrán egy hibrid forgatókönyv látható, amely a következő Azur
 
 * **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
+* Helyszíni **hálózat** : Azure EXPRESSROUTE vagy VPN. Azure: Azure-VNet.
 
-* **Storage** – bemeneti és kimeneti fájlok: Az Azure-beli virtuális gépeket használó NFS-vagy CFS-eszközök Azure File Sync vagy RSync használatával szinkronizálhatók a helyszíni tárolással. Vagylagosan A avere a helyszíni NAS-eszközökről az NFS használatával vFXT a bemeneti vagy kimeneti fájlokat.
+* **Storage** – bemeneti és kimeneti fájlok: az NFS vagy a CFS az Azure-beli virtuális gépek használatával, Azure file Sync vagy RSync segítségével szinkronizálva a helyszíni tárolóval. Másik lehetőség: a avere a helyszíni NAS-eszközökről az NFS-en keresztül bemeneti vagy kimeneti fájlokat vFXT.
 
   ![Cloud burst – hibrid NFS vagy CFS](./media/batch-rendering-architectures/hybrid-nfs-cfs-avere.png)
 
@@ -38,9 +38,9 @@ Az alábbi ábrán egy hibrid forgatókönyv látható, amely a következő Azur
 
 * **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
+* Helyszíni **hálózat** : Azure EXPRESSROUTE vagy VPN. Azure: Azure-VNet.
 
-* **Storage** – bemeneti és kimeneti fájlok: BLOB Storage, amely a számítási erőforrásokhoz van csatlakoztatva az Azure Blobfuse használatával.
+* **Storage** – bemeneti és kimeneti fájlok: blob Storage, amely a számítási erőforrásokhoz van csatlakoztatva az Azure Blobfuse használatával.
 
   ![Cloud burst – hibrid és Blobfuse](./media/batch-rendering-architectures/hybrid-blob-fuse.png)
 
@@ -50,14 +50,14 @@ Az alábbi ábrán egy teljes mértékben csatlakoztatott hibrid forgatókönyv 
 
 * **Számítás** – Azure batch készlet vagy virtuálisgép-méretezési csoport.
 
-* Helyszíni **hálózat** : Azure ExpressRoute vagy VPN. Azure: Azure-VNet.
+* Helyszíni **hálózat** : Azure EXPRESSROUTE vagy VPN. Azure: Azure-VNet.
 
-* **Tárolás** – létesítmények közötti: Avere vFXT. Helyszíni fájlok opcionális archiválása Azure Data Box használatával a blob Storage-ba vagy a helyszíni avere FXT a NAS-gyorsításhoz.
+* **Tárolás** – létesítmények közötti: avere vFXT. Helyszíni fájlok opcionális archiválása Azure Data Box használatával a blob Storage-ba vagy a helyszíni avere FXT a NAS-gyorsításhoz.
 
   ![Cloud burst – hibrid számítási és tárolási kapacitás](./media/batch-rendering-architectures/hybrid-compute-storage-avere.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [Render managerek](batch-rendering-render-managers.md) Azure batch használatával történő használatáról.
 

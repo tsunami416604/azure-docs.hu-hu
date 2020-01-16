@@ -2,22 +2,22 @@
 title: Csomópont-végpontok konfigurálása Azure Batch-készletben | Microsoft Docs
 description: Az SSH-vagy RDP-portok elérésének konfigurálása vagy letiltása egy Azure Batch készlet számítási csomópontjain.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 02/13/2018
-ms.author: lahugh
-ms.openlocfilehash: e6c7f2762a6742a1aff7a2c3aff977b5e3657349
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.author: jushiman
+ms.openlocfilehash: 1ac4c7647125cd6164235e98a4a828f6b072cbee
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68322474"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029461"
 ---
 # <a name="configure-or-disable-remote-access-to-compute-nodes-in-an-azure-batch-pool"></a>A Azure Batch-készletben lévő számítási csomópontok távoli elérésének konfigurálása vagy letiltása
 
-Alapértelmezés szerint a Batch lehetővé teszi [](/rest/api/batchservice/computenode/adduser) , hogy a hálózati kapcsolattal rendelkező csomópontok a Batch-készletben lévő számítási csomóponthoz külsőleg csatlakozzanak. Egy felhasználó például a 3389-as porton Távoli asztal (RDP) használatával kapcsolódhat egy számítási csomóponthoz egy Windows-készletben. Hasonlóképpen, alapértelmezés szerint a felhasználók a biztonságos rendszerhéj (SSH) használatával kapcsolódhatnak a 22-es porton a Linux-készletben lévő számítási csomóponthoz. 
+Alapértelmezés szerint a Batch lehetővé teszi, hogy a hálózati kapcsolattal rendelkező [csomópontok](/rest/api/batchservice/computenode/adduser) a Batch-készletben lévő számítási csomóponthoz külsőleg csatlakozzanak. Egy felhasználó például a 3389-as porton Távoli asztal (RDP) használatával kapcsolódhat egy számítási csomóponthoz egy Windows-készletben. Hasonlóképpen, alapértelmezés szerint a felhasználók a biztonságos rendszerhéj (SSH) használatával kapcsolódhatnak a 22-es porton a Linux-készletben lévő számítási csomóponthoz. 
 
 A környezetében előfordulhat, hogy korlátozni vagy le kell tiltania ezeket az alapértelmezett külső hozzáférési beállításokat. Ezeket a beállításokat a Batch API-k használatával módosíthatja a [PoolEndpointConfiguration](/rest/api/batchservice/pool/add#poolendpointconfiguration) tulajdonság beállításához. 
 
@@ -31,7 +31,7 @@ Minden NAT-készlet konfigurációja tartalmaz egy vagy több [hálózati bizton
 * NAT-készlet konfigurálásakor több NSG szabályt is beállíthat. A szabályok prioritási sorrendben vannak bejelölve. Amint talál egy érvényes szabályt, nem vizsgálja, hogy a többi szabálynak megfelel-e a forgalom.
 
 
-## <a name="example-deny-all-rdp-traffic"></a>Példa: Az összes RDP-forgalom tiltása
+## <a name="example-deny-all-rdp-traffic"></a>Példa: az összes RDP-forgalom tiltása
 
 A következő C# kódrészlet azt mutatja be, hogyan konfigurálható az RDP-végpont a Windows-készlet számítási csomópontjain az összes hálózati forgalom megtagadásához. A végpont a *60000-60099*tartományba tartozó portok egy frontend-készletét használja. 
 
@@ -48,7 +48,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Példa: Az internetről érkező összes SSH-forgalom letiltása
+## <a name="example-deny-all-ssh-traffic-from-the-internet"></a>Példa: az internetről érkező összes SSH-forgalom tiltása
 
 A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon az összes internetes forgalom megtagadásához. A végpont a *4000-4100*tartományba tartozó portok egy frontend-készletét használja. 
 
@@ -74,7 +74,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Példa: Az RDP-forgalom engedélyezése egy adott IP-címről
+## <a name="example-allow-rdp-traffic-from-a-specific-ip-address"></a>Példa: egy adott IP-címről érkező RDP-forgalom engedélyezése
 
 A következő C# kódrészlet azt mutatja be, hogyan konfigurálható az RDP-végpont a Windows-készlet számítási csomópontjain úgy, hogy csak az IP- *198.51.100.7*engedélyezze az RDP-hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az IP-címnek.
 
@@ -92,7 +92,7 @@ pool.NetworkConfiguration = new NetworkConfiguration
 };
 ```
 
-## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Példa: SSH-forgalom engedélyezése egy adott alhálózatról
+## <a name="example-allow-ssh-traffic-from-a-specific-subnet"></a>Példa: egy adott alhálózat SSH-forgalmának engedélyezése
 
 A következő Python-kódrészlet bemutatja, hogyan konfigurálhatja az SSH-végpontot a Linux-készletben lévő számítási csomópontokon, hogy csak a *192.168.1.0/24*alhálózatról engedélyezze a hozzáférést. A második NSG szabály megtagadja a forgalmat, amely nem felel meg az alhálózatnak.
 
@@ -123,7 +123,7 @@ pool.network_configuration = batchmodels.NetworkConfiguration(
 )
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli NSG-szabályokról: [hálózati forgalom szűrése hálózati biztonsági csoportokkal](../virtual-network/security-overview.md).
 

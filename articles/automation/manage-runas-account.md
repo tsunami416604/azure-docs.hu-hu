@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 05/24/2019
 ms.topic: conceptual
-ms.openlocfilehash: 34dd15ee638335048c983fbb752bd812291456ca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a1761eebe51c5ccb4d30b93ad4122dfc185d216e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418055"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028263"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Azure Automation futtató fiókok kezelése
 
@@ -20,19 +20,19 @@ Amikor létrehoz egy futtató fiókot, létrehoz egy új egyszerű szolgáltatá
 
 A futtató fiókok két típusa létezik:
 
-* **Azure-beli futtató fiók** – ez a fiók a [Resource Manager](../azure-resource-manager/resource-manager-deployment-model.md) -alapú üzemi modell erőforrásainak kezelésére szolgál.
+* **Azure-beli futtató fiók** – ez a fiók a [Resource Manager](../azure-resource-manager/management/deployment-models.md) -alapú üzemi modell erőforrásainak kezelésére szolgál.
   * Létrehoz egy önaláírt tanúsítvánnyal ellátott Azure AD-alkalmazást, továbbá létrehoz egy egyszerűszolgáltatás-fiókot az Azure AD-ben lévő alkalmazáshoz, és hozzárendeli a közreműködői szerepkört a jelenlegi előfizetésben lévő fiókhoz. Ezt a beállítást bármikor módosíthatja Tulajdonos értékre vagy bármely egyéb szerepkörre. További információk: [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
   * Létrehoz egy *AzureRunAsCertificate* nevű Automation-tanúsítványobjektumot a megadott Automation-fiókban. Ez a tanúsítványobjektum tartalmazza az Azure AD-alkalmazás által használt titkos tanúsítványkulcsot.
   * Létrehoz egy *AzureRunAsConnection* nevű Automation-kapcsolatobjektumot a megadott Automation-fiókban. Ez a kapcsolatobjektum magában foglalja az alkalmazásazonosítót, a bérlőazonosítót, az előfizetés-azonosítót és a tanúsítvány ujjlenyomatát.
 
-* **Klasszikus Azure-beli futtató fiók** – ez a fiók használható a [klasszikus üzembe helyezési modell](../azure-resource-manager/resource-manager-deployment-model.md) erőforrásainak kezelésére.
+* **Klasszikus Azure-beli futtató fiók** – ez a fiók használható a [klasszikus üzembe helyezési modell](../azure-resource-manager/management/deployment-models.md) erőforrásainak kezelésére.
   * Felügyeleti tanúsítvány létrehozása az előfizetésben
   * Létrehoz egy *AzureClassicRunAsCertificate* nevű Automation-tanúsítványobjektumot a megadott Automation-fiókban. Ez a tanúsítványobjektum tartalmazza a felügyeleti tanúsítvány által használt titkos tanúsítványkulcsot.
   * Létrehoz egy *AzureClassicRunAsConnection* nevű Automation-kapcsolatobjektumot a megadott Automation-fiókban. Ez a kapcsolatobjektum tartalmazza az előfizetés nevét, a subscriptionId paramétert, valamint a tanúsítványobjektum nevét.
   * A létrehozásához vagy megújításához az előfizetés egyik társ-rendszergazda tagjának kell lennie
 
   > [!NOTE]
-  > Azure Cloud Solution Provider (Azure CSP) előfizetések csak a Azure Resource Manager modellt támogatják, a nem Azure Resource Manager szolgáltatások nem érhetők el a programban. CSP-előfizetés használata esetén a klasszikus Azure-beli futtató fiókot nem hozza létre a rendszer. Az Azure-beli futtató fiók még mindig létre lesz hozva. A CSP-előfizetésekkel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services#comments)című témakört.
+  > Azure Cloud Solution Provider (Azure CSP) előfizetések csak a Azure Resource Manager modellt támogatják, a nem Azure Resource Manager szolgáltatások nem érhetők el a programban. CSP-előfizetés használata esetén a klasszikus Azure-beli futtató fiókot nem hozza létre a rendszer. Az Azure-beli futtató fiók még mindig létre lesz hozva. A CSP-előfizetésekkel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](https://docs.microsoft.com/azure/cloud-solution-provider/overview/azure-csp-available-services)című témakört.
 
   > [!NOTE]
   > A futtató fiókhoz tartozó egyszerű szolgáltatásnév nem rendelkezik a Azure Active Directory alapértelmezett olvasási engedélyeivel. Ha engedélyeket szeretne adni az Azure Active Directory olvasásához vagy kezeléséhez, az **API-engedélyek**területen meg kell adnia ezt az engedélyt az egyszerű szolgáltatáshoz. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-web-apis).

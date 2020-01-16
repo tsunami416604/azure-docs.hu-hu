@@ -7,12 +7,12 @@ ms.service: private-link
 ms.topic: article
 ms.date: 09/16/2019
 ms.author: allensu
-ms.openlocfilehash: 96edbd62dcb95fa8f24ea5a8a6f0716c1fefdcd8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb1913d77616869c889c464a41e8166b3a88b03c
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75357566"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028876"
 ---
 # <a name="connect-privately-to-a-storage-account-using-azure-private-endpoint"></a>Magánhálózati kapcsolat létrehozása egy Storage-fiókhoz az Azure Private Endpoint használatával
 Az Azure privát végpontja az Azure-beli privát kapcsolat alapvető építőeleme. Lehetővé teszi az Azure-erőforrások, például a virtuális gépek (VM-EK) számára a magánjellegű kapcsolati erőforrásokkal való kommunikációt.
@@ -127,11 +127,11 @@ Ebben a szakaszban létrehoz egy privát Storage-fiókot egy privát végpont ha
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
     |Földrajzi egység|Válassza a **WestCentralUS**lehetőséget.|
-    |Név|Adja meg a *myPrivateEndpoint*.  |
+    |Név|Adja meg a *myPrivateEndpoint*.  |
     |Tároló alerőforrása|Hagyja meg az alapértelmezett **blobot**. |
     | **HÁLÓZATI** |  |
-    | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
-    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
+    | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
+    | Alhálózat | Válassza a *mySubnet*lehetőséget. |
     | **MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ**|  |
     | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett **(új) privatelink.blob.Core.Windows.net**. |
@@ -172,8 +172,8 @@ Kapcsolódjon a virtuális gép *myVm* az internetről a következőképpen:
 
 Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fiókhoz.
 
-1. A *myVM*távoli asztal nyissa meg a PowerShellt.
-2. Adja meg `nslookup mystorageaccount.blob.core.windows.net` a következőhöz hasonló üzenetet fog kapni:
+1. A *myVM*távoli asztal nyissa meg a PowerShellt.
+2. Adja meg `nslookup mystorageaccount.blob.core.windows.net` a következőhöz hasonló üzenetet fog kapni:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -192,7 +192,7 @@ Ebben a szakaszban a privát végponton keresztül fog csatlakozni a Storage-fi�
 10. Kattintson a **Csatlakozás** gombra.
 11. A blob-tárolók tallózása a mystorageaccount 
 12. Opcionálisan Mappák létrehozása és/vagy fájlok feltöltése a *mystorageaccount*. 
-13. A távoli asztali kapcsolat bezárásával *myVM*. 
+13. A távoli asztali kapcsolat bezárásával *myVM*. 
 
 További lehetőségek a Storage-fiók eléréséhez:
 - A Microsoft Azure Storage Explorer egy önálló ingyenes alkalmazás a Microsofttól, amely lehetővé teszi, hogy vizuálisan működjön az Azure Storage-adatokkal Windows, macOS és Linux rendszeren. Telepítheti az alkalmazást a Storage-fiók tartalmának magánjellegű tallózásához. 
@@ -202,9 +202,9 @@ További lehetőségek a Storage-fiók eléréséhez:
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása 
 Ha elkészült a privát végponttal, a Storage-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza ki a *myResourceGroup* a keresési eredmények közül. 
+1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül. 
 2. Válassza az **Erőforráscsoport törlése** elemet. 
-3. Adja meg a *myResourceGroup* az **erőforráscsoport nevének** beírásához, majd válassza a **Törlés**lehetőséget. 
+3. Írja be a *myResourceGroup* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget. 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET a virtuális hálózaton és a Storage-fiókban, valamint egy privát végpontot. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a Storage-fiókkal a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
+Ebben a rövid útmutatóban létrehozott egy virtuális GÉPET a virtuális hálózaton és a Storage-fiókban, valamint egy privát végpontot. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a Storage-fiókkal a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).

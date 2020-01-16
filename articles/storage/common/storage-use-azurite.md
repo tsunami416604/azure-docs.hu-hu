@@ -7,12 +7,12 @@ ms.date: 08/31/2019
 ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
-ms.openlocfilehash: 0421f49b31eba688542adc0a5b62e1cf75028836
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5e1fce0852a4e820d7ee0af626ce3fddf6773750
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74269461"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029920"
 ---
 # <a name="use-the-azurite-emulator-for-local-azure-storage-development-and-testing-preview"></a>A Azurite Emulator használata helyi Azure Storage-fejlesztéshez és-teszteléshez (előzetes verzió)
 
@@ -282,6 +282,20 @@ azurite --debug path/debug.log
 azurite -d path/debug.log
 ```
 
+### <a name="loose-mode"></a>Kilazult mód
+
+Nem **kötelező** Alapértelmezés szerint a Azurite szigorú módot alkalmaz a nem támogatott kérelmek fejlécének és paramétereinek a blokkolására. Tiltsa le a szigorú módot a **--laza** kapcsoló használatával.
+
+```console
+azurite --loose
+```
+
+Jegyezze fel a "L" főkapcsolót:
+
+```console
+azurite -L
+```
+
 ## <a name="authorization-for-tools-and-sdks"></a>Eszközök és SDK-k engedélyezése
 
 Az Azure Storage SDK-k vagy eszközök, például a [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)bármely hitelesítési stratégia segítségével csatlakozhat a Azurite. Hitelesítés szükséges. A Azurite támogatja a megosztott kulcs és a közös hozzáférésű aláírások (SAS) engedélyezését. A Azurite támogatja a nyilvános tárolók névtelen elérését is.
@@ -307,6 +321,33 @@ Az alkalmazás Azurite való csatlakoztatásának legegyszerűbb módja egy kapc
 ```
 
 További információ: az [Azure Storage-beli kapcsolatok karakterláncának konfigurálása](storage-configure-connection-string.md).
+
+### <a name="custom-storage-accounts-and-keys"></a>Egyéni Storage-fiókok és-kulcsok
+
+A Azurite a `AZURITE_ACCOUNTS` környezeti változó a következő formátumban való beállításával támogatja az egyéni Storage-fiókok nevét és kulcsait: `account1:key1[:key2];account2:key1[:key2];...`.
+
+Használjon például egy olyan egyéni Storage-fiókot, amely rendelkezik egy kulccsal:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1"
+```
+
+Vagy használjon több Storage-fiókot két kulccsal:
+
+```cmd
+set AZURITE_ACCOUNTS="account1:key1:key2;account2:key1:key2"
+```
+
+A Azurite alapértelmezés szerint percenként frissíti az egyéni fiókok nevét és kulcsait a környezeti változóból. Ezzel a funkcióval dinamikusan elforgathatja a fiók kulcsát, vagy új Storage-fiókokat adhat hozzá a Azurite újraindítása nélkül.
+
+> [!NOTE]
+> Az alapértelmezett `devstoreaccount1` Storage-fiók le van tiltva egyéni Storage-fiókok beállításakor.
+
+> [!NOTE]
+> Az egyéni fióknév és kulcsok használata esetén ennek megfelelően frissítse a kapcsolódási karakterláncot.
+
+> [!NOTE]
+> A `export` kulcsszó használatával beállíthatja a környezeti változókat egy Linux-környezetben, a Windows `set` használatával.
 
 ### <a name="storage-explorer"></a>Storage Explorer
 

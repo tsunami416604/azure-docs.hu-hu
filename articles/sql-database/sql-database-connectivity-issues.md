@@ -11,16 +11,16 @@ ms.topic: conceptual
 author: dalechen
 manager: dcscontentpm
 ms.author: ninarn
-ms.reviewer: carlrab
-ms.date: 11/14/2019
-ms.openlocfilehash: c25fa3f378c1e5a0f8bc26e4fb8c6f4ec752b43c
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.reviewer: carlrab, vanto
+ms.date: 01/14/2020
+ms.openlocfilehash: d2b56e259f551f7655936c975a7a864a27a1df79
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74082491"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027796"
 ---
-# <a name="working-with-sql-database-connection-issues-and-transient-errors"></a>SQL Database kapcsolati problémák és átmeneti hibák használata
+# <a name="troubleshooting-transient-connection-errors-to-sql-database"></a>Átmeneti kapcsolódási hibák elhárítása SQL Database
 
 Ez a cikk azt ismerteti, hogyan lehet megakadályozni, elhárítani, diagnosztizálni és enyhíteni a kapcsolódási hibákat és az olyan átmeneti hibákat, amelyeket az ügyfélalkalmazás a Azure SQL Database való interakció során észlel. Megtudhatja, hogyan konfigurálhatja az újrapróbálkozási logikát, hogyan alakíthatja ki a kapcsolódási karakterláncot, és hogyan módosíthatja más kapcsolatbeállításokat
 
@@ -108,7 +108,7 @@ A teszt gyakorlati elvégzéséhez a program elindítása előtt húzza ki a sz�
 
 A program szándékosan helytelenül betűzheti a felhasználónevet az első kapcsolódási kísérlet előtt. A hiba a következő:
 
-- **SqlException.Number** = 18456
+- **SqlException. Number** = 18456
 - Üzenet: "a (z)" WRONG_MyUserName "felhasználó bejelentkezése sikertelen."
 
 Az első újrapróbálkozási kísérlet részeként a program képes kijavítani a hibát, majd megpróbál csatlakozni.
@@ -444,7 +444,6 @@ public bool IsTransient(Exception ex)
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az egyéb gyakori SQL Database kapcsolódási problémák elhárításával kapcsolatos további információkért lásd: a [Azure SQL Database kapcsolódási problémáinak elhárítása](sql-database-troubleshoot-common-connection-issues.md).
 - [SQL Database és SQL Serverhoz tartozó kapcsolatok kódtárai](sql-database-libraries.md)
 - [SQL Server a kapcsolatok készletezése (ADO.NET)](https://docs.microsoft.com/dotnet/framework/data/adonet/sql-server-connection-pooling)
 - Az újrapróbálkozások [ egy Pythonban írt, az Apache 2,0 licenccel rendelkező általános célú](https://pypi.python.org/pypi/retrying) újrapróbálkozási könyvtár, amely leegyszerűsíti az újrapróbálkozási viselkedés feladatát a bármit.

@@ -3,12 +3,12 @@ title: Az Azure Migrate készülékkel kapcsolatos gyakori kérdések
 description: Válaszok az Azure Migrate készülékkel kapcsolatos gyakori kérdésekre
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: 29cb390f509a2a4ebf44c1f9aacef99b507aebb8
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: c8bcebeee58401cb3d2b65ae82e51d31ab4dad0b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720327"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029124"
 ---
 # <a name="azure-migrate-appliance-common-questions"></a>Azure Migrate berendezés: gyakori kérdések
 
@@ -40,9 +40,9 @@ Amikor a letöltött sablonnal hozza létre a berendezés virtuális gépet, hoz
 ## <a name="what-network-connectivity-is-needed"></a>Milyen hálózati kapcsolatra van szükség?
 
 Tekintse át a következőket:
-- Készülék VMware assessment: [URL-cím](migrate-support-matrix-vmware.md#assessment-url-access-requirements) és [port](migrate-support-matrix-vmware.md#assessment-port-requirements) hozzáférési követelmények.
-- A készülék ügynök nélküli VMware migrálása: az [URL-cím](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) és a [port](migrate-support-matrix-vmware.md#agentless-migration-port-requirements) hozzáférési követelményei.
-- A készülék Hyper-V felmérése: az [URL-cím](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) és a [port](migrate-support-matrix-hyper-v.md#assessment-port-requirements) hozzáférési követelményei.
+- VMware Assessment a Azure Migrate készülék használatával: [URL-cím](migrate-appliance.md#url-access) és [port](migrate-support-matrix-vmware.md#port-access) hozzáférési követelmények.
+- VMware ügynök nélküli áttelepítés a Azure Migrate berendezéssel: [URL-cím](migrate-appliance.md#url-access) és [port](migrate-support-matrix-vmware-migration.md#agentless-ports) hozzáférési követelmények.
+- Hyper-V értékelés a Azure Migrate berendezés használatával: [URL-cím](migrate-appliance.md#url-access) és [port](migrate-support-matrix-hyper-v.md#port-access) hozzáférési követelmények.
 
 
 ## <a name="what-data-does-the-appliance-collect"></a>Milyen adatokat gyűjt a készülék?

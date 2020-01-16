@@ -2,19 +2,19 @@
 title: Készlet kiépítése virtuális hálózatban – Azure Batch | Microsoft Docs
 description: Batch-készlet létrehozása egy Azure-beli virtuális hálózatban, hogy a számítási csomópontok biztonságosan kommunikálhassanak a hálózaton lévő más virtuális gépekkel, például a fájlkiszolgálón.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 04/10/2019
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 78f29bacaadac5f01e4a8dd26bf03b2bda84f2bf
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 06b861f306718068366653685ebe4daf8d5dcfa6
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73577583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76026268"
 ---
 # <a name="create-an-azure-batch-pool-in-a-virtual-network"></a>Azure Batch-készlet létrehozása egy virtuális hálózaton
 
@@ -64,7 +64,7 @@ Felhasználó által definiált útvonal hozzáadásakor adja meg az útvonalat 
 
 ![Felhasználó által megadott útvonal](./media/batch-virtual-network/user-defined-route.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).
 - A felhasználó által megadott útvonal létrehozásával kapcsolatos további információkért lásd: [felhasználó által definiált útvonal-Azure Portal létrehozása](../virtual-network/tutorial-create-route-table-portal.md).

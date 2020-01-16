@@ -3,7 +3,7 @@ title: Hatékony lista-lekérdezések tervezése – Azure Batch | Microsoft Doc
 description: Növelje a teljesítményt a lekérdezések szűrésével, amikor adatokat kér a Batch-erőforrásokról, például a készletekről, a feladatokról, a tevékenységekről és a számítási csomópontokról.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 031fefeb-248e-4d5a-9bc2-f07e46ddd30d
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 12/07/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 37d34267220cbb7ceabfc823f6facd651969fbd4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: d853302ebb0961f9e5fda9f5ecc41f3a26351170
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095158"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027100"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Lekérdezések létrehozása a Batch-erőforrások hatékony listázásához
 
@@ -28,13 +28,13 @@ Itt megtudhatja, hogyan növelheti a Azure Batch alkalmazása teljesítményét 
 Szinte minden batch-alkalmazásnak valamilyen típusú figyelést vagy más műveletet kell végrehajtania, amely gyakran rendszeres időközönként lekérdezi a Batch szolgáltatást. Ha például meg szeretné állapítani, hogy vannak-e a feladatokban egy várólistára helyezett feladat, akkor a feladat minden feladatához le kell kérnie az összes feladatot. A készletben lévő csomópontok állapotának meghatározásához a készlet minden csomópontján be kell szereznie az adatait. Ez a cikk bemutatja, hogyan hajthatja végre az ilyen lekérdezéseket a leghatékonyabb módon.
 
 > [!NOTE]
-> A Batch szolgáltatás speciális API-támogatást biztosít a feladatok feladatainak számlálására, valamint a számítási csomópontok számlálására a Batch-készletben. Ezeknek a listáknak a lekérése helyett a [feladatok][rest_get_task_counts] beolvasása és a [lista készlet csomópontok számlálása][rest_get_node_counts] műveletekkel hívható meg. Ezek a műveletek hatékonyabbak, mint a lista lekérdezése, de csak korlátozott mennyiségű adatot adnak vissza. Lásd: [a feladatok és a számítási csomópontok állapot szerinti számlálása](batch-get-resource-counts.md). 
+> A Batch szolgáltatás speciális API-támogatást biztosít a feladatok feladatainak számlálására, valamint a számítási csomópontok számlálására a Batch-készletben. Ezeknek a listáknak a lekérése helyett a [feladatok beolvasása][rest_get_task_counts] és a [lista készlet csomópontok számlálása][rest_get_node_counts] műveletekkel hívható meg. Ezek a műveletek hatékonyabbak, mint a lista lekérdezése, de csak korlátozott mennyiségű adatot adnak vissza. Lásd: [a feladatok és a számítási csomópontok állapot szerinti számlálása](batch-get-resource-counts.md). 
 
 
 ## <a name="meet-the-detaillevel"></a>A DetailLevel teljesítve
 Az éles batch-alkalmazásokban a feladatok, feladatok és számítási csomópontok több ezren is megadhatók. Amikor információt kér ezekről az erőforrásokról, egy potenciálisan nagy mennyiségű adatnak "át kell haladnia a drótot" a Batch szolgáltatásból az alkalmazásba az egyes lekérdezéseken. A lekérdezés által visszaadott elemek számának és típusának korlátozásával növelheti a lekérdezések sebességét, és így az alkalmazás teljesítménye is.
 
-Ez a [Batch .net][api_net] API-kódrészlet felsorolja a feladatokhoz társított összes feladatot, valamint az egyes feladatok *összes* tulajdonságát:
+Ez a [Batch .net][api_net] API-kódrészlet *felsorolja a feladatokhoz* társított összes feladatot, valamint az egyes feladatok *összes* tulajdonságát:
 
 ```csharp
 // Get a collection of all of the tasks and all of their properties for job-001
@@ -64,50 +64,50 @@ Ebben a példában, ha több ezer feladat van a feladatban, a második lekérdez
 > 
 
 ## <a name="filter-select-and-expand"></a>Szűrés, kijelölés és Kibontás
-A [Batch .net][api_net] és a [Batch Rest][api_rest] API-k lehetővé teszik a listában visszaadott elemek számának, valamint a visszaadott adatok mennyiségének csökkentését. Ehhez adja meg a **szűrés**, a kiválasztás és a **karakterláncok** kibontása a listák lekérdezésének végrehajtásakor **lehetőséget**.
+A [Batch .net][api_net] és a [Batch Rest][api_rest] API-k lehetővé teszik a listában visszaadott elemek számának, valamint a visszaadott adatok mennyiségének csökkentését. Ehhez adja meg a **szűrés**, a **kiválasztás**és a **karakterláncok kibontása** a listák lekérdezésének végrehajtásakor lehetőséget.
 
-### <a name="filter"></a>Szűrés
+### <a name="filter"></a>Szűrő
 A szűrő sztring egy kifejezés, amely csökkenti a visszaadott elemek számát. Például csak a feladat futási feladatait listázhatja, vagy csak olyan számítási csomópontokat listázhat, amelyek készen állnak a feladatok futtatására.
 
 * A szűrő sztring egy vagy több kifejezésből áll, és egy olyan kifejezéssel, amely egy tulajdonság nevét, operátorát és értékét tartalmazza. A megadható tulajdonságok a lekérdezett entitások egyes típusaira jellemzőek, csakúgy, mint az egyes tulajdonságok által támogatott operátorok.
-* Több kifejezés is egyesíthető a logikai operátorok `and` és `or`a használatával.
-* Ez a példa szűrő sztring csak a futó "render" feladatokat sorolja `(state eq 'running') and startswith(id, 'renderTask')`fel:.
+* Több kifejezés is egyesíthető a logikai operátorok `and` és `or`használatával.
+* Ez a példa szűrő sztring csak a futó "render" feladatokat sorolja fel: `(state eq 'running') and startswith(id, 'renderTask')`.
 
-### <a name="select"></a>Kiválasztás
+### <a name="select"></a>Válassza ezt:
 A Select sztring korlátozza az egyes elemekhez visszaadott tulajdonságértékek értékét. Megadhatja a tulajdonságlapok listáját, és csak ezek a tulajdonságértékek lesznek visszaadva a lekérdezés eredményeiben lévő elemekhez.
 
 * A Select sztring a tulajdonságok neveinek vesszővel tagolt listáját tartalmazza. Megadhatja a lekérdezni kívánt entitás típusának bármelyik tulajdonságát.
-* Ez a példa a karakterláncot adja meg, hogy az egyes feladatokhoz csak három `id, state, stateTransitionTime`tulajdonságérték legyen visszaadva:.
+* Ez a példa a sztring kiválasztásával meghatározza, hogy az egyes feladatokhoz csak három tulajdonságérték legyen visszaadva: `id, state, stateTransitionTime`.
 
 ### <a name="expand"></a>Kibontás
 A kibontási karakterlánc csökkenti az egyes információk beszerzéséhez szükséges API-hívások számát. Ha kibontott karakterláncot használ, az egyes elemekre vonatkozó további információkat egyetlen API-hívással lehet beszerezni. Az entitások listájának első beszerzése helyett, majd a lista egyes elemeire vonatkozó információkat kér le, a kibontási karakterlánc használatával egyetlen API-hívásban szerezheti be ugyanezeket az adatokat. A kevésbé API-hívások jobb teljesítményt jelentenek.
 
 * A Select sztringhez hasonlóan a kibontási karakterlánc azt is meghatározza, hogy bizonyos adatmennyiség szerepel-e a lista lekérdezési eredményei között.
 * A kibontási karakterlánc csak akkor támogatott, ha a feladatok, a feladatütemezés, a feladatok és a készletek listájában használatos. Jelenleg csak a statisztikai adatokat támogatja.
-* Ha az összes tulajdonság megadása kötelező, és nincs megadva a Select sztring, a kibontási karakterláncot kell használni a statisztikai adatok lekérdezéséhez. Ha egy Select sztringet használ a tulajdonságok egy részhalmazának beszerzésére `stats` , akkor a Select sztringben megadható, és a kibontási karakterláncot nem kell megadni.
-* Ez a példa a karakterlánc kibontásával meghatározza, hogy a statisztikai adatokat vissza kell-e `stats`adni a lista egyes elemeihez:.
+* Ha az összes tulajdonság megadása kötelező, és nincs megadva a Select sztring, a kibontási *karakterláncot kell használni* a statisztikai adatok lekérdezéséhez. Ha egy Select sztringet használ a tulajdonságok egy részhalmazának beszerzésére, akkor `stats` megadható a Select karakterláncban, és a kibontási karakterláncot nem kell megadni.
+* Ez a példa a karakterlánc kibontásával meghatározza, hogy a statisztikai adatokat vissza kell-e adni a lista egyes elemeihez: `stats`.
 
 > [!NOTE]
-> A három lekérdezési karakterlánc típusának (Filter, Select és Expand) összeállításakor győződjön meg arról, hogy a tulajdonságok nevei és az eset megegyezik a REST API elemével. Ha például a .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) osztállyal dolgozik, az állapot helyett az **állapotot** kell megadnia, annak ellenére, hogy a .net-tulajdonság [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Tekintse meg az alábbi táblázatokat a .NET és a REST API-k közötti tulajdonság-hozzárendelésekhez.
+> A három lekérdezési karakterlánc típusának (Filter, Select és Expand) összeállításakor győződjön meg arról, hogy a tulajdonságok nevei és az eset megegyezik a REST API elemével. Ha például a .NET [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask) osztállyal dolgozik, **az állapot helyett**az **állapotot** kell megadnia, annak ellenére, hogy a .net-tulajdonság [CloudTask. State](/dotnet/api/microsoft.azure.batch.cloudtask.state#Microsoft_Azure_Batch_CloudTask_State). Tekintse meg az alábbi táblázatokat a .NET és a REST API-k közötti tulajdonság-hozzárendelésekhez.
 > 
 > 
 
 ### <a name="rules-for-filter-select-and-expand-strings"></a>A szűrésre, kiválasztásra és a karakterláncok kibontására vonatkozó szabályok
 * A Filter, a Select és a Expand sztring tulajdonságok nevei a [Batch Rest][api_rest] API-ban is megjelennek, még akkor is, ha a Batch [.net][api_net] vagy egy másik batch SDK-t használ.
 * Az összes tulajdonságnév megkülönbözteti a kis-és nagybetűket, de a tulajdonságértékek a kis-és nagybetűk megkülönböztetése.
-* A `DateTime`dátum/idő karakterláncok két formátum egyike lehet, és előtte kell lennie.
+* A dátum/idő karakterláncok két formátum egyike lehet, és a `DateTime`előtt szerepelnie kell.
   
-  * W3C-DTF formátum például:`creationTime gt DateTime'2011-05-08T08:49:37Z'`
-  * RFC 1123 formátumú példa:`creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
-* A `true` logikai karakterláncok vagy `false`vagy.
-* Ha érvénytelen tulajdonság vagy operátor van megadva, a rendszer `400 (Bad Request)` egy hibát eredményez.
+  * W3C-DTF Format példa: `creationTime gt DateTime'2011-05-08T08:49:37Z'`
+  * RFC 1123 formátumú példa: `creationTime gt DateTime'Sun, 08 May 2011 08:49:37 GMT'`
+* A logikai karakterláncok `true` vagy `false`.
+* Ha érvénytelen tulajdonság vagy operátor van megadva, a rendszer `400 (Bad Request)` hibát eredményez.
 
 ## <a name="efficient-querying-in-batch-net"></a>Hatékony lekérdezés a Batch .NET-ben
 A [Batch .net][api_net] API-n belül a [ODATADetailLevel][odata] osztály a szűrők megadására, a kiválasztására és a karakterláncok kibontására szolgál a műveletek listázásához. A ODataDetailLevel osztály három nyilvános karakterlánc-tulajdonságot tartalmaz, amelyek megadhatók a konstruktorban, vagy közvetlenül az objektumon is megadhatók. Ezután a ODataDetailLevel objektumot paraméterként adja át a különböző lista-műveletekhez, például a [ListPools][net_list_pools], a [ListJobs][net_list_jobs]és a [ListTasks][net_list_tasks].
 
-* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: Korlátozza a visszaadott elemek számát.
-* [ODATADetailLevel][odata]. [SelectClause][odata_select]: Adja meg, hogy mely tulajdonságértékek legyenek visszaadva az egyes elemeknél.
-* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: Egyetlen API-hívásban lévő összes elemre vonatkozó adatok lekérése az egyes elemek külön hívása helyett.
+* [ODATADetailLevel][odata]. [FilterClause][odata_filter]: korlátozza a visszaadott elemek számát.
+* [ODATADetailLevel][odata]. [SelectClause][odata_select]: adja meg, hogy mely tulajdonságértékek legyenek visszaadva az egyes elemeknél.
+* [ODATADetailLevel][odata]. [ExpandClause][odata_expand]: egyetlen API-hívásban lévő összes elemre vonatkozó adatok lekérése az egyes elemek külön hívása helyett.
 
 A következő kódrészlet a Batch .NET API használatával hatékonyan kérdezi le a Batch szolgáltatást egy adott készlet statisztikájában. Ebben az esetben a Batch-felhasználónak tesztelési és üzemi készletek is vannak. A test Pool-azonosítók "test" előtaggal vannak ellátva, és a termelési készlet azonosítói a "Prod" előtaggal vannak ellátva. A kódrészletben a *myBatchClient* a [BatchClient](/dotnet/api/microsoft.azure.batch.batchclient) osztály megfelelően inicializált példánya.
 
@@ -143,11 +143,11 @@ List<CloudPool> testPools =
 > 
 
 ## <a name="batch-rest-to-net-api-mappings"></a>Batch – REST – .NET API-hozzárendelések
-A szűrőben, a Select és a Expand karakterláncban szereplő tulajdonságok neveinek a neve és a Case kifejezésnek *kell* megegyezniük a REST API társaival. Az alábbi táblázatok a .NET-és REST API-partnerek közötti leképezéseket biztosítanak.
+A szűrőben, a Select és a Expand karakterláncban szereplő tulajdonságok neveinek a neve és a Case kifejezésnek *kell megegyezniük* a REST API társaival. Az alábbi táblázatok a .NET-és REST API-partnerek közötti leképezéseket biztosítanak.
 
 ### <a name="mappings-for-filter-strings"></a>Szűrési karakterláncok megfeleltetése
-* **.Net-lista módszerei**: Ebben az oszlopban az összes .NET API-metódus egy [ODATADetailLevel][odata] objektumot fogad el paraméterként.
-* **Rest-lista kérései**: Az ebben az oszlopban lévő minden REST API lap tartalmaz egy táblázatot, amely meghatározza a *szűrő* sztringekben engedélyezett tulajdonságokat és műveleteket. Ezeket a tulajdonságokat és műveleteket fogja használni, amikor [ODATADetailLevel. FilterClause][odata_filter] karakterláncot hoz létre.
+* **.Net-lista módszerei**: ebben az oszlopban található összes .NET API-metódus egy [ODATADetailLevel][odata] objektumot fogad el paraméterként.
+* **Rest-listákra vonatkozó kérelmek**: az ebben az oszlopban található összes REST API-oldal tartalmaz egy táblázatot, amely meghatározza a *szűrő* sztringekben engedélyezett tulajdonságokat és műveleteket. Ezeket a tulajdonságokat és műveleteket fogja használni, amikor [ODATADetailLevel. FilterClause][odata_filter] karakterláncot hoz létre.
 
 | .NET-lista módszerei | REST-lista kérései |
 | --- | --- |
@@ -164,7 +164,7 @@ A szűrőben, a Select és a Expand karakterláncban szereplő tulajdonságok ne
 
 ### <a name="mappings-for-select-strings"></a>A kiválasztott karakterláncok megfeleltetése
 * **Batch .net-típusok**: Batch .NET API-típusok.
-* **REST API entitások**: Az oszlop minden lapja egy vagy több olyan táblát tartalmaz, amely felsorolja a típus REST API tulajdonságának nevét. Ezeket a tulajdonságokat a *Select* sztringek összeállításakor használja a rendszer. Ugyanezeket a tulajdonságokat fogja használni, amikor [ODATADetailLevel. SelectClause][odata_select] karakterláncot hoz létre.
+* **REST API entitások**: ebben az oszlopban minden oldal egy vagy több olyan táblát tartalmaz, amely a típus REST API tulajdonságának nevét listázza. Ezeket a tulajdonságokat a *Select* sztringek összeállításakor használja a rendszer. Ugyanezeket a tulajdonságokat fogja használni, amikor [ODATADetailLevel. SelectClause][odata_select] karakterláncot hoz létre.
 
 | Batch .NET-típusok | Entitások REST API |
 | --- | --- |
@@ -178,7 +178,7 @@ A szűrőben, a Select és a Expand karakterláncban szereplő tulajdonságok ne
 ## <a name="example-construct-a-filter-string"></a>Példa: szűrő sztring létrehozása
 Amikor [ODATADetailLevel. FilterClause][odata_filter]-hoz hoz létre egy szűrő sztringet, tekintse meg a fenti táblázatot a "szűrési karakterláncok leképezése" alatt, és keresse meg az REST API dokumentációs oldalát, amely megfelel a végrehajtani kívánt lista műveletnek. A szűrhető tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha szeretné lekérdezni az összes olyan feladatot, amelynek kilépési kódja nem nulla, például egy adott feladathoz [társított feladat][rest_list_tasks] meghatározza a megfelelő tulajdonság-karakterláncot és a megengedett operátorokat:
 
-| Tulajdonság | Engedélyezett műveletek | Type |
+| Tulajdonság | Engedélyezett műveletek | Type (Típus) |
 |:--- |:--- |:--- |
 | `executionInfo/exitCode` |`eq, ge, gt, le , lt` |`Int` |
 
@@ -187,9 +187,9 @@ Amikor [ODATADetailLevel. FilterClause][odata_filter]-hoz hoz létre egy szűrő
 `(executionInfo/exitCode lt 0) or (executionInfo/exitCode gt 0)`
 
 ## <a name="example-construct-a-select-string"></a>Példa: válasszon ki egy Select sztringet
-A [ODATADetailLevel. SelectClause][odata_select]létrehozásához tekintse meg a fenti táblázatot a "Select Strings (hozzárendelések a kiválasztott karakterláncok számára)" szakaszban, és navigáljon a REST API oldalra, amely megfelel a listán szereplő entitás típusának. A kiválasztható tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha például csak az azonosítót és a parancssort szeretné lekérdezni a listában szereplő egyes feladatokhoz, a következő sorok szerepelnek a megfelelő táblázatban a feladattal kapcsolatos [információk][rest_get_task]lekéréséhez:
+A [ODATADetailLevel. SelectClause][odata_select]létrehozásához tekintse meg a fenti táblázatot a "Select Strings (hozzárendelések a kiválasztott karakterláncok számára)" szakaszban, és navigáljon a REST API oldalra, amely megfelel a listán szereplő entitás típusának. A kiválasztható tulajdonságokat és a támogatott operátorokat a lap első MultiRow táblázatában találja. Ha például csak az azonosítót és a parancssort szeretné lekérdezni a listában szereplő egyes feladatokhoz, a következő sorok szerepelnek a megfelelő táblázatban a [feladattal kapcsolatos információk lekéréséhez][rest_get_task]:
 
-| Tulajdonság | Type | Megjegyzések |
+| Tulajdonság | Type (Típus) | Megjegyzések |
 |:--- |:--- |:--- |
 | `id` |`String` |`The ID of the task.` |
 | `commandLine` |`String` |`The command line of the task.` |
@@ -228,7 +228,7 @@ A projekten belüli minta alkalmazás a következő műveleteket mutatja be:
 1. Adott attribútumok kiválasztása csak a szükséges tulajdonságok letöltéséhez
 2. Állapot-átváltási időpontok szűrése csak a legutóbbi lekérdezés óta végrehajtott módosítások letöltéséhez
 
-A következő metódus például a BatchMetrics-könyvtárban jelenik meg. Egy olyan ODATADetailLevel ad vissza, amely megadja, `id` hogy `state` csak a és a tulajdonságokat kell beolvasni a lekérdezett entitásokhoz. Azt is meghatározza, hogy csak azok az entitások legyenek módosítva, amelyek állapota megváltozott, mert a megadott `DateTime` paramétert vissza kell adni.
+A következő metódus például a BatchMetrics-könyvtárban jelenik meg. Egy olyan ODATADetailLevel ad vissza, amely megadja, hogy csak a `id` és `state` tulajdonságokat kell beolvasni a lekérdezett entitásokhoz. Azt is meghatározza, hogy csak azok az entitások legyenek módosítva, amelyek állapota megváltozott, mert a megadott `DateTime` paramétert vissza kell adni.
 
 ```csharp
 internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
@@ -240,9 +240,9 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 ### <a name="parallel-node-tasks"></a>Párhuzamos csomóponti feladatok
-Az egyidejű csomópont-feladatokkal [rendelkező számítási erőforrások maximális Azure Batchának maximalizálása](batch-parallel-node-tasks.md) a Batch-alkalmazások teljesítményével kapcsolatos további cikk. A számítási feladatok bizonyos típusai kihasználhatják a párhuzamos feladatok végrehajtását nagyobb, de kevesebb-számítási csomóponton. Tekintse meg a [példában szereplő példát](batch-parallel-node-tasks.md#example-scenario) az adott forgatókönyv részleteinek megtekintéséhez.
+Az [egyidejű csomópont-feladatokkal rendelkező számítási erőforrások maximális Azure Batchának maximalizálása](batch-parallel-node-tasks.md) a Batch-alkalmazások teljesítményével kapcsolatos további cikk. A számítási feladatok bizonyos típusai kihasználhatják a párhuzamos feladatok végrehajtását nagyobb, de kevesebb-számítási csomóponton. Tekintse meg a [példában szereplő példát](batch-parallel-node-tasks.md#example-scenario) az adott forgatókönyv részleteinek megtekintéséhez.
 
 
 [api_net]: https://docs.microsoft.com/dotnet/api/microsoft.azure.batch

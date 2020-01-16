@@ -3,7 +3,7 @@ title: Feladatok létrehozása a feladatok előkészítéséhez és feladatok el
 description: Az adatátvitelt az Azure Batch számítási csomópontokra, valamint a feladat befejezésekor a csomópont-karbantartási feladatok kiadására szolgáló feladat-előkészítési feladatokkal csökkentheti.
 services: batch
 documentationcenter: .net
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: 63d9d4f1-8521-4bbb-b95a-c4cad73692d3
@@ -12,18 +12,18 @@ ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
 ms.date: 02/27/2017
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 2dbdbc8b13a75b72ca09a319c6925d0835a52e13
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 7c5c9dfcaa88b35e14cf5d56b01b4e364c856600
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70095121"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027121"
 ---
 # <a name="run-job-preparation-and-job-release-tasks-on-batch-compute-nodes"></a>Feladat-előkészítési és feladat-kiadási feladatok futtatása kötegelt számítási csomópontokon
 
- Egy Azure Batch feladathoz gyakran szükség van valamilyen beállításra a feladatok végrehajtása előtt, és a feladatok befejezése után a feladat befejezését követően karbantartást kell végezni. Előfordulhat, hogy a feladat befejezése után le kell töltenie az általános feladathoz tartozó bemeneti adatokat a számítási csomópontokra, vagy fel kell töltenie a feladat kimeneti adatait az Azure Storage-ba. Ezeket a műveleteket a **feladat** -előkészítési és a **feladat** -kiadási feladatok használatával végezheti el.
+ Egy Azure Batch feladathoz gyakran szükség van valamilyen beállításra a feladatok végrehajtása előtt, és a feladatok befejezése után a feladat befejezését követően karbantartást kell végezni. Előfordulhat, hogy a feladat befejezése után le kell töltenie az általános feladathoz tartozó bemeneti adatokat a számítási csomópontokra, vagy fel kell töltenie a feladat kimeneti adatait az Azure Storage-ba. Ezeket a műveleteket a **feladat-előkészítési** és a **feladat-kiadási** feladatok használatával végezheti el.
 
 ## <a name="what-are-job-preparation-and-release-tasks"></a>Mik a feladat-előkészítési és-kiadási feladatok?
 A feladat műveleteinek futtatása előtt a feladat-előkészítési feladat minden olyan számítási csomóponton fut, amely legalább egy feladat futtatására van ütemezve. A feladat befejezése után a feladat kiadására szolgáló tevékenység a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajtott. A normál batch-feladatokhoz hasonlóan megadhat egy parancssort is, amelyet a feladat-előkészítés vagy a kiadási feladat futtatásakor kell meghívni.
@@ -42,7 +42,7 @@ A feladat-előkészítési és a feladat-kiadási feladatok a következő helyze
 
 **Gyakori tevékenységadatok letöltése**
 
-A Batch-feladatokhoz gyakran szükség van egy közös adathalmazra, mint a feladat tevékenységeinek bemenete. A napi kockázatelemzési számításokban például a piaci adatok a feladat-specifikusak, de a feladatban szereplő összes feladathoz is általánosak. Ezt a piaci adatmennyiséget – gyakran több gigabájtos méretet – csak egyszer kell letölteni az egyes számítási csomópontokra, hogy a csomóponton futó összes feladat használhassa azt. Feladat- **előkészítési** feladattal letöltheti ezeket az adatok az egyes csomópontokra a feladat egyéb feladatainak végrehajtása előtt.
+A Batch-feladatokhoz gyakran szükség van egy közös adathalmazra, mint a feladat tevékenységeinek bemenete. A napi kockázatelemzési számításokban például a piaci adatok a feladat-specifikusak, de a feladatban szereplő összes feladathoz is általánosak. Ezt a piaci adatmennyiséget – gyakran több gigabájtos méretet – csak egyszer kell letölteni az egyes számítási csomópontokra, hogy a csomóponton futó összes feladat használhassa azt. Feladat- **előkészítési feladattal** letöltheti ezeket az adatok az egyes csomópontokra a feladat egyéb feladatainak végrehajtása előtt.
 
 **Feladat és feladat kimenetének törlése**
 
@@ -50,14 +50,14 @@ A "megosztott készlet" környezetében, ahol a készlet számítási csomópont
 
 **Napló megőrzése**
 
-Előfordulhat, hogy meg kívánja őrizni a feladatok által létrehozott naplófájlok másolatát, vagy esetleg összeomlási memóriaképeket, amelyeket a hibás alkalmazások okozhatnak. Ebben az esetben egy **feladat kiadási** feladattal tömörítheti és feltöltheti ezeket az adatok egy [Azure Storage][azure_storage] -fiókba.
+Előfordulhat, hogy meg kívánja őrizni a feladatok által létrehozott naplófájlok másolatát, vagy esetleg összeomlási memóriaképeket, amelyeket a hibás alkalmazások okozhatnak. Ebben az esetben egy **feladat kiadási feladattal** tömörítheti és feltöltheti ezeket az adatok egy [Azure Storage][azure_storage] -fiókba.
 
 > [!TIP]
 > A naplók és egyéb feladatok és tevékenységek kimeneti adatainak egy másik módja a [Azure batch file Conventions](batch-task-output.md) Library használata.
 > 
 > 
 
-## <a name="job-preparation-task"></a>Feladat előkészítése tevékenység
+## <a name="job-preparation-task"></a>Feladat-előkészítési feladat
 A feladat műveleteinek végrehajtása előtt a Batch végrehajtja a feladat-előkészítési feladatot minden olyan számítási csomóponton, amely a feladatok futtatására van ütemezve. Alapértelmezés szerint a Batch szolgáltatás megvárja a feladat-előkészítési feladat befejeződését, mielőtt futtatja a csomóponton végrehajtott végrehajtásra ütemezett feladatokat. Azonban beállíthatja, hogy a szolgáltatás ne várjon. Ha a csomópont újraindul, a feladat-előkészítési feladat újra lefut, de ezt a viselkedést is letilthatja.
 
 A feladat-előkészítési feladat csak a feladat futtatására ütemezett csomópontokon hajtható végre. Ez megakadályozza az előkészítési feladatok szükségtelen végrehajtását abban az esetben, ha egy csomóponthoz nincs hozzárendelve feladat. Ez akkor fordulhat elő, ha egy adott feladathoz tartozó tevékenységek száma kisebb, mint a készletben lévő csomópontok száma. Ez akkor is érvényes, ha az [egyidejű feladat-végrehajtás](batch-parallel-node-tasks.md) engedélyezve van, így a csomópontok üresjáratban maradnak, ha a feladatok száma nem éri el az összes lehetséges egyidejű feladatot. Ha nem futtatja a feladat-előkészítési feladatot az üresjárati csomópontokon, kevesebb pénzt tölthet fel az adatátviteli költségekkel.
@@ -67,8 +67,8 @@ A feladat-előkészítési feladat csak a feladat futtatására ütemezett csom�
 > 
 > 
 
-## <a name="job-release-task"></a>Feladat kiadása tevékenység
-Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó feladatokat, és futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
+## <a name="job-release-task"></a>Feladat kiadási feladata
+Ha egy feladat befejezettként van megjelölve, a feladat kiadási feladata a készlet minden olyan csomópontján fut, amely legalább egy feladatot végrehajt. A feladatot befejezettként kell megjelölni egy megszakítási kérelem kiállításával. A Batch szolgáltatás ezután a feladat állapotát leállítja, leállítja a feladathoz társított aktív vagy futó *feladatokat, és*futtatja a feladat kiadási feladatát. A feladatot ezután a *befejezett* állapotba helyezi.
 
 > [!NOTE]
 > A feladat törlése a feladat kiadási feladatát is végrehajtja. Ha azonban egy feladat már meg van szakítva, a kiadási feladat nem fut le Másodszor, ha a feladat később törlődik.
@@ -80,7 +80,7 @@ A feladatok kiadási feladatai legfeljebb 15 percig futhatnak, mielőtt a Batch 
 ## <a name="job-prep-and-release-tasks-with-batch-net"></a>Feladat-előkészítési és-kiadási feladatok a Batch .NET-tel
 Feladat-előkészítési feladat használatához rendeljen egy [JobPreparationTask][net_job_prep] -objektumot a feladat [CloudJob. JobPreparationTask][net_job_prep_cloudjob] tulajdonságához. Hasonlóképpen inicializáljon egy [jobreleasetask tevékenységtípust][net_job_release] , és rendelje hozzá a feladat [CloudJob. jobreleasetask tevékenységtípust][net_job_prep_cloudjob] tulajdonságához a feladat kiadási feladatának beállításához.
 
-Ebben a kódrészletben a `myPool` BatchClient egy példánya, amely egy meglévő készlet a Batch-fiókon belül. [][net_batch_client] `myBatchClient`
+Ebben a kódrészletben a `myBatchClient` a [BatchClient][net_batch_client]egy példánya, és a `myPool` a Batch-fiókban lévő meglévő készlet.
 
 ```csharp
 // Create the CloudJob for CloudPool "myPool"
@@ -185,7 +185,7 @@ Az alábbi képernyőképen az **előkészítési feladatok** panel látható a 
 
 ![A Azure Portal feladatok előkészítésének tulajdonságai][1]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 ### <a name="application-packages"></a>Alkalmazáscsomagok
 A feladat-előkészítési feladaton kívül a Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásával is előkészítheti a számítási csomópontokat a feladatok végrehajtásához. Ez a funkció különösen hasznos olyan alkalmazások telepítéséhez, amelyek nem igénylik a telepítő futtatását, a sok (100 +) fájlt tartalmazó alkalmazásokat, illetve a szigorú verziókövetés használatát igénylő alkalmazásokat.
 

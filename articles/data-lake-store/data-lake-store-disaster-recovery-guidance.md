@@ -1,6 +1,6 @@
 ---
-title: Az Azure Data Lake Storage Gen1 vészhelyreállítási útmutató |} A Microsoft Docs
-description: Az Azure Data Lake Storage Gen1 vész-helyreállítási útmutató
+title: Vész-helyreállítási útmutató a Azure Data Lake Storage Gen1hoz | Microsoft Docs
+description: Útmutató a Azure Data Lake Storage Gen1 vész-helyreállításához
 services: data-lake-store
 documentationcenter: ''
 author: twooley
@@ -11,37 +11,37 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: twooley
-ms.openlocfilehash: b3f1888a73baf2b7f9efa9f5e7cdb3305aa9f90d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: b33977ca5184ea07b5651be18e3a132d30ce4b39
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60878290"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966057"
 ---
-# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Az Azure Data Lake Storage Gen1 adatok vészhelyreállítási útmutató
+# <a name="disaster-recovery-guidance-for-data-in-azure-data-lake-storage-gen1"></a>Vész-helyreállítási útmutató a Azure Data Lake Storage Gen1 lévő adatkezeléshez
 
-Az Azure Data Lake Storage Gen1 nyújt a helyileg redundáns tárolás (LRS). Ezért a Data Lake Storage Gen1 fiók adatait képes legyen ellenállni a átmeneti hardverhibák esetén biztosítja az automatikus replikációval adatközponton belül. Ez biztosítja a tartósság és magas rendelkezésre állás érdekében a Data Lake Storage Gen1 SLA teljesíti. Ez a cikk nyújt útmutatást hogyan védheti még jobban az adatokat a ritka régió kiterjedő ritka kimaradásokkal és véletlen törlésekkel szemben.
+A Azure Data Lake Storage Gen1 helyileg redundáns tárolást (LRS) biztosít. Ezért a Data Lake Storage Gen1-fiókban lévő adatai az automatizált replikák segítségével rugalmasan megtalálhatók az adatközponton belüli átmeneti hardveres hibák esetén. Ez biztosítja a tartósságot és a magas rendelkezésre állást, és megfelel a Data Lake Storage Gen1 SLA-nak. Ez a cikk útmutatást nyújt arra vonatkozóan, hogy miként lehet további védelemmel ellátni az adatait az egész régióra kiterjedő vagy véletlen törléssel.
 
-## <a name="disaster-recovery-guidance"></a>Vészhelyreállítási útmutató
-Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. Ebben a cikkben a vészhelyreállítási tervet hozhat létre az információk elolvasásához. Itt talál néhány forrásanyagot, amelyek segítenek a saját terve létrehozásában.
+## <a name="disaster-recovery-guidance"></a>Vész-helyreállítási útmutató
+Minden ügyfél számára kritikus fontosságú, hogy előkészítse a saját vészhelyreállítási tervét. A vész-helyreállítási terv elkészítéséhez olvassa el a cikkben található információkat. Itt talál néhány forrásanyagot, amelyek segítenek a saját terve létrehozásában.
 
 * [Vészhelyreállítás és magas szintű rendelkezésre állás az Azure-alkalmazásokhoz](../resiliency/resiliency-disaster-recovery-high-availability-azure-applications.md)
 * [Műszaki útmutató az Azure rugalmasságáról](../resiliency/resiliency-technical-guidance.md)
 
 ### <a name="best-practices"></a>Ajánlott eljárások
-Azt javasoljuk, hogy a kritikus fontosságú adatokat másol egy másik Data Lake Storage Gen1 fiókot egy másik régióban található a Vészhelyreállítási terv igényeihez igazodó gyakorisággal. Különböző módszerekkel másolhatja az adatokat, többek között az [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) és [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) használatával. Az Azure Data Factory hasznos szolgáltatás az adatáthelyezési folyamatok rendszeres létrehozásához és üzembe helyezéséhez.
+Azt javasoljuk, hogy a kritikus fontosságú adatait egy másik régióban lévő másik Data Lake Storage Gen1-fiókba másolja, és a vész-helyreállítási terv igényeihez igazított gyakorisággal. Különböző módszerekkel másolhatja az adatokat, többek között az [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) és [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) használatával. Az Azure Data Factory hasznos szolgáltatás az adatáthelyezési folyamatok rendszeres létrehozásához és üzembe helyezéséhez.
 
-Regionális kimaradás során, ezután hozzáférhetnek a régióban, ahová az adatok másolta az adatokat. Nyomon követheti a [Azure szolgáltatásállapot-irányítópult](https://azure.microsoft.com/status/) az Azure-szolgáltatás állapotának meghatározása az egész világon.
+Ha regionális leállás következik be, akkor az adatai abban a régióban érhetők el, ahol az adatait másolták. A [Azure Service Health irányítópultját](https://azure.microsoft.com/status/) figyelheti az Azure-szolgáltatások állapotának az egész világon való meghatározásához.
 
 ## <a name="data-corruption-or-accidental-deletion-recovery-guidance"></a>Adatsérülés vagy véletlen törlés helyreállításával kapcsolatos útmutató
-Bár a Data Lake Storage Gen1 biztosítja az adatok rugalmasságát biztosítja az automatikus replikációval, ez nem akadályozza meg az alkalmazás (vagy a fejlesztők/felhasználók) az adatok sérülését vagy véletlen törlését.
+Míg Data Lake Storage Gen1 adatrugalmasságot biztosít az automatizált replikák használatával, ez nem akadályozza meg az alkalmazás (vagy a fejlesztők/felhasználók) számára az adatok sérülését vagy véletlen törlését.
 
 ### <a name="best-practices"></a>Ajánlott eljárások
-Véletlen törlés megakadályozása érdekében ajánlott először megadni a megfelelő hozzáférési házirendjeit a Data Lake Storage Gen1 fiókjához.  Ez magában foglalja az alkalmazása [Azure-erőforrászárolás](../azure-resource-manager/resource-group-lock-resources.md) való zárolását, így fontos erőforrásokat is alkalmaz, fiók- és fájlszintű hozzáférés-vezérlés az elérhető [Data Lake Storage Gen1 biztonsági funkciók](data-lake-store-security-overview.md). Azt javasoljuk, hogy rendszeresen készítsen másolatokat a kritikus fontosságú adatait az [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell-lel](data-lake-store-get-started-powershell.md) vagy [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) az egy másik Data Lake Storage Gen1 fiók, mappában vagy Azure-előfizetést.  Ezzel helyreállíthatók az adatsérülések vagy -törlések. Az Azure Data Factory hasznos szolgáltatás az adatáthelyezési folyamatok rendszeres létrehozásához és üzembe helyezéséhez.
+A véletlen törlés megelőzése érdekében javasoljuk, hogy először állítsa be a Data Lake Storage Gen1 fiókjának megfelelő hozzáférési házirendeket.  Ide tartozik az [Azure-erőforrások zárolásának](../azure-resource-manager/management/lock-resources.md) alkalmazása a fontos erőforrások zárolásához, valamint a fiók és a fájl szintű hozzáférés-vezérlés alkalmazásához az elérhető [Data Lake Storage Gen1 biztonsági funkciók](data-lake-store-security-overview.md)használatával. Javasoljuk továbbá, hogy a kritikus fontosságú adatairól rendszeresen készítsen másolatot a [ADLCopy](data-lake-store-copy-data-azure-storage-blob.md), [Azure PowerShell](data-lake-store-get-started-powershell.md) vagy [Azure Data Factory](../data-factory/connector-azure-data-lake-store.md) egy másik Data Lake Storage Gen1 fiók, mappa vagy Azure-előfizetés használatával.  Ezzel helyreállíthatók az adatsérülések vagy -törlések. Az Azure Data Factory hasznos szolgáltatás az adatáthelyezési folyamatok rendszeres létrehozásához és üzembe helyezéséhez.
 
-Engedélyezheti a szervezetek [diagnosztikai naplózás](data-lake-store-diagnostic-logs.md) Data Lake Storage Gen1 fiókjuk gyűjthet adatokat a fájlhozzáférés napló ellenőrzését, amely azzal foglalkozik, akiknek előfordulhat, hogy törölte vagy frissítette a fájlokat.
+A szervezetek a Data Lake Storage Gen1-fiókjához is engedélyezhetik a [diagnosztikai naplózást](data-lake-store-diagnostic-logs.md) az Adathozzáférési naplózási nyomvonalak összegyűjtéséhez, amelyek információkat biztosítanak arról, hogy kik törölhettek vagy frissítettek egy fájlt.
 
-## <a name="next-steps"></a>További lépések
-* [Ismerkedés az Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+## <a name="next-steps"></a>Következő lépések
+* [Ismerkedés a Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
 * [Az adatok védelme az 1. generációs Data Lake Storage-ban](data-lake-store-secure-data.md)
 

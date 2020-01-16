@@ -8,12 +8,12 @@ ms.author: deli
 ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
-ms.openlocfilehash: a5cfb79626370ab9f8493038ac1583993a154b59
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 21314d3c80832c14538130ce373ccf6d2dd19f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912030"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965934"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése Azure Logic Appsban
 
@@ -249,7 +249,7 @@ Testre szabhatja a művelet "Futtatás utáni" viselkedését, hogy a művelet a
 
 ## <a name="evaluate-actions-with-scopes-and-their-results"></a>Hatókörökkel és azok eredményeivel kapcsolatos műveletek kiértékelése
 
-A `runAfter` tulajdonsággal végzett egyéni műveletek után a műveletekhez hasonlóan a műveletek egy [hatókörön](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)belül is csoportosíthatók. Hatóköröket akkor használhat, ha logikailag csoportosítja a műveleteket, felméri a hatókör összesített állapotát, és végrehajtja a műveleteket az adott állapot alapján. A hatókör összes műveletének futása után a hatókör maga kapja meg a saját állapotát. 
+A `runAfter` tulajdonsággal végzett egyéni műveletek után a műveletekhez hasonlóan a műveletek egy [hatókörön](../logic-apps/logic-apps-control-flow-run-steps-group-scopes.md)belül is csoportosíthatók. Hatóköröket akkor használhat, ha logikailag csoportosítja a műveleteket, felméri a hatókör összesített állapotát, és végrehajtja a műveleteket az adott állapot alapján. A hatókör összes műveletének futása után a hatókör maga kapja meg a saját állapotát.
 
 A hatókör állapotának ellenőrzését a logikai alkalmazás futtatási állapotának (például `Succeeded`, `Failed`stb.) ellenőrzési feltételeivel is használhatja.
 
@@ -267,7 +267,7 @@ Bár a hibák egy hatókörből való kifogása hasznos, előfordulhat, hogy oly
 
 A [`result()`](../logic-apps/workflow-definition-language-functions-reference.md#result) függvény a hatókör összes műveletének eredményeire vonatkozó kontextust biztosít. A `result()` függvény egyetlen paramétert fogad el, amely a hatókör neve, és egy olyan tömböt ad vissza, amely az adott hatókörből származó összes művelet eredményét tartalmazza. Ezek a műveleti objektumok a `actions()` objektummal megegyező attribútumokat tartalmaznak, például a művelet kezdési idejét, a befejezési időt, az állapotot, a bemeneteket, a korrelációs azonosítókat és a kimeneteket. Ha a hatókörön belül meghiúsult műveletek kontextusát szeretné elküldeni, egyszerűen párosíthat egy `@result()` kifejezést a `runAfter` tulajdonsággal.
 
-Ha műveletet szeretne futtatni egy olyan hatókör minden műveletéhez, amelynek `Failed` eredménye van, és az eredmények tömbjét a sikertelen műveletek alapján szeretné szűrni, egy `@result()` kifejezést egy [**szűrő tömb**](../connectors/connectors-native-query.md) művelettel és egy [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz párosíthat. Elvégezheti a szűrt eredmény tömböt, és végrehajthat egy műveletet az egyes hibákhoz az `For_each` hurok használatával.
+Ha műveletet szeretne futtatni egy olyan hatókör minden műveletéhez, amelynek `Failed` eredménye van, és az eredmények tömbjét a sikertelen műveletek alapján szeretné szűrni, egy `@result()` kifejezést egy [**szűrő tömb**](logic-apps-perform-data-operations.md#filter-array-action) művelettel és egy [**minden**](../logic-apps/logic-apps-control-flow-loops.md) hurokhoz párosíthat. Elvégezheti a szűrt eredmény tömböt, és végrehajthat egy műveletet az egyes hibákhoz az `For_each` hurok használatával.
 
 Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POST-kérést küld a válasz törzsének a "My_Scope" hatókörön belül sikertelen műveletek esetén:
 

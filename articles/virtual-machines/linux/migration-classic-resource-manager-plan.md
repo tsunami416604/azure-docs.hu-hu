@@ -14,17 +14,17 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: d4c7bdf33ed1a35e7b27eed8baa3b96066d25dd4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 460db5a3c836ecb35fd6c5943c88d32516d91674
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369025"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969874"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
-Míg Azure Resource Manager sok csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát. 
+Míg Azure Resource Manager sok csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát.
 
-> [!NOTE] 
+> [!NOTE]
 > Az Azure Customer tanácsadó csapat és a Felhőbeli megoldás-építészek a nagy környezetek áttelepítését végző ügyfelekkel együttműködve jelentős mértékben járultak hozzá az alábbi útmutatóhoz. Ez a dokumentum továbbra is frissülni fog, ahogy a siker új mintája, ezért térjen vissza időről időre, és ellenőrizze, hogy van-e új javaslat.
 
 Az áttelepítési út négy általános fázisban érhető el:
@@ -69,13 +69,13 @@ A sikeres ügyfelek részletes tervekkel rendelkeznek, ahol az előző kérdése
 - Nem tervezheti meg a végfelhasználók számára a lehetséges alkalmazások kimaradását.  Elég puffert kell megterveznie, hogy megfelelően figyelmeztesse a végfelhasználókat a potenciálisan elérhetetlen alkalmazási időre.
 
 
-## <a name="lab-test"></a>Tesztkörnyezet tesztelése 
+## <a name="lab-test"></a>Tesztkörnyezet tesztelése
 
 **A környezet replikálása és a tesztek áttelepítése**
   > [!NOTE]
   > A meglévő környezet pontos replikálását olyan Közösség által támogatott eszköz használatával hajtja végre, amelyet Microsoft ügyfélszolgálata nem támogat hivatalosan. Ezért ez egy **opcionális** lépés, de a legjobb módszer az éles környezetek érintése nélküli problémák megoldására. Ha egy Közösség által biztosított eszközt nem használ, akkor olvassa el az alábbi, a száraz futtatási javaslat ellenőrzése/előkészítése/megszakítása című szakaszt.
   >
-  
+
   A megfelelő forgatókönyv (számítási, hálózatkezelési és tárolási) tesztkörnyezet tesztelése a legjobb módszer a zökkenőmentes áttelepítés biztosításához. Ez a következőket nyújtja:
 
 - Egy teljesen különálló labor vagy egy meglévő, nem éles környezet tesztelése. Javasoljuk, hogy egy teljesen különálló labort, amely többször is áttelepíthető, és romboló módon módosítható legyen.  Az alábbi lista a valós előfizetésből származó metaadatok gyűjtésére/hidrátára szolgáló parancsfájlokat sorolja fel.
@@ -95,19 +95,19 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
 
 - **VM-bővítmények** – a virtuálisgép-bővítmények potenciálisan a futó virtuális gépek áttelepítésének egyik legnagyobb útelzárások. A virtuálisgép-bővítmények szervizelése akár 1-2 napot is igénybe vehet, ezért ennek megfelelően tervezzen.  A futó virtuális gépek virtuálisgép-bővítményi állapotának jelentéséhez egy működő Azure-ügynökre van szükség. Ha az állapot egy futó virtuális gép esetében hibás, akkor a rendszer megállítja az áttelepítést. Magának az ügynöknek nem kell üzemképes a Migrálás engedélyezéséhez, de ha a bővítmények léteznek a virtuális gépen, akkor a Migrálás érdekében mind a működő ügynöknek, mind a kimenő internetkapcsolatnak (DNS) is szüksége lesz.
   - Ha a DNS-kiszolgálóval való kapcsolat megszakad az áttelepítés során, az összes virtuálisgép-bővítmény a BGInfo v1 kivételével. az áttelepítés előkészítése előtt először el kell távolítani a\*t minden virtuális gépről, majd újra hozzá kell majd adnia a virtuális géphez a Migrálás Azure Resource Manager után.  **Ez csak a rendszert futtató virtuális gépek esetében használható.**  Ha a virtuális gépek le lettek állítva, a virtuálisgép-bővítményeket nem kell eltávolítani. **Megjegyzés:** Számos bővítmény, például az Azure Diagnostics és a Security Center figyelése is újratelepíti magukat az áttelepítés után, így az eltávolítás nem jelent problémát.
-  - Továbbá győződjön meg arról, hogy a hálózati biztonsági csoportok nem korlátozzák a kimenő internet-hozzáférést. Ez néhány hálózati biztonsági csoport konfigurációjának használatával fordulhat elő. A virtuálisgép-bővítmények Azure Resource Managerba való áttelepíteni kívánt kimenő internet-hozzáférésre (és DNS) van szükség. 
-  - A BGInfo-bővítmény két verziója létezik: v1 és v2.  Ha a virtuális gép a Azure Portal vagy a PowerShell használatával lett létrehozva, akkor a virtuális gép valószínűleg rendelkezik a v1 bővítménnyel. Ezt a bővítményt nem kell eltávolítani, és az áttelepítési API nem fogja kihagyni (áttelepíteni). Ha azonban a klasszikus virtuális gép az új Azure Portal lett létrehozva, akkor valószínűleg a BGInfo JSON-alapú v2-verzióját fogja telepíteni, amely áttelepíthető Azure Resource Manager, hogy az ügynök működik-e, és rendelkezik-e kimenő internet-hozzáféréssel (és DNS-vel). 
-  - **Szervizelési lehetőség 1**. Ha tudja, hogy a virtuális gépek nem rendelkeznek kimenő internet-hozzáféréssel, egy működő DNS-szolgáltatással és a virtuális gépeken működő Azure-ügynökökkel, akkor az előkészítés előtt távolítsa el az összes virtuálisgép-bővítményt, majd telepítse újra a virtuálisgép-bővítményeket az áttelepítés után. 
+  - Továbbá győződjön meg arról, hogy a hálózati biztonsági csoportok nem korlátozzák a kimenő internet-hozzáférést. Ez néhány hálózati biztonsági csoport konfigurációjának használatával fordulhat elő. A virtuálisgép-bővítmények Azure Resource Managerba való áttelepíteni kívánt kimenő internet-hozzáférésre (és DNS) van szükség.
+  - A BGInfo-bővítmény két verziója létezik: v1 és v2.  Ha a virtuális gép a Azure Portal vagy a PowerShell használatával lett létrehozva, akkor a virtuális gép valószínűleg rendelkezik a v1 bővítménnyel. Ezt a bővítményt nem kell eltávolítani, és az áttelepítési API nem fogja kihagyni (áttelepíteni). Ha azonban a klasszikus virtuális gép az új Azure Portal lett létrehozva, akkor valószínűleg a BGInfo JSON-alapú v2-verzióját fogja telepíteni, amely áttelepíthető Azure Resource Manager, hogy az ügynök működik-e, és rendelkezik-e kimenő internet-hozzáféréssel (és DNS-vel).
+  - **Szervizelési lehetőség 1**. Ha tudja, hogy a virtuális gépek nem rendelkeznek kimenő internet-hozzáféréssel, egy működő DNS-szolgáltatással és a virtuális gépeken működő Azure-ügynökökkel, akkor az előkészítés előtt távolítsa el az összes virtuálisgép-bővítményt, majd telepítse újra a virtuálisgép-bővítményeket az áttelepítés után.
   - **Szervizelési lehetőség 2**. Ha a virtuálisgép-bővítmények túl nagy mennyiségű akadályt mutatnak, egy másik lehetőség az összes virtuális gép leállítása/felszabadítása az áttelepítés előtt. Telepítse át a lefoglalt virtuális gépeket, majd indítsa újra őket a Azure Resource Manager oldalon. Ennek az az előnye, hogy a virtuálisgép-bővítmények migrálva lesznek. A hátránya, hogy az összes nyilvános virtuális IP-cím elvész (ez lehet egy nem kezdő), és természetesen a virtuális gépek leállnak, ami sokkal nagyobb hatással van a munkaalkalmazásokra.
 
-    > [!NOTE] 
+    > [!NOTE]
     > Ha az áttelepített virtuális gépekre vonatkozó Azure Security Center házirend konfigurálva van, a biztonsági házirendet le kell állítani a bővítmények eltávolítása előtt, ellenkező esetben a biztonsági figyelési bővítményt a rendszer automatikusan újratelepíti a virtuális gépen a eltávolítása után.
 
-- **Rendelkezésre állási készletek** – a virtuális hálózatok (vNet) Azure Resource Managerba való áttelepítéséhez a klasszikus üzembe helyezés (azaz a felhőalapú szolgáltatás) egy rendelkezésre állási csoportba kell tartoznia, vagy a virtuális gépeknek nem szabad egyetlen rendelkezésre állási csoportba esniük. Ha egynél több rendelkezésre állási csoport van a felhőalapú szolgáltatásban, Azure Resource Manager nem kompatibilis, és a rendszer leállítja az áttelepítést.  Emellett a rendelkezésre állási csoportokban nem lehetnek olyan virtuális gépek, amelyek nem egy rendelkezésre állási csoportba tartozó virtuális gépek. Ennek megoldásához javítania kell a Cloud Service-t, vagy újra kell keverni.  Ennek megfelelően tervezze meg az időt. 
+- **Rendelkezésre állási készletek** – a virtuális hálózatok (vNet) Azure Resource Managerba való áttelepítéséhez a klasszikus üzembe helyezés (azaz a felhőalapú szolgáltatás) egy rendelkezésre állási csoportba kell tartoznia, vagy a virtuális gépeknek nem szabad egyetlen rendelkezésre állási csoportba esniük. Ha egynél több rendelkezésre állási csoport van a felhőalapú szolgáltatásban, Azure Resource Manager nem kompatibilis, és a rendszer leállítja az áttelepítést.  Emellett a rendelkezésre állási csoportokban nem lehetnek olyan virtuális gépek, amelyek nem egy rendelkezésre állási csoportba tartozó virtuális gépek. Ennek megoldásához javítania kell a Cloud Service-t, vagy újra kell keverni.  Ennek megfelelően tervezze meg az időt.
 
 - **Webes/feldolgozói szerepkör telepítései** – a webes és feldolgozói szerepköröket tartalmazó Cloud Services nem telepíthetők át Azure Resource Managerre. A webes és feldolgozói szerepköröket először el kell távolítani a virtuális hálózatról az áttelepítés megkezdése előtt.  Egy tipikus megoldás a webes/feldolgozói szerepkör példányainak áthelyezése egy különálló klasszikus virtuális hálózatra, amely egy ExpressRoute-áramkörhöz is csatolva van, vagy a kód áttelepítésére az újabb Pásti App Services (ez a vita meghaladja a dokumentum hatókörét). Az előző újratelepítési esetben hozzon létre egy új klasszikus virtuális hálózatot, helyezze át/telepítse újra a webes/feldolgozói szerepköröket az új virtuális hálózatra, majd törölje a központi telepítéseket az áthelyezett virtuális hálózatról. Nincs szükség kód módosítására. Az új [Virtual Network](../../virtual-network/virtual-network-peering-overview.md) -társítási képesség a webes/feldolgozói szerepköröket és az ugyanazon az Azure-régióban lévő más virtuális hálózatokat tartalmazó klasszikus virtuális hálózat összevonására használható (a virtuális hálózat migrálása a**virtuális hálózatok áttelepítése után nem telepíthető át**), így a teljesítmény elvesztése nélkül, valamint a késési/sávszélességre vonatkozó szankciók nélkül is biztosíthatja ugyanazt a képességet. A [Virtual Network](../../virtual-network/virtual-network-peering-overview.md)-társítás hozzáadásával a webes/feldolgozói szerepkör telepítései könnyedén csökkenthetők, és nem letilthatják az áttelepítést Azure Resource Managerre.
 
-- **Azure Resource Manager kvóták** – az Azure-régiók külön kvótával/korlátokkal rendelkeznek a klasszikus és a Azure Resource Manager esetében is. Bár az áttelepítési forgatókönyvben az új hardver nem használatos *(a meglévő virtuális gépeket a Klasszikusból a Azure Resource Managerra cseréljük)* , Azure Resource Manager kvótákat még az áttelepítés megkezdése előtt elegendő kapacitással kell meghozni. Az alább felsorolt főbb korlátokat az észlelt problémák okozzák.  A határértékek növeléséhez nyisson meg egy kvóta-támogatási jegyet. 
+- **Azure Resource Manager kvóták** – az Azure-régiók külön kvótával/korlátokkal rendelkeznek a klasszikus és a Azure Resource Manager esetében is. Bár az áttelepítési forgatókönyvben az új hardver nem használatos *(a meglévő virtuális gépeket a Klasszikusból a Azure Resource Managerra cseréljük)* , Azure Resource Manager kvótákat még az áttelepítés megkezdése előtt elegendő kapacitással kell meghozni. Az alább felsorolt főbb korlátokat az észlelt problémák okozzák.  A határértékek növeléséhez nyisson meg egy kvóta-támogatási jegyet.
 
     > [!NOTE]
     > Ezeket a korlátokat ugyanabban a régióban kell kiemelni, ahol az aktuális környezetét át kell telepíteni.
@@ -126,26 +126,26 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
     **Számítás** *(magok, rendelkezésre állási készletek)*
 
     ```bash
-    az vm list-usage -l <azure-region> -o jsonc 
+    az vm list-usage -l <azure-region> -o jsonc
     ```
 
     **Hálózat** *(virtuális hálózatok, statikus nyilvános IP-címek, nyilvános IP-címek, hálózati biztonsági csoportok, hálózati adapterek, terheléselosztó, útválasztási táblák)*
-    
+
     ```bash
     az network list-usages -l <azure-region> -o jsonc
     ```
 
     **Tárterület** *(Storage-fiók)*
-    
+
     ```bash
     az storage account show-usage
     ```
 
 - **Azure Resource Manager API-szabályozás korlátozásai** – ha van elég nagy környezet (például > 400 VNET-ben futó virtuális gépek esetében az írási (jelenleg **1200 írás/óra**) alapértelmezett API-sávszélesség-szabályozási korlátját is elérheti Azure Resource Managerokban. Az áttelepítés megkezdése előtt egy támogatási jegyet kell létrehoznia, hogy növelje ezt a korlátot az előfizetésében.
 
-- **Kiépítés túllépte a virtuális gép állapotát** – ha bármely virtuális gép állapota túllépte az **időkorlátot**, ezt meg kell oldani az áttelepítés előtt. Ennek az az egyetlen módja, ha a virtuális gép megszüntetésével/újbóli kiépítésével (törlésével, a lemez megtartásával és a virtuális gép újbóli létrehozásával) csak az állásidőt használja. 
+- **Kiépítés túllépte a virtuális gép állapotát** – ha bármely virtuális gép állapota túllépte az **időkorlátot**, ezt meg kell oldani az áttelepítés előtt. Ennek az az egyetlen módja, ha a virtuális gép megszüntetésével/újbóli kiépítésével (törlésével, a lemez megtartásával és a virtuális gép újbóli létrehozásával) csak az állásidőt használja.
 
-- **ROLESTATEUNKNOWN VM-állapot** – ha az áttelepítés egy **ismeretlen szerepkör-állapot** miatt leáll, vizsgálja meg a virtuális gépet a portálon, és ellenőrizze, hogy fut-e. Ez a hiba általában a saját (nincs szükség szervizelése nélkül) elmúlik néhány perc múlva, és gyakran átmeneti típust mutat a virtuális gépek **indításakor**, **leállításakor**, **újraindításakor** . **Ajánlott eljárás:** próbálkozzon újra az áttelepítés elvégzésével néhány perc múlva. 
+- **ROLESTATEUNKNOWN VM-állapot** – ha az áttelepítés egy **ismeretlen szerepkör-állapot** miatt leáll, vizsgálja meg a virtuális gépet a portálon, és ellenőrizze, hogy fut-e. Ez a hiba általában a saját (nincs szükség szervizelése nélkül) elmúlik néhány perc múlva, és gyakran átmeneti típust mutat a virtuális gépek **indításakor**, **leállításakor**, **újraindításakor** . **Ajánlott eljárás:** próbálkozzon újra az áttelepítés elvégzésével néhány perc múlva.
 
 - A **Fabric-fürt nem létezik** – bizonyos esetekben bizonyos virtuális gépek nem telepíthetők át különböző páratlan okok miatt. Ezek közül az egyik ismert eset az, ha a virtuális gép nemrég lett létrehozva (az elmúlt héten vagy azt megelőzően), és egy olyan Azure-fürtöt helyeztek el, amely még nem rendelkezik Azure Resource Manager számítási feladatokhoz.  Hibaüzenet jelenik meg, amely szerint a **Fabric-fürt nem létezik** , és a virtuális gép nem telepíthető át. Néhány nap várakozása általában megoldja ezt a problémát, mivel a fürt hamarosan Azure Resource Manager engedélyezve lesz. Azonban az egyik azonnali Áthidaló megoldás a virtuális gép `stop-deallocate`, majd az áttelepítés után folytassa a virtuális gép biztonsági mentését Azure Resource Manager az áttelepítés után.
 
@@ -192,9 +192,9 @@ Megfontolandó szempontok:
 Legyen céltudatos, hogy milyen szolgáltatásokat szeretne engedélyezni a Azure Resource Manager.  Számos ügyfél az alábbi lenyűgöző Azure-környezeteket keresi:
 
 - [Szerepkör-alapú Access Control](../../role-based-access-control/overview.md).
-- [Azure Resource Manager sablonokat egyszerűbb és hatékonyabban felügyelt központi telepítéshez](../../azure-resource-manager/template-deployment-overview.md).
-- [Címkék](../../azure-resource-manager/resource-group-using-tags.md).
-- [Tevékenység-vezérlés](../../azure-resource-manager/resource-group-audit.md)
+- [Azure Resource Manager sablonokat egyszerűbb és hatékonyabban felügyelt központi telepítéshez](../../azure-resource-manager/templates/overview.md).
+- [Címkék](../../azure-resource-manager/management/tag-resources.md).
+- [Tevékenység-vezérlés](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure-szabályzatok](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Kikerülő buktatók

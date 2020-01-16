@@ -2,20 +2,20 @@
 title: Cost Analysis and Budget – Azure Batch
 description: Megtudhatja, hogyan hozhat létre költség-elemzést, és hogyan állíthat be költségvetést a Batch-munkaterheléshez.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: big-compute
 ms.date: 07/19/2019
-ms.author: lahugh
-ms.openlocfilehash: 6ccf530fe2164b3d9b1936648ffe9057c334efd6
-ms.sourcegitcommit: e0e6663a2d6672a9d916d64d14d63633934d2952
+ms.author: jushiman
+ms.openlocfilehash: 7707d966049e9eced1add1104441af8fee356ef0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "70094206"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029567"
 ---
 # <a name="cost-analysis-and-budgets-for-azure-batch"></a>Cost Analysis és költségvetések Azure Batch
 
@@ -23,7 +23,7 @@ Magáért a Azure Batchért nem számítunk fel díjat, csak a számítási erő
 
 ## <a name="batch-resources"></a>Batch-erőforrások
 
-A virtuális gépek a legjelentősebb erőforrás a kötegelt feldolgozáshoz. A virtuális gépeknek a Batchhez való használatának költségeit a típus, a mennyiség és a használat időtartama alapján számítjuk ki. A virtuális gépek számlázási [lehetőségei közé tartozik az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású vagy a [foglalás](../billing/billing-save-compute-costs-reservations.md) (előre fizetve). A számítási feladattól függően mindkét fizetési lehetőség különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
+A virtuális gépek a legjelentősebb erőforrás a kötegelt feldolgozáshoz. A virtuális gépeknek a Batchhez való használatának költségeit a típus, a mennyiség és a használat időtartama alapján számítjuk ki. A virtuális gépek számlázási [lehetőségei közé tartozik az utólagos](https://azure.microsoft.com/offers/ms-azr-0003p/) elszámolású vagy a [foglalás](../cost-management-billing/reservations/save-compute-costs-reservations.md) (előre fizetve). A számítási feladattól függően mindkét fizetési lehetőség különböző előnyökkel jár, és mindkét fizetési modell eltérő hatással lesz a számlára.
 
 Ha az alkalmazások batch-csomópontokra (VM) vannak telepítve [alkalmazáscsomag](batch-application-packages.md)használatával, akkor az alkalmazás csomagjai által felhasznált Azure Storage-erőforrásokért kell fizetnie. A rendszer a bemeneti és kimeneti fájlok, például az erőforrások fájljainak és egyéb naplófájljainak tárolását is kiszámlázza. Általánosságban elmondható, hogy a Batch szolgáltatáshoz kapcsolódó tárolási adatok ára sokkal alacsonyabb, mint a számítási erőforrások díja. A **VirtualMachineConfiguration** -mel létrehozott készletekben található minden virtuális gépnek van egy társított operációsrendszer-lemeze, amely az Azure által felügyelt lemezeket használja. Az Azure által felügyelt lemezek további költségekkel járnak, és a többi lemez teljesítmény-szintjei is eltérő költségekkel rendelkeznek.
 
@@ -50,15 +50,15 @@ A Azure Portal segítségével költségvetéseket hozhat létre, és elkölthet
 1. A Azure Portal válassza a **Cost Management + számlázás** lehetőséget a bal oldali navigációs sávon.
 1. Előfizetés kiválasztása a **saját előfizetések** szakaszból
 1. A bal oldali navigációs sáv **Cost Management** szakaszában kattintson a **Cost Analysis** elemre, amely a következőképpen jelenik meg:
-1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza az **erőforrás** ![Select az erőforrás-szűrő ](./media/batch-budget/resource-filter.png)
+1. Válassza a **szűrő hozzáadása**lehetőséget. Az első legördülő menüben válassza az **erőforrás** lehetőséget ![válassza ki az erőforrás-szűrőt](./media/batch-budget/resource-filter.png)
 1. A második legördülő menüben válassza ki a Batch-készletet. A készlet kiválasztása után a Cost Analysis a következő elemzéshez hasonlóan fog kinézni.
-    a készlet ![Cost elemzése ](./media/batch-budget/pool-cost-analysis.png)
+    a készlet ![ának elemzése](./media/batch-budget/pool-cost-analysis.png)
 
 Az eredményül kapott Cost Analysis megjeleníti a készlet költségeit, valamint az ehhez a díjakhoz hozzájáruló erőforrásokat. Ebben a példában a készletben használt virtuális gépek a legdrágább erőforrások.
 
 Ha költségvetést szeretne létrehozni a készlethez, válassza a **költségvetés: nincs**lehetőséget, majd válassza az **új költségvetési > létrehozása**lehetőséget. Most az ablak használatával konfigurálhat egy költségvetést kifejezetten a készlethez.
 
-A költségvetés konfigurálásával kapcsolatos további információkért lásd: [Azure-költségvetések létrehozása és kezelése](../cost-management/tutorial-acm-create-budgets.md).
+A költségvetés konfigurálásával kapcsolatos további információkért lásd: [Azure-költségvetések létrehozása és kezelése](../cost-management-billing/costs/tutorial-acm-create-budgets.md).
 
 > [!NOTE]
 > Azure Batch az Azure Cloud Servicesra és az Azure Virtual Machines technológiára épül. Ha **Cloud Services konfigurációt**választ, a Cloud Services díjszabási struktúra alapján kell fizetnie. A **virtuális gép konfigurációjának**kiválasztásakor a Virtual Machines díjszabási struktúra alapján kell fizetnie. Az oldalon található példa a **virtuális gép konfigurációját**használja.
@@ -81,7 +81,7 @@ Prémium SSD operációsrendszer-lemezek drágábbak, de a nagyobb teljesítmén
 
 ### <a name="reserved-virtual-machine-instances"></a>Fenntartott virtuálisgép-példányok
 
-Ha hosszú ideig kívánja használni a köteget, a munkaterhelések [Azure Reservations](../billing/billing-save-compute-costs-reservations.md) használatával mentheti a virtuális gépek költségeit. A foglalások díja jelentősen alacsonyabb, mint az utólagos elszámolású díjszabás. A foglalás nélkül használt virtuálisgép-példányokat utólagos elszámolású díjszabással számoljuk el. Foglalás megvásárlása esetén a foglalási kedvezményt a rendszer az utólagos elszámolású díjszabás szerint számítja fel.
+Ha hosszú ideig kívánja használni a köteget, a munkaterhelések [Azure Reservations](../cost-management-billing/reservations/save-compute-costs-reservations.md) használatával mentheti a virtuális gépek költségeit. A foglalások díja jelentősen alacsonyabb, mint az utólagos elszámolású díjszabás. A foglalás nélkül használt virtuálisgép-példányokat utólagos elszámolású díjszabással számoljuk el. Foglalás megvásárlása esetén a foglalási kedvezményt a rendszer az utólagos elszámolású díjszabás szerint számítja fel.
 
 ### <a name="automatic-scaling"></a>Automatikus skálázás
 

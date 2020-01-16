@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: carlr
-ms.date: 02/08/2019
-ms.openlocfilehash: 3c03797c97a354eb06b6c3b1d76ba5c39d512c18
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/14/2020
+ms.openlocfilehash: 4283e1a2c92b7fe738fb57a8103cea1deb0015a0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73811224"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027714"
 ---
 # <a name="how-to-use-a-single-database-in-azure-sql-database"></a>Egyetlen adatbázis használata Azure SQL Database
 
@@ -42,7 +42,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - Az [automatikus hangolással kapcsolatos e-mail-értesítések engedélyezése](sql-database-automatic-tuning-email-notifications.md) a hangolási javaslatokkal kapcsolatos információk beszerzéséhez.
 - [Teljesítménnyel kapcsolatos javaslatok alkalmazása](sql-database-advisor-portal.md) és az adatbázis optimalizálása.
 - [Riasztásokat hozhat létre](sql-database-insights-alerts-portal.md) Azure SQL Databaseről érkező értesítések beszerzéséhez.
-- [Kapcsolódási hibák elhárítása](sql-database-troubleshoot-common-connection-issues.md) , ha az alkalmazások és az adatbázis közötti kapcsolódási problémákat tapasztal. [A kapcsolódási problémákhoz Resource Health](sql-database-resource-health.md)is használhatja.
+- [Kapcsolódási hibák elhárítása](troubleshoot-connectivity-issues-microsoft-azure-sql-database.md) , ha az alkalmazások és az adatbázis közötti kapcsolódási problémákat tapasztal. [A kapcsolódási problémákhoz Resource Health](sql-database-resource-health.md)is használhatja.
 - [Kezelheti](sql-database-file-space-management.md) a tárhelyet a tárterület-használat figyeléséhez az adatbázisban.
 
 ## <a name="query-distributed-data"></a>Lekérdezések elosztott adatai
@@ -57,7 +57,7 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - [Létrehozás és kezelés](elastic-jobs-tsql.md) Feladatok Elastic Database a Transact-SQL használatával.
 - [Migrálás a régi rugalmas feladatokból](elastic-jobs-migrate.md).
 
-## <a name="database-sharding"></a>Adatbázis horizontális skálázása
+## <a name="database-sharding"></a>Adatbázis horizontális particionálása
 
 - [Rugalmas adatbázis-ügyfél függvénytárának frissítése](sql-database-elastic-scale-upgrade-client-library.md).
 - [Szilánkokra osztott alkalmazás létrehozása](sql-database-elastic-scale-get-started.md).
@@ -72,5 +72,5 @@ Ebben a szakaszban különféle útmutatókat, parancsfájlokat és magyarázato
 - Az Entity Framework használatával lekérdezheti a szilánkokra osztott [adatkereteket](sql-database-elastic-scale-use-entity-framework-applications-visual-studio.md) .
 - A [felhasználható keretrendszer használatával](sql-database-elastic-scale-working-with-dapper.md) lekérdezheti a szilánkokra bontott adatkereteket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [felügyelt példányokkal kapcsolatos útmutatókról](sql-database-howto-managed-instance.md)

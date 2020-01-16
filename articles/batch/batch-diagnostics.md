@@ -3,7 +3,7 @@ title: Metrikák, riasztások és diagnosztikai naplók – Azure Batch | Micros
 description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azure Batch fiók erőforrásaihoz, például a készletekhez és a feladatokhoz.
 services: batch
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 ms.assetid: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: big-compute
 ms.date: 12/05/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: seodec18
-ms.openlocfilehash: 9412107759e0aa068d982828d47b97822c09ae35
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: ffe8eb58fba570bf6002884ee365e76d9b53a273
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748085"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027209"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
 

@@ -2,17 +2,17 @@
 title: Az Azure Managed Disks kiszolgálóoldali titkosítása – Azure parancssori felület
 description: Az Azure Storage védi az adatait úgy, hogy titkosítja a nyugalmát, mielőtt megőrzi azt a Storage-fürtökön. A felügyelt lemezek titkosításához a Microsoft által felügyelt kulcsokat használhatja, vagy az ügyfél által felügyelt kulcsokkal kezelheti a titkosítást a saját kulcsaival.
 author: roygara
-ms.date: 01/10/2020
+ms.date: 01/13/2020
 ms.topic: conceptual
 ms.author: rogarana
 ms.service: virtual-machines-linux
 ms.subservice: disks
-ms.openlocfilehash: 61e45a5d13da7af42bbed273e5b39ce2af15d1ca
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d8729e447aabfcb1c378919501ee48124e7ae27b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75912747"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76027824"
 ---
 # <a name="server-side-encryption-of-azure-managed-disks"></a>Az Azure Managed Disks kiszolgálóoldali titkosítása
 
@@ -54,21 +54,18 @@ A következő lista a diagramot mutatja be még részletesebben:
 
 Az ügyfél által felügyelt kulcsokhoz való hozzáférés visszavonásához lásd: [Azure Key Vault PowerShell](https://docs.microsoft.com/powershell/module/azurerm.keyvault/) és [Azure Key Vault parancssori](https://docs.microsoft.com/cli/azure/keyvault)felület. A hozzáférés visszavonása hatékonyan blokkolja a Storage-fiókban lévő összes adattal való hozzáférést, mivel a titkosítási kulcs nem érhető el az Azure Storage-ban.
 
-### <a name="supported-scenarios-and-restrictions"></a>Támogatott forgatókönyvek és korlátozások
+### <a name="supported-regions"></a>Támogatott régiók
 
-Egyelőre csak az alábbi forgatókönyvek támogatottak:
-
-- Hozzon létre egy virtuális gépet (VM) egy Azure Marketplace-rendszerképből, és titkosítsa az operációsrendszer-lemezt kiszolgálóoldali titkosítással az ügyfél által felügyelt kulcsok használatával.
-- Hozzon létre egy, a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképet.
-- Hozzon létre egy virtuális gépet egy egyéni rendszerképből, és titkosítsa az operációsrendszer-lemezt kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsok használatával.
-- A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított adatlemezeket hozhat létre.
-- (Csak CLI/PowerShell) A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított pillanatképek létrehozása.
-- Hozzon létre a kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított virtuálisgép-méretezési csoportokat.
-
-Jelenleg a következő korlátozásokkal rendelkezünk:
+Jelenleg csak a következő régiók támogatottak:
 
 - Elérhető az USA keleti régiójában, az USA 2. nyugati régiójában és az USA déli középső régiójában.
-- Elérhető nyilvános előzetesként az USA nyugati középső régiójában, az USA 2. keleti régiójában, Közép-Kanada és Észak-Európa területén.
+- Elérhető nyilvános előzetesként az USA nyugati középső régiójában, az USA 2. keleti régiójában, Közép-Kanada és Észak-Európa régióban.
+
+### <a name="restrictions"></a>Korlátozások
+
+Egyelőre az ügyfél által felügyelt kulcsokra a következő korlátozások vonatkoznak:
+
+- Csak a 2080 méretű ["Soft" és "Hard" RSA-kulcsok](../../key-vault/about-keys-secrets-and-certificates.md#keys-and-key-types) támogatottak, nincsenek más kulcsok vagy méretek.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni rendszerképekből létrehozott lemezeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani, és ugyanahhoz az előfizetéshez kell tartoznia.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított lemezekről létrehozott pillanatképeket ugyanazzal az ügyfél által felügyelt kulcsokkal kell titkosítani.
 - A kiszolgálóoldali titkosítással és az ügyfél által felügyelt kulcsokkal titkosított egyéni lemezképek nem használhatók a megosztott lemezképek gyűjteményében.

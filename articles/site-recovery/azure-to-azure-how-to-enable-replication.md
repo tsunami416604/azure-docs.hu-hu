@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 04/29/2018
-ms.openlocfilehash: 471a7f288cec980e73ab10c8233ea38511acdd8b
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1c6b7cfbf193f02598052b6922efec17fb16ec83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942317"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973695"
 ---
 # <a name="replicate-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek replikálása másik Azure-régióba
 
@@ -62,7 +62,7 @@ Engedélyezze a replikációt. Ez az eljárás feltételezi, hogy az elsődleges
      >[!NOTE]
      >A replikáció engedélyezése után nem módosíthatja a rendelkezésre állási típust, a rendelkezésre állási készletet vagy a rendelkezésre állási zónát. A rendelkezésre állási típus módosításához le kell tiltania és engedélyeznie kell a replikálást.
      >
-    
+
    - **Replikációs házirend**: meghatározza a helyreállítási pontok megőrzési előzményeinek és az alkalmazás konzisztens pillanatkép-gyakoriságának beállításait. Alapértelmezés szerint a Azure Site Recovery egy új replikációs házirendet hoz létre, amely a helyreállítási pontok megőrzéséhez és a "4 óra" alapértelmezett beállításokkal rendelkezik az alkalmazás konzisztens pillanatkép-gyakorisága esetében.
 
      ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/enabledrwizard3.PNG)
@@ -74,7 +74,7 @@ Ha lemezeket ad hozzá egy olyan Azure-beli virtuális géphez, amelyen engedél
 -   Ha engedélyezi a hozzáadott lemezek védelmét, a figyelmeztetés a lemez kezdeti replikálása után eltűnik.
 -   Ha úgy dönt, hogy nem engedélyezi a lemez replikálását, kiválaszthatja, hogy elhagyhatja a figyelmeztetést.
 
-    
+
     ![Új lemez hozzáadva](./media/azure-to-azure-how-to-enable-replication/newdisk.png)
 
 Egy hozzáadott lemez replikálásának engedélyezéséhez tegye a következőket:
@@ -88,7 +88,7 @@ Egy hozzáadott lemez replikálásának engedélyezéséhez tegye a következők
 A replikációs feladatok futtatásának engedélyezése és a kezdeti replikálás befejezése után a rendszer eltávolítja a lemezre vonatkozó probléma replikálási állapotára vonatkozó figyelmeztetést.
 
 
-  
+
 ## <a name="customize-target-resources"></a>Cél erőforrások testreszabása
 
 A Site Recovery által használt alapértelmezett cél beállításokat módosíthatja.
@@ -112,7 +112,7 @@ A Site Recovery által használt alapértelmezett cél beállításokat módosí
     - Győződjön meg arról, hogy nincs olyan tűzfalszabály, amely blokkolja a virtuális gépek közötti belső kommunikációt a 20004-as porton keresztül.
     - Ha azt szeretné, hogy a Linux rendszerű virtuális gépek egy replikációs csoport részévé legyenek, győződjön meg arról, hogy az 20004-as porton a kimenő forgalom manuálisan nyílik meg az adott Linux-verzió útmutatása szerint.
 ![A replikáció engedélyezése](./media/site-recovery-replicate-azure-to-azure/multivmsettings.PNG)
-    
+
 5. Kattintson a **cél erőforrás létrehozása** elemre > **replikáció engedélyezése**lehetőségre.
 6. Miután a virtuális gépek engedélyezve vannak a replikáláshoz, a virtuális gép állapotának állapotát a **replikált elemek** területen tekintheti meg
 

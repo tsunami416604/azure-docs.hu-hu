@@ -6,18 +6,18 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 07/25/2019
-ms.openlocfilehash: 000271095530e269472fba4bc5f1c5563aa16ff9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 41410d4e534d0940050521ecc86e8a384566f439
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428805"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972686"
 ---
 # <a name="overview-automate-deployment-for-azure-logic-apps-by-using-azure-resource-manager-templates"></a>Áttekintés: üzembe helyezés automatizálása Azure Logic Appshez Azure Resource Manager sablonok használatával
 
 Ha készen áll a logikai alkalmazás létrehozásának és üzembe helyezésének automatizálására, kiterjesztheti a logikai alkalmazás alapjául szolgáló munkafolyamat-definícióját egy [Azure Resource Manager sablonba](../azure-resource-manager/management/overview.md). Ez a sablon határozza meg az infrastruktúrát, az erőforrásokat, a paramétereket és az egyéb információkat a logikai alkalmazás üzembe helyezéséhez és telepítéséhez. Ha a központi telepítésben (más néven *parameterizing*) eltérő értékekre vonatkozó paramétereket határoz meg, akkor a különböző telepítési igények alapján ismételten és következetesen telepítheti a Logic apps-alkalmazásokat.
 
-Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/resource-manager-keyvault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
+Ha például fejlesztési, tesztelési és éles környezetekben végez üzembe helyezést, akkor az egyes környezetekhez valószínűleg különböző kapcsolódási karakterláncokat fog használni. Deklarálhatja a sablon azon paramétereit, amelyek különböző kapcsolatok karakterláncokat fogadnak el, majd egy külön [paraméter-fájlban](../azure-resource-manager/templates/parameter-files.md)tárolják ezeket a karakterláncokat. Így módosíthatja ezeket az értékeket a sablon frissítése és újbóli üzembe helyezése nélkül. Olyan esetekben, ahol olyan paraméterek vannak, amelyek érzékenyek, vagy amelyeket biztosítani kell, például a jelszavakat és a titkos kulcsokat, ezeket az értékeket [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md) tárolhatja, és a paramétereket tartalmazó fájllal is lekérheti ezeket az értékeket. Ezekben az esetekben azonban az aktuális értékek beolvasásához újra üzembe kell helyezni.
 
 Ez az Áttekintés egy Resource Manager-sablon azon attribútumait ismerteti, amelyek tartalmazzák a logikai alkalmazás munkafolyamatának definícióját. A sablon és a munkafolyamat-definíció JSON-szintaxist használ, de néhány eltérés létezik, mert a munkafolyamat-definíció a [munkafolyamat-definíció nyelvi sémáját](../logic-apps/logic-apps-workflow-definition-language.md)is követi. Például a sablonok kifejezései és a munkafolyamat-definíciós kifejezések különböznek a paraméterek és az általuk elfogadható értékek [függvényében](#parameter-references) .
 
@@ -31,8 +31,8 @@ A jelen témakörben szereplő logikai alkalmazás egy [Office 365 Outlook-esem�
 A Resource Manager-sablonokkal kapcsolatos további információkért tekintse meg a következő témaköröket:
 
 * [Azure Resource Manager sablon szerkezete és szintaxisa](../azure-resource-manager/templates/template-syntax.md)
-* [Ajánlott eljárások az Azure Resource Manager-sablonokhoz](../azure-resource-manager/template-best-practices.md)
-* [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates-cloud-consistency.md)
+* [Ajánlott eljárások az Azure Resource Manager-sablonokhoz](../azure-resource-manager/templates/template-best-practices.md)
+* [Azure Resource Manager-sablonok fejlesztése felhőkonzisztenciához](../azure-resource-manager/templates/templates-cloud-consistency.md)
 
 A minta logikai alkalmazások sablonjai a következő példákban találhatók:
 
@@ -149,7 +149,7 @@ A sablon paramétereinek biztonságossá tételéhez tekintse meg a következő 
 
 * [A sablon paramétereinek biztonsági javaslatai](../azure-resource-manager/templates/template-best-practices.md#parameters)
 * [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
-* [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 Más sablon-objektumok gyakran hivatkoznak a sablon paramétereinek használatára, így például a sablon paraméterei között továbbított értékeket használhatják, például:
 
@@ -173,7 +173,7 @@ Ha a paraméterekre hivatkozik, a sablon kifejezései és a függvények eltér�
 
   * [Biztonságos sablon paraméterei](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-deployment-template)
 
-  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 * A sablon-paraméterek neveinek a munkafolyamat-definíciós paraméterek neveiből való megkülönböztetéséhez használhatja a leíró sablon paraméterének nevét, például: `TemplateFabrikamPassword`
 
@@ -188,7 +188,7 @@ A sablon paramétereinek értékeinek megadásához tárolja ezeket az értékek
 * Logic app-sablon fájlneve: **<*Logic-app-Name*>. JSON**
 * Parameters Fájlnév: **<*Logic-app-Name*>. Parameters. JSON**
 
-Itt látható a (z) paraméterek fájljának struktúrája, amely tartalmaz egy Key Vault-referenciát a [biztonságos paraméterek értékének átadásához Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md):
+Itt látható a (z) paraméterek fájljának struktúrája, amely tartalmaz egy Key Vault-referenciát a [biztonságos paraméterek értékének átadásához Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md):
 
 ```json
 {
@@ -409,7 +409,7 @@ Ez a szintaxis azt mutatja be, hogy hol deklarálhatja a paramétereket a sablon
 
 Egy munkafolyamat-definíciós paraméter esetében, amely a bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kódokat kezeli futásidőben, deklarálja vagy szerkessze a paramétert a `securestring` vagy `secureobject` paraméter típusának használatához. Ezt a paramétert a munkafolyamat-definíciójában és a teljes munkafolyamaton belül is hivatkozhat. A sablon legfelső szintjén deklaráljon egy olyan paramétert, amely ugyanolyan típusú, mint az üzembe helyezéskor szükséges adatok kezelése.
 
-A munkafolyamat-definíciós paraméter értékének megadásához használja a munkafolyamat-definíción *kívüli* `parameters` objektumot, *de továbbra is a logikai* alkalmazás erőforrás-definíciójában a sablon paraméterre való hivatkozáshoz. Végül, ha az értéket át szeretné adni a sablon paraméterének az üzembe helyezéskor, tárolja az értéket a [Azure Key Vaultban](../azure-resource-manager/resource-manager-keyvault-parameter.md) , és hivatkozzon a Key vaultra a sablon által a telepítéskor használt [Paraméterek fájlban](#template-parameter-files) .
+A munkafolyamat-definíciós paraméter értékének megadásához használja a munkafolyamat-definíción *kívüli* `parameters` objektumot, *de továbbra is a logikai* alkalmazás erőforrás-definíciójában a sablon paraméterre való hivatkozáshoz. Végül, ha az értéket át szeretné adni a sablon paraméterének az üzembe helyezéskor, tárolja az értéket a [Azure Key Vaultban](../azure-resource-manager/templates/key-vault-parameter.md) , és hivatkozzon a Key vaultra a sablon által a telepítéskor használt [Paraméterek fájlban](#template-parameter-files) .
 
 Ez a példa azt mutatja be, hogyan végezheti el ezeket a feladatokat a biztonságos paraméterek meghatározásával, ha szükséges, hogy az értékeket a Azure Key Vaultban lehessen tárolni:
 
@@ -558,7 +558,7 @@ Az alábbi ajánlott eljárásokkal gondoskodhat arról, hogy a Logic app Design
 
   * [A paraméterek biztonsági javaslatai a munkafolyamat-definíciókban](../logic-apps/logic-apps-securing-a-logic-app.md#secure-parameters-workflow)
 
-  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+  * [Biztonságos paraméterek értékeinek továbbítása Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)
 
 A munkafolyamat-definíciós paraméterekkel kapcsolatos további információkért lásd: [Paraméterek – munkafolyamat-definíciós nyelv](../logic-apps/logic-apps-workflow-definition-language.md#parameters).
 
@@ -652,7 +652,7 @@ A logikai alkalmazás erőforrás-definíciója a következő módokon is együt
 
 * A munkafolyamat-definíción *kívül* , de továbbra is a logikai alkalmazás erőforrás-definícióján *belül* egy másik `parameters` objektum állítja be a futtatáskor használandó értékeket a `$connections` paraméterhez a megfelelő sablon paramétereinek hivatkozásával. Ezek az értékek a sablon kifejezéseit használják a logikai alkalmazásban található kapcsolatok metaadatait biztonságosan tároló erőforrásokra.
 
-  A metaadatok tartalmazhatnak például kapcsolati karakterláncokat és hozzáférési jogkivonatokat, amelyeket [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)tárolhat. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik. A hivatkozó paraméterekkel kapcsolatos különbségekről a témakör későbbi, a [paraméterekre mutató hivatkozások](#parameter-references) című részében olvashat bővebben.
+  A metaadatok tartalmazhatnak például kapcsolati karakterláncokat és hozzáférési jogkivonatokat, amelyeket [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)tárolhat. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik. A hivatkozó paraméterekkel kapcsolatos különbségekről a témakör későbbi, a [paraméterekre mutató hivatkozások](#parameter-references) című részében olvashat bővebben.
 
   Ha a logikai alkalmazás munkafolyamat-definícióját kód nézetben nyitja meg a Azure Portal vagy a Visual Studio használatával, akkor a `$connections` objektum a munkafolyamat-definíción kívül jelenik meg, de ugyanazon a szinten. A kód nézetben megjelenő rendezés megkönnyíti ezeket a paramétereket a munkafolyamat-definíció manuális frissítésekor:
 
@@ -744,7 +744,7 @@ Ez a példa a logikai alkalmazás erőforrás-definíciója és az Office 365 Ou
 
 ### <a name="secure-connection-parameters"></a>Biztonságos kapcsolatok paramétereinek megadása
 
-A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kódokat kezelő kapcsolati paraméter esetén a kapcsolat erőforrás-definíciója tartalmaz egy `parameterValues` objektumot, amely a név-érték párok formátumában adja meg ezeket az értékeket. Ezen információk elrejtéséhez a sablon paramétereit deklarálhatja vagy szerkesztheti a `securestring` vagy a `secureobject` paraméter típusával. Ezt az információt Ezután [Azure Key Vault](../azure-resource-manager/resource-manager-keyvault-parameter.md)tárolhatja. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik.
+A bizalmas adatokat, jelszavakat, hozzáférési kulcsokat vagy titkos kódokat kezelő kapcsolati paraméter esetén a kapcsolat erőforrás-definíciója tartalmaz egy `parameterValues` objektumot, amely a név-érték párok formátumában adja meg ezeket az értékeket. Ezen információk elrejtéséhez a sablon paramétereit deklarálhatja vagy szerkesztheti a `securestring` vagy a `secureobject` paraméter típusával. Ezt az információt Ezután [Azure Key Vault](../azure-resource-manager/templates/key-vault-parameter.md)tárolhatja. Ha ezeket az értékeket át szeretné adni a sablon paramétereinek, a rendszer a kulcstárolót a sablon által a telepítéskor használt [Parameters fájlban](#template-parameter-files) hivatkozik.
 
 Az alábbi példa egy Azure Blob Storage-kapcsolathoz tartozó fiók nevét és elérési kulcsát adja meg:
 
@@ -1011,7 +1011,7 @@ Az egyszerű szolgáltatásokkal kapcsolatos további információkért tekintse
 
 ## <a name="references-to-parameters"></a>Paraméterekre mutató hivatkozások
 
-A sablon paramétereinek hivatkozásához használhatja a Template [functions](../azure-resource-manager/resource-group-template-functions.md)kifejezést a telepítéskor kiértékelt sablon-kifejezésekkel. A sablon kifejezései szögletes zárójeleket használnak ( **[]** ):
+A sablon paramétereinek hivatkozásához használhatja a Template [functions](../azure-resource-manager/templates/template-functions.md)kifejezést a telepítéskor kiértékelt sablon-kifejezésekkel. A sablon kifejezései szögletes zárójeleket használnak ( **[]** ):
 
 `"<attribute-name>": "[parameters('<template-parameter-name>')]"`
 

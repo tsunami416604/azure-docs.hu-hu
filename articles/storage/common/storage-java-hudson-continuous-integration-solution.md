@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 08/13/2019
 ms.author: tarcher
 ms.subservice: common
-ms.openlocfilehash: 75b0ea106be04cd77b18bfed8487edb6a7b7f65b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: f8cdd7b950a11045f795ac93d4a0904f2dc526fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839191"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970200"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Az Azure Storage szolgáltatás használata Hudson folyamatos integrációs megoldással
 ## <a name="overview"></a>Áttekintés
@@ -53,7 +53,7 @@ A következőkre lesz szüksége a Blob service és a Hudson CI megoldás haszn�
      
       Habár egy tipikus Hudson CI-megoldás úgy lesz beállítva, hogy szolgáltatásként fusson, a Hudson War a parancssorban való futtatása elegendő lesz ehhez az oktatóanyaghoz.
 * Egy Azure-fiók. <https://www.azure.com>címen regisztrálhat egy Azure-fiókot.
-* Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md)című témakör lépéseit követve.
+* Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-account-create.md)című témakör lépéseit követve.
 * A Hudson CI-megoldás ismerete ajánlott, de nem szükséges, mivel az alábbi tartalom egy alapszintű példát mutat be a Blob service a Hudson CI-Build-összetevők tárházként való használatakor szükséges lépések megjelenítéséhez.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>A Blob service használata a Hudson CI-vel
@@ -116,7 +116,7 @@ Ahhoz, hogy a Blob servicet a Hudson használatával használhassa, telepítenie
 13. A Hudson-irányítópulton kattintson a **Build most** gombra a **MyJob**futtatásához. Ellenőrizze a konzol kimenetét az állapothoz. Az Azure Storage-hoz tartozó állapotüzenetek a konzol kimenetében jelennek meg, amikor a Build utáni művelet elindítja a Build-összetevők feltöltését.
 14. A feladatok sikeres befejezését követően a nyilvános blob megnyitásával ellenőrizheti a Build-összetevőket.
     
-    a. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+    a. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     
     b. Kattintson a **tárterület**elemre.
     
@@ -157,7 +157,7 @@ Az alábbi áttekintést nyújt a Blob service összetevőkről.
   
     `http://example.blob.core.windows.net/myjob/2014-05-01_11-56-22/1/hello.txt`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Hudson megfelel](https://wiki.eclipse.org/Hudson-ci/Meet_Hudson)
 * [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)
