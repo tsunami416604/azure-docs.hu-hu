@@ -7,17 +7,17 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/30/2019
-ms.openlocfilehash: f4612232acfe6099c56d365e482cbc82c8436dee
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2bf2f012e553e08a1eb829f93d9af0f0e74f638b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745625"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977655"
 ---
 # <a name="collect-and-analyze-azure-activity-logs-in-log-analytics-workspace-in-azure-monitor"></a>Azure-beli tevékenység-naplók gyűjtése és elemzése Log Analytics munkaterületen Azure Monitor
 
 > [!WARNING]
-> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-subscription.md).
+> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-legacy.md).
 
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Ez a cikk bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, és hogyan használhatja a Activity Log Analytics [figyelési megoldást](../insights/solutions.md), amely naplózási lekérdezéseket és nézeteket biztosít az adatok elemzéséhez. 
 
@@ -32,7 +32,7 @@ A tevékenység naplójának Log Analytics munkaterülethez való csatlakoztatá
 Egyetlen munkaterület csatlakoztatható ugyanahhoz az Azure-bérlőhöz tartozó több előfizetés tevékenységi naplójához. A több bérlőre kiterjedő gyűjteményekért lásd: az [Azure-tevékenységek naplóinak összegyűjtése egy log Analytics munkaterületre különböző Azure Active Directory-bérlők előfizetései között](activity-log-collect-tenants.md).
 
 > [!IMPORTANT]
-> Ha a Microsoft. OperationalInsights és a Microsoft. OperationsManagement erőforrás-szolgáltató nincs regisztrálva az előfizetésében, hibaüzenetet kaphat a következő eljárással kapcsolatban. A szolgáltatók regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/resource-manager-supported-services.md) .
+> Ha a Microsoft. OperationalInsights és a Microsoft. OperationsManagement erőforrás-szolgáltató nincs regisztrálva az előfizetésében, hibaüzenetet kaphat a következő eljárással kapcsolatban. A szolgáltatók regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/management/resource-providers-and-types.md) .
 
 A következő eljárással összekapcsolhatja a tevékenység naplóját a Log Analytics munkaterülettel:
 

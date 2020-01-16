@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 12/07/2017
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 91e95dcf7cfc46073e2fd752a0e7e5ae6fce4ee8
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: ff221a32ff6c995d019b13f20ca2c3f9e2027f63
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300079"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980731"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-aspnet-core"></a>Ismerkedés az Azure Blob Storage és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET Core)
 
@@ -38,7 +38,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat ASP.NET Core kódot a blob Storage-t
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
 
-## <a name="set-up-the-development-environment"></a>A fejlesztési környezet beállítása
+## <a name="set-up-the-development-environment"></a>A fejlesztési környezet kialakítása
 
 Ez a szakasz végigvezeti a fejlesztési környezet beállításán. Ez magában foglalja a ASP.NET Model-View-Controller (MVC) alkalmazás létrehozását, a csatlakoztatott szolgáltatások kapcsolatának hozzáadását, a vezérlő hozzáadását és a szükséges névtér-irányelvek megadását.
 
@@ -69,7 +69,7 @@ Ez a szakasz végigvezeti a fejlesztési környezet beállításán. Ez magában
 1. Az **Azure Storage** párbeszédpanelen válassza ki az oktatóanyaghoz használni kívánt Azure Storage-fiókot. Új Azure Storage-fiók létrehozásához válassza az **új Storage-fiók létrehozása**lehetőséget, és fejezze be az űrlapot. Miután kiválasztotta a meglévő Storage-fiókot, vagy újat hoz létre, válassza a **Hozzáadás**lehetőséget. A Visual Studio telepíti a NuGet-csomagot az Azure Storage-hoz, valamint egy Storage-kapcsolódási karakterláncot a **appSettings. JSON**fájlhoz.
 
 > [!TIP]
-> Ha meg szeretné tudni, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com), tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md)című témakört.
+> Ha meg szeretné tudni, hogyan hozhat létre egy Storage-fiókot a [Azure Portal](https://portal.azure.com), tekintse meg a [Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 >
 > [Azure PowerShell](../storage/common/storage-powershell-guide-full.md), [Azure CLI](../storage/common/storage-azure-cli.md)vagy [Azure Cloud Shell](../cloud-shell/overview.md)használatával is létrehozhat Storage-fiókot.
 

@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 12/23/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 5b57f171a9407acea8231d796a80c3a1cc1d9474
-ms.sourcegitcommit: 8b44498b922f7d7d34e4de7189b3ad5a9ba1488b
+ms.openlocfilehash: f229661ca78dc75adbc0b49073dc6f0feaf2ba22
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/13/2019
-ms.locfileid: "72300111"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980759"
 ---
 # <a name="get-started-with-azure-queue-storage-and-visual-studio-connected-services-aspnet"></a>Ismerkedés az Azure üzenetsor-tárolóval és a Visual Studio csatlakoztatott szolgáltatásaival (ASP.NET)
 
@@ -33,7 +33,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat ASP.NET-kódokat néhány gyakori fo
 ## <a name="prerequisites"></a>Előfeltételek
 
 * [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-* [Azure Storage-fiók](../storage/common/storage-quickstart-create-account.md)
+* [Azure Storage-fiók](../storage/common/storage-account-create.md)
 
 [!INCLUDE [storage-queue-concepts-include](../../includes/storage-queue-concepts-include.md)]
 
@@ -55,7 +55,7 @@ Ez az oktatóanyag bemutatja, hogyan írhat ASP.NET-kódokat néhány gyakori fo
 
     ![Az MVC-vezérlő neve](./media/vs-storage-aspnet-getting-started-queues/add-controller-name.png)
 
-1. Adja hozzá a *következő utasításokat* a `QueuesController.cs` fájlhoz:
+1. Adja hozzá az *alábbi utasításokat* a `QueuesController.cs` fájlhoz:
 
     ```csharp
     using Microsoft.Azure;
@@ -84,7 +84,7 @@ A következő lépések bemutatják, hogyan hozhat létre üzenetsor-t:
     }
     ```
 
-1. A **CreateQueue** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **CreateQueue** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -118,7 +118,7 @@ A következő lépések bemutatják, hogyan hozhat létre üzenetsor-t:
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **CreateQueue** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `CreateQueue.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `CreateQueue.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -130,7 +130,7 @@ A következő lépések bemutatják, hogyan hozhat létre üzenetsor-t:
     Creation of @ViewBag.QueueName @(ViewBag.Success == true ? "succeeded" : "failed")
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -140,7 +140,7 @@ A következő lépések bemutatják, hogyan hozhat létre üzenetsor-t:
 
 1. Futtassa az alkalmazást, és kattintson az **üzenetsor létrehozása** elemre az alábbi képernyőképhez hasonló eredmények megtekintéséhez:
   
-    ![Várólista létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
+    ![Üzenetsor létrehozása](./media/vs-storage-aspnet-getting-started-queues/create-queue-results.png)
 
     Ahogy azt korábban említettük, a **CloudQueue. createifnotexists metódust** metódus **igaz** értéket ad vissza, ha a várólista nem létezik, és létrejön. Ezért ha az alkalmazást akkor futtatja, amikor a várólista létezik, a metódus **hamis**értéket ad vissza. Ha többször szeretné futtatni az alkalmazást, törölnie kell a várólistát az alkalmazás újbóli futtatása előtt. A várólista törlése a **CloudQueue. Delete** metódussal végezhető el. A várólistát a [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040) vagy a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)használatával is törölheti.  
 
@@ -165,7 +165,7 @@ Miután [létrehozta a várólistát](#create-a-queue), hozzáadhat üzeneteket 
     }
     ```
  
-1. A **AddMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **AddMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -207,7 +207,7 @@ Miután [létrehozta a várólistát](#create-a-queue), hozzáadhat üzeneteket 
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **AddMessage** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `AddMessage.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `AddMessage.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -219,7 +219,7 @@ Miután [létrehozta a várólistát](#create-a-queue), hozzáadhat üzeneteket 
     The message '@ViewBag.Message' was added to the queue '@ViewBag.QueueName'.
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -254,7 +254,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet megtekinteni egy várólistán lév�
     }
     ```
  
-1. A **PeekMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **PeekMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -290,7 +290,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet megtekinteni egy várólistán lév�
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **PeekMessage** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `PeekMessage.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `PeekMessage.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -305,7 +305,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet megtekinteni egy várólistán lév�
     </table>    
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -338,7 +338,7 @@ Ebből a szakaszból megtudhatja, hogyan olvashatja el és távolíthatja el az 
     }
     ```
  
-1. A **ReadMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **ReadMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -381,7 +381,7 @@ Ebből a szakaszból megtudhatja, hogyan olvashatja el és távolíthatja el az 
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **ReadMessage** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `ReadMessage.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `ReadMessage.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -396,7 +396,7 @@ Ebből a szakaszból megtudhatja, hogyan olvashatja el és távolíthatja el az 
     </table>
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -429,7 +429,7 @@ Ez a szakasz bemutatja, hogyan kérhető le a várólista hossza (üzenetek szá
     }
     ```
  
-1. A **ReadMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **ReadMessage** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -471,7 +471,7 @@ Ez a szakasz bemutatja, hogyan kérhető le a várólista hossza (üzenetek szá
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **GetQueueLength** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `GetQueueLengthMessage.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `GetQueueLengthMessage.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -483,7 +483,7 @@ Ez a szakasz bemutatja, hogyan kérhető le a várólista hossza (üzenetek szá
     The queue '@ViewBag.QueueName' has a length of (number of messages): @ViewBag.Length
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 
@@ -516,7 +516,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet törölni a várólistát.
     }
     ```
  
-1. A **DeleteQueue** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (Change *&lt;storage-Account-name >* az Ön által használt Azure Storage-fiók nevére.)
+1. A **DeleteQueue** metódusban szerezzen be egy **CloudStorageAccount** objektumot, amely a Storage-fiók adatait jelöli. A következő kód használatával szerezheti be a Storage-kapcsolódási karakterlánc és a Storage-fiók adatait az Azure szolgáltatás konfigurációjában: (módosítsa *&lt;Storage-Account-name >t* az elérni kívánt Azure Storage-fiók nevére.)
    
     ```csharp
     CloudStorageAccount storageAccount = CloudStorageAccount.Parse(
@@ -551,7 +551,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet törölni a várólistát.
 
 1. A **Nézet hozzáadása** párbeszédpanelen adja meg a **DeleteQueue** nevet a nézet neveként, majd válassza a **Hozzáadás**lehetőséget.
 
-1. Nyissa meg `DeleteQueue.cshtml` értéket, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
+1. Nyissa meg `DeleteQueue.cshtml`, és módosítsa úgy, hogy az a következő kódrészlethez hasonlítson:
 
     ```csharp
     @{
@@ -563,7 +563,7 @@ Ez a szakasz azt szemlélteti, hogyan lehet törölni a várólistát.
     @ViewBag.QueueName deleted.
     ```
 
-1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, majd nyissa meg a `_Layout.cshtml` elemet.
+1. A **megoldáskezelő**bontsa ki a **nézetek-> megosztott** mappát, és nyissa meg `_Layout.cshtml`.
 
 1. Az utolsó **HTML. ActionLink**után adja hozzá a következő **HTML. ActionLink**:
 

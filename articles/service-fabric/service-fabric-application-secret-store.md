@@ -1,20 +1,20 @@
 ---
-title: A Service Fabric titkoskulcs-tárolója
-description: Ez a cikk a Service Fabric Secrets Store használatát ismerteti.
+title: Azure Service Fabric központi titkok tárolója
+description: Ez a cikk azt ismerteti, hogyan használható a központi titkok tárolása az Azure Service Fabricban.
 ms.topic: conceptual
 ms.date: 07/25/2019
-ms.openlocfilehash: 16608d9eaf12fc9abc535ef316d7b5e8b74a8b37
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc6ea6260bf50d5b4f8e294e0a3827426f90bee3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457504"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980946"
 ---
-#  <a name="service-fabric-secrets-store"></a>A Service Fabric titkoskulcs-tárolója
-Ez a cikk azt ismerteti, hogyan hozhat létre és használhat titkokat Service Fabric alkalmazásokban a Service Fabric Secrets Store (CSS) használatával. A CSS egy helyi titkos tároló-gyorsítótár, amely bizalmas adatok, például jelszó, tokenek és a memóriában titkosított kulcsok megőrzésére szolgál.
+# <a name="central-secrets-store-in-azure-service-fabric"></a>Központi titkok tárolása az Azure-ban Service Fabric 
+Ez a cikk azt ismerteti, hogyan használható a Central Secrets Store (CSS) az Azure Service Fabricban a titkok létrehozásához Service Fabric alkalmazásokban. A CSS egy helyi titkos tároló-gyorsítótár, amely a memóriában titkosított bizalmas adatokat, például jelszavakat, jogkivonatokat és kulcsokat tárol.
 
-## <a name="enabling-secrets-store"></a>Titkok tárolójának engedélyezése
- A CSS engedélyezéséhez adja hozzá az alábbi beállításokat a fürtkonfiguráció `fabricSettings` alatt. Ajánlott olyan tanúsítványt használni, amely eltér a CSS-hez tartozó fürt-tanúsítványtól. Győződjön meg arról, hogy a titkosítási tanúsítvány telepítve van az összes csomóponton, és `NetworkService` rendelkezik olvasási engedéllyel a tanúsítvány titkos kulcsához.
+## <a name="enable-central-secrets-store"></a>Központi titkok tárolójának engedélyezése
+A CSS engedélyezéséhez adja hozzá az alábbi parancsfájlt a fürt konfigurációjához `fabricSettings` alatt. Javasoljuk, hogy a CSS-fürtön kívül más tanúsítványt használjon. Győződjön meg arról, hogy a titkosítási tanúsítvány telepítve van az összes csomóponton, és hogy `NetworkService` rendelkezik olvasási engedéllyel a tanúsítvány titkos kulcsához.
   ```json
     "fabricSettings": 
     [
@@ -46,10 +46,14 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és használhat titkokat Service F
         ...
      ]
 ```
-## <a name="declare-secret-resource"></a>Titkos erőforrás deklarálása
-Létrehozhat egy titkos erőforrást a Resource Manager-sablon vagy a REST API használatával.
+## <a name="declare-a-secret-resource"></a>Titkos erőforrás deklarálása
+A Azure Resource Manager sablon vagy a REST API használatával létrehozhat egy titkos erőforrást.
 
-* Resource Manager-sablon használata
+### <a name="use-resource-manager"></a>A Resource Manager használata
+
+A következő sablonnal használhatja a Resource Managert a titkos erőforrás létrehozásához. A sablon egy `supersecret` titkos erőforrást hoz létre, de még nincs beállítva érték a titkos erőforráshoz.
+
+
 ```json
    "resources": [
       {
@@ -66,20 +70,20 @@ Létrehozhat egy titkos erőforrást a Resource Manager-sablon vagy a REST API h
         }
       ]
 ```
-A fenti sablon `supersecret` titkos erőforrást hoz létre, de még nincs beállítva érték a titkos erőforráshoz.
 
-* A REST API használata
+### <a name="use-the-rest-api"></a>A REST API használata
 
-A titkos erőforrás létrehozásához `supersecret` PUT-kérést `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. Titkos kód létrehozásához szükség van a fürt vagy a rendszergazdai ügyféltanúsítvány tanúsítványára.
+`supersecret` titkos erőforrásnak a REST API használatával történő létrehozásához tegye a következőt: PUT-kérelem `https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview`. Titkos erőforrás létrehozásához szükség van a fürt vagy a rendszergazdai ügyféltanúsítvány tanúsítványára.
 
 ```powershell
 Invoke-WebRequest  -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret?api-version=6.4-preview -Method PUT -CertificateThumbprint <CertThumbprint>
 ```
 
-## <a name="set-secret-value"></a>Titkos érték beállítása
-* Resource Manager-sablon használata
+## <a name="set-the-secret-value"></a>A titkos érték beállítása
 
-Az alábbi Resource Manager-sablon létrehozza és beállítja a Secret `supersecret` verziószámát `ver1`.
+### <a name="use-the-resource-manager-template"></a>A Resource Manager-sablon használata
+
+A titkos érték létrehozásához és beállításához használja a következő Resource Manager-sablont. Ez a sablon a `supersecret` Secret-erőforráshoz tartozó titkos értéket állítja be `ver1`verzióként.
 ```json
   {
   "parameters": {
@@ -117,67 +121,68 @@ Az alábbi Resource Manager-sablon létrehozza és beállítja a Secret `superse
     }
   ],
   ```
-* A REST API használata
+### <a name="use-the-rest-api"></a>A REST API használata
 
+A következő parancsfájl használatával állítsa be a titkos értéket a REST API használatával.
 ```powershell
 $Params = @{"properties": {"value": "mysecretpassword"}}
 Invoke-WebRequest -Uri https://<clusterfqdn>:19080/Resources/Secrets/supersecret/values/ver1?api-version=6.4-preview -Method PUT -Body $Params -CertificateThumbprint <ClusterCertThumbprint>
 ```
-## <a name="using-the-secret-in-your-application"></a>A titkos kód használata az alkalmazásban
+## <a name="use-the-secret-in-your-application"></a>Az alkalmazásban található titkos kód használata
 
-1.  Vegyen fel egy szakaszt a Settings. xml fájlban az alábbi tartalommal. Vegye figyelembe, hogy az érték {`secretname:version`} formátumú.
+Az alábbi lépéseket követve használhatja a titkos kulcsot a Service Fabric alkalmazásban.
 
-```xml
-  <Section Name="testsecrets">
-   <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
-  </Section>
-```
-2. Most importálja a szakaszt a ApplicationManifest. xml fájlban.
-```xml
-  <ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
-        </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
+1. Vegyen fel egy szakaszt a **Settings. XML** fájlban a következő kódrészlettel. Vegye figyelembe, hogy az érték {`secretname:version`} formátumú.
 
-A "SecretPath" környezeti változó arra a könyvtárra mutat, ahol az összes titkot tárolja. A `testsecrets` szakaszban felsorolt paraméterek külön fájlban lesznek tárolva. Az alkalmazás mostantól az alább látható titkos kulcsot is használhatja
-```C#
-secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
-```
-3. Titkok csatlakoztatása egy tárolóhoz
+   ```xml
+     <Section Name="testsecrets">
+      <Parameter Name="TopSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/
+     </Section>
+   ```
 
-Csak a szükséges titkokat kell megadnia a tárolón belül a csatlakoztatási pont megadásához `<ConfigPackage>`ban.
-Itt látható a módosított ApplicationManifest. xml fájl.  
+1. Importálja a szakaszt a **ApplicationManifest. xml fájlban**.
+   ```xml
+     <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" EnvironmentVariableName="SecretPath" />
+           </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
 
-```xml
-<ServiceManifestImport>
-    <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
-    <ConfigOverrides />
-    <Policies>
-      <ConfigPackagePolicies CodePackageRef="Code">
-        <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
-        <!-- Linux Container
-         <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
-        -->
-      </ConfigPackagePolicies>
-    </Policies>
-  </ServiceManifestImport>
-```
-A Titkok a tárolón belüli csatlakoztatási pont alatt lesznek elérhetők.
+   A környezeti változó `SecretPath` arra a könyvtárra mutat, ahol az összes titkot tárolja. A `testsecrets` szakaszban felsorolt paraméterek külön fájlban tárolódnak. Az alkalmazás mostantól a következő módon használhatja a titkot:
+   ```C#
+   secretValue = IO.ReadFile(Path.Join(Environment.GetEnvironmentVariable("SecretPath"),  "TopSecret"))
+   ```
+1. A titkok csatlakoztatása egy tárolóhoz. A titkos kulcsoknak a tárolón belüli elérhetővé tételéhez csak a `specify` csatlakoztatási pontra van szükség `<ConfigPackage>`ban.
+A következő kódrészlet a módosított **ApplicationManifest. XML**.  
 
-4. Kötési titok egy környezeti változóhoz 
+   ```xml
+   <ServiceManifestImport>
+       <ServiceManifestRef ServiceManifestName="testservicePkg" ServiceManifestVersion="1.0.0" />
+       <ConfigOverrides />
+       <Policies>
+         <ConfigPackagePolicies CodePackageRef="Code">
+           <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="C:\secrets" EnvironmentVariableName="SecretPath" />
+           <!-- Linux Container
+            <ConfigPackage Name="Config" SectionName="testsecrets" MountPoint="/mnt/secrets" EnvironmentVariableName="SecretPath" />
+           -->
+         </ConfigPackagePolicies>
+       </Policies>
+     </ServiceManifestImport>
+   ```
+   A Titkok a tárolón belüli csatlakoztatási pont alatt érhetők el.
 
-A "SecretsStoreRef" típus megadásával köthető a titkos kulcshoz egy folyamat környezeti változóhoz. Íme egy példa arra, hogyan köthető `supersecret` verzió `ver1` a környezeti változóhoz `MySuperSecret` a ServiceManifest. xml fájlban.
+1. `Type='SecretsStoreRef`megadásával egy titkos kulcsot is megadhat egy folyamat környezeti változóhoz. Az alábbi kódrészlet egy példa arra, hogyan köthető a `supersecret` verziója `ver1` a **ServiceManifest. XML**környezeti változóhoz `MySuperSecret`.
 
-```xml
-<EnvironmentVariables>
-  <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
-</EnvironmentVariables>
-```
+   ```xml
+   <EnvironmentVariables>
+     <EnvironmentVariable Name="MySuperSecret" Type="SecretsStoreRef" Value="supersecret:ver1"/>
+   </EnvironmentVariables>
+   ```
+
 ## <a name="next-steps"></a>Következő lépések
-További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md)
+További információ az [alkalmazások és szolgáltatások biztonságáról](service-fabric-application-and-service-security.md).

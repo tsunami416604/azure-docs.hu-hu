@@ -3,12 +3,12 @@ title: Azure Red Hat OpenShift-fürtök konfigurálása az Azure Monitor for con
 description: Ez a cikk bemutatja, hogyan konfigurálhatja a Kubernetes-fürtök figyelését az Azure Red Hat OpenShift üzemeltetett Azure Monitor használatával.
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: cb68d08f86efa395f9d4567a00e74632a293ea3f
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 0d5ed362d6eb76e2fa04b88e9e45c890118a53eb
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75930365"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979779"
 ---
 # <a name="configure-azure-red-hat-openshift-clusters-with-azure-monitor-for-containers"></a>Azure Red Hat OpenShift-fürtök konfigurálása a Azure Monitor for containers szolgáltatással
 
@@ -21,7 +21,7 @@ A tárolók Azure Monitor széles körű monitorozást biztosítanak az Azure Ku
 A tárolók Azure Monitor a következő támogatott módszerek használatával engedélyezhető az új, illetve egy vagy több Azure Red Hat-OpenShift üzemelő példányhoz:
 
 - Meglévő fürt Azure Portal vagy Azure Resource Manager sablon használatával
-- Új fürt Azure Resource Manager sablon használatával 
+- Új fürt Azure Resource Manager sablon használatával
 
 ## <a name="supported-and-unsupported-features"></a>Támogatott és nem támogatott funkciók
 
@@ -42,7 +42,7 @@ Az alábbi lépések végrehajtásával telepítsen egy Azure Red Hat OpenShift-
 
 Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza azt a konfigurációt, amellyel a fürtöt a figyelés engedélyezve állapotba helyezi, a másik pedig a konfigurált paramétereket adja meg a következők megadásához:
 
-- Az Azure Red Hat OpenShift-fürt erőforrás-azonosítója. 
+- Az Azure Red Hat OpenShift-fürt erőforrás-azonosítója.
 
 - Az az erőforráscsoport, amelyben a fürt telepítve van.
 
@@ -60,15 +60,15 @@ Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza azt a k
 
 - Az ügynök-készlet profiljában lévő számítási csomópontok száma.
 
-- Az ügynök-készlet profiljában található infrastruktúra-csomópontok száma. 
+- Az ügynök-készlet profiljában található infrastruktúra-csomópontok száma.
 
 Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)használatával állíthatja be.
 
@@ -76,20 +76,20 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoring.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_new_cluster/newClusterWithMonitoringParam.json`
 
-2. Bejelentkezés az Azure-ba 
+2. Bejelentkezés az Azure-ba
 
     ```azurecli
     az login    
     ```
-    
+
     Ha több előfizetéshez is rendelkezik hozzáféréssel, futtassa `az account set -s {subscription ID}` a használni kívánt előfizetéssel `{subscription ID}` cserélje le.
- 
-3. Hozzon létre egy erőforráscsoportot a fürthöz, ha még nem rendelkezik ilyennel. Az Azure-OpenShift támogató Azure-régiók listáját a [támogatott régiók](../../openshift/supported-resources.md#azure-regions)című részben tekintheti meg. 
+
+3. Hozzon létre egy erőforráscsoportot a fürthöz, ha még nem rendelkezik ilyennel. Az Azure-OpenShift támogató Azure-régiók listáját a [támogatott régiók](../../openshift/supported-resources.md#azure-regions)című részben tekintheti meg.
 
     ```azurecli
-    az group create -g <clusterResourceGroup> -l <location> 
+    az group create -g <clusterResourceGroup> -l <location>
     ```
 
 4. Szerkessze a **newClusterWithMonitoringParam. JSON** JSON-paramétert, és frissítse a következő értékeket:
@@ -98,19 +98,19 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
     - *clusterName*
     - *aadTenantId*
     - *aadClientId*
-    - *aadClientSecret* 
-    - *aadCustomerAdminGroupId* 
+    - *aadClientSecret*
+    - *aadCustomerAdminGroupId*
     - *workspaceResourceId*
     - *masterNodeCount*
     - *computeNodeCount*
     - *infraNodeCount*
 
-5. A következő lépés az Azure CLI használatával helyezi üzembe a fürtöt a figyeléssel. 
+5. A következő lépés az Azure CLI használatával helyezi üzembe a fürtöt a figyeléssel.
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./newClusterWithMonitoring.json --parameters @./newClusterWithMonitoringParam.json
     ```
- 
+
     A kimenet a következőhöz hasonló:
 
     ```azurecli
@@ -122,30 +122,30 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
 A következő lépések végrehajtásával engedélyezheti az Azure-ban üzembe helyezett Azure Red Hat OpenShift-fürtök figyelését. Ezt a Azure Portal vagy a megadott sablonok használatával végezheti el.
 
 ### <a name="from-the-azure-portal"></a>Az Azure Portalról
- 
+
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
-2. A Azure Portal menüben vagy a Kezdőlap lapon válassza a **Azure monitor**lehetőséget. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget. 
+2. A Azure Portal menüben vagy a Kezdőlap lapon válassza a **Azure monitor**lehetőséget. Az **áttekintések** szakaszban válassza a **tárolók**lehetőséget.
 
 3. A **figyelő-tárolók** lapon válassza a **nem figyelt fürtök**lehetőséget.
 
 4. A nem figyelt fürtök listájából keresse meg a fürtöt a listában, és kattintson az **Engedélyezés**gombra. A listában szereplő eredmények azonosításához keresse meg az **ARO** értéket a **fürt típusa**oszlopban.
 
 5. Ha egy meglévő Log Analytics munkaterülettel rendelkezik, amely a fürttel azonos előfizetésben található, **Azure monitor a tárolók** lapon, válassza ki a kívánt elemet a legördülő listából.  
-    A lista előjelöli az alapértelmezett munkaterületet és helyet, amelyet a fürt az előfizetésben üzembe helyez. 
+    A lista előjelöli az alapértelmezett munkaterületet és helyet, amelyet a fürt az előfizetésben üzembe helyez.
 
     ![Nem figyelt fürtök figyelésének engedélyezése](./media/container-insights-onboard/kubernetes-onboard-brownfield-01.png)
 
     >[!NOTE]
-    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben a RedHat OpenShift-fürtöt telepítette. 
- 
-A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait. 
+    >Ha új Log Analytics munkaterületet szeretne létrehozni a figyelési adatok fürtből való tárolásához, kövesse az [log Analytics munkaterület létrehozása](../../azure-monitor/learn/quick-create-workspace.md)című témakör utasításait. Ügyeljen arra, hogy a munkaterületet ugyanabban az előfizetésben hozza létre, amelyben a RedHat OpenShift-fürtöt telepítette.
+
+A figyelés engedélyezése után körülbelül 15 percet is igénybe vehet, mielőtt megtekintheti a fürthöz tartozó állapot mérőszámait.
 
 ### <a name="enable-using-an-azure-resource-manager-template"></a>Engedélyezés Azure Resource Manager sablon használatával
 
 Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figyelés engedélyezésének konfigurációját, a másik pedig a konfigurált paramétereket az alábbiak megadásához:
 
-- Az Azure RedHat OpenShift-fürt erőforrás-azonosítója. 
+- Az Azure RedHat OpenShift-fürt erőforrás-azonosítója.
 
 - Az az erőforráscsoport, amelyben a fürt telepítve van.
 
@@ -153,11 +153,11 @@ Ez a metódus két JSON-sablont tartalmaz. Az egyik sablon meghatározza a figye
 
 Ha nem ismeri az erőforrások sablon használatával történő központi telepítésének fogalmát, tekintse meg a következőt:
 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/resource-group-template-deploy.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](../../azure-resource-manager/templates/deploy-powershell.md)
 
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md)
 
-Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört. 
+Ha úgy dönt, hogy az Azure CLI-t használja, először telepítenie és használnia kell a CLI-t helyileg. Az Azure CLI 2.0.65 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa `az --version`. Ha telepítenie vagy frissítenie kell az Azure CLI-t, tekintse meg [Az Azure CLI telepítését](https://docs.microsoft.com/cli/azure/install-azure-cli)ismertető témakört.
 
 A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figyelést a Azure PowerShell vagy a parancssori felület használatával. A munkaterület létrehozásához a [Azure Resource Manager](../../azure-monitor/platform/template-workspace-configuration.md), a [PowerShell](../scripts/powershell-sample-create-workspace.md?toc=%2fpowershell%2fmodule%2ftoc.json)vagy a [Azure Portal](../../azure-monitor/learn/quick-create-workspace.md)használatával állíthatja be.
 
@@ -165,9 +165,9 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
 
     `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterOnboarding.json`
 
-    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json` 
+    `curl -LO https://raw.githubusercontent.com/microsoft/OMS-docker/ci_feature/docs/aro/enable_monitoring_to_existing_cluster/existingClusterParam.json`
 
-2. Bejelentkezés az Azure-ba 
+2. Bejelentkezés az Azure-ba
 
     ```azurecli
     az login    
@@ -184,15 +184,15 @@ A Log Analytics munkaterületet létre kell hozni, mielőtt engedélyezi a figye
 4. Futtassa a következő parancsot a fürt helyének és erőforrás-AZONOSÍTÓjának azonosításához:
 
     ```azurecli
-    az openshift show -g <clusterResourceGroup> -n <clusterName> 
+    az openshift show -g <clusterResourceGroup> -n <clusterName>
     ```
 
-5. Szerkessze a **existingClusterParam. JSON** JSON-paramétert, és frissítse a *AraResourceId* és a *araResoruceLocation*értékeket. A **workspaceResourceId** értéke a log Analytics munkaterület teljes erőforrás-azonosítója, amely tartalmazza a munkaterület nevét. 
+5. Szerkessze a **existingClusterParam. JSON** JSON-paramétert, és frissítse a *AraResourceId* és a *araResoruceLocation*értékeket. A **workspaceResourceId** értéke a log Analytics munkaterület teljes erőforrás-azonosítója, amely tartalmazza a munkaterület nevét.
 
-6. Az Azure CLI-vel való üzembe helyezéshez futtassa a következő parancsokat: 
+6. Az Azure CLI-vel való üzembe helyezéshez futtassa a következő parancsokat:
 
     ```azurecli
-    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json 
+    az group deployment create --resource-group <ClusterResourceGroupName> --template-file ./ExistingClusterOnboarding.json --parameters @./existingClusterParam.json
     ```
 
     A kimenet a következőhöz hasonló:

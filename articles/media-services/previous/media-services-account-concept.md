@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services v2-fiókok kezelése |} A Microsoft Docs
-description: Indítsa el a kezelése, titkosítására, kódolás, elemzése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. Ez a cikk ismerteti az Azure Media Services v2 fiókokat szeretne kezelni.
+title: Azure Media Services v2-fiókok kezelése | Microsoft Docs
+description: Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. Ez a cikk a Azure Media Services v2-fiókok kezelését ismerteti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,37 +11,37 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/05/2019
 ms.author: juliako
-ms.openlocfilehash: b4c19b1f502d079d7dfcc1edef4674d21f78ac3a
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 09a5f004570430fafe5c86f4f8ae048f2d1fe4c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67622042"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981945"
 ---
-# <a name="manage-azure-media-services-v2-accounts"></a>Az Azure Media Services v2-fiókok kezelése
+# <a name="manage-azure-media-services-v2-accounts"></a>Azure Media Services v2-fiókok kezelése
 
-Indítsa el a kezelése, titkosítására, kódolás, elemzése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie.  
+Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie.  
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services-fiók áthelyezése előfizetések között 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services fiók áthelyezése az előfizetések között 
 
-Ha a Media Services-fiók áthelyezése új előfizetésre van szüksége, kell először helyezze át az új előfizetés a Media Services-fiókot tartalmazó teljes erőforráscsoportot. Helyezze át az összes kapcsolódó erőforrás: Az Azure Storage-fiókok, az Azure CDN-profilok stb. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../azure-resource-manager/resource-group-move-resources.md). Csakúgy, mint bármely az Azure-erőforrások, erőforráscsoportok áthelyezési is igénybe vehet egy ideig.
+Ha egy Media Services fiókot egy új előfizetésre kell áthelyeznie, előbb át kell helyeznie a teljes erőforráscsoportot, amely tartalmazza a Media Services fiókot az új előfizetéshez. Az összes csatolt erőforrást át kell helyeznie: Azure Storage-fiókokat, Azure CDN profilokat stb. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Az Azure-beli erőforrásokhoz hasonlóan az erőforráscsoportok áthelyezése is eltarthat egy ideig.
 
-A Media Services v2 nem támogatja a több-bérlős modell. Ha a Media Services-fiók áthelyezése egy új bérlő előfizetésre van szüksége, hozzon létre egy új Azure Active Directory (Azure AD-) alkalmazás az új bérlő. Ezután lépjen a fiók az előfizetést, az új bérlőhöz. A bérlő Áthelyezés befejezése után elkezdheti a v2 API-k használata a Media Services-fiók eléréséhez használt Azure AD-alkalmazást az új bérlőhöz. 
+A Media Services v2 nem támogatja a több-bérlős modellt. Ha egy új bérlőn át kell helyeznie egy Media Services fiókot egy előfizetésbe, hozzon létre egy új Azure Active Directory (Azure AD) alkalmazást az új bérlőn. Ezután helyezze át a fiókját az előfizetésbe az új bérlőn. A bérlő áthelyezése után megkezdheti egy Azure AD-alkalmazás használatát az új bérlőről, hogy a v2 API-k használatával hozzáférhessen a Media Services fiókhoz. 
 
 > [!IMPORTANT]
-> Vissza kell állítania a [Azure AD-hitelesítés](media-services-portal-get-started-with-aad.md) info Media Services v2 API eléréséhez.  
+> Media Services v2 API eléréséhez alaphelyzetbe kell állítania az [Azure ad-hitelesítési](media-services-portal-get-started-with-aad.md) adatokat.  
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* Hozzon létre a biztonsági mentések az összes adat a fiókban egy másik előfizetésbe való migrálás előtt.
-* Állítsa le a Streamelési végpontok és az élő adások online közvetítése erőforrások kell. A felhasználók nem fognak tudni hozzáférni a tartalmat az erőforrás-csoport áthelyezés idejére. 
+* Hozzon létre biztonsági másolatokat a fiókban lévő összes adattal, mielőtt másik előfizetésre migrál.
+* Le kell állítania az összes streaming-végpontot és az élő adatfolyam-továbbítási erőforrásokat. A felhasználók nem fognak tudni hozzáférni a tartalomhoz az erőforráscsoport áthelyezésének időtartama alatt. 
 
 > [!IMPORTANT]
-> Indul el a folyamatos átviteli végponton, amíg az áthelyezés sikeres végrehajtása után.
+> Ne indítsa el a folyamatos átviteli végpontot, amíg az áthelyezés sikeresen be nem fejeződik.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás 
 
-Ha a Media Services-fiók vagy egy társított Azure Storage-fiók "lecsatlakoznak" az erőforrás-csoport áthelyezése a következő, próbálja meg a Storage-fiók kulcsok. A Storage-fiók kulcsok nem oldja meg a Media Services-fiók "leválasztott" állapotát, ha a fájl egy új támogatási kérést a "Támogatás + hibaelhárítás" a Media Services-fiók menüjéből.  
+Ha egy Media Services fiók vagy egy társított Azure Storage-fiók "leválasztva" válik az erőforráscsoport áthelyezése után, próbálja meg elforgatni a Storage-fiók kulcsait. Ha a Storage-fiók kulcsainak elforgatása nem oldja meg a Media Services fiók "leválasztott" állapotát, a Media Services fiók "támogatás + hibaelhárítás" menüjéből új támogatási kérelmet kell benyújtani.  
  
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Fiók létrehozása](media-services-portal-create-account.md)

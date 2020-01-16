@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/22/2018
-ms.openlocfilehash: 05e87258576bceee2e1bbba7ec5ef6ea5ead4924
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7815a99d4521e6797b4095a38fcfce50ac29a2b8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75440259"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981192"
 ---
 # <a name="load-data-into-azure-sql-data-warehouse-by-using-azure-data-factory"></a>Betöltés az Azure SQL Data Warehouseba Azure Data Factory használatával
 
@@ -40,19 +40,19 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 * Azure-előfizetés: Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/) .
 * Azure SQL Data Warehouse: az adatraktár tartalmazza az SQL-adatbázisból másolt adatok tárolását. Ha nem rendelkezik Azure SQL Data Warehouseval, tekintse meg a [SQL Data Warehouse létrehozása](../sql-data-warehouse/sql-data-warehouse-get-started-tutorial.md)című témakör utasításait.
-* Azure SQL Database: ez az oktatóanyag az Azure SQL Database-ből származó adatok másolását végzi az Adventure Works LT mintaadatok alapján. SQL-adatbázis létrehozásához kövesse az [Azure SQL Database létrehozása](../sql-database/sql-database-get-started-portal.md)című témakör utasításait. 
-* Azure Storage-fiók: az Azure Storage a tömeges másolási művelet során _átmeneti_ blobként szolgál. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
+* Azure SQL Database: ez az oktatóanyag az Azure SQL Database-ből származó adatok másolását végzi az Adventure Works LT mintaadatok alapján. SQL-adatbázis létrehozásához kövesse az [Azure SQL Database létrehozása](../sql-database/sql-database-get-started-portal.md)című témakör utasításait.
+* Azure Storage-fiók: az Azure Storage a tömeges másolási művelet során _átmeneti_ blobként szolgál. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
 
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
-1. A bal oldali menüben válassza az **erőforrás létrehozása** > **adatok és Analitika** > **Data Factory**: 
-   
+1. A bal oldali menüben válassza az **erőforrás létrehozása** > **adatok és Analitika** > **Data Factory**:
+
    ![Data Factory kiválasztása az „Új” ablaktáblán](./media/quickstart-create-data-factory-portal/new-azure-data-factory-menu.png)
 
 2. Az **új adat-előállító** lapon adja meg az alábbi képen látható mezők értékét:
-      
+
    ![Új adat-előállító lap](./media/load-azure-sql-data-warehouse/new-azure-data-factory.png)
- 
+
     * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "az adatfeldolgozó neve \"LoadSQLDWDemo\" nem érhető el" hibaüzenet jelenik meg, adjon meg egy másik nevet az adatelőállító számára. Használhatja például a _**sajátneve**_ **ADFTutorialDataFactory**nevet. Próbálkozzon újra az adatelőállító létrehozásával. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából, vagy válassza az **új létrehozása** lehetőséget, és adja meg az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
@@ -61,7 +61,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható:
-   
+
    ![Data factory kezdőlap](./media/load-azure-sql-data-warehouse/data-factory-home-page.png)
 
    Az Adatintegráció alkalmazás külön lapon való elindításához kattintson a **Létrehozás és figyelés** csempére.
@@ -86,14 +86,14 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
     ![Azure SQL-adatbázis kiválasztása](./media/load-azure-sql-data-warehouse/select-azure-sql-db-source.png)
 
     c. Az **új társított szolgáltatás** oldalon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót. Kattintson a **Kapcsolat tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Befejezés** lehetőséget.
-   
+
     ![Azure SQL-adatbázis konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-db.png)
 
     d. Forrásnak válassza ki az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
     ![Forráshoz társított szolgáltatás kiválasztása](./media/load-azure-sql-data-warehouse/select-source-linked-service.png)
 
-1. A táblázatok **kiválasztásához, amelyből másolni kívánja az adatait, vagy használjon egyéni lekérdezési** oldalt, írja be a **SalesLT** a táblák szűréséhez. A másoláshoz használandó összes tábla használatához válassza az **összes kijelölése** lehetőséget, majd válassza a **Next (tovább**) gombot: 
+1. A táblázatok **kiválasztásához, amelyből másolni kívánja az adatait, vagy használjon egyéni lekérdezési** oldalt, írja be a **SalesLT** a táblák szűréséhez. A másoláshoz használandó összes tábla használatához válassza az **összes kijelölése** lehetőséget, majd válassza a **Next (tovább**) gombot:
 
     ![Forrástábla kiválasztása](./media/load-azure-sql-data-warehouse/select-source-tables.png)
 
@@ -108,14 +108,14 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
     ![Azure SQL DW kiválasztása](./media/load-azure-sql-data-warehouse/select-azure-sql-dw-sink.png)
 
     c. Az **új társított szolgáltatás** oldalon válassza ki a kiszolgáló nevét és az adatbázis nevét a legördülő listából, majd adja meg a felhasználónevet és a jelszót. Kattintson a **Kapcsolat tesztelése** elemre a beállítások ellenőrzéséhez, majd válassza a **Befejezés** lehetőséget.
-   
+
     ![Az Azure SQL DW konfigurálása](./media/load-azure-sql-data-warehouse/configure-azure-sql-dw.png)
 
     d. Válassza ki fogadóként az újonnan létrehozott társított szolgáltatást, majd kattintson a **Tovább** gombra.
 
     ![Fogadó társított szolgáltatás kiválasztása](./media/load-azure-sql-data-warehouse/select-sink-linked-service.png)
 
-1. A **tábla-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra**. Megjelenik egy intelligens táblázat-hozzárendelés. A forrástábla a táblák nevei alapján van leképezve a céltábla számára. Ha a forrás tábla nem létezik a célhelyen, Azure Data Factory alapértelmezés szerint ugyanazzal a névvel hozza létre a célhelyet. A forrástábla egy meglévő céltábla számára is képezhető le. 
+1. A **tábla-hozzárendelés** lapon tekintse át a tartalmat, és kattintson a **Tovább gombra**. Megjelenik egy intelligens táblázat-hozzárendelés. A forrástábla a táblák nevei alapján van leképezve a céltábla számára. Ha a forrás tábla nem létezik a célhelyen, Azure Data Factory alapértelmezés szerint ugyanazzal a névvel hozza létre a célhelyet. A forrástábla egy meglévő céltábla számára is képezhető le.
 
    > [!NOTE]
    > A SQL Data Warehouse fogadó automatikus táblájának létrehozása akkor érvényes, ha SQL Server vagy Azure SQL Database a forrás. Ha más forrás-adattárból másol be egy másikat, előbb létre kell hoznia a sémát a fogadó Azure SQL Data Warehouse az adatok másolásának végrehajtása előtt.
@@ -128,12 +128,12 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 1. A **Beállítások** lapon végezze el a következő lépéseket:
 
-    a. Az **előkészítési beállítások** szakaszban kattintson az **+ új** elemre az átmeneti tárolók új létrehozásához. A tárterület az adatok átmeneti tárolásához használatos, mielőtt a rendszer betölti a SQL Data Warehouset a Base használatával. A másolás befejezése után a rendszer automatikusan kitakarítja az Azure Storage-ban lévő ideiglenes adatkészletet. 
+    a. Az **előkészítési beállítások** szakaszban kattintson az **+ új** elemre az átmeneti tárolók új létrehozásához. A tárterület az adatok átmeneti tárolásához használatos, mielőtt a rendszer betölti a SQL Data Warehouset a Base használatával. A másolás befejezése után a rendszer automatikusan kitakarítja az Azure Storage-ban lévő ideiglenes adatkészletet.
 
     ![Átmeneti beállítás konfigurálása](./media/load-azure-sql-data-warehouse/configure-staging.png)
 
     b. Az **új társított szolgáltatás** oldalon válassza ki a Storage-fiókját, és kattintson a **Befejezés gombra**.
-   
+
     ![Az Azure Storage konfigurálása](./media/load-azure-sql-data-warehouse/configure-blob-storage.png)
 
     c. A **Speciális beállítások** szakaszban válassza a **típus alapértelmezett használata** lehetőséget, majd kattintson a **tovább**gombra.
@@ -146,10 +146,10 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 1. Az **üzembe helyezés lapon**válassza a **figyelő** lehetőséget a folyamat figyeléséhez (feladat):
 
     ![Üzembe helyezés lap](./media/load-azure-sql-data-warehouse/deployment-page.png)
-1. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop a tevékenység futtatási részleteinek megtekintésére és a folyamat újrafuttatására mutató hivatkozásokat tartalmaz: 
+1. Figyelje meg, hogy a bal oldalon található **Figyelés** lap automatikusan ki lesz választva. A **műveletek** oszlop a tevékenység futtatási részleteinek megtekintésére és a folyamat újrafuttatására mutató hivatkozásokat tartalmaz:
 
     ![Folyamatfuttatások monitorozása](./media/load-azure-sql-data-warehouse/pipeline-monitoring.png)
-1. Ha meg szeretné tekinteni a folyamat futtatásához társított tevékenység-futtatásokat, válassza a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozását. Ha vissza szeretne váltani a folyamat futási nézetére, válassza a felül található **folyamatok** hivatkozást. A lista frissítéséhez kattintson a **Frissítés** gombra. 
+1. Ha meg szeretné tekinteni a folyamat futtatásához társított tevékenység-futtatásokat, válassza a **műveletek** oszlop **Megtekintés tevékenység futtatása** hivatkozását. Ha vissza szeretne váltani a folyamat futási nézetére, válassza a felül található **folyamatok** hivatkozást. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
     ![Tevékenységfuttatások monitorozása](./media/load-azure-sql-data-warehouse/activity-monitoring.png)
 
@@ -159,7 +159,7 @@ Ez a cikk bemutatja, hogyan tölthetők be a Data Factory Adatok másolása eszk
 
 ## <a name="next-steps"></a>Következő lépések
 
-A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását: 
+A következő cikkből megismerheti a Azure SQL Data Warehouse támogatását:
 
 > [!div class="nextstepaction"]
 >[Azure SQL Data Warehouse-összekötő](connector-azure-sql-data-warehouse.md)

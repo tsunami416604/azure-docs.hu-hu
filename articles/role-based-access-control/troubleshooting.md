@@ -15,12 +15,12 @@ ms.date: 11/22/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: seohack1
-ms.openlocfilehash: 5429ebb611f852f7672d89de190ddd68dbcb01cf
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 67d624bb81105b8219030c57460b6d7bf7458671
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707780"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980994"
 ---
 # <a name="troubleshoot-rbac-for-azure-resources"></a>Azure-erőforrások RBAC kapcsolatos hibák
 
@@ -41,13 +41,13 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 
 ## <a name="recover-rbac-when-subscriptions-are-moved-across-tenants"></a>Az RBAC helyreállítása az előfizetések bérlők közötti áthelyezésekor
 
-- Ha egy előfizetés egy másik Azure AD-bérlőre való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)című témakört.
+- Ha egy előfizetés egy másik Azure AD-bérlőre való átvitelének lépéseire van szüksége, tekintse meg [Az Azure-előfizetés tulajdonjogának átruházása másik fiókra](../cost-management-billing/manage/billing-subscription-transfer.md)című témakört.
 - Amikor előfizetést helyez át egy másik Azure AD-bérlőre, az összes szerepkör-hozzárendelés véglegesen törlődik a forrásbérlőből, így nem lesz áttelepítve az Azure AD-célbérlőbe. A szerepkör-hozzárendeléseket újra létre kell hoznia a célbérlőben. Emellett manuálisan újra létre kell hoznia a felügyelt identitásokat az Azure-erőforrásokhoz. További információ: [Gyakori kérdések és ismert problémák a felügyelt identitásokkal](../active-directory/managed-identities-azure-resources/known-issues.md)kapcsolatban.
 - Ha Ön az Azure AD globális rendszergazdája, és a bérlők közötti áthelyezés után nem fér hozzá egy előfizetéshez, az Azure- **erőforrások hozzáférés-vezérlése** lehetőséggel ideiglenesen [emelheti](elevate-access-global-admin.md) ki a hozzáférést az előfizetéshez.
 
 ## <a name="issues-with-service-admins-or-co-admins"></a>Problémák a szolgáltatásadminisztrátorokkal vagy társadminisztrátorokkal
 
-- Ha a szolgáltatás-rendszergazdával vagy a társ-rendszergazdákkal kapcsolatos problémákat tapasztal, tekintse meg az [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../billing/billing-add-change-azure-subscription-administrator.md) , valamint [a klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure ad-rendszergazdai szerepkörök](rbac-and-directory-admin-roles.md)
+- Ha a szolgáltatás-rendszergazdával vagy a társ-rendszergazdákkal kapcsolatos problémákat tapasztal, tekintse meg az [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md) , valamint [a klasszikus előfizetés-rendszergazdai szerepkörök, az Azure RBAC szerepkörei és az Azure ad-rendszergazdai szerepkörök](rbac-and-directory-admin-roles.md)
 
 ## <a name="access-denied-or-permission-errors"></a>Hozzáférés megtagadva vagy engedélyekkel kapcsolatos hibák
 
@@ -56,7 +56,7 @@ Ez a cikk az Azure-erőforrások szerepköralapú hozzáférés-vezérlésével 
 
 ## <a name="role-assignments-with-unknown-security-principal"></a>Ismeretlen rendszerbiztonsági tag szerepkör-hozzárendelések
 
-Ha szerepkört rendel egy rendszerbiztonsági tag (felhasználó, csoport, egyszerű szolgáltatásnév vagy felügyelt identitás) számára, majd később törli a rendszerbiztonsági tag szerepkör-hozzárendelés eltávolítása nélkül, a szerepkör-hozzárendelés rendszerbiztonsági tag-típusa **ismeretlen**lesz. Az alábbi képernyőképen egy példa látható a Azure Portal. A rendszerbiztonsági tag neve az **Identity Deleted** néven szerepel, és az **identitás már nem létezik**. 
+Ha szerepkört rendel egy rendszerbiztonsági tag (felhasználó, csoport, egyszerű szolgáltatásnév vagy felügyelt identitás) számára, majd később törli a rendszerbiztonsági tag szerepkör-hozzárendelés eltávolítása nélkül, a szerepkör-hozzárendelés rendszerbiztonsági tag-típusa **ismeretlen**lesz. Az alábbi képernyőkép egy példát mutat be az Azure Portalon. A rendszerbiztonsági tag neve az **Identity Deleted** néven szerepel, és az **identitás már nem létezik**. 
 
 ![Webalkalmazás-erőforráscsoport](./media/troubleshooting/unknown-security-principal.png)
 
@@ -150,7 +150,7 @@ Ezeknek az elemeknek **írási** hozzáférésre van szükségük a webhelyet ta
 
 * SSL-tanúsítványok és-kötések (az SSL-tanúsítványok megoszthatók az azonos erőforráscsoporthoz és a földrajzi helyen található helyek között)  
 * Riasztási szabályok  
-* Az autoskálázás beállításai  
+* az autoskálázás beállításai  
 * Application bepillantások összetevői  
 * Webes tesztek  
 

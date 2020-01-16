@@ -1,6 +1,6 @@
 ---
 title: ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
-description: A ClearDB MySQL-adatbázisok Azure App Service-ben való használatával kapcsolatos gyakori kérdésekre adott válaszok.
+description: Válaszok a ClearDB MySQL-adatbázisok Azure App Service-vel való használatával kapcsolatos gyakori kérdésekre.
 documentationcenter: php
 services: mysql
 author: sunbuild
@@ -11,100 +11,100 @@ ms.topic: article
 ms.date: 10/27/2016
 ms.author: sumuth
 ROBOTS: NOINDEX,NOFOLLOW
-ms.openlocfilehash: 7b6d38f7755ebd97791959a5a414b09fe4ac769b
-ms.sourcegitcommit: dad277fbcfe0ed532b555298c9d6bc01fcaa94e2
+ms.openlocfilehash: ddbf1eb960a24cfaa8d09ab45b6febca07e6d504
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2019
-ms.locfileid: "67718012"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979915"
 ---
 # <a name="faq-for-cleardb-mysql-databases-with-azure-app-service"></a>ClearDB MySQL-adatbázisok használata az Azure App Service szolgáltatásban – gyakori kérdések
-Ez a GYIK használatával, és az Azure Web Appshez az adatbázisok a ClearDB MySQL vásárlásával kapcsolatos gyakori kérdésekre ad választ.
+Ez a gyakori kérdések az Azure Web Apps ClearDB MySQL-adatbázisainak használatával és megvásárlásával kapcsolatos gyakori kérdésekre adnak választ.
 
 > [!IMPORTANT]
-> 2018. június 13. a ClearDB továbbítjuk jelenleg a számlázás alapját a Microsoft a ClearDB közvetlen számlázási modellt az Azure-alapú ügyfelek. Ebben a cikkben található információk már elavult. Már nem sikerült létrehozni vagy frissíteni a ClearDB-adatbázis, amely az Azure-ban lett létrehozva.
+> 2018. június 13-án a ClearDB a Microsoft által jelenleg számlázott Azure-alapú ügyfeleket egy közvetlen számlázási modellel ClearDB. A cikkben szereplő információk elavultak. Az Azure-ban létrehozott ClearDB-adatbázis nem hozható létre vagy nem frissíthető.
 >
-> További részletek és a következő lépések: [átvált a ClearDB-service-csomagok](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
+> További részletek és további lépések: [a ClearDB-szolgáltatási csomagok módosításai](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/).
 
-## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Milyen lehetőségek vannak az Azure MySQL-hez?
-Lásd: [ClearDB](https://w2.cleardb.net/) a szolgáltatás a legfrissebb információkat. A ClearDB egy MySQL-üzemeltetési szolgáltatás, és a MySQL-infrastruktúrával kezeli az Ön számára. 
+## <a name="what-options-do-i-have-for-mysql-on-azure"></a>Milyen lehetőségeket használhatok a MySQL-hez az Azure-ban?
+A szolgáltatással kapcsolatos legfrissebb információkért tekintse meg a [ClearDB](https://w2.cleardb.net/) . A ClearDB egy MySQL üzemeltetési szolgáltatás, amely a MySQL-infrastruktúrát kezeli. 
 
-MySQL az Azure-beli üzemeltetéséhez szükséges néhány más lehetősége van:
+Több más lehetőség is van a MySQL Azure-beli üzemeltetéséhez:
 * [Azure Database for MySQL](https://azure.microsoft.com/services/mysql/)
-* [MySQL-fürt az Azure virtuális gépen](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
-* [MySQL-beli virtuális gépen futó egyetlen példánya](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
+* [Azure-beli virtuális gépen futó MySQL-fürt](https://github.com/azure/azure-quickstart-templates/tree/master/mysql-replication)
+* [Egy Azure-beli virtuális gépen futó önálló MySQL-példány](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)
 
 
-## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>A webalkalmazás és MySQL az Azure Marketplace-sablon esetében van szükségem hitelkártyával?
-Ez az előfizetés típusától függ. Íme néhány gyakran használt előfizetés típusa:
+## <a name="do-i-need-a-credit-card-for-the-web-app--mysql-template-in-the-azure-marketplace"></a>Szükségem van bankkártyára a Web App + MySQL-sablonhoz az Azure piactéren?
+Ez a használt előfizetés típusától függ. Íme néhány gyakran használt előfizetés típusa:
 
-* [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/): Egy hitelkártya és a megvásárolt díjat számítunk fel a megadott bankkártyára fizetős MySQL-adatbázis szükséges.
-* [Az ingyenes próbaidőszak](https://azure.microsoft.com/pricing/free-trial/): A Microsoft Azure-szolgáltatások segítségével kreditekre, de nem engedélyezi a külső erőforrások beszerzése. Vásárolja meg a harmadik féltől származó szolgáltatásokkal vagy egy fizetős MySQL-adatbázist kell hitelkártyát használnia engedélyezve van az előfizetésben. A Web Apps létrehozhat egy ingyenes a ClearDB MySQL-adatbázishoz.
-* [MSDN-nel](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és **MSDN Dev-Test használatalapú**: Ingyenes próbaverzió hasonlóan, MSDN-előfizetéssel, amelyekhez szükséges arra, hogy fizetős megoldás MySQL a ClearDB hitelkártya.
-* [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): Nagyvállalati szerződéssel rendelkező ügyfeleink a nagyvállalati szerződés terhére számítjuk fel az összes az Azure Marketplace-en (külső) vásárlások külön, összevont számlán negyedévente. A bármelyik piactéren történő vásárlások pénzügyi kötelezettségvállalást kívül számítjuk fel. Vegye figyelembe, hogy jelenleg Azure Store nem érhető el az ügyfelek számára a regisztrált Azerbajdzsán, Horvátország, Norvégia és Puerto Ricóban. 
+* [Fizetés menet](https://azure.microsoft.com/offers/ms-azr-0003p/)közben: hitelkártyát igényel, és fizetős MySQL-adatbázis vásárlása esetén bankkártyáját kell fizetni.
+* [Ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/): Microsoft Azure-szolgáltatásokkal való használatra szánt krediteket tartalmaz, de nem engedélyezi harmadik féltől származó erőforrások megvásárlását. Harmadik féltől származó szolgáltatások vagy fizetős MySQL-adatbázis vásárlásához bankkártya-kompatibilis előfizetést kell használnia. Web Apps létrehozhat egy ingyenes ClearDB MySQL-adatbázist.
+* Az MSDN- [előfizetés](https://azure.microsoft.com/pricing/member-offers/msdn-benefits/) és az **MSDN dev-teszt**díja: az ingyenes PRÓBAVERZIÓhoz hasonlóan az MSDN-előfizetés használatához bankkártyával kell rendelkeznie a fizetős MySQL-megoldás ClearDB való megvásárlásához.
+* [Nagyvállalati szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/): az nagyvállalati szerződéssel rendelkező ügyfeleket minden negyedévben az Azure Marketplace (harmadik féltől származó) vásárlások után külön, konszolidált számlán számoljuk el. A piactéren vásárolt vásárlásokra vonatkozó pénzügyi kötelezettségvállaláson kívüli díjat számítunk fel. Fontos megjegyezni, hogy jelenleg az Azure áruház nem érhető el az Azerbajdzsánban, Horvátországban, Norvégiában és Puerto Rico-ban regisztrált ügyfelek számára. 
 
-## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Miért érdemes fizetni egy webalkalmazás és MySQL az Azure Marketplace-ről a 3.50 $?
-Az alapértelmezett adatbázis-beállítás Titan $3.50. Hogy ne jelenjen meg a költségek az adatbázis létrehozása során, és előfordulhat, hogy véletlenül vásárol egy adatbázis nem szeretett volna. Szeretne megtalálni a élmény javításához, de addig gombra kattintás előtt kell jelölnie minden a kiválasztott tarifacsomag webalkalmazáshoz és adatbázishoz **létrehozás** és az erőforrások a telepítés elindítása.
+## <a name="why-was-i-charged-350-for-a-web-app--mysql-from-the-azure-marketplace"></a>Miért számolok fel $3,50-ra egy webalkalmazást és egy MySQL-t az Azure piactéren?
+Az alapértelmezett adatbázis-beállítás a Titan, amely $3,50. Az adatbázis létrehozása során nem mutatjuk be a költségeket, és előfordulhat, hogy véletlenül megvásárolta a nem kívánt adatbázist. Megpróbáljuk megkeresni a felhasználói élmény javítását, de addig is meg kell adnia a webalkalmazás és az adatbázis kiválasztott díjszabását, mielőtt a **create (létrehozás** ) gombra kattintana, és megkezdi az erőforrások üzembe helyezését.
 
-## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>MySQL futtatok saját Azure virtuális gépen. Csatlakozhatok az Azure webalkalmazás adatbázisom?
-Igen. Mindaddig, amíg az Azure virtuális gép távoli hozzáférést adott a webalkalmazásra a webalkalmazás képes kapcsolódni az adatbázishoz. További információkért lásd: [MySQL telepítése virtuális gépen](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
+## <a name="i-am-running-mysql-on-my-own-azure-virtual-machine-can-i-connect-my-azure-web-app-to-my-database"></a>A saját Azure-beli virtuális gépén futtatom a MySQL-t. Összekapcsolhatom az Azure-webalkalmazást az adatbázishoz?
+Igen. Ha az Azure-beli virtuális gép távelérést kap a webalkalmazáshoz, a webalkalmazást az adatbázishoz is összekapcsolhatjuk. További információ: a [MySQL telepítése virtuális gépre](virtual-machines/windows/classic/mysql-2008r2.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Országok/régiók, amelyben támogatja a prémium szintű MySQL a ClearDB-fürtök, amelyek?
-ClearDB MySQL-prémium fürtért az összes Azure-régiókban világszerte India, Ausztrália, Dél-Brazília és Kína kivételével.
+## <a name="in-which-countriesregions-are-cleardb-premium-mysql-clusters-supported"></a>Mely országokban/régiókban támogatott a prémium szintű MySQL-fürtök ClearDB?
+A ClearDB Premium MySQL-fürtök az összes Azure-régióban elérhetők világszerte, India, Ausztrália, Dél-Brazília és Kína kivételével.
 
-## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>A prémium szintű megoldást a ClearDB-adatbázis létrehozása előtt egy új fürtöt hozhat létre?
-Üres a ClearDB-fürtök létrehozása során nem, nem támogatott. Az Azure portal adatbázisok létrehozása egy fürtben, amely előfordulhat, hogy hozzon létre egy új fürtöt egyszerre teszi lehetővé.
+## <a name="can-i-create-a-new-cluster-prior-to-creating-a-database-with-cleardb-premium-cluster-solution"></a>Létrehozhatok új fürtöt a ClearDB Premium cluster megoldással rendelkező adatbázis létrehozása előtt?
+Nem, üres ClearDB-fürtök létrehozása nem támogatott. A Azure Portal lehetővé teszi adatbázisok létrehozását egy fürtben, amely egy új fürtöt is létrehozhat egyszerre.
 
-## <a name="will-i-be-warned-if-i-try-to-delete-a-cleardb-mysql-database-that-is-in-use-by-one-of-my-applications"></a>Tudom a rendszer figyelmezteti Ha meg törölni a ClearDB MySQL-adatbázis, amely használatban van egy másik alkalmazásom?
-Nem, az Azure nem figyelmezteti, ha törli a Marketplace-beli vásárlás, hogy az alkalmazása függ.
+## <a name="will-i-be-warned-if-i-try-to-delete-a-cleardb-mysql-database-that-is-in-use-by-one-of-my-applications"></a>Figyelmeztetni fogjuk, ha olyan ClearDB MySQL-adatbázist próbálok törölni, amelyet az egyik alkalmazásom használ?
+Nem, az Azure nem figyelmezteti, ha töröl egy piactér-vásárlást, amelytől az alkalmazás függ.
 
-## <a name="which-regions-can-i-create-cleardb-databases-in"></a>Mely régiók hozható létre a ClearDB-adatbázis?
-Az Azure Marketplace-en regisztrálva Azerbajdzsán, Horvátország, Norvégia és Puerto Rico az ügyfelek számára nem érhető el. A ClearDB nem érhető el ezekben a régiókban.
+## <a name="which-regions-can-i-create-cleardb-databases-in"></a>Mely régiókban hozhatók létre ClearDB-adatbázisok?
+Az Azure Marketplace nem érhető el az Azerbajdzsánban, Horvátországban, Norvégiában vagy Puerto Rico-ban regisztrált ügyfelek számára. A ClearDB nem érhető el ezekben a régiókban.
 
-## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>Milyen tarifacsomag kell választani egy éles webes alkalmazások és az adatbázis?
-Web Apps alapszintű vagy egy magasabb díjszabási csomagot használja. A ClearDB javasoljuk, hogy a Szaturnusz vagy a Jupiter tervet. Tekintse át a funkciók és korlátozások minden tarifacsomaghoz mindkét [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) és [ClearDB MySQL-adatbázisok](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/) , válassza ki azt, amelyik a legjobban az igényeinek.
+## <a name="what-pricing-tier-should-i-choose-for-a-production-web-app-and-database"></a>Milyen díjszabási szintet érdemes választani egy éles webalkalmazáshoz és adatbázishoz?
+A Web Apps alapszintű vagy magasabb díjszabási szintjét használhatja. A ClearDB esetében a Szaturnusz-vagy a Jupiter-csomagot ajánljuk. Tekintse át a [Web Apps](https://azure.microsoft.com/pricing/details/app-service/) és [ClearDB MySQL-adatbázisok](https://w2.cleardb.net/important-change-of-billing-notice-for-all-azure-cleardb-service-plans/) egyes díjszabási szintjeinek & korlátozásait, és válassza ki az igényeinek leginkább megfelelőt.
 
-## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>Hogyan frissíthetek ClearDB-adatbázis a csomag egy másikra?
-Az a [az Azure portal](https://portal.azure.com), megosztott üzemeltetési adatbázis a ClearDB vertikálisan felskálázhatja. Olvassa el ezt [cikk](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) további. Jelenleg nem támogatjuk frissítés ClearDB prémium fürtök az Azure Portalon.
+## <a name="how-do-i-upgrade-my-cleardb-database-from-one-plan-to-another"></a>Hogyan frissíteni a ClearDB-adatbázist az egyik csomagból a másikba?
+A [Azure Portal](https://portal.azure.com)egy megosztott ClearDB-adatbázis vertikális felskálázását teszi elérhetővé. További információért olvassa el ezt a [cikket](https://blogs.msdn.microsoft.com/appserviceteam/2016/10/06/upgrade-your-cleardb-mysql-database-in-azure-portal/) . Jelenleg nem támogatjuk a ClearDB Premium-fürtök frissítését a Azure Portal.
 
-## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nem látom a ClearDB-adatbázis Azure Portalon?
-A ClearDB-adatbázis a klasszikus hozta létre, ha nem lesz megtekinthető az adatbázis a [az Azure portal](https://portal.azure.com). Nincs nincs megkerülő ehhez a forgatókönyvhöz.
+## <a name="i-cant-see-my-cleardb-database-in-azure-portal"></a>Nem látom a ClearDB-adatbázist a Azure Portal?
+Ha a klasszikus ClearDB-adatbázist hozott létre, nem fogja tudni megtekinteni az adatbázist a [Azure Portalban](https://portal.azure.com). Ehhez a forgatókönyvhöz nem érhető el munka.
 
-## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Kihez fordulhatok támogatás, ha nem működik az adatbázis?
-Kapcsolattartó [ClearDB támogatási](https://www.cleardb.com/developers/help/support) kapcsolódó problémák adatbázisok mindegyike esetében. Készüljön fel szolgálnak az Azure-előfizetés adatait.
+## <a name="who-do-i-contact-for-support-when-my-database-is-down"></a>Kihez kell fordulni a támogatási szolgálatnál, ha az adatbázis leáll?
+Forduljon a [ClearDB támogatási szolgálatához](https://www.cleardb.com/developers/help/support) az adatbázissal kapcsolatos problémákkal kapcsolatban. Készüljön fel az Azure-előfizetési adatok megadására.
 
-## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>Létrehozhatok további felhasználók számára a ClearDB MySQL database megoldást?
-Nem. További felhasználók nem hozható létre, de további adatbázist a ClearDB-adatbázis fürtön is létrehozhat.  
+## <a name="can-i-create-additional-users-for-my-cleardb-mysql-database-cluster-solution"></a>Létrehozhatok további felhasználókat a ClearDB MySQL adatbázis-fürt megoldásához?
+Nem. Nem hozhat létre további felhasználókat, de további adatbázisokat is létrehozhat a ClearDB-adatbázis fürtjén.  
 
-## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>Alapszintű/Pro sorozat adatbázisok kell frissítése is helyben hasonló planetáris csomagok még ma a ClearDB-portálon?
-Igen, alapszintű sorozat adatbázisok is lehet frissíteni a helyben (alapszintű 60 alapszintű 500 keresztül). Haladó sorozat lehet helyben (és Pro 1000 Pro 125) kivételével Pro 60 frissítve. Pro 60 adatbázis frissítése jelenleg nem támogatott. 
+## <a name="can-basicpro-series-databases-be-upgraded-in-place-similar-to-planetary-plans-today-on-cleardb-portal"></a>Az alapszintű/Pro sorozatú adatbázisok helyben, hasonló módon frissíthetők a ClearDB-portálon?
+Igen, az alapszintű adatsorozat-adatbázisok helyben is frissíthetők (alapszintű 60 alapszintű 500-en keresztül). A Pro Series (Pro 125 – Pro 1000) a Pro 60 kivételével is frissíthető. Jelenleg nem támogatott a Pro 60-adatbázis frissítése. 
 
-## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Át tudom telepíteni az erőforrások egy előfizetésből egy másikba, ha nem a ClearDB MySQL-adatbázis települnek át is?
-Végrehajtásakor erőforrás-migrálás, előfizetések között bizonyos [korlátozások](azure-resource-manager/move-support-resources.md) vonatkoznak. A ClearDB MySQL-adatbázis egy külső szolgáltatás, és ezért nem települnek át az Azure-előfizetés áttelepítése során. Ha nem kezeli az Azure-erőforrások áttelepítése előtt a MySQL-adatbázis áttelepítése, a ClearDB MySQL-adatbázisok letiltható. Manuálisan át először adatbázisait, és hajtsa végre az Azure-előfizetés áttelepítése a webalkalmazás. 
+## <a name="when-i-migrate-my-resources-from-one-subscription-to-another-does-my-cleardb-mysql-database-get-migrated-as-well"></a>Ha egy előfizetésből egy másikba migrálom az erőforrásokat, a ClearDB MySQL-adatbázis is át lett telepítve?
+Ha erőforrás-áttelepítést hajt végre az előfizetések között, bizonyos [korlátozások](azure-resource-manager/management/move-support-resources.md) érvényesek. A ClearDB MySQL-adatbázis egy harmadik féltől származó szolgáltatás, ezért az Azure-előfizetés áttelepítése során nem lesz migrálva. Ha nem felügyeli a MySQL-adatbázis áttelepítését az Azure-erőforrások áttelepítése előtt, a ClearDB MySQL-adatbázisait le lehet tiltani. Először manuálisan telepítse át az adatbázisokat, majd hajtsa végre az Azure-előfizetés áttelepítését a webalkalmazáshoz. 
 
-## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>A költségkeret kattintsunk az előfizetéshez. Ha eltávolítottam a korlát, és az App Service-ben online állapotban, de az adatbázis nem érhető el. Hogyan engedélyezhetem újból a ClearDB-adatbázis?
-Kapcsolattartó [ClearDB támogatási](https://www.cleardb.com/developers/help/support) engedélyezheti újra az adatbázist. Adja meg azokat a saját Azure-előfizetés információkat és az adatbázis nevével.
+## <a name="i-hit-the-spending-limit-on-my-subscription-i-removed-the-limit-and-my-app-service-is-online-however-the-database-is-not-accessible-how-do-i-re-enable-the-cleardb-database"></a>Megütöttem az előfizetés költségkeretét. Eltávolítottam a korlátot, és a App Service online állapotú, de az adatbázis nem érhető el. Hogyan újra engedélyezni a ClearDB-adatbázist?
+Az adatbázis újbóli engedélyezéséhez forduljon a [ClearDB támogatási szolgálatához](https://www.cleardb.com/developers/help/support) . Adja meg az Azure-előfizetési adatokat és az adatbázis nevét.
 
-## <a name="can-i-transfer-a-cleardb-database-from-a-credit-card-subscription-to-an-ea-subscription"></a>Áthelyezhetők-e a ClearDB-adatbázis hitelkártya előfizetésből EA-előfizetéshez?
-Meglévő ClearDB-adatbázis használata a meglévő előfizetésekhez kapcsolódó hitelkártyát. A nagyvállalati szerződéses előfizetésében kell migrálnia az adatokat egy új adatbázisra használata:
+## <a name="can-i-transfer-a-cleardb-database-from-a-credit-card-subscription-to-an-ea-subscription"></a>Átvihetek egy ClearDB-adatbázist bankkártyás előfizetésből egy EA-előfizetésre?
+A meglévő ClearDB-adatbázisok a meglévő előfizetésekhez társított bankkártyát használják. Ha EA-előfizetést szeretne használni, az adatait át kell telepítenie egy új adatbázisba:
 
-* Vásároljon egy új, a nagyvállalati szerződéses előfizetésében a ClearDB-adatbázis.
-* Telepítse át az adatokat az új adatbázis.
-* Az alkalmazás használhatja az új adatbázis frissítéséhez.
-* Törölje a régi ClearDB-adatbázis.
+* Vásároljon egy új ClearDB-adatbázist az EA-előfizetésével.
+* Migrálja adatait az új adatbázisba.
+* Frissítse az alkalmazást az új adatbázis használatára.
+* Törölje a régi ClearDB-adatbázist.
 
-Hozzon létre egy új webalkalmazást a MySQL (ClearDB), vagy hozzon létre egy MySQL-adatbázis (ClearDB), ha úgy dönt, az előfizetés határozza meg, hogyan ki kell fizetnie a szolgáltatás. EA-előfizetéssel hogy nem blokkolja a beszerzés, a külső szolgáltatások, például a ClearDB az Azure Portalon. EA-előfizetések számlázása a pénzügyi kötelezettségvállalás kívül, és a negyedéves és utólag számítunk fel. A nagyvállalati szerződéssel rendelkező ügyfelek állítsa be a fizetési például hitelkártya bármely harmadik felek marketplace-szolgáltatások fizetnie kell.
+Amikor új webalkalmazást hoz létre a MySQL-sel (ClearDB), vagy létrehoz egy MySQL-adatbázist (ClearDB), a kiválasztott előfizetés határozza meg, hogy a szolgáltatásért milyen díjat kell fizetnie. EA-előfizetéssel nem tiltjuk le a harmadik féltől származó szolgáltatások, például a Azure Portal ClearDB beszerzését. Az EA-előfizetéseket a rendszer a pénzügyi kötelezettségvállaláson kívül számlázza, és negyedévente és utólag számlázza. Az EA-ügyfélnek olyan fizetési módot kell beállítania, mint például egy hitelkártyát, amelyet bármely harmadik féltől származó Piactéri szolgáltatásért fizetni kell.
 
-## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Hol tekinthetem meg egy nagyvállalati szerződéses előfizetésében a ClearDB-erőforrások díja?
-A közvetlen nagyvállalati szerződéssel rendelkező ügyfelek az Azure piactér-díjak láthatók a vállalati portál. Vegye figyelembe, hogy minden piactéren történő vásárlások és felhasználási kívül vállalt számlázása negyedévente és utólag számítunk fel. Nagyvállalati szerződéssel rendelkező ügyfelek közvetlenül a külső szolgáltatók kell fizetnem, és teheti meg fizetési módot, például a nagyvállalati szerződéssel rendelkező fiókkal bankkártya engedélyezésével.
+## <a name="where-can-i-see-the-charges-for-cleardb-resources-in-an-ea-subscription"></a>Hol tekinthetem meg a ClearDB-erőforrások díjait az EA-előfizetésekben?
+A közvetlen nagyvállalati szerződéssel rendelkező ügyfelek esetében az Azure Marketplace díjai láthatók a Enterprise Portal. Vegye figyelembe, hogy a piactéren beszerzett összes vásárlás és felhasználás a pénzügyi kötelezettségvállaláson kívül kerül kiszámlázásra, és negyedévente és utólag számlázunk. A nagyvállalati szerződéssel rendelkező ügyfeleknek közvetlenül kell fizetniük a harmadik féltől származó szolgáltatók számára, és ezt megtehetik, ha a fizetési módot, például bankkártyát a saját EA-fiókjával szeretné megtenni.
 
-Közvetett nagyvállalati szerződéssel rendelkező ügyfelek az Azure piactér-beli előfizetések találhatja meg a **előfizetések kezelése** a vállalati portál, de a díjszabás rejtett. Ügyfeleink forduljanak a LSP piactér-díjak tájékoztatást.
+A közvetett nagyvállalati szerződéssel rendelkező ügyfelek megtalálhatják az Azure Marketplace-előfizetéseit a Enterprise Portal- **Előfizetések kezelése** lapján, de a díjszabás rejtve. A Marketplace díjaival kapcsolatos információkért az ügyfeleknek licencmegoldás-szolgáltatójukhoz kell fordulniuk.
 
-Harmadik féltől származó szolgáltatásokkal az Azure Marketplace-en való hozzáférést az EA Azure regisztrációs rendszergazdák által kezelhető. Letilthatja, vagy újra engedélyezze a hozzáférést a 3. külső vásárlásokra a fiókok kezelése és az előfizetések a Store a fiókok szakaszában, a vállalati portálon.
+Az Azure Marketplace külső szolgáltatásokhoz való hozzáférését az EA Azure regisztrációs rendszergazdái kezelhetik. Letilthatja vagy újból engedélyezheti a külső vásárlásokhoz való hozzáférést a tárolóban a fiókok és előfizetések kezeléséhez a Enterprise Portal fiókok szakaszában.
 
-## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>Kihez fordulhatok kérdései vannak a ClearDB-services-számlámon kapcsolatos az EA-előfizetésemben?
-Kapcsolattartó [vállalati ügyfél-támogatási](https://aka.ms/AzureEntSupport) tartományállapot számlázás mellett az EA-regisztrációhoz. Az EA Portalon ügyfélszolgálathoz fog ad választ kérdésére, vagy a probléma megoldása érdekében.
+## <a name="who-do-i-contact-for-questions-about-my-bill-for-cleardb-services-in-my-ea-subscription"></a>Kivel tudok kapcsolatba lépni a ClearDB Services szolgáltatással kapcsolatos felmerülő kérdésekkel kapcsolatban az EA-előfizetésben?
+Vegye fel a kapcsolatot a [nagyvállalati ügyfélszolgálattal](https://aka.ms/AzureEntSupport) az EA-regisztráció keretében történő számlázás tekintetében. Az EA portál támogatási csapata válaszol a kérdésére, vagy segít megoldani a problémát.
 
 ## <a name="more-information"></a>További információ
-[Az Azure piactér – gyakori kérdések](https://azure.microsoft.com/marketplace/faq/)
+[Azure Marketplace – gyakori kérdések](https://azure.microsoft.com/marketplace/faq/)
 

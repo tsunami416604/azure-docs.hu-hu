@@ -14,24 +14,24 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: d92832d1eee995e8883dc6c8ed0f58c9755e40f8
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 74d10c8fbe2f82d6148f5e13cb57c46dd645f76f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058406"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979541"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>A példányok szintjének nyilvános IP-címe (klasszikus) – áttekintés
 A példányok szintjének nyilvános IP-címe (ILPIP) egy nyilvános IP-cím, amelyet közvetlenül hozzárendelhet egy virtuális géphez vagy Cloud Services szerepkör-példányhoz, nem pedig ahhoz a felhőalapú szolgáltatáshoz, amelyet a virtuális gép vagy a szerepkör példánya tárol. A ILPIP nem helyezi el a felhőalapú szolgáltatáshoz hozzárendelt virtuális IP-címet (VIP). Ehelyett egy további IP-cím is használható, amellyel közvetlenül csatlakozhat a virtuális géphez vagy a szerepkör-példányhoz.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához:  [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft az erőforrás-kezelőn keresztül javasolja a virtuális gépek létrehozását. Győződjön meg arról, hogy az [IP-címek](virtual-network-ip-addresses-overview-classic.md) hogyan működnek az Azure-ban.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft az erőforrás-kezelőn keresztül javasolja a virtuális gépek létrehozását. Győződjön meg arról, hogy az [IP-címek](virtual-network-ip-addresses-overview-classic.md) hogyan működnek az Azure-ban.
 
 ![Különbség a ILPIP és a VIP között](./media/virtual-networks-instance-level-public-ip/Figure1.png)
 
-Ahogy az 1. ábrán is látható, a Cloud Service-t VIP-kapcsolaton keresztül érheti el, míg az egyes virtuális gépeket általában&gt;a VIP:&lt;portszám használatával érik el. Egy ILPIP egy adott virtuális géphez való hozzárendelésével a virtuális gép közvetlenül az adott IP-cím használatával érhető el.
+Ahogy az 1. ábrán is látható, a Cloud Service-t VIP-kapcsolaton keresztül érheti el, míg az egyes virtuális gépek általában a VIP használatával érhetők el:&lt;portszám&gt;. Egy ILPIP egy adott virtuális géphez való hozzárendelésével a virtuális gép közvetlenül az adott IP-cím használatával érhető el.
 
-Amikor létrehoz egy felhőalapú szolgáltatást az Azure-ban, a rendszer automatikusan létrehozza a megfelelő DNS-rekordokat, hogy lehetővé tegye a hozzáférést a szolgáltatáshoz egy teljes tartománynév (FQDN) használatával, a tényleges VIP használata helyett. Ugyanez a folyamat történik egy ILPIP, amely lehetővé teszi a virtuális gép vagy szerepkör-példány hozzáférését a ILPIP helyett a teljes tartománynévvel. Ha például létrehoz egy *contosoadservice*nevű Cloud Service-t, és két példánnyal konfigurálja a *contosoweb* nevű webes szerepkört, és a. cscfg `domainNameLabel` értéke *WebPublicIP*, az Azure regisztrálja az alábbi rekordokat a esetben
+Amikor létrehoz egy felhőalapú szolgáltatást az Azure-ban, a rendszer automatikusan létrehozza a megfelelő DNS-rekordokat, hogy lehetővé tegye a hozzáférést a szolgáltatáshoz egy teljes tartománynév (FQDN) használatával, a tényleges VIP használata helyett. Ugyanez a folyamat történik egy ILPIP, amely lehetővé teszi a virtuális gép vagy szerepkör-példány hozzáférését a ILPIP helyett a teljes tartománynévvel. Ha például létrehoz egy *contosoadservice*nevű Cloud Service-t, és két példánnyal konfigurálja a *contosoweb* nevű webes szerepkört, a. Cscfg `domainNameLabel` pedig a *WebPublicIP*értékre van állítva, az Azure regisztrálja az alábbi rekordokat a példányokhoz:
 
 
 * WebPublicIP.0.contosoadservice.cloudapp.net
@@ -45,7 +45,7 @@ Amikor létrehoz egy felhőalapú szolgáltatást az Azure-ban, a rendszer autom
 > 
 
 ## <a name="why-would-i-request-an-ilpip"></a>Miért igényelhetek ILPIP?
-Ha szeretne csatlakozni a virtuális géphez vagy a szerepkör-példányhoz egy közvetlenül hozzárendelt IP-címmel, ahelyett, hogy a Cloud Service VIP:&lt;&gt;portszámot használja, kérjen egy ILPIP a virtuális géphez vagy a szerepkör-példányhoz.
+Ha szeretne csatlakozni a virtuális géphez vagy a szerepkör-példányhoz egy közvetlenül hozzárendelt IP-cím helyett, nem pedig a Cloud Service VIP:&lt;portszámot&gt;, kérjen egy ILPIP a virtuális géphez vagy a szerepkör-példányhoz.
 
 * **Aktív FTP** – egy ILPIP egy virtuális géphez rendelésével bármilyen porton fogadhat forgalmat. Nem szükségesek végpontok ahhoz, hogy a virtuális gép fogadja a forgalmat.  Az FTP protokollról az FTP [protokoll áttekintése](https://en.wikipedia.org/wiki/File_Transfer_Protocol#Protocol_overview) című témakörben talál további információt.
 * A virtuális gépről származó **kimenő IP** -kimenő forgalom a forrásként van leképezve a ILPIP, és a ILPIP egyedileg azonosítja a virtuális gépet külső entitásoknak.
@@ -140,7 +140,7 @@ Get-AzureVM -ServiceName FTPService -Name FTPInstance | Set-AzurePublicIP -Publi
 Ha ILPIP szeretne hozzáadni egy Cloud Services szerepkör-példányhoz, hajtsa végre a következő lépéseket:
 
 1. Töltse le a. cscfg fájlt a Cloud Service-hez a [Cloud Services konfigurálása](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) című cikkben ismertetett lépések végrehajtásával.
-2. Frissítse a. cscfg fájlt az `InstanceAddress` elem hozzáadásával. Az alábbi minta egy *MyPublicIP* nevű ILPIP hoz létre egy *webrole1 webes*nevű szerepkör-példányhoz: 
+2. Frissítse a. cscfg fájlt úgy, hogy hozzáadja a `InstanceAddress` elemet. Az alábbi minta egy *MyPublicIP* nevű ILPIP hoz létre egy *webrole1 webes*nevű szerepkör-példányhoz: 
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>
@@ -176,12 +176,12 @@ $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
 
-Az altartomány rekordjának lekérdezéséhez is használhatja `nslookup` a következőt:
+Az altartomány egy rekordjának lekérdezéséhez `nslookup` is használhatja:
 
 ```batch
 nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
 ``` 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Ismerje meg, hogyan működik az [IP-címzés](virtual-network-ip-addresses-overview-classic.md) a klasszikus üzemi modellben.
 * További információ a [fenntartott IP](virtual-networks-reserved-public-ip.md)-címekről.

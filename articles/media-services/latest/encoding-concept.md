@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 09/10/2019
 ms.author: juliako
 ms.custom: seodec18
-ms.openlocfilehash: e9a0a8c8709e41bb7778878f76024263cdc32481
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 6a134d2bdfe7f370503b80703933ff646970d976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896088"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981100"
 ---
 # <a name="encoding-video-and-audio-with-media-services"></a>Videó és hang kódolása Media Services
 
-A Media Services kódolása a digitális videót és/vagy hangot tartalmazó fájlok egyik standard formátumból egy másikba való konvertálásának folyamatára vonatkozik, amelynek célja, hogy (a) csökkentse a fájlok méretét, és/vagy (b) olyan formátumot hozzon létre, amely kompatibilis a következővel: eszközök és alkalmazások széles köre. Ezt a folyamatot a videó tömörítésének vagy az átkódolásnak is nevezzük. Tekintse meg az [adattömörítést](https://en.wikipedia.org/wiki/Data_compression) és a [Mi a kódolás és az átkódolás?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) című témakört a fogalmak további megvitatására.
+A Media Services kódolása a digitális videót és/vagy hangot tartalmazó fájlok egyik standard formátumból egy másikba való konvertálásának folyamatára vonatkozik, amelynek célja, hogy (a) csökkentse a fájlok méretét, és/vagy (b) olyan formátumot hozzon létre, amely kompatibilis az eszközök és alkalmazások széles körével. Ezt a folyamatot a videó tömörítésének vagy az átkódolásnak is nevezzük. Tekintse meg az [adattömörítést](https://en.wikipedia.org/wiki/Data_compression) és a [Mi a kódolás és az átkódolás?](https://www.streamingmedia.com/Articles/Editorial/What-Is-/What-Is-Encoding-and-Transcoding-75025.aspx) című témakört a fogalmak további megvitatására.
 
 A videók általában [progresszív letöltéssel](https://en.wikipedia.org/wiki/Progressive_download) vagy [adaptív sávszélességű adatfolyam](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)használatával érkeznek meg az eszközökre és alkalmazásokra.
 
@@ -95,7 +95,7 @@ A következő beállításkészletek jelenleg támogatottak:
 
 - **EncoderNamedPreset. AACGoodQualityAudio**: egyetlen MP4-fájlt hoz létre, amely kizárólag 192 kbps-nál kódolt sztereó hanganyagot tartalmaz.
 - **EncoderNamedPreset. AdaptiveStreaming** (ajánlott): további információért lásd a [bitráta-létrák automatikus generálását](autogen-bitrate-ladder.md)ismertető témakört.
-- **EncoderNamedPreset. ContentAwareEncodingExperimental**: egy kísérleti beállításkészletet tesz elérhetővé a Content-Aware kódoláshoz. A szolgáltatás bármilyen bemeneti tartalmat megpróbál automatikusan meghatározni a rétegek optimális számának meghatározására, valamint a megfelelő bitrátát és feloldási beállításokat az adaptív adatfolyam-továbbítással. Az alapul szolgáló algoritmusok az idő múlásával továbbra is fejlődnek lesznek. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [kísérleti beállításkészlet a Content-Aware kódoláshoz](cae-experimental.md).
+- **EncoderNamedPreset. ContentAwareEncodingExperimental**: egy kísérleti beállításkészletet tesz elérhetővé a Content-Aware kódoláshoz. A szolgáltatás bármilyen bemeneti tartalmat megpróbál automatikusan meghatározni a rétegek optimális számának meghatározására, valamint a megfelelő bitrátát és feloldási beállításokat az adaptív adatfolyam-továbbítással. Az alapul szolgáló algoritmusok az idő múlásával továbbra is fejlődnek lesznek. A kimenet video-és hangalapú MP4-fájlokat fog tartalmazni. További információ: [kísérleti beállításkészlet a Content-Aware kódoláshoz](content-aware-encoding.md).
 - **EncoderNamedPreset. H264MultipleBitrate1080p**: nyolc GOP-igazítású MP4-fájlt állít elő, amely 6000 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A felbontás 1080p-kor kezdődik, és a 360p.
 - **EncoderNamedPreset. H264MultipleBitrate720p**: hat GOP-igazítású MP4-fájlt állít elő, amely 3400 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás 720p-kor kezdődik, és a 360p-re mutat.
 - **EncoderNamedPreset. H264MultipleBitrateSD**: öt GOP-igazítású MP4-fájlt állít elő, amely 1600 kbps-ról 400 kbps-ra, valamint sztereó AAC hangra mutat. A megoldás a 480p-on kezdődik, és a 360p-re mutat.

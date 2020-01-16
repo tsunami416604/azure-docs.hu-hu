@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 421604bcec5277d337b7e7f73a869f40fa73158a
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: fb0a71a650a8c36d4da962adaf3f1f314c30d4c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74764967"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980007"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Biztonság az Azure Database for MySQL-ben
 
@@ -37,6 +37,8 @@ Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítan
 ### <a name="virtual-network-firewall-rules"></a>Virtuális hálózat tűzfalszabályai
 A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for MySQL-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-and-security-vnet.md)című témakörben talál.
 
+### <a name="private-ip"></a>Magánhálózati IP-cím
+A privát hivatkozás lehetővé teszi, hogy privát végponton keresztül kapcsolódjon az Azure-Azure Database for MySQLhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A Péter-erőforrások a magánhálózati IP-cím használatával ugyanúgy érhetők el, mint a VNet lévő többi erőforráshoz. További információt a [privát hivatkozások áttekintése](concepts-data-access-security-private-link.md) című témakörben talál.
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 

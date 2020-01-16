@@ -8,12 +8,12 @@ author: bwren
 ms.author: bwren
 ms.date: 03/20/2017
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8c08dc5091e7ab0eec5d4e6dd455e6adb3caa35f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5465c177cf174ebf8d6b7d4f43c5387bce3adb70
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402047"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969700"
 ---
 # <a name="design-and-build-a-management-solution-in-azure-preview"></a>Felügyeleti megoldás kialakítása és létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
@@ -23,7 +23,7 @@ A [felügyeleti megoldások]( solutions.md) olyan csomagolt felügyeleti forgat�
 
 ## <a name="what-is-a-management-solution"></a>Mi az a felügyeleti megoldás?
 
-A felügyeleti megoldások olyan Azure-erőforrásokat tartalmaznak, amelyek együttműködve egy adott felügyeleti forgatókönyv megvalósítására használhatók.  Olyan [erőforrás-kezelési sablonokként](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md) valósulnak meg, amelyek részletesen ismertetik, hogyan kell telepíteni és konfigurálni a tartalmazott erőforrásokat a megoldás telepítésekor.
+A felügyeleti megoldások olyan Azure-erőforrásokat tartalmaznak, amelyek együttműködve egy adott felügyeleti forgatókönyv megvalósítására használhatók.  Olyan [erőforrás-kezelési sablonokként](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md) valósulnak meg, amelyek részletesen ismertetik, hogyan kell telepíteni és konfigurálni a tartalmazott erőforrásokat a megoldás telepítésekor.
 
 Az alapszintű stratégia a felügyeleti megoldás elindítása az Azure-környezet egyes összetevőinek létrehozásával.  A funkciók megfelelő működésének megkezdése után megkezdheti a csomagolást egy [felügyeleti megoldás fájljába]( solutions-solution-file.md). 
 
@@ -64,7 +64,7 @@ Miután konfigurálta és tesztelte a megoldás részét képező összetevőket
 
 
 ## <a name="test-your-solution"></a>A megoldás tesztelése
-A megoldás fejlesztése során telepítenie és tesztelni kell a munkaterületen.  Ezt bármely elérhető módszer használatával végezheti el a [Resource Manager-sablonok teszteléséhez és telepítéséhez](../../azure-resource-manager/resource-group-template-deploy.md).
+A megoldás fejlesztése során telepítenie és tesztelni kell a munkaterületen.  Ezt bármely elérhető módszer használatával végezheti el a [Resource Manager-sablonok teszteléséhez és telepítéséhez](../../azure-resource-manager/templates/deploy-powershell.md).
 
 ## <a name="publish-your-solution"></a>A megoldás közzététele
 Miután elvégezte és tesztelte a megoldást, az alábbi forrásokon keresztül elérhetővé teheti az ügyfelek számára.

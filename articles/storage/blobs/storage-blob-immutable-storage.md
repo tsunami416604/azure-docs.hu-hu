@@ -9,12 +9,12 @@ ms.date: 11/18/2019
 ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
-ms.openlocfilehash: a8c19a8e88ec7fe2002a327c7e4a57874a753b9f
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: b8b5de910195b14c279fe395cc35c12768536728
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921238"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981837"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
 
@@ -156,7 +156,7 @@ A tároló törlése művelet sikertelen lesz, ha legalább egy blob létezik a 
 
 **Mi történik, ha olyan tárolóval próbálok törölni egy Storage-fiókot, amely időalapú adatmegőrzési szabályzattal vagy jogi megtartással rendelkezik?**
 
-A Storage-fiók törlése sikertelen lesz, ha van legalább egy olyan tároló, amely rendelkezik egy jogszabályi készlettel vagy egy **zárolt** időalapú házirenddel. A zárolt időalapú házirenddel rendelkező tárolók nem védik a Storage-fiókok törlését. A Storage-fiók törlése előtt el kell távolítania az összes jogi birtokot, és törölnie kell az összes **zárolt** tárolót. További információ a tárolók törléséről: előző kérdés. A Storage-fiókra vonatkozóan további törlési védelmet is alkalmazhat [Azure Resource Manager zárolásokkal](../../azure-resource-manager/resource-group-lock-resources.md).
+A Storage-fiók törlése sikertelen lesz, ha van legalább egy olyan tároló, amely rendelkezik egy jogszabályi készlettel vagy egy **zárolt** időalapú házirenddel. A zárolt időalapú házirenddel rendelkező tárolók nem védik a Storage-fiókok törlését. A Storage-fiók törlése előtt el kell távolítania az összes jogi birtokot, és törölnie kell az összes **zárolt** tárolót. További információ a tárolók törléséről: előző kérdés. A Storage-fiókra vonatkozóan további törlési védelmet is alkalmazhat [Azure Resource Manager zárolásokkal](../../azure-resource-manager/management/lock-resources.md).
 
 **Áthelyezhetem az adatok között különböző blob-rétegeket (gyakori, ritka, archív), ha a blob nem módosítható állapotban van?**
 
@@ -179,4 +179,4 @@ Igen, ha a megfelelőségi követelmények lehetővé teszik a Soft delete enged
 - [BLOB Storage-módosíthatatlansági szabályzatok beállítása és kezelése](storage-blob-immutability-policies-manage.md)
 - [Szabályok beállítása a blob-adatkészletek automatikus előállításához és törléséhez az életciklus-kezeléssel](storage-lifecycle-management-concepts.md)
 - [Az Azure Storage-blobok helyreállítható törlése](../blobs/storage-blob-soft-delete.md)
-- [Az előfizetések, erőforráscsoportok és erőforrások Azure Resource Manager zárolásokkal való](../../azure-resource-manager/resource-group-lock-resources.md)ellátása.
+- [Az előfizetések, erőforráscsoportok és erőforrások Azure Resource Manager zárolásokkal való](../../azure-resource-manager/management/lock-resources.md)ellátása.

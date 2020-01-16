@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2016
 ms.author: allensu
-ms.openlocfilehash: 0dd57bb30a993baadac41552669a629aaaaff6df
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4c682749de0be6329a254bda25a32954dd44e6db
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74210958"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978713"
 ---
 # <a name="create-dns-zones-and-record-sets-using-the-net-sdk"></a>DNS-zónák és-rekordhalmazok létrehozása a .NET SDK használatával
 
@@ -30,7 +30,7 @@ A DNS-zónák,-rekordhalmazok és-rekordok létrehozásához, törléséhez vagy
 Az Azure-erőforrásokhoz való programozott hozzáférést általában a saját felhasználói hitelesítő adatai helyett egy dedikált fiókon keresztül biztosítjuk. Ezeket a dedikált fiókokat "egyszerű szolgáltatásnév" fiókoknak nevezzük. Az Azure DNS SDK-minta projekt használatához először létre kell hoznia egy egyszerű szolgáltatásnevet, és hozzá kell rendelnie a megfelelő engedélyeket.
 
 1. Az [alábbi útmutatást](../active-directory/develop/howto-authenticate-service-principal-powershell.md) követve hozzon létre egy egyszerű szolgáltatásnevet (a Azure DNS SDK Sample Project jelszó alapú hitelesítést feltételez.)
-2. Hozzon létre egy erőforráscsoportot (a[következőképpen](../azure-resource-manager/resource-group-template-deploy-portal.md)).
+2. Hozzon létre egy erőforráscsoportot (a[következőképpen](../azure-resource-manager/templates/deploy-portal.md)).
 3. Az Azure RBAC használatával adja meg a "DNS-zóna közreműködői" jogosultságokat az erőforráscsoporthoz (a következő[módon](../role-based-access-control/role-assignments-portal.md):.)
 4. Ha a Azure DNS SDK-minta projektet használja, szerkessze a "program. cs" fájlt a következőképpen:
 

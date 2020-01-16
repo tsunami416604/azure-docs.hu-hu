@@ -13,19 +13,19 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/23/2018
 ms.author: memildin
-ms.openlocfilehash: 45b7b419277d338d70cf285838103f97d4eb5c3a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 6edea1d0de53e2dc9f764de26209dc1f3110556e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749662"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978606"
 ---
 # <a name="manage-user-data-in-azure-security-center"></a>Felhasználói adatkezelés Azure Security Center
 Ez a cikk azt ismerteti, hogyan kezelheti a felhasználói adatokat Azure Security Centerban. A felhasználói adatkezelési funkció magában foglalja az adatelérését, törlését és exportálását.
 
 [!INCLUDE [gdpr-intro-sentence.md](../../includes/gdpr-intro-sentence.md)]
 
-Az olvasó, a tulajdonos, a közreműködő vagy a fiók rendszergazdája által hozzárendelt Security Center felhasználó az eszközön belül férhet hozzá az ügyféladatok eléréséhez. A fiók-rendszergazdai szerepkörrel kapcsolatos további tudnivalókért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörei](../role-based-access-control/built-in-roles.md) című témakört, amely további információkat nyújt az olvasóról, a tulajdonosról és a közreműködő szerepkörökről. Lásd: [Azure-előfizetés rendszergazdái](../billing/billing-add-change-azure-subscription-administrator.md).
+Az olvasó, a tulajdonos, a közreműködő vagy a fiók rendszergazdája által hozzárendelt Security Center felhasználó az eszközön belül férhet hozzá az ügyféladatok eléréséhez. A fiók-rendszergazdai szerepkörrel kapcsolatos további tudnivalókért tekintse meg az [Azure szerepköralapú hozzáférés-vezérlés beépített szerepkörei](../role-based-access-control/built-in-roles.md) című témakört, amely további információkat nyújt az olvasóról, a tulajdonosról és a közreműködő szerepkörökről. Lásd: [Azure-előfizetés rendszergazdái](../cost-management-billing/manage/add-change-subscription-administrator.md).
 
 ## <a name="searching-for-and-identifying-personal-data"></a>Személyes adatok keresése és azonosítása
 A Security Center felhasználók a Azure Portal keresztül tekinthetik meg a személyes adatfájljaikat. Security Center csak a biztonsági kapcsolattartási adatokat, például az e-mail-címeket és a telefonszámokat tárolja. További információ: [a biztonsági kapcsolattartási adatok megadása a Azure Security Centerban](security-center-provide-security-contact-details.md).

@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 12/30/2019
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 823a25f388860fa55962a717b9dfed22f5d9c103
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0d39c83646357cf9426239d28e445c4791ddceb0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770516"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981694"
 ---
 # <a name="deploy-to-azure-container-instances-from-azure-container-registry"></a>Üzembe helyezés a Azure Container Instances Azure Container Registry
 
@@ -136,7 +136,7 @@ A Azure Resource Manager-sablonban megadhatja az Azure Container Registry tulajd
 
 A tárolók csoportjának teljes beállításaival kapcsolatban tekintse meg a [Resource Manager-sablonok referenciáját](/azure/templates/Microsoft.ContainerInstance/2018-10-01/containerGroups).    
 
-Egy Resource Manager-sablon Azure Key Vault titkaira hivatkozó részletekért lásd: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/resource-manager-keyvault-parameter.md)átadására az üzembe helyezés során.
+Egy Resource Manager-sablon Azure Key Vault titkaira hivatkozó részletekért lásd: a [Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)átadására az üzembe helyezés során.
 
 ## <a name="deploy-with-azure-portal"></a>Üzembe helyezés Azure Portal
 

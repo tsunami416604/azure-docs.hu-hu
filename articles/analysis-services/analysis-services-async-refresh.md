@@ -4,15 +4,15 @@ description: Ismerteti, hogyan használható a Azure Analysis Services REST API 
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/28/2019
+ms.date: 01/14/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 7c6fba10264939335cdef26f288973f8217f340b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 2281f9d493edf955881772ec174c82b527f1b6fa
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573394"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029874"
 ---
 # <a name="asynchronous-refresh-with-the-rest-api"></a>Aszinkron frissítés a REST API-val
 
@@ -22,7 +22,7 @@ Az adatfrissítési műveletek több tényezőt is igénybe vehetnek, többek k�
 
 A Azure Analysis Services REST API lehetővé teszi, hogy az adatfrissítési műveletek aszinkron módon legyenek végrehajtva. A REST API használatával nem szükséges az ügyfélalkalmazások hosszú ideig futó HTTP-kapcsolatainak használata. Más beépített funkciók is léteznek a megbízhatósághoz, például automatikus újrapróbálkozások és kötegelt véglegesítés.
 
-## <a name="base-url"></a>Alap URL-cím
+## <a name="base-url"></a>Kiindulási URL-cím
 
 Az alap URL-cím a következő formátumot követi:
 
@@ -30,7 +30,7 @@ Az alap URL-cím a következő formátumot követi:
 https://<rollout>.asazure.windows.net/servers/<serverName>/models/<resource>/
 ```
 
-Vegyünk például egy AdventureWorks nevű modellt egy MyServer nevű kiszolgálón, amely az USA nyugati régiója Azure-régióban található. A kiszolgáló neve:
+Vegyünk például egy AdventureWorks nevű modellt egy `myserver`nevű kiszolgálón, amely az USA nyugati régiója Azure-régióban található. A kiszolgáló neve:
 
 ```
 asazure://westus.asazure.windows.net/myserver 
@@ -56,7 +56,7 @@ Használhatja például a frissítések gyűjtemény utáni műveletét a friss�
 https://westus.asazure.windows.net/servers/myserver/models/AdventureWorks/refreshes
 ```
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 Minden hívást az engedélyezési fejlécben érvényes Azure Active Directory (OAuth 2) jogkivonattal kell hitelesíteni, és meg kell felelnie az alábbi követelményeknek:
 
@@ -97,7 +97,7 @@ A törzs a következőhöz hasonló lehet:
 
 Paraméterek megadása nem kötelező. A rendszer az alapértelmezett értéket alkalmazza.
 
-| Name (Név)             | Típus  | Leírás  |Alapértelmezett  |
+| Név             | Type (Típus)  | Leírás  |Alapértelmezett  |
 |------------------|-------|--------------|---------|
 | `Type`           | Felsorolás  | A végrehajtandó feldolgozás típusa. A típusok összhangban vannak a TMSL [frissítési parancs](https://docs.microsoft.com/bi-reference/tmsl/refresh-command-tmsl) típusával: Full, clearValues, számítsuk, dataOnly, Automatic és defragment. A Hozzáadás típusa nem támogatott.      |   automatikus      |
 | `CommitMode`     | Felsorolás  | Meghatározza, hogy az objektumok kötegekben lesznek-e véglegesítve, vagy csak akkor, ha a művelet befejeződött. A módok a következők: alapértelmezett, tranzakciós, partialBatch.  |  tranzakciós       |
@@ -110,9 +110,20 @@ A CommitMode egyenlő a partialBatch. Ez akkor használatos, ha olyan nagyméret
 > [!NOTE]
 > Az írás időpontjában a köteg mérete a MaxParallelism érték, de ez az érték változhat.
 
-## <a name="get-refreshesrefreshid"></a>GET /refreshes/\<refreshId>
+### <a name="status-values"></a>Állapotüzenetek
 
-A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban **van, a rendszer az** állapotot adja vissza.
+|Állapotérték  |Leírás  |
+|---------|---------|
+|`notStarted`    |   A művelet még nincs elindítva.      |
+|`inProgress`     |   A művelet folyamatban van.      |
+|`timedOut`     |    A művelet túllépte az időkorlátot a felhasználó által megadott időtúllépés alapján.     |
+|`cancelled`     |   A műveletet a felhasználó vagy a rendszer megszakította.      |
+|`failed`     |   A művelet sikertelen volt.      |
+|`succeeded`      |   A művelet sikeresen befejeződött.      |
+
+## <a name="get-refreshesrefreshid"></a>/Refreshes/beolvasása\<refreshId >
+
+A frissítési művelet állapotának megtekintéséhez használja a GET műveletet a frissítési AZONOSÍTÓban. Íme egy példa a válasz törzsére. Ha a művelet folyamatban van, `inProgress` a visszaadott állapotba kerül.
 
 ```
 {
@@ -136,7 +147,7 @@ A frissítési művelet állapotának megtekintéséhez használja a GET művele
 }
 ```
 
-## <a name="get-refreshes"></a>GET /refreshes
+## <a name="get-refreshes"></a>/Refreshes beolvasása
 
 A modell korábbi frissítési műveleteinek listájának lekéréséhez használja a GET műveletet a/refreshes gyűjteményben. Íme egy példa a válasz törzsére. 
 
@@ -164,7 +175,7 @@ A modell korábbi frissítési műveleteinek listájának lekéréséhez haszná
 
 A folyamatban lévő frissítési művelet megszakításához használja a frissítési AZONOSÍTÓban a DELETE műveletet.
 
-## <a name="post-sync"></a>POST /sync
+## <a name="post-sync"></a>/Sync közzététele
 
 A frissítési műveletek végrehajtásakor szükség lehet az új adatok szinkronizálására a lekérdezési felskálázáshoz szükséges replikákkal. Egy modell szinkronizálási műveletének végrehajtásához használja a POST műveletet a/Sync függvényben. A válaszban található Location fejléc tartalmazza a szinkronizálási művelet AZONOSÍTÓját.
 
@@ -202,7 +213,7 @@ Itt talál egy C# kódot a kezdéshez, [RestApiSample a githubon](https://github
 
 A mintakód a [szolgáltatás egyszerű](#service-principal) hitelesítését használja.
 
-### <a name="service-principal"></a>Egyszerű szolgáltatásnév
+### <a name="service-principal"></a>Szolgáltatásnév
 
 Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek az Azure-ban való hozzárendelésével kapcsolatos további információkért lásd: [egyszerű szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md) és [egy egyszerű szolgáltatásnév hozzáadása a kiszolgálói rendszergazdai szerepkörhöz](analysis-services-addservprinc-admins.md) . A lépések elvégzése után végezze el a következő további lépéseket:
 
@@ -211,7 +222,7 @@ Az egyszerű szolgáltatásnév beállításával és a szükséges engedélyek 
 3.  Futtassa a mintát.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 [Minták](analysis-services-samples.md)   
 [REST API](https://docs.microsoft.com/rest/api/analysisservices/servers)   

@@ -1,28 +1,24 @@
 ---
-title: Azure Migrate replikációs berendezés architektúrája
-description: Áttekintést nyújt az ügynök-alapú áttelepítés Azure Migrate replikációs berendezéséről.
-author: rayne-wiselman
-ms.service: azure-migrate
+title: Azure Migrate replikációs berendezés
+description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate replikációs berendezését.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.author: raynew
-ms.openlocfilehash: ba14767bde5d6cdca3a82dbe4e8a115ec25cc911
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 01/08/2020
+ms.openlocfilehash: 574877c6a0a5ade068cff08041b29d2465430ed1
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186553"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029040"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
 
-Ez a cikk ismerteti a Azure Migrate által használt replikációs berendezést: a kiszolgáló értékelése a VMware virtuális gépek, fizikai gépek és magán-vagy nyilvános Felhőbeli virtuális gépek Azure-ba történő áttelepítésekor az ügynökön alapuló Migrálás használatával. 
-
-Az eszköz az [Azure Migrate](migrate-overview.md) hub-ban érhető el. A központ natív eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint az egyéb Azure-szolgáltatásokból és a független szoftvergyártók származó eszközökről.
+Ez a cikk a [Azure Migrate: Server áttelepítési](migrate-services-overview.md#azure-migrate-server-migration-tool) eszköz által használt replikációs készüléket ismerteti, ha VMWare virtuális gépeket, fizikai gépeket és magán-vagy nyilvános Felhőbeli virtuális gépeket telepít át az Azure-ba az ügynök-alapú áttelepítés használatával. 
 
 
-## <a name="appliance-overview"></a>Berendezések áttekintése
+## <a name="overview"></a>Áttekintés
 
-A replikációs berendezés egyetlen helyszíni gépen van üzembe helyezve VMware virtuális gépként vagy fizikai kiszolgálóként. A következőket futtatja:
+A rendszer üzembe helyezi a replikációs készüléket a VMware virtuális gépek vagy fizikai kiszolgálók ügynök-alapú áttelepítésének beállításakor. A rendszer egyetlen helyszíni gépként van üzembe helyezve VMware virtuális gépként vagy fizikai kiszolgálóként. A következőket futtatja:
+
 - **Replikációs berendezés**: a replikációs berendezés koordinálja a kommunikációt, és felügyeli az adatreplikációt a helyszíni VMWare virtuális gépek és az Azure-ba replikált fizikai kiszolgálók esetében.
 - **Process Server**: a folyamat kiszolgálója, amely alapértelmezés szerint telepítve van a replikációs berendezésen, és a következő műveleteket végzi el:
     - **Replikációs átjáró**: replikációs átjáróként működik. Replikációs adatok fogadása a replikációhoz engedélyezett gépekről. A replikációs adatokat a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja, és elküldi az Azure-nak.
@@ -30,19 +26,77 @@ A replikációs berendezés egyetlen helyszíni gépen van üzembe helyezve VMwa
 
 ## <a name="appliance-deployment"></a>Berendezések üzembe helyezése
 
-**Üzembe helyezés mint** | **Használatban** | **Részletek**
---- | --- |  ---
-VMware virtuális gép | Általában a VMware virtuális gépek áttelepítésekor használatos a Azure Migrate áttelepítési eszközzel az ügynök-alapú áttelepítés használatával. | A Azure Migrate központból letöltheti a petesejtek sablonját, és importálhatja a vCenter Serverba a készülék virtuális gépe létrehozásához.
-Fizikai gép | Helyszíni fizikai kiszolgálók áttelepítésekor használatos, ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem tud létrehozni VMware virtuális gépet egy PETESEJT-sablonnal. | A szoftver telepítőjének letöltése a Azure Migrate központból, és a berendezés számítógépének beállításához futtassa.
+**Használatban** | **Részletek**
+--- |  ---
+VMware VM-ügynök alapú áttelepítés | A Azure Migrate központból letöltheti a petesejtek sablonját, és importálhatja a vCenter Serverba a készülék virtuális gépe létrehozásához.
+Fizikai gépi ügynök alapú áttelepítés | Ha nem rendelkezik VMware-infrastruktúrával, vagy ha nem hoz létre VMware-alapú virtuális gépet egy PETESEJT-sablonnal, letölt egy szoftvert a Azure Migrate központból, és futtathatja a készülék számítógépének beállításához.
 
-## <a name="appliance-deployment-requirements"></a>Berendezések telepítési követelményei
+## <a name="appliance-requirements"></a>Készülékre vonatkozó követelmények
 
-[Tekintse át](migrate-support-matrix-vmware.md#agent-based-migration-replication-appliance-requirements) a központi telepítésre vonatkozó követelményeket.
+Amikor beállítja a replikációs berendezést az Azure Migrate központban megadott petesejtek sablonnal, a készülék futtatja a Windows Server 2016-et, és megfelel a támogatási követelményeknek. Ha a replikációs készüléket manuálisan állítja be egy fizikai kiszolgálón, akkor ellenőrizze, hogy az megfelel-e a követelményeknek.
 
+**Összetevő** | **Követelmény**
+--- | ---
+ | **VMware VM-készülék**
+PowerCLI | A [PowerCLI 6,0-es verziójának](https://my.vmware.com/web/vmware/details?productId=491&downloadGroup=PCLI600R1) telepítve kell lennie, ha a replikációs berendezés VMWare virtuális gépen fut.
+Hálózati adapter típusa | VMXNET3 (ha a készülék VMware virtuális gép)
+ | **Hardverbeállítások**
+Processzormagok | 8
+RAM | 16 GB
+Lemezek száma | Három: az operációsrendszer-lemez, a Process Server cache lemez és a megőrzési meghajtó.
+Szabad lemezterület (gyorsítótár) | 600 GB
+Szabad lemezterület (adatmegőrzési lemez) | 600 GB
+**Szoftverbeállítások** |
+Operációs rendszer | Windows Server 2016 vagy Windows Server 2012 R2
+Licenc | A készülékhez tartozik egy Windows Server 2016 próbaverziós licenc, amely 180 napig érvényes.<br/><br/> Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+Operációs rendszer területi beállítása | Angol (en-us)
+TLS | A TLS 1,2-et engedélyezni kell.
+.NET-keretrendszer | A .NET-keretrendszer 4,6-es vagy újabb verziójának telepítve kell lennie a gépen (erős kriptográfiai támogatással.
+MySQL | A MySQL-t telepíteni kell a készülékre.<br/> Telepíteni kell a MySQL-t. Manuálisan is telepítheti, vagy Site Recovery telepítheti a készülék telepítése során.
+Más alkalmazások | Ne futtasson más alkalmazásokat a replikációs berendezésen.
+Windows Server-szerepkörök | Ne engedélyezze ezeket a szerepköröket: <br> - Active Directory tartományi szolgáltatások <br>– Internet Information Services <br> - Hyper-V
+Csoportházirendek | Ne engedélyezze ezeket a csoportházirendeket: <br> – A parancssor elérésének tiltása. <br> – A beállításjegyzék szerkesztési eszközeihez való hozzáférés megakadályozása. <br> – A fájlmellékletek megbízhatósági logikája. <br> – A parancsfájlok végrehajtásának bekapcsolása. <br> [További információ](https://technet.microsoft.com/library/gg176671(v=ws.10).aspx)
+IIS | – Nincs előre meglévő alapértelmezett webhely <br> – Nincs már meglévő webhely/alkalmazás a 443-es porton <br>– [Névtelen hitelesítés](https://technet.microsoft.com/library/cc731244(v=ws.10).aspx) engedélyezése <br> – [FastCGI](https://technet.microsoft.com/library/cc753077(v=ws.10).aspx) -beállítás engedélyezése
+**Hálózati beállítások** |
+IP-cím típusa | Statikus
+Portok | 443 (vezérlőcsatorna-vezénylés)<br>9443 (Adatátvitel)
+Hálózati adapter típusa | VMXNET3
 
+## <a name="mysql-installation"></a>MySQL-telepítés 
 
-## <a name="appliance-license"></a>Készülék licence
-A készülékhez tartozik egy Windows Server 2016 próbaverziós licenc, amely 180 napig érvényes. Ha a próbaidőszak le van zárva, javasoljuk, hogy töltsön le és helyezzen üzembe egy új készüléket, vagy aktiválja a készülék virtuális gépe operációs rendszerének licencét.
+A MySQL-t telepíteni kell a replikációs berendezést futtató gépre. Ezt a metódusok egyikével telepítheti.
+
+**Metódus** | **Részletek**
+--- | ---
+Manuális letöltés és telepítés | Töltse le a MySQL-alkalmazást & helyezze a mappába a C:\Temp\ASRSetup, majd telepítse manuálisan.<br/> A készülék a MySQL beállítása után már telepítve lesz.
+Online letöltés nélkül | Helyezze a MySQL Installer alkalmazást a C:\Temp\ASRSetup. mappába. Ha telepíti a készüléket, és rákattint a MySQL letöltésére és telepítésére, a telepítő a hozzáadott telepítőt fogja használni.
+Letöltés és telepítés Azure Migrate | Ha telepíti a készüléket, és a rendszer kéri a MySQL-t, válassza a **letöltés és telepítés**lehetőséget.
+
+## <a name="url-access"></a>URL-hozzáférés
+
+A replikációs berendezésnek hozzá kell férnie ezekhez az URL-címekhez.
+
+**URL-cím** | **Részletek**
+--- | ---
+\*.backup.windowsazure.com | A replikált adatátvitelhez és a koordinációhoz használatos
+\*.store.core.windows.net | A replikált adatátvitelhez és a koordinációhoz használatos
+\*.blob.core.windows.net | A replikált adattárban tárolt Storage-fiók elérésére szolgál
+\*.hypervrecoverymanager.windowsazure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
+https:\//management.azure.com | Replikációs felügyeleti műveletekhez és koordináláshoz használatos
+*.services.visualstudio.com | Telemetria célra használatos (opcionális)
+time.nist.gov | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
+time.windows.com | A rendszer és a globális idő közötti időszinkronizálás ellenőrzéséhez.
+https:\//login.microsoftonline.com <br/> https:\//secure.aadcdn.microsoftonline-p.com <br/> https:\//login.live.com <br/> https:\//graph.windows.net <br/> https:\//login.windows.net <br/> https:\//www.live.com <br/> https:\//www.microsoft.com  | A OVF-telepítőnek hozzá kell férnie ezen URL-címekhez. A hozzáférés-vezérléshez és az identitások kezeléséhez használják Azure Active Directory
+https:\//dev.mysql.com/get/Downloads/MySQLInstaller/mysql-installer-community-5.7.20.0.msi | A MySQL letöltésének befejezése
+
+## <a name="port-access"></a>Port-hozzáférés
+
+**Eszköz** | **Kapcsolat**
+--- | ---
+VG | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
+Kiszolgáló feldolgozása | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.<br/> Alapértelmezés szerint a Process Server fut a replikációs berendezésen.
+
 
 ## <a name="replication-process"></a>Replikációs folyamat
 
@@ -68,6 +122,5 @@ A készüléket manuálisan frissítheti az Azure Migrate hub-ból. Javasoljuk, 
  
 ## <a name="next-steps"></a>Következő lépések
 
-[Ismerje meg, hogyan](tutorial-assess-vmware.md#set-up-the-appliance-vm) állíthatja be a készüléket a VMware rendszerhez.
-[Ismerje meg, hogyan](tutorial-assess-hyper-v.md#set-up-the-appliance-vm) állíthatja be a készüléket a Hyper-V-hez.
-
+- [Ismerje meg, hogyan](tutorial-migrate-vmware-agent.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést az ügynök-alapú VMWare virtuális gépek áttelepítéséhez.
+- [Ismerje meg, hogyan](tutorial-migrate-physical-virtual-machines.md#set-up-the-replication-appliance) állíthatja be a replikációs berendezést a fizikai kiszolgálók számára.
