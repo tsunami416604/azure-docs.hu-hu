@@ -2,22 +2,22 @@
 title: Párhuzamos számítási feladat futtatása – Azure Batch Python
 description: Oktatóanyag – Médiafájlok párhuzamos feldolgozása ffmpeg segítségével az Azure Batchben a Batch Python ügyfélkódtár használatával
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.devlang: python
 ms.topic: tutorial
 ms.date: 11/29/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: d06cf74b2a29af3fea2c24facac2899d09a0a84f
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: bc73c3c40754d1c3eeb6c86f6c9578047a22d73e
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71090790"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029246"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számítási feladatok futtatása Azure Batch a Python API használatával
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-python-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a Python API használatával
 
 Az Azure Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) Batch-feladatokat az Azure-ban. Ez az oktatóanyag végigvezeti egy, a Batch segítségével párhuzamos számításifeladat-futtatást bemutató Python-példán. Megismerheti a Batch-alkalmazások általános munkafolyamatát, valamint azt, hogyan kommunikálhat programkódon keresztül a Batch- és Storage-erőforrásokkal. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -271,7 +271,7 @@ A tevékenységek futtatása után az alkalmazás automatikusan törli a létreh
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

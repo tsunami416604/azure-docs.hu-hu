@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/19/2019
 ms.author: allensu
-ms.openlocfilehash: eab86b3643dde2a6e854d73c38b5267c65fb7e3e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 21fc494f52b168f92da6972ee44be33b4e227a66
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214764"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046063"
 ---
 # <a name="troubleshoot-azure-load-balancer"></a>Az Azure Load Balancer hibaelhárítása
 
@@ -123,7 +123,7 @@ Ha egy Load Balancer háttérbeli virtuális gépén lévő alkalmazása megpró
 
 ### <a name="cause-4-accessing-the-internal-load-balancer-frontend-from-the-participating-load-balancer-backend-pool-vm"></a>4\. ok: a belső Load Balancer előtér elérésének elérése a résztvevő Load Balancer backend Pool virtuális gépről
 
-Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](load-balancer-overview.md#limitations) .
+Ha egy belső Load Balancer konfigurálva van egy VNet belül, és a résztvevői háttérbe tartozó virtuális gépek egyike megpróbál hozzáférni a belső Load Balancer előtérhöz, a hibák akkor fordulhatnak elő, ha a folyamat a kezdeményező virtuális gépre van leképezve. Ez a forgatókönyv nem támogatott. Tekintse át a részletes megbeszélések [korlátozásait](concepts-limitations.md#limitations) .
 
 **Megoldás** A forgatókönyv feloldásának számos módja van, beleértve a proxy használatát is. Értékelje ki Application Gateway vagy más harmadik féltől származó proxyt (például Nginx vagy HAProxy). További információ a Application Gatewayról: [Application Gateway áttekintése](../application-gateway/application-gateway-introduction.md)
 

@@ -8,12 +8,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/18/2019
-ms.openlocfilehash: 62faf33dc8b3690036407972e12633e741a85d78
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 880a85676ff7a0364431b33b90093298b12bffed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72176752"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980461"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-the-azure-cli"></a>A Storage-fiók kulcsainak kezelése a Key Vault és az Azure CLI használatával
 
@@ -41,10 +41,10 @@ Az Azure AD-bérlő minden regisztrált alkalmazást biztosít egy [egyszerű sz
 
 A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőben előre regisztrálva van. A Key Vault minden Azure-felhőben ugyanazzal az alkalmazás-AZONOSÍTÓval van regisztrálva.
 
-| Bérlők | Felhő | Alkalmazásazonosító |
+| Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -53,7 +53,7 @@ Az útmutató elvégzéséhez először a következőket kell tennie:
 
 - [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t.
 - [Kulcstartó létrehozása](quick-create-cli.md)
-- [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-cli). A Storage-fiók nevének csak kisbetűket és számokat kell használnia. A név hosszának 3 és 24 karakter közöttinek kell lennie.
+- [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-account-create.md?tabs=azure-cli). A Storage-fiók nevének csak kisbetűket és számokat kell használnia. A név hosszának 3 és 24 karakter közöttinek kell lennie.
       
 ## <a name="manage-storage-account-keys"></a>A Storage-fiók kulcsainak kezelése
 
@@ -91,7 +91,7 @@ az keyvault storage add --vault-name <YourKeyVaultName> -n <YourStorageAccountNa
 
 ## <a name="shared-access-signature-tokens"></a>Közös hozzáférésű aláírási jogkivonatok
 
-Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. Közös hozzáférésű jogosultságkód a tárfiókban található erőforrások delegált hozzáférést biztosít. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
+Azt is megteheti, Key Vault hogy közös hozzáférésű aláírási jogkivonatokat állítson elő. A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz. A fiók kulcsainak megosztása nélkül megadhatja az ügyfeleknek a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírás biztonságos módot biztosít a tárolási erőforrások megosztására a fiók kulcsainak veszélyeztetése nélkül.
 
 Az ebben a szakaszban szereplő parancsok a következő műveleteket hajtják végre:
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 1/14/2020
 ms.author: alsin
-ms.openlocfilehash: e9cbd98afd5f9ed5561cba2236d85da331db7895
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 911d86dd7cb03479d9bde49d8fce0f7861e32e27
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944702"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980143"
 ---
 # <a name="red-hat-enterprise-linux-bring-your-own-subscription-gold-images-in-azure"></a>Red Hat Enterprise Linux saját előfizetéssel rendelkező Gold-lemezképek az Azure-ban
 A Red Hat Enterprise Linux-(RHEL-) lemezképek az Azure-ban az utólagos elszámolású (TB) vagy a saját előfizetéses (Red Hat Gold image) modellen keresztül érhetők el az Azure-ban. Ez a dokumentum áttekintést nyújt az Azure Red Hat Gold images-képeiről.
@@ -191,3 +191,4 @@ A következő példa egy parancsfájlt mutat be. Az erőforráscsoport, a hely, 
 * További információ az [Azure Red Hat frissítési infrastruktúráról](./redhat-rhui.md).
 * Ha többet szeretne megtudni az Azure-beli Red Hat-lemezképekről, lépjen a [dokumentáció lapra](./redhat-images.md).
 * A Red Hat-támogatási házirendekkel kapcsolatos információk a RHEL összes verziójára vonatkozóan a [Red Hat Enterprise Linux életciklus](https://access.redhat.com/support/policy/updates/errata) oldalon találhatók.
+* A RHEL Gold images-ről további dokumentáció található a [Red Hat dokumentációjában](https://access.redhat.com/documentation/en-us/red_hat_subscription_management/1/html/red_hat_cloud_access_reference_guide/using_red_hat_gold_images#con-gold-image-azure).

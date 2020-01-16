@@ -6,12 +6,12 @@ ms.date: 10/22/2019
 ms.custom: seo-python-october2019
 experimental: true
 experiment_id: 01a9132f-eaab-4c
-ms.openlocfilehash: 8290a4101725efbbe1e56e4a7f12a51b39a73f42
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
-ms.translationtype: HT
+ms.openlocfilehash: aaf1f5cb6a11e0a5358d6c8a59581b46e57a3274
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028338"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045916"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
@@ -80,7 +80,7 @@ flask run
 
 Nyisson meg egy webböngészőt, és nyissa meg a minta alkalmazást a következő címen: `http://localhost:5000/`. Az alkalmazás a következő üzenetet jeleníti meg: **"Helló világ!" alkalmazás!** .
 
-![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser.png)
+![Egy minta Python-alkalmazás helyi futtatása](./media/quickstart-python/run-hello-world-sample-python-app-in-browser-localhost.png)
 
 A terminál ablakban nyomja le a **Ctrl**+**C** billentyűkombinációt a webkiszolgálóból való kilépéshez.
 

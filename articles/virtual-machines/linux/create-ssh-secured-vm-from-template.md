@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e32e9f17b5c48e18453724eb683ba2e86dd0cdb
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cf440542e8b16231514447ddcddca081b4b89368
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74036485"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979056"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Linuxos virtuális gép létrehozása Azure Resource Manager-sablonokkal
 
@@ -29,7 +29,7 @@ Megtudhatja, hogyan hozhat létre linuxos virtuális gépet (VM) egy Azure Resou
 
 ## <a name="templates-overview"></a>Sablonok – áttekintés
 
-Azure Resource Manager a sablonok JSON-fájlok, amelyek meghatározzák az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Ha többet szeretne megtudni a sablon formátumáról és a létrehozásáról, tekintse meg [a rövid útmutató: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)című témakört. Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/microsoft.compute/allversions) témakört.
+Azure Resource Manager a sablonok JSON-fájlok, amelyek meghatározzák az Azure-megoldás infrastruktúráját és konfigurációját. A sablonok segítségével a megoldás a teljes életciklusa során ismételten üzembe helyezhető, és az erőforrások üzembe helyezése biztosan konzisztens lesz. Ha többet szeretne megtudni a sablon formátumáról és a létrehozásáról, tekintse meg [a rövid útmutató: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört. Az erőforrástípusok JSON-szintaxisának megtekintéséért lásd [az Azure Resource Manager-sablonokban az erőforrások meghatározásával kapcsolatos](/azure/templates/microsoft.compute/allversions) témakört.
 
 ## <a name="create-a-virtual-machine"></a>Virtuális gép létrehozása
 
@@ -64,7 +64,7 @@ Az utolsó Azure CLI-parancs az újonnan létrehozott virtuális gép nyilvános
 
 Az előző példában egy GitHubban tárolt sablont adott meg. Emellett letölthet vagy létrehozhat egy sablont, és megadhatja a helyi elérési utat a `--template-file` paraméterrel.
 
-Íme néhány további erőforrás:
+Néhány további információforrás:
 
 - A Resource Manager-sablonok fejlesztéséről a [Azure Resource Manager dokumentációjában](/azure/azure-resource-manager/)talál további információt.
 - Az Azure-beli virtuális gépek sémáinak megtekintéséhez lásd: [Azure-sablonok referenciája](/azure/templates/microsoft.compute/allversions).
@@ -84,8 +84,8 @@ Ebben a példában egy alapszintű linuxos virtuális gépet hozott létre. Tov�
 
 A sablonok létrehozásával kapcsolatos további tudnivalókért tekintse meg a telepített erőforrások típusának JSON-szintaxisát és tulajdonságait:
 
-- [Microsoft.Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
-- [Microsoft.Network/publicIPAddresses](/azure/templates/microsoft.network/publicipaddresses)
-- [Microsoft.Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
-- [Microsoft.Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
-- [Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)
+- [Microsoft. Network/networkSecurityGroups](/azure/templates/microsoft.network/networksecuritygroups)
+- [Microsoft. Network/nyilvános IP](/azure/templates/microsoft.network/publicipaddresses)
+- [Microsoft. Network/virtualNetworks](/azure/templates/microsoft.network/virtualnetworks)
+- [Microsoft. Network/networkInterfaces](/azure/templates/microsoft.network/networkinterfaces)
+- [Microsoft. számítás/virtualMachines](/azure/templates/microsoft.compute/virtualmachines)

@@ -11,12 +11,13 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a9bb324c3863a13e1f47e1b31f7656ab8c77a6f1
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763147"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043528"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -177,7 +178,7 @@ Most, hogy a bérlő kiállíthatja az SAML-kijelentéseket, létre kell hoznia 
     PublicPolicyUri="http://tenant-name.onmicrosoft.com/B2C_1A_signup_signin_saml">
     ```
 
-1. Közvetlenül a `<RelyingParty>` elem előtt adja hozzá a következő XML-kódrészletet. Ez az XML felülírja a _SignUpOrSignIn_ felhasználói út 7-es számú lépését. Ha a felhasználói utat az előkészítési lépések hozzáadásával vagy eltávolításával szabta testre, győződjön meg róla, hogy a szám (a `order` elemben) a jogkivonat-kiállító lépéshez a felhasználói úton megadott értékkel van-e igazítva.
+1. Közvetlenül a `<RelyingParty>` elem előtt adja hozzá a következő XML-kódrészletet. Ez az XML felülírja a _SignUpOrSignIn_ felhasználói út 7-es számú lépését. Ha az alapszintű csomag egy másik mappájából indult, vagy testreszabhatja a felhasználói utat az előkészítési lépések hozzáadásával vagy eltávolításával, ügyeljen arra, hogy a (`order` elemben) a jogkivonat-kiállítói lépéshez megadott számmal (például a másik alapszintű csomag mappáiban a 4. lépés 4-es számú, a `SocialAccounts` és a 9 `SocialAndLocalAccountsWithMfa`) tartozó `LocalAccounts`érték legyen igazítva.
 
     ```XML
     <UserJourneys>

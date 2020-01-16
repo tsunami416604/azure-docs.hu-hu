@@ -7,12 +7,12 @@ ms.service: dns
 ms.topic: article
 ms.date: 12/4/2018
 ms.author: allensu
-ms.openlocfilehash: b84ba055dd8214ae18e76004671e3922e6f3b878
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c87f9d51c69c4f4d330862e83e5cc8e8e849a988
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74211448"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969026"
 ---
 # <a name="how-to-protect-dns-zones-and-records"></a>DNS-zónák és-rekordok elleni védelem
 
@@ -20,7 +20,7 @@ ms.locfileid: "74211448"
 
 A DNS-zónák és-rekordok kritikus erőforrások. Egy DNS-zóna törlése, vagy akár csak egyetlen DNS-rekord is eredményezhet a szolgáltatás teljes kimaradását.  Ezért fontos, hogy a kritikus DNS-zónák és-rekordok védve legyenek a jogosulatlan vagy véletlen változásokkal szemben.
 
-Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a DNS-zónák és-rekordok védelemét az ilyen változásokkal szemben.  A Azure Resource Manager által biztosított két hatékony biztonsági funkciót alkalmazzuk: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és [erőforrás-zárolások](../azure-resource-manager/resource-group-lock-resources.md).
+Ez a cikk azt ismerteti, hogyan teszi lehetővé a Azure DNS a DNS-zónák és-rekordok védelemét az ilyen változásokkal szemben.  A Azure Resource Manager által biztosított két hatékony biztonsági funkciót alkalmazzuk: [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/overview.md) és [erőforrás-zárolások](../azure-resource-manager/management/lock-resources.md).
 
 ## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
@@ -158,7 +158,7 @@ Az egyéni szerepkörök létrehozásával, kezelésével és hozzárendelésév
 
 ## <a name="resource-locks"></a>Erőforrás-zárolások
 
-A RBAC mellett a Azure Resource Manager támogatja egy másik típusú biztonsági vezérlést is, amely lehetővé teszi az erőforrások zárolását. Ahol a RBAC-szabályok lehetővé teszik az egyes felhasználók és csoportok műveleteinek szabályozását, az erőforrás-zárolások érvénybe lépnek, és az összes felhasználóra és szerepkörre érvényesek. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/resource-group-lock-resources.md).
+A RBAC mellett a Azure Resource Manager támogatja egy másik típusú biztonsági vezérlést is, amely lehetővé teszi az erőforrások zárolását. Ahol a RBAC-szabályok lehetővé teszik az egyes felhasználók és csoportok műveleteinek szabályozását, az erőforrás-zárolások érvénybe lépnek, és az összes felhasználóra és szerepkörre érvényesek. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/management/lock-resources.md).
 
 Két típusú erőforrás-zárolás létezik: **CanNotDelete** és **readonly**. Ezek egy DNS-zónára vagy egy különálló készletre is alkalmazhatók.  Az alábbi szakaszok számos gyakori forgatókönyvet ismertetnek, valamint azt, hogyan támogatják őket az erőforrás-zárolások használatával.
 
@@ -217,4 +217,4 @@ Mindkét módszert – az erőforrás-zárolásokat és az egyéni szerepkörök
 ## <a name="next-steps"></a>Következő lépések
 
 * További információ a RBAC használatáról: [a Azure Portal hozzáférés-kezelésének első lépései](../role-based-access-control/overview.md).
-* További információ az erőforrás-zárolások használatáról: [erőforrások zárolása Azure Resource Managersal](../azure-resource-manager/resource-group-lock-resources.md).
+* További információ az erőforrás-zárolások használatáról: [erőforrások zárolása Azure Resource Managersal](../azure-resource-manager/management/lock-resources.md).

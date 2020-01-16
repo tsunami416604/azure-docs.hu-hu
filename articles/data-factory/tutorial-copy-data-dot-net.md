@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.date: 11/08/2019
 ms.author: jingwang
-ms.openlocfilehash: 7f3fdf1b723158db873bc2635de34d878c464201
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93c4f71c762cff3e3f5a01f0e2595f3498f9d38d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439443"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977314"
 ---
 # <a name="copy-data-from-azure-blob-to-azure-sql-database-using-azure-data-factory"></a>Adatok másolása az Azure Blobból az Azure SQL Database-be az Azure Data Factory segítségével
 
@@ -38,7 +38,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* *Azure Storage-fiók* A blobtárolót használjuk *forrás* adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [az általános célú Storage-fiók létrehozása](../storage/common/storage-quickstart-create-account.md)című témakört.
+* *Azure Storage-fiók* A blobtárolót használjuk *forrás* adattárként. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg [az általános célú Storage-fiók létrehozása](../storage/common/storage-account-create.md)című témakört.
 * *Azure SQL Database* Ezt az adatbázist használjuk *fogadó* adattárként. Ha nem rendelkezik Azure SQL Databaseval, tekintse meg [Az Azure SQL Database létrehozása](../sql-database/sql-database-single-database-get-started.md)című témakört.
 * *Visual Studio*. A jelen cikkben található útmutató a Visual Studio 2019-et használja.
 * *[Azure SDK a .net-hez](/dotnet/azure/dotnet-tools)* .
@@ -84,7 +84,7 @@ Következő lépésként hozzon létre egy fogadó SQL-táblázatot:
     1. Az SQL Server kezeléséhez nyissa meg a [Azure Portal](https://portal.azure.com) . Keresse meg és válassza ki az **SQL-kiszolgálókat**.
 
     2. Válassza ki a kiszolgálót.
-    
+
     3. Az SQL Server menü **biztonsági** fejléce alatt válassza a **tűzfalak és virtuális hálózatok**lehetőséget.
 
     4. A **tűzfal-és virtuális hálózatok** lapon, az **Azure-szolgáltatások és-erőforrások engedélyezése a kiszolgálóhoz való hozzáféréshez**területen válassza **a be**lehetőséget.
@@ -154,7 +154,7 @@ Az alábbi lépéseket követve hozzon létre egy adatfeldolgozó-ügyfelet.
     string inputBlobName = "inputEmp.txt";
 
     // Specify the sink Azure SQL Database information
-    string azureSqlConnString = 
+    string azureSqlConnString =
         "Server=tcp:<your server name>.database.windows.net,1433;" +
         "Database=<your database name>;" +
         "User ID=<your username>@<your server name>;" +
@@ -265,7 +265,7 @@ Console.WriteLine(
 
 ## <a name="create-datasets"></a>Adatkészletek létrehozása
 
-Ebben a szakaszban két adatkészletet hoz létre: egyet a forráshoz, a másikat a fogadóhoz. 
+Ebben a szakaszban két adatkészletet hoz létre: egyet a forráshoz, a másikat a fogadóhoz.
 
 ### <a name="create-a-dataset-for-source-azure-blob"></a>Adatkészlet létrehozása a forrás Azure Blobhoz
 
@@ -283,8 +283,8 @@ Console.WriteLine("Creating dataset " + blobDatasetName + "...");
 DatasetResource blobDataset = new DatasetResource(
     new AzureBlobDataset
     {
-        LinkedServiceName = new LinkedServiceReference { 
-            ReferenceName = storageLinkedServiceName 
+        LinkedServiceName = new LinkedServiceReference {
+            ReferenceName = storageLinkedServiceName
         },
         FolderPath = inputBlobPath,
         FileName = inputBlobName,
@@ -309,7 +309,7 @@ Console.WriteLine(
 
 Adja hozzá a következő kódot a `Main` metódushoz, amely létrehoz egy *Azure SQL Database adatkészletet*. További információ a támogatott tulajdonságokról és részletekről: [Azure SQL Database adatkészlet tulajdonságai](connector-azure-sql-database.md#dataset-properties).
 
-Meghatároz egy adatkészletet, amely a fogadó adatait jelöli az Azure SQL Database-ben. Ez az adatkészlet az előző lépésben létrehozott Azure SQL Database társított szolgáltatásra hivatkozik. Emellett megadja a másolt adatokat tartalmazó SQL-táblázatot is. 
+Meghatároz egy adatkészletet, amely a fogadó adatait jelöli az Azure SQL Database-ben. Ez az adatkészlet az előző lépésben létrehozott Azure SQL Database társított szolgáltatásra hivatkozik. Emellett megadja a másolt adatokat tartalmazó SQL-táblázatot is.
 
 ```csharp
 // Create an Azure SQL Database dataset
@@ -416,14 +416,14 @@ Most szúrja be a kódot a folyamat futtatási állapotának vizsgálatához, é
     ActivityRunsQueryResponse queryResponse = client.ActivityRuns.QueryByPipelineRun(
         resourceGroup, dataFactoryName, runResponse.RunId, filterParams
     );
- 
+
     if (pipelineRun.Status == "Succeeded")
     {
         Console.WriteLine(queryResponse.Value.First().Output);
     }
     else
         Console.WriteLine(queryResponse.Value.First().Error);
-    
+
     Console.WriteLine("\nPress any key to exit...");
     Console.ReadKey();
     ```
@@ -564,7 +564,7 @@ Press any key to exit...
 
 ## <a name="next-steps"></a>Következő lépések
 
-A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket: 
+A példában szereplő folyamat adatokat másol az egyik helyről egy másikra egy Azure Blob Storage-ban. Megismerte, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Adat-előállító létrehozása
@@ -574,7 +574,7 @@ A példában szereplő folyamat adatokat másol az egyik helyről egy másikra e
 > * Folyamat futásának indítása
 > * A folyamat és a tevékenységek futásának monitorozása
 
-Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat a helyszíni rendszerből a felhőbe: 
+Folytassa a következő oktatóanyaggal, amelyben azzal ismerkedhet meg, hogyan másolhat adatokat a helyszíni rendszerből a felhőbe:
 
 > [!div class="nextstepaction"]
 >[Adatok másolása a helyszínről a felhőbe](tutorial-hybrid-copy-powershell.md)

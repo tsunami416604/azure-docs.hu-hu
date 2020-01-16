@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: d26eb0160316737c9ad31d98c8cf23bdcad42d32
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6c98b699b1d3aba15ce69c519d35d7ce3e90d123
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74206505"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045734"
 ---
 # <a name="choose-a-load-balancing-solution-for-cloudsimple-private-clouds"></a>Terheléselosztási megoldás kiválasztása a privát felhők CloudSimple
 
@@ -37,7 +37,7 @@ Ha többet szeretne megtudni a megoldás konfigurálásáról, tekintse meg a me
 
 Ha úgy dönt, hogy az alkalmazást egy hibrid telepítésben futtatja, ahol a webes előtér-réteg az Azure-előfizetésben található Azure-vNet belül fut, és az alkalmazás adatbázis-rétege VMware virtuális gépeken fut a CloudSimple privát felhőben, az Azure belső terhelését is használhatja Balancer (L4 Load Balancer) az adatbázis-réteg virtuális gépei előtt a Traffic Management szolgáltatáshoz.
 
-További információt az Azure [belső Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer) dokumentációjában talál.
+További információt az Azure [belső Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer) dokumentációjában talál.
 
 ## <a name="global-server-load-balancer"></a>Globális kiszolgáló Load Balancer
 

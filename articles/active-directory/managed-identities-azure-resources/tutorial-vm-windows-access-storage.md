@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4da78fbb15aea2bd0f54ffec1b0851466c799584
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 182bf02bfaad598a447304cc9f2ed42f6221176d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971968"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-storage"></a>Oktatóanyag: Hozzáférés az Azure Storage-hoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -40,7 +40,18 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá az Azure Storage-hoz egy Win
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
 
-## <a name="create-account"></a>Fiók létrehozása
+
+
+## <a name="enable"></a>Engedélyezés
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Hozzáférés biztosítása
+
+
+### <a name="create-storage-account"></a>Storage-fiók létrehozása
 
 Ebben a szakaszban egy új tárfiókot fog létrehozni.
 
@@ -53,7 +64,7 @@ Ebben a szakaszban egy új tárfiókot fog létrehozni.
 
     ![Új tárfiók létrehozása](./media/msi-tutorial-linux-vm-access-storage/msi-storage-create.png)
 
-## <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Blobtároló létrehozása és egy fájl feltöltése a tárfiókba
+### <a name="create-a-blob-container-and-upload-a-file-to-the-storage-account"></a>Blobtároló létrehozása és egy fájl feltöltése a tárfiókba
 
 A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egyet, amelyben a fájlt tárolhatja. Ezután fel fog tölteni egy fájlt az új tárfiókon lévő blobtárolóba.
 
@@ -69,7 +80,7 @@ A fájlok tárolásához blobtároló szükséges, ezért létre kell hoznia egy
 7. A **Blob feltöltése** panel **Fájlok** területén kattintson a mappa ikonra, keresse meg a **hello_world.txt** fájlt a helyi gépen, válassza ki a fájlt, majd kattintson a **Feltöltés** gombra.
     ![Szövegfájl feltöltése](./media/msi-tutorial-linux-vm-access-storage/upload-text-file.png)
 
-## <a name="grant-access"></a>Hozzáférés biztosítása
+### <a name="grant-access"></a>Hozzáférés biztosítása
 
 Ez a szakasz bemutatja, hogyan biztosítható a virtuális gép hozzáférése egy Azure Storage-tárolóhoz. A VM rendszer által hozzárendelt felügyelt identitásával lekérheti az Azure-tárolóblob adatait.
 
@@ -83,7 +94,7 @@ Ez a szakasz bemutatja, hogyan biztosítható a virtuális gép hozzáférése e
 
     ![Engedélyek kiosztása](./media/tutorial-linux-vm-access-storage/access-storage-perms.png)
 
-## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése 
+## <a name="access-data"></a>Adatok elérése 
 
 Az Azure Storage natív támogatást nyújt az Azure AD-hitelesítésnek, így közvetlenül is elfogadhatja a felügyelt identitás használatával beszerzett hozzáférési jogkivonatokat. Ez az Azure Storage és az Azure AD integrációjának része, és eltér attól a megoldástól, amikor a kapcsolati sztringen adja meg a hitelesítő adatokat.
 
@@ -160,6 +171,13 @@ namespace StorageOAuthToken
 A válasz tartalmazza a fájl tartalmát:
 
 `Hello world! :)`
+
+
+## <a name="disable"></a>Letiltás
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: rajanaki
 ms.custom: mvc
-ms.openlocfilehash: 780db0cc5a99adfd2e7f8cd5be20a191bba009e8
-ms.sourcegitcommit: 6ad03fa28a0f60cb6dce6144f728c2ceb56ff6e2
+ms.openlocfilehash: c9f10815f2fbc8a17b8b712b6e5f8391fc7d541e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/01/2019
-ms.locfileid: "68708135"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980299"
 ---
 # <a name="protect-a-file-server-by-using-azure-site-recovery"></a>Fájlkiszolgálók védelmének biztosítása az Azure Site Recovery használatával 
 
@@ -37,15 +37,15 @@ Az előző ábrán több fájlkiszolgáló, ún. tag vesz részt aktívan a fáj
 
 ## <a name="disaster-recovery-recommendations-for-file-servers"></a>Vészhelyreállítással kapcsolatos javaslatok fájlkiszolgálókhoz
 
-* **Fájlkiszolgáló replikálása site Recovery használatával**: A fájlkiszolgálók Site Recovery használatával replikálhatók az Azure-ba. Ha egy vagy több helyszíni fájlkiszolgáló nem érhető el, a helyreállítási virtuális gépek üzembe helyezhetők az Azure-ban. A virtuális gépek ezt követően képesek az ügyfelektől érkező kérések helyszíni kiszolgálására, feltéve, hogy rendelkezésre áll helyek közötti VPN-kapcsolat, és az Active Directory konfigurálva van az Azure-ban. Ezt a módszert DFSR-hez konfigurált környezetben vagy DFSR nélküli egyszerű fájlkiszolgáló-környezetben is használhatja. 
+* **Fájlkiszolgáló replikálása a Site Recovery használatával**: A fájlkiszolgálók replikálhatók az Azure-ba a Site Recovery használatával. Ha egy vagy több helyszíni fájlkiszolgáló nem érhető el, a helyreállítási virtuális gépek üzembe helyezhetők az Azure-ban. A virtuális gépek ezt követően képesek az ügyfelektől érkező kérések helyszíni kiszolgálására, feltéve, hogy rendelkezésre áll helyek közötti VPN-kapcsolat, és az Active Directory konfigurálva van az Azure-ban. Ezt a módszert DFSR-hez konfigurált környezetben vagy DFSR nélküli egyszerű fájlkiszolgáló-környezetben is használhatja. 
 
-* **A DFSR kiterjesztése egy Azure IaaS virtuális gépre**: A DFSR által megvalósított fürtözött fájlkiszolgáló-környezetekben a helyszíni DFSR kiterjeszthető az Azure-ra. Ezt követően egy Azure-beli virtuális gép felveheti a fájlkiszolgálói szerepkört. 
+* **Elosztott fájlrendszer-replikáció (DFSR) kiterjesztése Azure IaaS virtuális gépekre**: Azokban a fürtözött fájlkiszolgáló-környezetekben, amelyekben implementálva van az elosztott fájlrendszer-replikáció, kiterjesztheti a helyi DFSR-t az Azure-ra. Ezt követően egy Azure-beli virtuális gép felveheti a fájlkiszolgálói szerepkört. 
 
     * A helyek közötti VPN-kapcsolat és az Active Directory függőségeinek kielégítését, valamint a DFSR beállítását követően, ha egy vagy több helyszíni fájlkiszolgáló nem érhető el, az ügyfelek csatlakozhatnak az Azure-beli virtuális géphez, amely kiszolgálja az adott kéréseket.
 
     * Ezt a módszert akkor használhatja, ha a virtuális gépek a Site Recovery által nem támogatott konfigurációkkal rendelkeznek. Ilyen például egy megosztott fürtlemez, amelyek gyakran használatosak a fájlkiszolgáló-környezetekben. A DFSR a közepes forgalommal rendelkező, kis sávszélességű környezetekben is kiválóan alkalmazható. Gondolja végig, mennyivel több költséggel jár egy folyamatosan működő Azure-beli virtuális gép fenntartása. 
 
-* **A fájlok replikálásához használja a Azure file Sync**: Ha azt tervezi, hogy a felhőt használja, vagy már használ Azure-beli virtuális gépet, használhatja a Azure File Sync. Az Azure File Sync teljes körűen felügyelt felhőbeli fájlmegosztást nyújt, amelyek az iparági szabványos [Server Message Block](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) (SMB) protokollon keresztül érhetők el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. 
+* A **fájlok replikálásához használja a Azure file Synct**: Ha a felhő használatát tervezi, vagy már Azure-beli virtuális gépet használ, használhatja a Azure file Sync. A Azure File Sync a felhőben lévő teljes körűen felügyelt fájlmegosztást szinkronizálja, amely az iparági [szabványnak](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx) megfelelő SMB protokollon keresztül érhető el. Az Azure-fájlmegosztások párhuzamosan több felhőalapú vagy helyszíni Windows, Linux vagy macOS rendszerű üzemelő példány által is csatlakoztathatóak. 
 
 Az alábbi ábra segít meghatározni, milyen stratégiát használjon a fájlkiszolgáló-környezethez.
 
@@ -64,7 +64,7 @@ Az alábbi ábra segít meghatározni, milyen stratégiát használjon a fájlki
 ### <a name="site-recovery-support"></a>Site Recovery támogatása
 Mivel a Site Recovery replikációja alkalmazásfüggetlen, várhatóan az alábbi ajánlásokat érdemes követni a következő forgatókönyvek esetében.
 
-| Source    |Egy másodlagos helyre    |Az Azure-ba
+| Forrás    |Egy másodlagos helyre    |Az Azure-ba
 |---------|---------|---------|
 |Azure| -|Igen|
 |Hyper-V|   Igen |Igen
@@ -77,9 +77,9 @@ Mivel a Site Recovery replikációja alkalmazásfüggetlen, várhatóan az aláb
 
 
 
-**Helyek közötti kapcsolat**: A kiszolgálók közötti kommunikáció lehetővé tételéhez közvetlen kapcsolatot kell létesíteni a helyszíni hely és az Azure-hálózat között. Használjon egy Azure virtuális hálózat felé irányuló, biztonságos, helyek közötti VPN-kapcsolatot, amely vészhelyreállítási helyként fog szolgálni. További információkért lásd: [Helyek közötti VPN-kapcsolat létesítése egy helyszíni hely és egy Azure virtuális hálózat között](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
+**Helyek közötti kapcsolat**: A kiszolgálók közötti kommunikáció engedélyezéséhez a helyszíni hely és az Azure-hálózat között közvetlen kapcsolatot kell létesíteni. Használjon egy Azure virtuális hálózat felé irányuló, biztonságos, helyek közötti VPN-kapcsolatot, amely vészhelyreállítási helyként fog szolgálni. További információkért lásd: [Helyek közötti VPN-kapcsolat létesítése egy helyszíni hely és egy Azure virtuális hálózat között](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal).
 
-**Active Directory**: A DFSR Active Directorytól függ. Ez azt jelenti, hogy a helyi tartományvezérlőkkel rendelkező Active Directory-erdő kiterjed a vészhelyreállítási helyre az Azure-ban. Még ha nem is használ DFSR-t, ha a kívánt felhasználók számára hozzáférést kell biztosítania, vagy ellenőrizni kell őket a hozzáféréshez, hajtsa végre ezeket a lépéseket. További információk: [Helyszíni Active Directory kiterjesztése az Azure-ba](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
+**Active Directory**: A DFSR az Azure Active Directorytól függ. Ez azt jelenti, hogy a helyi tartományvezérlőkkel rendelkező Active Directory-erdő kiterjed a vészhelyreállítási helyre az Azure-ban. Még ha nem is használ DFSR-t, ha a kívánt felhasználók számára hozzáférést kell biztosítania, vagy ellenőrizni kell őket a hozzáféréshez, hajtsa végre ezeket a lépéseket. További információk: [Helyszíni Active Directory kiterjesztése az Azure-ba](https://docs.microsoft.com/azure/site-recovery/site-recovery-active-directory).
 
 ## <a name="disaster-recovery-recommendation-for-azure-iaas-virtual-machines"></a>Vészhelyreállítással kapcsolatos javaslatok Azure IaaS virtuális gépekhez
 
@@ -132,7 +132,7 @@ Az alábbi lépések egy VMware virtuális gép replikációját mutatják be. A
 2. Terjessze ki a helyszíni Active Directoryt.
 3. [Fájlkiszolgáló virtuális gép létrehozása és kiépítése](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal?toc=%2Fazure%2Fvirtual-machines%2Fwindows%2Ftoc.json) az Azure virtuális hálózaton.
 Győződjön meg róla, hogy a virtuális gép ugyanahhoz az Azure virtuális hálózathoz van hozzáadva, amely kapcsolatban áll a helyszíni környezettel. 
-4. Telepítse és [konfigurálja a DFSR-t](https://blogs.technet.microsoft.com/b/filecab/archive/2013/08/21/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of-the-clones.aspx) Windows Serveren.
+4. Telepítse és [konfigurálja a DFSR-t](https://techcommunity.microsoft.com/t5/storage-at-microsoft/dfs-replication-initial-sync-in-windows-server-2012-r2-attack-of/ba-p/424877) Windows Serveren.
 5. [Implementáljon egy elosztott fájlrendszerbeli névteret](https://docs.microsoft.com/windows-server/storage/dfs-namespaces/deploying-dfs-namespaces).
 6. Az elosztott fájlrendszerbeli névtér implementálásával a megosztott mappák éles környezetből vészhelyreállítási helyekre történő feladatátvétele az elosztott fájlrendszerbeli névtér mappacéljainak frissítésével végezhető el. Miután a rendszer replikálta az elosztott fájlrendszerbeli névtér változásait az Active Directoryn keresztül, a felhasználók átlátható módon csatlakoznak a megfelelő mappacélokhoz.
 

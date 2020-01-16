@@ -3,19 +3,19 @@ title: 'Gyors útmutató: a beszédfelismerés szintézise, Python-Speech szolg�
 titleSuffix: Azure Cognitive Services
 description: Ismerje meg, hogyan szintetizálhatja a beszédfelismerést a Pythonban a Speech SDK használatával
 services: cognitive-services
-author: yulin-li
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 09/14/2019
-ms.author: yulili
-ms.openlocfilehash: 990e795d0331df41ff098ed498508d6ecfd58f0e
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 19/14/2020
+ms.author: dapine
+ms.openlocfilehash: 7be9037ddfd19d82263b37fe0b824e3c2b3f5078
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74818151"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037550"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -25,21 +25,20 @@ Az első lépések előtt ügyeljen a következőre:
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md)
 > * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md)
-```
 
-## Support and updates
+## <a name="support-and-updates"></a>Támogatás és frissítések
 
-Updates to the Speech SDK Python package are distributed via PyPI and announced in the [Release notes](~/articles/cognitive-services/Speech-Service/releasenotes.md).
-If a new version is available, you can update to it with the command `pip install --upgrade azure-cognitiveservices-speech`.
-Check which version is currently installed by inspecting the `azure.cognitiveservices.speech.__version__` variable.
+A Speech SDK Python-csomag frissítései a PyPI-on keresztül oszlanak meg, és a [kibocsátási megjegyzésekben](~/articles/cognitive-services/Speech-Service/releasenotes.md)jelent meg.
+Ha új verzió érhető el, a `pip install --upgrade azure-cognitiveservices-speech`paranccsal frissítheti azt.
+A `azure.cognitiveservices.speech.__version__` változó vizsgálatával ellenőrizze, hogy jelenleg melyik verziót telepítette.
 
-If you have a problem, or you're missing a feature, see [Support and help options](~/articles/cognitive-services/Speech-Service/support.md).
+Ha problémája van, vagy hiányzik egy szolgáltatás, tekintse meg a [támogatási és súgó beállításait](~/articles/cognitive-services/Speech-Service/support.md).
 
-## Create a Python application that uses the Speech SDK
+## <a name="create-a-python-application-that-uses-the-speech-sdk"></a>A Speech SDK-t használó Python-alkalmazás létrehozása
 
-### Run the sample
+### <a name="run-the-sample"></a>Minta futtatása
 
-You can copy the [sample code](#sample-code) from this quickstart to a source file `quickstart.py` and run it in your IDE or in the console:
+Ebből a rövid útmutatóból másolhatja a [mintakód](#sample-code) `quickstart.py` és futtathatja azt az ide vagy a konzolon:
 
 ```sh
 python quickstart.py

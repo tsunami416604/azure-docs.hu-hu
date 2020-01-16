@@ -12,18 +12,19 @@ ms.date: 05/31/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9603cdf11373891aaa3541330cb7f65c09352496
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: b621c9cbc35d0e9956f6648d870102affd84c24f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818897"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028392"
 ---
 # <a name="migrate-from-federation-to-password-hash-synchronization-for-azure-active-directory"></a>Áttelepítés az összevonásból a jelszó-kivonatolási szinkronizálásba Azure Active Directory
 
 Ez a cikk azt ismerteti, hogyan helyezheti át szervezeti tartományait Active Directory összevonási szolgáltatások (AD FS) (AD FS) jelszó-kivonatolási szinkronizálásra.
 
-[Ezt a cikket letöltheti](https://aka.ms/ADFSTOPHSDPDownload).
+> [!NOTE]
+> A hitelesítési módszer megváltoztatásához tervezési, tesztelési és lehetséges állásidő szükséges. Az [előkészített](how-to-connect-staged-rollout.md) bevezetéssel alternatív módszerekkel tesztelheti és fokozatosan áttelepítheti az összevonási rendszerről a Felhőbeli hitelesítésre a jelszó-kivonatoló szinkronizálás használatával.
 
 ## <a name="prerequisites-for-migrating-to-password-hash-synchronization"></a>A jelszó-kivonat szinkronizálására való Migrálás előfeltételei
 
@@ -78,7 +79,7 @@ Az aktuális felhasználói bejelentkezési beállítások ellenőrzése:
 
 #### <a name="verify-the-azure-ad-connect-configuration"></a>A Azure AD Connect konfigurációjának ellenőrzése
 
-1. A Azure AD Connect-kiszolgálón nyissa meg a Azure AD Connect. Válassza a **Konfigurálás**lehetőséget.
+1. A Azure AD Connect-kiszolgálón nyissa meg a Azure AD Connect. Válassza ki a **Konfigurálás** lehetőséget.
 2. A **További feladatok** lapon válassza a **jelenlegi konfiguráció megtekintése**lehetőséget, majd kattintson a **tovább**gombra.<br />
 
    ![Képernyőfelvétel a további feladatok oldalon kiválasztott aktuális konfiguráció megtekintése lehetőségről](media/plan-migrate-adfs-password-hash-sync/migrating-adfs-to-phs_image2.png)<br />
@@ -135,10 +136,10 @@ Ez a szakasz a telepítési szempontokat és a AD FS használatának részleteit
 
 Az összevont identitásról a felügyelt identitásra való áttérés előtt tekintse meg az Azure AD, az Office 365 és más alkalmazások (függő entitások megbízhatóságai) jelenleg AD FS használatát ismertető részt. Pontosabban vegye figyelembe az alábbi táblázatban ismertetett forgatókönyveket:
 
-| Ha a(z) | Majd |
+| Ha a(z) | Ezután a webjegyzethez válassza a |
 |-|-|
 | A AD FS használatát tervezi más alkalmazásokkal (az Azure AD és az Office 365 kivételével). | A tartományok konvertálása után AD FS és Azure AD-t is használhat. Vegye figyelembe a felhasználói élményt. Bizonyos esetekben előfordulhat, hogy a felhasználóknak kétszer kell hitelesíteniük magukat: egyszer az Azure AD-be (ahol a felhasználó SSO-hozzáférést kap más alkalmazásokhoz, például az Office 365-hoz), és újra minden olyan alkalmazáshoz, amely továbbra is a függő entitás megbízhatóságának AD FS kötődik. |
-| A AD FS-példánya nagymértékben testre szabható, és az OnLoad. js fájlban megadott testreszabási beállításokra támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak a Felhasználónév **sAMAccountName** használják a felhasználónevet felhasználói tag helyett A név (UPN), vagy a szervezete nagymértékben kiadta a bejelentkezési élményt. Az OnLoad. js fájl nem duplikálható az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
+| A AD FS-példánya nagymértékben testre szabható, és az OnLoad. js fájlban megadott testreszabási beállításokra támaszkodik (például ha megváltoztatta a bejelentkezési folyamatot, hogy a felhasználók csak az egyszerű felhasználónév (UPN) helyett a **sAMAccountName** használják a felhasználónevet, vagy ha a szervezete nagymértékben kihasználta a bejelentkezési élményt). Az OnLoad. js fájl nem duplikálható az Azure AD-ben. | A folytatás előtt ellenőriznie kell, hogy az Azure AD megfelel-e az aktuális testreszabási követelményeknek. További információért és útmutatásért tekintse meg a AD FS branding és a AD FS testreszabása című szakaszt.|
 | AD FS használatával blokkolhatja a hitelesítési ügyfelek korábbi verzióit.| A [feltételes hozzáférés-vezérlés](https://docs.microsoft.com/azure/active-directory/conditional-access/conditions) és az [Exchange Online ügyfél-hozzáférési szabályok](https://aka.ms/EXOCAR)együttes használatával vegye figyelembe a hitelesítési ügyfelek korábbi verzióit letiltó AD FS vezérlőket. |
 | A felhasználóknak a többtényezős hitelesítést kell végrehajtaniuk a helyszíni multi-Factor Authentication kiszolgálói megoldáson, amikor a felhasználók hitelesítik AD FS.| Felügyelt identitási tartományban a többtényezős hitelesítési kihívás a helyszíni multi-Factor Authentication megoldáson keresztül nem szúrható be a hitelesítési folyamatba. A tartomány átalakítása után azonban használhatja az Azure Multi-Factor Authentication szolgáltatást a többtényezős hitelesítéshez.<br /><br /> Ha a felhasználók jelenleg nem használják az Azure Multi-Factor Authentication-t, egy egyszeri bejelentkezést igénylő felhasználói regisztrációs lépést kell megadnia. Elő kell készítenie és továbbítania kell a tervezett regisztrációt a felhasználók számára. |
 | Jelenleg a AD FS hozzáférés-vezérlési házirendjeit (AuthZ-szabályok) használja az Office 365 elérésének szabályozásához.| Érdemes lehet a szabályzatokat az egyenértékű Azure AD [feltételes hozzáférési szabályzatokkal](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) és az [Exchange Online ügyfél-hozzáférési szabályokkal](https://aka.ms/EXOCAR)helyettesíteni.|
@@ -167,7 +168,7 @@ A Windows 8 és a Windows 7 rendszerű számítógépfiókok esetében a hibrid 
 
 További információ: [hibrid Azure ad-hez csatlakoztatott eszközök konfigurálása](https://docs.microsoft.com/azure/active-directory/device-management-hybrid-azuread-joined-devices-setup).
 
-#### <a name="branding"></a>Branding
+#### <a name="branding"></a>Védjegyezés
 
 Ha a szervezete [testreszabja a AD FS bejelentkezési oldalain](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/ad-fs-user-sign-in-customization) a szervezettel kapcsolatos információk megjelenítéséhez, érdemes lehet hasonló [testreszabásokat felvenni az Azure ad bejelentkezési oldalára](https://docs.microsoft.com/azure/active-directory/customize-branding).
 
@@ -202,7 +203,7 @@ A visszaállítás megtervezéséhez olvassa el az összevonási tervezési és 
 * Felügyelt tartományok átalakítása összevont tartományokra a **Convert-MSOLDomainToFederated** parancsmag használatával.
 * Ha szükséges, konfigurálja a további jogcímek szabályait.
 
-### <a name="plan-communications"></a>Kommunikáció tervezése
+### <a name="plan-communications"></a>A kommunikáció tervezése
 
 Az üzembe helyezés és a támogatás megtervezésének fontos része annak biztosítása, hogy a felhasználók proaktívan tájékoztassanak a közelgő változásokról. A felhasználóknak előre ismerniük kell, hogy milyen élményt jelenthetnek, és mire van szükségük. 
 
@@ -437,7 +438,7 @@ Miután ellenőrizte, hogy az összes felhasználó és ügyfél sikeresen hitel
 
 Ha nem használja a AD FS más célra (azaz más függő entitások megbízhatóságára), akkor a AD FS ezen a ponton is biztonságosan leszerelhető.
 
-### <a name="rollback"></a>Visszaállítási
+### <a name="rollback"></a>Visszaállítás
 
 Ha felfedez egy jelentős problémát, és nem tudja gyorsan feloldani, dönthet úgy, hogy visszaállítja a megoldást az összevonáshoz.
 
@@ -471,7 +472,7 @@ Kezdeményezheti a zökkenőmentes SSO Kerberos-visszafejtési kulcs átváltás
 
 További információ: [hogyan a AZUREADSSOACC-számítógépfiók Kerberos-visszafejtési kulcsának átadása?](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-sso-faq).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg [Azure ad Connect tervezési fogalmakkal](plan-connect-design-concepts.md).
 * Válassza ki a [megfelelő hitelesítést](https://docs.microsoft.com/azure/security/fundamentals/choose-ad-authn).

@@ -3,12 +3,12 @@ title: A munkaterhelések biztonsági mentésének Azure Backup Server használa
 description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környezetet a munkaterhelések Microsoft Azure Backup kiszolgáló (MABS) használatával történő védeleméhez és biztonsági mentéséhez.
 ms.topic: conceptual
 ms.date: 11/13/2018
-ms.openlocfilehash: 7379992eeb441372a9140621f9d90b337ad0d2e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: db2bac3464939edc5dec2ee2947faf7a05ad6812
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74172992"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979863"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
 
@@ -31,7 +31,7 @@ Ez a cikk azt ismerteti, hogyan készítse elő a környezetet a munkaterhelése
 Az Azure-beli virtuális gépen üzembe helyezett MABS biztonsági mentést készíthetnek a virtuális gépekről az Azure-ban, de a biztonsági mentési művelet engedélyezéséhez ugyanabban a tartományban kell lenniük. Az Azure-beli virtuális gépek biztonsági mentésének folyamata ugyanaz marad, mint a helyszíni virtuális gépek biztonsági mentése, azonban a MABS az Azure-ban való üzembe helyezése bizonyos korlátozásokkal rendelkezik. A korlátozással kapcsolatos további információkért lásd: [DPM Azure-beli virtuális gép](https://docs.microsoft.com/system-center/dpm/install-dpm?view=sc-dpm-1807#setup-prerequisites)
 
 > [!NOTE]
-> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-modell használatával üzembe helyezett virtuális gépek visszaállításával kapcsolatos információkat és eljárásokat ismerteti.
+> Az Azure két üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-modell használatával üzembe helyezett virtuális gépek visszaállításával kapcsolatos információkat és eljárásokat ismerteti.
 >
 >
 
@@ -51,7 +51,7 @@ A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal re
 
 Ha nem szeretné futtatni az alapkiszolgálót az Azure-ban, akkor futtathatja a kiszolgálót egy Hyper-V virtuális gépen, egy VMware virtuális gépen vagy egy fizikai gazdagépen. A kiszolgálói hardver ajánlott minimális követelményei két mag és 8 GB RAM. A támogatott operációs rendszerek a következő táblázatban láthatók:
 
-| Operációs rendszer | Platform | SKU |
+| Operációs rendszer | Platform | SKU (Cikkszám) |
 |:--- | --- |:--- |
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials  |
@@ -90,7 +90,7 @@ A tárreplikációs beállítás szerkesztése:
 
 ### <a name="downloading-the-software-package"></a>A szoftvercsomag letöltése
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Ha már meg van nyitva egy Recovery Services-tároló, folytassa a 3. lépéssel. Ha nincs megnyitva Recovery Services tároló, de a Azure Portal, a főmenüben kattintson a **Tallózás**gombra.
 
    * Az erőforrások listájába írja be a következőt: **Recovery Services**.
@@ -113,7 +113,7 @@ A tárreplikációs beállítás szerkesztése:
 
     A megnyíló **első lépések a Backup (biztonsági mentés** ) paneljén a **biztonsági mentési célok** automatikusan ki lesznek választva.
 
-    ![Backup-goals-default-opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
+    ![Backup-goals-default-Opened](./media/backup-azure-microsoft-azure-backup/getting-started.png)
 
 5. A **biztonsági mentés célja** panelen, a **Hol van a számítási feladatok futtatása** menü, válassza **a**helyszíni lehetőséget.
 
@@ -283,13 +283,13 @@ Ugyanakkor az Azure-előfizetésnek kifogástalan állapotban kell lennie. Az el
 
 Ha már ismeri az Azure-kapcsolat állapotát és az Azure-előfizetést, az alábbi táblázat segítségével megtudhatja, milyen hatással van a biztonsági mentési/helyreállítási funkciókra.
 
-| Kapcsolat állapota | Azure-előfizetés | Biztonsági mentés az Azure-ba | Biztonsági mentés lemezre | Visszaállítás az Azure-ból | Visszaállítás lemezről |
+| Kapcsolat állapota | Azure-előfizetés | Biztonsági mentés az Azure platformra | Biztonsági mentés lemezre | Visszaállítás az Azure-ból | Visszaállítás lemezről |
 | --- | --- | --- | --- | --- | --- |
-| Csatlakozva |Aktív |Engedélyezett |Engedélyezett |Engedélyezett |Engedélyezett |
-| Csatlakozva |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Csatlakozva |Aktív |Engedélyezve |Engedélyezve |Engedélyezve |Engedélyezve |
+| Csatlakozva |Lejárt |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Csatlakozva |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
-| Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
-| Elveszett kapcsolat > 15 nap |Lejárt |Leállítva |Leállítva |Engedélyezett |Engedélyezett |
+| Elveszett kapcsolat > 15 nap |Aktív |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
+| Elveszett kapcsolat > 15 nap |Lejárt |Leállítva |Leállítva |Engedélyezve |Engedélyezve |
 | Elveszett kapcsolat > 15 nap |Felfüggesztést |Leállítva |Leállítva |Leállított és Azure helyreállítási pontok törölve |Leállítva |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Helyreállítás a kapcsolat elvesztése miatt
@@ -339,7 +339,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [Részletek](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

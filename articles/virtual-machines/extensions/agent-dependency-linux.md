@@ -14,16 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
-ms.openlocfilehash: 46b0ddeeb70e263723b657ef3150dc5548fcc742
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 82f9c5a67cb056752cf8310be3b7c9f0bd2501e9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073875"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979652"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-linux"></a>A Linux rendszerhez készült virtuálisgép-bővítmény Azure Monitor
 
-Virtuális gépek térkép funkció az Azure Monitor az adatok lekérése a Microsoft Dependency agent. Az Azure-beli virtuális gép függőségi ügynökének a Linux rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti az Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és üzembe helyezési lehetőségeit Linuxra.
+A Azure Monitor for VMs Map szolgáltatás a Microsoft függőségi ügynöktől kapja meg az adatait. Az Azure-beli virtuális gép függőségi ügynökének a Linux rendszerhez készült virtuálisgép-bővítményét a Microsoft közzétette és támogatja. A bővítmény telepíti a függőségi ügynököt az Azure Virtual Machines szolgáltatásban. Ez a dokumentum részletesen ismerteti az Azure-beli virtuális gép függőségi ügynökének támogatott platformokat, konfigurációkat és üzembe helyezési lehetőségeit Linuxra.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -71,20 +71,20 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 }
 ```
 
-### <a name="property-values"></a>Tulajdonságok értékei
+### <a name="property-values"></a>Tulajdonságértékek
 
-| Name (Név) | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
-| publisher | Microsoft.Azure.Monitoring.DependencyAgent |
+| közzétevő | Microsoft. Azure. monitoring. DependencyAgent |
 | type | DependencyAgentLinux |
-| typeHandlerVersion | 9.5 |
+| typeHandlerVersion | 9,5 |
 
 ## <a name="template-deployment"></a>Sablonalapú telepítés
 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal helyezhetők üzembe. Az Azure Resource Manager sablon előző szakaszában részletes JSON-sémát használva futtathatja az Azure-beli virtuális gép függőségi ügynökének bővítményét egy Azure Resource Manager-sablon központi telepítése során.
 
-A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba. Azt is megteheti, hogy egy Resource Manager JSON-sablon gyökerére vagy legfelső szintjére helyezi. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információkért lásd: [állítsa be a nevét és típusát gyermekerőforrásait](../../azure-resource-manager/child-resource-name-type.md).
+A virtuálisgép-bővítmények JSON-je beágyazható a virtuális gép erőforrásaiba. Azt is megteheti, hogy egy Resource Manager JSON-sablon gyökerére vagy legfelső szintjére helyezi. A JSON elhelyezése hatással van az erőforrás nevének és típusának értékére. További információ: [a gyermek erőforrások nevének és típusának beállítása](../../azure-resource-manager/templates/child-resource-name-type.md).
 
 Az alábbi példa azt feltételezi, hogy a függőségi ügynök bővítménye a virtuális gép erőforrásán belül van beágyazva. A bővítmény erőforrásának beágyazásakor a rendszer a JSON-t a virtuális gép `"resources": []` objektumára helyezi.
 
@@ -127,7 +127,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerében helyezi el, az erőforrá
 }
 ```
 
-## <a name="azure-cli-deployment"></a>Az Azure CLI-telepítés
+## <a name="azure-cli-deployment"></a>Azure CLI üzembe helyezése
 
 Az Azure CLI használatával telepítheti a függőségi ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre.  
 
@@ -141,7 +141,7 @@ az vm extension set \
     --version 9.5 
 ```
 
-## <a name="troubleshoot-and-support"></a>Hibaelhárítás és támogatás
+## <a name="troubleshoot-and-support"></a>Hibakeresés és támogatás
 
 ### <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -151,7 +151,7 @@ A bővítmények állapotával kapcsolatos adatok a Azure Portal és az Azure CL
 az vm extension list --resource-group myResourceGroup --vm-name myVM -o table
 ```
 
-Bővítmény végrehajtás kimenetének a rendszer naplózza a következő fájlt:
+A bővítmény végrehajtásának kimenete a következő fájlba van naplózva:
 
 ```
 /opt/microsoft/dependcency-agent/log/install.log 

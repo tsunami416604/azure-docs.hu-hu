@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 08/02/2017
 ms.author: mimckitt
-ms.openlocfilehash: 03e1689ca495d3fd3c8efce6b039386711a49472
-ms.sourcegitcommit: d48afd9a09f850b230709826d4a5cd46e57d19fa
+ms.openlocfilehash: 86ddda8537a4b61c5432072077c183ded2556624
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75904909"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973148"
 ---
 # <a name="how-to-update-the-azure-linux-agent-on-a-vm"></a>Az Azure Linux-ügynök frissítése egy virtuális gépen
 
@@ -276,6 +276,75 @@ sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
 
 ```bash
 sudo systemctl restart waagent.service
+```
+
+## <a name="debian"></a>Debian
+
+### <a name="debian-7-jesse-debian-7-stretch"></a>Debian 7 "Jesse"/Debian 7 "stretch"
+
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
+
+```bash
+dpkg -l | grep waagent
+```
+
+#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótára
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>A csomag legújabb verziójának telepítése
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="enable-agent-auto-update"></a>Ügynök automatikus frissítésének engedélyezése
+A Debian ezen verziója nem rendelkezik > = 2.0.16 verzióval, ezért az AutoUpdate nem érhető el. A fenti parancs kimenete megmutatja, hogy a csomag naprakész-e.
+
+
+
+### <a name="debian-8-jessie--debian-9-stretch"></a>Debian 8 "Jessie"/Debian 9 "stretch"
+
+#### <a name="check-your-current-package-version"></a>A csomag aktuális verziójának keresése
+
+```bash
+apt list --installed | grep waagent
+```
+
+#### <a name="update-package-cache"></a>Frissítési csomag gyorsítótára
+
+```bash
+sudo apt-get -qq update
+```
+
+#### <a name="install-the-latest-package-version"></a>A csomag legújabb verziójának telepítése
+
+```bash
+sudo apt-get install waagent
+```
+
+#### <a name="ensure-auto-update-is-enabled"></a>Győződjön meg arról, hogy az automatikus frissítés engedélyezve van
+Először ellenőrizze, hogy engedélyezve van-e a következő:
+
+```bash
+cat /etc/waagent.conf
+```
+
+Az "AutoUpdate. enabled" megkeresése. Ha ezt a kimenetet látja, engedélyezve van a következő:
+
+```bash
+AutoUpdate.Enabled=y
+AutoUpdate.Enabled=y
+```
+
+A Futtatás engedélyezése:
+
+```bash
+sudo sed -i 's/# AutoUpdate.Enabled=n/AutoUpdate.Enabled=y/g' /etc/waagent.conf
+Restart the waagent service
+sudo systemctl restart walinuxagent.service
 ```
 
 ## <a name="oracle-linux-6-and-oracle-linux-7"></a>Oracle Linux 6 és Oracle Linux 7

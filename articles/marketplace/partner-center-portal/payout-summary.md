@@ -7,12 +7,12 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/10/2019
-ms.openlocfilehash: 38717ae103ac72d35042ced9bf662d295ed8a29b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 997014263f0d12e7cc16a761152870c2ee63d6ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75931817"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979701"
 ---
 # <a name="payout-reporting"></a>Kifizetési jelentések
 
@@ -52,7 +52,7 @@ Ha az Azure Marketplace-en értékesít ajánlatokat, akkor a sikeres kifizetés
 | A tranzakció nem áll készen a kifizetésre | Számlázás folyamatban | Következő becsült fizetés: a kifizetés állapota feldolgozatlan állapotban van.  |
 | Kifizetés állapota |  | Feldolgozatlan <br> A kereset jogosult a fizetésre. Ebben az állapotban marad az ösztönző programhoz tartozó program útmutatójában meghatározott hűtési időszakra vonatkozóan. <br> <br> Közelgő <br> Fizetési rendelés – függőben lévő belső felülvizsgálatok a kifizetés feldolgozása előtt. <br> <br> Küldött <br> A rendszer elküldje a fizetést a banknak. |
 
-## <a name="customer-types"></a>Ügyfelek típusai 
+## <a name="customer-types"></a>Ügyfelek típusai
 
 ### <a name="enterprise-agreement"></a>Nagyvállalati szerződés
 
@@ -66,7 +66,7 @@ Az ügyfelek bankkártyával és havi számlával is fizethetnek. Ebben az esetb
 
 Például, ha az ügyfél bankkártyával vásárol.
 
-## <a name="corelation-between-payout-and-usage"></a>A kifizetések és a használat közötti Corel 
+## <a name="corelation-between-payout-and-usage"></a>A kifizetések és a használat közötti Corel
 
 |Leírás    |    Dátum  | Megrendelések/használat  | Kifizetés |
 |----------|----------|-----------|-------------|
@@ -74,11 +74,11 @@ Például, ha az ügyfél bankkártyával vásárol.
 |Befejezési időszak (hónap)   | Augusztus 30, 2019 | | |
 |Számlázási dátum | Szeptember 1., 2019 | | |
 |Ügyfél-fizetési dátum | Szeptember 1., 2019 | | |
-|Letéti időszak (csak bankkártyák, 30 nap) | Szeptember 1., 2019 – szeptember 30, 2019 | | **Korrelációs attribútumok rendelései:** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Feldolgozatlan |
+|Letéti időszak (csak bankkártyák, 30 nap) | Szeptember 1., 2019 – szeptember 30, 2019 | | **Korrelációs attribútumok rendelései:** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Feldolgozatlan |
 |Gyűjtési időszak kezdete | Szeptember 1., 2019 | | |
 |Gyűjtési időszak vége (legfeljebb, 30 nap) | Szeptember 30., 2019 | | |
-|Kifizetési számítás dátuma (havonta, 15-én) | Október 1, 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li>Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Közelgő |
-|Kifizetés dátuma | Október 15., 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Fizetés elküldése |
+|Kifizetési számítás dátuma (havonta, 15-én) | Október 1, 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li>Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Közelgő |
+|Kifizetés dátuma | Október 15., 2019 | | **Korrelációs attribútumok** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** Fizetés elküldése |
 
 ### <a name="enterprise-agreement-quarterlymonthly-customers"></a>Nagyvállalati szerződés (negyedévente/havonta)
 
@@ -93,37 +93,37 @@ Például, ha az ügyfél bankkártyával vásárol.
 |Gyűjtési időszak vége (maximum, 90 nap) | Jan. január 15., 2020 | | |
 |Ügyfél-fizetési dátum | Dec. 30, 2019 | | |
 |Kifizetés kiszámítása | Jan. január 15., 2020 | | |
-|Kifizetés dátuma | Február 15., 2020 | | **Negyedéves ügyfelek esetén** <br> <br> **Rendelések jelentés** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>EarningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** elküldve |
+|Kifizetés dátuma | Február 15., 2020 | | **Negyedéves ügyfelek esetén** <br> <br> **Rendelések jelentés** <br> <ul><li>AssetId</li> <li>Ügyfél-azonosító</li> <li> Ügyfél neve</li> </ul> <br> **Használat** <br> <ul> <li>AssetId</li> <li>CustomerId</li> <li>Ügyfél neve</li> <li>OrderId</li> <li>LineItemId</li> <li>transactionAmount</li> <li>earningAmountInLastPaymentCurrency</li> </ul> <br> **Kifizetés állapota:** elküldve |
 
 ## <a name="transaction-history-download-export"></a>Tranzakciós előzmények letöltésének exportálása
 
-Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus, a dátum, a társított tranzakció összege, az ügyfél, a termék és az ösztönző programra vonatkozó egyéb tranzakciós elemek letöltését. 
+Ez a beállítás letölti a tranzakciós Előzmények lapon, a keresett típus, a dátum, a társított tranzakció összege, az ügyfél, a termék és az ösztönző programra vonatkozó egyéb tranzakciós elemek letöltését.
 
-| Oszlop neve     | Leírás    | 
+| Oszlop neve     | Leírás    |
 |-------------|-------------------------------|
 | earningId                      | Az egyes keresések egyedi azonosítója                                                                                                       |
-| participantId                  | A program keretében keresett partner elsődleges identitása                                                                            | 
-| participantIdType              | Az ösztönző programokhoz és az értékesítőhöz általában az áruházbeli programok és az Azure Marketplace program azonosítója                                          | 
-| participantName                | A jövedelemszerzési partner neve                                                                                                              | 
+| participantId                  | A program keretében keresett partner elsődleges identitása                                                                            |
+| participantIdType              | Az ösztönző programokhoz és az értékesítőhöz általában az áruházbeli programok és az Azure Marketplace program azonosítója                                          |
+| participantName                | A jövedelemszerzési partner neve                                                                                                              |
 | partnerCountryCode             | A kereső partner helye/országa                                                                                                  |
-| Programnév                    | Ösztönző/tároló program neve                                                                                                             | 
-| Tranzakcióazonosító                  | A tranzakció egyedi azonosítója                                                                                                    | 
-| transactionCurrency            | A pénznem, amelyben az eredeti ügyfél-tranzakció történt (nem a partner helyének pénzneme)                                     | 
-| transactionDate                | A tranzakció dátuma. Olyan programok esetében hasznos, amelyekben sok tranzakció járul hozzá egy adott keresethez                                           | 
-| transactionExchangeRate        | A megfelelő tranzakció USD-értékének megjelenítésére használt árfolyam                                                                 | 
-| transactionAmount              | A tranzakció összege az eredeti tranzakció pénznemében, amely alapján létrejött a kereset                                              | 
-| transactionAmountUSD           | Tranzakció összege USD-ben                                                                                                                | 
-| szintje                          | Üzleti szabályt jelez a beszerzéshez                                                                                                  | 
-| earningRate                    | Tranzakciós mennyiségre alkalmazott ösztönző arány a kereset létrehozásához                                                                      | 
-| quantity                       | A programtól függően változhat. A tranzakciós programok számlázott mennyiségét jelzi.                                                            | 
+| Programnév                    | Ösztönző/tároló program neve                                                                                                             |
+| Tranzakcióazonosító                  | A tranzakció egyedi azonosítója                                                                                                    |
+| transactionCurrency            | A pénznem, amelyben az eredeti ügyfél-tranzakció történt (nem a partner helyének pénzneme)                                     |
+| transactionDate                | A tranzakció dátuma. Olyan programok esetében hasznos, amelyekben sok tranzakció járul hozzá egy adott keresethez                                           |
+| transactionExchangeRate        | A megfelelő tranzakció USD-értékének megjelenítésére használt árfolyam                                                                 |
+| transactionAmount              | A tranzakció összege az eredeti tranzakció pénznemében, amely alapján létrejött a kereset                                              |
+| transactionAmountUSD           | Tranzakció összege USD-ben                                                                                                                |
+| szintje                          | Üzleti szabályt jelez a beszerzéshez                                                                                                  |
+| earningRate                    | Tranzakciós mennyiségre alkalmazott ösztönző arány a kereset létrehozásához                                                                      |
+| quantity                       | A programtól függően változhat. A tranzakciós programok számlázott mennyiségét jelzi.                                                            |
 | quantityType                   | A mennyiség típusát jelzi, például: számlázott mennyiség, MAU                                                                                     |
-| earningType                    | Azt jelzi, hogy díj, árengedmény, együttműködés, eladás stb.                                                                                          | 
+| earningType                    | Azt jelzi, hogy díj, árengedmény, együttműködés, eladás stb.                                                                                          |
 | earningAmount                  | Jövedelemszerzési összeg az eredeti tranzakció pénznemében                                                                                      |
 | earningAmountUSD               | Jövedelemszerzési összeg USD-ben                                                                                                                    |
 | earningDate                    | A kereset dátuma                                                                                                                      |
 | calculationDate                | A keresett adat kiszámításának dátuma a rendszeren                                                                                            |
 | earningExchangeRate            | A megfelelő USD összeg megjelenítéséhez használt árfolyam                                                                                  |
-| exchangeRateDate               | Az EarningAmount USD kiszámításához használt Exchange-árfolyam dátuma                                                                                   | 
+| exchangeRateDate               | Az EarningAmount USD kiszámításához használt Exchange-árfolyam dátuma                                                                                   |
 | paymentAmountWOTax             | Fizetési összeg (ÁFA nélkül) a csak az "eljuttatott" kifizetésekért fizetendő pénznemért                                                                 |
 | paymentCurrency                | Fizessen a partner által a fizetési profilban kiválasztott pénznemre. Csak az eljuttatott kifizetések esetében látható                                                   |
 | paymentExchangeRate            | A paymentAmountWOTax a fizetési pénznemben való kiszámításához használt Exchange-árfolyam a ExchangeRateDate használatával                                            |

@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: alzam
-ms.openlocfilehash: 732f4b460a3a97f84dd79a37715aff972e8482ed
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: eb8f0204771b204af740c4ddc8e359499520a012
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934534"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045944"
 ---
 # <a name="set-up-alerts-on-diagnostic-log-events-from-vpn-gateway"></a>Riasztások beállítása a diagnosztikai naplózási eseményekről VPN Gateway
 
@@ -56,10 +56,9 @@ A következő példa egy riasztást hoz létre egy leválasztási eseményhez, a
 6. Adja meg a részleteket, és győződjön meg arról, hogy a **küldés log Analytics** és **TunnelDiagnosticLog** be van jelölve. Válassza ki a 3. lépésben létrehozott Log Analytics munkaterületet.
 
    ![Bejelölt jelölőnégyzetek](./media/vpn-gateway-howto-setup-alerts-virtual-network-gateway-log/log-alert5.png  "Válassza ezt:")
-   
-> [!NOTE]
-> Az adat kezdeti megjelenítéséhez több óráig is eltarthat.
->
+
+   > [!NOTE]
+   > Az adat kezdeti megjelenítéséhez több óráig is eltarthat.
 
 7. Nyissa meg a virtuális hálózati átjáró erőforrásának áttekintését, és a **figyelés** lapon válassza a **riasztások** lehetőséget. Ezután hozzon létre egy új riasztási szabályt, vagy szerkesszen egy meglévő riasztási szabályt.
 

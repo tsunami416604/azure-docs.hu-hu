@@ -7,18 +7,18 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
-ms.openlocfilehash: a298505779def353834c294f7b5a406720fdd46c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 2f92c2b800c6d30cc5f365e6d24925a70d3db55a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73936168"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980319"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
 
 Az [Azure Site Recovery](site-recovery-overview.md) szolgáltatás a helyszíni számítógépek és az Azure-beli virtuális gépek replikálásának, feladatátvételének és feladat-visszavételének kezelésével és irányításával járul hozzá a vészhelyreállítási stratégia megvalósításához.
 
-Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizikai Windows-és Linux-kiszolgálók vész-helyreállítását az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Az Azure és a helyszíni előfeltételek beállítása
@@ -71,9 +71,9 @@ Hozzon létre egy [Azure-hálózatot](../virtual-network/quick-create-portal.md)
 - A hálózatnak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak
 
 
-## <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
+## <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md).
+Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md).
 
 - Site Recovery replikálja a helyszíni gépeket az Azure Storage-ba. Az Azure-beli virtuális gépek a tárolóból a feladatátvételt követően jönnek létre.
 - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
@@ -178,7 +178,7 @@ Engedélyezze a replikációt az egyes kiszolgálókon.
 7. Válassza ki azt az Azure-hálózatot, valamint alhálózatot, amelyhez a feladatátvételt követően felálló Azure virtuális gépek csatlakozni fognak.
 8. Ha a megadott hálózati beállításokat az összes védelemre kijelölt gépre szeretné alkalmazni, válassza a **Beállítás most a kijelölt gépekhez** lehetőséget. Ha az egyes gépeknél külön-külön szeretné beállítani az Azure-hálózatot, kattintson a **Beállítás később** elemre. 
 9. A **fizikai gépek**területen kattintson a **+ fizikai gép**elemre. Adja meg a nevet és az IP-címet. Válassza ki a replikálni kívánt gép operációs rendszerét. A kiszolgálók felderítése és listázása néhány percet vesz igénybe. 
-10. A **tulajdonságok** > **tulajdonságok konfigurálása**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
+10. A **Tulajdonságok** > **Tulajdonságok konfigurálása** mezőben válassza ki a fiókot, amelynek használatával a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen.
 11. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. 
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 

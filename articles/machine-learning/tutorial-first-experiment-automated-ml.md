@@ -10,12 +10,12 @@ ms.author: tzvikei
 author: tsikiksr
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: c13b2a24147c542e36b78e8ae17af8e85414cd74
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 93cbf8e9e60ef48e1ff3516dd4e9e123f70e0f42
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533460"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982438"
 ---
 # <a name="tutorial-create-your-first-classification-model-with-automated-machine-learning"></a>Oktatóanyag: az első besorolási modell létrehozása automatizált gépi tanulással
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -138,9 +138,9 @@ A következő kísérletet a Azure Machine Learning Studióban, egy összevont f
         Ellenőrzés | Válasszon egy több ellenőrzési típust és a tesztek számát.|Érvényesítés típusa:<br>&nbsp;k-szor&nbsp;kereszt-ellenőrzési <br> <br> Érvényességek száma: 2
         Párhuzamosság| A végrehajtott párhuzamos ismétlések maximális száma és az ismétlések által használt magok száma| &nbsp;párhuzamos&nbsp;ismétlések maximális száma: 5<br> &nbsp;&nbsp;magok maximális száma&nbsp;iteráció esetén: nincs
         
-        Kattintson az **OK** gombra.
+        Kattintson a **Mentés** gombra.
 
-1. Válassza a **Létrehozás** lehetőséget a kísérlet futtatásához. Megnyílik a **futtatási részletek** képernyő a **futtatási állapottal** , amikor a kísérlet előkészítése megkezdődik.
+1. A kísérlet futtatásához kattintson a **Befejezés** gombra. Megnyílik a **futtatási részletek** képernyő a **futtatási állapottal** , amikor a kísérlet előkészítése megkezdődik.
 
 >[!IMPORTANT]
 > Az előkészítés **10-15 percet** vesz igénybe a kísérlet futtatásának előkészítése érdekében.

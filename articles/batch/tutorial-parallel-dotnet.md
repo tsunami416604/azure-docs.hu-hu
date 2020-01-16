@@ -2,23 +2,23 @@
 title: Párhuzamos számítási feladat feldolgozása – Azure Batch .NET
 description: Oktatóanyag – Médiafájlok párhuzamos átkódolása ffmpeg segítségével az Azure Batchben a Batch .NET ügyfélkódtár használatával
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 12/21/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 103d09da3fedf9c31d4e5255456e63cab34bc0ee
-ms.sourcegitcommit: 267a9f62af9795698e1958a038feb7ff79e77909
+ms.openlocfilehash: 6f12f54e510cb07fcf522d2fd5e2e83fce4dfa96
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70258583"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029261"
 ---
-# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számítási feladat futtatása Azure Batch a .NET API használatával
+# <a name="tutorial-run-a-parallel-workload-with-azure-batch-using-the-net-api"></a>Oktatóanyag: Párhuzamos számításifeladat-futtatás az Azure Batchben a .NET API használatával
 
 Az Azure Batch használatával hatékonyan futtathat nagy méretű párhuzamos és nagy teljesítményű feldolgozási (high-performance computing, HPC) Batch-feladatokat az Azure-ban. Ez az oktatóanyag végigvezeti egy, a Batch segítségével párhuzamos számításifeladat-futtatást bemutató C#-példán. Megismerheti a Batch-alkalmazások általános munkafolyamatát, valamint azt, hogyan kommunikálhat programkódon keresztül a Batch- és Storage-erőforrásokkal. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -95,7 +95,7 @@ const string appPackageVersion = "3.4";
 
 ### <a name="build-and-run-the-sample-project"></a>A mintaprojekt létrehozása és futtatása
 
-Hozza létre és futtassa az alkalmazást a Visual Studióban vagy a parancssorban a `dotnet build` és a `dotnet run` paranccsal. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. A Visual Studióban például:
+Hozza létre és futtassa az alkalmazást a Visual Studióban vagy a parancssorban a `dotnet build` és a `dotnet run` paranccsal. Az alkalmazás futtatása után tekintse át a kódot annak megismerése érdekében, hogy mit csinálnak az alkalmazás egyes részei. Ha például a Visual Studióban:
 
 * Kattintson a jobb gombbal a megoldásra a Megoldáskezelőben, és kattintson a **Megoldás fordítása** elemre. 
 
@@ -175,8 +175,8 @@ Ezt követően a rendszer feltölti a fájlokat a bemeneti tárolóba a helyi `I
 
 A `Program.cs` két metódusa vesz részt a fájlok feltöltésében:
 
-* `UploadFilesToContainerAsync`: ResourceFile objektumok gyűjteményét adja vissza, és belsőleg meghívja `UploadResourceFileToContainerAsync` a `inputFilePaths` paraméterben átadott fájlok feltöltését.
-* `UploadResourceFileToContainerAsync`: Feltölt minden fájlt blobként a bemeneti tárolóba. A fájl feltöltése után közös hozzáférésű jogosultságkódot (SAS) szerez be a blobhoz, és visszaadja az azt jelölő ResourceFile-objektumot.
+* `UploadFilesToContainerAsync`: A ResourceFile-objektumok gyűjteményét adja vissza, és belsőleg meghívja az `UploadResourceFileToContainerAsync` metódust, hogy feltöltse a `inputFilePaths` paraméterben átadott fájlokat.
+* `UploadResourceFileToContainerAsync`: Minden fájlt blobként tölt fel a bemeneti tárolóba. A fájl feltöltése után közös hozzáférésű jogosultságkódot (SAS) szerez be a blobhoz, és visszaadja az azt jelölő ResourceFile-objektumot.
 
 ```csharp
 string inputPath = Path.Combine(Environment.CurrentDirectory, "InputFiles");
@@ -248,7 +248,7 @@ await job.CommitAsync();
 
 A minta tevékenységeket hoz létre a feladatban az `AddTasksAsync` metódus meghívásával, amely létrehoz egy listát a [CloudTask](/dotnet/api/microsoft.azure.batch.cloudtask)-objektumokról. Minden `CloudTask` az ffmpeg futtatásával dolgoz fel egy bemeneti `ResourceFile`-objektumot egy [CommandLine](/dotnet/api/microsoft.azure.batch.cloudtask.commandline) tulajdonság segítségével. Az ffmpeg már korábban, a készlet létrehozásakor telepítve lett minden egyes csomóponton. Itt a parancssor az ffmpeg futtatásával konvertálja az egyes bemeneti MP4-videofájlokat MP3-hangfájllá.
 
-A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL`outputContainerSasUrl`-címet () kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel az `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után lesz feltöltve a tárolóba (`OutputFileUploadCondition.TaskSuccess`). További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
+A minta a parancssor futtatása után létrehoz egy [OutputFile](/dotnet/api/microsoft.azure.batch.outputfile) objektumot az MP3-fájlhoz. A rendszer az összes tevékenység kimeneti fájlját (ebben az esetben egyet) feltölti egy, a társított Storage-fiókban lévő tárolóba a tevékenység [OutputFiles](/dotnet/api/microsoft.azure.batch.cloudtask.outputfiles) tulajdonsága segítségével. Korábban a kód mintájában egy közös hozzáférésű aláírási URL-címet (`outputContainerSasUrl`) kapott, amely írási hozzáférést biztosít a kimeneti tárolóhoz. Jegyezze fel a `outputFile` objektumon beállított feltételeket. Egy tevékenységből származó kimeneti fájl csak a feladat sikeres befejeződése után (`OutputFileUploadCondition.TaskSuccess`) lesz feltöltve a tárolóba. További részletekért tekintse meg a GitHubon a teljes [kód mintát](https://github.com/Azure-Samples/batch-dotnet-ffmpeg-tutorial) .
 
 Ezt követően a minta tevékenységeket ad a feladathoz az [AddTaskAsync](/dotnet/api/microsoft.azure.batch.joboperations.addtaskasync) metódussal, amely várólistára helyezi azokat a számítási csomópontokon való futtatáshoz.
 
@@ -318,7 +318,7 @@ A tevékenységek futtatása után az alkalmazás automatikusan törli a létreh
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, a Batch-fiókot és a Storage-fiókot. Ehhez az Azure Portalon válassza ki a Batch-fiókhoz tartozó erőforráscsoportot, és kattintson az **Erőforráscsoport törlése** elemre.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

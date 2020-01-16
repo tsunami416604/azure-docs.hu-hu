@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: d131e0112070dcc60e601b2859e8c9df8d40764a
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: b48c43f90be3f43b05dcb4028c774836ffd196b7
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084348"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045972"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-c-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub eszköz streamen egy C# proxy alkalmazással (előzetes verzió)
 
@@ -152,7 +152,7 @@ dotnet run {DeviceConnectionString} localhost 22
 
 ### <a name="run-the-service-local-proxy-application"></a>A szolgáltatás helyi proxy alkalmazásának futtatása
 
-Egy másik helyi terminál ablakban navigáljon `device-streams-proxy/service` a kibontott projekt mappájába. A következő információk hasznosak maradnak:
+Egy másik helyi terminál ablakban navigáljon `iot-hub/quickstarts/device-streams-proxy/service` a kibontott projekt mappájába. A következő információk hasznosak maradnak:
 
 | Paraméter neve | Paraméter értéke |
 |----------------|-----------------|

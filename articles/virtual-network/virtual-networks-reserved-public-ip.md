@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/12/2018
 ms.author: genli
-ms.openlocfilehash: c1de86c1d12109853bb5d6d1aac4143caab9199f
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5bcbb8c6845928cf21b5b6a1c04f609305bd7983
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638221"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979532"
 ---
 # <a name="reserved-ip-addresses-classic-deployment"></a>Fenntartott IP címek (klasszikus üzembe helyezés)
 
@@ -28,7 +28,7 @@ ms.locfileid: "75638221"
 Ha meg szeretné akadályozni, hogy az IP-címek módosítva legyenek, fenntarthat egy IP-címet. A fenntartott IP-címek csak VIP-ként használhatók, így biztosítható, hogy a felhőalapú szolgáltatás IP-címe azonos maradjon, még akkor is, ha az erőforrások le vannak állítva vagy le vannak állítva (fel van foglalva). Emellett a virtuális IP-címekhez használt meglévő dinamikus IP-címeket a fenntartott IP-címekre is konvertálhatja.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Megtudhatja, hogyan foglalhat le statikus nyilvános IP-címet a [Resource Manager](virtual-network-ip-addresses-overview-arm.md)-alapú üzemi modell használatával.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. Megtudhatja, hogyan foglalhat le statikus nyilvános IP-címet a [Resource Manager](virtual-network-ip-addresses-overview-arm.md)-alapú üzemi modell használatával.
 
 Ha többet szeretne megtudni az Azure-beli IP-címekről, olvassa el az [IP-címekről](virtual-network-ip-addresses-overview-classic.md) szóló cikket.
 

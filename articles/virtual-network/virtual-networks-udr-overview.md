@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 10/26/2017
 ms.author: malop
 ms.reviewer: kumud
-ms.openlocfilehash: 4132dacbb628051e674952806cb6b606ee915525
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c6ea57ac30a1b4d228a19c3be6a794b3d2175171
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644614"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75973031"
 ---
 # <a name="virtual-network-traffic-routing"></a>Virtuális hálózat forgalmának útválasztása
 
@@ -69,7 +69,7 @@ Az Azure további alapértelmezett rendszerútvonalakat ad hozzá a különböz�
 * **VirtualNetworkServiceEndpoint**: Bizonyos szolgáltatások nyilvános IP-címeit az Azure az útvonaltáblához adja, amikor engedélyezi a szolgáltatás egyik szolgáltatásvégpontját. A szolgáltatásvégpontok a virtuális hálózatokon lévő egyéni alhálózatokhoz engedélyezve vannak, ezért az útvonal csak olyan alhálózat útvonaltáblázatához lesz hozzáadva, amelyhez a szolgáltatásvégpont engedélyezve van. Az Azure-szolgáltatások nyilvános IP-címei rendszeresen változnak. Az Azure automatikusan kezeli az útvonaltáblában lévő címeket a címek változásakor. További információk a [virtuális hálózati szolgáltatásvégpontokról](virtual-network-service-endpoints-overview.md) és azokról a szolgáltatásokról, amelyekhez szolgáltatásvégpontokat hozhat létre.<br>
 
     > [!NOTE]
-    > A **Virtuális hálózatok közötti társviszony** és a **VirtualNetworkServiceEndpoint** következő ugrási típusokat csak az Azure Resource Manager-alapú üzemi modellel létrehozott virtuális hálózatokban lévő alhálózatok útvonaltábláihoz adja hozzá a rendszer. A következő ugrási típusokat a rendszer nem adja hozzá a klasszikus üzemi modellel létrehozott virtuális hálózati alhálózatokkal társított útvonaltáblákhoz. További információ az Azure [üzemi modellekről](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    > A **Virtuális hálózatok közötti társviszony** és a **VirtualNetworkServiceEndpoint** következő ugrási típusokat csak az Azure Resource Manager-alapú üzemi modellel létrehozott virtuális hálózatokban lévő alhálózatok útvonaltábláihoz adja hozzá a rendszer. A következő ugrási típusokat a rendszer nem adja hozzá a klasszikus üzemi modellel létrehozott virtuális hálózati alhálózatokkal társított útvonaltáblákhoz. További információ az Azure [üzemi modellekről](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 
 ## <a name="custom-routes"></a>Egyéni útvonalak
 
@@ -101,7 +101,7 @@ Felhasználó által megadott útvonalak esetén nem adhat meg **Virtuális hál
 
 ## <a name="next-hop-types-across-azure-tools"></a>Következő ugrási típusok az Azure-eszközök között
 
-A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az Azure Portal és a parancssori eszközök között, valamint az Azure Resource Manager és a klasszikus üzemi modellek között. A következő táblázat felsorolja a neveket, amelyekkel a különféle eszközök és az [üzembehelyezési modellek](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a következő ugrások típusaira hivatkoznak:
+A következő ugrás típusaihoz megjelenített és hivatkozott név eltér az Azure Portal és a parancssori eszközök között, valamint az Azure Resource Manager és a klasszikus üzemi modellek között. A következő táblázat felsorolja a neveket, amelyekkel a különféle eszközök és az [üzembehelyezési modellek](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) a következő ugrások típusaira hivatkoznak:
 
 |A következő ugrás típusa                   |Azure CLI és PowerShell (Resource Manager) |Azure klasszikus parancssori felület és PowerShell (klasszikus)|
 |-------------                   |---------                                       |-----|

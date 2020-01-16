@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/03/2020
 ms.author: b-juche
-ms.openlocfilehash: f65e715c237309d062f48ffb85f03a77fd1be3ba
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9559f1d52f87314670162482e10714dad13be5bb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891053"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046161"
 ---
 # <a name="faqs-about-azure-netapp-files"></a>Gyakori kérdések a Azure NetApp Files
 
@@ -201,3 +201,4 @@ Nem. Az Azure import/export szolgáltatás jelenleg nem támogatja a Azure NetAp
 - [Microsoft Azure Virtual Network GYIK](https://docs.microsoft.com/azure/virtual-network/virtual-networks-faq)
 - [Azure-támogatáskérések létrehozása](https://docs.microsoft.com/azure/azure-portal/supportability/how-to-create-azure-support-request)
 - [Azure Data Box](https://docs.microsoft.com/azure/databox-family/)
+- [A Azure NetApp Files SMB-teljesítményével kapcsolatos gyakori kérdések](azure-netapp-files-smb-performance.md)

@@ -3,12 +3,12 @@ title: Rendszerképek zárolása
 description: Adja meg a tárolók rendszerképének vagy tárházának attribútumait, hogy ne lehessen törölni vagy felülírni az Azure Container registryben.
 ms.topic: article
 ms.date: 09/30/2019
-ms.openlocfilehash: 8eb2a549e9d9f3a7ed4a482ac6a9ea4ba61ea4f2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93a99f65d5bb21d696ce24365e7c819d2c34a8b0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442215"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972933"
 ---
 # <a name="lock-a-container-image-in-an-azure-container-registry"></a>Tároló rendszerképének zárolása egy Azure Container registryben
 
@@ -17,7 +17,7 @@ Az Azure Container registryben zárolhatja a rendszerkép verzióját vagy a tá
 Ehhez a cikkhez az Azure CLI-t Azure Cloud Shell vagy helyileg kell futtatni (2.0.55 vagy újabb verzió ajánlott). A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
 > [!IMPORTANT]
-> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/resource-group-lock-resources.md)érdekében.
+> Ez a cikk nem vonatkozik a teljes beállításjegyzék zárolására, például a **beállítások > zárolások** használata a Azure Portal, vagy `az lock` parancs az Azure CLI-ben. A beállításjegyzék-erőforrások zárolása nem akadályozza meg a tárházban lévő adatok létrehozását, frissítését és törlését. A beállításjegyzék zárolása csak olyan felügyeleti műveletekre vonatkozik, mint például a replikálások hozzáadása vagy törlése, vagy magát a beállításjegyzéket kell törölni. További információ a [zárolási erőforrásokról a váratlan változások megelőzése](../azure-resource-manager/management/lock-resources.md)érdekében.
 
 ## <a name="scenarios"></a>Alkalmazási helyzetek
 

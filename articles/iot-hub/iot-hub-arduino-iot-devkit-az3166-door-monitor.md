@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 03/19/2018
 ms.author: liydu
-ms.openlocfilehash: 23607b52f866bb7b0be760e49be7d62d1732d43c
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6bebe8ac6b9869466938600d6267fd0062c84477
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954756"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977296"
 ---
 # <a name="door-monitor----using-azure-functions-and-sendgrid-send-email-when-a-door-is-opened"></a>Ajtó figyelője – a Azure Functions és a SendGrid használatával e-mail küldése az ajtó megnyitásakor           
 
@@ -65,7 +65,7 @@ Ekkor megjelenik a SendGrid regisztrációs űrlapja.
 
 Fejezze be a regisztrációs űrlapot:
 
-   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás futtatásához, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás futtatásához, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **Name (név**): a SendGrid szolgáltatás neve. Válasszon egy egyedi nevet, amely eltér az esetlegesen más szolgáltatástól.
 
@@ -79,7 +79,7 @@ Jelölje be a **rögzítés az irányítópulton** lehetőséget, hogy az alkalm
 
 Miután az üzembe helyezés befejeződött, kattintson rá, majd kattintson a **kezelés** gombra. Megjelenik a SendGrid-fiók oldala, ahol ellenőriznie kell az e-mail-címét.
 
-![SendGrid Manage](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
+![SendGrid kezelése](media/iot-hub-arduino-iot-devkit-az3166-door-monitor/sendgrid-manage.png)
 
 A SendGrid lapon kattintson a **beállítások** > **api-kulcsok** > **API-kulcs létrehozása**lehetőségre.
 
@@ -105,7 +105,7 @@ Megjelenik a regisztrációs űrlap.
 
 Töltse ki a mezőket a regisztrációs űrlapon.
 
-   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás futtatásához, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/manage-resource-groups-portal.md).
+   * **Erőforráscsoport**: hozzon létre egy erőforráscsoportot a SendGrid szolgáltatás futtatásához, vagy használjon egy meglévőt. Lásd: [erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/manage-resource-groups-portal.md).
 
    * **IOT hub neve**: az IOT hub neve. Válasszon egy egyedi nevet, amely eltér az esetlegesen más szolgáltatástól.
 

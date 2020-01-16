@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 06/01/2017
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: f40b479b66f2fa9a60e084fc0e29f40cef052e99
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 479f9abc667e20a136da5f6231e78a1e4052f087
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162527"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965673"
 ---
 # <a name="use-azure-premium-storage-with-sql-server-on-virtual-machines"></a>Az Azure Premium Storage és az SQL Server együttes használata virtuális gépeken
 
@@ -29,7 +29,7 @@ ms.locfileid: "73162527"
 Az [Azure Premium SSD](../disks-types.md) -k a tárterület következő generációja, amely alacsony késést és nagy teljesítményű IO-t biztosít. A legjobb a legfontosabb IO-igényű számítási feladatokhoz, mint például a IaaS- [Virtual Machines](https://azure.microsoft.com/services/virtual-machines/)SQL Server.
 
 > [!IMPORTANT]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 Ez a cikk a SQL Server rendszert futtató virtuális gépek Premium Storage használatára való áttelepítésének tervezését és útmutatását ismerteti. Ez magában foglalja az Azure-infrastruktúrát (Hálózatkezelés, tárolás) és a vendég Windowsos virtuális gép lépéseit. A [függelékben](#appendix-migrating-a-multisite-always-on-cluster-to-premium-storage) szereplő példa átfogó teljes körű áttelepítést mutat be, amellyel a nagyobb méretű virtuális gépeket áthelyezheti a továbbfejlesztett helyi SSD-tároló kihasználása érdekében a PowerShell használatával.
 
@@ -99,7 +99,7 @@ Ha át szeretné helyezni ezt egy Nyugat-európai regionális VNET, módosítsa 
 
 Létre kell hoznia egy új, Premium Storagehoz konfigurált Storage-fiókot. Vegye figyelembe, hogy a Premium Storage használata a Storage-fiókra van beállítva, nem az egyes virtuális merevlemezeken, azonban ha DS * sorozatú virtuális gépet használ, a virtuális merevlemezt a prémium és a standard szintű Storage-fiókokból is csatlakoztathatja. Ezt akkor érdemes megfontolni, ha nem szeretné az operációs rendszer virtuális merevlemezét az Premium Storage-fiókba helyezni.
 
-A "Premium_LRS" **típusú** következő **New-AzureStorageAccountPowerShell** parancs létrehoz egy Premium Storage fiókot:
+A következő **New-AzureStorageAccountPowerShell** parancs "Premium_LRS" **típussal** hoz létre egy Premium Storage fiókot:
 
 ```powershell
 $newstorageaccountname = "danpremstor"
@@ -403,7 +403,7 @@ $vmConfigsl2 | New-AzureVM –ServiceName $destcloudsvc -VNetName $vnet
 > [!NOTE]
 > A meglévő központi telepítések esetében először tekintse meg a jelen cikk [Előfeltételek](#prerequisites-for-premium-storage) című szakaszát.
 
-Az Always On rendelkezésre állási csoportokkal és azokkal nem rendelkező SQL Server központi telepítések esetében különböző szempontokat érdemes figyelembe venni. Ha nem az Always on-t használja, és rendelkezik egy meglévő önálló SQL Server, akkor a Premium Storage új felhőalapú szolgáltatás-és Storage-fiókkal frissíthet. vegye figyelembe a következő lehetőségeket:
+Az Always On rendelkezésre állási csoportokkal és azokkal nem rendelkező SQL Server központi telepítések esetében különböző szempontokat érdemes figyelembe venni. Ha nem az Always on-t használja, és rendelkezik egy meglévő önálló SQL Server, akkor a Premium Storage új felhőalapú szolgáltatás-és Storage-fiókkal frissíthet. Vegye figyelembe a következő lehetőségeket:
 
 * **Hozzon létre egy új SQL Server VM**. Létrehozhat egy új SQL Server VM, amely egy Premium Storage-fiókot használ az új központi telepítésekben dokumentált módon. Ezután biztonsági mentést készíthet, és visszaállíthatja SQL Server konfigurációját és felhasználói adatbázisait. Az alkalmazást úgy kell frissíteni, hogy az új SQL Serverre hivatkozzon, ha a belső vagy külső elérésű. Ha párhuzamosan (SxS) SQL Server áttelepítést végez, az összes "db" objektumot át kell másolnia. Ide tartoznak az olyan objektumok, mint a bejelentkezések, a tanúsítványok és a csatolt kiszolgálók.
 * **Meglévő SQL Server VM migrálása**. Ehhez a SQL Server VM offline állapotba kell helyezni, majd át kell vinni egy új felhőalapú szolgáltatásba, amely magában foglalja az összes csatlakoztatott virtuális merevlemez másolását a Premium Storage-fiókba. Amikor a virtuális gép online állapotba kerül, az alkalmazás a kiszolgáló állomásneve a korábbi módon hivatkozik. Vegye figyelembe, hogy a meglévő lemez mérete befolyásolja a teljesítmény jellemzőit. Például egy 400 GB méretű lemez fel lesz kerekítve egy P20. Ha tudja, hogy nincs szüksége a lemez teljesítményére, akkor újra létrehozhatja a virtuális gépet DS-sorozatú virtuális gépként, és csatolhatja Premium Storage VHD-t a szükséges mérethez/teljesítményhez. Ezután leválaszthatja és újracsatolhatja az SQL DB-fájlokat.
@@ -479,13 +479,13 @@ Olyan időt kell kialakítania, ahol manuális feladatátvételi és káosz-tesz
 13. Tegye elérhetővé az új csomópontok automatikus feladatátvételi partnereit és a feladatátvételi teszteket.
 14. Az eredeti csomópontok eltávolítása a rendelkezésre állási csoportból.
 
-##### <a name="advantages"></a>Előnyei
+##### <a name="advantages"></a>Előnyök
 
 * Új SQL Server-kiszolgálókat lehet tesztelni (SQL Server és az alkalmazás), mielőtt hozzáadja őket az Always On értékhez.
 * Módosíthatja a virtuális gép méretét, és testre szabhatja a tárterületet a pontos követelmények szerint. Azonban hasznos lenne az összes SQL-fájl elérési útjának megtartása.
 * Megadhatja, hogy a rendszer elindítsa-e az adatbázis biztonsági másolatainak átvitelét a másodlagos replikára. Ez eltér az Azure **Start-AzureStorageBlobCopy** parancsmagot a virtuális merevlemezek másolásához, mert ez egy aszinkron másolat.
 
-##### <a name="disadvantages"></a>Hátrányai
+##### <a name="disadvantages"></a>Hátrányok
 
 * A Windows Storage-készletek használatakor a fürt teljes érvényesítése során az új további csomópontok esetében a fürt leállása is fennáll.
 * A SQL Server és a meglévő másodlagos replikák számától függően előfordulhat, hogy nem tud további másodlagos replikákat hozzáadni a meglévő formátumú másodlagos zónák eltávolítása nélkül.
@@ -503,14 +503,14 @@ Az alkalmazásoknak és a felhasználóknak az új always on-figyelőre való á
 * A tranzakciós naplók végső biztonsági mentésének visszaállítása az új kiszolgálókon lévő adatbázisokra.
 * Az ügyfélalkalmazások új always on Listener használatára való frissítéséhez szükséges idő.
 
-##### <a name="advantages"></a>Előnyei
+##### <a name="advantages"></a>Előnyök
 
 * Tesztelheti a tényleges éles környezetet, a SQL Server és az operációsrendszer-Build módosításait.
 * Lehetősége van testreszabni a tárolót és a virtuális gép méretének csökkentését. Ez a költséghatékonyság csökkenését eredményezheti.
 * A folyamat során frissítheti SQL Server buildjét vagy verzióját. Az operációs rendszert is frissítheti.
 * Az előző always on fürt megbízható visszaállítási célként működhet.
 
-##### <a name="disadvantages"></a>Hátrányai
+##### <a name="disadvantages"></a>Hátrányok
 
 * Módosítania kell a figyelő DNS-nevét, ha azt szeretné, hogy a mindig egyszerre futó fürtökön is fusson. Ez adminisztrációs terhelést ad az áttelepítés során, mivel az ügyfélalkalmazás karakterláncának tükröznie kell az új figyelő nevét.
 * Egy szinkronizálási mechanizmust kell megvalósítani a két környezet között, hogy a lehető leghamarabb meg lehessen őrizni az áttelepítés előtt a végső szinkronizálási követelményeket.
@@ -536,14 +536,14 @@ Egy stratégia a minimális állásidőhez a meglévő Felhőbeli másodlagos, �
 > [!NOTE]
 > Ha azt szeretné, hogy a hozzáadott csomópont mindig feladatátvételi partnerként vegyen részt, hozzá kell adnia egy Azure-végpontot, amely a terheléselosztási készletre mutató hivatkozást tartalmaz. Az **Add-AzureEndpoint** parancs futtatásakor a jelenlegi kapcsolatok nyitva maradnak, de a figyelőhöz való új kapcsolatok nem hozhatók létre, amíg a terheléselosztó nem frissült. A tesztelés során ez az utolsó 90-120seconds volt látható.
 
-##### <a name="advantages"></a>Előnyei
+##### <a name="advantages"></a>Előnyök
 
 * Az áttelepítés során felmerülő extra költségek nem merültek fel.
 * Egy az egyhez Migrálás.
 * Kisebb összetettség.
 * Lehetővé teszi a Premium Storage SKU-ból való nagyobb IOPS. Ha a lemezeket leválasztják a virtuális gépről, és az új felhőalapú szolgáltatásba másolják, a rendszer külső eszközt is felhasználhat a VHD méretének növelésére, amely nagyobb átviteli sebességet biztosít. A virtuális merevlemezek méretének növeléséhez tekintse meg ezt a [vitafórumot](https://social.msdn.microsoft.com/Forums/azure/4a9bcc9e-e5bf-4125-9994-7c154c9b0d52/resizing-azure-data-disk?forum=WAVirtualMachinesforWindows).
 
-##### <a name="disadvantages"></a>Hátrányai
+##### <a name="disadvantages"></a>Hátrányok
 
 * Az áttelepítés során a HA és a DR ideiglenes adatvesztést okoz.
 * Mivel ez egy 1:1-es Migrálás, a virtuális merevlemezek számát támogató minimális virtuálisgép-méretet kell használnia, így előfordulhat, hogy nem fogja tudni felépíteni a virtuális gépeket.
@@ -583,7 +583,7 @@ Vegye figyelembe a következő példát a hibrid always on konfigurációra:
 
 ![MultiSite1][9]
 
-##### <a name="advantages"></a>Előnyei
+##### <a name="advantages"></a>Előnyök
 
 * A meglévő infrastruktúrát is használhatja.
 * Lehetősége van az Azure Storage előzetes frissítésére a DR Azure DC-ben.
@@ -591,7 +591,7 @@ Vegye figyelembe a következő példát a hibrid always on konfigurációra:
 * Az áttelepítés során legalább két feladatátvételt kell megadnia, kivéve a feladatátvételi tesztet.
 * A biztonsági mentéssel és visszaállítással nem kell áthelyeznie SQL Server az adatátvitelt.
 
-##### <a name="disadvantages"></a>Hátrányai
+##### <a name="disadvantages"></a>Hátrányok
 
 * Az SQL Serverhoz való ügyfél-hozzáféréstől függően előfordulhat, hogy a késleltetés nagyobb késéssel jár, ha SQL Server egy másik TARTOMÁNYVEZÉRLŐn fut az alkalmazásban.
 * A virtuális merevlemezek a Premium Storage-ba történő másolásának ideje hosszú lehet. Ez befolyásolhatja a döntést arról, hogy a csomópontot megtartja-e a rendelkezésre állási csoportban. Ezt akkor érdemes figyelembe venni, ha az áttelepítés során a log intenzív munkaterhelések futnak, mivel az elsődleges csomópontnak meg kell őriznie a nem replikált tranzakciókat a tranzakciós naplójában. Ezért ez jelentős növekedéshez vezethet.

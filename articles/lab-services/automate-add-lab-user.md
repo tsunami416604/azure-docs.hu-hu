@@ -1,6 +1,6 @@
 ---
-title: Automatizálhatja a lab-felhasználó hozzáadása az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogyan automatizálható a lab-felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
+title: Tesztkörnyezet hozzáadásának automatizálása a Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan automatizálhatja labor-felhasználók felvételét egy laborba Azure DevTest Labs.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,24 +12,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: 2ad81ae97414abbf3266cc5728febf9abe836151
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: deec67a2c64a57bbb380b3fd87bf820499e6efed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65522959"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980051"
 ---
-# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>A lab-felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet automatizálása
-Az Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési-tesztelési környezetek gyors létrehozását az Azure portal használatával. Azonban ha több különböző csapatok és több DevTest Labs-példánnyal rendelkezik, a létrehozási folyamat automatizálása időt takaríthat meg. [Az Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) hozhat létre a labs, labor virtuális gépeken, egyéni rendszerképen, képleteket, és felhasználók hozzáadása az automatizált módon zajlik. Ez a cikk kifejezetten azzal foglalkozik, a felhasználók hozzáadása a DevTest Labs-példányra.
+# <a name="automate-adding-a-lab-user-to-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet hozzáadásának automatizálása a laborban Azure DevTest Labs
+Azure DevTest Labs lehetővé teszi az önkiszolgáló fejlesztési és tesztelési környezetek gyors létrehozását a Azure Portal használatával. Ha azonban több csapattal és számos DevTest Labs-példánnyal rendelkezik, akkor a létrehozási folyamat automatizálása időt takaríthat meg. [Azure Resource Manager-sablonok](https://github.com/Azure/azure-devtestlab/tree/master/ARMTemplates) lehetővé teszik a laborok, laboratóriumi virtuális gépek, Egyéni rendszerképek és képletek létrehozását, valamint a felhasználók automatikus módon való hozzáadását. Ez a cikk kifejezetten a felhasználók DevTest Labs-példányhoz való hozzáadására koncentrál.
 
-Felhasználó hozzáadása egy laborhoz, adja hozzá a felhasználót a **DevTest Labs-felhasználó** szerepkörnek a labor létrehozása. Ez a cikk bemutatja, hogyan automatizálható egy felhasználó hozzáadása egy laborhoz, a következő módszerek egyikével:
+Ha felhasználót szeretne hozzáadni a laborhoz, adja hozzá a felhasználót az **DevTest Labs felhasználói** szerepköréhez a laborhoz. Ez a cikk bemutatja, hogyan lehet automatizálni a felhasználókat a laborhoz a következő módszerek egyikével:
 
 - Azure Resource Manager-sablonok
-- Azure PowerShell-parancsmagok 
-- Azure CLI.
+- PowerShell-parancsmagok az Azure-hoz 
+- Azure CLI-vel.
 
 ## <a name="use-azure-resource-manager-templates"></a>Használjon Azure Resource Manager-sablonokat
-A következő minta Resource Manager-sablon hozzá kell adni a felhasználó megadja a **DevTest Labs-felhasználó** labor szerepe. 
+A következő minta Resource Manager-sablon meghatározza a labor **DevTest Labs felhasználói** szerepköréhez hozzáadandó felhasználót. 
 
 ```json
 {
@@ -85,55 +85,55 @@ A következő minta Resource Manager-sablon hozzá kell adni a felhasználó meg
 
 ```
 
-Ha a szerepkör, amely a labor hoz létre ugyanabban a sablonban használt hozzárendelése, ne felejtse el hozzáadni a szerepkör-hozzárendelés erőforrás és a tesztkörnyezet közötti függőség. További információkért lásd: [függőségek meghatározása az Azure Resource Manager-sablonok](../azure-resource-manager/resource-group-define-dependencies.md) cikk.
+Ha a szerepkört ugyanabban a sablonban rendeli hozzá, amely a labort hozza létre, ne felejtsen el függőséget hozzáadni a szerepkör-hozzárendelési erőforráshoz és a laborhoz. További információ: [függőségek meghatározása Azure Resource Manager sablonokban](../azure-resource-manager/templates/define-resource-dependency.md) című cikk.
 
-### <a name="role-assignment-resource-information"></a>Szerepkör-hozzárendelés erőforrásadatok
-A szerepkör-hozzárendelés erőforrás számára meg kell adni a típusa és neve.
+### <a name="role-assignment-resource-information"></a>Szerepkör-hozzárendelési erőforrás adatai
+A szerepkör-hozzárendelési erőforrásnak meg kell adnia a típust és a nevet.
 
-Az első lépésben jegyezze fel az, hogy az erőforrás típusát nem `Microsoft.Authorization/roleAssignments` , akkor a egy erőforráscsoportot.  Ehelyett az erőforrástípust a mintát követi, `{provider-namespace}/{resource-type}/providers/roleAssignments`. Ebben az esetben az erőforrástípus lesz `Microsoft.DevTestLab/labs/providers/roleAssignments`.
+A legfontosabb megjegyezni, hogy az erőforrás típusa nem `Microsoft.Authorization/roleAssignments`, mert egy erőforráscsoport esetében lenne.  Ehelyett az erőforrástípus a következő mintának `{provider-namespace}/{resource-type}/providers/roleAssignments`. Ebben az esetben az erőforrástípus `Microsoft.DevTestLab/labs/providers/roleAssignments`lesz.
 
-A szerepkör-hozzárendelés neve magának kell globálisan egyedinek kell lennie.  A mintát használ, a hozzárendelés neve `{labName}/Microsoft.Authorization/{newGuid}`. A `newGuid` egy paraméter értéke a sablont. Ez biztosítja, hogy a szerepkör-hozzárendelés neve egyedi. Mivel nincs sablonfüggvények GUID azonosítók létrehozására, létre kell hoznia egy GUID Azonosítót saját maga bármely GUID készítő eszközzel.  
+A szerepkör-hozzárendelés nevének globálisan egyedinek kell lennie.  A hozzárendelés neve a `{labName}/Microsoft.Authorization/{newGuid}`mintázatot használja. A `newGuid` a sablon paraméterének értéke. Biztosítja, hogy a szerepkör-hozzárendelés neve egyedi legyen. Mivel a GUID-azonosítók létrehozásához nincs sablon függvény, a GUID létrehozó eszköz használatával létre kell hoznia egy GUID azonosítót.  
 
-A szerepkör-hozzárendelés neve a sablon által meghatározott a `fullDevTestLabUserRoleName` változó. A pontos sor a sablonból a következő:
+A sablonban a szerepkör-hozzárendelés nevét a `fullDevTestLabUserRoleName` változó határozza meg. A sablon pontos sora a következő:
 
 ```json
 "fullDevTestLabUserRoleName": "[concat(parameters('labName'), '/Microsoft.Authorization/', parameters('roleAssignmentGuid'))]"
 ```
 
 
-### <a name="role-assignment-resource-properties"></a>Szerepkör-hozzárendelés erőforrás-tulajdonságok
-Szerepkör-hozzárendelés maga három tulajdonságot határozza meg. Szüksége van a `roleDefinitionId`, `principalId`, és `scope`.
+### <a name="role-assignment-resource-properties"></a>Szerepkör-hozzárendelési erőforrás tulajdonságai
+A szerepkör-hozzárendelés maga három tulajdonságot határoz meg. Szüksége van a `roleDefinitionId`ra, a `principalId`ra és a `scope`re.
 
 ### <a name="role-definition"></a>Szerepkör-definíció
-A szerepkör-definíció Azonosítóját a karakterlánc-azonosító, a meglévő szerepkör-definíció. A szerepkör-azonosító szerepel az űrlap `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`. 
+A szerepkör-definíció azonosítója a meglévő szerepkör-definíció karakterlánc-azonosítója. A szerepkör-azonosító a `/subscriptions/{subscription-id}/providers/Microsoft.Authorization/roleDefinitions/{role-definition-id}`formában van. 
 
-Az előfizetés-azonosítója használatával szerezhető be `subscription().subscriptionId` sablonfüggvény.  
+Az előfizetés AZONOSÍTÓját a `subscription().subscriptionId` template függvény használatával szerezheti be.  
 
-A szerepkör-definíció kapott a `DevTest Labs User` beépített szerepkör. A GUID azonosító beolvasásához a [DevTest Labs-felhasználó](../role-based-access-control/built-in-roles.md#devtest-labs-user) szerepkör, használhatja a [szerepkör-hozzárendelések REST API](/rest/api/authorization/roleassignments) vagy a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) parancsmagot.
+Be kell szereznie a `DevTest Labs User` beépített szerepkör szerepkör-definícióját. A [DevTest Labs felhasználói](../role-based-access-control/built-in-roles.md#devtest-labs-user) szerepkör GUID azonosítójának lekéréséhez használhatja a szerepkör- [hozzárendelések REST API](/rest/api/authorization/roleassignments) vagy a [Get-AzRoleDefinition](/powershell/module/az.resources/get-azroledefinition?view=azps-1.8.0) parancsmagot.
 
 ```powershell
 $dtlUserRoleDefId = (Get-AzRoleDefinition -Name "DevTest Labs User").Id
 ```
 
-A szerepkör-azonosító meghatározása a változók szakaszban és nevű `devTestLabUserRoleId`. A sablon a szerepkör-azonosító értéke: 111111111-0000-0000-11111111111111111. 
+A szerepkör-azonosító a változók szakaszban és a `devTestLabUserRoleId`névvel van definiálva. A sablonban a szerepkör-azonosító a következőre van beállítva: 111111111-0000-0000-11111111111111111. 
 
 ```json
 "devTestLabUserRoleId": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/111111111-0000-0000-11111111111111111')]",
 ```
 
-### <a name="principal-id"></a>Résztvevő-azonosító
-Résztvevő-azonosító az Active Directory-felhasználó, csoport vagy labor felhasználóként hozzá a labor kívánt szolgáltatásnév Objektumazonosítóját. Használja a sablon a `ObjectId` paraméterként.
+### <a name="principal-id"></a>Résztvevő azonosítója
+A rendszerbiztonsági tag azonosítója annak a Active Directory felhasználónak, csoportnak vagy egyszerű szolgáltatásnak az azonosítója, amelyet labor felhasználóként szeretne hozzáadni a laborhoz. A sablon a `ObjectId` használja paraméterként.
 
-Az ObjectId megkaphassa használatával a [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), [Get-AzureRMADGroup, vagy [Get-AzureRMADServicePrincipal](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) PowerShell-parancsmagokat. Ezek a parancsmagok egyetlen vagy -azonosító tulajdonságot használja, amely a szükséges objektumazonosító rendelkező Active Directory-objektumok listáját adja vissza. Az alábbi példa bemutatja, hogyan kérhet egy felhasználó Objektumazonosítója egy vállalat.
+A ObjectId a [Get-AzureRMADUser](/powershell/module/azurerm.resources/get-azurermaduser?view=azurermps-6.13.0), a [Get-AzureRMADGroup vagy a [Get-AzureRMADServicePrincipal PowerShell-](/powershell/module/azurerm.resources/get-azurermadserviceprincipal?view=azurermps-6.13.0) parancsmagok használatával kérheti le. Ezek a parancsmagok olyan Active Directory-objektumok egy vagy több listáját adják vissza, amelyeknek van azonosító tulajdonsága, ami a szükséges objektumazonosító. Az alábbi példa bemutatja, hogyan kérheti le egy vállalat egyetlen felhasználójának objektumazonosító-AZONOSÍTÓját.
 
 ```powershell
 $userObjectId = (Get-AzureRmADUser -UserPrincipalName ‘email@company.com').Id
 ```
 
-Használhatja az Azure Active Directory PowerShell-parancsmagok tartalmazó [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0), és [Get-msolserviceprincipal parancsmag](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0).
+Használhatja a [Get-MsolUser](/powershell/module/msonline/get-msoluser?view=azureadps-1.0), a [Get-MsolGroup](/powershell/module/msonline/get-msolgroup?view=azureadps-1.0)és Azure Active Directory a [Get-MsolServicePrincipal-](/powershell/module/msonline/get-msolserviceprincipal?view=azureadps-1.0)t tartalmazó PowerShell-parancsmagokat is.
 
-### <a name="scope"></a>Scope
-Hatókör megadja az erőforrás vagy erőforráscsoport, amelyben a szerepkör-hozzárendelés érvényesíteni. Az erőforrások, a hatókör van a képernyőn: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. Használja a sablon a `subscription().subscriptionId` függvény meg kell adni a `subscription-id` része, és a `resourceGroup().name` sablonfüggvény meg kell adni a `resource-group-name` rész. Ezek a függvények használatával, az azt jelenti, hogy a labor, amelyhez szerepkör hozzárendelése már léteznie kell az aktuális előfizetést, és ugyanahhoz az erőforráscsoporthoz tartozik, amely a sablon telepítése történik. Az utolsó szakaszban `resource-name`, a neve, a labor létrehozása. Ez az érték ebben a példában a sablonparaméter keresztül érkezik. 
+### <a name="scope"></a>Hatókör
+A hatókör határozza meg azt az erőforrást vagy erőforráscsoportot, amelyhez a szerepkör-hozzárendelést alkalmazni kell. Az erőforrások esetében a hatókör a következő formában van: `/subscriptions/{subscription-id}/resourceGroups/{resource-group-name}/providers/{provider-namespace}/{resource-type}/{resource-name}`. A sablon a `subscription().subscriptionId` függvény használatával tölti ki a `subscription-id` részt és a `resourceGroup().name` sablon függvényt, hogy kitöltse a `resource-group-name` részt. Ezeknek a függvényeknek a használata azt jelenti, hogy ahhoz a laborhoz kell tartoznia, amelyhez a szerepkört hozzárendeli, meg kell egyeznie az aktuális előfizetésben és azt az erőforráscsoportot, amelybe a sablon üzembe helyezése történik. A `resource-name`utolsó része a labor neve. Ez az érték az ebben a példában szereplő sablon paraméteren keresztül érkezik. 
 
 A szerepkör hatóköre a sablonban: 
 
@@ -142,7 +142,7 @@ A szerepkör hatóköre a sablonban:
 ```
 
 ### <a name="deploying-the-template"></a>A sablon telepítése
-Először is hozzon létre egy paraméterfájlt (például: azuredeploy.parameters.json), amely a Resource Manager-sablon paramétereihez tartozó értékek adja át. 
+Először hozzon létre egy paramétert (például: azuredeploy. Parameters. JSON), amely a Resource Manager-sablonban található paraméterek értékeit adja át. 
 
 ```json
 {
@@ -162,46 +162,46 @@ Először is hozzon létre egy paraméterfájlt (például: azuredeploy.paramete
 }
 ```
 
-Ezután használja a [New-AzureRmResourceGroupDeployment](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) PowerShell-parancsmag használatával a Resource Manager-sablon üzembe helyezéséhez. A következő példaparancs egy személy, vagy az egyszerű szolgáltatás rendel a DevTest Labs-felhasználó szerepkör tesztkörnyezet.
+Ezután használja a [New-AzureRmResourceGroupDeployment PowerShell-](/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment?view=azurermps-6.13.0) parancsmagot a Resource Manager-sablon üzembe helyezéséhez. A következő példában a parancs egy személyt, csoportot vagy egyszerű szolgáltatásnevet rendel a DevTest Labs felhasználói szerepkörhöz egy laborhoz.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateParameterFile .\azuredeploy.parameters.json -TemplateFile .\azuredeploy.json
 ```
 
-Fontos megjegyezni, hogy a csoport központi telepítés nevét és a szerepkör-hozzárendelés GUID kell egyedinek lennie. Ha megpróbál telepíteni egy nem egyedi GUID Azonosítóval rendelkező erőforrás-hozzárendelés, akkor kap egy `RoleAssignmentUpdateNotPermitted` hiba.
+Fontos megjegyezni, hogy a csoport központi telepítésének neve és a szerepkör-hozzárendelés GUID-azonosítójának egyedinek kell lennie. Ha olyan erőforrás-hozzárendelést próbál meg telepíteni, amely nem egyedi GUID-azonosítóval rendelkezik, akkor `RoleAssignmentUpdateNotPermitted` hibaüzenetet kap.
 
-Ha azt tervezi, több Active Directory-objektumok hozzáadása a DevTest Labs-felhasználó szerepkörnek a labor is több alkalommal a sablont használja, érdemes dinamikus objektumok a PowerShell-parancsot. Az alábbi példában a [New-Guid](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) parancsmag használatával dinamikusan adjon meg az erőforrás csoport központi telepítés nevét és a szerepkör-hozzárendelés GUID.
+Ha többször szeretné használni a sablont, hogy több Active Directory objektumot adjon hozzá a DevTest Labs felhasználói szerepköréhez a laborhoz, érdemes lehet dinamikus objektumokat használni a PowerShell-parancsban. Az alábbi példa a [New-GUID](/powershell/module/Microsoft.PowerShell.Utility/New-Guid?view=powershell-5.0) parancsmagot használja az erőforráscsoport-telepítési név és a szerepkör-hozzárendelési GUID dinamikus megadásához.
 
 ```powershell
 New-AzureRmResourceGroupDeployment -Name "MyLabResourceGroup-$(New-Guid)" -ResourceGroupName 'MyLabResourceGroup' -TemplateFile .\azuredeploy.json -roleAssignmentGuid "$(New-Guid)" -labName "MyLab" -principalId "11111111-1111-1111-1111-111111111111"
 ```
 
-## <a name="use-azure-powershell"></a>Azure PowerShell használatával
-A bevezető írtaknak hoz létre egy új Azure szerepkör-hozzárendelés hozzáadása a felhasználót, hogy a **DevTest Labs-felhasználó** szerepkörnek a labor létrehozása. A PowerShellben úgy teheti meg, hogy a [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) parancsmagot. Ez a parancsmag rugalmasság érdekében számos választható paraméterekkel rendelkezik. A `ObjectId`, `SigninName`, vagy `ServicePrincipalName` az objektum alatt engedélyeket adhat meg.  
+## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
+Ahogy az a bevezetésben is szerepel, egy új Azure-szerepkör-hozzárendelést hoz létre, amely hozzáad egy felhasználót a **DevTest Labs felhasználói** szerepköréhez a laborhoz. A PowerShellben ezt a [New-AzureRMRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment?view=azurermps-6.13.0) parancsmag használatával teheti meg. A parancsmag számos opcionális paraméterrel rendelkezik, amelyek lehetővé teszik a rugalmasságot. A `ObjectId`, `SigninName`vagy `ServicePrincipalName` megadható, mert az objektum engedélyeket kap.  
 
-Íme egy minta Azure PowerShell-parancsot, amely a felhasználó hozzáadja a megadott labor létrehozása a DevTest Labs-felhasználó szerepkör.
+Íme egy példa Azure PowerShell parancs, amely felvesz egy felhasználót az DevTest Labs felhasználói szerepkörbe a megadott laborban.
 
 ```powershell
 New-AzureRmRoleAssignment -UserPrincipalName <email@company.com> -RoleDefinitionName 'DevTest Labs User' -ResourceName '<Lab Name>' -ResourceGroupName '<Resource Group Name>' -ResourceType 'Microsoft.DevTestLab/labs'
 ```
 
-Adja meg az erőforrást, amelyhez engedélyeket a rendszer éppen nyújtott megadott kombinációja a `ResourceName`, `ResourceType`, `ResourceGroup` vagy a `scope` paraméter. Paraméterek bármilyen kombinációját használja, a parancsmag az Active Directory-objektum (felhasználó, csoport vagy szolgáltatásnév), a hatókör (erőforráscsoportra vagy erőforrásra) és a szerepkör-definíció egyedi azonosításához elegendő információt tartalmaznak.
+Annak megadásához, hogy az engedélyek milyen erőforrást kapnak, `ResourceName`, `ResourceType`, `ResourceGroup` vagy a `scope` paraméter kombinációja adható meg. A paraméterek tetszőleges kombinációját használja, adjon meg elegendő információt a parancsmagnak a Active Directory objektum (felhasználó, csoport vagy egyszerű szolgáltatásnév), hatókör (erőforráscsoport vagy erőforrás) és szerepkör-definíció egyedi azonosításához.
 
 ## <a name="use-azure-command-line-interface-cli"></a>Az Azure parancssori felület (CLI) használata
-Az Azure CLI-ben, egy labs-felhasználó hozzáadása egy laborhoz segítségével történik a `az role assignment create` parancsot. További információ az Azure CLI-parancsmagok: [RBAC és az Azure CLI használatával Azure-erőforrásokhoz való hozzáférés kezelése](../role-based-access-control/role-assignments-cli.md).
+Az Azure CLI-ben a Labs-felhasználó hozzáadása laborhoz a `az role assignment create` parancs használatával végezhető el. Az Azure CLI-parancsmagokkal kapcsolatos további információkért lásd: [Az Azure-erőforrásokhoz való hozzáférés kezelése a RBAC és az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md).
 
-A hozzáféréssel rendelkező objektum is megadható a `objectId`, `signInName`, `spn` paramétereket. Úgy azonosítható a tesztkörnyezetben, amelyhez az objektum alatt hozzáférést kap a `scope` URL-cím vagy kombinációja a `resource-name`, `resource-type`, és `resource-group` paraméterek.
+Az elérni kívánt objektum megadható a `objectId`, `signInName`, `spn` paraméterrel. Az `scope` URL-cím vagy a `resource-name`, `resource-type`és `resource-group` paraméterek kombinációja alapján azonosítható a labor, amelyhez az objektum hozzáférést kap.
 
-Az alábbi Azure CLI-példa bemutatja, hogyan a megadott labor hozzáadása egy személy a DevTest Labs-felhasználó szerepkörhöz.  
+A következő Azure CLI-példa bemutatja, hogyan adhat hozzá egy személyt a DevTest Labs felhasználói szerepkörhöz a megadott laborhoz.  
 
 ```azurecli
 az role assignment create --roleName "DevTest Labs User" --signInName <email@company.com> -–resource-name "<Lab Name>" --resource-type “Microsoft.DevTestLab/labs" --resource-group "<Resource Group Name>"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
-- [Hozzon létre és kezelhet virtuális gépeket a DevTest Labs szolgáltatással az Azure CLI használatával](devtest-lab-vmcli.md)
-- [Virtuális gép létrehozása a DevTest Labs szolgáltatással az Azure PowerShell-lel](devtest-lab-vm-powershell.md)
-- [Parancssori eszközök segítségével elindíthatja és leállíthatja a virtuális gépek Azure DevTest Labs szolgáltatásban](use-command-line-start-stop-virtual-machines.md)
+- [Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával](devtest-lab-vmcli.md)
+- [Virtuális gép létrehozása a DevTest Labs használatával Azure PowerShell](devtest-lab-vm-powershell.md)
+- [Azure DevTest Labs virtuális gépek indítása és leállítása parancssori eszközök használatával](use-command-line-start-stop-virtual-machines.md)
 

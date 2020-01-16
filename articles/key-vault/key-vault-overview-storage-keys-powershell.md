@@ -7,12 +7,12 @@ author: msmbaldwin
 ms.author: mbaldwin
 manager: rkarlin
 ms.date: 09/10/2019
-ms.openlocfilehash: 46e6f19a071986cf12590e9bd5c420e070572a14
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 584a37ffb9727a48e2adb5e339697314cffe93f7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707096"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980845"
 ---
 # <a name="manage-storage-account-keys-with-key-vault-and-azure-powershell"></a>A Storage-fiók kulcsainak kezelése Key Vault és Azure PowerShell
 
@@ -45,7 +45,7 @@ A Key Vault egy olyan Microsoft-alkalmazás, amely az összes Azure AD-bérlőbe
 | Bérlők | Felhőbeli | Alkalmazásazonosító |
 | --- | --- | --- |
 | Azure AD | Azure Government | `7e7c393b-45d0-48b1-a35e-2905ddf8183c` |
-| Azure AD | Nyilvános Azure | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
+| Azure AD | Azure – nyilvános | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 | Egyéb  | Bármelyik | `cfa8b339-82a2-471a-a3c9-0fc0be7a4093` |
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -54,7 +54,7 @@ Az útmutató elvégzéséhez először a következőket kell tennie:
 
 - [Telepítse a Azure PowerShell modult](/powershell/azure/install-az-ps?view=azps-2.6.0).
 - [Kulcstartó létrehozása](quick-create-powershell.md)
-- [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell). A Storage-fiók nevének csak kisbetűket és számokat kell használnia. A név hosszának 3 és 24 karakter közöttinek kell lennie.
+- [Hozzon létre egy Azure-tárfiókot](../storage/common/storage-account-create.md?tabs=azure-powershell). A Storage-fiók nevének csak kisbetűket és számokat kell használnia. A név hosszának 3 és 24 karakter közöttinek kell lennie.
       
 
 ## <a name="manage-storage-account-keys"></a>A Storage-fiók kulcsainak kezelése
@@ -117,7 +117,7 @@ ObjectType         : ServicePrincipal
 CanDelegate        : False
 ```
 
-Ha Key Vault már hozzá lett adva a szerepkörhöz a Storage-fiókjában, akkor a *"szerepkör-hozzárendelés már létezik* " hibaüzenet jelenik meg. hiba. A szerepkör-hozzárendelést is ellenőrizheti, ha a Azure Portal a Storage-fiók "hozzáférés-vezérlés (IAM)" lapját használja.  
+Ha Key Vault már hozzá lett adva a szerepkörhöz a Storage-fiókjában, akkor a *"szerepkör-hozzárendelés már létezik* " hibaüzenet jelenik meg. hibát ad vissza. A szerepkör-hozzárendelést is ellenőrizheti, ha a Azure Portal a Storage-fiók "hozzáférés-vezérlés (IAM)" lapját használja.  
 
 ### <a name="give-your-user-account-permission-to-managed-storage-accounts"></a>Felhasználói fiók engedélyezése a felügyelt Storage-fiókok számára
 

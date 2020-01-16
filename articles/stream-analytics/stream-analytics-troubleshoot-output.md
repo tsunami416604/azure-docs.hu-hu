@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 65d01c5c4dd852cb424c75f170ce52156f1633cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d40157523a074547885a14a3d92379f8e8b6f351
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354109"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980257"
 ---
 # <a name="troubleshoot-azure-stream-analytics-outputs"></a>Azure Stream Analytics kimenetek hibáinak megoldása
 
 Ez a lap a kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, valamint a hibaelhárítást és azok megoldását ismerteti.
 
-## <a name="output-not-produced-by-job"></a>Nem a feladatok által előállított kimenet 
+## <a name="output-not-produced-by-job"></a>Nem a feladatok által előállított kimenet
 1.  Ellenőrizze a kimenetek kapcsolatát az egyes kimenetek **kapcsolat tesztelése** gombjának használatával.
 
 2.  Tekintse meg a [**figyelési metrikákat**](stream-analytics-monitoring.md) a **figyelés** lapon. Mivel az értékek összesítve vannak, a metrikák néhány perc késéssel lesznek késleltetve.
@@ -27,28 +27,28 @@ Ez a lap a kimeneti kapcsolatokkal kapcsolatos gyakori problémákat, valamint a
       - Ha szeretné megtekinteni, hogy az adatforrás rendelkezik-e érvényes adattal, tekintse meg a [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a)használatával. Ez az ellenőrzési művelet akkor érvényes, ha a feladatban az Event hub bemenetként van használatban.
       - Ellenőrizze, hogy az adatszerializálási formátum és az adatkódolás megegyezik-e a várt értékkel.
       - Ha a feladattípus egy Event hub-t használ, ellenőrizze, hogy az üzenet törzse *null értékű*-e.
-      
+
     - Ha az Adatátalakítási hibák > 0 és a hegymászás, a következők lehetnek igazak:
-      - A kimeneti esemény nem felel meg a cél fogadó sémájának. 
+      - A kimeneti esemény nem felel meg a cél fogadó sémájának.
       - Előfordulhat, hogy az esemény sémája nem egyezik meg a lekérdezésben szereplő események meghatározott vagy várt sémájával.
       - Előfordulhat, hogy az esemény egyes mezőinek adattípusa nem felel meg az elvárásoknak.
-      
+
     - Ha a futásidejű hibák értéke > 0, az azt jelenti, hogy a feladatsor képes fogadni az adatok fogadását, de hibákat generál a lekérdezés feldolgozásakor.
-      - A hibák megkereséséhez nyissa meg a [naplókat](../azure-resource-manager/resource-group-audit.md) , és szűrje a *sikertelen* állapotot.
-      
+      - A hibák megkereséséhez nyissa meg a [naplókat](../azure-resource-manager/management/view-activity-logs.md) , és szűrje a *sikertelen* állapotot.
+
     - Ha a InputEvents > 0 és a OutputEvents = 0 értéket, az azt jelenti, hogy az alábbiak egyike igaz:
       - A lekérdezés feldolgozása nulla kimeneti eseményt eredményezett.
       - Lehet, hogy az események vagy annak mezői helytelenek, ezért a lekérdezés feldolgozása után nulla kimenetet eredményeznek.
       - A feladatsor nem tudott adatokat leküldeni a kimeneti fogadónak kapcsolati vagy hitelesítési okokból.
-      
+
     - Az összes korábban említett hiba esetén az Operations log-üzenetek további részleteket (köztük a mi történik) ismertetik, kivéve azokat az eseteket, ahol a lekérdezési logika az összes eseményt kiszűrte. Ha több esemény feldolgozását eredményezi, a Stream Analytics 10 percen belül naplózza az első három hibaüzenetet az operatív naplókba. Ezután letiltja a további azonos hibákat egy olyan üzenettel, amely szerint a "hibák túl gyorsan történnek, ezeket a rendszer letiltotta."
-    
+
 ## <a name="job-output-is-delayed"></a>A feladatok kimenete késleltetve
 
 ### <a name="first-output-is-delayed"></a>Az első kimenet késleltetve
 Stream Analytics-feladat elindításakor a bemeneti eseményeket beolvassa a rendszer, azonban bizonyos helyzetekben késés lehet tapasztalható a kimenet előállításában.
 
-Az időbeli lekérdezési elemek nagy időbeli értékei hozzájárulhatnak a kimeneti késleltetéshez. A nagy idő alatt a Windows megfelelő kimenetének létrehozásához a folyamatos átviteli feladatot a rendszer az adatok a lehető legkésőbbi időpontban történő beolvasásával kezdi meg (akár hét nappal ezelőtt) az időablak kitöltéséhez. Ebben az időszakban nem jön létre kimenet, amíg a függőben lévő bemeneti események beolvasása be nem fejeződik. Ez a probléma akkor is felhasználható, ha a rendszer frissíti a folyamatos átviteli feladatokat, így újraindítja a feladatot. Az ilyen verziófrissítések általában néhány havonta egyszer történnek. 
+Az időbeli lekérdezési elemek nagy időbeli értékei hozzájárulhatnak a kimeneti késleltetéshez. A nagy idő alatt a Windows megfelelő kimenetének létrehozásához a folyamatos átviteli feladatot a rendszer az adatok a lehető legkésőbbi időpontban történő beolvasásával kezdi meg (akár hét nappal ezelőtt) az időablak kitöltéséhez. Ebben az időszakban nem jön létre kimenet, amíg a függőben lévő bemeneti események beolvasása be nem fejeződik. Ez a probléma akkor is felhasználható, ha a rendszer frissíti a folyamatos átviteli feladatokat, így újraindítja a feladatot. Az ilyen verziófrissítések általában néhány havonta egyszer történnek.
 
 Ezért a Stream Analytics-lekérdezés tervezésekor a mérlegelési jogkörrel kell megtervezni. Ha nagy időintervallumot használ (több, mint több óra, legfeljebb hét nap) a feladatok lekérdezési szintaxisában lévő időbeli elemeknél, a művelet elindításakor vagy újraindításakor késleltetést eredményezhet az első kimenetnél.  
 
@@ -57,8 +57,8 @@ Az ilyen típusú első kimeneti késések egyike a lekérdezési párhuzamos te
 Ezek a tényezők befolyásolják az első generált kimenet időszerűségét:
 
 1. Ablakos összesítések használata (kiesési, átugrási és csúszó ablakok CSOPORTOSÍTÁSa)
-   - Az ablakos összesítések esetében az eredmények az ablak időkeretének végén jönnek létre. 
-   - Egy csúszó ablak esetében az eredmények akkor jönnek létre, amikor egy esemény bekerül a csúszó ablakba, vagy kilép onnan. 
+   - Az ablakos összesítések esetében az eredmények az ablak időkeretének végén jönnek létre.
+   - Egy csúszó ablak esetében az eredmények akkor jönnek létre, amikor egy esemény bekerül a csúszó ablakba, vagy kilép onnan.
    - Ha nagyméretű ablakméret használatát tervezi (> 1 órát), a legjobb megoldás a beugró vagy csúszó ablak kiválasztása, hogy a kimenetet gyakrabban lássuk.
 
 2. Időbeli illesztések használata (JOIN with DATEDIFF)
@@ -78,9 +78,9 @@ A részletek megtekintéséhez a Azure Portal válassza ki a folyamatos átvitel
 
 ## <a name="key-violation-warning-with-azure-sql-database-output"></a>Kulcs megsértése figyelmeztetés Azure SQL Database kimenettel
 
-Ha az Azure SQL Database-t kimenetként konfigurálja egy Stream Analytics feladatokhoz, a rekordok tömeges beszúrása a céltáblaba. Általánosságban elmondható, hogy az Azure stream Analytics [legalább egyszer](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) megtartja a kimeneti fogadónak való kézbesítést, de az SQL-tábla egyedi korlátozásának meghatározásakor továbbra is [pontosan egyszeri kézbesítést ÉRHET]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el az SQL-kimenethez. 
+Ha az Azure SQL Database-t kimenetként konfigurálja egy Stream Analytics feladatokhoz, a rekordok tömeges beszúrása a céltáblaba. Általánosságban elmondható, hogy az Azure stream Analytics [legalább egyszer](https://docs.microsoft.com/stream-analytics-query/event-delivery-guarantees-azure-stream-analytics) megtartja a kimeneti fogadónak való kézbesítést, de az SQL-tábla egyedi korlátozásának meghatározásakor továbbra is [pontosan egyszeri kézbesítést ÉRHET]( https://blogs.msdn.microsoft.com/streamanalytics/2017/01/13/how-to-achieve-exactly-once-delivery-for-sql-output/) el az SQL-kimenethez.
 
-Miután beállította az egyedi kulcsokra vonatkozó korlátozásokat az SQL-táblán, és az SQL-táblába ismétlődő rekordok vannak beszúrva, Azure Stream Analytics eltávolítja az ismétlődő rekordot. Az adatok kötegekre bontása és a kötegek rekurzív beillesztése, amíg egyetlen duplikált rekord nem található. Ha a folyamatos átviteli feladatokhoz jelentős számú ismétlődő sor tartozik, a felosztási és beillesztési folyamatnak figyelmen kívül kell hagynia az ismétlődéseket, ami kevésbé hatékony és időigényes. Ha az elmúlt órában több kulcs megsértését jelző figyelmeztető üzenet jelenik meg a tevékenység naplójában, akkor valószínű, hogy az SQL-kimenet lelassítja a teljes feladatot. 
+Miután beállította az egyedi kulcsokra vonatkozó korlátozásokat az SQL-táblán, és az SQL-táblába ismétlődő rekordok vannak beszúrva, Azure Stream Analytics eltávolítja az ismétlődő rekordot. Az adatok kötegekre bontása és a kötegek rekurzív beillesztése, amíg egyetlen duplikált rekord nem található. Ha a folyamatos átviteli feladatokhoz jelentős számú ismétlődő sor tartozik, a felosztási és beillesztési folyamatnak figyelmen kívül kell hagynia az ismétlődéseket, ami kevésbé hatékony és időigényes. Ha az elmúlt órában több kulcs megsértését jelző figyelmeztető üzenet jelenik meg a tevékenység naplójában, akkor valószínű, hogy az SQL-kimenet lelassítja a teljes feladatot.
 
 A probléma megoldásához [konfigurálja azt az indexet]( https://docs.microsoft.com/sql/t-sql/statements/create-index-transact-sql) , amely a kulcs megsértését okozza a IGNORE_DUP_KEY beállítás engedélyezésével. Ha engedélyezi ezt a beállítást, az SQL figyelmen kívül hagyja az ismétlődő értékeket a tömeges beszúrások során, és a SQL Azure egyszerűen figyelmeztető üzenetet állít elő a hiba helyett. A Azure Stream Analytics az elsődleges kulcs megsértésével kapcsolatos hibákat már nem hozza létre.
 

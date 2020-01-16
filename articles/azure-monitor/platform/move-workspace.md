@@ -7,16 +7,16 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 11/13/2019
-ms.openlocfilehash: f6e1af2fdf43eb4351e996297f7dba775b7ffcef
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4baa65ca5dda6b266cd6c739225ebd01d011268c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278796"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980089"
 ---
 # <a name="move-a-log-analytics-workspace-to-different-subscription-or-resource-group"></a>Log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 
-Ebből a cikkből megtudhatja, hogyan helyezhet át Log Analytics munkaterületet egy másik erőforráscsoporthoz vagy előfizetésbe ugyanabban a régióban. Az Azure-erőforrások Azure Portal, a PowerShell, az Azure CLI vagy a REST API használatával történő áthelyezéséről bővebben is tájékozódhat. az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/resource-group-move-resources.md). 
+Ebből a cikkből megtudhatja, hogyan helyezhet át Log Analytics munkaterületet egy másik erőforráscsoporthoz vagy előfizetésbe ugyanabban a régióban. Az Azure-erőforrások Azure Portal, a PowerShell, az Azure CLI vagy a REST API használatával történő áthelyezéséről bővebben is tájékozódhat. az [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md). 
 
 > [!IMPORTANT]
 > Munkaterület nem helyezhető át másik régióba.
@@ -35,8 +35,8 @@ A munkaterületen telepített felügyelt megoldások a Log Analytics munkaterül
 Olyan megoldások, amelyeket el kell távolítani az Automation-fiók csatolásának megszüntetése előtt:
 
 - Frissítéskezelés
-- Változások követése
-- Virtuális gépek indítása és leállítása munkaidőn kívül
+- Változáskövetés
+- Virtuális gépek munkaidőn kívüli elindítása/leállítása
 
 
 ### <a name="delete-in-azure-portal"></a>Törlés az Azure Portalon
@@ -82,7 +82,7 @@ Az Automation-fiók a munkaterületről a Azure Portal használatával való lev
 
 ## <a name="move-your-workspace"></a>Munkaterület áthelyezése
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 A következő eljárás használatával helyezheti át a munkaterületet a Azure Portal használatával:
 
 1. Nyissa meg a **log Analytics munkaterületek** menüt, majd válassza ki a munkaterületet.
@@ -107,4 +107,4 @@ Move-AzResource -ResourceId "/subscriptions/00000000-0000-0000-0000-000000000000
 
 
 ## <a name="next-steps"></a>Következő lépések
-- Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](../../azure-resource-manager/move-support-resources.md).
+- Az áthelyezni kívánt erőforrások listáját itt tekintheti meg: a [műveletek támogatásának áthelyezése az erőforrásokhoz](../../azure-resource-manager/management/move-support-resources.md).

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 1df30b25d2029ba31525eaea232d258bbb134366
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/13/2020
+ms.openlocfilehash: c39f41af8ed2f1e25064324c0e1da4a6603face8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863805"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045554"
 ---
 # <a name="create-a-new-saas-offer"></a>Új SaaS-ajánlat létrehozása
 
@@ -167,7 +167,7 @@ A mezők befejezése után válassza a **Mentés** lehetőséget.
 
 ### <a name="category"></a>Kategória
 
-Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területein való csoportosításához használhatók. Kérjük, tekintse meg, hogyan támogatja az ajánlat a kategóriákat az ajánlat leírásában. 
+Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területein való csoportosításához használhatók. Megtudhatja, hogyan támogatja az ajánlat a kategóriákat az ajánlat leírásában.
 
 ### <a name="industry"></a>Iparág
 
@@ -175,7 +175,7 @@ Válasszon legalább egyet (1), és legfeljebb három (3) kategóriát, amelyek 
 
 ### <a name="app-version"></a>Az alkalmazás verziója
 
-Ez egy nem kötelezően kitöltendő mező, amely az AppSource piactéren az ajánlat verziószámának azonosítására szolgál.
+Ez a mező nem kötelező, és a AppSource piactéren az ajánlat verziószámának azonosítására szolgál.
 
 ### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
 
@@ -204,7 +204,7 @@ A kereskedelmi piactér-közzétevők számára két fajta módosítás érhető
 >[!NOTE]
 > Ez a két típusú módosítás egymásra épül. Az egyéni módosításokkal rendelkező ügyfelek a vásárlás során általános módosítást is kapnak a standard szerződéshez.
 
-**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a AppSource, az Azure Marketplace és/vagy a Azure Portal ügyfelei számára jelennek meg a felderítési és vásárlási folyamat során.
+**Általános módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: ebben a mezőben adja meg az univerzális módosítási feltételeket. Ajánlathoz egyetlen általános módosítást is megadhat. Ebben a mezőben korlátlan számú karaktert adhat meg. Ezek a feltételek a AppSource, az Azure Marketplace-en és/vagy Azure Portalban jelennek meg a felderítési és vásárlási folyamat során.
 
 **Egyéni módosítási feltételek a Microsoft kereskedelmi Marketplace-re vonatkozó standard szerződéshez**: először válassza az **Egyéni módosítási feltételek hozzáadása**lehetőséget. Ajánlatunk legfeljebb 10 egyéni módosítási feltételt adhat meg.
 
@@ -231,7 +231,7 @@ Az ajánlati lista lapon láthatók azok a nyelvek (és piacok), ahol az ajánla
 
 Adja meg a piactéren megjelenítendő adatokat, beleértve az ajánlat és a marketing-eszközök leírását.
 
-- **Név** (kötelező): az itt definiált név jelenik meg az ajánlatnak az Ön által választott piactéren (ko) lévő listáján. A név előre fel van töltve az előző **új ajánlat** bejegyzése alapján.  Lehet, hogy ez védjeggyel van elvégezve.  Ez nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
+- **Név** (kötelező): az itt definiált név jelenik meg az ajánlatnak az Ön által választott piactéren (ko) lévő listáján. A név előre fel van töltve az előző **új ajánlat** bejegyzése alapján. A név lehet védjeggyel ellátott. Nem tartalmazhat hangulatjelek (kivéve, ha a védjegyek és a szerzői jogi szimbólumok), és legfeljebb 50 karakter hosszúnak kell lennie.
 - **Összefoglalás** (kötelező): adja meg az ajánlat rövid leírását, amelyet a Piactéri listák keresési eredményeiben kíván használni. Ebben a mezőben legfeljebb 100 karaktert lehet megadni.
 - **Leírás** (kötelező): adja meg a piactér-lista (ek) áttekintésében megjelenítendő ajánlat leírását. Érdemes figyelembe venni az érték kiosztását, a főbb előnyöket, a kategória-vagy iparági társításokat, az alkalmazáson belüli vásárlási lehetőségeket, a szükséges közzétételeket, valamint egy hivatkozást, amely további információkat tartalmaz.
 Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. További tippekért tekintse meg a [nagyszerű alkalmazás leírását](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)ismertető cikket.
@@ -240,7 +240,7 @@ Ebben a mezőben legfeljebb 3 000 karaktert lehet megadni. További tippekért t
 
 #### <a name="description"></a>**Leírás**
 
-A mezőt kötelező kitölteni. A leírásban szerepeltetni kívánt elemek:
+Ez a mező kötelező. A **leírásban**szerepeltetni kívánt elemek:
 
 * A Leírás első néhány mondatában egyértelműen ismertesse ajánlata értékét.  
 * Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
@@ -253,76 +253,28 @@ Az érték kiosztásának alapvető összetevőinek a következő információka
 * A termékből származó előnyöket biztosító felhasználó típusa.
 * Az ügyfélnek szüksége van a termék címére, vagy a fájdalomra.
 
-Annak érdekében, hogy az ajánlat leírása jobban megtörténjen, HTML-címkék használatával formázhatja a leírást.
+Ha szeretné, hogy az ajánlat **leírása** jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást.
 
-1. Ha bekezdéseket szeretne létrehozni, vegye fel `<p>` a szöveg megadásával, és adja hozzá a `</p>`t a végén.
+![A Rich Text Editor használata](./media/text-editor2.png)
 
-    **Példa**:
+A Rich Text Editor használatához kövesse az alábbi utasításokat:
 
-    `<p>` ez az első bekezdés. `</p>` <br>
-    `<p>` ez a második bekezdés. `</p>` <br>
+- A tartalom formátumának módosításához jelölje ki a formázni kívánt szöveget, és válasszon egy szövegstílus-stílust az alábbi ábrán látható módon:
 
-    A fentiek így néznek ki:
+     ![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png)
 
-    <p> Ez az első bekezdés. </p>
-    <p> Ez a második bekezdés. </p>
+- Ha felsorolásjeles vagy számozott listát szeretne hozzáadni a szöveghez, használja az alábbi beállításokat:
 
-1. Ha **listajeles listát kíván hozzáadni az elemek listájához**, helyezze a szöveget az alábbi `<li>` címkékbe. A `<ul>` és a `</ul>` címkén belül több listajeles elemet (a `<li>` és a `</li>` címkék között található elemeket) másolhat és beilleszthet. Ügyeljen arra, hogy hozzáadja a `<ul></ul>`.
+     ![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png)
 
-    **Példa**:
+- A szöveg behúzásának hozzáadásához vagy eltávolításához használja az alábbi beállításokat:
 
-    ```
-    <ul> 
-        <li>add text here</li>
-        <li> add text here </li>
-        <li> add text here </li>
-    </ul>
-    ```
-
-    A fentiek így néznek ki:
-    <ul> 
-        <li>Ide írja be a szöveget</li>
-        <li> Ide írja be a szöveget </li>
-        <li> Ide írja be a szöveget </li>
-    </ul> 
-
-1. **Félkövér** tartalom hozzáadásához vegyen fel `<b>`t a félkövérre állítani kívánt szöveg elejére, és vegye fel `</b>` a félkövérre állítani kívánt szöveg végén.
-
-    **Példa**: `<b>` ingyenes próbaverzió `</b>`
-    
-    A fentiek hatására az ingyenes PRÓBAIDŐSZAKot a kirakatban található ajánlat leírásában félkövérre kell állítani.
-
-    **INGYENES PRÓBA**
-
-1. Ha **sortörést szeretne hozzáadni a** tartalomhoz, adja hozzá a `<br>`t az új sorban elindítani kívánt tartalomhoz. Ha helyet szeretne hagyni, és gondoskodjon arról, hogy a tartalom új sorban induljon el, adja hozzá a `<br><br>`t a tartalom előtt.
-
-    **Példa**:
-
-    Ez egy szöveges sor. `<br>` ez egy olyan szövegsor, amely új sorban indul el. `<br><br>` ez egy olyan vonal, amely az alábbi két sort fogja elindítani.
-
-    A fentiek így néznek ki:
-
-    Ez egy szöveges sor. <br> Ez egy olyan szövegsor, amely új sorban indul el. <br><br> Ez egy olyan sor, amely az alábbi két sort fogja elindítani.
-
-1. Ha szeretné **megnövelni a szöveg méretét**, először válassza ki, milyen nagy legyen a szöveg. Használja az alábbi példákat. Miután kiválasztotta a szöveg méretét, adja hozzá a megfelelő `<H*></H*>` címkéket a szöveg elejéhez és végéhez.
-
-    **Példa**:
-
-    `<h1>`ez az 1. címsor`</h1>` <br>
-    `<h2>`ez a 2. fejléc`</h2>` <br>
-    `<h3>`ez a 3. címsor`</h3>` <br>
-    `<h4>`ez a 4. címsor`</h4>` <br>
-    `<h5>`ez az 5. címsor`</h5>` <br>
-    `<h6>`ez a 6. címsor`</h6>` 
-
-    A fentiek így néznek ki:
-
-    ![Minta fejlécek](./media/heading.png)
+     ![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png)
 
 #### <a name="links"></a>Hivatkozások
 
 - **Adatvédelmi szabályzat** (kötelező): a szervezet adatvédelmi szabályzatára mutató hivatkozás. Ön felelős azért, hogy az alkalmazás megfeleljen az adatvédelmi törvényeknek és előírásoknak, valamint érvényes adatvédelmi szabályzatot biztosítson
-- **CSP program marketing anyagok** (nem kötelező): meg kell adnia egy hivatkozást a marketing-anyagokra, ha úgy dönt, hogy kiterjeszti az ajánlatot a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programra. A CSP kiterjesztheti ajánlatát a minősített ügyfelek szélesebb körére azáltal, hogy lehetővé teszi a CSP-partnerek számára, hogy csomagot, piacot és viszonteladást nyújtsanak. Ezeknek a viszonteladóknak hozzá kell férniük az anyagokhoz az ajánlat marketingje érdekében. További információ: piacra jutási [szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
+- **CSP program marketing anyagok** (nem kötelező): adjon meg egy hivatkozást a marketing-anyagokra, ha úgy dönt, hogy kiterjeszti az ajánlatot a [Cloud Solution Provider (CSP)](https://docs.microsoft.com/azure/marketplace/cloud-solution-providers) programra. A CSP kiterjesztheti ajánlatát a minősített ügyfelek szélesebb körére azáltal, hogy lehetővé teszi a CSP-partnerek számára, hogy csomagot, piacot és viszonteladást nyújtsanak. Ezeknek a viszonteladóknak hozzá kell férniük az anyagokhoz az ajánlat marketingje érdekében. További információ: piacra jutási [szolgáltatások](https://partner.microsoft.com/reach-customers/gtm).
 - **Hasznos hivatkozások** (nem kötelező): opcionális kiegészítő online dokumentumok az alkalmazással vagy a felsorolt kapcsolódó szolgáltatásokkal kapcsolatban a cím és az **URL-** **cím** megadásával. További hasznos hivatkozások hozzáadásához kattintson az **+ URL-cím hozzáadása**lehetőségre.
 
 #### <a name="contact-information"></a>Kapcsolattartási adatok
@@ -353,7 +305,7 @@ Mielőtt továbblép a következő szakaszra, ne felejtse el **menteni a mentés
 Az **előnézet** lapon megadhat egy korlátozott **előzetes** verziót, amely az ajánlat közzétételét megelőzően közzéteszi az ajánlatot a piactér szélesebb közönsége számára.
 
 > [!IMPORTANT]
-> Az ajánlat előzetes verzióban való ellenőrzése után a **Go Live** -t kell választania, mielőtt az ajánlatát élőben közzé fogja tenni a piactér nyilvános célközönsége számára.
+> Az ajánlat előzetes verzióban való ellenőrzése után válassza az **élő** verzió lehetőséget, hogy ajánlatát élőben is közzé lehessen tenni a piactér nyilvános célközönsége számára.
 
 - **Előzetes verzió célközönségének definiálása: egyetlen HRE/MSA-fiók e-mail-címe soronként, valamint egy opcionális leírás.**
 
@@ -370,7 +322,7 @@ A **technikai konfiguráció** lap az ajánlathoz való kapcsolódáshoz haszná
 
 - **Kapcsolati webhook** (kötelező): a Microsoft által az ügyfél nevében küldendő összes aszinkron eseményhez (példa: az SaaS-előfizetés érvénytelennek bizonyult) a kapcsolat webhookot kell megadnia. Ha még nem rendelkezik webhook-rendszerrel, a legegyszerűbb konfiguráció egy olyan HTTP-végpont logikai alkalmazás, amely figyeli a neki küldött összes eseményt, majd megfelelően kezeli őket (például https:\//prod-1westus.logic.azure.com:443/work). További információk: [munkafolyamatok hívása, elindítása vagy beágyazása http-végpontokkal a Logic Appsben](https://docs.microsoft.com/azure/logic-apps/logic-apps-http-endpoint).
 
-- **Azure ad-bérlő azonosítója** (kötelező): Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a megjelenő **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
+- **Azure ad-bérlő azonosítója** (kötelező): Azure Portalon belül [létre kell hoznia egy Azure Active Directory (ad) alkalmazást](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) , hogy a két szolgáltatás közötti kapcsolat ellenőrizhető legyen egy hitelesített kommunikáció mögött. A [bérlő azonosítójának](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in)megkereséséhez lépjen a Azure Active Directoryra, és válassza a **Tulajdonságok**lehetőséget, majd keresse meg a felsorolt **címtár-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e).
 
 - **Azure ad-alkalmazás azonosítója** (kötelező): az alkalmazás- [azonosítóra](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) és egy hitelesítési kulcsra is szüksége lesz. Az értékek beszerzéséhez lépjen a Azure Active Directory, és válassza a **Alkalmazásregisztrációk**lehetőséget, majd keresse meg a felsorolt **alkalmazás-azonosító** számát (például 50c464d3-4930-494c-963c-1e951d15360e). A hitelesítési kulcs megkereséséhez lépjen a **Beállítások** elemre, és válassza a **kulcsok**lehetőséget. Meg kell adnia egy leírást és egy időtartamot, és ezután meg kell adni egy számértéket.
 
@@ -390,8 +342,8 @@ A **terv áttekintésében** elérhető **műveletek** a csomag aktuális állap
 
 **Új csomag létrehozása** (legalább egy csomag a Microsofton keresztüli értékesítésre kiválasztott felhasználók számára)
 
-- **Csomag azonosítója:** Hozzon létre egyedi díjcsomag-azonosítót az ajánlat minden egyes csomagjának. Ez az azonosító látható lesz az ügyfelek számára a termék URL-címében és Azure Resource Manager-sablonokban (ha vannak ilyenek). Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Vegye figyelembe, hogy az azonosító nem módosítható a létrehozás kiválasztása után.
-- **Csomag neve:** Az ügyfelek ezt a nevet fogják látni, amikor azt döntik el, hogy melyik tervet kell kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például Ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
+- **Csomag azonosítója:** Hozzon létre egyedi díjcsomag-azonosítót az ajánlat minden egyes csomagjának. Ez az azonosító látható lesz az ügyfelek számára a termék URL-címében és Azure Resource Manager-sablonokban (ha vannak ilyenek). Csak kisbetűket, alfanumerikus karaktereket, kötőjeleket vagy aláhúzást használjon. Ehhez a csomag-AZONOSÍTÓhoz legfeljebb 50 karakter adható meg. Az azonosító nem módosítható a létrehozás kiválasztása után.
+- **Csomag neve:** Az ügyfelek ezt a nevet fogják látni, amikor azt döntik el, hogy melyik tervet kell kiválasztani az ajánlaton belül. Hozzon létre egyedi nevet az ajánlat minden csomagjának. A terv neve az adott ajánlat részét képező szoftvercsomagok megkülönböztetésére szolgál (például az ajánlat neve: Windows Server; csomagok: Windows Server 2016, Windows Server 2019).
 
 ### <a name="plan-listing"></a>Csomag listázása
 
@@ -424,7 +376,7 @@ Az ingyenes próbaverzió konfigurálásának lehetősége az ajánlat minden cs
 >[!Note]
 >Ha a visszagörgethető ajánlat ingyenes próbaverzióval lett közzétéve, az adott csomag esetében nem tiltható le. Győződjön meg arról, hogy ez a beállítás megfelelő az első közzétételhez, hogy ne kelljen újból létrehoznia a csomagot.
 
-Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial`, amely True (igaz) vagy FALSE (hamis) értékűként lesz megjelölve. További információt a [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription) -val foglalkozó témakörben talál.
+Az ingyenes próbaverzióban jelenleg részt vevő ügyfél-előfizetésekkel kapcsolatos információk beszerzéséhez használja az új API-tulajdonságot `isFreeTrial`, amely True (igaz) vagy FALSE (hamis) értékűként lesz megjelölve. További információ: [SaaS Get előfizetés API](https://docs.microsoft.com/azure/marketplace/partner-center-portal/pc-saas-fulfillment-api-v2#get-subscription).
 
 >[!Note]
 >Az ingyenes próbaverziók nem támogatottak a piactér-mérési szolgáltatást használó csomagok esetében.

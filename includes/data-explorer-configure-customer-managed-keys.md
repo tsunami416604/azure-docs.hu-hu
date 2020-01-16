@@ -4,12 +4,12 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5c51a32c9dd82f2efe469d7a8844ed518b8f4d59
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725714"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021035"
 ---
 Az Azure Adatkezelő a Storage-fiókban tárolt összes adathalmazt titkosítja. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat, amelyeket az adattitkosításhoz használhat. Az ügyfél által felügyelt kulcsokat egy [Azure Key Vault](/azure/key-vault/key-vault-overview)kell tárolni. Létrehozhat saját kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhat egy Azure Key Vault API-t kulcsok létrehozásához. Az Azure Adatkezelő-fürtnek és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. Az ügyfél által felügyelt kulcsok részletes ismertetését lásd: [ügyfél által felügyelt kulcsok Azure Key Vault](/azure/storage/common/storage-service-encryption). Ez a cikk bemutatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat.
 
@@ -22,7 +22,7 @@ Az ügyfél által felügyelt kulcsok a fürthöz való engedélyezéséhez elő
 
 ## <a name="create-a-new-key-vault"></a>Új kulcstartó létrehozása
 
-Ha új kulcstartót szeretne létrehozni a PowerShell használatával, hívja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault.md). Az Azure Adatkezelő-titkosításhoz az ügyfél által felügyelt kulcsok tárolásához használt kulcstartónak engedélyezve kell lennie két kulcsfontosságú védelmi beállítás, a helyreállítható törlés és a **nem végleges** **Törlés** . Cserélje le a zárójelben lévő helyőrző értékeket az alábbi példában szereplő saját értékekre.
+Ha új kulcstartót szeretne létrehozni a PowerShell használatával, hívja a [New-AzKeyVault](/powershell/module/az.keyvault/new-azkeyvault). Az Azure Adatkezelő-titkosításhoz az ügyfél által felügyelt kulcsok tárolásához használt kulcstartónak engedélyezve kell lennie két kulcsfontosságú védelmi beállítás, a helyreállítható törlés és a **nem végleges** **Törlés** . Cserélje le a zárójelben lévő helyőrző értékeket az alábbi példában szereplő saját értékekre.
 
 ```azurepowershell-interactive
 $keyVault = New-AzKeyVault -Name <key-vault> `
@@ -34,7 +34,7 @@ $keyVault = New-AzKeyVault -Name <key-vault> `
 
 ## <a name="configure-the-key-vault-access-policy"></a>A Key Vault hozzáférési szabályzatának konfigurálása
 
-Ezután konfigurálja a Key Vault hozzáférési házirendjét, hogy a fürt hozzáférjen az eléréséhez. Ebben a lépésben a rendszerhez rendelt felügyelt identitást fogja használni, amelyet korábban a fürthöz rendelt hozzá. A Key Vault hozzáférési házirendjének beállításához hívja a [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy.md). Cserélje le a zárójelben lévő helyőrző értékeket a saját értékeire, és használja az előző példákban definiált változókat.
+Ezután konfigurálja a Key Vault hozzáférési házirendjét, hogy a fürt hozzáférjen az eléréséhez. Ebben a lépésben a rendszerhez rendelt felügyelt identitást fogja használni, amelyet korábban a fürthöz rendelt hozzá. A Key Vault hozzáférési házirendjének beállításához hívja a [set-AzKeyVaultAccessPolicy](/powershell/module/az.keyvault/set-azkeyvaultaccesspolicy). Cserélje le a zárójelben lévő helyőrző értékeket a saját értékeire, és használja az előző példákban definiált változókat.
 
 ```azurepowershell-interactive
 Set-AzKeyVaultAccessPolicy `
@@ -45,7 +45,7 @@ Set-AzKeyVaultAccessPolicy `
 
 ## <a name="create-a-new-key"></a>Új kulcs létrehozása
 
-Ezután hozzon létre egy új kulcsot a Key vaultban. Új kulcs létrehozásához hívja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey.md). Cserélje le a zárójelben lévő helyőrző értékeket a saját értékeire, és használja az előző példákban definiált változókat.
+Ezután hozzon létre egy új kulcsot a Key vaultban. Új kulcs létrehozásához hívja a [Add-AzKeyVaultKey](/powershell/module/az.keyvault/add-azkeyvaultkey). Cserélje le a zárójelben lévő helyőrző értékeket a saját értékeire, és használja az előző példákban definiált változókat.
 
 ```azurepowershell-interactive
 $key = Add-AzKeyVaultKey -VaultName $keyVault.VaultName -Name <key> -Destination 'Software'

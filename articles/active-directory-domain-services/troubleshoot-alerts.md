@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: iainfou
-ms.openlocfilehash: 459aeaefc07e3f55b0829f0ad378992104982941
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74703943"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979908"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Ismert problémák: gyakori riasztások és megoldások a Azure Active Directory Domain Services
 
@@ -92,7 +92,7 @@ Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan 
 
 Az Azure AD DS aktív előfizetést igényel, és nem helyezhető át másik előfizetésbe. Ha az Azure AD DS felügyelt tartományhoz tartozó Azure-előfizetés törölve lett, újra létre kell hoznia egy Azure-előfizetést és az Azure AD DS felügyelt tartományt.
 
-1. [Hozzon létre egy Azure-előfizetést](../billing/billing-create-subscription.md).
+1. [Hozzon létre egy Azure-előfizetést](../cost-management-billing/manage/create-subscription.md).
 1. [Törölje az azure AD DS felügyelt tartományt](delete-aadds.md) a meglévő Azure ad-címtárból.
 1. [Hozzon létre egy helyettesítő Azure AD DS felügyelt tartományt](tutorial-create-instance.md).
 

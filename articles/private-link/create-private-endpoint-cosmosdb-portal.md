@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: allensu
-ms.openlocfilehash: 13b0f7bd37956b51c6dce780d0709abfb3546336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 23e04bf651c199364f23bf36f327de94c709d643
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430306"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028578"
 ---
 # <a name="connect-privately-to-an-azure-cosmos-account-using-azure-private-link"></a>Privát csatlakozás Azure Cosmos-fiókhoz az Azure Private link használatával
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Az
    10.1.255.14 mycosmosaccount-eastus.documents.azure.com
 
 
-1. A *myVM*távoli asztal telepítse a [Microsoft Azure Storage Explorert](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
+1. A *myVM*távoli asztal telepítse a [Microsoft Azure Storage Explorert](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer?toc=%2Fazure%2Fstorage%2Fblobs%2Ftoc.json&tabs=windows).
 
 1. Kattintson a jobb gombbal a **Cosmos db fiókok (előzetes verzió)** elemre.
 
@@ -159,22 +159,22 @@ Ebben a szakaszban a magánhálózati végpont használatával csatlakozik az Az
 
 1. (Opcionálisan) új elemeket adhat hozzá a *mycosmosaccount*.
 
-1. A távoli asztali kapcsolat bezárásával *myVM*.
+1. A távoli asztali kapcsolat bezárásával *myVM*.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült a privát végponttal, az Azure Cosmos-fiókkal és a virtuális géppel, törölje az erőforráscsoportot és a benne lévő összes erőforrást: 
 
-1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza ki a *myResourceGroup* a keresési eredmények közül.
+1. Adja meg a *myResourceGroup* a portál tetején található **keresőmezőbe** , és válassza a *myResourceGroup* lehetőséget a keresési eredmények közül.
 
 1. Válassza az **Erőforráscsoport törlése** elemet.
 
-1. Adja meg a *myResourceGroup* az **erőforráscsoport nevének** beírásához, majd válassza a **Törlés**lehetőséget.
+1. Írja be a *myResourceGroup* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton, egy Azure Cosmos-fiókon és egy privát végponton. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál az Azure Cosmos-fiókkal a privát hivatkozás használatával.
 
-* További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
+* További információ a privát végpontról: [Mi az az Azure Private Endpoint?](private-endpoint-overview.md).
 
 * Ha többet szeretne megtudni a privát végpontok Azure Cosmos DB használatával való használatának korlátozásáról, tekintse meg [Az Azure Private-hivatkozás Azure Cosmos db](../cosmos-db/how-to-configure-private-endpoints.md) című cikket.

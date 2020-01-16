@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 11/04/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5a1fb3b1260beb6bd85363f4611dae23cd3d321f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ddc732655c7cfb72c4948f83752440608332915d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427351"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974089"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
 
@@ -42,7 +42,7 @@ Vegye figyelembe, hogy ez a dokumentum azt feltételezi, hogy az SQL-parancsok v
 Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 
 * **Azure-előfizetés**. Ha nem rendelkezik előfizetéssel, regisztrálhat egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial/).
-* Egy **Azure Storage-fiók**. Ebben az oktatóanyagban egy Azure Storage-fiókot fog használni az adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md) című cikket. A Storage-fiók létrehozása után be kell szereznie a tárolóhoz való hozzáféréshez használt fiók kulcsát. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
+* Egy **Azure Storage-fiók**. Ebben az oktatóanyagban egy Azure Storage-fiókot fog használni az adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket. A Storage-fiók létrehozása után be kell szereznie a tárolóhoz való hozzáféréshez használt fiók kulcsát. Lásd: a [Storage-fiók elérési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
 * Kiépített **SQL Server egy Azure-beli virtuális gépen**. Útmutatásért lásd: [Azure SQL Server virtuális gép beállítása IPython notebook-kiszolgálóként a speciális elemzésekhez](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/overview).
 

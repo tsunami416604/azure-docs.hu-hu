@@ -2,21 +2,21 @@
 title: Jelenetek renderelése a felhőben – Azure Batch
 description: Oktatóanyag – Autodesk 3ds Max jelenetek renderelése az Arnolddal a Batch renderelési szolgáltatás és az Azure parancssori felület használatával
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: tutorial
 ms.date: 12/11/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 28914244f7ea84ec133821d4b125cbd3b0378348
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: e63bd26ec226cfeba1c11570b085fd88570fbb2d
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71272340"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029191"
 ---
-# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenet megjelenítése Azure Batch 
+# <a name="tutorial-render-a-scene-with-azure-batch"></a>Oktatóanyag: Jelenetek renderelése az Azure Batch segítségével 
 
 Az Azure Batch felhőméretű renderelési képességeket biztosít használatalapú fizetéssel. Az Azure Batch támogatja renderelési alkalmazások, például az Autodesk Maya, a 3ds Max, az Arnold és a V-Ray használatát. Ez az oktatóanyag azt mutatja be, hogy milyen lépésekkel renderelhet kisebb jeleneteket a Batch és az Azure parancssori felület használatával. Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -291,7 +291,7 @@ A készlet átméretezése néhány percet vesz igénybe. Miközben a folyamat v
 
 ## <a name="render-a-multiframe-scene"></a>Több képkockából álló jelenet renderelése
 
-Az egy képkockás példához hasonlóan most is az [az batch task create](/cli/azure/batch/task#az-batch-task-create) paranccsal hozza létre a renderelési tevékenységeket a *myrenderjob* nevű feladatban. Itt a tevékenység beállításait a *myrendertask_multi.json* nevű JSON-fájlban adja meg. (A fájlt letöltheti a [GitHubról](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) Mind a hat tevékenység egy Arnold-parancssort határoz meg a *MotionBlur-DragonFlying.max* 3ds Max-jelenet egy-egy képkockájának rendereléséhez.
+Az egy képkockás példához hasonlóan most is az [az batch task create](/cli/azure/batch/task#az-batch-task-create) paranccsal hozza létre a renderelési tevékenységeket a *myrenderjob* nevű feladatban. Itt a tevékenység beállításait a *myrendertask_multi.json* nevű JSON-fájlban adja meg. (A fájlt letöltheti a [githubról](https://raw.githubusercontent.com/Azure/azure-docs-cli-python-samples/master/batch/render-scene/json/myrendertask_multi.json).) A hat feladat mindegyike egy Arnold parancssort határoz meg, amely a 3ds Max Scene *MotionBlur-DragonFlying. max*jelenetének egy keretét jeleníti meg.
 
 Hozzon létre egy fájlt az aktuális felületen *myrendertask_multi.json* néven, majd másolja és illessze be a letöltött fájl tartalmát. Módosítsa a JSON-fájl `blobSource` és `containerURL` elemeit, hogy tartalmazzák a tárfiók nevét és az SAS-jogkivonatot. Ne feledje mind a hat tevékenység beállításait módosítani. Mentse a fájlt, majd a következő parancs futtatásával küldje a várólistára a tevékenységeket:
 
@@ -338,7 +338,7 @@ Ha már nincs szükség rájuk, az [az group delete](/cli/azure/group#az-group-d
 az group delete --name myResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a következőket sajátította el:
 

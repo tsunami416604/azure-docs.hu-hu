@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 1ba0c2bd81f32c0aec242dbfb32b2d7f4064ddbe
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 3c7b7dac649548b8b21cc13761009c11609c8904
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707836"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981036"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-the-rest-api"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a REST API használatával
 
@@ -105,6 +105,6 @@ Az RBAC-ben hozzáférés eltávolításához egy szerepkör-hozzárendelést ke
 ## <a name="next-steps"></a>Következő lépések
 
 - [Szerepkör-hozzárendelések listázása az Azure RBAC és a REST API használatával](role-assignments-list-rest.md)
-- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md)
+- [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val](../azure-resource-manager/templates/deploy-rest.md)
 - [Azure REST API-referencia](/rest/api/azure/)
 - [Egyéni szerepkörök létrehozása az Azure-erőforrásokhoz a REST API használatával](custom-roles-rest.md)

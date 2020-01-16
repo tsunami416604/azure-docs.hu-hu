@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 10/29/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: 794f4ad5bba46af53280d35b55b762b9eef8e1a1
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: aa2f3481b63c98ec23e1db8213939278684a4cd6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71675251"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977636"
 ---
 # <a name="troubleshoot-log-alerts-in-azure-monitor"></a>A Azure Monitor naplózási értesítéseinek hibakeresése  
 
-Ez a cikk bemutatja, Hogyan oldhatók fel a naplózási riasztások beállításakor előforduló gyakori problémák a Azure Monitor. Emellett megoldásokat nyújt a gyakori problémákhoz a naplók működésével vagy konfigurációjával kapcsolatban. 
+Ez a cikk bemutatja, Hogyan oldhatók fel a naplózási riasztások beállításakor előforduló gyakori problémák a Azure Monitor. Emellett megoldásokat nyújt a gyakori problémákhoz a naplók működésével vagy konfigurációjával kapcsolatban.
 
 A *log-riasztások* kifejezés azokat a szabályokat írja le, amelyek az [Azure log Analytics-munkaterületen](../learn/tutorial-viewdata.md) vagy az [Azure Application Insights](../../azure-monitor/app/analytics.md)-ban történő naplózási lekérdezésen alapulnak. További információ a [naplózási riasztásokban](../platform/alerts-unified-log.md)szereplő funkciókról, fogalmakról és típusokról Azure monitor.
 
@@ -26,39 +26,39 @@ A *log-riasztások* kifejezés azokat a szabályokat írja le, amelyek az [Azure
 
 ## <a name="log-alert-didnt-fire"></a>A napló riasztása nem tűz
 
-Íme néhány gyakori ok, amiért egy konfigurált [naplózási riasztási szabály állapota Azure monitor](../platform/alerts-log.md) nem a [várt módon ](../platform/alerts-managing-alert-states.md)jelenik meg. 
+Íme néhány gyakori ok, amiért egy konfigurált [naplózási riasztási szabály állapota Azure monitor](../platform/alerts-log.md) nem a [várt módon ](../platform/alerts-managing-alert-states.md)jelenik meg.
 
 ### <a name="data-ingestion-time-for-logs"></a>Naplók adatfeldolgozási ideje
 
 A naplózási riasztás időszakonként [log Analytics](../learn/tutorial-viewdata.md) vagy [Application Insights](../../azure-monitor/app/analytics.md)alapján futtatja a lekérdezést. Mivel Azure Monitor több ezer ügyfelet dolgoz fel több ezer ügyféltől a különböző forrásokból a világ bármely részén, a szolgáltatás a különböző késések miatt nem alkalmas. További információ: [adatfeldolgozási idő Azure monitor naplókban](../platform/data-ingestion-time.md).
 
-A késések enyhítése érdekében a rendszer többször is megvárja és újrapróbálkozik a riasztási lekérdezéssel, ha úgy találja, hogy a szükséges adatmennyiség még nincs betöltve. A rendszer exponenciálisan növekszik a várakozási idő beállítása. A naplózási riasztás csak az elérhető adatmennyiség után aktiválódik, így a késés a naplózási adatmennyiség lassú betöltése miatt lehet. 
+A késések enyhítése érdekében a rendszer többször is megvárja és újrapróbálkozik a riasztási lekérdezéssel, ha úgy találja, hogy a szükséges adatmennyiség még nincs betöltve. A rendszer exponenciálisan növekszik a várakozási idő beállítása. A naplózási riasztás csak az elérhető adatmennyiség után aktiválódik, így a késés a naplózási adatmennyiség lassú betöltése miatt lehet.
 
 ### <a name="incorrect-time-period-configured"></a>Helytelen időtartam konfigurálva
 
-A következő témakörben leírtak szerint: a [naplózási riasztások terminológiája](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)című cikk a konfigurációban megadott időtartamot határozza meg a lekérdezés időtartománya alapján. A lekérdezés csak azokat a rekordokat adja vissza, amelyek ezen a tartományon belül lettek létrehozva. 
+A következő témakörben leírtak szerint: a [naplózási riasztások terminológiája](../platform/alerts-unified-log.md#log-search-alert-rule---definition-and-types)című cikk a konfigurációban megadott időtartamot határozza meg a lekérdezés időtartománya alapján. A lekérdezés csak azokat a rekordokat adja vissza, amelyek ezen a tartományon belül lettek létrehozva.
 
 Az időszak korlátozza a naplózási lekérdezéshez beolvasott adatvesztést a visszaélések megakadályozása érdekében, és megkerüli a naplózási lekérdezésekben használt idő (például a **ago**) parancsot. Ha például az időszak 60 percre van állítva, és a lekérdezés a 1:15 ÓRAKOR fut, akkor a rendszer csak a 12:15 PM és az 1:15 közötti rekordokat használja a napló lekérdezéséhez. Ha a naplózási lekérdezés olyan időparancst használ, mint az **ago (1d)** , a lekérdezés továbbra is csak 12:15 pm és 1:15 PM közötti adatmennyiséget használ, mivel az adott időszak az adott intervallumra van beállítva.
 
 Győződjön meg arról, hogy a konfigurációban szereplő időszak megfelel a lekérdezésnek. A korábban bemutatott példa esetén, ha a napló lekérdezése az **ago (1d)** és a zöld jelölő használatával van megadva, az időtartamot 24 órára vagy 1 440 percre kell beállítani (piros színnel jelölve). Ez a beállítás biztosítja, hogy a lekérdezés a kívánt módon fusson.
 
-![Időszak](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
+![Időtartam](media/alert-log-troubleshoot/LogAlertTimePeriod.png)
 
 ### <a name="suppress-alerts-option-is-set"></a>A riasztások mellőzése beállítás be van állítva
 
 A [napló riasztási szabály létrehozásáról](../platform/alerts-log.md#managing-log-alerts-from-the-azure-portal)szóló cikk 8. lépésében leírtak szerint Azure Portal a naplózási riasztások lehetőséget biztosítanak a **riasztások letiltására** , amely letiltja az aktiválási és értesítési műveleteket a beállított időtartamra. Ennek eredményeképpen előfordulhat, hogy a riasztás nem tűz. Valójában nem volt tűz, de letiltották.  
 
-![Riasztások felfüggesztése](media/alert-log-troubleshoot/LogAlertSuppress.png)
+![Riasztások mellőzése](media/alert-log-troubleshoot/LogAlertSuppress.png)
 
 ### <a name="metric-measurement-alert-rule-is-incorrect"></a>A metrika mértékének riasztási szabálya helytelen
 
-A *metrikai mérési naplók* a riasztások altípusai, amelyek különleges képességekkel és korlátozott riasztási lekérdezési szintaxissal rendelkeznek. A metrikák mérési naplójának riasztására vonatkozó szabályhoz a lekérdezés kimenetének metrikus idősorozatra van szüksége. Ez azt eredményezi, hogy a kimenet olyan tábla, amely különböző, azonos méretű időszakokkal és megfelelő összesített értékekkel együtt. 
+A *metrikai mérési naplók* a riasztások altípusai, amelyek különleges képességekkel és korlátozott riasztási lekérdezési szintaxissal rendelkeznek. A metrikák mérési naplójának riasztására vonatkozó szabályhoz a lekérdezés kimenetének metrikus idősorozatra van szüksége. Ez azt eredményezi, hogy a kimenet olyan tábla, amely különböző, azonos méretű időszakokkal és megfelelő összesített értékekkel együtt.
 
-További változókat is megadhat a táblában a **AggregatedValue**mellett. Ezeket a változókat a tábla rendezésére használhatja. 
+További változókat is megadhat a táblában a **AggregatedValue**mellett. Ezeket a változókat a tábla rendezésére használhatja.
 
 Tegyük fel például, hogy egy mérőszám mérési naplójának riasztására vonatkozó szabály a következőként lett konfigurálva:
 
-- @No__t – 0 lekérdezése  
+- `search *| summarize AggregatedValue = count() by $table, bin(timestamp, 1h)` lekérdezése  
 - 6 órás időtartam
 - 50 küszöbértéke
 - Három egymást követő jogsértés riasztási logikája
@@ -68,17 +68,17 @@ Mivel a parancs **összefoglalót tartalmaz... és két** változót biztosít (
 
 ![Metrikus mérési lekérdezés végrehajtása több értékkel](media/alert-log-troubleshoot/LogMMQuery.png)
 
-Mivel az **Összesítés** a **$tableon**van meghatározva, az adatokat egy **$Table** oszlop szerint rendezi a rendszer (piros színnel jelölve). Ezután csoportosítjuk és megkeresjük a mező **összesítésének** típusait. 
+Mivel az **Összesítés** a **$tableon**van meghatározva, az adatokat egy **$Table** oszlop szerint rendezi a rendszer (piros színnel jelölve). Ezután csoportosítjuk és megkeresjük a mező **összesítésének** típusait.
 
-A **$Table**esetében például a **availabilityResults** értékei egyetlen mintaterületnek/entitásnak tekintendők (narancssárga színnel jelölve). Ebben az értékben a mintaterület/entitás esetében a riasztási szolgáltatás három egymást követő jogsértést keres (zöld színnel jelezve). A szabálysértések riasztást váltanak ki a tábla értékének **availabilityResults**. 
+A **$Table**esetében például a **availabilityResults** értékei egyetlen mintaterületnek/entitásnak tekintendők (narancssárga színnel jelölve). Ebben az értékben a mintaterület/entitás esetében a riasztási szolgáltatás három egymást követő jogsértést keres (zöld színnel jelezve). A szabálysértések riasztást váltanak ki a tábla értékének **availabilityResults**.
 
 Hasonlóképpen, ha három egymást követő szabálysértés fordul elő a **$Table**bármely más értéke esetén, a rendszer egy másik riasztási értesítést indít el ugyanarra a dologra. A riasztási szolgáltatás automatikusan rendezi az értékeket egy adott parcellában/entitásban (narancssárga színnel jelölve).
 
-Most tegyük fel, hogy a metrikák mérési naplójának riasztására vonatkozó szabály módosult, és a lekérdezés `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)` volt. A konfiguráció többi része a korábbinál is megmaradt, beleértve a három egymást követő szabálysértés esetén a riasztási logikát. Ebben az esetben az **összesítési** lehetőség alapértelmezés szerint **timestamp** . A lekérdezésben csak egy érték van megadva az **összegzéshez... (azaz** **időbélyeg**). A korábbi példához hasonlóan a végrehajtás végén lévő kimenet a következőképpen lesz látható.
+Most tegyük fel, hogy a metrikák mérési naplójának riasztására vonatkozó szabály módosult, és a lekérdezés `search *| summarize AggregatedValue = count() by bin(timestamp, 1h)`volt. A konfiguráció többi része a korábbinál is megmaradt, beleértve a három egymást követő szabálysértés esetén a riasztási logikát. Ebben az esetben az **összesítési** lehetőség alapértelmezés szerint **timestamp** . A lekérdezésben csak egy érték van megadva az **összegzéshez... (azaz** **időbélyeg**). A korábbi példához hasonlóan a végrehajtás végén lévő kimenet a következőképpen lesz látható.
 
    ![Metrikus mérési lekérdezés végrehajtása az egyes szám értékkel](media/alert-log-troubleshoot/LogMMtimestamp.png)
 
-Mivel az **Összesítés** az **időbélyegző**alapján van definiálva, az adatokat az **időbélyegző** oszlop szerint rendezi a rendszer (piros színnel jelölve). Ezt követően **időbélyegző**alapján csoportosítjuk. A `2018-10-17T06:00:00Z` értékeit például egy mintaterületnek/entitásnak (narancssárgaként jelöltnek) tekintjük. Ebben az értékben a mintaterület/entitás esetében a riasztási szolgáltatás nem talál egymást követő szabálysértéseket (mivel minden **időbélyeg** -érték csak egy bejegyzést tartalmaz). Így a riasztás soha nem aktiválódik. Ilyen esetben a felhasználónak vagy a következőket kell tennie:
+Mivel az **Összesítés** az **időbélyegző**alapján van definiálva, az adatokat az **időbélyegző** oszlop szerint rendezi a rendszer (piros színnel jelölve). Ezt követően **időbélyegző**alapján csoportosítjuk. A `2018-10-17T06:00:00Z` értékei például egyetlen mintaterületnek/entitásnak tekintendők (narancssárga színnel jelölve). Ebben az értékben a mintaterület/entitás esetében a riasztási szolgáltatás nem talál egymást követő szabálysértéseket (mivel minden **időbélyeg** -érték csak egy bejegyzést tartalmaz). Így a riasztás soha nem aktiválódik. Ilyen esetben a felhasználónak vagy a következőket kell tennie:
 
 - Vegyen fel egy dummy változót vagy egy meglévő változót (például **$Table**) a megfelelő rendezéshez az **összesítési** mező alapján.
 - Konfigurálja újra a riasztási szabályt úgy, hogy az a **teljes megszegésen** alapuló riasztási logikát használja.
@@ -91,7 +91,7 @@ A [Azure monitor konfigurált naplózási riasztási szabály](../platform/alert
 
 A Log Analytics és Application Insights a betöltési késések és a feldolgozás hatálya alá esnek. Ha napló-riasztási lekérdezést futtat, akkor előfordulhat, hogy nem áll rendelkezésre adathozzáférés, vagy csak néhány rendelkezésre álló adattal rendelkezik. További információ: [adatfeldolgozási idő naplózása Azure monitorban](../platform/data-ingestion-time.md).
 
-A riasztási szabály konfigurálásának módjától függően előfordulhat, hogy a rendszer a riasztások végrehajtásának időpontjában nem tartalmaz adatmennyiséget vagy részleges adatnaplót. Ilyen esetekben javasoljuk, hogy módosítsa a riasztás lekérdezését vagy konfigurációját. 
+A riasztási szabály konfigurálásának módjától függően előfordulhat, hogy a rendszer a riasztások végrehajtásának időpontjában nem tartalmaz adatmennyiséget vagy részleges adatnaplót. Ilyen esetekben javasoljuk, hogy módosítsa a riasztás lekérdezését vagy konfigurációját.
 
 Ha például úgy konfigurálja a naplózási riasztási szabályt, hogy az elemzési lekérdezés eredményeinek száma kevesebb, mint 5, a riasztás akkor aktiválódik, ha nincs adat (nulla rekord) vagy részleges eredmény (egy rekord). Az adatok betöltésének késleltetése után azonban a teljes adatmennyiséggel rendelkező lekérdezés 10 rekordot eredményezhet.
 
@@ -111,7 +111,7 @@ Az alábbi részekben felsorolunk néhány okot, amiért Azure Monitor letilthat
 
 A Azure Monitor céljaként létrehozott riasztási szabályok egy adott erőforráshoz, például egy Azure Log Analytics-munkaterülethez, egy Azure Application Insights alkalmazáshoz és egy Azure-erőforráshoz tartoznak. A naplózási riasztási szolgáltatás ezután futtatja a megadott célra vonatkozó szabályban megadott elemzési lekérdezést. A szabályok létrehozása után azonban a felhasználók gyakran az Azure-ból törölnek, vagy az Azure-ban helyezik át őket – a napló riasztási szabályának célját. Mivel a riasztási szabály célja már nem érvényes, a szabály végrehajtása meghiúsul.
 
-Ilyen esetekben a Azure Monitor letiltja a napló riasztását, és gondoskodik arról, hogy ne legyen feleslegesen számlázva, ha a szabály nem futtatható folyamatosan jelentős időszakra (például egy hétre). Megtudhatja, mikor Azure Monitor letiltotta a naplózási riasztást az [Azure-tevékenység naplóján](../../azure-resource-manager/resource-group-audit.md)keresztül. Ha Azure Monitor letiltja a napló riasztási szabályát, az Azure-tevékenység naplójában megjelenik egy esemény.
+Ilyen esetekben a Azure Monitor letiltja a napló riasztását, és gondoskodik arról, hogy ne legyen feleslegesen számlázva, ha a szabály nem futtatható folyamatosan jelentős időszakra (például egy hétre). Megtudhatja, mikor Azure Monitor letiltotta a naplózási riasztást az [Azure-tevékenység naplóján](../../azure-resource-manager/management/view-activity-logs.md)keresztül. Ha Azure Monitor letiltja a napló riasztási szabályát, az Azure-tevékenység naplójában megjelenik egy esemény.
 
 Az Azure-beli tevékenység naplójának következő mintája olyan riasztási szabályt tartalmaz, amely folyamatos meghibásodás miatt le van tiltva.
 
@@ -187,9 +187,9 @@ A Azure Monitor a konfiguráció részeként létrehozott összes naplózási ri
 
 [Azure Advisor](../../advisor/advisor-overview.md) figyelmeztet erre a viselkedésre. A rendszer javaslatot tesz az adott napló riasztási szabályának Azure Advisor, a közepes hatású magas rendelkezésre állási kategóriára, valamint a "riasztási szabály kijavítása a naplózásra" című cikk leírására. Ha a naplózási riasztási szabályban lévő riasztási lekérdezés nem kerül kijavításra, miután a Azure Advisor hét napig megadta a javaslatot, Azure Monitor letiltja a naplózási riasztást, és gondoskodik arról, hogy a szabály nem számítható fel feleslegesen, ha a szabály nem futtatható folyamatosan egy jókora időszakra ( mint egy hét).
 
-Megtalálhatja azt a pontos időt, amikor a Azure Monitor letiltotta a napló riasztási szabályát, ha egy eseményt keres az Azure-beli [tevékenység naplójában](../../azure-resource-manager/resource-group-audit.md).
+Megtalálhatja azt a pontos időt, amikor a Azure Monitor letiltotta a napló riasztási szabályát, ha egy eseményt keres az Azure-beli [tevékenység naplójában](../../azure-resource-manager/management/view-activity-logs.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [log-riasztásokról az Azure-ban](../platform/alerts-unified-log.md).
 - További információ a [Application Insightsról](../../azure-monitor/app/analytics.md).

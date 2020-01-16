@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 10/20/2019
-ms.openlocfilehash: ef0445727c100b7262ebffc69be5e00a7956520a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f25486aba9549855939b06ea5b8dfc14db0af95
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428770"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969124"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
 
@@ -52,7 +52,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókja h
 
 A bejövő e-mailek és mellékletek blobként menthetőek egy [Azure Storage-tárolóba](../storage/common/storage-introduction.md).
 
-1. A Storage-tároló létrehozása előtt [hozzon létre egy Storage-fiókot](../storage/common/storage-quickstart-create-account.md) ezekkel a beállításokkal a Azure Portal **alapok** lapján:
+1. A Storage-tároló létrehozása előtt [hozzon létre egy Storage-fiókot](../storage/common/storage-account-create.md) ezekkel a beállításokkal a Azure Portal **alapok** lapján:
 
    | Beállítás | Value (Díj) | Leírás |
    |---------|-------|-------------|
@@ -159,7 +159,7 @@ Most az ezekben a lépésekben megadott kódrészlet használatával hozzon lét
 
    ![Létrehozott függvényalkalmazás](./media/tutorial-process-email-attachments-workflow/function-app-created.png)
 
-   Function-alkalmazás létrehozásához használhatja az [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)-t, illetve a [PowerShell-és Resource Manager-sablonokat](../azure-resource-manager/resource-group-template-deploy.md)is.
+   Function-alkalmazás létrehozásához használhatja az [Azure CLI](../azure-functions/functions-create-first-azure-function-azure-cli.md)-t, illetve a [PowerShell-és Resource Manager-sablonokat](../azure-resource-manager/templates/deploy-powershell.md)is.
 
 1. A **Function apps** listában bontsa ki a Function alkalmazást, ha még nincs kibontva. A Function alkalmazás alatt válassza a **függvények**lehetőséget. A függvények eszköztárán válassza az **Új függvény** lehetőséget.
 
@@ -282,7 +282,7 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | Perc | Az ellenőrzések közötti intervallumok időegysége |
       ||||
-  
+
    1. Az **új paraméter hozzáadása** listából válassza a **tulajdonos szűrő**elemet.
 
    1. Miután a **tulajdonos szűrő** mező megjelenik a műveletben, a tárgyat az itt felsorolt módon adhatja meg:
@@ -377,7 +377,8 @@ Most tesztelje le, hogy a feltétel megfelelően működik-e:
 Ezt követően adja meg a **Ha igaz** ágban végrehajtandó műveleteket. Az e-mailek és esetleges mellékleteik mentéséhez törölni kell az e-mail törzsének HTML-formázását, majd blobokat létrehozni a Storage-tárolóban az e-mail és a mellékletek számára.
 
 > [!NOTE]
-> A logikai alkalmazásnak semmit nem kell tennie a **Ha hamis** ágon, azaz akkor, ha egy e-mail nem rendelkezik melléklettel. Soron kívüli feladatként az oktatóanyag befejezése után a **Ha hamis** ágban is hozzáadhat valamilyen megfelelő műveletet, amelyet végre szeretne hajtatni.
+> A logikai alkalmazásnak semmit nem kell tennie a **Ha hamis** ágon, azaz akkor, ha egy e-mail nem rendelkezik melléklettel.
+> Soron kívüli feladatként az oktatóanyag befejezése után a **Ha hamis** ágban is hozzáadhat valamilyen megfelelő műveletet, amelyet végre szeretne hajtatni.
 
 ## <a name="call-removehtmlfunction"></a>A RemoveHTMLFunction meghívása
 
@@ -605,7 +606,9 @@ Ezután adjon meg egy műveletet, hogy a logikai alkalmazás egy e-mail-üzenete
    ||||
 
    > [!NOTE]
-   > Ha olyan mezőt választ ki, amely egy tömböt tartalmaz, például a **Tartalom** elemet, amely egy mellékleteket tartalmazó tömb, a tervező automatikusan hozzáad egy „For each” iterációt a mezőre hivatkozó művelet köré. Így a logikai alkalmazás a tömb mindegyik elemén végrehajthatja az adott műveletet. A hurok eltávolításához távolítsa el a tömb mezőjét, helyezze át a hivatkozó műveletet a hurokon kívülre, válassza a hurok címsorán lévő három pontot ( **..** .), majd válassza a **Törlés**lehetőséget.
+   > Ha olyan mezőt választ ki, amely egy tömböt tartalmaz, például a **Tartalom** elemet, amely egy mellékleteket tartalmazó tömb, a tervező automatikusan hozzáad egy „For each” iterációt a mezőre hivatkozó művelet köré.
+   > Így a logikai alkalmazás a tömb mindegyik elemén végrehajthatja az adott műveletet.
+   > A hurok eltávolításához távolítsa el a tömb mezőjét, helyezze át a hivatkozó műveletet a hurokon kívülre, válassza a hurok címsorán lévő három pontot ( **..** .), majd válassza a **Törlés**lehetőséget.
 
 1. Mentse a logikai alkalmazást.
 

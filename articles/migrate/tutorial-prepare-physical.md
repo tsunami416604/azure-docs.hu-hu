@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 363549662a17a87513c8426347909142ee405cae
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: f81f47349610cd72489df305ccf544c8346cb9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196403"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028667"
 ---
 # <a name="prepare-for-assessment-and-migration-of-physical-servers-to-azure"></a>Felkészülés a fizikai kiszolgálók Azure-ba történő értékelésére és áttelepítésére
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan lehet felkészülni a helyszíni fizikai kiszolg
 
 [Azure Migrate](migrate-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz. 
 
-Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag az első egy olyan sorozatban, amely bemutatja, hogyan kell felmérni a fizikai kiszolgálókat a Azure Migrateokkal. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Készítse elő az Azure-t. Állítsa be az Azure-fiókra és-erőforrásokra vonatkozó engedélyeket a Azure Migrate való együttműködéshez.
@@ -95,18 +95,18 @@ A fizikai kiszolgáló értékelésének előkészítéséhez ellenőriznie kell
 
 ### <a name="verify-physical-server-settings"></a>Fizikai kiszolgáló beállításainak ellenőrzése
 
-1. Ellenőrizze a [fizikai kiszolgálóra vonatkozó követelményeket](migrate-support-matrix-physical.md#assessment-physical-server-requirements) a kiszolgálók értékeléséhez.
-2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-physical.md#assessment-port-requirements) meg vannak nyitva a fizikai kiszolgálókon.
+1. Ellenőrizze a [fizikai kiszolgálóra vonatkozó követelményeket](migrate-support-matrix-physical.md#physical-server-requirements) a kiszolgálók értékeléséhez.
+2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-physical.md#port-access) meg vannak nyitva a fizikai kiszolgálókon.
 
 
 ### <a name="verify-appliance-settings"></a>Berendezés beállításainak ellenőrzése
 
 A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
 
-1. A berendezésre vonatkozó követelmények [ellenőrzése](migrate-support-matrix-physical.md#assessment-appliance-requirements) .
-2. [Tekintse át](migrate-support-matrix-physical.md#assessment-appliance-url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
-3. Tekintse át a berendezés által a felderítés és az értékelés során gyűjtött adatokat.
-4. [Jegyezze](migrate-support-matrix-physical.md#assessment-port-requirements) fel a port hozzáférési követelményeit a készülékhez.
+1. [Ellenőrizze](migrate-appliance.md#appliance---physical) a fizikai kiszolgálók berendezésére vonatkozó követelményeket.
+2. [Tekintse át](migrate-appliance.md#url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
+3. [Ellenőrizze](migrate-appliance.md#collected-data---vmware) , hogy a berendezés a felderítés és az értékelés során fog-e összegyűjteni.
+4. [Megjegyzés:](migrate-support-matrix-physical.md#port-access) a port hozzáférési követelményeinek fizikai kiszolgáló értékelése.
 
 
 ### <a name="set-up-an-account-for-physical-server-discovery"></a>Fiók beállítása a fizikai kiszolgáló felderítéséhez
@@ -116,10 +116,19 @@ Azure Migrate a helyszíni kiszolgálók felderítéséhez szükséges engedély
 - **Windows:** Állítson be egy helyi felhasználói fiókot az összes olyan Windows-kiszolgálón, amelyet fel szeretne venni a felderítésbe. A felhasználói fiókot fel kell venni a következő csoportokba:-távfelügyeleti felhasználók – Teljesítményfigyelő felhasználók – Teljesítménynapló felhasználói
 - **Linux:** Szüksége lesz egy rendszergazdai fiókra a felderíteni kívánt Linux-kiszolgálókon.
 
+## <a name="prepare-for-physical-server-migration"></a>Felkészülés a fizikai kiszolgálók áttelepítésére
+
+Tekintse át a fizikai kiszolgálók áttelepítésére vonatkozó követelményeket.
+
+- [Tekintse át](migrate-support-matrix-physical-migration.md#physical-server-requirements) a fizikai kiszolgáló áttelepítésre vonatkozó követelményeit.
+- Azure Migrate: a kiszolgáló áttelepítése replikációs kiszolgálót használ a fizikai kiszolgálók áttelepítéséhez:
+    - [Tekintse át](migrate-replication-appliance.md#appliance-requirements) a replikációs berendezés telepítési követelményeit, valamint a MySQL telepítésének [lehetőségeit](migrate-replication-appliance.md#mysql-installation) a készüléken.
+    - Tekintse át az [URL-címet](migrate-replication-appliance.md#url-access) és a [port] (Migrálás-replikálás-berendezés. MD # port-Access) a replikációs berendezés hozzáférési követelményeit.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Azure-fiók engedélyeinek beállítása.

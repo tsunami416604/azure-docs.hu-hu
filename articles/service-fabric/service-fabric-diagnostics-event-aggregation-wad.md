@@ -5,12 +5,12 @@ author: srrengar
 ms.topic: conceptual
 ms.date: 04/03/2018
 ms.author: srrengar
-ms.openlocfilehash: 104fc212dc590c1366b8dd2cd276f70bdadee5db
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: b9a448ff41c66fa3a38c124f7acde062bacbe9ba
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614536"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980206"
 ---
 # <a name="event-aggregation-and-collection-using-windows-azure-diagnostics"></a>Események összesítése és gyűjtése a Windows Azure Diagnostics használatával
 > [!div class="op_single_selector"]
@@ -65,7 +65,7 @@ Ha a Resource Manager használatával szeretne fürtöt létrehozni, hozzá kell
 
 A Resource Manager-sablon diagnosztikai beállításának megtekintéséhez nyissa meg a azuredeploy. JSON fájlt, és keressen rá a **IaaSDiagnostics**kifejezésre. Ha a sablon használatával szeretne fürtöt létrehozni, válassza az előző hivatkozáson elérhető **üzembe helyezés az Azure-** ban gombot.
 
-Azt is megteheti, hogy letölti a Resource Manager-mintát, módosítja azt, és létrehoz egy fürtöt a módosított sablonnal egy Azure PowerShell ablakban a `New-AzResourceGroupDeployment` parancs használatával. Tekintse meg a következő kódot a parancshoz megadott paraméterekhez. Az erőforráscsoportok PowerShell használatával történő üzembe helyezésével kapcsolatos részletes információkért tekintse meg az [erőforráscsoport üzembe helyezése a Azure Resource Manager sablonnal](../azure-resource-manager/resource-group-template-deploy.md)című cikket.
+Azt is megteheti, hogy letölti a Resource Manager-mintát, módosítja azt, és létrehoz egy fürtöt a módosított sablonnal egy Azure PowerShell ablakban a `New-AzResourceGroupDeployment` parancs használatával. Tekintse meg a következő kódot a parancshoz megadott paraméterekhez. Az erőforráscsoportok PowerShell használatával történő üzembe helyezésével kapcsolatos részletes információkért tekintse meg az [erőforráscsoport üzembe helyezése a Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)című cikket.
 
 ### <a name="add-the-diagnostics-extension-to-an-existing-cluster"></a>A diagnosztikai bővítmény hozzáadása egy meglévő fürthöz
 Ha olyan meglévő fürttel rendelkezik, amelyen nincs telepítve a diagnosztika, a fürt sablonján keresztül is hozzáadhatja vagy frissítheti azt. Módosítsa a meglévő fürt létrehozásához használt Resource Manager-sablont, vagy töltse le a sablont a portálról a korábban leírtak szerint. Módosítsa a template. JSON fájlt a következő feladatok végrehajtásával:

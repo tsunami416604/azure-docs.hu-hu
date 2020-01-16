@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 31af4ad9c6985202555dbcbe86c52e45d5c4154a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453284"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028740"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrate Server Assessment használatával
 
@@ -41,11 +41,11 @@ Az első oktatóanyagban az alábbiakat kell elvégeznie:
 
 - [Azure-engedélyek beállítása](tutorial-prepare-vmware.md#prepare-azure) Azure Migratehoz.
 - A [VMware előkészítése](tutorial-prepare-vmware.md#prepare-for-vmware-vm-assessment) az értékeléshez:
-   - A VMware-beállítások ellenőrzése.
-   - Állítsa be az engedélyeket egy olyan VMware virtuális gép létrehozásához, amely egy PETESEJT-sablonnal rendelkezik.
-   - Hozzon létre egy fiókot a virtuális gép felderítéséhez. 
-   - Tegye elérhetővé a szükséges portokat.
-   - Ügyeljen az Azure-hoz való hozzáféréshez szükséges URL-címekre.
+   - [Ellenőrzés](migrate-support-matrix-vmware.md#vmware-requirements) VMware-beállítások.
+   - Állítsa be az engedélyeket a VMware-ben, és hozzon létre egy virtuális gépet egy PETESEJT-sablonnal.
+   - Hozzon létre egy [fiókot a virtuális gép felderítéséhez](migrate-support-matrix-vmware.md#vmware-requirements). 
+   - Tegye elérhetővé a [szükséges portokat](migrate-support-matrix-vmware.md#port-access) .
+   - Ügyeljen az Azure-hoz való hozzáféréshez [szükséges URL-címekre](migrate-replication-appliance.md#url-access) .
 
 ## <a name="set-up-an-azure-migrate-project"></a>Azure Migrate projekt beállítása
 
@@ -130,7 +130,7 @@ Importálja a letöltött fájlt, és hozzon létre egy virtuális gépet:
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az [Azure URL-címekhez](migrate-support-matrix-vmware.md#assessment-url-access-requirements).
+Győződjön meg arról, hogy a készülék virtuális gépe tud csatlakozni az [Azure URL-címekhez](migrate-appliance.md#url-access).
 
 ### <a name="configure-the-appliance"></a>A berendezés konfigurálása
 
@@ -172,7 +172,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 1. A **vCenter Server részletek megadása lapon**adja meg a vCenter Server példány nevét (FQDN) vagy IP-címét. Meghagyhatja az alapértelmezett portot, vagy megadhat egy egyéni portot, amelyen vCenter Server figyeli.
 1. A **Felhasználónév** és a **jelszó**mezőben adja meg azokat a vCenter Server fiók hitelesítő adatait, amelyeket a berendezés a vCenter Server példányon lévő virtuális gépek felderítéséhez használni fog. 
 
-   Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#assessment-vcenter-server-permissions). [A felderítést](tutorial-assess-vmware.md#set-the-scope-of-discovery) a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti.
+   Győződjön meg arról, hogy a fiók rendelkezik a [felderítéshez szükséges engedélyekkel](migrate-support-matrix-vmware.md#vmware-requirements). [A felderítést](tutorial-assess-vmware.md#set-the-scope-of-discovery) a vCenter-fiókhoz való hozzáférés korlátozásával szűkítheti.
 1. Válassza a **kapcsolat ellenőrzése** lehetőséget, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása

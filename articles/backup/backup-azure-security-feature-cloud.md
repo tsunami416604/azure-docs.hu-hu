@@ -3,12 +3,12 @@ title: Biztonsági funkciók a Felhőbeli munkaterhelések védelme érdekében
 description: Megtudhatja, hogyan teheti biztonságosabbá a biztonsági mentéseket a Azure Backup biztonsági funkciói segítségével.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: e3da4778a82cd5eb50fbb82c7f9f00cf6c6f1a85
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: e4519a342e1be3244b5d4598880e9ad490f50030
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75829629"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028204"
 ---
 # <a name="security-features-to-help-protect-cloud-workloads-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó Felhőbeli munkaterhelések védelmének biztosításához
 
@@ -251,7 +251,7 @@ Az Azure Virtual Machines biztonsági mentése közben lehetősége van arra is,
 
 ### <a name="backup-of-managed-disk-vm-encrypted-using-customer-managed-keys"></a>Felügyelt lemezes virtuális gép biztonsági mentése az ügyfél által felügyelt kulcsok használatával
 
-Azure Backup lehetővé teszi az Azure-Virtual Machines biztonsági mentését, amely az ügyfél által felügyelt kulcsokkal titkosított lemezeket tartalmaz. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](https://docs.microsoft.com//azure/virtual-machines/windows/disk-encryption#customer-managed-keys-public-preview)című témakört.
+Azure Backup lehetővé teszi az Azure-Virtual Machines biztonsági mentését, amely az ügyfél által felügyelt kulcsokkal titkosított lemezeket tartalmaz. További részletekért tekintse meg a [felügyelt lemezek titkosítása az ügyfél által felügyelt kulcsokkal](https://docs.microsoft.com/azure/virtual-machines/windows/disk-encryption#customer-managed-keys)című témakört.
 
 ### <a name="backup-of-encrypted-vms"></a>Titkosított virtuális gépek biztonsági mentése
 

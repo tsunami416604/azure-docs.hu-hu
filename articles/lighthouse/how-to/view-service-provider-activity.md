@@ -1,14 +1,14 @@
 ---
 title: Szolgáltatói tevékenység megtekintése
 description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolgáltatók által az Azure-beli delegált erőforrás-kezelésen keresztül végrehajtott műveletek megtekintéséhez.
-ms.date: 12/6/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
-ms.openlocfilehash: 31a9e7ff80623cc59b0a2db5951dff95d3088b05
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: de149bddb6917a63d91b1890c0430f64465cb40c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749174"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046116"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
 
@@ -24,6 +24,9 @@ A [tevékenység naplóját](../../azure-monitor/platform/activity-log-view.md) 
 A tevékenység naplójában látni fogja a művelet nevét és állapotát, valamint a végrehajtás dátumát és időpontját. Az oszlop **által kezdeményezett esemény** azt jeleníti meg, hogy melyik felhasználó végezte el a műveletet, függetlenül attól, hogy a szolgáltató bérlője egy Azure-beli delegált erőforrás-kezelést vagy egy, az ügyfél saját bérlője által elindított felhasználó. Vegye figyelembe, hogy a felhasználó neve jelenik meg, nem pedig a bérlő vagy a felhasználó által az előfizetéshez hozzárendelt szerepkör.
 
 A naplózott tevékenység a Azure Portal az elmúlt 90 napban érhető el. Az adatok 90 napnál hosszabb ideig történő tárolásával kapcsolatban tekintse meg az [Azure-beli tevékenységek naplóinak összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](../../azure-monitor/platform/activity-log-collect.md)
+
+> [!NOTE]
+> A szolgáltató felhasználói a tevékenység naplójában jelennek meg, de a felhasználók és a hozzájuk tartozó szerepkör-hozzárendelések nem jelennek meg **Access Control (iam)** vagy a szerepkör-hozzárendelési adatok API-kon keresztüli lekérdezése során.
 
 ## <a name="set-alerts-for-critical-operations"></a>Riasztások beállítása kritikus műveletekhez
 

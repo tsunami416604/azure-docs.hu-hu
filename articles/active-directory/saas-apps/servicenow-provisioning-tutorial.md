@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: jeedes
-ms.openlocfilehash: da733eef4dcfc15db10bb5bf303086ae601189ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 04fb34ff9c0ba9822e9760bcd3989bd0b5675506
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443230"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044734"
 ---
 # <a name="tutorial-configure-servicenow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés ServiceNow konfigurálása
 
@@ -142,6 +142,7 @@ Miután konfigurálta az üzembe helyezést, a következő erőforrásokkal figy
 * **EntryJoiningPropertyValueIsMissing:** A megfelelő attribútum azonosításához tekintse át az [attribútumok leképezéseit](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes) . Ennek az értéknek jelen kell lennie a kiépíteni próbált felhasználón vagy csoportban. 
 * Tekintse át a [SERVICENOW SOAP API](https://docs.servicenow.com/bundle/newyork-application-development/page/integrate/web-services-apis/reference/r_DirectWebServiceAPIFunctions.html) -t, hogy megértse az összes követelményt és korlátozást (például a felhasználó országkód megadásának formátuma)
 * Egyes ServiceNow-telepítések lehetővé teszik az IP-címtartományok engedélyezését az Azure AD kiépítési szolgáltatás számára. Az Azure AD kiépítési szolgáltatás számára fenntartott IP-címtartományok [itt](https://www.microsoft.com/download/details.aspx?id=56519) találhatók: "AzureActiveDirectoryDomainServices".
+* A felhasználók a ServiceNow kormányzati felhőbe való kiépítés jelenleg nem támogatott.
 
 ## <a name="additional-resources"></a>További források
 

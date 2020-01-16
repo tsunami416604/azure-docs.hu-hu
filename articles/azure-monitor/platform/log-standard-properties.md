@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/18/2019
-ms.openlocfilehash: d765422957392a5cdb170208b809c24bf5aec2a3
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 31a6c53ec269c512ad641fcdc10469ccf16a1fe9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932196"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979751"
 ---
 # <a name="standard-properties-in-azure-monitor-logs"></a>Azure Monitor naplók standard tulajdonságai
 Azure Monitor naplókban lévő adatokat egy [log Analytics munkaterületen vagy Application Insights alkalmazásban található rekordok halmaza tárolja](../log-query/logs-structure.md), amelyek mindegyike egy adott adattípussal rendelkezik, amely egyedi tulajdonságokkal rendelkezik. Számos adattípushoz általános tulajdonságok tartoznak, amelyek több típusra is jellemzőek. Ez a cikk ismerteti ezeket a tulajdonságokat, és példákat tartalmaz arra, hogyan használhatja őket a lekérdezésekben.
@@ -79,10 +79,10 @@ A **\_elemazonosító** tulajdonság a rekord egyedi azonosítóját tárolja.
 ## <a name="_resourceid"></a>\_ResourceId
 A **\_ResourceId** tulajdonság az erőforrás egyedi azonosítóját tartalmazza, amelyhez a rekord társítva van. Ez egy szabványos tulajdonságot biztosít, amellyel a lekérdezés hatókörét csak egy adott erőforrás rekordjaira, illetve a kapcsolódó adatok több táblába való csatlakoztatására használhatja.
 
-Az Azure-erőforrások esetében a **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/resource-group-template-functions-resource.md). A tulajdonság jelenleg Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
+Az Azure-erőforrások esetében **_ResourceId** értéke az [Azure-erőforrás azonosítójának URL-címe](../../azure-resource-manager/templates/template-functions-resource.md). A tulajdonság jelenleg Azure-erőforrásokra korlátozódik, de az Azure-on kívüli erőforrásokra, például a helyszíni számítógépekre is kiterjeszthető.
 
 > [!NOTE]
-> Egyes adattípusok már rendelkeznek olyan mezőkkel, amelyek tartalmazzák az Azure Resource ID-t, vagy legalább egy részét, például az előfizetés-azonosítót. Habár ezek a mezők visszamenőleges kompatibilitást biztosítanak, javasoljuk, hogy a _ResourceId használatával több korrelációt végezzen el, mivel az konzisztens lesz.
+> Egyes adattípusok már rendelkeznek olyan mezőkkel, amelyek tartalmazzák az Azure Resource ID-t, vagy legalább egy részét, például az előfizetés-azonosítót. Habár ezek a mezők a visszamenőleges kompatibilitás érdekében is megmaradnak, javasoljuk, hogy a _ResourceId használatával végezze el a korrelációt, mivel az konzisztensebb lesz.
 
 ### <a name="examples"></a>Példák
 A következő lekérdezés összekapcsolja az egyes számítógépek teljesítmény-és esemény-adatait. Az _101_ -es azonosítójú és a processzor kihasználtsága 50%-nál több eseményt mutat be.
@@ -110,7 +110,7 @@ AzureActivity
 ) on _ResourceId  
 ```
 
-A következő lekérdezés elemzi a **_ResourceId** , és összesíti az Azure-előfizetések által számlázott adatmennyiséget.
+Az alábbi lekérdezés az Azure-előfizetések által **_ResourceId** és összesített számlázott adatmennyiséget elemez.
 
 ```Kusto
 union withsource = tt * 
@@ -120,7 +120,7 @@ union withsource = tt *
 | summarize Bytes=sum(_BilledSize) by subscriptionId | sort by Bytes nulls last 
 ```
 
-Ezekben a `union withsource = tt *` lekérdezésekben takarékosan végezheti el az adattípusok közötti kereséseket.
+Ezekkel a `union withsource = tt *` lekérdezésekkel takarékosan végezheti el az adattípusok megkeresését.
 
 ## <a name="_isbillable"></a>\_számlázható
 A **\_számlázható** tulajdonság azt határozza meg, hogy a betöltött adatmennyiség számlázható-e. A _hamis_ értékű **\_számlázható** rendelkező adatok gyűjtése ingyenes, és nem számítunk fel az Azure-fiókjába.

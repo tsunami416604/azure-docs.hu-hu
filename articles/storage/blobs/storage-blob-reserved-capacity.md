@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: cb21291d4beb9fbba27a56089f13bd0363604eab
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73686717"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981819"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A blob Storage költségeinek optimalizálása a fenntartott kapacitással
 
@@ -21,7 +21,7 @@ Az Azure Storage szolgáltatás számára fenntartott kapacitással pénzt takar
 
 Az Azure Storage szolgáltatás számára fenntartott kapacitás jelentős mértékben csökkentheti a blokk-blobok és Azure Data Lake Storage Gen2-adatmennyiségek kapacitásának költségeit. Az elért költségmegtakarítás a foglalás időtartamától, a fenntartott teljes kapacitástól, valamint a Storage-fiókhoz választott hozzáférési szinttől és típustól függ. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja az Azure Storage-erőforrások állapotát.
 
-További információ az Azure Storage foglalási díjszabásáról: a [Blobok díjszabásának blokkolása](https://azure.microsoft.com/pricing/details/storage/blobs/) és a [2. generációs Azure Data Lake Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/data-lake/).
+Az Azure Storage-foglalás díjszabásával kapcsolatos további információkért tekintse meg a [blokkblobok díjszabását](https://azure.microsoft.com/pricing/details/storage/blobs/) és [az Azure Data Lake Storage Gen 2 díjszabását](https://azure.microsoft.com/pricing/details/storage/data-lake/).
 
 ## <a name="reservation-terms-for-azure-storage"></a>Az Azure Storage foglalási feltételei
 
@@ -66,7 +66,7 @@ A foglalások jelenleg 100 TB-os vagy 1 PB-blokkhoz érhetők el, és az 1 PB bl
 
 Az Azure Storage szolgáltatás számára fenntartott kapacitást az [Azure Portalon](https://portal.azure.com)keresztül vásárolhatja meg. A foglalást elöl vagy havi fizetéssel kell fizetni. További információ a havi fizetések megvásárlásáról: [Azure-beli foglalások vásárlása előzetes vagy havi fizetéssel](/azure/billing/billing-monthly-payments-reservations).
 
-A forgatókönyvhöz legmegfelelőbb Foglalási feltételek azonosításával kapcsolatos segítségért lásd: [Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményének megismerése](../../billing/billing-understand-storage-charges.md).
+A forgatókönyvhöz legmegfelelőbb Foglalási feltételek azonosításával kapcsolatos segítségért lásd: [Az Azure Storage szolgáltatás számára fenntartott kapacitás kedvezményének megismerése](../../cost-management-billing/reservations/understand-storage-charges.md).
 
 A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
 
@@ -85,7 +85,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartozik a *LRS*, a *ZRS*, a *GRS*és az *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |
    | **Számlázási gyakoriság** | Azt jelzi, hogy a fiók milyen gyakran kerül kiszámlázásra a foglaláshoz. A lehetőségek közé tartoznak a *havonta* vagy a *kezdeti*beállítások. |
    | **Méret** | Az a régió, ahol a foglalás érvényben van. |
-   |**Távú**  | Egy vagy három év.   |
+   |**Kifejezés**  | Egy vagy három év.   |
 
 1. A foglalás paramétereinek kiválasztása után a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka.
 
@@ -101,7 +101,7 @@ A foglalásokat bizonyos korlátozásokkal lehet cserélni vagy visszatéríteni
 
 Egy foglalás cseréjéhez vagy visszafizetéséhez navigáljon a Azure Portal foglalási adataihoz. Válassza az **Exchange** vagy a **visszatérítés**lehetőséget, és kövesse az utasításokat egy támogatási kérelem elküldéséhez. A kérelem feldolgozása után a Microsoft e-mailt küld Önnek a kérelem befejezésének megerősítéséhez.
 
-Azure Reservations szabályzatokkal kapcsolatos további információkért lásd: [önkiszolgáló cserék és visszatérítések Azure Reservationshoz](../../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Azure Reservations szabályzatokkal kapcsolatos további információkért lásd: [önkiszolgáló cserék és visszatérítések Azure Reservationshoz](../../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ### <a name="exchange-a-reservation"></a>Foglalás cseréje
 
@@ -121,11 +121,11 @@ Ha egy foglalás lejár, az adott foglalás keretében használt Azure Storage-k
 
 A foglalás lejárata előtt 30 nappal a lejárati dátummal megjelenő e-mail-értesítést fog kapni. A foglalás által biztosított költségmegtakarítások kihasználása érdekében a lejárati dátumnál újabb megújítást kell folytatni.
 
-## <a name="need-help-contact-us"></a>Segítség Kapcsolat
+## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel
 
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Mi az az Azure Reservations?](../../billing/billing-save-compute-costs-reservations.md)
-- [Megtudhatja, hogyan alkalmazza a foglalási kedvezményt az Azure Storage szolgáltatásba](../../billing/billing-understand-storage-charges.md)
+- [Mi az az Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
+- [Megtudhatja, hogyan alkalmazza a foglalási kedvezményt az Azure Storage szolgáltatásba](../../cost-management-billing/reservations/understand-storage-charges.md)

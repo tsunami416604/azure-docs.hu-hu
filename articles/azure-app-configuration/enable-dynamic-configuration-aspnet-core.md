@@ -15,12 +15,12 @@ ms.topic: tutorial
 ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 608368daa17246f2512d243b2656dd7702d84f50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1c08b42d8217bf16dfcd8af17fa3c4627b95ffc3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433709"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028226"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
 
@@ -53,10 +53,12 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
 1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```CLI
-        dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 2.0.0-preview-010060003-1250
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
     ```
 
 1. Nyissa meg a *program.cs*, és frissítse a `CreateWebHostBuilder` metódust a `config.AddAzureAppConfiguration()` metódus hozzáadásához.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
@@ -79,6 +81,30 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
             .UseStartup<Startup>();
     ```
 
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public static IHostBuilder CreateHostBuilder(string[] args) =>
+        Host.CreateDefaultBuilder(args)
+            .ConfigureWebHostDefaults(webBuilder =>
+                webBuilder.ConfigureAppConfiguration((hostingContext, config) =>
+                {
+                    var settings = config.Build();
+                    config.AddAzureAppConfiguration(options =>
+                    {   
+                        options.Connect(settings["ConnectionStrings:AppConfig"])
+                            .ConfigureRefresh(refresh =>
+                                {
+                                    refresh.Register("TestApp:Settings:BackgroundColor")
+                                            .Register("TestApp:Settings:FontColor")
+                                            .Register("TestApp:Settings:Message");
+                                });
+                    });
+                })
+            .UseStartup<Startup>());
+    ```
+    ---
+
     A `ConfigureRefresh` metódussal adhatja meg azokat a beállításokat, amelyeket a konfigurációs adatainak az alkalmazás konfigurációs tárolójával való frissítéséhez használ a frissítési művelet elindításakor. A frissítési művelet tényleges kiváltásához be kell állítani az alkalmazás frissítését, hogy a rendszer bármilyen változás esetén frissítse a konfigurációs adataikat.
 
 2. Adjon hozzá egy új `Settings` osztályt definiáló és megvalósító *Settings.cs* -fájlt.
@@ -96,12 +122,38 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
     }
     ```
 
-3. Nyissa meg a *Startup.cs*, és frissítse a `ConfigureServices` metódust a konfigurációs adat`Settings` osztályhoz való kötéshez.
+3. Nyissa meg a *Startup.cs*, és a `ConfigureServices` metódusban `IServiceCollection.Configure<T>` használatával kösse a konfigurációs adat`Settings` osztályhoz.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
         services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+    }
+    ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.Configure<Settings>(Configuration.GetSection("TestApp:Settings"));
+        services.AddControllersWithViews();
+    }
+    ```
+    ---
+
+4. Frissítse a `Configure` metódust, és adja hozzá a `UseAzureAppConfiguration` middleware-t, hogy a frissítéshez regisztrált konfigurációs beállítások frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is megkapja a kérelmeket.
+
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+        app.UseAzureAppConfiguration();
 
         services.Configure<CookiePolicyOptions>(options =>
         {
@@ -109,19 +161,46 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
             options.MinimumSameSitePolicy = SameSiteMode.None;
         });
 
-        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-    }
-    ```
-
-4. Frissítse a `Configure` metódust egy middleware hozzáadásához, amely lehetővé teszi a frissítéshez regisztrált konfigurációs beállítások frissítését, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kéréseket.
-
-    ```csharp
-    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
-    {
-        app.UseAzureAppConfiguration();
         app.UseMvc();
     }
     ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+                // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+                app.UseHsts();
+            }
+
+            // Add the following line:
+            app.UseAzureAppConfiguration();
+
+            app.UseHttpsRedirection();
+            
+            app.UseStaticFiles();
+
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+    }
+    ```
+    ---
     
     A middleware a `Program.cs` `AddAzureAppConfiguration` metódusában megadott frissítési konfigurációt használja az ASP.NET Core-webalkalmazás által fogadott egyes kérelmek frissítésének elindításához. Minden kérelem esetében egy frissítési művelet aktiválódik, és az ügyféloldali kódtár ellenőrzi, hogy a regisztrált konfigurációs beállítások gyorsítótárazott értéke lejárt-e. A lejárt gyorsítótárazott értékek esetében a beállítások értékei frissülnek az alkalmazás konfigurációs tárolójával, és a fennmaradó értékek változatlanok maradnak.
     
@@ -137,6 +216,8 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
     ```
 
 2. Frissítse a `HomeController` osztályt a függőségi injektáláson keresztüli `Settings` fogadására, és használja ki az értékét.
+
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
 
     ```csharp
     public class HomeController : Controller
@@ -158,6 +239,37 @@ A folytatás előtt fejezze be a [ASP.net Core alkalmazás létrehozása az alka
         }
     }
     ```
+
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+
+    ```csharp
+    public class HomeController : Controller
+    {
+        private readonly Settings _settings;
+        private readonly ILogger<HomeController> _logger;
+
+        public HomeController(ILogger<HomeController> logger, IOptionsSnapshot<Settings> settings)
+        {
+            _logger = logger;
+            _settings = settings.Value;
+        }
+
+        public IActionResult Index()
+        {
+            ViewData["BackgroundColor"] = _settings.BackgroundColor;
+            ViewData["FontSize"] = _settings.FontSize;
+            ViewData["FontColor"] = _settings.FontColor;
+            ViewData["Message"] = _settings.Message;
+
+            return View();
+        }
+
+        // ...
+    }
+    ```
+    ---
+
+
 
 3. Nyissa meg az *index. cshtml* a views > Home könyvtárban, és cserélje le a tartalmát a következő parancsfájlra:
 

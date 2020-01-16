@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 09/27/2019
 ms.author: iainfou
-ms.openlocfilehash: 0d96fd4c435251fb4dd604351e6efeea8bde8353
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 601574cc2a478dc53a261cfcb074e43a556dd4c0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704547"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979518"
 ---
 # <a name="resolve-mismatched-directory-errors-for-existing-azure-ad-domain-services-managed-domains"></a>A meglévő Azure AD Domain Services felügyelt tartományokhoz tartozó eltérő címtárbeli hibák elhárítása
 
@@ -56,7 +56,7 @@ Ebben a példában az üzembe helyezési forgatókönyvben a contoso Azure AD DS
 A következő két lehetőség a nem egyező könyvtárat oldja fel:
 
 * [Törölje az azure AD DS felügyelt tartományt](delete-aadds.md) a meglévő Azure ad-címtárból. [Hozzon létre egy helyettesítő azure AD DS felügyelt tartományt](tutorial-create-instance.md) a használni kívánt virtuális hálózattal azonos Azure ad-címtárban. Ha elkészült, csatlakoztassa a korábban a törölt tartományhoz csatlakozó összes gépet az újból létrehozott felügyelt tartományhoz.
-* Helyezze át a virtuális hálózatot tartalmazó [Azure-előfizetést](../billing/billing-subscription-transfer.md) ugyanahhoz az Azure ad-címtárhoz, mint az Azure AD DS felügyelt tartománya.
+* Helyezze át a virtuális hálózatot tartalmazó [Azure-előfizetést](../cost-management-billing/manage/billing-subscription-transfer.md) ugyanahhoz az Azure ad-címtárhoz, mint az Azure AD DS felügyelt tartománya.
 
 ## <a name="next-steps"></a>Következő lépések
 

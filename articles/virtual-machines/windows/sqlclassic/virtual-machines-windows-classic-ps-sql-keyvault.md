@@ -16,12 +16,12 @@ ms.date: 02/17/2017
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: ddf23126154f5bc62c49f62ac4adf517d6987091
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: f878c6f7a59328e2f68ffbaee066bba4a5b6c898
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74033458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978125"
 ---
 # <a name="configure-azure-key-vault-integration-for-sql-server-on-azure-virtual-machines-classic"></a>Azure Key Vault integráció konfigurálása SQL Server Azure-beli Virtual Machines (klasszikus)
 > [!div class="op_single_selector"]
@@ -34,7 +34,7 @@ ms.locfileid: "74033458"
 Több SQL Server titkosítási funkció, például [transzparens adattitkosítás (TDE)](https://msdn.microsoft.com/library/bb934049.aspx), az [oszlop szintű titkosítás (CLE)](https://msdn.microsoft.com/library/ms173744.aspx)és a [biztonsági másolatok titkosítása](https://msdn.microsoft.com/library/dn449489.aspx). Ezek a titkosítási formák a titkosításhoz használt titkosítási kulcsok felügyeletét és tárolását igénylik. A Azure Key Vault (AKV) szolgáltatás úgy lett kialakítva, hogy javítsa a kulcsok biztonságát és felügyeletét egy biztonságos és magasan elérhető helyen. A [SQL Server Connector](https://www.microsoft.com/download/details.aspx?id=45344) lehetővé teszi, hogy a SQL Server ezeket a kulcsokat a Azure Key Vault használatával használhassa.
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 Ha a SQL Servert a helyszíni gépekkel futtatja, akkor a helyszíni [SQL Server számítógépéről elérhető lépéseket követve elérheti a Azure Key Vault](https://msdn.microsoft.com/library/dn198405.aspx). Az Azure-beli virtuális gépek SQL Server azonban időt takaríthat meg a *Azure Key Vault integrációs* funkciójával. Néhány Azure PowerShell parancsmaggal engedélyezheti ezt a funkciót, automatizálhatja az SQL-alapú virtuális gépekhez szükséges konfigurációt a kulcstartó eléréséhez.
 
@@ -55,7 +55,7 @@ A következő táblázat a PowerShell-parancsfájl következő szakaszban való 
 | --- | --- | --- |
 | **$akvURL** |**A Key Vault URL-címe** |"https:\//contosokeyvault.vault.azure.net/" |
 | **$spName** |**Egyszerű szolgáltatásnév** |"fde2b411-33d5-4e11-af04eb07b669ccf2" |
-| **$spSecret** |**Egyszerű szolgáltatás titka** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM=" |
+| **$spSecret** |**Egyszerű szolgáltatás titka** |"9VTJSQwzlFepD8XODnzy8n2V01Jd8dAjwm/azF1XDKM =" |
 | **$credName** |**Hitelesítő adat neve**: Az AKV-integráció létrehoz egy hitelesítő adatot az SQL Serverben, amely hozzáférést biztosít a virtuális gépnek a Key Vaulthoz. Válasszon egy nevet ennek a hitelesítő adatnak. |"mycred1" |
 | **$vmName** |**Virtuális gép neve**: egy korábban létrehozott SQL virtuális gép neve. |"myvmname" |
 | **$serviceName** |**Szolgáltatás neve**: az SQL virtuális géphez társított felhőalapú szolgáltatás neve. |"mycloudservicename" |

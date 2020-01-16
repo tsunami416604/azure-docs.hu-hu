@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: 0255787ac90e63aff02ea65912ffa37c8ecc09fa
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: cc2f0a513219a671dd8a75ee00af4fc9d4c6a68a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74929751"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979729"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
 > [!div class="op_single_selector"]
@@ -31,11 +31,11 @@ ms.locfileid: "74929751"
 > * [.NET API](data-factory-copy-activity-tutorial-using-dotnet-api.md)
 
 > [!NOTE]
-> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md). 
+> Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse meg a [másolási tevékenység oktatóanyagát](../quickstart-create-data-factory-dot-net.md).
 
 Ebben az oktatóanyagban egy adatfeldolgozót hoz létre egy folyamattal, amely az adatok blob Storage-ból az SQL Database-be való másolásához szükséges.
 
-A másolási tevékenység végzi az adatok továbbítását az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.  
+A másolási tevékenység végzi az adattovábbítást az Azure Data Factoryban. Egy olyan, globálisan elérhető szolgáltatás működteti, amely biztonságos, megbízható és méretezhető módon másolja át az adatokat a különböző adattárak között. A Másolás tevékenységgel kapcsolatos részletekért tekintse meg a [Data Movement Activities](data-factory-data-movement-activities.md) (Adattovábbítási tevékenységek) című cikket.  
 
 > [!NOTE]
 > A Data Factory szolgáltatás részletes áttekintését lásd: [Bevezetés a Azure Data Factory](data-factory-introduction.md) cikkbe.
@@ -46,14 +46,14 @@ A másolási tevékenység végzi az adatok továbbítását az Azure Data Facto
 Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia:
 
 * **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért tekintse meg az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) ismertető cikket.
-* **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **forrásként** szolgáló adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
+* **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **forrásként** szolgáló adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket.
 * **Azure SQL Database** Ebben az oktatóanyagban az Azure SQL Database-t használja **célként** szolgáló adattárként. Ha nem rendelkezik Azure SQL-adatbázissal, amelyet az oktatóanyagban használhat, tekintse meg a következő témakört: [Azure SQL Database létrehozása és konfigurálása](../../sql-database/sql-database-get-started.md) egy létrehozásához.
 * **SQL Server 2012/2014 vagy Visual Studio 2013**. A SQL Server Management Studio vagy a Visual Studio használatával hozzon létre egy mintaadatbázis-adatbázist, és tekintse meg az eredményeket az adatbázisban.  
 
 ## <a name="collect-blob-storage-account-name-and-key"></a>BLOB Storage-fiók nevének és kulcsának gyűjtése
 Az oktatóanyag elvégzéséhez szüksége lesz az Azure Storage-fiókja fiókjának nevére és a fiók kulcsára. Jegyezze fel az Azure Storage-fiókhoz tartozó **fiók nevét** és a **fiók kulcsát** .
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A bal oldali menüben kattintson a **minden szolgáltatás** elemre, majd válassza a **Storage-fiókok**lehetőséget.
 
     ![Tallózás – Storage-fiókok](media/data-factory-copy-data-from-azure-blob-storage-to-sql-database/browse-storage-accounts.png)
@@ -107,7 +107,7 @@ Készítse elő az Azure Blob Storage-t és az Azure SQL Database-t az oktatóan
     CREATE CLUSTERED INDEX IX_emp_ID ON dbo.emp (ID);
     ```
 
-    **Ha a számítógépen SQL Server 2012/2014 van telepítve:** kövesse az [Azure SQL Database SQL Server Management Studio használatával történő kezelésével](../../sql-database/sql-database-manage-azure-ssms.md) kapcsolatos utasításokat az Azure SQL Serverhez való kapcsolódáshoz és az SQL-szkript futtatásához. 
+    **Ha a számítógépen SQL Server 2012/2014 van telepítve:** kövesse az [Azure SQL Database SQL Server Management Studio használatával történő kezelésével](../../sql-database/sql-database-manage-azure-ssms.md) kapcsolatos utasításokat az Azure SQL Serverhez való kapcsolódáshoz és az SQL-szkript futtatásához.
 
     Ha az ügyfél számára nem engedélyezett az Azure SQL Server elérése, konfigurálnia kell az Azure SQL Server tűzfalát, hogy engedélyezze a hozzáférést a gép számára (IP-cím). Az Azure SQL Server-tűzfal konfigurálásának lépéseit lásd [ebben a cikkben](../../sql-database/sql-database-configure-firewall-settings.md).
 
@@ -123,5 +123,5 @@ Végrehajtotta az előfeltételeket. A következő módszerek egyikével hozhat 
 
 > [!NOTE]
 > Az oktatóanyagban található adatfeldolgozási folyamat adatokat másol egy forrásadattárból egy céladattárba. A bemeneti adatokat nem alakítja át kimeneti adatok létrehozásához. Az adatok Azure Data Factoryval történő átalakításának útmutatásáért olvassa el [az adatok Hadoop-fürt segítségével történő átalakítására szolgáló első folyamat létrehozását ismertető oktatóanyagot](data-factory-build-your-first-pipeline.md).
-> 
-> Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket. 
+>
+> Összefűzhet két tevékenységet (vagyis egymás után futtathatja őket), ha az egyik tevékenység kimeneti adatkészletét a másik tevékenység bemeneti adatkészleteként állítja be. Lásd [a Data Factorybeli ütemezést és végrehajtást](data-factory-scheduling-and-execution.md) ismertető cikket.

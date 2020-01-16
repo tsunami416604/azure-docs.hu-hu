@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: ba49fc72fe07378d702b8c12fcdf77d5cebee9bb
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 126b488d2bb59e2904bee646301240efe6fe71a4
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74013114"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76038145"
 ---
 Ez a dokumentum a felügyelt és a nem felügyelt lemezek közötti különbségeket mutatja be, amikor Azure Resource Manager sablonokat használ a virtuális gépek kiépítéséhez. A példák segítségével frissítheti a nem felügyelt lemezeket használó meglévő sablonokat a felügyelt lemezekre. Hivatkozásként az [101-VM-Simple-Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) sablont használjuk útmutatóként. A sablont a [felügyelt lemezekkel](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) és a korábbi verziókkal is megtekintheti a nem [felügyelt lemezekkel](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) , ha közvetlenül össze szeretné hasonlítani őket.
 
@@ -94,7 +94,16 @@ Az Azure Managed Disks használatával a lemez legfelső szintű erőforrás les
 
 ### <a name="default-managed-disk-settings"></a>A felügyelt lemez alapértelmezett beállításai
 
-Ha felügyelt lemezekkel rendelkező virtuális gépet szeretne létrehozni, már nem kell létrehoznia a Storage-fiók erőforrását, és a következőképpen tudja frissíteni a virtuális gép erőforrását. Különösen fontos megjegyezni, hogy a `apiVersion` az `2017-03-30` és a `osDisk`t tükrözi, és a `dataDisks` többé nem hivatkozik a virtuális merevlemez adott URI-ra. Ha további tulajdonságok megadása nélkül végzi a telepítést, a lemez a virtuális gép méretétől függően a tárolási típust fogja használni. Ha például prémium szintű képességgel rendelkező virtuálisgép-méretet használ (például Standard_D2s_v3), akkor a rendszer a Premium_LRS tárolót fogja használni. A tárolási típus megadásához használja a lemez SKU-beállítását. Ha nincs megadva név, az operációsrendszer-lemez `<VMName>_OsDisk_1_<randomstring>` formátuma, valamint az egyes adatlemezek `<VMName>_disk<#>_<randomstring>`. Alapértelmezés szerint az Azure Disk Encryption le van tiltva; a gyorsítótárazás az operációsrendszer-lemez, és nincs adatlemez esetén írható/olvasható. Észreveheti, hogy az alábbi példában még van egy Storage-fiók függősége, bár ez csak a diagnosztika tárolására szolgál, és a lemezes tároláshoz nem szükséges.
+A felügyelt lemezekkel rendelkező virtuális gépek létrehozásához többé nem kell létrehoznia a Storage-fiók erőforrását. Az alábbi sablonra hivatkozva a korábbi, nem részletezett lemezekre vonatkozó példákat érdemes megjegyezni:
+
+- A `apiVersion` egy olyan verzió, amely támogatja a felügyelt lemezeket.
+- a `osDisk` és a `dataDisks` többé nem hivatkozik a virtuális merevlemez adott URI azonosítóra.
+- Ha további tulajdonságok megadása nélkül végzi a telepítést, a lemez a virtuális gép méretétől függően a tárolási típust fogja használni. Ha például olyan virtuálisgép-méretet használ, amely támogatja a Premium Storage-t (például Standard_D2s_v3), akkor a prémium szintű lemezek alapértelmezés szerint lesznek konfigurálva. Ezt a tárolási típus megadásához a lemez SKU-beállítása segítségével módosíthatja.
+- Ha nincs megadva a lemez neve, az operációsrendszer-lemez `<VMName>_OsDisk_1_<randomstring>` formátuma, valamint az egyes adatlemezek `<VMName>_disk<#>_<randomstring>`.
+  - Ha egy virtuális gépet egy egyéni rendszerképből hoz létre, akkor a rendszer az egyéni rendszerkép-erőforrásban definiált lemez tulajdonságaiból kéri le a Storage-fiók típusának és a lemez nevének alapértelmezett beállításait. Ezek felülbírálása a sablon értékeinek megadásával lehetséges.
+- Alapértelmezés szerint az Azure Disk Encryption le van tiltva.
+- Alapértelmezés szerint a lemezes gyorsítótárazás az operációsrendszer-lemezre írható/olvasható, és nincs az adatlemezek esetében.
+- Az alábbi példában még mindig van egy Storage-fiók függőség, bár ez csak a diagnosztika tárolására szolgál, és nem szükséges a lemezes tároláshoz.
 
 ```json
 {

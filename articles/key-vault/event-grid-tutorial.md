@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 10/25/2019
 ms.author: mbaldwin
-ms.openlocfilehash: b30e260b2eeb0d8af0c347996cdb51685dedd046
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: 77bc092c7d44e559562699d9177c2bd168f7dea0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74133336"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981598"
 ---
 # <a name="receive-and-respond-to-key-vault-notifications-with-azure-event-grid-preview"></a>A Key Vault-értesítések fogadása és reagálás Azure Event Grid (előzetes verzió)
 
@@ -120,7 +120,7 @@ Hozzon létre egy webhookot az újonnan létrehozott runbook elindításához.
 
 Hozzon létre Event Grid-előfizetést a [Azure Portal](https://portal.azure.com)használatával.
 
-1.  Nyissa meg az [Azure Portalt](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
+1.  Nyissa meg az [Azure portált](https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true).
 
 1.  Nyissa meg a Key vaultot, és válassza az **események** lapot. Ha nem látja, ellenőrizze, hogy a [portál előzetes verzióját](https://ms.portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true)használja-e.
 
@@ -184,15 +184,15 @@ Ellenőrizze, hogy a Event Grid-előfizetés megfelelően van-e konfigurálva. E
 
 ### <a name="you-cant-create-an-event-subscription"></a>Nem hozható létre esemény-előfizetés
 
-Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/resource-manager-supported-services.md).
+Regisztrálja újra Event Grid és a Key Vault-szolgáltatót az Azure-előfizetési erőforrás-szolgáltatókban. Lásd: [Azure Resource Providers és types](../azure-resource-manager/management/resource-providers-and-types.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gratulálunk! Ha helyesen követte ezeket a lépéseket, most már készen áll arra, hogy programozott módon válaszoljon a Key vaultban tárolt titkos kódok állapotának változásaira.
 
 Ha egy lekérdezésen alapuló rendszert használ a titkos kulcsok állapotának változására a kulcstartóban, most már elkezdheti használni ezt az értesítési funkciót. A runbook is lecserélheti a kód segítségével, hogy programozott módon megújítsa a titkokat, amikor hamarosan lejárnak.
 
-További információ:
+Részletek:
 
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)

@@ -11,12 +11,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/19/2019
-ms.openlocfilehash: c8a1e2a19fa3c8691cdb381669dc3d4db189c42d
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 4f1fe1ea031cd7831ffb24ee4302d6834a8d9976
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995847"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981891"
 ---
 # <a name="azure-sql-transparent-data-encryption-with-customer-managed-key"></a>Azure SQL transzparens adattitkosítás ügyfél által felügyelt kulccsal
 
@@ -24,7 +24,7 @@ Az ügyfél által felügyelt kulccsal rendelkező Azure SQL [transzparens adatt
 
 Ebben a forgatókönyvben a TDE Protector nevű adatbázis-titkosítási kulcs (ADATTITKOSÍTÁSI kulcsot) titkosításához használt kulcs az ügyfél által felügyelt aszimmetrikus kulcs, amelyet az ügyfél és az ügyfél által felügyelt [Azure Key Vault (AKV)](https://docs.microsoft.com/azure/key-vault/key-vault-secure-your-key-vault), a felhőalapú külső kulcsokat kezelő rendszer tárol. Key Vault magas rendelkezésre állású és méretezhető biztonságos tárhely az RSA titkosítási kulcsokhoz, opcionálisan a FIPS 140-2 2-es szintű, ellenőrzött hardveres biztonsági modulok (HSM-EK) által támogatott. Nem engedélyezi a közvetlen hozzáférést egy tárolt kulcshoz, de a titkosítási/visszafejtési szolgáltatásokat biztosít a kulcs használatával a jogosult entitások számára. A kulcsot a Key Vault generálhatja, importálhatja vagy [áthelyezheti a Key vaultba egy helyszíni HSM-eszközről](https://docs.microsoft.com/azure/key-vault/key-vault-hsm-protected-keys).
 
-Azure SQL Database és Azure SQL Data Warehouse esetén a TDE-védő a logikai kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz társított összes titkosított adatbázis örökli. Az Azure SQL felügyelt példányai esetében a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes titkosított adatbázis örökli. A *kiszolgáló* kifejezés a dokumentumban SQL Database logikai kiszolgáló és a felügyelt példányra is vonatkozik, kivéve, ha másként van megadva. 
+Azure SQL Database és Azure SQL Data Warehouse esetén a TDE-védő a logikai kiszolgáló szintjén van beállítva, és az adott kiszolgálóhoz társított összes titkosított adatbázis örökli. Az Azure SQL felügyelt példányai esetében a TDE-védő a példány szintjén van beállítva, és az adott példányon található összes titkosított adatbázis örökli. A *kiszolgáló* kifejezés a dokumentumban SQL Database logikai kiszolgáló és a felügyelt példányra is vonatkozik, kivéve, ha másként van megadva.
 
 > [!IMPORTANT]
 > Azok a szolgáltatás által felügyelt TDE használó felhasználók, akik az ügyfél által felügyelt TDE szeretnék használni, az adatváltási folyamat során titkosítva maradnak, és az adatbázisfájlok nem lesznek újra titkosítva. Ha egy szolgáltatás által felügyelt kulcsról egy ügyfél által felügyelt kulcsra vált át, csak a ADATTITKOSÍTÁSI kulcsot újratitkosítására van szükség, amely gyors és online művelet.
@@ -92,7 +92,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 
 ### <a name="recommendations-when-configuring-akv"></a>Javaslatok a AKV konfigurálásakor
 
-- A magas rendelkezésre állás biztosítása érdekében a kiszolgáló a legfontosabb 500 általános célú vagy 200 üzletileg kritikus adatbázisokat egyetlen előfizetéshez tartozó kulcstartóval társítja, így biztosítva, hogy a kiszolgáló a kulcstartóban hozzáfér a TDE-védőhöz. Ezek az adatok a [Key Vault szolgáltatási korlátain](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)alapuló tapasztalatok alapján jelennek meg. A cél az, hogy megakadályozza a hibák elhárítását a kiszolgáló feladatátvétele után, mivel a kiszolgáló számos kulcsfontosságú műveletét indítja el a tárolóban, mivel vannak adatbázisok az adott kiszolgálón. 
+- A magas rendelkezésre állás biztosítása érdekében a kiszolgáló a legfontosabb 500 általános célú vagy 200 üzletileg kritikus adatbázisokat egyetlen előfizetéshez tartozó kulcstartóval társítja, így biztosítva, hogy a kiszolgáló a kulcstartóban hozzáfér a TDE-védőhöz. Ezek az adatok a [Key Vault szolgáltatási korlátain](https://docs.microsoft.com/azure/key-vault/key-vault-service-limits)alapuló tapasztalatok alapján jelennek meg. A cél az, hogy megakadályozza a hibák elhárítását a kiszolgáló feladatátvétele után, mivel a kiszolgáló számos kulcsfontosságú műveletét indítja el a tárolóban, mivel vannak adatbázisok az adott kiszolgálón.
 
 - Állítsa be a Key Vault erőforrás-zárolását annak szabályozására, hogy ki törölheti a kritikus erőforrást, és megelőzheti a véletlen vagy jogosulatlan törlést. További információ az [erőforrás-zárolásokról](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources).
 
@@ -101,7 +101,7 @@ A rendszernaplók a Azure Monitor használatával ellenőrizhetik a Key Vault Au
 - A titkosított adatbázisok magas rendelkezésre állásának biztosítása érdekében az egyes kiszolgálókat két, különböző régiókban található kulcstartóval kapcsolja össze, és ugyanazokat a kulcsfontosságú anyagokat kell tárolnia. Csak a Key vaultban lévő kulcs megjelölése a TDE-védővel megegyező régióban. A rendszer fogja használni
 
 ### <a name="recommendations-when-configuring-tde-protector"></a>Javaslatok a TDE-védő konfigurálásakor
-- Őrizze meg a TDE Protector egy másolatát egy biztonságos helyen, vagy küldje el a letéti szolgáltatásnak. 
+- Őrizze meg a TDE Protector egy másolatát egy biztonságos helyen, vagy küldje el a letéti szolgáltatásnak.
 
 - Ha a kulcsot a Key vaultban hozza létre, hozzon létre egy kulcsos biztonsági mentést, mielőtt első alkalommal használja a kulcsot a AKV-ben. A biztonsági másolat csak Azure Key Vault lehet visszaállítható. További információ a [Backup-AzKeyVaultKey](https://docs.microsoft.com/powershell/module/az.keyvault/backup-azkeyvaultkey) parancsról.
 
@@ -153,7 +153,7 @@ Az adatbázis állapotának figyeléséhez és a TDE-védő hozzáférésének e
 
 Ha egy adatbázis a Key Vault használatával titkosítva van a TDE, az újonnan létrehozott biztonsági másolatok is ugyanazzal a TDE-védővel lesznek titkosítva. A TDE-védő módosításakor az adatbázis régi biztonsági mentései **nem frissülnek** a legújabb TDE-oltalmazó használatára.
 
-A Key Vault TDE-védővel titkosított biztonsági másolat visszaállításához ellenőrizze, hogy a fő anyag elérhető-e a célkiszolgálón. Ezért javasoljuk, hogy tartsa meg a TDE-védő összes korábbi verzióját a Key vaultban, így az adatbázis biztonsági mentése visszaállítható. 
+A Key Vault TDE-védővel titkosított biztonsági másolat visszaállításához ellenőrizze, hogy a fő anyag elérhető-e a célkiszolgálón. Ezért javasoljuk, hogy tartsa meg a TDE-védő összes korábbi verzióját a Key vaultban, így az adatbázis biztonsági mentése visszaállítható.
 
 > [!IMPORTANT]
 > Egy adott kiszolgálón nem lehet egynél több TDE-védőt beállítani. Ez az a kulcs, amelynek a kulcsa az alapértelmezett TDE-védő legyen a Azure Portal panelen. Azonban több további kulcs is összekapcsolható egy kiszolgálóval anélkül, hogy TDE-védőként kellene megjelölni őket. Ezek a kulcsok nem használhatók a ADATTITKOSÍTÁSI kulcsot védelmére, de a biztonsági másolatból történő visszaállítás során használhatók, ha a biztonságimásolat-fájl a megfelelő ujjlenyomattal rendelkező kulccsal van titkosítva.
@@ -162,13 +162,13 @@ Ha a biztonsági mentés visszaállításához szükséges kulcs már nem érhet
 
 Ennek enyhítéséhez futtassa a [Get-AzSqlServerKeyVaultKey](/powershell/module/az.sql/get-azsqlserverkeyvaultkey) parancsmagot a cél SQL Database logikai kiszolgáló vagy a [Get-AzSqlInstanceKeyVaultKey](/powershell/module/az.sql/get-azsqlinstancekeyvaultkey) a célként felügyelt példányhoz, hogy visszaadja a rendelkezésre álló kulcsok listáját, és azonosítsa a hiányzókat. Annak érdekében, hogy az összes biztonsági másolat visszaállítható, győződjön meg arról, hogy a visszaállításhoz használt célkiszolgáló hozzáfér az összes szükséges kulcshoz. Ezeket a kulcsokat nem kell TDE-védőként megjelölni.
 
-Ha többet szeretne megtudni a SQL Database biztonsági mentésének helyreállításáról, tekintse meg [Az Azure SQL Database helyreállítása](sql-database-recovery-using-backups.md)című témakört. Ha többet szeretne megtudni a SQL Data Warehouse biztonsági mentési helyreállításáról, tekintse meg a [Azure SQL Data Warehouse helyreállítása](../sql-data-warehouse/backup-and-restore.md)című témakört. SQL Server natív biztonsági mentése/visszaállítása felügyelt példánnyal: gyors útmutató [: adatbázis visszaállítása felügyelt példányra](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore) 
+Ha többet szeretne megtudni a SQL Database biztonsági mentésének helyreállításáról, tekintse meg [Az Azure SQL Database helyreállítása](sql-database-recovery-using-backups.md)című témakört. Ha többet szeretne megtudni a SQL Data Warehouse biztonsági mentési helyreállításáról, tekintse meg a [Azure SQL Data Warehouse helyreállítása](../sql-data-warehouse/backup-and-restore.md)című témakört. SQL Server natív biztonsági mentése/visszaállítása felügyelt példánnyal: gyors útmutató [: adatbázis visszaállítása felügyelt példányra](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-get-started-restore)
 
 További szempontok a naplófájlok számára: a biztonsági másolatba mentett naplófájlok továbbra is titkosítva maradnak az eredeti TDE-védővel, még akkor is, ha azt elforgatták, és az adatbázis mostantól új TDE-védőt használ.  A visszaállítás ideje alatt mindkét kulcsra szükség lesz az adatbázis visszaállításához.  Ha a naplófájl Azure Key Vaultban tárolt TDE-védőt használ, a kulcs visszaállításkor is szükséges lesz, még akkor is, ha az adatbázist úgy módosították, hogy a szolgáltatás által felügyelt TDE időközben is használhassa.
 
 ## <a name="high-availability-with-customer-managed-tde"></a>Magas rendelkezésre állás az ügyfél által felügyelt TDE
 
-Olyan esetekben, amikor nincs konfigurálva geo-redundancia a kiszolgáló számára, javasoljuk, hogy konfigurálja úgy a kiszolgálót, hogy két különböző Key vaultot használjon két különböző régióban ugyanazzal a kulcsfontosságú anyaggal. A TDE-védő létrehozásával a-kiszolgálóval megegyező régióban található elsődleges Key Vault, a kiszolgálót pedig egy másik Azure-régióban lévő kulcstartóba klónozással lehet elérni, hogy a kiszolgáló hozzáférjen a második kulcstartóhoz, hogy az elsődleges Key Vault szakértelmet ience egy leállás, miközben az adatbázis működik. 
+Olyan esetekben, amikor nincs konfigurálva geo-redundancia a kiszolgáló számára, javasoljuk, hogy konfigurálja úgy a kiszolgálót, hogy két különböző Key vaultot használjon két különböző régióban ugyanazzal a kulcsfontosságú anyaggal. A TDE-védő létrehozásával a-kiszolgálóval megegyező régióban található elsődleges Key Vault, a kiszolgálót pedig egy másik Azure-régióban lévő kulcstartóba klónozással lehet elérni, hogy a kiszolgáló hozzáférjen a második kulcstartóhoz, hogy az elsődleges Key Vault szakértelmet ience egy leállás, miközben az adatbázis működik.
 
 Használja a Backup-AzKeyVaultKey parancsmagot a kulcs titkosított formátumban való lekéréséhez az elsődleges Key vaultból, majd használja a Restore-AzKeyVaultKey parancsmagot, és adja meg a második régióban található kulcstartót a kulcs klónozásához. Másik lehetőségként a Azure Portal is használhatja a kulcs biztonsági mentéséhez és visszaállításához. Az se más régióban található másodlagos Key vaultban lévő kulcs nem lehet TDE-védőként megjelölve, és nem is engedélyezett.
 

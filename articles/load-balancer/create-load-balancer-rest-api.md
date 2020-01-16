@@ -13,53 +13,53 @@ ms.tgt_pltfrm: na
 ms.workload: load-balancer
 ms.date: 06/06/2018
 ms.author: allensu
-ms.openlocfilehash: b8acf1faff17f657999769216f71cfb5fa6e3181
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: b52c554617bdcbe88b65639473044eb9c5eb7fa8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077091"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045425"
 ---
-# <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Az Azure alapszintű terheléselosztó létrehozása a REST API használatával
+# <a name="create-an-azure-basic-load-balancer-using-rest-api"></a>Azure alapszintű Load Balancer létrehozása a REST API használatával
 
-Egy Azure Load Balancer osztja el az új bejövő folyamatok, amelyek a terheléselosztó előtérbeli, a háttérbeli készletet példányok, szabályok és az állapotadat-mintavételek alapján az ügyfélszámítógépekre érkeznek. A Load Balancer kétféle termékváltozatban érhető el: alap és Standard. A két SKU-verziók közötti különbségek megértése [Load Balancer Termékváltozat összehasonlítások](load-balancer-overview.md#skus).
+A Azure Load Balancer a szabályok és az állapot-mintavételek alapján osztja el a terheléselosztó előtérben lévő új bejövő folyamatokat a háttérbeli készlet példányaiba. A Load Balancer két SKU-ban érhető el: alapszintű és standard. A két SKU-verzió közötti különbség megismeréséhez [Load BALANCER SKU-összehasonlításokat](concepts-limitations.md#skus).
  
-Ez az útmutató bemutatja, hogyan hozzon létre egy Azure alapszintű Load Balancer a [Azure REST API](/rest/api/azure/) egyenleg bejövő kérelem terhelés egy Azure virtuális hálózaton belül több virtuális gép között. Teljes dokumentációt és további példákat érhető el a [Azure Load Balancer – REST-referencia](/rest/api/load-balancer/).
+Ez az útmutató azt mutatja be, hogyan hozható létre Azure alapszintű Load Balancer az [azure REST API](/rest/api/azure/) használatával a bejövő kérelmek terheléselosztásához egy Azure-beli virtuális hálózaton belül több virtuális gép között. A részletes dokumentáció és a további minták a [Azure Load BALANCER Rest-referenciában](/rest/api/load-balancer/)érhetők el.
  
 ## <a name="build-the-request"></a>A kérelem felépítése
-A következő HTTP PUT kérelmet használatával hozzon létre egy új Azure alapszintű Load Balancert.
+Az alábbi HTTP PUT-kérelem használatával hozzon létre egy új Azure alapszintű Load Balancer.
  ```HTTP
   PUT https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Network/loadBalancers/{loadBalancerName}?api-version=2018-02-01
   ```
 ### <a name="uri-parameters"></a>URI-paraméterek
 
-|Name (Név)  |A  |Kötelező |Típus |Leírás |
+|Név  |Az  |Szükséges |Type (Típus) |Leírás |
 |---------|---------|---------|---------|--------|
-|subscriptionId   |  path       |  True (Igaz)       |   sztring      |  Az előfizetés hitelesítő adatait, amelyek egyértelműen azonosítják a Microsoft Azure-előfizetéshez. Az előfizetés-Azonosítót az URI-t minden szolgáltatás hívás részét képezi.      |
-|resourceGroupName     |     path    | True (Igaz)        |  sztring       |   Az erőforráscsoport neve.     |
-|loadBalancerName     |  path       |      True (Igaz)   |    sztring     |    A terheléselosztó neve.    |
-|api-version    |   lekérdezés     |  True (Igaz)       |     sztring    |  API-verzió.      |
+|subscriptionId   |  path       |  Igaz       |   sztring      |  Az előfizetés hitelesítő adatai, amelyek egyedileg azonosítják az Microsoft Azure-előfizetést. Az előfizetés-azonosító az összes szolgáltatási hívás URI-JÁT képezi.      |
+|resourceGroupName     |     path    | Igaz        |  sztring       |   Az erőforráscsoport neve.     |
+|loadBalancerName     |  path       |      Igaz   |    sztring     |    A terheléselosztó neve.    |
+|api-verzió    |   lekérdezés     |  Igaz       |     sztring    |  Ügyfél API-verziója.      |
 
 
 
 ### <a name="request-body"></a>A kérés törzse
 
-Csak a szükséges paraméter `location`. Ha nem adja meg a *Termékváltozat* verziója, egy alapszintű Load Balancer alapértelmezés szerint létrejön.  Használat [választható paraméterek](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) szabhatja testre a terheléselosztóhoz.
+Az egyetlen kötelező paraméter `location`. Ha nem határozza meg az *SKU* verzióját, a rendszer alapértelmezés szerint létrehoz egy alapszintű Load Balancer.  A terheléselosztó testreszabásához használjon [opcionális paramétereket](https://docs.microsoft.com/rest/api/load-balancer/loadbalancers/createorupdate#request-body) .
 
-| Name (Név) | Típus | Leírás |
+| Név | Type (Típus) | Leírás |
 | :--- | :--- | :---------- |
-| location | sztring | Erőforrás helye. Helyek használatával aktuális listájának lekérése a [lista helyek](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) műveletet. |
+| location | sztring | Erőforrás helye. A helyszínek aktuális listájának beolvasása a [lista helyei](https://docs.microsoft.com/rest/api/resources/subscriptions/listlocations) művelettel. |
 
 
-## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: Létrehozása, és a egy alapszintű Load Balancer frissítése
+## <a name="example-create-and-update-a-basic-load-balancer"></a>Példa: alapszintű Load Balancer létrehozása és frissítése
 
-Ebben a példában először létrehozhat egy alapszintű Load Balancer erőforrásait együtt. Ezután állítsa be a terheléselosztó erőforrásainak, beleértve az előtérbeli IP-konfiguráció, egy háttér címkészletet, a terheléselosztási szabály az állapotfigyelő mintavételező és bejövő NAT-szabály.
+Ebben a példában először létre kell hoznia egy alapszintű Load Balancer az erőforrásaival együtt. Ezután konfigurálnia kell a terheléselosztó erőforrásait, amelyek tartalmazzák a előtérbeli IP-konfigurációt, a háttér-címkészletet, a terheléselosztási szabályt, az állapot-mintavételt és a bejövő NAT-szabályt.
 
-Az alábbi példa egy terheléselosztót hoz létre, mielőtt nevű virtuális hálózat létrehozása *vnetlb* nevű alhálózattal *subnetlb* nevű erőforráscsoportból *rg1* a a **USA keleti Régiójában** helyét.
+Mielőtt létrehoz egy terheléselosztó-t az alábbi példával, hozzon létre egy *vnetlb* nevű virtuális hálózatot egy *subnetlb* nevű alhálózattal az **USA keleti** régiójának *rg1* nevű erőforráscsoporthoz.
 
-### <a name="step-1-create-a-basic-load-balancer"></a>1\. LÉPÉS. Alapszintű Load Balancer létrehozása
-Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA keleti Régiójában** helyen belül a *rg1* erőforráscsoportot.
-#### <a name="sample-request"></a>Mintakérelem
+### <a name="step-1-create-a-basic-load-balancer"></a>1\. LÉPÉS Alapszintű Load Balancer létrehozása
+Ebben a lépésben létrehoz egy alapszintű Load Balancer *LB* néven az **USA keleti** régiójában, a *rg1* -erőforráscsoport alatt.
+#### <a name="sample-request"></a>Példa a kérelemre
 
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01
@@ -71,9 +71,9 @@ Alapszintű Load Balancer, nevű létrehozása ebben a lépésben *lb* , a **USA
     "location": "eastus",
    }
   ```
-### <a name="step-2-configure-load-balancer-resources"></a>2\. LÉPÉS. Terheléselosztó erőforrásainak konfigurálása
-Ebben a lépésben konfigurálja a terheléselosztó *lb* erőforrásokat, például az előtérbeli IP-konfiguráció (*fe-lb*), egy háttércímkészlet (*kell lb*), a terheléselosztási szabály () *rulelb*), az állapotfigyelő mintavételező (*mintavétel-lb*), és a egy bejövő NAT-szabály ( *-nat-szabályok*).
-#### <a name="sample-request"></a>Mintakérelem
+### <a name="step-2-configure-load-balancer-resources"></a>2\. LÉPÉS Terheléselosztó-erőforrások konfigurálása
+Ebben a lépésben a (NAT-szabály) előtérbeli IP-konfigurációt (*Fe-LB*), egy háttér-címkészlet (*be-LB*), egy terheléselosztási szabályt (*rulelb*), egy állapot-mintavételt (mintavétel *-LB*) és egy bejövő NAT-szabályt (*hálózati címfordítási*szabályt) tartalmazó terheléselosztó *LB* -erőforrásait konfigurálja.
+#### <a name="sample-request"></a>Példa a kérelemre
 
   ```HTTP    
   PUT https://management.azure.com/subscriptions/subid/resourceGroups/rg1/providers/Microsoft.Network/loadBalancers/lb?api-version=2018-02-01

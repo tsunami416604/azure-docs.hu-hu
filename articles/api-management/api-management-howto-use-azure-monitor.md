@@ -13,12 +13,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
-ms.openlocfilehash: 6ecce4dc97272f03a3151708cd9c047212c36e03
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b06301ab424a29d8f0e31e8f4dee26265327896b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707203"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028368"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
 
@@ -48,7 +48,7 @@ A következő videó bemutatja, hogyan monitorozhatja az API Managementet az Azu
 
 Az API Management percenként biztosít mérőszámokat, így közel valós idejű képet ad az API-k állapotáról. Az alábbiakban néhány rendelkezésre álló mérőszámról adunk összefoglaló tájékoztatást:
 
-* Kapacitás (előzetes verzió): az APIM-szolgáltatások magasabb/alacsonyabb verzióra váltásával kapcsolatos döntések meghozatalát segíti elő. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
+* Kapacitás: segít döntéseket hozni a APIM-szolgáltatások frissítésével/lefokozásával kapcsolatban. A mérőszám percentként keletkezik, és az átjáró a jelentés pillanatában érvényes kapacitását tükrözi. A mérőszám értéke a 0–100 tartományban mozog, és az érték számítása az átjáró erőforrásai, például a processzor és a memória kihasználtsága alapján történik.
 * Összes átjárókérés: az API-lekérdezések száma az adott időszakban. 
 * Sikeres átjárókérések: a sikert jelző HTTP-válaszkódot kapott API-kérések száma, beleértve a 304-es, a 307-es, valamint a 301-nél alacsonyabb (például 200-as) válaszkódokat.
 * Sikertelen átjárókérések: a hibát jelző HTTP-válaszkódot (a 400-as, valamint az 500-nál magasabb válaszkódokat is beleértve) kapott API-kérések száma.

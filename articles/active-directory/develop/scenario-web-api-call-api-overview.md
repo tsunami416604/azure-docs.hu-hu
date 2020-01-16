@@ -15,32 +15,32 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4b357def86b77d4bbb294e2253dacfbd129998ec
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b67507daf8005f3f9a299b778f1fba4ce67d46d4
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965126"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044159"
 ---
-# <a name="scenario-web-api-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó webes API
+# <a name="scenario-a-web-api-that-calls-web-apis"></a>Forgatókönyv: webes API-kat meghívó webes API
 
-A webes API-kat meghívó webes API-k létrehozásához szükséges tudnivalók.
+Ismerje meg, hogy mit kell tudnia a webes API-kat meghívó webes API-k létrehozásához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben a forgatókönyvben a webes API-kat meghívó védett webes API-k a "webes API-k védelme" forgatókönyvre épülnek. Ha többet szeretne megtudni erről az alapvető forgatókönyvről, tekintse meg a [Protected web API – első forgatókönyv](scenario-protected-web-api-overview.md) című témakört.
+Ez a forgatókönyv, amelyben a védett webes API meghívja a webes API-kat, a "webes API-k védelme" forgatókönyvre épül. Ha többet szeretne megtudni erről az alapvető forgatókönyvről, tekintse meg a [forgatókönyv: védett webes API](scenario-protected-web-api-overview.md)című témakört.
 
 ## <a name="overview"></a>Áttekintés
 
-- Egy ügyfél (web, Desktop, mobil vagy egylapos alkalmazás) – az alábbi ábrán nem szerepel – meghívja a védett webes API-t, és egy JWT tulajdonosi jogkivonatot biztosít az "engedélyezési" http-fejlécben.
-- A védett webes API ellenőrzi a jogkivonatot, és a MSAL `AcquireTokenOnBehalfOf` metódus használatával kéri le (az Azure AD-ből), hogy a felhasználó nevében meghívjon egy második webes API-t (az alárendelt webes API néven).
-- A védett webes API ezt a tokent használja egy alsóbb rétegbeli API meghívásához. Azt is meghívhatja `AcquireTokenSilent`később, hogy más alsóbb rétegbeli API-kra is kérjen jogkivonatokat (de ugyanazon felhasználó nevében továbbra is). `AcquireTokenSilent` szükség esetén frissíti a tokent.
+- A webes, asztali, mobil vagy egyoldalas alkalmazás ügyfélprogram (amely nem szerepel a csatolt ábrán) meghívja a védett webes API-t, és egy JSON Web Token (JWT) tulajdonosi jogkivonatot biztosít az "engedélyezési" HTTP-fejlécben.
+- A védett webes API érvényesíti a jogkivonatot, és a Microsoft Authentication Library (MSAL) `AcquireTokenOnBehalfOf` metódust használja a Azure Active Directory (Azure AD) egy másik jogkivonatának igényléséhez, hogy a védett webes API meghívhat egy második webes API-t, vagy egy alárendelt webes API-t a felhasználó nevében.
+- A védett webes API a `AcquireTokenSilent`később is meghívhatja, hogy az ugyanazon felhasználó nevében más alsóbb rétegbeli API-kra is igényeljen jogkivonatokat. `AcquireTokenSilent` szükség esetén frissíti a tokent.
 
-![Webes API-t hívó webes API](media/scenarios/web-api.svg)
+![Webes API-t hívó webes API diagramja](media/scenarios/web-api.svg)
 
 ## <a name="specifics"></a>Sajátosságai
 
-Az API-engedélyekhez kapcsolódó alkalmazások regisztrációjának része a klasszikus. Az alkalmazás konfigurációja magában foglalja a OAuth 2,0-as verziójának használatát a JWT tulajdonosi jogkivonatának az alsóbb rétegbeli API-hoz való cseréjéhez. Ezt a tokent a rendszer hozzáadja a jogkivonat-gyorsítótárhoz, ahol elérhető a webes API vezérlői között, és az alsóbb rétegbeli API-k meghívásához a tokent csendesen is beszerezheti.
+Az API-engedélyekhez kapcsolódó alkalmazás-regisztrációs rész klasszikus. Az alkalmazás konfigurációja magában foglalja a OAuth 2,0-as verziójának használatát a JWT tulajdonosi jogkivonatának az alsóbb rétegbeli API-hoz való cseréjéhez. Ezt a tokent a rendszer hozzáadja a jogkivonat-gyorsítótárhoz, ahol elérhető a webes API vezérlői között, és a tokent az alsóbb rétegbeli API-k meghívásához csendesen is beszerezheti.
 
 ## <a name="next-steps"></a>Következő lépések
 

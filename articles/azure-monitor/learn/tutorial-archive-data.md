@@ -9,19 +9,19 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.subservice: metrics
-ms.openlocfilehash: 86f042a451583759aa15e886b3261700335a5285
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 87b05256103790c706f3ba0df7ea72c169b79f16
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75748543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979815"
 ---
 # <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Azure-metrikák és naplóadatok archiválása az Azure Storage használatával
 
-Az Azure-környezet több rétege készít napló- és metrikaadatokat, amelyek Azure Storage-fiókban archiválhatók. Ezt azért érdemes elvégezni, hogy megőrizze a monitorozási adatok előzményeit egy kedvező árú, nem kereshető tárolóban, miután lejárt az adatok megőrzési ideje. 
+Az Azure-környezet több rétege készít napló- és metrikaadatokat, amelyek Azure Storage-fiókban archiválhatók. Ezt azért érdemes elvégezni, hogy megőrizze a monitorozási adatok előzményeit egy kedvező árú, nem kereshető tárolóban, miután lejárt az adatok megőrzési ideje.
 
-- Az Azure Monitor platformra vonatkozó metrikák 93 napig érhetők el. 
-- Az erőforrásokra vonatkozó diagnosztikai naplók csak akkor jelennek meg, ha a Log Analyticsbe vannak irányítva, ahol legalább 30 napos megőrzési időtartam van hozzájuk beállítva. 
+- Az Azure Monitor platformra vonatkozó metrikák 93 napig érhetők el.
+- Az erőforrásokra vonatkozó diagnosztikai naplók csak akkor jelennek meg, ha a Log Analyticsbe vannak irányítva, ahol legalább 30 napos megőrzési időtartam van hozzájuk beállítva.
 - A tevékenységnapló-bejegyzések 90 napig érhetők el.  
 
 Ez az oktatóanyag végigvezeti azon a folyamaton, amely során az Azure-környezetet az adatok tárfiókban való archiválásához konfigurálhatja.
@@ -42,7 +42,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 
 ## <a name="create-a-storage-account"></a>Create a storage account
 
-Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../../storage/common/storage-quickstart-create-account.md).
+Először be kell állítania egy tárfiókot, amelybe a monitorozási adatokat archiválja. Ehhez [kövesse ezeket a lépéseket](../../storage/common/storage-account-create.md).
 
 ## <a name="route-subscription-logs-to-the-storage-account"></a>Előfizetési naplók átirányítása a tárfiókba
 
@@ -144,9 +144,9 @@ Az virtuális gépek monitorozási adatai mostantól a tárfiókba kerülnek.
 ## <a name="view-the-monitoring-data-in-the-storage-account"></a>A tárfiókban lévő monitorozási adatok megtekintése
 
 > [!WARNING]
-> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md) 
+> A tárfiókban lévő naplóadatok formátuma 2018. nov. 1-től JSON Lines lesz. [Ebben a cikkben olvashat ennek hatásairól, valamint arról, hogy hogyan frissítheti eszközeit az új formátum kezeléséhez.](./../../azure-monitor/platform/diagnostic-logs-append-blobs.md)
 >
-> 
+>
 
 Ha követte az előző lépéseket, az adatok elkezdtek a tárfiókba érkezni.
 
@@ -199,4 +199,3 @@ Ha többet szeretne kihozni az adatokból és további betekintést szeretne nye
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a Log Analytics szolgáltatással](../../azure-monitor/log-query/log-query-overview.md)
-

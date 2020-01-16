@@ -6,22 +6,22 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 73c4c8839bd1d9e37f3dc4f0802ad5a648b1026b
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793047"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979087"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése
 
 Miután létrehozott egy Azure Resource Manager sablont a logikai alkalmazáshoz, a következő módon telepítheti a sablont:
 
-* [Azure Portalra](#portal)
+* [Azure Portal](#portal)
 * [Visual Studio](#visual-studio)
 * [Azure PowerShell](#powershell)
 * [Azure CLI](#cli)
-* [Azure Resource Manager REST API](../azure-resource-manager/resource-group-template-deploy-rest.md)
+* [Azure Resource Manager REST API](../azure-resource-manager/templates/deploy-rest.md)
 * [Azure DevOps Azure-folyamatok](#azure-pipelines)
 
 <a name="portal"></a>
@@ -41,10 +41,10 @@ Ha például a Azure Portalba való bejelentkezés után kéri a következő inf
 * Egy teszt URI
 * A megadott feltételek és Kikötések elfogadása
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
 * [Áttekintés: a Logic apps üzembe helyezésének automatizálása Azure Resource Manager-sablonokkal](logic-apps-azure-resource-manager-templates-overview.md)
-* [Erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és a Azure Portal](../azure-resource-manager/resource-group-template-deploy-portal.md)
+* [Erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
 
 <a name="visual-studio"></a>
 
@@ -62,7 +62,7 @@ Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a követke
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 * [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
@@ -77,9 +77,9 @@ Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a követke
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-További információkért tekintse meg a következő témaköröket:
+További információt az alábbi témakörökben talál:
 
-* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](../azure-resource-manager/resource-group-template-deploy-cli.md) 
+* [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
 
 <a name="azure-pipelines"></a>
@@ -90,8 +90,8 @@ A logikai alkalmazások sablonjainak üzembe helyezéséhez és a környezetek k
 
 További információ a folyamatos integrációról és a folyamatos üzembe helyezésről (CI/CD) az Azure-folyamatokkal rendelkező Azure Resource Manager-sablonokkal kapcsolatban: a következő témakörökben és példákban:
 
-* [Resource Manager-sablonok integrálása az Azure-folyamatokkal](../azure-resource-manager/vs-resource-groups-project-devops-pipelines.md)
-* [Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal](../azure-resource-manager/resource-manager-tutorial-use-azure-pipelines.md)
+* [Resource Manager-sablonok integrálása az Azure-folyamatokkal](../azure-resource-manager/templates/add-template-to-azure-pipelines.md)
+* [Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal](../azure-resource-manager/templates/template-tutorial-use-azure-pipelines.md)
 * [Minta: Kapcsolódás Azure Service Bus várólistákhoz Azure Logic Apps és üzembe helyezése Azure-folyamatokkal az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-service-bus-queues-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Minta: Kapcsolódás Azure Storage-fiókokhoz Azure Logic Apps és üzembe helyezés az Azure DevOps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/connect-to-azure-storage-accounts-from-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)
 * [Minta: Function app-művelet beállítása az Azure DevOps Azure-folyamatokkal való üzembe helyezéséhez és üzembe helyezéséhez Azure Logic Apps](https://docs.microsoft.com/samples/azure-samples/azure-logic-apps-deployment-samples/set-up-an-azure-function-app-action-for-azure-logic-apps-and-deploy-with-azure-devops-pipelines/)

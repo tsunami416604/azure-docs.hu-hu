@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 02/06/2019
-ms.openlocfilehash: 6cde620b4949da8a6cff4ad89a863c80f0514f1c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: ade29318fdd1510d03ddd208534258a30b256e98
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792403"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979376"
 ---
 # <a name="validate-xml-with-schemas-in-azure-logic-apps-with-enterprise-integration-pack"></a>Az XML érvényesítése Azure Logic Apps sémákkal a Enterprise Integration Pack
 
@@ -31,7 +31,7 @@ Az integrációs fiókokhoz és összetevőkhöz (például sémák) kapcsolód�
   Ha hozzá szeretné adni a sémát az integrációs fiókhoz, akkor az integrációs fiókjából is hivatkozhat a Storage-fiókjára. 
   Ehhez a feladathoz az alábbi elemek szükségesek: 
 
-  * [Azure Storage-fiók](../storage/common/storage-account-overview.md) , amelyben létrehoz egy BLOB-tárolót a sémához. Megtudhatja, hogyan [hozhat létre egy Storage-fiókot](../storage/common/storage-quickstart-create-account.md). 
+  * [Azure Storage-fiók](../storage/common/storage-account-overview.md) , amelyben létrehoz egy BLOB-tárolót a sémához. Megtudhatja, hogyan [hozhat létre egy Storage-fiókot](../storage/common/storage-account-create.md). 
 
   * A séma tárolására szolgáló blob-tároló. Megtudhatja, hogyan [hozhat létre BLOB-tárolót](../storage/blobs/storage-quickstart-blobs-portal.md). 
   A tároló tartalmi URI-JÁT később, a séma integrációs fiókjához való hozzáadásakor kell megadnia.

@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 10/25/2019
 ms.author: diberry
-ms.openlocfilehash: b58aa97dbb97bade87a38456c58df8f93a29946f
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: 9d213c8fa03ad2ca5e5fd7e620e52aa502749be2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73901702"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969341"
 ---
 # <a name="authoring-and-runtime-keys"></a>Tartalomkészítési és futtatókörnyezeti kulcsok
 
@@ -44,7 +44,7 @@ A LUIS használatának első megkezdése után létrejön egy **kezdő kulcs** .
 
 A LUIS három típusú Azure-erőforrást tesz lehetővé: 
  
-|Paraméter|Cél|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
+|Jelmagyarázat|Rendeltetés|Kognitív szolgáltatás `kind`|Kognitív szolgáltatás `type`|
 |--|--|--|--|
 |[Szerzői kulcs](#programmatic-key)|A szerzői műveletek, a képzés, a közzététel és a tesztelés segítségével hozzáférhetnek az alkalmazáshoz, és kezelhetik azokat. Hozzon létre egy LUIS authoring-kulcsot, ha a LUIS-alkalmazásokat programozott módon szeretné létrehozni.<br><br>A `LUIS.Authoring` kulcs célja, hogy lehetővé tegye a következőket:<br>* programozott módon felügyelheti Language Understanding alkalmazásokat és modelleket, beleértve a képzést és a közzétételt<br> * a szerzői erőforrásra vonatkozó engedélyek vezérlése [a közreműködő szerepkörhöz](#contributions-from-other-authors)rendelt személyek hozzárendelésével.|`LUIS.Authoring`|`Cognitive Services`|
 |[Előrejelzési kulcs](#prediction-endpoint-runtime-key)| Lekérdezés-előrejelzési végponti kérelmek. Hozzon létre egy LUIS-előrejelzési kulcsot, mielőtt az ügyfélalkalmazás a kezdő erőforrás által biztosított 1 000-kérelmeknél újabb előrejelzéseket kér. |`LUIS`|`Cognitive Services`|
@@ -95,10 +95,10 @@ Az alkalmazást az Azure-erőforrásai határozzák meg, amelyet a tulajdonos el
 Elvégezheti a LUIS-alkalmazás áthelyezését. Használja az alábbi dokumentációs erőforrásokat a Azure Portal vagy az Azure CLI-ben:
 
 * [Alkalmazás áthelyezése a LUIS authoring-erőforrások között](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/apps-move-app-to-another-luis-authoring-azure-resource)
-* [Erőforrás áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/resource-group-move-resources.md)
-* [Erőforrás áthelyezése ugyanazon az előfizetésen belül vagy előfizetések között](../../azure-resource-manager/move-limitations/app-service-move-limitations.md)
+* [Erőforrás áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md)
+* [Erőforrás áthelyezése ugyanazon az előfizetésen belül vagy előfizetések között](../../azure-resource-manager/management/move-limitations/app-service-move-limitations.md)
 
-Az előfizetés [tulajdonjogának](../../billing/billing-subscription-transfer.md) átadása: 
+Az előfizetés [tulajdonjogának](../../cost-management-billing/manage/billing-subscription-transfer.md) átadása: 
 
 Olyan felhasználók számára, akik áttelepítették az  **[erőforrás-áttelepített](luis-migration-authoring.md) alkalmazásokat**: az erőforrás tulajdonosaként hozzáadhat egy `contributor`.
 
@@ -125,7 +125,7 @@ A tulajdonos és az összes közreműködő hozzáfér az alkalmazás létrehoz�
 |Modell módosítása|
 |Közzététel|
 |Az [aktív tanulási](luis-how-to-review-endpoint-utterances.md) végpont hosszúságú kimondott szöveg áttekintése|
-|Betanítás|
+|Tanítás|
 
 <a name="prediction-endpoint-runtime-key"></a>
 

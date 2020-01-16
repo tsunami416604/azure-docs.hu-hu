@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/22/2019
+ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: 39665e0361747e0f75fa6c92f244317b995ce6a8
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863376"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046192"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan tervezze meg a Azure Time Series Insights által
 
 ## <a name="video"></a>Videó
 
-**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br /><br />
+**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
@@ -53,7 +53,7 @@ Módosíthatja az **adatmegőrzési idő** beállításait a Azure Time Series I
 Azure Time Series Insights két mód van:
 
 * Az egyik mód a legnaprakészebb adatokra optimalizált. Kikényszeríti a szabályzatot, hogy **kiürítse a korábbi** , a példánnyal elérhetővé vált adatvesztést. Alapértelmezés szerint ez a mód be van kapcsolva. 
-* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**. 
+* A másik optimalizálja az adatoknak a beállított megőrzési korlátok alatt maradnak. A **Bejövő forgalom szüneteltetése** megakadályozza, hogy az új adatok ingressed legyenek, amikor a **tárolási korlát túllépte a tárterületet**.
 
 Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapjának két módja között állítható be.
 

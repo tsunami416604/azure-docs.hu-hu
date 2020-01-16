@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 1dbbe04818e75e41944a1c0fe54f53849cf71983
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725857"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980818"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -75,7 +75,7 @@ Ha ezt a hibaüzenetet kapja, előfordulhat, hogy nem tud csatlakozni a (z) vCen
 
 - 60052-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben", ha a berendezés regisztrálásához használt Azure-fiók nem rendelkezik megfelelő engedélyekkel.
     - Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
-    - [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
+    - [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 - 60039-es hiba: "előfordulhat, hogy a készülék nem regisztrálható sikeresen a Azure Migrate projektben" akkor fordulhat elő, ha a regisztráció sikertelen, mert a berendezés regisztrálásához használt Azure Migrate projekt nem található.
     - A Azure Portalon, és győződjön meg arról, hogy a projekt létezik az erőforráscsoporthoz.
     - Ha a projekt nem létezik, hozzon létre egy új Azure Migrate projektet az erőforráscsoporthoz, és regisztrálja újra a készüléket. [Ismerje meg, hogyan](https://docs.microsoft.com/azure/migrate/how-to-add-tool-first-time#create-a-project-and-add-a-tool) hozhat létre új projektet.
@@ -86,7 +86,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
 - Győződjön meg arról, hogy a készülék regisztrálásához használt Azure-beli felhasználói fiók legalább közreműködői engedélyekkel rendelkezik az előfizetésben.
 - Győződjön meg arról, hogy a fiók rendelkezik hozzáféréssel a hibaüzenetben megadott kulcstartóhoz, majd próbálja megismételni a műveletet.
 - Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.
-- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ a szükséges Azure-szerepkörökről és-engedélyekről.
+- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ a szükséges Azure-szerepkörökről és-engedélyekről.
 
 ## <a name="error-60028-discovery-couldnt-be-initiated"></a>60028-es hiba: nem sikerült elindítani a felderítést
 
@@ -101,7 +101,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
 - Győződjön meg arról, hogy a felderítést kezdeményező felhasználói fiók megegyezik a berendezés regisztrálásához használttal.
 - Adja meg Azure Active Directory alkalmazás hozzáférési engedélyeit ahhoz a felhasználói fiókhoz, amelyhez a felderítési művelet sikertelen.
 - Törölje az Azure Migrate projekthez korábban létrehozott erőforráscsoportot. Hozzon létre egy másik erőforráscsoportot az újraindításhoz.
-- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance-deployment-requirements) információ Azure Active Directory alkalmazás engedélyeiről.
+- [További](https://docs.microsoft.com/azure/migrate/migrate-appliance#appliance---vmware) információ Azure Active Directory alkalmazás engedélyeiről.
 
 
 ## <a name="error-50004-cant-connect-to-host-or-cluster"></a>50004-es hiba: nem lehet csatlakozni a gazdagéphez vagy a fürthöz

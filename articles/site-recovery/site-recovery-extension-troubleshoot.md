@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
-ms.openlocfilehash: 7f9ae32b95d629ef79f085ed590d9057b0414911
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: a9d28a12f5f1fa32d2bc3bcf590134930503f2ac
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941540"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970387"
 ---
 # <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémák elhárítása
 
@@ -105,8 +105,6 @@ A bővítmény eltávolítása:
 4. Válassza ki **site Recovery bővítményt**.
 5. Válassza az **Eltávolítás** lehetőséget.
 
-Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a védelmet. 
+Linux rendszerű virtuális gépek esetén, ha az VMSnapshot bővítmény nem jelenik meg a Azure Portalban, [frissítse az Azure Linux-ügynököt](../virtual-machines/linux/update-agent.md), majd futtassa a védelmet.
 
 A lépések végrehajtásával a bővítmény újratelepíthető a védelem során.
-
-

@@ -8,77 +8,77 @@ ms.topic: article
 ms.date: 01/15/2017
 ms.author: twooley
 ms.subservice: common
-ms.openlocfilehash: f523d1ebf5c96596142c6897af2be5f760b3d4b9
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f65220a04a709bae5a6892bfd4105195cee35741
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978951"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978416"
 ---
 # <a name="setting-up-the-azure-importexport-tool"></a>Az Azure import/export eszköz beállítása
 A Microsoft Azure Import/Export eszköz a Microsoft Azure Import/Export szolgáltatással használható meghajtó-előkészítési és-javítási eszköz. A következő függvényekhez használhatja az eszközt:  
-  
+
 -   Importálási feladatok létrehozása előtt az eszköz használatával másolhatja az adatok a Windows Azure adatközpontba szállítandó merevlemezekre.  
-  
+
 -   Az importálási feladatok befejezését követően az eszköz használatával kijavíthatja az összes sérült, hiányzó vagy más Blobokkal ütköző blobot.  
-  
+
 -   Miután megkapta a meghajtókat egy befejezett exportálási feladatokból, ezzel az eszközzel kijavíthatja a meghajtókon sérült vagy hiányzó fájlokat.  
-  
+
 ## <a name="prerequisites"></a>Előfeltételek  
 Ha egy importálási feladatokhoz készít meghajtókat, meg kell felelnie a következő előfeltételeknek:  
-  
+
 -   Aktív Azure-előfizetéssel kell rendelkeznie.  
-  
+
 -   Az előfizetésnek tartalmaznia kell egy elegendő szabad hellyel rendelkező Storage-fiókot az importálni kívánt fájlok tárolásához.  
-  
+
 -   A Storage-fiókhoz legalább egy fiók kulcsa szükséges.  
-  
+
 -   Szüksége van egy számítógépre (a "számítógép másolása") a Windows 7, a Windows Server 2008 R2 vagy egy újabb Windows operációs rendszerre.  
-  
+
 -   A .NET-keretrendszer 4-es verzióját a másolási gépre kell telepíteni.  
-  
+
 -   A BitLockert engedélyezni kell a másolási gépen.  
-  
+
 -   Szüksége lesz egy vagy több olyan meghajtóra, amely az importálandó vagy üres 3,5 hüvelykes SATA merevlemezeket tartalmazza a másolási géphez.  
-  
--   Az importálni kívánt fájloknak elérhetőnek kell lenniük a másolási gépről, függetlenül attól, hogy hálózati megosztáson vagy helyi merevlemezen találhatók-e. 
-  
+
+-   Az importálni kívánt fájloknak elérhetőnek kell lenniük a másolási gépről, függetlenül attól, hogy hálózati megosztáson vagy helyi merevlemezen találhatók-e.
+
 Ha egy részlegesen sikertelen importálást próbál kijavítani, a következőkre lesz szüksége:  
-  
+
 - A naplófájlok másolása  
-  
+
 - A Storage-fiók kulcsa  
-  
+
   Ha részlegesen sikertelen exportálást próbál meg kijavítani, a következőkre lesz szüksége:  
-  
+
 - A naplófájlok másolása  
-  
+
 - Manifest-fájlok (nem kötelező)  
-  
+
 - A Storage-fiók kulcsa  
-  
+
 ## <a name="installing-the-azure-importexport-tool"></a>Az Azure import/export eszköz telepítése  
  Az Azure import/export eszköz az alábbi fájlokat tartalmazza:  
-  
+
 - WAImportExport. exe  
-  
+
 - WAImportExport. exe. config  
-  
+
 - WAImportExportCore. dll  
-  
+
 - WAImportExportRepair. dll  
-  
+
 - Microsoft. WindowsAzure. Storage. dll  
-  
+
 - Hddid. dll  
-  
+
   Másolja ezeket a fájlokat egy munkakönyvtárba, például `c:\WAImportExport`. Ezután nyisson meg egy parancssori ablakot rendszergazdai módban, és állítsa be a fenti könyvtárat aktuális könyvtárként.  
-  
+
   A parancs súgójának kimenetéhez futtassa az eszközt paraméterek nélkül:  
-  
+
 ```  
 WAImportExport, a client tool for Microsoft Azure Import/Export service. Microsoft (c) 2013, 2014  
-  
+
 Copy a Directory:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -87,7 +87,7 @@ Copy a Directory:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcdir:<SourceDirectory> /dstdir:<DestinationBlobVirtualDirectory>  
-  
+
 Copy a File:  
     WAImportExport.exe PrepImport  
         /j:<JournalFile> [/logdir:<LogDirectory>] [/id:<SessionId>] [/resumesession]  
@@ -96,7 +96,7 @@ Copy a File:
         [/bk:<BitLockerKey>] [/Disposition:<Disposition>] [/BlobType:<BlobType>]  
         [/PropertyFile:<PropertyFile>] [/MetadataFile:<MetadataFile>]  
         /srcfile:<SourceFilePath> /dstblob:<DestinationBlobPath>  
-  
+
 Repair a Drive:  
     WAImportExport.exe RepairImport | RepairExport  
         /r:<RepairFile> [/logdir:<LogDirectory>]  
@@ -104,15 +104,15 @@ Repair a Drive:
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         [/CopyLogFile:<DriveCopyLogFile>] [/ManifestFile:<DriveManifestFile>]  
         [/PathMapFile:<DrivePathMapFile>]  
-  
+
 Preview an Export Job:  
     WAImportExport.exe PreviewExport  
         [/logdir:<LogDirectory>]  
         /sn:<StorageAccountName> [/sk:<StorageAccountKey> | /csas:<ContainerSas>]  
         /ExportBlobListFile:<ExportBlobListFile> /DriveSize:<DriveSize>  
-  
+
 Parameters:  
-  
+
     /j:<JournalFile>  
         - Required. Path to the journal file. Each drive must have one and only one  
           journal file. The journal file corresponding to the target drive must always  
@@ -213,32 +213,32 @@ Parameters:
         - Optional. To skip write process. Used for inplace data drive preparation.
           Be sure to reserve enough space (3 GB per 7TB) for drive manifest file!
 Examples:  
-  
+
     Copy a source directory to a drive:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#1 /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GEL  
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:x /format /encrypt /srcdir:d:\movi  
         es\drama /dstdir:movies/drama/  
-  
+
     Copy another directory to the same drive following the above command:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#2 /srcdir:d:\movies\action /dstdir:movies/action/  
-  
+
     Copy another file to the same drive following the above commands:  
     WAImportExport.exe PrepImport  
         /j:9WM35C2V.jrn /id:session#3 /srcfile:d:\movies\dvd.vhd /dstblob:movies/dvd.vhd /BlobType:PageBlob  
-  
+
     Preview how many 1.5 TB drives are needed for an export job:  
     WAImportExport.exe PreviewExport  
         /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94f7K  
         ysbbeKLDksg7VoN1W/a5UuM2zNgQ== /ExportBlobListFile:C:\temp\myexportbloblist.xml  
         /DriveSize:1.5TB  
-  
+
     Repair an finished import job:  
     WAImportExport.exe RepairImport  
         /r:9WM35C2V.rep /d:X:\ /bk:442926-020713-108086-436744-137335-435358-242242-2795  
         98 /sn:mytestaccount /sk:VkGbrUqBWLYJ6zg1m29VOTrxpBgdNOlp+kp0C9MEdx3GELxmBw4hK94  
-        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log 
+        f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /CopyLogFile:C:\temp\9WM35C2V_error.log
 
     Skip write process, inplace data drive preparation:
     WAImportExport.exe PrepImport
@@ -246,7 +246,7 @@ Examples:
         xmBw4hK94f7KysbbeKLDksg7VoN1W/a5UuM2zNgQ== /t:d /encrypt /srcdir:d:\movi
         es\drama /dstdir:movies/drama/ /skipwrite
 ```  
-  
+
 ## <a name="next-steps"></a>Következő lépések
 
 * [Merevlemezek előkészítése importálási feladatokhoz](../storage-import-export-tool-preparing-hard-drives-import-v1.md)   
