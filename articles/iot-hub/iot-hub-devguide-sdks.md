@@ -7,13 +7,13 @@ ms.author: wesmc
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 09/14/2018
-ms.openlocfilehash: 22734d29973f0d7102307aa9038b6ebe7cc2521b
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.date: 01/14/2020
+ms.openlocfilehash: 419a71acbca59c00bd0ffecf39d5d1ff38833b08
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903310"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045148"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Az Azure IoT Hub SDK-k megismerése és használata
 
@@ -111,8 +111,8 @@ Azure IoT Hub Service SDK a Node. js-hez:
 
 Azure IoT Hub Service SDK a Pythonhoz: 
 
-* Letöltés a [pip](https://pypi.python.org/pypi/azure-iothub-service-client/) -ből
-* [Forráskód](https://github.com/Azure/azure-iot-sdk-python/tree/v1-deprecated)
+* Letöltés a [pip](https://pypi.python.org/pypi/azure-iot-hub/) -ből
+* [Forráskód](https://github.com/Azure/azure-iot-sdk-python/tree/master)
 
 Azure IoT Hub Service SDK a C-hez: 
 

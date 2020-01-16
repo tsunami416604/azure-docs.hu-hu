@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 12/15/2019
 tags: connectors
-ms.openlocfilehash: 71f768506d7cec575c6bd765447397d8d0406859
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0314dceb23f02b723854dfc406e9440bbc14ccf6
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446104"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044286"
 ---
 # <a name="create-monitor-and-manage-ftp-files-by-using-azure-logic-apps"></a>FTP-fájlok létrehozása, figyelése és kezelése Azure Logic Apps használatával
 
@@ -25,7 +25,7 @@ A Azure Logic Apps és az FTP-összekötővel olyan automatizált feladatokat é
 
 Használhat olyan eseményindítókat, amelyek válaszokat kapnak az FTP-kiszolgálóról, és más műveletek számára elérhetővé teszik a kimenetet. Az FTP-kiszolgálón található fájlok kezelésére a Logic apps futtatási műveletei használhatók. Más műveletek is használhatók az FTP-műveletek kimenetének használatával. Ha például rendszeresen letölti a fájlokat az FTP-kiszolgálóról, e-mailt küldhet a fájlokról és azok tartalmáról az Office 365 Outlook Connector vagy a Outlook.com Connector használatával. Ha most ismerkedik a Logic apps szolgáltatással, tekintse át [a mi az Azure Logic apps](../logic-apps/logic-apps-overview.md).
 
-## <a name="limits"></a>Korlátozások
+## <a name="limitations"></a>Korlátozások
 
 * Az FTP-összekötő csak az SSL-en keresztüli explicit FTP-t (FTPS) támogatja, és nem kompatibilis az implicit FTPS.
 
@@ -36,6 +36,8 @@ Használhat olyan eseményindítókat, amelyek válaszokat kapnak az FTP-kiszolg
   * Használjon olyan FTP-triggert, amely a fájl tulajdonságait adja vissza, például **egy fájl hozzáadásakor vagy módosításakor (csak tulajdonságok)** .
 
   * Hajtsa végre az aktiválást az FTP- **Fájl letöltése** művelettel, amely beolvassa a teljes fájlt, és implicit módon használja a darabolást.
+
+* Ha helyszíni FTP-kiszolgálóval rendelkezik, vegye fontolóra egy [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md) létrehozását vagy [Azure app Service hibrid kapcsolat](../app-service/app-service-hybrid-connections.md)használatát, amely lehetővé teszi a helyszíni adatforrások helyszíni adatátjáró használata nélküli elérését.
 
 ## <a name="how-ftp-triggers-work"></a>Az FTP-eseményindítók működése
 

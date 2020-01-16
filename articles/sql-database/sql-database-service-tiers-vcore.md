@@ -9,12 +9,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
 ms.date: 11/27/2019
-ms.openlocfilehash: c01e5c508644214c078dfc42ae8c77964933a277
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7c4d6a01ccaeffb4042753dc0a904d970631383f
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895994"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045208"
 ---
 # <a name="vcore-model-overview"></a>Virtuálismag-alapú modell áttekintése
 
@@ -142,6 +142,16 @@ Az **alapvető beállítások** lapon válassza az **adatbázis konfigurálása*
   
 **Meglévő felügyelt példány hardveres létrehozásának módosítása**
 
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
+
+A felügyelt példány lapon válassza ki az **árképzési** csomag hivatkozását a beállítások szakaszban.
+
+![felügyelt példány hardverének módosítása](media/sql-database-service-tiers-vcore/change-managed-instance-hardware.png)
+
+A **díjszabási** csomag lapon az előző lépésekben leírtaknak megfelelően módosíthatja a hardverek generációját.
+
+# <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
+
 Használja a következő PowerShell-parancsfájlt:
 
 ```powershell-interactive
@@ -176,7 +186,9 @@ $properties = New-Object System.Object
 Set-AzResource -Properties $properties -ResourceName $instanceName -ResourceType "Microsoft.SQL/managedInstances" -Sku $sku -ResourceGroupName $resourceGroup -Force -ApiVersion "2015-05-01-preview"
 ```
 
-Ügyeljen rá, hogy megadja a felügyelt példány előfizetési azonosítóját, nevét és erőforrás-csoportját.
+Ügyeljen rá, hogy megadja a felügyelt példány előfizetési AZONOSÍTÓját, nevét és erőforrás-csoportját.
+
+---
 
 ### <a name="hardware-availability"></a>Hardver rendelkezésre állása
 
@@ -213,9 +225,9 @@ Az **alapok** lapon adja meg a következőket:
 
 A **részletek** lapon adja meg a következőket:
 
-5. A **probléma részletei** szakaszban válassza a **részletek megadása** hivatkozást. 
-6. **SQL Database a kvóta típusa** lapon válassza az **M-sorozat**lehetőséget.
-7. A **régió**területen válassza ki az M-sorozat engedélyezésének régióját.
+1. A **probléma részletei** szakaszban válassza a **részletek megadása** hivatkozást. 
+2. **SQL Database a kvóta típusa** lapon válassza az **M-sorozat**lehetőséget.
+3. A **régió**területen válassza ki az M-sorozat engedélyezésének régióját.
     Az m-sorozat rendelkezésre állását tartalmazó régiók esetében lásd: az [m-sorozat elérhetősége](#m-series).
 
 A jóváhagyott támogatási kérelmek általában 5 munkanapon belül teljesülnek.

@@ -7,13 +7,13 @@ ms.author: v-chjen
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
-ms.date: 10/04/2019
-ms.openlocfilehash: b3d66cab8cf43d862bbf17d5783f0469e3e1a5f8
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/13/2020
+ms.openlocfilehash: 22a5b86c8b3df4da5fe338a8ba1230d0247a5826
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73825657"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046001"
 ---
 # <a name="create-a-new-dynamics-365-business-central-offer"></a>Új Dynamics 365 Business Central-ajánlat létrehozása
 
@@ -151,8 +151,26 @@ Néhány tipp a Leírás írásához:
   - Az ügyfélnek szüksége van a termék címére
 - Ne feledje, hogy az első néhány mondat a keresőmotor eredményei között jelenhet meg.  
 - Ne használja a szolgáltatásait és funkcióit a termék értékesítéséhez. Ehelyett a megadott értékre kell összpontosítania.  
-- A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést. 
+- A lehető legnagyobb mértékben használja az iparági specifikus szókincset vagy a juttatás-alapú szövegezést.
 - HTML-címkék használatával formázhatja a leírást, és még vonzóbbá teheti őket.
+
+Ha szeretné, hogy az ajánlat leírása jobban megtörténjen, a Rich Text Editor használatával formázhatja a leírást.
+
+![A Rich Text Editor használata](./media/text-editor2.png)
+
+A Rich Text Editor használatához kövesse az alábbi utasításokat:
+
+- A tartalom formátumának módosításához jelölje ki a formázni kívánt szöveget, és válasszon egy szövegstílus-stílust az alábbi ábrán látható módon:
+
+     ![A Rich Text Editor használata szöveg formátumának módosításához](./media/text-editor3.png)
+
+- Ha felsorolásjeles vagy számozott listát szeretne hozzáadni a szöveghez, használja az alábbi beállításokat:
+
+     ![A Rich Text Editor használata a listák hozzáadásához](./media/text-editor4.png)
+
+- A szöveg behúzásának hozzáadásához vagy eltávolításához használja az alábbi beállításokat:
+
+     ![A Rich Text Editor használata a behúzáshoz](./media/text-editor5.png)
 
 ### <a name="search-keywords"></a>Kulcsszavak keresése
 
@@ -208,7 +226,7 @@ Opcionálisan akár öt videót is hozzáadhat az ajánlat bemutatásához. Ezek
 
 - [Ajánlott eljárások a piactér ajánlati listáihoz](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices)
 
-## <a name="availability"></a>Rendelkezésre állás
+## <a name="availability"></a>Elérhetőség
 
 A **rendelkezésre állás** lapon megadhatja, hol és hogyan teheti elérhetővé az ajánlatát.
 
@@ -351,7 +369,7 @@ A piactér **lapon található** **Marketplace listázási** lehetőség megjele
 
 - **Felhasználói kézikönyv** (kötelező): részletes útmutató a test Drive-élményhez. A felhasználói kézikönyvnek pontosan le kell fednie, hogy mit szeretne kapni az ügyféltől a tesztelési meghajtón, és az esetlegesen felmerülő kérdésekre mutató hivatkozásként szolgáljon. A fájlnak PDF formátumúnak kell lennie, és a feltöltés után a neve (255 karakter max).
 
-- **Videók: videók hozzáadása** (nem kötelező): a videókat feltöltheti a YouTube vagy a Vimeo weboldalára, és itt hivatkozhat egy hivatkozással és egy miniatűr képpel (533 x 324 képpont), így az ügyfelek megtekinthetik az információk áttekintését, így könnyebben megismerhetik a tesztelési meghajtót, beleértve a az ajánlat funkcióinak sikeres használata és az előnyeiket kiemelő forgatókönyvek megismerése.
+- **Videók: videók hozzáadása** (nem kötelező): a videók a YouTube vagy a Vimeo webhelyre tölthetők fel, és a hivatkozás és a miniatűr képét (533 x 324 képpont) is feltölthetik, így az ügyfél megtekintheti az információk áttekintését, így könnyebben megismerheti a tesztelési meghajtót, beleértve az ajánlat funkcióinak sikeres használatát és az előnyeiket kiemelő forgatókönyveket.
   - **Név** (kötelező)
   - **URL-cím (csak YouTube vagy Vimeo)** (kötelező)
   - **Miniatűr (533 x 324 px)** : a képfájlnak png formátumúnak kell lennie.
@@ -370,7 +388,7 @@ Ha az ajánlata a Microsoft Dynamics 365 Business Central Premium kiadását ig�
 
 ### <a name="key-usage-scenario"></a>Kulcshasználat forgatókönyv
 
-Meg kell eltöltése egy `.pdf` fájlt, amely felsorolja az ajánlat kulcshasználati forgatókönyveit a dokumentumban (. PDF formátumban). Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
+Fel kell töltenie egy `.pdf` fájlt, amely felsorolja az ajánlatnak a dokumentumban (. PDF formátumban) felsorolt kulcshasználat forgatókönyveit. Az itt felsorolt összes forgatókönyvet ellenőrizni kell az ellenőrzési csapatnál, mielőtt jóváhagyjuk ajánlatát a piactéren.
 
 ### <a name="app-tests-automation"></a>Alkalmazás-tesztek automatizálása
 
@@ -395,6 +413,6 @@ Ha első alkalommal teszi közzé ezt az ajánlatot, a következőket teheti:
 - A **minősítési megjegyzések** szakaszban adja meg a minősítési csoport tesztelési utasításait, hogy az alkalmazás megfelelően legyen tesztelve, valamint az alkalmazás megértéséhez szükséges kiegészítő megjegyzések mellett.
 - Küldje el az ajánlatot közzétételre a **Submit (Küldés**) gombra kattintva. A rendszer e-mailt küld Önnek, ha az ajánlat előzetes verziója elérhető az Ön számára az áttekintéshez és a jóváhagyáshoz. Térjen vissza a partneri központba, és válassza a **Go-Live** lehetőséget az ajánlat nyilvános közzétételére (vagy ha egy privát ajánlatra a privát közönség számára).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Meglévő ajánlat frissítése a kereskedelmi piactéren](./update-existing-offer.md)

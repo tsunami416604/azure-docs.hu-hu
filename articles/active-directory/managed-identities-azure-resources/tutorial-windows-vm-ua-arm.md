@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ee331435cbc7d0cb580b3ad5865030aba6d372ea
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ec9956f0c5d834633646938da19f03e5467a9f6d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888464"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977841"
 ---
 # <a name="tutorial-use-a-user-assigned-managed-identity-on-a-windows-vm-to-access-azure-resource-manager"></a>Oktatóanyag: felhasználó által hozzárendelt felügyelt identitás használata Windows rendszerű virtuális gépen a Azure Resource Manager eléréséhez
 
@@ -54,7 +54,16 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - Futtassa a következőt: `Install-Module -Name PowerShellGet -AllowPrerelease` a `PowerShellGet` modul kiadás előtti verziójának eléréséhez (előfordulhat, hogy a parancs futtatása után ki kell lépnie (`Exit`) az aktuális PowerShell-munkamenetből, hogy telepíteni tudja az `Az.ManagedServiceIdentity` modult).
 - Futtassa az `Install-Module -Name Az.ManagedServiceIdentity -AllowPrerelease` parancsot az `Az.ManagedServiceIdentity` modul kiadás előtti verziójának telepítéséhez, hogy elvégezhesse a cikkben szereplő, felhasználó által hozzárendelt identitással kapcsolatos műveleteket.
 
-## <a name="create-identity"></a>Identitás létrehozása
+
+## <a name="enable"></a>Engedélyezés
+
+A felhasználó által hozzárendelt identitáson alapuló forgatókönyv esetén a következő lépéseket kell elvégeznie:
+
+- Identitás létrehozása
+ 
+- Az újonnan létrehozott identitás kiosztása
+
+### <a name="create-identity"></a>Identitás létrehozása
 
 Ez a szakasz bemutatja, hogyan hozhat létre felhasználó által hozzárendelt identitást. A felhasználó által hozzárendelt identitás különálló Azure-erőforrásként jön létre. A [New-AzUserAssignedIdentity](/powershell/module/az.managedserviceidentity/get-azuserassignedidentity)használatával az Azure létrehoz egy identitást az Azure ad-bérlőben, amely egy vagy több Azure-szolgáltatási példányhoz rendelhető hozzá.
 
@@ -80,7 +89,7 @@ Type: Microsoft.ManagedIdentity/userAssignedIdentities
 }
 ```
 
-## <a name="assign-identity"></a>Identitás kiosztása
+### <a name="assign-identity"></a>Identitás kiosztása
 
 Ez a szakasz bemutatja, hogyan rendelhető hozzá a felhasználó által hozzárendelt identitás egy Windows rendszerű virtuális géphez. A felhasználó által hozzárendelt identitást az ügyfelek több Azure-erőforrás esetében is használhatják. Az alábbi parancsokkal rendelhet felhasználó által hozzárendelt identitást egyetlen virtuális géphez. Ehhez használja az előző lépésben az `-IdentityID` paraméter esetében visszaadott `Id` tulajdonságot.
 
@@ -114,7 +123,9 @@ ObjectType: ServicePrincipal
 CanDelegate: False
 ```
 
-## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése 
+## <a name="access-data"></a>Adatok elérése
+
+### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése 
 
 Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk.
 
@@ -134,7 +145,7 @@ Az oktatóanyag további részében a korábban létrehozott virtuális gépről
     $ArmToken = $content.access_token
     ```
 
-## <a name="read-properties"></a>Tulajdonságok olvasása
+### <a name="read-properties"></a>Tulajdonságok olvasása
 
 Az Azure Resource Managert az előző lépésben lekért hozzáférési jogkivonattal érheti el, illetve azzal olvashatja annak az erőforráscsoportnak a tartalmát, amelyhez a felhasználó által hozzárendelt identitás számára hozzáférést adott. Cserélje le a(z) `<SUBSCRIPTION ID>` kifejezést a környezet előfizetés-azonosítójára.
 

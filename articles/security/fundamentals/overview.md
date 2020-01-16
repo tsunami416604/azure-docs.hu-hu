@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/18/2019
 ms.author: TomSh
-ms.openlocfilehash: 8301dc779799ff67a348403e661fc7e66b9e721f
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: a1dbabafe32e013d526ed88a83e446ee765cdb7b
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750128"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045868"
 ---
 # <a name="introduction-to-azure-security"></a>Bevezetés az Azure biztonsági megoldásaiba
 ## <a name="overview"></a>Áttekintés
@@ -69,7 +69,7 @@ A [Security and Audit megoldás](../../security-center/security-center-intro.md)
 Emellett beállíthatja, hogy a Security & Compliance [automatikusan végrehajtson bizonyos műveleteket](https://blogs.technet.microsoft.com/robdavies/2016/04/20/simple-look-at-oms-alert-remediation-with-runbooks-part-1/) , amikor a rendszer egy adott eseményt észlel.
 
 ### <a name="azure-resource-manager"></a>Azure Resource Manager
-A [Azure Resource Manager](../../azure-resource-manager/resource-manager-deployment-model.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. Az üzembe helyezéshez [Azure Resource Manager sablont](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) használ, és ez a sablon különböző környezetekben, például tesztelési, átmeneti és éles környezetben is működhet. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően.
+A [Azure Resource Manager](../../azure-resource-manager/management/deployment-models.md) lehetővé teszi, hogy csoportként működjön együtt a megoldás erőforrásaival. A megoldás összes erőforrását egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti. Az üzembe helyezéshez [Azure Resource Manager sablont](https://blogs.technet.microsoft.com/canitpro/2015/06/29/devops-basics-infrastructure-as-code-arm-templates/) használ, és ez a sablon különböző környezetekben, például tesztelési, átmeneti és éles környezetben is működhet. A Resource Manager biztonsági, naplózási és címkézési szolgáltatásokat biztosít, hogy segítsen az erőforrások kezelésében a telepítést követően.
 
 Azure Resource Manager sablon alapú központi telepítések segítenek az Azure-ban üzembe helyezett megoldások biztonságának javításában, mivel a szabványos biztonsági vezérlési beállítások és a szabványosított sablon alapú központi telepítések integrálására is használhatók. Ez csökkenti a manuális központi telepítések során esetlegesen felmerülő biztonsági konfigurációs hibák kockázatát.
 
@@ -142,16 +142,16 @@ Az Application Diagnostics felületén a következő módokon csoportosíthatók
 A szakasz további információkat tartalmaz az Azure Storage biztonságának főbb funkcióiról, valamint az ezekkel a képességekkel kapcsolatos összegző információkkal kapcsolatban.
 
 ### <a name="role-based-access-control-rbac"></a>Szerepköralapú hozzáférés-vezérlés (RBAC)
-A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC-szerepköröket](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/common/storage-security-guide.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
+A Storage-fiókja a szerepköralapú Access Control (RBAC) segítségével biztosítható. Az adathozzáférésre vonatkozó biztonsági szabályzatokat kényszerítő szervezetek számára elengedhetetlen a hozzáférés korlátozása a [szükséges ismeret](https://en.wikipedia.org/wiki/Need_to_know) és a [legalacsonyabb jogosultsági szintű](https://en.wikipedia.org/wiki/Principle_of_least_privilege) biztonsági elvek alapján. Ezek a hozzáférési jogosultságok úgy érhetők el, hogy a megfelelő RBAC-szerepkört rendeli hozzá egy bizonyos hatókörhöz tartozó csoportokhoz és alkalmazásokhoz. A felhasználókhoz a jogosultságok hozzárendeléséhez használhatja a [beépített RBAC-szerepköröket](../../role-based-access-control/built-in-roles.md), például a Storage-fiók közreműködőjét. A Storage-fiókok [Azure Resource Manager](../../storage/blobs/security-recommendations.md) modell használatával történő elérését szerepköralapú Access Control (RBAC) segítségével lehet vezérelni.
 
 ### <a name="shared-access-signature"></a>Közös hozzáférési aláírás
 A [közös hozzáférésű jogosultságkód (SAS)](../../storage/common/storage-dotnet-shared-access-signature-part-1.md) delegált hozzáférést biztosít a tárfiókon lévő erőforrásokhoz. Az SAS azt jelenti, hogy a megadott időszakra és meghatározott engedélyekkel engedélyezheti az ügyfél számára a Storage-fiókban lévő objektumokra vonatkozó korlátozott engedélyeket. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül is megadhatja.
 
 ### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelmét a hálózatokon keresztül továbbítja. Az Azure Storage használatával az alábbiakkal védheti meg az adatvédelmet:
--   [Átviteli szintű titkosítás](../../storage/common/storage-security-guide.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
+-   [Átviteli szintű titkosítás](../../storage/blobs/security-recommendations.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
 
--   [Vezetékes titkosítás](../../storage/common/storage-security-guide.md), például [SMB 3,0 titkosítás](../../storage/common/storage-security-guide.md) az [Azure-fájlmegosztás](../../storage/files/storage-dotnet-how-to-use-files.md)számára.
+-   [Vezetékes titkosítás](../../storage/blobs/security-recommendations.md), például [SMB 3,0 titkosítás](../../storage/blobs/security-recommendations.md) az [Azure-fájlmegosztás](../../storage/files/storage-dotnet-how-to-use-files.md)számára.
 
 -   Ügyféloldali titkosítás, amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
@@ -266,9 +266,9 @@ Traffic Manager számos forgalom-útválasztási módszert kínál a különböz
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Az [Azure Load Balancer](../../load-balancer/load-balancer-overview.md) magas rendelkezésre állást és hálózati teljesítményt biztosít alkalmazásai számára. Ez egy 4. rétegbeli (TCP, UDP) terheléselosztó, amely a bejövő forgalmat egy elosztott terhelésű készletben definiált szolgáltatások kifogástalan példányai között osztja szét. A Azure Load Balancer a következőre konfigurálható:
 
--   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt [internetre irányuló terheléselosztásnak](../../load-balancer/load-balancer-overview.md#publicloadbalancer)nevezzük.
+-   A bejövő internetes forgalom terheléselosztása a virtuális gépekre. Ezt a konfigurációt [internetre irányuló terheléselosztásnak](../../load-balancer/concepts-limitations.md#publicloadbalancer)nevezzük.
 
--   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/load-balancer-overview.md#internalloadbalancer)nevezzük.
+-   A virtuális hálózatban lévő virtuális gépek, a Cloud Services-beli virtuális gépek, illetve a helyszíni számítógépek és a virtuális gépek közötti adatforgalom terheléselosztása egy telephelyi virtuális hálózaton. Ezt a konfigurációt [belső terheléselosztásnak](../../load-balancer/concepts-limitations.md#internalloadbalancer)nevezzük.
 
 - Külső forgalom továbbítása egy adott virtuális géphez
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/23/2019
-ms.openlocfilehash: bb60d22c62096725e29b9351bf304504861d9bf1
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 1e6a21e8bf9c284c83af09885aa66b612b52ad7c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902519"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044712"
 ---
 # <a name="plan-a-virtual-network-for-azure-hdinsight"></a>Virtuális hálózat megtervezése az Azure HDInsight
 
@@ -251,7 +251,7 @@ A virtuális készülékekre vonatkozó tűzfalszabályok részletes ismertetés
 
 ## <a name="load-balancing"></a>Terheléselosztás
 
-HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/load-balancer-overview.md#skus) van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
+HDInsight-fürt létrehozásakor a terheléselosztó is létrejön. A terheléselosztó típusa az alapszintű [SKU szintjén](../load-balancer/concepts-limitations.md#skus) van, amely bizonyos korlátozásokkal rendelkezik. Ezen megkötések egyike az, hogy ha két virtuális hálózattal rendelkezik különböző régiókban, akkor nem lehet alapszintű terheléselosztóhoz csatlakozni. További információért lásd [a Virtual Networks gyakori kérdések: a globális vnet-társítás korlátozásai](../virtual-network/virtual-networks-faq.md#what-are-the-constraints-related-to-global-vnet-peering-and-load-balancers)című témakört.
 
 ## <a name="transport-layer-security"></a>Transport Layer Security
 

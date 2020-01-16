@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: vaidyas
 ms.reviewer: larryfr
 ms.date: 11/22/2019
-ms.openlocfilehash: 77e23467551df8d72fd999049c490600eff11825
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 00a62e970e27d689eb639a62938376f73410c270
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763640"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024907"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-functions-preview"></a>Gépi tanulási modell üzembe helyezése Azure Functions (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -156,27 +156,35 @@ print(blob.location)
     > [!IMPORTANT]
     > A Azure Machine Learning által létrehozott rendszerképek Linux rendszert használnak, ezért a `--is-linux` paramétert kell használnia.
 
-1. A Function alkalmazás létrehozásához használja a következő parancsot. Cserélje le a `<app-name>`t a használni kívánt névre. Cserélje le a `<acrinstance>` és a `<imagename>` értéket a korábban visszaadott `package.location` értékekre:
-
-    ```azurecli-interactive
-    az storage account create --name 
-    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename>
-    ```
-
-    > [!IMPORTANT]
-    > Ezen a ponton a Function alkalmazás létrejött. Mivel azonban nem biztosította a blob triggerhez vagy a hitelesítő adatokhoz tartozó kapcsolódási karakterláncot a képet tartalmazó Azure Container Registryhoz, a Function alkalmazás nem aktív. A következő lépésekben meg kell adnia a kapcsolatok karakterláncát és a tároló-beállításjegyzék hitelesítési adatait. 
-
-1. Hozza létre az triggerként használandó Storage-fiókot, és szerezze be a kapcsolódási karakterláncot.
+1. Hozza létre a web Job Storage szolgáltatáshoz használandó Storage-fiókot, és szerezze be a kapcsolati karakterláncot. Cserélje le a `<webjobStorage>`t a használni kívánt névre.
 
     ```azurecli-interactive
     az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
     ```
     ```azurecli-interactive
-    az storage account show-connection-string --resource-group myresourcegroup --name triggerStorage --query connectionString --output tsv
+    az storage account show-connection-string --resource-group myresourcegroup --name <webJobStorage> --query connectionString --output tsv
+    ```
+
+1. A Function alkalmazás létrehozásához használja a következő parancsot. Cserélje le a `<app-name>`t a használni kívánt névre. Cserélje le a `<acrinstance>` és a `<imagename>` értéket a korábban visszaadott `package.location` értékekre. Cserélje le a Replace `<webjobStorage>` elemet az előző lépésben szereplő Storage-fiók nevére:
+
+    ```azurecli-interactive
+    az functionapp create --resource-group myresourcegroup --plan myplanname --name <app-name> --deployment-container-image-name <acrinstance>.azurecr.io/package:<imagename> --storage-account <webjobStorage>
+    ```
+
+    > [!IMPORTANT]
+    > Ezen a ponton a Function alkalmazás létrejött. Mivel azonban nem biztosította a blob triggerhez vagy a hitelesítő adatokhoz tartozó kapcsolódási karakterláncot a képet tartalmazó Azure Container Registryhoz, a Function alkalmazás nem aktív. A következő lépésekben meg kell adnia a kapcsolatok karakterláncát és a tároló-beállításjegyzék hitelesítési adatait. 
+
+1. Hozza létre a blob trigger tárolóhoz használandó Storage-fiókot, és kérje le a kapcsolódási karakterláncot. Cserélje le a `<triggerStorage>`t a használni kívánt névre.
+
+    ```azurecli-interactive
+    az storage account create --name triggerStorage --location westeurope --resource-group myresourcegroup --sku Standard_LRS
+    ```
+    ```azurecli-interactive
+    az storage account show-connection-string --resource-group myresourcegroup --name <triggerStorage> --query connectionString --output tsv
     ```
     Jegyezze fel ezt a kapcsolódási karakterláncot a Function alkalmazás számára történő biztosításhoz. Később fogjuk használni `<triggerConnectionString>`
 
-1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. 
+1. Hozza létre a tárolót a bemenethez és a kimenethez a Storage-fiókban. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterlánccá:
 
     ```azurecli-interactive
     az storage container create -n input --connection-string <triggerConnectionString>
@@ -185,12 +193,17 @@ print(blob.location)
     az storage container create -n output --connection-string <triggerConnectionString>
     ```
 
-1. A létrehozott tárolóhoz társított címkét a következő parancs használatával kell lekérnie:
+1. Ha az trigger-kapcsolódási karakterláncot a Function alkalmazáshoz szeretné rendelni, használja a következő parancsot. Cserélje le a `<app-name>`t a Function alkalmazás nevére. Cserélje le a `<triggerConnectionString>`t a korábban visszaadott kapcsolatok karakterlánccá:
+
+    ```azurecli-interactive
+    az functionapp config appsettings set --name <app-name> --resource-group myresourcegroup --settings "TriggerConnectionString=<triggerConnectionString>"
+    ```
+1. A létrehozott tárolóhoz tartozó címkét a következő parancs használatával kell lekérnie. Cserélje le a `<username>`t a korábban a tároló-beállításjegyzékből visszaadott felhasználónévre:
 
     ```azurecli-interactive
     az acr repository show-tags --repository package --name <username> --output tsv
     ```
-    Az alábbi `imagetag` jelenik meg a legutóbbi címkén.
+    Mentse a visszaadott értéket, a rendszer a következő lépésben `imagetag` fogja használni.
 
 1. A következő parancs használatával biztosíthatja a Function alkalmazást a tároló-beállításjegyzék eléréséhez szükséges hitelesítő adatokkal. Cserélje le a `<app-name>`t a használni kívánt névre. Cserélje le a `<acrinstance>` és a `<imagetag>` értéket az előző lépésben az az CLI hívás értékével. Cserélje le a `<username>` és a `<password>`t a korábban beolvasott ACR bejelentkezési adatokkal:
 

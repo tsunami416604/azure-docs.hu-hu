@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: a06184cb45280d323a050085e94945a730d6c72c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442595"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045579"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -39,7 +39,7 @@ Ez a cikk a API Management fejlesztői portál saját üzemeltetésű és felüg
 A fejlesztői portált kétféleképpen is létrehozhatja:
 
 - **Felügyelt verzió** – az API Management-példányba épített portál szerkesztésével és testreszabásával, és az URL-`<your-api-management-instance-name>.developer.azure-api.net`keresztül érhető el. A [jelen dokumentációs cikkből](api-management-howto-developer-portal-customize.md) megtudhatja, hogyan érheti el és szabhatja testre a felügyelt portált.
-- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A portált a legújabb verzióra is frissítenie kell. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódjának][1]használatával. A [felügyelt verzió oktatóanyaga](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a saját üzemeltetésű verzióban is szerepel.
+- **Saját** üzemeltetésű verzió – a portál API Management-példányon kívüli üzembe helyezésével és önálló üzemeltetésével. Ezzel a módszerrel szerkesztheti a portált, és kiterjesztheti a megadott alapvető funkciókat. A portált a legújabb verzióra is frissítenie kell. A részletekért és az utasításokért tekintse meg a [GitHub-tárházat a portál forráskódját][1] és [a widget megvalósítását ismertető oktatóanyagot][4]. A [felügyelt verzió oktatóanyaga](api-management-howto-developer-portal-customize.md) végigvezeti a portál felügyeleti paneljén, amely a saját üzemeltetésű verzióban is szerepel.
 
 ## <a name="portal-architectural-concepts"></a>Portál építészeti fogalmak
 
@@ -101,6 +101,10 @@ Az interaktív Fejlesztői konzolon az OAuth-mel való hitelesítés még nem t�
 A régi fejlesztői és közzétevői portálok már *örökölt* funkciók – csak a biztonsági frissítéseket kapják meg. Az új funkciókat kizárólag az új fejlesztői portálon tesszük elérhetővé.
 
 Az örökölt portálok elavulása külön lesz bejelentve. Ha kérdése, problémája vagy megjegyzése van, emelje fel őket [egy dedikált GitHub-problémával](https://github.com/Azure/api-management-developer-portal/issues/121).
+
+### <a name="functionality-i-need-isnt-supported-in-the-portal"></a>A portálon nem támogatottak a szükséges funkciók
+
+Használja a saját üzemeltetésű verziót, és [implementálja saját widgetjét][4].
 
 ### <a name="how-can-i-automate-portal-deployments"></a>Hogyan automatizálható a portál üzembe helyezése?
 
@@ -216,6 +220,7 @@ További információ az új fejlesztői portálról:
 
 - [A felügyelt fejlesztői portál elérése és testreszabása](api-management-howto-developer-portal-customize.md)
 - [A portál saját üzemeltetésű verziójának beállítása][2]
+- [Saját widget implementálása][4]
 
 Egyéb erőforrások tallózása:
 
@@ -225,3 +230,4 @@ Egyéb erőforrások tallózása:
 [1]: https://aka.ms/apimdevportal
 [2]: https://github.com/Azure/api-management-developer-portal/wiki
 [3]: https://github.com/Azure/api-management-developer-portal/projects
+[4]: https://aka.ms/apimdevportal/extend

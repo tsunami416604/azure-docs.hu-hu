@@ -1,6 +1,6 @@
 ---
-title: Hozzon létre a Service Bus üzenetkezelési névteret Azure Resource Manager-sablonnal |} A Microsoft Docs
-description: Azure Resource Manager-sablon használatával létrehozhat egy Service Bus Messaging-névteret
+title: Service Bus üzenetkezelési névtér létrehozása Azure Resource Manager sablon használatával | Microsoft Docs
+description: Service Bus üzenetküldési névtér létrehozása Azure Resource Manager sablon használatával
 services: service-bus-messaging
 documentationcenter: .net
 author: spelluru
@@ -14,39 +14,39 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 06/21/2019
 ms.author: spelluru
-ms.openlocfilehash: 4162775153a48dc8ea28e06f7c99f9927b9c602a
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: 8280bb057edea5697b8fa3248ddf755376f62c49
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67444773"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978254"
 ---
-# <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Service Bus-névtér létrehozása az Azure Resource Manager-sablon használatával
+# <a name="create-a-service-bus-namespace-by-using-an-azure-resource-manager-template"></a>Service Bus névtér létrehozása Azure Resource Manager sablon használatával
 
-Ismerje meg, hogyan helyezhet üzembe a Service Bus-névtér létrehozása egy Azure Resource Manager-sablont. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. Sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager dokumentációjában](/azure/azure-resource-manager/).
+Megtudhatja, hogyan helyezhet üzembe egy Azure Resource Manager sablont Service Bus névtér létrehozásához. Ez a sablont használhatja a saját környezeteiben, vagy testre is szabhatja a saját követelményeinek megfelelően. További információ a sablonok létrehozásáról: [Azure Resource Manager dokumentáció](/azure/azure-resource-manager/).
 
-Az alábbi sablonok is elérhetők a Service Bus-névterek létrehozásának:
+A következő sablonok a Service Bus névterek létrehozásához is elérhetők:
 
-* [Service Bus-névtér létrehozása az üzenetsorhoz](./service-bus-resource-manager-namespace-queue.md)
-* [Service Bus-névtér létrehozása témakörrel és előfizetéssel](./service-bus-resource-manager-namespace-topic.md)
-* [Service Bus-névtér létrehozása az üzenetsor és engedélyezési szabály](./service-bus-resource-manager-namespace-auth-rule.md)
-* [Service Bus-névtér létrehozása témakörrel, előfizetéssel és szabály](./service-bus-resource-manager-namespace-topic-with-rule.md)
+* [Service Bus névtér létrehozása a várólistával](./service-bus-resource-manager-namespace-queue.md)
+* [Service Bus névtér létrehozása témakörrel és előfizetéssel](./service-bus-resource-manager-namespace-topic.md)
+* [Service Bus névtér létrehozása a várólista-és engedélyezési szabállyal](./service-bus-resource-manager-namespace-auth-rule.md)
+* [Service Bus névtér létrehozása témakörrel, előfizetéssel és szabállyal](./service-bus-resource-manager-namespace-topic-with-rule.md)
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="create-a-service-bus-namespace"></a>Service bus-névtér létrehozása
+## <a name="create-a-service-bus-namespace"></a>Service Bus-névtér létrehozása
 
-Ez a rövid egy [meglévő Resource Manager-sablon](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json) a [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/):
+Ebben a rövid útmutatóban egy [meglévő Resource Manager-sablont](https://github.com/Azure/azure-quickstart-templates/blob/master/101-servicebus-create-namespace/azuredeploy.json) fog használni az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/):
 
 [!code-json[create-azure-service-bus-namespace](~/quickstart-templates/101-servicebus-create-namespace/azuredeploy.json)]
 
-További sablonminták talál [Azure gyorsindítási sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular).
+További sablon-példákat az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Servicebus&pageNumber=1&sort=Popular)talál.
 
-A service bus-névtér létrehozása a sablon üzembe helyezésével:
+Service Bus-névtér létrehozása sablon üzembe helyezésével:
 
-1. Válassza ki **kipróbálás** az az alábbi kód letiltása, és kövesse az utasításokat követve jelentkezzen be az Azure Cloud shell.
+1. Válassza a **kipróbálás** a következő kódrészletből lehetőséget, majd kövesse az utasításokat az Azure Cloud shellbe való bejelentkezéshez.
 
     ```azurepowershell-interactive
     $serviceBusNamespaceName = Read-Host -Prompt "Enter a name for the service bus namespace to be created"
@@ -60,16 +60,16 @@ A service bus-névtér létrehozása a sablon üzembe helyezésével:
     Write-Host "Press [ENTER] to continue ..."
     ```
 
-    Az erőforráscsoport neve a service bus-névtér neve a **rg** hozzáfűzve.
+    Az erőforráscsoport neve a Service Bus-névtér neve, **RG** hozzáfűzéssel.
 
-2. Válassza ki **másolási** másolása a PowerShell-parancsfájlt.
-3. Kattintson a jobb gombbal a rendszerhéj-konzolon, és válassza **beillesztési**.
+2. A PowerShell-szkript másolásához válassza a **Másolás** lehetőséget.
+3. Kattintson a jobb gombbal a rendszerhéj-konzolra, majd válassza a **Beillesztés**lehetőséget.
 
-Eseményközpont létrehozása néhány percet vesz igénybe.
+Az Event hub létrehozása néhány percet vesz igénybe.
 
-## <a name="verify-the-deployment"></a>Az üzemelő példány ellenőrzése
+## <a name="verify-the-deployment"></a>A telepítés ellenőrzése
 
-A telepített service bus-névtér megtekintéséhez is nyissa meg az erőforráscsoport az Azure Portalról, vagy használja a következő Azure PowerShell-parancsfájlt. Ha a Cloud shellben folyamatban, nem kell másolási/futtassa a következő szkript első és második sorát.
+Az üzembe helyezett Service Bus-névtér megjelenítéséhez nyissa meg az erőforráscsoportot a Azure Portal, vagy használja az alábbi Azure PowerShell parancsfájlt. Ha a Cloud Shell továbbra is nyitva van, nem kell másolni/futtatnia a következő parancsfájl első és második sorát.
 
 ```azurepowershell-interactive
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"
@@ -80,15 +80,15 @@ Get-AzServiceBusNamespace -ResourceGroupName $resourceGroupName -Name $serviceBu
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-Ebben az oktatóanyagban a sablon üzembe helyezése az Azure PowerShell segítségével. Egyéb sablon központi telepítési módszer lásd:
+A Azure PowerShell a sablon üzembe helyezésére szolgál ebben az oktatóanyagban. A sablon egyéb telepítési módszereivel kapcsolatban lásd:
 
-* [Az Azure portal használatával](../azure-resource-manager/resource-group-template-deploy-portal.md).
-* [Azure CLI-vel](../azure-resource-manager/resource-group-template-deploy-cli.md).
-* [REST API-val](../azure-resource-manager/resource-group-template-deploy-rest.md).
+* [A Azure Portal használatával](../azure-resource-manager/templates/deploy-portal.md).
+* [Az Azure CLI használatával](../azure-resource-manager/templates/deploy-cli.md).
+* [REST API használatával](../azure-resource-manager/templates/deploy-rest.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud shellben folyamatban, nem kell másolási/futtassa a következő szkript első és második sorát.
+Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett erőforrásokat az erőforráscsoport törlésével. Ha a Cloud Shell továbbra is nyitva van, nem kell másolni/futtatnia a következő parancsfájl első és második sorát.
 
 ```azurepowershell-interactive
 $serviceBusNamespaceName = Read-Host -Prompt "Enter the same service bus namespace name used earlier"
@@ -99,9 +99,9 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 Write-Host "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehozott Service Bus-névtér. A többi rövid útmutató megtudhatja, hogyan hozhat létre az üzenetsorok, üzenettémák, előfizetések, tekintse meg, és használja őket:
+Ebben a cikkben egy Service Bus névteret hozott létre. Tekintse meg a többi rövid útmutatót, amelyből megtudhatja, hogyan hozhat létre várólistákat, témaköröket és előfizetéseket, és hogyan használhatja azokat
 
 * [Bevezetés a Service Bus által kezelt üzenetsorok használatába](service-bus-dotnet-get-started-with-queues.md)
-* [Ismerkedés a Service Bus-témakörök](service-bus-dotnet-how-to-use-topics-subscriptions.md)
+* [Ismerkedés a Service Bus témakörökkel](service-bus-dotnet-how-to-use-topics-subscriptions.md)

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: mimckitt
 ms.subservice: disks
-ms.openlocfilehash: 38e460138fde1de6d8fd57dcab5a88238f0981fe
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 4fdb3af0433cc32aa7cdbee3c8ca9bdb85031135
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75751026"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045343"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban
 Ebből a dokumentumból megtudhatja, hogyan konfigurálhatja a Logical Volume Managert (LVM) az Azure-beli virtuális gépen. Az LVM az operációsrendszer-lemezen vagy az Azure-beli virtuális gépeken lévő adatlemezeken is használható, azonban a legtöbb Felhőbeli rendszerkép alapértelmezés szerint nem lesz beállítva az operációsrendszer-lemezen. Az alábbi lépések az LVM konfigurálására koncentrálnak az adatlemezek esetében.
@@ -172,7 +172,7 @@ A Linux rendszerű virtuális gépen kétféleképpen engedélyezhető a TRIM-t�
     # sudo fstrim /datadrive
     ```
 
-    **RHEL/CentOS**
+    **RHEL, CentOS & Oracle Linux**
 
     ```bash 
     # sudo yum install util-linux

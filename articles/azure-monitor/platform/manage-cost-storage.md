@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: e4146155915979e51a6e3a989ab57316ca643018
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658019"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045168"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -43,6 +43,8 @@ Az Log Analytics alapértelmezett díjszabása az adatmennyiség betöltését �
   
 Az utólagos elszámolású modellen kívül a Log Analytics **kapacitás-foglalási** csomagokkal rendelkezik, amelyek lehetővé teszik, hogy az utólagos elszámolású díjszabáshoz képest akár 25%-ot is mentsen. A kapacitás foglalásának díjszabása lehetővé teszi, hogy a foglalást 100 GB/nap után vásárolja meg. A foglalási szint feletti használati díjakat az utólagos elszámolású díjszabás szerint számítjuk fel. A kapacitás foglalási szintjeinek 31 napos kötelezettségvállalási időszaka van. A kötelezettségvállalás időtartama alatt magasabb szintű kapacitást biztosító foglalási szintre válthat (amely a 31 napos kötelezettségvállalási időszakot indítja újra), de az utólagos elszámolású vagy az alacsonyabb kapacitású foglalási szintig nem léphet vissza, amíg a kötelezettségvállalási időszakot nem befejeződött. 
 [További](https://azure.microsoft.com/pricing/details/monitor/) információ a log Analytics utólagos elszámolású és a kapacitás foglalásának díjszabásáról. 
+
+Az adatmennyiség az összes díjszabási szinten az adatok karakterlánc-ábrázolásával lesz kiszámítva, ahogy a tárolásra készen áll. Az események méretének kiszámítása során az [összes adattípussal közös tulajdonságok](https://docs.microsoft.com/azure/azure-monitor/platform/log-standard-properties) nem szerepelnek, beleértve a `_ResourceId`, a `_ItemId`, a `_IsBillable` és a `_BilledSize`.
 
 Azt is vegye figyelembe, hogy egyes megoldások, például a [Azure Security Center](https://azure.microsoft.com/pricing/details/security-center/) és az [Azure Sentinel](https://azure.microsoft.com/pricing/details/azure-sentinel/)saját díjszabási modellel rendelkeznek. 
 
@@ -164,6 +166,9 @@ A napi korlát elérésekor a számlázható adattípusok gyűjteménye a nap h�
 
 > [!NOTE]
 > A napi korlát nem állítja le az adatgyűjtést Azure Security Centerból, kivéve azokat a munkaterületeket, amelyekben a Azure Security Center a 2017. június 19. előtt volt telepítve. 
+
+> [!NOTE]
+> A napi korlát alkalmazása során felmerülő késés azt jelentheti, hogy a kupakot nem a megadott napi korlát szintjének megfelelően alkalmazza a rendszer. 
 
 ### <a name="identify-what-daily-data-limit-to-define"></a>A definiálni kívánt napi adatkorlát meghatározása
 

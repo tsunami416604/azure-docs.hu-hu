@@ -2,18 +2,20 @@
 title: Alkalmazási forgatókönyvek és kialakítás
 description: A felhőalapú alkalmazások kategóriáinak áttekintése Service Fabricban. Ismerteti az alkalmazás kialakítását, amely állapot-nyilvántartó és állapot nélküli szolgáltatásokat használ.
 ms.topic: conceptual
-ms.date: 4/24/2019
-ms.openlocfilehash: bdbbf81186463e1f645738b370662de9c13f5c17
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/08/2020
+ms.custom: sfrev
+ms.openlocfilehash: 0aeb8ab2923915befdd11f96025687be3b3c4ff9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464905"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024735"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
-Az Azure Service Fabric megbízható és rugalmas platformot kínál, ahol számos különböző típusú üzleti alkalmazást és szolgáltatást írhat és futtathat. Ezek az alkalmazások és a szolgáltatások állapot nélküliek vagy állapot-nyilvántartók lehetnek, és a hatékonyság maximalizálása érdekében erőforrás-kiegyensúlyozottak a virtuális gépek között. 
 
-A Service Fabric egyedi architektúrája lehetővé teszi a közel valós idejű adatelemzést, a memórián belüli számításokat, a párhuzamos tranzakciókat és az alkalmazásokban végzett események feldolgozását. A változó erőforrás-követelményektől függően az alkalmazások egyszerűen és lejjebb is méretezhetők (valójában vagy ki).
+Az Azure Service Fabric megbízható és rugalmas platformot kínál, ahol számos különböző típusú üzleti alkalmazást és szolgáltatást írhat és futtathat. Ezek az alkalmazások és a szolgáltatások állapot nélküliek vagy állapot-nyilvántartók lehetnek, és a hatékonyság maximalizálása érdekében erőforrás-kiegyensúlyozottak a virtuális gépek között.
+
+A Service Fabric egyedi architektúrája lehetővé teszi a közel valós idejű adatelemzést, a memórián belüli számításokat, a párhuzamos tranzakciókat és az alkalmazásokban végzett események feldolgozását. A változó erőforrás-követelményektől függően egyszerűen és akár ki is méretezheti az alkalmazásokat.
 
 Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvassa el a [Services architektúra az Azure Service Fabric](https://docs.microsoft.com/azure/architecture/reference-architectures/microservices/service-fabric) és [az alkalmazások tervezésére vonatkozó ajánlott eljárásokat Service Fabric használatával](service-fabric-best-practices-applications.md)című témakört.
 
@@ -33,8 +35,8 @@ Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvass
 
 * **Adatszámítások**: Service Fabric lehetővé teszi az intenzív adatszámítást igénylő állapot-nyilvántartó alkalmazások kiépítését. Service Fabric lehetővé teszi a feldolgozás (számítás) és az alkalmazások alkalmazásokban való elhelyezését. 
 
-   Ha az alkalmazás adatelérést igényel, a külső adatgyorsítótárhoz vagy a tárolási csomaghoz tartozó hálózati késés korlátozza a számítási időt. Az állapot-nyilvántartó Service Fabric szolgáltatások kizárja ezt a késést, és lehetővé teszi az optimalizált olvasási és írási műveleteket. 
-   
+   Ha az alkalmazás adatelérést igényel, a külső adatgyorsítótárhoz vagy a tárolási csomaghoz tartozó hálózati késés korlátozza a számítási időt. Az állapot-nyilvántartó Service Fabric szolgáltatások kizárja ezt a késést, és lehetővé teszi az optimalizált olvasási és írási műveleteket.
+
    Vegyünk például egy olyan alkalmazást, amely közel valós idejű ajánlásokat tesz lehetővé az ügyfelek számára, és egy időkorlátot 100 ezredmásodpercnél kevesebb időt vesz igénybe. Service Fabric szolgáltatások késése és teljesítménybeli jellemzői rugalmas élményt nyújtanak a felhasználónak, a standard implementációs modellel összehasonlítva, a szükséges adatok távoli tárterületről való beolvasásához. A rendszer sokkal rugalmasabb, mert a kiválasztási javaslat kiszámításának helye az adatmennyiség és a szabályok.
 
     A kiépített számítási szolgáltatásokat magában foglalja a [Solidsoft reply](https://customers.microsoft.com/story/solidsoft-reply-platform-powers-e-verification-of-pharmaceuticals) és a [Infosupport](https://customers.microsoft.com/story/service-fabric-customer-profile-info-support-and-fudura).
@@ -44,16 +46,18 @@ Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvass
 * **Skálázható szolgáltatások**: az egyes szolgáltatások particionálható, ami lehetővé teszi, hogy a rendszer kibővítse az állapotot a fürtön belül. Az egyes szolgáltatások menet közben is létrehozhatók és eltávolíthatók. Több példányon is kibővítheti a szolgáltatásokat néhány csomóponton, több ezer példányban számos csomóponton, majd szükség szerint méretezheti azokat újra. A Service Fabric használatával felépítheti ezeket a szolgáltatásokat, és kezelheti a teljes életciklusát.
 
 ## <a name="application-design-case-studies"></a>Alkalmazás-tervezési esettanulmányok
-Esettanulmányok, amelyek bemutatják, hogyan történik a Service Fabric az alkalmazások megtervezésére az [Azure-](https://azure.microsoft.com/solutions/microservice-applications/) webhelyeken az [ügyfél történeteit](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=0&so=story_publish_date%20desc/) és a szolgáltatásait.
+
+Esettanulmányok, amelyek bemutatják, hogyan történik a Service Fabric az alkalmazások megtervezésére az [Azure-](https://azure.microsoft.com/solutions/microservice-applications/) webhelyeken az [ügyfél történeteit](https://customers.microsoft.com/search?sq=%22Azure%20Service%20Fabric%22&ff=&p=2&so=story_publish_date%20desc) és a szolgáltatásait.
 
 ## <a name="designing-applications-composed-of-stateless-and-stateful-microservices"></a>Állapot nélküli és állapot-nyilvántartó szolgáltatásokból álló alkalmazások tervezése
-Az Azure Cloud Services feldolgozói szerepkörökkel rendelkező alkalmazások kiépítése az állapot nélküli szolgáltatásokra mutat példát. Ezzel szemben az állapot-nyilvántartó szolgáltatások a kérésen és a válaszon túl megőrzik a mérvadó állapotukat. Ez a funkció magas rendelkezésre állást és konzisztenciát biztosít az állapotnak olyan egyszerű API-k segítségével, amelyek a replikáció által támogatott tranzakciós garanciákat biztosítanak. 
+
+Az Azure Cloud Services feldolgozói szerepkörökkel rendelkező alkalmazások kiépítése az állapot nélküli szolgáltatásokra mutat példát. Ezzel szemben az állapot-nyilvántartó szolgáltatások a kérésen és a válaszon túl megőrzik a mérvadó állapotukat. Ez a funkció magas rendelkezésre állást és konzisztenciát biztosít az állapotnak olyan egyszerű API-k segítségével, amelyek a replikáció által támogatott tranzakciós garanciákat biztosítanak.
 
 A Service Fabric állapot-nyilvántartó szolgáltatásai magas rendelkezésre állást biztosítanak az összes típusú alkalmazáshoz, nem csak adatbázisokhoz és más adattárakhoz. Ez természetes folyamat. Az alkalmazások a NoSQL-adatbázisok magas rendelkezésre állása érdekében már tisztán összehasonlított adatbázisok használatával lettek áthelyezve. Az alkalmazások maguk is rendelkezhetnek a "forró" állapottal és a bennük kezelt adatokkal a teljesítmény növelése érdekében, a megbízhatóság, a konzisztencia vagy a rendelkezésre állás feláldozása nélkül.
 
 Ha olyan alkalmazásokat fejleszt, amelyek a-szolgáltatásokból állnak, jellemzően állapot nélküli webalkalmazások (például a ASP.NET és a Node. js) kombinációja van, amely az állapot nélküli és állapot-nyilvántartó üzleti középszintű szolgáltatásokat hívja meg. Az alkalmazások és szolgáltatások mind ugyanabban a Service Fabric-fürtben vannak telepítve a Service Fabric telepítési parancsok használatával. Ezek a szolgáltatások a méretezés, a megbízhatóság és az erőforrás-használat tekintetében függetlenek egymástól. Ez a függetlenség javítja a fejlesztés és az életciklus-kezelés rugalmasságát és rugalmasságát.
 
-Az állapot-nyilvántartó szolgáltatások leegyszerűsítik az alkalmazások kialakítását, mivel azok nem igénylik a kizárólag állapot nélküli alkalmazások rendelkezésre állási és késési követelményeinek kielégítéséhez szükséges további várólisták és gyorsítótárak szükségességét. Mivel az állapot-nyilvántartó szolgáltatások magas rendelkezésre állással és alacsony késéssel rendelkeznek, kevesebb részletet kell kezelni az alkalmazásban. 
+Az állapot-nyilvántartó szolgáltatások leegyszerűsítik az alkalmazások kialakítását, mivel azok nem igénylik a kizárólag állapot nélküli alkalmazások rendelkezésre állási és késési követelményeinek kielégítéséhez szükséges további várólisták és gyorsítótárak szükségességét. Mivel az állapot-nyilvántartó szolgáltatások magas rendelkezésre állással és alacsony késéssel rendelkeznek, kevesebb részletet kell kezelni az alkalmazásban.
 
 Az alábbi ábrák az állapot nélküli alkalmazások megtervezése és az egyik állapot közötti különbséget szemléltetik. A [Reliable Services](service-fabric-reliable-services-introduction.md) és [Reliable Actors](service-fabric-reliable-actors-introduction.md) programozási modellek előnyeit kihasználva az állapot-nyilvántartó szolgáltatások csökkentik az alkalmazások összetettségét a nagy átviteli sebesség és az alacsony késés elérése mellett.
 
@@ -63,18 +67,16 @@ Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alka
 
 ## <a name="next-steps"></a>Következő lépések
 
-* További információ a [mintákról és forgatókönyvekről](service-fabric-patterns-and-scenarios.md).
-
 * Ismerkedjen meg az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal a Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) és a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellekkel.
 * Látogasson el a Azure Architecture Centerra, és útmutatást nyújt az Azure-beli [szolgáltatások létrehozásához](https://docs.microsoft.com/azure/architecture/microservices/).
 * Az alkalmazások kialakítására vonatkozó útmutatásért keresse fel az [Azure Service Fabric alkalmazást és a fürt ajánlott eljárásait](service-fabric-best-practices-overview.md) .
 
-* Tekintse meg a következő témaköröket is:
-  * [Tudnivalók a szolgáltatásokról](service-fabric-overview-microservices.md)
+* Lásd még:
+  * [A szolgáltatások ismertetése](service-fabric-overview-microservices.md)
   * [A szolgáltatás állapotának meghatározása és kezelése](service-fabric-concepts-state.md)
-  * [Service Fabric szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
-  * [Service Fabric szolgáltatások méretezése](service-fabric-concepts-scalability.md)
-  * [Service Fabric szolgáltatások particionálása](service-fabric-concepts-partitioning.md)
+  * [A szolgáltatások rendelkezésre állása](service-fabric-availability-services.md)
+  * [Szolgáltatások méretezése](service-fabric-concepts-scalability.md)
+  * [Partition Services](service-fabric-concepts-partitioning.md)
 
 [Image1]: media/service-fabric-application-scenarios/AppwithStatelessServices.png
 [Image2]: media/service-fabric-application-scenarios/AppwithStatefulServices.png

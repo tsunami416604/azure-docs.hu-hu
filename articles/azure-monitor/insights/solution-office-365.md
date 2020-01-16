@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/08/2019
-ms.openlocfilehash: aaa083ef52dcf18fade3315f598b5f57e791cbe0
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b026ef7dbbe850f0d2d1cb67ec8ca93b14ef879a
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932971"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044906"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Office 365 felügyeleti megoldás az Azure-ban (előzetes verzió)
 
@@ -106,7 +106,7 @@ ms.locfileid: "75932971"
 > 
 > ###   <a name="q-what-will-happen-on-march-30-do-i-need-to-offboard-beforehand"></a>K: mi fog történni március 30-án? Előre kell regisztrációjának megszüntetésére szolgáló?
 > 
-> - Nem fogja tudni fogadni az **Office 365** -megoldás adatait, és el lesz távolítva minden olyan munkaterületről, ahol telepítve van. A megoldás többé nem lesz elérhető a piactéren
+> - Nem fogja tudni fogadni az **Office 365** -megoldás adatait. A megoldás többé nem lesz elérhető a piactéren
 > - Az Azure Sentinel-ügyfelek esetében a Log Analytics munkaterület megoldás **Office 365** szerepelni fognak az Azure Sentinel **SecurityInsights** megoldásban.
 > - Ha nem regisztrációjának megszüntetésére szolgáló manuálisan a megoldást, a rendszer március 30-ig automatikusan leválasztja az adatait.
 > 

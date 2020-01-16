@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.custom: fasttrack-new
 services: batch
 ms.service: batch
-ms.openlocfilehash: 7f471032d69213fc11ff748e3fa9093991ee23d6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 03e383e43cbe90ae2f59766a235f167cff623b6a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449806"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982700"
 ---
 # <a name="use-azure-pipelines-to-build-and-deploy-hpc-solutions"></a>HPC-megoldások létrehozása és üzembe helyezése az Azure-folyamatokkal
 
@@ -192,7 +192,7 @@ A következő sablon egy példát mutat be Azure Batch készlet létrehozásáho
 
 Végezetül egy olyan sablonnal rendelkezünk, amely egy Orchestrator hasonló módon működik. Ez a sablon felelős a képességek sablonjainak telepítéséhez.
 
-További információt a [csatolt Azure Resource Manager-sablonok létrehozásáról](../azure-resource-manager/resource-manager-tutorial-create-linked-templates.md) a különálló cikkben talál.
+További információt a [csatolt Azure Resource Manager-sablonok létrehozásáról](../azure-resource-manager/templates/template-tutorial-create-linked-templates.md) a különálló cikkben talál.
 
 ```json
 {
@@ -368,7 +368,7 @@ Az Azure-folyamatok az alkalmazás és a mögöttes infrastruktúra üzembe hely
 
 ### <a name="deploying-your-application-and-underlying-infrastructure"></a>Az alkalmazás és a mögöttes infrastruktúra üzembe helyezése
 
-Az infrastruktúra üzembe helyezésének számos lépése van. A [csatolt sablonok](../azure-resource-manager/resource-group-linked-templates.md)használata során ezeknek a sablonoknak elérhetőnek kell lenniük egy nyilvános végpontról (http vagy https). Ez lehet egy adattár a GitHubon, vagy egy Azure Blob Storage-fiók vagy egy másik tárolási hely. A feltöltött sablon összetevői biztonságban maradhatnak, mivel azok privát módban is tárolhatók, de a közös hozzáférésű aláírás (SAS) jogkivonatának valamilyen formájával érhetők el. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy infrastruktúrát sablonokkal egy Azure Storage-blob használatával.
+Az infrastruktúra üzembe helyezésének számos lépése van. A [csatolt sablonok](../azure-resource-manager/templates/linked-templates.md)használata során ezeknek a sablonoknak elérhetőnek kell lenniük egy nyilvános végpontról (http vagy https). Ez lehet egy adattár a GitHubon, vagy egy Azure Blob Storage-fiók vagy egy másik tárolási hely. A feltöltött sablon összetevői biztonságban maradhatnak, mivel azok privát módban is tárolhatók, de a közös hozzáférésű aláírás (SAS) jogkivonatának valamilyen formájával érhetők el. Az alábbi példa bemutatja, hogyan helyezhet üzembe egy infrastruktúrát sablonokkal egy Azure Storage-blob használatával.
 
 1. Hozzon létre egy **új kiadási definíciót**, és válasszon ki egy üres definíciót. Ezután át kell neveznie az újonnan létrehozott környezetet a folyamathoz kapcsolódóan.
 

@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 01/10/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 08a5c2c101b934f07ab85082e726cb8e1341e5d0
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: cd9f85e3bfd11ee655ce581c60a5b65e13f4497b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888722"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971892"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-key-vault"></a>Oktatóanyag: Hozzáférés az Azure Key Vaulthoz egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással 
 
@@ -38,6 +38,13 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 ## <a name="prerequisites"></a>Előfeltételek
 
 [!INCLUDE [msi-tut-prereqs](../../../includes/active-directory-msi-tut-prereqs.md)]
+
+
+## <a name="enable"></a>Engedélyezés
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása  
  
@@ -66,7 +73,7 @@ Ezután adjon hozzá egy titkos kódot a Key Vaulthoz, hogy később le tudja k�
 5. Hagyja az aktiválási és a lejárati dátumot üresen, az **Engedélyezve** beállítást pedig az **Igen** értéken. 
 6. A titkos kód létrehozásához kattintson a **Létrehozás** parancsra. 
  
-## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése  
+## <a name="access-data"></a>Adatok elérése  
 
 Ez a szakasz bemutatja, hogyan kérhet hozzáférési tokent a virtuális gép identitásával, és hogyan kérheti le a titkos kulcsot a Key Vault. Ha nincs telepítve a PowerShell 4.3.1-es vagy újabb verziója, [le kell töltenie és telepítenie kell a legújabb verziót](https://docs.microsoft.com/powershell/azure/overview).
 
@@ -108,6 +115,13 @@ Először a VM rendszer által hozzárendelt felügyelt identitásával szerezze
     ```
     
 Miután lekérte a titkos kódot a Key Vaultból, a használatával hitelesítést végezhet olyan szolgáltatásokban, amelyekhez név és jelszó szükséges. 
+
+
+## <a name="disable"></a>Letiltás
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 05/07/2019
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: b387df5049fff2cb17e8d0758f1cf5fd8f0d0853
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74049106"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045665"
 ---
 # <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rövid útmutató: standard Load Balancer létrehozása Azure PowerShell használatával
 
@@ -33,7 +33,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert a
 
 Ha a PowerShell helyi telepítése és használata mellett dönt, ehhez a cikkhez az Azure PowerShell-modul 5.4.1-es vagy újabb verziójára lesz szükség. A telepített verzió azonosításához futtassa a következőt: `Get-Module -ListAvailable Az`. Ha frissíteni szeretne, olvassa el [az Azure PowerShell-modul telepítését](/powershell/azure/install-Az-ps) ismertető cikket. Ha helyileg futtatja a PowerShellt, akkor emellett a `Connect-AzAccount` futtatásával kapcsolatot kell teremtenie az Azure-ral.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A terheléselosztó létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *myresourcegroupslb erőforráscsoportban* nevű erőforráscsoportot a *EastUS* helyen:
 
@@ -105,7 +105,7 @@ $rule = New-AzLoadBalancerRuleConfig `
 
 ### <a name="create-the-nat-rules"></a>A NAT-szabályok létrehozása
 
-NAT-szabályok létrehozása a [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Az alábbi példa a *myLoadBalancerRDP1* és a *myLoadBalancerRDP2* nevű NAT-szabályokat hozza létre, hogy engedélyezze az RDP-kapcsolatokat a 4221-es és 4222-es porttal rendelkező háttér-kiszolgálókkal:
+NAT-szabályok létrehozása a [New-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/new-azloadbalancerinboundnatruleconfig). Az alábbi példa a *myLoadBalancerRDP1* és a *myLoadBalancerRDP2* nevű NAT-szabályokat hozza létre, hogy engedélyezze az RDP-kapcsolatokat a 4221-es és 4222-es porttal rendelkező háttér-kiszolgálókkal:
 
 ```azurepowershell
 $natrule1 = New-AzLoadBalancerInboundNatRuleConfig `

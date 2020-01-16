@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/16/2019
 ms.author: evansma
-ms.openlocfilehash: 22d1f2d39a1ef3825d7d6c7eb0724e108b9b78e6
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 6f09df7c4ccdfa8a339b9d7f2655128c7ead5184
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933770"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978644"
 ---
 # <a name="publish-an-integrated-solution"></a>Integrált megoldás közzététele
 
@@ -28,13 +28,13 @@ Az integrált megoldási program áttekintését [ebben a videóban](https://aka
 * Az ügyfelek olyan csomagolt megoldásokat találhatnak, amelyek teljes körű üzleti kihívásokat oldják meg a piactéren. A technológia integrálva lett a gyorsított időpontig. Az ügyfeleknek nem kell külön bejelentkezniük több, töredezett módon üzembe helyezett alkalmazással.
 * Az IP csomagolása más megoldásokkal és szolgáltatásokkal együtt történik, amelyek javítják a szakértői szolgáltatások partnerei által nyújtott technológia értékét.
 * A Services-partnerek előre definiált, előre integrált megoldásokat hozhatnak létre, amelyek a legjobb technológiával rendelkeznek a méretezéshez, a földterülethez és a bővítéshez több ügyfél-fiókban.
-* A Microsoft ezeket az előre integrált, iparágilag igazított megoldásokat az ügyfelek számára könnyebben értékesítheti. A díjszabás és a feltételek előre vannak rendezve. 
+* A Microsoft ezeket az előre integrált, iparágilag igazított megoldásokat az ügyfelek számára könnyebben értékesítheti. A díjszabás és a feltételek előre vannak rendezve.
 
 ## <a name="eligibility-criteria"></a>Megfelelőségi feltételek
 
 * A résztvevő partnereknek MPN-AZONOSÍTÓval kell rendelkezniük.
 * A résztvevő szolgáltatók számára készen kell lennie a közös értékesítésre.
-* A résztvevő szoftvergyártóknak az IP-címek közös értékesítésének kell lenniük. 
+* A résztvevő szoftvergyártóknak az IP-címek közös értékesítésének kell lenniük.
 * Legalább egy résztvevő partnernek a következő területek egyikében kell lennie a Gold kompetenciának:
 
     * Alkalmazásfejlesztés
@@ -53,13 +53,13 @@ Az integrált megoldási program áttekintését [ebben a videóban](https://aka
 
 ## <a name="submit-a-nomination"></a>Jelölés beküldése
 
-A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://aka.ms/AA5qicu)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít. 
+A programban részt vevő partnereknek meg kell határozniuk más partnereket, akikkel dolgozni kívánnak. Az [integrált megoldások jelölési formáját](https://aka.ms/AA5qicu)kell végrehajtaniuk. Az integrált megoldási program csapata a jelölést a 10 munkanapon belül követi. A csapat jóváhagyást és további lépéseket is biztosít.
 
-## <a name="develop-an-integrated-solution"></a>Integrált megoldás fejlesztése 
+## <a name="develop-an-integrated-solution"></a>Integrált megoldás fejlesztése
 
-Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az integrált megoldást. Kövesse az alábbi lépéseket: 
+Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az integrált megoldást. Kövesse az alábbi lépéseket:
 
-1. A megoldás és az integráció megközelítésének meghatározásához az üzleti és műszaki megbeszéléseket a workshop formátumában végezheti el. 
+1. A megoldás és az integráció megközelítésének meghatározásához az üzleti és műszaki megbeszéléseket a workshop formátumában végezheti el.
 
     A megoldással kapcsolatos vitája a következő szempontokat foglalja magában:
     * Hatókör
@@ -73,7 +73,7 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Értékesítési folyamat
     * Activities (Tevékenységek)
 
-    Az integrációs megközelítéssel kapcsolatos vitájában a következő szempontokat kell figyelembe venni: 
+    Az integrációs megközelítéssel kapcsolatos vitájában a következő szempontokat kell figyelembe venni:
     * Integrációs pontok
     * Megoldásarchitektúra
     * Hitelesítés
@@ -101,15 +101,15 @@ Ha jóváhagyta a jelölést, a csatolt program erőforrásaival fejlesztheti az
     * Az integrált megoldás listázási leírása. Ajánlat követése [– ajánlott eljárások listázása](https://docs.microsoft.com/azure/marketplace/gtm-offer-listing-best-practices).
     * Egyoldalas szurok az ügyfeleknek. Az [egyoldalas sablon](https://aka.ms/AA5s08a)használata.
     * Egy ügyfél-bemutató. Használja a [bemutató sablont](https://aka.ms/AA5s7ql).
-    * Az egyesített megoldás emblémája. 
+    * Az egyesített megoldás emblémája.
 
-## <a name="publish-your-integrated-solution"></a>Az integrált megoldás közzététele 
+## <a name="publish-your-integrated-solution"></a>Az integrált megoldás közzététele
 
 Miután befejezte a technikai integrációt és a marketing-biztosítékot, tekintse meg a [Microsoft AppSource és az Azure Marketplace tanácsadói szolgáltatásainak](https://docs.microsoft.com/azure/marketplace/consulting-services)közzétevői útmutatóját. Ezzel az erőforrással megállapíthatja, hogy a megoldás közzé lesz-e téve Microsoft AppSource vagy az Azure Marketplace-en. Az útmutatót is használhatja a közzétételi összetevők előkészítéséhez és a közzétételi folyamat befejezéséhez.
 
 Bár öt szolgáltatási típus érhető el a tanácsadási szolgáltatásokhoz, az integrált megoldásnak vagy a koncepció igazolásának vagy teljes megvalósításának kell lennie.
 
-## <a name="go-to-market-with-your-integrated-solution"></a>Lépjen a piacra az integrált megoldással 
+## <a name="go-to-market-with-your-integrated-solution"></a>Lépjen a piacra az integrált megoldással
 
 Ha a megoldás a Microsoft AppSource vagy az Azure Marketplace-en él, érdemes lehet a marketing-tevékenységekkel kapcsolatos ismereteket és igényt vezetnie. Tekintse át a [projekt tervében és idővonalában](https://aka.ms/AA5qiuc)felsorolt tevékenységeket. Ez az erőforrás olyan tevékenységeket tartalmaz, amelyeket a partnerek a saját csapatában és egymással tudnak vezetni. Ezután elérheti a piactéren közzétett partnereink piacra jutási [előnyeit](https://docs.microsoft.com/azure/marketplace/gtm-your-marketplace-benefits#list-trial-and-consulting-benefits) . Minden integrált megoldási ajánlat próbaverziós ellátásra alkalmas.
 

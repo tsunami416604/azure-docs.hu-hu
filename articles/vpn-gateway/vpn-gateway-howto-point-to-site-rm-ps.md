@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/09/2019
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: b67c77f25b14263abe7207359c00660df635df13
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 49fbdf4a4090350cc0a6a5a1b938621b3cb08632
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863791"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045091"
 ---
 # <a name="configure-a-point-to-site-vpn-connection-to-a-vnet-using-native-azure-certificate-authentication-powershell"></a>Pont – hely VPN-kapcsolat konfigurálása VNet natív Azure tanúsítványalapú hitelesítéssel: PowerShell
 
@@ -32,13 +32,15 @@ A natív Azure-tanúsítvánnyal hitelesített pont–hely kapcsolatok a követk
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-[!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
-
 Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial).
+
+### <a name="azure-powershell"></a>Azure PowerShell
 
 [!INCLUDE [powershell](../../includes/vpn-gateway-cloud-shell-powershell-about.md)]
 
-A cikkben ismertetett lépések többsége Cloud Shell használatát is felhasználhatja. A főtanúsítvány nyilvános kulcsának feltöltéséhez azonban a PowerShellt helyileg kell használnia, vagy a Azure Portal.
+>[!NOTE]
+> A cikkben ismertetett lépések többsége Azure Cloud Shell használatát is felhasználhatja. A főtanúsítvány nyilvános kulcsának feltöltéséhez azonban a PowerShellt helyileg kell használnia, vagy a Azure Portal.
+>
 
 ### <a name="example"></a>Példaértékek
 
@@ -170,7 +172,9 @@ A tanúsítványokat az Azure használja a VPN-ügyfelek hitelesítésére a pon
 
 Ellenőrizze, hogy a VPN-átjáró létrehozása befejeződött-e. Ha befejeződött, töltse fel a megbízható főtanúsítványhoz tartozó .cer fájlt (amely a nyilvános kulcsot tartalmazza) az Azure-ba. Miután feltöltötte a .cer fájlt, az Azure felhasználhatja azt azon ügyfelek hitelesítéséhez, amelyeken telepítve lett egy, a megbízható főtanúsítványból létrehozott ügyféltanúsítvány. Szükség szerint később további megbízhatófőtanúsítvány-fájlokat is feltölthet (legfeljebb 20-at).
 
-Ezek az adatok nem tölthetők fel Azure Cloud Shell használatával. A PowerShell helyileg is használható a számítógépen, a [Azure Portal lépéseket](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>[!NOTE]
+> A. cer fájl nem tölthető fel Azure Cloud Shell használatával. Használhatja a PowerShellt helyileg a számítógépen, vagy használhatja a [Azure Portal lépéseket](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile).
+>
 
 1. Deklarálja a tanúsítványnév változóját, és cserélje le az értékeket a saját értékeire.
 
@@ -185,7 +189,7 @@ Ezek az adatok nem tölthetők fel Azure Cloud Shell használatával. A PowerShe
    $CertBase64 = [system.convert]::ToBase64String($cert.RawData)
    $p2srootcert = New-AzVpnClientRootCertificate -Name $P2SRootCertName -PublicCertData $CertBase64
    ```
-3. Töltse fel a nyilvánoskulcs-adatokat az Azure-ba. A tanúsítvány adatainak feltöltése után az Azure megbízható főtanúsítványnak tekinti.
+3. Töltse fel a nyilvánoskulcs-adatokat az Azure-ba. A tanúsítvány adatainak feltöltése után az Azure megbízható főtanúsítványnak tekinti. A feltöltéskor győződjön meg arról, hogy a PowerShell helyileg fut a számítógépen, vagy inkább a [Azure Portal lépéseket](vpn-gateway-howto-point-to-site-resource-manager-portal.md#uploadfile)használhatja. Azure Cloud Shell használatával nem tölthető fel.
 
    ```azurepowershell
    Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName -VirtualNetworkGatewayname "VNet1GW" -ResourceGroupName "TestRG" -PublicCertData $CertBase64

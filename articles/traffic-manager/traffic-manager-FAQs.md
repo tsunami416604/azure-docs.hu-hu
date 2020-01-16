@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: allensu
-ms.openlocfilehash: f08915c07db6759a03fc9bd0695523dead6dcb7f
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: d7feb0f7c32ab544df2b9de08daaf8cd007318b5
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72784834"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045312"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
 
@@ -29,7 +29,7 @@ Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/tr
 Ezért Traffic Manager nem biztosít végpontot vagy IP-címet ahhoz, hogy az ügyfelek csatlakozni tudjanak. Ha statikus IP-címet szeretne használni a szolgáltatáshoz, azt a szolgáltatásban kell konfigurálni, nem Traffic Manager.
 
 ### <a name="what-types-of-traffic-can-be-routed-using-traffic-manager"></a>Milyen típusú forgalmat lehet irányítani a Traffic Manager használatával?
-Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, a Traffic Manager végpont bármely, az Azure-on belül vagy kívül üzemeltetett internetkapcsolattal rendelkező szolgáltatás lehet. Ezért Traffic Manager a nyilvános internetről érkező forgalmat olyan végpontokra irányíthatja, amelyek szintén internetkapcsolattal rendelkeznek. Ha olyan végpontokkal rendelkezik, amelyek egy magánhálózaton belül találhatók (például [Azure Load Balancer](../load-balancer/load-balancer-overview.md#internalloadbalancer)belső verziója), vagy ha a felhasználók DNS-kérelmeket tesznek elérhetővé az ilyen belső hálózatokból, akkor nem használhatja a forgalmat a Traffic Manager.
+Ahogy azt a [Traffic Manager működése című témakör](../traffic-manager/traffic-manager-how-it-works.md)ismerteti, a Traffic Manager végpont bármely, az Azure-on belül vagy kívül üzemeltetett internetkapcsolattal rendelkező szolgáltatás lehet. Ezért Traffic Manager a nyilvános internetről érkező forgalmat olyan végpontokra irányíthatja, amelyek szintén internetkapcsolattal rendelkeznek. Ha olyan végpontokkal rendelkezik, amelyek egy magánhálózaton belül találhatók (például [Azure Load Balancer](../load-balancer/concepts-limitations.md#internalloadbalancer)belső verziója), vagy ha a felhasználók DNS-kérelmeket tesznek elérhetővé az ilyen belső hálózatokból, akkor nem használhatja a forgalmat a Traffic Manager.
 
 ### <a name="does-traffic-manager-support-sticky-sessions"></a>Traffic Manager támogatja a "Sticky" munkameneteket?
 
@@ -499,7 +499,7 @@ A következő táblázat ismerteti a beágyazott végpontok Traffic Manager áll
 
 | Gyermek Profil figyelő állapota | Szülő Endpoint monitor állapota | Megjegyzések |
 | --- | --- | --- |
-| Tiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
+| Letiltva. A gyermek profil le lett tiltva. |Leállítva |A fölérendelt végpont állapota leáll, nem letiltva. A letiltott állapot annak jelzésére van fenntartva, hogy letiltotta a végpontot a szülő profilban. |
 | Leromlott. Legalább egy alárendelt profil-végpont csökkentett teljesítményű állapotban van. |Online: a gyermek profilban található online végpontok száma legalább a MinChildEndpoints értéke.<BR>CheckingEndpoint: az online plusz CheckingEndpoint végpontok száma a gyermek profilban legalább a MinChildEndpoints értéke.<BR>Csökkentett teljesítményű: máskülönben. |A forgalmat az állapot CheckingEndpoint-végpontja irányítja át. Ha a MinChildEndpoints túl magasra van állítva, a végpont mindig csökken. |
 | Online. Legalább egy alárendelt profil végpontja online állapotú. Egy végpont nem csökkentett teljesítményű állapotban van. |Lásd fentebb. | |
 | CheckingEndpoints. Legalább egy alárendelt profil végpontja a következő: "CheckingEndpoint". Nincsenek végpontok "online" vagy "csökkentett teljesítményű" |Ugyanaz, mint a fenti. | |

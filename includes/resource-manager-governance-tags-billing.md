@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 02/19/2018
 ms.author: tomfitz
 ms.custom: include file
-ms.openlocfilehash: e7fcb72cecbfad2de80b844ed5281267d5e4c0c3
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 226079b1970508004c55c54cd3de6d2e9475aa08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67179051"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970124"
 ---
-Az erőforrások felcímkézése után megtekintheti az adott címkével ellátott erőforrások költségét. A legutóbbi használati adatok megjelenítése eltarthat egy darabig a költségelemzés számára, tehát előfordulhat, hogy rögtön nem látja a költségeket. Amikor a költségek már elérhetők, megtekintheti az előfizetésében lévő erőforráscsoportok erőforrásainak költségét. A költségek megtekintéséhez a felhasználóknak [előfizetéses szintű hozzáféréssel](../articles/billing/billing-manage-access.md) kell rendelkezniük a számlázási adatokhoz.
+Az erőforrások felcímkézése után megtekintheti az adott címkével ellátott erőforrások költségét. A legutóbbi használati adatok megjelenítése eltarthat egy darabig a költségelemzés számára, tehát előfordulhat, hogy rögtön nem látja a költségeket. Amikor a költségek már elérhetők, megtekintheti az előfizetésében lévő erőforráscsoportok erőforrásainak költségét. A költségek megtekintéséhez a felhasználóknak [előfizetéses szintű hozzáféréssel](../articles/cost-management-billing/manage/manage-billing-access.md) kell rendelkezniük a számlázási adatokhoz.
 
 Ha címke szerint szeretné megtekinteni a költségeket a portálon, válassza ki az előfizetését, és válassza a **Költségelemzés** lehetőséget.
 
@@ -25,4 +25,4 @@ Ezután szűrjön címkeérték szerint, és válassza az **Alkalmaz** lehetős�
 
 ![Költség megtekintése címke szerint](./media/resource-manager-governance-tags-billing/view-costs-by-tag.png)
 
-Használhatja az [Azure-beli számlázási API-kat](../articles/billing/billing-usage-rate-card-overview.md) is a költségek programozott módon való megtekintéséhez.
+Használhatja az [Azure-beli számlázási API-kat](../articles/cost-management-billing/manage/usage-rate-card-overview.md) is a költségek programozott módon való megtekintéséhez.

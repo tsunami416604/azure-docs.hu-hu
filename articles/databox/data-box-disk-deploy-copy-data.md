@@ -10,12 +10,12 @@ ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: c309a7cb18086526b23c875b41d9d4f4db4bc213
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: be2bda4e1bfd6a679076f79969e4829aa1a847c9
+ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70231376"
+ms.lasthandoff: 01/11/2020
+ms.locfileid: "75895967"
 ---
 ::: zone target="docs"
 
@@ -46,7 +46,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 - Elvégezte [ az Azure Data Box Disk telepítéséről és konfigurálásáról](data-box-disk-deploy-set-up.md) szóló oktatóanyagot.
 - Lemezeit feloldotta és csatlakoztatta az ügyfélszámítógéphez.
-- Az ügyfélszámítógépnek, amelyet az adatok a lemezekre történő másolásához használ, [támogatott operációs rendszert](data-box-disk-system-requirements.md##supported-operating-systems-for-clients) kell futtatnia.
+- Az ügyfélszámítógépnek, amelyet az adatok a lemezekre történő másolásához használ, [támogatott operációs rendszert](data-box-disk-system-requirements.md#supported-operating-systems-for-clients) kell futtatnia.
 - Győződjön meg arról, hogy az adatok választott tárolótípusa egyezik valamelyik [támogatott tárolótípussal](data-box-disk-system-requirements.md#supported-storage-types-for-upload).
 - Tekintse át [a felügyelt lemezek korlátozásait az Azure-beli objektumok méretének korlátozásai között](data-box-disk-limits.md#azure-object-size-limits).
 

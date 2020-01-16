@@ -7,12 +7,12 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: rajanaki
 ms.custom: MVC
-ms.openlocfilehash: 2a749e9345fec0e91751641cd15805d7f7d62d95
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: a48edda31f19ef4ce1ba23664eef1f51ba9cf8d1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961410"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970495"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government és a nyilvános régiók között 
 
@@ -20,7 +20,7 @@ Előfordulhat, hogy át szeretné helyezni a IaaS virtuális gépeket a Azure Go
 
 Amellett, hogy a [Azure site Recovery](site-recovery-overview.md) szolgáltatás használatával felügyelje és koordinálja a helyszíni gépek és az Azure virtuális gépek vész-helyreállítását az üzletmenet folytonossága és a vész-helyreállítás (BCDR) érdekében, a site Recovery használatával is kezelheti az Azure-beli virtuális gépek másodlagos régióba való áthelyezését.       
 
-Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag bemutatja, hogyan helyezheti át az Azure-beli virtuális gépeket a Azure Government és a nyilvános régiók között Azure Site Recovery használatával. Ugyanezt kiterjesztheti olyan virtuális gépek áthelyezésére, amelyek nem ugyanazon a földrajzi fürtön belül vannak. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Előfeltételek ellenőrzése
@@ -63,9 +63,9 @@ Győződjön meg arról, hogy az Azure-fiókja rendelkezik a virtuális gépek A
 - A hálózatnak ugyanabban a régióban kell lennie, mint a Recovery Services-tárolónak
 
 
-### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók beállítása
+### <a name="set-up-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
-Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md).
+Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-create.md).
 
 - Site Recovery replikálja a helyszíni gépeket az Azure Storage-ba. Az Azure-beli virtuális gépek a tárolóból a feladatátvételt követően jönnek létre.
 - A tárfióknak és a Recovery Services-tárolónak ugyanabban a régióban kell elhelyezkednie.
@@ -197,7 +197,7 @@ A szabályzat automatikusan társítva lesz a konfigurációs kiszolgálóval. A
    > [!WARNING]
    > Meg kell adnia az áthelyezni kívánt Azure-beli virtuális gép IP-címét
 
-10. A **tulajdonságok** > **tulajdonságok konfigurálása**területen válassza ki azt a fiókot, amelyet a Process-kiszolgáló a mobilitási szolgáltatás automatikus telepítéséhez fog használni a gépen.
+10. A **Tulajdonságok** > **Tulajdonságok konfigurálása** mezőben válassza ki a fiókot, amelynek használatával a folyamatkiszolgáló automatikusan telepíti a mobilitási szolgáltatást a gépen.
 11. A **Replikációs beállítások** > **Replikációs beállítások konfigurálása** területen ellenőrizze, hogy a megfelelő replikációs szabályzat van-e kiválasztva. 
 12. Kattintson a **Replikáció engedélyezése** elemre. A **Védelem engedélyezése** feladat előrehaladását a **Beállítások** > **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **Védelem véglegesítése** feladat befejeződését követően a gép készen áll a feladatátvételre.
 

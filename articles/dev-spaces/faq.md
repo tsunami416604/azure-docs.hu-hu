@@ -5,12 +5,12 @@ ms.date: 09/25/2019
 ms.topic: conceptual
 description: Válaszok az Azure dev Spaces használatával kapcsolatos gyakori kérdésekre
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
-ms.openlocfilehash: c904ae5809a36859ba6428bf026c9016a1a8f747
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: d5ab56edfe4799d51fb7f08642aad9e2ee01db05
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867177"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044963"
 ---
 # <a name="frequently-asked-questions-about-azure-dev-spaces"></a>Gyakran ismételt kérdések az Azure dev Spaces-ről
 
@@ -34,7 +34,7 @@ Igen, a [traefik][ingress-https-traefik]használatával saját bejövő adatait 
 
 ## <a name="can-i-use-azure-dev-spaces-on-a-cluster-that-uses-cni-rather-than-kubenet"></a>Használhatom az Azure dev Spaces szolgáltatást olyan fürtön, amely nem kubenet, hanem CNI használ? 
 
-Igen, használhatja az Azure dev Spaces szolgáltatást egy olyan AK-fürtön, amely CNI használ a hálózatkezeléshez. Használhatja például az Azure dev Spaces szolgáltatást egy AK-fürtön [meglévő Windows-tárolókkal][windows-containers], amelyek hálózati CNI használnak. A CNI és az Azure dev Spaces közötti hálózatkezeléssel kapcsolatos további információk [itt](configure-networking.md#using-azure-container-networking-with-azure-dev-spaces)érhetők el.
+Igen, használhatja az Azure dev Spaces szolgáltatást egy olyan AK-fürtön, amely CNI használ a hálózatkezeléshez. Használhatja például az Azure dev Spaces szolgáltatást egy AK-fürtön [meglévő Windows-tárolókkal][windows-containers], amelyek hálózati CNI használnak. A CNI és az Azure dev Spaces közötti hálózatkezeléssel kapcsolatos további információk [itt](configure-networking.md#using-azure-cni)érhetők el.
 
 ## <a name="can-i-use-azure-dev-spaces-with-windows-containers"></a>Használhatom az Azure dev Spaces szolgáltatást Windows-tárolókkal?
 
@@ -42,7 +42,7 @@ Jelenleg az Azure dev Spaces kizárólag Linux-hüvelyeken és-csomópontokon fu
 
 ## <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-api-server-authorized-ip-address-ranges-enabled"></a>Használhatok Azure dev Spaces-et az AK-fürtökön, ha engedélyezve vannak az API Server által engedélyezett IP-címtartományok?
 
-Igen, az Azure dev-szóközöket az AK-fürtökön használhatja az [API-kiszolgáló által engedélyezett IP-címtartományok][aks-auth-range] engedélyezésével. További információ az Azure dev Spaces szolgáltatással rendelkező, az API Server által engedélyezett IP-címtartományok használatával rendelkező AK-fürtök használatáról [itt](configure-networking.md#using-api-server-authorized-ip-ranges-with-azure-dev-spaces)található.
+Igen, az Azure dev-szóközöket az AK-fürtökön használhatja az [API-kiszolgáló által engedélyezett IP-címtartományok][aks-auth-range] engedélyezésével. További információ az Azure dev Spaces szolgáltatással rendelkező, az API Server által engedélyezett IP-címtartományok használatával rendelkező AK-fürtök használatáról [itt](configure-networking.md#using-api-server-authorized-ip-ranges)található.
 
 ### <a name="can-i-use-azure-dev-spaces-on-aks-clusters-with-restricted-egress-traffic-for-cluster-nodes"></a>Használhatom az Azure dev Spaces-t az AK-fürtökön a fürtcsomópontok korlátozott kimenő forgalmával?
 

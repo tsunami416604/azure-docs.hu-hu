@@ -6,14 +6,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 01/10/2020
+ms.date: 01/15/2020
 ms.author: cherylmc
-ms.openlocfilehash: 4df22108591fe3f80078bce050081c4953443847
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+ms.openlocfilehash: 9342a70e539c4a2717fe45426c26595285172681
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902994"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045779"
 ---
 # <a name="create-and-install-vpn-client-configuration-files-for-native-azure-certificate-authentication-p2s-configurations"></a>VPN-ügyfél konfigurációs fájljainak létrehozása és telepítése natív Azure-beli tanúsítvány-hitelesítési P2S-konfigurációkhoz
 
@@ -99,9 +99,14 @@ A következő lépésekkel konfigurálhatja a natív VPN-ügyfelet a Mac számí
 4. Az **általános** mappában, a **VpnSettings. XML** fájlból másolja a **VpnServer** címke értékét. Illessze be ezt az értéket a profil **kiszolgáló címe** és a **Távoli azonosító** mezőibe.
 
    ![kiszolgáló adatai](./media/point-to-site-vpn-client-configuration-azure-cert/server.png)
-5. Kattintson a **hitelesítési beállítások** elemre, és válassza a **tanúsítvány**elemet. 
+5. Kattintson a **hitelesítési beállítások** elemre, és válassza a **tanúsítvány**elemet. A **Catalina**esetében kattintson a **nincs** , majd a **tanúsítvány** elemre.
 
    ![Hitelesítési beállítások](./media/point-to-site-vpn-client-configuration-azure-cert/authsettings.png)
+
+   * A Catalina esetében válassza a **nincs** , majd a **tanúsítvány**lehetőséget. **Válassza ki** a megfelelő tanúsítványt:
+   
+   ![Catalina](./media/point-to-site-vpn-client-configuration-azure-cert/catalina.png)
+
 6. Kattintson a **kijelölés...** lehetőségre. Válassza ki a hitelesítéshez használni kívánt ügyféltanúsítványt. Ez az a tanúsítvány, amelyet a 2. lépésben telepített.
 
    ![tanúsítvány](./media/point-to-site-vpn-client-configuration-azure-cert/certificate.png)

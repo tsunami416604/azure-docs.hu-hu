@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 6e278172bc1c3ec4e81860c3f6d6a4b644731e2c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 0eb4f86a2484486658171ab4b099794e4ba3e4bc
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647781"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043391"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-powershell"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
 
@@ -50,7 +50,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
      -AllocationMethod "Static"
    ```
 
-   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, [létre kell hoznia egy nyilvános IP-címet](virtual-network-public-ip-address.md#create-a-public-ip-address), [létre kell hoznia egy hálózati adaptert](virtual-network-network-interface.md#create-a-network-interface), [hozzá kell rendelnie a nyilvános IP-címet a hálózati adapterhez](virtual-network-network-interface-addresses.md#add-ip-addresses), majd [létre kell hoznia egy virtuális gépet a hálózati adapterrel](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), külön lépésben. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, [létre kell hoznia egy nyilvános IP-címet](virtual-network-public-ip-address.md#create-a-public-ip-address), [létre kell hoznia egy hálózati adaptert](virtual-network-network-interface.md#create-a-network-interface), [hozzá kell rendelnie a nyilvános IP-címet a hálózati adapterhez](virtual-network-network-interface-addresses.md#add-ip-addresses), majd [létre kell hoznia egy virtuális gépet a hálózati adapterrel](virtual-network-network-interface-vm.md#add-existing-network-interfaces-to-a-new-vm), külön lépésben. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 4. Tekintse meg a hozzárendelt nyilvános IP-címet, és győződjön meg róla, hogy statikus címként lett létrehozva a [Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress):
 

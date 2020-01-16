@@ -1,18 +1,14 @@
 ---
 title: A Azure Site Recovery újdonságai
 description: A Azure Site Recovery szolgáltatás új szolgáltatásainak és legújabb frissítéseinek összefoglalása.
-services: site-recovery
-author: rayne-wiselman
-ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: aa98509ba71ec0797d4b59be9e4df1dea064c933
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/07/2020
+ms.openlocfilehash: 4a9feff3b0bc98b5d9853268d033e60de55ea5ea
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351456"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024830"
 ---
 # <a name="whats-new-in-site-recovery"></a>A Site Recovery újdonságai
 
@@ -28,14 +24,26 @@ Site Recovery-összetevők esetében az N-4 verziót támogatjuk, ahol N a legú
 
 **Update** |  **Egyesített beállítás** | **Konfigurációs kiszolgáló petesejtjei** | **Mobilitási szolgáltatás ügynöke** | **Site Recovery szolgáltató** | **Recovery Services ügynök**
 --- | --- | --- | --- | --- | ---
+[43-es összesítés](https://support.microsoft.com/help/4531426/) | 9.31.5449.1 | 5.1.5300.0 | 9.31.5449.1 | 5.1.5300.0 | 2.0.9165.0
 [42-es összesítés](https://support.microsoft.com/help/4531426/) | 9.30.5407.1 | 5.1.5200.0 | 9.30.5407.1 | 5.1.5200.0 | 2.0.9165.0
 [41-es összesítés](https://support.microsoft.com/help/4528026/) | 9.29.5367.1 | 5.1.5000.0 | 9.29.5367.1 | 5.1.5000.0 | 2.0.9165.0
 [40-es összesítés](https://support.microsoft.com/help/4521530/) | 9.28.5345.1 | 5.1.4800.0 | 9.28.5345.1 | 5.1.4800.0 | 2.0.9165.0
 [39-es összesítés](https://support.microsoft.com/help/4517283/) | 9.27.5308.1 | 5.1.4600.0 | 9.27.5308.1 | 5.1.4600.0 | 2.0.9165.0
-[38-es összesítés](https://support.microsoft.com/help/4513507/) | 9.26.5269.1 | 5.1.4500.0 | 9.26.5269.1 | 5.1.4500.0 | 2.0.9165.0
+
         
 
 [További](service-updates-how-to.md) információ a frissítések telepítéséről és támogatásáról.
+
+## <a name="updates-january-2020"></a>Frissítések (január 2020)
+
+### <a name="update-rollup-43"></a>43-es kumulatív frissítés
+
+A 43-es [kumulatív frissítés](https://support.microsoft.com/help/4537047/update-rollup-43-for-azure-site-recovery) a következő frissítéseket tartalmazza.
+
+**Update** | **Részletek**
+--- | ---
+**Szolgáltatók és ügynökök** | Site Recovery ügynökök és szolgáltatók frissítései (a kumulatív részletezéssel)
+**Hibajavítások/javítások** | Számos javítás és javítás (az összesítésben részletezett módon)
 
 
 ## <a name="updates-november-2019"></a>Frissítések (november 2019)

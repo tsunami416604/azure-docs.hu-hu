@@ -5,12 +5,12 @@ ms.date: 01/10/2020
 ms.topic: conceptual
 description: Ismerteti az Azure dev Spaces Azure Kubernetes Servicesben való futtatásának hálózati követelményeit
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, CNI, kubenet, SDN, hálózat
-ms.openlocfilehash: 51604e2862a4d2ff575906fa2ba480ddd10504ed
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9e32e3b65451dceefaeeaf7faed7c8337797e0b8
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897922"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044995"
 ---
 # <a name="configure-networking-for-azure-dev-spaces-in-different-network-topologies"></a>Hálózatkezelés konfigurálása az Azure dev Spaces szolgáltatáshoz különböző hálózati topológiákban
 
@@ -18,7 +18,7 @@ Az Azure dev Spaces az alapértelmezett hálózati konfigurációval rendelkező
 
 ![Virtuális hálózati konfiguráció](media/configure-networking/virtual-network-clusters.svg)
 
-## <a name="aks-clusters-with-different-virtual-network-or-subnet-configurations"></a>AK-fürtök eltérő virtuális hálózattal vagy alhálózat-konfigurációval
+## <a name="virtual-network-or-subnet-configurations"></a>Virtuális hálózat vagy alhálózati konfigurációk
 
 Az AK-fürt eltérő virtuális hálózattal vagy alhálózat-konfigurációval rendelkezhet, hogy korlátozza a bejövő vagy kimenő forgalmat az AK-fürt számára. Előfordulhat például, hogy a fürt tűzfal mögött található, például a Azure Firewall, vagy hálózati biztonsági csoportokat vagy egyéni szerepköröket használ a hálózati forgalom korlátozásához.
 
@@ -53,19 +53,19 @@ Az Azure dev Spaces lehetővé teszi, hogy a hibakereséshez közvetlenül kommu
 
 Az Azure dev Spaces lehetővé teszi a hüvelyek közötti útválasztást a névterek között. Például az Azure dev Spaces szolgáltatásban engedélyezett névterek szülő/gyermek kapcsolattal rendelkezhetnek, ami lehetővé teszi a hálózati forgalom átirányítását a hüvelyek között a szülő és a gyermek névterek között. Ahhoz, hogy ez a funkció működjön, adjon hozzá egy hálózati házirendet, amely lehetővé teszi a hálózati forgalom irányítása alatt álló névterek, például a szülő/gyermek névterek közötti adatforgalmat. Továbbá, ha a beléptetési vezérlő a *azds* -névtérbe van telepítve, akkor a bejövő adatkezelőnek kommunikálnia kell az Azure fejlesztői területtel rendelkező, másik névtérben található hüvelyekkel. Ahhoz, hogy a bejövő vezérlő megfelelően működjön, a hálózati forgalmat engedélyezni kell a *azds* névtérből arra a névtérre, ahol a műszeres hüvely fut.
 
-## <a name="using-azure-container-networking-with-azure-dev-spaces"></a>Az Azure Container hálózatkezelés használata az Azure dev Spaces használatával
+## <a name="using-azure-cni"></a>Az Azure CNI használata
 
 Alapértelmezés szerint az AK-fürtök úgy vannak konfigurálva, hogy a [kubenet][aks-kubenet] használják a hálózatkezeléshez, ami az Azure dev Spaces szolgáltatással működik. Azt is megteheti, hogy az AK-fürtöt az [Azure Container Network Interface (CNI)][aks-cni]használatára konfigurálja. Ha az Azure dev Spaces-t az AK-fürtön lévő Azure CNI szeretné használni, engedélyezze a virtuális hálózat és az alhálózati címtartomány akár 10 magánhálózati IP-címet az Azure dev Spaces által üzembe helyezett hüvelyek számára. A magánhálózati IP-címek engedélyezésével kapcsolatos további részletek az [AK Azure CNI dokumentációjában][aks-cni-ip-planning]találhatók.
 
-## <a name="using-api-server-authorized-ip-ranges-with-azure-dev-spaces"></a>Az API Server által jóváhagyott IP-címtartományok használata az Azure dev Spaces használatával
+## <a name="using-api-server-authorized-ip-ranges"></a>Az API-kiszolgáló által jóváhagyott IP-címtartományok használata
 
 Az AK-fürtök lehetővé teszik olyan további biztonsági beállítások konfigurálását, amelyek korlátozzák, hogy az IP-címek hogyan kezelhetik a fürtöket, például egyéni virtuális hálózatok használatával vagy [az API-kiszolgálóhoz engedélyezett IP-címtartományok használatával történő hozzáférés biztosításával][aks-ip-auth-ranges]. Ha a fürt [létrehozása][aks-ip-auth-range-create] során további biztonságot kíván használni az Azure dev Spaces szolgáltatásban, akkor a [régión alapuló további tartományokat][dev-spaces-ip-auth-range-regions]is engedélyeznie kell. Egy meglévő fürtöt is [frissíthet][aks-ip-auth-range-update] , hogy engedélyezze ezeket a további tartományokat. Emellett engedélyeznie kell az AK-fürthöz csatlakozó fejlesztői gépek IP-címét, hogy hibakeresést végezzenek az API-kiszolgálóhoz való kapcsolódáshoz.
 
-## <a name="using-aks-private-clusters-with-azure-dev-spaces"></a>Az AK-beli privát fürtök használata az Azure dev Spaces használatával
+## <a name="using-aks-private-clusters"></a>AK-beli privát fürtök használata
 
 Ebben az esetben az Azure fejlesztői tárhelyek nem támogatottak az AK-beli [privát fürtökön][aks-private-clusters].
 
-## <a name="azure-dev-spaces-client-requirements"></a>Az Azure dev Spaces ügyfélre vonatkozó követelmények
+## <a name="client-requirements"></a>Ügyfélkövetelmények
 
 Az Azure dev Spaces ügyféloldali eszközöket használ, például az Azure dev Spaces CLI-bővítményt, a Visual Studio Code-bővítményt és a Visual Studio-bővítményt, hogy a hibakereséshez kommunikáljon az AK-fürttel. Az Azure dev Spaces ügyféloldali eszközeinek használatához engedélyezze a fejlesztési gépekről érkező forgalmat a *azds-\*. azds.IO* tartományba. A teljes tartománynevet a `USERPROFILE\.azds\settings.json` *dataplaneFqdn* című részben tekintheti meg. Ha az [API-kiszolgáló által engedélyezett IP-tartományokat][auth-range-section]használja, engedélyeznie kell az AK-fürthöz csatlakozó fejlesztői gépek IP-címét is, hogy hibakeresést VÉGEZZEN az API-kiszolgálóhoz való kapcsolódáshoz.
 
@@ -85,7 +85,7 @@ Ismerje meg, hogy az Azure dev Spaces hogyan segíti az összetettebb alkalmazá
 [aks-ip-auth-range-update]: ../aks/api-server-authorized-ip-ranges.md#update-a-clusters-api-server-authorized-ip-ranges
 [aks-network-policies]: ../aks/use-network-policies.md
 [aks-private-clusters]: ../aks/private-clusters.md
-[auth-range-section]: #using-api-server-authorized-ip-ranges-with-azure-dev-spaces
+[auth-range-section]: #using-api-server-authorized-ip-ranges
 [dev-spaces-ip-auth-range-regions]: https://github.com/Azure/dev-spaces/tree/master/public-ips
 [traefik-ingress]: how-to/ingress-https-traefik.md
 [nginx-ingress]: how-to/ingress-https-nginx.md

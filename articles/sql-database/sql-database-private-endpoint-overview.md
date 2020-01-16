@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: fcb89cbcadb5e101ab2b4bfd18d0b7b91c63c92a
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73821294"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045637"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz (előzetes verzió)
 
@@ -57,7 +57,7 @@ A privát végpontokat a portál, a PowerShell vagy az Azure CLI használatával
 ### <a name="approval-process"></a>Jóváhagyási folyamat
 Miután a hálózati rendszergazda létrehozta a magánhálózati végpontot (PE), az SQL-rendszergazda felügyelheti a magánhálózati végponti kapcsolatokat (PEC) SQL Database.
 
-1. Navigáljon a Azure Portalban található SQL Server-erőforráshoz.
+1. Az alábbi képernyőképen megjelenő lépések szerint navigáljon az SQL Server-erőforráshoz a Azure Portal.
 
     - (1) válassza ki a privát végponti kapcsolatokat a bal oldali ablaktáblán
     - (2) az összes privát végponti kapcsolat (Pécs) listáját jeleníti meg
@@ -146,8 +146,10 @@ Az eredmény azt mutatja, hogy egy IP-cím működik; a magánhálózati végpon
 
 
 ### <a name="check-connectivity-using-sql-server-management-studio-ssms"></a>Kapcsolat ellenőrzése SQL Server Management Studio használatával (SSMS)
+> [!NOTE]
+>A kiszolgáló **teljes tartománynevét (FQDN)** használja az ügyfelekhez tartozó kapcsolatok karakterláncában. Az IP-cím felé irányuló bejelentkezési kísérleteket a terv szerint nem sikerül elvégezni.
 
-Az utolsó lépés a SSMS használata a [SQL Databasehoz való kapcsolódáshoz](sql-database-connect-query-ssms.md). Miután a SSMS használatával kapcsolódott a SQL Databasehoz, ellenőrizze, hogy az Azure-beli virtuális gép magánhálózati IP-címéről csatlakozik a következő lekérdezés futtatásával:
+A [SQL Databasehoz való kapcsolódáshoz](sql-database-connect-query-ssms.md)kövesse az alábbi lépéseket a SSMS használatához. Miután a SSMS használatával kapcsolódott a SQL Databasehoz, ellenőrizze, hogy az Azure-beli virtuális gép magánhálózati IP-címéről csatlakozik a következő lekérdezés futtatásával:
 
 ````
 select client_net_address from sys.dm_exec_connections 
@@ -179,7 +181,7 @@ A Base általában az adatok Azure Storage-fiókokból Azure SQL Data Warehouseb
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure SQL Database biztonság áttekintését lásd: [az adatbázis biztonságossá tétele](sql-database-security-overview.md)
 - Az Azure SQL Database kapcsolatok áttekintését lásd: [Azure SQL connectivity Architecture](sql-database-connectivity-architecture.md)

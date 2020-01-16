@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 08/22/2019
-ms.openlocfilehash: 66c5873749924df2133cb1ba4711b779e0aba24a
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 5d828ab59f790bab1003f0ad73fc7be1b77410bb
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834740"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044885"
 ---
 # <a name="deploy-a-model-using-a-custom-docker-base-image"></a>Modell üzembe helyezése egyéni Docker-alapú rendszerkép használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -234,13 +234,12 @@ myenv.inferencing_stack_version = "latest"  # This will install the inference sp
 # Define the packages needed by the model and scripts
 from azureml.core.conda_dependencies import CondaDependencies
 conda_dep = CondaDependencies()
-# Unless you are using your own custom inference stack,
 # you must list azureml-defaults as a pip dependency
 conda_dep.add_pip_package("azureml-defaults")
 myenv.python.conda_dependencies=conda_dep
 ```
 
-Vegye figyelembe, hogy ha nem a saját egyéni következtetési veremét használja, akkor a azureml-alapértékeket is hozzá kell adnia a > = 1.0.45 verzióhoz pip-függőségként. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat.
+Pip-függőségként hozzá kell adnia a azureml (> = 1.0.45) alapértelmezett verzióját. Ez a csomag tartalmazza a modell webszolgáltatásként való üzemeltetéséhez szükséges funkciókat. A környezet inferencing_stack_version tulajdonságát a "legújabb" értékre kell állítania, ez a webszolgáltatás által igényelt speciális apt-csomagokat fogja telepíteni. 
 
 A környezet meghatározása után használja azt egy [InferenceConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.model.inferenceconfig?view=azure-ml-py) objektummal annak a következtetési környezetnek a meghatározásához, amelyben a modell és a webszolgáltatás futni fog.
 

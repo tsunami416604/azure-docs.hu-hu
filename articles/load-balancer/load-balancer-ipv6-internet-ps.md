@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
-ms.openlocfilehash: 0294efb7510d4240cfdd6386c7f8bef1d4184538
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e5f9762533dc2ad47f855714822ba39c645bf847
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754477"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045467"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
 
@@ -28,8 +28,8 @@ ms.locfileid: "75754477"
 > * [Azure CLI](load-balancer-ipv6-internet-cli.md)
 > * [Sablon](load-balancer-ipv6-internet-template.md)
 
->[! Megjegyzés: az IPv6-os ajánlott eljárás módosítása esetén ez a cikk egy bevezető IPv6-funkciót ismertet, amely lehetővé teszi az alapszintű terheléselosztó számára az IPv4-és IPv6-alapú kapcsolatok biztosítását.  A szélesebb körű IPv6-kapcsolatok mostantól elérhetők az [IPv6 for Azure virtuális hálózatok](../virtual-network/ipv6-overview.md) , amely integrálja az IPv6-kapcsolatot a virtuális hálózatokkal, és olyan kulcsfontosságú funkciókat tartalmaz, mint az IPv6 hálózati biztonsági csoport szabályai, az IPv6 felhasználó által megadott útválasztás, az IPv6 alapszintű és a standard szintű terheléselosztás, valamint egyebek.  Az Azure virtuális hálózatok-hez készült IPv6 az ajánlott eljárás az IPv6-alkalmazások számára az Azure-ban. 
->Lásd: [IPv6 az Azure VNET PowerShell üzembe helyezéséhez](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
+>[!NOTE] 
+>Ez a cikk egy bevezető IPv6-szolgáltatást ismertet, amely lehetővé teszi, hogy az alapszintű Load Balancer IPv4-és IPv6-kapcsolatot is biztosítson. A teljes körű IPv6-kapcsolat mostantól elérhető az [IPv6 for Azure virtuális hálózatok](../virtual-network/ipv6-overview.md) , amely integrálja az IPv6-kapcsolatot a virtuális hálózatokkal, és olyan kulcsfontosságú funkciókat tartalmaz, mint például az IPv6 hálózati biztonsági csoportra vonatkozó szabályok, az IPv6 felhasználói útválasztás, az IPv6 alapszintű és a standard szintű terheléselosztás, valamint egyebek.  Az IPv6 az Azure virtuális hálózatok az Azure-beli IPv6-alkalmazások esetében ajánlott szabvány. Lásd: [IPv6 az Azure VNET PowerShell üzembe helyezéséhez](../virtual-network/virtual-network-ipv4-ipv6-dual-stack-standard-load-balancer-powershell.md) 
 
 Az Azure Load Balancer 4. szintű (TCP, UDP) terheléselosztónak minősül. A terheléselosztó a felhőszolgáltatások vagy virtuális gépek kifogástalan állapotú szolgáltatási példányai között osztja meg a bejövő forgalmat egy terheléselosztói készletben, és ezáltal biztosítja a magas rendelkezésre állást. Az Azure Load Balancer a szolgáltatásokat több portra vagy több IP-címre, illetve portokra és IP-címekre egyaránt továbbíthatja.
 
@@ -61,7 +61,7 @@ Terheléselosztó üzembe helyezéséhez a következő objektumokat kell létreh
 * Bejövő NAT-szabályok – olyan szabályokat tartalmaz, amelyek a terheléselosztó nyilvános portjait rendelik hozzá egy adott virtuális gép portjához a háttércímkészletben.
 * Mintavételezők – állapotfigyelő mintavételezőket tartalmaz, amelyek a virtuálisgép-példányok rendelkezésre állását ellenőrzik a háttércímkészletben.
 
-További információ: Azure Load Balancer- [összetevők](load-balancer-overview.md#load-balancer-components).
+További információ: Azure Load Balancer- [összetevők](./concepts-limitations.md#load-balancer-components).
 
 ## <a name="set-up-powershell-to-use-resource-manager"></a>A PowerShell beállítása a Resource Manager használatához
 

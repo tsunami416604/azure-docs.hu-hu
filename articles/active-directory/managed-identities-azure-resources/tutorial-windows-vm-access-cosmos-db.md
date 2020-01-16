@@ -5,22 +5,22 @@ services: active-directory
 documentationcenter: ''
 author: MarkusVi
 manager: daveba
-editor: daveba
+editor: ''
 ms.service: active-directory
 ms.subservice: msi
 ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/14/2020
 ms.author: markvi
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c9b744ed40e2b8c360117f638bab6d10e9ae2975
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: f99859fb695281324148683fac24c9e7b8463ef5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75888479"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977898"
 ---
 # <a name="tutorial-use-a-windows-vm-system-assigned-managed-identity-to-access-azure-cosmos-db"></a>Oktatóanyag: Hozzáférés az Azure Cosmos DB-hez egy Windows VM-beli, rendszer által hozzárendelt felügyelt identitással
 
@@ -40,7 +40,17 @@ Ez az oktatóanyag bemutatja, hogyan férhet hozzá a Cosmos DB-hez egy Windows 
 
 - A [Azure PowerShell](/powershell/azure/install-az-ps) legújabb verziójának telepítése
 
-## <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
+
+## <a name="enable"></a>Engedélyezés
+
+[!INCLUDE [msi-tut-enable](../../../includes/active-directory-msi-tut-enable.md)]
+
+
+
+## <a name="grant-access"></a>Hozzáférés biztosítása
+
+
+### <a name="create-a-cosmos-db-account"></a>Cosmos DB-fiók létrehozása 
 
 Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihagyhatja, ha egy meglévő Cosmos DB-fiókot használ. 
 
@@ -51,7 +61,7 @@ Ha még nincs fiókja, hozzon létre egy Cosmos DB-fiókot. Ezt a lépést kihag
 5. Ellenőrizze, hogy az **Előfizetés** és az **Erőforráscsoport** mező értéke egyezik-e az előző lépésben a virtuális gép létrehozása során megadottakkal.  Válasszon ki egy olyan **helyet**, ahol a Cosmos DB elérhető.
 6. Kattintson a **Create** (Létrehozás) gombra.
 
-## <a name="create-a-collection"></a>Katalógus létrehozása 
+### <a name="create-a-collection"></a>Katalógus létrehozása 
 
 Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lépések során lekérdezhet.
 
@@ -59,7 +69,8 @@ Adjon hozzá egy adatgyűjteményt a Cosmos DB-fiókhoz, amelyet a későbbi lé
 2. Az **Áttekintés** lapon kattintson a **+/Gyűjtemény hozzáadása** gombra. Ekkor megjelenik a „Gyűjtemény hozzáadása” panel.
 3. Adja meg a gyűjtemény adatbázis- és gyűjteményazonosítóját, válasszon ki egy tárkapacitást, adjon meg partíciókulcsot és átviteli sebességet, majd kattintson az **OK** gombra.  Ebben az oktatóanyagban elég a „Teszt” kifejezést használni az adatbázis és a gyűjtemény azonosítójaként, kiválasztani egy rögzített kapacitást és a legalacsonyabb átviteli sebességet (400 RU/s).  
 
-## <a name="grant-access"></a>Hozzáférés biztosítása
+
+### <a name="grant-access-to-the-cosmos-db-account-access-keys"></a>Hozzáférés biztosítása a Cosmos DB fiók hozzáférési kulcsaihoz
 
 Ez a szakasz bemutatja, hogyan biztosítható a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás hozzáférése a Cosmos DB fiók hozzáférési kulcsaihoz. A Cosmos DB nem támogatja natív módon az Azure AD-hitelesítést. Rendszer által hozzárendelt felügyelt identitás használatával azonban lekérheti a Cosmos DB hozzáférési kulcsát a Resource Managerből, és azzal elérheti a Cosmos DB-t. Ebben a lépésben hozzáférést biztosít a Windows VM rendszer által hozzárendelt felügyelt identitása számára a Cosmos DB-fiók kulcsaihoz.
 
@@ -69,11 +80,15 @@ Ha a PowerShell-lel szeretne hozzáférést adni a Windows VM rendszer által ho
 $spID = (Get-AzVM -ResourceGroupName myRG -Name myVM).identity.principalid
 New-AzRoleAssignment -ObjectId $spID -RoleDefinitionName "Cosmos DB Account Reader Role" -Scope "/subscriptions/<mySubscriptionID>/resourceGroups/<myResourceGroup>/providers/Microsoft.DocumentDb/databaseAccounts/<COSMOS DB ACCOUNT NAME>"
 ```
-## <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
+## <a name="access-data"></a>Adatok elérése
 
-Ez a szakasz bemutatja, hogyan szerezhet be hozzáférési tokent a Windows rendszerű virtuális gépekhez rendelt felügyelt identitás használatával a Azure Resource Manager meghívásához. Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
+Ez a szakasz azt mutatja be, hogyan hívható meg Azure Resource Manager a Windows VM rendszerhez rendelt felügyelt identitáshoz tartozó hozzáférési jogkivonat használatával. Az oktatóanyag további részében a korábban létrehozott virtuális gépről dolgozunk. 
 
 Telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) legújabb verzióját a Windows rendszerű virtuális gépre.
+
+
+
+### <a name="get-an-access-token"></a>Hozzáférési jogkivonat lekérése
 
 1. Az Azure Portalon lépjen a **Virtuális gépek** lapra, keresse meg a Windows rendszerű virtuális gépet, majd kattintson az **Áttekintés** lap tetején található **Csatlakozás** gombra. 
 2. A **Felhasználónév** és a **Jelszó** mezőbe azt a felhasználónevet és jelszót írja be, amelyet a Windows VM létrehozásakor adott meg. 
@@ -98,7 +113,7 @@ Telepítenie kell az [Azure CLI](https://docs.microsoft.com/cli/azure/install-az
    $ArmToken = $content.access_token
    ```
 
-## <a name="get-access-keys"></a>Hozzáférési kulcsok beolvasása 
+### <a name="get-access-keys"></a>Hozzáférési kulcsok beolvasása 
 
 Ez a szakasz azt mutatja be, hogyan lehet hozzáférési kulcsokat lekérni a Azure Resource Managerról Cosmos DB-hívások létrehozásához. Most PowerShell használatával hívjuk meg a Resource Managert az előző szakaszban lekért hozzáférési jogkivonattal a Cosmos DB-fiók hozzáférési kulcsának lekéréséhez. Amint megkaptuk a hozzáférési kulcsot, a Cosmos DB lekérdezhetővé válik. A `<SUBSCRIPTION ID>`, `<RESOURCE GROUP>` és `<COSMOS DB ACCOUNT NAME>` paraméterek értékét mindenképp helyettesítse be a saját értékeivel. Az `<ACCESS TOKEN>` paraméter értékét cserélje le a korábban lekért hozzáférési jogkivonattal.  Ha olvasási/írási kulcsokat szeretne lekérni, akkor `listKeys` típusú kulcsműveleteket használjon.  Ha írásvédett kulcsokat kíván lekérni, akkor pedig `readonlykeys` típusúakat:
 
@@ -176,6 +191,13 @@ Ez a CLI-parancs a gyűjtemény részleteit adja vissza:
   }
 }
 ```
+
+
+## <a name="disable"></a>Letiltás
+
+[!INCLUDE [msi-tut-disable](../../../includes/active-directory-msi-tut-disable.md)]
+
+
 
 ## <a name="next-steps"></a>Következő lépések
 

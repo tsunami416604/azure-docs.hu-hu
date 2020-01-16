@@ -4,7 +4,7 @@ description: REST-felület a Windows rendszerű virtuális gépek számítási, 
 services: virtual-machines-windows
 documentationcenter: ''
 author: KumariSupriya
-manager: harijayms
+manager: paulmey
 editor: ''
 tags: azure-resource-manager
 ms.service: virtual-machines-windows
@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: 901e075572e0ed73dc7d0633941311c04b4f3c1c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8849029f59ee4eef3baa43a6027022598e12d102
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75358360"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045886"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
-Az Azure Instance Metadata Service információt nyújt a virtuális gépek felügyeletéhez és konfigurálásához használható virtuálisgép-példányok futtatásáról.
-Ez olyan információkat tartalmaz, mint például az SKU, a hálózati konfiguráció és a közelgő karbantartási események. További információ arról, hogy milyen típusú információk érhetők el: [metaadat-API](#metadata-apis)-k.
+Az Azure Instance Metadata Service (IMDS) információt nyújt a jelenleg futó virtuálisgép-példányokról, és a virtuális gépek felügyeletéhez és konfigurálásához használható.
+A megadott információk közé tartozik az SKU, a hálózati konfiguráció és a közelgő karbantartási események. Az elérhető adatok teljes listáját lásd: [metadata API](#metadata-apis)-k.
 
 Az Azure Instance Metadata Service egy REST-végpont, amely a [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/)használatával létrehozott összes IaaS virtuális gép számára elérhető.
 A végpont egy jól ismert, nem irányítható IP-címen (`169.254.169.254`) érhető el, amely csak a virtuális gépről érhető el.
@@ -38,14 +38,15 @@ A szolgáltatás az általánosan elérhető Azure-régiókban érhető el. Nem 
 
 Térségek                                        | Rendelkezésre állási?                                 | Támogatott verziók
 -----------------------------------------------|-----------------------------------------------|-----------------
-[Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04
-[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure China](https://www.azure.cn/)                                                     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
-[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30
+[Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure China 21Vianet](https://www.azure.cn/)                                            | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
+[Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | Mindenki számára elérhető | 2017-04-02, 2017-08-01, 2017-12-01, 2018-02-01, 2018-04-02, 2018-10-01, 2019-02-01, 2019-03-11, 2019-04-30, 2019-06-01, 2019-06-04, 2019-08-01, 2019-08-15, 2019-11-01
 
-Ez a tábla akkor frissül, amikor szolgáltatási frissítések vannak, vagy új támogatott verziók érhetők el.
+Ez a tábla akkor frissül, ha a szolgáltatás frissítései és/vagy új támogatott verziók érhetők el.
 
 A Instance Metadata Service kipróbálásához hozzon létre egy virtuális gépet [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/) vagy a [Azure Portal](https://portal.azure.com) a fenti régiókban, és kövesse az alábbi példákat.
+További példák a IMDS lekérdezésére az [Azure-példány metaadatainak mintái](https://github.com/microsoft/azureimds)
 
 ## <a name="usage"></a>Használat
 
@@ -130,7 +131,7 @@ HTTP-állapotkód | Ok
 200 OK |
 400 hibás kérelem | Hiányzó `Metadata: true` fejléc, vagy hiányzik a formátum a levél csomópontjainak lekérdezése során
 404 – Nem található | A kért elem nem létezik
-405 metódus nem engedélyezett | Csak `GET` és `POST` kérelmek támogatottak
+405 metódus nem engedélyezett | Csak `GET` kérelmek támogatottak
 429 túl sok kérés | Az API jelenleg legfeljebb 5 lekérdezést támogat másodpercenként
 500 szolgáltatási hiba     | Némi idő elteltével próbálkozzon újra
 
@@ -191,7 +192,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/network/interfac
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-03-11"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019-06-01"
 ```
 
 **Válasz**
@@ -204,30 +205,83 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "jubilee",
-    "offer": "Windows-10",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
-    "platformFaultDomain": "1",
-    "platformUpdateDomain": "1",
+    "platformFaultDomain": "0",
+    "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftWindowsDesktop",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "rs4-pro",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
-    "tags": "Department:IT;Environment:Prod;Role:WorkerRole",
-    "version": "17134.345.59",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
     "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_D1",
+    "vmSize": "Standard_A1_v2",
     "zone": "1"
   },
   "network": {
@@ -264,14 +318,14 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance?api-version=2019
 A Windows a `curl` program segítségével kérheti le a példány metaadatainak beolvasását:
 
 ```powershell
-curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-03-11 | select -ExpandProperty Content
+curl -H @{'Metadata'='true'} http://169.254.169.254/metadata/instance?api-version=2019-06-01 | select -ExpandProperty Content
 ```
 
 Vagy a `Invoke-RestMethod` PowerShell-parancsmaggal:
 
 ```powershell
 
-Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-03-11 -Method get
+Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/metadata/instance?api-version=2019-06-01 -Method get
 ```
 
 **Válasz**
@@ -284,31 +338,84 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
   "compute": {
     "azEnvironment": "AzurePublicCloud",
     "customData": "",
-    "location": "westus",
-    "name": "SQLTest",
-    "offer": "SQL2016SP1-WS2016",
-    "osType": "Windows",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
+    "osType": "Linux",
     "placementGroupId": "",
     "plan": {
-        "name": "",
-        "product": "",
-        "publisher": ""
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
     },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
     "provider": "Microsoft.Compute",
     "publicKeys": [],
-    "publisher": "MicrosoftSQLServer",
+    "publisher": "bitnami",
     "resourceGroupName": "myrg",
     "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
-    "sku": "Enterprise",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
     "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
     "tags": "Department:IT;Environment:Test;Role:WebRole",
-    "version": "13.0.400110",
-    "vmId": "453945c8-3923-4366-b2d3-ea4c80e9b70e",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
     "vmScaleSetName": "",
-    "vmSize": "Standard_DS2",
-    "zone": ""
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
   },
   "network": {
     "interface": [
@@ -339,7 +446,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI http://169.254.169.254/meta
 
 ## <a name="metadata-apis"></a>Metaadat-API-k
 
-#### <a name="the-following-apis-are-available-through-the-metadata-endpoint"></a>A metaadatok végpontján a következő API-k érhetők el:
+A metaadatok végpontján a következő API-k érhetők el:
 
 Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
@@ -349,7 +456,8 @@ példány | Lásd: [példány API](#instance-api) | 2017-04-02
 scheduledevents | Lásd: [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Példány API
-##### <a name="the-following-compute-categories-are-available-through-the-instance-api"></a>A következő számítási kategóriák érhetők el a példány API-n keresztül:
+
+A következő számítási kategóriák érhetők el a példány API-n keresztül:
 
 > [!NOTE]
 > A metaadat-végponton keresztül a következő kategóriák érhetők el példányon/számításon keresztül.
@@ -357,7 +465,7 @@ scheduledevents | Lásd: [Scheduled Events](scheduled-events.md) | 2017-08-01
 Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
 azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
-customData | [Egyéni](#custom-data) információ | 2019-02-01
+customData | Ez a funkció jelenleg le van tiltva, és az elérhetővé válás után frissítjük a dokumentációt | 2019-02-01
 location | Az Azure-régió, amelyen a virtuális gép fut | 2017-04-02
 név | A virtuális gép neve | 2017-04-02
 offer | A virtuálisgép-lemezképre vonatkozó információkat nyújtja, és csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
@@ -372,16 +480,17 @@ közzétevő | A virtuális gép rendszerképének közzétevője | 2017-04-02
 resourceGroupName | A virtuális géphez tartozó [erőforráscsoport](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Az erőforrás [teljes](https://docs.microsoft.com/rest/api/resources/resources/getbyid) azonosítója | 2019-03-11
 SKU | A virtuális gép rendszerképének adott SKU-jának | 2017-04-02
+storageProfile | Lásd: [tárolási profil](#storage-profile) | 2019-06-01
 subscriptionId | Azure-előfizetés a virtuális géphez | 2017-08-01
-címkét | A virtuális gép [címkéi](../../azure-resource-manager/resource-group-using-tags.md)  | 2017-08-01
+címkét | A virtuális gép [címkéi](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott Címkék  | 2019-06-04
 version | A VM-rendszerkép verziója | 2017-04-02
 vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
-vmScaleSetName | A virtuálisgép-méretezési csoport [virtuális gép méretezési csoport neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
+vmScaleSetName | A virtuálisgép-méretezési csoport virtuálisgép-méretezési [készletének neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
 vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
 zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) | 2017-12-01
 
-##### <a name="the-following-network-categories-are-available-through-the-instance-api"></a>A következő hálózati kategóriák érhetők el a példány API-n keresztül:
+A következő hálózati kategóriák érhetők el a példány API-n keresztül:
 
 > [!NOTE]
 > A metaadatok végpontján a következő kategóriák érhetők el a instance/Network/Interface használatával
@@ -397,7 +506,7 @@ macAddress | VM MAC-címe | 2017-04-02
 
 ## <a name="attested-data"></a>Igazolt adatértékek
 
-A példány metaadatai a http-végponton válaszolnak a 169.254.169.254. A Instance Metadata Service által kiszolgált forgatókönyv része a garancia arra, hogy az adatok az Azure-ból érkeznek. Aláírjuk ezen információk egy részét, hogy a piactér lemezképei biztosak legyenek abban, hogy az Azure-ban futnak.
+Instance Metadata Service által kiszolgált forgatókönyv része a garancia arra, hogy a megadott adatok az Azure-ból érkeznek. Aláírjuk ezen információk egy részét, hogy a piactér lemezképei biztosak legyenek abban, hogy az Azure-ban futnak.
 
 ### <a name="example-attested-data"></a>Hitelesítő adatként példa
 
@@ -412,7 +521,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/attested/document?api-ver
 ```
 
 Az API-Version kötelező mező. A támogatott API-verziókhoz tekintse meg a [szolgáltatás elérhetőségét ismertető szakaszt](#service-availability) .
-Az alkalom egy opcionális, 10 számjegyű karakterláncot is biztosít. A kérelem nyomon követésére használható, és ha nincs megadva, a válasz kódolású sztringben a rendszer az aktuális UTC-időbélyeget adja vissza.
+Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMDS az aktuális UTC időbélyeget adja vissza a helyén. A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott egyszeres értéket ad vissza.
 
  **Válasz**
 
@@ -425,7 +534,7 @@ Az alkalom egy opcionális, 10 számjegyű karakterláncot is biztosít. A kére
 }
 ```
 
-> Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az alkalom, a subscriptionId, az időbélyegzőt a dokumentum létrehozásához és lejáratához, valamint a rendszerkép információinak megtervezéséhez. A csomag adatai csak az Azure Market Place-lemezképek esetében tölthetők fel. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
+Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az SKU, az alkalom, a subscriptionId, az időbélyeg a dokumentum létrehozásához és lejáratához, valamint a rendszerképre vonatkozó terv információit. A csomag adatai csak az Azure Market Place-lemezképek esetében tölthetők fel. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
 
 #### <a name="retrieving-attested-metadata-in-windows-virtual-machine"></a>Igazolt metaadatok beolvasása a Windows rendszerű virtuális gépen
 
@@ -444,7 +553,7 @@ Invoke-RestMethod -Headers @{"Metadata"="true"} -URI "http://169.254.169.254/met
 ```
 
 Az API-Version kötelező mező. A támogatott API-verziókhoz tekintse meg a szolgáltatás elérhetőségét ismertető szakaszt.
-Az alkalom egy opcionális, 10 számjegyű karakterláncot is biztosít. A kérelem nyomon követésére használható, és ha nincs megadva, a válasz kódolású sztringben a rendszer az aktuális UTC-időbélyeget adja vissza.
+Az alkalom egy opcionális 10 számjegyű karakterlánc. Ha nincs megadva, a IMDS az aktuális UTC időbélyeget adja vissza a helyén. A IMDS gyorsítótárazási mechanizmusa miatt előfordulhat, hogy a rendszer egy korábban gyorsítótárazott egyszeres értéket ad vissza.
 
  **Válasz**
 
@@ -457,7 +566,7 @@ Az alkalom egy opcionális, 10 számjegyű karakterláncot is biztosít. A kére
 }
 ```
 
-> Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az alkalom, a subscriptionId, az időbélyegzőt a dokumentum létrehozásához és lejáratához, valamint a rendszerkép információinak megtervezéséhez. A csomag adatai csak az Azure Market Place-lemezképek esetében tölthetők fel. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
+Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziója. Tartalmazza az aláíráshoz használt tanúsítványt, valamint a virtuális gép részleteit, például a vmId, az SKU, az alkalom, a subscriptionId, az időbélyeg a dokumentum létrehozásához és lejáratához, valamint a rendszerképre vonatkozó terv információit. A csomag adatai csak az Azure Market Place-lemezképek esetében tölthetők fel. A tanúsítvány kinyerhető a válaszból, és annak ellenőrzésére szolgál, hogy a válasz érvényes-e, és az Azure-ból származik-e.
 
 
 ## <a name="example-scenarios-for-usage"></a>Használati példák a használathoz  
@@ -503,7 +612,7 @@ Szolgáltatóként olyan támogatási hívást kaphat, amelyben további inform�
 **Kérés**
 
 ```bash
-curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2017-08-01"
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-version=2019-06-01"
 ```
 
 **Válasz**
@@ -513,19 +622,86 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ```json
 {
-  "compute": {
-    "location": "CentralUS",
-    "name": "IMDSCanary",
-    "offer": "RHEL",
+    "azEnvironment": "AzurePublicCloud",
+    "customData": "",
+    "location": "centralus",
+    "name": "negasonic",
+    "offer": "lampstack",
     "osType": "Linux",
+    "placementGroupId": "",
+    "plan": {
+        "name": "5-6",
+        "product": "lampstack",
+        "publisher": "bitnami"
+    },
     "platformFaultDomain": "0",
     "platformUpdateDomain": "0",
-    "publisher": "RedHat",
-    "sku": "7.2",
-    "version": "7.2.20161026",
-    "vmId": "5c08b38e-4d57-4c23-ac45-aca61037f084",
-    "vmSize": "Standard_DS2"
-  }
+    "provider": "Microsoft.Compute",
+    "publicKeys": [],
+    "publisher": "bitnami",
+    "resourceGroupName": "myrg",
+    "resourceId": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/myrg/providers/Microsoft.Compute/virtualMachines/negasonic",
+    "sku": "5-6",
+    "storageProfile": {
+        "dataDisks": [
+          {
+            "caching": "None",
+            "createOption": "Empty",
+            "diskSizeGB": "1024",
+            "image": {
+              "uri": ""
+            },
+            "lun": "0",
+            "managedDisk": {
+              "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+              "storageAccountType": "Standard_LRS"
+            },
+            "name": "exampledatadiskname",
+            "vhd": {
+              "uri": ""
+            },
+            "writeAcceleratorEnabled": "false"
+          }
+        ],
+        "imageReference": {
+          "id": "",
+          "offer": "UbuntuServer",
+          "publisher": "Canonical",
+          "sku": "16.04.0-LTS",
+          "version": "latest"
+        },
+        "osDisk": {
+          "caching": "ReadWrite",
+          "createOption": "FromImage",
+          "diskSizeGB": "30",
+          "diffDiskSettings": {
+            "option": "Local"
+          },
+          "encryptionSettings": {
+            "enabled": "false"
+          },
+          "image": {
+            "uri": ""
+          },
+          "managedDisk": {
+            "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+            "storageAccountType": "Standard_LRS"
+          },
+          "name": "exampleosdiskname",
+          "osType": "Linux",
+          "vhd": {
+            "uri": ""
+          },
+          "writeAcceleratorEnabled": "false"
+        }
+    },
+    "subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+    "tags": "Department:IT;Environment:Test;Role:WebRole",
+    "version": "7.1.1902271506",
+    "vmId": "13f56399-bd52-4150-9748-7190aae1ff21",
+    "vmScaleSetName": "",
+    "vmSize": "Standard_A1_v2",
+    "zone": "1"
 }
 ```
 
@@ -549,7 +725,7 @@ Az alábbi lista a régiókat és az Azure-környezet értékeit sorolja fel.
 ---------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | AzurePublicCloud
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | AzureUSGovernmentCloud
-[Azure China](https://azure.microsoft.com/global-infrastructure/china)                   | AzureChinaCloud
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china)          | AzureChinaCloud
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | AzureGermanCloud
 
 ### <a name="getting-the-tags-for-the-vm"></a>A virtuális gép címkéinak beolvasása
@@ -637,7 +813,8 @@ Verification successful
     "expiresOn":"11/28/18 06:16:17 -0000"
   },
 "vmId":"d3e0e374-fda6-4649-bbc9-7f20dc379f34",
-"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx"
+"subscriptionId": "xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx",
+"sku": "RS3-Pro"
 }
 ```
 
@@ -645,10 +822,11 @@ Adatok | Leírás
 -----|------------
 egyszeri | A felhasználó nem kötelező karakterláncot adott meg a kérelemmel. Ha a kérelemben nem adtak meg egy adott időpontot, a rendszer az aktuális UTC-időbélyeget adja vissza
 útiterv | [Tervezze](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) meg, hogy a virtuális gép egy Azure Marketplace-rendszerkép, amely tartalmazza a nevet, a terméket és a közzétevőt
-időbélyeg/createdOn | Az első aláírt dokumentum létrehozásának időbélyege
-időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időbélyegzője
+időbélyeg/createdOn | Az első aláírt dokumentum létrehozásának UTC-időbélyege
+időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időpontjának UTC-időbélyege
 vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
 subscriptionId | Azure-előfizetés a virtuális géphez, amely `2019-04-30`
+SKU | A virtuálisgép-rendszerkép adott SKU-jának `2019-11-01`ban bemutatott
 
 #### <a name="verifying-the-signature"></a>Az aláírás ellenőrzése
 
@@ -661,7 +839,7 @@ Miután megszerezte a fenti aláírást, ellenőrizheti, hogy az aláírás a Mi
 ---------|-----------------
 [Az összes általánosan elérhető globális Azure-régió](https://azure.microsoft.com/regions/)     | metadata.azure.com
 [Azure Government](https://azure.microsoft.com/overview/clouds/government/)              | metadata.azure.us
-[Azure China](https://azure.microsoft.com/global-infrastructure/china/)                  | metadata.azure.cn
+[Azure China 21Vianet](https://azure.microsoft.com/global-infrastructure/china/)         | metadata.azure.cn
 [Azure Germany](https://azure.microsoft.com/overview/clouds/germany/)                    | metadata.microsoftazure.de
 
 ```bash
@@ -725,35 +903,120 @@ Network Destination        Netmask          Gateway       Interface  Metric
 route add 169.254.169.254/32 10.0.1.10 metric 1 -p
 ```
 
-### <a name="custom-data"></a>Egyéni adatértékek
-A Instance Metadata Service lehetővé teszi, hogy a virtuális gép hozzáférhessen az egyéni adatszolgáltatásokhoz. A bináris adatmennyiségnek 64 KB-nál kisebbnek kell lennie, és a virtuális gép Base64 kódolású formában van megadva.
+### <a name="storage-profile"></a>Tárolóprofil
 
-Az egyéni Azure-adatok a REST API-k, a PowerShell-parancsmagok, az Azure parancssori felület (CLI) vagy egy ARM-sablon segítségével illeszthetők be a virtuális gépre.
+A Instance Metadata Service a virtuális géphez társított tárolóeszközök adatait is megadhatja. Ezek az adatok a példány/számítás/storageProfile végponton találhatók.
 
-Az Azure parancssori felületén példaként tekintse [meg az egyéni és a Cloud-Init Microsoft Azureon](https://azure.microsoft.com/blog/custom-data-and-cloud-init-on-windows-azure/)című témakört.
+A virtuális gépek tárolási profilja három kategóriára oszlik – a Képhivatkozás, az operációsrendszer-lemez és az adatlemezek.
 
-Egy ARM-sablonra példa: [virtuális gép telepítése a CustomData](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-customdata).
+A képhivatkozási objektum a következő információkat tartalmazza az operációsrendszer-lemezképpel kapcsolatban:
 
-Az egyéni adatértékek a virtuális gépen futó összes folyamat számára elérhetők. Azt javasoljuk, hogy az ügyfelek ne helyezzen be titkos adatokat egyéni adatokba.
+Adatok    | Leírás
+--------|-----------------
+id      | Erőforrás-azonosító
+offer   | A platform vagy a piactér rendszerképének ajánlata
+közzétevő | Rendszerkép kiadója
+SKU     | Rendszerkép SKU
+version | A platform vagy a piactér rendszerképének verziója
 
-Jelenleg az egyéni adatmennyiség garantáltan elérhető a virtuális gép rendszerindításakor. Ha a virtuális gép frissítéseit, például lemezek hozzáadását vagy a virtuális gép átméretezését végzi, Instance Metadata Service nem biztosít egyéni adattárolást. Az egyéni adatértékek folyamatos biztosítása a Instance Metadata Serviceon keresztül jelenleg folyamatban van.
+Az operációsrendszer-lemez objektum a következő információkat tartalmazza a virtuális gép által használt operációsrendszer-lemezről:
 
-#### <a name="retrieving-custom-data-in-virtual-machine"></a>Egyéni adatok beolvasása a virtuális gépen
-A Instance Metadata Service Base64 kódolású formában biztosít egyéni adattípusokat a virtuális géphez. A következő példa dekódolja a Base64 kódolású karakterláncot.
+Adatok    | Leírás
+--------|-----------------
+gyorsítótárazás | Gyorsítótárazási követelmények
+createOption | Információk a virtuális gép létrehozásáról
+diffDiskSettings | Ideiglenes lemez beállításai
+diskSizeGB | A lemez mérete GB-ban
+image   | Forrás felhasználói lemezkép virtuális merevlemeze
+LUN     | A lemez logikai egységének száma
+managedDisk | Felügyelt lemez paramétereinek
+név    | Lemez neve
+VHD     | Virtuális merevlemez
+writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
 
-> [!NOTE]
-> Az ebben a példában szereplő egyéni adatokat ASCII-karakterláncként értelmezi a rendszer, amely "saját egyéni adatokat" olvas be.
+Az adatlemezek tömb tartalmazza a virtuális géphez csatolt adatlemezek listáját. Minden adatlemez-objektum a következő információkat tartalmazza:
+
+Adatok    | Leírás
+--------|-----------------
+gyorsítótárazás | Gyorsítótárazási követelmények
+createOption | Információk a virtuális gép létrehozásáról
+diffDiskSettings | Ideiglenes lemez beállításai
+diskSizeGB | A lemez mérete GB-ban
+encryptionSettings | A lemez titkosítási beállításai
+image   | Forrás felhasználói lemezkép virtuális merevlemeze
+managedDisk | Felügyelt lemez paramétereinek
+név    | Lemez neve
+osType  | A lemezen található operációs rendszer típusa
+VHD     | Virtuális merevlemez
+writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
+
+Az alábbi példa bemutatja, hogyan lehet lekérdezni a virtuális gép tárolási adatait.
 
 **Kérés**
 
 ```bash
-curl -H "Metadata:true" "http://169.254.169.254/metadata/instance/compute/customData?api-version=2019-02-01&&format=text" | base64 --decode
+curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute/storageProfile?api-version=2019-06-01"
 ```
 
 **Válasz**
 
-```text
-My custom data.
+> [!NOTE]
+> A válasz egy JSON-karakterlánc. Az alábbi példában szereplő válasz elég kinyomtatva az olvashatóság érdekében.
+
+```json
+{
+    "dataDisks": [
+      {
+        "caching": "None",
+        "createOption": "Empty",
+        "diskSizeGB": "1024",
+        "image": {
+          "uri": ""
+        },
+        "lun": "0",
+        "managedDisk": {
+          "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampledatadiskname",
+          "storageAccountType": "Standard_LRS"
+        },
+        "name": "exampledatadiskname",
+        "vhd": {
+          "uri": ""
+        },
+        "writeAcceleratorEnabled": "false"
+      }
+    ],
+    "imageReference": {
+      "id": "",
+      "offer": "UbuntuServer",
+      "publisher": "Canonical",
+      "sku": "16.04.0-LTS",
+      "version": "latest"
+    },
+    "osDisk": {
+      "caching": "ReadWrite",
+      "createOption": "FromImage",
+      "diskSizeGB": "30",
+      "diffDiskSettings": {
+        "option": "Local"
+      },
+      "encryptionSettings": {
+        "enabled": "false"
+      },
+      "image": {
+        "uri": ""
+      },
+      "managedDisk": {
+        "id": "/subscriptions/xxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxx/resourceGroups/macikgo-test-may-23/providers/Microsoft.Compute/disks/exampleosdiskname",
+        "storageAccountType": "Standard_LRS"
+      },
+      "name": "exampleosdiskname",
+      "osType": "Linux",
+      "vhd": {
+        "uri": ""
+      },
+      "writeAcceleratorEnabled": "false"
+    }
+}
 ```
 
 ### <a name="examples-of-calling-metadata-service-using-different-languages-inside-the-vm"></a>Példák a metaadat-szolgáltatás hívására különböző nyelveken a virtuális gépen belül 
@@ -780,9 +1043,9 @@ Puppet | https://github.com/keirans/azuremetadata
 2. Miért nem kapok számítási információt a virtuális géphez?
    * A Instance Metadata Service jelenleg csak Azure Resource Manager által létrehozott példányokat támogatja. A jövőben a Cloud Service virtuális gépek támogatása is felvehető.
 3. Létrehoztam a virtuális gépet Azure Resource Manager egy kicsit vissza. Miért nem jelenik meg a számítási metaadatok adatai?
-   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/resource-group-using-tags.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuális géphez.
+   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuális géphez.
 4. Nem látom az új verzióhoz feltöltött összes adatot
-   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/resource-group-using-tags.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuális géphez.
+   * A Sep 2016 után létrehozott virtuális gépekhez adjon hozzá egy [címkét](../../azure-resource-manager/management/tag-resources.md) a számítási metaadatok megjelenítéséhez. Régebbi virtuális gépek esetében (a Sep 2016 előtt létrehozva) a metaadatok frissítéséhez adjon hozzá vagy távolítson el bővítményeket vagy adatlemezeket a virtuális géphez.
 5. Miért kapok hibaüzenetet `500 Internal Server Error`?
    * Próbálja megismételni a kérést az exponenciális visszalépési rendszer alapján. Ha a probléma továbbra is fennáll, forduljon az Azure ügyfélszolgálatához.
 6. Hol oszthatok meg további kérdéseket/megjegyzéseket?

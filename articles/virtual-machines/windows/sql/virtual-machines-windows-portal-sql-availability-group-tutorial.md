@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/30/2018
 ms.author: mikeray
-ms.openlocfilehash: 5c4eb5241cc5e50c11c05cac6909e37557ba106d
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ed5fc923c82fb0d0e4004e18159d943564c6f55e
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037509"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045825"
 ---
 # <a name="tutorial-configure-availability-group-on-azure-sql-server-vm-manually"></a>Oktatóanyag: rendelkezésre állási csoport konfigurálása az Azure SQL Server VM manuálisan
 
@@ -74,7 +74,7 @@ Az előfeltételek befejezését követően az első lépés egy Windows Server 
 
    | Oldal | Beállítások |
    | --- | --- |
-   | Kezdés előtt |Alapértelmezett beállítások használata |
+   | Előkészületek |Alapértelmezett beállítások használata |
    | Kiszolgálók kiválasztása |Írja be az első SQL Server nevet az **adja meg a kiszolgáló nevét** mezőbe, majd kattintson a **Hozzáadás**gombra. |
    | Érvényesítési figyelmeztetés |Válassza a **nem lehetőséget. nem igényelem a Microsoft támogatását ehhez a fürthöz, ezért nem kívánja futtatni az ellenőrző teszteket. Amikor a Tovább gombra kattintok, folytassa a fürt létrehozását**. |
    | Hozzáférési pont a fürt felügyeletéhez |Adja meg a fürt nevét, például **SQLAGCluster1** a **fürt nevében**.|
@@ -116,7 +116,7 @@ Adja hozzá a másik SQL Server a fürthöz.
 
 1. Kattintson a **Tovább** gombra.
 
-1. Kattintson a **Finish** (Befejezés) gombra.
+1. Kattintson a **Befejezés** gombra.
 
    Feladatátvevőfürt-kezelő azt mutatja, hogy a fürt új csomóponttal rendelkezik, és a **csomópontok** tárolóban listázza azt.
 
@@ -179,7 +179,7 @@ Ezután állítsa be a fürt kvórumát.
 
 1. Ellenőrizze a beállításokat a **megerősítéshez**. Kattintson a **Tovább** gombra.
 
-1. Kattintson a **Finish** (Befejezés) gombra.
+1. Kattintson a **Befejezés** gombra.
 
 A fürt alapvető erőforrásai egy tanúsító fájlmegosztás használatára vannak konfigurálva.
 
@@ -291,7 +291,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 4. A **replikák megadása** lapon kattintson a **replika hozzáadása**lehetőségre.
 
    ![Új AG varázsló, replikák meghatározása](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/62-newagaddreplica.png)
-5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Kattintson a **Connect** (Csatlakozás) gombra.
+5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Kattintson a **Csatlakozás** gombra.
 
    A **replikák megadására** szolgáló lapon a második kiszolgáló jelenik meg a **rendelkezésre állási replikák**területen. Konfigurálja a replikákat az alábbiak szerint.
 
@@ -318,7 +318,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 10. Az **Összefoglalás** lapon kattintson a **Befejezés**gombra, majd várjon, amíg a varázsló konfigurálja az új rendelkezésre állási csoportot. A **folyamat** lapon **további részletekre** kattintva megtekintheti a részletes előrehaladást. A varázsló befejezése után vizsgálja meg az **eredmények** lapot annak ellenőrzéséhez, hogy a rendelkezésre állási csoport sikeresen létrejött-e.
 
      ![Új AG varázsló, eredmények](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/74-results.png)
-11. A varázslóból való kilépéshez kattintson a **Bezárás** gombra.
+11. Kattintson a **Bezárás** gombra a varázslóból való kilépéshez.
 
 ### <a name="check-the-availability-group"></a>A rendelkezésre állási csoport keresése
 
@@ -348,14 +348,14 @@ Ezen a ponton van egy rendelkezésre állási csoport, amely replikákat tartalm
 
 Az Azure Virtual Machines szolgáltatásban egy SQL Server rendelkezésre állási csoport terheléselosztó szükséges. A terheléselosztó tárolja a rendelkezésre állási csoport figyelők és a Windows Server feladatátvevő fürt IP-címeit. Ez a szakasz összefoglalja, hogyan hozható létre a terheléselosztó a Azure Portalban.
 
-Egy Azure Load Balancer lehet standard Load Balancer vagy egy alapszintű Load Balancer. Standard Load Balancer több funkcióval rendelkezik, mint az alapszintű Load Balancer. Rendelkezésre állási csoport esetén a standard Load Balancerra akkor van szükség, ha rendelkezésre állási zónát használ (a rendelkezésre állási csoport helyett). A terheléselosztó típusai közötti különbség részleteiért lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/load-balancer-overview.md#skus).
+Egy Azure Load Balancer lehet standard Load Balancer vagy egy alapszintű Load Balancer. Standard Load Balancer több funkcióval rendelkezik, mint az alapszintű Load Balancer. Rendelkezésre állási csoport esetén a standard Load Balancerra akkor van szükség, ha rendelkezésre állási zónát használ (a rendelkezésre állási csoport helyett). A terheléselosztó típusai közötti különbség részleteiért lásd: [Load BALANCER SKU-összehasonlítás](../../../load-balancer/concepts-limitations.md#skus).
 
 1. A Azure Portal nyissa meg az erőforráscsoportot, amelyben az SQL-kiszolgálókat, majd kattintson a **+ Hozzáadás**elemre.
 1. **Load Balancer**keresése. Válassza ki a Microsoft által közzétett terheléselosztó.
 
    ![AG Feladatátvevőfürt-kezelő](./media/virtual-machines-windows-portal-sql-availability-group-tutorial/82-azureloadbalancer.png)
 
-1. Kattintson a **Létrehozás** gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 1. Konfigurálja a terheléselosztó következő paramétereit.
 
    | Beállítás | Mező |
@@ -408,7 +408,7 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
    | **Protocol (Protokoll)** | TCP kiválasztása | TCP |
    | **Port** | A fel nem használt portok | 59999 |
    | **Intervallum**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
-   | **Nem Kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
+   | **Nem kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
 
 1. Az állapot-mintavétel beállításához kattintson **az OK** gombra.
 
@@ -426,7 +426,7 @@ A terheléselosztó konfigurálásához létre kell hoznia egy háttér-készlet
    | **Port** | A rendelkezésre állási csoport figyelője portjának használata | 1433 |
    | **Háttér-port** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 1433 |
    | **Mintavételi** |A mintavételhez megadott név | SQLAlwaysOnEndPointProbe |
-   | **Munkamenetek megőrzése** | Legördülő lista | **Nincsenek** |
+   | **Munkamenetek megőrzése** | Legördülő lista | **Nincs** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | |Engedélyezve |
 
@@ -451,7 +451,7 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
    | **Protocol (Protokoll)** | TCP kiválasztása | TCP |
    | **Port** | A fel nem használt portok | 58888 |
    | **Intervallum**  | A mintavételi kísérletek közötti időtartam másodpercben |5 |
-   | **Nem Kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
+   | **Nem kifogástalan állapot küszöbértéke** | Az egymást követő mintavételi hibák száma, amelyeknek meg kell történnie, hogy a virtuális gép nem kifogástalannak minősül  | 2 |
 
 1. Az állapot-mintavétel beállításához kattintson **az OK** gombra.
 
@@ -467,7 +467,7 @@ A WSFC IP-címének is szerepelnie kell a terheléselosztó számára.
    | **Port** | A fürt IP-címéhez használja a portot. Ez egy elérhető port, amely nem használatos a figyelő mintavételi portjához. | 58888 |
    | **Háttér-port** | Ez a mező nem használható, ha a közvetlen kiszolgáló visszaadására beállított lebegőpontos IP-cím | 58888 |
    | **Mintavételi** |A mintavételhez megadott név | WSFCEndPointProbe |
-   | **Munkamenetek megőrzése** | Legördülő lista | **Nincsenek** |
+   | **Munkamenetek megőrzése** | Legördülő lista | **Nincs** |
    | **Üresjárat időkorlátja** | A TCP-kapcsolatok megnyitásának percben tartása | 4 |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | |Engedélyezve |
 

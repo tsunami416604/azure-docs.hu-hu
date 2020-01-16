@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: c1a800ceb12c2e7ad69329d0391478a8e2ae268b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 44d5edd7b5808b6c212a832dd95de7a9cb4b7c08
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945684"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978584"
 ---
 # <a name="security-and-data-privacy-in-azure-cognitive-search"></a>Biztonság és adatvédelem az Azure Cognitive Search
 
@@ -49,7 +49,7 @@ A titkosítás a teljes indexelési folyamat során kiterjed: a kapcsolatokból,
 
 Számos biztonsági mechanizmus érhető el az Azure-ban, és így automatikusan elérhetővé válik a létrehozott Azure Cognitive Search-erőforrások számára.
 
-+ [Zárolások az előfizetés vagy az erőforrás szintjén a törlés megakadályozása érdekében](../azure-resource-manager/resource-group-lock-resources.md)
++ [Zárolások az előfizetés vagy az erőforrás szintjén a törlés megakadályozása érdekében](../azure-resource-manager/management/lock-resources.md)
 + [Szerepköralapú Access Control (RBAC) az információkhoz és a felügyeleti műveletekhez való hozzáférés szabályozásához](../role-based-access-control/overview.md)
 
 Minden Azure-szolgáltatás támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), amely az összes szolgáltatásban konzisztens hozzáférési szinteket biztosít. A bizalmas adatok (például a rendszergazdai kulcs) megtekintése például a tulajdonosi és a közreműködő szerepkörökre korlátozódik, míg a szolgáltatás állapotának megtekintése bármely szerepkör tagjai számára elérhető. A RBAC tulajdonosi, közreműködői és olvasói szerepköröket biztosít. Alapértelmezés szerint az összes szolgáltatás-rendszergazda a tulajdonos szerepkör tagja.

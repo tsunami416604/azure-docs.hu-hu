@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 10/08/2019
 ms.author: robinsh
-ms.openlocfilehash: d39fd95f8704650db16c1dc1553efaba2f727052
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: 496b890cc49b6b6b9f15213a48472447f801b1c9
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73889430"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045115"
 ---
 # <a name="azure-iot-device-sdks-platform-support"></a>Azure IoT Device SDK-platform támogatása
 
@@ -47,10 +47,11 @@ Az [Azure IoT hub C ESZKÖZOLDALI SDK](https://github.com/Azure/azure-iot-sdk-c)
 | Operációs rendszer                  | TLS-könyvtár                  | További követelmények                                                                     |
 |---------------------|------------------------------|---------------------------------------------------------------------------------------------|
 | Linux               | OpenSSL, WolfSSL vagy BearSSL | Berkeley-szoftvercsatornák</br></br>Hordozható operációs rendszer felülete (POSIX)                       |
-| iOS 12,2            | OpenSSL vagy natív OSX        | Az OSX-10.13.4 emulált XCode                                                               |
+| iOS 12,2            | OpenSSL                      | Az OSX-10.13.4 emulált XCode                                                               |
 | Windows 10 termékcsalád   | SChannel                     |                                                                                             |
 | Mbed OS 5,4         | Mbed TLS 2                   | [MXChip IoT fejlesztői csomag](https://microsoft.github.io/azure-iot-developer-kit/)                  |
 | Azure Sphere OS     | WolfSSL                      | [Azure Sphere MT3620](https://azure.microsoft.com/services/azure-sphere/get-started/) |
+| Arduino             | BearSSL                      | [ESP32 vagy ESP8266](https://github.com/Azure/azure-iot-arduino#simple-sample-instructions) 
 
 ### <a name="python-sdk"></a>Python SDK
 
@@ -58,11 +59,11 @@ Az [Azure IoT hub Python-eszköz SDK](https://github.com/Azure/azure-iot-sdk-pyt
 
 | Operációs rendszer                  | Fordítóprogram                          |
 |---------------------|-----------------------------------|
-| Linux               | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| MacOS magas Sierra   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
-| Windows 10 termékcsalád   | Python 2,7 *, 3,4*, 3,5 *, 3,6, 3,7 |
+| Linux               | Python 2,7. *, 3,5 vagy újabb |
+| MacOS magas Sierra   | Python 2,7. *, 3,5 vagy újabb |
+| Windows 10 termékcsalád   | Python 2,7. *, 3,5 vagy újabb |
 
-\* Csak a Python 3.5.3 vagy újabb verziója támogatja az aszinkron API-kat, javasoljuk, hogy 3,7-es vagy újabb verziót használjon.
+Csak a Python 3.5.3 vagy újabb verziója támogatja az aszinkron API-kat, javasoljuk, hogy a 3,7-es vagy újabb verziót használja.
 
 ### <a name="net-sdk"></a>.NET SDK
 
@@ -98,9 +99,9 @@ Az [Azure IoT hub Java-eszköz SDK](https://github.com/Azure/azure-iot-sdk-java)
 
 A Microsoft számos különböző partnerrel dolgozik, hogy több mikroprocesszoros architektúrához biztosítson fejlesztői készleteket. Ezek a partnerek az Azure IoT C SDK-t a platformra portolták. A partnerek létrehozzák és karbantartják az SDK platform absztrakciós rétegét (PAL). A Microsoft együttműködik ezekkel a partnerekkel a kiterjesztett támogatás biztosításához.
 
-| Partner             | Eszközök                            | Hivatkozás                     | Támogatás |
+| Partnerek             | Eszközök                            | Hivatkozás                     | Támogatás |
 |---------------------|------------------------------------|--------------------------|---------|
-| Espressif           | ESP32 <br/> ESP8266                              | [ESP – Azure](https://github.com/espressif/esp-azure)                | [GitHub](https://github.com/espressif/esp-azure)  
+| Espressif           | ESP32 <br/> ESP8266                              | [ESP – Azure](https://github.com/espressif/esp-azure)                | [GitHubon](https://github.com/espressif/esp-azure)  
 | Qualcomm            | Qualcomm MDM9206 LTE IoT modem     | [Qualcomm LTE a IoT SDK-hoz](https://developer.qualcomm.com/software/lte-iot-sdk) | [Fórum](https://developer.qualcomm.com/forums/software/lte-iot-sdk)   |
 | ST MICROELECTRONICS | STM32L4 sorozat <br/> STM32F4 sorozat <br/>  STM32F7 sorozat <br/>  A IoT-csomópont STM32L4-felderítési készlete    | [X-CUBE-AZURE](https://www.st.com/en/embedded-software/x-cube-azure.html) <br/>  <br/> [P-NUCLEO – AZURE](https://www.st.com/content/st_com/en/products/evaluation-tools/solution-evaluation-tools/communication-and-connectivity-solution-eval-boards/p-nucleo-azure1.html) <br/> [FP-CLD-AZURE](https://www.st.com/content/st_com/en/products/embedded-software/mcus-embedded-software/stm32-embedded-software/stm32-ode-function-pack-sw/fp-cld-azure1.html)            | [Támogatás](https://www.st.com/content/st_com/en/support/support-home.html)
 | Texas Instruments   | CC3220SF Kezdőpanel </br> CC3220S Kezdőpanel </br> CC3235SF Kezdőpanel </br> CC3235S Kezdőpanel </br> MSP432E4 Kezdőpanel | [A SimpleLink készült Azure IoT beépülő modul](https://github.com/TexasInstruments/azure-iot-pal-simplelink) | [TI E2E fórum](https://e2e.ti.com) <br/> [TI E2E fórum CC3220](https://e2e.ti.com/support/wireless_connectivity/simplelink_wifi_cc31xx_cc32xx/) <br/> [TI E2E fórum MSP432E4](https://e2e.ti.com/support/microcontrollers/msp430/) |
@@ -115,7 +116,7 @@ A Microsoft számos partnerrel működik együtt az Azure IoT-univerzum folyamat
 
 * Az Azure IoT Certified eszközök böngészéséhez tekintse meg a [Microsoft Azure Certified for IoT-eszköz katalógusát](https://catalog.azureiotsolutions.com/).
 
-* Ha többet szeretne megtudni a Microsoft megbízható partnereiről, illetve arról, hogyan válhat a Microsoft megbízható partnere, tekintse meg a [Microsoft Azure Certified eszközök internetes hálózata megbízható partnerek](https://azure.microsoft.com/marketplace/certified-iot-partners/)című témakört.
+* Ha többet szeretne megtudni a IoT-ökoszisztéma Azure Certified minősítéséről, tekintse meg [a Certified for IoT ökoszisztéma csatlakoztatása](https://catalog.azureiotsolutions.com/register)című témakört.
 
 ## <a name="connecting-to-iot-hub-without-an-sdk"></a>Csatlakozás a IoT Hub SDK nélkül
 
@@ -141,7 +142,7 @@ A **Microsoft ügyfélszolgálati csapata** – a [támogatási csomaggal](https
 
 **Szolgáltatásra vonatkozó kérelmek** – az Azure IoT szolgáltatásra vonatkozó kérelmeket a termék [felhasználói hangja oldalon](https://feedback.azure.com/forums/321918-azure-iot)követheti nyomon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszköz- és szolgáltatásspecifikus SDK-k](iot-hub-devguide-sdks.md)
 * [A Porting útmutatója](https://github.com/Azure/azure-c-shared-utility/blob/master/devdoc/porting_guide.md)

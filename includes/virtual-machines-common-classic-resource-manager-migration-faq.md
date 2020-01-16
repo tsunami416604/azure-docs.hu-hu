@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/18/2018
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c8629975d375dda32fdd9aee42b4ae09069a2049
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: a7a3c6edbbeca96a90f8003fda1b92fc8bf99fec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74005414"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021143"
 ---
 ## <a name="does-this-migration-plan-affect-any-of-my-existing-services-or-applications-that-run-on-azure-virtual-machines"></a>Érinti ez a migrálási terv az Azure virtuális gépeken futó meglévő szolgáltatásaimat és alkalmazásaimat? 
 
@@ -21,7 +21,7 @@ Nem. A virtuális gépek (klasszikus modell) általánosan rendelkezésre álló
 
 ## <a name="what-happens-to-my-vms-if-i-dont-plan-on-migrating-in-the-near-future"></a>Mi történik a virtuális gépeimmel, ha nem tervezek migrálni a közeljövőben? 
 
-A meglévő klasszikus API-kat és erőforrásmodellt nem tervezzük kivezetni. Szeretnénk könnyebbé tenni a migrálást, figyelembe véve a Resource Manager-alapú üzemi modellben elérhető fejlett szolgáltatásokat. Határozottan javasoljuk, hogy tekintse át a Resource Manager alatt az IaaS részeként elérhető [fejlesztett szolgáltatásokat](../articles/azure-resource-manager/resource-manager-deployment-model.md).
+A meglévő klasszikus API-kat és erőforrásmodellt nem tervezzük kivezetni. Szeretnénk könnyebbé tenni a migrálást, figyelembe véve a Resource Manager-alapú üzemi modellben elérhető fejlett szolgáltatásokat. Határozottan javasoljuk, hogy tekintse át a Resource Manager alatt az IaaS részeként elérhető [fejlesztett szolgáltatásokat](../articles/azure-resource-manager/management/deployment-models.md).
 
 ## <a name="what-does-this-migration-plan-mean-for-my-existing-tooling"></a>Milyen hatással lesz a migrálási terv a meglévő eszközállományomra? 
 
@@ -52,7 +52,7 @@ A migrálás során az erőforrások át lesznek alakítva klasszikusból Resour
 <a name="vault">Ha</a> a virtuális gépet a Klasszikusról Resource Manager üzemmódba helyezi át, a Migrálás előtt készített biztonsági másolatok nem települnek át az újonnan áttelepített Resource Manager-alapú virtuális gépre. Ha azonban szeretné megőrizni a klasszikus virtuális gépek biztonsági mentését, kövesse az alábbi lépéseket az áttelepítés előtt. 
 
 1. A Recovery Services-tárolóban lépjen a **Protected items (védett elemek** ) lapra, és válassza ki a virtuális gépet. 
-2. Kattintson a védelem kikapcsolása elemre. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
+2. Kattintson a Védelem kikapcsolása gombra. Hagyja a *Delete associated backup data* (Társított biztonsági mentési adatok törlése) beállítást **bejelöletlenül**.
 
 > [!NOTE]
 > A biztonsági mentési példányok költségét a rendszer addig terheli, amíg meg nem tartja az adatmegőrzést. A biztonsági másolatok megőrzési időtartamként lesznek metszve. A legutóbbi biztonsági másolat azonban mindig a biztonsági mentési adat törlése után marad. Javasolt a virtuális gép megőrzési tartományának ellenőrzését, és a "biztonsági másolati adatok törlése" triggert a tároló védett elemén, ha a megőrzési időtartam túl van. 

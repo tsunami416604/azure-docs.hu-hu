@@ -5,12 +5,12 @@ author: mumian
 ms.date: 11/13/2018
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: f53583b0f542be62071a44b98f881dda9274b9d9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5379bf3c0a5127e5114ac819bd3e0e2ad12e8d69
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472638"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045255"
 ---
 # <a name="tutorial-deploy-virtual-machine-extensions-with-azure-resource-manager-templates"></a>Oktatóanyag: Virtuális gépi bővítmények üzembe helyezése Azure Resource Manager-sablonokkal
 
@@ -76,8 +76,8 @@ Adjon hozzá a meglévő sablonhoz egy virtuális gépi bővítmény erőforrás
 
 ```json
 {
-    "apiVersion": "2018-06-01",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2018-06-01",
     "name": "[concat(variables('vmName'),'/', 'InstallWebServer')]",
     "location": "[parameters('location')]",
     "dependsOn": [

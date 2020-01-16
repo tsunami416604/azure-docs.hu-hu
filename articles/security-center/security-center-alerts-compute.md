@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: f2fda893ad84aaf9d11d26d761f5395c7f5650d2
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: a85ec565077ac229cd24bb7b9cf753015aa56ebf
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666372"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024852"
 ---
 # <a name="threat-detection-for-cloud-native-computing-in-azure-security-center"></a>Fenyegetések észlelése a Felhőbeli natív számítástechnika Azure Security Center
 
@@ -36,7 +36,7 @@ Security Center a felhő méretezésével azonosítja a App Serviceon futó alka
 
 Az Azure felhőalapú szolgáltatóként való láthatóságának használatával Security Center elemzi App Service belső naplókat, hogy azonosítsa a támadási módszereket több célponton. A módszertan például kiterjedt keresési és elosztott támadásokat tartalmaz. Ez a típusú támadás általában az IP-címek egy kis részhalmazát mutatja be, és a hasonló végpontokra való bejárási mintákat jeleníti meg több gazdagépen. A támadások egy sebezhető oldalra vagy beépülő modulra keresnek, és egyetlen gazdagép szempontjából nem azonosíthatók.
 
-A Security Center az alapul szolgáló munkapéldányokat és virtuális gépeket is elérheti. A memória-kriminalisztikai szolgáltatással együtt az infrastruktúra megtudhatja a történetet egy olyan új támadástól, amely a vadonban kering, és megsérül az ügyfél-gépeken. Ezért még akkor is, ha a webalkalmazás kihasználása után Security Center van telepítve, lehetséges, hogy észlelni tudja a folyamatos támadásokat.
+Ha Windows-alapú App Service csomagot futtat, Security Center a mögöttes munkaterületeket és virtuális gépeket is elérheti. A fent említett naplózási adatokkal együtt az infrastruktúra megtudhatja a történetet egy olyan új támadástól, amely a vadonban kering, és megsérül az ügyfél-gépeken. Ezért még akkor is, ha a webalkalmazás kihasználása után Security Center van telepítve, lehetséges, hogy észlelni tudja a folyamatos támadásokat.
 
 A Azure App Service riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureappserv)tekintheti meg.
 
@@ -64,3 +64,7 @@ A fenyegetéseket különböző szinteken észleljük:
     Az AK-beli fürt szintű riasztások listáját a [riasztások hivatkozási táblázata](alerts-reference.md#alerts-akscluster)tartalmazza.
 
 Emellett a biztonsági kutatók globális csapata folyamatosan figyeli a fenyegetés tájképét. A felderített tároló-specifikus riasztásokat és biztonsági réseket adják hozzá.
+
+## <a name="next-steps"></a>Következő lépések
+
+* App Service csomagokkal kapcsolatos további információkért lásd: [app Service csomagok](https://azure.microsoft.com/pricing/details/app-service/plans/).

@@ -1,19 +1,15 @@
 ---
 title: VMware virtuális gépek migrálása ügynökön alapuló Azure Migrate kiszolgáló áttelepítése
 description: Ismerje meg, hogyan futtathatja a VMware virtuális gépek ügynök-alapú áttelepítését Azure Migrate használatával.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 581014b89627905e3206705dffade5ba19443b65
-ms.sourcegitcommit: 8e31a82c6da2ee8dafa58ea58ca4a7dd3ceb6132
+ms.openlocfilehash: c6e0b65a586bfd629244404933836cde7287ae29
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74196301"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028958"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
 
@@ -22,7 +18,7 @@ Ez a cikk bemutatja, hogyan telepítheti át a helyszíni VMware virtuális gép
 A [Azure Migrate](migrate-services-overview.md) egy központi központot biztosít a helyszíni alkalmazások és munkaterhelések, valamint az AWS/GCP virtuálisgép-példányok felderítésének, értékelésének és áttelepítésének nyomon követéséhez az Azure-ban. Az elosztó Azure Migrate eszközöket biztosít az értékeléshez és az áttelepítéshez, valamint a harmadik féltől származó független szoftvergyártók (ISV) ajánlatokhoz.
 
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Állítsa be a forrás-környezetet, és helyezzen üzembe egy Azure Migrate replikációs berendezést az ügynök-alapú áttelepítéshez.
 > * Állítsa be a célként megadott környezetet az áttelepítéshez.
@@ -36,7 +32,7 @@ Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Javasoljuk, hogy a virtuális gépek Azure-ba való áttelepítését megelőzően próbálja ki a VMware virtuális gép értékelését Azure Migrate Server Assessment használatával. Az értékelést a következőképpen állíthatja be:
 
@@ -177,9 +173,9 @@ Győződjön meg arról, hogy a VMware-kiszolgálók és a virtuális gépek meg
 > [!NOTE]
 > Az ügynök-alapú áttelepítés Azure Migrate kiszolgáló áttelepítésével a Azure Site Recovery szolgáltatás szolgáltatásain alapul. Néhány követelmény Site Recovery dokumentációra mutató hivatkozásokat is tartalmazhat.
 
-1. [Ellenőrizze](migrate-support-matrix-vmware.md#agent-based-migration-vmware-server-requirements) a VMware-kiszolgáló követelményeit.
-2. [Ellenőrzés](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) A VM-támogatás követelményei az áttelepítéshez.
-3. A virtuális gép beállításainak ellenőrzése. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az Azure-beli [virtuális gép követelményeinek](migrate-support-matrix-vmware.md#azure-vm-requirements).
+1. [Ellenőrizze](migrate-support-matrix-vmware-migration.md#agent-based-vmware-servers) a VMware-kiszolgáló követelményeit.
+2. [Ellenőrzés](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms) A VM-támogatás követelményei az áttelepítéshez.
+3. A virtuális gép beállításainak ellenőrzése. Az Azure-ba replikált helyszíni virtuális gépeknek meg kell felelniük az Azure-beli [virtuális gép követelményeinek](migrate-support-matrix-vmware-migration.md#azure-vm-requirements).
 
 
 
@@ -287,7 +283,7 @@ A replikációs berendezés beállításának és regisztrálásának befejezés
 2. Válassza ki a hálózati adaptert (alapértelmezés szerint csak egy hálózati adapter van), amelyet a replikációs berendezés használ a virtuális gépek felderítéséhez, és a mobilitási szolgáltatás leküldéses telepítését a forrásszámítógépen.
 3. Válassza ki azt a hálózati adaptert, amelyet a replikációs berendezés az Azure-hoz való kapcsolódáshoz használ. Ezután válassza a **Save** (Mentés) lehetőséget. Ez a beállítás a konfigurálás után nem módosítható.
 4. Ha a készülék proxykiszolgáló mögött található, meg kell adnia a proxybeállításokat.
-    - Adja meg a proxy nevét **http://ip-addressként** vagy **http://FQDNként** . A HTTPS-proxy kiszolgálók nem támogatottak.
+    - Adja meg a proxy nevét **http://ip-address ként** vagy **http://FQDN ként** . A HTTPS-proxy kiszolgálók nem támogatottak.
 5. Ha a rendszer rákérdez az előfizetés, az erőforráscsoport és a tár részleteire, adja meg a berendezés sablonjának letöltésekor feljegyzett adatokat.
 6. A **Független gyártótól származó szoftver telepítése** területen fogadja el a licencszerződést. Kattintson a **Letöltés és telepítés** gombra a MySQL-kiszolgáló telepítéséhez.
 7. Válassza a **VMware PowerCLI telepítése** elemet. Mielőtt ezt megtenné, zárja be az összes böngészőablakot. Ezután válassza a **Folytatás** elemet.
@@ -336,7 +332,7 @@ Most válassza a virtuális gépek lehetőséget az áttelepítéshez.
     - Válassza a **Nem** lehetőséget, ha nem szeretné alkalmazni az Azure Hybrid Benefit szolgáltatást. Ezután kattintson a **Next** (Tovább) gombra.
     - Válassza az **Igen** lehetőséget, ha aktív frissítési garanciával vagy Windows Server-előfizetéssel rendelkező gépei vannak, és alkalmazni szeretné az előnyöket a migrált gépekre. Ezután kattintson a **Next** (Tovább) gombra.
 
-12. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+12. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-vmware-migration.md#agent-based-vmware-vms).
 
     - Virtuálisgép- **méret**: Ha értékelési javaslatokat használ, a virtuális gép mérete legördülő lista az ajánlott méretet fogja tartalmazni. Egyéb esetben az Azure Migrate az Azure-előfizetésben található leginkább megfelelő érték alapján választja ki a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet. 
     - **Operációsrendszer-lemez**: a virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található. 
@@ -424,7 +420,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 
 ## <a name="post-migration-best-practices"></a>Az áttelepítés utáni ajánlott eljárások
 
-- Helyszíni követelmények
+- Helyszíni
     - Helyezze át az alkalmazás-forgalmat az áttelepített Azure virtuálisgép-példányon futó alkalmazásra.
     - Távolítsa el a helyszíni virtuális gépeket a helyi virtuálisgép-készletéből.
     - Távolítsa el a helyszíni virtuális gépeket helyi biztonsági mentésekből.
@@ -443,7 +439,7 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](https://docs.microsoft.com/azure/security-center/security-center-just-in-time).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](https://docs.microsoft.com/azure/virtual-network/security-overview) használatával.
     - Az [Azure Disk Encryption](https://docs.microsoft.com/azure/security/azure-security-disk-encryption-overview) üzembe helyezésével biztonságba helyezheti a lemezeket, és megóvhatja az adatokat a lopási kísérletektől és a jogosulatlan hozzáféréstől.
-    - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/security-center/).
+    - Látogasson el a [az Azure Security Center](https://azure.microsoft.com/services/security-center/) webhelyére, és tudjon meg többet az [IaaS-erőforrások biztosításáról](https://azure.microsoft.com/services/virtual-machines/secure-well-managed-iaas/).
 - Figyelési és felügyeleti eszközök:
     - Fontolja meg az [Azure Cost Management](https://docs.microsoft.com/azure/cost-management/overview) üzembe helyezését az erőforrás-használat és a költségek figyeléséhez.
 

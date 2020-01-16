@@ -9,12 +9,12 @@ ms.subservice: immersive-reader
 ms.topic: tutorial
 ms.date: 08/01/2019
 ms.author: metan
-ms.openlocfilehash: defa49bd5ca6be6862412e3caf40295ef1d639cf
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 48e74f7dd6fa6f2c7fafe10797a301b3d4cc7f1d
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945293"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045245"
 ---
 # <a name="tutorial-create-an-ios-app-that-launches-the-immersive-reader-with-content-from-a-photo-swift"></a>Oktatóanyag: hozzon létre egy iOS-alkalmazást, amely egy fényképből származó tartalommal (Swift) indít el egy lebilincselő olvasót
 
@@ -73,19 +73,13 @@ Subdomain    => Immersive Reader resource subdomain (resource 'Name' if the reso
 
 A ViewController. Swift fájlt tartalmazó fő projekt mappájában hozzon létre egy Konstanss. Swift nevű Swift-osztály fájlt. Cserélje le az osztályt a következő kódra, és adja hozzá az értékeket, ha van ilyen. Tartsa meg ezt a fájlt helyi fájlként, amely csak a gépen található, és ügyeljen arra, hogy ne véglegesítse ezt a fájlt a verziókövetés során, mert olyan titkos kulcsokat tartalmaz, amelyeket nem kell nyilvánosságra hozni. Javasoljuk, hogy ne tartsa meg a titkokat az alkalmazásban. Ehelyett azt javasoljuk, hogy a háttérrendszer használatával szerezze be a jogkivonatot, ahol a titkok az eszközön kívül is megtarthatók. A háttérbeli API-végpontot biztosítani kell a hitelesítés valamilyen formája (például [OAuth](https://oauth.net/2/)) mögött, hogy megakadályozza a jogosulatlan felhasználók számára a jogkivonatok beszerzését a felhasználatlan olvasó szolgáltatás és a számlázás során. Ez a munka meghaladja az oktatóanyag hatókörét.
 
-[!code-swift[Constants](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/Constants.swift)]
-
 ## <a name="set-up-the-app-to-run-without-a-storyboard"></a>Az alkalmazás beállítása storyboard nélkül való futtatásra
 
 Nyissa meg a AppDelegate. Swift fájlt, és cserélje le az alábbi kódra.
 
-[!code-swift[AppDelegate](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/AppDelegate.swift)]
-
 ## <a name="add-functionality-for-taking-and-uploading-photos"></a>Funkciók hozzáadása fényképek készítéséhez és feltöltéséhez
 
 Nevezze át a ViewController. Swift fájlt a PictureLaunchViewController. Swift névre, és cserélje le a fájlt a következő kódra.
-
-[!code-swift[PictureLaunchViewController](~/ImmersiveReaderSdk/iOS/samples/picture-to-immersive-reader-swift/picture-to-immersive-reader-swift/PictureLaunchViewController.swift)]
 
 ## <a name="build-and-run-the-app"></a>Az alkalmazás létrehozása és futtatása
 

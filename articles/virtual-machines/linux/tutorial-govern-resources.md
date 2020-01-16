@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 09/30/2019
 ms.author: tomfitz
 ms.custom: mvc
-ms.openlocfilehash: 97003699f8dbaa028ff7d4739a4f0576a8790716
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: b9595c6ce464cf9e4ab0baff9ef842e76f3d18a3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749924"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970149"
 ---
 # <a name="tutorial-learn-about-linux-virtual-machine-management-with-azure-cli"></a>Oktatóanyag: a linuxos virtuális gépek felügyeletének megismerése az Azure CLI-vel
 
@@ -140,7 +140,7 @@ Az üzembe helyezés befejezése után további kezelési beállításokat alkal
 
 ## <a name="lock-resources"></a>Erőforrások zárolása
 
-Az [Erőforrás-zárolások](../../azure-resource-manager/resource-group-lock-resources.md) megakadályozzák, hogy a cég vagy intézmény felhasználói véletlenül töröljék vagy módosítsák a kritikus erőforrásokat. Az erőforrás-zárolások a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaznak. A zárolási szintet *CanNotDelete* (nem törölhető) vagy *ReadOnly* (csak olvasható) értékre állíthatja be.
+Az [Erőforrás-zárolások](../../azure-resource-manager/management/lock-resources.md) megakadályozzák, hogy a cég vagy intézmény felhasználói véletlenül töröljék vagy módosítsák a kritikus erőforrásokat. Az erőforrás-zárolások a szerepköralapú hozzáférés-vezérléssel szemben minden felhasználóra és szerepkörre érvényes korlátozásokat alkalmaznak. A zárolási szintet *CanNotDelete* (nem törölhető) vagy *ReadOnly* (csak olvasható) értékre állíthatja be.
 
 A felügyeleti zárolások létrehozásához vagy törléséhez hozzáféréssel kell rendelkeznie a `Microsoft.Authorization/locks/*` műveletekhez. A beépített szerepkörök esetén ezek a műveletek csak a **Tulajdonosi** és a **Felhasználói hozzáférés rendszergazdájának** vannak engedélyezve.
 
@@ -172,7 +172,7 @@ Megjelenik egy hibaüzenet, amely szerint a törlési művelet nem hajtható vé
 
 ## <a name="tag-resources"></a>Erőforrások címkézése
 
-A [címkézéssel](../../azure-resource-manager/resource-group-using-tags.md) logikusan, kategóriák szerint rendszerezheti az Azure-erőforrásokat. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
+A [címkézéssel](../../azure-resource-manager/management/tag-resources.md) logikusan, kategóriák szerint rendszerezheti az Azure-erőforrásokat. Minden címke egy névből és egy értékből áll. Alkalmazhatja például a „Környezet” nevet és az „Éles” értéket az összes éles üzemben használt erőforrásra.
 
 [!INCLUDE [Resource Manager governance tags CLI](../../../includes/resource-manager-governance-tags-cli.md)]
 

@@ -1,18 +1,14 @@
 ---
 title: Fizikai kiszolgálók felmérése az Azure-ba való Migrálás Azure Migrate Server Assessment használatával
 description: Ismerteti, hogyan értékelheti a helyszíni fizikai kiszolgálókat az Azure-ba való áttelepítéshez Azure Migrate Server Assessment használatával.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/18/2019
-ms.author: raynew
-ms.openlocfilehash: 56b7cc6e95cb85b5508199287cc77aedeebc8b81
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 10cd13831fe6cb6b843f0a79a5d5ba56814bcde0
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74280549"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028987"
 ---
 # <a name="assess-physical-servers-with-azure-migrate-server-assessment"></a>Fizikai kiszolgálók értékelése a Azure Migratekel: kiszolgáló értékelése
 
@@ -20,7 +16,7 @@ Ez a cikk bemutatja, hogyan értékelheti a helyszíni fizikai kiszolgálókat a
 
 [Azure Migrate](migrate-services-overview.md) olyan eszközöket biztosít, amelyek segítségével az alkalmazások, az infrastruktúra és a munkaterhelések felderíthető, mérhetők és áttelepíthetők a Microsoft Azure. A hub Azure Migrate eszközöket és külső gyártótól származó független szoftvergyártó (ISV) ajánlatokat tartalmaz.
 
-Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Ez az oktatóanyag egy sorozat második része, amely bemutatja, hogyan lehet felmérni és áttelepíteni a fizikai kiszolgálókat az Azure-ba. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > * Azure Migrate projekt beállítása.
 > * Állítson be egy Azure Migrate berendezést, amely a fizikai kiszolgálók felmérésére a helyszínen fut.
@@ -141,7 +137,7 @@ Ha bármilyen probléma merül fel, a parancsfájl-naplókat a C:\ProgramData\Mi
 
 ### <a name="verify-appliance-access-to-azure"></a>A készülék Azure-beli hozzáférésének ellenőrzése
 
-Győződjön meg arról, hogy a készülék tud csatlakozni az [Azure URL-címekhez](migrate-support-matrix-physical.md#assessment-appliance-url-access).
+Győződjön meg arról, hogy a készülék tud csatlakozni az [Azure URL-címekhez](migrate-appliance.md#url-access).
 
 
 ### <a name="configure-the-appliance"></a>A berendezés konfigurálása
@@ -154,7 +150,7 @@ Győződjön meg arról, hogy a készülék tud csatlakozni az [Azure URL-címek
 2. A webalkalmazás-> **Előfeltételek beállítása**lapon tegye a következőket:
     - **Licenc**: fogadja el a licencfeltételeket, és olvassa el a harmadik féltől származó információkat.
     - **Kapcsolat**: az alkalmazás ellenőrzi, hogy a kiszolgáló rendelkezik-e internet-hozzáféréssel. Ha a kiszolgáló proxyt használ:
-        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDNformában.
+        - Kattintson a **Proxybeállítások**elemre, és határozza meg a proxy címe és a figyelő portját http://ProxyIPAddress vagy http://ProxyFQDN formában.
         - Adja meg a hitelesítő adatokat, ha a proxykiszolgáló hitelesítést igényel.
         - Csak a HTTP-proxyk használata támogatott.
     - **Idő szinkronizálása**: az idő ellenőrzése megtörtént. A készüléken a kiszolgáló felderítésének megfelelő működéséhez az idő szinkronizálása szükséges.
@@ -211,7 +207,7 @@ Az értékelést a következőképpen futtathatja:
 1. Tekintse át az értékelések létrehozásával kapcsolatos [ajánlott eljárásokat](best-practices-assessment.md) .
 2. A **kiszolgálók** lap **Azure Migrate: kiszolgáló értékelése** csempén kattintson az **értékelés**elemre.
 
-    ![Kiértékelés](./media/tutorial-assess-physical/assess.png)
+    ![Értékelés](./media/tutorial-assess-physical/assess.png)
 
 2. A **kiszolgálók értékelése**lapon adja meg az értékelés nevét.
 3. Kattintson az **Összes megtekintése** elemre az értékelési tulajdonságok áttekintéséhez.
@@ -296,7 +292,7 @@ Az értékelés megbízhatósági minősítése a következő.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban az alábbiakat végezte el:
+Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 > [!div class="checklist"]
 > * Azure Migrate berendezés beállítása

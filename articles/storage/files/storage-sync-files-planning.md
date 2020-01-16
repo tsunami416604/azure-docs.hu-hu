@@ -4,15 +4,15 @@ description: Megtudhatja, mit érdemes figyelembe venni Azure Files központi te
 author: roygara
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/18/2019
+ms.date: 01/15/2020
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: c81f06d924a0ba871115e0ae0164d61449855263
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: d2dbe29c5a348363172f57da86483ccf3fd787f0
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665266"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76046100"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -347,13 +347,13 @@ A következő táblázatban a névtér méretét, valamint a tipikus általános
 | Névtér mérete – fájlok & könyvtárak (millió)  | Jellemző kapacitás (TiB)  | Processzormagok  | Ajánlott memória (GiB) |
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (kezdeti szinkronizálás)/2 (jellemző adatforgalom)      |
-| 5        | 2.3     | 2        | 16 (kezdeti szinkronizálás)/4 (jellemző adatforgalom)    |
-| 10       | 4.7     | 4        | 32 (kezdeti szinkronizálás)/8 (jellemző adatforgalom)   |
-| 30       | 14,0    | 8        | 48 (kezdeti szinkronizálás)/16 (jellemző forgalom)   |
-| 50       | 23,3    | 16       | 64 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
-| 100 *     | 46,6    | 32       | 128 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
+| 5        | 2.4     | 2        | 16 (kezdeti szinkronizálás)/4 (jellemző adatforgalom)    |
+| 10       | 4,8     | 4        | 32 (kezdeti szinkronizálás)/8 (jellemző adatforgalom)   |
+| 30       | 14,3    | 8        | 48 (kezdeti szinkronizálás)/16 (jellemző forgalom)   |
+| 50       | 23,8    | 16       | 64 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
+| 100 *     | 47,7   | 32       | 128 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
 
-\*több mint 100 000 000 fájlt & a címtárak jelenleg nem támogatottak. Ez egy puha korlát.
+\*több mint 100 000 000 fájlt & a címtárakat még nem tesztelték. Ez egy puha korlát.
 
 > [!TIP]
 > A névtér kezdeti szinkronizálása intenzív művelet, és javasoljuk, hogy a kezdeti szinkronizálás befejezéséig több memóriát foglaljon le. Ez nem kötelező, de felgyorsíthatja a kezdeti szinkronizálást. 

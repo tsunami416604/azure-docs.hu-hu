@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.custom: include file
-ms.openlocfilehash: 5618757f4bf5eaf1afc5ef0ce1735eb4ae94e1d2
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ef0eed330dd7a5b338cdbf36a159d1f046d3939d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75663030"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76020938"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a felügyelt lemezképekre épülő struktúrát és szervezetet. A megosztott képtárak a következőket biztosítják:
 
@@ -65,7 +65,7 @@ A következő más paraméterek is megadhatók a képdefinícióban, így könny
 * Végfelhasználói licencszerződés – a rendszerkép-definícióra vonatkozó végfelhasználói licencszerződésre mutathat.
 * Adatvédelmi nyilatkozat és kibocsátási megjegyzések – a kibocsátási megjegyzések és az adatvédelmi nyilatkozatok tárolása az Azure Storage-ban, valamint egy URI megadása a rendszerkép definíciójának részeként való hozzáféréshez.
 * Élettartam dátuma – a rendszerkép definíciójának élettartama után az Automation használatával törölheti a régi képdefiníciókat.
-* Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/resource-group-using-tags.md)
+* Címke – címkéket adhat hozzá a rendszerkép definíciójának létrehozásakor. További információ a címkékkel kapcsolatban: [címkék használata az erőforrások rendszerezéséhez](../articles/azure-resource-manager/management/tag-resources.md)
 * Minimális és maximális vCPU és memória-javaslatok – ha a rendszerképnek van vCPU-és memória-javaslata, csatolhatja ezeket az információkat a rendszerkép-definícióhoz.
 * Nem engedélyezett lemezek típusai – a virtuális gép tárolási igényeivel kapcsolatos információkat adhat meg. Ha például a rendszerkép nem szabványos HDD-lemezekhez van kiválasztva, akkor azokat a letiltási listához adja.
 

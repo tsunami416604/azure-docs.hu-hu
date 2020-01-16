@@ -7,14 +7,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
+ms.date: 01/14/2020
 ms.author: chlandsi
-ms.openlocfilehash: 541fa3984eb5680a93be7ddef8f56f37922586e5
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 587a0e83eb6b8c96b44589f7f5701526c23e2aae
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75928072"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037846"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -53,8 +53,7 @@ Vagy letöltheti ezt a rövid útmutatót [Jupyter](https://jupyter.org) jegyzet
 > [!NOTE]
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
-````Python
-
+```python
 import azure.cognitiveservices.speech as speechsdk
 
 # Creates an instance of a speech config with specified subscription key and service region.
@@ -71,7 +70,6 @@ audio_input = speechsdk.AudioConfig(filename=audio_filename)
 speech_recognizer = speechsdk.SpeechRecognizer(speech_config=speech_config, audio_config=audio_input)
 
 print("Recognizing first result...")
-
 
 # Starts speech recognition, and returns after a single utterance is recognized. The end of a
 # single utterance is determined by listening for silence at the end or until a maximum of 15
@@ -91,8 +89,7 @@ elif result.reason == speechsdk.ResultReason.Canceled:
     print("Speech Recognition canceled: {}".format(cancellation_details.reason))
     if cancellation_details.reason == speechsdk.CancellationReason.Error:
         print("Error details: {}".format(cancellation_details.error_details))
-
-````
+```
 
 ### <a name="install-and-use-the-speech-sdk-with-visual-studio-code"></a>A Speech SDK és a Visual Studio Code telepítése és használata
 
@@ -114,14 +111,14 @@ elif result.reason == speechsdk.ResultReason.Canceled:
 1. Másolja, illessze be és mentse a [Python-kódot](#sample-code) az újonnan létrehozott fájlba.
 1. Szúrja be a Speech Service-előfizetés adatait.
 1. Ha be van jelölve, a Python-tolmács az ablak alján az állapotsor bal oldalán jelenik meg.
-   Ellenkező esetben hozza létre az elérhető Python-tolmácsok listáját. Nyissa meg a parancssort (CTRL + SHIFT + P), és írja be a **Python: Select tolmács elemet**. Válasszon ki egy megfelelőt.
+   Ellenkező esetben hozza létre az elérhető Python-tolmácsok listáját. Nyissa meg a Command paletta <kbd>CTRL + SHIFT + P billentyűkombinációt</kbd> , és írja be a **Python: Select tolmács elemet**. Válasszon ki egy megfelelőt.
 1. A Speech SDK Python-csomagot a Visual Studio Code-ból is telepítheti. Tegye meg, hogy ha még nincs telepítve a kiválasztott Python-tolmácshoz.
-   A Speech SDK csomag telepítéséhez nyisson meg egy terminált. Hozza létre újra a parancs-palettát (CTRL + SHIFT + P), és írja be a következőt **: új integrált terminál létrehozása**.
+   A Speech SDK csomag telepítéséhez nyisson meg egy terminált. Hozza létre újra a parancs-palettát <kbd>CTRL + SHIFT + P billentyűkombinációval</kbd> , és adja meg a **terminált: új integrált terminál létrehozása**.
    A megnyíló terminálon írja be a parancs `python -m pip install azure-cognitiveservices-speech` vagy a megfelelő parancsot a rendszer számára.
 1. A mintakód futtatásához kattintson a jobb gombbal a szerkesztőben lévő valahova. Válassza **a Python-fájl futtatása a terminálon**lehetőséget.
    A hangfájl első 15 másodpercét a rendszer felismeri és naplózza a konzol ablakában.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

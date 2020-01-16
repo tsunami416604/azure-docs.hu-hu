@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/20/2019
 ms.author: spelluru
-ms.openlocfilehash: dd429c7e8478bb0576605bcffe3c72bde35ae41e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0b48fea308b385fd8c66bf87d708b1c51f7f495
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437251"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977350"
 ---
 # <a name="tutorial-process-apache-kafka-for-event-hubs-events-using-stream-analytics"></a>Oktatóanyag: Event Hubs-események Apache Kafkaának feldolgozása a stream Analytics használatával 
 Ez a cikk bemutatja, hogyan továbbíthatja az adatátvitelt a Kafka-kompatibilis Event Hubsba, és feldolgozhatja azt Azure Stream Analytics használatával. Végigvezeti a következő lépéseken: 
@@ -38,7 +38,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
 * [Java fejlesztői készlet (JDK) 1.7+](https://aka.ms/azure-jdks).
 * Egy [letöltött](https://maven.apache.org/download.cgi) és [telepített](https://maven.apache.org/install.html) Maven bináris archívum.
 * [Git](https://www.git-scm.com/)
-* Egy **Azure Storage-fiók**. Ha még nem rendelkezik ilyennel, a folytatás előtt [hozzon létre egyet](../storage/common/storage-quickstart-create-account.md) . Az ebben a bemutatóban található Stream Analytics feladata egy Azure Blob Storage-ban tárolja a kimeneti adatokat. 
+* Egy **Azure Storage-fiók**. Ha még nem rendelkezik ilyennel, a folytatás előtt [hozzon létre egyet](../storage/common/storage-account-create.md) . Az ebben a bemutatóban található Stream Analytics feladata egy Azure Blob Storage-ban tárolja a kimeneti adatokat. 
 
 
 ## <a name="create-a-kafka-enabled-event-hubs-namespace"></a>Kafka-kompatibilis Event Hubs-névtér létrehozása
@@ -114,7 +114,7 @@ A rövid útmutató elvégzéséhez győződjön meg arról, hogy teljesülnek a
     ![Event hub – üzenetek](./media/event-hubs-kafka-stream-analytics/confirm-event-hub-messages.png)
 
 ## <a name="process-event-data-using-a-stream-analytics-job"></a>Event-adatok feldolgozása Stream Analytics feladatokkal
-Ebben a szakaszban egy Azure Stream Analytics feladatot hoz létre. A Kafka-ügyfél eseményeket küld az Event hub-nak. Olyan Stream Analytics-feladatot hoz létre, amely adatokat fogad el bemenetként, és egy Azure Blob Storage-ba küldi azt. Ha nem rendelkezik **Azure Storage-fiókkal**, [hozzon létre egyet](../storage/common/storage-quickstart-create-account.md).
+Ebben a szakaszban egy Azure Stream Analytics feladatot hoz létre. A Kafka-ügyfél eseményeket küld az Event hub-nak. Olyan Stream Analytics-feladatot hoz létre, amely adatokat fogad el bemenetként, és egy Azure Blob Storage-ba küldi azt. Ha nem rendelkezik **Azure Storage-fiókkal**, [hozzon létre egyet](../storage/common/storage-account-create.md).
 
 A Stream Analytics-feladatokban szereplő lekérdezés az adatelemzések végrehajtása nélkül halad át az adatokon. Létrehozhat egy olyan lekérdezést, amely átalakítja a bemeneti adatokat, hogy más formátumú kimeneti adatokat hozzon létre, vagy az elemzések során.  
 

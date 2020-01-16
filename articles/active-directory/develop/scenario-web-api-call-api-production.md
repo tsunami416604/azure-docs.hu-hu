@@ -15,23 +15,23 @@ ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0d59a5b2a74c10e36103713725113cbe8c9cc412
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 1426ad250e18d0132e116162a374120dda2e1200
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74965169"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76044141"
 ---
-# <a name="web-api-that-calls-web-apis---move-to-production"></a>Webes API-kat meghívó webes API – áttérés éles környezetbe
+# <a name="a-web-api-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó webes API: áthelyezés éles környezetbe
 
 Miután beszerzett egy jogkivonatot a webes API-k hívásához, áthelyezheti az alkalmazást az éles környezetbe.
 
 [!INCLUDE [Move to production common steps](../../../includes/active-directory-develop-scenarios-production.md)]
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>További információk
 
-Most, hogy ismeri a webes API-k saját webes API-ból való meghívásának alapjait, érdemes lehet ezt az oktatóanyagot használni, amely leírja a védett webes API-t hívó webes API-k létrehozásához használt kódot.
+Most, hogy már ismeri a webes API-k saját webes API-ból való meghívásának alapjait, a következő oktatóanyag érdekli, amely leírja a webes API-kat meghívó védett webes API-k létrehozásához használt kódot.
 
 | Minta | Platform | Leírás |
 |--------|----------|-------------|
-| [Active-Directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2,2 webes API, asztali (WPF) | ASP.NET Core 2,2 webes API meghívása Microsoft Graph, magát a Microsoft Identity platformot használó WPF-alkalmazásból meghívták (v 2.0) |
+| [Active-Directory-aspnetcore-webapi-tutorial-v2](https://github.com/Azure-Samples/active-directory-dotnet-native-aspnetcore-v2/tree/master/2.%20Web%20API%20now%20calls%20Microsoft%20Graph) | ASP.NET Core 2,2 webes API, asztali (WPF) | ASP.NET Core 2,2 web API hív Microsoft Graph, amelyet a Microsoft Identity platform (v 2.0) használatával hívhat meg egy WPF-alkalmazásból. |

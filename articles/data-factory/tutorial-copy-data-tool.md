@@ -12,12 +12,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 09/11/2018
-ms.openlocfilehash: 537f57249065a6b47c2ce4d679205ac21a75fe4c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6335fce717772e268f711c2e6e5050fa8c17d573
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75439415"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977335"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-sql-database-by-using-the-copy-data-tool"></a>Adatok másolása az Azure Blob Storage-ból egy SQL Database-be az Adatok másolása eszközzel
 
@@ -39,7 +39,7 @@ Az oktatóanyagban az alábbi lépéseket fogja végrehajtani:
 ## <a name="prerequisites"></a>Előfeltételek
 
 * **Azure-előfizetés**: Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/).
-* **Azure Storage-fiók**: Használja a Blob Storage-ot _forrásadattárként_. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-quickstart-create-account.md) ismertető cikkben találja.
+* **Azure Storage-fiók**: Használja a Blob Storage-ot _forrásadattárként_. Ha még nem rendelkezik Azure Storage-fiókkal, a szükséges utasításokat a [Storage-fiók létrehozását](../storage/common/storage-account-create.md) ismertető cikkben találja.
 * **Azure SQL Database**: Használjon egy SQL-adatbázist _fogadóadattárként_. Ha még nem rendelkezik SQL-adatbázissal, a szükséges utasításokat az [SQL-adatbázis létrehozását](../sql-database/sql-database-get-started-portal.md) ismertető cikkben találja.
 
 ### <a name="create-a-blob-and-a-sql-table"></a>Blob és SQL-tábla létrehozása
@@ -78,18 +78,18 @@ Készítse elő a Blob Storage-ot és az SQL-adatbázist az oktatóanyaghoz a k�
 ## <a name="create-a-data-factory"></a>Data factory létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása** > **Analytics** > **Data Factory**:
-    
+
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
 1. Az **Új adat-előállító** lap **Név** mezőjében adja meg az **ADFTutorialDataFactory** értéket.
 
     Az adat-előállító nevének _globálisan egyedinek_ kell lennie. A következő hibaüzenet jelenhet meg:
-    
+
     ![Új adat-előállító hibaüzenete](./media/doc-common-process/name-not-available-error.png)
 
     Ha a név értékével kapcsolatos hibaüzenet kap, adjon meg másik nevet az adat-előállítóhoz. Például: _**sajátneve**_ **ADFTutorialDataFactory**. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
 1. Válassza ki az Azure-**előfizetést** az új adat-előállító létrehozásához.
 1. **Erőforráscsoport:** hajtsa végre a következő lépések egyikét:
-    
+
     a. Kattintson a **Meglévő használata** elemre, majd a legördülő listából válasszon egy meglévő erőforráscsoportot.
 
     b. Kattintson az **Új létrehozása** elemre, és adja meg az erőforráscsoport nevét.
@@ -101,7 +101,7 @@ Készítse elő a Blob Storage-ot és az SQL-adatbázist az oktatóanyaghoz a k�
 1. Kattintson a **Létrehozás** gombra.
 
 1. A létrehozás befejezése után a **Data Factory** kezdőlapja jelenik meg.
-    
+
     ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
 1. Az Azure Data Factory felhasználói felületének (UI) külön lapon történő megnyitásához kattintson a **Tartalomkészítés és monitorozás** csempére.
 
@@ -125,7 +125,7 @@ Készítse elő a Blob Storage-ot és az SQL-adatbázist az oktatóanyaghoz a k�
     ![Forráshoz társított szolgáltatás kiválasztása](./media/tutorial-copy-data-tool/select-source-linked-service.png)
 
 1. **A bemeneti fájl vagy mappa kiválasztása** lapon kövesse az alábbi lépéseket:
-    
+
     a. A **Tallózás** elemre kattintva lépjen az **adfv2tutorial/input** mappához, válassza az **inputEmp.txt** fájlt, majd kattintson a **Kiválasztás** lehetőségre.
 
     b. A következő lépéshez kattintson a **Tovább** gombra.

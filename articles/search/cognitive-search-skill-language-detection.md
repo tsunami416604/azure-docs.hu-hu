@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: e3ec9ea9cfbae314297c5b59f6a07bcebaef6a5c
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 8439788c63ec1b9feaea148ab52aba498791dc12
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72791957"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045016"
 ---
 #   <a name="language-detection-cognitive-skill"></a>Nyelvfelismerés – kognitív képességek
 
@@ -33,11 +33,11 @@ A nyelvfelismerés a Bing természetes nyelvi feldolgozó kódtárait használja
 Microsoft. Skills. Text. LanguageDetectionSkill
 
 ## <a name="data-limits"></a>Adatkorlátok
-A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az a hangulat-elemzőnek, használhatja a [szöveg felosztása](cognitive-search-skill-textsplit.md)lehetőséget.
+A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatokat, mielőtt elküldené azt a nyelvfelismerés szaktudásának, használhatja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md)is.
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
-A paraméterek megkülönböztetik a kis-és nagybetűket.
+A paraméterekben különbözőnek számítanak a kis- és a nagybetűk.
 
 | Bemenetek     | Leírás |
 |--------------------|-------------|

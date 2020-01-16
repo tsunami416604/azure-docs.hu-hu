@@ -2,19 +2,19 @@
 title: 'Rövid útmutató: beszéd felismerése egy hangfájlból C# (.net) – beszédfelismerési szolgáltatás'
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: erhopf
+author: IEvangelist
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: include
-ms.date: 12/17/2019
-ms.author: erhopf
-ms.openlocfilehash: 2818ba3319509327d1b2f7dd65841a3ed4fd9cdc
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.date: 01/14/2020
+ms.author: dapine
+ms.openlocfilehash: 0e5bbafee04a909be53c2143c72aba6f5a4e05f9
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75927852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76037940"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -23,7 +23,7 @@ Az első lépések előtt ügyeljen a következőre:
 > [!div class="checklist"]
 > * [Azure Speech-erőforrás létrehozása](../../../../get-started.md)
 > * [A fejlesztési környezet beállítása](../../../../quickstarts/setup-platform.md?tabs=dotnet)
-> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=dotnet)
+> * [Üres minta projekt létrehozása](../../../../quickstarts/create-project.md?tabs=vs)
 
 [!INCLUDE [Audio input format](~/articles/cognitive-services/speech-service/includes/audio-input-format-chart.md)]
 
@@ -33,33 +33,37 @@ Első lépésként győződjön meg arról, hogy a projekt meg van nyitva a Visu
 
 1. Indítsa el a Visual Studio 2019-es kiadását.
 2. Töltse be a projektet, és nyissa meg `Program.cs`.
+3. Töltse le a <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/whatstheweatherlike.wav" download="whatstheweatherlike" target="_blank">whatstheweatherlike. <span class="docon docon-download x-hidden-focus"></span> WAV</a> fájlját, és adja hozzá a projekthez.
+    - Mentse a *whatstheweatherlike. wav* fájlt a `Program.cs` fájl mellett.
+    - A **megoldáskezelő** kattintson a jobb gombbal a projektre, majd válassza a **> meglévő elem hozzáadása**lehetőséget.
+    - Válassza ki a *whatstheweatherlike. wav* fájlt, majd kattintson a **Hozzáadás** gombra.
+    - Kattintson a jobb gombbal az újonnan hozzáadott fájlra, majd válassza a **Tulajdonságok**lehetőséget.
+    - Módosítsa a **Másolás a kimeneti könyvtárba** a **mindig másoláshoz**.
 
 ## <a name="start-with-some-boilerplate-code"></a>Kezdés néhány szabványos kóddal
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegyezze fel, hogy létrehozott egy `RecognizeSpeechAsync()`nevű aszinkron metódust.
 
-````C#
-
+```csharp
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
         {
+            await RecognizeSpeechAsync();
         }
 
-        static void Main()
+        static async Task RecognizeSpeechAsync()
         {
-            RecognizeSpeechAsync().Wait();
         }
     }
 }
-
-````
+```
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
@@ -69,73 +73,75 @@ namespace helloworld
 > Ez a példa a `FromSubscription()` metódust használja a `SpeechConfig`létrehozásához. Az elérhető módszerek teljes listáját lásd: [SpeechConfig osztály](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechconfig?view=azure-dotnet).
 > A Speech SDK alapértelmezés szerint az en-us nyelv használatával ismeri fel a nyelvet, a forrás nyelvének kiválasztásával kapcsolatos információkért lásd: nyelv [megadása a beszédhez szöveghez](../../../../how-to-specify-source-language.md) .
 
-````C#
+```csharp
 var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
-````
+```
 
 ## <a name="create-an-audio-configuration"></a>Hang konfigurációjának létrehozása
 
-Most létre kell hoznia egy ````AudioConfig```` objektumot, amely a hangfájlra mutat. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba, közvetlenül a beszédfelismerési konfiguráció alatt.
+Most létre kell hoznia egy `AudioConfig` objektumot, amely a hangfájlra mutat. Ez az objektum egy using utasításon belül jön létre a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba, közvetlenül a beszédfelismerési konfiguráció alatt.
 
-````C#
-using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+```csharp
+using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
 {
 }
-````
+```
 
 ## <a name="initialize-a-speechrecognizer"></a>SpeechRecognizer inicializálása
 
-Most hozzuk létre a `SpeechRecognizer` objektumot a korábban létrehozott `SpeechConfig` és `AudioConfig` objektumok használatával. Ez az objektum egy using utasítás belsejében is létrejön a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba a using utasításban, amely a ````AudioConfig```` objektumot betakarja.
+Most hozzuk létre a `SpeechRecognizer` objektumot a korábban létrehozott `SpeechConfig` és `AudioConfig` objektumok használatával. Ez az objektum egy using utasítás belsejében is létrejön a nem felügyelt erőforrások megfelelő kiadásának biztosítása érdekében. Szúrja be ezt a kódot a `RecognizeSpeechAsync()` metódusba a using utasításban, amely a ```AudioConfig``` objektumot betakarja.
 
-````C#
+```csharp
 using (var recognizer = new SpeechRecognizer(config, audioInput))
 {
 }
-````
+```
 
 ## <a name="recognize-a-phrase"></a>Kifejezés felismerése
 
 A `SpeechRecognizer` objektumban meg kell hívnia a `RecognizeOnceAsync()` metódust. Ez a módszer lehetővé teszi, hogy a beszédfelismerési szolgáltatás tudja, hogy egyetlen kifejezést küld az észleléshez, és ha a kifejezést azonosította a beszédfelismerés felismerésének leállításához.
 
 A using utasításon belül adja hozzá a következő kódot:
-````C#
+
+```csharp
 Console.WriteLine("Recognizing first result...");
 var result = await recognizer.RecognizeOnceAsync();
-````
+```
 
 ## <a name="display-the-recognition-results-or-errors"></a>Az elismerési eredmények (vagy hibák) megjelenítése
 
 Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményt a konzolon.
 
 A using utasításon belül `RecognizeOnceAsync()`alatt adja hozzá a következő kódot:
-````C#
-if (result.Reason == ResultReason.RecognizedSpeech)
-{
-    Console.WriteLine($"We recognized: {result.Text}");
-}
-else if (result.Reason == ResultReason.NoMatch)
-{
-    Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-}
-else if (result.Reason == ResultReason.Canceled)
-{
-    var cancellation = CancellationDetails.FromResult(result);
-    Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
 
-    if (cancellation.Reason == CancellationReason.Error)
-    {
-        Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
-        Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
-        Console.WriteLine($"CANCELED: Did you update the subscription info?");
-    }
+```csharp
+switch (result.Reason)
+{
+    case ResultReason.RecognizedSpeech:
+        Console.WriteLine($"We recognized: {result.Text}");
+        break;
+    case ResultReason.NoMatch:
+        Console.WriteLine($"NOMATCH: Speech could not be recognized.");
+        break;
+    case ResultReason.Canceled:
+        var cancellation = CancellationDetails.FromResult(result);
+        Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
+
+        if (cancellation.Reason == CancellationReason.Error)
+        {
+            Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
+            Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
+            Console.WriteLine($"CANCELED: Did you update the subscription info?");
+        }
+        break;
 }
-````
+```
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
 Ezen a ponton a kódnak így kell kinéznie:
 
-````C#
+```csharp
 //
 // Copyright (c) Microsoft. All rights reserved.
 // Licensed under the MIT license. See LICENSE.md file in the project root for full license information.
@@ -145,62 +151,60 @@ using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
 
-namespace helloworld
+namespace HelloWorld
 {
     class Program
     {
-        public static async Task RecognizeSpeechAsync()
+        static async Task Main()
+        {
+            await RecognizeSpeechAsync();
+        }
+
+        static async Task RecognizeSpeechAsync()
         {
             var config = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
 
-            using (var audioInput = AudioConfig.FromWavFileInput(@"whatstheweatherlike.wav"))
+            using (var audioInput = AudioConfig.FromWavFileInput("whatstheweatherlike.wav"))
+            using (var recognizer = new SpeechRecognizer(config, audioInput))
             {
-                using (var recognizer = new SpeechRecognizer(config, audioInput))
-                {
-                    Console.WriteLine("Recognizing first result...");
-                    var result = await recognizer.RecognizeOnceAsync();
+                Console.WriteLine("Recognizing first result...");
+                var result = await recognizer.RecognizeOnceAsync();
 
-                    if (result.Reason == ResultReason.RecognizedSpeech)
-                    {
+                switch (result.Reason)
+                {
+                    case ResultReason.RecognizedSpeech:
                         Console.WriteLine($"We recognized: {result.Text}");
-                    }
-                    else if (result.Reason == ResultReason.NoMatch)
-                    {
+                        break;
+                    case ResultReason.NoMatch:
                         Console.WriteLine($"NOMATCH: Speech could not be recognized.");
-                    }
-                    else if (result.Reason == ResultReason.Canceled)
-                    {
+                        break;
+                    case ResultReason.Canceled:
                         var cancellation = CancellationDetails.FromResult(result);
                         Console.WriteLine($"CANCELED: Reason={cancellation.Reason}");
-
+                
                         if (cancellation.Reason == CancellationReason.Error)
                         {
                             Console.WriteLine($"CANCELED: ErrorCode={cancellation.ErrorCode}");
                             Console.WriteLine($"CANCELED: ErrorDetails={cancellation.ErrorDetails}");
                             Console.WriteLine($"CANCELED: Did you update the subscription info?");
                         }
-                    }
+                        break;
                 }
             }
         }
-
-        static void Main()
-        {
-            RecognizeSpeechAsync().Wait();
-        }
     }
 }
-````
+```
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
-1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet.
-2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
-3. **Felismerés elindítása** – a rendszer elküldje a hangfájlt a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
+1. Fordítsa le a kódot: a *Visual Studio*menüsávján válassza az > Build **megoldás** **létrehozása lehetőséget** .
+2. Indítsa el az alkalmazást: a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
+3. Felismerés elindítása: a rendszer elküldje a hangfájlt a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
-   ```text
+   ```console
    Recognizing first result...
    We recognized: What's the weather like?
    ```

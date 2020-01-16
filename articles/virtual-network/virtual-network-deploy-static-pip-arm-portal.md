@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/08/2018
 ms.author: kumud
-ms.openlocfilehash: 891b21aa1c832214fad12759643dc72a632e1cd7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 66050c16f40e0a06117327ef53e3aae87d03c5db
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647798"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76043542"
 ---
 # <a name="create-a-virtual-machine-with-a-static-public-ip-address-using-the-azure-portal"></a>Statikus nyilvános IP-címmel rendelkező virtuális gép létrehozása a Azure Portal használatával
 
@@ -51,7 +51,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
    ![Statikus kijelölése](./media/virtual-network-deploy-static-pip-arm-portal/select-static.png)
 
-   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, válassza a **standard** elemet az **SKU**alatt. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/load-balancer-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#skus).
+   Ha a nyilvános IP-címnek standard SKU-nak kell lennie, válassza a **standard** elemet az **SKU**alatt. További információ a [nyilvános IP-cím SKU-](virtual-network-ip-addresses-overview-arm.md#sku)ról. Ha a virtuális gépet egy nyilvános Azure Load Balancer háttér-készletéhez adja hozzá, akkor a virtuális gép nyilvános IP-címének SKU-jának meg kell egyeznie a terheléselosztó nyilvános IP-címének SKU-jának. Részletekért lásd: [Azure Load Balancer](../load-balancer/concepts-limitations.md#skus).
 
 6. Válasszon ki egy portot, vagy ne válasszon portot a **nyilvános bejövő portok kiválasztása**területen. A portál 3389 van kiválasztva, hogy engedélyezze a távoli hozzáférést a Windows Server rendszerű virtuális géphez az internetről. Az 3389-as port az internetről való megnyitása nem ajánlott éles számítási feladatokhoz.
 
