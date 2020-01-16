@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 775c6016acbcd0f87f368852a68eaea706c79898
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
+ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945705"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76045619"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -196,16 +196,7 @@ Az [Azure Open-adatkészletek](https://azure.microsoft.com/services/open-dataset
 
 Ha az SDK-ból Azure Open-adatkészleteket tartalmazó adatkészleteket szeretne létrehozni, győződjön meg arról, hogy telepítette a csomagot `pip install azureml-opendatasets`. Minden különálló adatkészletet a saját osztálya képvisel az SDK-ban, és bizonyos osztályok `TabularDataset`ként, `FileDataset`ként vagy mindkettőként érhetők el. Az osztályok teljes listáját a [dokumentációban](https://docs.microsoft.com/python/api/azureml-opendatasets/azureml.opendatasets?view=azure-ml-py) találja.
 
-A legtöbb osztály a `TabularDataset`egy példányát örökli és visszaküldi. Ilyen osztályok például a `PublicHolidays`, a `BostonSafety`és a `UsPopulationZip`. Az ilyen típusú osztályokból származó `TabularDataset` létrehozásához használja a konstruktort argumentumok nélkül. Amikor egy megnyitott adatkészletből létrehozott adatkészletet regisztrál, az adatok letöltése nem történik meg azonnal, de az adatok a kéréskor (például a betanítás során) egy központi tárolóhelyről lesznek elérhetők. 
-
-```python
-from azureml.opendatasets import UsPopulationZip
-
-tabular_dataset = UsPopulationZip()
-tabular_dataset = tabular_dataset.register(workspace=workspace, name="pop data", description="US population data by zip code")
-```
-
-Bizonyos osztályokat lekérhet `TabularDataset` vagy `FileDataset`, amely lehetővé teszi a fájlok közvetlen kezelését és/vagy letöltését. Más osztályok csak a `get_tabular_dataset()` vagy a `get_file_dataset()` függvények használatával kaphatnak adatkészletet. Az alábbi mintakód néhány példát mutat az ilyen típusú osztályokra:
+Bizonyos osztályokat lekérhet `TabularDataset` vagy `FileDataset`, amely lehetővé teszi a fájlok közvetlen kezelését és/vagy letöltését. Más osztályok **csak** `get_tabular_dataset()` vagy `get_file_dataset()` függvények egyikét használva kaphatnak adatkészletet. Az alábbi mintakód néhány példát mutat be az ilyen típusú osztályokra.
 
 ```python
 from azureml.opendatasets import MNIST
@@ -219,6 +210,8 @@ from azureml.opendatasets import Diabetes
 # Diabetes class can return ONLY return TabularDataset and must be called from the static function
 diabetes_tabular = Diabetes.get_tabular_dataset()
 ```
+
+Amikor egy megnyitott adatkészletből létrehozott adatkészletet regisztrál, az adatok letöltése nem történik meg azonnal, de az adatok a kéréskor (például a betanítás során) egy központi tárolóhelyről lesznek elérhetők.
 
 ### <a name="use-the-ui"></a>A felhasználói felület használata
 

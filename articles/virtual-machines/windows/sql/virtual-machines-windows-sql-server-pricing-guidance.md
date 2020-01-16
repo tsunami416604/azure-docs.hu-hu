@@ -15,12 +15,12 @@ ms.date: 08/09/2018
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 076d6fc387aaee85a1cd407fa48e7347ff185ef4
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: b7a8f7136d0899ab3afe04bce2d25bc2e7f8d3e2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74038878"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981712"
 ---
 # <a name="pricing-guidance-for-azure-sql-server-vms"></a>Az Azure SQL Server virtuális gépek díjszabási útmutatója
 
@@ -54,7 +54,7 @@ Ha egy SQL Server 2017 Azure-beli virtuális gépet szeretne létrehozni ezen re
 
 Ha nem könnyű üzemi számítási feladattal rendelkezik, használja a következő SQL Server kiadások egyikét:
 
-| SQL Server Edition | Számítási feladat |
+| SQL Server kiadás | Számítási feladat |
 |-----|-----|
 | Web | Kisméretű webhelyek |
 | Standard | Kis-és közepes számítási feladatok |
@@ -139,10 +139,10 @@ A SQL Server licencelési díja közvetlenül kapcsolódik a vCPU számához. V�
 
 Az új gépi méretek bizonyos típusú SQL Server számítási feladatokhoz is jól működnek. Ezek a gépek méretei nagy mennyiségű memóriát, tárterületet és I/O-sávszélességet foglalnak magukban, de alacsonyabb virtualizált alapszámmal rendelkeznek. Vegyük például a következő példát:
 
-| Virtuális gép mérete | vCPU | Memória | Lemezek maximális száma | Maximális I/O-átviteli sebesség | SQL licencelési költségek | Teljes költség (számítás + licencelés) |
+| Virtuális gép mérete | vCPU-k | Memória | Lemezek maximális száma | Maximális I/O-átviteli sebesség | SQL licencelési költségek | Teljes költség (számítás + licencelés) |
 |---|---|---|---|---|---|---|
-| **Standard_DS14v2** | 16 | 112 GB | 32 | 51 200 IOPS vagy 768 MB/s | | |
-| **Standard_DS14-4v2** | 4 | 112 GB | 32 | 51 200 IOPS vagy 768 MB/s | 75%-kal alacsonyabb | 57%-kal alacsonyabb |
+| **Standard_DS14v2** | 16 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | | |
+| **Standard_DS14 – 4v2** | 4 | 112 GB | 32 | 51,200 IOPS vagy 768 MB/s | 75%-kal alacsonyabb | 57%-kal alacsonyabb |
 
 > [!IMPORTANT]
 > Ez egy időpontra vonatkozó példa. A legfrissebb specifikációkat a Windows és a [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) [rendszerhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) készült Azure-díjszabást ismertető cikkben találja.
@@ -166,7 +166,7 @@ Más munkafolyamatok esetében érdemes lehet az Azure-beli virtuális gépek au
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az Azure díjszabásával kapcsolatos általános útmutatóért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../../billing/billing-getting-started.md). A legújabb Virtual Machines díjszabásról, beleértve a SQL Servert is, tekintse meg a [Windows rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) és a Linux rendszerű virtuális [gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)Azure-beli virtuálisgép-díjszabás
+Az Azure díjszabásával kapcsolatos általános útmutatóért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../../cost-management-billing/manage/getting-started.md). A legújabb Virtual Machines díjszabásról, beleértve a SQL Servert is, tekintse meg a [Windows rendszerű virtuális gépek](https://azure.microsoft.com/pricing/details/virtual-machines/windows/) és a Linux rendszerű virtuális [gépek](https://azure.microsoft.com/pricing/details/virtual-machines/linux/)Azure-beli virtuálisgép-díjszabás
 
 Az Azure Virtual Machines-on futó SQL Server áttekintéséhez tekintse meg a következő cikkeket:
 

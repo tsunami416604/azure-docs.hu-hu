@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: aaa67c5e48c6246e94410bdbf2eb8509b6810001
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8325b4ef6b89a76eeec418386cec4922cb5916b1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645191"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979156"
 ---
 # <a name="alert-and-monitor-data-factories-by-using-azure-monitor"></a>Az adatüzemek riasztása és monitorozása Azure Monitor használatával
 
@@ -67,7 +67,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Fejlécek
 
 * Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
-* Cserélje le a `{resource-id}`t annak az erőforrásnak az azonosítójával, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
+* Cserélje le a `{resource-id}`t annak az erőforrásnak az azonosítójával, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/management/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
 * Állítsa a `Content-Type` fejlécet `application/json`re.
 * Állítsa be az engedélyezési fejlécet a Azure Active Directory (Azure AD) által kapott JSON webes tokenre. További információ: [kérelmek hitelesítése](../active-directory/develop/authentication-scenarios.md).
 
@@ -188,7 +188,7 @@ https://management.azure.com/{resource-id}/providers/microsoft.insights/diagnost
 ##### <a name="headers"></a>Fejlécek
 
 * Cserélje le a `{api-version}` elemet a `2016-09-01` kérdésre.
-* Cserélje le a `{resource-id}`t annak az erőforrásnak az azonosítójával, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
+* Cserélje le a `{resource-id}`t annak az erőforrásnak az azonosítójával, amelynek a diagnosztikai beállításait szerkeszteni kívánja. További információk: [Using Resource groups to manage your Azure resources](../azure-resource-manager/management/manage-resource-groups-portal.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez).
 * Állítsa a `Content-Type` fejlécet `application/json`re.
 * Állítsa be az engedélyezési fejlécet egy olyan JSON webes tokenre, amelyet az Azure AD-ből kapott. További információ: [kérelmek hitelesítése](../active-directory/develop/authentication-scenarios.md).
 

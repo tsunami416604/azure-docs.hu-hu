@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services v3 fiókok kezelése |} A Microsoft Docs
-description: Indítsa el a kezelése, titkosítására, kódolás, elemzése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. Ez a cikk ismerteti az Azure Media Services v3 fiókokat szeretne kezelni.
+title: Azure Media Services v3-fiókok kezelése | Microsoft Docs
+description: Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. Ez a cikk a Azure Media Services v3-fiókok kezelését ismerteti.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -11,36 +11,36 @@ ms.workload: ''
 ms.topic: article
 ms.date: 07/08/2019
 ms.author: juliako
-ms.openlocfilehash: fa9720c2c29af184016d2903e60520e701b4cf79
-ms.sourcegitcommit: 2e4b99023ecaf2ea3d6d3604da068d04682a8c2d
+ms.openlocfilehash: 08579f7ba952bb4ebcba1595508612affb852528
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67670682"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980383"
 ---
-# <a name="manage-azure-media-services-v3-accounts"></a>Az Azure Media Services v3 fiókok kezelése
+# <a name="manage-azure-media-services-v3-accounts"></a>Azure Media Services v3-fiókok kezelése
 
-Indítsa el a kezelése, titkosítására, kódolás, elemzése és médiafolyam az Azure-ban, szüksége a Media Services-fiók létrehozása. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. További információkért lásd: [tárfiókok](storage-account-concept.md).
+Az Azure-beli médiatartalmak kezelésének, titkosításának, kódolásának, elemzésének és továbbításának megkezdéséhez létre kell hoznia egy Media Services fiókot. A Media Services-fiók létrehozásakor meg kell adnia egy Azure Storage-fiókhoz tartozó erőforrás nevét. A rendszer a Media Services-fiókhoz csatolja a megadott Storage-fiókot. A Media Services-fióknak és az összes kapcsolódó tárfióknak azonos Azure-előfizetésben kell lennie. További információ: Storage- [fiókok](storage-account-concept.md).
 
-## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services-fiók áthelyezése előfizetések között 
+## <a name="moving-a-media-services-account-between-subscriptions"></a>Media Services fiók áthelyezése az előfizetések között 
 
-Ha a Media Services-fiók áthelyezése új előfizetésre van szüksége, kell először helyezze át az új előfizetés a Media Services-fiókot tartalmazó teljes erőforráscsoportot. Helyezze át az összes kapcsolódó erőforrás: Az Azure Storage-fiókok, az Azure CDN-profilok stb. További információ: [Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe](../../azure-resource-manager/resource-group-move-resources.md). Csakúgy, mint bármely az Azure-erőforrások, erőforráscsoportok áthelyezési is igénybe vehet egy ideig.
+Ha egy Media Services fiókot egy új előfizetésre kell áthelyeznie, előbb át kell helyeznie a teljes erőforráscsoportot, amely tartalmazza a Media Services fiókot az új előfizetéshez. Az összes csatolt erőforrást át kell helyeznie: Azure Storage-fiókokat, Azure CDN profilokat stb. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md). Az Azure-beli erőforrásokhoz hasonlóan az erőforráscsoportok áthelyezése is eltarthat egy ideig.
 
 > [!NOTE]
-> A Media Services v3 támogatja a több-bérlős modell.
+> Media Services v3 támogatja a több-bérlős modellt.
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
-* Hozzon létre a biztonsági mentések az összes adat a fiókban egy másik előfizetésbe való migrálás előtt.
-* Állítsa le a Streamelési végpontok és az élő adások online közvetítése erőforrások kell. A felhasználók nem fognak tudni hozzáférni a tartalmat az erőforrás-csoport áthelyezés idejére. 
+* Hozzon létre biztonsági másolatokat a fiókban lévő összes adattal, mielőtt másik előfizetésre migrál.
+* Le kell állítania az összes streaming-végpontot és az élő adatfolyam-továbbítási erőforrásokat. A felhasználók nem fognak tudni hozzáférni a tartalomhoz az erőforráscsoport áthelyezésének időtartama alatt. 
 
 > [!IMPORTANT]
-> Indul el a folyamatos átviteli végponton, amíg az áthelyezés sikeres végrehajtása után.
+> Ne indítsa el a folyamatos átviteli végpontot, amíg az áthelyezés sikeresen be nem fejeződik.
 
 ### <a name="troubleshoot"></a>Hibaelhárítás 
 
-Ha a Media Services-fiók vagy egy társított Azure Storage-fiók "lecsatlakoznak" az erőforrás-csoport áthelyezése a következő, próbálja meg a Storage-fiók kulcsok. A Storage-fiók kulcsok nem oldja meg a Media Services-fiók "leválasztott" állapotát, ha a fájl egy új támogatási kérést a "Támogatás + hibaelhárítás" a Media Services-fiók menüjéből.  
+Ha egy Media Services fiók vagy egy társított Azure Storage-fiók "leválasztva" válik az erőforráscsoport áthelyezése után, próbálja meg elforgatni a Storage-fiók kulcsait. Ha a Storage-fiók kulcsainak elforgatása nem oldja meg a Media Services fiók "leválasztott" állapotát, a Media Services fiók "támogatás + hibaelhárítás" menüjéből új támogatási kérelmet kell benyújtani.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Fiók létrehozása](create-account-cli-quickstart.md)

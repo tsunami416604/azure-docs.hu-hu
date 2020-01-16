@@ -10,12 +10,12 @@ ms.subservice: forms-recognizer
 ms.topic: tutorial
 ms.date: 10/27/2019
 ms.author: nitinme
-ms.openlocfilehash: dfbd11b97ee77d77599ead08ba58fe173b64f876
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446476"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981268"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
@@ -52,7 +52,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet az ilyen táblázatokból szárma
 
 Ezt a tárolót használja a modell betanításához szükséges mintaadatok feltöltésére.
 
-1. A Storage-fiók létrehozásához kövesse az [Azure Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md) című témakör utasításait. Használja a **formrecostorage** nevet a Storage-fiók neveként.
+1. A Storage-fiók létrehozásához kövesse az [Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakör utasításait. Használja a **formrecostorage** nevet a Storage-fiók neveként.
 1. Az Azure Storage-fiókban lévő tároló létrehozásához kövesse az [Azure Blob-tároló létrehozása](../../storage/blobs/storage-quickstart-blobs-portal.md) című témakör utasításait. A **formrecocontainer** használja a tároló neveként. Győződjön meg arról, hogy a nyilvános hozzáférési szintet **tárolóra állítja (névtelen olvasási hozzáférés tárolók és Blobok számára)** .
 
     > [!div class="mx-imgBorder"]

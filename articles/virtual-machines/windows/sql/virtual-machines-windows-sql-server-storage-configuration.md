@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 12/26/2019
 ms.author: mathoma
-ms.openlocfilehash: 231c8cb8e66d658ad49e02fd585f6c8a1593cb2d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9d8fce0772f13c6e009b2441ecd85779a7622c5c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75373994"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981742"
 ---
 # <a name="storage-configuration-for-sql-server-vms"></a>SQL Server virtuális gépek tárolási konfigurációja
 
@@ -33,7 +33,7 @@ Ez a témakör azt ismerteti, hogyan konfigurálja az Azure a SQL Server virtuá
 Az automatikus tárolási konfigurációs beállítások használatához a virtuális gépnek a következő jellemzőkkel kell rendelkeznie:
 
 * Kiépítve [SQL Server Gallery-képpel](virtual-machines-windows-sql-server-iaas-overview.md#payasyougo).
-* A [Resource Manager](../../../azure-resource-manager/resource-manager-deployment-model.md)-alapú üzemi modellt használja.
+* A [Resource Manager](../../../azure-resource-manager/management/deployment-models.md)-alapú üzemi modellt használja.
 * [Prémium SSD](../disks-types.md)-ket használ.
 
 ## <a name="new-vms"></a>Új virtuális gépek

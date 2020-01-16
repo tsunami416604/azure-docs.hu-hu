@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan telepítheti át a helyszíni Hyper-V virtuáli
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: edbd52924a77c961cb923f48bba76a21b56489ff
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720225"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028968"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-alapú virtuális gépek migrálása az Azure-ba 
 
@@ -122,7 +122,7 @@ Telepítse a letöltött telepítőfájlt (AzureSiteRecoveryProvider. exe) minde
     - Adja meg a proxy nevét **http://ip-address ként** vagy **http://FQDN ként** . A HTTPS-proxy kiszolgálók nem támogatottak.
    
 
-6. Győződjön meg arról, hogy a szolgáltató el tudja érni a [szükséges URL-címeket](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access).
+6. Győződjön meg arról, hogy a szolgáltató el tudja érni a [szükséges URL-címeket](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts).
 7. A **regisztráció**során a gazdagép regisztrálása után kattintson a **Befejezés**gombra.
 
 ## <a name="replicate-hyper-v-vms"></a>Hyper-V virtuális gépek replikálása
@@ -155,7 +155,7 @@ A felderítés befejeződése után megkezdheti a Hyper-V virtuális gépek repl
 
     ![Cél beállításai](./media/tutorial-migrate-hyper-v/target-settings.png)
 
-10. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-vmware.md#agentless-migration-vmware-vm-requirements).
+10. A **Számítás** területen ellenőrizze a virtuális gép nevét, méretét, az operációs rendszer lemeztípusát és a rendelkezésreállási csoportot. A virtuális gépeknek meg kell felelniük az [Azure-követelményeknek](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements).
 
     - Virtuálisgép- **méret**: Ha értékelési javaslatokat használ, a virtuális gép mérete legördülő lista az ajánlott méretet fogja tartalmazni. Egyéb esetben az Azure Migrate az Azure-előfizetésben található leginkább megfelelő érték alapján választja ki a méretet. Alternatív megoldásként az **Azure-beli virtuális gép mérete** területen manuálisan is kiválaszthatja a méretet. 
     - **Operációsrendszer-lemez**: a virtuális gép operációsrendszer-(rendszerindító) lemezének megadása. Az operációsrendszer-lemez az a lemez, amelyen az operációs rendszer rendszerbetöltője és telepítője található. 

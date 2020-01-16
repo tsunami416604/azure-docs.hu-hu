@@ -1,19 +1,15 @@
 ---
 title: Gépek előkészítése a Azure Migrate való áttelepítéshez
 description: Megtudhatja, hogyan készítheti elő a helyszíni gépeket a Azure Migrate való áttelepítéshez.
-author: rayne-wiselman
-manager: carmonm
-ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 12/10/2019
-ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: 6f5535a57fae847c8a376b8b39e43955675da739
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c3c10321e8d49ac6ecfe80024d23f24711298651
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74974784"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028749"
 ---
 # <a name="prepare-on-premises-machines-for-migration-to-azure"></a>Helyszíni gépek előkészítése az Azure-ba való áttelepítésre
 
@@ -44,9 +40,9 @@ Ebben a cikkben:
 
 ## <a name="check-whats-supported"></a>A támogatott elemek kikeresése
 
-- A VMware virtuális gépek esetében Azure Migrate kiszolgáló áttelepítése az [ügynök nélküli vagy az ügynökön alapuló áttelepítést](server-migrate-overview.md)támogatja. Ellenőrizze a VMware virtuális gépekre vonatkozó követelményeket/támogatást az [ügynök](migrate-support-matrix-vmware.md#migration---limitations) nélküli és az [ügynökön alapuló](migrate-support-matrix-vmware.md#agent-based-migration-vmware-vm-requirements) áttelepítéshez.
-- Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) a Hyper-V virtuális gépek támogatását.
-- Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical.md) a helyszíni fizikai gépek vagy más virtualizált kiszolgálók támogatását. 
+- A VMware virtuális gépek esetében Azure Migrate kiszolgáló áttelepítése az [ügynök nélküli vagy az ügynökön alapuló áttelepítést](server-migrate-overview.md)támogatja. A VMware virtuális gépek [áttelepítési követelményeinek és támogatásának](migrate-support-matrix-vmware-migration.md)ellenőrzése.
+- Ellenőrizze az [áttelepítési követelményeket, és támogassa](migrate-support-matrix-hyper-v-migration.md) a Hyper-V-t.
+- Ellenőrizze az [áttelepítési követelményeket és](migrate-support-matrix-physical-migration.md) a helyszíni fizikai gépek vagy más virtualizált kiszolgálók támogatását. 
 
 
 
@@ -55,10 +51,11 @@ Ebben a cikkben:
 
 Előfordulhat, hogy a számítógépeken az áttelepítés során internet-hozzáférés szükséges.
 
-- Tekintse át azokat az URL-címeket, amelyekhez a VMware virtuális gépeknek az [ügynök](migrate-support-matrix-vmware.md#agentless-migration-url-access-requirements) nélküli vagy az [ügynökön alapuló](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) áttelepítés során szüksége van
-- Tekintse át, hogy a Hyper-V-gazdagépeknek milyen URL-címeket kell elérniük az áttelepítés során. A Hyper-V virtuális gépeknek nincs szükségük internet-hozzáférésre.
-- [Tekintse át](migrate-support-matrix-vmware.md#agent-based-migration-url-access-requirements) , hogy a fizikai gépek vagy más virtualizált kiszolgálók milyen URL-címeket kell elérniük az áttelepítés során.
-- A VMware virtuális gépek/fizikai kiszolgálók ügynök-alapú áttelepítése esetén a gépen futó mobilitási szolgáltatásnak hozzá kell férnie Azure Migrate-összetevőkhöz. A replikálás kezeléséhez a gépen futó szolgáltatás a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni Azure Migrate replikációs berendezéssel. A gépek replikációs adatküldést küldenek a Azure Migrate Process Servernek a HTTPS 9443 bejövő porton. Ez a port módosítható.
+- [Tekintse át azokat az URL-címeket](migrate-appliance.md#url-access) , amelyeket az Azure Migrate készüléknek el kell érnie az ügynök nélküli áttelepítés során. [Tekintse át a port hozzáférési](migrate-support-matrix-vmware-migration.md#agentless-ports) követelményeit.
+- Tekintse át az [URL-címeket](migrate-replication-appliance.md#url-access) és a [portok] (Migrálás-replikálás-berendezés. MD # port-Access), amelyet a replikációs berendezés a VMware VM-ügynökön alapuló áttelepítés során használ. 
+- [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) A Hyper-V-gazdagépeknek az áttelepítés során való eléréséhez szükséges URL-címek és portok. 
+- Tekintse át az [URL-címeket](migrate-replication-appliance.md#url-access) és a [portok] (Migrálás-replikálás-berendezés. MD # port-Access), amelyet a replikációs berendezés a fizikai kiszolgáló áttelepítése során használ.
+
 
 
 ## <a name="verify-required-changes-before-migration"></a>A szükséges módosítások ellenőrzése az áttelepítés előtt
@@ -105,7 +102,7 @@ Ha például a helyszíni telepítés olyan adatlemezt használ, amely az alkalm
 
 ## <a name="check-azure-vm-requirements"></a>Az Azure-beli virtuális gépekre vonatkozó követelmények keresése
 
-Az Azure-ba replikált helyszíni számítógépeknek meg kell felelniük az operációs rendszerre és az architektúrára, a lemezekre, a hálózati beállításokra és a virtuális gépek elnevezésére vonatkozó Azure-beli virtuális gépek követelményeinek. Ellenőrizze a [VMWare virtuális gépek/fizikai kiszolgálók](migrate-support-matrix-vmware.md#azure-vm-requirements)és a [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) követelményeit az áttelepítés előtt.
+Az Azure-ba replikált helyszíni számítógépeknek meg kell felelniük az operációs rendszerre és az architektúrára, a lemezekre, a hálózati beállításokra és a virtuális gépek elnevezésére vonatkozó Azure-beli virtuális gépek követelményeinek. Ellenőrizze a [VMWare virtuális gépek/fizikai kiszolgálók](migrate-support-matrix-vmware-migration.md#azure-vm-requirements)és a [Hyper-V virtuális gépek](migrate-support-matrix-hyper-v-migration.md#azure-vm-requirements) követelményeit az áttelepítés előtt.
 
 
 ## <a name="prepare-to-connect-after-migration"></a>Felkészülés a csatlakozásra az áttelepítés után

@@ -1,6 +1,6 @@
 ---
-title: Funkciók létrehozása az SQL Server az SQL és Python - csoportos adatelemzési folyamat
-description: Hozzon létre az SQL Server virtuális gép az Azure-ban, SQL és Python - a csoportos adatelemzési folyamat részeként tárolt adatok funkciókat.
+title: Szolgáltatások létrehozása SQL Server az SQL és a Python – csoportos adatelemzési folyamat használatával
+description: Szolgáltatások létrehozása az Azure-beli SQL Server VM tárolt adataihoz az SQL és a Python használatával – a csoportos adatelemzési folyamat részeként.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,72 +11,72 @@ ms.topic: article
 ms.date: 11/21/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 7bc44d8e755af3d212d616425c6a1fd925172298
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65602934"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982059"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
-Ez a dokumentum bemutatja, hogyan hozhat létre az SQL Server virtuális gép az Azure-ban tárolt adatokat, amelyek segítségével hatékonyabban megismerheti az adatokból algoritmusok szolgáltatásai. Ennek a feladatnak használhatja az SQL és a egy programozási nyelvet, például a Python. Mindkét módszerénél itt találja meg.
+Ebből a dokumentumból megtudhatja, hogyan hozhatja ki az Azure-beli SQL Server VM tárolt adatok szolgáltatásait, amelyek segítségével az algoritmusok hatékonyabban megismerhetik az adatokból. Ezt a feladatot SQL vagy programozási nyelv (például Python) használatával hajthatja végre. Mindkét módszert itt mutatjuk be.
 
-Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Ez a feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
 
 > [!NOTE]
-> Gyakorlati például tanulmányozza a [NYC Taxi adatkészlet](https://www.andresmh.com/nyctaxitrips/) , majd tekintse át a készülékén IPNB [NYC adatok konvertálása, az IPython Notebook és az SQL Server](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) egy teljes körű útmutató az.
+> Gyakorlati példákért tekintse meg a [New York-i taxi-adatkészletet](https://www.andresmh.com/nyctaxitrips/) , és tekintse meg a New York-i HUZAVONA nevű IPNB a [IPython notebook használatával SQL Server és](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-sql-walkthrough.ipynb) a végpontok közötti átjáráshoz.
 > 
 > 
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy rendelkezik:
+Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
-* Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [Azure Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)
-* Az SQL Server tárolja az adatokat. Ha nem, olvassa el [adatok áthelyezése az Azure SQL Database az Azure Machine Learning](move-sql-azure.md) van az adatok áthelyezéséhez létrehozásával kapcsolatos útmutatást.
+* Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
+* Az adatait SQL Server tárolja. Ha nem rendelkezik a szolgáltatással, olvassa el az [adatáthelyezés egy Azure Machine Learning Azure SQL Databasere](move-sql-azure.md) című témakört, amely útmutatást nyújt az adatáthelyezéshez.
 
-## <a name="sql-featuregen"></a>SQL-szolgáltatás létrehozása
-Ebben a szakaszban ismertetünk módon a létrehozást funkciók az SQL:  
+## <a name="sql-featuregen"></a>Funkciók létrehozása SQL-sel
+Ebben a szakaszban az SQL-t használó szolgáltatások létrehozásának módjait ismertetjük:  
 
-1. [Száma alapján a szolgáltatás létrehozása](#sql-countfeature)
-2. [A dobozolás a szolgáltatás létrehozása](#sql-binningfeature)
-3. [Egyetlen oszlop az a funkciók bevezetéséről](#sql-featurerollout)
+1. [Darabszám-alapú szolgáltatás létrehozása](#sql-countfeature)
+2. [Dobozolási szolgáltatás létrehozása](#sql-binningfeature)
+3. [A funkciók kimutatása egyetlen oszlopból](#sql-featurerollout)
 
 > [!NOTE]
-> További funkciók generál, ha oszlopként, azokat hozzá a meglévő tábla, vagy hozzon létre egy új táblát a további funkciók és az elsődleges kulcs, amely összekapcsolható a az eredeti tábla.
+> Miután létrehozta a további szolgáltatásokat, hozzáadhatja őket oszlopként a meglévő táblához, vagy létrehozhat egy új táblát a további funkciókkal és elsődleges kulccsal, amelyek az eredeti táblával csatlakoztathatók.
 > 
 > 
 
-### <a name="sql-countfeature"></a>Alapú száma a szolgáltatás létrehozása
-Ez a dokumentum azt ismerteti, kétféleképpen létrehozni bloberőforrásokhoz száma funkciókat. Az első módszer feltételes sum és a második módszer használja a "where" záradék. Ezek ezután összekapcsolható a az eredeti tábla (elsődleges kulcs oszlopát használatával), count funkciók mellett az eredeti adatok.
+### <a name="sql-countfeature"></a>Darabszám-alapú szolgáltatás létrehozása
+Ez a dokumentum két módszert mutat be a Count-funkciók létrehozásához. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek ezután az eredeti táblában (az elsődleges kulcs oszlopai használatával) is összekapcsolhatók, hogy az eredeti adategységek is meglegyenek.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
     select <column_name1>,<column_name2> , sum(1) as Count_Features from <tablename>
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
-### <a name="sql-binningfeature"></a>A dobozolás a szolgáltatás létrehozása
-Az alábbi példa bemutatja, hogyan binned szolgáltatások létrehozásához dobozolás (használatával 5 bins) által egy numerikus oszlopot inkább funkcióként használható:
+### <a name="sql-binningfeature"></a>Dobozolási szolgáltatás létrehozása
+Az alábbi példa bemutatja, hogyan hozhatja ki a dobozolni-szolgáltatásokat a dobozolási (5 raktárhely használatával) egy numerikus oszlopot, amely szolgáltatásként használható:
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
 
-### <a name="sql-featurerollout"></a>Egyetlen oszlop az a funkciók bevezetéséről
-Ebben a szakaszban bemutatjuk, hogyan vezethet be csak egy oszlop a tábla létrehozásához további szolgáltatásokat. A példában feltételeztük, hogy nincs-e a szélességi és hosszúsági oszlop a tábla, amelyből próbált szolgáltatások készítése.
+### <a name="sql-featurerollout"></a>A funkciók kimutatása egyetlen oszlopból
+Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát további funkciók létrehozásához. A példa azt feltételezi, hogy a táblázatban a szélesség vagy hosszúság oszlop szerepel, amelyből a szolgáltatásokat kívánja előállítani.
 
-Íme egy rövid ismertetőt a szélességi és hosszúsági koordinátákkal helyadatok (a stackoverflow forrásokat `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`). Íme néhány hasznos lépése, hogy a helyadatok kapcsolatos mezőjéből funkciók létrehozása előtt:
+Íme egy rövid ismertető a szélességi és a hosszúsági hely adatainak áttekintéséről (a StackOverflow `https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude`ból származnak). Íme néhány hasznos tudnivaló arról, hogy a szolgáltatások a mezőből való létrehozása előtt hogyan kell megismerni a helyadatok adatait:
 
-* A bejelentkezési azt jelzi, hogy vannak-e Észak vagy Dél-India, keleti vagy nyugati jelöl.
-* Egy nem nulla több száz számjegy azt jelzi, hogy hosszúság, szélesség nincs használatban van.
-* A több számjegy biztosít olyan helyzetben, hogy körülbelül 1000 alapján. Milyen kontinens vagy vagyunk az óceán hasznos információkat biztosít.
-* Az egységek számjegy (decimális mértékű) biztosít egy helyen legfeljebb 111 kilométerben (60 tengeri mérföldre, körülbelül 69 mérföld). Azt jelzi, nagyjából, milyen nagy állam vagy ország/régió tudunk.
-* Az első tizedes ér akár 11.1 km-re: azt megkülönböztethesse a szomszédos nagy város egy nagy város pozícióját.
-* A második tizedes ér akár 1.1 km-re: azt is egy falu elkülönítése a Tovább gombra.
-* A harmadik tizedes ér legfeljebb 110 m: nagy mezőgazdasági mező vagy intézményi campus segítenek azonosítani.
-* A negyedik tizedes ér legfeljebb 11 m: egy segítenek azonosítani. Fontos nem zavarja a nem javított GPS egység tipikus pontossága hasonlítható.
-* Az ötödik tizedes ér akár 1.1 m:, fák különbözteti meg egymástól. Erre a szintre a kereskedelmi GPS-egységekhez pontossága csak különbözeti helyesbítéssel érhető el.
-* A hatodik tizedes ér értéke legfeljebb 0,11 m: ezzel részletes környezetünk, tervezéséhez struktúrák elrendező utak létrehozásához. Több mint elég jó glaciers és folyókat követési kell lennie. Ez megvalósítható a GPS-adatok, például a GPS differentially javított painstaking intézkedéseket.
+* A jel azt jelzi, hogy a világ északi vagy déli régiója, illetve Kelet-vagy nyugati régiója.
+* A nullától eltérő száz számjegy azt jelzi, hogy a földrajzi szélesség nem lesz használatban.
+* A tízes számjegy körülbelül 1 000 kilométert biztosít. Hasznos információkkal szolgál arról, hogy mi a kontinens vagy az óceán.
+* Az egység számjegye (egy tizedes tört fok) akár 111 kilométer (60 tengeri mérföld, körülbelül 69 Miles) pozíciót biztosít. Ez nagyjából azt jelzi, hogy milyen nagy az állam vagy ország/régió.
+* Az első tizedes tört értéke 11,1 km lehet: egy nagy város pozícióját is megkülönböztetni egy szomszédos nagy városból.
+* A második tizedes tört értéke 1,1 km lehet: a következőtől elkülöníthető egy falu.
+* A harmadik tizedes tört akár 110 m is lehet: a nagy mezőgazdasági mező vagy intézményi kampusz azonosítására alkalmas.
+* A negyedik tizedes tört érték legfeljebb 11 m lehet: a parcella azonosítható. A megoldás a nem megfelelő, interferencia nélküli GPS-egységek jellemző pontosságával összehasonlítható.
+* Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
+* A hatodik tizedes tört érték akár 0,11 m is lehet: a szerkezetek részletes kialakításához, a Tájképek tervezéséhez, az utak létrehozásához használhatja ezt a lehetőséget. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt úgy érheti el, ha a GPS-vel kapcsolatos aprólékos mértékeket, például differentially korrigált GPS-t használ.
 
-A helyadatok lehet featurized régió, a hely és a várost elválasztva. Vegye figyelembe, hogy többször is meghívhat egy REST-végpontot, például a Bing térképek API elérhető `https://msdn.microsoft.com/library/ff701710.aspx` a régió/kerület adatok lekéréséhez.
+A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Vegye figyelembe, hogy ha egy REST-végpontot is meghívhat, például a `https://msdn.microsoft.com/library/ff701710.aspx` címen elérhető Bing Maps API-t, a régió/kerület információinak beszerzéséhez.
 
     select
         <location_columnname>
@@ -89,32 +89,32 @@ A helyadatok lehet featurized régió, a hely és a várost elválasztva. Vegye 
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Ezek a helyalapú szolgáltatások további használható további száma szolgáltatások létrehozásához, a fentebb leírt módon.
+Ezek a hely-alapú funkciók további, a korábban leírtak szerint további Count-funkciók létrehozásához használhatók.
 
 > [!TIP]
-> Programozott módon szúrhat be a rekordok használatával tetszőleges nyelven. Szükség lehet az adatok beszúrásához írási hatékonyság növelése érdekében. [Íme egy példa bemutatja, hogyan ehhez pyodbc használatával](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
-> Egy másik lehetőség, hogy az adatbázis használatával szúrja be az adatokat [BCP segédprogram](https://msdn.microsoft.com/library/ms162802.aspx)
+> Programozott módon beszúrhatja a rekordokat a választott nyelv használatával. Előfordulhat, hogy az írási hatékonyság javítása érdekében be kell szúrnia az adattömbökbe az adathalmazokat. [Íme egy példa arra, hogyan teheti ezt meg a pyodbc használatával](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).
+> Egy másik alternatíva az, hogy az adatbázisban a [BCP segédprogram](https://msdn.microsoft.com/library/ms162802.aspx) használatával szúr be adatbevitelt
 > 
 > 
 
-### <a name="sql-aml"></a>Csatlakozás az Azure Machine Learning
-Az újonnan létrehozott szolgáltatást meglévő táblához oszlopként hozzáadható vagy egy új tábla tárolja és csatlakozik, a machine Learning szolgáltatáshoz az eredeti tábla. Szolgáltatások jön létre, vagy ha már létrehozta, keresztül érhető a [adatok importálása](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modul az Azure ML alább látható módon:
+### <a name="sql-aml"></a>Csatlakozás a Azure Machine Learninghoz
+Az újonnan létrehozott funkció hozzáadhatók oszlopként egy meglévő táblához, vagy egy új táblában tárolhatók, és a Machine learning eredeti táblájához csatlakoznak. A szolgáltatások létrehozhatók vagy elérhetők, ha már létrejöttek, az [adatimportálási](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) modul használata az Azure ml-ben az alábbi ábrán látható módon:
 
-![Az Azure Machine Learning-olvasók](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
+![Azure ML-olvasók](./media/sql-server-virtual-machine/reader_db_featurizedinput.png)
 
-## <a name="python"></a>Például a Python-programozási nyelv
-Python használata a szolgáltatások létrehozásához, amikor az adatok az SQL Server hasonlít a Python használatával Azure blob adatok feldolgozása. Összehasonlításáért lásd [Azure Blobadatok folyamat a data science környezetben](data-blob.md). További feldolgozási pandas adatok keretbe betölteni az adatokat az adatbázisból. Ez a szakasz az adatbázishoz csatlakozással, és az adatok betöltését az adathalmaz ismertetését.
+## <a name="python"></a>Programozási nyelv (például Python) használata
+A Python használatával olyan szolgáltatásokat hozhatnak elő, amelyekben az adatai SQL Server hasonlóak az Azure blobban lévő adatfeldolgozáshoz a Python használatával. Összehasonlításért lásd: az [Azure Blob-adatfeldolgozás adatelemzési környezetben](data-blob.md). Az adatok betöltése az adatbázisból egy Panda-adatkeretbe a további feldolgozás érdekében. Ebben a szakaszban az adatbázishoz való csatlakozás és az adatkeretbe való betöltés folyamata is dokumentálva van.
 
-Csatlakozás SQL Server-adatbázis a Pythonnal pyodbc (cserélje le a kiszolgálónév, adatbázisnév, felhasználónév és jelszó az adott értékek) használatával a következő kapcsolati karakterlánc-formátum használható:
+A következő kapcsolati karakterlánc-formátum használható egy SQL Server-adatbázishoz való kapcsolódáshoz a Pythonból a pyodbc használatával (a kiszolgálónév, a dbname, a Felhasználónév és a jelszó lecserélése a megadott értékekkel):
 
     #Set up the SQL Azure connection
     import pyodbc
     conn = pyodbc.connect('DRIVER={SQL Server};SERVER=<servername>;DATABASE=<dbname>;UID=<username>;PWD=<password>')
 
-A [Pandas könyvtár](https://pandas.pydata.org/) pythonban adatkezelés Python programozási széles választékának datové struktury és az adatok elemzésére szolgáló eszközöket biztosít. Az alábbi kód beolvassa az eredményeket az SQL Server-adatbázisból egy Pandas adatkeretbe küldött:
+A Pythonban található [Panda Library](https://pandas.pydata.org/) számos adatstruktúrát és adatelemzési eszközt biztosít a Python programozási funkciók adatkezeléséhez. A következő kód beolvassa a SQL Server-adatbázisból a Panda adatkeretbe visszaadott eredményeket:
 
     # Query database and load the returned results in pandas data frame
     data_frame = pd.read_sql('''select <columnname1>, <columnname2>... from <tablename>''', conn)
 
-Most már használhatja a Pandas adatkeretbe témakörökben ismertetett [funkciók létrehozása az Azure blob storage adatokból a Pandas használatával](create-features-blob.md).
+Most már dolgozhat a Panda adatkerettel, ahogy az az [Azure Blob Storage-hoz készült szolgáltatások létrehozása a Panda használatával](create-features-blob.md)című témakörben leírtak szerint.
 

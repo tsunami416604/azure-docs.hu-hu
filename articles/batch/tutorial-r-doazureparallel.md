@@ -2,23 +2,23 @@
 title: Párhuzamos R-szimuláció az Azure Batch segítségével
 description: Oktatóanyag – részletes útmutató Monte Carlo pénzügyi szimulációjának futtatásához az Azure Batchben az R doAzureParallel csomag használatával
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.assetid: ''
 ms.service: batch
 ms.devlang: r
 ms.topic: tutorial
 ms.date: 01/23/2018
-ms.author: lahugh
+ms.author: jushiman
 ms.custom: mvc
-ms.openlocfilehash: 7fad37af268d3dcd3d4d974d8e839ac47f171b50
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: a5422b3b3dfee548e24e989654f8cc219700e712
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68321903"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029208"
 ---
-# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: Párhuzamos R-szimuláció futtatása Azure Batch 
+# <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével 
 
 Futtassa párhuzamos R számítási feladatait skálázva a kis méretű [doAzureParallel](https://www.github.com/Azure/doAzureParallel) R-csomag segítségével, amely lehetővé teszi az Azure Batch használatát közvetlenül az R-munkamenetből. A doAzureParallel csomag a népszerű [foreach](https://cran.r-project.org/web/packages/foreach/index.html) R-csomagra épül. A doAzureParallel a foreach ciklus minden ismétlését Azure Batch-műveletként küldi el.
 
@@ -256,7 +256,7 @@ Miután a feladat befejeződött, automatikusan törlődik. Ha a fürtre már ni
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban a következőket sajátította el:
 
 > [!div class="checklist"]

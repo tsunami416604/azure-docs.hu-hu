@@ -8,18 +8,18 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 22e542715afa8c87ffb742bec6c22f758cd16587
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354262"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980276"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
 Ez a cikk a Stream Analytics-lekérdezések fejlesztésével és hibaelhárításával kapcsolatos gyakori problémákat ismerteti.
 
-## <a name="query-is-not-producing-expected-output"></a>A lekérdezés nem hozza létre a várt kimenetet 
+## <a name="query-is-not-producing-expected-output"></a>A lekérdezés nem hozza létre a várt kimenetet
 1.  Hibák vizsgálata helyi teszteléssel:
     - A **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
     - A lekérdezést a Visual studióhoz készült Stream Analytics Tools használatával [közvetlenül is tesztelheti élő bemeneten](stream-analytics-live-data-local-testing.md) .
@@ -32,10 +32,10 @@ Ez a cikk a Stream Analytics-lekérdezések fejlesztésével és hibaelhárítá
     - Ha a Window functions funkciót használja, várja meg a teljes ablak időtartamát, hogy megjelenjen a lekérdezés kimenete.
     - Az események időbélyegzője megelőzi a feladatok kezdési idejét, ezért az események el lesznek dobva.
 
-4.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** elemre, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között. 
+4.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** elemre, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között.
 
 5. Hibakeresés naplózási és diagnosztikai naplók használatával:
-    - Használjon [naplókat](../azure-resource-manager/resource-group-audit.md), és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
+    - Használjon [naplókat](../azure-resource-manager/management/view-activity-logs.md), és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
     - A hibák azonosításához és hibakereséséhez használja a [feladatok diagnosztikai naplóit](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>A feladatok túl sok átviteli egységet fogyasztanak
@@ -52,7 +52,7 @@ Egy Azure Stream Analytics-feladatban az alábbi lekérdezés egy stream-bemenet
 Vegye figyelembe, hogy a művelet fut, de a kimenetben nem készül esemény. Az itt látható **figyelési** csempén láthatja, hogy a bemenet adatokat állít elő, de nem tudja, hogy az **illesztés** melyik lépése okozta az összes eldobott eseményt.
 
 ![A Stream Analytics monitorozási csempe](./media/stream-analytics-select-into/stream-analytics-select-into-monitor.png)
- 
+
 Ebben az esetben hozzáadhat néhány további KIJELÖLÉSt az utasításokhoz a köztes összekapcsolási eredmények és a bemenetből beolvasott adatok között.
 
 Ebben a példában két új "ideiglenes kimenetet" adtunk hozzá. Az Ön számára bármilyen fogadó lehet. Itt az Azure Storage-t használjuk példaként:

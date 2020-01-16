@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: c666d718586d3e5351974da287a91f6a3a8c04ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459159"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979276"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
@@ -190,7 +190,7 @@ Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az
 Az SAS azt jelenti, hogy az ügyfél korlátozott engedélyeket biztosíthat a Storage-fiókban lévő objektumoknak egy adott időtartamra és egy megadott engedélyekkel. Ezeket a korlátozott engedélyeket a fiók hozzáférési kulcsainak megosztása nélkül biztosíthatjuk.
 
 ### <a name="ip-level-storage-isolation"></a>IP-szintű tároló elkülönítése
-Tűzfalat hozhat létre, és meghatározhatja a megbízható ügyfelek IP-címtartományt. Az IP-címtartomány csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak az [Azure Storage](../../storage/common/storage-security-guide.md)szolgáltatáshoz.
+Tűzfalat hozhat létre, és meghatározhatja a megbízható ügyfelek IP-címtartományt. Az IP-címtartomány csak a megadott tartományon belüli IP-címmel rendelkező ügyfelek csatlakozhatnak az [Azure Storage](../../storage/blobs/security-recommendations.md)szolgáltatáshoz.
 
 Az IP-tárolási adatokat olyan hálózati mechanizmussal lehet védeni a jogosulatlan felhasználóktól, amely az IP-tárolóra irányuló dedikált vagy dedikált bújtatási alagút kiosztására szolgál.
 
@@ -203,18 +203,18 @@ Az Azure a következő titkosítási típusokat biztosítja az adatvédelem érd
 #### <a name="encryption-in-transit"></a>Titkosítás átvitel közben
 Az átvitel közbeni titkosítás egy olyan mechanizmus, amely az adatok védelmét a hálózatokon keresztül továbbítja. Az Azure Storage használatával az alábbiakkal védheti meg az adatvédelmet:
 
--   [Átviteli szintű titkosítás](../../storage/common/storage-security-guide.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
+-   [Átviteli szintű titkosítás](../../storage/blobs/security-recommendations.md), például https, ha az Azure Storage-ba vagy az-ba helyezi át az adatátvitelt.
 
--   [Vezetékes titkosítás](../../storage/common/storage-security-guide.md), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
+-   [Vezetékes titkosítás](../../storage/blobs/security-recommendations.md), például SMB 3,0 titkosítás az Azure-fájlmegosztás számára.
 
--   [Ügyféloldali titkosítás](../../storage/common/storage-security-guide.md), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
+-   [Ügyféloldali titkosítás](../../storage/blobs/security-recommendations.md), amely a tárterületre való átvitel előtt titkosítja az adatátvitelt, és visszafejti az adatmennyiséget a tárterületről való átadást követően.
 
 #### <a name="encryption-at-rest"></a>Titkosítás nyugalmi állapotban
 Számos szervezet esetében az [adattitkosítás](isolation-choices.md) az adatok védelme, a megfelelőség és az adatok szuverenitása szempontjából kötelező lépés. Három Azure-szolgáltatás áll rendelkezésre, amelyek a "nyugalmi állapotban" lévő adatok titkosítását teszik lehetővé:
 
--   [Storage Service encryption](../../storage/common/storage-security-guide.md) lehetővé teszi, hogy a Storage szolgáltatás automatikusan titkosítsa az adattitkosítást az Azure Storage-ba való íráskor.
+-   [Storage Service encryption](../../storage/blobs/security-recommendations.md) lehetővé teszi, hogy a Storage szolgáltatás automatikusan titkosítsa az adattitkosítást az Azure Storage-ba való íráskor.
 
--   Az [ügyféloldali titkosítás](../../storage/common/storage-security-guide.md) emellett biztosítja a titkosítás nyugalmi funkcióját is.
+-   Az [ügyféloldali titkosítás](../../storage/blobs/security-recommendations.md) emellett biztosítja a titkosítás nyugalmi funkcióját is.
 
 -   [Azure Disk Encryption](../azure-security-disk-encryption-overview.md) lehetővé teszi a IaaS virtuális gépek által használt operációsrendszer-lemezek és adatlemezek titkosítását.
 

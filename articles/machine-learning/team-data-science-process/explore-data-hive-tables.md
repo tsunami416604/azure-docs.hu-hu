@@ -1,6 +1,6 @@
 ---
-title: Fedezze fel az adatokat a Hive-táblákban a Hive-lekérdezések – csoportos adatelemzési folyamat
-description: A Hive-táblákban egy HDInsight Hadoop-fürtön az adatok által használt minta Hive parancsfájlok használata.
+title: A kaptár-táblákban lévő adatelemzés a kaptár-lekérdezésekkel – csoportos adatelemzési folyamat
+description: A HDInsight Hadoop-fürtben található kaptár-táblákban lévő adatelemzéshez használt minta-struktúra-parancsfájlok használata.
 services: machine-learning
 author: marktab
 manager: cgronlun
@@ -11,37 +11,37 @@ ms.topic: article
 ms.date: 11/09/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: c9761ade493641b6445cf151424f9598ab25e384
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3da4f273ed1eeac88e19452c497b99c074d7b148
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303645"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981978"
 ---
 # <a name="explore-data-in-hive-tables-with-hive-queries"></a>A Hive-táblákban tárolt adatok megismerése Hive-lekérdezésekkel
 
-Ez a cikk ismerteti a minta Hive-szkriptek, amelyekkel a Hive-táblákban egy HDInsight Hadoop-fürtön az adatok feltárására.
+Ez a cikk a HDInsight Hadoop-fürtben található kaptár-táblákban lévő adatvizsgálathoz használható minta-struktúra-parancsfájlokat tartalmazza.
 
-Ez a feladat Ez a lépés a [csoportos adatelemzési folyamat](overview.md).
+Ez a feladat a [csoportos adatelemzési folyamat](overview.md)egyik lépése.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk feltételezi, hogy rendelkezik:
+Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
-* Létrehozott egy Azure storage-fiókot. Ha utasításokat van szüksége, tekintse meg [Azure Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md)
-* A HDInsight szolgáltatással egyéni Hadoop-fürt kiépítése. Ha utasításokat van szüksége, tekintse meg [testreszabása az Azure HDInsight Hadoop-fürtök Advanced Analytics](customize-hadoop-cluster.md).
-* Az adatok Hive-táblák az Azure HDInsight Hadoop-fürtök lett feltöltve. Ha még nem, kövesse az utasításokat a [létrehozása és az adatok betöltése Hive-tábláihoz](move-hive-tables.md) először feltölteni az adatokat a Hive-táblákat.
-* Távoli hozzáférés a fürthöz engedélyezett. Ha utasításokat van szüksége, tekintse meg [a fő csomópont, Hadoop-fürt eléréséhez](customize-hadoop-cluster.md).
-* Ha a Hive-lekérdezések elküldéséhez útmutatást van szüksége, tekintse meg [hogyan Hive-lekérdezések elküldéséhez](move-hive-tables.md#submit)
+* Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című témakört.
+* Testreszabott Hadoop-fürt kiépítve a HDInsight szolgáltatással. Ha útmutatásra van szüksége, tekintse meg [a Azure HDInsight Hadoop-fürtök testreszabása speciális elemzésekhez](customize-hadoop-cluster.md)című témakört.
+* Az adatfeltöltés Azure HDInsight Hadoop fürtök struktúrájának tábláiba történt. Ha még nem tette meg, kövesse az [adatok létrehozása és betöltése a kaptár tábláiba](move-hive-tables.md) című részben található utasításokat az adatok a kaptár tábláiba való feltöltéséhez.
+* Engedélyezve van a távoli hozzáférés a fürthöz. Ha útmutatásra van szüksége, tekintse meg [a Hadoop-fürt fő csomópontjának elérését](customize-hadoop-cluster.md)ismertető témakört.
+* Ha a kaptár-lekérdezések elküldésére vonatkozó útmutatásra van szüksége, olvassa el a [kaptár-lekérdezések beküldése](move-hive-tables.md#submit) című témakört.
 
-## <a name="example-hive-query-scripts-for-data-exploration"></a>Példa a Hive-lekérdezés parancsprogramok adatok feltárásához
-1. Lekérni az megfigyelések partíciónként  `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
-2. Napi megfigyeléseket megszámlálása  `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
-3. A szintek egy kategorikus oszlop beolvasása  
+## <a name="example-hive-query-scripts-for-data-exploration"></a>Példa a kaptár lekérdezési parancsfájljaira az adatfeltáráshoz
+1. A megfigyelések számának lekérése partíció `SELECT <partitionfieldname>, count(*) from <databasename>.<tablename> group by <partitionfieldname>;`
+2. A napi megfigyelések számának lekérése `SELECT to_date(<date_columnname>), count(*) from <databasename>.<tablename> group by to_date(<date_columnname>);`
+3. Szintek beolvasása egy kategorikus oszlopban  
     `SELECT  distinct <column_name> from <databasename>.<tablename>`
-4. Lépjen be két kategorikus oszlopok kombinációja szintek száma  `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
-5. A numerikus oszlopok terjesztési beolvasása  
+4. A szintek számának lekérése két kategorikus oszlop kombinációjában `SELECT <column_a>, <column_b>, count(*) from <databasename>.<tablename> group by <column_a>, <column_b>`
+5. Numerikus oszlopok eloszlásának beolvasása  
     `SELECT <column_name>, count(*) from <databasename>.<tablename> group by <column_name>`
-6. Két tábla rekordjait kinyerése
+6. Rekordok kinyerése két táblázatból
    
         SELECT
             a.<common_columnname1> as <new_name1>,
@@ -68,6 +68,6 @@ Ez a cikk feltételezi, hogy rendelkezik:
             ) b
             ON a.<common_columnname1>=b.<common_columnname1> and a.<common_columnname2>=b.<common_columnname2>
 
-## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>További lekérdezési parancsfájlok taxi trip data jellegű alkalmazási
-Példák a lekérdezésekre adott [NYC Taxi Útadatok](https://chriswhong.com/open-data/foil_nyc_taxi/) forgatókönyveket is rendelkezésre állnak a [GitHub-adattár](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts). Ezeket a lekérdezéseket már rendelkezik az adatok séma van megadva, és készen áll hamarosan futtatásához.
+## <a name="additional-query-scripts-for-taxi-trip-data-scenarios"></a>További lekérdezési parancsfájlok a taxi Trip adatforgatókönyvekhez
+A [New York](https://chriswhong.com/open-data/foil_nyc_taxi/) -i taxi-adatforgatókönyvekre jellemző lekérdezések a [GitHub-tárházban](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts)is elérhetők. Ezeknek a lekérdezéseknek már van megadott adatsémája, és készen állnak a futtatásra.
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 9c16ec978a0689059c60903182337936960c7a4b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 0ee996e39950d38b10f8df78fe47f7087c4a2ed1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707848"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981065"
 ---
 # <a name="add-or-remove-role-assignments-using-azure-rbac-and-azure-powershell"></a>Szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure RBAC és a Azure PowerShell használatával
 
@@ -232,4 +232,4 @@ Ha a következő hibaüzenet jelenik meg: "a megadott információk nem képezne
 - [Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure PowerShell használatával](role-assignments-list-powershell.md)
 - [Oktatóanyag: csoportos hozzáférés biztosítása az Azure-erőforrásokhoz a RBAC és a Azure PowerShell használatával](tutorial-role-assignments-group-powershell.md)
 - [Oktatóanyag: egyéni szerepkör létrehozása Azure-erőforrásokhoz Azure PowerShell használatával](tutorial-custom-role-powershell.md)
-- [Erőforrások kezelése a Azure PowerShell](../azure-resource-manager/manage-resources-powershell.md)
+- [Erőforrások kezelése a Azure PowerShell](../azure-resource-manager/management/manage-resources-powershell.md)

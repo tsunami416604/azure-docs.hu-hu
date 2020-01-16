@@ -12,20 +12,20 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 09/28/2018
 ms.author: genli
-ms.openlocfilehash: 921e97fa393a3005e3ba392502d291301df3d65c
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: d9732f232c5a7ec1e551f42fe0e8187e382aec6e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058068"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981865"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor kék képernyős hibát jelez
 Ez a cikk a Windows rendszerű virtuális gépek (VM-EK) Microsoft Azure-ben való indításakor felmerülő kék képernyős hibákat ismerteti. Ez a témakör segítséget nyújt a támogatási jegy adatainak gyűjtéséhez. 
 
 > [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
-## <a name="symptom"></a>Jelenség 
+## <a name="symptom"></a>Hibajelenség 
 
 Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](./boot-diagnostics.md)rendszerindítási funkcióit, a következő hibaüzenetek egyike jelenik meg egy kék képernyőn:
 
@@ -46,10 +46,10 @@ Több oka is lehet annak, hogy miért lenne leállítási hiba. A leggyakoribb o
 
 A probléma megoldásához először össze kell gyűjtenie az összeomláshoz tartozó memóriakép-fájlt, és kapcsolatba kell lépnie a memóriakép fájllal. A memóriakép-fájl összegyűjtéséhez kövesse az alábbi lépéseket:
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](../windows/troubleshoot-recovery-disks-portal.md). 
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](../windows/troubleshoot-recovery-disks-portal.md). 
 3. Távoli asztalról a helyreállítási virtuális gépre.
 
 ### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Memóriaképfájl megkeresése és támogatási jegy beküldése
@@ -59,9 +59,9 @@ A probléma megoldásához először össze kell gyűjtenie az összeomláshoz t
 
 Ha nem találja a memóriaképet, helyezze át a következő lépést a memóriakép és a soros konzol engedélyezéséhez.
 
-### <a name="enable-dump-log-and-serial-console"></a>Memóriakép napló és a soros konzol engedélyezése
+### <a name="enable-dump-log-and-serial-console"></a>A memóriakép és a soros konzol engedélyezése
 
-Memóriakép napló és a soros konzol engedélyezéséhez futtassa a következő szkriptet.
+A memóriakép és a soros konzol engedélyezéséhez futtassa az alábbi szkriptet.
 
 1. Nyisson meg egy rendszergazda jogú parancssor-munkamenetet (Futtatás rendszergazdaként).
 2. Futtassa a következő parancsfájlt:

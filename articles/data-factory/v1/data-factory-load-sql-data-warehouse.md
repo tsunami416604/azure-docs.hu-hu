@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
-ms.openlocfilehash: b5fec342cf9f228edce80e3f0e8fb5243196973d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 68afc782e13f967bc1b455434c3ae952baff81b9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74924158"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980924"
 ---
 # <a name="load-1-tb-into-azure-sql-data-warehouse-under-15-minutes-with-data-factory"></a>Töltse be az 1 TB-ot Azure SQL Data Warehouse 15 perc alatt Data Factory
 > [!NOTE]
@@ -45,7 +45,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
 >
 
 ## <a name="prerequisites"></a>Előfeltételek
-* Azure Blob Storage: Ez a kísérlet az Azure Blob Storaget (GRS) használja a TPC-H tesztelési adatkészlet tárolásához.  Ha nem rendelkezik Azure Storage-fiókkal, Ismerje meg, [hogyan hozhat létre egy Storage](../../storage/common/storage-quickstart-create-account.md)-fiókot.
+* Azure Blob Storage: Ez a kísérlet az Azure Blob Storaget (GRS) használja a TPC-H tesztelési adatkészlet tárolásához.  Ha nem rendelkezik Azure Storage-fiókkal, Ismerje meg, [hogyan hozhat létre egy Storage](../../storage/common/storage-account-create.md)-fiókot.
 * [TPC-h-](http://www.tpc.org/tpch/) adat: a TPC-h-t a tesztelési adatkészletként fogjuk használni.  Ehhez `dbgen`t kell használnia a TPC-H eszközkészletből, amely segítséget nyújt az adatkészlet létrehozásához.  Letöltheti `dbgen` a [TPC-eszközökről](http://www.tpc.org/tpc_documents_current_versions/current_specifications.asp) , és lefordíthatja saját maga is, vagy letöltheti a lefordított bináris fájlt a [githubról](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/TPCHTools).  Futtassa a dbgen. exe fájlt a következő parancsokkal, hogy 1 TB-os, `lineitem`-táblázathoz tartozó, 10 fájlból kiosztott adatfájlt létrehozzon:
 
   * `Dbgen -s 1000 -S **1** -C 10 -T L -v`
@@ -111,7 +111,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
   Az előfeltételként szükséges lépések elvégzésével most már készen áll a másolási tevékenység konfigurálására a másolás varázslóval.
 
 ## <a name="launch-copy-wizard"></a>A Másolás varázsló indítása
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Kattintson az **erőforrás létrehozása** elemre a bal felső sarokban, kattintson az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
 3. Az **új adatgyár** panelen:
 
@@ -123,7 +123,7 @@ Ez a cikk részletes útmutatást nyújt az adatAzure SQL Data Warehouseba való
       2. Az erőforráscsoport nevének megadásához válassza ki a **Create new** (Új létrehozása) lehetőséget.
    4. Válassza ki a Data Factory **helyét**.
    5. A panel alján jelölje be a **Pin to dashboard** (Rögzítés az irányítópulton) jelölőnégyzetet.  
-   6. Kattintson a  **Create** (Létrehozás) gombra.
+   6. Kattintson a **Create** (Létrehozás) gombra.
 4. A létrehozás befejezése után a **Data Factory** panel a következő képen látható módon jelenik meg:
 
    ![Data factory kezdőlap](media/data-factory-load-sql-data-warehouse/data-factory-home-page-copy-data.png)
