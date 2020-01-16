@@ -7,12 +7,12 @@ ms.service: firewall
 ms.topic: article
 ms.date: 11/19/2019
 ms.author: victorh
-ms.openlocfilehash: f233b1a60202b440abf34edd1c56eebaecba18e2
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74166997"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974502"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
@@ -20,7 +20,7 @@ Az Azure Firewall tűzfalnaplókkal monitorozható. Az Azure Firewall-erőforrá
 
 Ezen naplók egy része a portálról érhető el. A naplók elküldhetők [Azure monitor naplókba](../azure-monitor/insights/azure-networking-analytics.md), tárhelyre és Event Hubsre, és Azure monitor naplókban vagy különböző eszközök, például az Excel és a Power bi használatával is elemezhetők.
 
-A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén hasznosak lehetnek a riasztások és a gyors problémák észlelése érdekében. 
+A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén hasznosak lehetnek a riasztások és a gyors problémák észlelése érdekében.
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 
@@ -33,7 +33,7 @@ A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén has
    ```
    Category: application rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -56,7 +56,7 @@ A metrikák egyszerűek, és a közel valós idejű forgatókönyvek révén has
    ```
    Category: network rule logs.
    Time: log timestamp.
-   Properties: currently contains the full message. 
+   Properties: currently contains the full message.
    note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
    ```
 
@@ -83,9 +83,9 @@ A naplók tárolásához három lehetőség közül választhat:
 
    A tevékenységnaplók bejegyzéseit alapértelmezés szerint gyűjti a rendszer, ezeket az Azure Portalon tekintheti meg.
 
-   Az Azure- [tevékenység naplóinak](../azure-resource-manager/resource-group-audit.md) (korábbi nevén operatív naplók és naplók) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
+   Az Azure- [tevékenység naplóinak](../azure-resource-manager/management/view-activity-logs.md) (korábbi nevén operatív naplók és naplók) használatával megtekintheti az Azure-előfizetéséhez benyújtott összes műveletet.
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 A Azure Monitor mérőszámai olyan numerikus értékek, amelyek egy adott rendszer bizonyos aspektusait írják le egy adott időpontban. A metrikák gyűjtése percenként történik, és a rendszer a riasztásokhoz is hasznos, mivel azok gyakran mintavételezésre kerülnek. A riasztások gyorsan és viszonylag egyszerű logikával is elindíthatók.
 

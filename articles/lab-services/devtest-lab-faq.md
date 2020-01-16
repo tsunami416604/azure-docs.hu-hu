@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2019
 ms.author: spelluru
-ms.openlocfilehash: 4e95cc6a724c17402ed1ed0cda83377492787a3a
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: afd6ded6dc027e118694078f8b8eeadfe8dd80e4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644919"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981480"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
 Választ kaphat a Azure DevTest Labsával kapcsolatos leggyakoribb kérdésekre.
@@ -46,13 +46,13 @@ A Twitter-leírónk: [@azlabservices](https://twitter.com/azlabservices)
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
-- Tegye fel kérdéseit a GYIK végén. 
+- Tegye fel kérdéseit a GYIK végén.
 - Ha szélesebb közönséget szeretne elérni, tegye fel kérdéseit a [Azure DEVTEST Labs MSDN-fórumon](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureDevTestLabs). Folytassa a Azure DevTest Labs csapatával és a Közösség többi tagjával.
 - A szolgáltatások kéréseinek elküldéséhez küldje el kérelmeit és ötleteit [Azure DevTest Labs felhasználói hangra](https://feedback.azure.com/forums/320373-azure-devtest-labs).
 
 ### <a name="what-is-a-microsoft-account"></a>Mi az a Microsoft-fiók?
 A Microsoft-fiók a Microsoft-eszközökkel és-szolgáltatásokkal kapcsolatos szinte mindenhez használt fiók. Ez egy e-mail-cím és jelszó, amelyet a Skype, a Outlook.com, a OneDrive, a Windows Phone, az Azure és az Xbox Live szolgáltatásba való bejelentkezéshez használ. Egyetlen fiók azt jelenti, hogy a fájlok, a fényképek, a névjegyek és a beállítások bármely eszközön nyomon követhetik.
- 
+
 > [!NOTE]
 > Egy Microsoft-fiók Windows Live ID-ként lett meghívva.
 
@@ -145,18 +145,18 @@ Végső soron ugyanazokat a korlátozásokat kell alkalmazni a szervezeten belü
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
 ### <a name="how-do-i-create-a-lab-from-a-resource-manager-template"></a>Hogyan labort létrehozni egy Resource Manager-sablonból?
-Olyan GitHub-tárházat is kínálunk a [labor Azure Resource Manager sablonokhoz](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , amelyet telepítheti a-ként, vagy módosíthatja egyéni sablonok létrehozására a laborokhoz. Minden sablon tartalmaz egy hivatkozást a labor üzembe helyezéséhez, amely a saját Azure-előfizetésében van. Vagy testreszabhatja a sablont, és [telepítheti a PowerShell vagy az Azure CLI használatával](../azure-resource-manager/resource-group-template-deploy.md)is.
+Olyan GitHub-tárházat is kínálunk a [labor Azure Resource Manager sablonokhoz](https://azure.microsoft.com/resources/templates/101-dtl-create-lab) , amelyet telepítheti a-ként, vagy módosíthatja egyéni sablonok létrehozására a laborokhoz. Minden sablon tartalmaz egy hivatkozást a labor üzembe helyezéséhez, amely a saját Azure-előfizetésében van. Vagy testreszabhatja a sablont, és [telepítheti a PowerShell vagy az Azure CLI használatával](../azure-resource-manager/templates/deploy-powershell.md)is.
 
 
-### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Lehet-e minden virtuális gépet létrehozni egy közös erőforráscsoporthoz ahelyett, hogy a saját erőforráscsoporthoz tartozó mindegyik gép? 
-Igen, a labor tulajdonosaként engedélyezheti a labornak az erőforráscsoport lefoglalását vagy az Ön által megadott közös erőforráscsoporthoz létrehozott összes virtuális gépet. 
+### <a name="can-i-have-all-virtual-machines-to-be-created-in-a-common-resource-group-instead-having-each-machine-in-its-own-resource-group"></a>Lehet-e minden virtuális gépet létrehozni egy közös erőforráscsoporthoz ahelyett, hogy a saját erőforráscsoporthoz tartozó mindegyik gép?
+Igen, a labor tulajdonosaként engedélyezheti a labornak az erőforráscsoport lefoglalását vagy az Ön által megadott közös erőforráscsoporthoz létrehozott összes virtuális gépet.
 
 Különálló erőforráscsoport-forgatókönyv:
 -   A DevTest Labs új erőforráscsoportot hoz létre minden nyilvános/magánhálózati IP virtuális géphez, amelyet felvesz
 -   A DevTest Labs létrehoz egy erőforráscsoportot a megosztott IP-gépekhez, amelyek ugyanahhoz a mérethez tartoznak.
 
 Általános erőforráscsoport-forgatókönyv:
--   Az összes virtuális gép megpördült a megadott általános erőforráscsoport szerint. További információ [az erőforráscsoport kiosztásáról a laborban](https://aka.ms/RGControl). 
+-   Az összes virtuális gép megpördült a megadott általános erőforráscsoport szerint. További információ [az erőforráscsoport kiosztásáról a laborban](https://aka.ms/RGControl).
 
 ### <a name="how-do-i-maintain-a-naming-convention-across-my-devtest-labs-environment"></a>Hogyan fenntartani az DevTest Labs-környezet elnevezési konvencióját?
 Érdemes lehet kiterjeszteni az aktuális vállalati elnevezési konvenciókat az Azure-műveletekre, és az DevTest Labs-környezetben is konzisztensen kell lennie. A DevTest Labs telepítésekor javasoljuk, hogy konkrét kezdő házirendekkel rendelkezzen. Ezeket a házirendeket központi parancsfájlokkal és JSON-sablonokkal helyezheti üzembe a konzisztencia kikényszerítása érdekében. Az elnevezési házirendek az előfizetési szinten alkalmazott Azure-szabályzatok segítségével valósíthatók meg. A Azure Policy JSON-minták esetében lásd: [Azure Policy minták](../governance/policy/samples/index.md).
@@ -196,7 +196,7 @@ Amikor létrehoz egy virtuális gépet a DevTest Labs szolgáltatásban, engedé
 Két lehetőség közül választhat egyszerre több virtuális gép létrehozásához ugyanabból a sablonból:
 
 - Használhatja az [Azure DevOps Tasks bővítményt](https://marketplace.visualstudio.com/items?itemName=ms-azuredevtestlabs.tasks).
-- Létrehozhat [egy Resource Manager-sablont](devtest-lab-add-vm.md#save-azure-resource-manager-template) , amikor létrehoz egy virtuális gépet, és [üzembe helyezi a Resource Manager-sablont a Windows powershellből](../azure-resource-manager/resource-group-template-deploy.md).
+- Létrehozhat [egy Resource Manager-sablont](devtest-lab-add-vm.md#save-azure-resource-manager-template) , amikor létrehoz egy virtuális gépet, és [üzembe helyezi a Resource Manager-sablont a Windows powershellből](../azure-resource-manager/templates/deploy-powershell.md).
 - Azt is megadhatja, hogy a virtuális gép létrehozása során a gép legfeljebb egy példánya legyen létrehozva. Ha többet szeretne megtudni a virtuális gépek több példányának létrehozásáról, tekintse meg a [labor virtuális gép létrehozásáról](devtest-lab-add-vm.md)szóló dokumentációt.
 
 ### <a name="how-do-i-move-my-existing-azure-vms-into-my-devtest-labs-lab"></a>Hogyan a meglévő Azure-beli virtuális gépeket a DevTest Labs laborba?
@@ -252,7 +252,7 @@ foreach($labVM in $labVMs)
 }
 ```
 
-## <a name="environments"></a>Környezetek 
+## <a name="environments"></a>Környezetek
 
 ### <a name="how-can-i-use-resource-manager-templates-in-my-devtest-labs-environment"></a>Hogyan használhatom a Resource Manager-sablonokat a DevTest Labs-környezetben?
 A Resource Manager-sablonokat egy DevTest Labs-környezetbe helyezheti üzembe a [DevTest Labs környezetek funkciójában](devtest-lab-test-env.md) ismertetett lépések segítségével. Alapvetően a Resource Manager-sablonokat egy git-tárházba (Azure Repos vagy GitHub) tekintheti meg, és hozzáadhat egy [privát tárházat a sablonokhoz](devtest-lab-test-env.md) a laborban. Ez a forgatókönyv nem lehet hasznos, ha DevTest Labs-t használ a fejlesztői gépek üzemeltetésére, de hasznos lehet, ha olyan átmeneti környezetet épít, amely az éles környezetre jellemző.
@@ -264,7 +264,7 @@ Azt is érdemes megjegyezni, hogy a virtuális gépek száma a laborban vagy fel
 ### <a name="how-can-i-set-up-an-easily-repeatable-process-to-bring-my-custom-organizational-images-into-a-devtest-labs-environment"></a>Hogyan állíthatok be egy könnyen ismételhető folyamatot az egyéni szervezeti lemezképek DevTest Labs-környezetben való üzembe helyezéséhez?
 Tekintse [meg ezt a videót a rendszerkép-előállító mintán](https://sec.ch9.ms/ch9/8e8a/9ea0b8d4-b803-4f23-bca4-4808d9368e8a/dtlimagefactory_mid.mp4). Ez a forgatókönyv egy speciális forgatókönyv, és a megadott parancsfájlok csak példaként használható parancsfájlok. Ha bármilyen módosításra van szükség, felügyelni és karbantartani kell a környezetben használt parancsfájlokat.
 
-A rendszerkép-előállító létrehozásával kapcsolatos részletes információkért lásd: [Egyéni rendszerkép-előállító létrehozása Azure DevTest Labsban](image-factory-create.md). 
+A rendszerkép-előállító létrehozásával kapcsolatos részletes információkért lásd: [Egyéni rendszerkép-előállító létrehozása Azure DevTest Labsban](image-factory-create.md).
 
 ### <a name="what-is-the-difference-between-a-custom-image-and-a-formula"></a>Mi a különbség az Egyéni rendszerképek és a képletek között?
 Az egyéni rendszerkép felügyelt rendszerkép. A képlet olyan rendszerkép, amelyet további beállításokkal is konfigurálhat, majd mentheti és reprodukálhatja. Érdemes lehet egyéni rendszerképet használni, ha gyorsan szeretne létrehozni több környezetet ugyanazzal az alapszintű, megváltoztathatatlan képpel. A képletek jobbak lehetnek, ha a virtuális gép konfigurációját a legújabb BITS szolgáltatással szeretné reprodukálni egy virtuális hálózat vagy alhálózat részeként, vagy egy adott méretű virtuális gép esetén. Részletesebb magyarázatért tekintse meg az [Egyéni rendszerképek és képletek összehasonlítása a DevTest Labs-ben](devtest-lab-comparing-vm-base-image-types.md)című témakört.
@@ -343,19 +343,19 @@ A következő blogbejegyzések útmutatást és információkat nyújtanak az Az
 - [Új virtuális gép üzembe helyezése meglévő DevTest Labs-laborban az Azure DevOps Servicesből](https://www.visualstudiogeeks.com/blog/DevOps/Deploy-New-VM-To-Existing-AzureDevTestLab-From-VSTS)
 - [Az Azure DevOps Services kiadási felügyeletének használata a DevTest Labs folyamatos üzembe helyezéséhez](https://www.visualstudiogeeks.com/blog/DevOps/Use-VSTS-ReleaseManagement-to-Deploy-and-Test-in-AzureDevTestLabs)
 
-Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/resource-group-template-deploy.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
+Más folyamatos integrációs (CI)/Continuous kézbesítési (CD) eszközlánccal esetében ugyanezeket a forgatókönyveket [Azure PowerShell-parancsmagok](../azure-resource-manager/templates/deploy-powershell.md) és [.net SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.DevTestLabs/)-k használatával, [Azure Resource Manager-sablonokkal](https://azure.microsoft.com/resources/templates/) is elérheti. A [DevTest Labs REST API](https://aka.ms/dtlrestapis) -jait is használhatja a toolchain való integráláshoz.
 
 ## <a name="networking"></a>Hálózatkezelés
 
 ### <a name="when-should-i-create-a-new-virtual-network-for-my-devtest-labs-environment-vs-using-an-existing-virtual-network"></a>Mikor hozzon létre egy új virtuális hálózatot a DevTest Labs-környezethez és egy meglévő virtuális hálózat használatával?
-Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben való használatra kiosztott IP-címtartomány ne legyen feldarabolva. 
+Ha a virtuális gépeknek kapcsolatba kell lépniük a meglévő infrastruktúrával, akkor érdemes lehet egy meglévő virtuális hálózatot használni a DevTest Labs-környezetben. Ha a ExpressRoute-t használja, érdemes lehet minimálisra csökkenteni a virtuális hálózatok/alhálózatok mennyiségét, hogy az előfizetésekben való használatra kiosztott IP-címtartomány ne legyen feldarabolva.
 
-Vegye fontolóra a VNet-társítási minta használatát ([sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) is. Ez a megközelítés lehetővé teszi az vnet/alhálózati kommunikációt az előfizetések között. Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal. 
+Vegye fontolóra a VNet-társítási minta használatát ([sugaras modell](/azure/architecture/reference-architectures/hybrid-networking/hub-spoke)) is. Ez a megközelítés lehetővé teszi az vnet/alhálózati kommunikációt az előfizetések között. Ellenkező esetben minden DevTest Labs-környezet rendelkezhet saját virtuális hálózattal.
 
 Az előfizetéshez tartozó virtuális hálózatok száma [korlátozott](../azure-resource-manager/management/azure-subscription-service-limits.md) . Az alapértelmezett érték 50, de ez a korlát 100-re is kiemelhető.
 
 ### <a name="when-should-i-use-a-shared-ip-vs-public-ip-vs-private-ip"></a>Mikor érdemes megosztott IP-címet vagy nyilvános IP-címet vagy magánhálózati IP-címet használni?
- 
+
 Ha helyek közötti VPN-t vagy expressz útvonalat használ, érdemes lehet privát IP-címeket használni, hogy a gépek a belső hálózaton keresztül is elérhetők legyenek, és a nyilvános interneten keresztül elérhetetlenek legyenek.
 
 > [!NOTE]
@@ -383,15 +383,15 @@ Az egyik lehetőség, hogy a virtuális hálózat neve időszakokat tartalmaz. H
 ### <a name="why-do-i-get-a-parent-resource-not-found-error-when-i-provision-a-vm-from-powershell"></a>Miért jelenik meg "a szülő-erőforrás nem található" hibaüzenet, amikor a virtuális gépet kiépítem a PowerShellből?
 Ha az egyik erőforrás szülő egy másik erőforráshoz tartozik, a szülő erőforrásnak léteznie kell a gyermek erőforrás létrehozása előtt. Ha a szülő erőforrás nem létezik, egy **ParentResourceNotFound** üzenet jelenik meg. Ha nem ad meg függőséget a fölérendelt erőforráshoz, előfordulhat, hogy a gyermek erőforrást a szülő előtt kell telepíteni.
 
-A virtuális gépek alárendelt erőforrások egy erőforráscsoport laborjában. Ha Resource Manager-sablonok használatával helyez üzembe virtuális gépeket a PowerShell használatával, a PowerShell-parancsfájlban megadott erőforráscsoport neve legyen a labor erőforráscsoport-neve. További információ: [gyakori Azure-telepítési hibák elhárítása](../azure-resource-manager/resource-manager-common-deployment-errors.md).
+A virtuális gépek alárendelt erőforrások egy erőforráscsoport laborjában. Ha Resource Manager-sablonok használatával helyez üzembe virtuális gépeket a PowerShell használatával, a PowerShell-parancsfájlban megadott erőforráscsoport neve legyen a labor erőforráscsoport-neve. További információ: [gyakori Azure-telepítési hibák elhárítása](../azure-resource-manager/templates/common-deployment-errors.md).
 
 ### <a name="where-can-i-find-more-error-information-if-a-vm-deployment-fails"></a>Hol találhatok további hibaüzeneteket, ha a virtuális gép telepítése meghiúsul?
 A virtuális gépek üzembe helyezésével kapcsolatos hibák rögzítése a tevékenység naplófájljaiban történik. A labor virtuális gépek tevékenységének naplói a **naplók** vagy a **virtuálisgép-diagnosztika** területen találhatók a labor virtuális gép lapjának erőforrás menüjében (a lap akkor jelenik meg, ha kiválasztja a virtuális gépet a saját virtuális gépek listájából).
 
-Előfordulhat, hogy az üzembe helyezési hiba a virtuális gép telepítésének megkezdése előtt történik. Ilyen például, ha a virtuális géppel létrehozott erőforrás előfizetési korlátja túllépve. Ebben az esetben a rendszer rögzíti a hiba részleteit a labor szintű tevékenységek naplóiban. A tevékenységek naplói a **konfiguráció és a házirendek** beállítások alján találhatók. További információ a Tevékenységnaplók Azure-beli használatáról: a [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek naplózása érdekében](../azure-resource-manager/resource-group-audit.md).
+Előfordulhat, hogy az üzembe helyezési hiba a virtuális gép telepítésének megkezdése előtt történik. Ilyen például, ha a virtuális géppel létrehozott erőforrás előfizetési korlátja túllépve. Ebben az esetben a rendszer rögzíti a hiba részleteit a labor szintű tevékenységek naplóiban. A tevékenységek naplói a **konfiguráció és a házirendek** beállítások alján találhatók. További információ a Tevékenységnaplók Azure-beli használatáról: a [tevékenység-naplók megtekintése az erőforrásokon végzett műveletek naplózása érdekében](../azure-resource-manager/management/view-activity-logs.md).
 
 ### <a name="why-do-i-get-location-is-not-available-for-resource-type-error-when-trying-to-create-a-lab"></a>Miért kapok "a hely nem érhető el az erőforrástípus" hibaüzenetet, amikor egy labort próbálok létrehozni?
-A labor létrehozásakor a következőhöz hasonló hibaüzenet jelenhet meg: 
+A labor létrehozásakor a következőhöz hasonló hibaüzenet jelenhet meg:
 
 ```
 The provided location 'australiacentral' is not available for resource type 'Microsoft.KeyVault/vaults'. List of available regions for the resource type is 'northcentralus,eastus,northeurope,westeurope,eastasia,southeastasia,eastus2,centralus,southcentralus,westus,japaneast,japanwest,australiaeast,australiasoutheast,brazilsouth,centralindia,southindia,westindia,canadacentral,canadaeast,uksouth,ukwest,westcentralus,westus2,koreacentral,koreasouth,francecentral,southafricanorth
@@ -400,9 +400,7 @@ The provided location 'australiacentral' is not available for resource type 'Mic
 A hiba elhárításához hajtsa végre az alábbi lépések egyikét:
 
 #### <a name="option-1"></a>1\. lehetőség
-Győződjön meg arról, hogy az Azure-régiókban rendelkezésre áll-e az erőforrástípus az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/) lapon. Ha az erőforrástípus nem érhető el egy adott régióban, a DevTest Labs nem támogatja a laborok létrehozását az adott régióban. A tesztkörnyezet létrehozásakor válasszon másik régiót. 
+Győződjön meg arról, hogy az Azure-régiókban rendelkezésre áll-e az erőforrástípus az [elérhető termékek régiónként](https://azure.microsoft.com/global-infrastructure/services/) lapon. Ha az erőforrástípus nem érhető el egy adott régióban, a DevTest Labs nem támogatja a laborok létrehozását az adott régióban. A tesztkörnyezet létrehozásakor válasszon másik régiót.
 
 #### <a name="option-2"></a>2\. lehetőség
-Ha az erőforrás típusa elérhető a régióban, ellenőrizze, hogy regisztrálva van-e az előfizetésében. Az előfizetés tulajdonosi szintjén végezhető el, ahogy az [ebben a cikkben](../azure-resource-manager/resource-manager-supported-services.md)is látható. 
-
-
+Ha az erőforrás típusa elérhető a régióban, ellenőrizze, hogy regisztrálva van-e az előfizetésében. Az előfizetés tulajdonosi szintjén végezhető el, ahogy az [ebben a cikkben](../azure-resource-manager/management/resource-providers-and-types.md)is látható.

@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: conditional-access
 ms.topic: conceptual
-ms.date: 12/06/2019
+ms.date: 01/14/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 83a839d75757bcee14d7f696d2d11d1d7d8fa4cc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 589d8219681304242585c9fed33a4e3d364909ec
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422837"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978904"
 ---
 # <a name="what-are-security-defaults"></a>Mik azok a biztonsági alapértékek?
 
@@ -28,7 +28,10 @@ A Microsoft mindenki számára elérhetővé teszi a biztonsági beállításoka
 
 ![Képernyőkép a Azure Portalról a biztonsági Alapértelmezések engedélyezésére szolgáló váltógomb használatával](./media/concept-fundamentals-security-defaults/security-defaults-azure-ad-portal.png)
  
-A következő biztonsági konfigurációk lesznek bekapcsolva a bérlőben. 
+> [!TIP]
+> Ha a bérlőt 2019 október 22-én vagy azt követően hozták létre, lehetséges, hogy az új, biztonsági beállításokkal kapcsolatos alapértelmezett viselkedés tapasztalható, és a bérlőben már engedélyezve vannak a biztonsági alapértékek. Az összes felhasználó védelme érdekében a biztonsági alapértelmezéseket a rendszer az összes létrehozott új bérlőre bevezeti.
+
+A biztonsági alapbeállítások elérhetővé tételéről további részleteket az Alex Weinert blogbejegyzésében talál, amely a [biztonsági beállítások](https://techcommunity.microsoft.com/t5/azure-active-directory-identity/introducing-security-defaults/ba-p/1061414)megadását ismerteti.
 
 ## <a name="unified-multi-factor-authentication-registration"></a>Egységesített Multi-Factor Authentication regisztráció
 

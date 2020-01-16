@@ -4,18 +4,18 @@ description: Az Azure Blockchain szolgáltatás adathozzáférési és biztonsá
 ms.date: 11/22/2019
 ms.topic: conceptual
 ms.reviewer: janders
-ms.openlocfilehash: e1a40acfec6b0dc5cdf21fb84b341b6b4987797a
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: 06bf4e0fa4037b07505a4f816fc7af56c14576d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455709"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982229"
 ---
 # <a name="azure-blockchain-service-security"></a>Az Azure Blockchain szolgáltatás biztonsága
 
 Az Azure Blockchain Service számos Azure-funkció segítségével tartja biztonságban és könnyen elérhetően az adatokat. Az adatbiztonságért az elkülönítés, a titkosítás és a hitelesítés felel.
 
-## <a name="isolation"></a>Elkülönítés
+## <a name="isolation"></a>Elszigetelés
 
 Az Azure Blockchain szolgáltatás erőforrásai elkülönítettek egy magánhálózati virtuális hálózaton. Minden tranzakció és érvényesítési csomópont egy virtuális gép (VM). Az egyik virtuális hálózatban lévő virtuális gépek nem tudnak közvetlenül kommunikálni egy másik virtuális hálózatban lévő virtuális gépekkel. Az elkülönítés biztosítja, hogy a kommunikáció a virtuális hálózaton belül maradjon. Az Azure Virtual Network elkülönítésével kapcsolatos további információkért lásd: [elkülönítés az Azure nyilvános felhőben](../../security/fundamentals/isolation-choices.md#networking-isolation).
 
@@ -23,9 +23,9 @@ Az Azure Blockchain szolgáltatás erőforrásai elkülönítettek egy magánhá
 
 ## <a name="encryption"></a>Titkosítás
 
-A felhasználói adattárolók tárolása az Azure Storage szolgáltatásban történik. A felhasználói adatok titkosítása mozgásban és nyugalmi állapotban a biztonság és a titkosság érdekében történik. További információkért lásd: az [Azure Storage biztonsági útmutatója](../../storage/common/storage-security-guide.md).
+A felhasználói adattárolók tárolása az Azure Storage szolgáltatásban történik. A felhasználói adatok titkosítása mozgásban és nyugalmi állapotban a biztonság és a titkosság érdekében történik. További információkért lásd: az [Azure Storage biztonsági útmutatója](../../storage/blobs/security-recommendations.md).
 
-## <a name="authentication"></a>Authentication
+## <a name="authentication"></a>Hitelesítés
 
 A tranzakciókat RPC-végponton keresztül lehet elküldeni a blockchain-csomópontoknak. Az ügyfelek egy tranzakciós csomóponttal kommunikálnak egy fordított proxykiszolgáló használatával, amely kezeli a felhasználói hitelesítést, és titkosítja az adattitkosítást az SSL protokollon keresztül.
 

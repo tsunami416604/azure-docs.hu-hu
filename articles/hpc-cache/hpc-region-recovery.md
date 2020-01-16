@@ -6,12 +6,12 @@ ms.service: hpc-cache
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.author: rohogue
-ms.openlocfilehash: e0ff9bc66c7d185f8fe07b4b4574833fcd7e2604
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 4eb203915c8fedbef6af0e5a3bc14eff1835a92b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73582082"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982165"
 ---
 # <a name="use-multiple-caches-for-regional-failover-recovery"></a>Több gyorsítótár használata a regionális feladatátvétel helyreállításához
 
@@ -37,7 +37,7 @@ A lehetséges feladatátvételre előkészített gyorsítótár beállításáho
    1. Csatlakoztatási parancs gyorsítótár-ügyfelek általi használatra
 
    > [!NOTE]
-   > Az Azure HPC cache programozott módon hozható létre [Azure Resource Manager sablonnal](../azure-resource-manager/template-deployment-overview.md) vagy közvetlenül az API-hoz való hozzáféréssel. Részletekért forduljon az Azure HPC cache csapatához.
+   > Az Azure HPC cache programozott módon hozható létre [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) vagy közvetlenül az API-hoz való hozzáféréssel. Részletekért forduljon az Azure HPC cache csapatához.
 
 ## <a name="failover-example"></a>Példa feladatátvételre
 
@@ -55,7 +55,7 @@ Ha az eredeti ügyfelek érintettek, hozzon létre új ügyfeleket az USA 2. nyu
 
 Minden ügyfélnek csatlakoztatnia kell az új gyorsítótárat, még akkor is, ha az ügyfeleket nem befolyásolta a régió meghibásodása. Az új gyorsítótár a régitől eltérő csatlakoztatási címmel rendelkezik.
 
-## <a name="learn-more"></a>Részletek
+## <a name="learn-more"></a>További információk
 
 Az Azure-alkalmazás architektúrájának útmutatója további információkat tartalmaz arról, hogyan lehet [helyreállítani az egész régióra kiterjedő szolgáltatás megszakadását](<https://docs.microsoft.com/azure/architecture/resiliency/recovery-loss-azure-region>).
 <!-- this should be an internal link instead of a URL but I can't find the tree  -->

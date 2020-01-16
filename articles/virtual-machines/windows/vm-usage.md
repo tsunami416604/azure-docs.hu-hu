@@ -15,18 +15,18 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/04/2017
 ms.author: memccror
-ms.openlocfilehash: d574c5eef15c21d3d490bcfe682b87bae2856f1d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2aa175d97787d82aae062a95ed519f35ff65816b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75353715"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982257"
 ---
 # <a name="understanding-azure-virtual-machine-usage"></a>Az Azure-beli virtuális gépek használatának ismertetése
-Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../../billing/billing-understand-your-bill.md)című rész ismerteti.
+Az Azure-beli használati adatok elemzésével hatékony fogyasztási adatokat nyerhetnek ki – olyan elemzéseket készíthet, amelyek lehetővé teszik a szervezeten belüli jobb költséghatékonyságot és kiosztást. Ez a dokumentum részletesen ismerteti az Azure-beli számítási felhasználás részleteit. Az Azure általános használatának részletes ismertetését a [számla megismerése](../../cost-management-billing/understand/review-individual-bill.md)című rész ismerteti.
 
 ## <a name="download-your-usage-details"></a>A használati adatok letöltése
-A kezdéshez [töltse le a használati adatokat](../../billing/billing-download-azure-invoice-daily-usage-date.md). Az alábbi táblázat a Azure Resource Manager használatával üzembe helyezett Virtual Machines használatának definícióját és példáit tartalmazza. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül üzembe helyezett virtuális gépekről.
+A kezdéshez [töltse le a használati adatokat](../../cost-management-billing/manage/download-azure-invoice-daily-usage-date.md). Az alábbi táblázat a Azure Resource Manager használatával üzembe helyezett Virtual Machines használatának definícióját és példáit tartalmazza. Ez a dokumentum nem tartalmaz részletes információkat a klasszikus modellen keresztül üzembe helyezett virtuális gépekről.
 
 
 | Mezők             | Jelentés                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Példa értékek                                                                                                                                                                                                                                                                                                                                                   |
@@ -132,7 +132,7 @@ A ComputeHR a számítási órákra vonatkozik, amely a mögöttes infrastruktú
 ### <a name="how-do-i-know-if-i-am-charged-for-premium-software"></a>Hogyan tudni, hogy a prémium szintű szoftverekért kell fizetni?
 Az [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/category/compute)-en tekintse meg, hogy melyik virtuálisgép-rendszerkép megfelel az igényeinek. A rendszerképnek a szoftver csomagjának aránya van. Ha "ingyenes" érték jelenik meg a díjszabásban, a szoftverre nem vonatkozik további díj. 
 ### <a name="what-is-the-difference-between-microsoftclassiccompute-and-microsoftcompute-in-the-consumed-service"></a>Mi a különbség a Microsoft. ClassicCompute és a Microsoft. számítás között a felhasznált szolgáltatásban?
-A Microsoft. ClassicCompute az Azure Service Manager használatával üzembe helyezett klasszikus erőforrásokat képviseli. Ha a Resource Managerrel végzi a telepítést, akkor a Microsoft. számítás a felhasználható szolgáltatásban van feltöltve. További információ az [Azure üzembe helyezési modelljeiről](../../azure-resource-manager/resource-manager-deployment-model.md).
+A Microsoft. ClassicCompute az Azure Service Manager használatával üzembe helyezett klasszikus erőforrásokat képviseli. Ha a Resource Managerrel végzi a telepítést, akkor a Microsoft. számítás a felhasználható szolgáltatásban van feltöltve. További információ az [Azure üzembe helyezési modelljeiről](../../azure-resource-manager/management/deployment-models.md).
 ### <a name="why-is-the-instanceid-field-blank-for-my-virtual-machine-usage"></a>Miért üres a InstanceID mező a virtuális gépek használatakor?
 Ha a klasszikus üzemi modellen keresztül végzi a telepítést, a InstanceID karakterlánc nem érhető el.
 ### <a name="why-are-the-tags-for-my-vms-not-flowing-to-the-usage-details"></a>Miért nem áramlanak a használati adatokba a virtuális gépekhez tartozó címkék?
@@ -143,5 +143,5 @@ A klasszikus modellben az erőforrások számlázása a Cloud Service szintjén 
 A Premium Storage-kompatibilis virtuális gépek számlázása ugyanolyan sebességgel történik, mint a nem prémium szintű Storage-kompatibilis virtuális gépek. Csak a tárolási költségek különböznek. További információért látogasson el a [Storage díjszabási oldalára](https://azure.microsoft.com/pricing/details/storage/unmanaged-disks/) .
 
 ## <a name="next-steps"></a>Következő lépések
-A használati adatokkal kapcsolatos további információkért lásd: [Microsoft Azure számlájának ismertetése.](../../billing/billing-understand-your-bill.md)
+A használati adatokkal kapcsolatos további információkért lásd: [Microsoft Azure számlájának ismertetése.](../../cost-management-billing/understand/review-individual-bill.md)
 

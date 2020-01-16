@@ -14,16 +14,16 @@ ms.workload: identity
 ms.date: 11/26/2019
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 340717242d642475217bbe87fd96be66ec9b2e2d
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554222"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979342"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
-A Microsoft azt javasolja, hogy szerepköralapú hozzáférés-vezérléssel (RBAC) kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/resource-manager-deployment-model.md).
+A Microsoft azt javasolja, hogy szerepköralapú hozzáférés-vezérléssel (RBAC) kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
 Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
 
@@ -62,7 +62,7 @@ Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felha
 
 ### <a name="differences-for-guest-users"></a>A vendég felhasználói közötti különbségek
 
-A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegye figyelembe a következő helyzetet:
+A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Gondolkodjon el az alábbi megoldáson:
 
 - Az A felhasználó Azure AD-fiókkal (munkahelyi vagy iskolai fiókkal) az Azure-előfizetések szolgáltatás-rendszergazdája.
 - A B felhasználó Microsoft-fiók rendelkezik.
@@ -89,7 +89,7 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 1. Vegyen fel egy pipát az eltávolítani kívánt társ-rendszergazda mellett.
 
-1. Kattintson az **Eltávolítás**gombra.
+1. Kattintson az **Eltávolítás** elemre.
 
 1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
 
@@ -101,7 +101,7 @@ Csak a fiók rendszergazdája módosíthatja az előfizetés szolgáltatás-rend
 
 A szolgáltatásadminisztrátort kétféleképpen módosíthatja. A **Azure Portal** vagy a **fiók központban**is megváltoztathatja.
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 1. Győződjön meg arról, hogy a forgatókönyvek támogatottak, ha ellenőrzi a szolgáltatás-rendszergazdák módosításának korlátozásait.
 
@@ -152,7 +152,7 @@ A Microsoft-fiókokkal és az Azure AD-fiókokkal kapcsolatos további informác
 
 ## <a name="view-the-account-administrator"></a>A fiók rendszergazdájának megtekintése
 
-A fiók rendszergazdája az a felhasználó, aki először regisztrált az Azure-előfizetésre, és felelős az előfizetés számlázási tulajdonosának. Az előfizetés rendszergazdai fiókjának módosításához tekintse meg az [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../billing/billing-subscription-transfer.md)című témakört.
+A fiók rendszergazdája az a felhasználó, aki először regisztrált az Azure-előfizetésre, és felelős az előfizetés számlázási tulajdonosának. Az előfizetés rendszergazdai fiókjának módosításához tekintse meg az [Azure-előfizetés tulajdonjogának átruházása másik fiókra](../cost-management-billing/manage/billing-subscription-transfer.md)című témakört.
 
 A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
@@ -170,4 +170,4 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 
 * [A különböző Azure-beli szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
 * [Azure-erőforrásokhoz való hozzáférés kezelése az RBAC és az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
-* [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](../billing/billing-add-change-azure-subscription-administrator.md)
+* [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)

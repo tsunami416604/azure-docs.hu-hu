@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 51b4ef06806e2a6647975a373f1bc4bd58740b7f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75355572"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974154"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -24,7 +24,7 @@ A virtuális gépek igény szerinti (JIT) elérésével zárolhatja az Azure-bel
 
 
 > [!NOTE]
-> Security Center az igény szerinti virtuálisgép-hozzáférés jelenleg csak a Azure Resource Manager használatával telepített virtuális gépeket támogatja. Ha többet szeretne megtudni a klasszikus és a Resource Manager-alapú üzemi modellekről, tekintse meg a Azure Resource Manager és a [klasszikus telepítést](../azure-resource-manager/resource-manager-deployment-model.md)ismertető témakört.
+> Security Center az igény szerinti virtuálisgép-hozzáférés jelenleg csak a Azure Resource Manager használatával telepített virtuális gépeket támogatja. Ha többet szeretne megtudni a klasszikus és a Resource Manager-alapú üzemi modellekről, tekintse meg a Azure Resource Manager és a [klasszikus telepítést](../azure-resource-manager/management/deployment-models.md)ismertető témakört.
 
 ## <a name="attack-scenario"></a>Támadási forgatókönyv
 

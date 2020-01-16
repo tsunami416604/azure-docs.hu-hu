@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/27/2018
 ms.author: johnkem
 ms.subservice: metrics
-ms.openlocfilehash: dd02fe17d5225a63f352069b3c6c5a47b7cbcb73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c1cdf912f9a1e4e8ae92baa4381e9705702136f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75397277"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977590"
 ---
 # <a name="create-a-classic-metric-alert-with-a-resource-manager-template"></a>Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal
 Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](../../azure-resource-manager/templates/template-syntax.md) az Azure metrikai riasztások konfigurálásához. Ez lehetővé teszi a riasztások automatikus beállítását az erőforrásokon a létrehozásuk során, így biztosítva, hogy az összes erőforrás megfelelően legyen figyelve.
@@ -27,7 +27,7 @@ Ez a cikk bemutatja, hogyan konfigurálhat egy [Azure Resource Manager sablont](
 Az alapszintű lépések a következők:
 
 1. Hozzon létre egy sablont JSON-fájlként, amely leírja, hogyan hozza létre a riasztást.
-2. [A sablon üzembe helyezése bármely üzembe helyezési módszer használatával](../../azure-resource-manager/resource-group-template-deploy.md).
+2. [A sablon üzembe helyezése bármely üzembe helyezési módszer használatával](../../azure-resource-manager/templates/deploy-powershell.md).
 
 Az alábbiakban bemutatjuk, hogyan hozhat létre először egy Resource Manager-sablont a riasztásokhoz, majd egy másik erőforrás létrehozásakor egy riasztáshoz.
 

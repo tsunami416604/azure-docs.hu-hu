@@ -8,26 +8,26 @@ author: bwren
 ms.author: bwren
 ms.date: 01/09/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 517b9768c1df928012c34a4dcdd2dfa6b0c94d0c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d583f47a9c83abb1119262a2a6b70292cfa4ab69
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75401584"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977699"
 ---
 # <a name="creating-a-management-solution-file-in-azure-preview"></a>Felügyeleti megoldás fájljának létrehozása az Azure-ban (előzetes verzió)
 > [!NOTE]
 > Ez az előzetes dokumentáció az Azure-ban jelenleg előzetes verzióban elérhető felügyeleti megoldások létrehozásához. Az alább ismertetett sémák változhatnak.  
 
-Az Azure-beli felügyeleti megoldások [Resource Manager-sablonokként](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)valósulnak meg.  A felügyeleti megoldások létrehozásával kapcsolatos legfontosabb feladat a [sablon](../../azure-resource-manager/templates/template-syntax.md)készítésének megtanulása.  Ez a cikk a megoldásokhoz használt sablonok egyedi részleteit és a tipikus megoldási erőforrások konfigurálásának módját ismerteti.
+Az Azure-beli felügyeleti megoldások [Resource Manager-sablonokként](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)valósulnak meg.  A felügyeleti megoldások létrehozásával kapcsolatos legfontosabb feladat a [sablon](../../azure-resource-manager/templates/template-syntax.md)készítésének megtanulása.  Ez a cikk a megoldásokhoz használt sablonok egyedi részleteit és a tipikus megoldási erőforrások konfigurálásának módját ismerteti.
 
 
 ## <a name="tools"></a>Eszközök
 
 Bármely szövegszerkesztővel dolgozhat a megoldás fájljaival, de javasoljuk, hogy a Visual Studióban vagy a Visual Studio Code-ban elérhető funkciókat a következő cikkekben leírtak szerint használja fel.
 
-- [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)
-- [Azure Resource Manager-sablonok használata a Visual Studio Code-ban](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)
+- [Azure-erőforráscsoportok létrehozása és üzembe helyezése a Visual Studióval](../../azure-resource-manager/templates/create-visual-studio-deployment-project.md)
+- [Azure Resource Manager-sablonok használata a Visual Studio Code-ban](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)
 
 
 
@@ -159,7 +159,7 @@ Az [erőforrások](../../azure-resource-manager/templates/template-syntax.md#res
 
 
 ### <a name="dependencies"></a>Függőségek
-A **dependsOn** elem egy másik erőforrás [függőségét](../../azure-resource-manager/resource-group-define-dependencies.md) határozza meg.  Ha a megoldás telepítve van, a rendszer nem hozza létre az erőforrást, amíg az összes függőségét nem hozták létre.  Előfordulhat például, hogy a megoldás [elindít egy runbook](solutions-resources-automation.md#runbooks) , ha a [feladatot erőforrással](solutions-resources-automation.md#automation-jobs)telepíti.  A runbook erőforrástól függ, hogy a runbook létrejött-e a feladatokhoz.
+A **dependsOn** elem egy másik erőforrás [függőségét](../../azure-resource-manager/templates/define-resource-dependency.md) határozza meg.  Ha a megoldás telepítve van, a rendszer nem hozza létre az erőforrást, amíg az összes függőségét nem hozták létre.  Előfordulhat például, hogy a megoldás [elindít egy runbook](solutions-resources-automation.md#runbooks) , ha a [feladatot erőforrással](solutions-resources-automation.md#automation-jobs)telepíti.  A runbook erőforrástól függ, hogy a runbook létrejött-e a feladatokhoz.
 
 ### <a name="log-analytics-workspace-and-automation-account"></a>Log Analytics munkaterület és Automation-fiók
 A felügyeleti megoldásokhoz [log Analytics munkaterületre](../../azure-monitor/platform/manage-access.md) van szükség, hogy a runbookok és a kapcsolódó erőforrásokat tartalmazó nézeteket és [Automation-fiókot](../../automation/automation-security-overview.md#automation-account-overview) tartalmazzon.  Ezeknek elérhetőnek kell lenniük a megoldás erőforrásainak létrehozása előtt, és a megoldásban nem kell őket meghatározni.  A felhasználónak [meg kell adnia egy munkaterületet és fiókot](solutions.md#log-analytics-workspace-and-automation-account) a megoldás telepítésekor, de a szerzőnek a következő szempontokat kell figyelembe vennie.
@@ -200,7 +200,7 @@ Minden megoldáshoz szükség van egy erőforrás-bejegyzésre az **erőforráso
 
 
 ### <a name="dependencies"></a>Függőségek
-A megoldás erőforrásának a megoldás létrehozása [előtt meg kell egyeznie a megoldás](../../azure-resource-manager/resource-group-define-dependencies.md) minden más erőforrásával.  Ezt úgy teheti meg, hogy hozzáad egy bejegyzést az egyes erőforrásokhoz a **dependsOn** elemben.
+A megoldás erőforrásának a megoldás létrehozása [előtt meg kell egyeznie a megoldás](../../azure-resource-manager/templates/define-resource-dependency.md) minden más erőforrásával.  Ezt úgy teheti meg, hogy hozzáad egy bejegyzést az egyes erőforrásokhoz a **dependsOn** elemben.
 
 ### <a name="properties"></a>Tulajdonságok
 A megoldás erőforrásának tulajdonságai a következő táblázatban láthatók.  Ez magában foglalja a megoldás által hivatkozott és a megoldásban foglalt erőforrásokat, amely meghatározza, hogy az erőforrás hogyan legyen felügyelve a megoldás telepítése után.  A megoldásban szereplő összes erőforrásnak szerepelnie kell a **referencedResources** vagy a **containedResources** tulajdonságban.

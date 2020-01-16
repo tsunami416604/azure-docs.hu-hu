@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: estfan, logicappspm
 ms.topic: conceptual
 ms.date: 07/26/2019
-ms.openlocfilehash: 2738e7be6ae40afd5f0d94f1ad32b7b4cda0417f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cdabbd5f527934492ce7ff37ae7d0f756d91fc1
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453411"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979418"
 ---
 # <a name="create-and-manage-integration-accounts-for-b2b-enterprise-integrations-in-azure-logic-apps"></a>Integrációs fiókok létrehozása és kezelése a B2B vállalati integrációk Azure Logic Apps
 
@@ -77,7 +77,7 @@ Ehhez a feladathoz a Azure Portal az ebben a szakaszban, [Azure PowerShell](/pow
 
 ## <a name="link-to-logic-app"></a>Hivatkozás a logikai alkalmazásra
 
-Ahhoz, hogy a logikai alkalmazások hozzáférjenek a B2B-összetevőket tartalmazó integrációs fiókhoz, először csatolnia kell az integrációs fiókot a logikai alkalmazáshoz. Mindkét logikai alkalmazásnak és integrációs fióknak ugyanabban a régióban kell lennie. A feladat elvégzéséhez használhatja a Azure Portal. Ha a Visual studiót használja, és a logikai alkalmazás egy [Azure erőforráscsoport-projektben](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md)van, akkor [a Visual Studio használatával összekapcsolhatja a logikai alkalmazást egy integrációs fiókkal](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
+Ahhoz, hogy a logikai alkalmazások hozzáférjenek a B2B-összetevőket tartalmazó integrációs fiókhoz, először csatolnia kell az integrációs fiókot a logikai alkalmazáshoz. Mindkét logikai alkalmazásnak és integrációs fióknak ugyanabban a régióban kell lennie. A feladat elvégzéséhez használhatja a Azure Portal. Ha a Visual studiót használja, és a logikai alkalmazás egy [Azure erőforráscsoport-projektben](../azure-resource-manager/templates/create-visual-studio-deployment-project.md)van, akkor [a Visual Studio használatával összekapcsolhatja a logikai alkalmazást egy integrációs fiókkal](../logic-apps/manage-logic-apps-with-visual-studio.md#link-integration-account).
 
 1. A Azure Portal keresse meg és nyissa meg a logikai alkalmazást.
 

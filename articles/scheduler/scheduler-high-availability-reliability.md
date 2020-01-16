@@ -9,19 +9,19 @@ ms.reviewer: klam
 ms.assetid: 5ec78e60-a9b9-405a-91a8-f010f3872d50
 ms.topic: article
 ms.date: 08/16/2016
-ms.openlocfilehash: 3cc15d173ad735d77505f636bd230e0876371271
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 6a729df7eb08f8dacff4b0d35d011854208510ff
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300937"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979283"
 ---
 # <a name="high-availability-and-reliability-for-azure-scheduler"></a>Magas rendelkezésre állás és megbízhatóság az Azure Schedulerben
 
 > [!IMPORTANT]
 > [Azure Logic apps](../logic-apps/logic-apps-overview.md) az Azure Scheduler cseréje [folyamatban](../scheduler/migrate-from-scheduler-to-logic-apps.md#retire-date)van. Ha továbbra is szeretne dolgozni a Feladatütemezőben beállított feladatokkal, akkor a lehető leghamarabb [telepítse át Azure Logic apps](../scheduler/migrate-from-scheduler-to-logic-apps.md) . 
 
-Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/guide/pillars#availability) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
+Az Azure Scheduler [magas rendelkezésre állást](https://docs.microsoft.com/azure/architecture/framework/#resiliency) és megbízhatóságot biztosít a feladatokhoz. További információ: [a Feladatütemező SLA](https://azure.microsoft.com/support/legal/sla/scheduler)-ja.
 
 ## <a name="high-availability"></a>Magas rendelkezésre állás
 
@@ -70,7 +70,7 @@ Az alternatív művelet Művelettípus eltérhet az eredeti művelettől. Ha pé
 
 A másodlagos végpontok beállításával kapcsolatos további információkért lásd: [errorAction](scheduler-concepts-terms.md#error-action).
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Mi az Azure Scheduler?](scheduler-intro.md)
 * [Alapfogalmak, terminológia és entitáshierarchia](scheduler-concepts-terms.md)

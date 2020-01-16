@@ -10,14 +10,14 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.author: diberry
-ms.openlocfilehash: 2239387ffff4c30e1183721a528e666199316bed
-ms.sourcegitcommit: 8bae7afb0011a98e82cbd76c50bc9f08be9ebe06
+ms.openlocfilehash: 5164bf55ef8233cf34a470524da3bc852678d79a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2019
-ms.locfileid: "71695094"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979163"
 ---
-# <a name="patternany-entity"></a>Pattern.any entitás 
+# <a name="patternany-entity"></a>Pattern.any entitás
 
 Minta. a változó hosszúságú helyőrző csak a minta sablonjának megjelölésére szolgál, amely jelzi, hogy az entitás hol kezdődik és végződik.  
 
@@ -25,13 +25,13 @@ Minta. minden entitást meg kell adni a [minta](luis-how-to-model-intent-pattern
 
 **Az entitás jól illeszkedik, ha:**
 
-* Az entitás végének összetéveszthető a kihagyás hátralévő szövegével. 
+* Az entitás végének összetéveszthető a kihagyás hátralévő szövegével.
 
 ## <a name="usage"></a>Használat
 
-Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon teljes használata minta használatával. a könyvben végzett kereséshez a `Was {BookTitle} written by an American this year[?]`. 
+Adott ügyfélalkalmazás, amely a title (cím) alapján keres könyveket, a minta. bármely Kinyeri a teljes címet. A sablon teljes használata minta használatával. a könyvben végzett kereséshez a `Was {BookTitle} written by an American this year[?]`.
 
-A következő táblázatban az egyes sorok a teljes verzió két változatával rendelkeznek. A legelső Kimondás, hogy a LUIS kezdetben hogyan látja a megnyilatkozás módját. Nem egyértelmű, hogy a könyv címe hol kezdődik és végződik. Az alsó lemondás egy mintát használ. bármely entitás, amely az entitás kezdetét és végét jelöli. 
+A következő táblázatban az egyes sorok a teljes verzió két változatával rendelkeznek. A legelső Kimondás, hogy a LUIS kezdetben hogyan látja a megnyilatkozás módját. Nem egyértelmű, hogy a könyv címe hol kezdődik és végződik. Az alsó lemondás egy mintát használ. bármely entitás, amely az entitás kezdetét és végét jelöli.
 
 |Az entitások kimondása félkövérrel|
 |--|
@@ -43,9 +43,9 @@ A következő táblázatban az egyes sorok a teljes verzió két változatával 
 
 
 
-## <a name="example-json"></a>Példa JSON-ban
+## <a name="example-json"></a>Példa JSON-ra
 
-Vegye figyelembe a következő lekérdezést:
+Tekintse meg a következő lekérdezést:
 
 `where is the form Understand your responsibilities as a member of the community and who needs to sign it after I read it?`
 
@@ -104,8 +104,8 @@ Ez a JSON, ha `verbose=true` van beállítva a lekérdezési karakterláncban:
 }
 ```
 
-* * * 
+* * *
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az [oktatóanyagban](luis-tutorial-pattern-any.md)használja a **mintát. bármely** entitást, amellyel kinyerheti az adatok hosszúságú kimondott szöveg, ahol a hosszúságú kimondott szöveg megfelelően formázottak, és az adatok végének könnyen összetéveszthető a kimaradás többi szavával.
+Ebben az [oktatóanyagban](luis-tutorial-pattern.md)használja a **mintát. bármely** entitást, amellyel kinyerheti az adatok hosszúságú kimondott szöveg, ahol a hosszúságú kimondott szöveg megfelelően formázottak, és az adatok végének könnyen összetéveszthető a kimaradás többi szavával.

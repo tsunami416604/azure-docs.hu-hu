@@ -7,12 +7,12 @@ ms.service: azure-resource-manager
 ms.topic: conceptual
 ms.date: 01/09/2020
 ms.author: jgao
-ms.openlocfilehash: 4dc28b8254c312836b2767c2efef52137e101777
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 6308f7832a898d97c455dc90265adea345aeb0cc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75839438"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981212"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
 
@@ -57,7 +57,7 @@ Az üzembe helyezési parancsfájl előnyei:
   $id = (Get-AzUserAssignedIdentity -resourcegroupname $idGroup -Name idName).Id
   ```
 
-- **Azure PowerShell verzió: 2.7.0, 2.8.0 vagy 3.0.0**. A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps.md). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
+- **Azure PowerShell verzió: 2.7.0, 2.8.0 vagy 3.0.0**. A sablonok telepítéséhez nincs szükség ezekre a verziókra. Ezek a verziók azonban az üzembe helyezési parancsfájlok helyi teszteléséhez szükségesek. Lásd: [a Azure PowerShell modul telepítése](/powershell/azure/install-az-ps). Előre konfigurált Docker-rendszerképet használhat.  Lásd: a [fejlesztési környezet konfigurálása](#configure-development-environment).
 
 ## <a name="resource-schema"></a>Erőforrás-séma
 
@@ -233,7 +233,7 @@ Ha meg szeretné tekinteni a deploymentScripts-erőforrást a portálon, válass
 
 ## <a name="clean-up-deployment-script-resources"></a>Üzembe helyezési parancsfájl erőforrásainak karbantartása
 
-Az üzembe helyezési parancsfájl létrehoz egy Storage-fiókot és egy tároló-példányt, amely a telepítési parancsfájlok végrehajtásához és a hibakeresési adatok tárolásához használatos. Ez a két erőforrás ugyanabban az erőforráscsoportban jön létre, mint a kiépített erőforrások, és a parancsfájl a szkript lejárta után törli. Szabályozhatja ezeknek az erőforrásoknak a életciklusát.  Amíg nem törli őket, mindkét erőforrásért díjat kell fizetnie. Az árakra vonatkozó információkért lásd: [Container instances díjszabás](/pricing/details/container-instances/) és az [Azure Storage díjszabása](/pricing/details/storage/).
+Az üzembe helyezési parancsfájl létrehoz egy Storage-fiókot és egy tároló-példányt, amely a telepítési parancsfájlok végrehajtásához és a hibakeresési adatok tárolásához használatos. Ez a két erőforrás ugyanabban az erőforráscsoportban jön létre, mint a kiépített erőforrások, és a parancsfájl a szkript lejárta után törli. Szabályozhatja ezeknek az erőforrásoknak a életciklusát.  Amíg nem törli őket, mindkét erőforrásért díjat kell fizetnie. Az árakra vonatkozó információkért lásd: [Container instances díjszabás](https://azure.microsoft.com/pricing/details/container-instances/) és az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).
 
 Ezeknek az erőforrásoknak a életciklusát a sablon következő tulajdonságai vezérlik:
 

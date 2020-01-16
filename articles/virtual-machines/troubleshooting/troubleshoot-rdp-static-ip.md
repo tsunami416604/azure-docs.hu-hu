@@ -1,6 +1,6 @@
 ---
-title: Statikus IP-cím miatt nem lehet a távoli asztal az Azure Virtual Machines |} A Microsoft Docs
-description: Ismerje meg, hogyan háríthatók el a statikus IP-cím a Microsoft Azure által okozott probléma RDP. |} A Microsoft Docs
+title: Statikus IP-cím miatt nem lehet távoli asztali Azure-Virtual Machinesni | Microsoft Docs
+description: Megtudhatja, hogyan lehet elhárítani a statikus IP-Microsoft Azure által okozott RDP-problémát. | Microsoft Docs
 services: virtual-machines-windows
 documentationCenter: ''
 author: genlin
@@ -12,65 +12,65 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 11/08/2018
 ms.author: genli
-ms.openlocfilehash: d1cb34f1666db0e213a41fa8d2e684ba148b7e61
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7756d4c808e104b0de14e1cea4af5e843cff755c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088445"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981765"
 ---
-#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Az Azure Virtual Machines a távoli asztal nem statikus IP-cím miatt
+#  <a name="cannot-remote-desktop-to-azure-virtual-machines-because-of-static-ip"></a>Statikus IP-cím miatt nem lehet távoli asztali Azure-Virtual Machines
 
-Ez a cikk ismerteti a problémát, amelyben nem lehet a távoli asztal az Azure Windows Virtual Machines (VM) a virtuális gép statikus IP-cím konfigurálása után.
+Ez a cikk egy olyan problémát ismertet, amelyben a virtuális gép statikus IP-címének konfigurálása után nem lehet távoli asztali Azure-Windows Virtual Machines (VM).
 
 > [!NOTE]
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk ismerteti a Resource Manager üzemi modell, amely az új központi telepítéseknél helyett a klasszikus üzemi modell használatát javasoljuk.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
 ## <a name="symptoms"></a>Probléma
 
-Az Azure-beli virtuális gép RDP-kapcsolatának hajt végre, amikor a következő hibaüzenet jelenhet meg:
+Amikor RDP-kapcsolattal csatlakozik egy Azure-beli virtuális géphez, a következő hibaüzenet jelenik meg:
 
-**A távoli asztal az alábbi okok valamelyike nem tud kapcsolódni a távoli számítógéphez:**
+**Távoli asztal nem tud csatlakozni a távoli számítógéphez a következő okok valamelyike miatt:**
 
-1. **Távoli hozzáférés a kiszolgálón nincs engedélyezve**
+1. **A kiszolgálóhoz való távoli hozzáférés nincs engedélyezve**
 
-2. **A távoli számítógép ki van kapcsolva.**
+2. **A távoli számítógép ki van kapcsolva**
 
 3. **A távoli számítógép nem érhető el a hálózaton**
 
-**Ellenőrizze, hogy a távoli számítógéphez van kapcsolva, és csatlakozik a hálózathoz, és, hogy a távoli hozzáférés engedélyezve van-e.**
+**Ellenőrizze, hogy a távoli számítógép be van-e kapcsolva és csatlakoztatva van-e a hálózathoz, és hogy engedélyezve van-e a távoli hozzáférés.**
 
-Amikor ellenőrizheti a képernyőképen a a [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) az Azure Portalon, megjelenik a virtuális gép indul el megfelelően, és a hitelesítő adatokat a bejelentkezési képernyőn vár.
+Amikor bejelöli a képernyőképet a Azure Portal [rendszerindítási diagnosztika](../troubleshooting/boot-diagnostics.md) eszközében, a virtuális gép rendesen elindul, és megvárja a hitelesítő adatokat a bejelentkezési képernyőn.
 
 ## <a name="cause"></a>Ok
 
-A virtuális gép rendelkezik definiált Windows belül a hálózati adapter statikus IP-címet. Az IP-cím eltér a cím, amelyet az Azure Portalon van definiálva.
+A virtuális gép statikus IP-címmel rendelkezik, amely a Windowson belüli hálózati adapteren van meghatározva. Ez az IP-cím eltér a Azure Portalban definiált címtől.
 
 ## <a name="solution"></a>Megoldás
 
-Mielőtt végrehajtaná ezeket a lépéseket, az érintett virtuális gép operációsrendszer-lemezének pillanatkép készítése a biztonsági mentéséhez. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
+Az alábbi lépések elvégzése előtt készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
 
-A probléma megoldásához, soros vezérlőelem használatával engedélyezze a DHCP- vagy [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md) a virtuális gép számára.
+A probléma megoldásához a soros vezérlőelem használatával engedélyezze a DHCP-t, vagy állítsa vissza a virtuális gép [hálózati adapterét](reset-network-interface.md) .
 
-### <a name="use-serial-control"></a>Soros vezérlőelem használata
+### <a name="use-serial-control"></a>Soros vezérlő használata
 
-1. Csatlakozás [soros konzolon és a nyílt CMD-példány](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
-). Ha a soros konzol nincs engedélyezve a virtuális Gépen, [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md).
-2. Ellenőrizze, hogy ha a DHCP a hálózati adapter le van tiltva:
+1. Kapcsolódjon a [soros konzolhoz, és nyissa meg a cmd-példányt](./serial-console-windows.md#use-cmd-or-powershell-in-serial-console
+). Ha a soros konzol nincs engedélyezve a virtuális gépen, tekintse meg a [hálózati adapter alaphelyzetbe állítása](reset-network-interface.md)című témakört.
+2. Ellenőrizze, hogy a DHCP le van-e tiltva a hálózati adapteren:
 
         netsh interface ip show config
-3. Ha a DHCP le van tiltva, állítsa vissza a DHCP használatára a hálózati adapter konfigurációja:
+3. Ha a DHCP le van tiltva, állítsa be a hálózati adapter konfigurációját a DHCP használatára:
 
         netsh interface ip set address name="<NIC Name>" source=dhc
 
-    Például ha a interwork felület "Ethernet 2"-neveket, futtassa a következő parancsot:
+    Ha például az "Ethernet 2" nevű kapcsolati felület neve, futtassa a következő parancsot:
 
         netsh interface ip set address name="Ethernet 2" source=dhc
 
-4. A lekérdezés az IP-konfigurációt, győződjön meg arról, hogy a hálózati adapter már helyesen van beállítva, hogy újra. Az új IP-cím egyeznie kell a az Azure által biztosított.
+4. Az IP-konfiguráció ismételt lekérdezésével győződjön meg arról, hogy a hálózati adapter helyesen van beállítva. Az új IP-címnek egyeznie kell az Azure által biztosítotttal.
 
         netsh interface ip show config
 
-    Nem kell ezen a ponton a virtuális gép újraindítására. A virtuális gép ismét elérhető lesz.
+    Ezen a ponton nem kell újraindítani a virtuális gépet. A virtuális gép elérhető lesz.
 
-Ezt követően Ha azt szeretné, a statikus IP-cím konfigurálása a virtuális gép számára, lásd: [statikus IP-címek konfigurálása a virtuális gép](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md).
+Ezt követően, ha a statikus IP-címet szeretné konfigurálni a virtuális géphez, tekintse meg a [statikus IP-címek konfigurálása virtuális géphez](../../virtual-network/virtual-networks-static-private-ip-arm-pportal.md)című témakört.

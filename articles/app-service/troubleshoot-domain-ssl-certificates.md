@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/01/2019
 ms.author: genli
 ms.custom: seodec18
-ms.openlocfilehash: 2260dddd74d7ed64eb19158a5360ed2e4c09b4a9
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: e299821b54692327cbb7d497af0295e3b93658cf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74688341"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966978"
 ---
 # <a name="troubleshoot-domain-and-ssl-certificate-problems-in-azure-app-service"></a>A tartomány-és SSL-tanúsítványokkal kapcsolatos problémák elhárítása Azure App Service
 
@@ -318,6 +318,6 @@ A tartományt akkor is kezelheti, ha nincs App Service webalkalmazása. A tartom
 
 **Áthelyezhetek egy webalkalmazást egyéni tartománnyal egy másik előfizetésbe vagy App Service Environment v1-ről v2-re?**
 
-Igen, áthelyezheti a webalkalmazást az előfizetések között. Kövesse az [erőforrások Azure-ban való áthelyezésének](../azure-resource-manager/resource-group-move-resources.md)útmutatását. A webalkalmazás áthelyezése néhány korlátozással jár. További információ: [app Service erőforrások áthelyezésének korlátozásai](../azure-resource-manager/move-limitations/app-service-move-limitations.md).
+Igen, áthelyezheti a webalkalmazást az előfizetések között. Kövesse az [erőforrások Azure-ban való áthelyezésének](../azure-resource-manager/management/move-resource-group-and-subscription.md)útmutatását. A webalkalmazás áthelyezése néhány korlátozással jár. További információ: [app Service erőforrások áthelyezésének korlátozásai](../azure-resource-manager/management/move-limitations/app-service-move-limitations.md).
 
 A webalkalmazás áthelyezése után az egyéni tartományokban lévő tartományok állomásnév-kötései változatlanok maradnak. Az állomásnév-kötések konfigurálásához nincs szükség további lépésekre.

@@ -3,12 +3,12 @@ title: 'Oktatóanyag: egyéni szabályzat-definíció létrehozása'
 description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure Policy az Azure-erőforrásokra vonatkozó egyéni üzleti szabályok érvénybe léptetéséhez.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: 51899491d7a75dc41bdab94d17769393ab4a6659
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f7c303956b209b88ce3c697b5b66243e37071c83
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885449"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966022"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
 
@@ -66,7 +66,7 @@ A [vs Code bővítmény](../how-to/extension-for-vscode.md#search-for-and-view-r
 
 ### <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
 
-A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/resource-manager-tutorial-create-encrypted-storage-accounts.md) .
+A felügyelni kívánt tulajdonságot több módon is megtekintheti egy [Resource Manager-sablonban](../../../azure-resource-manager/templates/template-tutorial-create-encrypted-storage-accounts.md) .
 
 #### <a name="existing-resource-in-the-portal"></a>Meglévő erőforrás a portálon
 

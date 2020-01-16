@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: troubleshooting
 ms.date: 09/09/2016
 ms.author: cjiang
-ms.openlocfilehash: f02e1f73460140c9fe9f2cf6d7ffda26533d570d
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 98c3a6b14230e30ccbb103be741595696a20c236
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70090025"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981418"
 ---
 # <a name="troubleshoot-resource-manager-deployment-issues-with-creating-a-new-linux-virtual-machine-in-azure"></a>A Resource Manager üzembe helyezésével kapcsolatos hibák elhárítása új Linux rendszerű virtuális gép létrehozásával az Azure-ban
 [!INCLUDE [virtual-machines-troubleshoot-deployment-new-vm-opening](../../../includes/virtual-machines-troubleshoot-deployment-new-vm-opening-include.md)]
@@ -34,7 +34,7 @@ A virtuális gép üzembe helyezésére vonatkozó egyéb problémáival és ké
 ## <a name="collect-activity-logs"></a>Tevékenységnaplók összegyűjtése
 A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a problémához kapcsolódó hiba azonosításához. A következő hivatkozások részletes információkat tartalmaznak a követendő folyamatról.
 
-[Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/resource-manager-deployment-operations.md)
+[Üzembe helyezési műveletek megtekintése](../../azure-resource-manager/templates/deployment-history.md)
 
 [Tevékenységnaplók megtekintése az Azure-erőforrások kezeléséhez](../../resource-group-audit.md)
 
@@ -42,7 +42,7 @@ A hibaelhárítás megkezdéséhez Gyűjtse össze a tevékenység naplóit a pr
 
 [!INCLUDE [virtual-machines-linux-troubleshoot-deployment-new-vm-table](../../../includes/virtual-machines-linux-troubleshoot-deployment-new-vm-table.md)]
 
-**Y** Ha az operációs rendszer Linux általánosított, és az általánosított beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba. Hasonlóképpen, ha az operációs rendszer Linux-alapú, és a speciális beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba.
+**Y:** Ha az operációs rendszer Linux általánosított, és az általánosított beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba. Hasonlóképpen, ha az operációs rendszer Linux-alapú, és a speciális beállítással van feltöltve és/vagy rögzítve, akkor nem lesz hiba.
 
 **Feltöltési hibák:**
 
@@ -64,7 +64,7 @@ A hibák elhárításához töltse fel a helyszínen elérhető eredeti VHD-t ug
 
 A hibák elhárításához törölje az aktuális rendszerképet a portálról, és a [jelenlegi VHD](../linux/capture-image.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) -fájlból állítsa be újra az operációs rendszer (általánosított/specializált) beállítással megegyező beállítással.
 
-## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probléma: Egyéni/Képtár/Piactéri rendszerkép; foglalási hiba
+## <a name="issue-custom-gallery-marketplace-image-allocation-failure"></a>Probléma: egyéni/Képtár/Piactéri rendszerkép; foglalási hiba
 Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem olyan fürthöz van rögzítve, amely nem támogatja a kért virtuálisgép-méretet, vagy nem rendelkezik szabad területtel a kérelem elfogadásához.
 
 **1. ok:** A fürt nem támogatja a kért VM-méretet.
@@ -74,7 +74,7 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
 * Próbálja megismételni a kérést kisebb virtuálisgép-méret használatával.
 * Ha a kért virtuális gép mérete nem módosítható:
   * Állítsa le az összes virtuális gépet a rendelkezésre állási csoportból.
-    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrásai** *a rendelkezésre állási* > csoportVirtual Machinesa > virtuálisgép > *Leállítás.*  > 
+    Kattintson **Az erőforráscsoportok** > *az erőforráscsoport* > **erőforrások** > *a rendelkezésre állási* csoport > **Virtual Machines** *a virtuális gép* > **leállítása**elemre.
   * Az összes virtuális gép leállítása után hozza létre az új virtuális gépet a kívánt méretben.
   * Először indítsa el az új virtuális gépet, majd válassza ki a leállított virtuális gépeket, és kattintson az **Indítás**gombra.
 
@@ -87,6 +87,6 @@ Ez a hiba olyan helyzetekben fordul elő, amikor az új virtuálisgép-kérelem 
   * Hozzon létre egy új virtuális gépet egy másik rendelkezésre állási készletben (ugyanabban a régióban).
   * Adja hozzá az új virtuális gépet ugyanahhoz a virtuális hálózathoz.
 
-## <a name="next-steps"></a>További lépések
-Ha a leállított linuxos virtuális gép indításakor vagy egy meglévő linuxos virtuális gép Azure-ban való átméretezésével kapcsolatos problémák merülnek fel, tekintse meg a [Resource Manager-alapú üzembe helyezési problémák elhárítása az Azure-ban meglévő linuxos virtuális gépek újraindításával vagy](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)átméretezésével
+## <a name="next-steps"></a>Következő lépések
+Ha a leállított linuxos virtuális gép indításakor vagy egy meglévő linuxos virtuális gép Azure-ban való átméretezésével kapcsolatos problémák merülnek fel, tekintse meg a [Resource Manager-alapú üzembe helyezési problémák elhárítása az Azure-ban meglévő linuxos virtuális gépek újraindításával vagy átméretezésével](../linux/restart-resize-error-troubleshooting.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 

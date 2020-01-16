@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: 6521c139463bb0de1e24783bbbdd6a2d3996be6f
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72430103"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978060"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -47,7 +47,7 @@ Ez az útmutató leírja, hogyan állíthatja be az Azure-összekötőt az SAP l
 > [!NOTE]
 > Az összekötő csak az SAP láma Enterprise kiadásában érhető el
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>Segédanyagok és eszközök
 
 A következő SAP-megjegyzések az Azure-beli SAP láma témaköréhez kapcsolódnak:
 
@@ -69,44 +69,74 @@ Olvassa el az SAP [láma SAP-Súgó portálját](https://help.sap.com/viewer/p/S
 * Ha bejelentkezik a felügyelt gazdagépekre, győződjön meg arról, hogy nem tiltja le a fájlrendszerek leválasztását  
   Ha Linux rendszerű virtuális gépekre jelentkezik be, és a munkakönyvtárat egy csatlakoztatási ponton lévő könyvtárba szeretné módosítani, például a/usr/sap/AH1/ASCS00/exe, a kötet nem lehet leválasztani, és az áthelyezés vagy az előkészítés sikertelen lesz.
 
+* Győződjön meg arról, hogy a SUSE SLES Linux rendszerű virtuális gépeken letiltja a CLOUD_NETCONFIG_MANAGE. További részletek: [SUSE KB 7023633](https://www.suse.com/support/kb/doc/?id=7023633).
+
 ## <a name="set-up-azure-connector-for-sap-lama"></a>Az Azure Connector beállítása az SAP láma számára
 
-Az Azure Connector az SAP láma 3,0 SP05 van elküldve. Javasoljuk, hogy mindig telepítse a legújabb támogatási csomagot és javítást az SAP láma 3,0-es verzióját. Az Azure Connector egy egyszerű szolgáltatásnév használatával engedélyezi a Microsoft Azure. Kövesse az alábbi lépéseket egy egyszerű szolgáltatásnév létrehozásához az SAP tájképi felügyelethez (láma).
+Az Azure Connector az SAP láma 3,0 SP05 van elküldve. Javasoljuk, hogy mindig telepítse a legújabb támogatási csomagot és javítást az SAP láma 3,0-es verzióját.
+
+Az Azure Connector a Azure Resource Manager API-t használja az Azure-erőforrások kezeléséhez. Az SAP LaMa egy egyszerű szolgáltatásnév vagy egy felügyelt identitás használatával végez hitelesítést az adott API-val. Ha az SAP-láma egy Azure-beli virtuális gépen fut, javasoljuk, hogy használjon felügyelt identitást a című fejezetben leírtak szerint, hogy [hozzáférjen az Azure API](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d)-hoz. Ha egyszerű szolgáltatásnevet szeretne használni, kövesse a következő témakörben ismertetett lépéseket: az [Azure API-hoz való hozzáférés biztosítása az egyszerű szolgáltatásnév használatával](lama-installation.md#913c222a-3754-487f-9c89-983c82da641e).
+
+### <a name="913c222a-3754-487f-9c89-983c82da641e"></a>Egyszerű szolgáltatásnév használata az Azure API-hoz való hozzáféréshez
+
+Az Azure Connector egy egyszerű szolgáltatásnév használatával engedélyezheti Microsoft Azure. Kövesse az alábbi lépéseket egy egyszerű szolgáltatásnév létrehozásához az SAP tájképi felügyelethez (láma).
 
 1. Nyissa meg a következőt: https://portal.azure.com
-1. Nyissa meg az Azure Active Directory panel
+1. A Azure Active Directory panel megnyitása
 1. Kattintson Alkalmazásregisztrációk
-1. Kattintson a Hozzáadás gombra
-1. Adjon meg egy nevet, válassza az alkalmazás típusa "Web App/API" lehetőséget, és írjon be egy bejelentkezési URL-címet (például http:\//localhost), és kattintson a Létrehozás gombra.
-1. A bejelentkezési URL-címet nem használja, és bármilyen érvényes URL-cím lehet
-1. Válassza ki az új alkalmazást, és kattintson a kulcsok elemre a beállítások lapon.
-1. Adja meg az új kulcs leírását, válassza a "soha nem jár le" lehetőséget, és kattintson a Save (Mentés) gombra.
+1. Kattintson az új regisztráció elemre.
+1. Adjon meg egy nevet, és kattintson a regisztrálás gombra.
+1. Válassza ki az új alkalmazást, és kattintson a tanúsítványok & Secrets elemre a beállítások lapon
+1. Hozzon létre egy új titkos kulcsot, adja meg az új kulcs leírását, válassza ki, hogy mikor kell exire a titkos kódot, és kattintson a Save (Mentés) gombra.
 1. Jegyezze fel az értéket. Az egyszerű szolgáltatás jelszavaként van használatban
-1. Jegyezze fel az alkalmazás azonosítóját. Az egyszerű szolgáltatásnév felhasználóneveként van használatban
+1. Jegyezze fel az alkalmazás AZONOSÍTÓját. Az egyszerű szolgáltatásnév felhasználóneveként van használatban
 
-Az egyszerű szolgáltatás nem rendelkezik engedélyekkel alapértelmezés szerint az Azure-erőforrások eléréséhez. Meg kell adnia a szolgáltatáshoz való hozzáféréshez szükséges engedélyeket.
+Az egyszerű szolgáltatás alapértelmezés szerint nem rendelkezik az Azure-erőforrások eléréséhez szükséges engedélyekkel. Meg kell adnia a szolgáltatáshoz való hozzáféréshez szükséges engedélyeket.
 
 1. Nyissa meg a következőt: https://portal.azure.com
 1. Az erőforráscsoportok panel megnyitása
 1. Válassza ki a használni kívánt erőforráscsoportot
-1. Kattintson a hozzáférés-vezérlés (IAM)
+1. Kattintson a hozzáférés-vezérlés (IAM) elemre.
 1. Kattintson a szerepkör-hozzárendelés hozzáadása elemre.
 1. Válassza ki a szerepkör közreműködőjét
-1. Adja meg a fent létrehozott alkalmazás neve
-1. Kattintson a Save (Mentés) gombra.
+1. Adja meg a fent létrehozott alkalmazás nevét
+1. Kattintson a Mentés gombra
 1. Az SAP LaMaben használni kívánt összes erőforráscsoport esetében ismételje meg a 3 – 8. lépést
+
+### <a name="af65832e-6469-4d69-9db5-0ed09eac126d"></a>Felügyelt identitás használata az Azure API-hoz való hozzáféréshez
+
+Ahhoz, hogy felügyelt identitást lehessen használni, az SAP láma példányának olyan Azure-beli virtuális gépen kell futnia, amely rendelkezik rendszer-vagy felhasználó által hozzárendelt identitással. A felügyelt identitásokkal kapcsolatos további információkért olvassa el a [Mi az Azure-erőforrások felügyelt identitásai?](../../../active-directory/managed-identities-azure-resources/overview.md) és a [felügyelt identitások konfigurálása a virtuális gépen az Azure-erőforrások számára a Azure Portal használatával](../../../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md)című témakört.
+
+A felügyelt identitás alapértelmezés szerint nem rendelkezik az Azure-erőforrások eléréséhez szükséges engedélyekkel. Engedélyeket kell biztosítania a hozzáféréshez.
+
+1. Nyissa meg a következőt: https://portal.azure.com
+1. Az erőforráscsoportok panel megnyitása
+1. Válassza ki a használni kívánt erőforráscsoportot
+1. Kattintson a hozzáférés-vezérlés (IAM) elemre.
+1. Kattintson a Hozzáadás – > szerepkör-hozzárendelés hozzáadása elemre.
+1. Válassza ki a szerepkör közreműködőjét
+1. Válassza a "virtuális gép" lehetőséget a "hozzáférés kiosztása" elemnél
+1. Válassza ki azt a virtuális gépet, amelyen az SAP láma példánya fut
+1. Kattintson a Mentés gombra
+1. Az SAP LaMaben használni kívánt összes erőforráscsoport lépéseinek megismétlése
+
+Az SAP láma Azure Connector konfigurációjában válassza a felügyelt identitás használata lehetőséget a felügyelt identitás használatának engedélyezéséhez. Ha rendszerhez rendelt identitást szeretne használni, akkor ügyeljen arra, hogy üresen hagyja a Felhasználónév mezőt. Ha felhasználó által hozzárendelt identitást szeretne használni, adja meg a felhasználóhoz rendelt azonosító azonosítót a Felhasználónév mezőben.
+
+### <a name="create-a-new-connector-in-sap-lama"></a>Új összekötő létrehozása az SAP láma szolgáltatásban
 
 Nyissa meg az SAP láma webhelyét, és navigáljon az infrastruktúrához. Lépjen a Cloud managerek lapra, és kattintson a Hozzáadás gombra. Válassza ki a Microsoft Azure Felhőadapter majd kattintson a Tovább gombra. Adja meg a következő információkat:
 
 * Label (címke): válassza ki az összekötő-példány nevét
-* Felhasználónév: egyszerű szolgáltatásnév alkalmazásának azonosítója
-* Jelszó: egyszerű szolgáltatásnév kulcs/jelszó
+* Felhasználónév: egyszerű szolgáltatásnév vagy a virtuális gép felhasználó által hozzárendelt identitásának azonosítója. További információért lásd a [rendszer vagy felhasználó által hozzárendelt identitás használata] című témakört.
+* Password (jelszó): egyszerű szolgáltatásnév kulcs/jelszó. Ha rendszer vagy felhasználó által hozzárendelt identitást használ, hagyja üresen ezt a mezőt.
 * URL: az alapértelmezett https://management.azure.com/ megtartása
 * Figyelési időköz (másodperc): legalább 300 kell lennie
+* Felügyelt identitás használata: az SAP láma rendszer vagy felhasználó által hozzárendelt identitás használatával hitelesítheti magát az Azure API-val. Lásd: fejezet [a felügyelt identitás használata az Azure API-hoz való hozzáféréshez](lama-installation.md#af65832e-6469-4d69-9db5-0ed09eac126d) az útmutatóban.
 * Előfizetés azonosítója: Azure-előfizetés azonosítója
 * Azure Active Directory bérlő azonosítója: a Active Directory bérlő azonosítója
 * Proxykiszolgáló: a proxy állomásneve, ha az SAP láma proxyra van szüksége az internethez való csatlakozáshoz
 * Proxy portja: a proxy TCP-portja
+* A tárolási típus módosítása a költségek megtakarításához: akkor engedélyezze ezt a beállítást, ha az Azure-adapternek meg kell változtatnia a Managed Disks tárolási típusát a költségek megtakarításához, ha a lemezek nincsenek használatban. Az SAP-példányok konfigurációjában hivatkozott adatlemezek esetében az adapter a lemez típusát a normál tárterületre módosítja egy példányban, és visszaállítja az eredeti tárolási típust egy példány előkészítése során. Ha leállítja a virtuális gépet az SAP láma szolgáltatásban, az adapter megváltoztatja az összes csatlakoztatott lemez tárolási típusát, beleértve az operációsrendszer-lemezt is a standard Storage-hoz. Ha elindítja a virtuális gépet az SAP láma szolgáltatásban, az adapter a tárolási típust visszaváltoztatja az eredeti tárolási típusra.
 
 A bemenet ellenőrzéséhez kattintson a konfiguráció tesztelése gombra. A következőnek kell megjelennie:
 
@@ -408,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Futtassa a SWPM, és használja a *AS1-ASCs* a *ASCs-példány állomásneve*számára.
 
-#### <a name="install-sql-server"></a>SQL Server telepítése
+#### <a name="install-sql-server"></a>Az SQL Server telepítése
 
 Hozzá kell adnia az adatbázis virtuális állomásneve IP-címét egy hálózati adapterhez. Az ajánlott módszer a sapacext használata. Ha az IP-címet az sapacext használatával csatlakoztatja, akkor az újraindítás után mindenképp csatlakoztassa újra az IP-címet.
 
@@ -515,12 +545,12 @@ Használja az *AS1-di-0 értéket* a *Pas instance Host neveként* a párbeszéd
     A probléma megkerüléséhez állítsa be a profil paramétert OS_UNICODE = UC értéket az SAP-rendszer alapértelmezett profiljába.
 
 * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer
-  * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer "version =" 1.0 "hiba: (a következő lépés által jelentett utolsó hiba: \<p > a telepítést a felhasználó megszakította. \</p>
+  * Hiba történt a SAPinst lépés végrehajtásakor: dCheckGivenServer "version =" 1.0 "hiba: (a következő lépés által jelentett utolsó hiba: \<p > a telepítést a felhasználó megszakította. \</p >
   * Megoldás  
     Győződjön meg arról, hogy a SWPM olyan felhasználóval fut, amely hozzáfér a profilhoz. Ez a felhasználó konfigurálható az alkalmazáskiszolgáló telepítővarázslója
 
 * Hiba történt a SAPinst lépés végrehajtásakor: checkClient
-  * Hiba történt a SAPinst lépés végrehajtásakor: checkClient "version =" 1.0 "hiba: (a következő lépés által jelentett utolsó hiba: \<p > a telepítést a felhasználó megszakította. \</p>)
+  * Hiba történt a SAPinst lépés végrehajtásakor: checkClient "version =" 1.0 "hiba: (a következő lépés által jelentett utolsó hiba: \<p > a telepítést a felhasználó megszakította. \</p >)
   * Megoldás  
     Győződjön meg arról, hogy az SQL Server Microsoft ODBC-illesztőprogramja telepítve van azon a virtuális gépen, amelyre telepíteni kívánja az alkalmazáskiszolgáló szolgáltatást
 

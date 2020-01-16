@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/10/2019
 ms.author: kumud
-ms.openlocfilehash: 87cdd3d18fe0e6a3655c8bbc940cdc00fa211e74
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 70523dc12f3f20362fcf4a2c3cb456a182038e8a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750592"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982252"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Virtuális hálózat létrehozása, módosítása vagy törlése
 
@@ -79,7 +79,7 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
 
      ![Hálózati adapter áttekintése](./media/manage-virtual-network/vnet-overview.png)
 
-     A virtuális hálózatot másik előfizetéshez vagy erőforráscsoporthoz is áthelyezheti, ha kiválasztja az **erőforráscsoport** vagy az **előfizetés neve**melletti **módosítás** lehetőséget. A virtuális hálózatok áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése másik erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/resource-group-move-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A cikk felsorolja az előfeltételeket, valamint az erőforrások áthelyezését a Azure Portal, a PowerShell és az Azure CLI használatával. A virtuális hálózathoz csatlakozó összes erőforrásnak a virtuális hálózattal kell lépnie.
+     A virtuális hálózatot másik előfizetéshez vagy erőforráscsoporthoz is áthelyezheti, ha kiválasztja az **erőforráscsoport** vagy az **előfizetés neve**melletti **módosítás** lehetőséget. A virtuális hálózatok áthelyezésével kapcsolatos további információkért lásd: [erőforrások áthelyezése másik erőforráscsoporthoz vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md?toc=%2fazure%2fvirtual-network%2ftoc.json). A cikk felsorolja az előfeltételeket, valamint az erőforrások áthelyezését a Azure Portal, a PowerShell és az Azure CLI használatával. A virtuális hálózathoz csatlakozó összes erőforrásnak a virtuális hálózattal kell lépnie.
    - **Címterület**: a virtuális hálózathoz rendelt címtartomány szerepel a felsorolásban. Ha meg szeretné tudni, hogyan adhat hozzá és távolíthat el címtartományt a címtartomány számára, hajtsa végre a [Címtartomány hozzáadása vagy eltávolítása](#add-or-remove-an-address-range)című témakör lépéseit.
    - **Csatlakoztatott eszközök**: a virtuális hálózathoz csatlakoztatott összes erőforrás szerepel a felsorolásban. Az előző képernyőképen három hálózati adapter és egy terheléselosztó csatlakozik a virtuális hálózathoz. A rendszer minden olyan új erőforrást listáz, amelyet létrehoz és a virtuális hálózathoz csatlakozik. Ha töröl egy olyan erőforrást, amely a virtuális hálózathoz csatlakozik, már nem jelenik meg a listában.
    - **Alhálózatok**: a virtuális hálózaton belül található alhálózatok listája látható. Az alhálózatok hozzáadásával és eltávolításával kapcsolatos további információkért lásd: [alhálózatok kezelése](virtual-network-manage-subnet.md).
@@ -90,8 +90,8 @@ A cikk bármely szakaszának lépéseinek elvégzése előtt hajtsa végre a kö
    - **Általános Azure-beállítások**: az általános Azure-beállításokkal kapcsolatos további információkért tekintse meg a következő információkat:
      - [Tevékenységnapló](../azure-monitor/platform/platform-logs-overview.md)
      - [Hozzáférés-vezérlés (IAM)](../role-based-access-control/overview.md)
-     - [Címkék](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
-     - [Zárak](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Címkék](../azure-resource-manager/management/tag-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
+     - [Zárak](../azure-resource-manager/management/lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
      - [Automation-parancsfájl](../azure-resource-manager/management/manage-resource-groups-portal.md#export-resource-groups-to-templates)
 
 **Parancsok**

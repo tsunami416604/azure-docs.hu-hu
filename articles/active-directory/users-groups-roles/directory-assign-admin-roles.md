@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2b6d9a394971e59abaeb48e058b05cd52da69626
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 84296631e35de759fbb971f5de2d918afa5d17f0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529728"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967577"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Rendszergazdai szerepkör engedélyei Azure Active Directory
 
@@ -425,12 +425,6 @@ Az ehhez a szerepkörhöz tartozó felhasználók globális engedélyekkel rende
 > [!NOTE]
 > A Microsoft Graph API, az Azure AD Graph API és az Azure AD PowerShell esetében ez a szerepkör "Lync szolgáltatás-rendszergazdaként" azonosítható. A [Azure Portal](https://portal.azure.com/)"Skype vállalati rendszergazda".
 
-### <a name="teams-administratorteams-service-administrator-permissions"></a>[Csapatok rendszergazdája](#teams-service-administrator-permissions)
-
-A szerepkör felhasználói a Microsoft Teams munkaterhelésének minden aspektusát felügyelhetik a Microsoft csapatainak & a Skype vállalati felügyeleti központ és a megfelelő PowerShell-modulok használatával. Ez többek között a telefonos, üzenetküldési, értekezlet-és a csapatokhoz kapcsolódó felügyeleti eszközökre is kiterjed. Ez a szerepkör Emellett lehetővé teszi az Office 365-csoportok létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését.
-> [!NOTE]
-> A Microsoft Graph API-ban, az Azure AD Graph API és az Azure AD PowerShellben ez a szerepkör "csapatok szolgáltatás-rendszergazdája" néven azonosítható. A [Azure Portal](https://portal.azure.com)a "Teams Administrator".
-
 ### <a name="teams-communications-administratorteams-communications-administrator-permissions"></a>[Csapatok kommunikációs rendszergazdája](#teams-communications-administrator-permissions)
 
 Az ebben a szerepkörben lévő felhasználók kezelhetik a Microsoft Teams munkaterhelésének a hang& telefonos szolgáltatással kapcsolatos aspektusait. Ez magában foglalja a telefonszám-hozzárendelés, a hang-és értekezlet-szabályzatok felügyeleti eszközeit, valamint a Call Analytics eszközkészlet teljes hozzáférését.
@@ -442,6 +436,10 @@ Az ebben a szerepkörben lévő felhasználók a Microsoft Teams szolgáltatásb
 ### <a name="teams-communications-support-specialistteams-communications-support-specialist-permissions"></a>[A Teams Communications támogatási szakértője](#teams-communications-support-specialist-permissions)
 
 Az ebben a szerepkörben lévő felhasználók a Microsoft Teams szolgáltatásban a Skype for Business felügyeleti központban a & Microsoft Teams felhasználói hívás hibaelhárítási eszközeivel végezhetik el a kommunikációval & kapcsolatos problémákat. Az ebben a szerepkörben lévő felhasználók csak az adott felhasználóra vonatkozó hívásban tekinthetik meg a felhasználói adatokat. Ez a szerepkör nem rendelkezik hozzáféréssel a támogatási jegyek megtekintéséhez, létrehozásához és kezeléséhez.
+
+### <a name="teams-service-administratorteams-service-administrator-permissions"></a>[Teams szolgáltatás rendszergazdája](#teams-service-administrator-permissions)
+
+A szerepkör felhasználói a Microsoft Teams munkaterhelésének minden aspektusát felügyelhetik a Microsoft csapatainak & a Skype vállalati felügyeleti központ és a megfelelő PowerShell-modulok használatával. Ez többek között a telefonos, üzenetküldési, értekezlet-és a csapatokhoz kapcsolódó felügyeleti eszközökre is kiterjed. Ez a szerepkör Emellett lehetővé teszi az Office 365-csoportok létrehozását és kezelését, a támogatási jegyek kezelését és a szolgáltatás állapotának figyelését.
 
 ### <a name="user-administratoruser-administrator-permissions"></a>[Felhasználói rendszergazda](#user-administrator-permissions)
 

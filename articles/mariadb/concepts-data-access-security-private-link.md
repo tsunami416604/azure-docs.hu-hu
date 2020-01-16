@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 01/09/2020
-ms.openlocfilehash: 40aa35e9f9d40a8a021797a0a2a4af9216d90618
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 92d7522c8382ded182c5f482df3f3d917b4b3a14
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75898169"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982385"
 ---
 # <a name="private-link-for-azure-database-for-mariadb-preview"></a>Azure Database for MariaDB privát hivatkozása (előzetes verzió)
 
@@ -28,7 +28,7 @@ Az adatok Azure Database for MariaDBban való szűrése akkor történik meg, am
 
 Vegye fontolóra egy olyan forgatókönyvet, amely egy MariaDB Workbench alkalmazást futtató felhasználón belül egy Azure Database for MariaDB-példányhoz csatlakozó Azure-beli virtuális gépen fut. Ez a MariaDB-példány az USA nyugati régiójának adatközpontjában található. Az alábbi példa bemutatja, hogyan korlátozható a hozzáférés nyilvános végpontokkal a Azure Database for MariaDB hálózati hozzáférés-vezérlés használatával.
 
-* Tiltsa le a nyilvános végponton keresztül Azure Database for MariaDB összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) vagy a [virtuális hálózati szolgáltatás végpontján](https://docs.microsoft.com/azure/mariadb/concepts-data-access-and-security-vnet)keresztül.
+* Tiltsa le a nyilvános végponton keresztül Azure Database for MariaDB összes Azure-szolgáltatás forgalmát az Azure-szolgáltatások kikapcsolásának engedélyezése beállítással. Győződjön meg arról, hogy az IP-címek vagy tartományok nem férhetnek hozzá a kiszolgálóhoz a [Tűzfalszabályok](https://docs.microsoft.com/azure/mariadb/concepts-firewall-rules) vagy a [virtuális hálózati szolgáltatás végpontján](https://docs.microsoft.com/azure/mariadb/concepts-data-access-security-vnet)keresztül.
 
 * Csak a virtuális gép magánhálózati IP-címének használatával engedélyezze a Azure Database for MariaDB forgalmat. További információt a [szolgáltatás-végpont](concepts-data-access-security-vnet.md) és a [VNet-tűzfalszabályok](howto-manage-vnet-portal.md)című cikkben talál.
 

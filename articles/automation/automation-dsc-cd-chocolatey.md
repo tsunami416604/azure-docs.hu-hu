@@ -5,12 +5,12 @@ services: automation
 ms.subservice: dsc
 ms.date: 08/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: ad42d7c2257519c2622ba17f74f97b9521233850
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4445f6e9b72380b66f3282d50871b4283f7fc7fa
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75366430"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75966739"
 ---
 # <a name="usage-example-continuous-deployment-to-virtual-machines-using-automation-state-configuration-and-chocolatey"></a>Használati példa: folyamatos üzembe helyezés a Virtual Machines Automation State Configuration és chocolatey használatával
 
@@ -40,7 +40,7 @@ Azure Automation állapot-konfiguráció kiterjeszti ezt az automatizálási ké
 A DSC-erőforrás olyan programkód modulja, amely adott képességekkel rendelkezik, például hálózatkezelés, Active Directory vagy SQL Server kezelésére. A chocolatey DSC-erőforrás tudja, hogyan férhet hozzá egy NuGet-kiszolgálóhoz (többek között), csomagokat tölthet le, csomagokat telepíthet stb. A [PowerShell-Galéria](https://www.powershellgallery.com/packages?q=dsc+resources&prerelease=&sortOrder=package-title)számos más DSC-erőforrással rendelkezik.
 Ezeket a modulokat a rendszer a Azure Automation állapot-konfiguráció lekérési kiszolgálójára telepíti (Ön is), így a konfigurációk használhatják őket.
 
-A Resource Manager-sablonok deklaratív módszert biztosítanak az infrastruktúra (például hálózatok, alhálózatok, hálózati biztonság és útválasztás, terheléselosztó, hálózati adapterek, virtuális gépek stb.) létrehozásához. Íme egy [cikk](../azure-resource-manager/resource-manager-deployment-model.md) , amely összehasonlítja a Resource Manager-alapú üzemi modellt (deklaratív) az Azure Service Management (ASM vagy klasszikus) üzembe helyezési modellel, és ismerteti az alapvető erőforrás-szolgáltatókat, a számításokat, a tárolást és a hálózatot.
+A Resource Manager-sablonok deklaratív módszert biztosítanak az infrastruktúra (például hálózatok, alhálózatok, hálózati biztonság és útválasztás, terheléselosztó, hálózati adapterek, virtuális gépek stb.) létrehozásához. Íme egy [cikk](../azure-resource-manager/management/deployment-models.md) , amely összehasonlítja a Resource Manager-alapú üzemi modellt (deklaratív) az Azure Service Management (ASM vagy klasszikus) üzembe helyezési modellel, és ismerteti az alapvető erőforrás-szolgáltatókat, a számításokat, a tárolást és a hálózatot.
 
 A Resource Manager-sablonok egyik kulcsfontosságú funkciója, hogy a virtuálisgép-bővítményt a virtuális gépre telepítse, mivel az üzembe van építve. A virtuálisgép-bővítmény olyan speciális képességekkel rendelkezik, mint például az egyéni parancsfájlok futtatása, a víruskereső szoftver telepítése vagy a DSC konfigurációs parancsfájl futtatása. Számos más típusú virtuálisgép-bővítmény van.
 

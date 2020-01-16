@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/14/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: f3baaab59031c4cfad036a7181318502d1969715
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: fd9bd846beba718cb305907d4d0c5a613d2ef816
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942424"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029944"
 ---
 # <a name="azure-synapse-analytics--workload-management-portal-monitoring-preview"></a>Azure szinapszis Analytics – munkaterhelés felügyeleti portál monitorozás (előzetes verzió)
 Ez a cikk azt ismerteti, hogyan lehet figyelni a [munkaterhelés-csoport](sql-data-warehouse-workload-isolation.md#workload-groups) erőforrásainak kihasználtságát és lekérdezési tevékenységeit. Az Azure-Metrikaböngésző konfigurálásával kapcsolatos további információkért tekintse meg az [azure Metrikaböngésző első lépései](../azure-monitor/platform/metrics-getting-started.md) című cikket.  A rendszererőforrás-használat figyelésével kapcsolatos részletekért tekintse meg a Azure SQL Data Warehouse figyelési dokumentációjának [erőforrás-felhasználás](sql-data-warehouse-concept-resource-utilization-query-activity.md#resource-utilization) szakaszát.
@@ -49,8 +49,11 @@ CREATE WORKLOAD CLASSIFIER wcCEOPriority
 WITH ( WORKLOAD_GROUP = 'wgPriority'
       ,MEMBERNAME = 'TheCEO');
 ```
-Az alábbi diagram a következőképpen van konfigurálva: metrika 1: *effektív minimális erőforrás-százalék* (AVG összesítés, `blue line`) metrika 2: *munkaterhelési csoport lefoglalása rendszerszázalékkal* (AVG összesítés, `purple line`) szűrő: [munkaterhelés-csoport] = `wgPriority`
-![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) a diagram azt mutatja, hogy 25%-os munkaterhelés elkülönítése esetén a rendszer csak 10%-ot használ átlagosan  Ebben az esetben a `MIN_PERCENTAGE_RESOURCE` paraméter értéke 10 vagy 15 közötti értékre csökkenthető, és lehetővé teszi, hogy a rendszer más számítási feladatait használja az erőforrások felhasználásához.
+Az alábbi diagram a következőképpen van konfigurálva:<br>
+1\. metrika: *effektív minimális erőforrás-százalék* (AVG összesítés, `blue line`)<br>
+2\. metrika: *munkaterhelési csoport kiosztása rendszerszázalékkal* (AVG összesítés, `purple line`)<br>
+Filter: [munkaterhelés-csoport] = `wgPriority`<br>
+![underutilized-WG. png](media/sql-data-warehouse-workload-management-portal-monitor/underutilized-wg.png) a diagram azt mutatja, hogy a számítási feladatok elkülönítése 25%-os, átlagosan csak 10% használatos.  Ebben az esetben a `MIN_PERCENTAGE_RESOURCE` paraméter értéke 10 vagy 15 közötti értékre csökkenthető, és lehetővé teszi, hogy a rendszer más számítási feladatait használja az erőforrások felhasználásához.
 
 ### <a name="workload-group-bottleneck"></a>Munkaterhelés-csoport szűk keresztmetszete
 Vegye figyelembe a következő munkaterhelési csoportot és az osztályozó konfigurációt, ahol létrejön egy `wgDataAnalyst` nevű munkaterhelési csoport, és a *DataAnalyst* `membername` az `wcDataAnalyst` munkaterhelés-osztályozó használatával van leképezve.  Az `wgDataAnalyst` munkaterhelés-csoport 6%-os munkaterhelés-elkülönítést (`MIN_PERCENTAGE_RESOURCE` = 6) és egy 9%-os erőforrás-korlátot (`CAP_PERCENTAGE_RESOURCE` = 9) tartalmaz.  A *DataAnalyst* által küldött összes lekérdezés a rendszererőforrások 3%-át (`REQUEST_MIN_RESOURCE_GRANT_PERCENT` = 3) adja meg.
@@ -65,8 +68,12 @@ CREATE WORKLOAD CLASSIFIER wcDataAnalyst
 WITH ( WORKLOAD_GROUP = 'wgDataAnalyst'
       ,MEMBERNAME = 'DataAnalyst');
 ```
-Az alábbi diagram a következőképpen van konfigurálva: metrika 1: *effektív korlát erőforrásának százalékos aránya* (AVG összesítés, `blue line`) metrika 2: *munkaterhelési csoport lefoglalása maximális erőforrás-százalékos* értékkel (AVG összesítés, `purple line`) metrika 3: *munkaterhelési csoport várólistán lévő lekérdezések* (Sum összesítés, `turquoise line`) szűrő: [munkaterhelés-csoport] = `wgDataAnalyst`
-![palack-nyakú-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) a diagram azt mutatja, hogy az erőforrásokra vonatkozó 9%-os korláttal a munkaterhelés csoport 90% + kihasználtsága * erőforrás százalékának mérőszáma*).  A lekérdezések állandó sorba állítása a *munkaterhelés-csoport várólistán lévő lekérdezések metrikájában*látható.  Ebben az esetben a `CAP_PERCENTAGE_RESOURCE` 9%-nál magasabb értékre való növelése lehetővé teszi, hogy a több lekérdezés egyidejűleg legyen végrehajtva.  A `CAP_PERCENTAGE_RESOURCE` növelése feltételezi, hogy elegendő erőforrás áll rendelkezésre, és más munkaterhelés-csoportok nem elkülönítettek.  Győződjön meg róla, hogy a sapka megnőtt a *tényleges Cap-erőforrás százalékos metrikájának*ellenőrzésével.  Ha további átviteli sebességre van szükség, vegye fontolóra a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelését 3-nál nagyobb értékre.  A `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelése lehetővé teheti a lekérdezések gyorsabb futtatását.
+Az alábbi diagram a következőképpen van konfigurálva:<br>
+1\. metrika: *effektív Cap-erőforrás százaléka* (AVG összesítés, `blue line`)<br>
+Metrika 2: *munkaterhelési csoport lefoglalása az erőforrás-százalékok maximális száma alapján* (AVG összesítés, `purple line`)<br>
+3\. metrika: *munkaterhelési csoport várólistán lévő lekérdezések* (Sum összesítés, `turquoise line`)<br>
+Filter: [munkaterhelés-csoport] = `wgDataAnalyst`<br>
+![Bottle-nyakú-WG](media/sql-data-warehouse-workload-management-portal-monitor/bottle-necked-wg.png) a diagram azt mutatja, hogy az erőforrásokra vonatkozó 9%-os korláttal rendelkezik, a munkaterhelési csoport 90% + használatban van (a *munkaterhelési csoport lefoglalásának maximális erőforrás-százalékos mérőszáma alapján*).  A lekérdezések állandó sorba állítása a *munkaterhelés-csoport várólistán lévő lekérdezések metrikájában*látható.  Ebben az esetben a `CAP_PERCENTAGE_RESOURCE` 9%-nál magasabb értékre való növelése lehetővé teszi, hogy a több lekérdezés egyidejűleg legyen végrehajtva.  A `CAP_PERCENTAGE_RESOURCE` növelése feltételezi, hogy elegendő erőforrás áll rendelkezésre, és más munkaterhelés-csoportok nem elkülönítettek.  Győződjön meg róla, hogy a sapka megnőtt a *tényleges Cap-erőforrás százalékos metrikájának*ellenőrzésével.  Ha további átviteli sebességre van szükség, vegye fontolóra a `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelését 3-nál nagyobb értékre.  A `REQUEST_MIN_RESOURCE_GRANT_PERCENT` növelése lehetővé teheti a lekérdezések gyorsabb futtatását.
 
 ## <a name="next-steps"></a>Következő lépések
 [Rövid útmutató: a munkaterhelés elkülönítésének konfigurálása T-SQL használatával](quickstart-configure-workload-isolation-tsql.md)<br>

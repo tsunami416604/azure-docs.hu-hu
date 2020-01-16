@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/20/2019
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: b71f5590f120e15bd4ea027bcf6132795dac3cb6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750569"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969661"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
 
 > [!WARNING]
-> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-subscription.md).
+> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-legacy.md).
 
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Amellett, hogy megtekinti a tevékenység naplóját a Azure Portal, vagy átmásolja egy Log Analytics-munkaterületre, ahol az a Azure Monitor által gyűjtött egyéb adatokkal is elemezhető, létrehozhat egy log-profilt, amely archiválja a műveletnapló egy Azure Storage-fiókba, vagy továbbíthatja azt egy  Event hub.
 
@@ -28,12 +28,12 @@ A műveletnapló a Storage-fiókba való archiválása akkor lehet hasznos, ha a
 ## <a name="stream-activity-log-to-event-hub"></a>Stream-tevékenység naplója az Event hub-ba
 Az [Azure Event Hubs](/azure/event-hubs/) egy adatstreaming platform-és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. A következő két módszer használható a tevékenységi napló folyamatos átviteli funkciójának használatára:
 * **Stream harmadik féltől származó naplózási és telemetria rendszerekre**: az Azure Event Hubs streaming a tevékenységnek a harmadik féltől származó Siem-és log Analytics-megoldásokban való beléptetésére szolgáló mechanizmus lesz.
-* **Hozzon létre egy egyéni telemetria és naplózási platformot**: Ha már rendelkezik egy egyéni kialakítású telemetria-platformmal, vagy gondolkodik az első kiépítésében, a rugalmasan méretezhető közzétételi és előfizetési jellegű Event Hubs lehetővé teszi a tevékenység naplójának rugalmas betöltését. 
+* **Hozzon létre egy egyéni telemetria és naplózási platformot**: Ha már rendelkezik egy egyéni kialakítású telemetria-platformmal, vagy gondolkodik az első kiépítésében, a rugalmasan méretezhető közzétételi és előfizetési jellegű Event Hubs lehetővé teszi a tevékenység naplójának rugalmas betöltését.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="storage-account"></a>Tárfiók
-Ha archiválja a tevékenység naplóját, [létre kell hoznia egy Storage-fiókot](../../storage/common/storage-quickstart-create-account.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
+Ha archiválja a tevékenység naplóját, [létre kell hoznia egy Storage-fiókot](../../storage/common/storage-account-create.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
 
 A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfizetéshez tartozó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
 > [!NOTE]
@@ -65,7 +65,7 @@ Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy 
 
 
 > [!IMPORTANT]
-> Ha a Microsoft. ininsights erőforrás-szolgáltató nincs regisztrálva, hibaüzenetet kaphat a log-profil létrehozásakor. A szolgáltató regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/resource-manager-supported-services.md) .
+> Ha a Microsoft. ininsights erőforrás-szolgáltató nincs regisztrálva, hibaüzenetet kaphat a log-profil létrehozásakor. A szolgáltató regisztrálásához tekintse meg az [Azure erőforrás-szolgáltatókat és-típusokat](../../azure-resource-manager/management/resource-providers-and-types.md) .
 
 
 ### <a name="create-log-profile-using-the-azure-portal"></a>Log-profil létrehozása a Azure Portal használatával
@@ -77,7 +77,7 @@ Hozzon létre vagy szerkesszen egy log-profilt a Azure Portal **Exportálás az 
     ![Exportálás gomb a portálon](media/activity-log-export/portal-export.png)
 
 3. A megjelenő panelen a következőt kell megadnia:
-   * Az exportálandó eseményekkel rendelkező régiók. Válassza ki az összes régiót, hogy ne hagyja ki a legfontosabb eseményeket, mivel a tevékenység naplója globális (nem regionális) napló, így a legtöbb eseményhez nem tartozik régió társítva. 
+   * Az exportálandó eseményekkel rendelkező régiók. Válassza ki az összes régiót, hogy ne hagyja ki a legfontosabb eseményeket, mivel a tevékenység naplója globális (nem regionális) napló, így a legtöbb eseményhez nem tartozik régió társítva.
    * Ha a Storage-fiókba szeretne írni:
        * Az a Storage-fiók, amelyre az eseményeket menteni szeretné.
        * Azon napok száma, amelyekben meg szeretné őrizni ezeket az eseményeket a tárolóban. A 0 nap beállítása örökre megőrzi a naplókat.
@@ -167,5 +167,5 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ a tevékenység naplóról](../../azure-resource-manager/resource-group-audit.md)
+* [További információ a tevékenység naplóról](../../azure-resource-manager/management/view-activity-logs.md)
 * [Begyűjti a tevékenység naplóját Azure Monitor naplókba](activity-log-collect.md)

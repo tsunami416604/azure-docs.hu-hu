@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: 607eacc531166d9d770f31cc64825e8ffea9ca76
-ms.sourcegitcommit: fa4852cca8644b14ce935674861363613cf4bfdf
+ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2019
-ms.locfileid: "70810678"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980496"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
@@ -29,7 +29,7 @@ A fürtök létrehozásával kapcsolatos hibák leggyakoribb kiváltó okai a k�
 
 ## <a name="permissions-issues"></a>Engedélyekkel kapcsolatos problémák
 
-Ha Azure Data Lake Storage Gen2 használ, és a hibaüzenetet ```AmbariClusterCreationFailedErrorCode``` ```Internal server error occurred while processing the request. Please retry the request or contact support.```kapja, nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **tárolási blob adatközreműködői** vagy a Storage- **blob Az adat-tulajdonosi** szerepkör hozzá van rendelve a **felhasználóhoz rendelt felügyelt identitáshoz** az előfizetéshez. További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
+Ha Azure Data Lake Storage Gen2t használ, és a következő hibaüzenetet kapja: ```AmbariClusterCreationFailedErrorCode```, ```Internal server error occurred while processing the request. Please retry the request or contact support.```, nyissa meg az Azure Portal, lépjen a Storage-fiókba, és a Access Control (IAM) alatt győződjön meg arról, hogy a **Storage blob-adatközreműködői** vagy a **Storage blob-adatok tulajdonosi** szerepköre hozzá van rendelve az előfizetés **felhasználóhoz rendelt felügyelt identitásához** . További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
 
 Ha Azure Data Lake Storage Gen1 használ, tekintse meg a telepítési és konfigurációs utasításokat [itt](../hdinsight-hadoop-use-data-lake-store.md). A Data Lake Storage Gen1 HBase-fürtök esetén nem támogatott, és a HDInsight 4,0-es verziójában nem támogatott.
 
@@ -51,7 +51,7 @@ A virtuális hálózati vagy a Storage-fiókhoz tartozó tűzfalak megtagadhatj�
 
 Az alábbi táblázatban lévő IP-címekről érkező forgalom engedélyezése.
 
-| Forrás IP-címe | Cél | Direction |
+| Forrás IP-címe | Cél | Irány |
 |---|---|---|
 | 168.61.49.99 | *: 443 | Bejövő |
 | 23.99.5.239 | *: 443 | Bejövő |
@@ -64,7 +64,7 @@ Ha expressz útvonalat vagy saját egyéni DNS-kiszolgálót használ, tekintse 
 
 ## <a name="resources-locks"></a>Erőforrások zárolása  
 
-Győződjön meg arról, hogy a [virtuális hálózat és az erőforráscsoport nem zárolható](../../azure-resource-manager/resource-group-lock-resources.md).  
+Győződjön meg arról, hogy a [virtuális hálózat és az erőforráscsoport nem zárolható](../../azure-resource-manager/management/lock-resources.md).  
 
 ## <a name="unsupported-component-versions"></a>Nem támogatott összetevő-verziók
 
@@ -80,9 +80,9 @@ Más elnevezési korlátozások is érvényesek a fürtök létrehozására. Tov
 
 Győződjön meg arról, hogy az [Azure állapota](https://status.azure.com/status) esetleges kimaradások vagy szolgáltatási problémák esetén is fennáll.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Azure virtuális hálózat használatával Azure HDInsight kiterjesztése](../hdinsight-plan-virtual-network-deployment.md)
+* [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 * [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md)
 * [Fürtök beállítása a HDInsightban Apache Hadoop, Apache Spark, Apache Kafka stb. használatával](../hdinsight-hadoop-provision-linux-clusters.md)

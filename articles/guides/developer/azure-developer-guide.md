@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: glenga
-ms.openlocfilehash: 0df55f4ce790d6ea38f44ce0ca6dab43085c3455
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 67fe048c5afb07c65dcddc797e3a1d8461b1893f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770917"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965956"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Első lépésekhez készült útmutató Azure-fejlesztőknek
 
@@ -50,7 +50,7 @@ Az Azure olyan szolgáltatásokat kínál, amelyek támogatják az alkalmazás f
 ![Azure-alkalmazás üzemeltetési lehetőségei](./media/azure-developer-guide/azure-developer-hosting-options.png)
 
 
-#### <a name="azure-app-service"></a>Azure App Service 
+#### <a name="azure-app-service"></a>Azure App Service
 
 Ha azt szeretné, hogy a leggyorsabb elérési út a webalapú projektek közzétételéhez, érdemes Azure App Service. A App Service megkönnyíti a webalkalmazások bővítését a mobil ügyfelek támogatásához és a könnyen felhasznált REST API-k közzétételéhez. Ez a platform a közösségi szolgáltatók, a forgalomon alapuló automatikus skálázás, az éles környezetben végzett tesztelés, valamint a folyamatos és a tároló alapú üzembe helyezések révén nyújt hitelesítést.
 
@@ -63,9 +63,9 @@ App Service a DevOps szem előtt tartva lett tervezve. Különböző eszközöke
 A meglévő alkalmazásokat áttelepítheti App Servicera az [Online áttelepítési eszköz](https://www.migratetoazure.net/)használatával.
 
 > **Használat esetén**: app Service használata, amikor meglévő webalkalmazásokat telepít át az Azure-ba, és ha egy teljes körűen felügyelt üzemeltetési platformra van szüksége a Web Apps számára. App Service akkor is használhatja, ha a mobileszközök támogatásához vagy a REST API-k az alkalmazással való eléréséhez szükséges.
-> 
+>
 > Első **lépések**: app Service megkönnyíti az első [webalkalmazás](../../app-service/app-service-web-get-started-dotnet.md), a [Mobile App](../../app-service-mobile/app-service-mobile-ios-get-started.md)vagy az [API-alkalmazás](../../app-service/app-service-web-tutorial-rest-api.md)létrehozását és üzembe helyezését.
-> 
+>
 > **Próbálja ki most**: app Service lehetővé teszi egy rövid élettartamú alkalmazás kiépítését a platform kipróbálásához anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki a platformot, és [hozza létre a Azure app Service alkalmazást](https://tryappservice.azure.com/).
 
 #### <a name="azure-virtual-machines"></a>Azure-alapú virtuális gépek
@@ -75,7 +75,7 @@ A IaaS-szolgáltatóként az Azure lehetővé teszi az alkalmazás üzembe helye
 A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munkaterhelések széles körét futtathatja az Azure-ban, amelyek nem illeszkednek a Pásti-modellbe. Ezek a számítási feladatok közé tartoznak az adatbázis-kiszolgálók, a Windows Server Active Directory és a Microsoft SharePoint. További információkért tekintse meg a [Linux](/azure/virtual-machines/linux/) vagy a [Windows rendszerhez](/azure/virtual-machines/windows/)készült Virtual Machines dokumentációját.
 
 > **Használat esetén**: Virtual Machines használata, ha az alkalmazás-infrastruktúra teljes körű vezérlését szeretné végezni, vagy a helyszíni alkalmazások számítási feladatait az Azure-ba kívánja áttelepíteni anélkül, hogy módosítani kellene.
-> 
+>
 > Első **lépések**: [linuxos virtuális gép](../../virtual-machines/virtual-machines-linux-quick-create-portal.md) vagy [Windows rendszerű virtuális gép](../../virtual-machines/virtual-machines-windows-hero-tutorial.md) létrehozása a Azure Portalból.
 
 #### <a name="azure-functions-serverless"></a>Azure Functions (kiszolgáló nélküli)
@@ -83,27 +83,27 @@ A virtuális gépekhez tartozó szabályozás szintje miatt a kiszolgálói munk
 Nem kell aggódnia a teljes alkalmazás vagy az infrastruktúra a kód futtatásához való kiépítésével és kezelésével kapcsolatban, mi a teendő, ha csak megírhatja a kódot, és az eseményekre adott válaszként vagy ütemterv szerint futtatja?  [Azure functions](../../azure-functions/functions-overview.md) egy "kiszolgáló nélküli" stílusú ajánlat, amely lehetővé teszi, hogy csak a szükséges kódot írja. A függvények lehetővé teszi a kód végrehajtását HTTP-kérésekkel, webhookokkal, Cloud Service-eseményekkel vagy ütemezett műveletekkel. Megadhatja az Ön által választott fejlesztői nyelvet, például a C\#, F\#, Node. js, Python vagy PHP nyelven. A fogyasztáson alapuló számlázással csak a kód végrehajtásának idejére kell fizetnie, az Azure pedig igény szerint méretezhető.
 
 > **Használat esetén**: Azure functions használata, ha olyan kódot használ, amelyet más Azure-szolgáltatások, webalapú események vagy ütemterv alapján aktiválnak. A függvényeket akkor is használhatja, ha nincs szüksége egy teljes körűen üzemeltetett projekt terhelésére, vagy ha csak a kód futási idejét szeretné kifizetni. További információ: [Azure functions Overview (áttekintés](../../azure-functions/functions-overview.md)).
-> 
+>
 > Első **lépések**: kövesse a functions rövid útmutatóját az [első függvény létrehozásához](../../azure-functions/functions-create-first-azure-function.md) a portálon.
-> 
+>
 > **Próbálja ki most**: Azure functions lehetővé teszi a kód futtatását anélkül, hogy regisztrálnia kellene egy Azure-fiókra. Próbálja ki most, és [hozza létre első Azure-függvényét](https://tryappservice.azure.com/).
 
 #### <a name="azure-service-fabric"></a>Azure Service Fabric
 
-Az Azure Service Fabric egy elosztott rendszerek platformja. Ez a platform megkönnyíti a méretezhető és megbízható szolgáltatások kiépítését, csomagolását, üzembe helyezését és felügyeletét. Emellett átfogó alkalmazás-felügyeleti képességeket is biztosít, például a következőket: 
+Az Azure Service Fabric egy elosztott rendszerek platformja. Ez a platform megkönnyíti a méretezhető és megbízható szolgáltatások kiépítését, csomagolását, üzembe helyezését és felügyeletét. Emellett átfogó alkalmazás-felügyeleti képességeket is biztosít, például a következőket:
 
 * Kiépítés
-* Üzembe helyezés 
+* Üzembe helyezés
 * Monitoring
 * Frissítés/javítás
-* Törlés folyamatban 
+* Törlés folyamatban
 
 Az olyan alkalmazások, amelyek egy megosztott készleten futnak, kis méretűek és akár több száz vagy akár több ezer gép számára is elindíthatók.
 
 Service Fabric támogatja a WebAPI-t a .NET (OWIN) és a ASP.NET Core nyílt webes felületével. SDK-kat biztosít a .NET Core és a Java platformon futó Linux-szolgáltatások létrehozásához. Ha többet szeretne megtudni a Service Fabricről, tekintse meg a [Service Fabric dokumentációját](https://docs.microsoft.com/azure/service-fabric/).
 
 > **Mikor kell használni:** A Service Fabric jó választás, ha egy alkalmazást hoz létre, vagy egy meglévő alkalmazást telepít át egy Service-architektúra használatára. A Service Fabric akkor érdemes használni, ha a mögöttes infrastruktúrát nagyobb mértékben kell megadnia, vagy közvetlenül hozzá kell férnie.
-> 
+>
 > Első **lépések:** [hozza létre első Azure Service Fabric alkalmazását](../../service-fabric/service-fabric-create-your-first-application-in-visual-studio.md).
 
 ### <a name="enhance-your-applications-with-azure-services"></a>Alkalmazások fejlesztése az Azure-szolgáltatásokkal
@@ -114,22 +114,22 @@ Az Azure az alkalmazások üzemeltetése mellett olyan szolgáltatás-ajánlatok
 
 A legtöbb alkalmazásnak tárolnia kell az adatait, de úgy dönt, hogy az alkalmazást az Azure-ban üzemelteti, vegye figyelembe a következő tárolási és adatszolgáltatások közül egyet vagy többet.
 
-- **Azure Cosmos db**: globálisan elosztott, többmodelles adatbázis-szolgáltatás. Ez az adatbázis lehetővé teszi az átviteli sebesség és a tárterület rugalmas méretezését tetszőleges számú földrajzi régióban, átfogó SLA-val. 
-  
-  > **Mikor kell használni:** Ha az alkalmazásnak dokumentum-, tábla-vagy Graph-adatbázisokra, például MongoDB-adatbázisokra van szüksége, több jól meghatározott konzisztencia-modellel. 
-  > 
+- **Azure Cosmos db**: globálisan elosztott, többmodelles adatbázis-szolgáltatás. Ez az adatbázis lehetővé teszi az átviteli sebesség és a tárterület rugalmas méretezését tetszőleges számú földrajzi régióban, átfogó SLA-val.
+
+  > **Mikor kell használni:** Ha az alkalmazásnak dokumentum-, tábla-vagy Graph-adatbázisokra, például MongoDB-adatbázisokra van szüksége, több jól meghatározott konzisztencia-modellel.
+  >
   > Első **lépések**: [Azure Cosmos db Webalkalmazás létrehozása](../../cosmos-db/create-sql-api-dotnet.md). Ha Ön MongoDB-fejlesztő, tekintse meg [a MongoDB-Webalkalmazás létrehozása a Azure Cosmos DBkal](../../cosmos-db/create-mongodb-dotnet.md)című témakört.
 
 - **Azure Storage**: tartós, magasan elérhető tárhelyet biztosít a Blobok, a várólisták, a fájlok és más típusú nem kapcsolódó adattípusok számára. A Storage biztosítja a virtuális gépek tárolási alapjait.
 
   > **Mikor kell használni**: Ha az alkalmazás nem kapcsolódó adatait, például kulcs-érték párokat (táblákat), blobokat, fájlokat, megosztásokat vagy üzeneteket (várólistákat) tárol.
-  > 
+  >
   > Első **lépések**: válasszon az alábbi típusok közül: [Blobok](../../storage/blobs/storage-dotnet-how-to-use-blobs.md), [táblák](../../cosmos-db/table-storage-how-to-use-dotnet.md), [várólisták](../../storage/queues/storage-dotnet-how-to-use-queues.md)vagy [fájlok](../../storage/files/storage-dotnet-how-to-use-files.md).
 
 - **Azure SQL Database**: a Microsoft SQL Server motor Azure-alapú verziója, amely a felhőben lévő, a táblázatos adatokat tárolja. SQL Database az állásidő, az üzletmenet folytonossága és az adatvédelem nélkül biztosít kiszámítható teljesítményt, méretezhetőséget.
 
   > **Mikor kell használni**: Ha az alkalmazás a hivatkozási integritással, a tranzakciós támogatással és a TSQL-lekérdezések támogatásával igényli az adattárolást.
-  > 
+  >
   > Első **lépések**: [hozzon létre egy SQL-adatbázist percek alatt a Azure Portal használatával](../../sql-database/sql-database-get-started.md).
 
 
@@ -144,13 +144,13 @@ Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazás
 - **Azure Docker**virtuálisgép-bővítmény: lehetővé teszi a virtuális gép Docker-gazdagépként való megadását a Docker-eszközökkel.
 
   > **Mikor érdemes használni**: ha konzisztens tároló-telepítéseket szeretne készíteni az alkalmazásaihoz egy virtuális gépen, vagy ha a [Docker-összeállítást](https://docs.docker.com/compose/overview/)szeretné használni.
-  > 
+  >
   > Első **lépések**: [Docker-környezet létrehozása az Azure-ban a Docker VM bővítmény használatával](../../virtual-machines/virtual-machines-linux-dockerextension.md).
 
 - **Azure Kubernetes szolgáltatás**: lehetővé teszi olyan virtuális gépek fürtjének létrehozását, konfigurálását és kezelését, amelyek tároló alkalmazások futtatására vannak konfigurálva. Az Azure Kubernetes Service-ről további információt az [Azure Kubernetes Service bemutatása](../../aks/intro-kubernetes.md)című témakörben talál.
 
   > **Mikor érdemes használni**: Ha olyan éles használatra kész, méretezhető környezeteket kell létrehoznia, amelyek további ütemezési és felügyeleti eszközöket biztosítanak, vagy amikor üzembe helyez egy Docker Swarm-fürtöt.
-  > 
+  >
   > Első **lépések**: [Kubernetes Service-fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 - **Docker-gép**: lehetővé teszi Docker-motor telepítését és kezelését a virtuális gazdagépeken a Docker-Machine parancsok használatával.
@@ -160,7 +160,7 @@ Az Azure számos lehetőséget kínál a tárolók használatára az alkalmazás
 - **Egyéni Docker-rendszerkép a app Servicehoz**: lehetővé teszi, hogy a Docker-tárolókat egy tároló-beállításjegyzékből vagy egy ügyfél-tárolóból használja a webalkalmazás Linux rendszeren való telepítésekor.
 
   > **Mikor kell használni**: egy webalkalmazás Linux rendszeren Docker-rendszerképbe való telepítésekor.
-  > 
+  >
   > Első **lépések**: [Egyéni Docker-rendszerkép használata a linuxon futó app Servicehoz](../../app-service/containers/quickstart-docker-go.md).
 
 ### <a name="authentication"></a>Hitelesítés
@@ -170,13 +170,13 @@ Rendkívül fontos, hogy ne csak tudja, ki használja az alkalmazásokat, hanem 
 - **Azure Active Directory (Azure ad)** : a Microsoft több-bérlős, felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Az Azure AD-val való integrálással hozzáadhat egyszeri bejelentkezést (SSO) az alkalmazásaihoz. A címtár tulajdonságai az Azure AD Graph API közvetlenül vagy a Microsoft Graph API használatával érhetők el. Integrálhatja az Azure AD-támogatást a OAuth 2.0 engedélyezési keretrendszeréhez, és az ID-t a natív HTTP/REST-végpontok és a többplatformos Azure AD-hitelesítési kódtárak használatával is megnyithatja.
 
   > **Használat esetén**: Ha egyszeri bejelentkezéses felhasználói élményt szeretne biztosítani, használja a Graph-alapú adatmennyiséget, vagy hitelesítse a tartományalapú felhasználókat.
-  > 
+  >
   > Első **lépések**: további információért tekintse meg a [Azure Active Directory fejlesztői útmutatóját](../../active-directory/develop/v1-overview.md).
 
 - **App Service hitelesítés**: Ha úgy dönt, app Service az alkalmazás üzemeltetéséhez, az Azure ad beépített hitelesítési támogatását, valamint a közösségi identitás-szolgáltatókat, például a Facebookot, a Google-t, a Microsoftot és a Twittert is igénybe veheti.
 
   > **Mikor érdemes használni**a következőt: Ha engedélyezni szeretné a hitelesítést egy app Service alkalmazásban az Azure ad-vel, a közösségi identitás-szolgáltatókkal vagy mindkettővel.
-  > 
+  >
   > Első **lépések**: Ha többet szeretne megtudni a app Service hitelesítéséről, tekintse meg [a hitelesítés és engedélyezés](../../app-service/overview-authentication-authorization.md)című témakört Azure app Service.
 
 Az Azure-ban ajánlott biztonsági eljárásokkal kapcsolatos további információkért lásd az [Azure biztonsági eljárásai és mintái](../../security/fundamentals/best-practices-and-patterns.md)című témakört.
@@ -190,15 +190,15 @@ Az Azure-ban futó alkalmazásával figyelnie kell a teljesítményt, figyelnie 
     >Első **lépések**: kövesse az [Application Insights oktatóanyagot](../../azure-monitor/app/app-insights-overview.md).
 
 -   **Azure monitor**: olyan szolgáltatás, amely megkönnyíti az Azure-infrastruktúrával és-erőforrásokkal létrehozott mérőszámok és naplók megjelenítését, lekérdezését, továbbítását, archiválását és elvégzését. A figyelő egyetlen forrás az Azure-erőforrások monitorozásához és a Azure Portalban megjelenő adatnézetek megjelenítéséhez.
- 
+
     >Első **lépések**: [a Azure monitor első lépései](../../monitoring-and-diagnostics/monitoring-get-started.md).
 
 ### <a name="devops-integration"></a>DevOps-integráció
 
-Függetlenül attól, hogy a virtuális gépek kiépítése vagy a webalkalmazások folyamatos integrációval való közzététele, az Azure integrálható a legtöbb népszerű DevOps-eszközzel. Használhatja a már meglévő eszközöket, és maximalizálhatja meglévő tapasztalatait a következő eszközök támogatásával: 
+Függetlenül attól, hogy a virtuális gépek kiépítése vagy a webalkalmazások folyamatos integrációval való közzététele, az Azure integrálható a legtöbb népszerű DevOps-eszközzel. Használhatja a már meglévő eszközöket, és maximalizálhatja meglévő tapasztalatait a következő eszközök támogatásával:
 
-* Jenkins 
-* GitHub 
+* Jenkins
+* GitHub
 * Puppet
 * Chef
 * TeamCity
@@ -206,7 +206,7 @@ Függetlenül attól, hogy a virtuális gépek kiépítése vagy a webalkalmazá
 * Azure DevOps
 
 > Első **lépések**: az App Service alkalmazások DevOps-beállításainak megtekintéséhez lásd: [folyamatos üzembe helyezés Azure app Service](../../app-service/deploy-continuous-deployment.md).
-> 
+>
 > **Próbálja ki most:** [próbálja ki több DevOps-integrációt](https://azure.microsoft.com/try/devops/).
 
 
@@ -264,8 +264,8 @@ A REST API-kkal együtt számos Azure-szolgáltatás is lehetővé teszi, hogy p
 
 Az olyan szolgáltatások, mint például a [Mobile apps](../../app-service-mobile/app-service-mobile-dotnet-how-to-use-client-library.md) és a [Azure Media Services](../../media-services/previous/media-services-dotnet-how-to-use.md) ügyféloldali SDK-kat biztosítanak, amelyek lehetővé teszik a webes és mobil ügyfélalkalmazások szolgáltatásainak elérését.
 
-### <a name="azure-resource-manager"></a>Azure Resource Manager 
-    
+### <a name="azure-resource-manager"></a>Azure Resource Manager
+
 Az alkalmazás Azure-beli futtatása valószínűleg több Azure-szolgáltatással is működik. Ezek a szolgáltatások ugyanazt az életciklust követik, és logikai egységnek is tekinthetők. Előfordulhat például, hogy egy webalkalmazás használhatja a Web Apps, a SQL Database, a Storage, az Azure cache for Redis és az Azure Content Delivery Network Services szolgáltatást. [Azure Resource Manager](../../azure-resource-manager/management/overview.md) lehetővé teszi, hogy az alkalmazásban lévő erőforrásokat csoportként működjön. Egyetlen, koordinált műveletben telepítheti, frissítheti vagy törölheti az összes erőforrást.
 
 A kapcsolódó erőforrások logikai csoportosítása és kezelése mellett Azure Resource Manager olyan központi telepítési képességeket is tartalmaz, amelyek lehetővé teszik a kapcsolódó erőforrások üzembe helyezésének és konfigurálásának testreszabását. Használhatja például a Resource Manager alkalmazást az alkalmazások üzembe helyezéséhez és konfigurálásához. Ez az alkalmazás több virtuális gépről, egy terheléselosztóből és egy Azure SQL Database-adatbázisból állhat egyetlen egységként.
@@ -273,7 +273,7 @@ A kapcsolódó erőforrások logikai csoportosítása és kezelése mellett Azur
 Ezeket az üzembe helyezéseket egy Azure Resource Manager sablon használatával fejlesztheti, amely egy JSON-formátumú dokumentum. A sablonok lehetővé teszik, hogy a parancsfájlok helyett deklaratív sablonok használatával definiálja az alkalmazásokat, és kezelje az alkalmazásait. A sablonok különböző környezetekben, például tesztelési, átmeneti és éles környezetben is működhetnek. A sablonok használatával például hozzáadhat egy gombot egy GitHub-tárházhoz, amely egyetlen kattintással üzembe helyezi a tárházban lévő kódot egy Azure-szolgáltatásba.
 
 > **Használat esetén**: használjon Resource Manager-sablonokat, ha olyan sablon alapú üzembe helyezést szeretne alkalmazni az alkalmazáshoz, amely a REST API-k, az Azure CLI és a Azure PowerShell használatával felügyelhető.
-> 
+>
 > Első **lépések**: a sablonok használatának megkezdéséhez lásd: [Azure Resource Manager-sablonok készítése](../../resource-group-authoring-templates.md).
 
 ## <a name="understanding-accounts-subscriptions-and-billing"></a>A fiókok, az előfizetések és a számlázás ismertetése
@@ -290,11 +290,11 @@ Az egyes Azure-fiókok identitásait, más néven *felhasználókat*is definiál
 
 ### <a name="manage-your-subscriptions"></a>Saját előfizetések kezelése
 
-Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az elérhető előfizetési ajánlatok listáját a következő típus szerint tekintheti meg: [Microsoft Azure ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Az Azure-előfizetések olyan fiók-rendszergazdával rendelkeznek, amely teljes körű hozzáféréssel rendelkezik az előfizetéshez. Emellett olyan szolgáltatás-rendszergazdával is rendelkeznek, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../../billing/billing-add-change-azure-subscription-administrator.md). A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az egyes fiókok részletesen szabályozhatják az Azure-erőforrásokat.
+Az előfizetés egy Azure-fiókhoz kapcsolódó Azure-szolgáltatások logikai csoportosítása. Egyetlen Azure-fiók több előfizetést is tartalmazhat. Az Azure-szolgáltatások számlázása előfizetési alapon történik. Az elérhető előfizetési ajánlatok listáját a következő típus szerint tekintheti meg: [Microsoft Azure ajánlat részletei](https://azure.microsoft.com/support/legal/offer-details/). Az Azure-előfizetések olyan fiók-rendszergazdával rendelkeznek, amely teljes körű hozzáféréssel rendelkezik az előfizetéshez. Emellett olyan szolgáltatás-rendszergazdával is rendelkeznek, aki az előfizetés összes szolgáltatását felügyeli. További információ a klasszikus előfizetési rendszergazdákról: [Azure-előfizetések rendszergazdáinak hozzáadása vagy módosítása](../../cost-management-billing/manage/add-change-subscription-administrator.md). A [szerepköralapú hozzáférés-vezérlés (RBAC)](../../role-based-access-control/overview.md)segítségével az egyes fiókok részletesen szabályozhatják az Azure-erőforrásokat.
 
 #### <a name="resource-groups"></a>Erőforráscsoportok
 
-Új Azure-szolgáltatások kiépítésekor ezt egy adott előfizetésben teheti meg. Az egyes Azure-szolgáltatások, amelyek más néven erőforrások, egy erőforráscsoport kontextusában jönnek létre. Az erőforráscsoportok megkönnyítik az alkalmazás erőforrásainak üzembe helyezését és kezelését. Az erőforráscsoport az alkalmazás összes olyan erőforrását tartalmazza, amelyet egységként szeretne használni. Az erőforrásokat az erőforráscsoportok és a különböző előfizetések között is áthelyezheti. További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../resource-group-move-resources.md).
+Új Azure-szolgáltatások kiépítésekor ezt egy adott előfizetésben teheti meg. Az egyes Azure-szolgáltatások, amelyek más néven erőforrások, egy erőforráscsoport kontextusában jönnek létre. Az erőforráscsoportok megkönnyítik az alkalmazás erőforrásainak üzembe helyezését és kezelését. Az erőforráscsoport az alkalmazás összes olyan erőforrását tartalmazza, amelyet egységként szeretne használni. Az erőforrásokat az erőforráscsoportok és a különböző előfizetések között is áthelyezheti. További információ az erőforrások áthelyezéséről: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
 A Azure Erőforrás-kezelő nagyszerű eszköz az előfizetésben már létrehozott erőforrások megjelenítéséhez. További információ: az [erőforrások megtekintése és módosítása a Azure erőforrás-kezelő használatával](../../resource-manager-resource-explorer.md).
 
@@ -305,7 +305,7 @@ Ha engedélyezi az Azure-erőforrásokhoz való hozzáférést, az ajánlott elj
 - **Szerepköralapú hozzáférés-vezérlés (RBAC)** : az Azure-ban hozzáférést biztosíthat a felhasználói fiókoknak (rendszerbiztonsági tag) egy adott hatókörben: előfizetés, erőforráscsoport vagy egyedi erőforrás. A RBAC lehetővé teszi, hogy erőforrásokat helyezzen üzembe egy erőforráscsoporthoz, és engedélyeket adjon egy adott felhasználónak vagy csoportnak. Azt is lehetővé teszi, hogy korlátozza a hozzáférést csak a célként megadott erőforráscsoporthoz tartozó erőforrásokhoz. Hozzáférést biztosíthat egyetlen erőforráshoz, például virtuális géphez vagy virtuális hálózathoz is. A hozzáférés engedélyezéséhez hozzá kell rendelnie egy szerepkört a felhasználóhoz, a csoporthoz vagy az egyszerű szolgáltatáshoz. Számos előre definiált szerepkör létezik, és saját egyéni szerepkörök is megadhatók. További információ: [Mi a szerepköralapú hozzáférés-vezérlés (RBAC)?](../../role-based-access-control/overview.md).
 
   > **Mikor érdemes használni**: Ha a felhasználóknak és csoportoknak részletes hozzáférés-kezelést kell végeznie, vagy ha a felhasználónak egy előfizetés tulajdonosát kell tennie.
-  > 
+  >
   > Első **lépések**: további információért lásd: [hozzáférés kezelése a RBAC és a Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 - **Egyszerű szolgáltatások objektumai**: a felhasználói rendszerbiztonsági tag és a csoportok hozzáférésének biztosításával azonos hozzáférést biztosíthat egy egyszerű szolgáltatáshoz.
@@ -316,11 +316,11 @@ Ha engedélyezi az Azure-erőforrásokhoz való hozzáférést, az ajánlott elj
 
 Azure Resource Manager lehetővé teszi, hogy egyéni címkéket rendeljen az egyes erőforrásokhoz. A kulcs-érték párokat tartalmazó címkék hasznosak lehetnek, ha erőforrásokat kell szerveznie a számlázáshoz vagy a figyeléshez. A címkék lehetővé teszik az erőforrások több erőforráscsoport közötti nyomon követését. A címkék a következő módokon rendelhetők hozzá:
 
-* A portálon 
-* A Azure Resource Manager sablonban 
+* A portálon
+* A Azure Resource Manager sablonban
 * A REST API használata
 * Az Azure parancssori felületének használata
-* A PowerShell használata 
+* A PowerShell használata
 
 Az egyes erőforrásokhoz több címkét is hozzárendelhet. További információ: [címkék használata az Azure-erőforrások rendszerezéséhez](../../resource-group-using-tags.md).
 
@@ -332,10 +332,10 @@ A helyszíni számítástechnika és a felhőben üzemeltetett szolgáltatások 
 
 Az Azure olyan számlázási REST API-k készletét biztosítja, amelyek hozzáférést biztosítanak az Azure-előfizetések erőforrás-felhasználási és metaadat-adataihoz. Ezek a számlázási API-k lehetővé teszi az Azure-költségek jobb előrejelzését és kezelését. A kiadásokat óránkénti növekedéssel nyomon követheti és elemezheti, és a kiadási riasztásokat is létrehozhatja. A jövőbeli számlázást a jelenlegi használati trendek alapján is előre jelezheti.
 
->Első **lépések**: Ha többet szeretne megtudni a számlázási API-k használatáról, tekintse meg az [Azure számlázási használat és a RateCard API](../../billing-usage-rate-card-overview.md)-k áttekintése című témakört.
+>Első **lépések**: Ha többet szeretne megtudni a számlázási API-k használatáról, tekintse meg az [Azure számlázási használat és a RateCard API](../../cost-management-billing/manage/usage-rate-card-overview.md)-k áttekintése című témakört.
 
 #### <a name="predict-future-costs"></a>Jövőbeli költségek előrejelzése
 
 Bár az Azure-ban az idő előtt megbecsülhető a költségek, az Azure olyan eszközöket tartalmaz, amelyek segíthetnek. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) segítségével megbecsülheti a telepített erőforrások költségét. A portál számlázási erőforrásait és a számlázási REST API-kat is használhatja a jövőbeli költségek becslésére a jelenlegi fogyasztás alapján.
 
->Első **lépések**: [Az Azure számlázási használat és a RateCard API-k áttekintése](../../billing-usage-rate-card-overview.md).
+>Első **lépések**: [Az Azure számlázási használat és a RateCard API-k áttekintése](../../cost-management-billing/manage/usage-rate-card-overview.md).

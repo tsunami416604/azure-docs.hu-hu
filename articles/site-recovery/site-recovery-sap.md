@@ -5,12 +5,12 @@ author: sideeksh
 manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
-ms.openlocfilehash: eeb85e97d653b0faac171e2986cb933fc41e6606
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0cef6332a169b71d7812efdc41247443fbc194f2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940671"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982369"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
 
@@ -68,13 +68,13 @@ A ABAP alkalmazás-kiszolgálók bejelentkezési csoportjainak kezeléséhez a r
 #### <a name="vms-running-sap-central-services-cluster"></a>SAP Central Services-fürtöt futtató virtuális gépek
 Ez a viszonyítási architektúra központi szolgáltatásokat futtat az alkalmazási szinten lévő virtuális gépeken. A központi szolgáltatások egy lehetséges meghibásodási pont (SPOF), ha egyetlen virtuális gépre van üzembe helyezve – tipikus telepítés esetén, ha a magas rendelkezésre állás nem követelmény.<br>
 
-Magas rendelkezésre állású megoldás megvalósításához egy megosztott fürtlemez vagy egy fájlmegosztási fürt is használható. A virtuális gépek megosztott lemezes fürthöz való konfigurálásához használja a Windows Server feladatátvevő fürtöt. A Felhőbeli tanúsító kvórum tanúsító. 
+Magas rendelkezésre állású megoldás megvalósításához egy megosztott fürtlemez vagy egy fájlmegosztási fürt is használható. A virtuális gépek megosztott lemezes fürthöz való konfigurálásához használja a Windows Server feladatátvevő fürtöt. A Felhőbeli tanúsító kvórum tanúsító.
  > [!NOTE]
  > Site Recovery nem replikálja a Felhőbeli tanút, ezért javasolt a Felhőbeli tanú üzembe helyezése a vész-helyreállítási régióban.
 
-A feladatátvevő fürt környezetének támogatásához a [SIOS DataKeeper-fürt kiadása](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) a fürt megosztott kötetének működését a fürtcsomópontok által birtokolt független lemezek replikálásával hajtja végre. Az Azure nem támogatja natív módon a megosztott lemezeket, ezért a SIOS által biztosított megoldásokat igényel. 
+A feladatátvevő fürt környezetének támogatásához a [SIOS DataKeeper-fürt kiadása](https://azuremarketplace.microsoft.com/marketplace/apps/sios_datakeeper.sios-datakeeper-8) a fürt megosztott kötetének működését a fürtcsomópontok által birtokolt független lemezek replikálásával hajtja végre. Az Azure nem támogatja natív módon a megosztott lemezeket, ezért a SIOS által biztosított megoldásokat igényel.
 
-A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementálása. Az [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a központi szolgáltatások telepítési mintáját, hogy a/sapmnt globális könyvtárakat egy UNC elérési úton keresztül elérje. Azonban továbbra is ajánlott biztosítani, hogy a/sapmnt UNC-megosztás erősen elérhető legyen. Ezt a központi szolgáltatási példányon végezheti el a Windows Server feladatátvevő fürt és a kibővíthető fájlkiszolgáló (SOFS) és a Windows Server 2016 Közvetlen tárolóhelyek (S2D) funkciójának használatával. 
+A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementálása. Az [SAP](https://blogs.sap.com/2018/03/19/migration-from-a-shared-disk-cluster-to-a-file-share-cluster) nemrég módosította a központi szolgáltatások telepítési mintáját, hogy a/sapmnt globális könyvtárakat egy UNC elérési úton keresztül elérje. Azonban továbbra is ajánlott biztosítani, hogy a/sapmnt UNC-megosztás erősen elérhető legyen. Ezt a központi szolgáltatási példányon végezheti el a Windows Server feladatátvevő fürt és a kibővíthető fájlkiszolgáló (SOFS) és a Windows Server 2016 Közvetlen tárolóhelyek (S2D) funkciójának használatával.
  > [!NOTE]
  > Jelenleg Site Recovery támogatja a virtuális gépek csak a közvetlen tárolóhelyek és a SIOS Datakeeper passzív csomópontjának összeomlását.
 
@@ -84,14 +84,14 @@ A fürtözés kezelésének másik módja egy fájlmegosztási fürt implementá
 A Site Recovery segítségével összehangolhatja a teljes körű SAP-telepítés feladatátvételét az Azure-régiók között.
 A vész-helyreállítás beállításának lépései a következők: 
 
-1. Virtuális gépek replikálása 
+1. Virtuális gépek replikálása
 2. Helyreállítási hálózat kialakítása
 3.  Tartományvezérlő replikálása
-4.  Adatbázis-réteg replikálása 
-5.  Futtasson egy feladatátvételi tesztet 
-6.  Feladatátvétel futtatása 
+4.  Adatbázis-réteg replikálása
+5.  Futtasson egy feladatátvételi tesztet
+6.  Feladatátvétel futtatása
 
-Alább látható az ebben a példában használt egyes szintek vész-helyreállítására vonatkozó javaslat. 
+Alább látható az ebben a példában használt egyes szintek vész-helyreállítására vonatkozó javaslat.
 
  **SAP-rétegek** | **Ajánlás**
  --- | ---

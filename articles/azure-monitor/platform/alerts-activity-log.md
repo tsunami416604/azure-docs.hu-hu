@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: rboucher
 ms.author: robb
 ms.date: 06/25/2019
-ms.openlocfilehash: 54122d784467bc090d82f4126e03ab688883ea7d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4835f1034149a015963569a0b1fc5f9195e3cfca
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364798"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969522"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-by-using-azure-monitor"></a>Műveletnapló-riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával  
 
@@ -197,7 +197,7 @@ Ha Azure Resource Manager sablonnal szeretne létrehozni egy műveletnapló-rias
   ]
 }
 ```
-Az előző minta JSON például a sampleActivityLogAlert. JSON fájlba menthető, és a Azure Resource Manager használatával telepíthető [a Azure Portalban](../../azure-resource-manager/resource-group-template-deploy-portal.md), és üzembe helyezhető.
+Az előző minta JSON például a sampleActivityLogAlert. JSON fájlba menthető, és a Azure Resource Manager használatával telepíthető [a Azure Portalban](../../azure-resource-manager/templates/deploy-portal.md), és üzembe helyezhető.
 
 > [!NOTE]
 > Akár 5 percet is igénybe vehet, amíg az új tevékenység naplójának riasztási szabálya aktívvá válik.

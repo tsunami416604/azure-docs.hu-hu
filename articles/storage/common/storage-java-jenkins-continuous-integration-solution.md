@@ -9,12 +9,12 @@ ms.service: storage
 custom: jenkins
 ms.date: 08/13/2019
 ms.subservice: common
-ms.openlocfilehash: 72756bd3eb12ca80f419a0d53db76e6637d884fc
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 0e426dcead5d1f315717fbc19cf7f7bdac62d563
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73839133"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970169"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Az Azure Storage használata Jenkins folyamatos integrációs megoldással
 
@@ -49,7 +49,7 @@ A Blob service használatának előnyei az agilis fejlesztői Build-összetevők
      
       Habár egy tipikus Jenkins CI-megoldás úgy lesz beállítva, hogy szolgáltatásként fusson, a Jenkins-háború parancssorban való futtatása elegendő lesz ehhez az oktatóanyaghoz.
 * Egy Azure-fiók. <https://www.azure.com>címen regisztrálhat egy Azure-fiókot.
-* Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-quickstart-create-account.md)című témakör lépéseit követve.
+* Egy Azure-tárfiók. Ha még nem rendelkezik Storage-fiókkal, létrehozhat egyet a [Storage-fiók létrehozása](../common/storage-account-create.md)című témakör lépéseit követve.
 * A Jenkins CI-megoldás ismerete ajánlott, de nem kötelező, mivel az alábbi tartalom egy alapszintű példát mutat be a Blob service a Jenkins CI-Build összetevőinek tárházként való használatakor szükséges lépések megjelenítéséhez.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>A Blob service használata a Jenkins CI-vel
@@ -104,7 +104,7 @@ Ahhoz, hogy a Blob service a Jenkins használatával használhassa, telepítenie
 12. A beállítások mentéséhez kattintson a **Mentés** gombra.
 13. A Jenkins irányítópultján válassza a **Létrehozás most** lehetőséget a **MyJob**futtatásához. Ellenőrizze a konzol kimenetét az állapothoz. Az Azure Storage-hoz tartozó állapotüzenetek a konzol kimenetében jelennek meg, amikor a Build utáni művelet elindítja a Build-összetevők feltöltését.
 14. A feladatok sikeres befejezését követően a nyilvános blob megnyitásával ellenőrizheti a Build-összetevőket.
-    1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+    1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
     2. Válassza a **Storage** lehetőséget.
     3. Válassza ki a Jenkins-hez használt Storage-fiók nevét.
     4. Válassza a **tárolók**lehetőséget.
@@ -145,7 +145,7 @@ Ez a szakasz áttekintést nyújt a Blob service összetevőkről.
 
 Ha a Jenkins beépülő modulok használata során bármilyen hibát tapasztal, jelentse be a problémát az adott összetevő [Jenkins JIRA](https://issues.jenkins-ci.org/) felületén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A Jenkins megfelel](https://wiki.jenkins-ci.org/display/JENKINS/Meet+Jenkins)
 * [Javához készült Azure Storage SDK](https://github.com/azure/azure-storage-java)
 * [Azure Storage ügyféloldali SDK-referencia](https://javadoc.io/doc/com.microsoft.azure/azure-core/0.8.0/index.html)

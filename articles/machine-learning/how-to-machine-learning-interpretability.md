@@ -10,12 +10,12 @@ ms.author: mesameki
 author: mesameki
 ms.reviewer: trbye
 ms.date: 10/25/2019
-ms.openlocfilehash: 7101cef6acd7c7b321fbd31c614063a1fa8fe17a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 339ab811969a3de6ce87d529e1bf77f325be4071
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771870"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968485"
 ---
 # <a name="model-interpretability-in-azure-machine-learning"></a>A modell értelmezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -77,7 +77,7 @@ Ez a csomag a értelmezzen [-Community](https://github.com/interpretml/interpret
 * A **magyarázó elmagyarázó**: az utánozó elmagyarázása azon alapul, hogy a [globális helyettesítő modellek](https://christophm.github.io/interpretable-ml-book/global.html) betanítása a tábla modelljeinek utánzására szolgál. A globális helyettesítő modell egy belsőleg értelmezhető modell, amely úgy van kiképezve, hogy a lehető legpontosabban közelítse meg a fekete doboz modelljeinek előrejelzéseit. Az adattudós értelmezheti a helyettesítő modellt a fekete Box-modellel kapcsolatos következtetések összeállításához. A következő értelmezhető modellek egyikét használhatja a helyettesítő modellként: LightGBM (LGBMExplainableModel), lineáris regresszió (LinearExplainableModel), sztochasztikus gradiens deillatú elmagyarázható modell (SGDExplainableModel) és döntési fa ( DecisionTreeExplainableModel).
 
 
-* A **permutáció funkciójának fontossági magyarázata**: a permutáció funkció fontossága a [Breiman véletlenszerű erdei papírján](https://www.stat.berkeley.edu/%7Ebreiman/randomforest2001.pdf) (lásd a 10. szakaszt) használt besorolási és regressziós modelleket ismerteti. Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció.
+* A **permutáció funkciójának fontossági magyarázata**: a permutáció funkció fontossága a [Breiman véletlenszerű erdei papírján](https://www.stat.berkeley.edu/~breiman/randomforest2001.pdf) (lásd a 10. szakaszt) használt besorolási és regressziós modelleket ismerteti. Magas szinten a működésének módja az, hogy a teljes adatkészlet esetében véletlenszerűen végzi el az adatok egy funkciójának a kiszámítását, és kiszámítja, hogy a teljesítmény mérőszáma milyen mértékben változik. Minél nagyobb a változás, annál fontosabb a funkció.
 
 * **Lime-elmagyarázó** (`contrib`): [a lime-alapú, lime](https://github.com/marcotcr/lime)-elmagyarázó a helyi helyettesítő modellek létrehozásához használja a korszerű, értelmezhető modell-AGNOSZTIKUS magyarázatot (lime) használó algoritmust. A globális helyettesítő modellektől eltérően a LIME a helyi helyettesítő modellek betanítására összpontosít az egyes előrejelzések elmagyarázása érdekében.
 * **Han Text elmagyarázó** (`contrib`): a Han Text magyarázóer egy hierarchikus hanghálózatot használ a modell magyarázatának beszerzéséhez egy adott fekete Box Text-modell szöveges adatainak használatával. Egy adott fekete Box-modell előre jelzett kimenetei között betanítja a HAN helyettesítő modellt. Miután globálisan betanítást végez a Text corpusban, egy adott dokumentumhoz tartozó finomhangolási lépést ad hozzá a magyarázatok pontosságának javításához. A HAN kétirányú RNN használ két figyelmet a mondatok és a szó figyelemmel. Miután a DNN betanítják a fekete dobozos modellre, és egy adott dokumentumra finomítják, a felhasználó kinyerheti a szó fontosságát a figyelmet tartalmazó rétegekből. A HAN pontosabban jelenik meg, mint a mész vagy a formázás a szöveges adatmennyiséghez, de költségesebb a betanítási idő szempontjából is. Javítottuk a felhasználót, hogy a betanítási idő csökkentése érdekében a felhasználó a kesztyű szó beágyazásával inicializálja a hálózatot. A betanítási idő jelentősen növelhető a HAN távoli Azure GPU virtuális gépen való futtatásával. A HAN megvalósítását ["hierarchikus figyelmet igénylő hálózatok a dokumentumok besorolásához (Yang et al., 2016)"](https://www.researchgate.net/publication/305334401_Hierarchical_Attention_Networks_for_Document_Classification)című cikk írja le.

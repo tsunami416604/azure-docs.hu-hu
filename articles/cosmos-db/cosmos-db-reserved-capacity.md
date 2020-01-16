@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 08/29/2019
 ms.author: banders
 ms.reviewer: sngun
-ms.openlocfilehash: 0a956a1372ba1535b9d918333bd7411a4ca6abe4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83ecb0ad85a02c8c05b9d7e504e578afd98ed7b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441933"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969358"
 ---
 # <a name="optimize-cost-with-reserved-capacity-in-azure-cosmos-db"></a>A Cost és a fenntartott kapacitás optimalizálása Azure Cosmos DB
 
@@ -20,9 +20,9 @@ Azure Cosmos DB fenntartott kapacitással pénzt takaríthat meg, ha akár egy �
 
 Azure Cosmos DB fenntartott kapacitás jelentős mértékben csökkentheti Cosmos DB költségeit,&mdash;akár 65%-ot is igénybe vehet, egy vagy három éves előzetes kötelezettségvállalással. A fenntartott kapacitás számlázási kedvezményt biztosít, és nem befolyásolja a Azure Cosmos DB erőforrások futtatókörnyezeti állapotát.
 
-Azure Cosmos DB fenntartott kapacitás az erőforrások számára kiépített átviteli sebességre vonatkozik. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit. A foglalások megvásárlása után a foglalási attribútumoknak megfelelő átviteli sebességért nem számolunk fel díjakat az utólagos elszámolású díjakért. A foglalásokkal kapcsolatos további információkért tekintse meg az [Azure foglalásait](../billing/billing-save-compute-costs-reservations.md) ismertető cikket.
+Azure Cosmos DB fenntartott kapacitás az erőforrások számára kiépített átviteli sebességre vonatkozik. Nem fedezi azonban a tárolás és a hálózatkezelés költségeit. A foglalások megvásárlása után a foglalási attribútumoknak megfelelő átviteli sebességért nem számolunk fel díjakat az utólagos elszámolású díjakért. A foglalásokkal kapcsolatos további információkért tekintse meg az [Azure foglalásait](../cost-management-billing/reservations/save-compute-costs-reservations.md) ismertető cikket.
 
-A [Azure Portal](https://portal.azure.com)Azure Cosmos db fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../billing/billing-monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
+A [Azure Portal](https://portal.azure.com)Azure Cosmos db fenntartott kapacitást is vásárolhat. A foglalásért fizethet [előre vagy havi részletekben](../cost-management-billing/reservations/monthly-payments-reservations.md). Fenntartott kapacitás vásárlása:
 
 * Legalább egy Nagyvállalati vagy egyéni előfizetéshez tulajdonosi szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.  
 * Nagyvállalati előfizetések esetében engedélyezni kell a **Fenntartott példányok hozzáadása** beállítást az [EA Portalon](https://ea.azure.com). Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
@@ -74,22 +74,22 @@ A foglalás lejáratakor a Azure Cosmos DB példányok továbbra is futnak, és 
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-A megfelelő fenntartott kapacitás azonosításával kapcsolatos segítségért lásd: [a foglalási kedvezmény Azure Cosmos DBre való alkalmazásának megismerése](../billing/billing-understand-cosmosdb-reservation-charges.md).
+A megfelelő fenntartott kapacitás azonosításával kapcsolatos segítségért lásd: [a foglalási kedvezmény Azure Cosmos DBre való alkalmazásának megismerése](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md).
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő Azure Cosmos DB erőforrásokra. A foglalás hatókörét a Azure Portal, a PowerShell, az Azure CLI vagy az API segítségével frissítheti.
 
-*  Ha szeretné megtudni, hogyan alkalmazza a fenntartott kapacitás kedvezményeit Azure Cosmos DBre, tekintse meg [Az Azure foglalási kedvezmény ismertetése](../billing/billing-understand-cosmosdb-reservation-charges.md)című témakört.
+*  Ha szeretné megtudni, hogyan alkalmazza a fenntartott kapacitás kedvezményeit Azure Cosmos DBre, tekintse meg [Az Azure foglalási kedvezmény ismertetése](../cost-management-billing/reservations/understand-cosmosdb-reservation-charges.md)című témakört.
 
 * Az Azure Reservationsszel kapcsolatos további információért tekintse meg a következő cikkeket:
 
-   * [Mik azok az Azure-foglalások?](../billing/billing-save-compute-costs-reservations.md)  
-   * [Az Azure Reservations kezelése](../billing/billing-manage-reserved-vm-instance.md)  
-   * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../billing/billing-understand-reserved-instance-usage-ea.md)  
-   * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../billing/billing-understand-reserved-instance-usage.md)
+   * [Mik azok az Azure-foglalások?](../cost-management-billing/reservations/save-compute-costs-reservations.md)  
+   * [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)  
+   * [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)  
+   * [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
    * [Azure-foglalások a partner Center CSP programban](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.

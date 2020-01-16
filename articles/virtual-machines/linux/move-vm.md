@@ -15,22 +15,22 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: cynthn
-ms.openlocfilehash: 8fc04b4689ea8707ac2c605e3e4242a117773151
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 2ba8a8cdc324f46e25f9665cfce0aa07fc948e88
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74035646"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979038"
 ---
 # <a name="move-a-linux-vm-to-another-subscription-or-resource-group"></a>Linux rendszerű virtuális gép áthelyezése másik előfizetésre vagy erőforráscsoport-csoportba
 Ez a cikk bemutatja, hogyan helyezhet át egy linuxos virtuális gépet (VM) Az erőforráscsoportok vagy előfizetések között. A virtuális gépek előfizetések közötti áthelyezése akkor lehet hasznos, ha létrehozott egy virtuális gépet egy személyes előfizetésben, és most át szeretné helyezni a céges előfizetésbe.
 
 > [!IMPORTANT]
->Jelenleg nem helyezhető át az Azure Managed Disks. 
+>Jelenleg nem helyezhető át az Azure Managed Disks.
 >
->Az áthelyezés részeként új erőforrás-azonosítók jönnek létre. A virtuális gép áthelyezése után frissítenie kell az eszközöket és a parancsfájlokat az új erőforrás-azonosítók használatára. 
-> 
-> 
+>Az áthelyezés részeként új erőforrás-azonosítók jönnek létre. A virtuális gép áthelyezése után frissítenie kell az eszközöket és a parancsfájlokat az új erőforrás-azonosítók használatára.
+>
+>
 
 ## <a name="use-the-azure-cli-to-move-a-vm"></a>Virtuális gép áthelyezése az Azure CLI használatával
 
@@ -72,5 +72,4 @@ Ha a rendszer arra kéri, hogy erősítse meg, hogy szeretné-e áthelyezni a me
 [!INCLUDE [virtual-machines-common-move-vm](../../../includes/virtual-machines-common-move-vm.md)]
 
 ## <a name="next-steps"></a>Következő lépések
-Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../resource-group-move-resources.md).    
-
+Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között. További információ: [erőforrások áthelyezése új erőforráscsoporthoz vagy előfizetésbe](../../azure-resource-manager/management/move-resource-group-and-subscription.md).    

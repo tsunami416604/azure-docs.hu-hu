@@ -5,12 +5,12 @@ author: amberb
 ms.topic: conceptual
 ms.date: 04/10/2019
 ms.author: banders
-ms.openlocfilehash: c6972aad49cebb7c714b86e636b95e1130b001c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fad9d727e78b470635c91a1bf9aaac11e57f4c7
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485220"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981226"
 ---
 # <a name="programmatically-create-azure-subscriptions-preview"></a>Azure-előfizetések programozott létrehozása (előzetes verzió)
 
@@ -33,7 +33,7 @@ Előfizetés létrehozásához tulajdonosi szerepkörrel kell rendelkeznie a bel
 
 ### <a name="find-accounts-you-have-access-to"></a>Azon fiókok keresése, amelyekhez hozzáférése van
 
-Miután hozzáadta a fiók tulajdonosához társított beléptetési fiókot, az Azure a fiók és a regisztráció közötti kapcsolat alapján határozza meg, hogy hol kell számlázni az előfizetési díjakat. A fiókban létrehozott összes előfizetés számlázása a fiókhoz tartozó EA-regisztráció alapján történik. Az előfizetések létrehozásához át kell adni a beléptetési fiókra vonatkozó értékeket, valamint az előfizetéshez tartozó felhasználói rendszerbiztonsági tagokat. 
+Miután hozzáadta a fiók tulajdonosához társított beléptetési fiókot, az Azure a fiók és a regisztráció közötti kapcsolat alapján határozza meg, hogy hol kell számlázni az előfizetési díjakat. A fiókban létrehozott összes előfizetés számlázása a fiókhoz tartozó EA-regisztráció alapján történik. Az előfizetések létrehozásához át kell adni a beléptetési fiókra vonatkozó értékeket, valamint az előfizetéshez tartozó felhasználói rendszerbiztonsági tagokat.
 
 A következő parancsok futtatásához be kell jelentkeznie a fiók tulajdonosa *kezdőkönyvtárának könyvtárába*, amely az a könyvtár, amelyet az előfizetések alapértelmezés szerint hoznak létre.
 
@@ -95,7 +95,7 @@ A `principalName` tulajdonsággal azonosíthatja azt a fiókot, amelyre az előf
 
 Az az [Billing beléptetés-Account List](https://aka.ms/EASubCreationPublicPreviewCLI) paranccsal listázhatja az összes olyan regisztrációs fiókot, amelyhez hozzáférése van.
 
-```azurecli-interactive 
+```azurecli-interactive
 az billing enrollment-account list
 ```
 
@@ -172,7 +172,7 @@ New-AzSubscription -OfferType MS-AZR-0017P -Name "Dev Team Subscription" -Enroll
 | `EnrollmentAccountObjectId`      | Igen       | Sztring | Annak a beléptetési fióknak az azonosítója, amelyre az előfizetést létrehozták, majd a számlázásra kerül. Ez az érték egy GUID azonosító, amelyet a `Get-AzEnrollmentAccount`tól kap. |
 | `OwnerObjectId`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
 | `OwnerSignInName`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, amelyet RBAC-tulajdonosként szeretne hozzáadni az előfizetéshez a létrehozásakor. `OwnerObjectId`helyett ezt a paramétert használhatja.|
-| `OwnerApplicationId` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. `OwnerObjectId`helyett ezt a paramétert használhatja. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel kell rendelkeznie a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
+| `OwnerApplicationId` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. `OwnerObjectId`helyett ezt a paramétert használhatja. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel kell rendelkeznie a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Az összes paraméter teljes listájának megtekintéséhez lásd: [New-AzSubscription](/powershell/module/az.subscription).
 
@@ -182,7 +182,7 @@ Először telepítse ezt az előzetes verziójú bővítményt `az extension add
 
 Futtassa az az [Account Create](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create) parancsot az alábbi paranccsal, és cserélje le a `<enrollmentAccountObjectId>`t az első lépésben másolt `name`re (```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```). Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak beolvasásával](grant-access-to-create-subscription.md#userObjectId).
 
-```azurecli-interactive 
+```azurecli-interactive
 az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscription" --enrollment-account-object-id "<enrollmentAccountObjectId>" --owner-object-id "<userObjectId>","<servicePrincipalObjectId>"
 ```
 
@@ -193,7 +193,7 @@ az account create --offer-type "MS-AZR-0017P" --display-name "Dev Team Subscript
 | `enrollment-account-object-id`      | Igen       | Sztring | Annak a beléptetési fióknak az azonosítója, amelyre az előfizetést létrehozták, majd a számlázásra kerül. Ez az érték egy GUID azonosító, amelyet a `az billing enrollment-account list`tól kap. |
 | `owner-object-id`      | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt felhasználó objektumazonosító.  |
 | `owner-upn`    | Nem       | Sztring | Annak a felhasználónak az e-mail-címe, amelyet RBAC-tulajdonosként szeretne hozzáadni az előfizetéshez a létrehozásakor. `owner-object-id`helyett ezt a paramétert használhatja.|
-| `owner-spn` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. `owner-object-id`helyett ezt a paramétert használhatja. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel kell rendelkeznie a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).| 
+| `owner-spn` | Nem       | Sztring | Az előfizetésben a létrehozáskor RBAC-tulajdonosként hozzáadni kívánt egyszerű szolgáltatásnév alkalmazás-azonosítója. `owner-object-id`helyett ezt a paramétert használhatja. A paraméter használatakor az egyszerű szolgáltatásnak [olvasási hozzáféréssel kell rendelkeznie a címtárhoz](/powershell/azure/active-directory/signing-in-service-principal?view=azureadps-2.0#give-the-service-principal-reader-access-to-the-current-tenant-get-azureaddirectoryrole).|
 
 Az összes paraméter teljes listájának megjelenítéséhez tekintse meg az [az Account Create (fiók létrehozása](/cli/azure/ext/subscription/account?view=azure-cli-latest#-ext-subscription-az-account-create)) című témakört.
 
@@ -211,11 +211,11 @@ Az összes paraméter teljes listájának megjelenítéséhez tekintse meg az [a
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-Az előfizetések létrehozásához tulajdonosi, közreműködő vagy Azure-előfizetési szerepkörrel kell rendelkeznie egy számlázási vagy számlázási fiókban, illetve a tulajdonos vagy közreműködő szerepkörben. További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatait](../../billing/billing-understand-mca-roles.md#subscription-billing-roles-and-tasks).
+Az előfizetések létrehozásához tulajdonosi, közreműködő vagy Azure-előfizetési szerepkörrel kell rendelkeznie egy számlázási vagy számlázási fiókban, illetve a tulajdonos vagy közreműködő szerepkörben. További információkért lásd [az előfizetés számlázási szerepköreit és azok feladatait](../../cost-management-billing/manage/understand-mca-roles.md#subscription-billing-roles-and-tasks).
 
 Az alábbi példa a REST API-k használatát mutatja be. A PowerShell és az Azure CLI jelenleg nem támogatottak.
 
-### <a name="find-billing-accounts-that-you-have-access-to"></a>Azon számlázási fiókok keresése, amelyekhez hozzáférése van 
+### <a name="find-billing-accounts-that-you-have-access-to"></a>Azon számlázási fiókok keresése, amelyekhez hozzáférése van
 
 Az alábbi kérelem elvégzésével sorolja fel az összes számlázási fiókot.
 
@@ -304,14 +304,14 @@ Az API-válasz felsorolja az összes számlázási szakaszt és azok számlázá
         "invoiceSectionId": "/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX"
   }]
 }
-    
+
 ```
 
 A `invoiceSectionDisplayName` tulajdonsággal azonosíthatja azt a számla szakaszt, amelyhez előfizetéseket kíván létrehozni. Másolja a `invoiceSectionId`t, `billingProfileId` és az egyik `skuId` a számla szakaszra. Ha például egy `Microsoft Azure plan` típusú előfizetést szeretne létrehozni `Development` számla szakaszhoz, akkor másolja `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX`, `/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-xxxx-xxx-xxx` és `0001`. Illessze be ezeket az értékeket valahova, hogy azok a következő lépésben használhatók legyenek.
 
 ### <a name="create-a-subscription-for-an-invoice-section"></a>Előfizetés létrehozása a számla szakaszhoz
 
-A következő példában létrehozunk egy, a *fejlesztési* számla szakaszhoz *Microsoft Azure terv* típusú *Dev Team-előfizetés* nevű előfizetést. Az előfizetés számlázása a *contoso Pénzügy* számlázási profiljába történik, és a számla *fejlesztési* szakaszában jelenik meg. 
+A következő példában létrehozunk egy, a *fejlesztési* számla szakaszhoz *Microsoft Azure terv* típusú *Dev Team-előfizetés* nevű előfizetést. Az előfizetés számlázása a *contoso Pénzügy* számlázási profiljába történik, és a számla *fejlesztési* szakaszában jelenik meg.
 
 Végezze el a következő kérést, és cserélje le a `<invoiceSectionId>`t a második lépésből (```/providers/Microsoft.Billing/billingAccounts/5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_2019-05-31/billingProfiles/PBFV-XXXX-XXX-XXX/invoiceSections/GJGR-XXXX-XXX-XXX```) másolt `invoiceSectionId`. Át kell adnia a `billingProfileId`, és `skuId` az API kérés paramétereinek második lépése alapján. Ha meg szeretné adni a tulajdonosokat, ismerkedjen meg [a felhasználói objektumok azonosítóinak beolvasásával](grant-access-to-create-subscription.md#userObjectId).
 
@@ -356,7 +356,7 @@ Ahhoz, hogy előfizetést hozzon létre a számlázási fiókjához, globális r
 
 Az alábbi példa a REST API-k használatát mutatja be. A PowerShell és az Azure CLI jelenleg nem támogatottak.
 
-### <a name="find-the-billing-accounts-that-you-have-access-to"></a>Azon számlázási fiókok megkeresése, amelyekhez hozzáférése van 
+### <a name="find-the-billing-accounts-that-you-have-access-to"></a>Azon számlázási fiókok megkeresése, amelyekhez hozzáférése van
 
 Az alábbi kérelem elvégzésével sorolja fel az összes olyan számlázási fiókot, amelyhez hozzáféréssel rendelkezik.
 
@@ -404,7 +404,7 @@ A `displayName` tulajdonsággal azonosíthatja azt a számlázási fiókot, amel
 
 ### <a name="find-customers-that-have-azure-plans"></a>Azure-csomagokkal rendelkező ügyfelek keresése
 
-Végezze el a következő kérelmet, és cserélje le a `<billingAccountName>`t az első lépésből (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) másolt `name` a számlázási fiókban lévő összes ügyfél listázásához, amelyhez Azure-előfizetéseket hozhat létre. 
+Végezze el a következő kérelmet, és cserélje le a `<billingAccountName>`t az első lépésből (```5e98e158-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx```) másolt `name` a számlázási fiókban lévő összes ügyfél listázásához, amelyhez Azure-előfizetéseket hozhat létre.
 
 ```json
 GET https://management.azure.com/providers/Microsoft.Billing/billingAccounts/<billingAccountName>/customers?api-version=2019-10-01-preview
@@ -435,14 +435,14 @@ Az API-válasz felsorolja a számlázási fiókban lévő ügyfeleket az Azure-c
       "type": "Microsoft.Billing/billingAccounts/customers"
     }]
 }
-    
+
 ```
 
 A `displayName` tulajdonsággal azonosíthatja azt az ügyfelet, amelyhez előfizetéseket kíván létrehozni. Másolja az ügyfél `id`. Ha például `Fabrikam toys`-előfizetést szeretne létrehozni, akkor másolja `/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx`. Illessze be ezt az értéket valahova a következő lépésekben való használathoz.
 
 ### <a name="optional-for-indirect-providers-get-the-resellers-for-a-customer"></a>Nem kötelező a közvetett szolgáltatók esetében: ügyfelek viszonteladóinak beszerzése
 
-Ha Ön közvetett szolgáltató a CSP kétrétegű modellben, megadhat egy viszonteladót, miközben előfizetéseket hoz létre az ügyfelek számára. 
+Ha Ön közvetett szolgáltató a CSP kétrétegű modellben, megadhat egy viszonteladót, miközben előfizetéseket hoz létre az ügyfelek számára.
 
 Végezze el a következő kérést, és cserélje le a `<customerId>`t a második lépésből (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) másolt `id` az ügyfelek számára elérhető összes viszonteladó listázásához.
 
@@ -489,7 +489,7 @@ Az `description` tulajdonsággal azonosíthatja a viszonteladót, aki társítva
 
 A következő példában létrehozunk egy *fejlesztői csapat előfizetése* *Fabrikam-játékok* számára nevű előfizetést, és *Wingtip* -viszonteladót rendel hozzá az előfizetéshez. T
 
-Végezze el a következő kérést, és cserélje le a `<customerId>`t a második lépésből (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) másolt `id`. Adja át a választható *resellerId* az API kérés paramétereinek második lépése alapján. 
+Végezze el a következő kérést, és cserélje le a `<customerId>`t a második lépésből (```/providers/Microsoft.Billing/billingAccounts/99a13315-xxxx-xxxx-xxxx-xxxxxxxxxxxx:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx_xxxx-xx-xx/customers/2281f543-xxxx-xxxx-xxxx-xxxxxxxxxxxx```) másolt `id`. Adja át a választható *resellerId* az API kérés paramétereinek második lépése alapján.
 
 ```json
 POST https://management.azure.com<customerId>/providers/Microsoft.Subscription/createSubscription?api-version=2018-11-01-preview

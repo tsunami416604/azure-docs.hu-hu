@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 06/20/2019
-ms.openlocfilehash: a3fcff9f895fba3574bbce976087295018ab51c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2e27958dd9379a26ca7e7f4d7e427e5afa216e29
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428749"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981161"
 ---
 # <a name="build-your-first-serverless-app-by-using-azure-logic-apps-and-azure-functions-in-visual-studio"></a>Az első kiszolgáló nélküli alkalmazás létrehozása a Visual Studióban Azure Logic Apps és Azure Functions használatával
 
@@ -56,7 +56,7 @@ Ha kiszolgáló nélküli alkalmazást szeretne létrehozni a Visual Studióban,
 
 ## <a name="create-a-resource-group-project"></a>Erőforráscsoport-projekt létrehozása
 
-Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) a kiszolgáló nélküli alkalmazáshoz. Az Azure-ban erőforrás- *csoporton*belül hozhat létre erőforrásokat, amely egy olyan logikai gyűjtemény, amelyet egy teljes alkalmazás erőforrásainak rendszerezéséhez, kezeléséhez és üzembe helyezéséhez használhat egyetlen eszközként. Az Azure-beli kiszolgáló nélküli alkalmazások esetében az erőforráscsoport Azure Logic Apps és Azure Functions egyaránt tartalmaz erőforrásokat. További információk az [Azure-erőforráscsoportokról és -erőforrásokról](../azure-resource-manager/management/overview.md).
+Első lépésként hozzon létre egy [Azure erőforráscsoport-projektet](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) a kiszolgáló nélküli alkalmazáshoz. Az Azure-ban erőforrás- *csoporton*belül hozhat létre erőforrásokat, amely egy olyan logikai gyűjtemény, amelyet egy teljes alkalmazás erőforrásainak rendszerezéséhez, kezeléséhez és üzembe helyezéséhez használhat egyetlen eszközként. Az Azure-beli kiszolgáló nélküli alkalmazások esetében az erőforráscsoport Azure Logic Apps és Azure Functions egyaránt tartalmaz erőforrásokat. További információk az [Azure-erőforráscsoportokról és -erőforrásokról](../azure-resource-manager/management/overview.md).
 
 1. Indítsa el a Visual studiót, és jelentkezzen be az Azure-fiókjával.
 

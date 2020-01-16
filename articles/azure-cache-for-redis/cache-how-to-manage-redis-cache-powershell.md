@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: yegu
-ms.openlocfilehash: 6eeabb279f5bd5165ebb249651b8bc926deb92a6
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: a385d3ed7ef46389f96de72c98ffc29cebf60ec4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75530918"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978855"
 ---
 # <a name="manage-azure-cache-for-redis-with-azure-powershell"></a>Az Azure cache kezelése a Redis Azure PowerShell
 > [!div class="op_single_selector"]
@@ -26,7 +26,7 @@ Ebből a témakörből megtudhatja, hogyan hajthat végre olyan gyakori művelet
 
 [!INCLUDE [learn-about-deployment-models](../../includes/learn-about-deployment-models-rm-include.md)]
 
-A klasszikus üzemi modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési modell: az üzembe helyezési modellek és az erőforrások állapotának ismertetése](../azure-resource-manager/resource-manager-deployment-model.md).
+A klasszikus üzemi modellel kapcsolatos további információkért lásd: [Azure Resource Manager és klasszikus üzembe helyezési modell: az üzembe helyezési modellek és az erőforrások állapotának ismertetése](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ha már telepítette a Azure PowerShell-t, akkor Azure PowerShell 1.0.0 vagy újabb verzió szükséges. Az ezzel a paranccsal telepített Azure PowerShell verzióját a Azure PowerShell parancssorban tekintheti meg.
@@ -776,7 +776,7 @@ Ha többet szeretne megtudni a Windows PowerShell és az Azure használatával k
 
 * [Az Azure cache for Redis parancsmag dokumentációja az MSDN-ben](https://docs.microsoft.com/powershell/module/az.rediscache)
 * [Azure Resource Manager parancsmagok](https://go.microsoft.com/fwlink/?LinkID=394765): megtudhatja, hogyan használhatja a parancsmagokat a Azure Resource Manager modulban.
-* [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/resource-group-template-deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
+* [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/templates/deploy-portal.md): megtudhatja, hogyan hozhat létre és kezelhet erőforráscsoportokat a Azure Portalban.
 * [Azure blog](https://azure.microsoft.com/blog/): Ismerkedjen meg az Azure új szolgáltatásaival.
 * [Windows PowerShell blog](https://blogs.msdn.com/powershell): Ismerkedjen meg a Windows PowerShell új szolgáltatásaival.
 * ["Hey, Scripting Guy!" Blog](https://blogs.technet.com/b/heyscriptingguy/): valós tippeket és trükköket szerezhet be a Windows PowerShell Közösségből.

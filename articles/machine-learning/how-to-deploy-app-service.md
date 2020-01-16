@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 08/27/2019
-ms.openlocfilehash: a8a5b8df4307d9a73477944351c2889a86bdb2b4
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 562dd900bb3d64731e5467058e2718b081c675b6
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540333"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968546"
 ---
 # <a name="deploy-a-machine-learning-model-to-azure-app-service-preview"></a>Gépi tanulási modell üzembe helyezése Azure App Service (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -49,7 +49,7 @@ A Azure App Service által nyújtott szolgáltatásokkal kapcsolatos további in
     > * `model` – a regisztrált modell, amelyet telepíteni kíván.
     > * `inference_config` – a modellre vonatkozó következtetési konfiguráció.
     >
-    > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+    > A változók beállításával kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ## <a name="prepare-for-deployment"></a>Az üzembe helyezés előkészítése
 
@@ -67,7 +67,7 @@ A telepítés előtt meg kell határoznia, hogy mire van szükség a modell webs
     >
     > Egy másik alternatíva, amely a forgatókönyv esetében is működhet, a [Batch-előrejelzések](how-to-run-batch-predictions.md), amelyek a pontozáskor hozzáférést biztosítanak az adattárolóhoz.
 
-    A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+    A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 * **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek
 
@@ -93,7 +93,7 @@ Ezek az entitások egy __következtetési konfigurációba__vannak ágyazva. A k
 
 További információ a környezetekről: [környezetek létrehozása és kezelése képzéshez és üzembe helyezéshez](how-to-use-environments.md).
 
-További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+További információ a konfigurációval kapcsolatban: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 > [!IMPORTANT]
 > A Azure App Service való telepítésekor nem kell létrehoznia __központi telepítési konfigurációt__.
@@ -103,7 +103,7 @@ További információ a konfigurációval kapcsolatban: [modellek üzembe helyez
 A Azure App Service üzembe helyezett Docker-rendszerkép létrehozásához használja a [Model. package csomagot](https://docs.microsoft.com//python/api/azureml-core/azureml.core.model.model?view=azure-ml-py#package-workspace--models--inference-config-none--generate-dockerfile-false-). A következő kódrészlet bemutatja, hogyan hozhat létre egy új rendszerképet a modellből és a következtetések konfigurálásával:
 
 > [!NOTE]
-> A kódrészlet feltételezi, hogy `model` tartalmaz egy regisztrált modellt, és az `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](service/how-to-deploy-and-where.md).
+> A kódrészlet feltételezi, hogy `model` tartalmaz egy regisztrált modellt, és az `inference_config` tartalmazza a következtetési környezet konfigurációját. További információ: [modellek üzembe helyezése Azure Machine Learningsal](how-to-deploy-and-where.md).
 
 ```python
 from azureml.core import Model
@@ -121,7 +121,7 @@ print(package.location)
 
 ## <a name="deploy-image-as-a-web-app"></a>Rendszerkép üzembe helyezése webalkalmazásként
 
-1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje le a `<acrinstance>`t a korábban visszaadott értékre `package.location`: 
+1. Használja az alábbi parancsot a rendszerképet tartalmazó Azure Container Registry bejelentkezési hitelesítő adatainak beszerzéséhez. Cserélje le a `<acrinstance>`t a korábban visszaadott értékre `package.location`:
 
     ```azurecli-interactive
     az acr credential show --name <myacr>
@@ -168,7 +168,7 @@ print(package.location)
     Ez a parancs a következő JSON-dokumentumhoz hasonló adatokat ad vissza:
 
     ```json
-    { 
+    {
     "adminSiteName": null,
     "appServicePlanName": "myplanname",
     "geoRegion": "West Europe",

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/04/2019
 ms.author: memildin
-ms.openlocfilehash: 5217c4c7b68c487d7285ec03700266ad2768606d
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 325c68e5e4531e5519596bea00c370c26460a8ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73571525"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981915"
 ---
 # <a name="remediate-recommendations-in-azure-security-center"></a>Javaslatok szervizelése Azure Security Center
 
-A javaslatok segítséget nyújtanak az erőforrások jobb biztonságossá tételéhez. A javaslatot a javaslatban megadott szervizelési lépések követésével hajthatja végre. 
+A javaslatok segítséget nyújtanak az erőforrások jobb biztonságossá tételéhez. A javaslatot a javaslatban megadott szervizelési lépések követésével hajthatja végre.
 
 ## Szervizelési lépések<a name="remediation-steps"></a>
 
@@ -46,12 +46,12 @@ A gyors javítási szervizelés megvalósítása:
 
     [![válassza a gyors javítás lehetőséget!](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png)](media/security-center-remediate-recommendations/security-center-one-click-fix-select.png#lightbox)
 
-1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd kattintson a **szervizelés**elemre. 
+1. A nem kifogástalan **erőforrások** lapon válassza ki azokat az erőforrásokat, amelyekhez javaslatot kíván végrehajtani, majd kattintson a **szervizelés**elemre.
 
     > [!NOTE]
     > Előfordulhat, hogy a felsorolt erőforrások némelyike le van tiltva, mert nem rendelkezik a megfelelő engedélyekkel a módosításhoz.
 
-1. A megerősítés mezőben olvassa el a szervizelés részleteit és a következményeket. 
+1. A megerősítés mezőben olvassa el a szervizelés részleteit és a következményeket.
 
     ![Gyors javítás](./media/security-center-remediate-recommendations/security-center-one-click-fix-view.png)
 
@@ -67,7 +67,7 @@ A gyors javítási szervizelés megvalósítása:
 
 ## Szervizelési napló gyors javítása a műveletnapló esetében<a name="activity-log"></a>
 
-A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást használ a konfiguráció alkalmazásához az erőforráson. Ezeket a műveleteket az [Azure-tevékenység naplójában](../azure-resource-manager/resource-group-audit.md)naplózza a rendszer.
+A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást használ a konfiguráció alkalmazásához az erőforráson. Ezeket a műveleteket az [Azure-tevékenység naplójában](../azure-resource-manager/management/view-activity-logs.md)naplózza a rendszer.
 
 
 ## <a name="recommendations-with-quick-fix-remediation"></a>Javaslatok a gyors javítási szervizeléssel
@@ -79,9 +79,9 @@ A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást has
 |A sebezhetőségi felmérést engedélyezni kell az SQL felügyelt példányain.|Ez a művelet engedélyezi az SQL sebezhetőségi felmérést a kiválasztott SQL felügyelt példányokon. <br>**Megjegyzés**:<ul><li>Az SQL biztonsági rések felmérése az SQL Advanced Security (ADS) csomag részét képezi. Ha a HIRDETÉSEKET már nem engedélyezték, a felügyelt példányon automatikusan engedélyezve lesz.</li><li>A kiválasztott SQL felügyelt példányok minden régiója és erőforráscsoport esetében a vizsgálati eredmények tárolására szolgáló Storage-fiók lesz létrehozva és megosztva az adott régió összes példányával.</li><li>A HIRDETÉSEKET a $15-es számú SQL Serveren számoljuk el.</li></ul>||
 |A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon|Ez a művelet engedélyezi a speciális adatbiztonságot (HIRDETÉSEKET) a kiválasztott kiszolgálókon és azok adatbázisain. <br>**Megjegyzés**:<ul><li>A kiválasztott SQL-kiszolgálók minden régiója és erőforráscsoport esetében a vizsgálati eredmények tárolására szolgáló Storage-fiók lesz létrehozva és megosztva az adott régióban lévő összes kiszolgáló között. <</li><li>A HIRDETÉSEKET a $15-es számú SQL Serveren számoljuk el.</li></ul>||
 |A sebezhetőségi felmérést engedélyezni kell az SQL-kiszolgálókon|Ez a művelet engedélyezi az SQL sebezhetőségi felmérést a kiválasztott kiszolgálókon és azok adatbázisain. <br>**Megjegyzés**:<ul><li>Az SQL biztonsági rések felmérése az SQL Advanced Security (ADS) csomag részét képezi. Ha a hirdetések már nincsenek engedélyezve, automatikusan engedélyezve lesz az SQL Serveren.</li><li>A kiválasztott SQL-kiszolgálók minden régiója és erőforráscsoport esetében a vizsgálati eredmények tárolására szolgáló Storage-fiók lesz létrehozva és megosztva az adott régióban lévő összes példányban.</li><li>A HIRDETÉSEKET a $15-es számú SQL Serveren számoljuk el.</li></ul>||
-|Az SQL-adatbázisokon engedélyezni kell az transzparens adattitkosítást|Ez a művelet engedélyezi SQL Database transzparens adattitkosítás (TDE) használatát a kiválasztott adatbázisokon. <br>**Megjegyzés**: alapértelmezés szerint a rendszer a szolgáltatás által felügyelt TDE kulcsokat használja. 
-|A Storage-fiókoknak való biztonságos átvitelt engedélyezni kell|Ez a művelet frissíti a Storage-fiók biztonságát, hogy csak biztonságos kapcsolatok esetén engedélyezze a kérelmeket. (HTTPS). <br>**Megjegyzés**:<ul><li>A HTTP protokollt használó kérelmek el lesznek utasítva.</li><li>Az Azure Files szolgáltatás használatakor a titkosítás nélküli csatlakozás meghiúsul, beleértve az SMB 2,1, az SMB 3,0 és a titkosítás nélkül, valamint a Linux SMB-ügyfél néhány változatát is. Részletek.</li></ul>|
-|A webalkalmazás csak HTTPS protokollon keresztül érhető el|Ez a művelet átirányítja a HTTP-ről a HTTPS-re irányuló összes forgalmat a kiválasztott erőforrásokra. <br>**Megjegyzés**:<ul><li>Egy olyan HTTPS-végpont, amely nem rendelkezik SSL-tanúsítvánnyal, "adatvédelmi hiba" üzenet jelenik meg a böngészőben. Az egyéni tartománnyal rendelkező felhasználóknak ellenőriznie kell, hogy beállították-e az SSL-tanúsítványt.</li><li>Győződjön meg arról, hogy a csomag-és webalkalmazási tűzfal védi az App Service-t, engedélyezze a HTTPS-munkamenetek továbbítását.</li></ul>|
+|Az SQL-adatbázisokon engedélyezni kell az transzparens adattitkosítást|Ez a művelet engedélyezi SQL Database transzparens adattitkosítás (TDE) használatát a kiválasztott adatbázisokon. <br>**Megjegyzés**: alapértelmezés szerint a rendszer a szolgáltatás által felügyelt TDE kulcsokat használja.
+|Engedélyezni kell a tárfiókokba történő biztonságos átvitelt|Ez a művelet frissíti a Storage-fiók biztonságát, hogy csak biztonságos kapcsolatok esetén engedélyezze a kérelmeket. (HTTPS). <br>**Megjegyzés**:<ul><li>A HTTP protokollt használó kérelmek el lesznek utasítva.</li><li>Az Azure Files szolgáltatás használatakor a titkosítás nélküli csatlakozás meghiúsul, beleértve az SMB 2,1, az SMB 3,0 és a titkosítás nélkül, valamint a Linux SMB-ügyfél néhány változatát is. Részletek.</li></ul>|
+|A webalkalmazás elérése csak HTTPS protokollon keresztül történhet|Ez a művelet átirányítja a HTTP-ről a HTTPS-re irányuló összes forgalmat a kiválasztott erőforrásokra. <br>**Megjegyzés**:<ul><li>Egy olyan HTTPS-végpont, amely nem rendelkezik SSL-tanúsítvánnyal, "adatvédelmi hiba" üzenet jelenik meg a böngészőben. Az egyéni tartománnyal rendelkező felhasználóknak ellenőriznie kell, hogy beállították-e az SSL-tanúsítványt.</li><li>Győződjön meg arról, hogy a csomag-és webalkalmazási tűzfal védi az App Service-t, engedélyezze a HTTPS-munkamenetek továbbítását.</li></ul>|
 |függvényalkalmazás csak HTTPS-kapcsolaton keresztül érhető el|Ez a művelet átirányítja a HTTP-ről a HTTPS-re irányuló összes forgalmat a kiválasztott erőforrásokra. <br>**Megjegyzés**:<ul><li>Egy olyan HTTPS-végpont, amely nem rendelkezik SSL-tanúsítvánnyal, "adatvédelmi hiba" üzenet jelenik meg a böngészőben. Az egyéni tartománnyal rendelkező felhasználóknak ellenőriznie kell, hogy beállították-e az SSL-tanúsítványt.</li><li>Győződjön meg arról, hogy a csomag-és webalkalmazási tűzfal védi az App Service-t, engedélyezze a HTTPS-munkamenetek továbbítását.</li></ul>|
 |Az API-alkalmazás csak HTTPS protokollon keresztül érhető el|Ez a művelet átirányítja a HTTP-ről a HTTPS-re irányuló összes forgalmat a kiválasztott erőforrásokra. <br>**Megjegyzés**:<ul><li>Egy olyan HTTPS-végpont, amely nem rendelkezik SSL-tanúsítvánnyal, "adatvédelmi hiba" üzenet jelenik meg a böngészőben. Az egyéni tartománnyal rendelkező felhasználóknak ellenőriznie kell, hogy beállították-e az SSL-tanúsítványt.</li><li>Győződjön meg arról, hogy a csomag-és webalkalmazási tűzfal védi az App Service-t, engedélyezze a HTTPS-munkamenetek továbbítását.</li></ul>|
 |A távoli hibakeresést ki kell kapcsolni a webalkalmazáshoz|Ez a művelet letiltja a távoli hibakeresést.|
@@ -90,11 +90,11 @@ A Szervizelési művelet sablon-telepítési vagy REST-javító API-hívást has
 |A CORS nem engedheti meg, hogy minden erőforrás hozzáférjen a webalkalmazáshoz|Ez a művelet letiltja a más tartományokat a webalkalmazáshoz való hozzáféréshez. Adott tartományok engedélyezéséhez adja meg azokat az engedélyezett Origins mezőben (vesszővel elválasztva). <br>**Megjegyzés**: Ha a mezőt üresen hagyja, a rendszer letiltja az összes kereszthivatkozási hívást. "params mező címe:" Allowed Origins "|
 |A CORS nem teszi lehetővé minden erőforrás számára a függvényalkalmazás elérését|Ez a művelet blokkolja a többi tartományt a Function alkalmazás eléréséhez. Adott tartományok engedélyezéséhez adja meg azokat az engedélyezett Origins mezőben (vesszővel elválasztva). <br>**Megjegyzés**: Ha a mezőt üresen hagyja, a rendszer letiltja az összes kereszthivatkozási hívást. "params mező címe:" Allowed Origins "|
 |A CORS nem teszi lehetővé minden erőforrás számára az API-alkalmazás elérését|Ez a művelet blokkolja más tartományok hozzáférését az API-alkalmazáshoz. Adott tartományok engedélyezéséhez adja meg azokat az engedélyezett Origins mezőben (vesszővel elválasztva). <br>**Megjegyzés**: Ha a mezőt üresen hagyja, a rendszer letiltja az összes kereszthivatkozási hívást. "params mező címe:" Allowed Origins "|
-|A figyelési ügynököt engedélyezni kell a virtuális gépeken|Ez a művelet egy figyelési ügynököt telepít a kiválasztott virtuális gépekre. Válasszon ki egy munkaterületet, amelyről jelentést szeretne készíteni az ügynöknek.<ul><li>Ha a frissítési szabályzat automatikusra van beállítva, akkor az új meglévő példányokon fog települni.</li><li>Ha a frissítési szabályzat manuálisra van beállítva, és az ügynököt meglévő példányokra szeretné telepíteni, jelölje be a jelölőnégyzetet. [Részletek](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
+|A figyelési ügynököt engedélyezni kell a virtuális gépeken|Ez a művelet egy figyelési ügynököt telepít a kiválasztott virtuális gépekre. Válasszon ki egy munkaterületet, amelyről jelentést szeretne készíteni az ügynöknek.<ul><li>Ha a frissítési szabályzat automatikusra van beállítva, akkor az új meglévő példányokon fog települni.</li><li>Ha a frissítési szabályzat manuálisra van beállítva, és az ügynököt meglévő példányokra szeretné telepíteni, jelölje be a jelölőnégyzetet. [További információ](../virtual-machine-scale-sets/virtual-machine-scale-sets-faq.md#how-do-i-add-an-extension-to-all-vms-in-my-virtual-machine-scale-set)</li></ul>|
 |A Key Vault lévő diagnosztikai naplókat engedélyezni kell|Ez a művelet engedélyezi a diagnosztikai naplókat a kulcstartók számára. A rendszer menti a diagnosztikai naplókat és mérőszámokat a kiválasztott munkaterületen.|
 |A Service Bus szolgáltatásban engedélyezni kell a diagnosztikai naplókat.|Ez a művelet engedélyezi a diagnosztikai naplókat a Service Bus szolgáltatásban. A rendszer menti a diagnosztikai naplókat és mérőszámokat a kiválasztott munkaterületen.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan javíthatja az ajánlásokat a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő témaköröket:
 

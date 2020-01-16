@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 10/31/2019
 ms.author: iainfou
-ms.openlocfilehash: 5c51eff77c0375491f4376f12c9ff959f033e2ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d8e96ffc3e2b4756a4184a9a023133f14b326ed3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425370"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979929"
 ---
 # <a name="enable-security-audits-for-azure-active-directory-domain-services"></a>Azure Active Directory Domain Services biztonsági naplózásának engedélyezése
 
@@ -126,7 +126,7 @@ Az Azure AD DS biztonsági naplózási események Azure PowerShell használatáv
 
 1. Hozza létre a cél erőforrást a biztonsági naplózási eseményekhez.
 
-    * **Azure Storage** - - [Storage-fiók létrehozása Azure PowerShell használatával](../storage/common/storage-quickstart-create-account.md?tabs=azure-powershell)
+    * **Azure Storage** - - [Storage-fiók létrehozása Azure PowerShell használatával](../storage/common/storage-account-create.md?tabs=azure-powershell)
     * Az **Azure Event hub** - - [Azure PowerShell használatával hozhat létre egy Event hub](../event-hubs/event-hubs-quickstart-powershell.md)-t. Előfordulhat, hogy a [New-AzEventHubAuthorizationRule](/powershell/module/az.eventhub/new-azeventhubauthorizationrule) parancsmagot kell használnia olyan engedélyezési szabály létrehozásához, amely Azure AD DS engedélyeket biztosít az Event hub- *névtérhez*. Az engedélyezési szabálynak tartalmaznia kell a **kezelés**, a **figyelés**és a **Küldés** jogosultságokat.
 
         > [!IMPORTANT]

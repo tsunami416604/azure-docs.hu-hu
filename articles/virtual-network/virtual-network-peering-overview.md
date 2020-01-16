@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/15/2019
 ms.author: anavin
-ms.openlocfilehash: 335b956701a87b6a0e5984ae50507a91d212ab67
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: e47c7d7c4e982604814b227544a98bb301a20105
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646744"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980108"
 ---
 # <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
 
@@ -34,7 +34,7 @@ A virtuális társhálózatok akár helyi, akár globális létesítésének el�
 * Az egyik virtuális hálózat erőforrásai egy másik virtuális hálózat erőforrásaival való kommunikációra képesek.
 * Az Azure-előfizetések, Azure Active Directory-bérlők, üzembe helyezési modellek és Azure-régiók közötti adatátvitel lehetősége a virtuális hálózatok között.
 * A Azure Resource Manageron keresztül létrehozott virtuális hálózatok társ-létrehozási képessége.
-* A Resource Manager használatával létrehozott virtuális hálózatokat a klasszikus üzemi modellen keresztül létrehozhatja. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+* A Resource Manager használatával létrehozott virtuális hálózatokat a klasszikus üzemi modellen keresztül létrehozhatja. Az Azure üzembehelyezési modellekkel kapcsolatos további információkért lásd: [Az Azure üzemi modelljeinek megismerése](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
 * Ez nem okoz leállást egyik virtuális hálózat erőforrásaiban sem a társításkor és azt követően sem.
 
 A társított virtuális hálózatok közti hálózati adatforgalom nem nyilvános. A virtuális hálózatok közötti forgalom a Microsoft gerinchálózatán belül marad. A virtuális hálózatok közti forgalomhoz nincs szükség nyilvános internetre, átjárókra vagy titkosításra.

@@ -7,12 +7,12 @@ ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
 ms.date: 12/20/2019
-ms.openlocfilehash: e3a8048d8bcb8bb737c511a8b8bb6b57f9e81403
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750980"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977574"
 ---
 # <a name="collect-azure-activity-log-with-legacy-settings"></a>Az Azure-tevékenység naplójának összegyűjtése örökölt beállításokkal
 Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A legutóbbi időpontig létrehozott egy log-profilt, amely a műveletnapló-bejegyzéseket [egy Event hub-vagy Storage-fiókba](activity-log-export.md) küldi, és egy összekötőt használt egy [log Analytics munkaterületre](activity-log-collect.md)való begyűjtéséhez. Ez a cikk a módszerek közötti különbséget ismerteti, a meglévő örökölt beállításokkal való munkavégzést, valamint a korábbi beállítások törlését a diagnosztikai beállítások előkészítése során.
@@ -28,7 +28,7 @@ A diagnosztikai beállítások használata a következő előnyökkel jár az ak
 - A szűrő gyűjtemény csak bizonyos kategóriákhoz tartozó naplókat gyűjt.
 - Az összes műveletnapló-kategória összegyűjtése. Egyes kategóriák gyűjtése nem a régi metódussal történik.
 - Gyorsabb késés a naplók betöltéséhez. Az előző metódus körülbelül 15 percet vesz igénybe, míg a diagnosztikai beállítások csak 1 percet vesznek fel.
-  
+
 ### <a name="considerations"></a>Megfontolandó szempontok
 A funkció engedélyezése előtt vegye figyelembe a következő részleteket a tevékenység naplóinak gyűjtéséhez a diagnosztikai beállítások használatával.
 
@@ -44,7 +44,7 @@ A következő tulajdonságok lettek eltávolítva:
 - ActivityStatus
 - ActivitySubstatus
 - OperationName
-- ResourceProvider 
+- ResourceProvider
 
 A következő tulajdonságok lettek hozzáadva:
 
@@ -57,10 +57,10 @@ A tevékenység naplójának összegyűjtéséhez használt örökölt beállít
 
 1. A Azure Portal **Azure monitor** menüjében válassza a **műveletnapló**elemet.
 3. Kattintson a **Diagnosztikai beállítások** elemre.
-   
+
    ![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
-   
-4. A régi élményhez kattintson a lila szalagcímre. 
+
+4. A régi élményhez kattintson a lila szalagcímre.
 
     ![Korábbi élmény](media/diagnostic-settings-subscription/legacy-experience.png)
 
@@ -84,7 +84,7 @@ A diagnosztikai beállításokkal történő engedélyezés előtt tiltsa le a t
 ### <a name="disable-log-profile"></a>Log-profil letiltása
 
 1. Az örökölt beállítások megnyitásához használja az [örökölt beállításokkal végzett munka](#work-with-legacy-settings) című témakörben leírt eljárást.
-2. Tiltsa le az aktuális gyűjteményt a Storage vagy az Event hub szolgáltatásban. 
+2. Tiltsa le az aktuális gyűjteményt a Storage vagy az Event hub szolgáltatásban.
 
 
 
@@ -93,5 +93,5 @@ Az Azure Log Analytics-figyelési megoldás több naplózási lekérdezést és 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [További információ a tevékenység naplóról](../../azure-resource-manager/resource-group-audit.md)
+* [További információ a tevékenység naplóról](../../azure-resource-manager/management/view-activity-logs.md)
 * [További információ a diagnosztikai beállításokról](diagnostic-settings.md)

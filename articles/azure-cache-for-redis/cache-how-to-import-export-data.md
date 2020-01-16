@@ -6,15 +6,15 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: e4265cf3f9c211a19fe05bc18cf47a273165c3c3
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74122777"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75971806"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
-Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be Redis vagy exportálja az Azure cache-ből a Redis-be az Azure cache-t egy prémium szintű gyorsítótárból a Redis Database (RDB) pillanatképbe BLOB egy Azure Storage-fiókban. 
+Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.
 
 - **Exportálás** – exportálhatja az Azure cache-t a Redis RDB-Pillanatképek egy oldal-blobba való exportálásához.
 - **Importálás** – importálhatja az Azure cache-t a Redis RDB-pillanatképekhez egy oldal-blobból vagy egy blokk-blobból.
@@ -41,7 +41,7 @@ Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgá
     ![Adatok importálása](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Kattintson a **blob (ok) kiválasztása** elemre, és válassza ki azt a Storage-fiókot, amely az importálandó adatkészletet tartalmazza.
 
-    ![Storage-fiók kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Tárfiók kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Kattintson arra a tárolóra, amely az importálandó adatkészletet tartalmazza.
 
     ![Tároló kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-container.png)
@@ -57,7 +57,7 @@ Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgá
 
     ![Importálás](./media/cache-how-to-import-export-data/cache-import-blobs.png)
 
-    Az importálási művelet előrehaladását a Azure Portal értesítéseit követve, vagy [a napló](../azure-resource-manager/resource-group-audit.md)eseményeinek megtekintésével figyelheti.
+    Az importálási művelet előrehaladását a Azure Portal értesítéseit követve, vagy [a napló](../azure-resource-manager/management/view-activity-logs.md)eseményeinek megtekintésével figyelheti.
 
     ![Importálási folyamat](./media/cache-how-to-import-export-data/cache-import-data-import-complete.png)
 
@@ -81,7 +81,7 @@ Az Exportálás lehetővé teszi az Azure cache-ben tárolt adatexportálást a 
 
     ![Exportálás](./media/cache-how-to-import-export-data/cache-export-data.png)
 
-    Az exportálási művelet előrehaladását a Azure Portal értesítéseinek követésével, vagy [a napló](../azure-resource-manager/resource-group-audit.md)eseményeinek megtekintésével figyelheti.
+    Az exportálási művelet előrehaladását a Azure Portal értesítéseinek követésével, vagy [a napló](../azure-resource-manager/management/view-activity-logs.md)eseményeinek megtekintésével figyelheti.
 
     ![Az adatexportálás befejeződött](./media/cache-how-to-import-export-data/cache-export-data-export-complete.png)
 
@@ -109,8 +109,8 @@ Igen, az Azure cache-ről az Redis-példányok számára exportált adatok impor
 
 > [!IMPORTANT]
 > Az Azure cache-ről az Redis-től eltérő Redis-kiszolgálókról exportált adatok sikeres importálásához az oldal blobjának használatakor az oldal blobjának méretét 512 bájtos határra kell igazítani. A szükséges bájtok kitöltéséhez használandó mintakód a [minta oldal blob feltöltése](https://github.com/JimRoberts-MS/SamplePageBlobUpload)című részben olvasható.
-> 
-> 
+>
+>
 
 ### <a name="what-rdb-versions-can-i-import"></a>Milyen RDB-verziókat lehet importálni?
 
@@ -149,7 +149,7 @@ Ennek megoldásához indítsa el az importálási vagy exportálási műveletet 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Hibaüzenetet kaptam az adataim Azure Blob Storageba való exportálásakor. Mi történt?
 Az Exportálás csak a RDB tárolt fájlok esetében működik. Más blob-típusok jelenleg nem támogatottak, beleértve a gyors és a lassú elérésű csomagokat tartalmazó blob Storage-fiókokat is. További információkat az [Azure Storage-fiókok áttekintésében](../storage/common/storage-account-overview.md) találhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a prémium szintű gyorsítótár-funkciók használatáról.
 
 * [A prémium szintű Redis készült Azure cache bemutatása](cache-premium-tier-intro.md)

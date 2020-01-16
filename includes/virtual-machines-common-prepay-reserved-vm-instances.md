@@ -4,14 +4,14 @@ ms.author: banders
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 11/21/2019
-ms.openlocfilehash: 9bed0a47c6c13b3c209f593509b71aa697c6eb4a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 119ef52bd801f66cd25a844d3a87b1906881c484
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75902026"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021002"
 ---
-Ha egy Azure-beli fenntartott VM-példányra véglegesít, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő futó virtuális gépek számára. A kedvezmények beszerzéséhez nincs szükség foglalások hozzárendelésére egy virtuális géphez. A fenntartott példányok vásárlása csak a virtuális gépek használatának számítási részét fedi le. Windows rendszerű virtuális gépek esetén a használati mérőszám két külön méterre oszlik. Van egy számítási mérőszám, amely ugyanaz, mint a Linux-mérő, és egy Windows IP-mérő. A vásárláskor megjelenő díjak csak a számítási költségekre vonatkoznak. A díjak nem tartalmazzák a Windows-szoftverek költségeit. További információ a szoftverekkel kapcsolatos költségekről: [a Azure Reserved VM instances nem tartalmazott szoftveres költségek](../articles/billing/billing-reserved-instance-windows-software-costs.md).
+Ha egy Azure-beli fenntartott VM-példányra véglegesít, pénzt takaríthat meg. A foglalási kedvezményt a rendszer automatikusan alkalmazza a foglalási hatókörnek és attribútumoknak megfelelő futó virtuális gépek számára. A kedvezmények beszerzéséhez nincs szükség foglalások hozzárendelésére egy virtuális géphez. A fenntartott példányok vásárlása csak a virtuális gépek használatának számítási részét fedi le. Windows rendszerű virtuális gépek esetén a használati mérőszám két külön méterre oszlik. Van egy számítási mérőszám, amely ugyanaz, mint a Linux-mérő, és egy Windows IP-mérő. A vásárláskor megjelenő díjak csak a számítási költségekre vonatkoznak. A díjak nem tartalmazzák a Windows-szoftverek költségeit. További információ a szoftverekkel kapcsolatos költségekről: [a Azure Reserved VM instances nem tartalmazott szoftveres költségek](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md).
 
 ## <a name="determine-the-right-vm-size-before-you-buy"></a>A virtuális gép megfelelő méretének meghatározása a vásárlás előtt
 
@@ -78,7 +78,7 @@ A fenntartott VM-példányok a legtöbb virtuálisgép-mérethez érhetők el, n
 
 ## <a name="buy-a-reserved-vm-instance"></a>Fenntartott VM-példány vásárlása
 
-Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). A foglalásért fizethet [előre vagy havi részletekben](../articles/billing/billing-monthly-payments-reservations.md).
+Egy fenntartott VM-példányt vásárolhat a [Azure Portalban](https://portal.azure.com/#blade/Microsoft_Azure_Reservations/CreateBlade/referrer/documentation/filters/%7B%22reservedResourceType%22%3A%22VirtualMachines%22%7D). A foglalásért fizethet [előre vagy havi részletekben](../articles/cost-management-billing/reservations/monthly-payments-reservations.md).
 Ezek a követelmények a fenntartott VM-példányok vásárlására vonatkoznak:
 
 - Legalább egy EA-előfizetéshez vagy egy utólagos elszámolású előfizetéshez tartozó tulajdonosi szerepkörrel kell rendelkeznie.
@@ -111,7 +111,7 @@ Ha nagyvállalati szerződéssel rendelkezik, a további példányok gyors hozz�
 
 A használati adatok ára nulla azon használat esetében, amelyre érvényes a foglalási kedvezmény. Láthatja, hogy melyik virtuálisgép-példány fogadta el a foglalási kedvezményt az egyes foglalásokhoz.
 
-További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](../articles/billing/billing-understand-reserved-instance-usage-ea.md) , ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../articles/billing/billing-understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
+További információ arról, hogyan jelennek meg a foglalási kedvezmények a használati adatok között: az [Azure foglalási szolgáltatás használatának ismertetése a nagyvállalati beléptetéshez](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) , ha Ön EA-ügyfél. Ha egyéni előfizetéssel rendelkezik, tekintse meg [Az Azure foglalás használatának megismerése](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)az utólagos elszámolású előfizetéshez című témakört.
 
 ## <a name="change-a-reservation-after-purchase"></a>Foglalás módosítása a vásárlás után
 
@@ -134,7 +134,7 @@ Ha szeretné módosítani a módosításokat, lehetősége van a foglalások *cs
 
 ## <a name="cancel-exchange-or-refund-reservations"></a>Foglalások lemondása, cseréje vagy visszatérítése
 
-Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../articles/billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+Bizonyos korlátozásokkal lehetősége van a foglalások lemondására, cseréjére és visszatérítésére. További információkért lásd: [Az Azure Reservations önkiszolgáló csere- és visszatérítési szolgáltatásai](../articles/cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel.
 
@@ -142,12 +142,12 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 ## <a name="next-steps"></a>Következő lépések
 
-- A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](../articles/billing/billing-manage-reserved-vm-instance.md) szakaszt.
+- A foglalások kezelésének megismerése érdekében tekintse meg [Az Azure Reservations kezelése](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md) szakaszt.
 - Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
-    - [Mi az az Azure Reservations?](../articles/billing/billing-save-compute-costs-reservations.md)
-    - [A Reservations kezelése az Azure-ban](../articles/billing/billing-manage-reserved-vm-instance.md)
-    - [A foglalási kedvezmény alkalmazásának ismertetése](../articles/billing/billing-understand-vm-reservation-charges.md)
-    - [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](../articles/billing/billing-understand-reserved-instance-usage.md)
-    - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../articles/billing/billing-understand-reserved-instance-usage-ea.md)
-    - [A Reservations díjában nem szereplő Windows-szoftverköltségek](../articles/billing/billing-reserved-instance-windows-software-costs.md)
+    - [Mi az az Azure Reservations?](../articles/cost-management-billing/reservations/save-compute-costs-reservations.md)
+    - [A Reservations kezelése az Azure-ban](../articles/cost-management-billing/reservations/manage-reserved-vm-instance.md)
+    - [A foglalási kedvezmény alkalmazásának ismertetése](../articles/cost-management-billing/manage/understand-vm-reservation-charges.md)
+    - [A foglalási használat ismertetése használatalapú fizetéses előfizetés esetén](../articles/cost-management-billing/reservations/understand-reserved-instance-usage.md)
+    - [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../articles/cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
+    - [A Reservations díjában nem szereplő Windows-szoftverköltségek](../articles/cost-management-billing/reservations/reserved-instance-windows-software-costs.md)
     - [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)

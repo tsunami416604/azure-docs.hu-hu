@@ -12,12 +12,12 @@ author: jaszymas
 ms.author: jaszymas
 ms.reviewer: vanto
 ms.date: 11/01/2019
-ms.openlocfilehash: 9eebb181ed7aa1ac5898646c29e308f85dbe0f8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 381dfb4fca7476d5805bff92d58ecbbf49679346
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354883"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979969"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Transzparens adattitkosítás a SQL Database és az adattárházban
 
@@ -79,7 +79,7 @@ A Azure Portal keresztüli transzparens adattitkosítás konfigurálásához Azu
 
 Az transzparens adattitkosítás be-és kikapcsolása az adatbázis szintjén. Egy adatbázis transzparens adattitkosításának engedélyezéséhez lépjen a [Azure Portalra](https://portal.azure.com) , és jelentkezzen be az Azure-beli rendszergazdai vagy közreműködői fiókjával. Keresse meg a felhasználói adatbázis transzparens adattitkosítási beállításait. Alapértelmezés szerint a rendszer a szolgáltatás által kezelt transzparens adattitkosítást használja. Az adatbázist tartalmazó kiszolgáló számára automatikusan létrejön egy transzparens adattitkosítási tanúsítvány. Az Azure SQL felügyelt példánya esetében a T-SQL használatával be-és kikapcsolhatja a transzparens adattitkosítást egy adatbázison.
 
-![Szolgáltatás által kezelt transzparens adattitkosítás](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)  
+![Szolgáltatás által kezelt transzparens adattitkosítás](./media/transparent-data-encryption-azure-sql/service-managed-transparent-data-encryption.png)
 
 Az átlátszó adattitkosítási főkulcsot (más néven transzparens adattitkosítási védőt) a kiszolgálói szinten állíthatja be. Ha transzparens adattitkosítást szeretne használni Bring Your Own Key támogatással, és az adatbázisait Key Vault-kulccsal védi, nyissa meg a kiszolgáló transzparens adattitkosítási beállításait.
 

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: f5e0344cb1da86661ae87b5e45bd93dd181e7bb0
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 7c80ba6b15cec08da9bcefea243493a824ef66bd
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659559"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978763"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Microsoft Azure Szószedet: az Azure platform felhőalapú terminológiájának szótára
 
@@ -31,7 +31,7 @@ A Microsoft Azure Szószedet az Azure platformhoz készült Felhőbeli terminol�
 
 ## <a name="account"></a>account
 Egy Azure-előfizetés eléréséhez és kezeléséhez használt fiók. Gyakran Azure-fióknak is nevezzük, bár a fiókok bármelyike lehet: egy meglévő munkahelyi, iskolai vagy személyes Microsoft-fiók, vagy egy Office 365-Felhasználónév és-jelszó. Létrehozhat egy fiókot is az Azure-előfizetés kezeléséhez az [ingyenes próbaverzióra](https://azure.microsoft.com)való regisztráció során.  
-A bejelentkezéshez használható [Azure-előfizetés regisztrálása Office 365-fiókkal](billing/billing-use-existing-office-365-account-azure-subscription.md) és- [fiókokkal](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
+A bejelentkezéshez használható [Azure-előfizetés regisztrálása Office 365-fiókkal](cost-management-billing/manage/office-365-account-for-azure-subscription.md) és- [fiókokkal](active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 
 ## <a name="api-app"></a>API-alkalmazás
 [App Service alkalmazás](#app-service-app)másik neve.
@@ -96,11 +96,11 @@ Lásd: [Azure-régiók](best-practices-availability-paired-regions.md)
 
 ## <a name="resource"></a>erőforrás
 Az Azure-megoldás részét képező elem. Minden egyes Azure-szolgáltatás lehetővé teszi különböző típusú erőforrások, például adatbázisok vagy virtuális gépek üzembe helyezését.   
-Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
+Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/management/overview.md)
 
 ## <a name="resource-group"></a>erőforráscsoport
 Egy olyan tároló a Resource Managerben, amely egy alkalmazás kapcsolódó erőforrásait tárolja. Az erőforráscsoport tartalmazhat egy alkalmazás összes erőforrását, vagy csak azokat az erőforrásokat, amelyek logikailag csoportosítva vannak. Eldöntheti, hogyan kívánja kiosztani az erőforrásokat az erőforráscsoportokba a szervezetének legmegfelelőbb módon.  
-Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
+Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/management/overview.md)
 
 ## <a name="arm-template"></a>Resource Manager-sablon
 Olyan JSON-fájl, amely egy vagy több Azure-erőforrást definiál, és amely az üzembe helyezett erőforrások közötti függőségeket határozza meg. A sablon erőforrások konzisztens és ismétlődő telepítésére használandó.  
@@ -108,7 +108,7 @@ Lásd: [Azure Resource Manager sablonok készítése](resource-group-authoring-t
 
 ## <a name="resource-provider"></a>erőforrás-szolgáltató
 A Resource Manageren keresztül üzembe helyezhető és felügyelhető erőforrásokat ellátó szolgáltatás. Mindegyik erőforrás-szolgáltató műveleteket biztosít a telepített erőforrásokkal folytatott munkához. Az erőforrás-szolgáltatók a Azure Portalon, Azure PowerShellon és számos programozási SDK-n keresztül érhetők el.  
-Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/resource-group-overview.md)
+Lásd: [Azure Resource Manager áttekintése](azure-resource-manager/management/overview.md)
 
 ## <a name="role"></a>szerepkör
 A felhasználókhoz, csoportokhoz és szolgáltatásokhoz hozzárendelhető hozzáférés szabályozására szolgáló eszköz. A szerepkörök olyan műveleteket hajthatnak végre, mint például az Azure-erőforrások létrehozása, kezelése és olvasása.  

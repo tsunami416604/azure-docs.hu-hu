@@ -10,22 +10,22 @@ ms.service: virtual-machines
 ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: delhan
-ms.openlocfilehash: d34182e09bf453dbec1e9592f131cb9b3b78a086
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 0506527808892bf1ee531d892e2773d095e18560
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71086477"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965627"
 ---
 # <a name="how-to-use-boot-diagnostics-to-troubleshoot-virtual-machines-in-azure"></a>A rendszerindítási diagnosztika használata az Azure-beli virtuális gépek hibáinak megoldásához
 
-Számos oka lehet annak, hogy egy virtuális gép nem rendszerindító állapotba lép. A Resource Manager-alapú üzemi modellel létrehozott virtuális gépekkel kapcsolatos problémák megoldásához használhatja a következő hibakeresési funkciókat: Konzol kimenete és képernyőkép-támogatás az Azure Virtual Machines szolgáltatáshoz. 
+Számos oka lehet annak, hogy egy virtuális gép nem rendszerindító állapotba lép. A Resource Manager-alapú üzemi modellel létrehozott virtuális gépekkel kapcsolatos problémák megoldásához használhatja a következő hibakeresési funkciókat: konzol kimenete és képernyőkép-támogatás az Azure Virtual Machines szolgáltatáshoz. 
 
 Linux rendszerű virtuális gépek esetén a konzol naplójának kimenetét a portálról tekintheti meg. A Windows és a Linux rendszerű virtuális gépek esetében az Azure lehetővé teszi, hogy megtekintse a virtuális gép képernyőképét a hypervisorból. Mindkét funkció támogatott az Azure Virtual Machines szolgáltatásban az összes régióban. Ne feledje, akár 10 percet is igénybe vehet, hogy a képernyőképek és a kimenet megjelenjen a tárfiókjában.
 
 A **rendszerindítási diagnosztika** lehetőség kiválasztásával megtekintheti a naplót és a képernyőképet.
 
-![Resource Manager](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
+![Erőforrás-kezelő](./media/virtual-machines-common-boot-diagnostics/screenshot1.png)
 
 ## <a name="common-boot-errors"></a>Gyakori rendszerindítási hibák
 
@@ -79,7 +79,7 @@ A diagnosztikai profil lehetővé teszi, hogy kiválassza a tárfiókot, ahol el
 }
 ```
 
-Az erőforrások sablonok használatával történő telepítésével kapcsolatos további információkért lásd [: gyors útmutató: Azure Resource Manager-sablonok létrehozása és üzembe helyezése a](../../azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal.md)Azure Portal használatával.
+Az erőforrások sablonok használatával történő telepítésével kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
 ## <a name="enable-boot-diagnostics-on-existing-virtual-machine"></a>Rendszerindítási diagnosztika engedélyezése meglévő virtuális gépen 
 
@@ -88,7 +88,7 @@ A rendszerindítási diagnosztika meglévő virtuális gépen való engedélyez�
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), majd válassza ki a virtuális gépet.
 2. A **támogatás + hibaelhárítás** szakaszban válassza a **rendszerindítási diagnosztika**lehetőséget, majd kattintson a **Beállítások** fülre.
 3. A **rendszerindítási diagnosztika** beállításaiban módosítsa az állapotot **be értékre, majd**a **Storage-fiók** legördülő listából válassza ki a Storage-fiókot. 
-4. Mentse a változást.
+4. Mentse a módosításokat.
 
     ![Létező virtuális gép frissítése](./media/virtual-machines-common-boot-diagnostics/enable-for-existing-vm.png)
 

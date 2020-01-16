@@ -3,12 +3,12 @@ title: Azure Monitor a tárolók gyakran ismételt kérdéseiről | Microsoft Do
 description: A tárolók Azure Monitor egy olyan megoldás, amely figyeli az AK-fürtök állapotát, és Container Instances az Azure-ban. Ez a cikk a gyakori kérdésekre ad választ.
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 0984de51221c506bb1824e4dcfd93eef56453a4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b0d2be8b573dbbf047f4a27ae9ac9f611b76dc51
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405072"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977764"
 ---
 # <a name="azure-monitor-for-containers-frequently-asked-questions"></a>Azure Monitor a tárolók számára – gyakori kérdések
 
@@ -73,7 +73,7 @@ A ContainerInventory tábla a leállított és futó tárolókkal kapcsolatos in
  
 ## <a name="how-do-i-resolve-missing-subscription-registration-error"></a>Hogyan a *hiányzó előfizetés-regisztrációs* hiba elhárítása?
 
-Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**, akkor a Microsoft. OperationsManagement erőforrás-szolgáltató regisztrálása az előfizetésben, ahol a munkaterület meg van adva, a **Microsoft.** . Ennek a dokumentációja [itt](../../azure-resource-manager/resource-manager-register-provider-errors.md)található.
+Ha a **Microsoft. OperationsManagement előfizetés-regisztrációja hiányzik**, akkor a Microsoft. OperationsManagement erőforrás-szolgáltató regisztrálása az előfizetésben, ahol a munkaterület meg van adva, a **Microsoft.** . Ennek a dokumentációja [itt](../../azure-resource-manager/templates/error-register-resource-provider.md)található.
 
 ## <a name="is-there-support-for-rbac-enabled-aks-clusters"></a>Támogatja a RBAC-kompatibilis AK-fürtöket?
 

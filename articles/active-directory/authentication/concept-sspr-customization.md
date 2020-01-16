@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 039b514fe70da0e300e74bbc98a3a0f4e9ea342c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: c6f7f59f7bcc93edafa3cbb47bd432b52bde985c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848595"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979461"
 ---
 # <a name="customize-the-azure-ad-functionality-for-self-service-password-reset"></a>Az Azure AD funkcióinak testreszabása az önkiszolgáló jelszó-visszaállításhoz
 
@@ -43,9 +43,9 @@ Az önkiszolgáló jelszó-visszaállítási felhasználóknak a jelszó-vissza�
 
 A kapcsolattartási e-mail küldése a következő címzetteknek történik a következő sorrendben:
 
-1. Ha a **jelszó-rendszergazdai** szerepkör hozzá van rendelve, a rendszer értesítést küld az ezzel a szerepkörrel rendelkező rendszergazdáknak.
-2. Ha nincs jelszó-rendszergazda társítva, a rendszer értesítést küld a rendszergazdáknak a **felhasználó rendszergazdai** szerepkörével.
-3. Ha az előző szerepkörök egyike sincs hozzárendelve, akkor a **globális rendszergazdák** értesítést kapnak.
+1. Ha az **ügyfélszolgálat rendszergazdai** szerepköre vagy a **jelszó-rendszergazdai** szerepkör hozzá van rendelve, a rendszer értesíti a rendszergazdákat ezekkel a szerepkörökkel.
+1. Ha nem rendel hozzá ügyfélszolgálati rendszergazdát vagy jelszó-rendszergazdát, a rendszer értesítést küld a rendszergazdáknak a **felhasználói rendszergazdai** szerepkörrel.
+1. Ha az előző szerepkörök egyike sincs hozzárendelve, akkor a **globális rendszergazdák** értesítést kapnak.
 
 Minden esetben legfeljebb 100 címzett kap értesítést.
 

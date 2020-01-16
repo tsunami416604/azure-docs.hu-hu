@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 0e9b382b27d0bd1e4fd3a553ca468dd562eca368
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792906"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981178"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -174,7 +174,7 @@ Csak meghatározott felhasználók vagy csoportok számára engedélyezheti adot
 
 * [Logikai alkalmazás kezelője](../role-based-access-control/built-in-roles.md#logic-app-operator): lehetővé teszi a Logic apps olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissítheti őket.
 
-Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az [Azure erőforrás-zárolást](../azure-resource-manager/resource-group-lock-resources.md). Ez a funkció megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
+Annak megakadályozása érdekében, hogy mások módosíthassák vagy töröljék a logikai alkalmazást, használhatja az [Azure erőforrás-zárolást](../azure-resource-manager/management/lock-resources.md). Ez a funkció megakadályozza, hogy mások módosíthassák vagy töröljék a termelési erőforrásokat.
 
 <a name="secure-run-history"></a>
 
@@ -356,7 +356,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 ## <a name="access-to-parameter-inputs"></a>Hozzáférés paraméter bemenetekhez
 
-Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így elkerülhetők a rögzített adatok egy [Azure Resource Manager sablonnal](../azure-resource-manager/template-deployment-overview.md) a logikai alkalmazás üzembe helyezéséhez, a bizalmas adatok védelméhez a biztonságos paraméterek meghatározásával, valamint az adatoknak a [sablon paraméterei](../azure-resource-manager/template-parameters.md) között külön bemenetként való továbbítása a [paraméter](../azure-resource-manager/resource-manager-parameter-files.md)használatával.
+Ha különböző környezetekben végez üzembe helyezést, érdemes parameterizing a munkafolyamat-definícióban szereplő értékeket, amelyek az adott környezettől függően változnak. Így elkerülhetők a rögzített adatok egy [Azure Resource Manager sablonnal](../azure-resource-manager/templates/overview.md) a logikai alkalmazás üzembe helyezéséhez, a bizalmas adatok védelméhez a biztonságos paraméterek meghatározásával, valamint az adatoknak a [sablon paraméterei](../azure-resource-manager/templates/template-parameters.md) között külön bemenetként való továbbítása a [paraméter](../azure-resource-manager/templates/parameter-files.md)használatával.
 
 Ha például [Azure Active Directory OAuth](#azure-active-directory-oauth-authentication)hitelesíti a http-műveleteket, megadhatja és biztonságossá teheti azokat a paramétereket, amelyek elfogadják a hitelesítéshez használt ügyfél-azonosítót és az ügyfél titkos kulcsát. Ha ezeket a paramétereket a logikai alkalmazásban szeretné megadni, használja a Logic apps munkafolyamat-definíciójának `parameters` szakaszát, és a Resource Manager-sablont a telepítéshez. A logikai alkalmazás szerkesztése vagy a futtatási előzmények megtekintésekor nem kívánt paraméterek elrejtéséhez adja meg a paramétereket a `securestring` vagy `secureobject` típus használatával, és szükség szerint használja a kódolást. Az ilyen típusú paramétereket nem adja vissza a rendszer az erőforrás-definícióval, és nem érhető el, amikor az üzembe helyezés után megtekinti az erőforrást. Ha a paraméter értékeit futásidőben szeretné elérni, használja a `@parameters('<parameter-name>')` kifejezést a munkafolyamat-definíciójában. A kifejezés kiértékelése csak futásidőben történik, és a munkafolyamat- [definíció nyelve](../logic-apps/logic-apps-workflow-definition-language.md)határozza meg.
 
@@ -368,11 +368,11 @@ További információt a jelen témakör következő részeiben talál:
 * [Biztonságos paraméterek a munkafolyamat-definíciókban](#secure-parameters-workflow)
 * [Adatok elrejtése a futtatási előzményekből a elhomályosítás használatával](#obfuscate)
 
-Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja a biztonságos [sablon paramétereit](../azure-resource-manager/template-parameters.md), amelyeket a rendszer a telepítéskor értékel ki a `securestring` és a `secureobject` típus használatával. A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíció `parameters` szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/resource-manager-parameter-files.md).
+Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja a biztonságos [sablon paramétereit](../azure-resource-manager/templates/template-parameters.md), amelyeket a rendszer a telepítéskor értékel ki a `securestring` és a `secureobject` típus használatával. A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíció `parameters` szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/templates/parameter-files.md).
 
-Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információkért tekintse meg a következő témaköröket:
+Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információt az alábbi témakörökben talál:
 
-* [Bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/resource-manager-keyvault-parameter.md)
+* [Bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Biztonságos paraméterek Azure Resource Manager-sablonokban](#secure-parameters-deployment-template) a témakör későbbi részében
 
 <a name="secure-parameters-workflow"></a>
@@ -425,11 +425,11 @@ A logikai alkalmazás munkafolyamat-definíciójában lévő bizalmas adatok vé
 
 ### <a name="secure-parameters-in-azure-resource-manager-templates"></a>Biztonságos paraméterek Azure Resource Manager-sablonokban
 
-A logikai alkalmazások [Resource Manager-sablonjai](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós szinten a `securestring` vagy `secureobject` típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-overview.md) , és a [paraméter fájllal](../azure-resource-manager/resource-manager-parameter-files.md) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: [bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/resource-manager-keyvault-parameter.md).
+A logikai alkalmazások [Resource Manager-sablonjai](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md) több `parameters` szakaszt is tartalmaz. A jelszavak, kulcsok, titkos kódok és egyéb bizalmas adatok védelméhez adja meg a biztonságos paramétereket a sablon szintjén és a munkafolyamat-definíciós szinten a `securestring` vagy `secureobject` típus használatával. Ezután tárolhatja ezeket az értékeket [Azure Key Vault](../key-vault/key-vault-overview.md) , és a [paraméter fájllal](../azure-resource-manager/templates/parameter-files.md) hivatkozhat a Key vaultra és a titkos kulcsra. A sablon ezután beolvassa ezt az információt a telepítéskor. További információ: [bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/templates/key-vault-parameter.md).
 
 További információ ezekről a `parameters`i fejezetekről:
 
-* A sablon legfelső szintjén egy `parameters` szakasz határozza meg a sablon által a *telepítéskor*használt értékek paramétereit. Ezek az értékek például tartalmazhatnak egy adott központi telepítési környezethez tartozó kapcsolódási karakterláncokat is. Ezeket az értékeket külön [paraméteres fájlban](../azure-resource-manager/resource-manager-parameter-files.md)tárolhatja, így az értékek könnyebben módosíthatók.
+* A sablon legfelső szintjén egy `parameters` szakasz határozza meg a sablon által a *telepítéskor*használt értékek paramétereit. Ezek az értékek például tartalmazhatnak egy adott központi telepítési környezethez tartozó kapcsolódási karakterláncokat is. Ezeket az értékeket külön [paraméteres fájlban](../azure-resource-manager/templates/parameter-files.md)tárolhatja, így az értékek könnyebben módosíthatók.
 
 * A logikai alkalmazás erőforrás-definícióján belül, de a munkafolyamat-definíción kívül egy `parameters` szakasz határozza meg a munkafolyamat-definíció paramétereinek értékeit. Ebben a szakaszban ezeket az értékeket a sablon paramétereit hivatkozó sablon-kifejezések használatával rendelheti hozzá. Ezeket a kifejezéseket a rendszer kiértékeli a telepítéskor.
 
@@ -604,7 +604,7 @@ Ez a példa több olyan biztonságos paraméter-definíciót tartalmaz, amelyek 
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontokhoz hozzáférő kérelmek elvégzéséhez használt trigger vagy művelet alapján a különböző hitelesítési típusok közül választhat. Győződjön meg arról, hogy védi a logikai alkalmazás által kezelt bizalmas adatokat, biztonságos paramétereket használ, és szükség szerint kódolja az adatokat. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [hozzáférés paraméter bemenetekhez](#secure-action-parameters).
 
-| Hitelesítés típusa | Támogató |
+| Hitelesítés típusa | Támogatás |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Ügyféltanúsítvány](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |

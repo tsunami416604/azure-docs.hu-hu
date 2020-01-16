@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 737cd9d306f01fa77dafa3d1a9a71495ff0a572e
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940769"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977526"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -145,7 +145,7 @@ Ha Azure Resource Manager-sablonban titkos kulcsokkal rendelkezik, javasoljuk, h
 
 A titkokat kétféleképpen kezelheti:
 
--  Adja hozzá a titkokat a parameters (paraméterek) fájlhoz. További információ: a [Azure Key Vault használata biztonságos paraméterek értékének](../azure-resource-manager/resource-manager-keyvault-parameter.md)átadására az üzembe helyezés során.
+1.  Adja hozzá a titkokat a parameters (paraméterek) fájlhoz. További információ: [a Azure Key Vault használata a biztonságos paraméterek értékének](../azure-resource-manager/templates/key-vault-parameter.md)átadására az üzembe helyezés során.
 
     Hozzon létre egy másolatot a közzétételi ágra feltöltött Parameters fájlról. Adja meg azoknak a paramétereknek az értékeit, amelyeket Key Vault szeretne kapni a következő formátum használatával:
 

@@ -1,6 +1,6 @@
 ---
-title: Üzembe helyezése Resource Manager sablon beágyazott környezetekben, az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Ismerje meg, hogyan helyezhet üzembe az Azure DevTest Labs környezetek biztosításához beágyazott Azure Resource Manager-sablonok.
+title: Beágyazott Resource Manager-sablonok környezetének üzembe helyezése Azure DevTest Labsban | Microsoft Docs
+description: Megtudhatja, hogyan helyezhet üzembe beágyazott Azure Resource Manager-sablonokat a környezetek Azure DevTest Labs való biztosításához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,23 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/16/2019
 ms.author: spelluru
-ms.openlocfilehash: eec0cde4a36449f85998bfb04d16f1d52c68bb19
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 675d2c670f5bc11c1d8b61bc96313e408f788dc3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65835285"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976556"
 ---
-# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Tesztelési környezetben beágyazott Azure Resource Manager-sablonok üzembe helyezése
-Egy beágyazott üzemelő példány segítségével hajtsa végre a fő Resource Manager-sablonnal belül más az Azure Resource Manager-sablonok. Lehetővé teszi, hogy az üzemelő példány egy csoportba a megcélzott és a cél-specifikus sablonok bontható fel. Tesztelés, újrafelhasználás és olvashatóság tekintetében előnyökkel szolgál. A cikk [kapcsolt sablonok használata az Azure-erőforrások üzembe helyezésekor](../azure-resource-manager/resource-group-linked-templates.md) Ez a megoldás szakasz hasznos áttekintést biztosít számos mintakódot. Ez a cikk egy példa, amely kifejezetten az Azure DevTest Labs szolgáltatásban. 
+# <a name="deploy-nested-azure-resource-manager-templates-for-testing-environments"></a>Beágyazott Azure Resource Manager-sablonok üzembe helyezése tesztelési környezetekhez
+A beágyazott üzembe helyezés lehetővé teszi, hogy más Azure Resource Manager sablonokat hajtson végre egy fő Resource Manager-sablonon belülről. Lehetővé teszi az üzemelő példányok kiépítését a célzott és a célhoz tartozó sablonokba. A tesztelés, az újbóli használat és az olvashatóság szempontjából biztosít előnyöket. Az [Azure-erőforrások üzembe helyezése során csatolt sablonokat használó](../azure-resource-manager/templates/linked-templates.md) cikk jó áttekintést nyújt a megoldásról több mintakód használatával. Ez a cikk a Azure DevTest Labsra vonatkozó példát mutat be. 
 
-## <a name="key-parameters"></a>Fő paraméterekkel
-Teljesen új saját Resource Manager-sablont létrehozni, azt javasoljuk, hogy használja a [Azure erőforráscsoport-projekt](../azure-resource-manager/vs-azure-tools-resource-groups-deployment-projects-create-deploy.md) a Visual Studióban, amely megkönnyíti a fejlesztésről és hibakeresésről sablonokat. Egy beágyazott üzemelő példány erőforráshoz hozzá azuredeploy.json, a Visual Studio hozzáadja, a sablon rugalmasabb több elemet. Ezek az elemek közé tartozik a almappát a másodlagos sablon és paraméterek fájl, a változók nevében a fő sablonfájl belül és két paramétert az új fájlok tárolási helyét. A **_artifactsLocation** és **_artifactsLocationSasToken** kulcs paraméterei, amely a DevTest Labs használja. 
+## <a name="key-parameters"></a>Kulcs paraméterei
+Habár a saját Resource Manager-sablonokat a semmiből is létrehozhatja, javasoljuk, hogy az [Azure erőforráscsoport-projektet](../azure-resource-manager/templates/create-visual-studio-deployment-project.md) használja a Visual Studióban, amely megkönnyíti a sablonok fejlesztését és hibakeresését. Ha beágyazott üzembe helyezési erőforrást ad hozzá a azuredeploy. JSON fájlhoz, a Visual Studio több elemet is felvesz a sablon rugalmasabbá tétele érdekében. Ezek az elemek tartalmazzák a másodlagos sablonnal és paraméterekkel rendelkező almappát, a fő sablonban szereplő változók nevét, valamint az új fájlok tárolási helyének két paraméterét. A **_artifactsLocation** és **_ArtifactsLocationSasToken** a DevTest Labs által használt legfontosabb paraméterek. 
 
-Ha nem ismeri a DevTest Labs-környezetek működését, olvassa el [több virtuális gépes környezet és PaaS-erőforrások létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md). A sablonok a tárház a DevTest Labs szolgáltatásban létrehozott tesztkörnyezet csatolva vannak tárolva. Ha ezeket a sablonokat hoz létre egy új környezetet, a fájlok át egy Azure Storage-tárolóba, a tesztkörnyezetben. Tudják azonosítani, és másolja a beágyazott fájlokat, a DevTest Labs a _artifactsLocation és _artifactsLocationSasToken paraméterek azonosítja, és az almappák, akár a storage-tárolóba másol. Ezután azt automatikusan átmásolja a hely és a közös hozzáférésű Jogosultságkód (SaS-) token paraméterek. 
+Ha nem tudja, hogyan működik együtt a DevTest Labs a környezetekkel, tekintse meg a [több virtuális gépre kiterjedő környezetek és a Azure Resource Manager-sablonok használatával kapcsolatos további információk](devtest-lab-create-environment-from-arm.md)című témakört. A sablonokat a DevTest Labs-laborhoz csatolt adattár tárolja. Amikor új környezetet hoz létre ezekkel a sablonokkal, a rendszer áthelyezi a fájlokat egy Azure Storage-tárolóba a laborban. A beágyazott fájlok azonosításához és másolásához a DevTest Labs azonosítja a _artifactsLocation és a _artifactsLocationSasToken paramétereket, és az almappákat a Storage-tárolóba másolja. Ezt követően automatikusan beszúrja a hely és a közös hozzáférésű aláírás (SaS) tokent a paraméterekbe. 
 
-## <a name="nested-deployment-example"></a>Beágyazott központi telepítés példája
-Íme egy beágyazott üzemelő példány egyszerű példát:
+## <a name="nested-deployment-example"></a>Beágyazott telepítési példa
+Az alábbi egyszerű példa egy beágyazott üzembe helyezésre:
 
 ```json
 
@@ -66,17 +66,17 @@ Ha nem ismeri a DevTest Labs-környezetek működését, olvassa el [több virtu
 "outputs": {}
 ```
 
-A mappa a tárházban, a sablont tartalmazó könyvtárban van egy almappát `nestedtemplates` azokkal a fájlokkal **NestOne.json** és **NestOne.parameters.json**. Az a **azuredeploy.json**, URI esetében a sablon az összetevők helyét, és a beágyazott Szolgáltatássablon mappáját, és beépített beágyazva sablon fájl neve. Ehhez hasonlóan URI-t a paraméterek a beágyazott sablon összetevők helyének, beágyazott Szolgáltatássablon mappáját, és alkalmazásparaméter-fájlt használatával lett összeállítva. 
+A sablont tartalmazó adattár mappája `nestedtemplates` a **NestOne. JSON** és a **NestOne. Parameters. JSON**fájlokkal. A **azuredeploy. JSON**fájlban a sablon URI-ja az összetevők helye, a beágyazott sablon mappája, a beágyazott sablonfájl neve alapján készült. Hasonlóképpen, a paraméterek URI-ja az összetevők helye, a beágyazott sablon mappája és a beágyazott sablonhoz tartozó paraméter fájl használatával készült. 
 
-A Visual Studióban az azonos projektstruktúra képe a következő: 
+Itt látható a Visual Studióban megjelenő projekt struktúrájának képe: 
 
-![A Visual Studióban projektstruktúra](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
+![Projekt szerkezete a Visual Studióban](./media/deploy-nested-template-environments/visual-studio-project-structure.png)
 
-További mappákat is hozzáadhat, az elsődleges mappában, de nem minden mélyebben egyszintű. 
+Az elsődleges mappában további mappák is hozzáadhatók, de nem lehetnek mélyebbek, mint egyetlen szinten. 
 
-## <a name="next-steps"></a>További lépések
-Részletes információ a környezetekről a következő cikkekben talál: 
+## <a name="next-steps"></a>Következő lépések
+A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
 
 - [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)
-- [Konfigurálhatja és használhatja a nyilvános környezetben az Azure DevTest Labs szolgáltatásban](devtest-lab-configure-use-public-environments.md)
-- [Környezet csatlakoztatása a labor virtuális hálózathoz az Azure DevTest Labs szolgáltatásban](connect-environment-lab-virtual-network.md)
+- [Nyilvános környezetek konfigurálása és használata Azure DevTest Labs](devtest-lab-configure-use-public-environments.md)
+- [Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs](connect-environment-lab-virtual-network.md)

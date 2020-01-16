@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: troubleshooting
 ms.date: 12/03/2019
 ms.author: helohr
-ms.openlocfilehash: c357e460e49ffee669f3978be7678353acfcd249
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f8400cbefc514fa01dedb1434a60989b1df0528d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459425"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980217"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
 
@@ -209,11 +209,11 @@ Vizsgálja meg az alább felsorolt beállításjegyzék-bejegyzéseket, és elle
 
 1. A RDP protokoll (RDP) használatával közvetlenül a munkamenet-gazda virtuális gépre kerül a helyi rendszergazdaként.
 2. Ha még nem tette meg, töltse le és importálja [a Windows rendszerű virtuális asztali PowerShell-modult](https://docs.microsoft.com/powershell/windows-virtual-desktop/overview) , amelyet a PowerShell-munkamenetben szeretne használni, majd futtassa ezt a parancsmagot a fiókjába való bejelentkezéshez:
-    
+
     ```powershell
     Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
     ```
-    
+
 3. Telepítse a párhuzamos veremet a [gazdagép létrehozása a PowerShell](https://docs.microsoft.com/azure/virtual-desktop/create-host-pools-powershell)használatával című részből.
 
 ## <a name="how-to-fix-a-windows-virtual-desktop-side-by-side-stack-that-malfunctions"></a>A Windows rendszerű virtuális asztalok egymás melletti veremének kijavítása
@@ -322,7 +322,7 @@ Ha szeretné megtekinteni, hogy a Windows 10 Enterprise több munkamenetének me
 2. Adja meg a "Névjegy" kifejezést a Start menü melletti keresési sávon.
 3. Válassza **a számítógép névjegye**elemet.
 4. A "version" felirat melletti szám bejelölése A számnak "1809" vagy "1903" értékűnek kell lennie, ahogy az alábbi képen is látható.
-   
+
     ![A Windows-specifikációk ablak képernyőképe. A verziószám kék színnel van kiemelve.](media/windows-specifications.png)
 
 Most, hogy már ismeri a verziószámát, ugorjon a megfelelő szakaszra.
@@ -344,6 +344,6 @@ Telepítse újra a gazdagép operációs rendszerét a Windows 10 1903-es verzi�
 - Távoli asztal-ügyfelekkel kapcsolatos problémák elhárításához tekintse meg [a távoli asztal-ügyfél hibaelhárítása](troubleshoot-client.md) című témakört.
 - A PowerShell és a Windows virtuális asztal használatával kapcsolatos problémák elhárításához tekintse meg a [Windows rendszerű virtuális asztali PowerShell](troubleshoot-powershell.md)című témakört.
 - A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [Windows rendszerű virtuális asztali környezet](environment-setup.md)című témakört.
-- A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](../azure-resource-manager/resource-manager-tutorial-troubleshoot.md).
-- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../azure-resource-manager/resource-group-audit.md).
-- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](../azure-resource-manager/resource-manager-deployment-operations.md).
+- A következő témakörben talál útmutatást a hibakereséshez [: oktatóanyag: Resource Manager-sablonok telepítésének hibája](../azure-resource-manager/templates/template-tutorial-troubleshoot.md).
+- További információ a naplózási műveletekről: [műveletek naplózása a Resource Managerrel](../azure-resource-manager/management/view-activity-logs.md).
+- Az üzembe helyezés során felmerülő hibák meghatározásával kapcsolatos további tudnivalókért lásd: [telepítési műveletek megtekintése](../azure-resource-manager/templates/deployment-history.md).

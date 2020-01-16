@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: article
 ms.date: 04/01/2017
 ms.author: kasing
-ms.openlocfilehash: bebfcedcd2944e2c6b05c3203e67df7658dd751a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d5245f73520a77648fc590520185a2cf66bffd02
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460047"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980893"
 ---
 # <a name="planning-for-migration-of-iaas-resources-from-classic-to-azure-resource-manager"></a>IaaS-erőforrások áttelepítésének tervezése a Klasszikusból a Azure Resource Managerba
 Míg Azure Resource Manager számos csodálatos funkciót kínál, fontos, hogy megtervezze a migrációs utat, hogy a dolgok zökkenőmentesek legyenek. A tervezés során eltöltött idő biztosítja, hogy az áttelepítési tevékenységek végrehajtása során ne tapasztaljon problémát.
@@ -130,8 +130,8 @@ A következő problémák léptek fel a nagyobb áttelepítések során. Ez nem 
   - Útvonaltáblák
 
     A jelenlegi Azure Resource Manager kvótákat az alábbi parancsokkal tekintheti meg a Azure PowerShell legújabb verziójával.
-    
-     
+
+
 
     **Számítás** *(magok, rendelkezésre állási készletek)*
 
@@ -203,9 +203,9 @@ Megfontolandó szempontok:
 Legyen céltudatos, hogy milyen szolgáltatásokat szeretne engedélyezni a Azure Resource Manager.  Számos ügyfél az alábbi lenyűgöző Azure-környezeteket keresi:
 
 - [Szerepkör-alapú Access Control](../../role-based-access-control/overview.md).
-- [Azure Resource Manager sablonokat egyszerűbb és hatékonyabban felügyelt központi telepítéshez](../../azure-resource-manager/template-deployment-overview.md).
-- [Címkék](../../azure-resource-manager/resource-group-using-tags.md).
-- [Tevékenység-vezérlés](../../azure-resource-manager/resource-group-audit.md)
+- [Azure Resource Manager sablonokat egyszerűbb és hatékonyabban felügyelt központi telepítéshez](../../azure-resource-manager/templates/overview.md).
+- [Címkék](../../azure-resource-manager/management/tag-resources.md).
+- [Tevékenység-vezérlés](../../azure-resource-manager/management/view-activity-logs.md)
 - [Azure-szabályzatok](../../governance/policy/overview.md)
 
 ### <a name="pitfalls-to-avoid"></a>Kikerülő buktatók

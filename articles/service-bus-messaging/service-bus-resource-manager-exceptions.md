@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/26/2019
 ms.author: aschhab
-ms.openlocfilehash: 25b0c14fb94cba611dfa9fa9bece1b728f39a905
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 0f328651ac4422226071d2de12e9cbc787ef64be
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73585210"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978273"
 ---
 # <a name="service-bus-resource-manager-exceptions"></a>Resource Manager-kivételek Service Bus
 
@@ -36,7 +36,7 @@ A "hibás kérelem" azt jelenti, hogy a Resource Manager által lekért kérelem
 
 | Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| Hibás kérés | 40000 | Alkód = 40000. A *"tulajdonságnév"* tulajdonság nem állítható be várólista létrehozásakor, mert a névtér *neve* az "alapszintű" szintet használja. Ezt a műveletet csak a standard vagy a prémium szint támogatja. | Azure Service Bus alapszintű szinten az alábbi tulajdonságok nem állíthatók be vagy nem frissíthetők – <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Továbbítás </li> <li> Témakörök </li> </ul> | A funkció használatához érdemes lehet alapszintről standard vagy prémium csomagra frissíteni. |
+| Hibás kérés | 40000 | Alkód = 40000. A *"tulajdonságnév"* tulajdonság nem állítható be várólista létrehozásakor, mert a névtér *neve* az "alapszintű" szintet használja. Ezt a műveletet csak a standard vagy a prémium szint támogatja. | Azure Service Bus alapszintű szinten az alábbi tulajdonságok nem állíthatók be vagy nem frissíthetők – <ul> <li> RequiresDuplicateDetection </li> <li> AutoDeleteOnIdle </li> <li>RequiresSession</li> <li>DefaultMessageTimeToLive </li> <li> DuplicateDetectionHistoryTimeWindow </li> <li> EnableExpress </li> <li> Továbbítás </li> <li> Üzenettémák </li> </ul> | A funkció használatához érdemes lehet alapszintről standard vagy prémium csomagra frissíteni. |
 | Hibás kérés | 40000 | Alkód = 40000. Egy meglévő várólista (vagy témakör) "requiresDuplicateDetection" tulajdonságának értéke nem módosítható. | Az ismétlődő észlelést engedélyezni/le kell tiltani az entitások létrehozásakor. A duplikált észlelés konfigurációs paramétere a létrehozás után nem módosítható. | Egy korábban létrehozott üzenetsor/témakör ismétlődő észlelésének engedélyezéséhez létrehozhat egy új üzenetsor/témakört ismétlődő észleléssel, majd továbbíthatja az eredeti várólistáról az új üzenetsor/témakörre. |
 | Hibás kérés | 40000 | Alkód = 40000. A megadott 16384 érték érvénytelen. A "MaxSizeInMegabytes" tulajdonságnak a következő értékek egyikének kell lennie: 1024; 2048; 3072; 4096; 5120. | A MaxSizeInMegabytes értéke érvénytelen. | Győződjön meg arról, hogy a MaxSizeInMegabytes a következők egyike: 1024, 2048, 3072, 4096, 5120. |
 | Hibás kérés | 40000 | Alkód = 40000. A particionálás nem módosítható üzenetsor/témakör esetében. | Az entitások particionálását nem lehet módosítani. | Hozzon létre egy új entitást (Üzenetsor vagy témakör), és engedélyezze a partíciókat. | 
@@ -45,7 +45,7 @@ A "hibás kérelem" azt jelenti, hogy a Resource Manager által lekért kérelem
 | Hibás kérés | 40000 | Alkód = 40000. A megadott zárolási idő meghaladja az engedélyezett maximumot (5 perc). | Az az idő, ameddig egy üzenet zárolható, 1 perc (minimum) és 5 perc (maximum) közé kell esnie. | Győződjön meg arról, hogy a megadott zárolási idő 1 perc és 5 perc között van. |
 | Hibás kérés | 40000 | Alkód = 40000. A DelayedPersistence és a RequiresDuplicateDetection tulajdonság nem engedélyezhető együtt. | Az ismétlődő észleléssel rendelkező entitásoknak állandónak kell lenniük, ezért az adatmegőrzés nem késleltethető. | További információ az [ismétlődő észlelésről](duplicate-detection.md) |
 | Hibás kérés | 40000 | Alkód = 40000. Egy meglévő várólista RequiresSession tulajdonságának értéke nem módosítható. | A munkamenetek támogatását engedélyezni kell az entitások létrehozásakor. A létrehozást követően nem engedélyezheti vagy tilthatja le a munkameneteket egy meglévő entitáson (Üzenetsor vagy előfizetés) | Törölje, majd hozza létre újra az új üzenetsor (vagy előfizetés) beállítást a "RequiresSession" tulajdonsággal. |
-| Hibás kérés | 40000 | Alkód = 40000. A "URI_PATH" olyan karakter (eke) t tartalmaz, amelyet a Service Bus nem engedélyez. Az entitások szegmensei csak betűket, számokat, pontokat (.), kötőjeleket (-) és aláhúzást (_) tartalmazhatnak. | Az entitások szegmensei csak betűket, számokat, pontokat (.), kötőjeleket (-) és aláhúzást (_) tartalmazhatnak. Bármely más karakter miatt a kérelem sikertelen lesz. | Győződjön meg arról, hogy az URI elérési útja nem tartalmaz érvénytelen karaktereket. |
+| Hibás kérés | 40000 | Alkód = 40000. A (z) "URI_PATH" olyan karakter (eke) t tartalmaz, amelyet a Service Bus nem engedélyez. Az entitások szegmensei csak betűket, számokat, pontokat (.), kötőjeleket (-) és aláhúzást (_) tartalmazhatnak. | Az entitások szegmensei csak betűket, számokat, pontokat (.), kötőjeleket (-) és aláhúzást (_) tartalmazhatnak. Bármely más karakter miatt a kérelem sikertelen lesz. | Győződjön meg arról, hogy az URI elérési útja nem tartalmaz érvénytelen karaktereket. |
 
 
 ## <a name="error-code-429"></a>Hibakód: 429
@@ -54,7 +54,7 @@ Akárcsak a HTTP-ben, a "hibakód 429" kifejezés "túl sok kérést" jelez. Ez 
 
 | Hibakód | Hiba alkódja | Hibaüzenet | Leírás | Ajánlás |
 | ---------- | ------------- | ------------- | ----------- | -------------- |
-| 429 | 50004 | Alkód = 50004. A kérés megszakadt, mert a névteret *a névtér* szabályozza. | Ez a hiba akkor jelenik meg, ha a bejövő kérések száma meghaladja az erőforrás korlátozását. | Várjon néhány másodpercig, és próbálkozzon újra. <br/> <br/> További információ a [kvóták](service-bus-quotas.md) és a [Azure Resource Manager kérelmek korlátairól](../azure-resource-manager/resource-manager-request-limits.md)|
+| 429 | 50004 | Alkód = 50004. A kérés megszakadt, mert a névteret *a névtér* szabályozza. | Ez a hiba akkor jelenik meg, ha a bejövő kérések száma meghaladja az erőforrás korlátozását. | Várjon néhány másodpercig, és próbálkozzon újra. <br/> <br/> További információ a [kvóták](service-bus-quotas.md) és a [Azure Resource Manager kérelmek korlátairól](../azure-resource-manager/management/request-limits-and-throttling.md)|
 | 429 | 40901 | Alkód = 40901. Egy másik ütköző művelet folyamatban van. | Egy másik ütköző művelet folyamatban van ugyanazon az erőforráson/entitáson. | Várjon, amíg a folyamatban lévő művelet befejeződik, és próbálkozzon újra. |
 | 429 | 40900 | Alkód = 40900. Ütközés. Olyan műveletet kér, amely nem engedélyezett az erőforrás jelenlegi állapotában. | Ez az állapot akkor fordulhat elő, ha egyszerre több kérelem kerül végrehajtásra ugyanazon az entitáson (Üzenetsor, témakör, előfizetés vagy szabály). | Várjon néhány másodpercig, és próbálkozzon újra |
 | 429 | 40901 | Az entitás *neve* elemre vonatkozó kérelem ütközik egy másik kéréssel | Egy másik ütköző művelet folyamatban van ugyanazon az erőforráson/entitáson. | Várjon, amíg az előző művelet befejeződik, és próbálkozzon újra |

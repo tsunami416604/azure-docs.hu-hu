@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
-ms.openlocfilehash: 039a19f38da4e651ee35fe60ba2b95a40cf890b0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: be797f76988c924503e11b6f66cce899b515e3a2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931908"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75982197"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
 > [!NOTE]
@@ -29,15 +29,15 @@ Ez a cikk áttekintést nyújt a helyszíni adattárak és a Felhőbeli adattár
 Az adatok helyszíni adattárba való áthelyezésének engedélyezéséhez telepítenie kell adatkezelés átjárót a helyszíni gépen. Az átjáró telepíthető ugyanarra a gépre, mint az adattár vagy egy másik gépen, ha az átjáró csatlakozni tud az adattárhoz.
 
 > [!IMPORTANT]
-> Adatkezelés átjáróval kapcsolatos részletekért tekintse meg a [adatkezelés Gateway](data-factory-data-management-gateway.md) -cikket. 
+> Adatkezelés átjáróval kapcsolatos részletekért tekintse meg a [adatkezelés Gateway](data-factory-data-management-gateway.md) -cikket.
 
 Az alábbi bemutató bemutatja, hogyan hozhat létre egy adatfeldolgozót egy olyan folyamattal, amely egy helyszíni **SQL Server** -adatbázisból egy Azure Blob Storage-ba helyezi át az adatátvitelt. A bemutató részeként telepíti és konfigurálja az adatkezelési átjárót a gépen.
 
 ## <a name="walkthrough-copy-on-premises-data-to-cloud"></a>Forgatókönyv: helyszíni Adatmásolás a felhőbe
-Ebben az útmutatóban a következő lépéseket hajtja végre: 
+Ebben az útmutatóban a következő lépéseket hajtja végre:
 
 1. Adat-előállító létrehozása
-2. Hozzon létre egy adatkezelési átjárót. 
+2. Hozzon létre egy adatkezelési átjárót.
 3. Társított szolgáltatások létrehozása a forrás-és fogadó adattárakhoz.
 4. Adatkészletek létrehozása a bemeneti és kimeneti adatok ábrázolásához.
 5. Folyamat létrehozása másolási tevékenységgel az adatok áthelyezéséhez
@@ -46,13 +46,13 @@ Ebben az útmutatóban a következő lépéseket hajtja végre:
 A forgatókönyv elkezdése előtt a következő előfeltételek szükségesek:
 
 * **Azure-előfizetés**.  Ha nem rendelkezik előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbafiókot. További részletekért tekintse meg az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/) ismertető cikket.
-* **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **célként/fogadó** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-quickstart-create-account.md) ismertető cikket.
-* **Egy SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **forrásadattárként**. 
+* **Azure Storage-fiók**. Ebben az oktatóanyagban a blob Storage-t használja **célként/fogadó** adattárként. Ha még nem rendelkezik Azure Storage-fiókkal, a létrehozás folyamatáért lásd a [tárfiók létrehozását](../../storage/common/storage-account-create.md) ismertető cikket.
+* **Egy SQL Server**. Ebben az oktatóanyagban egy helyszíni SQL Server-adatbázist használunk **forrásadattárként**.
 
 ## <a name="create-data-factory"></a>Data factory létrehozása
 Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOnPremDF**nevű Azure Data Factory-példányt.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 2. Kattintson **az erőforrás létrehozása**elemre, majd az **intelligencia és Analitika**elemre, majd a **Data Factory**elemre.
 
    ![New (Új)->DataFactory](./media/data-factory-move-data-between-onprem-and-cloud/NewDataFactoryMenu.png)  

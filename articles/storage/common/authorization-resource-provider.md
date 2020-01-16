@@ -9,16 +9,16 @@ ms.date: 12/12/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: d632de0a6274ebb2ede950ca610dfd5e94310d28
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f5d42a6a0567d3949bc4b0fb1947450a9c957f18
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613873"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972347"
 ---
 # <a name="use-the-azure-storage-resource-provider-to-access-management-resources"></a>Az Azure Storage erőforrás-szolgáltató használata a kezelési erőforrások eléréséhez
 
-Azure Resource Manager az Azure üzembe helyezési és kezelési szolgáltatása. Az Azure Storage erőforrás-szolgáltató a Azure Resource Manageron alapuló szolgáltatás, amely hozzáférést biztosít az Azure Storage felügyeleti erőforrásaihoz. Az Azure Storage erőforrás-szolgáltatója olyan erőforrások létrehozására, frissítésére, kezelésére és törlésére használható, mint a Storage-fiókok, a privát végpontok és a fiók-hozzáférési kulcsok. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview).
+Az Azure Resource Manager az Azure üzembehelyezési és felügyeleti szolgáltatása. Az Azure Storage erőforrás-szolgáltató a Azure Resource Manageron alapuló szolgáltatás, amely hozzáférést biztosít az Azure Storage felügyeleti erőforrásaihoz. Az Azure Storage erőforrás-szolgáltatója olyan erőforrások létrehozására, frissítésére, kezelésére és törlésére használható, mint a Storage-fiókok, a privát végpontok és a fiók-hozzáférési kulcsok. További információ a Azure Resource Managerről: [Azure Resource Manager áttekintése](/azure/azure-resource-manager/resource-group-overview).
 
 Az Azure Storage erőforrás-szolgáltatóval olyan műveleteket hajthat végre, mint például a Storage-fiók létrehozása vagy törlése, illetve az előfizetéshez tartozó Storage-fiókok listájának beolvasása. Az Azure Storage erőforrás-szolgáltatótól érkező kérések engedélyezéséhez használja a Azure Active Directory (Azure AD) szolgáltatást. Ez a cikk azt ismerteti, hogyan rendelhet hozzá engedélyeket a felügyeleti erőforrásokhoz, és olyan példákat mutat be, amelyek bemutatják, hogyan lehet kérelmeket készíteni az Azure Storage erőforrás-szolgáltatón.
 
@@ -72,7 +72,7 @@ A következő példákban megtudhatja, hogyan engedélyezheti és hívhatja meg 
 
 A Resource Manager-alapú és a klasszikus üzemi modell két eltérő módost kínál az Azure-megoldások üzembe helyezésére és felügyeletére. A Microsoft a Azure Resource Manager üzembe helyezési modell használatát javasolja új Storage-fiók létrehozásakor. Ha lehetséges, a Microsoft azt is javasolja, hogy a meglévő klasszikus Storage-fiókokat a Resource Manager-modellel hozza létre újra. Bár a klasszikus üzembe helyezési modellel létrehozhat egy Storage-fiókot, a klasszikus modell kevésbé rugalmas, és végül elavulttá válik.
 
-További információ az Azure-beli üzembe helyezési modellekről: [Resource Manager és klasszikus üzembe helyezés](../../azure-resource-manager/resource-manager-deployment-model.md).
+További információ az Azure-beli üzembe helyezési modellekről: [Resource Manager és klasszikus üzembe helyezés](../../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

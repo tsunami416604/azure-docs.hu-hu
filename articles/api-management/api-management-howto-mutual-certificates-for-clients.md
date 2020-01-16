@@ -11,14 +11,14 @@ ms.service: api-management
 ms.workload: mobile
 ms.tgt_pltfrm: na
 ms.topic: article
-ms.date: 05/30/2019
+ms.date: 01/13/2020
 ms.author: apimpm
-ms.openlocfilehash: 85eeaaa052604c3198ca2ab8988f9e7a77e2a63d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3680473209b3d65d616879dfbb9080dfbb9c80f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75430654"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967398"
 ---
 # <a name="how-to-secure-apis-using-client-certificate-authentication-in-api-management"></a>API-k biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával API Management
 
@@ -27,7 +27,12 @@ A API Management az Ügyféltanúsítványok használatával biztonságossá teh
 További információ az API-k az Ügyféltanúsítványok használatával történő elérésének biztosításáról (azaz API Management a háttérrendszer számára): a [háttérbeli szolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítés használatával](https://docs.microsoft.com/azure/api-management/api-management-howto-mutual-certificates)
 
 > [!IMPORTANT]
-> Az ügyféltanúsítványok a használati szinten való fogadásához és ellenőrzéséhez először be kell kapcsolni az "ügyfél-tanúsítvány igénylése" beállítást az "egyéni tartományok" panelen az alábbi ábrán látható módon.
+> Az ügyféltanúsítványok a fejlesztői, alapszintű, standard vagy prémium szinteken HTTP/2 protokollon keresztüli fogadásához és ellenőrzéséhez be kell kapcsolni az "egyéni tartományok" panel "ügyfél-tanúsítvány egyeztetése" beállítását az alábbi ábrán látható módon.
+
+![Ügyféltanúsítvány egyeztetése](./media/api-management-howto-mutual-certificates-for-clients/negotiate-client-certificate.png)
+
+> [!IMPORTANT]
+> Az ügyféltanúsítványok a használati szinten való fogadásához és ellenőrzéséhez be kell kapcsolni az "egyéni tartományok" panel "ügyfél-tanúsítvány kérése" beállítását az alábbi ábrán látható módon.
 
 ![Ügyféltanúsítvány kérése](./media/api-management-howto-mutual-certificates-for-clients/request-client-certificate.png)
 

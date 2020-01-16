@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 10/02/2019
 ms.author: mlearned
-ms.openlocfilehash: e68ce5a198165c4187cbad9e86ce61f67694a82d
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: ff44409180d61828c25980704c71b72965f6bd5d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961605"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967443"
 ---
 # <a name="frequently-asked-questions-about-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) szolgáltatással kapcsolatos gyakori kérdések
 
@@ -124,9 +124,9 @@ Fontos felismerni az AK szolgáltatás rendelkezésre állása közötti külön
 
 Az AK-ban megadhatja a `maxPods` értéket, ha a fürtöt az Azure CLI-vel és a Azure Resource Manager-sablonokkal hozza létre. A Kubenet és az Azure CNI azonban *minimális értéket* igényel (a létrehozáskor érvényesítve):
 
-| Hálózat | Minimális | Maximum |
+| Hálózatkezelés | Minimális | Maximum |
 | -- | :--: | :--: |
-| Azure CNI | 30 | 250 |
+| Azure-CNI | 30 | 250 |
 | Kubenet | 30 | 110 |
 
 Mivel az AK felügyelt szolgáltatás, a bővítmények és a hüvelyek üzembe helyezése és kezelése a fürt részeként történik. A múltban a felhasználók meghatározhatnak egy `maxPods` értéket, amely alacsonyabb a felügyelt hüvely futtatásához szükséges értéknél (például 30). Az AK most kiszámítja a hüvelyek minimális számát a következő képlet használatával: ((maxPods vagy (maxPods * vm_count)) > felügyelt kiegészítő hüvelyek minimális száma.
@@ -204,7 +204,7 @@ Az AK nem felügyelt szolgáltatás, és a IaaS-erőforrások kezelése nem tám
 [nodepool-upgrade]: use-multiple-node-pools.md#upgrade-a-node-pool
 [aks-windows-cli]: windows-container-cli.md
 [aks-windows-limitations]: windows-node-limitations.md
-[reservation-discounts]: ../billing/billing-save-compute-costs-reservations.md
+[reservation-discounts]:../cost-management-billing/reservations/save-compute-costs-reservations.md
 [api-server-authorized-ip-ranges]: ./api-server-authorized-ip-ranges.md
 [multi-node-pools]: ./use-multiple-node-pools.md
 [availability-zones]: ./availability-zones.md

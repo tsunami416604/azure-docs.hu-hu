@@ -9,18 +9,18 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 12/31/2019
 ms.author: evansma
-ms.openlocfilehash: f4cd5083d694cb7c463596b7b45c384e0dc8b28d
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8c0af3f059d1beb0e1d07d3494b31c674f15438d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779739"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980875"
 ---
 # <a name="azure-marketplace-listing-guidelines"></a>Az Azure Marketplace listázási irányelvei
 
 Ez a dokumentum a követelményekkel kapcsolatos irányelveket, valamint az Azure Marketplace-en felsorolt új ajánlatok és szolgáltatások áttekintő ellenőrzőlistáját tartalmazza.
 
-Minden ajánlatnak meg kell felelnie az alább jelzett [összes listázási követelménynek](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) . További követelmények és ellenőrzőlisták találhatók a különböző listaelemekhez, többek között: ajánlatok mellékelt [próbaverziókkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-alkalmazásokkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-apps-requirements), [tárolókkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)és [tanácsadási ajánlatokkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
+Minden ajánlatnak meg kell felelnie az alább jelzett [összes listázási követelménynek](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#all-listing-requirements) . További követelmények és ellenőrzőlisták találhatók a különböző listaelemekhez, többek között: ajánlatok mellékelt [próbaverziókkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#trial-offer-requirements), [SaaS-alkalmazásokkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#saas-app-requirements), [tárolókkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#container-offer-requirements)és [tanácsadási ajánlatokkal](https://docs.microsoft.com/azure/marketplace/marketplace-criteria-content-validation#consulting-offer-requirements).
 
 
 ## <a name="all-listing-requirements"></a>Az összes listaelemre vonatkozó követelmény

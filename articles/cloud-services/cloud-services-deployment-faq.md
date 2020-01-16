@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 10/31/2018
 ms.author: genli
-ms.openlocfilehash: f935e8fc1e5d6d64bffaeb582e8b248317f49687
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 63a219078927e9001a8eb4085c722e7ec8d2fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660596"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980624"
 ---
 # <a name="deployment-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Üzembe helyezési problémák az Azure Cloud Services esetén: gyakori kérdések (GYIK)
 
@@ -56,7 +56,7 @@ A felhőalapú szolgáltatás telepítése meghiúsulhat, ha a lefoglalni kívá
 
 Az előfizetéshez tartozó aktuális használati/kvótát a portálon is nyomon követheti: Azure Portal = > előfizetések = > \<megfelelő előfizetés > = > "használat + kvóta".
 
-Az erőforrás-használat/fogyasztással kapcsolatos információk a Azure-számlázási API-k használatával is beolvashatók. Lásd: [Azure Resource használati API (előzetes verzió)](../billing/billing-usage-rate-card-overview.md#azure-resource-usage-api-preview).
+Az erőforrás-használat/fogyasztással kapcsolatos információk a Azure-számlázási API-k használatával is beolvashatók. Lásd: [Azure Resource használati API (előzetes verzió)](../cost-management-billing/manage/usage-rate-card-overview.md#azure-resource-usage-api-preview).
 
 ## <a name="how-can-i-change-the-size-of-a-deployed-cloud-service-vm-without-redeploying-it"></a>Hogyan változtathatom meg egy üzembe helyezett Cloud Service-beli virtuális gép méretét az újbóli üzembe helyezése nélkül?
 Az üzembe helyezett felhőalapú szolgáltatások virtuálisgép-mérete nem módosítható újbóli üzembe helyezés nélkül. A virtuális gép mérete a CSDEF van beépítve, amely csak újbóli telepítéssel frissíthető.
@@ -66,17 +66,17 @@ További információ: [a Cloud Service frissítése](cloud-services-update-azur
 ## <a name="why-am-i-not-able-to-deploy-cloud-services-through-service-management-apis-or-powershell-when-using-azure-resource-manager-storage-account"></a>Miért nem tudom telepíteni Cloud Services a Service Management API-kon vagy a PowerShellen keresztül Azure Resource Manager Storage-fiók használatakor? 
 
 Mivel a Cloud Service egy klasszikus erőforrás, amely nem kompatibilis a Azure Resource Manager modellel, nem társíthatja azt a Azure Resource Manager Storage-fiókokhoz. Íme néhány lehetőség: 
- 
+
 - Üzembe helyezés REST APIon keresztül.
 
     Ha a Service Management REST APIon keresztül végzi a telepítést, a korlátozás megkerülhető úgy, hogy megad egy SAS URL-címet a blob Storage-hoz, amely a klasszikus és a Azure Resource Manager Storage-fiókkal is működik. További információ az "PackageUrl" tulajdonságról [itt](/previous-versions/azure/reference/ee460813(v=azure.100))olvasható.
-  
+
 - Üzembe helyezés [Azure Portalon](https://portal.azure.com)keresztül.
 
     Ez a művelet a [Azure Portal](https://portal.azure.com) fog működni, mivel a hívás olyan proxyn/alátéten halad át, amely lehetővé teszi a Azure Resource Manager és a klasszikus erőforrások közötti kommunikációt. 
- 
-## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért Azure Portal megkövetelni a Storage-fiókot az üzembe helyezéshez? 
 
-A klasszikus portálon a csomag közvetlenül a felügyeleti API-rétegbe lett feltöltve, majd az API-réteg átmenetileg a csomagot egy belső Storage-fiókba helyezi.  Ez a folyamat teljesítménybeli és méretezhetőségi problémákat okoz, mivel az API-réteg nem fájlfeltöltés-szolgáltatásként lett kialakítva.  A Azure Portal (Resource Manager-alapú üzemi modell) esetében megkerüljük az API-rétegre való első feltöltés átmeneti lépését, ami gyorsabb és megbízhatóbb üzembe helyezést eredményezett. 
+## <a name="why-does-azure-portal-require-me-to-provide-a-storage-account-for-deployment"></a>Miért Azure Portal megkövetelni a Storage-fiókot az üzembe helyezéshez?
 
-Ami a költségeket illeti, nagyon kicsi, és az összes üzemelő példányon újra felhasználhatja ugyanazt a Storage-fiókot. A [tárolási Cost kalkulátor](https://azure.microsoft.com/pricing/calculator/#storage1) segítségével meghatározhatja a SZERVIZCSOMAG (CSPKG) feltöltésének költségeit, letöltheti a CSPKG, majd törölheti a CSPKG. 
+A klasszikus portálon a csomag közvetlenül a felügyeleti API-rétegbe lett feltöltve, majd az API-réteg átmenetileg a csomagot egy belső Storage-fiókba helyezi.  Ez a folyamat teljesítménybeli és méretezhetőségi problémákat okoz, mivel az API-réteg nem fájlfeltöltés-szolgáltatásként lett kialakítva.  A Azure Portal (Resource Manager-alapú üzemi modell) esetében megkerüljük az API-rétegre való első feltöltés átmeneti lépését, ami gyorsabb és megbízhatóbb üzembe helyezést eredményezett.
+
+Ami a költségeket illeti, nagyon kicsi, és az összes üzemelő példányon újra felhasználhatja ugyanazt a Storage-fiókot. A [tárolási Cost kalkulátor](https://azure.microsoft.com/pricing/calculator/#storage1) segítségével meghatározhatja a SZERVIZCSOMAG (CSPKG) feltöltésének költségeit, letöltheti a CSPKG, majd törölheti a CSPKG.

@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2018
 ms.author: allensu
-ms.openlocfilehash: 63f386212b0277c3b5ee383e707d4c32fa4e63fc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7ed58201fa7aa1e608cba6d64ac95740cf9a60dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428852"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965925"
 ---
 # <a name="azure-monitor-logs-for-public-basic-load-balancer"></a>Nyilvános alapszintű Load Balancer naplók Azure Monitor
 
->[!IMPORTANT] 
+>[!IMPORTANT]
 >Az Azure Load Balancer két különböző típust támogat: Alapszintű és Standard. Ez a cikk az Alapszintű Load Balancert ismerteti. További információ a standard Load Balancerről: [standard Load Balancer áttekintése](load-balancer-standard-overview.md) , amely a Azure monitor többdimenziós metrikák használatával teszi elérhetővé a telemetria.
 
 Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Balancerek felügyeletéhez és hibakereséséhez. Ezek a naplók a portálon keresztül érhetők el. A naplók továbbíthatók egy Event hub-vagy Log Analytics-munkaterületre. Az összes napló kinyerhető az Azure Blob Storage-ból, és különböző eszközökön, például Excelben és Power BI is megtekinthető.  Az alábbi listából további információkat talál a naplók különböző típusairól.
@@ -32,7 +32,7 @@ Az Azure-ban különböző típusú naplókat használhat az alapszintű Load Ba
 * **Állapot-mintavételi naplók:** Ezzel a naplóval megtekintheti az állapot-mintavétel által észlelt problémákat, például a háttérben található példányok számát, amelyek nem kapják meg a terheléselosztó kéréseit az állapot-mintavételi hibák miatt. Ez a napló akkor íródik le, amikor módosul az állapot-mintavételi állapot.
 
 > [!IMPORTANT]
-> Azure Monitor naplók jelenleg csak nyilvános alapszintű terheléselosztó esetén működnek. A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/resource-manager-deployment-model.md).
+> Azure Monitor naplók jelenleg csak nyilvános alapszintű terheléselosztó esetén működnek. A naplók csak a Resource Manager-alapú üzemi modellben üzembe helyezett erőforrások esetében érhetők el. A klasszikus üzemi modell erőforrásaihoz nem használhat naplókat. További információ az üzembe helyezési modellekről: a [Resource Manager telepítésének ismertetése és a klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
 ## <a name="enable-logging"></a>Naplózás engedélyezése
 
@@ -57,7 +57,7 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com). Ha még nem rend
     1. Jelölje be az archiválás elem melletti jelölőnégyzetet a **Storage-fiókhoz**.
     2. Válassza a **Konfigurálás** lehetőséget a **Storage-fiók kiválasztása** panel megnyitásához.
     3. Válassza ki azt az **előfizetést** , amelyben a Storage-fiókot létrehozták a legördülő listából.
-    4. A legördülő listában válassza ki a Storage-fiók nevét a **Storage-fiók** területen. 
+    4. A legördülő listában válassza ki a Storage-fiók nevét a **Storage-fiók** területen.
     5. Kattintson az OK gombra.
 
     ### <a name="stream-to-an-event-hub"></a>Streamelés eseményközpontba
@@ -160,7 +160,7 @@ A JSON-kimenet a tulajdonságok mezőben a mintavételi állapot állapotának a
 
 A naplózási napló adatai a következő módszerek bármelyikével megtekinthetők és elemezhetők:
 
-* **Azure-eszközök:** Információk beolvasása a naplókból a Azure PowerShell, az Azure parancssori felület (CLI), az Azure REST API vagy a Azure Portal használatával. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/resource-group-audit.md) című cikkben találja.
+* **Azure-eszközök:** Információk beolvasása a naplókból a Azure PowerShell, az Azure parancssori felület (CLI), az Azure REST API vagy a Azure Portal használatával. Az egyes módszerek részletes utasításait a [Resource Managerrel kapcsolatos naplózási műveletek](../azure-resource-manager/management/view-activity-logs.md) című cikkben találja.
 * **Power bi:** Ha még nem rendelkezik [Power bi](https:// .microsoft.com/pricing) -fiókkal, ingyenes kipróbáláshoz is kipróbálhatja. Az [Azure-naplók a Power BIhez készült tartalomkezelő csomag](https:// .microsoft.com/documentation/ -content-pack-azure-audit-logs)használatával az adatokat előre konfigurált irányítópultokkal elemezheti, vagy testre szabhatja a nézeteket, hogy megfeleljenek a követelményeinek.
 
 ### <a name="view-and-analyze-the-health-probe-and-event-log"></a>Az állapot-mintavétel és az Eseménynapló megtekintése és elemzése

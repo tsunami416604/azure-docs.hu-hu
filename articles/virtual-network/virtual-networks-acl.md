@@ -15,17 +15,17 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/15/2016
 ms.author: genli
-ms.openlocfilehash: 0002e61827817af958007e1f789219e9291990d8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5e410dc4e7f47223430497825dc2a26e41c6af67
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647764"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979557"
 ---
 # <a name="what-is-an-endpoint-access-control-list"></a>Mi az a végpontok hozzáférés-vezérlési listája?
 
 > [!IMPORTANT]
-> Az Azure két különböző [üzembe helyezési modellel](../azure-resource-manager/resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendelkezik az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a Resource Manager-alapú üzemi modellt használja. 
+> Az Azure két különböző [üzembe helyezési modellel](../azure-resource-manager/management/deployment-models.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rendelkezik az erőforrások létrehozásához és használatához: Resource Manager és klasszikus. Ez a cikk a klasszikus üzembehelyezési modellt ismerteti. A Microsoft azt javasolja, hogy a legtöbb új központi telepítés a Resource Manager-alapú üzemi modellt használja. 
 
 A végpontok hozzáférés-vezérlési listája (ACL) az Azure-beli üzembe helyezés számára elérhető biztonsági fejlesztés. Az ACL lehetővé teszi, hogy szelektíven engedélyezze vagy megtagadja a virtuális gép végpontjának forgalmát. Ez a csomagszűrő funkció további biztonsági réteget biztosít. Csak a végpontok hálózati hozzáférés-vezérlési listáit lehet megadni. Nem adhat meg ACL-t egy virtuális hálózathoz vagy egy virtuális hálózatban található adott alhálózathoz. Az ACL-ek helyett hálózati biztonsági csoportokat (NSG) ajánlott használni, amikor csak lehetséges. A NSG használatakor a rendszer lecseréli a végpontok hozzáférés-vezérlési listáját, és a továbbiakban nem kényszeríti ki. További információ a NSG: [hálózati biztonsági csoport – áttekintés](security-overview.md)
 

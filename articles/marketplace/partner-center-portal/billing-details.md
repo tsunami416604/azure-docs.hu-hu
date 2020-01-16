@@ -7,22 +7,22 @@ ms.author: evansma
 ms.service: marketplace
 ms.topic: guide
 ms.date: 12/12/2019
-ms.openlocfilehash: 0fda04bbfa632f429539ddc0ad90941cb645226b
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a483f143b70a4969114c078b3b0a6f960c4b6b41
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934639"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976077"
 ---
-# <a name="commercial-marketplace-billing"></a>Kereskedelmi piactér – számlázás 
+# <a name="commercial-marketplace-billing"></a>Kereskedelmi piactér – számlázás
 
 Ez a cikk a kereskedelmi piactérsel kapcsolatos kereskedelmi témájú témaköröket tartalmazza:
 
-- [Piactér-közzétételi beállítások](#marketplace-publishing-options) 
+- [Piactér-közzétételi beállítások](#marketplace-publishing-options)
 - [A Transact általános áttekintése](#transact-general-overview)
 - [Transact számlázási modellek](#transact-billing-models)
 
-## <a name="marketplace-publishing-options"></a>Piactér-közzétételi beállítások 
+## <a name="marketplace-publishing-options"></a>Piactér-közzétételi beállítások
 
 A kereskedelmi piactér számos közzétételi lehetőséget kínál a kiadók számára.
 
@@ -36,9 +36,9 @@ A lista és a próbaverzió közzétételi lehetőségei mellett a Transact köz
 
 ## <a name="transact-general-overview"></a>A Transact általános áttekintése
 
-A Transact Publishing lehetőség használata esetén a Microsoft engedélyezi harmadik féltől származó szoftverek értékesítését, és néhány ajánlat típusának üzembe helyezését az ügyfél Azure-előfizetésében. A kiadónak meg kell fontolnia az infrastruktúra-díjak számlázását, valamint a kiadó saját szoftverlicenc-díját a számlázási modell és az ajánlat típusának kiválasztásakor. 
+A Transact Publishing lehetőség használata esetén a Microsoft engedélyezi harmadik féltől származó szoftverek értékesítését, és néhány ajánlat típusának üzembe helyezését az ügyfél Azure-előfizetésében. A kiadónak meg kell fontolnia az infrastruktúra-díjak számlázását, valamint a kiadó saját szoftverlicenc-díját a számlázási modell és az ajánlat típusának kiválasztásakor.
 
-A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok esetében támogatott: Virtual Machines, Azure Applications és SaaS-alkalmazások. 
+A Transact Publishing lehetőség jelenleg a következő típusú ajánlatok esetében támogatott: Virtual Machines, Azure Applications és SaaS-alkalmazások.
 
 ![Transact az Azure Marketplace-en](./media/transact-amp.png)
 

@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm
 ms.workload: infrastructure-services
 ms.date: 12/06/2019
 ms.author: cynthn
-ms.openlocfilehash: e7a5f9ba865ab555bde3125f40ee8675709bef40
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7ca98723511cc7297b462747d4e1e12ca9bd38c2
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74932709"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979020"
 ---
 # <a name="preview-control-updates-with-maintenance-control-and-azure-powershell"></a>Előzetes verzió: frissítések vezérlése karbantartási vezérlővel és Azure PowerShell
 
@@ -36,7 +36,7 @@ A karbantartási ellenőrzéssel a következőket teheti:
 ## <a name="limitations"></a>Korlátozások
 
 - A virtuális gépeknek [dedikált gazdagépen](./linux/dedicated-hosts.md)kell lenniük, vagy egy elkülönített virtuálisgép- [mérettel](./linux/isolation.md)kell létrehozni.
-- 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést, és nem veszi figyelembe a rendelkezésre állási korlátozásokat.
+- 35 nap elteltével a rendszer automatikusan alkalmazza a frissítést.
 - A felhasználónak **erőforrás-tulajdonosi** hozzáféréssel kell rendelkeznie.
 
 
@@ -109,7 +109,7 @@ New-AzConfigurationAssignment `
    -MaintenanceConfigurationId $config.Id
 ```
 
-### <a name="dedicate-host"></a>Gazdagép kiszentelés
+### <a name="dedicated-host"></a>Dedikált gazdagép
 
 Ha a konfigurációt dedikált gazdagépre szeretné alkalmazni, a `-ResourceType hosts`is meg kell adnia, `-ResourceParentName` a gazda-csoport nevével, és `-ResourceParentType hostGroups`. 
 
@@ -129,7 +129,9 @@ New-AzConfigurationAssignment `
 
 ## <a name="check-for-pending-updates"></a>Függőben lévő frissítések keresése
 
-A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) használatával ellenőrizze, hogy van-e függőben lévő frissítés. A `-subscription` használatával megadhatja a virtuális gép Azure-előfizetését, ha az eltér a bejelentkezett fióktól. 
+A [Get-AzMaintenanceUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azmaintenanceupdate) használatával ellenőrizze, hogy van-e függőben lévő frissítés. A `-subscription` használatával megadhatja a virtuális gép Azure-előfizetését, ha az eltér a bejelentkezett fióktól.
+
+Ha nincsenek frissítések, a parancs hibaüzenetet ad vissza: `Resource not found...StatusCode: 404`.
 
 ### <a name="isolated-vm"></a>Elkülönített virtuális gép
 
@@ -185,6 +187,39 @@ New-AzApplyUpdate `
    -ResourceParentName myHostGroup `
    -ResourceParentType hostGroups `
    -ProviderName Microsoft.Compute
+```
+
+## <a name="check-update-status"></a>Frissítés állapotának keresése
+A [Get-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/get-azapplyupdate) használatával megtekintheti a frissítések állapotát. Az alábbi parancsok a legújabb frissítés állapotát mutatják `default` használatával a `-ApplyUpdateName` paraméterhez. Egy adott frissítés állapotának lekéréséhez helyettesítse be a frissítés nevét (a [New-AzApplyUpdate](https://docs.microsoft.com/powershell/module/az.maintenance/new-azapplyupdate) parancs által visszaadottak szerint).
+
+Ha nincsenek megjeleníthető frissítések, a parancs hibaüzenetet ad vissza: `Resource not found...StatusCode: 404`.
+
+### <a name="isolated-vm"></a>Elkülönített virtuális gép
+
+Egy adott virtuális gép frissítéseinek keresése.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myVM `
+   -ResourceType VirtualMachines `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
+```
+
+### <a name="dedicated-host"></a>Dedikált gazdagép
+
+A dedikált gazdagép frissítéseinek keresése.
+
+```azurepowershell-interactive
+Get-AzApplyUpdate `
+   -ResourceGroupName myResourceGroup `
+   -ResourceName myHost `
+   -ResourceType hosts `
+   -ResourceParentName myHostGroup `
+   -ResourceParentType hostGroups `
+   -ProviderName Microsoft.Compute `
+   -ApplyUpdateName default
 ```
 
 ## <a name="remove-a-maintenance-configuration"></a>Karbantartási konfiguráció eltávolítása

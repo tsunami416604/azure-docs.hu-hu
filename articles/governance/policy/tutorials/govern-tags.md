@@ -3,16 +3,16 @@ title: 'Oktatóanyag: a címke irányításának kezelése'
 description: Ebben az oktatóanyagban a Azure Policy módosításának hatása alapján létrehozhatja és érvényesítheti a címke irányítási modelljét az új és a meglévő erőforrásokon.
 ms.date: 11/25/2019
 ms.topic: tutorial
-ms.openlocfilehash: e3d6e279b293ea8063c690f9fb69a6f183b2838d
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 5e9cb9a4acb930c117374281a3debaeecce47110
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74482257"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965983"
 ---
 # <a name="tutorial-manage-tag-governance-with-azure-policy"></a>Oktatóanyag: a címke szabályozásának kezelése a Azure Policy
 
-A [címkék](../../../azure-resource-manager/resource-group-using-tags.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management/cost-mgt-best-practices.md#organize-and-tag-your-resources).
+A [címkék](../../../azure-resource-manager/management/tag-resources.md) kulcsfontosságú részét képezik az Azure-erőforrások taxonómiai rendszerezésének. A [címkézési felügyelettel kapcsolatos ajánlott eljárások](/azure/cloud-adoption-framework/ready/azure-best-practices/naming-and-tagging#naming-and-tagging-resources)követése során a címkék az üzleti szabályzatok alkalmazásának alapjául szolgálnak Azure Policy vagy [követési költségekkel Cost Managementával](../../../cost-management-billing/costs/cost-mgt-best-practices.md#organize-and-tag-your-resources).
 Függetlenül attól, hogy hogyan vagy miért használja a címkéket, fontos, hogy gyorsan hozzá lehessen adni, módosítani és eltávolítani ezeket a címkéket az Azure-erőforrásokon.
 
 Azure Policy [módosításának](../concepts/effects.md#modify) hatása úgy van kialakítva, hogy segítse a címkék irányítását, függetlenül attól, hogy az erőforrás-szabályozás milyen szakaszában van. A **módosítás** a következőkhöz nyújt segítséget:
@@ -196,7 +196,7 @@ A [deployIfNotExists](../concepts/effects.md#deployifnotexists) -szabályzatokho
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha elkészült ebből az oktatóanyagból erőforrásokkal dolgozik, kövesse az alábbi lépéseket, törölje a létrehozott hozzárendeléseket vagy definíciókat fent:
+Ha végzett az oktatóanyag erőforrásainak használatával, a következő lépésekkel törölheti a fent létrehozott hozzárendeléseket vagy definíciókat:
 
 1. Válassza a **definíciók** **(vagy** hozzárendelések) lehetőséget a Azure Policy lap bal oldalán található **authoring (szerzői műveletek** ) elemnél.
 

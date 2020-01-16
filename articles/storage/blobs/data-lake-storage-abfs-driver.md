@@ -8,20 +8,20 @@ ms.reviewer: jamesbak
 ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
-ms.openlocfilehash: 370717e09e788faa56662c4c88e2e7c0de21eef7
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 3db039d39ef532ea51143dc9cbdb6bd5f29d6225
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72933157"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75970279"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer-illesztőprogram (ABFS): a Hadoop dedikált Azure Storage-illesztőprogramja
 
-Azure Data Lake Storage Gen2ban lévő adatelérési módszerek egyike az [Hadoop fájlrendszeren](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)keresztül történik. Data Lake Storage Gen2 lehetővé teszi, hogy az Azure Blob Storage hozzáférjen egy új illesztőprogramhoz, az Azure Blob fájlrendszer-illesztőprogramhoz vagy `ABFS`. A ABFS Apache Hadoop része, és a Hadoop számos kereskedelmi disztribúciójában szerepel. Az illesztőprogram használatával számos alkalmazás és keretrendszer fér hozzá az Azure Blob Storage adataihoz anélkül, hogy a kód kifejezetten hivatkozik a Data Lake Storage Gen2ra. 
+Azure Data Lake Storage Gen2ban lévő adatelérési módszerek egyike az [Hadoop fájlrendszeren](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/index.html)keresztül történik. Data Lake Storage Gen2 lehetővé teszi, hogy az Azure Blob Storage hozzáférjen egy új illesztőprogramhoz, az Azure Blob fájlrendszer-illesztőprogramhoz vagy a `ABFS`hoz. A ABFS Apache Hadoop része, és a Hadoop számos kereskedelmi disztribúciójában szerepel. Az illesztőprogram használatával számos alkalmazás és keretrendszer fér hozzá az Azure Blob Storage adataihoz anélkül, hogy a kód kifejezetten hivatkozik a Data Lake Storage Gen2ra.
 
 ## <a name="prior-capability-the-windows-azure-storage-blob-driver"></a>Korábbi képesség: a Windows Azure Storage Blob illesztőprogramja
 
-A Windows Azure Storage Blob illesztőprogram vagy [WASB illesztőprogramja](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) az Azure Blob Storage eredeti támogatását biztosította. Ez az illesztőprogram olyan összetett feladatot hajtott végre, amely az Azure Blob Storage által elérhető objektum-tárolási stílus felületének hozzárendelését (a Hadoop fájlrendszer felülete megköveteli). Ez az illesztőprogram továbbra is támogatja ezt a modellt, nagy teljesítményű hozzáférést biztosít a blobokban tárolt adatokhoz, de jelentős mennyiségű kódot tartalmaz a leképezés végrehajtásához, ami megnehezíti a karbantartást. Emellett bizonyos műveletek, mint például a [filesystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és a [filesystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) a címtárakon való alkalmazásakor az illesztőprogramnak nagy mennyiségű műveletet kell végrehajtania (mivel az objektumok nem támogatják a címtárak támogatását), ami gyakran vezet csökkentheti a teljesítményt. A ABFS-illesztőprogram úgy lett kialakítva, hogy legyőzze a WASB rejlő hiányosságait.
+A Windows Azure Storage Blob illesztőprogram vagy [WASB illesztőprogramja](https://hadoop.apache.org/docs/current/hadoop-azure/index.html) az Azure Blob Storage eredeti támogatását biztosította. Ez az illesztőprogram olyan összetett feladatot hajtott végre, amely az Azure Blob Storage által elérhető objektum-tárolási stílus felületének hozzárendelését (a Hadoop fájlrendszer felülete megköveteli). Ez az illesztőprogram továbbra is támogatja ezt a modellt, nagy teljesítményű hozzáférést biztosít a blobokban tárolt adatokhoz, de jelentős mennyiségű kódot tartalmaz a leképezés végrehajtásához, ami megnehezíti a karbantartást. Emellett bizonyos műveletek, mint például a [filesystem. Rename ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_renamePath_src_Path_d) és a [filesystem. Delete ()](https://hadoop.apache.org/docs/current/hadoop-project-dist/hadoop-common/filesystem/filesystem.html#boolean_deletePath_p_boolean_recursive) a címtárakon való alkalmazásakor az illesztőprogramnak nagy mennyiségű műveletet kell végrehajtania (mivel az objektumok nem támogatják a címtárak támogatását), ami gyakran csökkenti a teljesítményt. A ABFS-illesztőprogram úgy lett kialakítva, hogy legyőzze a WASB rejlő hiányosságait.
 
 ## <a name="the-azure-blob-file-system-driver"></a>Az Azure Blob fájlrendszer-illesztőprogramja
 
@@ -36,21 +36,21 @@ A Hadoop-en belüli más fájlrendszer-implementációkkal összhangban a ABFS-i
 A fenti URI formátum használata esetén a standard Hadoop-eszközök és-keretrendszerek használhatók a következő erőforrásokra való hivatkozáshoz:
 
 ```bash
-hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data 
-hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/ 
+hdfs dfs -mkdir -p abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data
+hdfs dfs -put flight_delays.csv abfs://fileanalysis@myanalytics.dfs.core.windows.net/tutorials/flightdelays/data/
 ```
 
 Belsőleg a ABFS-illesztőprogram az URI-ban megadott erőforrás (oka) t a fájlok és könyvtárak számára fordítja le, és hívásokat kezdeményez a Azure Data Lake Storage REST API ezekkel a hivatkozásokkal.
 
 ### <a name="authentication"></a>Hitelesítés
 
-A ABFS-illesztőprogram két hitelesítési módszert támogat, hogy a Hadoop alkalmazás biztonságosan hozzáférhessen egy Data Lake Storage Gen2-kompatibilis fiókban található erőforrásokhoz. Az elérhető hitelesítési sémák teljes részletességét az [Azure Storage biztonsági útmutatója](../common/storage-security-guide.md)tartalmazza. Ezek a következők:
+A ABFS-illesztőprogram két hitelesítési módszert támogat, hogy a Hadoop alkalmazás biztonságosan hozzáférhessen egy Data Lake Storage Gen2-kompatibilis fiókban található erőforrásokhoz. Az elérhető hitelesítési sémák teljes részletességét az [Azure Storage biztonsági útmutatója](security-recommendations.md)tartalmazza. Ezek a következők:
 
 - **Megosztott kulcs:** Ez lehetővé teszi a felhasználók számára a fiókban lévő összes erőforrás elérését. A kulcs titkosítva van, és a Hadoop-konfigurációban tárolódik.
 
 - **Azure Active Directory OAuth tulajdonosi jogkivonata:** Az Azure AD tulajdonosi jogkivonatait az illesztőprogram szerzi be és frissíti a végfelhasználó vagy egy konfigurált szolgáltatásnév identitásával. Ennek a hitelesítési modellnek a használatával minden hozzáférés a megadott jogkivonathoz társított identitással és a hozzárendelt POSIX Access Control listával (ACL) kiértékelt hívási alapon minden hozzáférésre engedélyezve van.
 
-   > [!NOTE] 
+   > [!NOTE]
    > A Azure Data Lake Storage Gen2 csak az Azure AD v 1.0-s végpontokat támogatja.
 
 ### <a name="configuration"></a>Konfiguráció

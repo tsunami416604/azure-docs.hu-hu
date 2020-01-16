@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/04/2019
-ms.openlocfilehash: 09a6b158c4390f881754c90d52a476f0bc249a5a
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74947639"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979127"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező Apache Hadoop-fürt létrehozása az Azure HDInsight
 
@@ -24,14 +24,14 @@ A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-
 A cikk elkezdése előtt a következőket kell tennie:
 
 * Azure-előfizetés: egy hónapos ingyenes próbaverziós fiók létrehozásához keresse meg a [Azure.microsoft.com/Free](https://azure.microsoft.com/free).
-* Egy biztonságos átvitelt engedélyező Azure Storage-fiók. Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-quickstart-create-account.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat. A Biztonságos tár átvitelének a fürt létrehozása után történő engedélyezése a jelen cikkben nem tárgyalt további lépéseket igényel.
+* Egy biztonságos átvitelt engedélyező Azure Storage-fiók. Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-account-create.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat. A Biztonságos tár átvitelének a fürt létrehozása után történő engedélyezése a jelen cikkben nem tárgyalt további lépéseket igényel.
 * Egy blob-tároló a Storage-fiókban.
 
 ## <a name="create-cluster"></a>Fürt létrehozása
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/resource-group-template-deploy.md). A sablon a [githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/)található. A cikk végrehajtásához nincs szükség Resource Manager-sablonra. A további fürtök létrehozási módszereivel és a cikkben használt tulajdonságok megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
+Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban egy [Azure Resource Manager-sablonnal](../azure-resource-manager/templates/deploy-powershell.md). A sablon a [githubon](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-with-existing-default-storage-account/)található. A cikk végrehajtásához nincs szükség Resource Manager-sablonra. A további fürtök létrehozási módszereivel és a cikkben használt tulajdonságok megismerésével kapcsolatban lásd: [HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md).
 
 1. Az alábbi képre kattintva jelentkezzen be az Azure-ba, és nyissa meg a Resource Manager-sablont az Azure Portalon.
 

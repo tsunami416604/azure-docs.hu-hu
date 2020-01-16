@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 06/11/2018
 ms.author: mikeray
-ms.openlocfilehash: 1a69741ba3ced91b6b0d1fc4bcd4aea887452151
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 20c231e4f3052797eac79a3c97a3d8148690b8c5
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792178"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965432"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken
 
@@ -78,7 +78,7 @@ Az egyik tudnivaló az, hogy az Azure IaaS VM vendég feladatátvevő fürtön e
 Ezen technológiák általános megismerése is szükséges:
 
 - [A Windows Server 2016-ben Közvetlen tárolóhelyekt használó Hyper-konvergens megoldások](https://docs.microsoft.com/windows-server/storage/storage-spaces/storage-spaces-direct-overview)
-- [Azure-erőforráscsoportok](../../../azure-resource-manager/manage-resource-groups-portal.md)
+- [Azure-erőforráscsoportok](../../../azure-resource-manager/management/manage-resource-groups-portal.md)
 
 > [!IMPORTANT]
 > Jelenleg az Azure Virtual Machines szolgáltatásban SQL Server feladatátvevő fürt példányai csak a [SQL Server IaaS-ügynök bővítményének](virtual-machines-windows-sql-server-agent-extension.md) [egyszerűsített felügyeleti módjával](virtual-machines-windows-sql-register-with-resource-provider.md#management-modes) támogatottak. Ha a teljes bővítmény módból egyszerűre szeretne váltani, törölje a megfelelő virtuális gépekhez tartozó **SQL** -virtuálisgép-erőforrást, majd az egyszerűsített módban regisztrálja őket az SQL VM erőforrás-szolgáltatóval. Ha a Azure Portal használatával törli az SQL-alapú **virtuális gép** erőforrását, **törölje a megfelelő virtuális gép melletti jelölőnégyzet**jelölését. A teljes bővítmény olyan funkciókat támogat, mint például az automatikus biztonsági mentés, a javítások és a speciális portálok kezelése. Ezek a funkciók nem fognak működni az SQL virtuális gépeken, miután az ügynököt egyszerűsített felügyeleti módban újratelepítette.
@@ -397,7 +397,7 @@ A terheléselosztó létrehozása:
 
 1. A háttér-készlet létrehozásához kattintson **az OK gombra** .
 
-### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapot-mintavételének konfigurálása
+### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának konfigurálása
 
 1. A terheléselosztó panelen válassza az **állapot**-mintavétel lehetőséget.
 
@@ -471,7 +471,7 @@ A fürt mintavételének beállítása után a PowerShellben láthatja a fürt �
 
 ## <a name="step-7-test-fci-failover"></a>7\. lépés: a feladatátvétel tesztelése
 
-Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Hajtsa végre a következő lépéseket:
+Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Tegye a következőket:
 
 1. Az RDP használatával csatlakozzon az egyik SQL Server a csomóponthoz.
 

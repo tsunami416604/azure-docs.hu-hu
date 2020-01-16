@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/03/2019
-ms.openlocfilehash: c728f3b9a4c10d52d7361ca76e9b40198a6a0dba
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: bbb2108967353b851a0fa0ee610ec30380e3fc50
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74769098"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969266"
 ---
 # <a name="prepay-for-azure-data-explorer-markup-units-with-azure-data-explorer-reserved-capacity"></a>Előre fizetés az Azure Adatkezelő Markup egységek számára az Azure Adatkezelő fenntartott kapacitással
 
@@ -27,8 +27,8 @@ Az Azure Adatkezelő fenntartott kapacitást a [Azure Portal](https://portal.azu
 * A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg az Azure Adatkezelő fenntartott kapacitását.
 
 A foglalások vásárlásával kapcsolatos további részletekért tekintse meg a következő témakört:
-* [Az Azure foglalás használatának ismertetése a vállalati beléptetéshez](../billing/billing-understand-reserved-instance-usage-ea.md) 
-* Az utólagos elszámolású [előfizetések esetében az Azure foglalás használatának ismertetése](../billing/billing-understand-reserved-instance-usage.md).
+* [Az Azure foglalás használatának ismertetése a vállalati beléptetéshez](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md) 
+* Az utólagos elszámolású [előfizetések esetében az Azure foglalás használatának ismertetése](../cost-management-billing/reservations/understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-markup-usage-before-purchase"></a>A megfelelő haszonkulcs-használat meghatározása a vásárlás előtt
 
@@ -54,7 +54,7 @@ Ha meg kell szakítania az Azure Adatkezelő fenntartott kapacitás foglalását
 
 Ha módosítania kell az Azure Adatkezelő fenntartott kapacitás foglalását egy másik kifejezésre, akkor azt egy másik, egyenlő vagy nagyobb értékű foglalásra cserélheti. Az új foglalási időszak kezdő dátuma nem kerül át a lecserélt foglalásból. Az 1 vagy 3 éves időszak az új foglalás létrehozásakor kezdődik. Az Exchange igényléséhez lépjen a foglalás a Azure Portal, majd válassza az **Exchange** elemet a támogatási kérelem létrehozásához.
 
-A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és a visszafizetések](../billing/billing-azure-reservations-self-service-exchange-and-refund.md).
+A foglalások cseréjével és visszatérítésével kapcsolatos további információkért lásd: a [foglalási cserék és a visszafizetések](../cost-management-billing/reservations/exchange-and-refund-azure-reservations.md).
 
 ## <a name="manage-your-reserved-capacity-reservation"></a>Fenntartott kapacitás foglalásának kezelése
 
@@ -63,17 +63,17 @@ Az Azure Adatkezelő Markup Unit foglalási kedvezmény automatikusan érvényes
 
 > [!NOTE]
 > * Az Azure Adatkezelő fenntartott kapacitás foglalásának hatókörét a [Azure Portal](https://portal.azure.com), a PowerShell, a CLI vagy az API segítségével frissítheti.
-> * Az Azure Adatkezelő fenntartott kapacitás foglalásának kezelésével kapcsolatos információkért lásd: az [azure adatkezelő fenntartott kapacitás kezelése](../billing/billing-understand-kusto-azuredataexplorer-reservation-charges.md).
+> * Az Azure Adatkezelő fenntartott kapacitás foglalásának kezelésével kapcsolatos információkért lásd: az [azure adatkezelő fenntartott kapacitás kezelése](../cost-management-billing/reservations/understand-azure-data-explorer-reservation-charges.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
 Az Azure Reservationszel kapcsolatos további információkért tekintse meg a következő cikkeket:
 
-* [Mi az az Azure Reservations?](../billing/billing-save-compute-costs-reservations.md)
-* [Az Azure Reservations kezelése](../billing/billing-manage-reserved-vm-instance.md)
-* [Az Azure Reservations-kedvezmény ismertetése](../billing/billing-understand-reservation-charges.md)
-* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../billing/billing-understand-reserved-instance-usage.md)
-* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../billing/billing-understand-reserved-instance-usage-ea.md)
+* [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
+* [Az Azure Reservations kezelése](../cost-management-billing/reservations/manage-reserved-vm-instance.md)
+* [Az Azure Reservations-kedvezmény ismertetése](../cost-management-billing/reservations/understand-reservation-charges.md)
+* [A foglalási kihasználtság ismertetése használatalapú fizetéses előfizetésnél](../cost-management-billing/reservations/understand-reserved-instance-usage.md)
+* [A foglalási kihasználtság ismertetése vállalati regisztrációnál](../cost-management-billing/reservations/understand-reserved-instance-usage-ea.md)
 * [Azure Reservations a Partner Center felhőszolgáltatói (CSP) programjában](https://docs.microsoft.com/partner-center/azure-reservations)
 
 ## <a name="need-help-contact-us"></a>Segítség Kapcsolatfelvétel

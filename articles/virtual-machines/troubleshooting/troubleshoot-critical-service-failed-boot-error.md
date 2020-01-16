@@ -12,25 +12,25 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 10/08/2018
 ms.author: genli
-ms.openlocfilehash: f038e56fe4b1e6ad2737217674706eef77a39fd6
-ms.sourcegitcommit: ca359c0c2dd7a0229f73ba11a690e3384d198f40
+ms.openlocfilehash: 590505d954d52ebec9f8a5c344d6e750f11ef677
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71058059"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75981371"
 ---
 # <a name="windows-shows-critical-service-failed-on-blue-screen-when-booting-an-azure-vm"></a>A Windows egy Azure-beli virtuális gép indításakor a "kritikus szolgáltatás sikertelen" állapotot jeleníti meg a kék képernyőn
 Ez a cikk a "kritikus szolgáltatás nem sikerült" hibát mutatja be, amely akkor fordulhat elő, amikor Windows rendszerű virtuális gépet (VM) indít el Microsoft Azure. Hibaelhárítási lépéseket biztosít a problémák megoldásához. 
 
 > [!NOTE] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../azure-resource-manager/management/deployment-models.md). Ez a cikk a Resource Manager-alapú üzemi modell használatát ismerteti, amelyet a klasszikus üzemi modell helyett új központi telepítések esetén ajánlott használni.
 
-## <a name="symptom"></a>Jelenség 
+## <a name="symptom"></a>Hibajelenség 
 
 Egy Windows rendszerű virtuális gép nem indul el. Amikor bejelöli a rendszerindítási [diagnosztika](./boot-diagnostics.md)rendszerindítási funkcióit, a következő hibaüzenetek egyike jelenik meg egy kék képernyőn:
 
-- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. További információt erről a problémáról és a lehetséges javításokról https://windows.com/stopcode a következő webhelyen talál:. Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: Kód leállítása: NEM SIKERÜLT A KRITIKUS SZOLGÁLTATÁS " 
-- "A számítógép hibát észlelt, és újra kell indítania. Most gyűjtünk néhány hibaüzenetet, majd újraindulunk. Ha további információra van szüksége, később is megkeresheti a következő hibaüzenetet: CRITICAL_SERVICE_FAILED"
+- "A számítógép hibát észlelt, és újra kell indítania. Újra lehet indítani. Erről a problémáról és a lehetséges javításokról a https://windows.com/stopcode webhelyen talál további információt. Ha egy támogatási személyt hív meg, adja meg nekik ezt az információt: leállítási kód: a kritikus szolgáltatás nem sikerült. 
+- "A számítógép hibát észlelt, és újra kell indítania. Most gyűjtünk néhány hibaüzenetet, majd újraindulunk. Ha további információra van szüksége, később is megkeresheti a következő hibaüzenetet: CRITICAL_SERVICE_FAILED "
 
 ## <a name="cause"></a>Ok
 
@@ -43,10 +43,10 @@ A leállítási hibák számos oka lehet. A leggyakoribb okok a következők:
 
 A probléma megoldásához [forduljon az ügyfélszolgálathoz, és küldjön el egy memóriaképfájl-fájlt](./troubleshoot-common-blue-screen-error.md#collect-memory-dump-file), amely segít a probléma gyorsabb diagnosztizálásában, vagy próbálja ki a következő önsegítő megoldást.
 
-### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez
+### <a name="attach-the-os-disk-to-a-recovery-vm"></a>Az operációsrendszer-lemez csatlakoztatása egy helyreállítási virtuális géphez
 
-1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információkért lásd: [lemez pillanatképének elkészítése](../windows/snapshot-copy-managed-disk.md).
-2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális Géphez](./troubleshoot-recovery-disks-portal-windows.md). 
+1. Készítsen pillanatképet az érintett virtuális gép operációsrendszer-lemezéről biztonsági másolatként. További információ: [lemez pillanatképe](../windows/snapshot-copy-managed-disk.md).
+2. [Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez](./troubleshoot-recovery-disks-portal-windows.md). 
 3. Hozzon létre egy távoli asztali kapcsolatot a helyreállítási virtuális géppel.
 
 ### <a name="enable-dump-logs-and-serial-console"></a>Memóriakép-naplók és soros konzol engedélyezése
@@ -103,21 +103,21 @@ A memóriaképek és a soros konzol engedélyezéséhez futtassa az alábbi szkr
         bcdedit /store <OS DISK LETTER>:\boot\bcd /deletevalue {default} safeboot
 8.  Indítsa újra a virtuális gépet. 
 
-### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Nem kötelező: Memóriakép-naplók elemzése a memóriakép összeomlása módban
+### <a name="optional-analyze-the-dump-logs-in-dump-crash-mode"></a>Nem kötelező: a memóriaképi naplók elemzése a memóriakép összeomlása módban
 
 A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
 
 1. Csatlakoztassa az operációsrendszer-lemezt egy helyreállítási virtuális géphez.
 2. A csatlakoztatott operációsrendszer-lemezen keresse meg a **\Windows\System32\Config**. Másolja az összes fájlt biztonsági másolatként arra az esetre, ha visszaállításra van szükség.
 3. Indítsa el a **Beállításszerkesztőt** (Regedit. exe).
-4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > **Load struktúra**elemet.
+4. Válassza ki a **HKEY_LOCAL_MACHINE** kulcsot. A menüben válassza a **fájl** > a **betöltési struktúra**elemet.
 5. Keresse meg a **\windows\system32\config\SYSTEM** mappát a csatlakoztatott operációsrendszer-lemezen. A struktúra neveként írja be a következőt: **BROKENSYSTEM**. Az új beállításjegyzék-struktúra a **HKEY_LOCAL_MACHINE** kulcs alatt jelenik meg.
-6. Keresse meg a **HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet00x\Control\CrashControl** , és végezze el a következő módosításokat:
+6. Keresse meg **HKEY_LOCAL_MACHINE \brokensystem\controlset00x\control\crashcontrol** , és végezze el a következő módosításokat:
 
     Autoújraindítás = 0
 
     CrashDumpEnabled = 2
-7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüből válassza ki a **fájl** > **kitöltése struktúrát**.
+7.  Válassza a **BROKENSYSTEM**lehetőséget. A menüben válassza a **fájl** > a **struktúra eltávolítása**lehetőséget.
 8.  Módosítsa a BCD-telepítőt hibakeresési módba való indításra. Futtassa a következő parancsokat egy rendszergazda jogú parancssorból:
 
     ```cmd
@@ -137,7 +137,7 @@ A memóriakép-naplók elemzéséhez kövesse az alábbi lépéseket:
 9. [Válassza le az operációsrendszer-lemezt, majd csatlakoztassa újra az operációsrendszer-lemezt az érintett virtuális géphez](troubleshoot-recovery-disks-portal-windows.md).
 10. Indítsa el a virtuális gépet, és ellenőrizze, hogy látható-e a memóriakép elemzése. Keresse meg a nem betölteni kívánt fájlt. Ezt a fájlt a működő virtuális gép egy fájljával kell helyettesítenie. 
 
-    A következő példa a memóriakép elemzésére szolgál. Láthatja, hogy a **hiba** a filecrypt. sys fájlban található: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt.sys".
+    A következő példa a memóriakép elemzésére szolgál. Láthatja, hogy a **hiba** a filecrypt. sys fájlban: "FAILURE_BUCKET_ID: 0x5A_c0000428_IMAGE_filecrypt. sys".
 
     ```
     kd> !analyze -v 

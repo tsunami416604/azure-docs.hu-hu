@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 11/29/2017
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: eca19b3774ad285cb143ffc2b6c53360bec85fa4
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492353"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75968731"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
 
-Ez a bemutató azt mutatja be, hogyan használható a csoportos adatelemzési folyamat egy teljes körű forgatókönyvben egy [Azure HDInsight Hadoop fürttel](https://azure.microsoft.com/services/hdinsight/) , amely a nyilvánosan elérhető [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -adatkészletek egyikének tárolására, megismerésére, funkcióinak vizsgálatára és leállására szolgál. . A Azure Machine Learning használatával bináris besorolási modellt hoz létre ezen az adathalmazon. Azt is bemutatja, hogyan teheti közzé ezen modellek egyikét webszolgáltatásként.
+Ez a bemutató azt mutatja be, hogyan használható a csoportos adatelemzési folyamat egy teljes körű forgatókönyvben egy [Azure HDInsight Hadoop-fürttel](https://azure.microsoft.com/services/hdinsight/) , amely a nyilvánosan elérhető [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) -adatkészletek egyikéről tárolja, tárja fel, ismerteti a funkciók mérnökeit, és levonja a mintavételi adatokat. A Azure Machine Learning használatával bináris besorolási modellt hoz létre ezen az adathalmazon. Azt is bemutatja, hogyan teheti közzé ezen modellek egyikét webszolgáltatásként.
 
 Az útmutatóban ismertetett feladatok elvégzéséhez egy IPython-jegyzetfüzet is használható. Azok a felhasználók, akik szeretnék kipróbálni ezt a megközelítést, a [kaptár ODBC-kapcsolódási témakör használatával](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tekintse meg a Criteo útmutatót.
 
@@ -60,7 +60,7 @@ Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
 
 Állítsa be az Azure adatelemzési környezetét a prediktív elemzési megoldások HDInsight-fürtökkel való létrehozásához három lépésben:
 
-1. [Storage-fiók létrehozása](../../storage/common/storage-quickstart-create-account.md): ezt a Storage-fiókot használjuk az Azure Blob Storageban tárolt adattároláshoz. Itt tárolódnak a HDInsight-fürtökben használt adathalmazok.
+1. [Storage-fiók létrehozása](../../storage/common/storage-account-create.md): ezt a Storage-fiókot használjuk az Azure Blob Storageban tárolt adattároláshoz. Itt tárolódnak a HDInsight-fürtökben használt adathalmazok.
 2. [Azure HDInsight Hadoop-fürtök testreszabása az adatelemzéshez](customize-hadoop-cluster.md): Ez a lépés egy Azure HDInsight Hadoop-fürtöt hoz létre, amely az összes csomóponton telepítve van a 64 bites Anaconda Python 2,7. A HDInsight-fürt testreszabásakor két fontos lépést kell végrehajtania (lásd ebben a témakörben).
 
    * A létrehozáskor az 1. lépésben létrehozott Storage-fiókot az HDInsight-fürthöz kell kapcsolni. Ez a Storage-fiók a fürtön belül feldolgozható adatok elérésére szolgál.
@@ -163,7 +163,7 @@ Az összes táblázat külső, így egyszerűen az Azure Blob Storage (wasb) hel
         hive
 
      Most a REPL parancssorában a lekérdezés kivágása és beillesztése végrehajtja azt.
-2. **Lekérdezések mentése fájlba és a parancs végrehajtása**: a második az, hogy mentse a lekérdezéseket egy. HQL fájlba ([&#95;minta struktúra&#95;Create&#95;criteo&#95;Database&#95;and&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következőket a lekérdezés végrehajtásához szükséges parancs:
+2. **Lekérdezések mentése fájlba és a parancs végrehajtása**: a második az, hogy mentse a lekérdezéseket egy. HQL fájlba ([&#95;minta struktúra&#95;Create&#95;criteo&#95;Database&#95;and&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következő parancsot a lekérdezés végrehajtásához:
 
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 

@@ -1,24 +1,27 @@
 ---
 title: Az Azure Service Fabric terminológiájának megismerése
-description: A Service Fabric terminológiai áttekintése. A dokumentáció további részében használt legfontosabb terminológiai fogalmakat és kifejezéseket tárgyalja.
+description: Ismerje meg a dokumentáció további részében használt kulcsfontosságú Service Fabric terminológiát és fogalmakat.
 author: masnider
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: masnider
-ms.openlocfilehash: cf2cfdad10d93bb4f28345d75a86fdcd94587410
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: sfrev
+ms.openlocfilehash: a9266c2a8d2ad179cfdb12e367a14f37d1abc9b3
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465606"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024894"
 ---
 # <a name="service-fabric-terminology-overview"></a>Service Fabric terminológia áttekintése
+
 Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a skálázható és megbízható mikroszolgáltatások csomagolását, üzembe helyezését és kezelését.  A [Service Fabric-fürtöket bárhová üzemeltetheti](service-fabric-deploy-anywhere.md): az Azure-t egy helyszíni adatközpontban vagy bármely felhőalapú szolgáltatón.  Service Fabric a Orchestrator, amely az [Azure Service Fabric Mesh](/azure/service-fabric-mesh)szolgáltatást használja. Bármilyen keretrendszert felhasználhat a szolgáltatások írásához, és kiválaszthatja, hogy az alkalmazás hol fusson több környezeti lehetőség közül. Ez a cikk az Service Fabric által használt terminológiát részletezi a dokumentációban használt kifejezések megismerése érdekében.
 
 ## <a name="infrastructure-concepts"></a>Infrastruktúra-fogalmak
+
 **Fürt**: olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait.  A fürtök több ezer gépre skálázhatók.
 
-**Csomópont**: a fürt részét képező számítógép vagy virtuális gép neve *csomópont*. Minden csomóponthoz hozzá van rendelve egy csomópontnév (egy sztring). A csomópontok jellemzői, például elhelyezési tulajdonságok. Mindegyik gépen vagy virtuális gépen van egy automatikus indítású Windows-szolgáltatás, `FabricHost.exe`, amely elindul a rendszerindítás során, majd elindítja a két végrehajtható fájl: `Fabric.exe` és `FabricGateway.exe`. Ez a két végrehajtható fájl alkotja a csomópontot. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a `Fabric.exe` és `FabricGateway.exe`több példányának futtatásával.
+**Csomópont**: a fürt részét képező számítógép vagy virtuális gép neve *csomópont*. Minden csomóponthoz hozzá van rendelve egy csomópont neve (karakterlánc). A csomópontok jellemzői, például elhelyezési tulajdonságok. Mindegyik gépen vagy virtuális gépen van egy automatikus indítású Windows-szolgáltatás, `FabricHost.exe`, amely elindul a rendszerindítás során, majd elindítja a két végrehajtható fájl: `Fabric.exe` és `FabricGateway.exe`. Ez a két végrehajtható fájl alkotja a csomópontot. Tesztelési forgatókönyvek esetén több csomópontot is tárolhat egyetlen számítógépen vagy virtuális gépen a `Fabric.exe` és `FabricGateway.exe`több példányának futtatásával.
 
 ## <a name="application-and-service-concepts"></a>Alkalmazások és szolgáltatások – fogalmak
 
@@ -30,7 +33,7 @@ Az Azure Service Fabric egy elosztott rendszerplatform, amely megkönnyíti a sk
 
 **Alkalmazás**: az alkalmazás a háló alkalmazás üzembe helyezésének, verziószámozásának és élettartamának egysége. Az egyes alkalmazás-példányok életciklusa egymástól függetlenül kezelhető.  Az alkalmazások egy vagy több szolgáltatási kódú csomagból és beállításból állnak. Az alkalmazás az Azure Resource Model (RM) séma használatával van definiálva.  A szolgáltatások az alkalmazás-erőforrás tulajdonságaiként szerepelnek egy RM-sablonban.  Az alkalmazás által használt hálózatokat és köteteket az alkalmazás hivatkozik.  Egy alkalmazás létrehozásakor az alkalmazás, a szolgáltatás, a hálózat és a kötet (ek) modellezése a Service Fabric Resource Model használatával történik.
 
-**Szolgáltatás**: az alkalmazás egyik szolgáltatása a szolgáltatást jelöli, és teljes és önálló funkciót hajt végre. Minden szolgáltatás egy vagy több olyan kódból áll, amely leírja mindazt, ami a programkódhoz tartozó tároló rendszerképének futtatásához szükséges.  Az alkalmazásokban lévő szolgáltatások száma növelhető és leállítható.
+**Szolgáltatás**: az alkalmazás egyik szolgáltatása a szolgáltatást jelöli, és teljes és önálló funkciót hajt végre. Minden szolgáltatás egy vagy több olyan kódból áll, amely leírja, hogy a csomaghoz társított tároló-rendszerkép fusson.  Az alkalmazásokban lévő szolgáltatások száma növelhető és leállítható.
 
 **Hálózat**: a hálózati erőforrások létrehoznak egy magánhálózatot az alkalmazásaihoz, és függetlenek a rá hivatkozó alkalmazásoktól és szolgáltatásoktól. A különböző alkalmazások több szolgáltatása is lehet ugyanazon hálózat része. A hálózatok olyan telepíthető erőforrások, amelyekre az alkalmazások hivatkoznak.
 
@@ -83,15 +86,16 @@ Az **újrakonfigurálás** a szolgáltatás replikájának bármely változásá
 
 **Adatcsomag**: a szolgáltatás típusának statikus, csak olvasható adatfájljait, jellemzően fénykép-, hang-és videofájlok listáját tartalmazó lemez könyvtára. Az adatcsomag könyvtárában lévő fájlokat a szolgáltatás típusa `ServiceManifest.xml` fájlja hivatkozik. Elnevezett szolgáltatás létrehozásakor a rendszer átmásolja az adatcsomagot a csomópontra vagy a kijelölt csomópontokra a nevesített szolgáltatás futtatásához. A kód elindul, és most már elérheti az adatfájlokat.
 
-**Konfigurációs csomag**: a szolgáltatás típusának statikus, csak olvasható konfigurációs fájljait, jellemzően szövegfájlokat tartalmazó lemez könyvtára. A konfigurációs csomag könyvtárában lévő fájlokat a szolgáltatás típusa `ServiceManifest.xml` fájlja hivatkozik. Névvel ellátott szolgáltatás létrehozásakor a konfigurációs csomagban lévő fájlok egy vagy több, a nevesített szolgáltatás futtatására kijelölt csomópontot másolnak. Ezután elindul a kód futtatása, és most már elérheti a konfigurációs fájlokat.
+**Konfigurációs csomag**: a szolgáltatás típusának statikus, csak olvasható konfigurációs fájljait, jellemzően szövegfájlokat tartalmazó lemez könyvtára. A konfigurációs csomag könyvtárában lévő fájlokat a szolgáltatás típusa `ServiceManifest.xml` fájlja hivatkozik. Névvel ellátott szolgáltatás létrehozásakor a rendszer a konfigurációs csomagban lévő fájlokat egy vagy több, a nevesített szolgáltatás futtatására kijelölt csomópontba másolja. Ezután elindul a kód futtatása, és most már elérheti a konfigurációs fájlokat.
 
-**Tárolók**: alapértelmezés szerint a Service Fabric folyamatként telepíti és aktiválja a szolgáltatásokat. A Service Fabric a szolgáltatásokat tároló lemezképekben is üzembe helyezheti. A tárolók olyan virtualizációs technológiák, amelyek a mögöttes operációs rendszert virtualizálják az alkalmazásokból. Egy alkalmazás és annak futtatókörnyezete, függőségei és rendszerkönyvtárai egy tárolón belül futnak. A tároló teljes körű, privát hozzáféréssel rendelkezik az operációs rendszer szerkezetének saját elkülönített nézetéhez. A Service Fabric támogatja a Docker-tárolókat a Linux-és Windows Server-tárolókban. További információért olvassa el a [Service Fabric és a tárolókat](service-fabric-containers-overview.md).
+**Tárolók**: alapértelmezés szerint a Service Fabric folyamatként telepíti és aktiválja a szolgáltatásokat. A Service Fabric a szolgáltatásokat tároló lemezképekben is üzembe helyezheti. A tárolók olyan virtualizációs technológiák, amelyek a mögöttes operációs rendszert az alkalmazásokból absztraktként használják. Egy alkalmazás és annak futtatókörnyezete, függőségei és rendszerkönyvtárai egy tárolón belül futnak. A tároló teljes körű, privát hozzáféréssel rendelkezik az operációs rendszer szerkezetének saját elkülönített nézetéhez. A Service Fabric támogatja a Windows Server-tárolókat és a Docker-tárolókat Linux rendszeren. További információért olvassa el a [Service Fabric és a tárolókat](service-fabric-containers-overview.md).
 
 **Particionálási séma**: megnevezett szolgáltatás létrehozásakor meg kell adnia egy partíciós sémát. A nagy mennyiségű állapotú szolgáltatások felosztják az adatpartíciók közötti elosztást, amely az állapotot a fürt csomópontjain keresztül terjeszti. Az adatpartíciók közötti felosztásával az elnevezett szolgáltatás állapota méretezhető is lehet. Egy partíción belül az állapot nélküli elnevezett szolgáltatások rendelkeznek példányokkal, míg az állapot-nyilvántartó nevesített szolgáltatások rendelkeznek replikákkal. Általában az állapot nélküli elnevezett szolgáltatások csak egy partícióval rendelkeznek, mert nincs belső állapotuk. A partíciós példányok rendelkezésre állást biztosítanak. Ha egy példány meghibásodik, más példányok továbbra is szabályosan működnek, majd Service Fabric új példányt hoz létre. Az állapot-nyilvántartó elnevezett szolgáltatások megőrzik az állapotukat a replikákban, és mindegyik partíció saját replikával rendelkezik, így az állapot szinkronban marad. Ha egy replika meghibásodik, Service Fabric új replikát hoz létre a meglévő replikák közül.
 
 További információért olvassa el a [Partition Service Fabric megbízható szolgáltatások](service-fabric-concepts-partitioning.md) című cikket.
 
 ## <a name="system-services"></a>Rendszerszolgáltatások
+
 Az Service Fabric platform képességeit biztosító minden fürtben létrejönnek rendszerszolgáltatások.
 
 **Elnevezési szolgáltatás**: minden Service Fabric-fürthöz tartozik egy elnevezési szolgáltatás, amely a fürt egyik helyére oldja fel a szolgáltatás nevét. A szolgáltatás nevét és tulajdonságait, például a fürt internetes tartománynevét (DNS) kezelheti. Az ügyfelek a elnevezési szolgáltatás használatával biztonságosan kommunikálhatnak a fürt bármely csomópontjára, és feloldják a szolgáltatás nevét és helyét. Az alkalmazások a fürtön belül mozognak. Ez lehet például hibák, erőforrás-kiegyensúlyozás vagy a fürt átméretezése. Olyan szolgáltatásokat és ügyfeleket fejleszthet, amelyek az aktuális hálózati helyet oldják fel. Az ügyfelek megkapják az aktuálisan futó számítógép IP-címét és portját.
@@ -105,22 +109,26 @@ A lemezképtároló szolgáltatással kapcsolatos további információkért olv
 Az alkalmazások lemezképtároló szolgáltatásra történő központi telepítésével kapcsolatos további információkért olvassa el az [alkalmazás központi telepítése](service-fabric-deploy-remove-applications.md) című cikket.
 
 **Feladatátvételi felügyelő szolgáltatás**: minden Service Fabric-fürthöz tartozik egy feladatátvételi felügyelő-szolgáltatás, amely a következő műveletekért felelős:
-   - A szolgáltatások magas rendelkezésre állásával és konzisztenciájával kapcsolatos funkciókat hajt végre.
-   - Az alkalmazás-és fürt frissítéseinek összehangolása.
-   - Interakció más rendszerösszetevőkkel.
+
+ - A szolgáltatások magas rendelkezésre állásával és konzisztenciájával kapcsolatos funkciókat hajt végre.
+ - Az alkalmazás-és fürt frissítéseinek összehangolása.
+ - Interakció más rendszerösszetevőkkel.
 
 **Javításkezelő szolgáltatás**: ez egy opcionális rendszerszolgáltatás, amely lehetővé teszi a javítási műveletek végrehajtását a fürtön olyan módon, amely biztonságos, automatizálható és átlátható. A Repair Manager használatban van:
+
    - Az Azure karbantartási javításait [ezüst és arany tartósságú](service-fabric-cluster-capacity.md#the-durability-characteristics-of-the-cluster) Azure Service Fabric-fürtökön végezheti el.
    - Javítási műveletek végrehajtása javítás-előkészítési [alkalmazáshoz](service-fabric-patch-orchestration-application.md)
 
-## <a name="deployment-and-application-models"></a>Üzembe helyezési és alkalmazási modellek 
+## <a name="deployment-and-application-models"></a>Üzembe helyezési és alkalmazási modellek
 
 A szolgáltatások üzembe helyezéséhez le kell írnia a futtatásuk módját. A Service Fabric három különböző üzembe helyezési modellt támogat:
 
 ### <a name="resource-model-preview"></a>Erőforrás-modell (előzetes verzió)
+
 Service Fabric az erőforrások bármilyen módon üzembe helyezhetők, és a Service Fabric; beleértve az alkalmazásokat, a szolgáltatásokat, a hálózatokat és a köteteket. Az erőforrások egy JSON-fájllal vannak definiálva, amely a fürt végpontján helyezhető üzembe.  Service Fabric Mesh esetében az Azure Resource Model-séma használatos. A YAML-sémák a definíciós fájlok egyszerűbb létrehozásához is használhatók. Az erőforrások bármikor üzembe helyezhetők, Service Fabric futtatva. Az erőforrás-modell az Service Fabric-alkalmazások leírásának legegyszerűbb módja. Fő témája a tárolós szolgáltatások egyszerű üzembe helyezése és kezelése. További információért olvassa el [a Service Fabric Resource Model bemutatása](/azure/service-fabric-mesh/service-fabric-mesh-service-fabric-resources)című témakört.
 
 ### <a name="native-model"></a>Natív modell
+
 A natív alkalmazás modellje lehetővé teszi, hogy az alkalmazások teljes, alacsony szintű hozzáférést biztosítson Service Fabrichoz. Az alkalmazások és szolgáltatások regisztrált típusokként vannak definiálva az XML-jegyzékfájlokban.
 
 A natív modell támogatja a Reliable Services és Reliable Actors keretrendszereket, amelyek hozzáférést biztosítanak a Service Fabric Runtime API-khoz és a Java C# -ban a fürt felügyeleti API-khoz. A natív modell szintén támogatja a tetszőleges tárolókat és végrehajtható fájlokat. A natív modell nem támogatott a [Service Fabric Mesh környezetben](/azure/service-fabric-mesh/service-fabric-mesh-overview).
@@ -138,6 +146,7 @@ A meglévő alkalmazásokat Service Fabric is futtathatja:
 További információért olvassa el a [szolgáltatási modell kiválasztása a szolgáltatáshoz](service-fabric-choose-framework.md) című cikket.
 
 ### <a name="docker-compose"></a>Docker-összeállítás 
+
 A [Docker-összeállítás](https://docs.docker.com/compose/) a Docker-projekt részét képezi. A Service Fabric korlátozott támogatást biztosít az [alkalmazások Docker-összeállítási modellel történő üzembe helyezéséhez](service-fabric-docker-compose.md).
 
 ## <a name="environments"></a>Környezetek
@@ -150,6 +159,7 @@ A Service Fabric egy nyílt forráskódú platform technológia, amelyet számos
  - **Service Fabric fejlesztési fürt**: a Service Fabric alkalmazások fejlesztéséhez Windows, Linux vagy Mac helyi fejlesztési élményt nyújt.
 
 ## <a name="environment-framework-and-deployment-model-support-matrix"></a>A környezet, a keretrendszer és az üzembe helyezési modell támogatási mátrixa
+
 A különböző környezetek különböző szintű támogatást biztosítanak a keretrendszerek és a telepítési modellek számára. A következő táblázat a támogatott keretrendszer-és telepítési modell-kombinációkat ismerteti.
 
 | Alkalmazás típusa | Ismertette | Azure Service Fabric Mesh | Azure Service Fabric-fürtök (bármely operációs rendszer)| Helyi fürt | Önálló fürt |
@@ -164,8 +174,8 @@ A következő táblázat ismerteti a különböző alkalmazás-modelleket, valam
 | Service Fabric Mesh-alkalmazások | Erőforrás-modell (YAML & JSON) | VS 2017 |Nem támogatott |Nem támogatott | Támogatott – csak Mesh környezet | Nem támogatott|
 |Natív alkalmazások Service Fabric | Natív alkalmazás modellje (XML) | VS 2017 és VS 2015| Támogatott|Támogatott|Támogatott|Támogatott|
 
-<!--Every topic should have next steps and links to the next logical set of content to keep the customer engaged-->
 ## <a name="next-steps"></a>Következő lépések
+
 További információ a Service Fabricról:
 
 * [A Service Fabric áttekintése](service-fabric-overview.md)

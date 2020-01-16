@@ -3,12 +3,12 @@ title: A házirend-definíciós struktúra részletei
 description: Leírja, hogyan használhatók a szabályzat-definíciók a szervezeten belüli Azure-erőforrásokra vonatkozó konvenciók létrehozásához.
 ms.date: 11/26/2019
 ms.topic: conceptual
-ms.openlocfilehash: c067a5a603c1adcafe6827b3118ecff20ae23238
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 909d8e69e02b55ee6e45515b0d9c316a549e1332
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770934"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75972847"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
 
@@ -76,7 +76,7 @@ A **mód** határozza meg, hogy mely erőforrástípusok lesznek kiértékelve e
 
 Javasoljuk, hogy a legtöbb esetben állítsa be a **módot** `all`. A portálon keresztül létrehozott összes házirend-definíció a `all` módot használja. Ha a PowerShellt vagy az Azure CLI-t használja, manuálisan is megadhatja a **Mode** paramétert. Ha a házirend-definíció nem tartalmaz **Mode** értéket, a rendszer alapértelmezés szerint `all` Azure PowerShell és az Azure CLI-ben `null`. A visszafelé kompatibilitás támogatásához a `null` mód megegyezik a `indexed` használatával.
 
-a címkéket vagy helyszíneket kikényszerítő házirendek létrehozásakor `indexed`t kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok**. Az erőforráscsoportok helyét vagy címkéit kényszerítő házirendeknek úgy kell beállítaniuk a **módot** , hogy `all` és kifejezetten a `Microsoft.Resources/subscriptions/resourceGroups` típust célozzák meg. Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/tag-support.md).
+a címkéket vagy helyszíneket kikényszerítő házirendek létrehozásakor `indexed`t kell használni. Habár nem kötelező, megakadályozza, hogy a címkék és a hely nem támogatja az olyan erőforrásokat, amelyek nem felelnek meg a megfelelőségi eredményeknek. A kivétel az **erőforráscsoportok**. Az erőforráscsoportok helyét vagy címkéit kényszerítő házirendeknek úgy kell beállítaniuk a **módot** , hogy `all` és kifejezetten a `Microsoft.Resources/subscriptions/resourceGroups` típust célozzák meg. Példaként tekintse meg az [erőforráscsoport-címkék betartatása](../samples/enforce-tag-rg.md)című témakört. A címkéket támogató erőforrások listáját lásd: az Azure- [erőforrások támogatásának címkézése](../../../azure-resource-manager/management/tag-support.md).
 
 ### <a name="a-nameresource-provider-modes-resource-provider-modes-preview"></a><a name="resource-provider-modes" />erőforrás-szolgáltatói módok (előzetes verzió)
 
@@ -552,7 +552,7 @@ Az egyes effektusok, a kiértékelési sorrend, a tulajdonságok és a példák 
 
 ### <a name="policy-functions"></a>Házirend-függvények
 
-Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/resource-group-template-functions.md) egy házirend-szabályon belül használható, az alábbi függvények és a felhasználó által definiált függvények kivételével:
+Az összes [Resource Manager-sablon funkció](../../../azure-resource-manager/templates/template-functions.md) egy házirend-szabályon belül használható, az alábbi függvények és a felhasználó által definiált függvények kivételével:
 
 - copyIndex ()
 - üzembe helyezés ()

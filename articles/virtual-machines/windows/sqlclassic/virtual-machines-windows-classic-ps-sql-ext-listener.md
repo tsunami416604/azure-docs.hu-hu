@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 05/31/2017
 ms.author: mikeray
 ms.custom: seo-lt-2019
-ms.openlocfilehash: d2dce6875ec39810a81bb5ae454d953a7b7ab0a9
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: ca13d5e8369d007188a17352913519172ed8744e
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74032722"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978180"
 ---
 # <a name="configure-an-external-listener-for-availability-groups-on-azure-sql-server-vms"></a>Külső figyelő konfigurálása a rendelkezésre állási csoportokhoz az Azure SQL Server virtuális gépeken
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "74032722"
 Ebből a témakörből megtudhatja, hogyan konfigurálhat figyelőt olyan always on rendelkezésre állási csoport számára, amely kívülről elérhető az interneten. Ezt a Cloud Service **nyilvános virtuális IP-címének (VIP)** a figyelővel való társításával lehet elvégezni.
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja.
 
 A rendelkezésre állási csoport olyan replikákat tartalmazhat, amelyek csak a helyszínen, csak az Azure-ban, illetve a helyszíni és az Azure-beli hibrid konfigurációk esetében is alkalmazhatók. Az Azure-replikák ugyanabban a régióban vagy több régióban is lehetnek, több virtuális hálózat (virtuális hálózatok) használatával. Az alábbi lépések feltételezik, hogy már [konfigurált egy rendelkezésre állási csoportot](../classic/portal-sql-alwayson-availability-groups.md) , de nem konfigurálta a figyelőt.
 
@@ -60,7 +60,7 @@ Minden Azure-replikát üzemeltető virtuális géphez létre kell hoznia egy el
 3. Győződjön meg arról, hogy a használni kívánt figyelő végpontjának **neve** és **nyilvános portja** még nincs használatban. Az alábbi példában a név "MyEndpoint", a port pedig "1433".
 4. A helyi ügyfélen töltse le és telepítse [a legújabb PowerShell-modult](https://azure.microsoft.com/downloads/).
 5. **Azure PowerShell**elindítása. A rendszer új PowerShell-munkamenetet nyit meg az Azure felügyeleti modulok betöltésével.
-6. Run **Get-AzurePublishSettingsFile**. Ez a parancsmag arra utasítja a böngészőt, hogy töltsön le egy közzétételi beállítási fájlt egy helyi könyvtárba. Előfordulhat, hogy a rendszer felszólítja az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokra.
+6. Futtassa a **Get-AzurePublishSettingsFile**parancsot. Ez a parancsmag arra utasítja a böngészőt, hogy töltsön le egy közzétételi beállítási fájlt egy helyi könyvtárba. Előfordulhat, hogy a rendszer felszólítja az Azure-előfizetéséhez tartozó bejelentkezési hitelesítő adatokra.
 7. Futtassa az **import-AzurePublishSettingsFile** parancsot a letöltött közzétételi beállítások fájljának elérési útjával:
    
         Import-AzurePublishSettingsFile -PublishSettingsFile <PublishSettingsFilePath>
