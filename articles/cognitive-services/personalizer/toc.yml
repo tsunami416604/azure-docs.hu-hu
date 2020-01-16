@@ -11,15 +11,8 @@
       displayName: 'release notes, service updates, videos'
 - name: Rövid útmutatók
   items:
-    - name: 'A C# használata'
-      href: csharp-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, c#'
-    - name: A Node.js használata
-      href: quickstart-command-line-feedback-loop-nodejs-sdk.md
-      displayName: 'code, sample, quickstart, node, npm, sdk'
-    - name: A Python használata
-      href: python-quickstart-commandline-feedback-loop.md
-      displayName: 'code, sample, quickstart, python'
+    - name: Az SDK használata
+      href: sdk-learning-loop.md
 - name: Oktatóanyagok
   items:
     - name: Az Azure Notebooks használata
