@@ -1,0 +1,76 @@
+- name: Az Azure Reservations dokumentációja
+  href: index.yml
+  items:
+    - name: Áttekintés
+      expanded: true
+      items:
+        - name: Mi az az Azure Reservations?
+          href: save-compute-costs-reservations.md
+    - name: Útmutatók
+      items:
+        - name: SQL Data Warehouse-foglalás vásárlása
+          href: prepay-sql-data-warehouse-charges.md
+        - name: Virtuálisgép-foglalás vásárlása
+          href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure Storage-foglalás vásárlása
+          href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Cosmos DB-foglalás vásárlása
+          href: ../../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: SQL Database-foglalás vásárlása
+          href: ../../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Azure Data Explorer-foglalás vásárlása
+          href: ../../data-explorer/pricing-reserved-capacity.md?toc=/azure/billing/TOC.json
+        - name: Azure Databricks-foglalás vásárlása
+          href: prepay-databricks-reserved-capacity.md
+        - name: App Service-foglalás vásárlása
+          href: prepay-app-service-isolated-stamp.md
+        - name: Azure-szoftvercsomagokra vonatkozó foglalások vásárlása
+          href: ../../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+        - name: Foglalás vásárlása havi fizetéssel
+          href: monthly-payments-reservations.md
+        - name: Foglalások megújítása
+          href: reservation-renew.md
+        - name: Cserére és visszatérítésre vonatkozó foglalások
+          href: exchange-and-refund-azure-reservations.md
+        - name: Foglalások kezelése
+          href: manage-reserved-vm-instance.md
+        - name: Foglalások megtekintése
+          href: view-reservations.md
+    - name: Alapelvek
+      items:
+        - name: Fenntartott VM-példányra vonatkozó kedvezmények
+          href: ../manage/understand-vm-reservation-charges.md
+        - name: Fenntartott Azure Storage-kapacitásra vonatkozó kedvezmények
+          href: understand-storage-charges.md
+        - name: Fenntartott Cosmos DB-kapacitásra vonatkozó kedvezmények
+          href: understand-cosmosdb-reservation-charges.md
+        - name: Fenntartott SQL Database-kapacitásra vonatkozó kedvezmények
+          href: understand-reservation-charges.md
+        - name: SQL Data Warehouse-kedvezmények
+          href: reservation-discount-azure-sql-dw.md
+        - name: Azure Data Explorer-kedvezmények
+          href: understand-azure-data-explorer-reservation-charges.md
+        - name: Azure Databricks-kedvezmények
+          href: reservation-discount-databricks.md
+        - name: Azure Database for MySQL-kedvezmények
+          href: understand-reservation-charges-mysql.md
+        - name: Azure Database for PostgreSQL-kedvezmények
+          href: understand-reservation-charges-postgresql.md
+        - name: Red Hat Linux Enterprise-kedvezmények
+          href: understand-rhel-reservation-charges.md
+        - name: Azure Database for MariaDB-kedvezmények
+          href: understand-reservation-charges-mariadb.md
+        - name: App Service-kedvezmények
+          href: reservation-discount-app-service-isolated-stamp.md
+        - name: Azure-szoftvercsomagokra vonatkozó kedvezmények
+          href: understand-suse-reservation-charges.md
+        - name: A Windows és az SQL költségeit nem tartalmazza
+          href: reserved-instance-windows-software-costs.md
+        - name: Használati adatok egyéni előfizetések esetén
+          href: understand-reserved-instance-usage.md
+        - name: Használati adatok vállalati ügyfelek esetén
+          href: understand-reserved-instance-usage-ea.md
+    - name: Referencia
+      items:
+        - name: Azure Reservations API-k
+          href: reservation-apis.md

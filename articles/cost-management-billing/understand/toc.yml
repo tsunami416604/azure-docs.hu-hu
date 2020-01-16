@@ -1,0 +1,53 @@
+- name: Ismerkedés az Azure számlázási dokumentációjával
+  href: index.yml
+  items:
+    - name: Oktatóanyagok
+      items:
+        - name: Az egyéni fiókhoz tartozó számla áttekintése
+          href: review-individual-bill.md
+        - name: A Microsoft-ügyfélszerződéshez tartozó számla áttekintése
+          href: review-customer-agreement-bill.md
+        - name: A Microsoft-partnerszerződéshez tartozó számla áttekintése
+          href: review-partner-agreement-bill.md
+    - name: Alapelvek
+      items:
+        - name: Egyéni előfizetés – használattal kapcsolatos kifejezések
+          href: understand-usage.md
+        - name: Egyéni előfizetés – számlával kapcsolatos kifejezések
+          href: understand-invoice.md
+        - name: Microsoft-ügyfélszerződés – használattal kapcsolatos kifejezések
+          href: mca-understand-your-usage.md
+        - name: Microsoft-ügyfélszerződés – számlával kapcsolatos kifejezések
+          href: mca-understand-your-invoice.md
+        - name: Microsoft-ügyfélszerződés – az árlistán szereplő kifejezések
+          href: ../manage/mca-understand-pricesheet.md
+        - name: A Microsoft ügyfélszerződés számlázási fiókjai
+          href: mca-overview.md
+        - name: Microsoft-partnerszerződés – számlával kapcsolatos kifejezések
+          href: mpa-invoice-terms.md
+        - name: A Microsoft Partnerszerződés számlázási fiókjai
+          href: mpa-overview.md
+    - name: Útmutatók
+      items:
+        - name: Váratlan költségek megelőzése
+          href: ../manage/getting-started.md
+        - name: Az Azure-számla megtekintése és letöltése
+          href: download-azure-invoice.md
+        - name: Az Azure használati adatainak és díjainak megtekintése és letöltése
+          href: download-azure-daily-usage.md
+        - name: A számla és a napi használati adatok letöltése
+          href: ../manage/download-azure-invoice-daily-usage-date.md
+        - name: Adózási dokumentumok megtekintése és letöltése
+          href: mca-download-tax-document.md
+        - name: A külső Azure-szolgáltatási díjak megtekintése
+          href: understand-azure-marketplace-charges.md
+        - name: A számla befizetése
+          href: pay-bill.md
+        - name: A cég vagy intézmény díjszabásának megtekintése és letöltése
+          href: ../manage/ea-pricing.md
+        - name: A Microsoft ügyfélszerződés jóváírásainak nyomon követése
+          href: ../manage/mca-check-azure-credits-balance.md
+        - name: Díjszabás kiszámítása
+          href: 'https://azure.microsoft.com/pricing/calculator/'
+        - name: A költségkeret ismertetése
+          href: ../manage/spending-limit.md

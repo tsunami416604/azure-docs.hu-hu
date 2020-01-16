@@ -6,7 +6,7 @@
       href: cdn-overview.md
     - name: Termékjellemzők összehasonlítása
       href: cdn-features.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: Profil és -végpont létrehozása
       href: cdn-create-new-endpoint.md
@@ -40,7 +40,7 @@
       href: cdn-china-delivery.md
     - name: HTTP/2-támogatás
       href: cdn-http2.md
-    - name: Verizon POP-lista lekérése
+    - name: POP IP-címek lekérése
       href: cdn-pop-list-api.md
     - name: Migrálás Standard Verizonról Prémium Verizonra
       href: cdn-migrate.md

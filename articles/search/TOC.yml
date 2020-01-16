@@ -85,6 +85,8 @@
   items:
     - name: Teljes szöveges keresés
       href: search-lucene-query-architecture.md
+    - name: Indexelők
+      href: search-indexer-overview.md
     - name: MI-bővítés
       href: cognitive-search-concept-intro.md
     - name: Készségek
@@ -179,7 +181,7 @@
           href: search-howto-complex-data-types.md
         - name: Relációs adatok modellezése
           href: index-sql-relational-data.md
-    - name: Bármely adat indexelése
+    - name: Importálás (indexelés)
       items:
         - name: Adatimportálás áttekintése
           href: search-what-is-data-import.md
@@ -273,12 +275,16 @@
           href: search-query-lucene-examples.md
         - name: Keresési ablak (portál) használata
           href: search-explorer.md
-        - name: Egyszerű lekérdezési szintaxis
-          href: query-simple-syntax.md
-        - name: Teljes Lucene lekérdezési szintaxis
-          href: query-lucene-syntax.md
-        - name: moreLikeThis lekérdezési paraméter
-          href: search-more-like-this.md
+        - name: Különleges karakterek és részleges kifejezések
+          href: search-query-partial-matching.md
+        - name: Szintaxisreferencia
+          items:
+            - name: Egyszerű lekérdezési szintaxis
+              href: query-simple-syntax.md
+            - name: Teljes Lucene lekérdezési szintaxis
+              href: query-lucene-syntax.md
+            - name: moreLikeThis (előzetes verzió)
+              href: search-more-like-this.md
     - name: Szűrők alkalmazása
       items:
         - name: A szűrők áttekintése

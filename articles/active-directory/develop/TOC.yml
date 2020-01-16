@@ -82,6 +82,8 @@
               href: tutorial-v2-windows-uwp.md
             - name: Windows asztali .NET
               href: tutorial-v2-windows-desktop.md
+            - name: Megosztott eszköz mód használata az Android-alkalmazásban
+              href: tutorial-v2-shared-device-mode.md
         - name: Démonalkalmazások
           items:
             - name: ASP.NET démon-webalkalmazása
@@ -208,6 +210,8 @@
                   href: scenario-mobile-app-configuration.md
                 - name: Mobilplatform-specifikus konfiguráció
                   items:
+                    - name: Megosztott eszköz mód Android-eszközökhöz
+                      href: shared-device-mode.md
                     - name: Xamarin Android
                       href: msal-net-xamarin-android-considerations.md
                     - name: Rendszertallózó Androidon

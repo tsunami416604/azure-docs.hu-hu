@@ -1,0 +1,84 @@
+### YamlMime:Landing
+title: Az Azure költségeinek és használatának felügyelete
+summary: Az Azure Cost Management egy költségkezelő megoldás, amely segítséget nyújt az Azure-költségek monitorozásához és szabályozásához, valamint optimalizálja az erőforrások használatát. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
+metadata:
+  title: Azure Cost Management + Billing
+  description: Az Azure Cost Management egy költségkezelő megoldás, amely segítséget nyújt az Azure-költségek monitorozásához és szabályozásához, valamint optimalizálja az erőforrások használatát. Rövid útmutatóink és oktatóanyagaink segítségével megtudhatja, hogyan kezelheti a költségvetéseket, hogyan exportálhatja az adatokat, és hogyan tekintheti át és hajthatja végre a javaslatokat.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983222"
+landingContent:
+- title: A Cost Management ismertetése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: Mi a Cost Management and Billing?
+      url: ../cost-management-billing-overview.md
+  - linkListType: concept
+    links:
+    - text: Az Azure Cost Management ajánlott eljárásai
+      url: cost-mgt-best-practices.md
+    - text: A Cost Management adatainak értelmezése
+      url: understand-cost-mgt-data.md
+    - text: A hatókörök ismertetése és használata
+      url: understand-work-scopes.md
+- title: Az Azure-költségek elemzése és kezelése
+  linkLists:
+  - linkListType: quickstart
+    links:
+    - text: Költségelemzés indítása
+      url: quick-acm-cost-analysis.md
+  - linkListType: tutorial
+    links:
+    - text: Költségvetések létrehozása és kezelése
+      url: tutorial-acm-create-budgets.md
+    - text: A költség- és használati adatok exportálása
+      url: tutorial-export-acm-data.md
+    - text: Javaslatok végrehajtása
+      url: tutorial-acm-opt-recommendations.md
+  - linkListType: how-to-guide
+    links:
+    - text: Adatokhoz való hozzáférés hozzárendelése
+      url: assign-access-acm-data.md
+    - text: Gyakori műveletek költségelemzése
+      url: cost-analysis-common-uses.md
+    - text: Költségriasztások használata
+      url: cost-mgt-alerts-monitor-usage-spending.md
+    - text: Cost Management partnerek számára
+      url: get-started-partners.md
+    - text: Kapcsolódás Power BI Desktoppal
+      url: /power-bi/desktop-connect-azure-cost-management
+- title: Az AWS-költségek elemzése és kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS-integráció beállítása és konfigurálása
+      url: aws-integration-set-up-configure.md
+    - text: Az AWS-költségek és -használat kezelése
+      url: aws-integration-manage.md
+- title: Cost Management API-k
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Migrálás EA-ról MCA API-kra
+      url: migrate-cost-management-api.md
+  - linkListType: reference
+    links:
+    - text: Azure Cost Management REST API
+      url: https://docs.microsoft.com/rest/api/cost-management
+    - text: Azure használati REST API
+      url: https://docs.microsoft.com/rest/api/consumption
+    - text: Resource Manager-sablon
+      url: /azure/templates/microsoft.consumption/budgets
+    - text: Cost Management REST API-minták
+      url: https://github.com/Azure-Samples/Cost-Management-Samples

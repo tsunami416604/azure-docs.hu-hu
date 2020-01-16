@@ -1,0 +1,90 @@
+### YamlMime:Landing
+title: Fiókok és előfizetések kezelése az Azure Billinggel
+summary: Ismerje meg az Azure számlázását, valamint a fiókja és előfizetései kezelését.
+metadata:
+  title: Fiókok és előfizetések kezelése az Azure Billinggel
+  description: Ismerje meg az Azure számlázását, valamint a fiókja és előfizetései kezelését.
+  ms.service: cost-management-billing
+  ms.topic: landing-page
+  ms.collection: collection
+  author: bandersmsft
+  ms.author: banders
+  ms.manager: dougeby
+  ms.date: 12/18/2019
+  ms.openlocfilehash: 61158d44399891f0f6293f53a11f227506fbddbe
+  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.translationtype: HT
+  ms.contentlocale: hu-HU
+  ms.lasthandoff: 01/15/2020
+  ms.locfileid: "75983324"
+landingContent:
+- title: Fiókok kezelése
+  linkLists:
+  - linkListType: overview
+    links:
+    - text: A Microsoft-ügyfélszerződés szerepkörei az Azure-ban
+      url: understand-mca-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Profil szerkesztése
+      url: change-azure-account-profile.md
+    - text: Késedelmes egyenleg kezelése
+      url: resolve-past-due-balance.md
+    - text: Hozzáférés biztosítása a számlázáshoz
+      url: manage-billing-access.md
+    - text: Számlázási fiókok megtekintése
+      url: view-all-accounts.md
+    - text: Költségek rendszerezése számlaszakaszokkal
+      url: mca-section-invoice.md
+- title: Előfizetések kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Előfizetés újraaktiválása
+      url: subscription-disabled.md
+    - text: Egyéni előfizetés tulajdonjogának átadása
+      url: billing-subscription-transfer.md
+    - text: Microsoft-ügyfélszerződés tulajdonjogának átadása
+      url: mca-request-billing-ownership.md
+    - text: Microsoft-partnerszerződés tulajdonjogának átadása
+      url: mpa-request-ownership.md
+    - text: Előfizetés lemondása
+      url: cancel-azure-subscription.md
+    - text: Hitelkártya módosítása
+      url: change-credit-card.md
+    - text: Rendszergazda módosítása
+      url: add-change-subscription-administrator.md
+    - text: Számlás fizetés
+      url: pay-by-invoice.md
+    - text: További előfizetés létrehozása
+      url: create-subscription.md
+- title: Ingyenes fiók kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: Ingyenes szolgáltatások létrehozása
+      url: create-free-services.md
+    - text: Díjak elkerülése
+      url: avoid-charges-free-account.md
+    - text: Használat ellenőrzése
+      url: check-free-service-usage.md
+    - text: Fiók bővítése
+      url: upgrade-azure-subscription.md
+- title: Nagyvállalati szerződés kezelése
+  linkLists:
+  - linkListType: concept
+    links:
+    - text: Nagyvállalati szerződéses szerepkörök az Azure-ban
+      url: understand-ea-roles.md
+  - linkListType: how-to-guide
+    links:
+    - text: Első lépések a nagyvállalati szerződéses Azure Portalon
+      url: ea-portal-get-started.md
+    - text: A nagyvállalati szerződéses Azure Portal adminisztrációja
+      url: ea-portal-administration.md
+    - text: A nagyvállalati szerződéses Azure Portal elérésével kapcsolatos hibák elhárítása
+      url: ea-portal-troubleshoot.md
+  - linkListType: reference
+    links:
+    - text: Azure Enterprise REST API-k
+      url: ea-portal-rest-apis.md
