@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 03/17/2017
 ms.author: mikeray
-ms.openlocfilehash: 89f731062ce46969c73f745d62b289b3b3483d8c
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: ba6f1300353247ef2de99b2bd903bc82665d9a52
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100360"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978143"
 ---
 # <a name="configure-the-always-on-availability-group-on-an-azure-vm-with-powershell"></a>Az Always On rendelkezésre állási csoport konfigurálása Azure-beli virtuális gépen PowerShell-lel
 > [!div class="op_single_selector"]
-> * [Klasszikus FELHASZNÁLÓI FELÜLET](../classic/portal-sql-alwayson-availability-groups.md)
-> * [Klasszikus PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
+> * [Klasszikus: felhasználói felület](../classic/portal-sql-alwayson-availability-groups.md)
+> * [Klasszikus: PowerShell](../classic/ps-sql-alwayson-availability-groups.md)
 <br/>
 
 Mielőtt elkezdené, vegye figyelembe, hogy most már elvégezheti ezt a feladatot az Azure Resource Manager-modellben. Az Azure Resource Manager-modellt ajánlott új környezetekhez. Tekintse [meg SQL Server always on rendelkezésre állási csoportokat az Azure Virtual Machines](../sql/virtual-machines-windows-portal-sql-availability-group-overview.md)szolgáltatásban.
 
 > [!IMPORTANT]
-> Javasoljuk, hogy az új központi telepítések a Resource Manager-modellt használják. Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
+> Javasoljuk, hogy az új központi telepítések a Resource Manager-modellt használják. Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembehelyezési modellt ismerteti.
 
 Az Azure Virtual Machines (VM) segítségével az adatbázis-rendszergazdák csökkenthetik a magas rendelkezésre állású SQL Server rendszer költségeit. Ebből az oktatóanyagból megtudhatja, hogyan valósítható meg a rendelkezésre állási csoport a SQL Server always on Azure-környezeten belüli végpontok közötti használatával. Az oktatóanyag végén a SQL Server mindig az Azure-ban megoldás az alábbi elemekből áll:
 
@@ -45,8 +45,8 @@ Ez a forgatókönyv ideális választás az Azure-beli egyszerűségre, nem pedi
 Ebből az oktatóanyagból megtudhatja, hogy milyen lépéseket kell végrehajtania a fentebb ismertetett megoldás beállításához, az egyes lépések részleteinek kidolgozása nélkül. Ezért ahelyett, hogy a grafikus felhasználói felület konfigurációs lépéseit megadta, a PowerShell-parancsfájlok használatával gyorsan elvégezheti az egyes lépéseket. Ez az oktatóanyag a következőket feltételezi:
 
 * Már rendelkezik egy Azure-fiókkal a virtuális gép előfizetésével.
-* Telepítette a [Azure PowerShell](/powershell/azure/overview)-parancsmagokat.
-* Már rendelkezik az Always On rendelkezésre állási csoportok helyszíni megoldásokhoz való alapos ismeretével. További információ: Always [on rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
+* Telepítette a [Azure PowerShell-parancsmagokat](/powershell/azure/overview).
+* Már rendelkezik az Always On rendelkezésre állási csoportok helyszíni megoldásokhoz való alapos ismeretével. További információ: [Always On rendelkezésre állási csoportok (SQL Server)](https://msdn.microsoft.com/library/hh510230.aspx).
 
 ## <a name="connect-to-your-azure-subscription-and-create-the-virtual-network"></a>Kapcsolódjon az Azure-előfizetéséhez, és hozza létre a virtuális hálózatot
 1. A helyi számítógépen lévő PowerShell-ablakban importálja az Azure-modult, töltse le a közzétételi beállítások fájlt a gépre, és a letöltött közzétételi beállítások importálásával kapcsolja össze a PowerShell-munkamenetet az Azure-előfizetésével.
@@ -158,7 +158,7 @@ Ebből az oktatóanyagból megtudhatja, hogy milyen lépéseket kell végrehajta
    * A **Add-AzureDataDisk** hozzáadja az adatlemezt, amelyet Active Directory-adattároláshoz fog használni, a gyorsítótárazás beállítás értékeként pedig a none értékre van állítva.
    * A **New-AzureVM** létrehoz egy új felhőalapú szolgáltatást, és létrehozza az új Azure-beli virtuális gépet az új felhőalapú szolgáltatásban.
 
-7. Várjon, amíg az új virtuális gép kiépíthető, majd töltse le a távoli asztali fájlt a munkakönyvtárra. Mivel az új Azure-beli virtuális gép hosszú időt vesz igénybe `while` , a hurok továbbra is lekérdezi az új virtuális gépet, amíg készen nem áll a használatra.
+7. Várjon, amíg az új virtuális gép kiépíthető, majd töltse le a távoli asztali fájlt a munkakönyvtárra. Mivel az új Azure-beli virtuális gép hosszú időt vesz igénybe, az `while` hurok továbbra is lekérdezi az új virtuális gépet, amíg készen nem áll a használatra.
 
         $VMStatus = Get-AzureVM -ServiceName $dcServiceName -Name $dcServerName
 
@@ -238,7 +238,7 @@ A tartományvezérlő-kiszolgáló sikeresen kiépítve. Ezután konfigurálja a
         $acl.AddAccessRule($ace1)
         Set-Acl -Path "DC=corp,DC=contoso,DC=com" -AclObject $acl
 
-    A fent megadott GUID a számítógép-objektum típusának GUID azonosítója. A **CORP\Install** fióknak az **összes tulajdonság olvasása** és **számítógép-objektumok létrehozása** engedéllyel kell rendelkeznie a feladatátvevő fürthöz tartozó aktív közvetlen objektumok létrehozásához. Az **olvasás az összes tulajdonságra** engedélyt a CORP\Install alapértelmezés szerint már megadta, így nem kell explicit módon megadnia. A feladatátvevő fürt létrehozásához szükséges engedélyekkel kapcsolatos további információkért lásd [: a feladatátvevő fürt lépésenkénti útmutatója: Fiókok konfigurálása Active Directoryban](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
+    A fent megadott GUID a számítógép-objektum típusának GUID azonosítója. A **CORP\Install** fióknak az **összes tulajdonság olvasása** és **számítógép-objektumok létrehozása** engedéllyel kell rendelkeznie a feladatátvevő fürthöz tartozó aktív közvetlen objektumok létrehozásához. Az **olvasás az összes tulajdonságra** engedélyt a CORP\Install alapértelmezés szerint már megadta, így nem kell explicit módon megadnia. A feladatátvevő fürt létrehozásához szükséges engedélyekkel kapcsolatos további információkért tekintse meg a [feladatátvevő fürt részletes útmutatóját: fiókok konfigurálása Active Directoryban](https://technet.microsoft.com/library/cc731002%28v=WS.10%29.aspx).
 
     Most, hogy befejezte a Active Directory és a felhasználói objektumok konfigurálását, hozzon létre két SQL Server virtuális gépet, és csatlakoztassa őket ehhez a tartományhoz.
 
@@ -379,15 +379,15 @@ A tartományvezérlő-kiszolgáló sikeresen kiépítve. Ezután konfigurálja a
 ## <a name="initialize-the-failover-cluster-vms"></a>A feladatátvevő fürt virtuális gépei inicializálásának inicializálása
 Ebben a szakaszban módosítania kell a feladatátvevő fürtben használni kívánt három kiszolgálót és a SQL Server telepítését. Konkrétan:
 
-* Minden kiszolgáló: Telepítenie kell a **feladatátvételi fürtszolgáltatást** .
-* Minden kiszolgáló: A **CORP\Install** -t számítógép-rendszergazdakéntkell hozzáadnia.
-* Csak ContosoSQL1 és ContosoSQL2: A **CORP\Install** -t **rendszergazda** szerepkörként kell hozzáadnia az alapértelmezett adatbázisban.
-* Csak ContosoSQL1 és ContosoSQL2: A következő engedélyekkel kell felvennie a bejelentkezéshez az **NT AUTHORITY\System** :
+* Minden kiszolgáló: telepítenie kell a **feladatátvételi fürtszolgáltatást** .
+* Minden kiszolgáló: a **CORP\Install** -t a számítógép **rendszergazdájaként**kell hozzáadnia.
+* Csak ContosoSQL1 és ContosoSQL2: a **CORP\Install** -et **rendszergazda** szerepkörként kell felvennie az alapértelmezett adatbázisba.
+* Csak ContosoSQL1 és ContosoSQL2: a következő engedélyekkel kell hozzáadnia a bejelentkezéshez az **NT AUTHORITY\System** :
 
   * A rendelkezésre állási csoport módosítása
   * SQL-kapcsolat
   * Kiszolgáló állapotának megtekintése
-* Csak ContosoSQL1 és ContosoSQL2: A **TCP** protokoll már engedélyezve van a SQL Server VM. Azonban továbbra is meg kell nyitnia a tűzfalat SQL Server távoli eléréséhez.
+* Csak ContosoSQL1 és ContosoSQL2: a **TCP** protokoll már engedélyezve van a SQL Server VM. Azonban továbbra is meg kell nyitnia a tűzfalat SQL Server távoli eléréséhez.
 
 Most már készen áll a kezdésre. A **ContosoQuorum**-től kezdve kövesse az alábbi lépéseket:
 
@@ -564,7 +564,7 @@ Végül már készen áll a rendelkezésre állási csoport konfigurálására. 
              -Path "SQLSERVER:\SQL\$server2\Default\AvailabilityGroups\$ag" `
              -Database $db
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Sikeresen implementálta SQL Server always on Azure-beli rendelkezésre állási csoport létrehozásával. Ehhez a rendelkezésre állási csoporthoz tartozó figyelő konfigurálását lásd: [ILB-figyelő konfigurálása always on rendelkezésre állási csoportok számára az Azure-ban](../classic/ps-sql-int-listener.md).
 
 További információ az Azure-beli SQL Server használatáról: [SQL Server az Azure Virtual Machines](../sql/virtual-machines-windows-sql-server-iaas-overview.md)szolgáltatásban.

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/02/2019
 ms.author: spelluru
-ms.openlocfilehash: a80a54f3dc760d80f713db9857cbef0c580e66d6
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: 088913959b5850e87dc3a6a39d2907d30b7e5ade
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73621370"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976249"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
 A DevTest Labs a környezetek funkció használatával támogatja a Pásti használatát. A DevTest Labs környezetei a git-tárházban előre konfigurált Azure Resource Manager-sablonokkal támogatottak. A környezetek a Pásti és a IaaS erőforrásokat is tartalmazhatják. Lehetővé teszik olyan összetett rendszerek létrehozását, amelyek olyan Azure-erőforrásokat is tartalmazhatnak, mint például a virtuális gépek, az adatbázisok, a virtuális hálózatok és a webalkalmazások, amelyek testre szabhatók a közös munkához. Ezek a sablonok lehetővé teszik az egységes üzembe helyezést és a környezetek jobb kezelését a forráskód-vezérlés használatával. 
@@ -39,23 +39,23 @@ A nagyméretű szervezeteknél a fejlesztési csapatok jellemzően olyan környe
 
 ## <a name="customizations"></a>Testreszabások
 
-#### <a name="sandbox"></a>Védőfal 
+#### <a name="sandbox"></a>Tesztkörnyezet 
 A labor tulajdonosa testreszabhatja a tesztkörnyezet környezetét, hogy megváltoztassa a felhasználó szerepkörét a **Readerből** az erőforráscsoporthoz tartozó **közreműködővé** . Ez a funkció a labor **beállításai** oldalon található a tesztkörnyezet **konfigurációjában és házirendjeiben** . A szerepkör ezen módosítása lehetővé teszi, hogy a felhasználó erőforrásokat adjon hozzá vagy távolítson el az adott környezetben. Ha továbbra is szeretné korlátozni a hozzáférést, használja az Azure-szabályzatokat. Ez a funkció lehetővé teszi az erőforrások és a konfiguráció testreszabását az előfizetés szintjén való hozzáférés nélkül.
 
 #### <a name="custom-tokens"></a>Egyéni tokenek
 Vannak olyan egyéni tesztkörnyezet-információk, amelyek az erőforráscsoport területén kívül esnek, és a sablon által elérhető környezetekre vonatkoznak. Íme néhány közülük: 
 
 - Tesztkörnyezet hálózati azonosítása
-- Hely
+- Földrajzi egység
 - A Storage-fiók, amelyben a Resource Manager-sablonok fájljai vannak tárolva. 
  
 #### <a name="lab-virtual-network"></a>Tesztkörnyezet virtuális hálózata
 A [Tesztkörnyezet virtuális hálózatához csatlakozó környezetek](connect-environment-lab-virtual-network.md) azt ismertetik, hogyan módosítható a Resource Manager-sablon a `$(LabSubnetId)` token használatára. Környezet létrehozásakor az `$(LabSubnetId)` tokent az első alhálózati jel váltja fel, ahol a **virtuális gép létrehozási** beállítása beállítás értéke **true (igaz**). Lehetővé teszi, hogy a környezet a korábban létrehozott hálózatokat használja. Ha ugyanazokat a Resource Manager-sablonokat szeretné használni a tesztelés előkészítési és éles környezetekben, használja a `$(LabSubnetId)` alapértelmezett értékként egy Resource Manager-sablon paraméterében. 
 
 #### <a name="environment-storage-account"></a>Környezeti Storage-fiók
-A DevTest Labs támogatja a [beágyazott Resource Manager-sablonok](../azure-resource-manager/resource-group-linked-templates.md)használatát. A [[beágyazott Azure Resource Manager sablonok üzembe helyezése tesztelési környezetek számára című](deploy-nested-template-environments.md) cikk ismerteti, hogyan hozhat létre egy URI-t egy Resource Manager-sablonhoz a `_artifactsLocation` és a `_artifactsLocationSasToken` token használatával ugyanabban a mappában, vagy a fő sablon beágyazott mappájában. A két jogkivonattal kapcsolatos további információkért tekintse meg az [Azure Resource Manager – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **telepítési** összetevők című szakaszát.
+A DevTest Labs támogatja a [beágyazott Resource Manager-sablonok](../azure-resource-manager/templates/linked-templates.md)használatát. A [[beágyazott Azure Resource Manager sablonok üzembe helyezése tesztelési környezetek számára című](deploy-nested-template-environments.md) cikk ismerteti, hogyan hozhat létre egy URI-t egy Resource Manager-sablonhoz a `_artifactsLocation` és a `_artifactsLocationSasToken` token használatával ugyanabban a mappában, vagy a fő sablon beágyazott mappájában. A két jogkivonattal kapcsolatos további információkért tekintse meg az [Azure Resource Manager – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **telepítési** összetevők című szakaszát.
 
-## <a name="user-experience"></a>Felhasználói élmény
+## <a name="user-experience"></a>Felhasználói feladatok
 
 ## <a name="developer"></a>Fejlesztői
 A fejlesztők ugyanazt a munkafolyamatot használják egy virtuális gép létrehozásához egy adott környezet létrehozásához. Kiválasztja a környezetet és a számítógép rendszerképét, és megadja a sablonhoz szükséges szükséges adatokat. A környezet minden fejlesztője lehetővé teszi a változások telepítését és a belső hurok-hibakeresést. A környezet bármikor létrehozható a legújabb sablon használatával.  Ez a funkció lehetővé teszi a környezetek megsemmisítését és újbóli létrehozását, hogy csökkentse az állásidőt a rendszer manuális létrehozásához vagy a hibák tesztelésének helyreállításához.  
@@ -77,7 +77,7 @@ Az Automation a nagy méretű és hatékony ökoszisztéma egyik kulcsfontosság
 ### <a name="cicd-pipeline"></a>CI/CD-folyamat
 A DevTest Labs-beli Pásti-szolgáltatások a CI/CD-folyamat fejlesztéséhez olyan fókuszált központi telepítéseket biztosítanak, amelyekben a tesztkörnyezet a hozzáférést vezérli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
 
 - 

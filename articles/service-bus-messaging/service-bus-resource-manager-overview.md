@@ -14,12 +14,12 @@ ms.tgt_pltfrm: dotnet
 ms.workload: na
 ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: 68b91566a3737cf44abe0c446b71d6845ecc299d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d473cf2a79fb86028797205ee7885b51169b10bf
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452341"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978236"
 ---
 # <a name="create-service-bus-resources-using-azure-resource-manager-templates"></a>Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával
 
@@ -207,7 +207,7 @@ Test-AzResourceGroupDeployment -ResourceGroupName MyDemoRG -TemplateFile <path t
 
 ### <a name="create-the-deployment"></a>A központi telepítés létrehozása
 
-Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információ: [növekményes és teljes telepítések](../azure-resource-manager/deployment-modes.md).
+Az új központi telepítés létrehozásához futtassa a `New-AzResourceGroupDeployment` parancsmagot, és adja meg a szükséges paramétereket, ha a rendszer kéri. A paraméterek közé tartozik az üzemelő példány neve, az erőforráscsoport neve, valamint a sablonfájl elérési útja vagy URL-címe. Ha a **Mode** paraméter nincs megadva, a **növekményes** érték alapértelmezett értékét használja a rendszer. További információ: [növekményes és teljes telepítések](../azure-resource-manager/templates/deployment-modes.md).
 
 A következő parancs a PowerShell-ablak három paraméterének megadását kéri:
 
@@ -227,7 +227,7 @@ A telepítési parancsmag futtatásakor beágyazott paramétereket is használha
 New-AzResourceGroupDeployment -Name MyDemoDeployment -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json -parameterName "parameterValue"
 ```
 
-A [teljes](../azure-resource-manager/deployment-modes.md) telepítés futtatásához állítsa a **Mode** paramétert a **befejezéshez**:
+A [teljes](../azure-resource-manager/templates/deployment-modes.md) telepítés futtatásához állítsa a **Mode** paramétert a **befejezéshez**:
 
 ```powershell
 New-AzResourceGroupDeployment -Name MyDemoDeployment -Mode Complete -ResourceGroupName MyDemoRG -TemplateFile <path to template file>\azuredeploy.json
@@ -261,5 +261,5 @@ Ekkor megtekintette az alapszintű munkafolyamatot és parancsokat Azure Resourc
 * [Microsoft. ServiceBus erőforrástípusok](/azure/templates/microsoft.servicebus/allversions)
 
 [Azure Resource Manager overview]: ../azure-resource-manager/management/overview.md
-[Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/resource-group-template-deploy.md
+[Deploy resources with Azure Resource Manager templates]: ../azure-resource-manager/templates/deploy-powershell.md
 [Azure Quickstart Templates gallery]: https://azure.microsoft.com/documentation/templates/?term=service+bus

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: ''
-ms.openlocfilehash: af99bd8ea619d17bdc40ea025f0bfcb1c095db52
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: d911a6b65ba0d63bca09437f6451019addcbc0b3
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286148"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977622"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metrics-database-for-a-windows-virtual-machine-classic"></a>Vendég operációs rendszer metrikáinak küldése a Windows rendszerű virtuális gépek Azure Monitor metrikáinak adatbázisába (klasszikus)
 
@@ -29,7 +29,7 @@ A cikkben leírt folyamat csak a Windows operációs rendszert futtató klasszik
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../billing/billing-add-change-azure-subscription-administrator.md) kell lennie. 
+- Az Azure-előfizetéséhez [szolgáltatás-rendszergazdának vagy társ-rendszergazdának](../../cost-management-billing/manage/add-change-subscription-administrator.md) kell lennie. 
 
 - Az előfizetést regisztrálni kell a [Microsoft. ininsights](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-supported-services)szolgáltatásban. 
 
@@ -60,7 +60,7 @@ Adja meg az alkalmazásnak a "figyelési metrika közzétevője" engedélyt ahho
 
 ## <a name="author-diagnostics-extension-configuration"></a>Diagnosztikai bővítmény konfigurációjának létrehozása
 
-1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a klasszikus virtuális géphez. A következő példa egy példát mutat be:
+1. Készítse elő a diagnosztikai bővítmény konfigurációs fájlját. Ez a fájl határozza meg, hogy mely naplók és teljesítményszámlálók esetében kell gyűjteni a diagnosztikai bővítményt a klasszikus virtuális géphez. Íme egy példa:
 
     ```xml
     <?xml version="1.0" encoding="utf-8"?>

@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 01/23/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: da40b635b0fc094275d8d46b8c5ad6d3d90bea24
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 43ff230d4769a23c9007b3da29858d2105366f9f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70101828"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978104"
 ---
 # <a name="automated-backup-for-sql-server-in-azure-virtual-machines-classic"></a>SQL Server automatikus biztonsági mentése az Azure Virtual Machines (klasszikus)
 > [!div class="op_single_selector"]
@@ -32,7 +32,7 @@ ms.locfileid: "70101828"
 Az automatikus biztonsági mentés automatikusan [úgy konfigurálja a felügyelt biztonsági mentést, hogy](https://msdn.microsoft.com/library/dn449496.aspx) az Azure-beli virtuális gépen lévő összes meglévő és új adatbázisra Microsoft Azure a SQL Server 2014 standard vagy Enterprise rendszert futtató Azure Ez lehetővé teszi, hogy az Azure Blob Storage-t használó normál adatbázis-biztonsági mentéseket konfigurálja. Az automatikus biztonsági mentés a [SQL Server IaaS-ügynök bővítménytől](../classic/sql-server-agent-extension.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json)függ.
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A cikk Resource Manager-verziójának megtekintéséhez lásd: a [SQL Server automatikus biztonsági mentése az Azure Virtual Machines Resource Managerben](../sql/virtual-machines-windows-sql-automated-backup.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A cikk Resource Manager-verziójának megtekintéséhez lásd: a [SQL Server automatikus biztonsági mentése az Azure Virtual Machines Resource Managerben](../sql/virtual-machines-windows-sql-automated-backup.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az automatikus biztonsági mentés használatához vegye figyelembe a következő előfeltételeket:
@@ -45,7 +45,7 @@ Az automatikus biztonsági mentés használatához vegye figyelembe a következ�
 
 **SQL Server verzió/kiadás**:
 
-* SQL Server 2014 Standard
+* SQL Server 2014 standard
 * SQL Server 2014 Enterprise
 
 > [!NOTE]
@@ -106,10 +106,10 @@ Az automatikus biztonsági mentés letiltásához futtassa ugyanazt a parancsfá
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
-Az automatikus biztonsági mentés az Azure-beli virtuális gépeken felügyelt biztonsági mentést konfigurál. Ezért fontos, hogy áttekintse [a felügyelt biztonsági mentés dokumentációját](https://msdn.microsoft.com/library/dn449496.aspx) a viselkedés és a következmények megismerése érdekében.
+## <a name="next-steps"></a>Következő lépések
+Az automatikus biztonsági mentés az Azure-beli virtuális gépeken felügyelt biztonsági mentést konfigurál. Ezért fontos, hogy [áttekintse a felügyelt biztonsági mentés dokumentációját](https://msdn.microsoft.com/library/dn449496.aspx) a viselkedés és a következmények megismerése érdekében.
 
-A következő témakörben további biztonsági mentési és visszaállítási útmutatást talál az Azure-beli virtuális gépek SQL Serverához: [SQL Server biztonsági mentése és visszaállítása az Azure Virtual Machinesban](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
+A következő témakörben talál további biztonsági mentési és visszaállítási útmutatást az Azure-beli virtuális gépeken való SQL Serverról: [biztonsági mentés és visszaállítás az SQL Serverhoz az azure Virtual Machinesban](../sql/virtual-machines-windows-sql-backup-recovery.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fsqlclassic%2ftoc.json).
 
 További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](../classic/sql-server-agent-extension.md).
 

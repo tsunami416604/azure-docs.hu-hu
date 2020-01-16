@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 06/03/2019
-ms.openlocfilehash: b855fde88173fe9a14a964ba1f9fd07aa74d85eb
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: d4561d49c37298a2b1a7f6c6542d78c3e19a145c
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911980"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978340"
 ---
 # <a name="create-an-azure-data-explorer-cluster-and-database-by-using-powershell"></a>Azure Adatkezelő-fürt és-adatbázis létrehozása a PowerShell használatával
 
@@ -52,9 +52,9 @@ A következő lépések nem szükségesek, ha parancsokat futtat Azure Cloud She
      Set-AzContext -SubscriptionId "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"
     ```
 1. Amikor helyileg futtatja az Azure CLI-t vagy a Azure Cloud Shell, telepítenie kell az az. Kusto modult az eszközre:
-    
+
     ```azurepowershell-interactive
-     Install-Module -Name Az.Kusto  
+     Install-Module -Name Az.Kusto
     ```
 
 ## <a name="create-the-azure-data-explorer-cluster"></a>Az Azure Adatkezelő-fürt létrehozása

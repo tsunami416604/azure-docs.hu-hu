@@ -10,12 +10,12 @@ author: xiaoharper
 ms.author: amlstudiodocs
 ms.custom: seodec18
 ms.date: 04/19/2017
-ms.openlocfilehash: 564126ab262306f2b01948e29baf239b725083e0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7216d2f97a52798d2609073761eb8f4a2ce9024d
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427608"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75976133"
 ---
 # <a name="azure-machine-learning-studio-classic-web-services-deployment-and-consumption"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatások: üzembe helyezés és felhasználás
 
@@ -49,7 +49,7 @@ A webszolgáltatások Azure Machine Learning Studio (klasszikus) erőforrás-szo
 
 A webes szolgáltatások Azure Machine Learning Studio (klasszikus) erőforrás-szolgáltatója lehetővé teszi a webszolgáltatások üzembe helyezését és kezelését a PowerShell-parancsmagok használatával.
 
-A parancsmagok használatához először be kell jelentkeznie az Azure-fiókjába a PowerShell-környezetből a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Ha nem tudja, hogyan hívhatja meg a Resource Manageren alapuló PowerShell-parancsokat, tekintse meg a [Azure PowerShell használata a Azure Resource Manager használatával](../../azure-resource-manager/manage-resources-powershell.md)című témakört.
+A parancsmagok használatához először be kell jelentkeznie az Azure-fiókjába a PowerShell-környezetből a [AzAccount](/powershell/module/az.accounts/connect-azaccount) parancsmag használatával. Ha nem tudja, hogyan hívhatja meg a Resource Manageren alapuló PowerShell-parancsokat, tekintse meg a [Azure PowerShell használata a Azure Resource Manager használatával](../../azure-resource-manager/management/manage-resources-powershell.md)című témakört.
 
 A prediktív kísérlet exportálásához használja [ezt a mintakód-kódot](https://github.com/ritwik20/AzureML-WebServices). Miután létrehozta az. exe fájlt a kódból, beírhatja a következőt:
 

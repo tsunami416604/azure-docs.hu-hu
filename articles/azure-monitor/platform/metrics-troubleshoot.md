@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: vitalyg
 ms.subservice: metrics
-ms.openlocfilehash: d31b046bf02893affff84069ee92b3bd7735b904
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 072e62d89e8febc4837c10874398daea3b8114ed
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72243223"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974872"
 ---
 # <a name="troubleshooting-metrics-charts"></a>Metrikai diagramok hibaelhárítása
 
@@ -29,7 +29,7 @@ Az **Erőforrás kiválasztása** elemre kattintott, de nem látja az erőforrá
 
 1. Győződjön meg arról, hogy a megfelelő erőforráscsoport van kiválasztva.
     > [!WARNING]
-    > A legjobb teljesítmény érdekében a metrikaböngésző első megnyitásakor az **Erőforráscsoport** legördülő menüben nincs előre kijelölt erőforráscsoport. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
+    > A legjobb teljesítmény érdekében a metrikák Explorer első megnyitásakor az **erőforráscsoport** legördülő menüjében nincsenek előre kiválasztott erőforráscsoportok. Legalább egy csoportot ki kell választania ahhoz, hogy megjelenjenek az erőforrások.
 
 ## <a name="chart-shows-no-data"></a>A diagram nem jelenít meg adattípust
 
@@ -37,7 +37,7 @@ Időnként előfordulhat, hogy a diagramok nem jelenítenek meg adatokat a megfe
 
 ### <a name="microsoftinsights-resource-provider-isnt-registered-for-your-subscription"></a>Az előfizetéshez nincs regisztrálva a Microsoft. inbetekintés erőforrás-szolgáltatója
 
-A metrikák megtekintéséhez a *Microsoft.Insights* erőforrás-szolgáltatónak regisztrálva kell lennie az előfizetésében. Sok esetben a regisztrálás automatikus (azaz egy riasztási szabály konfigurálása után bármely erőforráshoz testreszabhatja a diagnosztikai beállításokat, vagy automatikus skálázási szabályt konfigurálhat). Ha a Microsoft. inbetekintés erőforrás-szolgáltató nincs regisztrálva, akkor manuálisan kell regisztrálnia az [Azure erőforrás-szolgáltatók és típusok](../../azure-resource-manager/resource-manager-supported-services.md)című témakörben ismertetett lépések szerint.
+A metrikák megtekintéséhez a *Microsoft.Insights* erőforrás-szolgáltatónak regisztrálva kell lennie az előfizetésében. Sok esetben a regisztrálás automatikus (azaz egy riasztási szabály konfigurálása után bármely erőforráshoz testreszabhatja a diagnosztikai beállításokat, vagy automatikus skálázási szabályt konfigurálhat). Ha a Microsoft. inbetekintés erőforrás-szolgáltató nincs regisztrálva, akkor manuálisan kell regisztrálnia az [Azure erőforrás-szolgáltatók és típusok](../../azure-resource-manager/management/resource-providers-and-types.md)című témakörben ismertetett lépések szerint.
 
 **Megoldás:** Nyissa meg az **előfizetések**, az **erőforrás-szolgáltatók** fület, és ellenőrizze, hogy regisztrálva van-e a *Microsoft. ininsight* az előfizetéséhez
 

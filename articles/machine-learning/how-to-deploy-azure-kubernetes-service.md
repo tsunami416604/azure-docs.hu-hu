@@ -10,12 +10,12 @@ ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
 ms.date: 11/06/2019
-ms.openlocfilehash: 2d49501b5888368345736047217177142d2e88d2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a61dea2b200b6e4962ce20e39939a75e78e81d0f
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764048"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76024950"
 ---
 # <a name="deploy-a-model-to-an-azure-kubernetes-service-cluster"></a>Modell üzembe helyezése Azure Kubernetes Service-fürtön
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -115,7 +115,7 @@ További információ: az [ml computetarget Create Ask](https://docs.microsoft.c
 
 **Becsült idő:** Körülbelül 5 percet vesz igénybe.
 
-Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és az a 1,15-es verziónál alacsonyabb, akkor a lemezkép üzembe helyezéséhez használhatja.
+Ha már rendelkezik AK-fürttel az Azure-előfizetésben, és 1,16-es vagy alacsonyabb verziójú, akkor a lemezkép üzembe helyezéséhez használhatja azt.
 
 > [!TIP]
 > A meglévő AK-fürt a Azure Machine Learning munkaterülettől eltérő Azure-régióban is lehet.
@@ -187,7 +187,7 @@ További információ: az [ml computetarget Attach AK](https://docs.microsoft.co
 
 ## <a name="deploy-to-aks"></a>Üzembe helyezés az AKS-ben
 
-Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](service/how-to-deploy-and-where.md)című témakörben talál.
+Ha modellt szeretne üzembe helyezni az Azure Kubernetes szolgáltatásban, hozzon létre egy __központi telepítési konfigurációt__ , amely leírja a szükséges számítási erőforrásokat. Például a magok és a memória száma. Szüksége lesz egy __következtetésre__is, amely leírja a modell és a webszolgáltatás üzemeltetéséhez szükséges környezetet. A következtetések konfigurációjának létrehozásáról további információt a [modellek üzembe helyezésének módja és helye](how-to-deploy-and-where.md)című témakörben talál.
 
 ### <a name="using-the-sdk"></a>Az SDK használata
 
@@ -223,13 +223,13 @@ az ml model deploy -ct myaks -m mymodel:1 -n myservice -ic inferenceconfig.json 
 
 [!INCLUDE [deploymentconfig](../../includes/machine-learning-service-aks-deploy-config.md)]
 
-További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference. 
+További információ: az [ml Model Deploy](https://docs.microsoft.com/cli/azure/ext/azure-cli-ml/ml/model?view=azure-cli-latest#ext-azure-cli-ml-az-ml-model-deploy) Reference.
 
 ### <a name="using-vs-code"></a>A VS Code használata
 
 A VS Code használatával kapcsolatos információkért lásd: [üzembe helyezés az AK-n keresztül a vs Code bővítménnyel](how-to-vscode-tools.md#deploy-and-manage-models).
 
-> [!IMPORTANT] 
+> [!IMPORTANT]
 > A VS code-on keresztül történő üzembe helyezéshez az AK-fürt létrehozása vagy a munkaterülethez való csatolása szükséges.
 
 ## <a name="deploy-models-to-aks-using-controlled-rollout-preview"></a>Modellek üzembe helyezése az AK-ban vezérelt bevezetéssel (előzetes verzió)
@@ -245,13 +245,13 @@ from azureml.core.compute import AksCompute
 from azureml.core.compute import ComputeTarget
 # select a created compute
 compute = ComputeTarget(ws, 'myaks')
-namespace_name= endpointnamespace 
+namespace_name= endpointnamespace
 # define the endpoint and version name
 endpoint_name = "mynewendpoint",
 version_name= "versiona",
 # create the deployment config and define the scoring traffic percentile for the first deployment
 endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, memory_gb = 0.2,
-                                                              enable_app_insights = true, 
+                                                              enable_app_insights = true,
                                                               tags = {'sckitlearn':'demo'},
                                                               decription = testing versions,
                                                               version_name = version_name,
@@ -262,34 +262,34 @@ endpoint_deployment_config = AksEndpoint.deploy_configuration(cpu_cores = 0.1, m
 
 ### <a name="update-and-add-versions-to-an-endpoint"></a>Verziók frissítése és hozzáadása egy végponthoz
 
-Adjon hozzá egy újabb verziót a végponthoz, és konfigurálja a pontozási forgalom százalékos értékének megadását a verzióra. A verzióknak két típusa van, egy vezérlő és egy kezelési verzió. Több kezelési verzió is felhasználható egyetlen vezérlő verziójának összehasonlítására. 
+Adjon hozzá egy újabb verziót a végponthoz, és konfigurálja a pontozási forgalom százalékos értékének megadását a verzióra. A verzióknak két típusa van, egy vezérlő és egy kezelési verzió. Több kezelési verzió is felhasználható egyetlen vezérlő verziójának összehasonlítására.
 
  ```python
 from azureml.core.webservice import AksEndpoint
 
 # add another model deployment to the same endpoint as above
-version_name_add = "versionb" 
-endpoint.create_version(version_name = version_name_add, 
+version_name_add = "versionb"
+endpoint.create_version(version_name = version_name_add,
                         inference_config=inference_config,
-                        models=[model], 
-                        tags = {'modelVersion':'b'}, 
-                        description = "my second version", 
+                        models=[model],
+                        tags = {'modelVersion':'b'},
+                        description = "my second version",
                         traffic_percentile = 10)
 ```
 
-Meglévő verziók frissítése vagy törlése egy végponton. Megváltoztathatja a verzió alapértelmezett típusát, a vezérlő típusát és a forgalmi percentilis értéket. 
- 
+Meglévő verziók frissítése vagy törlése egy végponton. Megváltoztathatja a verzió alapértelmezett típusát, a vezérlő típusát és a forgalmi percentilis értéket.
+
  ```python
 from azureml.core.webservice import AksEndpoint
 
-# update the version's scoring traffic percentage and if it is a default or control type 
-endpoint.update_version(version_name=endpoint.versions["versionb"].name, 
-                        description="my second version update", 
+# update the version's scoring traffic percentage and if it is a default or control type
+endpoint.update_version(version_name=endpoint.versions["versionb"].name,
+                        description="my second version update",
                         traffic_percentile=40,
                         is_default=True,
                         is_control_version_type=True)
 
-# delete a version in an endpoint 
+# delete a version in an endpoint
 endpoint.delete_version(version_name="versionb")
 
 ```

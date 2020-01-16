@@ -8,23 +8,23 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: b549cc0e890a122a04984baa2348831fc51abe08
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 2a171ae89e8314684eddf29f78b9b09bc52f9c9b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531003"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977558"
 ---
 # <a name="create-diagnostic-setting-in-azure-using-a-resource-manager-template"></a>Diagnosztikai beállítás létrehozása az Azure-ban Resource Manager-sablon használatával
-A Azure Monitor [diagnosztikai beállításai](diagnostic-settings.md) határozzák meg, hogy hová kell elküldeni az Azure-erőforrások által gyűjtött [platform-naplókat](platform-logs-overview.md) , valamint az Azure-platformtól függenek. Ez a cikk azokat a részleteket és példákat ismerteti, amelyekkel [Azure Resource Manager sablon](../../azure-resource-manager/resource-group-authoring-templates.md) használatával hozhat létre és konfigurálhat diagnosztikai beállításokat a különböző célhelyekre gyűjtött platform-naplók összegyűjtéséhez. 
+A Azure Monitor [diagnosztikai beállításai](diagnostic-settings.md) határozzák meg, hogy hová kell elküldeni az Azure-erőforrások által gyűjtött [platform-naplókat](platform-logs-overview.md) , valamint az Azure-platformtól függenek. Ez a cikk azokat a részleteket és példákat ismerteti, amelyekkel [Azure Resource Manager sablon](../../azure-resource-manager/templates/template-syntax.md) használatával hozhat létre és konfigurálhat diagnosztikai beállításokat a különböző célhelyekre gyűjtött platform-naplók összegyűjtéséhez.
 
 > [!NOTE]
 > Mivel nem lehet [diagnosztikai beállítást létrehozni](diagnostic-settings.md) az Azure-beli tevékenység naplóhoz a PowerShell vagy a parancssori felület (például más Azure-erőforrások diagnosztikai beállításai) használatával, hozzon létre egy Resource Manager-sablont a műveletnapló számára a jelen cikkben található információk alapján, és telepítse a sablont a PowerShell vagy a parancssori felület használatával.
 
 ## <a name="deployment-methods"></a>Üzembe helyezési módszerek
-A Resource Manager-sablonokat bármely érvényes módszerrel üzembe helyezheti, beleértve a PowerShellt és a parancssori felületet is. A műveletnapló diagnosztikai beállításait a CLI-hez vagy a PowerShell-hez való `New-AzDeployment` `az deployment create` használatával kell telepítenie egy előfizetésre. Az erőforrás-naplók diagnosztikai beállításainak üzembe helyezéséhez az `az group deployment create` parancssori felület vagy a PowerShell-`New-AzResourceGroupDeployment` használatával kell telepíteni az erőforráscsoportot. 
+A Resource Manager-sablonokat bármely érvényes módszerrel üzembe helyezheti, beleértve a PowerShellt és a parancssori felületet is. A műveletnapló diagnosztikai beállításait a CLI-hez vagy a PowerShell-hez való `New-AzDeployment` `az deployment create` használatával kell telepítenie egy előfizetésre. Az erőforrás-naplók diagnosztikai beállításainak üzembe helyezéséhez az `az group deployment create` parancssori felület vagy a PowerShell-`New-AzResourceGroupDeployment` használatával kell telepíteni az erőforráscsoportot.
 
-További részletekért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../../azure-resource-manager/resource-group-template-deploy.md) és [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/resource-group-template-deploy-cli.md) . 
+További részletekért lásd: [erőforrások üzembe helyezése Resource Manager-sablonokkal és Azure PowerShell](../../azure-resource-manager/templates/deploy-powershell.md) és [erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure CLI-vel](../../azure-resource-manager/templates/deploy-cli.md) . 
 
 
 
@@ -33,7 +33,7 @@ További részletekért lásd: [erőforrások üzembe helyezése Resource Manage
 ## <a name="resource-logs"></a>Erőforrásnaplók
 Erőforrás-naplók esetén adjon hozzá `<resource namespace>/providers/diagnosticSettings` típusú erőforrást a sablonhoz. A Properties (Tulajdonságok) szakasz a [diagnosztikai beállítások – létrehozás vagy frissítés](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings/createorupdate)című részben ismertetett formátumot követi. Adjon meg egy `category` a begyűjteni kívánt erőforráshoz tartozó egyes kategóriákhoz tartozó `logs` szakaszban. Adja hozzá a `metrics` tulajdonságot az erőforrás-metrikák ugyanarra a célhelyre való összegyűjtéséhez, ha az [erőforrás támogatja a metrikákat](metrics-supported.md).
 
-A következő egy olyan sablon, amely egy adott erőforráshoz tartozó erőforrás-napló kategóriát gyűjt egy Log Analytics munkaterületre, a Storage-fiókra és az Event hub-ra. 
+A következő egy olyan sablon, amely egy adott erőforráshoz tartozó erőforrás-napló kategóriát gyűjt egy Log Analytics munkaterületre, a Storage-fiókra és az Event hub-ra.
 
 ```json
 "resources": [
@@ -50,7 +50,7 @@ A következő egy olyan sablon, amely egy adott erőforráshoz tartozó erőforr
       "eventHubAuthorizationRuleId": "[parameters('eventHubAuthorizationRuleId')]",
       "eventHubName": "[parameters('eventHubName')]",
       "workspaceId": "[parameters('workspaceId')]",
-      "logs": [ 
+      "logs": [
         {
           "category": "<category name>",
           "enabled": true

@@ -9,18 +9,18 @@ ms.topic: conceptual
 ms.date: 12/20/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 30f39fc72d6a96b83f57d6553db3f348c8486ee5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460611"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75975702"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
 Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Az Azure Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [Storage-fiók létrehozása](storage-quickstart-create-account.md).
+Az Azure Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [Storage-fiók létrehozása](storage-account-create.md).
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 
@@ -72,7 +72,7 @@ A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori,
 
 ### <a name="filestorage-accounts"></a>FileStorage-fiókok
 
-A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat 
+A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat
 
 A FileStorage-fiókok egyedi teljesítmény-dedikált jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
 
@@ -150,15 +150,15 @@ A következő módszerek bármelyikével biztosíthat hozzáférést a Storage-f
 - **Közös hozzáférési aláírás:** Ha nem az Azure AD-hitelesítést használja, közös hozzáférésű aláírással delegálhatja a Storage-fiók erőforrásaihoz való hozzáférést. A közös hozzáférésű aláírások olyan tokenek, amelyek az URL-címen az Azure Storage-ba irányuló kérések engedélyezéséhez szükséges összes információt beágyazzák. Megadhatja a tárolási erőforrást, a megadott engedélyeket, valamint azt az időközt, ameddig az engedélyek érvényesek a közös hozzáférési aláírás részeként. További információ: [Shared Access Signatures (SAS) használata](storage-sas-overview.md).
 
 > [!NOTE]
-> Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban. 
+> Az Azure AD-beli hitelesítő adatokkal rendelkező felhasználók vagy alkalmazások hitelesítése kiváló biztonságot és könnyű használatot biztosít más engedélyezési módokon. Habár továbbra is használhatja a megosztott kulcsos engedélyezést az alkalmazásokkal, az Azure AD megkerülésével megkerüli a fiók hozzáférési kulcsának a kóddal való tárolásának szükségességét. Továbbra is használhatja a közös hozzáférésű aláírásokat (SAS) a Storage-fiók erőforrásaihoz való részletes hozzáférés biztosításához, de az Azure AD hasonló képességeket kínál, anélkül, hogy az SAS-tokeneket kellene kezelnie, vagy nem kell aggódnia a sérült SAS visszavonásával kapcsolatban.
 >
 > A Microsoft az Azure AD-hitelesítés használatát javasolja az Azure Storage blob-és üzenetsor-alkalmazásaihoz, ha lehetséges.
 
 ## <a name="copying-data-into-a-storage-account"></a>Adatok másolása egy Storage-fiókba
 
-A Microsoft segédprogramokat és könyvtárakat biztosít az adatok helyszíni tárolóeszközökből vagy külső felhőalapú tárolási szolgáltatóktól történő importálásához. Az Ön által használt megoldás az átvitt adatok mennyiségétől függ. 
+A Microsoft segédprogramokat és könyvtárakat biztosít az adatok helyszíni tárolóeszközökből vagy külső felhőalapú tárolási szolgáltatóktól történő importálásához. Az Ön által használt megoldás az átvitt adatok mennyiségétől függ.
 
-Ha egy általános célú v1-vagy blob Storage-fiókból egy általános célú v2-fiókra frissít, az adatok automatikusan áttelepülnek. A Microsoft ezt az utat javasolja a fiók frissítéséhez. Ha azonban úgy dönt, hogy egy általános célú v1-fiók adatait egy blob Storage-fiókba helyezi át, akkor manuálisan kell áttelepítenie az adatait az alább ismertetett eszközök és kódtárak használatával. 
+Ha egy általános célú v1-vagy blob Storage-fiókból egy általános célú v2-fiókra frissít, az adatok automatikusan áttelepülnek. A Microsoft ezt az utat javasolja a fiók frissítéséhez. Ha azonban úgy dönt, hogy egy általános célú v1-fiók adatait egy blob Storage-fiókba helyezi át, akkor manuálisan kell áttelepítenie az adatait az alább ismertetett eszközök és kódtárak használatával.
 
 ### <a name="azcopy"></a>AzCopy
 
@@ -183,5 +183,5 @@ Az Azure Storage REST APIával kapcsolatos további információkért lásd: az 
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Tárfiók létrehozása](storage-quickstart-create-account.md)
+- [Tárfiók létrehozása](storage-account-create.md)
 - [Blokkblob-tárfiók létrehozása](../blobs/storage-blob-create-account-block-blob.md)

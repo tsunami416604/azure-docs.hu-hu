@@ -10,12 +10,12 @@ ms.date: 06/02/2017
 ms.author: tamram
 ms.reviewer: seguler
 ms.subservice: common
-ms.openlocfilehash: f8e745b214ced865ac41d72bdfd5e44ca36b803a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b80c29788bd2f8d5172795aa2c92a80e460ff81f
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460458"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978523"
 ---
 # <a name="using-the-azure-cli-with-azure-storage"></a>Using the Azure CLI with Azure Storage (Az Azure CLI és az Azure Storage együttes használata)
 
@@ -23,7 +23,7 @@ A nyílt forráskódú, platformfüggetlen Azure CLI számos parancsot biztosít
 
 Ebben az útmutatóban bemutatjuk, hogyan használhatja az [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) -t az Azure Storage-fiók erőforrásaival kapcsolatos feladatok elvégzéséhez. Javasoljuk, hogy az útmutató használata előtt töltse le és telepítse vagy frissítse a CLI legújabb verzióját.
 
-Az útmutatóban szereplő példák feltételezik a bash-rendszerhéj Ubuntu-on való használatát, de a többi platformnak hasonlóképpen kell működnie. 
+Az útmutatóban szereplő példák feltételezik a bash-rendszerhéj Ubuntu-on való használatát, de a többi platformnak hasonlóképpen kell működnie.
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -34,7 +34,7 @@ Ez az útmutató feltételezi, hogy ismeri az Azure Storage alapfogalmait. Azt i
 
 ### <a name="accounts"></a>Fiókok
 * **Azure-fiók**: Ha még nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes Azure-fiókot](https://azure.microsoft.com/free/).
-* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-create-storage-account.md) cikk [Tárfiók létrehozása](storage-quickstart-create-account.md) szakaszát.
+* **Tárfiók**: Lásd a [Tudnivalók az Azure Storage-fiókokról](storage-account-overview.md) cikk [Tárfiók létrehozása](storage-account-create.md) szakaszát.
 
 ### <a name="install-the-azure-cli"></a>Telepítse az Azure CLI-t
 
@@ -335,7 +335,7 @@ A tartalomtípus (más néven MIME-típus) a blobban lévő adatok formátumát 
 
 ```azurecli
 az storage blob update
-    --container-name <container_name> 
+    --container-name <container_name>
     --name <blob_name>
     --content-type <content_type>
 ```
@@ -390,7 +390,7 @@ az storage file list --share-name myshare --path myDir/mySubDir/MySubDir2 --outp
 
 ### <a name="copy-files"></a>Fájlok másolása      
 Fájlokat másolhat egy másik fájlba, egy fájlt egy blobba vagy egy blobot egy fájlba. Ha például egy fájlt egy másik megosztásban lévő könyvtárba szeretne másolni:        
-        
+
 ```azurecli
 az storage file copy start \
 --source-share share1 --source-path dir1/file.txt \
@@ -524,7 +524,7 @@ az storage file download --path IMG_0966.JPG --share-name sharesnapshotdefs --sn
 A megosztási pillanatképet a `az storage share delete` paranccsal törölheti, ha `--snapshot` paramétert ad meg a megosztás pillanatképének időbélyeg használatával:
 
 ```cli
-az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z' 
+az storage share delete -n <share name> --snapshot '2017-10-04T23:28:35.0000000Z'
 ```
 
 Minta kimenet
@@ -535,7 +535,7 @@ Minta kimenet
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-Íme néhány további erőforrás az Azure CLI használatáról. 
+Íme néhány további erőforrás az Azure CLI használatáról.
 
 * [Ismerkedés az Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
 * [Az Azure CLI parancsainak dokumentációja](/cli/azure)

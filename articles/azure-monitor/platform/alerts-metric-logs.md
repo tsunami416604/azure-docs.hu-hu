@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: yalavi
 ms.subservice: alerts
-ms.openlocfilehash: d6b65b76138cb180ab105631ebc0f19b7d38f206
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 358312bcbb23aee5a06eaa39898ff4e632cd8b4b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74226519"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75977602"
 ---
 # <a name="create-metric-alerts-for-logs-in-azure-monitor"></a>Metrikai riasztások létrehozása a naplókhoz Azure Monitor
 
@@ -357,7 +357,7 @@ Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertStatic. JSON n�
 }
 ```
 
-Feltételezve, hogy a fenti metricfromLogsAlertStatic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Feltételezve, hogy a fenti metricfromLogsAlertStatic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
 Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 
@@ -673,7 +673,7 @@ Tegyük fel, hogy a fenti JSON-t a rendszer a metricfromLogsAlertDynamic. JSON n
 }
 ```
 
-Feltételezve, hogy a fenti metricfromLogsAlertDynamic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/resource-group-template-deploy-portal.md).
+Feltételezve, hogy a fenti metricfromLogsAlertDynamic. Parameters. JSON néven mentette a fájlt. Ezután létrehozhat metrikai riasztást a naplókhoz [erőforrás-sablon használatával a Azure Portal létrehozásához](../../azure-resource-manager/templates/deploy-portal.md).
 
 Azt is megteheti, hogy az alábbi Azure PowerShell-parancsot is használhatja:
 

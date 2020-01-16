@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: e3d8ada67b0a592df9c2dba145626836f27da631
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 52fb7c770e9f9e2570cad92a8c0dd9bc4374e708
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459370"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75980189"
 ---
 # <a name="learn-about-virtual-machine-scale-set-templates"></a>Tudnivalók a virtuálisgép-méretezési csoport sablonjairól
 Az [Azure Resource Manager-sablonok](https://docs.microsoft.com/azure/azure-resource-manager/template-deployment-overview#template-deployment-process) remek megoldást kínálnak egymáshoz kapcsolódó erőforráscsoportok üzembe helyezésére. Ez az oktatóanyag-sorozat bemutatja, hogyan hozható létre egy alapszintű méretezési csoport sablonja, és hogyan módosítható a sablon különböző helyzetekben. Az összes példa ebből a [GitHub-adattárból](https://github.com/gatneil/mvss)származik.
@@ -75,7 +75,7 @@ Minden erőforráshoz `type`, `name`, `apiVersion`és `location` tulajdonságok 
 ```
 
 ## <a name="specify-location"></a>Hely meghatározása
-A virtuális hálózat helyének megadásához használja a [Resource Manager-sablon függvényt](../azure-resource-manager/resource-group-template-functions.md). Ezt a függvényt idézőjelek és szögletes zárójelek közé kell foglalni, például a következőhöz: `"[<template-function>]"`. Ebben az esetben használja a `resourceGroup` függvényt. Nem tartalmaz argumentumokat, és egy olyan JSON-objektumot ad vissza, amely az erőforráscsoporthoz tartozó metaadatokkal rendelkezik, és a központi telepítés folyamatban van. Az erőforráscsoportot az üzembe helyezés időpontjában a felhasználó állítja be. Ezt az értéket ezután indexeli ebbe a JSON-objektumba `.location` a JSON-objektum helyének lekéréséhez.
+A virtuális hálózat helyének megadásához használja a [Resource Manager-sablon függvényt](../azure-resource-manager/templates/template-functions.md). Ezt a függvényt idézőjelek és szögletes zárójelek közé kell foglalni, például a következőhöz: `"[<template-function>]"`. Ebben az esetben használja a `resourceGroup` függvényt. Nem tartalmaz argumentumokat, és egy olyan JSON-objektumot ad vissza, amely az erőforráscsoporthoz tartozó metaadatokkal rendelkezik, és a központi telepítés folyamatban van. Az erőforráscsoportot az üzembe helyezés időpontjában a felhasználó állítja be. Ezt az értéket ezután indexeli ebbe a JSON-objektumba `.location` a JSON-objektum helyének lekéréséhez.
 
 ```json
        "location": "[resourceGroup().location]",

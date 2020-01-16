@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 02655a3697139ae3a9c4c36b423b874b6e5d34f9
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541867"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75974104"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
 
@@ -54,7 +54,7 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Intel MPI-könyvtár||
 |Azure parancssori felület (CLI) ||
 |Azure Machine Learning minták ||
-|Azure Machine Learning EDAT motor ||            
+|Azure Machine Learning EDAT motor ||
 |Docker||
 |Nginx||
 |NCCL 2,0 ||
@@ -76,11 +76,26 @@ Ezek az eszközök és környezetek a számítási példányra vannak telepítve
 |Egyéb PyPI-csomagok|`jupytext`</br>`jupyterlab-git`</br>`tensorboard`</br>`nbconvert`</br>`notebook`</br>`Pillow`|
 |Conda-csomagok|`cython`</br>`numpy`</br>`ipykernel`</br>`scikit-learn`</br>`matplotlib`</br>`tqdm`</br>`joblib`</br>`nodejs`</br>`nb_conda_kernels`|
 |Deep learning-csomagok|`PyTorch`</br>`TensorFlow`</br>`Keras`</br>`Horovod`</br>`MLFlow`</br>`pandas-ml`</br>`scrapbook`|
-|ONNX-csomagok|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|                           
+|ONNX-csomagok|`keras2onnx`</br>`onnx`</br>`onnxconverter-common`</br>`skl2onnx`</br>`onnxmltools`|
 |Azure Machine Learning Python & R SDK-minták||
+
+A Python-csomagok mind a **python 3,6-AzureML** környezetben települnek.  
 
 A számítási példányokat általában fejlesztési környezetként használják.  A fejlesztéshez és a teszteléshez is használható számítási célként.  A nagyméretű feladatokhoz a többcsomópontos skálázási képességekkel rendelkező [Azure Machine learning számítási fürt](how-to-set-up-training-targets.md#amlcompute) jobb számítási célként szolgál.
 
+### <a name="installing-packages"></a>Csomagok telepítése
+
+A csomagokat közvetlenül Jupyter jegyzetfüzetbe vagy Rstudio is telepítheti:
+
+* A RStudio a jobb alsó sarokban található **csomagok** fület vagy a bal felső sarokban található **konzol** fület használják.  
+* Python: telepítési kód hozzáadása és végrehajtás Jupyter jegyzetfüzet-cellában.
+
+Vagy a következő módokon érheti el a terminál-ablakokat:
+
+* RStudio: válassza a bal felső sarokban található **terminál** fület.
+* Jupyter labor: válassza ki a **terminál** csempét az indító lap **másik** címsorában.
+* Jupyter: a fájlok lapon válassza a jobb felső sarokban található **új > terminál** elemet.
+* SSH-t a gépre.  Ezután telepítse a Python-csomagokat a **python 3,6-AzureML-** környezetbe.  Telepítse az R-csomagokat az **r** -környezetbe.
 
 ## <a name="accessing-files"></a>Fájlok elérése
 
