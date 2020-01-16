@@ -2,18 +2,18 @@
 title: Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával – Azure Batch | Microsoft Docs
 description: Hozzon létre egy batch-készletet a megosztott rendszerkép-katalógusban, hogy egyéni rendszerképeket építsen ki az alkalmazásához szükséges szoftvereket és adatokból álló számítási csomópontok számára. Az egyéni lemezképek hatékony módszer a számítási csomópontok konfigurálására a Batch-munkaterhelések futtatásához.
 services: batch
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 ms.service: batch
 ms.topic: article
 ms.date: 08/28/2019
-ms.author: lahugh
-ms.openlocfilehash: fa232fb48e80e3ae3751920e4215c4b4d3ded19a
-ms.sourcegitcommit: 7c2dba9bd9ef700b1ea4799260f0ad7ee919ff3b
+ms.author: jushiman
+ms.openlocfilehash: a933d0656bb4c22e848a663757f4e5e3fa276c61
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71827918"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76029647"
 ---
 # <a name="use-the-shared-image-gallery-to-create-a-custom-pool"></a>Egyéni készlet létrehozása a megosztott rendszerkép-katalógus használatával
 
@@ -61,7 +61,7 @@ Ha a Batch-készleteket egy egyéni rendszerkép használatával szeretné megb�
 Ha új virtuális gépet hoz létre a rendszerképhez, használja a Batch által támogatott első féltől származó Azure Marketplace-rendszerképet a felügyelt rendszerkép alaprendszerképének megfelelően. Alaprendszerképként csak az első féltől származó képek használhatók. Az Azure Batch által támogatott Azure Marketplace-rendszerkép-referenciák teljes listájának megjelenítéséhez tekintse meg a [csomópont-ügynök SKU](/java/api/com.microsoft.azure.batch.protocol.accounts.listnodeagentskus) -azonosítóinak listázása műveletet.
 
 > [!NOTE]
-> Alaprendszerképként nem használhat olyan külső gyártótól származó rendszerképet, amely további licenccel és vásárlási feltételekkel rendelkezik. További információ ezekről a Piactéri lemezképekről [: Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
+> Alaprendszerképként nem használhat olyan külső gyártótól származó rendszerképet, amely további licenccel és vásárlási feltételekkel rendelkezik. További információ ezekről a Piactéri lemezképekről: [Linux](../virtual-machines/linux/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
 ) vagy [Windows rendszerű](../virtual-machines/windows/cli-ps-findimage.md#deploy-an-image-with-marketplace-terms
 ) virtuális gépek útmutatója.
 
@@ -133,7 +133,7 @@ private static void CreateBatchPool(BatchClient batchClient, VirtualMachineConfi
 
 A következő lépésekkel hozhat létre készletet egy megosztott rendszerképből a Azure Portal.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg az [Azure portált](https://portal.azure.com).
 1. Nyissa meg a **Batch-fiókokat** , és válassza ki a fiókját.
 1. Válassza a **készletek** lehetőséget, majd a **Hozzáadás** gombra kattintva hozzon létre egy új készletet.
 1. A **rendszerkép típusa** szakaszban válassza a **megosztott képgyűjtemény**lehetőséget.
@@ -150,6 +150,6 @@ Ha egy megosztott rendszerkép használatával több száz vagy több ezer virtu
 
 * **Átméretezési időtúllépés.** Ha a készlet rögzített számú csomópontot tartalmaz (ha nem rendelkezik az autoskálázással), növelje a készlet `resizeTimeout` tulajdonságát a készlet méretétől függően. Minden 1000 virtuális gép esetében az ajánlott átméretezési időkorlát legalább 15 percet vesz igénybe. Például egy 2000 virtuális géppel rendelkező készlet ajánlott átméretezési időtúllépése legalább 30 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Batch részletes áttekintése: [nagy léptékű párhuzamos számítási megoldások létrehozása a Batch szolgáltatással](batch-api-basics.md).

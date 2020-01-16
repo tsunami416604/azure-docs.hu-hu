@@ -10,12 +10,12 @@ ms.date: 10/01/2019
 ms.author: tamram
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 13e9abb2a7b79ad9355261832145766e424c3df6
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: b49b3187f9178012131d793a7762ae470b0ea540
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895160"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75965721"
 ---
 # <a name="call-rest-api-operations-with-shared-key-authorization"></a>REST API műveletek meghívása megosztott kulcsos hitelesítéssel
 
@@ -23,13 +23,13 @@ Ez a cikk bemutatja, hogyan hívhatja meg az Azure Storage REST API-kat, beleér
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szereplő kód kipróbálásához a következő elemek szükségesek: 
+A minta alkalmazás a Storage-fiók blob-tárolóit sorolja fel. A cikkben szereplő kód kipróbálásához a következő elemek szükségesek:
 
 - Telepítse a [Visual Studio 2019](https://www.visualstudio.com/visual-studio-homepage-vs.aspx) -et az **Azure-fejlesztési** számítási feladattal.
 
 - Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-- Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-quickstart-create-account.md)című témakört.
+- Általános célú Storage-fiók. Ha még nem rendelkezik Storage-fiókkal, tekintse meg [a Storage-fiók létrehozása](storage-account-create.md)című témakört.
 
 - A cikkben szereplő példa bemutatja, hogyan listázhatja a tárolókat egy Storage-fiókban. Ha meg szeretné tekinteni a kimenetet, vegyen fel néhány tárolót a blob Storage-ba a megkezdése előtt.
 
@@ -43,7 +43,7 @@ A [git](https://git-scm.com/) használatával töltse le az alkalmazás egy más
 git clone https://github.com/Azure-Samples/storage-dotnet-rest-api-with-auth.git
 ```
 
-Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a Storage-DotNet-REST-API-with-Auth mappát, nyissa meg, és kattintson duplán a StorageRestApiAuth. SLN elemre. 
+Ez a parancs a helyi git mappába klónozza az adattárat. A Visual Studio-megoldás megnyitásához keresse meg a Storage-DotNet-REST-API-with-Auth mappát, nyissa meg, és kattintson duplán a StorageRestApiAuth. SLN elemre.
 
 ## <a name="about-rest"></a>Tudnivalók a REST-ról
 
@@ -93,16 +93,16 @@ Ha éles környezetben fut, akkor a HTTP helyett mindig a HTTPS protokollt haszn
 
 A mintául szolgáló projektben az engedélyezési fejléc létrehozására szolgáló kód külön osztályban található. Az elképzelés az, hogy a teljes osztályt felveheti a saját megoldásba, és használhatja azt "ahogy van". Az engedélyezési fejléc kódja az Azure Storage-hoz leginkább REST API hívásokhoz használható.
 
-A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a ListContainersAsyncREST a Program.cs-ben. A kérelem összeállításának lépései a következők: 
+A kérelem kiépítéséhez, amely egy HttpRequestMessage objektum, nyissa meg a ListContainersAsyncREST a Program.cs-ben. A kérelem összeállításának lépései a következők:
 
-- Hozza létre a szolgáltatás meghívásához használandó URI-t. 
+- Hozza létre a szolgáltatás meghívásához használandó URI-t.
 - Hozza létre a HttpRequestMessage objektumot, és állítsa be a hasznos adatokat. A hasznos adatok a ListContainersAsyncREST esetében null értékűek, mert nem adunk semmit a következőben:.
 - Adja hozzá az x-MS-date és az x-MS-Version kérések fejléceit.
 - Kérje le az engedélyezési fejlécet, és adja hozzá.
 
-Néhány alapvető információra van szüksége: 
+Néhány alapvető információra van szüksége:
 
-- A ListContainers esetében a **metódus** `GET`. Ez az érték a kérelem példányának létrehozásakor van beállítva. 
+- A ListContainers esetében a **metódus** `GET`. Ez az érték a kérelem példányának létrehozásakor van beállítva.
 - Az **erőforrás** az URI lekérdezési része, amely jelzi, hogy melyik API-t hívják, így az érték `/?comp=list`. Ahogy korábban már említettük, az erőforrás a hivatkozási dokumentáció oldalán található, amely a [LISTCONTAINERS API](/rest/api/storageservices/List-Containers2)információit jeleníti meg.
 - Az URI-t úgy hozza létre, hogy létrehoz egy Blob service végpontot az adott Storage-fiókhoz, és összefűzi az erőforrást. A **kérés URI azonosítójának** értéke `http://contosorest.blob.core.windows.net/?comp=list`.
 - A ListContainers esetében a **requestBody** értéke null, és nincsenek további **fejlécek**.
@@ -160,7 +160,7 @@ Most, hogy létrehozta a kérést, meghívhatja a SendAsync metódust az Azure S
     using (HttpResponseMessage httpResponseMessage =
       await new HttpClient().SendAsync(httpRequestMessage, cancellationToken))
     {
-        // If successful (status code = 200), 
+        // If successful (status code = 200),
         //   parse the XML response for the container names.
         if (httpResponseMessage.StatusCode == HttpStatusCode.OK)
         {
@@ -209,7 +209,7 @@ Content-Length: 1511
 
 ```xml  
 <?xml version="1.0" encoding="utf-8"?>
-<EnumerationResults 
+<EnumerationResults
   ServiceEndpoint="http://contosorest.blob.core.windows.net/">
   <Containers>
     <Container>
@@ -308,7 +308,7 @@ Kezdjük a két kanonikus mezővel, mert az engedélyezési fejléc létrehozás
 
 ### <a name="canonicalized-headers"></a>Kanonikus fejlécek
 
-Az érték létrehozásához kérje le azokat a fejléceket, amelyek az "x-MS-" karakterlánccal kezdődnek, majd rendezze őket, majd formázza őket egy `[key:value\n]` példányba, és összefűzi őket egy karakterlánccá. Ebben a példában a kanonikus fejlécek így néznek ki: 
+Az érték létrehozásához kérje le azokat a fejléceket, amelyek az "x-MS-" karakterlánccal kezdődnek, majd rendezze őket, majd formázza őket egy `[key:value\n]` példányba, és összefűzi őket egy karakterlánccá. Ebben a példában a kanonikus fejlécek így néznek ki:
 
 ```
 x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
@@ -316,7 +316,7 @@ x-ms-date:Fri, 17 Nov 2017 00:44:48 GMT\nx-ms-version:2017-07-29\n
 
 Itt látható a kimenet létrehozásához használt kód:
 
-```csharp 
+```csharp
 private static string GetCanonicalizedHeaders(HttpRequestMessage httpRequestMessage)
 {
     var headers = from kvp in httpRequestMessage.Headers
@@ -444,7 +444,7 @@ https://myaccount.blob.core.windows.net/container-1?restype=container&comp=list
 A ListContainersAsyncREST-ben módosítsa az URI-t a ListBlobs API-ra beállító kódot. A tároló neve a **Container-1**.
 
 ```csharp
-String uri = 
+String uri =
     string.Format("http://{0}.blob.core.windows.net/container-1?restype=container&comp=list",
       storageAccountName);
 
@@ -516,7 +516,7 @@ Date: Fri, 17 Nov 2017 05:20:21 GMT
 Content-Length: 1135
 ```
 
-**Válasz törzse (XML):** Ez az XML-válasz a blobok és azok tulajdonságainak listáját jeleníti meg. 
+**Válasz törzse (XML):** Ez az XML-válasz a blobok és azok tulajdonságainak listáját jeleníti meg.
 
 ```xml
 <?xml version="1.0" encoding="utf-8"?>

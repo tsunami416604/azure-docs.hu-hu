@@ -5,15 +5,15 @@ author: harelbr
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 1/13/2020
+ms.date: 1/14/2020
 ms.author: harelbr
 ms.subservice: alerts
-ms.openlocfilehash: 9f8ed6be825470504b5e7b45a15c4faa9cf5ccfc
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: bfa5d240ba4905f79274941568933daf1425bf8b
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932887"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75969432"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Metrikariasztás létrehozása Resource Manager-sablonnal
 
@@ -29,7 +29,7 @@ Az alapszintű lépések a következők:
 1. Használja az alábbi sablonok egyikét egy olyan JSON-fájlként, amely leírja, hogyan kell létrehozni a riasztást.
 2. Szerkessze és használja a megfelelő paramétereket tartalmazó fájlt JSON-ként a riasztás testreszabásához.
 3. A `metricName` paraméternél tekintse meg [Azure monitor támogatott mérőszámok](https://docs.microsoft.com/azure/azure-monitor/platform/metrics-supported)elérhető metrikáit.
-4. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/resource-group-template-deploy.md)használatával.
+4. A sablon üzembe helyezése [bármely üzembe helyezési módszer](../../azure-resource-manager/templates/deploy-powershell.md)használatával.
 
 ## <a name="template-for-a-simple-static-threshold-metric-alert"></a>Egyszerű statikus küszöbérték-metrikai riasztás sablonja
 
@@ -378,6 +378,13 @@ Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató cé
                 "description": "The number of unhealthy periods to alert on (must be lower or equal to numberOfEvaluationPeriods)."
             }
         },
+    "ignoreDataBefore": {
+            "type": "string",
+            "defaultValue": "",
+            "metadata": {
+                "description": "Use this option to set the date from which to start learning the metric historical data and calculate the dynamic thresholds (in ISO8601 format, e.g. '2019-12-31T22:00:00Z')."
+            }
+        },
         "timeAggregation": {
             "type": "string",
             "defaultValue": "Average",
@@ -455,6 +462,7 @@ Mentse az alábbi JSON-t simpledynamicmetricalert. JSON néven az útmutató cé
                                 "numberOfEvaluationPeriods": "[parameters('numberOfEvaluationPeriods')]",
                                 "minFailingPeriodsToAlert": "[parameters('minFailingPeriodsToAlert')]"
                             },
+                "ignoreDataBefore": "[parameters('ignoreDataBefore')]",
                             "timeAggregation": "[parameters('timeAggregation')]"
                         }
                     ]
@@ -511,6 +519,9 @@ Mentse az alábbi JSON-t simpledynamicmetricalert. Parameters. JSON néven, és 
         "minFailingPeriodsToAlert": {
             "value": "3"
         },
+    "ignoreDataBefore": {
+            "value": ""
+        },
         "timeAggregation": {
             "value": "Average"
         },
@@ -559,7 +570,7 @@ Ha több feltételt tartalmazó riasztási szabályban dimenziókat használ, ve
 - Minden egyes feltételhez csak egy értéket lehet kijelölni.
 - A "\*" nem használható dimenzió értékként.
 - Ha a különböző feltételekben konfigurált mérőszámok ugyanazt a dimenziót támogatják, akkor a konfigurált dimenzió értékét explicit módon be kell állítani az összes ilyen metrika esetében (a vonatkozó feltételben).
-    - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája rendelkezik **API-névvel** , és a *criterion1* meghatározza az **API-név** dimenzió *"GetBlob"* értékét, majd a *criterion2* az **API-név** dimenzió *"GetBlob"* értékét is be kell állítania.
+    - Az alábbi példában, mivel mind a **tranzakciók** , mind a **SuccessE2ELatency** metrikája **ApiName** dimenzióval rendelkezik, és a *criterion1* meghatározza a **ApiName** dimenzió *"GetBlob"* értékét, akkor a *criterion2* **a GetBlob** dimenzió *"ApiName"* értékét is be kell állítania.
 
 
 Mentse az alábbi JSON-t advancedstaticmetricalert. JSON néven az útmutató céljára.

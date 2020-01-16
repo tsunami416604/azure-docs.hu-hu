@@ -15,12 +15,12 @@ ms.workload: iaas-sql-server
 ms.date: 03/07/2018
 ms.author: mathoma
 ms.reviewer: jroth
-ms.openlocfilehash: 9fabccd477883750c1aecb5493fdb64ddf5ab2c3
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: efc6d0c25c5186b391deb08ee0e41dcb8ae6edf0
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70100299"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75978079"
 ---
 # <a name="automated-patching-for-sql-server-in-azure-virtual-machines-classic"></a>Az Azure Virtual Machines SQL Server automatikus javítása (klasszikus)
 > [!div class="op_single_selector"]
@@ -37,7 +37,7 @@ Az automatikus javítás karbantartási időszakot hoz létre egy SQL Server ren
 Az automatikus javítás az [SQL Server IaaS-ügynök bővítményétől](../classic/sql-server-agent-extension.md) függ.
 
 > [!IMPORTANT] 
-> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/resource-manager-deployment-model.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A cikk Resource Manager-verziójának megtekintéséhez lásd: a [SQL Server automatikus javítása az Azure Virtual Machines Resource Managerben](../sql/virtual-machines-windows-sql-automated-patching.md).
+> Az Azure két különböző üzembe helyezési modellel rendelkezik az erőforrások létrehozásához és használatához: [Resource Manager és klasszikus](../../../azure-resource-manager/management/deployment-models.md). Ez a cikk a klasszikus üzembe helyezési modell használatát ismerteti. A Microsoft azt javasolja, hogy az új telepítések esetén a Resource Manager modellt használja. A cikk Resource Manager-verziójának megtekintéséhez lásd: a [SQL Server automatikus javítása az Azure Virtual Machines Resource Managerben](../sql/virtual-machines-windows-sql-automated-patching.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 Az automatikus javítás használatához vegye figyelembe a következő előfeltételeket:
@@ -93,7 +93,7 @@ A SQL Server IaaS-ügynök telepítése és konfigurálása több percet is igé
 
 Az automatikus javítás letiltásához futtassa ugyanazt a parancsfájlt anélkül, hogy a-enable paramétert a New-AzureVMSqlServerAutoPatchingConfig. A telepítéshez hasonlóan több percet is igénybe vehet, hogy letiltsa az automatikus javítást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az egyéb rendelkezésre álló automatizálási feladatokról: [SQL Server IaaS-ügynök bővítmény](../classic/sql-server-agent-extension.md).
 
 A SQL Server Azure-beli virtuális gépeken való futtatásával kapcsolatos további információkért lásd: [SQL Server az azure Virtual Machines áttekintése](../sql/virtual-machines-windows-sql-server-iaas-overview.md).

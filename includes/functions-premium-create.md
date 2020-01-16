@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/25/2019
 ms.author: jehollan, glenga
 ms.custom: include file
-ms.openlocfilehash: 911db285d1ca885142e8a80345926ce76379e3bc
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: fca8c3b0b1bd4d22720a6d15313e297d05b7fac9
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72958612"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76021118"
 ---
 1. A Azure Portal megnyitása [https://portal.azure.com](https://portal.azure.com)
 
@@ -32,9 +32,9 @@ ms.locfileid: "72958612"
     | Beállítás      | Ajánlott érték  | Leírás |
     | ------------ | ---------------- | ----------- |
     | **Előfizetés** | Az Ön előfizetése | Az előfizetés, amelyben létrehozta az új függvényalkalmazást. |
-    | **[Erőforráscsoport](../articles/azure-resource-manager/resource-group-overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
-    | **függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9`és `-`.  |
-    |**Közzététel**| Kód | Kód vagy Docker-tároló közzétételének lehetősége. |
+    | **[Erőforráscsoport](../articles/azure-resource-manager/management/overview.md)** |  *myResourceGroup* | Az új erőforráscsoport neve, amelyben létrehozza a függvényalkalmazást. |
+    | **Függvényalkalmazás neve** | Globálisan egyedi név | Az új függvényalkalmazást azonosító név. Az érvényes karakterek `a-z` (kis-és nagybetűk megkülönböztetése), `0-9`és `-`.  |
+    |**Közzététel**| Kód | Kódfájlok közzétételét teszi lehetővé egy Docker-tárolóban. |
     | **Futtatókörnyezet verme** | Elsődleges nyelv | Válasszon egy olyan futtatókörnyezetet, amely támogatja a kedvenc függvényprogramozási nyelvét. Válassza a **.NET** lehetőséget a C# és az F# függvényekhez. |
     |**Régió**| Előnyben részesített régió | Válasszon egy [régiót](https://azure.microsoft.com/regions/) a közelben, vagy a függvények által elért más szolgáltatások közelében. |
 
@@ -46,7 +46,7 @@ ms.locfileid: "72958612"
 
     | Beállítás      | Ajánlott érték  | Leírás |
     | ------------ | ---------------- | ----------- |
-    | **[Tárfiók](../articles/storage/common/storage-quickstart-create-account.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
+    | **[Tárfiók](../articles/storage/common/storage-account-create.md)** |  Globálisan egyedi név |  Hozzon létre egy tárfiókot a függvényalkalmazás számára. A tárfiókok neve 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat. Meglévő fiókot is használhat, amelynek meg kell felelnie a [Storage-fiókra vonatkozó követelményeknek](../articles/azure-functions/functions-scale.md#storage-account-requirements). |
     |**Operációs rendszer**| Előnyben részesített operációs rendszer | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
     | **[Csomag](../articles/azure-functions/functions-scale.md)** | Prémium | A csomag típusa beállításnál válassza a **prémium (előzetes verzió)** lehetőséget, majd válassza a *Windows-csomag* és az *SKU és a méret* kiválasztásának alapértelmezett értékeit. |
 

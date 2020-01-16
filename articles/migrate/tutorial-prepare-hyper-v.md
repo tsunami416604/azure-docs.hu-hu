@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan készítheti elő a Hyper-V virtuális gépek �
 ms.topic: tutorial
 ms.date: 01/01/2020
 ms.custom: mvc
-ms.openlocfilehash: a76c249f3d179a34fbb14e6c8bfb3666816fa160
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 6140d9689dafe8a97ae77346ea2212846e964cdc
+ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75720208"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "76028919"
 ---
 # <a name="prepare-for-assessment-and-migration-of-hyper-v-vms-to-azure"></a>Felkészülés a Hyper-V virtuális gépek Azure-ba történő értékelésére és áttelepítésére
 
@@ -91,9 +91,9 @@ A bérlő/globális rendszergazda hozzárendelheti az alkalmazás fejlesztői sz
 
 ## <a name="prepare-hyper-v-for-assessment"></a>A Hyper-V előkészítése az értékeléshez
 
-A Hyper-V-t manuálisan is előkészítheti a virtuális gépek felméréséhez, vagy konfigurációs parancsfájl használatával. Az alábbiakat kell előkészíteni:
+A Hyper-V-t manuálisan is előkészítheti a virtuális gépek felméréséhez, vagy konfigurációs parancsfájl használatával. Az alábbiakat kell előkészíteni a szkripttel vagy [manuálisan](#prepare-hyper-v-manually).
 
-- Ellenőrizze a Hyper-V gazdagép beállításait, és győződjön meg arról, hogy a szükséges portok meg vannak nyitva a Hyper-V-gazdagépeken.
+- [Ellenőrzés](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) Hyper-V-gazdagép beállításai, és ellenőrizze, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak-e nyitva a Hyper-v-gazdagépeken.
 - Állítsa be a PowerShell-távelérést minden gazdagépen, hogy az Azure Migrate készülék PowerShell-parancsokat futtasson a gazdagépen egy WinRM-kapcsolaton keresztül.
 - Hitelesítő adatok delegálása, ha a VM-lemezek távoli SMB-megosztásokon találhatók.
 - Állítson be egy fiókot, amelyet a berendezés a virtuális gépek felderítésére használ a Hyper-V-gazdagépeken.
@@ -171,8 +171,8 @@ Azure Migrate a helyszíni virtuális gépek felderítéséhez szükséges enged
 
 ### <a name="verify-hyper-v-host-settings"></a>Hyper-V gazdagép beállításainak ellenőrzése
 
-1. Ellenőrizze a [Hyper-V gazdagépre vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#assessment-hyper-v-host-requirements) a kiszolgálók értékeléséhez.
-2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#assessment-port-requirements) meg vannak nyitva a Hyper-V-gazdagépeken.
+1. Ellenőrizze a [Hyper-V gazdagépre vonatkozó követelményeket](migrate-support-matrix-hyper-v.md#hyper-v-host-requirements) a kiszolgálók értékeléséhez.
+2. Győződjön meg arról, hogy a [szükséges portok](migrate-support-matrix-hyper-v.md#port-access) meg vannak nyitva a Hyper-V-gazdagépeken.
 
 ### <a name="enable-powershell-remoting-on-hosts"></a>A PowerShell távelérés engedélyezése a gazdagépeken
 
@@ -214,17 +214,17 @@ A készülék beállításakor a CredSSP beállításával állíthatja be a [k�
 
 A Azure Migrate berendezés beállítása és az értékelés megkezdése előtt a következő oktatóanyagban készítse elő a berendezés üzembe helyezését.
 
-1. A berendezésre vonatkozó követelmények [ellenőrzése](migrate-support-matrix-hyper-v.md#assessment-appliance-requirements) .
-2. [Tekintse át](migrate-support-matrix-hyper-v.md#assessment-appliance-url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
+1. A berendezésre vonatkozó követelmények [ellenőrzése](migrate-appliance.md#appliance---hyper-v) .
+2. [Tekintse át](migrate-appliance.md#url-access) azokat az Azure URL-címeket, amelyekhez a készüléknek hozzá kell férnie.
 3. Tekintse át a berendezés által a felderítés és az értékelés során gyűjtött adatokat.
-4. [Jegyezze](migrate-support-matrix-hyper-v.md#assessment-port-requirements) fel a port hozzáférési követelményeit a készülékhez.
+4. [Jegyezze](migrate-appliance.md#collected-data---hyper-v) fel a port hozzáférési követelményeit a készülékhez.
 
 
 ## <a name="prepare-for-hyper-v-migration"></a>Felkészülés a Hyper-V áttelepítésére
 
-1. [Tekintse át](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-requirements) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez.
-2. [Tekintse át](migrate-support-matrix-hyper-v.md#migration-hyper-v-vm-requirements) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
-3. [Jegyezze](migrate-support-matrix-hyper-v.md#migration-hyper-v-host-url-access) fel azokat az Azure URL-címeket, amelyekhez a Hyper-V-gazdagépeknek és-fürtöknek hozzá kell férniük a virtuális gépek
+1. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-hosts) A Hyper-V gazdagépre vonatkozó követelmények az áttelepítéshez, valamint azon Azure URL-címek, amelyekhez a Hyper-V-gazdagépek és-fürtök hozzáférhetnek a virtuális gépek migrál
+2. [Tekintse át](migrate-support-matrix-hyper-v-migration.md#hyper-v-vms) az Azure-ba áttelepíteni kívánt Hyper-V virtuális gépekre vonatkozó követelményeket.
+
 
 ## <a name="next-steps"></a>Következő lépések
 
