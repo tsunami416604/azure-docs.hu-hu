@@ -4,22 +4,22 @@ description: Az Azure-hoz készült avere-vFXT előfeltételei
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 02/20/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 0dafef7cf262153ccdb3b490aa0c7bd039b4a89b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889174"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152986"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
-Ez a cikk a avere vFXT-fürt létrehozásához szükséges előfeltételeket ismerteti.
+Ez a cikk a avere vFXT-fürt létrehozásához szükséges előfeltételek feladatait ismerteti.
 
 ## <a name="create-a-new-subscription"></a>Új előfizetés létrehozása
 
-Első lépésként hozzon létre egy új Azure-előfizetést. Minden avere-vFXT-projekthez külön előfizetést használhat, így egyszerűen nyomon követheti az összes projekt erőforrását és kiadását, más projekteket is megadhat a lehetséges erőforrás-szabályozásból a kiépítés során, és leegyszerűsítheti a tisztítást.
+Első lépésként hozzon létre egy új Azure-előfizetést. Minden avere-vFXT-projekthez külön előfizetést használhat, amely egyszerűbbé teszi a költségek nyomon követését és tisztítását, valamint annak biztosítását, hogy a fürt munkafolyamatának kiosztása során a kvóták vagy az erőforrás-szabályozás nem érinti a többi
 
 Új Azure-előfizetés létrehozása a Azure Portalban:
 
@@ -30,37 +30,41 @@ Első lépésként hozzon létre egy új Azure-előfizetést. Minden avere-vFXT-
 
 ## <a name="configure-subscription-owner-permissions"></a>Előfizetés tulajdonosi engedélyeinek konfigurálása
 
-Az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező felhasználónak létre kell hoznia a vFXT-fürtöt. Az előfizetés tulajdonosának engedélyekre van szükség a szoftver használati feltételeinek elfogadásához és egyéb műveletek végrehajtásához.
+Az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező felhasználónak létre kell hoznia a vFXT-fürtöt. A fürt létrehozásához a tulajdonosnak el kell fogadnia a szoftver használati feltételeit, és engedélyeznie kell a hálózati és tárolási erőforrások módosításait.
 
-Vannak olyan megkerülő megoldási forgatókönyvek, amelyek lehetővé teszik, hogy a nem tulajdonos avere vFTX hozzon létre az Azure-fürthöz. Ezek a forgatókönyvek az erőforrások korlátozásával és a létrehozóhoz való további szerepkörök hozzárendelésével járnak. Mindkét esetben az előfizetéshez tartozó tulajdonosnak is [el kell fogadnia a avere vFXT](#accept-software-terms) .
+Vannak olyan megkerülő megoldások, amelyek lehetővé teszik, hogy a nem tulajdonos hozzon létre egy avere-vFXT az Azure-fürthöz. Ezek a forgatókönyvek az erőforrások korlátozását és további szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök hozzárendelését foglalják magukban. Az előfizetés tulajdonosának minden esetben [el kell fogadnia a avere vFXT](#accept-software-terms) .
 
 | Alkalmazási helyzet | Korlátozások | A avere vFXT-fürt létrehozásához szükséges hozzáférési szerepkörök |
 |----------|--------|-------|
-| Erőforráscsoport rendszergazdája | A virtuális hálózatot, a tartományvezérlőt és a fürtcsomópontok létrehozását az erőforráscsoport keretében kell létrehozni | A [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei, mindkettő a célként megadott erőforráscsoport hatóköre |
-| Külső virtuális hálózat | A tartományvezérlő és a fürtcsomópontok az erőforráscsoporthoz jönnek létre, de egy másik erőforráscsoport meglévő virtuális hálózatát használja a rendszer. | (1) a [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei a vFXT erőforráscsoporthoz tartoznak; és (2) a [virtuális gép közreműködői](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), a [felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator)és a [avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor) szerepkörök a virtuális hálózat erőforráscsoporthoz vannak korlátozva. |
-
-Alternatív megoldásként hozzon létre egy egyéni szerepköralapú hozzáférés-vezérlési (RBAC) szerepkört az idő előtt, és rendelje hozzá a jogosultságokat a felhasználóhoz a [jelen cikkben](avere-vfxt-non-owner.md)leírtak szerint. Ez a metódus jelentős engedélyeket biztosít ezekhez a felhasználókhoz.
+| Az erőforráscsoport rendszergazdája létrehozza a vFXT | A virtuális hálózatot, a tartományvezérlőt és a fürtcsomópontok létrehozását az erőforráscsoport keretében kell létrehozni. | A [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei mind a célként megadott erőforráscsoport hatóköre. |
+| Meglévő, külső virtuális hálózat használata | A tartományvezérlő és a fürtcsomópontok a vFXT erőforráscsoport keretében jönnek létre, de egy meglévő virtuális hálózatot használnak egy másik erőforráscsoporthoz. | (1) a [felhasználói hozzáférés rendszergazdai](../role-based-access-control/built-in-roles.md#user-access-administrator) és [közreműködői](../role-based-access-control/built-in-roles.md#contributor) szerepkörei a vFXT erőforráscsoporthoz tartoznak; és (2) a [virtuális gép közreműködői](../role-based-access-control/built-in-roles.md#virtual-machine-contributor), a [felhasználói hozzáférés rendszergazdája](../role-based-access-control/built-in-roles.md#user-access-administrator)és a [avere közreműködői](../role-based-access-control/built-in-roles.md#avere-contributor) szerepkörök a virtuális hálózat erőforráscsoporthoz vannak korlátozva. |
+| Egyéni szerepkör a fürtök létrehozói számára | Nincs erőforrás-elhelyezési korlátozás. Ez a módszer nem tulajdonosai számára jelentős jogosultságokat biztosít. | Az előfizetés tulajdonosa létrehoz egy egyéni RBAC-szerepkört a [jelen cikkben](avere-vfxt-non-owner.md)leírtak szerint. |
 
 ## <a name="quota-for-the-vfxt-cluster"></a>Kvóta a vFXT-fürthöz
 
-A következő Azure-összetevőkhöz elegendő kvótával kell rendelkeznie. Ha szükséges, [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-portal/supportability/resource-manager-core-quotas-request).
+Győződjön meg arról, hogy elegendő kvóta van a következő Azure-összetevőkhöz. Ha szükséges, [igényeljen kvóta-növekedést](https://docs.microsoft.com/azure/azure-supportability/resource-manager-core-quotas-request).
 
 > [!NOTE]
-> Az itt felsorolt virtuális gépek és SSD-összetevők a vFXT-fürthöz tartoznak. A számítási farmhoz használni kívánt virtuális gépek és SSD-k esetében további kvótára lesz szüksége.  Győződjön meg arról, hogy a kvóta engedélyezve van ahhoz a régióhoz, amelyen futtatni kívánja a munkafolyamatot.
+> Az itt felsorolt virtuális gépek és SSD-összetevők a vFXT-fürthöz tartoznak. Ne feledje, hogy a számítási farmhoz használni kívánt virtuális gépek és SSD-k számára is szüksége lesz kvótare.
+>
+> Győződjön meg arról, hogy a kvóta engedélyezve van ahhoz a régióhoz, amelyen futtatni kívánja a munkafolyamatot.
 
 |Azure-összetevő|Kvóta|
 |----------|-----------|
-|Virtuális gépek|3 vagy több E32s_v3|
+|Virtuális gépek|3 vagy több E32s_v3 (az egyik fürtcsomópont) |
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
-|Háttérbeli adattárolás (nem kötelező) |Egy új LRS blob-tároló |
+|Adatháttér-tároló (nem kötelező) |Egy új LRS blob-tároló |
+<!-- this table also appears in the overview - update it there if updating here -->
 
 ## <a name="accept-software-terms"></a>Szoftverlicenc elfogadása
 
-> [!NOTE]
-> Erre a lépésre nincs szükség, ha az előfizetés tulajdonosa létrehozza a avere vFXT-fürtöt.
+> [!TIP]
+> Hagyja ki ezt a lépést, ha egy előfizetés tulajdonosa létrehozza a avere vFXT-fürtöt.
 
-A fürt létrehozása során el kell fogadnia a avere vFXT szoftver használati feltételeit. Ha Ön nem előfizetés-tulajdonos, akkor az előfizetés tulajdonosának el kell fogadnia a feltételeket az idő előtt. Ezt a lépést csak egyszer kell elvégezni az előfizetések esetében.
+A fürt létrehozása során el kell fogadnia a avere vFXT szoftver használati feltételeit. Ha Ön nem előfizetés-tulajdonos, akkor az előfizetés tulajdonosának el kell fogadnia a feltételeket az idő előtt.
+
+Ezt a lépést csak egyszer kell elvégezni az előfizetések esetében.
 
 A szoftver feltételeinek elfogadásához előre:
 
@@ -68,7 +72,7 @@ A szoftver feltételeinek elfogadásához előre:
 
    ```azurecli
     az login
-    az account set --subscription abc123de-f456-abc7-89de-f01234567890
+    az account set --subscription <subscription ID>
    ```
 
 1. A parancs kiadása a szolgáltatási feltételek elfogadására és a programozott hozzáférés engedélyezésére a avere vFXT for Azure szoftver rendszerképéhez:
@@ -81,14 +85,12 @@ A szoftver feltételeinek elfogadásához előre:
 
 A [szolgáltatási végpontok](../virtual-network/virtual-network-service-endpoints-overview.md) a virtuális hálózaton kívülről is megőrzik a helyi Azure Blob-forgalmat. Ajánlott minden olyan Azure-fürthöz tartozó avere-vFXT, amely Azure-blobot használ a háttérbeli adattároláshoz.
 
-Ha meglévő virtuális hálózatot biztosít, és egy új Azure BLOB-tárolót hoz létre a háttérbeli tárolóhoz a fürt létrehozása során, akkor a Microsoft Storage hálózatában szolgáltatási végponttal kell rendelkeznie. A végpontnak léteznie kell a fürt létrehozása előtt, vagy a létrehozás sikertelen lesz.
-
-A Storage szolgáltatás végpontja ajánlott az Azure-beli blob Storage-t használó Azure-fürtök bármely avere-vFXT, még akkor is, ha később hozzáadja a tárolót.
+Ha új virtuális hálózatot hoz létre a fürt létrehozása során, a rendszer automatikusan létrehoz egy végpontot. Ha meglévő virtuális hálózatot ad meg, akkor rendelkeznie kell egy Microsoft Storage Service-végponttal, ha új blob Storage-tárolót szeretne létrehozni a fürt létrehozása során.<!-- if there is no endpoint in that situation, the cluster creation will fail -->
 
 > [!TIP]
 >
 >* Hagyja ki ezt a lépést, ha új virtuális hálózatot hoz létre a fürt létrehozása során.
->* Ez a lépés nem kötelező, ha a fürt létrehozása során nem hoz létre BLOB-tárolót. Ebben az esetben később is létrehozhatja a szolgáltatási végpontot, ha úgy dönt, hogy az Azure blobot használja.
+>* A végpont nem kötelező, ha a fürt létrehozása során nem hoz létre BLOB-tárolót. Ebben az esetben később is létrehozhatja a szolgáltatási végpontot, ha úgy dönt, hogy az Azure blobot használja.
 
 Hozza létre a Storage szolgáltatás végpontját a Azure Portalból.
 
@@ -104,4 +106,4 @@ Hozza létre a Storage szolgáltatás végpontját a Azure Portalból.
 
 ## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: a vFXT-fürt létrehozása
 
-Az előfeltételek teljesítése után saját maga is létrehozhatja a fürtöt. Útmutatásért olvassa el [a vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) című témakört.
+Az előfeltételek teljesítése után létrehozhatja a fürtöt. Útmutatásért olvassa el [a vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) című témakört.

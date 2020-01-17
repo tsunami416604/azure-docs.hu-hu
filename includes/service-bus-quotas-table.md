@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 12/13/2018
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: ab17d86251be6a0ef2452b258acf8d055b4605db
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: c8412a01f4a5056b352b1d985f36e5a51a25a649
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561525"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159022"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -32,12 +32,12 @@ A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta
 | Egy üzenet-munkamenet- [azonosító](/dotnet/api/microsoft.azure.servicebus.message.sessionid) maximális mérete | Jogi személy |- | 128 |
 | Üzenetsor, témakör vagy előfizetési entitás üzeneteinek mérete |Jogi személy |Az ezeket a kvótákat meghaladó bejövő üzenetek elutasításra kerülnek, és a hívási kód kivételt kap. |Maximális üzenet mérete: 256 KB [standard](../articles/service-bus-messaging/service-bus-premium-messaging.md)csomag esetén, 1 MB a [prémium szinthez](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />A rendszer terhelése miatt ez a korlát kevesebb, mint az érték.<br /><br />Fejléc maximális mérete: 64 KB.<br /><br />Fejléc tulajdonságainak maximális száma a (z) Bag: **byte/int tulajdonságban. MaxValue**.<br /><br />Tulajdonság maximális mérete a (z) táskában: nincs kifejezett korlát. A fejlécek maximális mérete korlátozza. |
 | Üzenetsor, témakör vagy előfizetési entitás üzenet-tulajdonságának mérete |Jogi személy | A rendszer létrehozza a kivétel **SerializationException** . |Az üzenetsor maximális mérete az egyes tulajdonságokhoz 32 000. Az összes tulajdonság összesített mérete nem haladhatja meg a 64 000-ot. Ez a korlát a [BrokeredMessage](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)teljes fejlécére vonatkozik, amely a felhasználói tulajdonságokat és a rendszer tulajdonságait, például a [sorszám](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), a [label](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)és a [MessageID](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid). |
-| Előfizetések száma témakör szerint |Jogi személy |A további előfizetések létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a portálon keresztül van konfigurálva, hibaüzenet jelenik meg. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |2 000/téma az alapszintű vagy a standard szinthez. |
-| SQL-szűrők száma egy témakörben |Jogi személy |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |2 000 |
+| Előfizetések száma témakör szerint |Jogi személy |A további előfizetések létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a portálon keresztül van konfigurálva, hibaüzenet jelenik meg. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |2 000/témakör a standard szinthez. |
+| SQL-szűrők száma egy témakörben |Jogi személy |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |2,000 |
 | Korrelációs szűrők száma egy témakörben |Jogi személy |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |100 000 |
 | SQL-szűrők vagy-műveletek mérete |Névtér |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket, és a hívási kód kivételt kap. |A szűrési feltétel karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Szabály műveleti karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Kifejezések maximális száma szabály szerint művelet: 32. |
 | [SharedAccessAuthorizationRule](/dotnet/api/microsoft.servicebus.messaging.sharedaccessauthorizationrule) -szabályok száma névtér, üzenetsor vagy témakör szerint |Entitás, névtér |A további szabályok létrehozására vonatkozó további kérelmeket a rendszer elutasítja, és a hívó kód kivételt kap. |Szabályok maximális száma: 12. <br /><br /> A Service Bus névterekben konfigurált szabályok az adott névtérben lévő összes várólistára és témakörre érvényesek. |
-| Üzenetek száma tranzakció szerint | tranzakció | A rendszer elutasítja a további bejövő üzeneteket, és kivételt jelent a következő: "nem lehet több mint 100 üzenetet küldeni egyetlen tranzakcióban" a hívó kód fogadja. | 100 <br /><br /> Mind a **Send ()** , mind a **SendAsync ()** művelethez. |
+| Üzenetek száma tranzakció szerint | Tranzakció | A rendszer elutasítja a további bejövő üzeneteket, és kivételt jelent a következő: "nem lehet több mint 100 üzenetet küldeni egyetlen tranzakcióban" a hívó kód fogadja. | 100 <br /><br /> Mind a **Send ()** , mind a **SendAsync ()** művelethez. |
 | Virtuális hálózat és IP-szűrési szabályok száma | Névtér | &nbsp; | 128 | 
 
 [Azure portal]: https://portal.azure.com

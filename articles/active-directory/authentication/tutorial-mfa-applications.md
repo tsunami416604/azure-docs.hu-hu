@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1bc721f4521c9ac9b8ed8fed2d6b41f6a1b8bd72
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 68474738aabde1b14752aa33789d7e40c3831908
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74846402"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154839"
 ---
 # <a name="tutorial-complete-an-azure-multi-factor-authentication-pilot-roll-out"></a>Oktatóanyag: Az Azure Multi-Factor Authentication próbaverziójának bevezetése
 
@@ -36,10 +36,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan konfigurálhat egy feltételes ho
 ## <a name="enable-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication engedélyezése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) egy globális rendszergazdai fiókkal.
-1. **Azure Active Directory**keresése, **feltételes hozzáférés**
+1. **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés** keresése
 1. Válassza az **Új szabályzat** lehetőséget.
 1. Adja az **MFA teszt** nevet a szabályzatnak.
-1. A **Felhasználók és csoportok** területen válassza a **Felhasználók és csoportok kiválasztása** választógombot.
+1. A **felhasználók és csoportok**területen válassza a **felhasználók és csoportok kiválasztása** választógombot.
     * Válassza ki a cikk előfeltételeket ismertető szakaszában létrehozott tesztcsoportot.
     * Kattintson a **Kész** gombra.
 1. A **Felhőalkalmazások** területen válassza az **Alkalmazások kiválasztása** választógombot.
@@ -70,9 +70,9 @@ A feltételes hozzáférési szabályzat működésének bizonyításához teszt
 Ha az oktatóanyag keretében konfigurált funkciót a továbbiakban már nem szeretné használni, végezze el a következő módosításokat.
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Tallózással keresse meg **Azure Active Directory**, **feltételes hozzáférést**.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza ki a létrehozott feltételes hozzáférési szabályzatot.
-1. Kattintson a **Törlés** gombra.
+1. Kattintson a **Delete** (Törlés) gombra.
 
 ## <a name="next-steps"></a>Következő lépések
 

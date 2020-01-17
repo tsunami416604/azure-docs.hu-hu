@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e03aa99e53f4aa2c646dc425a18d848539d537b0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: effd0593384190eb1a1cf261305dd61818c3d0b0
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75768299"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120789"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hackerone"></a>Oktatóanyag: Azure Active Directory integráció a HackerOne
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     ![HackerOne tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-identifier.png)
 
-    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt: `https://hackerone.com/users/saml/auth`
+    a. A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt: `https://hackerone.com/users/saml/sign_in?email=<configured domain>`
 
     b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be a következőt: `hackerone.com`
 
@@ -155,7 +155,13 @@ Az Azure AD egyszeri bejelentkezés HackerOne való konfigurálásához hajtsa v
 
     a. Kattintson a **teszt futtatása**gombra.
 
-    b. Ha az **állapot** mező értéke megegyezik az **utolsó teszt állapotával: létrejött**, forduljon a [HackerOne támogatási csapatához](mailto:support@hackerone.com) , és kérjen áttekintést a konfigurációról.
+6. Ha a teszt sikeresen befejeződik, és az **állapot** mező az **utolsó teszt állapotot mutatja: sikeres**, válassza a **kérelem ellenőrzése** gombot, hogy elküldje a HackerOne jóváhagyásra.
+
+    ![Küldés a HackerOne jóváhagyásra](./media/hackerone-tutorial/tutorial-hackerone-006.png)
+
+7. Miután a HackerOne jóváhagyta a beállításokat, bejelölheti a **felhasználók** átadása gombot az egyszeri bejelentkezéses hitelesítés megkövetelése az összes felhasználó számára.
+
+    ![SAML engedélyezése](./media/hackerone-tutorial/tutorial-hackerone-007.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -174,7 +180,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
     ![A felhasználó párbeszédpanel](common/user-properties.png)
 
     a. A név mezőbe írja be a **BrittaSimon** **nevet** .
-  
+
     b. A **Felhasználónév** mezőbe írja be a következőt: **brittasimon\@yourcompanydomain. Extension**  
     Például: BrittaSimon@contoso.com
 

@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsofttól származó, összefolyásánál SAML SSO-val | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsofttól származó, összefolyásánál SAML egyszeri bejelentkezéssel | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Microsoft Azure Active Directory és a köztes SAML egyszeri bejelentkezés között.
 services: active-directory
 documentationCenter: na
@@ -16,14 +16,14 @@ ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d54580d395b17d80742ed95aefa479f4bc104484
-ms.sourcegitcommit: 4d177e6d273bba8af03a00e8bb9fe51a447196d0
+ms.openlocfilehash: e6ea52474f3b352fabf19050f20012438e9d0c19
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71960074"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120589"
 ---
-# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsofttól származó, összefolyásánál SAML SSO-val
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Microsoft Azure Active Directory (Azure AD) szolgáltatásával a összefolyásánál SAML SSO-t. Ha a Microsoft Azure AD-vel integrálja a összefolyásánál SAML SSO-t, a következőket teheti:
 
@@ -55,7 +55,7 @@ Az Azure AD-integráció konfigurálásához a Microsofttól származó, összef
 
 Első lépésként a következő elemeket kell megadnia:
 
-* Ne használja az éles környezetben, csak szükség esetén.
+* Ne használja éles környezetét, ha szükséges.
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * A Microsoft egyszeri bejelentkezés (SSO) engedélyezett előfizetése által elérhető SAML egyszeri bejelentkezés.
 
@@ -63,25 +63,9 @@ Első lépésként a következő elemeket kell megadnia:
 
 Mostantól a torkolatánál következő verziói támogatottak:
 
-- Összefolyásánál 5,0 – 5,10
-- Összefolyásánál 6.0.1
-- Összefolyásánál 6.1.1
-- Összefolyásánál 6.2.1
-- Összefolyásánál 6.3.4
-- Összefolyásánál 6.4.0
-- Összefolyásánál 6.5.0
-- Összefolyásánál 6.6.2
-- Összefolyásánál 6.7.0
-- Összefolyásánál 6.8.1
-- Összefolyásánál 6.9.0
-- Összefolyásánál 6.10.0
-- Összefolyásánál 6.10.3
-- Összefolyásánál 6.11.0
-- Összefolyásánál 6.12.0
-- Összefolyásánál 6.13.5
-- Összefolyásánál 6.15.3
-- Összefolyásánál 6.15.4
-- Összefolyásánál 6.15.8
+- Összefolyásánál: 5,0 – 5,10
+- Torkolatánál: 6.0.1 – 6.15.9
+- Torkolatánál: 7.0.1 – 7.1.0
 
 > [!NOTE]
 > Vegye figyelembe, hogy az összefolyásánál beépülő modul az Ubuntu 16,04-es verzióján is működik
@@ -132,28 +116,28 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító** mezőbe írjon be egy URL-címet a következő minta használatával: `https://<domain:port>/`
 
-    c. A **Válasz URL-címe** szövegmezőbe írja be a következő mintát használó URL-címet: `https://<domain:port>/plugins/servlet/saml/auth`
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek az összefolyásánál beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozás](common/copy-metadataurl.png)
+    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
 1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
-1. Válassza ki **új felhasználó** a képernyő tetején.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Create** (Létrehozás) gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentkezés használatára engedélyezze a hozzáférést a Microsoft által biztosított összefolyásánál SAML SSO-hoz.
 
@@ -161,7 +145,7 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 1. Az alkalmazások listában válassza a **összefolyásánál SAML SSO a Microsoft által**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
@@ -261,7 +245,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
     b. A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például: B. Simon.
 
-    c. Az **e-mail** szövegmezőbe írja be a felhasználó e-mail-címét, például B.Simon@contoso.com.
+    c. Az **e-mail** szövegmezőbe írja be a felhasználó (például B.Simon@contoso.com) e-mail-címét.
 
     d. A **jelszó** szövegmezőbe írja be a következőt: B. Simon.
 
@@ -271,7 +255,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
 Ha a hozzáférési panelen a Microsoft csempén lévő összefolyásánál SAML egyszeri bejelentkezésre kattint, a Microsoft automatikusan bejelentkezik a összefolyásánál SAML SSO-ba, amelyhez az SSO-t beállította. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 

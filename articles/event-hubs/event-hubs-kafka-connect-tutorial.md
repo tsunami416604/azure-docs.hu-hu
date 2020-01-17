@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 84220d5dda26c25f40138629e2be1f10d57fe3c4
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: df7198b68a083abf9be4ffe88e7a5dd848b2c535
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72555132"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119516"
 ---
 # <a name="integrate-apache-kafka-connect-support-on-azure-event-hubs-preview"></a>Az Apache Kafka Connect-támogatás és az Azure Event Hubs integrálása (előzetes verzió)
 Az üzleti igények növekedésével arra is egyre nagyobb igény jelentkezik, hogy a rendszer képes legyen különböző külső források és fogadók betöltésére. Az [Apache Kafka Connect](https://kafka.apache.org/documentation/#connect) által biztosított keretrendszer egy Kafka-fürtön keresztül képes csatlakozni és adatokat importálni/exportálni olyan külső rendszerekből, mint a MySQL, a HDFS és különböző fájlrendszerek. Ez az oktatóanyag azt mutatja be, hogyan használható a Kafka Connect keretrendszere a Kafka-kompatibilis Event Hubs szolgáltatással.
@@ -107,7 +107,9 @@ Ebben a lépésben helyileg el fog indítani egy Kafka Connect-feldolgozót elos
 4. Futtassa az `./bin/connect-distributed.sh /PATH/TO/connect-distributed.properties` parancsot.  A Connect-feldolgozó REST API akkor áll készen az interakcióra, amikor meglátja az `'INFO Finished starting connectors and tasks'` szöveget. 
 
 > [!NOTE]
-> Az Event Hubs lehetővé teszi a Kafka-ügyfelek számára a témakörök automatikus létrehozását. A névtérből az Azure Portalon gyorsan ki lehet deríteni, hogy a Connect-feldolgozó belső témakörei automatikusan jöttek létre.
+> A Kafka-kapcsolat a Kafka AdminClient API-val automatikusan hozza létre a javasolt konfigurációkat tartalmazó témákat, beleértve a tömörítést is. A névtérből az Azure Portalon gyorsan ki lehet deríteni, hogy a Connect-feldolgozó belső témakörei automatikusan jöttek létre.
+>
+>A Kafka-kapcsolat belső témaköreinek **tömörítést kell használniuk**.  A Event Hubs csapat nem felelős a nem megfelelő konfigurációk kijavításában, ha a belső csatlakozási témakörök helytelenül vannak konfigurálva.
 
 ### <a name="create-connectors"></a>Összekötők létrehozása
 Ez a szakasz végigvezeti a FileStreamSource és a FileStreamSink összekötő elindításán. 

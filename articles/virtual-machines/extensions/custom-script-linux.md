@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: dcc9e63eba605e87a14ba4f09c61a00e9629bd23
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 22346501444694675d92d9a37497f9304c76e13d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941213"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156556"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
@@ -110,7 +110,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus | 
+| Name (Név) | Érték/példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | dátum |
 | közzétevő | Microsoft. számítás. bővítmények | sztring |
@@ -119,7 +119,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | fileUris (például) | https://github.com/MyProject/Archive/MyPythonScript.py | tömb |
 | commandToExecute (például) | Python MyPythonScript.py \<My-param1 > | sztring |
 | szkriptet. | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
-| skipDos2Unix (például) | false | logikai |
+| skipDos2Unix (például) | hamis | logikai |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
@@ -210,7 +210,7 @@ A CustomScript a következő algoritmust használja a parancsfájlok végrehajt�
 
 ####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
 
-A CustomScript (2.1.2-es verzió) támogatja a [felügyelt identitáson](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) alapuló RBAC, amely a "fileUris" beállításban megadott URL-címekről tölti le a fájl (oka) t. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok/tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
+A CustomScript (2,1-es verzió) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
 
 Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 

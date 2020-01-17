@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c097c1f08bd72ed5795e4274c41e4eb48dbe34ad
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 736cca668057f38431f91e36ff8fa97840274a38
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73152961"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120655"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-frankly"></a>Oktatóanyag: Azure Active Directory integráció & Őszintén
 
@@ -123,19 +123,15 @@ Ha az Azure AD egyszeri bejelentkezést & őszintén szeretné konfigurálni, ha
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-7. A **& Őszintén szólva szakaszban adja** meg a megfelelő URL-címeket (ek) a követelménynek megfelelően.
-
-    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
-
-    a. Bejelentkezési URL-cím
-
-    b. Azure ad-azonosító
-
-    c. Kijelentkezési URL-cím
 
 ### <a name="configure-frankly-single-sign-on"></a>& Őszinte egyszeri bejelentkezés konfigurálása
 
-Ha az egyszeri bejelentkezést **& őszintén** szeretné beállítani, a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket el kell küldenie a Azure Portalról, hogy [& őszintén támogassa a csapatot](mailto:help@andfrankly.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
+Az egyszeri bejelentkezés engedélyezése & őszintén:
+
+1. Jelentkezzen be & őszintén. Lépjen a **fiók** > **felhasználói kezelés**.
+1. Módosítsa a hitelesítési mechanizmust az alapértelmezettről a **vállalati bejelentkezésre (SAML)** .
+1. Töltse fel az előző szakasz 6. lépésében letöltött **összevonási metaadatok XML-fájlját** .
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -160,7 +156,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a  **Create** (Létrehozás) gombra.
+    d. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

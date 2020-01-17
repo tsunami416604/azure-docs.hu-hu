@@ -4,14 +4,14 @@ description: Ügyfelek csatlakoztatása az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 39c4d6a77121e0b52a1da827ebb9e1976f609b30
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b8486b5a33226b1faa5e3874144129dbe7a1a2f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415288"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153411"
 ---
 # <a name="mount-the-avere-vfxt-cluster"></a>Az Avere vFXT-fürt csatlakoztatása
 
@@ -47,7 +47,7 @@ function mount_round_robin() {
 
     # no need to write again if it is already there
     if ! grep --quiet "${DEFAULT_MOUNT_POINT}" /etc/fstab; then
-        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,nointr,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
+        echo "${ROUND_ROBIN_IP}:${NFS_PATH}    ${DEFAULT_MOUNT_POINT}    nfs hard,proto=tcp,mountproto=tcp,retry=30 0 0" >> /etc/fstab
         mkdir -p "${DEFAULT_MOUNT_POINT}"
         chown nfsnobody:nfsnobody "${DEFAULT_MOUNT_POINT}"
     fi
@@ -62,27 +62,27 @@ A fenti függvény a [avere vFXT-példák](https://github.com/Azure/Avere#tutori
 ## <a name="create-the-mount-command"></a>A csatlakoztatási parancs létrehozása
 
 > [!NOTE]
-> Ha nem hozott létre új BLOB-tárolót a avere vFXT-fürt létrehozásakor, kövesse a [tároló konfigurálása](avere-vfxt-add-storage.md) az ügyfelek csatlakoztatása előtt című szakasz lépéseit.
+> Ha nem hozott létre új BLOB-tárolót a avere vFXT-fürt létrehozásakor, adja hozzá a Storage-rendszereket a [tároló konfigurálása](avere-vfxt-add-storage.md) az ügyfelek csatlakoztatása előtt című témakörben leírtak szerint.
 
 Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) a vFXT-fürtön a helyi fájlrendszer egyik elérési útjára. A formátum ``mount <vFXT path> <local path> {options}``
 
 A csatlakoztatási parancsnak három eleme van:
 
-* vFXT elérési út – (az alábbi, az IP-cím és a névtér csatlakozási útvonalának kombinációja)
+* vFXT elérési út – az IP-cím és a névtér csatlakozási útvonalának kombinációja az alábbi fürt 9described
 * helyi elérési út – az ügyfél elérési útja
-* csatlakoztatási parancs beállításai – (a [csatlakoztatási parancs argumentumai](#mount-command-arguments)között szerepel)
+* csatlakoztatási parancs beállításai – a [csatlakoztatási parancs argumentumai](#mount-command-arguments)
 
 ### <a name="junction-and-ip"></a>Elágazás és IP
 
 A VServer elérési útja az *IP-címe* és a *névtér-elágazás*elérési útja kombinációja. A névtér-összekapcsolás egy virtuális elérési út, amely a tárolási rendszer hozzáadásakor lett meghatározva.
 
-Ha a fürt blob Storage-sel lett létrehozva, a névtér elérési útja `/msazure`
+Ha a fürt blob Storage-sel lett létrehozva, a tárolóhoz tartozó névtér elérési útja `/msazure`
 
 Például: ``mount 10.0.0.12:/msazure /mnt/vfxt``
 
-Ha a fürt létrehozása után hozzáadta a tárolót, a névtér-elágazás elérési útja megfelel a csomópont létrehozásakor a **névtér elérési** útján megadott értéknek. Ha például a névtér elérési útjaként ``/avere/files`` használta, az ügyfelek *IP_address*:/avere/Files a helyi csatlakoztatási pontra.
+Ha a fürt létrehozása után hozzáadta a tárolót, a névtér-elágazás elérési útja az elágazás létrehozásakor a **névtér elérési** útja mezőben megadott érték. Ha például a névtér elérési útjaként ``/avere/files`` használta, az ügyfelek *IP_address*:/avere/Files a helyi csatlakoztatási pontra.
 
-!["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/avere-vfxt-create-junction-example.png)
+!["Új elágazás hozzáadása" párbeszédpanel a/avere/Files a névtér elérési útja mezőben](media/avere-vfxt-create-junction-example.png) <!-- to do - change example and screenshot to vfxt/files instead of avere -->
 
 Az IP-cím a VServer definiált ügyféloldali IP-címek egyike. Az ügyféloldali IP-címek tartományát két helyen találja a avere Vezérlőpultján:
 
@@ -100,7 +100,7 @@ Az elérési utakon kívül az egyes ügyfelek csatlakoztatásakor az alább ism
 
 A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a beállításokat és argumentumokat a csatlakoztatási parancsban:
 
-``mount -o hard,nointr,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
+``mount -o hard,proto=tcp,mountproto=tcp,retry=30 ${VSERVER_IP_ADDRESS}:/${NAMESPACE_PATH} ${LOCAL_FILESYSTEM_MOUNT_POINT}``
 
 | Szükséges beállítások | |
 --- | ---
@@ -109,14 +109,10 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 ``mountproto=netid`` | Ez a beállítás támogatja a hálózati hibák megfelelő kezelését a csatlakoztatási műveletekhez.
 ``retry=n`` | Az átmeneti csatlakoztatási hibák elkerülése érdekében ``retry=30`` beállítása. (Az előtér-csatlakoztatásokban egy másik érték használata javasolt.)
 
-| Előnyben részesített beállítások  | |
---- | ---
-``nointr``            | A "nem intr" kapcsoló előnyben részesített olyan ügyfelek számára, akik örökölt kernelekkel rendelkeznek (a 2008. előtt), amelyek támogatják ezt a beállítást. Vegye figyelembe, hogy a "intr" beállítás az alapértelmezett.
-
 ## <a name="next-steps"></a>Következő lépések
 
-Miután csatlakoztatta az ügyfeleket, felhasználhatja őket a háttérbeli adattárolás (Core Filer) feltöltéséhez. A további telepítési feladatokkal kapcsolatos további információkért tekintse meg ezeket a dokumentumokat:
+Miután csatlakoztatta az ügyfeleket, felhasználhatja őket az új blob Storage-tárolóba való másolásához a fürtön. Ha nem kell új tárterületet kitöltenie, olvassa el a további telepítési feladatokkal kapcsolatos további hivatkozásokat:
 
-* [Adatok áthelyezése a cluster Core filerbe](avere-vfxt-data-ingest.md) – hogyan lehet több ügyfelet és szálat használni az adatok hatékony feltöltéséhez
+* [Adatok áthelyezése a cluster Core filerbe](avere-vfxt-data-ingest.md) – a több ügyfél és szál használata az adatok hatékony feltöltéséhez egy új Core Filer-be
 * [Fürt testreszabása](avere-vfxt-tuning.md) – a fürt beállításainak személyre szabása a munkaterhelésnek megfelelően
 * [A fürt kezelése](avere-vfxt-manage-cluster.md) – a fürt elindítása és leállítása, valamint a csomópontok kezelése

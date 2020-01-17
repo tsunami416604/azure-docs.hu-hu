@@ -1,28 +1,28 @@
 ---
 title: 'Oktatóanyag: geokerítésen létrehozása és eszközök nyomon követése térképeken | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan telepítheti a geokerítésen, és nyomon követheti az eszközöket a geokerítésen képest a Microsoft Azure Maps térbeli szolgáltatás használatával.
+description: Megtudhatja, hogyan állíthat be geokerítésen, és hogyan követheti nyomon az eszközöket a geokerítésen képest a Microsoft Azure Maps térbeli szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 0e408adfe1daed402ef690224368e846bd0a97c8
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910947"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153138"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
-Ez az oktatóanyag végigvezeti a geokerítésen a Azure Maps használatával történő beállításához szükséges alapismereteken. Az ebben az oktatóanyagban ismertetett forgatókönyv segít az építkezési vezetők számára a kijelölt építési területeken túlmutató lehetséges veszélyes berendezések figyelésében. Az építkezések költséges berendezéseket és előírásokat foglalnak magukban. Általában megköveteli, hogy a berendezés az építkezési helyen maradjon, és ne hagyjon engedély nélkül.
+Ez az oktatóanyag végigvezeti a geokerítésen a Azure Maps használatával történő beállításához szükséges alapismereteken. Gondolja át ezt az esetet, ha egy építési Site Manager a lehetséges veszélyes berendezések figyelésére van lehetőség. A kezelőnek biztosítania kell, hogy a berendezés a kiválasztott általános építési területeken maradjon. Ez az általános felépítési munkaterület egy rögzített paraméter. A szabályozások megkövetelik, hogy a berendezések ezen a paraméteren belül maradjanak, és a rendszer a Operations Manager.  
 
-Azure Maps adatfeltöltő API-t fogjuk használni egy geokerítésen tárolásához, és az Azure Maps Geokerítésen API-t használva ellenőrizhetjük a berendezések helyét a geokerítésen viszonyítva. A geokerítésen eredményeinek továbbítására és a geokerítésen eredmények alapján történő bejelentésére a Azure Event Grid fogjuk használni.
-További információ a Event Gridről: [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
-Ebben az oktatóanyagban a következőket fogja elsajátítani:
+Az adatfeltöltő API-val tárolunk egy geokerítésen, és a Geokerítésen API használatával ellenőrizhetjük a berendezések helyét a geokerítésen viszonyítva. Az adatfeltöltő API és a Geokerítésen API is a Azure Maps. A geokerítésen eredményeinek továbbítására és a geokerítésen eredmények alapján történő bejelentésére is a Azure Event Grid használjuk. További információ a Event Gridről: [Azure Event Grid](https://docs.microsoft.com/azure/event-grid/overview).
+
+Ebben az oktatóanyagban a következőket ismertetjük:
 
 > [!div class="checklist"]
 > * Az adatfeltöltő API használatával töltse fel a geokerítésen területét a Azure Mapsba.
@@ -36,13 +36,15 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 
 ### <a name="create-an-azure-maps-account"></a>Azure Maps-fiók létrehozása 
 
-Az oktatóanyag lépéseinek elvégzéséhez kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetése S1 díjszabási szinten című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához című témakör utasításait. Az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account) című témakörben bemutatjuk, hogyan kérheti le a fiók elsődleges kulcsát. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 ## <a name="upload-geofences"></a>Geofences feltöltése
 
-Az adatfeltöltő API-val az építkezési hely geokerítésen feltöltéséhez a Poster alkalmazást fogjuk használni. Ebben az oktatóanyagban feltételezzük, hogy van egy általános építkezési terület, amely egy olyan rögzített paraméter, amelyet az építőipari berendezés nem sért. A kerítés megsértése súlyos támadás, és a Operations Managernek jelentett. További kerítések optimalizált készlete használható, amely a teljes építkezési terület különböző építési területeit nyomon követheti ütemterv szerint. Tegyük fel, hogy a fő geokerítésen rendelkezik egy subsite1, amely egy beállított lejárati idővel rendelkezik, és ez idő után lejár. Igény szerint több beágyazott geofences is létrehozhat. Előfordulhat például, hogy a subsite1 az 1. és a 2. Alhely 4. hetében történik, ahol a munka az 5 – 7. héten zajlik. Az ilyen kerítések a projekt elején egyetlen adatkészletbe tölthetők be, és a szabályok az idő és a tér alapján követhetők nyomon. A geokerítésen adatformátumával kapcsolatos további információkért lásd: [Geokerítésen GeoJSON-adatok](https://docs.microsoft.com/azure/azure-maps/geofence-geojson). Az adatok Azure Maps szolgáltatásba való feltöltésével kapcsolatos további információkért lásd az [Adatfeltöltő API dokumentációját](https://docs.microsoft.com/rest/api/maps/data/uploadpreview) .
+Feltételezzük, hogy a fő geokerítésen a subsite1, amely a beállított lejárati idővel rendelkezik. Igény szerint több beágyazott geofences is létrehozhat. Ezek a kerítések a teljes építkezési terület különböző építési területeinek nyomon követésére használhatók. Előfordulhat például, hogy a subsite1 az ütemterv 1. és 4. hetében zajlik. a subsite2 lehet, hogy a munka az 5. és 7. hét között zajlik. Az ilyen kerítések a projekt elején egyetlen adatkészletbe tölthetők be. Ezek a kerítések a szabályok idő és hely alapján történő nyomon követésére szolgálnak. 
 
-Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építkezési hely geokerítésen feltöltéséhez a Azure Maps, az adatfeltöltő API használatával.
+Az adatfeltöltő API-val az építkezési hely geokerítésen feltöltéséhez használjuk a Poster alkalmazást. Telepítse a [Poster alkalmazást](https://www.getpostman.com/) , és hozzon ki egy ingyenes fiókot. 
+
+Miután telepítette a Poster alkalmazást, kövesse az alábbi lépéseket az építkezési hely geokerítésen feltöltéséhez a Azure Maps, az adatfeltöltő API használatával.
 
 1. Nyissa meg a Poster alkalmazást, és kattintson az új elemre | Hozzon létre egy újat, és válassza a kérelem lehetőséget. Adja meg a geokerítésen-adatok feltöltésére vonatkozó kérelem nevét, válassza ki azt a gyűjteményt vagy mappát, ahová menteni szeretné, majd kattintson a Mentés gombra.
 
@@ -56,11 +58,11 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
     
     Az URL-cím GEOJSON paramétere a feltöltött adatformátumot jelöli.
 
-3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az előfizetés-kulcs értékét a Azure Maps kulcsra.
+3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket a post kérelem URL-címéhez kíván használni. Cserélje le az {előfizetés-Key}-t a Azure Maps előfizetési kulcsára, más néven az elsődleges kulcsra.
    
     ![Az adatok feltöltésének paraméterei (geokerítésen) a Poster-ben](./media/tutorial-geofence/postman-key-vals.png)
 
-4. Kattintson a **törzs** elemre, majd válassza a nyers bemeneti formátum lehetőséget, majd a legördülő listából válassza a JSON lehetőséget. Adja meg a következő JSON-t a feltöltött adatként:
+4. Kattintson a **törzs** elemre, majd válassza ki a nyers bemeneti formátumot, és a legördülő listából válassza a JSON lehetőséget. Adja meg a következő JSON-t a feltöltött adatként:
 
    ```JSON
    {
@@ -148,19 +150,19 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
    }
    ```
 
-5. Kattintson a Küldés gombra, és tekintse át a válasz fejlécét. Sikeres kérelem esetén a **hely** fejléce tartalmazza az állapot URI-ját a feltöltési kérelem aktuális állapotának vizsgálatához. Az állapot URI-ja a következő formátumú lesz. 
+5. Kattintson a Küldés gombra, és tekintse át a válasz fejlécét. Sikeres kérelem esetén a **Location** fejléc tartalmazza az állapot URI-ját. Az állapot URI-ja a következő formátumú. 
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-6. Másolja ki az állapot-URI-t, és fűzze hozzá a `subscription-key` paramétert a Azure Maps fiókja előfizetési kulcsának értékeként. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie:
+6. Másolja ki az állapot-URI-t, és fűzze hozzá az előfizetés-kulcsot. Az állapot URI-formátumának az alábbihoz hasonlónak kell lennie. Figyelje meg, hogy az alábbi formátumban megváltoztathatja a {előfizetés-Key}, beleértve a {} előfizetési kulcsot is.
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-7. A `udId` megnyitásához nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és hozzon igénybe egy GET kérelmet az állapot URI-n Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId későbbi használatra.
+7. A `udId`beszerzéséhez nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon. a GET kérelem az előző lépésben megadott status URI-n keresztül végezhető el. Ha az adatok feltöltése sikeres volt, a udId fog megjelenni a válasz törzsében. Másolja a udId későbbi használatra.
 
    ```JSON
    {
@@ -170,31 +172,33 @@ Nyissa meg a Poster alkalmazást, és kövesse az alábbi lépéseket az építk
 
 ## <a name="set-up-an-event-handler"></a>Eseménykezelő beállítása
 
-A beléptetési és kilépési eseményekkel kapcsolatos Operations Manager értesítéséhez létre kell hozni egy eseménykezelőt, amely fogadja az értesítéseket.
+Ebben a szakaszban egy, az értesítéseket fogadó eseménykezelőt hozunk létre. Az eseménykezelőnek értesítenie kell a Operations Manager az egyes berendezések belépési és kilépési eseményeiről.
 
-Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) szolgáltatást hozunk létre az események kezeléséhez, beírásához és kilépéséhez. A Logic Apps az események által aktivált eseményindítókat is létrehozunk. Az ötlet a riasztások küldése, ebben az esetben a Operations Manager e-mail-címe, amikor a berendezések belépnek vagy kilépnek az építkezési helyről. Az alábbi ábra bemutatja, hogyan kell létrehozni egy logikai alkalmazást a geokerítésen esemény megadásához. Hasonlóképpen, létrehozhat egy másikat a kilépési eseményhez.
-További információért tekintse meg az összes [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) .
+Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) -szolgáltatást teszünk elérhetővé az események kezelésére, beírására és kilépésére. A Logic Apps trigger eseményeinél több esemény is aktiválódik a sorozatban. Az a gondolat, hogy a riasztásokat, ebben az esetben e-maileket küld a Operations Manager. Az alábbi ábra bemutatja, hogyan kell létrehozni egy logikai alkalmazást a geokerítésen esemény megadásához. Hasonlóképpen, létrehozhat egy másikat a kilépési eseményhez. További információért tekintse meg az összes [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
 1. Logikai alkalmazás létrehozása Azure Portal
 
    ![Azure Logic Apps létrehozása a geokerítésen-események kezeléséhez](./media/tutorial-geofence/logic-app.png)
 
-2. Válasszon egy HTTP-kérelem triggert, majd válassza az "e-mail küldése" műveletet az Outlook-összekötőben
+2. A logikai alkalmazás beállítások menüjében navigáljon a **Logic app Designer alkalmazáshoz** .
+
+3. Válasszon ki egy HTTP-kérelem triggert, majd válassza az "új lépés" lehetőséget. Az Outlook-összekötőben válassza az "e-mail küldése" műveletet
   
    ![Logic Apps séma](./media/tutorial-geofence/logic-app-schema.png)
 
-3. Mentse a logikai alkalmazást a HTTP URL-cím végpontjának létrehozásához és a HTTP URL-cím másolásához.
+4. Adja meg az e-mailek küldésére szolgáló mezőket. Hagyja meg a HTTP URL-címet, a rendszer automatikusan létrehozza a Mentés gombra kattintás után.
 
    ![Logic Apps végpont létrehozása](./media/tutorial-geofence/logic-app-endpoint.png)
 
+5. Mentse a logikai alkalmazást a HTTP URL-cím végpontjának létrehozásához és a HTTP URL-cím másolásához.
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps esemény-előfizetés létrehozása
 
-A Azure Maps három eseménytípus használatát támogatja. Tekintse meg a Azure Maps támogatott eseménytípus [itt](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps). Két különböző előfizetést hozunk létre, egyet a bevitelhez és a másikat a kilépési eseményekhez.
+A Azure Maps három eseménytípus használatát támogatja. Tekintse meg a Azure Maps támogatott eseménytípus [itt] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Két különböző esemény-előfizetésre van szükségünk, egyet az ENTER eseményhez és egyet a kilépési eseményekhez.
 
 Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geokerítésen események beviteléhez. A geokerítésen kilépési eseményeihez hasonló módon fizethet elő.
 
-1. Navigáljon a Azure Maps-fiókjához [ezen a portálon](https://ms.portal.azure.com/#@microsoft.onmicrosoft.com/dashboard/) keresztül, és válassza az események lapot.
+1. Navigáljon a Azure Maps-fiókjához. Az irányítópulton válassza az előfizetések lehetőséget. Kattintson az előfizetés nevére, és válassza az **események** lehetőséget a beállítások menüben.
 
    ![Azure Maps-fiók eseményeinek megkeresése](./media/tutorial-geofence/events-tab.png)
 
@@ -202,23 +206,27 @@ Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geoke
 
    ![Azure Maps esemény-előfizetés létrehozása](./media/tutorial-geofence/create-event-subscription.png)
 
-3. Nevezze el az események előfizetését, és fizessen elő az ENTER eseménytípus típusra. Most válassza ki a "végpont típusa" nevű webhookot, és másolja a logikai alkalmazás HTTP URL-végpontját a "Endpoint" értékre.
+3. Nevezze el az események előfizetését, és fizessen elő az ENTER eseménytípus típusra. Most válassza a webhook lehetőséget a "végpont típusa" elemre. Kattintson a "végpont kiválasztása" elemre, és másolja a logikai alkalmazás HTTP URL-végpontját a következőre: {Endpoint}
 
    ![Azure Maps események előfizetés részletei](./media/tutorial-geofence/events-subscription.png)
 
 
 ## <a name="use-geofence-api"></a>A Geokerítésen API használata
 
-A Geokerítésen API-val ellenőrizhető, hogy egy **eszköz** (a berendezés az állapot részét képezi-e) egy geokerítésen belül vagy kívül van-e. A geokerítésen GET API jobb megismeréséhez. Azt a különböző helyekről kérdezjük le, ahol egy adott berendezés az idő múlásával mozgott. Az alábbi ábra egy adott építőipari berendezés öt helyét mutatja be, amely egy egyedi **azonosítójú eszköz** , amely időrendi sorrendben van megfigyelve. A rendszer az alábbi öt helyet használja a geokerítésen megadására és a kilépési állapot változására a kerítésen. Ha az állapot módosul, a geokerítésen szolgáltatás elindít egy eseményt, amelyet a Event Grid a logikai alkalmazásnak továbbít. Ennek eredményeképpen a művelet kezelőjének e-mailben kell megkapnia a megfelelő Enter-vagy kilépési értesítést.
+A Geokerítésen API-val ellenőrizhető, hogy egy **eszköz**(ebben az esetben a berendezés) egy geokerítésen belül vagy kívül van-e. Lehetővé teszi, hogy lekérdezze a Geokerítésen GET API-t a különböző helyekről, ahol egy adott berendezés az idő múlásával mozgott. Az alábbi ábrán öt olyan helyet mutatunk be, amelyek öt építőipari berendezéssel rendelkeznek. 
 
 > [!Note]
-> A fenti forgatókönyv és viselkedés ugyanazon az **eszköz-azonosítón** alapul, hogy az az alábbi ábrán látható módon tükrözze az öt különböző helyet.
+> A forgatókönyv és a viselkedés ugyanazon az eszköz- **azonosítón** alapul, hogy az az alábbi ábrán látható módon tükrözze az öt különböző helyet.
+
+A "deviceId" egy egyedi azonosító, amelyet a GET kérelemben az eszköz számára biztosít a helyének lekérdezése során. Amikor aszinkron kérelmet küld a **Search GEOKERÍTÉSEN API-** hoz, a "deviceId" segít az eszköz geokerítésen-eseményeinek a megadott geokerítésen viszonyított közzétételében. Ebben az oktatóanyagban aszinkron kéréseket készítettünk az API-hoz egy egyedi "deviceId" használatával. Az oktatóanyagban szereplő kérelmek kronológiai sorrendben történnek, ahogy az ábrán is látható. A válasz "isEventPublished" tulajdonsága közzé lesz téve, amikor egy eszköz belép vagy kilép a geokerítésen. Ehhez az oktatóanyaghoz nem kell regisztrálnia az eszközt.
+
+Lehetővé teszi, hogy visszatekintse a diagramot. A rendszer az alábbi öt helyet használja a geokerítésen megadására és a kilépési állapot változására a kerítésen. Ha az állapot módosul, a geokerítésen szolgáltatás elindít egy eseményt, amelyet a Event Grid a logikai alkalmazásnak továbbít. Ennek eredményeképpen a művelet kezelője e-mailben megkapja a megfelelő Enter-vagy kilépési értesítést.
 
 ![Geokerítésen-leképezés Azure Maps](./media/tutorial-geofence/geofence.png)
 
 A Poster alkalmazásban nyisson meg egy új fület a fent létrehozott gyűjteményben. Válassza a HTTP-módszer beolvasása lehetőséget a szerkesztő lapon:
 
-A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő hely koordinátáit pedig időrendi sorrendben megfigyelt módon. Minden kérelmet a válasz törzse követ.
+A következő öt HTTP GET Geokerítések API-kérés a berendezés különböző földrajzi koordinátáival. A koordinátákat időrendi sorrendben kell megfigyelni. Minden kérelmet a válasz törzse követ.
  
 1. 1\. hely:
     
@@ -227,7 +235,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
    ```
    ![1\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query1.png)
 
-   Ha megtekinti a fenti választ, a fő geokerítésen származó negatív távolság azt jelenti, hogy a berendezés a geokerítésen belül helyezkedik el, és az alhelyről geokerítésen pozitív érték azt jelenti, hogy az Alhely geokerítésen kívül esik. 
+   A fenti válaszban a fő geokerítésen származó negatív távolság azt jelenti, hogy a berendezés a geokerítésen belül van. A alhelyről geokerítésen pozitív távolság azt jelenti, hogy a berendezés kívül esik a alhelyen geokerítésen. 
 
 2. 2\. hely: 
    
@@ -237,7 +245,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
     
    ![2\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query2.png)
 
-   Ha megtekinti az előző JSON-választ, a berendezés kívül esik az alhelyen, de a fő kerítésen belül van. Nem indít el eseményt, és nem küld e-mailt.
+   Ha megtekinti az előző JSON-választ, a berendezés kívül esik az alhelyen, de a fő kerítésen belül van. A rendszer nem indít el eseményt, és nem küld e-mailt.
 
 3. 3\. hely: 
   
@@ -247,7 +255,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
 
    ![3\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query3.png)
 
-   Állapot-változás történt, és most a berendezés a fő-és Alhely geofences belül van. Ez egy eseményt tesz közzé, és egy értesítő e-mailt küld a Operations Managernak.
+   Állapot-változás történt, és most a berendezés a fő-és Alhely geofences belül van. Ez a változás egy esemény közzétételét eredményezi, és egy értesítő e-mailt küld a rendszer a Operations Managernak.
 
 4. 4\. hely: 
 
@@ -257,7 +265,7 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
   
    ![4\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query4.png)
 
-   A megfelelő válasz körültekintő betartásával azt is megfigyelheti, hogy egyetlen esemény sem jelenik meg itt annak ellenére, hogy a berendezés kilépett a alhelyhez tartozó geokerítésen. Ha megtekinti a felhasználó megadott időpontját a GET kérelemben, láthatja, hogy az alwebhely geokerítésen lejárt, és a berendezés még mindig a fő geokerítésen van. A válasz törzsében a `expiredGeofenceGeometryId` alatt található Alhely geokerítésen geometriájának AZONOSÍTÓját is megtekintheti.
+   A megfelelő válasz körültekintő betartásával azt is megfigyelheti, hogy egyetlen esemény sem jelenik meg itt annak ellenére, hogy a berendezés kilépett a alhelyhez tartozó geokerítésen. Ha megtekinti a felhasználó megadott időpontját a GET kérelemben, láthatja, hogy a webhely geokerítésen érvényessége lejárt. A berendezés még mindig a fő geokerítésen van. A válasz törzsében a `expiredGeofenceGeometryId` alatt található Alhely geokerítésen geometriájának AZONOSÍTÓját is megtekintheti.
 
 
 5. 5\. hely:
@@ -268,11 +276,11 @@ A következő öt HTTP GET Geokerítések API-kérést, a berendezés eltérő h
 
    ![5\. geokerítésen-lekérdezés](./media/tutorial-geofence/geofence-query5.png)
 
-   Láthatja, hogy a berendezés elhagyta a fő építkezési hely geokerítésen. Egy eseményt tesz közzé, súlyos szabálysértést jelent, és kritikus riasztási e-mailt küld a Operations Managernak.
+   Láthatja, hogy a berendezés elhagyta a fő építkezési hely geokerítésen. Egy esemény kerül közzétételre, és a rendszer értesítő e-mailt küld a Operations Managernak.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan állíthatja be a geokerítésen úgy, hogy feltölti a Azure Mapsba az adatfeltöltő API használatával. Azt is megtanulta, hogyan használhatja a Azure Maps Events Gridt a geokerítésen-események előfizetéséhez és kezeléséhez. 
+Ebből az oktatóanyagból megtudhatta, hogyan állíthatja be a geokerítésen úgy, hogy az adatfeltöltő API használatával feltölti azt a Azure Maps és az adatszolgáltatásba. Azt is megtanulta, hogyan használhatja a Azure Maps Events Gridt a geokerítésen-események előfizetéséhez és kezeléséhez. 
 
 * Tekintse meg a [Azure Logic apps a tartalomtípusok kezelése](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)című témakört, amelyből megtudhatja, hogyan elemezheti a JSON-t egy összetettebb logika létrehozásához Logic Apps használatával.
 * Ha többet szeretne megtudni a Event Grid-eseménykezelőről, tekintse meg a [Event Grid támogatott események kezelői](https://docs.microsoft.com/azure/event-grid/event-handlers)című témakört.

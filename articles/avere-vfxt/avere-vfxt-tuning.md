@@ -4,30 +4,22 @@ description: Az Azure-beli avere-vFXT teljesítményének optimalizálására sz
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 8e25b3408482d9be9cb870df338ba0e53af52507
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: df20f050ff87fdb59a3e5cca373098240f8bfbb9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414330"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152935"
 ---
 # <a name="cluster-tuning"></a>Fürt finomhangolása
 
 A legtöbb vFXT-fürt kihasználhatja a testreszabott teljesítmény-beállításokat. Ezek a beállítások segítenek abban, hogy a fürt a legjobban működjön az adott munkafolyamattal, adatkészlettel és eszközökkel.
 
-Ezt a testreszabást a támogatási szakembernek kell elvégeznie, mert általában olyan funkciókat konfigurál, amelyek nem érhetők el a avere Vezérlőpultján.
+Ezt a testreszabást a támogatási képviselők segítségével kell elvégezni, mivel ez olyan funkciók konfigurálását is magában foglalhatja, amelyek nem érhetők el a avere Vezérlőpultján.
 
-Ez a szakasz az egyéni hangolás néhány lehetséges módját ismerteti.
-
-<!-- 
-[ xxx keep or not? \/ research this xxx ]
-
-> [!TIP]
-> The VDBench utility can be helpful in generating I/O workloads to test a vFXT cluster. Read [Measuring vFXT Performance](vdbench.md) to learn more.
-
--->
+Ez a szakasz néhány olyan egyéni finomhangolást ismertet, amelyet el lehet végezni.
 
 ## <a name="general-optimizations"></a>Általános optimalizálások
 
@@ -42,19 +34,21 @@ Ezeket a módosításokat az adatkészlet tulajdonságai vagy a munkafolyamat st
 
 ## <a name="cloud-nas-or-cloud-gateway-optimizations"></a>Cloud NAS vagy Cloud Gateway-optimalizálás
 
-A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználása egy felhőalapú NAS-vagy átjáró-forgatókönyvben (ahol a vFXT-fürt egy felhőalapú tárolóhoz biztosít NAS-stílusú hozzáférést), a képviselő a következőhöz hasonló beállítások módosítását javasolja: adatok agresszív leküldése a tárolási kötetre a gyorsítótárból:
+A Felhőbeli NAS-vagy átjáró-forgatókönyvekben a vFXT-fürt NAS stílusú hozzáférést biztosít egy felhőalapú tárolóhoz. A vFXT-fürt és a Felhőbeli tárolók közötti nagyobb adatsebességek kihasználásához a képviselő javaslatot tehet a beállítások módosítására, hogy a rendszer a gyorsítótárból agresszíven küldje el az adatait a tárolási kötetre. Példa:
 
 * Növelje meg a fürt és a tároló közötti TCP-kapcsolatok számát
 
 ## <a name="cloud-bursting-or-hybrid-wan-optimizations"></a>Cloud burst vagy hibrid WAN-optimalizálás
 
-A felhőalapú burst-forgatókönyv vagy a hibrid tárolás WAN-optimalizálási forgatókönyve (ahol a vFXT-fürt biztosítja a Felhőbeli és a helyszíni hardveres tárolók közötti integrációt), ezek a változások hasznosak lehetnek:
+A felhőalapú és a hibrid tárolási WAN-optimalizálási forgatókönyv esetén a vFXT-fürt integrációt biztosít a felhő és a helyszíni hardveres tároló között. Ezek a változások hasznosak lehetnek:
 
 * Növelje a fürt és a Core Filer között engedélyezett TCP-kapcsolatok számát
 * Engedélyezze a távoli Core Filer WAN-optimalizálási beállítását (ez a beállítás használható távoli helyszíni Filer-hez vagy egy másik Azure-régióban lévő Cloud Core Filer-hoz.)
-* Növelje a TCP-szoftvercsatorna pufferének méretét (a munkaterhelés és a teljesítmény igényeitől függően)
-* Engedélyezze a "mindig továbbítható" beállítást a redundánsan gyorsítótárazott fájlok csökkentése érdekében (a munkaterhelés és a teljesítmény igényeitől függően)
+* Növelje a TCP-szoftvercsatorna pufferének méretét<sup>*</sup>
+* A redundánsan gyorsítótárazott fájlok csökkentése érdekében engedélyezze a "mindig továbbítható" beállítást<sup>*</sup>
+
+<sup>*</sup> Előfordulhat, hogy ezek a módosítások nem vonatkoznak minden rendszerre, a munkaterhelés és a teljesítmény igényeitől függően.
 
 ## <a name="help-optimizing-your-avere-vfxt-for-azure"></a>Az Azure-hoz készült avere-vFXT optimalizálásának elősegítése
 
-A [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md) című témakörben ismertetett eljárással vegye fel a kapcsolatot a támogatási munkatársakkal ezekkel az optimalizálásokkal kapcsolatban.
+Ha kapcsolatba szeretné lépni az ezen optimalizálásokkal kapcsolatos támogatási munkatársakkal, használja a [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md)című témakörben ismertetett eljárást.

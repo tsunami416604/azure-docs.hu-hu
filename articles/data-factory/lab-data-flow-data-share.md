@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: f5e36095c506918298404758523642073dfd19c7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 6c501205812ac72da8cd970b61b71e493888cef1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864545"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156726"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -99,7 +99,7 @@ A hibakeresés bekapcsolásához kattintson a Factory felső sávján találhat�
 
 ![Portál](media/lab-data-flow-data-share/configure10.png)
 
-## <a name="ingest-data-from-azure-sql-db-into-adls-gen2-using-the-copy-activity"></a>Adatok beolvasása az Azure SQL DB-ből a ADLS Gen2 a másolási tevékenység használatával
+## <a name="ingest-data-using-the-copy-activity"></a>Adatbevitel a másolási tevékenység használatával
 
 Ebben a szakaszban egy másolási tevékenységgel rendelkező folyamatot fog létrehozni, amely egy, az Azure SQL-ADATBÁZISból egy ADLS Gen2 Storage-fiókba tölti be az egyik táblázatot. Megtudhatja, hogyan adhat hozzá egy folyamatot, konfigurálhat egy adatkészletet, és hogyan végezhet hibakeresést az ADF UX használatával. Az ebben a szakaszban használt konfigurációs minta a kapcsolódó adattárakból a fájl alapú adattárba való másolásra is alkalmazható.
 

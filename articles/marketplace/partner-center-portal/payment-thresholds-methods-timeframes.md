@@ -125,7 +125,7 @@ Az alábbi táblázatokban megtekintheti azokat az országokat/régiókat, amely
 | Liechtenstein                    | Igen               | Igen                                      | Igen    | Igen             |
 | Litvánia                        | Igen               | Igen                                      | Igen    | Nem              |
 | Luxemburg                       | Igen               | Igen                                      | Igen    | Igen             |
-| Macedónia                        | Nem                | Igen                                      | Igen    | Nem              |
+| Észak-Macedónia                        | Nem                | Igen                                      | Igen    | Nem              |
 | Madagaszkár                       | Igen               | Igen                                      | Igen    | Nem              |
 | Malawi                           | Igen               | Igen                                      | Igen    | Igen             |
 | Malajzia                         | Igen               | Igen                                      | Igen    | Igen             |

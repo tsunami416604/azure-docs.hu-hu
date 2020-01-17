@@ -1,20 +1,20 @@
 ---
 title: 'Oktatóanyag: a közeli helyszínek keresése térképen | Microsoft Azure térképek'
-description: Ebből az oktatóanyagból megtudhatja, hogyan kereshet a közeli helyeken (érdekes helyek) a térképeken Microsoft Azure térképeket használva.
+description: Ebből az oktatóanyagból megtudhatja, hogyan keresheti meg a térképen Microsoft Azure térképeket használó érdekes helyeket.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/12/2019
+ms.date: 1/15/2020
 ms.topic: tutorial
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 65a091dbe935967d63a11c3c40dd834207f34782
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 974a60bafb3e9be56618824d6205d21c364d6601
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910829"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153020"
 ---
 # <a name="tutorial-search-nearby-points-of-interest-using-azure-maps"></a>Oktatóanyag: a közeli érdekes pontok keresése Azure Maps használatával
 
@@ -69,7 +69,7 @@ A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [A
 
 ## <a name="create-a-new-map"></a>Új térkép létrehozása
 
-A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítségével a Maps könnyedén integrálható a webalkalmazásokba. A kódtár elrejti a REST-szolgáltatás puszta hívásainak összetettségét, a stílusos és testre szabható összetevők segítségével pedig növeli a munkavégzés hatékonyságát. Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a térképkezelési API.
+A térképkezelés API kényelmes ügyféloldali kódtár. Ez az API lehetővé teszi, hogy könnyedén integrálja a térképeket a webalkalmazásba. Elrejti az operációs rendszer nélküli REST-szolgáltatás meghívásának összetettségét, és a testre szabható összetevőkkel növeli a termelékenységet. Az alábbi lépések bemutatják, hogyan hozhat létre egy statikus HTML-oldalt, amelybe be van ágyazva a térképkezelési API.
 
 1. A helyi gépén hozzon létre egy új fájlt **MapSearch.html** néven.
 2. Adja a következő HTML-összetevőket a fájlhoz:
@@ -133,7 +133,7 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
 
    Ez a szakasz inicializálja az Azure Maps-fiók kulcsához tartozó térképkezelési API-t. `atlas` az API-t és a kapcsolódó vizuális összetevőket tartalmazó névtér. `atlas.Map` biztosítja a vezérlőt a vizualizációs és interaktív webes térképekhez.
 
-4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. Ez az alapszintű Térkép, amelyet a `atlas.Map` hívásával hívhat meg a fiók kulcsa alapján.
+4. Mentse a fájl módosításait, és nyissa meg a HTML-oldalt egy böngészőben. A Térkép a alapszintű Térkép, amelyet a `atlas.Map` hívásával hívhat meg a fiók kulcsa alapján.
 
    ![A térkép megtekintése](./media/tutorial-search-location/basic-map.png)
 
@@ -163,7 +163,7 @@ A térképkezelési API egy kényelmes ügyféloldali kódtár, amely segítség
     });
     ```
 
-   Ez a kódrészlet egy `ready` eseményt ad hozzá a térképhez, amely a Térkép erőforrásainak betöltését és a Térkép elérhetőségét eredményezi. A Map `ready` eseménykezelőben létrejön egy adatforrás, amely az eredmény-adatforrást tárolja. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg az adatforrásban található eredményadatok megjelenítését. Esetünkben ez egy sötétkék, kerek gombostű ikon, amely az eredmény koordinátái fölött jelenik meg, és amelyet más ikonok átfedhetnek. A rendszer hozzáadja az eredmény réteget a Térkép rétegeihez.
+   Ebben a kódrészletben egy `ready` eseményt adnak hozzá a térképhez, amely a Térkép erőforrásainak betöltését követően indul, és a Térkép készen áll a hozzáférésre. A Map `ready` eseménykezelőben létrejön egy adatforrás, amely az eredmény-adatforrást tárolja. Létrejön egy szimbólumréteg, amelyet a rendszer az adatforráshoz csatol. Ez a réteg határozza meg, hogy az adatforráson milyen eredményeket kell megjeleníteni. Ebben az esetben az eredmény egy sötét kék kerek PIN-ikonnal jelenik meg, középpontba kerül az eredmények koordinátáin, és lehetővé teszi más ikonok átfedését. A rendszer hozzáadja az eredmény réteget a Térkép rétegeihez.
 
 <a id="usesearch"></a>
 
@@ -215,7 +215,7 @@ Ez a szakasz bemutatja, hogyan használhatja a Maps [Search API](https://docs.mi
     });
     ```
 
-3. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. Most látnia kell, hogy a Térkép középpontba került a Seattle-ben, és a helyszínen a benzines állomások helyét jelölő kék PIN-kódok vannak megjelölve.
+3. Mentse a **MapSearch.html** fájlt, és frissítse a böngészőt. A térképen a Seattle-ben középre igazított, kerek kék PIN-kódokkal láthatja el a terület benzines helyeinek helyét.
 
    ![A keresési eredményeket tartalmazó térkép megtekintése](./media/tutorial-search-location/pins-map.png)
 
@@ -229,9 +229,9 @@ Ezen a ponton a MapSearch lap meg tudja jeleníteni az intelligens keresési lek
 
 ## <a name="add-interactive-data"></a>Interaktív adatok hozzáadása
 
-A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. Ha azonban megtekinti a Maps Search szolgáltatás által visszaadott nyers JSON-fájlt, látni fogja, hogy az további információkat tartalmaz az egyes benzinkutakról, például a nevüket és a címüket. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
+A létrehozott térkép ezen a ponton még csak a keresési eredmények hosszúsági/szélességi adatait vizsgálja. A Maps Search szolgáltatás által visszaadott nyers JSON azonban további információkat tartalmaz az egyes gázüzemű állomásokról. A név és az utca címe is. Ezeket az adatokat interaktív felugró ablakokkal beépítheti a térképbe.
 
-1. Adja hozzá a következő sornyi kódot a térképen `ready` eseménykezelőt, miután a kód lekérdezte a fuzzy keresési szolgáltatást. Ez létrehozza a felugró ablak egy példányát, és hozzáad egy rámutatási eseményt a szimbólumréteghez.
+1. Adja hozzá a következő sornyi kódot a térképen `ready` eseménykezelőt, miután a kód lekérdezte a fuzzy keresési szolgáltatást. Ez a kód létrehoz egy felugró példányt, és felvesz egy mouseover eseményt a szimbólum rétegbe.
 
     ```JavaScript
    //Create a popup but leave it closed so we can update it and display it later.

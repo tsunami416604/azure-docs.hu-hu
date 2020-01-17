@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 12/18/2019
 ms.author: aahi
-ms.openlocfilehash: b6b0b7b857e109997afb441aa60972c6da61f54b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9623398e51260d88df3d8fd88e3affaf7f906a64
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446201"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159155"
 ---
 A Text Analytics API használatának megkezdéséhez használja az alábbi lehetőségek egyikét.
 
@@ -20,10 +20,10 @@ A Text Analytics API használatának megkezdéséhez használja az alábbi lehet
     * Ez nagyszerű lehetőség, ha szeretné kipróbálni a Text Analytics API, de nem rendelkezik Azure-előfizetéssel.
     
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesTextAnalytics"  title="Text Analytics erőforrás létrehozása"  target="_blank">Text Analytics erőforrás <span class="docon docon-navigate-external x-hidden-focus"></span> létrehozása</a>
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.
+    * Elérhető, amíg nem törli az erőforrást.
     * Az ingyenes díjszabási csomaggal próbálja ki a szolgáltatást, és később frissítsen egy fizetős szintre az éles környezetben.
      
 * <a href="https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesAllInOne"  title="több szolgáltatás erőforrásának létrehozása" target="_blank">több szolgáltatásból álló erőforrás <span class="docon docon-navigate-external x-hidden-focus"></span> létrehozása</a>
-    * A Azure Portalon keresztül érhető el, amíg nem törli az erőforrást.  
-    * Használja ugyanazt a kulcsot és végpontot az alkalmazásaihoz, több Cognitive Services között.
+    * Elérhető, amíg nem törli az erőforrást.  
+    * Több Cognitive Services eléréséhez ugyanazt a kulcsot és végpontot használja.
     

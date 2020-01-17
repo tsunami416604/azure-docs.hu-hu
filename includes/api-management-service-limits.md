@@ -1,17 +1,22 @@
 ---
-ms.openlocfilehash: ee44cd4ee5ec6fedfec46cbbb68b0c30118a4b9f
-ms.sourcegitcommit: 3eb0cc8091c8e4ae4d537051c3265b92427537fe
+title: fájl belefoglalása
+description: fájl belefoglalása
+services: api-management
+author: vladvino
+ms.assetid: 1b813833-39c8-46be-8666-fd0960cfbf04
+ms.service: api-management
+ms.topic: include
+ms.date: 01/10/2020
+ms.author: vlvinogr
+ms.custom: include file
+ms.openlocfilehash: 2d4c8c2c831bd6ef16f60c34a6353f4a742798f7
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75904471"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76159223"
 ---
----
-
-title: include file Description: include file Services: API-Management Author: vladvino
-
-MS. AssetId: 1b813833-39c8-46be-8666-fd0960cfbf04 MS. Service: API-felügyeleti MS. topic: include MS. Date: 01/10/2020 MS. Author: vlvinogr MS. Custom: include file
----| Erőforrás | Korlát |
+| Erőforrás | Korlát |
 | ---------------------------------------------------------------------- | -------------------------- |
 | Méretezési egységek maximális száma | 10 régiónként<sup>1</sup> |
 | Gyorsítótár mérete | 5 GiB/egység<sup>2</sup> |
