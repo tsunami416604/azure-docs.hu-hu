@@ -17,6 +17,8 @@
   items:
     - name: A Modern olvasó indítása (Python)
       href: tutorial-python.md
+    - name: Több Modernolvasó-erőforrás használata
+      href: tutorial-multiple-resources.md
 - name: Útmutató
   items:
     - name: Erőforrás létrehozása a Modern olvasóhoz

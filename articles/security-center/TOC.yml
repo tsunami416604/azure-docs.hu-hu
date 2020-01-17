@@ -29,6 +29,10 @@
       href: security-center-compliance-dashboard.md
 - name: Alapelvek
   items:
+    - name: Biztonsági pontszám a Security Centerben
+      href: security-center-secure-score.md
+    - name: A továbbfejlesztett biztonsági pontszám
+      href: secure-score-security-controls.md
     - name: Engedélyek
       href: security-center-permissions.md
     - name: Adatbiztonság
@@ -73,8 +77,6 @@
           href: security-center-alert-validation.md
 - name: Útmutatók
   items:
-    - name: Biztonsági pontszám javítása
-      href: security-center-secure-score.md
     - name: Frissítés speciális biztonsági megoldásra
       href: security-center-onboarding.md
     - name: Biztonsági rések meglétének ellenőrzése virtuális gépeken

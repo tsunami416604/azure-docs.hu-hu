@@ -27,6 +27,8 @@
           href: azure-netapp-files-performance-benchmarks.md
         - name: Az Azure NetApp Files teljesítménytesztjével kapcsolatos javaslatok
           href: azure-netapp-files-performance-metrics-volumes.md
+        - name: Az SMB-teljesítménnyel kapcsolatos gyakori kérdések
+          href: azure-netapp-files-smb-performance.md
     - name: Az Azure NetApp Files költségmodellje
       href: azure-netapp-files-cost-model.md
     - name: Az Azure NetApp Files hálózattervezési irányelvei

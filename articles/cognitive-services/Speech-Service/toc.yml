@@ -452,7 +452,9 @@
           href: how-to-use-logging.md
         - name: A memóriahasználat nyomon követése
           href: how-to-track-speech-sdk-memory-usage.md
-          displayName: 'memory usage, memory consumption, object logging, object tracking, memory'
+        - name: Linuxos OpenSSL konfigurálása
+          href: how-to-configure-openssl-linux.md
+          displayName: 'memory usage, memory consumption, object logging, object tracking, memory, openssl'
     - name: Példák
       items:
         - name: Speech SDK-minták (GitHub)

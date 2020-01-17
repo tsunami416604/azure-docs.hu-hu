@@ -35,6 +35,8 @@
       href: rule-processing.md
     - name: Szolgáltatáscímkék
       href: service-tags.md
+    - name: Megfelelőségi tanúsítványok
+      href: compliance-certifications.md
 - name: Útmutatók
   items:
     - name: Üzembe helyezés az Azure PowerShell-lel

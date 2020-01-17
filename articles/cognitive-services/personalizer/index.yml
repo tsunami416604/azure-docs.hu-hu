@@ -12,12 +12,12 @@ metadata:
   title: A Personalizer dokumentációja
   titleSuffix: Azure Cognitive Services
   description: Az Azure Personalizer egy felhőalapú API-szolgáltatás, amellyel a valós idejű viselkedésükből tanulva kiválaszthatja a felhasználók számára megjelenítendő legjobb élményt.
-  ms.openlocfilehash: d71f5f673a3008f13f7bb762fc48a687c0cf0ddb
-  ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+  ms.openlocfilehash: 964950c80ea0f3d4c014f5c98563193917bf4eef
+  ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 11/09/2019
-  ms.locfileid: "73889250"
+  ms.lasthandoff: 01/16/2020
+  ms.locfileid: "76122032"
 landingContent:
 - title: Információk a Personalizerről
   linkLists:
@@ -51,18 +51,14 @@ landingContent:
       url: how-to-settings.md
   - linkListType: quickstart
     links:
-    - text: A .Net használata
-      url: csharp-quickstart-commandline-feedback-loop.md
-    - text: A Python használata
-      url: python-quickstart-commandline-feedback-loop.md
-    - text: Node.js
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+    - text: Az SDK használata
+      url: sdk-learning-loop.md
 - title: Fejlesztés a Personalizer használatával
   linkLists:
   - linkListType: get-started
     links:
-    - text: Personalizer-ciklusok fejlesztése .Net-tel
-      url: csharp-quickstart-commandline-feedback-loop.md
+    - text: Personalizer-ciklusok fejlesztése .NET-tel
+      url: sdk-learning-loop.md?pivots=programming-language-csharp
     - text: NuGet-csomag
       url: https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Personalizer/0.8.0-preview
     - text: NuGet-referenciadokumentáció
@@ -70,13 +66,13 @@ landingContent:
   - linkListType: get-started
     links:
     - text: Personalizer-ciklus fejlesztése Node.js-sel
-      url: quickstart-command-line-feedback-loop-nodejs-sdk.md
+      url: sdk-learning-loop.md?pivots=programming-language-nodejs
     - text: NPM-csomag
       url: https://www.npmjs.com/package/@azure/cognitiveservices-personalizer/v/1.0.0
   - linkListType: get-started
     links:
     - text: Personalizer-ciklus fejlesztése Pythonnal
-      url: python-quickstart-commandline-feedback-loop.md
+      url: sdk-learning-loop.md?pivots=programming-language-python
     - text: Pypi-csomag
       url: https://pypi.org/project/azure-cognitiveservices-personalizer/
   - linkListType: get-started

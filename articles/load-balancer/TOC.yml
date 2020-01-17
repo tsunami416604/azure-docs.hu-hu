@@ -50,6 +50,8 @@
       href: powershell-samples.md
 - name: Alapelvek
   items:
+    - name: Összetevők és korlátozások
+      href: concepts-limitations.md
     - name: Állapotfigyelés
       items:
         - name: Állapotminták

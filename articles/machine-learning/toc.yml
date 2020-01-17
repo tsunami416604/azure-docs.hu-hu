@@ -310,15 +310,9 @@
         - name: Felhasználás valós időben
           displayName: create client consume request response synchronous
           href: how-to-consume-web-service.md
-        - name: Köteg-előrejelzések futtatása
-          displayName: score scoring batch consume pipeline parallelrunstep inference
-          href: how-to-run-batch-predictions.md
         - name: A tervező köteg-előrejelzései
           displayName: score scoring asynchronous consume pipeline parallelrunstep inference designer
           href: how-to-run-batch-predictions-designer.md
-        - name: Kötegelt előrejelzések hibakeresése és hibaelhárítása
-          displayName: debug_batch consume pipeline parallelrunstep inference
-          href: how-to-debug-batch-predictions.md
     - name: Modellek monitorozása
       items:
         - name: Modelladatok gyűjtése és kiértékelése
@@ -343,6 +337,12 @@
         - name: 'Tervező: Újratanítás közzétett folyamatok használatával'
           displayName: 'retrain, designer, published pipeline'
           href: how-to-retrain-designer.md
+        - name: Párhuzamos futtatási lépés használata
+          displayName: score scoring batch consume pipeline parallelrunstep inference
+          href: how-to-use-parallel-run-step.md
+        - name: Párhuzamos futtatási lépés hibakeresése és hibaelhárítása
+          displayName: debug_batch consume pipeline parallelrunstep inference
+          href: how-to-debug-parallel-run-step.md
     - name: Erőforráskvóták kezelése
       displayName: limits
       href: how-to-manage-quotas.md

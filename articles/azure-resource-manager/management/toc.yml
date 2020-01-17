@@ -8,6 +8,8 @@
   items:
     - name: Előfizetés- és szolgáltatáskorlátok
       href: azure-subscription-service-limits.md
+    - name: Erőforrás nevére vonatkozó szabályok
+      href: resource-name-rules.md
     - name: A Resource Manager-alapú és a klasszikus üzemi modell
       href: deployment-models.md
     - name: Gyakori Azure-beli biztonsági attribútumok

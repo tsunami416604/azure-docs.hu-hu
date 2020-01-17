@@ -139,8 +139,8 @@
               href: configure-linked-sign-on.md
         - name: Felhasználók hozzárendelése és alkalmazások hozzáférésének kezelése
           items:
-            - name: Felhasználói beleegyezés konfigurálása
-              href: configure-user-consent.md
+            - name: Hozzájárulás-kérések kezelése és értékelése
+              href: manage-consent-requests.md
             - name: Bérlőszintű rendszergazdai hozzájárulás megadása
               href: grant-admin-consent.md
             - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
