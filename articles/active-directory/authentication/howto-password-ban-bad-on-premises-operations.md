@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d8602a9c5b69c47c2f663dab461394ef5e1a9bed
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2440d373b726b4f97cd5d9ba162daaa0714f79e0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75762858"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155044"
 ---
 # <a name="azure-ad-password-protection-operational-procedures"></a>Az Azure AD jelszavas védelem működési eljárásai
 
@@ -28,7 +28,7 @@ Kövesse az [Egyéni tiltott jelszavak konfigurálása](howto-password-ban-bad-c
 
 ## <a name="enable-password-protection"></a>Jelszavas védelem engedélyezése
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a **Azure Active Directory**, a **Biztonság**, a**hitelesítési módszerek**, majd a **jelszavas védelem**lehetőséget.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és tallózással keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési módszereit** > **jelszavas védelem**.
 1. **Engedélyezze a jelszavas védelem engedélyezése beállítást a Windows Server Active Directory** az **Igen** értékre
 1. Az [üzembe helyezési útmutatóban](howto-password-ban-bad-on-premises-deploy.md#deployment-strategy)említetteknek megfelelően javasolt a **mód** beállítása a **naplózásra** .
    * A funkció használata után átválthat a mód **kényszerített** **állapotára**

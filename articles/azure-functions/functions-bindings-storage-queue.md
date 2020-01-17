@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 3680de5d8e0e761047e1263c2679da87b1fa2d0b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769455"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121233"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure üzenetsor-tárolási kötések Azure Functionshoz
 
@@ -249,7 +249,7 @@ Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja
   }
   ```
 
-  A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiókot, ahogy az az alábbi példában is látható:
+  A `Connection` tulajdonság beállításával megadhatja a használni kívánt Storage-fiók kapcsolódási karakterláncát tartalmazó Alkalmazásbeállítások értékét az alábbi példában látható módon:
 
   ```csharp
   [FunctionName("QueueTrigger")]
@@ -312,7 +312,7 @@ A C# ( C# z) és a (z) rendszerekben a (z) és a (z) parancsfájlban az üzenet 
 
 Ha `CloudQueueMessage`hoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-A JavaScriptben `context.bindings.<name>` használatával férhet hozzá a várólista-elem hasznos adataihoz. Ha a hasznos adat JSON, deszerializálja egy objektumba.
+A JavaScriptben `context.bindings.<name>` használatával férhet hozzá a várólista-elem hasznos adataihoz. Ha a hasznos adat JSON, deszerializálja egy objektumba. Ezt a hasznos adatot a függvény második paramétereként is átadja.
 
 ## <a name="trigger---message-metadata"></a>Trigger – üzenet metaadatainak
 
@@ -320,7 +320,7 @@ A várólista-trigger számos [metaadat-tulajdonságot](./functions-bindings-exp
 
 |Tulajdonság|Type (Típus)|Leírás|
 |--------|----|-----------|
-|`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor üzenete sztringként van feldolgozva, `QueueTrigger` a *function. JSON*fájl `name` tulajdonsága által megnevezett változóval megegyező értékkel rendelkezik.|
+|`QueueTrigger`|`string`|Várólista-adattartalom (ha érvényes karakterlánc). Ha az üzenetsor-üzenet hasznos karakterlánc, `QueueTrigger` a *function. JSON*fájl `name` tulajdonsága által megnevezett változóval megegyező értékkel rendelkezik.|
 |`DequeueCount`|`int`|Azon alkalmak száma, amikor az üzenet el lett küldve.|
 |`ExpirationTime`|`DateTimeOffset`|Az az időpont, ameddig az üzenet lejár.|
 |`Id`|`string`|Üzenetsor-üzenet azonosítója.|
@@ -411,7 +411,7 @@ Itt látható a *function. JSON* fájl:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -472,7 +472,7 @@ Itt látható a *function. JSON* fájl:
     {
       "type": "http",
       "direction": "out",
-      "name": "return"
+      "name": "$return"
     },
     {
       "type": "queue",
@@ -506,7 +506,7 @@ module.exports = function(context) {
 
 ### <a name="output---java-example"></a>Kimenet – Java-példa
 
- Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre a HTTP-kérések indításakor.
+ Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre, amikor HTTP-kérést indít el.
 
 ```java
 @FunctionName("httpToQueue")
@@ -514,7 +514,7 @@ module.exports = function(context) {
  public String pushToQueue(
      @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
      final String message,
-     @HttpOutput(name = "response") final OutputBinding&lt;String&gt; result) {
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
        result.setValue(message + " has been added.");
        return message;
  }

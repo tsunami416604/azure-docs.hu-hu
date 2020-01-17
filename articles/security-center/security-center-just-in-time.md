@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: e3289ae5dbc2b0db410b3316834ae38a1f6b8523
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 782a23ba95519438dd369d3f69f52f7526461821
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974154"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156760"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>A virtuális gépekhez való hozzáférés kezelése igény szerint
 
@@ -48,9 +48,8 @@ Amikor egy felhasználó hozzáférést kér egy virtuális géphez, Security Ce
 
 | A felhasználók engedélyezése: | Beállított engedélyek|
 | --- | --- |
-| Egy virtuális gép JIT-szabályzatának konfigurálása vagy szerkesztése | *Rendelje hozzá ezeket a műveleteket a szerepkörhöz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/> ```Microsoft.Security/locations/jitNetworkAccessPolicies/write``` </li><li> Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén: <br/>```Microsoft.Compute/virtualMachines/write```</li></ul> | 
-| ||
-|JIT-hozzáférés kérése egy virtuális géphez | *Rendelje hozzá ezeket a műveleteket a felhasználóhoz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/>  ```Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action``` </li><li>  Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén:<br/> ```Microsoft.Compute/virtualMachines/read``` </li></ul>|
+| Egy virtuális gép JIT-szabályzatának konfigurálása vagy szerkesztése | *Rendelje hozzá ezeket a műveleteket a szerepkörhöz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/> `Microsoft.Security/locations/jitNetworkAccessPolicies/write` </li><li> Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén: <br/>`Microsoft.Compute/virtualMachines/write`</li></ul> | 
+|JIT-hozzáférés kérése egy virtuális géphez | *Rendelje hozzá ezeket a műveleteket a felhasználóhoz:*  <ul><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/initiate/action` </li><li>A virtuális géphez társított előfizetés vagy erőforráscsoport hatókörén:<br/>  `Microsoft.Security/locations/jitNetworkAccessPolicies/*/read` </li><li>  Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén:<br/> `Microsoft.Compute/virtualMachines/read` </li><li>  Az előfizetés vagy az erőforráscsoport vagy a virtuális gép hatókörén:<br/> `Microsoft.Network/networkInterfaces/*/read` </li></ul>|
 
 
 ## <a name="configure-jit-on-a-vm"></a>JIT konfigurálása virtuális gépen

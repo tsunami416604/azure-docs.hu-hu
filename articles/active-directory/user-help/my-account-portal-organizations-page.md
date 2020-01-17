@@ -12,29 +12,30 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d0b8a5a8ac4132c998567f956f3171db06a9ca53
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1ab01f5427401bd129fa84f9a5dd1a4d3f8dc77d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231848"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156199"
 ---
-# <a name="manage-organizations-connected-to-your-work-or-school-account-from-the-organizations-page"></a>Munkahelyi vagy iskolai fiókjához kapcsolódó szervezetek kezelése a szervezetek lapról
+# <a name="manage-your-connected-organizations-from-the-organizations-page"></a>A csatlakoztatott szervezetek kezelése a szervezetek lapról
 
-A szervezeteket a **saját fiók** portál **szervezetek** lapján kezelheti.
-
-A **szervezetek lapon két típusú szervezet látható** :
+A **saját fiók** portál **szervezetek** lapján kezelheti a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezeteket (általában a szervezet nevét). A **szervezetek lapon két típusú szervezet látható** :
 
 - **Otthoni szervezet.** Otthoni szervezete a munkahelyi vagy iskolai fiókját birtokló szervezet. Nem hagyhatja a saját szervezetét.
-
-- **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
 
     >[!NOTE]
     > Ha nem rendelkezik hozzárendelt otthoni szervezettel, csak egyetlen fejléc jelenik meg, amely szerint a szervezetek a társított szervezetek listájával rendelkeznek.
 
+- **Más szervezetek.** A többi szervezet olyan csoport, amelyet korábban már bejelentkezett a munkahelyi vagy iskolai fiókjával. Ezen szervezetek bármelyikét bármikor elhagyhatja.
+
+>[!Important]
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott szervezeti adatokat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más alkalmazások csoport-és felhasználói kezelésével kapcsolatos információkat keres, tekintse meg a [vállalati felhasználói felügyeleti dokumentációt](https://docs.microsoft.com/azure/active-directory/users-groups-roles/index).
+
 ## <a name="view-your-organizations"></a>A szervezetek megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a **saját fiókra** (https://myprofile.microsoft.com/) lapra.
 
 2. A bal oldali navigációs ablaktáblán válassza a **szervezetek** lehetőséget, **vagy a szervezetek blokkban** válassza a **szervezetek kezelése** hivatkozást.
 
@@ -53,7 +54,7 @@ Minden olyan szervezetet meghagyhat, amely nem a saját szervezete.
 >[!Important]
 >Ha a szervezetet tévedésből hagyja, a visszavonás nem vonható vissza. Várnia kell, amíg az adott szervezet rendszergazdája újra meghívja Önt.
 
-1. Válassza a **szervezet elhagyása** lehetőséget a meghagyni kívánt szervezet mellett, majd válassza a **Kilépés** lehetőséget, és erősítse meg, hogy el kívánja hagyni.
+- Válassza a **szervezet elhagyása** lehetőséget a meghagyni kívánt szervezet mellett, majd válassza a **Kilépés** lehetőséget, és erősítse meg, hogy el kívánja hagyni.
 
     ![Szervezetek lap Kiemelt Kilépés a szervezeti hivatkozással](media/my-account-portal/my-account-portal-organizations-leave.png)
 

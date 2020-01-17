@@ -3,12 +3,12 @@ title: Szülő-erőforrással kapcsolatos hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, amikor egy Azure Resource Manager sablonban lévő szülő erőforrással dolgozik.
 ms.topic: troubleshooting
 ms.date: 08/01/2018
-ms.openlocfilehash: 9fcf12db7375e6d19ef9e77ea4dcaf13130175b5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f1847389d60ddf3c6abc70bc3309940c2246084e
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484531"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154040"
 ---
 # <a name="resolve-errors-for-parent-resources"></a>A szülő erőforrások hibáinak elhárítása
 
@@ -34,7 +34,7 @@ Ha az egyik erőforrás gyermek egy másik erőforráshoz tartozik, a szülő er
   ...
 ```
 
-Ha a kiszolgálót és az adatbázist is ugyanabban a sablonban telepíti, de nem ad meg függőséget a kiszolgálón, előfordulhat, hogy az adatbázis központi telepítése a kiszolgáló üzembe helyezése előtt elindul. 
+Ha a kiszolgálót és az adatbázist is ugyanabban a sablonban telepíti, de nem ad meg függőséget a kiszolgálón, előfordulhat, hogy az adatbázis központi telepítése a kiszolgáló üzembe helyezése előtt elindul.
 
 Ha a fölérendelt erőforrás már létezik, és nem ugyanabban a sablonban van telepítve, akkor ez a hiba akkor jelenik meg, ha a Resource Manager nem tudja hozzárendelni a gyermek erőforrást szülővel. Ez a hiba akkor fordulhat elő, ha a gyermek erőforrás formátuma nem megfelelő, vagy a gyermek erőforrás olyan erőforráscsoporthoz van telepítve, amely eltér a szülő erőforrás erőforráscsoport-csoportjához.
 
@@ -44,7 +44,7 @@ Ha meg szeretné oldani ezt a hibát, ha a szülő-és alárendelt erőforrások
 
 ```json
 "dependsOn": [
-    "[variables('databaseServerName')]"
+  "[variables('databaseServerName')]"
 ]
 ```
 
@@ -52,29 +52,29 @@ Ha ezt a hibát szeretné megoldani, ha a fölérendelt erőforrást korábban e
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "sqlServerName": {
-            "type": "string"
-        },
-        "databaseName": {
-            "type": "string"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sqlServerName": {
+      "type": "string"
     },
-    "resources": [
-        {
-            "apiVersion": "2014-04-01",
-            "type": "Microsoft.Sql/servers/databases",
-            "location": "[resourceGroup().location]",
-            "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
-            "properties": {
-                "collation": "SQL_Latin1_General_CP1_CI_AS",
-                "edition": "Basic"
-            }
-        }
-    ],
-    "outputs": {}
+    "databaseName": {
+      "type": "string"
+    }
+  },
+  "resources": [
+    {
+      "type": "Microsoft.Sql/servers/databases",
+      "apiVersion": "2014-04-01",
+      "name": "[concat(parameters('sqlServerName'), '/', parameters('databaseName'))]",
+      "location": "[resourceGroup().location]",
+      "properties": {
+        "collation": "SQL_Latin1_General_CP1_CI_AS",
+        "edition": "Basic"
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 

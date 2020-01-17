@@ -11,12 +11,12 @@ ms.reviewer: maghan
 manager: jroth
 ms.topic: conceptual
 ms.date: 08/14/2019
-ms.openlocfilehash: 0e4b2cd208e11f7696e016d3fa4353b38f3060d8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: fb049b5af5c700cdb72f0319019cfd6eee952d9f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977526"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156964"
 ---
 # <a name="continuous-integration-and-delivery-in-azure-data-factory"></a>Folyamatos integráció és kézbesítés Azure Data Factory
 
@@ -330,7 +330,7 @@ Ha GIT módban van, felülbírálhatja a Resource Manager-sablonban található 
 * Automatikus CI/CD-t használ, és módosítani szeretné néhány tulajdonságot a Resource Manager üzembe helyezése során, de a tulajdonságok alapértelmezés szerint nem paraméterek.
 * A gyár olyan nagy méretű, hogy az alapértelmezett Resource Manager-sablon érvénytelen, mert több, mint a maximálisan megengedett paraméterek (256).
 
-Az alapértelmezett paraméterezés-sablon felülbírálásához a következő feltételek szerint hozzon létre egy ARM-template-Parameters-definition. JSON nevű fájlt az adattár gyökérkönyvtárában. Pontosan ezt a fájlnevet kell használnia. Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
+Ilyen körülmények között az alapértelmezett paraméterezés-sablon felülbírálásához hozzon létre egy ARM-template-Parameters-definition. JSON nevű fájlt a adat-előállító git-integrációjának gyökérkönyvtárában megadott mappában. Pontosan ezt a fájlnevet kell használnia. Data Factory beolvassa ezt a fájlt attól függően, hogy melyik ágban van jelenleg a Azure Data Factory portálon, nem csak az együttműködési ágban. A fájlt létrehozhatja vagy szerkesztheti egy privát ág alapján, ahol tesztelheti a módosításokat úgy, hogy kiválasztja az **ARM-sablon exportálása** lehetőséget a felhasználói felületen. Ezután egyesítheti a fájlt az együttműködési ágban. Ha nem található fájl, a rendszer az alapértelmezett sablont használja.
 
 ### <a name="syntax-of-a-custom-parameters-file"></a>Egyéni paraméterek fájljának szintaxisa
 
@@ -433,7 +433,7 @@ Az alábbi példa azt szemlélteti, hogy a paraméterezés-sablonok hogyan nézn
 * A `connectionString` tulajdonság `securestring` értékként lesz paraméterként. Nem rendelkezik alapértelmezett értékkel. Egy rövidített paraméter neve lesz, amely a `connectionString`utótaggal van ellátva.
 * A tulajdonság `secretAccessKey` történik `AzureKeyVaultSecret` (például egy Amazon S3 társított szolgáltatásban). Automatikusan Azure Key Vault titokként van konfigurálva, és a konfigurált kulcstartóból beolvasva. Saját maga is parametrizálja a kulcstartót.
 
-#### <a name="datasets"></a>Adathalmazok
+#### <a name="datasets"></a>Adatkészletek
 
 * Bár a típus-specifikus Testreszabás elérhető az adatkészletekhez, a konfigurációt explicit módon, \*szintű konfiguráció nélkül is megadhatja. Az előző példában a `typeProperties` alatti összes adatkészlet-tulajdonság paraméteres.
 

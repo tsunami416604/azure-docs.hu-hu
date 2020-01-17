@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 02/13/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2fe8610d7551b63ed613153ba1ee0e6f8e73b5a5
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 6e8e8b20fc9b8e19b2f7c5f9c1b9e926580c9dbb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278921"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156063"
 ---
 # <a name="set-up-text-messaging-as-your-verification-method"></a>Szöveges üzenetküldés beállítása ellenőrzési módszerként
 
@@ -28,7 +28,7 @@ Ha a rendszer a munkahelyi vagy iskolai fiókjába való bejelentkezés után az
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
 
 >[!Note]
->Ha nem jelenik meg a telefonos lehetőség, akkor előfordulhat, hogy a szervezet nem teszi lehetővé telefonszámok használatát az ellenőrzéshez. Ebben az esetben másik módszert kell választania, vagy további segítségért forduljon a rendszergazdához.
+>Ha nem jelenik meg a telefonos lehetőség, akkor előfordulhat, hogy a szervezet nem engedélyezi, hogy ezt a lehetőséget használja az ellenőrzéshez. Ebben az esetben egy másik módszert kell választania, vagy további segítségért forduljon a szervezet ügyfélszolgálatához.
 
 ## <a name="set-up-text-messages-from-the-security-info-page"></a>Szöveges üzenetek beállítása a biztonsági adatok lapról
 
@@ -113,7 +113,7 @@ További beállításokkal is megtudhatja, hogy a szervezet hogyan forduljon a s
     >[!Note]
     >Ha a lehetőségek némelyike hiányzik, valószínűleg azért, mert a szervezet nem engedélyezi ezeket a metódusokat. Ebben az esetben ki kell választania egy elérhető módszert, vagy kapcsolatba kell lépnie a rendszergazdával további segítségért.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha elvesztette vagy elfelejtette a jelszavát, állítsa vissza a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/) , vagy kövesse a [munkahelyi vagy iskolai jelszó alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md) című cikk lépéseit.
 

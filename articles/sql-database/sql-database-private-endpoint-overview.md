@@ -8,12 +8,12 @@ ms.service: sql-database
 ms.topic: overview
 ms.reviewer: vanto
 ms.date: 09/17/2019
-ms.openlocfilehash: 6cc8282a5c56f8f45e8d9e5ee452089a74f0d4ed
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 427ba0e46f8f4090ce8c2080b1d6780b165e864c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045637"
+ms.locfileid: "76121080"
 ---
 # <a name="private-link-for-azure-sql-database-and-data-warehouse-preview"></a>Privát hivatkozás a Azure SQL Database és az adattárházhoz (előzetes verzió)
 
@@ -43,8 +43,6 @@ Privát hivatkozással az ügyfelek mostantól olyan hálózati hozzáférés-ve
 Amikor az ügyfelek a helyszíni gépekről csatlakoznak a nyilvános végponthoz, az IP-címüket [kiszolgálói szintű tűzfalszabály](sql-database-server-level-firewall-rule.md)használatával kell hozzáadni az IP-alapú tűzfalhoz. Habár ez a modell jól működik, hogy lehetővé tegye az egyes gépekhez való hozzáférést a fejlesztési vagy tesztelési feladatokhoz, nehéz felügyelni éles környezetben.
 
 A privát kapcsolat lehetővé teszi, hogy az ügyfelek az [ExpressRoute](../expressroute/expressroute-introduction.md), a privát vagy a VPN-alagúton keresztül engedélyezzék a helyszíni hozzáférést a privát végponthoz. Az ügyfelek ezután letilthatják az összes hozzáférést a nyilvános végponton keresztül, és nem használhatják az IP-alapú tűzfalat az IP-címek engedélyezésére.
-
-A privát kapcsolat lehetővé teszi, hogy a felhasználók az expressz útvonal (ER) magánhálózati vagy VPN-alagút használatával engedélyezzék a létesítmények közötti hozzáférést a privát végponthoz. Ezt követően a nyilvános végponton keresztül is letilthatják az összes hozzáférést, és nem használják az IP-alapú tűzfalat.
 
 ## <a name="how-to-set-up-private-link-for-azure-sql-database"></a>Privát hivatkozás beállítása Azure SQL Databasehoz 
 

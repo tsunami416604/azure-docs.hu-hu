@@ -12,25 +12,23 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 510f1ca441ef9645cff7f577bbad39991cebc285
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 3981c152ba836a01daca16cd486623a9a26d86f2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231872"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156233"
 ---
-# <a name="change-your-work-or-school-account-password-from-the-my-account-portal"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a saját fiók portálján
+# <a name="change-your-work-or-school-account-password-from-the-change-password-page"></a>Munkahelyi vagy iskolai fiók jelszavának módosítása a jelszó módosítása lapról
 
-A **saját fiók** portál **jelszó módosítása** lapján frissítheti a munkahelyi vagy iskolai fiók jelszavát. Ez csak akkor működik, ha ismeri a meglévő jelszavát, és ha nem zárja ki a fiókját.
+A **saját fiók** portál **jelszó módosítása** lapja segítséget nyújt a munkahelyi vagy iskolai fiókja meglévő jelszavának frissítéséhez, feltéve, hogy emlékszik a jelszóra, és nem zárja ki a fiókját. Ha nem emlékszik a jelszavára, ha ki van zárva a fiókjából, vagy ha soha nem kapott jelszót a szervezettől, akkor a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a jelszót.
 
-Ha nem emlékszik a jelszavára, ha már kizárta a fiókját, vagy ha soha nem kapott jelszót a céges támogatási csapattól, akkor a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a jelszót. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](https://docs.microsoft.com/azure/active-directory/user-help/user-help-reset-password).
+>[!Important]
+>Ez a cikk olyan felhasználók számára készült, akik egy meglévő munkahelyi vagy iskolai fiókhoz tartozó ismert jelszavakat próbálnak frissíteni. Ha a felhasználó személyes fiókkal próbál beolvasni, például Xbox-, Hotmail-vagy Outlook.com, akkor próbálja meg a következő témakörben ismertetett javaslatokat, ha [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe. Ha a rendszergazda további információkat szeretne megtudni arról, hogyan tesztelheti az önkiszolgáló jelszó-visszaállítást az alkalmazottak vagy más felhasználók számára, tekintse meg az [önkiszolgáló jelszó-visszaállítást](https://docs.microsoft.com/azure/active-directory/authentication/quickstart-sspr)ismertető témakört.
 
->[!Note]
->Ha olyan személyes fiókkal próbál visszakapni, mint például az Xbox, a hotmail.com vagy a outlook.com, próbálja meg a javaslatait, ha [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
+## <a name="update-a-password-from-the-change-password-page"></a>Jelszó frissítése a jelszó módosítása lapról
 
-## <a name="to-change-your-password-from-the-my-account-portal"></a>A saját fiók portál jelszavának módosítása
-
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába meglévő jelszava használatával, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába meglévő jelszava használatával, majd lépjen a **saját fiókra** (https://myprofile.microsoft.com/) lapra.
 
 2. A bal oldali navigációs ablaktáblán válassza a **jelszó** lehetőséget, vagy kattintson a jelszó **módosítása** hivatkozásra a **jelszó** blokkban.
 
@@ -40,7 +38,7 @@ Ha nem emlékszik a jelszavára, ha már kizárta a fiókját, vagy ha soha nem 
 
     ![Jelszó módosítása lap, amely megjeleníti a jelszó mezőket](media/my-account-portal/my-account-portal-change-password-page.png)
 
-4. Válassza a **Küldés**lehetőséget.
+4. Válassza a **Küldés** lehetőséget.
 
     A jelszó módosítva lesz, és a rendszer kérni fogja, hogy jelentkezzen be újra a munkahelyi vagy iskolai fiókjába.
 

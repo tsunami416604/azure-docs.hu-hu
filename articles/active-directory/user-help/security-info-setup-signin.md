@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 08/05/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 710e43aec82c5d154b2e17a20abb2ce4dd481129
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f75cea566a09a1f4e147b999ad7d2c2d7ea80f29
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278981"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156114"
 ---
 # <a name="set-up-your-security-info-preview-from-a-sign-in-prompt"></a>A biztonsági adatok (előzetes verzió) beállítása bejelentkezési kérésből
 
@@ -26,6 +26,19 @@ Ha a munkahelyi vagy iskolai fiókjába való bejelentkezés után azonnal kéri
 Ez a kérdés csak akkor jelenik meg, ha nem állította be a szervezete által megkövetelt biztonsági adatokat. Ha korábban már beállította a biztonsági adatokat, de módosítani szeretné a módosításokat, kövesse a különböző metódus-alapú útmutató cikkeiben ismertetett lépéseket. További információ: [a biztonsági adatok hozzáadásának vagy frissítésének áttekintése](security-info-add-update-methods-overview.md).
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-info.md)]
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Biztonsági ellenőrzés és jelszó-visszaállítási hitelesítés
+
+A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
+
+| Módszer | Alkalmazási cél |
+| ------ | -------- |
+| Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Telefonhívások | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Biztonsági kulcs | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| E-mail fiók | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
+| Biztonsági kérdések | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 
 ## <a name="sign-in-to-your-work-or-school-account"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába
 

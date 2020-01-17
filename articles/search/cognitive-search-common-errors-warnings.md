@@ -8,12 +8,12 @@ ms.author: abmotley
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 0738e56cf6760a356b6e2b6db76f2dc3f6f157ee
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74d209adf745d1a3c319ef6567b2a7818a5fd514
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763164"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152256"
 ---
 # <a name="troubleshooting-common-indexer-errors-and-warnings-in-azure-cognitive-search"></a>Általános indexelő hibák és figyelmeztetések hibaelhárítása Az Azure Cognitive Search
 
@@ -171,6 +171,18 @@ Ebben az esetben tekintse át a [támogatott adattípusokat](https://docs.micros
 ## <a name="error-could-not-process-document-within-indexer-max-run-time"></a>Hiba: a dokumentum nem dolgozható fel az indexelő maximális futási idején belül
 
 Ez a hiba akkor fordul elő, ha az indexelő nem tudja befejezni egyetlen dokumentum feldolgozását az adatforrásból az engedélyezett végrehajtási időn belül. A szakértelmével használata esetén a [maximális futási idő](search-limits-quotas-capacity.md#indexer-limits) rövidebb. Ha ez a hiba akkor fordul elő, ha a maxFailedItems értéke nem 0, az indexelő megkerüli a dokumentumot a jövőben, hogy az indexelés előrehaladást érjen el. Ha nem engedheti meg, hogy kihagyjon bármilyen dokumentumot, vagy ha konzisztensen látja ezt a hibát, érdemes lehet kisebb dokumentumokra feltörni a dokumentumokat, hogy a részleges előrehaladás egyetlen indexelő végrehajtáson belül is elvégezhető legyen.
+
+<a name="could-not-project-document"/>
+
+## <a name="error-could-not-project-document"></a>Hiba: nem sikerült a Project Document
+
+Ez a hiba akkor fordul elő, amikor az indexelő az [adatait egy tudásbázisba](knowledge-store-projection-overview.md) kísérli meg, és hiba történt a kísérlet során.  Ez a hiba lehet konzisztens és javítható, vagy előfordulhat, hogy átmeneti hiba történt a kivetítési kimeneti fogadónál, amelyet várnia kell, és újra kell próbálkoznia a feloldáshoz.  Az alábbiakban az ismert meghibásodási állapotok és a lehetséges megoldások halmaza látható.
+
+| Ok | Részletek/példa | Felbontás |
+| --- | --- | --- |
+| Nem lehetett frissíteni a kivetítési blobot `'blobUri'` a tárolóban `'containerName'` |A megadott tároló nem létezik. | Az indexelő ellenőrzi, hogy a megadott tárolót korábban hozták-e létre, és szükség esetén létrehozza-e, de csak egyszer hajtja végre ezt az ellenőrzést az indexelő futtatásakor. Ez a hiba azt jelenti, hogy valami törölte a tárolót a lépés után.  A hiba elhárításához próbálja meg a következőt: ne csak a Storage-fiók adatait adja meg, várjon, amíg az indexelő befejeződik, majd futtassa újra az indexelő. |
+| Nem lehetett frissíteni a kivetítési blobot `'blobUri'` a tárolóban `'containerName'` |Az adatátvitel nem írható a szállítási kapcsolatban: a távoli gazdagép kényszerített módon lezárta a meglévő kapcsolatokat. | Ez várhatóan átmeneti hiba az Azure Storage-ban, ezért az indexelő újbóli futtatásával kell megoldani. Ha konzisztensen Tapasztalja ezt a hibát, küldjön egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) , hogy később is megvizsgálható legyen.  |
+| Nem lehetett frissíteni a sor `'projectionRow'` a táblában `'tableName'` | A kiszolgáló foglalt. | Ez várhatóan átmeneti hiba az Azure Storage-ban, ezért az indexelő újbóli futtatásával kell megoldani. Ha konzisztensen Tapasztalja ezt a hibát, küldjön egy [támogatási jegyet](https://ms.portal.azure.com/#create/Microsoft.Support) , hogy később is megvizsgálható legyen.  |
 
 <a name="could-not-execute-skill-because-a-skill-input-was-invalid"/>
 

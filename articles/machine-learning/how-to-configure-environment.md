@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.reviewer: larryfr
 ms.topic: conceptual
-ms.date: 10/25/2019
+ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: 096a880dc1553bec4c9d4dce36e14af7a917fc2a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75540853"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156879"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -259,7 +259,7 @@ A Visual Studio Code használata a fejlesztéshez:
 
 1. Telepítse a Azure Machine Learning-bővítményt a Visual Studio Code-hoz, lásd: [Azure Machine learning](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai).
 
-    További információ: [Azure Machine learning használata a Visual Studio Code](how-to-vscode-tools.md)-hoz.
+    További információ: [Azure Machine learning használata a Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz.
 
 1. Ismerje meg, hogyan használható a Visual Studio Code bármilyen típusú Python-fejlesztéshez: [Bevezetés a Python használatába a VSCode-ben](https://code.visualstudio.com/docs/python/python-tutorial).
 
@@ -373,7 +373,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
 * **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget.
 
-     ![Azure portál](./media/how-to-configure-environment/configure.png)
+     ![Azure Portal](./media/how-to-configure-environment/configure.png)
 
 * **Hozza létre a fájlt programozott**módon: az alábbi kódrészletben az előfizetés-azonosító, az erőforráscsoport és a munkaterület nevének megadásával csatlakozhat egy munkaterülethez. Ezután menti a munkaterület konfigurációját a következő fájlba:
 

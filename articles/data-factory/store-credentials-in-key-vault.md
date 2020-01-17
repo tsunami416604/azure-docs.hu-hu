@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 03/13/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: 32c4b9b8e6268aa648e3414b337e8b2b908589e8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1418205843fefc76db4e73832736b308d0cc79a3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928717"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122610"
 ---
 # <a name="store-credential-in-azure-key-vault"></a>Hitelesítő adatok tárolása Azure Key Vaultban
 
@@ -31,8 +31,8 @@ Ez a funkció az adatok gyári felügyelt identitására támaszkodik. Ismerje m
 
 A Azure Key Vaultban tárolt hitelesítő adatokra való hivatkozáshoz a következőket kell tennie:
 
-1. Az **adatok gyári felügyelt identitásának beolvasása** a gyári környezettel együtt generált "felügyelt Identity Application id" értékének másolásával. Ha az ADF authoring felhasználói felületét használja, a felügyelt identitás alkalmazásának azonosítója megjelenik a Azure Key Vault társított szolgáltatás létrehozása ablakban; a Azure Portalból is lekérheti, ha [beolvassa az adatok gyári felügyelt identitását](data-factory-service-identity.md#retrieve-managed-identity).
-2. **Adja meg a felügyelt identitás hozzáférését a Azure Key Vaulthoz.** A Key vaultban – > hozzáférési szabályzatok – > Új-> Keresés a felügyelt identitás alkalmazás-AZONOSÍTÓjában a **Get** engedély megadása a titkos engedélyek legördülő menüben. Lehetővé teszi a kijelölt gyár számára a titkos kulcs elérését a Key vaultban.
+1. Az **adatok gyári felügyelt identitásának beolvasása** a gyári környezettel együtt generált "felügyelt identitási objektum azonosító" értékének másolásával. Ha az ADF authoring felhasználói felületét használja, akkor a felügyelt identitás objektum azonosítója megjelenik a Azure Key Vault társított szolgáltatás létrehozása ablakban; a Azure Portalból is lekérheti, ha [beolvassa az adatok gyári felügyelt identitását](data-factory-service-identity.md#retrieve-managed-identity).
+2. **Adja meg a felügyelt identitás hozzáférését a Azure Key Vaulthoz.** A Key vaultban – > hozzáférési szabályzatok – > Új-> Keresés a felügyelt identitásban a **Get** engedély megadása a titkos engedélyek legördülő menüben. Lehetővé teszi a kijelölt gyár számára a titkos kulcs elérését a Key vaultban.
 3. **Hozzon létre egy társított szolgáltatást, amely a Azure Key Vaultre mutat.** Tekintse meg [Azure Key Vault társított szolgáltatást](#azure-key-vault-linked-service).
 4. **Hozzon létre egy adattárhoz társított szolgáltatást, amely a Key vaultban tárolt megfelelő titkos kulcsra hivatkozik.** Tekintse meg a [Key vaultban tárolt hivatkozási titkot](#reference-secret-stored-in-key-vault).
 
@@ -43,7 +43,7 @@ Azure Key Vault társított szolgáltatás a következő tulajdonságokat támog
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A Type tulajdonságot a következőre kell beállítani: **AzureKeyVault**. | Igen |
-| baseUrl | A Azure Key Vault URL-cím megadása. | Igen |
+| BaseUrl | A Azure Key Vault URL-cím megadása. | Igen |
 
 **Szerzői felhasználói felület használata:**
 
@@ -76,7 +76,7 @@ A következő tulajdonságok támogatottak, ha olyan mezőt konfigurál a társ�
 | Tulajdonság | Leírás | Szükséges |
 |:--- |:--- |:--- |
 | type | A mező Type (típus) tulajdonságát a következőre kell beállítani: **AzureKeyVaultSecret**. | Igen |
-| secretName | A titok neve Azure Key Vaultban. | Igen |
+| SecretName | A titok neve Azure Key Vaultban. | Igen |
 | Titkoskulcsverziója | A titok verziója Azure Key Vaultban.<br/>Ha nincs megadva, mindig a titkos kulcs legújabb verzióját használja.<br/>Ha meg van adva, a rendszer az adott verzióra ragaszkodik.| Nem |
 | store | Egy Azure Key Vault társított szolgáltatásra hivatkozik, amelyet a hitelesítő adatok tárolására használ. | Igen |
 

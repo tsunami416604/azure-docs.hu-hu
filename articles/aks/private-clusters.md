@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 12/10/2019
 ms.author: mlearned
-ms.openlocfilehash: e01579272878a2436abca2ee50f0f6ea6cf78cbf
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045593"
+ms.locfileid: "76154341"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
@@ -131,7 +131,7 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
 
 ## <a name="limitations"></a>Korlátozások 
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontokra és a virtuális hálózati szolgáltatás-végpontokra vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
-* A privát fürtben lévő virtuális csomópontok nem támogatják a saját Cisco Application központú infrastruktúra (Cisco ACI) példányainak egy privát Azure-beli virtuális hálózatban való kiépítését.
+* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI-ket).
 * Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból.
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
 * Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz.

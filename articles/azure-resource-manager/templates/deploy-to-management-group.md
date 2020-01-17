@@ -3,12 +3,12 @@ title: Erőforrások központi telepítése a felügyeleti csoportba
 description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti csoport hatókörében egy Azure Resource Manager sablonban.
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: e3661225dd69721ab223da0b44d69a592abb59bc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ba4f4d2e95c0b878e9f402fa84139ac5b351e3c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477784"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121913"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erőforrások létrehozása a felügyeleti csoport szintjén
 
@@ -63,7 +63,7 @@ A felügyeleti csoportok központi telepítéséhez néhány fontos szempontot k
 
 * A [resourceGroup ()](template-functions-resource.md#resourcegroup) függvény **nem** támogatott.
 * Az [előfizetés ()](template-functions-resource.md#subscription) függvény **nem** támogatott.
-* A [resourceId ()](template-functions-resource.md#resourceid) függvény támogatott. Ezzel a beállítással lekérheti a felügyeleti csoport szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például szerezze be a házirend-definíció erőforrás-AZONOSÍTÓját `resourceId('Microsoft.Authorization/roleDefinitions/', parameters('roleDefinition'))`. Az erőforrás-azonosítót a `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`formátumban adja vissza.
+* A [resourceId ()](template-functions-resource.md#resourceid) függvény támogatott. Ezzel a beállítással lekérheti a felügyeleti csoport szintjén üzemelő példányokon használt erőforrások erőforrás-AZONOSÍTÓját. Például szerezze be a házirend-definíció erőforrás-AZONOSÍTÓját `resourceId('Microsoft.Authorization/policyDefinitions/', parameters('policyDefinition'))`. Az erőforrás-azonosítót a `/providers/{resourceProviderNamespace}/{resourceType}/{resourceName}`formátumban adja vissza.
 * A [Reference ()](template-functions-resource.md#reference) és a [List ()](template-functions-resource.md#list) függvények támogatottak.
 
 ## <a name="create-policies"></a>Szabályzatok létrehozása
@@ -74,30 +74,30 @@ Az alábbi példa bemutatja, hogyan [határozhat meg](../../governance/policy/co
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {},
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyDefinitions",
-            "name": "locationpolicy",
-            "apiVersion": "2018-05-01",
-            "properties": {
-                "policyType": "Custom",
-                "parameters": {},
-                "policyRule": {
-                    "if": {
-                        "field": "location",
-                        "equals": "northeurope"
-                    },
-                    "then": {
-                        "effect": "deny"
-                    }
-                }
-            }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {},
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyDefinitions",
+      "apiVersion": "2018-05-01",
+      "name": "locationpolicy",
+      "properties": {
+        "policyType": "Custom",
+        "parameters": {},
+        "policyRule": {
+          "if": {
+            "field": "location",
+            "equals": "northeurope"
+          },
+          "then": {
+            "effect": "deny"
+          }
         }
-    ]
+      }
+    }
+  ]
 }
 ```
 
@@ -107,36 +107,34 @@ A következő példa egy meglévő szabályzat-definíciót rendel hozzá a fel�
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "policyDefinitionID": {
-            "type": "string"
-        },
-        "policyName": {
-            "type": "string"
-        },
-        "policyParameters": {
-            "type": "object",
-            "defaultValue": {}
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2019-08-01/managementGroupDeploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "policyDefinitionID": {
+      "type": "string"
     },
-    "variables": {},
-    "resources": [
-        {
-            "type": "Microsoft.Authorization/policyAssignments",
-            "name": "[parameters('policyName')]",
-            "apiVersion": "2018-03-01",
-            "properties": {
-                "policyDefinitionId": "[parameters('policyDefinitionID')]",
-                "parameters": "[parameters('policyParameters')]"
-            }
-        }
-    ]
+    "policyName": {
+      "type": "string"
+    },
+    "policyParameters": {
+      "type": "object",
+      "defaultValue": {}
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Authorization/policyAssignments",
+      "apiVersion": "2018-03-01",
+      "name": "[parameters('policyName')]",
+      "properties": {
+        "policyDefinitionId": "[parameters('policyDefinitionID')]",
+        "parameters": "[parameters('policyParameters')]"
+      }
+    }
+  ]
 }
 ```
-
-
 
 ## <a name="next-steps"></a>Következő lépések
 

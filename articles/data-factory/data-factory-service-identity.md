@@ -8,14 +8,14 @@ editor: ''
 ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
-ms.date: 04/08/2019
+ms.date: 01/16/2020
 ms.author: jingwang
-ms.openlocfilehash: ede1e56384c75c64765962b7db196973a30c605b
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 45699680ad2003c034bce588857f8b102a0b6d26
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928446"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121777"
 ---
 # <a name="managed-identity-for-data-factory"></a>Felügyelt identitás Data Factoryhoz
 
@@ -155,17 +155,19 @@ A felügyelt identitást Azure Portal vagy programozott módon kérheti le. A k�
 
 ### <a name="retrieve-managed-identity-using-azure-portal"></a>Felügyelt identitás beolvasása a Azure Portal használatával
 
-A felügyelt identitás információit a Azure Portal-> a adat-előállító > tulajdonságai között találja:
+A felügyelt identitás adatait a Azure Portal-> a adat-előállító > tulajdonságai között találja.
 
 - Felügyelt identitás objektumának azonosítója
 - Felügyelt identitás bérlője
-- **Felügyelt azonosító alkalmazás azonosítója** > másolja ezt az értéket
+- Felügyelt identitás alkalmazásának azonosítója
 
-![Felügyelt identitás beolvasása](media/data-factory-service-identity/retrieve-service-identity-portal.png)
+A felügyelt identitás adatai is megjelennek, amikor olyan társított szolgáltatást hoz létre, amely támogatja a felügyelt identitásos hitelesítést, mint például az Azure Blob, a Azure Data Lake Storage, a Azure Key Vault stb.
+
+Az engedélyek megadásakor használja az objektumazonosító vagy a adat-előállító nevét (felügyelt identitás neve) az identitás megkereséséhez.
 
 ### <a name="retrieve-managed-identity-using-powershell"></a>Felügyelt identitás beolvasása a PowerShell használatával
 
-A felügyelt identitás résztvevő-AZONOSÍTÓját és a bérlő AZONOSÍTÓját a rendszer akkor adja vissza, amikor egy adott adatgyárat kap a következő módon:
+A rendszer a felügyelt identitás résztvevő-AZONOSÍTÓját és a bérlő AZONOSÍTÓját adja vissza, amikor a következő módon kap egy adott adatgyárat. Hozzáférés biztosítása a **PrincipalId** használatával:
 
 ```powershell
 PS C:\WINDOWS\system32> (Get-AzDataFactoryV2 -ResourceGroupName <resourceGroupName> -Name <dataFactoryName>).Identity
@@ -175,7 +177,7 @@ PrincipalId                          TenantId
 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc 72f988bf-XXXX-XXXX-XXXX-2d7cd011db47
 ```
 
-Másolja ki a résztvevő AZONOSÍTÓját, majd futtassa az alábbi Azure Active Directory parancsot az egyszerű azonosító paraméterrel a **ApplicationId**lekéréséhez, amelyet a hozzáférés biztosításához használ:
+Az alkalmazás AZONOSÍTÓját a rendszerbiztonsági tag fenti AZONOSÍTÓjának másolásával szerezheti be, majd az alábbi parancs futtatásával Azure Active Directory parancsot az egyszerű azonosító paraméterként.
 
 ```powershell
 PS C:\WINDOWS\system32> Get-AzADServicePrincipal -ObjectId 765ad4ab-XXXX-XXXX-XXXX-51ed985819dc

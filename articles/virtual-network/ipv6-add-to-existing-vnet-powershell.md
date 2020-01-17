@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/21/2019
 ms.author: kumud
-ms.openlocfilehash: 907a6de2ff89ddd3c2cb5bdab67e1deb984141dc
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: d08ce1c382d173ac98a0e61e6117ed50b958ba44
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72965238"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119839"
 ---
 # <a name="upgrade-an-ipv4-application-to-ipv6-in-azure-virtual-network---powershell-preview"></a>IPv4-alkalmazás frissítése az IPv6-ra az Azure Virtual Networkben – PowerShell (előzetes verzió)
 
@@ -26,7 +26,7 @@ Ez a cikk bemutatja, hogyan adhat IPv6-kapcsolatot egy meglévő IPv4-alkalmazá
 - IPv6-címtartomány a virtuális hálózathoz és az alhálózathoz
 - IPv4-és IPV6-alapú előtér-konfigurációval rendelkező standard Load Balancer
 - Az IPv4 + IPv6-konfigurációt is tartalmazó hálózati adapterekkel rendelkező virtuális gépek
-- IPv nyilvános IP-címe, hogy a terheléselosztó internetkapcsolattal rendelkező IPv6-kapcsolattal rendelkezik
+- IPv6 nyilvános IP-cím, hogy a terheléselosztó internetkapcsolattal rendelkező IPv6-kapcsolattal rendelkezik
 
 > [!Important]
 > Az Azure Virtual Network IPv6-támogatása jelenleg nyilvános előzetes verzióban érhető el. Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. A részleteket lásd: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -108,7 +108,7 @@ $lb | Add-AzLoadBalancerBackendAddressPoolConfig -Name "LbBackEndPool_v6"
 $lb | Set-AzLoadBalancer
 ```
 
-## <a name="configure-load-balancer-rules"></a>Terheléselosztó-szabályok konfigurálása
+## <a name="configure-load-balancer-rules"></a>Terheléselosztási szabályok konfigurálása
 Kérje le a meglévő Load Balancer előtér-és háttér-készlet konfigurációját, majd adja hozzá az új terheléselosztási szabályokat az [Add-AzLoadBalancerRuleConfig](/powershell/module/az.network/Add-AzLoadBalancerRuleConfig)használatával.
 
 ```azurepowershell

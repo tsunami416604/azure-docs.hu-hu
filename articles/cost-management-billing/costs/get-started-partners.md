@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 12/19/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: a320a446bf6a2ff5d5d923961b2614970ffa70f9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b337c1d57d253f55f3171e1de78a81b6de13ba31
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75988408"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157155"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedjen meg Azure Cost Management partnerekkel
 
@@ -91,7 +91,7 @@ A partnerek a hatókör használatával is összehangolják a számlákat. Tová
 
 - Adott szűrt számla
 - Ügyfél
-- Előfizetés
+- Előfizetést
 - Erőforráscsoport
 - Erőforrás
 - Azure-szolgáltatás
@@ -213,7 +213,7 @@ A következő adatmezők találhatók a használati adatok fájljaiban és a Cos
 | Földrajzi egység | Az erőforrás normalizált helye. | – |
 | effectivePrice | A szolgáltatás érvényes egységára, az árképzési pénznemben. A termék, a szolgáltatás családja, a mérő és az ajánlat egyedi. A számlázási fiókhoz tartozó árlista díjszabásával használható. Ha többértékű díjszabás vagy belefoglalt mennyiség szerepel, akkor a rendszer megjeleníti a kevert árat a felhasználáshoz. | Az egység ára a korrekciók után. |
 | Mennyiség | A megvásárolt vagy felhasznált mennyiség mért mennyisége. A számlázási időszak során felhasznált fogyasztásmérő mennyisége. | Egységek száma Egyeztetés közben ellenőrizze, hogy az megfelel-e a számlázási rendszeren található információknak. |
-| unitOfMeasure | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például GB és óra. | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például: GB, óra és 10, 10E. |
+| unitOfMeasure | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például GB és óra. | Meghatározza azt az egységet, amelyben a szolgáltatás díjköteles. Például: GB, óra és 10 000 s. |
 | pricingCurrency | Az egység árát meghatározó pénznem. | A pénznem a árlista listában.|
 | billingCurrency | A számlázott költségeket meghatározó pénznem. | Az ügyfél földrajzi régiójának pénzneme. |
 | chargeType | Meghatározza, hogy a költségek milyen típusú díjat jelentenek Azure Cost Management például a vásárláshoz és a visszatérítéshez. | A díj vagy a beállítás típusa. Nem érhető el az aktuális tevékenységhez. |
@@ -228,7 +228,7 @@ A következő adatmezők találhatók a használati adatok fájljaiban és a Cos
 | serviceInfo1 | A nem kötelező szolgáltatás-specifikus metaadatokat rögzítő örökölt mező. | Belső Azure-szolgáltatás metaadatainak. |
 | serviceInfo2 | A nem kötelező szolgáltatás-specifikus metaadatokat rögzítő örökölt mező. | Szolgáltatás adatai. Például egy virtuális gép és az INTERNETSZOLGÁLTATÓ neve ExpressRoute.|
 | additionalInfo | Szolgáltatásspecifikus metaadatok. Például egy virtuális gép rendszerképének típusa. | A többi oszlopban nem szereplő további információk. A szolgáltatásra vonatkozó metaadatok. Például egy virtuális gép rendszerképének típusa.|
-| címkét | A mérőműszerhez hozzárendelt címke. Használjon címkéket a számlázási rekordok csoportosításához. A címkék használatával például a mérőszámot használó részleg a költségeket terjesztheti. | Az ügyfél által hozzáadott címkék.|
+| tags | A mérőműszerhez hozzárendelt címke. Használjon címkéket a számlázási rekordok csoportosításához. A címkék használatával például a mérőszámot használó részleg a költségeket terjesztheti. | Az ügyfél által hozzáadott címkék.|
 | **partnerEarnedCreditRate** | A partneri rendszergazdai kapcsolat elérésén alapuló partneri kreditek (PEC) alapján alkalmazott kedvezmény mértéke. | A partner által létrehozott kreditek (PEC) aránya. Például: 0% vagy 15%. |
 | **partnerEarnedCreditApplied** | Azt jelzi, hogy alkalmazva lett-e a partner által létrehozott kredit. | – |
 
@@ -257,7 +257,7 @@ A **PartnerEarnedCreditApplied** tulajdonság a **csoportosítási** lehetőség
 
 ## <a name="export-cost-data-to-azure-storage"></a>Költségadatok exportálása az Azure Storage szolgáltatásba
 
-A partner bérlői számlázási hatókörökhöz hozzáféréssel rendelkező partnerek a költségeket és a használati adatokat egy Azure Storage-blobba is exportálhatunk. A blobnak olyan előfizetésben kell lennie a partner bérlőn, amely nem megosztott szolgáltatás előfizetése vagy az ügyfél előfizetése. A költségadatok exportálásának engedélyezéséhez ajánlott egy független utólagos elszámolású előfizetést beállítani a partner bérlőben az exportált költségadatok üzemeltetéséhez. Az export Storage-fiók az utólagos elszámolású előfizetésben üzemeltetett Azure Storage-blobon jön létre. Azon hatókör alapján, ahol a partner létrehozta az exportálást, a rendszer ismétlődően automatikusan exportálja a kapcsolódó adatmennyiséget a Storage-fiókba.
+A partner bérlői számlázási hatókörökhöz hozzáféréssel rendelkező partnerek a költségeket és a használati adatokat egy Azure Storage-blobba is exportálhatunk. A blobnak olyan előfizetésben kell lennie a partner bérlőn, amely nem megosztott szolgáltatás előfizetése vagy az ügyfél előfizetése. A költségadatok exportálásának engedélyezéséhez ajánlott egy független utólagos elszámolású előfizetést beállítani a partner bérlőben az exportált költségadatok üzemeltetéséhez. Az export Storage-fiók az utólagos elszámolású előfizetésben üzemeltetett Azure Storage-blobon jön létre. Azon hatókör alapján, ahol a partner létrehozta az exportálást, a rendszer ismétlődő módon automatikusan exportálja a kapcsolódó adatmennyiséget a Storage-fiókba.
 
 Az előfizetéshez RBAC hozzáféréssel rendelkező felhasználók a költségadatok exportálását egy Azure Storage-blobba is exportálhatja, amelyet az ügyfél bérlője bármely előfizetésében üzemeltet.
 
@@ -265,7 +265,11 @@ Az előfizetéshez RBAC hozzáféréssel rendelkező felhasználók a költséga
 
 A Azure Portal jelentkezzen be a partner bérlő vagy az ügyfél bérlőbe, és válassza a **Cost Management + számlázás**lehetőséget. Válasszon ki egy megfelelő hatókört, például egy számlázási fiókot, majd válassza a **Cost Analysis**lehetőséget. Amikor az oldal betöltődik, válassza az **Exportálás**lehetőséget. válassza **az összes exportálás megtekintése** az ütemterv exportálása alatt lehetőséget.
 
+![Válassza az Exportálás lehetőséget, és tekintse meg az összes exportálást](./media/get-started-partners/export01.png)
+
 Ezután válassza a **Hozzáadás** elemet, és írja be a nevet, és válassza ki az Exportálás típusát. Válassza a **Storage (tárolás** ) fület, és adja meg a szükséges adatokat.
+
+![Új Exportálás hozzáadása és a tár kiválasztása lap](./media/get-started-partners/export02.png)
 
 Amikor létrehoz egy exportálást a partner bérlőben, válassza az utólagos elszámolású előfizetést a partner bérlőben. Hozzon létre egy Azure Storage-fiókot az előfizetés használatával.
 
@@ -274,6 +278,8 @@ Az ügyfél bérlője RBAC felhasználói számára válasszon ki egy előfizet�
 Tekintse át a tartalmat, majd válassza a **Létrehozás** lehetőséget az exportáláshoz.
 
 Az exportálási listán szereplő adatellenőrzéshez válassza ki a Storage-fiók nevét. A Storage-fiók lapon válassza a **tárolók** lehetőséget, majd válassza ki a tárolót. Navigáljon a megfelelő mappához, és válassza ki a CSV-fájlt. Válassza a **Letöltés** lehetőséget a CSV-fájl beszerzéséhez és a megnyitásához. Az exportált adatok a Azure Portal a használati adatokhoz hasonló költségeket hasonlítanak.
+
+![Exportált adatmennyiség – példa](./media/get-started-partners/example-export-data.png)
 
 ## <a name="cost-management-rest-apis"></a>Cost Management REST API-k
 

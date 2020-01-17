@@ -3,19 +3,19 @@ title: 'Rövid útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Spee
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben a Speech SDK ügyfélalkalmazás egyéni parancsokkal fog létrejönni.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: 69a03ce5a8da7c8af6c17d122be3744e7b79e246
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9e324af0b90f595b5b7af2a417a562efb193d854
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381103"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156777"
 ---
 # <a name="quickstart-connect-to-a-custom-commands-application-with-the-speech-sdk-preview"></a>Gyors útmutató: Kapcsolódás egyéni parancsok alkalmazáshoz a Speech SDK-val (előzetes verzió)
 
@@ -46,7 +46,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan teheti meg az ügyfélalkalma
 
 1. Nyissa meg a [korábban létrehozott egyéni parancsok alkalmazást](./quickstart-custom-speech-commands-create-new.md) , és válassza a **Közzététel** lehetőséget.
 
-   > [!div class="mx-imgBorder"] 
+   > [!div class="mx-imgBorder"]
    > ![alkalmazás közzététele](media/custom-speech-commands/fulfill-sdk-publish-application.png)
 
 1. Az alkalmazás AZONOSÍTÓjának másolása a közzétételi értesítésből későbbi használatra

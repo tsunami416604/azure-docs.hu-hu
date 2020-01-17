@@ -11,12 +11,12 @@ author: jpe316
 ms.author: jordane
 ms.date: 11/22/2019
 ms.custom: seodec18
-ms.openlocfilehash: 9cde171f1c031b4b02a71fe0dac1a689e3ec0722
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: f6819ddce777a5740ef1f5f9ab887a0646c4e464
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772584"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122338"
 ---
 # <a name="mlops-model-management-deployment-and-monitoring-with-azure-machine-learning"></a>MLOps: modellek kezelése, üzembe helyezés és monitorozás Azure Machine Learning
 
@@ -48,7 +48,7 @@ A modell regisztrációja lehetővé teszi, hogy a saját munkaterületén táro
 > [!TIP]
 > A regisztrált modell a modellt alkotó egy vagy több fájl logikai tárolója. Ha például több fájlban tárolt modell van, akkor egyetlen modellként regisztrálhatja őket a Azure Machine Learning munkaterületen. A regisztráció után letöltheti vagy telepítheti a regisztrált modellt, és megkapja az összes regisztrált fájlt.
 
-A regisztrált modelleket név és verzió alapján azonosítjuk. Minden alkalommal, amikor ugyanazzal a névvel regisztrál egy modellt, a beállításjegyzék megnöveli a verziót. A regisztráció során további metaadat-címkéket is megadhat. Ezeket a címkéket a rendszer a modell keresésekor használja. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
+A regisztrált modelleket a név és a verziószám azonosítja. Ha egy modellt egy már létező néven regisztrál, a beállításjegyzék megnöveli annak verziószámát. A regisztráció során további metaadat-címkéket is megadhat. Ezeket a címkéket a rendszer a modell keresésekor használja. A Azure Machine Learning a Python 3.5.2-es vagy újabb verziójával tölthető modelleket támogat.
 
 > [!TIP]
 > A Azure Machine Learningon kívül betanított modelleket is regisztrálhat.
@@ -90,7 +90,7 @@ Megadhatja a cél telepítési platform konfigurációját is. Például a virtu
 A rendszerkép létrehozásakor a Azure Machine Learning által igényelt összetevőket is hozzáadja a rendszer. Például a webszolgáltatás futtatásához és a IoT Edgehoz való interakcióhoz szükséges eszközök.
 
 #### <a name="batch-scoring"></a>Kötegelt kiértékelés
-A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-run-batch-predictions.md).
+A Batch pontozása ML-folyamatok esetében támogatott. További információ: batch- [előrejelzések Big Data](how-to-use-parallel-run-step.md).
 
 #### <a name="real-time-web-services"></a>Valós idejű webszolgáltatások
 

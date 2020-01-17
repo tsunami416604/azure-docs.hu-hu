@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: yossi-y
 ms.author: yossiy
 ms.date: 01/11/2020
-ms.openlocfilehash: 0354abf6a5450a1116423e3a35c3a7e2ae7b9057
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ef70c211c395556a4c15ff06e65098e8aaac32ba
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971092"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120264"
 ---
 # <a name="azure-monitor-customer-managed-key-configuration"></a>Azure Monitor ügyfél által felügyelt kulcs konfigurálása 
 
@@ -378,8 +378,6 @@ Ha Key Vault frissíti a kulcsot, és nem frissíti az új *kulcs-azonosító* r
 
 - A CMK titkosítás a CMK-konfiguráció után az újonnan betöltött adatmennyiségre vonatkozik. A CMK-konfiguráció előtt betöltött adatmennyiség továbbra is a Microsoft-kulccsal lett titkosítva. Az adatlekérdezést a konfigurálás előtt és után zökkenőmentesen is lekérdezheti.
 
-- A CMK képesség regionális – a Azure Key Vault, a *fürterőforrás* és a társított munkaterületeknek ugyanabban a régióban kell lenniük, de különböző előfizetésekben is lehetnek.
-
 - Ha a munkaterület hozzá van rendelve egy *fürterőforrás* -hez, az nem rendelhető hozzá a *fürterőforrás* szolgáltatáshoz, mert az adatok titkosítva vannak a kulccsal, és nem érhető el a KEK Azure Key Vault-ben való használata nélkül.
 
 - A Azure Key Vault helyreállítható kell konfigurálni. Ezek a tulajdonságok alapértelmezés szerint nem engedélyezettek, és a parancssori felület és a PowerShell használatával kell konfigurálni:
@@ -391,9 +389,9 @@ Ha Key Vault frissíti a kulcsot, és nem frissíti az új *kulcs-azonosító* r
 
 - A *fürterőforrás* más erőforráscsoporthoz vagy előfizetéshez való áthelyezése jelenleg nem támogatott.
 
-- Ha a *fürterőforrás* egy másik bérlőn van, a *fürt* erőforrás-társítása sikertelen lesz.
+- A Azure Key Vault, a *fürterőforrás* és a társított munkaterületeknek ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure ad) bérlőben kell lenniük, de különböző előfizetésekben is lehetnek.
 
--   Ha egy másik *fürterőforrás* -erőforráshoz van társítva, akkor sikertelen lesz a munkaterület társítása a *fürt* erőforrásaihoz
+- Ha egy másik *fürterőforrás* -erőforráshoz van társítva, akkor sikertelen lesz a munkaterület társítása a *fürt* erőforrásaihoz
 
 ## <a name="troubleshooting-and-management"></a>Hibaelhárítás és felügyelet
 
@@ -557,7 +555,7 @@ Content-type: application/json
 
 ```json
 {
-  "id": "/subscriptions/{subscription-id}/resourcegroups/{resource-group-name}/providers/microsoft.insights/components/{component-name}",
+  "id": "/subscriptions/subscription-id/resourcegroups/resource-group-name/providers/microsoft.insights/components/component-name",
   "name": "component-name",
   "type": "Microsoft.Insights/components",
   "location": "region-name",

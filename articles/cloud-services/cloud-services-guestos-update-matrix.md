@@ -10,14 +10,14 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 1/8/2020
+ms.date: 1/15/2020
 ms.author: raiye
-ms.openlocfilehash: dd148a4dd454e2ebebcb6b9befc576570ecb0352
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 1139e2b26cdc1dee524b1d3b6a942c735c43aec7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778209"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122245"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
 Naprakész információkat biztosít a Cloud Services legújabb Azure Guest OS-kiadásairól. Ez az információ segít megtervezni a frissítési útvonalat, mielőtt a vendég operációs rendszer le lenne tiltva. Ha úgy konfigurálja a szerepköröket, hogy az *automatikus* vendég operációs rendszer frissítéseit használják az [Azure vendég operációs rendszer frissítési beállításai][Azure Guest OS Update Settings]részében leírtak szerint, nem létfontosságú, hogy elolvassa ezt a lapot.
@@ -214,9 +214,9 @@ A szeptemberi vendég operációs rendszer megjelent.
 
 | Konfigurációs sztring | Kiadási dátum | Dátum letiltása |
 | --- | --- | --- |
-| WA-GUEST-OS-2.94 _201912-01 | 2020. január 8. | 2,95 post |  
-| WA-GUEST-OS-2.93 _201911-01 | 2019. december 5. | 2,94 post |  
-|~ WA-GUEST-OS-2.91 _201910-01 ~| 2019. november 1. | 2020. január 8. |  
+| WA-GUEST-OS-2.93 _201912-01 | 2020. január 8. | 2,95 post |  
+| WA-GUEST-OS-2.92 _201911-01 | 2019. december 5. | 2,94 post |  
+|~~WA-GUEST-OS-2.91 _201910-01~~| 2019. november 1. | 2020. január 8. |  
 |~~WA-GUEST-OS-2.90 _201909-01~~| Október 7., 2019 | 2019. december 5. |  
 |~~WA-GUEST-OS-2.89 _201908-01~~| 2019. augusztus 4. | 2019. november 1. |  
 |~~WA-GUEST-OS-2,88 _201907-01~~| 2019. július 26. | Október 7., 2019 |

@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: jordane
 author: jpe316
 ms.reviewer: larryfr
-ms.date: 12/17/2019
+ms.date: 12/27/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: 48ecaea82e8874ff521abafaa075b41367f8fbf1
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 1560b5d60ae3c6de3ecb6d50859e24ebb7bc2d28
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754000"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156913"
 ---
 # <a name="deploy-models-with-azure-machine-learning"></a>Modellek üzembe helyezése Azure Machine Learning
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -38,7 +38,7 @@ Az üzembe helyezési munkafolyamatban részt vevő fogalmakkal kapcsolatos tov�
 
 - Egy modell. Ha nem rendelkezik betanított modellel, az [oktatóanyagban](https://aka.ms/azml-deploy-cloud)szereplő modell-és függőségi fájlokat is használhatja.
 
-- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](how-to-vscode-tools.md)-hoz készült Azure Machine learning.
+- Az [Azure CLI-bővítmény a Machine learning szolgáltatáshoz](reference-azure-machine-learning-cli.md), a [pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-hoz vagy a [Visual Studio Code](tutorial-setup-vscode-extension.md)-hoz készült Azure Machine learning.
 
 ## <a name="connect-to-your-workspace"></a>Csatlakozás a munkaterülethez
 
@@ -59,7 +59,7 @@ A következő kód bemutatja, hogyan csatlakozhat egy Azure Machine Learning mun
 
 + **A VS Code használata**
 
-   A VS Code használatakor a munkaterületet grafikus felületen választhatja ki. További információ: [modellek üzembe helyezése és kezelése](how-to-vscode-tools.md#deploy-and-manage-models) a vs Code bővítmény dokumentációjában.
+   A VS Code használatakor a munkaterületet grafikus felületen választhatja ki. További információ: [modellek üzembe helyezése és kezelése](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) a vs Code bővítmény dokumentációjában.
 
 ## <a id="registermodel"></a>A modell regisztrálása
 
@@ -115,7 +115,7 @@ Az ebben a szakaszban szereplő kódrészletek bemutatják, hogyan regisztrálha
 
 + **A VS Code használata**
 
-  A [vs Code](how-to-vscode-tools.md#deploy-and-manage-models) bővítmény használatával bármilyen modell-fájl vagy-mappa használatával regisztrálhat modelleket.
+  A [vs Code](tutorial-train-deploy-image-classification-model-vscode.md#deploy-the-model) bővítmény használatával bármilyen modell-fájl vagy-mappa használatával regisztrálhat modelleket.
 
 ### <a name="register-a-model-from-a-local-file"></a>Modell regisztrálása helyi fájlból
 
@@ -185,7 +185,7 @@ A modell üzembe helyezéséhez a következő elemek szükségesek:
     >
     > * Az Azure Machine Learning SDK nem biztosít módot a webszolgáltatások vagy IoT Edge üzembe helyezések számára az adattár vagy adatkészletek eléréséhez. Ha a telepített modellnek hozzá kell férnie az üzemelő példányon kívül tárolt adatokat, például egy Azure Storage-fiókban található adatokat, egyéni kódot kell létrehoznia a megfelelő SDK használatával. Például a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python)-t.
     >
-    >   A forgatókönyvnek megfelelő alternatív megoldás a Batch- [Előrejelzés](how-to-run-batch-predictions.md), amely hozzáférést biztosít az adattárakhoz a pontozás során.
+    >   A forgatókönyvnek megfelelő alternatív megoldás a Batch- [Előrejelzés](how-to-use-parallel-run-step.md), amely hozzáférést biztosít az adattárakhoz a pontozás során.
 
 * **Függőségek**, például segítő parancsfájlok vagy Python/Conda csomagok, amelyek a belépési parancsfájl vagy modell futtatásához szükségesek.
 

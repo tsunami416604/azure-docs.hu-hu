@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d6001dc47d19665184bf44114ab36744f0287264
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 53428039055005693f30f63a709105b77fe65f8f
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75608754"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155230"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Azure Multi-Factor Authentication-kiszolgáló – első lépések
 
@@ -96,8 +96,8 @@ Ha nem használja az eseménymegerősítési szolgáltatást, a felhasználók p
 Az alábbi lépéseket követve töltse le az Azure Multi-Factor Authentication-kiszolgálót az Azure Portalról:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza az **MFA-kiszolgáló**lehetőséget.
-3. Válassza a **Kiszolgálóbeállítások** lehetőséget.
+2. Keresse meg és válassza ki az *Azure Active Directoryt*. Válassza a **biztonság** > **MFA**elemet.
+3. A **kezelő MFA-kiszolgáló**területen válassza a **kiszolgáló beállításai**lehetőséget.
 4. Válassza a **Letöltés** lehetőséget, és kövesse a letöltési oldalon megjelenő utasításokat a telepítő mentéséhez. 
 
    ![MFA-kiszolgáló letöltése a Azure Portal](./media/howto-mfaserver-deploy/downloadportal.png)

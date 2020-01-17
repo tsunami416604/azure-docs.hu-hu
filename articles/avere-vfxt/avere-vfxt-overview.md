@@ -4,14 +4,14 @@ description: Bevezetés az Azure-hoz készült Avere vFXT, a HPC felhőalapú gy
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: overview
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 5e2fbf857b198072328e08c81da256e2f60370dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9dab2ca844feb1c24dfffc48b4f29cd1a311314
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75414410"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153191"
 ---
 # <a name="what-is-avere-vfxt-for-azure"></a>Mi az Azure-hoz készült Avere vFXT?
 
@@ -71,7 +71,7 @@ A avere vFXT for Azure a következő Azure-erőforrásokat használja:
 |Virtuális gépek|3 vagy több E32s_v3|
 |Prémium szintű SSD-tár|200 GB operációsrendszer-tárhely és 1–4 TB gyorsítótártér csomópontonként |
 |Tárfiók (nem kötelező) |v2|
-|Háttérbeli adattárolás (nem kötelező) | Egy üres LRS-blobtároló |
+|Adatháttér-tároló (nem kötelező) | Egy üres LRS-blobtároló |
 
 ## <a name="next-steps"></a>Következő lépések
 

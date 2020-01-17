@@ -4,18 +4,18 @@ description: Az Azure-hoz készült avere-vFXT kapcsolatos támogatási jegyek m
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 27f32a922a1b063096b0ccf28a01a78d442e0271
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: b3c604003f78a150067875fb2064ab5eca0600db
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889279"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153313"
 ---
 # <a name="get-help-with-your-system"></a>Segítség kérése a rendszeren
 
-Ha segítségre van szüksége az Azure-hoz készült avere-vFXT, az alábbi módokon kérhet támogatást:
+Ha segítségre van az Azure-rendszer avere-vFXT, az alábbi módon kérhet támogatást:
 
 * **Avere vFXT-probléma** – a Azure Portal segítségével nyisson meg egy támogatási jegyet az avere-vFXT az [alább](#open-a-support-ticket-for-your-avere-vfxt)leírtak szerint.
 * **Kvóta** – ha kvótával kapcsolatos probléma merül fel, [a kvóta növelését kéri](#request-a-quota-increase)
@@ -27,27 +27,33 @@ Ha a avere vFXT telepítése vagy használata során problémák merülnek fel, 
 
 Kövesse az alábbi lépéseket annak biztosításához, hogy a támogatási jegye a fürt egy erőforrásával legyen címkézve. A jegy címkézése segít a megfelelő támogatási erőforráshoz való átirányításban.
 
-1. [https://portal.azure.com](https://portal.azure.com)válassza az **erőforráscsoportok**lehetőséget.
-
-   ![képernyőkép Azure Portal bal oldali menü "erőforráscsoportok" körben](media/avere-vfxt-ticket-rg.png)
-
-1. Tallózással keresse meg azt a vFXT-fürtöt tartalmazó erőforráscsoportot, ahol a probléma felmerült, és kattintson az egyik avere virtuális gépre.
+1. [https://portal.azure.com](https://portal.azure.com)válassza az **erőforráscsoportok**lehetőséget. Tallózással keresse meg azt a vFXT-fürtöt tartalmazó erőforráscsoportot, ahol a probléma felmerült, és kattintson az egyik avere-fürt virtuális gépre.
 
     ![képernyőfelvétel: Azure Portal erőforráscsoport – áttekintés panel egy adott virtuális géppel](media/avere-vfxt-ticket-vm.png)
 
 1. A virtuális gép lapon görgessen le a bal oldali panel aljára, és kattintson az **új támogatási kérelem**elemre.
 
-    ![Képernyőkép a virtuális gép Azure Portal virtuális gép oldaláról az előző képernyőképen. A bal oldali menü az alsó és az "új támogatási kérelem" körben görgethető.](media/avere-vfxt-ticket-request.png)
+    ![Képernyőkép a virtuális gép Azure Portal virtuális gép oldaláról az előző képernyőképen. A bal oldali menü az aljára, az új támogatási kérelem pedig kör alakú.](media/avere-vfxt-ticket-request.png)
 
-1. A támogatási kérelem egyikén kattintson a **minden szolgáltatás** elemre, és keresse meg a **avere VFXT**elemet a **tárterület** területen.
+1. A támogatási kérelem első oldalán válassza ki a probléma típusát, és ellenőrizze, hogy a megfelelő előfizetés van-e kiválasztva.
 
-    ![képernyőkép a Azure Portal új támogatási kérés képernyőjéről, az "alapismeretek" fejléctel és a "szolgáltatás" elem köré. A "minden szolgáltatás" gomb van kiválasztva, és a legördülő menü mező értéke "avere vFXT".](media/avere-vfxt-ticket-service.png)
+   A **szolgáltatás**alatt kattintson a **minden szolgáltatás** elemre, és keresse **meg a** **avere vFXT**lehetőséget.
 
-1. A második oldalon válassza ki a probléma típusát és kategóriáját, amely leginkább megfelel a problémának. Adjon hozzá egy rövid címet és egy leírást, amely tartalmazza a probléma előfordulásának időpontját.
+   Adjon hozzá egy rövid összefoglalót, és válassza ki a probléma típusát.
 
-   ![képernyőkép az új támogatási kérés képernyőről a "probléma" fejléctel, amely sok olyan mezőt tartalmaz, amelyeket el kell végezni](media/avere-vfxt-ticket-problem.png)
+    ![képernyőkép a Azure Portal egy új támogatási kérés képernyőjéről. Az alapvető beállítások lap van kiválasztva. A képernyő elemei közé tartozik a probléma típusa, az előfizetés, a szolgáltatás, az összefoglalás és a probléma típusa.](media/ticket-basics.png)
 
-1. A harmadik oldalon adja meg a kapcsolattartási adatait, majd kattintson a **Létrehozás**gombra. A rendszer visszaigazolja az e-mail-címre, és felveszi Önnel a kapcsolatot a támogatási személyzet tagjaival.
+   A folytatáshoz kattintson a **Tovább** gombra.
+
+1. A támogatási űrlap második lapja az összefoglalás leírása alapján a probléma kijavítására vonatkozó javaslatokat tartalmaz. Ha továbbra is támogatási jegyet kell létrehoznia, kattintson a lenti **Next (tovább** ) gombra.
+
+   ![képernyőkép az új támogatási kérés képernyőről, ahol a megoldások lap van kiválasztva. A középső szövegmezőben szerepel a "javasolt megoldás" cím, és megmagyarázza a lehetséges jogorvoslatokat.](media/ticket-solutions.png)
+
+1. A harmadik lapon adja meg a részleteket – ez tartalmazza a fürtre vonatkozó információkat, a probléma előfordulásának idejét, a súlyosságot és az Önnel való kapcsolatfelvétel módját. Adja meg az adatokat, és kattintson a lenti **Next (tovább** ) gombra.
+
+   ![képernyőkép az új támogatási kérés képernyőről, ahol a Részletek lap van kiválasztva. Az információs mezők a "probléma részletei", a "támogatási módszer" és a "kapcsolattartási adatok" kategóriába vannak rendezve.](media/ticket-details.png)
+
+1. Tekintse át a végső oldalon található információkat, majd kattintson a **Létrehozás**gombra. A rendszer visszaigazolja az e-mail-címre, és felveszi Önnel a kapcsolatot a támogatási személyzet tagjaival.
 
 ## <a name="request-a-quota-increase"></a>Kvóta növelésének kérése
 

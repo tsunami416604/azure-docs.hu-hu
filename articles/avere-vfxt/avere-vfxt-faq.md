@@ -4,14 +4,14 @@ description: Gyakran ismételt kérdések az Azure-hoz készült avere vFXT
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/06/2019
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 5340952d6d30ae80d53234530a7e2ca6c067cf1f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 186b2c048a9de42318e4af287393d731a4eb16f1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415346"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153462"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
 
@@ -25,11 +25,11 @@ Az Azure-hoz készült avere-vFXT egy nagy teljesítményű fájlrendszer, amely
 
 ### <a name="is-avere-vfxt-a-storage-solution"></a>Avere vFXT?
 
-Nem. A avere vFXT egy olyan fájlrendszer- *gyorsítótár* , amely tárolási környezetekhez, például az EMC-vagy NETAPP-NAS-hoz vagy egy Azure Blob-tárolóhoz csatlakozik. A avere vFXT egyszerűsíti az ügyfelektől érkező adatkéréseket, és gyorsítótárazza azokat az adatokkal, amelyeket a teljesítmény növelése érdekében a méret és az idő múlásával javít. A avere vFXT maga nem tárolja az adattárolást. Nem rendelkezik információval a mögötte tárolt adatok mennyiségéről.
+Nem. A avere vFXT for Azure egy olyan fájlrendszer- *gyorsítótár* , amely tárolási környezetekhez, például az EMC vagy a NetApp NAS kiszolgálóhoz, vagy egy Azure Blob-tárolóhoz csatlakozik. A avere vFXT egyszerűsíti az ügyfelektől érkező adatkéréseket, és gyorsítótárazza azokat az adatokkal, amelyeket a teljesítmény növelése érdekében a méret és az idő múlásával javít. A avere vFXT maga nem tárolja az adattárolást. Nem rendelkezik információval a mögötte tárolt adatok mennyiségéről.
 
 ### <a name="is-avere-vfxt-a-tiering-solution"></a>VFXT megoldás a avere?
 
-A avere vFXT nem automatikusan tömöríti az adatszinteket a gyors és a lassú elérésű szint között.  
+A avere vFXT for Azure nem automatikusan tömöríti az adatszinteket a gyors és a lassú elérésű szint között.  
 
 ### <a name="how-do-i-know-if-an-environment-is-right-for-avere-vfxt"></a>Hogyan tudni, hogy van-e megfelelő környezet a avere-vFXT?
 
@@ -47,9 +47,9 @@ Vegye fontolóra a avere vFXT for Azure-t, ha olyan fájl-alapú elemzési folya
 
 * A HPC-alkalmazás a NFSv3-ügyfeleken alapul. (Bizonyos esetekben használhat SMB 2,1-ügyfeleket, de a teljesítmény korlátozott.)
 
-A következő ábra leegyszerűsíti a választ erre a kérdésre. Minél közelebb van a munkafolyamat a jobb felső sarokban, annál valószínűbb, hogy a avere gyorsítótárazási megoldás megfelelő a környezet számára.
+A következő diagram segíthet a kérdés megválaszolásában. Minél közelebb van a munkafolyamat a jobb felső sarokban, annál valószínűbb, hogy az Azure gyorsítótárazási megoldás avere-vFXT megfelelő a környezete számára.
 
-![Diagram, amely azt mutatja, hogy a avere vFXT több ezer ügyfelet tartalmazó olvasási nagy terhelések is jobban illeszkednek](media/avere-vfxt-fit-assessment.png)
+![Diagram diagram, amely azt mutatja, hogy a avere vFXT több ezer ügyfelet tartalmazó olvasási nagy terhelések is jobbak](media/avere-vfxt-fit-assessment.png)
 
 ### <a name="at-what-scale-of-clients-does-the-avere-vfxt-solution-make-the-most-sense"></a>Az ügyfelek milyen skálán teszik a avere vFXT-megoldást?
 
@@ -59,7 +59,7 @@ A tipikus avere-vFXT ügyfeleink a 1 000 CPU-magoktól kezdődően igényes szá
 
 ### <a name="how-much-data-can-an-avere-vfxt-environment-store"></a>Mennyibe kerül az avere vFXT-környezet?
 
-A avere vFXT egy gyorsítótár. Nem tárolja kifejezetten az adattárolást. A RAM és az SSD-k kombinációját használja a gyorsítótárazott adatmennyiségek tárolásához. A rendszer véglegesen tárolja az adattárolási tárolót (például egy NetApp NAS-vagy BLOB-tárolót). A avere vFXT rendszer nem rendelkezik információval a mögötte tárolt adatok mennyiségéről. A avere vFXT csak az ügyfelek által kért adatrészhalmazt gyorsítótárazza.  
+Az Azure-hoz készült avere-vFXT egy gyorsítótár. Nem tárolja kifejezetten az adattárolást. A RAM és az SSD-k kombinációját használja a gyorsítótárazott adatmennyiségek tárolásához. A rendszer véglegesen tárolja az adattárolási tárolót (például egy NetApp NAS-vagy BLOB-tárolót). A avere vFXT rendszer nem rendelkezik információval a mögötte tárolt adatok mennyiségéről. A avere vFXT csak az ügyfelek által kért adatrészhalmazt gyorsítótárazza.  
 
 ### <a name="what-regions-are-supported"></a>Mely régiók támogatottak?
 
@@ -67,7 +67,7 @@ Az Azure-hoz készült avere-vFXT minden régióban támogatott, kivéve a szuve
 
 ### <a name="how-do-i-get-help-with-avere-vfxt"></a>Hogyan segítséget kaphat a avere vFXT?
 
-A speciális támogatási csoport segítséget nyújt az Azure-hoz készült avere-vFXT. A támogatási jegy a Azure Portalból való megnyitásához kövesse a [segítség a rendszerhez](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) című témakör utasításait.
+A támogatási munkatársak speciális csoportja segítséget nyújt az Azure-hoz készült avere-vFXT. A támogatási jegy a Azure Portalból való megnyitásához kövesse a [segítség a rendszerhez](avere-vfxt-open-ticket.md#open-a-support-ticket-for-your-avere-vfxt) című témakör utasításait.
 
 ### <a name="is-avere-vfxt-highly-available"></a>A avere vFXT nagyon elérhető?
 
@@ -78,7 +78,7 @@ Igen, a avere vFXT kizárólag HA megoldásként fut.
 Igen, az ügyfelek több felhőalapú szolgáltatót is használhatnak a avere vFXT-fürttel. Támogatja az AWS S3 standard gyűjtőket, a Google Cloud Services standard gyűjtőt és az Azure Blob-tárolókat.
 
 > [!NOTE]
-> A avere vFXT az AWS-ben vagy a Google Cloud-ban, de nem az Azure-ban kell fizetni.
+> Az AWS vagy a Google Cloud Storage szolgáltatással a avere vFXT használatára vonatkozó díj vonatkozik. Az Azure Blob Storage használatához nincs szükség további szoftverre.
 
 ## <a name="technical-compute"></a>Technikai: számítás
 
@@ -165,10 +165,10 @@ Az adatlemezek a lemezek között vannak, de nincs titkosítva. Maguk a lemezek 
 
 ### <a name="what-network-is-recommended"></a>Milyen hálózat ajánlott?
 
-Ha helyszíni tárolót használ a avere vFXT, akkor 1 GB/s vagy annál nagyobb hálózati kapcsolatban kell lennie. Ha kis mennyiségű adattal rendelkezik, és készen áll az adatok felhőbe másolására a feladatok futtatása előtt, előfordulhat, hogy a VPN-kapcsolat elég. 
+Ha helyszíni tárolót használ a avere vFXT, akkor a tárterület és a fürt között 1 GB/s vagy annál nagyobb hálózati kapcsolattal kell rendelkeznie. Ha kis mennyiségű adattal rendelkezik, és készen áll az adatok felhőbe másolására a feladatok futtatása előtt, előfordulhat, hogy a VPN-kapcsolat elegendő.
 
 > [!TIP]
-> Minél lassabb a hálózati kapcsolat, annál lassabbak lesznek a kezdeti hideg olvasások. A lassú olvasások a munkahelyi folyamat késését fokozzák.
+> Minél lassabb a hálózati kapcsolat, annál lassabbak lesznek a kezdeti "hideg" olvasások. A lassú olvasások a munkahelyi folyamat késését fokozzák.
 
 ### <a name="can-i-run-avere-vfxt-in-a-different-virtual-network-than-my-compute-cluster"></a>Futtathatom a avere-vFXT egy másik virtuális hálózaton, mint a számítási fürtem?
 
@@ -176,7 +176,7 @@ Igen, a avere vFXT rendszerét egy másik virtuális hálózatban is létrehozha
 
 ### <a name="does-avere-vfxt-require-its-own-subnet"></a>A avere vFXT saját alhálózata szükséges?
 
-Igen. A avere vFXT szigorúan magas rendelkezésre állású (HA) fürtként fut, és több IP-címet igényel a működéséhez. Ha a fürt a saját alhálózatában található, akkor elkerülhető az IP-címek ütközésének kockázata, ami problémát okozhat a telepítésben és a normál működésben. A fürt alhálózata a meglévő virtuális hálózaton belül lehet, feltéve, hogy egyetlen IP-cím sem fedi át egymást.
+Igen. A avere vFXT szigorúan magas rendelkezésre állású (HA) fürtként fut, és több IP-címet igényel a működéséhez. Ha a fürt a saját alhálózatában található, akkor elkerülhető az IP-címek ütközésének kockázata, ami problémát okozhat a telepítésben és a normál működésben. A fürt alhálózata más erőforrások által használt virtuális hálózaton belül lehet, feltéve, hogy egyetlen IP-cím sem fedi át egymást.
 
 ### <a name="can-i-run-avere-vfxt-on-infiniband"></a>Futtathatom a avere vFXT a InfiniBand-on?
 
@@ -224,9 +224,6 @@ A avere vFXT nem tároló. Ez egy olyan gyorsítótár, amely több tárolási c
 * Dell EMC Isilon (OneFS 7,1, 7,2, 8,0 és 8,1) 
 * NetApp-ONTAP (fürtözött mód 9,4, 9,3, 9,2, 9.1 P1, 8.0-8.3) és (7 mód 7. *, 8.0-8.3)
 
-  > [!NOTE]
-  > A Azure NetApp Files jelenleg nem támogatott.
-
 * Azure Blob-tárolók (csak helyileg redundáns tárolás)
 * AWS S3 gyűjtők
 * Google Cloud-gyűjtők
@@ -245,11 +242,13 @@ A támogatás a mező igény szerinti mennyiségén alapul. Ha van elég bevéte
 
 ### <a name="can-i-use-azure-blob-storage-as-a-core-filer"></a>Használhatom az Azure Blob Storage-t Core Filer-ként?
 
-Igen, az Azure-hoz készült avere-vFXT egy blokk BLOB tárolót használhatnak Cloud Core filerként.  
+Igen, az Azure-hoz készült avere-vFXT egy blokk BLOB tárolót használhatnak Cloud Core filerként.
 
 ### <a name="what-are-the-storage-account-requirements-for-a-blob-core-filer"></a>Mik a blob Core Filer Storage-fiókra vonatkozó követelményei?
 
 A Storage-fióknak általános célú v2-(GPv2-) fióknak kell lennie, és csak helyileg redundáns tárolásra van konfigurálva. A Geo-redundáns tárolás és a zóna-redundáns tárolás nem támogatott.
+
+A Storage-fiókra vonatkozó követelményekkel kapcsolatos további információkért olvassa el az [Azure Blob Storage Cloud Core filert](avere-vfxt-add-storage.md#azure-blob-storage-cloud-core-filer) .
 
 ### <a name="can-i-use-archive-blob-storage"></a>Használhatom az Archive blob Storage szolgáltatást?
 

@@ -3,19 +3,19 @@ title: 'Útmutató: az egyéni parancsok paramétereinek megadása (előzetes ve
 titleSuffix: Azure Cognitive Services
 description: Ebből a cikkből megtudhatja, hogyan adhat hozzá érvényesítéseket egy paraméterhez egyéni parancsokban.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.author: donkim
-ms.openlocfilehash: c89c388f919ca95a331d1d406f5b1776c127ebad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: cf6e4e4f0bfab43fb738f8415022e55fcbcbd05a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446914"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156454"
 ---
 # <a name="how-to-add-validations-to-custom-command-parameters-preview"></a>Útmutató: az egyéni parancsok paramétereinek megadása (előzetes verzió)
 
@@ -41,7 +41,7 @@ Az érvényesítések megjelenítéséhez hozzon létre egy új parancsot, amely
 
    | Beállítás           | Ajánlott érték                                          | Leírás                                                                                      |
    | ----------------- | -------------------------------------------------------- | ------------------------------------------------------------------------------------------------ |
-   | Név              | Hőmérséklet                                              | A parancs paraméterének leíró neve                                                    |
+   | Name (Név)              | Hőmérséklet                                              | A parancs paraméterének leíró neve                                                    |
    | Szükséges          | igaz                                                     | Jelölőnégyzet, amely azt jelzi, hogy a paraméter értéke kötelező-e a parancs végrehajtása előtt |
    | Válasz sablonja | "– Milyen hőmérsékletet szeretne?                     | A paraméter értékének megadására vonatkozó kérés, ha nem ismert                              |
    | Type (Típus)              | Szám                                                   | A paraméter típusa, például szám, karakterlánc vagy dátum/idő                                      |

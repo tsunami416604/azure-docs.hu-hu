@@ -8,12 +8,12 @@ ms.date: 05/20/2019
 author: rboucher
 ms.author: robb
 ms.subservice: metrics
-ms.openlocfilehash: 1bab6a990ba38bc32c2b7350bb1d4eac15a7b95e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5d38786d3c7b852d3a9b65cd366eed68ebbb01e3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479032"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152952"
 ---
 # <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
 
@@ -689,10 +689,10 @@ Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. eventHubs | �
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusQueues | Útválasztás: Service Bus-üzenetsor üzeneteinek késése | Ezredmásodperc | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. késleltetés. serviceBusTopics | Útválasztás: Service Bus témakör üzenetének késése | Ezredmásodperc | Átlag
 Igen | Microsoft. Devices/IotHubs | D2C. endpoints. látencia. Storage | Útválasztás: üzenetek késése a tároláshoz | Ezredmásodperc | Átlag
-Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. eldobott | Útválasztás: telemetria üzenetek elvetve | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. eldobott | Útválasztás: telemetria üzenetek elvetve  | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. tartalék | Útválasztás: tartalékként továbbított üzenetek | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. érvénytelen | Útválasztás: Inkompatibilis telemetria-üzenetek | Mennyiség | Összes
-Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. árva | Útválasztás: árva telemetria üzenetek | Mennyiség | Összes
+Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. árva | Útválasztás: árva telemetria üzenetek  | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. kimenő. sikeres | Útválasztás: telemetria üzenetek kézbesítése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. allProtocol | Telemetria üzenetek küldése | Mennyiség | Összes
 Igen | Microsoft. Devices/IotHubs | D2C. telemetria. beáramló. sendThrottle | Szabályozási hibák száma | Mennyiség | Összes

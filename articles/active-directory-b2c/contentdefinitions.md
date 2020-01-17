@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f8acf499d4d82c49096e4e5beff8209d0970b421
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1ce564767fe9664604687d8cbaced58507e6b8b3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064341"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119652"
 ---
 # <a name="contentdefinitions"></a>ContentDefinitions
 
@@ -37,13 +37,13 @@ Az alábbi példa a Content definition azonosítóját és a honosított erőfor
   <Metadata>
     <Item Key="DisplayName">Local account sign up page</Item>
   </Metadata>
-  <LoalizedResourcesReferences MergeBehavior="Prepend">
+  <LocalizedResourcesReferences MergeBehavior="Prepend">
     <LocalizedResourcesReference Language="en" LocalizedResourcesReferenceId="api.localaccountsignup.en" />
     <LocalizedResourcesReference Language="es" LocalizedResourcesReferenceId="api.localaccountsignup.es" />
     ...
 ```
 
-A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil metaadatai a **ContentDefinitionReferenceId** beállított tartalom-definíciós azonosítót tartalmazzák`api.localaccountsignup`
+A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil metaadatai a **ContentDefinitionReferenceId** beállított tartalom `api.localaccountsignup`-definíciós azonosítót tartalmazzák
 
 ```XML
 <TechnicalProfile Id="LocalAccountSignUpWithLogonEmail">
@@ -61,15 +61,15 @@ A **LocalAccountSignUpWithLogonEmail** önérvényesített technikai profil meta
 
 A **ContentDefinition** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
+| Azonosító | Igen | A tartalom definíciójának azonosítója. Az érték a **tartalom-definíciós azonosítók** szakaszban, a lap későbbi részében van megadva. |
 
 A **ContentDefinition** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| LoadUri | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom definíciójának HTML5-oldalának URL-címét. |
+| Tartalomdefinícióban | 1:1 | Egy karakterlánc, amely tartalmazza a tartalom definíciójának HTML5-oldalának URL-címét. |
 | RecoveryUri | 0:1 | Egy karakterlánc, amely tartalmazza a tartalom-definícióval kapcsolatos hibát megjelenítő HTML-oldal URL-címét. |
 | dataUri | 1:1 | Egy olyan karakterlánc, amely a lépéshez szükséges felhasználói élményt biztosító HTML-fájl relatív URL-címét tartalmazza. |
 | Metaadatok | 1:1 | Kulcs/érték párok gyűjteménye, amely a tartalom definíciójában használt metaadatokat tartalmazza. |
@@ -77,9 +77,9 @@ A **ContentDefinition** elem a következő elemeket tartalmazza:
 
 ### <a name="datauri"></a>dataUri
 
-A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték `urn:com:microsoft:aad:b2c:elements:page-name:version`formátuma:.  A következő táblázat felsorolja a használható oldal-azonosítókat.
+A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2C az oldal azonosítóját használja a felhasználói felületi elemek és az ügyféloldali JavaScript betöltéséhez és elindításához. Az érték formátuma `urn:com:microsoft:aad:b2c:elements:page-name:version`.  A következő táblázat felsorolja a használható oldal-azonosítókat.
 
-| Value |   Leírás |
+| Value (Díj) |   Leírás |
 | ----- | ----------- |
 | `urn:com:microsoft:aad:b2c:elements:globalexception:1.1.0` | Hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
 | `urn:com:microsoft:aad:b2c:elements:idpselection:1.0.0` | Felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a bejelentkezés során választhatnak. |
@@ -93,13 +93,13 @@ A **DataUri** elem az oldal azonosítójának megadására szolgál. Azure AD B2
 
 A **LocalizedResourcesReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | LocalizedResourcesReference | 1: n | A tartalom definíciójának honosított erőforrás-hivatkozásainak listája. |
 
 A **LocalizedResourcesReferences** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Nyelv | Igen | Egy karakterlánc, amely az RFC 5646-címkék által támogatott nyelvet tartalmaz a nyelvek azonosításához. |
 | LocalizedResourcesReferenceId | Igen | A **LocalizedResources** elem azonosítója. |
@@ -141,16 +141,16 @@ Ha szeretné megtudni, hogyan adhat honosított támogatást a tartalmi definíc
 
 A **ContentDefinition** elem ID attribútuma határozza meg a tartalom-definícióhoz kapcsolódó oldal típusát. Az elem határozza meg azt a környezetet, amelyet az egyéni HTML5/CSS-sablon alkalmazni fog. A következő táblázat ismerteti az identitási élmény keretrendszere által felismert tartalmi definíciós azonosítókat, valamint az azokhoz kapcsolódó lapokat. Saját tartalmi definíciókat tetszőleges AZONOSÍTÓval hozhat létre.
 
-| id | Alapértelmezett sablon | Leírás |
+| ID (Azonosító) | Alapértelmezett sablon | Leírás |
 | -- | ---------------- | ----------- |
-| **api.error** | [exception.cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
-| **api.idpselections** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
-| **api.idpselections.signup** | [idpSelector.cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Az Identitáskezelő kiválasztása a regisztrációhoz** – felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a regisztráció során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
-| **api.localaccountpasswordreset** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó lap** – megjelenít egy űrlapot, amelyet a felhasználóknak be kell fejezniük a jelszó-visszaállítás elindításához. |
-| **api.localaccountsignin** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldala** – megjelenít egy űrlapot, amely egy olyan helyi fiókkal jelentkezik be, amely e-mail-cím vagy Felhasználónév alapján jelenik meg. Az űrlap tartalmazhatja a szövegbeviteli és a jelszó-beviteli mezőt is. |
-| **api.localaccountsignup** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók regisztrálása lap** – megjelenít egy űrlapot, amely az e-mail-cím vagy Felhasználónév alapján létrehozott helyi fiókra regisztrál. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. |
-| **api.phonefactor** | [multifactor-1.0.0.cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication lap** – a telefonszámok vagy a hangfelvételek, valamint a bejelentkezés vagy a bejelentkezés során ellenőrzi a telefonszámokat. |
-| **api.selfasserted** | [selfasserted.html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók regisztrálása lap** – megjeleníti azt az űrlapot, amelyet a felhasználóknak be kell fejezniük, amikor regisztrálnak egy meglévő fiókkal egy közösségi identitás-szolgáltatótól. Ez az oldal hasonló az előző közösségi fiók regisztráció lapjához, a jelszó-beviteli mezők kivételével. |
-| **api.selfasserted.profileupdate** | [updateprofile.html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
-| **api.signuporsignin** | [unified.html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
+| **API. error** | [kivétel. cshtml](https://login.microsoftonline.com/static/tenant/default/exception.cshtml) | **Hiba lap** – hibaüzenetet jelenít meg, ha kivétel vagy hiba történt. |
+| **API. idpselections** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Identitás-szolgáltató kiválasztása lap** – felsorolja azokat az azonosítókat, amelyeket a felhasználók a bejelentkezés során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
+| **API. idpselections. regisztráció** | [idpSelector. cshtml](https://login.microsoftonline.com/static/tenant/default/idpSelector.cshtml) | **Az Identitáskezelő kiválasztása a regisztrációhoz** – felsorolja azokat az identitás-szolgáltatókat, amelyeket a felhasználók a regisztráció során választhatnak. A lehetőségek általában a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook és a Google +, vagy a helyi fiókok. |
+| **API. localaccountpasswordreset** | [selfasserted. html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Elfelejtett jelszó lap** – megjelenít egy űrlapot, amelyet a felhasználóknak be kell fejezniük a jelszó-visszaállítás elindításához. |
+| **API. localaccountsignin** | [selfasserted. html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók bejelentkezési oldala** – megjelenít egy űrlapot, amely egy olyan helyi fiókkal jelentkezik be, amely e-mail-cím vagy Felhasználónév alapján jelenik meg. Az űrlap tartalmazhatja a szövegbeviteli és a jelszó-beviteli mezőt is. |
+| **API. localaccountsignup** | [selfasserted. html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Helyi fiók regisztrálása lap** – megjelenít egy űrlapot, amely az e-mail-cím vagy Felhasználónév alapján létrehozott helyi fiókra regisztrál. Az űrlap különböző beviteli vezérlőket tartalmazhat, például a következőket: szövegbeviteli mező, jelszó-beviteli mező, választógomb, egyszeres kijelölés legördülő lista és többszörös kijelölés jelölőnégyzet. |
+| **API. phonefactor** | [többtényezős – 1.0.0. cshtml](https://login.microsoftonline.com/static/tenant/default/multifactor-1.0.0.cshtml) | **Multi-Factor Authentication lap** – a telefonszámok vagy a hangfelvételek, valamint a bejelentkezés vagy a bejelentkezés során ellenőrzi a telefonszámokat. |
+| **API. selfasserted** | [selfasserted. html](https://login.microsoftonline.com/static/tenant/default/selfAsserted.cshtml) | **Közösségi fiók regisztrálása lap** – megjeleníti azt az űrlapot, amelyet a felhasználóknak be kell fejezniük, amikor regisztrálnak egy meglévő fiókkal egy közösségi identitás-szolgáltatótól. Ez az oldal hasonló az előző közösségi fiók regisztráció lapjához, a jelszó-beviteli mezők kivételével. |
+| **API. selfasserted. profileUpdate** | [updateprofile. html](https://login.microsoftonline.com/static/tenant/default/updateProfile.cshtml) | **Profil frissítése lap** – megjelenít egy űrlapot, amelyet a felhasználók a profiljuk frissítéséhez tudnak elérni. Ez az oldal hasonló a közösségi fiók regisztrálása oldalhoz, a jelszó-beviteli mezők kivételével. |
+| **API. signuporsignin** | [egyesített. html](https://login.microsoftonline.com/static/tenant/default/unified.cshtml) | **Egyesített regisztrációs vagy bejelentkezési oldal** – kezeli a felhasználói regisztrációt és a bejelentkezési folyamatot. A felhasználók a vállalati identitás-szolgáltatók, a közösségi identitás-szolgáltatók, például a Facebook vagy a Google +, vagy a helyi fiókok használatával használhatják a felhasználókat. |
 

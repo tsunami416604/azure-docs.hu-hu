@@ -3,12 +3,12 @@ title: Üzembehelyezési módok
 description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 ms.topic: conceptual
 ms.date: 12/23/2019
-ms.openlocfilehash: f5a6f6416240ce512167e779c086d2665771c3f1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484752"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152391"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
@@ -26,16 +26,16 @@ Ha a sablon olyan erőforrást tartalmaz, amely nincs központilag telepítve, m
 
 Ha [egy sablonban több erőforráscsoporthoz](cross-resource-group-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
 
-Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást. 
+Az erőforrástípusok eltérő módon kezelik a teljes módú törlést. A fölérendelt erőforrások automatikusan törlődnek, ha nem egy teljes módban telepített sablonban vannak. Néhány alárendelt erőforrás nem törlődik automatikusan, ha nem a sablonban. Ezeket a gyermek erőforrásokat azonban törli a rendszer, ha törli a fölérendelt erőforrást.
 
-Ha például az erőforráscsoport egy DNS-zónát (Microsoft. Network/dnsZones erőforrástípus) és egy CNAME rekordot (Microsoft. Network/dnsZones/CNAME erőforrástípus) tartalmaz, a DNS-zóna a CNAME rekord szülő erőforrása. Ha a üzembe helyezése teljes módban történik, és nem tartalmazza a DNS-zónát a sablonban, a DNS-zónát és a CNAME-rekordot is törli a rendszer. Ha belefoglalja a DNS-zónát a sablonba, de nem tartalmazza a CNAME rekordot, a CNAME nem törlődik. 
+Ha például az erőforráscsoport egy DNS-zónát (Microsoft. Network/dnsZones erőforrástípus) és egy CNAME rekordot (Microsoft. Network/dnsZones/CNAME erőforrástípus) tartalmaz, a DNS-zóna a CNAME rekord szülő erőforrása. Ha a üzembe helyezése teljes módban történik, és nem tartalmazza a DNS-zónát a sablonban, a DNS-zónát és a CNAME-rekordot is törli a rendszer. Ha belefoglalja a DNS-zónát a sablonba, de nem tartalmazza a CNAME rekordot, a CNAME nem törlődik.
 
 Az erőforrástípusok törlésének módjával kapcsolatban lásd: [Az Azure-erőforrások törlése a teljes módú telepítésekhez](complete-mode-deletion.md).
 
 Ha az erőforráscsoport [zárolva](../management/lock-resources.md)van, a teljes mód nem törli az erőforrásokat.
 
 > [!NOTE]
-> Csak a legfelső szintű sablonok támogatják a teljes telepítési módot. [Csatolt vagy beágyazott sablonok](linked-templates.md)esetén a növekményes módot kell használnia. 
+> Csak a legfelső szintű sablonok támogatják a teljes telepítési módot. [Csatolt vagy beágyazott sablonok](linked-templates.md)esetén a növekményes módot kell használnia.
 >
 > Az [előfizetési szintű központi telepítések](deploy-to-subscription.md) nem támogatják a teljes üzemmódot.
 >
@@ -105,9 +105,9 @@ A következő példa egy olyan csatolt sablont mutat be, amely növekményes üz
 ```json
 "resources": [
   {
+      "type": "Microsoft.Resources/deployments",
       "apiVersion": "2017-05-10",
       "name": "linkedTemplate",
-      "type": "Microsoft.Resources/deployments",
       "properties": {
           "mode": "Incremental",
           <nested-template-or-external-template>

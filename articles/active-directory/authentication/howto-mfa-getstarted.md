@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ccffe8d104792d9723c1541466067de3ea2c2e66
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: b6da67589b15b4ab043510c0375c26c12f645adb
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848391"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155146"
 ---
 # <a name="planning-a-cloud-based-azure-multi-factor-authentication-deployment"></a>Felhőalapú Azure-beli Multi-Factor Authentication üzembe helyezés tervezése
 
@@ -85,18 +85,18 @@ Javasoljuk, hogy a szervezetek a feltételes hozzáférés használatával defin
 ### <a name="configuring-a-named-location"></a>Elnevezett hely konfigurálása
 
 1. **Azure Active Directory** megnyitása a Azure Portal
-2. Kattintson a **feltételes hozzáférés** lehetőségre.
-3. Kattintson a **nevesített helyszínek** elemre.
-4. Kattintson az **új hely** elemre.
+2. **Biztonság** kiválasztása
+3. A **kezelés**területen válassza az **elnevezett helyszínek** lehetőséget.
+4. **Új hely** kiválasztása
 5. Adjon meg egy értelmes nevet a **név** mezőben.
-6. Válassza ki, hogy IP-címtartományok vagy országok/régiók használatával határozza meg a helyet
-   1. IP-címtartományok használata esetén
-      1. Döntse el, hogy megbízhatóként jelöli-e meg a helyet. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata. Csak akkor adja meg ezt a helyet megbízhatónak, ha ismeri a megadott IP-címtartományok létrehozását és hitelességét a szervezetben.
+6. Válassza ki, hogy *IP-címtartományok* vagy *országok/régiók* használatával határozza meg a helyet
+   1. *IP-címtartományok* használata esetén
+      1. Döntse el, hogy megbízható helyet szeretne-e *megjelölni*. A megbízható helyről történő bejelentkezésnél kisebb a felhasználó bejelentkezési kockázata. Csak akkor adja meg ezt a helyet megbízhatónak, ha ismeri a megadott IP-címtartományok létrehozását és hitelességét a szervezetben.
       2. IP-címtartományok megadása
-   2. Országok/régiók használata esetén
+   2. *Országok/régiók* használata esetén
       1. Bontsa ki a legördülő menüt, és válassza ki azokat az országokat vagy régiókat, amelyeket meg szeretne határozni ehhez a megnevezett helyhez.
-      2. Döntse el, hogy az ismeretlen területeket is tartalmazza-e. Az ismeretlen területek olyan IP-címek, amelyek nem képezhetők le országra/régióra.
-7. Kattintson a  **Create** (Létrehozás) gombra
+      2. Döntse el, hogy az *ismeretlen területeket is tartalmazza*-e. Az ismeretlen területek olyan IP-címek, amelyek nem képezhetők le országra/régióra.
+7. Kattintson a **Létrehozás** elemre.
 
 ## <a name="plan-authentication-methods"></a>Hitelesítési módszerek megtervezése
 
@@ -221,7 +221,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
 ### <a name="create-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) globális rendszergazdai fiók használatával.
-1. Tallózással keresse meg **Azure Active Directory**, **feltételes hozzáférést**.
+1. Keresse meg **Azure Active Directory** > **biztonsági** > **feltételes hozzáférés**lehetőséget.
 1. Válassza az **új szabályzat**lehetőséget.
    ![hozzon létre egy feltételes hozzáférési szabályzatot, amely lehetővé teszi a többtényezős hitelesítés használatát Azure Portal felhasználók számára a kísérleti csoportban](media/howto-mfa-getstarted/conditionalaccess-newpolicy.png)
 1. Adjon meg egy értelmes nevet a szabályzatnak.
@@ -240,7 +240,7 @@ Fontos, hogy megakadályozza, hogy véletlenül kizárja az Azure AD-bérlőt. A
     * Kattintson a **Kiválasztás** gombra.
 1. Ugorja át a **munkamenet** szakaszt.
 1. Állítsa be a **házirend engedélyezése** kapcsolót **be értékre.**
-1. Kattintson a  **Create** (Létrehozás) gombra.
+1. Kattintson a **Create** (Létrehozás) gombra.
 
 ## <a name="plan-integration-with-on-premises-systems"></a>A helyszíni rendszerekkel való integráció megtervezése
 

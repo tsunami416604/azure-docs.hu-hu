@@ -8,12 +8,12 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: bcc9736280b144a77bca57b4f4df1303f4b54796
-ms.sourcegitcommit: 83df2aed7cafb493b36d93b1699d24f36c1daa45
+ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2019
-ms.locfileid: "71179088"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156930"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight gyorsított írások az Apache HBase
 
@@ -37,7 +37,7 @@ A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai**területen kattintson a **gyorsított írások engedélyezése (előzetes verzió)** elem melletti jelölőnégyzetre. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
+Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **metaadattár-beállítások**területen kattintson a **gyorsított írások engedélyezése**melletti jelölőnégyzetre. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
 ![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
 
@@ -61,7 +61,7 @@ Az alábbi lépések végrehajtásával biztosítható, hogy a rendszer sikeres 
 
 Ha a namenode egy vertikális leskálázás után is a safemode-ba kerül, a hdfs-parancsok használatával végezze el újra a replikált blokkokat, és a hdfs-t biztonságos módból válassza. Ez az újrareplikálás lehetővé teszi a HBase sikeres újraindítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hivatalos Apache HBase dokumentációja az [előre írható log szolgáltatásról](https://hbase.apache.org/book.html#wal)
 * Ha a HDInsight Apache HBase-fürtöt a gyorsított írások használatára szeretné frissíteni, tekintse meg [az Apache HBase-fürt áttelepítését egy új verzióra](apache-hbase-migrate-new-version.md).

@@ -1,5 +1,5 @@
 ---
-title: A Microsoft Authenticator alkalmazás áttekintése – Azure Active Directory | Microsoft Docs
+title: Mi a Microsoft Authenticator alkalmazás? – Azure Active Directory | Microsoft Docs
 description: Ismerkedjen meg a Microsoft Authenticator alkalmazással, beleértve a mi is, hogyan működik, és milyen információkat tartalmaz a tartalom ezen szakasza.
 services: active-directory
 author: eross-msft
@@ -9,20 +9,17 @@ ms.service: active-directory
 ms.subservice: user-help
 ms.workload: identity
 ms.topic: overview
-ms.date: 01/24/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d3766436851cb2f31fa7bb070402191e03ad9ad1
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 468005094ab8a9c42d7eacdfefa990565a3297f3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68382335"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155808"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazás?
-
->[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
 
 A Microsoft Authenticator alkalmazás segít bejelentkezni a fiókjába, ha kétfaktoros ellenőrzést használ. A kétfaktoros ellenőrzés segítségével biztonságosabban férhet hozzá a fiókokhoz, különösen a bizalmas adatok megtekintésekor. Mivel a jelszavak elfelejthető, ellopott vagy sérült, a kétfaktoros ellenőrzés egy további biztonsági lépés, amely segít a fiók védelmében azáltal, hogy nehezebbé teszi a más személyek számára a betörést.
 
@@ -37,25 +34,23 @@ A Microsoft Authenticator alkalmazást többféleképpen is használhatja, több
 > [!Important]
 > A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely kétfaktoros ellenőrzést használ, és támogatja az idő-alapú egyszeri jelszó (TOTP) szabványait.
 >
-> Előfordulhat, hogy a szervezete hitelesítő alkalmazást használ a bejelentkezéshez, és hozzáfér a szervezeti adataihoz és dokumentumaihoz. Bár a Felhasználónév megjelenhet az alkalmazásban, a fiók valójában nem úgy van beállítva, hogy ellenőrzési módszerként működjön, amíg el nem végzi a regisztrációs folyamatot. További információkért lásd: [munkahelyi vagy iskolai fiók hozzáadása](user-help-auth-app-add-work-school-account.md).
-> 
-> Ha problémába ütközik a fiókjába való bejelentkezéssel, akkor a következő témakörben talál segítséget: [Ha nem tud bejelentkezni](https://support.microsoft.com/help/12429) a Microsoft-fiókba. További információ arról, hogy mi a teendő, ha ["a Microsoft-fiók nem létezik"](https://support.microsoft.com/help/13811) üzenet jelenik meg, amikor megpróbál bejelentkezni a Microsoft-fiókba.
+>Ez a cikk azoknak a felhasználóknak készült, akik a Microsoft Authenticator alkalmazást biztonsági ellenőrzési módszerként szeretnék letölteni és használni. Ha Ön rendszergazda, aki információt keres arról, hogyan kapcsolhatja be a jelszó nélküli bejelentkezést az alkalmazottak és más alkalmazások hitelesítő alkalmazásával, tekintse meg a [jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással (előzetes verzió)](https://docs.microsoft.com/azure/active-directory/authentication/howto-authentication-passwordless-phone)című témakört.
 
-## <a name="terminology"></a>Terminológia
+## <a name="terminology"></a>Szakkifejezések
 
-| Kifejezés|Leírás|
+| Időtartam|Leírás|
 | ----|-----------|
 | Kétfaktoros ellenőrzés | Ellenőrzési folyamat, amely megköveteli, hogy csak két ellenőrző adatot használjon, például egy jelszót és egy PIN-kódot. A Microsoft Authenticator alkalmazás a standard Kéttényezős ellenőrzést és a jelszó nélküli bejelentkezést is támogatja. |
-| Multi-Factor Authentication (MFA) | Az összes kétfaktoros ellenőrzés többtényezős hitelesítés, amely megköveteli, hogy *legalább* két, a szervezet igényeinek megfelelő ellenőrző adatot használjon. |
-| Microsoft-fiók (más néven, MSA) | Saját személyes fiókjait hozhat létre, hogy hozzáférjen a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók létrehozása és a Microsoft fogyasztói identitás-fiókrendszer a Microsoft által futtatott tárolja. |
+| Multi-factor authentication (MFA) | Az összes kétfaktoros ellenőrzés többtényezős hitelesítés, amely megköveteli, hogy *legalább* két, a szervezet igényeinek megfelelő ellenőrző adatot használjon. |
+| Microsoft-fiók (más néven, MSA) | Saját személyes fiókjait hozhat létre, hogy hozzáférjen a Microsoft-termékekhez és a felhőalapú szolgáltatásokhoz, például az Outlookhoz, a OneDrive, az Xbox LIVE-hoz vagy az Office 365-hoz. A Microsoft-fiók a Microsoft által futtatott Microsoft fogyasztói identitás-fiók rendszerében jön létre és tárolja. |
 | Munkahelyi vagy iskolai fiók | A szervezet létrehozza munkahelyi vagy iskolai fiókját (például alain@contoso.com), hogy lehetővé tegye a belső és potenciálisan korlátozott erőforrások, például a Microsoft Azure, a Windows Intune és az Office 365 elérését. |
-| Ellenőrzőkód | A hitelesítő alkalmazásban az egyes hozzáadott fiókok alatt megjelenő hat számjegyű kód. Az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot. Ezt az egyszeri jelszót (OTP) is nevezik. |
+| Ellenőrző kód | A hitelesítő alkalmazásban az egyes hozzáadott fiókok alatt megjelenő hat számjegyű kód. Az ellenőrző kód 30 másodpercenként változik, ami megakadályozza, hogy valaki többször is felhasználja a kódot. Ezt az egyszeri jelszót (OTP) is nevezik. |
 
 ## <a name="how-two-factor-verification-works-with-the-app"></a>A kétfaktoros ellenőrzés működése az alkalmazással
 
 A két tényező ellenőrzése a Microsoft Authenticator alkalmazással működik a következő módokon:
 
-- **Értesítési.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd a Microsoft Authenticator alkalmazás értesítést küld, amely arra kéri, hogy **hagyja jóvá**a bejelentkezést. Ha felismeri a bejelentkezési kísérletet, válassza a **jóváhagyás** lehetőséget. Ellenkező esetben válassza a **Megtagadás**lehetőséget. Ha a **Megtagadás**lehetőséget választja, akkor a kérést csalárdként is megjelölheti.
+- **Értesítési.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd a Microsoft Authenticator alkalmazás értesítést küld, amely arra kéri, hogy **hagyja jóvá a bejelentkezést**. Ha felismeri a bejelentkezési kísérletet, válassza a **jóváhagyás** lehetőséget. Ellenkező esetben válassza a **Megtagadás**lehetőséget. Ha a **Megtagadás**lehetőséget választja, akkor a kérést csalárdként is megjelölheti.
 
 - **Ellenőrző kód.** Írja be a felhasználónevét és jelszavát a munkahelyi vagy iskolai fiókjába vagy a személyes Microsoft-fiókba bejelentkezett eszközre, majd másolja a társított ellenőrző kódot a Microsoft Authenticator alkalmazás **fiókok** képernyőjéről. Az ellenőrző kód egyszeri jelszavas (OTP) hitelesítésként is ismert.
 
@@ -69,13 +64,13 @@ Ha PIN-kódot használ a hitelesítési folyamat elvégzéséhez, beállíthatja
 
 A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros ellenőrzést kell használnia, vagy Ön is dönthet úgy, hogy eldönti.
 
-- **Munkahelyi vagy iskolai fiókjával.** Ha munkahelyi vagy iskolai fiókot használ (például alain@contoso.com:), akkor akár a szervezet számára is, akár kétfaktoros ellenőrzést kell használnia, az adott ellenőrzési módszerekkel együtt. A munkahelyi vagy iskolai fióknak a Microsoft Authenticator alkalmazáshoz való hozzáadásával kapcsolatos további információkért lásd: [munkahelyi vagy iskolai fiókok hozzáadása](user-help-auth-app-add-work-school-account.md).
+- **Munkahelyi vagy iskolai fiók.** Ha munkahelyi vagy iskolai fiókot használ (például alain@contoso.com), akkor akár a szervezet számára is, akár kétfaktoros ellenőrzést kell használnia, az adott ellenőrzési módszerekkel együtt. A munkahelyi vagy iskolai fióknak a Microsoft Authenticator alkalmazáshoz való hozzáadásával kapcsolatos további információkért lásd: [munkahelyi vagy iskolai fiókok hozzáadása](user-help-auth-app-add-work-school-account.md).
 
-- **Személyes Microsoft-fiók.** Dönthet úgy, hogy a személyes Microsoft-fiókjaihoz (például alain@outlook.com:) kétfaktoros ellenőrzést állít be. A személyes Microsoft-fiók hozzáadásával kapcsolatos további információkért tekintse [meg a személyes fiókjainak hozzáadása](user-help-auth-app-add-personal-ms-account.md)című témakört.
+- **Személyes Microsoft-fiók.** Dönthet úgy is, hogy a személyes Microsoft-fiókjaihoz (például alain@outlook.com) kétfaktoros ellenőrzést állít be. A személyes Microsoft-fiók hozzáadásával kapcsolatos további információkért tekintse [meg a személyes fiókjainak hozzáadása](user-help-auth-app-add-personal-ms-account.md)című témakört.
 
-- **Nem Microsoft-fiók.** Beállíthatja, hogy a nem Microsoft-fiókokhoz (például alain@gmail.com) Kéttényezős ellenőrzést állítson be. Előfordulhat, hogy a nem Microsoft-fiókok nem használják a kétfaktoros hitelesítést, de a **biztonsági** vagy **bejelentkezési** beállításokon belül meg kell keresnie a szolgáltatást. A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely támogatja az TOTP szabványokat. A nem Microsoft-fiókok hozzáadásával kapcsolatos további információkért lásd [a nem Microsoft-fiókok hozzáadását](user-help-auth-app-add-non-ms-account.md)ismertető témakört.
+- **Nem Microsoft-fiók.** A nem Microsoft-fiókok (például alain@gmail.com) kétfaktoros ellenőrzését is beállíthatja. Előfordulhat, hogy a nem Microsoft-fiókok nem használják a kétfaktoros hitelesítést, de a **biztonsági** vagy **bejelentkezési** beállításokon belül meg kell keresnie a szolgáltatást. A Microsoft Authenticator alkalmazás minden olyan fiókkal működik, amely támogatja az TOTP szabványokat. A nem Microsoft-fiókok hozzáadásával kapcsolatos további információkért lásd [a nem Microsoft-fiókok hozzáadását](user-help-auth-app-add-non-ms-account.md)ismertető témakört.
 
-## <a name="in-this-section"></a>Ebben a szakaszban
+## <a name="in-this-section"></a>A szakasz tartalma
 
 | Cikk | Leírás |
 | ------ | ------------ |

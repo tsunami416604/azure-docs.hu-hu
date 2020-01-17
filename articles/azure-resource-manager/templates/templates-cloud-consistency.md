@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 7065d5e9cae9e0a06eab82bd982693a1ad1d8fba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75483777"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155655"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -22,7 +22,7 @@ Az Azure egyik fő előnye a konzisztencia. Egy adott helyhez tartozó fejleszt�
 A Microsoft számos helyen kínál intelligens, nagyvállalati használatra kész felhőalapú szolgáltatásokat, többek között a következőket:
 
 * A globális Azure platform a Microsoft által felügyelt adatközpontok egyre növekvő hálózata által támogatott a világ különböző régióiban.
-* Elszigetelt szuverén felhők, például az Azure Germany, a Azure Government és az Azure China (Azure által üzemeltetett 21Vianet). A szuverén felhők egységes platformot biztosítanak, amely a legtöbb olyan nagyszerű funkcióval rendelkezik, amelyekkel a globális Azure-ügyfelek hozzáférhetnek.
+* Elszigetelt szuverén felhők, mint például az Azure Germany, a Azure Government és az Azure China 21Vianet. A szuverén felhők egységes platformot biztosítanak, amely a legtöbb olyan nagyszerű funkcióval rendelkezik, amelyekkel a globális Azure-ügyfelek hozzáférhetnek.
 * Azure Stack egy hibrid felhőalapú platform, amely lehetővé teszi, hogy Azure-szolgáltatásokat nyújtson a szervezet adatközpontjában. A vállalatok a saját adatközpontokban állíthatnak be Azure Stackokat, vagy Azure-szolgáltatásokat használhatnak a szolgáltatóktól, Azure Stackeket futtatnak a létesítményekben (más néven üzemeltetett régiókban).
 
 Az összes ilyen felhők magját Azure Resource Manager olyan API-t biztosít, amely lehetővé teszi a felhasználói felületek széles választékát az Azure platformmal való kommunikációhoz. Ezzel az API-val hatékony infrastruktúra-programkódot biztosítunk. Az Azure Cloud platformon elérhető bármilyen típusú erőforrás üzembe helyezhető és konfigurálható Azure Resource Manager használatával. Egyetlen sablonnal üzembe helyezheti és konfigurálhatja a teljes alkalmazást egy működési befejezési állapotra.
@@ -47,9 +47,9 @@ Az Azure Resource Manager-sablonok bevezetését itt tekintheti meg: [template D
 
 Egy Resource Manager-sablon alapszintű szintaxisa a JSON. A sablonok a JSON-t használják, és a szintaxis kifejezésekkel és függvényekkel bővíthetők. A sablon nyelvi processzora gyakran frissül a sablon további funkcióinak támogatásához. A sablonhoz elérhető függvények részletes ismertetését itt találja: [Azure Resource Manager template functions](template-functions.md).
 
-A Azure Resource Manager bevezetett új sablon-függvények nem érhetők el azonnal a szuverén felhőkben vagy Azure Stack. A sablon sikeres üzembe helyezéséhez a sablonban hivatkozott összes függvénynek elérhetőnek kell lennie a cél felhőben. 
+A Azure Resource Manager bevezetett új sablon-függvények nem érhetők el azonnal a szuverén felhőkben vagy Azure Stack. A sablon sikeres üzembe helyezéséhez a sablonban hivatkozott összes függvénynek elérhetőnek kell lennie a cél felhőben.
 
-A Azure Resource Manager képességek mindig a globális Azure-ba lesznek bevezetve. A következő PowerShell-szkripttel ellenőrizheti, hogy az újonnan bevezetett sablon-függvények is elérhetők-e Azure Stackban: 
+A Azure Resource Manager képességek mindig a globális Azure-ba lesznek bevezetve. A következő PowerShell-szkripttel ellenőrizheti, hogy az újonnan bevezetett sablon-függvények is elérhetők-e Azure Stackban:
 
 1. Készítse el a GitHub-tárház klónját: [https://github.com/marcvaneijk/arm-template-functions](https://github.com/marcvaneijk/arm-template-functions).
 
@@ -69,7 +69,7 @@ A parancsfájl több, kisméretű sablont telepít, amelyek mindegyike csak egye
 
 ## <a name="working-with-linked-artifacts"></a>Társított összetevők használata
 
-A sablon tartalmazhat csatolt összetevőkre mutató hivatkozásokat, és olyan központi telepítési erőforrást tartalmaz, amely egy másik sablonra hivatkozik. A csatolt sablonokat (más néven beágyazott sablont) a Resource Manager lekéri futásidőben. A sablonok a virtuálisgép-bővítmények összetevőire mutató hivatkozásokat is tartalmazhatnak. Ezeket az összetevőket a virtuális GÉPEN futó virtuálisgép-bővítmény kéri le a virtuálisgép-bővítmény konfigurálásához a sablon telepítése során. 
+A sablon tartalmazhat csatolt összetevőkre mutató hivatkozásokat, és olyan központi telepítési erőforrást tartalmaz, amely egy másik sablonra hivatkozik. A csatolt sablonokat (más néven beágyazott sablont) a Resource Manager lekéri futásidőben. A sablonok a virtuálisgép-bővítmények összetevőire mutató hivatkozásokat is tartalmazhatnak. Ezeket az összetevőket a virtuális GÉPEN futó virtuálisgép-bővítmény kéri le a virtuálisgép-bővítmény konfigurálásához a sablon telepítése során.
 
 A következő szakaszok ismertetik a felhő konzisztenciájával kapcsolatos szempontokat a központi telepítési sablonon kívüli összetevőket tartalmazó sablonok fejlesztésekor.
 
@@ -82,9 +82,9 @@ A következő kód bemutatja, hogyan hivatkozik a templateLink paraméter egy be
 ```json
 "resources": [
   {
+     "type": "Microsoft.Resources/deployments",
      "apiVersion": "2017-05-10",
      "name": "linkedTemplate",
-     "type": "Microsoft.Resources/deployments",
      "properties": {
        "mode": "incremental",
        "templateLink": {
@@ -100,9 +100,9 @@ Azure Resource Manager kiértékeli a fő sablont futásidőben, és lekérdezi 
 
 ### <a name="make-linked-templates-accessible-across-clouds"></a>A csatolt sablonok elérhetővé tétele a felhők között
 
-Vegye figyelembe, hogy hol és hogyan tárolhatja a használt csatolt sablonokat. Futásidőben Azure Resource Manager beolvasása – ezért közvetlen hozzáférést igényel a kapcsolódó sablonokhoz. Gyakori eljárás a GitHub használata a beágyazott sablonok tárolására. A GitHub-tárház tartalmazhat olyan fájlokat, amelyek nyilvánosan elérhetők egy URL-címen keresztül. Bár ez a technika jól működik a nyilvános felhőben és a szuverén felhőkben, egy Azure Stack környezet a vállalati hálózaton vagy egy leválasztott távoli helyen található, a kimenő internet-hozzáférés nélkül. Ezekben az esetekben a Azure Resource Manager nem fogja tudni beolvasni a beágyazott sablonokat. 
+Vegye figyelembe, hogy hol és hogyan tárolhatja a használt csatolt sablonokat. Futásidőben Azure Resource Manager beolvasása – ezért közvetlen hozzáférést igényel a kapcsolódó sablonokhoz. Gyakori eljárás a GitHub használata a beágyazott sablonok tárolására. A GitHub-tárház tartalmazhat olyan fájlokat, amelyek nyilvánosan elérhetők egy URL-címen keresztül. Bár ez a technika jól működik a nyilvános felhőben és a szuverén felhőkben, egy Azure Stack környezet a vállalati hálózaton vagy egy leválasztott távoli helyen található, a kimenő internet-hozzáférés nélkül. Ezekben az esetekben a Azure Resource Manager nem fogja tudni beolvasni a beágyazott sablonokat.
 
-A Felhőbeli üzembe helyezések jobb gyakorlata, hogy a csatolt sablonokat a cél felhő számára elérhető helyen tárolja. Ideális esetben az üzembe helyezési összetevők karbantartása és üzembe helyezése egy folyamatos integráció/folyamatos fejlesztési (CI/CD) folyamatból történik. Azt is megteheti, hogy a beágyazott sablonokat egy blob Storage-tárolóban tárolja, amelyből a Azure Resource Manager lekérheti őket. 
+A Felhőbeli üzembe helyezések jobb gyakorlata, hogy a csatolt sablonokat a cél felhő számára elérhető helyen tárolja. Ideális esetben az üzembe helyezési összetevők karbantartása és üzembe helyezése egy folyamatos integráció/folyamatos fejlesztési (CI/CD) folyamatból történik. Azt is megteheti, hogy a beágyazott sablonokat egy blob Storage-tárolóban tárolja, amelyből a Azure Resource Manager lekérheti őket.
 
 Mivel az egyes felhőkban a blob Storage egy másik végpont teljes tartománynevét (FQDN) használ, konfigurálja a sablont a csatolt sablonok helyére két paraméterrel. A paraméterek elfogadhatják a felhasználói adatbevitelt a központi telepítés ideje alatt. A sablonokat általában több személy készíti el és osztja meg, ezért az ajánlott eljárás a paraméterek szabványos nevének használata. Az elnevezési konvenciók segítségével a sablonok a régiók, a felhők és a szerzők több felhasználhatóságát teszik lehetővé.
 
@@ -132,9 +132,9 @@ A sablonban a hivatkozások az alapszintű URI (a `_artifactsLocation` paraméte
 ```json
 "resources": [
   {
-    "name": "shared",
     "type": "Microsoft.Resources/deployments",
     "apiVersion": "2015-01-01",
+    "name": "shared",
     "properties": {
       "mode": "Incremental",
       "templateLink": {
@@ -150,7 +150,7 @@ Ennek a módszernek a használatával a `_artifactsLocation` paraméter alapért
 
 ### <a name="use-_artifactslocation-instead-of-hardcoding-links"></a>Rögzítjük-hivatkozások helyett _artifactsLocation használata
 
-A beágyazott sablonokon kívül a `_artifactsLocation` paraméterben lévő URL-cím a központi telepítési sablon összes kapcsolódó összetevője alapjaként szolgál. Néhány virtuálisgép-bővítmény tartalmaz egy hivatkozást a sablonon kívül tárolt parancsfájlra. Ezen bővítmények esetében ne parancsmagba a hivatkozásokat. Előfordulhat például, hogy az egyéni parancsfájl és a PowerShell DSC-bővítmények a GitHubon lévő külső parancsfájlra mutatnak, ahogy az a következő képen látható: 
+A beágyazott sablonokon kívül a `_artifactsLocation` paraméterben lévő URL-cím a központi telepítési sablon összes kapcsolódó összetevője alapjaként szolgál. Néhány virtuálisgép-bővítmény tartalmaz egy hivatkozást a sablonon kívül tárolt parancsfájlra. Ezen bővítmények esetében ne parancsmagba a hivatkozásokat. Előfordulhat például, hogy az egyéni parancsfájl és a PowerShell DSC-bővítmények a GitHubon lévő külső parancsfájlra mutatnak, ahogy az a következő képen látható:
 
 ```json
 "properties": {
@@ -215,7 +215,7 @@ Annak ismerete, hogy az Azure-régiók és a felhők a rendelkezésre álló szo
 
 A sablonok erőforrásokat telepítenek és konfigurálnak. Az erőforrás típusát egy erőforrás-szolgáltató biztosítja. A számítási erőforrás-szolgáltató (Microsoft. számítás) például több erőforrástípust is biztosít, például a virtualMachines és a availabilitySets. Minden erőforrás-szolgáltató olyan API-t biztosít, Azure Resource Manager egy közös szerződés határozza meg, amely egységes, egységes authoring-élményt tesz lehetővé az összes erőforrás-szolgáltatón. Előfordulhat azonban, hogy a globális Azure-ban elérhető erőforrás-szolgáltató nem érhető el szuverén felhőben vagy Azure Stack régióban.
 
-![Erőforrás-szolgáltatók](./media/templates-cloud-consistency/resource-providers.png) 
+![Erőforrás-szolgáltatók](./media/templates-cloud-consistency/resource-providers.png)
 
 Az adott felhőben elérhető erőforrás-szolgáltatók ellenőrzéséhez futtassa a következő szkriptet az Azure parancssori felületén ([CLI](/cli/azure/install-azure-cli)):
 
@@ -253,7 +253,7 @@ A sablonok mindig egy adott régióban található erőforráscsoporthoz vannak 
 
 Annak ellenére, hogy parancsmagba a régiók nevét egy sablon erőforrás-tulajdonságainak megadásakor, ez a módszer nem garantálja, hogy a sablon más Azure Stack környezetekben is telepíthető, mert a régió neve valószínűleg nem létezik.
 
-A különböző régiók befogadásához adja hozzá a bemeneti paraméter helyét a sablonhoz egy alapértelmezett értékkel. Ha az üzembe helyezés során nem ad meg értéket, a rendszer az alapértelmezett értéket fogja használni. 
+A különböző régiók befogadásához adja hozzá a bemeneti paraméter helyét a sablonhoz egy alapértelmezett értékkel. Ha az üzembe helyezés során nem ad meg értéket, a rendszer az alapértelmezett értéket fogja használni.
 
 A sablon függvény `[resourceGroup()]` egy olyan objektumot ad vissza, amely a következő kulcs/érték párokat tartalmazza:
 
@@ -284,9 +284,9 @@ Ha a bemeneti paraméter defaultValue értékében lévő objektum hely kulcsár
 },
 "resources": [
   {
-    "name": "storageaccount1",
     "type": "Microsoft.Storage/storageAccounts",
     "apiVersion": "2015-06-15",
+    "name": "storageaccount1",
     "location": "[parameters('location')]",
     ...
 ```
@@ -301,40 +301,40 @@ Ebből kifolyólag az erőforrás-kezelő bevezette a sablonok API-profiljainak 
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
-    "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string",
-            "metadata": {
-                "description": "Location the resources will be deployed to."
-            },
-            "defaultValue": "[resourceGroup().location]"
-        }
+  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "location": {
+      "type": "string",
+      "metadata": {
+          "description": "Location the resources will be deployed to."
+      },
+      "defaultValue": "[resourceGroup().location]"
+    }
+  },
+  "variables": {},
+  "resources": [
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
+      "name": "mystorageaccount",
+      "location": "[parameters('location')]",
+      "properties": {
+        "accountType": "Standard_LRS"
+      }
     },
-    "variables": {},
-    "resources": [
-        {
-            "name": "mystorageaccount",
-            "type": "Microsoft.Storage/storageAccounts",
-            "apiVersion": "2016-01-01",
-            "location": "[parameters('location')]",
-            "properties": {
-                "accountType": "Standard_LRS"
-            }
-        },
-        {
-            "name": "myavailabilityset",
-            "type": "Microsoft.Compute/availabilitySets",
-            "apiVersion": "2016-03-30",
-            "location": "[parameters('location')]",
-            "properties": {
-                "platformFaultDomainCount": 2,
-                "platformUpdateDomainCount": 2
-            }
-        }
-    ],
-    "outputs": {}
+    {
+      "type": "Microsoft.Compute/availabilitySets",
+      "apiVersion": "2016-03-30",
+      "name": "myavailabilityset",
+      "location": "[parameters('location')]",
+      "properties": {
+        "platformFaultDomainCount": 2,
+        "platformUpdateDomainCount": 2
+      }
+    }
+  ],
+  "outputs": {}
 }
 ```
 
@@ -357,16 +357,16 @@ Az API-profilok verziója aliasként működik az Azure-ban és az Azure Stack-b
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -399,17 +399,17 @@ Az API-profil nem a sablonban szükséges elem. Még ha hozzáadja is az elemet,
     "variables": {},
     "resources": [
         {
-            "name": "mystorageaccount",
             "type": "Microsoft.Storage/storageAccounts",
             "apiVersion": "2016-01-01",
+            "name": "mystorageaccount",
             "location": "[parameters('location')]",
             "properties": {
                 "accountType": "Standard_LRS"
             }
         },
         {
-            "name": "myavailabilityset",
             "type": "Microsoft.Compute/availabilitySets",
+            "name": "myavailabilityset",
             "location": "[parameters('location')]",
             "properties": {
                 "platformFaultDomainCount": 2,
@@ -423,7 +423,7 @@ Az API-profil nem a sablonban szükséges elem. Még ha hozzáadja is az elemet,
 
 ## <a name="check-endpoint-references"></a>Végpontok hivatkozásainak keresése
 
-Az erőforrások a platform egyéb szolgáltatásaira is hivatkoznak. A nyilvános IP-címekhez például hozzá lehet rendelni egy nyilvános DNS-nevet. A nyilvános felhő, a szuverén felhők és a Azure Stack megoldások saját végponti névterekkel rendelkeznek. A legtöbb esetben az erőforráshoz csak egy előtag szükséges a sablonban. A futtatókörnyezet során a Azure Resource Manager hozzáfűzi a végpont értékét. Egyes végpont-értékeket explicit módon meg kell adni a sablonban. 
+Az erőforrások a platform egyéb szolgáltatásaira is hivatkoznak. A nyilvános IP-címekhez például hozzá lehet rendelni egy nyilvános DNS-nevet. A nyilvános felhő, a szuverén felhők és a Azure Stack megoldások saját végponti névterekkel rendelkeznek. A legtöbb esetben az erőforráshoz csak egy előtag szükséges a sablonban. A futtatókörnyezet során a Azure Resource Manager hozzáfűzi a végpont értékét. Egyes végpont-értékeket explicit módon meg kell adni a sablonban.
 
 > [!NOTE]
 > A Felhőbeli konzisztencia-sablonok fejlesztéséhez ne parancsmagba a végponti névtereket.
@@ -444,7 +444,7 @@ A végponti névterek a sablon kimenetében is használhatók a felhasználó sz
 Általában Kerülje a hardcoded-végpontok egy sablonban való használatának elkerülését. Az ajánlott eljárás az, ha a hivatkozási sablon függvény használatával dinamikusan kéri le a végpontokat. Például a végpont leggyakrabban hardcoded a Storage-fiókok végponti névtere. Minden egyes Storage-fiókhoz tartozik egy egyedi FQDN, amely a Storage-fiók végpont névterével való összefűzésével jön létre. A mystorageaccount1 nevű blob Storage-fiók különböző teljes tartományneveket eredményez a felhőtől függően:
 
 * **mystorageaccount1.blob.Core.Windows.net** , amikor a globális Azure-felhőben jön létre.
-* **mystorageaccount1.blob.Core.chinacloudapi.cn** az Azure China Cloud-ban való létrehozásakor.
+* **mystorageaccount1.blob.Core.chinacloudapi.cn** az Azure China 21Vianet-felhőben való létrehozásakor.
 
 A következő hivatkozási sablon függvény lekéri a végponti névteret a tárolási erőforrás-szolgáltatótól:
 
@@ -456,7 +456,7 @@ A Storage-fiók végpontjának hardcoded értékének a `reference` template fü
 
 ### <a name="refer-to-existing-resources-by-unique-id"></a>Tekintse meg a meglévő erőforrásokat egyedi azonosító alapján
 
-Megtekintheti egy meglévő erőforrást is ugyanabból vagy egy másik erőforráscsoporthoz, valamint ugyanazon az előfizetésen belül vagy egy másik előfizetésben, ugyanazon a bérlőn belül ugyanazon a felhőben. Az erőforrás-tulajdonságok lekéréséhez az erőforrás egyedi azonosítóját kell használnia. A `resourceId` template függvény egy erőforrás egyedi AZONOSÍTÓját kérdezi le, például SQL Server, ahogy az alábbi kód mutatja: 
+Megtekintheti egy meglévő erőforrást is ugyanabból vagy egy másik erőforráscsoporthoz, valamint ugyanazon az előfizetésen belül vagy egy másik előfizetésben, ugyanazon a bérlőn belül ugyanazon a felhőben. Az erőforrás-tulajdonságok lekéréséhez az erőforrás egyedi azonosítóját kell használnia. A `resourceId` template függvény egy erőforrás egyedi AZONOSÍTÓját kérdezi le, például SQL Server, ahogy az alábbi kód mutatja:
 
 ```json
 "outputs": {
@@ -602,8 +602,8 @@ Mivel a virtuálisgép-bővítmények az első féltől származó Resource Mana
 
 ```json
 {
-    "apiVersion": "2015-06-15",
     "type": "Microsoft.Compute/virtualMachines/extensions",
+    "apiVersion": "2015-06-15",
     "name": "myExtension",
     "location": "[parameters('location')]",
     ...
@@ -627,9 +627,9 @@ Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuáli
 
 ```json
 {
-    "name": "MyCustomScriptExtension",
     "type": "extensions",
     "apiVersion": "2016-03-30",
+    "name": "MyCustomScriptExtension",
     "location": "[parameters('location')]",
     "dependsOn": [
         "[concat('Microsoft.Compute/virtualMachines/myVM', copyindex())]"
@@ -638,7 +638,7 @@ Az egyes bővítmények verziószáma is megtörténik. Ez a verzió a virtuáli
         "publisher": "Microsoft.Compute",
         "type": "CustomScriptExtension",
         "typeHandlerVersion": "1.7",
-        ...   
+        ...
 ```
 
 Egy adott virtuálisgép-bővítmény elérhető verzióinak listájának lekéréséhez használja a [Get-AzureRmVMExtensionImage](/powershell/module/az.compute/get-azvmextensionimage) parancsmagot. A következő példa lekéri a PowerShell DSC (kívánt állapot konfiguráció) virtuálisgép-bővítményének elérhető verzióit a **myLocation**:
@@ -655,12 +655,12 @@ Az összes kapcsolódó beállítás, képesség és korlátozás nyomon követ�
 
 Az alábbi képen egy, az integrált fejlesztési környezet (IDE) használatával egy csoport fejlesztési folyamatának tipikus példája látható. Az idősor különböző szakaszaiban különböző tesztelési típusok lesznek végrehajtva. Itt két fejlesztő dolgozik ugyanazon a megoldáson, de ez a forgatókönyv egyformán érvényes egyetlen fejlesztőre vagy egy nagy csapatra is. Minden fejlesztő általában egy központi tárház helyi példányát hozza létre, amely lehetővé teszi, hogy mindegyik a helyi másolaton működjön, anélkül, hogy befolyásolná azokat a felhasználókat, akik ugyanazon a fájlokon dolgoznak.
 
-![Munkafolyamat](./media/templates-cloud-consistency/workflow.png) 
+![Munkafolyamat](./media/templates-cloud-consistency/workflow.png)
 
 A teszteléshez és automatizáláshoz vegye figyelembe a következő tippeket:
 
 * Végezze el a tesztelési eszközök használatát. Például a Visual Studio Code és a Visual Studio olyan IntelliSense-és egyéb funkciókat is tartalmaz, amelyek segítségével érvényesítheti a sablonokat.
-* A helyi IDE-ben végzett fejlesztés során a kód minőségének javításához végezze el a statikus kódok elemzését az egységes tesztek és az integrációs tesztek segítségével. 
+* A helyi IDE-ben végzett fejlesztés során a kód minőségének javításához végezze el a statikus kódok elemzését az egységes tesztek és az integrációs tesztek segítségével.
 * Ha a kezdeti fejlesztés során még jobb élményre van szó, az egység-és az integrációs tesztek csak akkor figyelmeztetnek, ha problémát észlelnek, és folytatják a teszteket. Így azonosíthatja a megoldandó problémákat, és rangsorolhatja a módosításokat, más néven a tesztelésen alapuló üzembe helyezést (TDD).
 * Vegye figyelembe, hogy egyes tesztek a Azure Resource Manager csatlakoztatása nélkül is elvégezhetők. Mások, például a sablonok tesztelésének megkövetelése, hogy a Resource Manager olyan műveleteket végezzen, amelyeken nem végezhető el a kapcsolat nélküli üzemmód.
 * Egy központi telepítési sablon az érvényesítési API-val való tesztelése nem egyenlő a tényleges telepítéssel. Emellett akkor is, ha egy helyi fájlból telepít egy sablont, a sablonban lévő beágyazott sablonokra mutató hivatkozásokat közvetlenül a Resource Manager kéri le, és a virtuálisgép-bővítmények által hivatkozott összetevők lekérése a telepített virtuális gépen futó virtuálisgép-ügynök által történik.

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 8/04/2019
-ms.openlocfilehash: 30990c3d1e3f885e8984227425d3e8e5c44b9286
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 6f2db91a35573bc2cbdd0df2cb1ac09914cc956b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74927475"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122644"
 ---
 # <a name="use-azure-data-factory-to-migrate-data-from-amazon-s3-to-azure-storage"></a>Az Amazon S3-ból az Azure Storage-ba való Migrálás Azure Data Factory használata 
 
@@ -47,7 +47,7 @@ A fenti képen azt mutatjuk be, hogyan érheti el a nagy adatátviteli sebesség
 
 Egy másolási tevékenység futtatásakor az ADF beépített újrapróbálkozási mechanizmussal rendelkezik, így képes az adattárakban vagy a mögöttes hálózaton lévő átmeneti hibák bizonyos szintjének kezelésére. 
 
-Ha az S3-ról Blobra, illetve S3-ról ADLS Gen2re történő bináris másolást végez, az ADF automatikusan végrehajtja az ellenőrzőpontokat.  Ha egy másolási tevékenység futása sikertelen vagy időtúllépés miatt megszakadt, egy későbbi újrapróbálkozáskor (ne feledje, hogy az újrapróbálkozások száma > 1), a másolás az elejétől kezdődően folytatódik az utolsó meghibásodási ponttól. 
+Ha az S3-ról Blobra, illetve S3-ról ADLS Gen2re történő bináris másolást végez, az ADF automatikusan végrehajtja az ellenőrzőpontokat.  Ha egy másolási tevékenység futtatása meghiúsult vagy időtúllépés miatt megszakadt, egy későbbi újrapróbálkozáskor a másolás az utolsó meghibásodási ponttól folytatódik az elejétől kezdődően. 
 
 ## <a name="network-security"></a>Hálózati biztonság 
 
@@ -86,7 +86,7 @@ Az adatáttelepítés privát kapcsolaton keresztül:
 
 ### <a name="initial-snapshot-data-migration"></a>Kezdeti pillanatkép-adatok áttelepítése 
 
-Az adatpartíció különösen akkor ajánlott, ha 10 TB-nál több adat áttelepítését végzi.  Az adatok particionálásához használja az "előtag" beállítást a mappák és fájlok szűréséhez az Amazon S3-ban név szerint, majd az egyes ADF-másolási feladatok egyszerre csak egy partíciót másolhatnak.  Több ADF-másolási feladatot is futtathat párhuzamosan a jobb teljesítmény érdekében. 
+Az adatpartíció különösen akkor ajánlott, ha több mint 100 TB-os adatmennyiséget telepít át.  Az adatok particionálásához használja az "előtag" beállítást a mappák és fájlok szűréséhez az Amazon S3-ban név szerint, majd az egyes ADF-másolási feladatok egyszerre csak egy partíciót másolhatnak.  Több ADF-másolási feladatot is futtathat párhuzamosan a jobb teljesítmény érdekében. 
 
 Ha a másolási feladatok egyike a hálózat vagy az adattár átmeneti hibája miatt meghiúsul, újra lefuttathatja a sikertelen másolási feladatot, hogy az adott partíciót újra újra lehessen tölteni az AWS S3-ból.  Az egyéb partíciókat betöltő többi másolási feladatot nem érinti a rendszer. 
 

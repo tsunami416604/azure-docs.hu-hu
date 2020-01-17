@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 5d2fe5a00d131af54862551991cf984d8576b57e
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.date: 01/15/2020
+ms.openlocfilehash: 5fc5ba447557aa89e8f0870c576d6d4c439f3353
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75860945"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122559"
 ---
 # <a name="azure-digital-twins-security-best-practices"></a>Azure Digital Twins – ajánlott biztonsági eljárások
 
@@ -40,6 +40,7 @@ Néhány kulcsfontosságú eljárás a IoT-eszközök biztonságos biztonságoss
 > * A teljesítmény javítása érdekében korlátozza az I/O és az eszköz sávszélességét. A díjszabási korlátozás a szolgáltatásmegtagadási támadások megakadályozásával növelheti a biztonságot.
 > * Naprakészen tarthatja az eszköz belső vezérlőprogramja, operációs rendszerét és szoftverét.
 > * Az eszköz-, szoftver-, hálózat-és átjárók biztonsági eljárásainak rendszeres időközönkénti ellenőrzése és áttekintése, ahogy azok továbbra is javítják és fejlődnek.
+> * Megbízható, hitelesített és megfelelő biztonsági rendszereket, szoftvereket és eszközöket használhat. Tekintse át például [Az Azure Cloud megfelelőségi ajánlatait](https://azure.microsoft.com/overview/trusted-cloud/compliance/) .
 
 A IoT-területek biztonságos biztonságossá tételéhez szükséges alapvető eljárások a következők:
 
@@ -67,8 +68,8 @@ Az Azure Digital Twins [Azure Active Directory](https://docs.microsoft.com/azure
 > * A hitelesítéshez használjon egy megbízható [hitelesítésszolgáltató](../active-directory/authentication/active-directory-certificate-based-authentication-get-started.md) által kiadott tanúsítványt, nem pedig az alkalmazás titkos kulcsát.
 > * Korlátozza a OAuth 2,0 hozzáférés hatókörét.
 > * Ellenőrizze, hogy a jogkivonat érvényességi ideje érvényes-e, és hogy a jogkivonat érvényes marad-e.
-> * Állítsa be a megfelelő időtartamot, ameddig a tokenek érvényesek.
-> * Lejárt tokenek frissítése.
+> * Állítsa be a megfelelő időtartamot, ameddig a tokenek érvényesek. Lejárt tokenek frissítése.
+> * A nem használt **átirányítási URI** -k és engedélyek eltávolítása a [szerepköralapú hozzáférés-vezérlés ajánlott eljárásai alapján](#role-based-access-control-best-practices).
 
 ## <a name="role-based-access-control-best-practices"></a>Szerepköralapú hozzáférés-vezérlés – ajánlott eljárások
 

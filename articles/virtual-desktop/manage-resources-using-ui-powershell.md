@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: 5049c32e06967cc123a24f07f601c1698bea3351
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896427"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122508"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Felügyeleti eszköz üzembe helyezése a PowerShell-lel
 
@@ -135,7 +135,7 @@ Az Azure AD-alkalmazás konfigurációjának ellenőrzése és a beleegyező eng
    
    [![a hitelesítési lapot a megadott átirányítási URI-val](media/management-ui-redirect-uri-inline.png)](media/management-ui-redirect-uri-expanded.png#lightbox)
 
-5. A bal oldali panelen válassza az **API-engedélyek** lehetőséget az engedélyek hozzáadásának megerősítéséhez. Ha Ön globális rendszergazda, válassza a **`tenantname`** a rendszergazdai jogosultságot, és kövesse a párbeszédpanel utasításait, hogy rendszergazdai hozzájárulást nyújtson a szervezetéhez.
+5. A bal oldali panelen válassza az **API-engedélyek** lehetőséget az engedélyek hozzáadásának megerősítéséhez. Ha Ön globális rendszergazda, válassza a **rendszergazdai jóváhagyás megadása `tenantname`** gombra, és kövesse a párbeszédpanelt, és adja meg a szervezete rendszergazdai hozzájárulását.
     
     [![az API-engedélyek lapot](media/management-ui-permissions-inline.png)](media/management-ui-permissions-expanded.png#lightbox)
 

@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
 ms.date: 09/10/2019
 ms.author: evansma
-ms.openlocfilehash: b8c1034b047e0c72db41bbbbff06feb0bdf06517
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 21bbd34520283620626aff27439e89058a534f4e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933922"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121811"
 ---
 # <a name="your-commercial-marketplace-benefits"></a>A kereskedelmi piactér előnyei
 
@@ -86,7 +86,7 @@ A jutalmak előnyei mellett a Dynamics-ajánlatokat tartalmazó üzleti alkalmaz
 
 ### <a name="publisher-agreement"></a>Kiadói szerződés
 
-Az ezen a lapon bemutatott összes tevékenységet a [Marketplace kiadói szerződés](https://docs.microsoft.com/legal/marketplace/terms) szabályozza, és a kereskedelmi juttatások program kiegészítése alapján történik.
+Az ezen a lapon bemutatott összes tevékenységet a [Marketplace kiadói szerződés](https://go.microsoft.com/fwlink/?LinkID=699560) szabályozza, és a kereskedelmi juttatások program kiegészítése alapján történik.
 
 ### <a name="cancellation-policy"></a>Lemondási irányelvek
 

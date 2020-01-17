@@ -4,20 +4,20 @@ description: Az Azure-hoz készült avere-vFXT való használatra szolgáló új
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 12/16/2019
 ms.author: rohogue
-ms.openlocfilehash: 183ed719eb5396fe0e442e6b774d962d1ba48386
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: c2a38b20fff789faf370e3161a92a31ed5f04c57
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74480590"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153718"
 ---
 # <a name="moving-data-to-the-vfxt-cluster---parallel-data-ingest"></a>Adatáthelyezés a vFXT-fürtbe – párhuzamos adatfeldolgozás
 
-Miután létrehozott egy új vFXT-fürtöt, az első feladat lehet az adatok áthelyezése az új tárolási kötetre. Ha azonban az adatok áthelyezésének szokásos módja egy egyszerű másolási parancs kiadása az egyik ügyfélről, valószínűleg lassú másolási teljesítményt fog látni. Az egyszálas másolás nem jó választás az adatoknak a avere vFXT-fürt háttér-tárolójába való másolásához.
+Miután létrehozott egy új vFXT-fürtöt, az első feladat lehet az adatok áthelyezése egy új tárolási kötetre az Azure-ban. Ha azonban az adatok áthelyezésének szokásos módja egy egyszerű másolási parancs kiadása az egyik ügyfélről, valószínűleg lassú másolási teljesítményt fog látni. Az egyszálas másolás nem jó választás az adatoknak a avere vFXT-fürt háttér-tárolójába való másolásához.
 
-Mivel a avere vFXT-fürt méretezhető, több ügyfélre kiterjedő gyorsítótár, a leggyorsabb és leghatékonyabb módszer az adatmásolásra több ügyféllel. Ezzel a technikával parallelizes a fájlok és objektumok betöltését.
+Mivel az Azure-fürt avere-vFXT egy skálázható, több ügyfélre kiterjedő gyorsítótár, amely az Adatmásolás leggyorsabb és leghatékonyabb módja több ügyfél esetén. Ezzel a technikával parallelizes a fájlok és objektumok betöltését.
 
 ![Több ügyfélből álló, többszálas adatáthelyezést ábrázoló diagram: a bal felső sarokban a helyszíni hardveres tárterület ikonja több nyílból származik. A nyilak négy ügyfélszámítógépre mutatnak. Az egyes ügyfélgépekről három nyíl mutat a avere vFXT felé. A avere vFXT több nyíl mutat a blob Storage-ra.](media/avere-vfxt-parallel-ingest.png)
 
@@ -49,7 +49,7 @@ Amikor párhuzamosan másolja az adatmásolási stratégiát, ismernie kell a f�
 * Ha a fájlok kicsik, a kamat a fájlok másodpercenkénti száma.
 * Ha a fájlok nagy méretűek (10MiBi vagy nagyobbak), a kamat mérőszáma másodpercenként bájt.
 
-Minden másolási folyamathoz tartozik egy átviteli sebesség és egy fájl – átvitt sebesség, amely a másolási parancs hosszának időzítésével és a fájlméret és a fájlok számának megadásával mérhető. A díjszabás mértékének megállapítása kívül esik a jelen dokumentum hatókörén, de fontos tisztában lennie azzal, hogy a kis-és nagyméretű fájlokat is érdemes-e kezelni.
+Minden másolási folyamathoz tartozik egy átviteli sebesség és egy fájl – átvitt sebesség, amely a másolási parancs hosszának időzítésével és a fájlméret és a fájlok számának megadásával mérhető. A díjszabás mértékének megállapítása kívül esik a jelen dokumentum hatókörén, de fontos tisztában lennie azzal, hogy a kis-és nagyméretű fájlokat kell-e kezelni.
 
 ## <a name="manual-copy-example"></a>Példa manuális másolásra
 
@@ -278,7 +278,7 @@ Ez a módszer egyszerű és időigényes módszer az adatkészletek számára a 
 
 ## <a name="use-the-msrsync-utility"></a>A msrsync segédprogram használata
 
-A ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürthöz tartozó backend Core filerbe. Ez az eszköz úgy lett kialakítva, hogy optimalizálja a sávszélesség-használatot több párhuzamos ``rsync`` folyamat futtatásával. A GitHubról <https://github.com/jbd/msrsync>címen érhető el.
+A ``msrsync`` eszköz segítségével áthelyezheti az adatátvitelt a avere-fürt háttérbeli alapkészletbe. Ez az eszköz úgy lett kialakítva, hogy optimalizálja a sávszélesség-használatot több párhuzamos ``rsync`` folyamat futtatásával. A GitHubról <https://github.com/jbd/msrsync>címen érhető el.
 
 ``msrsync`` a forrás könyvtárat külön "gyűjtőre" bontja, majd az egyes gyűjtők egyéni ``rsync`` folyamatait futtatja.
 

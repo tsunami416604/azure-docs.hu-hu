@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/20/2019
 ms.custom: seodec18
-ms.openlocfilehash: 268973f27336e97fe85e493da18714df46171f8a
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: 591233154ab79b9493d77030727462bae68ea7d5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497586"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152357"
 ---
 # <a name="data-modeling-in-azure-time-series-insights-preview"></a>Adatmodellezés Azure Time Series Insights előzetes verzióban
 
@@ -64,9 +64,9 @@ A kezdéshez válassza ki a **modell** nézetet a Time Series Insights Explorer 
 
 ### <a name="delete-an-instance"></a>Példány törlése
 
-1. Válassza ki a típust, és válassza a **Törlés** vagy a **hulladék raktárhely ikont**.
+1. Válassza ki a példányt, és válassza a **Törlés** vagy a **hulladék raktárhely ikont**.
 
-   [a törlés lehetőség kiválasztásával ![törölheti a kívánt típust.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
+   [![törölheti a példányt a Delete (Törlés) lehetőség kiválasztásával.](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png)](media/v2-update-how-to-tsm/how-to-tsm-delete-instance.png#lightbox)
 
 1. A **törlés megerősítéséhez válassza a**Törlés lehetőséget.
 

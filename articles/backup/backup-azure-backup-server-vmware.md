@@ -3,12 +3,12 @@ title: VMware virtuális gépek biztonsági mentése a Azure Backup Server
 description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Backup Servert a VMware vCenter/ESXi-kiszolgálón futó VMware virtuális gépek biztonsági mentésére.
 ms.topic: conceptual
 ms.date: 12/11/2018
-ms.openlocfilehash: d1c8ec249e010d75bbe96f5c70072f41b9738370
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: df85cba42118a2e814a4a1c8338f3927e4d75f36
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74173359"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152867"
 ---
 # <a name="back-up-vmware-vms-with-azure-backup-server"></a>VMware virtuális gépek biztonsági mentése a Azure Backup Server
 
@@ -24,14 +24,14 @@ Ez a cikk a következőket ismerteti:
 
 ## <a name="before-you-start"></a>Előkészületek
 
-- Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amelyet a 6,5, 6,0 és 5,5 biztonsági mentési verziók támogatnak.
+- Győződjön meg arról, hogy a vCenter/ESXi olyan verzióját futtatja, amely támogatja a biztonsági mentést. Tekintse meg a támogatási mátrixot [itt](https://docs.microsoft.com/azure/backup/backup-mabs-protection-matrix).
 - Győződjön meg arról, hogy beállította Azure Backup Server. Ha még nem tette meg, a Kezdés előtt [végezze el a](backup-azure-microsoft-azure-backup.md) következőt:. A legújabb frissítésekkel Azure Backup Servert kell futtatnia.
 
 ## <a name="create-a-secure-connection-to-the-vcenter-server"></a>Biztonságos kapcsolatok létrehozása a vCenter Server
 
 Alapértelmezés szerint a Azure Backup Server HTTPS-kapcsolaton keresztül kommunikál a VMware-kiszolgálókkal. A HTTPS-kapcsolat beállításához töltse le a VMware hitelesítésszolgáltató (CA) tanúsítványát, és importálja azt a Azure Backup Server.
 
-### <a name="before-you-begin"></a>Előkészületek
+### <a name="before-you-begin"></a>Előzetes teendők
 
 - Ha nem szeretné a HTTPS-t használni, [Tiltsa le a https-tanúsítvány érvényesítését az összes VMware-kiszolgálón](backup-azure-backup-server-vmware.md#disable-https-certificate-validation).
 - Általában a vSphere webes ügyfélprogram használatával kapcsolódhat a vCenter/ESXi-kiszolgálóhoz a Azure Backup Server gép böngészőjében. Első alkalommal a kapcsolat nem biztonságos, és a következőt fogja megjeleníteni.
@@ -96,9 +96,11 @@ Ha a szervezeten belül biztonságos határok vannak, és nem szeretné a VMware
 
 1. Másolja és illessze be az alábbi szöveget egy. txt fájlba.
 
-       ```text
-      Windows rendszerleíróadatbázis-szerkesztő 5,00-es verzió [HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Microsoft adatvédelem Manager\VMWare] "IgnoreCertificateValidation" = DWORD: 00000001
-       ```
+```text
+Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Microsoft Data Protection Manager\VMWare]
+"IgnoreCertificateValidation"=dword:00000001
+```
 
 2. Mentse a fájlt a Azure Backup Server gépen a **DisableSecureAuthentication. reg**néven.
 
@@ -111,13 +113,13 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 1. Jelentkezzen be a vCenter Serverba (vagy ESXi-gazdagépre, ha nem használja a vCenter Server).
 2. A **navigátor** panelen kattintson az **Adminisztráció**elemre.
 
-    ![Adminisztráció](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
+    ![Felügyelet](./media/backup-azure-backup-server-vmware/vmware-navigator-panel.png)
 
 3. Az **adminisztráció** > **szerepkörök**területen kattintson a szerepkör hozzáadása ikonra (a + szimbólum).
 
     ![Szerepkör hozzáadása](./media/backup-azure-backup-server-vmware/vmware-define-new-role.png)
 
-4. A **szerepkör** > -szerepkör létrehozása mezőben adja meg a **BackupAdminRole** *nevet*. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
+4. A **szerepkör létrehozása** > **szerepkör neve**mezőbe írja be a *BackupAdminRole*nevet. A szerepkör neve lehet bármilyen hasonló, de felismerhetőnek kell lennie a szerepkör céljához.
 
 5. Válassza ki az alábbi táblázatban összefoglalt jogosultságokat, majd kattintson az **OK**gombra.  Az új szerepkör megjelenik a **szerepkörök** panel listájában.
    - A szülő címke melletti ikonra kattintva bontsa ki a szülőt, és tekintse meg a gyermek jogosultságokat.
@@ -128,26 +130,41 @@ A Azure Backup Server egy olyan felhasználói fiókra van szüksége, amely jog
 
 ### <a name="role-permissions"></a>Szerepkör-engedélyek
 
-**6.5/6.0** | **5.5**
---- | ---
-Datastore.AllocateSpace | Datastore.AllocateSpace
-Global.ManageCustomFields | Global.ManageCustomFields
-Global.SetCustomField |
-Host.Local.CreateVM | Network.Assign
-Network.Assign |
-Resource.AssignVMToPool |
-VirtualMachine.Config.AddNewDisk  | VirtualMachine.Config.AddNewDisk
-VirtualMachine.Config.AdvancedConfig| VirtualMachine.Config.AdvancedConfig
-VirtualMachine.Config.ChangeTracking| VirtualMachine.Config.ChangeTracking
-VirtualMachine.Config.HostUSBDevice |
-VirtualMachine.Config.QueryUnownedFiles |
-VirtualMachine.Config.SwapPlacement| VirtualMachine.Config.SwapPlacement
-VirtualMachine.Interact.PowerOff| VirtualMachine.Interact.PowerOff
-VirtualMachine.Inventory.Create| VirtualMachine.Inventory.Create
-VirtualMachine.Provisioning.DiskRandomAccess |
-VirtualMachine.Provisioning.DiskRandomRead | VirtualMachine.Provisioning.DiskRandomRead
-VirtualMachine.State.CreateSnapshot | VirtualMachine.State.CreateSnapshot
-VirtualMachine.State.RemoveSnapshot | VirtualMachine.State.RemoveSnapshot
+| **A vCenter 6,5-es és a fenti felhasználói fiókhoz tartozó jogosultságok**        | **Jogosultságok a vCenter 6,0 felhasználói fiókhoz**               | **Jogosultságok a vCenter 5,5 felhasználói fiókhoz** |
+| ------------------------------------------------------------ | --------------------------------------------------------- | ------------------------------------------- |
+| Adattár. AllocateSpace                                      |                                                           |                                             |
+| Adattár. Tallózás az adattárban                                   | Adattár. AllocateSpace                                   | Network. assign                              |
+| Adattár. alacsony szintű fájl műveletei                          | Globális. egyéni attribútumok kezelése                           | Adattár. AllocateSpace                     |
+| Adattár-fürt. Datatstore-fürt konfigurálása             | Globális. egyéni attribútum beállítása                               | VirtualMachine. config. változáskövetési        |
+| Globális. disable metódusok                                       | Gazdagép. local művelet. Virtuális gép létrehozása              | VirtualMachine. State. RemoveSnapshot         |
+| Globális. Enable metódusok                                        | Hálózat: Hálózat kiosztása                                   | VirtualMachine. State. CreateSnapshot         |
+| Global. licenses                                              | Erőforrás. Virtuális gép erőforrás-készlethez rendelése         | VirtualMachine. kiépítés. DiskRandomRead  |
+| Globális. log esemény                                             | Virtuális gép. Konfiguráció. új lemez hozzáadása                | VirtualMachine. Interact. erő            |
+| Globális. egyéni attribútumok kezelése                              | Virtuális gép. Konfigurálás. speciális                    | VirtualMachine. Inventory. Create             |
+| Globális. egyéni attribútum beállítása                                  | Virtuális gép. Konfiguráció. lemez változásának követése        | VirtualMachine. config. AddNewDisk            |
+| Hálózat. hálózati hozzárendelés                                       | Virtuális gép. Configuration. Host USB-eszköz             | VirtualMachine. config. HostUSBDevice         |
+| Erőforrás. Virtuális gép erőforrás-készlethez rendelése            | Virtuális gép. Konfiguráció. a nem tulajdonában lévő fájlok lekérdezése         | VirtualMachine. config. AdvancedConfig        |
+| Virtuális gép. Konfiguráció. új lemez hozzáadása                   | Virtuális gép. Configuration. swapfile elhelyezése          | VirtualMachine. config. SwapPlacement         |
+| Virtuális gép. Konfigurálás. speciális                       | Virtuális gép. Interakció. kikapcsolás                     | Global. ManageCustomFields                   |
+| Virtuális gép. Konfiguráció. lemez változásának követése           | Virtuális gép. Hardverleltár. Új létrehozása                     |                                             |
+| Virtuális gép. Konfiguráció. Disk bérlet                     | Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése            |                                             |
+| Virtuális gép. Konfiguráció. virtuális lemez kiterjesztése            | Virtuális gép. Kiépítési. Írásvédett lemezes hozzáférés engedélyezése |                                             |
+| Virtuális gép. Vendég műveletek. vendég művelet módosításai | Virtuális gép. Pillanatképek kezelése. Pillanatkép létrehozása       |                                             |
+| Virtuális gép. Guest Operations. Guest Operation program végrehajtása | Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása       |                                             |
+| Virtuális gép. Vendég műveletek. vendég műveleti lekérdezések     |                                                           |                                             |
+| Virtuális gép. Kölcsönhatás. Eszköz csatlakoztatása              |                                                           |                                             |
+| Virtuális gép. Kölcsönhatás. Vendég operációs rendszer felügyelete a VIX API-val |                                                           |                                             |
+| Virtuális gép. Leltár. regisztráció                          |                                                           |                                             |
+| Virtuális gép. Leltár. Eltávolítás                            |                                                           |                                             |
+| Virtuális gép. Kiépítés. lemezes hozzáférés engedélyezése              |                                                           |                                             |
+| Virtuális gép. Kiépítés. írásvédett lemezes hozzáférés engedélyezése    |                                                           |                                             |
+| Virtuális gép. Üzembe helyezés. virtuális gép letöltésének engedélyezése |                                                           |                                             |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép készítése        |                                                           |                                             |
+| Virtuális gép. Pillanatképek kezelése. Pillanatkép eltávolítása         |                                                           |                                             |
+| Virtuális gép. Pillanatképek kezelése. Helyreállítás pillanatképre      |                                                           |                                             |
+| vApp. virtuális gép hozzáadása                                     |                                                           |                                             |
+| vApp. erőforrás-készlet társítása                                    |                                                           |                                             |
+| vApp. Regisztráció törlése                                              |                                                           |                                             |
 
 ## <a name="create-a-vmware-account"></a>VMware-fiók létrehozása
 
@@ -264,7 +281,7 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 
 1. Az **adatvédelmi módszer kiválasztása** lapon adja meg a védelmi csoport nevét, valamint a védelmi beállításokat. Az Azure-ba történő biztonsági mentéshez állítsa be a rövid távú védelmet a **lemezre** , és engedélyezze az online védelmet. Ezután kattintson a **Next** (Tovább) gombra.
 
-    ![Adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
+    ![Az adatvédelmi módszer kiválasztása](./media/backup-azure-backup-server-vmware/name-protection-group.png)
 
 1. A **rövid távú célok megadása**területen határozza meg, hogy mennyi ideig szeretné megőrizni a lemezre történő biztonsági mentést.
    - A **megőrzési tartomány**mezőben határozza meg, hogy hány nap elteltével kell megőrizni a lemezes helyreállítási pontokat.
@@ -324,31 +341,31 @@ VMware virtuális gépek hozzáadása a biztonsági mentéshez. A védelmi csopo
 A 6,7-es vSphere biztonsági mentéséhez tegye a következőket:
 
 - A TLS 1,2 engedélyezése a DPM-kiszolgálón
-  >[!Note]
-  >A VMWare 6,7-től a TLS kommunikációs protokollként volt engedélyezve.
+
+>[!NOTE]
+>A VMWare 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protokollként.
 
 - A beállításkulcsokat a következőképpen állíthatja be:
 
-       ```text
+```text
+Windows Registry Editor Version 5.00
 
-        Windows Registry Editor Version 5.00
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-        [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
 
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v2.0.50727]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-
-       [HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
-       "SystemDefaultTlsVersions"=dword:00000001
-       "SchUseStrongCrypto"=dword:00000001
-       ```
+[HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\.NETFramework\v4.0.30319]
+"SystemDefaultTlsVersions"=dword:00000001
+"SchUseStrongCrypto"=dword:00000001
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

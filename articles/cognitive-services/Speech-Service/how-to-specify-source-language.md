@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/26/2019
+ms.date: 01/07/2020
 ms.author: qiohu
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 94b8fb026b61b52e8096cf54e1db30a6c260c04b
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: e4f4dd3c1e23855a8a1a69dac72c232779206f1d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74109956"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121709"
 ---
 # <a name="specify-source-language-for-speech-to-text"></a>Forrás nyelvének megadása beszédhez szövegként
 
@@ -26,23 +26,28 @@ Ebből a cikkből megtudhatja, hogyan határozhatja meg a beszédfelismeréshez 
 
 ## <a name="how-to-specify-source-language-in-c"></a>Forrás nyelvének meghatározása a következőben:C#
 
-Első lépésként hozzon létre egy `SpeechConfig`:
+Ebben a példában a forrás nyelvét explicit módon paraméterként kell megadni `SpeechRecognizer` szerkezet használatával.
 
 ```csharp
-var speechConfig = SpeechConfig.FromSubscription("YourSubscriptionKey", "YourServiceRegion");
+var recognizer = new SpeechRecognizer(speechConfig, "de-DE", audioConfig);
 ```
 
-Ezután adja meg a hang forrásának nyelvét a `SpeechRecognitionLanguage`:
+Ebben a példában a forrás nyelvét `SourceLanguageConfig`használatával kell megadnia. Ezt követően a `sourceLanguageConfig` `SpeechRecognizer` konstruktor paraméterként lesz átadva.
 
 ```csharp
-speechConfig.SpeechRecognitionLanguage = "de-DE";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
 
-Ha egyéni modellt használ az elismeréshez, megadhatja a végpontot `EndpointId`:
+Ebben a példában a forrás nyelvét és az egyéni végpontot a `SourceLanguageConfig`használatával biztosítjuk. Ezt követően a `sourceLanguageConfig` `SpeechRecognizer` konstruktor paraméterként lesz átadva.
 
 ```csharp
-speechConfig.EndpointId = "The Endpoint ID for your custom model.";
+var sourceLanguageConfig = SourceLanguageConfig.FromLanguage("de-DE", "The Endpoint ID for your custom model.");
+var recognizer = new SpeechRecognizer(speechConfig, sourceLanguageConfig, audioConfig);
 ```
+
+>[!Note]
+> a `SpeechRecognitionLanguage` és a `EndpointId` set metódus elavult a `SpeechConfig` osztályból C#. A módszerek használata nem ajánlott, és nem használható `SpeechRecognizer`összeállításakor.
 
 ::: zone-end
 
@@ -174,10 +179,10 @@ speechConfig.endpointId = @"The Endpoint ID for your custom model.";
 
 ::: zone-end
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * A támogatott nyelvek és területi beállítások listájáért lásd: [nyelvi támogatás](language-support.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A Speech SDK dokumentációja](speech-sdk.md)

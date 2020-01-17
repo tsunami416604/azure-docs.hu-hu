@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/23/2019
 ms.author: rkarlin
-ms.openlocfilehash: 4c451c62a16a70d85d75ee00c3e08758e27425f6
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 107bbed8aea692a76f6d5bf6bbf1da26277b2c85
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749970"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156573"
 ---
 # <a name="connect-data-from-azure-activity-log"></a>Adatok összekapcsolása az Azure-beli tevékenység naplójából
 
@@ -31,7 +31,7 @@ Egyetlen kattintással továbbíthatja a naplókat az Azure-beli [tevékenysége
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Globális rendszergazdai vagy biztonsági rendszergazdai engedélyekkel rendelkező felhasználó
+- Log Analytics munkaterülethez közreműködői jogosultsággal rendelkező felhasználó 
 
 
 ## <a name="connect-to-azure-activity-log"></a>Kapcsolódás az Azure Activity log-hoz
@@ -40,7 +40,7 @@ Egyetlen kattintással továbbíthatja a naplókat az Azure-beli [tevékenysége
 
 2. Az Azure-tevékenység napló paneljén válassza ki azokat az előfizetéseket, amelyeket az Azure Sentinelbe szeretne továbbítani. 
 
-3. Kattintson a **Csatlakozás** gombra.
+3. Kattintson a **Connect** (Csatlakozás) gombra.
 
 4. Ha az Azure-tevékenységgel kapcsolatos riasztások esetében a Log Analytics vonatkozó sémát szeretné használni, keresse meg a **AzureActivity**.
 

@@ -3,12 +3,12 @@ title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban több alkalommal is megismételhető az erőforrások telepítésekor.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: ed822862abee3fd05d3236d7c12562cd86768086
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479591"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121981"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban
 
@@ -18,10 +18,10 @@ Ha erőforrással használja, a másolási objektum formátuma a következő:
 
 ```json
 "copy": {
-    "name": "<name-of-loop>",
-    "count": <number-of-iterations>,
-    "mode": "serial" <or> "parallel",
-    "batchSize": <number-to-deploy-serially>
+  "name": "<name-of-loop>",
+  "count": <number-of-iterations>,
+  "mode": "serial" <or> "parallel",
+  "batchSize": <number-to-deploy-serially>
 }
 ```
 
@@ -30,9 +30,9 @@ Ha változót vagy tulajdonságot használ, a másolási objektum formátuma a k
 ```json
 "copy": [
   {
-      "name": "<name-of-loop>",
-      "count": <number-of-iterations>,
-      "input": <values-for-the-property-or-variable>
+    "name": "<name-of-loop>",
+    "count": <number-of-iterations>,
+    "input": <values-for-the-property-or-variable>
   }
 ]
 ```
@@ -63,19 +63,19 @@ A több alkalommal létrehozandó erőforrás a következő formátumot veszi fi
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -149,21 +149,21 @@ Ha például a Storage-fiókokat egyszerre két sorba szeretné telepíteni, has
   "contentVersion": "1.0.0.0",
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 4,
         "mode": "serial",
         "batchSize": 2
-      }
+      },
+      "properties": {}
     }
   ],
   "outputs": {}
@@ -186,9 +186,9 @@ Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy`t a virtuális gép da
 
 ```json
 {
-  "name": "examplevm",
   "type": "Microsoft.Compute/virtualMachines",
   "apiVersion": "2017-03-30",
+  "name": "examplevm",
   "properties": {
     "storageProfile": {
       "copy": [{
@@ -267,8 +267,8 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 ```json
 {
   "type": "Microsoft.Network/virtualNetworks",
-  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "apiVersion": "2018-04-01",
+  "name": "[concat(parameters('vnetname'), copyIndex())]",
   "copy":{
     "count": 2,
     "name": "vnetloop"
@@ -431,23 +431,23 @@ Azt határozza meg, hogy egy erőforrás központi telepítése egy másik erőf
   "parameters": {},
   "resources": [
     {
-      "apiVersion": "2016-01-01",
       "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2016-01-01",
       "name": "[concat(copyIndex(),'storage', uniqueString(resourceGroup().id))]",
       "location": "[resourceGroup().location]",
       "sku": {
         "name": "Standard_LRS"
       },
       "kind": "Storage",
-      "properties": {},
       "copy": {
         "name": "storagecopy",
         "count": 3
-      }
+      },
+      "properties": {}
     },
     {
-      "apiVersion": "2015-06-15",
       "type": "Microsoft.Compute/virtualMachines",
+      "apiVersion": "2015-06-15",
       "name": "[concat('VM', uniqueString(resourceGroup().id))]",
       "dependsOn": ["storagecopy"],
       ...

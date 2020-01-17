@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/20/2019
 ms.author: aschhab
-ms.openlocfilehash: 15b7dab7de2affb67fa080d69b4895a31bf9ba3b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c381d9413c4003bc2ab9a9357ff2769e84d14c3e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462078"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121743"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
 
@@ -82,7 +82,7 @@ SharedAccessSignature sig=<signature-string>&se=<expiry>&skn=<keyName>&sr=<URL-e
 * **`sr`** – az elérni kívánt erőforrás URI-ja.
 * **`sig`** – aláírás.
 
-A `signature-string` az erőforrás URI-ja alapján kiszámított SHA-256 kivonat **(az** előző szakaszban leírtak szerint), valamint a jogkivonat lejárati CRLF által elválasztott karakterlánc-ábrázolása.
+A `signature-string` az erőforrás URI-ja alapján kiszámított SHA-256 kivonat **(az** előző szakaszban leírtak szerint), valamint a jogkivonat lejárati időpontjának karakterláncos ábrázolása, az LF elválasztva.
 
 A kivonatoló számítás a következő pszeudo-kódhoz hasonlóan néz ki, és egy 256 bites/32 bájtos kivonatoló értéket ad vissza.
 
@@ -310,7 +310,7 @@ A következő táblázat a Service Bus erőforrásokon végzett különféle mű
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.
 
 * [Service Bus-üzenetsorok, -témakörök és -előfizetések](service-bus-queues-topics-subscriptions.md)
-* [A Service Bus-üzenetsorok használata](service-bus-dotnet-get-started-with-queues.md)
+* [How to use Service Bus Queues](service-bus-dotnet-get-started-with-queues.md) (A Service Bus-üzenetsorok használata)
 * [A Service Bus-üzenettémakörök és -előfizetések használata](service-bus-dotnet-how-to-use-topics-subscriptions.md)
 
 [Azure portal]: https://portal.azure.com

@@ -9,12 +9,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 0994ebe451bddea371f375e4d39172833df4d88a
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 3d6f9f7d09664f9a5bd968ca5c0441b0846ceca3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028529"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122695"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Ismerkedés az SQL-adatbázis naplózási szolgáltatásával
 
@@ -249,11 +249,11 @@ A földrajzilag replikált adatbázisok esetében, ha engedélyezi a naplózást
 
 - A nem módosítható naplózás a Storage-fiókban való konfigurálásával kapcsolatban lásd: [védett hozzáfűzési Blobok írásának engedélyezése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-immutable-storage#allow-protected-append-blobs-writes). Vegye figyelembe, hogy a naplózási tároló neve **sqldbauditlogs**.
 
-> [!IMPORTANT] 
->  A védett hozzáfűzési Blobok írási beállítása az időalapú megőrzés alatt jelenleg elérhető, és csak a következő régiókban látható:
-> - USA keleti régiója
-> - USA déli középső régiója
-> - USA 2. nyugati régiója
+    > [!IMPORTANT]
+    > A védett hozzáfűzési Blobok írási beállítása az időalapú megőrzés alatt jelenleg elérhető, és csak a következő régiókban látható:
+    > - USA keleti régiója
+    > - USA déli középső régiója
+    > - USA 2. nyugati régiója
 
 
 ## <a id="subheading-7"></a>Az Azure SQL Server és az adatbázis-naplózás kezelése Azure PowerShell használatával

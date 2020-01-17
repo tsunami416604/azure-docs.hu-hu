@@ -1,7 +1,7 @@
 ---
 title: A részletes olvasó SDK-referenciája
 titleSuffix: Azure Cognitive Services
-description: A lebilincselő olvasó SDK egy JavaScript-kódtár, amely lehetővé teszi a magával ragadó olvasó integrálását a webalkalmazásba.
+description: A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 services: cognitive-services
 author: metanMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: 47d10f75775c49fda0effe10c32e219b3682866d
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: b20a3e6dd3b32b183bbf34dbefd76f0e4cd56b99
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945276"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156403"
 ---
 # <a name="immersive-reader-sdk-reference-guide"></a>A részletes olvasó SDK útmutatója
 
-A lebilincselő olvasó SDK egy JavaScript-kódtár, amely lehetővé teszi a magával ragadó olvasó integrálását a webalkalmazásba.
+A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 
 ## <a name="functions"></a>Functions
 
@@ -36,12 +36,12 @@ Az SDK a függvényeket teszi elérhetővé:
 Elindítja az olvasót a webalkalmazás egy `iframe`ján belül.
 
 ```typescript
-launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<HTMLDivElement>;
+launchAsync(token: string, subdomain: string, content: Content, options?: Options): Promise<LaunchResponse>;
 ```
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Type (Típus) | Leírás |
+| Name (Név) | Type (Típus) | Leírás |
 | ---- | ---- |------------ |
 | `token` | sztring | Az Azure AD hitelesítési jogkivonata. |
 | `subdomain` | sztring | Az Azure-beli magától elolvasó erőforrás egyedi altartománya. |
@@ -50,7 +50,7 @@ launchAsync(token: string, subdomain: string, content: Content, options?: Option
 
 ### <a name="returns"></a>Visszatérési érték
 
-Egy `Promise<HTMLDivElement>`ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` egy olyan `div` elemre oldódik fel, amelynek csak a gyermeke egy `iframe` elem, amely tartalmazza az olvasói oldalt.
+Egy `Promise<LaunchResponse>`ad vissza, amely feloldja a magával ragadó olvasó betöltését. A `Promise` [`LaunchResponse`](#launchresponse) objektumra oldódik fel.
 
 ### <a name="exceptions"></a>Kivételek
 
@@ -80,7 +80,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 ### <a name="parameters"></a>Paraméterek
 
-| Név | Type (Típus) | Leírás |
+| Name (Név) | Type (Típus) | Leírás |
 | ---- | ---- |------------ |
 | `options` | [RenderButtonsOptions](#renderbuttonsoptions) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -109,6 +109,17 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 }
 ```
 
+### <a name="launchresponse"></a>LaunchResponse
+
+A `ImmersiveReader.launchAsync`hívásának válaszát tartalmazza.
+
+```typescript
+{
+    container: HTMLDivElement;    // HTML element which contains the Immersive Reader iframe
+    sessionId: string;            // Globally unique identifier for this session, used for debugging
+}
+```
+
 ### <a name="cookiepolicy-enum"></a>CookiePolicy enumerálása
 
 Az olvasó cookie-k használatára vonatkozó szabályzat beállítására szolgáló enumerálás. Lásd: [Beállítások](#options).
@@ -127,6 +138,7 @@ enum CookiePolicy { Disable, Enable }
 | Application/vnd. openxmlformats-officedocument. WordprocessingML. Document | Microsoft Word. docx formátumú dokumentum.
 
 ### <a name="html-support"></a>HTML-támogatás
+
 | HTML | Támogatott tartalom |
 | --------- | ----------- |
 | Betűstílusok | Félkövér, dőlt, aláhúzás, kód, áthúzott, felső, alsó index |
@@ -186,7 +198,7 @@ A hibával kapcsolatos információkat tartalmaz.
 
 ## <a name="launching-the-immersive-reader"></a>A lebilincselő olvasó elindítása
 
-Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. A stílus engedélyezéséhez használja a `immersive-reader-button` class attribútumot.
+Az SDK alapértelmezett stílust biztosít a magával ragadó olvasó indítására szolgáló gombhoz. A stílus engedélyezéséhez használja a `immersive-reader-button` class attribútumot. További részletekért tekintse meg [ezt a cikket](./how-to-customize-launch-button.md) .
 
 ```html
 <div class='immersive-reader-button'></div>

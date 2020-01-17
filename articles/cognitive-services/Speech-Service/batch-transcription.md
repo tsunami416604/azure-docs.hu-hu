@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 6b23ae21366699162b900ae420afae640aa20613
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921479"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122100"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -88,17 +88,12 @@ A konfigurációs paraméterek JSON-ként vannak megadva:
 Ezeket a választható tulajdonságokat az átírás konfigurálásához használhatja:
 
 | Paraméter | Leírás |
-|-----------|------------|
-|`ProfanityFilterMode`|Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerése során
-||**`Masked`** – alapértelmezett érték. A káromkodás cseréje csillagokkal<br>`None` – a káromkodás szűrésének letiltása<br>`Removed` – eltávolítja az eredményből az összes trágár elemet<br>`Tags` – trágár címkék hozzáadására
-|`PunctuationMode`|Meghatározza, hogy a központozást a felismerés eredményeiben kezeljék
-||`Automatic` – a szolgáltatás központozás beszúrása<br>`Dictated` diktált (szóbeli) írásjel<br>**`DictatedAndAutomatic`** – alapértelmezett érték. Diktált és automatikus központozás<br>`None` – a központozás letiltása
-|`AddWordLevelTimestamps`|Megadja, hogy a rendszer a Word-időbélyegeket adja-e a kimenethez
-||`True` – a Word szintű időbélyegek engedélyezése<br>**`False`** – alapértelmezett érték. A Word szintű időbélyegek letiltása
-|`AddSentiment`|Itt adható meg, hogy a rendszer a kiértékeléshez hozzáadja-e az érzelmi elemzést
-||`True` – a hangulat engedélyezése<br>**`False`** – alapértelmezett érték. A hangulat letiltása
-|`AddDiarization`|Meghatározza, hogy a rendszer végrehajtja-e a diarization-elemzést. Ha `true`, a rendszer a bemenetet egy legfeljebb két hangokat tartalmazó monó csatorna-hangnak fogja tartalmazni. `AddWordLevelTimestamps` kell beállítani `true`
-||`True` – engedélyezi a diarization<br>**`False`** – alapértelmezett érték. Diarization letiltása
+|-----------|-------------|
+| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `Masked` amely a csillagokkal való káromkodást váltja fel, `Removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `Tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás: `Masked`. |
+| `PunctuationMode` | Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `Dictated` amely explicit írásjeleket feltételez, `Automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `DictatedAndAutomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
+| `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
+| `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |
+| `AddDiarization` | Meghatározza, hogy a diarization-elemzést a bemeneten kell végrehajtani, amely két hangból álló mono-csatornának kellene lennie. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a diarization és a `false` (az alapértelmezett érték) letiltását. Azt is megköveteli, hogy a `AddWordLevelTimestamps` True értékre legyen állítva.|
 |`TranscriptionResultsContainerUrl`|Opcionális SAS-token egy írható tárolóhoz az Azure-ban. Az eredmény ebben a tárolóban lesz tárolva.
 
 ### <a name="storage"></a>Adattárolás

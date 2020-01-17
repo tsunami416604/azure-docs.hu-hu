@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: a97490bffa16a32d17d41d3a3386b3d363f818d8
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 478a7ae8d6938ee4d4ef5c30c8126c3e95f35305
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921113"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121284"
 ---
 # <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Functions 2. x Azure Cosmos DB kötései
 
@@ -255,9 +255,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDBTrigger` attrib
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type** || `cosmosDBTrigger`értékre kell állítani. |
-|**direction** || `in`értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** || A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
+|**type** | – | `cosmosDBTrigger`értékre kell állítani. |
+|**direction** | – | `in`értékre kell állítani. Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | – | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való kapcsolódáshoz használt kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. |
 |**databaseName**|**DatabaseName**  | Annak a Azure Cosmos DB-adatbázisnak a neve, amelyen a megfigyelt gyűjtemény szerepel. |
 |**collectionName** |**CollectionName** | A figyelni kívánt gyűjtemény neve. |
@@ -1737,9 +1737,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDB` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**     || `cosmosDB`értékre kell állítani.        |
-|**direction**     || `in`értékre kell állítani.         |
-|**név**     || A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**type**     | – | `cosmosDB`értékre kell állítani.        |
+|**direction**     | – | `in`értékre kell állítani.         |
+|**név**     | – | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** |**DatabaseName** |A dokumentumot tartalmazó adatbázis.        |
 |**collectionName** |**CollectionName** | A dokumentumot tartalmazó gyűjtemény neve. |
 |**id**    | **Azonosító** | A lekérdezni kívánt dokumentum azonosítója. Ez a tulajdonság támogatja a [kötési kifejezéseket](./functions-bindings-expressions-patterns.md). Ne állítsa be az **ID** és a **sqlQuery** tulajdonságokat is. Ha nem állítja be az egyiket, a rendszer lekéri a teljes gyűjteményt. |
@@ -2366,9 +2366,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `CosmosDB` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**     || `cosmosDB`értékre kell állítani.        |
-|**direction**     || `out`értékre kell állítani.         |
-|**név**     || A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**type**     | – | `cosmosDB`értékre kell állítani.        |
+|**direction**     | – | `out`értékre kell állítani.         |
+|**név**     | – | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** | **DatabaseName**|A gyűjteményt tartalmazó adatbázis, amelyben a dokumentumot létrehozták.     |
 |**collectionName** |**CollectionName**  | Annak a gyűjteménynek a neve, amelyben a dokumentumot létrehozták. |
 |**Createifnotexists metódust**  |**Createifnotexists metódust**    | Logikai érték, amely azt jelzi, hogy a gyűjtemény létrejött-e, ha nem létezik. Az alapértelmezett érték a *false (hamis* ), mert az új gyűjtemények fenntartott átviteli sebességgel jönnek létre, ami a költségeket is érinti. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) olvasható.  |

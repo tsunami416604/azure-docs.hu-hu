@@ -8,12 +8,12 @@ ms.author: normesta
 ms.topic: article
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
-ms.openlocfilehash: dbfee5d897d54d68ea6471f0001793a905c95e62
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: cb2e1c16c1419d9925bd837bb4e12119f08d56c4
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835068"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119533"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2-preview"></a>A Python használata könyvtárak, fájlok és ACL-ek kezelésére Azure Data Lake Storage Gen2 (előzetes verzió)
 
@@ -64,7 +64,7 @@ except Exception as e:
  
 - Cserélje le a `storage_account_name` helyőrző értékét a Storage-fiók nevére.
 
-- Cserélje le a `storage-account-key` helyőrző értékét a Storage-fiók elérési kulcsára.
+- Cserélje le a `storage_account_key` helyőrző értékét a Storage-fiók elérési kulcsára.
 
 ## <a name="create-a-file-system"></a>Fájlrendszer létrehozása
 
@@ -278,7 +278,7 @@ def list_directory_contents():
 
 * [API-referenciák dokumentációja](https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html)
 * [Csomag (Python-csomag indexe)](https://pypi.org/project/azure-storage-file-datalake/)
-* [Példák](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
+* [Minták](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/samples)
 * [Gen1 a Gen2-megfeleltetéshez](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-datalake/GEN1_GEN2_MAPPING.md)
 * [Ismert problémák](data-lake-storage-known-issues.md#api-scope-data-lake-client-library)
 * [Visszajelzés küldése](https://github.com/Azure/azure-sdk-for-python/issues)

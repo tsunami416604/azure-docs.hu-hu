@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 10/08/2018
 ms.author: mimckitt
-ms.openlocfilehash: d98efd46e3c2fbc11be2cde6a0c4f2b37acc8d7c
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: ffa99c6ba0157eca133dc36ecbbb159b076b8bc0
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934003"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155553"
 ---
 # <a name="information-for-non-endorsed-distributions"></a>Nem támogatott disztribúciók adatai
 
@@ -43,7 +43,7 @@ Ez a cikk általános útmutatást nyújt a Linux-disztribúciók Azure-beli fut
 
 ## <a name="general-linux-installation-notes"></a>Általános linuxos telepítési megjegyzések
 * A Hyper-V virtuális merevlemez (VHDX) formátuma nem támogatott az Azure-ban, csak a *rögzített VHD*.  A lemezt VHD formátumba konvertálhatja a Hyper-V kezelőjével vagy a [Convert-VHD](https://docs.microsoft.com/powershell/module/hyper-v/convert-vhd) parancsmag használatával. Ha a VirtualBox-t használja, a lemez létrehozásakor válassza a **rögzített méret** lehetőséget az alapértelmezett (dinamikusan lefoglalt) helyett.
-* Az Azure csak az 1. generációs virtuális gépeket támogatja. Az 1. generációs virtuális gépeket átalakíthatja a VHDX-ből a VHD-fájlformátumba, és dinamikusan bővült egy rögzített méretű lemezre. A virtuális gép generációja nem módosítható. További információ: [hozzon létre egy 1. vagy 2. generációs virtuális gépet a Hyper-V-ben?](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v)
+* Az Azure támogatja a Gen1 (BIOS rendszerindítási) & Gen2 (UEFI rendszerindítási) virtuális gépeket.
 * A VHD számára engedélyezett maximális méret 1 023 GB.
 * A Linux rendszer telepítésekor azt javasoljuk, hogy a logikai kötet-kezelő (LVM) helyett szabványos partíciókat használjon, amely számos telepítés esetében az alapértelmezett. A standard partíciók használatával elkerülhető, hogy az LVM neve ütközik a klónozott virtuális gépekkel, különösen akkor, ha egy operációsrendszer-lemez már csatlakoztatva van egy másik, azonos virtuális géphez a hibaelhárításhoz. Az [LVM](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) vagy a [RAID](configure-raid.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) adatlemezeken is használható.
 * Szükség van az UDF-fájlrendszerek csatlakoztatásához szükséges kernel-támogatásra. Az Azure-ban az első indításkor a kiépítési konfigurációt a rendszer a vendéghez csatolt UDF formátumú adathordozó használatával továbbítja a linuxos virtuális géphez. Az Azure Linux-ügynöknek csatlakoztatnia kell az UDF fájlrendszert a konfigurációjának olvasásához és a virtuális gép kiépítéséhez.

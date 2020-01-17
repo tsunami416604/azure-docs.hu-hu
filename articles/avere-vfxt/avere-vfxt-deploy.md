@@ -4,14 +4,14 @@ description: A avere vFXT-fürt üzembe helyezésének lépései az Azure-ban
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: ad5b0ecd9e7e6326c5b91844b6f7b557972b4852
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415557"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153581"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
@@ -22,7 +22,7 @@ Ez az eljárás végigvezeti az Azure piactéren elérhető központi telepíté
 * Létrehozza a fürtcsomópont virtuális gépeket, és konfigurálja őket avere-fürtként.
 * Ha a rendszer kéri, egy új Azure BLOB-tárolót hoz létre, és a fürt Core Filer-ként konfigurálja azt.
 
-A jelen dokumentumban szereplő utasítások követése után egy virtuális hálózattal, egy alhálózattal, egy vezérlővel és egy vFXT-fürttel fog rendelkezni, ahogy az a következő ábrán is látható. Ez az ábra a választható Azure Blob Core Filer-t mutatja be, amely tartalmaz egy új blob Storage-tárolót (új Storage-fiókban, nem jelenik meg) és egy szolgáltatási végpontot a Microsoft Storage-ban az alhálózaton belül.
+A jelen dokumentumban szereplő utasítások követése után egy virtuális hálózattal, egy alhálózattal, egy fürttel és egy vFXT-fürttel fog rendelkezni, ahogy az a következő ábrán is látható. Ez az ábra a választható Azure Blob Core Filer-t mutatja be, amely tartalmaz egy új blob Storage-tárolót (új Storage-fiókban, nem jelenik meg) és egy szolgáltatási végpontot a Microsoft Storage-ban az alhálózaton belül.
 
 ![a avere-fürt összetevőivel három koncentrikus téglalapot ábrázoló diagram. A külső négyszög "erőforráscsoport" címkével rendelkezik, és a "blob Storage (nem kötelező)" címkével ellátott hatszög szerepel. A következő téglalap a "Virtual Network: 10.0.0.0/16" címkével van ellátva, és nem tartalmaz egyedi összetevőket. A legbelső téglalap az "alhálózat: 10.0.0.0/24" címkével rendelkezik, és tartalmaz egy "fürtcsomópont" címkével ellátott virtuális gépet, egy "vFXT-csomópontok (vFXT-fürt)" címkével ellátott három virtuális gép, valamint egy "szolgáltatási végpont" nevű hatszöget. Van egy nyíl, amely összeköti a szolgáltatási végpontot (amely az alhálózaton belül van) és a blob Storage-t (amely kívül esik az alhálózaton és a vnet, az erőforráscsoporthoz). A nyíl az alhálózat és a virtuális hálózat határain halad át.](media/avere-vfxt-deployment.png)
 
@@ -31,7 +31,7 @@ A létrehozási sablon használata előtt győződjön meg arról, hogy az aláb
 1. [Új előfizetés](avere-vfxt-prereqs.md#create-a-new-subscription)
 1. [Előfizetés tulajdonosának engedélyei](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
 1. [Kvóta a vFXT-fürthöz](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Storage Service-végpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – szükséges a meglévő virtuális hálózattal való üzembe helyezéshez és a blob Storage létrehozásához.
+1. [Storage Service-végpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – a meglévő virtuális hálózatot használó központi telepítések és a blob Storage létrehozása szükséges.
 
 További információ a fürtök üzembe helyezésének lépéseiről és tervezéséről: [a avere-vFXT rendszerének](avere-vfxt-deploy-plan.md) és [telepítésének áttekintése](avere-vfxt-deploy-overview.md).
 
@@ -41,7 +41,7 @@ Nyissa meg a Azure Portal létrehozási sablonját a avere keresésével, és v�
 
 ![A Azure Portalt tartalmazó böngészőablakban láthatók a "New > Marketplace > all" című rész. A minden oldalon a keresőmezőbe a "avere" kifejezés szerepel, a második pedig a "avere vFXT for Azure ARM Template" kifejezést piros színnel kiemelve.](media/avere-vfxt-template-choose.png)
 
-Miután elolvasta a részleteket a avere vFXT for Azure ARM-sablon lapon, kattintson a **Létrehozás** elemre a kezdéshez.
+Miután elolvasta a részleteket a avere vFXT for Azure ARM-sablon lapon, kattintson a **Létrehozás** gombra a kezdéshez.
 
 ![Az Azure Marketplace az üzembe helyezési sablon első oldalával, amely a következőt jeleníti meg](media/avere-vfxt-deploy-first.png)
 
@@ -149,11 +149,11 @@ Az információk megkeresése:
 
 1. A bal oldalon kattintson a **központi telepítések**, majd a **Microsoft-avere. vfxt-template**elemre.
 
-   ![Erőforráscsoport-portál lap a bal oldalon és a Microsoft-avere. vfxt-templateben kiválasztott központi telepítések a központi telepítési név alatt lévő táblázatban](media/avere-vfxt-outputs-deployments.png) <!-- update image for new portal GUI -->
+   ![Erőforráscsoport-portál lap a bal oldalon és a Microsoft-avere. vfxt-templateben kiválasztott központi telepítések a központi telepítési név alatt lévő táblázatban](media/avere-vfxt-outputs-deployments.png)
 
 1. A bal oldalon kattintson a **kimenetek**elemre. Másolja az értékeket az egyes mezőkbe.
 
-   ![kimenetek oldal, amely a SSHSTRING, a RESOURCE_GROUP, a hely, a NETWORK_RESOURCE_GROUP, a hálózat, az ALHÁLÓZAT, a SUBNET_ID, a VSERVER_IPs és a MGMT_IP értékeket mutatja a címkéktől jobbra található mezőkben.](media/avere-vfxt-outputs-values.png)<!-- update image for new portal GUI -->
+   ![kimenetek oldal, amely a SSHSTRING, a RESOURCE_GROUP, a hely, a NETWORK_RESOURCE_GROUP, a hálózat, az ALHÁLÓZAT, a SUBNET_ID, a VSERVER_IPs és a MGMT_IP értékeket mutatja a címkéktől jobbra található mezőkben.](media/avere-vfxt-outputs-values.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

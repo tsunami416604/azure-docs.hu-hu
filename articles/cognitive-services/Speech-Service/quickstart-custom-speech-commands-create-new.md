@@ -3,19 +3,19 @@ title: 'Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió) – 
 titleSuffix: Azure Cognitive Services
 description: Ebben a cikkben egy üzemeltetett egyéni parancsok alkalmazását hozza létre és teszteli.
 services: cognitive-services
-author: donkim
+author: don-d-kim
 manager: yetian
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: donkim
-ms.openlocfilehash: d8e28b88757fa7557b04ee471ede17012094bb9e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4ae8f13b4887bbc41b17defa3f9a20c07ed0cb45
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446871"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155587"
 ---
 # <a name="quickstart-create-a-custom-command-preview"></a>Gyors útmutató: Egyéni parancs létrehozása (előzetes verzió)
 
@@ -24,7 +24,7 @@ Az alkalmazás felismeri a "TV bekapcsolása" kifejezést, és egy egyszerű üz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy beszédfelismerési előfizetés. 
+- Egy beszédfelismerési előfizetés.
 
 Ha nem rendelkezik beszédfelismerési előfizetéssel, létrehozhat egyet a [Speech Studióval](https://speech.microsoft.com/) , és kiválaszthatja **a beszédfelismerési erőforrás létrehozása**lehetőséget.
 
@@ -73,7 +73,7 @@ A nézetnek most az egyéni parancsok alkalmazás áttekintését kell használn
 
 ## <a name="update-luis-resources-optional"></a>LUIS-erőforrások frissítése (nem kötelező)
 
-Frissítheti a szerzői erőforrás készletét az új projekt ablakban, és beállíthat egy előrejelzési erőforrást, amely a bemenetek felismeréséhez használatos a futtatókörnyezetben. 
+Frissítheti a szerzői erőforrás készletét az új projekt ablakban, és beállíthat egy előrejelzési erőforrást, amely a bemenetek felismeréséhez használatos a futtatókörnyezetben.
 
 > [!NOTE]
 > Meg kell adnia egy előrejelzési erőforrást, mielőtt az alkalmazás megkezdi az előrejelzések előrejelzését az authoring Resource által biztosított 1 000-kérelmek után.

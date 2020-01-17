@@ -10,12 +10,12 @@ ms.author: vaidyas
 author: csteegz
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: 49ee2690a54e58eee85dd4f9c5b7ef460ac597cc
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 39fc57a6da20549447f782399e9571f7a0ffeea7
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763589"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122525"
 ---
 # <a name="deploy-a-deep-learning-model-for-inference-with-gpu"></a>Mély tanulási modell üzembe helyezése a GPU-val való következtetéshez
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Ez a cikk bemutatja, hogyan használható a Azure Machine Learning egy GPU-t tá
 A következtetés vagy a modell pontozása az a fázis, amelyben az üzembe helyezett modellt használják az előrejelzések készítéséhez. A GPU-k használata a CPU-k helyett teljesítménybeli előnyökkel jár a nagyon párhuzamosítható számításokhoz.
 
 > [!IMPORTANT]
-> A webszolgáltatások üzembe helyezése esetén a GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak. Ha __gépi tanulási folyamattal__kíván következtetni, a GPU-k csak Azure Machine learning számítások esetén támogatottak. A ML-folyamatok használatával kapcsolatos további információkért lásd: [Batch-előrejelzések futtatása](how-to-run-batch-predictions.md). 
+> A webszolgáltatások üzembe helyezése esetén a GPU-következtetések csak az Azure Kubernetes szolgáltatásban támogatottak. Ha __gépi tanulási folyamattal__kíván következtetni, a GPU-k csak Azure Machine learning számítások esetén támogatottak. A ML-folyamatok használatával kapcsolatos további információkért lásd: [Batch-előrejelzések futtatása](how-to-use-parallel-run-step.md). 
 
 > [!TIP]
 > Bár a cikkben szereplő kódrészletek egy TensorFlow modellt használnak, a GPU-t támogató gépi tanulási keretrendszerre alkalmazhatja az adatokat.

@@ -3,12 +3,12 @@ title: Erőforrások üzembe helyezése a PowerShell és a sablon használatáva
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Azure PowerShell használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 6857d7d41cb05fd168d451ed3a955107acb4ec93
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c31cde9d3023c49a03f4a7a6c434c16405c88bea
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75477901"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121930"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-powershell"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel
 
@@ -157,7 +157,7 @@ New-AzResourceGroupDeployment -Name ExampleDeployment -ResourceGroupName Example
 
 ## <a name="test-template-deployments"></a>Sablon központi telepítésének tesztelése
 
-A sablon és a paraméterek értékének teszteléséhez az erőforrások tényleges telepítése nélkül használja a [test-AzureRmResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
+A sablon és a paraméterek értékének teszteléséhez az erőforrások tényleges telepítése nélkül használja a [test-AzResourceGroupDeployment](/powershell/module/az.resources/test-azresourcegroupdeployment). 
 
 ```powershell
 Test-AzResourceGroupDeployment -ResourceGroupName ExampleResourceGroup `

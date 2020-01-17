@@ -4,14 +4,14 @@ description: Az Azure-hoz készült avere-vFXT kapcsolatos további információ
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/09/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: fbd763827383c5ded2bb4ef0047ea3c5f650d78e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 78e0500057baf407f1d26afe29d9df1e525cbf3d
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416331"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153768"
 ---
 # <a name="additional-documentation"></a>További dokumentáció
 
@@ -33,4 +33,4 @@ További avere-fürt dokumentációja a következő webhelyen található: <http
 
 ## <a name="vfxt-creation-and-management-documentation"></a>vFXT-létrehozási és-kezelési dokumentáció
 
-A vfxt.py, a felhőalapú fürt létrehozási és felügyeleti segédprogramjának használatával kapcsolatos teljes útmutató a GitHubon érhető el: a vfxt.py-alapú [felhőalapú fürt kezelése](https://github.com/Azure/AvereSDK/blob/master/docs/README.md).
+A vfxt.py, egy parancsfájl-alapú felhőalapú fürt létrehozási és felügyeleti segédprogramjának használatával kapcsolatos teljes útmutató a GitHubon érhető el: [felhőalapú fürt kezelése a vfxt.py](https://github.com/Azure/AvereSDK/blob/master/docs/README.md)-mel.

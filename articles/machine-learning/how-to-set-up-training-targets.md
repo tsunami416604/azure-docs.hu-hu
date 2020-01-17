@@ -9,14 +9,14 @@ ms.reviewer: sgilley
 ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/16/2020
 ms.custom: seodec18
-ms.openlocfilehash: 730436c7437d2ed77f9066f486d9716ec6d5681f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c7fd70ca32054b3b25e717c8c7169cf2d30ef9be
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771836"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156352"
 ---
 # <a name="set-up-and-use-compute-targets-for-model-training"></a>Számítási célok beállítása és használata a modell betanításához 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -54,7 +54,7 @@ További információ a [kísérletek elküldéséről](#submit) a cikk végén.
 
 ## <a name="whats-an-estimator"></a>Mi az a kalkulátor?
 
-A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít.  Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mivel az automatikusan contructs a beágyazott objektumokat, például egy környezet-vagy RunConfiguration-objektumot. Ha szeretné jobban szabályozni az objektumok létrehozását, és specfify, hogy milyen csomagokat kell telepíteni a experiement futtatásához, kövesse az [alábbi lépéseket](#amlcompute) a betanítási kísérletek elküldéséhez egy Azure Machine learning számításban egy RunConfiguration objektum használatával.
+A népszerű keretrendszerek használatával történő modell-képzés elősegítése érdekében a Azure Machine Learning Python SDK egy alternatív, magasabb szintű absztrakciót, a kalkulátor osztályt biztosít.  Ez az osztály lehetővé teszi a futtatási konfigurációk egyszerű összeállítását. Létrehozhat és használhat általános [becslést](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.estimator?view=azure-ml-py) olyan képzési parancsfájlok beküldéséhez, amelyek bármely kiválasztott tanulási keretrendszert (például scikit-Learn) használnak. Javasoljuk, hogy használjon egy kalkulátort a betanításhoz, mert automatikusan létrehozza a beágyazott objektumokat, például egy környezet-vagy RunConfiguration-objektumot. Ha nagyobb mértékben szeretné vezérelni ezeket az objektumokat, és megadja, hogy milyen csomagokat szeretne telepíteni a kísérlet futtatásához, kövesse az [alábbi lépéseket](#amlcompute) , hogy elküldje a betanítási kísérleteket egy RunConfiguration objektum használatával egy Azure Machine learning számításban.
 
 A PyTorch, a TensorFlow és a láncolási feladatok esetében a Azure Machine Learning a megfelelő [PyTorch](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.pytorch?view=azure-ml-py), [TensorFlow](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.tensorflow?view=azure-ml-py)és [láncolási](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.dnn.chainer?view=azure-ml-py) becslések is biztosít, hogy egyszerűbbé váljon ezen keretrendszerek használata.
 
@@ -364,7 +364,7 @@ További információ: erőforrás- [kezelés](reference-azure-machine-learning-
 
 ## <a name="set-up-with-vs-code"></a>Beállítás a VS Code-ban
 
-A munkaterülethez társított számítási célokat a Azure Machine Learninghoz tartozó [vs Code bővítménnyel](how-to-vscode-tools.md#create-and-manage-compute-targets) érheti el, hozhatja létre és kezelheti.
+A munkaterülethez társított számítási célokat a Azure Machine Learninghoz tartozó [vs Code bővítménnyel](tutorial-train-deploy-image-classification-model-vscode.md#configure-compute-targets) érheti el, hozhatja létre és kezelheti.
 
 ## <a id="submit"></a>Betanítási Futtatás beküldése a Azure Machine Learning SDK-val
 
@@ -414,7 +414,7 @@ Vagy a következőket teheti:
 
 * Küldje el a kísérletet egy `Estimator` objektummal, ahogyan az a [ml-modellek becslések való betanítása](how-to-train-ml-models.md)című ábrán látható.
 * HyperDrive-Futtatás küldése a [hiperparaméter finomhangolásához](how-to-tune-hyperparameters.md).
-* Kísérlet küldése a [vs Code bővítmény](how-to-vscode-tools.md#train-and-tune-models)használatával.
+* Kísérlet küldése a [vs Code bővítmény](tutorial-train-deploy-image-classification-model-vscode.md#train-the-model)használatával.
 
 További információkért tekintse meg a [ScriptRunConfig](https://docs.microsoft.com/python/api/azureml-core/azureml.core.scriptrunconfig?view=azure-ml-py) és a [RunConfiguration](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfiguration?view=azure-ml-py) dokumentációját.
 

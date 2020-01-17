@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: cshoe
-ms.openlocfilehash: ef65904b19c5f42548c7b98cb37f6609124e0541
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 1923e26ba0ada7dcf5b8b333150b7cd5b775398b
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922424"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121199"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Azure Functions-kötések Microsoft Graph
 
@@ -207,9 +207,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Token` attribútumban b
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
-|**type**||Kötelező – `token`értékre kell állítani.|
-|**direction**||Kötelező – `in`értékre kell állítani.|
+|**név**| – |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [hitelesítési jogkivonat bemeneti kötésének használata kódból](#token-input-code).|
+|**type**| – |Kötelező – `token`értékre kell állítani.|
+|**direction**| – |Kötelező – `in`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -342,9 +342,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Excel` attribútumban b
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
-|**type**||Kötelező – `excel`értékre kell állítani.|
-|**direction**||Kötelező – `in`értékre kell állítani.|
+|**név**| – |Kötelező – az Excel-táblázat függvény kódjában használt változó neve. Lásd: [Excel-táblázat bemeneti kötésének használata kódból](#excel-input-code).|
+|**type**| – |Kötelező – `excel`értékre kell állítani.|
+|**direction**| – |Kötelező – `in`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -504,9 +504,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Excel` attribútumban b
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
-|**type**||Kötelező – `excel`értékre kell állítani.|
-|**direction**||Kötelező – `out`értékre kell állítani.|
+|**név**| – |Kötelező – a hitelesítési jogkivonat kódjában használt változó neve. Lásd: [Excel-táblázat kimeneti kötésének használata kódból](#excel-output-code).|
+|**type**| – |Kötelező – `excel`értékre kell állítani.|
+|**direction**| – |Kötelező – `out`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -650,9 +650,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `OneDrive` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
-|**type**||Kötelező – `onedrive`értékre kell állítani.|
-|**direction**||Kötelező – `in`értékre kell állítani.|
+|**név**| – |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl bemeneti kötésének használata kódból](#onedrive-input-code).|
+|**type**| – |Kötelező – `onedrive`értékre kell állítani.|
+|**direction**| – |Kötelező – `in`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -798,9 +798,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `OneDrive` attribútumba
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
-|**type**||Kötelező – `onedrive`értékre kell állítani.|
-|**direction**||Kötelező – `out`értékre kell állítani.|
+|**név**| – |Kötelező – a fájlhoz tartozó függvény kódjában használt változó neve. Lásd: [OneDrive-fájl kimeneti kötésének használata kódból](#onedrive-output-code).|
+|**type**| – |Kötelező – `onedrive`értékre kell állítani.|
+|**direction**| – |Kötelező – `out`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**UserId** |**userId** |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -949,9 +949,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Outlook` attribútumban
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
-|**type**||Kötelező – `outlook`értékre kell állítani.|
-|**direction**||Kötelező – `out`értékre kell állítani.|
+|**név**| – |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**| – |Kötelező – `outlook`értékre kell állítani.|
+|**direction**| – |Kötelező – `out`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |
@@ -1092,9 +1092,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `GraphWebhookTrigger` at
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
-|**type**||Kötelező – `graphWebhook`értékre kell állítani.|
-|**direction**||Kötelező – `trigger`értékre kell állítani.|
+|**név**| – |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**| – |Kötelező – `graphWebhook`értékre kell állítani.|
+|**direction**| – |Kötelező – `trigger`értékre kell állítani.|
 |**resourceType**|**ResourceType**|Kötelező – a Graph-erőforrás, amelynek a függvénynek válaszolnia kell a webhookokra. A következő értékek egyike lehet:<ul><li><code>#Microsoft.Graph.Message</code> – Outlook-üzenetekben végrehajtott módosítások.</li><li><code>#Microsoft.Graph.DriveItem</code> – a OneDrive-gyökér elemein végrehajtott módosítások.</li><li><code>#Microsoft.Graph.Contact</code> – személyes névjegyek módosításai az Outlookban.</li><li><code>#Microsoft.Graph.Event</code> – az Outlook naptár elemein végrehajtott módosítások.</li></ul>|
 
 > [!Note]
@@ -1244,9 +1244,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `GraphWebhookSubscriptio
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
-|**type**||Kötelező – `graphWebhookSubscription`értékre kell állítani.|
-|**direction**||Kötelező – `in`értékre kell állítani.|
+|**név**| – |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**| – |Kötelező – `graphWebhookSubscription`értékre kell állítani.|
+|**direction**| – |Kötelező – `in`értékre kell állítani.|
 |**filter (szűrő)**|**Szűrő**| Ha `userFromRequest`értékre van állítva, akkor a kötés csak a hívó felhasználó tulajdonában lévő előfizetéseket kéri le (csak a [http-trigger]esetén érvényes).| 
 
 ### <a name="webhook-input---usage"></a>Webhook bevitele – használat
@@ -1385,9 +1385,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `GraphWebhookSubscriptio
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**név**||Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
-|**type**||Kötelező – `graphWebhookSubscription`értékre kell állítani.|
-|**direction**||Kötelező – `out`értékre kell állítani.|
+|**név**| – |Kötelező – a levelezési üzenethez tartozó függvény kódjában használt változó neve. Lásd: [Outlook-üzenet kimeneti kötésének használata kódból](#outlook-output-code).|
+|**type**| – |Kötelező – `graphWebhookSubscription`értékre kell állítani.|
+|**direction**| – |Kötelező – `out`értékre kell állítani.|
 |**identitás**|**Identitáskezelés**|Kötelező – a művelet végrehajtásához használt identitás. A következő értékek egyike lehet:<ul><li><code>userFromRequest</code> – csak http- [HTTP-trigger]esetén érvényes. A hívó felhasználó identitását használja.</li><li><code>userFromId</code> – egy korábban bejelentkezett felhasználó identitását használja a megadott AZONOSÍTÓval. Lásd a <code>userId</code> tulajdonságot.</li><li><code>userFromToken</code> – a megadott token által jelölt identitást használja. Lásd a <code>userToken</code> tulajdonságot.</li><li><code>clientCredentials</code> – a Function alkalmazás identitását használja.</li></ul>|
 |**userId**|**UserId**  |Csak akkor szükséges, ha az _identitás_ értéke `userFromId`. Egy korábban bejelentkezett felhasználóhoz társított egyszerű felhasználói azonosító.|
 |**userToken**|**UserToken**|Csak akkor szükséges, ha az _identitás_ értéke `userFromToken`. A Function alkalmazáshoz érvényes jogkivonat. |

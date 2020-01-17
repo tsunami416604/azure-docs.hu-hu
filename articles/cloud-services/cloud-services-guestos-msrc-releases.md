@@ -10,17 +10,65 @@ ms.service: cloud-services
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: raiye
-ms.openlocfilehash: 97f4283e02dd3b67df5381f78e87c3ee5b23b74e
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 85029b5f819a59ffc4934d245778044a94a18d5e
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779586"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122134"
 ---
 # <a name="azure-guest-os"></a>Azure vendég operációs rendszer
 Az alábbi táblázatok az Azure vendég operációs rendszerre alkalmazott Microsoft Security Response Center (MSRC) frissítéseiket mutatják be. A cikkben megkeresve megállapíthatja, hogy egy adott frissítés a használt vendég operációs rendszerre vonatkozik-e. A frissítések mindig továbbítva lesznek az adott [család][family-explain] számára, melyeket a alkalmazásban bevezettek.
+
+## <a name="january-2020-guest-os"></a>Január 2020 vendég operációs rendszer
+
+>[!NOTE]
+>A januári vendég operációs rendszer jelenleg az automatikus frissítésekhez konfigurált Cloud Service virtuális gépekre van bevezetve. A bevezetés befejezésekor a rendszer ezt a verziót fogja elérhetővé tenni a Azure Portal és a konfigurációs fájlok manuális frissítéseihez. A következő javítások a januári vendég operációs rendszer részét képezik. A lista módosítása változhat.
+
+| Termékkategória | Szülő TUDÁSBÁZIS cikke | Biztonsági rés leírása | Vendég operációs rendszer | Első bemutatás dátuma |
+| --- | --- | --- | --- | --- |
+|  Rel 20-01  |  [4532960]  |  Windows biztonság  | 2.94 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 2.94 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534314]  |  Windows biztonság  | 2.94 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4532958]  |  Windows biztonság  | 3,81 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4532963]  |  Windows biztonság  | 3,81 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 3,81 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534288]  |  Windows biztonság  | 3,81 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4532961]  |  Windows biztonság  | 4,74 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4532962]  |  Windows biztonság  | 4,74 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534251]  |  Internet Explorer  | 4,74 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534309]  |  Windows biztonság  | 4,74 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4494175]  |  V3 kód  | 5,39 | 2019. aug. 29. |
+|  Rel 20-01  |  [4534271]  |  LCU  | 5,39 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4494174]  |  Hibakód v4  | 6,15 | 2019. aug. 29. |
+|  Rel 20-01  |  [4532947]  |  Windows biztonság  | 6,15 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4534273]  |  LCU  | 6,15 | Jan. január 14., 2020 |
+|  Rel 20-01  |  [4530734]  |  Nem biztonsági  | 2.94 | Dec. 10, 2019 |
+|  Rel 20-01  |  [4530691]  |  Nem biztonsági   | 3,81 | Dec. 10, 2019 |
+|  Rel 20-01  |  [4530702]  |  Nem biztonsági  | 4,74 | Dec. 10, 2019 |
+
+[4532960]: https://support.microsoft.com/kb/4532960
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534314]: https://support.microsoft.com/kb/4534314
+[4532958]: https://support.microsoft.com/kb/4532958
+[4532963]: https://support.microsoft.com/kb/4532963
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534288]: https://support.microsoft.com/kb/4534288
+[4532961]: https://support.microsoft.com/kb/4532961
+[4532962]: https://support.microsoft.com/kb/4532962
+[4534251]: https://support.microsoft.com/kb/4534251
+[4534309]: https://support.microsoft.com/kb/4534309
+[4494175]: https://support.microsoft.com/kb/4494175
+[4534271]: https://support.microsoft.com/kb/4534271
+[4494174]: https://support.microsoft.com/kb/4494174
+[4532947]: https://support.microsoft.com/kb/4532947
+[4534273]: https://support.microsoft.com/kb/4534273
+[4530734]: https://support.microsoft.com/kb/4530734
+[4530691]: https://support.microsoft.com/kb/4530691
+[4530702]: https://support.microsoft.com/kb/4530702
+
 
 ## <a name="december-2019-guest-os"></a>2019. decemberi vendég operációs rendszer
 

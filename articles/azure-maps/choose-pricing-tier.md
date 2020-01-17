@@ -3,61 +3,60 @@ title: Válassza ki a megfelelő árképzési szintet | Microsoft Azure térkép
 description: Ebben a cikkben a Microsoft Azure Maps által kínált díjszabási csomagokat ismerheti meg.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 01/02/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 5ff774f9848db948058075a98504e6c13db5467a
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 8764e9161f952118ca7ae28343dcd16477cf1eee
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911751"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155757"
 ---
 # <a name="choose-the-right-pricing-tier-in-azure-maps"></a>Válassza ki a megfelelő díjszabási szintet Azure Maps
 
-Az Azure Maps két tarifacsomaggal rendelkezik. Ennek a cikknek a célja, hogy segítséget nyújtson az igényeinek megfelelő díjszabási csomag kiválasztásában. A megfelelő árképzési szint kiválasztásához forduljon a következő két kérdéshez.
+A Azure Maps két díjszabási szintet kínál: S0 és S1. Ennek a cikknek a célja, hogy segítséget nyújtson az igényeinek megfelelő díjszabási csomag kiválasztásában. A megfelelő árképzési szint kiválasztásához forduljon a következő két kérdéshez.
 
 ## <a name="what-geospatial-capabilities-do-i-plan-to-use"></a>Milyen térinformatikai funkciókat kívánok használni?
-A S0 díjszabási szintje abban az esetben megfelelő, ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ha fejlettebb funkciókat szeretne használni az alkalmazáshoz, érdemes megfontolnia az S1 árképzési szintet. Ilyenek például a funkciók, valamint a hibrid képek, az útvonal-tartomány és a Batch-helymeghatározáshoz. A következő **díjszabási szintű képességek** táblázata jobb ötletet nyújt az alkalmazás igényeinek. Emellett az alkalmazás számára legmegfelelőbb árképzési szintet is kiválaszthatja.
+A S0 díjszabási szintje abban az esetben megfelelő, ha az alapszintű Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ha fejlettebb funkciókat szeretne használni az alkalmazáshoz, érdemes megfontolnia az S1 árképzési szintet. Példa speciális képességekre: antenna és hibrid képek, az útválasztási tartomány és a Batch-helymeghatározáshoz. A **díjszabási szintű képességek** tábla segítségével kiválaszthatja az alkalmazás számára legmegfelelőbb árképzési szintet.
 
 ## <a name="how-many-concurrent-users-do-i-plan-to-support"></a>Hány egyidejű felhasználót tervezek támogatni? 
-A S0 és S1 díjszabási szintjei különböző mennyiségű adatátviteli sebességet kezelnek. Mielőtt kiválaszt egy Azure Maps árképzési szintet, kérdezzen rá néhány kérdést. Például: "hány egyidejű felhasználót szeretnék támogatni?" A S0 díjszabási szintje másodpercenként legfeljebb **50 lekérdezést**kezel. Az S1 díjszabási szintje **másodpercenként több mint 50 lekérdezést**kezel.
+A S0 és S1 díjszabási szintjei különböző mennyiségű adatátviteli sebességet kezelnek. A S0 díjszabási szintje másodpercenként legfeljebb **50 lekérdezést**kezel, míg az S1 csomag másodpercenként **több mint 50 lekérdezést**kezel.
 
 ### <a name="pricing-tier-capabilities"></a>Díjszabási csomag képességei
 
 | Szolgáltatás                              |        S0           |  S1      |
 |-----------------------------------------|:-------------------:|:--------:|
-| Keresés (fwd/Rev helymeghatározáshoz, érdekes pontok)  |        ✓           |     ✓    |
-| Batch-helymeghatározáshoz (előzetes verzió)              |                   |     ✓    |
-| Sokszögek a keresésből          |                   |     ✓    |
-| Útvonaltervezés                                 |        ✓           |     ✓    |
-| Útvonal tartománya                    |                   |     ✓    |
-| Batch-útválasztás (előzetes verzió)                |                   |     ✓    |
-| Matrix Routing (előzetes verzió)               |                   |     ✓    |
-| Megjelenítés                                  |        ✓           |     ✓    |
-| Képek és hibrid képek    |            |     ✓    |
-| Forgalom                                 |        ✓           |     ✓    |
-| Időzónák                              |        ✓           |     ✓    |
-| Földrajzi hely (előzetes verzió)                |        ✓           |     ✓    |
-| Adatértékek (előzetes verzió)               |                   |     ✓    |
-| Térbeli (előzetes verzió)               |                   |     ✓    |
-| Geokerítések (előzetes verzió)               |                   |     ✓    |
-
-
+| Leképezés megjelenítése                              | ✓                   | ✓       |
+| Szatellit képek                       |                     | ✓        |
+| Search                                  | ✓                    | ✓        |
+| Batch Search                            |                     | ✓        |
+| Útválasztás                                   | ✓                    |✓        |
+| Batch Routing                            |                    | ✓        |
+| Matrix Routing                          |                     | ✓        |
+| Route Range (Isochrones)                |                     | ✓        |
+| Forgalom                                |✓                    |✓        |
+| Időzóna                               |✓                    |✓        |
+| Földrajzi hely (előzetes verzió)                    |✓                   |✓        |
+| Térműveletek                        |                    |✓        |
+| Geokerítések kezelése                                |                    |✓        |
+| AdatAzure Maps (előzetes verzió)                |                     | ✓        |
+| Mobilitás (előzetes verzió)                       |                     | ✓        |
+| Időjárás (előzetes verzió)                        |✓                    |✓        |
 
 Ezeket a további adatpontokat érdemes figyelembe venni:
-* Milyen típusú vállalatoknak van?
-* Mennyire fontos az alkalmazás építése?
-
-Tekintse meg a **díjszabási szinten megcélozott ügyfelek** táblázatát, hogy jobban érthető legyen a S0 és az S1 díjszabása. További információ: [Azure Maps díjszabása](https://azure.microsoft.com/pricing/details/azure-maps/). 
+* Milyen típusú vállalattal rendelkezik?
+* Mennyire kritikus az alkalmazása?
 
 ### <a name="pricing-tier-targeted-customers"></a>Árképzési szintek megcélzó ügyfelei
 
+Tekintse meg a **díjszabási szinten megcélozott ügyfelek** táblázatát, hogy jobban érthető legyen a S0 és az S1 díjszabása. További információ: [Azure Maps díjszabása](https://azure.microsoft.com/pricing/details/azure-maps/). 
+
 | Díjcsomag  |     Megcélzó ügyfelek                                                                |
-|---------------|:-----------------------------------------------------------------------------------------|
-| S0            |    <p>A S0 díjszabási szintje olyan ügyfelek számára készült, akik kis-és közepes méretű vállalatok. Ez a megfelelő díjszabási csomag, ha nem vár nagy mennyiségű egyidejű felhasználót. Emellett akkor is helyes, ha az előző táblázatban látható alapvető Térinformatikai API-k megfelelnek a szolgáltatás követelményeinek. Ez a szintet általánosan elérhető. Az alkalmazás az éles környezet összes fázisában működik: a megvalósíthatósági fejlesztéstől és a korai teszteléstől az alkalmazások éles és üzembe helyezéséhez.<p>|
+|-----------------|:-----------------------------------------------------------------------------------------|
+| S0            |    <p>A S0 díjszabási szintje az éles környezetben futó alkalmazások számára is működik: a megvalósíthatósági fejlesztéstől és a korai teszteléstől az alkalmazások gyártásához és üzembe helyezéséhez. Ez a réteg azonban kisméretű fejlesztésre, vagy alacsony egyidejű felhasználókkal rendelkező ügyfelekre, vagy mindkettőre lett tervezve. <p>|
 | S1            |    <p>Az S1 díjszabási szintje olyan ügyfelek számára szükséges, akik nagyvállalati, kritikus fontosságú alkalmazások vagy nagy mennyiségű egyidejű felhasználó támogatására szorulnak. Azok az ügyfelek is, akik speciális térinformatikai szolgáltatásokat igényelnek.</p>|
 
 ## <a name="next-steps"></a>Következő lépések

@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
-ms.openlocfilehash: cbc45036497547b78514b1d175d67c6ed437ee2d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: d5ded7200c438fc734e1af0a42ca6071196bd41c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769489"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120337"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
@@ -1011,9 +1011,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `SignalRConnectionInfo` 
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| `signalRConnectionInfo`értékre kell állítani.|
-|**direction**|| `in`értékre kell állítani.|
-|**név**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**type**| – | `signalRConnectionInfo`értékre kell állítani.|
+|**direction**| – | `in`értékre kell állítani.|
+|**név**| – | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**userId**|**UserId**| Nem kötelező: a hozzáférési kulcs jogkivonatában beállítani kívánt felhasználói azonosító jogcím értéke. |
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
@@ -1024,9 +1024,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `SignalR` attribútumban
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**type**|| `signalR`értékre kell állítani.|
-|**direction**|| `out`értékre kell állítani.|
-|**név**|| A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
+|**type**| – | `signalR`értékre kell állítani.|
+|**direction**| – | `out`értékre kell állítani.|
+|**név**| – | A kapcsolatkérelem-objektumhoz tartozó függvény kódjában használt változó neve. |
 |**hubName**|**HubName**| Ezt az értéket annak a jelző-hubhoz a nevére kell beállítani, amelyhez a kapcsolódási adatok létrejöttek.|
 |**connectionStringSetting**|**ConnectionStringSetting**| A jelző szolgáltatás kapcsolódási sztringjét tartalmazó Alkalmazásbeállítás neve (alapértelmezett érték: "AzureSignalRConnectionString") |
 

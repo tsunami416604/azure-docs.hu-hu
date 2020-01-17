@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/18/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7d02ca3a8b5b617edb8ee00ae7d15ea7e94cae80
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 03855b7596f45fcdde0bebe018d2157ad33a617b
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278949"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156080"
 ---
 # <a name="set-up-a-security-key-as-your-verification-method"></a>Biztonsági kulcs beállítása ellenőrzési módszerként
 
@@ -25,8 +25,21 @@ A biztonsági kulcsokat jelszó nélküli bejelentkezési módszerként is haszn
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-preview-notice-security-key.md)]
 
->[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
+>[!Note]
+> Ha nem jelenik meg a biztonsági kulcs lehetőség, akkor előfordulhat, hogy a szervezet nem engedélyezi, hogy ezt a lehetőséget használja az ellenőrzéshez. Ebben az esetben egy másik módszert kell választania, vagy további segítségért forduljon a szervezet ügyfélszolgálatához.
+
+## <a name="security-verification-versus-password-reset-authentication"></a>Biztonsági ellenőrzés és jelszó-visszaállítási hitelesítés
+
+A biztonsági információ módszereit a kéttényezős biztonsági ellenőrzéshez és a jelszó-visszaállításhoz is használja a rendszer. Azonban nem minden metódus használható egyszerre mindkettőhöz.
+
+| Módszer | Alkalmazási cél |
+| ------ | -------- |
+| Hitelesítő alkalmazás | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| SMS-ek | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Telefonhívások | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| Biztonsági kulcs | Kétfaktoros ellenőrzés és jelszó-visszaállítási hitelesítés. |
+| E-mail fiók | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
+| Biztonsági kérdések | Csak jelszó-visszaállítási hitelesítés. A kétfaktoros ellenőrzéshez másik módszert kell választania. |
 
 ## <a name="what-is-a-security-key"></a>Mi az a biztonsági kulcs?
 
@@ -37,7 +50,7 @@ A rendszergazda vagy a szervezete biztonsági kulcsot fog biztosítani, ha a mun
 > [!Note]
 > Ha nem tud FIDO2 biztonsági kulcsot használni, más jelszó nélküli ellenőrzési módszerek is használhatók, mint például a Microsoft Authenticator alkalmazás vagy a Windows Hello. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md). A Windows Hello szolgáltatással kapcsolatos további információkért lásd: a [Windows Hello áttekintése](https://www.microsoft.com/windows/windows-hello).
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A biztonsági kulcs regisztrálásának megkezdése előtt az alábbiaknak igaznak kell lenniük:
 

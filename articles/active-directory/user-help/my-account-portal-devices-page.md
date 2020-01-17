@@ -12,24 +12,27 @@ ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 37994125f7f1a7119a8878c7edec401328fd75ca
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 9cd2d712dfcc6d3f01cbdb1f4886dd64a6d299d4
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233215"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156216"
 ---
-# <a name="manage-devices-connected-to-your-work-or-school-account-from-the-devices-page"></a>Munkahelyi vagy iskolai fiókjához csatlakoztatott eszközök kezelése az eszközök lapról
+# <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
 
-A **saját fiók** portál **eszközök** lapján a következőket teheti:
+A **saját fiók** portál **eszközök** lapján kezelheti a munkahelyi vagy iskolai fiókjához csatlakoztatott eszközöket. Az **eszközök** lapon a következőket teheti:
 
 - Munkahelyi vagy iskolai fiókhoz csatlakoztatott eszközök megtekintése.
 
 - Tiltsa le az összes olyan eszközt, amely már nem tulajdonosa, elveszett vagy ellopták.
 
+>[!Important]
+>Ez a cikk arra szolgál, hogy a felhasználók egy munkahelyi vagy iskolai fiókhoz csatlakoztatott eszköz-információkat próbáljanak frissíteni. Ha Ön rendszergazda, aki az alkalmazottak és más felhasználások eszköz-kezelésével kapcsolatos információkat keres, tekintse meg az [eszköz identitásait ismertető dokumentációt](https://docs.microsoft.com/azure/active-directory/devices/index).
+
 ## <a name="view-your-connected-devices"></a>Csatlakoztatott eszközök megtekintése
 
-1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a https://myprofile.microsoft.com/ oldalra.
+1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába, majd lépjen a **saját fiókra** (https://myprofile.microsoft.com/) lapra.
 
 2. Válassza az **eszközök** lehetőséget a bal oldali navigációs ablaktáblán, vagy válassza az eszközök **blokk eszközök** **kezelése** hivatkozását.
 
@@ -73,3 +76,13 @@ A csatlakoztatott eszközök megtekintése után a következőket teheti:
 - A [bejelentkezési tevékenység](my-account-portal-sign-ins-page.md)megtekintése.
 
 - Megtekintheti, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md).
+
+## <a name="related-office-content"></a>Kapcsolódó Office-tartalom
+
+- [Jelentkezzen be az Office-termék kezeléséhez](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
+
+- [Ugrás az Office **saját fiók** oldalára](https://portal.office.com/account/#home)
+
+- [Nyissa meg az Office **saját telepítések** lapot](https://portal.office.com/account/#installs)
+
+- [Ugrás az Office- **előfizetések** oldalára](https://portal.office.com/account/#subscriptions)

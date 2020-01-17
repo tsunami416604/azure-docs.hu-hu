@@ -10,12 +10,12 @@ ms.author: jmartens
 author: j-martens
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b413fd7efe865f1dc2062a8f2dcfae983ec2f27a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 0e613dd1c47a9942d95bd668f1e9f85e42649b5c
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771921"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122372"
 ---
 # <a name="azure-machine-learning-release-notes"></a>Azure Machine Learning kibocsátási megjegyzések
 
@@ -125,7 +125,7 @@ Az ismert hibák és a megkerülő megoldások megismeréséhez tekintse meg [az
     + Javítsa a RunConfigurations betöltését a relatív elérési utakról.
     + Ha olyan `keep_columns` vagy `drop_columns` hív meg, amely egy idősor-oszlop eldobását eredményezi, akkor a megfelelő képességek is el lesznek dobva az adatkészlethez.
   + **azureml – értelmezés**
-    + a tolmácsolási Közösség frissített verziója 0.2.0
+    + A tolmácsolási Közösség frissített verziója 0.2.0
   + **azureml – folyamat – lépések**
     + Az Azure Machine learning-folyamat lépéseinek `runconfig_pipeline_params` dokumentált támogatott értékei.
   + **azureml – folyamat – mag**
@@ -733,7 +733,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
   + A `read_parquet` teljesítménye jelentősen javult a Sparkban való futás során.
   + Kijavított egy problémát, amelyben a `column_type_builder` nem egyértelmű dátumformátum esetén egyetlen oszlop esetében meghiúsult.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 + **Előzetes verzió funkció**
   + A log és a output file streaming mostantól elérhető a futtatási részletek oldalain. A fájlok valós időben továbbítják a frissítéseket, amikor bekapcsolják az előnézeti kapcsolót.
   + A kvóta megadásának lehetősége a munkaterület szintjén előzetes verzióban érhető el. A AmlCompute-kvóták az előfizetés szintjén vannak lefoglalva, de mostantól lehetővé tesszük, hogy az adott kvótát a munkaterületek között, és a méltányos megosztáshoz és irányításhoz ossza ki. A munkaterület bal oldali navigációs sávján kattintson a **használat + kvóták** panelre, és válassza a **kvóták konfigurálása** fület. vegye figyelembe, hogy a kvóták a munkaterület szintjén való beállítása, mivel ez egy több-munkaterület művelet.
@@ -823,7 +823,7 @@ A jelen kiadás időpontjában a következő böngészők támogatottak: Chrome,
     + Az előrejelzési feladatokban a `target_lags` paraméter mostantól egyetlen egész értéket, vagy egész számok listáját fogadja el. Ha az egész számot adta meg, csak egy késés lesz létrehozva. Ha egy lista van megadva, a rendszer a lemaradás egyedi értékeit veszi figyelembe. target_lags = [1, 2, 2, 4] egy, 2 és 4 időszakból álló késéseket fog létrehozni.
     + Javítsa ki a hibát az oszlopok típusának elvesztése után az átalakítás után (hiba összekapcsolva);
     + A `model.forecast(X, y_query)`ban engedélyezze a nem (ka) t tartalmazó objektumtípus y_query használatát a BEGIN (#459519) elemnél.
-    + Várt értékek hozzáadása `automl` kimenethez
+    + várt értékek hozzáadása `automl` kimenethez
   + **azureml – datadrift**
     +  Többek között a jegyzetfüzetek fejlesztése, beleértve a azureml-opendatasets való váltást, a azureml-opendatasets és a teljesítmény javítását az adatgazdagítás során
   + **azureml – feltörzs – magyarázat – modell**
@@ -1104,7 +1104,7 @@ Javítottunk egy olyan változást, amely javítja a teljesítményt, mivel a Az
 
 ## <a name="2019-05-06"></a>2019-05-06
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 A Azure Portal mostantól a következőket teheti:
 + Automatizált ML-kísérletek létrehozása és futtatása
@@ -1223,7 +1223,7 @@ Megjegyzés: az adatprep Python SDK többé nem telepíti `numpy` és `pandas` c
 
 ## <a name="2019-04-15"></a>2019-04-15
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
   + Most már újra elküldheti egy meglévő parancsfájl futtatását egy meglévő távoli számítási fürtön.
   + Mostantól egy közzétett folyamatot is futtathat új paraméterekkel a folyamatok lapon.
   + A Run details mostantól támogatja az új pillanatkép-fájl megjelenítőjét. Egy adott Futtatás elküldésekor megtekintheti a könyvtár pillanatképét. A Futtatás elindításához le is töltheti a beküldött jegyzetfüzetet.
@@ -1318,7 +1318,7 @@ Megjegyzés: az adatprep Python SDK többé nem telepíti `numpy` és `pandas` c
 + **Hibajavítások és javítások**
   + Azure Machine Learning-folyamatokat is támogatunk, amelyekkel beállíthatja a source_directory_data_store tulajdonságot egy kívánt adattárra (például blob Storage-ra) a [PythonScriptStep](https://docs.microsoft.com/python/api/azureml-pipeline-steps/azureml.pipeline.steps.python_script_step.pythonscriptstep?view=azure-ml-py)megadott [RunConfigurations](https://docs.microsoft.com/python/api/azureml-core/azureml.core.runconfig.runconfiguration?view=azure-ml-py) . Alapértelmezés szerint az Azure file Store-t használja a háttérként szolgáló adattárként, amely szabályozási problémákba ütközik, amikor nagy számú lépést hajt végre egyszerre.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 + **Új funkciók**
   + Új fogd és vidd táblázat szerkesztői élmény a jelentésekhez. A felhasználók a megfelelő oszlopokat a tábla azon területére húzhatja, ahol megjelenik a táblázat előnézete. Az oszlopok átrendezhető.
@@ -1488,7 +1488,7 @@ Azure Machine Learning a számításokat a Pythonban, Azure Portal vagy a paranc
 + ML-folyamatok
   + Új és frissített jegyzetfüzetek a folyamatok, a kötegek hatóköre és a stílus-átadási példákkal való ismerkedéshez: https://aka.ms/aml-pipeline-notebooks
   + Ismerje meg, hogyan [hozhatja létre első folyamatát](how-to-create-your-first-pipeline.md)
-  + Útmutató a [Batch-előrejelzések folyamatokkal történő futtatásához](how-to-run-batch-predictions.md)
+  + Útmutató a [Batch-előrejelzések folyamatokkal történő futtatásához](how-to-use-parallel-run-step.md)
 + Számítási cél Azure Machine Learning
   + A [minta jegyzetfüzetek](https://aka.ms/aml-notebooks) mostantól frissülnek az új felügyelt számítás használatára.
   + [További tudnivalók a számítási feladatokról](how-to-set-up-training-targets.md#amlcompute)
@@ -1543,7 +1543,7 @@ További információ az adat-előkészítő SDK-ról a [dokumentációs dokumen
 
 ## <a name="2018-11-05"></a>2018-11-05
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 A Azure Machine Learning Azure Portal a következő frissítésekkel rendelkezik:
   * Új **folyamatok** lap a közzétett folyamatokhoz.
   * Meglévő HDInsight-fürt számítási célként való csatolásának támogatása.

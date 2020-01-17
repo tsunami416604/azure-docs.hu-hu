@@ -11,14 +11,14 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.custom: seodec18
-ms.date: 12/03/2019
+ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: bea59ff29579c5d009a87c8d1564db4c0baf6e69
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 26056e9b52ea319856505db837c67dc68b2f4aa6
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74793268"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76157287"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Az Azure Event Hubs hibaelhárítási útmutatója
 Ez a cikk a Event Hubs .NET-keretrendszer API-jai által generált .NET-kivételeket, valamint a hibaelhárítással kapcsolatos egyéb tippeket tartalmaz. 
@@ -115,10 +115,10 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
     ```shell
     telnet sbwagn2.servicebus.windows.net 5671
     ```
-- Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Tartsa működés közben körülbelül 1 percig, hogy a kapcsolatok részben le vannak-e tiltva. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
+- Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ezzel a paranccsal 25 különböző TCP-kapcsolatot hozhat létre másodpercenként a szolgáltatással, így a sikeres/sikertelen és a TCP-kapcsolat késése is megtekinthető. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
 
     ```shell
-    psping.exe -t -q ehedhdev.servicebus.windows.net:9354 -nobanner     
+    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
     ```
     Ha más eszközöket (például `tnc`, `ping`stb.) használ, egyenértékű parancsokat is használhat. 
 - Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik, vagy vegye fel a kapcsolatot [Microsoft ügyfélszolgálata](https://support.microsoft.com/). 

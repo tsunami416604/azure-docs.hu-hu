@@ -10,12 +10,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 05/02/2019
 ms.author: robreed
-ms.openlocfilehash: ff84b085b7d40bcb6c5a0aa87416e5814f67814b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 058099ceca886f375e6add07033174bf80d5b647
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979573"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156539"
 ---
 # <a name="custom-script-extension-for-windows"></a>Egyéni parancsfájl-bővítmény a Windowshoz
 
@@ -110,7 +110,7 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft.Compute | sztring |
@@ -147,7 +147,7 @@ A nyilvános beállításokat a rendszer tiszta szövegként küldi el arra a vi
 
 ####  <a name="property-managedidentity"></a>Tulajdonság: managedIdentity
 
-A CustomScript (1.10.4-es verzió) támogatja a [felügyelt identitáson](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) alapuló RBAC, amely a "fileUris" beállításban megadott URL-címekről tölti le a fájl (oka) t. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok/tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
+A CustomScript (1,10-es verzió) támogatja a [felügyelt identitást](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a fájl (ok) letöltéséhez a "fileUris" beállításban megadott URL-címekről. Lehetővé teszi a CustomScript számára az Azure Storage privát Blobok vagy tárolók elérését anélkül, hogy a felhasználónak olyan titkokat kellene átadnia, mint például az SAS-tokenek vagy a Storage
 
 Ennek a funkciónak a használatához a felhasználónak hozzá kell adnia egy [rendszerhez rendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-system-assigned-identity) vagy [felhasználó által hozzárendelt](https://docs.microsoft.com/azure/app-service/overview-managed-identity?tabs=dotnet#adding-a-user-assigned-identity) identitást a virtuális géphez vagy VMSS, ahol a CustomScript várhatóan fut, és [biztosítania kell a felügyelt identitás elérését az Azure Storage-tárolóhoz vagy-blobhoz](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/tutorial-vm-windows-access-storage#grant-access).
 
@@ -273,7 +273,7 @@ The response content cannot be parsed because the Internet Explorer engine is no
 
 Az egyéni szkriptek klasszikus virtuális gépeken való üzembe helyezéséhez használhatja a Azure Portal vagy a klasszikus Azure PowerShell parancsmagokat.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 Navigáljon a klasszikus VM-erőforráshoz. Válassza a **bővítmények** lehetőséget a **Beállítások**területen.
 

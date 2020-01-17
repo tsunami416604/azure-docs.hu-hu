@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: sahenry
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a168f9bf58c4942fc0b76b9ffefc2b32b5bfbe5a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: dd178f52665c77f03a48d87a9e73c9019390bb21
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75549363"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154856"
 ---
 # <a name="quickstart-configure-azure-active-directory-self-service-password-reset"></a>Gyors útmutató: Azure Active Directory önkiszolgáló jelszó-visszaállítás konfigurálása
 
@@ -71,7 +71,7 @@ Most már lehetővé teszi a SSPR-konfiguráció tesztelését az előző szakas
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Az önkiszolgáló jelszó-visszaállítás letiltásához keresse meg és válassza ki **Azure Active Directory** a Azure Portal. Válassza a **tulajdonságok** > a **jelszó alaphelyzetbe állítása**lehetőséget, majd válassza a **nincs** lehetőséget az **önkiszolgáló jelszó-visszaállítás beállításnál**. Ha elkészült, válassza a **Mentés**lehetőséget.
+Az önkiszolgáló jelszó-visszaállítás letiltásához keresse meg és válassza ki **Azure Active Directory** a Azure Portal. Válassza a **jelszó alaphelyzetbe állítása**lehetőséget, majd válassza a **nincs** lehetőséget az **önkiszolgáló jelszó-visszaállítás beállításnál**. Ha elkészült, válassza a **Mentés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

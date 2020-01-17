@@ -8,12 +8,12 @@ ms.topic: article
 ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
-ms.openlocfilehash: ce2394805bfc302179da807c798445c30ce9daff
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: ef1266b783034cf18dc2b3ea4be5ebc01bc12c70
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619546"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121862"
 ---
 # <a name="set-up-dns-and-dhcp-applications-and-workloads-in-your-cloudsimple-private-cloud"></a>DNS-és DHCP-alkalmazások és-munkaterhelések beállítása a saját CloudSimple-felhőben
 
@@ -27,7 +27,7 @@ A privát felhőalapú környezetekben futó alkalmazások és munkaterhelések 
 
 ## <a name="linux-based-dns-server-setup"></a>Linux-alapú DNS-kiszolgáló beállítása
 
-A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához.  Íme egy [példa a DigitalOcean-ről](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-centos-7) , amely egy nyílt forráskódú kötési DNS-kiszolgáló beállítására vonatkozó utasításokat tartalmaz.
+A Linux különböző csomagokat kínál a DNS-kiszolgálók beállításához.  Íme egy [példa a DigitalOcean-ről](https://www.digitalocean.com/community/tutorials/how-to-configure-bind-as-a-private-network-dns-server-on-ubuntu-18-04) , amely egy nyílt forráskódú kötési DNS-kiszolgáló beállítására vonatkozó utasításokat tartalmaz.
 
 ## <a name="windows-based-setup"></a>Windows-alapú telepítés
 

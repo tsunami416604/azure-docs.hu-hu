@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c58371edffa4400c2c2b3efd37c3ce6d7c3cad95
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: eb47b9df51803c76662b5fb4ca1fe23740e7af9a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74847915"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76155057"
 ---
 # <a name="configuring-the-custom-banned-password-list"></a>Az egyéni tiltott jelszavak listájának konfigurálása
 
@@ -26,7 +26,7 @@ Számos szervezet megkeresi a felhasználói jelszavakat a gyakori helyi szavak,
 
 Az egyéni tiltott jelszavak listájának konfigurálásához egy prémium szintű Azure Active Directory P1 vagy P2 licenc szükséges. A Azure Active Directory licenceléssel kapcsolatos részletesebb információkért tekintse meg a [Azure Active Directory díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/active-directory/).
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és keresse meg a **Azure Active Directory**, a **hitelesítési módszereket**, majd a **jelszavas védelmet**.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és tallózással keresse meg **Azure Active Directory** > **biztonsági** > **hitelesítési módszereit** > **jelszavas védelem**.
 1. Állítsa be az **Egyéni beállítások betartatása**beállítást **Igen**értékre.
 1. Karakterláncok hozzáadása az **Egyéni tiltott jelszavak listájához**, soronként egy sztring
    * Az egyéni tiltott jelszavak listája akár 1000 kifejezést is tartalmazhat.

@@ -4,14 +4,14 @@ description: Háttérbeli tárolási rendszer hozzáadása az Azure-hoz készül
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/14/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: 3f7d7b5091b6439f17455b5ea66a3a23ebf79811
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dfffef90201ba4bbb5a912df6101e8338012df44
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75416495"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153989"
 ---
 # <a name="configure-storage"></a>A tárolás konfigurálása
 
@@ -32,7 +32,7 @@ Ezek a lépések a avere Vezérlőpultot használják. A [vFXT-fürt](avere-vfxt
 
 ## <a name="create-a-core-filer"></a>Alapszintű Filer létrehozása
 
-A "Core Filer" egy vFXT kifejezés a háttérbeli tárolási rendszer számára. A tárterület lehet egy hardveres NAS-berendezés, például a NetApp vagy a Isilon, vagy lehet egy Felhőbeli objektum tárolója. Az alapszintű Filer szolgáltatással kapcsolatos további információk a [avere-fürt beállítási útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)találhatók.
+A "Core Filer" egy vFXT kifejezés a háttérrendszer tárolására. A tárterület lehet egy hardveres NAS-berendezés, például a NetApp vagy a Isilon, vagy lehet egy Felhőbeli objektum tárolója. Az alapszintű Filer szolgáltatással kapcsolatos további információk a [avere-fürt beállítási útmutatójában](https://azure.github.io/Avere/legacy/ops_guide/4_7/html/settings_overview.html#managing-core-filers)találhatók.
 
 Egy alapvető Filer hozzáadásához válasszon a következő két fő típus közül:
 
@@ -69,7 +69,7 @@ Ezután folytassa a [csomópont létrehozásával](#create-a-junction).
 
 ### <a name="azure-blob-storage-cloud-core-filer"></a>Azure Blob Storage Cloud Core Filer
 
-Ha az Azure Blob Storage-t a vFXT-fürt háttérbeli tárolójának használatára szeretné használni, akkor egy üres tárolóra van szükség, amely alapszintű Filer-ként adható hozzá.
+Ha az Azure Blob Storage-t a vFXT-fürt háttér-tárolójának használatára szeretné használni, akkor egy üres tárolóra van szükség, amely alapszintű Filer-ként adható hozzá.
 
 A blob Storage fürthöz való hozzáadásához a következő feladatok szükségesek:
 
@@ -130,7 +130,7 @@ Ha a fürt létrehozása után szeretne BLOB-tárolót hozzáadni, kövesse az a
    | Hitelesítő adat neve | bármilyen leíró név |
    | Szolgáltatás típusa | (Azure Storage-hozzáférési kulcs kiválasztása) |
    | Bérlő | tárfiók neve |
-   | Előfizetés | subscription ID |
+   | Előfizetést | subscription ID |
    | Tároló-hozzáférési kulcs | Azure Storage-fiók kulcsa (az előző lépésben másolva) |
 
    Kattintson a **Submit** (Küldés) gombra.

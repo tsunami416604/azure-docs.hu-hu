@@ -3,18 +3,18 @@ title: 'Gyors útmutató: interaktív térképes keresés a Azure Maps segítsé
 description: Megtudhatja, hogyan hozhat létre bemutató webalkalmazást interaktív térképes kereséshez Microsoft Azure Maps web SDK használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 11/08/2019
+ms.date: 1/14/2020
 ms.topic: quickstart
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: 5f11fa4fce38b125e21564b4cfbe4582e55a7b64
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 4081dd383fc0e7378bc8c8438781c13e6a34e075
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910684"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156437"
 ---
 # <a name="quickstart-create-an-interactive-search-map-by-using-azure-maps"></a>Rövid útmutató: interaktív keresési Térkép létrehozása Azure Maps használatával
 
@@ -61,7 +61,7 @@ A Maps-fiók sikeres létrehozását követően kérje le azt a kulcsot, amely l
 
 ## <a name="download-the-application"></a>Az alkalmazás letöltése
 
-1. Töltse le vagy másolja ki az [interactiveSearch.html](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) fájl tartalmát.
+1. Nyissa meg a [interactiveSearch. html fájlt](https://github.com/Azure-Samples/AzureMapsCodeSamples/blob/master/AzureMapsCodeSamples/Tutorials/interactiveSearch.html) , és kattintson rá a GitHub felhasználói felületén található tartalmak megtekintéséhez. A fájl letöltéséhez kattintson a jobb gombbal a **RAW** gombra, és másolja a fájl tartalmát, vagy a "Mentés másként" lehetőséget.
 2. Mentse a fájl tartalmát helyileg **AzureMapDemo. html**néven. Nyissa meg egy szövegszerkesztőben.
 3. Keresse meg a `<Your Azure Maps Key>`karakterláncot. Cserélje le az elemet az előző szakasz **elsődleges kulcs** értékére.
 

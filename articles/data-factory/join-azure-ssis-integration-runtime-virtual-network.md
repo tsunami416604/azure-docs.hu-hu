@@ -11,12 +11,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
-ms.openlocfilehash: 58bfc35776e83df7754379a12ad4b7afca73e32c
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: fec34c54971878178b2a5ea4548ad20d3b51b104
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75892340"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76119905"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
 
@@ -140,49 +140,96 @@ Ha saját statikus nyilvános IP-címeit szeretné használni Azure-SSIS IRhoz, 
 - A virtuális hálózatnak ugyanabban az előfizetésben és ugyanabban a régióban kell lennie.
 
 ### <a name="dns_server"></a>A DNS-kiszolgáló beállítása 
+Ha saját DNS-kiszolgálóját kell használnia a Azure-SSIS IR által csatlakoztatott virtuális hálózaton a privát állomásnév feloldásához, akkor győződjön meg róla, hogy képes-e a globális Azure-beli állomásnevek (például egy `<your storage account>.blob.core.windows.net`nevű Azure Storage-blob) megoldására is. 
 
-Ha saját DNS-kiszolgálóját kell használnia a Azure-SSIS IR által csatlakoztatott virtuális hálózaton, győződjön meg arról, hogy képes a globális Azure-állomásnevek (például egy `<your storage account>.blob.core.windows.net`nevű Azure Storage-blob) feloldására. 
+Az egyik javasolt módszer a következő: 
 
-A következő lépések ajánlottak: 
-
-- Konfigurálja az egyéni DNS-t, hogy továbbítsa a kérelmeket Azure DNS. Feloldatlan DNS-rekordokat továbbíthat a saját DNS-kiszolgálón található Azure rekurzív resolvers (168.63.129.16) IP-címére. 
-
-- Állítsa be az egyéni DNS-t elsődleges DNS-kiszolgálóként a virtuális hálózathoz. Azure DNS beállítása másodlagos DNS-kiszolgálóként. Regisztrálja az Azure rekurzív feloldók (168.63.129.16) IP-címét másodlagos DNS-kiszolgálóként abban az esetben, ha a saját DNS-kiszolgáló nem érhető el. 
+-   Konfigurálja az egyéni DNS-t, hogy továbbítsa a kérelmeket Azure DNS. Feloldatlan DNS-rekordokat továbbíthat a saját DNS-kiszolgálón található Azure rekurzív resolvers (168.63.129.16) IP-címére. 
 
 További információ: névfeloldás, [amely a saját DNS-kiszolgálóját használja](../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). 
 
-### <a name="nsg"></a>NSG beállítása
+> [!NOTE]
+> Használjon teljes tartománynevet (FQDN) a saját magánhálózati neveként, például `<your_private_server>`helyett `<your_private_server>.contoso.com` használni, mivel Azure-SSIS IR nem fogja automatikusan hozzáfűzni a saját DNS-utótagját.
 
+### <a name="nsg"></a>NSG beállítása
 Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózathoz, engedélyezze a bejövő és kimenő forgalmat a következő portokon keresztül: 
+
+-   **Azure-SSIS IR bejövő követelménye**
 
 | Irány | Átviteli protokoll | Forrás | Forrásporttartomány | Cél | Célporttartomány | Megjegyzések |
 |---|---|---|---|---|---|---|
 | Bejövő | TCP | BatchNodeManagement | * | VirtualNetwork | 29876, 29877 (ha az IR-t egy Resource Manager-beli virtuális hálózathoz csatlakoztatja) <br/><br/>10100, 20100, 30100 (ha az IR-t egy klasszikus virtuális hálózathoz csatlakoztatja)| A Data Factory szolgáltatás ezeket a portokat használja a virtuális hálózatban lévő Azure-SSIS IR csomópontjaival való kommunikációhoz. <br/><br/> Azt határozza meg, hogy alhálózati NSG hoz-e létre, Data Factory mindig a Azure-SSIS IR futtató virtuális gépekhez csatlakoztatott hálózati adapterek (NIC-EK) szintjén konfigurálja a NSG. A hálózati adapter szintű NSG csak a megadott portok Data Factory IP-címeiről érkező bejövő forgalmat engedélyezi. Még ha a portok az alhálózat szintjén is megnyitják az internetes forgalmat, akkor a nem Data Factory IP-címekről érkező adatforgalmat a hálózati adapter szintjén blokkolja a rendszer. |
+| Bejövő | TCP | CorpNetSaw | * | VirtualNetwork | 3389 | Választható Ez a szabály csak akkor szükséges, ha a Microsoft támogatási szolgálata megkéri az ügyfelet, hogy nyissa meg a speciális hibaelhárítást, és a hibaelhárítás után azonnal lezárható legyen. A **CorpNetSaw** szolgáltatás címkéje csak a biztonságos hozzáférési munkaállomásokat engedélyezi a Microsoft vállalati hálózaton a távoli asztal használatához. Ezt a szolgáltatási címkét nem lehet kiválasztani a portálról, és csak Azure PowerShell vagy az Azure CLI-n keresztül érhető el. <br/><br/> A hálózati adapterek szintjének NSG a 3389-es port alapértelmezés szerint meg van nyitva, és lehetővé tesszük, hogy a 3389-es portot az alhálózat szintjén NSG, míg a Azure-SSIS IR az egyes IR-csomópontokon a Windows tűzfal szabályában nem engedélyezte a kimenő port 3389. |
+||||||||
+
+-   **A Azure-SSIS IR kimenő követelménye**
+
+| Irány | Átviteli protokoll | Forrás | Forrásporttartomány | Cél | Célporttartomány | Megjegyzések |
+|---|---|---|---|---|---|---|
 | Kimenő | TCP | VirtualNetwork | * | AzureCloud | 443 | A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs eléréséhez. |
-| Kimenő | TCP | VirtualNetwork | * | Internet | 80 | A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. |
-| Kimenő | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | A virtuális hálózat Azure-SSIS IR csomópontjai ezeket a portokat használják a SQL Database-kiszolgáló által üzemeltetett SSISDB eléréséhez. Ha az SQL Database kiszolgáló-kapcsolódási házirendje az **átirányítás**helyett **proxyként** van beállítva, akkor csak az 1433-es port szükséges. Ez a kimenő biztonsági szabály nem alkalmazható a virtuális hálózaton a felügyelt példány által üzemeltetett SSISDB. |
+| Kimenő | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az **Azure ExpressRoute vagy a UDR használatát** ismertető szakaszt.|
+| Kimenő | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a SQL Database-kiszolgáló által üzemeltetett SSISDB. Ha az SQL Database kiszolgáló-kapcsolódási házirendje az **átirányítás**helyett **proxyként** van beállítva, akkor csak az 1433-es port szükséges. <br/><br/> Ez a kimenő biztonsági szabály nem alkalmazható a felügyelt példány által a magánhálózati végponttal konfigurált virtuális hálózaton vagy Azure Database-kiszolgálón tárolt SSISDB. |
+| Kimenő | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a felügyelt példány által üzemeltetett SSISDB a virtuális hálózaton vagy a privát végponttal konfigurált Azure Database-kiszolgálón. Ha az SQL Database kiszolgáló-kapcsolódási házirendje az **átirányítás**helyett **proxyként** van beállítva, akkor csak az 1433-es port szükséges. |
+| Kimenő | TCP | VirtualNetwork | * | Adattárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
 ||||||||
 
 ### <a name="route"></a>Az Azure ExpressRoute vagy a UDR használata
+Ha meg szeretné vizsgálni a kimenő forgalmat a Azure-SSIS IRről, átirányíthatja a Azure-SSIS IRról a helyszíni tűzfal-készülékre kezdeményezett forgalmat az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) kényszerített bújtatásával (a BGP-útvonal, a 0.0.0.0/0, a virtuális hálózatra) vagy a hálózati virtuális berendezés (NVA) használatával tűzfalként vagy [Azure Firewallként](https://docs.microsoft.com/azure/firewall/) a [UDR](../virtual-network/virtual-networks-udr-overview.md)-on keresztül. 
 
-Amikor egy [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) -áramkört hoz a virtuális hálózati infrastruktúrához a helyszíni hálózat Azure-ra való kiterjesztéséhez, a közös konfiguráció kényszerített bújtatást használ (a BGP-útvonalat (0.0.0.0/0) a virtuális hálózatra). Ez a bújtatás a virtuális hálózati forgalomból a helyszíni hálózati készülékre irányuló kimenő internetes forgalmat ellenőrzésre és naplózásra kényszeríti. 
- 
-Azt is megadhatja, hogy a [UDR](../virtual-network/virtual-networks-udr-overview.md) a kimenő internetes forgalom kényszerítésére a Azure-SSIS IR üzemeltető alhálózatról egy másik alhálózatra, amely egy hálózati virtuális berendezést (NVA) üzemeltet, tűzfalként vagy Azure Firewallként a vizsgálathoz és a naplózáshoz. 
+![Azure-SSIS IR NVA forgatókönyve](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
 
-Mindkét esetben a forgalmi útvonal megtöri a szükséges bejövő kapcsolatokat a függő Azure Data Factory szolgáltatásokból (pontosabban Azure Batch felügyeleti szolgáltatásokból) a virtuális hálózatban lévő Azure-SSIS IR. Ennek elkerüléséhez adjon meg egy vagy több UDR a Azure-SSIS IR tartalmazó alhálózaton. 
+A teljes forgatókönyv működéséhez az alábbi lépéseket kell elvégeznie
+   -   A Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR közötti bejövő forgalom nem irányítható át a tűzfal készülékén keresztül.
+   -   A tűzfal készüléknek engedélyeznie kell a Azure-SSIS IR által igényelt kimenő forgalmat.
 
-A következő ugrási típussal rendelkező 0.0.0.0/0 útvonal az Azure ExpressRoute-forgatókönyvben a Azure-SSIS IR üzemeltető alhálózaton **internetként** is alkalmazható. Vagy módosíthatja a meglévő 0.0.0.0/0 útvonalat a következő ugrási típusról **virtuális készülékként** az **internetre** egy NVA-forgatókönyvben.
+Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR közötti bejövő forgalom nem irányítható át a tűzfal-berendezésbe, ellenkező esetben a forgalom aszimmetrikus útválasztási probléma miatt megszakad. A bejövő forgalomhoz meg kell adni az útvonalakat, így a forgalom ugyanúgy reagálhat, mint a szolgáltatás. Megadhat konkrét UDR, amelyekkel átirányíthatja a forgalmat Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR között a következő ugrási típusként az **Internet**lehetőséggel.
 
-![Útvonal hozzáadása](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
-
-Ha aggódik amiatt, hogy elveszti a kimenő internetes forgalom vizsgálatának lehetőségét az adott alhálózatról, meghatározhatja az adott UDR úgy, hogy a forgalmat csak Azure Batch felügyeleti szolgáltatások és a Azure-SSIS IR között a következő ugrási típusú **internetre**irányítsa.
-
-Ha például a Azure-SSIS IR a `UK South`címen található, akkor a szolgáltatási címke IP-címtartomány [letöltése hivatkozásra kattintva](https://www.microsoft.com/en-us/download/details.aspx?id=56519) vagy a Service [tag felderítési API](https://aka.ms/discoveryapi)-n keresztül fog megjelenni az IP-címtartomány `BatchNodeManagement.UKSouth`. Ezután alkalmazza a kapcsolódó IP-címtartomány következő UDR az **Internet**következő ugrási típusával.
+Ha például a Azure-SSIS IR a `UK South` helyen található, és a kimenő forgalmat a Azure Firewallon keresztül szeretné megtekinteni, először a szolgáltatási címke IP- [címtartomány letöltése hivatkozásra kattintva](https://www.microsoft.com/download/details.aspx?id=56519) vagy a Service [tag Discovery API](https://aka.ms/discoveryapi)-n keresztül kell megvizsgálnia az IP-címtartomány `BatchNodeManagement.UKSouth`. Ezt követően alkalmazza az alábbi UDR a kapcsolódó IP-címtartomány-útvonalakat a következő ugrási típussal az **Internet** mellett a 0.0.0.0/0 útvonalon, a következő ugrási típust pedig **virtuális készülékként**.
 
 ![Azure Batch UDR beállításai](media/join-azure-ssis-integration-runtime-virtual-network/azurebatch-udr-settings.png)
 
 > [!NOTE]
 > Ez a megközelítés További karbantartási költségekkel jár. Rendszeresen vizsgálja meg az IP-címtartományt, és vegyen fel új IP-tartományokat a UDR, hogy elkerülje a Azure-SSIS IR megszakítását. Azt javasoljuk, hogy havonta ellenőrizze az IP-címtartományt, mert ha az új IP-cím megjelenik a szolgáltatás címkéjén, az IP-cím egy másik hónapra lép életbe. 
+
+Ahhoz, hogy a tűzfal eszközön engedélyezve legyen a kimenő forgalom, engedélyeznie kell a kimenő forgalmat a lenti portokon a NSG kimenő szabályokban megkövetelt módon.
+-   Az 443-es port az Azure Cloud Services szolgáltatással.
+
+    Ha Azure Firewall használ, megadhatja a AzureCloud-szolgáltatás címkével ellátott hálózati szabályt, ellenkező esetben pedig engedélyezheti a célhelyet a tűzfal készülékben.
+
+-   A 80-es port a CRL letöltési helyeinek célhelye.
+
+    Az alábbi, a CRL-ként használt teljes tartománynevek (visszavont tanúsítványok listája) a tanúsítványok Azure-SSIS IR felügyeleti célból történő letöltését teszik lehetővé:
+    -  crl.microsoft.com:80
+    -  mscrl.microsoft.com:80
+    -  crl3.digicert.com:80
+    -  crl4.digicert.com:80
+    -  ocsp.digicert.com:80
+    -  cacerts.digicert.com:80
+    
+    Ha eltérő CRL-t használó tanúsítványokat használ, azt javasoljuk, hogy vegye fel őket is. A [tanúsítvány-visszavonási listán szereplő](https://social.technet.microsoft.com/wiki/contents/articles/2303.understanding-access-to-microsoft-certificate-revocation-list.aspx)további információk megismeréséhez olvassa el ezt a témakört.
+
+    Ha letiltja ezt a forgalmat, a Azure-SSIS IR elindítása után a teljesítmény-visszalépést tapasztalhatja, és elveszítheti a tanúsítvány-visszavonási listát, amely a biztonsági szempontból nem ajánlott.
+
+-   A 1433-es, 11000-11999-es port az Azure SQL-kiszolgálóval (csak akkor szükséges, ha a virtuális hálózaton lévő Azure-SSIS IR csomópontjai hozzáférnek a SQL Database-kiszolgáló által üzemeltetett SSISDB).
+
+    Ha Azure Firewall használ, megadhatja az Azure SQL Service-címkével ellátott hálózati szabályt, ellenkező esetben előfordulhat, hogy adott Azure SQL URL-címként engedélyezi a célhelyet a tűzfal készülékben.
+
+-   Az 445-es port az Azure Storage szolgáltatással (csak a Azure Files-ben tárolt SSIS-csomag végrehajtásakor szükséges).
+
+    Ha Azure Firewall használ, megadhatja a Storage szolgáltatás címkével ellátott hálózati szabályt, ellenkező esetben előfordulhat, hogy a célhelyet meghatározott Azure file Storage URL-címként engedélyezi a tűzfal készülékben.
+
+> [!NOTE]
+> Az Azure SQL és a Storage esetében, ha Virtual Network szolgáltatási végpontokat állít be az alhálózaton, akkor a Azure-SSIS IR és az Azure SQL közötti adatforgalom ugyanabban a régióban \ Azure Storage-ban, illetve a párosított régióba lesz irányítva a Microsoft Azure gerinc hálózatba. a tűzfal helyett.
+
+Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszerűen alkalmazhatja az útvonalat, hogy a következő ugrás típusú összes forgalmat kényszerítse az **internethez**:
+
+-   Az Azure ExpressRoute-forgatókönyvekben a következő ugrási típussal rendelkező 0.0.0.0/0 útvonalakat alkalmazhatja a Azure-SSIS IR futtató alhálózaton. 
+-   Egy NVA-forgatókönyvben módosíthatja a meglévő 0.0.0.0/0 útvonalat azon az alhálózaton **, amely** a következő ugrási típusról az **internetre**helyezi a Azure-SSIS IR.
+
+![Útvonal hozzáadása](media/join-azure-ssis-integration-runtime-virtual-network/add-route-for-vnet.png)
+
+> [!NOTE]
+> Útvonal megadása a következő ugrás típusú **internettel** nem jelenti azt, hogy az összes forgalom az interneten keresztül fog haladni. Ha a cél címe az Azure egyik szolgáltatásához tartozik, az Azure a forgalmat közvetlenül az Azure gerinc hálózatán keresztül irányítja át, és nem irányítja át az internetre.
 
 ### <a name="resource-group"></a>Az erőforráscsoport beállítása
 
@@ -291,21 +338,21 @@ A portálon konfigurálhatja a klasszikus virtuális hálózatot, mielőtt csatl
 
    1. A bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza ki a **szerepkör-hozzárendelések** lapot. 
 
-   !["Hozzáférés-vezérlés" és "Hozzáadás" gomb](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
+       !["Hozzáférés-vezérlés" és "Hozzáadás" gomb](media/join-azure-ssis-integration-runtime-virtual-network/access-control-add.png)
 
    1. Válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
 
    1. A **szerepkör-hozzárendelés hozzáadása** lapon a **szerepkör**beállításnál válassza a **klasszikus virtuális gépek közreműködője**lehetőséget. A **Select (kiválasztás** ) mezőben illessze be a **ddbf3205-c6bd-46ae-8127-60eb93363864**, majd válassza a **Microsoft Azure batch** elemet a keresési eredmények listájából. 
 
-   ![Keresési eredmények a "szerepkör-hozzárendelés hozzáadása" oldalon](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
+       ![Keresési eredmények a "szerepkör-hozzárendelés hozzáadása" oldalon](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-to-vm-contributor.png)
 
    1. Válassza a **Mentés** lehetőséget a beállítások mentéséhez és az oldal bezárásához. 
 
-   ![Hozzáférési beállítások mentése](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
+       ![Hozzáférési beállítások mentése](media/join-azure-ssis-integration-runtime-virtual-network/save-access-settings.png)
 
    1. Ellenőrizze, hogy megjelenik-e **Microsoft Azure batch** a közreműködők listájában. 
 
-   ![Azure Batch hozzáférésének megerősítése](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
+       ![Azure Batch hozzáférésének megerősítése](media/join-azure-ssis-integration-runtime-virtual-network/azure-batch-in-list.png)
 
 1. Ellenőrizze, hogy a Azure Batch szolgáltató regisztrálva van-e a virtuális hálózattal rendelkező Azure-előfizetésben. Vagy regisztrálja a Azure Batch szolgáltatót. Ha már rendelkezik Azure Batch-fiókkal az előfizetésben, az előfizetés regisztrálva lesz a Azure Batchhoz. (Ha a Azure-SSIS IR a Data Factory portálon hozza létre, a Azure Batch szolgáltató automatikusan regisztrálva lesz.) 
 

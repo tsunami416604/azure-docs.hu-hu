@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 6/6/2019
-ms.author: borisb
-ms.openlocfilehash: 34a2742c752259fec5859af1681da2429276ea41
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.date: 1/15/2020
+ms.author: guybo
+ms.openlocfilehash: 505c8619ba7f456458f681ded68604a78f938bf6
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75941864"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76122168"
 ---
 # <a name="red-hat-update-infrastructure-for-on-demand-red-hat-enterprise-linux-vms-in-azure"></a>Red Hat frissítési infrastruktúra az igény szerinti Red Hat Enterprise Linux virtuális gépek számára az Azure-ban
  A [Red Hat Update Infrastructure](https://access.redhat.com/products/red-hat-update-infrastructure) (RHUI) lehetővé teszi, hogy a felhőalapú szolgáltatók, például az Azure, a Red Hat-ban üzemeltetett tárház tartalmait tükrözze, egyéni tárházat hozzon létre az Azure-specifikus tartalommal, és elérhetővé tegye a végfelhasználói virtuális gépek számára.
@@ -199,19 +199,6 @@ Ha problémákat tapasztal az Azure RHUI az Azure RHEL TB virtuális gépről va
 2016 szeptemberében üzembe helyezettünk egy frissített Azure-RHUI. 2017 áprilisában leállítottuk a régi Azure-RHUI. Ha a RHEL TB-lemezképeit (vagy pillanatképeit) a szeptember 2016-es vagy újabb verziójával használta, automatikusan csatlakozik az új Azure-RHUI. Ha azonban régebbi pillanatképeket használ a virtuális gépeken, manuálisan kell frissítenie a konfigurációját, hogy hozzáférjen az Azure-RHUI a következő szakaszban leírtak szerint.
 
 Az új Azure RHUI-kiszolgálók üzembe helyezése az [azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/). Traffic Manager egyetlen végpontot (rhui-1.microsoft.com) is használhat bármely virtuális gép, a régiótól függetlenül.
-
-### <a name="manual-update-procedure-to-use-the-azure-rhui-servers"></a>Az Azure RHUI-kiszolgálók használatának manuális frissítési eljárása
-Ez az eljárás csak referenciául szolgál. A RHEL TB-lemezképek már rendelkeznek a megfelelő konfigurációval az Azure RHUI való kapcsolódáshoz. Ha manuálisan szeretné frissíteni a konfigurációt az Azure RHUI-kiszolgálók használatára, hajtsa végre a következő lépéseket:
-
-- RHEL 6 esetén:
-  ```bash
-  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel6.config' install 'rhui-azure-rhel6'
-  ```
-
-- A RHEL 7 esetében:
-  ```bash
-  yum --config='https://rhelimage.blob.core.windows.net/repositories/rhui-microsoft-azure-rhel7.config' install 'rhui-azure-rhel7'
-  ```
 
 ## <a name="next-steps"></a>Következő lépések
 * Red Hat Enterprise Linux virtuális gép Azure Marketplace-TB rendszerképből való létrehozásához, valamint az Azure által üzemeltetett RHUI használatához látogasson el az [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/redhat/)-re.

@@ -7,12 +7,12 @@ ms.topic: reference
 ms.date: 10/22/2019
 author: rboucher
 ms.author: robb
-ms.openlocfilehash: e744cdde298054de3631adb96b56bbc808f36a38
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 044c453152d44420d5e78855751a2680698e89f3
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750937"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120145"
 ---
 # <a name="supported-services-schemas-and-categories-for-azure-resource-logs"></a>Támogatott szolgáltatások, sémák és kategóriák az Azure-erőforrások naplóihoz
 
@@ -25,7 +25,7 @@ Az erőforrástípus kombinációja (a `resourceId` tulajdonságban érhető el)
 
 ## <a name="top-level-resource-logs-schema"></a>Legfelső szintű erőforrás-naplók sémája
 
-| Név | Kötelező/nem kötelező | Leírás |
+| Name (Név) | Kötelező/nem kötelező | Leírás |
 |---|---|---|
 | time | Szükséges | Az esemény időbélyegzője (UTC). |
 | resourceId | Szükséges | Az eseményt kibocsátó erőforrás erőforrás-azonosítója. A bérlői szolgáltatások esetében ez a/tenants/Tenant-ID/Providers/Provider-Name. formátumú. |
@@ -86,6 +86,9 @@ Az erőforrás-diagnosztikai naplók sémája az erőforrás és a napló kateg�
 | Virtuális hálózati átjárók | A séma nem érhető el. |
 
 ## <a name="supported-log-categories-per-resource-type"></a>Támogatott naplózási kategóriák/erőforrás típusok
+
+Bizonyos kategóriák csak bizonyos típusú erőforrások esetén támogatottak. Ez az összes olyan lista, amely valamilyen formában elérhető.  Például a Microsoft. SQL/kiszolgálók/adatbázisok kategóriái nem érhetők el minden típusú adatbázishoz. További információ: [SQL Database diagnosztikai naplózással kapcsolatos információk](../../sql-database/sql-database-metrics-diag-logging.md). 
+
 |Erőforrás típusa|Kategória|Kategória megjelenítendő neve|
 |---|---|---|
 |Microsoft. HRE/domainServices|SystemSecurity|SystemSecurity|

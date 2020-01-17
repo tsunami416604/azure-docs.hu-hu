@@ -4,14 +4,14 @@ description: hivatkozások a avere-vFXT kapcsolatos kód-bemutató oktatóanyago
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 10/31/2018
+ms.date: 12/19/2019
 ms.author: rohogue
-ms.openlocfilehash: 406262be5f70ed891f657d184acff98331b6b7a3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b01bcb743e4ffc110f0182e50630baea288f16d2
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415399"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153700"
 ---
 # <a name="avere-vfxt-demo-projects"></a>Avere vFXT bemutató projektek
 
@@ -19,13 +19,13 @@ A [githubon](https://github.com/Azure/Avere)a minta oktatóanyagokat is elérhet
 
 ## <a name="video-rendering"></a>Videó megjelenítése
 
-* [Renderelés a Azure batch és a avere vFXT használatával](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – egy 60 perces bemutató, amely bemutatja, hogyan használhatók a Autodesk Maya a Azure batch és egy avere vFXT-fürttel animált mozgókép létrehozásához
+* [Renderelés Azure batch és avere vFXT használatával](https://github.com/Azure/Avere/blob/master/docs/maya_azure_batch_avere_vfxt_demo.md) – egy 60 perces projekt, amely bemutatja, hogyan használhatók a Autodesk Maya a Azure batch és egy avere vFXT-fürttel animált mozgókép létrehozásához
 
-* [Miért érdemes a avere-vFXT használni a rendereléshez?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Egy bemutató, amely összehasonlítja a avere vFXT-fürttel és anélkül való renderelési időt a NAS-ból
+* [Miért érdemes a avere-vFXT használni a rendereléshez?](https://github.com/Azure/Avere/blob/master/docs/why_avere_for_rendering.md) – Olyan bemutató, amely összehasonlítja a hálózati tárolók megjelenítési idejét a avere vFXT-fürttel és anélkül
 
 ## <a name="high-performance-computing"></a>Nagy teljesítményű számítástechnika
 
-* [Ajánlott eljárások az Azure-beli virtuális gépek (VM) rendszerindítási idejének fejlesztéséhez](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – reprodukálható teszt a avere-VFXT az Azure-hoz a rendszerindítási idők javítása érdekében, amikor több ezer számítási ügyfelet tesznek fel gyorsan
+* [Ajánlott eljárások az Azure-beli virtuális gépek (VM) rendszerindítási idejének fejlesztéséhez](https://github.com/Azure/Avere/blob/master/docs/azure_vm_provision_best_practices.md) – egy reprodukálható teszt, amely az Azure-hoz készült avere-vFXT használja a rendszerindítási idők javítására, amikor gyorsan több ezer számítási ügyfél forog
 
 ## <a name="vfxt-performance"></a>vFXT teljesítmény
 

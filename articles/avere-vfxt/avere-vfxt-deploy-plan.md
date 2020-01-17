@@ -4,20 +4,25 @@ description: Az Azure-beli avere-vFXT üzembe helyezése előtti teendők megter
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d4fc2a6b7def4b7c55faa37fbed756fbb830ff73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5ffa28a0f6080b94bd47519df578fd15309dbab5
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75415441"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76153639"
 ---
 # <a name="plan-your-avere-vfxt-system"></a>Az Avere vFXT rendszer megtervezése
 
 Ez a cikk azt ismerteti, hogyan tervezhet olyan új avere-vFXT az Azure-fürthöz, amelyet az igényeinek megfelelően kell elhelyezni és méretezni.
 
-Mielőtt elkezdené az Azure Marketplace-t vagy egy virtuális gépet létrehozni, gondolja át, hogyan fog működni a fürt az Azure más elemeivel. Tervezze meg, hogy a fürt erőforrásai hol lesznek a magánhálózaton és az alhálózatokban, és döntse el, hol található a háttérbeli tárterület. Győződjön meg arról, hogy a létrehozott fürtcsomópontok elég erősek a munkafolyamat támogatásához.
+Az Azure Marketplace-en vagy a virtuális gépek létrehozása előtt vegye figyelembe a következő adatokat:
+
+* Hogyan fog működni a fürt más Azure-erőforrásokkal?
+* Hol kell elhelyezni a fürt elemeit a magánhálózatok és az alhálózatok között?
+* Milyen típusú háttérbeli tárterületet fog használni, és hogyan fogja elérni a fürtöt?
+* Milyen nagy teljesítményű csomópontok szükségesek a munkafolyamatok támogatásához?
 
 Látogasson el lapunkra további információért.
 
@@ -41,12 +46,14 @@ Vegye figyelembe, hogy az Azure-beli üzembe helyezés avere-vFXT elemei lesznek
 
 ![Egy alhálózaton belüli tartományvezérlőt és fürtözött virtuális gépeket bemutató diagram. Az alhálózati határ körül egy vnet határ. A vnet belül a Storage szolgáltatás végpontját jelképező hatszög; egy szaggatott nyíllal csatlakozik a vnet kívüli blob-tárolóhoz.](media/avere-vfxt-components-option.png)
 
-Kövesse az alábbi irányelveket a avere vFXT-rendszerek hálózati infrastruktúrájának megtervezése során:
+Kövesse az alábbi irányelveket a avere vFXT-fürt hálózati infrastruktúrájának megtervezéséhez:
 
-* Hozzon létre egy új előfizetést minden avere-vFXT az Azure üzembe helyezéséhez, és kezelje az előfizetés összes összetevőjét. Az előnyök:
+* Hozzon létre egy új előfizetést minden avere-vFXT az Azure-beli üzembe helyezéshez. Az előfizetés összes összetevőjének kezelése.
+
+  Az új előfizetések használatának előnyei a következők:
   * Egyszerűbb költségek követése – az erőforrások, az infrastruktúra és a számítási ciklusok összes költségét egy előfizetésben tekintheti meg és naplózhatja.
   * Egyszerűbb tisztítás – a projekt befejezése után eltávolíthatja a teljes előfizetést.
-  * Az erőforrás-kvóták kényelmes particionálásával – a avere vFXT-ügyfelek és-fürt egyetlen előfizetésben való elkülönítésével – a lehetséges erőforrás-szabályozástól eltérő kritikus számítási feladatokat is megadhat. Ez elkerüli az ütközést, ha nagy mennyiségű ügyfelet hoz létre egy nagy teljesítményű számítástechnikai munkafolyamathoz.
+  * Az erőforrás-kvóták kényelmes particionálása – a avere vFXT-ügyfelek és-fürtök elkülönítése egyetlen előfizetésben a lehetséges erőforrás-szabályozásból származó egyéb kritikus számítási feladatok elleni védelem érdekében. Ez az elkülönítés megakadályozza az ütközést, ha nagy mennyiségű ügyfelet hoz létre egy nagy teljesítményű számítástechnikai munkafolyamathoz.
 
 * Keresse meg az ügyfél számítási rendszereit a vFXT-fürthöz közeledve. A háttérbeli tárterület több távoli is lehet.  
 
@@ -54,9 +61,9 @@ Kövesse az alábbi irányelveket a avere vFXT-rendszerek hálózati infrastrukt
 
   * Ugyanabban a virtuális hálózatban
   * Ugyanabban az erőforráscsoporthoz
-  * Ugyanabban a Storage-fiókban
+  * Ugyanazt a Storage-fiókot használja
   
-  Az automatizált fürt létrehozási sablonja ezt a legtöbb esetben kezeli.
+  A fürt létrehozási sablonja a legtöbb esetben kezeli ezt a konfigurációt.
 
 * A fürtnek a saját alhálózatán kell lennie, hogy elkerülje az IP-címek ütközését az ügyfelekkel vagy más számítási erőforrásokkal.
 
@@ -69,7 +76,7 @@ Kövesse az alábbi irányelveket a avere vFXT-rendszerek hálózati infrastrukt
   | Erőforráscsoport | Igen, ha üres | Üresnek kell lennie|
   | Tárfiók | **Igen** , ha a fürt létrehozása után csatlakoztat egy meglévő BLOB-tárolót <br/>  **Nem** , ha új BLOB-tárolót hoz létre a fürt létrehozása során | A meglévő blob-tárolónak üresnek kell lennie <br/> &nbsp; |
   | Virtuális hálózat | Igen | Új Azure Blob-tároló létrehozásakor tartalmaznia kell egy tárolási szolgáltatási végpontot |
-  | Alhálózat | Igen |   |
+  | Alhálózat | Igen | Nem szerepelhet más erőforrás |
 
 ## <a name="ip-address-requirements"></a>IP-címekre vonatkozó követelmények
 
@@ -79,7 +86,7 @@ A avere vFXT-fürt a következő IP-címeket használja:
 
 * Egy fürt felügyeleti IP-címe. Ez a címe szükség szerint áthelyezhető a csomópontról a fürt csomópontjaira, hogy mindig elérhető legyen. Ezzel a címtől csatlakozhat a avere Vezérlőpult-konfigurációs eszközhöz.
 * Minden fürtcsomóponton:
-  * Legalább egy ügyfél felé irányuló IP-cím. (Az összes ügyfél felé irányuló címet a fürt *VServer*kezeli, és szükség szerint áthelyezheti őket a csomópontok között.)
+  * Legalább egy ügyfél felé irányuló IP-cím. (Az összes ügyfél felé irányuló címet a fürt *VServer*kezeli, és szükség szerint áthelyezheti az IP-címeket a csomópontok között.)
   * Egy IP-cím a fürt kommunikációjához
   * Egy példány IP-címe (a virtuális géphez rendelve)
 
@@ -102,9 +109,7 @@ Minden vFXT-csomópont azonos lesz. Ez azt eredményezi, hogy ha három csomópo
 
 A lemezes gyorsítótár/csomópont konfigurálható, és 1000 GB és 8000 GB között lehet a düh. a Standard_E32s_v3-csomópontok esetében 4 TB/csomópont a javasolt gyorsítótár mérete.
 
-A virtuális gépekkel kapcsolatos további információkért olvassa el a Microsoft Azure dokumentációját:
-
-* [Memória-optimalizált virtuális gépek méretei](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory)
+További információ ezekről a virtuális gépekről: a memória- [optimalizált virtuálisgép-méretek](https://docs.microsoft.com/azure/virtual-machines/windows/sizes-memory) Microsoft Azure dokumentációban olvashatók.
 
 ## <a name="account-quota"></a>Fiók kvótája
 
@@ -112,11 +117,11 @@ Győződjön meg arról, hogy az előfizetése rendelkezik a avere vFXT-fürt fu
 
 ## <a name="back-end-data-storage"></a>Háttérbeli adattárolás
 
-A háttérbeli tárolási rendszerek a fürt gyorsítótárában is megadják a fájlokat, és a gyorsítótárból is megkapják a módosult adatmennyiséget. Döntse el, hogy a munkakészletet egy új blob-tárolóban, vagy egy meglévő Felhőbeli vagy hardveres tárolási rendszeren fogja-e hosszú távon tárolni. Ezeket a háttérbeli tárolási rendszereket *alapszintű Filer*-nek nevezzük.
+A háttérbeli tárolási rendszerek a fürt gyorsítótárában is megadják a fájlokat, és a gyorsítótárból is megkapják a módosult adatmennyiséget. Döntse el, hogy a munkakészletet egy új blob-tárolóban, vagy egy meglévő tárolási rendszeren (felhőben vagy hardverben) tárolja-e a hosszú ideig. Ezeket a háttérbeli tárolási rendszereket *alapszintű Filer*-nek nevezzük.
 
 ### <a name="hardware-core-filers"></a>Hardveres alapszintű filers
 
-A fürt létrehozása után vegyen fel hardveres tárolási rendszereket a vFXT-fürtbe. Bármilyen meglévő helyszíni hardvert használhat, beleértve a helyszíni rendszereket is, feltéve, hogy a tárolási rendszer elérhető a fürt alhálózatáról.
+A fürt létrehozása után vegyen fel hardveres tárolási rendszereket a vFXT-fürtbe. Számos népszerű hardvereszközt használhat, beleértve a helyszíni rendszereket is, feltéve, hogy a tárolási rendszer elérhető a fürt alhálózatáról.
 
 A [tároló konfigurálása](avere-vfxt-add-storage.md) című cikk részletesen ismerteti, hogyan adhat hozzá meglévő tárolási rendszereket a avere vFXT-fürthöz.
 
@@ -142,7 +147,7 @@ A hozzáférési lehetőségek a következők:
   > [!TIP]
   > Ha nyilvános IP-címet állít be a fürt vezérlőjén, használhatja azt a Jump hostként. További információért olvassa el a [fürtszolgáltatást Jump hostként](#cluster-controller-as-jump-host) .
 
-* Virtuális magánhálózat (VPN) – pont – hely vagy helyek közötti VPN konfigurálása a magánhálózaton.
+* Virtuális magánhálózat (VPN) – pont – hely vagy helyek közötti VPN konfigurálása az Azure-ban és a vállalati hálózatokban lévő magánhálózat között.
 
 * Azure ExpressRoute – privát kapcsolat konfigurálása ExpressRoute-partneren keresztül.
 
@@ -156,20 +161,20 @@ Egy nyilvános IP-címmel rendelkező vezérlő biztonságának növelése érde
 
 A fürt létrehozásakor megadhatja, hogy létre kell-e hozni egy nyilvános IP-címet a fürt vezérlőjén.
 
-* Ha **új virtuális hálózatot** vagy **új alhálózatot**hoz létre, a rendszer egy **nyilvános IP-címet**rendel hozzá a fürthöz.
+* Ha **új virtuális hálózatot** vagy **új alhálózatot**hoz létre, a rendszer egy **nyilvános** IP-címet rendel hozzá a fürthöz.
 * Ha egy meglévő virtuális hálózatot és alhálózatot választ ki, akkor a fürt csak **privát** IP-címmel rendelkezik.
 
 ## <a name="vm-access-roles"></a>VIRTUÁLIS gépek hozzáférési szerepkörei
 
 Az Azure [szerepköralapú hozzáférés-vezérlés](../role-based-access-control/index.yml) (RBAC) használatával engedélyezi a fürt virtuális gépei számára bizonyos feladatok elvégzését. A fürthöz tartozó virtuális gépek létrehozásához és konfigurálásához például engedélyeznie kell a fürtöt. A fürtcsomópontok számára lehetővé kell tenni az IP-címek hozzárendelését vagy más fürtcsomópontok számára való hozzárendelését.
 
-Az Azure Virtual Machines avere-vFXT két beépített Azure-szerepkört használunk:
+A avere vFXT virtuális gépek két beépített Azure-szerepkört használnak:
 
 * A fürt a beépített szerepkör [avere közreműködőjét](../role-based-access-control/built-in-roles.md#avere-contributor)használja.
-* A fürtcsomópontok a beépített szerepkörű [avere operátort](../role-based-access-control/built-in-roles.md#avere-operator) használják
+* A fürtcsomópontok a beépített szerepkör [avere operátort](../role-based-access-control/built-in-roles.md#avere-operator)használják.
 
 Ha testre kell szabnia a avere vFXT-összetevők hozzáférési szerepköreit, meg kell adnia a saját szerepkörét, majd hozzá kell rendelnie a virtuális gépekhez a létrehozásuk időpontjában. A központi telepítési sablon nem használható az Azure piactéren. A Microsoft ügyfélszolgálatának és támogatásának megismeréséhez nyisson meg egy jegyet a Azure Portal a [Segítség kérése a rendszerhez](avere-vfxt-open-ticket.md)című témakörben leírtak szerint.
 
 ## <a name="next-step-understand-the-deployment-process"></a>Következő lépés: az üzembe helyezési folyamat ismertetése
 
-Az [üzembe helyezés áttekintése áttekintést](avere-vfxt-deploy-overview.md) nyújt az Azure-rendszer avere-vFXT létrehozásához szükséges lépésekről, és készen áll az információk kiszolgálására.
+Az [üzembe helyezés áttekintése](avere-vfxt-deploy-overview.md) az Azure-rendszer avere-vFXT létrehozásához és az adatkiszolgáláshoz való felkészüléshez szükséges lépések áttekintését nyújtja.

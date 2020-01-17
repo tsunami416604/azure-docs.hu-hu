@@ -1,6 +1,6 @@
 ---
-title: A fiókom portál áttekintése – Azure Active Directory | Microsoft Docs
-description: Magas szintű áttekintés és hivatkozások a fiókom-portálról és annak szolgáltatásairól.
+title: Mi az a Saját fiók portál? – Azure AD
+description: A fiókom portál és a hozzá tartozó funkciók beszerzése, beleértve a biztonsági adatok, az eszközök, a jelszó, a szervezetek, az adatvédelem és a saját bejelentkezések beállítását és kezelését.
 services: active-directory
 author: eross-msft
 manager: daveba
@@ -9,28 +9,21 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: overview
-ms.date: 10/28/2019
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d831add42f60df2688b5c846d556f5dea8cef556
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 58e73061406bc1be3f224e5726bdfca5a7553be1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73586655"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156132"
 ---
-# <a name="my-account-portal-overview"></a>A fiókom portál áttekintése
+# <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
 
 A **saját fiók** portálon a biztonsági adatok beállításával és kezelésével, a csatlakoztatott szervezetek és eszközök kezelésével, valamint a szervezet által használt adatok megtekintésével kezelheti a munkahelyi vagy iskolai fiókját.
 
->[!Important]
->Ezek az anyagok felhasználók számára készültek. Amennyiben Ön rendszergazda, az Azure Active Directory- (Azure AD-) környezet beállításával és kezelésével kapcsolatosan további információt az [Azure Active Directory dokumentációjában](https://docs.microsoft.com/azure/active-directory) talál.
-
-![Saját fiók portál, áttekintő lap](media/my-account-portal/my-account-portal-overview.png)
-
-## <a name="go-to-the-my-account-portal"></a>Ugrás a saját fiók portálra
-
-**A fiókom-portálon** (https://myprofile.microsoft.com)a következő böngészők bármelyikének aktuális verziójától szerezhető be:
+**A fiókom-portálon** (https://myprofile.microsoft.com) a következő böngészők bármelyikének aktuális verziójától szerezhető be:
 
 - Chrome
 - Microsoft Edge
@@ -38,20 +31,24 @@ A **saját fiók** portálon a biztonsági adatok beállításával és kezelés
 - Firefox
 - Internet Explorer 11
 
-## <a name="my-account-portal-articles"></a>Fiókom-portál cikkei
+![Saját fiók portál, áttekintő lap](media/my-account-portal/my-account-portal-overview.png)
 
-Részletes információkat és útmutatást a **saját fiók** portálján elérhető információkról a következő cikkekben talál:
+>[!Important]
+>Ez a cikk azoknak a felhasználóknak készült, akik a fiókom portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](https://docs.microsoft.com/azure/active-directory/).
 
-|Cikk |Leírás |
-|------|------------|
-| [Biztonsági adatok hozzáadása](user-help-security-info-overview.md) | Számos cikk útmutatást tartalmaz a Microsoft Authenticator alkalmazás, szöveges üzenetküldés és telefonhívások beállításához az ellenőrzési módszerként. Emellett az e-mail-cím vagy előre definiált biztonsági kérdések hozzáadására vonatkozó cikkeket is tartalmaz, így szükség esetén visszaállíthatja a saját elfelejtett jelszavát.|
-| [Csatlakoztatott eszközök megtekintése és letiltása](my-account-portal-devices-page.md) | Útmutató a munkahelyi vagy iskolai fiókhoz csatlakoztatott eszközök megtekintésével és letiltásával kapcsolatban.|
-| [Munkahelyi vagy iskolai fiók jelszavának módosítása](my-account-change-password-page.md) | Útmutató a munkahelyi vagy iskolai fiók jelszavának módosításához. |
-| [A csatlakoztatott szervezetek megtekintése vagy elhagyása](my-account-portal-organizations-page.md) | Útmutató a munkahelyi vagy iskolai fiókhoz kapcsolódó szervezetek megtekintéséhez és elhagyásához.|
-| [Adatvédelemmel kapcsolatos információk megtekintése](my-account-portal-privacy-page.md) | Útmutatás arról, hogyan tekintheti meg, hogy mely online szolgáltatások kapcsolódnak a munkahelyi vagy iskolai fiókjához, valamint a szervezet használati feltételeinek utasításait.|
-| [A legutóbbi bejelentkezési tevékenység megtekintése](my-account-portal-sign-ins-page.md) | Útmutatás a munkahelyi vagy iskolai fiók bejelentkezési tevékenységének megtekintéséhez. |
+## <a name="next-steps"></a>Következő lépések
 
-## <a name="related-office-content"></a>Kapcsolódó Office-tartalom
+- Válassza ki a [biztonsági adatok](user-help-security-info-overview.md) megtekintéséhez vagy kezeléséhez
+
+- Csatlakoztatott [eszközök](my-account-portal-devices-page.md) megtekintése és kezelése
+
+- A [szervezetek](my-account-portal-organizations-page.md) megtekintése és kezelése
+
+- [Bejelentkezési tevékenység](my-account-portal-sign-ins-page.md) megtekintése
+
+- Annak megtekintése, hogy a szervezet hogyan [használja az adatvédelmet érintő adatokat](my-account-portal-privacy-page.md)
+
+## <a name="related-microsoft-office-content"></a>Kapcsolódó Microsoft Office tartalom
 
 - [Jelentkezzen be az Office-termék kezeléséhez](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 

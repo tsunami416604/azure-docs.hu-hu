@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: cshoe
-ms.openlocfilehash: 051b8780a102a8a1ec4d3979cc53b686e2823dc8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 952a94797e01a3931fdd151461250af0c2590c11
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928592"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76120541"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Azure Functions-kötések Mobile Apps 
 
@@ -136,9 +136,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `MobileTable` attribútu
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type**|| "MobileTable" értékre kell állítani|
-| **direction**||"In" értékre kell állítani|
-| **név**|| A függvény aláírásában szereplő bemeneti paraméter neve.|
+| **type**| – | "MobileTable" értékre kell állítani|
+| **direction**| – |"In" értékre kell állítani|
+| **név**| – | A függvény aláírásában szereplő bemeneti paraméter neve.|
 |**Táblanév** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
 | **id**| **Azonosító** | A beolvasandó rekord azonosítója. Lehet statikus vagy a függvényt meghívó trigger alapján. Ha például üzenetsor-triggert használ a függvényhez, akkor `"id": "{queueTrigger}"` a lekérdezni kívánt rekordazonosítóként használja az üzenetsor-azonosító karakterlánc értékét.|
 |**kapcsolat**|**Kapcsolat**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a bemeneti kötés `connection` tulajdonságában. Az URL-cím úgy néz ki, mint `http://<appname>.azurewebsites.net`.
@@ -294,9 +294,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `MobileTable` attribútu
 
 |function. JSON-tulajdonság | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **type**|| "MobileTable" értékre kell állítani|
-| **direction**||"Out" értékre kell állítani|
-| **név**|| A függvény aláírásában szereplő kimeneti paraméter neve.|
+| **type**| – | "MobileTable" értékre kell állítani|
+| **direction**| – |"Out" értékre kell állítani|
+| **név**| – | A függvény aláírásában szereplő kimeneti paraméter neve.|
 |**Táblanév** |**Táblanév**|A Mobile alkalmazás adattáblájának neve|
 |**kapcsolat**|**MobileAppUriSetting**|A Mobile App URL-címét tartalmazó Alkalmazásbeállítás neve. A függvény ezt az URL-címet használja a szükséges REST-műveletek létrehozásához a mobil alkalmazáson. Hozzon létre egy alkalmazás-beállítást a Function alkalmazásban, amely tartalmazza a Mobile App URL-címét, majd adja meg az Alkalmazásbeállítás nevét a bemeneti kötés `connection` tulajdonságában. Az URL-cím úgy néz ki, mint `http://<appname>.azurewebsites.net`.
 |**apiKey**|**ApiKeySetting**|A Mobile App API-kulcsát tartalmazó Alkalmazásbeállítás neve. Adja meg az API-kulcsot, ha [implementál egy API-kulcsot a Node. js-alapú alkalmazási háttérrendszer](https://github.com/Azure/azure-mobile-apps-node/tree/master/samples/api-key)-felületén, vagy [egy API-kulcsot implementál a .net Mobile apps-háttérbe](https://github.com/Azure/azure-mobile-apps-net-server/wiki/Implementing-Application-Key). A kulcs megadásához hozzon létre egy alkalmazást a Function alkalmazásban, amely tartalmazza az API-kulcsot, majd adja hozzá az `apiKey` tulajdonságot a bemeneti kötésben az Alkalmazásbeállítás nevével. |

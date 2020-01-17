@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 12/13/2018
 ms.author: mimckitt
-ms.openlocfilehash: 8b69da027878edddb3b553c097865a86985357f5
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5b4ddc177359a08aad404c78b5cc0793f8d80e93
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970111"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156522"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>A Linux diagnosztikai bővítmény használata a metrikák és naplók figyelésére
 
@@ -91,6 +91,85 @@ az vm extension set --publisher Microsoft.Azure.Diagnostics --name LinuxDiagnost
 
 A minta konfigurációjának és tartalmának URL-címe változhat. Töltse le a portál beállítások JSON-fájljának másolatát, és szabja testre az igényeinek megfelelően. Az Ön által létrehozott összes sablonnak vagy automatizálásnak a saját példányát kell használnia, és nem kell minden alkalommal letöltenie az adott URL-címet.
 
+#### <a name="powershell-sample"></a>PowerShell-minta
+
+```Powershell
+// Set your Azure VM diagnostics variables correctly below - don't forget to replace the VMResourceID
+
+$SASKey = '<SASKeyForDiagStorageAccount>'
+
+$ladCfg = "{
+'diagnosticMonitorConfiguration': {
+'performanceCounters': {
+'sinks': 'WADMetricEventHub,WADMetricJsonBlob',
+'performanceCounterConfiguration': [
+{
+'unit': 'Percent',
+'type': 'builtin',
+'counter': 'PercentProcessorTime',
+'counterSpecifier': '/builtin/Processor/PercentProcessorTime',
+'annotation': [
+{
+'locale': 'en-us',
+'displayName': 'Aggregate CPU %utilization'
+}
+],
+'condition': 'IsAggregate=TRUE',
+'class': 'Processor'
+},
+{
+'unit': 'Bytes',
+'type': 'builtin',
+'counter': 'UsedSpace',
+'counterSpecifier': '/builtin/FileSystem/UsedSpace',
+'annotation': [
+{
+'locale': 'en-us',
+'displayName': 'Used disk space on /'
+}
+],
+'condition': 'Name='/'',
+'class': 'Filesystem'
+}
+]
+},
+'metrics': {
+'metricAggregation': [
+{
+'scheduledTransferPeriod': 'PT1H'
+},
+{
+'scheduledTransferPeriod': 'PT1M'
+}
+],
+'resourceId': '<VMResourceID>'
+},
+'eventVolume': 'Large',
+'syslogEvents': {
+'sinks': 'SyslogJsonBlob,LoggingEventHub',
+'syslogEventConfiguration': {
+'LOG_USER': 'LOG_INFO'
+}
+}
+}
+}"
+$ladCfg = [System.Convert]::ToBase64String([System.Text.Encoding]::UTF8.GetBytes($ladCfg))
+$perfCfg = "[
+{
+'query': 'SELECT PercentProcessorTime, PercentIdleTime FROM SCX_ProcessorStatisticalInformation WHERE Name='_TOTAL'',
+'table': 'LinuxCpu',
+'frequency': 60,
+'sinks': 'LinuxCpuJsonBlob'
+}
+]"
+
+// Get the VM Resource
+Get-AzureRmVM -ResourceGroupName <RGName> -VMName <VMName>
+
+// Finally tell Azure to install and enable the extension
+Set-AzureRmVMExtension -ExtensionType LinuxDiagnostic -Publisher Microsoft.Azure.Diagnostics -ResourceGroupName <RGName> -VMName <VMName> -Location <Location> -Name LinuxDiagnostic -Settings @{'StorageAccount'='<DiagStorageAccount>'; 'sampleRateInSeconds' = '15' ; 'ladCfg'=$ladCfg; 'perfCfg' = $perfCfg} -ProtectedSettings @{'storageAccountName' = '<DiagStorageAccount>'; 'storageAccountSasToken' = $SASKey } -TypeHandlerVersion 3.0
+```
+
 ### <a name="updating-the-extension-settings"></a>A bővítmény beállításainak frissítése
 
 Miután módosította a védett vagy a nyilvános beállításokat, telepítse őket a virtuális gépre ugyanazon parancs futtatásával. Ha bármilyen változás történt a beállításokban, a rendszer elküldi a frissített beállításokat a bővítménynek. A LAD újra betölti a konfigurációt, és újraindul.
@@ -127,7 +206,7 @@ A konfigurációs adatok ezen készlete olyan bizalmas információkat tartalmaz
 }
 ```
 
-Név | Value (Díj)
+Name (Név) | Value (Díj)
 ---- | -----
 storageAccountName | Annak a Storage-fióknak a neve, amelybe az adatkiterjesztést írta.
 storageAccountEndPoint | választható A felhőt azonosító végpont, amelyben a Storage-fiók létezik. Ha ez a beállítás nem érhető el, a LAD alapértelmezett értéke az Azure nyilvános felhő, `https://core.windows.net`. Ha Azure Germany-, Azure Government-vagy Azure China-beli Storage-fiókot szeretne használni, ennek megfelelően állítsa be ezt az értéket.

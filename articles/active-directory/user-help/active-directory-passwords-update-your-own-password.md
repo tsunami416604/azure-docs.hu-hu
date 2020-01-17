@@ -9,23 +9,24 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 07/30/2018
+ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c0d0fdf4e7df0401692eb026d55fe1a7c9322f1
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: d8b46dbc0cc3c61396acdc7d21517c13d4650bf3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73160791"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76156284"
 ---
-# <a name="reset-your-work-or-school-password"></a>A munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása
+# <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
-Ha elfelejtette jelszavát, nem kapott jelszót a vállalati támogatási csapattól, vagy ki lett zárva a fiókjából, biztonsági adatai és mobileszköze használatával új jelszót kérhet.
+Ha elfelejtette a munkahelyi vagy iskolai jelszavát, soha nem kapott jelszót a szervezettől, vagy kizárták a fiókjából, a biztonsági adatok és a mobileszköz segítségével alaphelyzetbe állíthatja a munkahelyi vagy iskolai jelszavát. A rendszergazdának be kell kapcsolnia ezt a funkciót ahhoz, hogy be tudja állítani az adatokat, és alaphelyzetbe állíthatja a saját jelszavát.
 
->[!NOTE]
->Ha ismeri a jelszavát, és csak módosítani szeretné, lépjen a [jelszó módosítása](#how-to-change-your-password) lépésre a cikkben.<br><br>
->Ha olyan személyes fiókkal próbál visszakapni, mint például az Xbox, a hotmail.com vagy a outlook.com, akkor próbálkozzon a javaslatokkal, [Ha nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
+Ha ismeri a jelszavát, de módosítani szeretné, tekintse meg a jelen cikk [jelszó módosítása lépéseit](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-passwords-update-your-own-password#how-to-change-your-password) ismertető fejezetét.
+
+>[!Important]
+>Ez a cikk olyan felhasználók számára készült, akik elfelejtett vagy ismeretlen munkahelyi vagy iskolai fiók jelszavának visszaállítását szeretnék használni. Ha Ön rendszergazda, aki az alkalmazottak vagy más felhasználók önkiszolgáló jelszó-visszaállításának bekapcsolásával kapcsolatos információkat keres, tekintse meg az [Azure ad önkiszolgáló jelszó-visszaállítás üzembe helyezése és egyéb cikkek](https://docs.microsoft.com/azure/active-directory/authentication/howto-sspr-deployment)témakört.
 
 ## <a name="how-to-reset-or-unlock-your-password-for-a-work-or-school-account"></a>Munkahelyi vagy iskolai fiók jelszavának alaphelyzetbe állítása vagy zárolásának feloldása
 
@@ -58,7 +59,7 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
     1. Válassza **a másodlagos**e-mail cím lehetőséget, majd válassza az **e-mail**lehetőséget.
 
     2. Írja be az e-mailben szereplő ellenőrző kódot a mezőbe, majd kattintson a **tovább**gombra.
-    
+
     3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
 - **Jelszó alaphelyzetbe állítása szöveges üzenet használatával.** Szöveges üzenetet küld a korábban a biztonsági adatokban beállított telefonszámra. Ha a rendszergazda bekapcsolta a biztonsági információk felületét, további információt talál a szöveges üzenetküldés beállításáról a [biztonsági információk beállítása szöveges üzenetküldés (előzetes verzió)](security-info-setup-text-msg.md) című cikkben. Ha még nem használja a biztonsági adatokat, a [saját fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben talál további információt a szöveges üzenetküldés beállításáról.
@@ -100,10 +101,10 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
   3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
   4. Miután megkapta az üzenetet, amely azt jelzi, hogy a jelszó alaphelyzetbe lett állítva, bejelentkezhet a fiókjába az új jelszó használatával.
-        
+
      Ha továbbra sem tud hozzáférni a fiókjához, további segítségért forduljon a szervezet rendszergazdájához.
 
-A jelszó alaphelyzetbe állítása után egy visszaigazoló e-mailt kap, amely egy olyan fiókból származik, mint a "Microsoft az \<*your_organization*>." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
+A jelszó alaphelyzetbe állítása után egy visszaigazoló e-mailt kap, amely egy olyan fiókból származik, mint "a Microsoft \<*your_organization*>." Ha hasonló e-mailt kap, de nemrég nem állította vissza a jelszavát, azonnal kapcsolatba kell lépnie a szervezet rendszergazdájával.
 
 ## <a name="how-to-change-your-password"></a>A jelszó módosítása
 
@@ -160,13 +161,10 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 |Ha megpróbálom módosítani a jelszavam, hibaüzenetet kapok. |A jelszó olyan szót, kifejezést vagy mintázatot tartalmaz, amely könnyen kitalálhatja a jelszavát.| Próbálkozzon újra egy erősebb jelszó használatával.|
 |A felhasználói azonosító megadását követően egy, a "forduljon a rendszergazdához" nevű oldalra ugorjon.|A Microsoft azt állapította meg, hogy a felhasználói fiók jelszavát a rendszergazda felügyeli a helyszíni környezetben. Ennek eredményeképpen nem állíthatja alaphelyzetbe a jelszavát a "nem lehet hozzáférni a fiókhoz" hivatkozással. |További segítségért forduljon a rendszergazdához.|
 |A felhasználói azonosító megadását követően hibaüzenet jelenik meg: "a fiók nincs engedélyezve a jelszó alaphelyzetbe állításához."|A rendszergazda nem állította be a fiókját, így visszaállíthatja a saját jelszavát.|A rendszergazda a (z) "nem tud hozzáférni a fiókhoz" hivatkozásra kattintva nem kapcsolta be a jelszó-visszaállítást, vagy nem rendelkezik licenccel a szolgáltatás használatához.<br><br> A jelszó alaphelyzetbe állításához ki kell választania a "Kapcsolatfelvétel a rendszergazdával" lehetőséget, hogy e-mailt küldjön a vállalati rendszergazdának, és tájékoztassa őket arról, hogy szeretné visszaállítani a jelszavát.|
-|A felhasználói azonosító megadását követően hibaüzenet jelenik meg, amely szerint "nem sikerült ellenőrizni a fiókját."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatait.|Ennek az üzenetnek két oka lehet.<br><br>1. a rendszergazda bekapcsolta a szervezete jelszavának alaphelyzetbe állítását, de nem regisztrált a szolgáltatás használatára. Ha regisztrálni szeretne a jelszó-visszaállításra, tekintse meg az alábbi cikkek egyikét az ellenőrzési módszer alapján: [biztonsági információk beállítása a hitelesítő alkalmazás használatához (előzetes verzió)](security-info-setup-auth-app.md), [biztonsági adatok beállítása telefonhívás használatára (előzetes verzió)](security-info-setup-phone-number.md), [biztonsági információk beállítása a használatra SMS-üzenetek (előzetes](security-info-setup-text-msg.md)verzió), biztonsági [kérdések](security-info-setup-questions.md)(előzetes verzió) használatára [vonatkozó biztonsági információk beállítása az e-mailek használatához (](security-info-setup-email.md)előzetes verzió).<br><br>2. a rendszergazda nem kapcsolta be a szervezet jelszavának visszaállítását. Ebben az esetben ki kell választania a "Kapcsolatfelvétel a rendszergazdával" lehetőséget, ha e-mailt szeretne küldeni a rendszergazdának, és a jelszó alaphelyzetbe állítását kéri.|
+|A felhasználói azonosító megadását követően hibaüzenet jelenik meg, amely szerint "nem sikerült ellenőrizni a fiókját."|A bejelentkezési folyamat nem tudta ellenőrizni a fiók adatait.|Ennek az üzenetnek két oka lehet.<br><br>1. a rendszergazda bekapcsolta a szervezete jelszavának alaphelyzetbe állítását, de nem regisztrált a szolgáltatás használatára. A jelszó-visszaállításhoz való regisztrációhoz tekintse meg a következő cikkek egyikét az ellenőrzési módszer alapján: [állítsa be a biztonsági adatokat a hitelesítő alkalmazás használatára (előzetes verzió)](security-info-setup-auth-app.md), [állítsa be a biztonsági adatokat telefonhívás használatára (előzetes](security-info-setup-phone-number.md)verzió), a [biztonsági információk beállítása a szöveges üzenetküldés használatára (előzetes](security-info-setup-text-msg.md)verzió), a biztonsági [információk beállítása az e-mailek használatára (](security-info-setup-email.md)előzetes verzió), vagy biztonsági [kérdések (](security-info-setup-questions.md)előzetes verzió) használatára.<br><br>2. a rendszergazda nem kapcsolta be a szervezet jelszavának visszaállítását. Ebben az esetben ki kell választania a "Kapcsolatfelvétel a rendszergazdával" lehetőséget, ha e-mailt szeretne küldeni a rendszergazdának, és a jelszó alaphelyzetbe állítását kéri.|
 
 ## <a name="next-steps"></a>Következő lépések
+
 - A biztonsági adatok [(előzetes verzió) – áttekintés című](user-help-security-info-overview.md) cikkben talál további információt.
 
-- A kétlépéses [ellenőrzés áttekintése című](user-help-two-step-verification-overview.md) cikkben megismerheti a kétlépéses ellenőrzést. 
-
-- Ha elvesztette vagy elfelejtette a jelszavát, állítsa alaphelyzetbe a jelszót a [jelszó-visszaállítási portálról](https://passwordreset.microsoftonline.com/)
-
-- Hibaelhárítási tippek és Súgó a bejelentkezési problémákhoz a [nem tud bejelentkezni a Microsoft-fiók](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant) cikkbe.
+- Ha olyan személyes fiókkal próbál visszakapni, mint például az Xbox, a hotmail.com vagy a outlook.com, akkor próbálkozzon a javaslatokkal, [Ha nem tud bejelentkezni a Microsoft-fiók cikkbe](https://support.microsoft.com/help/12429/microsoft-account-sign-in-cant).

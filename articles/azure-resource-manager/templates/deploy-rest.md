@@ -3,16 +3,16 @@ title: Erőforrások üzembe helyezése REST API és sablonnal
 description: Erőforrások üzembe helyezése az Azure-ban Azure Resource Manager és Resource Manager REST API használatával. Az erőforrások egy Resource Manager-sablonban vannak meghatározva.
 ms.topic: conceptual
 ms.date: 06/04/2019
-ms.openlocfilehash: 3a3447746b3e7cbdfeeddd296ce78068e120a134
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fc386f51073c256fd083a04bbed39316784827b1
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484960"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76152510"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-resource-manager-rest-api"></a>Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure Manager REST API-val
 
-Ez a cikk azt ismerteti, hogyan használható a Resource Manager-REST API Resource Manager-sablonokkal az erőforrások Azure-ba történő telepítéséhez.  
+Ez a cikk azt ismerteti, hogyan használható a Resource Manager-REST API Resource Manager-sablonokkal az erőforrások Azure-ba történő telepítéséhez.
 
 Megadhatja a sablont a kérelem törzsében, vagy csatolhat egy fájlhoz. Fájl használata esetén helyi fájl vagy egy URI-n keresztül elérhető külső fájl lehet. Ha a sablon egy Storage-fiókban található, korlátozhatja a hozzáférést a sablonhoz, és megadhat egy közös hozzáférési aláírási (SAS-) tokent az üzembe helyezés során.
 
@@ -67,7 +67,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
 
 1. Ellenőrizze az üzemelő példányt, mielőtt végrehajtja a [sablon-telepítési művelet ellenőrzése](/rest/api/resources/deployments/validate) műveletet. A központi telepítés tesztelésekor pontosan úgy adja meg a paramétereket, ahogy a telepítés végrehajtásakor (a következő lépésben látható).
 
-1. Sablon üzembe helyezéséhez adja meg az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a központi telepítés nevét a kérelem URI-ja alapján. 
+1. Sablon üzembe helyezéséhez adja meg az előfizetés AZONOSÍTÓját, az erőforráscsoport nevét, a központi telepítés nevét a kérelem URI-ja alapján.
 
    ```HTTP
    PUT https://management.azure.com/subscriptions/<YourSubscriptionId>/resourcegroups/<YourResourceGroupName>/providers/Microsoft.Resources/deployments/<YourDeploymentName>?api-version=2019-05-01
@@ -116,7 +116,7 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
 
     Beállíthatja, hogy a Storage-fiók közös hozzáférésű aláírás (SAS) jogkivonatot használjon. További információ: [hozzáférés delegálása közös hozzáférési aláírással](/rest/api/storageservices/delegating-access-with-a-shared-access-signature).
 
-    Ha egy paraméterhez (például jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy kulcstartóhoz. Kérje le a Key vaultot az üzembe helyezés során, ahogy az az előző példában is látható. További információ: [biztonságos értékek továbbítása az üzembe helyezés során](key-vault-parameter.md). 
+    Ha egy paraméterhez (például jelszóhoz) bizalmas értéket kell megadnia, adja hozzá ezt az értéket egy kulcstartóhoz. Kérje le a Key vaultot az üzembe helyezés során, ahogy az az előző példában is látható. További információ: [biztonságos értékek továbbítása az üzembe helyezés során](key-vault-parameter.md).
 
 1. A sablonhoz és paraméterekhez kapcsolódó fájlokhoz való csatolás helyett a kérés törzsében is felveheti őket. A következő példa a kérelem törzsét mutatja be a sablonnal és paraméterrel:
 
@@ -155,8 +155,8 @@ A cikkben szereplő példák az erőforráscsoportok központi telepítését ha
         "resources": [
           {
             "type": "Microsoft.Storage/storageAccounts",
-            "name": "[variables('storageAccountName')]",
             "apiVersion": "2018-02-01",
+            "name": "[variables('storageAccountName')]",
             "location": "[parameters('location')]",
             "sku": {
               "name": "[parameters('storageAccountType')]"

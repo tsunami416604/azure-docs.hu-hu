@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 659d00c3fc7a766d800de6f1f12f410003284360
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
+ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979276"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76121947"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
@@ -179,7 +179,7 @@ A kommunikáció az FC VLAN-ról a fő VLAN-ra engedélyezett, de nem indíthat�
 ### <a name="logical-isolation-between-compute-and-storage"></a>Logikai elkülönítés a számítás és a tárolás között
 Az alapvető kialakítás részeként Microsoft Azure elkülöníti a virtuális gépeken alapuló számításokat a tárterületről. Ez a szétválasztás lehetővé teszi, hogy a számítások és a tárolók egymástól függetlenül méretezhetők legyenek, így könnyebben biztosítható több-bérlő és elkülönítés.
 
-Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az Azure számítási feladatokkal, kivéve a logikailag. [Ez](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf) azt jelenti, hogy a virtuális lemezek létrehozásakor a lemezterület nincs lefoglalva a teljes kapacitáshoz. Ehelyett létrejön egy tábla, amely a virtuális lemezen lévő címeket leképezi a fizikai lemezen lévő területekre, és a tábla kezdetben üres. **Amikor az ügyfél először ír le adatot a virtuális lemezen, a rendszer leosztja a fizikai lemezen lévő helyet, és egy mutatót helyez el a táblába.**
+Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az Azure számítási feladatokkal, kivéve a logikailag. Ez azt jelenti, hogy a virtuális lemezek létrehozásakor a lemezterület nincs lefoglalva a teljes kapacitáshoz. Ehelyett létrejön egy tábla, amely a virtuális lemezen lévő címeket leképezi a fizikai lemezen lévő területekre, és a tábla kezdetben üres. **Amikor az ügyfél először ír le adatot a virtuális lemezen, a rendszer leosztja a fizikai lemezen lévő helyet, és egy mutatót helyez el a táblába.**
 ### <a name="isolation-using-storage-access-control"></a>Elkülönítés a Storage hozzáférés-vezérlésével
 **Az Azure Storage-ban Access Control** egyszerű hozzáférés-vezérlési modellel rendelkezik. Az egyes Azure-előfizetések egy vagy több Storage-fiókot is létrehozhatnak. Mindegyik Storage-fiók egyetlen titkos kulccsal rendelkezik, amely a Storage-fiókban lévő összes adattal való hozzáférés szabályozására szolgál.
 
@@ -320,14 +320,6 @@ Az [alhálózat](../../virtual-network/virtual-networks-overview.md) egy tovább
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Hálózati elkülönítési beállítások a Windows Azure virtuális hálózatokban található gépekhez](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/)
+- Ismerje meg a [Windows Azure virtuális hálózatokban található gépek hálózati elkülönítési lehetőségeit](https://azure.microsoft.com/blog/network-isolation-options-for-machines-in-windows-azure-virtual-networks/). Ez magában foglalja a klasszikus előtér-és háttér-forgatókönyvet, ahol egy adott háttérrendszer vagy alhálózat számítógépei csak bizonyos ügyfelek vagy más számítógépek számára engedélyezhetik az IP-címek engedélyezési listáján alapuló adott végponthoz való kapcsolódást.
 
-Ez magában foglalja a klasszikus előtér-és háttér-forgatókönyvet, ahol egy adott háttérrendszer vagy alhálózat számítógépei csak bizonyos ügyfelek vagy más számítógépek számára engedélyezhetik az IP-címek engedélyezési listáján alapuló adott végponthoz való kapcsolódást.
-
-- [Számítási elkülönítés](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-A Microsoft Azure különböző felhőalapú számítástechnikai szolgáltatásokat kínál, amelyek számos számítási példányt tartalmaznak & olyan szolgáltatásokkal, amelyek automatikusan fel-és leskálázást tesznek lehetővé az alkalmazás vagy a vállalat igényeinek megfelelően.
-
-- [Tároló elkülönítése](https://msenterprise.global.ssl.fastly.net/vnext/PDFs/A01_AzureSecurityWhitepaper20160415c.pdf)
-
-Microsoft Azure elkülöníti az ügyfél virtuális gépeken alapuló számításait a tárterületről. Ez a szétválasztás lehetővé teszi, hogy a számítások és a tárolók egymástól függetlenül méretezhetők legyenek, így könnyebben biztosítható több-bérlő és elkülönítés. Ezért az Azure Storage külön hardveren fut, és nincs hálózati kapcsolat az Azure számítási feladatokkal, kivéve a logikailag. Minden kérelem HTTP-n vagy HTTPS-en keresztül fut az ügyfél választása alapján.
+- Ismerje meg a [virtuális gépek elkülönítését az Azure-ban](../../virtual-machines/windows/isolation.md). Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve.

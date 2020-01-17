@@ -9,16 +9,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.subservice: user-help
 ms.topic: conceptual
-ms.date: 01/31/2019
+ms.date: 01/16/2020
 ms.author: lizross
 ms.reviewer: olhaun
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d6fe6744c2af22f8891d2f3b3a6eb30ec9d3904
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: dc68b34ce10957d8c025d4767cc4f8d04c6a72c3
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045281"
+ms.locfileid: "76155859"
 ---
 # <a name="frequently-asked-questions-faqs-about-the-microsoft-authenticator-app"></a>Gyakran ismételt kérdések (GYIK) a Microsoft Authenticator alkalmazásról
 
@@ -52,6 +52,7 @@ Az Microsoft Authenticator alkalmazás felváltotta a Azure Authenticator alkalm
 | Mi az az alkalmazás-zárolási funkció, és hogyan segít megőrizni a biztonságot? | Az egyszer használatos PIN-kódok, az alkalmazásadatok és az Alkalmazásbeállítások biztonságosabbá tételéhez bekapcsolhatja az alkalmazás zárolási funkcióját a Microsoft Authenticator alkalmazásban. Ha bekapcsolja az alkalmazás zárolását a Microsoft Authenticator alkalmazás **Beállítások** képernyőjén, a rendszer a PIN-kód vagy a biometrikus adatoknak a Microsoft Authenticator alkalmazás minden egyes megnyitásakor történő hitelesítését kéri. Ez a szolgáltatás extra védelmet nyújt, így a Microsoft Authenticator alkalmazásban az értesítések jóváhagyása nem változik.<br><br>**Megjegyzés**<br>Mivel az eszközök regisztrációja a Microsoft Authenticator alkalmazáson kívül más helyszíneken is megtörténhet, például a Céges portál alkalmazásban vagy az Android-fiók beállításain belül, nincs garancia arra, hogy az alkalmazás zárolása leállítja a felhasználót a Microsofthoz való hozzáféréshez. Hitelesítő alkalmazás. |
 | Miért kapok értesítést a fiókommal kapcsolatos tevékenységről? | Ha többet szeretne megtudni arról, hogy mi történik a személyes Microsoft-fiókával kapcsolatban, tevékenység-értesítéseket küldünk a Microsoft Authenticator alkalmazásnak. Ezek az értesítések azonnal megjelennek valami változás után, így segítve a biztonság megőrzését. Korábban elküldte ezeket az értesítéseket e-mailben és SMS-ben, és már kiterjesztjük az alkalmazást is. További információ ezekről a tevékenységi értesítésekről: [Mi történik, ha szokatlan bejelentkezés van a fiókjába](https://support.microsoft.com/help/13967/microsoft-account-unusual-sign-in). Ha meg szeretné változtatni, hogy hol kapja meg az értesítéseket, jelentkezzen be, ahol kapcsolatba léphet a fiókja [nem kritikus fiókkal kapcsolatos riasztások](https://account.live.com/SecurityNotifications/Update) oldalával. |
 | A munkahelyi vagy iskolai fiókba való bejelentkezéskor az iOS-hez készült alapértelmezett e-mail-alkalmazás használatával a rendszer rákérdez a biztonsági ellenőrzési információk Microsoft Authenticator alkalmazásra. Miután megtörtént az információ megadása és a posta alkalmazásba való visszatérés, hibaüzenetet kapok. Mit tegyek? | Ez valószínűleg azért történik, mert a bejelentkezés és a levelező alkalmazás két különböző alkalmazásban fordul elő, így a kezdeti háttér-bejelentkezési folyamat leáll, és sikertelen lesz. Ha szeretné kijavítani ezt a megoldást, javasoljuk, hogy a képernyő jobb alsó sarkában lévő **Safari** ikonra kattintva jelentkezzen be a levelező alkalmazásba. A Safariba való áthelyezéssel a teljes bejelentkezési folyamat egyetlen alkalmazásban történik, amely lehetővé teszi, hogy sikeresen bejelentkezzen az alkalmazásba. |
+| Az egyszeri jelszavas (OTP) kódok nem működnek. Mit tegyek? | Győződjön meg arról, hogy az eszközön megadott dátum és idő megfelelő, és hogy a rendszer automatikusan szinkronizálja őket. Ha a dátum és az idő helytelen, vagy nincs szinkronban, a kód nem fog működni. |
 
 ## <a name="next-steps"></a>Következő lépések
 

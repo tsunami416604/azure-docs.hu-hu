@@ -3,12 +3,12 @@ title: VMware Assessment-támogatás a Azure Migrate
 description: Ismerkedjen meg az Azure Migrate VMware Assessment támogatásával.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 2a9c5504d99f439723a250b619b9f9b660ea9c59
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 74dae71404fe827c9e19d5e3042afd2f98a7a5dd
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028999"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154686"
 ---
 # <a name="support-matrix-for-vmware-assessment"></a>A VMware Assessment támogatási mátrixa 
 
@@ -37,11 +37,14 @@ A gépek felderítése mellett Azure Migrate: a kiszolgáló értékelése a gé
 
 **Támogatás** | **Részletek**
 --- | ---
-Felderítés | A felderítés ügynök nélkül, a számítógép vendég hitelesítő adataival és a számítógépek távoli elérésével a WMI-és SSH-hívásokkal.
-Támogatott gépek | Helyszíni VMware virtuális gépek.
-Gépi operációs rendszer | Minden Windows-és Linux-verzió
-Hitelesítő adatok | A jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, valamint egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
-Korlátozások | Az App-Discovery esetében akár 10000 is felderíthető. 
+**Felderítés** | A felderítés ügynök nélkül, a számítógép vendég hitelesítő adataival és a számítógépek távoli elérésével a WMI-és SSH-hívásokkal.
+**Támogatott gépek** | Helyszíni VMware virtuális gépek.
+**Gépi operációs rendszer** | Minden Windows-és Linux-verzió.
+**vCenter hitelesítő adatai** | Egy vCenter Server fiók írásvédett hozzáféréssel, valamint a Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal.
+**Virtuális gép hitelesítő adatai** | A jelenleg egyetlen hitelesítő adat használatát támogatja az összes Windows-kiszolgálón, valamint egy hitelesítő adatot az összes Linux-kiszolgáló számára.<br/><br/> Létrehoz egy vendég felhasználói fiókot a Windows rendszerű virtuális gépekhez, valamint egy normál/normál felhasználói fiókot (nem sudo hozzáférés) az összes Linux rendszerű virtuális géphez.
+**VMware-eszközök** | A felderíteni kívánt virtuális gépeken telepíteni és futtatni kell a VMware-eszközöket.
+**Port-hozzáférés** | A felderíteni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
+**Korlátok** | Az App-Discovery esetében akár 10000 is felderíthető. 
 
 ## <a name="vmware-requirements"></a>VMware-követelmények
 
@@ -67,21 +70,38 @@ A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja 
 Berendezés | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/><br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ```https://<appliance-ip-or-name>:44368``` <br/><br/>A 443-es, 5671-as és 5672-es porton kimenő kapcsolatok a felderítési és a teljesítménybeli metaadatok küldésére Azure Migrate.
 vCenter-kiszolgáló | A 443-es TCP-porton bejövő kapcsolatok lehetővé teszik, hogy a berendezés konfigurációs és teljesítménybeli metaadatokat gyűjtsön az értékelésekhez. <br/><br/> A készülék alapértelmezés szerint az 443-as porton csatlakozik a vCenter-hez. Ha a vCenter-kiszolgáló egy másik portot figyel, akkor a felderítés beállításakor módosíthatja a portot.
 
-## <a name="dependency-visualization"></a>Függőségek vizualizációja
+## <a name="agent-based-dependency-visualization"></a>Ügynök-alapú függőségi vizualizáció
 
-A függőségi vizualizáció segítséget nyújt a függőségek megjelenítéséhez a felmérni és áttelepíteni kívánt gépek között. Jellemzően függőségi leképezést használ, ha a magasabb szintű megbízhatóságú gépeket szeretné felmérni. A VMware virtuális gépek esetében a függőségi vizualizáció a következőképpen támogatott:
+A függőségi [vizualizáció](concepts-dependency-visualization.md) segítséget nyújt a függőségek megjelenítéséhez a felmérni és áttelepíteni kívánt gépek között. Az ügynök-alapú vizualizációk, követelmények és korlátozások összegzését az alábbi táblázat tartalmazza
 
-- **Ügynök nélküli függőségi vizualizáció**: Ez a beállítás jelenleg előzetes verzióban érhető el. Nem szükséges ügynököket telepíteni a gépekre.
-    - Úgy működik, hogy rögzíti a TCP-kapcsolatok adatait azokról a gépekről, amelyeken engedélyezve van. A függőségi felderítés elindítása után a készülék öt perces lekérdezési időköz alapján gyűjt adatokat a gépekről.
-    - A rendszer a következő adatokat gyűjti össze:
-        - TCP-kapcsolatok
-        - Aktív kapcsolattal rendelkező folyamatok nevei
-        - A fenti folyamatokat futtató telepített alkalmazások nevei
-        - Nem. az összes lekérdezési időszakban észlelt kapcsolatok
-- **Ügynök-alapú függőségi vizualizáció**: az ügynök-alapú függőségi vizualizáció használatához le kell töltenie és telepítenie kell az alábbi ügynököket minden olyan helyszíni gépen, amelyet elemezni szeretne.
-    - Telepítse a Microsoft monitoring Agent (MMA) szolgáltatást mindegyik gépre. [További](how-to-create-group-machine-dependencies.md#install-the-mma) információ az MMA-ügynök telepítéséről.
-    - Telepítse a függőségi ügynököt az egyes gépekre. [További](how-to-create-group-machine-dependencies.md#install-the-dependency-agent) információ a függőségi ügynök telepítéséről.
-    - Továbbá ha olyan gépekkel rendelkezik, amelyeken nincs internetkapcsolat, ezekre le kell töltenie és telepítenie kell a Log Analytics-átjárót.
+
+**Követelmény** | **Részletek**
+--- | ---
+**Üzembe helyezés** | A függőségi vizualizáció üzembe helyezése előtt rendelkeznie kell egy Azure Migrate-projekttel, és a Azure Migrate: Server Assessment Tool hozzáadva a projekthez. A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni gépek felderítése érdekében.<br/><br/> A függőségi vizualizáció nem érhető el Azure Governmentban.
+**Szolgáltatástérkép** | Az ügynök-alapú függőségi vizualizáció a [Service Map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) megoldást használja [Azure monitor naplókban](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Az üzembe helyezéshez új vagy meglévő Log Analytics munkaterületet társít egy Azure Migrate projekthez.
+**Log Analytics-munkaterület** | A munkaterületnek ugyanahhoz az előfizetéshez kell tartoznia, mint a Azure Migrate projektnek.<br/><br/> Azure Migrate az USA keleti régiójában, Délkelet-Ázsiában és Nyugat-Európában található munkaterületeket támogatja.<br/><br/>  A munkaterületnek olyan régióban kell lennie, amelyben a [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Egy Azure Migrate projekt munkaterülete nem módosítható a hozzáadása után.
+**Charges** | Az Service Map-megoldás nem számít fel díjat az első 180 napra (a Log Analytics munkaterülethez a Azure Migrate projekttel társított naptól számítva).<br/><br/> 180 nap után a standard Log Analytics díjak érvényesek lesznek.<br/><br/> A társított Log Analytics-munkaterületen a Service Maptól eltérő bármely megoldás használata esetén a rendszer standard Log Analytics díjat számít fel.<br/><br/> Ha törli a Azure Migrate projektet, a munkaterület nincs törölve. A projekt törlése után Service Map nem ingyenes, és az egyes csomópontok Log Analytics munkaterület fizetős szintjéhez hasonlóan lesznek felszámítva.
+**Ügynökök** | Az ügynök-alapú függőségi vizualizációhoz két ügynököt kell telepíteni az elemezni kívánt gépeken.<br/><br/> - [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [függőségi ügynök](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
+**Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
+
+
+## <a name="agentless-dependency-visualization"></a>Ügynök nélküli függőségek vizualizációja
+
+Ez az opció jelenleg csak előzetes verzióban érhető el. [További információk](how-to-create-group-machine-dependencies-agentless.md). A követelményeket a következő táblázat foglalja össze.
+
+**Követelmény** | **Részletek**
+--- | ---
+**Üzembe helyezés** | A függőségi vizualizáció üzembe helyezése előtt rendelkeznie kell egy Azure Migrate-projekttel, és a Azure Migrate: Server Assessment Tool hozzáadva a projekthez. A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni gépek felderítése érdekében.
+**VM-támogatás** | Jelenleg csak a VMware virtuális gépek esetében támogatott.
+**Windows rendszerű virtuális gépek** | Windows Server 2016<br/> Windows Server 2012 R2<br/> Windows Server 2012<br/> Windows Server 2008 R2 (64 bites)
+**Linux rendszerű virtuális gépek** | Red Hat Enterprise Linux 7, 6, 5<br/> Ubuntu Linux 14,04, 16,04<br/> Debian 7, 8<br/> Oracle Linux 6, 7<br/> CentOS 5, 6, 7.
+**Windows-fiók** |  A vizualizáció felhasználói fiókra van szüksége vendég hozzáféréssel.
+**Linux-fiók** | A vizualizációhoz rendszergazdai jogosultsággal rendelkező felhasználói fiókra van szükség.<br/><br/> Másik lehetőségként a felhasználói fióknak szüksége van ezekre az engedélyekre a/bin/netstat és a/bin/ls fájlokra: CAP_DAC_READ_SEARCH és CAP_SYS_PTRACE.
+**VM-ügynökök** | Nincs szükség ügynökre a virtuális gépeken.
+**VMware-eszközök** | A VMware-eszközöket az elemezni kívánt virtuális gépeken kell telepíteni és futtatni.
+**vCenter hitelesítő adatai** | Egy vCenter Server fiók írásvédett hozzáféréssel, valamint a Virtual Machines > vendég műveletekhez engedélyezett jogosultságokkal.
+**Port-hozzáférés** | Az elemezni kívánt virtuális gépeket futtató ESXi-gazdagépeken a Azure Migrate készüléknek képesnek kell lennie csatlakozni a 443-es TCP-porthoz.
+
 
 
 ## <a name="next-steps"></a>Következő lépések

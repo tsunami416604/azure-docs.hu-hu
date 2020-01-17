@@ -3,12 +3,12 @@ title: Érvénytelenek a sablon hibái
 description: Ismerteti, Hogyan oldhatók fel a sablon érvénytelen hibái Azure Resource Manager sablonok telepítésekor.
 ms.topic: troubleshooting
 ms.date: 03/08/2018
-ms.openlocfilehash: 9337812152dac7948afc7471760f3dc14443f549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 65cd69d67933d117b51f37b587b276aec2bd635a
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484570"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154057"
 ---
 # <a name="resolve-errors-for-invalid-template"></a>Érvénytelen sablon hibáinak elhárítása
 
@@ -86,18 +86,18 @@ A gyermek erőforrások esetében a típusnak és a névnek azonos számú szegm
 
 ```json
 "resources": [
-    {
-        "type": "Microsoft.KeyVault/vaults",
-        "name": "contosokeyvault",
+  {
+    "type": "Microsoft.KeyVault/vaults",
+    "name": "contosokeyvault",
+    ...
+    "resources": [
+      {
+        "type": "secrets",
+        "name": "appPassword",
         ...
-        "resources": [
-            {
-                "type": "secrets",
-                "name": "appPassword",
-                ...
-            }
-        ]
-    }
+      }
+    ]
+  }
 ]
 ```
 
@@ -105,9 +105,9 @@ A szegmensek beolvasása jobb lehet az erőforrás-szolgáltatókon keresztül a
 
 ```json
 {
-    "type": "Microsoft.Web/sites/providers/locks",
-    "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
-    ...
+  "type": "Microsoft.Web/sites/providers/locks",
+  "name": "[concat(variables('siteName'),'/Microsoft.Authorization/MySiteLock')]",
+  ...
 }
 ```
 
@@ -140,13 +140,13 @@ Ez a hibaüzenet akkor jelenik meg, ha az erőforrások egymástól függenek, �
 
 Körkörös függőség megoldása:
 
-1. A sablonban keresse meg a körkörös függőségben azonosított erőforrást. 
-2. Az adott erőforrás esetében ellenőrizze a **dependsOn** tulajdonságot és a **Reference** függvény bármely használatát, hogy megtekintse, mely erőforrások függenek. 
+1. A sablonban keresse meg a körkörös függőségben azonosított erőforrást.
+2. Az adott erőforrás esetében ellenőrizze a **dependsOn** tulajdonságot és a **Reference** függvény bármely használatát, hogy megtekintse, mely erőforrások függenek.
 3. Ellenőrizze ezeket az erőforrásokat, és tekintse meg, hogy mely erőforrások függenek. Kövesse a függőségeket, amíg olyan erőforrást észlel, amely az eredeti erőforrástól függ.
-5. A körkörös függőségben érintett erőforrások esetében alaposan vizsgálja meg a **dependsOn** tulajdonság összes használatát a szükségtelen függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha nem biztos benne, hogy szükség van-e függőségre, próbálja meg eltávolítani. 
+5. A körkörös függőségben érintett erőforrások esetében alaposan vizsgálja meg a **dependsOn** tulajdonság összes használatát a szükségtelen függőségek azonosításához. Távolítsa el ezeket a függőségeket. Ha nem biztos benne, hogy szükség van-e függőségre, próbálja meg eltávolítani.
 6. Telepítse újra a sablont.
 
-Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telepítésekor hibákat okozhat. Ha hibaüzenetet kap, adja hozzá a függőséget a sablonhoz. 
+Ha eltávolítja az értékeket a **dependsOn** tulajdonságból, a sablon telepítésekor hibákat okozhat. Ha hibaüzenetet kap, adja hozzá a függőséget a sablonhoz.
 
 Ha ez a módszer nem oldja meg a körkörös függőséget, érdemes lehet áthelyezni a telepítési logika egy részét alárendelt erőforrásokra (például bővítményekre vagy konfigurációs beállításokra). Konfigurálja ezeket a alárendelt erőforrásokat úgy, hogy az a körkörös függőségben érintett erőforrások után legyen üzembe helyezhető. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
