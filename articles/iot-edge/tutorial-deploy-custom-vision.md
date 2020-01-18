@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 10/15/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 41a2fac48980cf376c833b022b833cfcf1e99821
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 07350ffe4a57bfe4a79bfce5d821b51535867935
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74701877"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167013"
 ---
 # <a name="tutorial-perform-image-classification-at-the-edge-with-custom-vision-service"></a>Oktatóanyag: Képosztályozás végrehajtása a peremhálózaton a Custom Vision Service használatával
 
@@ -42,7 +42,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >[!TIP]
 >Ez az oktatóanyag a Custom Vision egyszerűsített változata, amely [egy málna PI 3](https://github.com/Azure-Samples/Custom-vision-service-iot-edge-raspberry-pi) minta projektben Azure IoT Edge. Ez az oktatóanyag úgy lett kialakítva, hogy egy felhőalapú virtuális gépen fusson, és statikus képeket használ a képosztályozó betanítására és tesztelésére, ami akkor hasznos, ha valaki kiértékeli a Custom Vision IoT Edge. A minta projekt fizikai hardvert használ, és beállítja az élő kamera-hírcsatornát a képosztályozó betanítására és tesztelésére, ami olyan személy számára hasznos, aki részletesebb, valós helyzetet szeretne kipróbálni.
 
-Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek: 
+Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktatóanyagot, amellyel beállíthatja a környezetét a Linux-tárolók fejlesztéséhez: [IoT Edge modulok létrehozása Linux-eszközökhöz](tutorial-develop-for-linux.md). Az oktatóanyag elvégzésével a következő előfeltételek szükségesek:
 
 * Egy ingyenes vagy standard szintű [IoT Hub](../iot-hub/iot-hub-create-through-portal.md) az Azure-ban.
 * [Azure IoT Edge rendszert futtató Linux-eszköz](quickstart-linux.md)
@@ -50,23 +50,23 @@ Az oktatóanyag megkezdése előtt el kellett volna végeznie az előző oktató
 * A [Visual Studio Code](https://code.visualstudio.com/) az [Azure IoT-eszközökkel](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-tools)van konfigurálva.
 * A [Docker CE](https://docs.docker.com/install/) Linux-tárolók futtatására van konfigurálva.
 
-IoT Edge modulnak a Custom Vision szolgáltatással történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre: 
+IoT Edge modulnak a Custom Vision szolgáltatással történő fejlesztéséhez telepítse a következő további előfeltételeket a fejlesztői gépre:
 
 * [Python](https://www.python.org/downloads/)
 * [Git](https://git-scm.com/downloads)
-* [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python) 
+* [Python-bővítmény a Visual Studio Code-hoz](https://marketplace.visualstudio.com/items?itemName=ms-python.python)
 
 ## <a name="build-an-image-classifier-with-custom-vision"></a>Képosztályozó létrehozása a Custom Vision használatával
 
 Képosztályozó létrehozásakor létre kell hoznia egy Custom Vision-projektet, és meg kell adnia betanítási képeket. A szakaszban elvégezhető lépésekkel kapcsolatos további információkért tekintse meg az [Osztályozó létrehozása a Custom Vision használatával](../cognitive-services/custom-vision-service/getting-started-build-a-classifier.md) című cikket.
 
-A képosztályozó létrehozása és betanítása után exportálhatja azt Docker-tárolóként, és üzembe helyezheti egy IoT Edge-eszközön. 
+A képosztályozó létrehozása és betanítása után exportálhatja azt Docker-tárolóként, és üzembe helyezheti egy IoT Edge-eszközön.
 
 ### <a name="create-a-new-project"></a>Új projekt létrehozása
 
 1. A webböngészőben lépjen a [Custom Vision weblapjára](https://customvision.ai/).
 
-2. Válassza a **Sign in** (Bejelentkezés) gombot, és jelentkezzen be az Azure-erőforrásokhoz használt fiókkal. 
+2. Válassza a **Sign in** (Bejelentkezés) gombot, és jelentkezzen be az Azure-erőforrásokhoz használt fiókkal.
 
 3. Válassza a **New project** (Új projekt) lehetőséget.
 
@@ -74,7 +74,7 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
 
    | Mező | Value (Díj) |
    | ----- | ----- |
-   | Név | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
+   | Name (Név) | Adja meg a projekt nevét, például az **EdgeTreeClassifier** nevet. |
    | Leírás | Választható projektleírás. |
    | Erőforrás | Válasszon ki egy Custom Vision Service erőforrást tartalmazó Azure-erőforráscsoportot, vagy **hozzon létre újat** , ha még nem adott hozzá egyet. |
    | Project Types (Projekttípusok) | **Classification** (Osztályozás) |
@@ -86,21 +86,21 @@ A képosztályozó létrehozása és betanítása után exportálhatja azt Docke
 
 ### <a name="upload-images-and-train-your-classifier"></a>Képek feltöltése és az osztályozó betanítása
 
-A képosztályozó létrehozásához betanítási képek egy halmazára és tesztképekre van szükség. 
+A képosztályozó létrehozásához betanítási képek egy halmazára és tesztképekre van szükség.
 
-1. Klónozzon vagy töltsön le mintaképeket a [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) adattárból a helyi fejlesztői gépre. 
+1. Klónozzon vagy töltsön le mintaképeket a [Cognitive-CustomVision-Windows](https://github.com/Microsoft/Cognitive-CustomVision-Windows) adattárból a helyi fejlesztői gépre.
 
    ```cmd/sh
    git clone https://github.com/Microsoft/Cognitive-CustomVision-Windows.git
    ```
 
-2. Térjen vissza a Custom Vision-projekthez, és válassza az **Add images** (Képek hozzáadása) lehetőséget. 
+2. Térjen vissza a Custom Vision-projekthez, és válassza az **Add images** (Képek hozzáadása) lehetőséget.
 
-3. Tallózással keresse meg az Ön által helyileg klónozott Git-adattárat, és lépjen az első, **Cognitive-CustomVision-Windows / Samples / Images / Hemlock** nevű képmappára. Válassza ki a mappában található 10 képet, majd válassza az **Open** lehetőséget. 
+3. Tallózással keresse meg az Ön által helyileg klónozott Git-adattárat, és lépjen az első, **Cognitive-CustomVision-Windows / Samples / Images / Hemlock** nevű képmappára. Válassza ki a mappában található 10 képet, majd válassza az **Open** lehetőséget.
 
-4. Adja hozzá a **hemlock** (hemlok) címkét ehhez a képcsoporthoz, és nyomja le az **enter** billentyűt a címke alkalmazásához. 
+4. Adja hozzá a **hemlock** (hemlok) címkét ehhez a képcsoporthoz, és nyomja le az **enter** billentyűt a címke alkalmazásához.
 
-5. Válassza az **Upload 10 files** (10 fájl feltöltése) lehetőséget. 
+5. Válassza az **Upload 10 files** (10 fájl feltöltése) lehetőséget.
 
    ![Hemlock címkézett fájlok feltöltése a Custom Visionba](./media/tutorial-deploy-custom-vision/upload-hemlock.png)
 
@@ -108,17 +108,17 @@ A képosztályozó létrehozásához betanítási képek egy halmazára és tesz
 
 7. Ismét válassza az **Add images** (Képek hozzáadása) lehetőséget.
 
-8. Tallózással keresse meg a második, **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry** nevű képmappát. Válassza ki a mappában található 10 képet, majd válassza az **Open** lehetőséget. 
+8. Tallózással keresse meg a második, **Cognitive-CustomVision-Windows / Samples / Images / Japanese Cherry** nevű képmappát. Válassza ki a mappában található 10 képet, majd válassza az **Open** lehetőséget.
 
-9. Adja hozzá a **japanese cherry** (japán cseresznye) címkét ehhez a képcsoporthoz, és nyomja le az **enter** billentyűt a címke alkalmazásához. 
+9. Adja hozzá a **japanese cherry** (japán cseresznye) címkét ehhez a képcsoporthoz, és nyomja le az **enter** billentyűt a címke alkalmazásához.
 
-10. Válassza az **Upload 10 files** (10 fájl feltöltése) lehetőséget. Amikor a képek feltöltése sikeresen befejeződött, válassza a **Done** (Kész) lehetőséget. 
+10. Válassza az **Upload 10 files** (10 fájl feltöltése) lehetőséget. Amikor a képek feltöltése sikeresen befejeződött, válassza a **Done** (Kész) lehetőséget.
 
-11. A két képhalmaz címkével történő ellátása és feltöltése után válassza a **Train** (Betanítás) lehetőséget az osztályozó betanításához. 
+11. A két képhalmaz címkével történő ellátása és feltöltése után válassza a **Train** (Betanítás) lehetőséget az osztályozó betanításához.
 
 ### <a name="export-your-classifier"></a>Az osztályozó exportálása
 
-1. Az osztályozó betanítását követően válassza az **Export** (Exportálás) lehetőséget az osztályozó Performance (Teljesítmény) lapján. 
+1. Az osztályozó betanítását követően válassza az **Export** (Exportálás) lehetőséget az osztályozó Performance (Teljesítmény) lapján.
 
    ![A betanított rendszerkép besorolásának exportálása](./media/tutorial-deploy-custom-vision/export.png)
 
@@ -263,7 +263,8 @@ Ebben a szakaszban hozzáadhatja az új modult a meglévő CustomVisionSolution 
                 print("Response from classification service: (" + str(response.status_code) + ") " + json.dumps(response.json()) + "\n")
             except Exception as e:
                 print(e)
-                print("Response from classification service: (" + str(response.status_code))
+                print("No response from classification service")
+                return None
 
         return json.dumps(response.json())
 
@@ -282,7 +283,8 @@ Ebben a szakaszban hozzáadhatja az új modult a meglévő CustomVisionSolution 
 
             while True:
                 classification = sendFrameForProcessing(imagePath, imageProcessingEndpoint)
-                send_to_hub(classification)
+                if classification:
+                    send_to_hub(classification)
                 time.sleep(10)
 
         except KeyboardInterrupt:
@@ -326,15 +328,15 @@ Ebben a forgatókönyvben ahelyett, hogy valódi kamerát használnánk egy kép
 
 3. Tallózással keresse meg az IoT Edge-megoldáskönyvtárat, és illessze be a tesztképet a **modules** / **cameraCapture** mappába. A képnek ugyanabban a mappában kell lennie, mint ahol az előző szakaszban szerkesztett main.py fájl található. 
 
-3. A Visual Studio Code-ban nyissa meg a cameraCapture modul **Dockerfile.amd64** fájlját. 
+4. A Visual Studio Code-ban nyissa meg a cameraCapture modul **Dockerfile.amd64** fájlját.
 
-4. A `WORKDIR /app` munkakönyvtárat létrehozó sor után adja hozzá az alábbi kódsort: 
+5. A `WORKDIR /app` munkakönyvtárat létrehozó sor után adja hozzá az alábbi kódsort:
 
    ```Dockerfile
    ADD ./test_image.jpg .
    ```
 
-5. Mentse a Dockerfile-t. 
+6. Mentse a Dockerfile-t.
 
 ### <a name="prepare-a-deployment-manifest"></a>Üzembehelyezési jegyzék előkészítése
 
@@ -358,7 +360,7 @@ A Visual Studio Code-hoz készült IoT Edge-bővítmény egy sablont biztosít a
 
     Ha a Custom Vision-modulnak nem a *classifier* nevet adta, frissítse úgy a képfeldolgozó végpont értékét, hogy megegyezzen a modul nevével. 
 
-5. A fájl alján frissítse a $edgeHub modul **routes** paraméterét. Az előrejelzés eredményeit javasolt a cameraCapture modulból az IoT Hubba irányítani. 
+6. A fájl alján frissítse a $edgeHub modul **routes** paraméterét. Az előrejelzés eredményeit javasolt a cameraCapture modulból az IoT Hubba irányítani.
 
     ```json
         "routes": {
@@ -410,7 +412,6 @@ A Visual Studio Code-ból kattintson a jobb gombbal a IoT Edge eszköz nevére, 
 
 A Custom Vision-modul eredményei, amelyek a cameraCapture modulból üzenetekként lettek elküldve, rendelkeznek azzal a valószínűséggel, hogy a kép egy hemlokfenyőt vagy egy cseresznyefát ábrázol. Mivel a kép egy hemlokfenyőt ábrázol, a valószínűségnek 1,0 értéket kell mutatnia. 
 
-
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként. 
@@ -418,7 +419,6 @@ Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és 
 Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és az Azure-erőforrásokat a díjak elkerüléséhez. 
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
-
 
 ## <a name="next-steps"></a>Következő lépések
 
