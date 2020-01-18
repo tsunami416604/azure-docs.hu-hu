@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 01/09/2020
-ms.openlocfilehash: 21ad0c38b8901c1e33e05ab162552cb074a392a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/17/2020
+ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969598"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263421"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -88,7 +88,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Költségkezelés | Nem | Nem | Nem |  |
 |Data Box | Nem | Nem | Nem |  |
 |Data Catalog Gen2 | Nem | Nem | Nem |  |
-|Adatkezelő | Igen | Igen | Nem |  |
+|Data Explorer | Igen | Igen | Nem |  |
 |Data Factory | Igen | Igen | Nem |  |
 |Data Factory v2 | Nem | Igen | Nem |  |
 |Data Share | Nem | Nem | Nem |  |
@@ -181,7 +181,7 @@ Az alábbi táblázatban szereplő szolgáltatások és megoldások egy Log Anal
 | [Azure Sentinel](/azure/sentinel/) | Különböző forrásokhoz, például az Office 365-hez és a Amazon Web Services Cloud Trailhez csatlakozik. Lásd: [az adatforrások összekötése](/azure/sentinel/connect-data-sources). |
 | [Key Vault-elemzés](insights/azure-key-vault.md) | Azure Key Vault AuditEvent-naplók elemzése. |
 | [Microsoft Intune](https://docs.microsoft.com/intune/) | Hozzon létre egy diagnosztikai beállítást, amely naplókat küld Azure Monitornak. Lásd: [naplózási információk küldése a Storage-ba, az Event hubokba vagy a log analyticsbe az Intune-ban (előzetes verzió)](https://docs.microsoft.com/intune/fundamentals/review-logs-using-azure-monitor).  |
-| Network (Hálózat)  | [DNS Analytics](insights/dns-analytics.md) – összegyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos Windows DNS analitikai és naplózási naplókat és egyéb kapcsolódó adatokat.<br>[Network Performance monitor](insights/network-performance-monitor.md) – a hálózati kapcsolat és a teljesítmény figyelése a szolgáltatás-és alkalmazás-végpontok számára.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – naplók és mérőszámok elemzése az Azure Application Gatewayból.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) – elemzi Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. |
+| Network (Hálózat)  | [Network Performance monitor](insights/network-performance-monitor.md) – a hálózati kapcsolat és a teljesítmény figyelése a szolgáltatás-és alkalmazás-végpontok számára.<br>[Azure Application Gateway](insights/azure-networking-analytics.md#azure-application-gateway-analytics-solution-in-azure-monitor) – naplók és mérőszámok elemzése az Azure Application Gatewayból.<br>[Traffic Analytics](/azure/network-watcher/traffic-analytics) – elemzi Network Watcher hálózati biztonsági csoport (NSG) folyamatának naplóit, hogy betekintést nyújtson az Azure-felhőbe irányuló forgalomba. |
 | [Office 365](insights/solution-office-365.md) | Az Office 365-környezet monitorozása. Frissített verzió, amely az Azure Sentinel használatával érhető el továbbfejlesztett bevezetéssel. |
 | [SQL-elemzés](insights/azure-sql.md) | Az Azure SQL Database-adatbázisok, rugalmas készletek és felügyelt példányok teljesítményének figyelése nagy méretekben és több előfizetésen keresztül. |
 | [Surface Hub](insights/surface-hubs.md) | Surface Hub eszközök állapotának és használatának nyomon követése. |
@@ -200,6 +200,7 @@ Más megoldások is elérhetők különböző alkalmazások és szolgáltatások
 | [Active Directory Értékelés](insights/ad-assessment.md) | A Active Directory környezetek kockázatának és állapotának felmérése. |
 | [Active Directory replikáció állapota](insights/ad-replication-status.md) | Rendszeresen figyeli a Active Directory környezetet bármilyen replikációs hiba esetén. |
 | [Activity log Analytics](platform/activity-log-view.md#activity-logs-analytics-monitoring-solution) | Tevékenység-naplóbejegyzések elemzése előre definiált naplók és nézetek használatával. |
+| [DNS Analytics (előzetes verzió)](insights/dns-analytics.md) | Gyűjti, elemzi és korrelálja a DNS-kiszolgálókkal kapcsolatos Windows DNS analitikai és naplózási naplókat és egyéb kapcsolódó adatokat. |
 | [Cloud Foundry](../cloudfoundry/cloudfoundry-oms-nozzle.md) | Összegyűjtheti, megtekintheti és elemezheti Cloud Foundry rendszerállapot-és teljesítmény-mérőszámait több üzemelő példány között. |
 | [Containers](insights/containers.md) | A Docker és a Windows-tároló gazdagépek megtekintése és kezelése. |
 | [Igény szerinti értékelések](https://docs.microsoft.com/services-hub/health/getting_started_with_on_demand_assessments) | A helyszíni, hibrid és Felhőbeli Microsoft technológiai környezetek rendelkezésre állásának, biztonságának és teljesítményének felmérése és optimalizálása. |

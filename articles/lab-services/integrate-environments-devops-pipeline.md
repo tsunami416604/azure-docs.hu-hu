@@ -1,5 +1,5 @@
 ---
-title: Környezetek integrálása az Azure-folyamatokba Azure DevTest Labsban | Microsoft Docs
+title: Környezetek integrálása Azure-folyamatokra Azure DevTest Labs
 description: Ismerje meg, hogyan integrálhatja Azure DevTest Labs környezeteit az Azure DevOps folyamatos integrációs (CI) és a folyamatos továbbítási (CD-) folyamatokba.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,17 +10,17 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/02/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c665c65dcda2266a7acd7bc78726179d559f4d64
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 3d7e481879326ac30093bd116222bddc28640398
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73163930"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169428"
 ---
 # <a name="integrate-environments-into-your-azure-devops-cicd-pipelines"></a>Környezetek integrálása az Azure DevOps CI/CD-folyamatokba
-Az Azure DevOps Servicesben (korábbi nevén Visual Studio Team Services) telepített Azure DevTest Labs Tasks bővítmény használatával egyszerűen integrálhatja a folyamatos integrációs (CI)/folyamatos kézbesítés (CD) build-és kiadási folyamatát az Azure-ban DevTest Labs. Ezek a bővítmények megkönnyítik a [környezet](devtest-lab-test-env.md) gyors üzembe helyezését egy adott teszt feladathoz, majd a teszt befejezésekor törli azt. 
+Az Azure DevOps Services szolgáltatásban (korábbi nevén Visual Studio Team Services) telepített Azure DevTest Labs Tasks bővítmény használatával egyszerűen integrálhatja a folyamatos integrációs (CI)/folyamatos kézbesítés (CD) build-és kiadási folyamatát Azure DevTest Labsokkal. Ezek a bővítmények megkönnyítik a [környezet](devtest-lab-test-env.md) gyors üzembe helyezését egy adott teszt feladathoz, majd a teszt befejezésekor törli azt. 
 
 Ez a cikk bemutatja, hogyan hozhat létre és helyezhet üzembe egy környezetet, majd törölheti a környezetet egy teljes folyamaton belül. Ezeket a feladatokat általában a saját egyéni Build-test-üzembe helyezési folyamata során egyénileg hajthatja végre. A cikkben használt bővítmények a DTL virtuálisgép- [feladatok létrehozásához és törléséhez](devtest-lab-integrate-ci-cd-vsts.md)szükségesek:
 

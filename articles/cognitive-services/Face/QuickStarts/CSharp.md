@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 9d903a7d2d7e0cfe899da1fbb8869805f1f4f857
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e4174ba19d518b4b1dfef9921fe39b0c76f6d1e3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961250"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169277"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-c"></a>Rövid útmutató: az arcok észlelése egy képen a Face REST API és aC#
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása
@@ -342,7 +342,7 @@ A sikeres válasz egy könnyen olvasható JSON formátumban jeleníti meg az Arc
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-konzolos alkalmazást, amely REST-hívásokat használ az Azure Face API a rendszerképben lévő arcok észleléséhez és az attribútumok visszaküldéséhez. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
+Ebben a rövid útmutatóban létrehozott egy egyszerű .NET-konzol alkalmazást, amely REST-hívásokat használ az Azure Face szolgáltatással az arcok észleléséhez a rendszerképben, és visszaküldi az attribútumokat. Ezután tekintse át a Face API dokumentációját, ahol további információt talál a támogatott forgatókönyvekről.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

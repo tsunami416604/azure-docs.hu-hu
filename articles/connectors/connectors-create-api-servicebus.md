@@ -7,12 +7,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/19/2019
 tags: connectors
-ms.openlocfilehash: 26609bc95bf6fd49ded23d8f117911a02577405a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1b38b8508dbe17d42bf191149410f5db638cf834
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445894"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261619"
 ---
 # <a name="exchange-messages-in-the-cloud-by-using-azure-logic-apps-and-azure-service-bus"></a>Exchange-üzenetek a felhőben Azure Logic Apps és Azure Service Bus használatával
 
@@ -154,7 +154,9 @@ Győződjön meg arról, hogy a logikai alkalmazás rendelkezik a Service Bus n�
 
 ## <a name="connector-reference"></a>Összekötő-referencia
 
-A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakaríthat a Service Bus és az összekötő gyorsítótára között. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/servicebus/).
+A Service Bus-összekötő egyszerre akár 1 500 egyedi munkamenetet is megtakaríthat a Service Bus és az összekötő gyorsítótára között. Ha a munkamenetek száma meghaladja ezt a korlátot, a rendszer eltávolítja a régi munkameneteket a gyorsítótárból. További információ: [üzenetküldési munkamenetek](../service-bus-messaging/message-sessions.md).
+
+Az eseményindítókkal, műveletekkel és korlátokkal kapcsolatos egyéb technikai részletekért lásd az összekötő OpenAPI (korábban: hencegés) leírását, tekintse át az összekötő [hivatkozási oldalát](/connectors/servicebus/). További információ a Azure Service Bus üzenetkezelésről: [Mi az Azure Service Bus](../service-bus-messaging/service-bus-messaging-overview.md)?
 
 ## <a name="next-steps"></a>Következő lépések
 

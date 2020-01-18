@@ -1,5 +1,5 @@
 ---
-title: Arcok észlelése egy képen – Face API
+title: Arcok észlelése egy képképpel
 titleSuffix: Azure Cognitive Services
 description: Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
-ms.openlocfilehash: 9b66231d995ffb6980ce36852115c571cd102681
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 7070cb3bcd1b519828a750cf4ba6caf7ecb34bbb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73744277"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169878"
 ---
 # <a name="get-face-detection-data"></a>Arcfelismerés-adatlekérdezés
 
-Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok. Az útmutatóban szereplő kódrészletek az Azure Cognitive Services Face API C# ügyféloldali kódtár használatával íródnak. Ugyanez a funkció a [Rest APIon](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)keresztül érhető el.
+Ez az útmutató bemutatja, hogyan használható a Arcfelismerés olyan attribútumok kinyeréséhez, mint a nemek, az életkor vagy az adott rendszerképből származó adatok. Az útmutatóban szereplő kódrészletek az Azure Cognitive Services Face C# ügyféloldali kódtár használatával íródnak. Ugyanez a funkció a [Rest APIon](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)keresztül érhető el.
 
 Ez az útmutató a következőket mutatja be:
 
@@ -140,7 +140,7 @@ foreach (var face in faces)
 
 Ha többet szeretne megtudni az egyes attribútumokról, tekintse meg a [arcfelismerés és attribútumok](../concepts/face-detection.md) fogalmi útmutatót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan használhatja a Arcfelismerés különböző funkcióit. Ezután integrálja ezeket a funkciókat az alkalmazásba egy részletes oktatóanyag követésével.
 

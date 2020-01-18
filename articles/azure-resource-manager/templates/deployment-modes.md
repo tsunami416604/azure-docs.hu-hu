@@ -2,19 +2,21 @@
 title: Üzembehelyezési módok
 description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy növekményes központi telepítési módot használja-e Azure Resource Manager.
 ms.topic: conceptual
-ms.date: 12/23/2019
-ms.openlocfilehash: dc5446c56c92b61016563995ebc4c884d48e2419
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/17/2020
+ms.openlocfilehash: e53b8c58bf0919e64079e62c687b76ada1db7ff0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152391"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261024"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
 
-Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés.  A két mód közötti különbség az, hogy az erőforrás-kezelő hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait. Az alapértelmezett mód növekményes.
+Az erőforrások telepítésekor meg kell adnia, hogy a központi telepítés Növekményes frissítés vagy teljes frissítés. A két mód közötti különbség az, hogy az erőforrás-kezelő hogyan kezelje a sablonban nem szereplő erőforrás-csoport meglévő erőforrásait.
 
 A Resource Manager mindkét módban megpróbálja létrehozni a sablonban megadott összes erőforrást. Ha az erőforrás már létezik az erőforráscsoporthoz, és a beállításai nem változnak, akkor a rendszer nem végez műveletet az adott erőforráshoz. Ha módosítja egy erőforrás tulajdonságérték értékét, az erőforrás frissül az új értékekkel. Ha egy meglévő erőforrás helyét vagy típusát kísérli meg frissíteni, a központi telepítés hibát jelez. Ehelyett helyezzen üzembe egy új erőforrást a szükséges hely vagy típus szerint.
+
+Az alapértelmezett mód növekményes.
 
 ## <a name="complete-mode"></a>Teljes mód
 
@@ -46,7 +48,8 @@ Ha az erőforráscsoport [zárolva](../management/lock-resources.md)van, a telje
 
 A növekményes módban a Resource Manager változatlan erőforrásokat **hagy** az erőforráscsoporthoz, de nincs megadva a sablonban. A sablon erőforrásai **hozzáadódnak** az erőforráscsoporthoz.
 
-Fontos megjegyezni, hogy a növekményes mód a teljes erőforrásra vonatkozik, nem pedig egy meglévő erőforrás egyedi tulajdonságaira. Ha egy meglévő erőforrást növekményes módban telepít át, a rendszer az összes tulajdonságot újra alkalmazza. A **Tulajdonságok Növekményesen nem vehetők**fel. Gyakori félreértés a sablonban nem megadott tulajdonságok változatlanul maradnak. Ha nem ad meg bizonyos tulajdonságokat, a Resource Manager a központi telepítést úgy értelmezi, hogy felülírja ezeket az értékeket. A sablonban nem szereplő tulajdonságok visszaállnak az erőforrás-szolgáltató által beállított alapértelmezett értékekre. Itt adhatja meg az erőforrás nem alapértelmezett értékeit, nem csak a frissíteni kívánt értékeket. A sablon erőforrás-definíciója mindig az erőforrás végső állapotát tartalmazza. Nem jelenthet részleges frissítést egy meglévő erőforráshoz.
+> [!NOTE]
+> Ha egy meglévő erőforrást növekményes módban telepít át, a rendszer az összes tulajdonságot újra alkalmazza. A **Tulajdonságok Növekményesen nem vehetők**fel. Gyakori félreértés a sablonban nem megadott tulajdonságok változatlanul maradnak. Ha nem ad meg bizonyos tulajdonságokat, a Resource Manager a központi telepítést úgy értelmezi, hogy felülírja ezeket az értékeket. A sablonban nem szereplő tulajdonságok visszaállnak az alapértelmezett értékekre. Itt adhatja meg az erőforrás nem alapértelmezett értékeit, nem csak a frissíteni kívánt értékeket. A sablon erőforrás-definíciója mindig az erőforrás végső állapotát tartalmazza. Nem jelenthet részleges frissítést egy meglévő erőforráshoz.
 
 ## <a name="example-result"></a>Példa eredménye
 

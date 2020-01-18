@@ -1,7 +1,7 @@
 ---
-title: Felismerési modell meghatározása – Face API
+title: Felismerési modell meghatározása – Face
 titleSuffix: Azure Cognitive Services
-description: Ez a cikk bemutatja, hogyan választhatja ki, hogy melyik felismerési modellt szeretné használni az Azure Face API alkalmazással.
+description: Ebből a cikkből megtudhatja, hogyan választhatja ki, hogy melyik felismerési modellt szeretné használni az Azure Face alkalmazásban.
 services: cognitive-services
 author: longli0
 manager: nitinme
@@ -10,18 +10,18 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: longl
-ms.openlocfilehash: 5b84e078e3b674a539b61c07c4bb4370719e4799
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 44392b807659ff8f13511b48d0afd33db080e4f6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74771019"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166460"
 ---
 # <a name="specify-a-face-recognition-model"></a>Arcfelismerési modell megadása
 
-Ez az útmutató bemutatja, hogyan határozhatja meg az Arcfelismerés, az azonosítás és a hasonlóságok észlelését az Azure Face API használatával.
+Ez az útmutató bemutatja, hogyan határozhatja meg az Arcfelismerés, az azonosítás és a hasonlóságok észlelését az Azure Face szolgáltatás használatával.
 
-A Face API gépi tanulási modelleket használ a képeken található emberi arcokon végzett műveletek végrehajtásához. Folyamatosan fejlesztjük modelljeink pontosságát az ügyfelek visszajelzései és a kutatás előrehaladása alapján, és ezeket a fejlesztéseket a modell frissítéseiként tesszük elérhetővé. A fejlesztők megadhatják, hogy az Arcfelismerés modell melyik verzióját szeretné használni; kiválaszthatják azt a modellt, amelyik a legjobban megfelel a használati esetnek.
+A Face szolgáltatás gépi tanulási modelleket használ a képeken található emberi arcokon végzett műveletek végrehajtásához. Folyamatosan fejlesztjük modelljeink pontosságát az ügyfelek visszajelzései és a kutatás előrehaladása alapján, és ezeket a fejlesztéseket a modell frissítéseiként tesszük elérhetővé. A fejlesztők megadhatják, hogy az Arcfelismerés modell melyik verzióját szeretné használni; kiválaszthatják azt a modellt, amelyik a legjobban megfelel a használati esetnek.
 
 Ha Ön új felhasználó, javasoljuk, hogy használja a legújabb modellt. Olvassa el, hogy megtudja, hogyan határozhatja meg különböző arc-műveletekben, miközben elkerülheti a modellek ütközéseit. Ha Ön fejlett felhasználó, és nem biztos abban, hogy a legújabb modellre kell váltania, ugorjon a [különböző modellek kiértékelése](#evaluate-different-models) szakaszra az új modell kiértékeléséhez és az eredmények összehasonlításához a jelenlegi adatkészlettel.
 
@@ -57,7 +57,7 @@ var faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, recog
 
 ## <a name="identify-faces-with-specified-model"></a>Arcok azonosítása a megadott modellel
 
-A Face API képes kinyerni az arc adatait egy rendszerképből, és társíthatja azt egy **személy** objektummal (például a Face API-hívás [hozzáadásával](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), és több **személy** objektum is tárolható egy **PersonGroup**. Ezt követően egy új arc összehasonlítható egy **PersonGroup** (az [Face - Identify] hívással), és azonosítható a csoporton belüli megfelelő személy is.
+A Face szolgáltatás képes kinyerni az adatokból a képet, és társíthatja azt egy **személy** objektummal (például a Face API-hívás [hozzáadásával](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523b) ), és több **személy** objektum is tárolható egy **PersonGroup**. Ezt követően egy új arc összehasonlítható egy **PersonGroup** (az [Face - Identify] hívással), és azonosítható a csoporton belüli megfelelő személy is.
 
 A **PersonGroup** egyetlen egyedi felismerési modellel kell rendelkezniük az összes **felhasználóhoz**, és megadhatja ezt a csoport létrehozásakor a `recognitionModel` paraméterrel ([PersonGroup - Create] vagy [LargePersonGroup - Create]). Ha nem megadja ezt a paramétert, a rendszer az eredeti `recognition_01` modellt használja. Egy csoport mindig a-val létrehozott felismerési modellt fogja használni, és az új arcok társítva lesznek ehhez a modellhez, amikor hozzáadja őket a rendszerhez. Ez a csoport létrehozása után nem módosítható. Ha szeretné megtekinteni, hogy a **PersonGroup** melyik modellre van konfigurálva, használja a [PersonGroup – Get] t a _returnRecognitionModel_ paraméter **true**értékre állításával.
 

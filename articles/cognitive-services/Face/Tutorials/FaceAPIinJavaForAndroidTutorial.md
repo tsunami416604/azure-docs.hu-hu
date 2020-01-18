@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: Arcok felismerése és bekeretezése egy képen az Android SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban létre fog hozni egy egyszerű Android-alkalmazást, amely a Face API segítségével felismeri és képkockát készít a képekben.
+description: Ebben az oktatóanyagban létre fog hozni egy egyszerű Android-alkalmazást, amely a Face szolgáltatást használja az arcok észlelésére és a képek keretének megjelenítésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: ce0b308077505d5af1d757f1684c50505b11831e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 8d5bef141f83eedaa996bb63c1fb814aeb6af197
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977794"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165963"
 ---
 # <a name="tutorial-create-an-android-app-to-detect-and-frame-faces-in-an-image"></a>Oktatóanyag: Android-alkalmazás készítése képeken lévő arcok észleléséhez és bekeretezéséhez
 
-Ebben az oktatóanyagban létre fog hozni egy Android-alkalmazást, amely az Azure Face API-t használja a Java SDK-n keresztül, hogy felismerje az emberi arcokat a képen. Az alkalmazás megjeleníti a kiválasztott képet, és egy keretet rajzol az észlelt arcok köré.
+Ebben az oktatóanyagban létre fog hozni egy Android-alkalmazást, amely az Azure Face Service-t használja a Java SDK-n keresztül, hogy felismerje az emberi arcokat a képen. Az alkalmazás megjeleníti a kiválasztott képet, és egy keretet rajzol az észlelt arcok köré.
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > - Android-alkalmazás létrehozása
-> - Az Face API ügyféloldali kódtár telepítése
+> - Az arc ügyféloldali kódtár telepítése
 > - Az ügyfélkódtár használata a képeken lévő arcok észleléséhez
 > - Keret rajzolása minden észlelt arc köré
 
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`néven.
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`néven.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 - [Android Studio](https://developer.android.com/studio/) a 22-es vagy újabb API-szinttel (az arc ügyféloldali kódtár számára szükséges).
 
@@ -123,7 +123,7 @@ Futtassa az alkalmazást, és keressen egy képet, amelyen egy arc látható. V�
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megismerte a Face API Java SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
+Ebben az oktatóanyagban megismerte a Face Java SDK használatának alapszintű folyamatát, és létrehozott egy alkalmazást az arcok észleléséhez és a képek keretének megjelenítéséhez. Következő lépésként tekintse meg a Arcfelismerés részletes adatait.
 
 > [!div class="nextstepaction"]
 > [Arcok észlelése egy képen](../Face-API-How-to-Topics/HowtoDetectFacesinImage.md)

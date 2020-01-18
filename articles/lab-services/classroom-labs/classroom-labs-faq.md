@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/05/2019
 ms.author: spelluru
-ms.openlocfilehash: 91c5c1480669829bad7f8d89ce360bb806d6c997
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 3bc58e9545f38508a9e08e9ae1aa9cf8713cc520
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646854"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264746"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
 Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kapcsolatos leggyakoribb kérdésekre. 
@@ -47,13 +47,18 @@ A portok a következők: 49152 – 65535. Az osztályterem Labs egy terheléselo
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen nyilvános IP-címtartományt nyitok meg a szervezetem tűzfal beállításai között, hogy az RDP/SSH-n keresztül csatlakozzanak a labor virtuális gépekhez?
 Lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519), amely a nyilvános IP-címtartományt biztosítja az Azure-beli adatközpontok számára. Megnyithatja azon régiók IP-címeit, amelyeken a labor fiókjai vannak.
 
+## <a name="users"></a>Felhasználók
+
+### <a name="how-many-users-can-be-in-a-classroom-lab"></a>Hány felhasználó lehet egy osztályterem laborban?
+Akár 400 felhasználót is hozzáadhat egy osztályterem laborhoz. 
+
 ## <a name="blog-post"></a>Blogbejegyzés
 Fizessen elő a [Azure Lab Services blogra](https://azure.microsoft.com/blog/tag/azure-lab-services/).
 
 ## <a name="update-notifications"></a>Frissítési értesítések
 Fizessen elő a [labor Services frissítéseire](https://azure.microsoft.com/updates/?product=lab-services) , és tájékozódjon a labor Services új funkcióiról.
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 

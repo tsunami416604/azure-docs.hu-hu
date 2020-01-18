@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 05/24/2019
 ms.author: mlearned
-ms.openlocfilehash: efd17429ca74f170175faf3513dc79af384dd8d2
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 73798bf496f600e2ef98940051070a0ee117bdb3
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74554206"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261857"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Statikus nyilvános IP-címmel rendelkező bejövő vezérlő létrehozása az Azure Kubernetes szolgáltatásban (ak)
 
@@ -31,7 +31,7 @@ További lehetőségek:
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
-Ez a cikk a Helm használatával telepíti az NGINX beáramló vezérlőt, a tanúsítvány-kezelőt és egy minta webalkalmazást. Meg kell adnia a Helm-t az AK-fürtön belül, és egy szolgáltatásfiókot kell használnia a Kormányrúdhoz. Győződjön meg arról, hogy a Helm legújabb kiadását használja. A frissítési utasításokért tekintse meg a [Helm install docs][helm-install]című témakört. A Helm konfigurálásával és használatával kapcsolatos további információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][use-helm].
+Ez a cikk a Helm használatával telepíti az NGINX beáramló vezérlőt, a tanúsítvány-kezelőt és egy minta webalkalmazást. Meg kell adnia a Helm-t az AK-fürtön belül, és egy szolgáltatásfiókot kell használnia a Kormányrúdhoz. Győződjön meg arról, hogy a Helm 3 legújabb kiadását használja. A frissítési utasításokért tekintse meg a [Helm install docs][helm-install]című témakört. A Helm konfigurálásával és használatával kapcsolatos további információkért lásd: [alkalmazások telepítése az Azure Kubernetes szolgáltatásban (ak)][use-helm].
 
 Ehhez a cikkhez az Azure CLI 2.0.64 vagy újabb verzióját is futtatnia kell. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli-install].
 
@@ -66,7 +66,7 @@ A bejövő vezérlőt egy Linux-csomóponton is ütemezni kell. A Windows Server
 kubectl create namespace ingress-basic
 
 # Use Helm to deploy an NGINX ingress controller
-helm install stable/nginx-ingress \
+helm install nginx-ingress stable/nginx-ingress \
     --namespace ingress-basic \
     --set controller.replicaCount=2 \
     --set controller.nodeSelector."beta\.kubernetes\.io/os"=linux \
@@ -80,8 +80,8 @@ Ha a Kubernetes terheléselosztó szolgáltatás létrejön az NGINX beáramló 
 $ kubectl get service -l app=nginx-ingress --namespace ingress-basic
 
 NAME                                        TYPE           CLUSTER-IP    EXTERNAL-IP    PORT(S)                      AGE
-dinky-panda-nginx-ingress-controller        LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
-dinky-panda-nginx-ingress-default-backend   ClusterIP      10.0.95.248   <none>         80/TCP                       3m
+nginx-ingress-controller                    LoadBalancer   10.0.232.56   40.121.63.72   80:31978/TCP,443:32037/TCP   3m
+nginx-ingress-default-backend               ClusterIP      10.0.95.248   <none>         80/TCP                       3m
 ```
 
 Még nem jöttek létre Bejövő szabályok, így az NGINX bejövő vezérlő alapértelmezett 404 lapja jelenik meg, ha megkeresi a nyilvános IP-címet. A bejövő szabályok a következő lépésekben vannak konfigurálva.
@@ -119,7 +119,7 @@ Ha a tanúsítvány-kezelő vezérlőt egy RBAC-kompatibilis fürtön szeretné 
 
 ```console
 # Install the CustomResourceDefinition resources separately
-kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.11/deploy/manifests/00-crds.yaml
+kubectl apply --validate=false -f https://raw.githubusercontent.com/jetstack/cert-manager/release-0.12/deploy/manifests/00-crds.yaml
 
 # Create the namespace for cert-manager
 kubectl create namespace cert-manager
@@ -135,9 +135,9 @@ helm repo update
 
 # Install the cert-manager Helm chart
 helm install \
-  --name cert-manager \
+  cert-manager \
   --namespace cert-manager \
-  --version v0.11.0 \
+  --version v0.12.0 \
   jetstack/cert-manager
 ```
 
@@ -188,13 +188,13 @@ helm repo add azure-samples https://azure-samples.github.io/helm-charts/
 Hozza létre az első bemutató alkalmazást egy Helm-diagramból a következő paranccsal:
 
 ```console
-helm install azure-samples/aks-helloworld --namespace ingress-basic
+helm install aks-helloworld azure-samples/aks-helloworld --namespace ingress-basic
 ```
 
 Most telepítse a bemutató alkalmazás egy második példányát. A második példány esetében meg kell adnia egy új címet, hogy a két alkalmazás vizuálisan eltérő legyen. Egyedi szolgáltatásnevet is megadhat:
 
 ```console
-helm install azure-samples/aks-helloworld \
+helm install aks-helloworld-2 azure-samples/aks-helloworld \
     --namespace ingress-basic \
     --set title="AKS Ingress Demo" \
     --set serviceName="ingress-demo"
@@ -213,7 +213,6 @@ apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: hello-world-ingress
-  namespace: ingress-basic
   annotations:
     kubernetes.io/ingress.class: nginx
     cert-manager.io/cluster-issuer: letsencrypt-staging
@@ -237,10 +236,10 @@ spec:
         path: /hello-world-two(/|$)(.*)
 ```
 
-Hozza létre a bejövő erőforrásokat a `kubectl apply -f hello-world-ingress.yaml` parancs használatával.
+Hozza létre a bejövő erőforrásokat a `kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic` parancs használatával.
 
 ```
-$ kubectl apply -f hello-world-ingress.yaml
+$ kubectl apply -f hello-world-ingress.yaml --namespace ingress-basic
 
 ingress.extensions/hello-world-ingress created
 ```
@@ -345,36 +344,33 @@ kubectl delete -f cluster-issuer.yaml
 Most sorolja fel a Helm kiadásait a `helm list` paranccsal. Keresse meg az *Nginx-beáramló*, a *CERT-Manager*és az *AK-HelloWorld*nevű diagramot az alábbi példában látható módon:
 
 ```
-$ helm list
+$ helm list --all-namespaces
 
-NAME                    REVISION    UPDATED                     STATUS      CHART                   APP VERSION NAMESPACE
-waxen-hamster           1           Wed Mar  6 23:16:00 2019    DEPLOYED    nginx-ingress-1.3.1   0.22.0        kube-system
-alliterating-peacock    1           Wed Mar  6 23:17:37 2019    DEPLOYED    cert-manager-v0.6.6     v0.6.2      kube-system
-mollified-armadillo     1           Wed Mar  6 23:26:04 2019    DEPLOYED    aks-helloworld-0.1.0                default
-wondering-clam          1           Wed Mar  6 23:26:07 2019    DEPLOYED    aks-helloworld-0.1.0                default
+NAME                    NAMESPACE       REVISION        UPDATED                        STATUS          CHART                   APP VERSION
+aks-helloworld          ingress-basic   1               2020-01-11 15:02:21.51172346   deployed        aks-helloworld-0.1.0
+aks-helloworld-2        ingress-basic   1               2020-01-11 15:03:10.533465598  deployed        aks-helloworld-0.1.0
+nginx-ingress           ingress-basic   1               2020-01-11 14:51:03.454165006  deployed        nginx-ingress-1.28.2    0.26.2
+cert-manager            cert-manager    1               2020-01-06 21:19:03.866212286  deployed        cert-manager-v0.12.0            v0.12.0
 ```
 
-Törölje a kiadásokat a `helm delete` paranccsal. A következő példa törli az NGINX beáramló üzembe helyezését, a Tanúsítványkezelőt és a két mintául szolgáló Hello World alkalmazást.
+Törölje a kiadásokat a `helm uninstall` paranccsal. A következő példa törli az NGINX beáramló üzembe helyezését, a Tanúsítványkezelőt és a két mintául szolgáló Hello World alkalmazást.
 
 ```
-$ helm delete waxen-hamster alliterating-peacock mollified-armadillo wondering-clam
+$ helm uninstall aks-helloworld aks-helloworld-2 nginx-ingress -n ingress-basic
 
-release "billowing-kitten" deleted
-release "loitering-waterbuffalo" deleted
-release "flabby-deer" deleted
-release "linting-echidna" deleted
+release "aks-helloworld" deleted
+release "aks-helloworld-2" deleted
+release "nginx-ingress" deleted
+
+$ helm uninstall cert-manager -n cert-manager
+
+release "cert-manager" deleted
 ```
 
 Ezt követően távolítsa el a Helm-tárházat az AK Hello World alkalmazáshoz:
 
 ```console
 helm repo remove azure-samples
-```
-
-Távolítsa el a bejövő forgalom útvonalát, amely irányítja a forgalmat a mintául szolgáló alkalmazásokba:
-
-```console
-kubectl delete -f hello-world-ingress.yaml
 ```
 
 Törölje a saját maga névterét. Használja a `kubectl delete` parancsot, és adja meg a névtér nevét:

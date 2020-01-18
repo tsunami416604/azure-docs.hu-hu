@@ -7,12 +7,12 @@ ms.service: vpn-gateway
 ms.topic: conceptual
 ms.date: 11/21/2019
 ms.author: alzam
-ms.openlocfilehash: 7f05b850a0d886ac0df5c542de647f91fe62eb05
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: b22581d012b2c69081bc7b4eee093227c060b4c2
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74382214"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169715"
 ---
 # <a name="enable-azure-multi-factor-authentication-mfa-for-vpn-users"></a>Azure Multi-Factor Authentication (MFA) engedélyezése a VPN-felhasználók számára
 
@@ -22,27 +22,7 @@ Ha azt szeretné, hogy a felhasználók a hozzáférés megadását megelőzően
 
 Ennek a konfigurációnak az előfeltétele egy konfigurált Azure AD-bérlő a [bérlő konfigurálása](openvpn-azure-ad-tenant.md)című szakaszban ismertetett lépések alapján.
 
-## <a name="mfa"></a>Az MFA-oldal megnyitása
-
-1. Jelentkezzen be az Azure portálra.
-2. Navigáljon a **Azure Active Directory-> minden felhasználó**elemre.
-3. A multi-Factor Authentication lap megnyitásához válassza a **multi-Factor Authentication** lehetőséget.
-
-   ![Bejelentkezés](./media/openvpn-azure-ad-mfa/mfa1.jpg)
-
-## <a name="users"></a>Felhasználók kiválasztása
-
-1. A **multi-Factor Authentication** lapon válassza ki azokat a felhasználókat, akik számára engedélyezni szeretné az MFA-t.
-2. Válassza az **Engedélyezés** lehetőséget.
-
-   ![Válassza ezt:](./media/openvpn-azure-ad-mfa/mfa2.jpg)
-
-## <a name="enableauth"></a>Hitelesítés engedélyezése
-
-1. Navigáljon **Azure Active Directory – > vállalati alkalmazások – > minden alkalmazás**elemre.
-2. A **vállalati alkalmazások – minden alkalmazás** lapon válassza az **Azure VPN**elemet.
-
-   ![Könyvtár azonosítója](./media/openvpn-azure-ad-mfa/user1.jpg)
+[!INCLUDE [MFA steps](../../includes/vpn-gateway-vwan-openvpn-azure-ad-mfa.md)]
 
 ## <a name="enablesign"></a>Bejelentkezési beállítások konfigurálása
 

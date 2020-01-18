@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 9c2c8c1bacf4abfa775747a03d2a4a6121b67714
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 9140114e7d31f24770bdcce9aae849b01aae9996
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74106598"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263631"
 ---
 # <a name="tutorial-configure-rules-and-actions-for-your-device-in-azure-iot-central"></a>Oktatóanyag: Az eszközre vonatkozó szabályok és műveletek konfigurálása az Azure IoT Centralban
 
@@ -22,11 +22,12 @@ ms.locfileid: "74106598"
 
 [!INCLUDE [iot-central-original-pnp](../../../includes/iot-central-original-pnp-note.md)]
 
-Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, amikor a csatlakoztatott légkondicionáló készülék hőmérséklete meghaladja a 90 &deg;F értéket.
+Ebben az oktatóanyagban egy olyan szabályt hoz létre, amely e-mailt küld, ha egy csatlakoztatott légkondicionáló eszköz hőmérséklete meghaladja a 70&deg; F.
 
-Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Telemetria-alapú szabály létrehozása
 > * Művelet hozzáadása
 
@@ -48,13 +49,13 @@ Az oktatóanyag elkezdése előtt el kell végeznie az [Új eszköztípus defini
 
     ![Szabályok nézet](media/tutorial-configure-rules/newrule.png)
 
-5. A szabály meghatározásához használja a következő táblázatban lévő információkat:
+4. A szabály meghatározásához használja a következő táblázatban lévő információkat:
 
-    | Beállítás                                      | Érték                             |
+    | Beállítás                                      | Value (Díj)                             |
     | -------------------------------------------- | ------------------------------    |
     | Name (Név)                                         | Légkondicionáló hőmérsékletével kapcsolatos figyelmeztetés |
-    | Szabály bekapcsolása a sablon összes eszközén | Bekapcsolva                                |
-    | Állapot                                    | A hőmérséklet nagyobb, mint 90    |
+    | Szabály bekapcsolása a sablon összes eszközén | Be                                |
+    | Állapot                                    | A hőmérséklet nagyobb, mint 70    |
     | Összesítés                                  | None                              |
 
     ![Hőmérsékleti szabályfeltétel](media/tutorial-configure-rules/temperaturerule.png)
@@ -71,17 +72,18 @@ A szabályok definiálásakor egy műveletet is meghatároz, amely a szabályfel
 
 2. A művelet meghatározásához használja a következő táblázatban lévő információkat:
 
-    | Beállítás   | Érték                          |
-    | --------- | ------------------------------ |
-    | Művelet        | Az Ön e-mail-címe             |
-    | Megjegyzések     | A légkondicionáló hőmérséklete túllépte a küszöbértéket. |
+    | Beállítás      | Value (Díj)                                               |
+    | ------------ | --------------------------------------------------- |
+    | Megjelenített név | E-mail hőmérséklet riasztása                             |
+    | –           | Az Ön e-mail-címe                                  |
+    | Megjegyzések        | A légkondicionáló hőmérséklete túllépte a küszöbértéket. |
 
     > [!NOTE]
     > Ha e-mailes értesítést szeretne kapni, az e-mail-címnek [az alkalmazásban lévő felhasználói azonosítónak](howto-administer.md) kell lennie, és ennek a felhasználónak be kellett jelentkeznie legalább egyszer az alkalmazásba.
 
     ![Hőmérsékleti művelet](media/tutorial-configure-rules/temperatureaction.png)
 
-3. Kattintson a **Mentés** gombra. A szabály a **szabályok** lapon jelenik meg.
+3. Kattintson a **Mentés** gombra. A szabály a megjelenik a **Szabályok** oldalon.
 
 ## <a name="test-the-rule"></a>A szabály tesztelése
 
@@ -96,12 +98,14 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
 <!-- Repeat task list from intro -->
 > [!div class="nextstepaction"]
+>
 > * Telemetria-alapú szabály létrehozása
 > * Művelet hozzáadása
 
 Most, hogy meghatározta a küszöbérték-alapú szabályt, a javasolt következő lépés az [operátor nézeteinek testreszabása](tutorial-customize-operator.md).
 
 Az Azure IoT Central különböző szabálytípusairól és a szabálydefiníció paraméterezésének módjáról további információért lásd az alábbi témaköröket:
+
 * [Telemetria-szabály létrehozása és értesítések beállítása](howto-create-telemetry-rules.md)
 * [Eseményszabály létrehozása és értesítések beállítása](howto-create-event-rules.md)
 

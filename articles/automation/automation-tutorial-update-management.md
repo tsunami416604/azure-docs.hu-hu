@@ -6,12 +6,12 @@ ms.subservice: update-management
 ms.topic: tutorial
 ms.date: 12/03/2019
 ms.custom: mvc
-ms.openlocfilehash: 0fd25863d26c38608b6f64f22782422b844fdec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2cb9f7824f0dab583ffe5ca770e175c071930cb9
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75420648"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168061"
 ---
 # <a name="manage-updates-and-patches-for-your-azure-vms"></a>Azure-beli virtuális gépek frissítéseinek és javításának kezelése
 
@@ -156,6 +156,10 @@ Az **Új frissítéstelepítés** képernyőn adja meg a következő informáci�
 
 > [!NOTE]
 > Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy `*`kizárási szabályát, akkor a rendszer nem telepíti a javításokat és a csomagokat, mivel azok ki vannak zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha csomag szerepel a csomagban, de egy kizárt függő csomaggal rendelkezik, a csomag nincs telepítve.
+
+> [!NOTE]
+> Nem adhat meg olyan frissítéseket, amelyek felváltották a frissítés központi telepítésére való felvételt.
+>
 
 * **Ütemezési beállítások**: Megnyitja az **Ütemezési beállítások** ablaktáblát. Az alapértelmezett kezdési időpont az aktuális időpontnál 30 perccel későbbi időpont. Bármilyen időpontra beállítható a pillanatnyi időt követő 10. perc után.
 

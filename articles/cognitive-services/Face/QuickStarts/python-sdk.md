@@ -9,16 +9,16 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: badfec71ad44fd9eebc748f716301ad6731883cf
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7ac1b85ee44627990931cfc7b3a65f6f7a661b3f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770356"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165814"
 ---
 # <a name="quickstart-face-client-library-for-python"></a>Rövid útmutató: Face ügyféloldali kódtár a Pythonhoz
 
-Ismerkedés a Pythonhoz készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face API szolgáltatás lehetővé teszi a speciális algoritmusok elérését a képeken található emberi arcok észleléséhez és felismeréséhez.
+Ismerkedés a Pythonhoz készült Face ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
 A Pythonhoz készült Face ügyféloldali kódtár a következőre használható:
 
@@ -72,7 +72,7 @@ pip install --upgrade azure-cognitiveservices-vision-face
 
 A következő osztályok és felületek a Face Python SDK főbb funkcióit kezelik.
 
-|Név|Leírás|
+|Name (Név)|Leírás|
 |---|---|
 |[FaceClient](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.faceclient?view=azure-python) | Ez az osztály a Face szolgáltatás használatára vonatkozó engedélyt jelöli, és minden arc funkcióhoz szüksége van rá. Ezt az előfizetési adatok alapján hozza létre, és más osztályok példányainak előállítására használja. |
 |[FaceOperations](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/azure.cognitiveservices.vision.face.operations.faceoperations?view=azure-python)|Ez az osztály az emberi arcokkal elvégezhető alapvető észlelési és felismerési feladatokat kezeli. |
@@ -290,5 +290,5 @@ Ebben a rövid útmutatóban megtanulta, hogyan használhatja a Pythonhoz kész�
 > [!div class="nextstepaction"]
 > [Face API-hivatkozás (Python)](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)
 
-* [Mi a Face API?](../overview.md)
+* [Mi az a Face szolgáltatás?](../overview.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/Face/FaceQuickstart.py)található.
