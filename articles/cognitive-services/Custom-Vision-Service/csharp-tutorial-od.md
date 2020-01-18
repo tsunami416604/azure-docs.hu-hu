@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: ed86a286051ba9240fe23951ef7cb72de1e96201
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c6aaf69ba3ed682a00a203079b024a47121334e3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74960570"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170074"
 ---
 # <a name="quickstart-create-an-object-detection-project-with-the-custom-vision-net-sdk"></a>Rövid útmutató: Objektumészlelési projekt létrehozása a Custom Vision .NET SDK-val
 
@@ -63,6 +63,9 @@ A következő kódrészlet létrehoz egy objektumészlelési projektet. A létre
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
 Ha képeket címkéz meg az objektumészlelési projektekben, meg kell adnia a címkével ellátott objektumok régióját a normalizált koordináták használatával. Az alábbi kód a címkével ellátott régiójához társítja mindegyik mintaképet.
+
+> [!NOTE]
+> Ha nem rendelkezik kattintással és húzással a régiók koordinátáinak megjelöléséhez, használhatja a webes felhasználói felületet a következő címen: [Customvision.ai](https://www.customvision.ai/). Ebben a példában a koordináták már meg vannak biztosítva.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ObjectDetection/Program.cs?name=snippet_upload_regions)]
 

@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18
-ms.openlocfilehash: 4855451136edfe86baaace48e2582fc7080a9b12
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 18b158b7a4881619b93ab404de67f7bb25f92b6a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770373"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166826"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Videók elemzése közel valós időben
 
@@ -148,7 +148,7 @@ A függvénytár tartalmazza a `FrameGrabber` osztályt, amely a korábban tárg
 
 Néhány lehetőség kimutatása érdekében két, a könyvtárat használó alkalmazást adtunk meg. 
 
-Az első minta alkalmazás egy egyszerű konzolos alkalmazás, amely az alapértelmezett webkamera kereteit fogadja el, majd elküldi azokat a Arcfelismerés Face API. Az alkalmazás egyszerűsített verziója a következő kódban jön létre:
+Az első minta alkalmazás egy egyszerű konzolos alkalmazás, amely a képkockákat az alapértelmezett webhelyről fogadja, majd elküldi őket a Face szolgáltatásba Arcfelismerés céljából. Az alkalmazás egyszerűsített verziója a következő kódban jön létre:
 
 ```csharp
 using System;
@@ -169,7 +169,7 @@ namespace BasicConsoleSample
             // Create grabber.
             FrameGrabber<DetectedFace[]> grabber = new FrameGrabber<DetectedFace[]>();
 
-            // Create Face API Client.
+            // Create Face Client.
             FaceClient faceClient = new FaceClient(new ApiKeyServiceClientCredentials(ApiKey))
             {
                 Endpoint = Endpoint
@@ -185,7 +185,7 @@ namespace BasicConsoleSample
             grabber.AnalysisFunction = async frame =>
             {
                 Console.WriteLine($"Submitting frame acquired at {frame.Metadata.Timestamp}");
-                // Encode image and submit to Face API.
+                // Encode image and submit to Face service.
                 return (await faceClient.Face.DetectWithStreamAsync(frame.Image.ToMemoryStream(".jpg"))).ToArray();
             };
 
@@ -230,13 +230,13 @@ Ennek a módszernek a használatával azonnal megjelenítheti az észlelt arcot.
 
 A minta megkezdéséhez tegye a következőket:
 
-1. A Vision API-k API-kulcsainak beszerzése az [előfizetésekből](https://azure.microsoft.com/try/cognitive-services/). A videoképkockák elemzéséhez megfelelő API-k:
-    - [A Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [A Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
+1. A Vision API-k API-kulcsainak beszerzése az [előfizetésekből](https://azure.microsoft.com/try/cognitive-services/). A video frame-elemzéshez a megfelelő szolgáltatások a következők:
+    - [Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
+    - [Arc](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 2. A [kognitív-Samples-VideoFrameAnalysis GitHub-](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) tárház klónozása.
 
 3. Nyissa meg a mintát a Visual Studio 2015-es vagy újabb verziójával, majd hozza létre és futtassa a minta alkalmazásokat:
-    - A BasicConsoleSample esetében a Face API-kulcs nem változtatható módon rögzítve van közvetlenül a [BasicConsoleSample/Program.cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs) fájlban.
+    - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
     - A LiveCameraSample mezőben adja meg a kulcsokat az alkalmazás **Beállítások** ablaktábláján. A kulcsok a felhasználói adatként megmaradnak a munkamenetek között.
 
 Ha készen áll a minták integrálására, a saját projektjeiből hivatkozhat a VideoFrameAnalyzer könyvtárra.
@@ -245,7 +245,7 @@ A VideoFrameAnalyzer-, hang-, videó-és szöveg-megértési képességei az Azu
 
 ## <a name="summary"></a>Összefoglalás
 
-Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken a Face API és a Computer Vision API használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez. Az alkalmazás ingyenes API-kulcsokkal való létrehozásának megkezdéséhez nyissa meg az [Azure Cognitive Services regisztrációs lapját](https://azure.microsoft.com/try/cognitive-services/).
+Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken az arc-és Computer Vision szolgáltatások használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez. Az alkalmazás ingyenes API-kulcsokkal való létrehozásának megkezdéséhez nyissa meg az [Azure Cognitive Services regisztrációs lapját](https://azure.microsoft.com/try/cognitive-services/).
 
 Nyugodtan visszajelzést és javaslatokat adhat a GitHub- [tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/). Az API-k szélesebb körű visszajelzésének megadásához keresse fel a [UserVoice webhelyét](https://cognitive.uservoice.com/).
 

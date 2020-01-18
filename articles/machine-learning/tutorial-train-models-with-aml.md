@@ -10,12 +10,12 @@ author: sdgilley
 ms.author: sgilley
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: ab407ffbc0e22a2f65436741ce5c7019ac7fc540
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 95e5754c440cc591444df8960fde34de6fc384f0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75533453"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261364"
 ---
 # <a name="tutorial-train-image-classification-models-with-mnist-data-and-scikit-learn-using-azure-machine-learning"></a>Oktatóanyag: képosztályozási modellek betanítása MNIST-adatokkal és scikit – további tudnivalók a Azure Machine Learning használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,7 +105,9 @@ exp = Experiment(workspace=ws, name=experiment_name)
 
 ### <a name="create-or-attach-an-existing-compute-target"></a>Meglévő számítási cél létrehozása vagy csatolása
 
-A felügyelt Azure Machine Learning számítási szolgáltatással az adatszakértők a gépi tanulási modelleket az Azure-beli virtuális gépek fürtjén is betanítják. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban Azure Machine Learning számítást hoz létre képzési környezetként. Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen.
+A felügyelt Azure Machine Learning számítási szolgáltatással az adatszakértők a gépi tanulási modelleket az Azure-beli virtuális gépek fürtjén is betanítják. Ilyenek például a GPU-támogatással rendelkező virtuális gépek. Ebben az oktatóanyagban Azure Machine Learning számítást hoz létre képzési környezetként. Az oktatóanyag későbbi részében a virtuális gépen való futtatáshoz a Python-kódot kell elküldenie. 
+
+Az alábbi kód létrehozza a számítási fürtöket, ha azok még nem léteznek a munkaterületen.
 
  **A számítási cél létrehozása körülbelül öt percet vesz igénybe.** Ha a számítási erőforrás már szerepel a munkaterületen, a kód ezt használja, és kihagyja a létrehozási folyamatot.
 
@@ -146,7 +148,7 @@ else:
     print(compute_target.get_status().serialize())
 ```
 
-Most már rendelkezésre állnak a modell felhőben történő betanításához szükséges csomagok és számítási erőforrások.
+Most már rendelkezésre állnak a modell felhőben történő betanításához szükséges csomagok és számítási erőforrások. 
 
 ## <a name="explore-data"></a>Adatok megismerése
 
@@ -215,7 +217,7 @@ Most már van elképzelése arról, hogy néznek ki ezek a képek, és milyen el
 
 ## <a name="train-on-a-remote-cluster"></a>Betanítás távoli fürtön
 
-E gyakorlat céljából küldje el a feladatot a korábban beállított távoli betanítási fürtnek.  A feladat elküldésének menete:
+Ehhez a feladathoz be kell nyújtania a feladatot a korábban beállított távoli képzési fürtön való futtatáshoz.  A feladat elküldésének menete:
 * Könyvtár létrehozása
 * Betanító szkript létrehozása
 * Kalkulátor-objektum létrehozása

@@ -10,12 +10,12 @@ ms.subservice: content-moderator
 ms.topic: conceptual
 ms.date: 03/15/2019
 ms.author: pafarley
-ms.openlocfilehash: 2ba314c814bdc92f62a607e28aefa30372bf297f
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 2d685683bdc359b31a5a6c550c19e8c0d858f12a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757434"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169591"
 ---
 # <a name="configure-the-review-tool"></a>A felülvizsgálati eszköz konfigurálása
 
@@ -90,14 +90,14 @@ Az egyéni címkéket úgy törölheti, ha kiválasztja a Kuka ikont a címkék 
 
 Az **Összekötők** lapon kezelheti az összekötőket, amelyek olyan szolgáltatás-specifikus beépülő modulok, amelyek különböző módon dolgozzák fel a tartalmakat a tartalom- [munkafolyamatok](../review-api.md#workflows)részeként.
 
-A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Moderator-összekötő, amely a tartalmat **felnőttként** vagy **zamatként**megjelölheti, megkeresheti a káromkodást és így tovább. Használhat azonban más összekötőket is, amelyeket itt láthat, ha rendelkezik a megfelelő szolgáltatásaihoz tartozó hitelesítő adatokkal (az Face API-összekötő használatához például egy [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview) előfizetési kulcsot kell beszereznie).
+A munkafolyamat létrehozásakor az alapértelmezett összekötő az Content Moderator-összekötő, amely a tartalmat **felnőttként** vagy **zamatként**megjelölheti, megkeresheti a káromkodást és így tovább. Használhat azonban más összekötőket is, amelyeket itt láthat, ha rendelkezik a megfelelő szolgáltatásaihoz tartozó hitelesítő adatokkal (például [az arc-](https://docs.microsoft.com/azure/cognitive-services/face/overview) összekötő használatára).
 
 A [felülvizsgálati eszköz](./human-in-the-loop.md) a következő összekötőket tartalmazza:
 
-- Emotion API
-- Face API
+- Érzelemfelismerés
+- Face
 - PhotoDNA Cloud Service
-- Szövegelemzési API
+- Text Analytics
 
 ### <a name="add-a-connector"></a>Összekötő hozzáadása
 

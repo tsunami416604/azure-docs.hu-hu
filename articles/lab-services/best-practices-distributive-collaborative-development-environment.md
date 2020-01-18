@@ -1,6 +1,6 @@
 ---
-title: Az elosztott együttműködési fejlesztés az Azure DevTest Labs-erőforrások |} A Microsoft Docs
-description: Ajánlott eljárásokat biztosít olyan DevTest Labs-erőforrások egy elosztott és együttműködő fejlesztési környezet beállítása.
+title: Azure DevTest Labs erőforrások elosztott együttműködési fejlesztése
+description: A DevTest Labs erőforrásainak fejlesztéséhez ajánlott eljárásokat biztosít egy elosztott és együttműködő fejlesztési környezet beállításához.
 services: devtest-lab,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,55 +11,55 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/10/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 8ffc8ed3f84284ff69e9515cba0982790b823a37
-ms.sourcegitcommit: 5bdd50e769a4d50ccb89e135cfd38b788ade594d
+ms.openlocfilehash: 9469591b1945adaffca973828d619d5d06655262
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/03/2019
-ms.locfileid: "67543770"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170118"
 ---
-# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Elosztott és együttműködő fejlesztés az Azure DevTest Labs-erőforrások ajánlott eljárásai
-Az elosztott együttműködési fejlesztési lehetővé teszi a különböző csapatok vagy személyek fejlesztéséhez és karbantartásához alap egy kódot. Sikeres legyen, a fejlesztési folyamatot hozhat létre, megoszthatja és integrálhatja az adatokat képes függ. A legfontosabb fejlesztési elve szerint az Azure DevTest Labs is használható. Nincsenek számos különböző típusú erőforrás kulcsok tesztkörnyezetben általában egy vállalaton belül különböző labs között elosztott. A különböző típusú erőforrások fióktevékenységekkel két területekre:
+# <a name="best-practices-for-distributed-and-collaborative-development-of-azure-devtest-labs-resources"></a>Ajánlott eljárások az Azure DevTest Labs-erőforrások elosztott és együttműködő fejlesztéséhez
+Az elosztott együttműködési fejlesztés lehetővé teszi a különböző csapatok vagy személyek számára, hogy alapszintű kódot fejlesszenek és őrizzenek meg. Ahhoz, hogy sikeres legyen, a fejlesztési folyamat az információk létrehozására, megosztására és integrálására való képességtől függ. Ez a kulcs-fejlesztési elv a Azure DevTest Labson belül használható. A laborban többféle típusú erőforrás van, amelyeket általában a különböző laborok osztanak szét egy vállalaton belül. A különböző típusú erőforrások két területre vannak koncentrálva:
 
-- A tesztkörnyezet (tesztkörnyezet-alapú) belül belső tárolt erőforrások
-- A tárolt erőforrások [a labor csatlakoztatott külső tárházak](devtest-lab-add-artifact-repo.md) (kód a tárház-alapú). 
+- A laboron belül belsőan tárolt erőforrások (Lab-alapú)
+- A laborhoz (code Repository-alapú) [kapcsolódó külső adattárakban](devtest-lab-add-artifact-repo.md) tárolt erőforrások. 
 
-Ez a dokumentum ismerteti az ajánlott eljárásokat, amelyek lehetővé teszik együttműködés és a terjesztési több csapatok fenntartásával, testreszabási és minőségi minden szinten.
+Ez a dokumentum ismerteti azokat az ajánlott eljárásokat, amelyek lehetővé teszik az együttműködés és a terjesztést több csapat között, miközben minden szinten biztosítja a testreszabást és a minőséget.
 
-## <a name="lab-based-resources"></a>Tesztlabor-alapú erőforrások
+## <a name="lab-based-resources"></a>Tesztkörnyezet-alapú erőforrások
 
-### <a name="custom-virtual-machine-images"></a>Egyéni virtuálisgép-lemezképek
-Egy gyakori forrása labs éjszakai történik az üzembe helyezett egyéni rendszerképek is rendelkezhet. Részletes információkért lásd: [kép gyári](image-factory-create.md).    
+### <a name="custom-virtual-machine-images"></a>Egyéni virtuálisgép-rendszerképek
+Az Egyéni rendszerképek közös forrásaként is elvégezheti a laborok éjszakai üzembe helyezését. Részletes információ: a [rendszerkép-előállító](image-factory-create.md).    
 
-### <a name="formulas"></a>Képletek
-[A képletek](devtest-lab-manage-formulas.md) labor-specifikusak, és nem kell egy terjesztési mechanizmus. A lab tagok képletek fejlesztésének teheti meg. 
+### <a name="formulas"></a>képletek
+A [képletek](devtest-lab-manage-formulas.md) labor-specifikusak, és nincs terjesztési mechanizmusuk. A labor tagjai a képletek fejlesztését végzik. 
 
-## <a name="code-repository-based-resources"></a>Tárház-alapú erőforrások kód
-Nincsenek kódtárházakhoz, összetevők és környezet alapján két különböző funkciókkal. Ez a cikk az funkciók és a leghatékonyabban beállítva az adattárak és a munkafolyamat engedélyezése az elérhető összetevők és a környezetek a szervezet vagy csapat szintjén testre szabhatók az keresztül haladnak.  Ez a munkafolyamat szabványon alapul [forráskód szabályozhatja elágazási stratégia](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops). 
+## <a name="code-repository-based-resources"></a>Adattár-alapú erőforrások
+Két különböző funkció található a kódokon, az összetevőkön és a környezeteken alapulva. Ez a cikk a funkciók és a leghatékonyabban a Tárházak és a munkafolyamatok beállítását mutatja be, így lehetővé teszi az elérhető összetevők és környezetek testreszabását a szervezet szintjén vagy a csapat szintjén.  Ez a munkafolyamat a szabványos [forráskód-vezérlési elágazási stratégián](/azure/devops/repos/tfvc/branching-strategies-with-tfvc?view=azure-devops)alapul. 
 
-### <a name="key-concepts"></a>Fő fogalmak
-Az adatforrás adatai összetevők metaadatokat, parancsfájlok tartalmaz. Információk a környezetek szolgáltatás metaadatok és a Resource Manager-sablonok és minden kiegészítő fájlt, mint például a PowerShell-parancsfájlok, DSC-parancsfájlok, Zip-fájlokat és így tovább.  
+### <a name="key-concepts"></a>Alapfogalmak
+Az összetevőkre vonatkozó információforrás metaadatokat, parancsfájlokat tartalmaz. A környezetekhez tartozó információforrás metaadatokat és Resource Manager-sablonokat tartalmaz minden olyan támogató fájllal, mint például a PowerShell-parancsfájlok, a DSC-parancsfájlok, a zip-fájlok stb.  
 
 ### <a name="repository-structure"></a>Tárház szerkezete  
-A leggyakrabban használt konfiguráció verziókövetési (SCC), hogy állítsa be a fájlok tárolására szolgáló kódot (Resource Manager-sablonok, metaadatokat és parancsfájlok), amely segítségével a labs szolgáltatásban egy többrétegű struktúrát. Pontosabban hozzon létre különböző adattárak a vállalat különböző szintjei által kezelt erőforrások tárolására:   
+A forráskód-vezérlés (SCC) leggyakoribb konfigurációja egy többrétegű struktúra beállítása a laborokban használt programkódok (Resource Manager-sablonok, metaadatok és parancsfájlok) tárolására. Konkrétan hozzon létre különböző adattárakat a vállalat különböző szintjei által felügyelt erőforrások tárolásához:   
 
-- Céges szintű erőforrás.
-- Üzleti egység/osztás-szintű erőforrások
-- Csapat-specifikus erőforrásokat.
+- Vállalati szintű erőforrások.
+- Üzleti egység/részleg – széles körű erőforrások
+- A csoportra jellemző erőforrások.
 
-Ezeket a szinteket mindegyike egy másik adattár, ahol a főágban van szükség, a gyártási minőségű mutató hivatkozás. A [ágak](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) minden tárház lenne megadott erőforrások (összetevők és sablonok) fejlesztését. Ez a struktúra igazítja a DevTest Labs segítségével könnyedén csatlakoztathatók a tárházak több és több ágat, a szervezet labs egy időben. Az adattár neve szerepel a felhasználói felület (UI) nincsenek azonos nevek kialakuló bizonytalanság elkerülése érdekében, a leírást és a közzétevő.
+Ezen szintek mindegyike egy másik adattárra mutat, ahol a fő ág az éles minőséghez szükséges. Az egyes adattárokban lévő [ágak](/azure/devops/repos/git/git-branching-guidance?view=azure-devops) az adott erőforrások (összetevők vagy sablonok) fejlesztéséhez szükségesek. Ez a struktúra jól illeszkedik a DevTest Labs szolgáltatáshoz, mivel egyszerre több tárház és több ág összekapcsolására is lehetőség van a szervezet laborjában. Az adattár nevét a felhasználói felület (UI) tartalmazza, hogy elkerülje a félreértéseket, ha ugyanazok a nevek, a leírások és a közzétevők.
      
-Az alábbi ábrán látható két tárházak: egy vállalati-tárházat az informatikai részleg által kezelt, és a egy R & D hányadosának osztási tárakba.
+Az alábbi ábrán két tárház látható: az IT-részleg által karbantartott vállalati tárház, valamint az R & D divízió által karbantartott divízió-tárház.
 
-![A minta elosztó és együttműködő fejlesztési környezet](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
+![Példaként szolgáló terjesztési és együttműködési fejlesztési környezet](./media/best-practices-distributive-collaborative-dev-env/distributive-collaborative-dev-env.png)
    
-A réteges felépítés közben csatlakozik a labor több tárházak kellene a nagyobb rugalmasság érdekében lehetővé teszi, hogy a magasabb minőségű megtartásával, a főágba fejlesztést tesz lehetővé.
+Ez a rétegzett struktúra lehetővé teszi a fejlesztést, miközben magasabb szintű minőséget tart fenn a fő ág esetében, miközben a laborhoz több tárház csatlakozik, így nagyobb rugalmasságot biztosít.
 
-## <a name="next-steps"></a>További lépések    
+## <a name="next-steps"></a>Következő lépések    
 Lásd az alábbi cikkeket:
 
-- Egy adattár hozzáadása egy laborhoz segítségével a [az Azure portal](devtest-lab-add-artifact-repo.md) vagy keresztül [Azure Resource Management-sablonnal](add-artifact-repository.md)
+- Adattár hozzáadása laborhoz a [Azure Portal](devtest-lab-add-artifact-repo.md) vagy az [Azure Resource Management-sablon](add-artifact-repository.md) használatával
 - [DevTest Labs-összetevők](devtest-lab-artifact-author.md)
-- [DevTest Labs-környezetben](devtest-lab-create-environment-from-arm.md).
+- [DevTest Labs-környezetek](devtest-lab-create-environment-from-arm.md).

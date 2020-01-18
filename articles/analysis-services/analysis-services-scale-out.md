@@ -4,15 +4,15 @@ description: Azure Analysis Services-kiszolgálók replikálása felskálázáss
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/30/2019
+ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 1b40238dfc579e42d0389ae14fdea4b5692ede06
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73572593"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167950"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -36,7 +36,7 @@ A skálázás első beállításakor a *rendszer automatikusan* szinkronizálja 
 
 Míg az automatikus szinkronizálás csak akkor történik meg, ha első alkalommal kibővít egy kiszolgálót, manuálisan is elvégezheti a szinkronizálást. A szinkronizálási funkció biztosítja, hogy a lekérdezési készletben lévő replikák megegyezzenek az elsődleges kiszolgálóval. Az elsődleges kiszolgálón végzett feldolgozási (frissítési) modellek esetében a feldolgozási műveletek befejeződése *után* szinkronizálást kell végrehajtani. Ez a szinkronizálás a blob Storage-ban lévő elsődleges kiszolgáló fájljainak frissített adatait másolja a második fájlba. A lekérdezési készletben lévő replikákat a rendszer a blob Storage-ban lévő fájlok második készletének frissített adatainak megfelelően hidratálja. 
 
-Ha egy későbbi kibővített műveletet hajt végre, például a két és öt közötti replikák számának növelését, az új replikák a blob Storage-ban lévő fájlok második készletében lévő adatokkal vannak hidratálva. Nincs szinkronizálás. Ha a horizontális felskálázás után elvégezte a szinkronizálást, a lekérdezési készletben lévő új replikák kétszer is hidratálva lesznek – redundáns folyadékpótlás. Egy későbbi kibővített művelet végrehajtásakor fontos szem előtt tartani a következőket:
+Ha egy későbbi kibővített műveletet hajt végre, például a két és öt közötti replikák számának növelését, az új replikák a blob Storage-ban lévő fájlok második készletében lévő adatokkal vannak hidratálva. Nincs szinkronizálás. Ha ezt követően elvégez egy szinkronizálást a horizontális felskálázás után, a lekérdezési készletben lévő új replikák kétszer is hidratálva lesznek – redundáns hidratáció. Egy későbbi kibővített művelet végrehajtásakor fontos szem előtt tartani a következőket:
 
 * Végezzen szinkronizálást *a kibővítő művelet előtt* a hozzáadott replikák redundáns hidratációjának elkerüléséhez. Az egyidejű szinkronizálási és kibővíthető műveletek nem engedélyezettek.
 
@@ -44,9 +44,29 @@ Ha egy későbbi kibővített műveletet hajt végre, például a két és öt k
 
 * A szinkronizálás akkor is engedélyezett, ha nincsenek replikák a lekérdezési készletben. Ha az elsődleges kiszolgálón lévő feldolgozási műveletből egy vagy több replikára horizontális felskálázást végez, először hajtsa végre a szinkronizálást a lekérdezési készletben lévő replikák nélkül, majd a horizontális felskálázást. A horizontális felskálázás előtt a szinkronizálás elkerüli az újonnan hozzáadott replikák redundáns hidratációját.
 
-* Ha az elsődleges kiszolgálóról törli a modell-adatbázist, a rendszer nem törli automatikusan a lekérdezési készlet replikái közül. A szinkronizálási műveletet a [Sync-AzAnalysisServicesInstance PowerShell-](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal kell végrehajtania, amely eltávolítja az adott adatbázishoz tartozó fájlt/t a replika megosztott blob Storage-helyéről, majd törli a modell-adatbázist a replikák a lekérdezési készletben. Annak megállapításához, hogy létezik-e a modell adatbázisa a lekérdezési készlet replikái között, de nem az elsődleges kiszolgálón, ügyeljen arra, hogy a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** beállítás értéke **Igen**. Ezután a SSMS használatával kapcsolódjon az elsődleges kiszolgálóhoz a `:rw` minősítővel, és ellenőrizze, hogy létezik-e az adatbázis. Ezután kapcsolódjon a lekérdezési készlet replikái számára úgy, hogy a `:rw` minősítő nélkül csatlakozik, és ellenőrizze, hogy létezik-e ugyanez az adatbázis is. Ha az adatbázis létezik a lekérdezési készlet replikái között, de az elsődleges kiszolgálón nem, futtassa a szinkronizálási műveletet.   
+* Ha az elsődleges kiszolgálóról törli a modell-adatbázist, a rendszer nem törli automatikusan a lekérdezési készlet replikái közül. A szinkronizálási műveletet a [Sync-AzAnalysisServicesInstance PowerShell-](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal kell végrehajtania, amely eltávolítja az adott adatbázishoz tartozó fájlokat a replika megosztott blob Storage-helyéről, majd törli a modell-adatbázist a lekérdezési készlet replikái között. Annak megállapításához, hogy létezik-e a modell adatbázisa a lekérdezési készlet replikái között, de nem az elsődleges kiszolgálón, ügyeljen arra, hogy a **feldolgozó kiszolgáló elkülönítése a lekérdezési készletből** beállítás értéke **Igen**. Ezután a SSMS használatával kapcsolódjon az elsődleges kiszolgálóhoz a `:rw` minősítővel, és ellenőrizze, hogy létezik-e az adatbázis. Ezután kapcsolódjon a lekérdezési készlet replikái számára úgy, hogy a `:rw` minősítő nélkül csatlakozik, és ellenőrizze, hogy létezik-e ugyanez az adatbázis is. Ha az adatbázis létezik a lekérdezési készlet replikái között, de az elsődleges kiszolgálón nem, futtassa a szinkronizálási műveletet.   
 
 * Ha az elsődleges kiszolgálón átnevez egy adatbázist, további lépésekre van szükség annak biztosításához, hogy az adatbázis megfelelően legyen szinkronizálva a replikákkal. Az Átnevezés után hajtson végre egy szinkronizálást a [Sync-AzAnalysisServicesInstance](https://docs.microsoft.com/powershell/module/az.analysisservices/sync-AzAnalysisServicesinstance) paranccsal, és adja meg a `-Database` paramétert a régi adatbázis nevével. Ez a szinkronizálás eltávolítja az adatbázist és a fájlokat a régi névvel bármely replikáról. Ezután hajtson végre egy újabb szinkronizálást a `-Database` paraméter megadásával az új adatbázis nevével. A második szinkronizálás az újonnan elnevezett adatbázist átmásolja a fájlok második készletére, és hidratálja a replikákat. Ezek a szinkronizálások nem hajthatók végre a portálon a modell szinkronizálása parancs használatával.
+
+### <a name="synchronization-mode"></a>Szinkronizálási mód
+
+Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradnak, nem pedig Növekményesen. A rehidratálás fázisokban történik. Ezek leválasztása és csatolása egyszerre két alkalommal történik (feltéve, hogy legalább három replika van) annak biztosításához, hogy legalább egy replikát online állapotba lehessen tartani a lekérdezésekhez adott időben. Bizonyos esetekben előfordulhat, hogy az ügyfeleknek újra kell csatlakozniuk az egyik online replikához, amíg ez a folyamat zajlik. A **ReplicaSyncMode** beállítás használatával a lekérdezési replika szinkronizálása párhuzamosan is megadható. A párhuzamos szinkronizálás a következő előnyöket biztosítja: 
+
+- A szinkronizálási idő jelentős csökkentése. 
+- A replikák közötti adatcsere nagyobb valószínűséggel konzisztens lesz a szinkronizálási folyamat során. 
+- Mivel az adatbázisok online állapotban vannak az összes replikán a szinkronizálási folyamat során, az ügyfeleknek nem kell újracsatlakozniuk. 
+- A memórián belüli gyorsítótárat a rendszer csak a megváltozott adatmennyiséggel frissíti, ami gyorsabb lehet, mint a modell teljes rehidratálása. 
+
+#### <a name="setting-replicasyncmode"></a>ReplicaSyncMode beállítása
+
+A SSMS használatával állítsa be a ReplicaSyncMode a speciális tulajdonságok között. Lehetséges értékek: 
+
+- `1` (alapértelmezett): teljes replika adatbázis-rehidratálás fázisokban (növekményes). 
+- `2`: párhuzamosan optimalizált szinkronizálás. 
+
+![RelicaSyncMode-beállítás](media/analysis-services-scale-out/aas-scale-out-sync-mode.png)
+
+Ha a **ReplicaSyncMode = 2**értéket állítja be, attól függően, hogy a gyorsítótár mekkora részét szeretné frissíteni, a lekérdezési replikák további memóriát is felhasználhat. Ahhoz, hogy az adatbázis online állapotú legyen, és lekérdezésekhez is elérhető legyen, attól függően, hogy az adott adat mekkora mértékben módosult, a művelet megkövetelheti a replika *memóriájának megduplázását* , mivel a régi és az új szegmensek egyszerre is megmaradnak a memóriában. A replika-csomópontok ugyanazzal a memóriával rendelkeznek, mint az elsődleges csomópont, és a frissítési műveletek esetében általában extra memória van az elsődleges csomóponton, így valószínűleg nem valószínű, hogy a replikák elfogynak a memóriából. Emellett a gyakori forgatókönyv az, hogy az adatbázis növekményes frissítése az elsődleges csomóponton történik, ezért a memória kétszeres megkötésének követelménye nem lehet gyakori. Ha a szinkronizálási művelet hibát észlel, akkor az alapértelmezett technikát fogja használni (kettő csatlakoztatása/leválasztása egyszerre). 
 
 ### <a name="separate-processing-from-query-pool"></a>Külön feldolgozás a lekérdezési készletből
 
@@ -82,7 +102,7 @@ További tudnivalókért lásd: [A kiszolgáló metrikáinak monitorozása](anal
 
 Amikor első alkalommal konfigurálja a kibővített kiszolgálót, a rendszer automatikusan szinkronizálja az elsődleges kiszolgáló modelljeit a lekérdezési készletben lévő replikákkal. Az automatikus szinkronizálás csak egyszer történik meg, amikor először konfigurálja a méretezést egy vagy több replikára. Az ugyanazon a kiszolgálón lévő replikák számának későbbi módosításai *nem indítanak el másik automatikus szinkronizálást*. Az automatikus szinkronizálás még akkor sem történik meg, ha a kiszolgáló nulla replikára van állítva, majd ismét kibővíthető tetszőleges számú replikára. 
 
-## <a name="synchronize"></a>Szinkronizálni 
+## <a name="synchronize"></a>Szinkronizálás 
 
 A szinkronizálási műveleteket manuálisan vagy a REST API használatával kell elvégezni.
 
@@ -132,7 +152,7 @@ A feldolgozó kiszolgáló a lekérdezési készletből való elkülönítéséh
 
 További információ: [egyszerű szolgáltatásnév használata az az. AnalysisServices modullal](analysis-services-service-principal.md#azmodule).
 
-## <a name="connections"></a>Kapcsolatok
+## <a name="connections"></a>Connections (Kapcsolatok)
 
 A kiszolgáló áttekintő oldalán két kiszolgálónév található. Ha még nem konfigurálta a kibővített kiszolgálót a kiszolgálókon, mindkét kiszolgálónév ugyanúgy működik. A kibővített kiszolgáló beállítása után a kapcsolódási típustól függően meg kell adnia a megfelelő kiszolgálónevet. 
 

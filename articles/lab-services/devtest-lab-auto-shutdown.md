@@ -12,19 +12,23 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/17/2019
+ms.date: 01/17/2020
 ms.author: spelluru
-ms.openlocfilehash: 1c13414bb252da1192f82675da5b134bf43a40f0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a2d0b9bdfba1b96ad42e45d54faf106b2361e29d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772635"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264787"
 ---
-# <a name="manage-autoshutdown-policies-for-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet automatikus leállítási házirendjeinek kezelése Azure DevTest Labs
+# <a name="configure-autoshutdown-for-lab-and-compute-virtual-machines-in-azure-devtest-labs"></a>Az automatikus leállítás konfigurálása a tesztkörnyezet és a számítási virtuális gépek számára a Azure DevTest Labsban
+
+Ez a cikk bemutatja, hogyan konfigurálhatja a laboratóriumi virtuális gépek automatikus leállítási beállításait a DevTest Labs-ben és a számítási virtuális gépeken. 
+
+## <a name="configure-autoshutdown-for-lab-vms-devtest-labs"></a>Laboratóriumi virtuális gépek automatikus leállításának konfigurálása (DevTest Labs)
 A Azure DevTest Labs lehetővé teszi, hogy az egyes laborokhoz tartozó szabályzatok (beállítások) kezelésével szabályozza a költségeket, és csökkentse a saját laborokban lévő hulladékokat. Ebből a cikkből megtudhatja, hogyan konfigurálhatja az automatikus leállítási szabályzatot egy Lab-fiókhoz, és hogyan konfigurálhatja a laborok automatikus leállítási beállításait a laborban Ha meg szeretné tekinteni, hogyan kell beállítani az összes tesztkörnyezet házirendjét, tekintse meg [a labor-házirendek definiálása a Azure DevTest Labs](devtest-lab-set-lab-policy.md).  
 
-## <a name="set-auto-shutdown-policy-for-a-lab"></a>Tesztkörnyezet automatikus leállítási házirendjének beállítása
+### <a name="set-auto-shut-down-policy-for-a-lab"></a>Automatikus leállítás házirend beállítása laborhoz
 A labor tulajdonosaként beállíthatja a tesztkörnyezetben lévő összes virtuális gép leállítási ütemtervét. Ennek köszönhetően a nem használt gépektől (inaktív) származó költségek is megmenthetők. Központilag is kényszerítheti a leállítási szabályzatokat az összes laboratóriumi virtuális gépen, de mentheti a labor-felhasználókat arra, hogy ütemezést állítsanak be az egyes gépekhez. Ezzel a szolgáltatással beállíthatja a szabályzatot a labor-ütemtervre, kezdve a teljes hozzáférés szabályozása nélkül, a labor felhasználói számára. A labor tulajdonosaként a következő lépésekkel konfigurálhatja ezt a házirendet:
 
 1. A labor kezdőlapján válassza a **konfiguráció és szabályzatok**lehetőséget.
@@ -33,7 +37,7 @@ A labor tulajdonosaként beállíthatja a tesztkörnyezetben lévő összes virt
 
     ![Házirend-beállítások automatikus leállítása](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-options.png)
 
-## <a name="configure-auto-shutdown-settings"></a>Automatikus leállítás beállításainak konfigurálása
+### <a name="configure-auto-shutdown-settings"></a>Automatikus leállítás beállításainak konfigurálása
 Az automatikus leállítási szabályzat segít a laborban lévő virtuális gépek leállítási idejének meghatározásában.
 
 A labor szabályzatának megtekintéséhez (és módosításához) kövesse az alábbi lépéseket:
@@ -72,7 +76,7 @@ Ha a laborban ezt a házirendet állítja be, a labor-felhasználók nem tudják
 
 ![Automatikus leállítás házirend-beállítás – 3](./media/devtest-lab-set-lab-policy/auto-shutdown-policy-option-3.png)
 
-## <a name="notifications"></a>Értesítések
+### <a name="notifications"></a>Értesítések
 Ha a labor tulajdonosa állítja be az automatikus leállítást, az értesítéseket a labor felhasználói számára 30 perccel az automatikus leállítás előtt küldi el a rendszer, ha a virtuális gépek érintettek lesznek. Ez a beállítás lehetővé teszi a laboratóriumi felhasználók számára, hogy a leállítás előtt megmentsek a munkájukat. Az értesítés az egyes virtuális gépekre mutató hivatkozásokat is tartalmaz a következő műveletekhez:
 
 - Automatikus leállítás kihagyása erre az időre
@@ -82,7 +86,7 @@ A rendszer értesítést küld a konfigurált webhook-végponton vagy egy, az au
 
 Javasoljuk, hogy a webhookokat használja, mivel azokat számos különböző alkalmazás (például Slack, Azure Logic Apps stb.) széles körben támogatja, és lehetővé teszi, hogy saját módszert alkalmazzon az értesítések küldéséhez. Ebből a cikkből megtudhatja, hogyan kérhet le automatikus leállítási értesítést az e-mailekről Azure Logic Apps használatával. Először is ugorjon végig az alapszintű lépéseken, amelyekkel engedélyezheti az automatikus leállítási értesítést a laborban.   
 
-## <a name="create-a-logic-app-that-receives-email-notifications"></a>E-mail értesítéseket fogadó logikai alkalmazás létrehozása
+### <a name="create-a-logic-app-that-receives-email-notifications"></a>E-mail értesítéseket fogadó logikai alkalmazás létrehozása
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) számos beépített összekötőt biztosít, amely megkönnyíti a szolgáltatások integrálását más ügyfelekkel, például az Office 365 és a Twitter használatával. A logikai alkalmazás e-mailes értesítéshez való beállításának lépései a következő négy fázisra oszthatók fel: 
 
 - Hozzon létre egy logikai alkalmazást. 
@@ -185,5 +189,16 @@ Első lépésként hozzon létre egy logikai alkalmazást az Azure-előfizetés�
 
     ![Webhook URL-címe](./media/devtest-lab-auto-shutdown/webhook-url.png)
 
+## <a name="configure-autoshutdown-for-compute-vms"></a>Automatikus leállítás konfigurálása a számítási virtuális gépekhez
+
+1. A **virtuális gép** lapon válassza az **automatikus leállítás** lehetőséget a bal oldali menüben. 
+2. Az **automatikus leállítás** lapon válassza **a** be lehetőséget a szabályzat engedélyezéséhez **, majd a** letiltásához.
+3. Ha engedélyezi ezt a házirendet, itt adhatja meg a virtuális gép leállításának **időpontját** (és **időzónáját**).
+4. Adja meg az **Igen** vagy a **nem** lehetőséget, ha a megadott automatikus leállítási idő előtt 30 perccel szeretné elküldeni az értesítést. Ha az **Igen**lehetőséget választja, adjon meg egy WEBHOOK URL-címet vagy e-mail-címet, amely megadja, hogy hová szeretné közzétenni vagy elküldeni az értesítést. A felhasználó értesítést kap, és a Leállítás késleltetését adja meg. További információ: [értesítések](#notifications) szakasz. 
+9. Kattintson a **Mentés** gombra.
+
+    ![Automatikus leállítás konfigurálása számítási virtuális géphez](./media/devtest-lab-auto-shutdown/comnpute-auto-shutdown.png)
+
 ## <a name="next-steps"></a>Következő lépések
 Az összes házirend beállításának megismeréséhez tekintse meg [a tesztkörnyezet-szabályzatok meghatározása a Azure DevTest Labsban](devtest-lab-set-lab-policy.md)című témakört.
+

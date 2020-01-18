@@ -1,7 +1,7 @@
 ---
 title: 'Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben a rövid útmutatóban arcokat fog felismerni egy képről a Face API segítségével és a Go használatával.
+description: Ebben a rövid útmutatóban a Face szolgáltatás és a go használatával azonosíthatja a képekből származó arcokat.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 3ebcd7dfb7b1138f52663d7c919d4ce4d8bd088a
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 246b9c81e3cb726236143b9749486ba362128756
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890541"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165838"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-rest-api-and-go"></a>Rövid útmutató: Arcfelismerés egy képen a REST API és a Go használatával
 
@@ -23,7 +23,7 @@ Ebben a rövid útmutatóban az Azure Face REST API a go használatával ismeri 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="write-the-script"></a>A parancsfájl írása
@@ -311,7 +311,7 @@ Meg kell jelennie a konzolon kinyomtatott, észlelt arc típusú információk J
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy go-konzol alkalmazást írt, amely meghívja az Azure Face APIt, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
+Ebben a rövid útmutatóban egy go-konzol alkalmazást írt, amely meghívja az Azure Face Service-t, hogy felderítse a képekben lévő arcokat, és visszaállítsa az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

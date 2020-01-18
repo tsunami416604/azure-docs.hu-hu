@@ -1,26 +1,26 @@
 ---
-title: IoT Hub létrehozása az Azure portal használatával |} A Microsoft Docs
-description: Hogyan létrehozása, kezelése és törlése az Azure IoT hubs az Azure Portalon keresztül. Tarifacsomagok, a méretezés, biztonság, és a konfigurációs messaging kapcsolatos információkat tartalmaz.
+title: IoT Hub létrehozása a Azure Portal használatával | Microsoft Docs
+description: Azure IoT-hubok létrehozása, kezelése és törlése az Azure Portalon keresztül. Az árképzési szintekkel, a skálázással, a biztonsággal és az üzenetkezelési konfigurációval kapcsolatos információkat tartalmaz.
 author: robinsh
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: robinsh
-ms.openlocfilehash: 6f070462dca6e835504a33014a7ed48e9949f874
-ms.sourcegitcommit: f56b267b11f23ac8f6284bb662b38c7a8336e99b
+ms.openlocfilehash: c43c142b22709d42416b2dd14dfc78812970916a
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67432632"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169608"
 ---
-# <a name="create-an-iot-hub-using-the-azure-portal"></a>Hozzon létre egy IoT hubra az Azure portal használatával
+# <a name="create-an-iot-hub-using-the-azure-portal"></a>IoT hub létrehozása a Azure Portal használatával
 
 [!INCLUDE [iot-hub-resource-manager-selector](../../includes/iot-hub-resource-manager-selector.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre és kezelhet az IoT hub használata a [az Azure portal](https://portal.azure.com).
+Ez a cikk bemutatja, hogyan hozhat létre és kezelhet IoT-hubokat a [Azure Portal](https://portal.azure.com)használatával.
 
-Ebben az oktatóanyagban a lépéseket használatához Azure-előfizetés szükséges. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Az oktatóanyag lépéseinek használatához Azure-előfizetésre van szükség. Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 
@@ -28,96 +28,100 @@ Ebben az oktatóanyagban a lépéseket használatához Azure-előfizetés szüks
 
 ## <a name="change-the-settings-of-the-iot-hub"></a>Az IoT hub beállításainak módosítása
 
-A beállítások egy meglévő IoT hub az IoT Hub panel a létrehozása után módosíthatja.
+A meglévő IoT hub beállításait a IoT Hub panelből való létrehozása után módosíthatja.
 
-![Képernyőfelvétel: az IoT hub beállításai](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
+![Az IoT hub beállításait ábrázoló képernyőfelvétel](./media/iot-hub-create-through-portal/iot-hub-settings-panel.png)
 
-Íme néhány az IoT hub beállítható tulajdonságokat:
+Íme néhány, a IoT hub számára beállítható tulajdonság:
 
-**Díjszabás és méretezés**: Ez a tulajdonság segítségével migrálása másik tarifacsomagra vagy csak az IoT Hub-egységek. 
+**Díjszabás és méretezés**: ezt a tulajdonságot használhatja egy másik szintjére való Migrálás vagy a IoT hub egységek számának megadására. 
 
-**Műveletek figyelése**: A különböző figyelési kategóriák be és ki, például az eszköz a felhőbe irányuló üzenetek vagy a felhőből az eszközre irányuló üzenetek kapcsolatos események naplózását.
+**Műveletek figyelése**: a különböző figyelési kategóriákat be-vagy kikapcsolhatja, például az eszközről a felhőbe irányuló üzenetekkel vagy a felhőből az eszközre irányuló üzenetekkel kapcsolatos események naplózása.
 
-**IP-szűrő**: Adjon meg egy IP-címtartományt, amely elfogadását, vagy az IoT hub által elutasítva.
+**IP-szűrő**: olyan IP-címek tartományát határozza meg, amelyeket az IoT hub elfogad vagy visszautasít.
 
-**Tulajdonságok**: Tulajdonságok listáját jeleníti meg, hogy másolja, majd használja máshol, például az erőforrás-azonosító, erőforráscsoport, helye és így tovább.
+**Tulajdonságok**: megjeleníti a máshol másolható és használható tulajdonságok listáját, például az erőforrás-azonosítót, az erőforráscsoportot, a helyet és így tovább.
 
 ### <a name="shared-access-policies"></a>Megosztott elérési házirendek
 
-Is megtekintheti vagy módosíthatja a megosztott elérési szabályzatok listáján, kattintva **megosztott elérési házirendek** a a **beállítások** szakaszban. Ezek a szabályzatok az IoT hubhoz való csatlakozáshoz eszközökön és szolgáltatásokon engedélyeinek megadásához. 
+A megosztott hozzáférési házirendek listáját a **Beállítások** szakaszban található **megosztott hozzáférési házirendek** lehetőségre kattintva is megtekintheti vagy módosíthatja. Ezek a szabályzatok határozzák meg az eszközök és szolgáltatások IoT Hubhoz való kapcsolódásának engedélyeit. 
 
-Kattintson a **Hozzáadás** megnyitásához a **hozzáadása egy megosztott elérési házirendet** panelen.  Az új házirend nevét és az engedélyeket, társítani szeretné az ehhez a szabályzathoz, az alábbi ábrán látható módon adhat meg:
+Kattintson a **Hozzáadás** gombra a **közös hozzáférési szabályzat hozzáadása** panel megnyitásához.  Megadhatja az új szabályzat nevét és az ehhez a Szabályzathoz társítandó engedélyeket az alábbi ábrán látható módon:
 
-![Képernyőfelvétel: a megosztott elérési szabályzat hozzáadása](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
+![Megosztott hozzáférési szabályzat hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-shared-access-policy.png)
 
-* A **jegyzék olvasása** és **jegyzék írása** házirendek jogosultságokat olvasási és írási hozzáférést biztosít az identitásjegyzékhez. Ezek az engedélyek segítségével háttérbeli felhőszolgáltatásokat eszközidentitások kezelése. Az írási lehetőség kiválasztása automatikusan úgy dönt, az olvasási lehetőség.
+* A **beállításjegyzék olvasási** és **beállításjegyzék-írási** házirendjei olvasási és írási hozzáférési jogokat biztosítanak az identitás-nyilvántartónak. Ezeket az engedélyeket a háttérbeli felhőalapú szolgáltatások használják az eszközök identitásának kezeléséhez. Az írási beállítás választása esetén a rendszer automatikusan kiválasztja az olvasási lehetőséget.
 
-* A **szolgáltatás csatlakozása** házirend engedélyt ad a Szolgáltatásvégpontok eléréséhez. Ezt az engedélyt az üzenetek küldése és fogadása eszközökön is frissítése és az eszköz iker és modul ikereszköz adatok olvasása a háttér-felhőszolgáltatások használják.
+* A **szolgáltatás-csatlakozási** házirend engedélyezi a szolgáltatási végpontok elérését. Ezt az engedélyt a háttérbeli felhőalapú szolgáltatások használják az eszközökről érkező üzenetek küldésére és fogadására, valamint az eszköz Twin és a modul Twin adatainak frissítésére és olvasására.
 
-* A **eszköz csatlakozni** házirend engedélyt ad az IoT Hub eszközoldali végpontokon használatával üzenetek küldése és fogadása. Ez az engedély küld és fogad üzeneteket egy IoT hubot, frissítése és eszköz ikereszköz és modul ikereszköz adatok olvasását és fájlt töltsön fel az eszközök használják.
+* Az **eszköz csatlakoztatási** házirendje engedélyeket biztosít az üzenetek küldéséhez és fogadásához az IoT hub az eszköz-oldalsó végpontok használatával. Ezt az engedélyt az eszközök használják az IoT hub üzeneteinek küldésére és fogadására, az eszközök Twin-és modul-különálló adatainak frissítésére és olvasására, valamint a fájlfeltöltés végrehajtására.
 
-Kattintson a **létrehozás** hozzáadása az újonnan létrehozott szabályzat a meglévő listára.
+Kattintson a **Létrehozás** gombra az újonnan létrehozott szabályzat meglévő listához való hozzáadásához.
 
-További részletes információ a konkrét engedélyeket által biztosított hozzáférést: [az IoT Hub engedélyekkel](./iot-hub-devguide-security.md#iot-hub-permissions).
+További információ az adott engedélyek által biztosított hozzáférésről: [IoT hub engedélyek](./iot-hub-devguide-security.md#iot-hub-permissions).
 
-## <a name="message-routing-for-an-iot-hub"></a>IoT hub üzenet-útválasztás
+## <a name="register-a-new-device-in-the-iot-hub"></a>Új eszköz regisztrálása az IoT hub-ban
 
-Kattintson a **üzenet-útválasztása** alatt **üzenetkezelés** , a üzenet-útválasztása ablaktáblája, ahol megadhatja a útvonalak és az egyedi végpontok hub. [Üzenet-útválasztása](iot-hub-devguide-messages-d2c.md) lehetővé teszi, hogy milyen adatokat is küld az eszközök a végpontok kezeléséhez. Az első lépéseként adjon hozzá egy új útvonalat. Majd adja hozzá az útvonal egy meglévő végpontot, vagy hozzon létre egy újat a típusú támogatott, például a blob storage-bA. 
+[!INCLUDE [iot-hub-include-create-device](../../includes/iot-hub-include-create-device.md)]
 
-![Üzenet-útválasztási panel](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
+## <a name="message-routing-for-an-iot-hub"></a>IoT hub üzenet-útválasztása
+
+Kattintson az üzenetküldés lehetőségre az **üzenetkezelés** **területen az üzenet-** útválasztási ablaktábla megjelenítéséhez, ahol útvonalakat és egyéni végpontokat határozhat meg a hubhoz. Az [üzenet-útválasztás](iot-hub-devguide-messages-d2c.md) segítségével kezelheti az eszközökről a végpontokra küldött adatok küldésének módját. Az első lépés egy új útvonal hozzáadása. Ezután hozzáadhat egy meglévő végpontot az útvonalhoz, vagy létrehozhat egy új támogatott típust, például a blob Storage-ot. 
+
+![Üzenet-útválasztási ablaktábla](./media/iot-hub-create-through-portal/iot-hub-message-routing.png)
 
 ### <a name="routes"></a>Útvonalak
 
-Útvonalak a üzenet-útválasztása panelen az első lapra. Adjon hozzá egy új útvonalat, kattintson a +**Hozzáadás**. A következő képernyő jelenik meg. 
+Az útvonalak az üzenet-útválasztási ablaktábla első lapja. Új útvonal hozzáadásához kattintson a +**Hozzáadás**gombra. A következő képernyő jelenik meg. 
 
-![Képernyőfelvétel: az új útvonal hozzáadása](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
+![Új útvonal hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-route-storage-endpoint.png)
 
-Adjon nevet a központnak. A név a lista az adott hub útvonalak egyedinek kell lennie. 
+Nevezze el a hubot. A névnek egyedinek kell lennie az adott hubhoz tartozó útvonalak listáján belül. 
 
-A **végpont**, válasszon egyet a legördülő listából, vagy vegyen fel egy másikat. Ebben a példában egy tárfiókot és tárolót már rendelkezésre állnak. -Végpontként hozzáadni őket, kattintson a +**Hozzáadás** mellett a végpont legördülő listából, és válasszon **Blob Storage**. Az alábbi képernyőn látható, hogy hol vannak megadva a tárfiókot és tárolót.
+A **végpont**esetében választhat egyet a legördülő listából, vagy hozzáadhat egy újat. Ebben a példában a Storage-fiók és a tároló már elérhető. Ha végpontként szeretné hozzáadni őket, kattintson a +**Hozzáadás** elemre a végpont legördülő menüben, majd válassza a **blob Storage**lehetőséget. Az alábbi képernyőn látható, hol vannak megadva a Storage-fiók és a tároló.
 
-![Képernyőfelvétel: a storage-végpont az útválasztási szabály hozzáadása](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
+![A tárolási végpontok útválasztási szabályhoz való hozzáadását bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-routing-add-storage-endpoint.png)
 
-Kattintson a **tároló kiválasztása** válassza ki a tárfiókot és tárolót. Ha kiválasztotta ezeket a mezőket, akkor a végpont panelre adja vissza. Használja az alapértelmezett értékeket a többi mező és **létrehozás** hozhat létre a storage-fiók végpontját, és adja hozzá az útválasztási szabályokat.
+A Storage-fiók és a tároló kiválasztásához kattintson **a tároló** kiválasztása elemre. Ha kiválasztotta ezeket a mezőket, a végpont ablaktáblára tér vissza. Használja az alapértelmezett értékeket a többi mezőhöz, és **hozzon** létre egy végpontot a Storage-fiókhoz, és adja hozzá az útválasztási szabályokhoz.
 
-A **adatforrás**, válassza ki az eszköz Telemetriai üzeneteket. 
+Az **adatforrás**területen válassza az eszközök telemetria-üzenetek lehetőséget. 
 
-Ezután adjon hozzá egy útválasztási lekérdezés. Ebben a példában egy alkalmazás nevű tulajdonsággal rendelkező üzenetek `level` egyenlő értékű `critical` kapcsolódóak pedig az a tárfiók.
+Ezután adjon hozzá egy útválasztási lekérdezést. Ebben a példában a `level` nevű Application tulajdonsággal rendelkező üzenetek a Storage-fiókba vannak irányítva, `critical` értékkel egyenlőek.
 
-![Képernyőkép: egy új útválasztási szabály mentése](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
+![Új útválasztási szabály mentését bemutató képernyőkép](./media/iot-hub-create-through-portal/iot-hub-add-route.png)
 
-Kattintson a **mentése** az útválasztási szabály mentéséhez. Az üzenet-útválasztása ablaktáblán adja vissza, és az új útválasztási szabály jelenik meg.
+Az útválasztási szabály mentéséhez kattintson a **Save (Mentés** ) gombra. Visszatér az üzenet-útválasztási panelre, és megjelenik az új útválasztási szabály.
 
 ### <a name="custom-endpoints"></a>Egyéni végpontok
 
-Kattintson a **egyéni végpontok** fülre. Láthatja, hogy már létrehozott bármely egyéni végpontok. Itt új végpontok hozzáadása vagy a meglévő végpontok törlése. 
+Kattintson az **Egyéni végpontok** fülre. Megjelenik a már létrehozott egyéni végpontok. Innen új végpontokat adhat hozzá, vagy törölheti a meglévő végpontokat. 
 
 > [!NOTE]
-> Ha töröl egy útvonalat, nem törli a végpontok útvonal rendelve. Végpont törlése az egyéni végpontok lapon, válassza ki a törölni kívánt végpontot, és kattintson a Törlés gombra.
+> Ha töröl egy útvonalat, nem törli az adott útvonalhoz rendelt végpontokat. Végpont törléséhez kattintson az egyéni végpontok lapra, válassza ki a törölni kívánt végpontot, és kattintson a Törlés gombra.
 >
 
-További információ az egyéni végpontokról [referencia – IoT hub-végpontok](iot-hub-devguide-endpoints.md).
+További információt az egyéni végpontokról a [IoT hub-végpontok](iot-hub-devguide-endpoints.md)című cikk tartalmaz.
 
-IoT hub legfeljebb 10 egyéni végpontok határozhatja meg. 
+Egy IoT hubhoz legfeljebb 10 egyéni végpontot adhat meg. 
 
-Egy teljes példa bemutatja, hogyan használja az egyedi végpontok az Útválasztás, olvassa el [üzenetet az IoT Hub útválasztás](tutorial-routing.md).
+Ha szeretné megtekinteni, hogyan használhatók az egyéni végpontok az útválasztással, tekintse meg a következőt: [üzenetküldés az IoT hub](tutorial-routing.md)használatával.
 
-## <a name="find-a-specific-iot-hub"></a>Egy adott IoT hub található
+## <a name="find-a-specific-iot-hub"></a>Egy adott IoT hub keresése
 
-Az alábbiakban két módon találhatja meg. egy adott IoT hubot az előfizetésében:
+Az alábbi két módon találhat egy adott IoT hubot az előfizetésében:
 
-1. Ha tudja, hogy az erőforrást, amely az IoT hub tartozik csoportjában kattintson a **erőforráscsoportok**, majd válassza ki az erőforráscsoportot a listából. Az erőforrás csoport képernyőn látható összes erőforrást benne, beleértve az IoT hubokat. Kattintson a hub, amelynek a találatokat.
+1. Ha ismeri azt az erőforráscsoportot, amelyhez az IoT hub tartozik, kattintson az **erőforráscsoportok**elemre, majd válassza ki az erőforráscsoportot a listából. Az erőforráscsoport képernyő megjeleníti a csoport összes erőforrását, beleértve a IoT hubokat is. Kattintson arra a hubhoz, amelyre keres.
 
-2. Kattintson a **összes erőforrás**. Az a **összes erőforrás** ablaktáblán egy legördülő listája, amely alapértelmezés szerint a `All types`. Kattintson a legördülő listában, törölje a jelet `Select all`. Keresés `IoT Hub` , és ellenőrizze, hogy. Kattintson a gombra kattintva zárja be azt a legördülő listában, és a bejegyzések lesznek szűrve, csak az IoT-központok megjelenítése.
+2. Kattintson a **Minden erőforrás** elemre. A **minden erőforrás** panelen megjelenik egy legördülő lista, amely az alapértelmezett `All types`. Kattintson a legördülő listára, törölje `Select all`. Keresse meg `IoT Hub` és ellenőrizze. Kattintson a legördülő listára a bezárásához, és a bejegyzések szűrve lesznek, és csak a IoT hubok láthatók.
 
 ## <a name="delete-the-iot-hub"></a>Az IoT hub törlése
 
-Az Iot hub törléséhez keresse meg az IoT hub szeretne törölni, majd kattintson a **törlése** gomb alatti az IoT hub nevére.
+IOT hub törléséhez keresse meg a törölni kívánt IoT hub-t, majd kattintson a IoT hub neve alatti **Törlés** gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az alábbi hivatkozásokból tudhat meg többet az Azure IoT Hub kezelése:
+Az alábbi hivatkozásokat követve további információkat tudhat meg az Azure IoT Hub kezeléséről:
 
-* [Az IoT Hub üzenet-útválasztása](tutorial-routing.md)
-* [Az IoT Hub-metrikák](iot-hub-metrics.md)
+* [Üzenet-útválasztás IoT Hub](tutorial-routing.md)
+* [IoT Hub metrikák](iot-hub-metrics.md)
 * [Műveletek figyelése](iot-hub-operations-monitoring.md)

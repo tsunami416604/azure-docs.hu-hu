@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 36dd80669c6a9495751f577748f48c02a782b920
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0ad3bb41b6c5faa7bab0e618dd46c48427f364db
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029858"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167384"
 ---
 # <a name="how-to-plan-your-hybrid-azure-active-directory-join-implementation"></a>Útmutató: a hibrid Azure Active Directory JOIN implementációjának megtervezése
 
@@ -64,7 +64,7 @@ A Windows asztali operációs rendszert futtató eszközök esetében a támogat
 ### <a name="windows-down-level-devices"></a>Windows Down szintű eszközök
 
 - Windows 8.1
-- Windows 7. A Windows 7 támogatási információi: a [Windows 7 támogatása véget ér](https://www.microsoft.com/microsoft-365/windows/end-of-windows-7-support).
+- A Windows 7 támogatása 2020 január 14-én fejeződött be. További információ: [a Windows 7 támogatása befejeződött](https://support.microsoft.com/en-us/help/4057281/windows-7-support-ended-on-january-14-2020).
 - Windows Server 2012 R2
 - Windows Server 2012
 - Windows Server 2008 R2. A Windows Server 2008-es és 2008 R2-es verziójának támogatási információit lásd: [felkészülés a Windows server 2008 támogatásának végére](https://www.microsoft.com/cloud-platform/windows-server-2008).

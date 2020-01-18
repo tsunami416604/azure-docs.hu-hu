@@ -1,6 +1,6 @@
 ---
-title: VHD-fájl feltöltése a Microsoft Azure Storage Explorer használatával Azure DevTest Labs |} A Microsoft Docs
-description: A Microsoft Azure Storage Explorer használatával tesztkörnyezet tárfiók VHD-fájl feltöltése
+title: VHD-fájl feltöltése Azure DevTest Labsre Storage Explorer használatával
+description: VHD-fájl feltöltése a labor Storage-fiókjába Microsoft Azure Storage Explorer használatával
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,70 +12,70 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 3c187d104334fe75ec9e0ce41a3fdc14b508dfb2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: defafdd5809b7e537b3b9abb78f8cb63d0033c16
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60623353"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170368"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>A Microsoft Azure Storage Explorer használatával tesztkörnyezet tárfiók VHD-fájl feltöltése
+# <a name="upload-vhd-file-to-labs-storage-account-using-microsoft-azure-storage-explorer"></a>VHD-fájl feltöltése a labor Storage-fiókjába Microsoft Azure Storage Explorer használatával
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Az Azure DevTest Labs szolgáltatásban a VHD-fájlok létrehozása az egyéni lemezképek, amelyek segítségével a virtuális gépek üzembe helyezése használható. Ez a cikk bemutatja, hogyan használhatja [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy VHD-fájl feltöltése egy tesztkörnyezet egy tárfiókba. Miután feltöltötte a VHD-fájl a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan hozhat létre egy egyéni rendszerképet a feltöltött VHD-fájlból. Lemezek és virtuális merevlemezek, az Azure-ban kapcsolatos további információkért lásd: [Bevezetés a managed Disks szolgáltatásba](../virtual-machines/linux/managed-disks-overview.md)
+Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. Ez a cikk bemutatja, hogyan tölthet fel egy VHD-fájlt a labor Storage-fiókjába a [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) használatával. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/linux/managed-disks-overview.md) szolgáltatásba
 
-## <a name="step-by-step-instructions"></a>Részletes útmutató
+## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
 
-A következő lépések végigvezetik egy VHD-fájl feltöltése a DevTest Labs használatával [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+A következő lépések végigvezetik a VHD-fájlok DevTest Labs-be történő feltöltésének lépésein [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)használatával.
 
-1. [Töltse le és telepítse a Microsoft Azure Storage Explorer legújabb verziójának](https://www.storageexplorer.com).
+1. [Töltse le és telepítse a Microsoft Azure Storage Explorer legújabb verzióját](https://www.storageexplorer.com).
 
-1. Kérje le a labor létrehozása az Azure portal használatával storage-fiók neve:
+1. Szerezze be a labor Storage-fiókjának nevét a Azure Portal használatával:
 
-    1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+    1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
     
-    1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
+    1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
     
-    1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
+    1. A laborok listájából válassza ki a kívánt labort.  
     
-    1. A labor paneljén válassza ki a **konfigurációs**. 
+    1. A labor paneljén válassza a **Konfigurálás**lehetőséget. 
     
-    1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)** .
+    1. A labor- **konfiguráció** panelen válassza az **Egyéni lemezképek (VHD-k)** lehetőséget.
     
-    1. Az a **egyéni lemezképek** panelen válasszon ki **+ Hozzáadás**. 
+    1. Az **Egyéni lemezképek** panelen válassza a **+ Hozzáadás**lehetőséget. 
     
-    1. Az a **egyéni lemezkép** panelen válassza ki **VHD**.
+    1. Az **Egyéni rendszerkép** panelen válassza a **VHD**elemet.
     
-    1. Az a **VHD** panelen válassza ki **Nahrát VHD pomocí PowerShell**.
+    1. A **VHD** panelen válassza **a virtuális merevlemez feltöltése a PowerShell használatával**lehetőséget.
     
-        ![Töltse fel a VHD pomocí Powershellu][0]
+        ![VHD feltöltése a PowerShell használatával][0]
     
-    1. A **Nahrát image pomocí PowerShell** panel megjeleníti a hívást a **Add-AzureVhd** parancsmagot. Az első paraméterrel (*cél*) tartalmazza a tárfiók nevét a tesztkörnyezethez a következő formátumban:
+    1. A **rendszerkép feltöltése a PowerShell panel használatával** megjeleníti az **Add-AzureVhd** parancsmag hívását. Az első paraméter (*cél*) a tesztkörnyezet tárolási fiókjának nevét tartalmazza a következő formátumban:
     
         `https://<STORAGE-ACCOUNT-NAME>.blob.core.windows.net/uploads/...`
 
-    1. Jegyezze fel a tárfiók nevét, a későbbi lépésekben szolgál.
+    1. Jegyezze fel a Storage-fiók nevét, mert a későbbi lépésekben használatban van.
     
-1. Csatlakozhat egy Azure-előfizetése fiókját a Storage Explorer használatával.
+1. Kapcsolódás Azure-előfizetési fiókhoz Storage Explorer használatával.
 
     > [!TIP] 
     > 
-    > Storage Explorer kapcsolati beállításokat támogatja. Ez a szakasz azt mutatja be, csatlakozhat egy Azure-előfizetéséhez társított storage-fiókot. A Storage Explorer által támogatott egyéb kapcsolati beállítások megjelenítéséhez, tekintse meg a cikk [Ismerkedés a Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md).
+    > A Storage Explorer több kapcsolatbeállításokat is támogat. Ez a szakasz az Azure-előfizetéshez társított Storage-fiókhoz való csatlakozást mutatja be. Ha meg szeretné tekinteni a Storage Explorer által támogatott egyéb kapcsolódási lehetőségeket, tekintse meg a következő cikket: [Bevezetés a Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md)használatába.
  
     1. Nyissa meg a Storage Explorert.
     
-    1. A Storage Explorerben válassza ki a **Azure-fiók beállításai**. 
+    1. A Storage Explorer területen válassza az **Azure-fiók beállításai**lehetőséget. 
     
         ![Azure-fiók beállításai][1]
     
-    1. A bal oldali ablaktábla megjeleníti a Microsoft-fiókkal, amelybe bejelentkezett. Egy másik fiókhoz csatlakozáshoz válassza a **Fiók hozzáadása** lehetőséget, és a párbeszédpanelek útmutatásait követve jelentkezzen be egy olyan Microsoft-fiókkal, amely legalább egy aktív Azure-előfizetéssel társítva van.
+    1. A bal oldali ablaktábla megjeleníti azokat a Microsoft-fiókokat, amelyeken bejelentkezett. Egy másik fiókhoz csatlakozáshoz válassza a **Fiók hozzáadása** lehetőséget, és a párbeszédpanelek útmutatásait követve jelentkezzen be egy olyan Microsoft-fiókkal, amely legalább egy aktív Azure-előfizetéssel társítva van.
     
         ![Fiók hozzáadása][2]
     
-    1. Amint sikeresen bejelentkezett egy Microsoft-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure-előfizetés. Válassza ki azt az Azure-előfizetést amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Kiválasztásával **minden előfizetés** be-vagy kikapcsolja a választott összes vagy a felsorolt Azure-előfizetést.)
+    1. Amint sikeresen bejelentkezett egy Microsoft-fiókkal, a bal oldali ablaktáblán megjelenik a fiókhoz társított összes Azure-előfizetés. Válassza ki azt az Azure-előfizetést amellyel dolgozni szeretne, majd válassza az **Alkalmaz** lehetőséget. (Az **összes előfizetés** kiválasztásával kiválaszthatja az összes felsorolt Azure-előfizetést, vagy sem.)
     
         ![Azure-előfizetések kiválasztása][3]
     
@@ -83,48 +83,48 @@ A következő lépések végigvezetik egy VHD-fájl feltöltése a DevTest Labs 
     
         ![Kiválasztott Azure-előfizetések][4]
 
-1. Keresse meg a storage-fiókot a labor létrehozása:
+1. Keresse meg a labor Storage-fiókját:
 
-    1. A Storage Explorer bal oldali ablaktáblán keresse meg, és bontsa ki a csomópontot az Azure-előfizetés, amely a labor tulajdonosa.
+    1. A Storage Explorer bal oldali ablaktáblán keresse meg és bontsa ki a labort birtokló Azure-előfizetés csomópontját.
     
-    1. Az előfizetési csomópontot, bontsa ki a **Tárfiókok**.
+    1. Az előfizetés csomópontja alatt bontsa ki a **Storage-fiókok**elemet.
 
-    1. Bontsa ki a fiók tárolócsomópont a labor-csomópont felfedéséhez **Blobtárolók**, **fájlmegosztások**, **üzenetsorok**, és **táblák**.
+    1. Bontsa ki a labor Storage-fiók csomópontját a **blob-tárolók**, a **fájlmegosztás**, a **várólisták**és a **táblák**csomópontjainak megjelenítéséhez.
     
-    1. Bontsa ki a **Blobtárolók** csomópont.
+    1. Bontsa ki a **blob-tárolók** csomópontot.
     
-    1. Válassza ki a feltöltések blobtárolót a tartalom megjelenítéséhez a jobb oldali ablaktáblán.
+    1. Válassza a blob-tároló feltöltése lehetőséget a tartalom megjelenítéséhez a jobb oldali ablaktáblán.
         
-        ![Töltse fel a könyvtár][5]
+        ![Könyvtár feltöltése][5]
 
-1. A Storage Explorer használatával VHD-fájl feltöltése:
+1. Töltse fel a VHD-fájlt a Storage Explorer használatával:
 
-    1. A Storage Explorer jobb oldali ablaktáblában lévő blobok listája megjelenik a **feltölti** a labor storage-fiók blob-tárolóba. Válassza a blob szerkesztő eszköztár **feltöltése** 
+    1. A Storage Explorer jobb oldali ablaktáblában meg kell jelennie a Blobok listájának a labor Storage-fiókjának **feltöltési** blob-tárolójában. A blob-szerkesztő eszköztárán válassza a **feltöltés** lehetőséget. 
         
         ![Feltöltés gomb][6]
     
-    1. Az a **feltöltése** legördülő menüjében válassza **fájlok feltöltése...** .
+    1. A **feltöltés** legördülő menüben válassza a **fájlok feltöltése..** . lehetőséget.
     
-    1. Az a **fájlok feltöltése** párbeszédpanelen kattintson a három pontra.
+    1. A **fájlok feltöltése** párbeszédpanelen válassza a három pontot.
         
         ![Fájl kiválasztása][8]  
 
-    1. Az a **feltölteni kívánt fájlok kiválasztása** párbeszédpanelen keresse meg a kívánt VHD-fájlt, jelölje ki azt, és válassza **nyílt**.
+    1. A **feltölteni kívánt fájlok kiválasztása** párbeszédpanelen keresse meg a kívánt VHD-fájlt, jelölje ki, majd kattintson a **Megnyitás**gombra.
     
-    1. Amikor visszatér a **fájlok feltöltése** párbeszédpanelen módosítsa **Blob típusát** való **Lapblob**.
+    1. Amikor visszatér a **fájlok feltöltése** párbeszédpanelre, módosítsa a **blob típusát** az **oldal blobra**.
     
     1. Válassza a **Feltöltés** lehetőséget.
 
         ![Fájl kiválasztása][9]  
     
-    1. A Storage Explorer **tevékenységnapló** panelen látható a letöltés állapota (valamint hivatkozások a feltöltés megszakításához). A VHD-fájlt, és az átviteli sebesség méretétől függően a folyamat egy VHD-fájl feltöltése megnőhet. 
+    1. A Storage Explorer **tevékenység naplója** ablaktáblán a letöltési állapot látható (a feltöltés megszakítására szolgáló hivatkozásokkal együtt). A VHD-fájlok feltöltésének folyamata a VHD-fájl méretétől és a kapcsolatok sebességétől függően hosszadalmas lehet. 
 
-        ![Fájlfeltöltés állapot][10]  
+        ![Feltöltési fájl állapota][10]  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Egy egyéni lemezkép készítése VHD-fájlból az Azure portal segítségével Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
-- [Egyéni rendszerkép létrehozása a PowerShell-lel VHD-fájlból az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Egyéni rendszerkép létrehozása Azure DevTest Labs egy VHD-fájlból a Azure Portal használatával](devtest-lab-create-template.md)
+- [Egyéni rendszerkép létrehozása Azure DevTest Labs VHD-fájlból a PowerShell használatával](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
 
 [0]: ./media/devtest-lab-upload-vhd-using-storage-explorer/upload-image-using-psh.png
 [1]: ./media/devtest-lab-upload-vhd-using-storage-explorer/settings-icon.png

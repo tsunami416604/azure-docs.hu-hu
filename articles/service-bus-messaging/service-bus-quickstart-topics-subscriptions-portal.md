@@ -1,19 +1,19 @@
 ---
-title: 'Gyors útmutató: Service Bus témakörök és előfizetések létrehozása a Azure Portal használatával'
+title: Service Bus témakörök és előfizetések létrehozása a Azure Portal használatával
 description: 'Gyors útmutató: ebben a rövid útmutatóban megtudhatja, hogyan hozhat létre Service Bus témakört és előfizetéseket az adott témakörhöz a Azure Portal használatával.'
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 6788bf43ef97daf5ef2f823a502c223d718abaac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a1e330a62a58daaa3fb2a2e8758d14791a3208c1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718864"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260820"
 ---
 # <a name="quickstart-use-the-azure-portal-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Rövid útmutató: a Azure Portal használatával létrehozhat egy Service Bus témakört és előfizetéseket a témakörbe
 Ebben a rövid útmutatóban a Azure Portal használatával hozhat létre egy Service Bus témakört, majd előfizetéseket hozhat létre ehhez a témakörhöz. 
@@ -34,7 +34,7 @@ Service Bus témakörök és előfizetések lehetővé teszik nagy mennyiségű 
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi cikkből megtudhatja, hogyan küldhet üzeneteket egy témakörbe, és hogyan fogadhat üzeneteket az előfizetésen keresztül: válassza ki a programozási nyelvet a TARTALOMJEGYZÉKben. 
 
 > [!div class="nextstepaction"]

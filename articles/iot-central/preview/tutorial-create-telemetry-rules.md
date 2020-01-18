@@ -8,12 +8,12 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 793bb46e14725b14c766569e8b0fc2aa0246858e
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3889378f34d66f54ea408da4aa43b12f86e7c586
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74979053"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262633"
 ---
 # <a name="tutorial-create-a-rule-and-set-up-notifications-in-your-azure-iot-central-application-preview-features"></a>Oktatóanyag: szabály létrehozása és értesítések beállítása az Azure IoT Central alkalmazásban (előzetes verziójú funkciók)
 
@@ -25,11 +25,12 @@ Az Azure IoT Central használatával távolról is figyelheti a csatlakoztatott 
 
 Az eszközök a telemetria használatával numerikus adatok küldését az eszközről. Egy szabály akkor aktiválódik, ha a kiválasztott eszköz telemetria átlép egy megadott küszöbértéket.
 
-Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a környezeti érzékelő eszköz hőmérséklete meghaladja a 80&deg; F.
+Ebben az oktatóanyagban létrehoz egy szabályt, amely e-mailt küld, ha a környezeti érzékelő eszköz hőmérséklete meghaladja a 70&deg; F.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
+>
 > * Szabály létrehozása
 > * E-mail művelet hozzáadása
 
@@ -39,7 +40,7 @@ Mielőtt elkezdené, hajtsa végre az [Azure IoT Central-alkalmazás létrehozá
 
 ## <a name="create-a-rule"></a>Szabály létrehozása
 
-Telemetria szabály létrehozásához az eszköz sablonjának meg kell határoznia legalább egy telemetria-mérést. Ez az oktatóanyag egy környezeti érzékelőt használó eszközt használ, amely hőmérséklet-és páratartalom-telemetria küld. Hozzáadta ezt az eszközt, és létrehozott egy szimulált eszközt a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](./quick-create-pnp-device.md) című rövid útmutatóban. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 80 fok fölé kerül.
+Telemetria szabály létrehozásához az eszköz sablonjának meg kell határoznia legalább egy telemetria-mérést. Ez az oktatóanyag egy környezeti érzékelőt használó eszközt használ, amely hőmérséklet-és páratartalom-telemetria küld. Hozzáadta ezt az eszközt, és létrehozott egy szimulált eszközt a [szimulált eszköz hozzáadása a IoT Central alkalmazáshoz](./quick-create-pnp-device.md) című rövid útmutatóban. A szabály figyeli az eszköz által jelentett hőmérsékletet, és e-mailt küld, ha 70 fok fölé kerül.
 
 1. A bal oldali ablaktáblán válassza a **szabályok**lehetőséget.
 
@@ -57,18 +58,18 @@ Telemetria szabály létrehozásához az eszköz sablonjának meg kell határozn
 
 ### <a name="configure-the-rule-conditions"></a>A szabály feltételeinek konfigurálása
 
-A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban úgy konfigurálja a szabályt, hogy a hőmérséklet meghaladja a 80&deg; F értéknél nagyobb hőmérsékletet.
+A feltételek határozzák meg a szabály által figyelt feltételeket. Ebben az oktatóanyagban úgy konfigurálja a szabályt, hogy a hőmérséklet meghaladja a 70&deg; F értéknél nagyobb hőmérsékletet.
 
 1. Válassza a **hőmérséklet** lehetőséget a **telemetria** legördülő menüben.
 
-1. Ezután válassza a **nagyobb, mint** a **kezelőt** , és adja meg a _80_ **értéket**.
+1. Ezután válassza a **nagyobb, mint** a **kezelőt** , és adja meg a _70_ **értéket**.
 
     ![Állapot](media/tutorial-create-telemetry-rules/condition-filled-out1.png)
 
 1. Igény szerint **időösszesítést**is beállíthat. Amikor kiválaszt egy időösszesítést, ki kell választania egy összesítési típust is, például az összesítési legördülő listából az átlagot vagy az összeget.
 
-    * Összesítés nélkül a szabály minden olyan telemetria-adatponthoz aktiválódik, amely megfelel a feltételnek. Ha például a szabály úgy van konfigurálva, hogy a hőmérséklet értéke 80, akkor a szabály szinte azonnal elindul, amikor az eszköz a > 80 hőmérsékletet jelzi.
-    * Az összesítéssel a szabály akkor aktiválódik, ha az időablakban található telemetria-adatpontok összesített értéke megfelel a feltételnek. Ha például a szabály úgy van beállítva, hogy ha a hőmérséklet meghaladja a 80-as hőmérsékletet, az időösszesítés 10 percre van beállítva, és az összesítés típusa átlag, akkor a szabály akkor aktiválódik, ha az eszköz átlagos hőmérsékletet > 80, amely 10 percen belül van kiszámítva időköz.
+    * Összesítés nélkül a szabály minden olyan telemetria-adatponthoz aktiválódik, amely megfelel a feltételnek. Ha például a szabály úgy van konfigurálva, hogy a hőmérséklet értéke 70, akkor a szabály szinte azonnal elindul, amikor az eszköz a > 70 hőmérsékletet jelzi.
+    * Az összesítéssel a szabály akkor aktiválódik, ha az időablakban található telemetria-adatpontok összesített értéke megfelel a feltételnek. Ha például a szabály úgy van beállítva, hogy ha a hőmérséklet meghaladja a 70-as hőmérsékletet, az időösszesítés 10 percre van beállítva, és az összesítés típusa átlag, akkor a szabály akkor aktiválódik, ha az eszköz átlagos hőmérsékletet > 70, amely 10 percen belül van kiszámítva időköz.
 
      ![Összesítési feltétel](media/tutorial-create-telemetry-rules/aggregate-condition-filled-out1.png)
 

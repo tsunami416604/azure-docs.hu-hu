@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/24/2019
-ms.openlocfilehash: d4fd443959604f1a50dffbcb646bbe66fa159f8d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0f2181a388a5329dbc16ce8968da79529b22ea85
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75402601"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168171"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Service Map megoldás használata az Azure-ban
 
@@ -27,7 +27,7 @@ Ez a cikk a Service Map bevezetésének és használatának részleteit ismertet
 * A Windows rendszerű számítógépre vagy Linux-kiszolgálóra telepített függőségi ügynök.
 
 >[!NOTE]
->Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](../../azure-monitor/insights/vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](vminsights-faq.md#how-is-azure-monitor-for-vms-map-feature-different-from-service-map).
+>Ha már telepítette Service Map, mostantól megtekintheti a térképeit Azure Monitor for VMsban is, amely a virtuális gépek állapotának és teljesítményének figyelésére szolgáló további funkciókat is tartalmaz. További információ: [Azure monitor for VMS Overview (áttekintés](../../azure-monitor/insights/vminsights-overview.md)). Ha többet szeretne megtudni a Service Map megoldás és a Azure Monitor for VMs Térkép funkció közötti különbségekről, tekintse meg az alábbi [gyakori kérdéseket](../faq.md#azure-monitor-for-vms-preview).
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
@@ -321,7 +321,7 @@ Mivel a megadott időtartományban több rekord is létezhet egy adott folyamat 
 
 ### <a name="connections"></a>Connections (Kapcsolatok)
 
-A kapcsolódási metrikák a Log Analytics-VMConnection új táblájába íródnak. Ez a táblázat a gépek kapcsolatairól nyújt információkat (bejövő és kimenő). A kapcsolódási metrikák olyan API-kkal is elérhetők, amelyek biztosítják egy adott metrika egy adott időszakra vonatkozó beszerzését.  Az "*elfogadás*egy figyelő szoftvercsatornán" típusú TCP-kapcsolatok bejövőek, míg a *Kapcsolódás*egy adott IP-címhez és porthoz a kimenő. A kapcsolatok irányát az Direction tulajdonság jelképezi, amely beállítható **bejövő** vagy **kimenő**értékre. 
+A kapcsolódási metrikák a Log Analytics-VMConnection új táblájába íródnak. Ez a táblázat a gépek kapcsolatairól nyújt információkat (bejövő és kimenő). A kapcsolódási metrikák olyan API-kkal is elérhetők, amelyek biztosítják egy adott metrika egy adott időszakra vonatkozó beszerzését.  A figyelő szoftvercsatornán való elfogadást eredményező TCP-kapcsolatok bejövőek, míg az adott IP-címhez való csatlakozással és a porttal való kapcsolat kimenő. A kapcsolatok irányát az Direction tulajdonság jelképezi, amely beállítható **bejövő** vagy **kimenő**értékre. 
 
 A táblázatokban szereplő rekordok a függőségi ügynök által jelentett adatokból jönnek létre. Minden rekord egy egyperces időszakra vonatkozó megfigyelést jelöl. A TimeGenerated tulajdonság az időintervallum kezdetét jelzi. Minden rekord tartalmaz információt a megfelelő entitás, azaz a csatlakozás vagy a port, valamint az entitáshoz társított metrikák azonosítására. Jelenleg csak a TCP protokollt használó hálózati tevékenységek jelentik a jelentést.
 

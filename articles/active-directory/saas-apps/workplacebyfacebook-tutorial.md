@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 10/21/2019
+ms.date: 01/07/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6fc55130bd840de3960a44ddc1bd0617af185148
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 3252b7b257fda96b3d711c5f47ec7c6eb7ee36cb
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74969649"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262171"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -48,8 +47,8 @@ Első lépésként a következő elemeket kell megadnia:
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 * A munkahelyi Facebook által támogatott, **SP** által kezdeményezett egyszeri bejelentkezés
-* A Facebook által biztosított munkahely támogatja a felhasználók automatikus kiépítését és megszüntetését  **[(ajánlott)](workplacebyfacebook-provisioning-tutorial.md)**
 * A munkahelyen a Facebook az **igény szerinti üzembe** helyezést támogatja
+* A munkahelyi Facebook által támogatott  **[automatikus felhasználó-kiépítés](workplacebyfacebook-provisioning-tutorial.md)**
 * A Facebook Mobile alkalmazás munkahelye mostantól konfigurálható az Azure AD-vel az egyszeri bejelentkezés engedélyezéséhez. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Munkahelyi felvétel a Facebook használatával a katalógusból
@@ -92,8 +91,10 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
 
-    > [!NOTE] 
-    > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. A munkahelyi Közösség megfelelő értékeinek megtekintéséhez tekintse meg a munkahelyi vállalati irányítópult hitelesítés lapját.
+    c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.facebook.com/company/<instanceID>`
+
+    > [!NOTE]
+    > Ezek az értékek nem valódiak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Tekintse meg a munkahelyi Közösség megfelelő értékeit a munkahelyi vállalati irányítópult hitelesítés lapján, amelyet az oktatóanyag későbbi részében ismertet.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -113,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -172,13 +173,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     f. Másolja a példányhoz tartozó **címzett URL-címet** , és illessze be a **bejelentkezési URL-cím** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portalján.
 
-    g. Görgessen a szakasz aljára, és kattintson az **egyszeri bejelentkezés tesztelése** gombra. Ennek eredményeként megjelenik egy előugró ablak, amely az Azure AD bejelentkezési oldalán jelenik meg. A hitelesítéshez adja meg a hitelesítő adatait a szokásos módon.
+    g. Másolja ki a példányhoz tartozó **ACS-URL-címet** , és illessze be a **Válasz URL** -szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
+
+    h. Görgessen a szakasz aljára, és kattintson az **egyszeri bejelentkezés tesztelése** gombra. Ennek eredményeként megjelenik egy előugró ablak, amely az Azure AD bejelentkezési oldalán jelenik meg. A hitelesítéshez adja meg a hitelesítő adatait a szokásos módon.
 
     **Hibaelhárítás:** Győződjön meg arról, hogy az Azure AD-ből visszaadott e-mail-cím megegyezik azzal a munkahelyi fiókkal, amelybe bejelentkezett.
 
-    h. Miután a teszt sikeresen befejeződött, görgessen a lap aljára, és kattintson a Save ( **Mentés** ) gombra.
+    i. Miután a teszt sikeresen befejeződött, görgessen a lap aljára, és kattintson a Save ( **Mentés** ) gombra.
 
-    i. A munkahelyen használó összes felhasználó most megjelenik az Azure AD bejelentkezési oldala a hitelesítéshez.
+    j. A munkahelyen használó összes felhasználó most megjelenik az Azure AD bejelentkezési oldala a hitelesítéshez.
 
 1. **SAML-kijelentkezés átirányítása (nem kötelező)**  -
 

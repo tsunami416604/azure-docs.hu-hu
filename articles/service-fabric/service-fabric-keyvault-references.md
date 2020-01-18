@@ -3,12 +3,12 @@ title: Azure Service Fabric – a Service Fabric Application kulcstartó-referen
 description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: b0e882c2b39c06a3040d22fc6694599966ceeb39
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463033"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167127"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
 
@@ -61,6 +61,7 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
 
     > [!NOTE] 
     > Javasoljuk, hogy használjon külön titkosítási tanúsítványt a CSS-hez. A "CentralSecretService" szakaszban adhatja hozzá.
+    
 
     ```json
         {
@@ -68,7 +69,18 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
             "value": "<EncryptionCertificateThumbprint for CSS>"
         }
     ```
-
+Ahhoz, hogy a módosítások életbe lépjenek, módosítania kell a frissítési házirendet, hogy az egyes csomópontokon a frissítés folyamata során az Service Fabric-futtatókörnyezet kényszerített újraindítását is megadja. Ez az újraindítás biztosítja, hogy az újonnan engedélyezett rendszerszolgáltatás elindult, és minden csomóponton fusson. Az alábbi kódrészletben a forceRestart az alapvető beállítás; a többi beállításhoz használja a meglévő értékeket.
+```json
+"upgradeDescription": {
+    "forceRestart": true,
+    "healthCheckRetryTimeout": "00:45:00",
+    "healthCheckStableDuration": "00:05:00",
+    "healthCheckWaitDuration": "00:05:00",
+    "upgradeDomainTimeout": "02:00:00",
+    "upgradeReplicaSetCheckTimeout": "1.00:00:00",
+    "upgradeTimeout": "12:00:00"
+}
+```
 - Az alkalmazás felügyelt identitás-hozzáférési engedélyének megadása a kulcstartóhoz
 
     Ebből a [dokumentumból](how-to-grant-access-other-resources.md) megtudhatja, hogyan biztosíthatja a felügyelt identitások hozzáférését a kulcstartóhoz. Azt is vegye figyelembe, hogy ha rendszerhez rendelt felügyelt identitást használ, a felügyelt identitás csak az alkalmazás telepítése után jön létre.

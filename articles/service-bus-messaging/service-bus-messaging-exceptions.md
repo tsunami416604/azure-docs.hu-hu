@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/17/2020
 ms.author: aschhab
-ms.openlocfilehash: eebbef25f2cd4539a5092f271c3944c24503f287
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a795aa536e6e72b487abd18e60cfa52d6ab633ee
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156811"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264882"
 ---
 # <a name="troubleshooting-guide-for-azure-service-bus"></a>A Azure Service Bus hibaelhárítási útmutatója
 Ez a cikk a Service Bus .NET-keretrendszer API-jai által generált .NET-kivételeket, valamint a hibaelhárítással kapcsolatos egyéb tippeket tartalmaz. 
@@ -109,25 +109,25 @@ A várólisták és témakörök esetében az időtúllépést a [MessagingFacto
 ## <a name="connectivity-certificate-or-timeout-issues"></a>Kapcsolati, tanúsítvány-vagy időtúllépési problémák
 A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/időtúllépési problémák hibaelhárításához a *. servicebus.windows.net alatti összes szolgáltatáshoz. 
 
-- Tallózással keresse meg vagy a [wget](https://www.gnu.org/software/wget/) `https://sbwagn2.servicebus.windows.net/`. Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal (a Java SDK használatakor leggyakrabban).
-- A következő parancs futtatásával ellenőrizze, hogy a tűzfal blokkolja-e a portokat. A használt könyvtártól függően más portok is használatban vannak. Például: 443, 5672, 9354.
+- Tallózással keresse meg vagy a [wget](https://www.gnu.org/software/wget/) `https://<yournamespace>.servicebus.windows.net/`. Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal (a Java SDK használatakor leggyakrabban).
+- A következő parancs futtatásával ellenőrizze, hogy a tűzfal blokkolja-e a portokat. A használt portok a következők: 443 (HTTPS), 5671 (AMQP) és 9354 (net Messaging/SBMP). A használt könyvtártól függően más portok is használatban vannak. Itt látható a minta parancs, amely azt vizsgálja, hogy a 5671-es port blokkolva van-e. 
 
     ```powershell
-    tnc sbwagn2.servicebus.windows.net -port 5671
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
     ```
 
     Linux rendszeren:
 
     ```shell
-    telnet sbwagn2.servicebus.windows.net 5671
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
-- Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ezzel a paranccsal 25 különböző TCP-kapcsolatot hozhat létre másodpercenként a szolgáltatással, így a sikeres/sikertelen és a TCP-kapcsolat késése is megtekinthető. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
+- Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ezzel a paranccsal a szolgáltatással 1 másodpercenként 25 különböző TCP-kapcsolatot kell létrehozni. Ezt követően megtekintheti, hogy a sikeres és sikertelen volt-e a TCP-kapcsolatok késése. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
 
     ```shell
-    .\psping.exe -n 25 -i 1 -q yournamespace.servicebus.windows.net:5671 -nobanner     
+    .\psping.exe -n 25 -i 1 -q <yournamespace>.servicebus.windows.net:5671 -nobanner     
     ```
     Ha más eszközöket (például `tnc`, `ping`stb.) használ, egyenértékű parancsokat is használhat. 
-- Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik, vagy vegye fel a kapcsolatot [Microsoft ügyfélszolgálata](https://support.microsoft.com/).
+- Szerezze be a hálózati nyomkövetést, ha az előző lépések nem segítenek és nem elemzik olyan eszközökkel, mint például a [Wireshark](https://www.wireshark.org/). Ha szükséges, forduljon a [Microsoft ügyfélszolgálatahoz](https://support.microsoft.com/) . 
 
 
 ## <a name="next-steps"></a>Következő lépések

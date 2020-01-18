@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8c12e0ab854bb2b5764dd326e3f1649202f6f16b
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 4eff7c4c91ed664fcf1f4fc7a8be2d43d24e5c6b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232803"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262809"
 ---
 # <a name="singleton-orchestrators-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
@@ -20,7 +20,7 @@ A háttérben felmerülő feladatok esetében gyakran biztosítania kell, hogy e
 
 Az alábbi példa egy olyan HTTP-trigger függvényt mutat be, amely létrehoz egy egypéldányos háttér-előkészítési feladatot. A kód biztosítja, hogy csak egy példány létezik egy adott példány-AZONOSÍTÓhoz.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```cs
 [FunctionName("HttpStartSingle")]
@@ -54,9 +54,10 @@ public static async Task<HttpResponseMessage> RunSingle(
 > [!NOTE]
 > Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-Íme a function.json fájlban:
+**function. JSON**
+
 ```json
 {
   "bindings": [
@@ -82,7 +83,8 @@ public static async Task<HttpResponseMessage> RunSingle(
 }
 ```
 
-A következő JavaScript-kódot:
+**index. js**
+
 ```javascript
 const df = require("durable-functions");
 
@@ -109,6 +111,8 @@ module.exports = async function(context, req) {
     }
 };
 ```
+
+---
 
 Alapértelmezés szerint a példány-azonosítók véletlenszerűen generált GUID azonosítók. Az előző példában azonban a példány AZONOSÍTÓját átadja a rendszer az URL-ből származó útvonal-adatok között. A kód `GetStatusAsync`(C#) vagy `getStatus` (JavaScript) meghívásával ellenőrizze, hogy a megadott azonosítójú példány már fut-e. Ha nem fut ilyen példány, a rendszer létrehoz egy új példányt az AZONOSÍTÓval.
 

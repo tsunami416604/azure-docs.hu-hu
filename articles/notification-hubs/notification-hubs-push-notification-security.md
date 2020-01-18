@@ -1,6 +1,6 @@
 ---
-title: Notification Hubs biztonság
-description: Ez a témakör az Azure Notification Hubs biztonságát ismerteti.
+title: Notification Hubs biztonsági modell
+description: Ismerje meg az Azure Notification Hubs biztonsági modelljét.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 09/23/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
-ms.openlocfilehash: a9598f6a01e5536351fb20b7c352a5eaf5746042
-ms.sourcegitcommit: a6718e2b0251b50f1228b1e13a42bb65e7bf7ee2
+ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71273618"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263761"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
 
@@ -46,13 +46,13 @@ A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ü
 
 ## <a name="security-claims"></a>Biztonsági jogcímek
 
-A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcímet is használhatnak: **Figyelés**, **Küldés**és **kezelés**.
+A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés**és **felügyelet**.
 
-| Igénylés   | Leírás                                          | Engedélyezett műveletek |
+| Jogcím   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Figyelés  | Egyszeri regisztrációk létrehozása/frissítése, olvasása és törlése | Regisztráció létrehozása/frissítése<br><br>Regisztráció beolvasása<br><br>Egy leíró összes regisztrációjának olvasása<br><br>Regisztráció törlése |
-| Küldés    | Üzenetek küldése az értesítési központnak                | Üzenet küldése |
-| Felügyelet  | Notification Hubs (beleértve a PNS hitelesítő adatainak frissítését és a biztonsági kulcsokat), valamint a címkék alapján történő regisztrációk beolvasása |Hubok létrehozása/frissítése/olvasása/törlése<br><br>Regisztrációk beolvasása címke szerint |
+| Küldés    | Üzenetek küldése az értesítési központnak                | Üzenetküldés |
+| Kezelés  | Notification Hubs (beleértve a PNS hitelesítő adatainak frissítését és a biztonsági kulcsokat), valamint a címkék alapján történő regisztrációk beolvasása |Hubok létrehozása/frissítése/olvasása/törlése<br><br>Regisztrációk beolvasása címke szerint |
 
 A Notification Hubs fogadja a közvetlenül a központban konfigurált megosztott kulcsokkal generált SAS-jogkivonatokat.
 
@@ -79,6 +79,6 @@ Endpoint=sb://mytestnamespace1.servicebus.windows.net/;SharedAccessKeyName=polic
 
 ![SAS-kulcsok beszerzése](media/notification-hubs-push-notification-security/access1.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Notification Hubs áttekintése](notification-hubs-push-notification-overview.md)

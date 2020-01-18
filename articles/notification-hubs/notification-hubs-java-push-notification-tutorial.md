@@ -1,5 +1,5 @@
 ---
-title: A Notification Hubs használata Javával
+title: Az Azure Notification Hubs használata Javával
 description: Ismerje meg, hogyan használhatja az Azure Notification Hubst Java háttérrendszer használatával.
 services: notification-hubs
 documentationcenter: ''
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 532ffc7a7393f016f27264b67b4ee5d3e6e5888f
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: d48973cc7c5ed1fc7ae3f96128d488f3f1df3a05
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213209"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263863"
 ---
 # <a name="how-to-use-notification-hubs-from-java"></a>A Notification Hubs használata a Java-ból
 
@@ -55,7 +55,7 @@ Létrehozás:
 
 ## <a name="code"></a>Kód
 
-### <a name="notification-hub-cruds"></a>Notification Hub CRUDs
+### <a name="notification-hub-cruds"></a>Értesítési központ – SZIFILISZek
 
 **Hozzon létre egy NamespaceManager:**
 
@@ -188,7 +188,7 @@ A telepítési API egy alternatív mechanizmus a regisztrációs felügyelethez.
 
 A telepítés mindent tartalmaz, amire szüksége van: push Channel (eszköz token), címkék, sablonok, másodlagos csempék (WNS és APNS). Nem kell meghívnia a szolgáltatást az azonosító többé-csak a GUID-azonosító vagy bármely más azonosító beszerzéséhez, tartsa azt az eszközön, és küldje el a háttérnek a leküldéses csatornával (eszköz token) együtt.
 
-A háttérben csak egyetlen hívást kell végrehajtania, hogy `CreateOrUpdateInstallation`teljesen idempotens, ezért szükség esetén próbálkozzon újra.
+A háttérrendszer csak egyetlen hívást hajt végre `CreateOrUpdateInstallation`; teljesen idempotens, ezért szükség esetén próbálkozzon újra.
 
 Példa az Amazon Kindle Fire:
 
@@ -221,7 +221,7 @@ Telepítés törlése:
     hub.deleteInstallation(installation.getInstallationId());
     ```
 
-`CreateOrUpdate`, `Patch` `Get`és `Delete` végül konzisztensek a-val. A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
+a `CreateOrUpdate`, `Patch`és `Delete` végül konzisztensek `Get`ekkel. A kért művelet csak a rendszer várólistára kerül a hívás során, és a háttérben kerül végrehajtásra. A Get nem a fő futtatókörnyezeti forgatókönyvhöz készült, hanem csak hibakeresési és hibaelhárítási célból, ezért a szolgáltatás szigorúan szabályozza.
 
 A küldési folyamat ugyanaz, mint a regisztrációk esetében. Értesítés küldése az adott telepítéshez – csak a "telepítésazonosító: {desired-id}" címkét használja. Ebben az esetben a kód a következő:
 
@@ -294,7 +294,7 @@ Előfordulhat, hogy tömeges műveletet kell végrehajtania a regisztrációk el
 
 **URI SAS-aláírással:**
 
- Ez az URL-cím a blob-fájl vagy a blob-tároló URL-címe, valamint a paraméterek, például az engedélyek és a lejárati idő, valamint a fiók SAS-kulcsával létrehozott összes művelet aláírása. Az Azure Storage Java SDK sokoldalú képességekkel rendelkezik, beleértve az URI-k létrehozását is. Az egyszerű Alternatív megoldásként tekintse meg a `ImportExportE2E` teszt osztályt (a GitHub helyéről), amely az aláírási algoritmus alapszintű és kompakt implementációját használja.
+ Ez az URL-cím a blob-fájl vagy a blob-tároló URL-címe, valamint a paraméterek, például az engedélyek és a lejárati idő, valamint a fiók SAS-kulcsával létrehozott összes művelet aláírása. Az Azure Storage Java SDK sokoldalú képességekkel rendelkezik, beleértve az URI-k létrehozását is. Az egyszerű Alternatív megoldásként tekintse meg a `ImportExportE2E` test osztályt (a GitHub helyéről), amely az aláírási algoritmus alapszintű és kompakt implementációját használja.
 
 ### <a name="send-notifications"></a>Értesítések küldése
 
@@ -374,7 +374,7 @@ A Java-kód futtatásának most egy értesítést kell létrehoznia a céleszkö
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ez a témakör bemutatja, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Innen a következőket teheti:
+Ez a témakör bemutatja, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Ebből a menüből:
 
 * Töltse le a teljes [Java SDK]-t, amely tartalmazza a teljes SDK-kódot.
 * Játsszon a mintákkal:

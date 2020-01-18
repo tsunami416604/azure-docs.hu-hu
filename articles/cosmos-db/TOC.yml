@@ -851,8 +851,6 @@
         - name: Konzisztenciaszintek kezelése
           displayName: 'session, consistency prefix, strong, eventual, bounded staleness'
           href: how-to-manage-consistency.md
-        - name: Egyéni szinkronizálás implementálása
-          href: how-to-custom-synchronization.md
         - name: Ütközésfeloldási szabályzatok konfigurálása
           href: how-to-manage-conflicts.md
     - name: Kiosztott átviteli sebesség

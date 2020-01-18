@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: e7aa4a557821ee49867a8ea82f92ef04dfbef689
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: b664a586398e297a00ea9cd8fe68dc65e6ade5c8
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978679"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170008"
 ---
 # <a name="quickstart-how-to-build-a-classifier-with-custom-vision"></a>Gyors útmutató: osztályozó készítése Custom Vision
 
@@ -110,6 +110,8 @@ A betanítás befejezése után a modell teljesítménye becsült és megjelenik
 ## <a name="manage-training-iterations"></a>Tanítási ismétlések kezelése
 
 Az osztályozó betanításakor minden alkalommal létre kell hoznia egy új _iterációt_ a saját frissített teljesítmény-metrikákkal. Az összes iterációt megtekintheti a **teljesítmény** lap bal oldali ablaktábláján. Emellett a **delete (Törlés** ) gomb is látható, amellyel törölhető egy iteráció, ha elavult. Ha töröl egy iterációt, akkor minden olyan rendszerképet töröl, amely egyedileg hozzá van rendelve.
+
+A betanított modellek programozott módon való elérésének megismeréséhez tekintse meg [a modell használata az előrejelzési API-val](./use-prediction-api.md) című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

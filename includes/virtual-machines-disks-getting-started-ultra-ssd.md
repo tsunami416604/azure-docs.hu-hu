@@ -8,14 +8,14 @@ ms.topic: include
 ms.date: 11/14/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 5751ed33673ca859ba1aed54cfc7c2e7ecc8e495
-ms.sourcegitcommit: 5a8c65d7420daee9667660d560be9d77fa93e9c9
+ms.openlocfilehash: ff3409fad12e54be5ac00ead3ca44c1f24bb0af8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74124098"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76268274"
 ---
-Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultra-lemezek olyan adatigényes számítási feladatokhoz használhatók, mint a SAP HANA, a legfelső szintű adatbázisok és a tranzakció-nagy számítási feladatok.
+Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony késésű lemezes tárolást biztosít az Azure IaaS Virtual Machines (VM) szolgáltatásokhoz. Ez az új ajánlat a vonal teljesítményét a meglévő lemezekkel megegyező rendelkezésre állási szinten biztosítja. Az ultra Disks szolgáltatás egyik fő előnye, hogy dinamikusan megváltoztathatja az SSD teljesítményét a számítási feladatokkal együtt anélkül, hogy újra kellene indítania a virtuális gépeket. Az ultralemezek olyan adatigényes számítási feladatokhoz használhatók, mint az SAP HANA, a felső szintű adatbázisok és a tranzakcióigényes számítási feladatok.
 
 ## <a name="ga-scope-and-limitations"></a>A GA hatóköre és korlátai
 
@@ -25,12 +25,14 @@ Az Azure Ultra Disks nagy teljesítményű, magas IOPS és konzisztens, alacsony
 
 Az ultra-lemezek kihasználása érdekében meg kell határoznia, hogy melyik rendelkezésre állási zónát használja. Nem minden régió támogatja a virtuálisgép-méretet az ultra Disks szolgáltatással. Annak megállapításához, hogy a régió, a zóna és a virtuálisgép-méret támogatja-e az ultra-lemezeket, futtassa a következő parancsok egyikét, és először cserélje le a **régiót**, a **vmSize**és az **előfizetési** értékeket:
 
-CLI:
+CLI
 
 ```bash
 $subscription = "<yourSubID>"
-$region = "<yourLocation>, example value is southeastasia"
-$vmSize = "<yourVMSize>, example value is Standard_E64s_v3"
+# example value is southeastasia
+$region = "<yourLocation>"
+# example value is Standard_E64s_v3
+$vmSize = "<yourVMSize>"
 
 az vm list-skus --resource-type virtualMachines  --location $region --query "[?name=='$vmSize'].locationInfo[0].zoneDetails[0].Name" --subscription $subscription
 ```
@@ -47,7 +49,7 @@ A válasz az alábbi űrlaphoz hasonló lesz, ahol az X a kiválasztott régiób
 
 Őrizze meg a **zónák** értékét, amely a rendelkezésre állási zónát képviseli, és szüksége lesz rá egy ultra-lemez üzembe helyezése érdekében.
 
-|ResourceType  |Name (Név)  |Földrajzi egység  |Zóna  |Korlátozás  |Képesség  |Érték  |
+|ResourceType  |Name (Név)  |Földrajzi egység  |Zóna  |Korlátozás  |Szolgáltatás  |Value (Díj)  |
 |---------|---------|---------|---------|---------|---------|---------|
 |lemezek     |UltraSSD_LRS         |eastus2         |X         |         |         |         |
 
@@ -77,7 +79,7 @@ Ez a szakasz a virtuális gép adatlemezként való üzembe helyezését ismerte
 - Győződjön meg arról, hogy [támogatott virtuálisgép-méret és-régió](#ga-scope-and-limitations)van kiválasztva.
 - Válassza ki a rendelkezésre **állási zónát** a **rendelkezésre állási beállításoknál**
 - Adja meg a fennmaradó bejegyzéseket a választott lehetőségek közül.
-- Válassza a **lemezek**lehetőséget.
+- Válassza a **Lemezek** lehetőséget.
 
 ![Create-Ultra-Disk-enabled-VM. png](media/virtual-machines-disks-getting-started-ultra-ssd/create-ultra-disk-enabled-vm.png)
 
@@ -264,6 +266,6 @@ $diskupdateconfig = New-AzDiskUpdateConfig -DiskMBpsReadWrite 2000
 Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate $diskupdateconfig
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné kipróbálni az új lemez típusának [elérésére vonatkozó kérést](https://aka.ms/UltraDiskSignup).

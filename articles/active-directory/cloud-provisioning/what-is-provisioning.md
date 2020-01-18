@@ -11,14 +11,14 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 166fb9320672e63b8c53717133dc61aa93f57a62
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74868643"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167626"
 ---
-# <a name="what-is-identity-provisioning"></a>Mi az identitás kiépítés?
+# <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
 
 Napjainkban a vállalatok és a vállalatok egyre többen használják a helyszíni és a felhőalapú alkalmazásokat.  A felhasználóknak a helyszíni és a Felhőbeli alkalmazásokhoz is hozzá kell férniük. A különböző alkalmazásokban (a helyszínen és a felhőben) egyetlen identitással kell rendelkeznie.
 
@@ -50,9 +50,7 @@ A leggyakoribb forgatókönyv a következő: amikor egy új alkalmazott csatlako
 
 ![Felhőbeli kiépítés](media/what-is-provisioning/cloud3.png)
 
-Az alkalmazások kiosztása magában foglalja a felhasználók és szerepkörök kiosztását azon alkalmazásokban, amelyekhez a felhasználónak hozzáférésre van szüksége.  
-
-A leggyakoribb forgatókönyv a következő: Ha az Azure AD-ben lévő felhasználó O365 vagy Salesforce van kiépítve.
+Azure Active Directory (Azure AD) esetében az **[alkalmazás üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és még sok más.
 
 ## <a name="directory-provisioning"></a>Címtár kiépítés
 

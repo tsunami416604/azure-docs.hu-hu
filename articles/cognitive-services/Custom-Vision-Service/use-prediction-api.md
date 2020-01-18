@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.author: anroth
-ms.openlocfilehash: 50325b75280160a3fefa5b5487df29a25e53bddd
-ms.sourcegitcommit: fbea2708aab06c19524583f7fbdf35e73274f657
+ms.openlocfilehash: dcb12da680d70e1f0ce4cd763bee340bb3416c6b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2019
-ms.locfileid: "70966948"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169952"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
 
@@ -110,8 +110,8 @@ Ebben az útmutatóban egy helyi rendszerképet fog használni, ezért másolja 
 
 1. Írja át a következő információkat:
    * Állítsa a `namespace` mezőt a projekt nevére.
-   * Cserélje le a `<Your prediction key>` helyőrzőt a korábban lekért kulcs értékére.
-   * Cserélje le a `<Your prediction URL>` helyőrzőt a korábban lekért URL-címre.
+   * Cserélje le a helyőrzőt `<Your prediction key>` a korábban lekért kulcs értékére.
+   * Cserélje le a helyőrzőt `<Your prediction URL>` a korábban lekért URL-címre.
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
@@ -130,12 +130,12 @@ Az alkalmazás futtatásakor a rendszer felszólítja egy képfájl elérési ú
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az útmutatóban megtanulta, hogyan küldhet képeket az egyéni rendszerkép-osztályozó/detektorba, és hogyan kaphat választ programozott C# módon az SDK-val. Következő lépésként megtudhatja, hogyan végezheti el a végpontok közötti forgatókönyveket a C#vagy más nyelvi SDK használatának megkezdéséhez.
 
 * [Gyors útmutató: .NET SDK](csharp-tutorial.md)
-* [Rövid útmutató: Python SDK](python-tutorial.md)
-* [Rövid útmutató: Java SDK](java-tutorial.md)
-* [Rövid útmutató: Node SDK](node-tutorial.md)
-* [Rövid útmutató: Go SDK](go-tutorial.md)
+* [Gyors útmutató: Python SDK](python-tutorial.md)
+* [Gyors útmutató: Java SDK](java-tutorial.md)
+* [Rövid útmutató: node SDK](node-tutorial.md)
+* [Gyors útmutató: go SDK](go-tutorial.md)

@@ -1,5 +1,5 @@
 ---
-title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára a Azure DevTest Labsban | Microsoft Docs
+title: Tesztkörnyezet konfigurálása Távoli asztali átjáró használatára Azure DevTest Labs
 description: Megtudhatja, hogyan konfigurálhat labort Azure DevTest Labs egy távoli asztali átjáróval, hogy biztosítsa a laboratóriumi virtuális gépek biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0f879a6389c7a77708e8041dd8b82dc3785679fa
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 88daecdf4490ffd4eef45e6cd664a16f86bad113
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73162630"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170286"
 ---
 # <a name="configure-your-lab-in-azure-devtest-labs-to-use-a-remote-desktop-gateway"></a>A labor konfigurálása Azure DevTest Labs távoli asztali átjáró használatához
 Azure DevTest Labs egy távoli asztali átjárót konfigurálhat a laborhoz, így biztosíthatja a labor virtuális gépek (VM-EK) biztonságos elérését anélkül, hogy az RDP-portot fel kellene tenni. A labor központi helyet biztosít a labor felhasználói számára az összes olyan virtuális gép megtekintésére és a hozzájuk való kapcsolódásra, amelyhez hozzáférése van. A **virtuális gép** oldalon a **Kapcsolódás** gomb egy, a géphez való kapcsolódáshoz megnyitható RDP-fájlt hoz létre. Az RDP-kapcsolatot tovább testreszabhatja és biztonságossá teheti úgy, hogy a labort egy távoli asztali átjáróhoz csatlakoztatja. 
@@ -39,7 +39,7 @@ Ez a megközelítés biztonságosabb, mert a tesztkörnyezet közvetlenül az á
 1. Az RDP-fájlt az előnyben részesített RDP-kapcsolati program használatával nyithatja meg. Ne feledje, hogy az RDP-kapcsolati programok nem támogatják a jogkivonat-hitelesítést. A hitelesítési jogkivonat lejárati dátummal rendelkezik, amelyet a Function alkalmazás állít be. A jogkivonat lejárta előtt létesítsen kapcsolattal a labor virtuális gépet.
 1. Ha a távoli asztali átjáró számítógépe hitelesíti a jogkivonatot az RDP-fájlban, a rendszer továbbítja a kapcsolódást a tesztkörnyezet számítógépének.
 
-### <a name="solution-requirements"></a>Megoldási követelmények
+### <a name="solution-requirements"></a>A megoldás követelményei
 A DevTest Labs-jogkivonat hitelesítési funkciójának használatakor az átjáró gépek, a tartománynév-szolgáltatások (DNS) és a függvények néhány konfigurációs követelményt is igénybe vehetnek.
 
 ### <a name="requirements-for-remote-desktop-gateway-machines"></a>A távoli asztali átjáró gépekre vonatkozó követelmények
@@ -138,7 +138,7 @@ Kövesse az alábbi lépéseket a távoli asztali átjáró farmhoz tartozó min
     - signCertificate – az átjáróhoz tartozó számítógép aláíró tanúsítványának Base64-kódolása.
     - signCertificatePassword – az átjáróhoz tartozó számítógép aláíró tanúsítványának jelszava.
     - signCertificateThumbprint – a Tanúsítvány ujjlenyomata az aláíró tanúsítvány helyi tanúsítványtárolójában való azonosításhoz.
-    - _artifactsLocation – az az URI-hely, ahol az összes támogató erőforrás megtalálható. Az értéknek teljesen minősített UIR kell lennie, nem relatív elérési útnak.
+    - _artifactsLocation – az URI-hely, ahol az összes támogató erőforrás megtalálható. Az értéknek teljesen minősített UIR kell lennie, nem relatív elérési útnak.
     - _artifactsLocationSasToken – a támogatási erőforrások eléréséhez használt közös hozzáférés-aláírási (SAS) token, ha a hely egy Azure Storage-fiók.
 
     A sablon a következő paranccsal helyezhető üzembe az Azure CLI használatával:

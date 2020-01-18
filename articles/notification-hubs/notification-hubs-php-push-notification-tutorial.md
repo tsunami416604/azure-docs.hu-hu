@@ -1,6 +1,6 @@
 ---
-title: A Notification Hubs használata a PHP-vel
-description: Ismerje meg, hogyan használható az Azure Notification Hubs egy PHP-háttérrel.
+title: Az Azure Notification Hubs használata a PHP-vel
+description: Ismerje meg, hogyan használható az Azure Notification Hubs a PHP háttérrendszer használatával.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 4df48475af4b140e4446dde9069eafcc95d9d3b2
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 9a77a9d9c8b2d71197089f66d81e07d56c780e11
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213171"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263846"
 ---
 # <a name="how-to-use-notification-hubs-from-php"></a>A Notification Hubs használata PHP-ból
 
@@ -36,7 +36,7 @@ Ebben a témakörben a következőket mutatjuk be:
 
 ## <a name="client-interface"></a>Ügyfél felülete
 
-A fő ügyfél felülete ugyanazokat a módszereket nyújtja, mint a [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx), amely lehetővé teszi, hogy közvetlenül lefordítsa az ezen a helyen jelenleg elérhető oktatóanyagokat és mintákat, és a Közösség számára is hozzájáruljon a Internet.
+A fő ügyfél felülete ugyanazokat a módszereket nyújtja, mint a [.net Notification HUBS SDK](https://msdn.microsoft.com/library/jj933431.aspx), amely lehetővé teszi, hogy közvetlenül lefordítsa az ezen a helyen jelenleg elérhető oktatóanyagokat és mintákat, és a Közösség az interneten is részt vesz.
 
 A [PHP REST burkoló minta]elérhető összes kód megtalálható.
 
@@ -106,7 +106,7 @@ Itt látható a fő osztály, amely az ügyfelet alkalmazza, amelynek a konstruk
 
 Az [sas biztonsági jogkivonat létrehozásával](https://docs.microsoft.com/previous-versions/azure/reference/dn495627(v=azure.100)#create-sas-security-token)kapcsolatos információkért tekintse meg az Azure dokumentációját.
 
-Adja hozzá a `NotificationHub` metódust a osztályhoz a jogkivonat létrehozásához az aktuális kérelem URI-ja és a kapcsolati karakterláncból kinyert hitelesítő adatok alapján. `generateSasToken`
+Adja hozzá a `generateSasToken` metódust a `NotificationHub` osztályhoz a jogkivonat létrehozásához az aktuális kérelem URI-ja és a kapcsolati karakterláncból kinyert hitelesítő adatok alapján.
 
     ```php
     private function generateSasToken($uri) {
@@ -155,7 +155,7 @@ Ez az osztály egy natív értesítési törzs tárolója, vagy egy sablonra von
 
 A rendelkezésre álló lehetőségekért tekintse meg a [Notification HUBS REST API-k dokumentációját](https://msdn.microsoft.com/library/dn495827.aspx) és az egyes értesítési platformok formátumait.
 
-Ezt az osztályt felfegyverezve most már megírhatjuk a Küldés értesítési `NotificationHub` metódusait az osztályban belül:
+Ezt az osztályt felfegyverezve most már megírhatjuk a küldési értesítési módszereket a `NotificationHub` osztályon belül:
 
     ```php
     public function sendNotification($notification, $tagsOrTagExpression="") {
@@ -216,7 +216,7 @@ Ezt az osztályt felfegyverezve most már megírhatjuk a Küldés értesítési 
     } 
     ```
 
-A fenti módszerek http post-kérést `/messages` küldenek az értesítési központ végpontjának, és a megfelelő törzstel és fejlécekkel küldik el az értesítést.
+A fenti módszerek HTTP POST-kérést küldenek az értesítési központ `/messages` végpontjának, és a megfelelő törzstel és fejlécekkel küldik el az értesítést.
 
 ## <a name="complete-tutorial"></a>Az oktatóanyag befejezése
 
@@ -280,9 +280,9 @@ Ezután adja hozzá a küldési kódot a cél mobil platformtól függően.
 
 A PHP-kód futtatásával azonnal megjelenik egy értesítés, amely megjelenik a megcélzott eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a témakörben bemutatjuk, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Innen a következőket teheti:
+Ebben a témakörben bemutatjuk, hogyan hozhat létre egy egyszerű Java REST-ügyfelet Notification Hubs számára. Ebből a menüből:
 
 * Töltse le a teljes [PHP REST burkoló minta], amely tartalmazza a fenti kódot.
 * Folytassa a Notification Hubs címkézési funkció megismerésével kapcsolatos tudnivalókat [a legfrissebb hírek oktatóanyagban]

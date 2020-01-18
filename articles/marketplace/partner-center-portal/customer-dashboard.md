@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 12/11/2019
-ms.openlocfilehash: d1d94e07fc38ae5de62793666df5a73dbf8b79eb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2eaaf2ec2f3dad1da345d0cfeadf1cae223a592
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480566"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264016"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az ügyfél irányítópultja a kereskedelmi piactér elemzésében
 
@@ -72,7 +72,7 @@ Az **ügyfél-trendek** diagram az összes ügyfél számát jeleníti meg, bele
 
 A **megrendelések/használati diagramok ügyfeleinek** három lapja van: "Orders", "normalizált használat" és "nyers használat". A **Top Customer percentilis** az x tengely mentén jelenik meg, a megrendelések száma alapján. Az y tengely megjeleníti az ügyfél rendelésének darabszámát. A másodlagos y tengely (vonalas gráf) megjeleníti a megrendelések teljes számának összesített százalékos arányát. A részletek megjelenítéséhez vigye az egérmutatót a vonalak fölé a diagram mentén.
 
-Példaként tekintse meg az alábbi táblázatot a normalizált használathoz: az ügyfelek első 30%-ában a normalizált használat 87%-a összesítve. Az ügyfelek 30%-os százalékos értéke csak a 1.57 méteres használatot járul hozzá.
+Példaként tekintse meg az alábbi táblázatot a normalizált használathoz: az ügyfelek első 30%-ában a normalizált használat 87%-a összesítve. Az ügyfelek 30%-os százalékos értéke csak 1 570 000 órányi használatot vesz igénybe.
 
 ### <a name="customers-by-skus"></a>Ügyfelek SKU szerint
 

@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: fec39a9e788debcd9c3ac707a0431e268d87ed35
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73146195"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263336"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
@@ -27,21 +27,22 @@ Ez a cikk a Azure IoT Edge Runtime Ubuntu 16,04 virtuális gépen való futtatá
 Az első rendszerindítás során a Azure IoT Edge az Ubuntu rendszerű virtuális gépen előre telepíti a Azure IoT Edge Runtime legújabb verzióját. Emellett tartalmaz egy parancsfájlt a kapcsolati karakterlánc beállításához, majd újraindítja a futtatókörnyezetet, amely távolról indítható az Azure VM-portálon vagy az Azure-parancssoron keresztül, így egyszerűen konfigurálhatja és csatlakoztathatja az IoT Edge eszközt SSH vagy távoli indítás nélkül asztali munkamenet. Ez a szkript arra vár, hogy állítsa be a kapcsolódási karakterláncot egészen addig, amíg a IoT Edge-ügyfél telepítése nem történik meg, így nem kell létrehoznia az automatizálást.
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Üzembe helyezés az Azure piactéren
-1.  Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en navigáljon az Ubuntu Marketplace-ajánlat [Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) vagy az "Azure IoT Edge az Ubuntuban" kifejezésre való kereséssel.
-2.  Válassza a **Letöltés most** lehetőséget, majd **folytassa** a következő párbeszédablakban.
-3.  A Azure Portalban kattintson a **Létrehozás** gombra, és kövesse a varázslót a virtuális gép üzembe helyezéséhez. 
-    *   Ha első alkalommal próbál meg egy virtuális gépet kipróbálni, a legegyszerűbb, ha jelszót használ, és engedélyezi az SSH-t a nyilvános bejövő port menüjében. 
-    *   Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
-4.  A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
-    1.  Másolja az eszköz-kapcsolatok sztringjét a IoT Hub létrehozott IoT Edge eszközről (ha nem ismeri ezt a folyamatot, kövesse a Azure Portal eljárásban a [kapcsolatok lekérése karakterláncot](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) )
-    1.  Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
-    1.  Válassza a **RunShellScript** lehetőséget.
-    1.  Futtassa az alábbi szkriptet a parancssori ablakban a következő eszközzel: `/etc/iotedge/configedge.sh "{device_connection_string}"`
-    1.  **Futtatás** kiválasztása
-    1.  Várjon néhány percet, és a képernyőn meg kell adni egy sikert jelző üzenetet, amely jelzi, hogy a rendszer sikeresen beállította a kapcsolatok sztringjét.
 
+1. Az [Azure Marketplace](https://azuremarketplace.microsoft.com/) -en navigáljon az Ubuntu Marketplace-ajánlat [Azure IoT Edge](https://aka.ms/azure-iot-edge-ubuntuvm) vagy az "Azure IoT Edge az Ubuntuban" kifejezésre való kereséssel.
+2. Válassza a **Letöltés most** lehetőséget, majd **folytassa** a következő párbeszédablakban.
+3. A Azure Portalban kattintson a **Létrehozás** gombra, és kövesse a varázslót a virtuális gép üzembe helyezéséhez.
+    * Ha első alkalommal próbál meg egy virtuális gépet kipróbálni, a legegyszerűbb, ha jelszót használ, és engedélyezi az SSH-t a nyilvános bejövő port menüjében.
+    * Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
+4. A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
+    1. Másolja az eszköz-kapcsolatok sztringjét a IoT Hub létrehozott IoT Edge eszközről (ha nem ismeri ezt a folyamatot, kövesse a Azure Portal eljárásban a [kapcsolatok lekérése karakterláncot](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal) )
+    1. Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
+    1. Válassza a **RunShellScript** lehetőséget.
+    1. Futtassa az alábbi szkriptet a parancssori ablakban a következő eszközzel: `/etc/iotedge/configedge.sh "{device_connection_string}"`
+    1. **Futtatás** kiválasztása
+    1. Várjon néhány percet, és a képernyőn meg kell adni egy sikert jelző üzenetet, amely jelzi, hogy a rendszer sikeresen beállította a kapcsolatok sztringjét.
 
 ## <a name="deploy-from-the-azure-portal"></a>Üzembe helyezés a Azure Portal
+
 A Azure Portal keressen rá a "Azure IoT Edge" kifejezésre, majd válassza az **Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime** elemet a virtuális gép létrehozási munkafolyamatának megkezdéséhez. Innen hajtsa végre a fenti 3. és 4. lépést az "üzembe helyezés az Azure piactéren" című részben leírtak szerint.
 
 ## <a name="deploy-from-azure-cli"></a>Üzembe helyezés az Azure CLI-ből
@@ -76,7 +77,7 @@ A Azure Portal keressen rá a "Azure IoT Edge" kifejezésre, majd válassza az *
 1. Fogadja el a virtuális gép használati feltételeit. Ha először szeretné áttekinteni a feltételeket, kövesse az [üzembe helyezés az Azure piactéren](#deploy-from-the-azure-marketplace)című témakör lépéseit.
 
    ```azurecli-interactive
-   az vm image accept-terms --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
+   az vm image terms accept --urn microsoft_iot_edge:iot_edge_vm_ubuntu:ubuntu_1604_edgeruntimeonly:latest
    ```
 
 1. Új virtuális gép létrehozása:

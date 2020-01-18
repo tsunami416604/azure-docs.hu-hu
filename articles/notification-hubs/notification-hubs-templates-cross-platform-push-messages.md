@@ -1,6 +1,6 @@
 ---
-title: Sablonok
-description: Ez a témakör az Azure Notification hubok sablonjait ismerteti.
+title: Azure Notification Hubs-sablonok
+description: Tudnivalók az Azure Notification Hubs sablonjainak használatáról.
 services: notification-hubs
 documentationcenter: .net
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 54c53fee260062960d6bce9c1822971c935d88d1
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: 7d88f57fe92b9da62cc9f90d64bdec4c27642fb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71212990"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263744"
 ---
 # <a name="templates"></a>Sablonok
 
@@ -139,13 +139,13 @@ A következő táblázat a sablonokban engedélyezett nyelvet mutatja be:
 | $ (prop, n)       | A fentiek szerint azonban a szöveg kifejezetten n karakterből van kivágva, például $ (title, 20) – a title tulajdonság tartalma 20 karakternél. |
 | . (prop, n)       | A fentiek szerint azonban a szöveg három ponttal van ellátva, ahogy azt levágja. A kivágott karakterlánc és az utótag teljes mérete nem haladja meg az n karaktert. . (title, 20) a "this a title line" (cím) mezőben a következő cím jelenik meg: **.** .. |
 | % (prop)          | Hasonló a $ (Name) értékhez, kivéve, ha a kimenet URI-kódolású. |
-| # (prop)          | JSON-sablonokban használatos (például iOS és Android rendszerű sablonok esetén).<br><br>Ez a függvény pontosan ugyanaz, mint a korábban megadott $ (prop), kivéve, ha JSON-sablonokban (például Apple Templates) használatosak. Ebben az esetben, ha ezt a függvényt nem a "{", "}" (például "myJsonProperty": "# (név)") veszi körül, és egy JavaScript-formátumú számot ad ki, például regexp: (0&#124;(&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, a kimenet JSON egy szám.<br><br>Például a "BADGE:" # (név) "a" jelvény "lesz: 40 (és nem "40"). |
+| # (prop)          | JSON-sablonokban használatos (például iOS és Android rendszerű sablonok esetén).<br><br>Ez a függvény pontosan ugyanaz, mint a korábban megadott $ (prop), kivéve, ha JSON-sablonokban (például Apple Templates) használatosak. Ebben az esetben, ha ezt a függvényt nem a "{", "}" (például "myJsonProperty": "# (név)") veszi körül, és egy JavaScript formátumú számot ad&#124;vissza, például regexp: (0 (&#91;1-9&#93;&#91;0-9&#93;*)) (\.&#91;0-9&#93;+)? ((e&#124;e) (+&#124;-)? &#91;0-9&#93;+)?, a kimenet JSON egy szám.<br><br>Például a "BADGE:" # (név) "lesz" jelvény ": 40 (és nem" 40 "). |
 | "text" vagy "text" | Egy szövegkonstans. A literálek egyetlen vagy idézőjelek közé foglalt tetszőleges szöveget tartalmaznak. |
 | Kif1 + Kif2    | Az összefűzési operátor két kifejezést egyesít egyetlen karakterláncban. |
 
 A kifejezések az előző űrlapok bármelyike lehet.
 
-Az Összefűzés használatakor a teljes kifejezést körül `{}`kell lennie. Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
+Az Összefűzés használatakor a teljes kifejezést a `{}`nak kell megadnia. Például: `{$(prop) + ‘ - ’ + $(prop2)}`.
 
 A következő sablon például nem érvényes XML-sablon:
 
@@ -170,3 +170,7 @@ Ahogy korábban már említettük, az összefűzéskor a kifejezéseket kapcsos 
   </visual>
 </tile>
 ```
+
+## <a name="next-steps"></a>Következő lépések
+
+[További tudnivalók az Azure Notification Hubs](notification-hubs-push-notification-overview.md)

@@ -4,12 +4,12 @@ description: Az Azure Container Registry hitelesítési lehetőségei, beleértv
 ms.topic: article
 ms.date: 12/21/2018
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29e23f6a983ccc2197e609511aee2ce13726ed0f
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.openlocfilehash: fbe77dee4104e3c654aad58db82765733b2c3e1d
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74455386"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264509"
 ---
 # <a name="authenticate-with-a-private-docker-container-registry"></a>Hitelesítés privát Docker-tároló beállításjegyzékével
 
@@ -27,11 +27,11 @@ az acr login --name <acrName>
 
 Ha `az acr login`ba jelentkezik be, a parancssori felület az az [login](/cli/azure/reference-index#az-login) használatával zökkenőmentesen hitelesíti a munkamenetet a beállításjegyzékben. Ha így jelentkezett be, a hitelesítő adatai gyorsítótárazva lesznek, és a munkamenet későbbi `docker` parancsai nem igénylik a felhasználónevet vagy a jelszót. 
 
-A beállításjegyzékhez való hozzáféréshez az `az acr login` által használt jogkivonat 1 órára érvényes, ezért javasoljuk, hogy a `docker` parancs futtatása előtt mindig jelentkezzen be a beállításjegyzékbe. Ha a token lejár, akkor a `az acr login` parancs ismételt hitelesítésével frissítheti. 
+A beállításjegyzékhez való hozzáféréshez az `az acr login` által használt jogkivonat **3 órára**érvényes, ezért javasoljuk, hogy a `docker` parancs futtatása előtt mindig jelentkezzen be a beállításjegyzékbe. Ha a token lejár, akkor a `az acr login` parancs ismételt hitelesítésével frissítheti. 
 
-A `az acr login` és az Azure-identitások használata [szerepköralapú hozzáférést](../role-based-access-control/role-assignments-portal.md)biztosít. Bizonyos esetekben előfordulhat, hogy a saját egyéni identitásával szeretne bejelentkezni egy beállításjegyzékbe az Azure AD-ben. A szolgáltatások közötti forgatókönyvek esetében, illetve egy olyan munkacsoport szükségleteinek kezeléséhez, ahol nem kívánja kezelni az egyéni hozzáférést, az [Azure-erőforrások felügyelt identitásával](container-registry-authentication-managed-identity.md)is bejelentkezhet.
+A `az acr login` és az Azure-identitások használata [szerepköralapú hozzáférést](../role-based-access-control/role-assignments-portal.md)biztosít. Bizonyos esetekben előfordulhat, hogy az Azure AD-ben a saját egyéni identitásával szeretne bejelentkezni egy beállításjegyzékbe. A szolgáltatások közötti forgatókönyvek esetében, illetve egy olyan munkacsoport szükségleteinek kezeléséhez, ahol nem kívánja kezelni az egyéni hozzáférést, az [Azure-erőforrások felügyelt identitásával](container-registry-authentication-managed-identity.md)is bejelentkezhet.
 
-## <a name="service-principal"></a>Egyszerű szolgáltatásnév
+## <a name="service-principal"></a>Szolgáltatásnév
 
 Ha egy [egyszerű szolgáltatásnevet](../active-directory/develop/app-objects-and-service-principals.md) rendel hozzá a beállításjegyzékhez, az alkalmazás vagy szolgáltatás a fej nélküli hitelesítéshez használhatja azt. Az egyszerű szolgáltatások lehetővé teszik a [szerepkörön alapuló hozzáférést](../role-based-access-control/role-assignments-portal.md) a beállításjegyzékhez, és több egyszerű szolgáltatást is hozzárendelhet egy beállításjegyzékhez. Több egyszerű szolgáltatás lehetővé teszi különböző alkalmazások eltérő hozzáférésének megadását.
 
@@ -55,7 +55,7 @@ Minden tároló-beállításjegyzék tartalmaz egy rendszergazdai felhasználói
 > A rendszergazdai fiók úgy van kialakítva, hogy egyetlen felhasználó hozzáférjen a beállításjegyzékhez, főleg tesztelési célokra. A rendszergazdai fiók hitelesítő adatait nem ajánlott több felhasználó között megosztani. A rendszergazdai fiókkal hitelesítő összes felhasználó egyetlen felhasználóként jelenik meg a beállításjegyzék leküldéses és lekéréses hozzáférésével. A fiók módosítása vagy letiltása letiltja a beállításjegyzék-hozzáférést minden olyan felhasználó számára, aki hitelesítő adatait használja. A felhasználók és a szolgáltatásokhoz egyéni identitást kell használni a fej nélküli forgatókönyvek esetében.
 >
 
-A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő újra létrehozhatók. Két jelszó lehetővé teszi a beállításjegyzékhez való kapcsolódást úgy, hogy egy jelszót használ a másik létrehozásakor. Ha a rendszergazdai fiók engedélyezve van, átadhatja a felhasználónevet és a jelszót a `docker login` parancshoz, amikor a rendszer az alapszintű hitelesítést kéri a beállításjegyzékben. Például:
+A rendszergazdai fiók két jelszóval van ellátva, amelyek közül mindkettő újra létrehozhatók. Két jelszó lehetővé teszi a beállításjegyzékhez való kapcsolódást úgy, hogy egy jelszót használ a másik létrehozásakor. Ha a rendszergazdai fiók engedélyezve van, átadhatja a felhasználónevet és a jelszót a `docker login` parancshoz, amikor a rendszer az alapszintű hitelesítést kéri a beállításjegyzékben. Példa:
 
 ```
 docker login myregistry.azurecr.io 

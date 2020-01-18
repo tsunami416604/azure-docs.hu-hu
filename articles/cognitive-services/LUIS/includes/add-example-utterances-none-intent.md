@@ -10,12 +10,12 @@ ms.topic: include
 ms.custom: include file
 ms.date: 11/20/2019
 ms.author: diberry
-ms.openlocfilehash: e4147fbb27c8538f801f6c49f8b535a283faf50f
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: c81aaa02af0895e6c3a851fe15273d85de9b55bc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325904"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262748"
 ---
 Az ügyfélalkalmazásnak tudnia kell, hogy a Kimondás nem értelmezhető vagy nem megfelelő-e az alkalmazáshoz. A rendszer a létrehozási folyamat részeként hozzáadja az egyes alkalmazásokhoz a **nincs** szándékot annak megállapításához, hogy az ügyfélalkalmazás nem válaszol-e.
 
@@ -30,7 +30,6 @@ Ha üresen hagyja a **none** leképezést, a rendszer a tulajdonos tartományon 
     |`None` példa hosszúságú kimondott szöveg|
     |--|
     |`Barking dogs are annoying`|
-    |`Order a pizza for me`|
     |`Penguins in the ocean`|
 
     Ezek a példák nem használnak olyan szavakat, amelyeket elvár a tulajdonos tartományában, például `pizza`, `cheese`, `crust`, `pickup` `deliver`.

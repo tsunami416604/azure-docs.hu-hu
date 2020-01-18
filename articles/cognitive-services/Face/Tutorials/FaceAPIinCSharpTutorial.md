@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: adatok észlelése és megjelenítése egy rendszerképben a .NET SDK használatával'
 titleSuffix: Azure Cognitive Services
-description: Ebben az oktatóanyagban egy olyan Windows-alkalmazást fog létrehozni, amely a Face APIt használja az arcok észleléséhez és a képek keretének megjelenítéséhez.
+description: Ebben az oktatóanyagban létre fog hozni egy Windows-alkalmazást, amely a Face szolgáltatást használja az arcok észlelésére és a képek keretének megjelenítésére.
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
@@ -10,22 +10,22 @@ ms.subservice: face-api
 ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: a444294497b82f316e7407999f5203cd13878928
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ab0ed56b953cf2c0d96fd2d91d9a3b09fddace72
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977964"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165921"
 ---
 # <a name="tutorial-create-a-windows-presentation-framework-wpf-app-to-display-face-data-in-an-image"></a>Oktatóanyag: Windows Presentation Framework (WPF) alkalmazás létrehozása egy Rendszerképbeli Arcfelismerés megjelenítéséhez
 
-Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Face APIt a .NET Client SDK-n keresztül, hogy felderítse a képekben lévő arcokat, majd megjelenítse a felhasználói felületen lévő információkat. Létre fog hozni egy olyan WPF-alkalmazást, amely észleli az arcokat, egy keretet rajzol az egyes arcok körül, és megjeleníti az állapotsorban található arc leírását. 
+Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Face szolgáltatást a .NET Client SDK-n keresztül, hogy felderítse a képekben lévő arcokat, majd a felhasználói felületen megjelenő információkat. Létre fog hozni egy olyan WPF-alkalmazást, amely észleli az arcokat, egy keretet rajzol az egyes arcok körül, és megjeleníti az állapotsorban található arc leírását. 
 
 Ez az oktatóanyag a következőket mutatja be:
 
 > [!div class="checklist"]
 > - WPF-alkalmazás létrehozása
-> - Az Face API ügyféloldali kódtár telepítése
+> - Az arc ügyféloldali kódtár telepítése
 > - Az ügyfélkódtár használata a képeken lévő arcok észleléséhez
 > - Keret rajzolása minden észlelt arc köré
 > - Az állapotsorban található kijelölt arc leírásának megjelenítése
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`néven.
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait. Ezután [hozzon létre környezeti változókat](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account#configure-an-environment-variable-for-authentication) a kulcs és szolgáltatás végponti karakterláncához, `FACE_SUBSCRIPTION_KEY` és `FACE_ENDPOINT`néven.
 - A [Visual Studio 2015 vagy 2017](https://www.visualstudio.com/downloads/) bármely kiadása.
 
 ## <a name="create-the-visual-studio-project"></a>A Visual Studio-projekt létrehozása

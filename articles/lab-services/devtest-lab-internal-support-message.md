@@ -1,6 +1,6 @@
 ---
-title: Egy belső támogató utasítás hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs
-description: Ismerje meg, hogyan lehet egy belső támogatási nyilatkozattal laborba közzététele az Azure DevTest Labs szolgáltatásban
+title: Belső támogatási utasítás hozzáadása laborhoz Azure DevTest Labs
+description: Megtudhatja, hogyan tehet közzé belső támogatási utasítást egy laborban Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,62 +12,62 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: deb98c2c633200ab4be1d763a94fd2a04979a3b1
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 591dcec36dc62143901d3b49db24196e84d58c29
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60562310"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170356"
 ---
-# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Egy belső támogató utasítás hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
+# <a name="add-an-internal-support-statement-to-a-lab-in-azure-devtest-labs"></a>Belső támogatási utasítás hozzáadása laborhoz Azure DevTest Labs
 
-Az Azure DevTest Labs lehetővé teszi, hogy a tesztkörnyezet egy belső támogató utasítással, amely a labor támogatási információkat nyújt a felhasználók számára testreszabható. Például megadhat kapcsolattartási adatokat, hogy a felhasználó meg tudja elérni a belső támogató, amikor szükségük van az hibaelhárítása vagy a laborkörnyezetben található erőforrások elérésével kapcsolatban. Belső webhelyek vagy a csapata által elérhető, mielőtt kapcsolatba lépne a támogatás – gyakori kérdések mutató hivatkozásokat is megadhatja.
+Azure DevTest Labs segítségével testre szabhatja a labort egy belső támogatási utasítással, amely támogatást nyújt a felhasználóknak a laborra vonatkozó támogatási információkkal. Például megadhatja a kapcsolattartási adatokat, hogy egy felhasználó tudja, hogyan érheti el a belső támogatást, ha segítségre van szüksége a laborban található erőforrások hibaelhárításához vagy eléréséhez. Olyan belső webhelyekre vagy GYIK-hivatkozásokat is megadhat, amelyekhez a csapat hozzáférhet, mielőtt felvette a kapcsolatot a támogatási szolgálattal.
 
-Egy belső támogató utasítás célja, hogy a közzététel tesztlabor információkat, amelyek általában túl gyakran nem változnak. Labor adatait, amely több átmeneti jellegű – például a legutóbbi frissítéseinek laborszabályzatok – felhasználók értesítése az lásd [tesztkörnyezetben közleményben](devtest-lab-announcements.md).
+A belső támogatási nyilatkozat célja, hogy lehetővé tegye, hogy a laboratóriumi információk ne legyenek általában túl gyakran változnak. A felhasználók értesítése az olyan laboratóriumi adatokról, amelyek több átmeneti jellegűek – például a tesztkörnyezet-szabályzatok legutóbbi frissítései – lásd [a hirdetmény közzététele a laborban](devtest-lab-announcements.md)című témakört.
 
-Könnyedén letilthatja vagy támogatási nyilatkozattal szerkesztése után már nem alkalmazható.
+A támogatási nyilatkozatot egyszerűen letilthatja vagy szerkesztheti, miután már nem alkalmazható.
 
-## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Egy meglévő laborhoz támogatási nyilatkozattal hozzáadásának lépéseit
+## <a name="steps-to-add-a-support-statement-to-an-existing-lab"></a>Támogatási utasítások meglévő laborba való felvételének lépései
 
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Ha szükséges, válassza ki a **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából. (Előfordulhat, hogy a tesztkörnyezet már látható az irányítópult alatt **összes erőforrás**).
-1. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amelyben a támogatási nyilatkozattal hozzáadni kívánt.  
-1. A laborgyakorlat **áttekintése** területen válassza **Konfigurace a zásady**.  
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Ha szükséges, válassza a **minden szolgáltatás**lehetőséget, majd válassza a **DevTest Labs** elemet a listából. (Előfordulhat, hogy a labor már megjelenik az irányítópulton az **összes erőforrás**alatt).
+1. A Labs listából válassza ki azt a labort, amelyben támogatási nyilatkozatot szeretne hozzáadni.  
+1. A labor **Áttekintés** területén válassza a **konfiguráció és szabályzatok**lehetőséget.  
 
-    ![Konfigurace a zásady gomb](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
+    ![Konfigurálás és házirendek gomb](./media/devtest-lab-internal-support-message/devtestlab-config-and-policies.png)
 
-1. A bal oldali alatt **beállítások**válassza **belső támogató**.
+1. A **Beállítások**területen kattintson a **belső támogatás**elemre.
 
-    ![Belső támogató gomb](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![Belső támogatás gomb](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
 
-1. Létrehozhat egy belső támogató a felhasználók számára a laborban, állítsa engedélyezve **Igen**.
+1. Ha belső támogatási üzenetet szeretne létrehozni a tesztkörnyezetben lévő felhasználók számára, állítsa az **Igen**értékre.
 
-1. Az a **támogatási üzenet** mezőben adja meg a kívánt nyújtjuk a labor felhasználók belső támogatási nyilatkozattal. A támogatási üzenet Markdown fogad el. Mivel ad meg, hogy az üzenet szövegét, megtekintheti a **előzetes** területén megtekintheti, hogy az üzenet újból megjelenik, a felhasználók számára a képernyő alján.
+1. A **támogatási üzenet** mezőben adja meg a labor felhasználói számára bemutatni kívánt belső támogatási nyilatkozatot. A támogatási üzenet elfogadja a Markdown. Az üzenet szövegének megadásakor megtekintheti a képernyő alján található **előnézet** területét, és megtekintheti, hogy az üzenet hogyan jelenik meg a felhasználók számára.
 
-    ![Az üzenet létrehozása belső támogató képernyő.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
-
-
-1. Válassza ki **mentése** elkészült a támogatási nyilatkozattal közzététele.
-
-Ha már nem szeretné a támogatási üzenet megjelenítése a labor felhasználónak, térjen vissza a **belső támogató** lapon, és állítsa be **engedélyezve** való **nem**.
-
-## <a name="steps-for-users-to-view-the-support-message"></a>A felhasználók számára a támogatási megtekintésére lépések
-
-1. Az a [az Azure portal](https://go.microsoft.com/fwlink/p/?LinkID=525040), válassza ki a labor.
-
-1. A laborgyakorlat **áttekintése** területen válassza **belső támogató**.  
-
-    ![Belső támogató gomb](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+    ![Belső támogatási képernyő az üzenet létrehozásához.](./media/devtest-lab-internal-support-message/devtestlab-add-support-statement.png)
 
 
-1. Támogatási üzenetet tesznek közzé, ha a felhasználó megtekintheti a azt a belső támogató panelről.
+1. Válassza a **Mentés** lehetőséget, ha a támogatási utasítás készen áll a közzétételre.
 
-    ![Belső támogató paneljéről, amelyen látható a támogatási üzenetet tesznek közzé](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
+Ha már nem szeretné megjeleníteni ezt a támogatási üzenetet a labor felhasználói számára, térjen vissza a **belső támogatás** lapra, és állítsa a **nem**értékre **a beállítást.**
+
+## <a name="steps-for-users-to-view-the-support-message"></a>A támogatási üzenet megtekintésének lépései a felhasználók számára
+
+1. A [Azure Portal](https://go.microsoft.com/fwlink/p/?LinkID=525040)válassza ki a labort.
+
+1. A labor **Áttekintés** területén válassza a **belső támogatás**lehetőséget.  
+
+    ![Belső támogatás gomb](./media/devtest-lab-internal-support-message/devtestlab-internal-support.png)
+
+
+1. Ha a rendszer támogatási üzenetet küld, a felhasználó megtekintheti a belső támogatási panelen.
+
+    ![A támogatási üzenetet bemutató belső támogatási ablaktábla](./media/devtest-lab-internal-support-message/devtestlab-view-suport-statement.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
-* Belső támogatási nyilatkozatok jellemzően nem változik, hogy milyen gyakran támogatási információkat tartalmaznak. Azt is megtudhatja, hogyan [közzététele egy közlemény egy laborhoz](devtest-lab-announcements.md) ideiglenes módosításaiért vagy frissítéseiért a labor felhasználókkal.
-* [Szabályzatok és ütemezések beállítása](devtest-lab-set-lab-policy.md) ismerteti, hogyan alkalmazhatja egyéb korlátozások és egyezmények az előfizetésében testreszabott házirendek használatával.
+## <a name="next-steps"></a>Következő lépések
+* A belső támogatási utasítások jellemzően olyan támogatási információk biztosítására szolgálnak, amelyek nem változnak gyakran. Azt is megtudhatja, hogyan tehet [közzé egy bejelentést laborba](devtest-lab-announcements.md) , hogy tájékoztassa a felhasználókat az ideiglenes változásokról vagy a tesztkörnyezet frissítéseiről.
+* A [szabályzatok és az ütemtervek beállítása](devtest-lab-set-lab-policy.md) információt nyújt arról, hogyan alkalmazhat más korlátozásokat és konvenciókat az előfizetésben testreszabott szabályzatok használatával.

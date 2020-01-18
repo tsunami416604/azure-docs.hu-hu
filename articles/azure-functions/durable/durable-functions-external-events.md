@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan kezelheti a külső eseményeket a Azure Functi
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 7d7fcc725d78b24a93b09cb9c76cf7dc0231cac2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 0877161f8d668141c8efb7c06b10643bf209341f
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232895"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262962"
 ---
 # <a name="handling-external-events-in-durable-functions-azure-functions"></a>Külső események Durable Functionsban való feldolgozása (Azure Functions)
 
@@ -22,7 +22,7 @@ A Orchestrator függvények megvárhatják és megfigyelheti a külső eseménye
 
 A Orchestrator függvény `WaitForExternalEvent` (.NET) és `waitForExternalEvent` (JavaScript) metódusa [lehetővé teszi, hogy a rendszer](durable-functions-bindings.md#orchestration-trigger) aszinkron módon várjon, és figyelje a külső eseményt. A Listening Orchestrator függvény deklarálja az esemény *nevét* és a fogadni kívánt *adatok alakját* .
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("BudgetApproval")]
@@ -44,7 +44,7 @@ public static async Task Run(
 > [!NOTE]
 > Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -59,11 +59,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Az előző példa egy adott eseményt figyel, és a fogadásakor végrehajtja a műveletet.
 
 Egyszerre több eseményt is megfigyelheti, például az alábbi példához hasonlóan, amely a három lehetséges esemény értesítésének egyikét várja.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("Select")]
@@ -93,7 +95,7 @@ public static async Task Run(
 > [!NOTE]
 > Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -114,9 +116,11 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Az előző példa a több esemény *bármelyikét* figyeli. Az *összes* eseményre várni is lehet.
 
-#### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("NewBuildingPermit")]
@@ -139,7 +143,9 @@ public static async Task Run(
 > [!NOTE]
 > Az előző kód Durable Functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-#### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+Ha a .NET-ben az esemény adattartalma nem alakítható át a várt típusú `T`ba, kivétel keletkezik.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -158,12 +164,12 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 `WaitForExternalEvent` határozatlan ideig vár néhány bemenetre.  A Function alkalmazás a várakozás közben biztonságosan eltávolítható a memóriából. Ha és ha egy esemény érkezik ehhez a beszerelési példányhoz, a rendszer automatikusan felébreszti az eseményt, és azonnal feldolgozza azt.
 
 > [!NOTE]
 > Ha a Function alkalmazás a használati tervet használja, akkor nem számítunk fel számlázási díjat, amikor egy Orchestrator függvény `WaitForExternalEvent` (.NET) vagy `waitForExternalEvent` (JavaScript) feladatra vár, függetlenül attól, hogy mennyi ideig vár.
-
-Ha a .NET-ben az esemény adattartalma nem alakítható át a várt típusú `T`ba, kivétel keletkezik.
 
 ## <a name="send-events"></a>Események küldése
 
@@ -171,7 +177,7 @@ A koordináló [ügyfél kötésének](durable-functions-bindings.md#orchestrati
 
 Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a "jóváhagyás" eseményt küld egy Orchestrator függvény példányára. Az előkészítési példány azonosítója az üzenetsor-üzenet törzsében található.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ApprovalQueueProcessor")]
@@ -186,7 +192,7 @@ public static async Task Run(
 > [!NOTE]
 > Az előző C# kód Durable functions 2. x. Durable Functions 1. x esetén a `DurableClient` attribútum helyett `OrchestrationClient` attribútumot kell használnia, és a `DurableOrchestrationClient` paraméter típusát kell használnia `IDurableOrchestrationClient`helyett. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -196,6 +202,8 @@ module.exports = async function(context, instanceId) {
     await client.raiseEvent(instanceId, "Approval", true);
 };
 ```
+
+---
 
 Belsőleg, `RaiseEventAsync` (.NET) vagy `raiseEvent` (JavaScript) enqueues egy üzenetet, amely a Waiting Orchestrator függvény által beolvasott üzenetbe kerül. Ha a példány nem várakozik a megadott *esemény nevére,* a rendszer hozzáadja az eseményt a memóriában tárolt várólistához. Ha az *esemény neve* később megkezdi a figyelést, akkor az esemény üzeneteinek várólistáját fogja ellenőriznie.
 

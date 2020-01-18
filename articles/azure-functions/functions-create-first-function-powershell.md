@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 934f3f69d46362e4bef4e713bcee23e9a3e24eb6
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769353"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167904"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Az első PowerShell-függvény létrehozása az Azure-ban
 
@@ -20,9 +20,6 @@ Ebből a rövid útmutatóból megtudhatja, hogyan hozhatja létre az első [kis
 ![Kód Azure Functions egy Visual Studio Code-projektben](./media/functions-create-first-function-powershell/powershell-project-first-function.png)
 
 A [Azure Functions-bővítmény a Visual Studio Code-hoz] -hoz készült Azure functions-bővítmény használatával helyileg hozhat létre egy PowerShell-függvényt, majd üzembe helyezheti azt egy új Azure-beli Function alkalmazásban. A bővítmény jelenleg előzetes verzióként érhető el. További tudnivalókért tekintse meg az [Azure Functions-bővítmény a Visual Studio Code-hoz] bővítmény oldalát.
-
-> [!NOTE]  
-> Alapértelmezés szerint a PowerShell-támogatás a Visual Studio Code [Azure functions-bővítményhez][azure functions-bővítmény a visual studio code-hoz] jelenleg le van tiltva. A PowerShell-támogatás engedélyezése a cikkben ismertetett lépések egyike.
 
 A következő lépések támogatottak a macOS, a Windows és a Linux rendszerű operációs rendszereken.
 

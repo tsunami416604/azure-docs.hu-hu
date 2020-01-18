@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: anroth
-ms.openlocfilehash: db98464ecefaaf177161a1e417496ee7c994cff0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 158e4dcd07f6ba31ad0efdd88f030f8db99fcfdd
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978645"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170033"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-net-sdk"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Custom Vision .NET SDK-val
 
@@ -63,13 +63,13 @@ A létrehozott projekt a [Custom Vision webhelyén](https://customvision.ai/) je
 
 ### <a name="upload-and-tag-images"></a>Képek feltöltése és címkézése
 
-A projekt képei megtalálhatók a letöltött fájlban. A _Program.cs_ **LoadImagesFromDisk** metódusa tartalmazza a rájuk mutató hivatkozást. Egyetlen kötegben akár 64 képet is feltölthet.
+A projekt képei megtalálhatók a letöltött fájlban. A _Program.cs_**LoadImagesFromDisk** metódusa tartalmazza a rájuk mutató hivatkozást. Egyetlen kötegben akár 64 képet is feltölthet.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_upload)]
 
 ### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
 
-Ez a kód létrehozza az első iterációt a projektben, majd közzéteszi az iterációt az előrejelzési végponton. Az iteráció nevét használhatja az előrejelzési kérelmek küldéséhez. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. Az iteráció nevét használhatja az előrejelzési kérelmek küldéséhez. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 [!code-csharp[](~/cognitive-services-dotnet-sdk-samples/CustomVision/ImageClassification/Program.cs?name=snippet_train)]
 

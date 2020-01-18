@@ -1,5 +1,5 @@
 ---
-title: Azure DevTest Labs egyéni rendszerkép létrehozása VHD-fájlból a PowerShell használatával | Microsoft Docs
+title: Egyéni rendszerkép létrehozása VHD-fájlból Azure PowerShell használatával
 description: Egyéni rendszerkép létrehozásának automatizálása Azure DevTest Labs VHD-fájlból a PowerShell használatával
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: b43dc668af74f532838dad3baf1d6e11d51ac69d
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: cd144659dd8a8e981e267be998c9c783b7482840
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68964084"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169574"
 ---
 # <a name="create-a-custom-image-from-a-vhd-file-using-powershell"></a>Egyéni rendszerkép létrehozása VHD-fájlból a PowerShell használatával
 
@@ -31,7 +31,7 @@ ms.locfileid: "68964084"
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="step-by-step-instructions"></a>Részletes útmutató
+## <a name="step-by-step-instructions"></a>Lépésenkénti utasítások
 
 A következő lépések végigvezetik egy egyéni rendszerkép létrehozásán egy VHD-fájlból a PowerShell használatával:
 
@@ -109,6 +109,6 @@ New-AzResourceGroupDeployment -ResourceGroupName $lab.ResourceGroupName -Name Cr
 - [Egyéni lemezképek vagy képletek?](https://blogs.msdn.microsoft.com/devtestlab/2016/04/06/custom-images-or-formulas/)
 - [Egyéni rendszerképek másolása Azure DevTest Labs között](https://www.visualstudiogeeks.com/blog/DevOps/How-To-Move-CustomImages-VHD-Between-AzureDevTestLabs#copying-custom-images-between-azure-devtest-labs)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md)

@@ -1,6 +1,6 @@
 ---
-title: Azure Marketplace-en kép beállításainak konfigurálása az Azure DevTest Labs szolgáltatásban |} A Microsoft Docs
-description: Konfigurálása, mely az Azure Marketplace-rendszerképek is használható, ha a virtuális gép létrehozása az Azure DevTest Labs szolgáltatásban
+title: Azure Marketplace-rendszerkép beállításainak konfigurálása Azure DevTest Labs
+description: Annak konfigurálása, hogy mely Azure Marketplace-rendszerképek használhatók virtuális gépek létrehozásakor Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,42 +12,42 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/05/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: d0375713c4881c0b73b91fc07bda3ceac2dbc620
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 2dc3aa000cefc0e65305b58f8fdce93b94bfd35f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60201884"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169554"
 ---
-# <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure Marketplace-en kép beállításainak konfigurálása az Azure DevTest Labs szolgáltatásban
-DevTest Labs létrehozása virtuális gépek Azure piactér képeinek attól függően, hogyan konfigurálta az Azure Marketplace-rendszerképek alapján az használható a tesztkörnyezet támogatja. Ez a cikk bemutatja, hogyan határozhatja meg, ha van ilyen, az Azure Marketplace-rendszerképek lehet a labor virtuális gépek létrehozásakor használt. Ez biztosítja, hogy a csapat csak szükségük van a Marketplace-rendszerképek a hozzáférést. 
+# <a name="configure-azure-marketplace-image-settings-in-azure-devtest-labs"></a>Azure Marketplace-rendszerkép beállításainak konfigurálása Azure DevTest Labs
+A DevTest Labs támogatja a virtuális gépek Azure Marketplace-lemezképek alapján történő létrehozását, attól függően, hogy az Azure Marketplace-lemezképek hogyan legyenek felhasználva a laborban. Ez a cikk bemutatja, hogyan határozhatja meg, hogy mely, ha van ilyen, Azure Marketplace-lemezképeket használhat a virtuális gépek tesztkörnyezetben való létrehozásakor. Ez biztosítja, hogy a csapata csak a szükséges Piactéri rendszerképekhez férhet hozzá. 
 
-## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>Válassza ki, mely az Azure Marketplace-rendszerképek használata engedélyezett a virtuális gép létrehozásakor
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
-3. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben. 
-4. A labor paneljén válassza ki a **Konfigurace a zásady**.
-5. A tesztkörnyezet **Konfigurace a zásady** panel **virtuálisgép-bázisok**válassza **Piactérről származó rendszerképek**.
-6. Adja meg, hogy minden a minősített Azure Marketplace-en képek egy új virtuális gép alapként használható. Ha **Igen**, majd az Azure Marketplace-lemezkép a laborban engedélyezett a következő feltételeknek megfelelő:
+## <a name="select-which-azure-marketplace-images-are-allowed-when-creating-a-vm"></a>Válassza ki, hogy mely Azure Marketplace-lemezképek engedélyezettek a virtuális gépek létrehozásakor
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+3. A laborok listájából válassza ki a kívánt labort. 
+4. A labor paneljén válassza a **konfiguráció és szabályzatok**lehetőséget.
+5. A tesztkörnyezet **konfigurációjának és házirendjeinek** panelén **válassza a** **Piactéri lemezképek**lehetőséget.
+6. Itt adhatja meg, hogy az összes minősített Azure Marketplace-lemezkép elérhető legyen-e az új virtuális gép alapjaként való használatra. Ha az **Igen**lehetőséget választja, akkor az összes Azure Marketplace-rendszerkép, amely megfelel az alábbi feltételeknek, engedélyezett a laborban:
    
-   * A lemezképet hoz létre egyetlen virtuális Gépet, **és**
-   * A kép használ Azure Resource Manager-beli virtuális gépek kiépítése **és**
-   * A kép nem szükséges egy külön licencelési csomag vásárlása
+   * A rendszerkép egyetlen virtuális gépet hoz létre, **és**
+   * A rendszerkép Azure Resource Managert használ a virtuális gépek kiépítéséhez, **és**
+   * A rendszerkép nem igényel extra licencelési csomag megvásárlását
      
-     Ha azt szeretné, hogy a kép nem számára engedélyezett, vagy meg szeretné határozni melyik lemezképek is használhatók, jelölje be **nem**.
+     Ha nem kívánja engedélyezni a lemezképek használatát, vagy szeretné megadni, hogy mely lemezképek használhatók, válassza a **nem**lehetőséget.
      
-     ![A beállítást, az alaplemezképek a virtuális gépek felhasználhatók minden Marketplace-rendszerképek](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
-7. Ha **nem** az előző lépéshez, a **engedélyezett képek/válassza ki az összes** jelölőnégyzet engedélyezve van. 
-   Használhatja ezt a beállítást a keresőmezőbe együtt gyors jelölje be vagy törölje az összes elem megjelenik a listában.
-   * Válassza ki az Azure Marketplace-rendszerképek külön-külön engedélyezheti a virtuális gép létrehozása az egyes rendszerképek megfelelő jelölőnégyzet bejelölésével.
-   * Válassza ki semmi a listából, ha nem szeretné, hogy minden Azure Marketplace-rendszerképek a lab-ben használható.
+     ![Lehetőség arra, hogy az összes Piactéri lemezkép használható legyen a virtuális gépek alaprendszerképe](./media/devtest-lab-configure-marketplace-images/allow-all-marketplace-images.png)
+7. Ha a **nem** lehetőséget választja az előző lépésben, az **engedélyezett lemezképek/az összes kijelölése** jelölőnégyzet engedélyezve van. 
+   Ezt a lehetőséget a keresőmezőbe együtt használva gyorsan kiválaszthatja vagy kiválaszthatja a listában megjelenített elemeket.
+   * Válassza ki azokat az Azure Marketplace-lemezképeket, amelyeket engedélyezni szeretne a virtuális gép létrehozásához az egyes lemezképek megfelelő jelölőnégyzetének ellenőrzésével.
+   * Ha nem szeretné engedélyezni az Azure Marketplace-lemezképek használatát a laborban, válassza a Nothing elemet a listából.
    
-     ![Megadhatja, mely az Azure Marketplace-rendszerképek használható alaplemezképek a virtuális gépek](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
+     ![Megadhatja, hogy mely Azure Marketplace-lemezképek használhatók virtuális gépek alaprendszerképként való használatával](./media/devtest-lab-configure-marketplace-images/select-marketplace-images.png)
 
 [!INCLUDE [devtest-lab-try-it-out](../../includes/devtest-lab-try-it-out.md)]
 
-## <a name="next-steps"></a>További lépések
-Miután konfigurálta, hogy hogyan használata engedélyezett az Azure Marketplace-rendszerképek, virtuális gép létrehozásakor, a következő lépés az, hogy [virtuális gép hozzáadása a labor](devtest-lab-add-vm.md).
+## <a name="next-steps"></a>Következő lépések
+Miután konfigurálta, hogy az Azure Marketplace-lemezképek hogyan engedélyezettek a virtuális gépek létrehozásakor, a következő lépés [egy virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md).
 

@@ -6,12 +6,12 @@ ms.author: barbkess
 ms.service: spring-cloud
 ms.topic: how-to
 ms.date: 01/14/2019
-ms.openlocfilehash: fa2e7af51ff681da0bfdac928cc08bf75126a3b8
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 27978d367ded7a31d73949cd675ae9e6f8cb887c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156420"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263999"
 ---
 # <a name="stream-azure-spring-cloud-app-logs-in-real-time"></a>Azure Spring Cloud-alkalmazás naplók valós idejű továbbítása
 Az Azure Spring Cloud lehetővé teszi a log streaming használatát az Azure CLI-ben, hogy valós idejű Application Console-naplókat kapjon a hibaelhárításhoz. [A naplók és a metrikák is elemezhetők a diagnosztikai beállítások](./diagnostic-services.md)használatával.
@@ -47,16 +47,29 @@ Ez a naplókat fogja visszaadni:
 ```
 
 ### <a name="tail-log-for-app-with-multiple-instances"></a>Az alkalmazáshoz tartozó farok naplója több példányban
-Ha a `auth-service`nevű alkalmazáshoz több példány létezik, a `-i/--instance` lehetőség használatával megtekintheti a példány naplóját. Például az alkalmazás nevének és példánynév megadásával továbbíthatja egy alkalmazás egy példányának naplóját:
+Ha a `auth-service`nevű alkalmazáshoz több példány létezik, a `-i/--instance` lehetőség használatával megtekintheti a példány naplóját. 
+
+Először az alábbi paranccsal kérheti le az alkalmazás-példányok nevét.
+
+```
+az spring-cloud app show -n auth-service --query properties.activeDeployment.properties.instances -o table
+```
+Eredményekkel:
+
+```
+Name                                         Status    DiscoveryStatus
+-------------------------------------------  --------  -----------------
+auth-service-default-12-75cc4577fc-pw7hb  Running   UP
+auth-service-default-12-75cc4577fc-8nt4m  Running   UP
+auth-service-default-12-75cc4577fc-n25mh  Running   UP
+``` 
+Ezután a `-i/--instance` kapcsolóval is elvégezheti az alkalmazás-példányok naplófájljainak továbbítását:
 
 ```
 az spring-cloud app log tail -n auth-service -i auth-service-default-12-75cc4577fc-pw7hb
 ```
-Az alkalmazás példányai a Azure Portalból is beszerezhetők. 
-1. Navigáljon az erőforráscsoporthoz, és válassza ki az Azure Spring Cloud-példányát.
-1. Az Azure Spring Cloud instance áttekintése lapon válassza az **alkalmazások** lehetőséget a bal oldali navigációs ablaktáblán.
-1. Válassza ki az alkalmazást, majd kattintson a bal oldali navigációs ablaktábla **alkalmazások példányai** elemére. 
-1. Ekkor megjelenik az alkalmazás példányai.
+
+Az Azure Portalból is kérheti az alkalmazás-példányok részleteit.  Miután kiválasztotta az **alkalmazásokat** az Azure Spring Cloud Service bal oldali navigációs paneljén, válassza az alkalmazások **példányai**lehetőséget.
 
 ### <a name="continuously-stream-new-logs"></a>Új naplók folyamatos továbbítása
 Alapértelmezés szerint a `az spring-cloud ap log tail` csak az App Console-ba továbbított meglévő naplókat nyomtatja ki, majd kilép. Ha új naplókat szeretne továbbítani, adja hozzá a-f (----követés):  

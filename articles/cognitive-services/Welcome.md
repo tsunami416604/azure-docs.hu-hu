@@ -10,12 +10,12 @@ ms.subservice: ''
 ms.topic: overview
 ms.date: 12/19/2019
 ms.author: nitinme
-ms.openlocfilehash: 544ca198b846ca5032bdf400b300ac076d729d88
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 332f33bb4046a9ca9d6abf9bec75f60bb4ca9e32
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834148"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169094"
 ---
 # <a name="what-are-azure-cognitive-services"></a>Mi az Azure Cognitive Services?
 
@@ -27,10 +27,10 @@ Az Azure Cognitive Services olyan API-k, SDK-k és szolgáltatások, amelyek seg
 |:-----------|:------------------|
 |[Computer Vision](https://docs.microsoft.com/azure/cognitive-services/computer-vision/ "Computer Vision")|A Computer Vision szolgáltatás a rendszerképek feldolgozásához és a visszaadott adatokhoz való hozzáférést biztosít a speciális algoritmusokhoz.|
 |[Custom Vision Service](https://docs.microsoft.com/azure/cognitive-services/Custom-Vision-Service/home "Custom Vision Service")|A Custom Vision Service segítségével egyéni rendszerkép-osztályozók hozhatók létre.|
-|[Face API](https://docs.microsoft.com/azure/cognitive-services/face/ "Face API")|Face API hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
+|[Arc](https://docs.microsoft.com/azure/cognitive-services/face/ "Face")| A Face szolgáltatás hozzáférést biztosít a speciális arc-algoritmusokhoz, lehetővé téve a Face attribútumok észlelését és felismerését.|
 |[Űrlap-felismerő](https://docs.microsoft.com/azure/cognitive-services/form-recognizer/ "Form Recognizer") (előzetes verzió)|Az űrlap-felismerő azonosítja és kigyűjti a kulcs-érték párokat és a táblák adatait az űrlap dokumentumaiból. Ezután a a strukturált adatokat is megjeleníti, beleértve az eredeti fájlban lévő kapcsolatokat is.|
 |[Kézírás-felismerő](https://docs.microsoft.com/azure/cognitive-services/ink-recognizer/ "Ink Recognizer") (előzetes verzió)|A kézírás-felismerő lehetővé teszi a digitális tollvonási adat, az alakzatok és a kézírásos tartalom felismerését és elemzését, valamint a dokumentum-struktúra kimenetét az összes felismert entitással.|
-|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Video Indexer")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
+|[Video Indexer](https://docs.microsoft.com/azure/cognitive-services/video-indexer/video-indexer-overview "Videóindexelő")|A Video Indexer lehetővé teszi a videóból származó adatok kinyerését.|
 
 ## <a name="speech-apis"></a>Beszédfelismerő API-k
 

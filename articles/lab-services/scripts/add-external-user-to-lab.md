@@ -1,6 +1,6 @@
 ---
-title: 'PowerShell-parancsfájlt: Külső felhasználó felvétele az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs'
-description: Ez a PowerShell-szkript egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet.
+title: PowerShell – külső felhasználó hozzáadása laborhoz Azure DevTest Labs
+description: Ez a PowerShell-szkript egy külső felhasználót hoz létre egy laborban Azure DevTest Labs.
 services: lab-services
 author: spelluru
 manager: ''
@@ -10,25 +10,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/11/2018
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 042fa1e24ebadfb00a2d55cc97d742f198cb5662
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: da5cc4a3809b1867e8aa2c3b21e88c2f30ae3d4d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66160618"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169676"
 ---
-# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>PowerShell használatával ad hozzá egy külső felhasználót az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
+# <a name="use-powershell-to-add-an-external-user-to-a-lab-in-azure-devtest-labs"></a>Külső felhasználó hozzáadása egy laborhoz a PowerShell használatával Azure DevTest Labs
 
-A PowerShell-példaszkript egy külső felhasználó hozzáadása Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet. 
+Ez a PowerShell-parancsfájl külső felhasználót hoz létre egy laborban Azure DevTest Labsban. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-* **Labor**. A szkriptnek szüksége van, hogy rendelkezik egy meglévő lab. 
+* **Egy labor**. A parancsfájlhoz meglévő labor szükséges. 
 
 ## <a name="sample-script"></a>Példaszkript
 
@@ -40,11 +40,11 @@ Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
-| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | A user objektum az Azure active Directoryból való próbálkozások. |
-| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | A megadott szerepkör társítása a megadott egyszerű, a megadott hatókörben. |
+| [Get-AzADUser](/powershell/module/az.resources/get-azaduser) | Újrapróbálkozik a felhasználói objektumot az Azure Active Directoryból. |
+| [New-AzRoleAssignment](/powershell/module/az.resources/new-azroleassignment) | A megadott szerepkört a megadott hatókörhöz rendeli a megadott rendszerbiztonsági tag számára. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).
 
-További Azure Lab Services PowerShell szkriptminták találhatók az [Azure Lab Services PowerShell-minták](../samples-powershell.md).
+További Azure Lab Services PowerShell-szkriptek is találhatók a [Azure Lab Services PowerShell-mintákban](../samples-powershell.md).

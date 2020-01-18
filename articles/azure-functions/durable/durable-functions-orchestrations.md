@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 09/08/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 54e1eb0be18de8e5ed420e96629d6f23473272fe
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: caa62483373a240991cfec96437cea7849d9b19c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74545712"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261551"
 ---
 # <a name="durable-orchestrations"></a>Tartós összeszerelések
 
@@ -55,7 +55,9 @@ Ha egy összehangoló függvény több munkát tesz elérhetővé (például vá
 
 ## <a name="orchestration-history"></a>Előkészítési előzmények
 
-A tartós feladatok keretrendszerének esemény-beszerzés viselkedése szorosan összekapcsolja az Ön által írt Orchestrator-függvény kódját. Tegyük fel, hogy van egy Orchestrator-függvénye, például a C# következő Orchestrator függvény:
+A tartós feladatok keretrendszerének esemény-beszerzés viselkedése szorosan összekapcsolja az Ön által írt Orchestrator-függvény kódját. Tegyük fel, hogy van egy Orchestrator-függvénye, például a következő Orchestrator függvény:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("E1_HelloSequence")]
@@ -73,7 +75,7 @@ public static async Task<List<string>> Run(
 }
 ```
 
-Ha JavaScript-kódolást használ, a tevékenység-láncolási Orchestrator funkció az alábbi példában láthatóhoz hasonló lehet:
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -88,6 +90,8 @@ module.exports = df.orchestrator(function*(context) {
     return output;
 });
 ```
+
+---
 
 Minden `await` (C#) vagy `yield` (JavaScript) utasításban a tartós feladat-keretrendszer a függvény végrehajtási állapotát egy tartós tárolási háttérbe (jellemzően az Azure Table Storage-ba) helyezi át. Ezt az állapotot nevezzük a megszervezési *előzményeknek*.
 
@@ -106,9 +110,9 @@ Az ellenőrzőpont befejezését követően a Orchestrator függvény szabadon e
 
 Befejezésekor a korábban bemutatott függvény előzményei a következő táblázathoz hasonlóan jelennek meg az Azure Table Storage (illusztrációs célokra rövidítve):
 
-| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Név             | Eredmény                                                    | Állapot |
+| PartitionKey (InstanceId)                     | EventType             | Időbélyeg               | Input (Bemenet) | Name (Név)             | Eredmény                                                    | Állapot |
 |----------------------------------|-----------------------|----------|--------------------------|-------|------------------|-----------------------------------------------------------|
-| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | NULL  | E1_HelloSequence |                                                           |                     |
+| eaee885b | ExecutionStarted      | 2017-05-05T18:45:28.852 Z | null  | E1_HelloSequence |                                                           |                     |
 | eaee885b | OrchestratorStarted   | 2017-05-05T18:45:32.362 Z |       |                  |                                                           |                     |
 | eaee885b | TaskScheduled         | 2017-05-05T18:45:32.670 Z |       | E1_SayHello      |                                                           |                     |
 | eaee885b | OrchestratorCompleted | 2017-05-05T18:45:32.670 Z |       |                  |                                                           |                     |
@@ -182,7 +186,7 @@ A Orchestrator függvények újrapróbálkozási házirendeket is hozzáadhatnak
 
 További információt és példákat [a hibakezelés című cikkben talál](durable-functions-error-handling.md) .
 
-### <a name="critical-sections-durable-functions-2x"></a>Kritikus csoportok (Durable Functions 2. x)
+### <a name="critical-sections-durable-functions-2x-currently-net-only"></a>Kritikus fejezetek (Durable Functions 2. x, jelenleg csak .NET)
 
 Az előkészítési példányok egyszálas, ezért nem kell aggódnia a versenyhelyzet feltételein *belül* . A versenyhelyzet azonban akkor is lehetséges, ha az előkészítési folyamat külső rendszerekkel kommunikál. Ha a külső rendszerekkel való interakció során csökkenteni szeretné a versenyhelyzet feltételeit, a Orchestrator functions a .NET `LockAsync` metódusának használatával határozhat meg *kritikus szakaszt* .
 
@@ -212,7 +216,9 @@ A kritikus szakasz funkció a tartós entitások változásainak koordinálásá
 
 A Orchestrator függvények nem engedélyezettek az I/O-műveletek esetében, ahogy azt a [Orchestrator-függvény kódjainak megkötései](durable-functions-code-constraints.md)című témakör írja le. Ennek a korlátozásnak a leggyakoribb megkerülő megoldás, ha olyan kódokat szeretne becsomagolni, amelyeknek az I/O-műveletekre van szükségük A külső rendszerekkel kommunikáló Összehangolók gyakran használják a tevékenységi funkciókat a HTTP-hívások elvégzéséhez, és az eredménynek az előkészítéshez való visszaküldését.
 
-Az általános minta leegyszerűsítése érdekében a Orchestrator függvények a .NET `CallHttpAsync` metódusát használhatják a HTTP API-k közvetlen meghívásához. Az alapszintű kérelmek/válaszok támogatása mellett `CallHttpAsync` támogatja a gyakori aszinkron HTTP 202 lekérdezési minták automatikus kezelését, valamint a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával támogatja a külső szolgáltatásokkal való hitelesítést is.
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Az általános minta leegyszerűsítése érdekében a Orchestrator függvények a `CallHttpAsync` metódus használatával közvetlenül is meghívhatják a HTTP API-kat.
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -232,6 +238,8 @@ public static async Task CheckSiteAvailable(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -244,6 +252,10 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
+Az alapszintű kérelmek/válaszok támogatása mellett a metódus támogatja a gyakori aszinkron HTTP 202 lekérdezési minták automatikus kezelését, valamint a [felügyelt identitások](../../active-directory/managed-identities-azure-resources/overview.md)használatával támogatja a külső szolgáltatásokkal való hitelesítést is.
+
 További információt és részletes példákat a [http-szolgáltatások](durable-functions-http-features.md) című cikkben talál.
 
 > [!NOTE]
@@ -251,9 +263,11 @@ További információt és részletes példákat a [http-szolgáltatások](durab
 
 ### <a name="passing-multiple-parameters"></a>Több paraméter átadása
 
-Nem lehet átadni több paramétert egy tevékenységi függvénynek közvetlenül. A javaslat egy objektum tömbjét adja át, vagy [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektumokat használ a .net-ben.
+Nem lehet átadni több paramétert egy tevékenységi függvénynek közvetlenül. A javaslat objektumok vagy összetett objektumok tömbjét adja át.
 
-A következő minta a [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) új funkcióit használja, amelyeket a [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+A .NET-ben használhat [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) objektumokat is. A következő minta a [ValueTuples](https://docs.microsoft.com/dotnet/csharp/tuples) új funkcióit használja, amelyeket a [ C# 7](https://docs.microsoft.com/dotnet/csharp/whats-new/csharp-7#tuples):
 
 ```csharp
 [FunctionName("GetCourseRecommendations")]
@@ -289,6 +303,36 @@ public static async Task<object> Mapper([ActivityTrigger] IDurableActivityContex
     };
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+#### <a name="orchestrator"></a>Orchestrator
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const location = {
+        city: "Seattle",
+        state: "WA"
+    };
+    const weather = yield context.df.callActivity("GetWeather", location);
+
+    // ...
+};
+```
+
+#### <a name="activity"></a>Tevékenység
+
+```javascript
+module.exports = async function (context, location) {
+    const {city, state} = location; // destructure properties into variables
+
+    // ...
+};
+```
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

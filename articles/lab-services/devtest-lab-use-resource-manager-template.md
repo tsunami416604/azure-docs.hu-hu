@@ -1,5 +1,5 @@
 ---
-title: Virtuális gép Azure Resource Manager sablonjának megtekintése és használata | Microsoft Docs
+title: Virtuális gép Azure Resource Manager sablonjának megtekintése és használata
 description: Megtudhatja, hogyan használhatja a Azure Resource Manager sablont egy virtuális gépről más virtuális gépek létrehozásához
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: c14abf3acce0084507a03f3d34fdd59566d88c28
-ms.sourcegitcommit: 470041c681719df2d4ee9b81c9be6104befffcea
+ms.openlocfilehash: 7064fdeec04f4dc5ae2c73c1a3896cf2d10dd01d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/12/2019
-ms.locfileid: "67854275"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169113"
 ---
 # <a name="create-virtual-machines-using-an-azure-resource-manager-template"></a>Virtuális gépek létrehozása Azure Resource Manager sablon használatával 
 
@@ -49,7 +49,7 @@ A cikk további része a Microsoft. segédösszetevője/Labs/virtualmachines szo
 [Azure Resource Manager sablonok létrehozásával kapcsolatos ajánlott eljárások](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-template-best-practices) számos útmutatást és javaslatot nyújtanak a megbízható és könnyen használható Azure Resource Manager sablonok létrehozásához.
 
 ## <a name="view-and-save-a-virtual-machines-resource-manager-template"></a>Virtuális gép Resource Manager-sablonjának megtekintése és mentése
-1. A virtuális gép létrehozásának megkezdéséhez kövesse az első virtuális gép [tesztkörnyezetben](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) való létrehozásához szükséges lépéseket.
+1. A virtuális gép létrehozásának megkezdéséhez kövesse az első virtuális gép [tesztkörnyezetben való létrehozásához](tutorial-create-custom-lab.md#add-a-vm-to-the-lab) szükséges lépéseket.
 1. Adja meg a virtuális gép szükséges adatait, és adja hozzá az ehhez a virtuális GÉPHEZ használni kívánt összetevőket.
 1. Swtich a **Speciális beállítások** lapra. 
 1. A beállítások konfigurálása ablak alján kattintson az ARM- **sablon megtekintése**elemre.
@@ -64,11 +64,11 @@ A Resource Manager-sablon mentése után frissítenie kell a sablon paraméterek
 A Resource Manager-sablon most már készen áll a [virtuális gép létrehozására](devtest-lab-create-environment-from-arm.md).
 
 ## <a name="set-expiration-date"></a>Lejárati dátum beállítása
-Olyan forgatókönyvek esetén, mint például a képzés, a bemutatók és a próbaverziók, érdemes lehet virtuális gépeket létrehozni, és azokat automatikusan törölni rögzített időtartam után, hogy ne kelljen szükségtelen költségeket fizetnie. A virtuális gép **expirationDate** tulajdonságának megadásával létrehozhat egy lejárati dátummal rendelkező Tesztkörnyezet-virtuális gépet. Tekintse meg ugyanezt a Resource Manager-sablont a [GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration)-tárházban.
+Olyan forgatókönyvek esetén, mint például a képzés, a bemutatók és a próbaverziók, érdemes lehet virtuális gépeket létrehozni, és azokat automatikusan törölni rögzített időtartam után, hogy ne kelljen szükségtelen költségeket fizetnie. A virtuális gép **expirationDate** tulajdonságának megadásával létrehozhat egy lejárati dátummal rendelkező Tesztkörnyezet-virtuális gépet. Tekintse meg ugyanezt a Resource Manager-sablont a [GitHub-tárházban](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates/101-dtl-create-vm-username-pwd-customimage-with-expiration).
 
 
 
-### <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [több virtuális gépes környezet létrehozása a Resource Manager-sablonok](devtest-lab-create-environment-from-arm.md).
+### <a name="next-steps"></a>Következő lépések
+* Ismerje meg, hogyan [hozhat létre több virtuális gépre kiterjedő környezeteket Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md).
 * [Resource Manager-sablon üzembe helyezése virtuális gép létrehozásához](devtest-lab-create-environment-from-arm.md#automate-deployment-of-environments)
-* Ismerje meg a további a rövid útmutató Resource Manager-sablonokkal a DevTest Labs automation a [nyilvános DevTest Labs GitHub-adattárat](https://github.com/Azure/azure-quickstart-templates).
+* Ismerkedjen meg a DevTest Labs automationhez készült Resource Manager-sablonokkal a [nyilvános DevTest Labs GitHub](https://github.com/Azure/azure-quickstart-templates)-tárházában.

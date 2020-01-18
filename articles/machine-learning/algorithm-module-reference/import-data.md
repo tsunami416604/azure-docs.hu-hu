@@ -9,12 +9,12 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 8d099d0b8f8e31bf77f5ddfad320ac792c5c01e5
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75529609"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76166791"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
@@ -27,7 +27,7 @@ Ezzel a modullal az adatok betölthetők egy gépi tanulási folyamatba a meglé
 > Az adatkészlet regisztrálása után megkeresheti azt az **adatkészletekben** , -> a **saját adatkészletek** kategóriáját a Designer felületen. Ez a modul Studio (klasszikus) felhasználók számára van fenntartva ismerős élmény érdekében. 
 >
 
-Először válassza ki az olvasni kívánt forrást, és fejezze be a további beállításokat. Az **adatimportálási** modul támogatja az adatok olvasását az alábbi forrásokból:
+Az **adatimportálási** modul támogatja az adatok olvasását az alábbi forrásokból:
 
 - URL-cím HTTP-n keresztül
 - Azure Cloud Storage adattárolók [**használatával)** ](../how-to-access-data.md)

@@ -8,12 +8,12 @@ ms.service: storage
 ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: yzheng
-ms.openlocfilehash: 012ff33bb31c78b26791e6337ae434acfe4bc865
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6bf391f22843991bf224539b82037c0e29251e7b
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75351333"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260953"
 ---
 # <a name="manage-the-azure-blob-storage-lifecycle"></a>Az Azure Blob Storage-életciklus felügyelete
 
@@ -246,6 +246,9 @@ Mindegyik szabály definíciója tartalmaz egy szűrőt és egy műveleti készl
 ### <a name="sample-rule"></a>Minta szabály
 
 A következő minta szabály úgy szűri a fiókot, hogy végrehajtsa a műveleteket a `container1` belül található objektumokon, és kezdje a `foo`.  
+
+>[!NOTE]
+>Az életciklus-kezelés csak a blob típusának használatát támogatja.  
 
 - Rétegbeli blob – a legutolsó módosítás után 30 nappal a lehűtési szintig
 - Szintű blob az archiválási szintre 90 nappal az utolsó módosítás után

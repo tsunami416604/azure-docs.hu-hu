@@ -33,7 +33,7 @@
         - name: Load Balancer
           items:
             - name: Mi az a Load Balancer?
-              href: ../load-balancer/load-balancer-standard-overview.md
+              href: ../load-balancer/load-balancer-overview.md
             - name: A Load Balancer Standard és a rendelkezésre állási zónák
               href: ../load-balancer/load-balancer-standard-availability-zones.md
             - name: Zónaredundáns nyilvános Standard Load Balancer létrehozása

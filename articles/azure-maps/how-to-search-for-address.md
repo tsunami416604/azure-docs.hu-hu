@@ -3,23 +3,23 @@ title: Keresési helyszínek a Azure Maps Search Service használatával | Micro
 description: Ebből a cikkből megtudhatja, hogyan kereshet egy helyet a Microsoft Azure Maps Search Service használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 04/05/2019
+ms.date: 01/15/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 59d58b9ecb42a7329df6c91e0a646c557d78a415
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911456"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264186"
 ---
 # <a name="find-an-address-using-the-azure-maps-search-service"></a>Címek keresése a Azure Maps Search szolgáltatással
 
-A Maps Search szolgáltatás olyan REST API-k készlete, amelyek fejlesztők számára készültek címek, helyek, érdekes pontok, üzleti listák és egyéb földrajzi információk keresésére. A szolgáltatás egy földrajzi szélességet/hosszúságot rendel egy adott címnek, a Cross Streetnek, a földrajzi funkciónak vagy a POI-nak. A keresés által visszaadott szélességi és hosszúsági értékek más Maps-szolgáltatásokban, például az útvonalon és a forgalomban is használhatók paraméterekként.
+A Maps Search szolgáltatás fejlesztők számára tervezett REST API-k készlete. A szolgáltatás kereshet címeket, helyeket, érdekes pontokat, üzleti listákat és egyéb földrajzi információkat. A következők mindegyike egy szélességi és hosszúsági értékkel rendelkezik: egy adott címnek, a Cross Street, a földrajzi funkció vagy egy érdekes hely (POI). A lekérdezésben megadott szélességi és hosszúsági értékeket paraméterekként használhatja más térképi szolgáltatások esetében. Például a visszaadott értékek paraméterek lehetnek a Route Service vagy a Traffic flow szolgáltatáshoz. 
 
-Ebben a cikkben a következőket fogja elsajátítani:
+Ismerkedjen meg a következőkkel:
 
 * Címek keresése a [fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) használatával
 * Címek keresése a tulajdonságok és koordináták mellett
@@ -28,13 +28,13 @@ Ebben a cikkben a következőket fogja elsajátítani:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. Ha Azure Maps fiókot szeretne létrehozni, kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait. Ha segítségre van szüksége az elsődleges kulcs beszerzéséhez, kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
 ## <a name="using-fuzzy-search"></a>A fuzzy Search használata
 
-A keresési szolgáltatás alapértelmezett API-je a [zavaros keresés](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) , amely akkor hasznos, ha nem tudja, hogy a felhasználói bemenetek hol találhatók a keresési lekérdezésekhez. Az API ötvözi a POI-kereséseket és a helymeghatározáshoz egy kanonikus "egysoros" kereséssel. Az API például képes kezelni bármilyen címek vagy POI-token kombinációjának bemeneteit. Az is lehet, hogy környezetfüggő pozícióval (lat./Lon. párosítva), teljes mértékben korlátozza a koordináta és a sugár, vagy általánosabban végrehajtja a földrajzi torzítási pontok nélkül.
+A keresési szolgáltatás alapértelmezett API-a [zavaros keresés](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Ez a szolgáltatás akkor hasznos, ha nem biztos benne, hogy a felhasználó bemeneti formátuma egy keresési lekérdezésben szerepel. Az API ötvözi a POI-kereséseket és a helymeghatározáshoz egy kanonikus "egysoros" kereséssel. Az API például képes kezelni bármilyen címek vagy POI-token kombinációjának bemeneteit. Azt is megteheti, hogy környezetfüggő pozícióval (lat./Lon. párosítva), teljes mértékben korlátozza a koordináta és a sugár, vagy általánosabban végrehajtja a földrajzi torzítási pontok nélkül.
 
 A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a teljesítmény eléréséhez és a szokatlan eredmények csökkentéséhez. Ez az alapértelmezett beállítás felülbírálható igény szerint, ha a lekérdezési paramétert `maxFuzzyLevel=2` vagy `3`átadja.
 
@@ -52,7 +52,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
     | Kérés URL-címe | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | Engedélyezés | Nincs hitelesítés |
 
-    Az URL-cím alatt található **JSON** -attribútum meghatározza a válasz formátumát. Ez a cikk a könnyű használat és az olvashatóság érdekében JSON-t használ. A rendelkezésre álló válaszok formátumait a [Maps Functional API-referenciájának](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) **Get Search fuzzy** definíciójában találja.
+    Az URL-cím alatt található **JSON** -attribútum meghatározza a válasz formátumát. Ez a cikk a JSON-t használja a könnyű használat és az olvashatóság érdekében. A rendelkezésre álló válaszok formátumait a [Maps Functional API-referenciájának](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) **Get Search fuzzy** definíciójában találja.
 
 3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében:
 
@@ -66,9 +66,9 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
 4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét.
 
-    A "pizza" kétértelmű lekérdezési karakterlánca a "pizza" és az "étterem" kategóriába tartozó kategóriákat [eredményezett](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) . Minden eredmény az utca, a szélességi/hosszúsági értékek, a megtekintési port és a hely belépési pontjait adja vissza.
+    A "pizza" nem egyértelmű lekérdezési karakterlánca a "pizza" és az "étterem" kategóriákban 10 hasznos [eredményt](https://docs.microsoft.com/rest/api/maps/search/getsearchpoi#searchpoiresponse) adott vissza (POI). Minden eredmény az utca, a szélességi és a hosszúsági értékeket, a portok megtekintését és a hely belépési pontjait adja vissza.
   
-    Ennek a lekérdezésnek az eredményei eltérőek, nem egy adott hivatkozási helyhez kötve. A **countrySet** paraméterrel csak azokat az országokat/régiókat adhatja meg, amelyekhez az alkalmazásnak lefedettségre van szüksége, mivel az alapértelmezett viselkedés a teljes világon való keresés, ami esetleg szükségtelen eredményeket ad vissza.
+    Ennek a lekérdezésnek az eredményei eltérőek, nem egy adott hivatkozási helyhez kötve. A **countrySet** paraméter használatával csak azokat az országokat/régiókat adhatja meg, amelyeknek az alkalmazásának lefedettségre van szüksége. Az alapértelmezett viselkedés a teljes világon való keresés, ami felesleges eredményeket ad vissza.
 
 5. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
@@ -91,7 +91,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
 ## <a name="search-for-address-properties-and-coordinates"></a>Címek tulajdonságainak és koordinátáinak keresése
 
-A keresési címek API-ban teljes vagy részleges lakcímet adhat át, és olyan választ kaphat, amely részletes címeket tartalmaz, például a helyhatóságot vagy az alosztást, valamint a szélességi és a hosszúsági pozíciót.
+A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra is kap egy választ, amely tartalmazza a részletes címek tulajdonságait. A részletes címzési tulajdonságok olyan értékek, mint például a magasság és a hosszúság, a település vagy a felosztás pozíciós értékei.
 
 1. A Poster területen kattintson az **új kérelem** | **Get kérelem** és a név it- **címek keresése**elemre.
 2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz tartozó kérelem URL-címét, és válasszon ki egy hitelesítési protokollt, ha van ilyen.
@@ -165,7 +165,7 @@ A keresési címek API-ban teljes vagy részleges lakcímet adhat át, és olyan
     |-----|------------|
     | szám | igaz |
 
-    Ha a kérelemben a [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert küldi a rendszer, a válasz az utca oldalát (bal/jobb oldali), valamint az adott szám eltolási pozícióját is tartalmazhatja.
+    Ha a kérelemben a [Number](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert küldi a rendszer, akkor a válasz az utca oldalát (balra vagy jobbra), valamint az adott szám eltolási pozícióját is tartalmazhatja.
   
 6. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
@@ -173,7 +173,7 @@ A keresési címek API-ban teljes vagy részleges lakcímet adhat át, és olyan
     |-----|------------|
     | returnSpeedLimit | igaz |
   
-    Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a rendszer a feladott sebességi korlátot adja vissza.
+    Ha a [returnSpeedLimit](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter be van állítva, a válasz a közzétett sebesség korlátot adja vissza.
 
 7. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra:
 
@@ -189,7 +189,7 @@ A keresési címek API-ban teljes vagy részleges lakcímet adhat át, és olyan
     |-----|------------|
     | roadUse | igaz |
 
-    A fordított geocode-lekérdezés egy adott típusú közúti használatra korlátozható a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter használatával.
+    A fordított geocode-lekérdezést egy adott típusú útra korlátozhatja, ha a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert használja.
   
 ## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>A Cross Street keresése fordított címekkel Cross Street Search használatával
 

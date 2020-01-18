@@ -9,12 +9,12 @@ ms.author: magoedte
 ms.date: 05/14/2019
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: e56a1c9a158974266b810d31a0e9bb898262761a
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: ac2c276f051155d7ba18ee91e4ca27acb0b35192
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74849428"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167984"
 ---
 # <a name="variable-assets-in-azure-automation"></a>Változó eszközök Azure Automation
 
@@ -28,7 +28,7 @@ A változó eszközök olyan értékek, amelyek az Automation-fiók összes runb
 
 Mivel a rendszer megőrzi az Automation-változókat, akkor is elérhetők, ha a runbook vagy a DSC-konfiguráció meghibásodik. Ez a viselkedés lehetővé teszi egy érték egy runbook általi beállítását, amelyet aztán egy másik használ, vagy ugyanazt a runbook vagy DSC-konfiguráció használja a következő futtatásakor.
 
-Változó létrehozásakor megadhatja, hogy a rendszer titkosítva tárolja-e. A titkosított változók tárolása a Azure Automation biztonságosan történik, és az értéke nem kérhető le az Azure PowerShell modul részeként szállított [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagból. A titkosított érték lekérésének egyetlen módja a **Get-AutomationVariable** tevékenység RUNBOOK vagy DSC-konfigurációban való használata. Ha egy titkosított változót nem titkosítottra szeretne módosítani, törölje, majd hozza létre újra a változót nem titkosítottként.
+Változó létrehozásakor megadhatja, hogy a rendszer titkosítva tárolja-e. A titkosított változók tárolása a Azure Automation biztonságosan történik, és az értéke nem kérhető le az Azure PowerShell modul részeként szállított [Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable) parancsmagból. A titkosított érték lekérésének egyetlen módja a **Get-AutomationVariable** tevékenység RUNBOOK vagy DSC-konfigurációban való használata. Ha egy titkosított változót nem titkosítottra szeretne módosítani, törölnie kell, majd újra létre kell hoznia a változót nem titkosítottként.
 
 >[!NOTE]
 >Azure Automation a biztonságos adategységek közé tartoznak a hitelesítő adatok, a tanúsítványok, a kapcsolatok és a titkosított változók. Ezeket az eszközöket a rendszer titkosítja és tárolja Azure Automation az egyes Automation-fiókokhoz generált egyedi kulcs használatával. Ezt a kulcsot a rendszer felügyelt Key Vault tárolja. A biztonságos eszköz tárolása előtt a kulcs betöltődik Key Vault, majd az eszköz titkosítására szolgál. Ezt a folyamatot a Azure Automation felügyeli.
@@ -51,7 +51,7 @@ Az alábbi lista az Automationben elérhető változó típusok listáját tarta
 
 A AzureRM az alábbi táblázatban található parancsmagokkal automatizálható a hitelesítő adatok eszközei a Windows PowerShell használatával. A [AzureRM. Automation modul](/powershell/azure/overview)részét képezik, amely az Automation runbookok és a DSC-konfigurációkhoz is használható.
 
-| A  parancsmagjai | Leírás |
+| Parancsmagok | Leírás |
 |:---|:---|
 |[Get-AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/Get-AzureRmAutomationVariable)|Egy létező változó értékét kérdezi le.|
 |[Új – AzureRmAutomationVariable](/powershell/module/AzureRM.Automation/New-AzureRmAutomationVariable)|Létrehoz egy új változót, és beállítja annak értékét.|

@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: philmea
-ms.openlocfilehash: 987e8d9e667339d7526e8acbc3164e58abcd3e4d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: f528135445824a17a8d8c95913adf6934cc87eb0
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895746"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260119"
 ---
 # <a name="configure-rules-preview-features"></a>Szabályok konfigurálása (előzetes verziójú funkciók)
 
@@ -33,7 +33,7 @@ Az eszközök megcélzása szakaszban kiválaszthatja, hogy milyen típusú eszk
 
 A feltételek alapján a szabályok aktiválva lesznek. Jelenleg, ha több feltételt ad hozzá egy szabályhoz, akkor logikailag és együtt. Más szóval minden feltételnek teljesülnie kell ahhoz, hogy a szabály kiértékelése igaz legyen.  
 
-A következő képernyőképen a feltételek ellenőrzése, hogy a hőmérséklet nagyobb-e, mint 90, és a páratartalom kisebb, mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
+A következő képernyőképen a feltételek ellenőrzése, ha a hőmérséklet nagyobb, mint 70&deg; F, a páratartalom pedig kevesebb mint 10. Ha mindkét utasítás igaz, a szabály igaz értéket ad vissza, és elindítja a műveletet.
 
 ![Feltételek](media/howto-configure-rules/conditions.png)
 

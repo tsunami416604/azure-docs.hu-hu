@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: conceptual
 ms.date: 11/22/2019
 ms.author: dapine
-ms.openlocfilehash: 2dc5bfb7459e28a4d118c5d1629133bae3a5637f
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 2cdf34bb7df121665548be98f9f2098cc5cfe99b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533699"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169088"
 ---
 # <a name="azure-cognitive-services-support-and-help-options"></a>Azure Cognitive Services támogatás és Súgó lehetőségek
 
@@ -28,7 +28,7 @@ Most megkezdi az Azure Cognitive Services funkcióinak megismerését? Új funkc
 > * Ha hibát talál a GitHubon található minták egyikével kapcsolatban, adjon meg egy *GitHub* -problémát.
 > * Keressen megoldást a *UserVoice fórumban*.
 
-## <a name="create-an-azure-support-request"></a>Azure-támogatási kérelem létrehozása
+## <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
 <div class='icon is-large'>
     <img alt='Azure support' src='https://docs.microsoft.com/media/logos/logo_azure.svg'>
@@ -36,7 +36,7 @@ Most megkezdi az Azure Cognitive Services funkcióinak megismerését? Új funkc
 
 Fedezze fel az [Azure-támogatási lehetőségek körét, és válassza ki a](https://azure.microsoft.com/support/plans) legjobban illeszkedő csomagot, legyen szó akár fejlesztőknek, akár a Felhőbeli utazásról, akár egy olyan nagy szervezetről, amely üzleti szempontból kritikus fontosságú, stratégiai alkalmazásokat helyez üzembe. Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
-* [Azure Portalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
 
 ## <a name="post-a-question-on-stack-overflow"></a>Kérdés közzététele Stack Overflow
@@ -91,8 +91,8 @@ Ha nem talál választ a problémára a keresésen keresztül, küldjön új ké
 
 A kibocsátási megjegyzések frissülnek, mivel az új kiadások elérhetővé válnak. A megjegyzések az új funkciókkal, javításokkal és hibajavításokkal kapcsolatos információkat tartalmaznak.
 
- - [Custom Vision Service](custom-vision-service/release-notes.md)
- - [Face API](face/releasenotes.md)
+ - [Custom Vision](custom-vision-service/release-notes.md)
+ - [Arc](face/releasenotes.md)
  - [Language Understanding (LUIS)](luis/whats-new.md)
  - [Speech Services](speech-service/releasenotes.md)
  - [Speech Services SDK](speech-service/devices-sdk-release-notes.md)

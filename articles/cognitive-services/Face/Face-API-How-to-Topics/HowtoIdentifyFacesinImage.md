@@ -1,5 +1,5 @@
 ---
-title: 'Példa: Arcok azonosítása a képeken – Face API'
+title: 'Példa: arcok azonosítása képekben – Face'
 titleSuffix: Azure Cognitive Services
 description: Ez az útmutató bemutatja, hogyan azonosíthatók az ismeretlen arcok a PersonGroup-objektumok használatával, amelyek előre ismert személyekből jönnek létre.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: ec209eb2c60efcb1363c177aad0fe5a72ad2a239
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 0b1cf99fe6e2aa4d7fcb12c3fb96b10b42c7c0b7
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977182"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169919"
 ---
 # <a name="example-identify-faces-in-images"></a>Példa: arcok felismerése képeken
 
-Ez az útmutató bemutatja, hogyan azonosíthatók az ismeretlen arcok a PersonGroup-objektumok használatával, amelyek előre ismert személyekből jönnek létre. A mintákat az Azure Cognitive Services C# Face API ügyféloldali kódtár használatával kell beírni.
+Ez az útmutató bemutatja, hogyan azonosíthatók az ismeretlen arcok a PersonGroup-objektumok használatával, amelyek előre ismert személyekből jönnek létre. A minták az Azure Cognitive Services C# Face ügyféloldali kódtár használatával íródnak.
 
 ## <a name="preparation"></a>Előkészítés
 
@@ -131,7 +131,7 @@ while(true)
 
 ## <a name="step-4-identify-a-face-against-a-defined-persongroup"></a>4\. lépés: Arc azonosítása definiált PersonGroup alapján
 
-Ha a Face API elvégzi az azonosítást, a rendszer kiszámítja a tesztek hasonlóságát egy csoporton belüli összes arc között. A tesztelési felületen a leginkább összehasonlítható személyeket adja vissza. Ezt a folyamatot a [Face-IDENTIFY API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) n vagy az ügyféloldali kódtár IdentifyAsync metódusán keresztül végezheti el.
+Ha a Face szolgáltatás azonosítja az azonosításokat, az egy csoporton belüli összes arc között kiszámítja a tesztek hasonlóságát. A tesztelési felületen a leginkább összehasonlítható személyeket adja vissza. Ezt a folyamatot a [Face-IDENTIFY API-](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) n vagy az ügyféloldali kódtár IdentifyAsync metódusán keresztül végezheti el.
 
 A tesztelési arcot az előző lépések segítségével kell észlelni. Ezt követően a rendszer második argumentumként átadja a Face ID-t az azonosító API-nak. Egyszerre több arc azonosító is azonosítható. Az eredmény az összes azonosított eredményt tartalmazza. Alapértelmezés szerint az azonosítási folyamat csak egy olyan személyt ad vissza, amely a legjobban megfelel a tesztnek. Ha szeretné, megadhatja a maxNumOfCandidatesReturned választható paramétert, hogy az azonosítási folyamat több pályázót is visszaadjon.
 

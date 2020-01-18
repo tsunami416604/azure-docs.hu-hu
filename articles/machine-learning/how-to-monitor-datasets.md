@@ -10,12 +10,12 @@ ms.reviewer: nibaccam
 ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/04/2019
-ms.openlocfilehash: 524a831c63e2a034766b874cc45bb039e3185b50
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 4efdc47e65f0f29f74f1477b02efdc6b8767ffb2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75536875"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264763"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -131,7 +131,7 @@ Ez a táblázat az adatkészlet-figyelő alapszintű beállításait tartalmazza
 
 | Beállítás | Leírás | Tippek | Változtatható | 
 | ------- | ----------- | ---- | ------- | 
-| Név | Az adatkészlet figyelő neve. | | Nem |
+| Name (Név) | Az adatkészlet figyelő neve. | | Nem |
 | Alapterv-adatkészlet | Táblázatos adatkészlet, amely a célként megadott adatkészlet időbeli összehasonlításához használt alapkonfigurációként fog megjelenni. | Az alapadatkészletnek a célként megadott adatkészlettel közös szolgáltatásokkal kell rendelkeznie. Az alaptervet általában a modell betanítási adatkészletére vagy a célként megadott adatkészlet egy szeletére kell beállítani. | Nem |
 | Cél adatkészlet | A táblázatos adatkészlet, amely az adateltolódás elemzésére szolgáló időbélyeg-oszloppal van megadva. | A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapadatkészlet esetében, és `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni. | Nem | 
 | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Módosítsa ezt a beállítást úgy, hogy az az alaptervhez hasonló adatméretet tartalmazzon. | Nem | 
@@ -315,6 +315,7 @@ Korlátozások és ismert problémák:
 * A 200 funkcióinak korlátozása, kivéve, ha nincs megadva szolgáltatási lista (az összes funkció használatban van).
 * A számítás méretének elég nagynak kell lennie az adatok kezeléséhez. 
 * Győződjön meg arról, hogy az adatkészlet egy adott figyelő futtatásának kezdési és befejezési dátumán belüli adatokat tartalmaz.
+* Az adatkészlet-figyelők csak a 50 vagy több sort tartalmazó adatkészleteken működnek. 
 
 Az adatkészletben lévő oszlopok vagy szolgáltatások a következő táblázatban szereplő feltételek alapján kategorikusnak vagy numerikusnak minősülnek. Ha a szolgáltatás nem felel meg az alábbi feltételeknek – például egy string típusú oszlop, amely > 100 egyedi értéket tartalmaz – a szolgáltatás az adateltolódási algoritmusból kerül eldobásra, de a rendszer továbbra is felhasználja a fájlt. 
 

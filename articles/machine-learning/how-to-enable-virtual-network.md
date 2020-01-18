@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: f1cedd9851e425de1e4b6392d42a11dbf9f92644
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: b647af11e47952656011a06268d4b0f384126ae9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934386"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263710"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -80,6 +80,22 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 > A munkaterület létrehozásakor a rendszer automatikusan kiépíti az alapértelmezett Storage-fiókot.
 >
 > A nem alapértelmezett Storage-fiókok esetében a [`Workspace.create()` függvény](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace(class)?view=azure-ml-py#create-name--auth-none--subscription-id-none--resource-group-none--location-none--create-resource-group-true--sku--basic---friendly-name-none--storage-account-none--key-vault-none--app-insights-none--container-registry-none--default-cpu-compute-target-none--default-gpu-compute-target-none--exist-ok-false--show-output-true-) `storage_account` paramétere lehetővé teszi egyéni Storage-fiók megadását az Azure erőforrás-azonosító alapján.
+
+## <a name="use-azure-data-lake-storage-gen-2"></a>Azure Data Lake Storage Gen 2 használata
+
+A 2. generációs Azure Data Lake Storage az Azure Blob Storage-ra épülő big data-elemzési funkciók összessége. Használható a modellek Azure Machine Learning használatával való tanításához használt adattárolásra. 
+
+Ha a Azure Machine Learning munkaterület virtuális hálózatán belül szeretné használni a 2. generációs Data Lake Storage, kövesse az alábbi lépéseket:
+
+1. Hozzon létre egy Azure Data Lake Storage 2. generációs fiókot. További információ: [Azure Data Lake Storage Gen2 Storage-fiók létrehozása](../storage/blobs/data-lake-storage-quickstart-create-account.md).
+
+1. Használja az előző szakasz 2-4-es lépéseit, és [használja a munkaterület Storage-fiókját](#use-a-storage-account-for-your-workspace)a fiók virtuális hálózatban való üzembe helyezéséhez.
+
+Ha a Azure Machine Learningt Data Lake Storage Gen 2 virtuális hálózaton belül használja, kövesse az alábbi útmutatást:
+
+* Ha az SDK használatával __hoz létre egy adatkészletet__, és a kódot futtató rendszer __nem a virtuális hálózaton__található, használja a `validate=False` paramétert. Ez a paraméter kihagyja az ellenőrzést, ami meghiúsul, ha a rendszer nem ugyanabban a virtuális hálózatban található, mint a Storage-fiók. További információ: [from_files ()](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.filedatasetfactory?view=azure-ml-py#from-files-path--validate-true-) metódus.
+
+* Ha Azure Machine Learning számítási példányt vagy számítási fürtöt használ a modellnek az adatkészlettel való betanításához, akkor annak a Storage-fiókkal azonos virtuális hálózatban kell lennie.
 
 ## <a name="use-a-key-vault-instance-with-your-workspace"></a>Key Vault-példány használata a munkaterülettel
 

@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: quickstart
 ms.date: 12/06/2019
 ms.author: pafarley
-ms.openlocfilehash: 2a3deff1d6220d21c3796b22dc7c39ea284cb36b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 7897c1602a8b9ed6a1fea68e80d57cd5bae1c004
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977947"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76165955"
 ---
 # <a name="quickstart-detect-faces-in-an-image-using-the-face-rest-api-and-nodejs"></a>Gyors útmutató: az arcok észlelése egy képen a Face REST API és a Node. js használatával
 
@@ -25,7 +25,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Egy Face API előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) az Face API szolgáltatásra való előfizetéshez és a kulcs beszerzéséhez című témakör utasításait.
+- Egy Face előfizetési kulcs. A [Try Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=face-api)ingyenes próbaverziós előfizetési kulcsot is kaphat. Vagy kövesse a [Cognitive Services fiók létrehozása](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) a Face szolgáltatásra való előfizetéshez és a kulcs beszerzése című témakör utasításait.
 - Kódszerkesztő, például [Visual Studio Code](https://code.visualstudio.com/download)
 
 ## <a name="set-up-the-node-environment"></a>A csomópont-környezet beállítása
@@ -283,7 +283,7 @@ A konzol ablakában a JSON-adatokként megjelenő arc információit kell látni
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban egy Node. js-szkriptet írt, amely meghívja az Azure Face APIt, hogy felderítse az arcokat egy képben, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
+Ebben a rövid útmutatóban egy Node. js-szkriptet írt, amely meghívja az Azure Face Service-t, hogy felderítse az arcokat a képen, és visszaadja az attribútumokat. További információért olvassa el a Face API dokumentációját.
 
 > [!div class="nextstepaction"]
 > [Face API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236)

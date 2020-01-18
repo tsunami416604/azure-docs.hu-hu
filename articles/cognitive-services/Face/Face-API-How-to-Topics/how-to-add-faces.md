@@ -1,7 +1,7 @@
 ---
-title: 'Példa: arcok hozzáadása PersonGroup-Face API'
+title: 'Példa: arcok hozzáadása PersonGroup-Face'
 titleSuffix: Azure Cognitive Services
-description: Ez az útmutató bemutatja, hogyan adhat hozzá nagy számú személyt és arcot egy PersonGroup objektumhoz az Azure Cognitive Services Face API.
+description: Ez az útmutató bemutatja, hogyan adhat hozzá nagy számú személyt és arcot egy PersonGroup objektumhoz az Azure Cognitive Services Face szolgáltatással.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 04/10/2019
 ms.author: sbowles
-ms.openlocfilehash: 891614caddf729acb58bc363df977031ad62fb07
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 240905d538afc5c0f4b7f0e0bf400fac23c3183f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156709"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169830"
 ---
 # <a name="add-faces-to-a-persongroup"></a>Arcok hozzáadása egy PersonGroup
 
-Ez az útmutató bemutatja, hogyan adhat hozzá nagy számú személyt és arcot egy PersonGroup objektumhoz. Ugyanez a stratégia a LargePersonGroup, a FaceList és a LargeFaceList objektumra is vonatkozik. Ez a minta az Azure C# Cognitive Services Face API .net Ügyféloldali kódtár használatával íródik.
+Ez az útmutató bemutatja, hogyan adhat hozzá nagy számú személyt és arcot egy PersonGroup objektumhoz. Ugyanez a stratégia a LargePersonGroup, a FaceList és a LargeFaceList objektumra is vonatkozik. Ez a minta az Azure C# Cognitive Services Face .net Ügyféloldali kódtár használatával íródik.
 
 ## <a name="step-1-initialization"></a>1\. lépés: Inicializálás
 

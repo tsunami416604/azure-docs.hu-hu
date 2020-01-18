@@ -1,7 +1,7 @@
 ---
-title: Mi az a Face API?
+title: Mi az a Face szolgáltatás?
 titleSuffix: Azure Cognitive Services
-description: Az Azure Cognitive Services Face API olyan algoritmusokat biztosít, amelyek a képek emberi arcok észlelésére, felismerésére és elemzésére szolgálnak.
+description: Az Azure Cognitive Services Face szolgáltatás olyan algoritmusokat biztosít, amelyek a képek emberi arcok észlelésére, felismerésére és elemzésére szolgálnak.
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
@@ -9,25 +9,25 @@ ms.subservice: face-api
 ms.topic: overview
 ms.date: 12/05/2019
 ms.author: pafarley
-ms.openlocfilehash: 75f2969562dd2de041ffaa146c394f1a18c7756b
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: c4e2253229f4461bcb6a2a9fe3e561f3cde29760
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961539"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170255"
 ---
-# <a name="what-is-the-azure-face-api"></a>Mi az Azure Face API?
+# <a name="what-is-the-azure-face-service"></a>Mi az Azure Face Service?
 
-Az Azure Cognitive Services Face API olyan algoritmusokat biztosít, amelyek a képek emberi arcok észlelésére, felismerésére és elemzésére szolgálnak. Az emberi arc-információk feldolgozásának lehetősége számos különböző szoftveres helyzetben fontos. Ilyenek például a biztonság, a természetes felhasználói felület, a képek tartalmának elemzése és kezelése, a Mobile apps és a robotika.
+Az Azure Cognitive Services Face szolgáltatás olyan algoritmusokat biztosít, amelyek a képek emberi arcok észlelésére, felismerésére és elemzésére szolgálnak. Az emberi arc-információk feldolgozásának lehetősége számos különböző szoftveres helyzetben fontos. Ilyenek például a biztonság, a természetes felhasználói felület, a képek tartalmának elemzése és kezelése, a Mobile apps és a robotika.
 
-A Face API számos különböző funkciót biztosít. Az egyes függvényeket a következő részben ismertetjük. További információért olvassa el a következőt:.
+A Face szolgáltatás számos különböző funkciót biztosít. Az egyes függvényeket a következő részben ismertetjük. További információért olvassa el a következőt:.
 
 ## <a name="face-detection"></a>Arcfelismerés
 
-A Face API észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés több arc-specifikus attribútumot is Kinyer. Ilyenek például a következők: fej, nemek, kor, érzelem, arcszőrzet és szemüveg.
+A Face szolgáltatás észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés több arc-specifikus attribútumot is Kinyer. Ilyenek például a következők: fej, nemek, kor, érzelem, arcszőrzet és szemüveg.
 
 > [!NOTE]
-> Az Arcfelismerés funkció a [Computer Vision APIon](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)keresztül is elérhető. Ha további műveleteket szeretne végezni az adatokkal kapcsolatban, használja a Face API, amely a cikkben tárgyalt szolgáltatás.
+> Az Arcfelismerés funkció a [Computer Vision APIon](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)keresztül is elérhető. Ha további műveleteket szeretne végezni az adatokkal kapcsolatban, használja a Face szolgáltatást, amely a jelen cikkben tárgyalt szolgáltatás.
 
 ![Egy nő és egy férfi képe, amely az arcukon és a nemek közötti téglalapokat ábrázolja](./Images/Face.detection.jpg)
 
@@ -73,9 +73,9 @@ A személy azonosításával kapcsolatos további információkért tekintse meg
 
 ## <a name="sample-apps"></a>Mintaalkalmazások
 
-Az alábbi példák a Face API használatára mutatnak néhány módszert:
+Az alábbi példák a Face szolgáltatás használatának néhány módját mutatják be:
 
-- [Microsoft Face API: a Windows ügyféloldali kódtár és a minta](https://github.com/Microsoft/Cognitive-Face-Windows) egy WPF-alkalmazás, amely számos, az Arcfelismerés, az elemzés és az azonosítás forgatókönyvét mutatja be.
+- [Face API: a Windows ügyféloldali könyvtára és mintája](https://github.com/Microsoft/Cognitive-Face-Windows) egy WPF-alkalmazás, amely számos, az Arcfelismerés, az elemzés és az azonosítás forgatókönyvét mutatja be.
 - A [FAMILYNOTES UWP alkalmazás](https://github.com/Microsoft/Windows-appsample-familynotes) egy olyan univerzális Windows-platform (UWP) alkalmazás, amely a beszédfelismerést, a Cortana, a tinta és a fényképezőgépet használja a család megjegyzésekkel való megosztására szolgáló forgatókönyvben.
 
 ## <a name="data-privacy-and-security"></a>Adatvédelem és biztonság

@@ -3,14 +3,14 @@ title: Több Azure-beli virtuális gép frissítéseinek kezelése
 description: Ez a cikk az Azure-és nem Azure-beli virtuális gépek frissítéseinek kezelését ismerteti.
 services: automation
 ms.subservice: update-management
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.topic: conceptual
-ms.openlocfilehash: e9a5a4330a90bd376114f836250e290944f03860
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: de7171d3807540ae7d5f09c3a877031631248e49
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75417825"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168047"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Frissítések kezelése több gép esetén
 
@@ -147,6 +147,13 @@ Az **új frissítés központi telepítése** ablaktáblán a következő inform
   - Frissítések
 
 - **Belefoglalandó/kizárandó frissítések** – Ez megnyitja a **Belefoglalás/kizárás** lapot. A belefoglalandó vagy kizárandó frissítések külön lapokon jelennek meg. További információ a felvétel kezeléséről: a [frissítések központi telepítésének ütemezett időpontja](automation-tutorial-update-management.md#schedule-an-update-deployment).
+
+> [!NOTE]
+> Fontos tudni, hogy a kizárások felülbírálják a belefoglalásokat. Ha például meghatároz egy `*`kizárási szabályát, akkor a rendszer nem telepíti a javításokat és a csomagokat, mivel azok ki vannak zárva. A kizárt javítások továbbra is hiányzóként jelennek meg a gépről. Linux rendszerű gépek esetén, ha csomag szerepel a csomagban, de egy kizárt függő csomaggal rendelkezik, a csomag nincs telepítve.
+
+> [!NOTE]
+> Nem adhat meg olyan frissítéseket, amelyek felváltották a frissítés központi telepítésére való felvételt.
+>
 
 - **Ütemezési beállítások**: Elfogadhatja az alapértelmezett időpontot, amely a 30 perccel az aktuális idő utáni időpont, Megadhat egy másik időpontot is.
 

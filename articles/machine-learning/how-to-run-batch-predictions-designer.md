@@ -5,106 +5,142 @@ description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
-ms.topic: tutorial
-ms.reviewer: trbye
-ms.author: trbye
-author: trevorbye
-ms.date: 11/19/2019
+ms.topic: how-to
+ms.author: peterlu
+author: peterclu
+ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 1e346d2542193ec1880ad0a56bd6afa1b0a46890
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 7a4801e46477165232e7f03184152b6c277c05b6
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122627"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167270"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebben a útmutatóban megismerheti, hogyan végezheti el a modell betanítását és a Batch-előrejelzési folyamat és webszolgáltatás beállítását. A Batch-előrejelzés lehetővé teszi a nagy adatkészleteken futó betanított modellek folyamatos és igény szerinti pontozását, amelyet opcionálisan konfigurálhat bármely HTTP-könyvtárból indítható webszolgáltatásként. 
+Ebből a cikkből megtudhatja, hogyan használhatja a tervezőt batch-előrejelzési folyamat létrehozásához. A Batch-előrejelzés lehetővé teszi, hogy folyamatosan nagy mennyiségű adatkészletet állítson be igény szerint egy olyan webszolgáltatással, amely bármely HTTP-tárból indítható.
 
-A Batch-pontozási szolgáltatások SDK használatával történő beállításához tekintse meg a kapcsolódó [útmutató](how-to-use-parallel-run-step.md)című témakört.
-
-Ebben az útmutatóban a következő feladatokat ismerheti meg:
+Ebben az útmutatóban a következő feladatokat tanulhatja meg:
 
 > [!div class="checklist"]
-> * Alapszintű ML-kísérlet létrehozása egy folyamatban
-> * Paraméteres batch-következtetési folyamat létrehozása
-> * Folyamatok manuális vagy REST-végpontból történő kezelése és futtatása
+> * Batch-következtetési folyamat létrehozása és közzététele
+> * Folyamat-végpont felhasználása
+> * Végpontok verzióinak kezelése
+
+A Batch-pontozási szolgáltatások SDK-val való beállításával kapcsolatos további információkért lásd a kapcsolódó [útmutató](how-to-run-batch-predictions.md)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ingyenes fiókot. Próbálja ki a [Azure Machine learning ingyenes vagy fizetős verzióját](https://aka.ms/AMLFree).
-
-1. Hozzon létre egy [munkaterületet](tutorial-1st-experiment-sdk-setup.md).
-
-1. Jelentkezzen be [Azure Machine learning studióba](https://ml.azure.com/).
-
-Ez az útmutató azt feltételezi, hogy alapszintű ismerettel rendelkezik egy egyszerű folyamat létrehozásához a tervezőben. A Designer bevezetéséhez fejezze be az [oktatóanyagot](tutorial-designer-automobile-price-train-score.md). 
-
-## <a name="create-a-pipeline"></a>Folyamat létrehozása
-
-Batch-következtetési folyamat létrehozásához először gépi tanulási kísérletre van szükség. Hozzon létre egyet a munkaterület **tervező** lapján, és hozzon létre egy új folyamatot a **könnyen használható előre elkészített modulok** lehetőség kiválasztásával.
-
-![Tervező kezdőlapja](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-1.png)
-
-A következő egy egyszerű gépi tanulási modell demonstrációs célokra. Az adatok egy olyan regisztrált adatkészlet, amely az Azure Open adatkészletek cukorbetegség-adatainak alapján lett létrehozva. Az adatkészletek Azure Open-adatkészletekben való regisztrálásával kapcsolatban lásd: [útmutató szakasz](how-to-create-register-datasets.md#create-datasets-with-azure-open-datasets) . Az adat felosztása képzésre és érvényesítési csoportokra történik, és a megnövelt döntési fa betanítása és kiértékelése megtörténik. A folyamatnak legalább egyszer futtatnia kell a következtetési folyamat létrehozásához. A folyamat futtatásához kattintson a **Futtatás** gombra.
-
-![Egyszerű kísérlet létrehozása](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-2.png)
+Ez az útmutató feltételezi, hogy már rendelkezik egy betanítási folyamattal. A tervező bevezetéséhez fejezze be [a tervezői oktatóanyag egyik részét](tutorial-designer-automobile-price-train-score.md). 
 
 ## <a name="create-a-batch-inference-pipeline"></a>Batch-következtetési folyamat létrehozása
 
-Most, hogy a folyamat le lett futtatva, a **Futtatás** és a **Közzététel** a **create következtetési folyamat létrehozása**nevű új lehetőség áll rendelkezésre. Kattintson a legördülő listára, és válassza a **Batch következtetési folyamat**lehetőséget.
+A betanítási folyamatnak legalább egyszer futnia kell, hogy létre lehessen hozni egy következtetési folyamatot.
 
-![Batch-következtetési folyamat létrehozása](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-5.png)
+1. Nyissa meg a **tervező** lapot a munkaterületen.
 
-Az eredmény egy alapértelmezett batch-következtetési folyamat. Ez magában foglalja az eredeti folyamat-kísérlet beállítását, egy csomópontot a pontozáshoz, és egy csomópontot, amely az eredeti folyamat alapján szerzi be a nyers adatait.
+1. Válassza ki azt a betanítási folyamatot, amely a modellt az előrejelzéshez használni kívánja.
 
-![Alapértelmezett batch-következtetési folyamat](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-6.png)
+1. **Futtassa** a folyamatot.
 
-További csomópontokat is hozzáadhat a Batch-következtetési folyamat működésének módosításához. Ebben a példában egy csomópontot ad hozzá a bemeneti adatok véletlenszerű mintavételezéséhez a pontozás előtt. Hozzon létre egy **partíciót és egy minta** csomópontot, és helyezze el a nyers adat-és pontozási csomópontok között. Ezután kattintson a **partícióra és a minta** csomópontra, hogy hozzáférjen a beállításokhoz és a paraméterekhez.
+    ![A folyamat futtatása](./media/how-to-run-batch-predictions-designer/run-training-pipeline.png)
 
-![Új csomópont](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-7.png)
+Most, hogy a betanítási folyamat futott, létrehozhat egy batch-következtetési folyamatot.
 
-A *mintavételi paraméterek gyakorisága* határozza meg, hogy az eredeti adathalmaz hány százalékát használja a rendszer a véletlenszerűen kiválasztott értékre. Ez egy olyan paraméter, amely hasznos lehet a gyakori módosításhoz, így azt egy folyamat paraméterként is engedélyezheti. A folyamat paraméterei futásidőben módosíthatók, és egy adattartalom-objektumban adhatók meg, ha a folyamat újbóli futtatása REST-végpontról. 
+1. A **Futtatás**elem mellett válassza az új legördülő lista **létrehozása következtetési folyamat**elemet.
 
-Ha ezt a mezőt folyamat paraméterként szeretné engedélyezni, kattintson a mező felett lévő három pontra, majd kattintson a **Hozzáadás a folyamathoz paraméter**elemre. 
+1. Válassza a **Batch-következtetési folyamat**lehetőséget.
 
-![Minta beállításai](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-8.png)
+    ![Batch-következtetési folyamat létrehozása](./media/how-to-run-batch-predictions-designer/create-batch-inference.png)
+    
+Az eredmény egy alapértelmezett batch-következtetési folyamat. 
 
-Ezután adja meg a paraméter nevét és alapértelmezett értékét. A név azonosítja a paramétert, és megadhatja azt egy REST-hívásban.
+### <a name="add-a-pipeline-parameter"></a>Folyamat paraméterének hozzáadása
 
-![Folyamat paramétere](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-9.png)
+Az új adatokat tartalmazó előrejelzések létrehozásához manuálisan is összekapcsolhat egy másik adatkészletet a folyamat Piszkozat nézetében, vagy létrehozhat egy paramétert az adatkészlethez. A paraméterek lehetővé teszik a Batch-következtetési folyamat működésének módosítását futásidőben.
 
-## <a name="deploy-batch-inferencing-pipeline"></a>Batch-következtetési folyamat üzembe helyezése
+Ebben a szakaszban egy adatkészlet-paramétert hoz létre egy másik adatkészlet megadásához, amely alapján előrejelzéseket készít.
 
-Most már készen áll a folyamat üzembe helyezésére. Kattintson a **telepítés** gombra, amely megnyitja a felületet egy végpont beállításához. Kattintson a legördülő listára, és válassza az **új PipelineEndpoint**elemet.
+1. Válassza ki az adatkészlet modulját.
 
-![Folyamat üzembe helyezése](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-10.png)
+1. Ekkor megjelenik egy ablaktábla a vászon jobb oldalán. A panel alján válassza a **beállítás folyamatként paramétert**.
+   
+    Adja meg a paraméter nevét, vagy fogadja el az alapértelmezett értéket.
 
-Adja meg a végpont nevét és leírását (nem kötelező). Az alsó sarokban a 0,8 alapértelmezett értékével konfigurált `sample-rate` paraméter jelenik meg. Ha elkészült, kattintson a **telepítés**elemre.
+## <a name="publish-your-batch-inferencing-pipeline"></a>A Batch-következtetési folyamat közzététele
 
-![Telepítési végpont](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-11.png)
+Most már készen áll a következtetési folyamat üzembe helyezésére. Ezzel a folyamattal üzembe helyezi a folyamatot, és elérhetővé teszi mások számára a használatra.
 
-## <a name="manage-endpoints"></a>Végpontok kezelése 
+1. Válassza ki a **Közzététel** gombot.
 
-Az üzembe helyezés befejezése után lépjen a **végpontok** lapra, és kattintson az imént létrehozott végpont nevére.
+1. A megjelenő párbeszédpanelen bontsa ki a **PipelineEndpoint**legördülő listát, és válassza az **új PipelineEndpoint**lehetőséget.
 
-![Végponti hivatkozás](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-12.png)
+1. Adja meg a végpont nevét és leírását (nem kötelező).
 
-Ezen a képernyőn látható az adott végpont alatti összes közzétett folyamat. Kattintson a következtetési folyamatra.
+    A párbeszédpanel alján látható, hogy a paramétert a betanítás során használt adatkészlet-azonosító alapértelmezett értékével konfigurálta.
 
-![Következtetési folyamat](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-13.png)
+1. Kattintson a **Publish** (Közzététel) elemre.
 
-A folyamat részletei lap részletes futtatási előzményeket és kapcsolati karakterlánc-információkat jelenít meg a folyamathoz. A folyamat manuális futtatásának létrehozásához kattintson a **Futtatás** gombra.
+![Folyamat közzététele](./media/how-to-run-batch-predictions-designer/publish-inference-pipeline.png)
 
-![Folyamat részletei](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-14.png)
 
-A Futtatás beállításban megadhatja a Futtatás leírását, és módosíthatja a folyamat paramétereinek értékét. Ezúttal újra kell futtatni a következtetési folyamatot, amelynek a mintavételi sebessége 0,9. Kattintson a **Futtatás** gombra a folyamat futtatásához.
+## <a name="consume-an-endpoint"></a>Végpont felhasználása
 
-![Folyamat futtatása](./media/how-to-run-batch-predictions-designer/designer-batch-scoring-15.png)
+Most már van egy adatkészlet-paraméterrel rendelkező közzétett folyamata. A folyamat a betanítási folyamat során létrehozott betanított modellt fogja használni a paraméterként megadott adatkészlet kiértékeléséhez.
 
-A **felhasználás lapon a** folyamat újrafuttatásához használt Rest-végpont szerepel. A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonos típusú hitelesítési fejlécre. A munkaterület hitelesítésének beállításával és a paraméteres REST-hívás létrehozásával kapcsolatos további részletekért tekintse meg a következő [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
+### <a name="submit-a-pipeline-run"></a>Folyamat futtatásának elküldése 
+
+Ebben a szakaszban egy manuális folyamat futtatását kell beállítania, és módosítania kell a folyamat paramétert az új adatértékek kiértékeléséhez. 
+
+1. Az üzembe helyezés befejezése után lépjen a **végpontok** szakaszra.
+
+1. Válassza a **folyamat-végpontok**lehetőséget.
+
+1. Válassza ki a létrehozott végpont nevét.
+
+![Végponti hivatkozás](./media/how-to-run-batch-predictions-designer/manage-endpoints.png)
+
+1. Válassza a **közzétett folyamatok**elemet.
+
+    Ezen a képernyőn a végpont alatt közzétett összes közzétett folyamat látható.
+
+1. Válassza ki a közzétett folyamatot.
+
+    A folyamat részletei lap részletes futtatási előzményeket és kapcsolati karakterlánc-információkat jelenít meg a folyamathoz. 
+    
+1. Válassza a **Futtatás** lehetőséget a folyamat manuális futtatásának létrehozásához.
+
+    ![Folyamat részletei](./media/how-to-run-batch-predictions-designer/submit-manual-run.png)
+    
+1. Módosítsa a paramétert egy másik adatkészlet használatára.
+    
+1. Válassza a **Futtatás** lehetőséget a folyamat futtatásához.
+
+### <a name="use-the-rest-endpoint"></a>A REST-végpont használata
+
+A folyamatok végpontjának és a közzétett folyamatnak a **végpontok** szakaszban való felhasználásával kapcsolatos információkat talál.
+
+A folyamat végpontjának REST-végpontját a Futtatás Áttekintés panelen találja. A végpont meghívásával meghívja az alapértelmezett közzétett folyamatát.
+
+A közzétett **folyamatok** oldalon is felhasználhatja a közzétett folyamatokat. Válasszon ki egy közzétett folyamatot, és keresse meg a hozzá tartozó REST-végpontot. 
+
+![Rest-végpont részletei](./media/how-to-run-batch-predictions-designer/rest-endpoint-details.png)
+
+A REST-hívások elvégzéséhez szüksége lesz egy OAuth 2,0 tulajdonos típusú hitelesítési fejlécre. A munkaterület hitelesítésének beállításával és a paraméteres REST-hívás létrehozásával kapcsolatos további részletekért tekintse meg a következő [oktatóanyagot](tutorial-pipeline-batch-scoring-classification.md#publish-and-run-from-a-rest-endpoint) .
+
+## <a name="versioning-endpoints"></a>Verziószámozási végpontok
+
+A tervező egy verziót rendel hozzá minden további, a végponton közzétett folyamathoz. Megadhatja a folyamat azon verzióját, amelyet paraméterként kíván végrehajtani a REST-hívásban. Ha nem ad meg verziószámot, a tervező az alapértelmezett folyamatot fogja használni.
+
+Amikor közzétesz egy folyamatot, megadhatja, hogy az új alapértelmezett folyamat legyen a végpont számára.
+
+![Alapértelmezett folyamat beállítása](./media/how-to-run-batch-predictions-designer/set-default-pipeline.png)
+
+Az új alapértelmezett folyamat a végpont **közzétett folyamatok** lapján is beállítható.
+
+![Alapértelmezett folyamat beállítása](./media/how-to-run-batch-predictions-designer/set-new-default-pipeline.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

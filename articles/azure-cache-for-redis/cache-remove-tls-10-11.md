@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
-ms.openlocfilehash: 2f6203deb5e06ba69a3b4d06297d5e702992c79d
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 77f526470204204ef2a801575bb4e8d7e364ffed
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708056"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260155"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
 
@@ -19,8 +19,8 @@ A Transport Layer Security (TLS) 1,2-es vagy újabb verziójának kizárólagos 
 
 Ennek a tevékenységnek a részeként a következő módosításokat hajtjuk végre az Azure cache Redis:
 
-* 2020. január 13-án az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót kell beállítani 1,2.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok.  Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében.  Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
-* 2020. március 31-ig megszüntetjük a TLS-verziók 1,0 és 1,1-es verziójának támogatását. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
+* **1. fázis:** Az újonnan létrehozott gyorsítótár-példányok esetében az alapértelmezett minimális TLS-verziót 1,2-re konfigurálja.  Ezen a ponton nem frissülnek a meglévő gyorsítótár-példányok.  Ha szükséges, [megváltoztathatja a TLS minimális verzióját](cache-configure.md#access-ports) 1,0-re vagy 1,1-ra a visszamenőleges kompatibilitás érdekében.  Ezt a változást a Azure Portal vagy más felügyeleti API-k segítségével teheti meg.
+* **2. fázis:** A TLS 1,0-es és 1,1-es verziójának támogatása nem áll le. A módosítás után az alkalmazás a TLS 1,2-es vagy újabb verzióját fogja használni a gyorsítótárral való kommunikációhoz.
 
 Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cypher-csomagok támogatását.  A támogatott Cypher-csomagok a következőre lesznek korlátozva, ha a gyorsítótár a 1,2-es minimális TLS-verzióval van konfigurálva.
 
@@ -28,6 +28,15 @@ Emellett a változás részeként eltávolítja a régebbi, nem biztonságos Cyp
 * TLS_ECDHE_RSA_WITH_AES_128_CBC_SHA256_P256
 
 Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségeinek észleléséhez és az alkalmazásból való eltávolításához.
+
+A módosítások érvénybe léptetésének dátuma:
+
+| Felhőbeli               | 1\. fázis kezdési dátuma | 2\. fázis kezdő dátuma |
+|---------------------|--------------------|--------------------|
+| Azure (globális)      |  2020. január 13.  | Március 31., 2020     |
+| Azure Government    |  Március 13., 2020    | Május 11., 2020       |
+| Azure Germany       |  Március 13., 2020    | Május 11., 2020       |
+| Azure China         |  Március 13., 2020    | Május 11., 2020       |
 
 ## <a name="check-whether-your-application-is-already-compliant"></a>Annak ellenőrzését, hogy az alkalmazás már megfelelő-e
 

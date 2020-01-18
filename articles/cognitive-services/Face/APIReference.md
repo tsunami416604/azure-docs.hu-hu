@@ -1,5 +1,5 @@
 ---
-title: API-hivatkozás – Face API
+title: API-hivatkozás – Face
 titleSuffix: Azure Cognitive Services
 description: Az API-hivatkozás információt nyújt a személyről, a LargePersonGroup/PersonGroup, a LargeFaceList/FaceList és a Face algoritmus API-król.
 services: cognitive-services
@@ -10,16 +10,16 @@ ms.subservice: face-api
 ms.topic: reference
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: 940a5e25125acc2631fd3629bd610bb0e927e650
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: 431525964eb69431600d36ba8249c6dc465a5df3
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72390108"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169926"
 ---
 # <a name="face-api-reference-list"></a>Face API hivatkozási lista
 
-Az Azure Face API egy felhőalapú API, amely az arcfelismerés és-felismerés algoritmusait biztosítja. A Face API-k a következő kategóriákat alkotják:
+Az Azure Face egy felhőalapú szolgáltatás, amely algoritmusokat biztosít a szembenézés észleléséhez és felismeréséhez. A Face API-k a következő kategóriákat alkotják:
 
 - Face algoritmus API-k: olyan alapvető funkciók, mint az [észlelés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395236), a [hasonló](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237), az [ellenőrzés](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039523a), az [Azonosítás](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239)és a [csoport](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395238).
 - [FaceList API](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f3039524b)-k: a FaceList kezelésére szolgál a [hasonló kereséshez](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395237).

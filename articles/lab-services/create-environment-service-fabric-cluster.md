@@ -1,5 +1,5 @@
 ---
-title: Környezet létrehozása Service Fabric-fürttel Azure DevTest Labsban | Microsoft Docs
+title: Service Fabric-fürt környezetének létrehozása Azure DevTest Labs
 description: Ismerje meg, hogyan hozhat létre környezetet önálló Service Fabric-fürttel, és hogyan indíthatja el és állíthatja le a fürtöt az ütemtervek használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/01/2019
+ms.date: 01/16/2020
 ms.author: enewman
-ms.openlocfilehash: 1e192a2b27c9d617e43a56766431a0f40e87a752
-ms.sourcegitcommit: 4b431e86e47b6feb8ac6b61487f910c17a55d121
+ms.openlocfilehash: 71793b81d8735c80881fc25a9b7ec31bc4fc6762
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/18/2019
-ms.locfileid: "68325255"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170341"
 ---
 # <a name="create-an-environment-with-self-contained-service-fabric-cluster-in-azure-devtest-labs"></a>Környezet létrehozása önálló Service Fabric-fürttel Azure DevTest Labs
 Ez a cikk azt ismerteti, hogyan hozható létre környezet egy önálló Service Fabric-fürttel Azure DevTest Labsban. 
@@ -28,9 +28,9 @@ Ez a cikk azt ismerteti, hogyan hozható létre környezet egy önálló Service
 Az DevTest Labs az Azure Resource Management-sablonok által definiált, önálló tesztelési környezeteket hozhat létre. Ezek a környezetek a IaaS-erőforrásokat, például a virtuális gépeket és a Pásti-erőforrásokat, például a Service Fabric is tartalmazzák. A DevTest Labs lehetővé teszi, hogy a virtuális gépeket a virtuális gépek vezérlésére szolgáló parancsok megadásával felügyelje a környezetben. Ezek a parancsok lehetővé teszi, hogy a virtuális gépet egy adott időpontban indítsa el vagy állítsa le. Ehhez hasonlóan a DevTest Labs is segítheti Service Fabric-fürtök kezelését egy adott környezetben. Egy Service Fabric-fürtöt manuálisan vagy ütemterv szerint is elindíthat vagy leállíthat egy környezetben.
 
 ## <a name="create-a-service-fabric-cluster"></a>Service Fabric-fürt létrehozása
-Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók létre. Az egyes környezeteket a git-tárház Azure Resource Manager sablonja határozza meg. A DevTest Labs [nyilvános git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) -tárháza tartalmazza a Resource Manager-sablont, amely Service Fabric fürtöt hoz létre a [ServiceFabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) mappában. 
+Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók létre. Az egyes környezeteket a git-tárház Azure Resource Manager sablonja határozza meg. A DevTest Labs [nyilvános git-tárháza](https://github.com/Azure/azure-devtestlab/tree/master/Environments/) tartalmazza a Resource Manager-sablont, amely Service Fabric fürtöt hoz létre a [ServiceFabric-cluster](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster) mappában. 
 
-1. Először hozzon létre egy labort Azure DevTest Labsban az alábbi cikk utasításait követve: [Hozzon létre egy labort](devtest-lab-create-lab.md). Figyelje meg, hogy a **nyilvános környezetek** beállítás alapértelmezés szerint **be van kapcsolva** . 
+1. Először hozzon létre egy labort Azure DevTest Labsban az alábbi cikk utasításait követve: [tesztkörnyezet létrehozása](devtest-lab-create-lab.md). Figyelje meg, hogy a **nyilvános környezetek** beállítás alapértelmezés szerint **be van kapcsolva** . 
 2. Az alábbi lépéseket követve ellenőrizze, hogy a Service Fabric szolgáltató regisztrálva van-e az előfizetéséhez:
     1. Válassza az **előfizetések** lehetőséget a bal oldali navigációs menüben, és válassza ki az **előfizetését**
     2. Az **előfizetés** lapon válassza az **erőforrás-szolgáltatók** lehetőséget a bal oldali menü **Beállítások** szakaszában. 
@@ -38,20 +38,20 @@ Service Fabric-fürtök a DevTest Labs környezetei segítségével hozhatók l�
 3. A labor **DevTest labor** lapján válassza a **+ Hozzáadás** lehetőséget az eszköztáron. 
     
     ![Hozzáadás gomb az eszköztáron](./media/create-environment-service-fabric-cluster/add-button.png)
-3. A kiinduló **kiválasztása** lapon válassza ki **Service Fabric labor** -fürtöt a listából. 
+3. A **kiinduló kiválasztása** lapon válassza ki **Service Fabric labor-fürtöt** a listából. 
 
     ![Válassza ki Service Fabric labor-fürtöt a listában](./media/create-environment-service-fabric-cluster/select-service-fabric-cluster.png)
 4. A **beállítások konfigurálása** lapon hajtsa végre a következő lépéseket: 
-    1. Adja meg a **fürt** környezetének **nevét** . Ez az Azure-beli erőforráscsoport neve, amelyben a Service Fabric-fürtöt létre kívánja hozni. 
+    1. Adja meg a fürt **környezetének** **nevét** . Ez az Azure-beli erőforráscsoport neve, amelyben a Service Fabric-fürtöt létre kívánja hozni. 
     2. Válassza ki a fürt virtuális gépei **operációs rendszerét (os)** . Az alapértelmezett érték: **Windows**.
     3. Adja meg a fürt **rendszergazdájának** nevét. 
     4. **Jelszó** megadása a rendszergazdának. 
     5. A **tanúsítványnál**adja meg a tanúsítvány adatait Base64 kódolású karakterláncként. Tanúsítvány létrehozásához hajtsa végre a következő lépéseket:
-        1. Töltse le a **create-ClusterCertificate. ps1** fájlt a [git](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster)-tárházból. Azt is megteheti, hogy a tárházat a gépen is klónozott. 
+        1. Töltse le a **create-ClusterCertificate. ps1** fájlt a [git-tárházból](https://github.com/Azure/azure-devtestlab/tree/master/Environments/ServiceFabric-LabCluster). Azt is megteheti, hogy a tárházat a gépen is klónozott. 
         2. Indítsa el a **PowerShellt**. 
-        3. Futtassa a **ps1** -fájlt a parancs `.\Create-ClusterCertificate.ps1`használatával. Megjelenik egy, a Jegyzettömbben megnyitott szövegfájl, amely az oldalon található tanúsítványokkal kapcsolatos mezők kitöltéséhez szükséges információkat tartalmazza. . 
-    6. Adja meg a tanúsítványhoz tartozó **jelszót**.
-    7. Adja meg a tanúsítvány **ujjlenyomatát**.
+        3. Futtassa a **ps1** -fájlt a `.\Create-ClusterCertificate.ps1`parancs használatával. Megjelenik egy, a Jegyzettömbben megnyitott szövegfájl, amely az oldalon található tanúsítványokkal kapcsolatos mezők kitöltéséhez szükséges információkat tartalmazza. . 
+    6. Adja meg a **tanúsítványhoz tartozó jelszót**.
+    7. Adja meg a tanúsítvány **ujjlenyomatát** .
     8. A **beállítások konfigurálása** lapon válassza a **Hozzáadás** lehetőséget. 
 
         ![Fürtkonfiguráció konfigurálása](./media/create-environment-service-fabric-cluster/configure-settings.png)
@@ -87,7 +87,7 @@ A fürt elindításának vagy leállításának másik módja van.
     ![Parancsok elindítása vagy leállítása a Service Fabric-fürt lapon](./media/create-environment-service-fabric-cluster/start-stop-on-cluster-page.png)
 
 ## <a name="configure-auto-startup-and-auto-shutdown-schedule"></a>Az Automatikus indítás és az automatikus leállítás ütemtervének konfigurálása
-A Service Fabric fürtök is elindíthatók vagy leállíthatók egy adott időpontban. Ez a tapasztalat hasonló a virtuális gépek tesztkörnyezetben való működéséhez. Ha pénzt szeretne megtakarítani, alapértelmezés szerint a laborban létrehozott összes fürt automatikusan leáll a labor leállítási szabályzata [](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)által meghatározott időpontban. A felülbíráláshoz megadhatja, hogy a fürtöt le kell-e állítani, vagy megadhatja a fürt leállításának időpontját. 
+A Service Fabric fürtök is elindíthatók vagy leállíthatók egy adott időpontban. Ez a tapasztalat hasonló a virtuális gépek tesztkörnyezetben való működéséhez. Ha pénzt szeretne megtakarítani, alapértelmezés szerint a laborban létrehozott összes fürt automatikusan leáll a labor [leállítási szabályzata](devtest-lab-set-lab-policy.md?#set-auto-shutdown-policy)által meghatározott időpontban. A felülbíráláshoz megadhatja, hogy a fürtöt le kell-e állítani, vagy megadhatja a fürt leállításának időpontját. 
 
 ![Az Automatikus indítás és az automatikus leállítás meglévő Ütemtervei](./media/create-environment-service-fabric-cluster/existing-schedules.png)
 
@@ -104,10 +104,10 @@ Az indítási ütemterv bekapcsolásához hajtsa végre a következő lépéseke
 A Leállítás beállításainak módosításához hajtsa végre a következő lépéseket:
 
 1. Válassza az **automatikus leállítás** lehetőséget a bal oldali menüben. 
-2. Ezen az oldalon engedélyezheti az automatikus leállítást, ha az **engedélyezve** **lehetőséget választja** . 
+2. Ezen az oldalon **engedélyezheti**az automatikus leállítást, **Ha az engedélyezve lehetőséget választja** . 
 3. Ha **engedélyezve**van **a** beállítás, kövesse az alábbi lépéseket:
     1. A Leállítás **időpontjának** megadása.
-    2. Itt adhatja meg az **időzónát**. 
+    2. Itt adhatja meg az **időzónát** . 
     3. Itt adhatja meg, hogy szeretné-e, ha a DevTest Labs **értesítést** küldjön az automatikus leállítás előtt. 
     4. Ha az **Igen** lehetőséget választotta az értesítési beállításhoz, a **webhook URL** -címét és/vagy **e-mail-címét** az értesítések küldéséhez válassza. 
     5. Válassza az eszköztár **Save** (Mentés) elemét.
@@ -120,14 +120,14 @@ A korábbi lépésekben látott Service Fabric-fürt lapja a DevTest Labs oldal�
 1. A labor **DevTest labor** lapján válassza ki az **erőforráscsoportot** a **saját virtuális gépek** szakasz fanézetében.
 
     ![Erőforráscsoport kiválasztása](./media/create-environment-service-fabric-cluster/select-resource-group.png)
-2. Az **erőforráscsoport** lapon megtekintheti az erőforráscsoport összes erőforrását egy listában. Válassza ki a **Service Fabric** -fürtöt a listából. 
+2. Az **erőforráscsoport** lapon megtekintheti az erőforráscsoport összes erőforrását egy listában. Válassza ki a **Service Fabric-fürtöt** a listából. 
 
     ![Válassza ki a fürtöt a listában](./media/create-environment-service-fabric-cluster/select-cluster-resource-group-page.png)
 3. Megjelenik a fürt **Service Fabric-fürt** lapja. Ez az a lap, amelyet a Service Fabric biztosít. Megjelenik a fürtökkel kapcsolatos összes információ, például a csomópontok, a csomópontok típusai stb.
 
     ![Service Fabric fürt kezdőlapja](./media/create-environment-service-fabric-cluster/service-fabric-cluster-page.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A környezetekkel kapcsolatos részletekért tekintse meg a következő cikkeket: 
 
 - [Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal](devtest-lab-create-environment-from-arm.md)

@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan kezelheti a hibákat a Azure Functions Durable 
 ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 0900e3f3b76f4a82e06fe3c0e6d9bbe63b545f56
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 905b71ab1e9a054eaeb6087489d14565933c8a46
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231404"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261636"
 ---
 # <a name="handling-errors-in-durable-functions-azure-functions"></a>Hibák feldolgozása a Durable Functionsban (Azure Functions)
 
@@ -21,7 +21,7 @@ A tevékenységi függvényekben felmerülő kivételeket a rendszer visszaküld
 
 Vegyük például a következő Orchestrator függvényt, amely az egyik fiókból a másikba továbbítja a forrásokat:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TransferFunds")]
@@ -59,49 +59,10 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
-
-```csharp
-#r "Microsoft.Azure.WebJobs.Extensions.DurableTask"
-
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var transferDetails = ctx.GetInput<TransferOperation>();
-
-    await context.CallActivityAsync("DebitAccount",
-        new
-        {
-            Account = transferDetails.SourceAccount,
-            Amount = transferDetails.Amount
-        });
-
-    try
-    {
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.DestinationAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-    catch (Exception)
-    {
-        // Refund the source account.
-        // Another try/catch could be used here based on the needs of the application.
-        await context.CallActivityAsync("CreditAccount",
-            new
-            {
-                Account = transferDetails.SourceAccount,
-                Amount = transferDetails.Amount
-            });
-    }
-}
-```
-
 > [!NOTE]
 > Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -137,13 +98,15 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Ha az első **CreditAccount** -függvény hívása sikertelen, a Orchestrator függvény kompenzálja a források visszaküldését a forrás fiókba.
 
 ## <a name="automatic-retry-on-failure"></a>Sikertelen automatikus újrapróbálkozás
 
 A Activity functions vagy a beosztási függvények meghívásakor megadhat egy automatikus újrapróbálkozási házirendet. A következő példa legfeljebb háromszor próbálkozik egy függvény hívásával, és minden újrapróbálkozás után 5 másodpercet vár:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestratorWithRetry")]
@@ -159,31 +122,20 @@ public static async Task Run([OrchestrationTrigger] IDurableOrchestrationContext
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
-
-```csharp
-public static async Task Run(IDurableOrchestrationContext context)
-{
-    var retryOptions = new RetryOptions(
-        firstRetryInterval: TimeSpan.FromSeconds(5),
-        maxNumberOfAttempts: 3);
-
-    await ctx.CallActivityWithRetryAsync("FlakyFunction", retryOptions, null);
-
-    // ...
-}
-```
-
 > [!NOTE]
 > Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
 
 module.exports = df.orchestrator(function*(context) {
-    const retryOptions = new df.RetryOptions(5000, 3);
+    const firstRetryIntervalInMilliseconds = 5000;
+    const maxNumberOfAttempts = 3;
+
+    const retryOptions = 
+        new df.RetryOptions(firstRetryIntervalInMilliseconds, maxNumberOfAttempts);
 
     yield context.df.callActivityWithRetry("FlakyFunction", retryOptions);
 
@@ -191,9 +143,9 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
-A `CallActivityWithRetryAsync` (.NET) vagy `callActivityWithRetry` (JavaScript) API egy `RetryOptions` paramétert használ. A `CallSubOrchestratorWithRetryAsync` (.NET) vagy a `callSubOrchestratorWithRetry` (JavaScript) API-val történő rendszerelőkészítési hívások ugyanezeket az újrapróbálkozási házirendeket használhatják.
+---
 
-Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
+Az előző példában szereplő tevékenység függvény hívása egy paramétert fogad el az automatikus újrapróbálkozási házirend konfigurálásához. Az automatikus újrapróbálkozási házirend testreszabására több lehetőség is van:
 
 * **Kísérletek maximális száma**: az újrapróbálkozási kísérletek maximális száma.
 * **Első újrapróbálkozás időköze**: az első újrapróbálkozási kísérlet előtti várakozási idő.
@@ -206,7 +158,7 @@ Az automatikus újrapróbálkozási házirend testreszabására több lehetősé
 
 Előfordulhat, hogy egy Orchestrator függvény hívását is el szeretné hagyni, ha túl sokáig tart a Befejezés. Ennek a megfelelő módja, ha egy [tartós időzítőt](durable-functions-timers.md) hoz létre `context.CreateTimer` (.net) vagy `context.df.createTimer` (JavaScript) használatával a `Task.WhenAny` (.net) vagy a `context.df.Task.any` (JavaScript) segítségével, ahogy az alábbi példában is látható:
 
-### <a name="precompiled-c"></a>ElőfordítottC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("TimerOrchestrator")]
@@ -236,39 +188,10 @@ public static async Task<bool> Run([OrchestrationTrigger] IDurableOrchestrationC
 }
 ```
 
-### <a name="c-script"></a>C#Parancsfájl
-
-```csharp
-public static async Task<bool> Run(IDurableOrchestrationContext context)
-{
-    TimeSpan timeout = TimeSpan.FromSeconds(30);
-    DateTime deadline = context.CurrentUtcDateTime.Add(timeout);
-
-    using (var cts = new CancellationTokenSource())
-    {
-        Task activityTask = context.CallActivityAsync("FlakyFunction");
-        Task timeoutTask = context.CreateTimer(deadline, cts.Token);
-
-        Task winner = await Task.WhenAny(activityTask, timeoutTask);
-        if (winner == activityTask)
-        {
-            // success case
-            cts.Cancel();
-            return true;
-        }
-        else
-        {
-            // timeout case
-            return false;
-        }
-    }
-}
-```
-
 > [!NOTE]
 > Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -291,6 +214,8 @@ module.exports = df.orchestrator(function*(context) {
     }
 });
 ```
+
+---
 
 > [!NOTE]
 > Ez a mechanizmus valójában nem szakítja meg a folyamatban lévő tevékenységek működésének végrehajtását. Ehelyett egyszerűen lehetővé teszi, hogy a Orchestrator függvény figyelmen kívül hagyja az eredményt, és továbblép. További információ: [időzítők](durable-functions-timers.md#usage-for-timeout) dokumentációja.

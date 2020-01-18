@@ -1,5 +1,5 @@
 ---
-title: Jelentés Azure DevTest Labs használat több laborban és előfizetésben – Azure | Microsoft Docs
+title: Azure DevTest Labs használat több Labs és előfizetés között
 description: Megtudhatja, hogyan jelentheti Azure DevTest Labs használatát több Labs és előfizetés között.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 01/16/2020
 ms.author: takamath
-ms.openlocfilehash: 0d930263233056d8fa74ffe6ccb176ee39429121
-ms.sourcegitcommit: 3073581d81253558f89ef560ffdf71db7e0b592b
+ms.openlocfilehash: 912f510f6380c0ba1eb92b7c485091801123558e
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68829228"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169187"
 ---
 # <a name="report-azure-devtest-labs-usage-across-multiple-labs-and-subscriptions"></a>Jelentés Azure DevTest Labs használat több Labs és előfizetés között
 
-A legtöbb nagy vállalat szeretné nyomon követni az erőforrás-használatot, hogy hatékonyabb legyen ezekkel az erőforrásokkal a trendek és a kiugró értékek megjelenítésével a használatban. Az erőforrás-használat alapján a labor tulajdonosai vagy kezelői testre szabhatják a laborokat az [erőforrás-használat és a költségek javítása](https://docs.microsoft.com/azure/billing/billing-getting-started)érdekében. Azure DevTest Labs az erőforrás-használatot a laborban töltheti le, így mélyebben megtekintheti a használati mintákat. Ezek a használati minták segíthetik a változások meghatározását a hatékonyság növelése érdekében. A legtöbb vállalat azt szeretné, hogy az egyéni labor-használat és az általános használat [több laboron és](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)előfizetésen keresztül történjen. 
+A legtöbb nagy vállalat szeretné nyomon követni az erőforrás-használatot, hogy hatékonyabb legyen ezekkel az erőforrásokkal a trendek és a kiugró értékek megjelenítésével a használatban. Az erőforrás-használat alapján a labor tulajdonosai vagy kezelői testre szabhatják a laborokat az [erőforrás-használat és a költségek javítása](https://docs.microsoft.com/azure/billing/billing-getting-started)érdekében. Azure DevTest Labs az erőforrás-használatot a laborban töltheti le, így mélyebben megtekintheti a használati mintákat. Ezek a használati minták segíthetik a változások meghatározását a hatékonyság növelése érdekében. A legtöbb vállalat azt szeretné, hogy az egyéni labor-használat és az általános használat [több laboron és előfizetésen](https://docs.microsoft.com/azure/architecture/cloud-adoption/decision-guides/subscriptions/)keresztül történjen. 
 
 Ez a cikk azt ismerteti, hogyan kezelheti az erőforrás-használati adatokat több Labs és előfizetés között.
 
@@ -35,7 +35,7 @@ Ez a szakasz azt ismerteti, hogyan lehet exportálni az erőforrások használat
 A DevTest Labs erőforrás-használatának exportálásához be kell állítania egy Azure Storage-fiókot, hogy a különböző fájlok tárolják a tárolt használati adatokat. Az adatexportálás két gyakori módon hajtható végre:
 
 * [DevTest Labs REST API](https://docs.microsoft.com/rest/api/dtl/labs/exportresourceusage) 
-* A PowerShell az. Resource modul [meghívja a-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) a művelettel `exportResourceUsage`, a labor erőforrás-azonosítóval és a szükséges paraméterekkel. 
+* A PowerShell az. Resource modul [meghívja a-AzResourceAction](https://docs.microsoft.com/powershell/module/az.resources/invoke-azresourceaction?view=azps-2.5.0&viewFallbackFrom=azps-2.3.2) a `exportResourceUsage`művelettel, a labor erőforrás-azonosítóval és a szükséges paraméterekkel. 
 
     A [személyes adatok exportálása vagy törlése](personal-data-delete-export.md) cikkben egy minta PowerShell-parancsfájl található, amely részletes információkat tartalmaz az exportált adatokról. 
 
@@ -83,7 +83,7 @@ A használati adatok megjelenítéséhez és a használat hatékonyságának ell
 
 A [Azure Data Factory](https://azure.microsoft.com/services/data-factory/) használatával létrehozhat, csatolhat és kezelhet erőforrásokat egyetlen helyen lévő felületen belül. Ha nagyobb mértékű vezérlésre van szükség, az egyes erőforrások létrehozhatók egy adott erőforráscsoport keretén belül, és a Data Factory szolgáltatástól függetlenül kezelhetők.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a rendszer be van állítva, és az adatai a hosszú távú tárolásra kerülnek, a következő lépés az, hogy milyen kérdésekre kell válaszolnia. Példa: 
 

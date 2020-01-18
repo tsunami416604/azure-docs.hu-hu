@@ -1,43 +1,43 @@
 ---
-title: 'PowerShell-parancsfájlt: Az Azure notification hub létrehozása |} A Microsoft Docs'
-description: Ez a PowerShell-szkript létrehoz az Azure notification hub.
-services: notification-hubs
+title: Azure Notification hub létrehozása a PowerShell használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre egy Azure Notification hub-t egy PowerShell-parancsfájl használatával.
 author: dimazaid
-manager: kpiteira
-editor: spelluru
+manager: femila
+services: notification-hubs
+editor: sethmanheim
 ms.service: notification-hubs
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/14/2018
+ms.date: 01/14/2020
 ms.author: dimazaid
-ms.openlocfilehash: 93c5118962fed1bfda4d32afba942a6600664e5d
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 01749e1ae5c29a7e77b2143939e25cf1ccd1aec2
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66172152"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263973"
 ---
-# <a name="use-powershell-to-create-an-azure-notification-hub"></a>Az Azure notification hub létrehozása PowerShell használatával
+# <a name="use-powershell-to-create-an-azure-notification-hub"></a>Azure Notification hub létrehozása a PowerShell használatával
 
-A PowerShell-példaszkript létrehoz egy minta Azure notification hub. 
+Ez a példa PowerShell-szkript létrehoz egy minta Azure Notification hub-t. 
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 [!INCLUDE [sample-powershell-install](../../../includes/sample-powershell-install-no-ssh.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * **Azure-előfizetés** – Ha nem rendelkezik Azure-előfizetéssel, első lépésként hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
 
 ## <a name="sample-script"></a>Példaszkript
 
 [!code-powershell[main](../../../powershell_scripts/notification-hubs/create-notification-hub/create-notification-hub.ps1 "Create a notification hub")]
 
-
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
-A példaszkript futtatása után a következő parancsot használhatja, ha az erőforráscsoport és az ahhoz kapcsolódó összes erőforrás eltávolítása:
+A minta parancsfájl futtatása után a következő paranccsal távolíthatja el az erőforráscsoportot és az ahhoz társított összes erőforrást:
 
 ```powershell
 Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
@@ -45,16 +45,16 @@ Remove-AzResourceGroup -ResourceGroupName $resourceGroupName
 
 ## <a name="script-explanation"></a>Szkript ismertetése
 
-Ez a szkript a következő parancsokat használja: 
+Ez a szkript a következő parancsokat használja:
 
 | Parancs | Megjegyzések |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
-| [New-AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Az értesítési központ névterének hoz létre. |
-| [New-AzNotificationHub](/powershell/module/az.notificationhubs/new-aznotificationhub) | Egy értesítési központ létrehozása. |
+| [Új – AzNotificationHubsNamespace](/powershell/module/az.notificationhubs/new-aznotificationhubsnamespace) | Létrehoz egy névteret az értesítési Központ számára. |
+| [Új – AzNotificationHub](/powershell/module/az.notificationhubs/new-aznotificationhub) | Egy értesítési központot hoz létre. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](https://docs.microsoft.com/powershell/).

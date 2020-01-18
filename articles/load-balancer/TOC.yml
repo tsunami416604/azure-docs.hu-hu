@@ -4,8 +4,6 @@
   items:
     - name: Mi az a Load Balancer?
       href: load-balancer-overview.md
-    - name: Mi az a standard Load Balancer?
-      href: load-balancer-standard-overview.md
 - name: Első lépések
   items:
     - name: Standard Load Balancer létrehozása

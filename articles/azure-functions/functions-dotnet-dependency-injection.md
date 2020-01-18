@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/05/2019
 ms.author: cshoe
 ms.reviewer: jehollan
-ms.openlocfilehash: 4c6ccf9dce0fc119bd666871489a42a3ef734f81
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: a17ff15e71251e781cd30c33a5616af85e4f4eb9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769200"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260083"
 ---
 # <a name="use-dependency-injection-in-net-azure-functions"></a>Függőségi befecskendezés használata a .NET-Azure Functions
 
@@ -153,12 +153,22 @@ Az [Alkalmazásbeállítások](./functions-how-to-use-azure-function-app-setting
 
 Az `IConfiguration` példány értékeit egyéni típusba is kinyerheti. Ha az Alkalmazásbeállítások értékeit egyéni típusra másolja, a szolgáltatás egyszerűen tesztelhető, így ezek az értékek injektálható. A konfigurációs példányba beolvasott beállításoknak egyszerű kulcs/érték pároknak kell lenniük.
 
-Vegye figyelembe a következő osztályt, amely egy konzisztens nevű tulajdonságot tartalmaz egy alkalmazás-beállítással.
+Vegye figyelembe a következő osztályt, amely egy konzisztens nevű tulajdonságot tartalmaz egy alkalmazás-beállítással:
 
 ```csharp
 public class MyOptions
 {
     public string MyCustomSetting { get; set; }
+}
+```
+
+Valamint egy `local.settings.json`-fájl, amely a következőképpen strukturálhatja az egyéni beállítást:
+```json
+{
+  "IsEncrypted": false,
+  "Values": {
+    "MyOptions:MyCustomSetting": "Foobar"
+  }
 }
 ```
 
@@ -168,7 +178,7 @@ A `Startup.Configure` metódusból kinyerheti a `IConfiguration` példány ért�
 builder.Services.AddOptions<MyOptions>()
                 .Configure<IConfiguration>((settings, configuration) =>
                                            {
-                                                configuration.Bind(settings);
+                                                configuration.GetSection("MyOptions").Bind(settings);
                                            });
 ```
 

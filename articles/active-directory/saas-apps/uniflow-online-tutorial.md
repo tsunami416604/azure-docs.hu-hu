@@ -16,19 +16,19 @@ ms.topic: tutorial
 ms.date: 12/02/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9eb369047574ef76dd31996fd16399380ea027c8
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.openlocfilehash: f26af813fcd4032aabce2305ac8845307d1fca65
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74823304"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262129"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-uniflow-online"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a uniFLOW online-nal
 
 Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a uniFLOW online-t a Azure Active Directory (Azure AD) használatával. Ha az Azure AD-vel integrálja a uniFLOW online-t, a következőket teheti:
 
 * Az Azure AD-ben a uniFLOW online elérésére jogosult vezérlő.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek az online uniFLOW az Azure AD-fiókjával.
+* Lehetővé teheti, hogy a felhasználók az Azure AD-fiókjával jelentkezzenek be a uniFLOW online-ba.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -38,7 +38,7 @@ Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrál�
 Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
-* uniFLOW online egyszeri bejelentkezés (SSO) engedélyezve előfizetés.
+* uniFLOW online bérlő.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -64,11 +64,10 @@ Konfigurálja és tesztelje az Azure AD SSO-t a uniFLOW online-ban egy **B. Simo
 Az Azure AD SSO és a uniFLOW online konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+   1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+   1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. **[UniFLOW online egyszeri bejelentkezés konfigurálása](#configure-uniflow-online-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    * **[UniFLOW-alapú online tesztelési felhasználó létrehozása](#create-uniflow-online-test-user)** – ha a felhasználó Azure ad-uniFLOW kapcsolódik, a "B
-1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
+    * **[Jelentkezzen be a UniFLOW online-ba a létrehozott teszt felhasználó használatával](#sign-in-to-uniflow-online-using-the-created-test-user)** a felhasználói bejelentkezés teszteléséhez az alkalmazás oldalán.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
@@ -86,24 +85,24 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
     | | |
     |-|-|
-    | `https://<tenant_domain_name>.eu.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.us.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.sg.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.jp.uniFLOWonline.com`|
-    | `https://<tenant_domain_name>.au.uniFLOWonline.com`|
+    | `https://<tenant_domain_name>.eu.uniflowonline.com`|
+    | `https://<tenant_domain_name>.us.uniflowonline.com`|
+    | `https://<tenant_domain_name>.sg.uniflowonline.com`|
+    | `https://<tenant_domain_name>.jp.uniflowonline.com`|
+    | `https://<tenant_domain_name>.au.uniflowonline.com`|
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez forduljon a [UniFLOW online ügyfélszolgálati csapatához](mailto:support@nt-ware.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez forduljon a [UniFLOW online ügyfélszolgálati csapatához](mailto:support@nt-ware.com) . Tekintse át a Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintákat, vagy tekintse meg a uniFLOW online bérlőben megjelenő válasz URL-címet.
 
 1. a uniFLOW online alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -111,10 +110,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a uniFLOW online alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | -----------| --------------- |
     | DisplayName | felhasználó. DisplayName |
     | Becenév | User. onpremisessamaccountname |
+
+   > [!NOTE]
+   > A `user.onpremisessamaccountname` attribútum csak akkor tartalmaz értéket, ha az Azure AD-felhasználók egy helyi Windows-Active Directoryról vannak szinkronizálva.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -130,7 +132,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -138,17 +140,20 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
 1. Az alkalmazások listában válassza a **UniFLOW online**lehetőséget.
-1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
+1. Az alkalmazás áttekintés lapján lépjen a **kezelés** szakaszra, és válassza a **felhasználók és csoportok**lehetőséget.
 
    ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
+   ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
 1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
+
+> [!NOTE]
+> Ha engedélyezni szeretné, hogy a felhasználók manuális hozzárendelés nélkül férhessenek hozzá az alkalmazáshoz, lépjen a **kezelés** szakaszra, és válassza a **Tulajdonságok**lehetőséget. Ezután módosítsa a **nem**értékre a **felhasználó-hozzárendelés kötelező** paraméterét.
 
 ## <a name="configure-uniflow-online-sso"></a>UniFLOW online SSO konfigurálása
 
@@ -177,7 +182,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     c. A **ws-fed típusnál**válassza a legördülő menüből a **Azure Active Directory** lehetőséget.
 
-    d. Kattintson a **Save** (Mentés) gombra.
+    d. Kattintson a **Mentés** gombra.
 
 1. Az **általános** lapon hajtsa végre a következő lépéseket:
 
@@ -185,7 +190,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. Adja meg a megjelenítendő nevet: *AZUREAD SSO*.
 
-    b. Válassza ki az **URL-cím** lehetőséget a **ADGS-összevonási metaadatokhoz**.
+    b. Válassza a **from URL** lehetőséget az **ADFS összevonási metaadataihoz**.
 
     c. Az **összevonási metaadatok URl-címe** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt.
 
@@ -193,33 +198,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Válassza az **automatikus felhasználói regisztráció** **aktiválva**lehetőséget.
 
-    f. Kattintson a **Save** (Mentés) gombra.
+    f. Kattintson a **Mentés** gombra.
 
-### <a name="create-uniflow-online-test-user"></a>UniFLOW online tesztelési felhasználó létrehozása
+### <a name="sign-in-to-uniflow-online-using-the-created-test-user"></a>Jelentkezzen be a uniFLOW online-ba a létrehozott tesztelési felhasználó használatával
 
-1. Egy másik böngészőablakban jelentkezzen be a uniFLOW online webhelyre rendszergazdaként.
+1. Egy másik böngészőablakban lépjen a bérlő uniFLOW online URL-címére.
 
-1. A bal oldali navigációs panelen válassza a **felhasználó** fület.
+1. Válassza ki a korábban létrehozott identitás-szolgáltatót az Azure AD-példányon keresztül történő bejelentkezéshez.
 
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/configure1.png)
-
-1. Kattintson a **felhasználó hozzáadása**elemre.
-
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/user1.png)
-
-1. Kattintson a **felhasználó manuális létrehozása**lehetőségre.
-
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/user2.png)
-
-1. A **felhasználó manuális létrehozása** lapon adja meg a szükséges értékeket a szervezet követelményeinek megfelelően.
-
-    ![uniFLOW online konfiguráció](./media/uniflow-online-tutorial/user3.png)
-
-## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
-
-Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
-
-Ha a hozzáférési panelen a uniFLOW online csempére kattint, automatikusan be kell jelentkeznie a uniFLOW online-ba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+1. Jelentkezzen be a teszt felhasználó használatával.
 
 ## <a name="additional-resources"></a>További források
 

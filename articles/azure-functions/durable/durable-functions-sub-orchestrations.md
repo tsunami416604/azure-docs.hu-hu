@@ -4,12 +4,12 @@ description: A Azure Functionshoz Durable Functions-bővítményben lévő elők
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 379f2cb238aef08faba8dd3c8e5d9da4542a1867
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: d4d599063f727510cbf504ea3d121bdabfe001c9
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231296"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76261517"
 ---
 # <a name="sub-orchestrations-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions)
 
@@ -22,7 +22,7 @@ Az Orchestrator függvények a hívó szemszögéből hasonlóan működnek a te
 
 Az alábbi példa egy IoT ("eszközök internetes hálózata") forgatókönyvet mutat be, ahol több eszközt kell kiépíteni. A következő függvény az egyes eszközökön végrehajtandó kiépítési munkafolyamatot jelöli:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 public static async Task DeviceProvisioningOrchestration(
@@ -43,7 +43,7 @@ public static async Task DeviceProvisioningOrchestration(
 }
 ```
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -64,11 +64,13 @@ module.exports = df.orchestrator(function*(context) {
 });
 ```
 
+---
+
 Ez a Orchestrator függvény használható az egyszeri eszköz kiosztásához, vagy egy nagyobb előkészítés része lehet. Az utóbbi esetben a szülő Orchestrator függvény a `CallSubOrchestratorAsync` (.NET) vagy a `callSubOrchestrator` (JavaScript) API használatával ütemezhet `DeviceProvisioningOrchestration` példányait.
 
 Íme egy példa, amely bemutatja, hogyan futtathat párhuzamosan több Orchestrator-függvényt.
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("ProvisionNewDevices")]
@@ -94,7 +96,7 @@ public static async Task ProvisionNewDevices(
 > [!NOTE]
 > Az előző C# példák a Durable functions 2. x verzióra vonatkoznak. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript-functions-20-only"></a>JavaScript (csak functions 2,0)
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 ```javascript
 const df = require("durable-functions");
@@ -117,6 +119,8 @@ module.exports = df.orchestrator(function*(context) {
     // ...
 });
 ```
+
+---
 
 > [!NOTE]
 > Az alrendszereket a szülő-összehangolás során megegyező Function alkalmazásban kell meghatározni. Ha egy másik Function-alkalmazásban kell meghívnia és várnia a meghívást, érdemes lehet használni a HTTP API-k beépített támogatását és a HTTP 202 lekérdezési fogyasztói mintát. További információkért lásd a http- [funkciók](durable-functions-http-features.md) témakört.

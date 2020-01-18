@@ -1,5 +1,5 @@
 ---
-title: Virtuális gépek létrehozása és kezelése a DevTest Labs szolgáltatásban az Azure CLI használatával | Microsoft Docs
+title: Virtuális gépek létrehozása és kezelése a DevTest Labs szolgáltatásban az Azure CLI-vel
 description: Ismerje meg, hogyan hozhat létre és kezelhet virtuális gépeket az Azure CLI-vel a Azure DevTest Labs használatával
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -11,32 +11,32 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 7a089eae935fe5ecbf3dd2836d86912d0c63ef84
-ms.sourcegitcommit: a4b5d31b113f520fcd43624dd57be677d10fc1c0
+ms.openlocfilehash: d3cd104e36cb407e9b1b833335869cac2c69d0ec
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70773105"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167050"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Virtuális gépek létrehozása és kezelése az Azure CLI-vel a DevTest Labs használatával
 Ez a rövid útmutató végigvezeti a fejlesztői gépek tesztkörnyezetben való létrehozásával, indításával, csatlakoztatásával, frissítésével és tisztításával. 
 
-Előkészületek:
+Előzetes teendők
 
 * Ha nem hoztak létre labort, [itt](devtest-lab-create-lab.md)találhat útmutatást.
 
 * [Telepítse az Azure CLI](/cli/azure/install-azure-cli)-t. Az indításhoz futtassa az az login parancsot az Azure-beli kapcsolatok létrehozásához. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>A virtuális gép létrehozása és ellenőrzése 
-A DevTest Labs-hez kapcsolódó parancsok végrehajtása előtt állítsa be a megfelelő Azure-környezetet `az account set` a következő paranccsal:
+A DevTest Labs-hez kapcsolódó parancsok végrehajtása előtt állítsa be a megfelelő Azure-környezetet a `az account set` parancs használatával:
 
 ```azurecli
 az account set --subscription 11111111-1111-1111-1111-111111111111
 ```
 
-A virtuális gép létrehozásához szükséges parancs a következő `az lab vm create`:. Az erőforráscsoport a laborhoz, a labor neve és a virtuális gép neve egyaránt szükséges. A többi argumentum a virtuális gép típusától függően változik.
+A virtuális gép létrehozásához a következő parancs szükséges: `az lab vm create`. Az erőforráscsoport a laborhoz, a labor neve és a virtuális gép neve egyaránt szükséges. A többi argumentum a virtuális gép típusától függően változik.
 
 A következő parancs egy Windows-alapú rendszerképet hoz létre az Azure Market Place-ből. A rendszerkép neve ugyanaz, mint amikor a Azure Portal használatával hoz létre virtuális gépet. 
 
@@ -127,13 +127,13 @@ az lab vm apply-artifacts --lab-name  sampleLabName --name sampleVMName  --resou
 
 A laborban található virtuális gépen elérhető összetevők listázásához futtassa a következő parancsokat.
 
-**Cloud Shell – PowerShell**: figyelje meg, hogy a kezdő (\`) a $-ban $Expand előtt (azaz "$Expand") használja:
+**Cloud Shell – PowerShell**: figyelje meg, hogy a kezdő (\`) a $ $Expand előtt (azaz "$Expand") használja:
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(`$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
 ```
 
-**Cloud SHELL – bash**: figyelje meg a perjel () karakter\\használatát a (z) parancsban. 
+**Cloud SHELL – bash**: figyelje meg, hogy a (z) parancsnál a perjel (\\) karaktert használja-e. 
 
 ```azurecli-interactive
 az lab vm show --resource-group <resourcegroupname> --lab-name <labname> --name <vmname> --expand "properties(\$expand=artifacts)" --query "artifacts[].{artifactId: artifactId, status: status}"
@@ -162,5 +162,5 @@ Virtuális gép törlése.
 az lab vm delete --lab-name sampleLabName --name sampleVMName --resource-group sampleResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
-Tekintse meg a következő tartalmakat: [Azure DevTest Labs Azure CLI-dokumentációja](/cli/azure/lab?view=azure-cli-latest). 
+## <a name="next-steps"></a>Következő lépések
+Tekintse meg az alábbi tartalmat: [Azure DevTest Labs Azure CLI-dokumentációja](/cli/azure/lab?view=azure-cli-latest). 

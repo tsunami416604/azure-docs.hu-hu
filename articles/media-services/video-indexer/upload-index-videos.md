@@ -8,14 +8,14 @@ manager: femila
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 01/14/2020
+ms.date: 01/13/2020
 ms.author: juliako
-ms.openlocfilehash: c4c39dc53e492fd295cf30a7b7d75c933ebc912f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e457fbe5b8dd23c93110fb8ccc7d8857128de82c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972629"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169376"
 ---
 # <a name="upload-and-index-your-videos"></a>Videók feltöltése és indexelése  
 
@@ -25,9 +25,12 @@ Videók Video Indexer API-val való feltöltésekor a következő feltöltési l
 * a videofájl elküldése byte-tömbként a kérelem törzsében
 * Meglévő Azure Media Services eszköz használata az [eszköz azonosítójának](https://docs.microsoft.com/azure/media-services/latest/assets-concept) megadásával (csak a fizetett fiókok esetében támogatott).
 
-A cikk bemutatja, hogyan használhatja a [Videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-t a videók URL-cím alapján történő feltöltéséhez és indexeléséhez. A cikkben található kódminta tartalmazza a megjegyzésként szereplő kódot, amely bemutatja, hogyan lehet feltölteni a bájttömböt. <br/>A cikk emellett ismertet néhányat az API-ban beállítható paraméterek közül, amelyekkel módosíthatja az API folyamatát és kimenetét.
+A videó feltöltése után Video Indexer (opcionálisan) kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős megoldással olyan Video Indexer fiókot hozhat létre, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
 
-A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a cikkben ismertetett módon). A Video Indexer-fiók létrehozásakor választhat egy ingyenes próbafiókot (ahol egy bizonyos számú ingyenes indexelési percet kap) vagy egy fizetős lehetőséget (ahol nincs kvótakorlát). Az ingyenes próbaverzióval a Video Indexer akár 600 perc ingyenes indexelést biztosít a webhely felhasználói számára, és akár 2400 perc ingyenes indexelést biztosít az API-felhasználóknak. A fizetős megoldással olyan Video Indexer fiókot hozhat létre, amely az [Azure-előfizetéshez és egy Azure Media Services-fiókhoz csatlakozik](connect-to-azure.md). Ön az indexelt perceket és a Media Accounttal kapcsolatos díjakat fizeti ki. 
+A cikk bemutatja, hogyan tölthet fel és indexelheti a videókat a következő beállításokkal:
+
+* [A Video Indexer webhely](#website) 
+* [A Video Indexer API-k](#apis)
 
 ## <a name="uploading-considerations-and-limitations"></a>Szempontok és korlátozások feltöltése
  
@@ -40,6 +43,10 @@ A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a c
 - A `videoURL` paraméterben megadott URL-címet kódolni kell.
 - Az indexelési Media Servicesi eszközök ugyanazzal a korlátozással rendelkeznek, mint az URL-cím indexelése.
 - A Video Indexer legfeljebb 4 órát tartalmaz egyetlen fájlra vonatkozóan.
+- Az URL-címnek elérhetőnek kell lennie (például egy nyilvános URL-cím). 
+
+    Ha ez egy privát URL-cím, a hozzáférési jogkivonatot meg kell adni a kérelemben.
+- Az URL-címnek egy érvényes médiafájlra kell mutatnia, nem pedig egy weboldalra, például a `www.youtube.com` lapra mutató hivatkozást.
 - Percenként akár 60 filmet is feltölthet.
 
 > [!Tip]
@@ -47,22 +54,46 @@ A videó feltöltése után Video Indexer, opcionálisan kódolja a videót (a c
 >
 > Ha régebbi verziót kell használnia, adjon hozzá egy sort a kódban a REST API-hívás indítása előtt:  <br/> System.Net.ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls | SecurityProtocolType.Tls11 | SecurityProtocolType.Tls12;
 
-## <a name="configurations-and-params"></a>Konfigurációk és paraméterek
+## <a name="supported-file-formats-for-video-indexer"></a>A Video Indexer támogatott fájlformátumai
+
+A Video Indexer használatával használható fájlformátumok listáját a [bemeneti tároló/fájlformátumok](../latest/media-encoder-standard-formats.md#input-containerfile-formats) című cikkben találja.
+
+## <a name="a-idwebsiteupload-and-index-a-video-using-the-video-indexer-website"></a>videó feltöltése és indexelése a Video Indexer webhellyel <a id="website"/>
+
+> [!NOTE]
+> A videó neve nem lehet nagyobb, mint 80 karakter.
+
+1. Jelentkezzen be a [Video Indexer](https://www.videoindexer.ai/) webhelyre.
+2. A videó feltöltéséhez kattintson a **Feltöltés** gombra vagy hivatkozásra.
+
+    ![Feltöltés](./media/video-indexer-get-started/video-indexer-upload.png)
+
+    A videó feltöltése után a Video Indexer elkezdi indexelni és elemezni a videót.
+
+    ![Feltöltve](./media/video-indexer-get-started/video-indexer-uploaded.png) 
+
+    Ha a Video Indexer befejezte az elemzést, kapni fog egy értesítést, benne a videóra mutató hivatkozással és a videóban talált tartalom rövid leírásával. Például: személyek, témák, OCR-ek.
+
+## <a name="a-idapisupload-and-index-with-api"></a>Feltöltés és indexelés <a id="apis"/>API-val
+
+A [videó feltöltése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) API-val feltöltheti és indexelheti a videókat egy URL-cím alapján. Az alábbi mintakód tartalmazza a megjegyzésből vett kódot, amely bemutatja, hogyan tölthető fel a bájtok tömbje. 
+
+### <a name="configurations-and-params"></a>Konfigurációk és paraméterek
 
 Ez a szakasz ismertet néhány választható paramétert, és leírja, hogy mikor érdemes beállítani őket.
 
-### <a name="externalid"></a>externalID 
+#### <a name="externalid"></a>externalID 
 
 Ezzel a paraméterrel megadhat egy azonosítót, amely társítva lesz a videóhoz. Az azonosítót a külső „Video Content Management” (VCM) rendszer-integrációra is alkalmazni lehet. A Video Indexer portálon található videók a megadott külső azonosító használatával kereshetők.
 
-### <a name="callbackurl"></a>callbackUrl
+#### <a name="callbackurl"></a>callbackUrl
 
 Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére szolgál az alábbi eseményekről:
 
 - Az indexelési állapot változása: 
     - Tulajdonságok:    
     
-        |Név|Leírás|
+        |Name (Név)|Leírás|
         |---|---|
         |id|A videó azonosítója|
         |state|A videó állapota|  
@@ -70,7 +101,7 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
 - A videóban azonosított személy:
   - Tulajdonságok
     
-      |Név|Leírás|
+      |Name (Név)|Leírás|
       |---|---|
       |id| A videó azonosítója|
       |faceId|A videó indexében megjelenő Arcfelismerés|
@@ -79,12 +110,12 @@ Egy URL-cím, amely az ügyfél (POST-kérelem használatával) értesítésére
         
     - Például: https:\//test.com/notifyme?projectName=MyProject&id=1234abcd&faceid=12&knownPersonId=CCA84350-89B7-4262-861C-3CAC796542A5&personName=Inigo_Montoya 
 
-#### <a name="notes"></a>Megjegyzések
+##### <a name="notes"></a>Megjegyzések
 
 - Video Indexer az eredeti URL-címben megadott meglévő paramétereket adja vissza.
 - A megadott URL-címet kódolni kell.
 
-### <a name="indexingpreset"></a>indexingPreset
+#### <a name="indexingpreset"></a>indexingPreset
 
 Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttérzajt tartalmaznak. Ez a paraméter az indexelési folyamat konfigurálására szolgál. A következő értékeket adhatja meg:
 
@@ -95,13 +126,13 @@ Akkor használja ezt a paramétert, ha a nyers vagy külső felvételek háttér
 
 Az árat a kiválasztott indexelési lehetőség határozza meg.  
 
-### <a name="priority"></a>prioritású
+#### <a name="priority"></a>prioritású
 
 A videók indexelése Video Indexer a prioritásuk szerint történik. Az index prioritásának megadásához használja a **priority** paramétert. A következő értékek érvényesek: **alacsony**, **normál** (alapértelmezett) és **magas**.
 
 A **priority** paraméter csak a fizetős fiókok esetében támogatott.
 
-### <a name="streamingpreset"></a>streamingPreset
+#### <a name="streamingpreset"></a>streamingPreset
 
 A videó feltöltése után a Video Indexer opcionálisan kódolja a videót. Ezután továbblép a videó indexelésére és elemzésére. Amikor a Video Indexer végzett az elemzéssel, kapni fog egy értesítést, benne a videó azonosítójával.  
 
@@ -111,17 +142,17 @@ Az indexelési és kódolási feladatok futtatásához a [Video Indexer-fiókjá
 
 Ha csak indexelni szeretné a videót, és nem kívánja kódolni, állítsa a `streamingPreset` paramétert `NoStreaming` értékre.
 
-### <a name="videourl"></a>videoUrl
+#### <a name="videourl"></a>videoUrl
 
 Az indexelni kívánt video-/hangfájl URL-címe. Az URL-címnek egy médiafájlra kell mutatnia (a HTML-lapok nem támogatottak). A fájl védelme az URI részeként biztosított hozzáférési jogkivonattal biztosítható, a fájlt szolgáltató végpontot pedig TLS 1.2-es vagy újabb verzióval kell védeni. Az URL-címet kódolni kell. 
 
 Ha a `videoUrl` paraméter nincs meghatározva, a Video Indexer elvárja, hogy többrészes/többformátumú törzstartalomként adja át a fájlt.
 
-## <a name="code-sample"></a>Kódminta
+### <a name="code-sample"></a>Kódminta
 
 Az alábbi C#-kódrészlet a Video Indexer API-k együttes használatát mutatja be.
 
-### <a name="instructions-for-running-this-code-sample"></a>A mintakód futtatására vonatkozó utasítások
+#### <a name="instructions-for-running-this-code-sample"></a>A mintakód futtatására vonatkozó utasítások
 
 A kód a fejlesztői platformra való másolása után két paramétert kell megadnia: API Management hitelesítési kulcsot és a videó URL-címét.
 
@@ -308,7 +339,8 @@ public class AccountContractSlim
     public string AccessToken { get; set; }
 }
 ```
-## <a name="common-errors"></a>Gyakori hibák
+
+### <a name="common-errors"></a>Gyakori hibák
 
 A Feltöltés művelet által visszaadott lehetséges állapotkódok az alábbi táblázatban láthatók.
 

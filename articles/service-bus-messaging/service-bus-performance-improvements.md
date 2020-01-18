@@ -1,5 +1,5 @@
 ---
-title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával | Microsoft Docs
+title: Ajánlott eljárások a teljesítmény javításához a Azure Service Bus használatával
 description: Ismerteti, hogyan optimalizálható a teljesítmény a Service Bus használatával a felügyelt üzenetek cseréjekor.
 services: service-bus-messaging
 documentationcenter: na
@@ -8,14 +8,14 @@ manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: 3d2d26e8cb8a3b1ee7720424aea701ca063ecc9f
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 683a28ca3cdabd5a7ffbf6e9ffdc3ed0c58d3247
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596460"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264695"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Ajánlott eljárások a teljesítmény növeléséhez Service Bus üzenetkezelés használatával
 

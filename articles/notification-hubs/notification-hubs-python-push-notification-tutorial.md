@@ -1,6 +1,6 @@
 ---
 title: A Notification Hubs használata a Python használatával
-description: Ismerje meg, hogyan használhatja az Azure Notification Hubst egy Python háttérből.
+description: Ismerje meg, hogyan használhatja az Azure Notification Hubst egy Python-háttérből.
 services: notification-hubs
 documentationcenter: ''
 author: sethmanheim
@@ -16,12 +16,12 @@ ms.date: 01/04/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
-ms.openlocfilehash: 5321802023d57bedc135e2d19b2289f1d66deb72
-ms.sourcegitcommit: 7df70220062f1f09738f113f860fad7ab5736e88
+ms.openlocfilehash: db5174ed6f008be0fed1fdf3c2c83d33277c3b4e
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71213079"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263795"
 ---
 # <a name="how-to-use-notification-hubs-from-python"></a>A Notification Hubs használata a Pythonból
 
@@ -32,7 +32,7 @@ Egy Java/PHP/Python/Ruby háttérrendszer összes Notification Hubs funkcióját
 > [!NOTE]
 > Ez az értesítés a Pythonban való végrehajtásának megvalósítására szolgál, és nem a hivatalosan támogatott Notifications hub Python SDK. A minta a Python 3,4 használatával lett létrehozva.
 
-Ez a cikk bemutatja, hogyan végezheti el a következőket:
+Ez a cikk a következőkhöz nyújt útmutatást:
 
 - REST-ügyfél létrehozása a Python Notification Hubs szolgáltatásaihoz.
 - Értesítések küldése a Python felületen keresztül az értesítési központ REST API-jai számára.
@@ -165,7 +165,7 @@ Ez az osztály egy natív értesítési törzs vagy egy sablonra vonatkozó ért
 
 A rendelkezésre álló lehetőségekért tekintse meg a [Notification HUBS REST API-k dokumentációját](https://msdn.microsoft.com/library/dn495827.aspx) és az egyes értesítési platformok formátumait.
 
-Ebben az osztályban a küldési értesítési módszereket az `NotificationHub` osztályban belül kell megírni.
+Ebben az osztályban a `NotificationHub` osztályban írja be a Küldés értesítési metódusait.
 
 ```python
 def make_http_request(self, url, payload, headers):
@@ -311,7 +311,7 @@ Inicializálja a Notification Hubs ügyfelet (a [Első lépéseket ismertető ok
 hub = NotificationHub("myConnectionString", "myNotificationHubName")
 ```
 
-Ezután adja hozzá a küldési kódot a cél mobil platformtól függően. Ez a minta magasabb szintű módszereket is biztosít, amelyek lehetővé teszik a platformon alapuló értesítések küldését (például send_windows_notification for Windows). send_apple_notification (Apple esetében) stb.
+Ezután adja hozzá a küldési kódot a cél mobil platformtól függően. Ez a minta magasabb szintű módszereket is biztosít, amelyek lehetővé teszik a platformon alapuló értesítések küldését, például send_windows_notification a Windowshoz; send_apple_notification (Apple esetében) stb.
 
 ### <a name="windows-store-and-windows-phone-81-non-silverlight"></a>Windows áruház és Windows Phone-telefon 8,1 (nem Silverlight)
 
@@ -445,9 +445,9 @@ hub.send_template_notification(template_payload)
 
 ![][5]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ez a cikk bemutatja, hogyan hozhat létre Notification Hubs Python REST-ügyfelet. Innen a következőket teheti:
+Ez a cikk bemutatja, hogyan hozhat létre Notification Hubs Python REST-ügyfelet. Ebből a menüből:
 
 - Töltse le a teljes [Python REST burkoló minta], amely tartalmazza a cikkben szereplő összes kódot.
 - Folytassa a Notification Hubs címkézési funkciójának megismerését a [A legfrissebb hírek oktatóanyaga]

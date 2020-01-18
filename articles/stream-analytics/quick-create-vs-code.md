@@ -7,12 +7,12 @@ ms.author: mamccrea
 ms.date: 09/16/2019
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 236d29d2c50a792bc4dc11916964db47ca092807
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: d95a3334fe5a7767446c92f8f8668e4da09fca42
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659593"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169849"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)
 
@@ -60,7 +60,7 @@ A Stream Analytics feladatának megadása előtt elő kell készítenie azokat a
 
    |**Beállítás**  |**Ajánlott érték**  |**Leírás**  |
    |---------|---------|---------|
-   |Előfizetés  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
+   |Előfizetést  | \<Az Ön előfizetése\> |  Válassza ki a használni kívánt Azure-előfizetést. |
    |Erőforráscsoport   |   asaquickstart-resourcegroup  |   Válassza az **Új létrehozása** elemet, majd adja meg a fiók új erőforráscsoport-nevét. |
    |Region (Régió)  |  \<Válassza ki a felhasználóihoz legközelebb eső régiót\> | Válassza ki azt a földrajzi helyet, ahol az IoT hubot üzemeltetni szeretné. Használja a felhasználókhoz legközelebb eső helyet. |
    |IoT-központ neve  | MyASAIoTHub  |   Válassza ki az IoT hub nevét.   |
@@ -175,13 +175,15 @@ További részletekért kövesse a következő témakör utasításait: a [leké
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Név|Input (Bemenet)|Adjon meg egy nevet a feladatok bemenetének azonosításához.|
+   |Name (Név)|Input (Bemenet)|Adjon meg egy nevet a feladatok bemenetének azonosításához.|
    |IotHubNamespace|MyASAIoTHub|Válassza ki vagy adja meg az IoT hub nevét. Az IoT hub-nevek automatikusan észlelhetők, ha ugyanabban az előfizetésben jönnek létre.|
    |SharedAccessPolicyName|iothubowner| |
 
-   A Codelensben funkcióval karakterláncot adhat meg, kiválaszthatja a legördülő listából, vagy megváltoztathatja a szöveget közvetlenül a fájlban. Az alábbi képernyőképen az **előfizetések közül választhat** , példaként.
+   A Codelensben funkcióval karakterláncot adhat meg, kiválaszthatja a legördülő listából, vagy megváltoztathatja a szöveget közvetlenül a fájlban. Az alábbi képernyőképen az **előfizetések közül választhat** , példaként. A hitelesítő adatok automatikusan szerepelnek, és a helyi hitelesítőadat-kezelőben lesznek mentve.
 
    ![A bemenet konfigurálása a Visual Studio Code-ban](./media/quick-create-vs-code/configure-input.png)
+
+   ![Bemeneti érték konfigurálása a Visual Studio Code-ban](./media/quick-create-vs-code/configure-input-value.png)
 
 ## <a name="preview-input"></a>Előzetes verzió bemenete
 
@@ -205,7 +207,7 @@ A felső sorban válassza az **előnézet adatok** elemet a **IoTHub1. JSON** f�
 
    |Beállítás|Ajánlott érték|Leírás|
    |-------|---------------|-----------|
-   |Név|Kimenet| Adjon meg egy nevet a feladatok kimenetének azonosításához.|
+   |Name (Név)|Kimenet| Adjon meg egy nevet a feladatok kimenetének azonosításához.|
    |Tárfiók|asaquickstartstorage|Válassza ki vagy adja meg a Storage-fiók nevét. A rendszer automatikusan észleli a Storage-fiókok neveit, ha azok ugyanabban az előfizetésben jönnek létre.|
    |Tároló|container1|Válassza ki a tárfiókjában létrehozott meglévő tárolót.|
    |Path Pattern (Elérésiút-minta)|output|Adja meg a tárolón belül létrehozni kívánt elérési út nevét.|

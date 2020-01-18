@@ -1,21 +1,21 @@
 ---
-title: Gyors útmutató – Service Bus üzenetsor létrehozásához használja a Azure Portalt | Microsoft Docs
+title: Service Bus üzenetsor létrehozásához használja a Azure Portal
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre Service Bus-várólistát a Azure Portal használatával. Ezt követően egy minta ügyfélalkalmazás használatával üzeneteket küldhet és fogadhat üzeneteket a várólistából.
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
 ms.topic: quickstart
 ms.custom: mvc
-ms.date: 09/03/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: dc9b8260a8ddde6633bc9215d9efff7aaaa71ad3
-ms.sourcegitcommit: 6794fb51b58d2a7eb6475c9456d55eb1267f8d40
+ms.openlocfilehash: 0c88db652efe54a497af094160fb426be7c43d16
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2019
-ms.locfileid: "70242380"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260837"
 ---
-# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozásához használja a Azure Portal
+# <a name="quickstart-use-azure-portal-to-create-a-service-bus-queue"></a>Gyors útmutató: Service Bus üzenetsor létrehozása a Azure Portal használatával
 Ez a rövid útmutató azt ismerteti, hogyan lehet üzeneteket küldeni és fogadni egy Service Bus-várólistából, a [Azure Portal][Azure portal] használatával üzenetküldési névteret és a névtéren belüli üzenetsor létrehozására, valamint az engedélyezési hitelesítő adatok megszerzésére az adott névtéren. Az eljárás ezután bemutatja, hogyan küldhet és fogadhat üzeneteket az üzenetsorból a [.NET Standard-kódtárral](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 [!INCLUDE [howto-service-bus-queues](../../includes/howto-service-bus-queues.md)]
@@ -82,7 +82,7 @@ Ez a szakasz a mintakód működésének további részleteit ismerteti.
 
 ### <a name="get-connection-string-and-queue"></a>A kapcsolati sztring és az üzenetsor lekérése
 
-A rendszer a `Main()` metódushoz adja át a kapcsolódási karakterláncot és a várólista nevét parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
+A rendszer a kapcsolódási karakterláncot és a várólista nevét adja át a `Main()` metódusnak parancssori argumentumként. A `Main()` metódus két sztringváltozót jelöl ki az értékek tárolásához:
 
 ```csharp
 static void Main(string[] args)
@@ -119,7 +119,7 @@ A `Main()` metódus ezután elindítja a `MainAsync()` aszinkron üzenethurkot.
 
 ### <a name="message-loop"></a>Üzenethurok
 
-A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a nevű `RegisterOnMessageHandlerAndReceiveMessages()`üzenet-kezelőt, és elküldi az üzenetek készletét:
+A MainAsync () metódus egy üzenetsor-ügyfelet hoz létre a parancssori argumentumokkal, meghívja a fogadó `RegisterOnMessageHandlerAndReceiveMessages()`nevű üzenetkezelő kezelőt, és elküldi az üzenetek készletét:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -211,7 +211,7 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben egy Service Bus-névteret és az üzenetsorba történő üzenetküldéshez és -fogadáshoz szükséges egyéb erőforrásokat hozott létre. Ha többet szeretne megtudni az üzenetek küldésére és fogadására szolgáló kód írásához, folytassa az oktatóanyagokat a **küldési és fogadási üzenetek** szakaszban. 
 

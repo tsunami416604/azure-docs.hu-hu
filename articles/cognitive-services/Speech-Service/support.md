@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
-ms.openlocfilehash: 7017c3065e41befab6b5d7cdea47e2e3e6720173
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74928645"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169525"
 ---
 # <a name="support-and-help-options"></a>Támogatás és Súgó lehetőségek
 
@@ -51,23 +51,12 @@ A gyorsabb eredmény érdekében a következő lekérdezéssel [használhatja a 
 
 Ahol *{a keresési kifejezések}* a keresési kulcsszavak.
 
-## <a name="create-an-azure-support-request"></a>Azure-támogatási kérelem létrehozása
+## <a name="create-an-azure-support-request"></a>Azure-támogatáskérés létrehozása
 
 Az Azure-ügyfelek támogatási kérelmeket hozhatnak létre és kezelhetnek a Azure Portalban.
 
-* [Azure Portalra](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
+* [Azure Portal](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview)
 * [A Egyesült Államok Government Azure Portal](https://portal.azure.us)
-
-## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
-
-Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. A Közösség tagjai és a Microsoft csapattagok közvetlenül részt vesznek a problémák megoldásában.
-
-Ha nem talál választ a problémára a kereséssel, küldjön új kérdést Stack Overflow a címkék [\[Microsoft-kognitív\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)használatával.
-
-> [!TIP]
-> A Stack Overflow következő bejegyzései a kérdések és a forráskód hozzáadására vonatkozó tippeket tartalmaznak. Az irányelvek követésével növelheti az esélyeket, hogy a Közösség tagjai gyorsan felmérjék és reagálnak a kérdéseire:  
-> * [Hogyan kérdezzen egy jó kérdésre?](https://stackoverflow.com/help/how-to-ask)
-> * [Minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
 
 ## <a name="create-a-github-issue"></a>GitHub-probléma létrehozása
 
@@ -108,6 +97,16 @@ Az SDK melyik verzióját használja.
  - Ha egy adott szolgáltatás-interakcióra vonatkozó hibát jelez, jelentse a jelentett incidensek munkamenet-azonosítóját és időzónáját (beleértve a timezone-et is). A munkamenet-azonosító a kapott összes hívási/eseményről jelentést küld.
  - Egyéb további információk
 
+## <a name="post-a-question-to-stack-overflow"></a>Kérdés közzététele Stack Overflow
+
+Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. A Közösség tagjai és a Microsoft csapattagok közvetlenül részt vesznek a problémák megoldásában.
+
+Ha nem talál választ a problémára a kereséssel, küldjön új kérdést Stack Overflow a címkék [\[Microsoft-kognitív\]\[speech\]](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)használatával.
+
+> [!TIP]
+> A Stack Overflow következő bejegyzései a kérdések és a forráskód hozzáadására vonatkozó tippeket tartalmaznak. Az irányelvek követésével növelheti az esélyeket, hogy a Közösség tagjai gyorsan felmérjék és reagálnak a kérdéseire:  
+> * [Hogyan kérdezzen egy jó kérdésre?](https://stackoverflow.com/help/how-to-ask)
+> * [Minimális, teljes és ellenőrizhető példa létrehozása](https://stackoverflow.com/help/mcve)
 
 ## <a name="uservoice-forum"></a>UserVoice-fórum
 

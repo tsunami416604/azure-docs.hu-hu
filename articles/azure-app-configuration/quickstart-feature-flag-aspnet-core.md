@@ -1,29 +1,21 @@
 ---
-title: Útmutató a szolgáltatás-jelzők hozzáadásához a ASP.NET Corehoz | Microsoft Docs
-description: Útmutató a funkció-jelzők hozzáadásához az alkalmazások ASP.NET Coreéhez és az Azure-alkalmazások konfigurációjában való kezeléséhez
-services: azure-app-configuration
-documentationcenter: ''
-author: yegu-ms
-manager: maiye
-editor: ''
-ms.assetid: ''
+title: Szolgáltatás-jelzők hozzáadásának rövid útmutatója ASP.NET Core
+description: Szolgáltatás-jelzők hozzáadása az alkalmazások ASP.NET Coreához és az Azure app Configuration használatával történő kezeléséhez
+author: jpconnock
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: ASP.NET Core
-ms.workload: tbd
-ms.date: 04/19/2019
-ms.author: yegu
-ms.openlocfilehash: e91de93c34189cf5506ebf93689a5a9b5c567394
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.date: 01/14/2020
+ms.author: jeconnoc
+ms.openlocfilehash: 6858648bc07546f30d4ebb92150c52f8c7729acd
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121396"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260283"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
-Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját egy ASP.NET Core webalkalmazásba, amely a szolgáltatások felügyeletének teljes körű megvalósítását hozza létre. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat. 
+Ebben a rövid útmutatóban egy ASP.NET Core-alkalmazás teljes körű implementációját hozza létre az Azure app Configuration használatával. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat. 
 
 A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendszert átfogó funkció-jelölő támogatással. Ezek a kódtárak a .NET Core konfigurációs rendszerre épülnek. Zökkenőmentesen integrálva vannak az alkalmazások konfigurációjával a .NET Core konfigurációs szolgáltatón keresztül.
 
@@ -36,11 +28,12 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza ki a **Feature Manager** >  **+ Hozzáadás** elemet a következő funkció-jelzők hozzáadásához:
+6. Válassza a **Feature Manager** >  **+ Hozzáadás** elemet, és vegyen fel egy `Beta`nevű szolgáltatás-jelölőt.
 
-    | Jelmagyarázat | Állami |
-    |---|---|
-    | Beta | Ki |
+    > [!div class="mx-imgBorder"]
+    > ![a Beta](media/add-beta-feature-flag.png) nevű funkció engedélyezése
+
+    Most ne adjon meg `label`.
 
 ## <a name="create-an-aspnet-core-web-app"></a>ASP.NET Core-webalkalmazás létrehozása
 
@@ -58,9 +51,13 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/security/app-secrets) a projekthez. A Secret Manager eszköz bizalmas adatokat tárol a projekt fáján kívüli fejlesztési munkához. Ez a módszer megakadályozza, hogy véletlenül megossza az alkalmazás forráskódbeli titkos kódjait.
 
+> [!IMPORTANT]
+> Jelentős eltérések léteznek a .NET Core 2. x és 3. x között.  Válassza ki a megfelelő szintaxist a környezet alapján.
+
 1. Nyissa meg a *. csproj* fájlt.
 1. Vegyen fel egy `UserSecretsId` elemet az alábbi példában látható módon, és cserélje le az értékét a saját értékére, amely általában egy GUID:
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
     ```xml
     <Project Sdk="Microsoft.NET.Sdk.Web">
 
@@ -76,15 +73,24 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
     </Project>
     ```
-
-1. Mentse a fájlt.
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ```xml
+    <Project Sdk="Microsoft.NET.Sdk.Web">
+    
+        <PropertyGroup>
+            <TargetFramework>netcoreapp3.1</TargetFramework>
+            <UserSecretsId>79a3edd0-2092-40a2-a04d-dcb46d5ca9ed</UserSecretsId>
+        </PropertyGroup>
+    </Project>
+    ```
+    ---
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
 1. A következő parancsok futtatásával adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` és a `Microsoft.FeatureManagement.AspNetCore` NuGet-csomagok hivatkozását:
 
     ```
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     dotnet add package Microsoft.FeatureManagement.AspNetCore --version 2.0.0-preview-010610001-1263
     ```
 
@@ -113,8 +119,8 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     > [!IMPORTANT]
     > a `CreateHostBuilder` a .NET Core 3,0 `CreateWebHostBuilder` helyettesíti.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
-    ### <a name="update-createwebhostbuilder-for-net-core-2x"></a>A .NET Core 2. x `CreateWebHostBuilder` frissítése
-
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
+    
     ```csharp
     public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
         WebHost.CreateDefaultBuilder(args)
@@ -129,8 +135,8 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
             .UseStartup<Startup>();
     ```
 
-    ### <a name="update-createhostbuilder-for-net-core-3x"></a>A .NET Core 3. x `CreateHostBuilder` frissítése
-
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -145,7 +151,7 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
         })
         .UseStartup<Startup>());
     ```
-
+    ---
 
 1. Nyissa meg a *Startup.cs*, és adjon hozzá hivatkozásokat a .net Core Feature Managerhez:
 
@@ -155,22 +161,75 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
 
 1. Frissítse a `ConfigureServices` metódust a szolgáltatás-jelölő támogatásának hozzáadásához a `services.AddFeatureManagement()` metódus meghívásával. Lehetőség van arra is, hogy az `services.AddFeatureFilter<FilterType>()`meghívásával bármely olyan szűrőt felvegyen, amelyet a funkció jelzői is használhatnak:
 
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
     ```csharp
     public void ConfigureServices(IServiceCollection services)
     {
+        services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);        
         services.AddFeatureManagement();
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ```csharp    
+    public void ConfigureServices(IServiceCollection services)
+    {
+        services.AddControllersWithViews();
+        services.AddFeatureManagement();
+    }
+    ```
+    ---
 
 1. Frissítse a `Configure` metódust egy middleware hozzáadásához, amely lehetővé teszi, hogy a szolgáltatás jelölő értékei ismétlődő időközönként frissüljenek, miközben a ASP.NET Core webalkalmazás továbbra is fogadja a kérelmeket.
-
+    
+    #### <a name="net-core-2xtabcore2x"></a>[.NET Core 2. x](#tab/core2x)
     ```csharp
     public void Configure(IApplicationBuilder app, IHostingEnvironment env)
     {
-        app.UseAzureAppConfiguration();
-        app.UseMvc();
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            
+            app.UseStaticFiles();
+            app.UseCookiePolicy();
+            app.UseAzureAppConfiguration();
+            app.UseMvc(routes =>
+            {
+                routes.MapRoute(
+                    name: "default",
+                    template: "{controller=Home}/{action=Index}/{id?}");
+            });
     }
     ```
+    #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
+    ```csharp
+    public void Configure(IApplicationBuilder app, IHostingEnvironment env)
+    {
+            if (env.IsDevelopment())
+            {
+                app.UseDeveloperExceptionPage();
+            }
+            else
+            {
+                app.UseExceptionHandler("/Home/Error");
+            }
+            app.UseStaticFiles();
+            app.UseRouting();
+            app.UseAuthorization();
+            app.UseEndpoints(endpoints =>
+            {
+                endpoints.MapControllerRoute(
+                    name: "default",
+                    pattern: "{controller=Home}/{action=Index}/{id?}");
+            });
+            app.UseAzureAppConfiguration();
+    }
+    ```
+    ---
 
 1. *MyFeatureFlags.cs* -fájl hozzáadása:
 
@@ -272,19 +331,19 @@ Adja hozzá a [Secret Manager eszközt](https://docs.microsoft.com/aspnet/core/s
     dotnet run
     ```
 
-1. Nyisson meg egy böngészőablakot, és lépjen a `https://localhost:5001`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+1. Nyisson meg egy böngészőablakot, és lépjen a `https://localhost:5000`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+    Ha dolgozik a Azure Cloud Shellban, válassza a *webes előnézet* gombot, majd a *configure (Konfigurálás*) lehetőséget.  Ha a rendszer kéri, válassza a 5000-es portot.
 
-    ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
+    ![A webes előnézet gomb megkeresése](./media/quickstarts/cloud-shell-web-preview.png)
+
+    A böngészőnek az alábbi képhez hasonló lapot kell megjelenítenie.
+    ![rövid útmutató alkalmazás elindítása helyi](./media/quickstarts/aspnet-core-feature-flag-local-before.png)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). Válassza a **minden erőforrás**lehetőséget, majd válassza ki a gyors útmutatóban létrehozott app Configuration Store-példányt.
 
-1. Válassza ki a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
+1. Válassza a **szolgáltatásvezérlő**lehetőséget, majd módosítsa a **bétaverzió** állapotát **a be**értékre.
 
-    | Jelmagyarázat | Állami |
-    |---|---|
-    | Beta | Be |
-
-1. Indítsa újra az alkalmazást úgy, hogy visszavált a parancssorba, és lenyomja `Ctrl-C` a futó `dotnet` folyamat megszakításához, majd a `dotnet run`újbóli futtatásához.
+1. Térjen vissza a parancssorba, és szakítsa meg a futó `dotnet` folyamatot a `Ctrl-C`megnyomásával.  Indítsa újra az alkalmazást `dotnet run`használatával.
 
 1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 

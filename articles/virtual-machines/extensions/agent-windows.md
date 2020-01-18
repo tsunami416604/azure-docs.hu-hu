@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 07/20/2019
 ms.author: akjosh
-ms.openlocfilehash: 7185ac40cafce86c68efbf28c7e6a35fd4789bc3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 24369ed547b811b212518193a2ae2f76ed197754
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027644"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264627"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
@@ -61,7 +61,8 @@ Ha nincsenek telepítve az ügynökök, nem használhat bizonyos Azure-szolgált
 ### <a name="manual-installation"></a>Manuális telepítés
 A Windows rendszerű virtuális gép ügynöke manuálisan is telepíthető Windows Installer-csomaggal. Az Azure-ban üzembe helyezett egyéni virtuálisgép-lemezkép létrehozásakor szükség lehet manuális telepítésre. A Windows rendszerű virtuális gép ügynökének manuális telepítéséhez [töltse le a virtuálisgép-ügynök telepítőjét](https://go.microsoft.com/fwlink/?LinkID=394789). A virtuálisgép-ügynök a Windows Server 2008 R2 és újabb rendszereken támogatott.
 
-> [Megjegyzés!] Fontos, hogy frissítse a AllowExtensionOperations beállítást, miután manuálisan telepítette a VMAgent egy olyan virtuális gépre, amely a ProvisionVMAgent engedélyezése nélkül lett üzembe helyezve a lemezképből.
+> [!NOTE]
+> Fontos, hogy frissítse a AllowExtensionOperations beállítást, miután manuálisan telepítette a VMAgent egy olyan virtuális gépre, amely a ProvisionVMAgent engedélyezése nélkül lett üzembe helyezve a lemezképből.
 
 ```powershell
 $vm.OSProfile.AllowExtensionOperations = $true

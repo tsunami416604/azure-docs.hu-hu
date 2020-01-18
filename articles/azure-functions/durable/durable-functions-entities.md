@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: overview
 ms.date: 12/17/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 8aaa19a9d5bd5d7b2764320d5d91c8a6c010b3c8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d469d52a6db6c3640d07b46422ffe669a898dde8
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433323"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262996"
 ---
 # <a name="entity-functions"></a>Entitás-függvények
 
@@ -49,11 +49,13 @@ Az entitások művelete az entitás állapotának létrehozását, olvasását, 
 
 ## <a name="define-entities"></a>Entitások definiálása
 
-Jelenleg a két különböző API-k definiálják az entitásokat:
+Az entitások definiálásának két különböző API-jának jelenleg a következő:
 
 **Function-alapú szintaxis**, amelyben az entitások függvényekként és műveletként vannak ábrázolva, az alkalmazás explicit módon elküldi őket. Ez a szintaxis jól működik az egyszerű állapottal rendelkező entitások, néhány művelet vagy az alkalmazás-keretrendszerek, például az alkalmazások dinamikus készlete esetében. Ez a szintaxis unalmas lehet a karbantartáshoz, mert a fordítási idő során nem kerül be a gépelési hibák.
 
-**Osztály-alapú szintaxis**, amelyben az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis egy vékony réteg a függvény-alapú szintaxisban, így mindkét változat felhasználható ugyanabban az alkalmazásban.
+**Osztály-alapú szintaxis (csak .net)** , ahol az entitásokat és a műveleteket osztályok és metódusok jelölik. Ez a szintaxis könnyebben olvasható kódot hoz létre, és lehetővé teszi a műveletek típusos biztonságos módon történő meghívását. Az osztály-alapú szintaxis egy vékony réteg a függvény-alapú szintaxisban, így mindkét változat felhasználható ugyanabban az alkalmazásban.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ### <a name="example-function-based-syntax---c"></a>Példa: függvény-alapú szintaxis-C#
 
@@ -107,11 +109,13 @@ Az entitás állapota `Counter`típusú objektum, amely egy olyan mezőt tartalm
 
 Az osztály-alapú szintaxissal és annak használatával kapcsolatos további információkért lásd: entitás- [osztályok meghatározása](durable-functions-dotnet-entities.md#defining-entity-classes).
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ### <a name="example-javascript-entity"></a>Példa: JavaScript-entitás
 
 A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érhetők el a JavaScriptben. A következő kód a JavaScriptben írt tartós függvényként megvalósított `Counter` entitás.
 
-**function. JSON**
+**Számláló/function. JSON**
 ```json
 {
   "bindings": [
@@ -125,7 +129,7 @@ A tartós entitások a `durable-functions` NPM csomag **1.3.0** kezdődően érh
 }
 ```
 
-**index. js**
+**Számláló/index. js**
 ```javascript
 const df = require("durable-functions");
 
@@ -146,6 +150,8 @@ module.exports = df.entity(function(context) {
 });
 ```
 
+---
+
 ## <a name="access-entities"></a>Hozzáférési entitások
 
 Az entitások egyirányú vagy kétirányú kommunikációval érhetők el. A következő terminológia megkülönbözteti a kommunikáció két formáját: 
@@ -161,12 +167,14 @@ Az entitások a Orchestrator függvényeken belül vagy az Entity functions szol
 
 Az alábbi példák az entitások elérésének különféle módjait szemléltetik.
 
-> [!NOTE]
-> Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy az [entitásokat a felületeken keresztül érheti](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) el, mivel több típusú ellenőrzést is biztosít.
-
 ### <a name="example-client-signals-an-entity"></a>Példa: az ügyfél jelzi az entitást
 
 Ha az entitásokat egy általános Azure-függvényből kívánja elérni, amely más néven ügyfél-függvény, használja az [entitás-ügyfél kötését](durable-functions-bindings.md#entity-client). Az alábbi példa egy üzenetsor által aktivált függvényt mutat be, amely a kötést használó entitást jelez.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+> [!NOTE]
+> Az egyszerűség kedvéért az alábbi példák a lazán beírt szintaxist mutatják be az entitásokhoz való hozzáféréshez. Általánosságban azt javasoljuk, hogy az [entitásokat a felületeken keresztül érheti](durable-functions-dotnet-entities.md#accessing-entities-through-interfaces) el, mivel több típusú ellenőrzést is biztosít.
 
 ```csharp
 [FunctionName("AddFromQueue")]
@@ -181,6 +189,8 @@ public static Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -191,11 +201,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 A *jel* kifejezés azt jelenti, hogy az entitás API-hívása egyirányú és aszinkron. Az ügyfél nem tudja tudni, hogy mikor dolgozza fel a műveletet az entitás. Emellett az ügyfél függvény nem tudja megfigyelni az eredmények értékét vagy kivételeit. 
 
 ### <a name="example-client-reads-an-entity-state"></a>Példa: az ügyfél beolvas egy entitás állapotát
 
 Az ügyfél functions egy entitás állapotát is lekérdezheti az alábbi példában látható módon:
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("QueryCounter")]
@@ -209,6 +223,8 @@ public static async Task<HttpResponseMessage> Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -220,11 +236,15 @@ module.exports = async function (context) {
 };
 ```
 
+---
+
 Az entitások állapotának lekérdezéseit a rendszer a tartós nyomkövetési tárolóba küldi, és az entitás legutóbb megőrzött állapotát adja vissza. Ez az állapot mindig "véglegesített" állapot, azaz soha nem ideiglenes közbenső állapot, amelyet a művelet végrehajtásának közepén feltételeznek. Azonban lehetséges, hogy ez az állapot elavult az entitás memórián belüli állapotához képest. A következő szakaszban leírtak szerint csak a bevezetések tudják olvasni az entitás memóriában lévő állapotát.
 
 ### <a name="example-orchestration-signals-and-calls-an-entity"></a>Példa: előkészítési jelek és entitások meghívása
 
 A Orchestrator függvények API-k használatával férhetnek hozzá az entitásokhoz a előkészítési [trigger kötésében](durable-functions-bindings.md#orchestration-trigger). A következő példa egy Orchestrator-függvényt mutat be, amely egy `Counter` entitást hív meg és jelez.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CounterOrchestration")]
@@ -243,6 +263,8 @@ public static async Task Run(
 }
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
 const df = require("durable-functions");
 
@@ -257,6 +279,8 @@ module.exports = df.orchestrator(function*(context){
 > [!NOTE]
 > A JavaScript jelenleg nem támogatja az entitások Orchestrator való jelzését. A `callEntity` használható helyette.
 
+---
+
 Csak a bevezetések képesek az entitások meghívására és a válasz lekérésére, ami lehet visszatérési érték vagy kivétel. Az [ügyfél-kötést](durable-functions-bindings.md#entity-client) használó ügyfél-függvények csak az entitásokat jelezhetik.
 
 > [!NOTE]
@@ -266,6 +290,8 @@ Csak a bevezetések képesek az entitások meghívására és a válasz lekéré
 
 Az Entity függvény jeleket küldhet más entitásoknak, vagy akár saját maga is, miközben végrehajt egy műveletet.
 Például módosíthatjuk az előző `Counter` Entity példát úgy, hogy egy "mérföldkőnek számított" jelet küldjön egy figyelő entitásnak, amikor a számláló eléri a 100 értéket.
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
    case "add":
@@ -280,6 +306,8 @@ Például módosíthatjuk az előző `Counter` Entity példát úgy, hogy egy "m
         break;
 ```
 
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
 ```javascript
     case "add":
         const amount = context.df.getInput();
@@ -291,7 +319,9 @@ Például módosíthatjuk az előző `Counter` Entity példát úgy, hogy egy "m
         break;
 ```
 
-## <a name="entity-coordination"></a>Entitások koordinálása
+---
+
+## <a name="entity-coordination"></a>Entitások koordinálása (jelenleg csak .NET)
 
 Előfordulhatnak olyan időpontok, amikor több entitáson keresztül kell összehangolni a műveleteket. Egy banki alkalmazásban például lehetnek olyan entitások, amelyek egyéni bankszámlákat jelképeznek. Ha az egyik fiókból a másikba helyezi át a forrásokat, gondoskodnia kell arról, hogy a forrásoldali fiók elegendő összegű legyen. Emellett biztosítania kell, hogy a forrás-és a célhelyek frissítései tranzakciós szempontból konzisztens módon történjenek.
 

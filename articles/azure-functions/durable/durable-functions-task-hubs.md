@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 38c7da8a1de57ed5acf3248fc6a71431de0bd1e2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: ffb3d590aebe80994de1e7e834a2eba5777df9a1
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232789"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262486"
 ---
 # <a name="task-hubs-in-durable-functions-azure-functions"></a>Durable Functions (Azure Functions) feladat-hubok
 
@@ -50,7 +50,7 @@ A feladatok hubokat a *Host. JSON* fájlban deklarált név azonosítja, ahogy a
 }
 ```
 
-### <a name="hostjson-functions-1x"></a>host.json (Functions 1.x)
+### <a name="hostjson-functions-1x"></a>Host. JSON (functions 1. x)
 
 ```json
 {
@@ -96,9 +96,9 @@ A feladat hub neve a `MyTaskHub` Alkalmazásbeállítások értékére lesz áll
 }
 ```
 
-A következő kód egy előre lefordított C# példa arra, hogy miként írhat egy olyan függvényt, amely a beállítási [ügyfél kötését](durable-functions-bindings.md#orchestration-client) használja egy olyan feladattal való együttműködéshez, amely alkalmazás-beállításként van konfigurálva:
+A következő kód azt mutatja be, hogyan írhat olyan függvényt, amely a beállítási [ügyfél kötését](durable-functions-bindings.md#orchestration-client) használja egy olyan feladattal való együttműködéshez, amely alkalmazás-beállításként van konfigurálva:
 
-### <a name="c"></a>C#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("HttpStart")]
@@ -121,7 +121,7 @@ public static async Task<HttpResponseMessage> Run(
 > [!NOTE]
 > Az előző C# példa a Durable functions 2. x. Durable Functions 1. x esetén a `IDurableOrchestrationContext`helyett `DurableOrchestrationContext`t kell használnia. A verziók közötti különbségekről a [Durable functions verziók](durable-functions-versions.md) című cikkben olvashat bővebben.
 
-### <a name="javascript"></a>JavaScript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 A `function.json` fájljának Task hub tulajdonsága az alkalmazás beállításain keresztül van beállítva:
 
@@ -133,6 +133,8 @@ A `function.json` fájljának Task hub tulajdonsága az alkalmazás beállítás
     "direction": "in"
 }
 ```
+
+---
 
 A feladat-hub nevének betűvel kell kezdődnie, és csak betűkből és számokból állhat. Ha nincs megadva, a rendszer a következő táblázatban látható módon fogja használni az alapértelmezett feladat-hub nevet:
 

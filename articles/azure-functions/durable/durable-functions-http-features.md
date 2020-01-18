@@ -5,12 +5,12 @@ author: cgillum
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: azfuncdf
-ms.openlocfilehash: 1c8f56810edb39db66cbb83750e5cff02e22662a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7d8891c6f925cfac326685f01ba5f6149a1b233
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433283"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262860"
 ---
 # <a name="http-features"></a>HTTP-funkciók
 
@@ -41,21 +41,21 @@ A Durable Functions bővítmény által elérhető beépített HTTP API-k teljes
 
 A koordináló [ügyfél-kötés](durable-functions-bindings.md#orchestration-client) olyan API-kat tesz elérhetővé, amelyekkel kényelmes http-válasz hasznos adatokat lehet elérni. Létrehozhat például egy olyan választ, amely egy adott előkészítési példányhoz tartozó felügyeleti API-kra mutató hivatkozásokat tartalmaz. Az alábbi példák egy HTTP-trigger függvényt mutatnak be, amely bemutatja, hogyan használhatja ezt az API-t egy új előkészítési példányhoz:
 
-#### <a name="precompiled-c"></a>ElőfordítottC#
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 [!code-csharp[Main](~/samples-durable-functions/samples/precompiled/HttpStart.cs)]
 
-#### <a name="c-script"></a>C#-szkript
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
-[!code-csharp[Main](~/samples-durable-functions/samples/csx/HttpStart/run.csx)]
-
-#### <a name="javascript-with-functions-20-or-later-only"></a>JavaScript 2,0 vagy újabb függvényekkel
+**index. js**
 
 [!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/index.js)]
 
-#### <a name="functionjson"></a>Function. JSON
+**function. JSON**
 
-[!code-javascript[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+[!code-json[Main](~/samples-durable-functions/samples/javascript/HttpStart/function.json)]
+
+---
 
 A Orchestrator függvény elindítása a korábban bemutatott HTTP-trigger függvények használatával bármely HTTP-ügyfél használatával megtehető. A következő cURL-parancs egy `DoWork`nevű Orchestrator-függvényt indít el:
 
@@ -112,10 +112,9 @@ A [Orchestrator függvény kód megkötései](durable-functions-code-constraints
 
 A Durable Functions 2,0-től kezdődően a koordinálások natív módon használhatják a HTTP API-kat a [hangvezérelt trigger kötés](durable-functions-bindings.md#orchestration-trigger)használatával.
 
-> [!NOTE]
-> A HTTP-végpontok közvetlenül a Orchestrator függvényekből való meghívásának lehetősége még nem érhető el a JavaScriptben.
+A következő mintakód egy Orchestrator függvényt mutat be, amely egy kimenő HTTP-kérést tesz:
 
-Az alábbi mintakód egy C# Orchestrator függvényt mutat be, amely egy kimenő HTTP-kérést használ a **CallHttpAsync** .NET API használatával:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 ```csharp
 [FunctionName("CheckSiteAvailable")]
@@ -134,6 +133,23 @@ public static async Task CheckSiteAvailable(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context){
+    const url = context.df.getInput();
+    const response = context.df.callHttp("GET", url)
+
+    if (response.statusCode >= 400) {
+        // handling of error codes goes here
+    }
+});
+```
+
+---
 
 A "HTTP hívása" művelettel a következő műveleteket végezheti el a Orchestrator függvényekben:
 
@@ -156,6 +172,8 @@ A Durable Functions natív módon támogatja a Azure Active Directory (Azure AD)
 
 A következő kód egy .NET Orchestrator-függvény példája. A függvény hitelesített hívásokat kezdeményez a virtuális gépek újraindításához a Azure Resource Manager [Virtual machines REST API](https://docs.microsoft.com/rest/api/compute/virtualmachines)használatával.
 
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
 ```csharp
 [FunctionName("RestartVm")]
 public static async Task RunOrchestrator(
@@ -164,6 +182,7 @@ public static async Task RunOrchestrator(
     string subscriptionId = "mySubId";
     string resourceGroup = "myRG";
     string vmName = "myVM";
+    string apiVersion = "2019-03-01";
     
     // Automatically fetches an Azure AD token for resource = https://management.core.windows.net
     // and attaches it to the outgoing Azure Resource Manager API call.
@@ -178,6 +197,32 @@ public static async Task RunOrchestrator(
     }
 }
 ```
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+```javascript
+const df = require("durable-functions");
+
+module.exports = df.orchestrator(function*(context) {
+    const subscriptionId = "mySubId";
+    const resourceGroup = "myRG";
+    const vmName = "myVM";
+    const apiVersion = "2019-03-01";
+    const tokenSource = new df.ManagedIdentityTokenSource("https://management.core.windows.net");
+
+    // get a list of the Azure subscriptions that I have access to
+    const restartResponse = yield context.df.callHttp(
+        "POST",
+        `https://management.azure.com/subscriptions/${subscriptionId}/resourceGroups/${resourceGroup}/providers/Microsoft.Compute/virtualMachines/${vmName}/restart?api-version=${apiVersion}`,
+        undefined, // no request content
+        undefined, // no request headers (besides auth which is handled by the token source)
+        tokenSource);
+
+    return restartResponse;
+});
+```
+
+---
 
 Az előző példában a `tokenSource` paraméter úgy van konfigurálva, hogy [Azure Resource Manager](../../azure-resource-manager/management/overview.md)Azure ad-jogkivonatokat szerezzen be. A jogkivonatokat az erőforrás URI-ja `https://management.core.windows.net`azonosítja. A példa azt feltételezi, hogy az aktuális Function alkalmazás helyileg fut, vagy felügyelt identitású Function alkalmazásként lett telepítve. A helyi identitást vagy a felügyelt identitást feltételezi, hogy jogosult a virtuális gépek kezelésére a megadott erőforráscsoport `myRG`.
 

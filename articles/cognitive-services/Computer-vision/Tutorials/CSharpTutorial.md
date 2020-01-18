@@ -1,5 +1,5 @@
 ---
-title: 'Minta: A képfeldolgozó alkalmazás megismeréseC#'
+title: 'Minta: a képfeldolgozó alkalmazás megismeréseC#'
 titleSuffix: Azure Cognitive Services
 description: Ismerkedjen meg az Azure Cognitive Services Computer Vision APIt használó alapszintű Windows-alkalmazással. OCR végrehajtása, miniatűrök létrehozása és képek vizuális jellemzőinek használata.
 services: cognitive-services
@@ -11,14 +11,14 @@ ms.topic: sample
 ms.date: 04/17/2019
 ms.author: pafarley
 ms.custom: seodec18
-ms.openlocfilehash: 01e932caf5edc91d5556b60d33e4d100574f93f5
-ms.sourcegitcommit: f2771ec28b7d2d937eef81223980da8ea1a6a531
+ms.openlocfilehash: b492d8e3bdcf6d9a41df3eb79ef159985cc715cf
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/20/2019
-ms.locfileid: "71170046"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76168884"
 ---
-# <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: A képfeldolgozó alkalmazás megismeréseC#
+# <a name="sample-explore-an-image-processing-app-with-c"></a>Minta: a képfeldolgozó alkalmazás megismeréseC#
 
 Fedezzen fel egy alapszintű Windows-alkalmazást, amely a Computer Visiont használja az optikai karakterfelismerés (OCR) elvégzéséhez, intelligens vágású miniatűrök létrehozásához, valamint a vizuális funkciók (például arcok) észleléséhez, kategorizálásához, címkézéséhez és leírásához a képen. Az alábbi példában elküldheti egy kép URL-címét vagy egy helyileg tárolt fájlt. Ez a nyílt forráskódú példa sablonként használható a Windows saját alkalmazásának létrehozásához a Computer Vision API és Windows megjelenítési alaprendszer (WPF) használatával, amely a .NET-keretrendszer részét képezi.
 
@@ -37,7 +37,7 @@ A minta alkalmazás megismerése előtt győződjön meg arról, hogy teljesíte
 
 ## <a name="get-the-sample-app"></a>Mintaalkalmazás letöltése
 
-A Computer Vision minta alkalmazás elérhető a githubon az `Microsoft/Cognitive-Vision-Windows` adattárból. Ez a tárház a `Microsoft/Cognitive-Common-Windows` tárházat git almodulként is tartalmazza. A tárházat rekurzív módon, a parancssorból vagy a GitHub Desktop használatával is megadhatja, beleértve az almodult `git clone --recurse-submodules` is.
+A Computer Vision minta alkalmazás a GitHubon érhető el a `Microsoft/Cognitive-Vision-Windows` adattárból. Ez a tárház a `Microsoft/Cognitive-Common-Windows` adattárat git almodulként is tartalmazza. A tárházat rekurzív módon is megteheti, beleértve az almodult is, ha a parancssorból a `git clone --recurse-submodules` parancsot vagy a GitHub Desktopot használja.
 
 Ha például a Computer Vision minta alkalmazás adattárát rekurzív módon szeretné klónozást futtatni a parancssorból, futtassa a következő parancsot:
 
@@ -50,7 +50,7 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Vision-Win
 
 ### <a name="get-optional-sample-images"></a>Opcionális mintaképek beolvasása
 
-Igény szerint használhatja az [arc](../../Face/Overview.md) minta alkalmazásban található minta lemezképeket is, amelyek elérhetők a githubról `Microsoft/Cognitive-Face-Windows` az adattárból. Ez a minta egy olyan mappát tartalmaz `/Data`, amely több rendszerképet is tartalmaz. Ezt a tárházat a Computer Vision minta alkalmazáshoz tartozó módszerekkel is rekurzív módon klónozott.
+Igény szerint használhatja az [arc](../../Face/Overview.md) minta alkalmazásban található minta lemezképeket is, amelyek a githubon érhetők el a `Microsoft/Cognitive-Face-Windows` adattárból. Ez a minta alkalmazás olyan mappát tartalmaz, `/Data`, amely több rendszerképet tartalmaz. Ezt a tárházat a Computer Vision minta alkalmazáshoz tartozó módszerekkel is rekurzív módon klónozott.
 
 Ha például egy parancssorból szeretné rekurzív módon klónozott adattárat a Face minta alkalmazáshoz, futtassa a következő parancsot:
 
@@ -62,13 +62,13 @@ git clone --recurse-submodules https://github.com/Microsoft/Cognitive-Face-Windo
 
 Először a minta alkalmazást kell létrehoznia, hogy a Visual Studio fel tudja oldani a függőségeket, mielőtt futtatja vagy megtekinti a minta alkalmazást. A minta alkalmazás megnyitásához és létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg a Visual Studio- `/Sample-WPF/VisionAPI-WPF-Samples.sln`megoldás fájlját a Visual Studióban.
+1. Nyissa meg a Visual Studio-megoldás fájlját `/Sample-WPF/VisionAPI-WPF-Samples.sln`a Visual Studióban.
 1. Győződjön meg arról, hogy a Visual Studio-megoldás két projektet tartalmaz:  
 
    * SampleUserControlLibrary
-   * VisionAPI-WPF-Samples  
+   * VisionAPI-WPF – minták  
 
-   Ha a SampleUserControlLibrary-projekt nem érhető el, ellenőrizze, hogy a `Microsoft/Cognitive-Vision-Windows` tárházat rekurzív módon klónozotta-e.
+   Ha a SampleUserControlLibrary-projekt nem érhető el, győződjön meg arról, hogy a `Microsoft/Cognitive-Vision-Windows` adattár rekurzív klónozása megtörténik.
 1. A Visual Studióban nyomja le a CTRL + SHIFT + B billentyűkombinációt, vagy válassza a **Létrehozás** elemet a menüszalag menüből, majd válassza a **megoldás létrehozása** lehetőséget a megoldás felépítéséhez.
 
 ## <a name="run-and-interact-with-the-sample-app"></a>A minta alkalmazás futtatása és használata
@@ -77,19 +77,19 @@ A minta alkalmazást futtatva megtekintheti, hogyan működik együtt Önnel és
 
 1. A Build befejezése után nyomja le az **F5** billentyűt, vagy a menüszalag menüjében válassza a **hibakeresés** lehetőséget, majd válassza a **hibakeresés elindítása** lehetőséget a minta alkalmazás futtatásához.
 1. Amikor megjelenik a minta alkalmazás, válassza az **előfizetés-kulcskezelő** lehetőséget a navigációs ablaktáblán az előfizetés-kulcs kezelése lap megjelenítéséhez.
-   ![Előfizetés-kulcs kezelése lap](../Images/Vision_UI_Subscription.PNG)  
+   ![az előfizetési kulcs kezelése lap](../Images/Vision_UI_Subscription.PNG)  
 1. Adja meg az előfizetési kulcsot az **előfizetési kulcsban**.
 1. Adja meg a végpont URL-címét a **végpontban**.  
-   Ha például az Computer Vision ingyenes próbaverziójában használja az előfizetési kulcsot, adja meg a következő végpont URL-címét:`https://westcentralus.api.cognitive.microsoft.com`  
+   Ha például az Computer Vision ingyenes próbaverziójában használja az előfizetési kulcsot, adja meg a következő végpont URL-címét: `https://westcentralus.api.cognitive.microsoft.com`  
    [!INCLUDE [Custom subdomains notice](../../../../includes/cognitive-services-custom-subdomains-note.md)]
 1. Ha nem szeretné megadni az előfizetési kulcsot és a végponti URL-címet a minta alkalmazás következő futtatásakor, válassza a **beállítás mentése** lehetőséget, hogy az előfizetési kulcs és a végpont URL-címét mentse a számítógépre. Ha törölni szeretné a korábban mentett előfizetési kulcsot és a végpont URL-címét, válassza a **beállítás törlése**lehetőséget.
 
    > [!NOTE]
-   > A minta alkalmazás elkülönített tárolót használ, `System.IO.IsolatedStorage`és az előfizetési kulcs és a végpont URL-címének tárolásához.
+   > A minta alkalmazás elkülönített tárterületet használ, és `System.IO.IsolatedStorage`az előfizetési kulcs és a végpont URL-címének tárolásához.
 
 1. A navigációs ablaktáblán válassza **a forgatókönyv lehetőséget** , válassza ki a minta alkalmazáshoz jelenleg mellékelt forgatókönyvek egyikét:  
 
-   | Forgatókönyv | Leírás |
+   | Alkalmazási helyzet | Leírás |
    |----------|-------------|
    |Rendszerkép elemzése | A [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) művelettel elemzi a helyi vagy a távoli rendszerképeket. Kiválaszthatja az elemzés vizuális funkcióit és nyelvét, és megtekintheti a képet és az eredményeket is.  |
    |Rendszerkép elemzése a tartományi modellel | A [tartománynév-specifikus modellek](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fd) művelettel sorolja fel azokat a tartományi modelleket, amelyekről kiválaszthatja a tartományt, valamint a [tartomány-specifikus tartalom felismerése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e200) műveletet egy helyi vagy távoli rendszerkép elemzéséhez a kiválasztott tartományi modell használatával. Megadhatja az elemzés nyelvét is. |
@@ -100,7 +100,7 @@ A minta alkalmazást futtatva megtekintheti, hogyan működik együtt Önnel és
    |Miniatűr beolvasása | A [miniatűr beolvasása](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fb) művelettel egy helyi vagy távoli rendszerkép miniatűrjét állítja elő. |
 
    Az alábbi képernyőfelvételen a képelemzési forgatókönyvhöz megadott oldal látható, a minta-rendszerkép elemzése után.
-   ![Képernyőkép a rendszerkép elemzése lapról](../Images/Analyze_Image_Example.PNG)
+   ![képernyőkép a rendszerkép elemzése lapról](../Images/Analyze_Image_Example.PNG)
 
 ## <a name="explore-the-sample-app"></a>A minta alkalmazás megismerése
 
@@ -114,34 +114,34 @@ A Computer Vision minta alkalmazáshoz készült Visual Studio-megoldás két pr
     Egy olyan oldal, amely szabványosított elrendezést biztosít a minta alkalmazás előfizetési kulcsának és végponti URL-címének megadásához. A Computer Vision minta alkalmazás ezen a lapon kezelheti a forgatókönyv lapjai által használt előfizetési kulcsot és végpont URL-címét.
   * VideoResultControl  
     UserControl vezérlő, amely szabványosított bemutatót biztosít a videóval kapcsolatos információkhoz. A Computer Vision minta alkalmazás nem használja ezt a vezérlőt.
-* VisionAPI-WPF-Samples  
+* VisionAPI-WPF – minták  
   A Computer Vision minta alkalmazás fő projektje, ez a projekt a Computer Vision érdekes funkcióit tartalmazza. A projekt a következőket tartalmazza:
-  * AnalyzeInDomainPage.xaml  
+  * AnalyzeInDomainPage. XAML  
     Az elemzés rendszerképének a tartományi modellel kapcsolatos forgatókönyvhöz tartozó lapja.
-  * AnalyzeImage.xaml  
+  * AnalyzeImage. XAML  
     A rendszerkép elemzése forgatókönyv forgatókönyv lapja.
-  * DescribePage.xaml  
+  * DescribePage. XAML  
     A rendszerkép leírására szolgáló forgatókönyv lapja.
   * ImageScenarioPage.cs  
     A ImageScenarioPage osztály, amelyből a rendszer a minta alkalmazás összes forgatókönyv lapját származtatja. Ez az osztály kezeli a funkciókat, például a hitelesítő adatok megadását és a kimenet formázását, amelyet az összes forgatókönyv oldalai megosztanak.
   * MainWindow.xaml  
     A minta alkalmazás főablaka a SampleScenarios vezérlőelem használatával mutatja be a SubscriptionKeyPage és a forgatókönyvek lapjait.
-  * OCRPage.xaml  
+  * OCRPage. XAML  
     A szövegfelismerés (OCR) forgatókönyvhöz tartozó forgatókönyv lapja.
   * RecognizeLanguage.cs  
     A RecognizeLanguage osztály, amely információt nyújt a minta alkalmazás különböző módszerei által támogatott nyelvekről.
-  * TagsPage.xaml  
+  * TagsPage. XAML  
     A címkék előállítására szolgáló forgatókönyv lapja.
-  * TextRecognitionPage.xaml  
+  * TextRecognitionPage. XAML  
     A szövegfelismerés v2 (angol) forgatókönyvhöz tartozó forgatókönyv lapja.
-  * ThumbnailPage.xaml  
+  * ThumbnailPage. XAML  
     A miniatűr beolvasása forgatókönyv forgatókönyv lapja.
 
 ### <a name="explore-the-sample-code"></a>A mintakód megismerése
 
-A mintakód kulcsfontosságú részeit olyan megjegyzési blokkokkal együtt kell kialakítani `KEY SAMPLE CODE STARTS HERE` `KEY SAMPLE CODE ENDS HERE`, amelyek a-val kezdődnek, és a végére kerülnek, hogy könnyebben felderíthető legyen a minta alkalmazás. A mintakód ezen kulcsfontosságú részei tartalmazzák a legfontosabb tudnivalókat a Computer Vision API ügyféloldali kódtár különböző feladatok elvégzéséhez való használatának megismeréséhez. A Visual Studióban `KEY SAMPLE CODE STARTS HERE` megkeresheti a Computer Vision minta alkalmazásban található kód leglényegesebb részei közötti váltást. 
+A mintakód kulcsfontosságú részeit olyan megjegyzési blokkokkal együtt kell kialakítani, amelyek a `KEY SAMPLE CODE STARTS HERE` és az `KEY SAMPLE CODE ENDS HERE`-vel kezdődnek, így könnyebben megismerheti a minta alkalmazást. A mintakód ezen kulcsfontosságú részei tartalmazzák a legfontosabb tudnivalókat a Computer Vision API ügyféloldali kódtár különböző feladatok elvégzéséhez való használatának megismeréséhez. A Visual Studióban `KEY SAMPLE CODE STARTS HERE` kereshet úgy, hogy a Computer Vision minta alkalmazásban a kód legfontosabb részei között mozog. 
 
-Például a `UploadAndAnalyzeImageAsync` AnalyzePage. XAML elemben látható és azt tartalmazó metódus azt mutatja be, hogyan használható az ügyféloldali kódtár egy helyi rendszerkép elemzéséhez a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódus meghívásával.
+Például a AnalyzePage. XAML elemben látható és azt tartalmazó `UploadAndAnalyzeImageAsync` metódus azt mutatja be, hogyan használható az ügyféloldali kódtár egy helyi rendszerkép elemzéséhez a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódus meghívásával.
 
 ```csharp
 private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePath)
@@ -178,9 +178,9 @@ private async Task<ImageAnalysis> UploadAndAnalyzeImageAsync(string imageFilePat
 
 ### <a name="explore-the-client-library"></a>Az ügyféloldali kódtár megismerése
 
-Ez a minta alkalmazás a Computer Vision API ügyféloldali kódtárat használja, C# amely egy vékony ügyfél-burkoló az Azure Cognitive Services Computer Vision APIhoz. Az ügyféloldali kódtár a [Microsoft. Azure. CognitiveServices. vízió. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) csomagban található NuGet érhető el. A Visual Studio alkalmazás létrehozásakor a megfelelő NuGet-csomagból beolvasta az ügyféloldali kódtárat. Az ügyféloldali kódtár `/ClientLibrary` forráskódját a `Microsoft/Cognitive-Vision-Windows` tárház mappájában is megtekintheti.
+Ez a minta alkalmazás a Computer Vision API ügyféloldali kódtárat használja, C# amely egy vékony ügyfél-burkoló az Azure Cognitive Services Computer Vision APIhoz. Az ügyféloldali kódtár a [Microsoft. Azure. CognitiveServices. vízió. ComputerVision](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.ComputerVision/) csomagban található NuGet érhető el. A Visual Studio alkalmazás létrehozásakor a megfelelő NuGet-csomagból beolvasta az ügyféloldali kódtárat. Az ügyféloldali kódtár forráskódját az `Microsoft/Cognitive-Vision-Windows` adattár `/ClientLibrary` mappájába is megtekintheti.
 
-Az `ComputerVisionClient` ügyféloldali függvénytár működési központjai az osztályban, a `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` névtérben, míg az `ComputerVisionClient` osztály által a Computer Vision való interakció során használt modellek a `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` névtérben találhatók. A minta alkalmazásban található különféle XAML-forgatókönyvek oldalain a következő `using` irányelvek találhatók meg ezekhez a névterekhez:
+Az ügyféloldali függvénytár a `ComputerVisionClient` osztály, a `Microsoft.Azure.CognitiveServices.Vision.ComputerVision` névtérben, míg a `ComputerVisionClient` osztály által a `Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models` névtérben való Computer Vision interakció során használt modelleket tartalmazza. A minta alkalmazásban található különféle XAML-forgatókönyvek oldalain a következő `using` irányelvek találhatók meg ezekhez a névterekhez:
 
 ```csharp
 // -----------------------------------------------------------------------
@@ -194,121 +194,121 @@ using Microsoft.Azure.CognitiveServices.Vision.ComputerVision.Models;
 // -----------------------------------------------------------------------
 ```
 
-A Computer Vision minta alkalmazásban található forgatókönyvek megismeréséhez tekintse meg a `ComputerVisionClient` osztály különböző módszereit.
+A `ComputerVisionClient` osztály különböző módszereiről részletesebben is tájékozódhat a Computer Vision-minta alkalmazásban található forgatókönyvek megismerése során.
 
 ## <a name="explore-the-analyze-image-scenario"></a>A képelemzési forgatókönyv megismerése
 
 Ezt a forgatókönyvet a AnalyzePage. XAML lap kezeli. Kiválaszthatja az elemzés vizuális funkcióit és nyelvét, és megtekintheti a képet és az eredményeket is. A forgatókönyv oldal ezt a következő módszerek egyikével hajtja végre a rendszerkép forrásától függően:
 
 * UploadAndAnalyzeImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.AnalyzeImageInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * AnalyzeUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.AnalyzeImageAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.AnalyzeImageAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndAnalyzeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban az olvasáshoz megadott `imageFilePath` helyi fájl `Stream`, majd beolvassa a forgatókönyv oldalon kiválasztott vizuális funkciókat és nyelveket. Meghívja a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódust, `Stream` `ImageAnalysis` átadja a fájlt, a vizualizáció funkcióit és a nyelvet, majd az eredményt példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndAnalyzeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ban megadott helyi fájl `Stream`ként való olvasáshoz, majd beolvassa a forgatókönyv oldalon kiválasztott vizuális funkciókat és nyelveket. Meghívja a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódust, átadja a fájl `Stream`ét, a vizualizáció funkcióit és a nyelvet, majd az eredményt `ImageAnalysis` példányként adja vissza. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `AnalyzeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Beolvassa a forgatókönyv oldalon kiválasztott vizuális funkciókat és nyelveket. Meghívja a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódust, átadja a kép URL-címét, a vizualizáció funkcióit és a nyelvet, majd az `ImageAnalysis` eredményt példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `AnalyzeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Beolvassa a forgatókönyv oldalon kiválasztott vizuális funkciókat és nyelveket. Meghívja a `ComputerVisionClient.AnalyzeImageInStreamAsync` metódust, átadja a kép URL-címét, a vizualizáció funkcióit és a nyelvet, majd visszaküldi az eredményt `ImageAnalysis` példányként. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="explore-the-analyze-image-with-domain-model-scenario"></a>A rendszerkép elemzése a tartományi modell forgatókönyvével
 
-Ezt a forgatókönyvet a AnalyzeInDomainPage. XAML lap kezeli. Kiválaszthat egy tartományi modellt, például `celebrities` a vagy `landmarks`a nyelvet, és elvégezheti a rendszerkép tartomány-specifikus elemzését, és megtekintheti a képet és az eredményeket is. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
+Ezt a forgatókönyvet a AnalyzeInDomainPage. XAML lap kezeli. Kiválaszthat egy tartományi modellt, például `celebrities` vagy `landmarks`, valamint a nyelvet, hogy végrehajtsa a rendszerkép tartomány-specifikus elemzését, és megtekintse a képet és az eredményeket is. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * GetAvailableDomainModelsAsync  
-  Ez a módszer beolvassa az elérhető tartományi modellek listáját a Computer Visionból, `_domainModelComboBox` és feltölti az oldalon lévő kombinált lista `ComputerVisionClient.ListModelsAsync` vezérlőelemet a metódus használatával.
+  Ez a módszer beolvassa az elérhető tartományi modellek listáját a Computer Visionból, és az `ComputerVisionClient.ListModelsAsync` metódus használatával tölti fel az `_domainModelComboBox` kombinált lista vezérlőelemet az oldalon.
 * UploadAndAnalyzeInDomainImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * AnalyzeInDomainUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.AnalyzeImageByDomainAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.AnalyzeImageByDomainAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndAnalyzeInDomainImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban az olvasáshoz `imageFilePath` `Stream`megadott helyi fájl, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metódust, `Stream` átadja a fájlt, a tartományi modell nevét és a nyelvet, majd visszaküldi az eredményt egy `DomainModelResults` példányként. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndAnalyzeInDomainImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ban megadott helyi fájl `Stream`ként való olvasáshoz, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.AnalyzeImageByDomainInStreamAsync` metódust, átadja a fájl `Stream`ét, a tartományi modell nevét és a nyelvet, majd az eredményt `DomainModelResults` példányként adja vissza. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `AnalyzeInDomainUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.AnalyzeImageByDomainAsync` metódust, átadja a kép URL-címét, a vizualizáció funkcióit és a nyelvet, majd az `DomainModelResults` eredményt példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `AnalyzeInDomainUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.AnalyzeImageByDomainAsync` metódust, átadja a kép URL-címét, a vizualizáció funkcióit és a nyelvet, majd visszaküldi az eredményt `DomainModelResults` példányként. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="explore-the-describe-image-scenario"></a>Fedezze fel a képleírási forgatókönyvet
 
 Ezt a forgatókönyvet a DescribePage. XAML lap kezeli. Kiválaszthat egy nyelvet a rendszerkép egy ember által olvasható leírásának létrehozásához, és megtekintheti a képet és az eredményeket is. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * UploadAndDescribeImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.DescribeImageInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.DescribeImageInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * DescribeUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.DescribeImageAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.DescribeImageAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndDescribeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban az olvasáshoz `imageFilePath` `Stream`megadott helyi fájl, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.DescribeImageInStreamAsync` metódust, `Stream` továbbítja a fájlt, a jelöltek maximális számát (ebben az esetben 3) és a nyelvet, majd `ImageDescription` visszaadja az eredményt példányként. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndDescribeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ban megadott helyi fájl `Stream`ként való olvasáshoz, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.DescribeImageInStreamAsync` metódust, átadja a fájl `Stream`ét, a jelöltek maximális számát (ebben az esetben 3) és a nyelvet, majd az eredményt `ImageDescription` példányként adja vissza. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `DescribeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.DescribeImageAsync` metódust, átadja a képurl-címet, a jelöltek maximális számát (ebben az esetben 3) és a nyelvet, majd az eredményt `ImageDescription` példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `DescribeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.DescribeImageAsync` metódust, átadja a képurl-címet, a jelöltek maximális számát (ebben az esetben 3) és a nyelvet, majd visszaküldi az eredményt `ImageDescription` példányként. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="explore-the-generate-tags-scenario"></a>A címkék létrehozásának forgatókönyvének megismerése
 
 Ezt a forgatókönyvet a TagsPage. XAML lap kezeli. Megadhat egy nyelvet a képek vizuális funkcióinak címkézéséhez, és megtekintheti a képet és az eredményeket is. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * UploadAndGetTagsForImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.TagImageInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.TagImageInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * GenerateTagsForUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.TagImageAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.TagImageAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndGetTagsForImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban az olvasáshoz `imageFilePath` `Stream`megadott helyi fájl, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.TagImageInStreamAsync` metódust, `Stream` átadja a fájlt és a nyelvet, majd az eredményt egy `TagResult` példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndGetTagsForImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ban megadott helyi fájl `Stream`ként való olvasáshoz, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.TagImageInStreamAsync` metódust, átadja az `Stream` a fájlhoz és a nyelvhez, majd az eredményt `TagResult` példányként adja vissza. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `GenerateTagsForUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.TagImageAsync` metódust, átadja a képurl-címet és a nyelvet, majd az `TagResult` eredményt példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `GenerateTagsForUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.TagImageAsync` metódust, átadja a képurl-címet és a nyelvet, majd az eredményt `TagResult` példányként adja vissza. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="explore-the-recognize-text-ocr-scenario"></a>A szövegfelismerés (OCR) forgatókönyv megismerése
 
 Ezt a forgatókönyvet a OCRPage. XAML lap kezeli. Kiválaszthat egy nyelvet, amellyel felismerheti és kinyerheti a képekből a nyomtatott szöveget, és megtekintheti a képet és az eredményeket is. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * UploadAndRecognizeImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * RecognizeUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.RecognizePrintedTextAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.RecognizePrintedTextAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndRecognizeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban az olvasáshoz `imageFilePath` `Stream`megadott helyi fájl, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metódust, amely azt jelzi, hogy a rendszer nem `Stream` észleli a tájolást, és továbbítja a fájlt és a nyelvet, `OcrResult` majd visszaadja az eredményt példányként. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndRecognizeImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ban megadott helyi fájl `Stream`ként való olvasáshoz, majd lekéri a forgatókönyv lapon kiválasztott nyelvet. Meghívja a `ComputerVisionClient.RecognizePrintedTextInStreamAsync` metódust, amely azt jelzi, hogy a rendszer nem észleli a tájolást, és átadja a fájlnak és a nyelvnek a `Stream`, majd `OcrResult` példányként visszaadja az eredményt. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `RecognizeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.RecognizePrintedTextAsync` metódust, amely azt jelzi, hogy a tájolás nem észlelhető, és a rendszer átadja a képurl-címet `OcrResult` és a nyelvet, majd az eredményt példányként adja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `RecognizeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. A forgatókönyv lapon kiválasztott nyelvet kapja meg. Meghívja a `ComputerVisionClient.RecognizePrintedTextAsync` metódust, amely azt jelzi, hogy a tájolás nem észlelhető, és a rendszer átadja a képurl-címet és a nyelvet, majd visszaküldi az eredményt `OcrResult` példányként. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="explore-the-recognize-text-v2-english-scenario"></a>Ismerkedés a szövegfelismerés v2 (angol) forgatókönyvvel
 
 Ezt a forgatókönyvet a TextRecognitionPage. XAML lap kezeli. Kiválaszthatja a felismerési módot és a nyelvet, hogy aszinkron módon felismerje és kibontsa a nyomtatott vagy kézírásos szövegeket egy képből, és a képet és az eredményeket is megtekintheti. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * UploadAndRecognizeImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `RecognizeAsync` metódusnak kell kódolni, és el kell juttatni a Computer Visionnak a metódus meghívásával `ComputerVisionClient.RecognizeTextInStreamAsync` , és egy paraméteres delegált átadásával a metódushoz.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `RecognizeAsync` metódus meghívásával, valamint a `ComputerVisionClient.RecognizeTextInStreamAsync` metódus paraméteres delegált átadásával kell elküldeni a Computer Visionnak.
 * RecognizeUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a `RecognizeAsync` metódus meghívásával, valamint a `ComputerVisionClient.RecognizeTextAsync` metódushoz tartozó paraméteres delegált átadásával Computer Vision küldi a rendszer.
-* RecognizeAsync ez a módszer kezeli a `UploadAndRecognizeImageAsync` és `RecognizeUrlAsync` a metódus aszinkron hívását, valamint az eredmények lekérdezését a `ComputerVisionClient.GetTextOperationResultAsync` metódus meghívásával.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `RecognizeAsync` metódus meghívásával, valamint a `ComputerVisionClient.RecognizeTextAsync` metódus paraméteres delegált átadásával küldi el Computer Vision.
+* RecognizeAsync ez a módszer kezeli a `UploadAndRecognizeImageAsync` és `RecognizeUrlAsync` metódusok aszinkron hívását, valamint az eredmények lekérdezését az `ComputerVisionClient.GetTextOperationResultAsync` metódus meghívásával.
 
 A Computer Vision minta alkalmazásban szereplő egyéb forgatókönyvekkel ellentétben ez a forgatókönyv aszinkron módon történik, hogy az egyik metódust a folyamat elindítására hívja meg, de egy másik metódust kell meghívni az állapot vizsgálatára és a folyamat eredményének visszaadására. Ebben a forgatókönyvben a logikai folyamat némileg eltér a többi forgatókönyvtől.
 
-A `UploadAndRecognizeImageAsync` metódus megnyitja a (z) alkalmazásban `imageFilePath` megadott helyi fájlt `Stream`, majd meghívja `RecognizeAsync` a metódust, és átadja a következőt:
+A `UploadAndRecognizeImageAsync` módszer megnyithatja a `imageFilePath`ban megadott helyi fájlt `Stream`ként való olvasáshoz, majd meghívja a `RecognizeAsync` metódust, amely átadja a következőt:
 
-* A `ComputerVisionClient.RecognizeTextInStreamAsync` metódus paraméteres aszinkron delegálására szolgáló lambda kifejezés, amely a `Stream` (z `GetHeadersAsyncFunc`) és a (z) és a (z) paraméterként a fájlhoz és az elismeréshez használható.
-* Lambda kifejezés egy delegált számára a `Operation-Location` válasz fejléc értékének beolvasásához a következőben:. `GetOperationUrlFunc`
+* Egy lambda kifejezés a `ComputerVisionClient.RecognizeTextInStreamAsync` metódus paraméteres aszinkron delegált számára, a fájl `Stream` és a felismerési mód paraméterként a `GetHeadersAsyncFunc`ban.
+* Lambda kifejezés egy delegált számára a `Operation-Location` válasz fejlécének értékének beolvasásához `GetOperationUrlFunc`ban.
 
-A `RecognizeUrlAsync` metódus meghívja `RecognizeAsync` a metódust, amely a következőket adja meg:
+A `RecognizeUrlAsync` metódus meghívja a `RecognizeAsync` metódust, amely a következőket adja meg:
 
-* A `ComputerVisionClient.RecognizeTextAsync` metódus paraméteres aszinkron delegálására szolgáló lambda kifejezés, a távoli rendszerkép URL-címével és a felismerési móddal paraméterként a alkalmazásban `GetHeadersAsyncFunc`.
-* Lambda kifejezés egy delegált számára a `Operation-Location` válasz fejléc értékének beolvasásához a következőben:. `GetOperationUrlFunc`
+* A `ComputerVisionClient.RecognizeTextAsync` metódus paraméteres aszinkron delegálására szolgáló lambda kifejezés, a távoli rendszerkép URL-címével és a felismerési móddal, `GetHeadersAsyncFunc`ban.
+* Lambda kifejezés egy delegált számára a `Operation-Location` válasz fejlécének értékének beolvasásához `GetOperationUrlFunc`ban.
 
-Ha a `RecognizeAsync` metódus elkészült, a kettő `UploadAndRecognizeImageAsync` és `RecognizeUrlAsync` a metódusok az eredményt egy `TextOperationResult` példányként adják vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+Ha a `RecognizeAsync` metódus elkészült, a `UploadAndRecognizeImageAsync` és `RecognizeUrlAsync` metódusok is `TextOperationResult` példányként adják vissza az eredményt. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `RecognizeAsync` metódus meghívja a paraméteres delegálást a ( `ComputerVisionClient.RecognizeTextInStreamAsync` z `ComputerVisionClient.RecognizeTextAsync` ) vagy az `GetHeadersAsyncFunc` átadott metódushoz, és megvárja a választ. A metódus ezután meghívja az átadott `GetOperationUrlFunc` delegált, hogy lekérje a `Operation-Location` válasz fejlécének értékét a válaszból. Ez az érték a Computer Visionból átadott `GetHeadersAsyncFunc` metódus eredményeinek lekéréséhez használt URL-cím.
+A `RecognizeAsync` metódus meghívja a paraméteres delegálást a `GetHeadersAsyncFunc` átadott `ComputerVisionClient.RecognizeTextInStreamAsync` vagy `ComputerVisionClient.RecognizeTextAsync` metódushoz, és megvárja a választ. A metódus ezután meghívja a `GetOperationUrlFunc` átadott delegált, hogy a válaszból beolvassa a `Operation-Location` válasz fejlécének értékét. Ez az érték a Computer Vision `GetHeadersAsyncFunc` átadott metódus eredményeinek lekéréséhez használt URL-cím.
 
-A `RecognizeAsync` metódus meghívja a `ComputerVisionClient.GetTextOperationResultAsync` metódust, és átadja a `Operation-Location` válasz fejlécből beolvasott URL-címet, hogy lekérje az adott metódus `GetHeadersAsyncFunc`állapotát és eredményét. Ha az állapot nem jelzi, hogy a metódus befejeződött, sikeres vagy sikertelen volt, a `RecognizeAsync` metódus háromszor `ComputerVisionClient.GetTextOperationResultAsync` többször hívja meg a hívást, és 3 másodpercet vár a hívások között. A `RecognizeAsync` metódus visszaadja az eredményeket a meghívott metódusnak.
+A `RecognizeAsync` metódus ezután meghívja a `ComputerVisionClient.GetTextOperationResultAsync` metódust, átadja a `Operation-Location` válasz fejlécében lekért URL-címet, hogy lekérje az `GetHeadersAsyncFunc`által átadott metódus állapotát és eredményét. Ha az állapot nem jelzi, hogy a metódus befejeződött, sikeres vagy sikertelen volt, akkor a `RecognizeAsync` metódus többször is meghívja a `ComputerVisionClient.GetTextOperationResultAsync` 3-szor, a hívások között 3 másodpercet vár. A `RecognizeAsync` metódus visszaadja az eredményeket a meghívott metódusnak.
 
 ## <a name="explore-the-get-thumbnail-scenario"></a>A miniatűr beolvasása forgatókönyv megismerése
 
 Ezt a forgatókönyvet a ThumbnailPage. XAML lap kezeli. Megadhatja, hogy az intelligens levágást kívánja-e használni, és megadja a kívánt magasságot és szélességet, a miniatűrt a rendszerképből, és a képet és az eredményeket is megtekintheti. A forgatókönyv oldal a következő metódusokat használja a rendszerkép forrásától függően:
 
 * UploadAndThumbnailImageAsync  
-  Ez a módszer helyi rendszerképekhez használatos, amelyekben a lemezképet a `Stream` `ComputerVisionClient.GenerateThumbnailInStreamAsync` metódusnak megfelelően kell kódolni, és a Computer Visionnak kell elküldeni.
+  Ez a módszer helyi lemezképekhez használatos, amelyekben a lemezképet `Stream`ként kell kódolni, és a `ComputerVisionClient.GenerateThumbnailInStreamAsync` metódus meghívásával el kell juttatni a Computer Visionnak.
 * ThumbnailUrlAsync  
-  Ez a módszer távoli lemezképekhez használatos, amelyben a lemezkép URL-címét a `ComputerVisionClient.GenerateThumbnailAsync` metódus meghívásával Computer Vision elküldjük.
+  Ez a módszer távoli lemezképekhez használatos, amelyekben a lemezkép URL-címét a rendszer a `ComputerVisionClient.GenerateThumbnailAsync` metódus meghívásával elküldi Computer Vision.
 
-A `UploadAndThumbnailImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a alkalmazásban `imageFilePath` az olvasáshoz `Stream`megadott helyi fájl. Meghívja a `ComputerVisionClient.GenerateThumbnailInStreamAsync` metódust, `Stream`átadja a szélességet, `Stream` a magasságot, a fájlt, valamint azt, hogy az intelligens levágást használja-e, majd visszaadja az eredményt a következőként:. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `UploadAndThumbnailImageAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Mivel a minta alkalmazás egy helyi rendszerképet elemez, el kell küldenie a rendszerkép tartalmát a Computer Visionba. Ekkor megnyílik a `imageFilePath`ben megadott helyi fájl `Stream`ként való olvasáshoz. Meghívja a `ComputerVisionClient.GenerateThumbnailInStreamAsync` metódust, a szélességet, a magasságot, a fájl `Stream`ét, valamint azt, hogy az intelligens levágást használja-e, majd `Stream`ként adja vissza az eredményt. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
-A `RecognizeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Meghívja a `ComputerVisionClient.GenerateThumbnailAsync` metódust, átadja a szélességet, a magasságot, a rendszerkép URL-címét, valamint azt, hogy az intelligens levágást használja-e, majd az eredményt `Stream`a értékre állítja vissza. Az `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon a visszaadott eredményeket mutatják.
+A `RecognizeUrlAsync` metódus új `ComputerVisionClient` példányt hoz létre a megadott előfizetési kulcs és végpont URL-cím használatával. Meghívja a `ComputerVisionClient.GenerateThumbnailAsync` metódust, átadva a szélességet, a magasságot, a rendszerkép URL-címét, valamint azt, hogy az intelligens levágást használja-e, majd visszaadja az eredményt `Stream`ként. A `ImageScenarioPage` osztálytól örökölt metódusok a forgatókönyv lapon visszaadott eredményeket jelenítik meg.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha már nincs rá szükség, törölje azt a mappát, amelybe a `Microsoft/Cognitive-Vision-Windows` tárházat klónozotta. Ha a minta lemezképek használatát választotta, törölje azt a mappát is, amelybe a `Microsoft/Cognitive-Face-Windows` tárházat klónozotta.
+Ha már nincs rá szükség, törölje azt a mappát, amelybe a `Microsoft/Cognitive-Vision-Windows` adattárt klónozotta. Ha a minta lemezképek használatát választotta, törölje azt a mappát is, amelybe a `Microsoft/Cognitive-Face-Windows` tárházat klónozotta.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Ismerkedés a Face API](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)
+> [Ismerkedés a Face Service szolgáltatással](../../Face/Tutorials/FaceAPIinCSharpTutorial.md)

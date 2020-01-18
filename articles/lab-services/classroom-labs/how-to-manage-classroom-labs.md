@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 91469f27e1ca86650cf94fde5cff5d1864300183
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: ad7fd664f0dce08e4482b4fb2cba2831208396fc
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73606349"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264831"
 ---
 # <a name="manage-classroom-labs-in-azure-lab-services"></a>Tantermi laborok kezelése Azure Lab Services 
 Ez a cikk a tantermi laborok létrehozását és törlését ismerteti. Azt is bemutatja, hogyan tekintheti meg az összes osztályterem Labs-t egy labor-fiókban. 
@@ -90,7 +90,7 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
     2. Ha az összes virtuális gépet egyszerre szeretné elindítani, válassza az **összes elindítása** lehetőséget az eszköztáron. 
     3. Egy adott virtuális gép indításához válassza a lefelé mutató nyilat az **állapotban**, majd kattintson a **Start**gombra. Egy virtuális gépet úgy is elindíthat, ha kijelöl egy virtuális gépet az első oszlopban, majd kiválasztja az **Indítás** lehetőséget az eszköztáron.                
 
-### <a name="vm-sizes"></a>A virtuális gépek mérete  
+### <a name="vm-sizes"></a>Virtuálisgép-méretek  
 
 | Méret | Processzormagok | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
@@ -101,6 +101,9 @@ A **Tesztkörnyezet-létrehozó** szerepkörrel kell rendelkeznie a tesztkörnye
 | Kis GPU (vizualizáció) | 6 | 56 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
 | Kis GPU (számítás) | 6 | 56 GB | Ez a méret a legjobb megoldás a nagy számítási igényű és hálózati igényű alkalmazások, például a mesterséges intelligencia és a Deep learning-alkalmazások számára. | 
 | Közepes GPU (vizualizáció) | 12 | 112 GB | Ez a méret a távoli vizualizációhoz, a folyamatos átvitelhez, a játékokhoz, a kódoláshoz, például az OpenGL és a DirectX keretrendszerekhez használható. | 
+
+> [!NOTE]
+> Azure Lab Services automatikusan telepíti és konfigurálja a szükséges GPU-illesztőprogramokat, amikor GPU-rendszerképekkel rendelkező labort hoz létre.  
 
 ## <a name="view-all-classroom-labs"></a>Az összes tantermi labor megtekintése
 1. Navigáljon [Azure Lab Services portálra](https://labs.azure.com).
@@ -128,7 +131,7 @@ Ehhez a legördülő listából új labort is létrehozhat az **új Labor** hasz
 
 Ha másik labor-fiókra szeretne váltani, válassza a labor fiók melletti legördülő listát, és válassza ki a másik labor-fiókot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [A labor tulajdonosaként hozzon létre és tegyen közzé sablonokat](how-to-create-manage-template.md)

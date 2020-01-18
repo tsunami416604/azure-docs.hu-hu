@@ -1,5 +1,5 @@
 ---
-title: Tekintse meg a havi becsült tesztkörnyezet-trendet a Azure DevTest Labsban | Microsoft Docs
+title: Tekintse meg a havi becsült tesztkörnyezet Azure DevTest Labs
 description: Ismerje meg a Azure DevTest Labs havi becsült költség trend diagramot.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/07/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 247327d001342fd0e2943ae7cf010e648761cdaa
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 15ddaa6c73cedb32d920ef943627831c1e9b378b
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976344"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169628"
 ---
 # <a name="track-costs-associated-with-a-lab-in-azure-devtest-labs"></a>Laborhoz kapcsolódó költségek nyomon követése Azure DevTest Labs
 Ez a cikk a labor díjszabásának nyomon követésére vonatkozó információkat tartalmaz. Bemutatja, hogyan tekintheti meg az aktuális naptári hónap becsült Cost Trentát a laborhoz. A cikk azt is bemutatja, hogyan tekintheti meg az erőforrásokra vonatkozó havi költségeket a laborban.

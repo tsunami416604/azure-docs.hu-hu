@@ -1,5 +1,5 @@
 ---
-title: Személyes adatok törlése és exportálása a Azure DevTest Labsból | Microsoft Docs
+title: Személyes adatok törlése és exportálása Azure DevTest Labs
 description: Megtudhatja, hogyan törölheti és exportálhatja a személyes adatait az Azure DevLast Labs szolgáltatásból a Általános adatvédelmi rendelet (GDPR) alatti kötelezettségek támogatásához.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/19/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 82ab8ef2e444b71f41fbbd87e4e9f8669e83e508
-ms.sourcegitcommit: c71306fb197b433f7b7d23662d013eaae269dc9c
+ms.openlocfilehash: c87e2fb534480bbf9bbe625d67782e5a11eda18c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68371172"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169687"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése Azure DevTest Labs
 Ez a cikk a személyes adatok Azure DevTest Labs szolgáltatásból történő törlésének és exportálásának lépéseit ismerteti. 
@@ -39,11 +39,11 @@ A DevTest Labs a felhasználói e-mail-cím használatával küldi el az e-maile
 ### <a name="user-object-id"></a>Felhasználói objektum azonosítója
 A DevTest Labs a felhasználói objektum AZONOSÍTÓjának használatával jeleníti meg a havi költségeket és a költségeket az erőforrás-információk alapján a laboratóriumi rendszergazdáknak. Lehetővé teszi számukra a költségek nyomon követését és a tesztkörnyezet küszöbértékének kezelését. 
 
-**Az aktuális naptári hónap becsült trendje:** 
-![becsült költségek trendje az aktuális naptári hónapra vonatkozóan](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
+**Az aktuális naptári hónap becsült költségekre vonatkozó trendje:** 
+![az aktuális naptári hónap becsült költségekkel kapcsolatos trendje](./media/personal-data-delete-export/estimated-cost-trend-per-month.png)
 
-**Becsült havi költségek erőforrás szerint:** 
-![becsült hónap – dátum erőforrás szerint](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
+A **becsült havi költségek erőforrás szerint:** 
+![becsült havi költségek az erőforrás alapján](./media/personal-data-delete-export/estimated-month-to-date-cost-by-resource.png)
 
 
 ## <a name="why-do-we-need-this-personal-data"></a>Miért van szükségünk erre a személyes adatszolgáltatásra?
@@ -63,7 +63,7 @@ A személyes és laboratóriumi használati adatokat a Azure Portal vagy a Power
 ### <a name="azure-portal"></a>Azure Portal
 Labor-felhasználóként az DevTest Labs szolgáltatás által tárolt személyes értékekre is kérhet exportálást. Az Exportálás kérelmezéséhez navigáljon a **személyes adatai** lehetőségre a labor **Áttekintés** lapján. Válassza az **Exportálás kérése** gombot egy letölthető Excel-fájl létrehozásával a labor rendszergazdája Storage-fiókjában. Ezután kapcsolatba léphet a labor rendszergazdájával, és megtekintheti ezeket az adatfájlokat.
 
-1. A bal oldali menüben válassza a **személyes** adatértékek lehetőséget. 
+1. A bal oldali menüben válassza a **személyes adatértékek** lehetőséget. 
 
     ![Személyes adatoldal](./media/personal-data-delete-export/personal-data-page.png)
 2. Válassza ki a labort tartalmazó **erőforráscsoportot** .
@@ -75,7 +75,7 @@ Labor-felhasználóként az DevTest Labs szolgáltatás által tárolt személye
     ![Blobok csempe kiválasztása](./media/personal-data-delete-export/select-blobs-tile.png)
 5. Válassza ki a **labresourceusage** nevű tárolót a tárolók listájában.
 
-    ![Blobtároló kiválasztása](./media/personal-data-delete-export/select-blob-container.png)
+    ![BLOB-tároló kiválasztása](./media/personal-data-delete-export/select-blob-container.png)
 6. Válassza ki a laborból elnevezett **mappát** . Ebben a mappában megtalálja a laborban található **lemezek** és **virtuális gépek** **CSV** -fájljait. Letöltheti ezeket a CSV-fájlokat, szűrheti a hozzáférést kérő labor felhasználó tartalmát, és megoszthatja velük.
 
     ![CSV-fájl letöltése](./media/personal-data-delete-export/download-csv-file.png)
@@ -173,7 +173,7 @@ A **virtualmachines. csv** fájl a következő adatoszlopokat tartalmazza:
 | CreatedTime | A virtuális gép létrehozásának dátuma és időpontja. |
 | DeletedDate | A virtuális gép törlésének dátuma és időpontja. Ha üres, a törlés még nem történt meg. |
 | ResourceOwner | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy lekérhető virtuális gép, vagy egy egyszerű szolgáltatásnév hozza létre. |
-| PricingTier | A virtuális gép díjszabási szintje |
+| pricingTier | A virtuális gép díjszabási szintje |
 | ResourceStatus | A virtuális gép rendelkezésre állási állapota. Aktív, ha még létezik vagy inaktív, ha a virtuális gépet törölték. |
 | ComputeResourceId | A virtuális gép számítási erőforrás-azonosítója teljesen minősített. |
 | Igényelhető | Értéke TRUE (igaz), ha a virtuális gép igényelhető virtuális gép | 
@@ -192,7 +192,7 @@ A **Disks. csv** fájlban található adatoszlopok alább láthatók:
 | ----------- | ----------- | 
 | SubscriptionId | A labort tartalmazó előfizetés azonosítója |
 | LabUId | A tesztkörnyezet GUID azonosítója |
-| LabName | A labor neve | 
+| LabName | a labor neve | 
 | LabResourceId | A tesztkörnyezet teljes erőforrás-azonosítója | 
 | ResourceGroupName | A labort tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
@@ -203,7 +203,7 @@ A **Disks. csv** fájlban található adatoszlopok alább láthatók:
 | ResourceStatus | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, törléskor. |
 | DiskBlobName | Az adatlemez blobjának neve. |
 | DiskSizeGB | Az adatlemez mérete |
-| Lemeztípus | Az adatlemez típusa. 0 standard, prémium szintű 1. |
+| DiskType | Az adatlemez típusa. 0 standard, prémium szintű 1. |
 | LeasedByVmId | Annak a virtuális gépnek az erőforrás-azonosítója, amelyhez az adatlemez hozzá lett csatolva. |
 
 
@@ -212,7 +212,7 @@ A **Disks. csv** fájlban található adatoszlopok alább láthatók:
 
 Az exportált adatai az eszközök, például SQL Server, Power BI stb. használatával kezelhetők és megjeleníthetők. Ez a funkció különösen akkor hasznos, ha a tesztkörnyezet használatát szeretné jelenteni a felügyeleti csapatának, amely esetleg nem ugyanazt az Azure-előfizetést használja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket: 
 
 - [Tesztkörnyezet szabályzatának beállítása](devtest-lab-get-started-with-lab-policies.md)

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Spotinst |} A Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhatja az egyszeri bejelentkezés az Azure Active Directory és Spotinst között.
+title: 'Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Spotinst | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Spotinst között.
 services: active-directory
 documentationCenter: na
 author: jeevansd
@@ -11,265 +11,198 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 04/10/2019
+ms.date: 01/03/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 817eecce6c2c1be273b47494e8ecc14180394796
-ms.sourcegitcommit: c105ccb7cfae6ee87f50f099a1c035623a2e239b
+ms.openlocfilehash: 5490ff6c6143dff258d74e013bb9d4c821aab625
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2019
-ms.locfileid: "67705333"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263285"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-spotinst"></a>Oktatóanyag: Az Azure Active Directory-integrációval rendelkező Spotinst
+# <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-spotinst"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Spotinst
 
-Ebben az oktatóanyagban elsajátíthatja, hogyan Spotinst integrálása az Azure Active Directory (Azure AD).
-Spotinst integrálása az Azure ad-ben nyújt a következő előnyökkel jár:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Spotinst a Azure Active Directory (Azure AD) szolgáltatással. Ha integrálja az Spotinst-t az Azure AD-vel, a következőket teheti:
 
-* Szabályozhatja, ki férhet hozzá Spotinst Azure AD-ben.
-* Engedélyezheti a felhasználóknak, hogy lehet automatikusan bejelentkezve Spotinst (egyszeri bejelentkezés) az Azure AD-fiókjukat.
-* A fiókok egyetlen központi helyen – az Azure Portalon kezelheti.
+* A Spotinst-hez hozzáférő Azure AD-beli vezérlés.
+* Lehetővé teheti, hogy a felhasználók automatikusan bejelentkezzenek a Spotinst az Azure AD-fiókjával.
+* A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
-Ha meg szeretné ismerni a SaaS-alkalmazás integráció az Azure ad-vel kapcsolatos további részletekért, lásd: [Mi az alkalmazás-hozzáférés és egyszeri bejelentkezés az Azure Active Directoryval](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis).
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse meg a [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Spotinst az Azure AD-integráció konfigurálásához a következőkre van szükség:
+Első lépésként a következő elemeket kell megadnia:
 
-* Az Azure AD-előfizetés. Ha nem rendelkezik egy Azure AD-környezetet, beszerezheti a [ingyenes fiókkal](https://azure.microsoft.com/free/)
-* Spotinst egyszeri bejelentkezés engedélyezve van az előfizetés
+* Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
+* Spotinst egyszeri bejelentkezés (SSO) engedélyezett előfizetése.
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés egy tesztkörnyezetben.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* Támogatja a Spotinst **SP és IDP** által kezdeményezett egyszeri bejelentkezés
+* A Spotinst támogatja **az SP és a identitásszolgáltató** által KEZDEMÉNYEZett SSO
 
-## <a name="adding-spotinst-from-the-gallery"></a>Spotinst hozzáadása a katalógusból
+## <a name="adding-spotinst-from-the-gallery"></a>Spotinst hozzáadása a gyűjteményből
 
-Az Azure AD integrálása a Spotinst konfigurálásához hozzá kell Spotinst a katalógusból a felügyelt SaaS-alkalmazások listájára.
+A Spotinst Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a Spotinst a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Spotinst hozzáadása a katalógusból, hajtsa végre az alábbi lépéseket:**
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
+1. A bal oldali navigációs panelen válassza ki a **Azure Active Directory** szolgáltatást.
+1. Navigáljon a **vállalati alkalmazások** elemre, majd válassza a **minden alkalmazás**lehetőséget.
+1. Új alkalmazás hozzáadásához válassza az **új alkalmazás**lehetőséget.
+1. A **Hozzáadás a** katalógusból szakaszban írja be a **Spotinst** kifejezést a keresőmezőbe.
+1. Válassza ki a **Spotinst** az eredmények panelen, majd adja hozzá az alkalmazást. Várjon néhány másodpercet, amíg az alkalmazás bekerül a bérlőbe.
 
-1. Az a **[az Azure portal](https://portal.azure.com)** , kattintson a bal oldali navigációs panelen, **Azure Active Directory** ikonra.
+## <a name="configure-and-test-azure-ad-single-sign-on-for-spotinst"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése a Spotinst
 
-    ![Az Azure Active Directory gomb](common/select-azuread.png)
+Konfigurálja és tesztelje az Azure AD SSO-t a Spotinst a **B. Simon**nevű teszt felhasználó használatával. Az egyszeri bejelentkezés működéséhez létre kell hoznia egy kapcsolati kapcsolatot egy Azure AD-felhasználó és a kapcsolódó felhasználó között a Spotinst-ben.
 
-2. Navigáljon a **vállalati alkalmazások** majd válassza ki a **minden alkalmazás** lehetőséget.
+Az Azure AD SSO és a Spotinst konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
-    ![A vállalati alkalmazások panelen](common/enterprise-applications.png)
+1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
+    * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
+    * **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
+1. **[SPOTINST SSO konfigurálása](#configure-spotinst-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    * **[Hozzon létre Spotinst-teszt felhasználót](#create-spotinst-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-Spotinst rendelkezik.
+1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
-3. Új alkalmazás hozzáadásához kattintson **új alkalmazás** gombra a párbeszédpanel tetején.
+## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
 
-    ![Az új alkalmazás gomb](common/add-new-app.png)
+Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a Azure Portalban.
 
-4. A Keresés mezőbe írja be a **Spotinst**válassza **Spotinst** eredmény panelen kattintson a **Hozzáadás** gombra kattintva vegye fel az alkalmazást.
+1. A [Azure Portal](https://portal.azure.com/) **Spotinst** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
+1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
-    ![Az eredmények listájában Spotinst](common/search-new-app.png)
+   ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés tesztelése és konfigurálása
+1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-Ebben a szakaszban, tesztelése és konfigurálása az Azure AD egyszeri bejelentkezés az Spotinst nevű tesztfelhasználó alapján **Britta Simon**.
-Az egyszeri bejelentkezés működjön egy Azure AD-felhasználót és a kapcsolódó felhasználó Spotinst hivatkozás kapcsolata kell létrehozni.
+    a. **További URL-címek beállításának**engedélyezése.
 
-Az Azure AD egyszeri bejelentkezés az Spotinst tesztelése és konfigurálása, hogy hajtsa végre a következő építőelemeit kell:
+    b. A **továbbítási állapot** szövegmezőbe írja be a következő értéket: `<ID>`
 
-1. **[Az Azure AD egyszeri bejelentkezés konfigurálása](#configure-azure-ad-single-sign-on)**  – ahhoz, hogy ez a funkció használatát a felhasználók számára.
-2. **[Spotinst egyszeri bejelentkezés konfigurálása](#configure-spotinst-single-sign-on)**  – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
-3. **[Hozzon létre egy Azure ad-ben tesztfelhasználót](#create-an-azure-ad-test-user)**  – az Azure AD egyszeri bejelentkezés az Britta Simon teszteléséhez.
-4. **[Rendelje hozzá az Azure ad-ben tesztfelhasználó](#assign-the-azure-ad-test-user)**  – Britta Simon használata az Azure AD egyszeri bejelentkezés engedélyezéséhez.
-5. **[Hozzon létre Spotinst tesztfelhasználót](#create-spotinst-test-user)**  – egy megfelelője a Britta Simon Spotinst, amely a felhasználó Azure ad-ben ábrázolása van csatolva van.
-6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)**  – győződjön meg arról, hogy működik-e a konfiguráció.
+1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépéseket, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
-
-Ebben a szakaszban engedélyeznie kell az Azure AD egyszeri bejelentkezés az Azure Portalon.
-
-Szeretné konfigurálni az Azure AD egyszeri bejelentkezés Spotinst, hajtsa végre az alábbi lépéseket:
-
-1. Az a [az Azure portal](https://portal.azure.com/), az a **Spotinst** alkalmazás integráció lapon jelölje be **egyszeri bejelentkezés**.
-
-    ![Egyszeri bejelentkezési hivatkozás konfigurálása](common/select-sso.png)
-
-2. Az a **egyszeri bejelentkezési módszer** párbeszédpanelen válassza **SAML/WS-Fed** módot az egyszeri bejelentkezés engedélyezése.
-
-    ![Egyszeri bejelentkezés kijelölési mód bekapcsolása](common/select-saml-option.png)
-
-3. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** ikonra kattintva nyissa meg a **alapszintű SAML-konfigurációja** párbeszédpanel.
-
-    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
-
-4. Az a **alapszintű SAML-konfigurációja** szakaszra, ha az alkalmazás a konfigurálni kívánt **Identitásszolgáltató** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
-
-    ![Spotinst tartomány és URL-címeket egyetlen bejelentkezési adatait](common/idp-preintegrated-relay.png)
-
-    a. Ellenőrizze **további URL-címet beállítani**.
-
-    b. Az a **továbbítási állapot** szövegmezőbe írja be egy értéket: `<ID>`
-
-5. Kattintson a **további URL-címet beállítani** , és hajtsa végre a következő lépést, ha az alkalmazás a konfigurálni kívánt **SP** kezdeményezett mód:
-
-    ![Spotinst tartomány és URL-címeket egyetlen bejelentkezési adatait](common/metadata-upload-additional-signon.png)
-
-    Az a **bejelentkezési URL-** szövegmezőbe írja be az URL-cím:  `https://console.spotinst.com/auth/saml`
+    A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet: `https://console.spotinst.com/auth/saml`
 
     > [!NOTE]
-    > A továbbítási állapot értéke nem valódi. Továbbítási állapot értéke frissíti a tényleges továbbítási állapot érték, amelynek az ismertetése az oktatóanyag későbbi részében.
+    > A továbbítási állapot értéke nem valós. A továbbítási állapot értékének a tényleges továbbítási állapot értékével kell frissítenie, amelyet később az oktatóanyag ismertet.
 
-6. Spotinst alkalmazás a SAML helyességi feltételek vár egy megadott formátumban. Konfigurálja a következő jogcímek ehhez az alkalmazáshoz. Ezek az attribútumok értékeinek kezelheti a **felhasználói attribútumok** szakasz alkalmazás integráció lapján. Az a **állítsa be egyszeri bejelentkezést az SAML** kattintson **szerkesztése** gombra kattintva nyissa meg a **felhasználói attribútumok** párbeszédpanel.
+1. Kattintson a **Mentés** gombra.
 
-    ![image](common/edit-attribute.png)
+1. A Spotinst alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-7. Az a **felhasználói jogcímek** szakaszában a **felhasználói attribútumok** párbeszédpanelen, a jogcímek szerkesztése használatával **Szerkesztés ikon** , vagy adja hozzá a jogcímek használatával **hozzáadása új jogcímet**SAML-jogkivonat attribútum beállítása, a fenti képen látható módon, és hajtsa végre az alábbi lépéseket: 
+    ![image](common/default-attributes.png)
 
-    | Name (Név) | Adatforrás-attribútum|
+1. A fentiek mellett a Spotinst alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
+
+    | Name (Név) | Forrás attribútum|
     | -----| --------------- |
-    | E-mail | user.mail |
-    | FirstName | user.givenname |
-    | LastName | user.surname |
+    | E-mail cím | User. mail |
+    | Keresztnév | User. givenName |
+    | Vezetéknév | felhasználó. vezetéknév |
 
-    a. Kattintson a **hozzáadása új jogcímet** megnyitásához a **kezelheti a felhasználói jogcímek** párbeszédpanel.
+1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
-    ![image](common/new-save-attribute.png)
+    ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-    ![image](common/new-attribute-details.png)
+1. A **Spotinst beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    b. Az a **neve** szövegmezőbe írja be azon attribútum nevét, a sorhoz látható.
+    ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-    c. Hagyja a **Namespace** üres.
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
-    d. Válassza ki a forrás, **attribútum**.
+Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. Simon néven.
 
-    e. Az a **forrásattribútum** list, írja be az adott sorhoz feltüntetett attribútumot értéket.
+1. A Azure Portal bal oldali paneljén válassza a **Azure Active Directory**lehetőséget, válassza a **felhasználók**, majd a **minden felhasználó**lehetőséget.
+1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
+1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
+   1. A **Név** mezőbe írja a következőt: `B.Simon`.  
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
+   1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
-    f. Kattintson a **Ok**
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-    g. Kattintson a **Save** (Mentés) gombra.
+Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri bejelentkezést, ha hozzáférést biztosít a Spotinst.
 
-8. Az a **állítsa be egyszeri bejelentkezést az SAML** lap a **SAML-aláíró tanúsítvány** területén kattintson **letöltése** letöltéséhez a **összevonási metaadatainak XML**  a megadott lehetőségek közül a követelmény alapján, majd mentse el a számítógépen.
+1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, majd válassza a **minden alkalmazás**lehetőséget.
+1. Az alkalmazások listában válassza a **Spotinst**lehetőséget.
+1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-    ![A tanúsítvány letöltési hivatkozás](common/metadataxml.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
-9. Az a **Spotinst beállítása** területén másolja megfelelően a követelmény a megfelelő URL-címe.
+1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok** lehetőséget.
 
-    ![Másolja a konfigurációs URL-címek](common/copy-configuration-urls.png)
+    ![A felhasználó hozzáadása hivatkozás](common/add-assign-user.png)
 
-    a. Bejelentkezési URL
+1. A **felhasználók és csoportok** párbeszédpanelen válassza a felhasználók listából a **B. Simon** lehetőséget, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
+1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-    b. Azure AD-azonosító
+## <a name="configure-spotinst-sso"></a>Spotinst SSO konfigurálása
 
-    c. Kijelentkezési URL
+1. Egy másik böngészőablakban jelentkezzen be a Spotinst biztonsági rendszergazdaként.
 
-### <a name="configure-spotinst-single-sign-on"></a>Spotinst egyszeri bejelentkezés konfigurálása
+2. Kattintson a képernyő jobb felső részén található **felhasználó ikonra** , majd a **Beállítások**elemre.
 
-1. Egy másik böngészőablakban jelentkezzen be Spotinst egy biztonsági-rendszergazdaként.
+    ![Spotinst-beállítások](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-2. Kattintson a **felhasználói ikon** meg a képernyőn, majd kattintson a jobb felső **beállítások**.
+3. Kattintson a felül található **Biztonság** lapra, majd válassza az **identitás-szolgáltatók** lehetőséget, majd hajtsa végre a következő lépéseket:
 
-    ![Spotinst beállításai](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
+    ![Spotinst biztonság](./media/spotinst-tutorial/tutorial_spotinst_security.png)
 
-3. Kattintson a **biztonsági** felső lapot, majd **Identitásszolgáltatók** , és hajtsa végre az alábbi lépéseket:
+    a. Másolja a **továbbítási állapot** értékét a példányhoz, és illessze be a **továbbítási állapot** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![Spotinst biztonsági](./media/spotinst-tutorial/tutorial_spotinst_security.png)
-
-    a. Másolás a **továbbítási állapot** a példány értékét, és illessze be a **továbbítási állapot** szövegmezőjébe **alapszintű SAML-konfigurációja** szakaszban az Azure Portalon.
-
-    b. Kattintson a **Tallózás** Azure Portalról letöltött metaadatainak xml-fájl feltöltése
+    b. Kattintson a **Tallózás** gombra a letöltött metaadatok XML-fájljának feltöltéséhez Azure Portal
 
     c. Kattintson a **SAVE** (Mentés) gombra.
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-spotinst-test-user"></a>Spotinst-tesztelési felhasználó létrehozása
 
-Ez a szakasz célja az Azure Portalon Britta Simon nevű hozzon létre egy tesztfelhasználót.
+Ennek a szakasznak a célja egy Britta Simon nevű felhasználó létrehozása a Spotinst-ben.
 
-1. Az Azure Portalon, a bal oldali panelen válassza ki a **Azure Active Directory**válassza **felhasználók**, majd válassza ki **minden felhasználó**.
+1. Ha az alkalmazást az **SP** által kezdeményezett módban konfigurálta, hajtsa végre a következő lépéseket:
 
-    ![A "felhasználók és csoportok" és "Minden felhasználó" hivatkozások](common/users.png)
+   a. Egy másik böngészőablakban jelentkezzen be a Spotinst biztonsági rendszergazdaként.
 
-2. Válassza ki **új felhasználó** a képernyő tetején.
+   b. Kattintson a képernyő jobb felső részén található **felhasználó ikonra** , majd a **Beállítások**elemre.
 
-    ![Új felhasználó gomb](common/new-user.png)
+    ![Spotinst-beállítások](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
 
-3. A felhasználó tulajdonságai között az alábbi lépések végrehajtásával.
+    c. Kattintson a **felhasználók** elemre, majd válassza a **felhasználó hozzáadása**elemet.
 
-    ![A felhasználó párbeszédpanel](common/user-properties.png)
+    ![Spotinst-beállítások](./media/spotinst-tutorial/adduser1.png)
 
-    a. Az a **neve** mezőbe írja be **BrittaSimon**.
-  
-    b. Az a **felhasználónév** mezőbe írja be `brittasimon@yourcompanydomain.extension`. Például: BrittaSimon@contoso.com
+    d. A felhasználó hozzáadása szakaszban hajtsa végre a következő lépéseket:
 
-    c. Válassza ki **Show jelszó** jelölje be a jelölőnégyzetet, és jegyezze fel az értékkel, a jelszó mező jelenik meg.
+    ![Spotinst-beállítások](./media/spotinst-tutorial/adduser2.png)
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    * A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét (például **BrittaSimon**).
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+    * Az **e-mail** szövegmezőbe írja be a felhasználó e-mail-címét, például `brittasimon\@contoso.com`.
 
-Ebben a szakaszban engedélyezze Britta Simon által biztosított hozzáférés Spotinst Azure egyszeri bejelentkezés használatára.
+    * Válassza ki a szervezeti **szerepkör, a fiók szerepkör és a fiókok**szervezetre vonatkozó részleteit.
 
-1. Az Azure Portalon válassza ki a **vállalati alkalmazások**, jelölje be **minden alkalmazás**, majd **Spotinst**.
+2. Ha az alkalmazást a **identitásszolgáltató** által kezdeményezett módban konfigurálta, akkor ebben a szakaszban nincs erre a műveletre vonatkozó elem. A Spotinst támogatja az igény szerinti üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Új felhasználó jön létre a Spotinst elérésére tett kísérlet során, ha még nem létezik.
 
-    ![Vállalati alkalmazások panelen](common/enterprise-applications.png)
+## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
-2. Az alkalmazások listájában jelölje ki a **Spotinst**.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-    ![Az alkalmazások listáját a Spotinst hivatkozásra](common/all-applications.png)
-
-3. A bal oldali menüben válassza **felhasználók és csoportok**.
-
-    ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
-
-4. Kattintson a **felhasználó hozzáadása** gombra, majd válassza **felhasználók és csoportok** a a **hozzárendelés hozzáadása** párbeszédpanel.
-
-    ![A hozzárendelés hozzáadása panel](common/add-assign-user.png)
-
-5. Az a **felhasználók és csoportok** párbeszédpanelen válassza **Britta Simon** a felhasználók listában, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-6. Ha minden szerepkör értéket várt a a SAML helyességi feltétel, majd a a **Szerepkörválasztás** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó a listából, majd kattintson a **kiválasztása** gombra a képernyő alján.
-
-7. Az a **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelése** gombra.
-
-### <a name="create-spotinst-test-user"></a>Spotinst tesztfelhasználó létrehozása
-
-Ez a szakasz célja Spotinst Britta Simon nevű felhasználó létrehozásához.
-
-1. Ha konfigurálta az alkalmazás a **SP** kezdeményezett mód, hajtsa végre az alábbi lépéseket:
-
-   a. Egy másik böngészőablakban jelentkezzen be Spotinst egy biztonsági-rendszergazdaként.
-
-   b. Kattintson a **felhasználói ikon** meg a képernyőn, majd kattintson a jobb felső **beállítások**.
-
-    ![Spotinst beállításai](./media/spotinst-tutorial/tutorial_spotinst_settings.png)
-
-    c. Kattintson a **felhasználók** válassza **felhasználó hozzáadása**.
-
-    ![Spotinst beállításai](./media/spotinst-tutorial/adduser1.png)
-
-    d. A felhasználó hozzáadása szakaszról hajtsa végre a következő lépéseket:
-
-    ![Spotinst beállításai](./media/spotinst-tutorial/adduser2.png)
-
-    * Az a **teljes fájlvisszaállítási név** szövegmezőbe írja be például a felhasználó teljes nevét **BrittaSimon**.
-
-    * Az a **E-mail** szövegmezőbe írja be például a felhasználó e-mail-címe `brittasimon\@contoso.com`.
-
-    * Válassza ki a szervezet konkrét részletei a **szervezeti szerepkör, a fiók szerepkör és a fiókok**.
-
-2. Ha konfigurálta az alkalmazás a **Identitásszolgáltató** ott a kezdeményezett módban, nincs teendő ebben a szakaszban az Ön számára. Spotinst támogatja a just-in-time-kiépítés, amely alapértelmezésben engedélyezve van. Új felhasználó jön létre az Spotinst elérésére, ha még nem létezik tett kísérlet során.
-
-### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
-
-Ebben a szakaszban tesztelni az Azure AD egyszeri bejelentkezés beállításai a hozzáférési panelen.
-
-Ha a hozzáférési panelen a Spotinst csempére kattint, meg kell lehet automatikusan bejelentkezett a Spotinst, amelynek beállítása egyszeri bejelentkezés. A hozzáférési panelen kapcsolatos további információkért lásd: [Bevezetés a hozzáférési Panel használatába](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Spotinst csempére kattint, automatikusan be kell jelentkeznie arra a Spotinst, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 
-- [SaaS-alkalmazások integrálása az Azure Active Directory foglalkozó oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
+- [Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 
-- [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
+- [Mi az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 
-- [Mi az az Azure Active Directory feltételes hozzáférés?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+- [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
+
+- [A Spotinst kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
 

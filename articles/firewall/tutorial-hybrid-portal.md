@@ -5,15 +5,15 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 11/02/2019
+ms.date: 01/18/2020
 ms.author: victorh
 customer intent: As an administrator, I want to control network access from an on-premises network to an Azure virtual network.
-ms.openlocfilehash: 4a4fd2f89bc662f394b59aa6295c3a909cb8552b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b0847cda78c2e6d1df87eeaedc35850103840151
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73468467"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264729"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-in-a-hybrid-network-using-the-azure-portal"></a>Oktatóanyag: Azure Firewall üzembe helyezése és konfigurálása hibrid hálózaton a Azure Portal használatával
 
@@ -47,13 +47,15 @@ Ha az eljárás elvégzése helyett a Azure PowerShellt szeretné használni, te
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Három alapvető követelménynek kell teljesülnie, hogy ez a forgatókönyv megfelelően működjön:
+A hibrid hálózatok a sugaras architektúrát használják az Azure-virtuális hálózatok és a helyszíni hálózatok közötti forgalom irányítására. A sugaras architektúra a következő követelményekkel rendelkezik:
 
-- Egy felhasználó által megadott útvonal (UDR) a küllő alhálózaton, amely a Azure Firewall IP-címére mutat alapértelmezett átjáróként. A BGP-útvonalpropagálásnak **letiltott** állapotúnak kell lennie ebben az útválasztási táblázatban.
-- A központi átjáró alhálózatán található UDR a tűzfal IP-címére kell mutatnia a küllő hálózatok következő ugrásakor.
+- Állítsa be a **AllowGatewayTransit** -t, ha a VNet-hub VNet-küllőre van állítva. Egy sugaras hálózati architektúrában az átjáró áttelepítése lehetővé teszi, hogy a küllős virtuális hálózatok megosszák a VPN-átjárót a központban a VPN-átjárók minden küllős virtuális hálózatban való üzembe helyezése helyett. 
 
-   Nem szükséges UDR a Azure Firewall alhálózaton, mivel a BGP-ből tanulja meg az útvonalakat.
-- A VNet-Hub-tól a VNet-Spoke felé irányuló társviszony létesítésekor az **AllowGatewayTransit** beállítást, a VNet-Spoke-tól a VNet-Hub felé irányuló társviszony létesítésekor pedig a **UseRemoteGateways** beállítást adja meg.
+   Emellett az átjáróhoz csatlakoztatott virtuális hálózatokhoz vagy a helyszíni hálózatokhoz tartozó útvonalak automatikusan a virtuális hálózatok útválasztási tábláiba lesznek propagálva az átjáró átirányítása használatával. További információ: [VPN Gateway-átvitel konfigurálása virtuális hálózatokhoz](../vpn-gateway/vpn-gateway-peering-gateway-transit.md).
+
+- Állítsa be a **UseRemoteGateways** -t, amikor a társ VNet – VNet-hub. Ha a **UseRemoteGateways** be van állítva, és a távoli **AllowGatewayTransit** is be van állítva, a küllős virtuális hálózat a távoli virtuális hálózat átjáróit használja az átvitelhez.
+- Ahhoz, hogy a küllős alhálózat forgalmát a hub-tűzfalon keresztül irányítsa, szüksége van egy felhasználó által megadott útvonalra (UDR), amely a **BGP-útvonal propagálásának letiltása** beállítással a tűzfalra mutat. A **BGP-útvonal-propagálás letiltása** beállítás megakadályozza a küllős alhálózatok útvonal-eloszlását. Ezzel megelőzhető, hogy a megszerzett útvonalak ütköznek legyenek a UDR.
+- Konfiguráljon egy UDR a központi átjáró alhálózatán, amely a tűzfal IP-címére mutat a küllő hálózatok következő ugrásakor. Nem szükséges UDR a Azure Firewall alhálózaton, mivel a BGP-ből tanulja meg az útvonalakat.
 
 Az útvonalak létrehozásával kapcsolatos információkért lásd az oktatóanyag [Útvonalak létrehozása](#create-the-routes) című szakaszát.
 
@@ -149,9 +151,9 @@ Most telepítse a tűzfalat a tűzfal hub virtuális hálózatára.
 2. A bal oldali oszlopban válassza a **hálózatkezelés**, majd a **tűzfal**lehetőséget.
 4. A **Tűzfal létrehozása** oldalon konfigurálja a tűzfalat a következő táblázatban található értékekkel:
 
-   |Beállítás  |Érték  |
+   |Beállítás  |Value (Díj)  |
    |---------|---------|
-   |Előfizetés     |\<az Ön előfizetése\>|
+   |Előfizetést     |\<az Ön előfizetése\>|
    |Erőforráscsoport     |**FW-Hybrid-test** |
    |Name (Név)     |**AzFW01**|
    |Földrajzi egység     |Válassza a korábban használt helyet|
@@ -261,7 +263,7 @@ Hozza létre a helyszíni és a hub közötti virtuális hálózati kapcsolatoka
 
 Körülbelül öt perc múlva mindkét kapcsolat állapotát **csatlakoztatni**kell.
 
-![Átjáró kapcsolatai](media/tutorial-hybrid-portal/gateway-connections.png)
+![Átjárókapcsolatok](media/tutorial-hybrid-portal/gateway-connections.png)
 
 ## <a name="peer-the-hub-and-spoke-virtual-networks"></a>A hub és a küllős virtuális hálózatok egyenrangúak
 
@@ -446,7 +448,7 @@ A módosított szabályok ellenőrzése előtt zárja be a meglévő távoli asz
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rájuk szükség, törölje az **FW-Hybrid-Test** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépésben monitorozhatja az Azure Firewall naplóit.
 

@@ -1,5 +1,5 @@
 ---
-title: Használati beállítások konfigurálása a Azure Lab Services osztályterem Labs-ban | Microsoft Docs
+title: Használati beállítások konfigurálása a tanterem Labs-ban Azure Lab Services
 description: Megtudhatja, hogyan konfigurálhatja a laborhoz tartozó felhasználók számát, regisztrálhatja őket a laborban, meghatározhatja, hogy hány órát használhatnak a virtuális gép, és így tovább.
 services: lab-services
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/12/2019
+ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 0ab8d8688c7856eeae7d75527620c2b77ae78029
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 80e8bc47f6e6293d70bbc9fae888abdf5527fe93
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73584159"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169213"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
 Ez a cikk azt ismerteti, hogyan adhat hozzá felhasználókat a laborhoz, hogyan regisztrálhatja őket a laborban, hogy hány órát használhat a virtuális gép, és így tovább. 
@@ -60,7 +60,7 @@ Felhasználókat úgy is hozzáadhat, ha feltölt egy CSV-fájlt a felhasználó
 ## <a name="send-invitations-to-users"></a>Meghívók küldése a felhasználóknak
 A következő módszerek egyikével elküldheti a regisztrációs hivatkozást a tanulóknak. Az első módszer azt mutatja be, hogyan küldhet e-maileket a tanulóknak a regisztrációs hivatkozással és egy opcionális üzenettel. A második módszer azt mutatja be, hogyan kérheti le a másokkal megosztható regisztrációs hivatkozást a kívánt módon. 
 
-Ha a **hozzáférés korlátozása** engedélyezve van a laborban, csak a felhasználók listájában lévő felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. Ez a beállítás alapértelmezés szerint engedélyezve van. 
+Ha a **hozzáférés korlátozása** engedélyezve van a laborban, csak a felhasználók listájában lévő felhasználók használhatják a regisztrációs hivatkozást a laborba való regisztrációhoz. A beállítás alapértelmezés szerint engedélyezett. 
 
 ### <a name="invite-all-users"></a>Minden felhasználó meghívása
 1. Váltson a **felhasználók** nézetre, ha már nincs a lapon, és válassza az **összes meghívása** lehetőséget az eszköztáron. 
@@ -171,7 +171,7 @@ A **bejelentkezési beállítások** lapon válassza a **Bejelentkezés a github
 
 Végül a rendszer kéri, hogy hozzon létre egy Microsoft-fiók, amely a GitHub-fiókjához van csatolva. Automatikusan megtörténik, amikor a tanuló kiválasztja a **Next (tovább**) lehetőséget.  Ezután a tanuló azonnal bejelentkezik, és csatlakozik az osztályterem laborhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Rendszergazdaként, labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

@@ -1,7 +1,7 @@
 ---
-title: 'Példa: Valós idejű videók elemzése – Face API'
+title: 'Példa: valós idejű videó elemzése – Face'
 titleSuffix: Azure Cognitive Services
-description: A Face API segítségével közel valós idejű elemzést végezhet az élő videó-adatfolyamból vett képkockákon.
+description: A Face szolgáltatással közel valós idejű elemzést végezhet az élő videó streamből készített kereteken.
 services: cognitive-services
 author: SteveMSFT
 manager: nitinme
@@ -10,12 +10,12 @@ ms.subservice: face-api
 ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
-ms.openlocfilehash: e2166354fb45d24e117156e917f4da726ee8406f
-ms.sourcegitcommit: 8e1fb03a9c3ad0fc3fd4d6c111598aa74e0b9bd4
+ms.openlocfilehash: ab3f596000216e8555bb84d0d47aff9a6e969eeb
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70114346"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169904"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Példa: Videók valós idejű elemzése
 
@@ -142,7 +142,7 @@ Ahhoz, hogy az alkalmazás a lehető leggyorsabban elérhető legyen, a fent ism
 
 A könyvtár tartalmazza a FrameGrabber osztályt, amely a fentiekben ismertetett gyártó-fogyasztói rendszer megvalósításával dolgozza fel a képkockákat egy webkamera használatával. A felhasználó megadhatja az API-hívás pontos formáját, és az osztály az eseményeket használva lehetővé teszi, hogy a hívó kód megismerje az új keret beszerzését vagy egy új elemzési eredmény elérhetővé tételét.
 
-Az egyes lehetőségek bemutatására a kódtárat használó két mintaalkalmazás érhető el. Az első egy egyszerű konzolos alkalmazás, és az alább látható egyszerűsített verzió. Az alkalmazás begyűjti a képkockákat az alapértelmezett webkameráról, és továbbítja azokat a Face API-ra arcfelismerésre.
+Az egyes lehetőségek bemutatására a kódtárat használó két mintaalkalmazás érhető el. Az első egy egyszerű konzolos alkalmazás, és az alább látható egyszerűsített verzió. A rendszer az alapértelmezett webkamera kereteit is megragadja, és a Face szolgáltatásba küldi azokat.
 
 ```csharp
 using System;
@@ -159,7 +159,7 @@ namespace VideoFrameConsoleApplication
             // Create grabber, with analysis type Face[]. 
             FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
             
-            // Create Face API Client. Insert your Face API key here.
+            // Create Face Client. Insert your Face API key here.
             private readonly IFaceClient faceClient = new FaceClient(
             new ApiKeyServiceClientCredentials("<subscription key>"),
             new System.Net.Http.DelegatingHandler[] { });
@@ -193,7 +193,7 @@ namespace VideoFrameConsoleApplication
 
 A második mintaalkalmazás egy kicsit érdekesebb, és ebben kiválasztható, hogy melyik API-t hívja meg a videóképeken. A bal oldalon az alkalmazás az élő videó előnézetét jeleníti meg, a jobb oldalon pedig a legújabb API-eredményéket jeleníti meg a megfelelő képkockára vetítve.
 
-A legtöbb módban látható késés mutatkozik a bal oldali élő videókép és a jobb oldalon megjelenített eredmények közt. Ez a késés az API-kérés feldolgozásának időtartamával egyezik. Az egyik kivétel a "EmotionsWithClientFaceDetect" mód, amely a OpenCV használatával helyileg végzi az észlelést az ügyfélszámítógépen, mielőtt beküldi a képeket a Cognitive Servicesba. Így azonnal megjelenítheti az észlelt arcot, majd frissítheti az érzelmeket, ha az API-hívást visszaadja. Ez egy példa a "hibrid" megközelítésre, ahol az ügyfél elvégezheti az egyszerű feldolgozást, és a Cognitive Services API-k szükség esetén fejlettebb elemzéssel bővítheti ezt.
+A legtöbb módban látható késés lesz a bal oldali élő videó és a jobb oldali szemléltetett elemzés között. Ez a késés az API-kérés feldolgozásának időtartamával egyezik. Az egyik kivétel a "EmotionsWithClientFaceDetect" mód, amely a OpenCV használatával helyileg végzi az észlelést az ügyfélszámítógépen, mielőtt beküldi a képeket a Cognitive Servicesba. Így azonnal megjelenítheti az észlelt arcot, majd frissítheti az érzelmeket, ha az API-hívást visszaadja. Ez egy példa a "hibrid" megközelítésre, ahol az ügyfél elvégezheti az egyszerű feldolgozást, és a Cognitive Services API-k szükség esetén fejlettebb elemzéssel bővítheti ezt.
 
 ![HowToAnalyzeVideo](../../Video/Images/FramebyFrame.jpg)
 
@@ -203,19 +203,18 @@ A minta használatához hajtsa végre az alábbi lépéseket:
 
 1. A Vision API-k API-kulcsainak beszerzése az [előfizetésekből](https://azure.microsoft.com/try/cognitive-services/). A videoképkockák elemzéséhez megfelelő API-k:
     - [Computer Vision API](https://docs.microsoft.com/azure/cognitive-services/computer-vision/home)
-    - [Emotion API](https://docs.microsoft.com/azure/cognitive-services/emotion/home)
     - [Face API](https://docs.microsoft.com/azure/cognitive-services/face/overview)
 
 2. Klónozza a [Cognitive-Samples-VideoFrameAnalysis](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) GitHub-adattárat
 
 3. Nyissa meg a mintát a Visual Studio 2015-ben, és hozza létre és futtassa a minta alkalmazásokat:
-    - A BasicConsoleSample esetében a Face API kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
+    - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
     - A LiveCameraSample esetében a kulcsokat az alkalmazás Settings (Beállítások) panelén kell megadni. A kulcsokat a rendszer felhasználói adatként a munkamenetek közt is megőrzi.
         
 
 Ha készen áll az integrálásra, **a saját projektjeiből hivatkozhat a VideoFrameAnalyzer könyvtárra.** 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben az útmutatóban megtanulta, hogyan futtathat közel valós idejű elemzést az élő videó streameken az arc, a Computer Vision és az Emotion API-k használatával, és hogyan használhatja a minta kódját a kezdéshez. Az [Azure Cognitive Services regisztrációs oldalán](https://azure.microsoft.com/try/cognitive-services/)megkezdheti az alkalmazás felépítése ingyenes API-kulcsokkal. 
 

@@ -1,5 +1,5 @@
 ---
-title: Tárolók konfigurálása – FACE API
+title: Tárolók konfigurálása – Face
 titleSuffix: Azure Cognitive Services
 description: Az arc-tároló futásidejű környezete a `docker run` parancs argumentumai alapján van konfigurálva. A kötelező és a választható beállítások is elérhetők.
 services: cognitive-services
@@ -11,12 +11,12 @@ ms.subservice: face-api
 ms.topic: conceptual
 ms.date: 11/07/2019
 ms.author: dapine
-ms.openlocfilehash: 78fd2aa977062d2f0d6b981140f3db5b263e4651
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 3c78c9eb85c3a8be236be5c3a24bd877db204b6c
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795034"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76167981"
 ---
 # <a name="configure-face-docker-containers"></a>Arc Docker-tárolók konfigurálása
 
@@ -51,7 +51,7 @@ Ez a beállítás a következő helyen érhető el:
 
 Ne feledje, hogy a példában látható módon hozzáadja az _arc_ -útválasztást a végpont URI-hoz. 
 
-|Kötelező| Név | Data type | Leírás |
+|Szükséges| Name (Név) | Data type | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Billing` | Sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](face-how-to-install-containers.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -61,7 +61,7 @@ Ne feledje, hogy a példában látható módon hozzáadja az _arc_ -útválaszt�
 
 A `CloudAI` szakaszban található konfigurációs beállítások a tárolóra jellemző egyedi beállításokat biztosítanak. A `CloudAI` szakasz Face tárolójában a következő beállítások és objektumok támogatottak
 
-| Név | Data type | Leírás |
+| Name (Név) | Data type | Leírás |
 |------|-----------|-------------|
 | `Storage` | Objektum | A Face tároló által használt tárolási forgatókönyv. További információ a tárolási forgatókönyvekről és a `Storage` objektumhoz kapcsolódó beállításokról: [tárolási forgatókönyv beállításai](#storage-scenario-settings) |
 
@@ -69,7 +69,7 @@ A `CloudAI` szakaszban található konfigurációs beállítások a tárolóra j
 
 A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaadatokat és üzenetsor-adatokat tárol. A nagyméretű személyekhez tartozó indexek és eredmények például blob-adatként vannak tárolva. A Face tároló két különböző tárolási forgatókönyvet biztosít az ilyen típusú adatokkal való interakció és tárolás során:
 
-* Memory (Memória)  
+* Memória  
   A memóriában mind a négy adattípus tárolódik. Nem oszlanak meg, és nem is állandóak. Ha a Face tároló le van állítva vagy el lett távolítva, a tárolóban lévő összes tárolt adatmennyiség megsemmisül.  
   Ez a Face tároló alapértelmezett tárolási forgatókönyve.
 * Azure  
@@ -80,7 +80,7 @@ A Face tároló a tárolt adatoktól függően blobokat, gyorsítótárat, metaa
 
 A tárolási forgatókönyveket és a társított konfigurációs beállításokat a `Storage` objektum felügyeli, a `CloudAI` konfiguráció szakaszban. A következő konfigurációs beállítások érhetők el a `Storage` objektumban:
 
-| Név | Data type | Leírás |
+| Name (Név) | Data type | Leírás |
 |------|-----------|-------------|
 | `StorageScenario` | Sztring | A tároló által támogatott tárolási forgatókönyv. A következő értékek érhetők el<br/>`Memory` – alapértelmezett érték. A tároló nem állandó, nem elosztott és memóriában tárolt tárterületet használ egycsomópontos, ideiglenes használathoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megsemmisül.<br/>`Azure` – a tároló Azure-erőforrásokat használ a tároláshoz. Ha a tároló le van állítva vagy el lett távolítva, a tároló tárterülete megmarad.|
 | `ConnectionStringOfAzureStorage` | Sztring | A tároló által használt Azure Storage-erőforráshoz tartozó kapcsolatok karakterlánca.<br/>Ez a beállítás csak akkor érvényes, ha `Azure` van megadva a `StorageScenario` konfigurációs beállításhoz. |
@@ -122,10 +122,10 @@ A Face containers nem használ bemeneti vagy kimeneti csatlakoztatásokat a kép
 
 A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs rendszertől függően változhat. Emellett előfordulhat, hogy a [gazdaszámítógép](face-how-to-install-containers.md#the-host-computer)csatlakoztatási helye nem érhető el, mert a Docker-szolgáltatásfiók és a gazdagép csatlakoztatási helye engedélyekkel kapcsolatos engedélyek ütköznek. 
 
-|Optional| Név | Data type | Leírás |
+|Választható| Name (Név) | Data type | Leírás |
 |-------|------|-----------|-------------|
 |Nem engedélyezett| `Input` | Sztring | A Face containers nem használja ezt.|
-|Optional| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
+|Választható| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték 0.`/output` Ez a naplók helye. Ez magában foglalja a tároló naplóit. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
 
 ## <a name="example-docker-run-commands"></a>Példa Docker-futtatási parancsokra 
 
@@ -136,7 +136,7 @@ A következő példák a konfigurációs beállításokat használják a `docker
 
 Cserélje le a {_argument_name_} értéket a saját értékeire:
 
-| Helyőrző | Érték | Formátum vagy példa |
+| Helyőrző | Value (Díj) | Formátum vagy példa |
 |-------------|-------|---|
 | **{API_KEY}** | Az `Face` erőforrás Endpoint kulcsa az Azure `Face` kulcsok lapon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `Face` – áttekintés oldalon.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](face-how-to-install-containers.md#gathering-required-parameters) ismertető témakört. |
@@ -170,6 +170,6 @@ A következő Docker-példák a Face tárolóra vonatkoznak.
   Logging:Console:LogLevel:Default=Information
   ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [A tárolók telepítésének és futtatásának](face-how-to-install-containers.md) áttekintése

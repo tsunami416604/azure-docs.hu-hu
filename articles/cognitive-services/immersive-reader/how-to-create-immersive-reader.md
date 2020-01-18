@@ -10,12 +10,12 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: rwaller
-ms.openlocfilehash: a806e6eeecc6976286566d05a0f19dac684b2c0b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: a2a404a03c06dde59edc88436afdc9dba3d74797
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75946088"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76170170"
 ---
 # <a name="create-an-immersive-reader-resource-and-configure-azure-active-directory-authentication"></a>Részletes olvasó erőforrás létrehozása és Azure Active Directory hitelesítés konfigurálása
 
@@ -153,7 +153,7 @@ A szkript rugalmasnak lett tervezve. Először az előfizetésben található, a
     | SubscriptionName |Annak az Azure-előfizetésnek a neve, amelyet a magától elolvasó erőforráshoz kíván használni. Erőforrás létrehozásához előfizetés szükséges. |
     | ResourceName nevű erőforrásáról |  Alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél.|
     | ResourceSubdomain |Egy egyéni altartományra van szükség a magától elolvasó erőforráshoz. Az SDK ezt az altartományt használja, amikor meghívja az olvasót, hogy elindítsa a lebilincselő olvasó szolgáltatást. Az altartománynak globálisan egyedinek kell lennie. Az altartománynak alfanumerikusnak kell lennie, és tartalmazhat "-" karaktert, feltéve, hogy a "-" nem az első vagy az utolsó karakter. A hossz nem lehet hosszabb 63 karakternél. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
-    | ResourceSKU |Beállítások: `S0` vagy `S1`. Az egyes rendelkezésre álló SKU-ra vonatkozó további információkért látogasson el [Cognitive Services díjszabási oldalára](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
+    | ResourceSKU |Beállítások: `S0`. Az egyes rendelkezésre álló SKU-ra vonatkozó további információkért látogasson el [Cognitive Services díjszabási oldalára](https://azure.microsoft.com/pricing/details/cognitive-services/immersive-reader/) . Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
     | ResourceLocation |Beállítások: `eastus`, `eastus2`, `southcentralus`, `westus`, `westus2`, `australiaeast`, `southeastasia`, `centralindia`, `japaneast`, `northeurope`, `uksouth`, `westeurope`. Ez a paraméter nem kötelező, ha az erőforrás már létezik. |
     | ResourceGroupName |Erőforrások jönnek létre az előfizetésekben található erőforráscsoportok között. Adja meg egy meglévő erőforráscsoport nevét. Ha az erőforráscsoport még nem létezik, a rendszer létrehoz egy új nevet. |
     | ResourceGroupLocation |Ha az erőforráscsoport nem létezik, meg kell adnia egy helyet, amelyben létre kívánja hozni a csoportot. A helyszínek listáját a `az account list-locations`futtatásával keresheti meg. Használja a visszaadott eredmény *Name* (szóközök nélkül) tulajdonságát. Ez a paraméter nem kötelező, ha az erőforráscsoport már létezik. |

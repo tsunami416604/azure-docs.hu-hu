@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: d55dc2a1311d66eae01ae12a3dae798fbab20677
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b9060823c997391d02eae61911f8aa748f191657
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045619"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76260854"
 ---
 # <a name="create-azure-machine-learning-datasets"></a>Azure Machine Learning adatkészletek létrehozása
 
@@ -49,7 +49,7 @@ Az adatkészletek létrehozásához és működéséhez a következőkre lesz sz
 
 Két adatkészlet-típus létezik, attól függően, hogy a felhasználók hogyan használják őket a képzésben:
 
-* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy a rendszer egy Panda vagy Spark DataFrame is megvalósuljon az információ. Létrehozhat egy `TabularDataset` objektumot. csv,. TSV és parketta fájlokból, valamint SQL-lekérdezési eredményekből. A teljes listát lásd: [TabularDatasetFactory osztály](https://aka.ms/tabulardataset-api-reference).
+* A [TabularDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.tabulardataset?view=azure-ml-py) táblázatos formátumban jeleníti meg az adatokat a megadott fájl vagy fájlok listájának elemzésével. Ez lehetővé teszi, hogy a rendszer egy Panda vagy Spark DataFrame is megvalósuljon az információ. Létrehozhat egy `TabularDataset` objektumot. csv,. TSV,. Parque,. JSON fájlokból és SQL-lekérdezések eredményeiből. A teljes listát lásd: [TabularDatasetFactory osztály](https://aka.ms/tabulardataset-api-reference).
 
 * A [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) osztály egy vagy több fájlt hivatkozik az adattárolókban vagy a nyilvános URL-címeken. Ezzel a módszerrel letöltheti vagy csatlakoztathatja a fájlokat a számítási feladatokhoz FileDataset objektumként. A fájlok bármilyen formátumúak lehetnek, ami lehetővé teszi a gépi tanulási forgatókönyvek szélesebb körének használatát, beleértve a mély tanulást is.
 
@@ -74,7 +74,7 @@ Adatkészletek létrehozása Azure- [adattárból](how-to-access-data.md) a Pyth
 
 #### <a name="create-a-tabulardataset"></a>TabularDataset létrehozása
 
-TabularDatasets az SDK-n keresztül vagy a Azure Machine Learning Studio használatával hozhat létre. Megadhat egy időbélyeget az adatok egyik oszlopában, vagy az elérési út mintájában, hogy az adatok a Time Series-tulajdonságok engedélyezéséhez legyenek tárolva. Ez az előírás lehetővé teszi az egyszerű és hatékony szűrést az idő alapján.
+TabularDatasets az SDK-n keresztül vagy a Azure Machine Learning Studio használatával hozhat létre. 
 
 A `TabularDatasetFactory` osztály [`from_delimited_files()`](https://docs.microsoft.com/python/api/azureml-core/azureml.data.dataset_factory.tabulardatasetfactory?view=azure-ml-py#from-delimited-files-path--validate-true--include-path-false--infer-column-types-true--set-column-types-none--separator------header-true--partition-format-none-) metódusával olvassa be a. csv vagy a. TSV formátumú fájlokat, és hozzon létre egy nem regisztrált TabularDataset. Ha több fájlt olvas be, az eredmények egy táblázatos ábrázolásba lesznek összesítve.
 
@@ -109,7 +109,7 @@ titanic_ds = Dataset.Tabular.from_delimited_files(path=web_path, set_column_type
 titanic_ds.take(3).to_pandas_dataframe()
 ```
 
-| |PassengerId|Túlélte|Pclass|Név|szex|Kor|SibSp|Parch|Jegy|Legnagyobb légitársasága|Kabin|Megkezdte
+| |PassengerId|Túlélte|Pclass|Name (Név)|szex|Kor|SibSp|Parch|Ticket|Legnagyobb légitársasága|Kabin|Megkezdte
 -|-----------|--------|------|----|---|---|-----|-----|------|----|-----|--------|
 0|1|Hamis|3|Braund, Mr. Owen Harris|male|22,0|1|0|A/5 21171|7,2500||S
 1|2|Igaz|1|Cumings, Mrs. John Bradley (Florence Briggs th...|female|38,0|1|0|PC 17599|71,2833|C85|C#
@@ -186,7 +186,7 @@ titanic_ds = titanic_ds.register(workspace=workspace,
 ```
 
 > [!Note]
-> Az Azure Machine Learning Studio használatával létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen.
+> A Azure Machine Learning Studióval létrehozott adatkészletek automatikusan regisztrálva lesznek a munkaterületen.
 
 ## <a name="create-datasets-with-azure-open-datasets"></a>Adatkészletek létrehozása az Azure Open-adatkészletekkel
 
@@ -244,7 +244,6 @@ titanic_ds = titanic_ds.register(workspace = workspace,
                                  description = 'new titanic training data',
                                  create_new_version = True)
 ```
-
 
 ## <a name="access-datasets-in-your-script"></a>Adatkészletek elérése a parancsfájlban
 

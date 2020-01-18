@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: quickstart
 ms.date: 12/05/2019
 ms.author: areddish
-ms.openlocfilehash: 2ea49eaf6fd48207996a92a997f15e5db3d3b199
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ffb12af93e249b0b9bb510d3507a30e67d6cd19f
+ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74961080"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76169133"
 ---
 # <a name="quickstart-create-an-image-classification-project-with-the-custom-vision-python-sdk"></a>Rövid útmutató: Képosztályozási projekt létrehozása a Custom Vision Python SDK-val
 
@@ -84,10 +84,10 @@ cherry_tag = trainer.create_tag(project.id, "Japanese Cherry")
 A minta képek projekthez adásához, helyezze el a következő kódot a címke létrehozása után. Ez a kód a képeket a hozzájuk tartozó címkékkel együtt tölti fel. Egyetlen kötegben akár 64 képet is feltölthet.
 
 > [!NOTE]
-> Meg kell változtatnia a képek elérési útját az alapján, hogy hová töltötte le korábban a Cognitive Services Python SDK-mintaprojektet.
+> A lemezképek elérési útját módosítania kell, attól függően, hogy a Cognitive Services Python SDK Samples-tárházat korábban letöltötte.
 
 ```Python
-base_image_url = "<path to project>"
+base_image_url = "<path to repo directory>/cognitive-services-python-sdk-samples/samples/vision/"
 
 print("Adding images...")
 
@@ -113,7 +113,7 @@ if not upload_result.is_batch_successful:
 
 ### <a name="train-the-classifier-and-publish"></a>Az osztályozó és a közzététel betanítása
 
-Ez a kód létrehozza az első iterációt a projektben, majd közzéteszi az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
+Ez a kód létrehozza az előrejelzési modell első iterációját, majd közzéteszi ezt az iterációt az előrejelzési végponton. A közzétett iterációhoz megadott név felhasználható az előrejelzési kérelmek küldésére. Egy iteráció nem érhető el az előrejelzési végponton, amíg közzé nem teszi.
 
 ```Python
 import time
@@ -171,7 +171,7 @@ Done!
         Japanese Cherry: 0.01%
 ```
 
-Ezután ellenőrizheti, hogy a tesztkép (az **<base_image_url>/Images/Test/** mappában található) megfelelően lett-e megcímkézve. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
+Ezt követően ellenőrizheti, hogy a **< base_image_url > images/test/** ) címkéje megfelelően van-e megjelölve. Vissza is léphet a [Custom Vision webhelyére](https://customvision.ai), és megtekintheti az újonnan létrehozott projekt aktuális állapotát.
 
 [!INCLUDE [clean-ic-project](includes/clean-ic-project.md)]
 

@@ -1,6 +1,6 @@
 ---
-title: 'Azure Notification Hubs: gyakori kérdések (GYIK) | Microsoft Docs'
-description: A megoldások tervezésével/megvalósításával kapcsolatos gyakori kérdések Notification Hubs
+title: Azure Notification Hubs – gyakori kérdések (GYIK) | Microsoft Docs
+description: Az Azure Notification Hubs-megoldások tervezésével és megvalósításával kapcsolatos gyakori kérdések.
 services: notification-hubs
 documentationcenter: mobile
 author: sethmanheim
@@ -17,16 +17,16 @@ ms.date: 11/13/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/13/2019
-ms.openlocfilehash: c84a4472789430524cbf5ff3f1ae24ea10d342b9
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 3212520f37d33a2d8fb1b071506f688b9f75f15c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74066876"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76263829"
 ---
 # <a name="push-notifications-with-azure-notification-hubs-frequently-asked-questions"></a>Leküldéses értesítések az Azure Notification Hubs: gyakori kérdések
 
-## <a name="general"></a>Általános kérdések
+## <a name="general"></a>Általános
 
 ### <a name="what-is-the-resource-structure-of-notification-hubs"></a>Mi a Notification Hubs erőforrás-szerkezete?
 
@@ -181,7 +181,7 @@ Az Azure Notification Hubs a regisztrációs címkék kivételével titkosítja 
 
 ### <a name="is-there-audit-log-capability"></a>Naplózható a naplózási funkció?
 
-Igen. Az összes Notification Hubs felügyeleti művelettel frissítheti az Azure-beli tevékenység naplóját, amely a [Azure Portal]elérhető. Az Azure-tevékenység naplója betekintést nyújt az előfizetésében lévő erőforrásokon végrehajtott műveletekre. A műveletnapló segítségével meghatározhatja a mi, ki és mikor az előfizetésben lévő erőforrásokhoz kapcsolódó írási műveletek (PUT, POST, DELETE) esetében. A műveletek és az egyéb releváns tulajdonságok állapotát is ismernie is. Azonban. a műveletnapló nem tartalmaz olvasási (GET) műveletet.
+Igen. Az összes Notification Hubs felügyeleti művelettel frissítheti az Azure-beli tevékenység naplóját, amely a [Azure Portal]elérhető. Az Azure-tevékenység naplója betekintést nyújt az előfizetésében lévő erőforrásokon végrehajtott műveletekre. A műveletnapló segítségével meghatározhatja a mi, ki és mikor az előfizetésben lévő erőforrásokhoz kapcsolódó írási műveletek (PUT, POST, DELETE) esetében. Megtudhatja a műveletek állapotát és az egyéb kapcsolódó tulajdonságokat is. Azonban. a műveletnapló nem tartalmaz olvasási (GET) műveletet.
 
 ## <a name="monitoring-and-troubleshooting"></a>Figyelés és hibaelhárítás
 

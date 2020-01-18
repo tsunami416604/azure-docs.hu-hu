@@ -4,12 +4,13 @@ description: Megtudhatja, hogyan hozhat létre olyan Azure Resource Manager sabl
 ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 650997cfddc71a8bfe347e29c8992b78d1828034
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.custom: fasttrack-edit
+ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978793"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76262435"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -139,7 +140,7 @@ A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
 | AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a belső üzenetsor-kezelési funkciók futtatókörnyezete biztosít | Lásd: [Storage-fiók](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Az Azure Functions futtatókörnyezet verziója                                                | `~2`                                  |
-| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java` vagy `python` |
+| FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java`, `python`vagy `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Csak akkor szükséges, ha a `node` nyelvi verem használatával adja meg a használni kívánt verziót              | `10.14.1`                             |
 
 Ezek a tulajdonságok a `siteConfig` tulajdonság `appSettings` gyűjteményében vannak megadva:

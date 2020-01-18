@@ -1,24 +1,24 @@
 ---
-title: Jegyzetfüzetek engedélyezése a Azure Cosmos DB fiókban
+title: Jegyzetfüzetek engedélyezése a Azure Cosmos DB fiókban (előzetes verzió)
 description: A Azure Cosmos DB beépített jegyzetfüzetei lehetővé teszik az adatok elemzését és megjelenítését a portálon belülről. Ez a cikk bemutatja, hogyan engedélyezheti ezt a funkciót a Cosmos-fiókokhoz.
 author: deborahc
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/22/2019
 ms.author: dech
-ms.openlocfilehash: 22bad3b31b8cbe54900b96bd4b327f18916e81a3
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: 8c65b7d010e521ec78322de9807f741c856a2381
+ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71677149"
+ms.lasthandoff: 01/17/2020
+ms.locfileid: "76264848"
 ---
 # <a name="enable-notebooks-for-azure-cosmos-db-accounts"></a>Jegyzetfüzetek engedélyezése Azure Cosmos DB fiókokhoz
 
 > [!IMPORTANT]
-> A Azure Cosmos DB beépített jegyzetfüzetei jelenleg a következő Azure-régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa és USA 2. nyugati régiója Jegyzetfüzetek használatához [hozzon létre egy új fiókot jegyzetfüzetekkel](#enable-notebooks-in-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) az egyik régióban.
+> A Azure Cosmos DB beépített jegyzetfüzetei jelenleg a következő Azure-régiókban érhetők el: Kelet-Ausztrália, USA keleti régiója, USA 2. keleti régiója, Észak-Európa, az USA déli középső régiója, Délkelet-Ázsia, Egyesült Királyság déli régiója, Nyugat-Európa és az USA 2. nyugati régiója. Jegyzetfüzetek használatához [hozzon létre egy új fiókot jegyzetfüzetekkel](#enable-notebooks-in-a-new-cosmos-account) , vagy [engedélyezze a jegyzetfüzeteket egy meglévő fiókban](#enable-notebooks-in-an-existing-cosmos-account) az egyik régióban.
 
-A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk azt ismerteti, hogyan engedélyezheti ezt a funkciót a Azure Cosmos DB-fiókjához.
+A Azure Cosmos DB beépített Jupyter notebookok lehetővé teszik az adatok elemzését és megjelenítését a Azure Portal. Ez a cikk leírja, hogyan lehet engedélyezni ezt a funkciót az Azure Cosmos DB-fiókhoz.
 
 ## <a name="enable-notebooks-in-a-new-cosmos-account"></a>Jegyzetfüzetek engedélyezése új Cosmos-fiókban
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -67,6 +67,6 @@ Az **új jegyzetfüzet** lehetőség kiválasztásával új jegyzetfüzetet hozh
 
 ![Új jegyzetfüzet létrehozása vagy feltöltése](media/enable-notebooks/create-or-upload-new-notebook.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [Azure Cosmos db Jupyter notebookok](cosmosdb-jupyter-notebooks.md) előnyeit
