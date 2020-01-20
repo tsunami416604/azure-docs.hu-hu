@@ -6,6 +6,8 @@
       href: overview.md
     - name: Terminológiai változások
       href: terminology.md
+    - name: GYIK
+      href: faq.md
 - name: Rövid útmutatók
   items:
     - name: Azure-erőforrás monitorozása
@@ -113,14 +115,6 @@
       href: visualizations.md
     - name: Partnerintegrációk
       href: platform/partners.md
-    - name: GYIK
-      items:
-        - name: Log Analytics
-          displayName: FAQ
-          href: platform/log-faq.md
-        - name: Application Insights
-          displayName: FAQ
-          href: app/troubleshoot-faq.md
 - name: Útmutatók
   items:
     - name: Az Azure Monitor kezelése
@@ -162,6 +156,8 @@
       items:
         - name: Az Application Insights áttekintése
           href: app/app-insights-overview.md
+        - name: GYIK
+          href: app/troubleshoot-faq.md
         - name: Kódalapú monitorozás
           items:
             - name: ASP.NET-mag
@@ -170,7 +166,7 @@
             - name: ASP.NET
               displayname: 'ASP.NET, c#, csharp, .NET, NET, dotnet'
               href: app/asp-net.md
-            - name: Nem http alkalmazások/háttérben futó alkalmazások
+            - name: Nem HTTP alkalmazások/háttérben futó alkalmazások
               displayname: 'console, .NET, .NET Core, dotnet console, dotnet, c#, csharp, NET, worker, background, generic host'
               href: app/worker-service.md
             - name: .NET-konzol
@@ -535,6 +531,8 @@
           items:
             - name: Ügynökök áttekintése
               href: platform/agents-overview.md
+            - name: GYIK
+              href: 'faq.md#agents'
             - name: Azure Diagnostics bővítmény
               items:
                 - name: Áttekintés
@@ -633,7 +631,7 @@
             - name: Általános rendelkezésre állás – gyakori kérdések
               href: insights/vminsights-ga-release-faq.md
             - name: GYIK
-              href: insights/vminsights-faq.md
+              href: 'faq.md#azure-monitor-for-vms-preview'
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése
@@ -679,7 +677,7 @@
             - name: Áttekintés
               href: insights/container-insights-overview.md
             - name: GYIK
-              href: insights/container-insights-faq.md
+              href: 'faq.md#azure-monitor-for-containers'
             - name: Monitorozás engedélyezése
               items:
                 - name: Monitorozás engedélyezésének áttekintése

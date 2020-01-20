@@ -56,6 +56,12 @@
           href: tutorial-1st-r-experiment.md
     - name: Machine Learning CLI
       href: tutorial-train-deploy-model-cli.md
+    - name: Visual Studio Code
+      items:
+        - name: Azure Machine Learning-bővítmény üzembe helyezése
+          href: tutorial-setup-vscode-extension.md
+        - name: TensorFlow képbesorolási modellek betanítása és üzembe helyezése
+          href: tutorial-train-deploy-image-classification-model-vscode.md
 - name: Példák
   items:
     - name: Jupyter-notebookok
@@ -151,9 +157,6 @@
         - name: Bemeneti és kimeneti könyvtárak beállítása
           displayName: 'large data, write, experiment files, size limit'
           href: how-to-save-write-experiment-files.md
-        - name: A VS Code-bővítmény használata
-          displayName: 'Visual Studio Code, VSCode, tools, ai, vs'
-          href: how-to-vscode-tools.md
         - name: Interaktív hibakeresés
           displayName: 'Visual Studio Code, VSCode, debug, bugs, remote, compute, instance'
           href: how-to-set-up-vs-code-remote.md
@@ -171,6 +174,9 @@
         - name: Betanítás adathalmazok használatával
           displayName: 'data, dataset, mount'
           href: how-to-train-with-datasets.md
+        - name: Adatok importálása a tervezőbe
+          displayName: 'designer, data, import, dataset, datastore'
+          href: how-to-designer-import-data.md
         - name: Eltérések észlelése az adathalmazokban
           displayName: 'data, dataset'
           href: how-to-monitor-datasets.md
@@ -397,3 +403,6 @@
     - name: Mi történt a Workbenchcsel?
       displayName: 'desktop, ui, Workbench, upgrade, update, transfer'
       href: overview-what-happened-to-workbench.md
+    - name: Tervezői kisegítő lehetőségek
+      displayName: 'accessibility, designer, visual interface, screen reader, keyboard shortcuts'
+      href: designer-accessibility.md

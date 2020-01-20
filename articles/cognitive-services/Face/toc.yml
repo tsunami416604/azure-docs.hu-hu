@@ -1,9 +1,9 @@
-- name: A Face API dokumentációja
+- name: A Face dokumentációja
   href: index.yml
 - name: Áttekintés
   expanded: true
   items:
-    - name: Mi az a Face API?
+    - name: Mi az a Face szolgáltatás?
       href: Overview.md
 - name: Rövid útmutatók
   items:
@@ -77,7 +77,7 @@
           href: face-resource-container-config.md
         - name: A Container Instances használata
           href: Face-API-How-to-Topics/deploy-face-container-on-container-instances.md
-    - name: Face API csatlakoztatott szolgáltatás használata
+    - name: A Face csatlakoztatott szolgáltatás használata
       href: vs-face-connected-service.md
 - name: Referencia
   items:
@@ -101,7 +101,7 @@
   items:
     - name: Példák
       items:
-        - name: Face API-minták
+        - name: Face-minták
           href: 'https://docs.microsoft.com/samples/browse/?products=azure&term=face'
     - name: Díjszabás és korlátok
       href: 'https://azure.microsoft.com/pricing/details/cognitive-services/face-api'

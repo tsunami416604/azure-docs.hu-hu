@@ -21,16 +21,12 @@
           displayName: 'assign key, assign resource, add key, add resource, test, deploy, endpoint, query, publish'
     - name: Böngésző használata
       href: luis-get-started-get-intent-from-browser.md
-    - name: A .NET SDK használata
+    - name: SDK használata
       items:
-        - name: Alkalmazás létrehozása és kezelése
-          href: sdk-csharp-quickstart-authoring-app.md
+        - name: Alkalmazások készítése
+          href: sdk-authoring.md
         - name: Előrejelzési végpont lekérdezése
-          href: sdk-csharp-quickstart-query-prediction-endpoint.md
-    - name: A Python SDK használata
-      items:
-        - name: Alkalmazás létrehozása és kezelése
-          href: sdk-python-quickstart-authoring-app.md
+          href: sdk-query-prediction-endpoint.md
     - name: REST API-k használata
       items:
         - name: Szándék lekérése

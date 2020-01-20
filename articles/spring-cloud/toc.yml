@@ -54,7 +54,7 @@
       href: spring-cloud-service-registration.md
     - name: Alkalmazásnaplók és metrikák elemzése
       href: diagnostic-services.md
-    - name: Azure Spring Cloud-naplóstreamelés az azonnali rendelkezésre állás érdekében
+    - name: Azure Spring Cloud-alkalmazásnaplók streamelése valós időben
       href: spring-cloud-howto-log-streaming.md
     - name: CI-/CD-folyamat automatizálása az Azure Spring Cloudban
       href: spring-cloud-howto-cicd.md

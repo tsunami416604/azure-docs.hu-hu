@@ -63,6 +63,8 @@
           href: container-instances-encrypt-data.md
         - name: Üzembe helyezés dedikált gazdagépeken
           href: container-instances-dedicated-hosts.md
+        - name: Logic Apps-összekötő használata
+          href: ../connectors/connectors-create-api-container-instances.md?toc=/azure/container-instances/toc.json&bc=/azure/container-instances/breadcrumb/toc.json
     - name: Tárolói forgatókönyvek
       items:
         - name: Újraindítási szabályzat beállítása egyszer futó feladatokhoz

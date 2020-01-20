@@ -4,7 +4,7 @@
   items:
     - name: Mi az a feltételes hozzáférés?
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: MFA megkövetelése adott alkalmazásokhoz
       href: app-based-mfa.md
@@ -19,6 +19,8 @@
       href: concept-conditional-access-policy-common.md
     - name: Feltételes hozzáférési szabályzatok komponensei
       href: concept-conditional-access-policies.md
+    - name: Felhőalkalmazások és műveletek
+      href: concept-conditional-access-cloud-apps.md
     - name: Feltételek
       href: conditions.md
     - name: Helyfeltételek

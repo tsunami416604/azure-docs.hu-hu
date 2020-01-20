@@ -4,7 +4,7 @@
   items:
     - name: Mi az a Video Indexer?
       href: video-indexer-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Bevezetés
@@ -45,7 +45,7 @@
       href: connect-to-azure.md
     - name: Az Azure-hoz csatlakoztatott fiók kezelése
       href: manage-account-connected-to-azure.md
-    - name: Videók feltöltése és indexálása az API használatával
+    - name: Videók feltöltése és indexelése
       href: upload-index-videos.md
     - name: A Video Indexer kimenetének vizsgálata
       href: video-indexer-output-json-v2.md
