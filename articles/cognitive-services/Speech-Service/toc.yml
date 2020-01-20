@@ -232,48 +232,68 @@
       items:
         - name: Beszédfordítás – GYIK
           href: 'https://www.microsoft.com/translator/faq.aspx'
-- name: Beszédátírás
+- name: Beszélgetési forgatókönyvek
   expanded: false
   items:
-    - name: Áttekintés
+    - name: Beszédátírás
       items:
-        - name: Mi az a beszédátírás?
-          href: conversation-transcription.md
-    - name: Útmutatók
-      items:
-        - name: Valós idejű beszédátírás
-          href: how-to-use-conversation-transcription.md
-        - name: Aszinkron beszédátírás
-          href: how-to-async-conversation-transcription.md
-    - name: Referencia
-      items:
-        - name: Beszéd SDK
+        - name: Áttekintés
           items:
-            - name: C++
-              href: 'https://aka.ms/csspeech/cppref'
-              displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
-            - name: 'C#'
-              href: 'https://aka.ms/csspeech/csharpref'
-              displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
-            - name: Java
-              href: 'https://aka.ms/csspeech/javaref'
-              displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
-            - name: JavaScript
-              href: 'https://aka.ms/csspeech/javascriptref'
-              displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
-            - name: Objective-C
-              href: 'https://aka.ms/csspeech/objectivecref'
-              displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
-            - name: Python
-              href: 'https://aka.ms/csspeech/pythonref'
-              displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
-            - name: Kibocsátási megjegyzések
-              href: releasenotes.md
-              displayName: 'release notes,updates,what''s new,what is new,changes'
-        - name: REST API-k
+            - name: Mi az a beszédátírás?
+              href: conversation-transcription.md
+        - name: Útmutatók
           items:
-            - name: Beszédátírás REST API-k
-              href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+            - name: Valós idejű beszédátírás
+              href: how-to-use-conversation-transcription.md
+            - name: Aszinkron beszédátírás
+              href: how-to-async-conversation-transcription.md
+        - name: Referencia
+          items:
+            - name: Beszéd SDK
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                  displayName: 'C++ SDK,C++ dev kit,reference,reference docs,ref documentation'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
+                  displayName: 'CSharp SDK,.NET SDK,C# SDK,C# dev kit,reference,reference docs,ref documentation'
+                - name: Java
+                  href: 'https://aka.ms/csspeech/javaref'
+                  displayName: 'Java SDK,Java dev kit,reference,reference docs,ref documentation'
+                - name: JavaScript
+                  href: 'https://aka.ms/csspeech/javascriptref'
+                  displayName: 'JS SDK,JavaScript SDK,JavaScript dev kit,reference,reference docs,ref documentation'
+                - name: Objective-C
+                  href: 'https://aka.ms/csspeech/objectivecref'
+                  displayName: 'Objective-C SDK,Objective-C dev kit,reference,reference docs,ref documentation'
+                - name: Python
+                  href: 'https://aka.ms/csspeech/pythonref'
+                  displayName: 'Python SDK,Python dev kit,reference,reference docs,ref documentation'
+                - name: Kibocsátási megjegyzések
+                  href: releasenotes.md
+                  displayName: 'release notes,updates,what''s new,what is new,changes'
+            - name: REST API-k
+              items:
+                - name: Beszédátírás REST API-k
+                  href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
+    - name: Több eszközös beszélgetés
+      items:
+        - name: Áttekintés
+          items:
+            - name: Mi az a több eszközös beszélgetés?
+              href: multi-device-conversation.md
+        - name: Rövid útmutatók
+          items:
+            - name: Beszélgetések indítása és az azokhoz való csatlakozás
+              href: quickstarts/multi-device-conversation.md
+        - name: Referencia
+          items:
+            - name: Beszéd SDK
+              items:
+                - name: C++
+                  href: 'https://aka.ms/csspeech/cppref'
+                - name: 'C#'
+                  href: 'https://aka.ms/csspeech/csharpref'
 - name: Hangvezérelt asszisztensek
   expanded: false
   items:

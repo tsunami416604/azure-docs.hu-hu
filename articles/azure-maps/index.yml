@@ -1,6 +1,6 @@
 ### YamlMime:Landing
 title: Az Azure Maps dokumentációja
-summary: A Microsoft Azure Maps a webes és mobilalkalmazások földrajzi kontextusának biztosításához elérhető legfrissebb térképadatokat használó, hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet a Maps, Search, Routing, Traffic, Mobility, Weather, Time Zones, Geolocation, Geofencing, Map Data és Spatial Operations szolgáltatásokhoz, amely webes vagy Android-alapú SDK-kkal rendelkezik az egyszerű, rugalmas és különböző platformokon elérhető fejlesztés érdekében.
+summary: 'A Microsoft Azure Maps hatékony térinformatikai funkciókat biztosít minden iparág fejlesztői számára. Ezek a térinformatikai funkciók a legfrissebb térképadatokat használják. Az Azure Maps a webes és mobilalkalmazások számára is elérhető. Az Azure Maps egy Azure One API-kompatibilis REST API-készlet. A következők csak az Azure Maps által ajánlott szolgáltatok magas szintű áttekintését jelentik: Maps, Search, Routing, Traffic, Mobility, Weather, Time Zones, Geolocation, Geofencing, Map Data és Spatial Operations. A webes és Android SDK-k révén a fejlesztés egyszerűen, rugalmasan és különböző platformokon is kivitelezhető.'
 metadata:
   title: Az Azure Maps dokumentációja | Microsoft Docs
   description: Tudnivalók az Azure Mapsről és annak használatáról térinformatikai szolgáltatások nyújtásához web- vagy mobilalkalmazások esetében.
@@ -8,13 +8,13 @@ metadata:
   ms.topic: landing-page
   author: philmea
   ms.author: philmea
-  ms.date: 12/19/2019
-  ms.openlocfilehash: 66721caadce09816368d673c217c9bf97daf1b6c
-  ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+  ms.date: 1/15/2020
+  ms.openlocfilehash: f4ae414179f77413e5d5daa4fda635e0bf24c2aa
+  ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 12/25/2019
-  ms.locfileid: "75408652"
+  ms.lasthandoff: 01/17/2020
+  ms.locfileid: "76264101"
 landingContent:
 - title: Tudnivalók az Azure Mapsről
   linkLists:
@@ -94,7 +94,7 @@ landingContent:
       url: how-to-add-tile-layer-android-map.md
     - text: Alakzatok hozzáadása térképhez
       url: how-to-add-shapes-to-android-map.md
-- title: Fejlesztés a Location Based Services használatával
+- title: Fejlesztés a Location-Based Services használatával
   linkLists:
   - linkListType: concept
     links:

@@ -66,8 +66,6 @@
           href: enable-browser-connection-lab-virtual-machines.md
         - name: Költségkezelés konfigurálása
           href: devtest-lab-configure-cost-management.md
-        - name: Automatikus leállítással kapcsolatos értesítések küldése
-          href: devtest-lab-auto-shutdown.md
         - name: Automatikus indítás beállítása a tesztkörnyezet virtuális gépeihez
           href: devtest-lab-auto-startup-vm.md
         - name: A tesztkörnyezet skálázása
@@ -124,8 +122,8 @@
           href: devtest-lab-resize-vm.md
         - name: Virtuális gép ismételt üzembe helyezése
           href: devtest-lab-redeploy-vm.md
-        - name: Virtuális gép automatikus leállításának konfigurálása
-          href: devtest-lab-auto-shutdown-vm.md
+        - name: A számításra alkalmas és tesztkörnyezeti virtuális gépek automatikus leállítása
+          href: devtest-lab-auto-shutdown.md
         - name: Igényelhető virtuális gépek létrehozása és felügyelete
           href: devtest-lab-add-claimable-vm.md
         - name: Titkos kulcsok konfigurálása
