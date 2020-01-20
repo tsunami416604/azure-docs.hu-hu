@@ -1,26 +1,19 @@
 ---
-title: Alkalmazás üzembe helyezése Azure-beli virtuálisgép-méretezési csoporton | Microsoft Docs
+title: Alkalmazás üzembe helyezése Azure-beli virtuálisgép-méretezési csoporton
 description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat Linux és Windows rendszerű virtuálisgép-példányokon a méretezési csoportokban
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: f8892199-f2e2-4b82-988a-28ca8a7fd1eb
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 0dc1c52e65090acd5f63d1b23d8da6f37e3cf567
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 6bc319ea50da4ff6a654b2c9ab09bbe218695533
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73960730"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278109"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Alkalmazás üzembe helyezése virtuálisgép-méretezési csoportokon
 
@@ -45,7 +38,7 @@ Az egyéni szkriptek bővítménye szkripteket tölt le és futtat az Azure-beli
 
 
 ## <a name="install-an-app-to-a-windows-vm-with-powershell-dsc"></a>Alkalmazások telepítése Windows rendszerű virtuális gépre PowerShell DSC-vel
-[PowerShell Desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform cél gépek konfigurációjának meghatározása. DSC-konfigurációk határozza meg, mi a telepíti egy számítógépre, és a gazdagép konfigurálása. A helyi Configuration Manager (LCM) Konfigurálása motor dolgozza fel a kért műveletek leküldött beállításai minden célként megadott csomóponton fut.
+A [PowerShell desired State Configuration (DSC)](/powershell/scripting/dsc/overview/overview) egy felügyeleti platform, amely meghatározza a célszámítógépek konfigurációját. A DSC-konfigurációk határozzák meg, hogy mit kell telepíteni a gépre, és hogyan kell konfigurálni a gazdagépet. A helyi Configuration Manager (LCD) motor minden olyan cél csomóponton fut, amely leküldéses konfigurációk alapján dolgozza fel a kért műveleteket.
 
 A PowerShell DSC bővítmény lehetővé teszi a virtuálisgép-példányok testreszabását a méretezési csoportokban a PowerShell használatával. A következő példa:
 

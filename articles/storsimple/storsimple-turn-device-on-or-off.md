@@ -1,177 +1,170 @@
 ---
-title: A StorSimple 8000 sorozatú eszköz be- és kikapcsolása |} A Microsoft Docs
-description: Azt ismerteti, hogyan kapcsolja be egy új StorSimple-eszköz, kapcsolja be egy eszközt, hogy leállította vagy áramellátása megszűnt, és kapcsolja ki a futó eszköz.
-services: storsimple
-documentationcenter: ''
+title: A StorSimple 8000 Series eszköz be-és kikapcsolása
+description: Elmagyarázza, hogyan kapcsolhatja be az új StorSimple eszközt, bekapcsolhatja a leállított vagy megszakadt eszközt, és kikapcsolhatja a futó eszközöket.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 8e9c6e6c-965c-4a81-81bd-e1c523a14c82
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 29a45c0d32e35b5d321670bf25334a2976b93e56
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1319583569a8abc619ad902a87ee551b476f88eb
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64693678"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276885"
 ---
-# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>Kapcsolja be, vagy kapcsolja ki a StorSimple 8000 sorozatú eszköz
+# <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz bekapcsolása vagy kikapcsolása
 
 ## <a name="overview"></a>Áttekintés
-A Microsoft Azure StorSimple-eszköz leáll, nem szükséges normál rendszer művelet részeként. Azonban szüksége lehet, hogy kapcsolja be egy új vagy egy eszköz, akinek le kell állítani. Általában egy leállítási szükséges azokban az esetekben, amelyben le kell cserélnie sikertelen hardver, fizikailag helyezze át egy egységet, vagy igénybe vehet egy eszköz nem működik. Ebben az oktatóanyagban bekapcsolása és a leállítás a StorSimple-eszköz különböző helyzetekben szükséges eljárását ismerteti.
+Microsoft Azure StorSimple eszköz leállítása nem szükséges a normál rendszerművelet részeként. Előfordulhat azonban, hogy be kell kapcsolni egy új eszközt vagy egy leállítani kívánt eszközt. Általában leállítás szükséges azokban az esetekben, amelyekben le kell cserélni a meghibásodott hardvert, fizikailag át kell helyeznie egy egységet, vagy ki kell vennie egy eszközt a szolgáltatásból. Ez az oktatóanyag ismerteti a StorSimple-eszköz bekapcsolásának és leállításának szükséges eljárását különböző forgatókönyvekben.
 
 ## <a name="turn-on-a-new-device"></a>Új eszköz bekapcsolása
-Először a StorSimple eszköz bekapcsolása lépései eltérőek attól függően, hogy az eszköz egy 8100-as vagy egy 8600-as modell. A 8100-as rendelkezik egy önálló elsődleges ház, mivel a 8600-as elsődleges ház és a egy EBOD ház kettős-lemezház eszköz. A részletes lépéseket, mind a két modellben a következő szakaszokban terjed ki.
+A StorSimple-eszközök első alkalommal történő bekapcsolásának lépései eltérnek attól függően, hogy az eszköz 8100 vagy 8600 modell. Az 8100 egyetlen elsődleges bekerítéssel rendelkezik, míg a 8600 egy kettős bekerítésű eszköz, amely egy elsődleges bekerítéssel és egy EBOD ház. Mindkét modell részletes lépései a következő részekben találhatók.
 
-* [Új eszköz csak az elsődleges ház](#new-device-with-primary-enclosure-only)
-* [Új eszköz EBOD ház](#new-device-with-ebod-enclosure)
+* [Új eszköz csak az elsődleges bekerítéssel](#new-device-with-primary-enclosure-only)
+* [Új eszköz EBOD bekerítéssel](#new-device-with-ebod-enclosure)
 
-### <a name="new-device-with-primary-enclosure-only"></a>Új eszköz csak az elsődleges ház
-A StorSimple 8100-as modell egyetlen lemezház eszköz. Az eszköz redundáns energiagazdálkodási és hűtéssel modulok (PCMs) tartalmaz. Mindkét PCMs telepítve legyen, és csatlakozik a különböző áramforrásokhoz magas rendelkezésre állás biztosítása érdekében.
+### <a name="new-device-with-primary-enclosure-only"></a>Új eszköz csak az elsődleges bekerítéssel
+A StorSimple 8100 modell egyetlen bekerítési eszköz. Az eszköz redundáns energiaellátási és hűtési modulokat (PCMs) tartalmaz. A magas rendelkezésre állás biztosítása érdekében mindkét PCMs telepíteni és csatlakoztatni kell a különböző áramforrásokhoz.
 
-A következő lépésekkel bekábelezése teljesítményhez.
+A következő lépések végrehajtásával csatlakoztassa az eszközt a powerhez.
 
 [!INCLUDE [storsimple-cable-8100-for-power](../../includes/storsimple-cable-8100-for-power.md)]
 
 > [!NOTE]
-> Eszközbeállítások végrehajtása és a kábelezést utasításokat, Ugrás [telepítse a StorSimple 8100 sorozatú eszköz](storsimple-8100-hardware-installation.md). Győződjön meg arról, pontosan kövesse az utasításokat.
+> Az eszközök telepítési és kábelezési utasításait az [StorSimple 8100 eszköz telepítése](storsimple-8100-hardware-installation.md)című részben találhatja meg. Ügyeljen arra, hogy pontosan kövesse az utasításokat.
 > 
 > 
 
-### <a name="new-device-with-ebod-enclosure"></a>Új eszköz EBOD ház
-A StorSimple 8600-as modell elsődleges ház és a egy EBOD ház is van. Ehhez a soros csatlakozású SCSI (SAS) kapcsolódási és power együtt bekábelezte egységeket.
+### <a name="new-device-with-ebod-enclosure"></a>Új eszköz EBOD bekerítéssel
+A StorSimple 8600 modellnek van egy elsődleges bekerítése és egy EBOD ház is. Ehhez csatlakoztatni kell az egységeket a soros csatlakozású SCSI (SAS) kapcsolathoz és a teljesítményhez.
 
-Az eszköz beállítása az első alkalommal, amikor a SAS kábelezést először hajtsa végre a lépéseket, és végezze el a kábelezést power.
+Ha első alkalommal állítja be az eszközt, hajtsa végre az SAS-kábelezés lépéseit először, majd hajtsa végre a Power kábelezés lépéseit.
 
 [!INCLUDE [storsimple-sas-cable-8600](../../includes/storsimple-sas-cable-8600.md)]
 
 [!INCLUDE [storsimple-cable-8600-for-power](../../includes/storsimple-cable-8600-for-power.md)]
 
 > [!NOTE]
-> Eszközbeállítások végrehajtása és a kábelezést utasításokat, Ugrás [telepítse a StorSimple 8600 sorozatú eszköz](storsimple-8600-hardware-installation.md). Győződjön meg arról, pontosan kövesse az utasításokat.
+> Az eszközök telepítési és kábelezési utasításait az [StorSimple 8600 eszköz telepítése](storsimple-8600-hardware-installation.md)című részben találhatja meg. Ügyeljen arra, hogy pontosan kövesse az utasításokat.
 
-## <a name="turn-on-a-device-after-shutdown"></a>Egy eszköz bekapcsolása leállást követően
-Után le lett állítva a StorSimple eszköz bekapcsolása lépései eltérőek attól függően, hogy az eszköz egy 8100-as vagy egy 8600-as modell. A 8100-as rendelkezik egy önálló elsődleges ház, mivel a 8600-as elsődleges ház és a egy EBOD ház kettős-lemezház eszköz.
+## <a name="turn-on-a-device-after-shutdown"></a>Eszköz bekapcsolása leállítás után
+A StorSimple-eszközök leállítás utáni bekapcsolásának lépései eltérőek attól függően, hogy az eszköz 8100-es vagy 8600-es modell-e. Az 8100 egyetlen elsődleges bekerítéssel rendelkezik, míg a 8600 egy kettős bekerítésű eszköz, amely egy elsődleges bekerítéssel és egy EBOD ház.
 
-* [Az eszköz csak az elsődleges ház](#device-with-primary-enclosure-only)
-* [EBOD ház eszköz](#device-with-ebod-enclosure)
+* [Csak elsődleges bekerítéssel rendelkező eszköz](#device-with-primary-enclosure-only)
+* [EBOD bekerítéssel rendelkező eszköz](#device-with-ebod-enclosure)
 
-### <a name="device-with-primary-enclosure-only"></a>Az eszköz csak az elsődleges ház
-A leállítása után az alábbi eljárás segítségével kapcsolja be a StorSimple-eszköz elsődleges ház és nem EBOD ház.
+### <a name="device-with-primary-enclosure-only"></a>Csak elsődleges bekerítéssel rendelkező eszköz
+Leállítás után a következő eljárással bekapcsolhatja a StorSimple-eszközt egy elsődleges bekerítéssel, és nincs EBOD ház.
 
-#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Egy eszköz csak egy elsődleges ház bekapcsolása
-1. Ellenőrizze, hogy a teljesítmény bekapcsol mindkét Power, és hűtéssel modulok (PCMs) OFF állásban van. Ha a kapcsolók nem OFF állásban, fordítsa meg őket a OFF helyre, és várjon, amíg a jelzőfény ugorhat.
-2. Kapcsolja be az eszközt a tükrözés, a kiemelt kapcsolók a mindkét PCMs ON helyére. Az eszköz kapcsolja.
-3. Annak ellenőrzéséhez, hogy az eszköz teljes mértékben a a következőket ellenőrizze:
+#### <a name="to-turn-on-a-device-with-a-primary-enclosure-only"></a>Az eszköz bekapcsolása csak az elsődleges bekerítéssel
+1. Győződjön meg arról, hogy a Power és a hűtő modulok (PCMs-EK) energiaellátási kapcsolói a kikapcsolt állapotban vannak. Ha a kapcsolók nem a kikapcsolt helyzetben vannak, akkor a kikapcsolási pozícióra kell váltania, és várnia kell a fények kikapcsolására.
+2. Kapcsolja be az eszközt úgy, hogy a kapcsolókat mindkét PCMs a be pozícióra fordítja. Az eszköznek be kell kapcsolnia.
+3. A következő ellenőrzésével ellenőrizheti, hogy az eszköz teljes mértékben be van-e kapcsolva:
    
-   1. Az OK LED-ek mindkét PCM modulokat a rendszer zöld.
-   2. Mindkét vezérlő állapota LED-ek szilárd zöld.
-   3. A kék LED az egyik vezérlő villogó, amely azt jelzi, hogy a vezérlő aktív.
+   1. Az OK LED-ek mindkét PCM-modulon zöldek.
+   2. Az állapotjelző LED-ek mindkét vezérlőn tömör zöldek.
+   3. A kék LED az egyik vezérlőn villog, ami azt jelzi, hogy a vezérlő aktív.
       
-      Ha ezek a feltételek nem teljesülnek, majd az eszköz állapota nem megfelelő. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md).
+      Ha ezek a feltételek nem teljesülnek, az eszköz nem kifogástalan állapotú. Vegye [fel a kapcsolatot Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="device-with-ebod-enclosure"></a>EBOD ház eszköz
-A leállítása után az alábbi eljárás segítségével kapcsolja be a StorSimple-eszköz elsődleges ház és a egy EBOD ház. Hajtsa végre az egyes lépések sorrendben a pontosan leírtak szerint. Ezt az adatvesztést eredményezhet.
+### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz
+A leállítás után a következő eljárással kapcsolhat be egy StorSimple-eszközt egy elsődleges bekerítéssel és egy EBOD ház használatával. Hajtsa végre az egyes lépéseket a leírtak szerint pontosan. Ennek elmulasztása adatvesztést eredményezhet.
 
-#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Egy elsődleges és a egy EBOD ház eszköz bekapcsolása
-1. Győződjön meg arról, hogy a EBOD ház csatlakozik-e az elsődleges ház. További információkért lásd: [telepítse a StorSimple 8600 sorozatú eszköz](storsimple-8600-hardware-installation.md).
-2. Győződjön meg arról, hogy a teljesítmény és a hűtési modulok (PCMs) az EBOD és az elsődleges ház OFF állásban van. Ha a kapcsolók nem OFF állásban, fordítsa meg őket a OFF helyre, és várjon, amíg a jelzőfény ugorhat.
-3. Az EBOD ház-es először tükrözés, hatékonysága által a mindkét PCMs vált, amennyiben az ON pozíciója. A PCM LED-ek zöld kell lennie. Egy zöld az EBOD-vezérlő LED ezt a kiegészítő egységet a azt jelzi, hogy a EBOD ház be van-e.
-4. Kapcsolja be az elsődleges ház által a kiemelt kapcsolók visszalapozok a mindkét PCMs ON helyére. A teljes rendszer most meg kell lennie.
-5. Ellenőrizze, hogy a SAS LED-ek zöld, gondoskodik arról, hogy készen áll-e a kapcsolat a EBOD ház és az elsődleges ház között.
+#### <a name="to-turn-on-a-device-with-a-primary-and-an-ebod-enclosure"></a>Az eszköz bekapcsolása elsődleges és EBOD bekerítéssel
+1. Győződjön meg arról, hogy a EBOD ház csatlakozik az elsődleges bekerítéshez. További információt [a StorSimple 8600-eszköz telepítése](storsimple-8600-hardware-installation.md)című témakörben talál.
+2. Győződjön meg arról, hogy a EBOD és az elsődleges házakban a Power és a hűtő modulok (PCMs-EK) ki vannak kapcsolva. Ha a kapcsolók nem a kikapcsolt helyzetben vannak, akkor a kikapcsolási pozícióra kell váltania, és várnia kell a fények kikapcsolására.
+3. Először kapcsolja be a EBOD a Power kapcsolók mindkét PCMs való tükrözésével a ON pozícióra. A PCM LED-nek zöld színűnek kell lennie. Az egységhez tartozó zöld EBOD vezérlő azt jelzi, hogy a EBOD ház be van kapcsolva.
+4. Kapcsolja be az elsődleges burkolatot a Power kapcsolók mindkét PCMs való tükrözésével a ON pozícióra. A teljes rendszernek ekkor kell lennie.
+5. Győződjön meg arról, hogy a SAS LED-ek zöld színűek, ami biztosítja, hogy a EBOD-ház és az elsődleges ház közötti kapcsolat jó legyen.
 
-## <a name="turn-on-a-device-after-a-power-loss"></a>Egy az áramellátás megszakadása után eszköz engedélyezése
-A StorSimple eszköz egy áramkimaradás vagy megszakítás leállíthatja. A teljesítmény kimaradás fordulhat elő, a tápegységek egyik vagy mindkét tápegységek. A helyreállítási lépések eltérőek aszerint, hogy az eszköz egy 8100-as vagy 8600-as modell. A 8100-as rendelkezik egy önálló elsődleges ház, mivel a 8600-as elsődleges ház és a egy EBOD ház kettős-lemezház eszköz. Ez a szakasz ismerteti az egyes forgatókönyvek helyreállítási eljárását.
+## <a name="turn-on-a-device-after-a-power-loss"></a>Eszköz bekapcsolása áramkimaradás után
+Egy áramszünet vagy megszakítás egy StorSimple-eszközt tud leállítani. A áramkimaradás az egyik tápegységen vagy tápegységen is történhet. A helyreállítási lépések eltérnek attól függően, hogy az eszköz 8100 vagy 8600 modell. Az 8100 egyetlen elsődleges bekerítéssel rendelkezik, míg a 8600 egy kettős bekerítésű eszköz, amely egy elsődleges bekerítéssel és egy EBOD ház. Ez a szakasz az egyes forgatókönyvek helyreállítási eljárását ismerteti.
 
-* [Az eszköz csak az elsődleges ház](#8100)
-* [EBOD ház eszköz](#8600)
+* [Csak elsődleges bekerítéssel rendelkező eszköz](#8100)
+* [EBOD bekerítéssel rendelkező eszköz](#8600)
 
-### <a name="device-with-primary-enclosure-only-a-name8100"></a>Az eszköz csak az elsődleges ház <a name="8100">
-A rendszer továbbra is a normál működés, az egyik hozzá tartozó tápegységek áramkimaradás esetén. Azonban ahhoz, hogy az eszköz magas rendelkezésre állású, állítsa vissza a power az áramellátás minél hamarabb.
+### <a name="device-with-primary-enclosure-only-a-name8100"></a>Az eszköz csak az elsődleges bekerítéssel <a name="8100">
+A rendszer akkor is folytathatja a normál működést, ha áramkimaradás van az egyik áramforrásával. Az eszköz magas rendelkezésre állásának biztosítása érdekében azonban a lehető leghamarabb állítsa vissza az áramellátást a tápegységre.
 
-Ha egy áramkimaradás vagy áramkimaradás a mindkét tápegységek, a rendszer le fog állni a szabályos és szabályozott módon. Ha a teljesítmény helyreáll, a rendszer automatikusan bekapcsolása.
+Ha áramkimaradás vagy áramkimaradás áll fenn mindkét tápegységen, a rendszer sorrendbe állítása és ellenőrzése megtörténik. A visszaállított állapot után a rendszer automatikusan bekapcsol.
 
-### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD ház eszköz <a name="8600">
-#### <a name="power-loss-on-one-power-supply"></a>A egy kapacitást az áramellátás megszakadása fogja tartalmazni.
-A rendszer továbbra is a normál működés, a tápegységek az elsődleges ház- és a EBOD ház az egyik az áramellátás megszakadása esetén. Azonban ahhoz, hogy az eszköz magas rendelkezésre állású, állítsa vissza a power, az áramellátás minél hamarabb.
+### <a name="device-with-ebod-enclosure-a-name8600"></a>EBOD bekerítéssel rendelkező eszköz <a name="8600">
+#### <a name="power-loss-on-one-power-supply"></a>Áramkimaradás egyetlen tápegységen
+A rendszer akkor is folytathatja a normál működést, ha az elsődleges házban vagy az EBOD-házban áramkimaradás van az egyik áramforrásával. Az eszköz magas rendelkezésre állásának biztosítása érdekében azonban a lehető leghamarabb állítsa vissza az áramellátást a tápegységre.
 
-#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Az elsődleges, a házak EBOD mindkét tápegységek az áramellátás megszakadása
-Ha egy áramkimaradás vagy áramkimaradás a mindkét tápegységek, a EBOD ház azonnal leállítja, és az elsődleges ház le fog állni a szabályos és szabályozott módon. Amikor power helyreáll, a készülék automatikusan elindul.
+#### <a name="power-loss-on-both-power-supplies-on-primary-and-ebod-enclosures"></a>Az elsődleges és a EBOD-házakban lévő energiaellátási szolgáltatások energiafogyasztása
+Ha áramkimaradás vagy áramkimaradás áll fenn mindkét tápegységen, akkor a EBOD-kamra azonnal leáll, és az elsődleges ház szabályos és vezérelt módon leáll. Ha a tápellátás helyreáll, a készülék automatikusan elindul.
 
-Ha a teljesítmény manuálisan váltott, majd a következő lépésekkel power visszaállítani a rendszer.
+Ha a tápellátás manuálisan ki van kapcsolva, hajtsa végre a következő lépéseket a rendszerre való energiaellátás helyreállításához.
 
-1. Kapcsolja be a EBOD ház.
-2. Miután a EBOD ház a, kapcsolja be az elsődleges ház.
+1. Kapcsolja be a EBOD bekerítését.
+2. Ha a EBOD ház be van kapcsolva, kapcsolja be az elsődleges bekerítést.
 
-### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Az EBOD ház mindkét tápegységek Power veszteség
-Ha beállította a kábelek, biztosítania kell, hogy a EBOD soha nem csatlakozik önmagában egy külön PDU. Ha a EBOD és elsődleges ház nem egy időben, a rendszer állítja helyre.
+### <a name="power-loss-on-both-power-supplies-on-ebod-enclosure"></a>Áramkimaradás a EBOD-ház energiaellátási szolgáltatásán
+A kábelek beállításakor gondoskodnia kell arról, hogy a EBOD soha ne legyenek csatlakoztatva különálló PDU-hoz. Ha a EBOD és az elsődleges ház egy időben meghiúsul, akkor a rendszer helyreáll.
 
-Ha csak a EBOD ház mindkét tápegységek meghiúsul, a rendszer nem tudja automatikusan a rendszer. A következő lépésekkel kapcsolja be a rendszer, és állítsa vissza megfelelő állapotba való:
+Ha csak a EBOD ház meghibásodik mindkét tápegységen, a rendszer nem fogja automatikusan helyreállítani. Végezze el a következő lépéseket a rendszer bekapcsolásához, és állítsa vissza Kifogástalan állapotba:
 
-1. Ha az elsődleges ház be van kapcsolva, kapcsolja ki a Power és a hűtési modulok (PCMs).
-2. Várjon néhány percet, amíg a rendszer leállítása.
-3. Kapcsolja be a EBOD ház.
-4. Miután a EBOD ház a, kapcsolja be az elsődleges ház.
+1. Ha az elsődleges bekerítés be van kapcsolva, kapcsolja ki az energiagazdálkodási és a hűtési modult (PCMs).
+2. Várjon néhány percet, amíg a rendszer leáll.
+3. Kapcsolja be a EBOD bekerítését.
+4. Ha a EBOD ház be van kapcsolva, kapcsolja be az elsődleges bekerítést.
 
-## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Egy eszköz bekapcsolása után az elsődleges és a EBOD ház kapcsolat a streamcsatornával
-Ha megszakad a kapcsolat a készenléti állapotban lévő vezérlőnek és a megfelelő az EBOD-vezérlő között, az eszköz továbbra is működik. A rendszer aktív vezérlő és a megfelelő az EBOD-vezérlő közötti kapcsolat megszakad, ha feladatátvétel történjen, és az eszköz továbbra is a megszokott módon működnek.
+## <a name="turn-on-a-device-after-the-primary-and-ebod-enclosure-connection-is-lost"></a>Az eszköz bekapcsolása az elsődleges és a EBOD ház kapcsolatának elvesztése után
+Ha a kapcsolat megszakad a készenléti vezérlő és a hozzá tartozó EBOD-vezérlő között, az eszköz továbbra is működni fog. Ha a rendszer aktív vezérlője és a hozzá tartozó EBOD-vezérlő közötti kapcsolat megszakad, a feladatátvételt kell megtörténnie, és az eszköznek továbbra is a megszokott módon kell működnie.
 
-Ha mindkét soros csatlakozású SCSI (SAS) kábelek el lesznek távolítva, vagy a EBOD ház és az elsődleges ház közötti kapcsolat daraboltak van, az eszköz nem fog működni. Ezen a ponton a következő lépésekkel.
+Ha a soros csatlakozású SCSI (SAS) kábelek el lettek távolítva, vagy a EBOD-ház és az elsődleges ház közötti kapcsolat megszakad, az eszköz nem fog működni. Ezen a ponton hajtsa végre az alábbi lépéseket.
 
-### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Az eszköz bekapcsolása, miután a kapcsolat a streamcsatornával
-1. A háttérben az eszköz eléréséhez.
-2. Az EBOD ház és az elsődleges ház között a SAS kábeles kapcsolata megszakad, ha az összes SAS lane LED-ek a EBOD tárolóeszközön lesz kapcsolva.
-3. Állítsa le a Power és a hűtési modulok (PCMs) a EBOD ház és az elsődleges ház.
-4. Várjon, amíg mindkét a ház-jének összes lámpa kikapcsolása.
-5. Helyezze be újra a SAS-kábel, és győződjön meg arról, hogy nincs-e a megfelelő kapcsolat a EBOD ház és az elsődleges ház között.
-6. Kapcsolja be a EBOD ház első mindkét PCM kapcsolók átállításával ON helyére.
-7. Győződjön meg arról, hogy a EBOD ház annak ellenőrzéséhez, hogy a zöld LED ON szerint ki van kapcsolva.
-8. Kapcsolja be az elsődleges ház.
-9. Győződjön meg arról, hogy az elsődleges ház annak ellenőrzéséhez, hogy a tartományvezérlő zöld LED ON szerint ki van kapcsolva.
-10. Ellenőrizze, hogy a EBOD ház-kapcsolatot az elsődleges ház jó szerint győződjön meg róla, hogy a SAS lane LED-ek (EBOD-vezérlő 4) minden ON.
-
-> [!IMPORTANT]
-> A SAS-kábel hibás, vagy a kapcsolat a EBOD ház és az elsődleges ház között nem nem jó, ha bekapcsolja a rendszer, ha azt lépnek helyreállítási módba. Adjon [forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) Ha ez történik.
-
-
-## <a name="turn-off-a-running-device"></a>Futó eszköz letiltása
-Egy futó StorSimple-eszköz le kell állítani, ha azt áthelyezik, kivehetők a szolgáltatás, vagy van egy nem megfelelően működő összetevője, amely kell cserélni kell. A lépések eltérnek attól függően, hogy-e a StorSimple-eszközt egy 8100-as vagy egy 8600-as modell. A 8100-as rendelkezik egy önálló elsődleges ház, mivel a 8600-as elsődleges ház és a egy EBOD ház kettős-lemezház eszköz. Ez a szakasz részletesen ismerteti egy futó eszköz leállítása lépéseit.
-
-* [Eszköz elsődleges ház](#8100a)
-* [EBOD ház eszköz](#8600a)
-
-### <a name="device-with-primary-enclosure-a-name8100a"></a>Eszköz elsődleges ház <a name="8100a">
-Az a szabályos és szabályozott módon állítsa le az eszközt, ezt megteheti az Azure Portalon keresztül, vagy a Windows PowerShell storsimple-höz készült. 
+### <a name="to-turn-on-the-device-after-connection-is-lost"></a>Az eszköz bekapcsolása a kapcsolat elvesztése után
+1. Hozzáférés az eszköz hátoldalához.
+2. Ha a EBOD-ház és az elsődleges ház közötti SAS-kábel kapcsolata megszakadt, a EBOD-ház összes SAS-sáv-LED-je ki lesz kapcsolva.
+3. Állítsa le mindkét energiaellátási és hűtési modult (PCMs) a EBOD-ház és az elsődleges ház számára.
+4. Várjon, amíg a házak hátoldalán lévő összes jelzőfény kikapcsol.
+5. Szúrja be újra az SAS-kábeleket, és győződjön meg arról, hogy jó kapcsolat van a EBOD-ház és az elsődleges ház között.
+6. Először kapcsolja be a EBOD beosztását úgy, hogy mindkét PCM kapcsolót bekapcsolja a ON pozícióba.
+7. Győződjön meg arról, hogy a EBOD ház be van kapcsolva, és ellenőrizze, hogy a zöld LED be van-e kapcsolva.
+8. Kapcsolja be az elsődleges bekerítést.
+9. Győződjön meg arról, hogy az elsődleges ház be van kapcsolva, és ellenőrizze, hogy a vezérlő zöld LED be van-e kapcsolva.
+10. Győződjön meg arról, hogy a EBOD-ház az elsődleges bekerítéssel való kapcsolatban jó, ha ellenőrzi, hogy az SAS Lane-LED-ek (négy EBOD-vezérlő) mindegyike elérhető-e.
 
 > [!IMPORTANT]
-> Ne állítsa le a futó eszköz főkapcsoló az eszköz-jének használatával.
-> 
-> Mielőtt az eszköz a Leállítás, ellenőrizze, hogy az eszköz-összetevők kifogástalan állapotú. Az Azure Portalon lépjen **eszközök** > **figyelő** > **hardverállapot**, és győződjön meg arról, hogy az összes összetevő állapota zöld. Ez a csak kifogástalan állapotú rendszerhez. Ha a rendszer pedig leáll le a cserélje le a hibás összetevő, hibás (piros), vagy csökkentett teljesítményű megfelelő összetevőjének (sárga) állapot a **hardverállapot**.
-> 
-> 
+> Ha az SAS-kábelek hibásak, vagy ha a EBOD-ház és az elsődleges ház közötti kapcsolat nem jó, akkor a rendszer bekapcsolásakor a helyreállítási módba lép. Ha ez történik, vegye [fel a kapcsolatot Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md) .
 
-Ha hozzáfér a Windows PowerShell StorSimple vagy az Azure Portalon, kövesse a [állítsa le a StorSimple eszköz](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device). 
 
-### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD ház eszköz <a name="8600a">
+## <a name="turn-off-a-running-device"></a>Futó eszköz kikapcsolása
+Előfordulhat, hogy egy futó StorSimple-eszközt le kell állítani, ha áthelyezik, kivették a szolgáltatást, vagy hibás összetevővel rendelkezik, amelyet cserélni kell. A lépések eltérnek attól függően, hogy a StorSimple-eszköz 8100 vagy 8600 modell. Az 8100 egyetlen elsődleges bekerítéssel rendelkezik, míg a 8600 egy kettős bekerítésű eszköz, amely egy elsődleges bekerítéssel és egy EBOD ház. Ez a szakasz részletesen ismerteti a futó eszközök leállításának lépéseit.
+
+* [Eszköz elsődleges bekerítéssel](#8100a)
+* [EBOD bekerítéssel rendelkező eszköz](#8600a)
+
+### <a name="device-with-primary-enclosure-a-name8100a"></a>Az eszköz elsődleges bekerítéssel <a name="8100a">
+Az eszköz leállításához a Azure Portalon vagy a Windows PowerShell StorSimple-bővítménye keresztül teheti meg az eszközt. 
+
 > [!IMPORTANT]
-> Az elsődleges ház és a EBOD ház leállítása előtt győződjön meg arról, hogy az eszköz-összetevők kifogástalan állapotú. Az Azure Portalon lépjen **eszközök** > **figyelő** > **hardverállapot**, és ellenőrizze, hogy az összes összetevő kifogástalan állapotú.
+> Ne állítson le egy futó eszközt az eszköz hátoldalán található főkapcsoló gomb használatával.
+> 
+> Az eszköz leállítása előtt győződjön meg róla, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök** > a **figyelés** > a **hardver**állapota elemre, és ellenőrizze, hogy az összes összetevő állapota zöld. Ez csak kifogástalan állapotú rendszer esetén igaz. Ha a rendszer leállítása hibás összetevő helyett történik, akkor a **hardver állapotában**a megfelelő összetevő hibás (piros) vagy csökkentett (sárga) állapotát fogja látni.
+> 
+> 
+
+Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Portal elérését, kövesse a [StorSimple-eszköz leállítása](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)című témakör lépéseit. 
+
+### <a name="device-with-ebod-enclosure-a-name8600a"></a>EBOD bekerítéssel rendelkező eszköz <a name="8600a">
+> [!IMPORTANT]
+> Az elsődleges bekerítés és a EBOD bekerítésének leállítása előtt győződjön meg arról, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök** > a **figyelés** > a hardver állapota elemre, és ellenőrizze, hogy az összes összetevő kifogástalan **állapotú**-e.
 
 
-#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>EBOD ház futó eszköz leállítása
-1. Kövesse a felsorolt lépéseket [állítsa le a StorSimple eszköz](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) az elsődleges ház számára.
-2. Az elsődleges ház leáll, miután leállította; a EBOD tükrözés, teljesítmény és a hűtési modul (PCM) kapcsolók ki.
-3. Győződjön meg arról, hogy a EBOD le lett állítva, ellenőrizze, hogy a EBOD ház-jének összes lámpa van-e kapcsolva.
+#### <a name="to-shut-down-a-running-device-with-ebod-enclosure"></a>Futó eszköz leállítása EBOD bekerítéssel
+1. Kövesse az [StorSimple-eszköz leállítása](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device) az elsődleges ház számára című témakörben felsorolt lépéseket.
+2. Az elsődleges bekerítés leállítása után állítsa le a EBOD a Power and hűtő modul (PCM) kapcsolók kikapcsolásával.
+3. Annak ellenőrzéséhez, hogy a EBOD le van-e állítva, ellenőrizze, hogy a EBOD-ház hátulján lévő összes jelzőfény ki van-e kapcsolva.
 
 > [!NOTE]
-> A EBOD ház csatlakozni az elsődleges ház használt SAS-kábel csomóponttól sem, amíg, miután a rendszer leállítása.
+> A EBOD-ház az elsődleges házba való csatlakoztatásához használt SAS-kábelek nem távolíthatók el a rendszer leállítása után.
 
-## <a name="next-steps"></a>További lépések
-[Forduljon a Microsoft Support](storsimple-8000-contact-microsoft-support.md) Ha problémákat, amikor ne tudják bekapcsolni a, vagy a StorSimple eszköz leállítása.
+## <a name="next-steps"></a>Következő lépések
+Ha a StorSimple-eszköz bekapcsolása vagy leállítása során problémák merülnek [fel, forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md) .
 

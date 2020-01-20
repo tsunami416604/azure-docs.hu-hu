@@ -3,12 +3,12 @@ title: Vendég-konfigurációs szabályzatok létrehozása
 description: Megtudhatja, hogyan hozhat létre Azure Policy vendég-konfigurációs szabályzatot Windows vagy Linux rendszerű virtuális gépekhez a Azure PowerShell használatával.
 ms.date: 12/16/2019
 ms.topic: how-to
-ms.openlocfilehash: dbdb4288812b8d1016c3ccc879582f76222d17cd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 7a6c6bb68302d41cd750c59062432a40cf01e8bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867341"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278462"
 ---
 # <a name="how-to-create-guest-configuration-policies"></a>Vendég-konfigurációs szabályzatok létrehozása
 
@@ -176,42 +176,6 @@ A `New-GuestConfigurationPackage` parancsmag paraméterei:
 
 A befejezett csomagot a felügyelt virtuális gépek által elérhető helyen kell tárolni. Ilyenek például a GitHub-adattárak, az Azure-Tárházak vagy az Azure Storage. Ha nem szeretné, hogy a csomag nyilvános legyen, az URL-címben egy [sas-tokent](../../../storage/common/storage-dotnet-shared-access-signature-part-1.md) is hozzáadhat.
 A magánhálózati számítógépekhez [szolgáltatási végpontot](../../../storage/common/storage-network-security.md#grant-access-from-a-virtual-network) is alkalmazhat, bár ez a konfiguráció csak a csomag elérésére és a szolgáltatással való kommunikációra vonatkozik.
-
-### <a name="working-with-secrets-in-guest-configuration-packages"></a>A titkok használata a vendég konfigurációs csomagjaiban
-
-Azure Policy vendég konfigurációban a futtatáskor használt titkok kezelésének optimális módja, ha a Azure Key Vault tárolja őket. Ez a kialakítás az egyéni DSC-erőforrásokon belül valósítható meg.
-
-1. Felhasználó által hozzárendelt felügyelt identitás létrehozása az Azure-ban.
-
-   Az identitást a gépek használják a Key Vaultban tárolt titkos kódok elérésére. A részletes lépésekért lásd: [felhasználó által hozzárendelt felügyelt identitás létrehozása, listázása és törlése Azure PowerShell használatával](../../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md).
-
-1. Hozzon létre egy Key Vault példányt.
-
-   Részletes lépések: [titkos PowerShell beállítása és beolvasása](../../../key-vault/quick-create-powershell.md).
-   Rendeljen engedélyeket a példányhoz, hogy a felhasználó által hozzárendelt identitás hozzáférést biztosítson a Key Vaultban tárolt titkos kulcsokhoz. Részletes lépések: [Secret-.net beállítása és beolvasása](../../../key-vault/quick-create-net.md#give-the-service-principal-access-to-your-key-vault).
-
-1. Rendelje hozzá a felhasználó által hozzárendelt identitást a számítógéphez.
-
-   A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-powershell-windows-vm.md#user-assigned-managed-identity)Azure-beli virtuális gépeken a PowerShell használatával.
-   Az identitás kiosztása Azure Resource Manager használatával Azure Policy-on keresztül. A részletes lépésekért lásd: [felügyelt identitások konfigurálása](../../../active-directory/managed-identities-azure-resources/qs-configure-template-windows-vm.md#assign-a-user-assigned-managed-identity-to-an-azure-vm)Azure-beli virtuális gépeken sablon használatával.
-
-1. Használja az egyéni erőforráson belül generált ügyfél-azonosítót a Key Vault a számítógépről elérhető jogkivonat használatával való eléréséhez.
-
-   A Key Vault példányhoz tartozó `client_id` és URL-cím [tulajdonságokként](/powershell/scripting/dsc/resources/authoringresourcemof#creating-the-mof-schema) adható át az erőforrásnak, így az erőforrást nem kell több környezet esetében frissíteni, vagy ha az értékeket módosítani kell.
-
-Az alábbi mintakód egy egyéni erőforrásban használható a titkos kulcsok Key Vault felhasználó által hozzárendelt identitással való lekéréséhez. A kérelemből Key Vault egyszerű szövegként visszaadott érték. Ajánlott eljárásként tárolja azt egy hitelesítőadat-objektumon belül.
-
-```azurepowershell-interactive
-# the following values should be input as properties
-$client_id = 'e3a78c9b-4dd2-46e1-8bfa-88c0574697ce'
-$keyvault_url = 'https://keyvaultname.vault.azure.net/secrets/mysecret'
-
-$access_token = ((Invoke-WebRequest -Uri "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&client_id=$client_id&resource=https%3A%2F%2Fvault.azure.net" -Method GET -Headers @{Metadata='true'}).Content | ConvertFrom-Json).access_token
-
-$value = ((Invoke-WebRequest -Uri $($keyvault_url+'?api-version=2016-10-01') -Method GET -Headers @{Authorization="Bearer $access_token"}).content | convertfrom-json).value |  ConvertTo-SecureString -asplaintext -force
-
-$credential = New-Object System.Management.Automation.PSCredential('secret',$value)
-```
 
 ## <a name="test-a-guest-configuration-package"></a>Vendég konfigurációs csomag tesztelése
 

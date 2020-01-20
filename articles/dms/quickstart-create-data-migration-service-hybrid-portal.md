@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: quickstart
-ms.date: 12/17/2019
-ms.openlocfilehash: 64d4998e287f9981c666dee54fc3b67886791bbf
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.date: 01/21/2019
+ms.openlocfilehash: 81039aa4aa37f9587db887beadcdb6d263ec6a74
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75708291"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274813"
 ---
 # <a name="quickstart-create-a-hybrid-mode-instance-with-azure-portal--azure-database-migration-service"></a>Gyors útmutató: hibrid üzemmódú példány létrehozása Azure Portal & Azure Database Migration Service
 
@@ -73,7 +73,7 @@ A Azure Database Migration Service első példányának létrehozása előtt reg
     - Válassza ki a forráshoz vagy a célkiszolgálóhoz legközelebb eső **Helyet**.
     - **Szolgáltatási mód**esetén válassza a **hibrid (előzetes verzió)** lehetőséget.
 
-           ![Create migration service - basics](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
+         ![Áttelepítési szolgáltatás létrehozása – alapismeretek](media/quickstart-create-data-migration-service-hybrid-portal/dms-create-service-basics.png)
 
 4. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
@@ -186,7 +186,7 @@ Ez a szkript a gyors prototípusok készítésére szolgál, ha a felhasználó 
 > [!IMPORTANT]
 > Ez a szkript feltételezi, hogy a Azure Database Migration Service egy meglévő példánya hibrid módban van, és hogy a használt Azure-fiók rendelkezik a AdApps létrehozásához szükséges engedélyekkel a bérlőben, és módosíthatja az előfizetéshez tartozó RBAC.
 
-Egyszerűen adja meg a paramétereket a parancsfájl tetején, majd futtassa a parancsfájlt egy rendszergazdai PowerShell-példányból.
+Adja meg a paramétereket a parancsfájl tetején, majd futtassa a parancsfájlt egy rendszergazdai PowerShell-példányból.
 
 ## <a name="next-steps"></a>Következő lépések
 

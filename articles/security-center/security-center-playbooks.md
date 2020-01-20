@@ -13,15 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/28/2018
 ms.author: memildin
-ms.openlocfilehash: faf297ef4b07b76f98bb7773c636cd8f6228bbc0
-ms.sourcegitcommit: 8a717170b04df64bd1ddd521e899ac7749627350
+ms.openlocfilehash: b4a2617bec145cf735058bc13c01bf8ebdfe6550
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/23/2019
-ms.locfileid: "71201738"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275503"
 ---
 # <a name="security-playbook-in-azure-security-center-preview"></a>Biztonsági forgatókönyvek az Azure Security Centerben (előzetes verzió)
 Ebből a dokumentumból megismerheti, hogyan használhatók az Azure Security Center biztonsági forgatókönyvei a biztonsággal kapcsolatos problémákra való válaszadásra.
+
+> [!NOTE]
+> A biztonsági forgatókönyvek szolgáltatás a munkafolyamat-automatizálásra lett átnevezve. A frissített tartalommal kapcsolatos információkért tekintse meg a [munkafolyamat-automatizálás (előzetes verzió)](https://docs.microsoft.com/azure/security-center/workflow-automation) lapot. Ez az ideiglenes archivált tartalom olyan ügyfelek számára érhető el, akik előzetesen megtekintették a korábban, és fokozatosan el lesznek távolítva. Az előzetes verzió bármely funkcióját a [Microsoft Azure előnézetekre vonatkozó kiegészítő használati feltételek](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) vezérlik
 
 ## <a name="what-is-security-playbook-in-security-center"></a>Mit jelent a biztonsági forgatókönyv a Security Centerben?
 A biztonsági forgatókönyv eljárások olyan gyűjteménye, amelyet végre lehet hajtani a Security Centerből, mihelyt egy riasztás kivált egy adott forgatókönyvet. A biztonsági forgatókönyvek segítségével automatizálható és összehangolható a válaszadás a Security Center által észlelt biztonsági riasztásokra. A Security Center biztonsági forgatókönyvei [Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-what-are-logic-apps)-alkalmazásokon alapulnak. Ez azt jelenti, hogy használhatja a Logic Apps biztonsági kategóriájú sablonjait, amelyeket saját igényei szerint módosíthat is, vagy létrehozhat új forgatókönyveket az [Azure Logic Apps-munkafolyamat](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) segítségével, amelyekhez a Security Centert használhatja eseményindítóként.
@@ -64,7 +67,7 @@ Forgatókönyveket akkor futtathat a Security Centerben, ha össze szeretné han
 1.  Nyissa meg a **Security Center** irányítópultját.
 2.  A bal oldali panelen, a **Fenyegetésészlelés** területen kattintson a **Biztonsági incidensek és riasztások** elemre.
 
-    ![Riasztások](./media/security-center-playbooks/security-center-playbooks-fig6.png)
+    ![Értesítések](./media/security-center-playbooks/security-center-playbooks-fig6.png)
 
 3.  Kattintson a vizsgálni kívánt riasztásra.
 4.  A riasztás oldalának tetején kattintson a **Forgatókönyvek futtatása** gombra.
@@ -95,7 +98,7 @@ A meglévő forgatókönyveket a Security Centerben módosíthatja, ha művelete
 > A saját forgatókönyvek Azure-beli logikai alkalmazások használatával történő létrehozásáról további információt [az első logikai alkalmazás munkafolyamatának a felhőalapú alkalmazások és felhőszolgáltatások közötti folyamatok automatizálásához történő létrehozását](https://docs.microsoft.com/azure/logic-apps/logic-apps-create-a-logic-app) ismertető cikkben talál.
 
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 Ebben a dokumentumban megismerkedhetett az Azure Security Center forgatókönyveinek használatával. Az Azure Security Centerrel kapcsolatos további információkért olvassa el a következőket:
 
 * [Biztonsági riasztások kezelése és válaszadás a riasztásokra az Azure Security Centerben](https://docs.microsoft.com/azure/security-center/security-center-managing-and-responding-alerts). A Security Center-riasztások kezelését és a biztonsági eseményekre való válaszadást ismertető útmutató.

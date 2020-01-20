@@ -1,24 +1,22 @@
 ---
-title: (ELAVULT) Az Azure Container Service-fürt méretezése
-description: Hogyan ügynökcsomópontok méretezhetők egy DC/OS, Docker Swarm vagy Kubernetes-fürtön az Azure Container Service az Azure CLI-vel vagy az Azure portal használatával.
-services: container-service
+title: ELAVULT Azure Container Service-fürt méretezése
+description: Az ügynök csomópontjainak a DC/OS-ben, a Docker Swarmban vagy a Kubernetes-fürtben való méretezése Azure Container Service az Azure CLI vagy a Azure Portal használatával.
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/01/2017
 ms.author: saudas
 ms.custom: H1Hack27Feb2017, mvc
-ms.openlocfilehash: d259d5d53ec8d45f584eebe614a0bd8892514a4c
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: d53369128a660805df7e144fbec67b1bad787b7b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60576424"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275625"
 ---
-# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>(ELAVULT) Ügynökcsomópontok méretezése a Container Service-fürt
+# <a name="deprecated-scale-agent-nodes-in-a-container-service-cluster"></a>ELAVULT Az ügynök csomópontjainak méretezése a Container Service-fürtben
 
 > [!TIP]
-> Ez a cikk, amely a frissített verziót használja Azure Kubernetes Service-ben, lásd: [Azure Kubernetes Service (AKS)-fürt méretezése](../../aks/scale-cluster.md).
+> Az Azure Kubernetes Service-t használó cikk frissített verziójának megtekintéséhez lásd: [Azure Kubernetes-szolgáltatás (ak) fürt méretezése](../../aks/scale-cluster.md).
 
 [!INCLUDE [container-service-scale.md](../../../includes/container-service-scale.md)]

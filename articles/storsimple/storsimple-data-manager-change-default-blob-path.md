@@ -1,83 +1,75 @@
 ---
-title: Az alapértelmezett blob útvonal módosítása |} A Microsoft Docs
-description: Ismerje meg, hogyan állítható be egy Azure-függvényt egy blob elérési útja átnevezése
-services: storsimple
-documentationcenter: NA
+title: BLOB elérési útjának módosítása az alapértelmezett értékről
+description: Megtudhatja, hogyan állíthat be egy Azure-függvényt a blob-fájlok elérési útjának átnevezéséhez
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: cdaf991c25c23dee4f87b44142c1482bf892bcf2
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5ba1709ae195631371e4ea72667ba9b2a4bf279e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60723796"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270631"
 ---
-# <a name="change-a-blob-path-from-the-default-path"></a>Egy blob elérési utat módosítsa az alapértelmezett elérési útjáról
+# <a name="change-a-blob-path-from-the-default-path"></a>BLOB elérési útjának módosítása az alapértelmezett elérési útról
 
-A StorSimple Data Manager szolgáltatás alakítja át az adatokat, ha alapértelmezés szerint helyezi az átalakított blobokat egy storage-tárolóban megadott a céladattárban létrehozása során. A blobok érkezésekor ezen a helyen, érdemes áthelyezni az ilyen blobok másik helyre. Ez a cikk ismerteti, hogyan állítható be egy Azure-függvényt egy alapértelmezett blob elérési útja átnevezése, és ezért a blobok áthelyezése egy másik helyre.
+Ha a StorSimple Data Manager szolgáltatás átalakítja az adatmennyiséget, alapértelmezés szerint az átalakított blobokat a tároló létrehozása során megadott tárolási tárolóban helyezi el. Mivel a Blobok ezen a helyen érkeznek, érdemes lehet áthelyezni ezeket a blobokat egy másik helyre. Ez a cikk azt ismerteti, hogyan állíthat be egy Azure-függvényt az alapértelmezett blob-fájl elérési útjának átnevezéséhez, és így a blobokat másik helyre helyezheti át.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy rendelkezik-e egy megfelelően konfigurált feladatdefiníció a StorSimple Data Manager szolgáltatásban.
+Győződjön meg arról, hogy a StorSimple Data Manager szolgáltatásban megfelelően konfigurált feladatdefiníció van.
 
 ## <a name="create-an-azure-function"></a>Azure-függvény létrehozása
 
-Hozzon létre egy Azure-függvényt, hajtsa végre az alábbi lépéseket:
+Azure-függvény létrehozásához hajtsa végre a következő lépéseket:
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/).
 
-2. Kattintson a **+ erőforrás létrehozása**. Az a **keresési** mezőbe írja be **Függvényalkalmazás** nyomja le az ENTER **Enter**. Válassza ki, és kattintson a **függvényalkalmazás** a megjelenített alkalmazások listája.
+2. Kattintson **az + erőforrás létrehozása**elemre. A keresőmezőbe írja be a **Függvényalkalmazás** **kifejezést** , majd nyomja le az **ENTER**billentyűt. A megjelenített alkalmazások listájában válassza ki a **Function app** (alkalmazás) elemet, majd kattintson rá.
 
-    ![A keresőmezőbe írja be a "Függvényalkalmazás"](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
+    ![Írja be a "függvényalkalmazás" kifejezést a keresőmezőbe](./media/storsimple-data-manager-change-default-blob-path/search-function-app.png)
 
 3. Kattintson a **Create** (Létrehozás) gombra.
 
-    ![A Függvényalkalmazás ablakban "Létrehozás" gombra](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
+    ![A függvényalkalmazás ablak "létrehozás" gombja](./media/storsimple-data-manager-change-default-blob-path/create-function-app.png)
 
-4. Az a **Függvényalkalmazás** konfigurációs panelen hajtsa végre az alábbi lépéseket:
+4. A **függvényalkalmazás** konfiguráció paneljén hajtsa végre a következő lépéseket:
 
-    1. Adjon meg egy egyedi **alkalmazásnév**.
-    2. A legördülő listából válassza ki a **előfizetés**. Ez az előfizetés ugyanaz, mint az a StorSimple Data Manager szolgáltatással kapcsolatos kell lennie.
-    3. Válassza ki **új létrehozása** erőforráscsoportot.
-    4. Az a **csomag** legördülő listában válassza **Használatalapú csomagban**.
-    5. Adjon meg egy helyet, ahol a függvény futásakor. Azt szeretné, hogy ugyanabban a régióban, ahol a StorSimple Data Manager szolgáltatás és a feladatdefiníciót társított storage-fiók találhatók.
-    6. Válasszon meglévő Storage-fiókot, vagy hozzon létre egy új Storage-fiókot. A tárfiók belső használatú a függvényt.
+    1. Adja meg az **alkalmazás egyedi nevét**.
+    2. A legördülő listából válassza ki az **előfizetést**. Ennek az előfizetésnek meg kell egyeznie a StorSimple Data Manager szolgáltatáshoz társítotttal.
+    3. Válassza az **Új erőforráscsoport létrehozása** lehetőséget.
+    4. A **üzemeltetési terv** legördülő listában válassza a használati **terv**elemet.
+    5. Adja meg azt a helyet, ahol a függvény fut. Ugyanazt a régiót szeretné használni, ahol a StorSimple Data Manager szolgáltatás és a feladattípushoz társított Storage-fiók található.
+    6. Válasszon meglévő Storage-fiókot, vagy hozzon létre egy új Storage-fiókot. A függvényhez belső használatú Storage-fiók szükséges.
 
-        ![Új Függvényalkalmazás-konfigurációs adatok megadása](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
+        ![Adja meg az új függvényalkalmazás konfigurációs adatkészletet](./media/storsimple-data-manager-change-default-blob-path/function-app-parameters.png)
 
-    7. Kattintson a **Create** (Létrehozás) gombra. A függvényalkalmazás létrehozása.
+    7. Kattintson a **Create** (Létrehozás) gombra. Létrejön a Function alkalmazás.
      
-        ![Függvényalkalmazás létrehozása](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
+        ![függvényalkalmazás létrehozva](./media/storsimple-data-manager-change-default-blob-path/function-app-created.png)
 
-5. Válassza ki **funkciók**, és kattintson a **+ új funkció**.
+5. Válassza a **függvények**lehetőséget, majd kattintson az **+ új függvény**gombra.
 
-    ![Kattintson a + új funkció](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
+    ![Kattintson az + új függvény lehetőségre](./media/storsimple-data-manager-change-default-blob-path/create-new-function.png)
 
-6. Válassza ki **C#** a nyelvhez. Válassza ki a sablont a csempék a tömbben, **C#** a a **QueueTrigger-CSharp** csempére.
+6. Válassza **C#** ki a nyelvet. A sablon csempék tömbben válassza **C#** az **QueueTrigger-csharp** csempét.
 
-7. Az a **üzenetsor eseményindító**:
+7. A **várólista-triggerben**:
 
-    1. Adjon meg egy **neve** a függvény.
-    2. Az a **üzenetsornév** mezőbe írja be a data transformation feladatdefiníció neve.
-    3. A **Tárfiók kapcsolata**, kattintson a **új**. Storage-fiókok listájából válassza ki a feladatdefiníció tartozó fiókot. Jegyezze fel a kapcsolat neve (kiemelve). A név később az Azure-függvény szükséges.
+    1. Adja meg a függvény **nevét** .
+    2. Az **üzenetsor neve** mezőbe írja be az Adatátalakítási feladatdefiníció nevét.
+    3. A **Storage-fiók kapcsolatai**területen kattintson az **új**elemre. A Storage-fiókok listájából válassza ki a feladatdefiníció hozzárendelt fiókját. Jegyezze fel a kapcsolatok nevét (kiemelve). A nevet később kell megadni az Azure-függvényben.
 
-        ![Hozzon létre egy új C# függvény](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
+        ![Új C# függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/new-function-parameters.png)
 
-    4. Kattintson a **Create** (Létrehozás) gombra. A **függvény** jön létre.
+    4. Kattintson a **Create** (Létrehozás) gombra. A **függvény** létrejött.
 
      
-10. A függvény ablakban futtassa _.csx_ fájlt.
+10. A függvény ablakban futtassa a _. CSX_ fájlt.
 
-    ![Hozzon létre egy új C# függvény](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
+    ![Új C# függvény létrehozása](./media/storsimple-data-manager-change-default-blob-path/new-function-run-csx.png)
     
     Hajtsa végre a következő lépéseket.
 
@@ -183,25 +175,25 @@ Hozzon létre egy Azure-függvényt, hajtsa végre az alábbi lépéseket:
 
         ```
 
-    2. Cserélje le **STORAGE_CONNECTIONNAME** a sor a tárfiók kapcsolata 11 (lásd 7 c. lépés).
+    2. Cserélje le a 11. sorban lévő **STORAGE_CONNECTIONNAME** a Storage-fiókja kapcsolataira (lásd a 7c lépést).
 
-        ![Másolja ki a storage-kapcsolat neve](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
+        ![A Storage-kapcsolatok nevének másolása](./media/storsimple-data-manager-change-default-blob-path/new-function-storage-connection-name.png)
 
-    3. **Mentés** a függvényt.
+    3. **Mentse** a függvényt.
 
         ![Függvény mentése](./media/storsimple-data-manager-change-default-blob-path/save-function.png)
 
-12. Végezze el a függvényt, adjon hozzá egy további fájlt a következő lépések végrehajtásával:
+12. A függvény végrehajtásához vegyen fel még egy fájlt a következő lépések végrehajtásával:
 
-    1. Kattintson a **fájlok megtekintését**.
+    1. Kattintson a **fájlok megtekintése**elemre.
 
-       ![A "Fájlok megtekintése" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
+       ![A "fájlok megtekintése" hivatkozás](./media/storsimple-data-manager-change-default-blob-path/view-files.png)
 
     2. Kattintson a **+Hozzáadás** gombra.
         
-        ![A "Fájlok megtekintése" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
+        ![A "fájlok megtekintése" hivatkozás](./media/storsimple-data-manager-change-default-blob-path/new-function-add-file.png)
     
-    3. Típus **project.json**, és nyomja le az **Enter**. Az a **project.json** fájlt, az alábbi kódot:
+    3. Írja be a **Project. JSON**fájlt, majd nyomja le az **ENTER**billentyűt. A **Project. JSON** fájlban illessze be a következő kódot:
 
         ```
         {
@@ -217,12 +209,12 @@ Hozzon létre egy Azure-függvényt, hajtsa végre az alábbi lépéseket:
         ```
 
     
-    4. Kattintson a **Save** (Mentés) gombra.
+    4. Kattintson a **Mentés** gombra.
 
-        ![A "Fájlok megtekintése" hivatkozásra](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
+        ![A "fájlok megtekintése" hivatkozás](./media/storsimple-data-manager-change-default-blob-path/new-function-project-json.png)
 
-Létrehozott egy Azure-függvényt. Ez a funkció akkor aktiválódik, minden alkalommal, amikor az átalakítási feladat által létrehozott új blob.
+Létrehozott egy Azure-függvényt. Ez a függvény minden alkalommal aktiválódik, amikor az Adatátalakítási feladat létrehoz egy új blobot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Használja a StorSimple Data Manager felhasználói Felületét, hogy az adatok átalakítása](storsimple-data-manager-ui.md)
+[Az adatátalakítás StorSimple Data Manager felhasználói felület használatával](storsimple-data-manager-ui.md)

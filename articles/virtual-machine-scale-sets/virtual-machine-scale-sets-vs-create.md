@@ -1,27 +1,21 @@
 ---
-title: Virtuálisgép-méretezési csoport üzembe helyezése a Visual Studióval | Microsoft Docs
+title: Virtuálisgép-méretezési csoport üzembe helyezése a Visual Studióval
 description: Virtual Machine Scale Sets üzembe helyezése a Visual Studióval és egy Resource Manager-sablonnal
-services: virtual-machine-scale-sets
 ms.custom: H1Hack27Feb2017
-ms.workload: na
-documentationcenter: ''
+ms.workload: azure-vs
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: ed0786b8-34b2-49a8-85b5-2a628128ead6
 ms.service: virtual-machine-scale-sets
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/09/2019
 ms.author: manayar
-ms.openlocfilehash: d397f81ce29e0ec738156b755948985a4edfc70b
-ms.sourcegitcommit: 4f3f502447ca8ea9b932b8b7402ce557f21ebe5a
+ms.openlocfilehash: 0d0dc3fbb7e48b1f7e6936cfb65473dba882b776
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2019
-ms.locfileid: "71802255"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274238"
 ---
 # <a name="how-to-create-a-virtual-machine-scale-set-with-visual-studio"></a>Virtuálisgép-méretezési csoport létrehozása a Visual Studióval
 
@@ -35,7 +29,7 @@ Az Azure erőforráscsoport-telepítések lehetővé teszik a kapcsolódó Azure
 
 A Virtual Machine Scale Sets a Visual Studióban való üzembe helyezésének megkezdéséhez a következő előfeltételek szükségesek:
 
-* A Visual Studio 2013-as vagy újabb
+* Visual Studio 2013 vagy újabb
 * Azure SDK 2,7, 2,8 vagy 2,9
 
 >[!NOTE]
@@ -65,7 +59,7 @@ A terheléselosztó lehetővé teszi, hogy a virtuálisgép-példányokhoz SSH (
 
  A sablonok Visual Studióval való szerkesztésének jó módja a **JSON-vázlat**használata. Rendszerezheti a paramétereket, a változókat és az erőforrásokat. A séma megismerése érdekében a Visual Studio az üzembe helyezése előtt rámutathat a hibákra a sablonban.
 
-![JSON Explorer](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
+![JSON-tallózó](media/virtual-machine-scale-sets-vs-create/json-explorer.png)
 
 ## <a name="deploy-the-project"></a>A projekt üzembe helyezése
 

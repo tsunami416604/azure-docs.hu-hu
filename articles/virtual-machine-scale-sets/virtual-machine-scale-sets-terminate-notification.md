@@ -1,26 +1,18 @@
 ---
-title: Azure-beli virtuálisgép-méretezési csoport példányaira vonatkozó értesítés leállítása | Microsoft Docs
+title: Azure-beli virtuálisgép-méretezési csoport példányaihoz tartozó értesítés leállítása
 description: Megtudhatja, hogyan engedélyezheti az Azure-beli virtuálisgép-méretezési csoport példányainak megszüntetési értesítését
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/27/2019
 ms.author: vashan
-ms.openlocfilehash: d3d7f92b3803114321bc7420b5c4ba059aabcb9d
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: a1b1e07fa0622ae25d8086ec65827816ec52a5ce
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705922"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271750"
 ---
 # <a name="terminate-notification-for-azure-virtual-machine-scale-set-instances-preview"></a>Értesítés megszakítása az Azure virtuálisgép-méretezési csoport példányaihoz (előzetes verzió)
 A méretezési csoport példányai beállíthatják a példányok leállítási értesítéseinek fogadását, és előre definiált késleltetési időkorlátot állíthatnak be a megszakítási művelethez. A lemondási értesítést az Azure Metadata Service – [Scheduled Events](../virtual-machines/windows/scheduled-events.md)küldi el, amely értesítések küldését és késleltetését teszi lehetővé, például újraindítást és újbóli üzembe helyezést. Az előzetes verziójú megoldás egy újabb eseményt ad – leáll – a Scheduled Events listájához, a megszakítási eseményhez kapcsolódó késés pedig a méretezési csoport modelljének felhasználói által megadott késleltetési korláttól függ.

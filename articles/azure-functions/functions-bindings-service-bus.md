@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: ca19aefdd213331214938b2af6c9a77501333fb0
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121216"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277395"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Service Bus
 
@@ -152,6 +152,28 @@ A következő Java-függvény a [Java functions runtime library](/java/api/overv
  ) {
      context.getLogger().info(message);
  }
+```
+
+A következő Java-függvény egy Service Bus üzenet _felhasználói tulajdonságaiban_ definiált metaadatok lekérését jeleníti meg: 
+```java
+public class ServiceBusQueueTriggerJava {
+    @FunctionName("ServiceBusQueueTriggerJava")
+    public void run(
+            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
+            @BindingName("UserProperties") UserProperties userProperties,
+            final ExecutionContext context
+    ) {
+        context.getLogger().info("Java Service Bus Queue trigger function executed.");
+        context.getLogger().info(message);
+        context.getLogger().info(userProperties.key1);
+        context.getLogger().info(userProperties.key2);
+    }
+}
+
+public class UserProperties {
+    public String key1;
+    public String key2;
+}
 ```
 
 A Java-függvények akkor is elindíthatók, amikor egy üzenet bekerül egy Service Bus témakörbe. Az alábbi példa a `@ServiceBusTopicTrigger` jegyzetet használja az trigger konfigurációjának leírásához.

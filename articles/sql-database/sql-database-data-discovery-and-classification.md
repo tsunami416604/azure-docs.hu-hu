@@ -12,12 +12,12 @@ author: barmichal
 ms.author: mibar
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: bb6961d87fd08af78db495b700acf34fbf4944a1
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552549"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279204"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
@@ -184,6 +184,7 @@ A PowerShell használatával kezelheti Azure SQL Database és felügyelt példá
 
 - További információ a [speciális adatbiztonságról](sql-database-advanced-data-security.md).
 - Érdemes lehet beállítani [Azure SQL Database naplózást](sql-database-auditing.md) a minősített bizalmas adatokhoz való hozzáférés figyelésére és naplózására.
+- Az adatfelderítési & besorolást tartalmazó YouTube-bemutatóhoz lásd: az SQL-adatok észlelése [, osztályozása, címkézése & védelme | Az elérhető adatvédelem](https://www.youtube.com/watch?v=itVi9bkJUNc).
 
 <!--Anchors-->
 [What is data discovery & classification]: #subheading-1

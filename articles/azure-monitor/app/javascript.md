@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: Dawgfan
 ms.author: mmcc
 ms.date: 09/20/2019
-ms.openlocfilehash: 83b167baa29a54e53f7fe8bdb7b7e5c88bc3eddf
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: c98feda62b7e5de5551b02d6189a1142ca8c5f88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264084"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276785"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -29,7 +29,7 @@ Az Application Insights bármely weblappal használható – csak egy rövid Jav
     * [JavaScript-kódrészlet](#snippet-based-setup)
 
 > [!IMPORTANT]
-> > A JavaScript SDK-t csak egy módszer használatával adhatja hozzá az alkalmazáshoz. Ha a NPM telepítőjét használja, ne használja a kódrészletet, és fordítva.
+> A JavaScript SDK-t csak egy módszer használatával adhatja hozzá az alkalmazáshoz. Ha a NPM telepítőjét használja, ne használja a kódrészletet, és fordítva.
 
 > [!NOTE]
 > A NPM telepítője a JavaScript SDK-t a projekttől való függőségként telepíti, az IntelliSense engedélyezésével, míg a kódrészlet futásidőben beolvassa az SDK-t. Mindkettő támogatja ugyanazt a funkciót. Azok a fejlesztők azonban, akik több egyéni eseményt és konfigurációt kívánnak használni, általában a NPM beállítását választják, míg a felhasználóknak a beépített webes elemzések gyors engedélyezését keresik.

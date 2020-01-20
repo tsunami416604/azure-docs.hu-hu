@@ -1,189 +1,181 @@
 ---
-title: A StorSimple-felügyelethez PowerShell |} A Microsoft Docs
-description: 'Útmutató: a StorSimple-eszközök kezelése a storsimple-höz készült Windows PowerShell használatával.'
-services: storsimple
-documentationcenter: NA
+title: PowerShell a StorSimple-eszközök kezeléséhez
+description: Ismerje meg, hogyan kezelheti a StorSimple-eszközt a Windows PowerShell StorSimple-bővítménye használatával.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 7e488a1b2a63323361a597aaa6a438630fc09a05
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 7d59f00d655bc7b2395c46713a56f52c61ffa42c
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621625"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277110"
 ---
-# <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a storsimple-höz készült Windows PowerShell használatával
+# <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Az eszköz felügyelete Windows PowerShell StorSimple-bővítménye használatával
 
 ## <a name="overview"></a>Áttekintés
 
-Windows PowerShell-bővítménye olyan parancssori felületet, amelyek segítségével kezelheti a Microsoft Azure StorSimple-eszköz biztosít. Ahogy a neve is sugallja, egy Windows PowerShell-alapú parancssori felületen, amely egy korlátozott futási térrel jön létre. A parancssorban a felhasználó szemszögéből egy korlátozott futási térrel egy Windows PowerShell korlátozott verziója jelenik meg. Miközben a Windows PowerShell alapvető funkciói, ez az interfész rendelkezik további dedikált parancsokat, amelyek kezelése a Microsoft Azure StorSimple-eszköz irányába.
+A Windows PowerShell StorSimple-bővítménye parancssori felületet biztosít, amellyel kezelheti Microsoft Azure StorSimple eszközét. Ahogy a neve is sugallja, ez egy Windows PowerShell-alapú parancssori felület, amely korlátozott RunSpace épül. A felhasználó szemszögéből a parancssorban egy korlátozott RunSpace jelenik meg a Windows PowerShell korlátozott verziójaként. A Windows PowerShell néhány alapszintű funkciójának fenntartása mellett ez az illesztőfelület további dedikált parancsmagokkal rendelkezik, amelyek a Microsoft Azure StorSimple eszköz felügyeletére irányulnak.
 
-Ez a cikk ismerteti a Windows PowerShell StorSimple-funkciókat, például a hogyan kapcsolódhat a kapcsolat, és részletes eljárásokat és munkafolyamatok, amelyek a felhasználói felületén is végezhet mutató hivatkozásokat tartalmaz. A munkafolyamatok bemutatják, hogyan regisztrálja az eszközt, konfigurálja a hálózati adaptert az eszközön, az eszköz karbantartási üzemmódban legyen, módosítsa az eszköz állapotát, és elháríthat bármilyen hibát tapasztalhat, igénylő frissítések telepítése.
+Ez a cikk a Windows PowerShell StorSimple-bővítménye funkcióit ismerteti, beleértve az interfészhez való csatlakozás módját, valamint az ezen felületen keresztül elvégezhető lépésenkénti eljárásokra és munkafolyamatokra mutató hivatkozásokat is tartalmaz. A munkafolyamatok közé tartozik az eszköz regisztrálása, a hálózati adapter konfigurálása az eszközön, az eszköz karbantartási módba kapcsolását igénylő frissítések telepítése, az eszköz állapotának módosítása, valamint az esetlegesen felmerülő problémák elhárítása.
 
-Ez a cikk elolvasása után fogja tudni:
+A cikk elolvasása után a következőket teheti:
 
-* A StorSimple-eszköz storsimple-höz készült Windows PowerShell használatával kapcsolódni.
-* A StorSimple-eszköz storsimple-höz készült Windows PowerShell használatával felügyelhető.
-* Kérjen segítséget a Windows PowerShell storsimple-höz készült.
+* A Windows PowerShell StorSimple-bővítménye használatával csatlakozhat a StorSimple-eszközhöz.
+* A StorSimple-eszköz felügyelete a Windows PowerShell StorSimple-bővítménye használatával.
+* Segítség kérése Windows PowerShell StorSimple-bővítményeban.
 
 > [!NOTE]
-> * Windows PowerShell StorSimple-parancsmagok lehetővé teszik kezelése a StorSimple-eszköz soros konzoljához vagy távolról Windows PowerShell távoli eljáráshívás segítségével. További információ az egyes használható ezen a felületen egyes parancsmagok Ugrás [parancsmag-referencia a storsimple-höz készült Windows PowerShell](https://technet.microsoft.com/library/dn688168.aspx).
-> * Az Azure PowerShell StorSimple-parancsmagok olyan parancsmagok, amelyek lehetővé teszik, hogy automatizálja a StorSimple szolgáltatásiszint- és áttelepítési feladatok a parancssorból egy másik gyűjteményt. Storsimple-höz készült Azure PowerShell-parancsmagokkal kapcsolatos további információkért látogasson el a [parancsmag-referencia az Azure StorSimple](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
+> * Windows PowerShell StorSimple-bővítménye-parancsmagokkal felügyelheti a StorSimple-eszközt soros konzolról vagy távolról a Windows PowerShell távelérés használatával. Az ezen felületen használható egyes parancsmagokkal kapcsolatos további információkért tekintse meg a [Windows PowerShell StorSimple-bővítménye parancsmag-referenciáját](https://technet.microsoft.com/library/dn688168.aspx).
+> * A Azure PowerShell StorSimple-parancsmagok a parancsmagok egy másik gyűjteménye, amely lehetővé teszi a StorSimple-és áttelepítési feladatok automatizálását a parancssorból. A StorSimple Azure PowerShell-parancsmagokkal kapcsolatos további információkért nyissa meg az [Azure StorSimple parancsmag-referenciát](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0&viewFallbackFrom=azuresmps-3.7.0#azure).
 
 
-A Windows PowerShell storsimple, az alábbi módszerek egyikének használatával érheti el:
+A Windows PowerShell StorSimple-bővítménye a következő módszerek egyikével érheti el:
 
-* [A StorSimple-eszköz soros konzoljához való csatlakozáshoz](#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)
-* [Távoli csatlakozás a StorSimple Windows PowerShell-lel](#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)
+* [Kapcsolódás a StorSimple-eszköz soros konzolhoz](#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console)
+* [Távoli kapcsolódás a StorSimple a Windows PowerShell használatával](#connect-remotely-to-storsimple-using-windows-powershell-for-storsimple)
 
-## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Csatlakozás Windows PowerShell storsimple-höz készült keresztül az eszköz soros konzoljához
+## <a name="connect-to-windows-powershell-for-storsimple-via-the-device-serial-console"></a>Kapcsolódás Windows PowerShell StorSimple-bővítménye az eszköz soros konzolján keresztül
 
-Is [töltse le a PuTTY](https://www.putty.org/) vagy hasonló szeretne csatlakozni a Windows PowerShell storsimple-höz készült terminálemulációs szoftverre. PuTTY kifejezetten való eléréséhez a Microsoft Azure StorSimple-eszköz konfigurálásához szüksége. A következő témakörök tartalmaznak részletes lépéseket konfigurálása a putty-kapcsolaton keresztül, és csatlakozni az eszközhöz. A soros konzol különböző menüpontok is magyarázata.
+A Windows PowerShell StorSimple-bővítményehoz való kapcsolódáshoz [letöltheti a PuTTY](https://www.putty.org/) vagy hasonló terminál-emulációs szoftvert. A PuTTY-t kifejezetten a Microsoft Azure StorSimple eszköz eléréséhez kell konfigurálnia. Az alábbi témakörök részletesen ismertetik a PuTTY konfigurálásának és az eszközhöz való kapcsolódásnak a lépéseit. A soros konzolon a különböző menüpontokat is ismertetjük.
 
 ### <a name="putty-settings"></a>PuTTY-beállítások
 
-Győződjön meg arról, hogy használja-e a következő PuTTY beállításokat csatlakozni a Windows PowerShell felületét a soros konzolból.
+Győződjön meg arról, hogy a következő Putty-beállításokat használja a soros konzolról a Windows PowerShell felületéhez való kapcsolódáshoz.
 
 #### <a name="to-configure-putty"></a>A PuTTY konfigurálása
 
-1. A putty-kapcsolaton keresztül a **újrakonfigurálás** párbeszédpanel a **kategória** ablaktáblán válassza **billentyűzet**.
-2. Győződjön meg arról, hogy az alábbi lehetőségek vannak-e jelölve, (amelyek az alapértelmezett beállításokat, amikor új munkamenet indításához).
+1. A PuTTY **újrakonfigurálása** párbeszédpanel **Kategória** ablaktábláján válassza a **billentyűzet**elemet.
+2. Győződjön meg arról, hogy a következő beállítások vannak kiválasztva (az új munkamenet indításakor ez az alapértelmezett beállítás).
    
-   | Billentyűzet elem | Válassza ezt: |
+   | Billentyûzet eleme | Válassza ezt: |
    | --- | --- |
-   | BACKSPACE kulcs |Vezérlő –? (127) |
-   | Otthon és a záró kulcsok |Standard |
-   | Funkcióbillentyűk és billentyűzet |ESC[n~ |
-   | A kurzor kulcsok kezdeti állapota |Normál |
-   | Számbillentyűzeten kezdeti állapota |Normál |
-   | Egyéb billentyűzet-szolgáltatások engedélyezése |Ellenőrzés-Alt AltGr eltér |
+   | Backspace-kulcs |Control-? (127) |
+   | Kezdőlap és a Befejezés kulcsa |Standard |
+   | Funkcióbillentyűk és billentyűzet |ESC [n ~ |
+   | Kurzor kulcsainak kezdeti állapota |Normál |
+   | Numerikus billentyűzet kezdeti állapota |Normál |
+   | További billentyűzet-funkciók engedélyezése |A Control-Alt eltér a AltGr |
    
-    ![Támogatott a Putty-beállítások](./media/storsimple-windows-powershell-administration/IC740877.png)
+    ![Támogatott Putty-beállítások](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Kattintson az **Alkalmaz** gombra.
-4. Az a **kategória** ablaktáblán válassza előbb **fordítási**.
-5. Az a **távoli karakterkészlet** listáján jelölje ki **UTF-8**.
-6. Alatt **Vonalrajz karakterek kezelését**válassza **használata Unicode Vonalrajz kódpontok**. Az alábbi képernyőfelvételen a megfelelő PuTTY beállításokat.
+4. A **Kategória** ablaktáblán válassza a **fordítás**lehetőséget.
+5. A **távoli karakterkészlet** listából válassza az **UTF-8**elemet.
+6. **A vonalas rajzolási karakterek**felügyelete alatt válassza a **Unicode-vonal rajzolási kódjának használata**lehetőséget. Az alábbi képernyőfelvételen a megfelelő Putty-kijelölések láthatók.
    
-    ![UTF Putty-beállítások](./media/storsimple-windows-powershell-administration/IC740878.png)
+    ![UTF-Putty beállításai](./media/storsimple-windows-powershell-administration/IC740878.png)
 7. Kattintson az **Alkalmaz** gombra.
 
-A PuTTY segítségével mostantól a következő lépések végrehajtásával az eszköz soros konzoljához való csatlakozáshoz.
+Mostantól a PuTTY segítségével csatlakozhat az eszköz soros konzolhoz az alábbi lépésekkel.
 
 [!INCLUDE [storsimple-use-putty](../../includes/storsimple-use-putty.md)]
 
-### <a name="about-the-serial-console"></a>A soros konzol bemutatása
+### <a name="about-the-serial-console"></a>Tudnivalók a soros konzolról
 
-Amikor fér hozzá a Windows PowerShell felületet a StorSimple eszköz szalagcímüzenet soros konzolon keresztül jelennek meg, kiegészítve a menüpontok.
+Amikor a soros konzolon keresztül éri el a StorSimple-eszköz Windows PowerShell felületét, megjelenik egy szalagcím üzenet, amelyet a menüpontok követnek.
 
-Címsorában látható a StorSimple eszköz alapvető információkat, például a modellt, a nevét, a telepített szoftververzió és az Ön hozzáfér a vezérlő állapotának tartalmazza. Az alábbi képen egy címsorában látható egy példa látható.
+A szalagcím üzenet olyan alapszintű StorSimple-információkat tartalmaz, mint például a modell, a név, a telepített szoftver verziója és az elérni kívánt vezérlő állapota. Az alábbi képen egy szalagcímre mutató üzenet látható.
 
-![Soros szalagcímüzenet](./media/storsimple-windows-powershell-administration/IC741098.png)
+![Soros szalagcím üzenet](./media/storsimple-windows-powershell-administration/IC741098.png)
 
 > [!IMPORTANT]
-> Címsorában látható segítségével azonosíthatja a vezérlő, hogy csatlakozik-e _aktív_ vagy _passzív_.
+> A szalagcím üzenettel azonosíthatja, hogy az a vezérlő, amelyhez csatlakozik, _aktív_ vagy _passzív_.
 
-Az alábbi képen látható a különböző futási térben lehetőségek, amelyek a soros konzol menüjének érhetők el.
+Az alábbi képen a soros konzol menüjében elérhető különböző RunSpace lehetőségek láthatók.
 
-![Regisztrálja az eszközt 2](./media/storsimple-windows-powershell-administration/IC740906.png)
+![Az eszköz regisztrálása 2](./media/storsimple-windows-powershell-administration/IC740906.png)
 
 A következő beállítások közül választhat:
 
-1. **Jelentkezzen be a teljes hozzáféréssel** Ez a beállítás lehetővé teszi, hogy csatlakozni (a szükséges hitelesítő adatokat), a **SSAdminConsole** futási térben a helyi tartományvezérlőn. (A helyi tartományvezérlő a tartományvezérlővel, amely jelenleg a StorSimple-eszköz soros konzolon keresztül Ön hozzáfér.) Ezt a lehetőséget is, hogy Support eléréséhez nem korlátozott futási térrel (egy támogatási munkamenetet) esetleges lehetséges problémák megoldásához használható. 1\. lehetőség használatával jelentkezzen be, miután a Microsoft Support mérnök, nem korlátozott futási térrel eléréséhez egy adott parancsmag futtatásával engedélyezheti. Részletekért tekintse meg a [indítson el egy támogatási munkamenetet](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
+1. **Bejelentkezés teljes hozzáféréssel** Ezzel a beállítással kapcsolódhat (a megfelelő hitelesítő adatokkal) a helyi vezérlő **SSAdminConsole** RunSpace. (A helyi vezérlő az a vezérlő, amelyet jelenleg a StorSimple-eszköz soros konzolján keresztül érnek el.) Ezzel a beállítással engedélyezhető, hogy Microsoft ügyfélszolgálata a nem korlátozott RunSpace (a támogatási munkamenetet) a lehetséges eszközök hibáinak elhárításához. Ha az 1. lehetőséget használja a bejelentkezéshez, engedélyezheti, hogy a Microsoft ügyfélszolgálata mérnök egy adott parancsmag futtatásával hozzáférhessen a korlátlan RunSpace. További részletekért tekintse meg a [támogatási munkamenet elindítása című témakört](storsimple-8000-contact-microsoft-support.md#start-a-support-session-in-windows-powershell-for-storsimple).
    
-2. **Jelentkezzen be a teljes hozzáféréssel rendelkező társ vezérlő** Ez a lehetőség ugyanaz, mint 1. lehetőség – akkor, azzal a különbséggel, hogy csatlakozhasson (a szükséges hitelesítő adatokat) a **SSAdminConsole** futási térben a társ-vezérlőn. Mivel a két vezérlőn egy aktív / passzív konfigurációt a magas rendelkezésre állású eszköz, a StorSimple-eszköz társ hivatkozik az eszköz soros konzolon keresztül elérő a másik vezérlőre).
-   Hasonló az 1. lehetőség, ezt a lehetőséget is használható, hogy a Microsoft Support társ tartományvezérlőn nem korlátozott futási térrel eléréséhez.
+2. **Bejelentkezés a társ-vezérlőbe teljes hozzáféréssel** Ez a beállítás megegyezik az 1. lehetőséggel, azzal a különbséggel, hogy (a megfelelő hitelesítő adatokkal) csatlakozik a **SSAdminConsole** RunSpace a társ-vezérlőn. Mivel a StorSimple-eszköz egy magas rendelkezésre állású eszköz, amely két vezérlővel rendelkezik aktív-passzív konfigurációban, a társ a soros konzolon keresztül elérni kívánt eszköz másik vezérlőjét jelöli.
+   Az 1. lehetőséghez hasonlóan ez a beállítás is lehetővé teszi a Microsoft ügyfélszolgálata számára, hogy hozzáférjenek a nem korlátozott RunSpace egy társ-vezérlőn.
 
-3. **Korlátozott hozzáférésű csatlakozás** ezzel a beállítással Windows PowerShell felületét korlátozott módban eléréséhez. Nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás 1. és 2 beállítások képest nagyobb korlátozott futási térrel csatlakozik.  1\. lehetőség keresztül elérhető feladatokat, amelyek **nem* végezhető el a futási térben van:
+3. **Korlátozott hozzáférésű kapcsolódás** Ez a beállítás a Windows PowerShell felületének korlátozott módban való elérésére szolgál. A rendszer nem kéri a hozzáférési hitelesítő adatokat. Ez a beállítás az 1. és a 2. lehetőséghez képest egy szűkebb RunSpace csatlakozik.  Az 1. beállításon keresztül elérhető egyes feladatok*nem* hajthatók végre a következő RunSpace:
    
-   * A gyári beállításainak visszaállítása
-   * A jelszó módosítása
-   * Engedélyezi vagy letiltja a hozzáférést támogatási
+   * Visszaállítás a gyári beállításokra
+   * Jelszó módosítása
+   * Támogatási hozzáférés engedélyezése vagy letiltása
    * Frissítések alkalmazása
    * Gyorsjavítások telepítése
 
      > [!NOTE]
-     > Ez a előnyben részesített lehetőség, ha az eszköz rendszergazdai jelszava elfelejtette és keresztül beállítás 1 vagy 2-es nem tud kapcsolódni.
+     > Ez az előnyben részesített lehetőség, ha elfelejtette az eszköz rendszergazdai jelszavát, és nem tud kapcsolatot létesíteni az 1. vagy a 2. lehetőséggel.
 
-4. **Nyelvváltás** ezzel a beállítással, hogy a Windows PowerShell felületét a megjelenítési nyelvének módosítására. Támogatott nyelvek angol, japán, spanyol, francia, dél-koreai, spanyol, olasz, német, kínai és brazíliai portugál nyelveken is.
+4. **Nyelv váltása** Ez a beállítás lehetővé teszi a megjelenítési nyelv módosítását a Windows PowerShell felületén. A támogatott nyelvek: angol, Japán, Orosz, francia, Dél-koreai, spanyol, olasz, német, kínai és brazíliai portugál.
 
-## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Távoli csatlakozás a StorSimple storsimple-höz készült Windows PowerShell használatával
+## <a name="connect-remotely-to-storsimple-using-windows-powershell-for-storsimple"></a>Távoli kapcsolódás a StorSimple-hez Windows PowerShell StorSimple-bővítménye használatával
 
-Használhatja a Windows PowerShell-táveléréssel kapcsolódni a StorSimple-eszköz. A csatlakozáskor ezzel a módszerrel nem megjelenik egy menü. (Megjelenik egy menü csak akkor, ha a soros konzol az eszközön való kapcsolódáshoz használ. Távoli kapcsolódás megnyílik a közvetlenül az "1. lehetőség – teljes hozzáférést" a soros konzol megfelelőjét.) A Windows PowerShell-táveléréssel akkor csatlakozik egy adott futási teret is. Adja meg a megjelenítési nyelvét is.
+A StorSimple-eszközhöz való kapcsolódáshoz a Windows PowerShell-távelérést használhatja. Ha így tesz, a menü nem jelenik meg. (Csak akkor jelenik meg a menü, ha a soros konzolt használja az eszközön a kapcsolódáshoz. A csatlakozás távolról közvetlenül a soros konzolon elérhető "1. lehetőség – teljes hozzáférés" megfelelője.) A Windows PowerShell távelérési szolgáltatásával egy adott RunSpace csatlakozhat. Megadhatja a megjelenítési nyelvet is.
 
-A megjelenítési nyelv az független a nyelv, amely segítségével lát a **nyelv módosítása** a soros konzol menüjének lehetőség. Távoli PowerShell automatikusan kiesik a területi beállítás az eszköz csatlakozik, ha nincs megadva.
+A megjelenítési nyelv független a soros konzol menüjének **nyelv módosítása** lehetőségével beállított nyelvtől. A távoli PowerShell automatikusan felveszi annak az eszköznek a területi beállítását, amelyhez csatlakozik, ha nincs megadva.
 
 > [!NOTE]
-> Ha a Microsoft Azure virtuális gazdagépeket és a StorSimple Cloud Appliance dolgozik, Windows PowerShell-táveléréssel, és a virtuális gazdagép használatával csatlakozhat a felhőalapú berendezéshez. Ha beállította egy megosztás helyét a gazdagépen, amelyen menteni az adatokat a Windows PowerShell-munkamenetben van, érdemes figyelembe, hogy a _mindenki_ rendszerbiztonsági tag csak a hitelesített felhasználók tartalmazza. Ezért ha úgy állította be a megosztás hozzáférésének engedélyezése _mindenki_ és a hitelesítő adatok megadása nélkül csatlakozik, a nem hitelesített névtelen egyszerű fogja használni, és hibaüzenet jelenik meg. A probléma megoldásához, a megosztást a gazdagépen, amelyet kell a Vendég fiók engedélyezve, és ezután a Vendég fiók teljes hozzáférést biztosít a megosztást, vagy adjon meg érvényes hitelesítő adatokat, valamint a Windows PowerShell-parancsmagot.
+> Ha Microsoft Azure Virtual hosts és StorSimple Cloud Appliances eszközt használ, a Windows PowerShell-távelérést és a virtuális gazdagépet használhatja a felhőalapú berendezéshez való kapcsolódáshoz. Ha olyan megosztási helyet állított be a gazdagépen, amelyen az adatokat a Windows PowerShell-munkamenetből szeretné menteni, vegye figyelembe, hogy a _mindenki_ csak hitelesített felhasználókat tartalmaz. Ezért ha úgy állította be a megosztást, hogy _mindenki_ hozzáférhessen, és a hitelesítő adatok megadása nélkül csatlakozik, a rendszer a nem hitelesített névtelen rendszerbiztonsági tag lesz használatban, és hibaüzenetet fog látni. A probléma megoldásához a megosztási gazdagépen engedélyeznie kell a vendég fiókot, majd a vendég fióknak teljes hozzáférést kell adnia a megosztáshoz, vagy érvényes hitelesítő adatokat kell megadnia a Windows PowerShell-parancsmaggal együtt.
 
 
-HTTP- vagy HTTPS használatával Windows PowerShell távoli eljáráshívás-n keresztül csatlakozik. Kövesse az utasításokat az alábbi oktatóanyagok:
+HTTP-vagy HTTPS-kapcsolaton keresztül csatlakozhat a Windows PowerShell távelérési szolgáltatásához. Használja az alábbi oktatóanyagok utasításait:
 
-* [Csatlakozzon távolról a HTTP-n keresztül](storsimple-8000-remote-connect.md#connect-through-http)
-* [Csatlakozzon távolról a HTTPS-en keresztül](storsimple-8000-remote-connect.md#connect-through-https)
+* [Távoli kapcsolat HTTP használatával](storsimple-8000-remote-connect.md#connect-through-http)
+* [Távoli kapcsolat HTTPS használatával](storsimple-8000-remote-connect.md#connect-through-https)
 
-## <a name="connection-security-considerations"></a>Kapcsolat biztonsági szempontok
+## <a name="connection-security-considerations"></a>A kapcsolatok biztonsági szempontjai
 
-Amikor azt fontolgatja, hogyan csatlakozhat Windows PowerShell storsimple-höz készült, vegye figyelembe a következőket:
+Ha úgy dönt, hogyan csatlakozhat Windows PowerShell StorSimple-bővítményehoz, vegye figyelembe a következőket:
 
-* Az eszköz soros konzoljához való közvetlen csatlakozás lehetőségét biztonságos, de nincs csatlakozás soros konzolon hálózati kapcsolók keresztül. Legyen óvatos az a biztonsági veszély a hálózati kapcsolók keresztül az eszköz soros kapcsolódik.
-* HTTP-munkameneten keresztül csatlakozik, előfordulhat, hogy hálózaton keresztüli csatlakozás a soros konzolon keresztül nagyobb biztonságot kínálnak. Bár ez nem a legbiztonságosabb módszer, egy megbízható hálózatokon feltételei.
-* Kapcsolaton keresztül egy HTTPS-KAPCSOLATON keresztül, a legbiztonságosabb és a javasolt megoldás.
+* Az eszköz soros konzoljának közvetlen csatlakoztatása biztonságos, de a soros konzol hálózati kapcsolókon keresztül történő csatlakoztatása nem. A hálózati kapcsolókhoz való kapcsolódáskor legyen óvatos a biztonsági kockázat.
+* A HTTP-munkameneten keresztüli csatlakozás nagyobb biztonságot nyújthat, mint a soros konzol hálózaton keresztüli csatlakoztatása. Bár ez nem a legbiztonságosabb módszer, a megbízható hálózatokon elfogadható.
+* A HTTPS-munkameneten keresztüli csatlakozás a legbiztonságosabb és ajánlott lehetőség.
 
-## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>Felügyelete a StorSimple-eszköz storsimple-höz készült Windows PowerShell használatával
+## <a name="administer-your-storsimple-device-using-windows-powershell-for-storsimple"></a>A StorSimple-eszköz felügyelete a Windows PowerShell StorSimple-bővítménye használatával
 
-Az alábbi táblázat a gyakori felügyeleti feladatok és a komplex munkafolyamatok végrehajtható összegzését jeleníti meg a Windows PowerShell felületét a StorSimple eszköz belül. Minden egyes munkafolyamat kapcsolatos további információkért kattintson a megfelelő bejegyzés a táblában.
+A következő táblázat a StorSimple-eszköz Windows PowerShell-felületén végrehajtható általános felügyeleti feladatok és összetett munkafolyamatok összegzését tartalmazza. Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a megfelelő bejegyzésre a táblázatban.
 
-#### <a name="windows-powershell-for-storsimple-workflows"></a>Windows PowerShell StorSimple-munkafolyamatok
+#### <a name="windows-powershell-for-storsimple-workflows"></a>Munkafolyamatok Windows PowerShell StorSimple-bővítménye
 
-| Ha azt szeretné, ehhez... | Ez az eljárás használható. |
+| Ha ezt szeretné tenni... | Használja ezt az eljárást. |
 | --- | --- |
-| Az eszköz regisztrálása |[A storsimple-höz készült Windows PowerShell használatával eszköz konfigurálása és regisztrálása](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
-| A webproxy konfigurálása</br>Nézet webproxy beállításai |[A StorSimple eszköz webproxy konfigurálása](storsimple-8000-configure-web-proxy.md) |
-| DATA 0 hálózati adapter az eszközön található beállítások módosítása |[A StorSimple eszköz DATA 0 hálózati adapter módosítása](storsimple-8000-modify-data-0.md) |
-| Egy vezérlő leállítása </br> Indítsa újra, vagy egy vezérlő leállítása </br> Egy eszköz leállítása</br>Állítsa alaphelyzetbe az eszközt a gyári alapértelmezett beállításokra |[Eszközvezérlők kezelése](storsimple-8000-manage-device-controller.md) |
-| Karbantartási módú frissítések és gyorsjavítások telepítése |[Az eszköz frissítése](storsimple-update-device.md) |
-| Adja meg a karbantartási mód </br>Kilépés a karbantartási módból |[A StorSimple eszköz mód](storsimple-8000-device-modes.md) |
-| Hozzon létre egy támogatási csomagot</br>Visszafejtésére és a egy támogatási csomag szerkesztése |[Hozzon létre és kezelheti a támogatási csomagot](storsimple-8000-create-manage-support-package.md) |
-| Indítson el egy támogatási munkamenetet</br> |[Indítson el egy támogatási munkamenetet a Windows PowerShell storsimple-höz készült](storsimple-8000-create-manage-support-package.md#create-a-support-package) |
+| Az eszköz regisztrálása |[Az eszköz konfigurálása és regisztrálása a Windows PowerShell StorSimple-bővítménye használatával](storsimple-8000-deployment-walkthrough-u2.md#step-3-configure-and-register-the-device-through-windows-powershell-for-storsimple) |
+| A webproxy konfigurálása</br>Webproxy beállításainak megtekintése |[Webproxy konfigurálása a StorSimple-eszközhöz](storsimple-8000-configure-web-proxy.md) |
+| Adat0 hálózati adapter beállításainak módosítása az eszközön |[A StorSimple-eszközhöz tartozó adat0 hálózati adapter módosítása](storsimple-8000-modify-data-0.md) |
+| Vezérlő leállítása </br> Vezérlő újraindítása vagy leállítása </br> Eszköz leállítása</br>Az eszköz visszaállítása a gyári alapértelmezett beállításokra |[Eszközök vezérlőinek kezelése](storsimple-8000-manage-device-controller.md) |
+| Karbantartási mód frissítéseinek és gyorsjavításának telepítése |[Az eszköz frissítése](storsimple-update-device.md) |
+| Karbantartási mód megadása </br>Kilépés a karbantartási módból |[StorSimple-eszközök módjai](storsimple-8000-device-modes.md) |
+| Támogatási csomag létrehozása</br>Támogatási csomag visszafejtése és szerkesztése |[Támogatási csomag létrehozása és kezelése](storsimple-8000-create-manage-support-package.md) |
+| Támogatási munkamenet elindítása</br> |[Támogatási munkamenet elindítása Windows PowerShell StorSimple-bővítménye](storsimple-8000-create-manage-support-package.md#create-a-support-package) |
 
-## <a name="get-help-in-windows-powershell-for-storsimple"></a>Kérjen segítséget a Windows PowerShell storsimple-höz készült
+## <a name="get-help-in-windows-powershell-for-storsimple"></a>Segítség kérése Windows PowerShell StorSimple-bővítménye
 
-A storsimple-höz készült Windows PowerShell a parancsmag súgójában érhető el. Egy online, naprakész verziója a Súgó is érhető el, amely a rendszeren a súgójának frissítéséhez használhatja.
+Windows PowerShell StorSimple-bővítménye a parancsmag súgója érhető el. A Súgó egy online, naprakész verziója is elérhető, amely segítségével frissítheti a rendszeren található súgót.
 
-Segítség kérése ezen a felületen hasonló, mint a Windows PowerShellben, és a Súgó kapcsolatos parancsmagok a legtöbb fog működni. Súgó a Windows PowerShell online találhatja meg: [Microsoft.PowerShell.Core](/powershell/module/Microsoft.PowerShell.Core/).
+A felület súgójának beszerzése hasonló ahhoz, mint a Windows PowerShellben, és a legtöbb súgóval kapcsolatos parancsmag működni fog. Súgó a Windows PowerShell online-hoz: [Microsoft. PowerShell. Core](/powershell/module/Microsoft.PowerShell.Core/).
 
-Az alábbiakban látható a a Windows PowerShell felületén, beleértve a súgó frissítése súgó típusú rövid leírását.
+A következő rövid leírást nyújt a Windows PowerShell-felület súgójának típusairól, beleértve a Súgó frissítésének módját is.
 
-### <a name="to-get-help-for-a-cmdlet"></a>Egy parancsmag súgójának
+### <a name="to-get-help-for-a-cmdlet"></a>A parancsmag súgójának beszerzése
 
-* Segítséget parancsmag vagy-funkció, a következő paranccsal: `Get-Help <cmdlet-name>`
-* Online súgó a parancsmagokhoz, használja az előző parancsmagot a `-Online` paramétert: `Get-Help <cmdlet-name> -Online`
-* A teljes segítségre van szüksége, használhatja a `–Full` paramétert, és a példákat, használja a `–Examples` paraméter.
+* Ha bármilyen parancsmaghoz vagy függvényhez szeretne segítséget kérni, használja a következő parancsot: `Get-Help <cmdlet-name>`
+* Bármely parancsmag online súgójának beszerzéséhez használja az előző parancsmagot a `-Online` paraméterrel: `Get-Help <cmdlet-name> -Online`
+* A teljes súgóhoz használhatja a `–Full` paramétert, és példák esetén a `–Examples` paramétert is használhatja.
 
-### <a name="to-update-help"></a>Súgójának frissítéséhez
+### <a name="to-update-help"></a>A Súgó frissítése
 
-A Windows PowerShell felületén segítségével egyszerűen frissíthetők. Hajtsa végre az alábbi lépéseket a rendszeren a súgójának frissítéséhez.
+A súgót egyszerűen frissítheti a Windows PowerShell felületén. A következő lépések végrehajtásával frissítheti a rendszer súgóját.
 
-#### <a name="to-update-cmdlet-help"></a>A parancsmag súgójában frissítése
-1. Indítsa el a Windows Powershellt a **Futtatás rendszergazdaként** lehetőséget.
-2. A parancssorba írja be:  `Update-Help`
-3. A frissített súgófájlokat lesz telepítve.
-4. Miután a súgófájlok telepítve vannak, írja be: `Get-Help Get-Command`. Ez megjeleníti, amelynek érhető el súgó parancsmagok listáját.
+#### <a name="to-update-cmdlet-help"></a>A parancsmag súgójának frissítése
+1. Indítsa el a Windows PowerShellt a **Futtatás rendszergazdaként** beállítással.
+2. A parancssorba írja be a következőt: `Update-Help`
+3. A frissített súgófájlok lesznek telepítve.
+4. A súgófájlok telepítése után írja be a következőt: `Get-Help Get-Command`. Megjeleníti azoknak a parancsmagoknak a listáját, amelyekhez a Súgó elérhető.
 
 > [!NOTE]
-> A futási térben az elérhető parancsmagok listájának lekéréséhez jelentkezzen be a megfelelő menüpontot, és futtassa a `Get-Command` parancsmagot.
+> A RunSpace elérhető parancsmagok listájának lekéréséhez jelentkezzen be a megfelelő menüpontba, és futtassa a `Get-Command` parancsmagot.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ha minden olyan problémákat tapasztal a StorSimple-eszközre a fenti munkafolyamatok egyik végrehajtásakor, [a StorSimple-környezetek hibaelhárítási eszközei](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
+Ha a fenti munkafolyamatok egyikének végrehajtása során problémákba ütközik a StorSimple-eszközzel, tekintse meg az [eszközök a StorSimple-telepítésekkel kapcsolatos hibaelhárítást ismertető témakört](storsimple-8000-troubleshoot-deployment.md#tools-for-troubleshooting-storsimple-deployments).
 

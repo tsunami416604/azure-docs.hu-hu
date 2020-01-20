@@ -1,17 +1,17 @@
 ---
 title: Azure Spring Cloud geo – vész-helyreállítás | Microsoft Docs
 description: Ismerje meg, hogyan védhető a Spring Cloud-alkalmazás a regionális kimaradásokból
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 10/24/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 54289e808461e6374dee57763ef7ba0d0429c54c
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.author: brendm
+ms.openlocfilehash: 4961e5a63e5bc1933cf19b1f291b521d89cbda0e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607851"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76279142"
 ---
 # <a name="azure-spring-cloud-disaster-recovery"></a>Azure Spring Cloud vész-helyreállítás
 
@@ -19,7 +19,7 @@ Ez a cikk azokat a stratégiákat ismerteti, amelyekkel biztosíthatja, hogy az 
 
 ## <a name="plan-your-application-deployment"></a>Az alkalmazás központi telepítésének megtervezése
 
-Az Azure Spring Cloud-alkalmazások egy adott régióban futnak.  Az Azure világszerte több földrajzi régión működik. Az Azure földrajz a világ egy meghatározott területe, amely legalább egy Azure-régiót tartalmaz. Az Azure-régió egy földrajzon belüli terület, amely egy vagy több adatközpontot tartalmaz.  Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. Az Azure szerializálja a platform frissítéseit (tervezett karbantartás) a regionális párok között, így biztosítva, hogy egyszerre csak egy régió legyen frissítve az egyes párokban. Ha egy leállás több régiót érint, akkor az egyes párokban legalább egy régiót előnyben részesíti a helyreállítás.
+Az Azure Spring Cloud-alkalmazások egy adott régióban futnak.  Az Azure világszerte számos földrajzi területen működik. Az Azure földrajz a világ egy meghatározott területe, amely legalább egy Azure-régiót tartalmaz. Az Azure-régió egy földrajzon belüli terület, amely egy vagy több adatközpontot tartalmaz.  Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabban a földrajzi helyen található, és regionális párokat alkot. Az Azure szerializálja a platform frissítéseit (tervezett karbantartás) a regionális párok között, így biztosítva, hogy egyszerre csak egy régió legyen frissítve az egyes párokban. Ha egy leállás több régiót érint, akkor az egyes párokban legalább egy régiót előnyben részesíti a helyreállítás.
 
 A magas rendelkezésre állás és a katasztrófák elleni védelem biztosításához szükséges, hogy a Spring Cloud-alkalmazásokat több régióra telepítse.  Az Azure a [párosított régiók](../best-practices-availability-paired-regions.md) listáját jeleníti meg, hogy a tavaszi Felhőbeli üzemelő példányokat a regionális párokra tervezze.  Javasoljuk, hogy a mikro-szolgáltatás architektúrájának tervezésekor három fő tényezőt vegye figyelembe: a régiók elérhetőségét, az Azure párosított régiókat és a szolgáltatás rendelkezésre állását.
 

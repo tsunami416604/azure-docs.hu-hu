@@ -1,29 +1,23 @@
 ---
-title: Azure CLI-példaszkript – ACS Windows Kubernetes-fürt létrehozása | Microsoft Docs
+title: Azure CLI-példaszkript – ACS Windows Kubernetes-fürt létrehozása
 description: Azure CLI-példaszkript – ACS Windows Kubernetes-fürt létrehozása
-services: container-service
-documentationcenter: ''
 author: iainfoulds
-manager: jeconnoc
-editor: ''
 tags: acs, azure-container-service
 keywords: Docker, tárolók, mikroszolgáltatások, Kubernetes, DC/OS, Azure
 ms.assetid: ''
 ms.service: container-service
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 05/30/2017
 ms.author: iainfou
-ms.openlocfilehash: 1f24f036858f9c77ed6b07af27617d3e3706bba2
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: bc940f09a98eb4ee42290dcfd11d0800f6c3b9e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60901970"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76270671"
 ---
-# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>(ELAVULT) Az Azure Container Service Kubernetes Windows-fürt létrehozása
+# <a name="deprecated-create-an-azure-container-service-kubernetes-windows-cluster"></a>ELAVULT Azure Container Service Kubernetes létrehozása Windows-fürtön
 
 [!INCLUDE [ACS deprecation](../../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -65,7 +59,7 @@ A szkript a következő parancsokat használja az üzemelő példány létrehoz�
 | [az group create](https://docs.microsoft.com/cli/azure/group#az-group-create) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [az acs create](https://docs.microsoft.com/cli/azure/acs#az-acs-create) | Létrehoz egy ACS-fürtöt. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](https://docs.microsoft.com/cli/azure).
 

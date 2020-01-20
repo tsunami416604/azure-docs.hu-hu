@@ -1,22 +1,20 @@
 ---
-title: Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs
+title: Egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
 description: Ismerje meg, hogyan használhatja az egyéni méretezési szabályzatokat az Azure-beli virtuálisgép-méretezési csoportokkal, amelyek az automatikus skálázási konfiguráció használatával kezelik a példányszámot
-services: virtual-machine-scale-sets
 author: avverma
-manager: vashan
 tags: azure-resource-manager
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/11/2019
 ms.author: avverma
-ms.openlocfilehash: c1618c398c0f7c4f0f54647e5232fdacc17de186
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 8e51ebab36d75d1c9512446ee0370f7359a72551
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72453159"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271769"
 ---
 # <a name="preview-use-custom-scale-in-policies-with-azure-virtual-machine-scale-sets"></a>Előzetes verzió: egyéni méretezési szabályzatok használata Azure-beli virtuálisgép-méretezési csoportokkal
 
@@ -133,7 +131,7 @@ A virtuálisgép-méretezési csoportok két típusú [példány-védelmet](./vi
 1. Védelem a méretezésből
 2. Védelem a méretezési csoport műveleteiből
 
-Egy védett virtuális gép nem törlődik egy méretezési művelettel, függetlenül az alkalmazott méretezési házirendtől. Ha például a VM_0 (a méretezési csoport legrégebbi virtuális gépe) védett a méretezési szolgáltatásban, és a méretezési csoport "OldestVM" skálázási házirendje engedélyezve van, a VM_0 nem veszi figyelembe, hogy a méretezési csoport legrégebbi virtuális gépe. 
+Egy védett virtuális gép nem törlődik egy méretezési művelettel, függetlenül az alkalmazott méretezési házirendtől. Ha például VM_0 (a méretezési csoport legrégebbi virtuális gépe) védett a méretezési szolgáltatásban, és a méretezési csoport "OldestVM" skálázási házirendje engedélyezve van, akkor a rendszer nem veszi figyelembe a méretezési csoportba VM_0, még akkor is, ha a méretezési csoport legrégebbi virtuális gépe. 
 
 A felhasználó bármikor manuálisan törölheti a védett virtuális gépeket, függetlenül a méretezési csoporton engedélyezett skálázási házirendtől. 
 

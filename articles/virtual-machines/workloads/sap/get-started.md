@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/16/2020
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3712e67e95c8957d2537660add14d6cdb09d609f
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264814"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271323"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -120,6 +120,9 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 
 ## <a name="change-log"></a>Módosítási napló
+
+- 01/17/2020: Váltás az [Azure Proximity-elhelyezési csoportjaiban az optimális hálózati késés érdekében SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) a meglévő virtuális gépek áthelyezésének szakasza
+- 01/17/2020: változás az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) segítségével, hogy az eljárásra mutasson, amely automatizálja a Availability Zones közötti késés mértékét.
 - 01/16/2020: a [SAP HANA (nagyméretű példányok) telepítésének és konfigurálásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation) módosítása az Azure-ban az operációsrendszer-kiadások HANA IaaS-hez való telepítéséhez
 - 01/16/2020: az [SAP NetWeaver magas rendelkezésre állásának változásai az Azure-beli virtuális gépeken a SLES multi-SID útmutatóban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-multi-sid) az SAP-rendszerekre vonatkozó utasítások hozzáadásához a sorba helyezni Server 2 Architecture (ENSA2) használatával
 - 01/10/2020: a [SAP HANA az Azure-beli virtuális gépek készenléti csomópontján](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-suse) belüli, a SLES-on Azure NetApp Files és az Azure-beli virtuális gépek készenléti csomópontján [SAP HANA kibővítve, Azure NetApp Files on RHEL](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-scale-out-standby-netapp-files-rhel) , hogy a rendszer útmutatást adjon a `nfs4_disable_idmapping` változások végleges végrehajtásához.

@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8100-eszköz telepítése | Microsoft Docs
+title: Microsoft Azure StorSimple 8100-eszköz telepítése
 description: Útmutató a StorSimple 8100-eszköz kicsomagolásához, rack csatlakoztatásához és kábelhez a szoftver telepítése és konfigurálása előtt.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 6098a01e-c031-488a-a8d7-0b607ce665e1
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 0b2301c1c9b846e2ea005f049c5aadb3d4634a81
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963584"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277079"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -34,7 +27,7 @@ Az alábbi lépések részletesen ismertetik a StorSimple 8100 Storage-eszköz k
 ### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
 Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![figyelmeztető ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 1. Győződjön meg arról, hogy két személy áll rendelkezésre a ház súlyának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 2. Helyezze a csomagot egy sima, vízszintes felületre.
@@ -68,7 +61,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    * 1 rack-Mount csomag (2 oldalsó sín csatlakoztatási hardverrel)
    * Első lépések dokumentáció
      
-     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon](storsimple-8000-contact-microsoft-support.md)a Microsoft ügyfélszolgálatahoz.
+     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
 
 A következő lépés az eszköz állványra szerelése.
 
@@ -90,7 +83,7 @@ Az eszközt olyan standard 19 hüvelykes állványra kell telepíteni, amely el�
 2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
 3. Győződjön meg arról, hogy az állványon egy 2U-tárolóhely áll rendelkezésre, amelyhez csatlakoztatni kívánja az eszközt.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![figyelmeztető ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8100-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
@@ -193,8 +186,8 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
    
    | Címke | Leírás |
    | --- | --- |
-   |   0,1,4,5 |1 GbE hálózati adapterek |
-   |   2,3 |10 GbE hálózati adapter |
+   |   0, 1, 4, 5 |1 GbE hálózati adapterek |
+   |   2, 3 |10 GbE hálózati adapter |
    |   6 |Soros portok |
 2. Tekintse meg a hálózati kábelezés következő ábráját. (A minimális hálózati konfigurációt a folytonos kék vonalak mutatják. A magas rendelkezésre álláshoz és a teljesítményhez szükséges további konfigurációt pontozott vonalak mutatják.)
 
@@ -204,13 +197,13 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
 
    |Címke | Leírás |
    |----- | ----------- |
-   | J    | Helyi Internet-hozzáféréssel rendelkező LAN |
+   | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |
-   | C    | PCM 0 |
+   | C#    | PCM 0 |
    | D    | Vezérlő 1 |
    | E    | PCM 1 |
-   | F, G | Gazdagépek |
-   | 0-5  | Hálózati adapterek |
+   | F, G | Hosts |
+   | 0-5  | Hálózati kapcsolatok |
 
 
 
@@ -239,16 +232,16 @@ A soros port csatlakoztatásához hajtsa végre az alábbi lépéseket.
 2. Azonosítsa az aktív vezérlőt az eszköz hátlapján. A villogó kék LED azt jelzi, hogy a vezérlő aktív.
 3. A megadott soros kábelek (szükség esetén a laptop USB-soros átalakítója) használata, valamint a konzol vagy számítógép csatlakoztatása (a terminál emulációja az eszközhöz) az aktív vezérlő soros portjára.
 4. Telepítse a számítógépen a soros USB-illesztőprogramokat (az eszközön szállított).
-5. A soros kapcsolat beállítása a következőképpen történik: 115 200 Baud, 8 adatbitek, 1 leállítási bit, nincs paritás, és a flow vezérlőelem nincs értékre van állítva.
+5. A soros kapcsolat beállítása a következőképpen történik: 115 200 Baud, 8 adatbitek, 1 leállítási bit, nincs paritás, és a flow vezérlő nincs értékre állítva.
 6. A konzolon az ENTER billentyű lenyomásával ellenőrizze, hogy működik-e a kapcsolat. Meg kell jelennie A soros konzol menüjének.
 
 > [!NOTE]
-> **Fények – felügyelet**: Ha az eszköz egy távoli adatközpontban vagy egy korlátozott hozzáférésű számítógép-helyiségben van telepítve, ügyeljen arra, hogy a soros kapcsolatok mindkét vezérlőhöz mindig a soros konzol kapcsolóhoz vagy hasonló eszközökhöz kapcsolódjanak. Ez lehetővé teszi a sávon kívüli távvezérlési és-támogatási műveleteket, ha hálózati fennakadások vagy váratlan hibák történtek.
+> **Lights-Out felügyelet**: Ha az eszközt egy távoli adatközpontba vagy egy korlátozott hozzáféréssel rendelkező számítógépbe helyezi, győződjön meg arról, hogy a soros kapcsolatok mindkét vezérlőhöz mindig csatlakoztatva vannak egy soros konzol kapcsolóhoz vagy hasonló eszközökhöz. Ez lehetővé teszi a sávon kívüli távvezérlési és-támogatási műveleteket, ha hálózati fennakadások vagy váratlan hibák történtek.
 > 
 > 
 
 Az eszköz most már a Power, a hálózati hozzáférés és a soros kapcsolat számára is kábeles. A következő lépés a szoftver konfigurálása és az eszköz üzembe helyezése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg, hogyan [helyezheti üzembe és konfigurálhatja helyszíni StorSimple-eszközét](storsimple-8000-deployment-walkthrough-u2.md).
 

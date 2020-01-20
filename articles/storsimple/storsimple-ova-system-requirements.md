@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple virtuális tömb rendszerkövetelményei | Microsoft Docs
+title: Microsoft Azure StorSimple virtuális tömb rendszerkövetelményei
 description: A StorSimple virtuális tömb szoftver-és hálózati követelményeinek megismerése
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: ea1d3bca-e71b-453d-aa82-440d2638f5e3
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 65d2a21a9f40470cee1dd9d713f9f9cb5431a245
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 38f9c432191ac613c1c0f8c02458e8bc4bf8232a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516684"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273767"
 ---
 # <a name="storsimple-virtual-array-system-requirements"></a>A StorSimple virtuális tömb rendszerkövetelményei
 
@@ -31,13 +24,13 @@ Ez a cikk ismerteti a Microsoft Azure StorSimple virtuális tömb és a tömbhö
 
 A rendszerkövetelmények a következők:
 
-* A Storage-ügyfelekkel kapcsolatos **szoftverek** – ismerteti a támogatott virtualizációs platformokat, a webböngészőket, az iSCSI-kezdeményezőket, az SMB-ügyfeleket, a virtuális eszközök minimális követelményeit, valamint az adott operációs rendszerek további követelményeit.
+* A **Storage-ügyfelekkel kapcsolatos szoftverek** – ismerteti a támogatott virtualizációs platformokat, a webböngészőket, az iSCSI-kezdeményezőket, az SMB-ügyfeleket, a virtuális eszközök minimális követelményeit, valamint az adott operációs rendszerek további követelményeit.
 * **A StorSimple eszköz hálózati követelményei** – információt nyújt azokról a portokról, amelyeket meg kell nyitni a tűzfalon az iSCSI-, felhő-vagy felügyeleti forgalom engedélyezéséhez.
 
 Az ebben a cikkben közzétett StorSimple rendszerkövetelményekkel kapcsolatos információk csak a StorSimple virtuális tömbökre vonatkoznak.
 
-* Az 8000 sorozatú eszközökhöz lépjen a [StorSimple 8000 Series eszköz](storsimple-system-requirements.md)rendszerkövetelményei között.
-* Az 7000 sorozatú eszközökhöz lépjen a [StorSimple 5000-7000 Series eszköz](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)rendszerkövetelményei között.
+* Az 8000 sorozatú eszközökhöz lépjen a [StorSimple 8000 Series eszköz rendszerkövetelményei](storsimple-system-requirements.md)között.
+* Az 7000 sorozatú eszközökhöz lépjen a [StorSimple 5000-7000 Series eszköz rendszerkövetelményei](http://onlinehelp.storsimple.com/1_StorSimple_System_Requirements)között.
 
 ## <a name="software-requirements"></a>Szoftverkövetelmények
 A szoftverre vonatkozó követelmények tartalmazzák a támogatott webböngészőkkel, az SMB-verziókkal, a virtualizációs platformokkal és a virtuális eszközök minimális követelményeivel kapcsolatos információkat.
@@ -91,10 +84,10 @@ A következő szoftver-követelmények azokra az SMB-ügyfelekre vonatkoznak, am
 
 
 ### <a name="supported-storage-format"></a>Támogatott tárolási formátum
-Csak az Azure Block blob Storage támogatott. Az oldal Blobok nem támogatottak. További információ [a blobok és a](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)Blobok blokkolásáról.
+Csak az Azure Block blob Storage támogatott. Az oldal Blobok nem támogatottak. További információ [a blobok és a Blobok blokkolásáról](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs).
 
 ## <a name="networking-requirements"></a>Hálózati követelmények
-A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az iSCSI-, SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi el az adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
+A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon az iSCSI-, SMB-, felhő-vagy felügyeleti forgalom engedélyezéséhez. A (z) vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
 | **<sup>1</sup> . port** | **Be vagy ki** | **Port hatóköre** | **Kötelező** | **Megjegyzések** |
 | --- | --- | --- | --- | --- |
@@ -102,9 +95,9 @@ A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni
 | TCP 443 (HTTPS) |Ki |WAN |Igen |A kimenő port a felhőben tárolt adatok elérésére szolgál. <br></br>A kimenő webes proxy a felhasználó által konfigurálható. |
 | UDP 53 (DNS) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet alapú DNS-kiszolgálót használ. <br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését végzi, javasoljuk a helyi DNS-kiszolgáló használatát. |
 | UDP 123 (NTP) |Ki |WAN |Bizonyos esetekben; Lásd: megjegyzések. |Erre a portra csak akkor van szükség, ha Internet-alapú NTP-kiszolgálót használ.<br></br> Vegye figyelembe, hogy ha egy fájlkiszolgáló üzembe helyezését javasolja, javasoljuk, hogy az időt szinkronizálja Active Directory tartományvezérlőkkel. |
-| TCP 80 (HTTP) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület HTTP protokollon keresztüli elérése automatikusan a HTTPS-re lesz átirányítva. |
-| TCP 443 (HTTPS) |A |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. |
-| TCP 3260 (iSCSI) |A |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
+| TCP 80 (HTTP) |Az |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. <br></br> Vegye figyelembe, hogy a helyi felhasználói felület HTTP protokollon keresztüli elérése automatikusan a HTTPS-re lesz átirányítva. |
+| TCP 443 (HTTPS) |Az |LAN |Igen |Ez a bejövő port helyi felhasználói felület esetén a helyi felügyelethez a StorSimple eszközön. |
+| TCP 3260 (iSCSI) |Az |LAN |Nem |Ez a port az iSCSI-kapcsolaton keresztüli adateléréshez használatos. |
 
 <sup>1</sup> nem szükséges bejövő portot megnyitni a nyilvános interneten.
 
@@ -136,5 +129,5 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 | `https://*.partners.extranet.microsoft.com/*` |Támogatási csomag |
 | `https://*.data.microsoft.com` |Telemetria szolgáltatás a Windowsban: [frissítés a felhasználói élmény és a diagnosztikai telemetria](https://support.microsoft.com/en-us/kb/3068708) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A portál előkészítése a StorSimple virtuális tömb üzembe helyezéséhez](storsimple-virtual-array-deploy1-portal-prep.md)

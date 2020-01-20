@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: d936f9f30f79b3be6035d668211a15533cb3fa85
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76157219"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277007"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -128,7 +128,7 @@ A táblázatban szereplő riasztások típusai:
 |**Kód befecskendezése felderítve**|A kódinjektálás olyan művelet, amely végrehajtható modulokat szúr be a futó folyamatokba vagy szálakba. Ezt a technikát a kártevők használják az adateléréshez, miközben a rendszer sikeresen elrejti magát, hogy megakadályozza a keresését és eltávolítását.<br>Ez a riasztás jelzi, hogy injektált modul szerepel az összeomlási memóriaképben. A kártékony és a nem rosszindulatú befecskendezett modulok megkülönböztetéséhez Security Center ellenőrzi, hogy a befecskendezett modul megfelel-e a gyanús viselkedés profiljának.|-|
 |**A rendszer gyanús kódrészletet észlelt**|Azt jelzi, hogy a kód szegmensét nem szabványos metódusok, például a tükröző injektálás és a folyamat-elszámolási módszer használatával osztották le. A riasztás a jelentett kódrészlet további jellemzőit tartalmazza, amelyeket a rendszer a jelentett kódrészlet képességeinek és viselkedésének biztosításához dolgoz fel.|-|
 |**Héjkód felderítve**|A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe.<br>Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony hasznos adatok által gyakran végrehajtott viselkedést mutatja. Bár a nem kártevő szoftverek is elvégezhetik ezt a viselkedést, nem jellemző a normál szoftverfejlesztői gyakorlatokra.|-|
-|**A rendszer a fájlokkal nem rendelkező támadási technikákat észlelt**|A megadott folyamat memóriája tartalmaz egy file un-Attack Toolkit: Meterpreter. A fájl nélkül támadási eszközkészletek általában nem rendelkeznek jelenléttel a fájlrendszerben, így a hagyományos víruskereső szoftverek észlelése bonyolult.|DefenseEvasion/végrehajtás|
+|**A rendszer a fájlokkal nem rendelkező támadási technikákat észlelt**|A megadott folyamat memóriája tartalmaz egy fájlra vonatkozó támadási eszközkészletet: [Toolkit name]. A fájl nélkül támadási eszközkészletek általában nem rendelkeznek jelenléttel a fájlrendszerben, így a hagyományos víruskereső szoftverek észlelése bonyolult.|DefenseEvasion/végrehajtás|
 ||<a name="alerts-linux"></a><h3>Linux rendszerű gépek</h3> [További részletek és megjegyzések](security-center-alerts-iaas.md#linux-)||
 |**Az SSH-t használó kulcsokhoz tartozó fájl szokatlan módon való elérése folyamatban van**|Az SSH-t használó hitelesítő kulcsok fájlja az ismert kártevő-kampányokhoz hasonló módon lett hozzáférve. Ez a hozzáférés arra utalhat, hogy egy támadó állandó hozzáférést próbál a géphez.|-|
 |**Észlelt adatmegőrzési kísérlet**|A gazdagép adatelemzése azt észlelte, hogy az egyfelhasználós üzemmód indítási parancsfájlja telepítve van.<br>Mivel ritkán fordul elő, hogy az adott módban bármilyen legitim folyamatra lenne szükség, ez arra utalhat, hogy egy támadó rosszindulatú folyamatot adott hozzá minden egyes futtatási szinthez, hogy biztosítsa az adatmegőrzést. |Perzisztencia|

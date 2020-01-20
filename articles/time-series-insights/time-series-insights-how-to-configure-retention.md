@@ -8,14 +8,14 @@ ms.author: dpalled
 manager: cshankar
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 954e61aec5b622d44435a8a5b196fdbfed33c564
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 3fdc007caaa4cb79f6083599a5bc176bc022fb03
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561208"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278636"
 ---
 # <a name="configuring-retention-in-time-series-insights"></a>Adatmegőrzés konfigurálása Time Series Insights
 
@@ -40,7 +40,7 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 1. A **Beállítások** fejléc alatt válassza a **tárolási konfiguráció**elemet.
 
-    [![válassza a beállítások, majd a Konfigurálás lehetőséget.](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+    [![a beállítások területen válassza a tárolási konfiguráció elemet.](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 1. Válassza ki az **adatmegőrzési időt (napokban)** az adatmegőrzés konfigurálásához a csúszka sáv használatával, vagy írjon be egy számot a szövegmezőbe.
 
@@ -48,7 +48,7 @@ A beállítások jobb megismeréséhez tekintse át a [Time Series Insights meg�
 
 1. A **tárolási korlát túllépte a viselkedési** beállítást. Válassza a **régi adattörlés** vagy a **Bejövő forgalom szüneteltetése** lehetőséget.
 
-    [![adatok megőrzése – elfogadás és mentés.](media/data-retention/2-accept-and-save.png)](media/data-retention/2-accept-and-save.png#lightbox)
+    [![szüneteltetése – elfogadás és mentés.](media/data-retention/pause-ingress-accept-and-save.png)](media/data-retention/pause-ingress-accept-and-save.png#lightbox)
 
 1. Tekintse át a dokumentációt, és Ismerje meg az adatvesztés lehetséges kockázatait. A módosítások konfigurálásához válassza a **Mentés** lehetőséget.
 

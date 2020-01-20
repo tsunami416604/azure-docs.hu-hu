@@ -1,104 +1,102 @@
 ---
-title: (ELAVULT) A figyelő Azure DC/OS fürt - műveletek kezelése
-description: Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics.
-services: container-service
+title: ELAVULT Az Azure DC/OS-fürt – Operations Management figyelése
+description: Azure Container Service DC/OS-fürt figyelése Log Analyticssal.
 author: keikhara
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/17/2016
 ms.author: keikhara
 ms.custom: mvc
-ms.openlocfilehash: 290141136672729060f5156d645c47ac303fa0c3
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 1ab8d1cf3eb38a17f0b3d6c8137e37237498a527
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60810017"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277322"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>(ELAVULT) Egy Azure Container Service DC/OS fürt megfigyelése a Log Analytics
+# <a name="deprecated-monitor-an-azure-container-service-dcos-cluster-with-log-analytics"></a>ELAVULT Azure Container Service DC/OS-fürt figyelése Log Analytics
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
+A Log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a Felhőbeli infrastruktúra kezelésében és biztonságában. A Container Solution Log Analytics megoldás, amely segít megtekinteni a tárolók leltározását, teljesítményét és naplóit egyetlen helyen. Naplózhatja a tárolók hibakeresését, ha megtekinti a naplókat a központi helyen, és a gazdagépen megkeresi a felesleges tárolót.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Tároló megoldásról további információkért lásd: a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
+A tároló megoldással kapcsolatos további információkért tekintse meg a [Container solution log Analytics](../../azure-monitor/insights/containers.md).
 
-## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>A DC/OS universe rendszerben a Log Analytics beállítása
+## <a name="setting-up-log-analytics-from-the-dcos-universe"></a>Log Analytics beállítása a DC/OS-univerzumból
 
 
-Ez a cikk feltételezi, hogy beállította-e egy DC/OS és egyszerű webes tároló alkalmazást a fürtön telepített.
+Ez a cikk azt feltételezi, hogy beállított egy DC/OS-t, és üzembe helyezett egy egyszerű webes tároló alkalmazást a fürtön.
 
 ### <a name="pre-requisite"></a>Előfeltétel
-- [A Microsoft Azure-előfizetés](https://azure.microsoft.com/free/) -előfizetés ingyenes beszerzése.  
-- Log Analytics-munkaterület beállítása – lásd: "3. lépés" alatt
-- [DC/OS parancssori felület](https://docs.mesosphere.com/1.12/cli) telepítve.
+- [Microsoft Azure előfizetés](https://azure.microsoft.com/free/) – ingyenes előfizetést kaphat.  
+- Log Analytics munkaterület beállítása – lásd: "3. lépés"
+- A [DC/os CLI](https://docs.mesosphere.com/1.12/cli) telepítve van.
 
-1. A DC/OS irányítópultján kattintson a Universe, és keressen a "OMS" alább látható módon.
+1. A DC/OS irányítópulton kattintson az univerzum elemre, és keressen rá az "OMS" kifejezésre az alábbi ábrán látható módon.
 
    >[!NOTE]
-   >OMS most már a Log Analytics nevezik.
+   >A OMS már Log Analytics néven is ismert.
 
    ![](media/container-service-monitoring-oms/image2.png)
 
-2. Kattintson az **Install** (Telepítés) gombra. Megjelenik egy előugró ablak, és a fájlverzió-információkat és a egy **telepítőcsomag** vagy **speciális telepítési** gombra. Amikor rákattint **speciális telepítési**, amely vezet, hogy a **OMS konfigurációs tulajdonságok** lap.
+2. Kattintson az **Install** (Telepítés) gombra. Ekkor megjelenik egy előugró ablak, amely tartalmazza a verziószámot és a telepítési **csomagot** vagy a **speciális telepítést** . Ha rákattint a **speciális telepítés**lehetőségre, amely a **OMS-specifikus konfigurációs tulajdonságok** lapra mutat.
 
    ![](media/container-service-monitoring-oms/image3.png)
 
    ![](media/container-service-monitoring-oms/image4.png)
 
-3. Itt meg kell adnia a `wsid` (a Log Analytics-munkaterület Azonosítójára) és `wskey` (a munkaterület-azonosító elsődleges kulcsát). Mindkét beolvasásához `wsid` és `wskey` szeretne létrehozni egy fiókot a <https://mms.microsoft.com>.
-   A lépésekkel hozzon létre egy fiókot. Ha elkészült hoz létre a fiókot, be kell szereznie a `wsid` és `wskey` kattintva **beállítások**, majd **csatlakoztatott források**, majd **Linux-kiszolgálók**lent látható módon.
+3. Itt meg kell adnia a `wsid` (az Log Analytics munkaterület AZONOSÍTÓját) és `wskey` (a munkaterület AZONOSÍTÓjának elsődleges kulcsát). Ahhoz, hogy mindkét `wsid` és `wskey`, létre kell hoznia egy fiókot a következő helyen: <https://mms.microsoft.com>.
+   A fiók létrehozásához kövesse a lépéseket. Ha elkészült a fiók létrehozásával, be kell szereznie a `wsid` és `wskey` a **Beállítások**, majd a **csatlakoztatott források**, majd a **Linux-kiszolgálók**elemre kattintva, az alábbi ábrán látható módon.
 
    ![](media/container-service-monitoring-oms/image5.png)
 
-4. Válassza ki a példányok, hogy szeretné, és kattintson a "Áttekintése és telepítése" gombra. Általában érdemes szeretné, hogy a virtuális gép már van az ügynök fürtben száma egyenlő a példányok számát. Linuxhoz készült log Analytics-ügynök telepítése, az egyes virtuális Gépeken, amely figyelési adatait és a naplózási információk gyűjtéséhez szeretné az egyes tárolók.
+4. Válassza ki a kívánt példányok számát, és kattintson a felülvizsgálat és telepítés gombra. Általában azt szeretné, hogy a példányok száma megegyezzen az ügynök fürtjében lévő virtuális gépek számával. A Linux rendszerhez készült Log Analytics-ügynök különálló tárolóként települ minden virtuális gépen, amely információkat szeretne gyűjteni a figyelési és naplózási adatokhoz.
 
    [!INCLUDE [log-analytics-agent-note](../../../includes/log-analytics-agent-note.md)] 
 
-## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Egy egyszerű Log Analytics-irányítópult beállítása
+## <a name="setting-up-a-simple-log-analytics-dashboard"></a>Egyszerű Log Analytics irányítópult beállítása
 
-Amint telepítette a Linuxhoz készült Log Analytics-ügynököt a virtuális gépeken, a következő lépés az a Log Analytics-irányítópult beállítása. Beállíthatja az irányítópultot az Azure Portalon keresztül.
+Miután telepítette a Linux rendszerhez készült Log Analytics-ügynököt a virtuális gépeken, a következő lépés az Log Analytics irányítópult beállítása. Az irányítópultot Azure Portal használatával állíthatja be.
 
 ### <a name="azure-portal"></a>Azure Portal 
 
-Jelentkezzen be az Azure Portalra a <https://portal.microsoft.com/>. Lépjen a **Marketplace**válassza **figyelés + felügyelet** kattintson **tekintse meg az összes**. Írja be `containers` kifejezést a keresőmezőbe. "Tárolók" a keresési eredmények között megjelenik. Válassza ki **tárolók** kattintson **létrehozás**.
+Jelentkezzen be Azure Portalra <https://portal.microsoft.com/>címen. Lépjen a **piactérre**, válassza a **figyelés + felügyelet** elemet, majd kattintson **az összes**megjelenítése elemre. Ezután írja be a `containers` kifejezést a Keresés mezőbe. A keresési eredmények között megjelenik a "tárolók". Válassza a **tárolók** lehetőséget, majd kattintson a **Létrehozás**gombra.
 
 ![](media/container-service-monitoring-oms/image9.png)
 
-Miután rákattint **létrehozás**, a munkaterület fog kérni. Válassza ki a munkaterületet, vagy ha nem rendelkezik egy, hozzon létre egy új munkaterületet.
+Ha a **Létrehozás**gombra kattint, a rendszer megkérdezi a munkaterületet. Válassza ki a munkaterületet, vagy ha még nem rendelkezik ilyennel, hozzon létre egy új munkaterületet.
 
 ![](media/container-service-monitoring-oms/image10.PNG)
 
-Miután kiválasztotta a munkaterületet, kattintson a **létrehozás**.
+Miután kiválasztotta a munkaterületet, kattintson a **Létrehozás**gombra.
 
 ![](media/container-service-monitoring-oms/image11.png)
 
-A Log Analytics megoldás kapcsolatos további információkért tekintse meg a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
+A Log Analytics Container megoldással kapcsolatos további információkért tekintse meg a [Container solution log Analytics](../../azure-monitor/insights/containers.md).
 
-### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Log Analytics-ügynököket az ACS DC/OS méretezése 
+### <a name="how-to-scale-log-analytics-agent-with-acs-dcos"></a>Log Analytics-ügynök méretezése az ACS DC/OS-vel 
 
-Abban az esetben kell a tényleges csomópontok száma nem éri el a Log Analytics-ügynök telepítve van, vagy, a rendszer több virtuális gép hozzáadásával virtuálisgép-méretezési vertikális felskálázása, megteheti felskálázásával a `msoms` szolgáltatás.
+Ha a csomópontok tényleges száma vagy a virtuálisgép-méretezési csoport méretezése több virtuális gép hozzáadásával történik, akkor ezt a `msoms` szolgáltatás méretezésével teheti meg. Log Analytics
 
-Látogasson el a Marathon vagy a DC/OS felhasználói felület lapon, és növelheti a csomópontok száma.
+A Marathon vagy a DC/OS felhasználói felületi szolgáltatások lapon megtekintheti a csomópontok számának felskálázását.
 
 ![](media/container-service-monitoring-oms/image12.PNG)
 
-Ez más csomópontokhoz, amelyek még nem helyezte üzembe a Log Analytics-ügynököket telepíti.
+Ez olyan csomópontokon fog települni, amelyek még nem telepítették a Log Analytics-ügynököt.
 
-## <a name="uninstall-ms-oms"></a>Távolítsa el az MS OMS
+## <a name="uninstall-ms-oms"></a>MS-OMS eltávolítása
 
-Távolítsa el az MS OMS adja meg a következő parancsot:
+Az MS OMS eltávolításához írja be a következő parancsot:
 
 ```bash
 $ dcos package uninstall msoms
 ```
 
-## <a name="let-us-know"></a>Tudassa velünk, hogy!!!
-Mi működik? Mi a hiányzó? Mit kell ehhez az Ön számára hasznos lehet? Tudassa velünk <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
+## <a name="let-us-know"></a>Tudassa velünk!!!
+Mi működik? Mi hiányzik? Mire van szüksége ahhoz, hogy hasznos legyen az Ön számára? Tudassa velünk a következő címen: <a href="mailto:OMSContainers@microsoft.com">OMSContainers</a>.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
- Most, hogy úgy állította be a Log Analytics szolgáltatással figyelheti a tárolókat[tekintse meg a tároló irányítópultján](../../azure-monitor/insights/containers.md).
+ Most, hogy beállította Log Analytics a tárolók figyelésére,[tekintse meg a tároló irányítópultját](../../azure-monitor/insights/containers.md).

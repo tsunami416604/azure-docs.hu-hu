@@ -3,15 +3,15 @@ title: Oktatóanyag – a konfigurációs kiszolgáló példányának beállít�
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthat be egy Spring Cloud config Server-példányt az Azure Spring Cloud számára a Azure Portal
 ms.service: spring-cloud
 ms.topic: tutorial
-ms.author: jeconnoc
-author: jpconnock
+ms.author: brendm
+author: bmitchell287
 ms.date: 10/18/2019
-ms.openlocfilehash: 186ba771d2df3b08244a05e349beea8dad2af93b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 5e0b5633a153583117cfe0d90ec5c0e7c5f2a147
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74708800"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277525"
 ---
 # <a name="tutorial-set-up-a-spring-cloud-config-server-instance-for-your-service"></a>Oktatóanyag: Spring Cloud config Server-példány beállítása a szolgáltatáshoz
 

@@ -1,25 +1,18 @@
 ---
-title: Microsoft Azure StorSimple 8600-eszköz telepítése | Microsoft Docs
+title: Microsoft Azure StorSimple 8600-eszköz telepítése
 description: Útmutató a StorSimple 8600-eszköz kicsomagolásához, rack csatlakoztatásához és kábelhez a szoftver telepítése és konfigurálása előtt.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 3d82ba5f-3e34-40dc-9c33-50f952bc6be8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 571c8b729408d7b9e805b875baccfd9ac8d6b9be
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965270"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277115"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -34,7 +27,7 @@ Az alábbi lépések részletesen ismertetik a StorSimple 8600 Storage-eszköz k
 ### <a name="prepare-to-unpack-your-device"></a>Felkészülés az eszköz kicsomagolására
 Az eszköz kicsomagolása előtt tekintse át a következő információkat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![figyelmeztető ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
 1. Győződjön meg arról, hogy két személy áll rendelkezésre az eszköz súlyozásának kezeléséhez, ha manuálisan végzi a kezelést. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 2. Helyezze a csomagot egy sima, vízszintes felületre.
@@ -70,7 +63,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    * 2 rack csatlakoztatási készlet (4 oldalsó sín, csatlakoztatási hardverrel, 2 mindegyik az elsődleges ház és a EBOD ház számára), 1 az egyes mezőkben
    * Bevezetés – dokumentáció
      
-     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon](storsimple-8000-contact-microsoft-support.md)a Microsoft ügyfélszolgálatahoz.  
+     Ha nem kapta meg a fent felsorolt elemek egyikét sem, [forduljon a Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).  
 
 A következő lépés az eszköz állványra szerelése.
 
@@ -92,7 +85,7 @@ A házakat standard 19 hüvelykes állványra kell telepíteni, amely az első �
 2. Győződjön meg arról, hogy a hely, ahol be kívánja állítani a standard szintű AC-áramellátást egy független forrásból vagy egy, a szünetmentes áramforrást (UPS-t) biztosító Power Distribution Unit (PDU) szolgáltatásból.
 3. Győződjön meg arról, hogy az állványon egy 4U (2 X 2U) tárolóhely áll rendelkezésre, amelyben csatlakoztatni kívánja a házakat.
 
-![Figyelmeztetés ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
+![figyelmeztető ikon](./media/storsimple-safety/IC740879.png)![nagy súly ikon](./media/storsimple-8600-hardware-installation/HCS_HeavyWeight_Icon.png) **Figyelmeztetés!**
 
  Ügyeljen arra, hogy a súlyozás kezeléséhez két személy legyen elérhető, ha az eszköz telepítését manuálisan végzi. Egy teljesen konfigurált ház súlya 32 kg (70 lbs) lehet.
 
@@ -207,8 +200,8 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
    
    | Címke | Leírás |
    | --- | --- |
-   |   0,1,4,5 |1 GbE hálózati adapterek |
-   |   2,3 |10 GbE hálózati adapter |
+   |   0, 1, 4, 5 |1 GbE hálózati adapterek |
+   |   2, 3 |10 GbE hálózati adapter |
    |   6 |Soros portok |
 2. Tekintse meg a hálózati kábelezés következő ábráját. (A minimális hálózati konfigurációt a folytonos kék vonalak mutatják. A magas rendelkezésre állás és a teljesítmény érdekében a további szükséges beállításokat a pontozott vonalak mutatják.)
 
@@ -218,15 +211,15 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
 
 | Címke | Leírás |
 | --- | --- |
-| J |Helyi Internet-hozzáféréssel rendelkező LAN |
+| A |Helyi Internet-hozzáféréssel rendelkező LAN |
 | B |Vezérlő 0 |
-| C |PCM 0 |
+| C# |PCM 0 |
 | D |Vezérlő 1 |
 | E |PCM 1 |
-| P |EBOD vezérlő 0 |
-| C |1\. EBOD-vezérlő |
-| H,I |Gazdagépek (például fájlkiszolgálók) |
-| 0-5 |Hálózati adapterek |
+| F |EBOD vezérlő 0 |
+| G |1\. EBOD-vezérlő |
+| H, I |Gazdagépek (például fájlkiszolgálók) |
+| 0-5 |Hálózati kapcsolatok |
 | 6 |Elsődleges ház |
 | 7 |EBOD ház |
 
@@ -269,6 +262,6 @@ A soros port csatlakoztatásához hajtsa végre az alábbi lépéseket.
 
 Befejezte a kábelezést az eszközön a Power, a hálózati hozzáférés és a soros kapcsolat számára. A következő lépés a szoftver konfigurálása az eszközön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most már készen áll a helyszíni [StorSimple-eszköz üzembe helyezésére és konfigurálására](storsimple-8000-deployment-walkthrough-u2.md).
 

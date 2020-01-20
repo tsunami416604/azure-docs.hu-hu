@@ -1,30 +1,22 @@
 ---
-title: Oktatóanyag – Lemezek létrehozása és használata méretezési csoportokhoz Azure CLI-vel | Microsoft Docs
+title: Oktatóanyag – lemezek létrehozása és használata méretezési csoportokhoz az Azure CLI-vel
 description: Megismerheti, hogyan hozhat létre és használhat felügyelt lemezeket a virtuálisgép-méretezési csoportokhoz az Azure CLI használatával, beleértve a lemezek hozzáadását, előkészítését, listázását és leválasztását.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 58090e860b79d59021d467fcf73596271c91c7f6
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 01dbbcddf7df8e261e865fbb61c1fcfd5abbd5fc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60329452"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278245"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Hozzon létre és használhat lemezeket a virtuálisgép-méretezési csoportba az Azure CLI-vel
-A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure CLI-vel
+A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Operációsrendszer-lemezek és ideiglenes lemezek
@@ -48,7 +40,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuálisgép-példány. Ezek nagy teljesítményű lemezek, és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuálisgép-példányt egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuálisgép-példány mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
-| Typo | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
+| Type (Típus) | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
 | [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 1600 |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 576 |
@@ -62,7 +54,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
 
 ### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-| Typo | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
+| Type (Típus) | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
 | [Általános célú](../virtual-machines/linux/sizes-general.md) | A, B és D sorozat | 64 |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md) | F sorozat | 64 |
@@ -297,7 +289,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat lemezeket a méretezési csoportokkal együtt az Azure CLI használatával:
 
 > [!div class="checklist"]

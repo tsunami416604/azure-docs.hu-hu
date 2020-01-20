@@ -3,21 +3,20 @@ title: Azure Log Analytics szívófej üzembe helyezése Cloud Foundry monitoroz
 description: Részletes útmutató az Azure Log Analytics Cloud Foundry loggregator-fúvókának üzembe helyezéséhez. A fúvóka segítségével figyelje a Cloud Foundry rendszerállapot-és teljesítmény-mérőszámait.
 services: virtual-machines-linux
 author: ningk
-manager: jeconnoc
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: azure-monitor
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
-ms.openlocfilehash: d71f1d6af0944a676e35dfe6347fafb8706f21b8
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74286645"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277357"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
 
@@ -106,7 +105,7 @@ Futtassa az alábbi parancsot:
 cf login -a https://api.${SYSTEM_DOMAIN} -u ${CF_USER} --skip-ssl-validation
 ```
 
-"SYSTEM_DOMAIN" is your CF domain name. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában. 
+A "SYSTEM_DOMAIN" a CF-tartomány neve. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában. 
 
 A "CF_User" a CF rendszergazdai neve. A név és a jelszó lekéréséhez keresse meg a "scim" szakaszt, és a "cf_admin_password" kifejezést keresi a CF telepítési jegyzékfájljában.
 
@@ -121,7 +120,7 @@ uaac member add cloud_controller.admin ${FIREHOSE_USER}
 uaac member add doppler.firehose ${FIREHOSE_USER}
 ```
 
-"SYSTEM_DOMAIN" is your CF domain name. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában.
+A "SYSTEM_DOMAIN" a CF-tartomány neve. A beolvasáshoz keresse meg a "SYSTEM_DOMAIN" kifejezést a CF üzembe helyezési jegyzékfájljában.
 
 #### <a name="download-the-latest-log-analytics-nozzle-release"></a>A legújabb Log Analytics fúvóka kiadásának letöltése
 
@@ -196,14 +195,14 @@ A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója
 
 | Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
-| Type=CF_ValueMetric_CL Origin_s=bbs Name_s="Domain.cf-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
-| Type=CF_ValueMetric_CL Origin_s=rep Name_s=UnhealthyCell Value_d>1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |
-| Type=CF_ValueMetric_CL Origin_s="bosh-hm-forwarder" Name_s="system.healthy" Value_d=0 | Találatok száma > 0 | 1: a rendszer kifogástalan állapotú, és 0 azt jelenti, hogy a rendszer nem kifogástalan állapotú. |
-| Type=CF_ValueMetric_CL Origin_s=route_emitter Name_s=ConsulDownMode Value_d>0 | Találatok száma > 0   | A konzul időről időre kibocsátja az állapotot. 0 azt jelenti, hogy a rendszer kifogástalan, és 1 azt jelenti, hogy az útvonal-kibocsátó észleli, hogy a konzul nem működik. |
-| Type=CF_CounterEvent_CL Origin_s=DopplerServer (Name_s="TruncatingBuffer.DroppedMessages" or Name_s="doppler.shedEnvelopes") Delta_d>0 | Találatok száma > 0 | A Doppler által a háttérbeli nyomás miatt szándékosan eldobott üzenetek különbözeti száma. |
-| Type=CF_LogMessage_CL SourceType_s=LGR MessageType_s=ERR                      | Találatok száma > 0   | A Loggregator kibocsátja a **LGR** , hogy jelezze a naplózási folyamattal kapcsolatos problémákat. Ilyen probléma például akkor, ha a napló üzeneteinek kimenete túl magas. |
-| Type=CF_ValueMetric_CL Name_s=slowConsumerAlert                               | Találatok száma > 0   | Ha a fúvóka lassú fogyasztói riasztást kap a loggregator, elküldi a **slowConsumerAlert** -ValueMetric Azure monitor naplókba. |
-| Type=CF_CounterEvent_CL Job_s=nozzle Name_s=eventsLost Delta_d>0              | Találatok száma > 0   | Ha az elveszett események különbözeti száma eléri a küszöbértéket, az azt jelenti, hogy a fúvóka probléma fut. |
+| Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "tartomány. CF-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
+| Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d > 1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |
+| Type = CF_ValueMetric_CL Origin_s = "Bosh-HM-továbbító" Name_s = "System. Healthy" Value_d = 0 | Találatok száma > 0 | 1: a rendszer kifogástalan állapotú, és 0 azt jelenti, hogy a rendszer nem kifogástalan állapotú. |
+| Type = CF_ValueMetric_CL Origin_s = route_emitter Name_s = ConsulDownMode Value_d > 0 | Találatok száma > 0   | A konzul időről időre kibocsátja az állapotot. 0 azt jelenti, hogy a rendszer kifogástalan, és 1 azt jelenti, hogy az útvonal-kibocsátó észleli, hogy a konzul nem működik. |
+| Type = CF_CounterEvent_CL Origin_s = DopplerServer (Name_s = "TruncatingBuffer. DroppedMessages" vagy Name_s = "Doppler. shedEnvelopes") Delta_d > 0 | Találatok száma > 0 | A Doppler által a háttérbeli nyomás miatt szándékosan eldobott üzenetek különbözeti száma. |
+| Type = CF_LogMessage_CL SourceType_s = LGR MessageType_s = ERR                      | Találatok száma > 0   | A Loggregator kibocsátja a **LGR** , hogy jelezze a naplózási folyamattal kapcsolatos problémákat. Ilyen probléma például akkor, ha a napló üzeneteinek kimenete túl magas. |
+| Type = CF_ValueMetric_CL Name_s = slowConsumerAlert                               | Találatok száma > 0   | Ha a fúvóka lassú fogyasztói riasztást kap a loggregator, elküldi a **slowConsumerAlert** -ValueMetric Azure monitor naplókba. |
+| Type = CF_CounterEvent_CL Job_s = fúvóka Name_s = eventsLost Delta_d > 0              | Találatok száma > 0   | Ha az elveszett események különbözeti száma eléri a küszöbértéket, az azt jelenti, hogy a fúvóka probléma fut. |
 
 ## <a name="scale"></a>Méretezés
 

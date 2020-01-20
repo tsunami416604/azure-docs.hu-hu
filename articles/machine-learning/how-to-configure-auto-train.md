@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5be8668f9a2761bf1aa9809749fa44f21d622dde
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045795"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277993"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -415,7 +415,7 @@ A támogatott Testreszabás az alábbiakat tartalmazza:
 |Testreszabás|Meghatározás|
 |--|--|
 |Oszlop céljának frissítése|Felülbírálja a szolgáltatás típusát a megadott oszlophoz.|
-|A transzformátor paraméterének frissítése |A megadott átalakító paramétereinek frissítése. Jelenleg támogatja az imputált és a HashOneHotEncoder.|
+|A transzformátor paraméterének frissítése |A megadott átalakító paramétereinek frissítése. Jelenleg támogatja az imputált (mean, leggyakoribb & medián) és a HashOneHotEncoder.|
 |Oszlopok eldobása |Az eldobni kívánt oszlopok featurized.|
 |Transzformátorok letiltása| A featurization-folyamathoz használandó transzformátorok letiltása.|
 

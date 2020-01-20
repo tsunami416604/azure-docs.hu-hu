@@ -1,42 +1,40 @@
 ---
-title: (ELAVULT) Vázlat használata az Azure Container Service és az Azure Container Registrybe
+title: ELAVULT Piszkozat használata Azure Container Service és Azure Container Registry
 description: Hozzon létre egy ACS Kubernetes-fürtöt és egy Azure Container Registryt az első alkalmazás létrehozására az Azure-ban a Draft segítségével.
-services: container-service
 author: squillace
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/14/2017
 ms.author: rasquill
 ms.custom: mvc
-ms.openlocfilehash: fb34be09ec08957621517c957b3570cdbcfc0468
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 8d688d2918c9100019d033e93e9a3dca9e492de2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60712670"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271135"
 ---
-# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>(ELAVULT) Vázlat használata az Azure Container Service és az Azure Container Registry létrehozása és a Kubernetes-alkalmazás üzembe helyezése
+# <a name="deprecated-use-draft-with-azure-container-service-and-azure-container-registry-to-build-and-deploy-an-application-to-kubernetes"></a>ELAVULT A draft használata a Azure Container Service és a Azure Container Registry használatával Kubernetes-alkalmazások készítéséhez és üzembe helyezéséhez
 
 > [!TIP]
-> Ez a cikk, amely a frissített verziót használja Azure Kubernetes Service-ben, lásd: [vázlat használata az Azure Kubernetes Service (AKS)](../../aks/kubernetes-draft.md).
+> Az Azure Kubernetes Service-t használó cikk frissített verziója: a [draft használata az Azure Kubernetes szolgáltatással (ak)](../../aks/kubernetes-draft.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 A [Draft](https://aka.ms/draft) egy új nyílt forráskódú eszköz, amely megkönnyíti a tárolóval működő alkalmazások fejlesztését és azok üzembe helyezését Kubernetes-fürtökben anélkül, hogy részletesen ismerné a Dockert és a Kubernetest – vagy akár csak telepítenie kellene őket. A Draft és a hasonló eszközök révén Ön és csapata a Kubernetesben való alkalmazáskészítésre összpontosíthat, anélkül, hogy sok figyelmet kellene fordítania az infrastruktúrára.
 
-A Draft bármely Docker-rendszerképjegyzékkel és Kubernetes-fürttel használható, beleértve a helyi használatot. Ez az oktatóanyag bemutatja, hogyan használható az ACS Kubernetes és az ACR élő, de biztonságos fejlesztői folyamatok létrehozására a Draft segítségével Kubernetes, és az Azure DNS használatával teszi közzé, hogy mások is lássák, egy tartományi fejlesztői a folyamat.
+A Draft bármely Docker-rendszerképjegyzékkel és Kubernetes-fürttel használható, beleértve a helyi használatot. Ez az oktatóanyag azt mutatja be, hogyan használható az ACS a Kubernetes és az ACR használatával élő, de biztonságos fejlesztői folyamat létrehozásához a Kubernetes-ben a draft segítségével, valamint a Azure DNS használata annak érdekében, hogy a fejlesztői folyamat mások számára is elérhető legyen a tartományban.
 
 
 ## <a name="create-an-azure-container-registry"></a>Azure Container Registry létrehozása
 Egyszerűen [hozzon létre egy új Azure Container Registryt](../../container-registry/container-registry-get-started-azure-cli.md) a következő lépésekkel:
 
-1. Hozzon létre egy Azure-erőforráscsoportot az ACR-beállításjegyzékbe és az ACS Kubernetes-fürt kezeléséhez.
+1. Hozzon létre egy Azure-erőforráscsoportot az ACR-beállításjegyzék és a Kubernetes-fürt az ACS-ben való kezeléséhez.
       ```azurecli
       az group create --name draft --location eastus
       ```
 
-2. Hozzon létre egy ACR-lemezkép beállításjegyzék [az acr létrehozása](/cli/azure/acr#az-acr-create) és ellenőrizze, hogy a `--admin-enabled` beállítás `true`.
+2. Hozzon létre egy ACR-Rendszerképbeli beállításjegyzéket az [az ACR Create](/cli/azure/acr#az-acr-create) paranccsal, és győződjön meg arról, hogy a `--admin-enabled` beállítás értéke `true`.
       ```azurecli
       az acr create --resource-group draft --name draftacs --sku Basic
       ```
@@ -103,13 +101,13 @@ Most, hogy kész a fürt, importálhatja a hitelesítő adatokat az [az acs kube
 ## <a name="install-and-configure-draft"></a>A draft telepítése és konfigurálása
 
 
-1. Töltse le, a környezetének tervezet https://github.com/Azure/draft/releases és telepítheti az útvonalon, hogy a parancs segítségével.
-2. Töltse le a helm, a környezetnek https://github.com/kubernetes/helm/releases és [telepítheti az útvonalon, úgy, hogy a parancs segítségével](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
+1. Töltse le a környezetének tervezetét https://github.com/Azure/draft/releases és telepítse az elérési útját, hogy a parancs is használható legyen.
+2. Töltse le a https://github.com/kubernetes/helm/releases a környezetét, és [telepítse azt az elérési útra, hogy a parancs használható legyen](https://github.com/kubernetes/helm/blob/master/docs/install.md#installing-the-helm-client).
 3. Konfigurálja a Draftot a beállításjegyzék használatára, és hozzon létre altartományt minden általa létrehozott Helm-diagramhoz. A Draft konfigurálásához a következők szükségesek:
    - Az Azure Container Registry neve (a példában `draftacsdemo`)
    - A beállításkulcs vagy jelszó a következőből: `az acr credential show -n <registry name> --output tsv --query "passwords[0].value"`.
 
-   Hívás `draft init` és a konfigurációs folyamat bekéri a fenti értékeket; vegye figyelembe, hogy az URL-cím formátuma a beállításjegyzék URL-címe, a beállításjegyzék neve (ebben a példában `draftacsdemo`) plusz `.azurecr.io`. A felhasználónév önállóan a beállításjegyzék neve. A folyamat az első futtatáskor a következőhöz lesz hasonló.
+   Hívja meg `draft init` és a konfigurációs folyamat kéri a fenti értékek megadását; vegye figyelembe, hogy a beállításjegyzék URL-címének URL-formátuma a beállításjegyzék neve (ebben a példában `draftacsdemo`) plusz `.azurecr.io`. A Felhasználónév a beállításjegyzék saját neve. A folyamat az első futtatáskor a következőhöz lesz hasonló.
    ```bash
     $ draft init
     Creating /home/ralph/.draft 
@@ -139,14 +137,14 @@ Most már készen áll az alkalmazás üzembe helyezésére.
 
 ## <a name="build-and-deploy-an-application"></a>Alkalmazás fejlesztése és üzembe helyezése
 
-A Draft-tárházban [hat egyszerű példaalkalmazást](https://github.com/Azure/draft/tree/master/examples) talál. Klónozza az adattárat, és használja a [Java-példában](https://github.com/Azure/draft/tree/master/examples/example-java). Módosítsa a példák/java-könyvtárat, és a típus `draft create` hozhat létre az alkalmazást. Ez az alábbi példához hasonlóan nézhet ki.
+A Draft-tárházban [hat egyszerű példaalkalmazást](https://github.com/Azure/draft/tree/master/examples) talál. A tárház klónozása és a Java- [példa](https://github.com/Azure/draft/tree/master/examples/example-java)használata. Váltson a példák/Java könyvtárba, és írja be a `draft create`t az alkalmazás létrehozásához. Ez az alábbi példához hasonlóan nézhet ki.
 ```bash
 $ draft create
 --> Draft detected the primary language as Java with 91.228814% certainty.
 --> Ready to sail
 ```
 
-A parancs kimenete egy Dockerfile és egy Helm-diagram. A létrehozáshoz és üzembe helyezéshez egyszerűen írja be a `draft up` parancsot. A kimenet hosszú, de az alábbi példához hasonlóan kell lennie.
+A parancs kimenete egy Dockerfile és egy Helm-diagram. A létrehozáshoz és üzembe helyezéshez egyszerűen írja be a `draft up` parancsot. A kimenet kiterjedt, de az alábbi példához hasonlóan kell kinéznie.
 ```bash
 $ draft up
 Draft Up Started: 'handy-labradoodle'
@@ -156,12 +154,12 @@ handy-labradoodle: Releasing Application: SUCCESS ⚓  (3.8903s)
 handy-labradoodle: Build ID: 01BT0ZJ87NWCD7BBPK4Y3BTTPB
 ```
 
-## <a name="securely-view-your-application"></a>Az alkalmazás biztonságos megtekintéséhez
+## <a name="securely-view-your-application"></a>Az alkalmazás biztonságos megtekintése
 
-A tároló most már fut az ACS-ben. A megtekintéséhez használja a `draft connect` parancsot, amely a fürt IP-címhez biztonságos kapcsolatot létesít az alkalmazás egy adott portot, hogy helyileg is megtekintheti. Ha ez sikeres, keresse meg az URL-cím első sora után az alkalmazás csatlakozni a **sikeres** kijelző.
+A tároló most már fut az ACS-ben. A megtekintéshez használja a `draft connect` parancsot, amely biztonságos csatlakozást hoz létre a fürt IP-címéhez egy adott porttal az alkalmazás számára, hogy helyileg is megtekinthető legyen. Ha a művelet sikeres, keresse meg az alkalmazáshoz való kapcsolódáshoz szükséges URL-címet az első sorban a **sikerességi** mutató után.
 
 > [!NOTE]
-> Üzenetet kap arról, hogy nincs podok készen is kap, ha Várjon egy kicsit, majd próbálkozzon újra, vagy megtekintheti a felkészülésére a podok `kubectl get pods -w` , és próbálkozzon újra, ha így tesznek.
+> Ha olyan üzenetet kap, amely arról tájékoztatja, hogy a hüvelyek nem voltak készen, várjon egy pillanatra, és próbálkozzon újra, vagy tekintse meg, hogy a hüvelyek készen állnak-e a `kubectl get pods -w`, majd próbálkozzon újra a művelettel.
 
 ```bash
 draft connect
@@ -174,16 +172,16 @@ SLF4J: See https://www.slf4j.org/codes.html#StaticLoggerBinder for further detai
 >> Listening on 0.0.0.0:4567
 ```
 
-Az előző példában a következőt `curl -s http://localhost:46143` a válasz fogadására `Hello World, I'm Java!`. Amikor, CTRL + vagy a CMD + C (operációs rendszer a környezettől függően), a biztonságos alagút szakadt, és léptetés továbbra is.
+Az előző példában beírhatja `curl -s http://localhost:46143` a válasz fogadására, `Hello World, I'm Java!`. Ha a CTRL + vagy a CMD + C billentyűkombinációt (az operációsrendszer-környezettől függően), a rendszer lebontotta a biztonságos alagutat, és továbbra is megismételheti azt.
 
-## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>A megosztóalkalmazás által egy üzembe helyezési tartomány beállítása az Azure DNS használata
+## <a name="sharing-your-application-by-configuring-a-deployment-domain-with-azure-dns"></a>Az alkalmazás megosztása egy központi telepítési tartomány konfigurálásával Azure DNS
 
-Már elvégezte a Draft hoz létre az előző lépésekben fejlesztői iteráció hurok. Azonban megoszthatja az alkalmazás által az interneten keresztül:
-1. Az ACS-fürtben (ezzel biztosítva a nyilvános IP-címet, amelyen meg az alkalmazást) bejövő forgalmi telepítése
-2. Az egyéni tartományt az Azure DNS-delegálás, és a tartomány leképezése az IP cím ACS rendel a bejövőforgalom-vezérlőt
+Már végrehajtotta a Piszkozat létrehozásához szükséges fejlesztői iterációs ciklust az előző lépésekben. Az alkalmazást azonban az interneten keresztül is megoszthatja:
+1. Bejövő forgalom telepítése az ACS-fürtben (egy nyilvános IP-cím megadásához, amelyen az alkalmazás megjelenik)
+2. Az egyéni tartomány delegálása Azure DNS és a tartomány leképezése az ACS IP-címére a bejövő adatkezelőhöz
 
-### <a name="use-helm-to-install-the-ingress-controller"></a>Helm használatával telepítünk a bejövőforgalom-vezérlőt.
-Használat **helm** keresse meg és telepítse a `stable/traefik`, bejövőforgalom-vezérlőt, a buildek számára a bejövő kérések engedélyezéséhez.
+### <a name="use-helm-to-install-the-ingress-controller"></a>A beáramló vezérlő telepítéséhez használja a helmt.
+A **Helm** használatával megkeresheti és telepítheti `stable/traefik`, egy bejövő vezérlőt, hogy engedélyezze a beérkező kérelmeket a buildek számára.
 ```bash
 $ helm search traefik
 NAME            VERSION DESCRIPTION
@@ -191,7 +189,7 @@ stable/traefik  1.3.0   A Traefik based Kubernetes ingress controller w...
 
 $ helm install stable/traefik --name ingress
 ```
-Ezután állítson be egy figyelőpontot az `ingress` (bejövőforgalom-) vezérlőn a külső IP-érték rögzítéséhez, amikor üzembe van helyezve. Az IP-cím lesz leképezve a következő szakaszban az üzembe helyezés tartományához.
+Ezután állítson be egy figyelőpontot az `ingress` (bejövőforgalom-) vezérlőn a külső IP-érték rögzítéséhez, amikor üzembe van helyezve. Ez az IP-cím lesz a központi telepítési tartományhoz hozzárendelve a következő szakaszban.
 
 ```bash
 $ kubectl get svc -w
@@ -202,9 +200,9 @@ kubernetes                    10.0.0.1       <none>          443/TCP            
 
 Ebben az esetben az üzembe helyezés tartományához használható külső IP-cím: `13.64.108.240`. A tartományt most már leképezheti erre az IP-címre.
 
-### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>Map the ingress IP to a custom subdomain
+### <a name="map-the-ingress-ip-to-a-custom-subdomain"></a>A bejövő IP-cím hozzárendelése egy egyéni altartományhoz
 
-A Draft kiadást hoz létre minden egyes létrehozott Helm-diagramhoz – minden egyes alkalmazáshoz, amin dolgozik. Mindegyik kap egy létrehozott nevet, amelyet **draft** , egy _altartomány_ felügyelt legfelső szintű _üzembe helyezési tartomány_ , amelyek. (A jelen példában a `squillace.io`-t használjuk az üzembe helyezés tartományaként.) Az altartomány-viselkedés engedélyezéséhez létre kell hoznia egy A rekordot `'*.draft'` az üzembe helyezés tartományának DNS-bejegyzéseihez, hogy minden egyes létrehozott altartomány a Kubernetes-fürt bejövőforgalom-vezérlőjéhez legyen irányítva. 
+A Draft kiadást hoz létre minden egyes létrehozott Helm-diagramhoz – minden egyes alkalmazáshoz, amin dolgozik. Mindegyik egy olyan generált nevet kap, amelyet a **Piszkozat** használ a legfelső szintű _üzembe helyezési tartományhoz_ tartozó _altartományként_ . (Ebben a példában a `squillace.io`t használjuk központi telepítési tartományként.) Az altartomány működésének engedélyezéséhez létre kell hoznia egy rekordot a központi telepítési tartományhoz tartozó DNS-bejegyzések `'*.draft'`éhez, hogy mindegyik létrehozott altartomány át legyen irányítva a Kubernetes-fürt bejövő adatvezérlőjéhez. 
 
 Saját tartományszolgáltatójának saját módszere van a DNS-kiszolgálók hozzárendelésére; [a tartomány névkiszolgálóinak delegálására az Azure DNS-be](../../dns/dns-delegate-domain-azure-dns.md) tegye a következőket:
 
@@ -245,8 +243,8 @@ Saját tartományszolgáltatójának saját módszere van a DNS-kiszolgálók ho
       "type": "Microsoft.Network/dnszones"
     }
     ```
-3. Adja hozzá a tartományszolgáltatónak megadott DNS-kiszolgálókat az üzembe helyezési tartományhoz, ami lehetővé teszi, hogy az Azure DNS szolgáltatással átirányíthassa tartományát, ahogy kívánja. Tartomány eltérő teheti ezt meg; [az Azure DNS a tartomány névkiszolgálóinak delegálására](../../dns/dns-delegate-domain-azure-dns.md) néhány látható, ha tisztában van a részleteket. 
-4. Miután a tartomány delegálva lett az Azure DNS-, hozzon létre az üzembe helyezési tartomány-hozzárendelés, A rekordhalmaz-bejegyzést a `ingress` IP az előző szakaszban szereplő 2. lépés.
+3. Adja hozzá a tartományszolgáltatónak megadott DNS-kiszolgálókat az üzembe helyezési tartományhoz, ami lehetővé teszi, hogy az Azure DNS szolgáltatással átirányíthassa tartományát, ahogy kívánja. Ez a következőképpen változik: tartomány által biztosított; a [tartományi névszerverek delegálása Azure DNS](../../dns/dns-delegate-domain-azure-dns.md) tartalmaz néhány olyan részletet, amelyet tudnia kell. 
+4. Miután a tartományt delegálta Azure DNSre, hozzon létre egy rekord-set bejegyzést az üzembe helyezési tartományhoz az előző szakasz 2. lépésében található `ingress` IP-címhez.
    ```azurecli
    az network dns record-set a add-record --ipv4-address 13.64.108.240 --record-set-name '*.draft' -g squillace.io -z squillace.io
    ```
@@ -267,24 +265,24 @@ Saját tartományszolgáltatójának saját módszere van a DNS-kiszolgálók ho
     "type": "Microsoft.Network/dnszones/A"
    }
    ```
-5. Telepítse újra a **vázlat**
+5. **Piszkozat** újratelepítése
 
-   1. Távolítsa el **draftd** írja be a fürtből `helm delete --purge draft`. 
-   2. Telepítse újra a **draft** azonos használatával `draft-init` parancs, de a `--ingress-enabled` lehetőséget:
+   1. **Távolítsa** el a fürtöt a fürtből a `helm delete --purge draft`beírásával. 
+   2. Telepítse újra a **piszkozatot** ugyanazzal a `draft-init` paranccsal, de a `--ingress-enabled` kapcsolóval:
       ```bash
       draft init --ingress-enabled
       ```
-      Fentiekkel először, kövesse a megjelenő utasításokat. Lehetősége van azonban egy további kérdésre válaszolni, a teljes tartománynevet a az Azure DNS-ben konfigurált elérési úton.
+      Válaszoljon a kérésekre, ahogy a fenti első alkalommal. Azonban még egy kérdést kell válaszolnia, ha a teljes tartomány elérési útját használja, amelyet a Azure DNS konfigurált.
 
-6. Adja meg a legfelső szintű tartományt (például draft.example.com) bejövő forgalom: draft.squillace.io
-7. Meghívásakor `draft up` ezúttal fogja látni az alkalmazás (vagy `curl` ,) az űrlap URL-címen `<appname>.draft.<domain>.<top-level-domain>`. Ebben a példában esetén `http://handy-labradoodle.draft.squillace.io`. 
+6. Adja meg legfelső szintű tartományát a bejövő forgalomhoz (például draft.example.com): draft.squillace.io
+7. Amikor meghívja `draft up` ezt az időt, megtekintheti az alkalmazást (vagy `curl`) az űrlap `<appname>.draft.<domain>.<top-level-domain>`URL-címén. Ebben a példában a `http://handy-labradoodle.draft.squillace.io`. 
    ```bash
    curl -s http://handy-labradoodle.draft.squillace.io
    Hello World, I'm Java!
    ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már van ACS Kubernetes-fürtje, megvizsgálhatja az [Azure Container Registry](../../container-registry/container-registry-intro.md) használatát ebben a forgatókönyvben további, különböző üzemelő példányok létrehozásához. Például létrehozhat egy draft._basedomain.toplevel_ tartományi DNS-rekordkészletet, amely mélyebb altartományból szabályozza a dolgokat adott ACS-környezetekhez.
 

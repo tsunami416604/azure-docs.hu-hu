@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service-oktatóanyag – alkalmazás előkészítése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás előkészítése
 description: Azure Container Service-oktatóanyag – Az alkalmazás előkészítése
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 961f09d7581a26596b03e7a2f8e97d98fe83e6aa
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b67e3008bc2ad681e222af6b9edc4a08875732e4
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61217091"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275426"
 ---
-# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>(ELAVULT) Az Azure Container Service használható tárolórendszerképek létrehozása
+# <a name="deprecated-create-container-images-to-be-used-with-azure-container-service"></a>ELAVULT Azure Container Servicehez használandó tároló-lemezképek létrehozása
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Az alkalmazás előkészítése az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-prepare-app.md).
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazás előkészítése az Azure Kubernetes Service (ak) szolgáltatáshoz](../../aks/tutorial-kubernetes-prepare-app.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -125,7 +123,7 @@ docker-compose down
 
 A művelet befejezésekor az Azure Vote alkalmazást tartalmazó tárolórendszerképet kap.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy alkalmazást teszteltünk, és tárolórendszerképeket hoztunk létre az alkalmazáshoz. A következő lépéseket hajtotta végre:
 

@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Bevezetés az Azure Container Service for kubernetes használatába
+title: ELAVULT A Kubernetes Azure Container Service bemutatása
 description: Az Azure Container Service for Kubernetes használatával egyszerűen helyezhetőek üzembe és felügyelhetőek a tárolóalapú alkalmazások az Azure-ban.
-services: container-service
 author: gabrtv
-manager: jeconnoc
 ms.service: container-service
 ms.topic: overview
 ms.date: 07/21/2017
 ms.author: gamonroy
 ms.custom: mvc
-ms.openlocfilehash: e00ac57cc36b3331cfb847ecedc6c75132cdeb6b
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c0ef7255a087dd5dc26532316deab337f9eff715
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60712569"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271575"
 ---
-# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>(ELAVULT) Bevezetés az Azure Container Service for kubernetes használatába
+# <a name="deprecated-introduction-to-azure-container-service-for-kubernetes"></a>ELAVULT A Kubernetes Azure Container Service bemutatása
 
 > [!TIP]
-> Ez a cikk, amely a frissített verziót használja Azure Kubernetes Service-ben, lásd: [Azure Kubernetes Service (AKS)-áttekintés](../../aks/intro-kubernetes.md).
+> Az Azure Kubernetes Service-t használó cikk frissített verziója: [Azure Kubernetes Service (ak) – áttekintés](../../aks/intro-kubernetes.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -62,6 +60,6 @@ Eszközök az alkalmazások fejlesztéséhez és üzembe helyezéséhez a Kubern
 >
 >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [Kubernetes rövid útmutatóját](container-service-kubernetes-walkthrough.md), hogy már ma el tudja kezdeni az Azure Container Service használatát.

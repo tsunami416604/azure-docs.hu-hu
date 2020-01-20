@@ -11,12 +11,12 @@ ms.workload: big-data
 ms.topic: conceptual
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ab8baa810c36c794bbefd264c5588f8b28cbd62a
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: a46627851eb8bbefaf9290691cd6e3fbda2110f3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046192"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278653"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -68,7 +68,7 @@ Az adatmegőrzés és a váltás a Azure Portal környezet konfigurációs lapj�
 
 1. Az **adatmegőrzési idő (nap)** mezőben adjon meg egy 1 és 400 közötti értéket.
 
-   [![a megőrzés konfigurálása](media/data-retention/1-configure-data-retention.png)](media/data-retention/1-configure-data-retention.png#lightbox)
+   [![a megőrzés konfigurálása](media/data-retention/configure-data-retention.png)](media/data-retention/configure-data-retention.png#lightbox)
 
 > [!TIP]
 > Ha többet szeretne megtudni a megfelelő adatmegőrzési szabályzat megvalósításáról, olvassa el a [megőrzés konfigurálását](./time-series-insights-how-to-configure-retention.md)ismertető témakört.

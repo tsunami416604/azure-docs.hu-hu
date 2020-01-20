@@ -1,108 +1,106 @@
 ---
-title: (ELAVULT) Azure-beli Kubernetes-fürt – az Operations Management figyelése
-description: Figyelés a Log Analytics szolgáltatást az Azure Container Service Kubernetes-fürtön
-services: container-service
+title: ELAVULT Azure Kubernetes-fürt – Operations Management figyelése
+description: Kubernetes-fürt figyelése Azure Container Service a Log Analytics használatával
 author: bburns
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/09/2016
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: d7370fc14a5ede23744e04ac9d35140f2368e21f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3cb500d2f00d6657420d7f294a7318b339e1f81e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60711786"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271072"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>(ELAVULT) A figyelő az Azure Container Service-fürt, a Log Analytics használatával
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-log-analytics"></a>ELAVULT Azure Container Service-fürt figyelése Log Analytics
 
 > [!TIP]
-> Ez a cikk, amely a frissített verziót használja Azure Kubernetes Service-ben, lásd: [-tárolókhoz az Azure Monitor](../../azure-monitor/insights/container-insights-overview.md).
+> Az Azure Kubernetes Service-t használó cikk frissített verziója: [Azure monitor for containers](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
-Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).
+Ez a bemutató azt feltételezi, hogy [Azure Container Service használatával hozott létre egy Kubernetes-fürtöt](container-service-kubernetes-walkthrough.md).
 
-Azt is feltételezi, hogy a `az` az Azure cli és `kubectl` telepített eszközök.
+Azt is feltételezi, hogy telepítve van a `az` Azure CLI és `kubectl` eszközök.
 
-Ha rendelkezik tesztelheti a `az` futtatásával telepített eszköz:
+A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
 ```console
 $ az --version
 ```
 
-Ha nem rendelkezik a `az` eszközt telepítette, az e-mail utasításokat is [Itt](https://github.com/azure/azure-cli#installation).
-Másik lehetőségként használhatja [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview), amelynek a `az` az Azure cli és `kubectl` eszközök már telepítve van az Ön számára.
+Ha nincs telepítve a `az` eszköz, [itt](https://github.com/azure/azure-cli#installation)talál útmutatást.
+Azt is megteheti, hogy a [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview)is használhatja, amely rendelkezik a `az` Azure CLI-vel és az `kubectl`-eszközökkel.
 
-Ha rendelkezik tesztelheti a `kubectl` futtatásával telepített eszköz:
+A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```console
 $ kubectl version
 ```
 
-Ha nem rendelkezik `kubectl` telepítve, futtatható:
+Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
 ```console
 $ az acs kubernetes install-cli
 ```
 
-Ha van telepítve a kubectl eszköz futtatása a kubernetes-kulcsok teszteléséhez:
+Ha a kubectl-eszközön telepített kubernetes-kulcsokkal szeretne tesztelni, futtassa a következőt:
 ```console
 $ kubectl get nodes
 ```
 
-Ha a fenti parancs hibát ki, telepítenie kell kubernetes-fürt kulcsok a kubectl eszközbe. Megteheti, hogy a következő parancsot:
+Ha a fenti parancs hibába ütközik, telepítenie kell a kubernetes-fürt kulcsait a kubectl eszközre. Ezt a következő paranccsal teheti meg:
 ```console
 RESOURCE_GROUP=my-resource-group
 CLUSTER_NAME=my-acs-name
 az acs kubernetes get-credentials --resource-group=$RESOURCE_GROUP --name=$CLUSTER_NAME
 ```
 
-## <a name="monitoring-containers-with-log-analytics"></a>A tárolók Log Analytics szolgáltatással
+## <a name="monitoring-containers-with-log-analytics"></a>Tárolók figyelése Log Analytics
 
-A log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a kezelése és védelme a helyszíni és felhőalapú infrastruktúrára. Tároló megoldás egy olyan megoldás a Log Analyticsben, így a segítségével egyetlen helyen, a tároló készlet, a teljesítmény és a naplók megtekintéséhez. Naplózási, tárolók hibaelhárítása központi helyen a naplóinak megtekintésével és zajos felhasználása felesleges tároló-gazdagépen található.
+A Log Analytics a Microsoft felhőalapú informatikai felügyeleti megoldása, amely segít a helyszíni és a Felhőbeli infrastruktúra kezelésében és biztonságában. A Container Solution Log Analytics megoldás, amely segít megtekinteni a tárolók leltározását, teljesítményét és naplóit egyetlen helyen. Naplózhatja a tárolók hibakeresését, ha megtekinti a naplókat a központi helyen, és a gazdagépen megkeresi a felesleges tárolót.
 
 ![](media/container-service-monitoring-oms/image1.png)
 
-Tároló megoldásról további információkért tekintse meg a [tároló megoldás a Log Analytics](../../azure-monitor/insights/containers.md).
+A tároló megoldással kapcsolatos további információkért tekintse meg a [Container solution log Analytics](../../azure-monitor/insights/containers.md).
 
-## <a name="installing-log-analytics-on-kubernetes"></a>A Kubernetes a Log Analytics telepítése
+## <a name="installing-log-analytics-on-kubernetes"></a>Log Analytics telepítése a Kubernetes-on
 
-### <a name="obtain-your-workspace-id-and-key"></a>A munkaterület-Azonosítót és a kulcs beszerzése
-A Log Analytics ügynök kommunikáljon a szolgáltatásnak kell konfigurálni a munkaterület Azonosítójára és a egy munkaterület kulcsa. A munkaterület Azonosítóját és kulcsát szeretne létrehozni egy fiókot a <https://mms.microsoft.com>.
-Kövesse a lépéseket egy fiók létrehozásához. Miután végzett, hozza létre a fiókot is az azonosító és kattintson a kulcs a **Log Analytics** panelen, majd a munkaterület nevét. Ezután a **speciális beállítások**, **csatlakoztatott források**, majd **Linux-kiszolgálók**, a szükséges információkat, láthatja, ahogy az alábbi.
+### <a name="obtain-your-workspace-id-and-key"></a>A munkaterület-azonosító és-kulcs beszerzése
+Ahhoz, hogy a Log Analytics-ügynök kommunikáljon a szolgáltatással, meg kell adni egy munkaterület-azonosítót és egy munkaterület-kulcsot. A munkaterület-azonosító és-kulcs beszerzéséhez létre kell hoznia egy fiókot a következő helyen: <https://mms.microsoft.com>.
+Kövesse a fiók létrehozásához szükséges lépéseket. Ha elkészült a fiók létrehozásával, az azonosítót és a kulcsot a **log Analytics** panelre, majd a munkaterület nevére kattintva kérheti le. Ezután a **Speciális beállítások**, a **csatlakoztatott források**, majd a **Linux-kiszolgálók**területen megtalálja a szükséges információkat az alább látható módon.
 
  ![](media/container-service-monitoring-oms/image5.png)
 
-### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>A DaemonSet használata a Log Analytics-ügynök telepítése
-Kubernetes DaemonSets használják egy tárolót egyetlen példányát futtatni a fürt minden gazdagépen.
-Azok a futó monitorozási ügynökök ideális.
+### <a name="install-the-log-analytics-agent-using-a-daemonset"></a>A Log Analytics-ügynök telepítése Daemonset elemet használatával
+A Kubernetes a DaemonSets használja a tároló egyetlen példányának futtatására a fürt minden gazdagépén.
+Tökéletesek a figyelési ügynökök futtatásához.
 
-Íme a [DaemonSet YAML-fájl](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Mentse a fájlt `oms-daemonset.yaml` , és cserélje le a helyőrző értékei `WSID` és `KEY` a munkaterület Azonosítójára és a fájlban található kulcsot.
+Itt látható a [DAEMONSET elemet YAML-fájlja](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes). Mentse a fájlt egy `oms-daemonset.yaml` nevű fájlba, és cserélje le a `WSID` és a `KEY` helyére az adott munkaterület AZONOSÍTÓját és kulcsát.
 
-Miután hozzáadta a munkaterület Azonosítóját és kulcsát a DaemonSet konfigurációhoz, telepítheti a Log Analytics-ügynököket a fürt a `kubectl` parancssori eszköz:
+Miután hozzáadta a munkaterület AZONOSÍTÓját és kulcsát a Daemonset elemet-konfigurációhoz, telepítheti a Log Analytics ügynököt a fürtön a `kubectl` parancssori eszköz használatával:
 
 ```console
 $ kubectl create -f oms-daemonset.yaml
 ```
 
-### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>A Kubernetes titkos kulcs használata a Log Analytics-ügynök telepítése
-A Log Analytics-munkaterület Azonosítójára és kulcsára védelméhez használhatja Kubernetes titkos DaemonSet YAML-fájl részeként.
+### <a name="installing-the-log-analytics-agent-using-a-kubernetes-secret"></a>A Log Analytics-ügynök telepítése Kubernetes-titok használatával
+A Log Analytics-munkaterület AZONOSÍTÓjának és kulcsának védetté tétele érdekében a Kubernetes titkos kulcsot használhatja a Daemonset elemet YAML fájljának részeként.
 
-- Másolja a szkriptet, titkos sablonfájl és a DaemonSet YAML-fájlt (a [tárház](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), és ellenőrizze, hogy ugyanabban a könyvtárban legyenek.
-  - Titkos kulcs generálása szkriptet - titkos kód – gen.sh
-  - titkos kód sablon - secret-template.yaml
-    - DaemonSet YAML-fájlt - omsagent-ds-secrets.yaml
-- Futtassa a szkriptet. A parancsprogram kéri a Log Analytics-munkaterület Azonosítójára és az elsődleges kulcsot. Helyezze be, amely, és a parancsfájl létrehoz egy titkos yaml-fájlt, így is futtatható legyen.
+- Másolja a parancsfájlt, a titkos sablonfájl és a Daemonset elemet YAML-fájlját (a [tárházból](https://github.com/Microsoft/OMS-docker/tree/master/Kubernetes)), és győződjön meg arról, hogy ugyanazon a címtáron vannak.
+  - titkos kód generálása – secret-gen.sh
+  - titkos sablon – Secret-template. YAML
+    - Daemonset elemet YAML fájl-omsagent-DS-Secrets. YAML
+- Futtassa a szkriptet. A parancsfájl kérni fogja a Log Analytics munkaterület AZONOSÍTÓját és elsődleges kulcsát. Szúrja be, és a szkript létrehoz egy titkos YAML-fájlt, amellyel futtathatja.
   ```
   #> sudo bash ./secret-gen.sh
   ```
 
-  - Hozza létre a titkos kulcsok pod a következő futtatásával: ```kubectl create -f omsagentsecret.yaml```
+  - Hozza létre a Secrets Pod-t a következő futtatásával: ```kubectl create -f omsagentsecret.yaml```
 
-  - Ellenőrizze, hogy futtassa a következőt:
+  - A következő futtatásával ellenőrizhető:
 
   ```
   root@ubuntu16-13db:~# kubectl get secrets
@@ -123,7 +121,7 @@ A Log Analytics-munkaterület Azonosítójára és kulcsára védelméhez haszn�
   KEY:    88 bytes
   ```
 
-  - A omsagent futtatásával démon-készlet létrehozása ```kubectl create -f omsagent-ds-secrets.yaml```
+  - Hozza létre a omsagent démont a ```kubectl create -f omsagent-ds-secrets.yaml``` futtatásával
 
 ### <a name="conclusion"></a>Összegzés
-Ennyi az egész! Néhány perc elteltével megtekintheti a Log Analytics-irányítópult adatforgalmát kell lennie.
+Ennyi az egész! Néhány perc elteltével láthatja, hogy a Log Analytics-irányítópultra áramló adatfolyamok láthatók.

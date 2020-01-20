@@ -1,38 +1,30 @@
 ---
-title: Az Azure automatikus méretezés használata a Linux rendszerű méretezési csoport sablonjában Vendég mérőszámok |} A Microsoft Docs
-description: Ismerje meg, az automatikus skálázáshoz Vendég mérőszámok segítségével a Linux Virtual Machine Scale Set-sablonokban
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Az Azure autoscale használata vendég metrikákkal egy Linux-méretezési csoport sablonjában
+description: Megtudhatja, hogyan méretezhető a vendég mérőszámok használata egy linuxos virtuálisgép-méretezési csoport sablonjában
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: na
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/26/2019
 ms.author: manayar
-ms.openlocfilehash: 8cd665ffd82547c4f554eb4a515a8da7dc5b3f5f
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 88f839b281e4d345b012a7e6acff3770dc536045
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64868992"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271952"
 ---
-# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Az automatikus méretezés egy Linux rendszerű méretezési csoport sablonjában Vendég mérőszámok segítségével
+# <a name="autoscale-using-guest-metrics-in-a-linux-scale-set-template"></a>Autoskálázás a vendég metrikák használatával egy Linux-méretezési csoport sablonjában
 
-Metrikák az Azure-ban, amely gyűjti az adatokat a virtuális gépek és a méretezési csoportok széles körű két típusa van: A gazda mérőszámok és Vendég mérőszámok. Magas szinten Ha szeretné használni a szabványos Processzor, lemez és a hálózati metrikák, gazdagép metrikái akkor jó megoldás. Ha azonban egy nagyobb kijelölt mérőszámok van szüksége, majd Vendég mérőszámok meg kell vizsgálni.
+Az Azure-ban két, a virtuális gépek és a méretezési csoportok által gyűjtött mérőszámok találhatók: a gazdagép metrikái és a vendég metrikái. Ha a normál processzor-, lemez-és hálózati metrikákat szeretné használni, akkor a gazdagép metrikái jól illeszkednek. Ha azonban nagyobb számú mérőszámra van szüksége, akkor a vendég metrikákat kell keresnie.
 
-Gazdagép metrikái nem igényelnek további telepítési, mert a gazdagép virtuális gép által gyűjtött, mivel a Vendég mérőszámok megkövetelése, hogy telepítse a [Windows Azure Diagnostics bővítmény](../virtual-machines/windows/extensions-diagnostics-template.md) vagy a [Linux Azure diagnosztikai bővítmény ](../virtual-machines/linux/diagnostic-extension.md) a Vendég virtuális Gépen. Vendég mérőszámok használata helyett a gazda mérőszámok egyik gyakori oka az, hogy a Vendég mérőszámok biztosítja, mint a gazda mérőszámok mérőszámok nagyobb kijelölés. Ilyen például a memória-felhasználási mérőszámok, amely csak vendég mérőszámok keresztül érhető el. A támogatott gazdagépmetrikák felsorolt [Itt](../azure-monitor/platform/metrics-supported.md), és a gyakran használt Vendég mérőszámok felsorolt [Itt](../azure-monitor/platform/autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan lehet módosítani a [alapszintű működőképes méretezési csoport sablon](virtual-machine-scale-sets-mvss-start.md) használata Linux rendszerű méretezési csoportokhoz tartozó Vendég mérőszámok alapján automatikus skálázási szabályokat.
+A gazdagép metrikái nem igényelnek további telepítést, mivel azokat a gazda virtuális gép gyűjti, míg a vendég metrikák megkövetelik a [Windows Azure Diagnostics bővítmény](../virtual-machines/windows/extensions-diagnostics-template.md) vagy a [Linux Azure Diagnostics bővítmény](../virtual-machines/linux/diagnostic-extension.md) telepítését a vendég virtuális gépen. Az egyik gyakori oka, hogy a vendég metrikák használata a gazdagép metrikái helyett az, hogy a vendég mérőszámok nagyobb választékot biztosítanak a metrikák számára, mint a gazdagép metrikái. Az egyik ilyen példa a memória-felhasználás mérőszámai, amelyek csak a vendég metrikák használatával érhetők el. A támogatott gazdagép-metrikák [itt](../azure-monitor/platform/metrics-supported.md)vannak felsorolva, és gyakran használt vendég metrikák szerepelnek [itt](../azure-monitor/platform/autoscale-common-metrics.md). Ez a cikk bemutatja, hogyan módosíthatja az [alapszintű, életképes méretezési csoport sablonját](virtual-machine-scale-sets-mvss-start.md) az autoskálázási szabályok használatára a Linux-méretezési csoportok vendég metrikái alapján.
 
-## <a name="change-the-template-definition"></a>A Sablondefiníció módosítása
+## <a name="change-the-template-definition"></a>A sablon definíciójának módosítása
 
-Az egy [előző cikk](virtual-machine-scale-sets-mvss-start.md) korábban létrehoztunk egy alapszintű méretezési csoport sablonjában. Mi most a régebbi sablonban használja, és módosítsa úgy, hogy hozzon létre egy sablont, amely központilag telepíti a Vendég mérőszám alapján az automatikus méretezés Linux méretezési.
+Egy [korábbi cikkben](virtual-machine-scale-sets-mvss-start.md) egy alapszintű méretezési csoport sablont hoztunk létre. Most ezt a korábbi sablont fogjuk használni, és úgy módosítjuk, hogy olyan sablont hozzon létre, amely a vendég metrika-alapú autoscale használatával üzembe helyez egy Linux-méretezési készletet.
 
-Először adja hozzá a paraméterek `storageAccountName` és `storageAccountSasToken`. Diagnostics-ügynök tárolja a metrikaadatok egy [tábla](../cosmos-db/table-storage-how-to-use-dotnet.md) a tárfiók. A Linux diagnosztikai ügynök 3.0-s verziójával kezdődően a tárelérési kulcs használata már nem támogatott. Használjon inkább egy [SAS-Token](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
+Először adja hozzá a `storageAccountName` és `storageAccountSasToken`paramétereit. A diagnosztikai ügynök metrikus adatokat tárol ebben a Storage-fiókban található [táblában](../cosmos-db/table-storage-how-to-use-dotnet.md) . A Linux diagnosztikai ügynök 3,0-es verziójától kezdve a Storage-hozzáférési kulcs használata már nem támogatott. Ehelyett használjon sas- [tokent](../storage/common/storage-dotnet-shared-access-signature-part-1.md).
 
 ```diff
      },
@@ -48,7 +40,7 @@ Először adja hozzá a paraméterek `storageAccountName` és `storageAccountSas
    },
 ```
 
-Ezután módosítsa a méretezési `extensionProfile` a diagnosztikai bővítményt tartalmazza. Ebben a konfigurációban adja meg az erőforrás-Azonosítóját a méretezési csoport gyűjtése mérőszámainak, valamint a tárfiókot és SAS-jogkivonat használatával a mérőszámokat tárol. Adja meg, milyen gyakran a mérőszámok összesítése (ebben az esetben az percenként), és mely metrikákat (az az eset, a készültségi használt memória) nyomon követésére. További információkat ebben a konfigurációban, és a használt memória százalékos eltérő metrikák, lásd: [ebben a dokumentációban](../virtual-machines/linux/diagnostic-extension.md).
+Ezután módosítsa a méretezési csoport `extensionProfile`, hogy tartalmazza a diagnosztikai bővítményt. Ebben a konfigurációban adja meg annak a méretezési csoportnak az erőforrás-AZONOSÍTÓját, amely a metrikák gyűjtését, valamint a metrikák tárolásához használható Storage-fiókot és SAS-jogkivonatot használja. Itt adhatja meg, hogy a metrikák milyen gyakran legyenek összesítve (ebben az esetben percenként), és mely mérőszámokat kell követni (ebben az esetben a felhasznált memória százalékaránya). További információ erről a konfigurációról és a felhasznált memória százalékos arányáról: [ebben a dokumentációban](../virtual-machines/linux/diagnostic-extension.md).
 
 ```diff
                  }
@@ -111,7 +103,7 @@ Ezután módosítsa a méretezési `extensionProfile` a diagnosztikai bővítmé
        }
 ```
 
-Végül adja hozzá egy `autoscaleSettings` erőforrás automatikus konfigurálása a metrikák alapján. Az erőforrás rendelkezik egy `dependsOn` záradékban hivatkozott a méretezési csoport, győződjön meg arról, hogy a méretezési létezik, mielőtt megpróbálná automatikus beállítása. Ha úgy dönt, az automatikus skálázást egy másik metrikát, akkor kell használnia a `counterSpecifier` , mint a diagnosztikai bővítmény konfigurációjának a `metricName` a az automatikus skálázási konfigurációját. Az automatikus skálázási konfigurációjának további információkért lásd: a [automatikus méretezés ajánlott eljárásairól](../azure-monitor/platform/autoscale-best-practices.md) és a [Azure Monitor REST API forrásdokumentáció](/rest/api/monitor/autoscalesettings).
+Végül vegyen fel egy `autoscaleSettings`-erőforrást az ezen mérőszámok alapján történő autoskálázás konfigurálásához. Az erőforráshoz tartozik egy `dependsOn` záradék, amely a méretezési csoportra hivatkozik, hogy a méretezési csoport létezik, mielőtt megkísérli az autoskálázást. Ha az automatikus skálázáshoz egy másik metrikát választ, a `counterSpecifier` a diagnosztikai bővítmény konfigurációjában, az automatikus skálázási konfigurációban használt `metricName`. Az automatikus skálázási konfigurációval kapcsolatos további információkért tekintse meg az automatikus [skálázás ajánlott eljárásait](../azure-monitor/platform/autoscale-best-practices.md) és a [Azure monitor REST API](/rest/api/monitor/autoscalesettings)dokumentációját.
 
 ```diff
 +    },
@@ -187,6 +179,6 @@ Végül adja hozzá egy `autoscaleSettings` erőforrás automatikus konfigurál�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [mvss-next-steps-include](../../includes/mvss-next-steps.md)]

@@ -4,15 +4,15 @@ description: Ismerkedjen meg Azure Analysis Servicesával, amely egy teljes kör
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: overview
-ms.date: 10/30/2019
+ms.date: 01/17/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: ee107ffdc677a0feffbdaf1441d77a8ed05f2c94
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: f72da87ae53039e825f2102bebb12e59821706f8
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749684"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274788"
 ---
 # <a name="what-is-azure-analysis-services"></a>Az Azure Analysis Services ismertetése
 
@@ -34,7 +34,7 @@ Az Azure Analysis Services számos Azure-szolgáltatással integrálható, így 
 
 ## <a name="the-right-tier-when-you-need-it"></a>A megfelelő szint – igény szerint
 
-Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten is elérhető. Az egyes szinteken belül a csomagköltségek a feldolgozási teljesítmény, a QPU-k és a memória mérete alapján változnak. Amikor létrehoz egy kiszolgálót, egy adott szinten belül választ ki egy csomagot. A csomagokat a szinten belül magasabb vagy alacsonyabb szintre módosíthatja, vagy frissíthet magasabb szintre, de magasabb szintről nem léphet vissza egy alacsonyabbra.
+Az Azure Analysis Services **fejlesztői**, **alap-** és **standard** szinten is elérhető. Az egyes csomagokon belül a költségek a feldolgozási teljesítmény, a lekérdezés-feldolgozási egységek (Qpu) és a memória méretétől függően változnak. Amikor létrehoz egy kiszolgálót, egy adott szinten belül választ ki egy csomagot. A csomagokat a szinten belül magasabb vagy alacsonyabb szintre módosíthatja, vagy frissíthet magasabb szintre, de magasabb szintről nem léphet vissza egy alacsonyabbra.
 
 ### <a name="developer-tier"></a>Fejlesztői csomag
 
@@ -47,7 +47,7 @@ Ezt a szintet kiértékeléshez, valamint fejlesztési és tesztelési forgatók
 
 ### <a name="basic-tier"></a>Alapszintű csomag
 
-Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. Kibővített lekérdezésreplika ehhez a szinthez *nem érhető el*. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
+Ezt a szintet olyan éles környezetben való használatra ajánlunk, amelyben kis méretű táblázatos modellek, korlátozott mennyiségű párhuzamos felhasználó és egyszerűbb adatfrissítési követelmények szerepelnek. A lekérdezési replika méretezése *nem érhető el* ehhez a réteghez. A perspektívák, a több partíció használata és a DirectQuery táblázatosmodell-funkciók *nem támogatottak* ezen a szinten.  
 
 |Felkészülés  |QPU-k  |Memória (GB)  |
 |---------|---------|---------|
@@ -232,7 +232,7 @@ Az Azure Analysis Services támogatja a [dinamikus felügyeleti nézetek (DMV-k)
 
 Itt található az Azure Analysis Services dokumentációja. A cikkeket a böngésző képernyőjének bal oldalán látható tartalomjegyzékben keresheti meg. 
 
-Mivel Azure Analysis Services táblázatos modellek sokkal ugyanazok, mint a SQL Server Analysis Services táblázatos modelljei, a [SQL Server Analysis Services dokumentációjában](https://docs.microsoft.com/analysis-services/analysis-services-overview)a közös elméleti, eljárási, fejlesztői és hivatkozási cikkek széles skálája található. Az SQL Server Analysis Services dokumentációjában szereplő cikkek esetében a cím alatt megjelenő APPLIES TO szalagcím mutatja, hogy az adott anyag az Azure Analysis Servicesre is érvényes-e.
+Mivel Azure Analysis Services táblázatos modellek sokkal ugyanazok, mint a SQL Server Analysis Services táblázatos modelljei, a közös adatmodellezési oktatóanyagok, a koncepcionális, az eljárás, a fejlesztő és a dokumentációs cikkek széles skálája található a [SQL Server Analysis Services dokumentációjában](https://docs.microsoft.com/analysis-services/analysis-services-overview). Az SQL Server Analysis Services dokumentációjában szereplő cikkek esetében a cím alatt megjelenő APPLIES TO szalagcím mutatja, hogy az adott anyag az Azure Analysis Servicesre is érvényes-e.
 
 ![Közös dokumentáció](./media/analysis-services-overview/aas-overview-applies-to.png)
 

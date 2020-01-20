@@ -1,17 +1,17 @@
 ---
 title: Az Azure Spring Cloud metrikáinak ismertetése
 description: Ismerje meg, hogyan tekintheti át a metrikákat az Azure Spring Cloud-ban
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: conceptual
 ms.date: 12/06/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 682cc8383db5704b28b9f4d6b8c22c4bbfc3f1ab
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.author: brendm
+ms.openlocfilehash: e6517f1a7374b3960c3b749e63a90fe9eb21e7b0
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528198"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277944"
 ---
 # <a name="understand-metrics-for-azure-spring-cloud"></a>Az Azure Spring Cloud metrikáinak ismertetése
 
@@ -84,7 +84,7 @@ Használhatja a **felosztás alkalmazása** lehetőséget is, amely egy alkalmaz
 
 A következő táblázat az elérhető metrikákat és részleteket tartalmazza.
 >[!div class="mx-tdBreakAll"]
->| Név | Megjelenítendő név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
+>| Name (Név) | Megjelenítendő név | Rugós indítószerkezet metrikájának neve | Unit (Egység) | Részletek |
 >|----|----|----|----|------------|
 >| SystemCpuUsagePercentage | CPU-használat százalékos aránya | System. CPU. használat | Százalék | A legújabb CPU-használat a teljes rendszer számára. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy az összes CPU tétlen volt a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta az idő 100%-át az elmúlt időszak során. Az 0,0 és 1,0 közötti összes érték a rendszeren folytatott tevékenységtől függően lehetséges. Ha a rendszer legutóbbi CPU-használata nem érhető el, a metódus negatív értéket ad vissza. |
 >| AppCpuUsagePercentage | Alkalmazás CPU-kihasználtságának százalékos aránya | Alkalmazás CPU-kihasználtságának százalékos aránya | Százalék | A Java virtuális gép folyamat legutóbbi CPU-használata. Ez az érték a [0.0, 1.0] intervallumban megjelenő Double. A 0,0 érték azt jelenti, hogy egyik processzor sem futtatott szálakat a JVM folyamat során a legutóbbi megfigyelt időszakban, míg a 1,0 érték azt jelenti, hogy minden CPU aktívan futtatta a szálakat a JVM 100%-ában az elmúlt időszak során. A JVM található szálak közé tartoznak az alkalmazási szálak, valamint a JVM belső szálak. Az 0,0 és 1,0 közötti összes érték lehetséges a JVM folyamaton és a teljes rendszeren folytatott tevékenységektől függően. Ha a Java virtuális gép legutóbbi CPU-használat nem érhető el, a metódus negatív értéket ad vissza. |

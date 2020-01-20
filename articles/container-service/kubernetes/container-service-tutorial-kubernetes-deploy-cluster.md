@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service-oktatóanyag – fürtök üzembe helyezése
+title: ELAVULT Azure Container Service oktatóanyag – fürt üzembe helyezése
 description: Azure Container Service-oktatóanyag – Fürt üzembe helyezése
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 58fef0357a903f2ab1d238bbab7b2d9dca673eb4
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5cb21bff2834751843061910184499f37bde834e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60576169"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275439"
 ---
-# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>(ELAVULT) Az Azure Container Service Kubernetes-fürt üzembe helyezése
+# <a name="deprecated-deploy-a-kubernetes-cluster-in-azure-container-service"></a>ELAVULT Kubernetes-fürt üzembe helyezése Azure Container Service
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Az Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
+> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziója: [oktatóanyag: Azure Kubernetes Service (ak) fürt üzembe helyezése](../../aks/tutorial-kubernetes-deploy-cluster.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -90,7 +88,7 @@ k8s-master-98dc3136-0   Ready,SchedulingDisabled   5m        v1.6.2
 
 Az oktatóanyag befejezésével rendelkezésére áll majd egy számítási feladatok végrehajtására kész ACS Kubernetes-fürt. Az ezt követő oktatóanyagokban egy többtárolós alkalmazást helyezünk üzembe a fürtön, majd elvégezzük annak horizontális skálázását, frissítését és monitorozását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban egy Azure Container Service-beli Kubernetes fürtöt helyezett üzembe. A következő lépéseket hajtotta végre:
 

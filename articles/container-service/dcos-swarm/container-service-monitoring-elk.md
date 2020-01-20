@@ -1,68 +1,66 @@
 ---
-title: (ELAVULT) Azure DC/OS-fürt - ELK stack figyelése
-description: Az elk-t (Elasticsearch, Logstash és Kibana) az Azure Container Service-fürtöt egy DC/OS-fürt monitorozására.
-services: container-service
+title: ELAVULT Azure DC/OS-fürt – ELK stack figyelése
+description: Egy DC/OS-fürt figyelése Azure Container Service-fürtön a ELK-vel (Elasticsearch, Logstash és Kibana).
 author: sauryadas
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/27/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 342cf23db2df7d7c79a2b56df96d1a78d6ba215e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d34ebe22344be8acc6ec3cc974071639293e2b3
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61467714"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277761"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>(ELAVULT) A figyelő az Azure Container Service-fürt az elk-val
+# <a name="deprecated-monitor-an-azure-container-service-cluster-with-elk"></a>ELAVULT Azure Container Service-fürt figyelése a ELK-vel
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Ebben a cikkben bemutatjuk, hogyan lehet az elk-t (Elasticsearch, Logstash, a Kibana) stack az Azure Container Service DC/OS fürt üzembe helyezése. 
+Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe a ELK-t (Elasticsearch, Logstash, Kibana) a DC/OS-fürtön a Azure Container Service. 
 
 ## <a name="prerequisites"></a>Előfeltételek
-[Üzembe helyezése](container-service-deployment.md) és [csatlakozás](../container-service-connect.md) egy Azure Container Service által konfigurált DC/OS-fürt. Ismerje meg, a DC/OS-irányítópult és a Marathon-szolgáltatás [Itt](container-service-mesos-marathon-ui.md). Is telepítheti a [Marathon Load Balancer](container-service-load-balancing.md).
+Azure Container Service által konfigurált DC/OS-fürt [üzembe helyezése](container-service-deployment.md) és [összekötése](../container-service-connect.md) . [Itt](container-service-mesos-marathon-ui.md)MEGISMERHETI a DC/os irányítópultot és a Marathon-szolgáltatásokat. Telepítse a [Marathon Load Balancer](container-service-load-balancing.md)is.
 
 
-## <a name="elk-elasticsearch-logstash-kibana"></a>Elk-t (Elasticsearch, Logstash, Kibana)
-Az ELK stack az Elasticsearch, Logstash és Kibana, amelyek segítségével figyelheti és elemezheti a naplókat a fürtben található egy teljes körű stack biztosító kombinációja.
+## <a name="elk-elasticsearch-logstash-kibana"></a>ELK (Elasticsearch, Logstash, Kibana)
+A ELK stack a Elasticsearch, a Logstash és a Kibana kombinációja, amely egy végpontok közötti veremet biztosít, amely a fürt naplófájljainak figyelésére és elemzésére használható.
 
-## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>Az ELK stack konfigurálása DC/OS-fürtön
-A DC/OS felhasználói felületen keresztüli eléréséhez [ http://localhost:80/ ](http://localhost:80/) egyszer a DC/OS felhasználói felületen navigáljon **Universe**. Keresése és telepítése az Elasticsearch, Logstash és Kibana, a DC/OS universe rendszerben, és ebben a meghatározott sorrendben. Többet is megtudhat a konfigurációval kapcsolatos Ha a **speciális telepítési** hivatkozásra.
+## <a name="configure-the-elk-stack-on-a-dcos-cluster"></a>A ELK stack konfigurálása DC/OS-fürtön
+A DC/OS felhasználói felületen [http://localhost:80/](http://localhost:80/) egyszer férhet hozzá a DC/os felhasználói felületéhez, és navigáljon a **Universe**-hez. Az Elasticsearch, a Logstash és a Kibana a DC/OS-univerzumból, illetve adott sorrendben is megkeresheti és telepítheti. A konfigurálásról további információt a **Speciális telepítési** hivatkozásra kattintva kaphat.
 
 ![ELK1](./media/container-service-monitoring-elk/elk1.PNG) ![ELK2](./media/container-service-monitoring-elk/elk2.PNG) ![ELK3](./media/container-service-monitoring-elk/elk3.PNG) 
 
-Miután az elk-val tárolók és a rendszer működőképességét, hogy a Marathon-LB keresztül érhetők el a Kibana engedélyeznie kell. Navigáljon a **szolgáltatások** > **kibana**, és kattintson a **szerkesztése** alább látható módon.
+A ELK-tárolók és a működésük után engedélyeznie kell, hogy a Kibana a Marathon-LB használatával legyen elérhető. Navigáljon a **szolgáltatások** > **kibana**elemre, majd kattintson a **Szerkesztés** elemre az alábbi ábrán látható módon.
 
 ![ELK4](./media/container-service-monitoring-elk/elk4.PNG)
 
 
-Váltsa át a **JSON üzemmódot** , és görgessen le a címkék szakaszban.
-Hozzá kell adnia egy `"HAPROXY_GROUP": "external"` bejegyzés itt látható módon az alábbi.
-Miután rákattint **üzembe helyezése változásokat**, a tároló újraindul.
+**Váltson JSON módba** , és görgessen le a címkék szakaszhoz.
+Itt fel kell vennie egy `"HAPROXY_GROUP": "external"` bejegyzést az alább látható módon.
+Miután rákattintott a **módosítások telepítése**gombra, a tároló újraindul.
 
 ![ELK5](./media/container-service-monitoring-elk/elk5.PNG)
 
 
-Győződjön meg arról, hogy a Kibana regisztrálva van szolgáltatásként, a HAPROXY irányítópultján szeretne, ha meg kell nyitnia a portot 9090 az ügynök fürtön HAPROXY futása port 9090.
-Alapértelmezés szerint nem megnyitni portok: 80-as, 8080-as, és a 443-as, a DC/OS-ügynök fürtben.
-Nyisson meg egy portot, és adja meg a nyilvános felmérése utasításokat [Itt](container-service-enable-public-access.md).
+Ha szeretné ellenőrizni, hogy a Kibana regisztrálva van-e a HAPROXY-irányítópulton, akkor az ügynök-fürtön az 9090-es portot kell megnyitnia, mivel a HAPROXY a 9090-es porton fut.
+Alapértelmezés szerint a DC/OS Agent-fürtön a 80, 8080 és 443 portot nyitjuk meg.
+A portok megnyitására és a nyilvános értékelés megadására vonatkozó utasítások [itt](container-service-enable-public-access.md)érhetők el.
 
-A HAPROXY irányítópult eléréséhez, nyissa meg a Marathon-LB rendszergazdai felület található: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
-Keresse meg az URL-címet, miután visszalépve megtekintheti a HAPROXY irányítópult, ahogy az alábbi, és a kibana olyan tétel megjelenik.
+A HAPROXY-irányítópult eléréséhez nyissa meg a Marathon-LB felügyeleti felületet a következő címen: `http://$PUBLIC_NODE_IP_ADDRESS:9090/haproxy?stats`.
+Ha megnyitja az URL-címet, a HAPROXY-irányítópultot az alább látható módon kell látnia, és meg kell jelennie a Kibana.
 
 ![ELK6](./media/container-service-monitoring-elk/elk6.PNG)
 
 
-A Kibana irányítópultját, 5601 portra van telepítve, amelyre szüksége, nyissa meg az 5601. Kövesse az utasításokat [Itt](container-service-enable-public-access.md). Nyissa meg a Kibana irányítópultját a következő: `http://localhost:5601`.
+Az 5601-es porton üzembe helyezett Kibana-irányítópult eléréséhez meg kell nyitnia a 5601-es portot. Kövesse az [alábbi utasításokat.](container-service-enable-public-access.md) Ezután nyissa meg a Kibana-irányítópultot a következő címen: `http://localhost:5601`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Rendszer- és naplók továbbítását és a telepítés: [Naplókezelés a DC/OS az elk-val](https://docs.mesosphere.com/1.8/administration/logging/elk/).
+* A rendszer-és az alkalmazás-naplók továbbítása és beállítása esetén lásd: a [naplózás a DC/os-ben és a Elk-ben](https://docs.mesosphere.com/1.8/administration/logging/elk/).
 
-* Naplók szűrése, lásd: [naplók szűrése az elk-val](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/). 
+* A naplók szűrésével kapcsolatban lásd: [a naplók szűrése a Elk](https://docs.mesosphere.com/1.8/administration/logging/filter-elk/)használatával. 
 
  
 

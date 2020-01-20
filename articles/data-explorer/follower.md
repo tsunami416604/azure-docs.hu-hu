@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: b4e09bf84d78c88d3625b0f6b478746db09cc2d8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030063"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277014"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -127,7 +127,7 @@ poller = kusto_management_client.attached_database_configurations.create_or_upda
 
 ### <a name="attach-a-database-using-an-azure-resource-manager-template"></a>Adatbázis csatolása Azure Resource Manager sablon használatával
 
-Ebből a szakaszból megtudhatja, hogyan hozhat létre követő fürtöt, és hogyan csatolhat hozzá egy adatbázist egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával. Ha már rendelkezik fürttel, távolítsa el a `Microsoft.Kusto/clusters` erőforrást az alábbi erőforrás-listából.
+Ebben a szakaszban megtudhatja, hogyan csatolhat egy adatbázist egy meglévő fürtön egy [Azure Resource Manager sablon](../azure-resource-manager/management/overview.md)használatával. 
 
 ```json
 {
@@ -138,7 +138,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre követő fürtöt, és ho
             "type": "string",
             "defaultValue": "",
             "metadata": {
-                "description": "Name of the follower cluster."
+                "description": "Name of the cluster to which the database will be attached."
             }
         },
         "attachedDatabaseConfigurationsName": {
@@ -180,17 +180,6 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre követő fürtöt, és ho
     "variables": {},
     "resources": [
         {
-            "name": "[parameters('followerClusterName')]",
-            "type": "Microsoft.Kusto/clusters",
-            "sku": {
-                "name": "Standard_D13_v2",
-                "tier": "Standard",
-                "capacity": 2
-            },
-            "apiVersion": "2019-09-07",
-            "location": "[parameters('location')]"
-        },
-        {
             "name": "[concat(parameters('followerClusterName'), '/', parameters('attachedDatabaseConfigurationsName'))]",
             "type": "Microsoft.Kusto/clusters/attachedDatabaseConfigurations",
             "apiVersion": "2019-09-07",
@@ -217,7 +206,7 @@ A Azure Resource Manager sablont [a Azure Portal vagy a](https://portal.azure.co
 
 |**Beállítás**  |**Leírás**  |
 |---------|---------|
-|Követő fürt neve     |  A követő fürt neve. Ha a fürt neve létezik, távolítsa el a `Microsoft.Kusto/clusters` erőforrást az ARM-sablon erőforráslista listájából. Ellenkező esetben a rendszer létrehoz egy új fürtöt.     |
+|Követő fürt neve     |  A követő fürt neve.  |
 |Csatolt adatbázis-konfigurációk neve    |    A csatolt adatbázis-konfigurációk objektum neve. A névnek egyedinek kell lennie a fürt szintjén.     |
 |Adatbázis neve     |      A követendő adatbázis neve. Ha követni szeretné az összes vezető adatbázisát, használja a "*" lehetőséget.   |
 |Leader-fürterőforrás azonosítója    |   A Leader-fürt erőforrás-azonosítója.      |

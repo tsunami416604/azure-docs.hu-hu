@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1b421e7acd7f94654ea80e41340022c8ef7a130e
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264220"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277870"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -24,36 +24,43 @@ ms.locfileid: "76264220"
 
 **Új funkciók**
 
-- Többeszközes beszélgetés: több eszköz összekapcsolása beszéd-vagy szöveges beszélgetésekben, valamint opcionálisan a közöttük küldött üzenetek lefordítása. További információt [ebben a cikkben](multi-device-conversation.md)talál. 
+- Többeszközes beszélgetés: csatlakoztasson több eszközt ugyanahhoz a beszéd-vagy szöveges beszélgetéshez, és igény szerint fordítsa le a közöttük küldött üzeneteket. További információt [ebben a cikkben](multi-device-conversation.md)talál. 
 - A kulcsszó-felismerési támogatás hozzáadva az Android. éves kiadási csomaghoz, valamint az x86-és x64-alapú ízek támogatása. 
-- `SendMessage` és `SetMessageProperty` metódusok hozzáadása az Objective-C `Connection` objektumhoz. [Itt](https://docs.microsoft.com/objectivec/cognitive-services/speech/)találja a dokumentációt.
+- Objective-C: az `Connection` objektumhoz hozzáadott `SendMessage` és `SetMessageProperty` metódusok. [Itt](https://docs.microsoft.com/objectivec/cognitive-services/speech/)találja a dokumentációt.
 - A C++ TTS API mostantól támogatja a `std::wstring`t a szintézis szövegeként, így nem kell konvertálnia a wstring a karakterláncra, mielőtt átadná azt az SDK-nak. Tekintse meg [a részleteket.](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync) 
-- A [nyelvi azonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) és a [forrás nyelvi konfigurációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) mostantól C#elérhető a alkalmazásban.
+- C#: Mostantól elérhető a [nyelvi azonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) és a [forrás nyelvi konfigurációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) .
+- JavaScript: hozzáadta a szolgáltatást `Connection` objektumhoz, hogy átadja a beszédfelismerési szolgáltatás egyéni üzeneteit a visszahívási `receivedServiceMessage`.
+- JavaScript: a `FromHost API` támogatása a helyszíni tárolókkal és a szuverén Felhőkkel való egyszerű használat érdekében. [Itt](speech-container-howto.md)találja a dokumentációt.
+- JavaScript: most megtiszteltetés `NODE_TLS_REJECT_UNAUTHORIZED` a [orgads](https://github.com/orgads)hozzájárulásának köszönhetően. Tekintse meg [a részleteket.](https://github.com/microsoft/cognitive-services-speech-sdk-js/pull/75)
 
 
 **Változtatások megszakítása**
 
 - a `OpenSSL` a 1.1.1-es verzióra frissült, és statikusan kapcsolódik a Linux rendszerhez készült Speech SDK Core-könyvtárhoz. Ez akkor fordulhat elő, ha a beérkezett fájlok mappájában `OpenSSL` nem lett telepítve a rendszer `/usr/lib/ssl` könyvtárába. A probléma megoldásához tekintse meg a Speech SDK [dokumentációját](how-to-configure-openssl-linux.md) .
 - Módosítottuk a C# `WordLevelTimingResult.Offset`hoz visszaadott adattípust `int`ról `long`re, hogy lehetővé tegyék `WordLevelTimingResults` elérését, ha a beszédfelismerési adatok 2 percnél hosszabbak.
+- `PushAudioInputStream` és `PullAudioInputStream` a WAV-fejlécek adatait `AudioStreamFormat`alapján is elküldheti a beszédfelismerési szolgáltatásnak, opcionálisan megadhatja őket a létrehozásuk során. Az ügyfeleknek most a [támogatott hangbemenet formátumot](how-to-use-audio-input-streams.md)kell használniuk. Bármilyen más formátum esetén a rendszer az optimálisnál rosszabb eredményeket kap, vagy más problémákat okozhat. 
 
 
 **Hibajavítások**
 
 - Tekintse meg a `OpenSSL` frissítést a fenti módosítások feltörése alatt. A Linux és a Java esetében is rögzítettünk egy időszakos összeomlást és egy teljesítménnyel kapcsolatos problémát (nagy terhelés melletti zárolást). 
-- A Java-objektumok bezárásának fejlesztése magas egyidejűségi helyzetekben.
+- Java: az objektumok bezárásának tökéletesítése magas egyidejűségi helyzetekben.
 - Átalakítottuk a Nuget-csomagot. Eltávolította a `Microsoft.CognitiveServices.Speech.core.dll` három példányát, és `Microsoft.CognitiveServices.Speech.extension.kws.dll` a lib-mappák alatt, így a Nuget-csomag kisebb és gyorsabb lesz, és felvettük a C++ natív alkalmazások fordításához szükséges fejléceket.
 - [Itt talál](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart/cpp)rögzített rövid útmutatót. Ezek a "mikrofon nem található" kivétel nélkül lettek kizárva a Linux, MacOS és Windows rendszereken.
 - Rögzített SDK-összeomlás a hosszú beszédfelismerés eredményeként bizonyos kódok elérési útjain, például [a](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp/uwp/speechtotext-uwp)mintában.
 - Az Azure webalkalmazás-környezet rögzített SDK-telepítési hibája a [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/396)megoldásához.
 - A [probléma](https://github.com/Azure-Samples/cognitive-services-speech-sdk/issues/433)megoldásához több `<voice>` címke vagy `<audio>` címke használatakor hiba történt. 
 - A rendszer felfüggesztette a TTS 401 hibát, ha az SDK-t felfüggesztették a felfüggesztésből.
+- JavaScript: rögzített hangadatok körkörös importálása a [euirim](https://github.com/euirim)hozzájárulásának köszönhetően. 
+- JavaScript: a szolgáltatás tulajdonságainak beállításához hozzáadott támogatás a 1,7-as verzióban.
+- JavaScript: kijavított egy hibát, amikor egy kapcsolati hiba folyamatos, sikertelenül működő WebSocket-újracsatlakozási kísérleteket eredményezhet.
 
 
 **Minták**
 
 - Kulcsszó-felismerési minta hozzáadva az Androidhoz [itt](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/java/android/sdkdemo).
-- További TTS-példa a kiszolgálói [forgatókönyvhöz](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/samples/csharp). 
-- [Itt](multi-device-conversation.md)többek között a többeszközes C++ beszélgetéseket és C# a .NET-et is hozzáadhatja.
+- A [kiszolgáló forgatókönyvéhez](https://github.com/Azure-Samples/cognitive-services-speech-sdk/blob/master/samples/csharp/sharedcontent/console/speech_synthesis_server_scenario_sample.cs)hozzáadott TTS-minta.
+- Többeszközes beszélgetésekkel kapcsolatos C# C++ rövid [útmutatók.](quickstarts/multi-device-conversation.md)
 
 
 **Egyéb változások**

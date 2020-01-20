@@ -4,32 +4,30 @@ description: Leírja, hogy a Cloud Foundry hogyan használhatja az Azure-szolgá
 services: virtual-machines-linux
 documentationcenter: ''
 author: ningk
-manager: jeconnoc
-editor: ''
 tags: Cloud-Foundry
 ms.assetid: 00c76c49-3738-494b-b70d-344d8efc0853
 ms.service: virtual-machines-linux
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
-ms.openlocfilehash: e341cc5beeb8e8362a848bb1e208ddf1dc773978
-ms.sourcegitcommit: d7689ff43ef1395e61101b718501bab181aca1fa
+ms.openlocfilehash: 04ef72f7ec70b370305395ae8de8180f4594b43b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2019
-ms.locfileid: "71976805"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277344"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
 
 [Cloud Foundry](https://docs.cloudfoundry.org/) egy, a Cloud Providers IaaS platformon futó Pásti-platform. A Felhőbeli szolgáltatók konzisztens alkalmazás-telepítési élményt biztosítanak. Emellett számos Azure-szolgáltatással integrálható, nagyvállalati szintű, méretezhetőséggel és költségmegtakarítással.
-[A Cloud Foundry 6 alrendszere](https://docs.cloudfoundry.org/concepts/architecture/)van, amelyek rugalmasan méretezhetők online állapotba, beleértve a következőket: Útválasztás, hitelesítés, alkalmazások életciklusának kezelése, szolgáltatások kezelése, üzenetkezelés és figyelés. Az egyes alrendszerek esetében Cloud Foundry konfigurálhatja a levelező Azure-szolgáltatás használatát. 
+[A Cloud Foundry 6 alrendszerből](https://docs.cloudfoundry.org/concepts/architecture/)áll, amelyek rugalmasan méretezhetők online állapotba, többek között a következőket: Útválasztás, hitelesítés, alkalmazások életciklusának kezelése, szolgáltatások kezelése, üzenetkezelés és figyelés. Az egyes alrendszerek esetében Cloud Foundry konfigurálhatja a levelező Azure-szolgáltatás használatát. 
 
 ![Cloud Foundry az Azure integrációs architektúráján](media/CFOnAzureEcosystem-colored.png)
 
-## <a name="1-high-availability-and-scalability"></a>1. Magas rendelkezésre állás és méretezhetőség
-### <a name="managed-disk"></a>Managed Disk
+## <a name="1-high-availability-and-scalability"></a>1. magas rendelkezésre állás és méretezhetőség
+### <a name="managed-disk"></a>Felügyelt lemez
 A Bosh Az Azure CPI (Cloud Provider Interface) szolgáltatást használja a rutinok létrehozásához és törléséhez. Alapértelmezés szerint a rendszer nem felügyelt lemezeket használ. Az ügyfélnek manuálisan kell létrehoznia a Storage-fiókokat, majd konfigurálnia kell a fiókokat a CF manifest-fájlokban. Ez azért van, mert a lemezek száma a Storage-fiókban.
 A most [felügyelt lemez](https://azure.microsoft.com/services/managed-disks/) elérhető, és felügyelt biztonságos és megbízható lemezes tárolást biztosít a virtuális gépek számára. Az ügyfélnek már nem kell foglalkoznia a Storage-fiókkal a skálázás és a HA esetében. Az Azure automatikusan rendezi a lemezeket. Akár új, akár meglévő üzemelő példány, az Azure CPI a felügyelt lemez létrehozását vagy áttelepítését fogja kezelni a CF üzembe helyezése során. Ezt a PCF 1,11 támogatja. A nyílt forráskódú Cloud Foundry [felügyelt lemezekkel kapcsolatos útmutatót](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/managed-disks) is megismerheti. 
 ### <a name="availability-zone-"></a>Rendelkezésre állási zóna *
@@ -39,7 +37,7 @@ Az Azure rendelkezésre állási zónája a virtuális gépek egy csoportját 2 
 > [!NOTE] 
 > Az Azure rendelkezésre állási zónája még nem érhető el az összes régióban, tekintse meg a [támogatott régiók listájának legújabb bejelentését](https://docs.microsoft.com/azure/availability-zones/az-overview). A nyílt forráskódú Cloud Foundry esetében tekintse [meg az Azure-beli rendelkezésre állási zónát a nyílt forráskódú Cloud Foundry útmutatóban](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/availability-zone).
 
-## <a name="2-network-routing"></a>2. Hálózati Útválasztás
+## <a name="2-network-routing"></a>2. hálózati Útválasztás
 Alapértelmezés szerint az Azure alapszintű Load Balancer a bejövő CF API/apps kérelmekhez használatos, és továbbítja őket a Gorouters. A CF-összetevők, például a Diego Brain, a MySQL, az ERT a Load balancert is használhatják a forgalom elosztására. Az Azure teljes körűen felügyelt terheléselosztási megoldásokat is biztosít. Ha a TLS-leállítást ("SSL-kiszervezést") vagy HTTP/HTTPS-kérelmek alkalmazási rétegének feldolgozását keresi, érdemes megfontolnia Application Gateway. A 4. rétegben a magas rendelkezésre állás és a méretezhetőség terheléselosztásához a standard Load balancert érdemes figyelembe venni.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
 Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) különböző 7. rétegbeli terheléselosztási funkciókat kínál, beleértve az SSL-kiszervezést, a végpontok közötti SSL-t, a webalkalmazási tűzfalat, a cookie-alapú munkamenet-affinitást és egyebeket [Application Gateway a nyílt forráskódú Cloud Foundryban is konfigurálható](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). A PCF esetében ellenőrizze a [PCF 2,1 kibocsátási megjegyzéseit](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) a POC-teszthez.
@@ -47,10 +45,10 @@ Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gate
 ### <a name="azure-standard-load-balancer-"></a>Azure standard Load Balancer *
 A Azure Load Balancer egy 4. rétegbeli terheléselosztó. A szolgáltatás egy elosztott terhelésű készletben lévő szolgáltatások példányai között osztja el a forgalmat. A standard verzió [speciális funkciókat](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) biztosít az alapszintű verzióhoz. Például 1. A háttér-készlet maximális korlátja 100 és 1000 virtuális gép között van kiemelve.  2. A végpontok mostantól több rendelkezésre állási csoportot is támogatnak egyetlen rendelkezésre állási csoport helyett.  3. További funkciók, például HA portok, gazdagabb monitorozási információk stb. Ha áthelyezi az Azure rendelkezésre állási zónáját, a standard Load Balancer szükséges. Az új központi telepítéshez javasoljuk, hogy kezdjen el az Azure standard Load Balancer. 
 
-## <a name="3-authentication"></a>3. Authentication 
+## <a name="3-authentication"></a>3. hitelesítés 
 [Cloud Foundry a felhasználói fiók és a hitelesítés](https://docs.cloudfoundry.org/concepts/architecture/uaa.html) a CF központi Identitáskezelés szolgáltatás, és annak különböző összetevői. [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/active-directory-whatis) a Microsoft több-bérlős, felhőalapú címtár-és Identitáskezelés-kezelő szolgáltatása. Alapértelmezés szerint az UAA Cloud Foundry hitelesítéshez használatos. Az UAA speciális lehetőségként az Azure AD-t is támogatja külső felhasználói tárolóként. Az Azure AD-felhasználók Cloud Foundry-fiók nélkül férhetnek hozzá Cloud Foundry az LDAP-identitással. Az alábbi lépéseket követve [konfigurálhatja az UAA-hez készült Azure ad-t a PCF-ben](https://docs.pivotal.io/p-identity/1-6/azure/index.html).
 
-## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Adattárolás Cloud Foundry futtatókörnyezeti rendszerhez
+## <a name="4-data-storage-for-cloud-foundry-runtime-system"></a>4. Cloud Foundry futtatókörnyezeti rendszer adattárolója
 A Cloud Foundry kiváló bővíthetőséget kínál az Azure blobtárhely vagy az Azure MySQL/PostgreSQL szolgáltatások használatára az alkalmazás-futtatókörnyezet rendszertárolásához.
 ### <a name="azure-blobstore-for-cloud-foundry-cloud-controller-blobstore"></a>Azure-Blobtárhely Cloud Foundry Cloud Controller-blobtárhely
 A Cloud Controller blobtárhely egy kritikus adattár a buildpacks, a feldolgozók, a csomagok és az erőforrások készletei számára. Alapértelmezés szerint az NFS-kiszolgáló a Cloud Controller blobtárhely használatos. Az egypontos meghibásodás elkerülése érdekében használja az Azure Blob Storaget külső tárolóként. Tekintse meg a háttér [Cloud Foundry dokumentációját](https://docs.cloudfoundry.org/deploying/common/cc-blobstore-config.html) , valamint a [Pivotal Cloud Foundry lehetőségeit](https://docs.pivotal.io/pivotalcf/2-0/customizing/azure.html).
@@ -64,10 +62,10 @@ A felhasználói fiók és a hitelesítés adatbázisa. Tárolja a felhasználó
 
 Alapértelmezés szerint a rendszer egy helyi rendszeradatbázist (MySQL) is használhat. Az Azure Managed MySQL-t és a PostgreSQL-szolgáltatásokat igény szerint kihasználhatja. Az alábbi útmutatást követve [engedélyezheti az Azure MySQL/PostgreSQL-t az CCDB, a UAADB és más rendszeradatbázisok számára nyílt forráskódú Cloud Foundryokkal](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/configure-cf-external-databases-using-azure-mysql-postgres-service).
 
-## <a name="5-open-service-broker"></a>5. Service Broker megnyitása
+## <a name="5-open-service-broker"></a>5. Nyissa meg Service Broker
 Az Azure Service Broker konzisztens felületet biztosít az alkalmazások Azure-szolgáltatásokhoz való hozzáférésének kezeléséhez. Az [Azure Project új nyílt Service Brokerja](https://github.com/Azure/open-service-broker-azure) egyetlen és egyszerű módszert kínál a szolgáltatások alkalmazására Cloud Foundry, OpenShift és Kubernetes között. A PCF-on üzembe helyezési utasításokért tekintse meg az [Azure Open Service Broker for PCF csempét](https://pivotal.io/platform/services-marketplace/data-management/microsoft-azure) .
 
-## <a name="6-metrics-and-logging"></a>6. Metrikák és naplózás
+## <a name="6-metrics-and-logging"></a>6. mérőszámok és naplózás
 Az Azure Log Analytics fúvóka egy Cloud Foundry-összetevő, amely a [Cloud Foundry loggregator firehose](https://docs.cloudfoundry.org/loggregator/architecture.html) [Azure monitor naplókba](https://azure.microsoft.com/services/log-analytics/)továbbítja a metrikákat. A fúvókával összegyűjtheti, megtekintheti és elemezheti a CF rendszerállapot-és teljesítmény-mérőszámait több üzemelő példány között.
 Ide [kattintva](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-nozzle) megtudhatja, hogyan helyezheti üzembe az Azure log Analytics fúvókát a nyílt forráskódú és a pivotal Cloud Foundry-környezetbe, majd Hogyan férhet hozzá az adatokhoz a Azure monitor naplók konzolján. 
 > [!NOTE]
@@ -75,7 +73,7 @@ Ide [kattintva](https://docs.microsoft.com/azure/cloudfoundry/cloudfoundry-oms-n
 
 [!INCLUDE [azure-monitor-log-analytics-rebrand](../../includes/azure-monitor-log-analytics-rebrand.md)]
 
-## <a name="7-cost-saving"></a>7. Költségmegtakarítás
+## <a name="7-cost-saving"></a>7. költségmegtakarítás
 ### <a name="cost-saving-for-devtest-environments"></a>A fejlesztési és tesztelési környezetek költségmegtakarítása
 #### <a name="b-series-"></a>B sorozat: *
 Habár az F és a D virtuálisgép-sorozatot általában a Pivotal Cloud Foundry éles környezetekhez ajánlották, az új "feltört" [B sorozat](https://azure.microsoft.com/blog/introducing-b-series-our-new-burstable-vm-size/) új lehetőségeket kínál. A B sorozatú feltört virtuális gépek ideálisak olyan számítási feladatokhoz, amelyeknek nincs szükségük a CPU teljes teljesítményére, például webkiszolgálók, kis adatbázisok, fejlesztési és tesztelési környezetek. Ezek a számítási feladatok általában feltört teljesítménnyel kapcsolatos követelményekkel rendelkeznek. Ez a $0.012/Hour (B1) és a 0,05/óra (F1) összehasonlítása, a virtuálisgép- [méretek](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general) teljes listáját és a részletek [árát](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) tartalmazza. 
@@ -91,7 +89,7 @@ Az Azure első féltől származó szolgáltatásának kihasználása csökkenti
 
 A Pivotal a PCF-ügyfelek számára egy [kis helyigényű ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) -t indított el, az összetevők pedig mindössze 4 virtuális gépen helyezkednek el, amely akár 2500 alkalmazás-példányt is tartalmaz. A próbaverzió már elérhető az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-integrációs funkciók először [nyílt forráskódú Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/)érhetők el, mielőtt a pivotal Cloud Foundry elérhetővé válnak. A *-val jelölt szolgáltatások továbbra sem érhetők el a PCF-on keresztül. A Azure Stack Cloud Foundry integrációját nem fedi le ebben a dokumentumban sem.
 Ha a PCF támogatja a * vagy a Cloud Foundry integrációt a Azure Stackval, lépjen kapcsolatba a Pivotal és a Microsoft-fiók Managerrel a legújabb állapothoz. 
 

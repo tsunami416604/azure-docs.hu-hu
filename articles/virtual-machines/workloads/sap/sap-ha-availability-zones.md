@@ -4,7 +4,7 @@ description: Magas rendelkezésre állású architektúra és forgatókönyvek a
 services: virtual-machines-windows,virtual-network,storage
 documentationcenter: saponazure
 author: msjuergent
-manager: patfilot
+manager: bburns
 editor: ''
 tags: azure-resource-manager
 keywords: ''
@@ -13,15 +13,15 @@ ms.service: virtual-machines-windows
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/15/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3f5186f456003c341af41fc6067f3b5c08acb2b4
-ms.sourcegitcommit: 44e85b95baf7dfb9e92fb38f03c2a1bc31765415
+ms.openlocfilehash: 698c198f58ead88b01b1c4b8b2e1fd9da4198c93
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2019
-ms.locfileid: "70078890"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277462"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -57,7 +57,7 @@ Ha Azure-beli virtuális gépeket helyez üzembe Availability Zones és ugyanazo
 
 - A Azure Availability Zones üzembe helyezéséhez az [Azure Managed Diskst](https://azure.microsoft.com/services/managed-disks/) kell használnia. 
 - A zónák enumerálásának fizikai zónákhoz való hozzárendelése egy Azure-előfizetésen keresztül történik. Ha különböző előfizetéseket használ az SAP-rendszerek üzembe helyezéséhez, minden előfizetéshez meg kell határoznia az ideális zónákat.
-- Az Azure-beli rendelkezésre állási csoportok nem helyezhetők üzembe az Azure-beli rendelkezésre állási zónán belül, kivéve, ha az Azure-beli [Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) Az SAP adatbázis-kezelő réteg és a központi szolgáltatások zónákon belüli üzembe helyezésének módja, valamint az SAP-alkalmazás rétegének üzembe helyezése a rendelkezésre állási csoportok használatával, valamint a virtuális gépek közelségének biztosítása [ Csoportok az SAP-alkalmazásokkal való optimális hálózati késés érdekében](sap-proximity-placement-scenarios.md). Ha nem használ Azure Proximity-elhelyezési csoportokat, ki kell választania egyet vagy a másikat a virtuális gépek üzembe helyezési keretrendszereként.
+- Az Azure-beli rendelkezésre állási csoportok nem helyezhetők üzembe az Azure-beli rendelkezésre állási zónán belül, kivéve, ha az Azure-beli [Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) Az SAP adatbázis-kezelő réteg és a központi szolgáltatások zónák közötti üzembe helyezésének módja, valamint az SAP-alkalmazás rétegének üzembe helyezése a rendelkezésre állási [csoportokkal](sap-proximity-placement-scenarios.md), valamint a virtuális gépek közelségének biztosítása Ha nem használ Azure Proximity-elhelyezési csoportokat, ki kell választania egyet vagy a másikat a virtuális gépek üzembe helyezési keretrendszereként.
 - A Windows Server feladatátvételi fürtszolgáltatás vagy a Linux pacemaker használatával nem használhat [Azure Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)-t kell használnia.
 
 
@@ -75,6 +75,8 @@ A különböző zónák közötti késés megállapításához a következőket 
 - Telepítse a virtuális gép SKU-t, amelyet az adatbázis-kezelő példányhoz kíván használni mindhárom zónában. Győződjön meg arról, hogy az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van a mérés során.
 - Ha megtalálta a legkisebb hálózati késéssel rendelkező két zónát, helyezzen üzembe egy másik három virtuális GÉPET, amelyet az alkalmazás rétegbeli virtuális gépként kíván használni a három Availability Zones. Mérje meg a hálózati késleltetést a két adatbázis-kezelő virtuális gépen a kiválasztott két adatbázis-kezelő zónában. 
 - **Niping** használata mérési eszközként. Az SAP-től származó eszközt az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)című témakör írja le. Koncentráljon a késési mérésekhez dokumentált parancsokra. Mivel a **ping** nem működik az Azure gyorsított hálózati kód elérési útjain, nem ajánlott használni.
+
+Ezeket a teszteket nem kell manuálisan végrehajtania. Megtalálhatja a PowerShell-eljárás [rendelkezésre állási zónájának késési tesztjét](https://github.com/Azure/SAP-on-Azure-Scripts-and-Utilities/tree/master/AvZone-Latency-Test) , amely automatizálja a leírt késési teszteket. 
 
 A mérések és a virtuális gépek Availability Zonesban való rendelkezésre állása alapján bizonyos döntéseket kell meghoznia:
 
@@ -103,7 +105,7 @@ A két zónába tartozó aktív/aktív telepítés egyszerűsített sémája a k
 Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
 
 - Ha nem használja az [Azure Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location)beosztási csoportot, akkor a Azure Availability Zones az összes virtuális gép meghibásodási és frissítési tartománya kezeli, mivel a rendelkezésre állási csoportok nem helyezhetők üzembe Azure Availability Zones.
-- Ha az adatbázis-kezelő réteg és a központi szolgáltatások esetében az Azure-beli rendelkezésre állási csoportokat kívánja egyesíteni, de az alkalmazási réteghez szeretné használni az Azure-ban elérhető csoportok használatát, az Azure Proximity-elhelyezési csoportok című cikkben leírtak szerint az [optimális hálózati késés SAP](sap-proximity-placement-scenarios.md)-alkalmazásokkal.
+- Ha az adatbázis-kezelő réteg és a központi szolgáltatások zónákhoz való központi telepítését szeretné kombinálni, de az alkalmazási réteghez szeretné használni az Azure-beli rendelkezésre állási csoportokat, akkor az Azure Proximity-elhelyezési csoportok című cikkben leírtak szerint Azure közelségi csoportokat kell használnia az [SAP-alkalmazásokkal való optimális hálózati késés](sap-proximity-placement-scenarios.md)érdekében.
 - Az SAP Central Services és az adatbázis-kezelő réteg feladatátvevő fürtjének terheléselosztó esetén a [szabványos SKU Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)kell használnia. Az alapszintű Load Balancer nem fog működni a zónák között.
 - Az SAP-rendszer üzemeltetéséhez üzembe helyezett Azure-beli virtuális hálózat az alhálózatokkal együtt a zónák között van kiterjesztve. Minden zónához nincs szükség külön virtuális hálózatokra.
 - Az összes telepített virtuális gép esetében az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/)-t kell használnia. A nem felügyelt lemezek nem támogatottak a zónákon üzemelő példányok esetében.
@@ -113,7 +115,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
   - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
     
     Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)nem támogatott a zónák között.
-- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -fürtöt vagy további alkalmazás-példányokat hoz létre.
+- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 - A kritikus fontosságú üzleti folyamatok futtatási időkonzisztenciájának eléréséhez próbáljon meg bizonyos batch-feladatokat és felhasználókat olyan alkalmazás-példányokhoz irányítani, amelyek az aktív adatbázis-kezelői példánnyal rendelkeznek az SAP batch Server-csoportok, az SAP-bejelentkezési csoportok vagy az RFC-csoportok használatával. A zónák közötti feladatátvétel esetén azonban ezeket a csoportokat manuálisan kell áthelyeznie az aktív adatbázis-virtuálisgép-zónán belüli virtuális gépeken futó példányokra.  
 - Előfordulhat, hogy minden zónában érdemes lehet alvó párbeszédpanel-példányokat telepíteni. Ezzel a megoldással azonnal visszatérhet a korábbi erőforrás-kapacitáshoz, ha az alkalmazás példányainak részeként használt zóna kívül esik a szolgáltatáson.
 
@@ -138,7 +140,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
     
   Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)nem támogatott a zónák között.
-- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -fürtöt vagy további alkalmazás-példányokat hoz létre.
+- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 - Az alvó üzemmódú virtuális gépeket a passzív zónában kell üzembe helyezni (egy adatbázis-kezelői pontból), így a zóna meghibásodása esetén elindíthatja az alkalmazás erőforrásait.
     - [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) jelenleg nem tudja replikálni az aktív virtuális gépeket a zónák közötti, alvó állapotban lévő virtuális gépekre. 
 - Olyan automatizálást kell befektetni, amely lehetővé teszi, hogy a zóna meghibásodása esetén automatikusan elindítsa az SAP-alkalmazás réteget a második zónában.
@@ -168,13 +170,13 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
 
   Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)nem támogatott a zónák között.
-- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) -fürtöt vagy további alkalmazás-példányokat hoz létre.
+- A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 
 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Íme néhány további lépés a Azure Availability Zones üzembe helyezéséhez:
 
 - [Az SAP ASCS/SCS-példányok fürtözése Windows feladatátvevő fürtön az Azure-ban megosztott fürtözött lemez használatával](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)

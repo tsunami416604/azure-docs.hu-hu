@@ -1,22 +1,20 @@
 ---
-title: (ELAVULT) Tárolók terheléselosztása Azure DC/OS-fürt
+title: ELAVULT Terheléselosztási tárolók az Azure DC/OS-fürtben
 description: Több tárolóra kiterjedő terheléselosztás egy Azure Container Service DC/OS-fürtben.
-services: container-service
 author: rgardler
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 06/02/2017
 ms.author: rogardle
 ms.custom: mvc
-ms.openlocfilehash: 1e4c978a8767154fb6a1f9a822cb0dd8d1b8796e
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: d8dff1dc063cc3b940fbdf0698b8b328b90d60b6
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66148889"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277836"
 ---
-# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>(ELAVULT) Tárolók terheléselosztása Azure Container Service DC/OS-fürtben
+# <a name="deprecated-load-balance-containers-in-an-azure-container-service-dcos-cluster"></a>ELAVULT Tárolók terheléselosztása egy Azure Container Service DC/OS-fürtben
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -97,7 +95,7 @@ Ezután hozzon létre egy fájlt *hello-web.json* néven, és másolja bele a k�
 }
 ```
 
-A DC/OS CLI-vel futtassa az alkalmazást. Alapértelmezés szerint a Marathon az alkalmazás a privát fürtöt helyezi üzembe. Ez azt jelenti, hogy a fenti üzembe helyezés csak a terheléselosztóról érhető el, ami általában a kívánt viselkedés.
+A DC/OS CLI-vel futtassa az alkalmazást. Alapértelmezés szerint a Marathon üzembe helyezi az alkalmazást a privát fürtön. Ez azt jelenti, hogy a fenti üzembe helyezés csak a terheléselosztóról érhető el, ami általában a kívánt viselkedés.
 
 ```azurecli-interactive
 dcos marathon app add hello-web.json
@@ -113,7 +111,7 @@ Alapértelmezés szerint az Azure Load Balancer a 80-as, 8080-as és 443-as port
 
 De ha másik portot használ, ciklikus szabályt és egy hálózatfigyelőt kell hozzáadnia a terheléselosztón a használt porthoz. Ezt az [Azure parancssori felületén](../../azure-resource-manager/xplat-cli-azure-resource-manager.md) teheti meg az `azure network lb rule create` és `azure network lb probe create` parancsokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóprogramban megismerhette az ACS terheléselosztását a Marathon és az Azure Load Balancer segítségével, és a következő műveleteket végezte el:
 

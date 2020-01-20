@@ -1,17 +1,17 @@
 ---
 title: Rövid útmutató – alkalmazás elindítása a Maven és az Azure Spring Cloud használatával
 description: Ebben a rövid útmutatóban egy minta alkalmazást indítunk el a Maven használatával
-author: jpconnock
+author: bmitchell287
 ms.service: spring-cloud
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.author: jeconnoc
-ms.openlocfilehash: 8aaf5f5fbcabf3476284f0d5e9f4f50ef3e92bd6
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.author: brendm
+ms.openlocfilehash: a8ccda88239a150a24c9abaf6ebb172f0fd01dba
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75891636"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278923"
 ---
 # <a name="quickstart-launch-an-azure-spring-cloud-app-using-the-maven-plug-in"></a>Gyors útmutató: Azure Spring Cloud-alkalmazás elindítása a Maven beépülő modullal
 

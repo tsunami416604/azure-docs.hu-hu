@@ -1,25 +1,17 @@
 ---
-title: Új hitelesítés használata a StorSimple 8000 Eszközkezelő Service-hez az Azure-ban | Microsoft Docs
+title: Új hitelesítés használata a StorSimple 8000 Eszközkezelő Service-hez az Azure-ban
 description: Ismerteti, hogyan használható az HRE-alapú hitelesítés a szolgáltatáshoz, új regisztrációs kulcs előállítása, valamint az eszközök manuális regisztrálásának elvégzése.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/23/2018
 ms.author: alkohli
-ms.openlocfilehash: 88badf6de5e7181763dd72c7a51262d16697bffd
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: 798b3bf054d5ade2a441bbef5875bb014f526aee
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68963489"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276944"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
@@ -47,7 +39,7 @@ Annak biztosítása érdekében, hogy a szolgáltatás HRE-alapú hitelesítést
 
 StorSimple 8000 sorozat használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmazzák:
 
-| URL-minta                         | Felhő | Összetevő/funkció         |
+| URL-minta                         | Felhőbeli | Összetevő/funkció         |
 |------------------------------------|-------|----------------------------------|
 | `https://login.windows.net`        | Azure Public |HRE hitelesítési szolgáltatás      |
 | `https://login.microsoftonline.us` | Az USA kormányzata |HRE hitelesítési szolgáltatás      |
@@ -62,9 +54,9 @@ Ha StorSimple 8000 sorozatú eszközt használ, a következő táblázat segíts
 
 | Ha az eszköz fut| Végezze el a következő műveletet                                    |
 |--------------------------|------------------------|
-| 5-ös vagy újabb frissítése, és az eszköz offline állapotban van. <br> Megjelenik egy riasztás, amely szerint az URL-cím nem engedélyezett.|1. A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys).<br>3. [Kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. A `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
-| 5-ös vagy újabb, illetve az eszköz online állapotának frissítése.| Nincs szükség felhasználói műveletre.                                       |
-| A 4-es vagy korábbi frissítés, és az eszköz offline állapotban van. |1. A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br>2. [Töltse le az 5. frissítést a Catalog Server használatával](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [Alkalmazza az 5. frissítést a gyorsjavítási módszer használatával](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys).<br>5. [Kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. A `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| 5-ös vagy újabb frissítése, és az eszköz offline állapotban van. <br> Megjelenik egy riasztás, amely szerint az URL-cím nem engedélyezett.|1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication).<br>2. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys).<br>3. [kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).<br>4. a `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
+| 5-ös vagy újabb, illetve az eszköz online állapotának frissítése.| Nincs szükség műveletre.                                       |
+| A 4-es vagy korábbi frissítés, és az eszköz offline állapotban van. |1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához.<br>2. [töltse le az 5. frissítést a Catalog Server használatával](storsimple-8000-install-update-5.md#download-updates-for-your-device).<br>3. [az 5. frissítést alkalmazza a gyorsjavítási módszer használatával](storsimple-8000-install-update-5.md#install-update-5-as-a-hotfix).<br>4. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys).<br>5. [kapcsolódjon az StorSimple 8000 Series eszköz Windows PowerShell-felületéhez](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console). <br>6. a `Redo-DeviceRegistration` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | A 4-es vagy korábbi frissítés, az eszköz pedig online állapotban van. |A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br> Telepítse az 5. frissítést a Azure Portal.              |
 | Állítsa vissza a gyári verziót az 5. frissítés előtt.      |A portálon egy HRE-alapú regisztrációs kulcs látható, miközben az eszköz régebbi szoftvert futtat. Kövesse az előző forgatókönyv lépéseit, amikor az eszköz a 4-es vagy korábbi frissítést futtatja.              |
 
@@ -83,9 +75,9 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>A HRE szolgáltatás regisztrációs kulcsának előállítása
 
-1. A **StorSimple Eszközkezelő**lépjen a **felügyeleti &gt;**  **kulcsok**elemre. A keresési sáv használatával is megkeresheti a _kulcsokat_.
+1. A **StorSimple Eszközkezelő**válassza a **felügyeleti &gt;** **kulcsok**lehetőséget. A keresési sáv használatával is megkeresheti a _kulcsokat_.
     
-2. Kattintson a **kulcs**előállítása elemre.
+2. Kattintson a **kulcs előállítása**elemre.
 
     ![Kattintson az újragenerált elemre.](./media/storsimple-8000-aad-registration-key/aad-click-generate-registration-key.png)
 
@@ -96,7 +88,7 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
     > [!NOTE] 
     > Ha a StorSimple 8000 Series eszközhöz regisztrált szolgáltatáshoz hoz létre StorSimple Cloud Appliance, ne hozzon létre regisztrációs kulcsot, amíg a létrehozás folyamatban van. Várjon, amíg a létrehozás befejeződik, majd hozza létre a regisztrációs kulcsot.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ az [StorSimple 8000 Series-eszközök](storsimple-8000-deployment-walkthrough-u2.md)üzembe helyezéséről.
 

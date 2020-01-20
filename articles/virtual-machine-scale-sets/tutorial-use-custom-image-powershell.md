@@ -1,27 +1,19 @@
 ---
 title: Oktatóanyag – egyéni virtuálisgép-rendszerkép használata egy méretezési csoporton Azure PowerShell
 description: Megismerheti, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket az Azure PowerShell használatával, amelyek használatával virtuálisgép-méretezési csoportokat helyezhet üzembe
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4f47c4118db9d5fc799193f4abeea142c74ec691
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: daef03b411a451fc3e5b73e46091672810b0f9bd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75551573"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278296"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
 

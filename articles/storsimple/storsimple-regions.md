@@ -1,25 +1,17 @@
 ---
-title: StorSimple régió elérhetősége | Microsoft Docs
+title: StorSimple régió elérhetősége
 description: Ismerteti azokat az Azure-régiókat, amelyekben elérhetők a különböző StorSimple-eszközök.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 11/16/2017
 ms.author: alkohli
-ms.openlocfilehash: 5b41f738c2419f806aef60374a545ff004a6f19e
-ms.sourcegitcommit: 5d6c8231eba03b78277328619b027d6852d57520
+ms.openlocfilehash: a2f04d6faa7770eef7768437ae0e624b76713f98
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2019
-ms.locfileid: "68965141"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275116"
 ---
 # <a name="available-regions-for-your-storsimple"></a>A StorSimple elérhető régiók
 
@@ -47,7 +39,7 @@ A StorSimple Eszközkezelő szolgáltatás első létrehozásakor meg kell adnia
 
 Itt találja azokat a régiókat, ahol a StorSimple Eszközkezelő szolgáltatás elérhető az Azure nyilvános felhőben, és üzembe helyezhető.
 
-![storsimple-device-manager-service-regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
+![storsimple-Device-Manager-Service-Regions](./media/storsimple-region/storsimple-device-manager-service-regions.png)
 
 Azure Government felhő esetén a StorSimple Eszközkezelő szolgáltatás US Gov Iowa és US Gov Virginia adatközpontokban érhető el.
 
@@ -71,7 +63,7 @@ Ha StorSimple 8100 vagy 8600 fizikai eszközt használ, az eszköz a következő
 
 | #  | Ország/régió        | #  | Ország/régió     | #  | Ország/régió      | #  | Ország/régió             |
 |----|-----------------------|----|--------------------|----|---------------------|----|----------------------------|
-| 1  | Ausztrália             | 16 | Hongkong (KKT)      | 31 | Új-Zéland         | 46 | Dél-Afrika               |
+| 1  | Ausztrália             | 16 | Hongkong KKT      | 31 | Új-Zéland         | 46 | Dél-Afrika               |
 | 2  | Ausztria               | 17 | Magyarország            | 32 | Nigéria             | 47 | Dél-Korea                |
 | 3  | Bahrein               | 18 | Izland            | 33 | Norvégia              | 48 | Spanyolország                      |
 | 4  | Belgium               | 19 | India              | 34 | Peru                | 49 | Srí Lanka                  |
@@ -98,13 +90,13 @@ A Microsoft elvégezheti a fizikai hardverek szállítását, és hardveres pót
 
 Ha StorSimple Cloud Appliance 8010 vagy 8020-es verzióval rendelkezik, az eszköz minden olyan régióban támogatott és elérhető, ahol a mögöttes virtuális gép támogatott. A 8010 az összes Azure-régióban támogatott _Standard_A3_ virtuális gépet használ.
 
-A 8020 Premium Storage-t és _Standard_DS3_ virtuális gépet használ felhőalapú berendezés létrehozásához. Az 8020-es verzió támogatja az Azure-beli virtuális gépeket Premium Storage és _Standard_DS3_ támogató Azure-régiókban. [Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban.
+A 8020 Premium Storage-t és _Standard_DS3_ virtuális gépet használ felhőalapú berendezés létrehozásához. Az 8020-es verzió az Azure _Standard_DS3_ -beli virtuális gépeket támogató Azure-régiókban támogatott Premium Storage. [Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban.
 
 ### <a name="storsimple-virtual-array-model-1200"></a>StorSimple virtuális tömb (1200-es modell)
 
 Ha a StorSimple egy 1200 sorozatú virtuális tömböt használ, akkor a virtuális lemez lemezképe az összes Azure-régióban támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [különböző StorSimple-modellek díjszabásáról](https://azure.microsoft.com/pricing/calculator/#storsimple2).
 * További információ [a StorSimple Storage-fiók kezeléséről](storsimple-8000-manage-storage-accounts.md).

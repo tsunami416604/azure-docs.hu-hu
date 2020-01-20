@@ -1,119 +1,111 @@
 ---
-title: Hozzon létre támogatási jegyet, vagy a StorSimple 8000 sorozat esetében |} A Microsoft Docs
-description: Ismerje meg, hogyan naplótámogatási kérelem, és indítson el egy támogatási munkamenetet a a StorSimple 8000 sorozatú eszköz.
-services: storsimple
-documentationcenter: ''
+title: Támogatási jegy vagy eset létrehozása StorSimple 8000 sorozathoz
+description: Ismerje meg, hogyan naplózhatja a támogatási kérést, és hogyan indíthat el egy támogatási munkamenetet a StorSimple 8000 Series eszközön.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: 5394feff80c1df8b7a6cf7f6e6ea56678f575823
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 99de3a6fbbbb1c4324df1712a5e24fd334ca4977
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67612508"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277178"
 ---
-# <a name="contact-microsoft-support"></a>Forduljon a Microsoft ügyfélszolgálatához
+# <a name="contact-microsoft-support"></a>Kapcsolatfelvétel a Microsoft ügyfélszolgálatával
 
-A StorSimple-Eszközkezelő lehetővé teszi, hogy **egy új támogatási jegyet** belül a szolgáltatásösszegző panel. Ha bármilyen problémába ütközik a StorSimple-megoldásokra, létrehozhat egy szolgáltatási kérelmet, ha technikai támogatást. Online-munkamenetben a támogatási szakértővel szükség lehet, indítson el egy támogatási munkamenetet a StorSimple eszközön. Ez a cikk végigvezeti:
+A StorSimple Eszközkezelő lehetővé teszi **egy új támogatási kérelem naplózását** a szolgáltatás összegzési paneljén belül. Ha bármilyen probléma merül fel a StorSimple-megoldással kapcsolatban, létrehozhat egy szolgáltatási kérelmet a technikai támogatáshoz. A támogatási szakemberrel folytatott online munkamenetben szükség lehet egy támogatási munkamenet elindítására is a StorSimple-eszközön. Ez a cikk végigvezeti a következő lépéseken:
 
-* Hogyan hozzon létre egy támogatási kérést.
-* Hogyan lehet egy támogatási kérést az életciklusnak a kezelésében a portálon belül.
-* Hogyan indítson el egy támogatási munkamenetet a Windows PowerShell felületén, a StorSimple eszköz.
+* Támogatási kérelem létrehozása.
+* Támogatási kérelmek életciklusának kezelése a portálon belülről.
+* Támogatási munkamenet elindítása a StorSimple-eszköz Windows PowerShell-felületén.
 
-Tekintse át a [StorSimple 8000 sorozat támogatási SLA-k és információk](https://msdn.microsoft.com/library/mt433077.aspx) támogatási kérések létrehozása előtt.
+Support request létrehozása előtt tekintse át a [StorSimple 8000 sorozat támogatási SLA-kat és információkat](https://msdn.microsoft.com/library/mt433077.aspx) .
 
 ## <a name="create-a-support-request"></a>Támogatási kérelem létrehozása
 
-Attól függően, hogy a [támogatási csomag](https://azure.microsoft.com/support/plans/), a StorSimple eszközön a StorSimple-Eszközkezelő szolgáltatás összefoglalás panelén közvetlenül a is létrehozhat támogatási jegyeket, egy adott probléma megoldásához. A következő lépésekkel hozzon létre egy támogatási kérést:
+A [támogatási csomagtól](https://azure.microsoft.com/support/plans/)függően támogatási jegyek hozhatók létre a StorSimple-eszközön, közvetlenül a StorSimple Eszközkezelő szolgáltatás összefoglalási paneljéről. Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
-#### <a name="to-create-a-support-request"></a>Támogatáskérés létrehozása
+#### <a name="to-create-a-support-request"></a>Támogatási kérelem létrehozása
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összefoglalás panelén beállításait, lépjen a **támogatás + hibaelhárítás** szakaszt, és kattintson a **új támogatási kérelem**.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. A szolgáltatás összegzése panel beállításainál válassza a **támogatás + hibaelhárítás** szakaszt, majd kattintson az **új támogatási kérelem**elemre.
      
-    ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
+    ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport1.png)
    
-2. Az a **új támogatási kérelem** panelen válassza ki **alapjai**. Az a **alapjai** panelen tegye a következőket:
-   1. Az a **Problématípus** legördülő listában válassza **technikai**.
-   2. Az aktuális **előfizetés**, **szolgáltatás** típusát, és a **erőforrás** (StorSimple-Eszközkezelő szolgáltatás) a rendszer automatikusan kiválasztja. 
-   3. Válassza ki a **támogatási csomag** a legördülő listából, ha több csomagok az Ön előfizetéséhez rendelve van. Szüksége lesz egy fizetős támogatási csomag ahhoz, hogy technikai támogatást.
+2. Az **új támogatási kérelem** panelen válassza az **alapismeretek**lehetőséget. Az **alapvető beállítások** panelen végezze el a következő lépéseket:
+   1. A **probléma típusa** legördülő listában válassza a **technikai**lehetőséget.
+   2. Az aktuális **előfizetés**, a **szolgáltatás** típusa és az **erőforrás** (StorSimple Eszközkezelő szolgáltatás) automatikusan ki van választva. 
+   3. Válassza ki a **támogatási csomagot** a legördülő listából, ha az előfizetéshez több csomag van társítva. A technikai támogatás engedélyezéséhez fizetős támogatási csomag szükséges.
    4. Kattintson a **Tovább** gombra.
 
-       ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
+       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport2.png)
 
-3. Az a **új támogatási kérelem** panelen válassza ki **. lépés 2 probléma**. Az a **probléma** panelen tegye a következőket:
+3. Az **új támogatási kérelem** panelen válassza a **2. lépés problémát**. A **probléma** panelen hajtsa végre a következő lépéseket:
     
-    1. Válassza ki a **súlyossági**.
-    2. Adja meg, ha a probléma a készülék vagy a StorSimple-Eszközkezelő szolgáltatással kapcsolatos.
-    3. Válasszon egy **kategória** ehhez adja ki, és adja meg a további **részletek** a problémával kapcsolatban.
-    4. Adja meg a kezdő dátum és idő a probléma.
-    5. Az a **fájlfeltöltés**, kattintson a mappa ikonra, tallózással keresse meg a támogatási csomagot.
-    6. Ellenőrizze **diagnosztika adatok megosztása**.
+    1. Válassza ki a **súlyosságot**.
+    2. Adja meg, hogy a probléma a készülékhez vagy a StorSimple Eszközkezelő szolgáltatáshoz kapcsolódik-e.
+    3. Válassza ki a probléma **kategóriáját** , és adja meg a probléma további **részleteit** .
+    4. Adja meg a probléma kezdő dátumát és időpontját.
+    5. A **fájlfeltöltés**területen kattintson a mappa ikonra a támogatási csomag megkereséséhez.
+    6. A **diagnosztikai adatok megosztásának**megadásához.
     7. Kattintson a **Tovább** gombra.
 
-       ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
+       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport3.png) 
 
-4. Az a **új támogatási kérelem** panelen kattintson a **lépés 3 elérhetőségi adatok**. Az a **kapcsolattartási adatok** panelen tegye a következőket:
+4. Az **új támogatási kérelem** panelen kattintson a **3. lépés kapcsolattartási adatok**elemre. A **kapcsolattartási adatok** panelen hajtsa végre a következő lépéseket:
 
-   1. Az a **kapcsolatfelvételi lehetőségek**, adja meg az elsődleges kapcsolattartási módszer (telefonon vagy e-mailben) és a nyelvet. A válaszidő automatikusan ki van jelölve, az előfizetési csomag alapján.
-   2. Adja meg a nevét, e-mail, ügyfél nem kötelező, ország/régió az elérhetőségi adatok. Válassza ki a **kapcsolattartási adatok módosításainak mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
+   1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
+   2. A kapcsolattartási adatok területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Jelölje be a **kapcsolattartási változások mentése a későbbi támogatási kérelmekhez** jelölőnégyzetet.
    3. Kattintson a **Create** (Létrehozás) gombra.
    
-       ![Forduljon az MS támogatás az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
+       ![Kapcsolatfelvétel az MS ügyfélszolgálatával az új portálon keresztül](./media/storsimple-8000-contact-microsoft-support/contactsupport5.png)   
 
-      A Microsoft Support ezen információk használatával kapcsolatos további információkat, a diagnosztikai és a megoldási Önnel.
-      Miután elküldte a kérést, a támogatási szakember felveszi a kapcsolatot, amint lehetséges, hogy a kérés folytatásához.
+      A Microsoft ügyfélszolgálata ezeket az információkat a további információk, a diagnosztika és a megoldás elérésére fogja használni.
+      A kérés elküldése után a támogatási szakember a lehető leghamarabb felveszi Önnel a kapcsolatot, hogy folytassa a kérést.
 
-## <a name="manage-a-support-request"></a>Egy támogatási jegy kezelése
+## <a name="manage-a-support-request"></a>Támogatási kérelem kezelése
 
 A támogatási jegy létrehozása után a jegyet a teljes életciklusán keresztül kezelheti a portálon.
 
 #### <a name="to-manage-your-support-requests"></a>A támogatási kérések kezelése
 
-1. A Súgó és támogatási oldallal lekéréséhez lépjen **Tallózás > Súgó + támogatás**.
+1. A Súgó és támogatás lapon keresse meg a **tallózás > Súgó + támogatás**menüpontot.
 
-    ![Támogatási kérések kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
+    ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport1.png)
 
-2. A táblázatos listájában tekintse meg a támogatási kérelmek jelenik meg a **súgó + támogatás** panelen.
+2. Az összes támogatási kérelem táblázatos felsorolása megjelenik a **Súgó + támogatás** panelen.
 
-    ![Támogatási kérések kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
+    ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport2.png)
 
-3. Válassza ki, majd kattintson egy támogatási kérést. Megtekintheti az állapotát és a kérés részleteit. Kattintson a **+ új üzenet** Ha azt szeretné, ezt a kérelmet követéséhez.
+3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-    ![Támogatási kérések kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
+    ![Támogatási kérelmek kezelése](./media/storsimple-8000-contact-microsoft-support/managesupport3.png)
 
-## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Indítson el egy támogatási munkamenetet a Windows PowerShell storsimple-höz készült
+## <a name="start-a-support-session-in-windows-powershell-for-storsimple"></a>Támogatási munkamenet elindítása Windows PowerShell StorSimple-bővítménye
 
-Bármilyen hibaelhárításra, amely a StorSimple-eszköz tapasztalhat, szüksége lesz a Microsoft Support csapat bevonása. Jelentkezzen be az eszköz egy támogatási munkamenetet használatával Support szükségessé.
+A StorSimple eszközzel kapcsolatos problémák elhárításához a Microsoft ügyfélszolgálata csapatot kell használnia. Előfordulhat, hogy a Microsoft ügyfélszolgálata támogatási munkamenetet kell használnia az eszközre való bejelentkezéshez.
 
-A következő lépésekkel indítson el egy támogatási munkamenetet:
+A támogatási munkamenet elindításához hajtsa végre a következő lépéseket:
 
-#### <a name="to-start-a-support-session"></a>Egy támogatási munkamenetet
+#### <a name="to-start-a-support-session"></a>Támogatási munkamenet elindítása
 
-1. Az eszköz eléréséhez, közvetlenül a soros konzol vagy egy telnet-munkamenet távoli számítógépről. Ehhez kövesse a lépéseket a [a PuTTY használata az eszköz soros konzoljához való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console).
-2. A megnyitott munkamenetben nyomja le az **Enter** parancssor első kulcsát.
-3. A soros konzol menüben válassza az 1. lehetőség – **jelentkezzen be a teljes hozzáféréssel**.
-4. A parancssorba írja be a következő jelszóval:
+1. Közvetlenül a soros konzol vagy egy távoli számítógépről származó Telnet-munkamenet használatával férhet hozzá az eszközhöz. Ehhez kövesse a [Putty használata az eszköz soros konzolhoz való kapcsolódáshoz](storsimple-8000-deployment-walkthrough-u2.md#use-putty-to-connect-to-the-device-serial-console)című témakör lépéseit.
+2. A megnyíló munkamenetben nyomja le az **ENTER** billentyűt a parancssor beszerzéséhez.
+3. A soros konzol menüjében válassza az 1. lehetőséget, majd **Jelentkezzen be a teljes hozzáférés**lehetőséggel.
+4. A parancssorba írja be a következő jelszót:
    
     `Password1`
 5. A parancssorba írja be a következő parancsot:
    
     `Enable-HcsSupportAccess`
-6. Egy titkosított karakterláncot is megjelenik. Másolja ezt a karakterláncot egy szövegszerkesztőbe, például a Jegyzettömbben.
-7. Mentse ezt a karakterláncot, és a Microsoft Support egy e-mail üzenet küldése.
+6. Egy titkosított karakterlánc jelenik meg Önnek. Másolja ezt a karakterláncot egy szövegszerkesztőbe, például a Jegyzettömbbe.
+7. Mentse ezt a karakterláncot, és küldje el egy e-mail-üzenetben, hogy Microsoft ügyfélszolgálata.
 
 > [!IMPORTANT]
-> Letilthatja a támogatási hozzáférését futtatásával `Disable-HcsSupportAccess`. A StorSimple-eszköz ekkor is kísérlet el a támogatás letiltása után a munkamenetet kezdeményezett 8 óra. Ajánlott eljárás az, módosítsa a StorSimple eszköz hitelesítő adatait egy támogatási munkamenetet kezdeményezése után.
+> `Disable-HcsSupportAccess`futtatásával letilthatja a támogatási hozzáférést. A StorSimple-eszköz a munkamenet elindítása után 8 órával is megkísérli letiltani a támogatás elérését. Az ajánlott eljárás a StorSimple-eszköz hitelesítő adatainak módosítása a támogatási munkamenet elindítása után.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan [a StorSimple 8000 sorozatú eszköz kapcsolatos problémák diagnosztizálása és megoldása](storsimple-8000-troubleshoot-deployment.md)
+Ismerje meg, hogyan [diagnosztizálhatja és megoldhatja a StorSimple 8000 Series eszközével kapcsolatos problémákat](storsimple-8000-troubleshoot-deployment.md)

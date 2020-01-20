@@ -1,20 +1,18 @@
 ---
-title: Bevezetés az Azure Red Hat OpenShift | Microsoft Docs
+title: Bevezetés az Azure Red Hat OpenShift
 description: A Microsoft Azure Red Hat OpenShift funkcióinak és előnyeinek megismerése a tároló alapú alkalmazások üzembe helyezéséhez és kezeléséhez.
-services: container-service
 author: jimzim
 ms.author: jzim
 ms.service: container-service
-manager: jeconnoc
 ms.topic: overview
 ms.date: 05/08/2019
 ms.custom: mvc
-ms.openlocfilehash: f76f5d4dc84d1f8827248ab8399c1ae450a643a0
-ms.sourcegitcommit: 08d3a5827065d04a2dc62371e605d4d89cf6564f
+ms.openlocfilehash: 4be388eec3851154fd0f6af37d03a468fc52197b
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68620159"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276069"
 ---
 # <a name="azure-red-hat-openshift"></a>Azure Red Hat OpenShift
 
@@ -46,7 +44,7 @@ A részletekért lásd: [fürt virtuális hálózatának összekötése meglév�
 
 Az Azure Red Hat OpenShift szolgáltatás CNCF minősítéssel rendelkezik, Kubernetes-megfelelőségként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az Azure Red Hat OpenShift előfeltételeit:
 

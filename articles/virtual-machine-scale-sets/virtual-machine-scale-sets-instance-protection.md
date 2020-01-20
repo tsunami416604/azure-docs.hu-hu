@@ -1,61 +1,53 @@
 ---
-title: Az Azure virtuálisgép-méretezési csoport példány védelmének beállítása példányok |} A Microsoft Docs
-description: Ismerje meg, hogyan védheti meg és méretezési csoport horizontális leskálázási műveletek az Azure virtuális gép méretezési csoport példányaihoz.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Példányok védelme az Azure virtuálisgép-méretezési csoport példányai esetében
+description: Ismerje meg, hogyan védhető az Azure virtuálisgép-méretezési csoport példányai a méretezési és a méretezési műveletek során.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2019
 ms.author: manayar
-ms.openlocfilehash: 61430f5a43a04fa0e5b2f0c79ff03419c73aaf28
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 071ea79f4d288e86cc5b9347f8607b4ff7190bc1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66416548"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275787"
 ---
-# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Az Azure virtuálisgép-méretezési csoport példány védelmének beállítása instances (előzetes verzió)
-Az Azure virtuális gép méretezési csoportok lehetővé teszik a keresztül a számítási feladatok esetében jobb rugalmasság [automatikus skálázási](virtual-machine-scale-sets-autoscale-overview.md), így megadhatja, ha az infrastruktúra horizontális felskálázást, és mikor skálázását követve rugalmasan méretezhető –. A méretezési csoportok lehetővé teszi, hogy központilag kezelése, konfigurálása és frissíteni a virtuális gépek nagy számú különböző keresztül [frissítési szabályzatának](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) beállításait. Frissítés a méretezési csoport modelljéből lehet konfigurálni, és az új konfigurációt a program automatikusan alkalmazza minden egyes scale set-példány, ha beállította a frissítési szabályzat automatikus vagy működés közbeni.
+# <a name="instance-protection-for-azure-virtual-machine-scale-set-instances-preview"></a>Példányok védelme az Azure virtuálisgép-méretezési csoport példányaiban (előzetes verzió)
+Az Azure virtuálisgép-méretezési csoportok nagyobb rugalmasságot biztosítanak a számítási feladatokhoz az autoscale segítségével, így beállíthatja, hogy az infrastruktúra milyen mértékben legyen [kibővítve](virtual-machine-scale-sets-autoscale-overview.md), és mikor méretezi a méretezést. A méretezési csoportok lehetővé teszik a nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését különböző [frissítési házirend](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model) -beállításokkal. Konfigurálhat egy frissítést a méretezési csoport modelljében, és az új konfigurációt automatikusan alkalmazza minden méretezési csoport példányra, ha a frissítési szabályzatot automatikusra vagy működésre állította.
 
-Mivel az alkalmazás feldolgozza a forgalmat, előfordulhat olyan helyzetben, amikor a méretezési csoport többi eltérően kell kezelni olyan specifikus példányai állítson be egy példányt. Például a méretezési csoportban lévő egyes példányok a hosszú ideig futó műveletek végrehajtása sikerült, és nem szeretné, hogy ezek a példányok lehet horizontálisan az addig, amíg a művelet befejezéséhez. Előfordulhat, hogy is speciális rendelkezik, a méretezési csoportban, mint a méretezési készlet más tagjai további vagy a különböző feladatok végrehajtásához néhány példányok. Ezek a "speciális" virtuális gépek, nem lehet módosítani a méretezési csoportban a többi példány van szüksége. Példányok védelmének engedélyezése ezeket és más forgatókönyvek esetében az alkalmazás további vezérlők biztosít.
+Ahogy az alkalmazás dolgozza fel a forgalmat, előfordulhatnak olyan helyzetek, amikor azt szeretné, hogy bizonyos példányok eltérően legyenek kezelve a méretezési csoport többi példányának többi részétől. Előfordulhat például, hogy a méretezési csoport bizonyos példányain hosszan futó műveletek hajthatók végre, és nem szeretné, hogy ezek a példányok skálázásra legyenek, amíg a műveletek be nem fejeződik. Előfordulhat, hogy a méretezési csoport néhány példánya is specializált, hogy a méretezési csoport többi tagjánál további vagy eltérő feladatokat hajtson végre. Ezek a speciális virtuális gépek nem módosíthatók a méretezési csoport többi példányával. A példányok védelme biztosítja a további vezérlőket, amelyek lehetővé teszik ezen és egyéb forgatókönyvek alkalmazását.
 
-Ez a cikk bemutatja, hogyan lehet alkalmazni, és a másik példány védelmi képességek használata a méretezési csoport példányaihoz.
+Ez a cikk bemutatja, hogyan alkalmazhatja és használhatja a különböző példányok védelmi funkcióit a méretezési csoport példányaival.
 
 > [!NOTE]
->Példányok védelmének jelenleg nyilvános előzetes verzióban érhető el. Nem vehetnek részt eljárás az alább ismertetett előzetes funkciók használatához szükséges. Példány protection előzetes verziója csak a 2019-03-01-es verziójú API-val és a felügyelt lemezek használata a méretezési csoportok esetén támogatott.
+>A példányok védelme jelenleg nyilvános előzetes verzióban érhető el. Az alábbiakban ismertetett nyilvános előzetes funkciók használatához nincs szükség beavatkozásra. A példányok védelmének előzetes verziója csak a 2019-03-01-es API-verzióval és a felügyelt lemezeket használó méretezési csoportokkal támogatott.
 
-## <a name="types-of-instance-protection"></a>Példányok védelmének típusai
-Méretezési csoportokhoz kétféle típusú példány védelmi funkciókat biztosítják:
+## <a name="types-of-instance-protection"></a>A példányok védelmének típusai
+A méretezési csoportok két típusú példány-védelmi képességet biztosítanak:
 
--   **A horizontális leskálázási védelme**
-    - Által engedélyezett **protectFromScaleIn** tulajdonságot a méretezési csoport példány beállítása
-    - Által kezdeményezett automatikus leskálázási ellen védi a példány
-    - (Beleértve a példány törlése) példány felhasználó által kezdeményezett műveletek **nincs letiltva**
-    - A méretezési műveletek (frissítése, rendszerkép alaphelyzetbe állítása, szabadítsa fel, stb.) vannak **nincs letiltva**
+-   **Védelem a méretezésből**
+    - Engedélyezve a **protectFromScaleIn** tulajdonságon keresztül a méretezési csoport példányán
+    - Védi a példányt az autoscale által kezdeményezett skálázásból
+    - A felhasználó által kezdeményezett példányok műveletei (beleértve a példányok törlését) nincsenek **Letiltva**
+    - A méretezési csoporton kezdeményezett műveletek (frissítés, rendszerkép, felszabadítás stb.) nincsenek **Letiltva**
 
--   **A méretezési csoport műveletek védelme**
-    - Által engedélyezett **protectFromScaleSetActions** tulajdonságot a méretezési csoport példány beállítása
-    - Által kezdeményezett automatikus leskálázási ellen védi a példány
-    - A méretezési műveletek ellen védi a példány (például a frissítés, rendszerkép alaphelyzetbe állítása, szabadítsa fel, stb.)
-    - (Beleértve a példány törlése) példány felhasználó által kezdeményezett műveletek **nincs letiltva**
-    - A teljes méretezési törlése **nincs letiltva**
+-   **Védelem a méretezési csoport műveleteiből**
+    - Engedélyezve a **protectFromScaleSetActions** tulajdonságon keresztül a méretezési csoport példányán
+    - Védi a példányt az autoscale által kezdeményezett skálázásból
+    - Védelmet nyújt a méretezési csoporton kezdeményezett műveletektől (például frissítés, rendszerkép-felszabadítás, felszabadítás stb.).
+    - A felhasználó által kezdeményezett példányok műveletei (beleértve a példányok törlését) nincsenek **Letiltva**
+    - A teljes méretezési csoport törlése **nincs letiltva**
 
-## <a name="protect-from-scale-in"></a>A horizontális leskálázási védelme
-Példányok védelmének alkalmazhatók a méretezési csoport példányaihoz, miután a példányok készülnek. Védelmet alkalmazni, és csak a módosított a [példányú modellre](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) és nem a a [méretezési modell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-in"></a>Védelem a méretezésből
+A példányok védelme a példányok létrehozása után is alkalmazható a méretezési csoport példányaira. A védelem csak a [példány modelljére](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) van alkalmazva és módosítva, nem a [méretezési csoport modelljén](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
-Többféle módon, ahogy az az alábbi példák a méretezési csoport példányaihoz horizontális leskálázási védelem alkalmazása.
+A méretezési csoport példányain az alábbi példákban ismertetett módon többféleképpen is alkalmazhat méretezési védelmet.
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa egy példányt a méretezési csoportban lévő horizontális leskálázási védelmi vonatkozik.
+Az alábbi példa a méretezési csoport egyik példányára alkalmazza a méretezési védelmet.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vmScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -73,13 +65,13 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Az API-verzió a 2019-03-01-es és újabb példány védelmét csak támogatott.
+>A példányok védelme csak a 2019-03-01-es és újabb verziójú API-k esetében támogatott
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Használja a [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) parancsmag a méretezési csoport horizontális leskálázási védelmi alkalmazandó szabályzatkészlet példány.
+Használja az [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) parancsmagot, hogy a méretezési csoport példányain alkalmazza a skálázási védelmet.
 
-Az alábbi példa egy példányt a méretezési Példányazonosító 0 kellene horizontális leskálázási védelmi vonatkozik.
+A következő példa a méretezési csoport egy példányára kiterjedő, a 0 AZONOSÍTÓJÚ példányra vonatkozó védelmet alkalmaz.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -91,9 +83,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Használat [az vmss update](/cli/azure/vmss#az-vmss-update) alkalmazzon horizontális leskálázási az a scale set-példány.
+Az [az vmss Update](/cli/azure/vmss#az-vmss-update) használatával méretezhető védelmet alkalmazhat a méretezési csoport példányára.
 
-Az alábbi példa egy példányt a méretezési Példányazonosító 0 kellene horizontális leskálázási védelmi vonatkozik.
+A következő példa a méretezési csoport egy példányára kiterjedő, a 0 AZONOSÍTÓJÚ példányra vonatkozó védelmet alkalmaz.
 
 ```azurecli-interactive
 az vmss update \  
@@ -103,16 +95,16 @@ az vmss update \
   --protect-from-scale-in true
 ```
 
-## <a name="protect-from-scale-set-actions"></a>A méretezési csoport műveletek védelme
-Példányok védelmének alkalmazhatók a méretezési csoport példányaihoz, miután a példányok készülnek. Védelmet alkalmazni, és csak a módosított a [példányú modellre](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) és nem a a [méretezési modell](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
+## <a name="protect-from-scale-set-actions"></a>Védelem a méretezési csoport műveleteiből
+A példányok védelme a példányok létrehozása után is alkalmazható a méretezési csoport példányaira. A védelem csak a [példány modelljére](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-vm-model-view) van alkalmazva és módosítva, nem a [méretezési csoport modelljén](virtual-machine-scale-sets-upgrade-scale-set.md#the-scale-set-model).
 
-Védelme egy példányt a méretezési csoport műveletek is védelmet nyújt a példány által kezdeményezett automatikus leskálázási a.
+A méretezési csoport műveleteinek egy példányának védelme megvédi a példányt az autoscale által kezdeményezett méretezéstől.
 
-Nincsenek a több különböző módot is, hogy alkalmazása a méretezési csoport beállítani műveletek általi védelmet a méretezési csoport példányaihoz az alábbi példák leírt módon.
+Az alábbi példákban a méretezési csoport műveleteinek védelme több módon is végrehajtható a méretezési csoport példányain.
 
 ### <a name="rest-api"></a>REST API
 
-Az alábbi példa egy példányt a méretezési csoportban, a méretezési csoport műveletek védelmet alkalmaz.
+A következő példa a méretezési csoport műveleteinek védelmét alkalmazza a méretezési csoport egy példányára.
 
 ```
 PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachineScaleSets/{vMScaleSetName}/virtualMachines/{instance-id}?api-version=2019-03-01`
@@ -131,14 +123,14 @@ PUT on `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/provi
 ```
 
 > [!NOTE]
->Példányok védelmének csak az API-verzió a 2019-03-01-es és újabb esetén támogatott.</br>
-Védelme egy példányt a méretezési csoport műveletek is védelmet nyújt a példány által kezdeményezett automatikus leskálázási a. Nem adható meg "protectFromScaleIn": hamis értéket, ha a "protectFromScaleSetActions" beállítása: igaz
+>A példányok védelme csak a 2019-03-01-es és újabb verziójú API-k esetében támogatott.</br>
+A méretezési csoport műveleteinek egy példányának védelme megvédi a példányt az autoscale által kezdeményezett méretezéstől. A "protectFromScaleIn" beállítás nem adható meg: hamis a "protectFromScaleSetActions" beállításakor: true
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 
-Használja a [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) parancsmag a skálától-védelem beállítása a scale set-példány műveletek.
+Használja az [Update-AzVmssVM](/powershell/module/az.compute/update-azvmssvm) parancsmagot a méretezési csoport műveleteinek védelmére a méretezési csoport példányára.
 
-Az alábbi példa egy példánnyal rendelkező 0 azonosítója a méretezési scale set műveletekből védelmet alkalmaz.
+Az alábbi példa a méretezési csoport műveleteinek védelmét alkalmazza a méretezési csoport egy olyan példányára, amelynek azonosítója 0.
 
 ```azurepowershell-interactive
 Update-AzVmssVM `
@@ -151,9 +143,9 @@ Update-AzVmssVM `
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
 
-Használat [az vmss update](/cli/azure/vmss#az-vmss-update) védelem a méretezési csoport műveletek a scale set-példányra.
+Az [az vmss Update](/cli/azure/vmss#az-vmss-update) paranccsal alkalmazhatja a méretezési csoport műveleteinek védelmét a méretezési csoport példányára.
 
-Az alábbi példa egy példánnyal rendelkező 0 azonosítója a méretezési scale set műveletekből védelmet alkalmaz.
+Az alábbi példa a méretezési csoport műveleteinek védelmét alkalmazza a méretezési csoport egy olyan példányára, amelynek azonosítója 0.
 
 ```azurecli-interactive
 az vmss update \  
@@ -165,16 +157,16 @@ az vmss update \
 ```
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
-### <a name="no-protectionpolicy-on-scale-set-model"></a>A méretezési csoport modelljéből nincs protectionPolicy
-Példányok védelmének csak akkor érvényes, a méretezési csoport példányaihoz nem pedig a méretezési csoport modelljéből.
+### <a name="no-protectionpolicy-on-scale-set-model"></a>Nincs protectionPolicy a méretezési csoport modelljében
+A példányok védelme csak a méretezési csoport példányain alkalmazható, nem a méretezési csoport modelljére.
 
-### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>A méretezési csoport modelljéből példány nincs protectionPolicy
-Alapértelmezés szerint alkalmazásvédelmi szabályzat nem alkalmazható egy példány létrehozásakor.
+### <a name="no-protectionpolicy-on-scale-set-instance-model"></a>Nincs protectionPolicy a méretezési csoport példányainak modelljében
+Alapértelmezés szerint a rendszer nem alkalmazza a védelmi házirendet egy példányra, amikor az létrejött.
 
-Példányok védelmének méretezési csoport példányaihoz, a példányok létrehozása után is alkalmazható.
+A példányok védelmét a példányok létrehozása után is alkalmazhatja a méretezési csoport példányaira.
 
-### <a name="not-able-to-apply-instance-protection"></a>Nem sikerült példány-védelem
-Példányok védelmének csak az API-verzió a 2019-03-01-es és újabb esetén támogatott. Ellenőrizze az API-verziót használja, és szükség szerint módosítsa. Szükség lehet a PowerShell vagy parancssori felület frissítése a legújabb verzióra.
+### <a name="not-able-to-apply-instance-protection"></a>Nem sikerült alkalmazni a példányok védelmét
+A példányok védelme csak a 2019-03-01-es és újabb verziójú API-k esetében támogatott. Tekintse meg a használt API-verziót, és szükség szerint frissítse azt. Előfordulhat, hogy a legújabb verzióra is frissítenie kell a PowerShellt vagy a CLI-t.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [az alkalmazás üzembe helyezéséhez](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportok.
+## <a name="next-steps"></a>Következő lépések
+Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

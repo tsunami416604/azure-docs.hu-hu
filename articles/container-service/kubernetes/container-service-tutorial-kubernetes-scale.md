@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service-oktatóanyag – alkalmazás skálázása
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás méretezése
 description: Azure Container Service-oktatóanyag – Alkalmazás skálázása
-services: container-service
 author: dlepow
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 09/14/2017
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: b16682535e7311648e832286e1e876ee0e694712
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: b0aa78a519567a8e1ffd76e26f1d9ea3ca701fca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61230385"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274178"
 ---
-# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>(ELAVULT) Kubernetes-podok és -infrastruktúra méretezése
+# <a name="deprecated-scale-kubernetes-pods-and-kubernetes-infrastructure"></a>ELAVULT Kubernetes hüvelyek és Kubernetes infrastruktúra méretezése
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Alkalmazások skálázása az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-scale.md).
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások méretezése az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-scale.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -143,7 +141,7 @@ A parancs kimenete az ügynökcsomópontok számát az `agentPoolProfiles:count`
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban különböző méretezési funkciókat használtunk a Kubernetes-fürtben. A következők feladatokat hajtottuk végre:
 

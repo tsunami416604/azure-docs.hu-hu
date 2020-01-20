@@ -2,7 +2,6 @@
 title: Oktatóanyag – CI/CD – Azure-beli virtuális gépek az Azure-folyamatokkal
 description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a Node. js-alkalmazások folyamatos integrációját (CI) és folyamatos üzembe helyezését (CD) az Azure virtuális gépekre a YAML-alapú Azure-folyamat használatával.
 author: ushan
-manager: jpconnock
 tags: azure-devops-pipelines
 ms.assetid: ''
 ms.service: virtual-machines-linux
@@ -12,12 +11,12 @@ ms.workload: infrastructure
 ms.date: 1/3/2020
 ms.author: ushan
 ms.custom: devops
-ms.openlocfilehash: 0318b73dfb8fed05432dd25b5784e1c890815c53
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: 8fda8e3079084ad917ad5a7fcfc4f80a622e2d82
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778515"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277242"
 ---
 # <a name="tutorial-deploy-your-app-to-linux-virtual-machines-in-azure-using-azure-devops-services-and-azure-pipelines"></a>Oktatóanyag: alkalmazás üzembe helyezése az Azure-beli linuxos virtuális gépeken az Azure DevOps Services és az Azure-folyamatok használatával
 

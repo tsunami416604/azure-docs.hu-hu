@@ -1,129 +1,121 @@
 ---
-title: A StorSimple 8000 sorozat támogatási csomag létrehozása |} A Microsoft Docs
-description: Megtudhatja, hogyan hozhat létre, visszafejtése, és szerkessze a támogatási csomagot, a StorSimple 8000 sorozatú eszköz esetében.
-services: storsimple
-documentationcenter: ''
+title: StorSimple 8000 Series támogatási csomag létrehozása
+description: Megtudhatja, hogyan hozhat létre, fejtheti ki és szerkesztheti a StorSimple 8000 Series-eszköz támogatási csomagját.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
-ms.openlocfilehash: dfc2d8d763a1eb64a37af73e03992f2d948a6856
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 9ca033f6f786c0142261dafa31b93b71a8b3336a
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61481873"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277078"
 ---
-# <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Létrehozása és kezelése a StorSimple 8000 sorozat támogatási csomag
+# <a name="create-and-manage-a-support-package-for-storsimple-8000-series"></a>Támogatási csomag létrehozása és kezelése a StorSimple 8000 sorozathoz
 
 ## <a name="overview"></a>Áttekintés
 
-A StorSimple-támogatási csomagot egy könnyen használható mechanizmust, amely gyűjti az összes releváns napló Support nyújtanak hibaelhárítást végezhetnek a StorSimple eszköz. Az összegyűjtött naplók titkosított és tömörített.
+A StorSimple-támogatási csomag egy könnyen használható mechanizmus, amely az összes releváns naplót gyűjti, hogy segítséget nyújtson Microsoft ügyfélszolgálatanek a StorSimple-eszközök hibáinak elhárításában. Az összegyűjtött naplók titkosítottak és tömörítettek.
 
-Az oktatóanyag részletes utasításokat követve létrehozása és kezelése a StorSimple 8000 sorozatú eszköz esetében a támogatási csomagot tartalmazza. Ha a StorSimple Virtual Array dolgozik, lépjen a [hozzon létre egy log csomagot](storsimple-ova-web-ui-admin.md#generate-a-log-package).
+Ez az oktatóanyag részletes útmutatást tartalmaz a StorSimple 8000 Series-eszköz támogatási csomagjának létrehozásához és kezeléséhez. Ha StorSimple virtuális Tömbvel dolgozik, ugorjon a [naplófájl létrehozása](storsimple-ova-web-ui-admin.md#generate-a-log-package)lehetőségre.
 
-## <a name="create-a-support-package"></a>Hozzon létre egy támogatási csomagot
+## <a name="create-a-support-package"></a>Támogatási csomag létrehozása
 
-Bizonyos esetekben szüksége manuálisan létrehozni a storsimple-höz készült Windows PowerShell-lel a támogatási csomagot. Példa:
+Bizonyos esetekben manuálisan kell létrehoznia a támogatási csomagot Windows PowerShell StorSimple-bővítményeon keresztül. Példa:
 
-* Ha a bizalmas adatokat a naplófájlokban a Microsoft Support megosztása előtt szüksége.
-* Ha problémái vannak kapcsolódási problémák miatt a csomag feltöltése.
+* Ha el kell távolítania a bizalmas adatokat a naplófájlokból a Microsoft ügyfélszolgálata megosztása előtt.
+* Ha a csatlakozási problémák miatt nem sikerül feltölteni a csomagot.
 
-A manuálisan létrehozott támogatási csomag megoszthatja Support, e-mailben. A következő lépésekkel hozzon létre egy támogatási csomagot a Windows PowerShell storsimple-höz készült.
+A manuálisan létrehozott támogatási csomagot megoszthatja Microsoft ügyfélszolgálata e-mail-cím használatával. A következő lépések végrehajtásával hozzon létre egy támogatási csomagot a Windows PowerShell StorSimple-bővítménye.
 
-#### <a name="to-create-a-support-package-in-windows-powershell-for-storsimple"></a>A támogatási csomag létrehozása a Windows PowerShell storsimple-höz készült
+#### <a name="to-create-a-support-package-in-windows-powershell-for-storsimple"></a>Támogatási csomag létrehozása Windows PowerShell StorSimple-bővítménye
 
-1. Egy Windows PowerShell-munkamenetet rendszergazdaként azon a távoli számítógép, amellyel csatlakozni a StorSimple-eszköz elindításához írja be a következő parancsot:
+1. Ha a Windows PowerShell-munkamenetet rendszergazdaként szeretné elindítani a StorSimple-eszközhöz való kapcsolódáshoz használt távoli számítógépen, írja be a következő parancsot:
    
     `Start PowerShell`
-2. A Windows PowerShell-munkamenetben kapcsolódjon a SSAdmin konzol, az eszköz:
+2. A Windows PowerShell-munkamenetben kapcsolódjon az eszköz SSAdmin-konzolhoz:
    
    1. A parancssorba írja be a következőt:
      
        `$MS = New-PSSession -ComputerName <IP address for DATA 0> -Credential SSAdmin -ConfigurationName "SSAdminConsole"`
-   2. A megnyíló párbeszédpanelen adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó az _jelszó1_.
+   2. A megnyíló párbeszédpanelen adja meg az eszköz rendszergazdai jelszavát. Az alapértelmezett jelszó a _jelszó1_.
      
-      ![PowerShell-hitelesítő adatok párbeszédpanel](./media/storsimple-8000-create-manage-support-package/IC740962.png)
+      ![PowerShell hitelesítő adatai párbeszédpanel](./media/storsimple-8000-create-manage-support-package/IC740962.png)
    3. Kattintson az **OK** gombra.
    4. A parancssorba írja be a következőt:
      
       `Enter-PSSession $MS`
-3. A megnyitott munkamenetben adja meg a megfelelő parancsot.
+3. A megnyíló munkamenetben adja meg a megfelelő parancsot.
    
-   * Jelszóval védett hálózati megosztások adja meg:
+   * A jelszóval védett hálózati megosztások esetében írja be a következőt:
      
        `Export-HcsSupportPackage -Path <\\IP address\location of the shared folder> -Include Default -Credential domainname\username`
      
-       Kérni fogja a jelszó és a egy titkosítási jelszó (mivel titkosítva van a támogatási csomag). A támogatási csomagot létrejön az alapértelmezett mappában (eszköznév hozzáfűzi az aktuális dátum és idő).
-   * Amelyek nem jelszóval védett megosztások esetén nem kell a `-Credential` paraméter. Adja meg a következőket:
+       Meg kell adnia egy jelszót és egy titkosítási jelszót (mivel a támogatási csomag titkosítva van). A rendszer Ezután létrehoz egy támogatási csomagot az alapértelmezett mappában (az eszköz neve az aktuális dátummal és idővel van hozzáfűzve).
+   * A jelszóval nem védett megosztások esetében nincs szükség a `-Credential` paraméterre. Adja meg a következőket:
      
        `Export-HcsSupportPackage`
      
-       A támogatási csomag mindkét vezérlőn az alapértelmezett mappában jön létre. A csomag nincs egy titkosított, tömörített fájlt, amely hibaelhárításhoz Support lehet küldeni. További információkért lásd: [forduljon a Microsoft támogatási](storsimple-8000-contact-microsoft-support.md).
+       A támogatási csomag az alapértelmezett mappában mindkét vezérlőhöz létrejön. A csomag egy titkosított, tömörített fájl, amelyet a rendszer a hibaelhárításhoz Microsoft ügyfélszolgálata küldhet. További információ: [Contact Microsoft ügyfélszolgálata](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Az Export-HcsSupportPackage parancsmag-paraméterek
+### <a name="the-export-hcssupportpackage-cmdlet-parameters"></a>Az export-Hcssupportpackage futtatásával parancsmag paraméterei
 
-Az Export-HcsSupportPackage parancsmag a következő paramétereket is használhatja.
+A következő paraméterek használhatók az export-Hcssupportpackage futtatásával parancsmaggal.
 
-| Paraméter | Kötelező/választható | Leírás |
+| Paraméter | Kötelező/nem kötelező | Leírás |
 | --- | --- | --- |
-| `-Path` |Szükséges |Használatával a megosztott hálózati mappát, amelyben a támogatási csomag kerül helyének megadására. |
-| `-EncryptionPassphrase` |Kötelező |Adjon meg egy jelszót a segítségével titkosítja a támogatási csomag használatával. |
-| `-Credential` |Optional |Adja meg a hálózati megosztott mappában a hozzáférési hitelesítő adatok használatával. |
-| `-Force` |Optional |Használja a titkosítási jelszót megerősítési lépés kihagyásához. |
-| `-PackageTag` |Optional |Megadhatja egy könyvtárat *elérési út* található, amely a támogatási csomagot el van helyezve. Az alapértelmezett érték a [device name]-[beállított aktuális dátum és time:yyyy-MM-dd-HH-mm-ss]. |
-| `-Scope` |Optional |Adja meg a **fürt** (alapértelmezett), hogy mindkét vezérlő támogatási csomag létrehozása. Ha azt szeretné, csak az aktuális vezérlő a csomagot szeretne létrehozni, adja meg a **vezérlő**. |
+| `-Path` |Szükséges |A használatával megadhatja annak a hálózati megosztott mappának a helyét, amelyben a támogatási csomag el van helyezve. |
+| `-EncryptionPassphrase` |Szükséges |A használatával adjon meg egy jelszót a támogatási csomag titkosításához. |
+| `-Credential` |Választható |A használatával adja meg a hálózati megosztott mappához tartozó hozzáférési hitelesítő adatokat. |
+| `-Force` |Választható |Ezzel a paranccsal átugorhatja a titkosítási jelszó megerősítésének lépését. |
+| `-PackageTag` |Választható |Ezzel a paranccsal adhatja meg a könyvtárat a támogatási csomag elhelyezésének *elérési útja* alatt. Az alapértelmezett érték [eszköznév] – [aktuális dátum és idő: ÉÉÉÉ-HH-NN-HH-hh-SS]. |
+| `-Scope` |Választható |Válassza a **fürtként** (alapértelmezett) lehetőséget egy támogatási csomag létrehozásához mindkét vezérlőhöz. Ha csak az aktuális vezérlőhöz szeretne csomagot létrehozni, akkor a **vezérlőt**kell megadnia. |
 
-## <a name="edit-a-support-package"></a>A támogatási csomag szerkesztése
+## <a name="edit-a-support-package"></a>Támogatási csomag szerkesztése
 
-Miután létrehozta a támogatási csomagot, szüksége lehet a bizalmas adatokat a csomag szerkesztése. Ez magában foglalhatja kötetnevek eszköz IP-címek és a naplófájlok biztonsági mentési nevet.
+A támogatási csomag létrehozása után előfordulhat, hogy a bizalmas adatok eltávolításához szerkesztenie kell a csomagot. Ebbe beletartozhatnak a kötetek neve, az eszköz IP-címei és a biztonsági mentési nevek a naplófájlokban.
 
 > [!IMPORTANT]
-> Csak akkor szerkeszthető egy támogatási csomagot, amely a storsimple-höz készült Windows PowerShell-lel jött létre. Az Azure Portalon a StorSimple-Eszközkezelő szolgáltatással létrehozott csomagot nem szerkeszthető.
+> Csak Windows PowerShell StorSimple-bővítménye által generált támogatási csomagot lehet szerkeszteni. A Azure Portalban létrehozott csomagok nem szerkeszthetők a StorSimple Eszközkezelő szolgáltatással.
 
-Szerkesztheti a támogatási csomagot a Microsoft Support helyen, először vissza a támogatási csomagot, a fájlok szerkesztésére és újbóli titkosítása a azt. Hajtsa végre a következő lépéseket.
+Ha a Microsoft ügyfélszolgálata helyre történő feltöltés előtt szeretne szerkeszteni egy támogatási csomagot, először fejtse vissza a támogatási csomagot, szerkessze a fájlokat, majd újra titkosítsa. Hajtsa végre a következő lépéseket.
 
-#### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>Szerkesztheti a támogatási csomagot, a Windows PowerShell storsimple-höz készült
+#### <a name="to-edit-a-support-package-in-windows-powershell-for-storsimple"></a>Támogatási csomag szerkesztése Windows PowerShell StorSimple-bővítménye
 
-1. Hozzon létre egy támogatási csomagot, mint korábban, az itt ismertetett [, hozzon létre egy támogatási csomagot a Windows PowerShell storsimple-höz készült](#to-create-a-support-package-in-windows-powershell-for-storsimple).
-2. [Töltse le a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) helyileg, az ügyfél.
-3. A Windows PowerShell-modul importálásához. Adja meg a helyi mappát, amelybe letöltötte a parancsfájl elérési útját. Importálja a modult, írja be:
+1. Hozzon létre egy támogatási csomagot az előzőekben leírtak szerint a [támogatási csomag létrehozásához Windows PowerShell StorSimple-bővítményeban](#to-create-a-support-package-in-windows-powershell-for-storsimple).
+2. [Töltse le helyileg a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Script-to-decrypt-a-a8d1ed65) az ügyfélen.
+3. Importálja a Windows PowerShell-modult. Adja meg annak a helyi mappának az elérési útját, amelyben a parancsfájlt letöltötte. A modul importálásához írja be a következőt:
    
     `Import-module <Path to the folder that contains the Windows PowerShell script>`
-4. Összes fájl *.aes* titkosított és tömörített fájlok. Kibontása és fejti vissza a fájlokat, írja be:
+4. Az összes fájl tömörített és titkosított *. AES* -fájl. A fájlok kibontásához és visszafejtéséhez írja be a következőt:
    
     `Open-HcsSupportPackage <Path to the folder that contains support package files>`
    
-    Vegye figyelembe, hogy a fájl tényleges bővítmények most megjelenik az összes fájlt.
+    Vegye figyelembe, hogy a tényleges fájlkiterjesztések mostantól megjelennek az összes fájlhoz.
    
     ![Támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750706.png)
-5. Ha a titkosítási jelszót kér, adja meg a jelszót, amelyet a támogatási csomag létrehozásakor használt.
+5. Ha a rendszer a titkosítási jelszó megadását kéri, adja meg a támogatási csomag létrehozásakor használt jelszót.
    
         cmdlet Open-HcsSupportPackage at command pipeline position 1
    
         Supply values for the following parameters:EncryptionPassphrase: ****
-6. Keresse meg a naplófájlokat tartalmazó mappát. Most kibontása és visszafejteni a naplófájlokat, mert ezek lesz az eredeti fájlkiterjesztés. Módosíthatja bármely, a specifikus információkat, például kötetnevek és eszközök IP-címét, távolítsa el ezeket a fájlokat, és mentse a fájlokat.
-7. Zárja be a fájlok tömörítése a gzip használatával történik, és titkosítani az AES-256. Ez a sebesség és a biztonság a támogatási csomag átvitele a hálózaton keresztül. Tömörítését, és a fájlok titkosítását, adja meg a következőket:
+6. Keresse meg a naplófájlokat tartalmazó mappát. Mivel a naplófájlok kibontása és visszafejtése már megtörtént, a fájlok eredeti kiterjesztéssel rendelkeznek. A fájlok módosításával távolítsa el az ügyfélre vonatkozó adatokat, például a kötetek nevét és az eszköz IP-címeit, és mentse a fájlokat.
+7. A fájlok bezárásával tömörítheti azokat a gzip használatával, és titkosíthatja azokat az AES-256-mel. Ez a támogatási csomag hálózaton keresztül történő átvitelének gyorsasága és biztonsága. A fájlok tömörítéséhez és titkosításához írja be a következőt:
    
     `Close-HcsSupportPackage <Path to the folder that contains support package files>`
    
     ![Támogatási csomag szerkesztése](./media/storsimple-8000-create-manage-support-package/IC750707.png)
-8. Amikor a rendszer kéri, adja meg a módosított támogatási csomag szükséges jelszót.
+8. Ha a rendszer kéri, adjon meg egy titkosítási jelszót a módosított támogatási csomaghoz.
    
         cmdlet Close-HcsSupportPackage at command pipeline position 1
         Supply values for the following parameters:EncryptionPassphrase: ****
-9. Jegyezze fel az új jelszót, úgy, hogy a Microsoft Support kért megoszthatja azt.
+9. Jegyezze fel az új jelszót, hogy megossza azt Microsoft ügyfélszolgálata ha szükséges.
 
-### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Példa: A támogatási csomagot jelszóval védett megosztáson található fájlok szerkesztése
+### <a name="example-editing-files-in-a-support-package-on-a-password-protected-share"></a>Példa: fájlok szerkesztése egy támogatási csomagban a jelszóval védett megosztáson
 
-Az alábbi példa bemutatja, hogyan visszafejteni, szerkesztheti és újra titkosítja egy támogatási csomagot.
+Az alábbi példa egy támogatási csomag visszafejtését, szerkesztését és újratitkosítását mutatja be.
 
         PS C:\WINDOWS\system32> Import-module C:\Users\Default\StorSimple\SupportPackage\HCSSupportPackageTools.psm1
 
@@ -145,9 +137,9 @@ Az alábbi példa bemutatja, hogyan visszafejteni, szerkesztheti és újra titko
 
         PS C:\WINDOWS\system32>
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* További információ a [által gyűjtött információk a támogatási csomag](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
-* Ismerje meg, hogyan [támogatási csomagok és eszköznaplók hibaelhárítás eszköz segítségével](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
-* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-8000-manager-service-administration.md).
+* Tudnivalók a [támogatási csomagban gyűjtött információkról](https://support.microsoft.com/help/3193606/storsimple-support-packages-and-device-logs)
+* Ismerje meg, hogyan [használhatók a támogatási csomagok és az eszközök naplófájljai az eszköz üzembe helyezésének hibakereséséhez](storsimple-8000-troubleshoot-deployment.md#support-packages-and-device-logs-available-for-troubleshooting).
+* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

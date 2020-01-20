@@ -1,27 +1,21 @@
 ---
 title: Virtuális gépek terheléselosztása rendelkezésre állási zónák között – Azure CLI – Azure Load Balancer
 description: Ez az Azure CLI-példaszkript bemutatja, hogyan lehet elosztani a forgalom jelentette terhelést a virtuális gépek között több rendelkezésre állási zónán keresztül
-services: load-balancer
 documentationcenter: load-balancer
 author: asudbring
-manager: jeconnoc
-editor: tysonn
-tags: ''
 Customer intent: As an IT administrator, I want to create a load balancer that load balances incoming internet traffic to virtual machines across availability zones in a region.
-ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: azurecli
 ms.topic: sample
-ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 06/14/2018
 ms.author: allensu
-ms.openlocfilehash: 92f03981a573a9688115d9505266e94b7cab0e78
-ms.sourcegitcommit: b1a8f3ab79c605684336c6e9a45ef2334200844b
+ms.openlocfilehash: 8ef4a0d1eca76ffaad7136c9b55756b96b80925f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74048888"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274590"
 ---
 # <a name="azure-cli-script-example-load-balance-vms-across-availability-zones"></a>Azure CLI-példaszkript: Virtuális gépek terheléselosztása rendelkezésre állási zónák között
 

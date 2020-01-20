@@ -1,25 +1,17 @@
 ---
-title: Microsoft Azure StorSimple Data Manager felhasználói felülete | Microsoft Docs
+title: Microsoft Azure StorSimple Data Manager felhasználói felület
 description: Útmutató StorSimple Data Manager szolgáltatás felhasználói felületének használatához
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 3a87b4c07d2e961d9876fb44c6584f37ad9246df
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: d485a2655b569b3def6162934857b02dbe4f75ea
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73796647"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273967"
 ---
 # <a name="manage-the-storsimple-data-manager-service-in-azure-portal"></a>A StorSimple Data Manager szolgáltatás kezelése Azure Portal
 
@@ -56,7 +48,7 @@ StorSimple Data Manager szolgáltatás létrehozásához hajtsa végre az alább
     
    5. Ha a szolgáltatásra mutató hivatkozást szeretne kapni az irányítópulton, válassza a **rögzítés az irányítópulton**lehetőséget.
     
-   6. Kattintson a **Létrehozás** elemre.
+   6. Kattintson a **Create** (Létrehozás) gombra.
 
       ![StorSimple Data Manager szolgáltatás létrehozása 3](./media/storsimple-data-manager-ui/create-service-4.png)
 
@@ -141,7 +133,7 @@ A feladatdefiníció létrehozásához hajtsa végre az alábbi lépéseket.
 
 ### <a name="run-the-job-definition"></a>A feladatdefiníció futtatása
 
-Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell áthelyeznie az adatait, futtatnia kell azt. Futásidőben egyes paramétereket különbözőképpen lehet megadni. A lépések a következők:
+Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell áthelyeznie az adatait, futtatnia kell azt. Futásidőben egyes paramétereket különbözőképpen lehet megadni. A konfigurálás lépései a következők:
 
 1. Válassza ki a StorSimple Data Manager szolgáltatást, és lépjen a **felügyeleti > feladatok definíciói**között. Jelölje ki, majd kattintson a futtatni kívánt feladatdefiníció elemre.
      
@@ -160,6 +152,6 @@ Ha az StorSimple-ből a feladatdefiníció által megadott Storage-fiókba kell 
     ![A 4. futtatási hely elindítása](./media/storsimple-data-manager-ui/start-job-run4.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [StorSimple Data Manager feladatok elindításához használja a .net SDK-t](storsimple-data-manager-dotnet-jobs.md).

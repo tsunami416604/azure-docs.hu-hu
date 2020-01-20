@@ -1,30 +1,22 @@
 ---
-title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása és kezelése | Microsoft Docs
+title: Oktatóanyag – Azure virtuálisgép-méretezési csoport létrehozása és kezelése
 description: Megismerheti, hogy az Azure CLI segítségével hogyan hozhat létre virtuálisgép-méretezési csoportokat, valamint néhány általános felügyeleti feladattal ismerkedhet meg, például a példány elindításának és leállításának módjával vagy a méretezési csoport kapacitásának módosításával.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: b0d2a72567783ca1c127f76d94ddc9c5e007ea89
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: c2bddb4ef1401dd45b5aa9418f6e1890df0879ae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188543"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277220"
 ---
-# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Létrehozása és kezelése az Azure CLI-vel rendelkező virtuálisgép-méretezési csoportot
-A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+# <a name="tutorial-create-and-manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport létrehozása és kezelése az Azure CLI használatával
+A virtuálisgép-méretezési csoportok segítségével azonos, automatikus skálázású virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuálisgép-méretezési csoport létrehozása és kapcsolódás a csoporthoz
@@ -192,7 +184,7 @@ A virtuálisgép-példány mérete, más néven *SKU*, a virtuálisgép-példán
 ### <a name="vm-instance-sizes"></a>A virtuálisgép-példányok mérete
 Az alábbi táblázat a virtuális gépek gyakori méreteit használati esetek alapján kategorizálja.
 
-| Typo                     | Gyakori méretek           |    Leírás       |
+| Type (Típus)                     | Gyakori méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Általános célú](../virtual-machines/linux/sizes-general.md)         |Dsv3, Dv3, DSv2, Dv2, DS, D, Av2, A0-7| Kiegyensúlyozott processzor-memória arány. Ideális választás fejlesztéshez/teszteléshez, valamint kis- és közepes méretű alkalmazásokhoz és adatkezelési megoldásokhoz.  |
 | [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)   | Fs, F             | Magas processzor-memória arány a processzor javára. Megfelelő választás a közepes forgalmú alkalmazásokhoz, hálózati berendezésekhez és kötegelt folyamatokhoz.        |
@@ -302,7 +294,7 @@ az group delete --name myResourceGroup --no-wait --yes
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag az Azure CLI néhány alapszintű méretezésicsoport-létrehozási és -kezelési műveletét mutatta be:
 
 > [!div class="checklist"]

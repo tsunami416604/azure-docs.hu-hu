@@ -1,31 +1,23 @@
 ---
-title: Oktatóanyag – Méretezési csoport automatikus skálázása az Azure CLI használatával | Microsoft Docs
+title: Oktatóanyag – méretezési csoport autoskálázása az Azure CLI-vel
 description: Ismerje meg, hogyan skálázhat automatikusan virtuálisgép-méretezési csoportokat az Azure CLI használatával a processzorterhelés növekedésének vagy csökkenésének megfelelően
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 05/18/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 4064816ae932a0f26fd3478420c69f3e8fba8732
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 9ede78933e6b9e6933b0c5dabce395eb10713c88
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60188904"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278455"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése az Azure CLI használatával
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-the-azure-cli"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus skálázása az Azure CLI használatával
 
-Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Automatikus skálázás használata méretezési csoportokkal
@@ -62,7 +54,7 @@ az vmss create \
 
 ## <a name="define-an-autoscale-profile"></a>Automatikus skálázási profil meghatározása
 
-Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségek Virtuálisgép-példányok nem folyamatosan létrehozásával, és elosztja a elfogadható teljesítményt, mely egy horizontális leskálázási esemény is példányok minimális száma. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
+Az automatikus skálázás méretezési csoportban történő engedélyezéséhez először határozza meg az automatikus skálázási profilt. Ez a profil határozza meg a méretezési csoport alapértelmezett, minimális és maximális kapacitását. Ezek a korlátok lehetővé teszik a költségeket a virtuálisgép-példányok folyamatos létrehozásával, valamint az elfogadható teljesítmény elosztásával, amely egy méretezési eseményen maradó példányok minimális száma. Automatikus skálázási profilt az [az monitor autoscale create](/cli/azure/monitor/autoscale#az-monitor-autoscale-create) paranccsal hozhat létre. A következő példa a virtuálisgép-példányok alapértelmezett és egyben minimális (*2*), valamint a maximális (*10*) értékét állítja be:
 
 ```azurecli-interactive
 az monitor autoscale create \
@@ -130,14 +122,14 @@ SSH-n keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg saj
 ssh azureuser@13.92.224.66 -p 50001
 ```
 
-A bejelentkezést követően telepítse a **stress** segédprogramot. Indítson el *10* **terhelési** feldolgozót, amelyek processzorterhelést hoznak létre. Ezek a feldolgozók *420* másodpercig futnak. Ez elegendő idő ahhoz, hogy az automatikus méretezési szabályok alkalmazzák a kívánt műveletet.
+A bejelentkezést követően telepítse a **stress** segédprogramot. A CPU-terhelést előidéző *10* **stressz** -feldolgozók indítása. Ezek a feldolgozók *420* másodpercig futnak. Ez elegendő idő ahhoz, hogy az automatikus méretezési szabályok alkalmazzák a kívánt műveletet.
 
 ```azurecli-interactive
 sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Amikor **stress** hasonló eredményeket jelenít meg *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
+Ha a **stress** segédprogram a *stress: info: [2688] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* kimenethez hasonló értékeket mutat, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
 
 Annak megerősítéséhez, hogy a **stress** segédprogram processzorterhelést hoz létre, vizsgálja meg az aktív rendszerterhelést a **top** segédprogram segítségével:
 
@@ -165,7 +157,7 @@ sudo apt-get -y install stress
 sudo stress --cpu 10 --timeout 420 &
 ```
 
-Újra, amikor **stress** hasonló eredményeket jelenít meg *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd*, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
+Ismét, ha a **stress** segédprogram a *stress: info: [2713] dispatching hogs: 10 cpu, 0 io, 0 vm, 0 hdd* kimenethez hasonló értékeket mutat, nyomja le az *Enter* billentyűt a parancssorhoz való visszatéréshez.
 
 Zárja be a második virtuálisgép-példánnyal létesített kapcsolatot. A **stress** segédprogram továbbra is fut a virtuálisgép-példányon.
 
@@ -214,7 +206,7 @@ A méretezési csoport és további erőforrások eltávolításához törölje 
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure CLI használatával:
 

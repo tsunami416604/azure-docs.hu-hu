@@ -1,20 +1,18 @@
 ---
 title: ELAVULT CI/CD Azure Container Service motorral és Swarm móddal
 description: A Azure Container Service motort a Docker Swarm Mode, egy Azure Container Registry és az Azure DevOps segítségével folyamatosan, több tárolós .NET Core-alkalmazás használatával kézbesítheti
-services: container-service
 author: diegomrtnzg
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/27/2017
 ms.author: dimart
 ms.custom: mvc
-ms.openlocfilehash: fe24ab21a9a7d227d58e50c58f9aff2bd91e767f
-ms.sourcegitcommit: fe6b91c5f287078e4b4c7356e0fa597e78361abe
+ms.openlocfilehash: 1ec7ece6f5afd1bbd2613ae08af04b82e8a156b2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2019
-ms.locfileid: "68598551"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277914"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-acs-engine-and-docker-swarm-mode-using-azure-devops"></a>ELAVULT Teljes CI/CD-folyamat egy többtárolós alkalmazás üzembe helyezéséhez Azure Container Service az ACS motor és a Docker Swarm mód használatával az Azure DevOps
 
@@ -27,7 +25,6 @@ Napjainkban a Felhőbeli modern alkalmazások fejlesztése során az egyik legna
 * Azure Container Registry
 * Azure DevOps
 
-Ez a cikk egy egyszerű alkalmazáson alapul, amely a [githubon](https://github.com/jcorioland/MyShop/tree/docker-linux)érhető el, ASP.net Core. Az alkalmazás négy különböző szolgáltatásból áll: három webes API-val és egy webes előtérrel:
 
 ![MyShop-minta alkalmazása](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/myshop-application.png)
 
@@ -60,7 +57,7 @@ Az oktatóanyag elindítása előtt el kell végeznie a következő feladatokat:
 > Az Azure Container Service Docker Swarm-vezénylője örökölt önálló Swarmot használ. Az integrált [Swarm mód](https://docs.docker.com/engine/swarm/) (a Docker 1.12-es és újabb verzióiban) jelenleg nem támogatott vezénylő az Azure Container Service-ben. Ezért az [ACS motort](https://github.com/Azure/acs-engine/blob/master/docs/swarmmode.md), egy Közösség által biztosított gyors üzembe helyezési [sablont](https://azure.microsoft.com/resources/templates/101-acsengine-swarmmode/)vagy egy Docker-megoldást használunk az [Azure piactéren](https://azuremarketplace.microsoft.com).
 >
 
-## <a name="step-1-configure-your-azure-devops-organization"></a>1\. lépés: Az Azure DevOps-szervezet konfigurálása 
+## <a name="step-1-configure-your-azure-devops-organization"></a>1\. lépés: az Azure DevOps-szervezet konfigurálása 
 
 Ebben a szakaszban az Azure DevOps-szervezetet konfigurálja. Az Azure DevOps Services-végpontok konfigurálásához az Azure DevOps-projektben kattintson az eszköztár **Beállítások** ikonjára, majd válassza a **szolgáltatások**lehetőséget.
 
@@ -70,8 +67,8 @@ Ebben a szakaszban az Azure DevOps-szervezetet konfigurálja. Az Azure DevOps Se
 
 Hozzon létre egy kapcsolatot az Azure DevOps-projekt és az Azure-fiókja között.
 
-1. A bal oldalon kattintson az **új szolgáltatási végpont** > **Azure Resource Manager**elemre.
-2. Az Azure-DevOps Azure-fiókkal való működésének engedélyezéséhez válassza ki az előfizetését, majd kattintson **az OK**gombra.
+1. A bal oldalon kattintson az **új szolgáltatási végpont** > **Azure Resource Manager**lehetőségre.
+2. Az Azure-DevOps Azure-fiókkal való működésének engedélyezéséhez válassza ki az **előfizetését** , majd kattintson **az OK**gombra.
 
     ![Azure DevOps – Azure engedélyezése](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-azure.PNG)
 
@@ -94,7 +91,7 @@ A CI/CD-folyamatba való beolvasást megelőző lépések a külső kapcsolatok 
 
 Az összes konfiguráció most elkészült. A következő lépésekben létre kell hoznia a CI/CD folyamatot, amely létrehozza és telepíti az alkalmazást a Docker Swarm-fürtre. 
 
-## <a name="step-2-create-the-build-pipeline"></a>2\. lépés: A létrehozási folyamat létrehozása
+## <a name="step-2-create-the-build-pipeline"></a>2\. lépés: a létrehozási folyamat létrehozása
 
 Ebben a lépésben létrehoz egy Build-folyamatot az Azure DevOps-projekthez, és meghatározza a tároló-lemezképek létrehozási munkafolyamatát.
 
@@ -112,7 +109,7 @@ Ebben a lépésben létrehoz egy Build-folyamatot az Azure DevOps-projekthez, é
 
     ![Azure DevOps – változók konfigurációjának összeállítása](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-variables.png)
 
-5. A **Build** -definíciók lapon nyissa meg az eseményindítók lapot, és konfigurálja úgy a buildet, hogy a folyamatos integrációt használja az előfeltételekben létrehozott MyShop-projekt elágazásával. Ezután válassza a **Batch Changes**elemet. Ügyeljen rá, hogy a *Docker-Linux* elemet adja meg **ág**-specifikációként.
+5. A **Build-definíciók** lapon nyissa meg az **Eseményindítók** lapot, és konfigurálja úgy a buildet, hogy a folyamatos integrációt használja az előfeltételekben létrehozott MyShop-projekt elágazásával. Ezután válassza a **Batch Changes**elemet. Ügyeljen rá, hogy a *Docker-Linux* elemet adja meg **ág-specifikációként**.
 
     ![Azure DevOps – adattár konfigurációjának létrehozása](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-github-repo-conf.PNG)
 
@@ -140,24 +137,24 @@ Az egyes rendszerképekhez két Docker-lépést kell megadnia, egyet a rendszerk
 
     ![Azure DevOps – Build lépések hozzáadása](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-add-task.png)
 
-2. Minden rendszerkép esetében állítson be egy lépést, amely `docker build` a parancsot használja.
+2. Minden rendszerkép esetében konfigurálja az `docker build` parancsot használó egyik lépést.
 
     ![Azure DevOps – Docker-Build](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-build.png)
 
-    A Build művelethez válassza ki a Azure Container Registry, a **rendszerkép létrehozása** műveletet, valamint az egyes képeket definiáló Docker. Állítsa be a munkakönyvtárat Docker gyökérkönyvtárként, adja meg a **rendszerkép nevét**, és válassza a Belefoglalás a **legújabb címkét**.
+    A Build művelethez válassza ki a Azure Container Registry, a **rendszerkép létrehozása** műveletet, valamint az egyes képeket definiáló Docker. Állítsa be a **munkakönyvtárat** Docker gyökérkönyvtárként, adja meg a **rendszerkép nevét**, és válassza a **Belefoglalás a legújabb címkét**.
     
-    A rendszerkép nevének a következő formátumúnak kell lennie ```$(RegistryURL)/[NAME]:$(Build.BuildId)```:. Cserélje le a **[name]** nevet a rendszerkép nevére:
+    A rendszerkép nevének a következő formátumúnak kell lennie: ```$(RegistryURL)/[NAME]:$(Build.BuildId)```. Cserélje le a **[name]** nevet a rendszerkép nevére:
     - ```proxy```
     - ```products-api```
     - ```ratings-api```
     - ```recommendations-api```
     - ```shopfront```
 
-3. Minden rendszerkép esetében konfigurálja a `docker push` parancsot használó második lépést.
+3. Mindegyik rendszerképhez konfiguráljon egy második lépést, amely a `docker push` parancsot használja.
 
     ![Azure DevOps – Docker-leküldés](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-docker-push.png)
 
-    A leküldéses művelethez válassza ki az Azure Container registryt, a **lemezkép leküldése** műveletet, írja be az előző lépésben létrehozott **lemezkép nevét** , és válassza a Belefoglalás a **legújabb címkét**.
+    A leküldéses művelethez válassza ki az Azure Container registryt, a **lemezkép leküldése** műveletet, írja be az előző lépésben létrehozott **lemezkép nevét** , és válassza a **Belefoglalás a legújabb címkét**.
 
 4. Miután konfigurálta a létrehozási és leküldéses lépéseket az egyes öt lemezképekhez, adjon hozzá három további lépést a Build munkafolyamatban.
 
@@ -189,7 +186,7 @@ Az egyes rendszerképekhez két Docker-lépést kell megadnia, egyet a rendszerk
 
    ![Azure-DevOps – sikeres létrehozás](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-build-succeeded.png) 
 
-## <a name="step-3-create-the-release-pipeline"></a>3\. lépés: A kiadási folyamat létrehozása
+## <a name="step-3-create-the-release-pipeline"></a>3\. lépés: a kiadási folyamat létrehozása
 
 Az Azure DevOps lehetővé teszi a [kiadások különböző környezetekben való kezelését](https://www.visualstudio.com/team-services/release-management/). A folyamatos üzembe helyezés lehetővé teszi, hogy az alkalmazás a különböző környezetekben (például a fejlesztési, tesztelési, üzem előtti és éles környezetben) zökkenőmentes módon legyen telepítve. Létrehozhat egy olyan környezetet, amely a Azure Container Service Docker Swarm módú fürtöt jelképezi.
 
@@ -199,11 +196,11 @@ Az Azure DevOps lehetővé teszi a [kiadások különböző környezetekben val�
 
 1. Kiadási folyamat létrehozásához kattintson a **kiadások** >  **+ kiadás** elemre.
 
-2. Az összetevő forrásának konfigurálásához kattintson **az** > összetevők**csatolása az**összetevők forrásához elemre. Itt csatolja az új kiadási folyamatot az előző lépésben megadott buildhez. Ezt követően a Docker-compose. YML fájl elérhető a kiadási folyamatban.
+2. Az összetevő forrásának konfigurálásához kattintson **az** összetevők elemre, > **csatolja a forrást**. Itt csatolja az új kiadási folyamatot az előző lépésben megadott buildhez. Ezt követően a Docker-compose. YML fájl elérhető a kiadási folyamatban.
 
     ![Azure DevOps – kiadási összetevők](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-artefacts.png) 
 
-3. A kiadási eseményindító konfigurálásához kattintson az Eseményindítók elemre, és válassza a **folyamatos üzembe helyezés**lehetőséget. Állítsa az triggert ugyanarra az összetevő-forrásra. Ez a beállítás biztosítja, hogy új kiadás induljon el, amikor a Build sikeresen befejeződik.
+3. A kiadási eseményindító konfigurálásához kattintson az **Eseményindítók** elemre, és válassza a **folyamatos üzembe helyezés**lehetőséget. Állítsa az triggert ugyanarra az összetevő-forrásra. Ez a beállítás biztosítja, hogy új kiadás induljon el, amikor a Build sikeresen befejeződik.
 
     ![Azure DevOps – kiadási eseményindítók](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-trigger.png) 
 
@@ -221,11 +218,11 @@ A kiadási munkafolyamat két felvenni kívánt feladatból áll.
 
 1. Konfiguráljon egy feladatot úgy, hogy a Docker Swarm főcsomópontján lévő, a korábban konfigurált SSH-kapcsolatok használatával biztonságosan másolja a levélírás fájlt egy *központi telepítés* mappájába. A részletekért tekintse meg a következő képernyőt.
     
-    Forrás mappája:```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
+    Forrás mappája: ```$(System.DefaultWorkingDirectory)/MyShop-CI/drop```
 
     ![Azure DevOps – kiadási SCP](./media/container-service-docker-swarm-mode-setup-ci-cd-acs-engine/vsts-release-scp.png)
 
-2. Konfiguráljon egy második feladatot egy bash-parancs futtatásához `docker` , `docker stack deploy` és futtassa a parancsot a fő csomóponton. A részletekért tekintse meg a következő képernyőt.
+2. Konfiguráljon egy második feladatot egy bash-parancs végrehajtásához `docker` és `docker stack deploy` parancsok futtatásához a fő csomóponton. A részletekért tekintse meg a következő képernyőt.
 
     ```
     docker login -u $(docker.username) -p $(docker.password) $(docker.registry) && export DOCKER_HOST=:2375 && cd deploy && docker stack deploy --compose-file docker-compose-v3.yml myshop --with-registry-auth
@@ -236,20 +233,20 @@ A kiadási munkafolyamat két felvenni kívánt feladatból áll.
     A főkiszolgálón végrehajtott parancs a Docker CLI-t és a Docker-levélírás CLI-t használja a következő feladatok elvégzéséhez:
 
    - Jelentkezzen be az Azure Container registrybe (Ez három, a **változók** lapon definiált Build változót használ)
-   - A Swarm-végponttal való együttműködéshez adja meg a **DOCKER_HOST** változót (: 2375)
+   - Adja meg a **DOCKER_HOST** változót a Swarm-végponttal való együttműködéshez (: 2375)
    - Navigáljon az előző biztonságos másolási feladat által létrehozott, a Docker-compose. YML fájlt tartalmazó *központi telepítés* mappájához. 
-   - Az `docker stack deploy` új képeket lekérő és tárolókat létrehozó parancsok végrehajtása.
+   - Hajtsa végre `docker stack deploy` parancsokat, amelyek lekérik az új képeket, és létrehozzák a tárolókat.
 
      >[!IMPORTANT]
-     > Az előző képernyőn látható módon hagyja bejelölve a **sikertelen stderr** jelölőnégyzetet. Ez a beállítás lehetővé teszi a kiadási folyamat elvégzését, mert `docker-compose` számos diagnosztikai üzenetet, például tárolókat állítanak le vagy törölnek, a normál hiba kimenetén. Ha bejelöli a jelölőnégyzetet, az Azure DevOps a kiadás során hibákat észlelt, még akkor is, ha minden jól megy.
+     > Az előző képernyőn látható módon hagyja bejelölve a **sikertelen stderr** jelölőnégyzetet. Ez a beállítás lehetővé teszi a kiadási folyamat elvégzését, mert `docker-compose` kinyomtat számos diagnosztikai üzenetet, például a tárolók leállítása vagy törlése a normál hiba kimenetén. Ha bejelöli a jelölőnégyzetet, az Azure DevOps a kiadás során hibákat észlelt, még akkor is, ha minden jól megy.
      >
 3. Az új kiadási folyamat mentése.
 
-## <a name="step-4-test-the-cicd-pipeline"></a>4\. lépés: A CI/CD-folyamat tesztelése
+## <a name="step-4-test-the-cicd-pipeline"></a>4\. lépés: a CI/CD-folyamat tesztelése
 
 Most, hogy elkészült a konfigurációval, itt az ideje, hogy tesztelje ezt az új CI/CD-folyamatot. A legkönnyebben tesztelhető, hogy frissítse a forráskódot, és véglegesítse a módosításokat a GitHub-tárházban. Néhány másodperc elteltével a kód elküldése után egy új Build fut az Azure DevOps. A sikeres befejezést követően új kiadást indít el a rendszer, és üzembe helyezi az alkalmazás új verzióját a Azure Container Service-fürtön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az Azure DevOps CI/CD-vel kapcsolatos további információkért tekintse meg az [Azure-folyamatok dokumentációs](/azure/devops/pipelines/?view=azure-devops) cikkét.
 * További információ az ACS motorról: ACS- [motor GitHub](https://github.com/Azure/acs-engine)-tárháza.

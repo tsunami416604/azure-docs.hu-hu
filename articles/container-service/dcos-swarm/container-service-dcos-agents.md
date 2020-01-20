@@ -1,49 +1,47 @@
 ---
-title: (ELAVULT) Az Azure Container Service DC/OS-ügynökkészletek
-description: A nyilvános és privát ügynökként működése egy Azure Container Service DC/OS-fürttel
-services: container-service
+title: ELAVULT DC/OS Agent-készletek a Azure Container Servicehoz
+description: A nyilvános és a privát ügynök készletei Azure Container Service DC/OS-fürttel működnek
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/04/2017
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 03cacda1aa405cb2d0ded579c8ddb5f6011ce3bb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: bb9b33bf537ebd5a563f8e8a8afd45cd2e5b292d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60478446"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278379"
 ---
-# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>(ELAVULT) Az Azure Container Service DC/OS-ügynökkészletek
+# <a name="deprecated-dcos-agent-pools-for-azure-container-service"></a>ELAVULT DC/OS Agent-készletek a Azure Container Servicehoz
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
-Az Azure Container Service DC/OS fürtök ügynökcsomópontok két készleteket, a nyilvános készlet és a egy privát készletet tartalmaz. Egy alkalmazás vagy a készlethez, ez hatással lenne a kisegítő lehetőségek között a gépek a container service-ben is telepíthető. A gépek lehetnek közzétéve az interneten (nyilvános) vagy tartani a belső (magánhálózati). Ez a cikk rövid áttekintést ad meg, miért azonban nyilvános és privát.
+A Azure Container Service DC/OS-fürtök két készletben, egy nyilvános készletben és egy privát készletben található ügynök-csomópontokat tartalmaznak. Egy alkalmazás üzembe helyezhető bármelyik készletre, ami hatással van a tároló szolgáltatásban lévő gépek közötti kisegítő lehetőségekre. A gépek elérhetővé tehetők az interneten (nyilvános) vagy belső (magán) állapotban. Ez a cikk rövid áttekintést nyújt arról, hogy miért van nyilvános és privát készlet.
 
 
-* **Privát ügynökök**: Privát ügynök csomópontok futtatása nem irányítható hálózaton keresztül. Ehhez a hálózathoz csak érhető el, a rendszergazda zónából, vagy a nyilvános zónákhoz peremhálózati útválasztó keresztül. Alapértelmezés szerint DC/OS elindítja az alkalmazások privát ügynök csomópontokon. 
+* **Privát ügynökök**: a privát ügynök csomópontjai nem irányítható hálózaton futnak. Ez a hálózat csak a felügyeleti zónából vagy a nyilvános zóna peremhálózati útválasztóján keresztül érhető el. Alapértelmezés szerint a DC/OS elindítja az alkalmazásokat a privát ügynök csomópontjain. 
 
-* **Nyilvános ügynökök**: Nyilvános ügynök csomópontokon futnak a DC/OS-alkalmazások és szolgáltatások egy nyilvánosan elérhető-e a hálózaton keresztül. 
+* **Nyilvános ügynökök**: a nyilvános ügynök csomópontjai egy nyilvánosan elérhető hálózaton keresztül futnak a DC/os-alkalmazásokkal és-szolgáltatásokkal. 
 
-További információ a DC/OS-hálózati biztonság: a [DC/OS dokumentációt](https://docs.mesosphere.com/).
+A DC/OS hálózati biztonsággal kapcsolatos további információkért lásd a [DC/os dokumentációját](https://docs.mesosphere.com/).
 
-## <a name="deploy-agent-pools"></a>Ügynökkészletek üzembe helyezése
+## <a name="deploy-agent-pools"></a>Ügynök-készletek üzembe helyezése
 
-Az Azure Container Service DC/OS-ügynökkészletek módon jönnek létre:
+Azure Container Service a DC/OS-ügynökök készletei a következőképpen jönnek létre:
 
-* A **privát készlet** adjon meg mikor ügynökcsomópontok számát tartalmazza, [a DC/OS fürt üzembe helyezéséhez](container-service-deployment.md). 
+* A **privát készlet** tartalmazza a [DC/os fürt telepítésekor](container-service-deployment.md)megadott ügynök-csomópontok számát. 
 
-* A **nyilvános készlet** kezdetben az ügynökcsomópontok előre meghatározott számát tartalmazza. Van a DC/OS fürt üzembe helyezésekor a rendszer automatikusan hozzáadja a készlethez.
+* A **nyilvános készlet** kezdetben előre meghatározott számú ügynök-csomópontot tartalmaz. A rendszer automatikusan hozzáadja ezt a készletet a DC/OS fürt üzembe helyezésekor.
 
-A privát készlet és a nyilvános készlet is az Azure-beli virtuálisgép-méretezési csoportok. Ezen készletek átméretezhető üzembe helyezés után.
+A privát készlet és a nyilvános készlet az Azure virtuálisgép-méretezési csoportok. A készleteket az üzembe helyezés után is átméretezheti.
 
-## <a name="use-agent-pools"></a>Használja az ügynökkészletek
-Alapértelmezés szerint **Marathon** bármely új alkalmazást helyez üzembe a *privát* ügynökcsomóponttal. Az alkalmazás számára explicit módon telepíteni kívánt a *nyilvános* csomópontok az alkalmazás létrehozása során. Válassza ki a **nem kötelező** lapra, és adja meg **slave_public** számára a **elfogadott erőforrás-szerepkörökkel** értéket. Ez a folyamat dokumentált [Itt](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) és a a [DC/OS](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) dokumentációját.
+## <a name="use-agent-pools"></a>Ügynök-készletek használata
+Alapértelmezés szerint a **Marathon** minden új alkalmazást üzembe helyez a *privát* ügynök csomópontjain. Az alkalmazás létrehozása során explicit módon telepítenie kell az alkalmazást a *nyilvános* csomópontokra. Válassza a **választható** fület, és adja meg a **Slave_public** az **elfogadható erőforrás-szerepkörök** értékhez. Ezt a folyamatot a [](container-service-mesos-marathon-ui.md#deploy-a-docker-formatted-container) [DC/os](https://docs.mesosphere.com/1.7/administration/installing/oss/custom/create-public-agent/) dokumentációjában találja.
 
-## <a name="next-steps"></a>További lépések
-* Tudjon meg többet [a DC/OS-tárolók kezelése](container-service-mesos-marathon-ui.md).
+## <a name="next-steps"></a>Következő lépések
+* További információ [a DC/os-tárolók kezeléséről](container-service-mesos-marathon-ui.md).
 
-* Ismerje meg, hogyan [megnyitja a tűzfalat](container-service-enable-public-access.md) tárolóit DC/OS nyilvános hozzáférésének engedélyezéséhez az Azure által biztosított.
+* Megtudhatja, hogyan [nyithatja meg az](container-service-enable-public-access.md) Azure által biztosított tűzfalat a DC/os-tárolók nyilvános elérésének engedélyezéséhez.
 

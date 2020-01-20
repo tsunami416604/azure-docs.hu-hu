@@ -1,26 +1,20 @@
 ---
-title: Availability Zonest használó Azure-méretezési csoport létrehozása | Microsoft Docs
+title: Availability Zonest használó Azure-méretezési csoport létrehozása
 description: Ismerje meg, hogyan hozhat létre olyan Azure-beli virtuálisgép-méretezési csoportokat, amelyek a Availability Zonest használják az kimaradások nagyobb mértékű redundancia érdekében
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 0a31ed174c7a5986594f7c07b7ce00b1649413c8
-ms.sourcegitcommit: beb34addde46583b6d30c2872478872552af30a1
+ms.openlocfilehash: 11695eb889a10dc689b00399a37382a3b9772eae
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2019
-ms.locfileid: "69907983"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274414"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
 
@@ -45,7 +39,7 @@ Méretezési csoport központi telepítésekor lehetősége van arra is, hogy re
 
 ### <a name="zone-balancing"></a>Zónák terheléselosztása
 
-Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van arra is, hogy a "legjobb erőkifejtési zóna egyenlege" vagy a "szigorú zónák egyenlege" lehetőséget választja. A méretezési csoport "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális\\gép vagy +-1 virtuális gép található a méretezési csoport minden más zónájában. Példa:
+Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van arra is, hogy a "legjobb erőkifejtési zóna egyenlege" vagy a "szigorú zónák egyenlege" lehetőséget választja. A méretezési csoport "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális gép vagy +\\-1 virtuális gép található a méretezési csoport minden más zónájában. Példa:
 
 - Egy 2 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában, a 3. zónában 3 virtuális gép pedig kiegyensúlyozottnak számít. Csak egy, eltérő virtuálisgép-számmal rendelkező zóna van, és csak 1 kisebb, mint a többi zóna. 
 - Egy 1 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában és 3 virtuális gép a 3. zónában kiegyensúlyozatlan számít. 1\. zóna a 2. és 3. zónánál kevesebb virtuális gépet tartalmaz.
@@ -65,11 +59,11 @@ Ha egyetlen zónában hoz létre méretezési készletet, akkor szabályozhatja,
 Availability Zones használatához a méretezési csoportnak egy [támogatott Azure-régióban](../availability-zones/az-overview.md#services-support-by-region)kell létrehoznia. Availability Zonest használó méretezési csoport létrehozása az alábbi módszerek egyikével végezhető el:
 
 - [Azure Portal](#use-the-azure-portal)
-- Azure CLI
+- Azure parancssori felület (CLI)
 - [Azure PowerShell](#use-azure-powershell)
 - [Azure Resource Manager sablonok](#use-azure-resource-manager-templates)
 
-## <a name="use-the-azure-portal"></a>Az Azure Portal használata
+## <a name="use-the-azure-portal"></a>Az Azure-portál használata
 
 A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-portal.md)részletezett eljárással. Egy támogatott Azure-régió kiválasztásakor létrehozhat egy méretezési készletet egy vagy több elérhető zónában, ahogy az alábbi példában is látható:
 
@@ -81,7 +75,7 @@ A méretezési csoport és a támogató erőforrások, például az Azure Load B
 
 A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban.
 
-Adja hozzá `--zones` a paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna). Az alábbi példa egy *myScaleSet* nevű egyzónás méretezési csoport létrehozását hozza létre az *1*. zónában:
+Adja hozzá a `--zones` paramétert az az [vmss Create](/cli/azure/vmss) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna). Az alábbi példa egy *myScaleSet* nevű egyzónás méretezési csoport létrehozását hozza létre az *1*. zónában:
 
 ```azurecli
 az vmss create \
@@ -94,13 +88,13 @@ az vmss create \
     --zones 1
 ```
 
-Az egyzónás méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh) -parancsfájlban találhatja.
+Az egyzónás méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI-parancsfájlban](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-single-availability-zone/create-single-availability-zone.sh) találhatja.
 
 ### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
 
 Zóna – redundáns méretezési csoport létrehozásához *szabványos* SKU nyilvános IP-címet és terheléselosztó-t kell használnia. A bővített redundancia érdekében a *standard* SKU zóna-redundáns hálózati erőforrásokat hoz létre. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
-Zóna – redundáns méretezési csoport létrehozásához adja meg a `--zones` paraméterrel több zónát. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *1., 2. és 3*. zónában:
+Zóna – redundáns méretezési csoport létrehozásához több zónát kell megadnia a `--zones` paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *1., 2. és 3*. zónában:
 
 ```azurecli
 az vmss create \
@@ -113,11 +107,11 @@ az vmss create \
     --zones 1 2 3
 ```
 
-A rendszer néhány percet vesz igénybe a méretezési csoport erőforrásainak és virtuális gépei létrehozásához és konfigurálásához a megadott zóná (k) ban. A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) -parancsfájlban találhatja.
+A rendszer néhány percet vesz igénybe a méretezési csoport erőforrásainak és virtuális gépei létrehozásához és konfigurálásához a megadott zóná (k) ban. A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példáját ebben a [CLI-parancsfájlban](https://github.com/Azure/azure-docs-cli-python-samples/blob/master/virtual-machine-scale-sets/create-zone-redundant-scale-set/create-zone-redundant-scale-set.sh) találhatja.
 
-## <a name="use-azure-powershell"></a>Azure PowerShell használatával
+## <a name="use-azure-powershell"></a>Az Azure PowerShell használata
 
-A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá `-Zone` a paramétert a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
+A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá a `-Zone` paramétert a [New-AzVmssConfig](/powershell/module/az.compute/new-azvmssconfig) parancshoz, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
 
 A következő példa egy *myScaleSet* nevű egyzónás méretezési csoport létrehozását hozza létre az *USA 2. keleti* régiójában *1*. A rendszer automatikusan létrehozza az Azure-beli hálózati erőforrásokat a virtuális hálózathoz, a nyilvános IP-címhez és a terheléselosztóhoz. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
@@ -136,7 +130,7 @@ New-AzVmss `
 
 ### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
 
-Zóna – redundáns méretezési csoport létrehozásához adja meg a `-Zone` paraméterrel több zónát. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2 és 3*zónában. A zóna – a virtuális hálózat, a nyilvános IP-cím és a terheléselosztó redundáns Azure hálózati erőforrásai automatikusan létrejönnek. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
+Zóna – redundáns méretezési csoport létrehozásához több zónát kell megadnia a `-Zone` paraméterrel. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2 és 3*zónában. A zóna – a virtuális hálózat, a nyilvános IP-cím és a terheléselosztó redundáns Azure hálózati erőforrásai automatikusan létrejönnek. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
 ```powershell
 New-AzVmss `
@@ -153,7 +147,7 @@ New-AzVmss `
 
 ## <a name="use-azure-resource-manager-templates"></a>Használjon Azure Resource Manager-sablonokat
 
-A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépések című cikkben ismertetett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá `zones` a tulajdonságot a sablonban a *Microsoft. számítási/virtualMachineScaleSets* erőforrástípus számára, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
+A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépések című cikkben ismertetett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban. Adja hozzá a `zones` tulajdonságot a sablon *Microsoft. számítási/virtualMachineScaleSets* erőforrás-típusához, és adja meg a használni kívánt zónát (például *1*., *2*. vagy *3*. zóna).
 
 A következő példa létrehoz egy *myScaleSet* nevű Linux-alapú egyzónás méretezési készletet az *USA 2. keleti* régiójában *1*. zónában:
 
@@ -199,7 +193,7 @@ Az egyzónás méretezési csoportra és a hálózati erőforrásokra vonatkozó
 
 ### <a name="zone-redundant-scale-set"></a>Zóna – redundáns méretezési csoport
 
-Zóna – redundáns méretezési csoport létrehozásához adjon meg több értéket `zones` a tulajdonságban a *Microsoft. számítás/virtualMachineScaleSets* erőforrástípus mezőben. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2, 3*:
+Zóna – redundáns méretezési csoport létrehozásához adjon meg több értéket a *Microsoft. számítási/virtualMachineScaleSets* erőforrástípus `zones` tulajdonságában. A következő példa létrehoz egy *myScaleSet* nevű zóna-redundáns méretezési készletet az *USA 2. keleti* régiójában, *1, 2, 3*:
 
 ```json
 {
@@ -215,10 +209,10 @@ Zóna – redundáns méretezési csoport létrehozásához adjon meg több ért
 }
 ```
 
-Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja *meg a "SKU": {"Name": "Standard"} "* tulajdonság a zóna – redundáns hálózati erőforrások létrehozásához. A forgalom engedélyezéséhez létre kell hoznia egy hálózati biztonsági csoportot és szabályokat is. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
+Ha létrehoz egy nyilvános IP-címet vagy egy terheléselosztó-t, adja meg a *"SKU": {"Name": "standard"} "* tulajdonságot a zóna redundáns hálózati erőforrásainak létrehozásához. A forgalom engedélyezéséhez létre kell hoznia egy hálózati biztonsági csoportot és szabályokat is. További információ: [Azure Load Balancer standard áttekintés](../load-balancer/load-balancer-standard-overview.md) és [standard Load Balancer és Availability Zones](../load-balancer/load-balancer-standard-availability-zones.md).
 
 A zóna-redundáns méretezési csoport és a hálózati erőforrások teljes példája: [Ez a példa Resource Manager-sablon](https://github.com/Azure/vm-scale-sets/blob/master/preview/zones/multizone.json)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most, hogy létrehozta a méretezési csoportot egy rendelkezésre állási zónában, megtudhatja, hogyan [telepíthet alkalmazásokat virtuálisgép](tutorial-install-apps-cli.md) -méretezési csoportokon, illetve hogyan [használhatja az autoscalet a virtuálisgép](tutorial-autoscale-cli.md)-méretezési csoportokkal.
+Most, hogy létrehozta a méretezési csoportot egy rendelkezésre állási zónában, megtudhatja, hogyan [telepíthet alkalmazásokat virtuálisgép-méretezési](tutorial-install-apps-cli.md) csoportokon, illetve hogyan [használhatja az autoscalet a virtuálisgép-méretezési csoportokkal](tutorial-autoscale-cli.md).

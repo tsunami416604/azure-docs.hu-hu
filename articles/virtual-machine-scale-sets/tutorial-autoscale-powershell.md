@@ -1,33 +1,25 @@
 ---
-title: Oktatóanyag – Méretezési csoport automatikus skálázása az Azure PowerShell-lel | Microsoft Docs
+title: Oktatóanyag – méretezési csoport autoskálázása Azure PowerShell
 description: Ismerje meg, hogyan méretezhet automatikusan virtuálisgép-méretezési csoportokat az Azure PowerShell-lel a processzorterhelés növekedésének vagy csökkenésének megfelelően.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 2d743b53f5ca74299c865d381f0832729fc956f4
-ms.sourcegitcommit: 13d5eb9657adf1c69cc8df12486470e66361224e
+ms.openlocfilehash: 50fb0c1c13ceba88b1894fa0f3165dd40b8e23cf
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2019
-ms.locfileid: "68677589"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278411"
 ---
-# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure PowerShell
+# <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: virtuálisgép-méretezési csoportok automatikus skálázása az Azure PowerShell-lel
 
 [!INCLUDE [requires-azurerm](../../includes/requires-azurerm.md)]
 
-Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Méretezési csoport létrehozásakor meghatározza a futtatni kívánt virtuálisgép-példányok számát. Az alkalmazás igényeihez igazodva automatikusan növelheti vagy csökkentheti a virtuálisgép-példányok számát. Az automatikus méretezésnek köszönhetően lépést tarthat az ügyfeleik igényeivel és az alkalmazás teljes élettartama alatt reagálhat az alkalmazás teljesítményében bekövetkezett változásokra. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Automatikus skálázás használata méretezési csoportokkal
@@ -72,7 +64,7 @@ Hozzunk létre egy szabályt a [New-AzureRmAutoscaleRule](/powershell/module/Azu
 
 Ez a szabály az alábbi paramétereket tartalmazza:
 
-| Paraméter               | Magyarázat                                                                                                         | Value          |
+| Paraméter               | Magyarázat                                                                                                         | Value (Díj)          |
 |-------------------------|---------------------------------------------------------------------------------------------------------------------|----------------|
 | *-MetricName*           | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat |
 | *-TimeGrain*            | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc       |
@@ -81,7 +73,7 @@ Ez a szabály az alábbi paramétereket tartalmazza:
 | *-Operator*             | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint   |
 | *-Threshold*            | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%            |
 | *-ScaleActionDirection* | Meghatározza, hogy a szabály alkalmazásakor a méretezési csoport fel- vagy leskáláz.                                             | Növelés       |
-| *–ScaleActionScaleType* | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása   |
+| *-ScaleActionScaleType* | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása   |
 | *-ScaleActionValue*     | Megadja, hogy a virtuálisgép-példányok hány százalékát kell módosítani a szabály aktiválásakor.                                            | 3              |
 | *-ScaleActionCooldown*  | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc      |
 
@@ -97,7 +89,7 @@ $myRuleScaleOut = New-AzureRmAutoscaleRule `
   -Operator "GreaterThan" `
   -Threshold 70 `
   -ScaleActionDirection "Increase" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 3 `
   -ScaleActionCooldown 00:05:00
 ```
@@ -119,7 +111,7 @@ $myRuleScaleIn = New-AzureRmAutoscaleRule `
   -TimeWindow 00:05:00 `
   -ScaleActionCooldown 00:05:00 `
   -ScaleActionDirection "Decrease" `
-  –ScaleActionScaleType "ChangeCount" `
+  -ScaleActionScaleType "ChangeCount" `
   -ScaleActionValue 1
 ```
 
@@ -188,7 +180,7 @@ IpAddress
 52.168.121.216
 ```
 
-Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az azureuser és a *\@P ssw0rd!* ). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
+Távoli kapcsolaton keresztül csatlakozzon az első virtuálisgép-példányhoz. Adja meg a kívánt VM-példány saját nyilvános IP-címét és portszámát, amint az az előző parancsokban látható. Ha a rendszer kéri, adja meg a méretezési csoport létrehozásakor használt hitelesítő adatokat (a minta parancsaiban alapértelmezés szerint az *azureuser* és a *P\@ssw0rd!* ). Az Azure Cloud Shell használata esetén ezt a lépést egy helyi PowerShell-parancssorból vagy egy távoli asztali ügyfélről hajtsa végre. A következő példa a *0* nevű virtuálisgép-példányhoz csatlakozik:
 
 ```powershell
 mstsc /v 52.168.121.216:50001
@@ -254,7 +246,7 @@ Remove-AzureRmResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ez az oktatóanyag bemutatta, hogyan lehet automatikusan horizontálisan le- illetve felskálázni egy méretezési csoportot az Azure PowerShell használatával:
 
 > [!div class="checklist"]

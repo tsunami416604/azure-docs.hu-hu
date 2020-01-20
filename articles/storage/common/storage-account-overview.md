@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/20/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 8f912635fc0fb14fc54426a108af5f67d26213f4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5034aaaee335bbd87e7ea42b448e4e8fbf6aacca
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975702"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274534"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
@@ -64,17 +64,15 @@ A legtöbb esetben az általános célú v2-fiókokat kell használnia. Az aláb
 
 ### <a name="blockblobstorage-accounts"></a>BlockBlobStorage-fiókok
 
-A BlockBlobStorage-fiók egy speciális Storage-fiók, amelyet a strukturálatlan objektumok adatának blokkos blobként való tárolására használ. A prémium szintű blokk Blobok létrehozásához BlockBlobStorage-fiókot is használhat. Ez a típusú Storage-fiók támogatja a Blobok blokkolását és a Blobok hozzáfűzését, de a blobokat, táblákat vagy várólistákat nem.
+A BlockBlobStorage-fiók egy speciális Storage-fiók a prémium szintű teljesítmény szintjén a strukturálatlan objektumok adatai blokk Blobok vagy hozzáfűzési Blobok tárolására. Az általános célú v2-és BlobStorage-fiókokkal összehasonlítva a BlockBlobStorage-fiókok alacsony, konzisztens késést és magasabb tranzakciós sebességet biztosítanak.
 
-Az általános célú v2-és BlobStorage-fiókokkal összehasonlítva a BlockBlobStorage-fiókok alacsony és konzisztens késést és magasabb tranzakciós sebességet biztosítanak.
-
-A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori, ritka elérésű vagy archív hozzáférési szintekre.
+A BlockBlobStorage-fiókok jelenleg nem támogatják a leválasztást a gyakori, ritka elérésű vagy archív hozzáférési szintekre. Ez a típusú tárolási fiók nem támogatja a Blobok, táblák vagy várólisták oldalát.
 
 ### <a name="filestorage-accounts"></a>FileStorage-fiókok
 
 A FileStorage-fiók a prémium fájlmegosztás tárolására és létrehozására szolgáló speciális Storage-fiók. Ez a Storage-fióktípus támogatja a fájlokat, de nem blokkolja a blobokat, hozzáfűzi a blobokat, a blobokat, a táblákat és a várólistákat
 
-A FileStorage-fiókok egyedi teljesítmény-dedikált jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
+A FileStorage-fiókok egyedi teljesítménnyel kapcsolatos jellemzőket kínálnak, például a IOPS-kitörést. A jellemzőkkel kapcsolatos további információkért tekintse meg a fájlok tervezési útmutató [fájlmegosztás teljesítmény szintjei](../files/storage-files-planning.md#file-share-performance-tiers) című szakaszát.
 
 ## <a name="naming-storage-accounts"></a>Tárolási fiókok elnevezése
 
@@ -85,12 +83,20 @@ Ne feledje ezeket a szabályokat a tárfiók elnevezésekor:
 
 ## <a name="performance-tiers"></a>Teljesítményszintek
 
+A létrehozott Storage-fiók típusától függően választhat a standard és a prémium szintű teljesítményszint közül is.
+
+### <a name="general-purpose-storage-accounts"></a>Általános célú tárfiókok
+
 Az általános célú Storage-fiókok a következő teljesítményszint-szintek bármelyikéhez konfigurálhatók:
 
 - Szabványos teljesítményszint Blobok, fájlok, táblák, várólisták és Azure-beli virtuális gépek lemezei tárolásához. A standard szintű Storage-fiókok méretezhetőségi céljaival kapcsolatos további információkért lásd [a standard szintű Storage-fiókok méretezhetőségi céljait](scalability-targets-standard-account.md)ismertető témakört.
-- Prémium szintű teljesítményszint, amely csak a nem felügyelt virtuális gépek lemezeit tárolja. A Microsoft azt javasolja, hogy felügyelt lemezeket használjon az Azure Virtual Machines szolgáltatással nem felügyelt lemezek helyett. A prémium szintű teljesítményszint skálázhatósági céljaival kapcsolatos további információkért lásd: a [prémium lap blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-page-blobs.md).
+- Prémium szintű teljesítményszint a nem felügyelt virtuális gépek lemezeinek tárolásához. A Microsoft azt javasolja, hogy felügyelt lemezeket használjon az Azure Virtual Machines szolgáltatással nem felügyelt lemezek helyett. A prémium szintű teljesítményszint skálázhatósági céljaival kapcsolatos további információkért lásd: a [prémium lap blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-page-blobs.md).
+
+### <a name="blockblobstorage-storage-accounts"></a>BlockBlobStorage
 
 A BlockBlobStorage Storage-fiókok prémium szintű teljesítményt biztosítanak a blokkos Blobok tárolásához és a Blobok hozzáfűzéséhez. További információ: [a prémium szintű blokk blob Storage-fiókok méretezhetőségi célpontjai](../blobs/scalability-targets-premium-block-blobs.md).
+
+### <a name="filestorage-storage-accounts"></a>FileStorage
 
 Az FileStorage Storage-fiókok prémium szintű teljesítményt biztosítanak az Azure-fájlmegosztás számára. További információ: [Azure Files skálázhatósági és teljesítménybeli célok](../files/storage-files-scale-targets.md).
 
@@ -102,7 +108,7 @@ Az elérhető hozzáférési szintek a következők:
 
 - A **gyors** elérési szint. Ez a szintet a Storage-fiókban lévő objektumok gyakori elérésére optimalizáltuk. A gyors elérésű rétegben az adatok elérése a leghatékonyabb, a tárolási költségek pedig magasabbak. Alapértelmezés szerint a rendszer új Storage-fiókokat hoz létre a gyors elérésű rétegben.
 - A **lassú** elérési szint. Ez a csomag olyan nagy mennyiségű, ritkán használt és tárolt adatok tárolására van optimalizálva, amelyek legalább 30 napig vannak tárolva. Az adatok lassú elérésű szinten való tárolása költséghatékonyabb, de az adatokhoz való hozzáférés drágább lehet, mint a gyors elérésű rétegben lévő adatok elérése.
-- Az **archiválási** szint. Ez a szintet csak az egyes blokkos Blobok esetében érhető el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
+- Az **archiválási** szint. Ez a szintet csak az egyes blokk-Blobok esetében és a Blobok hozzáfűzésével érheti el. Az archiválási szint olyan adatokra van optimalizálva, amelyek több órányi lekérési késést tudnak tolerálni, és amelyek legalább 180 napig maradnak az archiválási szinten. Az archiválási szint az adatok tárolására leginkább költséghatékony megoldás. Azonban az adatokhoz való hozzáférés drágább, mint az adatokhoz való hozzáférés a gyors vagy a lassú elérésű szinteken.
 
 Ha módosul az adatok használati mintája, akkor bármikor válthat a hozzáférési szintek között. A hozzáférési szintekkel kapcsolatos további információkért lásd [: Azure Blob Storage: gyakori, ritka elérésű és archív hozzáférési szintek](../blobs/storage-blob-storage-tiers.md).
 

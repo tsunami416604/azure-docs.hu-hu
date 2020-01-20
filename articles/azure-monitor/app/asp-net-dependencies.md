@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 06/25/2019
-ms.openlocfilehash: 7b23da81143a4ae66d9f25cd953c4a3952f27455
-ms.sourcegitcommit: 1bd2207c69a0c45076848a094292735faa012d22
+ms.openlocfilehash: 5b37ce1ba3d8a9d56cb2204c9db89d0e47d9996e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/21/2019
-ms.locfileid: "72678371"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277687"
 ---
 # <a name="dependency-tracking-in-azure-application-insights"></a>Függőségek nyomon követése az Azure Application Insights 
 
@@ -20,7 +20,7 @@ A *függőség* egy külső összetevő, amelyet az alkalmazás meghív. Által�
 
 ## <a name="automatically-tracked-dependencies"></a>Automatikusan követett függőségek
 
-Application Insights SDK-kat a .NET-és .NET Core-hajókhoz `DependencyTrackingTelemetryModule` amely egy telemetria modul, amely automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva.  `DependencyTrackingTelemetryModule` a rendszer [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagot használja, és automatikusan, a NuGet-csomagok egyikének használatakor `Microsoft.ApplicationInsights.Web` vagy `Microsoft.ApplicationInsights.AspNetCore`.
+Application Insights SDK-kat a .NET-és .NET Core-hajókhoz `DependencyTrackingTelemetryModule` amely egy telemetria modul, amely automatikusan gyűjti a függőségeket. Ez a függőségi gyűjtemény automatikusan engedélyezve van a [ASP.net](https://docs.microsoft.com/azure/azure-monitor/app/asp-net) és a [ASP.net Core](https://docs.microsoft.com/azure/azure-monitor/app/asp-net-core) alkalmazásokhoz, ha a társított hivatalos dokumentumokhoz van konfigurálva. `DependencyTrackingTelemetryModule` a rendszer [ezt](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/) a NuGet-csomagot használja, és automatikusan, a NuGet-csomagok egyikének használatakor `Microsoft.ApplicationInsights.Web` vagy `Microsoft.ApplicationInsights.AspNetCore`.
 
  `DependencyTrackingTelemetryModule` jelenleg automatikusan nyomon követi a következő függőségeket:
 
@@ -28,7 +28,7 @@ Application Insights SDK-kat a .NET-és .NET Core-hajókhoz `DependencyTrackingT
 |---------------|-------|
 |HTTP/HTTPS | Helyi vagy távoli HTTP/HTTPS-hívások |
 |WCF-hívások| Csak automatikusan nyomon követhető, ha HTTP-alapú kötések vannak használatban.|
-|SQL | @No__t_0ekkel végzett hívások. [Tekintse meg az SQL](#advanced-sql-tracking-to-get-full-sql-query) -lekérdezés rögzítését ismertető témakört.  |
+|SQL | `SqlClient`ekkel végzett hívások. [Tekintse meg az SQL](#advanced-sql-tracking-to-get-full-sql-query) -lekérdezés rögzítését ismertető témakört.  |
 |[Azure Storage (blob, tábla, üzenetsor)](https://www.nuget.org/packages/WindowsAzure.Storage/) | Az Azure Storage-ügyféllel kezdeményezett hívások. |
 |[EventHub ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.EventHubs) | A 1.1.0 vagy újabb verzió. |
 |[ServiceBus ügyfél-SDK](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus)| 3\.0.0 vagy újabb verzió. |
@@ -62,7 +62,7 @@ Az alábbiakban néhány példát láthat a függőségekről, amelyeket a rends
 
 Az SDK által automatikusan összegyűjtött függőségek esetében manuálisan nyomon követheti azokat a [TRACKDEPENDENCY API](api-custom-events-metrics.md#trackdependency) -val, amelyet a standard automatikus gyűjtemény moduljai használnak.
 
-Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem írt magával, akkor az összes hívást megtudhatja, hogy megtudja, milyen mértékben járul hozzá a válaszadási időpontokhoz. Ha meg szeretné jeleníteni ezeket az adataikat a Application Insights függőségi diagramokban, küldje el a `TrackDependency` használatával.
+Ha például a kódot egy olyan szerelvény alapján hozza létre, amelyet nem írt magával, akkor az összes hívást megtudhatja, hogy megtudja, milyen mértékben járul hozzá a válaszadási időpontokhoz. Ha meg szeretné jeleníteni ezeket az adataikat a Application Insights függőségi diagramokban, küldje el a `TrackDependency`használatával.
 
 ```csharp
 
@@ -90,7 +90,7 @@ Weblapok esetében Application Insights JavaScript SDK automatikusan függőség
 
 ## <a name="advanced-sql-tracking-to-get-full-sql-query"></a>Részletes SQL-követés a teljes SQL-lekérdezés beszerzéséhez
 
-SQL-hívások esetén a kiszolgáló és az adatbázis neve mindig az összegyűjtött `DependencyTelemetry` neve szerint lesz összegyűjtve és tárolva. Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
+SQL-hívások esetén a kiszolgáló és az adatbázis neve mindig az összegyűjtött `DependencyTelemetry`neve szerint lesz összegyűjtve és tárolva. Van egy "adat" nevű további mező, amely a teljes SQL-lekérdezési szöveget tartalmazhatja.
 
 ASP.NET Core alkalmazások esetében nincs szükség további lépésekre a teljes SQL-lekérdezés beszerzéséhez.
 

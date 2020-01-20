@@ -1,37 +1,30 @@
 ---
-title: Kezelheti az Azure PowerShell használatával a Virtual Machine Scale Sets |} A Microsoft Docs
-description: Közös kezelése a Virtual Machine Scale Sets, például a következőkkel elindíthatja és leállíthatja a példány, vagy módosítsa a méretezési csoport Azure PowerShell-parancsmagok kapacitás beállítása.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Virtual Machine Scale Sets kezelése Azure PowerShell
+description: Általános Azure PowerShell parancsmagok a Virtual Machine Scale Sets kezeléséhez, például a példányok elindításához és leállításához, illetve a méretezési csoport kapacitásának módosításához.
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: d35fa77a-de96-4ccd-a332-eb181d1f4273
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a6474320fd8b1545d61320cd43e155ab077ba310
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: cc83c8b73c73b2aa70bc36bad175e5c19c1ab700
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64683528"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275718"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Az Azure PowerShell használatával egy virtuálisgép-méretezési csoport kezelése
+# <a name="manage-a-virtual-machine-scale-set-with-azure-powershell"></a>Virtuálisgép-méretezési csoport kezelése Azure PowerShell
 
-A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk részletesen néhány gyakori Azure PowerShell-parancsmagok, amelyekkel ezeket a feladatokat.
+A virtuálisgép-méretezési csoport életciklusa során egy vagy több felügyeleti feladat futtatására lehet szükség. Emellett előfordulhat, hogy különféle szkripteket is érdemes létrehozni az életciklus-feladatok automatizálására. Ez a cikk a leggyakoribb Azure PowerShell-parancsmagokat ismerteti, amelyek lehetővé teszik ezen feladatok elvégzését.
 
-Ha szeretne létrehozni egy virtuálisgép-méretezési csoportot, akkor az [hozzon létre egy méretezési csoportot az Azure PowerShell-lel](quick-create-powershell.md).
+Ha létre kell hoznia egy virtuálisgép-méretezési készletet, [Azure PowerShell használatával hozhat létre méretezési készletet](quick-create-powershell.md).
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
-## <a name="view-information-about-a-scale-set"></a>Egy méretezési csoportot adatainak megtekintése
-Egy méretezési csoportot vonatkozó általános információk megtekintéséhez használja [Get-AzVmss](/powershell/module/az.compute/get-azvmss). Az alábbi példa lekéri a nevű méretezési információ *myScaleSet* a a *myResourceGroup* erőforráscsoportot. Adja meg a saját nevek a következők szerint:
+## <a name="view-information-about-a-scale-set"></a>Méretezési csoportra vonatkozó információk megtekintése
+A méretezési csoportokra vonatkozó általános információk megtekintéséhez használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss). A következő példa a *myResourceGroup* erőforráscsoport *myScaleSet* nevű méretezési csoportjának adatait olvassa be. Adja meg a saját nevét a következőképpen:
 
 ```powershell
 Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
@@ -39,13 +32,13 @@ Get-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 
 
 ## <a name="view-vms-in-a-scale-set"></a>Virtuális gépek megtekintése egy méretezési csoportban
-Egy méretezési csoportban lévő Virtuálisgép-példányok listájának megtekintéséhez használja [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Az alábbi példa felsorolja az összes Virtuálisgép-példányt a méretezési elnevezett *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg ezeket a neveket a saját értékeit:
+A méretezési csoportokban lévő virtuálisgép-példányok listájának megtekintéséhez használja a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm). Az alábbi példa felsorolja a *myScaleSet* nevű méretezési csoport összes virtuálisgép-példányát, valamint a *myResourceGroup* erőforráscsoportot. Adja meg a saját értékeit a következő nevekhez:
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet"
 ```
 
-Egy adott Virtuálisgép-példánnyal kapcsolatos további információk megtekintéséhez adja hozzá a `-InstanceId` paramétert [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) és a egy példány megtekintéséhez adja meg. Az alábbi példa megjeleníti a Virtuálisgép-példánnyal kapcsolatos információk *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. Adja meg a saját nevek a következők szerint:
+Egy adott virtuálisgép-példányra vonatkozó további információk megtekintéséhez adja hozzá a [Get-AzVmssVM](/powershell/module/az.compute/get-azvmssvm) `-InstanceId` paramétert, és adja meg a megtekinteni kívánt példányt. Az alábbi példa a *myScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban található virtuálisgép *-példányok* adatait tekinti meg. Adja meg a saját nevét a következőképpen:
 
 ```powershell
 Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -53,9 +46,9 @@ Get-AzVmssVM -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -
 
 
 ## <a name="change-the-capacity-of-a-scale-set"></a>Méretezési csoport kapacitásának módosítása
-Az előző parancsokban bemutatta a méretezési csoport és a Virtuálisgép-példányok kapcsolatos információkat. Növelheti vagy csökkentheti a méretezési csoportban lévő példányok számát, módosíthatja a kapacitást. A méretezési csoport automatikusan hoz létre vagy eltávolítja a szükséges virtuális gépek száma, majd konfigurálja a virtuális gépek alkalmazás forgalom fogadására.
+Az előző parancsok a méretezési csoportra és a virtuálisgép-példányokra vonatkozó információkat mutatták. A méretezési csoport példányainak számának növeléséhez vagy csökkentéséhez módosíthatja a kapacitást. A méretezési csoport automatikusan létrehozza vagy eltávolítja a szükséges virtuális gépek számát, majd konfigurálja a virtuális gépeket az alkalmazás forgalmának fogadására.
 
-Először hozzon létre egy méretezési csoportot objektum [Get-AzVmss](/powershell/module/az.compute/get-azvmss), majd adjon meg új értéket `sku.capacity`. A kapacitás módosításának alkalmazásához használja [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Az alábbi példa frissítések *myScaleSet* a a *myResourceGroup* kapacitását erőforráscsoport *5* példányok. A saját értékeit adja meg a következőképpen:
+Először hozzon létre egy méretezési csoport objektumot a [Get-AzVmss](/powershell/module/az.compute/get-azvmss)paranccsal, majd adja meg a `sku.capacity`új értékét. A kapacitás módosításának alkalmazásához használja az [Update-AzVmss](/powershell/module/az.compute/update-azvmss). Az alábbi példa frissíti a *myResourceGroup* -erőforráscsoport *myScaleSet* az *5* példány kapacitását. Adja meg a saját értékeit az alábbiak szerint:
 
 ```powershell
 # Get current scale set
@@ -66,13 +59,13 @@ $vmss.sku.capacity = 5
 Update-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet" -VirtualMachineScaleSet $vmss
 ```
 
-A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. Ha csökkenti a méretezési csoport kapacitását beállítása, a virtuális gépek azonosítók rendszer távolítja el először a legmagasabb példánnyal.
+A méretezési csoport kapacitásának frissítése néhány percet vesz igénybe. Ha csökkenti a méretezési csoport kapacitását, a rendszer először eltávolítja a legmagasabb példány-azonosítóval rendelkező virtuális gépeket.
 
 
-## <a name="stop-and-start-vms-in-a-scale-set"></a>Állítsa le, és a egy méretezési csoportban lévő virtuális gépek indítása
-Egy vagy több méretezési csoportban lévő virtuális gépek leállításához használja [Stop-AzVmss](/powershell/module/az.compute/stop-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. Több virtuális gép leállításához külön mindegyik Példányazonosítója vesszővel válasszon el.
+## <a name="stop-and-start-vms-in-a-scale-set"></a>Virtuális gépek leállítása és elindítása méretezési csoportokban
+A méretezési csoportokban lévő egy vagy több virtuális gép leállításához használja a [stop-AzVmss](/powershell/module/az.compute/stop-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több leállítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép le lesz állítva. Több virtuális gép leállításához az egyes példányok AZONOSÍTÓit vesszővel kell elválasztani.
 
-A következő példa leállítja a példányt *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
+A következő példa leállítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
 
 ```powershell
 Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
@@ -81,35 +74,35 @@ Stop-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -I
 A leállított virtuális gépek alapértelmezés szerint felszabadított állapotban vannak, és nem kell értük díjat fizetni. Ha azt szeretné, hogy a virtuális gép a leállítás után is üzembe helyezett állapotban maradjon, adja hozzá a `-StayProvisioned` paramétert az előző parancshoz. Az üzembe helyezett állapotú, leállított virtuális gépek esetében normál számítási díjak merülnek fel.
 
 
-### <a name="start-vms-in-a-scale-set"></a>Egy méretezési csoportban lévő virtuális gépek indítása
-Egy méretezési csoportban lévő egy vagy több virtuális gép indításához használja [Start-AzVmss](/powershell/module/az.compute/start-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításához külön mindegyik Példányazonosítója vesszővel válasszon el.
+### <a name="start-vms-in-a-scale-set"></a>Virtuális gépek indítása méretezési csoportokban
+Egy vagy több virtuális gép egy méretezési csoportba való elindításához használja a [Start-AzVmss](/powershell/module/az.compute/start-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több indítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép el lesz indítva. Több virtuális gép indításához az egyes példányok AZONOSÍTÓit vesszővel kell elválasztani.
 
-A következő példa elindítja a példány *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
+A következő példa elindítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
 
 ```powershell
 Start-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
 
-## <a name="restart-vms-in-a-scale-set"></a>Egy méretezési csoportban lévő virtuális gépek újraindítása
-Egy méretezési csoportban lévő egy vagy több virtuális gép újraindításához használja [újraindítás-AzVmss](/powershell/module/az.compute/restart-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához külön mindegyik Példányazonosítója vesszővel válasszon el.
+## <a name="restart-vms-in-a-scale-set"></a>Virtuális gépek újraindítása méretezési csoportokban
+Egy vagy több virtuális gép újraindításához a méretezési csoportokban használja az [restart-AzVmss](/powershell/module/az.compute/restart-azvmss). Az `-InstanceId` paraméter segítségével megadhat egy vagy több újraindítandó virtuális gépet. Ha nem ad meg példányazonosítót, a méretezési csoportban lévő összes virtuális gép újra lesz indítva. Több virtuális gép újraindításához vesszővel válassza el az egyes példányok AZONOSÍTÓit.
 
-A következő példa újraindítja a példányt *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
+A következő példa újraindítja a *0* . példányt a *MyScaleSet* és a *myResourceGroup* erőforráscsoport nevű méretezési csoportban. Adja meg a saját értékeit az alábbiak szerint:
 
 ```powershell
 Restart-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
 
-## <a name="remove-vms-from-a-scale-set"></a>Távolítsa el a virtuális gépek méretezési csoportból
-Egy méretezési csoportban lévő egy vagy több virtuális gép eltávolításához használja [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). A `-InstanceId` paraméter lehetővé teszi, hogy adjon meg egy vagy több virtuális gépet eltávolítja. Ha nem ad meg Példányazonosítót, a rendszer eltávolítja a méretezési csoportban lévő összes virtuális gép. Több virtuális gép eltávolításához külön mindegyik Példányazonosítója vesszővel válasszon el.
+## <a name="remove-vms-from-a-scale-set"></a>Virtuális gépek eltávolítása egy méretezési csoportból
+Egy vagy több virtuális gép egy méretezési csoportból való eltávolításához használja a [Remove-AzVmss](/powershell/module/az.compute/remove-azvmss). A `-InstanceId` paraméter segítségével megadhat egy vagy több eltávolítandó virtuális gépet. Ha nem ad meg példány-azonosítót, a rendszer a méretezési csoport összes virtuális gépe törlődik. Több virtuális gép eltávolításához az egyes példányok AZONOSÍTÓit vesszővel kell elválasztani.
 
-A következő példa eltávolítja az előfordulást *0* elnevezett méretezési *myScaleSet* és a *myResourceGroup* erőforráscsoportot. A saját értékeit adja meg a következőképpen:
+A következő példa eltávolítja a *0* . példányt a *myScaleSet* nevű méretezési csoportba és a *myResourceGroup* -erőforráscsoporthoz. Adja meg a saját értékeit az alábbiak szerint:
 
 ```powershell
 Remove-AzVmss -ResourceGroupName "myResourceGroup" -VMScaleSetName "myScaleSet" -InstanceId "0"
 ```
 
 
-## <a name="next-steps"></a>További lépések
-A méretezési csoportokkal kapcsolatos egyéb gyakori feladatok közé tartozik annak [alkalmazás üzembe helyezése](virtual-machine-scale-sets-deploy-app.md), és [Virtuálisgép-példányok frissítése](virtual-machine-scale-sets-upgrade-scale-set.md). Használhatja az Azure PowerShell használatával is [konfigurálása az automatikus skálázási szabályok](virtual-machine-scale-sets-autoscale-overview.md).
+## <a name="next-steps"></a>Következő lépések
+A méretezési csoportokkal kapcsolatos egyéb gyakori feladatok közé tartozik az [alkalmazások központi telepítése](virtual-machine-scale-sets-deploy-app.md)és a virtuálisgép- [példányok frissítése](virtual-machine-scale-sets-upgrade-scale-set.md). Az [automatikus méretezési szabályok konfigurálásához](virtual-machine-scale-sets-autoscale-overview.md)Azure PowerShell is használhatja.

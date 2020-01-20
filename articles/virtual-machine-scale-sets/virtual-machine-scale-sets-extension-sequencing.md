@@ -1,66 +1,58 @@
 ---
-title: Azure-beli virtuálisgép-méretezési csoportok végrehajtási használata |} A Microsoft Docs
-description: Ismerje meg, hogyan feladatütemezési bővítmény kiépítése több bővítményt a virtuálisgép-méretezési csoportok üzembe helyezésekor.
-services: virtual-machine-scale-sets
-documentationcenter: ''
+title: Bővítmények sorrendbe állítása Azure-beli virtuálisgép-méretezési csoportokkal
+description: Ismerje meg, hogyan hozhat létre több bővítményt a virtuálisgép-méretezési csoportokon a bővítmények kiépítése során.
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: manayar
-ms.openlocfilehash: 2e5dfda16c4828b3113fc50d4cffc79fe6ff19e8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cde3fb8b56d8509a45bde00dde55e3c69d015b8e
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60620172"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278052"
 ---
-# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Feladatütemezési bővítmény kiépítése a virtuálisgép-méretezési csoportok
-Azure virtuálisgép-bővítmények például az üzembe helyezés utáni konfigurációs és felügyeleti, figyelés, biztonság és további funkciókat biztosítanak. Éles környezetekben üzemelő példányok több bővítményt a Virtuálisgép-példányokon konfigurált kombinációját általában használni kívánt eredmények elérése érdekében.
+# <a name="sequence-extension-provisioning-in-virtual-machine-scale-sets"></a>Szekvenciális bővítmény kiépítés a virtuálisgép-méretezési csoportokban
+Az Azure-beli virtuálisgép-bővítmények olyan képességeket biztosítanak, mint az üzembe helyezés utáni konfiguráció és a felügyelet, a figyelés, a biztonság és egyebek. Az éles üzembe helyezések jellemzően a virtuálisgép-példányokhoz konfigurált több bővítmény kombinációját használják a kívánt eredmények eléréséhez.
 
-Ha több bővítményt használok egy virtuális gépen, fontos győződjön meg arról, hogy az ugyanazon operációs rendszer-erőforrásokat igénylő bővítmények nem megpróbálja beszerezni ezeket az erőforrásokat egyszerre. Néhány bővítmény is függenek más bővítmények adja meg a szükséges konfigurációk, például a környezeti beállítások és a titkos kulcsok. Függő bővítmény központi telepítések anélkül, hogy a megfelelő rendezése és alkalmazás-előkészítés helyen, sikertelen lehet.
+Ha több bővítményt használ egy virtuális gépen, fontos annak biztosítása, hogy az azonos operációsrendszer-erőforrásokhoz szükséges bővítmények ne próbáljanak meg egyszerre megnyerni ezeket az erőforrásokat. Egyes bővítmények a szükséges konfigurációk, például a környezeti beállítások és a titkos kulcsok biztosításához más bővítmények is függenek. A megfelelő sorrend és előkészítés nélkül a függő bővítmények telepítései sikertelenek lehetnek.
 
-Ez a cikk ismerteti, hogyan kell konfigurálni a Virtuálisgép-példányok a virtuálisgép-méretezési csoportok bővítményei is feladatütemezési.
+Ez a cikk részletesen ismerteti, hogyan lehet beállítani a bővítményeket a virtuálisgép-méretezési csoportokban lévő virtuálisgép-példányokhoz.
 
 ## <a name="prerequisites"></a>Előfeltételek
-Ez a cikk azt feltételezi, hogy ismeri a:
--   Az Azure virtuális gép [bővítmények](../virtual-machines/extensions/overview.md)
--   [Módosítása](virtual-machine-scale-sets-upgrade-scale-set.md) a virtual machine scale sets
+Ez a cikk azt feltételezi, hogy már ismeri a következőket:
+-   Azure-beli virtuálisgép- [bővítmények](../virtual-machines/extensions/overview.md)
+-   Virtuálisgép-méretezési csoportok [módosítása](virtual-machine-scale-sets-upgrade-scale-set.md)
 
-## <a name="when-to-use-extension-sequencing"></a>Mikor érdemes használni a sorrendről
-Műveleti sorrend a bővítmények a nem kötelező a méretezési csoportok és, hacsak nincs megadva, bővítmények bővítheti bármilyen sorrendben scale set-példány.
+## <a name="when-to-use-extension-sequencing"></a>Mikor kell használni a bővítmények sorrendjét
+A kiterjesztések sorrendbe állítása nem kötelező a méretezési csoportokhoz, és ha meg van adva, a bővítmények a méretezési csoport példányain bármilyen sorrendben kihelyezhetők.
 
-Például ha a méretezési csoport modelljéből két bővítmények – ExtensionA és ExtensionB – a modellben megadott majd vagy a következő üzembe helyezési feladatütemezések fordulhat elő:
--   ExtensionA ExtensionB ->
--   ExtensionB ExtensionA ->
+Ha például a méretezési csoport modelljének két kiterjesztése van – kiterjesztés és ExtensionB – a modellben megadva, akkor a következő üzembe helyezési sorozatok bármelyike előfordulhat:
+-   Bővítmény – > ExtensionB
+-   ExtensionB – > bővítmény
 
-Ha az alkalmazás mindig bővítmény B előtt kiosztandó bővítmény egy igényel, inkább sorrendről ebben a cikkben leírtak szerint. A végrehajtási, csak egy feladatütemezési most történik:
--   ExtensionA - > ExtensionB
+Ha az alkalmazás az A bővítményt a B kiterjesztés előtt mindig kiépíti, akkor a bővítmények sorrendjét a jelen cikkben leírtak szerint kell használni. A bővítmények sorrendje mostantól csak egy sorozatot fog bekövetkezni:
+-   Bővítmény – > ExtensionB
 
-Nincs megadva egy meghatározott kiépítési sorrendben kiterjesztések bármikor, beleértve a előtt, miután vagy során egy megadott feladatütemezési bővítheti. Végrehajtási csak adja meg, hogy egy adott kiterjesztéssel üzembe fogja helyezni egy másik megadott kiterjesztés után. Ne befolyásolja a modellben meghatározott minden más bővítmény kiépítése.
+A megadott kiépítési sorozatban nem megadott kiterjesztések bármikor kihelyezhetők, beleértve a korábban, az után vagy egy megadott sorozatban. A bővítmények sorrendbe állítása csak azt adja meg, hogy egy adott bővítmény egy másik konkrét bővítmény után lesz kiépítve. Ez nem befolyásolja a modellben definiált bármely más bővítmény kiépítési felhelyezését.
 
-Például ha a bővítmény C van beállítva, A kiterjesztést követően ki kell építeni a méretezési csoport modelljéből rendelkezik három bővítmény – a bővítmény A, a bővítmény B és a bővítmény C – megadott a modellben, majd vagy a következő üzembe helyezési feladatütemezések fordulhat elő:
--   ExtensionA -> ExtensionC ExtensionB ->
--   ExtensionB -> ExtensionA ExtensionC ->
--   ExtensionA -> ExtensionB ExtensionC ->
+Ha például a méretezési csoport modelljének három kiterjesztése van – az A bővítmény, a B bővítmény és a C kiterjesztés – a modellben van megadva, a C kiterjesztés pedig az A bővítmény után lesz kiépítve, akkor a következő kiépítési sorozatok egyike jelenhet meg:
+-   Bővítmény – > ExtensionC – > ExtensionB
+-   ExtensionB – > bővítmény – > ExtensionC
+-   Bővítmény – > ExtensionB – > ExtensionC
 
-Győződjön meg arról, hogy nincs más kiterjesztése ki van építve a meghatározott bővítmény feladatütemezés végrehajtása közben van szüksége, azt javasoljuk a méretezési csoport modelljéből összes kiterjesztések sorrendje. A fenti példában bővítmény B állítható bővítmény C után ki kell építeni, hogy csak egy feladatütemezési fordulhat elő:
--   ExtensionA -> ExtensionC ExtensionB ->
+Ha meg kell győződnie arról, hogy nincs más bővítmény kiépítve a definiált bővítmény-szekvencia végrehajtása során, javasoljuk, hogy az összes bővítményt a méretezési csoport modelljébe hozzon létre. A fenti példában a B bővítmény úgy állítható be, hogy a C kiterjesztés után is kiépíthető legyen, hogy csak egy sorozat lehessen:
+-   Bővítmény – > ExtensionC – > ExtensionB
 
 
-## <a name="how-to-use-extension-sequencing"></a>Végrehajtási használata
-A feladatütemezési bővítmény kiépítése, frissítenie kell a méretezési csoport modelljét "provisionAfterExtensions", amely elfogadja a kiterjesztést nevei tömbjét tulajdonság a bővítmény definíciójának. A bővítmények a tömb tulajdonságérték említett teljes definiálni kell a a méretezési csoport modelljéből.
+## <a name="how-to-use-extension-sequencing"></a>A bővítmény-előkészítés használata
+A bővítmények kiosztásához frissítenie kell a kiterjesztés definícióját a méretezési csoport modelljében, hogy tartalmazza a "provisionAfterExtensions" tulajdonságot, amely a bővítmények neveinek tömbjét fogadja el. A tulajdonság tömb értékében megemlített kiterjesztéseket teljes mértékben meg kell határozni a méretezési csoport modelljében.
 
-### <a name="template-deployment"></a>Sablon telepítése
-Az alábbi példa egy sablont, ahol a méretezési csoportban van-e három bővítmény – ExtensionA ExtensionB és ExtensionC – úgy, hogy a bővítmények a sorrendben vannak kiépítve határozza meg:
--   ExtensionA -> ExtensionB ExtensionC ->
+### <a name="template-deployment"></a>Sablon központi telepítése
+Az alábbi példa egy olyan sablont definiál, amelyben a méretezési csoport három bővítményrel rendelkezik – bővítmény, ExtensionB és ExtensionC –, hogy a bővítmények a sorrendben legyenek kiépítve:
+-   Bővítmény – > ExtensionB – > ExtensionC
 
 ```json
 "virtualMachineProfile": {
@@ -107,7 +99,7 @@ Az alábbi példa egy sablont, ahol a méretezési csoportban van-e három bőv�
 }
 ```
 
-Mivel a tulajdonság "provisionAfterExtensions" elfogadja a kiterjesztést nevei tömbje, a fenti példában módosítható úgy, hogy ExtensionC ExtensionA és ExtensionB után van kiépítve, de nincs rendezése nem szükséges ExtensionA és ExtensionB között. A következő sablon segítségével érhető el ebben a forgatókönyvben:
+Mivel a "provisionAfterExtensions" tulajdonság a bővítmények neveinek tömbjét fogadja el, a fenti példa módosítható úgy, hogy a ExtensionC a bővítmény és a ExtensionB után legyen kiépítve, de a bővítmény és a ExtensionB között nem szükséges rendezés. Ezt a forgatókönyvet a következő sablon használatával érheti el:
 
 ```json
 "virtualMachineProfile": {
@@ -152,7 +144,7 @@ Mivel a tulajdonság "provisionAfterExtensions" elfogadja a kiterjesztést nevei
 ```
 
 ### <a name="rest-api"></a>REST API
-Az alábbi példa hozzáad egy méretezési csoport modelljéből ExtensionC nevű új bővítmény. ExtensionC ExtensionA és ExtensionB, amely már megadták a méretezési csoport modelljéből függőségekkel rendelkezik.
+Az alábbi példa egy ExtensionC nevű új bővítményt helyez egy méretezési csoport modelljébe. A ExtensionC a bővítmény és a ExtensionB függőségeivel rendelkezik, amelyek már definiálva vannak a méretezési csoport modelljében.
 
 ```
 PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -174,7 +166,7 @@ PUT on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/
 }
 ```
 
-Ha ExtensionC korábban definiálva lett a méretezési csoport modell, és most szeretne adja a függőségeket, akkor futtathat egy `PATCH` szerkesztheti a már üzembe helyezett bővítmény tulajdonságai.
+Ha a ExtensionC korábban lett definiálva a méretezési csoport modelljében, és most hozzá szeretné adni a függőségeit, végrehajthat egy `PATCH` a már telepített bővítmény tulajdonságainak szerkesztéséhez.
 
 ```
 PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/providers/Microsoft.Compute/virtualMachineScaleSets/myScaleSet/extensions/ExtensionC?api-version=2018-10-01`
@@ -189,12 +181,12 @@ PATCH on `/subscriptions/subscription_id/resourceGroups/myResourceGroup/provider
   }                  
 }
 ```
-Meglévő méretezési csoport példányaihoz módosítások a következő [frissítése](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model).
+A meglévő méretezési csoport példányainak módosításait a rendszer a következő [frissítéskor](virtual-machine-scale-sets-upgrade-scale-set.md#how-to-bring-vms-up-to-date-with-the-latest-scale-set-model)alkalmazza.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
-Használja a [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmag használatával adja hozzá az alkalmazás állapotának bővítményt a méretezési csoport állítsa be a modell definícióját. Végrehajtási Az PowerShell 1.2.0-s vagy annál használatát igényli.
+Az [Add-AzVmssExtension](/powershell/module/az.compute/add-azvmssextension) parancsmaggal adja hozzá az alkalmazás-állapot bővítményt a méretezési csoport modellje definícióhoz. A bővítmény-szekvencia használatához az az PowerShell 1.2.0 vagy újabb verzió szükséges.
 
-Az alábbi példa hozzáadja a [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md) , a `extensionProfile` egy méretezésicsoport-modellben Windows-alapú méretezési. Az alkalmazás állapotának bővítmény kiépítése után lesznek üzembe helyezve a [egyéni szkriptek futtatására szolgáló bővítmény](../virtual-machines/extensions/custom-script-windows.md)már definiált, a méretezési csoportban.
+A következő példa egy Windows-alapú méretezési csoport méretezési csoport modelljében hozzáadja az [alkalmazás-állapot bővítményt](virtual-machine-scale-sets-health-extension.md) a `extensionProfile`hoz. Az alkalmazás állapota a méretezési csoporton már definiált [egyéni parancsfájl-kiterjesztés](../virtual-machines/extensions/custom-script-windows.md)kiosztása után lesz kiépítve.
 
 ```azurepowershell-interactive
 # Define the scale set variables
@@ -229,9 +221,9 @@ Update-AzVmss -ResourceGroupName $vmScaleSetResourceGroup `
 ```
 
 ### <a name="azure-cli-20"></a>Azure CLI 2.0
-Használat [az vmss-bővítmény beállítása](/cli/azure/vmss/extension#az-vmss-extension-set) hozzáadása az alkalmazásállapot bővítményt a méretezési csoport modell definícióját. Végrehajtási szükséges Azure CLI 2.0.55 vagy újabb.
+Az az [vmss Extension set](/cli/azure/vmss/extension#az-vmss-extension-set) paranccsal adja hozzá az alkalmazás állapota bővítményt a méretezési csoport modellje definícióhoz. A bővítmények sorrendje az Azure CLI-2.0.55 vagy újabb verzió használatát igényli.
 
-Az alábbi példa hozzáadja a [Application Health bővítmény](virtual-machine-scale-sets-health-extension.md) a méretezési csoport méretezésicsoport-modellben, egy Windows-alapú méretezési csoportot. Az alkalmazás állapotának bővítmény kiépítése után lesznek üzembe helyezve a [egyéni szkriptek futtatására szolgáló bővítmény](../virtual-machines/extensions/custom-script-windows.md)már definiált, a méretezési csoportban.
+Az alábbi példa hozzáadja az [alkalmazás-állapot bővítményt](virtual-machine-scale-sets-health-extension.md) egy Windows-alapú méretezési csoport méretezési csoport modelljéhez. Az alkalmazás állapota a méretezési csoporton már definiált [egyéni parancsfájl-kiterjesztés](../virtual-machines/extensions/custom-script-windows.md)kiosztása után lesz kiépítve.
 
 ```azurecli-interactive
 az vmss extension set \
@@ -247,13 +239,13 @@ az vmss extension set \
 
 ## <a name="troubleshoot"></a>Hibaelhárítás
 
-### <a name="not-able-to-add-extension-with-dependencies"></a>A függőségek bővítmény hozzáadása nem sikerül?
-1. Győződjön meg arról, hogy a megadott provisionAfterExtensions bővítmények határozzák meg a méretezési csoport modelljéből.
-2. Ellenőrizze, hogy nincsenek körkörös függőségek a bevezetésre. Ha például a következő lépéseket nem engedélyezett: ExtensionA -> ExtensionB -> ExtensionC ExtensionA ->
-3. Biztosíthatja a függőségeket is, a kiterjesztések bővítmény "Tulajdonságok" a "beállítások" tulajdonság. Például ha ExtentionB kell ExtensionA után ki kell építeni, majd ExtensionA kell ExtensionA "Tulajdonságok" a "beállítások" mezőre. Egy üres "beállítások" tulajdonság is megadhat, ha a bővítmény nem írja elő a kívánt beállításokat.
+### <a name="not-able-to-add-extension-with-dependencies"></a>Nem lehet függőségekkel bővíteni a bővítményt?
+1. Győződjön meg arról, hogy a provisionAfterExtensions megadott bővítmények definiálva vannak a méretezési csoport modelljében.
+2. Győződjön meg arról, hogy nincsenek bevezetve körkörös függőségek. A következő sorozat például nem engedélyezett: ExtensionA-> ExtensionB-> ExtensionC-> ExtensionA
+3. Győződjön meg arról, hogy a függőben lévő összes bővítmény "Settings" tulajdonsággal rendelkezik a "Properties" kiterjesztésnél. Ha például a ExtentionB-t a bővítmény után kell kiépíteni, akkor a bővítménynek a "Properties" elemnél szerepelnie kell a "Settings" (beállítások) mezőnek. Megadhat egy üres "beállítások" tulajdonságot, ha a bővítmény nem kötelezi a szükséges beállításokat.
 
-### <a name="not-able-to-remove-extensions"></a>Nem sikerült eltávolítani a bővítmények?
-Győződjön meg arról, hogy az eltávolítani kívánt bővítmények nem szereplő egyéb kiterjesztések provisionAfterExtensions.
+### <a name="not-able-to-remove-extensions"></a>Nem sikerült eltávolítani a bővítményeket?
+Győződjön meg arról, hogy az eltávolítandó bővítmények nem szerepelnek a provisionAfterExtensions területen a többi bővítménynél.
 
-## <a name="next-steps"></a>További lépések
-Ismerje meg, hogyan [az alkalmazás üzembe helyezéséhez](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportok.
+## <a name="next-steps"></a>Következő lépések
+Megtudhatja, hogyan [helyezheti üzembe az alkalmazást](virtual-machine-scale-sets-deploy-app.md) a virtuálisgép-méretezési csoportokban.

@@ -1,96 +1,89 @@
 ---
-title: A StorSimple 8000 Series Update 3 kibocsátási megjegyzések |} A Microsoft Docs
-description: Az új funkciók, problémák és megoldások ismerteti a StorSimple 8000 Series Update 3.
-services: storsimple
-documentationcenter: NA
+title: StorSimple 8000 Series Update 3 – kibocsátási megjegyzések
+description: A StorSimple 8000 Series Update 3 új funkcióit, problémáit és megkerülő megoldásait ismerteti.
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 2158aa7a-4ac3-42ba-8796-610d1adb984d
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d18feba4ded3dfccb8f774112a7dc8d42b12f1d5
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4b61caecd67881eb08c82ea0c26522c63c3e8396
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60530951"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275328"
 ---
-# <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>Frissítse a StorSimple 8000 sorozatú eszköz 3 kibocsátási megjegyzései
+# <a name="update-3-release-notes-for-your-storsimple-8000-series-device"></a>3\. frissítés a StorSimple 8000 Series-eszközre vonatkozó kibocsátási megjegyzések
 
 ## <a name="overview"></a>Áttekintés
-A következő kiadási megjegyzések az új funkciók ismertetik, és a StorSimple 8000 Series Update 3 a kritikus fontosságú megoldatlan problémák azonosításához. Ebben a kiadásban a StorSimple szoftver frissítések listáját is tartalmaznak. 
+A következő kibocsátási megjegyzések ismertetik az új funkciókat, és azonosítják a StorSimple 8000 Series 3. frissítésével kapcsolatos kritikus nyitott problémákat. Emellett tartalmazzák az ebben a kiadásban található StorSimple szoftverfrissítések listáját is. 
 
-3\. frissítés bármely kiadásban elérhetővé tétel (GA) vagy 0.1-es frissítés keresztül 2.2-es frissítést futtató StorSimple-eszköz is alkalmazható. Az eszközhöz társított Update 3 verziószáma 6.3.9600.17759.
+A 3. frissítés a 2,2-es frissítéssel bármely StorSimple-eszközön, illetve a 0,1-es frissítésen is alkalmazható. A 3. frissítéshez társított 6.3.9600.17759.
 
-Tekintse át a kibocsátási megjegyzések a StorSimple-megoldásban a frissítés telepítése előtt található információkat.
+Mielőtt telepítené a frissítést a StorSimple-megoldásban, tekintse át a kibocsátási megjegyzésekben található információkat.
 
 > [!IMPORTANT]
-> * 3\. frissítéssel rendelkezik eszköz szoftverének, LSI-illesztőprogram és a belső vezérlőprogram és Storport és Spaceport frissíti. A frissítés telepítése körülbelül 1,5-2 órát vesz igénybe. 
-> * Az új kiadásokhoz, akkor előfordulhat, hogy nem jelenik meg frissítések azonnal, mivel egy fázisokra bontva történő bevezetéséhez a frissítések végzünk. Néhány napot várni, és ezeket újra, majd frissítéskeresés hamarosan elérhetővé válik.
+> * A 3. frissítés az eszköz szoftverét, az LSI-illesztőprogramot és a belső vezérlőprogramot, valamint a Storport és a ûrkikötõt frissítéseket is tartalmaz. A frissítés telepítése körülbelül 1,5 – 2 órát vesz igénybe. 
+> * Az új kiadások esetében előfordulhat, hogy a frissítések nem jelennek meg azonnal, mert a frissítések fokozatos bevezetését hajtjuk végre. Várjon néhány napot, majd próbálkozzon újra a frissítések keresésével, mivel ezek hamarosan elérhetővé válnak.
 > 
 > 
 
-## <a name="whats-new-in-update-3"></a>3\. frissítés újdonságai
-A következő kulcsfontosságú fejlesztések és hibajavítások az Update 3 került sor.
+## <a name="whats-new-in-update-3"></a>A 3. frissítés újdonságai
+A 3. frissítés során a következő főbb javításokat és hibajavításokat készítettük.
 
-* **Terület-visszaigénylést változások automatikus** – Update 3 indítása a terület-visszaigénylést algoritmusok futnak a készenléti állapotban lévő vezérlőnek, így gyorsabb végrehajtását a rendszer. A terület-visszaigényléssel működéséhez szükséges portokon további információkért tekintse meg a [hálózati követelményeiben StorSimple](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
-* **Nagyobb teljesítmény** – 3. frissítés javult az olvasási és írási teljesítményt, a felhőben.
-* **Áttelepítéssel kapcsolatos fejlesztések** – ebben a kiadásban számos hibajavítás és fejlesztések elkészült a Migrálási szolgáltatás 5000/7000 sorozat eszközeiről a 8000-es sorozatú eszközökön. További információ az áttelepítés szolgáltatás használatához lépjen [5000/7000 sorozat eszközt 8000-es sorozatú eszköz áttelepítés](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b). 
-* **Kapcsolódó javításokat figyelési** – ebben a kiadásban hibák kapcsolatos figyelési diagramokat, a szolgáltatás irányítópultján, és irányítópultját javítva lett.
+* **Automatikus lemezterület-visszanyerési változások** – a 3. frissítés megkezdése után a lemezterület-visszanyerési algoritmusok a rendszer készenléti vezérlőjén futnak, ami gyorsabb végrehajtást eredményez. A lemezterület-visszanyeréshez szükséges portokkal kapcsolatos további információkért tekintse meg a [StorSimple hálózatkezelési követelményeit](storsimple-8000-system-requirements.md#networking-requirements-for-your-storsimple-device).
+* **Teljesítmény-fejlesztések** – a 3. frissítés továbbfejlesztett írási és olvasási teljesítményt nyújt a felhőben.
+* **Áttelepítéssel kapcsolatos javítások** – ebben a kiadásban számos hibajavítást és javítást végeztek az 5000/7000 sorozatú eszközökről a 8000 sorozatú eszközökre való áttelepítési funkcióhoz. Az áttelepítési funkció használatáról további információt az [5000/7000 sorozatú eszközről az 8000 sorozatú](https://gallery.technet.microsoft.com/Azure-StorSimple-50007000-c1a0460b)eszközre való Migrálás című témakörben olvashat. 
+* **Kapcsolódó javítások figyelése** – ebben a kiadásban a figyelési diagramokkal, a szolgáltatás-irányítópulttal és az eszköz irányítópulttal kapcsolatos hibákat javítottuk.
 
-## <a name="issues-fixed-in-update-3"></a>Az Update 3 megoldott problémák
-Az alábbi táblázat összefoglalja a problémákat, amelyek a Update 3 javítva lett.    
+## <a name="issues-fixed-in-update-3"></a>A 3. frissítésben rögzített problémák
+Az alábbi táblázatok összefoglalják a 3. frissítésben kijavított problémákat.    
 
-| Nem | Funkció | Probléma | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
+| Nem | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
-| 1 |Gazdagép-oldali adatok migrálása |A korábbi kiadásokban a StorSimple felhőalapú készülék folyamatban volt a kapcsolat nélküli egy gazdagép-oldali adatok migrálása során. Ebben a kiadásban a probléma megoldódik. |Nem |Igen |
-| 2 |Helyileg rögzített kötetek |A korábbi változatban voltak i/o hibák, a kötet átalakítás sikertelen és a helyileg rögzített kötetekhez datapath hibák kapcsolatos problémákat. Ezek a problémák alapvető oka és javítva a kiadásban. |Igen |Nem |
-| 3 |Figyelés |Jelentéskészítés a egységek és a monitorozás, valamint eszköz irányítópult diagramok, hibás információknak a helyileg rögzített kötetekhez több problémáiról volt. Ezek a problémák vannak rögzítve, ebben a kiadásban. |Igen |Nem |
-| 4 |Nagy írási i/o |Használata esetén a nagy írási számítási feladatok esetében a StorSimple használatakor a felhasználó futna egy alkalmi programhiba, ahol munkakészletének volt folyamatban rétegzett a felhőbe. Ez kijavítanak ebben a kiadásban. |Igen |Igen |
-| 5 |Backup |Egyes ritka esetekben a szoftver korábbi verzióiban felhasználó elvégez egy távoli klónozott biztonsági másolatot, ha azok felhőalapú hibákká futna, és a művelet akkor hibaüzenetet a. Ebben a kiadásban a probléma kijavítása, és a művelet sikeresen befejeződik. |Igen |Igen |
-| 6 |Biztonsági mentési házirend |Bizonyos esetekben a ritkán használt szoftverek, a korábbi verzióiban hiba történt a biztonsági mentési szabályzat törlése kapcsolatos hibát. Ebben a kiadásban a probléma megoldódik. |Igen |Igen |
+| 1 |Gazdagép-oldali adatáttelepítés |A korábbi kiadásban a StorSimple Cloud Appliance a gazdagép-oldali adatáttelepítés során offline állapotba került. Ez a probléma ebben a kiadásban van kijavítva. |Nem |Igen |
+| 2 |Helyileg rögzített kötetek |Az előző kiadásban az I/O-hibákkal, a kötet-átalakítási hibákkal és a helyileg rögzített kötetek DataPath hibáival kapcsolatos problémák léptek fel. Ezeket a problémákat a jelen kiadásban a gyökér okozta és javítottuk. |Igen |Nem |
+| 3 |Monitoring |Több probléma merült fel a jelentési egységekkel és a figyeléssel, valamint az eszközök irányítópult-diagramjaival kapcsolatban, ahol a helyileg rögzített kötetek esetében helytelen információk jelentek meg. Ezek a problémák ebben a kiadásban vannak kijavítva. |Igen |Nem |
+| 4 |Nagy mennyiségű írási I/O |Ha StorSimple használ a nagy mennyiségű írást érintő számítási feladatokhoz, a felhasználó egy ritka hibába fog futni, ahol a munkakészletet a felhőbe sorolták be. Ez a hiba ebben a kiadásban van kijavítva. |Igen |Igen |
+| 5 |Biztonsági mentés |Bizonyos ritka esetekben a szoftver korábbi verzióiban, amikor a felhasználó biztonsági másolatot készített egy távoli klónról, a Felhőbeli hibákba ütköznek, és a művelet kikerül a hiba miatt. Ebben a kiadásban a probléma kijavítva lett, és a művelet sikeresen befejeződik. |Igen |Igen |
+| 6 |Biztonsági mentési házirend |Bizonyos ritka példányokban a szoftver korábbi kiadásaiban a biztonsági mentési szabályzat törlésével kapcsolatos hiba történt. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
 
-## <a name="known-issues-in-update-3"></a>3\. frissítés ismert problémái
-Az alábbi táblázat összefoglalja az ismert problémákról, ebben a kiadásban.
+## <a name="known-issues-in-update-3"></a>Ismert problémák a 3. frissítésben
+A következő táblázat az ebben a kiadásban található ismert problémák összegzését tartalmazza.
 
-| Nem. | Funkció | Probléma | Megjegyzések és megoldás | Fizikai eszköz vonatkozik | Virtuális eszköz vonatkozik |
+| Nem. | Szolgáltatás | Probléma | Megjegyzések/Áthidaló megoldás | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- | --- |
-| 1 |Lemez kvórum |Ritka esetekben a többsége a EBOD ház-8600-as eszköz a lemezek le vannak választva, nincs lemez kvórum, így ha a tárolókészlet fog folytassa offline állapotban van. Offline állapotban marad, akkor is, ha a lemez újracsatlakoztatását. |Indítsa újra az eszközt kell. Ha a probléma tartósan fennáll, forduljon a Microsoft Support a következő lépéseket. |Igen |Nem |
-| 2 |Nem megfelelő vezérlő azonosítója |A vezérlő helyettesítő hajtja végre, amikor 0. vezérlő előfordulhat, hogy megjelenjen 1. vezérlő. Csere, a vezérlő során a kép betöltésekor a társ-csomópontból a vezérlő azonosító konferenciateremként jelenjen meg kezdetben a partner-tartományvezérlő-azonosító néven Ritka esetekben a rendszer újraindítását követően is ezt a viselkedést is látható. |Nincs szükség felhasználói beavatkozásra. Ez a helyzet megoldódik, a vezérlő cseréje befejeződése után. |Igen |Nem |
-| 3 |Tárfiókok |A Storage szolgáltatás törli a storage-fiók használata nem támogatott forgatókönyv. Ez a helyzet, amelyben a felhasználói adatokat nem lehet beolvasni vezet. | |Igen |Igen |
-| 4 |Eszköz-feladatátvétel |A kötettároló a azonos forráseszközről származó különböző céleszközökre több lehetségessé nem támogatott. Feladatátvétel több eszköz egyetlen kézbesíthetetlen eszközt az fogja elérhetővé tenni a kötettároló feladatátvétele az eszköz első elveszíti az adatok tulajdonjoga. A feladatátvétel után ezek kötettárolók jelennek meg, illetve eltérően viselkednek, megtekintheti őket a klasszikus Azure portálon. | |Igen |Nem |
-| 5 |Telepítés |StorSimple Adapter for SharePoint telepítési, során meg kell adnia egy eszköz IP-cím ahhoz, hogy a telepítés sikeres befejezéséhez. | |Igen |Nem |
-| 6 |Webalkalmazás-proxy |-E a webproxy konfigurálása a megadott protokoll HTTPS-t, az eszköz-to-service kommunikációs hatással lesz, és kerül, hogy az eszköz offline állapotban van. Támogatási csomag is jön létre, a folyamat, jelentős erőforrásokat az eszközön. |Győződjön meg arról, hogy a webalkalmazás-proxy URL-címe van-e a HTTP protokoll megadott. További információ: [Configure web proxy for your device](storsimple-8000-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
-| 7 |Webalkalmazás-proxy |Ha konfigurálja, és engedélyezze a webalkalmazás-proxy egy regisztrált eszközön, majd kell indítania az aktív vezérlőn az eszközön. | |Igen |Nem |
-| 8 |Felhőalapú nagy késést és nagy i/o-munkaterhelés |A StorSimple eszköz (sorrendben másodperc) nagyon magas felhőalapú késéseket és nagy i/o-munkaterhelés ütközik, amikor az eszköz köteteihez egy csökkentett teljesítményű állapotba kerülnek, és az i/o "az eszköz nem áll készen" hiba miatt sikertelenek lehetnek. |Szüksége lesz, manuálisan indítsa újra a eszközvezérlők vagy helyreállíthatja az ebben a helyzetben eszköz feladatátvételt hajt végre. |Igen |Nem |
-| 9 |Azure PowerShell |A StorSimple parancsmag használatakor **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object - először a 1 - Wait** jelölje ki az első objektumot, így hozhat létre egy új **VolumeContainer** objektum, a parancsmag az összes található objektumokat adja vissza. |A következő zárójelben használó parancsmagot: **(Get-Azure-StorSimpleStorageAccountCredential) &#124; Select-Object -First 1 -Wait** |Igen |Igen |
-| 10 |Migrálás |Több kötettárolóba továbbítódnak az áttelepítéshez, a DRÓN legfrissebb biztonsági mentés esetén csak az első kötettároló esetén pontosak. Az első 4 biztonsági másolatok az első kötettároló áttelepítésük párhuzamos áttelepítés fogja elindítani. |Azt javasoljuk, hogy egyszerre egy kötettárolót át. |Igen |Nem |
-| 11 |Migrálás |A visszaállítás után kötetek nem adódnak hozzá a biztonsági mentési szabályzat vagy a virtuális lemez csoport. |Ezen kötetek hozzáadása a biztonsági mentési szabályzatot a biztonsági másolatok létrehozásához kell. |Igen |Igen |
-| 12 |Migrálás |Az áttelepítés befejezése után az 5000/7000 sorozat eszköz nem kell elérni az áttelepített adatokat tárolókat. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesített után törölje az áttelepített adatokat tárolókat. |Igen |Nem |
-| 13 |Klónozás és Vészhelyreállítás |1\. frissítést futtató StorSimple-eszköz nem klónozza vagy vészhelyreállításra 1 frissítés előtti szoftvert futtató eszközre. |Update 1, hogy ezeket a műveleteket a céleszköz frissíteni kell |Igen |Igen |
-| 14 |Migrálás |Konfiguráció biztonsági másolata az áttelepítéshez 5000 – 7000 sorozatú eszköz sikertelen lehet, ha vannak a kötet-csoportokhoz társított kötetek a. |Nincs társított köteteket a kötet üres csoportok törlése, és ismételje meg a konfiguráció biztonsági másolata. |Igen |Nem |
-| 15 |Az Azure PowerShell-parancsmagok és a gyors helyi kötetek |Azure PowerShell-parancsmagok használatával helyileg rögzített kötetet nem hozható létre. (Minden kötetet hoz létre az Azure Powershellen keresztül rétegezettek lesznek.) |A gyors helyi kötetek konfigurálni mindig használja a StorSimple Manager szolgáltatásban. |Igen |Nem |
-| 16 |A gyors helyi kötetek rendelkezésre álló terület |Ha töröl egy helyileg rögzített kötetet, az új kötetek rendelkezésre álló terület nem frissíthető közvetlenül. A StorSimple Manager szolgáltatás körülbelül óránként frissíti a rendelkezésre álló helyi területet. |Várjon egy órát, mielőtt az új kötet létrehozásakor. |Igen |Nem |
-| 17 |Helyileg rögzített kötetek |A visszaállítási feladat közzéteszi az ideiglenes pillanatkép biztonsági másolatából a biztonságimásolat-katalógus, de csak a visszaállítási feladat időtartama. Ezenkívül tesz közzé egy virtuális lemez csoport előtaggal **tmpCollection** a a **biztonsági mentési házirendek** oldalon, de csak a visszaállítási feladat időtartama. |Ez akkor fordulhat elő, ha rendelkezik a a visszaállítási feladat csak helyileg rögzített kötetek vagy helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmaz, majd ezt a viselkedést nem történik. Nincs szükség felhasználói beavatkozásra. |Igen |Nem |
-| 18 |Helyileg rögzített kötetek |Ha megszakítja a visszaállítási feladat és a vezérlő feladatátvétele akkor fordul elő, később jelennek meg a visszaállítási feladat azonnal **sikertelen** helyett **megszakított**. Ha a visszaállítási feladat sikertelen lesz, és a vezérlő feladatátvétele akkor fordul elő, később jelennek meg a visszaállítási feladat azonnal **megszakított** helyett **sikertelen**. |Ez akkor fordulhat elő, ha rendelkezik a a visszaállítási feladat csak helyileg rögzített kötetek vagy helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmaz, majd ezt a viselkedést nem történik. Nincs szükség felhasználói beavatkozásra. |Igen |Nem |
-| 19 |Helyileg rögzített kötetek |Ha megszakítja a visszaállítási feladat, vagy ha a helyreállítás sikertelen lesz, és ezután következik be a vezérlő feladatátvétele, egy további visszaállítási feladat jelenik meg a **feladatok** lapot. |Ez akkor fordulhat elő, ha rendelkezik a a visszaállítási feladat csak helyileg rögzített kötetek vagy helyileg rögzített és a rétegzett kötetek kombinációját. Ha a visszaállítási feladat csak a rétegzett kötetek is tartalmaz, majd ezt a viselkedést nem történik. Nincs szükség felhasználói beavatkozásra. |Igen |Nem |
-| 20 |Helyileg rögzített kötetek |Ha egy rétegzett kötet (létrehozott és a klónozott a frissítés 1.2-es vagy korábbi) átalakítása helyileg rögzített kötetet próbál és az eszköz nincs elegendő szabad terület, vagy egy cloud-beli szolgáltatáskimaradás van, a clone(s) is sérült. |A probléma csak a köteteket, amelyek a létrehozott és a klónozott frissítés előtti 2.1 szoftvert. Ez egy ritka eset legyen. | | |
-| 21 |Kötet-átalakítás |Nem frissítik az ACR-EK, amíg folyamatban van egy kötet átalakítás kötet csatlakoztatva (a helyileg rögzített rétegzett vagy fordítva). Az ACR-EK frissítése adatsérülést eredményezhet. |Ha szükséges, frissítse az ACR-EK, a kötet konvertálás előtt, és ne végezzen további ACR frissítések amíg folyamatban van az átalakítás. | | |
-| 22 |Frissítések |3\. frissítés alkalmazása esetén a **karbantartási** oldal a klasszikus Azure portálon jelenik meg, a következő üzenet kapcsolatos 2. frissítés – "a StorSimple 8000 series 2-es frissítés lehetővé teszi a Microsoft megelőző a gyűjtése a naplófájlba információk az eszközről, ha a rendszer azt észleli, hogy a lehetséges problémák". Ez az félrevezető módon azt jelzi, hogy az eszköz frissítése folyamatban van a 2. frissítés. Után az eszköz sikeres frissítése Update 3-ra, ez az üzenet véglegesen eltűnik. |Ez a viselkedés javítja egy későbbi kiadásban. |Igen |Nem |
+| 1 |Lemez kvóruma |Ritka esetekben, ha egy 8600-es eszköz EBOD-borításában lévő lemezek többsége le van választva, ami nem eredményez lemezes kvórumot, a rendszer offline állapotba helyezi a tárolót. Offline állapotban marad, még akkor is, ha a lemezek újra vannak csatlakoztatva. |Az eszközt újra kell indítani. Ha a probléma továbbra is fennáll, forduljon Microsoft ügyfélszolgálata a következő lépésekhez. |Igen |Nem |
+| 2 |Helytelen vezérlő-azonosító |A vezérlő cseréjének végrehajtásakor a vezérlő 0 vezérlőként jelenhet meg. A vezérlő cseréjekor, amikor a rendszerkép betöltődik a társ csomópontból, a vezérlő azonosítója kezdetben megjelenhet a társ-vezérlő AZONOSÍTÓJAként. Ritka esetekben ez a viselkedés a rendszer újraindítása után is megjelenhet. |Nincs szükség felhasználói beavatkozásra. Ez a helyzet a vezérlő cseréjének befejeződése után maga is megoldódik. |Igen |Nem |
+| 3 |Tárfiókok |Ha a Storage szolgáltatással törli a Storage-fiókot, a rendszer nem támogatott forgatókönyvet használ. Ez olyan helyzetet eredményez, amelyben a felhasználói adatszolgáltatások nem kérhetők le. | |Igen |Igen |
+| 4 |Eszköz feladatátvétele |Egy adott forrásoldali eszközről a különböző cél eszközökre irányuló mennyiségi tárolók több feladatátvétele nem támogatott. Az egyetlen elhalt eszközről több eszközre történő feladatátvétel esetén az első meghiúsult eszközön lévő mennyiségi tárolók elvesztik az adatok tulajdonjogát. Ilyen feladatátvétel után ezek a mennyiségi tárolók a klasszikus Azure-portálon megtekintve eltérően jelennek meg vagy viselkednek. | |Igen |Nem |
+| 5 |Telepítés |A SharePoint rendszerhez készült StorSimple-adapter során meg kell adnia egy eszköz IP-címét ahhoz, hogy a telepítés sikeresen befejeződik. | |Igen |Nem |
+| 6 |Webproxy |Ha a webproxy konfigurációja HTTPS protokollt használ a megadott protokollként, az eszközről a szolgáltatásra irányuló kommunikáció hatással lesz, és az eszköz offline állapotba kerül. A támogatási csomagok a folyamat során is létrejönnek, és jelentős erőforrásokat fogyasztanak az eszközön. |Győződjön meg arról, hogy a webproxy URL-címe HTTP protokollt használ a megadott protokollként. További információ: [Configure web proxy for your device](storsimple-8000-configure-web-proxy.md) (Webproxy beállítása az eszközhöz). |Igen |Nem |
+| 7 |Webproxy |Ha a webproxyt egy regisztrált eszközön konfigurálja és engedélyezi, akkor újra kell indítania az aktív vezérlőt az eszközön. | |Igen |Nem |
+| 8 |Magas Felhőbeli késés és magas I/O-munkaterhelés |Ha a StorSimple-eszköz nagyon magas Felhőbeli késések (másodpercek sorrendje) és magas I/O-munkaterhelések kombinációját tapasztalja, az eszközök mennyisége csökkentett teljesítményű állapotba kerül, és az I/O-művelet meghiúsulhat az "eszköz nem üzemkész" hiba miatt. |Ennek a helyzetnek a helyreállításához manuálisan kell újraindítani az eszközöket, vagy feladatátvételt kell végrehajtani az eszközön. |Igen |Nem |
+| 9 |Azure PowerShell |Ha a **Get-AzureStorSimpleStorageAccountCredential &#124; Select-Object – First 1 – WAIT** StorSimple parancsmagot használja az első objektum kiválasztásához, hogy új **volumecontainer tárhoz való** objektumot hozzon létre, akkor a parancsmag az összes objektumot visszaadja. |Zárja be a parancsmagot zárójelben a következő módon: **(Get-Azure- &#124; StorSimpleStorageAccountCredential) Select-Object-First 1-WAIT** |Igen |Igen |
+| 10 |Migrálás |Ha több mennyiségi tárolót továbbítanak az áttelepítéshez, a legújabb biztonsági mentéshez használt ETA csak az első kötet-tároló esetében pontos. Emellett a párhuzamos áttelepítés az első kötet-tároló első 4 biztonsági mentése után is elindul. |Javasoljuk, hogy egyszerre egy mennyiségi tárolót telepítsen át. |Igen |Nem |
+| 11 |Migrálás |A visszaállítást követően a kötetek nincsenek hozzáadva a biztonsági mentési házirendhez vagy a virtuális lemez csoportjához. |A biztonsági másolatok létrehozásához hozzá kell adnia ezeket a köteteket egy biztonsági mentési szabályzathoz. |Igen |Igen |
+| 12 |Migrálás |Az áttelepítés befejezése után az 5000/7000 sorozatú eszköz nem fér hozzá az áttelepített adattárolóhoz. |Azt javasoljuk, hogy az áttelepítés befejezése és véglegesítése után törölje az áttelepített adattárolókat. |Igen |Nem |
+| 13 |Klón és DR |Az 1. frissítést futtató StorSimple-eszközök nem tudják az 1. frissítés előtti szoftvert futtató eszközön a klónozást vagy a vész-helyreállítást végrehajtani. |A művelet végrehajtásához frissítenie kell a megcélzott eszközt az 1. frissítéshez |Igen |Igen |
+| 14 |Migrálás |Az áttelepítésre vonatkozó konfigurációs biztonsági mentés meghiúsulhat egy 5000-7000 sorozatú eszközön, ha nincsenek társított kötetek nélküli kötetek. |Törölje az összes olyan üres kötetet, amely nem rendelkezik társított kötetekkel, majd próbálja megismételni a konfiguráció biztonsági mentését. |Igen |Nem |
+| 15 |Azure PowerShell parancsmagok és helyileg rögzített kötetek |Helyileg rögzített kötet nem hozható létre Azure PowerShell parancsmagokon keresztül. (Minden Azure PowerShell-n keresztül létrehozott kötetet a rendszer lépcsőzetesen fogja kialakítani.) |A helyileg rögzített kötetek konfigurálásához mindig a StorSimple Manager szolgáltatást használja. |Igen |Nem |
+| 16 |A helyileg rögzített kötetek számára elérhető terület |Ha töröl egy helyileg rögzített kötetet, előfordulhat, hogy az új kötetek számára elérhető terület nem frissül azonnal. A StorSimple Manager szolgáltatás körülbelül óránként frissíti a helyi helyet. |Várjon egy órát, mielőtt megpróbálja létrehozni az új kötetet. |Igen |Nem |
+| 17 |Helyileg rögzített kötetek |A visszaállítási feladatokkal elérhetővé teszi az ideiglenes pillanatkép biztonsági mentését a biztonsági mentési katalógusban, de csak a visszaállítási feladatokhoz. Emellett a **biztonsági mentési házirendek** lapon a **tmpCollection** előtaggal rendelkező virtuális lemezeket is elérhetővé teszi, de csak a visszaállítási feladatokhoz. |Ez akkor fordulhat elő, ha a visszaállítási feladatokhoz csak a helyileg rögzített kötetek vagy a helyileg rögzített és a lépcsőzetes kötetek kombinációja tartozik. Ha a visszaállítási feladatokban csak a lépcsőzetes kötetek szerepelnek, akkor ez a viselkedés nem fog történni. Felhasználói beavatkozásra nincs szükség. |Igen |Nem |
+| 18 |Helyileg rögzített kötetek |Ha a visszaállítási feladatot visszavonja, és a vezérlő feladatátvétele azonnal megtörténik, a visszaállítási feladat **nem** a **megszakított**állapotot fogja megjeleníteni. Ha a visszaállítási feladat meghiúsul, és a vezérlő feladatátvétele azonnal megtörténik, a visszaállítási feladat **sikertelenül**fog **megjelenni** . |Ez akkor fordulhat elő, ha a visszaállítási feladatokhoz csak a helyileg rögzített kötetek vagy a helyileg rögzített és a lépcsőzetes kötetek kombinációja tartozik. Ha a visszaállítási feladatokban csak a lépcsőzetes kötetek szerepelnek, akkor ez a viselkedés nem fog történni. Felhasználói beavatkozásra nincs szükség. |Igen |Nem |
+| 19 |Helyileg rögzített kötetek |Ha visszavon egy visszaállítási feladatot, vagy ha egy visszaállítás meghiúsul, majd egy vezérlő feladatátvétele történik, a **feladatok** lapon egy további visszaállítási feladat jelenik meg. |Ez akkor fordulhat elő, ha a visszaállítási feladatokhoz csak a helyileg rögzített kötetek vagy a helyileg rögzített és a lépcsőzetes kötetek kombinációja tartozik. Ha a visszaállítási feladatokban csak a lépcsőzetes kötetek szerepelnek, akkor ez a viselkedés nem fog történni. Felhasználói beavatkozásra nincs szükség. |Igen |Nem |
+| 20 |Helyileg rögzített kötetek |Ha egy, a 1,2-as vagy korábbi frissítéssel létrehozott, többplatformos kötetet próbál alakítani egy helyileg rögzített kötetre, és az eszközön nincs elég hely, vagy ha a felhő meghibásodik, akkor a klón (ok) sérült lehet. |Ez a probléma csak olyan köteteken fordul elő, amelyek a 2,1-es frissítés előtti szoftverrel lettek létrehozva és klónozottak. Ez nem ritka forgatókönyv. | | |
+| 21 |Kötet konvertálása |Ne frissítse a kötethez csatolt ACR-EK, amíg a kötet-átalakítás folyamatban van (a többhelyes rögzítés a helyileg rögzített vagy fordítva). A ACR-EK frissítése adatsérülést eredményezhet. |Ha szükséges, frissítse a ACR-EK a kötet konvertálása előtt, és ne végezzen további ACR-frissítéseket, amíg az átalakítás folyamatban van. | | |
+| 22 |Frissítések |Ha a 3. frissítést alkalmazza, a klasszikus Azure portál **karbantartási** lapja a 2. frissítéssel kapcsolatos következő üzenetet jeleníti meg: "StorSimple 8000 Series Update 2, amely lehetővé teszi a Microsoft számára, hogy proaktív módon gyűjtsön adatokat az eszközről a lehetséges problémák észlelése esetén". Ez félrevezető, mert azt jelzi, hogy az eszköz frissítése folyamatban van a 2. frissítéshez. Miután az eszköz sikeresen frissítve lett a 3. frissítésre, ez az üzenet eltűnik. |Ezt a viselkedést egy későbbi kiadásban rögzíti a rendszer. |Igen |Nem |
 
-## <a name="controller-and-firmware-updates-in-update-3"></a>Az Update 3 vezérlő és a belsővezérlőprogram-frissítések
-Ebben a kiadásban rendelkezik LSI illesztőprogram- és belsővezérlőprogram-frissítések. Az LSI-illesztőt és a lemezfirmware-frissítések telepítésével kapcsolatos további információkért lásd: [Update 3 telepítése](storsimple-install-update-3.md) a StorSimple eszközön.
+## <a name="controller-and-firmware-updates-in-update-3"></a>A vezérlő és a belső vezérlőprogram frissítései a 3. frissítésben
+Ez a kiadás LSI-illesztőprogramokat és belső vezérlőprogram-frissítéseket tartalmaz. További információ az LSI-illesztőprogram és a belső vezérlőprogram frissítéseinek telepítéséről: a [3. frissítés telepítése](storsimple-install-update-3.md) a StorSimple-eszközön.
 
-## <a name="virtual-device-updates-in-update-3"></a>Virtuális eszköz frissítéseit a Update 3
-A StorSimple Cloud Appliance eszköz (más néven a virtuális eszköz) nem lehet alkalmazni ezt a frissítést. Új virtuális eszközök kell létrehozni. 
+## <a name="virtual-device-updates-in-update-3"></a>Virtuális eszközök frissítései a 3. frissítésben
+Ez a frissítés nem alkalmazható a StorSimple Cloud Appliancera (más néven virtuális eszközre). Új virtuális eszközöket kell létrehozni. 
 
 ## <a name="next-step"></a>Következő lépés
-Ismerje meg, hogyan [Update 3 telepítése](storsimple-install-update-3.md) a StorSimple eszközön.
+Megtudhatja, hogyan [telepítheti a 3. frissítést](storsimple-install-update-3.md) a StorSimple-eszközön.
 

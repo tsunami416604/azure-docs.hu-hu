@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service-oktatóanyag – a Kubernetes monitorozása
+title: ELAVULT Azure Container Service oktatóanyag – Kubernetes figyelése
 description: Azure Container Service-oktatóanyag – A Kubernetes monitorozása a Log Analytics használatával
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 04/05/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: 6f95aa701228730682c0122dc1fd46d8a2537ce1
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 35f7c2fb968ea5285af5f2d597c67b3b22065906
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "61473237"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278225"
 ---
-# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>(ELAVULT) A Log Analytics használatával a Kubernetes-fürt monitorozása
+# <a name="deprecated-monitor-a-kubernetes-cluster-with-log-analytics"></a>ELAVULT Kubernetes-fürt figyelése Log Analytics
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [tárolók (előzetes verzió) – áttekintés az Azure Monitor](../../azure-monitor/insights/container-insights-overview.md).
+> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziójáért lásd: [Azure monitor for containers (előzetes verzió) – áttekintés](../../azure-monitor/insights/container-insights-overview.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -158,7 +156,7 @@ Hasonlóképpen az Azure Portalon lépjen a **Log Analytics** területre, és v�
 
 A monitorozási adatok lekérdezésére és elemzésére vonatkozó részletes útmutatásért tekintse meg az [Azure Log Analytics dokumentációját](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban a Log Analytics használatával monitoroztuk a Kubernetes-fürtöt. A következők feladatokat hajtottuk végre:
 

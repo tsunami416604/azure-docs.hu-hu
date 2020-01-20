@@ -1,56 +1,48 @@
 ---
-title: A StorSimple 8000 sorozatú eszköz figyelése |} A Microsoft Docs
-description: A StorSimple-Eszközkezelő szolgáltatás használatát a használatot, az i/o-teljesítmény és a tárolókapacitás kihasználtságát ismerteti.
-services: storsimple
-documentationcenter: NA
+title: A StorSimple 8000 Series eszköz monitorozása
+description: Ismerteti, hogyan használható a StorSimple Eszközkezelő szolgáltatás a használat, az I/O-teljesítmény és a kapacitás kihasználtságának figyelésére.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 10/17/2017
 ms.author: alkohli
-ms.openlocfilehash: 602514df69977891167f341db0ab20913bcacc9f
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: b3b77024606c5cdb02ff7bdd357c2d14a2415efa
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60634562"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277061"
 ---
-# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz figyelése
+# <a name="use-the-storsimple-device-manager-service-to-monitor-your-storsimple-device"></a>A StorSimple-eszköz figyelése a StorSimple Eszközkezelő szolgáltatással
 
 ## <a name="overview"></a>Áttekintés
-A StorSimple-Eszközkezelő szolgáltatás segítségével a StorSimple-megoldásokra belül meghatározott eszközök figyelését. Hozzon létre egyéni diagramokat i/o teljesítmény, tárolókapacitás kihasználtságát, hálózati átviteli sebesség és teljesítmény-mérőszámok eszköz alapján, és rögzítheti az irányítópulton. További információért ugorjon [testre szabhatja a portál irányítópultján](../azure-portal/azure-portal-dashboards.md).
+A StorSimple-megoldásban lévő egyes eszközök figyeléséhez használhatja a StorSimple Eszközkezelő szolgáltatást. Létrehozhat egyéni diagramokat az I/O-teljesítmény, a kapacitás kihasználtsága, a hálózati átviteli sebesség és az eszköz teljesítményének mérőszámai alapján, és rögzítheti az irányítópultra. További információért keresse fel a [portál irányítópultjának testreszabása](../azure-portal/azure-portal-dashboards.md)című témakört.
 
-Az Azure Portalon egy adott eszközhöz tartozó a figyelési adatok megtekintéséhez válassza ki a StorSimple-Eszközkezelő szolgáltatásban. Eszközök listájából válassza ki az eszközt, és folytassa a **figyelő**. Ezután megjelenik a **kapacitás**, **használati**, és **teljesítmény** diagramokon a kijelölt eszközre vonatkozóan.
+Egy adott eszköz figyelési információinak megtekintéséhez a Azure Portal válassza ki a StorSimple Eszközkezelő szolgáltatást. Az eszközök listájából válassza ki az eszközt, majd lépjen a **figyelés**elemre. Ekkor megtekintheti a kiválasztott eszköz **kapacitását**, **felhasználását**és **teljesítményének** diagramját.
 
 ## <a name="capacity"></a>Kapacitás
-**Kapacitás** nyomon követi a kiosztott lemezterület és a hely az eszközön van. A fennmaradó kapacitás majd a helyileg rögzített vagy rétegzett jelenik meg.
+A **kapacitás** nyomon követi a kiépített területet és az eszközön maradó területet. A fennmaradó kapacitás ezután helyileg rögzítettként vagy lépcsőzetesen jelenik meg.
 
-A kiépített és a fennmaradó kapacitás rétegzett és a helyileg rögzített kötetek további oszlanak meg. Az egyes kötetek a kiosztott kapacitást, és a fennmaradó kapacitás az eszközön jelenik meg.
+A kiépített és a fennmaradó kapacitást a lépcsőzetes és a helyileg rögzített kötetek részletezik. Minden kötetnél megjelenik a kiosztott kapacitás, valamint az eszköz hátralévő kapacitása.
 
-![IO-kapacitás](./media/storsimple-8000-monitor-device/device-capacity.png)
+![I/o-kapacitás](./media/storsimple-8000-monitor-device/device-capacity.png)
 
 
 
 ## <a name="usage"></a>Használat
-**Használati** nyomon követi a kötetek, kötettárolók, vagy az eszköz által használt adatok tárolási terület mennyisége kapcsolatos metrikákat. A tárolókapacitás kihasználtságát az elsődleges tárolási, a felhőalapú tárolás vagy az eszköz tárhelyén alapuló jelentéseket hozhat létre. Kapacitás kihasználtsága egy adott kötet, egy adott kötettároló vagy minden kötettároló mérhető.
-Alapértelmezés szerint a használat az elmúlt 24 órában jelentett. Módosítsa az időtartamot, amelyen a használati jelentett, válassza ki a diagram szerkesztheti:
-* Elmúlt 24 óra
-* Elmúlt 7 nap
+A **használat** a kötetek, a kötetek tárolói vagy az eszköz által használt adattárolóhelyek mennyiségével kapcsolatos metrikákat követi nyomon. A jelentéseket az elsődleges tárterület, a Felhőbeli tárhely vagy az eszköz tárterületének kapacitáskihasználása alapján hozhatja létre. A kapacitás kihasználtsága egy adott köteten, egy adott mennyiségi tárolón vagy az összes köteten található tárolón mérhető.
+Alapértelmezés szerint az elmúlt 24 órában használatos. A diagram szerkesztésével módosíthatja azt az időtartamot, ameddig a használatot jelenteni kell, ha kiválasztja a következőt:
+* Az elmúlt 24 óra
+* Az elmúlt 7 nap
 * Elmúlt 30 nap
 * Elmúlt 90 nap
-* Elmúlt év
+* Az elmúlt év
 
-Két fő metrices, a növekedési és a tartomány jelenti, hogy a használat diagramok. Hivatkozik a maximális érték és a használat, a kijelölt időintervallumban (fő példány, elmúlt 7 napon) keresztül jelentett minimális értékét.
+A használati diagramok esetében két fő mérőszámot, növekedést és tartományt kell jelenteni. A tartomány a kijelölt időtartamon (például az elmúlt 7 napban) jelentett felhasználás minimális értékére és a felhasznált adatok minimális értékeire vonatkozik.
 
-Növekedési használat növelése az első nap az utolsó napjáig keresztül a kijelölt időintervallumban hivatkozik. 
+A növekedés arra utal, hogy az első naptól kezdve az elmúlt nap folyamán a használat növekedését a kiválasztott időtartam alatt. 
 
-Növekedés és a tartomány a következő egyenletek is ábrázolható:
+A növekedést és a tartományt a következő egyenletek is megadhatják:
 
 ```
 Range = {Usage(minimum), Usage(maximum)}
@@ -60,93 +52,93 @@ Growth = Usage(Last day) - Usage(first day)
 Growth (%) = [{Usage(last day) - Usage(first day)} X 100]/Usage(first day)
 ```
 
-Az elsődleges, felhőalapú és a felhasznált helyi tár leírása a következő lehet:
+A használt elsődleges, Felhőbeli és helyi tárterület a következőképpen olvasható:
 
-### <a name="primary-storage-usage"></a>Elsődleges tárhely kihasználtsága
-Ezek a diagramok megjelenítése előtt az adatok tömörítve és deduplikált kötetek a StorSimple írt adatok mennyisége. Megtekintheti az összes kötet kötettároló vagy egyetlen kötetén által használt elsődleges tároló. Használt elsődleges tároló továbbá által használt elsődleges rétegzett tárhely lebontva, és az elsődleges gyors helyi tár használatban.
+### <a name="primary-storage-usage"></a>Elsődleges tárterület-használat
+Ezek a diagramok a StorSimple kötetekre írt adatmennyiséget mutatják, mielőtt az adatgyűjtés deduplikálása és tömörítése megtörténik. Megtekintheti a mennyiségi tárolóban lévő összes kötet által használt elsődleges tárterületet vagy egyetlen kötetet. A használt elsődleges tárterület tovább bontható az elsődleges, a felhasznált és az elsődleges helyileg rögzített tárolóban.
 
-A következő diagramon megjelenik egy StorSimple-eszköz előtt és után egy felhőbeli pillanatkép használt elsődleges tároló. Mivel ez csak a mennyiségi adatok, egy felhőbeli pillanatkép nem kell módosítani az elsődleges tárolási. Amint láthatja, a diagram mutatja eredményeként felhőbeli pillanatkép használt elsődleges rétegzett vagy helyileg rögzített tároló nincs különbség. A felhőbeli pillanatképet kezdtem körülbelül 11:50 pm, hogy az eszközről.
+A következő diagramok a StorSimple-eszközhöz használt elsődleges tárolót mutatják be a Felhőbeli pillanatképek készítése előtt és után. Mivel ez csak mennyiségi adatok, a Felhőbeli pillanatkép nem változtathatja meg az elsődleges tárterületet. Amint láthatja, a diagramon a Felhőbeli Pillanatképek készítésének eredményeképpen használt elsődleges, vagy helyileg rögzített tárolóban nem látható különbség. A Felhőbeli pillanatkép az eszközön körülbelül 11:50 órakor indult el.
 
-![Felhőbeli pillanatkép utáni elsődleges kapacitáskihasználás](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
+![Elsődleges kapacitás kihasználtsága a Felhőbeli pillanatkép után](./media/storsimple-8000-monitor-device/device-primary-storage-after-cloudsnapshot.png)
 
-Ha a gazdagép csatlakozik a StorSimple-eszköz most már futtatása IO, látni fogja az elsődleges rétegzett tárhely növekedése vagy elsődleges gyors helyi tár használatban attól függően (vagy a helyileg rögzített rétegzett) kötetek esetén akkor írja az adatokat. Az alábbiakban az elsődleges tárolási használati diagramok egy StorSimple-eszköz. Az eszközön a lépések a kiszolgáló StorSimple gazdagép, az írási műveleteknél körülbelül 2:30 = 1997031213 a rétegzett kötetek az eszközön. Láthatja, hogy az írási bájt/s-megfelelő a gazdagépen futó az i/o csúcsértéke.
+Ha most futtatja az i/o-t a StorSimple-eszközhöz csatlakoztatott gazdagépen, a rendszer az elsődleges rétegű tárolás vagy az elsődleges helyileg rögzített tároló növekedését fogja látni, attól függően, hogy melyik kötetek (rétegű vagy helyileg rögzített) alapján történik az adatírás. Itt láthatók a StorSimple-eszközök elsődleges tárolási használati diagramjai. Ezen az eszközön a StorSimple-gazdagép a (z) 2:30 órakor megkezdte az írásokat az eszköz egy rétegű kötetén. A (z) a gazdagépen futó IO-hoz tartozó, írási bájt/mp-ben látható csúcsot láthatja.
 
-![Amikor futó i/o-rétegzett köteteket teljesítmény](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Teljesítmény, ha a rétegű köteteken fut az IO](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-Az elsődleges rétegzett tár használatban tekinti meg, ha, amely rendelkezik lekérnénk az összesítést, mivel az elsődleges gyors helyi használat változatlan marad, mert nincsenek rendereléséhez szükséges a helyileg rögzített kötetek az eszközön nincs írási.
+Ha megtekinti a felhasznált elsődleges többhelyes tárolót, amely így lett felmentve, míg az elsődleges helyileg rögzített használat változatlan marad, mivel a helyileg rögzített köteteken az eszközön nem történik írás.
 
-![Elsődleges kapacitáskihasználás IO a rétegzett kötetek futtatásakor](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
+![Az elsődleges kapacitás kihasználtsága, ha az IO a lépcsőzetes köteteknél fut](./media/storsimple-8000-monitor-device/device-primary-storage-io-from-initiator.png)
 
-Ha futtatja 3-as frissítés vagy újabb verziója szükséges, akkor is felosztania az elsődleges tárolókapacitás kihasználtságát az egyedi kötet, minden kötet, az összes rétegzett kötetek és minden helyileg rögzített kötet alább látható módon. Minden helyileg rögzített kötetek érvénytelenítésével lehetővé teszi, gyorsan listájáért, mekkora a helyi rétegen használja.
+Ha a 3. vagy újabb frissítést futtatja, az elsődleges tárterületet az egyes kötetek, az összes kötet, az összes rétegű kötet és az összes helyileg rögzített kötet alapján lebonthatja, ahogy az alábbi ábrán is látható. Az összes helyileg rögzített kötet lebontásával gyorsan megállapíthatja, hogy milyen mértékben használják a helyi szintet.
 
-![Az összes rétegzett kötet elsődleges kapacitáskihasználás](./media/storsimple-8000-monitor-device/monitor-usage3.png)
+![Az összes rétegű kötet elsődleges kapacitásának kihasználtsága](./media/storsimple-8000-monitor-device/monitor-usage3.png)
 
-![Az összes helyileg rögzített kötet elsődleges kapacitáskihasználás](./media/storsimple-8000-monitor-device/monitor-usage4.png)
+![Az összes helyileg rögzített kötet elsődleges kapacitásának kihasználtsága](./media/storsimple-8000-monitor-device/monitor-usage4.png)
 
-Az egyes kötetek a listában kattintson a Tovább, és a megfelelő használati.
+További rákattinthat a listában szereplő összes kötetre, és megtekintheti a megfelelő használatot.
 
-![Az összes helyileg rögzített kötet elsődleges kapacitáskihasználás](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
+![Az összes helyileg rögzített kötet elsődleges kapacitásának kihasználtsága](./media/storsimple-8000-monitor-device/device-primary-storage-usage-by-volume.png)
 
-### <a name="cloud-storage-usage"></a>Cloud storage használata
-Ezek a diagramok megjelenítése használt felhőbeli tárhely. Ezek az adatok deduplikált, és a tömörített. Ez a mennyiség magában foglalja a felhőbeli pillanatképekkel nem tükröződnek bármelyik elsődleges kötet és célokra megőrzési örökölt vagy szükséges tárolt adatok tartalmazhatnak. Hasonlítsa össze az elsődleges és a storage fogyasztási adatokat, hogy képet kapjon a csökkentési sebessége, a felhőalapú, bár a szám nem lesz pontos.
+### <a name="cloud-storage-usage"></a>Felhőbeli tárolás használata
+Ezek a diagramok a felhasznált Felhőbeli tárhely mennyiségét mutatják. Ezeket az adatfájlokat a rendszer deduplikálja és tömöríti. Ez az összeg olyan Felhőbeli pillanatképeket tartalmaz, amelyek nem tükrözik az elsődleges köteteket, és az örökölt vagy a szükséges megőrzési célokra szolgálnak. Összehasonlíthatja az elsődleges és a Felhőbeli tárterület-használati adatokat, így az adatcsökkenési arányt is megtalálhatja, bár a szám nem lesz pontos.
 
-A következő diagramok megjelenítése a a StorSimple eszköz cloud storage felhasználása, ha egy felhőbeli pillanatkép.
+A következő diagramok egy StorSimple-eszköz Felhőbeli tárolási kihasználtságát mutatják be Felhőbeli pillanatkép készítésekor.
 
-* A felhőbeli pillanatképet elindítva: körülbelül 11:50:00, hogy az eszközről, és láthatja, hogy a felhőbeli pillanatkép, mielőtt volt nem használt felhőbeli tárhelyhez. 
-* Egyszer a felhőbeli pillanatképet befejeződött, a felhő tárterület kihasználtsága elejtett 0,89 GB fel. 
-* Miközben folyamatban volt a felhőbeli pillanatképet, emellett van egy megfelelő csúcsértéke az eszközről a felhőbe az i/o.
+* A Felhőbeli pillanatkép a 11:50-kor megkezdődött az eszközön, és láthatja, hogy a Felhőbeli pillanatkép előtt nem volt használatban Felhőbeli tárterület. 
+* A Felhőbeli pillanatkép befejezését követően a Felhőbeli tárterület kihasználtsága 0,89 GB-ot eredményez. 
+* A Felhőbeli pillanatkép folyamatban van, és az eszközről a felhőbe irányuló i/o-érték is megfelelő csúcsot mutat.
 
-    ![Felhőbeli pillanatkép előtti felhőalapú tárterület kihasználtsága](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
+    ![Felhőbeli tárolás kihasználtsága a Felhőbeli pillanatkép előtt](./media/storsimple-8000-monitor-device/device-cloud-storage-before-cloudsnapshot.png)
 
-    ![Tárterület kihasználtsága felhőbeli pillanatképet készít a felhő](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
+    ![Felhőbeli tárolás kihasználtsága a Felhőbeli pillanatkép után](./media/storsimple-8000-monitor-device/device-cloud-storage-after-cloudsnapshot.png)
 
-    ![Eszközről a felhőbe során felhőbeli pillanatkép IO](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+    ![IO az eszközről a felhőbe Felhőbeli Pillanatképek során](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
 
-### <a name="local-storage-usage"></a>Helyi tárhely kihasználtsága
-Ezek a diagramok megjelenítése a teljes kihasználtság az eszközhöz, amely több, mint az elsődleges tárolási felhasználásának lesz, mert azokat az lineáris SSD-réteghez. A csomag tartalmaz egy is létezik a adatok mennyisége az eszköz a többi szint. A lineáris SSD-réteg kapacitása nem szakad meg, így amikor új adat érkezik, a régi helyez át adatokat a HDD-réteg (ekkor deduplikált és tömörített), és ezt követően a felhőben.
+### <a name="local-storage-usage"></a>Helyi tárterület-használat
+Ezek a diagramok az eszköz teljes kihasználtságát mutatják, amely nagyobb, mint az elsődleges tárterület-használat, mivel az SSD lineáris szintet tartalmaz. Ez a csomag olyan adatmennyiséget tartalmaz, amely az eszköz más szintjein is megtalálható. Az SSD lineáris csomag kapacitása úgy van lefoglalva, hogy amikor az új adatértékek bekerülnek, a rendszer áthelyezi a régieket a HDD-szintjére (a deduplikált és a tömörített időt), majd ezt követően a felhőbe.
 
-Idő, az elsődleges tárolási keresztül használt használt és a helyi tároló nagy valószínűséggel megnöveli a együtt mindaddig, amíg a felhőbe helyezhető elkezdi az adatok. Ezen a ponton a felhasznált helyi tár tetőzni valószínűleg megkezdődik, de a használt elsődleges tároló megnő, a rendszer több adatot ír.
+Idővel a felhasznált elsődleges tárterület és a használt helyi tárterület valószínűleg együtt fog növekedni, amíg az adat a felhőbe nem kerül. Ezen a ponton a használt helyi tárterület valószínűleg a fennsíkon kezdődik, de a felhasznált elsődleges tárterület egyre nagyobb mennyiségű adatírást eredményez.
 
-A következő diagramon megjelenik az elsődleges tárolási használhatók a StorSimple eszköz abban az esetben, ha egy felhőbeli pillanatkép. A felhőbeli pillanatkép: 00:50 óra, és a helyi tároló ekkor csökken. Felhasznált helyi tár csökkent 1.445 GB-tól 1.09 GB. Ez jelzi, hogy nagy valószínűséggel a tömörítetlen adatok a lineáris SSD-réteg lett deduplikált, tömörített, és a HDD-réteget helyezve. Vegye figyelembe, hogy ha az eszköz már rendelkezik egy nagy mennyiségű adatot az SSD és HDD-szinten, nem jelenhet meg ez csökkenése. Ebben a példában az eszköz rendelkezik egy kisebb mennyiségű adatot.
+A következő diagramok a StorSimple-eszközhöz használt elsődleges tárolót mutatják be a Felhőbeli Pillanatképek készítésekor. A Felhőbeli pillanatkép a következő időpontban indult: 11:50 órakor, és a helyi tárterület egyre csökken. A felhasznált helyi tárterület 1,445 GB és 1,09 GB között volt. Ez azt jelzi, hogy a lineáris SSD-csomag tömörítetlen állapotának legnagyobb valószínűsége deduplikált, tömörített és a HDD-szinten lett áthelyezve. Vegye figyelembe, hogy ha az eszközön már van nagy mennyiségű adattal az SSD-és a HDD-szinten, akkor előfordulhat, hogy ez a csökkenés nem jelenik meg. Ebben a példában az eszköz kis mennyiségű adattal rendelkezik.
 
-![Felhőbeli pillanatképet készít a helyi tárterület kihasználtsága](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
+![Helyi tárterület kihasználtsága a Felhőbeli pillanatkép után](./media/storsimple-8000-monitor-device/device-local-storage-after-cloudsnapshot.png)
 
 ## <a name="performance"></a>Teljesítmény
-**Teljesítmény** nyomon követi az olvasások száma kapcsolatos metrikákat, és az írási műveletek között, vagy az iSCSI-kezdeményező felületek a gazdagép-kiszolgálón és az eszköz vagy az eszköz és a felhőben. A teljesítmény mérhető egy meghatározott kötete, egy adott kötettároló vagy minden kötettároló. Teljesítményét a CPU-kihasználtság és hálózati átviteli sebesség az eszközön a különböző hálózati adaptereket is tartalmaz.
+A **teljesítmény** a gazdagépen lévő iSCSI-kezdeményező felületek, valamint az eszköz vagy az eszköz, illetve a felhő közötti olvasási és írási műveletek számával kapcsolatos mérőszámokat követi nyomon. Ez a teljesítmény mérhető egy adott kötetre, egy adott mennyiségi tárolóra vagy az összes mennyiségi tárolóra. A teljesítmény magában foglalja a CPU-kihasználtságot, valamint az eszközön lévő különböző hálózati adapterek hálózati átviteli sebességét is.
 
-### <a name="io-performance-for-initiator-to-device"></a>Kezdeményező – eszköz i/o-teljesítmény
-Az alábbi diagram bemutatja a kezdeményező – az eszköz egy éles eszköz a kötetek az i/o. A metrikák rajzolódik ki vannak írási és olvasási bájt / másodperc. Is olvasási, írási és a szálankénti függőben lévő i/o diagram vagy olvasási és írási késése.
+### <a name="io-performance-for-initiator-to-device"></a>Kezdeményező által az eszközre irányuló I/O-teljesítmény
+Az alábbi diagram a kezdeményező I/O-adatait jeleníti meg az eszközön az éles eszköz összes kötete számára. A rajzolt metrikák olvasási és írási bájtok másodpercenként. Az olvasási, írási és a függőben lévő i/o-műveletek, illetve olvasási és írási késések is megadhatók.
 
-![Kezdeményező – eszköz i/o-teljesítmény](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
+![Az i/o-teljesítmény a kezdeményező számára az eszközre](./media/storsimple-8000-monitor-device/device-io-from-initiator.png)
 
-### <a name="io-performance-for-device-to-cloud"></a>A felhő-eszköz i/o-teljesítmény
-Az ugyanazon az eszközön az i/o-műveletek az adatok az eszközről a felhőbe a kötettárolókat ábrázolási. Az eszközön az adatok csak a lineáris szinten van, és semmi nem rendelkezik kiömlött a felhőbe. Nincsenek az eszközről a felhőbe előforduló olvasási és írási műveletek. Emiatt a csúcsok, a diagram egy 5 perces időközönként, amely megfelel a gyakoriságot, amellyel a szívverés jelölőnégyzet be van jelölve az eszköz és a szolgáltatás között lehet.
+### <a name="io-performance-for-device-to-cloud"></a>Eszközről a felhőbe irányuló I/O-teljesítmény
+Ugyanarra az eszközre az I/O-műveletek az eszközről a felhőbe irányuló adatokra lesznek felrajzolva az összes kötet tárolóban. Ezen az eszközön csak a lineáris szinten szerepelnek az adathalmazok, és semmi sincs a felhőben. Az eszközről a felhőbe nem történt írási/olvasási művelet. Ezért a diagramban lévő csúcsok 5 percen belül vannak, és az eszköz és a szolgáltatás között a szívverés ellenőrzésének gyakorisága megfelel.
 
-Ugyanazon az eszközön, az egy felhőbeli pillanatkép mennyiségi adatok 11:50-kor kezdődik. Ennek következtében adatforgalmát, az eszközről a felhőbe. Írás a felhőbe ennek az időtartamnak a szolgálja ki a is. Az i/o-diagram az írási bájt/s az idő, amikor a pillanatkép megfelelő csúcsértéke mutatja meg.
+Ugyanezen eszköz esetében a 11:50-kor kezdődően a kötethez tartozó adatokhoz is Felhőbeli pillanatkép készült. Ez az eszközről a felhőbe irányuló adatforgalmat eredményezett. Az írások ebben az időtartamban a felhőbe voltak kézbesítve. Az i/o-diagram a pillanatkép készítésének időpontjához tartozó írási bájt/mp-csúcsot jeleníti meg.
 
-![Eszközről a felhőbe során felhőbeli pillanatkép IO](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
+![IO az eszközről a felhőbe Felhőbeli Pillanatképek során](./media/storsimple-8000-monitor-device/device-io-to-cloud-during-cloudsnapshot.png)
 
-### <a name="network-throughput-for-device-network-interfaces"></a>Eszköz hálózati adapterek a hálózati átviteli sebesség
-**Hálózati átviteli sebesség** nyomon követi az iSCSI-kezdeményező hálózati interfész az a gazdagép és az eszköz és az eszköz és a felhő között továbbított adatok mennyisége kapcsolatos metrikákat. Ez a metrika az iSCSI-hálózati adapterek mindegyike figyelheti az eszközön.
+### <a name="network-throughput-for-device-network-interfaces"></a>Hálózati átviteli sebesség az eszköz hálózati adapterei számára
+A **hálózati átviteli sebesség** a gazdagépen és az eszközön, illetve az eszköz és a felhő közötti iSCSI-kezdeményező hálózati adapterekről továbbított adatok mennyiségére vonatkozó metrikákat követi nyomon. Az eszközön lévő összes iSCSI hálózati adapter esetében nyomon követheti ezt a metrikát.
 
-A következő diagramok megjelenítése a hálózat átviteli sebessége az adatok 0, 1 1 GbE hálózati az eszközön, amely mindkét felhőalapú engedélyezett (alapértelmezett) és az iSCSI-kompatibilis. Az eszköz körülbelül 9-kor, június 14-én, adatokat a felhőbe volt rétegzett (nem felhőbeli pillanatképek származnak rétegezést folyamatban van az adatok áthelyezése a felhőbe a mechanizmust mutat, amely jelenleg) amely szolgál ki, a felhő IO eredményezett. A megfelelő csúcsot a hálózati átviteli sebesség Graph időben, és a hálózati forgalmat a legtöbb kimenő a felhőbe.
+A következő diagramok azt mutatják be, hogy az eszközön a 0, a 1 1 GbE hálózat milyen hálózati átviteli sebességgel rendelkezik, ami mind a Cloud-Enabled (alapértelmezett), mind az iSCSI-engedélyezve volt. Ezen az eszközön június 14-én, körülbelül 9 órakor a felhőbe soroltuk be az adatkereteket (a Felhőbeli Pillanatképek nem voltak elérhetők, ami azt jelenti, hogy az adatforgalom a felhőbe való áthelyezését eredményezte). A hálózati átviteli sebesség gráfjának egy megfelelő csúcsa van, és a legtöbb hálózati forgalom a felhőben is kimenő.
 
-![Data 0 hálózati átviteli sebesség](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
+![Hálózati átviteli sebesség (0)](./media/storsimple-8000-monitor-device/device-network-throughput-data0.png)
 
-Ha megnézzük a Data 1 felület átviteli diagram, egy másik 1 GbE hálózati adapter, mely csak iSCSI-kompatibilis, majd szinte semmilyen hálózati forgalom az ezen időtartam történt.
+Ha megnézzük az adatok 1 interfész átviteli sebesség diagramot, egy másik 1 GbE hálózati adaptert, amely csak iSCSI-kompatibilis volt, akkor ebben az időtartamban gyakorlatilag nem történt hálózati forgalom.
 
-![Hálózati átviteli sebesség Data 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
-
-
-## <a name="cpu-utilization-for-device"></a>Az eszköz CPU-kihasználtság
-**CPU-kihasználtság** nyomon követi a Processzor, az eszközön felhasznált kapcsolatos metrikákat. Az alábbi ábra a Processzor kihasználtsága stats eszköz éles jeleníti meg.
-
-![Az eszköz CPU-kihasználtság](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+![Adatok hálózati átviteli sebessége 1](./media/storsimple-8000-monitor-device/device-network-throughput-data1.png)
 
 
+## <a name="cpu-utilization-for-device"></a>Az eszköz CPU-kihasználtsága
+A **CPU-kihasználtság** az eszközön használt CPU-ra vonatkozó metrikákat követi nyomon. A következő diagram az eszköz CPU-kihasználtsági statisztikáit mutatja be éles környezetben.
 
-## <a name="next-steps"></a>További lépések
-* Ismerje meg, hogyan [használata a StorSimple-Eszközkezelő szolgáltatás irányítópultját](storsimple-device-dashboard.md).
-* Ismerje meg, hogyan [a StorSimple-eszköz felügyelete a StorSimple-Eszközkezelő szolgáltatás segítségével](storsimple-manager-service-administration.md).
+![Az eszköz CPU-kihasználtsága](./media/storsimple-8000-monitor-device/device-cpu-utilization.png)
+
+
+
+## <a name="next-steps"></a>Következő lépések
+* Ismerje meg, hogyan [használhatja a StorSimple Eszközkezelő szolgáltatás-eszköz irányítópultot](storsimple-device-dashboard.md).
+* Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-manager-service-administration.md).
 

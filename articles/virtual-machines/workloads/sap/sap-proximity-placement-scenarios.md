@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 10/01/2019
+ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cef5058936a45badd700a573611c82398ca4d546
-ms.sourcegitcommit: 5aefc96fd34c141275af31874700edbb829436bb
+ms.openlocfilehash: 01ce1599f86082aef3ff53d298cc53896074af66
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74805705"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277595"
 ---
 # <a name="azure-proximity-placement-groups-for-optimal-network-latency-with-sap-applications"></a>Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal
 Az SAP NetWeaver vagy az SAP S/4HANA architektúrán alapuló SAP-alkalmazások érzékenyek az SAP-alkalmazási rétegek és az SAP-adatbázis szintjei közötti hálózati késésre. Ez az érzékenység az alkalmazási rétegben futó üzleti logika legnagyobb része. Mivel az SAP-alkalmazás rétege futtatja az üzleti logikát, nagy gyakorisággal kérdezi le a lekérdezéseket az adatbázis-rétegre, és másodpercenként több ezer vagy több tízezer értéket ad meg. A legtöbb esetben a lekérdezések természete egyszerű. Általában 500-s vagy annál kisebb adatbázis-szinten futnak.
@@ -156,7 +156,7 @@ A központi telepítés eredménye a következő:
 > Mivel egy adatbázis-kezelő virtuális gépet egy zónába és a második adatbázis-kezelő virtuális gépre helyez üzembe egy másik zónában, hogy magas rendelkezésre állási konfigurációt hozzon létre, az egyes zónákhoz eltérő közelségi csoportok szükségesek. Ugyanez érvényes az Ön által használt rendelkezésre állási csoportokra is.
 
 ## <a name="move-an-existing-system-into-proximity-placement-groups"></a>Meglévő rendszer áthelyezése földrajzi elhelyezési csoportokba
-Ha már rendelkezik telepített SAP-rendszerekkel, érdemes lehet optimalizálni néhány kritikus rendszer hálózati késését, és megkeresni az alkalmazás réteget és az adatbázis-kezelő réteget ugyanabban az adatközpontban. A közelségi elhelyezési csoportok nyilvános előzetese alatt törölnie kell a virtuális gépeket, és újakat kell létrehoznia, hogy áthelyezze a rendszer helyét a közelségi csoportokba. Jelenleg nem lehet leállítani a virtuális gépeket, és hozzájuk rendelni őket a közelségi csoportokba.
+Ha már rendelkezik telepített SAP-rendszerekkel, érdemes lehet optimalizálni néhány kritikus rendszer hálózati késését, és megkeresni az alkalmazás réteget és az adatbázis-kezelő réteget ugyanabban az adatközpontban. Ahhoz, hogy egy teljes Azure-beli rendelkezésre állási csoport virtuális gépei át legyenek állítva egy meglévő, hatókörön belüli közelségi területre, le kell állítania a rendelkezésre állási csoport összes virtuális gépet, és a rendelkezésre állási csoportot hozzá kell rendelnie a meglévő közelítő elhelyezési csoporthoz Azure Portalon keresztül. PowerShell vagy parancssori felület. Ha olyan virtuális gépet szeretne áthelyezni, amely nem része egy rendelkezésre állási csoportnak egy meglévő közelségi elhelyezési csoportban, csak le kell állítania a virtuális gépet, és hozzá kell rendelnie egy meglévő közelségi elhelyezési csoporthoz. 
 
 
 ## <a name="next-steps"></a>Következő lépések

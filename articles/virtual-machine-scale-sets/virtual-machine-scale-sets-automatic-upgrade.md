@@ -1,26 +1,18 @@
 ---
-title: Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal | Microsoft Docs
+title: Az operációs rendszer rendszerképének automatikus frissítése Azure-beli virtuálisgép-méretezési csoportokkal
 description: Ismerje meg, hogyan frissítheti automatikusan az operációsrendszer-rendszerképet a méretezési csoport virtuálisgép-példányain
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: shandilvarun
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: vashan
-ms.openlocfilehash: 95a313b3c6995d55b86561c685641b447edae127
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: c452ba5b8abfce4227d72922139824d639c62755
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72240924"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278161"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
 
@@ -60,7 +52,7 @@ A következő SKU-EK jelenleg támogatottak (és a továbbiak rendszeresen bőv�
 |-------------------------|---------------|--------------------|
 | Canonical               | UbuntuServer  | 16.04-LTS          |
 | Canonical               | UbuntuServer  | 18.04-LTS          |
-| Rogue Wave (OpenLogic)  | CentOS        | 7,5                |
+| Rogue Wave (OpenLogic)  | CentOS        | 7.5                |
 | CoreOS                  | CoreOS        | Stable             |
 | Microsoft Corporation   | WindowsServer | 2012-R2-Datacenter |
 | Microsoft Corporation   | WindowsServer | 2016 – Datacenter    |
@@ -78,7 +70,7 @@ A következő SKU-EK jelenleg támogatottak (és a továbbiak rendszeresen bőv�
 - A nem Service Fabric méretezési csoportokhoz használjon Application Health-mintavételt vagy az [alkalmazás állapotának kiterjesztését](virtual-machine-scale-sets-health-extension.md) .
 - A számítási API 2018-10-01-es vagy újabb verzióját használja.
 - Győződjön meg arról, hogy a méretezési csoport modelljében megadott külső erőforrások elérhetők és frissülnek. Ilyenek például a virtuális gépek bővítményének tulajdonságai, a Storage-fiók hasznos adatai, a modellben található titkos kódok, valamint egyebek között az SAS URI-ja.
-- A Windows rendszerű virtuális gépeket használó méretezési csoportok esetében, a számítási API 2019-03-01-es verziójától kezdve a *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* tulajdonságnak *false* értékre kell állítani a méretezési csoport modelljében. definition. A fenti tulajdonság lehetővé teszi a virtuális gépeken belüli verziófrissítéseket, ahol a "Windows Update" az operációsrendszer-lemez cseréje nélkül alkalmazza az operációs rendszer javításait. Ha a méretezési csoporton engedélyezve vannak az operációs rendszer rendszerképének automatikus frissítése, a "Windows Update" nem szükséges további frissítésre.
+- A Windows rendszerű virtuális gépeket használó méretezési csoportok esetében, a számítási API 2019-03-01-es verziójától kezdve a *virtualMachineProfile. osProfile. windowsConfiguration. enableAutomaticUpdates* tulajdonságnak *false* értékre kell állítani a méretezési csoport modelljének definíciójában. A fenti tulajdonság lehetővé teszi a virtuális gépeken belüli verziófrissítéseket, ahol a "Windows Update" az operációsrendszer-lemez cseréje nélkül alkalmazza az operációs rendszer javításait. Ha a méretezési csoporton engedélyezve vannak az operációs rendszer rendszerképének automatikus frissítése, a "Windows Update" nem szükséges további frissítésre.
 
 ### <a name="service-fabric-requirements"></a>Service Fabric követelmények
 

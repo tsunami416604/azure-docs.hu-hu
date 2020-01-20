@@ -1,26 +1,21 @@
 ---
-title: Azure-beli virtuálisgép-méretezési csoportok vertikális skálázása | Microsoft Docs
+title: Azure-beli virtuálisgép-méretezési csoportok vertikális skálázása
 description: A virtuális gépek vertikális skálázása a riasztások figyelésére válaszul Azure Automation
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
 ms.assetid: 16b17421-6b8f-483e-8a84-26327c44e9d3
 ms.service: virtual-machine-scale-sets
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-multiple
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: manayar
-ms.openlocfilehash: 87d2b19f6143f567782778e35c8511f233d8b0e8
-ms.sourcegitcommit: 7868d1c40f6feb1abcafbffcddca952438a3472d
+ms.openlocfilehash: fa1dda2907e8400491c8d18897bb41fb9cff49fd
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2019
-ms.locfileid: "71958144"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274435"
 ---
 # <a name="vertical-autoscale-with-virtual-machine-scale-sets"></a>Vertikális automata méretezés a virtuálisgép-méretezési csoportokkal
 
@@ -43,7 +38,7 @@ Beállíthatja a vertikális skálázást úgy, hogy a virtuálisgép-méretezé
 4. Hozzon létre egy riasztást a virtuálisgép-méretezési csoportba egy webhook-értesítés használatával.
 
 > [!NOTE]
-> Az első virtuális gép mérete miatt a méretezhető méretre korlátozható, mert a fürt aktuális virtuális gépe más méreteinek rendelkezésre állása is a-ben települ. A cikkben használt közzétett Automation-runbookok ezt az esetet vesszük figyelembe, és csak az alábbi virtuálisgép-méret párokon belül méretezhetők. Ez azt jelenti, hogy a Standard_D1v2 virtuális gépeket nem lehet hirtelen méretezni a standard G5, vagy a Basic_A0-ra méretezni. A virtuálisgép-méretek vertikális fel-és leskálázása is korlátozott, és nem támogatott. A következő méretek közül választhat:
+> Az első virtuális gép mérete miatt a méretezhető méretre korlátozható, mert a fürt aktuális virtuális gépe más méreteinek rendelkezésre állása is a-ben települ. A cikkben használt közzétett Automation-runbookok ezt az esetet vesszük figyelembe, és csak az alábbi virtuálisgép-méret párokon belül méretezhetők. Ez azt jelenti, hogy egy Standard_D1v2 virtuális gép nem lesz hirtelen felskálázásra Standard_G5 vagy méretezése Basic_A0re. A virtuálisgép-méretek vertikális fel-és leskálázása is korlátozott, és nem támogatott. A következő méretek közül választhat:
 > 
 > | VM-méretek méretezési pár |  |
 > | --- | --- |
@@ -72,15 +67,15 @@ Beállíthatja a vertikális skálázást úgy, hogy a virtuálisgép-méretezé
 > | Standard_F1 |Standard_F16 |
 > | Standard_F1s |Standard_F16s |
 > | Standard_F2sv2 |Standard_F72sv2 |
-> | Standard_G1 |Standard G5 |
+> | Standard_G1 |Standard_G5 |
 > | Standard_GS1 |Standard_GS5 |
 > | Standard_H8 |Standard_H16 |
 > | Standard_H8m |Standard_H16m |
 > | Standard_L4s |Standard_L32s |
 > | Standard_L8s_v2 |Standard_L80s_v2 |
-> | Standard m8ms  |Standard m128ms |
-> | Standard m32ls  |Standard m64ls |
-> | Standard m64s  |Standard m128s |
+> | Standard_M8ms  |Standard_M128ms |
+> | Standard_M32ls  |Standard_M64ls |
+> | Standard_M64s  |Standard_M128s |
 > | Standard_M64  |Standard_M128 |
 > | Standard_M64m  |Standard_M128m |
 > | Standard_NC6 |Standard_NC24 |
@@ -93,7 +88,7 @@ Beállíthatja a vertikális skálázást úgy, hogy a virtuálisgép-méretezé
 > 
 
 ## <a name="create-an-azure-automation-account-with-run-as-capability"></a>Futtatási képességgel rendelkező Azure Automation fiók létrehozása
-Először létre kell hoznia egy Azure Automation fiókot, amely a virtuálisgép-méretezési csoport példányainak méretezéséhez használt runbookok tárolja. A közelmúltban [Azure Automation](https://azure.microsoft.com/services/automation/) bemutatta a "futtató fiók" funkciót, amely lehetővé teszi az egyszerű szolgáltatás beállítását a runbookok automatikus futtatásához a felhasználó nevében. További információkért lásd:
+Először létre kell hoznia egy Azure Automation fiókot, amely a virtuálisgép-méretezési csoport példányainak méretezéséhez használt runbookok tárolja. A közelmúltban [Azure Automation](https://azure.microsoft.com/services/automation/) bemutatta a "futtató fiók" funkciót, amely lehetővé teszi az egyszerű szolgáltatás beállítását a runbookok automatikus futtatásához a felhasználó nevében. További információ eléréséhez lásd:
 
 * [Runbookok hitelesítése Azure-beli futtató fiókkal](../automation/automation-sec-configure-azure-runas-account.md)
 
@@ -109,7 +104,7 @@ Válassza a tallózási katalógus lehetőséget a Runbookok menüben:
 
 Az importálni kívánt runbookok láthatók. Válassza ki a runbook annak alapján, hogy a vertikális skálázást szeretné-e Újraépítés nélkül:
 
-![Runbookok-gyűjtemény][gallery]
+![Runbookkatalógus][gallery]
 
 ## <a name="add-a-webhook-to-your-runbook"></a>Webhook hozzáadása a runbook
 
@@ -162,7 +157,7 @@ A riasztások létrehozásával kapcsolatos további információkért tekintse 
 * [Azure Monitor PowerShell-gyors példák](../azure-monitor/platform/powershell-quickstart-samples.md)
 * [Többplatformos CLI gyors üzembe helyezési minták Azure Monitor](../azure-monitor/platform/cli-samples.md)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ez a cikk egyszerű vertikális skálázási példákat mutat be. Ilyen építőelemek – Automation-fiók, runbookok, webhookok, riasztások – számos különböző eseményt kapcsolhat össze testreszabott műveletekkel.
 

@@ -7,12 +7,12 @@ ms.reviewer: orspodek
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: 7987555dfd435aae1f580c73795a5617c192490a
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: ac37c0e1f1f7d769a881c5965744b29d40468486
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725701"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276686"
 ---
 # <a name="configure-customer-managed-keys-using-c"></a>Ügyfél által felügyelt kulcsok konfigurálása a használatávalC#
 
@@ -32,11 +32,11 @@ Ez a szakasz bemutatja, hogyan konfigurálhatja az ügyfél által felügyelt ku
 
 * Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes Azure-fiókot](https://azure.microsoft.com/free/) a virtuális gép létrehozásának megkezdése előtt.
 
-### <a name="install-c-nuget"></a>A C# Nuget telepítése
+### <a name="install-c-nuget"></a>A C# NuGet telepítése
 
-* Telepítse az [Azure adatkezelő (Kusto) nuget-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
+* Telepítse az [Azure adatkezelő (Kusto) NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.Management.Kusto/).
 
-* Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory nuget-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
+* Telepítse a [Microsoft. IdentityModel. clients. ActiveDirectory NuGet-csomagot](https://www.nuget.org/packages/Microsoft.IdentityModel.Clients.ActiveDirectory/) a hitelesítéshez.
 
 ### <a name="authentication"></a>Hitelesítés
 

@@ -7,14 +7,14 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/21/2019
+ms.date: 01/17/2020
 ms.custom: seodec18
-ms.openlocfilehash: 7334d4292db710a32b888d9a3ad4e78872d15227
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 232d85789c25e905873286eba6fda32c327a6e25
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863512"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276938"
 ---
 # <a name="how-to-create-user-defined-functions-in-azure-digital-twins"></a>Felhasználó által definiált függvények létrehozása az Azure Digital Twinsban
 
@@ -246,7 +246,7 @@ Hozzon létre egy szerepkör-hozzárendelést a felhasználó által definiált 
 
 ## <a name="send-telemetry-to-be-processed"></a>Feldolgozandó telemetria küldése
 
-A térbeli intelligencia gráfban definiált érzékelő telemetria küld. A telemetria viszont elindítja a feltöltött felhasználó által definiált függvény végrehajtását. Az adatfeldolgozó felveszi a telemetria. Ekkor létrejön egy végrehajtási terv a felhasználó által definiált függvény meghívásához.
+A térbeli intelligencia gráfban definiált érzékelő telemetria küld. A telemetria viszont elindítja a feltöltött felhasználó által definiált függvény végrehajtását. Az adatfeldolgozó felveszi a telemetria. Ezután létrejön egy végrehajtási terv a felhasználó által definiált függvény meghívásához.
 
 1. Annak az érzékelőnek a beolvasása, amelyből az olvasó létrejött.
 1. Attól függően, hogy az egyeztető kiértékelése sikeres volt-e, kérje le a társított felhasználó által definiált függvényeket.

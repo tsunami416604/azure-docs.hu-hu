@@ -1,26 +1,19 @@
 ---
-title: StorSimple virtuális tömb kiépítése a VMware-ben | Microsoft Docs
+title: StorSimple virtuális tömb kiépítése VMware-ben
 description: Ez a második oktatóanyag a StorSimple virtuális tömb üzembe helyezési sorozatában virtuális eszköz kiépítését jelenti a VMware-ben.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 0425b2a9-d36f-433d-8131-ee0cacef95f8
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: ab5ad8acc5d0769a19a4022c55e0461e7ce42762
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 5f5ded3faec3a080022eea70de2cca5d27529c4d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516826"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76272097"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple virtuális tömb üzembe helyezése VMware-ben
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/vmware4.png)
@@ -40,7 +33,7 @@ A virtuális eszközök VMware ESXi 5,0, 5,5, 6,0 vagy 6,5 rendszert futtató ga
 Mielőtt hozzákezd, győződjön meg az alábbiakról:
 
 * Elvégezte a [portál StorSimple virtuális tömbre való előkészítésének](storsimple-virtual-array-deploy1-portal-prep.md)lépéseit.
-* Letöltötte a VMware-hez készült virtuális eszköz rendszerképét a Azure Portalról. További információ **: 3. lépés: Töltse le a** [StorSimple Virtual Array útmutatóhoz készült portál előkészítése című](storsimple-virtual-array-deploy1-portal-prep.md)virtuális eszköz képét.
+* Letöltötte a VMware-hez készült virtuális eszköz rendszerképét a Azure Portalról. További információkért lásd: 3. lépés: a [portál előkészítése a StorSimple Virtual Array útmutatóhoz](storsimple-virtual-array-deploy1-portal-prep.md)készült **virtuális eszköz rendszerképének letöltése** .
 
 ### <a name="for-the-storsimple-virtual-device"></a>A StorSimple virtuális eszközhöz
 A virtuális eszköz üzembe helyezése előtt győződjön meg az alábbiakról:
@@ -76,7 +69,7 @@ Virtuális eszköz létrehozásához a következőkre lesz szüksége:
   * Egy, a hálózatra csatlakozó hálózati adapter, amely képes a forgalmat az internetre irányítani. A minimális internetes sávszélességnek 5 Mbps-nek kell lennie az eszköz optimális működésének lehetővé tételéhez.
   * 500 GB-nyi virtuális lemez az adathoz.
 
-## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2\. lépés: Virtuális eszköz üzembe helyezése a hipervizorban
+## <a name="step-2-provision-a-virtual-device-in-hypervisor"></a>2\. lépés: virtuális eszköz kiépítése a hypervisorban
 A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszközt a hipervizoron.
 
 1. Másolja a virtuáliseszköz-rendszerképet a rendszerre. Ezt a virtuális rendszerképet a Azure Portal használatával töltötte le.
@@ -102,13 +95,13 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 7. Megjelenik a **Datastore Browser** (Adattártallózó) ablak.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image6.png)
-8. Az eszköztáron kattintson ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) az ikonra egy új mappa létrehozásához. Adja meg a mappa nevét, és jegyezze fel. Ezt a mappanevet fogja használni később, amikor létrehoz egy virtuális gépet (ajánlott eljárás). Kattintson az **OK** gombra.
+8. Az eszköztáron kattintson ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image7.png) ikonra egy új mappa létrehozásához. Adja meg a mappa nevét, és jegyezze fel. Ezt a mappanevet fogja használni később, amikor létrehoz egy virtuális gépet (ajánlott eljárás). Kattintson az **OK** gombra.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image8.png)
 9. Az új mappa megjelenik a **Datastore Browser** (Adattártallózó) bal oldali panelén.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image9.png)
-10. Kattintson a feltöltés ikonra ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) , és válassza a **fájl feltöltése**lehetőséget.
+10. Kattintson a feltöltés ikonra ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image10.png) és válassza a **fájl feltöltése**lehetőséget.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image11.png)
 11. Tallózással keresse meg a letöltött VMDK-fájlokat. Kettő fájl érhető el. Válasszon ki egy feltöltendő fájlt.
@@ -131,10 +124,10 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 17. A **tárterület** lapon válassza ki a virtuális gép kiépítéséhez használni kívánt adattárt.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image18.png)
-18. A **virtuális gép verziója** lapon válassza a virtuális **gép verziója elemet: 8**.
+18. A **virtuális gép verziója** lapon válassza a **virtuális gép verziója: 8**elemet.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image19.png)
-19. A **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszert** windowsként. **Verzió**esetén a legördülő listából válassza a **Microsoft Windows Server 2012 (64 bites)** lehetőséget.
+19. A **vendég operációs rendszer** lapon válassza ki a **vendég operációs rendszert** **windowsként**. **Verzió**esetén a legördülő listából válassza a **Microsoft Windows Server 2012 (64 bites)** lehetőséget.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image20.png)
 20. A **processzorok** lapon állítsa be a virtuális szoftvercsatornák **számát** és a **magok számát virtuális socket** -ként, hogy a **magok teljes száma** 4 (vagy több) legyen. Kattintson a **Tovább** gombra.
@@ -146,7 +139,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 22. A **hálózat** lapon határozza meg a hálózati adapterek számát. A minimális követelmény egy hálózati adapter.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image23.png)
-23. Az **SCSI-vezérlő** lapon fogadja el az alapértelmezett **LSI Logic sas**-vezérlőt.
+23. Az **SCSI-vezérlő** lapon fogadja el az alapértelmezett **LSI Logic sas-vezérlőt**.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image24.png)
 24. A **lemez kiválasztása** lapon válassza a **meglévő virtuális lemez használata**lehetőséget. Kattintson a **Tovább** gombra.
@@ -161,7 +154,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 27. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. **A befejezés előtt keresse meg a virtuális gép beállításainak szerkesztését**. Kattintson a **Folytatás** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image28.png)
-28. A **Virtual Machines tulajdonságok** lap **hardver** lapján keresse meg az eszköz hardverét. Válassza az **új merevlemez**lehetőséget. Kattintson a **Hozzáadás**lehetőségre.
+28. A **Virtual Machines tulajdonságok** lap **hardver** lapján keresse meg az eszköz hardverét. Válassza az **új merevlemez**lehetőséget. Kattintson a **Hozzáadás** parancsra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image29.png)
 29. Ekkor megjelenik a **hardver hozzáadása** ablak. Az **eszköz típusa** lapon, **a válassza ki a hozzáadni kívánt eszköz típusát**területen válassza a **merevlemez**lehetőséget, majd kattintson a **tovább**gombra.
@@ -170,19 +163,19 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 30. A **lemez kiválasztása** lapon válassza az **új virtuális lemez létrehozása**lehetőséget. Kattintson a **Tovább** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image31.png)
-31. A **lemez létrehozása** lapon módosítsa a **lemez méretét** 500 GB-ra (vagy akár többre). A minimális követelmény a 500 GB, így mindig nagyobb méretű lemez helyezhető üzembe. Vegye figyelembe, hogy a kiépítés után nem lehet kibontani vagy csökkenteni a lemezt. A kiépíthető lemez méretével kapcsolatos további információkért tekintse át az [ajánlott eljárásokat tartalmazó dokumentum](storsimple-ova-best-practices.md)méretezési szakaszát. A **lemez kiépítése**területen válassza a **vékony**kiépítés lehetőséget. Kattintson a **Tovább** gombra.
+31. A **lemez létrehozása** lapon módosítsa a **lemez méretét** 500 GB-ra (vagy akár többre). A minimális követelmény a 500 GB, így mindig nagyobb méretű lemez helyezhető üzembe. Vegye figyelembe, hogy a kiépítés után nem lehet kibontani vagy csökkenteni a lemezt. A kiépíthető lemez méretével kapcsolatos további információkért tekintse át az [ajánlott eljárásokat tartalmazó dokumentum](storsimple-ova-best-practices.md)méretezési szakaszát. A **lemez kiépítése**területen válassza a **vékony kiépítés**lehetőséget. Kattintson a **Tovább** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image32.png)
 32. A **Speciális beállítások** lapon fogadja el az alapértelmezett értéket.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. A **kész** lapon tekintse át a lemez beállításait. Kattintson a **Befejezés**gombra.
+33. A **kész** lapon tekintse át a lemez beállításait. Kattintson a **Befejezés** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Térjen vissza a virtuális gép tulajdonságai lapra. A rendszer új merevlemezt ad hozzá a virtuális géphez. Kattintson a **Befejezés**gombra.
+34. Térjen vissza a virtuális gép tulajdonságai lapra. A rendszer új merevlemezt ad hozzá a virtuális géphez. Kattintson a **Befejezés** gombra.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. A jobb oldali ablaktáblán válassza ki a virtuális gépet, és navigáljon az **Összefoglalás** lapra. Tekintse át a virtuális gép beállításait.
+35. A jobb oldali ablaktáblán válassza ki a virtuális gépet, és keresse meg az **Összefoglalás** lapot. tekintse át a virtuális gép beállításait.
 
     ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -191,14 +184,14 @@ A rendszer üzembe helyezi a virtuális gépet. A következő lépés a virtuál
 > [!NOTE]
 > Javasoljuk, hogy ne telepítse a VMware-eszközöket a virtuális tömbre (a fenti kiépítés során). A VMware-eszközök telepítése egy nem támogatott konfigurációt eredményez.
 
-## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3\. lépés: A virtuális eszköz elindítása és az IP-cím lekérése
+## <a name="step-3-start-the-virtual-device-and-get-the-ip"></a>3\. lépés: a virtuális eszköz elindítása és az IP-cím beszerzése
 Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és csatlakozzon hozzá.
 
 #### <a name="to-start-the-virtual-device"></a>A virtuális eszköz indítása
 1. Indítsa el a virtuális eszközt. A vSphere Configuration Manager bal oldali ablaktábláján válassza ki az eszközt, és kattintson a jobb gombbal a helyi menü kikapcsolásához. Válassza a **Power** (Főkapcsoló), majd a **Power on** (Bekapcsolás) lehetőséget. Ezzel bekapcsolja a virtuális gépet. Az állapotot a vSphere-ügyfél alsó **legutóbbi feladatok** paneljén tekintheti meg.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image37.png)
-2. A telepítési feladatok elvégzése néhány percet vesz igénybe. Az eszköz futása után navigáljon a **konzol** lapra. A CTRL + ALT + DELETE billentyűkombinációt elküldve jelentkezzen be az eszközre. Azt is megteheti, hogy a kurzort a konzol ablakára irányítja, és a CTRL + ALT + INSERT billentyűkombinációt is használja. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
+2. A telepítési feladatok elvégzése néhány percet vesz igénybe. Az eszköz futása után lépjen a **konzol** lapra. a CTRL + ALT + DELETE billentyűkombinációval jelentkezzen be az eszközre. Azt is megteheti, hogy a kurzort a konzol ablakára irányítja, és a CTRL + ALT + INSERT billentyűkombinációt is használja. Az alapértelmezett felhasználó a *StorSimpleAdmin* , az alapértelmezett jelszó pedig a *jelszó1*.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
@@ -215,7 +208,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image42m.png)
 
    Ezután konfigurálja a hálózatot.
-7. `Get-HcsIpAddress` A parancs használatával listázhatja a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
+7. A `Get-HcsIpAddress` parancs használatával listázhatja a virtuális eszközön engedélyezett hálózati adaptereket. Ha az eszközön egyetlen hálózati adapter van engedélyezve, az ehhez az adapterhez rendelt alapértelmezett név az `Ethernet`.
 
    ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image43m.png)
 8. A `Set-HcsIpAddress` parancsmaggal konfigurálhatja a hálózatot. Erre alább láthat egy példát:
@@ -238,7 +231,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
        >
        >
 
-Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében (lásd alább). Módosítania kell az eszköz konfigurációját, hogy elegendő erőforrással rendelkezzen a minimális követelmények teljesítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. Tekintse meg az 1. [lépésben szükséges minimális konfigurációs követelményeket: Győződjön meg arról, hogy a gazdagéprendszer megfelel a](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements)virtuális eszközök minimális követelményeinek.
+Ha az eszköz nem felel meg a minimális konfigurációs követelményeknek, egy hibaüzenet jelenik meg a szalagcím szövegében (lásd alább). Módosítania kell az eszköz konfigurációját, hogy elegendő erőforrással rendelkezzen a minimális követelmények teljesítéséhez. Ezután újraindíthatja az eszközt, és csatlakozhat hozzá. A minimális konfigurációs követelményeket az [1. lépésben tekintheti meg, amely ismerteti, hogyan ellenőrizheti a gazdarendszer megfelelését a virtuális eszközökre vonatkozó minimális követelményeknek](#step-1-ensure-host-system-meets-minimum-virtual-device-requirements).
 
 ![](./media/storsimple-virtual-array-deploy2-provision-vmware/image46.png)
 
@@ -247,6 +240,6 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 * Diagnosztikai tesztek futtatása a [webes felhasználói felület beállításának hibakereséséhez](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
 * [Naplófájlok előállítása és a naplófájlok megtekintése](storsimple-ova-web-ui-admin.md#generate-a-log-package).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A StorSimple virtuális tömb beállítása fájlkiszolgálóként](storsimple-virtual-array-deploy3-fs-setup.md)
 * [A StorSimple virtuális tömb beállítása iSCSI-kiszolgálóként](storsimple-virtual-array-deploy3-iscsi-setup.md)

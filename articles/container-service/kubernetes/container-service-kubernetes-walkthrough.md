@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Rövid útmutató – Azure Kubernetes-fürt létrehozása Linux rendszeren
+title: ELAVULT Rövid útmutató – Azure Kubernetes-fürt Linux rendszerhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Kubernetes-fürtöt Linux-tárolók esetén az Azure Container Service-ben.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: quickstart
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: H1Hack27Feb2017, mvc, devcenter
-ms.openlocfilehash: 70c9fec818147b76feb306cc47ba2e72cd865fe8
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 5c182d6119f59daaf21e4b4e1304363eeb0c11e5
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60335023"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273504"
 ---
-# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>(ELAVULT) Linux-tárolók Kubernetes-fürt üzembe helyezése
+# <a name="deprecated-deploy-kubernetes-cluster-for-linux-containers"></a>ELAVULT Kubernetes-fürt üzembe helyezése Linux-tárolók esetén
 
 > [!TIP]
-> Ez a rövid útmutató, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [a rövid útmutató: Az Azure Kubernetes Service (AKS)-fürt üzembe helyezése](../../aks/kubernetes-walkthrough.md).
+> Az Azure Kubernetes szolgáltatást használó rövid útmutató frissített verziójáért lásd: gyors [üzembe helyezés Azure Kubernetes-szolgáltatás (ak) típusú fürt](../../aks/kubernetes-walkthrough.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -205,24 +203,24 @@ Most a külső IP-címre léphet az Azure Vote alkalmazás megtekintéséhez.
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-kubernetes-walkthrough/azure-vote.png)  
 
-## <a name="delete-cluster"></a>A fürt törlése
+## <a name="delete-cluster"></a>Fürt törlése
 Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive 
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>A kód letöltése
+## <a name="get-the-code"></a>Kód letöltése
 
 Ebben a rövid útmutatóban előre létrehozott tárolórendszerképekkel hoztunk létre egy üzemelő Kubernetes-példányt. A kapcsolódó alkalmazáskód, Docker-fájl és Kubernetes-jegyzékfájl a GitHubon érhetőek el.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe. 
 
 Az Azure Container Service-szel kapcsolatos további információkért és a kódtól az üzembe helyezésig terjedő teljes útmutatóért folytassa a Kubernetes-fürtöket bemutató oktatóanyaggal.
 
 > [!div class="nextstepaction"]
-> [ACS-alapú Kubernetes-fürt kezelése](./container-service-tutorial-kubernetes-prepare-app.md)
+> [ACS Kubernetes-fürtök kezelése](./container-service-tutorial-kubernetes-prepare-app.md)

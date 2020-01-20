@@ -12,12 +12,12 @@ ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 11/21/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5000d79db0d9036fe8904322764e4c480111d6cc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: b301bc6c1674cad26288556957ba6214df74f18d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863393"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278671"
 ---
 # <a name="monitor-and-mitigate-throttling-to-reduce-latency-in-azure-time-series-insights"></a>A Azure Time Series Insights késésének csökkentése a szabályozás monitorozásával és enyhítésével
 
@@ -30,7 +30,7 @@ A következő esetekben valószínűleg késést és szabályozást tapasztal:
 - Adjon hozzá olyan eseményforrás, amely olyan régi adatforrásokat tartalmaz, amelyek túllépik a megadott bejövő forgalom arányát (Time Series Insights fel kell vennie).
 - További eseményforrás hozzáadása egy környezethez, amely a további eseményekből származó tüske (ami túllépheti a környezet kapacitását).
 - Nagy mennyiségű történelmi eseményt küldhet egy adott esemény forrásaként, ami késést eredményez (Time Series Insights fel kell fognia).
-- Összekapcsolhatja a telemetria-vel való hivatkozási adatmennyiséget, ami nagyobb méretű eseményt eredményez.  A szabályozás szempontjából egy 32 KB méretű ingressed-adatcsomag 32-eseményként van kezelve, minden méret 1 KB. Az esemény maximálisan megengedett mérete 32 KB; az 32 KB-nál nagyobb adatcsomagok csonkítva vannak.
+- Összekapcsolhatja a telemetria-vel való hivatkozási adatmennyiséget, ami nagyobb méretű eseményt eredményez. A szabályozás szempontjából egy 32 KB méretű ingressed-adatcsomag 32-eseményként van kezelve, minden méret 1 KB. Az esemény maximálisan megengedett mérete 32 KB; az 32 KB-nál nagyobb adatcsomagok csonkítva vannak.
 
 ## <a name="video"></a>Videó
 
@@ -40,13 +40,13 @@ A következő esetekben valószínűleg késést és szabályozást tapasztal:
 
 ## <a name="monitor-latency-and-throttling-with-alerts"></a>Késés és szabályozás figyelése riasztásokkal
 
-A riasztások segíthetnek a környezete által okozott késési problémák diagnosztizálásában és enyhítésében.
+A riasztások segíthetnek a környezetében előforduló késési problémák diagnosztizálásában és enyhítésében.
 
 1. A Azure Portal válassza ki Time Series Insights-környezetét. Ezután válassza a **riasztások**lehetőséget.
 
    [![riasztás hozzáadása a Time Series Insights-környezethez](media/environment-mitigate-latency/mitigate-latency-add-alert.png)](media/environment-mitigate-latency/mitigate-latency-add-alert.png#lightbox)
 
-1. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
+1. Válassza a **+ Új riasztási szabály** lehetőséget. Ekkor megjelenik a **szabály létrehozása** panel. Válassza a **Hozzáadás** lehetőséget a **feltétel**alatt.
 
    [![riasztás panel hozzáadása](media/environment-mitigate-latency/mitigate-latency-add-pane.png)](media/environment-mitigate-latency/mitigate-latency-add-pane.png#lightbox)
 

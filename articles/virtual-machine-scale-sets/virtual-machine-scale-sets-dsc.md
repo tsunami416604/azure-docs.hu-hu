@@ -1,27 +1,20 @@
 ---
 title: A kívánt állapot konfigurációjának használata Virtual Machine Scale Sets
 description: A virtuális gépek konfigurálásához használja a Virtual Machine Scale Setst az Azure desired State Configuration bővítménnyel.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: zjalexander
-manager: jeconnoc
-editor: ''
 tags: azure-service-management,azure-resource-manager
-keywords: ''
 ms.assetid: c8f047b5-0e6c-4ef3-8a47-f1b284d32942
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: vm-windows
-ms.workload: na
 ms.date: 04/05/2017
 ms.author: zachal
-ms.openlocfilehash: d3d064bc1d9c0a72b10ca27515d8325e7ca7fef9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a93a8a9c27be5a1736a50e6c4c4b830980b7d974
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359298"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278078"
 ---
 # <a name="using-virtual-machine-scale-sets-with-the-azure-dsc-extension"></a>Virtual Machine Scale Sets használata az Azure DSC bővítménnyel
 [Virtual Machine Scale sets](virtual-machine-scale-sets-overview.md) használható az [Azure desired State Configuration (DSC)](../virtual-machines/windows/extensions-dsc-overview.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) bővítmény kezelőjével. A virtuálisgép-méretezési csoportok nagy számú virtuális gép üzembe helyezését és felügyeletét teszik lehetővé, és rugalmasan méretezhetik be és ki a terhelésre válaszul. A DSC használatával a virtuális gépek úgy konfigurálhatók, ahogy online állapotba kerülnek, így az éles szoftvert futtatják.

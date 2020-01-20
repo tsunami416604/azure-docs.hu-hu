@@ -1,35 +1,30 @@
 ---
-title: Virtuálisgép-rendszerképek megoszthatja megosztott katalógusok |} A Microsoft Docs
-description: Megtudhatja, hogyan megosztott kép katalógusok használata Virtuálisgép-rendszerképek a szervezetben.
-services: virtual-machine-scale-sets
+title: Virtuálisgép-lemezképek megosztása megosztott galériákkal
+description: Megtudhatja, hogyan használhatja a megosztott képtárakat a virtuális gépek rendszerképeinek megosztására a szervezeten belül.
 documentationcenter: virtual-machine-scale-sets
 author: axayjo
-manager: jeconnoc
-editor: tysonn
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 05/06/2019
 ms.author: akjosh
 ms.reviewer: cynthn
 ms.custom: ''
-ms.openlocfilehash: ceb1aa9ae29b42d1ac4782499fd3157b103a492e
-ms.sourcegitcommit: 6a42dd4b746f3e6de69f7ad0107cc7ad654e39ae
+ms.openlocfilehash: 38b8738a383d2953d89677f76e6395035b83181f
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2019
-ms.locfileid: "67621104"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276358"
 ---
-# <a name="shared-image-galleries-overview"></a>Megosztott kép katalógusok áttekintése
+# <a name="shared-image-galleries-overview"></a>Megosztott képgyűjtemények – áttekintés
 
 
 [!INCLUDE [virtual-machines-common-shared-image-galleries](../../includes/virtual-machines-common-shared-image-galleries.md)]
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan megosztott rendszerképek használatával helyezhet üzembe a [Azure CLI-vel](shared-images-cli.md) és [Azure PowerShell-lel](shared-images-powershell.md)
+Megtudhatja, hogyan helyezhet üzembe megosztott rendszerképeket az [Azure CLI](shared-images-cli.md) -vel és [Azure PowerShell](shared-images-powershell.md)

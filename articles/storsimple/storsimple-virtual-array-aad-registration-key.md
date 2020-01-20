@@ -1,25 +1,17 @@
 ---
-title: Új hitelesítés a StorSimple virtuális tömbökhöz | Microsoft Docs
+title: Új hitelesítés a StorSimple virtuális tömbökhöz
 description: Ismerteti, hogyan használható az HRE-alapú hitelesítés a szolgáltatáshoz, új regisztrációs kulcs előállítása, valamint az eszközök manuális regisztrálásának elvégzése.
-services: storsimple
-documentationcenter: ''
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: na
-ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: na
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 723d5e969ba2f635724ffa50d562a7abaf936dcf
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 89f367e866c1a794f4359c76b8b8a8a9cfefd50d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68517139"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273806"
 ---
 # <a name="use-the-new-authentication-for-your-storsimple"></a>Az új hitelesítés használata a StorSimple
 
@@ -46,7 +38,7 @@ Annak biztosítása érdekében, hogy a szolgáltatás HRE-alapú hitelesítést
 
 StorSimple virtuális tömb használata esetén győződjön meg arról, hogy a tűzfalszabályok a következő URL-címet tartalmazzák:
 
-| URL-minta                         | Felhő | Összetevő/funkció         |
+| URL-minta                         | Felhőbeli | Összetevő/funkció         |
 |------------------------------------|-------|---------------------------------|
 | `https://login.windows.net`        | Azure Public |HRE hitelesítési szolgáltatás      |
 | `https://login.microsoftonline.us` | Az USA kormányzata |HRE hitelesítési szolgáltatás      |
@@ -61,9 +53,9 @@ Ha StorSimple virtuális tömböt használ, a következő táblázat segítség�
 
 | Ha az eszköz fut  | Végezze el a következő műveletet                                    |
 |----------------------------|--------------------------------------------------------------|
-| A 1,0-es vagy újabb frissítés offline állapotú. <br> Megjelenik egy riasztás arról, hogy az URL-cím nem engedélyezett.| 1. A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys). <br> 3. Hajtsa végre a 1-5. lépést a [virtuális tömb Windows PowerShell](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)-felületéhez való kapcsolódáshoz.<br> 4. A `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
-| Frissítse a 1,0-es vagy újabb verziót, és az eszköz online állapotú.| Nincs szükség felhasználói műveletre.                                       |
-| Az 0,6-es vagy korábbi verzió frissítése, az eszköz offline állapotban van. | 1. [Töltse le a 1,0-es frissítést a Catalog Server használatával](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [Alkalmazza a 1,0-es frissítést a helyi webes felületen keresztül](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [Szerezze be a HRE regisztrációs kulcsát a szolgáltatásból](#aad-based-registration-keys). <br>4. Hajtsa végre a 1-5. lépést a [virtuális tömb Windows PowerShell](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor)-felületéhez való kapcsolódáshoz.<br>5. A `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShell segítségével. Adja meg az előző lépésben kapott kulcsot.|
+| A 1,0-es vagy újabb frissítés offline állapotú. <br> Megjelenik egy riasztás arról, hogy az URL-cím nem engedélyezett.| 1. módosítsa a tűzfalszabályok használatát a hitelesítési URL-cím belefoglalásához. Lásd: [hitelesítési URL-címek](#url-changes-for-aad-authentication). <br> 2. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys). <br> 3. hajtsa végre a 1-5-es lépéseket a [virtuális tömb Windows PowerShell-felületéhez való kapcsolódáshoz](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br> 4. a `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
+| Frissítse a 1,0-es vagy újabb verziót, és az eszköz online állapotú.| Nincs szükség műveletre.                                       |
+| Az 0,6-es vagy korábbi verzió frissítése, az eszköz offline állapotban van. | 1. [töltse le a 1,0-es frissítést a Catalog Server használatával](storsimple-virtual-array-install-update-1.md#download-the-update-or-the-hotfix).<br>2. [alkalmazza a 1,0-es frissítést a helyi webes felhasználói felületen](storsimple-virtual-array-install-update-1.md#install-the-update-or-the-hotfix).<br>3. [szerezze be a HRE regisztrációs kulcsot a szolgáltatásból](#aad-based-registration-keys). <br>4. hajtsa végre a 1-5-es lépéseket a [virtuális tömb Windows PowerShell-felületéhez való kapcsolódáshoz](storsimple-virtual-array-deploy2-provision-hyperv.md#step-2-provision-a-virtual-array-in-hypervisor).<br>5. a `Invoke-HcsReRegister` parancsmag használatával regisztrálja az eszközt a Windows PowerShellen keresztül. Adja meg az előző lépésben kapott kulcsot.|
 | Az 0,6-es vagy korábbi frissítés, és az eszköz online állapotú | A tűzfalszabályok módosításával adja meg a hitelesítési URL-címet.<br> Telepítse a 1,0-es frissítést a Azure Portal. |
 
 ## <a name="aad-based-registration-keys"></a>HRE-alapú regisztrációs kulcsok
@@ -80,11 +72,11 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
 #### <a name="to-generate-the-aad-service-registration-key"></a>A HRE szolgáltatás regisztrációs kulcsának előállítása
 
-1. A **StorSimple Eszközkezelő**lépjen a **felügyeleti &gt;**  **kulcsok**elemre.
+1. A **StorSimple Eszközkezelő**válassza a **felügyeleti &gt;** **kulcsok**lehetőséget.
     
     ![Ugrás a kulcsokra](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key1.png)
 
-2. Kattintson a **kulcs**előállítása elemre.
+2. Kattintson a **kulcs előállítása**elemre.
 
     ![Kattintson az újragenerált elemre.](./media/storsimple-virtual-array-aad-registration-key/aad-click-generate-registration-key.png)
 
@@ -92,6 +84,6 @@ A HRE szolgáltatás regisztrációs kulcsának létrehozásához hajtsa végre 
 
     ![Újragenerált megerősítés megerősítése](./media/storsimple-virtual-array-aad-registration-key/aad-registration-key2.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a [StorSimple virtuális tömb](storsimple-virtual-array-deploy1-portal-prep.md) üzembe helyezéséről

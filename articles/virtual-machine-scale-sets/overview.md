@@ -1,27 +1,19 @@
 ---
-title: Azure virtuálisgép-méretezési csoportok – Áttekintés | Microsoft Docs
+title: Azure virtuálisgép-méretezési csoportok – áttekintés
 description: Tudnivalók az Azure virtuálisgép-méretezési csoportokról és az alkalmazások automatikus méretezéséről
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: mayanknayar
-manager: drewm
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
 ms.date: 09/26/2019
 ms.author: manayar
-ms.openlocfilehash: 73580814dcfe8f967684aca4ce433a40e7bbedc0
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: e6201f9ac2e9b813de5a4622fc7996eb1202a164
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71679388"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273696"
 ---
 # <a name="what-are-virtual-machine-scale-sets"></a>Mik a virtuálisgép-méretezési csoportok?
 Az Azure-beli virtuálisgép-méretezési csoportok segítségével azonos, elosztott terhelésű virtuális gépek csoportját hozhatja létre és kezelheti. A virtuálisgép-példányok száma automatikusan növelhető vagy csökkenthető a pillanatnyi igényeknek megfelelően vagy egy meghatározott ütemezés szerint. A méretezési csoportok biztosítják az alkalmazások magas rendelkezésre állását, és lehetővé teszik nagy számú virtuális gép központi felügyeletét, konfigurálását és frissítését. A virtuálisgép-méretezési csoportokkal nagyobb léptékű szolgáltatások építhetők ki a nagy számítási igényű, „big data” típusú és tárolóalapú számítási feladatokhoz.
@@ -53,7 +45,7 @@ Az Azure-beli virtuálisgép-méretezési csoportok biztosítják a szükséges 
 ## <a name="differences-between-virtual-machines-and-scale-sets"></a>Mi a különbség a virtuális gépek és a méretezési csoportok között?
 A méretezési csoportokat virtuális gépek alkotják. A méretezési csoportok biztosítják az alkalmazások futtatásához és méretezéséhez szükséges felügyeleti és automatizálási rétegeket. Helyettük manuálisan is létrehozhat és felügyelhet önálló virtuális gépeket, illetve meglévő eszközök integrálásával is kialakíthat egy hasonló szintű automatizációt. A következő táblázat összefoglalja a méretezési csoportok előnyeit több virtuálisgép-példány manuális felügyeletével szemben.
 
-| Forgatókönyv                           | Virtuális gépek manuális csoportja                                                                    | Virtuális gép méretkészlete |
+| Alkalmazási helyzet                           | Virtuális gépek manuális csoportja                                                                    | Virtuálisgép-méretezési csoport |
 |------------------------------------|----------------------------------------------------------------------------------------|---------------------------|
 | További virtuálisgép-példányok hozzáadása        | A létrehozás, a konfigurálás és a megfelelőség biztosítása manuális folyamatokkal történik                             | Automatikus létrehozás központi konfigurációból |
 | Forgalom kiegyensúlyozása és elosztása | Manuálisan kell létrehozni és konfigurálni egy Azure-terheléselosztót vagy alkalmazásátjárót      | Automatikus létrehozás és integrálás egy Azure-terheléselosztóval vagy alkalmazásátjáróval |
@@ -68,7 +60,7 @@ Használja a [Azure monitor for VMst](../azure-monitor/insights/vminsights-overv
 
 Engedélyezheti a figyelést a [virtuálisgép-méretezési csoport alkalmazásához](../azure-monitor/app/azure-vm-vmss-apps.md) a Application Insights segítségével részletes információkat gyűjthet az alkalmazásról, többek között a lapok nézeteiről, az alkalmazások kéréseiről és a kivételekről. Ellenőrizze az alkalmazás rendelkezésre állását a [rendelkezésre állási teszt](../azure-monitor/app/monitor-web-app-availability.md) konfigurálásával a felhasználói forgalom szimulálása érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Első lépésként hozza létre első virtuálisgép-méretezési csoportját az Azure Portalon.
 
 > [!div class="nextstepaction"]

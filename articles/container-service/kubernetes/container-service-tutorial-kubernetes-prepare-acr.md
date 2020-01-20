@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service oktatóanyag – az ACR előkészítése
+title: ELAVULT Azure Container Service oktatóanyag – az ACR előkészítése
 description: Azure Container Service-oktatóanyag – Az ACR előkészítése
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: d0107e09bf8706ba7d4c813814103ca109262d8d
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: fbd718b62246e820bfa01353080815b62912bd00
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60641177"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274126"
 ---
-# <a name="deprecated-deploy-and-use-azure-container-registry"></a>(ELAVULT) Üzembe helyezése és használata Azure Container Registrybe
+# <a name="deprecated-deploy-and-use-azure-container-registry"></a>ELAVULT Azure Container Registry üzembe helyezése és használata
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Üzembe helyezése és használata Azure Container Registry](../../aks/tutorial-kubernetes-prepare-acr.md).
+> Az Azure Kubernetes Service-t használó oktatóanyag frissített verziója: [oktatóanyag: Azure Container Registry üzembe helyezése és használata](../../aks/tutorial-kubernetes-prepare-acr.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -157,7 +155,7 @@ v1
 
 Az oktatóanyag végeztével a tárolórendszerképet egy privát Azure Container Registry-példány tárolja. Ezt a rendszerképet telepítjük az ACR-ből egy Kubernetes-fürtre a következő oktatóanyagok során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban előkészítettünk egy Azure Container Registry tárolóregisztrációs adatbázist az ACS Kubernetes-fürtben való használatra. A következő lépéseket hajtotta végre:
 

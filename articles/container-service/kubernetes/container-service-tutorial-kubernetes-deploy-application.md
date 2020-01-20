@@ -1,25 +1,23 @@
 ---
-title: (ELAVULT) Az Azure Container Service-oktatóanyag – alkalmazás üzembe helyezése
+title: ELAVULT Azure Container Service oktatóanyag – alkalmazás üzembe helyezése
 description: Azure Container Service oktatóanyag – Alkalmazás üzembe helyezése
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: tutorial
 ms.date: 02/26/2018
 ms.author: iainfou
 ms.custom: mvc
-ms.openlocfilehash: dafbb8d1221d5e9c6194611ad338b3714a089cea
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 7e10fd982c19e45be8c5da4ffc7f7248276352c1
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60309231"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76275493"
 ---
-# <a name="deprecated-run-applications-in-kubernetes"></a>(ELAVULT) Alkalmazások futtatása a Kubernetesben
+# <a name="deprecated-run-applications-in-kubernetes"></a>ELAVULT Alkalmazások futtatása a Kubernetes-ben
 
 > [!TIP]
-> Ebben az oktatóanyagban, amely használja az Azure Kubernetes Service-ben, lásd: a frissített verzió [oktatóanyag: Alkalmazások futtatása az Azure Kubernetes Service (AKS)](../../aks/tutorial-kubernetes-deploy-application.md).
+> Az Azure Kubernetes szolgáltatást használó oktatóanyag frissített verziója: [oktatóanyag: alkalmazások futtatása az Azure Kubernetes szolgáltatásban (ak)](../../aks/tutorial-kubernetes-deploy-application.md).
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
@@ -107,7 +105,7 @@ Az alkalmazás megtekintéséhez navigáljon a külső IP-címhez.
 
 ![Egy Azure-beli Kubernetes-fürt képe](media/container-service-kubernetes-tutorials/azure-vote.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyagban az Azure Vote alkalmazást egy Azure Container Service-beli Kubernetes-fürtön helyeztünk üzembe. Az eddig végrehajtott feladatok a következők:  
 

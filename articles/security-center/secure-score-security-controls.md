@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/04/2019
 ms.author: memildin
-ms.openlocfilehash: 8f0b7b1225d78c7626c5be3e68c3dcd2dd557aa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0287a8011eb10120e273fb063c98ccd3c1a85782
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158155"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278028"
 ---
 # <a name="the-enhanced-secure-score-preview"></a>A fokozottan biztonságos pontszám (előzetes verzió) 
 
-Ez a cikk bemutatja a bővített biztonságos pontszámot (jelenleg előzetes verzióban), a kapcsolódó biztonsági ellenőrzéseket és az általuk nyújtott előnyöket.
+Ez a cikk bemutatja a bővített biztonságos pontszámot (jelenleg előzetes verzióban), a kapcsolódó biztonsági ellenőrzéseket és az általuk nyújtott előnyöket. Emellett a pontszám kiszámításának módját is ismerteti.
 
 ## <a name="introduction-to-secure-score"></a>A biztonságos pontszám bemutatása
 
@@ -32,11 +32,11 @@ Security Center folyamatosan felméri az erőforrásokat, az előfizetéseket é
 
 A *fokozottan* biztonságos pontszám (jelenleg előzetes verzióban érhető el) a **támadási felületek középpontjában** áll, és három előnnyel jár:
 
-- Biztonsági vezérlők – a biztonsági javaslatok mostantól olyan logikai készletekbe vannak csoportosítva, amelyek jobban tükrözik a sebezhető támadási felületet. További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-the-secure-score-is-calculated) alább.
+- **Biztonsági vezérlők** – a biztonsági javaslatok mostantól olyan logikai készletekbe vannak csoportosítva, amelyek jobban tükrözik a sebezhető támadási felületet. További információ: [a biztonságos pontszám kiszámítása](secure-score-security-controls.md#how-the-secure-score-is-calculated) alább.
 
-- A teljes pontszám jobban tükrözi az általános testtartási pontokat, melyeket a javaslat szintjén ítéltek oda. Ezzel a fejlesztéssel a pontszám csak akkor fog javulni, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ez azt jelenti, hogy a pontszám csak akkor nő, ha az erőforrások biztonsága javul. 
+- A **teljes pontszám jobban tükrözi az általános testtartási** pontokat, melyeket a javaslat szintjén ítéltek oda. Ezzel a fejlesztéssel a pontszám csak akkor fog javulni, ha egy vezérlőelemen belül egy adott erőforráshoz tartozó *összes* javaslatot szervizeli. Ez azt jelenti, hogy a pontszám csak akkor nő, ha az erőforrások biztonsága javul. 
 
-- Az egyes támadási felületek biztonsági állapota láthatóbbá válik – a biztonsági ellenőrzés pontszámának bemutatásával a biztonságos pontszám oldal lesz az a hely, ahol részletesen megtekintheti, hogy a szervezet hogyan védi az egyes támadási felületeket.
+- Az **egyes támadási felületek biztonsági állapota láthatóbbá** válik – a biztonsági ellenőrzés pontszámának bemutatásával a biztonságos pontszám oldal lesz az a hely, ahol részletesen megtekintheti, hogy a szervezet hogyan védi az egyes támadási felületeket.
 
 A bővített biztonsági pontszám százalékként jelenik meg, ahogy az alábbi képernyőképen is látható:
 
@@ -63,7 +63,7 @@ Például a "rendszerfrissítések alkalmazása" nevű biztonsági vezérlő leg
 
 [a "rendszerfrissítések alkalmazása" biztonsági vezérlő ![](media/secure-score-security-controls/apply-system-updates-control.png)](media/secure-score-security-controls/apply-system-updates-control.png#lightbox)
 
-A "rendszerfrissítések alkalmazása" biztonsági vezérlő értéke a fenti képernyőképen a "2% (1 pont)" értéket jeleníti meg. Ez azt jelenti, hogy ha szervizelni kívánja a jelen vezérlő összes javaslatát, a pontszám 2%-kal nő (ami ebben az esetben egy pont). Az egyszerűség kedvéért a javaslatok listájának "lehetséges növekedés" oszlopában szereplő értékek egész számra vannak kerekítve. Az elemleírások a pontos értékeket mutatják:
+A "System updates" (rendszerfrissítések alkalmazása) lehetőség a fenti képernyőképen a "2% (1 pont)" értékre mutat. Ez azt jelenti, hogy ha szervizelni kívánja az összes javaslatot, a pontszám 2%-kal (ebben az esetben egy pont) fog növekedni. Az egyszerűség kedvéért a javaslatok listájának "lehetséges növekedés" oszlopában szereplő értékek egész számra vannak kerekítve. Az elemleírások a pontos értékeket mutatják:
 
 * **Lehetséges növekedés** – a vezérlőn belül elérhető további pontok. Ha ezeket a pontokat hozzá szeretné adni a biztonságos pontszámhoz, javítsa az összes vezérlő javaslatát. A fenti példában a vezérlőhöz megjelenített egy pont valójában 0,96 pont.
 * **Aktuális pontszám** – a vezérlő aktuális pontszáma. Az egyes vezérlőelemek a teljes pontszám irányába járulnak hozzá. Ebben a példában a vezérlő a 5,04-as számmal járul hozzá. 

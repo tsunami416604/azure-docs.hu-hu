@@ -1,20 +1,18 @@
 ---
-title: Az Azure Red Hat OpenShift fejlesztési környezet beállítása | Microsoft Docs
+title: Az Azure Red Hat OpenShift fejlesztési környezet beállítása
 description: Itt láthatók a Microsoft Azure Red Hat OpenShift használatának előfeltételei.
-services: openshift
 keywords: a Red Hat openshift beállítása
 author: jimzim
 ms.author: jzim
 ms.date: 11/04/2019
 ms.topic: conceptual
 ms.service: container-service
-manager: jeconnoc
-ms.openlocfilehash: fa09ed90258a62d37dafeea5f4760e1fabdc210b
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 559c932c4826e82f36c09b85ee8da4186d90d34d
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73581601"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276092"
 ---
 # <a name="set-up-your-azure-red-hat-openshift-dev-environment"></a>Az Azure Red Hat OpenShift fejlesztői környezetének beállítása
 
@@ -100,7 +98,7 @@ A szolgáltatók és szolgáltatások manuális regisztrálásához kövesse az 
 
 Az Azure Red Hat OpenShift szolgáltatáshoz hozzá kell rendelni egy társított Azure Active Directory (Azure AD) bérlőt, amely képviseli a szervezetét és a Microsofttal való kapcsolatát. Az Azure AD-bérlő lehetővé teszi az alkalmazások regisztrálását, összeállítását és kezelését, valamint más Azure-szolgáltatások használatát.
 
-Ha nem rendelkezik Azure AD-vel, hogy az Azure Red Hat OpenShift-fürt bérlője legyen, vagy szeretne létrehozni egy bérlőt tesztelésre, kövesse az Azure AD- [bérlő létrehozása az Azure Red Hat OpenShift-fürthöz](howto-create-tenant.md) című témakör utasításait az útmutató folytatása előtt .
+Ha nem rendelkezik Azure AD-vel, amely az Azure Red Hat OpenShift-fürt bérlője, vagy ha egy bérlőt szeretne tesztelni, kövesse az Azure-beli [Red Hat OpenShift-fürthöz tartozó Azure ad-bérlő létrehozása](howto-create-tenant.md) az útmutató folytatása előtt című témakör utasításait.
 
 ## <a name="create-an-azure-ad-user-security-group-and-application-object"></a>Azure AD-felhasználó, biztonsági csoport és alkalmazásobjektum létrehozása
 
@@ -108,7 +106,7 @@ Az Azure Red Hat OpenShift engedélyekkel kell rendelkeznie a fürtön elvégzen
 
 Kövesse az [Azure ad alkalmazás-objektum és-felhasználó létrehozása](howto-aad-app-configuration.md) egyszerű szolgáltatásnév létrehozásához, az alkalmazáshoz tartozó ügyfél-titkos és hitelesítési visszahívási URL-címet, majd hozzon létre egy új Azure ad biztonsági csoportot és felhasználót a fürt eléréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már készen áll az Azure Red Hat OpenShift használatára!
 

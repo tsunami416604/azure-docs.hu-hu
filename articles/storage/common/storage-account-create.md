@@ -6,15 +6,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/11/2019
+ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 203bff23b2ae1a5e5e19b4abc323c3ffeb31f367
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c9d3a876b75e7d3ed8ff43217227db1a524206f2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75975919"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273480"
 ---
 # <a name="create-an-azure-storage-account"></a>Azure Storage-fiók létrehozása
 
@@ -130,7 +130,7 @@ New-AzStorageAccount -ResourceGroupName $resourceGroup `
   -Name <account-name> `
   -Location $location `
   -SkuName Standard_RAGRS `
-  -Kind StorageV2 
+  -Kind StorageV2
 ```
 
 Egy másik replikációs lehetőséggel rendelkező általános célú v2 Storage-fiók létrehozásához helyettesítse be a kívánt értéket az alábbi táblázatban az **SkuName** paraméterhez.
@@ -222,7 +222,7 @@ A Storage-fiók törlése törli a teljes fiókot, beleértve a fiókban lévő 
 # <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)Storage-fiókjához.
-1. Kattintson a **Törlés** gombra.
+1. Kattintson a **Delete** (Törlés) gombra.
 
 # <a name="powershelltabazure-powershell"></a>[PowerShell](#tab/azure-powershell)
 

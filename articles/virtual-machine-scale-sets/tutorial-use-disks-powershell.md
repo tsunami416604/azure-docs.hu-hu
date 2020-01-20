@@ -1,31 +1,23 @@
 ---
-title: Oktatóanyag – Lemezek létrehozása és használata méretezési csoportokhoz Azure PowerShell-lel| Microsoft Docs
+title: Oktatóanyag – lemezek létrehozása és használata méretezési csoportokhoz Azure PowerShell
 description: Megismerheti, hogyan hozhat létre és használhat felügyelt lemezeket a virtuálisgép-méretezési csoportokhoz az Azure PowerShell használatával, beleértve a lemezek hozzáadását, előkészítését, listázását és leválasztását.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6035a6ddd690db456edfa5777ca2d41e4be8b919
-ms.sourcegitcommit: 1aefdf876c95bf6c07b12eb8c5fab98e92948000
+ms.openlocfilehash: ba2d216b9827eeb499df40ceffca16780bdf5a02
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/06/2019
-ms.locfileid: "66728589"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76278253"
 ---
-# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Hozzon létre és használhat lemezeket a virtuálisgép-méretezési csoport az Azure PowerShell használatával
+# <a name="tutorial-create-and-use-disks-with-virtual-machine-scale-set-with-azure-powershell"></a>Oktatóanyag: Lemezek létrehozása és használata virtuálisgép-méretezési csoportokhoz Azure PowerShell-lel
 
-A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+A virtuálisgép-méretezési csoportok lemezeket használnak a virtuálisgép-példányok operációs rendszereinek, alkalmazásainak és adatainak tárolására. Méretezési csoportok létrehozásakor és kezelésekor fontos szempont, hogy a számítási feladatok jelentette várható terhelésnek megfelelő lemezméretet és konfigurációt válasszon ki. Ez az oktatóprogram bemutatja, hogyan hozhat létre és kezelhet virtuálisgép-lemezeket. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Operációsrendszer-lemezek és ideiglenes lemezek
@@ -49,7 +41,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 **Ideiglenes lemez** – Az ideiglenes lemezek olyan tartós állapotú meghajtót (SSD-t) használnak, amely ugyanazon az Azure-gazdagépen található, mint a virtuálisgép-példány. Ezek nagy teljesítményű lemezek, és olyan műveletekhez használhatók, mint például az ideiglenes adatfeldolgozás. Ha azonban a virtuálisgép-példányt egy új gazdagépre költöztetik, az ideiglenes lemezen tárolt adatokat a rendszer eltávolítja. Az ideiglenes lemez méretét a virtuálisgép-példány mérete határozza meg. Az ideiglenes lemezek a */dev/sdb* címkét kapják, a csatlakoztatási pontjuk pedig */mnt*.
 
 ### <a name="temporary-disk-sizes"></a>Ideiglenes lemezek méretei
-| Típus | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
+| Type (Típus) | Gyakori méretek | Ideiglenes lemez max. mérete (GiB) |
 |----|----|----|
 | [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 1600 |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 576 |
@@ -63,7 +55,7 @@ Egy méretezési csoport létrehozásakor vagy skálázásakor a rendszer két l
 További adatlemezek adhatók hozzá, amelyekre alkalmazásokat telepíthet és amelyeken adatokat tárolhat. Az adatlemezeket akkor érdemes használni, ha tartós és rugalmas adattárolásra van szükség. Az egyes adatlemezek kapacitása maximum 4 TB lehet. A virtuálisgép-példány mérete határozza meg, hány adatlemez csatolható. A virtuális gépek minden vCPU-jához két adatlemez csatolható.
 
 ### <a name="max-data-disks-per-vm"></a>Adatlemezek max. száma virtuális gépenként
-| Típus | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
+| Type (Típus) | Gyakori méretek | Adatlemezek max. száma virtuális gépenként |
 |----|----|----|
 | [Általános célú](../virtual-machines/windows/sizes-general.md) | A, B és D sorozat | 64 |
 | [Számításra optimalizált](../virtual-machines/windows/sizes-compute.md) | F sorozat | 64 |
@@ -86,7 +78,7 @@ A prémium lemezek SSD-alapú, nagy teljesítményű, kis késleltetésű lemeze
 |Prémium szintű tárolólemezek típusai | P4 | P6 | P10 | P20 | P30 | P40 | P50 |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Lemezméret (felfelé kerekítés) | 32 GB | 64 GB | 128 GB | 512 GB | 1024 GB (1 TB) | 2048 GB (2 TB) | 4095 GB (4 TB) |
-| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2,300 | 5000 | 7500 | 7,500 |
+| Lemezenkénti maximális IOPS-érték | 120 | 240 | 500 | 2300 | 5000 | 7500 | 7500 |
 Adattovábbítás lemezenként | 25 MB/s | 50 MB/s | 100 MB/s | 150 MB/s | 200 MB/s | 250 MB/s | 250 MB/s |
 
 Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, nagyobb teljesítmény is elérhető több adatlemez összevonásával. Például egy Standard_GS5 virtuális gép esetében maximálisan 80 000 IOPS érhető el. A virtuális gépenkénti maximális IOPS-értékkel kapcsolatos részletes információkért lásd a [Windows rendszerű virtuális gépek méreteit](../virtual-machines/windows/sizes.md) ismertető cikket.
@@ -96,7 +88,7 @@ Míg a fenti táblázatban a lemezenkénti maximális IOPS-érték látható, na
 A méretezési csoport létrehozásakor vagy egy meglévő méretezési csoporthoz is létrehozhat és csatlakoztathat lemezeket.
 
 ### <a name="attach-disks-at-scale-set-creation"></a>Lemezek csatlakoztatása méretezési csoport létrehozásakor
-Hozzon létre egy virtuálisgép-méretezési csoportot az [New-AzVmss](/powershell/module/az.compute/new-azvmss). Amikor a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuálisgép-példányokhoz. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton.
+Hozzon létre egy virtuálisgép-méretezési készletet a [New-AzVmss](/powershell/module/az.compute/new-azvmss). Amikor a rendszer kéri, adjon meg egy felhasználónevet és egy jelszót a virtuálisgép-példányokhoz. A forgalom az egyes virtuális gépek közötti elosztása érdekében a parancs egy terheléselosztót is létrehoz. A terheléselosztó szabályai elosztják a 80-as TCP-porton érkező forgalmat, valamint lehetővé teszik a távoli asztali forgalmat a 3389-es, valamint a PowerShell távoli eljáráshívásokat az 5985-ös TCP-porton.
 
 Két lemez jön létre a `-DataDiskSizeGb` paraméterrel. Az első lemez *64* GB, míg a második lemez *128* GB méretű. Amikor a rendszer erre kéri, adja meg használni kívánt rendszergazdai hitelesítő adatait a méretezési csoportban lévő virtuálisgép-példányokhoz:
 
@@ -116,7 +108,7 @@ New-AzVmss `
 A méretezési csoport erőforrásainak és virtuálisgép-példányainak létrehozása és konfigurálása néhány percet vesz igénybe.
 
 ### <a name="attach-a-disk-to-existing-scale-set"></a>Lemez csatolása meglévő méretezési csoporthoz
-Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Az előző lépésben létrehozott méretezési csoporthoz használni egy másik lemez hozzáadása [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk). Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat egy meglévő méretezési csoporthoz:
+Meglévő méretezési csoporthoz is hozzáadhat lemezeket. Használja az előző lépésben létrehozott méretezési készletet egy másik lemez hozzáadásához az [Add-AzVmssDataDisk](/powershell/module/az.compute/add-azvmssdatadisk)használatával. Az alábbi példa egy újabb *128* GB-os lemezt csatlakoztat egy meglévő méretezési csoporthoz:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -145,7 +137,7 @@ A méretezési csoport virtuálisgép-példányaihoz létrehozott és hozzácsat
 A folyamat a méretezési csoport több virtuálisgép-példányán való automatizálásához használja az Azure egyéni szkriptek futtatására szolgáló bővítményét. A bővítmény képes a szkriptek helyi végrehajtására az egyes virtuálisgép-példányokon, például előkészíti a csatlakoztatott adatlemezeket. További információ: [Az egyéni szkriptbővítmény áttekintése](../virtual-machines/windows/extensions-customscript.md).
 
 
-Az alábbi példa az egyes Virtuálisgép-példányokon, a GitHub mintatárból származó szkriptet hajt végre [Add-AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) , és előkészíti az összes a csatlakoztatott nyers adatlemezt:
+Az alábbi példa egy GitHub-minta-tárházból származó szkriptet hajt végre minden olyan virtuálisgép-példányon, amely az összes nyers csatolt adatlemezt előkészítő [AzVmssExtension](/powershell/module/az.compute/Add-AzVmssExtension) rendelkezik:
 
 
 ```azurepowershell-interactive
@@ -177,7 +169,7 @@ Update-AzVmss `
 
 Annak megerősítéséhez, hogy a lemezek megfelelően elő lettek készítve, RDP-kapcsolaton keresztül csatlakozzon az egyik virtuálisgép-példányhoz. 
 
-Először kérje le a terheléselosztói objektumot a [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). A NAT-szabályok listázzák az RDP által figyelt mindegyik virtuálisgép-példány *FrontendPort* értékét. Végül kérje a terheléselosztót a nyilvános IP-címét [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
+Először szerezze be a terheléselosztó objektumot a [Get-AzLoadBalancer](/powershell/module/az.network/Get-AzLoadBalancer). Ezután tekintse meg a bejövő NAT-szabályokat a [Get-AzLoadBalancerInboundNatRuleConfig](/powershell/module/az.network/Get-AzLoadBalancerInboundNatRuleConfig). A NAT-szabályok listázzák az RDP által figyelt mindegyik virtuálisgép-példány *FrontendPort* értékét. Végül szerezze be a terheléselosztó nyilvános IP-címét a [Get-AzPublicIpAddress](/powershell/module/az.network/Get-AzPublicIpAddress):
 
 
 ```azurepowershell-interactive
@@ -249,7 +241,7 @@ Zárja le a VM-példánnyal kiépített távoli asztali kapcsolat munkamenetet.
 
 
 ## <a name="list-attached-disks"></a>Csatlakoztatott lemezek listázása
-A méretezési csoporthoz csatlakoztatott lemezekkel kapcsolatos információk megtekintéséhez használja [Get-AzVmss](/powershell/module/az.compute/get-azvmss) módon:
+A méretezési csoportokhoz csatolt lemezekkel kapcsolatos információk megtekintéséhez használja a [Get-AzVmss](/powershell/module/az.compute/get-azvmss) a következő módon:
 
 ```azurepowershell-interactive
 Get-AzVmss -ResourceGroupName "myResourceGroup" -Name "myScaleSet"
@@ -283,7 +275,7 @@ DataDisks[2]                            :
 
 
 ## <a name="detach-a-disk"></a>Lemez leválasztása
-Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. Egy méretezési csoportot lemez leválasztása használja [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) , és adja meg a logikai lemez. A logikai egységeket kimenetében láthatók [Get-AzVmss](/powershell/module/az.compute/get-azvmss) az előző szakaszban. Az alábbi példa leválasztja a *3* LUN-számú lemezt a méretezési csoportról:
+Ha már nincs szüksége egy adott lemezre, válassza azt le a méretezési csoportról. A rendszer eltávolítja a lemezt a méretezési csoport minden virtuálisgép-példányáról. Ha le szeretne választani egy lemezt egy méretezési csoportból, használja a [Remove-AzVmssDataDisk](/powershell/module/az.compute/remove-azvmssdatadisk) , és adja meg a lemez LUN-számát. A logikai egységek az előző szakaszban található [Get-AzVmss](/powershell/module/az.compute/get-azvmss) kimenetében jelennek meg. Az alábbi példa leválasztja a *3* LUN-számú lemezt a méretezési csoportról:
 
 ```azurepowershell-interactive
 # Get scale set object
@@ -305,14 +297,14 @@ Update-AzVmss `
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
-Távolítsa el a méretezési csoport és lemezek, törölje az erőforráscsoportot és az ahhoz tartozó összes erőforrást, az [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup). A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
+A méretezési csoport és a lemezek eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive
 Remove-AzResourceGroup -Name "myResourceGroup" -Force -AsJob
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat lemezeket a méretezési csoportokkal együtt az Azure PowerShell használatával:
 
 > [!div class="checklist"]

@@ -1,22 +1,20 @@
 ---
-title: (ELAVULT) Rövid útmutató – Azure Docker CE-fürt létrehozása Linux rendszeren
+title: ELAVULT Rövid útmutató – Azure Docker CE-fürt Linux rendszerhez
 description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre az Azure CLI segítségével Docker CE-fürtöt Linux-tárolókhoz az Azure Container Service-ben.
-services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: iainfou
 ms.custom: ''
-ms.openlocfilehash: a7a7455ce9167a9c480d317d50fdce49e2ef06a9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 5f492dd2bd270d3f067c05c1dc2235d54e481847
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60721784"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76274882"
 ---
-# <a name="deprecated-deploy-docker-ce-cluster"></a>(ELAVULT) Docker CE-fürt üzembe helyezése
+# <a name="deprecated-deploy-docker-ce-cluster"></a>ELAVULT Docker CE-fürt üzembe helyezése
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-deprecation.md)]
 
@@ -32,7 +30,7 @@ Ha a CLI helyi telepítését és használatát választja, akkor ehhez a gyors�
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group#az-group-create) paranccsal. Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik.
 
-A következő példában létrehozunk egy erőforráscsoportot, nevű *myResourceGroup* a a *westus2* helyét.
+A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *westus2* helyen.
 
 ```azurecli-interactive
 az group create --name myResourceGroup --location westus2
@@ -55,7 +53,7 @@ Kimenet:
 
 ## <a name="create-docker-swarm-cluster"></a>Docker Swarm-fürt létrehozása
 
-Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal hozhat létre Docker CE-fürtöt. A Docker CE-régió availaiblity információkért lásd: [Docker CE az ACS-régiók](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
+Az Azure Container Service-ben az [az acs create](/cli/azure/acs#az-acs-create) paranccsal hozhat létre Docker CE-fürtöt. További információ a Docker CE availaiblity: [ACS-régiók a Docker CE-hez](https://github.com/Azure/ACS/blob/master/announcements/2017-08-04_additional_regions.md)
 
 A következő példa egy *mySwarmCluster* nevű fürtöt hoz létre egy Linux-főcsomóponttal és három Linux-ügyfélcsomóponttal.
 
@@ -106,7 +104,6 @@ Hozzon létre egy `azure-vote.yaml` nevű fájlt, és másolja az alábbi tartal
 
 ```yaml
 version: '3'
-services:
   azure-vote-back:
     image: redis
     ports:
@@ -154,24 +151,24 @@ Lépjen a Swarm-ügynökkészlet teljes tartománynevére az Azure Vote-alkalmaz
 
 ![Az Azure Vote keresését ábrázoló kép](media/container-service-docker-swarm-mode-walkthrough/azure-vote.png)
 
-## <a name="delete-cluster"></a>A fürt törlése
+## <a name="delete-cluster"></a>Fürt törlése
 Ha a fürtre már nincs szükség, az [az group delete](/cli/azure/group#az-group-delete) paranccsal törölheti az erőforráscsoportot, a tárolószolgáltatást és az összes kapcsolódó erőforrást.
 
 ```azurecli-interactive
 az group delete --name myResourceGroup --yes --no-wait
 ```
 
-## <a name="get-the-code"></a>A kód letöltése
+## <a name="get-the-code"></a>Kód letöltése
 
 Ebben a rövid útmutatóban előre létrehozott tárolórendszerképekkel hoztunk létre egy Docker-szolgáltatást. A kapcsolódó alkalmazáskód, Docker-fájl és Compose-fájl a GitHubon érhető el.
 
 [https://github.com/Azure-Samples/azure-voting-app-redis](https://github.com/Azure-Samples/azure-voting-app-redis.git)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Docker Swarm-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
 
-További tudnivalók a Docker swarm integrálása az Azure DevOps-továbbra is a CI/CD – Docker Swarm és az Azure DevOps.
+Ha többet szeretne megtudni a Docker Swarm és az Azure DevOps integrálásáról, folytassa a CI/CD-val a Docker Swarm és az Azure DevOps használatával.
 
 > [!div class="nextstepaction"]
-> [CI/CD – Docker Swarm és az Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)
+> [CI/CD a Docker Swarm és az Azure DevOps](./container-service-docker-swarm-setup-ci-cd.md)

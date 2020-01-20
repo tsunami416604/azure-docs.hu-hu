@@ -1,25 +1,18 @@
 ---
-title: A virtuális tömb Microsoft Azure StorSimple áttekintése | Microsoft Docs
+title: Microsoft Azure StorSimple virtuális tömb áttekintése
 description: Ismerteti a StorSimple virtuális tömböt, amely egy integrált tárolási megoldás, amely a helyszíni virtuális tömb és a felhőalapú tároló Microsoft Azure közötti tárolási feladatokat kezeli.
-services: storsimple
-documentationcenter: NA
 author: alkohli
-manager: jeconnoc
-editor: ''
 ms.assetid: 169c639b-1124-46a5-ae69-ba9695525b77
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: TBD
+ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cbfc69c7d8d9354ae4e727b9eb0180583165abab
-ms.sourcegitcommit: f5cc71cbb9969c681a991aa4a39f1120571a6c2e
+ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/26/2019
-ms.locfileid: "68516714"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76273871"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
 
@@ -39,10 +32,10 @@ A virtuális tömb támogatja az iSCSI-vagy kiszolgálói üzenetblokk (SMB) pro
 
 A következő táblázat összefoglalja a StorSimple virtuális tömb fontos funkcióit.
 
-| Funkció | StorSimple Virtual Array |
+| Szolgáltatás | StorSimple Virtual Array |
 | --- | --- |
-| Telepítési követelmények |Virtualizációs infrastruktúrát (Hyper-V vagy VMware) használ |
-| Rendelkezésre állás |Egyetlen csomópont |
+| A telepítés követelményei |Virtualizációs infrastruktúrát (Hyper-V vagy VMware) használ |
+| Elérhetőség |Egyetlen csomópont |
 | Teljes kapacitás (beleértve a felhőt is) |Akár 64 TB-os felhasználható kapacitás virtuális tömbben |
 | Helyi kapacitás |390 GB és 6,4 TB felhasználható kapacitás virtuális tömbben (500 GB-ról 8 TB-ra kell kiépíteni a lemezterületet) |
 | Natív protokollok |iSCSI vagy SMB |
@@ -54,7 +47,7 @@ A következő táblázat összefoglalja a StorSimple virtuális tömb fontos fun
 | Adatmobilitás |Visszaállítható ugyanarra az eszközre, vagy az elemszintű helyreállítást (fájlkiszolgáló) |
 | Tárolási rétegek |Helyi hypervisor tároló és felhő |
 | Megosztás mérete |Rétegű: legfeljebb 20 TB; helyileg rögzítve: legfeljebb 2 TB |
-| Kötet mérete |Rétegzett 500 GB – 5 TB; helyileg rögzített: 50 GB – 200 GB <br> A többszintes kötetek maximális helyi foglalása 200 GB. |
+| Kötet mérete |Rétegű: 500 GB – 5 TB; helyileg rögzített: 50 GB – 200 GB <br> A többszintes kötetek maximális helyi foglalása 200 GB. |
 | Pillanatképek |Összeomlás-konzisztens |
 | Elemszintű helyreállítás |Igen a felhasználók visszaállíthatják a megosztásokat |
 
@@ -64,7 +57,7 @@ A StorSimple percek alatt összekapcsolja a felhasználókat és a kiszolgálók
 
 Az alábbi táblázat a StorSimple Virtual Array megoldás által biztosított főbb előnyöket ismerteti.
 
-| Funkció | Előny |
+| Szolgáltatás | Előny/érték |
 | --- | --- |
 | Transzparens integráció |A virtuális tömb támogatja az iSCSI-t vagy az SMB protokollt. A helyi és a felhőalapú csomag közötti adatáthelyezés zökkenőmentes és átlátható a felhasználó számára. |
 | Csökkentett tárolási költségek |A StorSimple-mel elegendő helyi tárterületet kell kiépíteni, hogy megfeleljen a leggyakrabban használt meleg adatokra vonatkozó jelenlegi igényeknek. A tárolási igények növekedésével a StorSimple rétegekben a Felhőbeli tárolás költséghatékony. Az adatok deduplikálása és tömörítése a felhőbe való küldés előtt a tárolási követelmények és költségek további csökkentése érdekében. |
@@ -76,10 +69,10 @@ Az alábbi táblázat a StorSimple Virtual Array megoldás által biztosított f
 
 Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefoglalóját mutatja be.
 
-|Forgatókönyv     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
+|Alkalmazási helyzet     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók](storsimple-ova-system-requirements.md)rendszerkövetelményeit.| Az összes verzió     |
-|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók](storsimple-ova-system-requirements.md)rendszerkövetelményeit.| Az összes verzió     |
+|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
+|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
 
 A StorSimple Virtual Array a ritkán használt adatokhoz ajánlott. Míg a virtuális tömb helyi gyorsítótárral rendelkezik a teljesítmény növelése érdekében, a felhasználóknak feltételezni kell, hogy az eszköz-szolgáltatások fájljai a legalacsonyabb tárolási szinten (a felhőben) találhatók. Minden egyes virtuális tömb körülbelül 100 Mbps sebességgel tud írni és olvasni az Azure Storage-ba. Ez a hivatkozás az eszközre érkező összes kérelem között megoszlik, és az alábbi ábrán látható módon szűk keresztmetszetet jelenthet.
 
@@ -89,7 +82,7 @@ Ha több egyidejű felhasználó fér hozzá a virtuális tömbhöz, a kapcsolat
 
 A StorSimple virtuális tömb nem alkalmas magas rendelkezésre állást igénylő munkaterhelések esetén. A virtuális tömb egyetlen csomópontos eszköz, amely a szoftverfrissítések telepítésekor leállást tapasztal. A rendszergazdáknak évente legfeljebb 3-4 alkalommal kell megtervezniük a karbantartási időszakot.
 
-## <a name="workflows"></a>Workflows
+## <a name="workflows"></a>Munkafolyamatok
 
 A StorSimple virtuális tömb különösen a következő munkafolyamatokhoz alkalmas:
 
@@ -217,6 +210,6 @@ A virtuális adatsorozatok StorSimple Eszközkezelő két fő példányban gyűj
 
 További információkért tekintse meg a [Microsoft adatvédelmi szabályzatát a Trust Centerben](https://www.microsoft.com/trustcenter).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [készítheti elő a virtuális tömb portált](storsimple-virtual-array-deploy1-portal-prep.md).

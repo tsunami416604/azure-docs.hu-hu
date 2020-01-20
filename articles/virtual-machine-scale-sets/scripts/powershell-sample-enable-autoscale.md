@@ -1,27 +1,19 @@
 ---
 title: Azure PowerShell minták – gazdagép-alapú autoskálázás engedélyezése
 description: Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést, amely a CPU terhelésének változásaihoz igazodik.
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.devlang: na
 ms.topic: sample
-ms.tgt_pltfrm: na
-ms.workload: na
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 92411785419a1544b2d172d3a18661d501d4e5cf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cc811c7ebf952818bad68ab57659ec99afd2104
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350838"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276540"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-with-powershell"></a>Virtuálisgép-méretezési csoport automatikus méretezése a PowerShell-lel
 Ez a szkript egy Windows Server 2016 rendszert futtató virtuálisgép-méretezési csoportot hoz létre, illetve gazdagépalapú mérőszámok használatával automatikusan elvégzi a méretezést, amely a CPU terhelésének változásaihoz igazodik.

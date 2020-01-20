@@ -1,30 +1,22 @@
 ---
-title: Oktatóanyag – Egyéni virtuálisgép-rendszerkép használata egy méretezési csoportban az Azure CLI használatával | Microsoft Docs
+title: Oktatóanyag – egyéni virtuálisgép-rendszerkép használata egy méretezési csoporton az Azure CLI-vel
 description: Megismerheti, hogyan hozhat létre egyéni virtuálisgép-rendszerképeket az Azure CLI használatával, amelyek használatával virtuálisgép-méretezési csoportokat helyezhet üzembe
-services: virtual-machine-scale-sets
-documentationcenter: ''
 author: cynthn
-manager: jeconnoc
-editor: ''
 tags: azure-resource-manager
-ms.assetid: ''
 ms.service: virtual-machine-scale-sets
-ms.workload: na
-ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: mvc
-ms.openlocfilehash: 6368a36eaa2e6832f22a13f20bc35d66c4425b4b
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 95e22b40b56d3ac3129573958c77b8643c0e72dc
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311579"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76276130"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-the-azure-cli"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure CLI-vel
-Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ezen oktatóanyag segítségével megtanulhatja a következőket:
+Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a virtuálisgép-példányok üzembe helyezésekor. Egyéni virtuálisgép-rendszerkép használatával csökkentheti a feladatok számát a virtuálisgép-példányok üzembe helyezése után. Ez az egyéni virtuálisgép-rendszerkép tartalmaz minden szükséges alkalmazástelepítést és -konfigurációt. A méretezési csoportban létrehozott összes virtuálisgép-példány az egyéni virtuálisgép-rendszerképet használja, és készen állnak az alkalmazás forgalmának kiszolgálására. Ez az oktatóanyag bemutatja, hogyan végezheti el az alábbi műveleteket:
 
 > [!div class="checklist"]
 > * Virtuális gép létrehozása és testre szabása
@@ -99,7 +91,7 @@ A virtuális gép felszabadítása és általánosítása eltarthat néhány per
 
 Most hozzon létre egy rendszerképet a virtuális gépről az [az image create](/cli//azure/image) paranccsal. Az alábbi példa létrehoz egy *myImage* nevű rendszerképet a virtuális gépéből:
 
-> Megjegyzés Ha az erőforráscsoport és a virtuális gép helye eltérő, akkor a `--location` paramétert hozzáadhatja az alábbi parancsokhoz a rendszerkép létrehozásához használt forrásoldali virtuális gép helyétől függően. 
+> Megjegyzés Ha az erőforráscsoport és a virtuális gép helye eltérő, akkor a `--location` paramétert hozzáadhatja az alábbi parancsokhoz a rendszerkép létrehozásához használt forrásoldali virtuális gép helyének a megadásához. 
 
 ```azurecli-interactive
 az image create \

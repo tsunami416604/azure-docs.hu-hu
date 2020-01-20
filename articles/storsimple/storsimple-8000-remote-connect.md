@@ -1,102 +1,94 @@
 ---
-title: Távoli csatlakozás a StorSimple-eszköz |} A Microsoft Docs
-description: Ismerteti, hogyan konfigurálta az eszközt, a távfelügyelethez és kapcsolódás HTTP vagy HTTPS használatával a storsimple-höz készült Windows PowerShell.
-services: storsimple
-documentationcenter: ''
+title: Távoli kapcsolódás a StorSimple-eszközhöz
+description: Ismerteti, hogyan konfigurálhatja az eszközt a távoli felügyelethez, és hogyan csatlakozhat a Windows PowerShell StorSimple-bővítménye HTTP-vagy HTTPS-kapcsolaton keresztül.
 author: alkohli
-manager: jeconnoc
-editor: ''
-ms.assetid: ''
 ms.service: storsimple
-ms.devlang: NA
-ms.topic: article
-ms.tgt_pltfrm: NA
-ms.workload: NA
+ms.topic: conceptual
 ms.date: 01/02/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 05bec60f4c56c98e9b910b50e858656a2e5554b2
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 70d0246debc532260d287104bacea2f15c1b94d2
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60631781"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76277299"
 ---
-# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli csatlakozás a StorSimple 8000 sorozatú eszköz
+# <a name="connect-remotely-to-your-storsimple-8000-series-device"></a>Távoli kapcsolódás a StorSimple 8000 Series eszközhöz
 
 ## <a name="overview"></a>Áttekintés
 
-Az eszköz Windows PowerShell használatával távolról csatlakozhat. Csatlakozás, ha nem látja el egy menü. (Látni egy menü csak akkor, ha a soros konzol az eszközön való kapcsolódáshoz használ.) A Windows PowerShell-táveléréssel akkor csatlakozik egy adott futási teret is. Adja meg a megjelenítési nyelvét is.
+A Windows PowerShell használatával távolról is csatlakozhat az eszközhöz. Ha így tesz, nem jelenik meg a menü. (Csak akkor jelenik meg a menü, ha a soros konzolt használja az eszközön a kapcsolódáshoz.) A Windows PowerShell távelérési szolgáltatásával egy adott RunSpace csatlakozhat. Megadhatja a megjelenítési nyelvet is.
 
-Az eszköz kezelését Windows PowerShell-távelérés használatával kapcsolatos további információkért lépjen [használja a Windows Powershellt a StorSimple-eszköz felügyelete a storsimple](storsimple-8000-windows-powershell-administration.md).
+Ha többet szeretne megtudni arról, hogyan kezelheti az eszközét a Windows PowerShell távelérés használatával, lépjen a [Windows PowerShell StorSimple-bővítménye használatára a StorSimple-eszköz felügyeletéhez](storsimple-8000-windows-powershell-administration.md).
 
-Ez az oktatóanyag azt ismerteti, hogyan konfigurálta az eszközt, a távfelügyelethez, majd hogyan csatlakozhat Windows PowerShell storsimple-höz készült. HTTP- vagy HTTPS használatával távolról csatlakozzon a Windows Powershellen keresztül. Azonban amikor azt fontolgatja, hogyan csatlakozhat Windows PowerShell storsimple-höz készült, vegye figyelembe a következő információkat:
+Ez az oktatóanyag azt ismerteti, hogyan konfigurálhatja az eszközt a távoli felügyelethez, majd hogyan csatlakozhat a Windows PowerShell StorSimple-bővítményehoz. HTTP vagy HTTPS használatával távolról csatlakozhat a Windows PowerShell segítségével. Ha azonban úgy dönt, hogyan csatlakozhat Windows PowerShell StorSimple-bővítményehoz, vegye figyelembe a következő információkat:
 
-* Az eszköz soros konzoljához való közvetlen csatlakozás lehetőségét biztonságos, de nincs csatlakozás soros konzolon hálózati kapcsolók keresztül. Legyen óvatos az a biztonsági veszély a hálózati kapcsolók keresztül az eszköz soros konzoljához való csatlakozáskor.
-* HTTP-munkameneten keresztül csatlakozik, előfordulhat, hogy csatlakozás soros konzolon keresztül, a hálózaton keresztül nagyobb biztonságot kínálnak. Bár ez nem a legbiztonságosabb módszer, egy megbízható hálózatokon feltételei.
-* Kapcsolaton keresztül egy HTTPS-KAPCSOLATON keresztül, önaláírt tanúsítvánnyal, a legbiztonságosabb és a javasolt megoldás.
+* Az eszköz soros konzoljának közvetlen csatlakoztatása biztonságos, de a soros konzol hálózati kapcsolókon keresztül történő csatlakoztatása nem. A hálózati kapcsolókon keresztül az eszköz soros konzolhoz való csatlakozáskor legyen óvatos a biztonsági kockázat.
+* A HTTP-munkameneten keresztüli csatlakozás nagyobb biztonságot nyújthat, mint a soros konzol hálózaton keresztüli csatlakoztatása. Bár ez nem a legbiztonságosabb módszer, a megbízható hálózatokon elfogadható.
+* Ha egy önaláírt tanúsítvánnyal rendelkező HTTPS-munkameneten keresztül csatlakozik, a legbiztonságosabb és ajánlott lehetőség.
 
-Távolról is csatlakozhasson a Windows PowerShell-felületen. A StorSimple-eszköz a Windows PowerShell felületéről való elérése alapértelmezés szerint azonban nincs engedélyezve. Engedélyeznie kell az eszköz távoli kezeléséhez először, és ezután az ügyfélen használt az eszköz elérésére.
+Távolról is csatlakozhat a Windows PowerShell felületéhez. A StorSimple-eszközhöz a Windows PowerShell felületén keresztül történő távoli hozzáférés azonban alapértelmezés szerint nincs engedélyezve. Először engedélyeznie kell a távoli felügyeletet az eszközön, majd az eszköz eléréséhez használt ügyfélen.
 
-Ebben a cikkben leírt lépéseket a Windows Server 2012 R2 rendszerű gazdagépet rendszerre lettek végrehajtva.
+A cikkben ismertetett lépések a Windows Server 2012 R2 operációs rendszert futtató gazdagépeken hajthatók végre.
 
-## <a name="connect-through-http"></a>HTTP Protokollon keresztül csatlakozni
+## <a name="connect-through-http"></a>Kapcsolat HTTP-n keresztül
 
-Csatlakozás Windows PowerShell storsimple-höz készült egy HTTP-munkameneten keresztül kínál a nagyobb biztonságot, a StorSimple-eszköz soros konzolon keresztül kapcsolódik. Bár ez nem a legbiztonságosabb módszer, egy megbízható hálózatokon feltételei.
+A Windows PowerShell StorSimple-bővítménye HTTP-munkameneten keresztül történő csatlakoztatása nagyobb biztonságot nyújt, mint a StorSimple-eszköz soros konzolján. Bár ez nem a legbiztonságosabb módszer, a megbízható hálózatokon elfogadható.
 
-Az Azure Portalon vagy a soros konzol segítségével távoli felügyeletének konfigurálása. Az alábbi eljárások közül választhat:
+A Távoli felügyelet konfigurálásához használhatja a Azure Portal vagy a soros konzolt is. Válasszon az alábbi eljárások közül:
 
-* Az Azure portal használatával HTTP protokollon keresztüli távoli felügyeletének engedélyezése
-* [A soros konzol használata a távoli felügyelet engedélyezéséhez a HTTP-n keresztül](#use-the-serial-console-to-enable-remote-management-over-http)
+* A Távoli felügyelet engedélyezése a Azure Portal használatával HTTP-n keresztül
+* [A Távoli felügyelet engedélyezése HTTP-n keresztül a soros konzol használatával](#use-the-serial-console-to-enable-remote-management-over-http)
 
-Miután engedélyezte távfelügyeletet, az ügyfélszoftver előkészítése a távoli kapcsolat a következő eljárás használatával.
+A távfelügyelet engedélyezése után a következő eljárással készítse elő az ügyfelet egy távoli kapcsolatban.
 
-* [Az ügyfélszoftver előkészítése a távoli kapcsolat](#prepare-the-client-for-remote-connection)
+* [Az ügyfél előkészítése távoli csatlakozásra](#prepare-the-client-for-remote-connection)
 
-### <a name="use-the-azure-portal-to-enable-remote-management-over-http"></a>Az Azure portal használatával HTTP protokollon keresztüli távoli felügyeletének engedélyezése
+### <a name="use-the-azure-portal-to-enable-remote-management-over-http"></a>A Távoli felügyelet engedélyezése a Azure Portal használatával HTTP-n keresztül
 
-A következő lépésekkel távoli felügyelet engedélyezéséhez a HTTP-n keresztül az Azure Portalon.
+A Távoli felügyelet HTTP-n keresztüli engedélyezéséhez hajtsa végre a következő lépéseket a Azure Portalon.
 
-#### <a name="to-enable-remote-management-through-the-azure-portal"></a>Az Azure Portalon keresztül távoli felügyeletének engedélyezése
+#### <a name="to-enable-remote-management-through-the-azure-portal"></a>Távoli felügyelet engedélyezése a Azure Portal
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Válassza ki **eszközök** majd válassza ki, és kattintson a távoli felügyelet a konfigurálni kívánt eszközre. Lépjen a **beállítások > Biztonság**.
-2. Az a **biztonsági beállítások** panelen kattintson a **Távfelügyelet**.
-3. Az a **Távfelügyelet** panelen adja meg **távoli felügyelet engedélyezése** való **Igen**.
-4. Mostantól HTTP-n keresztül is csatlakozhat. (Az alapértelmezett érték HTTPS-kapcsolaton keresztül csatlakozni.) Győződjön meg arról, hogy HTTP van kiválasztva.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Válassza az **eszközök** lehetőséget, majd válassza ki a távoli felügyelethez konfigurálni kívánt eszközt, majd kattintson rá. Lépjen az **eszközbeállítások > biztonság**menüpontra.
+2. A **biztonsági beállítások** panelen kattintson a **Távoli felügyelet**elemre.
+3. A **távfelügyelet** panelen állítsa a **távfelügyelet engedélyezése** **Igen értéket**.
+4. Mostantól HTTP-n keresztül is csatlakozhat. (Az alapértelmezett beállítás a HTTPS-kapcsolaton keresztüli kapcsolódás.) Győződjön meg arról, hogy a HTTP van kiválasztva.
    
    > [!NOTE]
    > A HTTP-n keresztüli csatlakozást kizárólag megbízható hálózatokon célszerű engedélyezni.
    
-5. Kattintson a **mentése** , amikor a rendszer megerősítést kér, válassza ki **Igen**.
+5. Kattintson a **Mentés** gombra, és amikor a rendszer megerősítést kér, válassza az **Igen**lehetőséget.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>A soros konzol használata a távoli felügyelet engedélyezéséhez a HTTP-n keresztül
-A következő lépésekkel a távoli felügyeletének engedélyezése az eszköz soros konzoljában.
+### <a name="use-the-serial-console-to-enable-remote-management-over-http"></a>A Távoli felügyelet engedélyezése HTTP-n keresztül a soros konzol használatával
+A Távoli felügyelet engedélyezéséhez hajtsa végre a következő lépéseket az eszköz soros konzolján.
 
-#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Az eszköz soros konzolon keresztül távoli felügyeletének engedélyezése
-1. A soros konzol menüben válassza az 1. lehetőség. Az eszközön a soros konzol használatával kapcsolatos további információkért lépjen [Windows PowerShell storsimple-eszköz soros konzolon keresztül csatlakozhat](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Írja be a parancssorba: `Enable-HcsRemoteManagement –AllowHttp`
-3. A biztonsági réseket, HTTP protokollon keresztül csatlakozni az eszközhöz kapcsolatos értesítést kap. Amikor a rendszer kéri, erősítse meg, írja be **Y**.
-4. Győződjön meg arról, hogy HTTP engedélyezve van-e beírásával: `Get-HcsSystem`
-5. Ellenőrizze, hogy a **RemoteManagementMode** mezőben látható **HttpsAndHttpEnabled**. A következő ábrán ezek a beállítások a putty-kapcsolaton keresztül.
+#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Távoli felügyelet engedélyezése az eszköz soros konzolján
+1. A soros konzol menüjében válassza az 1. lehetőséget. Az eszköz soros konzoljának használatával kapcsolatos további információkért nyissa meg [Windows PowerShell StorSimple-bővítménye eszközt a soros konzolon keresztül](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. A parancssorba írja be a következőt: `Enable-HcsRemoteManagement –AllowHttp`
+3. Értesítést kap a HTTP-vel való kapcsolódás biztonsági sebezhetőségéről az eszközhöz való kapcsolódáshoz. Ha a rendszer kéri, erősítse meg az **Y**beírásával.
+4. Győződjön meg arról, hogy a HTTP engedélyezve van a beírásával: `Get-HcsSystem`
+5. Ellenőrizze, hogy a **RemoteManagementMode** mező megjeleníti-e a **HttpsAndHttpEnabled**. A következő ábra ezeket a beállításokat jeleníti meg a PuTTY-ban.
    
      ![Soros HTTPS és HTTP engedélyezve](./media/storsimple-remote-connect/HCS_SerialHttpsAndHttpEnabled.png)
 
-### <a name="prepare-the-client-for-remote-connection"></a>Az ügyfélszoftver előkészítése a távoli kapcsolat
-A következő lépésekkel távoli felügyeletének engedélyezése az ügyfélen.
+### <a name="prepare-the-client-for-remote-connection"></a>Az ügyfél előkészítése távoli csatlakozásra
+A Távoli felügyelet engedélyezéséhez hajtsa végre az alábbi lépéseket az ügyfélen.
 
-#### <a name="to-prepare-the-client-for-remote-connection"></a>Az ügyfélszoftver előkészítése a távoli kapcsolat
-1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha a Windows 10-es ügyfél segítségével alapértelmezés szerint a Windows Rendszerfelügyeleti webszolgáltatás manuális értéke. Szükség lehet a szolgáltatás elindításához írja be:
+#### <a name="to-prepare-the-client-for-remote-connection"></a>Az ügyfél előkészítése távoli kapcsolódásra
+1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha Windows 10-es ügyfelet használ, alapértelmezés szerint a Rendszerfelügyeleti webszolgáltatás manuális értékre van beállítva. Előfordulhat, hogy a következő beírásával kell elindítania a szolgáltatást:
 
     `Start-Service WinRM`
     
-2. Írja be a következő parancsot a StorSimple-eszköz IP-cím hozzáadásához az ügyfél megbízható gazdagépek listájához:
+2. A következő parancs beírásával adja hozzá a StorSimple-eszköz IP-címét az ügyfél megbízható gazdagépek listájához:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-     Cserélje le <*device_ip*> IP-címét az eszköz; például: 
+     Cserélje le a <*device_ip*> az eszköz IP-címére. például: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Írja be a következő parancsot a hitelesítő adatai mentése változóként: 
+3. A következő parancs beírásával mentse az eszköz hitelesítő adatait egy változóba: 
    
     ```
     $cred = Get-Credential
@@ -104,148 +96,148 @@ A következő lépésekkel távoli felügyeletének engedélyezése az ügyféle
     
 4. A megjelenő párbeszédpanelen:
    
-   1. Írja be a felhasználónevet a következő formátumban: *device_ip\SSAdmin*.
-   2. Írja be az eszköz rendszergazdai jelszava, amely lett beállítva, amikor az eszköz a telepítővarázsló lett konfigurálva. Az alapértelmezett jelszó az *jelszó1*.
-5. Ez a parancs beírásával indítsa el a Windows PowerShell-munkamenetben az eszközön:
+   1. Írja be a felhasználónevet a következő formátumban: *device_ip \ssadmin*.
+   2. Adja meg azt az eszköz-rendszergazdai jelszót, amelyet az eszköz a telepítővarázsló segítségével való konfigurálásakor adott meg. Az alapértelmezett jelszó a *jelszó1*.
+5. Indítsa el a Windows PowerShell-munkamenetet az eszközön a következő parancs beírásával:
    
      `Enter-PSSession -Credential $cred -ConfigurationName SSAdminConsole -ComputerName <device_ip>`
    
    > [!NOTE]
-   > A StorSimple virtuális eszköz egy Windows PowerShell-munkamenetben használja a létrehozásához, fűzze hozzá a `–Port` paraméter, és adja meg, amely a StorSimple virtuális készülék lévő Remoting konfigurált nyilvános port.
+   > Ha Windows PowerShell-munkamenetet szeretne létrehozni a StorSimple virtuális eszközzel való használatra, fűzze hozzá a `–Port` paramétert, és határozza meg azt a nyilvános portot, amelyet a StorSimple virtuális berendezéshez konfigurált a távelérési szolgáltatásban.
    
    
-Ezen a ponton rendelkeznie kell egy aktív távoli Windows PowerShell-munkamenetben az eszközön.
+Ezen a ponton aktív távoli Windows PowerShell-munkamenetet kell használnia az eszközhöz.
    
-![PowerShell távoli eljáráshívás HTTP-n keresztül](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
+![PowerShell-távelérés HTTP használatával](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTP.png)
 
-## <a name="connect-through-https"></a>Csatlakozás a HTTPS-en keresztül
+## <a name="connect-through-https"></a>Csatlakozási HTTPS-kapcsolaton keresztül
 
-Csatlakozás Windows PowerShell storsimple-höz készült keresztül HTTPS-KAPCSOLATON keresztül a legbiztonságosabb és ajánlott módszer távolról kapcsolódni a Microsoft Azure StorSimple-eszköz. A következő eljárások azt ismertetik, hogyan állíthat be a soros konzol és az ügyfél-számítógépek így HTTPS használatával csatlakozni a Windows PowerShell storsimple-höz készült.
+A Windows PowerShell StorSimple-bővítménye a HTTPS-munkameneten keresztüli csatlakozás a legbiztonságosabb és ajánlott módszer a Microsoft Azure StorSimple eszközhöz való távoli csatlakozáshoz. A következő eljárások azt ismertetik, hogyan állíthatja be a soros konzolt és az ügyfélszámítógépeket, hogy a HTTPS használatával kapcsolódjon Windows PowerShell StorSimple-bővítményehoz.
 
-Az Azure Portalon vagy a soros konzol segítségével távoli felügyeletének konfigurálása. Az alábbi eljárások közül választhat:
+A Távoli felügyelet konfigurálásához használhatja a Azure Portal vagy a soros konzolt is. Válasszon az alábbi eljárások közül:
 
-* Távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül az Azure portal használatával
-* [A soros konzol használata a távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül](#use-the-serial-console-to-enable-remote-management-over-https)
+* A Távoli felügyelet engedélyezése a Azure Portal használatával HTTPS-kapcsolaton keresztül
+* [A Távoli felügyelet engedélyezése HTTPS protokollon keresztül a soros konzol használatával](#use-the-serial-console-to-enable-remote-management-over-https)
 
-Miután engedélyezte távfelügyeletet, az alábbi eljárásokkal készítheti elő a gazdagép egy távoli felügyeleti és a távoli állomástól csatlakozni az eszközhöz.
+A Távoli felügyelet engedélyezése után a következő eljárásokkal készítse elő a gazdagépet a távoli felügyelethez, és kapcsolódjon az eszközhöz a távoli gazdagépről.
 
-* [Készítse elő a gazdagép távoli felügyeletére](#prepare-the-host-for-remote-management)
-* [A távoli állomástól csatlakozni az eszközhöz](#connect-to-the-device-from-the-remote-host)
+* [A gazdagép előkészítése a távoli felügyelethez](#prepare-the-host-for-remote-management)
+* [Kapcsolódás az eszközhöz a távoli gazdagépről](#connect-to-the-device-from-the-remote-host)
 
-### <a name="use-the-azure-portal-to-enable-remote-management-over-https"></a>Távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül az Azure portal használatával
+### <a name="use-the-azure-portal-to-enable-remote-management-over-https"></a>A Távoli felügyelet engedélyezése a Azure Portal használatával HTTPS-kapcsolaton keresztül
 
-Hajtsa végre az alábbi lépéseket az Azure Portalon a távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül.
+Hajtsa végre a következő lépéseket a Azure Portal a Távoli felügyelet engedélyezéséhez a HTTPS protokollon keresztül.
 
-#### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>Távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül az Azure Portalról
+#### <a name="to-enable-remote-management-over-https-from-the-azure-portal"></a>Távoli felügyelet engedélyezése HTTPS-kapcsolaton keresztül a Azure Portal
 
-1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Válassza ki **eszközök** majd válassza ki, és kattintson a távoli felügyelet a konfigurálni kívánt eszközre. Lépjen a **beállítások > Biztonság**.
-2. Az a **biztonsági beállítások** panelen kattintson a **Távfelügyelet**.
+1. Nyissa meg a StorSimple-eszközkezelő szolgáltatást. Válassza az **eszközök** lehetőséget, majd válassza ki a távoli felügyelethez konfigurálni kívánt eszközt, majd kattintson rá. Lépjen az **eszközbeállítások > biztonság**menüpontra.
+2. A **biztonsági beállítások** panelen kattintson a **Távoli felügyelet**elemre.
 3. A **Távoli felügyelet engedélyezése** lehetőségnél válassza az **Igen** beállítást.
-4. Ezután eldöntheti, HTTPS-en keresztül csatlakozni. (Az alapértelmezett érték HTTPS-kapcsolaton keresztül csatlakozni.) Győződjön meg arról, hogy HTTPS van-e kiválasztva.
-5. ... Elemre majd **távfelügyeleti tanúsítvány letöltése**. Adja meg a fájl mentésének helyét. A tanúsítvány telepítése az ügyfélszámítógépre vagy gazdagépre számítógépen szeretne csatlakozni az eszközhöz használt kell.
-6. Kattintson a **mentése** majd **Igen** , amikor a rendszer megerősítést kér.
+4. Mostantól a HTTPS használatával is csatlakozhat. (Az alapértelmezett beállítás a HTTPS-kapcsolaton keresztüli kapcsolódás.) Győződjön meg arról, hogy a HTTPS van kiválasztva.
+5. Kattintson a... majd kattintson a **távfelügyeleti tanúsítvány letöltése**elemre. Itt adhatja meg a fájl mentésének helyét. Telepítenie kell ezt a tanúsítványt azon az ügyfélen vagy gazdaszámítógépen, amelyet az eszközhöz való kapcsolódáshoz használni fog.
+6. Kattintson a **Mentés** , majd az **Igen** gombra, amikor a rendszer megerősítést kér.
 
-### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>A soros konzol használata a távoli felügyelet engedélyezéséhez a HTTPS-kapcsolaton keresztül
+### <a name="use-the-serial-console-to-enable-remote-management-over-https"></a>A Távoli felügyelet engedélyezése HTTPS protokollon keresztül a soros konzol használatával
 
-A következő lépésekkel a távoli felügyeletének engedélyezése az eszköz soros konzoljában.
+A Távoli felügyelet engedélyezéséhez hajtsa végre a következő lépéseket az eszköz soros konzolján.
 
-#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Az eszköz soros konzolon keresztül távoli felügyeletének engedélyezése
-1. A soros konzol menüben válassza az 1. lehetőség. Az eszközön a soros konzol használatával kapcsolatos további információkért lépjen [Windows PowerShell storsimple-eszköz soros konzolon keresztül csatlakozhat](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
-2. Írja be a parancssorba:
+#### <a name="to-enable-remote-management-through-the-device-serial-console"></a>Távoli felügyelet engedélyezése az eszköz soros konzolján
+1. A soros konzol menüjében válassza az 1. lehetőséget. Az eszköz soros konzoljának használatával kapcsolatos további információkért nyissa meg [Windows PowerShell StorSimple-bővítménye eszközt a soros konzolon keresztül](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console).
+2. A parancssorba írja be a következőt:
    
      `Enable-HcsRemoteManagement`
    
-    Ez engedélyezze a HTTPS az eszközön.
-3. Győződjön meg arról, hogy engedélyezni a HTTPS-beírásával: 
+    Ez lehetővé teszi a HTTPS engedélyezését az eszközön.
+3. Ellenőrizze, hogy a HTTPS engedélyezve van-e a beírásával: 
    
      `Get-HcsSystem`
    
-    Győződjön meg arról, hogy a **RemoteManagementMode** mezőben látható **HttpsEnabled**. A következő ábrán ezek a beállítások a putty-kapcsolaton keresztül.
+    Győződjön meg arról, hogy a **RemoteManagementMode** mező a **HttpsEnabled**jeleníti meg. A következő ábra ezeket a beállításokat jeleníti meg a PuTTY-ban.
    
-     ![Soros HTTPS-kompatibilis](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
-4. Kimenetéből származó `Get-HcsSystem`, másolja be az eszköz sorozatszáma, és mentse későbbi használatra.
+     ![Soros HTTPS engedélyezve](./media/storsimple-remote-connect/HCS_SerialHttpsEnabled.png)
+4. A `Get-HcsSystem`kimenetéről másolja ki az eszköz sorozatszámát, és mentse későbbi használatra.
    
    > [!NOTE]
-   > A sorozatszám képez az a tanúsítvány CN-neve.
+   > A sorozatszám a tanúsítványban szereplő CN-névre van leképezve.
    
-5. Szerezze be a távfelügyeleti tanúsítvány beírásával: 
+5. A távfelügyeleti tanúsítvány beszerzéséhez írja be a következőket: 
    
      `Get-HcsRemoteManagementCert`
    
-    Egy tanúsítványt, az alábbihoz hasonlóan jelenik meg.
+    A következőhöz hasonló tanúsítvány fog megjelenni.
    
-    ![Távfelügyeleti tanúsítvány beszerzése](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
-6. Másolja át az adatokat a tanúsítványban lévő **---BEGIN CERTIFICATE---** való **---END CERTIFICATE---** egy szövegszerkesztőbe például a Jegyzettömbben, és mentse azt egy .cer fájlba. (, Másolja ezt a fájlt a távoli állomás amikor előkészíti a gazdagépet.)
+    ![Távfelügyeleti tanúsítvány beolvasása](./media/storsimple-remote-connect/HCS_GetRemoteManagementCertificate.png)
+6. Másolja a tanúsítványban szereplő adatokat **-----BEGIN certificate-----** **-----END Certificate-----** egy szövegszerkesztőbe, például a Jegyzettömbbe, és mentse. cer fájlként. (Ezt a fájlt a gazdagép előkészítésekor fogja másolni a távoli gazdagépre.)
    
    > [!NOTE]
-   > Létrehoz egy új tanúsítványt, használja a `Set-HcsRemoteManagementCert` parancsmagot.
+   > Új tanúsítvány létrehozásához használja a `Set-HcsRemoteManagementCert` parancsmagot.
    
-### <a name="prepare-the-host-for-remote-management"></a>Készítse elő a gazdagép távoli felügyeletére
+### <a name="prepare-the-host-for-remote-management"></a>A gazdagép előkészítése a távoli felügyelethez
 
-Előkészítheti a számítógép a távoli kapcsolat, amely HTTPS-KAPCSOLATON keresztül használja, hajtsa végre az alábbi eljárásokat:
+Ha a gazdaszámítógépet HTTPS-munkamenetet használó távoli kapcsolatra szeretné felkészíteni, hajtsa végre az alábbi eljárásokat:
 
-* [A .cer fájlt importálja a gyökérszintű tárolóban. az ügyfél vagy a távoli állomás](#to-import-the-certificate-on-the-remote-host).
-* [Az eszköz-sorozatszámok hozzáadása az állomásleíró fájlhoz, a távoli gazdagépen](#to-add-device-serial-numbers-to-the-remote-host).
+* [Importálja a. cer fájlt az ügyfél vagy a távoli gazdagép legfelső szintű tárolójába](#to-import-the-certificate-on-the-remote-host).
+* [Adja hozzá az eszköz sorozatszámait a gazdagépek fájljához a távoli gazdagépen](#to-add-device-serial-numbers-to-the-remote-host).
 
-A fenti eljárások leírását alább.
+Az előző eljárások mindegyikét alább mutatjuk be.
 
-#### <a name="to-import-the-certificate-on-the-remote-host"></a>Importálja a tanúsítványt a távoli gazdagépen
-1. Kattintson a jobb gombbal a .cer fájlt, és válassza ki **telepítése tanúsítvány**. A Tanúsítványimportáló varázsló elindul.
+#### <a name="to-import-the-certificate-on-the-remote-host"></a>A tanúsítvány importálása a távoli gazdagépre
+1. Kattintson a jobb gombbal a. cer fájlra, majd válassza a **tanúsítvány telepítése**lehetőséget. Ezzel elindítja a tanúsítvány importálása varázslót.
    
-    ![Tanúsítványimportáló varázsló 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
-2. A **hely Store**válassza **helyi gépen**, és kattintson a **tovább**.
-3. Válassza ki **minden tanúsítvány tárolása ebben a tárolóban**, és kattintson a **Tallózás**. Keresse meg a gyökérszintű tárolóban. a távoli állomás, és kattintson a **tovább**.
+    ![Tanúsítvány importálása varázsló 1](./media/storsimple-remote-connect/HCS_CertificateImportWizard1.png)
+2. Az **áruház helye**területen válassza a **helyi számítógép**lehetőséget, majd kattintson a **tovább**gombra.
+3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
    
-    ![Tanúsítványimportáló varázsló 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
-4. Kattintson a **Befejezés**gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt-e.
+    ![Tanúsítvány importálása varázsló 2](./media/storsimple-remote-connect/HCS_CertificateImportWizard2.png)
+4. Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
    
-    ![Tanúsítványimportáló varázsló 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
+    ![Tanúsítvány importálása varázsló 3](./media/storsimple-remote-connect/HCS_CertificateImportWizard3.png)
 
-#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Az eszközök sorozatszámait a távoli állomás hozzáadása
-1. Indítsa el a Jegyzettömböt rendszergazdaként, és nyissa meg a hosts fájl a \Windows\System32\Drivers\etc helyen található.
-2. Adja hozzá a következő három bejegyzést az állomásleíró fájlhoz: **DATA 0 IP-cím**, **0. vezérlő rögzített IP-cím**, és **vezérlő 1 fix IP-cím**.
-3. Adja meg a korábban mentett sorozatszámát. Képezze le ezt az IP-cím a következő képen látható módon. Vezérlő 0 és a vezérlő 1 hozzáfűzése **Controller0** és **Controller1** a végén a sorozatszám (CN-név).
+#### <a name="to-add-device-serial-numbers-to-the-remote-host"></a>Eszközök sorozatszámának hozzáadása a távoli gazdagéphez
+1. Indítsa el a Jegyzettömböt rendszergazdaként, majd nyissa meg a \Windows\System32\Drivers\etc. címen található hosts fájlt.
+2. Adja hozzá a következő három bejegyzést a gazdagépek fájljához: **adatok 0 IP-cím**, **vezérlő 0 rögzített IP-cím**, és **1. vezérlő rögzített IP-cím**.
+3. Adja meg a korábban mentett eszköz sorozatszámát. Képezze le ezt az IP-címhez az alábbi ábrán látható módon. A 0. vezérlő és az 1. vezérlő esetében fűzze hozzá a **Controller0** és a **Controller1** a sorozatszám (CN-név) végén.
    
-    ![CN-név hozzáadása az állomásleíró fájlhoz](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
-4. Mentse a hosts fájlt.
+    ![CN-név hozzáadása a Hosts fájlhoz](./media/storsimple-remote-connect/HCS_AddingCNNameToHostsFile.png)
+4. Mentse a Hosts fájlt.
 
-### <a name="connect-to-the-device-from-the-remote-host"></a>A távoli állomástól csatlakozni az eszközhöz
+### <a name="connect-to-the-device-from-the-remote-host"></a>Kapcsolódás az eszközhöz a távoli gazdagépről
 
-Windows PowerShell és az SSL használatával adja meg az SSAdmin munkamenet az eszközön a távoli gazdagépen vagy-ügyfélről. A SSAdmin munkamenet képez le az 1. lehetőséget a [soros konzol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) menü az eszköz.
+A Windows PowerShell és az SSL használatával adjon meg egy SSAdmin-munkamenetet az eszközön egy távoli gazdagépről vagy ügyfélről. Az SSAdmin-munkamenet az 1. lehetőségre mutat az eszköz [soros konzol](storsimple-8000-windows-powershell-administration.md#connect-to-windows-powershell-for-storsimple-via-the-device-serial-console) menüjében.
 
-Az alábbi eljárás végrehajtásához a számítógépen, amelyről szeretné a távoli Windows PowerShell-kapcsolat.
+Hajtsa végre az alábbi eljárást azon a számítógépen, amelyről a távoli Windows PowerShell-kapcsolatokat szeretné elvégezni.
 
-#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>A Windows PowerShell és az SSL használatával adja meg az SSAdmin munkamenet az eszközön
-1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha a Windows 10-es ügyfél segítségével alapértelmezés szerint a Windows Rendszerfelügyeleti webszolgáltatás manuális értéke. Szükség lehet a szolgáltatás elindításához írja be:
+#### <a name="to-enter-an-ssadmin-session-on-the-device-by-using-windows-powershell-and-ssl"></a>SSAdmin-munkamenet megadása az eszközön a Windows PowerShell és az SSL használatával
+1. Indítsa el a Windows PowerShell-munkamenetet rendszergazdaként. Ha Windows 10-es ügyfelet használ, alapértelmezés szerint a Rendszerfelügyeleti webszolgáltatás manuális értékre van beállítva. Előfordulhat, hogy a következő beírásával kell elindítania a szolgáltatást:
 
     `Start-Service WinRM`
 
-2. Az ügyfél megbízható gazdagépek írja be az eszköz IP-cím hozzáadása:
+2. Adja hozzá az eszköz IP-címét az ügyfél megbízható gazdagépéhez a következő beírásával:
    
      `Set-Item wsman:\localhost\Client\TrustedHosts <device_ip> -Concatenate -Force`
    
-    Ahol <*device_ip*> eszköz IP-cím; például: 
+    Ahol a <*device_ip*> az eszköz IP-címe; például: 
    
      `Set-Item wsman:\localhost\Client\TrustedHosts 10.126.173.90 -Concatenate -Force`
-3. Hozzon létre egy új hitelesítő adat, írja be:
+3. Új hitelesítő adat létrehozásához írja be a következőt:
    
      `$cred = New-Object pscredential @("<IP of target device>\SSAdmin", (ConvertTo-SecureString -Force -AsPlainText "<Device Administrator Password>"))`
    
-    Ahol <*IP-címét a céleszközön*> az adatok 0 az eszközéhez; IP-címe például **10.126.173.90** a hosts fájlt az előző képen látható módon. Emellett adja meg az eszköz rendszergazdai jelszavát.
-4. Hozzon létre egy munkamenetet beírásával:
+    Ahol a*célként megadott eszköz < IP-* címe > az eszközre vonatkozó 0. ADATEGYSÉG IP-címe; például a **10.126.173.90** a Hosts fájl előző rendszerképében látható módon. Adja meg az eszköz rendszergazdai jelszavát is.
+4. Hozzon létre egy munkamenetet az alábbiak beírásával:
    
      `$session = New-PSSession -UseSSL -ComputerName <Serial number of target device> -Credential $cred -ConfigurationName "SSAdminConsole"`
    
-    A parancsmag a - ComputerName paraméter adja meg a <*target eszköz sorozatszáma*>. Ezzel a sorozatszámmal is hozzá van rendelve a DATA 0 a hosts fájl a távoli gazdagépen; IP-címe Ha például **SHX0991003G44MT** az alábbi képen látható módon.
+    A parancsmaghoz tartozó-számítógépnév paraméternél adja meg a*céleszköz < sorozatszámát*>. Ezt a sorozatszámot a rendszer a távoli gazdagépen lévő Hosts fájlban lévő 0 adatmennyiség IP-címére rendelte le. például a **SHX0991003G44MT** az alábbi ábrán látható módon.
 5. Típus:
    
      `Enter-PSSession $session`
-6. Néhány percet várnia kell, és ezután meg csatlakozni fog a HTTPS-kapcsolaton keresztül az eszköz SSL-en keresztül. Megjelenik egy üzenet, amely azt jelzi, hogy az eszköz csatlakozik.
+6. Néhány percet várnia kell, majd az SSL-en keresztül HTTPS-kapcsolaton keresztül fog csatlakozni az eszközhöz. Ekkor megjelenik egy üzenet, amely jelzi, hogy csatlakozik az eszközhöz.
    
-    ![PowerShell távoli eljáráshívás a HTTPS és SSL](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
+    ![PowerShell-távelérés HTTPS és SSL használatával](./media/storsimple-remote-connect/HCS_PSRemotingUsingHTTPSAndSSL.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Tudjon meg többet [Windows PowerShell-lel történő felügyelete a StorSimple-eszköz](storsimple-8000-windows-powershell-administration.md).
-* Tudjon meg többet [a StorSimple-Eszközkezelő szolgáltatás használata a StorSimple-eszköz felügyeletéhez](storsimple-8000-manager-service-administration.md).
+* További információ a [Windows PowerShell a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-windows-powershell-administration.md).
+* További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 
