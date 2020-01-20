@@ -173,8 +173,6 @@
           href: security-center-investigation.md
         - name: Felhasználói adatok vizsgálatának kezelése
           href: security-center-investigation-user-data.md
-        - name: Logic Apps-forgatókönyvek
-          href: security-center-playbooks.md
         - name: Tervezés és műveletek
           href: security-center-planning-and-operations-guide.md
 - name: Referencia
