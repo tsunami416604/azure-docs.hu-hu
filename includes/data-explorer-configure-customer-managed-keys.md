@@ -4,17 +4,19 @@ ms.service: data-explorer
 ms.topic: include
 ms.date: 01/07/2020
 ms.author: orspodek
-ms.openlocfilehash: 5443ee6912c30b89cee6fdb43f84f3bc1fbcfe68
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0d78e48fead7b1f53e67860e6be8fe6d77469e87
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021035"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280601"
 ---
 Az Azure Adatkezelő a Storage-fiókban tárolt összes adathalmazt titkosítja. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat, amelyeket az adattitkosításhoz használhat. Az ügyfél által felügyelt kulcsokat egy [Azure Key Vault](/azure/key-vault/key-vault-overview)kell tárolni. Létrehozhat saját kulcsokat, és tárolhatja őket egy kulcstartóban, vagy használhat egy Azure Key Vault API-t kulcsok létrehozásához. Az Azure Adatkezelő-fürtnek és a Key vaultnak ugyanabban a régióban kell lennie, de különböző előfizetésekben is lehetnek. Az ügyfél által felügyelt kulcsok részletes ismertetését lásd: [ügyfél által felügyelt kulcsok Azure Key Vault](/azure/storage/common/storage-service-encryption). Ez a cikk bemutatja, hogyan konfigurálhatja az ügyfél által felügyelt kulcsokat.
 
-> [!Note]
-> Az ügyfél által felügyelt kulcsok Azure Adatkezelő-vel való konfigurálásához [két tulajdonságot kell megadnia a kulcstartóban](/azure/key-vault/key-vault-ovw-soft-delete): **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nem engedélyezettek. A tulajdonságok engedélyezéséhez használja a [PowerShellt](/azure/key-vault/key-vault-soft-delete-powershell) vagy az [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)-t. Csak az RSA-kulcsok és a 2048-es kulcs mérete támogatott.
+Az ügyfél által felügyelt kulcsok Azure Adatkezelő-vel való konfigurálásához [két tulajdonságot kell megadnia a kulcstartóban](/azure/key-vault/key-vault-ovw-soft-delete): **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint nem engedélyezettek. A tulajdonságok engedélyezéséhez használja a [PowerShellt](/azure/key-vault/key-vault-soft-delete-powershell) vagy az [Azure CLI](/azure/key-vault/key-vault-soft-delete-cli)-t. Csak az RSA-kulcsok és a 2048-es kulcs mérete támogatott.
+
+> [!NOTE]
+> Az ügyfél által felügyelt kulcsokat használó adattitkosítás nem támogatott a [Leader és követő fürtökön](/azure/data-explorer/follower). 
 
 ## <a name="assign-an-identity-to-the-cluster"></a>Identitás társítása a fürthöz
 

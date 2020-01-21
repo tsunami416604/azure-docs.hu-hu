@@ -7,12 +7,12 @@ ms.reviewer: gabilehner
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 11/07/2019
-ms.openlocfilehash: 41d48bdd7cc7972536d0cf0e0cb78483f727d7f2
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: eb0b5ea960aa7bc9158791d1fc9fa0986e7d99e6
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277014"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281342"
 ---
 # <a name="use-follower-database-to-attach-databases-in-azure-data-explorer"></a>Adatbázisok csatolása az Azure-ban a követő adatbázis használatával Adatkezelő
 
@@ -383,6 +383,7 @@ A követő adatbázis rendszergazdája módosíthatja a csatolt adatbázis vagy 
 
 * A követő és a Leader-fürtöknek ugyanabban a régióban kell lenniük.
 * Az [adatfolyam](/azure/data-explorer/ingest-data-streaming) -betöltés nem használható olyan adatbázison, amelyet követnek.
+* Az ügyfél által [felügyelt kulcsokat](/azure/data-explorer/security#customer-managed-keys-with-azure-key-vault) használó adattitkosítás nem támogatott a vezető és követő fürtökön. 
 * Nem törölhet olyan adatbázist, amely egy másik fürthöz van csatolva a leválasztása előtt.
 * Nem törölhet olyan fürtöt, amely egy másik fürthöz csatolt adatbázissal rendelkezik a leválasztása előtt.
 * Nem állíthat le olyan fürtöt, amely csatolt követő vagy vezető adatbázis (oka) t tartalmaz. 

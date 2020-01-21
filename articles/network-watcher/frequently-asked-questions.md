@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 0eea6700b8b248a87666071ee02572d356110cd0
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830173"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280781"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -71,9 +71,9 @@ Csak a csomagok rögzítése, a kapcsolati hibák és a kapcsolat figyelője sz�
 ### <a name="what-does-nsg-flow-logs-do"></a>Mit jelentenek a NSG flow-naplók?
 Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](https://docs.microsoft.com/azure/virtual-network/security-overview)segítségével lehet egyesíteni és felügyelni. A NSG flow-naplók lehetővé teszik az 5 rekordos adatfolyamok naplózását a NSG keresztüli összes forgalomról. A nyers flow-naplók egy Azure Storage-fiókba íródnak, ahonnan szükség szerint további feldolgozásra, elemzésre, lekérdezésre vagy exportálásra kerülhet sor.
 
-### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall-or-through-a-service-endpoints"></a>Hogyan a NSG egy tűzfalon vagy egy szolgáltatási végponton keresztül használja a Storage-fiókokat?
+### <a name="how-do-i-use-nsg-flow-logs-on-a-storage-account-with-a-firewall"></a>Hogyan használja a NSG flow-naplókat egy tűzfallal rendelkező Storage-fiókhoz?
 
-Ha tűzfallal vagy szolgáltatás-végpontokon keresztül szeretne Storage-fiókot használni, engedélyeznie kell a megbízható Microsoft-szolgáltatások számára a Storage-fiók elérését:
+Ha tűzfallal szeretné használni a Storage-fiókot, meg kell adnia egy kivételt a megbízható Microsoft-szolgáltatások számára a Storage-fiókhoz való hozzáféréshez:
 
 * Keresse meg a tárfiók nevét. Ehhez keresse meg az NSG-t az [NSG-forgalom naplóinak áttekintési oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)
 * Lépjen a tárfiókhoz a tárfiók nevét a portál globális keresési eszközébe beírva
@@ -82,6 +82,11 @@ Ha tűzfallal vagy szolgáltatás-végpontokon keresztül szeretne Storage-fiók
 * Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
 
 Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
+
+### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>Hogyan a NSG-flow-naplókat a tárolási végpontokkal együtt használni?
+
+Tekintse meg a [szolgáltatási végpontok engedélyezését ismertető oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint). 
+
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
 A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).

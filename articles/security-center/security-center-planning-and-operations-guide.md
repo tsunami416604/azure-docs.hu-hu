@@ -8,12 +8,12 @@ ms.service: security-center
 ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
-ms.openlocfilehash: 358895f84b43437a174214eaf75e77574b3f02e8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 239438133dc16630852626c49e8ffda08590976b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462452"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281002"
 ---
 # <a name="azure-security-center-planning-and-operations-guide"></a>Útmutató az Azure Security Center tervezéséhez és működtetéséhez
 Ez az útmutató olyan informatikai (IT) szakemberek, informatikai építészek, Információbiztonsági elemzők és felhőalapú rendszergazdák számára készült, akik a Azure Security Center használatát tervezik.
@@ -239,7 +239,7 @@ Ezen a lapon a támadás idejére, a forrás eszköznevére és a megcélzott vi
 
 Erről a lapról is indítható [vizsgálat](https://docs.microsoft.com/azure/security-center/security-center-investigation) a támadás idővonalának, a támadás lefolyásának, a veszélyeztetett rendszereknek és a használt hitelesítő adatoknak a behatóbb ismerete és a teljes támadásfolyam grafikus megjelenítése érdekében.
 
-Miután azonosította a sérült rendszert, futtathatja a korábban létrehozott biztonsági [forgatókönyveket](https://docs.microsoft.com/azure/security-center/security-center-playbooks). A biztonsági forgatókönyv eljárások olyan gyűjteménye, amelyet végre lehet hajtani a Security Centerből, mihelyt egy riasztás kivált egy adott forgatókönyvet.
+A feltört rendszer azonosítása után futtathat egy korábban létrehozott munkafolyamat- [automatizálást](workflow-automation.md) . Ezek olyan eljárások gyűjteményei, amelyeket Security Center lehet végrehajtani a riasztások indítása után.
 
 Az [incidensekre adott válaszokkal kapcsolatos videók Azure Security Center & Microsoft Operations Management Suite kihasználása](https://channel9.msdn.com/Blogs/Taste-of-Premier/ToP1703) érdekében olyan bemutatókat láthat, amelyek segítségével megismerheti, hogy a Security Center hogyan használhatók az egyes fázisokban.
 

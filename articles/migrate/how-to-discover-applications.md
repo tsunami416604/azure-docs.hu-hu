@@ -3,12 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: adc22925d1152639babe2377a1eae440e0ce418e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029074"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280764"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -17,18 +17,18 @@ Ez a cikk bemutatja, hogyan derítheti fel az alkalmazásokat, szerepköröket �
 Az alkalmazások leltárának, valamint a helyszíni gépeken futó szerepköröknek/funkcióknak a felderítése révén azonosíthatók és megtervezhető az Azure-ba irányuló áttelepítési útvonal, amelyet a számítási feladatokhoz alakítottak ki.
 
 > [!NOTE]
-> Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott, és csak felderítésre korlátozódik. Még nem kínálunk alkalmazás-alapú értékelést.  A kiszolgáló értékelése jelenleg a helyszíni VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat vizsgálja a gépi szinten, a kiemelési és eltolási áttelepítések esetén.
+> Az alkalmazások felderítése jelenleg csak a VMware virtuális gépek esetében támogatott, és csak felderítésre korlátozódik. Még nem kínálunk alkalmazás-alapú értékelést. Gépi alapú értékelés a helyszíni VMware virtuális gépek, Hyper-V virtuális gépek és fizikai kiszolgálók számára.
 
 Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló értékelése ügynök nélkül történik. Semmit nem kell telepíteni a gépekre és a virtuális gépekre. A kiszolgáló értékelése a Azure Migrate berendezés használatával hajtja végre a felderítést a számítógép vendég hitelesítő adataival együtt. A készülék távolról éri el a VMware-gépeket a VMware API-k használatával.
 
 
 ## <a name="before-you-start"></a>Előkészületek
 
-1. Tekintse át az alkalmazás szintű felderítés [támogatási korlátozásait](migrate-support-matrix-vmware.md#application-discovery) .
-2. Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
-3. Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
+1. Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
+2. Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt egy projekthez.
 4. A VMWare virtuális gépeknek a Azure Migrate berendezéssel való felfedésére és értékelésére vonatkozó [VMware-követelmények](migrate-support-matrix-vmware.md#vmware-requirements) ellenőrzése.
-4. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
+5. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
+6. Ellenőrizze az alkalmazások felderítésének [támogatását és követelményeit](/migrate-support-matrix-vmware.md#application-discovery) .
 
 ## <a name="prepare-for-app-discovery"></a>Az alkalmazások felderítésének előkészítése
 

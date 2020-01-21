@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: Text Analytics ügyféloldali kódtára | Microsoft Docs'
+title: 'Gyors útmutató: Text Analytics ügyféloldali kódtár v2 | Microsoft Docs'
 titleSuffix: Azure Cognitive Services
 description: Ebben a rövid útmutatóban az Azure Cognitive Services Text Analytics API használatával ismeri fel a nyelvet.
 services: cognitive-services
@@ -8,48 +8,54 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: quickstart
-ms.date: 01/15/2020
+ms.date: 12/19/2019
 ms.author: aahi
-zone_pivot_groups: programming-languages-set-six
-ms.openlocfilehash: 41e6828f03533bfd239f6408a580150e614eb5e7
+zone_pivot_groups: programming-languages-set-five
+ms.openlocfilehash: bca4927967ed38c7bc2c7f0f5bd32b25949ad079
 ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281156"
+ms.locfileid: "76281354"
 ---
-# <a name="quickstart-use-the-text-analytics-client-library-v3"></a>Rövid útmutató: a Text Analytics ügyféloldali kódtár használata
+# <a name="quickstart-use-the-text-analytics-client-library-v2"></a>Gyors útmutató: az Text Analytics ügyféloldali kódtár v2 használata
 
-Ismerkedjen meg az Text Analytics ügyféloldali kódtár használatába. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
+Ismerkedjen meg az Text Analytics ügyféloldali kódtár v2-vel. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját.
 
-A végrehajtásához használja a Text Analytics ügyféloldali kódtár `3.0-preview` verzióját:
+A következő műveletek végrehajtásához használja a Text Analytics ügyféloldali kódtár v2-es verzióját:
 
-* Hangulat elemzése (nyilvános előzetes verzió)
+* Véleményelemzés
 * Nyelvfelismerés
-* Elnevezett entitások felismerése (nyilvános előzetes verzió)
+* Entitások felismerése
 * A kulcsfontosságú kifejezések kinyerése
 
 ::: zone pivot="programming-language-csharp"
 
-[!INCLUDE [C# quickstart](../includes/quickstarts/v3/csharp.md)]
+[!INCLUDE [C# quickstart](../includes/quickstarts/v2/csharp.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-python"
 
-[!INCLUDE [Python quickstart](../includes/quickstarts/v3/python-sdk.md)]
-
-::: zone-end
-
-::: zone pivot="programming-language-java"
-
-[!INCLUDE [Java quickstart](../includes/quickstarts/v3/java-sdk.md)]
+[!INCLUDE [Python quickstart](../includes/quickstarts/v2/python-sdk.md)]
 
 ::: zone-end
 
 ::: zone pivot="programming-language-nodejs"
 
-[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v3/nodejs-sdk.md)]
+[!INCLUDE [NodeJS quickstart](../includes/quickstarts/v2/nodejs-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-go"
+
+[!INCLUDE [Go quickstart](../includes/quickstarts/v2/go-sdk.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-ruby"
+
+[!INCLUDE [Ruby quickstart](../includes/quickstarts/v2/ruby-sdk.md)]
 
 ::: zone-end
 
@@ -63,7 +69,8 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Megoldás megismerése](../text-analytics-user-scenarios.md#analyze-recorded-inbound-customer-calls)
+> [Szövegelemzés a Power BI-jal](../tutorials/tutorial-power-bi-key-phrases.md)
+
 
 * [A Text Analytics áttekintése](../overview.md)
 * [Hangulat elemzése](../how-tos/text-analytics-how-to-sentiment-analysis.md)

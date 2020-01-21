@@ -6,16 +6,16 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: b13ad375adf20a606b48755a6d57851abf89e549
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454661"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76280815"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
 
-Ez a cikk azt ismerteti, hogyan állítható be az ügynök nélküli függőségi leképezés a Azure Migrateban: kiszolgáló értékelése. Ez a funkció jelenleg előzetes verzióban érhető el a Azure Migrate készülék használatával felderített VMware-gépekhez. 
+Ez a cikk azt ismerteti, hogyan állítható be az ügynök nélküli függőségi leképezés a Azure Migrateban: kiszolgáló értékelése. 
 
 > [!IMPORTANT]
 > Az ügynök nélküli függőségi vizualizáció jelenleg előzetes verzióban érhető el egy Azure Migrate berendezés használatával felderített Azure VMware virtuális gépek számára.
@@ -54,17 +54,8 @@ Az ügynök nélküli függőségi vizualizációk nem igénylik a gépeken lév
 - Az ügynök nélküli függőség elemzése jelenleg csak a VMware rendszerű gépek esetében érhető el.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
 - Győződjön meg arról, hogy felderítette a VMware-gépeket a Azure Migrate; Ezt úgy teheti meg, hogy létrehoz egy Azure Migrate készüléket a [VMware](how-to-set-up-appliance-vmware.md)-hez. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
-- Győződjön meg arról, hogy a VMware virtuális gépek az ügynök nélküli függőségi vizualizációk esetében támogatottak, az alábbi táblázatban foglaltak szerint.
+- [Tekintse át az](migrate-support-matrix-vmware.md#agentless-dependency-visualization) ügynök nélküli függőségi vizualizáció beállításának követelményeit.
 
-
-### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
-
-Az ügynök nélküli függőségi vizualizációk által támogatott operációs rendszerek a következők.
-
-**Típus** | **Támogatott operációs rendszerek**
---- | ---
-**Windows** | Microsoft Windows Server 2016 <br/> Microsoft Windows Server 2012 R2 <br/> Microsoft Windows Server 2012 <br/> Microsoft Windows Server 2008 R2 (64 bites)
-**Linux** | Red Hat Enterprise Linux 7, 6, 5 <br/> Ubuntu Linux 14,04, 16,04 <br/> Debian 7, 8 <br/> Oracle Linux 6, 7 <br/> CentOS 5, 6, 7  
 
 
 ## <a name="create-a-user-account-for-discovery"></a>Felhasználói fiók létrehozása a felderítéshez

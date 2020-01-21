@@ -3,12 +3,12 @@ title: A MARS-ügynök támogatási mátrixa
 description: Ez a cikk a Microsoft Azure Recovery Services (MARS) ügynököt futtató gépek biztonsági mentésének Azure Backup támogatását foglalja össze.
 ms.date: 08/30/2019
 ms.topic: conceptual
-ms.openlocfilehash: 26f3dde0bb20443753e2b443ffc00ee23c9124c4
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 27ad81c42a079485d8eab95bb1250cba41e8fb5b
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893977"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281274"
 ---
 # <a name="support-matrix-for-backup-with-the-microsoft-azure-recovery-services-mars-agent"></a>Támogatási mátrix a Microsoft Azure Recovery Services-(MARS-) ügynökkel való biztonsági mentéshez
 
@@ -104,15 +104,21 @@ További információ: [támogatott MABS és DPM operációs rendszerek](backup-
 
 ## <a name="backup-limits"></a>Biztonsági mentési korlátok
 
+### <a name="size-limits"></a>Méretkorlát
+
 Azure Backup korlátozza a biztonsági mentésre használható fájl vagy mappa adatforrásának méretét. Az egyetlen kötetről készített biztonsági mentés nem lépheti túl az ebben a táblázatban összefoglalt méreteket:
 
 **Operációs rendszer** | **Méretkorlát**
 --- | ---
 Windows Server 2012 vagy újabb |54 400 GB
 Windows Server 2008 R2 SP1 |1 700 GB
-Windows Server 2008 SP2| 1 700 GB
+Windows Server 2008 SP2| 1 700 GB
 Windows 8 vagy újabb| 54 400 GB
 Windows 7 rendszeren| 1 700 GB
+
+### <a name="other-limitations"></a>Egyéb korlátozások
+
+- A MARS nem támogatja több azonos nevű gép védelmét egyetlen tárolóban.
 
 ## <a name="supported-file-types-for-backup"></a>A biztonsági mentéshez támogatott fájltípusok
 

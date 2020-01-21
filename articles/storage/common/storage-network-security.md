@@ -9,12 +9,12 @@ ms.date: 03/21/2019
 ms.author: tamram
 ms.reviewer: santoshc
 ms.subservice: common
-ms.openlocfilehash: 5e4a8afdb9bea4f528e57c914149f611b0578c63
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 28e3f276da231ef0186dba8ecd9c064cdd10a5a8
+ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973478"
+ms.lasthandoff: 01/20/2020
+ms.locfileid: "76281223"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Azure Storage-tűzfalak és virtuális hálózatok konfigurálása
 
@@ -60,7 +60,7 @@ Alapértelmezés szerint a tárfiókok bármely hálózatban lévő ügyféltől
 
 A Storage-fiókok alapértelmezett hálózati hozzáférési szabályait a Azure Portal, a PowerShell vagy a CLIv2 segítségével kezelheti.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -144,7 +144,7 @@ A Storage-fiók és a hozzáférést biztosító virtuális hálózatok különb
 
 A Storage-fiókok virtuális hálózati szabályai a Azure Portal, a PowerShell vagy a CLIv2 használatával kezelhetők.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -268,7 +268,7 @@ Ha a [ExpressRoute](/azure/expressroute/expressroute-introduction) -t használja
 
 A Storage-fiókok IP-hálózati szabályait a Azure Portal, a PowerShell vagy a CLIv2 segítségével kezelheti.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
@@ -381,7 +381,7 @@ Ha engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezése...**
 | Azure HDInsight          | Microsoft. HDInsight        | Az alapértelmezett fájlrendszer kezdeti tartalmának kiépítése egy új HDInsight-fürthöz. [További információk](/azure/hdinsight/hdinsight-hadoop-use-blob-storage). |
 | Azure importálási exportálás      | Microsoft. ImportExport     | Lehetővé teszi az adatok importálását az Azure-ba és az Azure-ból származó adatok exportálását az importálási/exportálási szolgáltatás segítségével. [További információk](/azure/storage/common/storage-import-export-service).  |
 | Azure Monitor            | Microsoft. bepillantások         | Lehetővé teszi, hogy a figyelési információkat biztonságos Storage-fiókba írja. [További információ](/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security). |
-| Azure-hálózatok         | Microsoft.Network          | Hálózati forgalmi naplók tárolása és elemzése. [További információk](/azure/network-watcher/network-watcher-packet-capture-overview). |
+| Azure-hálózatok         | Microsoft.Network          | Hálózati forgalmi naplók tárolása és elemzése. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview). |
 | Azure Site Recovery      | Microsoft. SiteRecovery     | Engedélyezze a replikációt az Azure IaaS-alapú virtuális gépek vész-helyreállításához, ha tűzfalon alapuló gyorsítótár-, forrás-vagy tároló-fiókot használ.  [További információk](https://docs.microsoft.com/azure/site-recovery/azure-to-azure-tutorial-enable-replication). |
 
 A **megbízható Microsoft-szolgáltatások engedélyezése...** beállítás azt is lehetővé teszi, hogy az alábbi szolgáltatások egy adott példánya hozzáférhessen a Storage-fiókhoz, ha explicit módon HOZZÁRENDEL [egy RBAC-szerepkört](storage-auth-aad.md#assign-rbac-roles-for-access-rights) az adott erőforrás-példányhoz tartozó [rendszerhez rendelt felügyelt identitáshoz](../../active-directory/managed-identities-azure-resources/overview.md) . Ebben az esetben a példányhoz való hozzáférés hatóköre megfelel a felügyelt identitáshoz rendelt RBAC szerepkörnek.
@@ -405,7 +405,7 @@ Bizonyos esetekben a hálózati határon kívülről kell hozzáférni a diagnos
 
 A hálózati szabályok kivételeit a Azure Portal, a PowerShell vagy az Azure CLI V2 használatával kezelheti.
 
-#### <a name="azure-portal"></a>Azure portál
+#### <a name="azure-portal"></a>Azure Portal
 
 1. Lépjen a megvédeni kívánt tárfiókra.
 
