@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f3a1bf518b8ef122e2df64f2815c8885929b127d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f9815dac9e61eec51230911094f35a33a64e541c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76166791"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311512"
 ---
 # <a name="import-data-module"></a>Adatmodul importálása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal az adatok betölthetők egy gépi tanulási folyamatba a meglévő felhőalapú adatszolgáltatásokból. 
 
@@ -78,7 +78,7 @@ Ha a forrásadatok megváltoznak, frissítheti az adatkészletet, és új adatok
 
 Amikor az importálás befejeződik, kattintson a kimeneti adatkészletre, és válassza a **Megjelenítés** lehetőséget, hogy megtekintse az adatokat az importálás sikeres volt-e.
 
-Ha újra szeretné menteni az adatokat, és nem importál új adatkészletet a folyamat minden egyes futtatásakor, kattintson a jobb gombbal a kimenetre, és válassza a **Mentés másként adatkészlet**lehetőséget. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentéskor, és az adatokat nem frissíti a folyamat újrafuttatásakor, még akkor is, ha a folyamat módosul. Ez hasznos lehet az adatpillanatképek készítésekor.
+Ha újra szeretné menteni az adatokat, ahelyett, hogy az új adatkészletet importálja a folyamat minden egyes futtatásakor, válassza az **adatkészlet regisztrálása** ikont a modul jobb oldali paneljének **kimenetek** lapján. Válassza ki az adatkészlet nevét. A mentett adatkészlet megőrzi az adatokat a mentéskor, az adatkészlet nem frissül a folyamat újrafuttatásakor, még akkor is, ha megváltozik a folyamat adatkészlete. Ez hasznos lehet az adatpillanatképek készítésekor.
 
 Az információk importálása után szükség lehet néhány további modellezési és elemzési előkészületre:
 

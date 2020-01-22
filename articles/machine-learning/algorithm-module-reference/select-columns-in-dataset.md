@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 3511c448298aa96c95dc970d1d192869c127eb0d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6e78cbdd9cd921db2340a92c46a9337ac0fc98eb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497661"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311852"
 ---
 # <a name="select-columns-in-dataset-module"></a>Oszlopok kiválasztása az adatkészlet modulban
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal kiválaszthatja az alsóbb rétegbeli műveletekben használandó oszlopok egy részhalmazát. A modul nem távolítja el fizikailag az oszlopokat a forrás adatkészletből; Ehelyett egy adatbázis- *nézethez* vagy *kivetítéshez*hasonlóan az oszlopok egy részhalmazát hozza létre.
 
@@ -110,6 +110,6 @@ Például a Col1, Col2, Col3 és Col4 oszlopokkal rendelkező adatkészletekben 
 + `4,3,1`
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

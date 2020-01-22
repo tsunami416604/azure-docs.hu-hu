@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: 7341d86e68986a2e502f714a4dcf1f882200d384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b3497df8acdb2e7d184dba54e93506146d842348
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441067"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314385"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Az Azure Cosmos DB Table API és az Azure Table Storage használatának első lépései a .NET SDK-val
 
@@ -59,7 +59,7 @@ A NuGet csomag beszerzéséhez kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a projektjére a **Megoldáskezelőben**, és válassza a **Manage NuGet Packages** (NuGet-csomagok kezelése) lehetőséget.
 
-1. Keressen rá az interneten a `Microsoft.Azure.Cosmos.Table`, `Microsoft.Extensions.Configuration`, `Microsoft.Extensions.Configuration.Json`, `Microsoft.Extensions.Configuration.Binder` lehetőségre, és válassza a **telepítés** lehetőséget a Microsoft Azure Cosmos db Table Library telepítéséhez.
+1. Keressen rá az interneten a [`Microsoft.Azure.Cosmos.Table`](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table), [`Microsoft.Extensions.Configuration`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration), [`Microsoft.Extensions.Configuration.Json`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Json), [`Microsoft.Extensions.Configuration.Binder`](https://www.nuget.org/packages/Microsoft.Extensions.Configuration.Binder) lehetőségre, és válassza a **telepítés** lehetőséget a Microsoft Azure Cosmos db Table Library telepítéséhez.
 
 ## <a name="configure-your-storage-connection-string"></a>A tárolási kapcsolati sztring konfigurálása
 

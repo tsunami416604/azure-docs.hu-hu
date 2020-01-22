@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 192aae4da4d9b07804f473ec6e98615f46e2ee86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b6a019fbea2ebfed67db4f7c2a9b0f8085438aa8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214570"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311648"
 ---
 # <a name="evaluate-model-module"></a>Modell modul kiértékelése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal mérhető a betanított modell pontossága. Olyan adatkészletet ad meg, amely egy modellből generált pontszámokat tartalmaz, és a **modell kiértékelése** modul az iparági szabványnak megfelelő értékelési metrikákat számítja ki.
   
@@ -61,14 +61,11 @@ Ez a funkció azért hasznos, mert egyszerűen össze lehet hasonlítani két k�
 
 1. Kapcsolja össze a [pontszám modell](score-model.md) **pontszám** -kimenetét a **modell kiértékelésének**bemenetével. 
 2. Kapcsolja össze a pontszám modell modul kimenetét a második modellhez a **modell kiértékelése**jobb oldali bemenetével.
-3. Kattintson a jobb gombbal a **modell kiértékelése**lehetőségre, és válassza a **kijelölt futtatása** lehetőséget a próbaverziók létrehozásához.
+3. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-A **kiértékelési modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a **kiértékelési eredmények** lehetőséget az eredmények megtekintéséhez. A következőket teheti:
-
-+ Az eredmények mentése adatkészletként, így könnyebben elemezhető más eszközökkel
-+ Vizualizáció létrehozása a tervezőben
+A **kiértékelési modell**futtatása után kattintson a jobb gombbal a modulra, és válassza a **kiértékelési eredmények megjelenítése** lehetőséget az eredmények megtekintéséhez.
 
 Ha adatkészleteket hoz létre a **kiértékelési modell**mindkét bemenetéhez, akkor az eredmények mindkét adathalmazra, vagy mindkét modellre vonatkozó metrikákat tartalmaznak.
 A bal oldali porthoz csatolt modellnek vagy adatoknak először a jelentésben kell megjelenni, amelyet a DataSet adatkészlethez tartozó metrikák, illetve a jobb oldali porthoz csatolt modell mutat.  
@@ -79,7 +76,7 @@ Az alábbi ábrán például az azonos adatokra épülő két fürtözött model
 
 Mivel ez egy fürtözési modell, a kiértékelési eredmények eltérnek, mint ha két regressziós modellből származó pontszámokat hasonlítanak össze, vagy két besorolási modellel hasonlították össze. A teljes bemutató azonban ugyanaz. 
 
-## <a name="metrics"></a>Mérőszámok
+## <a name="metrics"></a>Metrikák
 
 Ez a szakasz a **kiértékelési modellel**használható, adott típusú modellek által visszaadott mérőszámokat ismerteti:
 

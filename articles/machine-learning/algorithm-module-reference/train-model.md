@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 28cc2e1f8782f1ffd37e3a20fcc68264b481e42e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b62e03184453c4daea8615ee2bea39c936de5c73
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490372"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313977"
 ---
 # <a name="train-model-module"></a>Betanítási modell modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal betaníthatja a besorolási vagy regressziós modellt. A képzés a modell meghatározása és a hozzá tartozó paraméterek beállítása után zajlik, és címkézett adatokra van szükség. A **betanítási modell** használatával egy meglévő modell újratanítását is elvégezheti új adattal. 
 
@@ -68,13 +68,12 @@ Azure Machine Learning a Machine learning-modellek létrehozása és használata
 
 A modell képzése után:
 
-+ A modell paramétereinek és a szolgáltatás súlyozásának megtekintéséhez kattintson a jobb gombbal a kimenetre, és válassza a **Megjelenítés**lehetőséget.
-+ Ha más folyamatokban szeretné használni a modellt, kattintson a jobb gombbal a modellre, és válassza a **modell mentése**lehetőséget. Adja meg a modell nevét. 
 
-    Ez olyan pillanatképként menti a modellt, amelyet a folyamat ismételt futtatása nem frissít.
++ Ha más folyamatokban szeretné használni a modellt, válassza ki a modult, és válassza az **adatkészlet regisztrálása** ikont az **outputs (kimenetek** ) lapon a jobb oldali panelen. A mentett modelleket a modul palettáján, az **adatkészletek**területen érheti el.
+
 + Ha a modellt az új értékek előrejelzéséhez szeretné használni, akkor a [pontszám modell](./score-model.md) modulhoz kell csatlakoznia, az új bemeneti adatokkal együtt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

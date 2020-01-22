@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 68f73afbf81914938f78baad2cacda7327e7789a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428594"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314453"
 ---
 # <a name="clip-values"></a>Értékek levágása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 A Clip Values modul segítségével azonosíthatja és tetszés szerint lecserélheti a megadott küszöbérték alatti vagy feletti adatértékeket egy középérték, egy konstans vagy más helyettesítő érték megadásával.  
 
@@ -86,7 +86,7 @@ Ha egyes oszlopokra kivágási módszereket vagy különböző feltételeket kel
   
 1.  A folyamat futtatása.  
   
-    Kattintson a jobb gombbal a **Clip Values** modul kimenetére, és válassza a **Megjelenítés** lehetőséget az értékek áttekintéséhez, és ellenőrizze, hogy a kivágási művelet megfelel-e az elvárásainak.  
+    Kattintson a jobb gombbal a **klip értékei** modulra, válassza a **Megjelenítés** lehetőséget, vagy válassza ki a modult, és váltson a jobb oldali panel **outputs (kimenetek** ) lapjára, kattintson a **port kimenetében**található hisztogram ikonra, és ellenőrizze az értékeket, és győződjön meg arról, hogy a kivágási művelet megfelelt az elvárásainak.  
  
 ### <a name="examples-for-clipping-using-percentiles"></a>Példák a kivágásra a percentilis használatával
 

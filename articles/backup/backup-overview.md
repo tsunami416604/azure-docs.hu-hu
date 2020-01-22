@@ -4,16 +4,16 @@ description: Áttekintést nyújt a Azure Backup szolgáltatásról, valamint ar
 ms.topic: overview
 ms.date: 04/24/2019
 ms.custom: mvc
-ms.openlocfilehash: 8a902736a8df703b33afbcb108e9e970e200a4dd
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: cf48090b2c32f0c3a1c8170873cb8d6a771fe21f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668007"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294303"
 ---
 # <a name="what-is-the-azure-backup-service"></a>Mi a Azure Backup szolgáltatás?
 
-A Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony megoldást kínál az adatok biztonsági mentésére és a Microsoft Azure felhőből való helyreállítására.
+Az Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony megoldásokat kínál adatai biztonsági mentéséhez és a Microsoft Azure-felhőből történő helyreállításához.
 
 > [!VIDEO https://www.youtube.com/embed/elODShatt-c]
 
@@ -21,7 +21,7 @@ A Azure Backup szolgáltatás egyszerű, biztonságos és költséghatékony meg
 
 - **Helyszíni biztonsági** mentés fájlok, mappák, rendszerállapotok a [Microsoft Azure Recovery Services (MARS) ügynök](backup-support-matrix-mars-agent.md)használatával. Vagy használja a DPM vagy a Azure Backup Server (MABS) ügynököt a helyszíni virtuális gépek ([Hyper-V](back-up-hyper-v-virtual-machines-mabs.md) és [VMware](backup-azure-backup-server-vmware.md)) és más helyszíni [munkaterhelések](backup-mabs-protection-matrix.md) elleni védelemhez
 - Az Azure-beli **virtuális gépek** [teljes Windows-/Linux-alapú virtuális gépekről](backup-azure-vms-introduction.md) (biztonsági mentési bővítmények használatával) vagy fájlok, mappák és rendszerállapot biztonsági mentését - a [Mars-ügynök](backup-azure-manage-mars.md)használatával.
-- **Azure Files megosztások** - [Azure-fájlmegosztás biztonsági mentése és visszaállítása Storage-fiókba](backup-azure-files.md)
+- **Azure Files megosztások** - [Azure-fájlmegosztás biztonsági mentése egy Storage-fiókba](backup-afs.md)
 - **SQL Server Azure-beli virtuális gépeken** -  Azure-beli [virtuális gépeken futó SQL Server-adatbázisok biztonsági mentése](backup-azure-sql-database.md)
 - SAP HANA Azure-beli virtuális gépeken **található adatbázisok** - [biztonsági mentési SAP HANA Azure-beli virtuális gépeken futó adatbázisok](backup-azure-sap-hana-database.md)
 

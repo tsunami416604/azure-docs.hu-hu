@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: yunjchoi
-ms.openlocfilehash: 69ae6766414dbe533500860b01852ee8d25c3a1e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2148c6c8c9d78355847b3240b54349f1e7789921
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73513912"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291379"
 ---
 # <a name="azure-kubernetes-service-aks-diagnostics-overview"></a>Az Azure Kubernetes Service (ak) diagnosztika áttekintése
 
@@ -24,7 +24,7 @@ Az AK-diagnosztika elérése:
 
 - A [Azure Portal](https://portal.azure.com)navigáljon a Kubernetes-fürthöz.
 - A bal oldali navigációs panelen kattintson a **probléma diagnosztizálása és megoldása** elemre, amely az AK-diagnosztika megnyitására szolgál.
-- Válassza ki azt a kategóriát, amely a legjobban leírja a fürt problémáját a Kezdőlap csempén található kulcsszavakat használva, vagy írjon be egy kulcsszót, amely a legjobban leírja a problémát a keresési sávban, például a _fürt csomópontjaival kapcsolatos problémákat_.
+- Válassza ki azt a kategóriát, amely a legjobban leírja a fürt problémáját a Kezdőlap csempén található kulcsszavakat használva, vagy írjon be egy kulcsszót, amely a legjobban leírja a problémát a keresősáv esetében, például a _fürt csomópontjaival kapcsolatos problémákat_.
 
 ![Kezdőlap](./media/concepts-diagnostics/aks-diagnostics-homepage.png)
 
@@ -76,9 +76,9 @@ Az identitás-és biztonsági felügyelet észleli a hitelesítési és engedél
 
 - Csomópont-engedélyezési hibák
 - 401 hiba
-- 403 hiba
+- 403-as hibák
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Gyűjtsön naplókat, amelyek segítenek a fürtökkel kapcsolatos problémák további hibaelhárításában az [AK-periszkóp](https://aka.ms/aksperiscope)használatával.
 

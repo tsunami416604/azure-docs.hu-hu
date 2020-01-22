@@ -1,5 +1,5 @@
 ---
-title: Batch-előrejelzések futtatása Azure Machine Learning Designer használatával (előzetes verzió)
+title: Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan taníthat ki egy modellt, és hogyan állíthat be egy batch-előrejelzési folyamatot a tervező használatával. Telepítse a folyamatot paraméteres webszolgáltatásként, amely bármely HTTP-könyvtárból indítható el.
 services: machine-learning
@@ -10,12 +10,12 @@ ms.author: peterlu
 author: peterclu
 ms.date: 01/13/2020
 ms.custom: Ignite2019
-ms.openlocfilehash: 7a4801e46477165232e7f03184152b6c277c05b6
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: d2653699a69cb468e8490c2cba579b73e526d1ed
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167270"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311886"
 ---
 # <a name="run-batch-predictions-using-azure-machine-learning-designer"></a>Batch-előrejelzések futtatása Azure Machine Learning Designer használatával
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]

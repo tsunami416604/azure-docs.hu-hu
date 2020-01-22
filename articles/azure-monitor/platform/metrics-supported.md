@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 67e2675dbf65daf929407a437447f5d977c7a6c3
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75750405"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310781"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -1299,7 +1299,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Modell-üzembehelyezés elindítva|Modell-üzembehelyezés elindítva|Mennyiség|Összes|A munkaterületen elindított modellek központi telepítésének száma|Alkalmazási helyzet|
 |Modell-üzembehelyezés sikerült|Modell-üzembehelyezés sikerült|Mennyiség|Összes|A munkaterületen sikeres központi telepítési modellek száma|Alkalmazási helyzet|
 |Modell-üzembehelyezés sikertelen|Modell-üzembehelyezés sikertelen|Mennyiség|Összes|A munkaterületen sikertelen telepítési modellek száma|Forgatókönyv, StatusCode|
-|Csomópontok összesen|Csomópontok összesen|Mennyiség|Átlag|A csomópontok száma összesen. Ez az összeg magában foglalja az aktív csomópontok, a tétlen csomópontok, a nem használható csomópontok, a Premepted csomópontok és a csomópontok elhagyását|Forgatókönyv, ClusterName|
+|Csomópontok összesen|Csomópontok összesen|Mennyiség|Átlag|A csomópontok száma összesen. Ez az összeg magában foglalja az aktív csomópontok, a tétlen csomópontok, a nem használható csomópontok, a előzik csomópontok és a csomópontok elhagyását|Forgatókönyv, ClusterName|
 |Aktív csomópontok|Aktív csomópontok|Mennyiség|Átlag|Acitve-csomópontok száma Ezek azok a csomópontok, amelyek aktívan futtatnak egy feladatot.|Forgatókönyv, ClusterName|
 |Tétlen csomópontok|Tétlen csomópontok|Mennyiség|Átlag|Az üresjárati csomópontok száma. Az üresjárati csomópontok azok a csomópontok, amelyek nem futtatnak feladatokat, de az elérhetővé tehetik az új feladatot.|Forgatókönyv, ClusterName|
 |Használhatatlan csomópontok|Használhatatlan csomópontok|Mennyiség|Átlag|Használhatatlan csomópontok száma Néhány feloldhatatlan probléma miatt nem használható csomópontok nem működőképesek. Az Azure újrahasznosítja ezeket a csomópontokat.|Forgatókönyv, ClusterName|

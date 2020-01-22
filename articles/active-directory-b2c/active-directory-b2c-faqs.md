@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 577dc6d4344cd6d7a38c4d538218c9dd89e883aa
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73643644"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289084"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -27,7 +27,7 @@ Két gyakori oka van annak, hogy az Azure AD-bővítmény miért nem működik. 
 
 ### <a name="can-i-use-azure-ad-b2c-features-in-my-existing-employee-based-azure-ad-tenant"></a>Használhatom Azure AD B2C szolgáltatásokat a meglévő, alkalmazotti alapú Azure AD-bérlőn?
 
-Az Azure AD és a Azure AD B2C külön termék-ajánlat, és nem létezhet egyszerre ugyanabban a bérlőben. Egy Azure AD-bérlő a szervezetet jelöli. Az Azure AD B2C bérlők a függő entitások alkalmazásaival használható identitások gyűjteményét jelölik. Az egyéni szabályzatok segítségével a Azure AD B2C összevonása az Azure AD-be, amely lehetővé teszi a szervezet alkalmazottainak hitelesítését.
+Az Azure AD és a Azure AD B2C külön termék-ajánlat, és nem létezhet egyszerre ugyanabban a bérlőben. Egy Azure AD-bérlő a szervezetet jelöli. Az Azure AD B2C bérlők a függő entitások alkalmazásaival használható identitások gyűjteményét jelölik. Ha **új OpenID Connect-szolgáltatót** ad hozzá a **Azure ad B2C >-identitás-szolgáltatóhoz** vagy egyéni szabályzatokhoz, a Azure ad B2C összevonása az Azure ad-be, amely lehetővé teszi a szervezet alkalmazottainak hitelesítését.
 
 ### <a name="can-i-use-azure-ad-b2c-to-provide-social-login-facebook-and-google-into-office-365"></a>Használhatom a közösségi bejelentkezést (Facebook és Google +) az Office 365-be Azure AD B2C?
 
@@ -77,7 +77,7 @@ Az ellenőrző e-mailek tartalmának testreszabásához használhatja a [vállal
 Az e-mail-aláírás tartalmazza azt a Azure AD B2C bérlő nevét, amelyet a Azure AD B2C bérlő első létrehozásakor adott meg. A nevet a következő utasítások használatával módosíthatja:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdaként.
-1. Nyissa meg a **Azure Active Directory** panelt.
+1. Nyissa meg az **Azure Active Directory** panelt.
 1. Kattintson a **Tulajdonságok** fülre.
 1. Módosítsa a **név** mezőt.
 1. Kattintson az oldal tetején lévő **Mentés** elemre.
@@ -150,7 +150,7 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
-1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
+1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
@@ -170,7 +170,7 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
-1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
+1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.

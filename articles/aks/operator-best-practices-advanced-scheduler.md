@@ -7,16 +7,16 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 798c368edb4a738124fce965f8990e6805fbdeba
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 2ac66e46d449100fcdd004627820252473f6e2f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472603"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293657"
 ---
 # <a name="best-practices-for-advanced-scheduler-features-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az Azure Kubernetes Service (ak) speciális ütemező funkcióiról
 
-A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során gyakran kell elkülönítenie a csapatokat és a munkaterheléseket. A Kubernetes Scheduler olyan speciális funkciókat biztosít, amelyekkel szabályozhatja, hogy mely hüvelyek ütemezhetők bizonyos csomópontokon, illetve hogy a több-Pod alkalmazások hogyan terjeszthetők ki a fürtön belül. 
+A fürtök Azure Kubernetes szolgáltatásban (ak) való kezelése során gyakran kell elkülönítenie a csapatokat és a munkaterheléseket. A Kubernetes Scheduler olyan speciális funkciókat biztosít, amelyekkel szabályozható, hogy mely hüvelyek ütemezhetők bizonyos csomópontokon, illetve hogyan lehet a több-Pod alkalmazásokat a fürtön belül elosztani. 
 
 Ez az ajánlott eljárási cikk a fürtcsomópontok Speciális Kubernetes-ütemezési szolgáltatásaira koncentrál. Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -44,7 +44,7 @@ Ha a pod-t egy AK-fürtön helyezi üzembe, a Kubernetes csak azokat a csomópon
 kubectl taint node aks-nodepool1 sku=gpu:NoSchedule
 ```
 
-A csomópontokra alkalmazott szennyező adatokkal meghatározható a pod-specifikációban a csomópontok ütemezését lehetővé tevő tolerancia. Az alábbi példa a `sku: gpu` és a `effect: NoSchedule` értéket definiálja, hogy az előző lépésben a csomóponton alkalmazott adatszennyezettség tolerálható legyen:
+A csomópontokra alkalmazott szennyező adatokkal meghatározható a pod-specifikációban a csomópontok ütemezését lehetővé tevő tolerancia. Az alábbi példa azt a `sku: gpu` és `effect: NoSchedule` határozza meg, hogy az előző lépésben a csomóponton alkalmazott adatszennyezettség tolerálható legyen:
 
 ```yaml
 kind: Pod
@@ -69,7 +69,7 @@ spec:
     effect: "NoSchedule"
 ```
 
-A hüvely üzembe helyezésekor, például a `kubectl apply -f gpu-toleration.yaml` használata esetén a Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival. Ez a logikai elkülönítés lehetővé teszi a fürtön belüli erőforrásokhoz való hozzáférés szabályozását.
+A hüvely üzembe helyezésekor, például a `kubectl apply -f gpu-toleration.yaml`használatával a Kubernetes sikeresen ütemezhetik a pod-t a csomópontokon az alkalmazott szennyező adataival. Ez a logikai elkülönítés lehetővé teszi a fürtön belüli erőforrásokhoz való hozzáférés szabályozását.
 
 Ha a szennyező adatait alkalmazza, együttműködik az alkalmazás-fejlesztővel és a tulajdonosokkal, hogy meghatározza a szükséges megtartásokat az üzemelő példányokban.
 
@@ -106,7 +106,7 @@ Tekintsük át a nagy mennyiségű memóriával rendelkező csomópontok példá
 kubectl label node aks-nodepool1 hardware:highmem
 ```
 
-A pod-specifikáció Ezután hozzáadja a `nodeSelector` tulajdonságot egy csomópont-választó megadásához, amely megfelel a csomóponton beállított címkének:
+A pod-specifikáció ezt követően hozzáadja a `nodeSelector` tulajdonságot a csomóponton beállított címkével egyező csomópont-választó definiálásához:
 
 ```yaml
 kind: Pod
@@ -181,7 +181,7 @@ A jó példa egy olyan webalkalmazás, amely egy Azure cache-t is használ a Red
 
 Ez a példa összetettebb üzembe helyezés, mint a csomópont-választó vagy a csomópont-affinitás használata. Az üzembe helyezés lehetővé teszi, hogy a Kubernetes hogyan ütemezze a csomópontokon a hüvelyeket, és képes legyen logikai módon elkülöníteni az erőforrásokat. A webalkalmazásnak az Azure cache for Redis példaként való teljes példáját lásd: [a hüvelyek együttes megkeresése ugyanazon a csomóponton][k8s-pod-affinity].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a speciális Kubernetes Scheduler-funkciókra összpontosít. Az AK-beli fürtműveleteket kapcsolatos további információkért tekintse meg az alábbi ajánlott eljárásokat:
 

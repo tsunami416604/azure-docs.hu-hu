@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fa19425de41b182db8c0a8c3b1a7940dbdf5701f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429492"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294099"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -96,6 +96,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |50072|A felhasználónak regisztrálnia kell a kétfaktoros hitelesítést (interaktív).|
 |50074|A felhasználó nem adott jó választ az MFA-kérdésre.|
 |50076|A felhasználó nem adta át az MFA-feladatot (nem interaktív).|
+|50078|A bemutatott multi-Factor Authentication lejárt, frissítenie kell a multi-Factor Authenticationt a hozzáféréshez.|
 |50079|A felhasználónak regisztrálnia kell két faktoros hitelesítést (nem interaktív bejelentkezések).|
 |50085|A frissítési jogkivonathoz közösségi identitásszolgáltatói bejelentkezés szükséges. A felhasználó újra bejelentkezik a felhasználónevével és jelszavával.|
 |50089|A flow-token lejárt – a hitelesítés sikertelen volt. A felhasználónévvel és a jelszóval próbálja újra bejelentkezni a felhasználóval|
@@ -184,7 +185,8 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |90014| A protokoll üzeneteihez kötelező mező hiányzik, lépjen kapcsolatba az alkalmazás tulajdonosával. Ha Ön az alkalmazás tulajdonosa, ellenőrizze, hogy rendelkezik-e az összes szükséges paraméterrel a bejelentkezési kéréshez. |
 |90051| Érvénytelen delegálási jogkivonat. Érvénytelen nemzeti felhő-azonosító ({cloudId}) van megadva.|
 |90072| Előbb a bérlőn külső felhasználóként hozzá kell adni a fiókot. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
-|90094| A támogatáshoz rendszergazdai engedélyek szükségesek. Kérje meg a bérlői rendszergazdát, hogy adja meg az alkalmazáshoz való hozzájárulásukat.|
+|90094| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó le lett tiltva. |
+|90095| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó megmutatta a [rendszergazdai engedélyezési kérelem](../manage-apps/configure-admin-consent-workflow.md) űrlapját. |
 |500011| Az <site address> nevű egyszerű erőforrás nem található a (z) <tenant ID>nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|
 |500021| A bérlőt a vállalati proxy korlátozza. Az erőforrás-hozzáférés megtagadása.|
 |500121| Az erős hitelesítési kérelem során sikertelen volt a hitelesítés.|
@@ -193,6 +195,8 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |530032|Biztonsági házirend tiltja.| 
 |700016|A (z) {appIdentifier} azonosítójú alkalmazás nem található a (z) {tenantName} címtárban. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Lehetséges, hogy nem megfelelő bérlőnek küldi el a hitelesítési kérést.|
 |900432|A bizalmas ügyfél nem támogatott a felhőalapú kérelemben.|
+|5000811|Nem ellenőrizhető az SAML-jogkivonat aláírása. Az aláíró kulcs azonosítója nem egyezik az érvényes regisztrált kulcsokkal.|
+|7000215|Érvénytelen ügyfél-titkos kulcs lett megadva.|
 |7000218|A kérelem törzsének a következő paramétert kell tartalmaznia: "client_assertion" vagy "client_secret".|
 
 

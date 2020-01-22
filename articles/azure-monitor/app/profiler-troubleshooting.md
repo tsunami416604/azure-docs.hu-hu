@@ -8,12 +8,12 @@ author: cweining
 ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
-ms.openlocfilehash: 6022bf975352f9f70c4ba8aa716a695ead590a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9817205a419e2b61af66dba16d09620e2c1dec9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432388"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310866"
 ---
 # <a name="troubleshoot-problems-enabling-or-viewing-application-insights-profiler"></a>Az Application Insights Profiler engedélyezésével vagy megtekintésével kapcsolatos problémák elhárítása
 
@@ -47,6 +47,7 @@ A Profiler nyomkövetési üzeneteket és egyéni eseményeket ír a Application
 * Ha a webalkalmazás egy ASP.NET Core alkalmazás, legalább ASP.NET Core 2,0-at kell futtatnia.
 * Ha a megtekinteni kívánt adatmennyiség régebbi, mint néhány hétig, próbálja meg korlátozni az időszűrőt, és próbálkozzon újra. A Nyomkövetések hét nap után törlődnek.
 * Győződjön meg arról, hogy a proxyk vagy a tűzfal nem tiltotta le a https://gateway.azureserviceprofiler.net elérését.
+* A Profiler ingyenes vagy megosztott app Service-csomagok esetén nem támogatott. Ha ezen csomagok valamelyikét használja, próbálja meg az alapszintű csomagok és a Profiler használatának megkezdését.
 
 ### <a id="double-counting"></a>Dupla számlálás párhuzamos szálakban
 

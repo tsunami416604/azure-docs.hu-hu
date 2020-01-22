@@ -1,6 +1,6 @@
 ---
-title: Integráció az Apache Spark – Azure Event Hubs |} A Microsoft Docs
-description: Integráció az Apache Spark strukturált Streamelés az Event Hubs engedélyezése
+title: Integráció a Apache Spark-Azure Event Hubstal | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan integrálható a Apache Spark a strukturált adatfolyamok Event Hubs való engedélyezéséhez.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,29 +14,29 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 12/06/2018
 ms.author: shvija
-ms.openlocfilehash: 605669a740663040ab7a167bf266fe1940123afc
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 4c4fd74e9123e1310be297a15090433d365d24cf
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60343392"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311682"
 ---
-# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Az Apache Spark integrálása az Azure Event hubs szolgáltatással
+# <a name="integrating-apache-spark-with-azure-event-hubs"></a>Apache Spark integrálása az Azure-Event Hubs
 
-Azure Event hubs szolgáltatás zökkenőmentesen integrálódik [Apache Spark](https://spark.apache.org/) épület engedélyezéséhez elosztott streamelési alkalmazásokat. Ez az integráció támogatja [Spark mag](https://spark.apache.org/docs/latest/rdd-programming-guide.html), [Spark Streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html), és [strukturált Stream](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html). Az Apache Spark Event Hubs-összekötő érhető el az [GitHub](https://github.com/Azure/azure-event-hubs-spark). Ebben a könyvtárban is használható a Maven-projektekhez az [Maven központi tárházból](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C).
+Az Azure Event Hubs zökkenőmentesen integrálható [Apache Sparkekkel](https://spark.apache.org/) , így lehetővé teszi az elosztott streaming-alkalmazások létrehozását. Ez az integráció a [Spark Core](https://spark.apache.org/docs/latest/rdd-programming-guide.html), a [Spark streaming](https://spark.apache.org/docs/latest/streaming-programming-guide.html)és a [Structured streaming](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)használatát támogatja. A Apache Spark Event Hubs-összekötője elérhető a [githubon](https://github.com/Azure/azure-event-hubs-spark). Ez a könyvtár a [Maven központi tárházból](https://search.maven.org/#artifactdetails%7Ccom.microsoft.azure%7Cazure-eventhubs-spark_2.11%7C2.1.6%7C)származó Maven-projektekben is használható.
 
-Ez a cikk bemutatja, hogyan hozhat létre a folyamatos alkalmazást [Azure Databricks](https://azure.microsoft.com/services/databricks/). Bár ebben a cikkben az Azure Databricks, Spark-fürtökön is elérhetők az [HDInsight](../hdinsight/spark/apache-spark-overview.md).
+Ez a cikk bemutatja, hogyan hozhat létre folyamatos alkalmazást a [Azure Databricksban](https://azure.microsoft.com/services/databricks/). Ez a cikk Azure Databrickst használ, a Spark-fürtök [HDInsight](../hdinsight/spark/apache-spark-overview.md)is elérhetők.
 
-Ez a cikk a példában két Scala-jegyzetfüzetek: egy eseményközpont és a egy másik eseményeket küld vissza a események streamelése az.
+A jelen cikkben szereplő példa két Scala jegyzetfüzetet használ: egyet az Event hub eseményeinek közvetítéséhez, egy másikat pedig az események visszaküldéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-* Az Event Hubs-példány. Ha nem rendelkezik ilyennel, [hozzon létre egyet](event-hubs-create.md).
-* Egy [Azure Databricks](https://azure.microsoft.com/services/databricks/) példány. Ha nem rendelkezik ilyennel, [hozzon létre egyet](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
-* [Hozzon létre egy maven-koordináták segítségével kódtár](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
+* Azure-előfizetés. Ha még nem rendelkezik ilyennel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+* Egy Event Hubs példány. Ha még nem rendelkezik ilyennel, [hozzon létre egyet](event-hubs-create.md).
+* Egy [Azure Databricks](https://azure.microsoft.com/services/databricks/) példány. Ha még nem rendelkezik ilyennel, [hozzon létre egyet](../azure-databricks/quickstart-create-databricks-workspace-portal.md).
+* [Hozzon létre egy könyvtárat a Maven koordinátákkal](https://docs.databricks.com/user-guide/libraries.html#upload-a-maven-package-or-spark-package): `com.microsoft.azure:azure‐eventhubs‐spark_2.11:2.3.1`.
 
-Stream-események az eseményközpontból, az alábbi kód használatával:
+Stream-események az Event hub használatával a következő kóddal:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -62,7 +62,7 @@ eventhubs.writeStream
   .start()
   .awaitTermination()
 ```
-Az alábbi kód küldi az eseményeket az eseményközpontjának a Spark a batch API-k. Események küldése az event hubs egy streamelési lekérdezést is kiírhatja:
+A következő kód eseményeket küld az Event hub-nak a Spark batch API-kkal. Az Event hub eseményeinek küldéséhez is írhat adatfolyam-lekérdezést:
 
 ```scala
 import org.apache.spark.eventhubs._
@@ -86,9 +86,9 @@ df.write
   .save() 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Most már tudja, hogyan állíthat be egy skálázható, hibatűrő streamet, az Apache Spark Event Hubs-összekötő használatával. További információ az Event Hubs használatával strukturált Stream és a Spark Streaming ezeket a hivatkozásokat követve:
+Most már tudja, hogyan állíthat be méretezhető, hibatűrő adatfolyamot a Apache Spark Event Hubs-összekötője segítségével. További információ a Event Hubs strukturált streaming és Spark streaming használatával történő használatáról a következő hivatkozásokat követve:
 
-* [Strukturált Streamelés + az Azure Event Hubs integrációs útmutató](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
-* [A Spark Stream + Event Hubs integrációs útmutató](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)
+* [Strukturált streaming + Azure Event Hubs integrációs útmutató](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/structured-streaming-eventhubs-integration.md)
+* [Spark streaming + Event Hubs integrációs útmutató](https://github.com/Azure/azure-event-hubs-spark/blob/master/docs/spark-streaming-eventhubs-integration.md)

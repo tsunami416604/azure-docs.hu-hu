@@ -14,12 +14,12 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb09228b561718819c0c48aac4fc66d8205fe384
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ff9af6a6f51ca89fa7e852609ceed1ee02c6e23f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424611"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294354"
 ---
 # <a name="authentication-basics"></a>Hitelesítési alapok
 
@@ -168,4 +168,4 @@ Alapértelmezés szerint a MSAL a rendszerböngészőt használja, kivéve a .NE
 - A gyakori feltételek megismeréséhez tekintse meg a [Microsoft Identity platform fejlesztői szószedetét](developer-glossary.md) .
 - A Microsoft Identity platform által támogatott felhasználók hitelesítésével kapcsolatos egyéb forgatókönyvekről további információt a [hitelesítési folyamatok és az alkalmazások forgatókönyvei](authentication-flows-app-scenarios.md) című témakörben talál.
 - A Microsoft-fiókokkal, az Azure AD-fiókokkal és a Azure AD B2C felhasználókkal együttműködve olyan alkalmazásokat fejleszthet a [MSAL-tárakkal](msal-overview.md) , amelyek segítségével egyetlen, áramvonalas programozási modellben dolgozhat.
-- A App Service alkalmazás hitelesítésének konfigurálásával kapcsolatos további információkért lásd: [integráció app Service a Microsfot Identity platformmal](/azure/app-service/configure-authentication-provider-aad) .
+- A App Service alkalmazás hitelesítésének konfigurálásáról további információt a [app Service integrálása a Microsoft Identity platformmal](/azure/app-service/configure-authentication-provider-aad) című témakörben talál.

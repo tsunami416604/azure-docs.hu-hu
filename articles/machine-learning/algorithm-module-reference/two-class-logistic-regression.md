@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: f64352906da5d6e3a314b3af68e37f4dc5bb80bd
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: ee52f3a0bec058f1b94820123ac5514e4e855c05
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485927"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311393"
 ---
 # <a name="two-class-logistic-regression-module"></a>Kétosztályos logisztikai regressziós modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy logisztikai regressziós modellt, amely két (és csak két) eredmény előrejelzésére használható. 
 
@@ -45,7 +45,6 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
 3.  Az **optimalizálási tolerancia**beállításnál a modell optimalizálásakor használandó küszöbértéket határozza meg. Ha az ismétlések közötti javulás a megadott küszöbérték alá esik, az algoritmus úgy tekintendő, hogy a megoldás konvergál, és a képzés leáll.  
   
 4.  Az **L1 regularizációs súlyozáshoz** és az **L2 regularizációs súlyozáshoz**adja meg az L1 és a regularizációs paraméterekhez használandó értéket. A nem nulla értékű érték mindkét esetében ajánlott.  
-  
      A *regularizációs* olyan módszer, amellyel megelőzhető a rendkívül hatékony értékekkel rendelkező modellek szankcionálása. A regularizációs úgy működik, hogy a hipotézis hibája alapján együttható értékekkel társított büntetést ad hozzá. Így a rendkívül hatékony értékekkel rendelkező pontos modell többre is felhasználható, de a kevésbé pontos, konzervatív értékekkel rendelkező modellek kevesebbet büntetik.  
   
      Az L1 és az L2 regularizációs különböző effektusokkal és felhasználással rendelkeznek.  
@@ -76,15 +75,14 @@ Előfordulhat például, hogy a Label (címke) oszlop [szavazott], és az "igen"
   
 9. A folyamat futtatása.  
   
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
-
-+ Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett funkciók súlyozását, kattintson a jobb gombbal a [vonat modell](./train-model.md) kimenetére, majd válassza a **Megjelenítés**lehetőséget.   
+ 
   
 + Az új adatokra vonatkozó előrejelzések készítéséhez használja a betanított modellt és az új adatokat bemenetként a [pontszám modell](./score-model.md) modulba. 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

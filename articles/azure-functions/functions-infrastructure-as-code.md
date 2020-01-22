@@ -5,12 +5,12 @@ ms.assetid: d20743e3-aab6-442c-a836-9bcea09bfd32
 ms.topic: conceptual
 ms.date: 04/03/2019
 ms.custom: fasttrack-edit
-ms.openlocfilehash: df0c90ba3784acb96bd9f76a436ff2746f7efe2c
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a3d8c8769ff5026ec1dde98f3c4167aac302bf8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262435"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292943"
 ---
 # <a name="automate-resource-deployment-for-your-function-app-in-azure-functions"></a>A Function alkalmazás erőforrás-telepítésének automatizálása Azure Functions
 
@@ -129,6 +129,7 @@ A Function app erőforrás a **Microsoft. Web/Sites** és Kind **functionapp**t�
         "[resourceId('Microsoft.Storage/storageAccounts', variables('storageAccountName'))]",
         "[resourceId('Microsoft.Insights/components', variables('appInsightsName'))]"
     ]
+}
 ```
 
 > [!IMPORTANT]
@@ -138,7 +139,7 @@ A Function alkalmazásnak tartalmaznia kell ezeket az Alkalmazásbeállítások:
 
 | Beállítás neve                 | Leírás                                                                               | Példaértékek                        |
 |------------------------------|-------------------------------------------------------------------------------------------|---------------------------------------|
-| AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a belső üzenetsor-kezelési funkciók futtatókörnyezete biztosít | Lásd: [Storage-fiók](#storage)       |
+| AzureWebJobsStorage          | Egy olyan Storage-fiókhoz tartozó kapcsolódási karakterlánc, amelyet a functions futtatókörnyezet a belső üzenetsor-kezelést használ | Lásd: [Storage-fiók](#storage)       |
 | FUNCTIONS_EXTENSION_VERSION  | Az Azure Functions futtatókörnyezet verziója                                                | `~2`                                  |
 | FUNCTIONS_WORKER_RUNTIME     | Az alkalmazásban a függvényekhez használandó nyelvi verem                                   | `dotnet`, `node`, `java`, `python`vagy `powershell` |
 | WEBSITE_NODE_DEFAULT_VERSION | Csak akkor szükséges, ha a `node` nyelvi verem használatával adja meg a használni kívánt verziót              | `10.14.1`                             |
@@ -174,7 +175,7 @@ Ezek a tulajdonságok a `siteConfig` tulajdonság `appSettings` gyűjteményébe
 
 ## <a name="deploy-on-consumption-plan"></a>Üzembe helyezés a használati tervben
 
-A használati terv automatikusan lefoglalja a számítási teljesítményt a kód futásakor, szükség szerint méretezi a terhelést, majd lekicsinyíti, ha a kód nem fut. A tétlen virtuális gépekért nem kell fizetnie, és nem kell előre lefoglalnia a kapacitást. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md#consumption-plan).
+A használati terv automatikusan lefoglalja a számítási teljesítményt, amikor a kód fut, szükség szerint méretezi a terhelést, majd méretezi a értéket, ha a kód nem fut. A tétlen virtuális gépekért nem kell fizetnie, és nem kell előre lefoglalnia a kapacitást. További információ: [Azure functions skálázás és üzemeltetés](functions-scale.md#consumption-plan).
 
 Minta Azure Resource Manager sablon esetében lásd: [Function alkalmazás a használati tervben].
 

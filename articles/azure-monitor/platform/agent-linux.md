@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: mgoedtel
 ms.author: magoedte
-ms.date: 12/24/2019
-ms.openlocfilehash: c06a7551a5c0f14be94ed14072b81c189e359aa8
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.date: 01/21/2020
+ms.openlocfilehash: 15334f0c58f602a2728e3daa6645b957dfcd7129
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541997"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290325"
 ---
 # <a name="connect-linux-computers-to-azure-monitor"></a>Linux rendszerű számítógépek összekapcsolásának Azure Monitor
 
@@ -74,9 +74,10 @@ A Linuxhoz készült Log Analytics-ügynök telepítése előtt szüksége lesz 
 
 A Linux rendszerhez készült Log Analytics-ügynök egy önkicsomagoló és telepíthető rendszerhéj-parancsfájl-csomagban van megadva. Ez a csomag minden ügynök-összetevőhöz tartalmaz Debian és RPM csomagokat, amelyeket közvetlenül vagy kinyerve telepíthet az egyes csomagok lekérésére. Az x64-es és az x86-os architektúrához egy csomag van megadva. 
 
-Az Azure-beli virtuális gépek esetében javasoljuk, hogy telepítse az ügynököt a Linux rendszerhez készült [azure log Analytics](../../virtual-machines/extensions/oms-linux.md) virtuálisgép-bővítmény használatával. 
+> [!NOTE]
+> Az Azure-beli virtuális gépek esetében javasoljuk, hogy telepítse az ügynököt a Linux rendszerhez készült [azure log Analytics](../../virtual-machines/extensions/oms-linux.md) virtuálisgép-bővítmény használatával. 
 
-1. Az scp/SFTP használatával vigye át a megfelelő köteget (x86 vagy x64) a linuxos virtuális gépre vagy a fizikai számítógépre.
+1. [Töltse le](https://github.com/microsoft/OMS-Agent-for-Linux#azure-install-guide) és vigye át a megfelelő köteget (x64 vagy x86) a Linux rendszerű virtuális gépre vagy fizikai számítógépre, SCP/SFTP használatával.
 
 2. Telepítse a köteget a `--install` argumentum használatával. Ha Log Analytics munkaterületre kíván bejelentkezni a telepítés során, adja meg a korábban másolt `-w <WorkspaceID>` és `-s <workspaceKey>` paramétereket.
 

@@ -2,13 +2,13 @@
 title: Az erőforrás nem található hibák
 description: Ismerteti, Hogyan oldhatók meg a hibák, ha egy Azure Resource Manager sablonnal való üzembe helyezéskor nem található erőforrás.
 ms.topic: troubleshooting
-ms.date: 06/06/2018
-ms.openlocfilehash: 81a2541be4f0a99aa28186eb6b7289bdb595e678
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/21/2020
+ms.openlocfilehash: c3e19af24fa7fb850eadf3deb346180476943241
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152425"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310662"
 ---
 # <a name="resolve-not-found-errors-for-azure-resources"></a>Nem található az Azure-erőforrások hibáinak elhárítása
 
@@ -87,4 +87,16 @@ Keresse meg a [hivatkozási](template-functions-resource.md#reference) függvén
 
 ```json
 "[reference(resourceId('exampleResourceGroup', 'Microsoft.Storage/storageAccounts', 'myStorage'), '2017-06-01')]"
+```
+
+## <a name="solution-4---get-managed-identity-from-resource"></a>4\. megoldás – felügyelt identitás beszerzése az erőforrásból
+
+Ha olyan erőforrást helyez üzembe, amely implicit módon létrehoz egy [felügyelt identitást](../../active-directory/managed-identities-azure-resources/overview.md), meg kell várnia, amíg az erőforrás telepítve lesz, mielőtt beolvassa az értékeket a felügyelt identitáson. Ha átadja a felügyelt identitás nevét a [hivatkozási](template-functions-resource.md#reference) függvénynek, a Resource Manager megkísérli a hivatkozás feloldását az erőforrás és az identitás üzembe helyezése előtt. Ehelyett adja meg annak az erőforrásnak a nevét, amelyre az identitás vonatkozik. Ez a megközelítés biztosítja az erőforrás és a felügyelt identitás üzembe helyezését, mielőtt a Resource Manager feloldja a hivatkozási funkciót.
+
+A Reference függvényben használja a `Full` az összes tulajdonság beolvasásához, beleértve a felügyelt identitást is.
+
+Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
 ```

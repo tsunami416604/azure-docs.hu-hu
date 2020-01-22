@@ -12,12 +12,12 @@ ms.date: 12/27/2019
 ms.author: mimart
 ms.reviewer: phsignor
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0c6a77fa8c6c48c9c3d4f2eba3ba56ac9114707a
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 528aff73b931776ef9a6542437db271bb214c7fb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122989"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290699"
 ---
 # <a name="managing-consent-to-applications-and-evaluating-consent-requests"></a>Az alkalmazások beleegyezett az alkalmazásokkal és az engedélyezési kérelmek kiértékelésével
 
@@ -42,7 +42,7 @@ A végfelhasználók belefoglalásának letiltását vagy korlátozását követ
 
 3. Ha a szervezet rendelkezik a megfelelő licenccel:
 
-    * [A Microsoft Cloud app Security további OAuth alkalmazás-naplózási funkcióit](https://docs.microsoft.com/azure/cloud-app-security/investigate-risky-oauth)használhatja.
+    * [A Microsoft Cloud app Security további OAuth alkalmazás-naplózási funkcióit](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)használhatja.
     * [Azure monitor munkafüzetek használata az engedélyek és a](../reports-monitoring/howto-use-azure-monitor-workbooks.md) hozzájuk kapcsolódó tevékenységek figyeléséhez. A *beleegyező* adatellenőrzési munkafüzet az alkalmazások megtekintését teszi lehetővé a sikertelen beleegyező kérelmek száma alapján. Ez hasznos lehet a rendszergazdák számára az alkalmazások prioritásának áttekintésére és eldöntésére, hogy a rendszergazda beleegyezik-e.
 
 ### <a name="additional-considerations-for-reducing-friction"></a>További szempontok a súrlódás csökkentése érdekében

@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/07/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3252b7b257fda96b3d711c5f47ec7c6eb7ee36cb
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: edb543a85779fb083b6990a58dc5ec0b8ef3eb9c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76262171"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291413"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workplace-by-facebook"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a munkahelyen Facebook használatával
 
@@ -50,6 +50,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A munkahelyen a Facebook az **igény szerinti üzembe** helyezést támogatja
 * A munkahelyi Facebook által támogatott  **[automatikus felhasználó-kiépítés](workplacebyfacebook-provisioning-tutorial.md)**
 * A Facebook Mobile alkalmazás munkahelye mostantól konfigurálható az Azure AD-vel az egyszeri bejelentkezés engedélyezéséhez. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+* A munkahelyen a Facebook beállítása után kényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak kiszűrése és beszivárgását valós időben védi. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workplace-by-facebook-from-the-gallery"></a>Munkahelyi felvétel a Facebook használatával a katalógusból
 
@@ -244,3 +245,7 @@ Amikor a hozzáférési panelen a munkahelyi Facebook csempére kattint, automat
 - [A felhasználók üzembe helyezésének konfigurálása](workplacebyfacebook-provisioning-tutorial.md)
 
 - [A Facebook és az Azure AD munkahelyének kipróbálása](https://aad.portal.azure.com)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [Munkahelyi védelem a Facebookban speciális láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

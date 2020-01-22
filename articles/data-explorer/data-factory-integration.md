@@ -7,13 +7,13 @@ ms.author: orspodek
 ms.reviewer: tomersh26
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 11/14/2019
-ms.openlocfilehash: 51683e529f832e06efbe8eb71466f3b27d95fcb1
-ms.sourcegitcommit: 6c01e4f82e19f9e423c3aaeaf801a29a517e97a0
+ms.date: 01/20/2020
+ms.openlocfilehash: bb08cf4db45a378b35a8245eadd56a2ab3e48bab
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/04/2019
-ms.locfileid: "74819144"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293623"
 ---
 # <a name="integrate-azure-data-explorer-with-azure-data-factory"></a>Az Azure Adatkezelő integrálása Azure Data Factory
 
@@ -44,6 +44,14 @@ A parancs tevékenység részletes ismertetését lásd: [Azure Data Factory Com
 ### <a name="copy-in-bulk-from-a-database-template"></a>Tömeges másolás adatbázis-sablonból
 
 Az [adatbázisból az Azure-ba adatkezelő a Azure Data Factory sablon használatával](data-factory-template.md) egy előre definiált Azure Data Factory folyamat. A sablon használatával több folyamat hozható létre adatbázisban vagy táblában a gyorsabb adatmásoláshoz. 
+
+### <a name="mapping-data-flows"></a>Adatfolyamok leképezése 
+
+[Azure Data Factory a leképezési adatfolyamatok](/azure/data-factory/concepts-data-flow-overview) vizuálisan tervezett adatátalakítások, amelyek lehetővé teszik az adatmérnökök számára, hogy programkód írása nélkül fejlesszenek grafikus Adatátalakítási logikát. Az adatfolyamatok létrehozásához és az Azure Adatkezelőba való betöltéséhez használja a következő módszert:
+
+1. Hozza létre a [leképezési](/azure/data-factory/data-flow-create)adatfolyamot.
+1. [Exportálja az Azure blobba az adatfájlokat](/azure/data-factory/data-flow-sink). 
+1. [Event Grid](/azure/data-explorer/ingest-data-event-grid) vagy [ADF másolási tevékenység](/azure/data-explorer/data-factory-load-data) megadása az Azure Adatkezelőba való betöltéshez.
 
 ## <a name="select-between-copy-and-azure-data-explorer-command-activities-when-copy-data"></a>Válassza ki a másolás és az Azure Adatkezelő parancs tevékenységeit az Adatmásolás során 
 

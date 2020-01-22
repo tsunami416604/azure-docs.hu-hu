@@ -11,12 +11,12 @@ author: MayMSFT
 ms.reviewer: nibaccam
 ms.date: 01/15/2020
 ms.custom: seodec18
-ms.openlocfilehash: ae04bf5268bb9973098735183842f7393e9d679b
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4de8b032bd284ce0a2d6d8fd168b9ea3dd4937d3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121760"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289050"
 ---
 # <a name="access-data-in-azure-storage-services"></a>Az Azure Storage-szolgáltatásokban tárolt adathozzáférés
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -52,7 +52,7 @@ Az adattárolók jelenleg támogatják a kapcsolódási adatok tárolását a k�
 | Storage&nbsp;típusa | Hitelesítés&nbsp;típusa | [Azure&nbsp;Machine&nbsp;learning Studio](https://ml.azure.com/) | [Azure&nbsp;Machine&nbsp;learning&nbsp; Python SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) |  [Azure&nbsp;Machine,&nbsp;learning parancssori felület](reference-azure-machine-learning-cli.md) | [Azure&nbsp;Machine&nbsp;learning&nbsp; REST API](https://docs.microsoft.com/rest/api/azureml/)
 ---|---|---|---|---|---
 [Azure&nbsp;blob&nbsp;Storage](https://docs.microsoft.com/azure/storage/blobs/storage-blobs-overview)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓
-[Azure&nbsp;fájl&nbsp;megosztás]((https://docs.microsoft.com/azure/storage/files/storage-files-introduction))| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓
+[Azure&nbsp;fájl&nbsp;megosztás](https://docs.microsoft.com/azure/storage/files/storage-files-introduction)| Fiókkulcs <br> SAS-jogkivonat | ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;1](https://docs.microsoft.com/azure/data-lake-store/)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓
 [Azure&nbsp;Data Lake&nbsp;Storage Gen&nbsp;2](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-introduction)| Szolgáltatásnév| ✓ | ✓ | ✓ |✓
 Azure&nbsp;SQL&nbsp;-adatbázis| SQL-hitelesítés <br>Szolgáltatásnév| ✓ | ✓ | ✓ |✓
@@ -271,7 +271,7 @@ Olyan helyzetekben, amikor az SDK nem biztosít hozzáférést az adattárolók 
 
 ## <a name="move-data-to-supported-azure-storage-solutions"></a>Az adatáthelyezés támogatott Azure Storage-megoldásokra
 
-Azure Machine Learning támogatja az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL adatainak elérését. Ha nem támogatott tárterületet használ, javasoljuk, hogy [Azure Data Factory és az alábbi lépések]((https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool))segítségével helyezze át az adatait a támogatott Azure Storage-megoldásokra. Az adatforgalom a támogatott tárolóba való áthelyezésével megtakaríthatja a kimenő adatforgalom költségeit a gépi tanulási kísérletek során. 
+Azure Machine Learning támogatja az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL adatainak elérését. Ha nem támogatott tárterületet használ, javasoljuk, hogy [Azure Data Factory és az alábbi lépések](https://docs.microsoft.com/azure/data-factory/quickstart-create-data-factory-copy-data-tool)segítségével helyezze át az adatait a támogatott Azure Storage-megoldásokra. Az adatforgalom a támogatott tárolóba való áthelyezésével megtakaríthatja a kimenő adatforgalom költségeit a gépi tanulási kísérletek során. 
 
 Azure Data Factory a hatékony és rugalmas adatátvitelt több mint 80 előre összeépített összekötővel biztosítja, felár nélkül. Ezek az összekötők közé tartoznak az Azure adatszolgáltatások, a helyszíni adatforrások, az Amazon S3 és a vöröseltolódás, valamint a Google BigQuery.
 

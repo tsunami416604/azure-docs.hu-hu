@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/29/2019
 ms.author: memildin
-ms.openlocfilehash: 0ecbb4399e038355a328055590da1c34170f3852
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 6ec818ff77664fcc038412f79fffc1e3e05b82f0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894627"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294252"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
 
@@ -49,6 +49,10 @@ A következő részekben azok a támogatott kiszolgálói operációs rendszerek
 |Windows Server 2008 R2|✔|✔|
 
 A fent felsorolt Windows operációs rendszerek támogatott szolgáltatásaival kapcsolatos további tudnivalókért lásd: [virtuális gépek/kiszolgálók által támogatott szolgáltatások](security-center-services.md#vm-server-features).
+
+### Windows operációs rendszerek<a name="os-windows (non-server)"></a>
+
+A Azure Security Center az Azure-szolgáltatásokkal együttműködve figyeli és biztosítja a Windows-alapú virtuális gépeket.
 
 ### Linux operációs rendszerek<a name="os-linux"></a>
 

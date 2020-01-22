@@ -12,15 +12,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 11/08/2019
+ms.date: 01/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b3a424c142fbfcbfe5e4c1802f3ba61da655f77f
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 56b78f4296709206cefb762c87d4d1471bff2df7
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896031"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291515"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
 
@@ -53,7 +53,7 @@ Ebben a fázisban az SAP-munkaterhelések áttelepítését tervezzük az Azure 
         - SAP HANA által támogatott Azure-beli virtuális gépek és [HANA nagyméretű példányok](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) listája az [SAP webhelyén](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)található.
         - [SAP-termék rendelkezésre állási mátrixa](https://support.sap.com/en/).
         - SAP-megjegyzések más SAP-specifikus termékekhez.     
-    - Javasoljuk, hogy az SAP éles rendszerek esetében szigorú háromrétegű kialakítást biztosítson. A ASCS és az alkalmazás-kiszolgálók egyetlen virtuális gépen való egyesítését nem javasoljuk. Az SAP Central Services több SID-alapú fürt-konfigurációjának használatával támogatott az Azure-beli Windows vendég operációs rendszerek esetében. Ez a konfiguráció azonban nem támogatott az Azure-beli Linux operációs rendszereken futó SAP központi szolgáltatások esetében. A Windows vendég operációs rendszer forgatókönyvének dokumentációja a következő cikkekben található:
+    - Javasoljuk, hogy az SAP éles rendszerek esetében szigorú háromrétegű kialakítást biztosítson. A ASCS és/vagy az adatbázis-kezelő és/vagy az alkalmazás-kiszolgálók egyetlen virtuális gépen való egyesítését nem javasoljuk. Az SAP Central Services több SID-alapú fürt-konfigurációjának használatával támogatott az Azure-beli Windows vendég operációs rendszerek esetében. Ez a konfiguráció azonban nem támogatott az Azure-beli Linux operációs rendszereken futó SAP központi szolgáltatások esetében. A Windows vendég operációs rendszer forgatókönyvének dokumentációja a következő cikkekben található:
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és a megosztott lemezzel az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
         - [SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és fájlmegosztás az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
     - Magas rendelkezésre állású és vész-helyreállítási architektúra.
@@ -135,7 +135,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
         - Ha nincs szüksége magas rendelkezésre állásra az SAP Central Services és az adatbázis-kezelő rendszer számára, akkor ezeket a virtuális gépeket az SAP-alkalmazás rétegével megegyező rendelkezésre állási csoportba helyezheti.
         - Ha a magas rendelkezésre állás érdekében a passzív replikáció révén védi az SAP központi szolgáltatásait és az adatbázis-kezelő réteget, helyezze el a két csomópontot az SAP Central Services számára egy különálló rendelkezésre állási csoportba, illetve egy másik rendelkezésre állási csoport két adatbázis-kezelő csomópontját.
         - Ha Azure Availability Zonesbe helyez üzembe, nem használhatja a rendelkezésre állási csoportokat. Azonban gondoskodnia kell arról, hogy az aktív és a passzív központi szolgáltatások csomópontjait két különböző Availability Zones telepítse. Használjon olyan Availability Zones, amely a legkisebb késéssel rendelkezik.
-          Ne feledje, hogy az [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia, ha Windows vagy pacemaker feladatátvételi fürtöket kíván létrehozni az adatbázis-kezelő szolgáltatás és az SAP központi szolgáltatások rétegében Availability Zones között. A zónákhoz való központi telepítéshez nem használhatók [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) .
+          Ne feledje, hogy az [Azure standard Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia, ha Windows vagy pacemaker feladatátvételi fürtöket kíván létrehozni az adatbázis-kezelő szolgáltatás és az SAP központi szolgáltatások rétegében Availability Zones között. A zónákhoz való központi telepítéshez nem használhatók [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) .
    5. Időtúllépési beállítások.
         - Ellenőrizze az SAP-példányok SAP NetWeaver fejlesztői nyomkövetését, és győződjön meg arról, hogy a sorba helyezni-kiszolgáló és az SAP-munkafolyamatok között nincsenek kapcsolódási megszakítások. A következő két beállításjegyzék-paraméter beállításával elkerülhető a kapcsolatok megszakítása:
             - HKLM\SYSTEM\CurrentControlSet\Services\Tcpip\Parameters\KeepAliveTime = 120000. További információ: [KeepAliveTime](https://docs.microsoft.com/previous-versions/windows/it-pro/windows-2000-server/cc957549(v=technet.10)).

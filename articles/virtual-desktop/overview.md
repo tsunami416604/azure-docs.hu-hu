@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 12/17/2019
+ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: dd5167af5f45ebae0529e16f224065627085e9b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75348808"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312345"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -86,17 +86,27 @@ A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli vi
 >[!NOTE]
 >Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
 
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következő URL-címekhez kell rendelkezniük kimenő TCP 443-hozzáféréssel:
+A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
 
-* *. wvd.microsoft.com
-* *.blob.core.windows.net
-* *.core.windows.net
-* *.servicebus.windows.net
-* prod.warmpath.msftcloudes.com
-* catalogartifact.azureedge.net
+|Cím|Kimenő port|Rendeltetés|
+|---|---|---|
+|*. wvd.microsoft.com|443-as TCP-port|Szolgáltatás forgalma|
+|*.blob.core.windows.net|443-as TCP-port|Ügynök, SXS-verem frissítései és ügynöki forgalom|
+|*.core.windows.net|443-as TCP-port|Ügynök forgalma|
+|*.servicebus.windows.net|443-as TCP-port|Ügynök forgalma|
+|prod.warmpath.msftcloudes.com|443-as TCP-port|Ügynök forgalma|
+|catalogartifact.azureedge.net|443-as TCP-port|Azure Piactér|
+|kms.core.windows.net|1688-es TCP-port|Windows 10 aktiválása|
+
+>[!IMPORTANT]
+>Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
 
 >[!NOTE]
->Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
+>A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
+>
+>1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
+>2. Nyissa meg az **eseménynaplót** , és navigáljon a **Windows** > **alkalmazás naplóihoz** , és keresse meg a 3712-es azonosítójú eseményt.
+>3. Az 3712-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3712-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az engedélyezési folyamatot meg kell ismételnie minden olyan régióhoz tartozó URL-címmel, amelybe telepíteni kívánja a virtuális gépeket.
 
 A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok. Ez adatátvitelt eredményezhet a Egyesült Államokba.
 

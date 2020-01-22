@@ -4,12 +4,12 @@ description: Gyakori kérdések a Service Fabricről, beleértve a képességeke
 ms.topic: troubleshooting
 ms.date: 08/18/2017
 ms.author: pepogors
-ms.openlocfilehash: 7638a360821e73b7485014c8e6f006e91bbea551
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 17c1d05e119df8207c0599283f1d04b869e8297b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614638"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293521"
 ---
 # <a name="commonly-asked-service-fabric-questions"></a>Service Fabric – GYIK
 
@@ -183,4 +183,4 @@ További részletekért tekintse meg a [Service Fabric blogot](https://blogs.msd
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md) Ice Fabric-fogalmakat] (Service-fabric-Technical-Overview.MD) és [ajánlott eljárásokat](service-fabric-best-practices-overview.md)
+Ismerje meg az [alapszintű Service Fabric fogalmakat](service-fabric-technical-overview.md) és az [ajánlott eljárásokat](service-fabric-best-practices-overview.md)

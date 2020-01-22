@@ -1,7 +1,7 @@
 ---
-title: Jogkivonat beszerzése a webes API meghívásához (asztali alkalmazás) | Azure
+title: Token beszerzése webes API meghívásához (asztali alkalmazás) | Azure
 titleSuffix: Microsoft identity platform
-description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg (token beszerzése az alkalmazáshoz |)
+description: Ismerje meg, hogyan hozhat létre olyan asztali alkalmazást, amely webes API-kat hív meg az alkalmazás jogkivonatának beszerzéséhez
 services: active-directory
 documentationcenter: dev-center-name
 author: jmprieur
@@ -16,23 +16,23 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89a9426b1ed0ccd3c5f9eec576e5d78bf3d3dfc2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: da8d9a43ac5db4cedc8b27910bb838b911f3ebc6
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423877"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293147"
 ---
-# <a name="desktop-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás – jogkivonat beszerzése
+# <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
-Miután létrehozta a nyilvános ügyfélalkalmazás egy példányát, a használatával megvásárolhatja azt a tokent, amelyet aztán a webes API-k meghívásához fog használni.
+Miután létrehozta a nyilvános ügyfélalkalmazás egy példányát, felhasználhatja egy olyan token beszerzéséhez, amelyet később a webes API-k meghívásához fog használni.
 
 ## <a name="recommended-pattern"></a>Javasolt minta
 
-A webes API-t a `scopes`határozza meg. Függetlenül attól, hogy milyen élményt nyújt az alkalmazásban, a használni kívánt minta a következő:
+A webes API-t a `scopes`határozza meg. Függetlenül attól, hogy milyen élményt nyújt az alkalmazásban, a használandó minta a következő:
 
-- A jogkivonat-gyorsítótárból a `AcquireTokenSilent` meghívásával szisztematikusan próbálkozik a jogkivonat lekérésével
-- Ha a hívás sikertelen, használja a használni kívánt `AcquireToken` folyamatot (itt `AcquireTokenXX`által képviselt)
+- A `AcquireTokenSilent`meghívásával szisztematikusan próbálkozhat a jogkivonat-gyorsítótárból kapott jogkivonat beszerzésével.
+- Ha a hívás sikertelen, használja a használni kívánt `AcquireToken` folyamatot, amelyet a `AcquireTokenXX`képvisel.
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -148,7 +148,7 @@ application.acquireTokenSilent(with: silentParameters) { (result, error) in
 
 Itt láthatja a jogkivonatok asztali alkalmazásokban való beszerzésének különböző módszereit.
 
-## <a name="acquiring-a-token-interactively"></a>Token interaktív beszerzése
+## <a name="acquire-a-token-interactively"></a>Jogkivonat interaktív beszerzése
 
 Az alábbi példa azt mutatja be, hogy a jogkivonat interaktív beolvasása a felhasználó profiljának Microsoft Graph használatával történő olvasásához szükséges minimális kód.
 
@@ -174,15 +174,15 @@ catch(MsalUiRequiredException)
 
 ### <a name="mandatory-parameters"></a>Kötelező paraméterek
 
-`AcquireTokenInteractive` csak egy kötelező paraméterrel rendelkezik ``scopes``, amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat a Microsoft Graph, a szükséges hatókörök az "engedélyek" szakaszban található minden Microsoft Graph API API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. Lásd még [Microsoft Graph engedélyek referenciáját](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
+`AcquireTokenInteractive` csak egy kötelező paraméterrel rendelkezik, ``scopes``, amely tartalmazza a karakterláncok enumerálását, amelyek meghatározzák azokat a hatóköröket, amelyekhez jogkivonat szükséges. Ha a jogkivonat Microsoft Graph, akkor a szükséges hatókörök az "engedélyek" szakaszban található egyes Microsoft Graph API-k API-referenciájában találhatók. A [felhasználó névjegyeinek listázásához](https://developer.microsoft.com/graph/docs/api-reference/v1.0/api/user_list_contacts)például a "felhasználó. Read", a "Contacts. Read" hatókört kell használni. További információ: [Microsoft Graph engedélyek referenciája](https://developer.microsoft.com/graph/docs/concepts/permissions_reference).
 
-Androidon a fölérendelt tevékenységet is meg kell adnia (`.WithParentActivityOrWindow`használatával, lásd alább), hogy a token az interakció után visszakerüljön a fölérendelt tevékenységbe. Ha nem ad meg, a rendszer kivételt fog kiváltani `.ExecuteAsync()`meghívásakor.
+Androidon a fölérendelt tevékenységet a `.WithParentActivityOrWindow`használatával kell megadnia, ahogyan az látható, hogy a token a beavatkozás után visszakerüljön a fölérendelt tevékenységbe. Ha nem ad meg, kivételt okoz a `.ExecuteAsync()`hívásakor.
 
 ### <a name="specific-optional-parameters-in-msalnet"></a>Speciális választható paraméterek a MSAL.NET
 
 #### <a name="withparentactivityorwindow"></a>WithParentActivityOrWindow
 
-Az interaktív KEZELŐFELÜLET fontos. `AcquireTokenInteractive` egy olyan opcionális paramétert ad meg, amely lehetővé teszi, hogy az azt támogató platformok számára a szülő felhasználói felületet válassza. Asztali alkalmazásokban való használat esetén a `.WithParentActivityOrWindow` eltérő típusúnak kell lennie a platformtól függően:
+A felhasználói felület azért fontos, mert interaktív. `AcquireTokenInteractive` egy olyan opcionális paraméterrel rendelkezik, amely az azt támogató platformok esetében megadhatja a szülő felhasználói felületet. Asztali alkalmazásokban való használat esetén `.WithParentActivityOrWindow` eltérő típusú, amely a platformtól függ.
 
 ```csharp
 // net45
@@ -198,9 +198,9 @@ WithParentActivityOrWindow(object parent).
 
 Megjegyzéseket tartalmazó
 
-- A .NET Standard verzióban a várt `Activity` `object` az Androidon, a `UIViewController` iOS-en, egy `NSWindow` MAC gépen, valamint egy `IWin32Window` vagy `IntPr` Windows rendszeren.
-- Windows rendszeren a felhasználói felületi szálból kell meghívnia `AcquireTokenInteractive`t, hogy a beágyazott böngésző megkapja a megfelelő felhasználói felületi szinkronizálási környezetet.  Ha a felhasználói felületi szál nem hívja meg a hívást, az üzenetek nem tudnak megfelelően és/vagy holtpontra jutni a felhasználói felületen. A MSAL a felhasználói felületi szálból való meghívásának egyik módja, ha a felhasználói felületi szálon már nem a `Dispatcher` a WPF rendszeren.
-- Ha WPF-t használ, a WPF-vezérlőkből származó ablak beszerzéséhez `WindowInteropHelper.Handle` osztályt használhat. A hívást ezután egy WPF-vezérlőből (`this`):
+- A .NET Standard verzióban a várt `object` `Activity` Android, `UIViewController` iOS, `NSWindow` MAC gépen, `IWin32Window` vagy `IntPr` Windows rendszeren.
+- Windows rendszeren a felhasználói felületi szálból kell meghívnia `AcquireTokenInteractive`t, hogy a beágyazott böngésző megkapja a megfelelő felhasználói felületi szinkronizálási környezetet. A felhasználói felületi szálból való hívás nem okozhatja, hogy az üzenetek nem pumpálják megfelelően a felhasználói felületet. A Microsoft Authentication kódtárak (MSALs-EK) a felhasználói felületi szálból való meghívásának egyik módja, ha a felhasználói felületi szálon már nem használja a `Dispatcher`t a WPF rendszeren.
+- Ha WPF-t használ, a WPF-vezérlőkből származó ablak beszerzéséhez használhatja a `WindowInteropHelper.Handle` osztályt. Ezután a hívás egy WPF-vezérlőből származik (`this`):
 
   ```csharp
   result = await app.AcquireTokenInteractive(scopes)
@@ -210,21 +210,21 @@ Megjegyzéseket tartalmazó
 
 #### <a name="withprompt"></a>WithPrompt
 
-a `WithPrompt()` a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával
+a `WithPrompt()` a felhasználóval való interaktivitás vezérlésére szolgál egy kérdés megadásával.
 
 <img src="https://user-images.githubusercontent.com/13203188/53438042-3fb85700-39ff-11e9-9a9e-1ff9874197b3.png" width="25%" />
 
 Az osztály a következő konstansokat határozza meg:
 
-- ``SelectAccount``: kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely olyan fiókokat tartalmaz, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazások fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ez a beállítás a MSAL ``prompt=select_account`` küldését hajtja az identitás-szolgáltatónak. Ez az alapértelmezett beállítás, és jó munkát végez a lehető legjobb élmény biztosításához a rendelkezésre álló információk (fiók, a felhasználó munkamenetének jelenléte stb.) alapján. ...). Csak akkor módosítsa, ha nincs megfelelő oka.
-- ``Consent``: lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót abban az esetben is, ha a beleegyező engedélyt megadták. Ebben az esetben a MSAL `prompt=consent` küld az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor megtekintse a beleegyezik párbeszédpanelt.
-- ``ForceLogin``: lehetővé teszi, hogy az alkalmazás fejlesztője akkor is kérje a felhasználótól a hitelesítő adatok megadását, ha ez a felhasználó nem lenne szükséges. Ez a beállítás akkor lehet hasznos, ha a jogkivonat beszerzése meghiúsul, hogy a felhasználó újra bejelentkezzen. Ebben az esetben a MSAL `prompt=login` küld az identitás-szolgáltatónak. Azt is láttuk, hogy az egyes biztonsági irányultságú alkalmazásokban, ahol a szervezeti irányítás megköveteli, hogy a felhasználó újrajelentkezzen – minden alkalommal, amikor hozzáférnek az alkalmazás egyes részeihez.
-- ``Never`` (csak a .NET 4,5-es és a WinRT esetén) nem kéri a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni (lásd alább: webes nézetek a MSAL.NET-ben). Ha ez a beállítás nem sikerül, és ebben az esetben `AcquireTokenInteractive` kivételt jelez, hogy a felhasználói felületi interakcióra van szükség, és egy másik `Prompt` paramétert kell használnia.
-- ``NoPrompt``: a rendszer nem küld figyelmeztetést az identitás-szolgáltatónak. Ez a lehetőség csak Azure AD B2C profil-házirendek szerkesztéséhez használható (lásd a [B2C-specifikusokat](https://aka.ms/msal-net-b2c-specificities)).
+- ``SelectAccount`` kényszeríti az STS-t, hogy bemutassa a fiók kiválasztása párbeszédpanelt, amely azokat a fiókokat tartalmazza, amelyekhez a felhasználó rendelkezik munkamenettel. Ez a beállítás akkor hasznos, ha az alkalmazás fejlesztői számára engedélyezni szeretné a felhasználók számára a különböző identitások közötti választást. Ez a beállítás a MSAL ``prompt=select_account`` küldését hajtja az identitás-szolgáltatónak. Ez az alapértelmezett beállítás. Jó munkát biztosít a lehető legjobb élmény biztosításához a rendelkezésre álló információk, például a felhasználói munkamenetek fiókja és jelenléte alapján. Csak akkor módosítsa, ha nincs megfelelő oka.
+- ``Consent`` lehetővé teszi, hogy az alkalmazás fejlesztője kényszerítse a felhasználót, hogy kérjen beleegyező engedélyt, még akkor is, ha az engedélyt megadták. Ebben az esetben a MSAL `prompt=consent` küld az identitás-szolgáltatónak. Ez a beállítás olyan biztonsági szempontokat használó alkalmazásokban használható, ahol a szervezet irányítása megköveteli, hogy a felhasználó az alkalmazás minden egyes használatakor a belefoglalt engedély párbeszédablakban legyen látható.
+- ``ForceLogin`` lehetővé teszi az alkalmazás fejlesztője számára, hogy a szolgáltatás által hitelesítő adatokat kérjen, még akkor is, ha ez a felhasználói kérdés esetleg nem szükséges. Ez a beállítás akkor lehet hasznos, ha a felhasználó újra bejelentkezik, ha a jogkivonat beszerzése meghiúsul. Ebben az esetben a MSAL `prompt=login` küld az identitás-szolgáltatónak. Időnként olyan biztonsági irányultságú alkalmazásokban használják, ahol a szervezet irányítása megköveteli, hogy a felhasználó minden alkalommal újra aláírja az alkalmazást, amikor az alkalmazás egyes részeihez hozzáférnek.
+- ``Never`` (csak a .NET 4,5-es és a WinRT esetén) nem kéri a felhasználót, hanem a rejtett beágyazott webes nézetben tárolt cookie-t próbálja használni. További információ: webes nézetek a MSAL.NET-ben. Ez a beállítás sikertelen lehet. Ebben az esetben `AcquireTokenInteractive` kivételt jelez, amely értesíti, hogy felhasználói felületi interakcióra van szükség. Egy másik `Prompt` paramétert kell használnia.
+- ``NoPrompt`` nem küld rákérdezést az identitás-szolgáltatónak. Ez a beállítás csak Azure Active Directory (Azure AD) B2C-szerkesztési profil házirendjének esetében hasznos. További információ: [Azure ad B2C sajátosságok](https://aka.ms/msal-net-b2c-specificities).
 
 #### <a name="withextrascopetoconsent"></a>WithExtraScopeToConsent
 
-Ez a módosító olyan speciális forgatókönyvekben használatos, ahol a felhasználónak előre jóvá kell hagynia több erőforrást (és nem szeretné használni a növekményes beleegyezést, amelyet általában a MSAL.NET/a Microsoft Identity platformmal használ). A részletekért lásd [: a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#how-to-have--the-user-consent-upfront-for-several-resources).
+Ezt a módosítót olyan speciális forgatókönyvekben használják, ahol a felhasználónak előre jóvá kell hagynia több erőforrást, és nem érdemes növekményes beleegyezést használni, amelyet általában a MSAL.NET/the Microsoft Identity platformmal használ. További információ: [a felhasználó beleegyezett több erőforrásra](scenario-desktop-production.md#have-the-user-consent-upfront-for-several-resources).
 
 ```csharp
 var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
@@ -235,34 +235,35 @@ var result = await app.AcquireTokenInteractive(scopesForCustomerApi)
 #### <a name="withcustomwebui"></a>WithCustomWebUi
 
 A webes felhasználói felület egy böngésző meghívására szolgáló mechanizmus. Ez a mechanizmus lehet dedikált felhasználói felületi WebBrowser vezérlő vagy a böngésző megnyitásának delegálására szolgáló módszer.
-A MSAL webes felhasználói felületi implementációkat biztosít a legtöbb platformhoz, de továbbra is előfordulhatnak olyan esetek, amikor a böngészőt saját maga szeretné üzemeltetni:
+A MSAL webes felhasználói felületi implementációkat biztosít a legtöbb platformhoz, de vannak olyan esetek, amikor saját maga is üzemeltetni szeretné a böngészőt:
 
-- a MSAL által kifejezetten nem érintett platformok, például a Blazer, az Unity, a Mono on Desktop
-- szeretné tesztelni az alkalmazást, és egy olyan automatizált böngészőt szeretne használni, amely a szelén segítségével használható
-- a böngésző és a MSAL-t futtató alkalmazás külön folyamatokban van
+- A MSAL által kifejezetten nem érintett platformok, például a Blazer, az Unity és a Mono az asztali gépeken.
+- Azt szeretné, hogy a felhasználói felület tesztelje az alkalmazást, és használjon egy olyan automatizált böngészőt, amely a szelén segítségével használható.
+- A böngésző és a MSAL futtató alkalmazás külön folyamatokban van.
 
 ##### <a name="at-a-glance"></a>Áttekintés
 
-Ennek eléréséhez meg kell adnia egy `start Url`MSAL, amelyet egy tetszőleges böngészőben kell megjeleníteni, hogy a felhasználó megadhatja a felhasználónevét stb. A hitelesítés befejeződése után az alkalmazásnak vissza kell térnie a `end Url`MSAL, amely tartalmazza az Azure AD által biztosított kódot.
-A `end Url` gazdagépe mindig a `redirectUri`. A `end Url` elfogásához a következőket teheti:
+Ennek eléréséhez meg kell adnia a MSAL `start Url`, amelyet egy tetszőleges böngészőben kell megjeleníteni, hogy a végfelhasználók olyan elemeket is megadhatnak, mint a felhasználónevek.
+A hitelesítés befejeződése után az alkalmazásnak vissza kell térnie a MSAL-`end Url`ra, amely az Azure AD által biztosított kódot tartalmaz.
+A `end Url` gazdagépe mindig `redirectUri`. `end Url`elfogásához hajtsa végre az alábbi műveletek egyikét:
 
-- a böngésző átirányításának figyelése, amíg a `redirect Url` el nem éri a találatot, vagy
-- a böngésző átirányítja az URL-címre, amelyet figyel
+- A böngésző-átirányítások figyelése, amíg meg nem `redirect Url` találat.
+- A böngésző átirányítja az URL-címre, amelyet figyel.
 
 ##### <a name="withcustomwebui-is-an-extensibility-point"></a>A WithCustomWebUi egy bővíthetőségi pont
 
-a `WithCustomWebUi` egy olyan bővíthetőségi pont, amely lehetővé teszi saját felhasználói felületének megadását a nyilvános ügyfélalkalmazások számára, és lehetővé teszi, hogy a felhasználó áthaladjon az/Authorize végpontján, és lehetővé tegye a bejelentkezést és a hozzájuk való hozzájárulásukat. A MSAL.NET megadhatja a hitelesítési kódot, és lekérheti a tokent. A Visual Studióban használt példányoknak, hogy az elektron-alkalmazások (például a VS visszajelzések) biztosítják a webes interakciót, azonban ne MSAL.NET a munka nagy részét. Akkor is használhatja, ha a felhasználói felület automatizálását szeretné megadni. A nyilvános ügyfélalkalmazások esetében a MSAL.NET a PKCE standard ([RFC 7636-Proof kulcs a Code Exchange számára a OAuth nyilvános ügyfelek által](https://tools.ietf.org/html/rfc7636)) használatával biztosítja a biztonság tiszteletben tartását: csak MSAL.net válthat be a kódban.
+`WithCustomWebUi` egy olyan bővíthetőségi pont, amellyel saját felhasználói felületet biztosíthat a nyilvános ügyfélalkalmazások számára. Azt is megteheti, hogy a felhasználó áthalad az/Authorize végpontján, és lehetővé teszi, hogy jelentkezzen be és hagyja jóvá. A MSAL.NET ezután beválthatják a hitelesítési kódot, és megkapják a jogkivonatot. A Visual Studióban például az elektron-alkalmazások (például a Visual Studio-visszajelzések) biztosítják a webes interakciót, de a munka nagy része nem MSAL.NET el. Akkor is használhatja, ha a felhasználói felület automatizálását szeretné megadni. A nyilvános ügyfélalkalmazások esetében a MSAL.NET a Code Exchange (PKCE) szabványának igazolási kulcsát használja annak biztosítására, hogy a biztonság tiszteletben legyen. A kódot csak a MSAL.NET lehet beváltani. További információ: [RFC 7636-Proof kulcs a Code Exchange számára nyilvános ügyfelek OAuth](https://tools.ietf.org/html/rfc7636).
 
   ```csharp
   using Microsoft.Identity.Client.Extensions;
   ```
 
-##### <a name="how-to-use-withcustomwebui"></a>A WithCustomWebUi használata
+##### <a name="use-withcustomwebui"></a>WithCustomWebUi használata
 
-A `.WithCustomWebUI`használatához a következőket kell tennie:
+A `.WithCustomWebUI`használatához kövesse az alábbi lépéseket.
 
-  1. A `ICustomWebUi` felület implementálása (lásd [itt](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Alapvetően végre kell hajtania egy metódust `AcquireAuthorizationCodeAsync` az engedélyezési kód URL-címének (MSAL.NET-ben számított) elfogadását, így a felhasználó áthalad az identitás-szolgáltatóval való interakción, majd visszaküldi az URL-címet, amellyel az Identity Provider a megvalósítás visszahívását (beleértve az engedélyezési kódot). Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
-  2. A `AcquireTokenInteractive`-hívásban használhatja `.WithCustomUI()` módosítót az egyéni webes felhasználói felület példányának átadásával
+  1. Implementálja az `ICustomWebUi` felületet. További információkért tekintse meg [ezt a webhelyet](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/src/Microsoft.Identity.Client/Extensibility/ICustomWebUI.cs#L32-L70). Implementáljon egy `AcquireAuthorizationCodeAsync`metódust, és fogadja el a MSAL.NET által kiszámított engedélyezési kód URL-címét. Ezután hagyja, hogy a felhasználó átugorja a interakciót az identitás-szolgáltatóval, és visszaadja az URL-címet, amellyel az identitás-szolgáltató a megvalósítást az engedélyezési kóddal együtt vissza kellett volna hívnia. Ha problémák merülnek fel, a megvalósításnak `MsalExtensionException` kivételt kell eldobnia, hogy szépen működjenek együtt a MSAL-mel.
+  2. A `AcquireTokenInteractive`-hívásban használja a `.WithCustomUI()` módosítót az egyéni webes felhasználói felület példányának átadásával.
 
      ```csharp
      result = await app.AcquireTokenInteractive(scopes)
@@ -270,19 +271,19 @@ A `.WithCustomWebUI`használatához a következőket kell tennie:
                        .ExecuteAsync();
      ```
 
-##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation---seleniumwebui"></a>Példák a ICustomWebUi bevezetésére a test automationben – SeleniumWebUI
+##### <a name="examples-of-implementation-of-icustomwebui-in-test-automation-seleniumwebui"></a>Példák a ICustomWebUi bevezetésére a test automationben: SeleniumWebUI
 
-A MSAL.NET csapata átírta a felhasználói felületi teszteket a bővíthető mechanizmus kihasználása érdekében. Ha érdekli, tekintse meg a [SeleniumWebUI](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) osztályt a MSAL.net forráskódjában
+A MSAL.NET csapata újraírta a felhasználói felületi teszteket, hogy ezt a bővíthető mechanizmust használják. Ha érdekli, tekintse meg a [SeleniumWebUI](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/blob/053a98d16596be7e9ca1ab916924e5736e341fe8/tests/Microsoft.Identity.Test.Integration/Infrastructure/SeleniumWebUI.cs#L15-L160) osztályt a MSAL.net forráskódjában.
 
-##### <a name="providing-a-great-experience-with-systemwebviewoptions"></a>A SystemWebViewOptions nagyszerű élményt nyújt
+##### <a name="provide-a-great-experience-with-systemwebviewoptions"></a>Nagyszerű élményt nyújt a SystemWebViewOptions
 
-A MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet) lehetővé teszi az alábbiak megadását:
+A MSAL.NET 4,1 [`SystemWebViewOptions`](https://docs.microsoft.com/dotnet/api/microsoft.identity.client.systemwebviewoptions?view=azure-dotnet)a következőket adhatja meg:
 
-- a (`BrowserRedirectError`) vagy a megjelenítendő HTML-kódrészlet (`HtmlMessageError`) a rendszerböngészőben való bejelentkezési/beleegyező hibák esetén
-- az a (`BrowserRedirectSuccess`) vagy a megjelenítendő HTML-kódrészlet (`HtmlMessageSuccess`) a sikeres bejelentkezés/beleegyezikés esetén.
-- a rendszerböngésző indításához futtatandó művelet. Ehhez megadhatja saját megvalósítását a `OpenBrowserAsync` delegált beállításával. Az osztály két böngésző alapértelmezett implementációját is biztosítja: `OpenWithEdgeBrowserAsync` és `OpenWithChromeEdgeBrowserAsync`, a Microsoft Edge és [a Microsoft Edge esetében pedig a Chromium-on](https://www.windowscentral.com/faq-edge-chromium).
+- A (`BrowserRedirectError`) vagy a megjelenített HTML-kódrészlet (`HtmlMessageError`) a rendszerböngészőben való bejelentkezés vagy a hozzájuk tartozó beleegyező hibák esetén.
+- A (`BrowserRedirectSuccess`) vagy a megjelenített HTML-kódrészlet (`HtmlMessageSuccess`) sikeres bejelentkezés vagy Belefoglalás esetén való megadására szolgáló URI.
+- a rendszerböngésző indításához futtatandó művelet. A `OpenBrowserAsync` delegált beállításával saját implementációt adhat meg. Az osztály két böngésző alapértelmezett implementációját is biztosítja: `OpenWithEdgeBrowserAsync` és `OpenWithChromeEdgeBrowserAsync` a Microsoft Edge és [a Microsoft Edge számára a Chromium](https://www.windowscentral.com/faq-edge-chromium)-ben.
 
-A struktúra használatához a következőhöz hasonló módon írhat:
+A struktúra használatához írjon a következő példához hasonló módon:
 
 ```csharp
 IPublicClientApplication app;
@@ -302,11 +303,11 @@ var result = app.AcquireTokenInteractive(scopes)
 
 #### <a name="other-optional-parameters"></a>Egyéb választható paraméterek
 
-További információ a [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods) -hez készült dokumentációban `AcquireTokenInteractive` további opcionális paraméterekről
+Ha többet szeretne megtudni a `AcquireTokenInteractive`további választható paramétereivel kapcsolatban, tekintse meg a következőt: [AcquireTokenInteractiveParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokeninteractiveparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A MSAL Java nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy olyan engedélyezési kód beszerzéséhez, amely átadható a `acquireToken` metódusnak a jogkivonat lekéréséhez.
+A MSAL Java nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy engedélyezési kód beszerzéséhez. A kód ezután átadható a `acquireToken` metódusnak a jogkivonat lekéréséhez.
 
 ```java
 AuthorizationCodeParameters parameters =  AuthorizationCodeParameters.builder(
@@ -345,7 +346,7 @@ future.handle((res, ex) -> {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A MSAL Python nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy olyan engedélyezési kód beszerzéséhez, amely átadható a `acquire_token_by_authorization_code` metódusnak a jogkivonat lekéréséhez.
+A MSAL Python nem biztosít közvetlenül egy interaktív beszerzési jogkivonat-metódust. Ehelyett az alkalmazásnak engedélyezési kérelmet kell küldenie a felhasználói interakciós folyamat megvalósításában egy engedélyezési kód beszerzéséhez. A kód ezután átadható a `acquire_token_by_authorization_code` metódusnak a jogkivonat lekéréséhez.
 
 ```Python
 result = None
@@ -401,47 +402,47 @@ application.acquireToken(with: interactiveParameters, completionBlock: { (result
 
 ## <a name="integrated-windows-authentication"></a>Integrált Windows-hitelesítés
 
-Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy Azure AD-hez csatlakoztatott gépen, akkor integrált Windows-hitelesítést kell használnia.
+Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy Azure AD-hez csatlakoztatott gépre, használja az integrált Windows-hitelesítést (IWA).
 
 ### <a name="constraints"></a>Korlátozások
 
-- Az integrált Windows-hitelesítés (IWA) csak **összevont** felhasználók esetében használható, azaz a Active Directoryban létrehozott felhasználók és Azure Active Directory által támogatottak. A közvetlenül a HRE-ben létrehozott felhasználók AD-alapú, **felügyelt** felhasználók nélkül nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a Felhasználónév/jelszó folyamatát.
-- A IWA a .NET-keretrendszer, a .NET Core és a UWP platformokhoz írt alkalmazások esetében használható.
-- A IWA nem kerüli el az MFA-t (többtényezős hitelesítés). Ha az MFA konfigurálva van, a IWA sikertelen lehet, ha MFA-kihívásra van szükség, mert az MFA felhasználói beavatkozást igényel.
+- Az integrált Windows-hitelesítés csak *összevont +* felhasználók számára használható, azaz a Active Directoryban létrehozott és az Azure ad által támogatott felhasználók. A közvetlenül az Azure AD-ben létrehozott felhasználók Active Directory biztonsági mentés nélkül, azaz a *felügyelt* felhasználók nem használhatják ezt a hitelesítési folyamatot. Ez a korlátozás nem befolyásolja a Felhasználónév és a jelszó folyamatát.
+- A IWA a .NET-keretrendszer, a .NET Core és a Univerzális Windows-platform (UWP) platformokhoz írt alkalmazások esetében használható.
+- A IWA nem kerüli el a többtényezős hitelesítést (MFA). Ha az MFA konfigurálva van, a IWA sikertelen lehet, ha MFA-kihívásra van szükség, mert az MFA felhasználói beavatkozást igényel.
   > [!NOTE]
-  > Ez egy trükkös megoldás. A IWA nem interaktív, az MFA azonban felhasználói interaktivitást igényel. Nem szabályozhatja, hogy mikor történjen meg az identitás-szolgáltató az MFA elvégzését, a bérlői rendszergazda. A megfigyelések során MFA szükséges, ha egy másik országból jelentkezik be, ha nem VPN-kapcsolaton keresztül csatlakozik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Ne várja meg a determinisztikus, Azure Active Directory az AI-t használja a folyamatos tanuláshoz, ha MFA szükséges. Ha a IWA meghibásodik, a felhasználónak meg kell egyeznie a felhasználói üzenettel (interaktív hitelesítéssel vagy az eszköz kódjának folyamatával).
+  > Ez egy trükkös megoldás. A IWA nem interaktív, az MFA azonban felhasználói interaktivitást igényel. Nem szabályozhatja, hogy az identitás-szolgáltató Mikor kér el MFA-t, a bérlői rendszergazda végzi. A megfigyelések során MFA szükséges, ha egy másik országból jelentkezik be, ha nem VPN-kapcsolaton keresztül csatlakozik a vállalati hálózathoz, és néha még akkor is, ha VPN-en keresztül csatlakozik. Ne várja meg a determinisztikus szabályait. Az Azure AD a mesterséges intelligencia használatával folyamatosan tanul, ha MFA szükséges. Ha a IWA nem sikerül, térjen vissza egy olyan felhasználói kéréshez, mint az interaktív hitelesítés vagy az eszköz kódjának folyamata.
 
 - A `PublicClientApplicationBuilder` átadott hatóságnak a következőnek kell lennie:
-  - Bérlő-ED (az űrlap `https://login.microsoftonline.com/{tenant}/`, ahol a `tenant` vagy a bérlő AZONOSÍTÓját vagy a bérlőhöz társított tartományt jelképező GUID.
-  - bármilyen munkahelyi és iskolai fiókhoz (`https://login.microsoftonline.com/organizations/`)
-  - A Microsoft személyes fiókjai nem támogatottak (/gyakori hibák-vagy/consumers-bérlők nem használhatók)
+  - Az űrlap bérlője `https://login.microsoftonline.com/{tenant}/`, ahol a `tenant` vagy a bérlő AZONOSÍTÓját, vagy a bérlőhöz társított tartományt jelképező GUID.
+  - Bármilyen [munkahelyi és iskolai fiókhoz](`https://login.microsoftonline.com/organizations/`).
+  - A Microsoft személyes fiókjai nem támogatottak. /Gyakori hibák-vagy/consumers-bérlők nem használhatók.
 
 - Mivel az integrált Windows-hitelesítés csendes folyamat:
-  - az alkalmazás felhasználójának előzőleg el kell juttatnia az alkalmazás használatát
-  - vagy a bérlői rendszergazdának előzőleg el kell juttatnia a bérlő összes felhasználója számára az alkalmazás használatát.
+  - Az alkalmazás felhasználójának előzőleg el kell juttatnia az alkalmazás használatát.
+  - Vagy a bérlői rendszergazdának előzőleg meg kell adnia a bérlő összes felhasználója számára az alkalmazás használatát.
   - Más szóval:
-    - Ön fejlesztőként megnyomta a Azure Portal a **Grant (Engedélyezés** ) gombot saját magára,
-    - vagy a bérlői rendszergazda megnyomta az alkalmazás regisztrációjának **API-engedélyek** lapján lévő **{bérlői tartomány} gombra vonatkozó engedélyezési/visszavonási rendszergazdai jóváhagyást** (lásd: a [webes API-k eléréséhez szükséges engedélyek hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis)).
-    - vagy lehetősége van arra, hogy a felhasználók beleegyeznek az alkalmazásba (lásd: [egyéni felhasználói engedély kérése](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent))
-    - vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba (lásd: [rendszergazdai engedély](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant))
+    - A fejlesztőként a Azure Portal a **Grant (Engedélyezés** ) gombot saját maga is kiválasztva.
+    - Vagy a bérlői rendszergazda a (z) **{bérlői tartomány} gomb engedélyezés/visszavonás rendszergazdai jóváhagyása** elemét választotta az alkalmazás regisztrációjának **API-engedélyek** lapján. További információ: [a webes API-k eléréséhez szükséges engedélyek hozzáadása](https://docs.microsoft.com/azure/active-directory/develop/quickstart-configure-app-access-web-apis#add-permissions-to-access-web-apis).
+    - Vagy lehetősége van arra, hogy a felhasználók beleegyezett az alkalmazásba. További információ: [egyéni felhasználói engedély kérése](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-individual-user-consent).
+    - Vagy megadta a lehetőséget, hogy a bérlői rendszergazda beleegyezett az alkalmazásba. További információ: [rendszergazdai beleegyezett](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent#requesting-consent-for-an-entire-tenant).
 
-- Ez a folyamat engedélyezve van a .net Desktop, a .net Core és a Windows Universal (UWP) alkalmazásokhoz.
+- Ez a folyamat engedélyezve van a .NET Desktop, a .NET Core és a UWP alkalmazásokhoz.
 
-További információ a beleegyező adatokról: a [Microsoft Identity platform engedélyei és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent)
+További információ a beleegyező adatokról: a [Microsoft Identity platform engedélyei és beleegyezik](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent).
 
-### <a name="how-to-use-it"></a>Használat
+### <a name="learn-how-to-use-it"></a>Tudnivalók a használatáról
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-A MSAL.NET-ben a következőt kell használnia:
+A MSAL.NET-ben a következőket kell használnia:
 
 ```csharp
 AcquireTokenByIntegratedWindowsAuth(IEnumerable<string> scopes)
 ```
 
-Általában csak egy paraméterre van szükség (`scopes`). Azonban attól függően, hogy a Windows-rendszergazda milyen módon beállította a házirendeket, lehetséges, hogy a Windows-gépen lévő alkalmazások nem tudják megkeresni a bejelentkezett felhasználót. Ebben az esetben használjon egy második módszert `.WithUsername()` és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként – `joe@contoso.com`. A .NET Core-on csak a Felhasználónév elérhető túlterhelése érhető el, mivel a .NET Core platform nem tudja megkérni a felhasználónevet az operációs rendszernek.
+Általában csak egy paraméterre van szükség (`scopes`). Attól függően, hogy a Windows-rendszergazda hogyan állította be a házirendeket, előfordulhat, hogy a Windows rendszerű gépén lévő alkalmazások nem jogosultak a bejelentkezett felhasználó keresésére. Ebben az esetben használjon egy második módszert, `.WithUsername()`t, és adja át a bejelentkezett felhasználó felhasználónevét UPN formátumként, például `joe@contoso.com`. A .NET Core-on csak a Felhasználónév elérhető túlterhelése érhető el, mert a .NET Core platform nem tudja megkérni a felhasználónevet az operációs rendszernek.
 
-A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a lekérhető kivételek típusára és azok enyhítésére
+A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a beolvasott kivételek típusára és azok enyhítésére.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -520,11 +521,11 @@ static async Task GetATokenForGraph()
 }
 ```
 
-A AcquireTokenByIntegratedWindowsAuthentication lehetséges módosítók listájáért lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods)
+A AcquireTokenByIntegratedWindowsAuthentication lehetséges módosítók listájáért lásd: [AcquireTokenByIntegratedWindowsAuthParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyintegratedwindowsauthparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Ez a kivonat a [MSAL Java dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)származik. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -554,41 +555,40 @@ Ez a folyamat nem vonatkozik a MacOS-re.
 
 ---
 
-## <a name="username--password"></a>Felhasználónév/jelszó
+## <a name="username-and-password"></a>Felhasználónév és jelszó
 
 A tokent a Felhasználónév és a jelszó megadásával is megvásárolhatja. Ez a folyamat korlátozott, és nem ajánlott, de továbbra is használhatók a szükséges esetek.
 
 ### <a name="this-flow-isnt-recommended"></a>Ez a folyamat nem ajánlott
 
-Ez a folyamat **nem ajánlott** , mert az alkalmazás arra kéri a felhasználót, hogy a jelszava ne legyen biztonságos. A problémával kapcsolatos további információkért tekintse meg [ezt a cikket](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). A tokenek Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Ellenkező esetben használhatja az [eszköz kódját](https://aka.ms/msal-net-device-code-flow) is
+Ez a folyamat *nem ajánlott* , mert az alkalmazás arra kéri a felhasználót, hogy a jelszavuk ne legyen biztonságos. További információ: [Mi a megoldás a jelszavak egyre növekvő problémájára?](https://news.microsoft.com/features/whats-solution-growing-problem-passwords-says-microsoft/). A tokenek Windows-tartományhoz csatlakoztatott gépeken való csendes beszerzésének előnyben részesített folyamata [integrált Windows-hitelesítés](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Integrated-Windows-Authentication). Az [eszköz kódjának folyamatát](https://aka.ms/msal-net-device-code-flow)is használhatja.
 
 > [!NOTE]
-> Bár ez bizonyos esetekben hasznos lehet (DevOps forgatókönyvek), ha olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, érdemes meggondolni, hogyan helyezheti el onnan. A Felhasználónév/jelszó használatával számos dolgot ad meg:
+> A Felhasználónév és a jelszó használata bizonyos esetekben hasznos, például DevOps forgatókönyvek esetén. Ha azonban olyan interaktív helyzetekben szeretné használni a felhasználónevet és a jelszót, ahol a saját felhasználói felületét adja meg, gondolja át, hogyan helyezheti át. Felhasználónév és jelszó használatával több dolgot is megadhat:
 >
-> - a modern identitás alapvető alapelvei: a jelszó bekerül, majd újra lejátszva. Mivel egy titkos megosztási titok ezt a fogalmát felhasználhatja.
-> Ez nem kompatibilis a jelszóval.
-> - az MFA-t igénylő felhasználóknak nem lehet bejelentkezniük (mivel nincs interakció)
-> - A felhasználók nem tudják elvégezni az egyszeri bejelentkezést
+> - A modern identitás alapvető vonalai. A jelszó beolvasható és visszajátszható, mivel a közös titkos kulcs elfogása megoldható. Nem kompatibilis a jelszóval.
+> - Az MFA-t nem használó felhasználóknak nem lehet bejelentkezniük, mert nincs interakció.
+> - A felhasználók nem végezhetnek egyszeri bejelentkezést (SSO).
 
 ### <a name="constraints"></a>Korlátozások
 
 A következő korlátozások is érvényesek:
 
-- A Felhasználónév/jelszó folyamat nem kompatibilis a feltételes hozzáféréssel és a többtényezős hitelesítéssel: Ha az alkalmazás egy Azure AD-bérlőben fut, ahol a bérlői rendszergazda a többtényezős hitelesítést igényli, nem használhatja ezt a folyamatot. Számos szervezet ezt teszi.
-- Csak munkahelyi és iskolai fiókokhoz használható (nem MSA)
-- A folyamat elérhető a .net Desktopban és a .net Core-on, de nem a UWP-on.
+- A Felhasználónév és a jelszó folyamata nem kompatibilis a feltételes hozzáféréssel és a többtényezős hitelesítéssel. Ennek következményeként, ha az alkalmazás egy Azure AD-bérlőn fut, ahol a bérlői rendszergazda többtényezős hitelesítést igényel, nem használhatja ezt a folyamatot. Számos szervezet ezt teszi.
+- Csak a munkahelyi és iskolai fiókok (nem MSA) esetében működik.
+- A folyamat elérhető a .NET Desktopban és a .NET Core-on, de nem a UWP-on.
 
 ### <a name="b2c-specifics"></a>B2C-sajátosságok
 
-[További információ a ROPC a B2C-vel való használatáról](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
+További információ: erőforrás- [tulajdonosi jelszó hitelesítő adatai (ROPC) a B2C-vel](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/AAD-B2C-specifics#resource-owner-password-credentials-ropc-with-b2c).
 
-### <a name="how-to-use-it"></a>Hogyan kell használni?
+### <a name="use-it"></a>Használat
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-a `IPublicClientApplication`a metódust tartalmazza `AcquireTokenByUsernamePassword`
+a `IPublicClientApplication`a `AcquireTokenByUsernamePassword`metódust tartalmazza.
 
-Az alábbi minta egy egyszerűsített esetet mutat be
+Az alábbi példa egyszerűsített esetet mutat be.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -629,7 +629,7 @@ static async Task GetATokenForGraph()
 }
 ```
 
-A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a lekérhető kivételek típusára és azok enyhítésére
+A következő minta a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a beolvasott kivételek típusára és azok enyhítésére.
 
 ```csharp
 static async Task GetATokenForGraph()
@@ -791,11 +791,11 @@ static async Task GetATokenForGraph()
 }
 ```
 
-A `AcquireTokenByUsernamePassword`alkalmazható módosítókkal kapcsolatos részletekért lásd: [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods)
+A `AcquireTokenByUsernamePassword`alkalmazható módosítókkal kapcsolatos további információkért lásd: [AcquireTokenByUsernamePasswordParameterBuilder](/dotnet/api/microsoft.identity.client.acquiretokenbyusernamepasswordparameterbuilder?view=azure-dotnet-preview#methods).
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+A következő kivonat a [MSAL Java dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)származik. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```Java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -842,7 +842,7 @@ future.handle((res, ex) -> {
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Ez a [MSAL Python dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)kivonata.
+Ez a kivonat a [MSAL Python dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)származik.
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -872,27 +872,27 @@ if not result:
 
 # <a name="macostabmacos"></a>[MacOS](#tab/macOS)
 
-Ez a folyamat nem támogatott a macOS rendszerhez készült MSAL.
+Ez a folyamat nem támogatott a macOS-MSAL.
 
 ---
 
-## <a name="command-line-tool-without-web-browser"></a>Parancssori eszköz (webböngésző nélkül)
+## <a name="command-line-tool-without-a-web-browser"></a>Webböngésző nélküli parancssori eszköz
 
 ### <a name="device-code-flow"></a>Eszköz kódjának folyamata
 
-Ha olyan parancssori eszközt írunk (amely nem rendelkezik webvezérlőkkel), és nem szeretné használni az előző folyamatokat, az eszköz kódját kell használnia.
+Ha olyan parancssori eszközt ír, amely nem rendelkezik webvezérlőkkel, és nem kívánja használni az előző folyamatokat, akkor az eszköz kódját kell használnia.
 
-Az Azure AD-vel való interaktív hitelesítéshez webböngészőre van szükség (részletekért lásd: [böngészők használata](https://aka.ms/msal-net-uses-web-browser)). Ha azonban a felhasználókat olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt (például egy másik számítógépet vagy egy mobiltelefont) használjon az interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, kifejezetten ezekhez az eszközökhöz/operációs rendszerekhez. Ilyen alkalmazások például a iOT-on vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
+Az Azure AD-vel való interaktív hitelesítéshez webböngésző szükséges. További információ: [böngészők használata](https://aka.ms/msal-net-uses-web-browser). Ha olyan eszközökön vagy operációs rendszereken szeretné hitelesíteni a felhasználókat, amelyek nem biztosítanak webböngészőt, az eszköz kódjának folyamata lehetővé teszi, hogy a felhasználó egy másik eszközt, például egy számítógépet vagy egy mobiltelefont használjon interaktív bejelentkezéshez. Az eszköz kódjának használatával az alkalmazás egy kétlépéses folyamaton keresztül szerzi be a jogkivonatokat, amelyeket az eszközökhöz vagy az operációs rendszerhez terveztek. Ilyen alkalmazások például a iOT vagy parancssori eszközökön (CLI) futó alkalmazások. Az a gondolat, hogy:
 
-1. Ha felhasználói hitelesítésre van szükség, az alkalmazás egy kódot biztosít, és arra kéri a felhasználót, hogy használjon egy másik eszközt (például egy internetkapcsolattal rendelkező okostelefont), hogy navigáljon egy URL-címre (például `https://microsoft.com/devicelogin`), ahol a rendszer kéri a felhasználótól a kód megadását. Ezzel a weblap a felhasználót a normál hitelesítési felülettel irányítja át, beleértve a hozzájárulási kéréseket és a többtényezős hitelesítést, ha szükséges.
+1. Ha felhasználói hitelesítésre van szükség, az alkalmazás kódot biztosít a felhasználó számára. A felhasználónak meg kell adnia egy másik eszközt, például egy internetkapcsolattal rendelkező okostelefont, hogy megnyissa az URL-címet (például `https://microsoft.com/devicelogin`). Ezután a rendszer megkéri a felhasználót a kód megadására. Ennek megfelelően a weblap egy normál hitelesítési felülettel vezeti a felhasználót, és szükség esetén beletartozik a hozzájárulási kérések és a többtényezős hitelesítés.
 
-2. A sikeres hitelesítés után a parancssori alkalmazás egy visszaadott csatornán keresztül kapja meg a szükséges jogkivonatokat, és ezt fogja használni a webes API-hívások igény szerinti elvégzéséhez.
+2. A sikeres hitelesítés után a parancssori alkalmazás egy visszaadott csatornán keresztül fogadja a szükséges jogkivonatokat, és a használatával a szükséges webes API-hívásokat hajtja végre.
 
-### <a name="how-to-use"></a>Hogyan használható?
+### <a name="use-it"></a>Használat
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
-a `IPublicClientApplication`egy `AcquireTokenWithDeviceCode` nevű metódust tartalmaz.
+a `IPublicClientApplication``AcquireTokenWithDeviceCode`nevű metódust tartalmaz.
 
 ```csharp
  AcquireTokenWithDeviceCode(IEnumerable<string> scopes,
@@ -901,10 +901,10 @@ a `IPublicClientApplication`egy `AcquireTokenWithDeviceCode` nevű metódust tar
 
 A metódus a következő paramétereket veszi figyelembe:
 
-- A `scopes` hozzáférési token igényléséhez
-- Visszahívás, amely a `DeviceCodeResult` fogja fogadni
+- A `scopes` hozzáférési token igényléséhez.
+- A `DeviceCodeResult`fogadó visszahívás.
 
-  ![image](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
+  ![DeviceCodeResult tulajdonságai](https://user-images.githubusercontent.com/13203188/56024968-7af1b980-5d11-11e9-84c2-5be2ef306dc5.png)
 
 A következő mintakód a legfrissebb eseteket mutatja be, és magyarázatokkal szolgál a beolvasott kivételek típusáról és azok enyhítéséről.
 
@@ -997,7 +997,7 @@ private async Task<AuthenticationResult> AcquireByDeviceCodeAsync(IPublicClientA
 ```
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-Ez a [MSAL Java dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)kivonata. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
+Ez a kivonat a [MSAL Java dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/)származik. A MSAL Java dev-mintákban használt osztály a következő mintákat konfigurálja: [TestData](https://github.com/AzureAD/microsoft-authentication-library-for-java/blob/dev/src/samples/public-client/TestData.java).
 
 ```java
 PublicClientApplication app = PublicClientApplication.builder(TestData.PUBLIC_CLIENT_ID)
@@ -1030,7 +1030,7 @@ future.join();
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-Ez a [MSAL Python dev Samples](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)kivonata.
+Ez a kivonat a [MSAL Python dev-mintákból](https://github.com/AzureAD/microsoft-authentication-library-for-python/blob/dev/sample/)származik.
 
 ```Python
 # Create a preferably long-lived app instance which maintains a token cache.
@@ -1089,35 +1089,35 @@ Ez a folyamat nem vonatkozik a MacOS-re.
 
 A MSAL.NET-ben alapértelmezés szerint a memóriában tárolt jogkivonat-gyorsítótár van megadva.
 
-### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-appsweb-apis"></a>A szerializálás testreszabható a Windows asztali alkalmazásokban és webalkalmazásokban/webes API-kon
+### <a name="serialization-is-customizable-in-windows-desktop-apps-and-web-apps-or-web-apis"></a>A szerializálás testreszabható a Windows asztali alkalmazásokban és webalkalmazásokban, illetve webes API-kon
 
-Ha a .NET-keretrendszer és a .NET Core esetében nem csinál semmit, a memóriában tárolt jogkivonat-gyorsítótár az alkalmazás időtartamára tart. Annak megismeréséhez, hogy a szerializálás miért nincs megadva a dobozban, ne feledje, hogy a MSAL .NET Desktop/Core alkalmazások konzolos vagy Windows-alkalmazások lehetnek (amelyek hozzáférhetnek a fájlrendszerhez), de a webalkalmazásokhoz vagy webes API-hoz **is** . Ezek a webalkalmazások és webes API-k bizonyos gyorsítótárazási mechanizmusokat használhatnak, például adatbázisokat, elosztott gyorsítótárat, Redis gyorsítótárat és így tovább. Ha állandó jogkivonat-gyorsítótárazási alkalmazást szeretne létrehozni a .NET Desktopban vagy a Core-ban, testre kell szabnia a szerializálást.
+Ha a .NET-keretrendszer és a .NET Core esetében nem csinál semmit, a memóriában tárolt jogkivonat-gyorsítótár az alkalmazás időtartamára tart. Annak megismeréséhez, hogy a szerializálás miért nem áll rendelkezésre a dobozból, ne feledje, hogy a MSAL .NET Desktop vagy .NET Core alkalmazások lehetnek konzolos vagy Windows-alkalmazások (amelyek hozzáférhetnek a fájlrendszerhez), de webalkalmazásokhoz vagy webes API-khoz *is* . Ezek a webalkalmazások és webes API-k bizonyos gyorsítótárazási mechanizmusokat, például adatbázisokat, elosztott gyorsítótárat és Redis gyorsítótárat használhatnak. Ha állandó jogkivonat-gyorsítótárazási alkalmazást szeretne telepíteni a .NET Desktopban vagy a .NET Core-ban, testre kell szabnia a szerializálást.
 
 A jogkivonat-gyorsítótár szerializálásakor részt vevő osztályok és felületek a következők:
 
-- ``ITokenCache``, amely a jogkivonat-gyorsítótár szerializálási kéréseire való előfizetéshez, valamint a gyorsítótár szerializálására vagy deszerializálására szolgáló metódusokat határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0)
+- ``ITokenCache``, amely a jogkivonat-gyorsítótár szerializálási kéréseire előfizetett eseményeket, valamint a gyorsítótár szerializálására vagy deszerializálására szolgáló metódusokat határozza meg különböző formátumokban (ADAL v 3.0, MSAL 2. x és MSAL 3. x = ADAL v 5.0).
 - ``TokenCacheCallback`` visszahívást kapott az eseményekre, így kezelheti a szerializálást. a rendszer a ``TokenCacheNotificationArgs``típusú argumentumokkal hívja meg őket.
-- ``TokenCacheNotificationArgs`` csak az alkalmazás ``ClientId``ét és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető
+- ``TokenCacheNotificationArgs`` csak az alkalmazás ``ClientId`` és annak a felhasználónak a hivatkozását adja meg, amelyhez a jogkivonat elérhető.
 
-  ![image](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
+  ![Jogkivonat-gyorsítótár szerializálási diagramja](https://user-images.githubusercontent.com/13203188/56027172-d58d1480-5d15-11e9-8ada-c0292f1800b3.png)
 
 > [!IMPORTANT]
 > A MSAL.NET jogkivonat-gyorsítótárat hoz létre az Ön számára, és megadja a `IToken` gyorsítótárat az alkalmazás `UserTokenCache` és `AppTokenCache` tulajdonságainak meghívásakor. Nem kell önállóan megvalósítani a felületet. Az egyéni jogkivonat-gyorsítótár szerializálásának megvalósításakor a következőt kell tennie:
 >
-> - Reagáljon `BeforeAccess`re, és `AfterAccess` "Events" (vagy *aszinkron* ). A`BeforeAccess` delegált feladata a gyorsítótár deszerializálása, míg a `AfterAccess` az egyik felelős a gyorsítótár szerializálásához.
-> - Az események egy része tárolja vagy betölti a blobokat, amelyeket az Event argumentumon át kell adni a kívánt tárterülethez.
+> - Reagáljon `BeforeAccess`ra és `AfterAccess` eseményekre, vagy azok *aszinkron* társaira. A`BeforeAccess` delegált feladata a gyorsítótár deszerializálása. A `AfterAccess` delegált felelős a gyorsítótár szerializálásához.
+> - Ismerje meg, hogy ezeknek az eseményeknek a része tárolja vagy betölti a blobokat, amelyeket az Event argumentumon át kell adni a kívánt tárterülethez.
 
-A stratégiák eltérőek attól függően, hogy egy nyilvános ügyfélalkalmazás (asztali) vagy egy bizalmas ügyfélalkalmazás (webalkalmazás/webes API, Daemon-alkalmazás) esetében a jogkivonat-gyorsítótár szerializálását írja-e a rendszer.
+A stratégiák eltérőek attól függően, hogy egy nyilvános ügyfélalkalmazás, például egy asztali számítógép vagy egy bizalmas ügyfélalkalmazás (például egy webalkalmazás vagy webes API vagy egy démon-alkalmazás) esetében a jogkivonat-gyorsítótár szerializálását írja-e.
 
-Mivel a MSAL v2. x-ben több lehetőség is van, attól függően, hogy a gyorsítótárat csak a MSAL.NET formátumra kívánja-e szerializálni (az egységes formátumú gyorsítótár, amely közös a MSAL, hanem a platformok között is), vagy ha támogatni kívánja az [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) jogkivonat-gyorsítótár szerializálását is a ADAL V3 esetében.
+A MSAL v2. x óta számos lehetőség közül választhat. Az Ön választása attól függ, hogy csak a MSAL.NET-formátumra kívánja szerializálni a gyorsítótárat, amely egységes formátumú gyorsítótár, amely közös a MSAL, hanem a platformok között is. Az is előfordulhat, hogy támogatni kívánja az [örökölt](https://github.com/AzureAD/azure-activedirectory-library-for-dotnet/wiki/Token-cache-serialization) jogkivonat-gyorsítótár ADAL v3-es szerializálását is.
 
-A jogkivonat-gyorsítótár szerializálásának testreszabásával megoszthatja a 3. x, a ADAL.NET 5. x és a MSAL.NET közötti SSO-állapotot a következő minta ADAL.NET: [Active-Directory-DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)
+A jogkivonat-gyorsítótár szerializálásának testreszabásával megoszthatja a 3. x, a ADAL.NET 5. x és a MSAL.NET közötti egyszeri bejelentkezéses állapotot a ADAL.NET ( [Active Directory – DotNet-v1-to-v2](https://github.com/Azure-Samples/active-directory-dotnet-v1-to-v2)) részben leírtak szerint.
 
 ### <a name="simple-token-cache-serialization-msal-only"></a>Egyszerű jogkivonat-gyorsítótár szerializálása (csak MSAL)
 
-Az alábbi példa egy jogkivonat-gyorsítótár egyéni szerializálásának naiv implementációját mutatja be asztali alkalmazásokhoz. Itt a felhasználói jogkivonat gyorsítótára ugyanabban a mappában található fájlban van, mint az alkalmazás.
+Az alábbi példa egy jogkivonat-gyorsítótár egyéni szerializálásának naiv implementációja asztali alkalmazásokhoz. Itt a felhasználói jogkivonat gyorsítótára ugyanabban a mappában található fájlban van, mint az alkalmazás.
 
-Az alkalmazás létrehozása után engedélyezheti a szerializálást az alkalmazás átadásával ``TokenCacheHelper.EnableSerialization()`` meghívásával `UserTokenCache`
+Az alkalmazás létrehozása után engedélyezheti a szerializálást ``TokenCacheHelper.EnableSerialization()`` meghívásával és az alkalmazás `UserTokenCache`ának átadásával.
 
 ```csharp
 app = PublicClientApplicationBuilder.Create(ClientId)
@@ -1175,14 +1175,14 @@ static class TokenCacheHelper
  }
 ```
 
-A Windows, Mac és Linux rendszerű asztali alkalmazásokhoz készült, a termék minőségi jogkivonat-gyorsítótárának fájl alapú szerializáló előzetes verziója a [Microsoft. Identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú könyvtárában érhető el. Az alkalmazásokban a következő nuget-csomaggal veheti fel: [Microsoft. Identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
+A Windows, Mac és Linux rendszerű asztali alkalmazásokhoz készült, a [Microsoft. Identity. Client. Extensions. Msal](https://github.com/AzureAD/microsoft-authentication-extensions-for-dotnet/tree/master/src/Microsoft.Identity.Client.Extensions.Msal) nyílt forráskódú függvénytárában a termék minőségi jogkivonat-gyorsítótárának előzetes verziója érhető el a nyilvános ügyfélalkalmazások számára. Az alkalmazásokban a következő NuGet-csomaggal veheti fel: [Microsoft. Identity. Client. Extensions. Msal](https://www.nuget.org/packages/Microsoft.Identity.Client.Extensions.Msal/).
 
 > [!NOTE]
-> Nyilatkozat. A Microsoft. Identity. Client. Extensions. Msal könyvtár a MSAL.NET-en keresztüli kiterjesztés. Az ezekben a tárakban lévő osztályok a jövőben MSAL.NET a későbbiekben, ahogy az vagy a változtatások miatt.
+> Jogi nyilatkozat: a Microsoft. Identity. Client. Extensions. Msal függvénytár a MSAL.NET-en keresztüli kiterjesztés. Az ezekben a tárakban lévő osztályok a jövőben MSAL.NET a későbbiekben, ahogy az vagy a változtatások miatt.
 
 ### <a name="dual-token-cache-serialization-msal-unified-cache--adal-v3"></a>Kettős jogkivonat gyorsítótár-szerializálása (MSAL Unified cache + ADAL v3)
 
-Ha azt szeretné, hogy a jogkivonat-gyorsítótár szerializálását az egyesített gyorsítótár formátumával (Common ADAL.NET 4. x és MSAL.NET 2. x, valamint ugyanazon generáció vagy régebbi, ugyanazon a platformon lévő más MSALs) alkalmazza, akkor a következő kód ihlette. :
+Előfordulhat, hogy a jogkivonat-gyorsítótár szerializálását az egyesített gyorsítótár formátumával szeretné megvalósítani. Ez a formátum közös a 4. x és a MSAL.NET 2. x ADAL.NET, valamint ugyanazon generáció vagy régebbi MSALs ugyanazon a platformon. A Get a következő kód ihlette:
 
 ```csharp
 string appLocation = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location;

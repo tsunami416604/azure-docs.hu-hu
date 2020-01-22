@@ -16,12 +16,12 @@ ms.author: twhitney
 ms.reviwer: hahamil
 ms.custom: aaddev, identityplatformtop40
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: babbaf75b91dfb870ba5001d23f62c5461a28218
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 70f629af35978771d48d0a29f9ec625628c3b630
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030301"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291260"
 ---
 # <a name="shared-device-mode-for-android-devices"></a>Megosztott eszköz mód Android-eszközökhöz
 
@@ -39,7 +39,7 @@ A megosztott eszköz mód az eszköz Microsoft Identity-beli felügyeletét is b
 Megosztott eszköz üzemmódú alkalmazás létrehozásához a fejlesztők és a felhőalapú eszközök rendszergazdái együttesen működnek:
 
 - A fejlesztők egyfiókos alkalmazást írnak (a több fiókból álló alkalmazások nem támogatottak a megosztott eszköz üzemmódban), `"shared_device_mode_supported": true` az alkalmazás konfigurációjában, és kódot írhatnak az olyan dolgok kezelésére, mint például a megosztott eszközök kijelentkezése.
-- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](https://www.microsoft.com/account/authenticator)használatával csak a [Cloud Device rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Cloud Device Administrator**használatával konfigurálhatja a szervezeti szerepkörök tagságát.
+- Az eszközök rendszergazdái az eszköz megosztását a hitelesítő alkalmazás telepítésével, valamint a hitelesítő alkalmazás használatával a megosztott módba állításával készíti el. A [hitelesítő alkalmazás](https://docs.microsoft.com/azure/active-directory/user-help/user-help-auth-app-overview)használatával csak a [Cloud Device rendszergazdai](https://docs.microsoft.com/azure/active-directory/users-groups-roles/directory-assign-admin-roles#cloud-device-administrator) szerepkörrel rendelkező felhasználók helyezhetnek el egy eszközt megosztott módba. A Azure Portal a (z) **Azure Active Directory** > **szerepkörök és rendszergazdák** > **Cloud Device Administrator**használatával konfigurálhatja a szervezeti szerepkörök tagságát.
 
  Ez a cikk elsősorban a fejlesztőknek szól.
 

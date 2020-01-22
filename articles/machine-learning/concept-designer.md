@@ -9,14 +9,14 @@ ms.topic: conceptual
 ms.author: peterlu
 author: peterclu
 ms.date: 11/12/2019
-ms.openlocfilehash: d3a12dec64d481c5c877039fecc71b46f224e91d
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 8208bbf4d196091a6fe4cd962ddc7373d303e125
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541828"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312430"
 ---
-# <a name="what-is-azure-machine-learning-designer-preview"></a>Mi az a Azure Machine Learning Designer (előzetes verzió)? 
+# <a name="what-is-azure-machine-learning-designer"></a>Mi az Azure Machine Learning Designer? 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcsolja az [adatkészleteket](#datasets) és a [modulokat](#module) egy interaktív vásznon a gépi tanulási modellek létrehozásához. A tervező megismeréséhez tekintse meg a következő [oktatóanyagot: az autó árának előrejelzése a tervezővel](tutorial-designer-automobile-price-train-score.md)
@@ -70,7 +70,7 @@ Minden alkalommal, amikor futtat egy folyamatot, a folyamat és annak eredménye
 
 A folyamat-futtatások [kísérletekbe](concept-azure-machine-learning-architecture.md#experiments) vannak csoportosítva a futtatási előzmények rendszerezéséhez. Megadhatja a kísérletet minden egyes folyamat futtatásához. 
 
-## <a name="datasets"></a>Adathalmazok
+## <a name="datasets"></a>Adatkészletek
 
 A Machine learning-adatkészlet megkönnyíti az adataihoz való hozzáférést és azokkal való munkavégzést. A Designerben számos minta adatkészletet tartalmaz a kísérletezéshez. A szükségesnél több adatkészletet is [regisztrálhat](how-to-create-register-datasets.md) .
 
@@ -116,13 +116,13 @@ A tervező létrehoz egy [PublishedPipeline](https://docs.microsoft.com/python/a
 
 ## <a name="moving-from-the-visual-interface-to-the-designer"></a>Áthelyezés a vizualizáció kezelőfelületéről a tervezőbe
 
-A Visual Interface (előzetes verzió) frissítve lett, és mostantól Azure Machine Learning Designer (előzetes verzió). A tervező olyan folyamat-alapú háttérrendszer használatára lett újratervezve, amely teljesen integrálódik a Azure Machine Learning többi szolgáltatásával. 
+A Visual Interface (előzetes verzió) frissítve lett, és most már Azure Machine Learning Designer. A tervező olyan folyamat-alapú háttérrendszer használatára lett újratervezve, amely teljesen integrálódik a Azure Machine Learning többi szolgáltatásával. 
 
 A frissítések eredményeképpen a vizuális felület egyes fogalmai és kifejezései módosultak vagy átnevezve lettek. A legfontosabb koncepcionális változásokért tekintse meg az alábbi táblázatot. 
 
 | Koncepció a Designerben | Korábban a vizuális felületen |
 | ---- |:----:|
-| Folyamat piszkozata | Kísérlet |
+| Folyamat piszkozata | Experiment |
 | Valós idejű végpont | Webszolgáltatás |
 
 ### <a name="migrating-to-the-designer"></a>Migrálás a tervezőbe

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 999f78ab08e1a2c9dd6b28d853e49fbb559fab83
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 0e92201552b4d448a619a801d2ee64032c8bbefe
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493851"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314436"
 ---
 # <a name="convert-to-csv-module"></a>Konvertálás CSV-modulba
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal olyan CSV-formátumba alakíthatja át az adatkészletet, amely letölthető, exportálható vagy megosztható R-vagy Python-parancsfájl-modulok használatával.
 
@@ -30,31 +30,28 @@ Még ha Azure Machine Learning is dolgozik a legtöbb munkában, időnként elő
 
 + Töltse le a CSV-fájlt, és nyissa meg az Excelben, vagy importálja egy kapcsolódó adatbázisba.  
 + Mentse a CSV-fájlt a Felhőbeli tárhelyre, és kapcsolódjon hozzá Power BI a vizualizációk létrehozásához.  
-+ Az R és a Python alkalmazásban az adatfeldolgozáshoz használja a CSV formátumot. Kattintson a jobb gombbal a modul kimenetére, hogy létrehozza az adatok közvetlenül a Pythonból vagy egy Jupyter-jegyzetfüzetből való eléréséhez szükséges kódot. 
++ Az R és a Python alkalmazásban az adatfeldolgozáshoz használja a CSV formátumot. 
 
-Ha az adatkészletet CSV-fájllá alakítja át, a fájl az Azure ML-munkaterületen lesz mentve. Az Azure Storage segédprogrammal közvetlenül is megnyithatja és használhatja a fájlt, vagy kattintson a jobb gombbal a modul kimenetére, majd töltse le a CSV-fájlt a számítógépére, vagy használja az R vagy Python kódban.  
+Az adatkészlet CSV-re konvertálásakor a rendszer az Azure ML-munkaterületen menti a CSV-fájlt. Az Azure Storage segédprogram használatával közvetlenül is megnyithatja és használhatja a fájlt. A CSV-t a tervezőben is elérheti, ha kiválasztja a **Konvertálás CSV** -re modult, majd a jobb oldali panel **outputs (kimenetek** ) lapján a hisztogram ikont választja a kimenet megtekintéséhez. A CSV-fájlt letöltheti az eredmények mappájából egy helyi könyvtárba.  
 
 ## <a name="how-to-configure-convert-to-csv"></a>A CSV-re történő konvertálás konfigurálása
 
 
-1.  Adja hozzá a [Konvertálás CSV](./convert-to-csv.md) -modult a folyamathoz. Ez a modul a tervező **adatformátum-konverziók** csoportjában található. 
+1.  Adja hozzá a konvertálás CSV-modult a folyamathoz. Ez a modul a Designer **Adatátalakítási** csoportjában található. 
 
 2. Csatlakoztatása bármely modulhoz, amely egy adatkészletet eredményez.   
   
 3.  A folyamat futtatása.
 
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
   
 
-Kattintson duplán a CSV-re történő [Konvertálás](./convert-to-csv.md)kimenetére, és válasszon egyet ezek közül.  
+A jobb oldali panelen válassza a **kimenetek** fület a CSV-re való **konvertáláshoz**, és válassza ki az egyik ikont a **portok kimenete**alatt.  
 
- + **Eredmény-adatkészlet – > Letöltés**: azonnal megnyithatja az adat másolatát CSV formátumban, amelyet a helyi mappába menthet. Ha nem ad meg mappát, a rendszer az alapértelmezett fájlnevet alkalmazza, és a CSV-fájlt a helyi **letöltések** könyvtárba menti.
++ **Adatkészlet regisztrálása**: válassza ki az ikont, és mentse a CSV-fájlt az Azure ml-munkaterületre külön adatkészletként. Az adatkészletet modulként is megtalálhatja a modul fájában a **saját adatkészletek** szakaszban.
 
+ + **Kimenet megtekintése**: válassza ki a szem ikont, és kövesse az utasításokat a **Results_dataset** mappa tallózásához, majd töltse le az adat. csv fájlt.
 
- + **Eredmény adatkészlet – > mentés adatkészletként**: a CSV-fájlt visszamenti az Azure ml-munkaterületre külön adatkészletként.
-
- + **Adatelérési kód generálása**: az Azure ml két kódrészletet hoz létre az adateléréshez a Python vagy az R használatával. Az adatelemek eléréséhez másolja a kódrészletet az alkalmazásba. (*Az adatelérési kód előállítása hamarosan elérhető lesz.* )
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

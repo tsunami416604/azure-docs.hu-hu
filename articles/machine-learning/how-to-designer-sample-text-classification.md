@@ -10,20 +10,20 @@ author: xiaoharper
 ms.author: zhanxia
 ms.reviewer: peterlu
 ms.date: 11/04/2019
-ms.openlocfilehash: 06a88ba1e477054aa6080baa9c9644d4da396442
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 73861456edbb7493038fbf2adbf12300d170cab2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771427"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311036"
 ---
 # <a name="build-a-classifier-to-predict-company-category-using-azure-machine-learning-designer"></a>Osztályozó létrehozása a vállalati kategória előrejelzéséhez Azure Machine Learning Designer használatával.
 
-**Designer (előzetes verzió) 7. minta**
+**7. tervező minta**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ez a minta azt mutatja be, hogyan használhatók a szöveges elemzési modulok a Azure Machine Learning Designerben (előzetes verzió) szöveges besorolási folyamat létrehozásához.
+Ez a minta azt mutatja be, hogyan használhatók szöveges elemzési modulok a Azure Machine Learning Designerben szöveges besorolási folyamat létrehozásához.
 
 A szöveges besorolás célja, hogy egy vagy több előre definiált osztályba vagy kategóriába rendeljen egy szövegrészt. A szöveg lehet dokumentum, hírek, keresési lekérdezés, e-mail, tweet, támogatási jegyek, felhasználói visszajelzés, felhasználói termék felülvizsgálata stb. A szöveges besorolás alkalmazása magában foglalja az újságcikkek és a hírek tartalmának kategorizálása, a weblapok rendszerezése hierarchikus kategóriákba, a levélszemét e-mailek szűrése, a hangulat elemzése, a felhasználók szándékának előrejelzése a keresési lekérdezésektől, az Útválasztás támogatási jegyek és a vásárlói visszajelzések elemzése. 
 

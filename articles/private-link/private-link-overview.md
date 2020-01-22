@@ -7,12 +7,13 @@ ms.service: private-link
 ms.topic: overview
 ms.date: 01/09/2020
 ms.author: allensu
-ms.openlocfilehash: 299cd81c05af385c435eaf3788e3d7e39c486623
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.custom: fasttrack-edit
+ms.openlocfilehash: f0c2f4c48875ca2e13a026c2c8ded8f217a97a08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867561"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293759"
 ---
 # <a name="what-is-azure-private-link-preview"></a>Mi az az Azure privát kapcsolat? (Előzetes verzió)
 Az Azure Private link lehetővé teszi az Azure Pásti-szolgáltatások (például az Azure Storage, a Azure Cosmos DB és a SQL Database) és az Azure által üzemeltetett ügyfél/partner szolgáltatások elérését a virtuális hálózat [privát végpontján](private-endpoint-overview.md) keresztül. A virtuális hálózat és a szolgáltatás közötti forgalom a Microsoft gerinchálózatán keresztül halad át, így kiküszöböli a nyilvános internet jelentette kitettséget. Létrehozhatja saját [privát kapcsolati szolgáltatását](private-link-service-overview.md) is a virtuális hálózaton (VNet), és saját maga is elvégezheti az ügyfelek számára. Az Azure Private link használatával történő telepítési és használati élmény konzisztens az Azure Pásti, az ügyfél és a megosztott partneri szolgáltatások között.
@@ -49,6 +50,7 @@ Az Azure Private link a következő előnyöket biztosítja:
 |  |  Azure Database for PostgreSQL – egyetlen kiszolgáló         | Összes nyilvános régió      |   Előzetes verzió      |
 |  |  A MySQL-hez készült Azure Database         | Összes nyilvános régió      |   Előzetes verzió      |
 |  |  A MariaDB-hez készült Azure Database         | Összes nyilvános régió      |   Előzetes verzió      |
+|  |  Azure Cognitive Search | USA 2. nyugati régiója, USA nyugati középső régiója, USA keleti régiója, USA déli középső régiója, Kelet-Ausztrália, Délkelet-Ausztrália | Előzetes verzió <br/> [További információ](/azure/search/service-create-private-endpoint) |
 
 A legfrissebb értesítésekért keresse fel az [Azure Virtual Network Updates oldalt](https://azure.microsoft.com/updates/?product=virtual-network).
 

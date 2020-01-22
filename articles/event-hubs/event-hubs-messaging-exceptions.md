@@ -13,12 +13,12 @@ ms.workload: na
 ms.custom: seodec18
 ms.date: 01/16/2020
 ms.author: shvija
-ms.openlocfilehash: 96eaae81a25e361c0041fb02099b8e0cb9da8c28
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: de5b95bd10bf72f60ba5d63c4b3a799556fcce33
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260453"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309778"
 ---
 # <a name="troubleshooting-guide-for-azure-event-hubs"></a>Az Azure Event Hubs hibaelhárítási útmutatója
 Ez a cikk a Event Hubs .NET-keretrendszer API-jai által generált .NET-kivételeket, valamint a hibaelhárítással kapcsolatos egyéb tippeket tartalmaz. 
@@ -104,18 +104,7 @@ ExceptionId: 00000000000-00000-0000-a48a-9c908fbe84f6-ServerBusyException: The r
 A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/időtúllépési problémák hibaelhárításához a *. servicebus.windows.net alatti összes szolgáltatáshoz. 
 
 - Tallózással keresse meg vagy a [wget](https://www.gnu.org/software/wget/) `https://<yournamespacename>.servicebus.windows.net/`. Segít ellenőrizni, hogy rendelkezik-e IP-szűréssel, illetve virtuális hálózati vagy tanúsítványlánc-problémákkal (a Java SDK használatakor leggyakrabban).
-- A következő parancs futtatásával ellenőrizze, hogy a tűzfal blokkolja-e a portokat. A használt portok a következők: 443 (HTTPS), 5671 (AMQP) és 9093 (Kafka). A használt könyvtártól függően más portok is használatban vannak. Itt látható a minta parancs, amely azt vizsgálja, hogy a 5671-es port blokkolva van-e.
 
-    ```powershell
-    tnc <yournamespacename>.servicebus.windows.net -port 5671
-    ```
-
-    Linux rendszeren:
-
-    ```shell
-    telnet <yournamespacename>.servicebus.windows.net 5671
-    ```
-    
     Példa a sikeres üzenetre:
     
     ```xml
@@ -131,6 +120,17 @@ A következő lépések segítséget nyújthatnak a kapcsolat/tanúsítvány/id�
             Bad Request. To know more visit https://aka.ms/sbResourceMgrExceptions. . TrackingId:b786d4d1-cbaf-47a8-a3d1-be689cda2a98_G22, SystemTracker:NoSystemTracker, Timestamp:2019-12-27T13:12:40
         </Detail>
     </Error>
+    ```
+- A következő parancs futtatásával ellenőrizze, hogy a tűzfal blokkolja-e a portokat. A használt portok a következők: 443 (HTTPS), 5671 (AMQP) és 9093 (Kafka). A használt könyvtártól függően más portok is használatban vannak. Itt látható a minta parancs, amely azt vizsgálja, hogy a 5671-es port blokkolva van-e.
+
+    ```powershell
+    tnc <yournamespacename>.servicebus.windows.net -port 5671
+    ```
+
+    Linux rendszeren:
+
+    ```shell
+    telnet <yournamespacename>.servicebus.windows.net 5671
     ```
 - Időnkénti kapcsolódási problémák esetén futtassa az alábbi parancsot, és ellenőrizze, hogy vannak-e eldobott csomagok. Ezzel a paranccsal a szolgáltatással 1 másodpercenként 25 különböző TCP-kapcsolatot kell létrehozni. Ezt követően megtekintheti, hogy a sikeres és sikertelen volt-e a TCP-kapcsolatok késése. Az `psping` eszközt [innen](/sysinternals/downloads/psping)töltheti le.
 

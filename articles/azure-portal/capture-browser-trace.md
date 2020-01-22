@@ -3,18 +3,18 @@ title: Böngésző nyomkövetésének rögzítése hibaelhárításhoz | Microso
 description: Hálózati információk rögzítése böngésző-nyomkövetésből a Azure Portal problémáinak elhárítása érdekében.
 services: azure-portal
 keywords: ''
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 01/09/2020
 ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 86a1f522810a29fa2f3188a2ef3a5e0a470187ba
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 2b506c9d15dafcd23b24207fe15ed0532939209f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030366"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310696"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző nyomkövetésének rögzítése hibaelhárításhoz
 

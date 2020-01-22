@@ -8,14 +8,14 @@ manager: johndeu
 ms.service: media-services
 ms.subservice: video-indexer
 ms.topic: article
-ms.date: 05/15/2019
+ms.date: 01/14/2020
 ms.author: anzaman
-ms.openlocfilehash: 44f97e3d9af9daac8d62ae42be76bd73dedbd453
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 370e9e515359e2e2e598db90aa379f796b13c3fe
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838269"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292399"
 ---
 # <a name="customize-a-person-model-with-the-video-indexer-api"></a>Személy modell testreszabása a Video Indexer API-val
 
@@ -35,38 +35,7 @@ Minden fiókhoz legfeljebb 50 személy-modell tartozik. Ha nincs szüksége a t�
 
 ## <a name="create-a-new-person-model"></a>Új személy modell létrehozása
 
-Hozzon létre egy új személy modellt a megadott fiókban. 
-
-### <a name="request-url"></a>Kérés URL-címe
-
-Ez egy POST-kérelem.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}
-```
-
-Alább látható a kérelem a Curlban.
-
-```curl
-curl -v -X POST "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?name={name}&accessToken={accessToken}"
-```
-
-[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?).
-
-### <a name="request-parameters"></a>Kérelmek paramétereinek megadása 
-
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
-|---|---|---|---|
-|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
-|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
-|név|sztring|Igen|A személy modelljének neve|
-|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
-
-### <a name="request-body"></a>A kérés törzse
-
-Ehhez a híváshoz nem szükséges további kérelem törzse.
-
-### <a name="response"></a>Válasz
+Ha új személy modellt szeretne létrehozni a megadott fiókban, használja a [create a person Model](https://api-portal.videoindexer.ai/docs/services/operations/operations/Create-Person-Model?) API-t.
 
 A válasz megadja az imént létrehozott személy modell nevét és a generált modell AZONOSÍTÓját, amelyet az alábbi példa formátuma követ.
 
@@ -81,73 +50,15 @@ Ezután használja a **personModelId** paraméter **azonosító** értékét, am
 
 ## <a name="delete-a-person-model"></a>Személy modell törlése
 
-Egyéni személy modell törlése a megadott fiókból. 
+Ha törölni szeretne egy egyéni személy modellt a megadott fiókból, használja a [személyes modell törlése](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?) API-t. 
 
 Miután sikeresen törölte a személy modelljét, a törölt modellt használó aktuális videók indexe változatlan marad, amíg újra nem indexeli őket. Az újraindexelés során a törölt modellben megnevezett arcok nem lesznek felismerhetők a modell használatával indexelt aktuális videók Video Indexer. ezeket az arcokat azonban továbbra is észleli a rendszer. A törölt modell használatával indexelt aktuális videók mostantól a fiók alapértelmezett személyének modelljét fogják használni. Ha a törölt modellből származó arcok a fiók alapértelmezett modelljében is megtalálhatók, akkor a rendszer továbbra is felismeri ezeket az arcokat a videókban.
-
-### <a name="request-url"></a>Kérés URL-címe
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}
-```
-
-Alább látható a kérelem a Curlban.
-```curl
-curl -v -X DELETE "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels/{id}?accessToken={accessToken}"
-```
-
-[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Delete-Person-Model?).
-
-### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
-
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
-|---|---|---|---|
-|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
-|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
-|id|sztring|Igen|A személy modell azonosítója (a személy modelljének létrehozásakor generált)|
-|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
-
-### <a name="request-body"></a>A kérés törzse
-
-Ehhez a híváshoz nem szükséges további kérelem törzse.
-
-### <a name="response"></a>Válasz
 
 A személy modelljének törlése után nincs visszaadott tartalom.
 
 ## <a name="get-all-person-models"></a>Összes modell lekérése
 
-A megadott fiókban található összes modell beolvasása. 
-
-### <a name="request-call"></a>Kérelem hívása
-
-Ez egy GET-kérelem.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}
-```
-
-Alább látható a kérelem a Curlban.
-
-```curl
-curl -v -X GET "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Customization/PersonModels?accessToken={accessToken}"
-```
-
-[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?).
-
-### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
-
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
-|---|---|---|---|
-|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
-|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
-|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
-
-### <a name="request-body"></a>A kérés törzse
-
-Ehhez a híváshoz nem szükséges további kérelem törzse.
-
-### <a name="response"></a>Válasz
+A megadott fiókban található összes modell beszerzéséhez használja a [személyre szabott modell](https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-Person-Models?) API-t.
 
 A válasz felsorolja a fiókban lévő összes személy modelljét (beleértve a megadott fiókban található alapértelmezett személy modellt is) és az alábbi példa formátumát követő neveket és azonosítókat.
 
@@ -174,43 +85,10 @@ Ha ez bekövetkezik, a rendszer felismeri, hogy ugyanaz az arc fordul elő a tö
 
 Frissíthet egy olyan arcot, amely új néven hírességként Video Indexer ismert. Az Ön által megadott új név elsőbbséget élvez a beépített híresség felismerésével szemben.
 
-### <a name="request-call"></a>Kérelem hívása
-
-Ez egy POST-kérelem.
-
-```
-https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}
-```
-
-Alább látható a kérelem a Curlban.
-
-```curl
-curl -v -X PUT "https://api.videoindexer.ai/{location}/Accounts/{accountId}/Videos/{videoId}/Index/Faces/{faceId}?accessToken={accessToken}&newName={newName}"
-```
-
-[Tekintse meg a szükséges paramétereket, és tesztelje a video Indexer fejlesztői portálon](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?).
-
-### <a name="request-parameters"></a>Kérelmek paramétereinek megadása
-
-|**Name (Név)**|**Típus**|**Szükséges**|**Leírás**|
-|---|---|---|---|
-|location|sztring|Igen|Az az Azure-régió, amelybe a hívást át kell irányítani. További információ: [Azure-régiók és video Indexer](regions.md).|
-|accountId|sztring|Igen|A fiók globálisan egyedi azonosítója|
-|videoId|sztring|Igen|Azon videó azonosítója, amelyben a frissíteni kívánt arc megjelenik. Ez akkor jön létre, amikor feltöltik és indexelik a videót.|
-|faceId|egész szám|Igen|A frissítendő arc azonosítója. A faceId a videó indexből kérheti le|
-|accessToken|sztring|Igen|Hozzáférési jogkivonat (a hatókör- [fiók hozzáférési jogkivonatának](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Account-Access-Token?)kell lennie) a híváshoz való hitelesítéshez. A hozzáférési tokenek 1 órán belül lejárnak.|
-|név|sztring|Igen|Új név, amely frissíti az arcot a következővel:.|
+Az arc frissítéséhez használja a [video Face API frissítése lapot](https://api-portal.videoindexer.ai/docs/services/operations/operations/Update-Video-Face?) .
 
 A nevek egyediek a személyek modelljei számára, így ha két különböző arcot ad ugyanazon a **néven** a paraméter értékeként, video Indexer megtekinti az arcokat ugyanazzal a személlyel, és a videó újraindexelése után átszervezi őket. 
 
-### <a name="request-body"></a>A kérés törzse
-
-Ehhez a híváshoz nem szükséges további kérelem törzse.
-
-### <a name="response"></a>Válasz
-
-A rendszer nem adott vissza tartalmat, ha az arc frissítése sikeresen megtörtént.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Személy modell testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)

@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: 1c352ad5d18f891cd82d90eef7d0a8c6c3d1cdb9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441676"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309982"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -283,7 +283,6 @@ Alapértelmezés szerint legfeljebb 25 rögzített méretű tárolót hozhat lé
 Ha az aktuális partíciók számának túllépése után megpróbál létrehozni egy tárolót, az emulátor egy ServiceUnavailable-kivételt hoz létre a következő üzenettel.
 
 "Sajnos jelenleg nagy az igényünk ebben a régióban, és most nem lehet teljesíteni a kérést. Folyamatosan dolgozunk, hogy a kapacitás online állapotba kerüljön, és javasoljuk, hogy próbálkozzon újra.
-Kérjük, ne habozzon az e-mailek askcosmosdb@microsoft.com bármikor vagy bármilyen okból.
 Tevékenységazonosító: 12345678-1234-1234-1234-123456789abc "
 
 Az Azure Cosmos Emulatorban elérhető tárolók számának módosításához futtassa a következő lépéseket:
@@ -496,7 +495,7 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
 
 - Ha az emulátor új verzióját telepítette, és hibákat tapasztal, állítsa vissza az adatokat. Az adatai alaphelyzetbe állíthatók. ehhez kattintson a jobb gombbal az Azure Cosmos Emulator ikonra a tálcán, majd kattintson az adatbeállítások visszaállítása... elemre. Ha ez nem oldja meg a hibákat, távolítsa el az emulátort és az emulátor bármely régebbi verzióját, ha megtalálható, távolítsa el a "C:\Program files\Azure Cosmos DB Emulator" könyvtárat, és telepítse újra az emulátort. Útmutatásért lásd: [A helyi emulátor eltávolítása](#uninstall).
 
-- Ha az Azure Cosmos Emulator összeomlik, gyűjtsön adatokat a "%LOCALAPPDATA%\CrashDumps" mappából, tömörítse őket, és csatolja őket egy e-mailhez [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com).
+- Ha az Azure Cosmos Emulator összeomlik, Gyűjtse össze a memóriaképeket a "%LOCALAPPDATA%\CrashDumps" mappából, tömörítse őket, és nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com).
 
 - Ha a `Microsoft.Azure.Cosmos.ComputeServiceStartupEntryPoint.exe`összeomlik, lehet, hogy ez egy tünet, amelyben a teljesítményszámlálók sérült állapotban vannak. A következő parancs általában a rendszergazdai parancssorból való futtatása javítja a problémát:
 
@@ -504,7 +503,7 @@ Az alábbi tippek segítséget nyújtanak az Azure Cosmos Emulatorral kapcsolatb
   lodctr /R
    ```
 
-- Ha kapcsolódási problémát tapasztal, [gyűjtsön be profilelemzési fájlokat](#trace-files), majd tömörítse és küldje el azokat csatolva az [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) címre.
+- Ha kapcsolódási problémába ütközik, [Gyűjtse össze a nyomkövetési fájlokat](#trace-files), tömörítse őket, és nyisson meg egy támogatási jegyet a [Azure Portal](https://portal.azure.com).
 
 - Ha **A szolgáltatás nem érhető el** üzenetet kap, előfordulhat, hogy az emulátor nem tudja elindítani a hálózati vermet. Ellenőrizze, hogy telepítve van-e a Pulse Secure ügyfél vagy a Juniper Networks ügyfél, mert ezek hálózatszűrő illesztőprogramjai okozhatják a problémát. A külső gyártótól származó hálózatszűrő illesztőprogramok eltávolítása általában kijavítja a problémát. Azt is megteheti, hogy elindítja az emulátort a/DisableRIO, amely átváltja az emulátor hálózati kommunikációját a normál Winsock-ra. 
 
@@ -519,9 +518,9 @@ Hibakeresési nyomok begyűjtéséhez futtassa a következő parancsokat egy ren
 3. `Microsoft.Azure.Cosmos.Emulator.exe /startwprtraces`
 4. `Microsoft.Azure.Cosmos.Emulator.exe`
 5. Hozza létre ismét a problémát. Ha az Adatkezelő nem működik, csak néhány másodpercig kell megnyitnia a böngészőt a hiba megtalálásához.
-5. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
-6. Keresse meg a `%ProgramFiles%\Azure Cosmos DB Emulator` mappát, és keresse meg a docdbemulator_000001.etl fájlt.
-7. Küldje el az [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) címre az .etl fájlt a reprodukálás lépéseivel együtt a hibakereséshez.
+6. `Microsoft.Azure.Cosmos.Emulator.exe /stopwprtraces`
+7. Keresse meg a `%ProgramFiles%\Azure Cosmos DB Emulator` mappát, és keresse meg a docdbemulator_000001.etl fájlt.
+8. Nyisson meg egy támogatási jegyet a [Azure Portalban](https://portal.azure.com) , és foglalja bele az. etl fájlt a Reprodukálási lépésekkel együtt.
 
 ### <a id="uninstall"></a>A helyi emulátor eltávolítása
 

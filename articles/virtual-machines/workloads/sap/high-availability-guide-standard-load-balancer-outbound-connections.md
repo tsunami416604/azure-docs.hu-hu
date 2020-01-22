@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/28/2019
 ms.author: radeltch
-ms.openlocfilehash: ae2fb4c13633fa2ac22510a98e193bd9f01efb12
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 15abee96f81bca68575d61be1276d4394e9a6f55
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73045381"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293810"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
 
@@ -35,7 +35,7 @@ Ha a magas rendelkezésre állást az SAP-megoldások fürtözésen keresztüli 
 
 A standard szintű Azure Load Balancer számos előnyt kínál az alapszintű Load Balancerhez képest. Például az Azure-beli rendelkezésre állási zónákon keresztül működik, így jobb monitorozási és naplózási képességeket biztosít a hibaelhárításhoz, csökkentve a késést. A "HA ports" szolgáltatás az összes portot lefedi, azaz már nem szükséges az összes különálló port listázása.  
 
-Fontos különbségek vannak az Azure Load Balancer alapszintű és standard SKU-jának között. Ezek egyike a nyilvános végpontra irányuló kimenő forgalom kezelésére szolgál. Az alapszintű SKU Load Balancer összehasonlításával kapcsolatban lásd: [Load BALANCER SKU-összehasonlítás](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus).  
+Fontos különbségek vannak az Azure Load Balancer alapszintű és standard SKU-jának között. Ezek egyike a nyilvános végpontra irányuló kimenő forgalom kezelésére szolgál. Az alapszintű SKU Load Balancer összehasonlításával kapcsolatban lásd: [Load BALANCER SKU-összehasonlítás](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview).  
  
 Ha a nyilvános IP-címek nélküli virtuális gépek a belső (nincs nyilvános IP-cím) standard Azure Load Balancer háttér-készletbe kerülnek, nincs kimenő kapcsolat a nyilvános végpontokkal, kivéve, ha további konfigurálás történik.  
 
@@ -71,7 +71,7 @@ Először olvassa el az alábbi dokumentumokat:
 
 ## <a name="additional-external-azure-standard-load-balancer-for-outbound-connections-to-internet"></a>További külső Azure-standard Load Balancer az internet felé irányuló kimenő kapcsolatokhoz
 
-Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, valamint a következő megadása csak [Kimenő szabályok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview).  
+Az egyik lehetőség a nyilvános végpontok felé irányuló kimenő kapcsolat elérése anélkül, hogy a virtuális gép felé irányuló bejövő kapcsolat a nyilvános végpontról is elérhető legyen, egy második, nyilvános IP-címmel rendelkező terheléselosztó létrehozása, a virtuális gépek hozzáadása a második Load Balancer háttér-készletéhez, és csak [Kimenő szabályok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-rules-overview)definiálása.  
 [Hálózati biztonsági csoportokkal](https://docs.microsoft.com/azure/virtual-network/security-overview) vezérelheti a nyilvános végpontokat, amelyek elérhetők a virtuális gép kimenő hívásainak számára.  
 További információ: 2. forgatókönyv a [Kimenő kapcsolatok](https://docs.microsoft.com/azure/load-balancer/load-balancer-outbound-connections#scenarios)dokumentumában.  
 A konfiguráció a következőképpen fog kinézni:  

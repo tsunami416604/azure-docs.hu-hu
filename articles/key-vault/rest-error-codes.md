@@ -9,12 +9,12 @@ ms.author: mbaldwin
 ms.service: key-vault
 ms.topic: reference
 ms.date: 12/16/2019
-ms.openlocfilehash: 9ea77a6822a851951ea7363b9cf496fa0df534ed
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 8c9390ea498647d34e8643ed4be596372ffb8696
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982091"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293385"
 ---
 # <a name="azure-key-vault-rest-api-error-codes"></a>Azure Key Vault REST API hibakódok
  
@@ -54,7 +54,7 @@ Az "engedélyezés" fejléc a hozzáférési jogkivonat, amely az adatsík műve
 
 ### <a name="the-token-lacks-the-correct-resource-associated-with-it"></a>A jogkivonat nem rendelkezik a hozzá társított megfelelő erőforrással. 
 
-Amikor hozzáférési jogkivonatot kér az Azure OAUTH végponttól, az "erőforrás" nevű paramétert kötelező megadni. Az érték fontos a jogkivonat-szolgáltató esetében, mert a jogkivonat hatókörét a kívánt célra alkalmazza. A **minden* tokenhez tartozó erőforrás a Key Vaulthoz való hozzáféréshez <https:\//vault.keyvault.net> (záró perjel nélkül).
+Amikor hozzáférési jogkivonatot kér az Azure OAUTH végponttól, az "erőforrás" nevű paramétert kötelező megadni. Az érték fontos a jogkivonat-szolgáltató esetében, mert a jogkivonat hatókörét a kívánt célra alkalmazza. A Key Vaulthoz való hozzáférést biztosító **összes** jogkivonat erőforrása *https:\//Vault.keyvault.net* (záró perjel nélkül).
 
 ### <a name="the-token-is-expired"></a>A jogkivonat lejárt
 

@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy .NET Core-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 0025f395c89a8a9f2eff4204ed0859cda0fa86fc
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fe2bb61ccfc7285dc5f4a5c21f3c62abfecca343
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867524"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290597"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-visual-studio-code-and-net-core---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes-on: Visual Studio Code és .NET Core – Azure dev Spaces
 
@@ -21,7 +21,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
 - Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
 
-Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+Az Azure dev Spaces Emellett lehetővé teszi a következő műveletek hibakeresését és megismétlését:
 - [A Java és a Visual Studio Code](quickstart-java.md)
 - [Node. js és Visual Studio Code](quickstart-nodejs.md)
 - [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)
@@ -96,13 +96,13 @@ Ez a parancs előkészíti a projektet az Azure dev Spaces-ben való futtatásra
 > [!TIP]
 > A projekthez tartozó [Docker és Helm diagramot](how-dev-spaces-works.md#prepare-your-code) az Azure dev Spaces használja a kód összeállításához és futtatásához, de módosíthatja ezeket a fájlokat, ha módosítani szeretné a projekt felépítésének és futtatásának módját.
 
-## <a name="build-and-run-code-in-kubernetes-from-visual-studio"></a>Kód létrehozása és futtatása a Kubernetes a Visual studióból
+## <a name="build-and-run-code-in-kubernetes-from-visual-studio-code"></a>Kód létrehozása és futtatása a Kubernetes a Visual Studio Code-ból
 
 Kattintson a bal oldali *hibakeresés* ikonra, és kattintson a felül található *.net Core Launch (AZDS)* elemre.
 
 ![](media/get-started-netcore/debug-configuration.png)
 
-Ez a parancs hibakeresési módban létrehozza és futtatja a szolgáltatást az Azure dev Spaces szolgáltatásban. Az alján található *Terminálablak* megjeleníti az Azure dev Spaces szolgáltatást futtató szolgáltatáshoz tartozó Build kimenetet és URL-címeket. A *hibakeresési konzol* megjeleníti a napló kimenetét.
+Ez a parancs hibakeresési módban létrehozza és futtatja a szolgáltatást az Azure dev Spaces szolgáltatásban. Az alján található *Terminálablak* megjeleníti az Azure dev Spaces szolgáltatásban futó szolgáltatások kiépítési kimenetét és URL-címeit. A *hibakeresési konzol* megjeleníti a napló kimenetét.
 
 > [!Note]
 > Ha nem látja az Azure dev Spaces-parancsokat a *parancssorban*, győződjön meg arról, hogy telepítette a [Visual Studio Code bővítményt az Azure dev Spaces szolgáltatáshoz](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds). Győződjön meg arról is, hogy megnyitotta a *dev-Spaces/Samples/dotnetcore/Getting-Started/webfrontend* könyvtárat a Visual Studio Code-ban.

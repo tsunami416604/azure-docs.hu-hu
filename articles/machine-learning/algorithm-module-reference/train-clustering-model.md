@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 57cf5bab2afe58ed802ef5ec03c316f1ebec6673
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1f1a508e6188b68f932993eb60e13228b56f8e7e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232593"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313944"
 ---
 # <a name="train-clustering-model"></a>Csoportosítási modell betanítása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ez a modul egy fürtszolgáltatási modell betanítására használható.
 
@@ -45,14 +45,11 @@ A modul olyan nem betanított fürtszolgáltatási modellt vesz igénybe, amelye
 
 7. Futtassa a folyamatot, vagy kattintson a **vonat-fürtszolgáltatási modell** modulra, és válassza a **kijelölt futtatása**lehetőséget.  
   
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
-
-+  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmény-adatkészletek**lehetőséget, majd kattintson a **Megjelenítés**elemre.
-
-+ A betanított modell későbbi használatra való mentéséhez kattintson a jobb gombbal a modulra, válassza a **betanított modell**lehetőséget, majd kattintson a **Mentés betanított modellként**lehetőségre.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 + A modellből származó pontszámok létrehozásához használja az [adatok kiosztása fürtökhöz](assign-data-to-clusters.md)lehetőséget.
 

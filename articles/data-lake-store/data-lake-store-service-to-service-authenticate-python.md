@@ -1,5 +1,5 @@
 ---
-title: 'Szolgáltatások közötti hitelesítés: Python és Azure Data Lake Storage Gen1 használatával Azure Active Directory | Microsoft Docs'
+title: 'Szolgáltatások közötti hitelesítés: Python és Azure Data Lake Storage Gen1 a Azure Active Directory használatával | Microsoft Docs'
 description: Ismerje meg, hogyan valósítható meg a szolgáltatások közötti hitelesítés a Azure Data Lake Storage Gen1 használatával Azure Active Directory a Python használatával
 services: data-lake-store
 documentationcenter: ''
@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: b63209c9174867e69356bb6800d70502f2afdaa4
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 009aff2703829e6d30f93b3c8e3696724594f29b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71088834"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290767"
 ---
 # <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Szolgáltatások közötti hitelesítés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -44,7 +44,7 @@ A Data Lake Storage Gen1 Python használatával való használatához három mod
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 Fiókkezelés műveleteit. További információ erről a modulról: [Azure Data Lake Storage Gen1 felügyeleti modul referenciája](/python/api/azure-mgmt-datalake-store/).
-* A `azure-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 fájlrendszer műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](https://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modul, amely tartalmazza a Data Lake Storage Gen1 filesystem műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -99,7 +99,7 @@ Ezt a kódrészletet használhatja az Azure AD-vel való hitelesítéshez Data L
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Szolgáltatások közötti, titkos ügyfélkulccsal történő hitelesítés a fájlrendszerműveletekhez
 
-Az alábbi kódrészlettel hitelesítheti az Azure AD-t a fájlrendszerbeli műveletekhez Data Lake Storage Gen1 például a mappa létrehozása, a fájl feltöltése stb. használatával. A következő kódrészlet használható az alkalmazás nem interaktív hitelesítéséhez, az alkalmazás/egyszerű szolgáltatás titkos ügyfélkódjának használatával. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
+Az alábbi kódrészlettel hitelesítheti az Azure AD-t a fájlrendszerbeli műveletekhez Data Lake Storage Gen1 például a mappa létrehozása, a fájl feltöltése stb. használatával. A következő kódrészlet használható az alkalmazás nem interaktív hitelesítésére az alkalmazás/egyszerű szolgáltatáshoz tartozó ügyfél-titok használatával. Ezt meglévő „webes” Azure AD-alkalmazással használhatja.
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'
@@ -127,7 +127,7 @@ Use this snippet to authenticate with Azure AD for account management operations
     mgmt_token = context.acquire_token_with_client_certificate(resource_uri, client_id, client_cert, client_cert_thumbprint)
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben megtanulta, hogyan használható a szolgáltatások közötti hitelesítés a Data Lake Storage Gen1 a Python használatával történő hitelesítéshez. A következő cikkekből megtudhatja, hogyan használható a Python a Data Lake Storage Gen1 való együttműködéshez.
 
 * [Fiókkezelés Data Lake Storage Gen1 a Python használatával](data-lake-store-get-started-python.md)

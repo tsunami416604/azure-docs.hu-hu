@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b7c898c232dc39398b13f16beea814aa4e554845
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 680cf04e79a9cb6d5748723dad3cb37cf3c76468
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428561"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314215"
 ---
 # <a name="cross-validate-model"></a>Modell keresztellenőrzése
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben (előzetes verzió) az Cross validate Model modul használata. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben az Cross validate Model modul. A többértékű *ellenőrzés* a gépi tanulásban gyakran használatos, és az adatkészletek változékonyságát, valamint az ezen adatokat használó modellek megbízhatóságát is felméri.  
 
 A modell keresztbe állítása modul a címkével ellátott adatkészlet bemenetét, valamint egy képzetlen besorolást vagy regressziós modellt használ. Az adatkészletet bizonyos számú részhalmazra osztja (*hajtogatás*), minden egyes foldon létrehoz egy modellt, majd a pontossági statisztikák készletét adja vissza az egyes hajtogatásoknak. Az összes hajtogatás pontossági statisztikájának összehasonlításával értelmezheti az adathalmaz minőségét. Ezután megtudhatja, hogy a modell érzékeny-e az adatváltozásokra.  
 
@@ -76,7 +76,7 @@ Ebben a forgatókönyvben a modellt többek között a modell betanításával �
 
 7. A jelentések leírását a [Results (eredmények](#results) ) című szakaszban találja.
 
-    A modell későbbi újrafelhasználásához kattintson a jobb gombbal az algoritmust tartalmazó modul kimenetére (például a **két osztály Bayes pontjának gépe**). Ezután válassza **a Mentés betanítva modellként**lehetőséget.
+    A modell későbbi újrafelhasználáshoz való másolatának lekéréséhez váltson az algoritmust tartalmazó modul jobb oldali paneljének **kimenetek** lapjára (például a **két osztály Bayes pontja**). Ezután válassza az **adatkészlet regisztrálása** ikont a betanított modell másolatának mentéséhez a modul fájában.
 
 ## <a name="results"></a>Eredmények
 
@@ -86,7 +86,7 @@ Az összes iteráció befejezése után a Cross validate Model a teljes adatkés
 
 A modul első kimenete tartalmazza az egyes sorokhoz tartozó forrásadatokat, valamint az előre jelzett értékeket és a kapcsolódó valószínűségeket. 
 
-Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a modell átellenőrzése modulra. Válassza a **pontozásos eredmények**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
+Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki a **pontozásos eredmények megjelenítése**elemet.
 
 | Új oszlopnév      | Leírás                              |
 | -------------------- | ---------------------------------------- |
@@ -100,7 +100,7 @@ A második jelentés hajtogatás szerint van csoportosítva. Ne feledje, hogy a 
 
 Ebben a jelentésben a kidobások index érték szerint, növekvő sorrendben vannak felsorolva.  Bármely más oszlop megrendeléséhez mentheti az eredményeket adatkészletként.
 
-Ha meg szeretné tekinteni ezeket az eredményeket, a folyamatban kattintson a jobb gombbal a modell átellenőrzése modulra. Válassza ki **a kiértékelési eredmények**elemet, majd válassza a **Megjelenítés**lehetőséget.
+Az eredmények megtekintéséhez a folyamaton kattintson a jobb gombbal a modell keresztre ellenőrzése modulra. Válassza ki **a kiértékelési eredmények megjelenítése kidobással**lehetőséget.
 
 
 |Oszlop neve| Leírás|

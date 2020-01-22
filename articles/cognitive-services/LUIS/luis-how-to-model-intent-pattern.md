@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: diberry
-ms.openlocfilehash: eb3e473535c394818772ac949808023254087555
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 21afb12bf2464218119ebf52ebd980745e3d731d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448061"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311716"
 ---
 # <a name="how-to-add-patterns-to-improve-prediction-accuracy"></a>Mintázatok hozzáadása az előrejelzési pontosság növeléséhez
 Miután a LUIS-alkalmazás végponti hosszúságú kimondott szöveg kap, egy [mintázattal](luis-concept-patterns.md) növelheti az előrejelzés pontosságát olyan hosszúságú kimondott szöveg esetében, amelyek felfedik a mintázatot a Word-sorrend és a szó választása alapján. A minták az adott [szintaxist](luis-concept-patterns.md#pattern-syntax) használják a következő helyének jelzésére: [entitások](luis-concept-entity-types.md), entitások [szerepkörei](luis-concept-roles.md)és opcionális szöveg.
@@ -42,7 +42,7 @@ Ha egy entitáshoz mintázatot szeretne hozzáadni, a _legegyszerűbb_ módszer 
     > [!div class="mx-imgBorder"]
     > ![képernyőkép a megerősítő példa részleteit tartalmazó sablon mintaként a leképezés részletei lapon.](./media/luis-how-to-model-intent-pattern/confirm-patterns-from-example-utterance-intent-detail-page.png)
 
-1. Ha szerkesztenie kell a sablont, például a szöveg választhatóként való kiválasztását, a `[]` (szögletes) zárójelekkel, ezt a szerkesztési űrlapot kell létrehoznia a **minták** lapon.
+1. Ha szerkesztenie kell a sablont, például a szöveg választhatóként való kiválasztását, a `[]` (szögletes) zárójelekkel, ezt a szerkesztést a **minták** lapról kell végrehajtania.
 
 1. A navigációs sávon válassza a **betanítás** lehetőséget az alkalmazás új mintázattal való betanításához.
 

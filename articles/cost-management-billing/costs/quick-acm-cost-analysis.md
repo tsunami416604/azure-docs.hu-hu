@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.service: cost-management-billing
 manager: micflan
 ms.custom: seodec18
-ms.openlocfilehash: 0221930f0b9fff0c9d4e398559f8d12999a66e91
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f053b30d344e5372617a5bf98c087056c4fe2911
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75987564"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294150"
 ---
 # <a name="quickstart-explore-and-analyze-costs-with-cost-analysis"></a>Gyors útmutató: költségek feltárása és elemzése a Cost Analysis szolgáltatással
 
@@ -138,24 +138,29 @@ Megtekintheti bármely nézet teljes adatkészletét. Attól függően, hogy mil
 
 A következő táblázat felsorolja a leggyakoribb csoportosítási és szűrési lehetőségeket, valamint azt, hogy mikor érdemes használni őket.
 
-| Tulajdonság | When to use |
-| --- | --- |
-| **Számlázási időszak** | Költségek lebontása a számla hónapja szerint. Ez a lehetőség az utólagos elszámolású és fejlesztési/tesztelési előfizetések esetében fontos, amelyek nem a naptári hónapokhoz kötődnek. Az EA/MCA-fiókok naptári hónapokat használhatnak a dátumválasztó vagy a havi részletesség használatával, hogy ugyanazt a célt lehessen elérni. |
-| **Díj típusa** | A használat, a vásárlás, a visszatérítés és a nem használt foglalási költségek lebontása. A foglalási beszerzések és a visszatérítések csak akkor érhetők el, ha az elszámolt költségek használata nem történik meg. A nem használt foglalási költségek csak az elszámolt költségeknél érhetők el. |
-| **Felhő** | Az AWS és az Azure költségeinek lebontása. Az AWS-költségek csak felügyeleti csoportok, külső számlázási fiókok és külső előfizetések esetén érhetők el. |
-| **Részleg** / **számla szakasz** | A költségeket a nagyvállalati szerződés vagy az MCA-számla szakasza alapján bontják le. Ez a beállítás csak az EA/MCA számlázási fiókokhoz és az MCA számlázási profiljaihoz érhető el. |
-| **Beléptetési fiók** | Az EA-fiók tulajdonosának költségeinek lebontása. Ez a beállítás csak EA számlázási fiókokhoz és részlegekhez érhető el. |
-| **Gyakoriság** | A használaton alapuló, egyszeri és ismétlődő költségek lebontása. |
-| **Mérő** | A költségeket az Azure használati mérőszáma alapján bontják le. Ez a beállítás csak az Azure-használathoz érhető el. A vásárlások és a Piactérek használata **nem megadott vagy nem** **hozzárendelt**módon jelenik meg. |
-| **Közzétevő típusa** | Az AWS, az Azure és a Marketplace költségeinek lebontása. |
-| **Foglalás** | Költségek lebontása foglalás alapján. A foglalást nem tartalmazó használat **nem megadottként**jelenik meg. |
-| **Erőforrás** | Költségek lebontása erőforrás alapján. Az összes vásárlás **nem megadottként**jelenik meg, mert egy EA/TB számlázási fiók vagy MCA számlázási profil szintjén vannak alkalmazva.  |
-| **Erőforráscsoport** | Az erőforráscsoport költségeinek lebontása. Ez a beállítás csak a nem klasszikus használat esetén érhető el. A klasszikus erőforrás-használat **más**néven jelenik meg, és a vásárlások **nem megadott**módon jelennek meg. |
-| **Erőforrás típusa** | A költségek kibontása erőforrástípus alapján. Ez a beállítás csak a nem klasszikus használat esetén érhető el. A klasszikus erőforrás-használat **más**néven jelenik meg, és a vásárlások **nem megadott**módon jelennek meg. |
-| **Szolgáltatásnév** vagy **fogyasztásmérő kategóriája** | Az Azure-szolgáltatás költségeit lebonthatja. Ez a beállítás csak az Azure-használathoz érhető el. A vásárlások és a Piactérek használata **nem megadott vagy nem** **hozzárendelt**módon jelenik meg. |
-| **Szolgáltatási** vagy **fogyasztásmérő alkategória** | A költségeket az Azure használati mérési albesorolása alapján bontják le. Ez a beállítás csak az Azure-használathoz érhető el. A vásárlások és a Piactérek használata **nem megadott vagy nem** **hozzárendelt**módon jelenik meg. |
-| **Előfizetés** | Költségek lebontása előfizetés alapján. Az összes beszerzés **nem megadottként**jelenik meg. |
-| **Tag** | A költségek lebontása egy adott címke kulcsának értékei alapján. |
+| Tulajdonság | When to use | Megjegyzések |
+| --- | --- | --- |
+| **Rendelkezésre állási zónák** | A rendelkezésre állási zóna szerint bontsa ki az AWS-költségeket. | Csak az AWS-hatókörökre és a felügyeleti csoportokra vonatkozik. Az Azure-beli adat nem tartalmazza a rendelkezésre állási zónát, és **nem alkalmazhatóként**fog megjelenni. |
+| **Számlázási időszak** | A TB költségeinek lebontása a hónap (vagy a) számlázásával. | A **számlázási időszak** használatával pontos képet kaphat a számlázott TB-díjakról. A számlázási időszak előtt és után 2 további nappal is szerepeljen, ha egy egyéni dátumtartományt szűr. A pontos számlázási időszakra való korlátozás nem egyezik a számlával. A számlázási időszak összes számlájának költségeit jeleníti meg. Egy adott számlára való szűréshez használja a **számla azonosítóját** . Csak TB-előfizetésekre alkalmazható, mivel az EA és az MCA a naptári hónapok szerint lett kiszámlázva. Az EA/MCA-fiókok naptári hónapokat használhatnak a dátumválasztó vagy a havi részletesség használatával, hogy ugyanazt a célt lehessen elérni. |
+| **Díj típusa** | A használat, a vásárlás, a visszatérítés és a nem használt foglalási költségek lebontása. | A foglalási beszerzések és a visszatérítések csak akkor érhetők el, ha a tényleges költségeket használják, és nem az elszámolt költségek használata esetén. A nem használt foglalási költségek csak az elszámolt költségeknél érhetők el. |
+| **Department** | Az EA Department költségeinek lebontása. | Csak az EA és a felügyeleti csoportok esetében érhető el. A TB-előfizetések nem rendelkeznek részleggel, és **nem alkalmazhatók vagy nem** **hozzárendelt**módon jelennek meg. |
+| **Beléptetési fiók** | Az EA-fiók tulajdonosának költségeinek lebontása. | Csak EA számlázási fiókok, részlegek és felügyeleti csoportok esetében érhető el. A TB-előfizetések nem rendelkeznek EA-regisztrációs fiókkal, és **nem használhatók vagy nem** **hozzárendelt**módon jelennek meg. |
+| **Gyakoriság** | A használaton alapuló, egyszeri és ismétlődő költségek lebontása. | |
+| **Számla azonosítója** | Költségek lebontása számlázott számla alapján. | A nem számlázott díjak még nem rendelkeznek számla-AZONOSÍTÓval, és az EA-költségek nem tartalmazzák a számla részleteit, és **nem alkalmazhatóként**jelennek meg.  |
+| **Mérő** | A költségek lebontása a használati mérő alapján. | A vásárlások és a piactér-használat a **nem alkalmazható**módon jelenik meg. A Piactéri díjak azonosításához tekintse meg a **díjszabási típust** a vásárlások és a **közzétevő típusának** azonosításához. |
+| **Művelet** | Az AWS költségeinek lebontása művelettel. | Csak az AWS-hatókörökre és a felügyeleti csoportokra vonatkozik. Az Azure-beli adat nem tartalmaz műveletet, és a rendszer **nem alkalmazható** – **a használati** mérőszámot használja helyette. |
+| **Díjszabási modell** | A költségeket igény szerint, foglalással vagy helyszíni használattal szakíthatja meg. | A vásárlások megjelenítése **OnDemand**. Ha **nem alkalmazható**, a csoportosítás **foglalás** alapján meghatározza, hogy a használat foglalása vagy igény szerinti használati és **díjszabási típus** alapján azonosítható-e a vásárlások.
+| **Szolgáltató** | Az AWS és az Azure költségeinek lebontása. | Csak felügyeleti csoportok számára érhető el. |
+| **Közzétevő típusa** | Az AWS, az Azure és a Marketplace költségeinek lebontása. |  |
+| **Foglalás** | Költségek lebontása foglalás alapján. | A foglaláshoz nem társított használati vagy beszerzési adatok **nem lesznek érvényesek**. Csoportosítás a **közzétevő típusa** alapján más Azure-, AWS-vagy Piactéri vásárlások azonosításához. |
+| **Erőforrás** | Költségek lebontása erőforrás alapján. | A vásárlások **nem alkalmazhatóként**jelennek meg, mert az EA/TB számlázási fiók vagy az MCA számlázási profil szintjén vannak alkalmazva, és nem egy adott erőforráshoz van társítva. Csoportosítás a **közzétevő típusa** alapján más Azure-, AWS-vagy Piactéri vásárlások azonosításához. |
+| **Erőforráscsoport** | Az erőforráscsoport költségeinek lebontása. | A vásárlások, az előfizetésekhez nem társított bérlői erőforrások, az előfizetési erőforrások, amelyeken nincs telepítve az erőforráscsoport, és a klasszikus erőforrások nem rendelkeznek erőforráscsoporthoz, és **mások**, **klasszikus szolgáltatások**, **$System**vagy **nem alkalmazhatók**. |
+| **Erőforrás típusa** | A költségek kibontása erőforrástípus alapján. | A vásárlások és a klasszikus szolgáltatások nem rendelkeznek Azure Resource Manager erőforrás-típussal, és **másokként**, **klasszikus szolgáltatásként**vagy **nem alkalmazhatóként**jelennek meg. |
+| **Erőforrás helye** | Költségek lebontása hely vagy régió szerint. | A vásárlások és a Piactérek használata nem **hozzárendelt**, **ismeretlen**, **leképezett**vagy **nem alkalmazhatóként**jelenhet meg. |
+| **Szolgáltatásnév** vagy **fogyasztásmérő kategóriája** | Az Azure-szolgáltatás költségeit lebonthatja. | A vásárlások és a piactér-használat **nem alkalmazható vagy nem** **hozzárendelt**módon jelenik meg. |
+| **Szolgáltatási** vagy **fogyasztásmérő alkategória** | A költségeket az Azure használati mérési albesorolása alapján bontják le. | A vásárlások és a piactér-használat **nem alkalmazható vagy nem** **hozzárendelt**módon jelenik meg. |
+| **Előfizetés** | Az Azure-előfizetés és az AWS-hez kapcsolódó fiók költségeinek lebontása. | Előfordulhat, hogy a vásárlások és a bérlői erőforrások **nem alkalmazhatók**. |
+| **Tag** | A költségek lebontása egy adott címke kulcsának értékei alapján. | A címkék nem érhetők el a beszerzésekhez, az előfizetésekhez nem társított bérlői erőforrásokhoz, az erőforrás-csoportba nem telepített előfizetési erőforrásokhoz vagy klasszikus erőforrásokhoz. Vegye figyelembe, hogy egyes szolgáltatások nem tartalmaznak címkéket a használati adatokban. További információ a [címkék támogatásáról az egyes erőforrástípusok esetében](https://docs.microsoft.com/azure/azure-resource-manager/management/tag-support). |
 
 A feltételekkel kapcsolatos további információkért lásd: az [Azure-használat és a díjak fájljában használt kifejezések ismertetése](../understand/understand-usage.md).
 

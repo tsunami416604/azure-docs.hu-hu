@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/17/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 698c198f58ead88b01b1c4b8b2e1fd9da4198c93
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 0ee3d1d896d99d892d0a41799c4c1695633d29c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277462"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291498"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
 [Azure Availability Zones](https://docs.microsoft.com/azure/availability-zones/az-overview) az Azure által biztosított magas rendelkezésre állási funkciók egyike. A Availability Zones használata javítja az Azure-beli SAP-munkaterhelések teljes rendelkezésre állását. Ez a funkció már elérhető néhány [Azure-régióban](https://azure.microsoft.com/global-infrastructure/regions/). A jövőben több régióban is elérhető lesz.
@@ -58,7 +58,7 @@ Ha Azure-beli virtuális gépeket helyez üzembe Availability Zones és ugyanazo
 - A Azure Availability Zones üzembe helyezéséhez az [Azure Managed Diskst](https://azure.microsoft.com/services/managed-disks/) kell használnia. 
 - A zónák enumerálásának fizikai zónákhoz való hozzárendelése egy Azure-előfizetésen keresztül történik. Ha különböző előfizetéseket használ az SAP-rendszerek üzembe helyezéséhez, minden előfizetéshez meg kell határoznia az ideális zónákat.
 - Az Azure-beli rendelkezésre állási csoportok nem helyezhetők üzembe az Azure-beli rendelkezésre állási zónán belül, kivéve, ha az Azure-beli [Proximity](https://docs.microsoft.com/azure/virtual-machines/linux/co-location) Az SAP adatbázis-kezelő réteg és a központi szolgáltatások zónák közötti üzembe helyezésének módja, valamint az SAP-alkalmazás rétegének üzembe helyezése a rendelkezésre állási [csoportokkal](sap-proximity-placement-scenarios.md), valamint a virtuális gépek közelségének biztosítása Ha nem használ Azure Proximity-elhelyezési csoportokat, ki kell választania egyet vagy a másikat a virtuális gépek üzembe helyezési keretrendszereként.
-- A Windows Server feladatátvételi fürtszolgáltatás vagy a Linux pacemaker használatával nem használhat [Azure Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)-t kell használnia.
+- A Windows Server feladatátvételi fürtszolgáltatás vagy a Linux pacemaker használatával nem használhat [Azure Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones)-t kell használnia.
 
 
 

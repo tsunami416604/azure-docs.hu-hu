@@ -3,18 +3,18 @@ title: A Azure Portal beállításainak megadása | Microsoft Docs
 description: Módosíthatja Azure Portal alapértelmezett beállításait, hogy megfeleljen a saját preferenciáinak. A beállítások közé tartozik az inaktív munkamenet időkorlátja, az alapértelmezett nézet, a menü mód, a kontraszt, a téma, az értesítések és a nyelv és a területi
 services: azure-portal
 keywords: beállítások, időtúllépés, nyelv, regionális
-author: mblythe
+author: mgblythe
 ms.author: mblythe
 ms.date: 12/19/2019
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 0c18ccbf5d9e4884af46e088f1a4ead67f50c3f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 7bcfdeec832b14eb53c0dab6cb2f53970d85c804
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75641366"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310679"
 ---
 # <a name="set-your-azure-portal-preferences"></a>Az Azure Portal-beállítások megadása
 

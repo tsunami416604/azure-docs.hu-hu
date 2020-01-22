@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 12/09/2018
 ms.author: mavane
 ms.custom: seodec18
-ms.openlocfilehash: 0c69c90410aab7fa37ab87e82314c53e4459ca25
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0e4dd67e1686d3b63376138d1be2d1f7df4bb41a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76155655"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290648"
 ---
 # <a name="develop-azure-resource-manager-templates-for-cloud-consistency"></a>Azure Resource Manager-sablonok fejlesztése a felhő konzisztenciájához
 
@@ -55,7 +55,7 @@ A Azure Resource Manager képességek mindig a globális Azure-ba lesznek beveze
 
 1. Ha már rendelkezik a tárház helyi klónozásával, kapcsolódjon a cél Azure Resource Manager a PowerShell-lel.
 
-1. Importálja a psm1 modult, és hajtsa végre a test-AzureRmureRmTemplateFunctions parancsmagot:
+1. Importálja a psm1 modult, és hajtsa végre a test-AzureRmTemplateFunctions parancsmagot:
 
    ```powershell
    # Import the module

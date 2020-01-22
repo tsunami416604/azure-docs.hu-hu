@@ -7,14 +7,14 @@ author: musa-57
 ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/02/2020
-ms.openlocfilehash: 3098e85fd21b6185defc4bbcf0a71d412846ab25
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: fb1e32d9f67febb09eadfb5d31221db33504eb05
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75725740"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289475"
 ---
-# <a name="troubleshoot-assessmentdependency-visualization"></a>Az értékelés/függőség vizualizációjának hibakeresése
+# <a name="troubleshoot-assessmentdependency-visualization"></a>Értékelés/függőségek vizualizációjának hibaelhárítása
 
 Ez a cikk segítséget nyújt az értékeléssel és a függőségi vizualizációval kapcsolatos hibák elhárításában [Azure Migrate: Server Assessment](migrate-services-overview.md#azure-migrate-server-assessment-tool).
 
@@ -92,6 +92,7 @@ A kiszolgáló-értékelési jelentések "PercentageOfCoresUtilizedMissing" vagy
 - Ez akkor fordulhat elő, ha a virtuális gépek ki vannak kapcsolva az értékelés időtartama alatt. A készülék nem tud teljesítményadatokat gyűjteni a virtuális gép számára, ha ki van kapcsolva.
 - Ha csak a teljesítményszámlálók hiányoznak, és a Hyper-V virtuális gépeket próbálja értékelni, ellenőrizze, hogy a dinamikus memória engedélyezve van-e ezeken a virtuális gépeken. Csak a Hyper-V virtuális gépek ismert hibája van, amelyben egy Azure Migrate berendezés nem tudja gyűjteni a memória-kihasználtsági adatokat olyan virtuális gépek számára, amelyeken nincs engedélyezve a dinamikus memória.
 - Ha a teljesítményszámlálók bármelyike hiányzik, Azure Migrate kiszolgáló értékelése visszaesik a lefoglalt magokra és a memóriára, és a virtuális gép megfelelő méretét javasolja.
+- Ha az összes teljesítményszámláló hiányzik, ellenőrizze, hogy teljesülnek-e az értékeléshez szükséges port hozzáférési követelményei. További információ a [VMware](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#port-access), a [Hyper-V](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#port-access) és a [fizikai](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-physical#port-access) kiszolgáló értékeléséhez szükséges portokra vonatkozó hozzáférési követelményekről.
 
 ## <a name="is-the-operating-system-license-included"></a>Tartalmazza az operációs rendszer licencét?
 

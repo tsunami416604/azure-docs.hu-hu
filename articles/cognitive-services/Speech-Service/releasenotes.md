@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 01/15/2020
 ms.author: oliversc
 ms.custom: seodec18
-ms.openlocfilehash: 1cf9ce6d57c1e106472caeef6c1f2a4b008a09bd
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 15a118dc72ae9ffc4b6c99b0e0b527a252d3ded8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277870"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293589"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -26,7 +26,7 @@ ms.locfileid: "76277870"
 
 - Többeszközes beszélgetés: csatlakoztasson több eszközt ugyanahhoz a beszéd-vagy szöveges beszélgetéshez, és igény szerint fordítsa le a közöttük küldött üzeneteket. További információt [ebben a cikkben](multi-device-conversation.md)talál. 
 - A kulcsszó-felismerési támogatás hozzáadva az Android. éves kiadási csomaghoz, valamint az x86-és x64-alapú ízek támogatása. 
-- Objective-C: az `Connection` objektumhoz hozzáadott `SendMessage` és `SetMessageProperty` metódusok. [Itt](https://docs.microsoft.com/objectivec/cognitive-services/speech/)találja a dokumentációt.
+- Objective-C: az `Connection` objektumhoz hozzáadott `SendMessage` és `SetMessageProperty` metódusok. [Itt](https://docs.microsoft.com/objectivec/cognitive-services/speech/spxconnection)találja a dokumentációt.
 - A C++ TTS API mostantól támogatja a `std::wstring`t a szintézis szövegeként, így nem kell konvertálnia a wstring a karakterláncra, mielőtt átadná azt az SDK-nak. Tekintse meg [a részleteket.](https://docs.microsoft.com/cpp/cognitive-services/speech/speechsynthesizer#speaktextasync) 
 - C#: Mostantól elérhető a [nyelvi azonosító](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-automatic-language-detection?pivots=programming-language-csharp) és a [forrás nyelvi konfigurációja](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-specify-source-language?pivots=programming-language-csharp) .
 - JavaScript: hozzáadta a szolgáltatást `Connection` objektumhoz, hogy átadja a beszédfelismerési szolgáltatás egyéni üzeneteit a visszahívási `receivedServiceMessage`.

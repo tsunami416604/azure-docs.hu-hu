@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 56a3d4f172cde70bdd1a875c76213c43184cbbc3
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: fd91701a20b8a760eadcafe6f93f9ba5857a1c9f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167950"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310186"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Az Azure Analysis Services horizontális felskálázása
 
@@ -50,7 +50,7 @@ Ha egy későbbi kibővített műveletet hajt végre, például a két és öt k
 
 ### <a name="synchronization-mode"></a>Szinkronizálási mód
 
-Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradnak, nem pedig Növekményesen. A rehidratálás fázisokban történik. Ezek leválasztása és csatolása egyszerre két alkalommal történik (feltéve, hogy legalább három replika van) annak biztosításához, hogy legalább egy replikát online állapotba lehessen tartani a lekérdezésekhez adott időben. Bizonyos esetekben előfordulhat, hogy az ügyfeleknek újra kell csatlakozniuk az egyik online replikához, amíg ez a folyamat zajlik. A **ReplicaSyncMode** beállítás használatával a lekérdezési replika szinkronizálása párhuzamosan is megadható. A párhuzamos szinkronizálás a következő előnyöket biztosítja: 
+Alapértelmezés szerint a lekérdezési replikák teljes mértékben kiszáradnak, nem pedig Növekményesen. A rehidratálás fázisokban történik. Ezek leválasztása és csatolása egyszerre két alkalommal történik (feltéve, hogy legalább három replika van) annak biztosításához, hogy legalább egy replikát online állapotba lehessen tartani a lekérdezésekhez adott időben. Bizonyos esetekben előfordulhat, hogy az ügyfeleknek újra kell csatlakozniuk az egyik online replikához, amíg ez a folyamat zajlik. A (előzetes verzió) **ReplicaSyncMode** beállítással a lekérdezési replika szinkronizálása párhuzamosan is megadható. A párhuzamos szinkronizálás a következő előnyöket biztosítja: 
 
 - A szinkronizálási idő jelentős csökkentése. 
 - A replikák közötti adatcsere nagyobb valószínűséggel konzisztens lesz a szinkronizálási folyamat során. 

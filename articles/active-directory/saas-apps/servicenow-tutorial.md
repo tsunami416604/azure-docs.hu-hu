@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 12/27/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c8a8f3895f41ac987b934b86f8d646b281c37c93
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 79f5284f95f6157c70461179177179a9fbee4fe0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75561980"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293691"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-servicenow"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ServiceNow
 
@@ -46,9 +46,15 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A ServiceNow támogatja az **SP** által kezdeményezett egyszeri bejelentkezést és az [automatizált felhasználói üzembe](servicenow-provisioning-tutorial.md)helyezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. 
 
-A ServiceNow klasszikus (Mobile) alkalmazást az Azure AD-vel konfigurálhatja az egyszeri bejelentkezés engedélyezéséhez. Android és iOS rendszerű felhasználókat is támogat. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+* A ServiceNow támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+
+* A ServiceNow támogatja az [automatikus felhasználó-kiépítés](servicenow-provisioning-tutorial.md)használatát.
+
+* A ServiceNow konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
+
+* A ServiceNow klasszikus (Mobile) alkalmazást az Azure AD-vel konfigurálhatja az egyszeri bejelentkezés engedélyezéséhez. Android és iOS rendszerű felhasználókat is támogat. Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
 ## <a name="add-servicenow-from-the-gallery"></a>ServiceNow hozzáadása a gyűjteményből
 
@@ -460,3 +466,7 @@ Amikor kiválasztja a ServiceNow csempét a hozzáférési panelen, automatikusa
 - [A felhasználók üzembe helyezésének konfigurálása](servicenow-provisioning-tutorial.md)
 
 - [A ServiceNow kipróbálása az Azure AD-vel](https://aad.portal.azure.com)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/protect-servicenow)
+
+- [A ServiceNow és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

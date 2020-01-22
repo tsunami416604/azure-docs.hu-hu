@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: e7ab953a7ac0907244ebaab70b3b86cbe6f0f4d9
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 27838aae1d829598bed44a6c16f7a1d38a95b727
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497637"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314096"
 ---
 # <a name="score-model-module"></a>A Score model (Modell montozása) modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal a betanított besorolási vagy regressziós modell használatával készíthet előrejelzéseket.
 
@@ -32,7 +32,7 @@ Ezzel a modullal a betanított besorolási vagy regressziós modell használatá
 
 3. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 Miután létrehozta a pontszámok készletét a [score Model](./score-model.md)használatával:
 
@@ -50,6 +50,6 @@ A pontszám vagy az előre jelzett érték számos különböző formátumban le
 
 A pontozás gyakori használata a kimenet visszaküldése a prediktív webszolgáltatás részeként. További információkért tekintse meg ezt az oktatóanyagot, amely bemutatja, hogyan hozhat létre egy webszolgáltatást egy folyamaton alapuló Azure Machine Learningban:
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

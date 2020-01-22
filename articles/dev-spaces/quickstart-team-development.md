@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan végezheti el a Team Kubernetes-fejlesztést tárolókkal és szolgáltatásokkal az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: 86d8d559a2d6408eb6846705887a82b440d50d7b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b84bb67556eda3a453ede5a6fb745d8ae472fb6c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770832"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290410"
 ---
 # <a name="quickstart-team-development-on-kubernetes---azure-dev-spaces"></a>Gyors útmutató: csoportmunka-fejlesztés a Kubernetes-ben – Azure dev Spaces
 
@@ -137,7 +137,7 @@ azds space select -n dev/azureuser1 -y
 azds space select -n dev/azureuser2 -y
 ```
 
-A fenti parancsok két gyermek szóközt hoznak létre a *azureuser1* és a *azureuser2*nevű *dev* alatt. Ez a két gyermekobjektum a fejlesztői *azureuser1* és *azureuser2* különböző fejlesztői tárolóhelyeket képvisel a minta alkalmazás módosításának végrehajtásához.
+A fenti parancsok két gyermek szóközt hoznak létre a *azureuser1* és a *azureuser2*nevű *dev* alatt. Ez a két gyermekobjektum különböző fejlesztői helyeket képvisel a fejlesztők *azureuser1* és *azureuser2* , amelyek a minta alkalmazás módosítására használhatók.
 
 Az `azds space list` parancs használatával jelölje ki az összes fejlesztői helyet, és erősítse meg a *dev/azureuser2* elemet.
 

@@ -11,12 +11,12 @@ ms.date: 12/02/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbaafdce6f2510b58966f4b6c18e45a3fcd4a664
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: dc3c4a943f24ba1f987aa1daf513b9e05ada65a7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997088"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76309999"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect – gyakori kérdések
 
@@ -58,7 +58,7 @@ Igen, a Felhőbeli kiépítés létrehoz egy egyszerű szolgáltatásnevet a ki�
 
 **K: mi történik, ha szinkronizált felhasználóra van szükség a jelszó módosítására a következő bejelentkezéskor?**
 
-Ha a jelszó-kivonat szinkronizálása engedélyezve van a Felhőbeli kiépítésben, és a szinkronizált felhasználó számára szükséges a jelszó módosítása a helyszíni AD-ben a következő bejelentkezéskor, a Felhőbeli kiépítés nem építi ki a jelszót az Azure AD-be való módosításra. Ha a felhasználó megváltoztatja a jelszót, a rendszer az AD-ből az Azure AD-be kiépíti a felhasználói jelszó kivonatát.
+Ha a jelszó-kivonat szinkronizálása engedélyezve van a Felhőbeli kiépítésben, és a szinkronizált felhasználónak a helyszíni AD-ben a következő bejelentkezéskor módosítania kell a jelszót, a felhőalapú kiépítés nem teszi lehetővé a jelszó-kivonatok módosítását az Azure AD-be. Ha a felhasználó megváltoztatja a jelszót, a rendszer az AD-ből az Azure AD-be kiépíti a felhasználói jelszó kivonatát.
 
 **K: a felhő-kiépítés támogatja az MS-DS-consistencyGUID visszaírási bármely objektum esetében?**
 

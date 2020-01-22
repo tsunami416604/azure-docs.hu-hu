@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 11/07/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 68c50d3455c0ed240fa62532818a0b07b39ec772
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: c4ed78dc9fd277fc61a923364519e338a9f720c2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75889525"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290393"
 ---
 # <a name="migrate-to-azure-kubernetes-service-aks"></a>Migrálás az Azure Kubernetes szolgáltatásba (ak)
 
@@ -45,7 +45,7 @@ Ebben a cikkben a következő áttelepítési adatokat összegzi:
 > * Érvényes kvóták biztosítása
 > * Magas rendelkezésre állás és Üzletmenet-folytonosság
 > * Állapot nélküli alkalmazások szempontjai
-> * A állapotalapú-alkalmazásokkal kapcsolatos megfontolások
+> * Az állapot-nyilvántartó alkalmazások szempontjai
 > * A fürt konfigurációjának üzembe helyezése
 
 ## <a name="aks-with-standard-load-balancer-and-virtual-machine-scale-sets"></a>AK standard Load Balancer és Virtual Machine Scale Sets
@@ -111,7 +111,7 @@ Az [Azure bejárati ajtó szolgáltatás](https://docs.microsoft.com/azure/front
 
 Az állapot nélküli alkalmazások migrálása a legegyszerűbb eset. Alkalmazza az erőforrás-definíciókat (YAML vagy Helm) az új fürtre, győződjön meg róla, hogy minden a várt módon működik-e, és irányítsa át a forgalmat az új fürt aktiválásához.
 
-### <a name="considers-for-stateful-applications"></a>Az állapot-nyilvántartó alkalmazások megítélése
+### <a name="considerations-for-stateful-applications"></a>Az állapot-nyilvántartó alkalmazások szempontjai
 
 Gondosan tervezze meg az állapot-nyilvántartó alkalmazások áttelepítését, hogy elkerülje az adatvesztést vagy a váratlan állásidőt.
 
@@ -161,7 +161,7 @@ Egyes nyílt forráskódú eszközök segítségével felügyelt lemezeket hozha
 
 ### <a name="deployment-of-your-cluster-configuration"></a>A fürt konfigurációjának üzembe helyezése
 
-Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatokkal alkalmazásokat hozhat [létre és helyezhet üzembe az AK](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops) -klónok számára a meglévő üzembe helyezési feladatokhoz, és gondoskodhat arról, hogy `kubeconfig` az új AK-fürtre mutasson.
+Javasoljuk, hogy a meglévő folyamatos integrációs (CI) és a folyamatos kézbesítés (CD) folyamat használatával helyezzen üzembe egy ismert, jó konfigurációt az AK-ban. Az Azure-folyamatok segítségével alkalmazásokat hozhat [létre és helyezhet üzembe az AK](https://docs.microsoft.com/azure/devops/pipelines/ecosystems/kubernetes/aks-template?view=azure-devops)-ban. A meglévő üzembe helyezési feladatok klónozásával ellenőrizze, hogy `kubeconfig` mutat-e az új AK-fürtre.
 
 Ha ez nem lehetséges, exportálja az erőforrás-definíciókat a meglévő Kubernetes-fürtből, majd alkalmazza őket az AK-ra. Az objektumok exportálásához `kubectl` is használhatja.
 
@@ -177,5 +177,5 @@ Ebben a cikkben a következő áttelepítési adatokat összesítettük:
 > * Érvényes kvóták biztosítása
 > * Magas rendelkezésre állás és Üzletmenet-folytonosság
 > * Állapot nélküli alkalmazások szempontjai
-> * A állapotalapú-alkalmazásokkal kapcsolatos megfontolások
+> * Az állapot-nyilvántartó alkalmazások szempontjai
 > * A fürt konfigurációjának üzembe helyezése

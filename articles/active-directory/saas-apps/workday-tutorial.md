@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 11/20/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d2bf769169b579cb0a06a48b3a5998efb89eb8fb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 843dd403bc5434e2c79ee0bb85eb781b56bf3ec9
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75443333"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291447"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workday"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció munkanapokkal
 
@@ -42,7 +41,11 @@ Első lépésként a következő elemeket kell megadnia:
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
-Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben. A munkanap támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
+
+* A munkanap támogatja az **SP** által kezdeményezett egyszeri bejelentkezést.
+
+* A munkanapok konfigurálása után kényszerítheti a munkamenet-vezérlőelemek betartatását, így valós időben biztosíthatja a szervezete bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-workday-from-the-gallery"></a>Munkanapok hozzáadása a katalógusból
 
@@ -244,7 +247,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 ### <a name="create-workday-test-user"></a>Munkanapokat vizsgáló felhasználó létrehozása
 
-Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre munkanapokon. A munkanapokat támogató ügyfélszolgálati [csapattal](https://www.workday.com/en-us/partners-services/services/support.html) együtt veheti fel a felhasználókat a munkanap platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre munkanapokon. A munkanapokat támogató ügyfélszolgálati [csapattal](https://www.workday.com/partners-services/services/support.html) együtt veheti fel a felhasználókat a munkanap platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 
@@ -259,3 +262,7 @@ Amikor kiválasztja a munkanap csempét a hozzáférési panelen, automatikusan 
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A munkanap kipróbálása az Azure AD-vel](https://aad.portal.azure.com)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/protect-workday)
+
+- [A munkanap védetté tétele a speciális láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

@@ -10,16 +10,16 @@ ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: multiple
-ms.openlocfilehash: 58755a0ac49b9549813ddb507dfbd986d83dfce5
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.openlocfilehash: ccdeefabeedfca4959239696361ccce0bc6c1c78
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305849"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289798"
 ---
 # <a name="mainframe-rehosting-on-azure-virtual-machines"></a>A nagyszámítógépek Azure-beli virtuális gépeken való üzemeltetése
 
-A nagyvállalati környezetek és a felhő közötti munkaterhelések áttelepítése lehetővé teszi az infrastruktúra korszerűsítését és a költségek gyakori megtakarítását. Számos számítási feladat átvihető az Azure-ba csak kisebb programkód-módosításokkal, például az adatbázisok nevének frissítésével.
+A nagyvállalati környezetek és a felhő közötti munkaterhelések áttelepítése lehetővé teszi az infrastruktúra korszerűsítését és a költségek gyakori megtakarítását. Rengeteg számítási feladat vihető át Az Azure-ba csupán kisebb kódmódosítással, például az adatbázisok nevének frissítésével.
 
 Általánosságban elmondható, hogy a *mainframe* kifejezés egy nagyméretű számítógépes rendszert jelent. A jelenleg használatban lévő túlnyomó többsége az IBM System Z Servers vagy az IBM plug-kompatibilis rendszerek, amelyek MVS, DOS, VSE, OS/390 vagy Z/OS rendszert futtatnak.
 
@@ -31,9 +31,9 @@ Az Azure-beli virtuális gépek olyan nagyszámítógép-emulációs környezete
 
 Egyes nagyszámítógép-munkaterhelések áttelepíthetők az Azure-ba viszonylag könnyen, míg mások az Azure-ban egy partneri megoldás használatával áthelyezhetők. A partneri megoldások kiválasztásával kapcsolatos részletes útmutatást az [Azure mainframe Migration Center](https://azure.microsoft.com/migration/mainframe/) nyújt segítséget.
 
-## <a name="mainframe-migration"></a>Nagyszámítógép migrálása
+## <a name="mainframe-migration"></a>Nagyszámítógépek migrálása
 
-Újrafuttatja, újraépíti, lecseréli vagy kivonja? IaaS vagy Péter? A nagyvállalati alkalmazások megfelelő áttelepítési stratégiájának meghatározásához [](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) tekintse meg a nagyszámítógépi áttelepítési útmutatót a Azure Architecture Center.
+Újrafuttatja, újraépíti, lecseréli vagy kivonja? IaaS vagy Péter? A nagyvállalati alkalmazások megfelelő áttelepítési stratégiájának meghatározásához tekintse meg a [Nagyszámítógépi áttelepítési](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview) útmutatót a Azure Architecture Center.
 
 ## <a name="micro-focus-rehosting-platform"></a>A Micro Focus platform újraüzemeltetése
 
@@ -55,7 +55,7 @@ Első lépések:
 - [Ismerkedés a TmaxSoft OpenFrame Kiindulópontul](./tmaxsoft/get-started.md)
 - [Az ebook letöltése](https://azure.microsoft.com/resources/install-tmaxsoft-openframe-on-azure/)
 
-## <a name="ibm-zdt-120"></a>IBM zD&T 12.0
+## <a name="ibm-zdt-120"></a>IBM & T 12,0
 
 Az IBM Z fejlesztési és tesztelési környezet (IBM & T) az Azure-ban olyan nem éles környezetben működő környezetet állít be, amely a Z/OS-alapú alkalmazások fejlesztéséhez, teszteléséhez és demói számára használható.
 
@@ -76,7 +76,7 @@ Első lépésként tekintse [meg az IBM DB2 pureScale az Azure](/azure/virtual-m
 
 Ha nagyszámítógépes számítási feladatokat telepít át az Azure-infrastruktúra szolgáltatásként (IaaS), többféle igény szerinti, méretezhető számítástechnikai erőforrás közül választhat, beleértve az Azure-beli virtuális gépeket is. Az Azure [Linux](/azure/virtual-machines/linux/overview) -és Windows- [alapú](/azure/virtual-machines/windows/overview) virtuális gépek széles választékát kínálja.
 
-### <a name="compute"></a>Compute
+### <a name="compute"></a>Számítási szolgáltatások
 
 Az Azure számítási teljesítménye kedvezően hasonlít a nagyszámítógépek kapacitására. Ha úgy gondolja, hogy egy nagyszámítógépi munkaterhelést az Azure-ba helyez át, hasonlítsa össze a 1 000 000 utasítások másodpercenkénti számát (MIPS) a virtuális processzorokra. 
 
@@ -88,17 +88,17 @@ Az Azure kötelezettségvállalási alapú szolgáltatói szerződéseket (SLA-k
 
 Az Azure IaaS, például a virtuális gépek esetében az adott rendszerfunkciók feladatátvételi támogatást biztosítanak, például a feladatátvételi fürtszolgáltatás példányai és a rendelkezésre állási készletek. Ha az Azure platformot szolgáltatásként (Pásti) használja, a platform automatikusan kezeli a feladatátvételt. Ilyenek például a [Azure SQL Database](/azure/sql-database/sql-database-technical-overview) és a [Azure Cosmos db](/azure/cosmos-db/introduction).
 
-### <a name="scalability"></a>Méretezhetőség
+### <a name="scalability"></a>Skálázhatóság
 
-A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](/azure/virtual-machines/linux/sizes) -és [Windows](/azure/virtual-machines/windows/sizes) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a [](/azure/architecture/best-practices/auto-scaling) szolgáltatások igény szerinti skálázása használaton alapuló számlázási modell keretében történik.
+A nagyszámítógépek jellemzően vertikális felskálázást, míg a felhőalapú környezetek felskálázása. Az Azure számos [Linux](/azure/virtual-machines/linux/sizes) -és [Windows](/azure/virtual-machines/windows/sizes) -méretet kínál, hogy megfeleljen az igényeinek. A felhő a pontos felhasználói specifikációknak megfelelően felfelé vagy lefelé is méretezhető. A számítási teljesítmény, a tárolás és a szolgáltatások igény szerinti [skálázása](/azure/architecture/best-practices/auto-scaling) használaton alapuló számlázási modell keretében történik.
 
-### <a name="storage"></a>Storage
+### <a name="storage"></a>Adattárolás
 
 A felhőben számos rugalmas és skálázható tárolási lehetőség áll rendelkezésre, és csak azért kell fizetnie, amire szüksége van. Az [Azure Storage](/azure/storage/common/storage-introduction) egy nagymértékben méretezhető objektum-tárolót biztosít az adatobjektumokhoz, egy fájlrendszer-szolgáltatáshoz a felhőhöz, egy megbízható üzenetkezelési tárolóhoz és egy NoSQL-tárolóhoz. A virtuális gépek esetében a felügyelt és a nem felügyelt lemezek állandó, biztonságos lemezes tárolást biztosítanak.
 
 Ismerje meg, hogyan [helyezheti át a mainframe-tárolót az Azure-](./concepts/mainframe-storage-azure.md)ba.
 
-### <a name="backup-and-recovery"></a>Biztonsági másolat és helyreállítás
+### <a name="backup-and-recovery"></a>Biztonsági mentés és helyreállítás
 
 A saját vész-helyreállítási hely fenntartása költséges lehet. Az Azure könnyen megvalósítható és költséghatékony lehetőségeket kínál a [biztonsági mentéshez](/azure/backup/backup-introduction-to-azure-backup), a [helyreállításhoz](/azure/site-recovery/site-recovery-overview)és a [Redundanciához](/azure/storage/common/storage-redundancy) helyi vagy regionális szinten, vagy geo-redundancia segítségével.
 
@@ -108,17 +108,17 @@ Számos állami intézmény szereti a nagyvállalati alkalmazásokat egy modern,
 
 Azure Government egy ideiglenes hatóságot (P-ATO) kapott ahhoz, hogy a FedRAMP nagy hatással legyen az ilyen típusú környezetet igénylő rendszerekre.
 
-Első lépésként töltse le [Microsoft Azure Government felhőt a](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/)nagyszámítógépek alkalmazásaihoz.
+Első lépésként töltse le [Microsoft Azure Government felhőt a nagyszámítógépek alkalmazásaihoz](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/en-us/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Kérje [partnereit](partner-workloads.md) , hogy segítsenek áttelepíteni vagy áthelyezni a nagyszámítógépű alkalmazásokat. A partneri megoldások kiválasztásával kapcsolatos részletes útmutatásért lásd a [platform modernizációs Szövetség](https://www.platformmodernization.org/pages/mainframe.aspx) webhelyét.
+Kérje [partnereit](partner-workloads.md) , hogy segítsenek áttelepíteni vagy áthelyezni a nagyszámítógépű alkalmazásokat. 
 
 Lásd még:
 
 - [A nagyszámítógépekkel kapcsolatos témákról szóló tanulmány](mainframe-white-papers.md)
 - [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [Hibaelhárítás](/azure/virtual-machines/troubleshooting/)
+- [hibaelhárítással](/azure/virtual-machines/troubleshooting/)
 - [Demystifying mainframe – Azure Migrálás](https://azure.microsoft.com/resources/demystifying-mainframe-to-azure-migration/)
 
 <!-- INTERNAL LINKS -->

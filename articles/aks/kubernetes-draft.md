@@ -7,18 +7,18 @@ ms.service: container-service
 ms.topic: article
 ms.date: 06/20/2019
 ms.author: zarhoads
-ms.openlocfilehash: a9b942c4726c770f1ea0d35c924395cdff40e1c7
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 07e267af307fedd9b896e08919b7026a3a1c2bac
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732018"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292962"
 ---
 # <a name="quickstart-develop-on-azure-kubernetes-service-aks-with-draft"></a>Gyors útmutató: fejlesztés az Azure Kubernetes Service-ben (ak) a Drafttal
 
 A draft egy nyílt forráskódú eszköz, amely megkönnyíti a Kubernetes-fürtben lévő alkalmazás-tárolók előkészítését és futtatását. A draft használatával gyorsan újratelepítheti az alkalmazásokat, hogy Kubernetes, és ne véglegesítse a módosításokat a verziókövetés előtt. A vázlattal kapcsolatos további információkért tekintse meg a következő témakört: a [githubon található dokumentáció vázlata][draft-documentation].
 
-Ebből a cikkből megtudhatja, hogyan használhatja a draft-csomagot, és hogyan futtathat alkalmazást az AK-on.
+Ebből a cikkből megtudhatja, hogyan használhatja a piszkozatot a csomaghoz, és hogyan futtathat alkalmazásokat az AK-ban.
 
 
 ## <a name="prerequisites"></a>Előfeltételek

@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: 54ca0df005dccceacc88044a51f31ad784b7071b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 1430db34f9c31cbd9d9df921650c628d265bccc5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763402"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311087"
 ---
 # <a name="build-a-classifier--use-python-scripts-to-predict-credit-risk-using-azure-machine-learning-designer"></a>Osztályozó & létrehozása Python-parancsfájlok használatával a hitelkockázat előrejelzéséhez Azure Machine Learning Designer használatával
 
-**Designer (előzetes verzió) 4. minta**
+**Designer minta 4**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot a Designer (előzetes verzió) használatával. Megismerheti, hogyan hozhat létre egyéni logikát Python-szkriptek használatával, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
+Ez a cikk bemutatja, hogyan hozhat létre egy összetett gépi tanulási folyamatot a tervező használatával. Megismerheti, hogyan hozhat létre egyéni logikát Python-szkriptek használatával, és hogyan hasonlíthat össze több modellt a legjobb lehetőség kiválasztásához.
 
 Ez a példa egy osztályozó beosztásával Jósolja meg a hitelkockázat-használati adatokat, például a kreditek előzményeit, az életkort és a hitelkártyák számát. A cikkben szereplő fogalmakat azonban a saját gépi tanulási problémák megoldására is alkalmazhatja.
 

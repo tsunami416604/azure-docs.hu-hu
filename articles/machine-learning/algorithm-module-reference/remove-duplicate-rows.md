@@ -9,28 +9,28 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: a0faba895c5717d061bacee2ce724c20464f8150
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 91434a5392f37a297e474fedf00fac6b1e4d8362
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497687"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314164"
 ---
 # <a name="remove-duplicate-rows-module"></a>Ismétlődő sorok moduljának eltávolítása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal távolíthatja el a lehetséges duplikált adatokat egy adatkészletből.
 
 Tegyük fel például, hogy az adatok úgy néznek ki, mint a következő, és a betegek több rekordját jelöli. 
 
-| PatientID | Monogramja| Nem|Kor|Elismerte|
+| PatientID | Monogram| Nem|Kor|Elismerte|
 |----|----|----|----|----|
-|1|F.M.| M| 53| Jan|
-|2| F.A.M.| M| 53| Jan|
-|3| F.A.M.| M| 24| Jan|
-|3| F.M.| M| 24| Február|
-|4| F.M.| M| 23| Február|
+|1|F.M.| M| 53| jan.|
+|2| F.A.M.| M| 53| jan.|
+|3| F.A.M.| M| 24| jan.|
+|3| F.M.| M| 24| feb.|
+|4| F.M.| M| 23| feb.|
 | | F.M.| M| 23| |
 |5| F.A.M.| M| 53| |
 |6| F.A.M.| M| NaN| |
@@ -71,11 +71,11 @@ Amikor futtatja a modult, létrehoz egy jelölt adatkészletet, és olyan sorok 
 
 5. A folyamat futtatása.
 
-6. Az eredmények áttekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények adatkészlet**lehetőséget, majd kattintson a **Megjelenítés**elemre. 
+6. Az eredmények áttekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. 
 
 > [!TIP]
 > Ha az eredmények nehezen érthetőek, vagy ha ki szeretne zárni egyes oszlopokat a megfontolásból, eltávolíthatja az oszlopokat az [adatkészlet kiválasztása](./select-columns-in-dataset.md) modulban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

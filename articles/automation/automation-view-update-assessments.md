@@ -3,14 +3,14 @@ title: Az Azure Update Management frissítési felmérések megtekintése
 description: Ez a cikk azt ismerteti, hogyan lehet megtekinteni a frissítési központi telepítések frissítési értékeléseit.
 services: automation
 ms.subservice: update-management
-ms.date: 05/17/2019
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6f86c72bfc1a1d51ed509a70d786e67f11d8166
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 58d3cf6261456c09195ad6dafaeb781b55d9e5ee
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419888"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310084"
 ---
 # <a name="view-azure-update-management-update-assessments"></a>Az Azure Update Management frissítési felmérések megtekintése
 
@@ -30,7 +30,7 @@ Válassza a **hiányzó frissítések** lehetőséget a gépekből hiányzó fri
 
 ## <a name="update-classifications"></a>Frissítési besorolások
 
-Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
+Az alábbi táblázat a Update Management támogatott frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
 
 ### <a name="windows"></a>Windows
 
@@ -59,6 +59,8 @@ sudo yum -q --security check-update
 ```
 
 Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást biztosítja azoknak az ügyfeleknek, akik saját maguk engedélyezték ezt a funkciót.
+
+A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
 ## <a name="next-steps"></a>Következő lépések
 

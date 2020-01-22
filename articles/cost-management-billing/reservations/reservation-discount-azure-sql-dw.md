@@ -6,14 +6,14 @@ author: yashesvi
 manager: yashar
 ms.service: cost-management-billing
 ms.topic: conceptual
-ms.date: 09/30/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: 0671843b09cd90123b856b94db2618bac617dd5b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a673dc7949d5ce05aa1a701cc8b939a766fd99
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75995779"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313926"
 ---
 # <a name="how-reservation-discounts-apply-to-azure-sql-data-warehouse"></a>A foglalási kedvezmények alkalmazása az Azure SQL Data Warehouse-ban
 
@@ -31,9 +31,9 @@ Azon adattárházak esetében, amelyek nem futnak egy teljes órán át, az adot
 
 Az alábbi példák bemutatják, hogy a rendszer hogyan alkalmazza a fenntartott SQL Data Warehouse-kapacitásokra érvényes kedvezményt az üzemelő példányoktól függően.
 
-- **1. példa**: 5 egység 100 cDWU fenntartott kapacitást vásárol. Egy DW1500c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben a használat 15 egységnyi 100 cDWU kapacitás. A foglalási kedvezmény az 5 felhasznált egységre vonatkozik. A fennmaradó 10 egységnyi 100 cDWU kapacitásért, amelyet felhasznált használatalapú díjat fizet.
+- **1. példa**: 5 egység 100 cDWU fenntartott kapacitást vásárol. Egy DW1500c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben a használat 15 egységnyi 100 cDWU kapacitás. A foglalási kedvezmény az 5 felhasznált egységre vonatkozik. A fennmaradó 10 egységnyi 100 cDWU kapacitásért, amelyet felhasznált használatalapú díjat fizet. Más szóval a részleges lefedettség több foglalás esetén is lehetséges.
 
-- **2. példa**: 5 egység 100 cDWU fenntartott kapacitást vásárol. Két DW100c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben két használati esemény jön létre egyenként 1 egységnyi 100 cDWU használattal. Mindkét használati esemény megkapja a fenntartott kapacitásra érvényes kedvezményt. A fennmaradó 3 egységnyi 100 cDWU fenntartott kapacitás elveszik, és nem vihető tovább jövőbeli használatra.
+- **2. példa**: 5 egység 100 cDWU fenntartott kapacitást vásárol. Két DW100c SQL Data Warehouse-példányt futtat egy órán át. Ebben az esetben két használati esemény jön létre egyenként 1 egységnyi 100 cDWU használattal. Mindkét használati esemény megkapja a fenntartott kapacitásra érvényes kedvezményt. A fennmaradó 3 egységnyi 100 cDWU fenntartott kapacitás elveszik, és nem vihető tovább jövőbeli használatra. Ez azt jelenti, hogy egy foglalás több SQL Data Warehouse példányra is illeszkedik.
 
 - **3. példa**: a 100 cDWU fenntartott kapacitás 1 egységét vásárolja meg. Két DW100c SQL Data Warehouse-példányt futtat. Mindkettő 30 percig fut. Ebben az esetben mindkét használati esemény megkapja a fenntartott kapacitásra érvényes kedvezményt. Nincs olyan használat, amelyért használatalapú díjat kellene fizetnie.
 

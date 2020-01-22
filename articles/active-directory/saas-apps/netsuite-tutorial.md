@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/10/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: ad7065ba6378bcb383e67b4a58d7c195e88679ca
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75890668"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289033"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -48,6 +48,7 @@ A NetSuite a következőket támogatja:
 * IDENTITÁSSZOLGÁLTATÓ által kezdeményezett egyszeri bejelentkezés.
 * JIT (igény szerinti) felhasználó kiépítés.
 * [Automatikus felhasználó-kiépítés](NetSuite-provisioning-tutorial.md).
+* A NetSuite konfigurálása után kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak valós idejű kiszűrése és beszivárgását teszi elérhetővé. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Mivel az alkalmazás azonosítója egy rögzített karakterlánc-érték, csak egy példány konfigurálható egyetlen bérlőn.
@@ -106,7 +107,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum |
+    | Name (Név) | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -265,3 +266,6 @@ Ha a hozzáférési panelen kiválasztja a NetSuite csempét, akkor automatikusa
 - [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 - [A NetSuite kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A NetSuite védelem speciális láthatósággal és vezérlőkkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

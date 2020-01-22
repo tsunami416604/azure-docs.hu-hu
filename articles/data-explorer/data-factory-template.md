@@ -8,18 +8,18 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 09/08/2019
-ms.openlocfilehash: ca50a1ecd4d2a21593ddd11f83337ae7476cf916
-ms.sourcegitcommit: 29880cf2e4ba9e441f7334c67c7e6a994df21cfe
+ms.openlocfilehash: 884f4e956b37c2def6c25d0acdf20f15eddf7767
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/26/2019
-ms.locfileid: "71300443"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293555"
 ---
 # <a name="copy-in-bulk-from-a-database-to-azure-data-explorer-by-using-the-azure-data-factory-template"></a>Adatok tömeges másolása egy adatbázisból az Azure Adatkezelőba a Azure Data Factory sablon használatával 
 
 Az Azure Adatkezelő egy gyors, teljes körűen felügyelt, adatelemzési szolgáltatás. Valós idejű elemzést biztosít nagy mennyiségű, több forrásból, például alkalmazásokból, webhelyekről és IoT származó adatokból. 
 
-A Azure Data Factory egy teljes körűen felügyelt, felhőalapú, adatintegrációs szolgáltatás. A segítségével feltöltheti az Azure Adatkezelő-adatbázist a meglévő rendszerből származó adatokkal. És hasznos időt takaríthat meg az elemzési megoldások létrehozásakor. 
+Ha az Oracle Server-, Netezza-, Teradata-vagy SQL Server-adatbázisból szeretne adatokat másolni az Azure Adatkezelőba, nagy mennyiségű adatmennyiséget kell betölteni több táblából. Az adatok általában az egyes táblákban particionálva vannak, így egyetlen táblából párhuzamosan több szálat tartalmazó sorok is betölthetők. Ez a cikk az ezekben a forgatókönyvekben használandó sablont ismerteti.
 
 [Azure Data Factory sablonok](/azure/data-factory/solution-templates-introduction) előre definiált Data Factory folyamatok. Ezek a sablonok segíthetnek a Data Factory gyors megkezdésében, és a fejlesztési idő csökkentésében az adatintegrációs projektekben. 
 
@@ -79,7 +79,7 @@ Ha a ControlTableDataset formátuma eltérő, hozzon létre egy hasonló Control
 
     c. A **AzureDataExplorerTable** legördülő listában válassza ki az Azure adatkezelő táblázatot. Ha az adatkészlet nem létezik, [hozza létre az Azure adatkezelő társított szolgáltatást](data-factory-load-data.md#create-the-azure-data-explorer-linked-service) az adatkészlet hozzáadásához.
 
-    d. Válassza **a sablon használata**lehetőséget.
+    d. Kattintson a **Sablon használata** lehetőségre.
 
     ![A "tömeges másolás az adatbázisból az Azure Adatkezelőba" panel](media/data-factory-template/configure-bulk-copy-adx-template.png)
 
@@ -109,7 +109,7 @@ Ha a ControlTableDataset formátuma eltérő, hozzon létre egy hasonló Control
 
 Mostantól a sablon használatával hatékonyan másolhat nagy mennyiségű adatmennyiséget az adatbázisaiból és a tábláiból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [másolhat az Azure Adatkezelőba Azure Data Factory használatával](data-factory-load-data.md).
 * Ismerkedjen meg a Azure Data Factory [Azure adatkezelő-összekötővel](/azure/data-factory/connector-azure-data-explorer) .

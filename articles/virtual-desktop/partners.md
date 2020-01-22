@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: helohr
-ms.openlocfilehash: f503377984a347d85af04d85728c53eaad0c4c74
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3f725d7e902b1e020c26e82007d4d257b2fd21c4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75451353"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293181"
 ---
 # <a name="windows-virtual-desktop-partner-integrations"></a>Windows rendszerű virtuális asztali partner-integrációk
 
@@ -222,7 +222,7 @@ A Tricerat kiváló nyomtatási megoldást kínál a Windows rendszerű virtuál
 
 A Tricerat esetében a nyomtatás zökkenőmentes a Windows rendszerű virtuális asztal és azon kívül is. A Tricerat szoftver lehetővé teszi a rendszergazdák számára a helyszíni nyomtatók egyszerű összekapcsolását a felhővel, a hagyományos környezetek vállalati nyomtatási felügyeletének bővítését új, modern munkaterületekre.
 
-- [Lépjen a partner webhelyére](https://www.tricerat.com/solutions/wvd-microsoft/).
+- [Lépjen a partner webhelyére](https://www.tricerat.com/microsoft-printing).
 
 ## <a name="workspot"></a>Workspot
 

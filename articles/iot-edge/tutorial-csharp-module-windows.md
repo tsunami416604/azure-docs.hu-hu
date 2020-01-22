@@ -9,12 +9,12 @@ ms.date: 04/23/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 8ed622ff928fa612e6d33ba0647ce258bf4c1c21
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: c9a5138146897fdfed4661b85198cbff6b74bf5a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665212"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293861"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge-modul fejlesztése Windows-eszközökhöz
 
@@ -102,20 +102,21 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
        "address": "<registry name>.azurecr.io"
      }
    }
+   ```
 
-3. Open the **.env** file in your module solution. (It's hidden by default in the Solution Explorer, so you might need to select the **Show All Files** button to display it.) The .env file should contain the same username and password variables that you saw in the deployment.template.json file. 
+3. Nyissa meg a **. env** fájlt a modul-megoldásban. (Alapértelmezés szerint rejtett a Megoldáskezelőban, ezért előfordulhat, hogy az **összes fájl megjelenítése** gombra kell kattintania a megjelenítéséhez.) A. env fájlnak ugyanazt a Felhasználónév és jelszó változót kell tartalmaznia, amelyet a Deployment. template. JSON fájlban látott. 
 
-4. Add the **Username** and **Password** values from your Azure container registry. 
+4. Adja hozzá a **Felhasználónév** és a **jelszó** értékét az Azure Container registryből. 
 
-5. Save your changes to the .env file.
+5. Mentse a módosításokat a. env fájlba.
 
-### Update the module with custom code
+### <a name="update-the-module-with-custom-code"></a>A modul módosítása egyéni kóddal
 
-The default module code receives messages on an input queue and passes them along through an output queue. Let's add some additional code so that the module processes the messages at the edge before forwarding them to IoT Hub. Update the module so that it analyzes the temperature data in each message, and only sends the message to IoT Hub if the temperature exceeds a certain threshold. 
+Az alapértelmezett modul kódja üzeneteket fogad egy bemeneti várólistán, és egy kimeneti várólistán keresztül továbbítja azokat. Vegyünk fel néhány további kódot, hogy a modul feldolgozza az üzeneteket a peremen, mielőtt továbbítaná őket a IoT Hubba. Frissítse a modult úgy, hogy az minden üzenetben elemezze a hőmérsékleti adatokat, és csak akkor küldje el az üzenetet IoT Hub, ha a hőmérséklet meghaladja az adott küszöbértéket. 
 
-1. In Visual Studio, open **CSharpModule** > **Program.cs**.
+1. A Visual Studióban nyissa meg a **CSharpModule** > **program.cs**.
 
-2. At the top of the **CSharpModule** namespace, add three **using** statements for types that are used later:
+2. A **CSharpModule** névtér tetején adjon hozzá három **using** utasítást a későbbiekben használt típusokhoz:
 
     ```csharp
     using System.Collections.Generic;     // For KeyValuePair<>

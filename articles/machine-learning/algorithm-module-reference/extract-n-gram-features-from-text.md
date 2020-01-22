@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 71c1afd294b880f68849b283ea1a4b058d744801
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4f64ac9b276c71a037f96766b38a2574b89441c8
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497850"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312226"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-Gram-funkciók kinyerése a szöveges modul hivatkozása alapján
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti. A nem strukturált szöveges adatok *szabadkézi* használja az N-Gram-funkciók a szöveges modulból való kinyerését. 
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti. A nem strukturált szöveges adatok *szabadkézi* használja az N-Gram-funkciók a szöveges modulból való kinyerését. 
 
 ## <a name="configuration-of-the-extract-n-gram-features-from-text-module"></a>Az N-Gram-funkciók kinyerésének konfigurációja a szöveges modulból
 
@@ -106,7 +106,7 @@ A modul a következő forgatókönyveket támogatja egy n-Gram szótár használ
 
 1.  Kösse össze a mentett adatkészletet az N-Gram-funkciók kinyerésével a pontozási gráfban található Text modulból.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A Text modul N-Gram-funkcióinak kinyerése két típusú kimenetet hoz létre: 
 
@@ -135,6 +135,6 @@ Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Péld
 > [!Note]
 > Ne kapcsolja közvetlenül az adatkimenetet a Train Model modulhoz. A kiépítési modellbe való beetetés előtt távolítsa el a szabadszöveges oszlopokat. Ellenkező esetben a szabad szöveges oszlopok kategorikus funkciókként lesznek kezelve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) .

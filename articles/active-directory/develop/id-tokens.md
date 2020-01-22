@@ -14,12 +14,12 @@ ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
 ms:custom: fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a0aa868d5ed57e27a89f2791f617dcdda74e766b
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7e910faaf9875b6791135c8721090fa801a7e08
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167449"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294184"
 ---
 # <a name="microsoft-identity-platform-id-tokens"></a>Microsoft Identity platform azonosító tokenek
 
@@ -85,6 +85,12 @@ Ez a lista azokat a jogcímeket jeleníti meg, amelyek a legtöbb id_tokens alap
 |`unique_name` | Sztring | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. Ez az érték egy adott időpontban egyedi, de az e-mailek és más azonosítók újból felhasználhatók, ez az érték más fiókokban is újra szerepelhet, ezért csak megjelenítési célokra használható. Csak a v 1.0 `id_tokens`kiadásban. |
 |`uti` | Átlátszatlan karakterlánc | Az Azure által a jogkivonatok újraellenőrzéséhez használt belső jogcím. Figyelmen kívül kell hagyni. |
 |`ver` | Karakterlánc, vagy 1,0 vagy 2,0 | Megadja a id_token verzióját. |
+
+
+> [!NOTE]
+> A v1-es és v2-es id_token különbségek vannak a fenti példákban látható információk mennyiségével. A verzió lényegében azt az Azure AD platform-végpontot határozza meg, ahonnan a kiadást adták. Az [Azure ad OAuth megvalósítása](https://docs.microsoft.com/azure/active-directory/develop/about-microsoft-identity-platform) az évek során fejlődött. Jelenleg két különböző oAuth-végponttal rendelkezünk a AzureAD-alkalmazásokhoz. Használhatja a v2-ként kategorizált új végpontokat vagy a régit, amely a v1. A OAuth végpontok mindkettő eltérő. A v2-végpont annál újabb, ahol a v1-végpont összes funkcióját megpróbáljuk áttelepíteni, és az új fejlesztőknek javasoljuk, hogy a v2-végpontot használják. 
+> - V1: Azure Active Directory végpontok: `https://login.microsoftonline.com/common/oauth2/authorize`
+> - V2: Microsoft Identity platform-végpontok: `https://login.microsoftonline.com/common/oauth2/v2.0/authorize`
 
 ## <a name="validating-an-id_token"></a>Id_token ellenőrzése
 

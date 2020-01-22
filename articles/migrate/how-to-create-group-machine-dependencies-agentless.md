@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 11/18/2019
 ms.author: hamusa
-ms.openlocfilehash: 4bc2e67d276deeea01989ed76be7352ce27abd71
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: ff267aabe2f9e4cec38c307fe4382a84ba6d62df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280815"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288955"
 ---
 # <a name="set-up-agentless-dependency-visualization-for-assessment"></a>Az ügynök nélküli függőségi vizualizáció beállítása az értékeléshez
 
@@ -87,10 +87,10 @@ Válassza ki azokat a gépeket, amelyeken engedélyezni szeretné a függőségi
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
-3. Kattintson a **függőségi felderítés indítása**elemre.
-3. A **függőségi felderítés indítása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket deríti fel.
+3. Kattintson a **kiszolgálók hozzáadása**elemre.
+3. A **kiszolgálók hozzáadása** lapon válassza ki azt a készüléket, amely a megfelelő gépeket felfedi.
 4. A gép listából válassza ki a gépeket.
-5. Kattintson a **függőségi felderítés indítása**elemre.
+5. Kattintson a **kiszolgálók hozzáadása**elemre.
 
     ![Függőségi felderítés elindítása](./media/how-to-create-group-machine-dependencies-agentless/start-dependency-discovery.png)
 
@@ -123,10 +123,10 @@ Válassza ki azokat a gépeket, amelyeken le szeretné állítani a függőségi
 
 1. **Azure Migrate: kiszolgáló értékelése**, kattintson a **felderített kiszolgálók**elemre.
 2. Kattintson a **függőség elemzése** ikonra.
-3. Kattintson a **függőségi felderítés leállítása**elemre.
-3. A **függőségek felderítésének leállítása** lapon válassza ki azt a **készüléket** , amely felderíti azokat a virtuális gépeket, amelyeken meg szeretné szüntetni a függőségi felderítést.
+3. Kattintson a **kiszolgálók eltávolítása**elemre.
+3. A **kiszolgálók eltávolítása** lapon válassza ki azt a **készüléket** , amely felderíti azokat a virtuális gépeket, amelyeken meg szeretné szüntetni a függőségi felderítést.
 4. A gép listából válassza ki a gépeket.
-5. Kattintson a **függőségi felderítés leállítása** elemre.
+5. Kattintson a **kiszolgálók eltávolítása**elemre.
 
 
 ## <a name="next-steps"></a>Következő lépések

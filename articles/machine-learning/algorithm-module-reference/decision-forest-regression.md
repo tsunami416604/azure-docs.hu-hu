@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d930a6d856c6608e7792ce8ef3204b39aba0028a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 828301724dae58437f7818668cd0be879ae2ac70
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497975"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314181"
 ---
 # <a name="decision-forest-regression-module"></a>Döntési erdő regressziós modulja
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal egy regressziós modellt hozhat létre a döntési fák együttese alapján.
 
@@ -38,7 +38,7 @@ A döntési fák a következő előnyöket biztosítják:
 
 Ez a regressziós modell a döntési fák együttesét tartalmazza. A regressziós döntési erdőben minden fa a Gauss-eloszlást előrejelzésként jeleníti meg. A fák összevonása során a rendszer összesítést végez a modellben található összes fa összevont eloszlásához legközelebb eső Gauss-eloszlás megtalálásához.
 
-Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcsolatos további információkért tekintse meg a következő cikket: [döntési erdők: az osztályozás, a regresszió, a sűrűség becslése, a sokrétű tanulás és a részben felügyelt tanulás egységes keretrendszere ](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
+Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcsolatos további információkért tekintse meg a következő cikket: [döntési erdők: az osztályozás, a regresszió, a sűrűség becslése, a sokrétű tanulás és a részben felügyelt tanulás egységes keretrendszere](https://www.microsoft.com/en-us/research/publication/decision-forests-a-unified-framework-for-classification-regression-density-estimation-manifold-learning-and-semi-supervised-learning/?from=http%3A%2F%2Fresearch.microsoft.com%2Fapps%2Fpubs%2Fdefault.aspx%3Fid%3D158806#)
 
 ## <a name="how-to-configure-decision-forest-regression-model"></a>Döntési erdő regressziós modelljének konfigurálása
 
@@ -84,16 +84,12 @@ Az algoritmus elméleti keretrendszerével és annak megvalósításával kapcso
 
 10. A folyamat futtatása.
 
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
-+ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, kattintson a jobb gombbal a betanítási modul kimenetére, majd válassza a **Megjelenítés**lehetőséget.
++ A betanított modell pillanatképének mentéséhez válassza ki a betanítási modult, majd váltson a **kimenetek** lapra a jobb oldali panelen. Kattintson az ikonra a **modell regisztrálása**elemre.  A mentett modellt megtalálhatja modulként a modul fájában. 
 
-+ Ha meg szeretné tekinteni az egyes csomópontok szabályait, kattintson az egyes faszerkezetekre, és bontsa ki a felosztást.
-
-+ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal az oktatási modul kimenetére, és válassza a **Mentés betanítva modellként**lehetőséget. A modell ezen példánya nem frissül a folyamat egymást követő futtatásakor. 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

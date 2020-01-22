@@ -3,12 +3,12 @@ title: Gyakori kérdések – felderítés, értékelés és függőség elemzé
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 0b7bb425bff1d26c2a0d6feeaf70be826eab2b9a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75564048"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292365"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Gyakori kérdések a felderítéssel, az értékeléssel és a függőségek elemzésével kapcsolatban
 
@@ -20,7 +20,7 @@ Ez a cikk a felderítéssel, értékeléssel és függőségi elemzéssel kapcso
 
 ## <a name="how-many-vms-can-i-discover-with-an-appliance"></a>Hány virtuális gépet tudok felderíteni egy berendezéssel?
 
-Akár 10 000 VMware virtuális gépet és akár 5 000 Hyper-V virtuális gépet is felfedezhet egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V](scale-hyper-v-assessment.md) és a [VMware](scale-vmware-assessment.md) értékelésének méretezését ismertető részt.
+Akár 10 000 VMware virtuális gépet, akár 5 000 Hyper-V virtuális gépeket és akár 250 kiszolgálót is felfedezhet egyetlen berendezéssel. Ha több géppel rendelkezik a helyszíni környezetben, olvassa el a [Hyper-V](scale-hyper-v-assessment.md), a [VMware](scale-vmware-assessment.md) és a [fizikai](scale-physical-assessment.md) értékelés méretezésével foglalkozó részt.
 
 
 

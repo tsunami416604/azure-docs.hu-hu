@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: fad832ba7b16e8dbb37043d971368062fcbd842f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c71136ecb57fac460514b5f4815ba19cc22d86cb
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75966045"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290614"
 ---
 # <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Fiókkezelés Azure Data Lake Storage Gen1 a Python használatával
 > [!div class="op_single_selector"]
@@ -43,7 +43,7 @@ A Data Lake Storage Gen1 Python használatával való használatához három mod
 
 * Az `azure-mgmt-resource` modult, amely további Azure-modulokat tartalmaz az Active Directoryhoz és más eszközökhöz.
 * A `azure-mgmt-datalake-store` modul, amely tartalmazza a Azure Data Lake Storage Gen1 Fiókkezelés műveleteit. További információ erről a modulról: [Azure Data Lake Storage Gen1 felügyeleti modul referenciája](/python/api/azure-mgmt-datalake-store/).
-* A `azure-datalake-store` modul, amely tartalmazza a Azure Data Lake Storage Gen1 filesystem műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](https://azure-datalake-store.readthedocs.io/en/latest/).
+* A `azure-datalake-store` modul, amely tartalmazza a Azure Data Lake Storage Gen1 filesystem műveleteit. További információ erről a modulról: [Azure-datalake-Store fájlrendszeri modul referenciája](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core/).
 
 A modulok telepítéséhez használja a következő parancsokat.
 
@@ -135,5 +135,5 @@ A következő kódrészlet először létrehozza a Data Lake Storage Gen1 fiók 
 
 ## <a name="see-also"></a>Lásd még:
 
-* [Azure-datalake-Store Python (fájlrendszer) – dokumentáció](https://azure-datalake-store.readthedocs.io/en/latest)
+* [Azure-datalake-Store Python (fájlrendszer) – dokumentáció](https://docs.microsoft.com/python/api/azure-datalake-store/azure.datalake.store.core)
 * [Azure Data Lake Storage Gen1-kompatibilis nyílt forráskódú Big adatalkalmazások](data-lake-store-compatible-oss-other-applications.md)

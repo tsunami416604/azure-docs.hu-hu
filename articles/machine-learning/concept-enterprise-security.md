@@ -10,12 +10,12 @@ ms.author: aashishb
 author: aashishb
 ms.reviewer: larryfr
 ms.date: 01/09/2020
-ms.openlocfilehash: 277b22498066542deaa080845cb816df493d7e13
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: bc083a95ebf6c7ecfabfef87e606f99053ba58bb
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122355"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312413"
 ---
 # <a name="enterprise-security-for-azure-machine-learning"></a>Vállalati biztonsági Azure Machine Learning
 
@@ -176,12 +176,12 @@ Az Azure Container instance nem támogatja a lemez titkosítását. Ha a lemez t
 
 #### <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
 
-Az üzembe helyezett Azure Kubernetes szolgáltatásbeli erőforrásokat bármikor titkosíthatja az ügyfél által felügyelt kulcsokkal. Tovább információ: [https://aka.ms/aks/byok](https://aka.ms/aks/byok). 
+Az üzembe helyezett Azure Kubernetes szolgáltatásbeli erőforrásokat bármikor titkosíthatja az ügyfél által felügyelt kulcsokkal. További információ: [saját kulcsok használata az Azure Kubernetes szolgáltatással](../aks/azure-disk-customer-managed-keys.md). 
 
 Ez a folyamat lehetővé teszi a Kubernetes-fürtben lévő telepített virtuális gépek és az operációs rendszer lemezének titkosítását.
 
 > [!IMPORTANT]
-> Ez a folyamat csak az K8s 1,16-es vagy újabb verziójával működik. Azure Machine Learning a 1,16-es, Jan. január 13-án a 2020-os támogatást adta hozzá.
+> Ez a folyamat csak az K8s 1,17-es vagy újabb verziójával működik. Azure Machine Learning a 1,17-es, Jan. január 13-án a 2020-os támogatást adta hozzá.
 
 #### <a name="machine-learning-compute"></a>Machine Learning Compute
 

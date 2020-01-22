@@ -2,13 +2,13 @@
 title: Bővítményerőforrás-típusok
 description: Felsorolja az Azure-erőforrástípusok használatát a más erőforrástípusok képességeinek bővítésére.
 ms.topic: conceptual
-ms.date: 10/24/2019
-ms.openlocfilehash: af60bd648e41532cca364272fb0ded01c0c18239
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/20/2020
+ms.openlocfilehash: 47a98bca4912a1c59c8b2d9bad458769c6bf4ebf
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75484674"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293266"
 ---
 # <a name="resource-types-that-extend-capabilities-of-other-resources"></a>Más erőforrások képességeit kiterjesztő erőforrástípusok
 
@@ -23,12 +23,14 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. AlertsManagement/alertsSummary
 - Microsoft. Authorization/checkAccess
 - Microsoft. Authorization/denyAssignments
+- Microsoft. Authorization/findOrphanRoleAssignments
 - Microsoft. engedélyezés/zárolások
 - Microsoft. Authorization/engedélyek
 - Microsoft. Authorization/policyAssignments
 - Microsoft. Authorization/policyDefinitions
 - Microsoft. Authorization/policySetDefinitions
 - Microsoft. Authorization/roleAssignments
+- Microsoft. Authorization/roleAssignmentsUsageMetrics
 - Microsoft. Authorization/roleDefinitions
 - Microsoft. Billing/billingPeriods
 - Microsoft. Billing/billingPermissions
@@ -82,6 +84,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. bepillantások/automatedExportSettings
 - Microsoft. bepillantások/alapterv
 - Microsoft. bepillantások/calculatebaseline
+- Microsoft. bepillantások/dataCollectionRuleAssociations
 - Microsoft. bepillantások/diagnosticSettings
 - Microsoft. bepillantások/diagnosticSettingsCategories
 - Microsoft. bepillantások/eventtypes
@@ -94,6 +97,8 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. bepillantások/metricbaselines
 - Microsoft. bepillantások/mérőszámok
 - Microsoft. bepillantások/myWorkbooks
+- Microsoft. bepillantások/topológia
+- Microsoft. bepillantások/tranzakciók
 - Microsoft. bepillantások/vmInsightsOnboardingStatuses
 - Microsoft. KubernetesConfiguration/sourceControlConfigurations
 - Microsoft. Maintenance/applyUpdates
@@ -109,6 +114,7 @@ A kiterjesztési erőforrás olyan erőforrás, amely egy másik erőforrás ké
 - Microsoft. PolicyInsights/policyTrackedResources
 - Microsoft. PolicyInsights/szervizelések
 - Microsoft. Recoveryservices szolgáltatónál/backupProtectedItems
+- Microsoft. Recoveryservices szolgáltatónál/replicationEligibilityResults  
 - Microsoft. ResourceHealth/availabilityStatuses
 - Microsoft. ResourceHealth/childAvailabilityStatuses
 - Microsoft. ResourceHealth/childResources

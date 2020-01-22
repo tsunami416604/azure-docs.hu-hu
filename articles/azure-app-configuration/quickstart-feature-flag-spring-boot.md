@@ -3,8 +3,7 @@ title: Gyors üzembe helyezési útmutató a Spring boot – Azure app Configura
 description: Gyors üzembe helyezési útmutató a Spring boot-alkalmazásokhoz és az Azure-alkalmazások konfigurációjában való kezeléséhez
 services: azure-app-configuration
 documentationcenter: ''
-author: mrm9084
-manager: zhenlwa
+author: lisaguthrie
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
@@ -12,20 +11,20 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.tgt_pltfrm: Spring Boot
 ms.workload: tbd
-ms.date: 09/26/2019
-ms.author: mametcal
-ms.openlocfilehash: cae1e7b205869fd41850c1adfaeae97658dd02f0
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.date: 1/9/2019
+ms.author: lcozzens
+ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74184952"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310067"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
 Ebben a rövid útmutatóban beépítheti az Azure-alkalmazások konfigurációját egy Spring boot-webalkalmazásba, amely a szolgáltatások felügyeletének teljes körű megvalósítását hozza létre. Az alkalmazás konfigurációs szolgáltatásával központilag tárolhatja az összes funkció jelzőjét, és szabályozhatja az állapotukat.
 
-A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik a keretrendszert a szolgáltatás teljes körű támogatásával. Ezek a kódtárak **nem** függenek az Azure-libries. Zökkenőmentesen integrálva vannak az alkalmazások konfigurációjával a Spring boot-konfiguráció szolgáltatóján keresztül.
+A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik a keretrendszert a szolgáltatás teljes körű támogatásával. Ezek a kódtárak **nem** függnek az Azure-könyvtáraktól. Zökkenőmentesen integrálva vannak az alkalmazások konfigurációjával a Spring boot-konfiguráció szolgáltatóján keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -39,7 +38,7 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 
 6. Válassza a **szolgáltatások kezelője** >  **+ Létrehozás** lehetőséget a következő funkció-jelzők hozzáadásához:
 
-    | Paraméter | Állapot |
+    | Jelmagyarázat | Állami |
     |---|---|
     | Beta | Ki |
 
@@ -49,12 +48,12 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. A következő beállításokat kell megadnia:
+2. Adja meg a következő beállításokat:
 
    - **Maven** -projekt létrehozása **Javával**.
    - Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
    - Adja meg az alkalmazás **csoport** -és **lelet** -nevét.
-   - Adja hozzá a **webes** függőséget.
+   - Adja hozzá a **rugó webes** függőségét.
 
 3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet egy elérési útra a helyi számítógépen.
 
@@ -68,12 +67,12 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0.M4</version>
+        <version>1.1.0</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -86,27 +85,46 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Nyissa meg `bootstrap.properties`, amely az alkalmazás erőforrások könyvtára alatt található, és adja hozzá a következő sorokat a fájlhoz. Adja hozzá az alkalmazás konfigurációs adatait.
+1. Nyissa meg a _bootstrap. properties_ mappát az alkalmazás _erőforrások_ könyvtára alatt. Ha a _bootstrap. properties_ nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-2. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon nyissa meg a hozzáférési kulcsokat. Válassza a csak olvasható kulcsok lapot. Ezen a lapon másolja át a kapcsolatok egyik karakterláncának értékét, és vegye fel új környezeti változóként `APP_CONFIGURATION_CONNECTION_STRING`változó nevével.
+1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon nyissa meg a hozzáférési kulcsokat. Válassza a csak olvasható kulcsok lapot. Ezen a lapon másolja át a kapcsolatok egyik karakterláncának értékét, és vegye fel új környezeti változóként `APP_CONFIGURATION_CONNECTION_STRING`változó nevével.
 
-3. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
+1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
+    import org.springframework.boot.context.properties.EnableConfigurationProperties;
+
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
-    public class AzureConfigApplication {
+    public class DemoApplication {
         public static void main(String[] args) {
-            SpringApplication.run(AzureConfigApplication.class, args);
+            SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
 
-4. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+
+    ```java
+    @ConfigurationProperties(prefix = "config")
+    public class MessageProperties {
+        private String message;
+
+        public String getMessage() {
+            return message;
+        }
+
+        public void setMessage(String message) {
+            this.message = message;
+        }
+    }
+    ```
+
+1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
 
     ```java
     @Controller
@@ -127,7 +145,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     }
     ```
 
-5. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára. Adja hozzá a következő sorokat:
+1. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára. Adja hozzá a következő sorokat:
 
     ```html
     <!DOCTYPE html>
@@ -184,7 +202,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
     ```
 
-6. Hozzon létre egy új, CSS nevű mappát a statikus és a benne található új CSS-fájl, a *Main. css*néven. Adja hozzá a következő sorokat:
+1. Hozzon létre egy új, CSS nevű mappát a statikus és a benne található új CSS-fájl, a *Main. css*néven. Adja hozzá a következő sorokat:
 
     ```css
     html {
@@ -232,9 +250,9 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 3. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
-    | Paraméter | Állapot |
+    | Jelmagyarázat | Állami |
     |---|---|
-    | Beta | Bekapcsolva |
+    | Beta | Be |
 
 4. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 

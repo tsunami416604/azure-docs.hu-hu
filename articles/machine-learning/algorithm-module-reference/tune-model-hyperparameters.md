@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 3db20110571203588ac15f4f64a2ae0a6ab6ef27
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4dd2cd89e8edb4e636bf46d2a8125a0f1d00f2f3
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428411"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312243"
 ---
 # <a name="tune-model-hyperparameters"></a>Modell-hiperparaméterek hangolása
 
-Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben (előzetes verzió). A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
+Ez a cikk azt ismerteti, hogyan használható a Hiperparaméterek beállítása-modul Tune Model Azure Machine Learning Designerben. A cél a gépi tanulási modell optimális hiperparaméterek beállítása meghatározása. A modul több modellt is felépít és tesztel a különböző beállítások kombinációjának használatával. Összehasonlítja az összes modell mérőszámait a beállítások kombinációjának lekéréséhez. 
 
 A feltételek *paraméter* és a *hiperparaméter* zavaró lehet. A modell *paramétereit* a Tulajdonságok ablaktáblán állíthatja be. Alapvetően ez a modul egy *paramétert* hajt végre a megadott paraméterek beállításain. Megtanulja a _hiperparaméterek beállítása_optimális készletét, amely minden egyes konkrét döntési fa, adatkészlet vagy regressziós módszer esetében eltérő lehet. Az optimális konfiguráció megtalálásának folyamatát más néven *hangolásnak*nevezzük. 
 
@@ -81,11 +81,11 @@ Ez a szakasz azt ismerteti, hogyan hajtható végre egy alapszintű paraméteres
 
 A betanítás befejezése után:
 
-+ A legjobb modellhez tartozó pontossági mérőszámok megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények eltakarítása**, majd a **Megjelenítés**lehetőséget.
++ A legjobb modellhez tartozó pontossági mérőszámok megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
 
     A kimenet tartalmazza a modell típusára vonatkozó összes pontossági mérőszámot, de a rangsoroláshoz kiválasztott metrika határozza meg, hogy melyik modell a "legjobb".
 
-+ Ha más folyamatokban szeretné használni a modellt, anélkül, hogy meg kellene ismételnie a hangolási folyamatot, kattintson a jobb gombbal a modell kimenetére, majd válassza a **Mentés Kitanítva modellként**lehetőséget. 
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 
 ## <a name="technical-notes"></a>Technikai megjegyzések

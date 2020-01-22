@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0b70a475d841c3649ba9e2bcc63187fc4484a23d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 42d1fde92e9315e8df3f65b2ab91ced74b377c0a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76119975"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293453"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -63,10 +63,10 @@ A szolgáltatás előzetes verziójában jelenleg a következő Azure-régiók t
 
 Ha engedélyezni szeretné az Azure AD-hitelesítést az Azure-beli Windows rendszerű virtuális gépeken, biztosítania kell, hogy a virtuális gépek hálózati konfigurációja a 443-as TCP-porton keresztül engedélyezze a kimenő hozzáférést a következő végpontokhoz:
 
-- https://enterpriseregistration.windows.net
-- https://login.microsoftonline.com
-- https://device.login.microsoftonline.com
-- https://pas.windows.net
+- https:\//enterpriseregistration.windows.net
+- https:\//login.microsoftonline.com
+- https:\//device.login.microsoftonline.com
+- https:\//pas.windows.net
 
 ## <a name="enabling-azure-ad-login-in-for-windows-vm-in-azure"></a>Azure AD-bejelentkezés engedélyezése a Windows rendszerű virtuális gépeken az Azure-ban
 
@@ -239,24 +239,24 @@ A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virt
 
    | Futtatandó parancs | Várt kimenet |
    | --- | --- |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01 " | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01 " | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
-   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01 " | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/instance?api-version=2017-08-01" | Az Azure-beli virtuális géppel kapcsolatos adatok javítása |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/info?api-version=2018-02-01" | Az Azure-előfizetéshez társított érvényes bérlői azonosító |
+   | Curl-H metaadatok: true "http://169.254.169.254/metadata/identity/oauth2/token?resource=urn:ms-drs:enterpriseregistration.windows.net&api-version=2018-02-01" | A virtuális géphez hozzárendelt felügyelt identitás Azure Active Directory által kiállított érvényes hozzáférési jogkivonat |
 
    > [!NOTE]
    > A hozzáférési jogkivonat dekódolható egy olyan eszköz használatával, mint a [http://calebb.net/](http://calebb.net/). Ellenőrizze, hogy a hozzáférési jogkivonat "AppID" egyezik-e a virtuális géphez hozzárendelt felügyelt identitással.
 
 1. Győződjön meg arról, hogy a szükséges végpontok elérhetők a virtuális gépről a parancssor használatával:
    
-   - Curl https://login.microsoftonline.com/ -D –
-   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
+   - Curl https:\//login.microsoftonline.com/-D –
+   - Curl https:\//login.microsoftonline.com/`<TenantID>`/-D –
 
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra.
 
-   - Curl https://enterpriseregistration.windows.net/ -D-
-   - Curl https://device.login.microsoftonline.com/ -D-
-   - Curl https://pas.windows.net/ -D-
+   - Curl https:\//enterpriseregistration.windows.net/-D-
+   - Curl https:\//device.login.microsoftonline.com/-D-
+   - Curl https:\//pas.windows.net/-D-
 
 1. Az eszköz állapotát `dsregcmd /status`futtatásával lehet megtekinteni. A cél az eszköz állapota `AzureAdJoined : YES`megjelenítéséhez.
 
@@ -283,15 +283,15 @@ Ez a kilépési kód lefordítja a DSREG_AUTOJOIN_DISC_FAILED, mert a bővítmé
 
 1. Ellenőrizze, hogy a szükséges végpontok elérhetők-e a virtuális gépről a parancssor használatával:
 
-   - Curl https://login.microsoftonline.com/ -D –
-   - Curl https://login.microsoftonline.com/`<TenantID>` /-D –
+   - Curl https:\//login.microsoftonline.com/-D –
+   - Curl https:\//login.microsoftonline.com/`<TenantID>`/-D –
    
    > [!NOTE]
    > Cserélje le a `<TenantID>`t az Azure-előfizetéshez társított Azure AD-bérlői AZONOSÍTÓra. Ha meg kell találnia a bérlő AZONOSÍTÓját, a fiók neve fölé helyezheti a címtár/bérlő AZONOSÍTÓját, vagy kiválaszthatja Azure Active Directory > Tulajdonságok > Directory-azonosító a Azure Portalban.
 
-   - Curl https://enterpriseregistration.windows.net/ -D-
-   - Curl https://device.login.microsoftonline.com/ -D-
-   - Curl https://pas.windows.net/ -D-
+   - Curl https:\//enterpriseregistration.windows.net/-D-
+   - Curl https:\//device.login.microsoftonline.com/-D-
+   - Curl https:\//pas.windows.net/-D-
 
 1. Ha a parancsok bármelyike meghiúsul "a gazdagép `<URL>`feloldása" művelettel, próbálja meg futtatni ezt a parancsot a virtuális gép által használt DNS-kiszolgáló meghatározásához.
    

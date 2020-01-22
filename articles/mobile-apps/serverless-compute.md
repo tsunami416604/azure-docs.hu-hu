@@ -8,12 +8,12 @@ ms.assetid: 444f0959-aa7f-472c-a6c7-9eecea3a34b9
 ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: emalani
-ms.openlocfilehash: d59cca4b5c956134516aa2c8066894aa14e5d33d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ec7091a32a1be8d875e16d8e0a9b20b5e80de387
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75453108"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291957"
 ---
 # <a name="build-mobile-back-end-components-with-compute-services"></a>Mobil háttérrendszer-összetevők kiépítése számítási szolgáltatásokkal
 Minden mobil alkalmazásnak szüksége van egy háttérre, amely az adattárolás, az üzleti logika és a biztonság tekintetében felelős. Az infrastruktúra üzemeltetéséhez és a háttérbeli kód végrehajtásához több kiszolgáló méretezését, kiépítését és méretezését kell biztosítania. Emellett az operációs rendszer frissítéseit és az érintett hardverek kezelését, valamint a biztonsági javítások alkalmazását is meg kell adnia. Ezután figyelnie kell a teljesítményre, a rendelkezésre állásra és a hibatűrésre vonatkozó összes infrastruktúra-összetevőt. 
@@ -36,7 +36,7 @@ A [Azure functions](https://azure.microsoft.com/services/functions/) egy esemén
 - Eseményvezérelt és méretezhető, ahol eseményindítókat és kötéseket használhat a függvények meghívásakor és az általa összekapcsolt adatmennyiség meghatározásához.
 - Saját függőségek használata, mivel a functions támogatja a NuGet és a NPM, így kedvenc kódtárait is használhatja.
 - Integrált biztonság annak érdekében, hogy a HTTP-triggert használó függvények a OAuth-szolgáltatókkal, például a Azure Active Directory, a Facebook, a Google, a Twitter és a Microsoft-fiókkal is védve legyenek.
-- Egyszerűsített integráció különböző [Azure-szolgáltatásokkal](/azure/azure-functions/functions-overview#integrations) és szolgáltatott szoftverekkel (SaaS).
+- Egyszerűsített integráció különböző [Azure-szolgáltatásokkal](/azure/azure-functions/functions-overview) és szolgáltatott szoftverekkel (SaaS).
 - Rugalmas fejlesztés, amely lehetővé teszi, hogy a függvényeket közvetlenül a Azure Portal, vagy a folyamatos integráció beállítása és a kód üzembe helyezése a GitHub, az Azure DevOps Services és más támogatott fejlesztői eszközök segítségével.
 - A functions futtatókörnyezet nyílt forráskódú, és elérhető a [githubon](https://github.com/azure/azure-webjobs-sdk-script).
 - Továbbfejlesztett fejlesztési élmény, amely lehetővé teszi, hogy helyileg, a saját előnyben részesített szerkesztővel vagy könnyen használható webes felülettel végezzen nyomon követést, tesztelést és hibakeresést, integrált eszközökkel és beépített DevOps képességekkel.
@@ -48,7 +48,7 @@ A [Azure functions](https://azure.microsoft.com/services/functions/) egy esemén
 - [Azure Functions – dokumentáció](/azure/azure-functions/)
 - [Azure Functions fejlesztői útmutató](/azure/azure-functions/functions-reference)
 - [Rövid útmutatók](/azure/azure-functions/functions-create-first-function-vs-code)
-- [Példák](/samples/browse/?products=azure-functions&languages=csharp)
+- [Minták](/samples/browse/?products=azure-functions&languages=csharp)
 
 ## <a name="azure-app-service"></a>Azure App Service
 A [Azure app Service](https://azure.microsoft.com/services/app-service/)segítségével az infrastruktúra kezelése nélkül hozhat létre és futtathat webalkalmazásokat és REST API-kat az Ön által választott programozási nyelven. Automatikus skálázást és magas rendelkezésre állást kínál, támogatja a Windows és a Linux rendszert, és lehetővé teszi a GitHub, az Azure DevOps vagy bármely git-tárház automatizált üzembe helyezését.
@@ -66,7 +66,7 @@ A [Azure app Service](https://azure.microsoft.com/services/app-service/)segíts�
 - [Azure Portal](https://portal.azure.com/)
 - [Azure App Service dokumentáció](/azure/app-service/)
 - [Rövid útmutatók](/azure/app-service/app-service-web-get-started-dotnet)
-- [Példák](/azure/app-service/samples-cli)
+- [Minták](/azure/app-service/samples-cli)
 - [oktatóanyagokat](/azure/app-service/app-service-web-tutorial-dotnetcore-sqldb)
 
 ## <a name="azure-kubernetes-service"></a>Azure Kubernetes Service
@@ -101,5 +101,5 @@ Az [Azure Kubernetes Service (ak)](https://azure.microsoft.com/services/kubernet
 - [Azure Portal](https://portal.azure.com/)
 - [Azure Container Instances dokumentáció](/azure/container-instances/)
 - [Rövid útmutatók](/azure/container-instances/container-instances-quickstart-portal)
-- [Példák](https://azure.microsoft.com/resources/samples/?sort=0&term=aci)
+- [Minták](https://azure.microsoft.com/resources/samples/?sort=0&term=aci)
 - [oktatóanyagokat](/azure/container-instances/container-instances-tutorial-prepare-app)

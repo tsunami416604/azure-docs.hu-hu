@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/24/2019
 ms.author: banders
-ms.openlocfilehash: 93fad58e971d761f626b79dc68f9576ccc2e1892
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a68393b2852f8ddc758e2a47b9e1b5d94befb7b4
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75993998"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290138"
 ---
 # <a name="understand-the-terms-in-your-azure-usage-and-charges-file"></a>Az Azure használati adatait és díjait tartalmazó fájl kifejezéseinek ismertetése
 
@@ -90,11 +90,11 @@ PublisherType | Mind | Közzétevő típusa (értékek: **Azure**, **AWS**, **Ma
 Mennyiség | Mind | A megvásárolt vagy igénybe vett egységek száma.
 Foglalásazonosító | EA, MCA | A megvásárolt foglaláspéldány egyedi azonosítója.
 ReservationName | EA, MCA | A megvásárolt foglaláspéldány neve.
-ResourceGroup | Mind | Az erőforrást tartalmazó [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) neve.
+ResourceGroup | Mind | Az erőforrást tartalmazó [erőforráscsoport](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) neve. Nem minden költség származik az erőforráscsoportok központilag telepített erőforrásaiból. Az erőforráscsoporthoz nem tartozó díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
 ResourceId<sup>1</sup> | Mind | Az [Azure Resource Manager](https://docs.microsoft.com/rest/api/resources/resources)-erőforrás egyedi azonosítója.
 ResourceLocation | Mind | Az erőforrást futtató adatközpont helye. Lásd: Hely.
-ResourceName nevű erőforrásáról | EA, PAYG | Az erőforrás neve.
-ResourceType | MCA | Az erőforráspéldány típusa.
+ResourceName nevű erőforrásáról | EA, PAYG | Az erőforrás neve. Nem minden költség a telepített erőforrásokból származik. Az erőforrástípus nem rendelkező díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
+ResourceType | MCA | Az erőforráspéldány típusa. Nem minden költség a telepített erőforrásokból származik. Az erőforrástípus nem rendelkező díjak null értékű/üres, **mások**vagy **nem alkalmazhatók**lesznek.
 ServiceFamily | MCA | Az a szolgáltatáscsalád, amelybe a szolgáltatás tartozik.
 ServiceInfo1 | Mind | Szolgáltatásspecifikus metaadatok.
 ServiceInfo2 | Mind | Örökölt mező a nem kötelező szolgáltatásspecifikus metaadatoknak.

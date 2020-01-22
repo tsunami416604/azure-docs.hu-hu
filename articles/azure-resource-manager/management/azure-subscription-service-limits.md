@@ -4,12 +4,12 @@ description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, 
 tags: billing
 ms.topic: conceptual
 ms.date: 01/02/2020
-ms.openlocfilehash: 4a6d5664d76df5401a2bb5c55f42d86b48e99017
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: ebfa1139ba0649280634bc0fd18627ba74f0c3cc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75662947"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294116"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 
@@ -48,6 +48,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [Azure-Cognitive Search](#azure-cognitive-search-limits)
 * [Azure Cognitive Services](#azure-cognitive-services-limits)
 * [Azure Cosmos DB](#azure-cosmos-db-limits)
+* [Azure-Adatkezelő](#azure-data-explorer-limits)
 * [Azure Database for MySQL](#azure-database-for-mysql)
 * [Azure Database for PostgreSQL](#azure-database-for-postgresql)
 * [Azure DNS](#azure-dns-limits)
@@ -92,13 +93,13 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Nyilvános IP-cím](#publicip-address)
   * [Privát kapcsolat](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtuális hálózat](#networking-limits)
+  * [Virtual Network](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
 * [Szerepköralapú hozzáférés-vezérlés](#role-based-access-control-limits)
 * [Scheduler](#scheduler-limits)
-* [Szolgáltatásbusz](#service-bus-limits)
+* [Service Bus](#service-bus-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -106,7 +107,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
 * [StorSimple-rendszeren](#storsimple-system-limits)
 * [Stream Analytics](#stream-analytics-limits)
 * [Előfizetés](#subscription-limits)
-* [Virtual Machines](#virtual-machines-limits)
+* [Virtuális gépek](#virtual-machines-limits)
 * [Virtuálisgép-méretezési csoportok](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Előfizetés korlátai
@@ -299,6 +300,10 @@ Az alábbi táblázat az Azure BizTalk Services korlátozásait mutatja be.
 ### <a name="azure-cosmos-db-limits"></a>Azure Cosmos DB korlátok
 
 Azure Cosmos DB korlátok esetében lásd: [korlátok a Azure Cosmos DBban](../../cosmos-db/concepts-limits.md).
+
+### <a name="azure-data-explorer-limits"></a>Az Azure Adatkezelő korlátai
+
+[!INCLUDE [azure-data-explorer-limits](../../../includes/data-explorer-limits.md)]
 
 ### <a name="azure-database-for-mysql"></a>A MySQL-hez készült Azure Database
 

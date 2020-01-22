@@ -11,17 +11,16 @@ ms.service: active-directory
 ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
-ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/02/2019
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8f02492dd7c9563c8c0002a63f0b105bd0be8b14
-ms.sourcegitcommit: 7f6d986a60eff2c170172bd8bcb834302bb41f71
+ms.openlocfilehash: 3022303f319ba7955f80ae0b52783fa9b5d411f2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2019
-ms.locfileid: "71345574"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290070"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-docusign"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a DocuSign
 
@@ -49,6 +48,7 @@ Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését tes
 * A DocuSign támogatja *az igény* szerinti felhasználói üzembe helyezést.
 
 * A DocuSign támogatja az [automatikus felhasználó-kiépítés](https://docs.microsoft.com/azure/active-directory/saas-apps/docusign-provisioning-tutorial)használatát.
+* A DocuSign konfigurálása után kikényszerítheti a munkamenet-vezérlőket, amelyek valós időben védik a szervezet bizalmas adatainak kiszűrése és beszivárgását. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 ## <a name="adding-docusign-from-the-gallery"></a>DocuSign hozzáadása a gyűjteményből
 
@@ -72,7 +72,7 @@ Az Azure AD SSO és a DocuSign konfigurálásához és teszteléséhez hajtsa v�
     1. [Hozzon létre egy Azure ad-tesztelési felhasználót](#create-an-azure-ad-test-user) az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. [Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user) , hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. [Konfigurálja a DOCUSIGN SSO](#configure-docusign-sso) -t az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
-1. [Hozzon létre egy DocuSign-tesztelési felhasználót](#create-docusign-test-user) , amely a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-DocuSign hoz létre.
+    1. [Hozzon létre egy DocuSign-tesztelési felhasználót](#create-docusign-test-user) , amely a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-DocuSign hoz létre.
 1. Ellenőrizze az [SSO](#test-sso) -t a konfiguráció működésének ellenőrzéséhez.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -87,7 +87,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban kövesse az alábbi lépéseket:
 
-    a. A **bejelentkezési URL** -cím mezőben adjon meg egy URL-címet a következő minta használatával: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
+    a. A **bejelentkezési URL** -cím mezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2/login/sp/<IDPID>`
 
     b. Az **azonosító (entitás azonosítója)** mezőben adjon meg egy URL-címet a következő minta használatával: `https://<subdomain>.docusign.com/organizations/<OrganizationID>/saml2`
 
@@ -96,13 +96,13 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** című szakaszt. A **Letöltés** gombra kattintva letöltheti a tanúsítványt, és mentheti a számítógépre.
 
-    ![A tanúsítvány letöltési hivatkozás](common/certificatebase64.png)
+    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
 1. A **DocuSign beállítása** szakaszban másolja a megfelelő URL-címet (vagy URL-címeket) a követelmények alapján.
 
     ![Konfigurációs URL-címek másolása](common/copy-configuration-urls.png)
 
-### <a name="create-an-azure-ad-test-user"></a>Hozzon létre egy Azure ad-ben tesztfelhasználó számára
+### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
 Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Portal.
 
@@ -110,11 +110,11 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A **Felhasználónév** mezőbe írja be a `<username>@<companydomain>.<extension>` értéket. Például: `B.Simon@contoso.com`.
+   1. A Felhasználónév mezőbe írja be a `<username>@<companydomain>.<extension>`**nevet** . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd jegyezze fel a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 
-### <a name="assign-the-azure-ad-test-user"></a>Az Azure ad-ben tesztfelhasználó hozzárendelése
+### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
 Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felhasználó használhatja az Azure egyszeri bejelentkezést.
 
@@ -122,7 +122,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
 1. Az alkalmazások listában válassza a **DocuSign**lehetőséget.
 1. Az alkalmazás áttekintés lapján keresse meg a **kezelés** szakaszt, és válassza a **felhasználók és csoportok**lehetőséget.
 
-   ![A "Felhasználók és csoportok" hivatkozásra](common/users-groups-blade.png)
+   ![A "felhasználók és csoportok" hivatkozás](common/users-groups-blade.png)
 
 1. Válassza a **felhasználó hozzáadása**lehetőséget, majd a **hozzárendelés hozzáadása** párbeszédpanelen válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -190,7 +190,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
 
        ![Egyéni attribútumok leképezése felhasználói felület][62]
 
-    i. Válassza ki azt a mezőt, amelyet az Azure AD-jogcímhez szeretne rendelni. Ebben a példában az **EmailAddress** jogcím a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` értékkel van leképezve. Ez az alapértelmezett jogcím neve az Azure AD-től az e-mail-jogcímhez. Válassza a **Mentés**lehetőséget.
+    i. Válassza ki azt a mezőt, amelyet az Azure AD-jogcímhez szeretne rendelni. Ebben a példában az **EmailAddress** jogcím `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`értékkel van leképezve. Ez az alapértelmezett jogcím neve az Azure AD-től az e-mail-jogcímhez. Válassza a **Mentés**lehetőséget.
 
        ![Egyéni attribútum-leképezési mezők][57]
 
@@ -210,7 +210,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a DocuSign, így ez a felha
 
        1. Másolja a **szolgáltatói bejelentkezési URL-címet**, majd illessze be a **bejelentkezési URL-cím** mezőbe az **alapszintű SAML-konfiguráció** szakaszban a Azure Portal.
 
-       1. Válassza a **Bezárás**lehetőséget.
+       1. Válassza a **Bezárás** lehetőséget.
 
        ![SAML 2,0-végpontok megtekintése][60]
 
@@ -236,6 +236,10 @@ Amikor kiválasztja a DocuSign csempét a hozzáférési panelen, automatikusan 
 - [Mi a feltételes hozzáférés az Azure AD-ben?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [A DocuSign kipróbálása az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [A DocuSign és a speciális láthatóság és vezérlők elleni védelem](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
 
 <!--Image references-->
 

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Hubs API – áttekintés |} A Microsoft Docs
-description: Elérhető az Azure Event Hubs API-k áttekintése
+title: Az Azure Event Hubs API áttekintése | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a rendelkezésre álló API-król (futtatókörnyezet és felügyelet) az Azure Event Hubs szolgáltatás használatához.
 services: event-hubs
 documentationcenter: na
 author: ShubhaVijayasarathy
@@ -14,50 +14,50 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/02/2018
 ms.author: shvija
-ms.openlocfilehash: 80566b0246179064d2a479b8c9bf3c79a2a93aac
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: c852bdeb30efe6acf626ae67028ec1ccb9e0b6db
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60822613"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310968"
 ---
 # <a name="available-event-hubs-apis"></a>Elérhető Event Hubs API-k
 
-Ez a cikk ismerteti az elérhető API-ügyfelek az Event Hubs-erőforrások kezeléséhez használható készletét.
+Ez a cikk az Event Hubs-erőforrások kezeléséhez használható elérhető API-ügyfelek készletét ismerteti.
 
 ## <a name="runtime-apis"></a>Futásidejű API-k
 
-Az alábbi szakasz az összes jelenleg elérhető az Azure Event Hubs futásidejű ügyfelek. Ezek a kódtárak is néhány korlátozott felügyeleti funkciók, amíg vannak is [adott könyvtárakat](#management-apis) dedikált felügyeleti műveletekhez. A core ezek a kódtárak célja küld és fogad üzeneteket egy eseményközpontba.
+A következő szakasz az összes jelenleg elérhető Azure Event Hubs Runtime-ügyfelet ismerteti. Habár a kódtárak némelyike korlátozott felügyeleti funkciókat is tartalmaz, a felügyeleti műveletekhez külön [könyvtárak](#management-apis) is tartoznak. Ezen könyvtárak fő témája az, hogy üzeneteket küldjön és fogadjon az Event hub-ból.
 
-Minden egyes futásidejű kódtár az aktuális állapotával kapcsolatos további információkért lásd: [további információkat](#additional-information).
+További információ az egyes futásidejű könyvtárak aktuális állapotáról: [További információk](#additional-information).
 
-| Nyelv és Platform | Ügyfélcsomag | EventProcessorHost csomag | Tárház |
+| Nyelv/platform | Ügyfélcsomag | EventProcessorHost-csomag | Adattár |
 | --- | --- | --- | --- |
-| .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHubon](https://github.com/azure/azure-event-hubs-dotnet) |
+| .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs.Processor/) | [GitHub](https://github.com/azure/azure-event-hubs-dotnet) |
 | .NET-keretrendszer | [NuGet](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/) | – |
-| Java | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHubon](https://github.com/Azure/azure-event-hubs-java) |
-| Csomópont | [NPM](https://www.npmjs.com/package/azure-event-hubs) | – | [GitHubon](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
-| C | – | – | [GitHubon](https://github.com/Azure/azure-event-hubs-c) |
+| Java | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs%22) | [Maven 3](https://search.maven.org/#search%7Cga%7C1%7Ca%3A%22azure-eventhubs-eph%22) | [GitHub](https://github.com/Azure/azure-event-hubs-java) |
+| Csomópont | [NPM](https://www.npmjs.com/package/azure-event-hubs) | – | [GitHub](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) |
+| C# | – | – | [GitHub](https://github.com/Azure/azure-event-hubs-c) |
 
-### <a name="additional-information"></a>További információ
+### <a name="additional-information"></a>További információk
 
 #### <a name="net"></a>.NET
 
-A .NET-ökoszisztéma több modulok rendelkezik, így több, az Event Hubs .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. .NET-keretrendszer-verziókkal kapcsolatos további információkért lásd: [keretrendszer-verziókat](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
+A .NET-ökoszisztéma több futtatókörnyezettel rendelkezik, így több .NET-kódtár is Event Hubs. A .NET Standard könyvtár a .NET Core vagy a .NET-keretrendszer használatával futtatható, míg a .NET-keretrendszer könyvtára csak .NET-keretrendszerbeli környezetben futtatható. A .NET-keretrendszer verzióival kapcsolatos további információkért lásd: [keretrendszer verziói](https://docs.microsoft.com/dotnet/articles/standard/frameworks).
 
 #### <a name="node"></a>Csomópont
 
-A [Node.js kódtár](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jelenleg előzetes verzióban, és a egy ügyféloldali projektként a Microsoft alkalmazottai és külső közreműködők által karbantartott. Az összes közreműködések többek között a forráskód üdvözlő és felül kell vizsgálni.
+A [Node. js-függvénytár](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/eventhub/event-hubs) jelenleg előzetes verzióban érhető el, és a Microsoft alkalmazottai és külső közreműködői is kezelik. Az összes hozzájárulás, beleértve a forráskódot is, üdvözlendő, és felül lesz bírálva.
 
 ## <a name="management-apis"></a>Felügyeleti API-k
 
-A következő táblázat felsorolja az összes jelenleg elérhető felügyeleti-specifikus szalagtár. Ezek a kódtárak egyike futásidejű műveletek tartalmaz, és az azzal a céllal, az Event Hubs entitáskezelésről.
+A következő táblázat felsorolja az aktuálisan elérhető felügyeleti könyvtárakat. Ezen függvénytárak egyike sem tartalmaz futtatókörnyezeti műveleteket, és kizárólag Event Hubs entitások kezelésének céljára szolgál.
 
-| Nyelv és Platform | Felügyeleti csomag | Tárház |
+| Nyelv/platform | Felügyeleti csomag | Adattár |
 | --- | --- | --- |
-| .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHubon](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
+| .NET Standard | [NuGet](https://www.nuget.org/packages/Microsoft.Azure.Management.EventHub) | [GitHub](https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/ResourceManagement/EventHub) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs – áttekintés](event-hubs-what-is-event-hubs.md)

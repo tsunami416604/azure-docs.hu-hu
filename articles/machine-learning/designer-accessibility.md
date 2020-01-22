@@ -1,5 +1,5 @@
 ---
-title: Kisegítő lehetőségek használata a Designerben (előzetes verzió)
+title: Kisegítő lehetőségek használata a Designerben
 titleSuffix: Azure Machine Learning
 description: Ismerkedjen meg a Designerben elérhető billentyűparancsokkal és képernyőolvasó kisegítő lehetőségekkel.
 services: machine-learning
@@ -9,14 +9,14 @@ ms.topic: reference
 ms.author: peterlu
 author: peterclu
 ms.date: 01/09/2020
-ms.openlocfilehash: 9c899ae16d16fc76f0ea8d24169451556cf24025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 7d5c8047fea8e9081de08b582c537711714ea463
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76158012"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314232"
 ---
-# <a name="use-a-keyboard-to-use-azure-machine-learning-designer-preview"></a>Billentyűzet használata Azure Machine Learning Designer (előzetes verzió) használatához
+# <a name="use-a-keyboard-to-use-azure-machine-learning-designer"></a>Billentyűzet használata Azure Machine Learning Designer használatához
 
 Ismerje meg, hogyan használható a billentyűzet és a képernyőolvasó a Azure Machine Learning Designer használatához. A Azure Portalban mindenhol működő billentyűparancsok listáját a [Azure Portal billentyűparancsok](../azure-portal/azure-portal-keyboard-shortcuts.md) című témakörben találhatja meg.
 

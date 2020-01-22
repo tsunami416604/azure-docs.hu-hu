@@ -10,20 +10,20 @@ author: likebupt
 ms.author: keli19
 ms.reviewer: peterlu
 ms.date: 12/25/2019
-ms.openlocfilehash: f8cf20743ee5420312ed751a26796a0859956ae7
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: b2511feefbe419223f355509ecb435518ce8382e
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771444"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311047"
 ---
 # <a name="train--compare-multiple-regression-models-to-predict-car-prices-with-azure-machine-learning-designer"></a>A Train & több regressziós modellt hasonlít össze az autók árának előrejelzéséhez Azure Machine Learning Designer használatával
 
-**Designer (előzetes verzió) 2. minta**
+**2. Designer minta**
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Megtudhatja, hogyan hozhat létre egy gépi tanulási folyamatot anélkül, hogy a Designer (előzetes verzió) használatával egyetlen sor kódot kellene írnia. Ez a minta a több regressziós modellt is összehasonlítja, hogy az autó árát a technikai jellemzői alapján Jósolja meg. Biztosítjuk az ebben a folyamatban meghozott döntések indoklását, így kezelheti a gépi tanulási problémák megoldását.
+Megtudhatja, hogyan hozhat létre egy gépi tanulási folyamatot anélkül, hogy a tervező használatával egyetlen sor kódot kellene írnia. Ez a minta a több regressziós modellt is összehasonlítja, hogy az autó árát a technikai jellemzői alapján Jósolja meg. Biztosítjuk az ebben a folyamatban meghozott döntések indoklását, így kezelheti a gépi tanulási problémák megoldását.
 
 Ha most ismerkedik a gépi tanulással, tekintse meg a folyamat [alapszintű verzióját](how-to-designer-sample-regression-automobile-price-basic.md) .
 

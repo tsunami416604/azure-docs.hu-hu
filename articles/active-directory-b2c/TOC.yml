@@ -76,7 +76,7 @@
   items:
     - name: Alkalmazásintegráció
       items:
-        - name: OIDC-alkalmazás regisztrálása
+        - name: Egy alkalmazás regisztrálása
           href: tutorial-register-applications.md
         - name: SAML-szolgáltató regisztrálása
           href: connect-with-saml-service-providers.md
@@ -282,6 +282,11 @@
                   items:
                     - name: Honosítási sztringazonosítók
                       href: localization-string-ids.md
+                - name: DisplayControls
+                  href: display-controls.md
+                  items:
+                    - name: Ellenőrzés
+                      href: display-control-verification.md
             - name: ClaimsProviders
               href: claimsproviders.md
               items:
@@ -320,11 +325,6 @@
                       href: active-directory-b2c-reference-sso-custom.md
                     - name: Ellenőrzés
                       href: validation-technical-profile.md
-            - name: DisplayControls
-              href: display-controls.md
-              items:
-                - name: Ellenőrzés
-                  href: display-control-verification.md
             - name: UserJourneys
               href: userjourneys.md
             - name: RelyingParty

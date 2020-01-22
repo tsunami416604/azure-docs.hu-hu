@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 01/02/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: a466601bb68e9cec72408a590f2aec3d3dbfbf93
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 97fdb0b243f71701491f2d2424c04dbd19208ef0
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968274"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291193"
 ---
 # <a name="troubleshoot-azure-files-problems-in-windows"></a>A Windows Azure Files problémáinak elhárítása
 
@@ -139,28 +139,31 @@ Egy fájlmegosztás, könyvtár vagy fájl megnyitott leíróinak bezárásához
 > [!Note]  
 > A Get-AzStorageFileHandle és a AzStorageFileHandle parancsmag az az PowerShell-modul 2,4-es vagy újabb verziójában szerepel. A legújabb az PowerShell modul telepítéséhez lásd: [a Azure PowerShell modul telepítése](https://docs.microsoft.com/powershell/azure/install-az-ps).
 
-<a id="authorizationfailureportal"></a>
-## <a name="error-authorization-failure-when-browsing-to-an-azure-file-share-in-the-portal"></a>Hiba az "engedélyezési hiba" esetén, amikor egy Azure-fájlmegosztást keres a portálon
+<a id="noaaccessfailureportal"></a>
+## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Nincs hozzáférés" hibaüzenet a portálon található Azure-fájlmegosztás tallózása során
 
 Amikor egy Azure-fájlmegosztást keres a portálon, a következő hibaüzenetet kaphatja:
 
-Engedélyezési hiba  
-Nincs hozzáférése 
+Nincs hozzáférés  
+Hibakód: 403 
 
-### <a name="cause-1-your-user-account-does-not-have-access-to-the-storage-account"></a>1\. ok: a felhasználói fióknak nincs hozzáférése a Storage-fiókhoz
+### <a name="cause-1-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>1\. ok: a virtuális hálózat vagy a tűzfalszabályok engedélyezve vannak a Storage-fiókon.
 
 ### <a name="solution-for-cause-1"></a>Megoldás az 1. ok esetén
 
-Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)című témakörben talál.
+Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
 
-### <a name="cause-2-virtual-network-or-firewall-rules-are-enabled-on-the-storage-account"></a>2\. ok: a virtuális hálózat vagy a tűzfalszabályok engedélyezve vannak a Storage-fiókon.
+### <a name="cause-2-your-user-account-does-not-have-access-to-the-storage-account"></a>2\. ok: a felhasználói fióknak nincs hozzáférése a Storage-fiókhoz
 
 ### <a name="solution-for-cause-2"></a>Megoldás a 2. ok esetén
 
-Ellenőrizze, hogy a virtuális hálózati és tűzfalszabályok megfelelően vannak-e konfigurálva a tárfiókhoz. Ha meg szeretne bizonyosodni arról, hogy a virtuális hálózati vagy a tűzfalszabályok okozzák a problémát, ideiglenesen módosítsa a tárfiók beállítását a következőre: **Hozzáférés engedélyezése minden hálózatról**. További információ: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security).
+Keresse meg azt a Storage-fiókot, ahol az Azure-fájlmegosztás található, kattintson a **hozzáférés-vezérlés (iam)** elemre, és ellenőrizze, hogy a felhasználói fiókja rendelkezik-e hozzáféréssel a Storage-fiókhoz. További információt a [Storage-fiók biztonságossá tétele szerepköralapú Access Control (RBAC)](https://docs.microsoft.com/azure/storage/blobs/security-recommendations#data-protection)című témakörben talál.
 
 <a id="open-handles"></a>
 ## <a name="unable-to-delete-a-file-or-directory-in-an-azure-file-share"></a>Nem lehet törölni egy fájlt vagy könyvtárat egy Azure-fájlmegosztás
+Amikor megpróbál törölni egy fájlt, a következő hibaüzenet jelenhet meg:
+
+A megadott erőforrás egy SMB-ügyfél általi törlésre van megjelölve.
 
 ### <a name="cause"></a>Ok
 Ez a probléma általában akkor fordul elő, ha a fájl vagy könyvtár nyitott leíróval rendelkezik. 

@@ -9,14 +9,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/02/2019
+ms.date: 01/21/2020
 ms.author: banders
-ms.openlocfilehash: ddb906aeb8d1c2b0d1f0c97fc12bd389da431646
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 5dbf885848d9866a184caee1da6b9000a26f83a9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75989942"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314129"
 ---
 # <a name="azure-spending-limit"></a>Azure-költségkeret
 
@@ -34,20 +34,21 @@ A költségkeret elérésekor az Azure e-mailes értesítést küld. A költség
 
 Ha ingyenes Azure-fiókra regisztrált, és eléri a költségkeretet, akkor a költségkeret eltávolításához és az előfizetés automatikus újbóli engedélyezéséhez [használatalapú fizetéses](upgrade-azure-subscription.md) díjszabásra válthat.
 
-<a id="remove"></a>
-
 ## <a name="remove-the-spending-limit-in-azure-portal"></a>A költségkeret eltávolítása az Azure Portalon
+
+<a id="remove"></a>
 
 A költségkeretet bármikor eltávolíthatja mindaddig, amíg az Azure-előfizetéséhez érvényes fizetési mód van társítva. A több hónapnyi kreditet tartalmazó előfizetési típusok, például a Visual Studio Enterprise és Visual Studio Professional esetében a következő számlázási időszak elején is engedélyezheti a költségkeretet.
 
 Az alábbi lépéseket követve távolíthatja el a költségkeretet:
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válasszon előfizetést. Ha elérte a költségkeretet, az előfizetése le lesz tiltva.
-1. A lap tetején válassza a **Költségkeret eltávolítása** elemet.
-1. Válasszon egy Önnek megfelelő lehetőséget.
-
-![A költségkeret eltávolítására szolgáló lehetőség kiválasztása](./media/spending-limit/remove-spending-limit01.png)
+1. Navigáljon az **előfizetésekhez**.
+1. Válassza ki előfizetését. Például a *Visual Studio Enterprise*.
+1. A lap tetején válassza a **kezelés**lehetőséget. A rendszer átirányítja https://account.azure.com/. A lap jobb oldalán válassza a költségkeret **eltávolítása**lehetőséget.  
+  ![például a költségkeret eltávolítására vonatkozó korlátot](./media/spending-limit/account-azure-com-spending-limit.png)
+1. A rendszer visszairányítja a Azure Portalra. Válasszon ki egy megfelelő lehetőséget, majd válassza ki a fizetési módot. Válassza a **Finish** (Befejezés) elemet.  
+  ![válassza ki a költségkeret eltávolítására szolgáló lehetőséget](./media/spending-limit/remove-spending-limit.png)
 
 | Lehetőség | Következmény |
 | --- | --- |
@@ -67,7 +68,7 @@ A költségkeret megakadályozhatja bizonyos külső vagy Microsoft-szolgáltat�
 Ez a funkció csak akkor érhető el, ha a költségkeretet határozatlan időre eltávolították az olyan előfizetési típusok esetében, amelyek több hónapnyi kreditet tartalmaznak. Ezzel a funkcióval automatikusan bekapcsolhatja a költségkeretet a következő számlázási időszak kezdetekor.
 
 1. Jelentkezzen be a [Fiókközpontba](https://account.windowsazure.com/Subscriptions).
-1. A költségkeret beállításának módosításához kattintson a sárga szalagra.
+1. Kattintson a sárga szalagcímre a költségkeret-korlát módosításához.
 1. Válassza **A költségkeret bekapcsolása a következő számlázási időszakban \<számlázási időszak kezdési dátuma\>** lehetőséget.
 
 ## <a name="custom-spending-limit"></a>Egyéni költségkeret

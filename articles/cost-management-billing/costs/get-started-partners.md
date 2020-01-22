@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 manager: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: b3e2b6fbfb11c0ee89e56cd29fa3bf606c336235
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 10889f6d872510fb53e76ab3722343aa2ee6a5e8
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278554"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293912"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedjen meg Azure Cost Management partnerekkel
 
@@ -120,7 +120,7 @@ A szabályzattól függetlenül a partnerek is megtekinthetik a költségeket, h
 
 A partnerek az alábbi információk segítségével teszik lehetővé a szabályzat számára az Azure-használati díjak megtekintését az ügyfelek számára.
 
-A Azure Portal jelentkezzen be a partner bérlőbe, és válassza a **Cost Management + számlázás**lehetőséget. Válassza ki a számlázási fiókot, majd válassza az **ügyfelek**lehetőséget. Az ügyfelek listája a számlázási fiókhoz van társítva.
+A Azure Portal jelentkezzen be a partner bérlőbe, és válassza a **Cost Management + számlázás**lehetőséget. Válassza ki a megfelelő Microsoft Partner Agreement számlázási fiókot, majd válassza az **ügyfelek**lehetőséget. Az ügyfelek listája a számlázási fiókhoz van társítva.
 
 Az ügyfelek listájában válassza ki azt az ügyfelet, aki számára engedélyezni szeretné a költségek megtekintését.
 
@@ -137,7 +137,7 @@ Ha a költségadatok értéke **Igen**, az ügyfél bérlője számára társít
 
 Ha a költségek láthatóságára vonatkozó házirend engedélyezve van, az előfizetés-használattal rendelkező összes szolgáltatás az utólagos elszámolású díjszabás szerint jár el. A foglalások használata a tényleges és az elszámolt költségekkel együtt nulla költséggel jelenik meg. A vásárlások és jogosultságok nem egy adott előfizetéshez vannak társítva. Így a vásárlások nem jelennek meg az előfizetés hatókörében.
 
-Az ügyfél bérlője költségeinek megtekintéséhez nyissa meg Cost Management + számlázást, majd válassza a számlázási fiókok elemet. A számlázási fiókok listájában válassza ki a számlázási fiókot.
+Az ügyfél bérlője költségeinek megtekintéséhez nyissa meg **Cost Management + számlázást** , és válassza ki a megfelelő Microsoft partneri szerződés számlázási fiókját.
 
 ![Számlázási fiók kiválasztása](./media/get-started-partners/select-billing-account.png)
 
@@ -263,7 +263,7 @@ Az előfizetéshez RBAC hozzáféréssel rendelkező felhasználók a költséga
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Exportálás létrehozása partner bérlő vagy ügyfél bérlője számára
 
-A Azure Portal jelentkezzen be a partner bérlő vagy az ügyfél bérlőbe, és válassza a **Cost Management + számlázás**lehetőséget. Válasszon ki egy megfelelő hatókört, például egy számlázási fiókot, majd válassza a **Cost Analysis**lehetőséget. Amikor az oldal betöltődik, válassza az **Exportálás**lehetőséget. válassza **az összes exportálás megtekintése** az ütemterv exportálása alatt lehetőséget.
+A Azure Portal jelentkezzen be a partner bérlő vagy az ügyfél bérlőbe, és válassza a **Cost Management + számlázás**lehetőséget. Válasszon ki egy megfelelő hatókört, például egy Microsoft partneri szerződés számlázási fiókját, majd válassza a **Cost Analysis**lehetőséget. Amikor az oldal betöltődik, válassza az **Exportálás**lehetőséget. válassza **az összes exportálás megtekintése** az ütemterv exportálása alatt lehetőséget.
 
 ![Válassza az Exportálás lehetőséget, és tekintse meg az összes exportálást](./media/get-started-partners/export01.png)
 

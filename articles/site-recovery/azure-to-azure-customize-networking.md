@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 10/21/2019
 ms.author: rajanaki
-ms.openlocfilehash: 191161c8185f45712052000285013a6e61c9fa6a
-ms.sourcegitcommit: b1c94635078a53eb558d0eb276a5faca1020f835
+ms.openlocfilehash: 96ffa34166797945afc04c66b03fe151d26c65bc
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72968904"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76292858"
 ---
 # <a name="customize-networking-configurations-of-the-target-azure-vm"></a>A cél Azure-beli virtuális gép hálózati konfigurációjának testreszabása
 
@@ -27,7 +27,7 @@ Ez a cikk útmutatást nyújt a hálózati konfigurációk testreszabásához a 
 
 Az Azure-beli virtuális gépek replikálásakor a következő fő erőforrás-konfigurációkat adhatja meg a feladatátvételi virtuális géphez:
 
-- [Belső terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#what-is-standard-load-balancer)
+- [Belső terheléselosztó](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview)
 - [Nyilvános IP-cím](https://docs.microsoft.com/azure/virtual-network/virtual-network-ip-addresses-overview-arm#public-ip-addresses)
 - [Hálózati biztonsági csoport](https://docs.microsoft.com/azure/virtual-network/manage-network-security-group) mind az alhálózathoz, mind a hálózati adapterhez
 
@@ -55,7 +55,7 @@ Site Recovery most megtartja ezeket a beállításokat, és gondoskodik arról, 
 
 Ha helyreállítási terv használatával indítja el a feladatátvételi tesztet, az mindig az Azure-beli virtuális hálózatot fogja kérni. Ezt a virtuális hálózatot fogja használni a feladatátvételi teszthez azon gépek esetében, amelyek nem rendelkeznek előre konfigurált feladatátvételi beállításokkal.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="unable-to-view-or-select-a-resource"></a>Nem lehet megtekinteni vagy kiválasztani egy erőforrást
 

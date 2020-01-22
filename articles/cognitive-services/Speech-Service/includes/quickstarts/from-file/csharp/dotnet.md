@@ -9,12 +9,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 01/14/2020
 ms.author: dapine
-ms.openlocfilehash: 0e5bbafee04a909be53c2143c72aba6f5a4e05f9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: edb6846974dc58af04ba800c0aa32e3ecc5d4b9a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76037940"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76308940"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,6 +48,7 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez. Jegy
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace HelloWorld
 {
@@ -150,6 +151,7 @@ Ezen a ponton a kódnak így kell kinéznie:
 using System;
 using System.Threading.Tasks;
 using Microsoft.CognitiveServices.Speech;
+using Microsoft.CognitiveServices.Speech.Audio;
 
 namespace HelloWorld
 {

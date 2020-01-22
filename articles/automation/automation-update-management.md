@@ -3,14 +3,14 @@ title: Update Management megoldás az Azure-ban
 description: Ez a cikk bemutatja, hogyan kezelheti a Windows-és Linux-számítógépek frissítéseit az Azure Update Management megoldással.
 services: automation
 ms.subservice: update-management
-ms.date: 01/14/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
-ms.openlocfilehash: 0cf47538f7db1cef629c2b58a9fbde16640a50ae
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 4efe9fe8dd1f006cb21c60c4c0e086264af26561
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945127"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310101"
 ---
 # <a name="update-management-solution-in-azure"></a>Update Management megoldás az Azure-ban
 
@@ -71,8 +71,9 @@ A következő táblázat felsorolja a frissítési felmérések támogatott oper
 
 |Operációs rendszer  |Megjegyzések  |
 |---------|---------|
-|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012<br><br>Windows Server 2008 R2 (RTM és SP1 standard)||
-|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz `yum` kell visszaadnia azokat a biztonsági adatforrásokat, amelyeket a CentOS nem tartalmaz az RTM verziójában. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](#linux-2)rendszeren.          |
+|Windows Server 2019 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2016 (Datacenter/Datacenter Core/standard)<br><br>Windows Server 2012 R2 (Datacenter/standard)<br><br>Windows Server 2012 || 
+|Windows Server 2008 R2 (RTM és SP1 standard)| Update Management csak az adott operációs rendszerre vonatkozó értékeléseket támogatja, a javítások nem támogatottak, mert a Windows Server 2008 R2 nem támogatja a [hibrid Runbook-feldolgozót](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) . |
+|CentOS 6 (x86/x64) és 7 (x64)      | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz. A besoroláson alapuló javításhoz `yum` kell visszaadnia azokat a biztonsági adatforrásokat, amelyeket a CentOS nem tartalmaz az RTM verziójában. A CentOS besoroláson alapuló javításával kapcsolatos további információkért lásd: [frissítési besorolások Linux](automation-view-update-assessments.md#linux-2)rendszeren.          |
 |Red Hat Enterprise 6 (x86/x64) és 7 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |SUSE Linux Enterprise Server 11 (x86/x64) és 12 (x64)     | A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.        |
 |Ubuntu 14,04 LTS, 16,04 LTS és 18,04 (x86/x64)      |A Linux-ügynököknek hozzáféréssel kell rendelkezniük valamely frissítési tárházhoz.         |
@@ -190,56 +191,6 @@ További információ a hibrid Runbook Worker által igényelt portokról: [hibr
 Javasoljuk, hogy használja a kivételek meghatározásakor felsorolt címeket. IP-címek esetén letöltheti [Microsoft Azure adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653). A fájl hetente frissül, és az IP-címtartományok aktuálisan telepített tartományait és minden közelgő változását tükrözi.
 
 Az internet-hozzáféréssel nem rendelkező számítógépek konfigurálásához kövesse az [Internet-hozzáférés nélküli számítógépek összekapcsolására](../azure-monitor/platform/gateway.md) vonatkozó utasításokat.
-
-## <a name="view-update-assessments"></a>Frissítésfelmérések megtekintése
-
-Az Automation-fiókjában válassza a **Update Management** lehetőséget a gépek állapotának megtekintéséhez.
-
-Ez a nézet a gépekre, a hiányzó frissítésekre, a frissítések telepítésére és az ütemezett frissítések telepítésére vonatkozó információkat tartalmaz. A **megfelelőség** oszlopban láthatja, hogy mikor történt a gép utolsó értékelése. A **frissítési ügynök készültségi** oszlopában megtekintheti a frissítési ügynök állapotát. Ha probléma merül fel, kattintson a hivatkozásra a hibaelhárítási dokumentációhoz, amely segíthet a probléma megoldásában.
-
-Ha olyan naplót szeretne futtatni, amely adatokat ad vissza a gépre, a frissítésre vagy a központi telepítésre vonatkozóan, válassza ki a megfelelő elemet a listában. Megnyílik a **napló keresése** ablaktábla a kiválasztott elem lekérdezésével:
-
-![Update Management alapértelmezett nézet](media/automation-update-management/update-management-view.png)
-
-## <a name="view-missing-updates"></a>Hiányzó frissítések megtekintése
-
-Válassza a **hiányzó frissítések** lehetőséget a gépekből hiányzó frissítések listájának megtekintéséhez. Minden frissítés szerepel a listáján, és kiválasztható. A frissítéshez szükséges gépek számával, az operációs rendszerrel és a további információkra mutató hivatkozással kapcsolatos információk láthatók. A **naplók keresése** panel további részleteket jelenít meg a frissítésekről.
-
-![Hiányzó frissítések](./media/automation-view-update-assessments/automation-view-update-assessments-missing-updates.png)
-
-## <a name="update-classifications"></a>Frissítési besorolások
-
-Az alábbi táblázat a Update Management frissítési besorolásait sorolja fel, az egyes besorolások definíciója szerint.
-
-### <a name="windows"></a>Windows
-
-|Osztályozás  |Leírás  |
-|---------|---------|
-|Kritikus frissítések     | Egy adott problémára vonatkozó frissítés, amely kritikus, nem biztonsággal kapcsolatos hibára vonatkozik.        |
-|Biztonsági frissítések     | Egy termékre vonatkozó, biztonsággal kapcsolatos probléma frissítése.        |
-|Kumulatív frissítések     | Az egyszerű üzembe helyezéshez együtt csomagolt gyorsjavítások összesített készlete.        |
-|Funkciócsomagok     | A termék kiadásán kívül terjesztett új termék-szolgáltatások.        |
-|Szervizcsomagok     | Egy alkalmazásra alkalmazott gyorsjavítások kumulatív készlete.        |
-|Definíciófrissítések     | Vírus-vagy egyéb definíciós fájlok frissítése.        |
-|Eszközök     | Olyan segédprogram vagy szolgáltatás, amely egy vagy több feladat elvégzését segíti elő.        |
-|Frissítések     | Egy aktuálisan telepített alkalmazás vagy fájl frissítése.        |
-
-### <a name="linux-2"></a>Linux
-
-|Osztályozás  |Leírás  |
-|---------|---------|
-|Kritikus vagy biztonsági frissítések     | Adott probléma vagy termékspecifikus, biztonsággal kapcsolatos probléma frissítései.         |
-|Egyéb frissítések     | Minden egyéb olyan frissítés, amely nem kritikus jellegű, vagy amelyek nem biztonsági frissítések.        |
-
-A Linux rendszerben a Update Management a Felhőbeli adatgazdagítás miatt kiértékelheti a kritikus frissítések és a biztonsági frissítések közötti különbséget a felhőben. A javításhoz a Update Management a gépen elérhető besorolási értékekre támaszkodik. A többi disztribúciótól eltérően a CentOS nem rendelkezik ezekkel az információkkal az RTM verziójában. Ha olyan CentOS-számítógépekkel rendelkezik, amelyek a következő parancs biztonsági értékének visszaadására vannak konfigurálva, a Update Management a besorolások alapján javíthatja a javítást.
-
-```bash
-sudo yum -q --security check-update
-```
-
-Jelenleg nem támogatott a natív besorolás engedélyezése – az adatelérhetőség a CentOS-ben. Jelenleg csak a lehető legjobb támogatást nyújtja azoknak az ügyfeleknek, akik saját maguk is engedélyezték ezt. 
-
-A Red Hat Enterprise 6-os verziójának frissítéseinek besorolásához telepítenie kell a yum-Security beépülő modult. Red Hat Enterprise Linux 7 rendszeren a beépülő modul már maga is része a yum szolgáltatásnak, nem kell semmit telepítenie. További információkért lásd a Red Hat [Tudásbázis következő cikkét](https://access.redhat.com/solutions/10021).
 
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integrálás a System Center Configuration Managerrel
 

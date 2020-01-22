@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2019
 ms.author: spelluru
-ms.openlocfilehash: d7a0c757f7314e45d5b4d13273df984739912b27
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 43223f7cb9ed254340c99d235d494d1e93583c7f
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75942411"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293538"
 ---
 # <a name="capture-event-hubs-data-in-azure-storage-and-read-it-using-python"></a>Az Azure Storage-ban tárolt Event Hubs-információk rögzítése és beolvasása a Python használatával 
 Használhatja az Event hub konfigurálását is, hogy az Event hub-nak elküldett adattárolók egy Azure Storage-ban vagy Azure Data Lake Storageban legyenek rögzítve. Ez a cikk bemutatja, hogyan lehet az írási Python-kód használatával eseményeket küldeni az Event hub-ba, és beolvasni a rögzített adatok egy Azure Blob Storage-ból való beolvasását. A szolgáltatással kapcsolatos további információkért tekintse meg a [Event Hubs rögzítési funkcióinak áttekintése](event-hubs-capture-overview.md)című témakört.
@@ -42,9 +42,9 @@ Ebben a rövid útmutatóban a következőket hajtja végre:
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 - [Hozzon létre egy Event Hubs névteret és egy Event hubot a névtérben](event-hubs-create.md). Jegyezze fel a Event Hubs névtér nevét, az Event hub nevét és a névtér elsődleges elérési kulcsát. A hozzáférési kulcs lekéréséhez kövesse a következő cikk utasításait: [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal). Az alapértelmezett kulcs neve: **RootManageSharedAccessKey**. Az oktatóanyaghoz nem szükséges a kapcsolatok karakterlánca. Csak az elsődleges kulcsra van szükség. 
 - Az alábbi lépéseket követve hozzon létre egy **Azure Storage-fiókot** és egy **BLOB-tárolót**:
-    1. [Hozzon létre egy Azure Storage-fiókot](/storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
-    2. [Hozzon létre egy BLOB-tárolót a tárolóban](/storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
-    3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](/storage/common/storage-configure-connection-string?#view-and-copy-a-connection-string)
+    1. [Hozzon létre egy Azure Storage-fiókot](../storage/common/storage-quickstart-create-account.md?tabs=azure-portal).
+    2. [Hozzon létre egy BLOB-tárolót a tárolóban](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container). 
+    3. [Szerezze be a kapcsolódási karakterláncot a Storage-fiókhoz](../storage/common/storage-configure-connection-string.md#view-and-copy-a-connection-string).
 
         Jegyezze fel a **kapcsolatok sztringjét** és a **tároló nevét**. Ezeket később a kódban fogja használni. 
 - Az Event hub **rögzítési** funkciójának engedélyezéséhez kövesse az alábbi utasításokat: [Event Hubs Capture engedélyezése a Azure Portal használatával](event-hubs-capture-enable-through-portal.md). Válassza ki a Storage-fiókot és az előző lépésben létrehozott BLOB-tárolót. Az Event hub létrehozásakor is engedélyezheti a szolgáltatást. 

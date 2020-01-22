@@ -2,13 +2,13 @@
 title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
-ms.date: 01/06/2020
-ms.openlocfilehash: 85e421d4d4e53d275613ff8848abd405fdf175c2
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/20/2020
+ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979439"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310532"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokhoz tartozó Resource functions
 
@@ -534,6 +534,16 @@ Példa:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` helyes `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helytelen
 
+### <a name="get-managed-identity"></a>Felügyelt identitás beolvasása
+
+[Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A `Full` használatával beolvashatja az összes tulajdonságot, beleértve az implicit módon létrehozott identitást is.
+
+Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
+
+```json
+"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+```
+
 ### <a name="reference-example"></a>Példa hivatkozásra
 
 Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/referencewithstorage.json) egy erőforrást telepít, és hivatkozik erre az erőforrásra.
@@ -878,7 +888,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Név | Type (Típus) | Value (Díj) |
+| Name (Név) | Type (Típus) | Value (Díj) |
 | ---- | ---- | ----- |
 | sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

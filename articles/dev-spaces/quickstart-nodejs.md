@@ -6,12 +6,12 @@ ms.topic: quickstart
 description: Ez a rövid útmutató bemutatja, hogyan használható az Azure dev Spaces és a Visual Studio Code egy Node. js-alkalmazás hibakereséséhez és gyors megismétléséhez az Azure Kubernetes Service-ben
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s
 manager: gwallace
-ms.openlocfilehash: f96806828b2169e9022b1eaf2ec1819879c729ab
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 557e5a541b175f1641142779de23bb83ab212831
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867705"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290509"
 ---
 # <a name="quickstart-debug-and-iterate-on-kubernetes-with-visual-studio-code-and-nodejs---azure-dev-spaces"></a>Gyors útmutató: Hibakeresés és iteráció a Kubernetes Visual Studio Code és Node. js-sel – Azure dev Spaces
 
@@ -21,7 +21,7 @@ Ebből az útmutatóból a következőket tudhatja meg:
 - A Visual Studio Code használatával iteratív fejleszthet a tárolókban.
 - Hibakeresés a kód alapján a fejlesztői térben a Visual Studio Code-ból.
 
-Az Azure dev Spaces Emellett lehetővé teszi a hibakeresést és a közelítést a használatával:
+Az Azure dev Spaces Emellett lehetővé teszi a következő műveletek hibakeresését és megismétlését:
 - [A Java és a Visual Studio Code](quickstart-java.md)
 - [A .NET Core és a Visual Studio Code](quickstart-netcore.md)
 - [A .NET Core és a Visual Studio](quickstart-netcore-visualstudio.md)

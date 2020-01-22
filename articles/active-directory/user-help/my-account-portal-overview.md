@@ -12,12 +12,12 @@ ms.topic: overview
 ms.date: 01/15/2020
 ms.author: lizross
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 58e73061406bc1be3f224e5726bdfca5a7553be1
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: b6c54f8754b0ca67107f48b2dcfa912a98252b8b
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156132"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293300"
 ---
 # <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
 
@@ -52,7 +52,7 @@ A **saját fiók** portálon a biztonsági adatok beállításával és kezelés
 
 - [Jelentkezzen be az Office-termék kezeléséhez](https://support.office.com/article/sign-in-to-manage-your-office-product-959ac957-8d37-4ae4-b1b6-d6e4874e013f)
 
-- [Ugrás az Office **saját fiók** oldalára](https://portal.office.com/account/#home)
+- [Ugrás az Office **saját fiók** oldalára](https://portal.office.com/account/)
 
 - [Nyissa meg az Office **saját telepítések** lapot](https://portal.office.com/account/#installs)
 

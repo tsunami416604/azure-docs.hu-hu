@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 285456c87835344aba083c68a7876ecc78d9e45e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76270560"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288956"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -90,8 +90,8 @@ További információ az új Azure AD-alkalmazások létrehozásáról: [Alkalma
 ## <a name="add-api-permissions"></a>API-engedélyek hozzáadása
 
 1. A **kezelés** szakaszban kattintson az **API-engedélyek**elemre.
-2. Kattintson az **engedély hozzáadása** gombra, és válassza ki **Azure Active Directory gráfot** , majd **delegált engedélyeket**
-3. Bontsa ki a **felhasználó** elemet az alábbi listán, és győződjön meg arról, hogy a **felhasználó. Read** engedélyezve van.
+2. Kattintson az **engedély hozzáadása** lehetőségre, és válassza ki **Azure Active Directory gráfot** , majd **delegált engedélyeket**. 
+3. Bontsa ki a **felhasználó** elemet az alábbi listán, és engedélyezze a **User. Read** engedélyt. Ha a **User. Read** beállítás alapértelmezés szerint engedélyezve van, győződjön meg arról, hogy az **Azure Active Directory Graph** engedély **felhasználó. Read**, *nem* az **Microsoft Graph** engedély **felhasználó. Read**.
 4. Görgessen felfelé, és válassza ki az **alkalmazás engedélyeit**.
 5. Bontsa ki az alábbi lista **könyvtárát** , és engedélyezze a **Directory. ReadAll**
 6. A módosítások elfogadásához kattintson az **engedélyek hozzáadása** lehetőségre.

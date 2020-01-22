@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: peterlu
 ms.date: 11/19/2019
-ms.openlocfilehash: b07bde671be73af2a351353d9794907972a022e7
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: c984b38498085567441fb0c4f965602d437589e5
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232621"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311495"
 ---
 # <a name="join-data"></a>Adatok összekapcsolása
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) **Csatlakozás** adatmodulja két adatkészlet egyesítéséhez egy adatbázis-stílusú csatlakozási művelettel.  
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer **JOIN** adatmodulja két adatkészlet egyesítésére egy adatbázis-stílusú csatlakozási művelet használatával.  
 
 ## <a name="how-to-configure-join-data"></a>Csatlakozási adatbevitel konfigurálása
 
@@ -62,9 +62,9 @@ Két adatkészlethez való csatlakozás végrehajtásához egy kulcs oszlopnak k
     * Ezzel a beállítással mindkét bemeneti táblából megtekintheti a kulcsokat.
     * Törölje a jelölést, hogy csak a bal oldali bemenetből származó kulcs oszlopokat adja vissza.
 
-1. Futtassa a folyamatot, vagy válassza ki az összekapcsolási modult, és a kiválasztott **Futtatás** elemre kattintva végezze el a csatlakozást.
+1. A folyamat futtatása.
 
-1. Az eredmények megtekintéséhez kattintson a jobb gombbal az **illesztési adatokat** > **results adatkészlet** > **Megjelenítés**elemre.
+1. Az eredmények megtekintéséhez kattintson a jobb gombbal a **csatlakozásra** , majd válassza a **Megjelenítés**lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések
 

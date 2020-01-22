@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: 854d98a4f2a1b2500bc301d2305c0dd1f27aaaa4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980818"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289526"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -41,11 +41,11 @@ Ez akkor fordulhat elő, ha a berendezés számítógépe proxy mögött van.
 - Győződjön meg arról, hogy megadja az engedélyezési hitelesítő adatokat, ha a proxynak szüksége van rájuk.
 - Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, adja hozzá ezeket az URL-címeket egy engedélyezési listához:
 
-    - [A VMware Assessment URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-url-access-requirements)
-    - [A Hyper-V értékelésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#assessment-appliance-url-access)
-    - [A VMware ügynök nélküli Migrálás URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-url-access-requirements)
-    - [A VMware-ügynök alapú áttelepítés URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#replication-appliance-url-access)
-    - [A Hyper-V áttelepítésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v#migration-hyper-v-host-url-access)
+    - [A VMware Assessment URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [A Hyper-V értékelésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
+    - [A VMware ügynök nélküli Migrálás URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [A VMware-ügynök alapú áttelepítés URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware)
+    - [A Hyper-V áttelepítésének URL-címei](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-hyper-v)
 
 - Ha elfogó proxyt használ az internethez való csatlakozáshoz, [ezeket a lépéseket követve](https://docs.microsoft.com/azure/migrate/concepts-collector)importálja a tanúsítványt a berendezés virtuális gépén.
 

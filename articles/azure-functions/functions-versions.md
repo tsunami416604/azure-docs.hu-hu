@@ -3,12 +3,12 @@ title: Azure Functions futtatókörnyezet-verziók áttekintése
 description: Azure Functions támogatja a futtatókörnyezet több verzióját. Megtudhatja, hogy miben különböznek egymástól, és hogyan választhatja ki az Önnek legmegfelelőbbet.
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 88c151149d1d960746ff449819d31e8b32d98120
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 0138af15c89a4792b9ccb73a8b761577fad36c5e
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921859"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290376"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Azure Functions futtatókörnyezet-verziók áttekintése
 
@@ -143,7 +143,7 @@ A Visual Studióban a projekt létrehozásakor kiválaszthatja a futtatókörnye
 ```
 
 > [!NOTE]
-> Azure Functions 3. x és a .NET esetében a `Microsoft.Sdk.NET.Functions` bővítménynek legalább `3.0.0`nak kell lennie.
+> Azure Functions 3. x és a .NET esetében a `Microsoft.NET.Sdk.Functions` bővítménynek legalább `3.0.0`nak kell lennie.
 
 ###### <a name="updating-2x-apps-to-3x-in-visual-studio"></a>2\. x alkalmazások frissítése a Visual Studióban 3. x-re
 
@@ -206,4 +206,4 @@ További információkért lásd a következőket:
 
 * [Az Azure Functions helyi kódolása és tesztelése](functions-run-local.md)
 * [A Azure Functions futtatókörnyezet verzióinak megcélzása](set-runtime-version.md)
-* [Kibocsátási megjegyzések](https://github.com/Azure/azure-functions-host/releases)
+* [Kiadási megjegyzések](https://github.com/Azure/azure-functions-host/releases)

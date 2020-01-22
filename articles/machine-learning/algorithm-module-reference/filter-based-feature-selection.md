@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: 43565a72ce795c4ee0142ec48c13842a8c43e604
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4e09ca77de00b7f189db2cbbcaca2e090dd7e72
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428531"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311631"
 ---
 # <a name="filter-based-feature-selection"></a>Szűrőalapú szolgáltatásválasztás
 
-Ez a cikk bemutatja, hogyan használhatja a Azure Machine Learning Designer (előzetes verzió) szűrő alapú funkciójának kiválasztási modulját. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer szűrő alapú funkció-kiválasztási modulja. Ez a modul segít azonosítani a bemeneti adatkészletben található azon oszlopokat, amelyek a legnagyobb prediktív teljesítménnyel rendelkeznek. 
 
 Általánosságban a *szolgáltatás kiválasztása* arra utal, hogy a megadott kimenet alapján statisztikai teszteket alkalmazzon a bemenetekre. A cél annak meghatározása, hogy mely oszlopok legyenek a kimenet prediktív megjelenítése. A szűrésen alapuló funkció kiválasztási modulja több szolgáltatás-kiválasztási algoritmust is biztosít, amelyek közül választhat. A modul olyan korrelációs módszereket tartalmaz, mint például a Pearson korrelációs és a KHI-négyzetes értékek. 
 
@@ -97,9 +97,9 @@ A standard statisztikai mérőszámot kell választania. A modul kiszámítja az
 
 A feldolgozás befejezése után:
 
-+ Ha meg szeretné tekinteni az elemzett szolgáltatás oszlopainak teljes listáját és azok pontszámait, kattintson a jobb gombbal a modulra. Válassza a **szolgáltatások**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.  
++ Az elemzett funkciók oszlopainak és a hozzájuk tartozó pontszámok teljes listájának megtekintéséhez kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés**lehetőséget.  
 
-+ A szolgáltatás kiválasztási feltételei alapján létrehozott adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra. Válassza az **adatkészlet**lehetőséget, majd válassza a **Megjelenítés**lehetőséget. 
++ Ha a szolgáltatás kiválasztási feltételei alapján szeretné megtekinteni az adathalmazt, kattintson a jobb gombbal a modulra, és válassza a **Megjelenítés**lehetőséget. 
 
 Ha az adatkészlet kevesebb oszlopot tartalmaz, mint amennyit várt, ellenőrizze a modul beállításait. Tekintse meg a bemenetként megadott oszlopok adattípusait is. Ha például az 1 értékre állítja be a **kívánt funkciókat** , a kimeneti adatkészlet csak két oszlopot tartalmaz: a Label oszlopot és a legmagasan rangsorolt funkció oszlopot.
 

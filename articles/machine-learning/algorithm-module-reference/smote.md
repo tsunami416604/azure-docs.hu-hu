@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/16/2019
-ms.openlocfilehash: 16ae6775494f9076d442e181f70a2ecde5863dab
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b6944f7703500a2c3859e8e3111eceefbd5ff10
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428440"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311410"
 ---
 # <a name="smote"></a>SMOTE
 
-Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben (előzetes verzió) a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
+Ez a cikk azt ismerteti, hogyan használható a ARCUL ütötte modul a Azure Machine Learning Designerben a gépi tanuláshoz használt adatkészletben lévő, az általa képviselt esetek számának növelésére. A ARCUL ütötte jobb módszer a ritka esetek számának növelésére, mint a meglévő esetek egyszerű duplikálása.  
 
 A ARCUL ütötte modult egy *kiegyensúlyozatlan*adatkészlet számára kapcsolja össze. Számos oka lehet annak, hogy egy adatkészlet kiegyensúlyozatlan. Előfordulhat például, hogy a megcélzott kategória ritkán fordul elő a populációban, vagy az adatok összegyűjtése nehéz lehet. Az elemezni kívánt *osztályt* általában a arcul ütötte használatával lehet használni. 
   

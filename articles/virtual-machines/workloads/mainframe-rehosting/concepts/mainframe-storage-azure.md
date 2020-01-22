@@ -1,131 +1,130 @@
 ---
-title: A nagyszámítógépes tárolóját áthelyezheti az Azure Storage
-description: Rugalmasan méretezhető Azure storage-erőforrások megkönnyíti a nagygépes-alapú szervezetek számára telepítse át, és IBM z14 alkalmazásokat.
+title: Nagyszámítógépes tároló áthelyezése az Azure Storage-ba
+description: A nagymértékben méretezhető Azure Storage-erőforrások segítségével a nagyvállalati szintű szervezetek áttelepíthetik és modernizálják az IBM z14-alkalmazásokat.
 author: njray
 ms.author: larryme
 ms.date: 04/02/2019
 ms.topic: article
 ms.service: storage
-ms.openlocfilehash: dc78f87d9b47745119da91b8ed1f8f6c8572968c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 86419811cdf2c11204caae0ca5bf6f65fba063d2
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65190441"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76288914"
 ---
-# <a name="move-mainframe-storage-to-azure"></a>A nagyszámítógépes tár áthelyezése az Azure-bA
+# <a name="move-mainframe-storage-to-azure"></a>Nagyszámítógépes tároló áthelyezése az Azure-ba
 
-A nagyszámítógépes számítási feladatok futtatásához a Microsoft Azure-ban, a nagyszámítógépes funkciók hogyan hasonlítsa össze az Azure-bA ismernie kell. A nagy mértékben méretezhető tárolási erőforrások megkönnyíti a szervezetek számára elhagyása nélkül modernizálhat támaszkodnak az alkalmazások megkezdéséhez.
+A nagyvállalati munkaterhelések Microsoft Azure-on való futtatásához tudnia kell, hogyan hasonlítják össze a mainframe képességeit az Azure-ban. A nagymértékben méretezhető tárolási erőforrások segítik a szervezeteket abban, hogy az általuk felhasznált alkalmazások megszakítása nélkül is modernizálják magukat.
 
-Az Azure biztosít a nagygépes-rendszergazdai műveletekhez hasonló funkciók és a tárolási kapacitás, amely hasonló, mint az IBM z14-alapú rendszerekhez (a jelen cikk írásakor az aktuális modell). Ez a cikk bemutatja, hogyan lehet hasonló eredményt ad az Azure-ban.
+Az Azure olyan nagyvállalati funkciókat és tárolókapacitást biztosít, amelyek hasonlóak az IBM z14-alapú rendszerekhez (ez a jelenlegi modell ebben az írásban). Ebből a cikkből megtudhatja, hogyan érhet el hasonló eredményeket az Azure-ban.
 
-## <a name="mainframe-storage-at-a-glance"></a>Egyetlen pillantással nagyszámítógépes storage
+## <a name="mainframe-storage-at-a-glance"></a>A mainframe-tárolók áttekintése
 
-Az IBM Nagyszámítógépek kétféleképpen tárolási jellemzi. Az első az közvetlen hozzáférést tárolóeszköz (DASD). A második egymást követő tárolási. Tárolás kezelése, a nagyszámítógépes biztosítja az adatok létesítmény Storage Management alrendszer (DFSMS). Kezeli a különböző tárolóeszközök adatokhoz való hozzáférést.
+Az IBM mainframe két módon jellemzi a tárterületet. Az első egy közvetlen hozzáférésű tárolóeszköz (DASD). A második a szekvenciális tárterület. A tárolók kezeléséhez a nagyszámítógép biztosítja az adattárolási felügyeleti alrendszer (DFSMS) szolgáltatását. A szolgáltatás a különböző tárolóeszközökhöz való adathozzáférést kezeli.
 
-[DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) másodlagos (nem memóriában) tároló, amely lehetővé teszi az adatok közvetlen elérésére szolgáló egyedi címmel egy külön eszközt jelenti. Eredetileg az előfizetési időszak DASD lemezek, mágneses dob vagy adatcelláiban működtetésével alkalmazza. Azonban most kifejezés is alkalmazhat az SSD-tárolóinak eszközök (SSD-kkel), a tárolóhálózatok (SAN), hálózati tárolóeszközök (NAS), és optikai meghajtók csatolva. Ez a dokumentum az alkalmazásában DASD lemezek, a San-OK és SSD-k működtetésével hivatkozik.
+A [DASD](https://en.wikipedia.org/wiki/Direct-access_storage_device) egy külön eszközre hivatkozik a másodlagos (nem memóriában lévő) tárolóra, amely lehetővé teszi, hogy a rendszer egyedi címeket lehessen használni az adateléréshez. Eredetileg a DASD, a mágneses dob vagy az adatcellákra alkalmazott kifejezés. A kifejezés azonban a Solid-State Storage-eszközökre (SSD), a tárterület-hálózatokra (SANs), a hálózati csatlakoztatott tárolóra (NAS) és az optikai meghajtókra is érvényes lehet. A jelen dokumentum esetében a DASD a fonási lemezekre, a SANs-re és az SSD-re vonatkozik.
 
-Szakembereket DASD tárolására a nagyszámítógépes a szekvenciális tárolási eszközök, például a szalagos meghajtók, ahol a adatok érhető el, amely kiindulási pontot, majd olvassa el, vagy sor írása hivatkozik.
+A DASD-tárolóval ellentétben a nagyszámítógépeken lévő szekvenciális tárterület olyan eszközökre vonatkozik, mint a szalagos meghajtók, amelyekben az adatok egy kiindulási pontról érhetők el, majd olvashatók vagy írhatók egy sorba.
 
-Tárolóeszközök általában csatolt fiber kapcsolattal (FICON), vagy közvetlenül a a nagyszámítógépes i/o-busz használatával elért [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm), az IBM technológiát kínál a nagy sebességű kommunikáció partíciók kiszolgáló között egy hipervizor.
+A tárolóeszközök általában Fiber-kapcsolattal (FICON) vannak csatolva, vagy közvetlenül a nagyvállalati IO-buszon érhetők el a [HiperSockets](https://www.ibm.com/support/knowledgecenter/zosbasics/com.ibm.zos.znetwork/znetwork_85.htm)használatával, egy IBM-technológiával, amely nagy sebességű kommunikációt biztosít a kiszolgálók partíciói között egy Hypervisort használó kiszolgálón.
 
-A legtöbb nagyszámítógépes rendszer tárolási szét két típusa:
+A legtöbb nagyszámítógép-rendszer két típusba különíti el a tárolót:
 
-- *Online tárhelyen* (mint a gyakran használt adatok tárolási is ismert) van szükség a napi műveletekhez. DASD storage általában erre a célra szolgál. Egymást követő tárolókba, például napi szalagos biztonsági mentések (logikai vagy fizikai) is használható erre a célra.
+- A napi műveletekhez szükség van az *online tárterületre* (más néven a gyors tárolásra is). A DASD-tárolót általában erre a célra használják. Azonban a szekvenciális tárolás, például a napi szalagos biztonsági másolatok (logikai vagy fizikai) is használható erre a célra.
 
-- *Archív tárolási* (más néven a ritka elérésű tárolási) csatlakoztatnia kell egy adott időpontban nem garantált. Ehelyett csatlakoztatva van, és igény szerint elérhető. Az Archive storage gyakran Storage szekvenciális szalagos biztonsági mentések (logikai vagy fizikai) segítségével van megvalósítva.
+- Az *archiválási tár* (más néven a hűtőházi tároló) nem garantált, hogy egy adott időpontban legyen csatlakoztatva. Ehelyett szükség szerint csatlakoztatva van és elérhető. Az archiválási tár gyakran a tároláshoz szükséges szekvenciális szalagos biztonsági másolatok (logikai vagy fizikai) használatával valósítható meg.
 
-## <a name="mainframe-versus-io-latency-and-iops"></a>A nagyszámítógépes és IO-késés és IOPS
+## <a name="mainframe-versus-io-latency-and-iops"></a>Nagyszámítógépek és IO-késések és IOPS
 
-Nagyszámítógépek gyakran használják az alkalmazásokat, amelyek nagy teljesítményű i/o- és alacsony késésű IO-műveletekre van szükség. Ehhez az i/o-eszközök és HiperSockets FICON-kapcsolatokat használja. Amikor HiperSockets alkalmazásokból és eszközökről közvetlenül csatlakozhat a nagyszámítógépes i/o-csatornát használ, a mikroszekundumban késés érhető el.
+A nagyszámítógépeket gyakran használják olyan alkalmazások esetében, amelyek nagy teljesítményű IO-t és alacsony IO-késést igényelnek. Ezt az IO-eszközök és a HiperSockets FICON-kapcsolatainak használatával teheti meg. Ha a HiperSockets az alkalmazások és az eszközök közvetlenül a mainframe IO-csatornához való csatlakoztatására szolgálnak, a másodpercenkénti késések is elérhetők.
 
-## <a name="azure-storage-at-a-glance"></a>Az Azure storage gyors áttekintése
+## <a name="azure-storage-at-a-glance"></a>Azure Storage – áttekintés
 
-Az Azure infrastruktúra--szolgáltatásként ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) tárolási lehetőségei összehasonlítható nagyszámítógép-kapacitást biztosítanak.
+Az Azure infrastruktúra-szolgáltatás ([IaaS](https://azure.microsoft.com/overview/what-is-iaas/)) tárolási lehetőségei hasonló nagyszámítógépi kapacitást biztosítanak.
 
-A Microsoft több petabájtnyi visszamenőleg az Azure-ban üzemeltetett alkalmazásaikon tárhelyet kínál, és számos tárolási lehetőség van. Ezek a nagy teljesítményű SSD-tárolóval és eső alacsony költségű blob storage-háttértár és archívumok. Emellett az Azure biztosít a tárolás adatredundáns tárolási mód – további erőfeszítésekre nagyszámítógépes környezetben beállítása eljáró.
+A Microsoft petabájt kínál az Azure-ban üzemeltetett alkalmazásokhoz, és több tárolási lehetőség is rendelkezésre áll. Ezen tartomány az SSD-tárolóból a nagy teljesítményű, alacsony árú blob Storage-tárolók és-archívumok számára. Az Azure emellett egy adatredundancia-lehetőséget is biztosít a tároláshoz – ami több erőfeszítést tesz a mainframe-környezetekben való beállításra.
 
-Az Azure storage szolgáltatás érhető el, [Azure Disks](/azure/virtual-machines/windows/managed-disks-overview), [Azure Files](/azure/storage/files/storage-files-introduction), és [Azure-Blobok](/azure/storage/blobs/storage-blobs-overview) , az alábbi táblázat foglalja össze. Tudjon meg többet [használata minden egyes](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
+Az Azure Storage Azure- [lemezként](/azure/virtual-machines/windows/managed-disks-overview), [Azure Filesként](/azure/storage/files/storage-files-introduction)és [Azure-blobként](/azure/storage/blobs/storage-blobs-overview) érhető el az alábbi táblázat összefoglalása során. További információ a [használatáról](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks).
 
 <!-- markdownlint-disable MD033 -->
 
 <table>
 <thead>
-    <tr><th>Típus</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
+    <tr><th>Type (Típus)</th><th>Leírás</th><th>A következő esetekben használja:</th></tr>
 </thead>
 <tbody>
 <tr><td>Azure Files
 </td>
 <td>
-Biztosít egy SMB-kapcsolatot, ügyfél szalagtárakban és a egy <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">REST</a> felület, amely lehetővé teszi a hozzáférést bárhonnan tárolt fájlokhoz.
+Egy SMB-felületet, egy ügyféloldali kódtárat és egy <a href="https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a hozzáférést bárhonnan a tárolt fájlokhoz.
 </td>
 <td><ul>
-<li>Lift- and -shift-alkalmazását a felhőbe, ha az alkalmazás a natív fájlrendszer API-k segítségével, és más Azure-ban futó alkalmazások közötti adatmegosztást.</li>
-<li>Store fejlesztés és hibakeresés eszközöket, amelyek a több virtuális gépet kell hozzáférniük.</li>
+<li>Egy alkalmazás átemelése a felhőbe, ha az alkalmazás a natív fájlrendszer API-kat használja az Azure-ban futó más alkalmazások közötti adatmegosztáshoz.</li>
+<li>A számos virtuális gépről elérhető fejlesztési és hibakeresési eszközöket tárolja.</li>
 </ul>
 </td>
 </tr>
 <tr><td>Azure Blobs
 </td>
-<td>Ügyfélkódtárak biztosít és a egy <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">REST</a> felület, amely lehetővé teszi a strukturálatlan adatok tárolása és elérése a blokkblobok nagy méretű. Emellett támogatja <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> vállalati big Data típusú adatok elemzési megoldásokat.
+<td>Az ügyféloldali kódtárakat és egy <a href="https://docs.microsoft.com/rest/api/storageservices/blob-service-rest-api">Rest</a> -felületet biztosít, amely lehetővé teszi a strukturálatlan adatok tárolását és elérését a blokkos Blobok nagy méretekben. A <a href="/azure/storage/blobs/data-lake-storage-introduction">Azure Data Lake Storage Gen2</a> is támogatja a vállalati Big Data elemzési megoldásokhoz.
 </td>
 <td><ul>
-<li>Streamelési és a véletlenszerű hozzáférés forgatókönyveket támogatja az alkalmazások.</li>
-<li>Az alkalmazás adatokat bárhonnan elérheti.</li>
-<li>Az enterprise data lake létrehozása az Azure-ban, és végezze el a big data-elemzés.</li>
+<li>Támogatja a folyamatos átviteli és véletlenszerű hozzáférési forgatókönyveket az alkalmazásokban.</li>
+<li>Bárhonnan hozzáférhet az alkalmazásadatok eléréséhez.</li>
+<li>Hozzon létre egy vállalati adattárat az Azure-ban, és hajtson végre big data elemzéseket.</li>
 </ul></td>
 </tr>
-<tr><td>Azure Disks
+<tr><td>Azure-os lemezek
 </td>
-<td>Ügyfélkódtárak biztosít és a egy <a href="https://docs.microsoft.com/rest/api/compute/disks">REST</a> felület, amely lehetővé teszi az adatok állandó tárolása és elérése a csatlakoztatott virtuális merevlemezről.
+<td>Az ügyféloldali kódtárakat és egy <a href="https://docs.microsoft.com/rest/api/compute/disks">Rest</a> -felületet biztosít, amely lehetővé teszi az adatok tartós tárolását és elérését egy csatlakoztatott virtuális merevlemezről.
 </td>
 <td><ul>
-<li>Alkalmazások átemelése, amely olvasási és írási adatok állandó lemezt natív fájlrendszer API-k használatával.</li>
-<li>Nem szükséges a virtuális gép, amelyhez a lemez csatlakozik kívülről adatok Store.</li>
+<li>A natív fájlrendszert használó API-k használatával olyan alkalmazásokat helyezhet át és helyezhet át, amelyek állandó lemezekre olvasnak és írhatnak.</li>
+<li>A nem szükséges adatok tárolása azon a virtuális gépen kívülről, amelyhez a lemez csatlakoztatva van.</li>
 </ul></td>
 </tr>
 </tbody>
 </table>
 <!-- markdownlint-enable MD033 -->
 
-## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure (online) gyakori és ritka elérésű (archív) tárolási
+## <a name="azure-hot-online-and-cold-archive-storage"></a>Azure-beli meleg (online) és hideg (archív) tároló
 
-A tárolás egy adott rendszerhez típusát attól függ, hogy a rendszer, beleértve a tároló mérete, átviteli sebesség és iops-érték követelményeinek. DASD típusú tároláshoz a nagyszámítógépes az Azure-beli alkalmazások általában inkább az Azure Disks meghajtó storage. A nagyszámítógépes az archive storage blob storage-bA az Azure-ban használnak.
+Egy adott rendszer tárolási típusa a rendszer követelményeitől függ, beleértve a tárterület méretét, az átviteli sebességet és a IOPS. A nagyszámítógépeken található DASD-alapú tároláshoz az Azure-beli alkalmazások általában az Azure Disks Drive Storage-t használják helyette. A nagyszámítógépek archiválásához a blob Storage használata az Azure-ban történik.
 
-SSD-k biztosítanak a legmagasabb szintű tárolási teljesítmény az Azure-ban. A következő lehetőségek állnak rendelkezésre (írásakor a jelen dokumentum):
+Az SSD-k biztosítják a legnagyobb tárolási teljesítményt az Azure-ban. A következő beállítások érhetők el (a dokumentum írásakor):
 
-| Típus         | Méret           | IO                  |
+| Type (Típus)         | Méret           | IO                  |
 |--------------|----------------|-----------------------|
-| Ultra SSD    | 4 GB-os 64 TB-ig  | 1200 való 160,000 IOPS |
-| Prémium SSD  | 32 GB-os 32 TB-ig | 12-15 000 iops-érték     |
-| Standard SSD | 32 GB-os 32 TB-ig | 12, 2 000 iops-érték      |
+| Ultra SSD    | 4 GB – 64 TB  | 1 200 – 160 000 IOPS |
+| Prémium SSD  | 32 GB – 32 TB | 12 – 15 000 IOPS     |
+| Standard SSD | 32 GB – 32 TB | 12 – 2 000 IOPS      |
 
-A BLOB storage tárolási legnagyobb mennyisége biztosít az Azure-ban. Azure storage mérete, felügyelt és a nem felügyelt tárolási lehetőséget biztosít. A felügyelt tárfiókkal az Azure gondoskodik az alapul szolgáló storage-fiókok kezelése. Nem felügyelt tárolóval a felhasználó felelőssége a tárolási követelmények teljesítéséhez a megfelelő méretű Azure storage-fiókok beállításával kapcsolatos vesz igénybe.
+A blob Storage a legnagyobb tárterületet biztosítja az Azure-ban. A tárterület mérete mellett az Azure felügyelt és nem felügyelt tárolást is biztosít. A felügyelt tárolók esetében az Azure gondoskodik a mögöttes Storage-fiókok kezeléséről. A nem felügyelt tárolással a felhasználó felelősséget vállal a megfelelő méretű Azure Storage-fiókok beállításához a tárolási követelmények kielégítése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Nagyszámítógépek migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
-- [A nagyszámítógépes újratárolása az Azure Virtual machines szolgáltatásban](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
-- [A nagyszámítógépes számítási áthelyezése az Azure-bA](mainframe-compute-Azure.md)
-- [Annak eldöntése, mikor érdemes használni az Azure-Blobok, az Azure Files és az Azure-lemezek](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
-- [Standard SSD Managed Disks-Azure virtuális gépek számítási feladataihoz](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
+- [Nagyszámítógép migrálása](/azure/architecture/cloud-adoption/infrastructure/mainframe-migration/overview)
+- [Az Azure Virtual Machines-t futtató nagyszámítógépek](/azure/virtual-machines/workloads/mainframe-rehosting/overview)
+- [Nagyszámítógépek számítási teljesítményének áthelyezése az Azure-ba](mainframe-compute-Azure.md)
+- [Az Azure-Blobok, a Azure Files-vagy az Azure-lemezek használatának eldöntése](https://docs.microsoft.com/azure/storage/common/storage-decide-blobs-files-disks)
+- [standard SSD Managed Disks Azure-beli virtuális gépek számítási feladataihoz](https://docs.microsoft.com/azure/virtual-machines/windows/disks-standard-ssd)
 
 ### <a name="ibm-resources"></a>IBM-erőforrások
 
-- [Az IBM Z párhuzamos Sysplex](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
-- [IBM CICS és a kapcsoló konstrukció: Alapvető túl](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
-- [Egy Db2-pureScale szolgáltatás telepítése a szükséges felhasználók létrehozása](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
-- [Db2icrt - példány parancs létrehozása](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
-- [Db2-pureScale fürtözött adatbázis-megoldás](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
-- [IBM Data Studio](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
+- [Párhuzamos Sysplex az IBM Z-ben](https://www.ibm.com/it-infrastructure/z/technologies/parallel-sysplex-resources)
+- [Az IBM CICS és a kapcsolási létesítmény: az alapjain túl](https://www.redbooks.ibm.com/redbooks/pdfs/sg248420.pdf)
+- [Szükséges felhasználók létrehozása a DB2 pureScale szolgáltatás telepítéséhez](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.qb.server.doc/doc/t0055374.html?pos=2)
+- [Db2icrt – példány létrehozása parancs](https://www.ibm.com/support/knowledgecenter/en/SSEPGG_11.1.0/com.ibm.db2.luw.admin.cmd.doc/doc/r0002057.html)
+- [DB2 pureScale fürtözött adatbázis-megoldás](https://www.ibmbigdatahub.com/blog/db2-purescale-clustered-database-solution-part-1)
+- [IBM-es adatstúdió](https://www.ibm.com/developerworks/downloads/im/data/index.html/)
 
 ### <a name="azure-government"></a>Azure Government
 
-- [Nagyszámítógépes alkalmazások a Microsoft Azure Government-felhőben](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
-- [A Microsoft és a FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
+- [Microsoft Azure Government felhő nagyszámítógépi alkalmazások számára](https://azure.microsoft.com/resources/microsoft-azure-government-cloud-for-mainframe-applications/)
+- [Microsoft és FedRAMP](https://www.microsoft.com/TrustCenter/Compliance/FedRAMP)
 
-### <a name="more-migration-resources"></a>További források a migráláshoz
+### <a name="more-migration-resources"></a>További áttelepítési erőforrások
 
-- [Platform Modernization Alliance: IBM DB2-höz, az Azure-ban](https://www.platformmodernization.org/pages/ibmdb2azure.aspx)
-- [Az Azure virtuális adatközpont Lift és Shift útmutató](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
+- [Az Azure Virtual adatközpontjának átemelési és átváltási útmutatója](https://azure.microsoft.com/resources/azure-virtual-datacenter-lift-and-shift-guide/)
 - [GlusterFS iSCSI](https://docs.gluster.org/en/latest/Administrator%20Guide/GlusterFS%20iSCSI/)

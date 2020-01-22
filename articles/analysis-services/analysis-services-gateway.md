@@ -4,15 +4,15 @@ description: A helyszíni átjáróra akkor van szükség, ha az Azure-beli Anal
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 01/17/2020
+ms.date: 01/21/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: f1fc00ced0d933884ca0fe6dce91fed4602eb825
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 648646b6f973762245c344cd2629a874a219b170
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263438"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310152"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
 
@@ -24,11 +24,11 @@ Azure Analysis Services esetén a telepítő az átjáróval való első alkalom
 
 - A **telepítő letöltése és futtatása** – ezzel a lépéssel telepítheti az átjárószolgáltatás szolgáltatást a szervezeten belüli számítógépen. A [bérlő](/previous-versions/azure/azure-services/jj573650(v=azure.100)#what-is-an-azure-ad-tenant) Azure ad-fiókjával is bejelentkezhet az Azure-ba. Az Azure B2B-(vendég-) fiókok nem támogatottak.
 
-- **Az átjáró regisztrálása** – ebben a lépésben meg kell adnia egy nevet és egy helyreállítási kulcsot az átjáróhoz, és ki kell választania egy régiót, és regisztrálnia kell az átjárót az átjáró Cloud Service-ben. Az átjáró-erőforrás bármely régióban regisztrálható, de javasoljuk, hogy a Analysis Services-kiszolgálókkal megegyező régióban legyen. 
+- **Az átjáró regisztrálása** – ebben a lépésben meg kell adnia egy nevet és egy helyreállítási kulcsot az átjáróhoz, és ki kell választania egy régiót, és regisztrálnia kell az átjárót az átjáró Cloud Service-ben. Az átjáró-erőforrás bármely régióban regisztrálható, de azt javasoljuk, hogy a Analysis Services-kiszolgálókkal megegyező régióban legyen elérhető. 
 
-- **Átjáró-erőforrás létrehozása az Azure** -ban – ebben a lépésben egy Azure-beli átjáró-erőforrást hoz létre.
+- **Átjáró-erőforrás létrehozása az Azure** -ban – ebben a lépésben létrehoz egy átjáró-erőforrást az Azure-ban.
 
-- **Csatlakoztassa a kiszolgálókat az átjáró-erőforráshoz** – ha van átjáró-erőforrása, megkezdheti a kiszolgálók csatlakoztatását. Több kiszolgálót és más erőforrást is összekapcsolhat, ha azok ugyanabban a régióban vannak.
+- **Csatlakoztassa a kiszolgálókat az átjáró-erőforráshoz** – ha van átjáró-erőforrása, megkezdheti a kiszolgálók összekapcsolását. Több kiszolgálót és más erőforrást is összekapcsolhat, ha azok ugyanabban a régióban találhatók.
 
 
 
@@ -54,7 +54,7 @@ Azure Analysis Services környezet telepítésekor fontos, hogy kövesse a helys
 
 Az átjáró egy kimenő kapcsolatot hoz létre az Azure Service Bushoz. A következő kimenő portokon kommunikál: TCP 443 (alapméretezett), 5671, 5672, 9350–9354.  Az átjáró nem igényel bejövő portokat.
 
-Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalon. [A Microsoft Azure Datacenter IP-címlistáját innen töltheti le](https://www.microsoft.com/download/details.aspx?id=41653). A listát hetente frissítjük. Az Azure Datacenter listájában szereplő IP-címek a CIDR-jelölésrendszer használatával vannak megadva. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalon. [A Microsoft Azure Datacenter IP-címlistáját innen töltheti le](https://www.microsoft.com/download/details.aspx?id=56519). A listát hetente frissítjük. Az Azure Datacenter listájában szereplő IP-címek a CIDR-jelölésrendszer használatával vannak megadva. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 A következő az átjáró által használt teljes tartománynevek.
 

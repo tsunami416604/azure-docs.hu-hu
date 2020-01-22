@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: b6ea5c9ef5e128116ef389675a09e6ab4b230b75
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982452"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311342"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -83,7 +83,7 @@ Ez a kód egy általános kalkulátor-objektumot hoz létre, `est`, amely megadj
 
 * A parancsfájlok parancsfájl-könyvtára. Az ebben a könyvtárban található összes fájl fel lesz töltve a fürtcsomópontokra végrehajtás céljából.
 * A betanítási parancsfájl, *train_titanic.*
-* A betanításhoz használt bemeneti adatkészlet `titanic`.
+* A betanításhoz használt bemeneti adatkészlet `titanic`. `as_named_input()` szükséges, hogy a bemeneti adatkészletet a betanítási parancsfájlban található hozzárendelt név alapján lehessen hivatkozni. 
 * A kísérlet számítási célja.
 * A kísérlet környezeti definíciója.
 
@@ -126,7 +126,7 @@ mnist_ds = Dataset.File.from_files(path = web_paths)
 
 ### <a name="configure-the-estimator"></a>A kalkulátor konfigurálása
 
-Ahelyett, hogy az adatkészletet a kalkulátor `inputs` paraméterén keresztül kellene átadnia, az adatkészletet átadhatja a `script_params`on keresztül, és az adatelérési utat (csatlakoztatási pont) is átadhatja az oktatóanyagban argumentumokkal Így férhet hozzá az adataihoz, és használhat meglévő betanítási szkriptet is.
+Az adatkészletnek a kalkulátor `inputs` paraméterén keresztül történő átadása mellett az adatkészletet is átadhatja a `script_params`on keresztül, és az adatelérési utat (csatlakoztatási pont) a betanítási parancsfájlba az argumentumok segítségével. Így megtarthatja az azureml-SDK-val független oktatási szkriptet. Más szóval ugyanezt a betanítási szkriptet fogja használni a helyi hibakereséshez és a távoli oktatáshoz bármilyen felhőalapú platformon.
 
 A [SKLearn](https://docs.microsoft.com/python/api/azureml-train-core/azureml.train.sklearn.sklearn?view=azure-ml-py) -kalkulátor objektum a scikit-Learn kísérletek futtatásának elküldésére szolgál. További információ a [SKlearn-kalkulátor](how-to-train-scikit-learn.md)betanításáról.
 

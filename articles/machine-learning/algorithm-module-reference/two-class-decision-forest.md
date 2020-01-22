@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: ebe9a0368f2111fa6787b7fa4f4432d7ad4106c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 3df66c80ab96bbcb9a58f91989cfd63b1e13a67f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485959"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312396"
 ---
 # <a name="two-class-decision-forest-module"></a>Kétosztályos döntési erdő modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre a döntési erdők algoritmusa alapján.  
 
@@ -87,20 +87,15 @@ További információ: [döntési erdők](https://go.microsoft.com/fwlink/?LinkI
 9. Egy címkézett adatkészlet és egy [betanítási modul](module-reference.md)csatolása:  
   
     -   Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](./train-model.md) modult.  
-  
     
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
-+ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, kattintson a jobb gombbal a [Train Model](./train-model.md) modul kimenetére, és válassza a **Megjelenítés**lehetőséget.
-  
-    Kattintson az egyes faszerkezetekre a felosztások részletezéséhez, és tekintse meg az egyes csomópontok szabályait.
-
-+ A modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **modell mentése**lehetőséget. A mentett modell nem frissül a folyamat egymást követő futtatásakor.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
 + A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: a004fdf0ed01c97fe5c21cc9011c46f5e4c51648
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 00414bea82a7a78dd88ff4b1a592a6e35b5241c7
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428580"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314402"
 ---
 # <a name="convert-to-dataset"></a>Átalakítás adathalmazzá
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) adatkészletre való konvertálása a folyamat összes adatának a tervező belső formátumára való átalakításához.
+Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designerben az átalakítás adatkészlethez modul a folyamat összes adatának a tervező belső formátumba való átalakításához.
   
 A legtöbb esetben nem szükséges a konverzió. Azure Machine Learning implicit módon átalakítja az adatokat a natív adatkészlet formátumára, amikor az adatokat az összes művelet elvégzi. 
 
@@ -51,11 +51,11 @@ Azt javasoljuk, hogy a [metaadatok szerkesztése](edit-metadata.md) modul haszn�
     Vegye figyelembe, hogy a **ReplaceValues** művelet csak a pontos egyezésekre vonatkozik. Ezek a karakterláncok például nem érintettek: `obs.`, `obsolete`.  
  
   
-5.  Futtassa a folyamatot, vagy kattintson a jobb gombbal a konvertálás adatkészletre elemre, és válassza a **kijelölt futtatása**lehetőséget.  
+5.  A folyamat futtatása.  
 
 ## <a name="results"></a>Eredmények
 
-+  Ha az eredményül kapott adatkészletet új névvel szeretné menteni, kattintson a jobb gombbal az adatkészletre való átalakítás kimenetére, majd válassza a **Mentés másként adatkészlet**lehetőséget.  
++  Ha az eredményül kapott adatkészletet új névvel szeretné menteni, akkor a modul jobb oldali paneljének **outputs (kimenet** ) lapján válassza a (z) ikon **regisztrálása adatkészletet** .  
   
 ## <a name="technical-notes"></a>Technikai megjegyzések  
 

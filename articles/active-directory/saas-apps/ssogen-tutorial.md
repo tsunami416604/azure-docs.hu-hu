@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/03/2020
+ms.date: 01/16/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 841c2b7067427b703d2aa7647e0c0c3ef2287c6e
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 74b56e30eb8851913f91cbee377204a575311375
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75775676"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293674"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ssogen---azure-ad-sso-gateway-for-oracle-e-business-suite---ebs-peoplesoft-and-jde"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SSOGEN-vel – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE
 
@@ -43,7 +43,8 @@ Első lépésként a következő elemeket kell megadnia:
 
 Ebben az oktatóanyagban az Azure AD SSO konfigurálását és tesztelését teszteli a tesztkörnyezetben.
 
-* SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE támogatja az **SP és a identitásszolgáltató** által kezdeményezett SSO-t
+* SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite – az EBS, a PeopleSoft és a JDE támogatja az **SP és a identitásszolgáltató** által kezdeményezett egyszeri bejelentkezést.
+* Miután konfigurálta a SSOGEN – Azure AD SSO-átjárót az Oracle E-Business Suite-EBS, a PeopleSoft és a JDE számára, kikényszerítheti a munkamenet-vezérlést, amely a szervezet bizalmas adatainak kiszűrése és beszivárgását valós időben teszi elérhetővé. A munkamenet-vezérlőelemek kiterjeszthetők a feltételes hozzáférésből. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)
 
 > [!NOTE]
 > Az alkalmazás azonosítója egy rögzített karakterlánc-érték, így csak egy példány konfigurálható egyetlen bérlőn.
@@ -161,3 +162,7 @@ Ha rákattint a SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite-EBS,
 - [Mi a feltételes hozzáférés a Azure Active Directory?](https://docs.microsoft.com/azure/active-directory/conditional-access/overview)
 
 - [Próbálja ki a SSOGEN – Azure AD SSO Gateway for Oracle E-Business Suite-EBS, PeopleSoft és JDE az Azure AD-vel](https://aad.portal.azure.com/)
+
+- [Mi a munkamenet-vezérlő a Microsoft Cloud App Securityban?](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)
+
+- [SSOGEN – Azure AD SSO-átjáró az Oracle E-Business Suite-EBS, PeopleSoft és JDE számára speciális láthatósággal és ellenőrzésekkel](https://docs.microsoft.com/cloud-app-security/proxy-intro-aad)

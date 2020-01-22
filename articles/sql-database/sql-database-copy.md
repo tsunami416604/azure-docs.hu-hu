@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sashan
 ms.reviewer: carlrab
 ms.date: 11/14/2019
-ms.openlocfilehash: b3bc99d0fbdb551af0fb3711d74db537d3f9b1a5
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e1df345fb9a89972ad1857a937c22d6e10ad1fba
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74421346"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289407"
 ---
 # <a name="copy-a-transactionally-consistent-copy-of-an-azure-sql-database"></a>Azure SQL Database-adatbázis tranzakciós szempontból konzisztens másolatának másolása
 
@@ -151,7 +151,7 @@ Figyelje a másolási folyamatot a sys. Databases és a sys. dm_database_copies 
 > Ha úgy dönt, hogy megszakítja a másolást, amíg folyamatban van, hajtsa végre a [drop Database](https://msdn.microsoft.com/library/ms178613.aspx) utasítást az új adatbázison. Azt is megteheti, hogy a forrás-adatbázis DROP DATABASE utasításának végrehajtása megszakítja a másolási folyamatot.
 
 > [!IMPORTANT]
-> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb SLO-val rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási Opera meghibásodásához vezethet. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információ: [Azure SQL Database helyreállítása adatbázis-másolatok használatával](sql-database-recovery-using-backups.md#geo-restore) .
+> Ha olyan másolatot kell létrehoznia, amely lényegesen kisebb SLO-val rendelkezik, mint a forrás, akkor előfordulhat, hogy a céladatbázis nem rendelkezik elegendő erőforrással a kiindulási folyamat befejezéséhez, és a másolási művelet meghiúsulhat. Ebben a forgatókönyvben egy geo-visszaállítási kérelem használatával hozzon létre egy másolatot egy másik kiszolgálón és/vagy egy másik régióban. További információkért lásd: [Azure SQL Database-adatbázis helyreállítása az adatbázis biztonsági másolatainak használatával](sql-database-recovery-using-backups.md#geo-restore) .
 
 ## <a name="resolve-logins"></a>Bejelentkezések feloldása
 
@@ -165,9 +165,9 @@ Ha egy másik SQL Database-kiszolgálóra másol egy adatbázist a felhasználó
 
 A következő hibák fordulhatnak elő az adatbázisok Azure SQL Databaseban történő másolása során. További információk az [Azure SQL-adatbázis másolása](sql-database-copy.md) című részben.
 
-| Hibakód | Severity | Leírás |
+| Hibakód | Súlyosság | Leírás |
 | ---:| ---:|:--- |
-| 40635 |16 |Ügyfél IP-címmel ( '%.&#x2a;ls' ) ideiglenesen le van tiltva. |
+| 40635 |16 |A (z)% IP-címmel rendelkező ügyfél. &#x2a;az ls átmenetileg le van tiltva. |
 | 40637 |16 |Az adatbázis-másolat létrehozása jelenleg le van tiltva. |
 | 40561 |16 |Az adatbázis másolása sikertelen volt. A forrás-vagy a céladatbázis nem létezik. |
 | 40562 |16 |Az adatbázis másolása sikertelen volt. A forrásadatbázis el lett dobva. |

@@ -1,6 +1,6 @@
 ---
-title: Magánfelhők és régióban, mely az Azure Media Services v3 elérhető |} A Microsoft Docs
-description: Ez a cikk ismerteti az Azure-felhők régiókban mely az Azure Media Services v3 érhető el.
+title: Felhők és régiók, amelyekben Azure Media Services v3 elérhető
+description: Ez a cikk olyan Azure-felhőket és-régiókat mutat be, amelyekben Azure Media Services v3 elérhető.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -9,45 +9,45 @@ editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 05/07/2019
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: 7b2691f543cf38a56eefb1e8521169aeccbf3221
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58b5b749e81aab4d8563d09cbfd139629520531c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65409287"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310567"
 ---
-# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Magánfelhők és régiók, mely az Azure Media Services v3 létezik
+# <a name="clouds-and-regions-in-which-azure-media-services-v3-exists"></a>Felhők és régiók, amelyekben Azure Media Services v3 létezik
 
-Az Azure Media Services v3-as globális Azure-ban, Azure Government, Azure Germany, az Azure China 21Vianet az Azure Resource Manager-jegyzékfájl keresztül érhető el. Azonban nem minden Media Services-funkciók érhetők el az összes az Azure-felhőben. Ez a dokumentum lehetőségek a Media Services v3 fő összetevőit vázolja fel.
+A Azure Media Services v3 a globális Azure-ban, a Azure Government, az Azure Germany és az Azure China 21Vianet Azure Resource Manager-jegyzékfájlján keresztül érhető el. Azonban nem minden Media Services funkció érhető el az összes Azure-felhőben. Ez a dokumentum a fő Media Services v3-összetevők elérhetőségeit ismerteti.
 
-## <a name="feature-availability-in-azure-clouds"></a>A szolgáltatás rendelkezésre állása az Azure-felhők
+## <a name="feature-availability-in-azure-clouds"></a>Funkciók elérhetősége az Azure-felhőkben
 
-| Funkció|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
+| Szolgáltatás|Globális Azure-régiók | Azure Government|Azure Germany|Azure China 21Vianet|
 | --- | --- | --- | --- | --- |
-| [Azure EventGrid](reacting-to-media-services-events.md) | Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
-| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nem érhető el | Nem érhető el | Nem érhető el |
+| [Azure-EventGrid](reacting-to-media-services-events.md) | Elérhető | Nincs | Nincs | Nincs |
+| [VideoAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nincs | Nincs | Nincs |
+| [AudioAnalyzerPreset](analyzing-video-audio-files-concept.md) |  Elérhető | Nincs | Nincs | Nincs |
 | [StandardEncoderPreset](encoding-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 | [LiveEvents](live-streaming-overview.md) | Elérhető | Elérhető | Elérhető | Elérhető |
-| [Streamvégpontok](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
+| [StreamingEndpoints](streaming-endpoint-concept.md) | Elérhető | Elérhető | Elérhető | Elérhető |
 
-## <a name="regionsgeographieslocations"></a>Régiók és földrajzi területeken/helyek
+## <a name="regionsgeographieslocations"></a>Régiók/földrajzi területek/helyek
 
-[Régió, amelyben az Azure Media Services-szolgáltatás üzembe helyezése](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
+[A Azure Media Services szolgáltatást üzembe helyező régiók](https://azure.microsoft.com/global-infrastructure/services/?products=media-services)
 
-### <a name="region-code-name"></a>Régió neve 
+### <a name="region-code-name"></a>Régiókód neve 
 
-Amikor meg kell adnia a **hely** paramétert meg kell adnia a régió neve, a **hely** érték. A régió, amely a fiók, és hogy a hívás kell átirányítani a kód nevének futtassa a következő sort [Azure CLI-vel](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest)
+Ha meg kell adnia a **Location** paramétert, meg kell adnia a területi kód nevét a **hely** értékeként. Ha szeretné lekérni annak a régiónak a nevét, amelyben a fiókja található, és a hívást át kell irányítani a szolgáltatásba, a következő sort futtathatja az [Azure CLI](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest) -ben.
 
 ```bash
 az account list-locations
 ```
 
-Egyszer futtatja a sor a fent látható az összes Azure-régiók listájának beolvasása. Keresse meg az Azure-régióban, amely rendelkezik a *displayName* keres, és használja a *neve* értékét a **hely** paraméter.
+Miután futtatta a fenti sort, megjelenik az összes Azure-régió listája. Navigáljon ahhoz az Azure-régióhoz, amelynek a *DisplayName* a nevét keresi, és használja a *Name* értékét a **Location** paraméterhez.
 
-Ha például az Azure-régiót (alább látható) 2. nyugati RÉGIÓJA, az használandó "westus2" a **hely** paraméter.
+Az USA 2. nyugati régiójában (az alábbi ábrán látható) például az "westus2" kifejezést fogja használni a **Location** paraméterhez.
 
 ```json
    {
@@ -60,48 +60,48 @@ Ha például az Azure-régiót (alább látható) 2. nyugati RÉGIÓJA, az haszn
     }
 ```
 
-## <a name="endpoints"></a>Végpontok  
+## <a name="endpoints"></a>Endpoints (Végpontok)  
 
-Az alábbi végpontokat is fontos tudni, hogy különböző országos Azure-felhők a Media Services-fiókok való csatlakozáskor.
+A következő végpontokat fontos tudni, hogy mikor csatlakozhat Media Services-fiókokhoz a különböző nemzeti Azure-felhőkből.
 
 ### <a name="global-azure"></a>Globális Azure
 
-|Végpontok ||
+|Endpoints (Végpontok) ||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.azure.com/` |
 | Hitelesítés | `https://login.microsoftonline.com/` | 
-| Token célrendszere | `https://management.core.windows.net/` |
+| Jogkivonat célközönsége | `https://management.core.windows.net/` |
 
 ### <a name="azure-government"></a>Azure Government
 
-|Végpontok||
+|Endpoints (Végpontok)||
 | --- | --- | 
 | Azure Resource Manager |  `https://management.usgovcloudapi.net/` |
 | Hitelesítés | `https://login.microsoftonline.us/` | 
-| Token célrendszere | `https://management.core.usgovcloudapi.net/` |
+| Jogkivonat célközönsége | `https://management.core.usgovcloudapi.net/` |
 
 ### <a name="azure-germany"></a>Azure Germany
 
-| Végpontok ||
+| Endpoints (Végpontok) ||
 | --- | --- |  
 | Azure Resource Manager | `https://management.cloudapi.de/` |
 | Hitelesítés | `https://login.microsoftonline.de/` |
-| Token célrendszere | `https://management.core.cloudapi.de/`|
+| Jogkivonat célközönsége | `https://management.core.cloudapi.de/`|
 
 ### <a name="azure-china-21vianet"></a>Azure China 21Vianet
 
-|Végpontok||
+|Endpoints (Végpontok)||
 | --- | --- | 
 | Azure Resource Manager | `https://management.chinacloudapi.cn/` |
 | Hitelesítés | `https://login.chinacloudapi.cn/` |
-| Token célrendszere |  `https://management.core.chinacloudapi.cn/` |
+| Jogkivonat célközönsége |  `https://management.core.chinacloudapi.cn/` |
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 * [Azure-régiók](https://azure.microsoft.com/global-infrastructure/regions/)
-* [Azure-régiócsoportok](https://azure.microsoft.com/global-infrastructure/geographies/)
-* [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)
+* [Azure földrajzi területek](https://azure.microsoft.com/global-infrastructure/geographies/)
+* [Azure-beli helyszínek](https://azure.microsoft.com/global-infrastructure/locations/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Media Services v3 áttekintése](media-services-overview.md)
+[Media Services v3 – áttekintés](media-services-overview.md)

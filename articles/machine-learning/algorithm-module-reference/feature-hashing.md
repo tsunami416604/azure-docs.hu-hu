@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 09/01/2019
-ms.openlocfilehash: 48960eae4941bb744a937639e1308e1b5f6aaf9f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 60a9c6b237423337abb520b335c98d3c8c7549be
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497828"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76312200"
 ---
 # <a name="feature-hashing-module-reference"></a>Szolgáltatás-kivonatolási modul referenciája
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) részét képező modult ismerteti.
+Ez a cikk a Azure Machine Learning Designer részét képező modult ismerteti.
 
 A szolgáltatás-kivonatolási modul használatával az angol nyelvű adatfolyamokat egész számokból álló funkciókba alakíthatja át. Ezt követően átadhatja ezt a kivonatoló funkciót egy gépi tanulási algoritmusba egy szöveges elemzési modell betanításához.
 
@@ -30,7 +30,7 @@ A szolgáltatások kivonatolása úgy működik, hogy az egyedi tokeneket egész
 
 Tegyük fel például, hogy a fentiekhez hasonló egyszerű mondatokat, majd egy hangulati pontszámot követ. Tegyük fel, hogy ezt a szöveget szeretné használni a modell létrehozásához.
 
-|Felhasználói szöveg|Hangulat|
+|Felhasználói szöveg|Vélemény|
 |--------------|---------------|
 |Imádtam ezt a könyvet|3|
 |Utáltam ezt a könyvet|1|
@@ -96,7 +96,7 @@ A numerikus kimenetek a gyakori gépi tanulási módszerek használatát is tesz
 
 1. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A feldolgozás befejezése után a modul egy átalakított adatkészletet ad eredményül, amelyben az eredeti szöveges oszlop több oszlopra lett konvertálva. Minden oszlop a szöveg egyik funkcióját jelöli. Attól függően, hogy milyen jelentős a szótár, az eredményül kapott adatkészlet nagyméretű lehet:
 
@@ -129,6 +129,6 @@ Az alábbi ajánlott eljárások segítséget nyújtanak a funkció-kivonatolás
 
 Az egyes megoldásokban alkalmazandó előfeldolgozási módszerek optimális készlete a tartománytól, a szókincstől és az üzleti igényektől függ. a folyamat adataival megtekintheti, hogy mely szöveg-feldolgozási módszerek a leghatékonyabbak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
             
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) 

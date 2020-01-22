@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/30/2019
-ms.openlocfilehash: 1002a19506ad0a59cb24ae4edb1f7c9726d68cb2
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170861"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76290342"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -94,7 +94,7 @@ Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query 
 A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics munkaterületen tárolja a rendszer. A munkaterület lényegében egy olyan tároló, amelyben a naplózási adatokat különböző forrásokból gyűjti a rendszer. Lehet, hogy az összes figyelési adathoz egyetlen Log Analytics munkaterület tartozik, vagy több munkaterületre vonatkozó követelmények is lehetnek. Lásd: [a Azure monitor naplók üzembe helyezésének megtervezése](platform/design-logs-deployment.md).
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Át lehet helyezni egy meglévő Log Analytics munkaterületet egy másik Azure-előfizetésbe?
-Áthelyezheti a munkaterületet erőforráscsoportok vagy előfizetések között, de nem egy másik régióba. Lásd: [log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoporthoz](/platform/move-workspace.md).
+Áthelyezheti a munkaterületet erőforráscsoportok vagy előfizetések között, de nem egy másik régióba. Lásd: [log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoporthoz](platform/move-workspace.md).
 
 
 ## <a name="alerts"></a>Értesítések
@@ -189,7 +189,7 @@ A tűzfalra vonatkozó követelmények részleteiért lásd a [hálózati tűzfa
 
 * [.NET-alkalmazás](app/asp-net-troubleshoot-no-data.md)
 * [Már futó alkalmazás figyelése](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
+* [Azure diagnostics](platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](app/java-troubleshoot.md)
 
 *Nem kapok adatok a kiszolgálóról*
@@ -224,94 +224,94 @@ A nagyvállalati csomag minden nap esetében díjat számít fel, amelyet minden
 
 ### <a name="how-much-does-it-cost"></a>Mennyibe kerül?
 
-* Nyissa meg a **használati és becsült költségek lapot** egy Application Insights erőforrásban. Van egy diagram a közelmúltbeli használatról. Ha kívánja, beállíthatja az adatmennyiség korlátját.
-* Nyissa meg az [Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) paneljét, és tekintse meg a számlákat az összes erőforráson.
+* Open the **Usage and estimated costs page** in an Application Insights resource. There's a chart of recent usage. You can set a data volume cap, if you want.
+* Open the [Azure Billing blade](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) to see your bills across all resources.
 
-### <a name="q14"></a>Mit Application Insights módosítani a projektben?
-A részletek a projekt típusától függenek. Webalkalmazások esetén:
+### <a name="q14"></a>What does Application Insights modify in my project?
+The details depend on the type of project. For a web application:
 
-* Hozzáadja ezeket a fájlokat a projekthez:
+* Adds these files to your project:
   * ApplicationInsights.config
-  * ai. js
-* A következő NuGet-csomagokat telepíti:
-  * *Application INSIGHTS API* – a Core API
-  * *Application INSIGHTS API webalkalmazásokhoz* – telemetria küldésére szolgál a kiszolgálóról
-  * *Application INSIGHTS API JavaScript-alkalmazásokhoz* – telemetria küldésére szolgál az ügyféltől
-* A csomagok közé tartoznak a következő szerelvények:
-  * Microsoft. ApplicationInsights
-  * Microsoft. ApplicationInsights. platform
-* Elemek beszúrása a következőkbe:
+  * ai.js
+* Installs these NuGet packages:
+  * *Application Insights API* - the core API
+  * *Application Insights API for Web Applications* - used to send telemetry from the server
+  * *Application Insights API for JavaScript Applications* - used to send telemetry from the client
+* The packages include these assemblies:
+  * Microsoft.ApplicationInsights
+  * Microsoft.ApplicationInsights.Platform
+* Inserts items into:
   * Web.config
-  * packages. config
-* (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a rendszer beszúrja a kódot a mesterlap-nézetbe, illetve a megosztott/\_elrendezésbe. cshtml
+  * packages.config
+* (New projects only - if you [add Application Insights to an existing project][start], you have to do this manually.) Inserts snippets into the client and server code to initialize them with the Application Insights resource ID. For example, in an MVC app, code is inserted into the master page Views/Shared/\_Layout.cshtml
 
-### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
-Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
+### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>How do I upgrade from older SDK versions?
+See the [release notes](app/release-notes.md) for the SDK appropriate to your type of application.
 
-### <a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
-A Megoldáskezelő kattintson a jobb gombbal az `ApplicationInsights.config` elemre, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
+### <a name="update"></a>How can I change which Azure resource my project sends data to?
+In Solution Explorer, right-click `ApplicationInsights.config` and choose **Update Application Insights**. You can send the data to an existing or new resource in Azure. The update wizard changes the instrumentation key in ApplicationInsights.config, which determines where the server SDK sends your data. Unless you deselect "Update all," it will also change the key where it appears in your web pages.
 
 ### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
-Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
+A desktop app that you can use in your IIS web server to help configure Application Insights in web apps. It doesn't collect telemetry: you can stop it when you are not configuring an app. 
 
 [További információk](app/monitor-performance-live-website-now.md#questions).
 
-### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
+### <a name="what-telemetry-is-collected-by-application-insights"></a>What telemetry is collected by Application Insights?
 
-A Server Web appsből:
+From server web apps:
 
 * HTTP-kérések
-* [Függőségek](app/asp-net-dependencies.md). Hívások: SQL-adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob Storage és üzenetsor. 
-* [Kivételek](app/asp-net-exceptions.md) és verem-Nyomkövetések.
-* [Teljesítményszámlálók](app/performance-counters.md) – ha [Állapotmonitort](app/monitor-performance-live-website-now.md)használ, a [app Services Azure-figyelést](app/azure-web-apps.md), a [virtuális gép vagy a virtuálisgép-méretezési csoport azure-figyelését](app/azure-vm-vmss-apps.md), vagy a [Application Insights gyűjtött író](app/java-collectd.md).
-* [Egyéni események és mérőszámok](app/api-custom-events-metrics.md) .
-* [Nyomkövetési naplók](app/asp-net-trace-logs.md) , ha a megfelelő gyűjtőt konfigurálja.
+* [Dependencies](app/asp-net-dependencies.md). Calls to: SQL Databases; HTTP calls to external services; Azure Cosmos DB, table, blob storage, and queue. 
+* [Exceptions](app/asp-net-exceptions.md) and stack traces.
+* [Performance Counters](app/performance-counters.md) - If you use [Status Monitor](app/monitor-performance-live-website-now.md), [Azure monitoring for App Services](app/azure-web-apps.md), [Azure monitoring for VM or virtual machine scale set](app/azure-vm-vmss-apps.md), or the [Application Insights collectd writer](app/java-collectd.md).
+* [Custom events and metrics](app/api-custom-events-metrics.md) that you code.
+* [Trace logs](app/asp-net-trace-logs.md) if you configure the appropriate collector.
 
-Az [ügyfél weblapjairól](app/javascript.md):
+From [client web pages](app/javascript.md):
 
-* [Oldalmegtekintések száma](app/usage-overview.md)
-* [Ajax-hívások](app/asp-net-dependencies.md) Futó parancsfájlból végrehajtott kérelmek.
-* Az oldal nézet betöltési adatkészlete
-* Felhasználók és munkamenetek száma
-* [Hitelesített felhasználói azonosítók](app/api-custom-events-metrics.md#authenticated-users)
+* [Page view counts](app/usage-overview.md)
+* [AJAX calls](app/asp-net-dependencies.md) Requests made from a running script.
+* Page view load data
+* User and session counts
+* [Authenticated user IDs](app/api-custom-events-metrics.md#authenticated-users)
 
-Más forrásokból, ha konfigurálja őket:
+From other sources, if you configure them:
 
-* [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
-* [Importálás az Analytics szolgáltatásba](platform/data-collector-api.md)
+* [Azure diagnostics](platform/diagnostics-extension-to-application-insights.md)
+* [Import to Analytics](platform/data-collector-api.md)
 * [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
-### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetők vagy módosíthatok néhány telemetria?
+### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Can I filter out or modify some telemetry?
 
-Igen, a kiszolgálón írhat:
+Yes, in the server you can write:
 
-* A telemetria a kiválasztott telemetria-elemekhez tartozó tulajdonságokat szűrheti vagy adja hozzá az alkalmazásból való elküldése előtt.
-* A telemetria inicializáló tulajdonságot adhat hozzá a telemetria összes eleméhez.
+* Telemetry Processor to filter or add properties to selected telemetry items before they are sent from your app.
+* Telemetry Initializer to add properties to all items of telemetry.
 
-További információ a [ASP.net](app/api-filtering-sampling.md) és a [Java](app/java-filter-telemetry.md)-ról.
+Learn more for [ASP.NET](app/api-filtering-sampling.md) or [Java](app/java-filter-telemetry.md).
 
-### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hogyan számítják ki a város, az ország/régió és az egyéb földrajzi hely adatértékét?
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>How are city, country/region, and other geo location data calculated?
 
-A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megkeresjük a webes ügyfél IP-címét (IPv4 vagy IPv6).
+We look up the IP address (IPv4 or IPv6) of the web client using [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
 
-* Böngésző telemetria: összegyűjtjük a küldő IP-címét.
-* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` van beállítva, a rendszer nem gyűjti.
-* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
-
-
-A `ClientIpHeaderTelemetryInitializer` úgy is beállíthatja, hogy az IP-címet egy másik fejlécből hajtsa végre. Egyes rendszerekben például egy proxy, terheléselosztó vagy CDN áthelyezi a `X-Originating-IP`ba. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
-
-A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
+* Browser telemetry: We collect the sender's IP address.
+* Server telemetry: The Application Insights module collects the client IP address. It is not collected if `X-Forwarded-For` is set.
+* To learn more about how IP address and geolocation data is collected in Application Insights refer to this [article](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-### <a name="data"></a>Mennyi ideig tartanak a portálon tárolt adat? Biztonságos?
-Vessen egy pillantást az [adatok megőrzésére és az adatvédelemre][data].
+You can configure the `ClientIpHeaderTelemetryInitializer` to take the IP address from a different header. In some systems, for example, it is moved by a proxy, load balancer, or CDN to `X-Originating-IP`. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-### <a name="could-personal-data-be-sent-in-the-telemetry"></a>A személyes adatküldés a telemetria?
+You can [use Power BI](app/export-power-bi.md ) to display your request telemetry on a map.
 
-Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha a stack-nyomkövetésben szereplő változók személyes adatba tartoznak. A fejlesztési csapatnak kockázatértékelést kell végeznie, hogy a személyes adatai megfelelően legyenek kezelve. [További információ az adatmegőrzésről és az adatvédelemről](app/data-retention-privacy.md).
+
+### <a name="data"></a>How long is data retained in the portal? Is it secure?
+Take a look at [Data Retention and Privacy][data].
+
+### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Could personal data be sent in the telemetry?
+
+This is possible if your code sends such data. It can also happen if variables in stack traces include personal data. Your development team should conduct risk assessments to ensure that personal data is properly handled. [További információ az adatmegőrzésről és az adatvédelemről](app/data-retention-privacy.md).
 
 Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi hely attribútumainak megvizsgálása után.
 
@@ -345,7 +345,7 @@ Egyetlen erőforrás használata egyetlen üzleti rendszeren lévő összes öss
 ### <a name="what-are-the-user-and-session-counts"></a>Mik a felhasználók és a munkamenetek száma?
 
 * A JavaScript SDK beállítja a felhasználói cookie-t a webes ügyfélen, a visszatérő felhasználók azonosítására, valamint egy munkamenet-cookie-t a tevékenységek csoportosítására.
-* Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-app/).
+* Ha nincs ügyféloldali parancsfájl, beállíthatja [a cookie-kat a kiszolgálón](https://apmtips.com/blog/2016/07/09/tracking-users-in-api-apps/).
 * Ha egy valós felhasználó különböző böngészőkben használja a webhelyét, vagy ha privát vagy inkognitóbani böngészést vagy különböző gépeket használ, a rendszer egynél többször veszi fel őket.
 * A bejelentkezett felhasználók számítógépek és böngészők közötti azonosításához vegyen fel egy hívást a [setAuthenticatedUserContext ()](app/api-custom-events-metrics.md#authenticated-users)szolgáltatásba.
 
@@ -455,7 +455,7 @@ Az átjárónak a végpont alapcímeihez kell irányítani a forgalmat. A konfig
 #### <a name="proxy-passthrough"></a>Proxy átengedése
 
 A proxy továbbítása a gépi vagy az alkalmazás szintű proxy konfigurálásával érhető el.
-További információ: a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-app/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
+További információ: a [DefaultProxy](https://docs.microsoft.com/dotnet/framework/configure-apps/file-schema/network/defaultproxy-element-network-settings)-ra vonatkozó DotNet-cikk.
  
  Példa web. config:
  ```xml

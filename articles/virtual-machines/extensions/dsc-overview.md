@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: na
 ms.date: 05/02/2018
 ms.author: robreed
-ms.openlocfilehash: 8f243527461a95d963854d8d018602dd81115482
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.openlocfilehash: b6b9d0f146fd98fd90aa8858e522449be571842c
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497275"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293164"
 ---
 # <a name="introduction-to-the-azure-desired-state-configuration-extension-handler"></a>Bevezetés az Azure kívánt állapotának konfigurációs bővítmény-kezelőjébe
 
@@ -59,7 +59,7 @@ Ha a bővítményt első alkalommal hívja meg, a a következő logika használa
 - Ha a **wmfVersion** tulajdonság meg van adva, a WMF verziója telepítve van, kivéve, ha ez a verzió nem kompatibilis a virtuális gép operációs rendszerével.
 - Ha nem ad meg **wmfVersion** -tulajdonságot, a rendszer a WMF legújabb verzióját telepíti.
 
-A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. MOF-fájl létrehozásához fut. A bővítmény ezután a generált. MOF fájllal futtatja `Start-DscConfiguration -Force`. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
+A WMF telepítéséhez újraindítás szükséges. Az újraindítás után a bővítmény letölti a **modulesUrl** tulajdonságban megadott. zip fájlt, ha meg van adva. Ha ez a hely az Azure Blob Storage-ban található, megadhat egy SAS-tokent a **sasToken** tulajdonságban a fájl eléréséhez. Miután letöltötte és kicsomagolta a. zip fájlt, a **configurationFunction** -ben definiált konfigurációs függvény egy. mof ([Managed Object Format](https://docs.microsoft.com/windows/win32/wmisdk/managed-object-format--mof-)) fájl létrehozásához fut. A bővítmény ezután a generált. MOF fájllal futtatja `Start-DscConfiguration -Force`. A bővítmény rögzíti a kimenetet, és az Azure status channelbe írja azt.
 
 ### <a name="default-configuration-script"></a>Alapértelmezett konfigurációs parancsfájl
 

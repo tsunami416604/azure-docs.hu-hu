@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: f2954ad2693d7b4f56e3f1b33e804a6936cf8a65
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75450149"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294031"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -295,6 +295,18 @@ A Azure Firewall beállítható úgy, hogy engedélyezze a kimenő hozzáférés
 
 * [Tudnivalók a](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) Azure Firewall üzembe helyezéséről.
 * [További információ](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN-Címkék
+
+>[!NOTE]
+> A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.
+>
+>Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
+>
+> Ez a megoldás különösen a következő esetekben hasznos:
+>  
+>1. A kritikus fontosságú adatok biztonsági mentését csak egy lemezen végezheti el, és nem kíván biztonsági másolatot készíteni a virtuális géphez csatolt többi lemezről. Ez lekicsinyíti a biztonsági másolatok tárolási költségeit.  
+>2. Más biztonsági mentési megoldásokkal rendelkezik a virtuális gép adataihoz. Például biztonsági mentést készíthet az adatbázisairól vagy az adatokról egy másik munkaterhelés biztonsági mentési megoldással, és az Azure-beli virtuális gép biztonsági mentését szeretné használni a többi lemez és adat számára, hogy egy hatékony és robusztus rendszer kihasználja az elérhető legjobb funkciókat.
+>
+>Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
 
 ## <a name="next-steps"></a>Következő lépések
 

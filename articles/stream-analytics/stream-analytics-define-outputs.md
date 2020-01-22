@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 10/8/2019
-ms.openlocfilehash: 5d4e8c081e4009b1115d6b56ffc7244ad41001e8
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/18/2010
+ms.openlocfilehash: 6d8957fc5d4ba49dd034d6687df61c68b9d35ada
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638918"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314283"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>A Azure Stream Analytics kimenetének megismerése
 
@@ -36,7 +36,7 @@ A következő táblázat felsorolja a tulajdonságok nevét és a hozzájuk tart
 | Tulajdonság neve | Leírás |
 | --- | --- |
 | Kimeneti alias | Egy rövid név, amely lekérdezésekben a lekérdezés kimenetének Data Lake Storeba való irányítására szolgál. |
-| Előfizetés | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
+| Előfizetést | Az Azure Data Lake Storage-fiókot tartalmazó előfizetés. |
 | Fióknév | Annak a Data Lake Store-fióknak a neve, ahová a kimenetet küldi. Az előfizetésében elérhető Data Lake Store fiókok legördülő listája jelenik meg. |
 | Elérésiút-előtag mintája | A fájlnak a megadott Data Lake Store fiókban való írásához használt elérési út. Megadhatja a (z) {date} és a {Time} változók egy vagy több példányát:<br /><ul><li>1\. példa: Mappa1/naplók/{Date}/{Time}</li><li>2\. példa: Mappa1/naplók/{Date}</li></ul><br />A létrehozott mappa struktúrájának időbélyegzője az UTC és a helyi idő szerint történik.<br /><br />Ha a fájl elérési útjának mintája nem tartalmaz záró perjelet (/), a fájl elérési útjának utolsó mintázata fájlnév-előtagként lesz kezelve. <br /><br />Az új fájlok a következő esetekben jönnek létre:<ul><li>Változás a kimeneti sémában</li><li>A feladatok külső vagy belső újraindítása</li></ul> |
 | Dátumformátum | Választható. Ha a Date tokent az előtag elérési útján használja, kiválaszthatja a fájlok rendszerezésének dátumát. Példa: éééé/hh/nn |
@@ -158,7 +158,7 @@ Stream Analytics | Power BI
 bigint | Int64
 nvarchar (max.) | Sztring
 dátum/idő | Dátum/idő
-lebegőpontos | Double
+lebegőpontos | Dupla
 Tömb rögzítése | Karakterlánc típusa, konstans érték: "IRecord" vagy "IArray"
 
 ### <a name="update-the-schema"></a>A séma frissítése
@@ -167,10 +167,10 @@ Stream Analytics kikövetkezteti az adatmodell-sémát a kimenetben szereplő el
 Kerülje a `SELECT *` lekérdezést, hogy megakadályozza a dinamikus séma frissítését a sorok között. A lehetséges teljesítmény-kihatások mellett előfordulhat, hogy az eredményekhez szükséges idő bizonytalan. Válassza ki azokat a pontos mezőket, amelyeket meg kell jeleníteni a Power BI irányítópulton. Emellett az adatértékeknek meg kell felelniük a választott adattípusnak.
 
 
-Előző/aktuális | Int64 | Sztring | Dátum/idő | Double
+Előző/aktuális | Int64 | Sztring | Dátum/idő | Dupla
 -----------------|-------|--------|----------|-------
-Int64 | Int64 | Sztring | Sztring | Double
-Double | Double | Sztring | Sztring | Double
+Int64 | Int64 | Sztring | Sztring | Dupla
+Dupla | Dupla | Sztring | Sztring | Dupla
 Sztring | Sztring | Sztring | Sztring | Sztring 
 Dátum/idő | Sztring | Sztring |  Dátum/idő | Sztring
 

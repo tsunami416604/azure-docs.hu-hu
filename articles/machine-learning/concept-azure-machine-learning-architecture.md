@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: c9ed7ddc6287239c90cc074f1c171f2d28206732
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 452b0e597d0b4ad027ff62303afe2f0e7fd6abb9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154602"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314368"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -46,9 +46,9 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 
 +  A szolgáltatással bármilyen Python-környezetben dolgozhat a [Pythonhoz készült Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py)-val.
 + Az r- [Azure Machine learning SDK](https://azure.github.io/azureml-sdk-for-r/reference/index.html)-val bármely r-környezetben dolgozhat a szolgáltatással.
-+ A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/service/reference-azure-machine-learning-cli)felülettel.
++ A gépi tanulási tevékenységek automatizálása a [Azure Machine learning parancssori](https://docs.microsoft.com/azure/machine-learning/reference-azure-machine-learning-cli)felülettel.
 + Kód írása a Visual Studio Code-ban [Azure Machine learning vs Code bővítménnyel](tutorial-setup-vscode-extension.md)
-+ A [Azure Machine learning Designer (előzetes verzió)](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit kód írása nélkül.
++ A [Azure Machine learning Designer](concept-designer.md) használatával hajtsa végre a munkafolyamat lépéseit anélkül, hogy kódot kellene írnia.
 
 
 > [!NOTE]

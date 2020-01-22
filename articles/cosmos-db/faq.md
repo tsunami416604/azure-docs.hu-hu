@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/01/2019
 ms.author: sngun
 ms.custom: seodec18
-ms.openlocfilehash: dc627fc4bb7be449547a07cc34eb2cb3694964e9
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ac93d1f4f0f148e1f0ce3d0f21ac9a694f2e896d
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445437"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310016"
 ---
 # <a name="frequently-asked-questions-about-different-apis-in-azure-cosmos-db"></a>Gyakori kérdések az Azure Cosmos DB különböző API-jaival kapcsolatban
 
@@ -76,8 +76,6 @@ Ha technikai kérdést szeretne feltenni, tegye közzé a következő két kérd
 Új szolgáltatások igényléséhez hozzon létre egy új kérelmet a [felhasználói hangon](https://feedback.azure.com/forums/263030-azure-cosmos-db).
 
 Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
-
-További kérdéseket is elküldheti a csapatnak [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com); Ez azonban nem egy technikai támogatási alias.
 
 ## <a id="try-cosmos-db"></a>Azure Cosmos DB-előfizetések kipróbálása
 
@@ -288,8 +286,6 @@ A .NET SDK esetében bizonyos osztályok és metódusok vannak, amelyeket a Azur
 | TableServiceEntity | " " |
 | TableServiceExtensions | " " |
 | TableServiceQuery | " " |
-
-Ha bármelyik különbség a projekt problémája, lépjen kapcsolatba [askcosmosdb@microsoft.com](mailto:askcosmosdb@microsoft.com) , és tudassa velünk.
 
 ### <a name="how-do-i-provide-feedback-about-the-sdk-or-bugs"></a>Hogyan visszajelzést ad az SDK-ról vagy a hibákról?
 

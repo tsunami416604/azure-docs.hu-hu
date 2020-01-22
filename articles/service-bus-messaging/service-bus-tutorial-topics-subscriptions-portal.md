@@ -1,22 +1,22 @@
 ---
-title: Oktatóanyag – Kereskedelmi leltárválaszték frissítése közzétételi/előfizetési csatornák és témakörszűrők használatával az Azure Portalon | Microsoft Docs
+title: Leltár frissítése Azure Portal és témakörök/előfizetések használatával
 description: Ez az oktatóanyag bemutatja, hogyan küldhet és fogadhat témakörökhöz és előfizetésekhez tartozó üzeneteket, és hogyan adhat hozzá szűrési szabályokat a .NET használatával
 services: service-bus-messaging
 author: spelluru
 manager: timlt
 ms.author: spelluru
-ms.date: 09/22/2018
+ms.date: 01/21/2020
 ms.topic: tutorial
 ms.service: service-bus-messaging
 ms.custom: mvc
-ms.openlocfilehash: 5424a07f8ecd7eab962a4f865fac91741810e4b1
-ms.sourcegitcommit: cfbc8db6a3e3744062a533803e664ccee19f6d63
+ms.openlocfilehash: b6a3f38e0b83dc927a225c630b8178be1dc539ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2019
-ms.locfileid: "65991924"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310118"
 ---
-# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Az Azure Portallal és az üzenettémák, előfizetések készlet frissítése
+# <a name="tutorial-update-inventory-using-azure-portal-and-topicssubscriptions"></a>Oktatóanyag: Leltár frissítése az Azure Portal és témakörök/előfizetések használatával
 
 A Microsoft Azure Service Bus egy több-bérlős felhőalapú üzenetkezelési szolgáltatás, amely információkat küld alkalmazások és szolgáltatók között. Az aszinkron műveletek rugalmas, közvetítőalapú üzenettovábbítást, valamint strukturált, érkezési sorrendben történő üzenetkiküldést tesznek lehetővé. Emellett közzétételi vagy előfizetési lehetőségeket is biztosítanak. Ebből az oktatóanyagból megtudhatja, hogyan használhatók a Service Bus-témakörök és -előfizetések kereskedelmi leltárazási forgatókönyvekben az Azure Portalt és a .NET-et használó közzétételi/feliratkozási csatornákkal.
 
@@ -67,7 +67,7 @@ A kód futtatásához tegye a következőt:
 
 2. Lépjen a következő mintamappához: `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveTutorialwithFilters`.
 
-3. Szerezze be a beszerzése a felügyeleti hitelesítő adatok szakaszban ebben az oktatóanyagban a Jegyzettömbbe másolt kapcsolati karakterláncot. Szüksége lesz továbbá az előző szakaszban létrehozott témakör nevére.
+3. Szerezze be a Jegyzettömbbe másolt kapcsolódási karakterláncot a jelen oktatóanyag felügyeleti hitelesítő adatok beszerzése című szakaszában. Szüksége lesz továbbá az előző szakaszban létrehozott témakör nevére.
 
 4. Írja be a következő parancsot a parancssorba:
 
@@ -395,9 +395,9 @@ private async Task ReceiveMessages(string subscription)
 ```
 
 > [!NOTE]
-> A Service Bus-erőforrások is kezelhetők [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/). A Service Bus Explorer lehetővé teszi, hogy a felhasználók csatlakozni a Service Bus-névtér és üzenetküldési entitások felügyelete egyszerű módon. Az eszköz például importálás/exportálás funkció vagy tesztelhetik, témakör, üzenetsorok, előfizetések, relay-szolgáltatások, a notification hubs és események hubok speciális szolgáltatásokat biztosítja. 
+> [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban erőforrásokat osztott ki az Azure Portal használatával, majd üzeneteket küldött és fogadott egy Service Bus-témakörtől és a hozzá tartozó előfizetésektől. Megismerte, hogyan végezheti el az alábbi műveleteket:
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: bdf2fa700b96c6110143a4557985ac1a30ed9096
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 8e4bc440d59f41988a52b8b7b808b74f95acdf46
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466061"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314266"
 ---
 # <a name="normalize-data-module"></a>Adatmodul normalizálása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal lehet átalakítani egy adatkészletet a *normalizálás*segítségével.
 
@@ -72,7 +72,7 @@ A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. 
       
       Az oszlopban szereplő értékek a következő képlettel alakíthatók át:  
   
-      ![normalizálás a min&#45;Max függvény használatával](media/module/aml-normalization-minmax.png "AML_normalization-minmax")  
+      ![normalizálás a min&#45;Max függvény használatával](media/module/aml-normalization-minmax.png "AML_normalization – MinMax")  
   
     - **Logisztika**: az oszlopban szereplő értékek a következő képlettel alakíthatók át:
 
@@ -94,19 +94,19 @@ A modul használatával egyszerre csak egy normalizáló módszert alkalmazhat. 
 
 6. Futtassa a folyamatot, vagy kattintson duplán az **Adatnormalizálás** modulra, és válassza a **kijelölt futtatása**lehetőséget. 
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A **normalizálás** adatmodul két kimenetet hoz létre:
 
-- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **átalakított adatkészlet**lehetőséget, majd kattintson a **Megjelenítés**elemre.
+- Az átalakított értékek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.
 
     Alapértelmezés szerint az értékek a helyük szerint lesznek átalakítva. Ha össze szeretné hasonlítani az átalakított értékeket az eredeti értékekkel, az [Oszlopok hozzáadása](./add-columns.md) modullal egyesítheti az adatkészleteket, és megtekintheti az oszlopokat egymás mellett.
 
-- Az átalakítás mentéséhez, hogy ugyanazt a normalizáló módszert alkalmazza egy másik hasonló adatkészletre, kattintson a jobb gombbal a modulra, válassza az **átalakítási függvény**lehetőséget, majd kattintson a **Mentés átalakítóként**lehetőségre.
+- Az átalakítás mentéséhez, hogy ugyanazt a normalizáló módszert alkalmazza egy másik adatkészletre, válassza ki a modult, és válassza az **adatkészlet regisztrálása** lehetőséget a jobb oldali panel **outputs (kimenet** ) lapján.
 
     Ezután betöltheti a mentett transzformációkat a bal oldali navigációs ablaktábla **átalakítások** csoportjából, és alkalmazhatja azt egy olyan adatkészletre, amely ugyanazzal a sémával rendelkezik a [./Apply-transzformáció](apply-transformation.md)használatával.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

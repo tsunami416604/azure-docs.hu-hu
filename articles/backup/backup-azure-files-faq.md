@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 07/29/2019
 ms.topic: conceptual
-ms.openlocfilehash: bc4d7f9ad6512831687b974ae68870314775457d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 053fe38b07fff5d289c72024ef185fbf5d647f70
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74892568"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293997"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -36,7 +36,7 @@ Ha biztonsági mentéskor egy Storage-fiókra kattint az abban lévő fájlmegos
 
 ### <a name="can-i-change-the-vault-to-which-i-back-up-my-file-shares"></a>Módosíthatom azt a tárolót, amelyre biztonsági másolatot készítek a fájlmegosztást?
 
-Igen. Azonban [le kell állítania a védelmet](backup-azure-files.md#stop-protecting-an-azure-file-share) a csatlakoztatott tárolóból, [meg kell szüntetnie a Storage-fiók regisztrációját](troubleshoot-azure-files.md#configuring-backup), majd egy másik tárolóból kell védelmet biztosítania számára.
+Igen. Azonban [le kell állítania egy fájlmegosztás védelmét](manage-afs-backup.md#stop-protection-on-a-file-share) a csatlakoztatott tárolóból, törölni kell a Storage-fiók [regisztrációját](troubleshoot-azure-files.md#configuring-backup) , majd egy másik tárból kell megadnia azt.
 
 ### <a name="in-which-geos-can-i-back-up-azure-file-shares"></a>Milyen térségek tud biztonsági másolatot készíteni az Azure-fájlmegosztásról?
 
@@ -93,7 +93,7 @@ Az előzetes verzióban táranként legfeljebb 50 tárfiók Azure-fájlmegosztá
 
 Nem. A Storage-fiókban lévő összes fájlmegosztás számára csak ugyanazzal a tárolóval biztosítható védelem.
 
-## <a name="backup"></a>Backup
+## <a name="backup"></a>Biztonsági mentés
 
 ### <a name="how-many-scheduled-backups-can-i-configure-per-file-share"></a>Hány ütemezett biztonsági mentést állíthatok be fájlmegosztás esetén?
 

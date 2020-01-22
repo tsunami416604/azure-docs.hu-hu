@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/21/2019
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 1a52977a46c1222a1626fa5a4dcb4de7dd84f8dd
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c04726bf3b4166255ada7c9f1252be0471dcc761
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638204"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76291481"
 ---
 # <a name="high-availability-architecture-and-scenarios-for-sap-netweaver"></a>Magas rendelkezésre állású architektúra és forgatókönyvek az SAP NetWeaver-hoz
 
@@ -294,7 +294,7 @@ Az Azure a különböző [Azure-régiókban](https://azure.microsoft.com/global-
 A Availability Zones használatával néhány megfontolandó szempontot figyelembe kell venni. A szempontok listája, például:
 
 - Az Azure rendelkezésre állási csoportjai nem helyezhetők üzembe egy rendelkezésre állási zónán belül. Ki kell választania egy rendelkezésre állási zónát vagy egy rendelkezésre állási készletet egy virtuális gép üzembe helyezési kerete.
-- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview#skus) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia
+- A Windows feladatátvételi fürtszolgáltatás vagy a Linux pacemaker alapján nem használhatja az [Alapszintű Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) a feladatátvevő fürtre vonatkozó megoldások létrehozásához. Ehelyett az [Azure standard Load BALANCER SKU](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-availability-zones) -t kell használnia
 - A Azure Availability Zones nem biztosítanak bizonyos távolságot a különböző zónák között az egyik régión belül
 - A különböző Azure-régiókban lévő különböző Azure Availability Zones közötti hálózati késés eltérő lehet az Azure-régiótól a régióig. Előfordulnak olyan esetek, amikor az ügyfél a különböző zónákon üzembe helyezett SAP-alkalmazási réteget ésszerű módon futtatja, mivel az egyik zónából az aktív adatbázis-kezelő virtuális gépre irányuló hálózati késés továbbra is elfogadható az üzleti folyamatok hatására. Mivel az egyik zónában található aktív adatbázis-kezelő virtuális gép és egy másik zónában lévő virtuális gép SAP-alkalmazási példánya közötti késés túlságosan zavaró lehet, és nem fogadható el az SAP üzleti folyamatok számára. Ennek eredményeképpen az üzembe helyezési architektúrának eltérőnek kell lennie az alkalmazás aktív/aktív architektúrája vagy az aktív/passzív architektúra esetében, ha a késés túl magas.
 - Az [Azure Managed Disks](https://azure.microsoft.com/services/managed-disks/) használata kötelező a Azure Availability Zonesba való üzembe helyezéshez 

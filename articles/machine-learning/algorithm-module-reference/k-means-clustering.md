@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: 135b425ca87a309bc171e252d8ff04b2027a3c50
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 7451758e758d597bfe63d92fe4789c8fa81b3dff
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74213914"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311478"
 ---
 # <a name="module-k-means-clustering"></a>Modul: K – fürtözést jelenti
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer (előzetes verzió) *"k-Mean" fürtszolgáltatási* modulja egy nem betanított K – fürtözési modell létrehozásához. 
+Ez a cikk azt ismerteti, hogyan használható a *"k-meaning" típusú fürtözési* modul a Azure Machine learning Designerben egy nem betanított K – fürtözési modell létrehozásához. 
  
 A K-means az egyik legegyszerűbb és legismertebb, nem *felügyelt* tanulási algoritmus. Az algoritmus számos gépi tanulási feladathoz használható, például: 
 
@@ -107,7 +107,7 @@ Amikor feldolgozza a betanítási adatmennyiséget, a K-means algoritmus a véle
   
     -   Ha úgy állítja be az **oktatói módot** , hogy **egyetlen paramétert**adjon meg, vegyen fel egy címkézett adatkészletet, és adja ki a modellt a [vonat-fürtszolgáltatási modell](train-clustering-model.md) modullal.  
   
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 
 Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy olyan modellel, amelynek használatával pontszámokat lehet előállítani. A modell tanítása több módon is elvégezhető, és az eredmények több módon is megtekinthetők és használhatók: 
 
@@ -115,9 +115,9 @@ Miután befejezte a modell konfigurálását és betanítását, rendelkezik egy
 
 Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult használta:
 
-1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
+1. Válassza ki a **vonat-fürtszolgáltatási modell** modult, és nyissa meg a jobb oldali panelt.
 
-2. Válassza ki a **betanított modellt**, majd válassza **a Mentés betanítva modellként**lehetőséget.
+2. Válassza a **kimenetek** fület. Válassza az **adatkészlet regisztrálása** ikont a betanított modell másolatának mentéséhez.
 
 A mentett modell a modell mentésekor a betanítási adategységeket jelöli. Ha később frissíti a folyamat során használt betanítási adattípust, nem frissíti a mentett modellt. 
 
@@ -127,7 +127,7 @@ Ha a vonat- [fürtszolgáltatási modell](train-clustering-model.md) modult hasz
 
 1. Kattintson a jobb gombbal a **vonat-fürtszolgáltatási modell** modulra.
 
-2. Válassza az **eredmények adatkészlet**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
+2. Válassza a **Megjelenítés**lehetőséget.
 
 ### <a name="tips-for-generating-the-best-clustering-model"></a>Tippek a legjobb fürtözési modell létrehozásához  
 

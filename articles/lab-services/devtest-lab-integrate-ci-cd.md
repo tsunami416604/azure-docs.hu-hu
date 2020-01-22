@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: spelluru
-ms.openlocfilehash: 54b4e6e6a283f46e03f7b94ce96ba79a03f75523
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 9604da5252254120ac7bd3fca3f0cc97324aef92
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170391"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76293215"
 ---
 # <a name="integrate-azure-devtest-labs-into-your-azure-pipelines-cicd-pipeline"></a>Azure DevTest Labs integrálása az Azure-folyamatok CI/CD-folyamatával
 
@@ -140,7 +140,7 @@ A következő lépés az, hogy létrehozza az arany rendszerképű virtuális g�
    
    |Mező|Value (Díj)|
    |---|---|
-   |**Azure RM-előfizetés**|Válasszon ki egy szolgáltatási kapcsolatot vagy előfizetést az **elérhető Azure-szolgáltatási kapcsolatok** vagy az **elérhető Azure-előfizetések** közül a legördülő menüben, majd válassza az **Engedélyezés** lehetőséget, ha szükséges.<br /><br />**Megjegyzés:** További információ az Azure-előfizetéshez való korlátozott hozzáférésű engedélyek létrehozásáról: [Azure Resource Manager szolgáltatási végpont](/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).|
+   |**Azure RM-előfizetés**|Válasszon ki egy szolgáltatási kapcsolatot vagy előfizetést az **elérhető Azure-szolgáltatási kapcsolatok** vagy az **elérhető Azure-előfizetések** közül a legördülő menüben, majd válassza az **Engedélyezés** lehetőséget, ha szükséges.<br /><br />**Megjegyzés:** További információ az Azure-előfizetéshez való korlátozott hozzáférésű engedélyek létrehozásáról: [Azure Resource Manager szolgáltatási végpont](/azure/devops/pipelines/library/service-endpoints#sep-azure-resource-manager).|
    |**Labor neve**|Válassza ki annak a meglévő labornak a nevét, amelyben a tesztkörnyezet virtuális gépét létre kívánja hozni.|
    |**Sablon neve**|Adja meg a forráskód-adattárba mentett sablonfájl teljes elérési útját és nevét. A beépített tulajdonságok használatával egyszerűsítheti az elérési utat, például:<br /><br />`$(System.DefaultWorkingDirectory)/Templates/CreateVMTemplate.json`|
    |**Sablon paraméterei**|Adja meg a korábban definiált változók paramétereit:<br /><br />`-newVMName '$(vmName)' -userName '$(userName)' -password (ConvertTo-SecureString -String '$(password)' -AsPlainText -Force)`|

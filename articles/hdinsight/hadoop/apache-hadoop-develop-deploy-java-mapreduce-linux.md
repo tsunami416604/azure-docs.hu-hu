@@ -1,157 +1,160 @@
 ---
-title: Java MapReduce Apache Hadoop – Azure HDInsight létrehozása
-description: Ismerje meg, hogyan hozzon létre egy Java-alapú MapReduce-alkalmazást, majd futtathatja a Hadoop Azure HDInsight Apache Maven segítségével.
-ms.reviewer: jasonh
+title: Java-MapReduce létrehozása a Apache Hadoophoz – Azure HDInsight
+description: Ismerje meg, hogyan hozhat létre egy Java-alapú MapReduce-alkalmazást az Apache Maven használatával, majd hogyan futtathatja a Hadoop az Azure HDInsight.
 author: hrasheed-msft
-ms.service: hdinsight
-ms.custom: hdinsightactive,hdiseo17may2017
-ms.topic: conceptual
-ms.date: 06/13/2019
 ms.author: hrasheed
-ms.openlocfilehash: 9eb331e303ff64f4316aab0a0af553975bb72fc1
-ms.sourcegitcommit: e5dcf12763af358f24e73b9f89ff4088ac63c6cb
+ms.reviewer: jasonh
+ms.service: hdinsight
+ms.topic: conceptual
+ms.custom: hdinsightactive,hdiseo17may2017
+ms.date: 01/16/2020
+ms.openlocfilehash: a37a8bb45c11d5b74f3059a153806e3d083cf452
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/14/2019
-ms.locfileid: "67137486"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76311954"
 ---
-# <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce programok fejlesztése a HDInsight Apache hadoop
+# <a name="develop-java-mapreduce-programs-for-apache-hadoop-on-hdinsight"></a>Java MapReduce-programok fejlesztése a HDInsight Apache Hadoop
 
-Ismerje meg, hogyan hozzon létre egy Java-alapú MapReduce-alkalmazást, majd futtassa az Apache Hadoop az Azure HDInsight Apache Maven segítségével.
-
-> [!NOTE]
-> Ebben a példában a HDInsight 3.6-os legutóbb tesztelés.
+Ismerje meg, hogyan hozhat létre egy Java-alapú MapReduce-alkalmazást az Apache Maven használatával, majd hogyan futtathatja Apache Hadoop az Azure HDInsight.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* [Java JDK](https://www.oracle.com/technetwork/java/javase/downloads/) 8 vagy újabb (vagy egy azzal egyenértékű, például az OpenJDK).
-    
-    > [!NOTE]
-    > HDInsight-verziók 3.4-es és korábbi használható a Java 7. A HDInsight 3.5-ös és újabb Java 8 használ.
+* A [Java Developer Kit (JDK) 8-as verziója](https://aka.ms/azure-jdks).
 
-* [Apache Maven](https://maven.apache.org/)
+* Az [Apache Maven](https://maven.apache.org/download.cgi) megfelelően [van telepítve](https://maven.apache.org/install.html) az Apache-ban.  A Maven egy projekt-összeállítási rendszer Java-projektekhez.
 
 ## <a name="configure-development-environment"></a>A fejlesztési környezet konfigurálása
 
-Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beállítani. Érdemes azonban ellenőriznie, hogy a fentiek léteznek-e, és a rendszer számára megfelelő értékeket tartalmaznak-e.
+A cikkben használt környezet a Windows 10 rendszert futtató számítógép volt. A parancsok végrehajtása egy parancssorban történt, a különböző fájlok pedig a Jegyzettömb alkalmazásban lettek szerkesztve. Ennek megfelelően módosítsa a környezetét.
 
-* `JAVA_HOME` -kell mutatnia a könyvtárban, ahol a Java-futtatókörnyezet (JRE) telepítve van. Például az OS X-, Unix- vagy Linux rendszeren, értékkel kell rendelkeznie egy hasonló `/usr/lib/jvm/java-7-oracle`. Windows, a következőhöz hasonló érték kellene `c:\Program Files (x86)\Java\jre1.7`
+A parancssorba írja be az alábbi parancsokat egy működő környezet létrehozásához:
 
-* `PATH` – a következő elérési utakat kell tartalmaznia:
-  
-  * `JAVA_HOME` (vagy ezzel egyenértékű elérési útja)
+```cmd
+IF NOT EXIST C:\HDI MKDIR C:\HDI
+cd C:\HDI
+```
 
-  * `JAVA_HOME\bin` (vagy ezzel egyenértékű elérési útja)
+## <a name="create-a-maven-project"></a>Maven-projekt létrehozása
 
-  * A könyvtárban, ahol telepítve van a maven használatával
-
-## <a name="create-a-maven-project"></a>Hozzon létre egy Maven-projektet
-
-1. Egy terminál-munkamenetben, vagy a fejlesztési környezet parancssorában lépjen arra a helyre szeretné tárolni a projekthez.
-
-2. Használja a `mvn` parancsot, amely a Mavennel telepítve van, a keret létrehozásához a projekt létrehozásához.
+1. Adja meg a következő parancsot egy **wordcountjava**nevű Maven-projekt létrehozásához:
 
    ```bash
    mvn archetype:generate -DgroupId=org.apache.hadoop.examples -DartifactId=wordcountjava -DarchetypeArtifactId=maven-archetype-quickstart -DinteractiveMode=false
    ```
 
-    > [!NOTE]
-    > Ha a Powershellt használ, meg kell tenni a `-D` paramétereket a dupla idézőjelek között.
-    >
-    > `mvn archetype:generate "-DgroupId=org.apache.hadoop.examples" "-DartifactId=wordcountjava" "-DarchetypeArtifactId=maven-archetype-quickstart" "-DinteractiveMode=false"`
+    Ez a parancs egy könyvtárat hoz létre a `artifactID` paraméter által megadott névvel (ebben a példában a**wordcountjava** ). Ez a könyvtár a következő elemeket tartalmazza:
 
-    Ez a parancs által a megadott néven létrehoz egy könyvtárat a `artifactID` paraméter (**wordcountjava** ebben a példában.) Ez a könyvtár a következő elemeket tartalmazza:
+    * `pom.xml` – a projekt felépítéséhez használt információkat és konfigurációs adatokat tartalmazó [Project Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) .
+    * src\main\java\org\apache\hadoop\examples: az alkalmazás kódját tartalmazza.
+    * src\test\java\org\apache\hadoop\examples: az alkalmazáshoz tartozó teszteket tartalmazza.
 
-   * `pom.xml` -A [projekt Object Model (POM)](https://maven.apache.org/guides/introduction/introduction-to-the-pom.html) , amely tartalmazza a projekt felépítéséhez használt információk és a konfiguráció részleteit.
+1. Távolítsa el a generált példa kódját. Törölje a generált teszt-és alkalmazásfájlok `AppTest.java`, és `App.java` az alábbi parancsok beírásával:
 
-   * `src` – A könyvtár, amely tartalmazza az alkalmazást.
+    ```cmd
+    cd wordcountjava
+    DEL src\main\java\org\apache\hadoop\examples\App.java
+    DEL src\test\java\org\apache\hadoop\examples\AppTest.java
+    ```
 
-3. Törölje a `src/test/java/org/apache/hadoop/examples/apptest.java` fájlt. Ebben a példában nem használatos.
+## <a name="update-the-project-object-model"></a>A projekt-objektum modell frissítése
 
-## <a name="add-dependencies"></a>Függőségek hozzáadása
+A Pom. xml fájl teljes referenciája: https://maven.apache.org/pom.html. A `pom.xml` megnyitásához írja be az alábbi parancsot:
 
-1. Szerkessze a `pom.xml` fájlt, és adja hozzá a következő szöveget a `<dependencies>` szakaszban:
-   
-   ```xml
-    <dependency>
-        <groupId>org.apache.hadoop</groupId>
-        <artifactId>hadoop-mapreduce-examples</artifactId>
-        <version>2.7.3</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.hadoop</groupId>
-        <artifactId>hadoop-mapreduce-client-common</artifactId>
-        <version>2.7.3</version>
-        <scope>provided</scope>
-    </dependency>
-    <dependency>
-        <groupId>org.apache.hadoop</groupId>
-        <artifactId>hadoop-common</artifactId>
-        <version>2.7.3</version>
-        <scope>provided</scope>
-    </dependency>
-   ```
+```cmd
+notepad pom.xml
+```
 
-    Ez határozza meg a szükséges kódtárak (sorolva &lt;artifactId\>) egy adott verziójával (sorolva &lt;verzió\>). A fordítás során a függőségeket a alapértelmezett Maven tárházból letöltődnek. Használhatja a [Maven tárház keresési](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) megjelenítése.
-   
-    A `<scope>provided</scope>` arra utasítja a Maven, hogy az ezeket a függőségeket nem csomagolható az alkalmazás a futásidőben a HDInsight-fürt által meghatározott.
+### <a name="add-dependencies"></a>Függőségek hozzáadása
 
-    > [!IMPORTANT]
-    > A használt verziója található a fürtön futó Hadoop verziójának egyeznie kell. A verziókról további információkért lásd: a [HDInsight összetevők verziószámozása](../hdinsight-component-versioning.md) dokumentumot.
+A `pom.xml`a `<dependencies>` szakaszban adja hozzá a következő szöveget:
 
-2. Adja a következőket az `pom.xml` fájlhoz. Ez a szöveg belül kell lennie a `<project>...</project>` címkék a fájlban, pl. közötti `</dependencies>` és `</project>`.
+```xml
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-mapreduce-examples</artifactId>
+    <version>2.7.3</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-mapreduce-client-common</artifactId>
+    <version>2.7.3</version>
+    <scope>provided</scope>
+</dependency>
+<dependency>
+    <groupId>org.apache.hadoop</groupId>
+    <artifactId>hadoop-common</artifactId>
+    <version>2.7.3</version>
+    <scope>provided</scope>
+</dependency>
+```
 
-   ```xml
-    <build>
-        <plugins>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-shade-plugin</artifactId>
-            <version>2.3</version>
-            <configuration>
-            <transformers>
-                <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
-                </transformer>
-            </transformers>
-            </configuration>
-            <executions>
-            <execution>
-                <phase>package</phase>
-                    <goals>
-                    <goal>shade</goal>
-                    </goals>
-            </execution>
-            </executions>
-            </plugin>
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-compiler-plugin</artifactId>
-            <version>3.6.1</version>
-            <configuration>
-            <source>1.8</source>
-            <target>1.8</target>
-            </configuration>
+Ez definiálja a szükséges kódtárakat (&lt;artifactId\>) egy adott verzióval (a &lt;verzió\>). A fordítás ideje alatt ezek a függőségek az alapértelmezett Maven-tárházból tölthetők le. További információkért a [Maven-tárház keresésében](https://search.maven.org/#artifactdetails%7Corg.apache.hadoop%7Chadoop-mapreduce-examples%7C2.5.1%7Cjar) olvashat.
+
+A `<scope>provided</scope>` arról tájékoztatja a Mavent, hogy ezek a függőségek nem tölthetők be az alkalmazásba, mivel a HDInsight-fürt futási időben biztosítva van.
+
+> [!IMPORTANT]
+> A használt verziónak meg kell egyeznie a fürtben lévő Hadoop-verzióval. További információ a verziókról: HDInsight- [összetevő verziószámozási](../hdinsight-component-versioning.md) dokumentuma.
+
+### <a name="build-configuration"></a>Konfiguráció létrehozása
+
+A Maven beépülő moduljai lehetővé teszik a projekt összeállítási szakaszainak testreszabását. Ez a szakasz beépülő modulok, erőforrások és egyéb Build-konfigurációs beállítások hozzáadására szolgál.
+
+Adja hozzá a következő kódot a `pom.xml` fájlhoz, majd mentse és zárjuk be a fájlt. A szövegnek a fájlban lévő `<project>...</project>` címkén belül kell lennie, például `</dependencies>` és `</project>`között.
+
+```xml
+<build>
+    <plugins>
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-shade-plugin</artifactId>
+        <version>2.3</version>
+        <configuration>
+        <transformers>
+            <transformer implementation="org.apache.maven.plugins.shade.resource.ApacheLicenseResourceTransformer">
+            </transformer>
+        </transformers>
+        </configuration>
+        <executions>
+        <execution>
+            <phase>package</phase>
+                <goals>
+                <goal>shade</goal>
+                </goals>
+        </execution>
+        </executions>
         </plugin>
-        </plugins>
-    </build>
-   ```
+    <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.6.1</version>
+        <configuration>
+        <source>1.8</source>
+        <target>1.8</target>
+        </configuration>
+    </plugin>
+    </plugins>
+</build>
+```
 
-    Az első beépülő modul konfigurálása a [Maven Shade beépülő modul](https://maven.apache.org/plugins/maven-shade-plugin/), amely segítségével hozhat létre egy uberjar (más néven egy fatjar), amely szükséges az alkalmazás függőségeit tartalmazza. Megakadályozza a licencek a jar-csomag, amely egyes rendszerek problémákat okozhat a párhuzamos is.
+Ez a szakasz az Apache Maven Compiler beépülő modult és az Apache Maven Shade beépülő modulját konfigurálja. A fordító beépülő modul a topológia fordítására szolgál. Az árnyékolt beépülő modullal megakadályozható a licencek duplikálása a Maven által készített JAR-csomagban. Ez a beépülő modul a HDInsight-fürtön futó "duplikált licencek" hibájának megakadályozására szolgál. A Maven-Shade-plugin és a `ApacheLicenseResourceTransformer` implementáció használata megakadályozza a hibát.
 
-    A második beépülő modul konfigurálása a cél Java-verzió.
+A Maven-Shade-beépülő modul egy über jar-t is létrehoz, amely az alkalmazás által igényelt összes függőséget tartalmazza.
 
-    > [!NOTE]
-    > HDInsight 3.4-es és korábbi használat Java 7. A HDInsight 3.5-ös és újabb Java 8 használ.
+Mentse a `pom.xml` fájlt.
 
-3. Mentse a `pom.xml` fájlt.
+## <a name="create-the-mapreduce-application"></a>A MapReduce alkalmazás létrehozása
 
-## <a name="create-the-mapreduce-application"></a>A MapReduce-alkalmazás létrehozása
+1. Az alábbi parancs megadásával hozzon létre és nyisson meg egy új fájlt `WordCount.java`. Új fájl létrehozásához válassza az **Igen** lehetőséget.
 
-1. Nyissa meg a `wordcountjava/src/main/java/org/apache/hadoop/examples` könyvtárat, és nevezze át a `App.java` fájlt `WordCount.java`.
+    ```cmd
+    notepad src\main\java\org\apache\hadoop\examples\WordCount.java
+    ```
 
-2. Nyissa meg a `WordCount.java` fájlt egy szövegszerkesztőben, és cserélje ki annak tartalmát a következő szöveget:
-   
+2. Ezután másolja és illessze be az alábbi Java-kódot az új fájlba. Ezután zárjuk be a fájlt.
+
     ```java
     package org.apache.hadoop.examples;
 
@@ -222,85 +225,66 @@ Az alábbi környezeti változókat a Java és a JDK telepítésekor lehet beál
         }
     }
     ```
-   
-    Figyelje meg, hogy a csomag neve `org.apache.hadoop.examples` és az osztálynév `WordCount`. Ezeket a neveket használja, a MapReduce feladat elküldésekor.
 
-3. Mentse a fájlt.
+    Figyelje meg, hogy a csomag neve `org.apache.hadoop.examples`, és az osztály neve `WordCount`. Ezeket a neveket a MapReduce-feladatok elküldésekor használja.
 
-## <a name="build-the-application"></a>Az alkalmazás létrehozása
+## <a name="build-and-package-the-application"></a>Az alkalmazás létrehozása és becsomagolása
 
-1. Módosítsa a `wordcountjava` könyvtárat, ha Ön még nem létezik.
+A `wordcountjava` könyvtárában használja az alábbi parancsot egy olyan JAR-fájl létrehozásához, amely tartalmazza az alkalmazást:
 
-2. Használja a következő parancsot egy JAR-fájlt, amely tartalmazza az alkalmazás létrehozásához:
+```cmd
+mvn clean package
+```
 
-   ```
-   mvn clean package
-   ```
+Ez a parancs törli az előző Build-összetevőket, letölti a még nem telepített függőségeket, majd felépíti és csomagolja ki az alkalmazást.
 
-    Ez a parancs törli a bármely korábbi build-összetevőket, bármely függőségeit, amelyek még nem lett telepítette, és a majd buildek és a csomag az alkalmazás letölti.
+A parancs befejeződése után a `wordcountjava/target` könyvtár egy `wordcountjava-1.0-SNAPSHOT.jar`nevű fájlt tartalmaz.
 
-3. Ha befejezte a parancsot, a `wordcountjava/target` könyvtár tartalmaz egy fájlt `wordcountjava-1.0-SNAPSHOT.jar`.
-   
-   > [!NOTE]
-   > A `wordcountjava-1.0-SNAPSHOT.jar` fájl egy uberjar, nem csak a WordCount-feladat, hanem függőségek, a feladat futási időben igénylő tartalmazó.
+> [!NOTE]
+> A `wordcountjava-1.0-SNAPSHOT.jar` fájl egy olyan uberjar, amely nem csak a WordCount feladatot tartalmazza, hanem olyan függőségeket is, amelyeket a feladatoknak futásidőben kell megadniuk.
 
-## <a id="upload"></a>Töltse fel a fájlt
+## <a name="upload-the-jar-and-run-jobs-ssh"></a>A JAR és a Run feladatok (SSH) feltöltése
 
-A következő paranccsal töltse fel a jar-fájlt a HDInsight átjárócsomóponthoz:
+A következő lépések `scp` használatával másolják a JAR-t az Apache-HBase elsődleges HDInsight-fürtön lévő fő csomópontjára. A rendszer ezután a `ssh` parancsot használja a fürthöz való kapcsolódáshoz, és a példát közvetlenül a fő csomóponton futtatja.
 
-   ```bash
-   scp target/wordcountjava-1.0-SNAPSHOT.jar USERNAME@CLUSTERNAME-ssh.azurehdinsight.net:
-   ```
+1. Töltse fel a jar-t a fürtbe. Cserélje le a `CLUSTERNAME`t a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
-Cserélje le __felhasználónév__ a fürt SSH-felhasználónevet. Cserélje le __CLUSTERNAME__ a HDInsight-fürt nevéhez.
+    ```cmd
+    scp target/wordcountjava-1.0-SNAPSHOT.jar sshuser@CLUSTERNAME-ssh.azurehdinsight.net:
+    ```
 
-Ez a parancs másolja a fájlokat a helyi rendszerről a fő csomópontot. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Kapcsolódjon a fürthöz. Cserélje le a `CLUSTERNAME`t a HDInsight-fürt nevére, majd írja be a következő parancsot:
 
-## <a name="run"></a>Hadoop MapReduce feladat futtatása
+    ```cmd
+    ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
+    ```
 
-1. A HDInsight SSH használatával csatlakozhat. További információ: [Az SSH használata HDInsighttal](../hdinsight-hadoop-linux-use-ssh-unix.md).
+1. Az SSH-munkamenetben használja a következő parancsot a MapReduce alkalmazás futtatásához:
 
-2. Az SSH-munkamenetben használja a következő parancsot futtatja a MapReduce-alkalmazást:
-   
    ```bash
    yarn jar wordcountjava-1.0-SNAPSHOT.jar org.apache.hadoop.examples.WordCount /example/data/gutenberg/davinci.txt /example/data/wordcountout
    ```
-   
-    Ez a parancs elindítja a MapReduce a WordCount alkalmazás. A bemeneti fájl `/example/data/gutenberg/davinci.txt`, és a kimeneti könyvtár `/example/data/wordcountout`. A bemeneti fájl- és a kimeneti tárolódnak, a a fürt alapértelmezett tárolója.
 
-3. Miután a feladat befejeződik, használja a következő parancsot az eredmények megtekintése:
-   
+    Ez a parancs elindítja a WordCount MapReduce alkalmazást. A bemeneti fájl `/example/data/gutenberg/davinci.txt`, és a kimeneti könyvtár `/example/data/wordcountout`. A bemeneti fájl és a kimenet is a fürt alapértelmezett tárolójában tárolódik.
+
+1. A feladatok befejezése után a következő paranccsal tekintheti meg az eredményeket:
+
    ```bash
    hdfs dfs -cat /example/data/wordcountout/*
    ```
 
-    Szavak és számát, az alábbi szöveghez hasonló értékekkel kell kapnia:
-   
-        zeal    1
-        zelus   1
-        zenith  2
+    Meg kell kapnia a szavak és számok listáját, az alábbi szöveghez hasonló értékekkel:
 
-## <a id="nextsteps"></a>Következő lépések
+    ```output
+    zeal    1
+    zelus   1
+    zenith  2
+    ```
 
-Ebben a dokumentumban megtanulhatta, hogyan hozhat létre egy Java MapReduce-feladatot. Dolgozunk a HDInsight egyéb módjaira vonatkozóan az alábbi dokumentumokban talál.
+## <a name="next-steps"></a>Következő lépések
 
-* [Az Apache Hive használata a HDInsight](hdinsight-use-hive.md)
-* [Az Apache Pig használata a HDInsight](hdinsight-use-pig.md)
+Ebből a dokumentumból megtanulta, hogyan fejleszthet Java MapReduce-feladatot. A HDInsight használatával kapcsolatos egyéb módszerekről a következő dokumentumokban talál további információt.
+
+* [Apache Hive használata a HDInsight](hdinsight-use-hive.md)
 * [A MapReduce használata a HDInsight](hdinsight-use-mapreduce.md)
-
-További információ: a [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).
-
-[azure-purchase-options]: https://azure.microsoft.com/pricing/purchase-options/
-[azure-member-offers]: https://azure.microsoft.com/pricing/member-offers/
-[azure-free-trial]: https://azure.microsoft.com/pricing/free-trial/
-
-[hdinsight-use-sqoop]:hdinsight-use-sqoop.md
-[hdinsight-ODBC]: hdinsight-connect-excel-hive-ODBC-driver.md
-[hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
-
-[hdinsight-upload-data]: hdinsight-upload-data.md
-[hdinsight-admin-powershell]: hdinsight-administer-use-powershell.md
-[hdinsight-power-query]:apache-hadoop-connect-excel-power-query.md
-
-[powershell-PSCredential]: https://social.technet.microsoft.com/wiki/contents/articles/4546.working-with-passwords-secure-strings-and-credentials-in-windows-powershell.aspx
-
+* [Java fejlesztői központban](https://azure.microsoft.com/develop/java/)

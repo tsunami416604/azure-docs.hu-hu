@@ -3,12 +3,12 @@ title: Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést és visszaállítást Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: 78000bc669eb7a61f8698ad8c39ef49f65b245a2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74224158"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76294048"
 ---
 # <a name="back-up-and-restore-azure-files-with-powershell"></a>Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
 
@@ -28,7 +28,7 @@ Ez a cikk a következőket ismerteti:
 ## <a name="before-you-start"></a>Előkészületek
 
 * [További](backup-azure-recovery-services-vault-overview.md) információ a Recovery Services-tárolókkal kapcsolatban.
-* További információ az [Azure-fájlmegosztás biztonsági mentésének](backup-azure-files.md)előzetes funkcióival kapcsolatban.
+* További információ az [Azure-fájlmegosztás biztonsági mentésének](backup-afs.md)előzetes funkcióival kapcsolatban.
 * Tekintse át Recovery Services PowerShell-objektumának hierarchiáját.
 
 ## <a name="recovery-services-object-hierarchy"></a>Recovery Services objektum-hierarchia
@@ -419,4 +419,4 @@ $job.ErrorDetails
 
 ## <a name="next-steps"></a>Következő lépések
 
-[Tudnivalók](backup-azure-files.md) a Azure Portal Azure Files biztonsági mentéséről.
+[Tudnivalók](backup-afs.md) a Azure Portal Azure Files biztonsági mentéséről.

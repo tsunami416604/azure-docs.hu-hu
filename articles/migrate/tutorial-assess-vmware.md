@@ -7,12 +7,12 @@ ms.service: azure-migrate
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: hamusa
-ms.openlocfilehash: 58e6e7b3cdf749909165d7ff071a2f3885d7e8b9
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 7f161afe13bad8c548806d4b4ceb9372dc511cc3
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028740"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289441"
 ---
 # <a name="assess-vmware-vms-by-using-azure-migrate-server-assessment"></a>VMware virtuális gépek felmérése Azure Migrate Server Assessment használatával
 
@@ -176,7 +176,7 @@ A készüléknek csatlakoznia kell a vCenter Serverhoz a virtuális gépek konfi
 1. Válassza a **kapcsolat ellenőrzése** lehetőséget, és győződjön meg arról, hogy a készülék csatlakozhat vCenter Serverhoz.
 
 ### <a name="specify-vm-credentials"></a>Virtuális gép hitelesítő adatainak megadása
-Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhatja a VMware virtuális gépekhez hozzáféréssel rendelkező virtuálisgép-hitelesítő adatokat. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#assessment-vcenter-server-permissions) információ a szükséges hozzáférési engedélyekről.
+Az alkalmazások, szerepkörök és szolgáltatások felderítéséhez, valamint a virtuális gépek függőségeinek megjelenítéséhez megadhatja a VMware virtuális gépekhez hozzáféréssel rendelkező virtuálisgép-hitelesítő adatokat. Hozzáadhat egy hitelesítő adatot a Windows rendszerű virtuális gépekhez, és egy hitelesítő adatot a linuxos virtuális gépekhez. [További](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) információ a szükséges hozzáférési engedélyekről.
 
 > [!NOTE]
 > Ez a bemenet nem kötelező, de szükség van rá, ha engedélyezni szeretné az alkalmazás-felderítést és az ügynök nélküli függőségi vizualizációt.
@@ -210,7 +210,7 @@ Ez az eljárás szükséges az ügynök nélküli kiszolgálók áttelepítésé
 1.  Válassza ki a vCenter Server példányt a legördülő menüből.
 1.  Válassza a **szerepkör létrehozása**lehetőséget.
 1.  Adja meg az új szerepkör nevét (például <em>Azure_Migrate</em>).
-1.  Rendeljen [engedélyeket](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az újonnan definiált szerepkörhöz.
+1.  Rendeljen [engedélyeket](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) az újonnan definiált szerepkörhöz.
 1.  Kattintson az **OK** gombra.
 
 #### <a name="3-assign-permissions-on-vcenter-objects"></a>3. engedélyek kiosztása vCenter-objektumokhoz
@@ -219,7 +219,7 @@ A vCenter lévő leltári objektumokra vonatkozó engedélyek hozzárendelésén
 
 A kiszolgáló értékelése során a **csak olvasási jogosultsággal** rendelkező szerepkört a vCenter felhasználói fiókra kell alkalmazni az összes olyan szülőobjektum esetében, ahol a felderíteni kívánt virtuális gépek futnak. A rendszer az összes fölérendelt objektumot tartalmazza: gazdagép, gazdagépek, fürt és a hierarchiában lévő fürtök mappája az adatközpontba. Ezeket az engedélyeket a rendszer a hierarchiában lévő alárendelt objektumokra propagálja.
 
-A kiszolgálók áttelepítéséhez hasonlóan olyan felhasználó által definiált szerepkört kell alkalmaznia, amely jogosult a vCenter felhasználói fiókjára az összes olyan szülőobjektum [esetében, ahol](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware#agentless-migration-vcenter-server-permissions) az áttelepíteni kívánt virtuális gépek futnak. Ezt a szerepkört <em>Azure _Migrate</em>is lehet nevezni.
+A kiszolgálók áttelepítéséhez hasonlóan olyan felhasználó által definiált szerepkört kell alkalmaznia, amely jogosult a vCenter felhasználói fiókjára az összes olyan szülőobjektum [esetében, ahol](https://docs.microsoft.com/azure/migrate/migrate-support-matrix-vmware) az áttelepíteni kívánt virtuális gépek futnak. Ezt a szerepkört <em>Azure _Migrate</em>is lehet nevezni.
 
 ![Engedélyek kiosztása](./media/tutorial-assess-vmware/assign-perms.png)
 

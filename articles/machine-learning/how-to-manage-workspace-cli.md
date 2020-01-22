@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: larryfr
 author: Blackmist
 ms.date: 11/05/2019
-ms.openlocfilehash: 6243b702e38e2a2edbe17a665be1d57b3921b6fd
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: f22145541369093f9cb8a2e9d06b705b6b2121df
+ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867093"
+ms.lasthandoff: 01/21/2020
+ms.locfileid: "76289866"
 ---
 # <a name="create-a-workspace-for-azure-machine-learning-with-azure-cli"></a>Munkaterület létrehozása Azure Machine Learninghoz az Azure CLI-vel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -67,7 +67,7 @@ A Azure Machine Learning munkaterület a következő Azure-szolgáltatásokra va
 | **Azure Key Vault** | `--keyvault <service-id>` |
 | **Azure Container Registry** | `--container-registry <service-id>` |
 
-### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Azure Machine Learning munkaterületet egy erőforráscsoport belsejében kell létrehozni. Használhat meglévő erőforráscsoportot, vagy létrehozhat egy újat. __Új erőforráscsoport létrehozásához__használja a következő parancsot. Cserélje le a `<resource-group-name>` nevet az erőforráscsoport számára használni kívánt névre. Cserélje le a `<location>`t az erőforráscsoporthoz használni kívánt Azure-régióra:
 
@@ -161,7 +161,7 @@ Meglévő erőforrásokat használó munkaterület létrehozásához meg kell ad
 
         `"/subscriptions/<service-GUID>/resourceGroups/<resource-group-name>/providers/microsoft.insights/components/<application-insight-name>"`
 
-+ **Azure Key Vault**: "az kulcstartó show--Name < Key-Vault-Name >--Query" id "
++ **Azure Key Vault**: `az keyvault show --name <key-vault-name> --query "ID"`
 
     A parancs válasza az alábbi szöveghez hasonló, és a Key Vault azonosítója:
 
