@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 85459fe586ccbb5adb1e86b153ec63252c0cce2d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: f100271162d20f5d13033efcd04bfa20081b6073
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466026"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314657"
 ---
 # <a name="multiclass-decision-forest-module"></a>Többosztályos döntési erdő modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre a *döntési erdő* algoritmusa alapján. A döntési erdő egy olyan Ensemble-modell, amely gyorsan kiépíti a döntési fák egy sorozatát, miközben a címkézett adatokból tanul.
 
@@ -76,14 +76,8 @@ Azure Machine Learning a döntési erdő besorolása a döntési fák együttes�
 
 11. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
-
-A betanítás befejezése után:
-
-+ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, kattintson a jobb gombbal a [Train Model](./train-model.md) modul kimenetére, és válassza a **Megjelenítés**lehetőséget.
-+ Ha meg szeretné tekinteni az egyes csomópontok szabályait, kattintson az egyes faszerkezetekre a felosztások részletezéséhez.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

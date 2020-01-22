@@ -9,14 +9,14 @@ manager: cshankar
 ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 01/15/2020
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: a46627851eb8bbefaf9290691cd6e3fbda2110f3
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 972bb2a804057037deedb448674abafcc175b21f
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278653"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314810"
 ---
 # <a name="plan-your-azure-time-series-insights-ga-environment"></a>A Azure Time Series Insights GA-környezet megtervezése
 
@@ -24,7 +24,7 @@ Ez a cikk azt ismerteti, hogyan tervezze meg a Azure Time Series Insights által
 
 ## <a name="video"></a>Videó
 
-**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br />
+**Tekintse meg ezt a videót, ha többet szeretne megtudni az adatok megőrzéséről Azure Time Series Insights és a tervezéshez**:<br /><br />
 
 > [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 

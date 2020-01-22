@@ -9,12 +9,12 @@ ms.date: 12/20/2019
 ms.author: normesta
 ms.reviewer: cbrooks
 ms.subservice: common
-ms.openlocfilehash: 7a0cf3c41929eb6a020a9d4761b08a2a4f2f6caa
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 69983502fb7d099f474fb1c4c084f5d381a173e9
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75460398"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314759"
 ---
 # <a name="end-to-end-troubleshooting-using-azure-storage-metrics-and-logging-azcopy-and-message-analyzer"></a>Végpontok közötti hibaelhárítás az Azure Storage-metrikák és-naplózás, a AzCopy és az Message Analyzer használatával
 
@@ -143,10 +143,10 @@ A metrikák diagramjainak hozzáadásával és testreszabásával kapcsolatos to
 
 Az Azure Storage a kiszolgáló naplójának adatait a blobokra írja, míg a metrikák a táblákba íródnak. A log Blobok a Storage-fiók jól ismert `$logs` tárolójában érhetők el. A naplófájlok neve hierarchikusan van elnevezve év, hónap, nap és óra szerint, így könnyen megtalálhatja a vizsgálni kívánt időtartományt. Például a `storagesample` fiókban a 01/02/2015-es, 8-9-as `https://storagesample.blob.core.windows.net/$logs/blob/2015/01/08/0800`található naplófájl-Blobok tárolója. A tárolóban lévő egyes Blobok egymás után, a `000000.log`tól kezdődően vannak elnevezve.
 
-A AzCopy parancssori eszköz használatával letöltheti ezeket a kiszolgálóoldali naplófájlokat a helyi gépen a kívánt helyre. A következő paranccsal például letöltheti a naplófájlokat a 2015 január 2. és a (z) `C:\Temp\Logs\Server`mappához tartozó blob-műveletekhez. cserélje le a `<storageaccountname>`t a Storage-fiók nevére, és `<storageaccountkey>` a fiók hozzáférési kulcsával:
+A AzCopy parancssori eszköz használatával letöltheti ezeket a kiszolgálóoldali naplófájlokat a helyi gépen a kívánt helyre. A következő paranccsal például letöltheti a naplófájlokat a 2015 január 2. és a (z) `C:\Temp\Logs\Server`mappához tartozó blob-műveletekhez. cserélje le a `<storageaccountname>`t a Storage-fiók nevére:
 
 ```azcopy
-AzCopy.exe /Source:http://<storageaccountname>.blob.core.windows.net/$logs /Dest:C:\Temp\Logs\Server /Pattern:"blob/2015/01/02" /SourceKey:<storageaccountkey> /S /V
+azcopy copy 'http://<storageaccountname>.blob.core.windows.net/$logs/blob/2015/01/02' 'C:\Temp\Logs\Server'  --recursive
 ```
 
 A AzCopy letölthető az [Azure letöltések](https://azure.microsoft.com/downloads/) oldalán. A AzCopy használatával kapcsolatos részletekért lásd [az adatok átvitele a AzCopy parancssori segédprogrammal](storage-use-azcopy.md)című témakört.

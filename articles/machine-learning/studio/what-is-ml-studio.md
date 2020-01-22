@@ -11,12 +11,12 @@ ms.service: machine-learning
 ms.subservice: studio
 ms.topic: overview
 ms.date: 10/17/2019
-ms.openlocfilehash: c0dcd8f8f5ecd2d333e610c96ea89a44f8f4c547
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: f3be29dc222e0e9b98ed51d8f921fb9926b018ca
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75528351"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314070"
 ---
 # <a name="what-is-machine-learning-studio-classic"></a>Mi az Machine Learning Studio (klasszikus)?
 
@@ -38,14 +38,14 @@ A prediktív elemzési modell létrehozásához nincs szükség programozásra, 
 <a name="compare"></a>
 ## <a name="how-does-machine-learning-studio-classic-differ-from-azure-machine-learning"></a>Miben különbözik a Machine Learning Studio (klasszikus) Azure Machine Learningtól?
 
-A [Azure Machine learning](../overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert (előzetes verzió) is lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
+A [Azure Machine learning](../overview-what-is-azure-ml.md) az SDK **-t és** a Azure Machine learning designert egyaránt lehetővé teszi az adatelőkészítés gyors előállításához, a gépi tanulási modellek betanításához és üzembe helyezéséhez. A Designer hasonló húzási élményt nyújt a studióhoz (klasszikus). A Studio (klasszikus) tulajdonosi számítási platformtól eltérően a tervező a saját számítási erőforrásait használja, és teljes mértékben integrálva van Azure Machine Learningba.
 
 Íme egy gyors összehasonlítás:
 
 || Machine Learning Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
-| Húzási interfész | Igen | Igen – [Azure Machine learning Designer (előzetes verzió)](../concept-designer.md) |
-| Kísérlet | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
+| Húzási interfész | Igen | Igen – [Azure Machine learning Designer](../concept-designer.md) |
+| Experiment | Skálázható (10 GB-os betanítási adatkorlát) | Méretezés számítási céllal |
 | Modulok a fogd és vidd interfészhez | Számos | Népszerű [modulok](../algorithm-module-reference/module-reference.md) kezdeti készlete|
 |Számítási célok betanítása| Tulajdonosi számítási cél, csak CPU-támogatás| Támogatja a Azure Machine Learning számítási (GPU-vagy CPU-) és notebook-alapú virtuális gépeket.<br/>([Egyéb, az SDK-ban támogatott számítások](../concept-compute-target.md#train))|
 |Viszonyítási számítási célok| Tulajdonosi webszolgáltatás formátuma, nem testreszabható |  Az Azure Kubernetes szolgáltatás és a pénzmosás-számítás <br/>([Egyéb, az SDK-ban támogatott számítások](../how-to-deploy-and-where.md)) |
@@ -81,7 +81,7 @@ A kísérlet létrehozásával kapcsolatos példát a következő témakörben t
 
 A prediktív elemzési megoldások létrehozásának részletes ismertetését lásd: [prediktív megoldás fejlesztése Azure Machine learning Studio (klasszikus)](tutorial-part1-credit-risk.md)használatával.
 
-### <a name="datasets"></a>Adathalmazok
+### <a name="datasets"></a>Adatkészletek
 Az adatkészlet olyan adatokat tartalmaz, amelyeket Machine Learning Studioba (klasszikus) töltöttek fel, hogy használhatók legyenek a modellezési folyamatban. A Machine Learning Studio (klasszikus) számos minta adatkészletet tartalmaz, amelyekkel kísérletezni tud, és szükség esetén több adatkészletet is feltölthet. Néhány példa a mintaadathalmazokra:
 
 * **Különböző autók fogyasztási adatai** – Hengerszám, lóerő stb. alapján azonosított autók üzemanyag-fogyasztási adatai.

@@ -9,14 +9,14 @@ manager: cshankar
 ms.reviewer: jasonh, kfile
 ms.workload: big-data
 ms.topic: conceptual
-ms.date: 12/03/2019
+ms.date: 01/21/2020
 ms.custom: seodec18
-ms.openlocfilehash: 1b5950c3769431420c199711190a02ad0be1e177
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 71041012bc77da6d7613deb178c3cec1413e57e2
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863495"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314885"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Hozzon létre egy hivatkozási adatkészletet a Time Series Insights-környezethez a Azure Portal használatával
 
@@ -38,7 +38,9 @@ A hivatkozási adathalmazok nem csatlakoznak visszamenőlegesen. Így a rendszer
 
 1. Keresse meg a meglévő Azure Time Series Insights-környezetét. A Azure Portal bal oldalán található menüben válassza az **összes erőforrás** lehetőséget. Válassza ki az Azure Time Series Insights-környezetet.
 
-1. Válassza az **Áttekintés** lapot. Keresse meg a **Time Series Insights Explorer URL-címét** , és nyissa meg a hivatkozást.  
+1. Válassza az **Áttekintés** lapot. Az oldal tetején található **Essentials** szakasz kibontásával keresse meg a **Time Series Insights Explorer URL-címét** , és nyissa meg a hivatkozást.  
+
+   [![alapok kibontása szakasz](media/add-reference-data-set/essentials.png)](media/add-reference-data-set/essentials.png#lightbox)
 
    Tekintse meg a Time Series Insights-környezet explorerjét.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 80e2acf08960796ccb2f3ad87c16674e477c9c00
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a037c959b44a6216724c285f932250b1b05cb509
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428461"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76313744"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 Az összesítő adat modul használatával olyan szabványos statisztikai mértékeket hozhat létre, amelyek leírják a bemeneti tábla minden oszlopát.
 
@@ -40,7 +40,7 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 1. Nincs szükség további paraméterekre. Alapértelmezés szerint a modul a bemenetként megadott összes oszlopot elemzi, az oszlopok értékeinek típusától függően pedig az eredmények szakaszban leírtak szerint a megfelelő statisztikai adatokat [jeleníti](#results) meg.
 
-1. Futtassa a folyamatot, vagy kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása**lehetőséget.
+1. A folyamat futtatása.
 
 ## <a name="results"></a>Eredmények
 

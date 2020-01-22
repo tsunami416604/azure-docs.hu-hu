@@ -6,12 +6,12 @@ ms.author: jeconnoc
 ms.date: 01/14/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
-ms.openlocfilehash: 52fa9a94d86dac2d49b078f98aaa494fbebf52d6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
-ms.translationtype: HT
+ms.openlocfilehash: 1b7586e6321318a3fe4566e8c744c17a1d7ee179
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294447"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76310610"
 ---
 # <a name="sync-your-app-configuration-instance-using-github-actions"></a>Az alkalmazás konfigurációs példányának szinkronizálása a GitHub-műveletekkel
 Az Azure-alkalmazás konfigurációja GitHub-műveleteket használ egy alkalmazás konfigurációs példányának frissítéséhez, amikor egy GitHub-adattáron végrehajtott művelet aktiválja. A GitHub-munkafolyamatok segítségével frissítheti az alkalmazások konfigurációját, így az alkalmazás-konfiguráció frissítéseinek az alkalmazás kódjának frissítéséhez használt munkafolyamatba való integrálásával is felhasználható.

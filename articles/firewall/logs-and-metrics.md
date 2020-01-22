@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/22/2020
 ms.author: victorh
-ms.openlocfilehash: 1267b3295762f6eb6af92b1cec909bae768886c1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 89c6700d5df3bcef1332121c3cf7d8f720fe054c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974502"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315031"
 ---
 # <a name="azure-firewall-logs-and-metrics"></a>Az Azure Firewall naplói és metrikái
 
@@ -103,17 +103,19 @@ A Azure Firewall a következő metrikák érhetők el:
 
     Egység: bájtok
 
-- **Tűzfal** állapota – a tűzfal állapotát jelzi.
+- **Tűzfal** állapota – a tűzfal állapotát jelzi a SNAT-port rendelkezésre állása alapján.
 
     Egység: százalék
 
    Ez a metrika két dimenzióval rendelkezik:
-  - **Állapot**: a lehetséges értékek állapota *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
-  - **OK**: a tűzfal megfelelő állapotának okát jelzi. Például jelezheti a *SNAT portokat* , ha a tűzfal állapota csökkentett vagy nem megfelelő.
+  - Állapot: a lehetséges értékek állapota *kifogástalan*, *csökkentett teljesítményű*, *sérült*.
+  - Ok: a tűzfal megfelelő állapotának okát jelzi. 
 
+     Ha SNAT-portokat használ > 95%-ot, akkor a rendszer kimeríti őket, és az állapota 50%, állapot =**csökkentett teljesítményű** , ok =**SNAT-port**. A tűzfal megtartja a forgalom feldolgozását, és a meglévő kapcsolatokat nem érinti. Előfordulhat azonban, hogy az új kapcsolatokat nem lehet időnként létrehozni.
 
+     Ha SNAT-portokat használ < 95%-ot, akkor a tűzfal kifogástalannak minősül, és a rendszer 100%-ként jeleníti meg az állapotot.
 
-
+     Ha nem jelentettek SNAT-portok használatát, az állapot 0%-ként jelenik meg. 
 
 - **SNAT-port kihasználtsága** – a tűzfal által használt SNAT-portok százalékos aránya.
 

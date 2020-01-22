@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7c4d62c19984e1316a01213f579c059b97f709c3
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 509b82596ce4819152fcd8d0bc202df186a20095
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73497928"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314844"
 ---
 # <a name="enter-data-manually-module"></a>Manuálisan adja meg az adatmodult
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy kis adatkészletet az értékek beírásával. Az adatkészlet több oszloppal is rendelkezhet.
   
@@ -97,9 +97,9 @@ Ez a modul a következő helyzetekben lehet hasznos:
   
      Ha hiányzó értékekkel rendelkező sorokat hoz létre, akkor a későbbiekben bármikor szűrheti őket.  
   
-5.  Kattintson a jobb gombbal a modulra, és válassza a **kijelölt futtatása** lehetőséget, hogy elemezze az adatokat, és betöltse azt a munkaterületre adatkészletként.  
+5.  Kapcsolja a kimeneti portot más modulokhoz, és futtassa a folyamatot.  
   
-     Az adatkészlet megtekintéséhez kattintson a kimeneti portra, majd válassza a **Megjelenítés**lehetőséget.  
-## <a name="next-steps"></a>További lépések
+     Az adatkészlet megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget.  
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

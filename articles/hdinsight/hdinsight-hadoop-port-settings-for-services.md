@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/15/2019
-ms.openlocfilehash: 46c2cd49258b8eb6813caaf50e9895990ce67287
-ms.sourcegitcommit: f29fec8ec945921cc3a89a6e7086127cc1bc1759
+ms.openlocfilehash: 67cafbb7934381cd4c2936d6e6dfe7fb19d70735
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72529547"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314691"
 ---
 # <a name="ports-used-by-apache-hadoop-services-on-hdinsight"></a>A HDInsight Apache Hadoop Services által használt portok
 
@@ -53,6 +53,7 @@ A következő típusok érhetők el adott fürtökhöz:
 | Livy |443 |HTTPS |Spark |Spark REST API. Lásd: [Apache Spark feladatok távoli elküldése az Apache Livy használatával](spark/apache-spark-livy-rest-interface.md) |
 | Spark-takarékos kiszolgáló |443 |HTTPS |Spark |A Spark-takarékossági kiszolgáló a kaptár-lekérdezések elküldésére szolgál. Lásd: [a beeline Apache Hive használata a HDInsight-on](hadoop/apache-hadoop-use-hive-beeline.md) |
 | A Storm |443 |HTTPS |A Storm |Storm webes felhasználói felület. Lásd: [Apache Storm-topológiák üzembe helyezése és kezelése a HDInsight-](storm/apache-storm-deploy-monitor-topology-linux.md) ben |
+| Kafka Rest-proxy |443 |HTTPS |Kafka |Kafka-REST API. További információ: [Apache Kafka-fürtök használata az Azure HDINSIGHT Rest-proxy használatával](kafka/rest-proxy.md) |
 
 ### <a name="authentication"></a>Hitelesítés
 
@@ -157,6 +158,7 @@ Példák:
 | --- | --- | --- | --- | --- |
 | Bróker |Munkavégző-csomópontok |9092 |[Kafka-huzal protokoll](https://kafka.apache.org/protocol.html) |Ügyfél-kommunikációhoz használatos |
 | &nbsp; |Zookeeper-csomópontok |2181 |&nbsp; |Az ügyfelek által a Zookeeper való csatlakozáshoz használt port |
+| REST-proxy | Kafka felügyeleti csomópontok |9400 |HTTPS |[Kafka REST-specifikáció](https://docs.microsoft.com/rest/api/hdinsight-kafka-rest-proxy/) |
 
 ### <a name="spark-ports"></a>Spark-portok
 

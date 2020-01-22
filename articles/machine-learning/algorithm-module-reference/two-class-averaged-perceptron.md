@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 379cddd9654cc897b49fd085d8df55fcd77a7ce8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: b4180fced60c4a9f2402253c7c3b3d3ff97fe1e1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490364"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314606"
 ---
 # <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagú Perceptron modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal gépi tanulási modellt hozhat létre az átlagos perceptron algoritmus alapján.  
   
@@ -52,13 +52,9 @@ Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulá
   
     -   Ha az **oktatói módot** **egyetlen paraméterként**állítja be, használja a [Train Model](train-model.md) modult.
 
-## <a name="results"></a>Results (Eredmények)
-
-A betanítás befejezése után:
-
-+ Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett funkciók súlyozását, kattintson a jobb gombbal a [vonat modell](./train-model.md)kimenetére.
 
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

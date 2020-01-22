@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: fef8cb0c29eac4b26b93abee54faa4fe1078678d
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 46034c8392dc1720fe5e03fc5e419dba6ed20e0b
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493815"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314470"
 ---
 # <a name="clean-missing-data-module"></a>Hiányzó adatmodul törlése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal törölheti, lecserélheti vagy következtetheti ki a hiányzó értékeket. 
 
@@ -115,7 +115,7 @@ Minden alkalommal, amikor a [tiszta hiányzó](./clean-missing-data.md) adatmodu
   
 8. A folyamat futtatása.
 
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 
 A modul két kimenetet ad vissza:  
 
@@ -143,6 +143,6 @@ Ha gyakran kell megismételni a tisztítási műveleteket, javasoljuk, hogy ment
 
 6.  A folyamat futtatása.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

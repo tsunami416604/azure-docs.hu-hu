@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 7590cab00670c92e8a5b90006778542ec44bf83f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 1cbbc3f0c78954b92c1265795ba365be9dc0e38c
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490176"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315082"
 ---
 # <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos növelt döntési fa modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy gépi tanulási modellt, amely a megnövelt döntési fák algoritmusán alapul. 
 
@@ -63,16 +63,15 @@ Ezt a modellt betaníthatja a [betanítási modell](././train-model.md)használa
 9. A modell betanítása.
   
     + Ha az **oktatói módot** **egyetlen paraméterként**állítja be, csatlakoztasson egy címkézett adatkészletet és a [betanítási modell](./train-model.md) modult.  
-  
    
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
-A modell képzésének befejezése után a jobb gombbal kattintson a [Train Model](./train-model.md) kimenetére az eredmények megtekintéséhez:
+A betanítás befejezése után:
 
-+ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, válassza a **Megjelenítés**lehetőséget. 
-+ A felosztások részletezéséhez és az egyes csomópontok szabályainak megtekintéséhez kattintson az egyes faszerkezetekre.
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
++ A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

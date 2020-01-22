@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 11/19/2019
-ms.openlocfilehash: dd8b23f92f5b24101a7d42ca65f5835a8d4e9ff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 1dd88eaa9c92a4f8ff5d491da950f7bb1cc48c20
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74214561"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314504"
 ---
 # <a name="module-assign-data-to-clusters"></a>Modul: az adathozzárendelés a fürtökhöz
 
-Ez a cikk azt ismerteti, hogyan használható az *adathozzárendelés a fürtökhöz* modul Azure Machine learning Designerben (előzetes verzió). A modul előrejelzéseket készít egy olyan fürtözött modell használatával, amely a *K-means fürtszolgáltatási* algoritmussal lett betanítva.
+Ez a cikk azt ismerteti, hogyan használható az *adathozzárendelés a fürtökhöz* modul Azure Machine learning Designerben. A modul előrejelzéseket készít egy olyan fürtözött modell használatával, amely a *K-means fürtszolgáltatási* algoritmussal lett betanítva.
 
 Az adatok hozzárendelése a fürtökhöz modul olyan adatkészletet ad vissza, amely tartalmazza az egyes új adatpontok lehetséges hozzárendeléseit. 
 
@@ -45,7 +45,7 @@ Az adatok hozzárendelése a fürtökhöz modul olyan adatkészletet ad vissza, 
   
 5.  A folyamat futtatása.  
   
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 
-+  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, válassza az **eredmények adatkészletek**lehetőséget, majd válassza a **Megjelenítés**lehetőséget.
++  Az adatkészlet értékeinek megtekintéséhez kattintson a jobb gombbal a modulra, majd válassza a **Megjelenítés**lehetőséget. Vagy válassza ki a modult, és váltson a **kimenetek** lapra a jobb oldali panelen, kattintson a **port kimenetének** hisztogram ikonjára az eredmény megjelenítéséhez.
 

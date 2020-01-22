@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 10/10/2019
-ms.openlocfilehash: b939e88606fba5d7759e55239838d5308bf0563c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9ef859cce68e13f5207d77d8396bc69ddbbce339
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75428489"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314946"
 ---
 # <a name="permutation-feature-importance"></a>A permutáció funkció fontossága
 
-Ez a cikk azt ismerteti, hogyan használható a permutáció funkció fontossági modulja Azure Machine Learning Designerben (előzetes verzió), hogy számításba lehessen venni az adatkészlet szolgáltatásbeli fontossági pontszámait. Ezekkel a pontszámokkal meghatározhatja a modellben használandó legjobb szolgáltatásokat.
+Ez a cikk azt ismerteti, hogyan használható a permutáció funkció fontossági modulja Azure Machine Learning Designerben, hogy kiszámítsa az adatkészlet szolgáltatásbeli fontossági pontszámait. Ezekkel a pontszámokkal meghatározhatja a modellben használandó legjobb szolgáltatásokat.
 
 Ebben a modulban a szolgáltatások értékeit véletlenszerűen rendezi a rendszer, egyszerre egy oszlopot. A modell teljesítményének mérése előtt és után történik. A teljesítmény méréséhez kiválaszthatja a standard mérőszámok egyikét.
 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: b04a44a82f793f39b24ffd94083ca8fd5e66cfb8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4271a180a0f00ae921de9b8deb9a3e5123f9b519
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493882"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314487"
 ---
 # <a name="boosted-decision-tree-regression-module"></a>A döntési fa regressziós moduljának növelése
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal a regressziós fák együttesét hozhatja létre a boosting használatával. A *kiemelés* azt jelenti, hogy az egyes faszerkezetek az előző fáktől függenek. Az algoritmus az előtte lévő fák maradékának beépítésével tanul. Így a döntési fazenekarban egyre nagyobb a pontosság, és kisebb a lefedettségük.  
   
@@ -29,8 +29,6 @@ Ez a regressziós módszer egy felügyelt tanulási módszer, ezért *címkével
 
 A modell meghatározása után betaníthatja azt a betanítási [modell](./train-model.md)használatával.
 
-> [!TIP]
-> Szeretne többet megtudni a létrehozott facsemetékről? A modell képzését követően kattintson a jobb gombbal a [Train Model](./train-model.md) modul kimenetére, és válassza a **Megjelenítés** lehetőséget az egyes iterációk során létrehozott fa megtekintéséhez. Megtekintheti az egyes faszerkezetek felosztását, és megtekintheti az egyes csomópontok szabályait.  
   
 ## <a name="more-about-boosted-regression-trees"></a>További információ a regressziós fák növeléséről  
 
@@ -87,18 +85,14 @@ A színátmenet-növelési módszer a besorolási problémákhoz is használhat�
 
 10. A folyamat futtatása.  
   
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
-+ Ha meg szeretné tekinteni az egyes iterációkban létrehozott fát, kattintson a jobb gombbal a [Train Model](train-model.md) modul kimenetére, és válassza a **Megjelenítés**lehetőséget.
-  
-     Kattintson az egyes faszerkezetekre a felosztások részletezéséhez, és tekintse meg az egyes csomópontok szabályait.  
-
 + Ha a modellt a pontozáshoz szeretné használni, kapcsolja össze a [pontszám modellel](./score-model.md), hogy megjósolja az új bemeneti példák értékeit.
 
-+ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal az oktatási modul **betanított modell** kimenetére, és válassza a **Mentés másként**lehetőséget. A menteni kívánt betanított modell másolata nem frissül a folyamat egymást követő futtatásakor.
++ A betanított modell pillanatképének mentéséhez a **betanított modell** jobb oldali paneljén válassza a **kimenetek** fület, majd kattintson az **adatkészlet regisztrálása** ikonra. A betanított modell másolata modulként lesz mentve a modul fájában, és a folyamat egymást követő futtatása során nem lesz frissítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: d8e27d13de6b1ac6940972022f66811eb75c8986
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73485884"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76315065"
 ---
 # <a name="two-class-neural-network-module"></a>Kétosztályos neurális hálózati modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy olyan neurális hálózati modellt, amely egy olyan cél előrejelzésére használható, amely csak két értékkel rendelkezik.
 
@@ -78,15 +78,15 @@ Egy adott bemenethez tartozó hálózat kimenetének kiszámításához egy ért
   
 14. A folyamat futtatása.
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A betanítás befejezése után:
 
-+ Ha meg szeretné tekinteni a modell paramétereinek összegzését, valamint a képzésből beszerzett, valamint a neurális hálózat egyéb paramétereit, kattintson a jobb gombbal a [betanítási modell](./train-model.md)kimenetére, majd válassza a **Megjelenítés**lehetőséget.  
++ Ha menteni szeretné a betanított modell pillanatképét, válassza a **kimenetek** fület a **vonat modell** moduljának jobb oldali paneljén. Válassza az **adatkészlet regisztrálása** ikont a modell újrafelhasználható modulként való mentéséhez.
 
-+ A betanított modell pillanatképének mentéséhez kattintson a jobb gombbal a **betanított modell** kimenetére, és válassza a **Mentés betanítva modellként**lehetőséget. Ez a modell nem frissül ugyanazon folyamat egymást követő futtatásakor.
++ A modell pontozáshoz való használatához adja hozzá a **pontszám modell** modult egy folyamathoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

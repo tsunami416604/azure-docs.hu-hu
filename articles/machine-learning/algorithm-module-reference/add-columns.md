@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 55981279cb1902424d1a0f77af097dc379d7222f
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e5e1390cb45fc6f659883ddfc8624719e45f99ce
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73493973"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314589"
 ---
 # <a name="add-columns-module"></a>Oszlopok hozzáadása modul
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
 Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet létrehozásához a bemenetként megadott két adatkészlet összes oszlopát össze kell kapcsolni. Ha kettőnél több adatkészletet kell összefűzni, használja az **Oszlopok hozzáadása**több példányát.
 
@@ -35,15 +35,15 @@ Ezzel a modullal összefűzheti a két adatkészletet. Egyetlen adatkészlet lé
 
 3. A folyamat futtatása.
 
-### <a name="results"></a>Results (Eredmények)
+### <a name="results"></a>Eredmények
 A folyamat futtatása után:
 
-- Az új adatkészlet első sorainak megjelenítéséhez kattintson a jobb gombbal az **Oszlopok hozzáadása** elemre, majd válassza a Megjelenítés lehetőséget.
+- Az új adatkészlet első sorainak megtekintéséhez kattintson a jobb gombbal az **Oszlopok hozzáadása** modulra, és válassza a Megjelenítés lehetőséget. Vagy válassza ki a modult, és váltson a **kimenetek** lapra a jobb oldali panelen, kattintson a **port kimenetének** hisztogram ikonjára az eredmény megjelenítéséhez.
 
 Az új adatkészlet oszlopainak száma megegyezik a bemeneti adatkészletek oszlopainak összegével.
 
 Ha két azonos nevű oszlop szerepel a bemeneti adatkészletekben, a rendszer egy numerikus utótagot ad hozzá az oszlop nevéhez. Ha például egy TargetOutcome nevű oszlop két példánya van, a bal oldali oszlop átnevezve lesz TargetOutcome_1, és a jobb oldali oszlop átnevezve lesz TargetOutcome_2.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse [meg a Azure Machine learning elérhető modulok készletét](module-reference.md) . 

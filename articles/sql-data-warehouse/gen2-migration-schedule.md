@@ -9,14 +9,14 @@ manager: craigg
 ms.assetid: 04b05dea-c066-44a0-9751-0774eb84c689
 ms.service: sql-data-warehouse
 ms.topic: article
-ms.date: 07/22/2019
+ms.date: 01/21/2020
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 888f50d645c9b3babf95335e434db65423108ccb
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 3f793fd68c83f90b87182647eef47a07eb452f45
+ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73693032"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76314776"
 ---
 # <a name="upgrade-your-data-warehouse-to-gen2"></a>Az adattárház frissítése a Gen2
 
@@ -33,41 +33,12 @@ A következő táblázat összefoglalja a régiót, ha az alsó Gen2 számítás
 
 | **Régió** | **Alacsonyabb Gen2 érhető el** | **Automatikus frissítések kezdete** |
 |:--- |:--- |:--- |
-| Kelet-Ausztrália |Elérhető |Befejezve |
-| Délkelet-Ausztrália |Elérhető |Befejezve |
-| Dél-Brazília |Elérhető |Befejezve |
-| Közép-Kanada |Elérhető |Befejezve |
 | Kelet-Kanada |2020. június 1. |2020. július 1. |
-| USA középső régiója |Elérhető |Befejezve |
 | Kelet-Kína |\* |\* |
-| Kína 2. keleti régiója |Elérhető |Befejezve |
 | Észak-Kína |\* |\* |
-| Kína 2. északi régiója |Elérhető |Befejezve |
-| Kelet-Ázsia |Elérhető |Befejezve |
-| USA keleti régiója |Elérhető |Befejezve |
-| USA 2. keleti régiója |Elérhető |Befejezve |
-| Közép-Franciaország |Elérhető |Folyamatban |
 | Közép-Németország |\* |\* |
-| Középnyugat-Németország |2019. szeptember 1.|2019. október 1. |
-| Közép-India |Elérhető |Befejezve |
-| Dél-India |Elérhető |Befejezve |
-| Nyugat-India |2019. július 1. |Folyamatban |
-| Kelet-Japán |Elérhető |Befejezve |
-| Nyugat-Japán |Elérhető |Befejezve |
-| Korea középső régiója |Elérhető |Befejezve |
-| Korea déli régiója |Elérhető |Befejezve |
-| USA északi középső régiója |Elérhető |Befejezve |
-| Észak-Európa |Elérhető |Befejezve |
-| Dél-Afrika északi régiója |2019. július 12. |Befejezve |
-| USA déli középső régiója |Elérhető |Befejezve |
-| Délkelet-Ázsia |Elérhető |Befejezve |
-| Egyesült Arab Emírségek északi régiója |2019. július 20. |Befejezve |
-| Egyesült Királyság déli régiója |Elérhető |Folyamatban |
-| Az Egyesült Királyság nyugati régiója |Elérhető |Folyamatban |
-| USA nyugati középső régiója |November 1., 2019 |2019. december 1.|
-| Nyugat-Európa |Elérhető |Befejezve |
-| USA nyugati régiója |Elérhető |Befejezve |
-| USA 2. nyugati régiója |Elérhető |Befejezve |
+| Középnyugat-Németország |Elérhető |2020. május 1. |
+| Nyugat-India |Elérhető |2020. május 1.  |
 
 ## <a name="automatic-upgrade-process"></a>Automatikus frissítési folyamat
 
@@ -135,7 +106,7 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 - A: Ha kor DW600 vagy DW1200 futtat a Gen1-on, javasolt a DW500c vagy a DW1000c használata, mivel a Gen2 több memóriát, erőforrást és nagyobb teljesítményt nyújt, mint a Gen1.
 
 **K: Letilthatom a Geo-biztonsági mentést?**
-- A: nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti az adattárház rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
+- V: Nem. A Geo-Backup egy vállalati szolgáltatás, amellyel megőrizheti az adattárház rendelkezésre állását abban az esetben, ha egy régió elérhetetlenné válik. Ha további kérdései vannak, nyisson meg egy [támogatási kérést](sql-data-warehouse-get-started-create-support-ticket.md) .
 
 **K: van különbség a Gen1 és a Gen2 között a T-SQL szintaxisban?**
 
@@ -147,9 +118,9 @@ További információ: [verziófrissítés a Gen2](upgrade-to-latest-generation.
 
 **K: Létrehozhatok új Gen1-példányt a régióm frissítése után?**
 
-- A: nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
+- V: Nem. A régió frissítése után az új Gen1-példányok létrehozása le lesz tiltva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Frissítési lépések](upgrade-to-latest-generation.md)
 - [Karbantartási időszakok](maintenance-scheduling.md)
