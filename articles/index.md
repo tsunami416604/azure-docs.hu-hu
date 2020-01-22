@@ -6,12 +6,12 @@ description: Ismerje meg, hogyan készíthet és felügyelhet hatékony alkalmaz
 ms.topic: hub-page
 featureFlags:
 - clicktale
-ms.openlocfilehash: 4c1b7c49002d9ff6cd8c782c3308edaaa5d2373d
-ms.sourcegitcommit: 3f8017692169bd75483eefa96c225d45cd497f06
+ms.openlocfilehash: 1b89c076f94750150b7fb57b2eb623b35f719f7b
+ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73520264"
+ms.lasthandoff: 01/02/2020
+ms.locfileid: "76294201"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -35,17 +35,17 @@ ms.locfileid: "73520264"
                 </a>
             </li>
             <li>
-                <a href="/azure/architecture/guide/">
+                <a href="/azure/cloud-adoption-framework/">
                     <div class="cardSize">
                         <div class="cardPadding">
                             <div class="card">
                                 <div class="cardImageOuter">
                                     <div class="cardImage">
-                                        <img data-hoverimage="media/index/getstarted-architecture.png" src="media/index/getstarted-architecture.png" alt="" />
+                                        <img data-hoverimage="media/index/cloud-adoption-framework.png" src="media/index/cloud-adoption-framework.png" alt="" />
                                     </div>
                                 </div>
                                 <div class="cardText">
-                                    <span class="likeAnH3">Útmutató Azure-alkalmazásarchitektúrákhoz</span>
+                                    <span class="likeAnH3">A felhő bevezetésének keretrendszere az Azure-hoz</span>
                                 </div>
                             </div>
                         </div>
@@ -359,7 +359,7 @@ ms.locfileid: "73520264"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -795,7 +795,7 @@ ms.locfileid: "73520264"
                                         <li>
                                             <a href="/azure/vmware-cloudsimple/">
                                                 <img src="media/index/cs_dedicatedcloudnode.svg" alt="" />
-                                                <p>A CloudSimple Azure VMware-megoldása</p>
+                                                <p>Azure VMware Solution by CloudSimple</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1002,7 +1002,7 @@ ms.locfileid: "73520264"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1101,6 +1101,15 @@ ms.locfileid: "73520264"
                                             <a href="/azure/event-grid/">
                                                 <img src="media/index/azure_event_grid.svg" alt="" />
                                                 <p>Event Grid</p>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                    <h3>Iparág</h3>
+                                    <ul>
+                                        <li>
+                                            <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                                <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                <p>Azure FarmBeats</p>
                                             </a>
                                         </li>
                                     </ul>
@@ -1252,7 +1261,7 @@ ms.locfileid: "73520264"
                                             </a>
                                         </li>
                                         <li>
-                                            <a href="/azure/application-insights/">
+                                            <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                                 <img src="media/index/ApplicationInsights.svg" alt="" />
                                                 <p>Application Insights</p>
                                             </a>
@@ -1832,6 +1841,12 @@ ms.locfileid: "73520264"
                                             </a>
                                         </li>
                                         <li>
+                                            <a href="/azure/hpc-cache/">
+                                                <img src="media/index/hpc-cache.svg" alt="" />
+                                                <p>Azure HPC Cache</p>
+                                            </a>
+                                        </li>
+                                        <li>
                                             <a href="/azure/avere-vfxt/">
                                                 <img src="media/index/avere.svg" alt="" />
                                                 <p>Avere vFXT</p>
@@ -1891,7 +1906,7 @@ ms.locfileid: "73520264"
                                         <li>
                                             <a href="/azure/search/">
                                                 <img src="media/index/Search.svg" alt="" />
-                                                <p>Azure Search</p>
+                                                <p>Azure Cognitive Search</p>
                                             </a>
                                         </li>
                                         <li>
@@ -1994,7 +2009,7 @@ ms.locfileid: "73520264"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>Teljes körűen felügyelt keresőszolgáltatás</p>
                                                 </div>
                                             </div>
@@ -2944,7 +2959,7 @@ ms.locfileid: "73520264"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>A CloudSimple Azure VMware-megoldása</h3>
+                                                    <h3>Azure VMware Solution by CloudSimple</h3>
                                                     <p>A VMware platform futtatása az Azure-ban</p>
                                                 </div>
                                             </div>
@@ -3638,7 +3653,7 @@ ms.locfileid: "73520264"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -3863,7 +3878,7 @@ ms.locfileid: "73520264"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>Biztonsági tudnivalók</h3>
-                                                    <p>Bemutatjuk, hogy az Azure miként nyújt biztonságos infrastruktúrát a felhőalapú megoldások létrehozásához</p>
+                                                    <p>Az ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan védheti meg a felhőalapú megoldásait az Azure-ban.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -3953,6 +3968,109 @@ ms.locfileid: "73520264"
                             </li>
                         </ul>
                     </li>
+<li>
+                        <a href="#industry">Iparág</a>
+                        <ul id="industry" class="cardsA">
+                            <li class="fullSpan">
+                                <h2>Iparág</h2>
+                            </li>
+                            <li>
+                                <a href="/azure/industry/agriculture/overview-azure-farmbeats">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-agriculture-farmbeats.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure FarmBeats</h3>
+                                                    <p>Gyorsan hoz létre digitális mezőgazdasági megoldásokat a felhőben.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/financial/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-financial.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Pénzügyi szolgáltatások</h3>
+                                                    <p>Megoldások és használati esetek a pénzügyi szolgáltatási ágazat számára.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/health/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-health.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Egészségügyi és élettudományok</h3>
+                                                    <p>Megoldások és használati esetek az egészségi és élettudományi ágazat számára.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/manufacturing/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-manufacturing.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Gyártás</h3>
+                                                    <p>Megoldások és használati esetek a gyártási ágazat számára.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/azure/industry-marketing/retail/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/industry-retail.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Kiskereskedelem</h3>
+                                                    <p>Megoldások és használati esetek a kiskereskedelmi ágazat számára.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
                     <li>
                         <a href="#iot">Eszközök internetes hálózata</a>
                         <ul id="iot" class="cardsA">
@@ -3987,7 +4105,7 @@ ms.locfileid: "73520264"
                                                 </div>
                                                 <div class="cardText">
                                                     <h3>IoT-központ</h3>
-                                                    <p>Kipróbálhatja az SaaS for IoT-t, amelyhez nincs szükség tapasztalatra a felhőszolgáltatások kezelésében</p>
+                                                    <p>IoT-megoldások létrehozásának felgyorsítása</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -4399,7 +4517,7 @@ ms.locfileid: "73520264"
                                 </a>
                             </li>
                             <li>
-                                <a href="/azure/application-insights/">
+                                <a href="/azure/azure-monitor/azure-monitor-app-hub/">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -5607,23 +5725,39 @@ ms.locfileid: "73520264"
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
+                                                <div class="cardImageOuter">
                                                     <div class="cardImage">
                                                         <img src="media/index/peering-service.svg" alt="" />
                                                     </div>
-                                            </div>
-                                            <div class="cardText">
+                                                </div>
+                                                <div class="cardText">
                                                     <h3>Peering Service</h3>
                                                     <p>Optimális internetkapcsolat a Microsoft-hálózat eléréséhez</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#security">Biztonság</a>
-                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/internet-analyzer/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/internet-analyzer.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Internet Analyzer</h3>
+                                                    <p>Értékelheti, hogy a hálózatkezelési infrastruktúra módosításai milyen hatással lesznek az ügyfelek teljesítményére.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                             <li>
                                 <a href="https://go.microsoft.com/fwlink/?linkid=2097091">
                                     <div class="cardSize">
@@ -5656,6 +5790,30 @@ ms.locfileid: "73520264"
                                                 <div class="cardText">
                                                     <h3>Azure Firewall Manager</h3>
                                                     <p>Globálisan elosztott biztonsági felügyeleti szolgáltatás</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                         </ul>
+                    </li>
+                    <li>
+                        <a href="#security">Biztonság</a>
+                        <ul id="security" class="cardsA">
+                            <li>
+                                <a href="/azure/security/">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img src="media/index/SecurityCenter.svg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Biztonsági tudnivalók</h3>
+                                                    <p>Az ajánlott eljárásaink és útmutatóink segítségével megtudhatja, hogyan védheti meg a felhőalapú megoldásait az Azure-ban.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -6167,6 +6325,25 @@ ms.locfileid: "73520264"
                                 </a>
                             </li>
                             <li>
+                                <a href="/azure/hpc-cache/" data-linktype="absolute-path">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage">
+                                                        <img alt="" src="media/index/hpc-cache.svg" data-linktype="relative-path">
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure HPC Cache</h3>
+                                                    <p>Rugalmas, fájlalapú számítási feladatok futtatása az Azure-ban</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="/azure/avere-vfxt/" data-linktype="absolute-path">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -6353,7 +6530,7 @@ ms.locfileid: "73520264"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Azure Search</h3>
+                                                    <h3>Azure Cognitive Search</h3>
                                                     <p>Teljes körűen felügyelt keresőszolgáltatás</p>
                                                 </div>
                                             </div>
