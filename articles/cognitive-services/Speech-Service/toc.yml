@@ -182,7 +182,7 @@
               displayName: 'release notes,updates,what''s new,what is new,changes'
         - name: LUIS szolgáltatás
           items:
-            - name: LUIS fejlesztői erőforrások
+            - name: LUIS fejlesztői forrásanyagok
               href: 'https://docs.microsoft.com/azure/cognitive-services/luis/developer-reference-resource'
 - name: Beszédfordítás
   expanded: false
@@ -201,7 +201,7 @@
           href: quickstarts/translate-speech-to-speech.md
     - name: Oktatóanyagok
       items:
-        - name: 'Flask-alkalmazás létrehozása szöveg fordításához és szintetizálásához, REST'
+        - name: Flask-alkalmazás létrehozása szöveg fordításához és szintetizálásához REST API-kkal
           href: ../translator/tutorial-build-flask-app-translation-synthesis.md?toc=%2fazure%2fcognitive-services%2fspeech-service%2ftoc.json&bc=%2fazure%2fcognitive-services%2fspeech-service%2fbreadcrumb%2ftoc.json
     - name: Referencia
       items:
@@ -360,7 +360,7 @@
               href: how-to-custom-speech-train-model.md
             - name: Egyéni modell üzembe helyezése
               href: how-to-custom-speech-deploy-model.md
-            - name: Útmutató – Ember által címkézett átiratok létrehozása
+            - name: Ember által címkézett átiratok létrehozása
               href: how-to-custom-speech-human-labeled-transcriptions.md
         - name: Bérlőmodellek
           items:
@@ -380,7 +380,7 @@
               href: concepts-disclosure-guidelines.md
             - name: Közzététel-tervezési minták
               href: concepts-disclosure-patterns.md
-            - name: Magatartási kódex
+            - name: Etikai kódex
               href: 'https://aka.ms/custom-neural-code-of-conduct'
         - name: Custom Voice portál
           items:
@@ -395,13 +395,13 @@
               href: record-custom-voice-samples.md
         - name: Hanganyag létrehozása
           items:
-            - name: 'Útmutató: Hanganyag létrehozása'
+            - name: Hanganyag létrehozása
               href: how-to-audio-content-creation.md
     - name: Egyéni kulcsszóelnevezési irányelvek
       href: speech-devices-sdk-kws-guidelines.md
     - name: Egyéni kulcsszófelismerés
       href: speech-devices-sdk-create-kws.md
-- name: Beszédszolgáltatás
+- name: Speech szolgáltatás
   expanded: false
   items:
     - name: Forgatókönyvek
@@ -442,7 +442,7 @@
           items:
             - name: Kötegelt átírási és testreszabási REST API
               href: 'https://westus.cris.ai/swagger/ui/index'
-            - name: Beszédátírás REST API
+            - name: Beszédátírási REST API
               href: 'https://signature.centralus.cts.speech.microsoft.com/UI/index.html'
             - name: Diktálás REST API
               href: rest-speech-to-text.md
@@ -468,9 +468,9 @@
           displayName: 'install the speech sdk, install the speech sdk java, install the speech sdk C#, install the speech sdk python, install the speech sdk C++, setup speech sdk, install, install C#, install C++, install Python, install Java, install Javascript'
     - name: Útmutatók
       items:
-        - name: A naplózás engedélyezése
+        - name: Naplózás engedélyezése
           href: how-to-use-logging.md
-        - name: A memóriahasználat nyomon követése
+        - name: Memóriahasználat nyomon követése
           href: how-to-track-speech-sdk-memory-usage.md
         - name: Linuxos OpenSSL konfigurálása
           href: how-to-configure-openssl-linux.md
@@ -479,7 +479,7 @@
       items:
         - name: Speech SDK-minták (GitHub)
           href: 'https://github.com/Azure-Samples/cognitive-services-speech-sdk'
-        - name: Speech Device SDK-minták (GitHub)
+        - name: Beszédeszközök SDK-minták (GitHub)
           href: 'https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK'
     - name: Referencia
       items:

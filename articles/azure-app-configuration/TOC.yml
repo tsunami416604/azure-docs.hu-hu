@@ -63,6 +63,8 @@
       href: concept-point-time-snapshot.md
     - name: Funkciókezelés
       href: concept-feature-management.md
+    - name: Szinkronizálás GitHub-műveletekkel
+      href: concept-github-action.md
     - name: Eseménykezelés
       href: concept-app-configuration-event.md
     - name: Magas rendelkezésre állás

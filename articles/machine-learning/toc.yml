@@ -93,6 +93,8 @@
       href: concept-designer.md
     - name: Algoritmus-adatlap
       href: /azure/machine-learning/algorithm-cheat-sheet
+    - name: Algoritmusok kiválasztása
+      href: /azure/machine-learning/how-to-select-algorithms
     - name: Automatizált gépi tanulás
       displayName: 'automl, auto ml'
       href: concept-automated-ml.md

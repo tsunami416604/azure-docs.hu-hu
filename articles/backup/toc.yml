@@ -148,10 +148,28 @@
           href: backup-mabs-sharepoint-azure-stack.md
         - name: Az SQL Server-adatbázis védelme
           href: backup-mabs-sql-azure-stack.md
-    - name: Azure-fájlmegosztások
+    - name: Azure-fájlmegosztások biztonsági mentése
       items:
-        - name: Azure-fájlmegosztások biztonsági mentése
-          href: backup-azure-files.md
+        - name: Az Azure Portalról
+          items:
+            - name: Azure-fájlmegosztások biztonsági mentése
+              href: backup-afs.md
+            - name: Azure-fájlmegosztás visszaállítása
+              href: restore-afs.md
+            - name: Azure-fájlmegosztások biztonsági másolatainak kezelése
+              href: manage-afs-backup.md
+        - name: Az Azure CLI-vel
+          items:
+            - name: Azure-fájlmegosztások biztonsági mentése a parancssori felülettel
+              href: backup-afs-cli.md
+            - name: Azure-fájlmegosztás visszaállítása a parancssori felülettel
+              href: restore-afs-cli.md
+            - name: Azure-fájlmegosztások biztonsági másolatainak kezelése a parancssori felülettel
+              href: manage-afs-backup-cli.md
+        - name: A PowerShell-lel
+          items:
+            - name: Azure-fájlmegosztások biztonsági mentése a Powershell-lel
+              href: backup-azure-afs-automation.md
     - name: Azure-beli virtuális gépek biztonsági mentése
       items:
         - name: Azure-beli virtuális gépek biztonsági mentése
@@ -222,8 +240,6 @@
           href: backup-dpm-automation.md
         - name: Windows Server az Azure Portalon
           href: backup-client-automation.md
-        - name: Azure-fájlmegosztások az Azure Portalon
-          href: backup-azure-afs-automation.md
         - name: SQL az Azure-beli virtuális gépek biztonsági mentésein
           href: backup-azure-sql-automation.md
     - name: Az Azure Backup REST API használata

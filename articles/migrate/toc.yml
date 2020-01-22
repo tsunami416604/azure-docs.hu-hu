@@ -124,6 +124,8 @@
           href: scale-vmware-assessment.md
         - name: Hozzáférés nagy számú Hyper-V virtuális géphez
           href: scale-hyper-v-assessment.md
+        - name: Nagy számú fizikai kiszolgáló kiértékelése
+          href: scale-physical-assessment.md
         - name: Nagy számú virtuális gép migrálásának automatizálása
           href: how-to-migrate-at-scale.md
         - name: Migrálási példák (Contoso-sorozat)
