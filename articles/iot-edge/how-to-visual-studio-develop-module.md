@@ -8,12 +8,12 @@ ms.author: xshi
 ms.date: 07/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: a94bc4825f70b9858260feaadaeded6c76ba46e2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8c174c5c201aecd83fb343a217c7944d503616c3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75457249"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509292"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
 
@@ -30,7 +30,7 @@ Ez a cikk bemutatja, hogyan használhatja a Visual Studio 2019 Azure IoT Edge-es
   
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ez a cikk azt feltételezi, hogy egy Windows rendszert futtató számítógépet vagy virtuális gépet használ fejlesztői számítógépként. Windows rendszerű számítógépeken Windows-és Linux-modulokat is fejleszthet. Windows-modulok fejlesztéséhez használjon 1809/Build 17763 vagy újabb verziót futtató Windows-számítógépet. Linux-modulok fejlesztéséhez használjon olyan Windows-számítógépet, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install). 
+Ez a cikk azt feltételezi, hogy egy Windows rendszert futtató számítógépet vagy virtuális gépet használ fejlesztői számítógépként. Windows rendszerű számítógépeken Windows-és Linux-modulokat is fejleszthet. Windows-modulok fejlesztéséhez használjon 1809/Build 17763 vagy újabb verziót futtató Windows-számítógépet. Linux-modulok fejlesztéséhez használjon olyan Windows-számítógépet, amely megfelel a [Docker Desktop követelményeinek](https://docs.docker.com/docker-for-windows/install/#what-to-know-before-you-install).
 
 Mivel ez a cikk a Visual Studio 2019-et használja fő fejlesztői eszközként, telepítse a Visual studiót. Ügyeljen rá, hogy a Visual Studio 2019-es verziójában a számítási **feladatokkal együtt C++**  tartalmazza az **Azure fejlesztési** és asztali fejlesztését. A [Visual Studio 2019](https://docs.microsoft.com/visualstudio/install/modify-visual-studio?view=vs-2019) a szükséges számítási feladatok hozzáadásához is módosítható.
 

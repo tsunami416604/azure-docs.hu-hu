@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 8022304af0f429024a796e02e64f6e23b938bd57
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912293"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514255"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -105,7 +105,7 @@ Windows rendszeren:
 ### <a name="if-the-iot-edge-security-manager-is-not-running-verify-your-yaml-configuration-file"></a>Ha a IoT Edge Security Manager nem fut, ellenőrizze a YAML konfigurációs fájlját.
 
 > [!WARNING]
-> A YAML-fájlok nem tartalmazhatnak behúzást tartalmazó lapokat. Ehelyett használjon két szóközt.
+> A YAML-fájlok nem tartalmazhatnak behúzást tartalmazó lapokat. Ehelyett használjon két szóközt. A legfelső szintű elemeknek nincsenek kezdő szóközök.
 
 Linux rendszeren:
 
@@ -121,7 +121,7 @@ Windows rendszeren:
 
 ### <a name="check-container-logs-for-issues"></a>A problémákhoz tartozó tároló-naplók keresése
 
-Ha a IoT Edge biztonsági démon fut, tekintse meg a tárolók naplóit a problémák észleléséhez. Indítsa el a telepített tárolókat, majd tekintse meg a IoT Edge futtatókörnyezetet alkotó tárolókat: edgeAgent és edgeHub. A IoT Edge-ügynök naplói általában az egyes tárolók életciklusára vonatkozó információkat biztosítanak. Az IoT Edge hub naplói az üzenetküldéssel és az útválasztással kapcsolatos információkat biztosítanak. 
+Ha a IoT Edge biztonsági démon fut, tekintse meg a tárolók naplóit a problémák észleléséhez. Indítsa el a telepített tárolókat, majd tekintse meg a IoT Edge futtatókörnyezetet alkotó tárolókat: edgeAgent és edgeHub. A IoT Edge-ügynök naplói általában az egyes tárolók életciklusára vonatkozó információkat biztosítanak. Az IoT Edge hub naplói az üzenetküldéssel és az útválasztással kapcsolatos információkat biztosítanak.
 
    ```cmd
    iotedge logs <container name>
@@ -163,7 +163,7 @@ Alapértelmezés szerint a `agent` elem az alábbi példához hasonlóan fog kin
    ```
 
    > [!WARNING]
-   > A YAML-fájlok nem tartalmazhatnak a lapokat identitásként. Ehelyett használjon két szóközt.
+   > A YAML-fájlok nem tartalmazhatnak a lapokat identitásként. Ehelyett használjon két szóközt. A legfelső szintű elemek nem rendelkezhetnek kezdő szóközökkel.
 
 Mentse a fájlt, és indítsa újra a IoT Edge Security Manager alkalmazást.
 
@@ -249,7 +249,7 @@ Egy tároló nem fut, és a edgeAgent-naplók 403 hibát jeleznek.
 
 **Alapvető ok**
 
-Az IOT Edge-ügynöknek nincs engedélye a modul rendszerképének elérésére.
+A IoT Edge ügynöknek nincs engedélye a modul rendszerképének elérésére.
 
 **Felbontás**
 
@@ -435,6 +435,6 @@ A DNS-kiszolgáló minden modul *createOptions* beállítható a IoT Edge üzeme
 
 ## <a name="next-steps"></a>Következő lépések
 
-Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldjön el egy problémát](https://github.com/Azure/iotedge/issues) , hogy tovább javítsuk. 
+Úgy gondolja, hogy hibát talált az IoT Edge platformon? [Küldjön el egy problémát](https://github.com/Azure/iotedge/issues) , hogy tovább javítsuk.
 
 Ha további kérdései vannak, hozzon létre egy [support Request](https://portal.azure.com/#create/Microsoft.Support) segítséget.

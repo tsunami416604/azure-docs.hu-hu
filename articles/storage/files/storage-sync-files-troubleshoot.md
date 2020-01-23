@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/8/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 1b24258efdd75977b5571506b3eabf952a4ae0a4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027782"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514629"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -41,8 +41,15 @@ Ha olyan Active Directory tartományvezérlőre próbálja telepíteni a Szinkro
 
 A probléma megoldásához vigye át az elsődleges tartományvezérlői szerepkört egy másik, Windows Server 2012 R2 vagy újabb rendszert futtató tartományvezérlőre, majd telepítse a szinkronizálást.
 
-<a id="server-registration-prerequisites"></a>**A kiszolgáló regisztrálása a következő üzenetet jeleníti meg: "Előfeltételek hiányoznak"**
+<a id="parameter-is-incorrect"></a>**A kötet elérése Windows Server 2012 R2 rendszeren meghiúsul, hiba: a paraméter helytelen.**  
+Miután létrehozta a kiszolgálói végpontot a Windows Server 2012 R2-ben, a következő hiba történik a kötet elérésekor:
 
+meghajtóbetűjel: \ nem érhető el.  
+A paraméter helytelen.
+
+A megoldáshoz telepítse a Windows Server 2012 R2 legújabb frissítéseit, és indítsa újra a kiszolgálót.
+
+<a id="server-registration-prerequisites"></a>**A kiszolgáló regisztrálása a következő üzenetet jeleníti meg: "Előfeltételek hiányoznak"**  
 Ez az üzenet akkor jelenik meg, ha az az vagy az AzureRM PowerShell-modul nincs telepítve a PowerShell 5,1-ben. 
 
 > [!Note]  

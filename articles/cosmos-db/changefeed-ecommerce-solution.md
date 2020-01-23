@@ -7,12 +7,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 50517db6a5bb1fc458ab2f563e905fca34f70cf4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c0c1a28dc399d3f176f92e656621fec1bc92dbfc
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442071"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513492"
 ---
 # <a name="use-azure-cosmos-db-change-feed-to-visualize-real-time-data-analytics"></a>A valós idejű adatelemzések megjelenítéséhez használja a Azure Cosmos DB módosítási csatornát
 
@@ -93,7 +93,7 @@ Hozza létre az Azure-erőforrásokat – Azure Cosmos DB, a Storage-fiókot, az
 
 Most hozzon létre egy gyűjteményt az e-kereskedelmi hely eseményeinek tárolására. Amikor egy felhasználó megtekint egy tételt, hozzáad egy tételt a kosárhoz, vagy megvásárol egy tételt, a gyűjtemény egy olyan rekordot fog kapni, amely tartalmazza a műveletet ("megtekintésre", "hozzáadva" vagy "megvásárolt"), az érintett elem nevét, az érintett elem árát, valamint a felhasználói kosár AZONOSÍTÓjának számát nvolved.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/) , és keresse meg azt a **Azure Cosmos db fiókot** , amelyet a sablon üzembe helyezése hozott létre.  
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) , és keresse meg a sablon központi telepítése által létrehozott **Azure Cosmos db fiókot** .  
 
 2. A **adatkezelő** ablaktáblán válassza az **új gyűjtemény** lehetőséget, és töltse ki az űrlapot a következő részletekkel:  
 
@@ -117,7 +117,7 @@ Most hozzon létre egy gyűjteményt az e-kereskedelmi hely eseményeinek tárol
 
 ### <a name="get-the-azure-cosmos-db-connection-string"></a>A Azure Cosmos DBi kapcsolatok karakterláncának beolvasása
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com/) , és keresse meg azt a **Azure Cosmos db fiókot** , amelyet a sablon üzembe helyezése hozott létre.  
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com/) , és keresse meg a sablon központi telepítése által létrehozott **Azure Cosmos db fiókot** .  
 
 2. Navigáljon a **kulcsok** panelre, másolja az elsődleges KAPCSOLATi karakterláncot, és másolja azt egy Jegyzettömbbe vagy egy másik dokumentumba, amely a laborban elérhető lesz. Címkézheti Cosmos DB a **kapcsolatok karakterláncát**. Később át kell másolnia a karakterláncot a kódra, ezért jegyezze fel, hogy hol tárolja.
 
@@ -177,7 +177,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
  
 6. Várjon, amíg a program futni próbál. A csillagok azt jelentik, hogy az adatforgalom bekerül! A program futásának fenntartása – fontos, hogy a rendszer sok adatgyűjtést gyűjtsön.  
 
-7. Ha az [Azure Portalra](https://portal.azure.com/) navigál, majd az erőforráscsoport Cosmos db fiókjára, majd a **Adatkezelőra**, megjelenik a **changefeedlabcollection** importált véletlenszerű adatmennyiség.
+7. Ha [Azure Portal](https://portal.azure.com/) , majd az erőforráscsoport Cosmos db fiókjához navigál, majd **adatkezelő**, akkor a rendszer a **changefeedlabcollection** importált véletlenszerű adatmennyiséget fogja látni.
  
    ![A portálon létrehozott adatértékek](./media/changefeed-ecommerce-solution/data-generated-in-portal.png)
 
@@ -185,7 +185,7 @@ Ha szeretné megtudni, hogyan dolgozza fel a változás a hírcsatornában az ú
 
 A Azure Stream Analytics egy teljes körűen felügyelt felhőalapú szolgáltatás, amely valós idejű feldolgozást biztosít a folyamatos átviteli sebességhez. Ebben a laborban a stream Analytics használatával dolgozza fel az Event hub új eseményeit (például egy elem megtekintett, kosárba való felvételével vagy megvásárlásával), ezeket az eseményeket valós idejű adatelemzésbe helyezheti el, majd elküldheti őket a vizualizációk Power BI.
 
-1. Az [Azure Portalon](https://portal.azure.com/)navigáljon az erőforráscsoporthoz, majd a **streamjob1** (a prelab létrehozott stream Analytics-feladatokhoz).  
+1. A [Azure Portal](https://portal.azure.com/)navigáljon az erőforráscsoporthoz, majd a **streamjob1** (a prelab létrehozott stream Analytics-feladatokhoz).  
 
 2. Válassza ki az alább látható **bemeneteket** .  
 
@@ -320,7 +320,7 @@ A Power BI egy üzleti elemzési eszközcsomag, mellyel adatokat elemezhet és m
 
 Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-kereskedelmi hellyel való kapcsolódáshoz. Az e-kereskedelmi webhely létrehozásához használjon egy Azure Cosmos-adatbázist a termékkategóriák (nők, férfiak, Unisex), a termékkatalógus és a legnépszerűbb elemek listájának tárolásához.
 
-1. Térjen vissza az [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjára**, majd a **adatkezelő**.  
+1. Térjen vissza a [Azure Portalra](https://portal.azure.com/), majd a **Cosmos db-fiókjába**, majd **adatkezelő**.  
 
    Vegyen fel két gyűjteményt a **changefeedlabdatabase** alá - **termékek** és **Kategóriák** rögzített tárolókapacitással.
 
@@ -390,9 +390,8 @@ Most bemutatjuk, hogyan használható az új adatelemzési eszköz egy valós e-
 
 ## <a name="delete-the-resources"></a>Erőforrások törlése
 
-A laborban létrehozott erőforrások törléséhez navigáljon az erőforráscsoport az [Azure Portalon](https://portal.azure.com/), majd válassza az **erőforráscsoport törlése** elemet az oldal tetején található menüből, és kövesse a megadott utasításokat.
+A laborban létrehozott erőforrások törléséhez keresse meg [Azure Portal](https://portal.azure.com/)az erőforráscsoportot, majd válassza az **erőforráscsoport törlése** elemet az oldal tetején található menüből, és kövesse a megadott utasításokat.
 
 ## <a name="next-steps"></a>Következő lépések 
   
 * Ha többet szeretne megtudni a hírcsatornák változásáról, tekintse meg a [Azure Cosmos db](change-feed.md) 
-* Az Egészségügyi Világszervezet [adatcsatorna-értesítési megoldásának módosítása](change-feed-hl7-fhir-logic-apps.md) Azure Cosmos db használatával.

@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 08/28/2019
 ms.author: helohr
-ms.openlocfilehash: 10724407b8ba5568b38a844f2bf475060e2b7699
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 6bdac3f06834ccb5454efa0d77bec5a5a6c5b5bf
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227667"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515105"
 ---
 # <a name="windows-10-enterprise-multi-session-faq"></a>A Windows 10 Enterprise több munkamenetes használata – gyakori kérdések
 
@@ -44,7 +44,7 @@ A rendszerképet a LOB-alkalmazások telepítésével és a Sysprep eszközzel t
  
 ## <a name="how-do-i-manage-windows-10-enterprise-multi-session-after-deployment"></a>Az üzembe helyezést követően Hogyan a Windows 10 Enterprise multi-session-munkamenet kezelése?
 
-Bármilyen támogatott konfigurációs eszközt használhat, de azt javasoljuk, hogy System Center Configuration Manager 1906, mivel ez a Windows 10 Enterprise több munkamenetet is támogatja. Jelenleg Microsoft Intune támogatással dolgozunk.
+Bármilyen támogatott konfigurációs eszközt használhat, de javasoljuk, hogy Configuration Manager 1906-es verzióra, mert az támogatja a Windows 10 Enterprise több munkamenetet. Jelenleg Microsoft Intune támogatással dolgozunk.
  
 ## <a name="can-windows-10-enterprise-multi-session-be-azure-active-directory-ad-joined"></a>Lehet a Windows 10 Enterprise multi-session Azure Active Directory (AD)-hez csatlakoztatva?
 

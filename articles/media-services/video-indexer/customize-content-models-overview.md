@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 06/26/2019
 ms.author: anzaman
-ms.openlocfilehash: 9abf9b791cc986bcce49bbd0cf8136a573a149a3
-ms.sourcegitcommit: 65131f6188a02efe1704d92f0fd473b21c760d08
+ms.openlocfilehash: 09e6fd8530ddb1745a92c6f31f4d5a5843a2ac10
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2019
-ms.locfileid: "70860200"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513167"
 ---
 # <a name="customizing-content-models-in-video-indexer"></a>Tartalmi modellek testreszabása Video Indexer
 
@@ -45,6 +45,6 @@ Ez a cikk olyan cikkekre mutató hivatkozásokat tartalmaz, amelyek az egyes tes
 * [Személy modellek testreszabása a Video Indexer webhely használatával](customize-person-model-with-website.md)
 * [Személy modellek testreszabása a Video Indexer API használatával](customize-person-model-with-api.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Video Indexer áttekintése](video-indexer-overview.md)

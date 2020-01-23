@@ -7,12 +7,12 @@ services: site-recovery
 ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
-ms.openlocfilehash: 8bfbc6783df4f902d25b2a4791708990a327edc8
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ccf258594aa68fc9b5d0189c9ada640078e0ba6f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73663070"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514867"
 ---
 # <a name="vmware-to-azure-disaster-recovery-architecture"></a>VMware – Azure vész-helyreállítási architektúra
 
@@ -28,7 +28,7 @@ Az alábbi táblázat és ábra áttekintést nyújt az Azure-ba irányuló VMwa
 **Azure** | Azure-előfizetés, Azure Storage-fiók a gyorsítótárhoz, a felügyelt lemezekhez és az Azure-hálózathoz. | A helyszíni virtuális gépekről replikált adatok tárolása az Azure Storage-ban történik. Az Azure-beli virtuális gépek a replikált adatokkal jönnek létre, amikor feladatátvételt hajt végre a helyszínen az Azure-ba. Az Azure virtuális gépek a létrejöttükkor csatlakoznak az Azure virtuális hálózathoz.
 **Konfigurációs kiszolgáló számítógépe** | Egyetlen helyszíni gép. Azt javasoljuk, hogy egy letöltött OVF-sablonból üzembe helyezhető VMware virtuális gépként futtassa.<br/><br/> A gép az összes helyszíni Site Recovery-összetevőt futtatja, amely tartalmazza a konfigurációs kiszolgálót, a Process Servert és a fő célkiszolgáló kiszolgálót. | **Konfigurációs kiszolgáló**: koordinálja a helyszíni és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.<br/><br/> **Process Server**: alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Replikációs adatkérést kap; a gyorsítótárazással, tömörítéssel és titkosítással optimalizálja azt. és elküldi az Azure Storage-nak. A folyamatkiszolgáló ezenfelül telepíti az Azure Site Recovery mobilitási szolgáltatást a replikálni kívánt virtuális gépekre, és elvégzi a helyszíni gépek automatikus felderítését. Az üzembe helyezés során további, különálló folyamat-kiszolgálókat adhat hozzá a replikációs forgalom nagyobb mennyiségének kezeléséhez.<br/><br/> **Fő célkiszolgáló**: alapértelmezés szerint telepítve van a konfigurációs kiszolgálón. Az Azure-beli feladat-visszavétel során kezeli a replikációs adatok kezelését. Nagyméretű központi telepítések esetén további, különálló fő célkiszolgáló adható hozzá a feladat-visszavételhez.
 **VMware-kiszolgálók** | A VMware virtuális gépek helyszíni vSphere ESXi-kiszolgálókon futnak. A gazdagépek felügyeletéhez vCenter-kiszolgálót ajánlunk. | Site Recovery telepítése során VMware-kiszolgálókat ad hozzá a Recovery Services-tárolóhoz.
-**Replikált gépek** | A mobilitási szolgáltatás minden replikált VMware virtuális gépen telepítve van. | Javasoljuk, hogy engedélyezze az automatikus telepítést a Process Serverről. Azt is megteheti, hogy manuálisan telepíti a szolgáltatást, vagy automatikus telepítési módszert használ, például System Center Configuration Manager.
+**Replikált gépek** | A mobilitási szolgáltatás minden replikált VMware virtuális gépen telepítve van. | Javasoljuk, hogy engedélyezze az automatikus telepítést a Process Serverről. Azt is megteheti, hogy manuálisan telepíti a szolgáltatást, vagy automatikus telepítési módszert használ, például Configuration Manager.
 
 **VMware-ről Azure-ra architektúra**
 
@@ -88,6 +88,6 @@ Miután beállította a replikálást, és elvégezte a vész-helyreállítási 
 ![Feladat-visszavétel](./media/vmware-azure-architecture/enhanced-failback.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Ezt az oktatóanyagot](vmware-azure-tutorial.md) követve engedélyezheti a VMware – Azure replikálást.

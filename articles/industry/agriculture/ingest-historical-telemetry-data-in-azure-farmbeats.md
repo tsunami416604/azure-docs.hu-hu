@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4a567bc0495595da77ef7d6cd240ee7fb30f0ed
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170147"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513932"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -20,7 +20,7 @@ Az eszközök internetes hálózata (IoT) erőforrások, például az eszközök
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-Mielőtt folytatná ezt a cikket, győződjön meg arról, hogy telepítette a FarmBeats, és összegyűjtötte a korábbi adatokat a IoT.
+Mielőtt folytatná ezt a cikket, győződjön meg róla, hogy telepítette a FarmBeats-t, és összegyűjtötte a korábbi adatokat a IoT-eszközökről.
 A partnerek hozzáférését is engedélyeznie kell a következő lépésekben leírtak szerint.
 
 ## <a name="enable-partner-access"></a>Partneri hozzáférés engedélyezése
@@ -38,31 +38,36 @@ Kövesse az alábbi lépéseket.
 >[!NOTE]
 > A következő lépések végrehajtásához rendszergazdának kell lennie.
 
-1. Töltse le a [szkriptet](https://aka.ms/farmbeatspartnerscript), és bontsa ki a helyi meghajtón. A zip-fájlban két fájl található.
-2. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/), és nyissa meg az Azure Cloud Shellt. Ez a lehetőség a portál jobb felső sarkában található eszköztáron érhető el.
+1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscriptv2), és bontsa ki a helyi meghajtóra. Egy fájl lesz a zip-fájlban.
+2. Jelentkezzen be https://portal.azure.com/, és lépjen a Azure Active Directory-> alkalmazás regisztrációi
 
-    ![Azure Portal eszköztár](./media/for-tutorials/navigation-bar-1.png)
+3. Kattintson a FarmBeats-telepítés részeként létrehozott alkalmazás-regisztrációra. Ez a neve megegyezik a FarmBeats Datahub.
 
-3. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva.
+4. Kattintson az "API közzététele" elemre, > kattintson az "ügyfélalkalmazás hozzáadása" elemre, és írja be a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az "engedélyezés hatóköre" lehetőséget. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához.
 
-    ![PowerShell-beállítás](./media/for-tutorials/power-shell-new-1.png)
+5. Nyissa meg a Cloud Shellt. Ez a beállítás a Azure Portal jobb felső sarkában található eszköztáron érhető el.
 
-4. Töltse fel a Cloud Shell-példány 1. lépésében letöltött két fájlt.
+    ![Azure Portal eszköztár](./media/get-drone-imagery-from-drone-partner/navigation-bar-1.png)
 
-    ![Feltöltés gomb az eszköztáron](./media/for-tutorials/power-shell-two-1.png)
+6. Győződjön meg arról, hogy a környezet **PowerShell**-re van beállítva. Alapértelmezés szerint a bash értékre van beállítva.
 
-5. Nyissa meg azt a könyvtárat, ahová a fájlokat feltöltötte.
+    ![PowerShell eszköztár-beállítás](./media/get-sensor-data-from-sensor-partner/power-shell-new-1.png)
 
-   >[!NOTE]
-   > Alapértelmezés szerint a rendszer feltölti a fájlokat a kezdőkönyvtár/Kezdőlap/Felhasználónév mappába.
-6. Futtassa a szkriptet a következő parancs használatával:
+7. Töltse fel a fájlt az 1. lépésben az Cloud Shell-példányban.
 
-    ```azurepowershell-interactive
-    ./generateCredentials.ps1
+    ![Eszköztár feltöltése gomb](./media/get-sensor-data-from-sensor-partner/power-shell-two-1.png)
+
+8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
+
+9. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+
+    ```azurepowershell-interactive 
+
+    ./generatePartnerCredentials.ps1   
+
     ```
 
-7. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét. A EventHub kapcsolati karakterlánc a hencegés API-válaszának részeként érhető el.
-
+10. A képernyőn megjelenő utasításokat követve rögzítheti az **API-végpont**, a **bérlői azonosító**, az **ügyfél-azonosító**, az **ügyfél titkos kulcsa**és a **EventHub kapcsolódási karakterláncának**értékét.
 ## <a name="create-device-or-sensor-metadata"></a>Eszköz vagy érzékelő metaadatainak létrehozása
 
  Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket. Ehhez hozza létre a metaadatokat a FarmBeats API-k meghívásával. Vegye figyelembe, hogy az API-kat a fenti szakaszban létrehozott ügyfélalkalmazásként kell meghívni.
@@ -81,7 +86,7 @@ Kövesse az alábbi lépéseket.
 |          Gyártó            |         A gyártó neve    |
 |  ProductCode                    |  Eszköz Termékkód vagy modell neve vagy száma. Például: EnviroMonitor # 6800.  |
 |            Portok          |     A port neve és típusa, amely digitális vagy analóg.
-|     Name (Név)                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
+|     Név                 |  Az erőforrást azonosító név. Például a modell neve vagy a termék neve.
       Leírás     | Adjon meg egy értelmes leírást a modellről.
 |    Tulajdonságok          |    További tulajdonságok a gyártótól.   |
 |    **Eszköz**             |                      |
@@ -90,7 +95,7 @@ Kövesse az alábbi lépéseket.
 |  ReportingInterval        |   Jelentéskészítési időköz (másodperc).
 |  Földrajzi egység            |  Az eszköz földrajzi szélessége (-90 és + 90), a hosszúság (-180 – 180) és a Jogosultságszint-emelés (méterben).   
 |ParentDeviceId       |    Annak a fölérendelt eszköznek az azonosítója, amelyhez az eszköz csatlakoztatva van. Például egy átjáróhoz csatlakoztatott csomópont. A csomópontok átjáróként vannak parentDeviceId.  |
-|    Name (Név)            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
+|    Név            | Az erőforrás azonosítására szolgáló név. Az eszköz partnereinek olyan nevet kell küldeniük, amely konzisztens a partner oldalán található eszköznév nevével. Ha a partner eszköz neve felhasználó által definiált, akkor a felhasználó által definiált nevet is propagálni kell a FarmBeats.|
 |     Leírás       |      Adjon meg egy értelmes leírást. |
 |     Tulajdonságok    |  További tulajdonságok a gyártótól.
 |     **SensorModel**        |          |
@@ -102,7 +107,7 @@ Kövesse az alábbi lépéseket.
 |    SensorMeasures > típusa    |Az érzékelő telemetria-adattípusának mértékegysége A rendszer által meghatározott típusok: AmbientTemperature, CO2, mélység, ElectricalConductivity, LeafWetness, Length, LiquidLevel, nitrát, O2, PH, foszfát, PointInTime, kálium, nyomás, RainGauge, RelativeHumidity, sótartalom, SoilMoisture, SoilTemperature, SolarRadiation, State, TimeDuration, UVRadiation, UVIndex, Volume, WindDirection, WindRun, szélsebesség, párolgás, PAR. További részletekért tekintse meg a/ExtendedType API-t.|
 |        SensorMeasures > egység              | Az érzékelő telemetria-adategysége. A rendszer által meghatározott egységek: nem egység, Celsius, Fahrenheit, Kelvin, Rankine, Pascal, Mercury, PSI, milliméter, centiméter, méter, hüvelyk, láb, Mile, kilométer, MilesPerHour, MilesPerSecond, KMPerHour, KMPerSecond, MetersPerHour, MetersPerSecond, Degree, WattsPerSquareMeter, KiloWattsPerSquareMeter, MilliWattsPerSquareCentiMeter, MilliJoulesPerSquareCentiMeter, VolumetricWaterContent, százalék, PartsPerMillion, MicroMol, MicroMolesPerLiter, SiemensPerSquareMeterPerMole, MilliSiemensPerCentiMeter, Centibar, DeciSiemensPerMeter, KiloPascal, VolumetricIonContent, liter, MilliLiter, másodperc, UnixTimestamp, MicroMolPerMeterSquaredPerSecond, InchesPerHour továbbiak, tekintse meg a/ExtendedType API-t.|
 |    SensorMeasures > AggregationType    |  Az értékek a következők lehetnek: none, Average, Max, minimum vagy StandardDeviation.  |
-|          Name (Név)            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
+|          Név            | Egy erőforrás azonosítására szolgáló név. Például a modell neve vagy a termék neve.  |
 |    Leírás        | Adjon meg egy értelmes leírást a modellről.  |
 |   Tulajdonságok       |  További tulajdonságok a gyártótól.  |
 |    **Érzékelő**      |          |
@@ -111,7 +116,7 @@ Kövesse az alábbi lépéseket.
 | Földrajzi egység          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
 |    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
-| Name (Név)            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
+| Név            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
 |    Leírás      | Adjon meg egy értelmes leírást. |
 |    Tulajdonságok        |További tulajdonságok a gyártótól. |
 
@@ -121,7 +126,7 @@ További információ az objektumokról: [hencegés](https://aka.ms/FarmBeatsDat
 
 API-kérelem létrehozásához össze kell kapcsolni a HTTP-(POST-) metódust, az API szolgáltatás URL-címét és az erőforráshoz tartozó URI-t, amely lekérdezi, beküldi a kérelmet, létrehoz vagy töröl egy kérést. Ezután adjon hozzá egy vagy több HTTP-kérelem fejlécét. Az API-szolgáltatás URL-címe az API-végpont, azaz a Datahub URL-cím (https://\<yourdatahub >. azurewebsites. net).  
 
-### <a name="authentication"></a>Hitelesítés
+### <a name="authentication"></a>Authentication
 
 A FarmBeats Datahub tulajdonosi hitelesítést használ, amelyhez az alábbi, az előző szakaszban létrehozott hitelesítő adatok szükségesek:
 

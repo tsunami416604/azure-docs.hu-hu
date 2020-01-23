@@ -1,7 +1,7 @@
 ---
-title: Élő események és élő kimenetek Media Services
+title: Élő események és élő kimenetek – fogalmak a Azure Media Services v3-ban
 titleSuffix: Azure Media Services
-description: A Azure Media Services v3 élő eseményeinek és élő kimenetének áttekintése.
+description: Ez a témakör áttekintést nyújt az élő eseményekről és a Azure Media Services v3 élő kimenetéről.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,12 +14,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 09/30/2019
 ms.author: juliako
-ms.openlocfilehash: d2f0689dd1f1b5fbe349478ad885b76eb79d91a0
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: cd1f55a4ca94aae73a56334c76f211afff6e9622
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73569670"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514051"
 ---
 # <a name="live-events-and-live-outputs-in-media-services"></a>Élő események és élő kimenetek Media Services
 
@@ -120,7 +120,7 @@ Kreatív vagy nem kreatív URL-címeket is használhat.
     |Nyelv|A hiúság URL-címének engedélyezése|Hozzáférési jogkivonat beállítása|
     |---|---|---|
     |REST|[Properties. vanityUrl](https://docs.microsoft.com/rest/api/media/liveevents/create#liveevent)|[LiveEventInput. accessToken](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventinput)|
-    |parancssori felület|[--Vanity-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-Token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
+    |CLI|[--Vanity-URL](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#az-ams-live-event-create)|[--Access-Token](https://docs.microsoft.com/cli/azure/ams/live-event?view=azure-cli-latest#optional-parameters)|
     |.NET|[LiveEvent.VanityUrl](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveevent.vanityurl?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEvent_VanityUrl)|[LiveEventInput. AccessToken](https://docs.microsoft.com/dotnet/api/microsoft.azure.management.media.models.liveeventinput.accesstoken?view=azure-dotnet#Microsoft_Azure_Management_Media_Models_LiveEventInput_AccessToken)|
     
 ### <a name="live-ingest-url-naming-rules"></a>Élő betöltési URL-címek elnevezési szabályai
@@ -178,6 +178,6 @@ Az élő kimenetekkel kapcsolatos részletes információkért lásd: [FELHŐALA
 
 Tekintse meg a [Azure Media Services közösségi](media-services-community.md) cikket, amely különböző módokon jelenítheti meg a kérdéseket, visszajelzéseket küldhet, és frissítéseket kaphat a Media Servicesról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Élő közvetítés – oktatóanyag](stream-live-tutorial-with-api.md)

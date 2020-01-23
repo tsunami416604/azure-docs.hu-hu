@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 318b73011901e9ab07643bc2ecec28e5016e8702
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613907"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514813"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
 
@@ -19,8 +19,8 @@ Ez a cikk azt ismerteti, hogyan lehet automatizálni a mobilitási szolgáltatá
 Ha a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő helyreállításához Site Recovery helyez üzembe, a mobilitási szolgáltatás ügynökét minden replikálni kívánt gépre telepítenie kell. A mobilitási szolgáltatás rögzíti az adatírásokat a gépen, és továbbítja azokat a Site Recovery folyamat-kiszolgálónak a replikáláshoz. A mobilitási szolgáltatást többféleképpen is üzembe helyezheti:
 
 - **Leküldéses telepítés**: site Recovery telepítse a mobilitási szolgáltatás ügynököt, amikor engedélyezi a replikációt a Azure Portal lévő gépeken.
-- **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
-- **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a System Center Configuration Manager vagy harmadik féltől származó eszközökkel, például a Intigua JetPatch.
+- **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](/vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
+- **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager, vagy külső gyártótól származó eszközök, például a Intigua JetPatch.
 
 Az automatikus telepítés és a frissítés megoldást nyújt, ha:
 

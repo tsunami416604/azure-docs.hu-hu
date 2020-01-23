@@ -6,12 +6,12 @@ ms.service: azure-migrate
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: hamusa
-ms.openlocfilehash: 1cd1ff83fd706e3474426f6cc2ac99d39e74dc22
-ms.sourcegitcommit: 42748f80351b336b7a5b6335786096da49febf6a
+ms.openlocfilehash: 96d1c44eb9ecb71684e817a89f9376a07dbe3ccb
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72177935"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514969"
 ---
 # <a name="set-up-dependency-visualization-for-assessment"></a>Függőségi vizualizáció beállítása az értékeléshez
 
@@ -31,14 +31,14 @@ A függőségi leképezés segítségével megjelenítheti a függőségeket a f
 
 - Győződjön meg arról, hogy [létrehozott](how-to-add-tool-first-time.md) egy Azure Migrate projektet.
 - Ha már létrehozott egy projektet, győződjön meg arról, hogy [felvette](how-to-assess.md) a Azure Migrate: Server Assessment eszközt.
-- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információ](migrate-appliance.md).
+- Győződjön meg arról, hogy felderítette a gépeket a Azure Migrate; Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
 
 
 **Szolgáltatások** | **Megjegyzés**
 --- | ---
-Rendelkezésre állás | A függőségi vizualizáció nem érhető el Azure Governmentban.
+Elérhetőség | A függőségi vizualizáció nem érhető el Azure Governmentban.
 Szolgáltatástérkép | A függőségi vizualizáció Azure Monitor Service Map megoldást használ. [Service Map](../azure-monitor/insights/service-map.md) automatikusan felfedi és megjeleníti a kiszolgálók közötti kapcsolatokat.
-Ügynökök | A függőségi vizualizáció használatához telepítse a következő ügynököket a leképezni kívánt gépekre:<br/> - [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) ügynöke (korábbi nevén Microsoft monitoring Agent (MMA).<br/> - [Service Map függőségi ügynököt](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager, amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
+Ügynökök | A függőségi vizualizáció használatához telepítse a következő ügynököket a leképezni kívánt gépekre:<br/> - [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) ügynöke (korábbi nevén Microsoft monitoring Agent (MMA).<br/> - [Service Map függőségi ügynököt](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent).<br/><br/> Az ügynök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a Configuration Manager, amely rendelkezik ügynök-telepítési megoldással Azure Migratehoz.
 Függőségi ügynök | Tekintse át a Windows és a Linux [függőségi ügynökének támogatását](../azure-monitor/insights/vminsights-enable-overview.md#the-microsoft-dependency-agent) .<br/><br/> [További](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples) információ a függőségi ügynök telepítéséhez szükséges parancsfájlok használatával.
 Log Analytics ügynök (MMA) | [További](../azure-monitor/platform/log-analytics-agent.md#install-and-configure-agent) információ az MMA telepítési módszereiről.<br/><br/> System Center Operations Manager 2012 R2 vagy újabb rendszer által figyelt gépek esetében nem kell telepítenie az MMA-ügynököt. A Service Map a Operations Managersal integrálódik. Az integrációt az [itt](https://docs.microsoft.com/azure/azure-monitor/insights/service-map-scom#prerequisites)található útmutatás használatával engedélyezheti. Vegye figyelembe azonban, hogy a függőségi ügynöknek telepítve kell lennie ezekre a gépekre.<br/><br/> [Tekintse át](../azure-monitor/platform/log-analytics-agent.md#supported-linux-operating-systems) a log Analytics ügynök által támogatott Linux operációs rendszereket.
 Értékelési csoportok | Azok a csoportok, amelyeknek a függőségeit szeretné megjeleníteni, nem tartalmazhatnak 10 rendszernél több gépet. Ha több mint 10 géppel rendelkezik, a függőségek megjelenítéséhez ossza fel őket kisebb csoportokba.
@@ -50,7 +50,7 @@ A függőségi vizualizáció használatához hozzá kell rendelnie egy [log Ana
 - Csak a Azure Migrate projekt-előfizetésben csatolhat munkaterületet.
 - Egy meglévő munkaterületet is csatolhat, vagy létrehozhat egy újat.
 - A munkaterületet a gép függőségi vizualizációjának első beállításakor csatolja.
-- A munkaterületet csak a Azure Migrate projektben lévő gépek felfedése után lehet csatlakoztatni. Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információ](migrate-appliance.md).
+- A munkaterületet csak a Azure Migrate projektben lévő gépek felfedése után lehet csatlakoztatni. Ezt úgy teheti meg, hogy a [VMware](how-to-set-up-appliance-vmware.md) vagy a [Hyper-V](how-to-set-up-appliance-hyper-v.md)Azure Migrate berendezését állítja be. A készülék felfedi a helyszíni gépeket, és metaadatokat és teljesítményadatokat küld Azure Migratenak: a kiszolgáló értékelését. [További információk](migrate-appliance.md).
 
 Csatoljon egy munkaterületet az alábbiak szerint:
 
@@ -86,9 +86,9 @@ Az ügynök telepítése Windows rendszerű gépre:
 2. Az **Üdvözöljük** lapon kattintson a **Tovább** gombra. A **Licencfeltételek** oldalon kattintson az **Elfogadom** gombra a feltételek elfogadásához.
 3. A **célmappában**tartsa meg vagy módosítsa az alapértelmezett telepítési mappát > a **Tovább gombra**.
 4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **Next (tovább**) lehetőséget.
-5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább**gombra.
+5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
-Az ügynököt a parancssorból vagy egy automatizált módszerrel, például System Center Configuration Manager vagy [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)is telepítheti. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával. Az MMA-ügynök ezzel a [szkripttel](https://go.microsoft.com/fwlink/?linkid=2104394) is telepíthető.
+Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager vagy [Intigua](https://go.microsoft.com/fwlink/?linkid=2104196)is telepítheti. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával. Az MMA-ügynök ezzel a [szkripttel](https://go.microsoft.com/fwlink/?linkid=2104394) is telepíthető.
 
 [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#supported-windows-operating-systems) információ az MMA által támogatott Windows operációs rendszerekről.
 

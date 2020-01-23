@@ -5,15 +5,15 @@ author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 07/01/2019
-ms.openlocfilehash: a97a03f7ef20ae56cec04341fe76b79ee657547b
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.custom: hdinsightactive
+ms.date: 01/21/2020
+ms.openlocfilehash: 102ae56bb9dce2898c14bdc710420759a527a9e9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748480"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514697"
 ---
 # <a name="configure-the-os-patching-schedule-for-linux-based-hdinsight-clusters"></a>A Linux-alapú HDInsight-fürtök operációsrendszer-javítási ütemtervének konfigurálása
 
@@ -27,6 +27,19 @@ A HDInsight támogatást nyújt a fürtben lévő általános feladatok végreha
 
 > [!NOTE]  
 > A parancsfájl-műveletek nem fogják automatikusan alkalmazni a frissítéseket az összes jövőbeli frissítési ciklusra. Futtassa a parancsfájlokat minden alkalommal, amikor új frissítéseket kell alkalmazni a frissítések telepítéséhez, majd indítsa újra a virtuális gépet.
+
+## <a name="preparation"></a>Előkészítés
+
+Az éles környezetben történő üzembe helyezést megelőzően egy reprezentatív, nem éles környezethez tartozó javítás. Dolgozzon ki egy tervet a rendszer megfelelő teszteléséhez a tényleges javítás előtt.
+
+A fürttel létesített SSH-munkamenetből időről időre üzenetet kaphat, hogy a frissítés elérhető. Az üzenet valahogy így néz ki:
+
+```
+New release '18.04.3 LTS' available.
+Run 'do-release-upgrade' to upgrade it
+```
+
+A javítások opcionálisan és saját belátása szerint is megadhatók.
 
 ## <a name="restart-nodes"></a>Csomópontok újraindítása
   
@@ -52,9 +65,9 @@ A `install-updates-schedule-reboots` parancsfájl két numerikus paramétert fog
 > [!NOTE]
 > Azt követően, hogy egy meglévő fürtre alkalmazza, meg kell jelölnie egy parancsfájlt. Ellenkező esetben a skálázási műveletekkel létrehozott új csomópontok az alapértelmezett javítási ütemtervet fogják használni. Ha a parancsfájlt a fürt létrehozási folyamatának részeként alkalmazza, a rendszer automatikusan megőrzi azt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A parancsfájl-műveletek használatával kapcsolatos konkrét lépésekért tekintse meg a [Linux-alapú HDInsight-fürtök testre szabása parancsfájl-művelettel](hdinsight-hadoop-customize-cluster-linux.md)című szakaszt a következő részekben:
 
-* [Parancsfájl-művelet használata a fürt létrehozása során](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
-* [Parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)
+- [Parancsfájl-művelet használata a fürt létrehozása során](hdinsight-hadoop-customize-cluster-linux.md#use-a-script-action-during-cluster-creation)
+- [Parancsfájl-művelet alkalmazása futó fürtre](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster)

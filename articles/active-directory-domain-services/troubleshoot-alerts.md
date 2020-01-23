@@ -1,5 +1,5 @@
 ---
-title: Gyakori riasztások és megoldások a Azure AD Domain Servicesban | Microsoft Docs "
+title: Gyakori riasztások és megoldások a Azure AD Domain Servicesban | Microsoft Docs
 description: Ismerje meg, Hogyan oldhatók fel a Azure Active Directory Domain Services állapotának részeként generált általános riasztások
 services: active-directory-ds
 author: iainfoulds
@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 09/20/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 26ae70f9283ac7be847a59753130dd8ba8c11c18
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0bb02e6436bf9c9ebb9e54efa73aeed03ab44f3e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979908"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512664"
 ---
 # <a name="known-issues-common-alerts-and-resolutions-in-azure-active-directory-domain-services"></a>Ismert problémák: gyakori riasztások és megoldások a Azure Active Directory Domain Services
 
@@ -37,7 +37,7 @@ Ezt a hibát általában az okozza, ha egy Azure-előfizetést új Azure AD-cím
 Ez a hiba nem állítható helyre. A riasztás feloldásához [törölje a meglévő Azure AD DS felügyelt tartományt](delete-aadds.md) , majd hozza létre újra az új címtárban. Ha nem sikerül törölni az Azure AD DS felügyelt tartományt, [Nyisson meg egy Azure-támogatási kérést][azure-support] további hibaelhárítási segítségért.
 
 ## <a name="aadds101-azure-ad-b2c-is-running-in-this-directory"></a>AADDS101: Azure AD B2C fut ebben a könyvtárban
- 
+
 ### <a name="alert-message"></a>Riasztási üzenet
 
 *Azure AD Domain Services nem engedélyezhető Azure AD B2C könyvtárban.*
@@ -78,7 +78,7 @@ A riasztás feloldásához törölje meglévő Azure AD DS felügyelt tartomány
 1. Válassza ki az **alhálózatok** elemet a bal oldali navigációs sávon.
 1. Válassza ki a szerkeszteni kívánt alhálózatot, vagy hozzon létre egy további alhálózatot.
 1. Frissítsen vagy határozzon meg egy magánhálózati IP-címtartományt, majd **mentse** a módosításokat.
-1. [Hozzon létre egy helyettesítő Azure AD DS felügyelt tartományt](tutorial-create-instance.md). Ügyeljen arra, hogy egy frissített virtuális hálózati alhálózatot válasszon privát IP-címtartomány használatával.
+1. [Hozzon létre egy helyettesítő Azure AD DS felügyelt tartományt](tutorial-create-instance.md). Ügyeljen arra, hogy a frissített virtuális hálózati alhálózatot magánhálózati IP-címtartomány szerint válassza.
 
 Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
@@ -129,7 +129,7 @@ Az Azure AD DS aktív előfizetést igényel, és nem helyezhető át másik el�
 
 ### <a name="resolution"></a>Felbontás
 
-Az Azure AD DS adott erőforrásokat hoz létre a megfelelő működéshez, például a nyilvános IP-címekhez, hálózati adapterekhez és a terheléselosztóhoz. Ha bármelyik erőforrás törölve lett, a felügyelt tartomány nem támogatott állapotban van, és megakadályozza a tartomány felügyeletét. További információ ezekről az erőforrásokról: az [Azure AD DS által használt hálózati erőforrások](network-considerations.md#network-resources-used-by-azure-ad-ds).
+Az Azure AD DS a megfelelő működés érdekében további erőforrásokat hoz létre, például a nyilvános IP-címeket, a virtuális hálózati adaptereket és a Load balancert. Ha bármelyik erőforrás törölve lett, a felügyelt tartomány nem támogatott állapotban van, és megakadályozza a tartomány felügyeletét. További információ ezekről az erőforrásokról: az [Azure AD DS által használt hálózati erőforrások](network-considerations.md#network-resources-used-by-azure-ad-ds).
 
 Ez a riasztás akkor jön létre, ha az egyik szükséges erőforrás törölve van. Ha az erőforrást kevesebb mint 4 órával törölték, akkor az Azure-platform automatikusan újra létrehozhatja a törölt erőforrást. Az alábbi lépések azt ismertetik, hogyan ellenőrizhető az erőforrás-törlés állapota és időbélyege:
 
@@ -160,7 +160,7 @@ Ez a hiba nem állítható helyre. A riasztás feloldásához [törölje meglév
 
 ### <a name="resolution"></a>Felbontás
 
-Néhány automatikusan létrehozott egyszerű szolgáltatás az Azure AD DS felügyelt tartomány erőforrásainak kezelésére és létrehozására szolgál. Ha az egyik egyszerű szolgáltatásnév hozzáférési engedélyei módosulnak, nem tudja megfelelően kezelni az erőforrásokat. A következő lépések bemutatják, hogyan értelmezheti és engedélyezheti a hozzáférési engedélyeket egy egyszerű szolgáltatásnév számára:
+Néhány automatikusan létrehozott egyszerű szolgáltatás az Azure AD DS felügyelt tartomány erőforrásainak kezelésére és létrehozására szolgál. Ha az egyik egyszerű szolgáltatásnév hozzáférési engedélyei módosulnak, a tartomány nem tudja megfelelően kezelni az erőforrásokat. A következő lépések bemutatják, hogyan értelmezheti és engedélyezheti a hozzáférési engedélyeket egy egyszerű szolgáltatásnév számára:
 
 1. További információ [a szerepköralapú hozzáférés-vezérlésről és az alkalmazásokhoz való hozzáférés engedélyezéséről a Azure Portal](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
 2. Tekintse át az *ABBA844E-BC0E-44B0-947A-DC74E5D09022* azonosítóval rendelkező szolgáltatásnév hozzáférését, és adja meg a korábbi időpontban megtagadott hozzáférést.
@@ -173,18 +173,18 @@ Néhány automatikusan létrehozott egyszerű szolgáltatás az Azure AD DS fel�
 
 ### <a name="resolution"></a>Felbontás
 
-Az Azure AD DS virtuális hálózati alhálózatának elegendő IP-címmel kell rendelkeznie az automatikusan létrehozott erőforrásokhoz. Ez az IP-címtartomány magában foglalja a helyettesítő erőforrások létrehozásának szükségességét, ha van karbantartási esemény. Ha csökkenteni szeretné a rendelkezésre álló IP-címek kialakulásának kockázatát, ne helyezzen üzembe további erőforrásokat, például saját virtuális gépeket ugyanabba a virtuális hálózati alhálózatba, mint az Azure AD DS.
+Az Azure AD DS virtuális hálózati alhálózatának elegendő IP-címet kell tartalmaznia az automatikusan létrehozott erőforrásokhoz. Ez az IP-címtartomány magában foglalja a helyettesítő erőforrások létrehozásának szükségességét, ha van karbantartási esemény. Ha csökkenteni szeretné a rendelkezésre álló IP-címek kialakulásának kockázatát, ne helyezzen üzembe további erőforrásokat, például saját virtuális gépeket ugyanabba a virtuális hálózati alhálózatba, mint az Azure AD DS.
 
 A riasztás feloldásához törölje meglévő Azure AD DS felügyelt tartományát, majd hozza létre újra egy olyan virtuális hálózaton, amely elég nagy méretű IP-címtartományt használ. Ez a folyamat zavaró, mivel az Azure AD DS felügyelt tartomány nem érhető el, és a létrehozott egyéni erőforrások, például a szervezeti egységek vagy a szolgáltatásfiókok elvesznek.
 
 1. [Törölje az Azure AD DS felügyelt tartományt](delete-aadds.md) a címtárból.
-1. A virtuális hálózat IP-címtartomány frissítéséhez keresse meg és válassza ki a *virtuális hálózatot* a Azure Portalban. Válassza ki az Azure-beli virtuális hálózatot AD DS a kis IP-címtartományt.
+1. A virtuális hálózat IP-címtartomány frissítéséhez keresse meg és válassza ki a *virtuális hálózatot* a Azure Portalban. Válassza ki az Azure AD DS virtuális hálózatot, amely a kis IP-címtartományt tartalmaz.
 1. A **Beállítások**területen válassza a *címterület*lehetőséget.
 1. Frissítse a címtartományt a meglévő címtartomány kiválasztásával és szerkesztésével, vagy további címtartomány hozzáadásával. Győződjön meg arról, hogy az új IP-címtartomány elég nagy az Azure AD DS alhálózati tartományhoz. Ha elkészült, **mentse** a módosításokat.
 1. Válassza ki az **alhálózatok** elemet a bal oldali navigációs sávon.
 1. Válassza ki a szerkeszteni kívánt alhálózatot, vagy hozzon létre egy további alhálózatot.
 1. Frissítsen vagy adja meg a megfelelő méretű IP-címtartományt, majd **mentse** a módosításokat.
-1. [Hozzon létre egy helyettesítő Azure AD DS felügyelt tartományt](tutorial-create-instance.md). Ügyeljen arra, hogy egy olyan frissített virtuális hálózati alhálózatot válasszon, amelynek elég nagy az IP-címtartomány.
+1. [Hozzon létre egy helyettesítő Azure AD DS felügyelt tartományt](tutorial-create-instance.md). Győződjön meg arról, hogy a frissített virtuális hálózati alhálózat elég nagy méretű IP-címtartományt kapott.
 
 Az Azure AD DS felügyelt tartomány állapota két órán belül automatikusan frissül, és eltávolítja a riasztást.
 
@@ -216,11 +216,11 @@ Ez a hiba nem állítható helyre. A riasztás feloldásához [törölje meglév
 
 ### <a name="resolution"></a>Felbontás
 
-Az erőforrás-zárolások az Azure-erőforrásokra és-erőforráscsoportokra alkalmazhatók a módosítás vagy a törlés megakadályozása érdekében. Mivel az Azure AD DS felügyelt szolgáltatás, az Azure platformnak szüksége van a konfigurációs módosítások elvégzésére. Ha egyes Azure AD DS-összetevőkön erőforrás-zárolást alkalmaz, az Azure platform nem tudja végrehajtani a felügyeleti feladatait.
+Az erőforrás-zárolások az Azure-erőforrásokra alkalmazhatók a módosítás vagy törlés megakadályozása érdekében. Mivel az Azure AD DS felügyelt szolgáltatás, az Azure platformnak szüksége van a konfigurációs módosítások elvégzésére. Ha egyes Azure AD DS-összetevőkön erőforrás-zárolást alkalmaz, az Azure platform nem tudja végrehajtani a felügyeleti feladatait.
 
 Az Azure AD DS-összetevőkön található erőforrás-zárolások kereséséhez és eltávolításához végezze el a következő lépéseket:
 
-1. Az erőforráscsoport összes Azure AD DS hálózati összetevőjénél (például virtuális hálózat, hálózati adapter vagy nyilvános IP-cím) tekintse meg a Azure Portalban a műveleti naplókat. A műveleti naplóknak jelezniük kell, hogy a művelet miért sikertelen, és hol van alkalmazva az erőforrás-zárolás.
+1. Az erőforráscsoport összes Azure AD DS hálózati összetevőjére, például a virtuális hálózatra, a hálózati adapterre vagy a nyilvános IP-címekre vonatkozóan tekintse meg a Azure Portalban a műveleti naplókat. A műveleti naplóknak jelezniük kell, hogy a művelet miért sikertelen, és hol van alkalmazva az erőforrás-zárolás.
 1. Válassza ki azt az erőforrást, amelynél zárolás van alkalmazva, majd **a zárolások területen válassza**ki és távolítsa el a zárolás (oka) t.
 
 ## <a name="aadds116-resources-are-unusable"></a>AADDS116: az erőforrások használhatatlanok
@@ -231,7 +231,7 @@ Az Azure AD DS-összetevőkön található erőforrás-zárolások kereséséhez
 
 ### <a name="resolution"></a>Felbontás
 
-A szabályzatokat az Azure-erőforrásokra és-csoportokra alkalmazva szabályozhatja, hogy milyen konfigurációs műveleteket lehet engedélyezni. Mivel az Azure AD DS felügyelt szolgáltatás, az Azure platformnak szüksége van a konfigurációs módosítások elvégzésére. Ha egy házirendet az Azure AD DS egyes összetevőire alkalmaz, előfordulhat, hogy az Azure platform nem tudja végrehajtani a felügyeleti feladatait.
+A szabályzatok az Azure-erőforrásokra és-csoportokra vonatkoznak, amelyek meghatározzák, hogy milyen konfigurációs műveleteket lehet engedélyezni. Mivel az Azure AD DS felügyelt szolgáltatás, az Azure platformnak szüksége van a konfigurációs módosítások elvégzésére. Ha egy házirendet az Azure AD DS egyes összetevőire alkalmaz, előfordulhat, hogy az Azure platform nem tudja végrehajtani a felügyeleti feladatait.
 
 A következő lépések végrehajtásával ellenőrizheti az alkalmazott házirendeket az Azure AD DS összetevőin, és frissítheti őket:
 
@@ -246,7 +246,7 @@ A következő lépések végrehajtásával ellenőrizheti az alkalmazott házire
 
 ### <a name="resolution"></a>Felbontás
 
-A felügyelt tartomány konfigurációjában felmerülő problémákat jelző riasztások esetén [jelölje be az Azure AD DS Health](check-health.md) című részt. A hálózati konfigurációval kapcsolatos problémák letilthatják az Azure AD-vel való szinkronizálást. Ha fel tudja oldani a konfigurációs problémát jelző riasztásokat, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás.
+A felügyelt tartomány konfigurációjában felmerülő problémákat jelző riasztások esetén [jelölje be az Azure AD DS Health](check-health.md) című részt. A hálózati konfigurációval kapcsolatos problémák letilthatják az Azure AD-vel való szinkronizálást. Ha olyan riasztásokat tud feloldani, amelyek konfigurációs problémát jeleznek, várjon két órát, és térjen vissza, és ellenőrizze, hogy a szinkronizálás sikeresen befejeződött-e.
 
 Az alábbi gyakori okok azt okozzák, hogy a szinkronizálás leáll egy Azure AD DS felügyelt tartományban:
 
@@ -261,7 +261,7 @@ Az alábbi gyakori okok azt okozzák, hogy a szinkronizálás leáll egy Azure A
 
 ### <a name="resolution"></a>Felbontás
 
-A felügyelt tartomány konfigurációjában felmerülő problémákat jelző riasztások esetén [jelölje be az Azure AD DS Health](check-health.md) című részt. A hálózati konfigurációval kapcsolatos problémák letilthatják az Azure-platformot a biztonsági mentések sikeres elvégzése miatt. Ha fel tudja oldani a konfigurációs problémát jelző riasztásokat, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás.
+A felügyelt tartomány konfigurációjában felmerülő problémákat jelző [Azure AD DS állapotú](check-health.md) riasztások keresése. A hálózati konfigurációval kapcsolatos problémák letilthatják az Azure-platformot a biztonsági mentések sikeres elvégzése miatt. Ha olyan riasztásokat tud feloldani, amelyek konfigurációs problémát jeleznek, várjon két órát, és térjen vissza, és ellenőrizze, hogy a szinkronizálás sikeresen befejeződött-e.
 
 ## <a name="aadds503-suspension-due-to-disabled-subscription"></a>AADDS503: felfüggesztés a letiltott előfizetés miatt
 
@@ -292,7 +292,7 @@ Ha a felügyelt tartomány ismét engedélyezve van, az Azure AD DS felügyelt t
 > [!WARNING]
 > Ha egy Azure AD DS felügyelt tartományt hosszabb ideig felfüggesztenek, fennáll a veszélye annak törlésére. Oldja meg a felfüggesztés okát a lehető leggyorsabban. További információ: [Az Azure AD DS felfüggesztett állapotának megismerése](suspension.md).
 
-A felügyelt tartomány konfigurációjában felmerülő problémákat jelző riasztások esetén [jelölje be az Azure AD DS Health](check-health.md) című részt. Ha fel tudja oldani a konfigurációs problémát jelző riasztásokat, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás. Ha elkészült, [Nyisson meg egy Azure-támogatási kérést][azure-support] az Azure AD DS felügyelt tartomány újbóli engedélyezéséhez.
+A felügyelt tartomány konfigurációjában felmerülő problémákat jelző [Azure AD DS állapotú](check-health.md) riasztások keresése. Ha olyan riasztásokat tud feloldani, amelyek konfigurációs problémát jeleznek, várjon két órát, és térjen vissza, és ellenőrizze, hogy befejeződött-e a szinkronizálás. Ha elkészült, [Nyisson meg egy Azure-támogatási kérést][azure-support] az Azure AD DS felügyelt tartomány újbóli engedélyezéséhez.
 
 ## <a name="next-steps"></a>Következő lépések
 

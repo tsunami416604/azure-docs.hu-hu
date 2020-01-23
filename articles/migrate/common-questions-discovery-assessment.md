@@ -3,12 +3,12 @@ title: Gyakori kérdések – felderítés, értékelés és függőség elemzé
 description: Választ kaphat a felderítéssel, értékeléssel és függőségi elemzéssel kapcsolatos gyakori kérdésekre Azure Migrateban.
 ms.topic: conceptual
 ms.date: 12/29/2019
-ms.openlocfilehash: 5afda40f4953b8eb51a757034661eb5a3349cd10
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 0132563072ed04a52e4937da7a8df69196f1a91f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76292365"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513286"
 ---
 # <a name="common-questions-about-discovery-assessment-and-dependency-analysis"></a>Gyakori kérdések a felderítéssel, az értékeléssel és a függőségek elemzésével kapcsolatban
 
@@ -99,7 +99,7 @@ Nem, a függőségi vizualizációt nem lehet exportálni. A Azure Migrate azonb
 
 Ezzel [a parancsfájllal telepítheti a függőségi ügynököt](../azure-monitor/insights/vminsights-enable-hybrid-cloud.md#installation-script-examples). Kövesse ezeket az [utasításokat az MMA telepítéséhez](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) a parancssor vagy az Automation használatával. Az MMA esetében használja [ezt a parancsfájlt](https://gallery.technet.microsoft.com/scriptcenter/Install-OMS-Agent-with-2c9c99ab).
 
-A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint a System Center Configuration Manager és a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
+A parancsfájlok mellett olyan központi telepítési eszközöket is használhat, mint például a Microsoft Endpoint Configuration Manager és a [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration) az ügynökök üzembe helyezéséhez.
 
 
 ## <a name="what-operating-systems-does-mma-support"></a>Milyen operációs rendszereket támogat az MMA?

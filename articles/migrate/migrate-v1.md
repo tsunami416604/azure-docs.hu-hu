@@ -1,27 +1,27 @@
 ---
-title: A Azure Migrate korábbi verziójának használata
-description: Leírja, hogyan használható a Azure Migrate korábbi verziója.
+title: Work with the previous version of Azure Migrate
+description: Describes how to work with the previous version of Azure Migrate.
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: overview
 ms.date: 11/19/2019
 ms.author: raynew
 ms.custom: mvc
-ms.openlocfilehash: 52fe4af87d1f5ed6684896aebf404926691ccb07
-ms.sourcegitcommit: dbde4aed5a3188d6b4244ff7220f2f75fce65ada
+ms.openlocfilehash: 5d3dc951c8cb2948a4cd0b9d9f5c2a9b213c6e7e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74186542"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514986"
 ---
-# <a name="work-with-the-previous-version-of-azure-migrate"></a>A Azure Migrate korábbi verziójának használata
+# <a name="work-with-the-previous-version-of-azure-migrate"></a>Work with the previous version of Azure Migrate
 
-Ez a cikk a Azure Migrate korábbi verziójának használatáról nyújt információt.
+This article provides information about working with the previous version of Azure Migrate.
 
 
-A Azure Migrate szolgáltatásnak két verziója van:
+There are two versions of the Azure Migrate service:
 
-- **Aktuális verzió**: ezzel a verzióval Azure Migrate projekteket hozhat létre, felderítheti a helyszíni gépeket, és összehangolhatja az értékeléseket és áttelepítéseket. [További](whats-new.md) információ az ebben a verzióban található újdonságokról.
+- **Current version**: Use this version to create Azure Migrate projects, discover on-premises machines, and orchestrate assessments and migrations. [Learn more](whats-new.md) about what's new in this version.
 - **Előző verzió**: ha a Azure Migrate korábbi verzióját használja (csak a helyszíni VMWare virtuális gépek felmérése támogatott), akkor most az aktuális verziót kell használnia. Ha továbbra is az előző verzióban létrehozott Azure Migrate projekteket kell használnia, akkor ez a következő lehet:
     - Már nem hozhat létre áttelepítési projekteket.
     - Javasoljuk, hogy ne végezzen új felfedezéseket.
@@ -113,7 +113,7 @@ Windows Server 2012 és minden SPs | Az Azure teljes körű támogatást biztos�
 Windows Server 2008 R2 és minden SPs | Az Azure teljes körű támogatást biztosít.| Készen áll az Azure-beli használatra
 Windows Server 2008 (32 bites és 64 bites) | Az Azure teljes körű támogatást biztosít. | Készen áll az Azure-beli használatra
 Windows Server 2003, 2003 R2 | Támogatás nélkül, és az Azure-támogatáshoz [egyéni támogatási szerződés (CSA)](https://aka.ms/WSosstatement) szükséges. | Feltételesen készen áll az Azure használatára, érdemes lehet frissíteni az operációs rendszert az Azure-ba való Migrálás előtt.
-Windows 2000, 98, 95, NT, 3.1, MS-DOS | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
+Windows 2000, 98, 95, NT, 3,1, MS-DOS | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
 Windows-ügyfél 7, 8 és 10 | Az Azure csak a [Visual Studio-előfizetéshez](https://docs.microsoft.com/azure/virtual-machines/windows/client-images) nyújt támogatást. | Feltételesen készen áll az Azure-beli használatra
 Windows 10 Pro asztali verzió | Az Azure támogatást nyújt a több- [bérlős üzemeltetési jogosultságokhoz.](https://docs.microsoft.com/azure/virtual-machines/windows/windows-desktop-multitenant-hosting-deployment) | Feltételesen készen áll az Azure-beli használatra
 Windows Vista, XP Professional | Nem támogatott. Előfordulhat, hogy a gép az Azure-ban indul el, de az Azure nem biztosít operációsrendszer-támogatást. | Az Azure-ra feltételesen készen áll, hogy az Azure-ba való Migrálás előtt frissítse az operációs rendszert.
@@ -130,7 +130,7 @@ Az operációs rendszer **vCenter Serverként van megadva** | A Azure Migrate eb
 - Ha a méretezés teljesítmény-alapú, a méretre vonatkozó javaslat a virtuális gépek (processzor és memória) és a lemezek (IOPS és átviteli sebesség) teljesítményének előzményeit veszi figyelembe.
 - Ha a méretezési feltétel "mint helyszíni", az Azure-ban a méretre vonatkozó javaslat a helyszíni virtuális gép méretétől függ. A lemez méretezése az értékelés tulajdonságaiban megadott tárolási típuson alapul (az alapértelmezett érték a prémium szintű lemezek). Azure Migrate nem veszi figyelembe a virtuális gép és a lemezek teljesítményadatait.
 
-### <a name="review-cost-estimates"></a>Becsült költségbecslés
+### <a name="review-cost-estimates"></a>Költségbecslések áttekintése
 
 A költségbecslés a virtuális gépek Azure-ban való futtatásának teljes számítási és tárolási költségeit, valamint az egyes gépek részleteit mutatják be.
 
@@ -216,7 +216,7 @@ A munkaterület konfigurálása után le kell töltenie és telepítenie kell az
 4. Másolja ki a munkaterület-azonosítót és -kulcsot. Ezekre akkor van szükség, amikor telepíti az MMA-t a helyszíni gépre.
 
 > [!NOTE]
-> Az ügynökök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a System Center Configuration Manager vagy egy olyan partneri eszköz, amely egy olyan [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely ügynök-telepítési megoldást biztosít a Azure Migrate számára.
+> Az ügynökök telepítésének automatizálásához használhat olyan központi telepítési eszközt, mint például a Configuration Manager vagy egy olyan partneri eszköz, amely egy olyan [Intigua](https://www.intigua.com/getting-started-intigua-for-azure-migration), amely ügynök-telepítési megoldást biztosít a Azure Migrate számára.
 
 
 #### <a name="install-the-mma-agent-on-a-windows-machine"></a>Az MMA-ügynök telepítése Windows rendszerű gépre
@@ -229,7 +229,7 @@ Az ügynök telepítése Windows rendszerű gépre:
 4. Az **ügynök telepítési beállításai**területen válassza az **Azure log Analytics** > **Next (tovább**) lehetőséget.
 5. Új Log Analytics munkaterület hozzáadásához kattintson a **Hozzáadás** gombra. Illessze be azt a munkaterület-azonosítót és-kulcsot, amelyet a portálról másolt. Kattintson a **Tovább** gombra.
 
-Az ügynököt a parancssorból vagy egy automatizált módszerrel, például System Center Configuration Manager is telepítheti. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
+Az ügynököt a parancssorból vagy egy automatizált módszerrel, például Configuration Manager is telepítheti. [További](https://docs.microsoft.com/azure/azure-monitor/platform/log-analytics-agent#install-and-configure-agent) információ az MMA-ügynök telepítésével kapcsolatban ezen módszerek használatával.
 
 #### <a name="install-the-mma-agent-on-a-linux-machine"></a>Az MMA-ügynök telepítése Linux rendszerű gépre
 

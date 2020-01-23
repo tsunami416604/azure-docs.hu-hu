@@ -7,22 +7,22 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 08/28/2019
-ms.openlocfilehash: 2262c951b52ef58006bacde4be76dc92468a20ba
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5b5af034b116ec1cdcefc811630683c9f560c840
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364050"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513657"
 ---
 # <a name="connect-configuration-manager-to-azure-monitor"></a>Configuration Manager összekötése a Azure Monitor
-A System Center Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtemény adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
+A Microsoft Endpoint Configuration Manager-Azure Monitor környezet összekapcsolásával szinkronizálhatja az eszköz-gyűjtési adatait, és Azure Monitor és Azure Automation is hivatkozhat ezekre a gyűjteményekre.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Azure Monitor támogatja System Center Configuration Manager aktuális ág, 1606-es és újabb verzióját.
+Azure Monitor támogatja Configuration Manager aktuális ág, 1606-es és újabb verzióját.
 
 >[!NOTE]
->A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [Enable optional features from updates](https://docs.microsoft.com/sccm/core/servers/manage/install-in-console-updates#bkmk_options).
+>A Configuration Manager Log Analytics munkaterülettel való összekapcsolásának funkciója nem kötelező, és alapértelmezés szerint nincs engedélyezve. A funkció használatához engedélyeznie kell ezt a funkciót. További információ: [Enable optional features from updates](https://docs.microsoft.com/configmgr/core/servers/manage/install-in-console-updates#bkmk_options).
 
 ## <a name="configuration-overview"></a>Konfiguráció áttekintése
 
@@ -67,7 +67,7 @@ Tekintse át a [Windows rendszerű Azure monitor számítógépek csatlakoztatá
 ## <a name="connect-configuration-manager-to-log-analytics-workspace"></a>Configuration Manager összekötése Log Analytics munkaterülettel
 
 >[!NOTE]
-> Log Analytics kapcsolat hozzáadásához a Configuration Manager-környezetnek online módba konfigurált [szolgáltatási kapcsolódási ponttal](https://docs.microsoft.com/sccm/core/servers/deploy/configure/about-the-service-connection-point) kell rendelkeznie.
+> Log Analytics kapcsolat hozzáadásához a Configuration Manager-környezetnek online módba konfigurált [szolgáltatási kapcsolódási ponttal](https://docs.microsoft.com/configmgr/core/servers/deploy/configure/about-the-service-connection-point) kell rendelkeznie.
 
 > [!NOTE]
 > A hierarchiában lévő legfelső szintű helyet Azure Monitorra kell kapcsolni. Ha egy önálló elsődleges helyet csatlakoztat Azure Monitor, majd egy központi adminisztrációs helyet ad hozzá a környezethez, törölnie kell, majd újra létre kell hoznia a kapcsolatot az új hierarchián belül.

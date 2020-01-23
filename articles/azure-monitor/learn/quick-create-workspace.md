@@ -7,19 +7,19 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 0ab8019a8537d4080afdb457459f09cd156ff4ed
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bc8162a157cee10deeb8bf3f1e62a53fbdd30d0e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75365529"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513439"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Log Analytics munkaterület létrehozása a Azure Portal
 Az **log Analytics munkaterületek** menüjéből hozzon létre egy log Analytics munkaterületet a Azure Portal használatával. A Log Analytics munkaterület egy egyedi környezet, amely Azure Monitor naplózza az adatnaplót. Az egyes munkaterületek saját adattárral és konfigurációval rendelkeznek, és az adatforrások és megoldások úgy vannak konfigurálva, hogy egy adott munkaterületen tárolják az adataikat. Ha a következő forrásokból szeretne adatgyűjtést végrehajtani, Log Analytics munkaterületre van szüksége:
 
 * Azure-erőforrások az előfizetésében
 * System Center Operations Manager által figyelt helyszíni számítógépek
-* System Center Configuration Managerból származó eszközök gyűjteményei 
+* Configuration Managerból származó eszközök gyűjteményei 
 * Diagnosztika vagy naplózási adatok az Azure Storage-ból
 
 Más forrásokhoz, például az Azure-beli virtuális gépekhez és a környezetben található Windows-vagy Linux-alapú virtuális gépekhez a következő témakörökben talál további információt:

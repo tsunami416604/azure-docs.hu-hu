@@ -8,12 +8,12 @@ ms.date: 05/31/2019
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: f60ec802af0c88ee8cb3809bf27feef89e11570a
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 5ee1a20d4a3c46cab484b03b5fcc212a79d19047
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769795"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513269"
 ---
 # <a name="troubleshooting-issues-with-update-management"></a>Hibák elhárítása Update Management
 
@@ -376,7 +376,7 @@ Ha nem tudja feloldani a javítási problémát, készítsen másolatot a követ
 
 ### <a name="i-know-updates-are-available-but-they-dont-show-as-available-on-my-machines"></a>Tudom, hogy vannak-e elérhető frissítések, de nem jelennek meg a saját gépeken
 
-* Ez gyakran előfordul, ha a gépek WSUS vagy System Center Configuration Manager (SCCM) frissítéseinek beszerzésére vannak konfigurálva, de a WSUS és a SCCM nem hagyta jóvá a frissítéseket.
+* Ez általában akkor fordul elő, ha a számítógépek WSUS-vagy Microsoft-végponttól érkező frissítések beszerzésére vannak konfigurálva, Configuration Manager azonban a WSUS és a Configuration Manager nem hagyta jóvá a frissítéseket.
 * A [jelen cikk "az automatikus frissítések konfigurálása a beállításjegyzék szerkesztésével" című szakaszában](https://support.microsoft.com/help/328010/how-to-configure-automatic-updates-by-using-group-policy-or-registry-s)megtekintheti, hogy a gépek konfigurálva vannak-e a WSUS-hez és a SCCM.
 * Ha a WSUS nem jóváhagyja a frissítéseket, azok nem lesznek telepítve. A nem jóváhagyott frissítéseket Log Analytics a következő lekérdezés futtatásával tekintheti meg:
 

@@ -10,16 +10,16 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 05/07/2019
 ms.author: diberry
-ms.openlocfilehash: 6b7414d67a5c5b068c675ef7b57391b8990a7a16
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: dec6faab0dfc7f073639186429767bbf653ceda1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953078"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513609"
 ---
 # <a name="offline-evaluation"></a>Offline értékelés
 
-Az offline kiértékelés egy olyan módszer, amely lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül. Az offline kiértékelés az alkalmazásból a rangsor API-ba elküldett múltbeli adatokkal hasonlítja össze a különböző rangsorolt feladatok végrehajtását.
+Az offline kiértékelés egy olyan módszer, amely lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül. Az offline kiértékelés az alkalmazásból a rangsorba és a jutalmazási API-khoz elküldett múltbeli adatokkal hasonlítja össze a különböző sorainak végrehajtását.
 
 Az offline értékelés a Dátumtartomány alapján történik. A tartomány az aktuális időpontig véget ér. A tartomány kezdete nem lehet nagyobb, mint az [adatmegőrzéshez](how-to-settings.md)megadott napok száma.
 
@@ -56,9 +56,9 @@ Ha offline kiértékelést futtat, nagyon fontos, hogy elemezze az eredmények _
 
 ## <a name="how-offline-evaluations-are-done"></a>Hogyan történik az offline értékelések
 
-Az offline értékelések az **alternatív értékelés**nevű metódus használatával hajthatók végre. 
+Az offline értékelések az **alternatív értékelés**nevű metódus használatával hajthatók végre.
 
-A személyre szabott szolgáltatás arra a feltételezésre épül, hogy a felhasználók viselkedése (és így a jutalmak) nem lehet visszamenőlegesen előre jelezni (a személyre szabás nem tudja, mi történt, ha a felhasználó a korábban megjelenő eltérőt mutatott), és csak tanulni mért jutalmak. 
+A személyre szabott szolgáltatás arra a feltételezésre épül, hogy a felhasználók viselkedése (és így a jutalmak) nem lehet visszamenőlegesen előre jelezni (a személyre szabás nem tudja, mi történt, ha a felhasználó a korábban megjelenő eltérőt mutatott), és csak tanulni mért jutalmak.
 
 Ez az értékelésekhez használt fogalmi folyamat:
 
@@ -70,11 +70,11 @@ Ez az értékelésekhez használt fogalmi folyamat:
     [For every chronological event in the logs]
     {
         - Perform a Rank call
-    
+
         - Compare the reward of the results against the logged user behavior.
             - If they match, train the model on the observed reward in the logs.
             - If they don't match, then what the user would have done is unknown, so the event is discarded and not used for training or measurement.
-        
+
     }
 
     Add up the rewards and statistics that were predicted, do some aggregation to aid visualizations, and save the results.

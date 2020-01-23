@@ -4,16 +4,16 @@ description: Ez a cikk az Azure Nagyvállalati számlák kezelését ismerteti.
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 95df54eb096588fe23da87f7334f9d693e54cf9d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7cb2966c94485d0a05febf3085ab367fcba97434
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992321"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514357"
 ---
 # <a name="azure-enterprise-enrollment-invoices"></a>Azure nagyvállalati regisztrációs számlák
 
@@ -370,7 +370,7 @@ Referenciaképpen, ha az Excellel modellezi az Enterprise Portalon használt ker
 | Kerekítési díjszabás (2 tizedesjegy) | = MROUND({_forrás_}, 0,02) |
 | Kerekítési díjszabás (0 tizedesjegy) | = MROUND({_forrás_}, 2) |
 
-**2**. táblázat **– a Cloud Service és a virtuális gépek órája átalakítás**
+**2.**  **táblázat**  **– Cloud Service és a virtuális gépek óráinak átalakítása**
 
 ### <a name="conversion-between-download-usage-file-and-usage-summary-portal-view"></a>A Használati adatokat tartalmazó letöltött fájl és a Használati adatok összegzése portálnézet közötti átalakítás
 
@@ -417,7 +417,7 @@ Azon szolgáltatások esetében, ahol a zóna és a régió befolyásolja a díj
 | Zone 2 (2. zóna) | Ázsia és a csendes-óceáni térség keleti régiója <br> Ázsia és a csendes-óceáni térség délkeleti régiója <br> Kelet-Japán <br> Nyugat-Japán <br> Ausztrália keleti régiója <br> Délkelet-Ausztrália | Ázsia és a Csendes-óceáni térség <br> Japán <br> Latin-Amerika <br> Közel-Kelet / Afrika <br> Ausztrália keleti régiója <br> Délkelet-Ausztrália |
 | 3\. zóna | Dél-Brazília |   |
 
-**4**. táblázat **– adatátvitel régiók**
+**4.**  **táblázat**  **– Adatátviteli régiók**
 
 A szolgáltatások (például az O365 és az Azure) közötti, ugyanazon az adatközponton belüli adatforgalomért nem számítunk fel díjat.
 
@@ -557,7 +557,7 @@ További részletekért tekintse meg ezeket a kiegészítő forrásanyagokat. Ez
 | [**Felhasználóbarát szolgáltatásnevek**](https://azurepricing.blob.core.windows.net/supplemental/Friendly_Service_Names.xlsx) | Felsorolja az összes aktív szolgáltatást a szolgáltatáskategória, a felhasználóbarát szolgáltatásnév, a kötelezettségvállalási név és a cikkszám, a felhasználási név és a cikkszám, a mértékegység, valamint a jelentett használat és a megjelenített Enterprise Portal-használat közötti átváltási tényezők belefoglalásával. | Friendly\_Service\_Names.xlsx |
 | [**Szolgáltatásletöltési mezők**](https://azurepricing.blob.core.windows.net/supplemental/Service_Download_Fields.xlsx) | Ez a táblázat felsorolja a használati adatokat tartalmazó letöltött jelentésben szereplő, szolgáltatással kapcsolatos mezők összes lehetséges kombinációját. | Service\_Download\_Fields.xlsx |
 
-**5**. táblázat **– további információforrások**
+**5.**  **táblázat**  **– További forrásanyagok**
 
 ## <a name="power-bi-reporting"></a>Power BI-jelentések készítése
 
@@ -585,7 +585,7 @@ Az ingyenes próbaverzióra való regisztrációhoz lépjen a fogaskerék ikonra
 1. Adja meg API-hozzáférési kulcsát a kapcsolódáshoz. A regisztrációhoz tartozó kulcs az [Enterprise Portalon](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) érhető el. Kattintson a **Bejelentkezés** elemre.
 1. Az importálási folyamat automatikusan elindul. Ha befejeződött, a navigációs panelen megjelenik egy új irányítópult, jelentés és modell. Kattintson az irányítópultra az importált adatok megtekintéséhez.
 
-A regisztráció API-kulcsának létrehozásával kapcsolatos további információért tekintse meg az API-jelentések súgófájlját az [Enterprise Portalon](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). Az új tartalomcsomaggal kapcsolatos további információért töltse le a [Microsoft Azure Consumption Insights](https://automaticbillingspec.blob.core.windows.net/spec/Microsoft%20Azure%20Consumption%20Insights.docx?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26) dokumentumot.
+A regisztráció API-kulcsának létrehozásával kapcsolatos további információért tekintse meg az API-jelentések súgófájlját az [Enterprise Portalon](https://ea.azure.com/?WT.mc_id=azurebg_email_Trans_33675_1378_Service_Notice_EA_Customer_Power_BI_EA_Content_Pack_Apr26). További információ az új tartalom csomagról: [Microsoft Azure consumption Insights](/power-bi/desktop-connect-azure-cost-management).
 
 ### <a name="to-access-the-legacy-power-bi-ea-content-pack"></a>A korábbi Power BI EA-tartalomcsomag elérése:
 

@@ -8,12 +8,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
-ms.openlocfilehash: d4d9d2ff899a169ee81544761fe87fed3cca06c4
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75912312"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511144"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge Device Gateway-átjárón keresztül
 
@@ -26,6 +26,7 @@ Ez a cikk bemutatja, hogyan hozható létre saját tárolórendszerkép egy Modb
 A cikk azt feltételezi, hogy Modbus TCP protokollt használ. További információ arról, hogyan konfigurálható a modul a Modbus RTU támogatásához: a GitHubon a [Azure IoT Edge Modbus-modul](https://github.com/Azure/iot-edge-modbus) projektje.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
 * Azure IoT Edge-eszköz. A beállításával kapcsolatban lásd: [Azure IoT Edge telepítése Windows](quickstart.md) vagy [Linux](quickstart-linux.md)rendszeren.
 * Az IoT Edge-eszköz elsődleges kulcsának kapcsolati sztringje.
 * A Modbus TCP-t támogató fizikai vagy szimulált Modbus-eszköz. Ismernie kell az IPv4-címeit.

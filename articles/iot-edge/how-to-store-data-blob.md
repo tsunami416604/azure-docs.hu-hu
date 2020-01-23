@@ -8,12 +8,12 @@ ms.date: 12/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 12c5bf66de966faf8dc31c7265fdfb0180a95323
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bea00f429f31f2be62ee6a9c00f88873c595d94c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970835"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509818"
 ---
 # <a name="store-data-at-the-edge-with-azure-blob-storage-on-iot-edge"></a>Az Azure Blob Storage IoT Edge
 
@@ -85,7 +85,6 @@ A beállítás neve `deviceToCloudUploadProperties`. Ha a IoT Edge szimulátort 
 | storageContainersForUpload | `"<source container name1>": {"target": "<target container name>"}`,<br><br> `"<source container name1>": {"target": "%h-%d-%m-%c"}`, <br><br> `"<source container name1>": {"target": "%d-%c"}` | Lehetővé teszi az Azure-ba feltölteni kívánt tárolók nevének megadását. Ez a modul lehetővé teszi a forrás és a cél tároló nevének megadását. Ha nem adja meg a cél tároló nevét, a rendszer automatikusan hozzárendeli a tároló nevét `<IoTHubName>-<IotEdgeDeviceID>-<ModuleName>-<SourceContainerName>`ként. Létrehozhat sablon sztringeket a cél tároló neveként, tekintse meg a lehetséges értékek oszlopot. <br>*% h – > IoT Hub neve (3-50 karakter). <br>*% d – > IoT Edge eszköz azonosítója (1 – 129 karakter). <br>*% m – > modul neve (1 – 64 karakter). <br>*% c – > a forrás tárolójának neve (3 – 63 karakter). <br><br>A tároló nevének maximális mérete 63 karakter, a tároló nevének automatikus kiosztása, ha a tároló mérete meghaladja az 63 karaktert, az egyes szakaszokat (IoTHubName, IotEdgeDeviceID, ModuleName, SourceContainerName) a 15 értékre vágja. karaktereket. <br><br> Környezeti változó: `deviceToCloudUploadProperties__storageContainersForUpload__<sourceName>__target=<targetName>` |
 | deleteAfterUpload | igaz, hamis | Alapértelmezés szerint `false`re van állítva. Ha a `true`re van állítva, a rendszer automatikusan törli az adatok törlését a felhőalapú tárhelyre való feltöltés befejezésekor. <br><br> **Vigyázat**: Ha hozzáfűzési blobokat használ, ez a beállítás a sikeres feltöltés után törli a helyi tárolóban lévő hozzáfűzési blobokat, és a Blobok további hozzáfűzési műveletei sikertelenek lesznek. Ezt a beállítást körültekintően használja, ne engedélyezze ezt, ha az alkalmazás nem gyakori hozzáfűzési műveleteket végez, vagy nem támogatja a folyamatos hozzáfűzési műveleteket<br><br> Környezeti változó: `deviceToCloudUploadProperties__deleteAfterUpload={false,true}`. |
 
-
 ### <a name="deviceautodeleteproperties"></a>deviceAutoDeleteProperties
 
 A beállítás neve `deviceAutoDeleteProperties`. Ha a IoT Edge szimulátort használja, állítsa be az értékeket a kapcsolódó környezeti változókra ezekhez a tulajdonságokhoz, amelyek a magyarázat szakaszban találhatók meg.
@@ -97,6 +96,7 @@ A beállítás neve `deviceAutoDeleteProperties`. Ha a IoT Edge szimulátort has
 | retainWhileUploading | igaz, hamis | Alapértelmezés szerint `true`re van állítva, és megőrzi a blobot, amíg a deleteAfterMinutes lejár. Beállíthatja, hogy `false`, és törli az adatvesztést, amint a deleteAfterMinutes lejár. Megjegyzés: ennek a tulajdonságnak a működéséhez a uploadOn True értékre kell állítani.  <br><br> **Vigyázat**: Ha hozzáfűzési blobokat használ, ez a beállítás a helyi tárolóból törli a hozzáfűzési blobokat, ha az érték lejár, és a Blobok további hozzáfűzési műveletei sikertelenek lesznek. Érdemes meggyőződni arról, hogy a lejárati érték elég nagy az alkalmazás által végrehajtott hozzáfűzési műveletek várható gyakoriságához.<br><br> Környezeti változó: `deviceAutoDeleteProperties__retainWhileUploading={false,true}`|
 
 ## <a name="using-smb-share-as-your-local-storage"></a>SMB-megosztás használata helyi tárolóként
+
 Az SMB-megosztást helyi tárolási útvonalként is megadhatja, ha Windows-tárolót telepít a Windows-gazdagépen a modulhoz.
 
 Győződjön meg arról, hogy az SMB-megosztás és a IoT-eszköz kölcsönösen megbízható tartományokban van.
@@ -104,48 +104,58 @@ Győződjön meg arról, hogy az SMB-megosztás és a IoT-eszköz kölcsönösen
 `New-SmbGlobalMapping` PowerShell-parancs futtatásával az SMB-megosztás helyileg képezhető le a Windows rendszerű IoT-eszközön.
 
 Alább láthatók a konfigurációs lépések:
+
 ```PowerShell
 $creds = Get-Credential
 New-SmbGlobalMapping -RemotePath <remote SMB path> -Credential $creds -LocalPath <Any available drive letter>
 ```
-Példa: <br>
-`$creds = Get-Credential` <br>
-`New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:`
 
-Ez a parancs a hitelesítő adatokat fogja használni a távoli SMB-kiszolgálóval való hitelesítéshez. Ezután képezze le a távoli megosztás elérési útját a G: meghajtóbetűjelre (bármilyen más elérhető meghajtóbetűjel lehet). A IoT-eszköz most már a G: meghajtó elérési útjára van leképezve az adatmennyiség. 
+Példa:
+
+```powershell
+$creds = Get-Credential
+New-SmbGlobalMapping -RemotePath \\contosofileserver\share1 -Credential $creds -LocalPath G:
+```
+
+Ez a parancs a hitelesítő adatokat fogja használni a távoli SMB-kiszolgálóval való hitelesítéshez. Ezután képezze le a távoli megosztás elérési útját a G: meghajtóbetűjelre (bármilyen más elérhető meghajtóbetűjel lehet). A IoT-eszköz most már a G: meghajtó elérési útjára van leképezve az adatmennyiség.
 
 Győződjön meg arról, hogy a IoT-eszköz felhasználója képes olvasni/írni a távoli SMB-megosztást.
 
-Az üzembe helyezéshez a `<storage mount>` értéke lehet **G:/ContainerData: C:/BlobRoot**. 
+Az üzembe helyezéshez a `<storage mount>` értéke lehet **G:/ContainerData: C:/BlobRoot**.
 
 ## <a name="granting-directory-access-to-container-user-on-linux"></a>Címtár-hozzáférés megadása a tároló felhasználója számára Linux rendszeren
+
 Ha a Linux-tárolók létrehozási lehetőségeiben a [Volume Mount](https://docs.docker.com/storage/volumes/) for Storage szolgáltatást használta, akkor nem kell további lépéseket végrehajtania, de ha a [kötési csatlakoztatást](https://docs.docker.com/storage/bind-mounts/) használta, akkor ezek a lépések szükségesek a szolgáltatás megfelelő futtatásához.
 
-A minimális jogosultság elve alapján korlátozhatja a felhasználók hozzáférési jogait a munkájuk elvégzéséhez szükséges minimális engedélyekre, ez a modul tartalmaz egy felhasználót (név: absie, azonosító: 11000) és egy felhasználói csoportot (név: absie, azonosító: 11000). Ha a tároló **gyökérként** van elindítva (az alapértelmezett felhasználó a **root**), a szolgáltatás az alacsony jogosultságú **absie** felhasználóként fog elindulni. 
+A minimális jogosultság elve alapján korlátozhatja a felhasználók hozzáférési jogait a munkájuk elvégzéséhez szükséges minimális engedélyekre, ez a modul tartalmaz egy felhasználót (név: absie, azonosító: 11000) és egy felhasználói csoportot (név: absie, azonosító: 11000). Ha a tároló **gyökérként** van elindítva (az alapértelmezett felhasználó a **root**), a szolgáltatás az alacsony jogosultságú **absie** felhasználóként fog elindulni.
 
 Ez a viselkedés lehetővé teszi, hogy a szolgáltatás megfelelő működéséhez az gazdaelérési út-kötésekhez szükséges engedélyek konfigurálása elengedhetetlen, ellenkező esetben a szolgáltatás a hozzáférés-megtagadási hibákkal összeomlik. A címtár-kötésben használt elérési utat a tároló felhasználójának kell elérhetőnek lennie (például: absie 11000). Az alábbi parancsoknak a gazdagépen való futtatásával megadhatja a tároló felhasználói hozzáférését a címtárhoz:
 
 ```terminal
-sudo chown -R 11000:11000 <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R 11000:11000 <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
-Példa:<br>
-`sudo chown -R 11000:11000 /srv/containerdata` <br>
-`sudo chmod -R 700 /srv/containerdata`
+Példa:
 
+```terminal
+sudo chown -R 11000:11000 /srv/containerdata
+sudo chmod -R 700 /srv/containerdata
+```
 
 Ha a szolgáltatást a **absie**eltérő felhasználóként kell futtatnia, akkor az egyéni felhasználói azonosítót a CreateOptions "felhasználó" tulajdonságában adhatja meg a telepítési jegyzékben. Ebben az esetben az alapértelmezett vagy a gyökérszintű csoport AZONOSÍTÓját kell használnia `0`.
 
 ```json
-"createOptions": { 
-  "User": "<custom user ID>:0" 
-} 
+"createOptions": {
+  "User": "<custom user ID>:0"
+}
 ```
+
 Most adja meg a tároló felhasználói hozzáférését a címtárhoz
+
 ```terminal
-sudo chown -R <user ID>:<group ID> <blob-dir> 
-sudo chmod -R 700 <blob-dir> 
+sudo chown -R <user ID>:<group ID> <blob-dir>
+sudo chmod -R 700 <blob-dir>
 ```
 
 ## <a name="configure-log-files"></a>Naplófájlok konfigurálása
@@ -158,11 +168,11 @@ Használhatja a modulhoz konfigurált fiók nevét és a hozzá tartozó fiókot
 
 Adja meg a IoT Edge eszközét blob-végpontként minden olyan tárolási kérelemhez, amelyet Ön tesz. A explicit tárolási végponthoz a IoT Edge eszköz információi és a beállított fióknév használatával [hozható létre a kapcsolatok karakterlánca](../storage/common/storage-configure-connection-string.md#create-a-connection-string-for-an-explicit-storage-endpoint) .
 
-- Azon modulok esetében, amelyek az Azure Blob Storage IoT Edge modulon futnak, a blob végpont a következő: `http://<module name>:11002/<account name>`.
-- Egy másik eszközön futó modulok vagy alkalmazások esetén ki kell választania a hálózatának megfelelő végpontot. A hálózat beállításától függően válassza ki a végpont formátumát úgy, hogy a külső modulból vagy alkalmazásból érkező adatforgalom elérheti az Azure Blob Storaget IoT Edge modulon futtató eszközt. A forgatókönyvhöz tartozó blob-végpont az alábbiak egyike:
-  - `http://<device IP >:11002/<account name>`
-  - `http://<IoT Edge device hostname>:11002/<account name>`
-  - `http://<fully qualified domain name>:11002/<account name>`
+* Azon modulok esetében, amelyek az Azure Blob Storage IoT Edge modulon futnak, a blob végpont a következő: `http://<module name>:11002/<account name>`.
+* Egy másik eszközön futó modulok vagy alkalmazások esetén ki kell választania a hálózatának megfelelő végpontot. A hálózat beállításától függően válassza ki a végpont formátumát úgy, hogy a külső modulból vagy alkalmazásból érkező adatforgalom elérheti az Azure Blob Storaget IoT Edge modulon futtató eszközt. A forgatókönyvhöz tartozó blob-végpont az alábbiak egyike:
+  * `http://<device IP >:11002/<account name>`
+  * `http://<IoT Edge device hostname>:11002/<account name>`
+  * `http://<fully qualified domain name>:11002/<account name>`
 
 ## <a name="azure-blob-storage-quickstart-samples"></a>Azure Blob Storage – gyors üzembe helyezési minták
 
@@ -202,7 +212,7 @@ A helyi Storage-fiókhoz való kapcsolódáshoz [Azure Storage Explorert](https:
 
 ## <a name="supported-storage-operations"></a>Támogatott tárolási műveletek
 
-A blob Storage-modulok IoT Edge az Azure Storage SDK-kat használják, és konzisztensek az Azure Storage API 2017-04-17-es verziójával, amely blokkolja a blob-végpontokat. 
+A blob Storage-modulok IoT Edge az Azure Storage SDK-kat használják, és konzisztensek az Azure Storage API 2017-04-17-es verziójával, amely blokkolja a blob-végpontokat.
 
 Mivel az Azure Blob Storage nem támogatja az összes Azure Blob Storage műveletet a IoT Edge-on, ez a szakasz felsorolja az egyes állapotok állapotát.
 
@@ -271,6 +281,7 @@ Támogatott
 * Blokk hozzáfűzése URL-címről
 
 ## <a name="event-grid-on-iot-edge-integration"></a>Event Grid IoT Edge Integration
+
 > [!CAUTION]
 > A IoT Edge Event Grid integrációja előzetes verzióban érhető el
 

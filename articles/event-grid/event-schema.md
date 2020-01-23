@@ -1,19 +1,19 @@
 ---
 title: Azure Event Gridi esemény sémája
-description: Az Azure Event Grid-val kapcsolatos eseményekhez megadott tulajdonságokat ismerteti.
+description: Az összes eseményhez tartozó tulajdonságokat és sémát ismerteti. Az események öt kötelező karakterlánc-tulajdonságot és egy kötelező adatobjektumot foglalnak magukban.
 services: event-grid
 author: banisadr
 manager: timlt
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/20/2019
+ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: 44cc611a9a7d71a3ac4ac7b0d779b18778d0aacd
-ms.sourcegitcommit: c62a68ed80289d0daada860b837c31625b0fa0f0
+ms.openlocfilehash: 1fceda6fcbb6e8db1fa8afbc5181315bd0c98940
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73607613"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512980"
 ---
 # <a name="azure-event-grid-event-schema"></a>Azure Event Gridi esemény sémája
 
@@ -83,16 +83,16 @@ Az Azure Blob Storage-eseményekhez közzétett séma például a következő:
 
 Minden esemény a következő legfelső szintű adatértékekkel rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
-| Tulajdonos | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
-| EventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| EventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| EventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
+| data | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
 Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forrását:
 
@@ -103,7 +103,7 @@ Az adatobjektum tulajdonságainak megismeréséhez tekintse meg az esemény forr
 * [IoT Hub](event-schema-iot-hub.md)
 * [Médiaszolgáltatások](../media-services/latest/media-services-event-schemas.md?toc=%2fazure%2fevent-grid%2ftoc.json)
 * [Erőforráscsoportok (felügyeleti műveletek)](event-schema-resource-groups.md)
-* [Szolgáltatásbusz](event-schema-service-bus.md)
+* [Service Bus](event-schema-service-bus.md)
 * [Azure-jelző](event-schema-azure-signalr.md)
 * [Azure Machine Learning](event-schema-machine-learning.md)
 
@@ -113,7 +113,7 @@ Az események egyéni témakörökbe való közzétételekor olyan témákat hoz
 
 Előfordulhat, hogy a tárgya több részletet is igényel, hogy mi történt. A **Storage-fiókok** közzétevője például a tulajdonos `/blobServices/default/containers/<container-name>/blobs/<file>`t adja meg, amikor egy fájlt hozzáadnak egy tárolóhoz. Az előfizető az elérési út alapján szűrheti az `/blobServices/default/containers/testcontainer`, hogy lekérje az adott tároló összes eseményét, de a Storage-fiókban ne legyenek más tárolók. Az előfizető a `.txt` utótaggal is szűrheti vagy átirányíthatja a szöveget, hogy csak szöveges fájlokkal működjön.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

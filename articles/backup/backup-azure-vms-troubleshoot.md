@@ -4,12 +4,12 @@ description: Ez a cikk az Azure-beli virtuális gépek biztonsági mentésével 
 ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 08/30/2019
-ms.openlocfilehash: 1e71f6f711bcee78538c573a8869b8fdfa2a10b0
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: 9828309b080f5831a073fb7c5149455dc649fa13
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75664629"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513796"
 ---
 # <a name="troubleshooting-backup-failures-on-azure-virtual-machines"></a>Biztonsági mentési hibák elhárítása Azure-beli virtuális gépeken
 
@@ -262,7 +262,6 @@ Ellenőrizze a virtuálisgép-ügynök verzióját a Windows rendszerű virtuál
 
 A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolgáló tárolóra támaszkodik. Ha nem fér hozzá a tárolóhoz, vagy késések vannak a pillanatképek futtatásához, a biztonsági mentési feladat sikertelen lehet. A következő feltételek okozhatnak pillanatkép-feladathoz tartozó hibát:
 
-* A **tárterület hálózati hozzáférése a NSG használatával tiltható**le. További információ arról, hogyan [hozhatók létre hálózati hozzáférés](backup-azure-arm-vms-prepare.md#establish-network-connectivity) a tárolóhoz az IP-címek engedélyezett listája vagy egy proxykiszolgáló használatával.
 * **A SQL Server biztonsági mentéssel konfigurált virtuális gépek a pillanatkép-feladatok késleltetését okozhatják**. Alapértelmezés szerint a virtuális gép biztonsági mentése létrehoz egy VSS teljes biztonsági mentést a Windows rendszerű virtuális gépeken. Azok a virtuális gépek, amelyek SQL Server futtatnak SQL Server biztonsági mentést, pillanatkép-késéseket tapasztalhatnak. Ha a pillanatkép-késések biztonsági mentési hibákat okoznak, állítsa be a következő beállításkulcsot:
 
    ```text
@@ -276,29 +275,9 @@ A virtuális gép biztonsági mentése a pillanatkép-parancsok alapjául szolg�
 
 ## <a name="networking"></a>Hálózatkezelés
 
-Az összes bővítményhez hasonlóan a biztonsági mentési bővítményeknek is hozzá kell férniük a nyilvános internethez. Ha nem fér hozzá a nyilvános internethez, többféleképpen is megnyilvánulhat:
+A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
+További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:
 
-* A bővítmény telepítése sikertelen lehet.
-* A biztonsági mentési műveletek, például a lemezes Pillanatképek sikertelenek lehetnek.
-* A biztonsági mentési művelet állapotának megjelenítése sikertelen lehet.
+* [Statikus belső IP-cím hozzáadása meglévő virtuális géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
+* [Hálózati adapterhez rendelt magánhálózati IP-cím kiosztási módszerének módosítása](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
 
-A nyilvános internetes címek feloldásának szükségességét ebben az [Azure-támogatási blogban](https://blogs.msdn.com/b/mast/archive/2014/06/18/azure-vm-provisioning-stuck-on-quot-installing-extensions-on-virtual-machine-quot.aspx)tárgyaljuk. Ellenőrizze a VNET DNS-konfigurációit, és győződjön meg arról, hogy az Azure URI-k oldhatók fel.
-
-A névfeloldás megfelelő elvégzése után az Azure IP-címeihez is hozzáférést kell biztosítani. Az Azure-infrastruktúra elérésének feloldásához kövesse az alábbi lépések egyikét:
-
-* Azure Datacenter IP-címtartományok engedélyezési listájának engedélyezése:
-   1. Az engedélyezési listán szereplő [Azure Datacenter IP](https://www.microsoft.com/download/details.aspx?id=41653) -címek listájának beolvasása.
-   1. Az IP-címek feloldása a [New-NetRoute](https://docs.microsoft.com/powershell/module/nettcpip/new-netroute) parancsmag használatával. Futtassa ezt a parancsmagot az Azure-beli virtuális gépen egy emelt szintű PowerShell-ablakban. Futtatás rendszergazdaként.
-   1. Ha van ilyen, az IP-címek elérésének engedélyezéséhez vegyen fel szabályokat a NSG.
-* Hozzon létre egy elérési utat a HTTP-forgalomhoz a flow számára:
-   1. Ha bizonyos hálózati korlátozásokkal rendelkezik, helyezzen üzembe egy HTTP-proxykiszolgálót a forgalom továbbításához. Ilyen például egy hálózati biztonsági csoport. Tekintse meg a [hálózati kapcsolat létesítése](backup-azure-arm-vms-prepare.md#establish-network-connectivity)a HTTP-proxykiszolgáló üzembe helyezésének lépéseit.
-   1. Ha rendelkezik a NSG, adjon hozzá szabályokat az internethez a HTTP-proxytól való hozzáférés engedélyezéséhez.
-
-> [!NOTE]
-> A DHCP-t engedélyezni kell a vendégen a IaaS virtuális gép biztonsági mentésének működéséhez. Ha statikus magánhálózati IP-címmel kell rendelkeznie, konfigurálja a Azure Portal vagy a PowerShell használatával. Győződjön meg arról, hogy a virtuális gépen belül a DHCP-beállítás engedélyezve van.
-> További információ arról, hogyan állítható be statikus IP-cím a PowerShell használatával:
->
-> * [Statikus belső IP-cím hozzáadása meglévő virtuális géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm)
-> * [Hálózati adapterhez rendelt magánhálózati IP-cím kiosztási módszerének módosítása](../virtual-network/virtual-networks-static-private-ip-arm-ps.md#change-the-allocation-method-for-a-private-ip-address-assigned-to-a-network-interface)
->
->

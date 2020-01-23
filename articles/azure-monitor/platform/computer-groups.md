@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 02/05/2019
-ms.openlocfilehash: 9ef0f2810252b73921fc0a72f2e523262c760bab
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eedf04a2168c67449f97d8e462d4ff82653a22b3
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72932657"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513701"
 ---
 # <a name="computer-groups-in-azure-monitor-log-queries"></a>Számítógépcsoportok a Azure Monitor log lekérdezésekben
 A Azure Monitorban lévő számítógépcsoportok lehetővé teszik a [naplózási lekérdezések](../log-query/log-query-overview.md) hatókörét a számítógépek adott csoportjára.  Minden csoport a számítógépekkel együtt van feltöltve a megadott lekérdezés használatával vagy különböző forrásokból származó csoportok importálásával.  Ha a csoport egy napló lekérdezésében szerepel, az eredmények a csoport számítógépeinek megfelelő rekordokra korlátozódnak.
@@ -27,8 +27,8 @@ Az alábbi táblázatban felsorolt módszerek bármelyikével létrehozhat egy s
 | Napló lekérdezése |Hozzon létre egy olyan log-lekérdezést, amely a számítógépek listáját adja vissza. |
 | Naplókeresési API |A log Search API használatával programozott módon hozhat létre számítógépcsoportot a naplófájlok eredményei alapján. |
 | Active Directory |A csoport tagjainak automatikus vizsgálata minden olyan ügynök számítógépén, amely egy Active Directory tartomány tagja, és minden egyes biztonsági csoport számára létrehoz egy csoportot Azure Monitor. (Csak Windows-gépek esetén)|
-| Configuration Manager | Gyűjtemények importálása a System Center Configuration Managerból, és mindegyikhez hozzon létre egy csoportot a Azure Monitorban. |
-| Windows Server Update Services |Automatikusan vizsgálja meg a WSUS-kiszolgálókat vagy-ügyfeleket a célcsoportok célzásához, és hozzon létre egy csoportot Azure Monitorban. |
+| Configuration Manager | Gyűjtemények importálása a Microsoft Endpoint Configuration Managerból, és mindegyikhez hozzon létre egy csoportot a Azure Monitorban. |
+| Windows Server Update Services: |Automatikusan vizsgálja meg a WSUS-kiszolgálókat vagy-ügyfeleket a célcsoportok célzásához, és hozzon létre egy csoportot Azure Monitorban. |
 
 ### <a name="log-query"></a>Napló lekérdezése
 A napló lekérdezésből létrehozott számítógépcsoportok tartalmazzák az Ön által meghatározott lekérdezés által visszaadott összes számítógépet.  A rendszer minden alkalommal futtatja ezt a lekérdezést, hogy a csoport létrehozása óta minden változás tükröződik.  
@@ -75,7 +75,7 @@ A Azure Monitor konfigurálható úgy, hogy a Azure Portal Log Analytics munkate
 
 Ha a csoportok importálása megtörtént, a menü felsorolja a csoporttagság által észlelt számítógépek számát és az importált csoportok számát.  A hivatkozások bármelyikére kattintva visszaküldheti a **ComputerGroup** -rekordokat ezekkel az információkkal.
 
-### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
+### <a name="configuration-manager"></a>Configuration Manager
 Ha a Azure Monitor Configuration Manager gyűjteményi tagságok importálására konfigurálja, akkor minden gyűjteményhez létrehoz egy számítógépcsoportot.  A gyűjtemény tagsági adatait 3 óránként kéri le a rendszer, hogy a számítógépcsoportok naprakészek maradjanak. 
 
 Configuration Manager gyűjtemények importálása előtt [csatlakoznia kell a Configuration Managerhoz a Azure monitorhoz](collect-sccm.md).  

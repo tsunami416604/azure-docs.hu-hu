@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/09/2019
 ms.author: gregman
-ms.openlocfilehash: 03c517ac80ed42f96cae00001a154e519ec94148
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 84dd1b6d657dfe5061f53698114f3dc4e0197571
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263336"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510056"
 ---
 # <a name="run-azure-iot-edge-on-ubuntu-virtual-machines"></a>Azure IoT Edge futtatása Ubuntu-Virtual Machines
 
@@ -22,7 +22,7 @@ Az Azure IoT Edge futtatókörnyezet az eszköz IoT Edge eszközre való bekapcs
 
 Ha többet szeretne megtudni arról, hogyan működik a IoT Edge futtatókörnyezet és milyen összetevőket tartalmaz, tekintse meg [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md)című témakört.
 
-Ez a cikk a Azure IoT Edge Runtime Ubuntu 16,04 virtuális gépen való futtatásának lépéseit sorolja fel az [Ubuntu Azure Marketplace-ajánlat](https://aka.ms/azure-iot-edge-ubuntuvm)előre konfigurált Azure IoT Edge használatával. 
+Ez a cikk a Azure IoT Edge Runtime Ubuntu 16,04 virtuális gépen való futtatásának lépéseit sorolja fel az [Ubuntu Azure Marketplace-ajánlat](https://aka.ms/azure-iot-edge-ubuntuvm)előre konfigurált Azure IoT Edge használatával.
 
 Az első rendszerindítás során a Azure IoT Edge az Ubuntu rendszerű virtuális gépen előre telepíti a Azure IoT Edge Runtime legújabb verzióját. Emellett tartalmaz egy parancsfájlt a kapcsolati karakterlánc beállításához, majd újraindítja a futtatókörnyezetet, amely távolról indítható az Azure VM-portálon vagy az Azure-parancssoron keresztül, így egyszerűen konfigurálhatja és csatlakoztathatja az IoT Edge eszközt SSH vagy távoli indítás nélkül asztali munkamenet. Ez a szkript arra vár, hogy állítsa be a kapcsolódási karakterláncot egészen addig, amíg a IoT Edge-ügyfél telepítése nem történik meg, így nem kell létrehoznia az automatizálást.
 
@@ -52,22 +52,22 @@ A Azure Portal keressen rá a "Azure IoT Edge" kifejezésre, majd válassza az *
    ```azurecli-interactive
    az login
    ```
-    
+
 1. Ha több előfizetéssel rendelkezik, válassza ki azt az előfizetést, amelyet használni szeretne:
    1. Az előfizetések listázása:
-    
+
       ```azurecli-interactive
       az account list --output table
       ```
-    
+
    1. Másolja a használni kívánt előfizetés SubscriptionID mezőjét.
 
    1. Állítsa be a munkaidő-előfizetést az imént másolt AZONOSÍTÓval:
-    
-      ```azurecli-interactive 
+
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
-    
+
 1. Hozzon létre egy új erőforráscsoportot (vagy határozzon meg egy meglévőt a következő lépésekben):
 
    ```azurecli-interactive
@@ -93,7 +93,6 @@ A Azure Portal keressen rá a "Azure IoT Edge" kifejezésre, majd válassza az *
    ```
 
 Ha a telepítés után SSH-t szeretne használni a virtuális gépen, használja a publicIpAddress a következő paranccsal: `ssh azureuser@{publicIpAddress}`
-
 
 ## <a name="next-steps"></a>Következő lépések
 

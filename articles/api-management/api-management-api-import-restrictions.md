@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 01/02/2020
 ms.author: apimpm
-ms.openlocfilehash: a1c514368960d39834125bd497d05b3d9ebeae7c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 61d43addfdf9008cb7aa8a073dcf3bb702cb55f1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75640703"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513371"
 ---
 # <a name="api-import-restrictions-and-known-issues"></a>API-importálási korlátozások és ismert problémák
 
@@ -52,7 +52,6 @@ Ha hibaüzenetet kap a OpenAPI-dokumentum importálásakor, győződjön meg ró
 
 -   Ha sok `servers` van megadva, API Management megpróbálja kiválasztani az első HTTPs URL-címet. Ha nincsenek HTTPs URL-címek – az első HTTP URL-cím. Ha nincs HTTP URL-cím, akkor a kiszolgáló URL-címe üres lesz.
 -   a `Examples` nem támogatott, de `example`.
--   a `Multipart/form-data` nem támogatott.
 
 ## <a name="openapi-import-update-and-export-mechanisms"></a>OpenAPI importálási, frissítési és exportálási mechanizmusai
 

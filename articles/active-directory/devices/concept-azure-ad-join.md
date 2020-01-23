@@ -1,6 +1,6 @@
 ---
-title: Mi az Azure AD-csatlakoztatott eszközök?
-description: Ismerje meg, hogyan eszköz identity management segítségével kezelheti az eszközöket, amelyek a környezetében erőforrásokat érnek el.
+title: Mi az az Azure AD-hez csatlakoztatott eszköz?
+description: Megtudhatja, hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,54 +11,54 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 4af3aea7218ea8792bb66188e8df7baf9f460b0b
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 24ec4373bceb3cc3c9e5be2c7a0dab1f62197b3c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462810"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512198"
 ---
 # <a name="azure-ad-joined-devices"></a>Azure AD-hez csatlakoztatott eszközök
 
-Az Azure AD join rendszer-és felhőközpontú, vagy csak felhőalapú igénylő szervezeteknek szól. Minden olyan szervezet üzembe helyezhet az Azure AD-csatlakoztatott eszközök, függetlenül attól, hogy a méretének vagy iparági. Az Azure AD join működik, akár hibrid környezetben, felhőbeli és a helyszíni alkalmazásokhoz és erőforrásokhoz való hozzáférés engedélyezése.
+Az Azure AD JOIN olyan szervezetek számára készült, amelyek csak felhőalapú vagy csak felhőalapú célokra alkalmasak. Bármely szervezet az Azure AD-hez csatlakoztatott eszközöket a méret vagy az iparág méretétől függetlenül is üzembe helyezheti. Az Azure AD-csatlakozás hibrid környezetben is működik, ami lehetővé teszi a Felhőbeli és a helyszíni alkalmazások és erőforrások elérését.
 
 |   | Azure AD-csatlakozás |
 | --- | --- |
-| **Definíció** | Csak az Azure AD igénylő szervezeti fiókkal való bejelentkezéshez az eszköz csatlakoztatva |
-| **Elsődleges célközönséget** | Megfelelő mindkét csak felhőalapú és hibrid szervezetek számára. |
-|   | A szervezet összes felhasználójára |
-| **Eszközök tulajdonjoga** | Szervezet |
-| **Operációs rendszerek** | Minden Windows 10-eszközök |
-| **Kiépítés** | Önkiszolgáló: Windows OOBE vagy beállításai |
-|   | Tömeges regisztrálás |
+| **Definíció** | Csak az Azure AD-hez csatlakozik, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
+| **Elsődleges célközönség** | Alkalmas a csak felhőalapú és a hibrid szervezetekhez. |
+|   | Egy szervezet összes felhasználójára érvényes |
+| **Eszköz tulajdonjoga** | Szervezet |
+| **Operációs rendszerek** | Minden Windows 10-es eszköz |
+| **Kiépítés** | Önkiszolgáló: Windows OOBE vagy beállítások |
+|   | Csoportos regisztráció |
 |   | Windows Autopilot |
-| **Eszköz bejelentkezési lehetőségek** | Szervezeti fiókok használatával: |
+| **Eszköz bejelentkezési beállításai** | Szervezeti fiókok a használatával: |
 |   | Jelszó |
 |   | Vállalati Windows Hello |
-|   | FIDO2.0 biztonsági kulcsok (előzetes verzió) |
-| **Eszközkezelés** | Mobileszköz-kezelés (Példa: A Microsoft Intune-nal) |
-|   | Közös felügyelet a Microsoft Intune és System Center Configuration Managerben |
-| **Főbb képességek** | Egyszeri bejelentkezés a felhőbeli és a helyszíni erőforrásokhoz |
-|   | MDM-regisztráció és a mobileszköz-kezelési a megfelelés kiértékelésének feltételes hozzáférés |
-|   | Az önkiszolgáló jelszó-visszaállítási és a Windows Hello PIN-kód alaphelyzetbe állítása a zárolási képernyőn |
+|   | Nem 2.0 biztonsági kulcsok (előzetes verzió) |
+| **Eszközkezelés** | Mobileszköz-kezelés (példa: Microsoft Intune) |
+|   | Közös felügyelet Microsoft Intune és Microsoft végponttal Configuration Manager |
+| **Főbb képességek** | Egyszeri bejelentkezés mind a Felhőbeli, mind a helyszíni erőforrásokhoz |
+|   | Feltételes hozzáférés a MDM-regisztráció és a MDM-megfelelőség kiértékelése révén |
+|   | Önkiszolgáló jelszó-visszaállítás és a Windows Hello PIN-kód alaphelyzetbe állítása a zárolási képernyőn |
 |   | Enterprise State Roaming eszközök között |
 
-Az Azure AD-csatlakoztatott eszközök be vannak jelentkezve a szervezeti használatával az Azure AD-fiókot. Lehet, hogy a szervezet erőforrásaihoz való hozzáférés további korlátozott alapján, hogy az Azure AD-fiókot és [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) alkalmazza az eszközidentitást.
+Az Azure AD-hez csatlakoztatott eszközök bejelentkeznek egy szervezeti Azure AD-fiók használatával. A szervezet erőforrásaihoz való hozzáférés az Azure AD-fiók és az eszköz identitására alkalmazott [feltételes hozzáférési szabályzatok](../conditional-access/overview.md) alapján tovább korlátozható.
 
-Biztonságossá teheti a rendszergazdák és -vezérlés az Azure AD további hez csatlakoztatott eszközök mobileszköz-felügyeleti (MDM) eszközökkel, mint a Microsoft Intune vagy a System Center Configuration Managerrel megosztott kezelési helyzetekben. Ezek az eszközök, amelyikkel a szervezet által megkövetelt konfigurációk, például a tárolás titkosítását, jelszó összetettségét, szoftvertelepítések és szoftverfrissítéseket igénylő kényszerítésére. A rendszergazdák számára is elérhetővé szervezeti alkalmazások használata az Azure AD-csatlakoztatott eszközök [System Center Configuration Manager és a Microsoft Store vállalatoknak](https://docs.microsoft.com/sccm/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
+A rendszergazdák az Azure AD-hez csatlakoztatott eszközöket a mobileszköz-felügyeleti (MDM) eszközök, például a Microsoft Intune vagy a Microsoft Endpoint Configuration Manager használatával történő közös felügyeleti forgatókönyvek használatával védhetik és vezérelhetik. Ezek az eszközök lehetővé teszik a szervezet által szükséges konfigurációk betartatását, például a tárolás titkosítását, a jelszó bonyolultságát, a szoftverek telepítését és a szoftverfrissítések használatát. A rendszergazdák a vállalati alkalmazások számára elérhetővé tehetik az Azure AD-hez csatlakoztatott eszközöket a Configuration Manager használatával [az üzleti és oktatási Microsoft Store alkalmazások felügyeletéhez](https://docs.microsoft.com/configmgr/apps/deploy-use/manage-apps-from-the-windows-store-for-business).
 
-Az Azure AD join hasonlóan a kívüli kezdőélmény (OOBE), csoportos regisztráció, önkiszolgáló-beállítások használatával is elvégezhető, vagy [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot).
+Az Azure AD JOIN szolgáltatás önkiszolgáló lehetőségekkel is elvégezhető, például a kezdőélmény (OOBE), a csoportos regisztráció vagy a [Windows Autopilot](https://docs.microsoft.com/intune/enrollment-autopilot)használatával.
 
-Az Azure AD-csatlakoztatott eszközök továbbra is megtarthatja egyszeri bejelentkezéses hozzáférést a helyszíni erőforrásokhoz, amelyek a szervezet hálózatán. Az Azure AD-hez csatlakoztatott eszközök továbbra is hitelesítheti magát a helyszíni kiszolgálók, például a fájl, nyomtatás és más alkalmazások.
+Az Azure AD-hez csatlakoztatott eszközök továbbra is használhatják az egyszeri bejelentkezéses hozzáférést a helyszíni erőforrásokhoz, amikor azok a szervezet hálózatán vannak. Az Azure AD-hez csatlakoztatott eszközök továbbra is hitelesíthetők a helyszíni kiszolgálókra, például a fájlokra, a nyomtatásra és az egyéb alkalmazásokra.
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
 Habár az Azure AD elsősorban az olyan cégek számára készült, amelyek nem rendelkeznek helyszíni Windows Server Active Directory-infrastruktúrával, a szolgáltatás a következő helyzetekben is használható:
 
 - Ha váltani kíván egy felhőalapú infrastruktúrára az Azure AD és egy mobileszköz-felügyeleti megoldás, például az Intune használatával.
 - Ha nem használhat helyszíni tartománycsatlakoztatást, például ha mobileszközöket, táblagépeket és telefonokat szeretne felügyelet alá vonni.
 - Ha a felhasználóknak elsősorban Office 365- vagy egyéb Azure AD-ben integrált SaaS-alkalmazásokhoz kell hozzáférnie.
-- Ha felhasználók egy csoportját az Azure AD-ben szeretné felügyelni az Active Directory helyett. Ebben a forgatókönyvben alkalmazhatja, például idénymunkásoknak, alvállalkozók és diákok.
+- Ha felhasználók egy csoportját az Azure AD-ben szeretné felügyelni az Active Directory helyett. Ez a forgatókönyv például a szezonális feldolgozók, a vállalkozók vagy a tanulók számára is alkalmazható.
 - Ha csatlakozási lehetőséget kíván nyújtani a korlátozott helyszíni infrastruktúrájú távoli fiókirodákban tartózkodó felhasználóknak.
 
 Az Azure AD-csatlakoztatott eszközök csak Windows 10 rendszerű eszközök lehetnek.
@@ -68,7 +68,7 @@ Az Azure AD-hez csatlakoztatott eszközök leegyszerűsítik:
 - A Windows üzembe helyezését a vállalati tulajdonú eszközökön
 - A hozzáférést a vállalati alkalmazásokhoz és erőforrásokhoz bármilyen Windows-eszközről
 - A vállalati tulajdonú eszközök felhőalapú felügyeletét
-- Jelentkezzen be az Azure AD-vel eszközeiket, hogy a felhasználók vagy a szinkronizált Active Directory munkahelyi vagy iskolai fiókokat.
+- A felhasználók az Azure AD-vel vagy szinkronizált Active Directory munkahelyi vagy iskolai fiókkal jelentkezhetnek be az eszközre.
 
 ![Azure AD-hez csatlakoztatott eszközök](./media/concept-azure-ad-join/azure-ad-joined-device.png)
 
@@ -78,9 +78,9 @@ Az alábbi módszerekkel létesíthet Azure AD-csatlakozást:
 - [Tömeges üzembe helyezés](https://docs.microsoft.com/intune/windows-bulk-enroll)
 - [Önkiszolgáló megoldás használata](azuread-joined-devices-frx.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Az Azure AD join implementáció megtervezésébe](azureadjoin-plan.md)
-- [A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközök](assign-local-admin.md)
-- [Az Azure portal használatával eszközidentitások kezelése](device-management-azure-portal.md)
-- [Elavult eszközök kezelése az Azure ad-ben](manage-stale-devices.md)
+- [Az Azure AD JOIN megvalósításának megtervezése](azureadjoin-plan.md)
+- [A helyi Rendszergazdák csoport kezelése az Azure AD-hez csatlakoztatott eszközökön](assign-local-admin.md)
+- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
+- [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

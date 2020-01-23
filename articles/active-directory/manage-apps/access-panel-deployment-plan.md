@@ -15,12 +15,12 @@ ms.date: 09/27/2019
 ms.author: baselden
 ms.reviewer: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99c52f65bdec2b164cca86a6346d8865d210cf38
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 5e9b2119964ec2af792e2f2a5b942fde12cf7eab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73176065"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512851"
 ---
 # <a name="plan-an-azure-active-directory-access-panel-deployment"></a>Azure Active Directory-hozzáférési panel üzembe helyezésének megtervezése
 
@@ -89,10 +89,10 @@ A következő táblázat a hozzáférési panel központi telepítésének legfo
 | Szabályozás| Az Azure AD-hez csatlakoztatott alkalmazások és csoportok felhasználói hozzárendeléseinek életciklusa definiálva és figyelve van. |
 | Biztonság| Az erőforrásokhoz való hozzáférést felhasználói és csoportos hozzárendelések segítségével szabályozhatja. Csak a jogosult felhasználók kezelhetik az erőforrás-hozzáférést. |
 | Teljesítmény| A hozzáférési hozzárendelések terjesztési ütemterveit dokumentálják és figyelik. |
-| Felhasználói élmény| A felhasználók tisztában vannak a hozzáférési panel képességeivel és azok használatának módjával.|
-| Felhasználói élmény| A felhasználók kezelhetik az alkalmazások és a csoportok hozzáférését.|
-| Felhasználói élmény| A felhasználók kezelhetik a fiókjaikat. |
-| Felhasználói élmény| A felhasználók tisztában vannak a böngészők kompatibilitásával. |
+| Felhasználói feladatok| A felhasználók tisztában vannak a hozzáférési panel képességeivel és azok használatának módjával.|
+| Felhasználói feladatok| A felhasználók kezelhetik az alkalmazások és a csoportok hozzáférését.|
+| Felhasználói feladatok| A felhasználók kezelhetik a fiókjaikat. |
+| Felhasználói feladatok| A felhasználók tisztában vannak a böngészők kompatibilitásával. |
 | Támogatás| A felhasználók a hozzáférési Panelrel kapcsolatos problémákat is megtalálják. |
 
 ### <a name="best-practices-for-deploying-the-azure-ad-access-panel"></a>Ajánlott eljárások az Azure AD hozzáférési paneljének üzembe helyezéséhez
@@ -149,7 +149,7 @@ További információkért lásd: [a végfelhasználók beleegyezett az alkalmaz
 
 Ha a technológiai projektek sikertelenek, általában azért teszik ezt meg, mert a hatás, az eredmények és a felelősségek nem egyeznek. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](../fundamentals/active-directory-deployment-plans.md) , és hogy a projektben szereplő, az érintett felek szerepkörei jól megértettek.
 
-### <a name="plan-communications"></a>Kommunikáció tervezése
+### <a name="plan-communications"></a>A kommunikáció tervezése
 
 A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon tájékoztathatja a felhasználókat arról, hogy hogyan és Mikor változnak, és hogyan szerezhet támogatást, ha szükséges.
 
@@ -197,7 +197,7 @@ Ha a jelszó-alapú SSO-alkalmazásokat integrálni kell, meg kell határoznia a
 
 * [Csoportházirend az Internet Explorerben](https://azure.microsoft.com/documentation/articles/active-directory-saas-ie-group-policy/)
 
-* [Az Internet Explorer System Center Configuration Manager (SCCM)](https://docs.microsoft.com/sccm/core/clients/deploy/deploy-clients-to-windows-computers)
+* [Configuration Manager az Internet Explorerben](https://docs.microsoft.com/configmgr/core/clients/deploy/deploy-clients-to-windows-computers)
 
 * [A Chrome, a Firefox, a Microsoft Edge vagy az IE felhasználó által vezérelt letöltése és konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction)
 
@@ -263,8 +263,8 @@ Az Azure AD olyan [jelentéseket biztosít, amelyek technikai és üzleti ismere
 
 |   | A kockázatok kezelése| Termelékenység növelése| Cégirányítás és megfelelőség |
 |  - |- | - | - |
-| Jelentéstípusok|  Alkalmazás-engedélyek és-használat| Fiók létesítési tevékenysége| Tekintse át, ki fér hozzá az alkalmazásokhoz |
-| Lehetséges műveletek| Hozzáférés naplózása; engedélyek visszavonása| Kiépítési hibák szervizelése| Hozzáférés visszavonása |
+| Report types (Jelentéstípusok)|  Alkalmazás-engedélyek és-használat| Fiók létesítési tevékenysége| Tekintse át, ki fér hozzá az alkalmazásokhoz |
+| Lehetséges műveletek| Hozzáférés naplózása; engedélyek visszavonása| Kiépítési hibák szervizelése| Hozzáférési jog visszavonása |
 
 Az Azure AD a legtöbb naplózási adattal 30 napig tart. Az adatai az Azure felügyeleti portálon vagy API-n keresztül érhetők el az elemzési rendszerbe való letöltéshez.
 
@@ -340,7 +340,7 @@ A legkevesebb Kiemelt szerepkört kell használnia a szükséges feladatok végr
 | - | -| -|
 | Segélyszolgálat rendszergazdája| 1\. szintű támogatás| None |
 | Identity admin| Konfigurálás és hibakeresés az Azure AD-t érintő problémák esetén| Globális rendszergazda |
-| Alkalmazás-rendszergazda| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
+| Alkalmazás rendszergazdája| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 | Infrastruktúra-rendszergazdák| Tanúsítvány-átváltási tulajdonos| Globális rendszergazda |
 | Üzleti tulajdonos/érintett fél| Felhasználói igazolás az alkalmazásban, az engedélyekkel rendelkező felhasználók konfigurációja| None |
 

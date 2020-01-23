@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: jairoc
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6cd3a0341d9cf041155b09d41d8ff84d0b0cc3dc
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: bb0764b9c2c43faf88db165a11ae963c4f170f01
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424820"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512589"
 ---
 # <a name="how-to-require-managed-devices-for-cloud-app-access-with-conditional-access"></a>Útmutató: felügyelt eszközök megkövetelése a Cloud app Accesshez feltételes hozzáféréssel
 
@@ -69,7 +69,7 @@ Ez a beállítás csak olyan Windows 10 vagy régebbi rendszerű eszközökre vo
 
 ![Eszköz alapú feltételek](./media/require-managed-devices/45.png)
 
-Mi teszi a hibrid Azure AD-hez csatlakoztatott eszköz felügyelt eszközét?  A helyszíni AD-hez csatlakoztatott eszközök esetében feltételezhető, hogy az eszközök vezérlése a felügyeleti megoldások, például a **System Center Configuration Manager (SCCM)** vagy a **Csoportházirend (GP)** használatával kényszeríthető a felügyeletre. Mivel az Azure AD nem tudja meghatározni, hogy a módszerek bármelyikét alkalmazták-e egy eszközre, a hibrid Azure AD-hez csatlakoztatott eszközök viszonylag gyenge mechanizmust igényelnek a felügyelt eszközök megköveteléséhez. Önnek rendszergazdaként kell megítélnie, hogy a helyszíni tartományhoz csatlakoztatott eszközökön alkalmazott módszerek elég erősek-e ahhoz, hogy felügyelt eszközöket képezzenek, ha az adott eszköz hibrid Azure AD-hez csatlakoztatott eszköz is.
+Mi teszi a hibrid Azure AD-hez csatlakoztatott eszköz felügyelt eszközét?  A helyszíni AD-hez csatlakoztatott eszközök esetében feltételezhető, hogy az eszközök vezérlését felügyeleti megoldások, például **Configuration Manager** vagy **Csoportházirend (GP)** használatával kényszerítik ki. Mivel az Azure AD nem tudja meghatározni, hogy a módszerek bármelyikét alkalmazták-e egy eszközre, a hibrid Azure AD-hez csatlakoztatott eszközök viszonylag gyenge mechanizmust igényelnek a felügyelt eszközök megköveteléséhez. Önnek rendszergazdaként kell megítélnie, hogy a helyszíni tartományhoz csatlakoztatott eszközökön alkalmazott módszerek elég erősek-e ahhoz, hogy felügyelt eszközöket képezzenek, ha az adott eszköz hibrid Azure AD-hez csatlakoztatott eszköz is.
 
 ## <a name="require-device-to-be-marked-as-compliant"></a>Eszköz megfelelőként való megjelölésének megkövetelése
 

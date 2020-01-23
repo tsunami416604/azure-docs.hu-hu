@@ -1,30 +1,30 @@
 ---
-title: Az Azure Event Griddel kapcsolatos események szűrése
-description: Bemutatja, hogyan hozhat létre, amely az események szűréséhez állítsa be az Azure Event Grid-előfizetéssel.
+title: Azure Event Grid eseményeinek szűrése
+description: Ez a cikk bemutatja, hogyan szűrhetők az események (eseménytípus szerint, tárgy szerint, operátorok és adattípusok alapján) Event Grid előfizetés létrehozásakor.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/07/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 5bb95b80e12c818641e2be2b929cdfd01f8f5b5c
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 58da209c68449d3a28b08f52ec575f7db520f121
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304225"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514527"
 ---
-# <a name="filter-events-for-event-grid"></a>Az Event Griddel kapcsolatos események szűrése
+# <a name="filter-events-for-event-grid"></a>Event Grid eseményeinek szűrése
 
-Ez a cikk bemutatja, hogyan használatával szűrhetők az események Event Grid-előfizetés létrehozásakor. Az események szűrése lehetőségei kapcsolatos további információkért lásd: [szűrést az Event Grid-előfizetések ismertetése esemény](event-filtering.md).
+Ez a cikk bemutatja, hogyan szűrheti az eseményeket Event Grid előfizetés létrehozásakor. Az események szűrésének lehetőségeiről az [Event Grid-előfizetések eseményeinek szűrését](event-filtering.md)ismertető cikk nyújt tájékoztatást.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="filter-by-event-type"></a>Eseménytípus szerint szűrheti.
+## <a name="filter-by-event-type"></a>Szűrés eseménytípus szerint
 
-Event Grid-előfizetés létrehozásakor, amelyeket megadhat [eseménytípusok](event-schema.md) a végponthoz való küldéséhez. Ebben a szakaszban található példák egy erőforráscsoportot az esemény-előfizetések létrehozása, de az elküldött események `Microsoft.Resources.ResourceWriteFailure` és `Microsoft.Resources.ResourceWriteSuccess`. Ha nagyobb rugalmasságot eseménytípusok események szűrés során, tekintse meg a szűrő a speciális operátorok és az adatok mezők szerint.
+Event Grid-előfizetés létrehozásakor megadhatja, hogy mely [típusú események](event-schema.md) legyenek elküldve a végpontnak. Az ebben a szakaszban szereplő példák egy erőforráscsoport esemény-előfizetéseit hoznak létre, de korlátozzák a `Microsoft.Resources.ResourceWriteFailure` és `Microsoft.Resources.ResourceWriteSuccess`számára eljuttatott eseményeket. Ha az események eseménytípus szerinti szűrése nagyobb rugalmasságot igényel, tekintse meg a következő témakört: szűrés speciális operátorok és adatmezők alapján.
 
-PowerShell esetén használja a `-IncludedEventType` paraméter-előfizetés létrehozásakor.
+A PowerShell esetében használja az `-IncludedEventType` paramétert az előfizetés létrehozásakor.
 
 ```powershell
 $includedEventTypes = "Microsoft.Resources.ResourceWriteFailure", "Microsoft.Resources.ResourceWriteSuccess"
@@ -36,7 +36,7 @@ New-AzEventGridSubscription `
   -IncludedEventType $includedEventTypes
 ```
 
-Azure CLI esetén használja a `--included-event-types` paraméter. Az alábbi példában az Azure CLI Bash-felületen:
+Az Azure CLI esetén használja a `--included-event-types` paramétert. Az alábbi példa egy bash-rendszerhéjban az Azure CLI-t használja:
 
 ```azurecli
 includedEventTypes="Microsoft.Resources.ResourceWriteFailure Microsoft.Resources.ResourceWriteSuccess"
@@ -48,7 +48,7 @@ az eventgrid event-subscription create \
   --included-event-types $includedEventTypes
 ```
 
-A Resource Manager-sablonnal, használja a `includedEventTypes` tulajdonság.
+Resource Manager-sablonok esetén használja a `includedEventTypes` tulajdonságot.
 
 ```json
 "resources": [
@@ -77,11 +77,11 @@ A Resource Manager-sablonnal, használja a `includedEventTypes` tulajdonság.
 ]
 ```
 
-## <a name="filter-by-subject"></a>Szűrés tulajdonos szerint
+## <a name="filter-by-subject"></a>Szűrés tárgy szerint
 
-Szűrheti a tulajdonos az eseményadatokat az eseményeket. Elején vagy végén az e-mail tárgyát megfelelő érték adható meg. Ha nagyobb rugalmasságot listázásakor, a tulajdonos által események, tekintse meg a szűrő a speciális operátorok és az adatok mezők szerint.
+Az eseményeket a tárgy szerint szűrheti az esemény adataiban. Megadhat egy értéket, amely megegyezik a tárgy elejéhez vagy végéhez. Ha több rugalmasságra van szüksége az események tárgy szerinti szűréséhez, tekintse meg a szűrés speciális operátorok és az adatmezők alapján című témakört.
 
-A következő PowerShell-példa hoz létre egy esemény-előfizetés szűri az elején által az e-mail tárgyát. Használja a `-SubjectBeginsWith` paraméter események megjelennek a meghatározott erőforráshoz való korlátozásához. A hálózati biztonsági csoport erőforrás-Azonosítóját adja át.
+A következő PowerShell-példában egy olyan esemény-előfizetést hoz létre, amely a tárgy elejétől szűr. A `-SubjectBeginsWith` paraméterrel egy adott erőforrásra korlátozza az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
 
 ```powershell
 $resourceId = (Get-AzResource -ResourceName demoSecurityGroup -ResourceGroupName myResourceGroup).ResourceId
@@ -93,7 +93,7 @@ New-AzEventGridSubscription `
   -SubjectBeginsWith $resourceId
 ```
 
-A következő PowerShell-példa létrehoz egy előfizetést egy blob Storage. Események megjelennek a tulajdonosa, amely korlátozza `.jpg`.
+A következő PowerShell-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket a `.jpg`ban végződő tárgyat is korlátozza.
 
 ```powershell
 $storageId = (Get-AzStorageAccount -ResourceGroupName myResourceGroup -AccountName $storageName).Id
@@ -105,7 +105,7 @@ New-AzEventGridSubscription `
   -SubjectEndsWith ".jpg"
 ```
 
-A következő Azure CLI-példa hoz létre egy esemény-előfizetés szűri az elején által az e-mail tárgyát. Használja a `--subject-begins-with` paraméter események megjelennek a meghatározott erőforráshoz való korlátozásához. A hálózati biztonsági csoport erőforrás-Azonosítóját adja át.
+A következő Azure CLI-példában létrehozunk egy esemény-előfizetést, amely a tárgy elejére szűri. A `--subject-begins-with` paraméterrel egy adott erőforrásra korlátozza az eseményeket. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
 
 ```azurecli
 resourceId=$(az resource show --name demoSecurityGroup --resource-group myResourceGroup --resource-type Microsoft.Network/networkSecurityGroups --query id --output tsv)
@@ -117,7 +117,7 @@ az eventgrid event-subscription create \
   --subject-begins-with $resourceId
 ```
 
-A következő Azure CLI-példa létrehoz egy előfizetést egy blob Storage. Események megjelennek a tulajdonosa, amely korlátozza `.jpg`.
+A következő Azure CLI-példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket a `.jpg`ban végződő tárgyat is korlátozza.
 
 ```azurecli
 storageid=$(az storage account show --name $storageName --resource-group myResourceGroup --query id --output tsv)
@@ -129,7 +129,7 @@ az eventgrid event-subscription create \
   --subject-ends-with ".jpg"
 ```
 
-A következő Resource Manager-sablon példában hozzon létre egy esemény-előfizetés szűri az elején által az e-mail tárgyát. Használja a `subjectBeginsWith` tulajdonság események megjelennek a meghatározott erőforráshoz való korlátozásához. A hálózati biztonsági csoport erőforrás-Azonosítóját adja át.
+A következő Resource Manager-sablonban példaként hozzon létre egy esemény-előfizetést, amely a tárgy kezdete alapján szűri. A `subjectBeginsWith` tulajdonsággal korlátozhatja az eseményeket egy adott erőforrásra vonatkozóan. Egy hálózati biztonsági csoport erőforrás-AZONOSÍTÓját adja meg.
 
 ```json
 "resources": [
@@ -155,7 +155,7 @@ A következő Resource Manager-sablon példában hozzon létre egy esemény-elő
 ]
 ```
 
-A következő Resource Manager-sablon példa létrehoz egy előfizetést egy blob Storage. Események megjelennek a tulajdonosa, amely korlátozza `.jpg`.
+A következő Resource Manager-sablon példa létrehoz egy előfizetést a blob Storage-hoz. Az eseményeket a `.jpg`ban végződő tárgyat is korlátozza.
 
 ```json
 "resources": [
@@ -181,15 +181,15 @@ A következő Resource Manager-sablon példa létrehoz egy előfizetést egy blo
 ]
 ```
 
-## <a name="filter-by-operators-and-data"></a>Operátorok és az adatok szűrése
+## <a name="filter-by-operators-and-data"></a>Szűrés operátorok és adathalmazok alapján
 
-A nagyobb rugalmasság a szűrést operátorok és az események szűrése adattulajdonságok is használhatja.
+A szűrés rugalmassága érdekében az operátorok és az Adattulajdonságok segítségével szűrheti az eseményeket.
 
-### <a name="subscribe-with-advanced-filters"></a>Fizessen elő a speciális szűrők
+### <a name="subscribe-with-advanced-filters"></a>Előfizetés speciális szűrőkkel
 
-Az operátorok és kulcsot is, használhatja a Speciális szűrés kapcsolatos további információkért lásd: [Speciális szűrés](event-filtering.md#advanced-filtering).
+A speciális szűréshez használható operátorok és kulcsok megismeréséhez tekintse meg a [speciális szűrést](event-filtering.md#advanced-filtering)ismertető témakört.
 
-Ezek a példák egy egyéni témakör létrehozása. Ezeket az egyéni témakörre való feliratkozás, és az objektum az érték szerinti szűréshez. Az események, amelyek a kék szín tulajdonsága, vagy a piros, zöld küldhetők az előfizetés.
+Ezek a példák egyéni témakört hoznak létre. Előfizetnek az egyéni témakörre, és egy érték alapján szűrik az adatobjektumban. Azok az események, amelyeken a Color tulajdonság kék, vörös vagy zöld értékre van állítva, a rendszer elküldi az előfizetésnek.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -236,7 +236,7 @@ New-AzEventGridSubscription `
 
 ### <a name="test-filter"></a>Teszt szűrő
 
-A szűrő teszteléséhez, és állítsa be a zöld szín mező küldünk egy eseményt. Mivel a zöld pedig egy értéket a szűrőben, az eseményt a rendszer továbbítja a végpontot.
+A szűrő teszteléséhez küldjön egy olyan eseményt, amelyben a szín mező zöld értékre van állítva. Mivel a zöld a szűrő egyik értéke, az eseményt a rendszer a végpontnak továbbítja.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -275,7 +275,7 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-Egy olyan forgatókönyvet, ahol nem érkezik meg az esemény teszteléséhez küldhet egy eseményt a szín a mezőben az sárga. Sárga nem egy, az eseményt az előfizetés nem lett elküldve az előfizetésben megadott értéket.
+Egy olyan forgatókönyv teszteléséhez, amelyben az esemény nincs elküldve, küldjön egy olyan eseményt, amelyben a szín mező sárga értékre van állítva. A sárga nem az előfizetésben megadott értékek egyike, így az esemény nem érkezik meg az előfizetésbe.
 
 Azure CLI esetén használja az alábbi parancsot:
 
@@ -304,8 +304,8 @@ $body = "["+(ConvertTo-Json $htbody)+"]"
 Invoke-WebRequest -Uri $endpoint -Method POST -Body $body -Headers @{"aeg-sas-key" = $keys.Key1}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő Event Grid üzenetkézbesítése](monitor-event-delivery.md).
-* A hitelesítési kulcs kapcsolatos további információkért lásd: [Event Grid biztonsági és hitelesítési](security-authentication.md).
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
+* További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

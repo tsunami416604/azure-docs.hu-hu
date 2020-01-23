@@ -7,14 +7,14 @@ ms.reviewer: rkarlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 07/17/2019
-ms.openlocfilehash: d572e7f3fceaf2df8ad0ec684eaa421922389e71
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 1e5af0b45b8d2e2eceac1b653a5219a236c25467
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74922153"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512912"
 ---
-# <a name="query-data-in-azure-data-lake-using-azure-data-explorer-preview"></a>Azure Data Lake lekérdezése az Azure Adatkezelő használatával (előzetes verzió)
+# <a name="query-data-in-azure-data-lake-using-azure-data-explorer"></a>Azure Data Lake lekérdezése az Azure-Adatkezelő használatával
 
 A Azure Data Lake Storage egy rugalmasan méretezhető és költséghatékony, big data elemzésre szolgáló adatkezelési megoldás. Egy nagy teljesítményű fájlrendszer, a hatalmas méret és a gazdaságosság ötvözésével segít gyorsabban hozzájutni az elemzési eredményekhez. A Data Lake Storage Gen2 túlmutat az Azure Blob Storage képességein, és elemzési feladatokra van optimalizálva.
  

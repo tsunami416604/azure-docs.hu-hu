@@ -9,16 +9,16 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 29aab4437b7d77b9a00b5745d68dcb5c44a4efe6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fffe1ebda0103b3ed2cd8f76642ecb2967d23069
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434223"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510294"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-cli"></a>IoT Edge-modulok üzembe helyezése és figyelése az Azure CLI használatával
 
-Hozzon létre egy **IoT Edge automatikus központi telepítést** az Azure parancssori felület használatával, amellyel egyszerre több eszközön is kezelheti a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](/azure/iot-hub/iot-hub-automatic-device-management) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön, nyomon követni a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre. 
+Hozzon létre egy **IoT Edge automatikus központi telepítést** az Azure parancssori felület használatával, amellyel egyszerre több eszközön is kezelheti a folyamatban lévő központi telepítéseket. A IoT Edge automatikus központi telepítései a IoT Hub [automatikus Eszközkezelő](/azure/iot-hub/iot-hub-automatic-device-management) funkciójának részét képezik. A központi telepítések olyan dinamikus folyamatok, amelyek lehetővé teszik több modul üzembe helyezését több eszközön, nyomon követni a modulok állapotát és állapotát, és szükség esetén módosításokat hajthat végre.
 
 További információ: [IoT Edge automatikus központi telepítésének ismertetése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md).
 
@@ -26,16 +26,16 @@ Ebben a cikkben az Azure CLI-t és a IoT-bővítményt kell beállítania. Ezut�
 
 ## <a name="cli-prerequisites"></a>A CLI előfeltételei
 
-* Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében. 
+* Egy [IoT hub](../iot-hub/iot-hub-create-using-cli.md) az Azure-előfizetésében.
 * [IoT Edge](how-to-register-device.md#prerequisites-for-the-azure-cli) a telepített IoT Edge futtatókörnyezettel rendelkező eszközöket.
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.24 vagy újabbnak kell lennie. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer. 
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli) a környezetben. Legalább az Azure CLI-verziójának 2.0.24 vagy újabbnak kell lennie. A verziószámot az `az --version` paranccsal ellenőrizheti. Ez a verzió támogatja az „az” bővítményparancsokat, és ebben a verzióban került bevezetésre a Knack parancskeretrendszer.
 * Az [Azure CLI-hez készült IoT-bővítmény](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="configure-a-deployment-manifest"></a>Központi telepítési jegyzék konfigurálása
 
 Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely modulokat kell telepíteni, hogyan zajlik az adatforgalom a modulok és a modul kívánt tulajdonságai között. További információkért lásd: [modulok központi telepítése és útvonalak létrehozása IoT Edgeban](module-composition.md).
 
-A modulok Azure CLI használatával történő üzembe helyezéséhez mentse a központi telepítési jegyzéket. txt fájlként. A következő szakaszban a fájl elérési útját kell használnia, amikor a parancs futtatásával alkalmazza a konfigurációt az eszközre. 
+A modulok Azure CLI használatával történő üzembe helyezéséhez mentse a központi telepítési jegyzéket. txt fájlként. A következő szakaszban a fájl elérési útját kell használnia, amikor a parancs futtatásával alkalmazza a konfigurációt az eszközre.
 
 Íme egy alapszintű üzembe helyezési jegyzék egy modullal, például:
 
@@ -110,13 +110,13 @@ A modulok Azure CLI használatával történő üzembe helyezéséhez mentse a k
 
 ## <a name="layered-deployment"></a>Rétegzett üzembe helyezés
 
-A többrétegű központi telepítések olyan automatikus üzembe helyezési típusok, amelyek egymáshoz halmozható. A rétegzett központi telepítésekkel kapcsolatos további információkért lásd: [IoT Edge automatikus központi telepítések megismerése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md). 
+A többrétegű központi telepítések olyan automatikus üzembe helyezési típusok, amelyek egymáshoz halmozható. A rétegzett központi telepítésekkel kapcsolatos további információkért lásd: [IoT Edge automatikus központi telepítések megismerése egyetlen eszközön vagy nagy méretekben](module-deployment-monitoring.md).
 
-A többrétegű központi telepítések az Azure CLI-vel ugyanúgy hozhatók létre és kezelhetők, mint bármely automatikus üzembe helyezés, mindössze néhány különbséggel. A többrétegű központi telepítés létrehozása után ugyanaz az Azure CLI működik a rétegzett központi telepítésekhez, mint bármely üzemelő példány. Rétegzett központi telepítés létrehozásához adja hozzá a `--layered` jelzőt a Create parancshoz. 
+A többrétegű központi telepítések az Azure CLI-vel ugyanúgy hozhatók létre és kezelhetők, mint bármely automatikus üzembe helyezés, mindössze néhány különbséggel. A többrétegű központi telepítés létrehozása után ugyanaz az Azure CLI működik a rétegzett központi telepítésekhez, mint bármely üzemelő példány. Rétegzett központi telepítés létrehozásához adja hozzá a `--layered` jelzőt a Create parancshoz.
 
-A második különbség az üzembe helyezési jegyzék kialakítása. Habár a normál automatikus központi telepítésnek tartalmaznia kell a rendszerszintű modulokat a felhasználói modulok mellett, a rétegzett központi telepítések csak felhasználói modulokat tartalmazhatnak. Ehelyett a többrétegű központi telepítéseknek szabványos automatikus központi telepítésre van szükségük egy eszközön, hogy minden IoT Edge eszköz, például a rendszerfuttatókörnyezet moduljai számára megadják a szükséges összetevőket. 
+A második különbség az üzembe helyezési jegyzék kialakítása. Habár a normál automatikus központi telepítésnek tartalmaznia kell a rendszerszintű modulokat a felhasználói modulok mellett, a rétegzett központi telepítések csak felhasználói modulokat tartalmazhatnak. Ehelyett a többrétegű központi telepítéseknek szabványos automatikus központi telepítésre van szükségük egy eszközön, hogy minden IoT Edge eszköz, például a rendszerfuttatókörnyezet moduljai számára megadják a szükséges összetevőket.
 
-Íme egy alapszintű, rétegzett üzembe helyezési jegyzék, amely egy modult tartalmaz példaként: 
+Íme egy alapszintű, rétegzett üzembe helyezési jegyzék, amely egy modult tartalmaz példaként:
 
 ```json
 {
@@ -148,7 +148,7 @@ A második különbség az üzembe helyezési jegyzék kialakítása. Habár a n
 }
 ```
 
-Az előző példában egy többrétegű központi telepítés látható, amely a modul `properties.desired`ét állítja be. Ha ez a rétegzett központi telepítés olyan eszközt céloz meg, amelyben ugyanaz a modul már alkalmazva lett, a meglévő kívánt tulajdonságokat felülírhatja. A felülírás helyett a kívánt tulajdonságok megadásához megadhat egy új alszakaszt. Példa: 
+Az előző példában egy többrétegű központi telepítés látható, amely a modul `properties.desired`ét állítja be. Ha ez a rétegzett központi telepítés olyan eszközt céloz meg, amelyben ugyanaz a modul már alkalmazva lett, a meglévő kívánt tulajdonságokat felülírhatja. A felülírás helyett a kívánt tulajdonságok megadásához megadhat egy új alszakaszt. Példa:
 
 ```json
 "SimulatedTEmperatureSensor": {
@@ -180,7 +180,7 @@ További információ az eszközök ikrekről és címkékről: [az eszközök �
 
 ## <a name="create-a-deployment"></a>Központi telepítés létrehozása
 
-A eszközöket üzembe helyezheti a céleszköz olyan központi telepítés létrehozásával, amely az üzembe helyezési jegyzékből és egyéb paraméterekből áll. 
+A eszközöket üzembe helyezheti a céleszköz olyan központi telepítés létrehozásával, amely az üzembe helyezési jegyzékből és egyéb paraméterekből áll.
 
 Központi telepítés létrehozásához használja az az [IOT Edge Deployment Create](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-create) parancsot:
 
@@ -190,16 +190,16 @@ az iot edge deployment create --deployment-id [deployment id] --hub-name [hub na
 
 Egy rétegzett tartalomterjesztési létrehozásához használja ugyanazt a parancsot a `--layered` jelzővel.
 
-A központi telepítési Create parancs a következő paramétereket veszi figyelembe: 
+A központi telepítési Create parancs a következő paramétereket veszi figyelembe:
 
 * **--rétegzett** – egy opcionális jelző, amely a központi telepítést rétegzett központi telepítésként azonosítja.
-* **--Deployment-ID** – az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`. Szükséges paraméter. 
-* **--Content** -filepath az üzembe helyezési jegyzékhez tartozó JSON-ra. Szükséges paraméter. 
+* **--Deployment-ID** – az IoT hub-ban létrehozandó központi telepítés neve. Adja meg az üzembe helyezést egy egyedi névvel, amely akár 128 kisbetűt is tartalmazhat. Kerülje a szóközöket, és a következő érvénytelen karaktereket: `& ^ [ ] { } \ | " < > /`. Szükséges paraméter.
+* **--Content** -filepath az üzembe helyezési jegyzékhez tartozó JSON-ra. Szükséges paraméter.
 * **--hub-Name** -annak az IoT hub-nek a neve, amelyben a központi telepítés létrejön. A hubhoz a jelenlegi előfizetésben kell lennie. Módosítsa a jelenlegi előfizetését az `az account set -s [subscription name]` paranccsal.
 * **--labels** – Címkék hozzáadása az üzemelő példányok nyomon követéséhez. A címkék név, érték párok, amelyek leírják az üzemelő példányt. A címkék a nevek és az értékek JSON-formázását végzik. Például: `{"HostPlatform":"Linux", "Version:"3.0.1"}`
-* **– cél – feltétel** – adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például `tags.environment='test' and properties.reported.devicemodel='4000x'`. 
+* **– cél – feltétel** – adja meg a cél feltételt annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például `tags.environment='test' and properties.reported.devicemodel='4000x'`.
 * **--priority** – pozitív egész szám. Abban az esetben, ha két vagy több üzemelő példány ugyanarra az eszközre irányul, a prioritáshoz tartozó legmagasabb numerikus értékkel rendelkező üzemelő példány érvényes lesz.
-* **--mérőszámok** – mérőszámok létrehozása, amelyek lekérdezik a edgeHub jelentett tulajdonságokat a központi telepítés állapotának nyomon követéséhez. A metrikák JSON-bemenetet vagy filepath tesznek. Például: `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`. 
+* **--mérőszámok** – mérőszámok létrehozása, amelyek lekérdezik a edgeHub jelentett tulajdonságokat a központi telepítés állapotának nyomon követéséhez. A metrikák JSON-bemenetet vagy filepath tesznek. Például: `'{"queries": {"mymetric": "SELECT deviceId FROM devices WHERE properties.reported.lastDesiredStatus.code = 200"}}'`.
 
 ## <a name="monitor-a-deployment"></a>Központi telepítés figyelése
 
@@ -210,7 +210,8 @@ az iot edge deployment show --deployment-id [deployment id] --hub-name [hub name
 ```
 
 Az üzembe helyezési show parancs a következő paramétereket veszi figyelembe:
-* **--Deployment-ID** – az IoT hub-ban található központi telepítés neve. Szükséges paraméter. 
+
+* **--Deployment-ID** – az IoT hub-ban található központi telepítés neve. Szükséges paraméter.
 * **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 
 Vizsgálja meg a központi telepítést a parancsablakban. A **metrikák** tulajdonság felsorolja az egyes hubok által kiértékelt metrikák darabszámát:
@@ -223,25 +224,26 @@ Vizsgálja meg a központi telepítést a parancsablakban. A **metrikák** tula
 Az egyes mérőszámokhoz tartozó eszköz-azonosítók vagy objektumok listáját az az [IOT Edge Deployment show-metrika](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-show-metric) paranccsal lehet megjeleníteni:
 
 ```cli
-az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name] 
+az iot edge deployment show-metric --deployment-id [deployment id] --metric-id [metric id] --hub-name [hub name]
 ```
 
-Az üzembe helyezés megjelenítése-metrika parancs a következő paramétereket veszi figyelembe: 
+Az üzembe helyezés megjelenítése-metrika parancs a következő paramétereket veszi figyelembe:
+
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve.
 * **--metrika-azonosító** – annak a metrikának a neve, amelyre vonatkozóan meg szeretné jeleníteni az eszközök azonosítóinak listáját, például `reportedFailedCount`.
 * **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre `az account set -s [subscription name]`paranccsal.
 
 ## <a name="modify-a-deployment"></a>Központi telepítés módosítása
 
-Amikor módosít egy központi telepítést, a módosítások azonnal replikálódnak az összes megadott eszközre. 
+Amikor módosít egy központi telepítést, a módosítások azonnal replikálódnak az összes megadott eszközre.
 
 Ha frissíti a célként megadott feltételt, a következő frissítések történnek:
 
-* Ha egy eszköz nem felelt meg a régi célként megadott feltételnek, de megfelel az új célként megadott feltételnek, és ez a központi telepítés az eszköz legmagasabb prioritása, akkor ez a központi telepítés az eszközre lesz alkalmazva. 
-* Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, akkor eltávolítja ezt a központi telepítést, és a következő legmagasabb prioritású üzemelő példányra kerül. 
-* Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, és nem felel meg a többi üzemelő példány céljának, akkor az eszközön nem történik változás. Az eszköz továbbra is a jelenlegi állapotukban futtatja az aktuális modulokat, de az üzembe helyezés részeként már nem felügyelhető. Ha teljesíti az egyéb üzemelő példányok célját, eltávolítja ezt az üzembe helyezést, és az újat veszi. 
+* Ha egy eszköz nem felelt meg a régi célként megadott feltételnek, de megfelel az új célként megadott feltételnek, és ez a központi telepítés az eszköz legmagasabb prioritása, akkor ez a központi telepítés az eszközre lesz alkalmazva.
+* Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, akkor eltávolítja ezt a központi telepítést, és a következő legmagasabb prioritású üzemelő példányra kerül.
+* Ha a központi telepítést jelenleg futtató eszköz már nem felel meg a célként megadott feltételnek, és nem felel meg a többi üzemelő példány céljának, akkor az eszközön nem történik változás. Az eszköz továbbra is a jelenlegi állapotukban futtatja az aktuális modulokat, de az üzembe helyezés részeként már nem felügyelhető. Ha teljesíti az egyéb üzemelő példányok célját, eltávolítja ezt az üzembe helyezést, és az újat veszi.
 
-A központi telepítés tartalma nem frissíthető, beleértve az üzembe helyezési jegyzékben definiált modulokat és útvonalakat is. Ha szeretné frissíteni egy központi telepítés tartalmát, hozzon létre egy új központi telepítést, amely a magasabb prioritású eszközöket célozza meg. A meglévő modulok bizonyos tulajdonságai módosíthatók, beleértve a célként feltételt, a címkéket, a metrikákat és a prioritást is. 
+A központi telepítés tartalma nem frissíthető, beleértve az üzembe helyezési jegyzékben definiált modulokat és útvonalakat is. Ha szeretné frissíteni egy központi telepítés tartalmát, hozzon létre egy új központi telepítést, amely a magasabb prioritású eszközöket célozza meg. A meglévő modulok bizonyos tulajdonságai módosíthatók, beleértve a célként feltételt, a címkéket, a metrikákat és a prioritást is.
 
 A központi telepítés frissítéséhez használja az az [IOT Edge Deployment Update](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-update) parancsot:
 
@@ -250,27 +252,28 @@ az iot edge deployment update --deployment-id [deployment id] --hub-name [hub na
 ```
 
 A központi telepítés frissítése parancs a következő paramétereket veszi figyelembe:
+
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve.
 * **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 * **--set** -tulajdonság frissítése a központi telepítésben. A következő tulajdonságokat frissítheti:
   * targetCondition – például `targetCondition=tags.location.state='Oregon'`
-  * Címkék 
+  * Címkék
   * prioritású
-* **--Add** -új tulajdonság hozzáadása a központi telepítéshez, beleértve a megcélzott feltételeket vagy címkéket. 
-* **--** eltávolít egy meglévő tulajdonságot, beleértve a megcélzott feltételeket vagy címkéket. 
-
+* **--Add** -új tulajdonság hozzáadása a központi telepítéshez, beleértve a megcélzott feltételeket vagy címkéket.
+* **--** eltávolít egy meglévő tulajdonságot, beleértve a megcélzott feltételeket vagy címkéket.
 
 ## <a name="delete-a-deployment"></a>Központi telepítés törlése
 
-Ha töröl egy központi telepítést, minden eszköz a következő legmagasabb prioritású központi telepítésre kerül. Ha az eszközök nem felelnek meg az egyéb üzemelő példányok céljának, akkor a rendszer nem távolítja el a modulokat a központi telepítés törlésekor. 
+Ha töröl egy központi telepítést, minden eszköz a következő legmagasabb prioritású központi telepítésre kerül. Ha az eszközök nem felelnek meg az egyéb üzemelő példányok céljának, akkor a rendszer nem távolítja el a modulokat a központi telepítés törlésekor.
 
 A központi telepítés törléséhez használja az az [IOT Edge Deployment delete](https://docs.microsoft.com/cli/azure/ext/azure-cli-iot-ext/iot/edge/deployment?view=azure-cli-latest#ext-azure-cli-iot-ext-az-iot-edge-deployment-delete) parancsot:
 
 ```cli
-az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name] 
+az iot edge deployment delete --deployment-id [deployment id] --hub-name [hub name]
 ```
 
-Az üzembe helyezés törlése parancs a következő paramétereket veszi figyelembe: 
+Az üzembe helyezés törlése parancs a következő paramétereket veszi figyelembe:
+
 * **--Deployment-ID** – az IoT hub-ban található központi telepítés neve.
 * **--hub-Name** -annak a IoT-hubhoz a neve, amelyben a központi telepítés létezik. A hubhoz a jelenlegi előfizetésben kell lennie. Váltson a kívánt előfizetésre a paranccsal `az account set -s [subscription name]`
 

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.reviewer: menchi
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: e4bf079d46271cadc0176fe5602adcdc3954dee5
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5c44561895bc1905328ec0eb357bee1c68a8eb55
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290716"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510532"
 ---
 # <a name="deploy-azure-iot-edge-modules-from-the-azure-portal"></a>Azure IoT Edge modulok üzembe helyezése a Azure Portal
 
@@ -43,9 +43,9 @@ A Azure Portal tartalmaz egy varázslót, amely végigvezeti az üzembe helyezé
 1. A lap **IoT Edge modulok** szakaszában válassza a **Hozzáadás**lehetőséget.
 1. Tekintse meg a modulok típusát a legördülő menüből:
 
-   * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. Például a minta SimulatedTemperatureSensor-modul képuri-ja `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez. 
+   * **IoT Edge modul** – megadja a modul nevét és a tároló rendszerképének URI-ját. Például a minta SimulatedTemperatureSensor-modul képuri-ja `mcr.microsoft.com/azureiotedge-simulated-temperature-sensor:1.0`. Ha a modul rendszerképét egy privát tároló beállításjegyzékében tárolja, adja hozzá a hitelesítő adatokat ezen a lapon a rendszerkép eléréséhez.
    * **Piactér modul** – az Azure piactéren üzemeltetett modulok. Egyes piactér-modulok további konfigurálást igényelnek, ezért tekintse át a modul részleteit az [Azure marketplace IoT Edge modulok](https://azuremarketplace.microsoft.com/marketplace/apps/category/internet-of-things?page=1&subcategories=iot-edge-modules) listájában.
-   * **Azure stream Analytics modul** – Azure stream Analytics munkaterhelés által generált modulok. 
+   * **Azure stream Analytics modul** – Azure stream Analytics munkaterhelés által generált modulok.
 
 1. A modul hozzáadása után válassza ki a modul nevét a listából a modul beállításainak megnyitásához. Szükség esetén töltse ki az opcionális mezőket. További információ a tároló létrehozási lehetőségeiről, az újraindítási szabályzatról és a kívánt állapotról: [EdgeAgent kívánt tulajdonságai](module-edgeagent-edgehub.md#edgeagent-desired-properties). További információ a modul Twin-ről: a [kívánt tulajdonságok meghatározása vagy frissítése](module-composition.md#define-or-update-desired-properties).
 1. Ha szükséges, ismételje meg az 5 – 8. lépést további modulok hozzáadásához a központi telepítéshez.

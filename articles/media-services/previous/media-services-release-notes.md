@@ -13,12 +13,12 @@ ms.devlang: dotnet
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: juliako
-ms.openlocfilehash: d4c8dd4b3a53d484d5240f3514d171231fc93ae0
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5b1daab724d979206983ee758760790967abc06d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74968510"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513388"
 ---
 # <a name="azure-media-services-release-notes"></a>Azure Media Services kibocsátási megjegyzések
 
@@ -50,15 +50,17 @@ A Media Services REST API korábbi verzióival kapcsolatos információkért tek
 
 ### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 előnézeti](media-services-process-content-with-indexer2.md) adathordozó processzora 2020 január 1-től megszűnik. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+Bejelentjük, hogy a *Azure Media Indexer* elavult, és *Azure Media Indexer 2 előzetes*verzió. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
-További információ: [áttelepítés Azure Media Indexerról és Azure Media Indexer 2 – Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
+A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört.
+
+Lásd még: [áttelepítés Azure Media Indexer és Azure Media Indexer 2 Azure Media Services video Indexer](migrate-indexer-v1-v2.md).
 
 ## <a name="august-2019"></a>2019. augusztus
 
 ### <a name="deprecation-of-media-processors"></a>Adathordozó-processzorok elavulása
 
-Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavult változatát, amelyek 2020. március 31-én megszűnnek.
+Bejelentjük a *Windows Azure Media Encoder* (Tamás) és a *Azure Media Encoder* (ame) adathordozó-processzorok elavulása, amelyek 2020. március 1-től megszűnnek.
 
 Részletekért lásd: [a Tamás Áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101334) és az [ame áttelepítésének Media Encoder standard](https://go.microsoft.com/fwlink/?LinkId=2101335).
 
@@ -247,13 +249,13 @@ További információt [ebben a blogban](https://azure.microsoft.com/blog/azure-
 ## <a id="august_changes_15"></a>Augusztus 2015 kiadás
 * A Java-verzió 0.8.0 kiadásának Media Services SDK-je és az új minták mostantól elérhetők. További információ eléréséhez lásd:
     
-* A Azure Media Player multi-audio stream-támogatással lett frissítve. További információkat [ebben a blogban](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/) talál.
+* A Azure Media Player multi-audio stream-támogatással lett frissítve. További információkat [ebben a blogposztban](https://azure.microsoft.com/blog/2015/08/13/azure-media-player-update-with-multi-audio-stream-support/) talál.
 
 ## <a id="july_changes_15"></a>Július 2015 kiadás
-* A Media Encoder Standard általánosan elérhetővé vált. További információkat [ebben a blogban](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/) talál.
+* A Media Encoder Standard általánosan elérhetővé vált. További információkat [ebben a blogposztban](https://azure.microsoft.com/blog/2015/07/16/announcing-the-general-availability-of-media-encoder-standard/) talál.
   
     A Media Encoder Standard a [jelen szakaszban](https://go.microsoft.com/fwlink/?LinkId=618336)leírtak szerint használja a beállításkészletet. Ha a 4K-kódoláshoz készletet használ, szerezze be a prémium szintű fenntartott egység típusát. További információ: [méretezési kódolás](media-services-scale-media-processing-overview.md).
-* Az élő valós idejű feliratok a Media Services és a Media Player használatával lettek használva. További információkat [ebben a blogban](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/) talál.
+* Az élő valós idejű feliratok a Media Services és a Media Player használatával lettek használva. További információkat [ebben a blogposztban](https://azure.microsoft.com/blog/2015/07/08/live-real-time-captions-with-azure-media-services-and-player/) talál.
 
 ### <a name="media-services-net-sdk-updates"></a>.NET SDK-frissítések Media Services
 A Media Services .NET SDK már verziója 3.4.0.0. A következő frissítések történtek: 

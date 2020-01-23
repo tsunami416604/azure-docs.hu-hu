@@ -1,6 +1,6 @@
 ---
-title: Az Azure Relay csomópont API-k áttekintése |} A Microsoft Docs
-description: Továbbítási csomópont API – áttekintés
+title: Az Azure Relay Node API-k áttekintése | Microsoft Docs
+description: Ez a cikk áttekintést nyújt a Azure Relay szolgáltatás Node. js API-jával. Azt is bemutatja, hogyan használható a HYCO-ws Node-csomag.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,32 +12,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 794e797e504d6064c13ffe0a4ed131e668d86e97
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 2877284c419da4999e23490fc986e5da44e5d92e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64699392"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514510"
 ---
-# <a name="relay-hybrid-connections-node-api-overview"></a>Továbbítási hibrid kapcsolatok csomópont API – áttekintés
+# <a name="relay-hybrid-connections-node-api-overview"></a>Relay Hibrid kapcsolatok Node API – áttekintés
 
 ## <a name="overview"></a>Áttekintés
 
-A [ `hyco-ws` ](https://www.npmjs.com/package/hyco-ws) Azure Relay hibrid-kapcsolatokkal a Node package épül, és kiterjeszti a ['ws'](https://www.npmjs.com/package/ws) NPM-csomag. Ez a csomag újra exportálja az összes exportálásai alapszintű csomagot, és hozzáadja a integrációjának engedélyezése az Azure Relay hibrid kapcsolatok szolgáltatást az új exportálásához. 
+A Azure Relay Hibrid kapcsolatok [`hyco-ws`](https://www.npmjs.com/package/hyco-ws) -csomópontja a ["ws"](https://www.npmjs.com/package/ws) NPM-csomagra épül, és kibővíti azt. Ez a csomag újraexportálja az adott alapcsomag összes exportálását, és új exportálásokat hoz létre, amelyek lehetővé teszik az integrációt az Azure Relay Service Hibrid kapcsolatok szolgáltatással. 
 
-Meglévő alkalmazások, amelyek `require('ws')` használhatja ezt a csomagot a `require('hyco-ws')` helyette, amely is lehetővé teszi, amelyben egy alkalmazás képes figyelni a WebSocket kapcsolatokat helyileg "belül a tűzfal" és a hibrid kapcsolatok használatával minden a hibrid forgatókönyvek egy időben.
+A meglévő alkalmazások, amelyek `require('ws')` használhatják ezt a csomagot, `require('hyco-ws')` helyette, ami olyan hibrid forgatókönyveket is lehetővé tesz, amelyekben az alkalmazás a WebSocket-kapcsolatokat helyileg, a "tűzfalon belül" és a Hibrid kapcsolatokon keresztül is figyeli.
   
 ## <a name="documentation"></a>Dokumentáció
 
-Az API-k [részletes ismertetését lásd: a fő "ws" csomag](https://github.com/websockets/ws/blob/master/doc/ws.md). Ez a cikk bemutatja, hogyan Ez a csomag eltér-e alapterv. 
+Az API [-k dokumentálva vannak a fő "ws" csomagban](https://github.com/websockets/ws/blob/master/doc/ws.md). Ez a cikk azt ismerteti, hogyan különbözik a csomag az alaptervtől. 
 
-Az alapszintű csomag és a "hyco ws" lényeges különbség az, hogy hozzáad egy új kiszolgáló osztályt, amely keresztül van exportálva `require('hyco-ws').RelayedServer`, és néhány segédmetódusokat.
+Az alapcsomag és a jelen "HYCO-ws" közötti fő különbség az, hogy egy új, `require('hyco-ws').RelayedServer`on és néhány segítő módszeren keresztül exportált kiszolgálói osztályt hoz létre.
 
-### <a name="package-helper-methods"></a>Csomag segédmetódusokat
+### <a name="package-helper-methods"></a>Csomag segítő módszerei
 
-Számos segédprogram-metódusokat érhető el a következő hivatkozási az erőforráscsomag exportálása:
+A csomag exportálásának számos segédprogram-módszere elérhető, amelyet a következőképpen hivatkozhat:
 
 ```JavaScript
 const WebSocket = require('hyco-ws');
@@ -48,7 +48,7 @@ listenUri = WebSocket.appendRelayToken(listenUri, 'ruleName', '...key...')
 
 ```
 
-A segédmetódusokat használhatja a csomaggal, de a figyelők vagy feladók hozhat létre web- vagy eszköz ügyfelek engedélyezése egy csomópont-kiszolgáló is használható. A kiszolgáló ezen módszerek az URI-k, amelyek a beágyazási tokenek rövid ideig tartó átadásával őket. Az URI-k is használható, amelyek a beállítás HTTP-fejlécek nem támogatják a WebSocket-kézfogás a közös WebSocket-implementációt. Hitelesítési jogkivonatok beillesztése az URI-t elsősorban ezeket erőforrástár-külső használati forgatókönyvek esetén támogatott. 
+Ezzel a csomaggal használhatók a segítő módszerek, de a csomópont-kiszolgáló is használhatja a webes vagy az eszköz ügyfelei számára a figyelők vagy a küldők létrehozásához. A kiszolgáló ezeket a metódusokat használja a rövid élettartamú tokeneket beágyazó URI-k átadásával. Ezek az URI-k olyan közös WebSocket-veremekkel is használhatók, amelyek nem támogatják a HTTP-fejlécek beállítását a WebSocket-kézfogáshoz. Az engedélyezési jogkivonatok URI-ba való beágyazását elsősorban a függvénytár-külső használati forgatókönyvek támogatják. 
 
 #### <a name="createrelaylistenuri"></a>createRelayListenUri
 
@@ -56,14 +56,14 @@ A segédmetódusokat használhatja a csomaggal, de a figyelők vagy feladók hoz
 var uri = createRelayListenUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Létrehoz egy érvényes Azure Relay hibrid kapcsolati figyelő URI-t az adott névtér és az elérési út. Ez az URI majd WebSocketServer osztály a továbbító verziójával használható.
+Egy érvényes Azure Relay hibrid kapcsolatok figyelő URI-t hoz létre a megadott névtérhez és elérési úthoz. Ezt az URI-t ezután a WebSocketServer osztály Relay-verziójával lehet használni.
 
-- `namespaceName` (kötelező) – a tartomány neve az Azure Relay-névtér használatára.
-- `path` (kötelező) – egy meglévő Azure Relay hibrid kapcsolat, hogy a névtér nevét.
-- `token` (nem kötelező) – egy korábban kiadott Relay hozzáférési jogkivonatát, a figyelő URI beágyazott (lásd az alábbi példát).
-- `id` (nem kötelező) – a követési azonosító, amely lehetővé teszi a teljes körű diagnosztikai kérelmek nyomon követheti.
+- `namespaceName` (kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
+- `path` (kötelező) – egy meglévő Azure Relay hibrid-kapcsolatok neve a névtérben.
+- `token` (nem kötelező) – a figyelő URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
+- `id` (nem kötelező) – olyan követési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
 
-A `token` érték megadása nem kötelező, és csak ha az nem lehet elküldeni a HTTP-fejlécek együtt a WebSocket-kézfogás hasonlóan a W3C WebSocket hibával használható.                  
+A `token` érték nem kötelező, és csak akkor használható, ha a WebSocket-kézfogással együtt nem lehet HTTP-fejléceket küldeni, ahogy a W3C WebSocket-verem esetében is.                  
 
 
 #### <a name="createrelaysenduri"></a>createRelaySendUri
@@ -72,14 +72,14 @@ A `token` érték megadása nem kötelező, és csak ha az nem lehet elküldeni 
 var uri = createRelaySendUri([namespaceName], [path], [[token]], [[id]])
 ```
 
-Létrehoz egy érvényes Azure Relay hibrid kapcsolat küldési URI-t az adott névtér és az elérési utat. Ez az URI minden WebSocket-ügyféllel használható.
+Létrehoz egy érvényes Azure Relay hibrid kapcsolatok küldési URI-JÁT a megadott névtérhez és elérési úthoz. Ezt az URI-t bármely WebSocket-ügyféllel együtt használhatja.
 
-- `namespaceName` (kötelező) – a tartomány neve az Azure Relay-névtér használatára.
-- `path` (kötelező) – egy meglévő Azure Relay hibrid kapcsolat, hogy a névtér nevét.
-- `token` (nem kötelező) – egy korábban kiadott Relay hozzáférési jogkivonatot, amely a küldési URI beágyazott (lásd az alábbi példát).
-- `id` (nem kötelező) – a követési azonosító, amely lehetővé teszi a teljes körű diagnosztikai kérelmek nyomon követheti.
+- `namespaceName` (kötelező) – a használni kívánt Azure Relay névtér tartományhoz tartozó neve.
+- `path` (kötelező) – egy meglévő Azure Relay hibrid-kapcsolatok neve a névtérben.
+- `token` (nem kötelező) – a küldési URI-ba beágyazott, korábban kiadott továbbító hozzáférési jogkivonat (lásd a következő példát).
+- `id` (nem kötelező) – olyan követési azonosító, amely lehetővé teszi a kérelmek végpontok közötti diagnosztikai nyomon követését.
 
-A `token` érték megadása nem kötelező, és csak ha az nem lehet elküldeni a HTTP-fejlécek együtt a WebSocket-kézfogás hasonlóan a W3C WebSocket hibával használható.                   
+A `token` érték nem kötelező, és csak akkor használható, ha a WebSocket-kézfogással együtt nem lehet HTTP-fejléceket küldeni, ahogy a W3C WebSocket-verem esetében is.                   
 
 
 #### <a name="createrelaytoken"></a>createRelayToken 
@@ -88,14 +88,14 @@ A `token` érték megadása nem kötelező, és csak ha az nem lehet elküldeni 
 var token = createRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Létrehoz egy Azure Relay közös hozzáférésű Jogosultságkód (SAS) jogkivonatot a megadott cél URI-t, a SAS-szabály és a SAS-szabály kulcs, amely érvényes a megadott számú másodperc, vagy a jelenlegi azonnali egy órát, ha a lejárati argumentum esetén.
+Létrehoz egy Azure Relay megosztott hozzáférési aláírási (SAS-) tokent az adott cél URI, SAS szabály és SAS-szabály kulcsa számára, amely a megadott számú másodpercre érvényes, vagy ha a lejárati argumentum nincs megadva, akkor az aktuális pillanattól egy órára.
 
-- `uri` (kötelező) – az URI-t, amelyhez a jogkivonatot kellene kibocsátani van. Az URI-t használja a HTTP sémát van normalizálva, és a lekérdezési karakterlánc adatai van eltávolítani.
-- `ruleName` (kötelező) – SAS szabály neve vagy a megadott URI azonosító által jelölt entitás, vagy a névtér URI-t gazdagépre utaló képviseli.
-- `key` (kötelező) – az SAS-szabály érvényes kulcs. 
-- `expirationSeconds` (nem kötelező) – amíg a generált jogkivonat lejárata másodpercek számát. Ha nincs megadva, az alapértelmezett érték 1 óra (3600).
+- `uri` (kötelező) – az az URI, amely számára ki kell állítani a jogkivonatot. Az URI a HTTP-séma használatára van normalizálva, és a lekérdezési karakterlánc adatai el vannak megfosztotva.
+- `ruleName` (kötelező) – az SAS-szabály neve az adott URI által képviselt entitáshoz vagy az URI-gazda rész által képviselt névtérhez.
+- `key` (kötelező) – az SAS-szabály érvényes kulcsa. 
+- `expirationSeconds` (nem kötelező) – azon másodpercek száma, ameddig a generált tokennek le kell járnia. Ha nincs megadva, az alapértelmezett érték 1 óra (3600).
 
-A kiállított jogkivonat ruház a megadott időtartama alatt a megadott SAS-szabályhoz társított jogosultságok.
+A kiállított jogkivonat megadja a megadott SAS-szabályhoz társított jogosultságokat a megadott időtartamra.
 
 #### <a name="appendrelaytoken"></a>appendRelayToken
 
@@ -103,15 +103,15 @@ A kiállított jogkivonat ruház a megadott időtartama alatt a megadott SAS-sza
 var uri = appendRelayToken([uri], [ruleName], [key], [[expirationSeconds]])
 ```
 
-Ez a módszer funkcionalitását tekintve megegyezik a `createRelayToken` metódus dokumentált korábban, de a megfelelően hozzáfűzi a bemeneti URI jogkivonatát adja vissza.
+Ez a módszer funkcionálisan egyenértékű a korábban dokumentált `createRelayToken` metódussal, de a bemeneti URI-hoz helyesen hozzáfűzött tokent adja vissza.
 
 ### <a name="class-wsrelayedserver"></a>Osztály ws. RelayedServer
 
-A `hycows.RelayedServer` osztály történő alternatívája az `ws.Server` osztály, amely nem figyel a helyi hálózati, de figyeli az Azure Relay szolgáltatás delegáltak.
+A `hycows.RelayedServer` osztály az `ws.Server` osztály alternatívája, amely nem figyeli a helyi hálózatot, de a Azure Relay szolgáltatás figyelését delegálja.
 
-A két osztály a leginkább kompatibilis, ami azt jelenti, hogy egy meglévő alkalmazást a szerződés a `ws.Server` osztály könnyen módosítható a továbbítón keresztüli verzió használatához. A legfontosabb különbségek a következők: a konstruktorban, és az elérhető lehetőségek közül.
+A két osztály többnyire kompatibilis, ami azt jelenti, hogy a `ws.Server` osztályt használó meglévő alkalmazások egyszerűen módosíthatók a közvetített verzió használatára. A fő különbségek a konstruktorban és a rendelkezésre álló beállításokban találhatók.
 
-#### <a name="constructor"></a>A konstruktor  
+#### <a name="constructor"></a>Konstruktor  
 
 ```JavaScript 
 var ws = require('hyco-ws');
@@ -124,24 +124,24 @@ var wss = new server(
     });
 ```
 
-A `RelayedServer` a konstruktor támogatja, mint argumentumok külön készletét a `Server`, mert nem egy önálló figyelő vagy egy meglévő HTTP-listener keretrendszer beilleszthető tudni. Is kevesebb lehetőség érhető el, mert a WebSocket felügyeleti nagymértékben delegálás útján megszerezte a továbbítási szolgáltatásnak.
+A `RelayedServer` konstruktora más argumentumokat támogat, mint a `Server`, mert nem önálló figyelő, vagy egy meglévő HTTP-figyelő keretrendszerbe ágyazható be. Emellett kevesebb lehetőség érhető el, mivel a WebSocket-felügyelet nagyrészt a továbbítási szolgáltatáshoz van delegálva.
 
-A konstruktor argumentumai:
+Konstruktor argumentumai:
 
-- `server` (kötelező) – a teljes URI a hibrid kapcsolat neveként figyelésre, általában épített WebSocket.createRelayListenUri() segédmetódus.
-- `token` (kötelező) – Ez az argumentum tárolja egy korábban kiadott token karakterlánc vagy egy visszahívási függvény, amely nem hívható meg juthat hozzá az ilyen egy jogkivonat-karakterláncot. A visszahívási beállítást célszerű, mivel lehetővé teszi a token megújításának.
+- `server` (kötelező) – a megfigyelni kívánt hibrid kapcsolati név teljesen minősített URI-ja, amely általában a WebSocket. createRelayListenUri () segítő metódussal lett felépítve.
+- `token` (kötelező) – Ez az argumentum egy korábban kiadott jogkivonat-karakterláncot vagy egy visszahívási függvényt tartalmaz, amely meghívható egy ilyen jogkivonat-karakterlánc beszerzésére. A visszahívási beállítás előnyben részesített, mivel lehetővé teszi a jogkivonat megújítását.
 
-#### <a name="events"></a>Events
+#### <a name="events"></a>Események
 
-`RelayedServer` példányok gridre bocsáthatja ki három eseménynek, amely lehetővé teszi a bejövő kérések kezelésére, kapcsolatokat hozhat létre és hibaállapotok észlel. Elő kell fizetnie a `connect` eseményt üzenetek kezeléséhez. 
+`RelayedServer` példányok három olyan eseményt bocsátanak ki, amelyek lehetővé teszik a bejövő kérések kezelését, a kapcsolatok létrehozását és a hibák észlelését. Az üzenetek kezelésére elő kell fizetnünk a `connect` eseményre. 
 
-##### <a name="headers"></a>A fejlécek
+##### <a name="headers"></a>fejlécek
 
 ```JavaScript 
 function(headers)
 ```
 
-A `headers` egy esemény jelenik meg a bejövő kapcsolatokat elfogadnak, a fejlécek küldése az ügyfélnek módosításának engedélyezése előtt. 
+A `headers` esemény közvetlenül a bejövő kapcsolat elfogadása előtt következik be, ami lehetővé teszi az ügyfélnek küldendő fejlécek módosítását. 
 
 ##### <a name="connection"></a>kapcsolat
 
@@ -149,7 +149,7 @@ A `headers` egy esemény jelenik meg a bejövő kapcsolatokat elfogadnak, a fejl
 function(socket)
 ```
 
-Amikor egy új WebSocket csatlakozási kísérlet rendelkezésre. Az objektum típusú `ws.WebSocket`, ugyanaz, mint az alapszintű csomaggal.
+Egy új WebSocket-kapcsolat elfogadásakor lett kibocsátva. Az objektum típusa `ws.WebSocket`, ugyanaz, mint az alapcsomag.
 
 
 ##### <a name="error"></a>error
@@ -158,11 +158,11 @@ Amikor egy új WebSocket csatlakozási kísérlet rendelkezésre. Az objektum t�
 function(error)
 ```
 
-Ha az alapul szolgáló server bocsát ki a hibát, továbbítja azt itt.  
+Ha az alapul szolgáló kiszolgáló hibát jelez, itt továbbítjuk.  
 
 #### <a name="helpers"></a>Segítők
 
-A továbbítón keresztüli kiszolgáló indítása és a bejövő kapcsolatok azonnal előfizetés leegyszerűsítése a csomag tesz közzé egy egyszerű segítő függvény, amely szintén a példákban a következőképpen használja:
+A továbbított kiszolgálók indításának leegyszerűsítése és a bejövő kapcsolatokra való azonnali Feliratkozás esetén a csomag egy egyszerű segítő funkciót tesz elérhetővé, amely a példákban is használatos, a következő módon:
 
 ##### <a name="createrelayedlistener"></a>createRelayedListener
 
@@ -191,11 +191,11 @@ var wss = WebSocket.createRelayedServer(
 var server = createRelayedServer([options], [connectCallback] )
 ```
 
-Hozzon létre egy új példányt a RelayedServer konstruktor meghívja ezt a módszert, és majd feliratkozik a megadott visszahívás a "kapcsolat" esemény.
+Ez a metódus meghívja a konstruktort, hogy létrehozza a RelayedServer egy új példányát, majd Előfizeti a megadott visszahívást a "kapcsolat" eseményre.
  
 ##### <a name="relayedconnect"></a>relayedConnect
 
-Egyszerűen tükrözést a `createRelayedServer` függvényben segítő `relayedConnect` ügyfél kapcsolatot hoz létre, és feliratkozik a "Megnyitás" esemény az eredményül kapott szoftvercsatorna.
+Egyszerűen tükrözheti az `createRelayedServer` helpert a függvényben, `relayedConnect` létrehozza az ügyfélkapcsolatot, és előfizet az eredményül kapott szoftvercsatornán található "nyitott" eseményre.
 
 ```JavaScript
 var uri = WebSocket.createRelaySendUri(ns, path);
@@ -208,7 +208,7 @@ WebSocket.relayedConnect(
 );
 ```
 
-## <a name="next-steps"></a>További lépések
-Az Azure Relay kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
+## <a name="next-steps"></a>Következő lépések
+Ha többet szeretne megtudni a Azure Relayről, tekintse meg a következő hivatkozásokat:
 * [Mi az az Azure Relay?](relay-what-is-it.md)
-* [Rendelkezésre álló Relay API-k](relay-api-overview.md)
+* [Elérhető Relay API-k](relay-api-overview.md)

@@ -1,6 +1,6 @@
 ---
-title: Az Event GRID használatával a portálról az Azure Media Services-események monitorozása |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan lehet előfizetni az Event Gridbe annak érdekében, hogy az Azure Media Services-események figyelésére.
+title: Azure Media Services események figyelése Event Gridekkel a portálon
+description: Ez a cikk bemutatja, hogyan fizethet elő Event Gridre az Azure Media Services események figyelése érdekében.
 services: media-services
 documentationcenter: na
 author: Juliako
@@ -13,20 +13,20 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: multiple
 ms.workload: media
-ms.date: 10/15/2018
+ms.date: 01/21/2020
 ms.author: juliako
-ms.openlocfilehash: d4592c93cb7969c45a107d7365a1b9dabf11f412
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 18503e64dc6f38daab61599153cd0e0fb6fadb20
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60326529"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509223"
 ---
-# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Hozzon létre, és figyelheti a Media Services-események az Event GRID használatával az Azure portal használatával
+# <a name="create-and-monitor-media-services-events-with-event-grid-using-the-azure-portal"></a>Media Services események létrehozása és figyelése Event Grid használatával a Azure Portal
 
-Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ez a szolgáltatás használ [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) eseményt üzenetek továbbítását-előfizetők számára. Media Services-események összes kell reagálni az igények változásaira az adatokban adatokat tartalmazzák. A Media Services esemény is azonosítani, mert az esemény típusa tulajdonság "Microsoft.Media." karakterlánccal kezdődik. További információkért lásd: [Media Services Eseménysémák](media-services-event-schemas.md).
+Az Azure Event Grid egy felhőalapú eseménykezelési szolgáltatás. Ez a szolgáltatás [esemény-előfizetések](../../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Media Services események tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja Media Services eseményt, mert a eventType tulajdonság a "Microsoft. Media" karakterlánccal kezdődik. További információ: [Media Services esemény sémái](media-services-event-schemas.md).
 
-Ebben a cikkben az Azure Portalon előfizetni események az Azure Media Services-fiók használata. Ezután fogja aktiválni eseményt az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikk az eseményeket egy webalkalmazást, amely összegyűjti és megjeleníti az üzenetek küldjük.
+Ebben a cikkben a Azure Portal az Azure Media Services-fiók eseményeire való előfizetéshez. Ezután aktiválhatja az eseményeket az eredmény megtekintéséhez. Általában olyan végpontoknak szoktunk eseményeket küldeni, amelyek eseményadatokat dolgoznak fel és műveleteket hajtanak végre. A cikkben egy olyan webalkalmazásnak küldünk eseményeket, amely összegyűjti és megjeleníti az üzeneteket.
 
 A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a webalkalmazásnak.
 
@@ -37,7 +37,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 
-Feliratkozás a Media Services-fiók eseményeire, előtt hozzuk létre az eseményüzenet végpontját. A végpont általában az eseményadatok alapján hajt végre műveleteket. Ebben a cikkben üzembe helyezése egy [előre elkészített webalkalmazás](https://github.com/Azure-Samples/azure-event-grid-viewer) , amely az esemény üzeneteket jelenít meg. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
+Az Media Services-fiók eseményeire való feliratkozás előtt hozzon létre egy végpontot az esemény üzenethez. A végpont általában az eseményadatok alapján hajt végre műveleteket. Ebben a cikkben egy [előre elkészített webes alkalmazást](https://github.com/Azure-Samples/azure-event-grid-viewer) helyez üzembe, amely megjeleníti az esemény üzeneteit. Az üzembe helyezett megoldás egy App Service-csomagot, egy App Service-webalkalmazást és egy, a GitHubról származó forráskódot tartalmaz.
 
 1. A megoldásnak az előfizetésébe való telepítéséhez válassza az **Üzembe helyezés az Azure-ban** lehetőséget. Az Azure Portalon adjon meg értékeket a paraméterekhez.
 
@@ -45,27 +45,27 @@ Feliratkozás a Media Services-fiók eseményeire, előtt hozzuk létre az esem�
 
 1. Az üzembe helyezés befejezése eltarthat néhány percig. A sikeres üzembe helyezést követően tekintse meg a webalkalmazást, hogy meggyőződjön annak működéséről. Egy webböngészőben navigáljon a következő helyre: `https://<your-site-name>.azurewebsites.net`.
 
-Ha úgy vált, az "Azure Event Grid megjelenítő" helyhez, láthatja, az események nem még nem.
+Ha átvált a "Azure Event Grid Viewer" webhelyre, akkor azt láthatja, hogy még nincsenek események.
    
 [!INCLUDE [event-grid-register-provider-portal.md](../../../includes/event-grid-register-provider-portal.md)]
 
-## <a name="subscribe-to-media-services-events"></a>Fizessen elő a Media Services-események
+## <a name="subscribe-to-media-services-events"></a>Előfizetés Media Services eseményekre
 
 A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely eseményeket kívánja nyomon követni, és hová szeretné küldeni az eseményeket.
 
-1. A portálon, válassza ki a Media Services-fiókját, és válassza ki **események**.
+1. A portálon válassza ki a Media Services fiókját, és válassza az **események**lehetőséget.
 1. Ha eseményeket szeretne küldeni a megjelenítő alkalmazásba, használjon egy webhookot a végponthoz. 
 
    ![Webhook kiválasztása](./media/monitor-events-portal/select-web-hook.png)
 
-1. Az esemény-előfizetés van előre kitöltött értékeket a Media Services-fiókját. 
-1. Válassza ki a "Webhook" az a **típusú végpont**.
-1. Ebben a témakörben hagyjuk az **fizessen elő az összes eseménytípusra** be van jelölve. Azonban jelölését, és az adott eseménytípusok szűrése. 
-1. Kattintson a **válasszon végpontot** hivatkozásra.
+1. Az esemény-előfizetés a Media Services-fiókhoz tartozó értékekkel van feltöltve. 
+1. Válassza a "web Hook" lehetőséget a **végpont típusához**.
+1. Ebben a témakörben az összes bejelölt eseménytípus esetében hagyjuk az **előfizetést** . Azonban kitörölheti és szűrheti az adott események típusait. 
+1. Kattintson a **végpont kiválasztása** hivatkozásra.
 
     A webhook végponthoz adja meg a webalkalmazás URL-címét, és adja hozzá az `api/updates` elemet a kezdőlap URL-címéhez. 
 
-1. Nyomja meg **kijelölés megerősítéséhez**.
+1. Nyomja meg a **kijelölés megerősítése elemet**.
 1. Nyomja meg a **Create** (Létrehozás) gombot.
 1. Nevezze el az előfizetését.
 
@@ -73,19 +73,19 @@ A témakörre való feliratkozással lehet tudatni az Event Griddel, hogy mely e
 
 1. Tekints meg újra a webalkalmazást, ahol láthatja, hogy az fogadta az előfizetés érvényesítési eseményét. 
 
-    Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpont rendelkezik beállítása `validationResponse` való `validationCode`. További információkért lásd: [Event Grid biztonsági és hitelesítési](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját hogyan azt ellenőrzi, hogy az előfizetés megtekintéséhez.
+    Az Event Grid elküldi az érvényesítési eseményt, így a végpont megerősítheti, hogy eseményadatokat akar kapni. A végpontnak be kell állítania `validationResponse` `validationCode`. További információ: [Event Grid biztonság és hitelesítés](../../event-grid/security-authentication.md). Megtekintheti a webalkalmazás kódját, hogy megtudja, hogyan érvényesíti az előfizetést.
 
-Most aktiváljunk események megtekintéséhez, hogyan osztja el a Event Grid a végpontnak az üzenetet.
+Most aktiváljuk az eseményeket, hogy meglássuk, hogyan osztja el a Event Grid az üzenetet a végpontnak.
 
 ## <a name="send-an-event-to-your-endpoint"></a>Esemény elküldése a végpontra
 
-A Media Services-fiók eseményeire a PowerShell-kódolási feladat futtatásával is indíthat. Követheti [ebben a rövid útmutatóban](stream-files-dotnet-quickstart.md) kódolja a fájlt, és indítsa el az események. Ha az összes esemény előfizetett, egy a következőhöz hasonló képernyő jelenik meg:
+A Media Services-fiókhoz tartozó eseményeket a kódolási feladatok futtatásával aktiválhatja. [Ezt](stream-files-dotnet-quickstart.md) a rövid útmutatót követve kódolhat egy fájlt, és megkezdheti az események küldését. Ha feliratkozott az összes eseményre, a következőhöz hasonló képernyő jelenik meg:
 
 > [!TIP]
-> Az eseményadatok kibontásához kattintson a szem ikonra. Nem frissíti az oldalt, ha meg szeretné jeleníteni az összes eseményt.
+> Az eseményadatok kibontásához kattintson a szem ikonra. Ne frissítse az oldalt, ha meg szeretné tekinteni az összes eseményt.
 
 ![Előfizetési esemény megtekintése](./media/monitor-events-portal/view-subscription-event.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-[Feltöltése, kódolása és streamelése](stream-files-tutorial-with-api.md)
+[Feltöltés, kódolás és stream](stream-files-tutorial-with-api.md)

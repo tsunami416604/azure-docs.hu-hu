@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2019
 ms.author: juliako
-ms.openlocfilehash: 791287d693903007d09c2e82025bfe195f9f15d1
-ms.sourcegitcommit: 95931aa19a9a2f208dedc9733b22c4cdff38addc
+ms.openlocfilehash: 2268c074480f99ca23117ca2ffd2c87c1dbb10a2
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74464056"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513235"
 ---
 # <a name="migrate-from-media-indexer-and-media-indexer-2-to-video-indexer"></a>Migrálás Media Indexer és Media Indexer 2 – Video Indexer
 
-A [Azure Media Indexer](media-services-index-content.md) adathordozó-processzor a 2020-es október 1-én megszűnik. A [Azure Media Indexer 2 előnézeti](media-services-process-content-with-indexer2.md) adathordozó processzora 2020 január 1-től megszűnik.  A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
+Folyamatban van a [Azure Media Indexer](media-services-index-content.md) adathordozó-feldolgozó és [Azure Media Indexer 2 előzetes](media-services-process-content-with-indexer2.md) verziójú adathordozó-feldolgozó kivonása. A nyugdíjazási dátumokért tekintse meg ezt a [régi összetevőket](legacy-components.md) ismertető témakört. A [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/) ezeket a régi adathordozó-processzorokat váltja fel.
 
 A Azure Media Services Video Indexer Azure Media Analytics, Azure Cognitive Search, Cognitive Servicesra épül (például a Face API, a Microsoft Translator, a Computer Vision API és Custom Speech Service). Lehetővé teszi, hogy megállapításokat nyerjen ki a videóiból a Video Indexer hang- és videómodelljeivel. Ha szeretné megtekinteni, hogy milyen forgatókönyvek Video Indexer használhatók a alkalmazásban, milyen funkciókat kínál, és hogyan kezdheti el az első lépéseket, tekintse meg [video Indexer videó-és hangmodelleket](../video-indexer/video-indexer-overview.md). 
 
@@ -33,9 +33,9 @@ A videó-és hangfájlokból kinyerheti az elemzéseket az [Azure Media Services
 
 Ez a cikk az áttelepítésének lépéseit ismerteti a Azure Media Indexer és Azure Media Indexer a 2 Azure Media Services Video Indexer.  
 
-## <a name="migration-options"></a>Áttelepítési beállítások 
+## <a name="migration-options"></a>Áttelepítési lehetőségek 
 
-|Ha szükséges  |majd |
+|Ha szükséges  |majd válassza a |
 |---|---|
 |egy olyan megoldás, amely beszéd-szöveg átírást biztosít bármilyen médiafájl formátumhoz a kódolt képfájlok formátumában: VTT, SRT vagy TTML<br/>továbbá további hangelemzéseket, például a kulcsszavakat, a témaköröket, az akusztikus eseményeket, a hangszórók diarization, az entitások kinyerését és fordítását.| frissítse alkalmazásait az Azure Video Indexer képességeinek az Video Indexer v2 REST API vagy a Azure Media Services v3 audio Analyzer-készlettel való használatához.|
 |beszéd és szöveg közötti képességek| használja közvetlenül a Cognitive Services Speech API-t.|  
@@ -50,7 +50,7 @@ A Azure Media Services V3 API lehetővé teszi, hogy kinyerje a videóból és h
 
 A **AudioAnalyzerPreset** lehetővé teszi több hang-elemzés kinyerését hang-vagy videofájl használatával. A kimenet tartalmaz egy VTT vagy TTML-fájlt a hangátirathoz és egy JSON-fájlhoz (az összes további hangelemzéssel). A hangelemzések közé tartoznak a kulcsszavak, a hangszórók indexelése és a beszéd hangulatának elemzése. A AudioAnalyzerPreset az egyes nyelvekhez is támogatja a nyelvfelismerés használatát. Részletes információk: [átalakítások](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#audioanalyzerpreset).
 
-### <a name="get-started"></a>Első lépések
+### <a name="get-started"></a>Az első lépések
 
 Első lépésként tekintse meg a következőt:
 
@@ -75,7 +75,7 @@ Néhány ismert különbség:
 
 * Cognitive Services Speech Services nem támogatja a kulcsszavak kinyerését. A Video Indexer és a Media Services v3 AudioAnalyzerPreset azonban a kulcsszavakat a JSON-fájlformátumban is hatékonyabban kínálja. 
 
-## <a name="need-help"></a>Segítségre van szüksége?
+## <a name="need-help"></a>Segítség
 
 A támogatási jegy megnyitásához lépjen az [új támogatási kérelemre](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) .
 

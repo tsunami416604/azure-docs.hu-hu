@@ -1,6 +1,6 @@
 ---
-title: Az Azure Active Directory hibrid identitás tervezési szempontok – következő lépések |} A Microsoft Docs
-description: Egy szinopszist és a hibrid Identitáskezelés – kialakítási szempontok útmutató elolvasása után követő lépések
+title: Azure Active Directory hibrid identitás kialakításával kapcsolatos megfontolások – következő lépések | Microsoft Docs
+description: A hibrid identitás kialakításával kapcsolatos megfontolások beolvasása után egy szinopszis és a következő lépések
 documentationcenter: ''
 services: active-directory
 author: billmath
@@ -16,39 +16,31 @@ ms.date: 07/18/2017
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 41741249e9b1a142d75392025236a4d333b67666
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 378aa35ff4b43f5a268ac3dcd9530783ada6921e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295126"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512963"
 ---
-# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Az Azure Active Directory hibrid identitás tervezési szempontok – következő lépések
-Most, hogy végrehajtotta a követelmények meghatározását és megvizsgálta az összes lehetséges a mobileszköz-felügyeleti megoldás, készen áll a következő lépésekkel jobbra, és a szervezet a támogató infrastruktúra üzembe helyezéséhez.
-
-## <a name="hybrid-identity-solutions"></a>Hibrid identitáskezelési megoldások
--Az igényeihez igazodó konkrét megoldási forgatókönyvek felhasználásával kiválóan alkalmas a áttekintheti és megtervezheti egy mobileszköz-kezelési infrastruktúra üzembe helyezésének részleteit. A következő megoldások felvázolják a leggyakrabban használt mobileszköz-felügyeleti forgatókönyvek:
-
-* A [mobileszközök és számítógépek kezelése vállalati környezetekben megoldás](https://technet.microsoft.com/library/dn582037.aspx) segítséget nyújt a mobileszközök kezelése a helyszíni System Center 2012 Configuration Manager infrastruktúrát kiterjeszti a felhőben a Microsoft Intune-nal. A hibrid infrastruktúra segítségével informatikai szakemberek a közepes és nagy méretű környezetekben lehetővé BYOD és a távelérés közben csökkenthetik az Adminisztráció összetettségét.
-* A [mobileszköz-felügyelet a Configuration Manager 2007 megoldás](https://technet.microsoft.com/library/dn508400.aspx) segítséget nyújt a mobileszközök felügyeletét, amikor az infrastruktúra alapja a System Center Configuration Manager 2007. A megoldás bemutatja, hogyan állítható be egy kiszolgálót a System Center 2012 Configuration Manager fut, majd futtassa a Microsoft Intune és a mobileszköz-felügyeleti képességeit használja ki.
-* A [kezelése kis környezetekben megoldás a mobileszközök](https://technet.microsoft.com/library/dn715906.aspx) szól kisvállalkozások támogatását szeretnék megvalósítani. Ismerteti, hogyan bővítheti a jelenlegi infrastruktúrát a mobileszköz-kezelés és a BYOD támogatásához a Microsoft Intune használatával. Ez a megoldás a Microsoft Intune használatával egy önálló, csak felhőalapú konfigurációban helyi kiszolgálókkal nem rendelkező támogatott legegyszerűbb forgatókönyvet ismerteti.
+# <a name="azure-active-directory-hybrid-identity-design-considerations--next-steps"></a>Azure Active Directory hibrid identitás kialakításával kapcsolatos megfontolások – következő lépések
+Most, hogy befejezte a követelmények meghatározását és megvizsgálta az összes lehetséges mobileszköz-kezelési megoldást, készen áll a következő lépésekre az Ön és szervezete számára legalkalmasabb támogató infrastruktúra üzembe helyezéséhez.
 
 ## <a name="hybrid-identity-documentation"></a>Hibrid identitáskezelési dokumentáció
-Elméleti és eljárástervezési, telepítési és felügyeleti tartalmak hasznosak lehetnek a mobileszköz-kezelési megoldás megvalósításához:
+Az elméleti és eljárástervezési, telepítési és felügyeleti tartalmak hasznosak a mobileszköz-kezelési megoldás megvalósításához:
 
-* [A Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) megoldások segíthetnek rögzítési és összesítheti az infrastruktúrával, házirendek, folyamatok és ajánlott eljárások kapcsolatos tudnivalókat, hogy az informatikai munkatársak kezelhető rendszereket építhetnek és automatizálhatják a műveleteket.
-* [A Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) van egy felhőalapú Eszközkezelési szolgáltatás, amely segít a számítógépek és mobileszközök kezeléséhez, és a vállalati adatok védelméhez.
-* [Office 365 MDM](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) lehetővé teszi, hogy a kezelése és a mobil eszközök, az Office 365-szervezethez csatlakozó. Office 365 MDM segítségével eszközbiztonsági házirendeket és hozzáférési szabályokat állíthat be, és a mobileszközök törlése, ha az elvesztett vagy ellopott használhatja.
+* A [Microsoft System Center](https://technet.microsoft.com/library/cc507089.aspx) megoldásai segíthetnek az infrastruktúra, a szabályzatok, a folyamatok és az ajánlott eljárások rögzítésében és összesítésében, így az informatikai részleg kezelhető rendszereket építhet ki és automatizálhat műveleteket.
+* A [Microsoft Intune](https://technet.microsoft.com/library/jj676587.aspx) egy felhőalapú eszközkezelési szolgáltatás, amellyel felügyelheti a számítógépeket és a mobileszközöket, valamint biztosíthatja vállalata információinak biztonságát.
+* Az [Office 365 MDM](https://technet.microsoft.com/library/ms.o365.cc.devicepolicy.aspx) lehetővé teszi, hogy felügyelje az Office 365-szervezethez csatlakozó mobileszközöket és biztosítsa azok védelmét. Az Office 365 MDM az eszközök biztonsági házirendjeinek és hozzáférési szabályainak megadására, valamint a mobileszközök törlésére, ha azok elvesztése vagy ellopása esetén használhatók.
 
-## <a name="hybrid-identity-resources"></a>Hibrid identitás erőforrások
-A következő erőforrások figyelés gyakran kapcsolatos legfrissebb hírekhez, és frissíti a mobileszköz-felügyeleti megoldások:
+## <a name="hybrid-identity-resources"></a>Hibrid identitás-erőforrások
+A következő erőforrások monitorozása gyakran tartalmazza a mobileszköz-kezelési megoldásokkal kapcsolatos legújabb híreket és frissítéseket:
 
-* [A Microsoft nagyvállalati mobilitási blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
-* [A Microsoft a The Cloud blog](https://blogs.technet.com/b/in_the_cloud/)
-* [A Microsoft Intune blogján](https://blogs.technet.com/b/microsoftintune/)
-* [A Microsoft System Center Configuration Manager-blog](https://blogs.technet.com/b/configurationmgr/)
-* [A Microsoft System Center Configuration Manager munkacsoportjának blogján](https://blogs.technet.com/b/configmgrteam/)
+* [Microsoft nagyvállalati mobilitási blog](https://cloudblogs.microsoft.com/ENTERPRISEMOBILITY/)
+* [A Microsoft a felhőben blog](https://blogs.technet.com/b/in_the_cloud/)
+* [Microsoft Intune blog](https://blogs.technet.com/b/microsoftintune/)
+* [Microsoft Endpoint Configuration Manager blog](https://techcommunity.microsoft.com/t5/Configuration-Manager-Blog/bg-p/ConfigurationManagerBlog)
 
-## <a name="see-also"></a>Lásd még
-[Kialakítási szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
+## <a name="see-also"></a>Lásd még:
+[Tervezési szempontok áttekintése](plan-hybrid-identity-design-considerations-overview.md)
 

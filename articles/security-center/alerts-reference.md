@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/05/2020
 ms.author: memildin
-ms.openlocfilehash: cfb77548217cf173438ab0407320cbdff8db092e
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 322b7656a5e8cb5d0fd0274cc9f09adec2c2c5e1
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277007"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514765"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -27,27 +27,16 @@ Ha többet szeretne megtudni ezekről a riasztásokról, tekintse meg [a biztons
 
 A riasztások exportálásával kapcsolatos tudnivalókat lásd: [biztonsági riasztások és javaslatok exportálása (előzetes verzió)](continuous-export.md).
 
-A riasztások tábla alatti táblázat a riasztások szándékának kategorizálásához használt Azure Security Center kill láncot ismerteti. 
+A riasztások táblázat alatti táblázat a riasztások szándékának kategorizálásához használt Azure Security Center kill láncot ismerteti. 
 
-A táblázatban szereplő riasztások típusai:
-* [Windows rendszerű gépekre vonatkozó riasztások](#alerts-windows)
-* [Riasztások Linux rendszerű gépekhez](#alerts-linux)
-* [Riasztások Azure App Service](#alerts-azureappserv)
-* [AK-fürt szintű riasztások](#alerts-akscluster)
-* [A Container Host szintű riasztások](#alerts-containerhost)
-* [Riasztások SQL Database és SQL Data Warehouse](#alerts-sql-db-and-warehouse)
-* [Azure Storage-riasztások](#alerts-azurestorage)
-* [Riasztások Azure Cosmos DB](#alerts-azurecosmos)
-* [Riasztások az Azure hálózati réteghez](#alerts-azurenetlayer)
-* [Riasztások Azure Resource Manager (előzetes verzió)](#alerts-azureresourceman)
-* [Riasztások Azure Key Vault (előzetes verzió)](#alerts-azurekv)
-* [Riasztások Azure DDoS Protection](#alerts-azureddos)
 
-## <a name="azure-security-center-alerts"></a>Riasztások Azure Security Center
+
+## <a name="alerts-windows"></a>Windows rendszerű gépekre vonatkozó riasztások
+
+[További részletek és megjegyzések](security-center-alerts-iaas.md#windows-)
 
 |Riasztás|Leírás|Szándék (további[információ](#intentions))|
 |----|----|:----:|
-||<a name="alerts-windows"></a><h3>Windows rendszerű gépek</h3> [További részletek és megjegyzések](security-center-alerts-iaas.md#windows-)||
 |**A rendszer kártékony IP-címről érkező bejelentkezést észlelt**|A (z) "Tristan. schleining" fiók és a (z) "Advapi" folyamat sikeres távoli hitelesítése megtörtént, azonban a bejelentkezési IP-cím [IP-címe] korábban rosszindulatúként vagy nagyon szokatlanként jelent meg. Valószínűleg sikeres támadás történt.|-|
 |**A rendszer rosszindulatú IP-címről érkező bejelentkezést észlelt. [többször is látható]**|A (z) "IUSR_10001" fiók és a (z) "Advapi" folyamat sikeres távoli hitelesítése megtörtént, de a bejelentkezési IP-cím ([IP-cím]) korábban rosszindulatúként vagy nagyon szokatlanként jelent meg. Valószínűleg sikeres támadás történt. A. scr kiterjesztésű fájlok a képernyővédő fájlok, és általában a Windows rendszerkönyvtárból futnak.|-|
 |**Vendég fiók hozzáadása a helyi Rendszergazdák csoporthoz**|A gazdagépek adatainak elemzése során a rendszer a beépített vendégfiók hozzáadását észlelte a helyi rendszergazdák csoportjához a (z)% {feltört gazdagép} kiszolgálón, amely szorosan kapcsolódik a támadó tevékenységhez.|-|
@@ -129,7 +118,15 @@ A táblázatban szereplő riasztások típusai:
 |**A rendszer gyanús kódrészletet észlelt**|Azt jelzi, hogy a kód szegmensét nem szabványos metódusok, például a tükröző injektálás és a folyamat-elszámolási módszer használatával osztották le. A riasztás a jelentett kódrészlet további jellemzőit tartalmazza, amelyeket a rendszer a jelentett kódrészlet képességeinek és viselkedésének biztosításához dolgoz fel.|-|
 |**Héjkód felderítve**|A héjkód az a kártékony kód, amely azután fut le, hogy a kártevő a szoftver biztonsági rését kihasználva bejut a rendszerbe.<br>Ez a riasztás azt jelzi, hogy az összeomlási memóriakép elemzése olyan végrehajtható kódot talált, amely a kártékony hasznos adatok által gyakran végrehajtott viselkedést mutatja. Bár a nem kártevő szoftverek is elvégezhetik ezt a viselkedést, nem jellemző a normál szoftverfejlesztői gyakorlatokra.|-|
 |**A rendszer a fájlokkal nem rendelkező támadási technikákat észlelt**|A megadott folyamat memóriája tartalmaz egy fájlra vonatkozó támadási eszközkészletet: [Toolkit name]. A fájl nélkül támadási eszközkészletek általában nem rendelkeznek jelenléttel a fájlrendszerben, így a hagyományos víruskereső szoftverek észlelése bonyolult.|DefenseEvasion/végrehajtás|
-||<a name="alerts-linux"></a><h3>Linux rendszerű gépek</h3> [További részletek és megjegyzések](security-center-alerts-iaas.md#linux-)||
+||||
+
+
+## <a name="alerts-linux"></a>Riasztások Linux rendszerű gépekhez
+
+[További részletek és megjegyzések](security-center-alerts-iaas.md#linux-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Az SSH-t használó kulcsokhoz tartozó fájl szokatlan módon való elérése folyamatban van**|Az SSH-t használó hitelesítő kulcsok fájlja az ismert kártevő-kampányokhoz hasonló módon lett hozzáférve. Ez a hozzáférés arra utalhat, hogy egy támadó állandó hozzáférést próbál a géphez.|-|
 |**Észlelt adatmegőrzési kísérlet**|A gazdagép adatelemzése azt észlelte, hogy az egyfelhasználós üzemmód indítási parancsfájlja telepítve van.<br>Mivel ritkán fordul elő, hogy az adott módban bármilyen legitim folyamatra lenne szükség, ez arra utalhat, hogy egy támadó rosszindulatú folyamatot adott hozzá minden egyes futtatási szinthez, hogy biztosítsa az adatmegőrzést. |Perzisztencia|
 |**Gyanús fájl időbélyegének módosítása**|A gazdagép adatelemzése gyanús időbélyeg-módosítást észlelt. A támadók gyakran az új eszközökre másolják a meglévő, legitim fájlokból származó időbélyegeket, hogy elkerülje az újonnan eldobott fájlok észlelését.|Adatmegőrzés/DefenseEvasion|
@@ -210,7 +207,15 @@ A táblázatban szereplő riasztások típusai:
 |**Gyanús jelszó-hozzáférés [többször is látható]**|A gazdagép adatainak elemzése gyanús hozzáférést észlelt a titkosított felhasználói jelszavakhoz a következőn:% {feltört gazdagép}. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|
 |**Gyanús PHP-végrehajtás észlelhető**|A gépi naplók azt jelzik, hogy egy gyanús PHP-folyamat fut. A művelet az operációsrendszer-parancsok vagy PHP-kód parancssorból való futtatására tett kísérletet a PHP-folyamat használatával. Habár ez a viselkedés legitim lehet, a webalkalmazásokban ez a viselkedés olyan rosszindulatú tevékenységekben is megfigyelhető, mint például a webhelyek webes rendszerhéjokkal történő megfertőzésének kísérlete.|-|
 |**Gyanús kérelem Kubernetes API-hoz**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes API-nak. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|-|
-||<a name="alerts-azureappserv"></a><h3>Azure App Service</h3> [További részletek és megjegyzések](security-center-alerts-compute.md#azure-app-service-)||
+||||
+
+
+## <a name="alerts-azureappserv"></a>Riasztások Azure App Service
+
+[További részletek és megjegyzések](security-center-alerts-compute.md#azure-app-service-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Gyanús WordPress Theme meghívást észlelt**|A App Service tevékenység naplója az App Service-erőforrás lehetséges kód-injektálási tevékenységét jelzi.<br>Ez a gyanús tevékenység olyan tevékenységre hasonlít, amely egy WordPress-témát kezel a kód kiszolgálóoldali végrehajtásának támogatásához, majd egy közvetlen webes kérést, amely a manipulált téma meghívására szolgál. Ez a típusú tevékenység a WordPress elleni támadási kampány része lehet.|-|
 |**Webes ujjlenyomat észlelhető**<br>(NMAP/vak elefánt)|A App Service tevékenység naplója egy lehetséges webes ujjlenyomat-hozzárendelési tevékenységet jelez a App Service erőforráson.<br>Ez a gyanús tevékenység egy vak elefánt nevű eszközhöz van társítva. Az eszköz ujjlenyomatok webkiszolgálók, és megkísérli felderíteni a telepített alkalmazásokat és azok verzióit. A támadók gyakran ezt az eszközt használják a webalkalmazások felderítésére a biztonsági rések kereséséhez. |-|
 |**A rendszer gyanús hozzáférést észlelt a valószínűleg sebezhető weblaphoz**|A App Service tevékenység naplója azt jelzi, hogy egy bizalmasnak tűnő weblap elérhető.<br>Ez a gyanús tevékenység olyan forrásoldali címről származik, amelynek a hozzáférési mintája egy webes képolvasó esetében hasonlít. Ez a fajta tevékenység gyakran a támadók által a hálózatra irányuló kísérlettel van társítva, hogy megpróbáljon hozzáférni a bizalmas vagy sebezhető weblapokhoz. |-|
@@ -226,7 +231,15 @@ A táblázatban szereplő riasztások típusai:
 |**Gyanús felhasználói ügynök észlelve**|Azure App Service tevékenység naplója gyanús felhasználói ügynökkel kapcsolatos kérelmeket jelez. Ez a viselkedés azt jelezheti, hogy a App Service alkalmazásban a biztonsági rések kihasználására tett kísérletekre van lehetőség.|-|
 |**PHP-fájl a feltöltési mappában**|A Azure App Service tevékenység naplója a feltöltés mappában található gyanús PHP-oldal elérését jelzi. Ez a típusú mappa általában nem tartalmaz PHP-fájlokat. Az ilyen típusú fájlok létezése arra utalhat, hogy kihasználja a fájlok feltöltésének tetszőleges sebezhetőségét.|-|
 |**Rendellenes kérelmek mintája észlelhető**|A Azure App Service tevékenység naplója rendellenes HTTP-tevékenységet jelez a (z)% {Source IP} App Service. Ez a tevékenység a fuzz Force tevékenységhez hasonló mintázatot hasonlít.|-|
-||<a name="alerts-akscluster"></a><h3>AK-fürt szintje</h3> [További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+
+## <a name="alerts-akscluster"></a>AK-fürt szintű riasztások
+
+[További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**ELŐNÉZET – szerepkör kötése a fürthöz – a rendszer a rendszergazda szerepkört észlelte**|A Kubernetes naplózási elemzési naplója egy új kötést észlelt a fürt – rendszergazda szerepkörhöz, amely rendszergazdai jogosultságokat eredményezett. A rendszergazdai jogosultságok szükségtelen biztosításához a fürt jogosultság-eszkalációs problémái merülhetnek fel.|Perzisztencia|
 |**ELŐNÉZET – elérhető Kubernetes-irányítópult észlelve**|A Kubernetes-naplózási napló elemzése a Kubernetes-irányítópult terheléselosztó-szolgáltatás általi expozícióját észlelte. A közzétett irányítópultok lehetővé teszik a nem hitelesített hozzáférést a fürt felügyeletéhez, és biztonsági fenyegetést jelenthetnek.|Perzisztencia|
 |**ELŐZETES verzió – új, magas jogosultsági szintű szerepkör észlelhető**|A Kubernetes napló elemzése egy új, magas jogosultságokkal rendelkező szerepkört észlelt. A magas jogosultságokkal rendelkező szerepkörhöz tartozó kötések a fürtben a felhasználó/csoport számára emelt szintű jogosultságokat biztosítanak. Az emelt szintű jogosultságok szükségtelen biztosításához a fürt jogosultság-eszkalációs problémái merülhetnek fel.|Perzisztencia|
@@ -234,7 +247,14 @@ A táblázatban szereplő riasztások típusai:
 |**ELŐNÉZET – digitális valutaváltó tároló észlelve**|A Kubernetes napló elemzése olyan tárolót észlelt, amely egy digitális valutaváltó eszközhöz társított képpel rendelkezik.|Végrehajtás|
 |**ELŐZETES verzió – a privilegizált tároló észlelve**|A Kubernetes napló elemzése új emelt szintű tárolót észlelt. Egy emelt szintű tároló hozzáfér a csomópont erőforrásaihoz, és megszakítja a tárolók elkülönítését. Ha sérült, a támadó a privilegizált tárolóval hozzáférhet a csomóponthoz.|PrivilegeEscalation|
 |**ELŐNÉZET – a rendszer érzékeny kötet csatlakoztatásával rendelkező tárolót észlelt**|A Kubernetes napló elemzése egy új, bizalmas kötet csatlakoztatásával rendelkező tárolót észlelt. A észlelt kötet egy olyan hostPath-típus, amely bizalmas fájlt vagy mappát csatlakoztat a csomópontból a tárolóhoz. Ha a tároló biztonságban van, a támadó ezt a csatlakoztatást használva hozzáférhet a csomóponthoz.|PrivilegeEscalation|
-||<a name="alerts-containerhost"></a><h3>Tároló gazdagépének szintje</h3> [További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)||
+||||
+
+## <a name="alerts-containerhost"></a>A tárolók gazdagépi szintjének riasztásai
+
+[További részletek és megjegyzések](security-center-alerts-compute.md#azure-containers-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**A privilegizált tároló észlelve**|A gépi naplók azt jelzik, hogy egy emelt szintű Docker-tároló fut. Az emelt szintű tárolók teljes hozzáféréssel rendelkeznek a gazdagép erőforrásaihoz. Ha sérült, a támadó a privilegizált tárolóval hozzáférhet a gazdagéphez.|PrivilegeEscalation/végrehajtás|
 |**Rendszerjogosultságú parancs futtatása a tárolóban**|A gépi naplók azt jelzik, hogy egy emelt szintű parancs fut egy Docker-tárolóban. A rendszerjogosultságú parancsok kiterjesztett jogosultságokkal rendelkeznek a gazdagépen.|PrivilegeEscalation|
 |**Feltett Docker-démon észlelve**|A gépi naplók azt jelzik, hogy a Docker-démon (dockerd) egy TCP-szoftvercsatornát tesz elérhetővé. Alapértelmezés szerint a Docker-konfiguráció nem használ titkosítást vagy hitelesítést, ha a TCP-szoftvercsatorna engedélyezve van. Ha bárki hozzáfér a megfelelő porthoz, akkor teljes hozzáférést kaphat a Docker-démonhoz.|Kiaknázás/végrehajtás|
@@ -242,7 +262,15 @@ A táblázatban szereplő riasztások típusai:
 |**A tárolót bányász képképpel észlelték**|A gépi naplók a digitális valuta kitermeléséhez kapcsolódó rendszerképet futtató Docker-tárolók végrehajtását jelzik. Ez a viselkedés valószínűleg azt jelzi, hogy az erőforrások visszaéltek.|Végrehajtás|
 |**Gyanús kérelem Kubernetes API-hoz**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes API-nak. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|Végrehajtás|
 |**Gyanús kérelem a Kubernetes-irányítópultra**|A gépi naplók azt jelzik, hogy gyanús kérés történt a Kubernetes irányítópultján. A kérelem egy Kubernetes-csomópontból lett elküldve, valószínűleg a csomóponton futó egyik tárolóból. Bár ez a viselkedés szándékos lehet, jelezheti, hogy a csomópont sérült tárolót futtat.|-|
-||<a name="alerts-sql-db-and-warehouse"></a><h3>SQL Database és SQL Data Warehouse</h3> [További részletek és megjegyzések](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-) ||
+||||
+
+
+## <a name="alerts-sql-db-and-warehouse"></a>Riasztások SQL Database és SQL Data Warehouse
+
+[További részletek és megjegyzések](security-center-alerts-data-services.md#sql-database-and-sql-data-warehouse-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Az SQL-injektálás lehetséges biztonsági rése**|Egy alkalmazás egy hibás SQL-utasítást generált az adatbázisban. Ez az SQL-injektálási támadások lehetséges sebezhetőségét jelezheti. A hibás utasításoknak két lehetséges oka van. Előfordulhat, hogy az alkalmazás kódjában lévő hiba a hibás SQL-utasítást alakította ki. Vagy az alkalmazás kódja vagy tárolt eljárásai nem fertőtlenítik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, ami kihasználható az SQL-injektáláshoz.|-|
 |**Lehetséges SQL-injektálás**|Aktív biztonsági rés történt egy azonosított alkalmazásban, amely sebezhető az SQL-injektálással. Ez azt jelenti, hogy a támadó rosszindulatú SQL-utasításokat próbál beszúrni a sebezhető alkalmazás kódjával vagy tárolt eljárásaival.|-|
 |**Bejelentkezés szokatlan helyről**|A hozzáférési minta módosult SQL Serverre, ahol valaki szokatlan földrajzi helyről jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás rosszindulatú műveletet észlel (egy korábbi alkalmazott vagy külső támadó).|Kihasználás|
@@ -252,7 +280,15 @@ A táblázatban szereplő riasztások típusai:
 |**Bejelentkezés szokatlan Azure-adatközpontból**|A hozzáférési minta módosult egy SQL Server, ahol valaki egy szokatlan Azure-adatközpontból jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás legitim műveletet (új alkalmazást vagy Azure-szolgáltatást) észlel. Más esetekben a riasztás rosszindulatú műveletet észlel (az Azure-ban megsértett erőforrással működő támadók).|Ellenőrzés|
 |**Potenciálisan nem biztonságos művelet**|A magas jogosultsági szintű SQL-parancs, amelyet gyakran használnak rosszindulatú munkamenetekben, egy SQL Server hajtották végre. Ezek a parancsok alapértelmezés szerint le vannak tiltva. Bizonyos esetekben a riasztás jogszerű műveletet észlel (az admin parancsfájl fut). Más esetekben a riasztás rosszindulatú műveletet észlel (az SQL-megbízhatóságokat használó támadók a Windows réteg megsértve).|Végrehajtás|
 |**Szokatlan exportálási hely**|Módosult az SQL-importálási és-exportálási művelet exportálási célhelye. Bizonyos esetekben a riasztás legitim változást észlel (új biztonsági mentési célhely). Más esetekben a riasztás rosszindulatú műveletet észlel (a támadó könnyedén exfiltrated az adatfájlokat).|Adatok kinyerése|
-||<a name="alerts-azurestorage"></a><h3>Azure Storage</h3> [További részletek és megjegyzések](security-center-alerts-data-services.md#azure-storage-)||
+||||
+
+
+## <a name="alerts-azurestorage"></a>Azure Storage-riasztások
+
+[További részletek és megjegyzések](security-center-alerts-data-services.md#azure-storage-)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Hozzáférés szokatlan helyről egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta egy Azure Storage-fiókra módosult. Valaki hozzáfért a fiókhoz egy, a legutóbbi tevékenységhez képest ismeretlen IP-címről. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új vagy szokatlan földrajzi helyről kapcsolódott. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|Kihasználás|
 |**Szokatlan alkalmazás fér hozzá a Storage-fiókhoz**|Azt jelzi, hogy egy szokatlan alkalmazás hozzáfért ehhez a Storage-fiókhoz. A lehetséges ok az, hogy egy támadó új alkalmazás használatával fér hozzá a Storage-fiókhoz.|Kihasználás|
 |**Névtelen hozzáférés egy Storage-fiókhoz**|Azt jelzi, hogy a hozzáférési minta módosult egy Storage-fiókhoz. A fiókhoz például névtelenül (hitelesítés nélkül) férhet hozzá, ami nem várt, mint a fiók legutóbbi hozzáférési mintája. Ennek lehetséges oka, hogy egy támadó nyilvános olvasási hozzáférést kapott a blob Storage-t tároló tárolóhoz.|Kihasználás|
@@ -265,10 +301,26 @@ A táblázatban szereplő riasztások típusai:
 |**Szokatlan hozzáférés-ellenőrzés egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiók hozzáférési engedélyei szokatlan módon lettek megvizsgálva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|Gyűjtemény|
 |**Szokatlan adatfeltárás egy Storage-fiókban**|Azt jelzi, hogy a Storage-fiókban lévő Blobok vagy tárolók rendellenes módon vannak felsorolva, a fiók legutóbbi tevékenységéhez képest. A lehetséges ok az, hogy egy támadó egy jövőbeli támadáshoz Felderítőt hajtott végre.|Gyűjtemény|
 |**ELŐZETES verzió – lehetséges kártevők feltöltése a Storage-fiókba**|Azt jelzi, hogy egy lehetséges kártevőt tartalmazó blob feltöltve lett egy Storage-fiókba. A lehetséges okok miatt előfordulhat, hogy a támadók szándékos kártevőket töltenek fel egy ártó szándékú, rosszindulatú blob általi feltöltéssel, amely egy legitim felhasználó.|LateralMovement|
-||<a name="alerts-azurecosmos"></a><h3>Azure Cosmos DB</h3> [További részletek és megjegyzések](security-center-alerts-data-services.md#azure-cosmos-db)||
+||||
+
+
+## <a name="alerts-azurecosmos"></a>Azure Cosmos DB
+
+[További részletek és megjegyzések](security-center-alerts-data-services.md#azure-cosmos-db)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Hozzáférés szokatlan helyről egy Cosmos DB-fiókhoz**|Azt jelzi, hogy a hozzáférési minta egy Azure Cosmos DB fiókra módosult. Valaki a legutóbbi tevékenységhez képest ismeretlen IP-címről kapta ezt a fiókot. Vagy egy támadó hozzáfért a fiókhoz, vagy egy megbízható felhasználó új és szokatlan földrajzi helyről férhet hozzá. Az utóbbi egy példa egy új alkalmazásból vagy fejlesztőből származó távoli karbantartásra.|Kihasználás|
 |**Cosmos DB fiókból kinyert adatok szokatlan mennyisége**|Azt jelzi, hogy egy Azure Cosmos DB fiókból módosult az Adatkiemelési minta. Valaki a legutóbbi tevékenységhez képest szokatlan mennyiségű adattal kibontotta. Előfordulhat, hogy egy támadó nagy mennyiségű adatmennyiséget adott ki egy Azure Cosmos DB adatbázisból (például az adatok kiszűrése vagy szivárgását, vagy az adatok jogosulatlan átvitelét). Az is előfordulhat, hogy egy megbízható felhasználó vagy alkalmazás szokatlan mennyiségű adatmennyiséget adott ki egy tárolóból (például a karbantartási biztonsági mentési tevékenységek esetében).|Adatok kinyerése|
-||<a name="alerts-azurenetlayer"></a><h3>Azure hálózati réteg</h3> [További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-network-layer)||
+||||
+
+
+## <a name="alerts-azurenetlayer"></a>Riasztások az Azure hálózati réteghez
+
+[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-network-layer)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**A blokkolt IP-címekről észlelt forgalom**|Azure Security Center észlelt a blokkolt IP-címekről érkező bejövő forgalmat. Ez általában akkor fordul elő, ha ez az IP-cím nem kommunikál rendszeresen ezzel az erőforrással. Azt is megteheti, hogy az IP-címet rosszindulatúként jelölték meg Security Center fenyegetést jelentő intelligencia forrásai.|Ellenőrzés|
 |**Hálózati kommunikáció rosszindulatú géppel észlelve**|A hálózati forgalom elemzése azt jelzi, hogy a gép (IP-cím:% {károsult IP}) kommunikált azzal, ami valószínűleg a parancs és a vezérlési központ. Ha a feltört erőforrás egy terheléselosztó vagy egy Application Gateway, a feltételezett tevékenység arra utalhat, hogy a háttér-készletben (a terheléselosztó vagy az Application gatewayben) lévő erőforrások közül egy vagy több egy vagy több erőforrással kommunikált, ami valószínűleg egy parancs és Vezérlési központ.|-|
 |**Lehetséges feltört gép észlelve**|A veszélyforrások intelligencia azt jelzi, hogy a számítógépet (a (z)% {Machine IP} IP-címen) a Conficker típusú kártevők veszélyeztették. A Conficker egy számítógépes féreg volt, amely a Microsoft Windows operációs rendszert célozza meg, és a rendszer először a 2008 novemberében észlelte. Conficker fertőzött több millió számítógép, például kormányzati, üzleti és otthoni számítógépek több mint 200 országban, így a legnagyobb ismert számítógépes féreg okozta fertőzés a 2003 welchia féreg óta.|-|
@@ -285,7 +337,15 @@ A táblázatban szereplő riasztások típusai:
 |**Gyanús kimenő RDP-hálózati tevékenység több célhelyre**|A hálózati forgalom elemzése rendellenes kimenő RDP protokoll (RDP) kommunikációt észlelt a (z)% {feltört gazdagép} (% {támadó IP}) és a telepítés egyik erőforrása között. Ha a feltört erőforrás egy terheléselosztó vagy egy Application Gateway, a feltételezett kimenő forgalom a (z) (terheléselosztó vagy Application Gateway) háttér-készletében lévő egy vagy több erőforrásból származik. A mintavételen alapuló hálózati adatmennyiség azt mutatja, hogy a gép a következőhöz kapcsolódik:% {a megtámadott IP-címek száma} egyedi IP-címek, amely rendellenesnek számít ebben a környezetben. Ez a tevékenység arra utalhat, hogy az erőforrást feltörték, és már használatban van a külső RDP-végpontok találgatására. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|-|
 |**Gyanús kimenő SSH-hálózati tevékenység**|A hálózati forgalom elemzése rendellenes kimenő SSH-kommunikációt észlelt a (z)% {károsult IP} rendszertől a (z)% {sérült gazdagépről} (% {támadó IP}) és a telepítés egyik erőforrása alapján. Ha a feltört erőforrás egy terheléselosztó vagy egy Application Gateway, a feltételezett kimenő forgalom a (z) (terheléselosztó vagy Application Gateway) háttér-készletében lévő egy vagy több erőforrásból származik. A mintavételen alapuló hálózati adatok a (z)% {Connections (kapcsolatok száma}) kimenő kapcsolatainak számát jelenítik meg az erőforrásból, és ez a környezet rendellenesnek számít. Ez a tevékenység arra utalhat, hogy az erőforrást feltörték, és már használatban van a külső SSH-végpontok találgatására. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|-|
 |**Gyanús kimenő SSH-hálózati tevékenység több célhelyre**|A hálózati forgalom elemzése rendellenes kimenő SSH-kommunikációt észlelt a (z)% {feltört gazdagép} (% {támadó IP}) és a telepítés egyik erőforrása között. Ha a feltört erőforrás egy terheléselosztó vagy egy Application Gateway, a feltételezett kimenő forgalom a (z) (terheléselosztó vagy Application Gateway) háttér-készletében lévő egy vagy több erőforrásból származik. A mintavételen alapuló hálózati adatmennyiség azt mutatja, hogy az erőforrás kapcsolódik a (z)% {a megtámadott IP-címek száma} egyedi IP-címekhez, és ez a környezet rendellenesnek számít Ez a tevékenység arra utalhat, hogy az erőforrást feltörték, és már használatban van a külső SSH-végpontok találgatására. Megjegyzendő, hogy ez a tevékenység külső entitások számára rosszindulatúként sorolhatja be az Ön IP-címét is.|-|
-||<a name="alerts-azureresourceman"></a><h3>Azure Resource Manager (előzetes verzió)</h3> [További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)||
+||||
+
+
+## <a name="alerts-azureresourceman"></a>Riasztások Azure Resource Manager (előzetes verzió)
+
+[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-management-layer-azure-resource-manager-preview)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**ELŐZETES verzió – a**|A rendszer a környezetében egy ismert felhőalapú felderítő eszközkészletet észlelt. Az eszközt a támadók (vagy a behatolási tesztelők [) használhatják az](https://github.com/NetSPI/MicroBurst) előfizetések erőforrásainak leképezhetők, a nem biztonságos konfigurációk azonosítására és a bizalmas információk szivárgására.|-|
 |**ELŐZETES verzió – a Azurite Toolkit futtatása észlelve**|A rendszer a környezetében egy ismert felhőalapú felderítő eszközkészletet észlelt. Az eszköz [Azurite](https://github.com/mwrlabs/Azurite) a támadók (vagy a behatolási tesztelők) használhatják az előfizetések erőforrásainak leképezésére és a nem biztonságos konfigurációk azonosítására.|-|
 |**ELŐZETES verzió – gyanús felügyeleti munkamenet, amely inaktív fiókot észlelt**|Az előfizetési tevékenység naplófájljainak elemzése gyanús viselkedést észlelt. A hosszú ideig nem használt rendszerbiztonsági tag mostantól olyan műveleteket hajt végre, amelyek biztonságos adatmegőrzést biztosítanak a támadók számára.|Perzisztencia|
@@ -295,7 +355,15 @@ A táblázatban szereplő riasztások típusai:
 |**Ritkán használt országból származó tevékenység**|Olyan helyről származó tevékenység, amely a szervezet bármely felhasználója által nemrég vagy soha nem járt le.<br>Ez az észlelés a múltbeli tevékenységek helyét vizsgálja meg az új és a ritkán használt helyszínek meghatározásához. Az anomáliák észlelési motorja a szervezet felhasználói által használt korábbi helyekre vonatkozó adatokat tárolja.|-|
 |**Névtelen IP-címekről származó tevékenység**|A rendszer olyan IP-címről származó felhasználói tevékenységet észlelt, amely névtelen proxy IP-címként lett azonosítva.<br>Ezeket a proxykat olyan személyek használják, akik el szeretnék rejteni az eszköz IP-címét, és rosszindulatú szándékkal is használhatók. Ez az észlelés egy gépi tanulási algoritmust használ, amely csökkenti a téves pozitív értéket, például a szervezet felhasználói által széles körben használt, helytelenül címkézett IP-címeket.|-|
 |**Lehetetlen utazási tevékenység**|Két felhasználói tevékenység történt (egyetlen vagy több munkamenetben), amely földrajzilag távoli helyekről származik. Ez egy rövidebb időszakon belül történik, mint amikor a felhasználó az első helyről a másodikra utazott volna. Ez azt jelzi, hogy egy másik felhasználó ugyanazokat a hitelesítő adatokat használja.<br>Ez az észlelés egy gépi tanulási algoritmust használ, amely figyelmen kívül hagyja a nem megfelelő utazási feltételekhez, például a VPN-hez és a szervezet más felhasználói által rendszeresen használt helyekhez hozzájáruló nyilvánvaló téves riasztásokat. Az észlelés kezdeti tanulási időszaka hét nap, amely során az új felhasználó tevékenységi mintáját tanulja meg. |-|
-||<a name="alerts-azurekv"></a><h3>Azure Key Vault (előzetes verzió)</h3> [További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-keyvault)||
+||||
+
+
+## <a name="alerts-azurekv"></a>Riasztások Azure Key Vault (előzetes verzió)
+
+[További részletek és megjegyzések](security-center-alerts-service-layer.md#azure-keyvault)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**Hozzáférés egy TOR-kilépési csomópontról egy Key Vault**|A Key Vault a TOR IP-névtelenítésével rendszerrel rendelkező valaki a helyük elrejtésére használta. A rosszindulatú szereplők gyakran megpróbálják elrejteni a helyüket, amikor jogosulatlan hozzáférést próbálnak elérni az internethez csatlakozó erőforrásokhoz.|-|
 |**Gyanús házirend-módosítási és titkos lekérdezési Key Vault**|Key Vault házirend-módosítás történt, majd a műveletek listázása és/vagy a titkok beolvasása történt. Emellett ezt a műveleti mintát általában nem a felhasználó végzi el ezen a tárolón. Ez jól jelzi, hogy a Key Vault biztonsága sérül, és a titkos kulcsokat egy rosszindulatú színész ellopta.|-|
 |**Gyanús titkos adatok listázása és lekérdezése Key Vault**|A titkos lista műveletét számos titkos lekérési művelet követte. Ezt a műveleti mintát általában nem a felhasználó végzi el ezen a tárolón. Ez azt jelzi, hogy valaki lehet a Key Vaultban tárolt titkos kódok potenciálisan kártékony célokra való kiírása.|-|
@@ -305,11 +373,18 @@ A táblázatban szereplő riasztások típusai:
 |**Szokatlan műveleti minta egy Key Vault**|A korábbi adatokkal összehasonlítva Key Vault műveletek szokatlan készlete lett elvégezve. Key Vault tevékenység általában ugyanaz az idő múlásával. Ez a tevékenység legitim változása lehet. Azt is megteheti, hogy az infrastruktúra biztonságban van, és további vizsgálatok szükségesek.|-|
 |**Nagy mennyiségű művelet egy Key Vaultban**|A korábbi adatokhoz képest nagyobb mennyiségű Key Vault műveletet hajtottak végre. Key Vault tevékenység általában ugyanaz az idő múlásával. Ez a tevékenység legitim változása lehet. Azt is megteheti, hogy az infrastruktúra biztonságban van, és további vizsgálatok szükségesek.|-|
 |**A felhasználó nagy mennyiségű kulcstartót használt**|Azon tárolók száma, amelyekhez a felhasználó vagy az alkalmazás fér hozzá, a korábbi adatmennyiséghez képest megváltozott. Key Vault tevékenység általában ugyanaz az idő múlásával. Ez a tevékenység legitim változása lehet. Azt is megteheti, hogy az infrastruktúra biztonságban van, és további vizsgálatok szükségesek.|-|
-||<a name="alerts-azureddos"></a><h3>Azure DDoS elleni védelem</h3> [További részletek és megjegyzések](security-center-alerts-integration.md#azure-ddos)||
+||||
+
+
+## <a name="alerts-azureddos"></a>Riasztások Azure DDoS Protection
+
+[További részletek és megjegyzések](security-center-alerts-integration.md#azure-ddos)
+
+|Riasztás|Leírás|Szándék (további[információ](#intentions))|
+|----|----|:----:|
 |**DDoS-támadás észlelhető a nyilvános IP-címekhez**|DDoS-támadás észlelhető a nyilvános IP-címhez (IP-cím) és az enyhítéshez.|Ellenőrzés|
 |**A DDoS elleni támadás a nyilvános IP-címekre csökkent.**|DDoS-támadás kihasználva a nyilvános IP-címekhez (IP-cím).|Ellenőrzés|
 ||||
-
 
 ## <a name="intentions"></a>Szándékok
 

@@ -3,12 +3,12 @@ title: Titkosított Azure-beli virtuális gépek biztonsági mentése és vissza
 description: A titkosított Azure-beli virtuális gépek biztonsági mentését és visszaállítását ismerteti a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 2ce0453c0b57ab682fa102f76c31afa567d80778
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 754a0899d25f2672c6a66eeafe5013f98b7a8f4d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75449971"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513779"
 ---
 # <a name="back-up-and-restore-encrypted-azure-vm"></a>Titkosított Azure-beli virtuális gép biztonsági mentése és visszaállítása
 
@@ -53,7 +53,6 @@ Mielőtt elkezdené, tegye a következőket:
 Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
 - **Telepítse a virtuálisgép-ügynököt a virtuális gépre**: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure VM-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-- A **kimenő hozzáférés explicit engedélyezése**: általában nem szükséges explicit módon engedélyezni az Azure-beli virtuális gépek kimenő hálózati hozzáférését ahhoz, hogy a Azure Backup kommunikáljon. Előfordulhat azonban, hogy egyes virtuális gépek kapcsolódási problémákba ütközik, és a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenetet jelenítenek meg. Ha ez történik, [explicit módon engedélyeznie kell a kimenő hozzáférést](backup-azure-arm-vms-prepare.md#explicitly-allow-outbound-access), így a Azure Backup bővítmény képes kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentési forgalomhoz.
 
 ## <a name="configure-a-backup-policy"></a>Biztonsági mentési szabályzat konfigurálása
 

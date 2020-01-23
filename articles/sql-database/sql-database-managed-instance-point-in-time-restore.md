@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: sstein, carlrab, mathoma
 ms.date: 08/25/2019
-ms.openlocfilehash: b106b1da5d012309e8d92c8e9555ee3982602e12
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9ed694ec524c4e3e033c3139735e8e079141ec4a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707668"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76515122"
 ---
 # <a name="restore-a-sql-database-in-a-managed-instance-to-a-previous-point-in-time"></a>SQL-adatbázis visszaállítása felügyelt példányban egy korábbi időpontra
 
@@ -48,7 +48,7 @@ A következő táblázat a felügyelt példányok időponthoz kapcsolódó vissz
 
 |           |Meglévő adatbázis visszaállítása azonos felügyelt példányra| Meglévő adatbázis visszaállítása egy másik felügyelt példányra|Az eldobott adatbázis visszaállítása ugyanarra a felügyelt példányra|Az eldobott adatbázis visszaállítása egy másik felügyelt példányra|
 |:----------|:----------|:----------|:----------|:----------|
-|**Azure Portalra**| Igen|Nem |Nem|Nem|
+|**Azure Portal**| Igen|Nem |Nem|Nem|
 |**Azure CLI**|Igen |Igen |Nem|Nem|
 |**PowerShell**| Igen|Igen |Igen|Igen|
 
@@ -56,7 +56,7 @@ A következő táblázat a felügyelt példányok időponthoz kapcsolódó vissz
 
 A Azure Portal, a PowerShell vagy az Azure CLI használatával állítson vissza egy meglévő adatbázist ugyanarra a példányra. Ha másik példányra szeretné visszaállítani az adatbázist, használja a PowerShellt vagy az Azure CLI-t, így megadhatja a cél felügyelt példány és az erőforráscsoport tulajdonságait. Ha nem határozza meg ezeket a paramétereket, a rendszer alapértelmezés szerint az adatbázist visszaállítja a meglévő példányra. A Azure Portal jelenleg nem támogatja a visszaállítást egy másik példányra.
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
 2. Lépjen a felügyelt példányra, és válassza ki a visszaállítani kívánt adatbázist.
@@ -136,7 +136,7 @@ Az elérhető paraméterek részletes ismertetését lásd a [CLI dokumentáció
 
 ## <a name="restore-a-deleted-database"></a>Törölt adatbázis visszaállítása
 
-A törölt adatbázisok visszaállítását csak a PowerShell használatával végezheti el. Az adatbázis visszaállítható ugyanarra a példányra vagy egy másik példányra.
+A törölt adatbázisok visszaállítása a PowerShell vagy az Azure Portal használatával végezhető el. ezt a dokumentumot az [Azure Portalon](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#managed-instance-database-1)teheti meg. Az adatbázis visszaállítható ugyanarra a példányra vagy egy másik példányra.
 
 A törölt adatbázisok PowerShell használatával történő visszaállításához adja meg a paraméterek értékét a következő parancsban. Ezután futtassa a parancsot:
 
@@ -197,7 +197,7 @@ A következő módszerek egyikével csatlakozhat az adatbázishoz a felügyelt p
 - [Pont – hely kapcsolat](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-configure-p2s)
 - [Nyilvános végpont](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-public-endpoint-configure)
 
-# <a name="portaltabazure-portal"></a>[Portal](#tab/azure-portal)
+# <a name="portaltabazure-portal"></a>[Portál](#tab/azure-portal)
 
 A Azure Portal válassza ki az adatbázist a felügyelt példányból, majd válassza a **Törlés**lehetőséget.
 

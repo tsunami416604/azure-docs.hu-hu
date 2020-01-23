@@ -7,12 +7,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
-ms.openlocfilehash: f61d4beac5b5285b80fb05521cffc961f7f702c2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72f21babd4d12e69cd346d8693e5ed4fe9117134
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356515"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513949"
 ---
 # <a name="physical-server-to-azure-disaster-recovery-architecture"></a>Fizikai kiszolgálóról Azure vész-helyreállítási architektúrára
 
@@ -29,7 +29,7 @@ Az alábbi táblázat és ábra áttekintést nyújt az Azure-ba való fizikai k
 **Konfigurációs kiszolgáló** | A helyszíni Site Recovery összes összetevőjének futtatásához egyetlen helyszíni fizikai gépet vagy VMware virtuális gépet kell telepíteni. A virtuális gép futtatja a konfigurációs kiszolgálót, a feldolgozó kiszolgálót és a fő célkiszolgáló-kiszolgálót. | A konfigurációs kiszolgáló koordinálja a helyszíni rendszer és az Azure közötti kommunikációt, és felügyeli az adatreplikációt.
  **Folyamatkiszolgáló**:  | Alapértelmezés szerint a konfigurációs kiszolgálóval együtt települ. | Replikációs átjáróként üzemel. Fogadja a replikációs adatokat, gyorsítótárazással, tömörítéssel és titkosítással optimalizálja őket, majd továbbítja az Azure Storage-nak.<br/><br/> A Process Server is telepíti a mobilitási szolgáltatást a replikálni kívánt kiszolgálókra.<br/><br/> Az üzembe helyezés során további, különálló folyamat-kiszolgálókat adhat hozzá a replikációs forgalom nagyobb mennyiségének kezeléséhez.
  **Fő célkiszolgáló** | Alapértelmezés szerint a konfigurációs kiszolgálóval együtt települ. | Az Azure-ból történő feladat-visszavétel során kezeli a replikációs adatokat.<br/><br/> Nagyméretű központi telepítések esetén további, különálló fő célkiszolgáló adható hozzá a feladat-visszavételhez.
-**Replikált kiszolgálók** | A mobilitási szolgáltatás minden replikált kiszolgálóra telepítve van. | Javasoljuk, hogy engedélyezze az automatikus telepítést a folyamat-kiszolgálóról. Azt is megteheti, hogy manuálisan telepíti a szolgáltatást, vagy automatikus telepítési módszert használ, például System Center Configuration Manager.
+**Replikált kiszolgálók** | A mobilitási szolgáltatás minden replikált kiszolgálóra telepítve van. | Javasoljuk, hogy engedélyezze az automatikus telepítést a folyamat-kiszolgálóról. Azt is megteheti, hogy manuálisan telepíti a szolgáltatást, vagy automatikus telepítési módszert használ, például Configuration Manager.
 
 **Fizikai – Azure architektúra**
 

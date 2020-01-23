@@ -1,6 +1,6 @@
 ---
 title: Továbbítónévtér létrehozása az Azure Portal használatával | Microsoft Docs
-description: Relay-névtér létrehozása az Azure Portal használatával.
+description: Ez a cikk bemutatja, hogyan hozhat létre Relay-névteret a Azure Portal használatával.
 services: service-bus-relay
 documentationcenter: .net
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: conceptual
 ms.tgt_pltfrm: multiple
 ms.workload: na
-ms.date: 12/20/2017
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: c2f15008149de00ba232824280c69bcf4da978f4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b9811ef92aba4891627c20e0269be136582a3304
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75459278"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514663"
 ---
 # <a name="create-a-relay-namespace-using-the-azure-portal"></a>Továbbítónévtér létrehozása az Azure Portal használatával
 

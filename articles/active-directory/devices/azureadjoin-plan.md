@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 43e50f8787516b1877f7867419b6edfd819ad158
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 67c42de09c75b7dd6737b80071f1f6eba094b132
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746046"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512419"
 ---
 # <a name="how-to-plan-your-azure-ad-join-implementation"></a>Útmutató: az Azure AD JOIN megvalósításának megtervezése
 
@@ -129,7 +129,7 @@ A támogatott és nem támogatott házirendek áttekintésével állapítsa meg,
 
 Ha a MDM-megoldás nem érhető el az Azure AD-alkalmazás-katalóguson keresztül, akkor a [Mdm-integrációs szolgáltatásban](https://docs.microsoft.com/windows/client-management/mdm/azure-active-directory-integration-with-mdm)ismertetett eljárást követve adhatja hozzá a következőhöz: Azure Active Directory. 
 
-A közös felügyelet révén a SCCM segítségével kezelheti az eszközök bizonyos aspektusait, miközben a szabályzatokat a MDM platformon keresztül továbbítjuk. A Microsoft Intune lehetővé teszi a SCCM való közös felügyeletet. További információ: [a Windows 10-es eszközök közös felügyelete](https://docs.microsoft.com/sccm/core/clients/manage/co-management-overview). Ha az Intune-tól eltérő MDM-terméket használ, kérjük, tekintse meg a MDM-szolgáltatót a megfelelő közös felügyeleti forgatókönyvekben.
+A közös felügyelet révén a SCCM segítségével kezelheti az eszközök bizonyos aspektusait, miközben a szabályzatokat a MDM platformon keresztül továbbítjuk. A Microsoft Intune lehetővé teszi a SCCM való közös felügyeletet. A Windows 10-es eszközök megosztott kezelésével kapcsolatos további információkért lásd: [Mi az a közös felügyelet?](https://docs.microsoft.com/configmgr/core/clients/manage/co-management-overview). Ha az Intune-tól eltérő MDM-terméket használ, kérjük, tekintse meg a MDM-szolgáltatót a megfelelő közös felügyeleti forgatókönyvekben.
 
 **Javaslat:** A MDM csak az Azure AD-hez csatlakoztatott eszközök felügyeletét érdemes figyelembe venni.
 

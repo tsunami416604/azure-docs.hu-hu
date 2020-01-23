@@ -1,5 +1,5 @@
 ---
-title: A beszélt nyelv automatikus azonosítása a Video Indexer-Azure-ban
+title: A beszélt nyelvek automatikus azonosításának Video Indexer használata az Azure-ban
 titleSuffix: Azure Media Services
 description: Ez a cikk azt ismerteti, hogyan használható a Video Indexer nyelvi azonosító modell a beszélt nyelvnek a videóban való automatikus azonosítására.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 09/12/2019
 ms.author: ellbe
-ms.openlocfilehash: ce3e488a6387f9a823d7c1b514b52af24944776b
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 7a2e03b8dacbf6c3ff20e02c804804b671e86d97
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838996"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513881"
 ---
 # <a name="automatically-identify-the-spoken-language-with-language-identification-model"></a>A beszélt nyelv automatikus azonosítása nyelvi azonosító modellel
 
@@ -29,7 +29,7 @@ A portál használatakor a [video Indexer](https://www.videoindexer.ai/) kezdől
 
 ![automatikus észlelés](./media/language-identification-model/auto-detect.png)
 
-## <a name="model-output"></a>Modell kimenete
+## <a name="model-output"></a>A modell kimenete
 
 Video Indexer a videót a legvalószínűbb nyelvnek megfelelően, ha az adott nyelv megbízhatósága `> 0.6`. Ha a nyelv nem azonosítható magabiztosan, feltételezi, hogy a beszélt nyelv angol. 
 
@@ -57,7 +57,7 @@ A modell domináns nyelve a `sourceLanguage` attribútumként érhető el a bete
 * A modellhez legalább egy perces beszéd szükséges a hanganyagban.
 * A modell úgy lett kialakítva, hogy felismerje a spontán társalgási beszédeket (nem hangparancsokat, éneklést stb.).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Áttekintés](video-indexer-overview.md)
 * [Többnyelvű tartalom automatikus azonosítása és átírása](multi-language-identification-transcription.md)

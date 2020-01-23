@@ -5,20 +5,20 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 7c40cfc8fbc6a9957281be842f6714fa9289a3c8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122219"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513735"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
 Az Azure FarmBeats segítségével a IoT-eszközökről és-érzékelőkről átviheti a streamet a Datahub-be. Jelenleg a következő érzékelő-eszköz partnerek támogatottak.
 
-  ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-1.png)
+  ![FarmBeats-partnerek](./media/get-sensor-data-from-sensor-partner/partner-information-2.png)
 
-Az eszközök Azure FarmBeats-vel való integrálásával a farmon üzembe helyezett IoT-érzékelőkből származó adatokkal szerezheti be a datahub. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
+Az eszköz adatainak az Azure FarmBeats való integrálásával a farmon üzembe helyezett IoT-érzékelőkből az adatközpontba helyezheti a terepi adatait. A rendelkezésre álló, a FarmBeats-gyorsító használatával megjeleníthető adatelemek. Az adatok a FarmBeats használatával adatfúziós és gépi tanulási/mesterséges intelligencia (ML/AI) modellek létrehozásához használhatók.
 
 Az érzékelő adatfolyamának elindításához a következőket kell biztosítani:
 
@@ -44,7 +44,7 @@ A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt Azure Cloud
 1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscriptv2), és bontsa ki a helyi meghajtóra. Egy fájl lesz a zip-fájlban.
 2. Jelentkezzen be https://portal.azure.com/, és lépjen a Azure Active Directory-> alkalmazás regisztrációi
 
-3. Kattintson a FarmBeats-telepítés részeként létrehozott alkalmazás-regisztrációra. Ez a neve megegyezik a FarmBeats Datahub.
+3. Kattintson a FarmBeats-telepítés részeként létrehozott alkalmazás-regisztrációra. Ez a neve megegyezik a FarmBeats-adatközpont nevével.
 
 4. Kattintson az "API közzététele" elemre, > kattintson az "ügyfélalkalmazás hozzáadása" elemre, és írja be a **04b07795-8ddb-461a-bbee-02f9e1bf7b46** , és jelölje be az "engedélyezés hatóköre" lehetőséget. Ez hozzáférést biztosít az Azure CLI-hez (Cloud Shell) az alábbi lépések végrehajtásához.
 

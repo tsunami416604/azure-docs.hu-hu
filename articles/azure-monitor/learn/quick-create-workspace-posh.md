@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 03/12/2019
-ms.openlocfilehash: 303f255057b414bc06cd7ae803fe368c2acc1a1a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 87550e7ee3008418fde84596a811d44d02191cee
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75399451"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513524"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Log Analytics munkaterület létrehozása Azure PowerShell
 
@@ -20,7 +20,7 @@ Az Azure PowerShell-modul az Azure-erőforrások PowerShell-parancssorból vagy 
 
 * Azure-erőforrások az előfizetésében  
 * System Center Operations Manager által figyelt helyszíni számítógépek  
-* System Center Configuration Managerból származó eszközök gyűjteményei  
+* Configuration Managerból származó eszközök gyűjteményei  
 * Diagnosztikai vagy naplóadatok az Azure Storage-ból  
  
 Más forrásokhoz, például az Azure-beli virtuális gépekhez és a környezetben található Windows-vagy Linux-alapú virtuális gépekhez a következő témakörökben talál további információt:

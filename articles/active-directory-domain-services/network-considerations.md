@@ -9,20 +9,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 1a6fb12311fe4474f03c22c91d9b478220adf5d1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7c65e1f871fdab2c925f7a5e6747ad23fe8952d9
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425532"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512776"
 ---
 # <a name="virtual-network-design-considerations-and-configuration-options-for-azure-ad-domain-services"></a>A virtuális hálózat kialakításával kapcsolatos szempontok és a Azure AD Domain Services konfigurációs beállításai
 
-Mivel a Azure Active Directory Domain Services (AD DS) hitelesítési és felügyeleti szolgáltatásokat biztosít más alkalmazások és munkaterhelések számára, a hálózati kapcsolat kulcsfontosságú összetevő. A nem megfelelően konfigurált virtuális hálózati erőforrások nélkül az alkalmazások és a munkaterhelések nem tudnak kommunikálni az Azure AD DS által biztosított szolgáltatásokkal, és nem használhatják azokat. Ha helyesen tervezi a virtuális hálózatot, győződjön meg róla, hogy az Azure AD DS szükség szerint képes kiszolgálni az alkalmazásokat és a számítási feladatokat.
+Mivel a Azure Active Directory Domain Services (AD DS) hitelesítési és felügyeleti szolgáltatásokat biztosít más alkalmazások és munkaterhelések számára, a hálózati kapcsolat kulcsfontosságú összetevő. A megfelelően konfigurált virtuális hálózati erőforrások nélkül az alkalmazások és a munkaterhelések nem tudnak kommunikálni az Azure AD DS által biztosított szolgáltatásokkal, és nem használhatják azokat. Tervezze meg a virtuális hálózat követelményeit, és győződjön meg arról, hogy az Azure AD DS szükség szerint képes kiszolgálni az alkalmazásokat és a számítási feladatokat.
 
-Ez a cikk az Azure AD DS-t támogató Azure-beli virtuális hálózat kialakításával kapcsolatos szempontokat és követelményeket ismerteti.
+Ez a cikk a tervezési szempontokat és követelményeket ismerteti egy Azure-beli virtuális hálózat számára az Azure AD DS támogatásához.
 
 ## <a name="azure-virtual-network-design"></a>Azure Virtual Network – kialakítás
 
@@ -33,7 +33,7 @@ Az Azure AD DS virtuális hálózatának tervezésekor az alábbi szempontokat k
 * Az Azure AD DS-t a virtuális hálózattal megegyező Azure-régióba kell telepíteni.
     * Jelenleg csak egy Azure AD DS felügyelt tartomány helyezhető üzembe Azure AD-bérlőn. Az Azure AD DS felügyelt tartomány egyetlen régióban van üzembe helyezve. Győződjön meg arról, hogy létrehoz vagy kijelöl egy virtuális hálózatot egy olyan [régióban, amely támogatja az Azure AD DS](https://azure.microsoft.com/global-infrastructure/services/?products=active-directory-ds&regions=all)-t.
 * Vegye figyelembe a többi Azure-régió és az alkalmazás számítási feladatait üzemeltető virtuális hálózatok közelségét.
-    * A késés csökkentése érdekében az alapvető alkalmazásai közel vagy ugyanabban a régióban legyenek, mint az Azure AD DS felügyelt tartományának virtuális hálózati alhálózata. Virtuális hálózati vagy virtuális magánhálózati (VPN) kapcsolatokat is használhat az Azure Virtual Networks között.
+    * A késés csökkentése érdekében az alapvető alkalmazásai közel vagy ugyanabban a régióban legyenek, mint az Azure AD DS felügyelt tartományának virtuális hálózati alhálózata. Virtuális hálózati vagy virtuális magánhálózati (VPN) kapcsolatokat is használhat az Azure Virtual Networks között. Ezeket a kapcsolatbeállításokat a következő szakaszban tárgyaljuk.
 * A virtuális hálózat nem hivatkozhat az Azure AD DS által biztosított DNS-szolgáltatásokra.
     * Az Azure AD DS saját DNS-szolgáltatást biztosít. A virtuális hálózatot ezen DNS-szolgáltatási címek használatára kell konfigurálni. A további névterek névfeloldása feltételes továbbítók használatával végezhető el.
     * Az egyéni DNS-kiszolgáló beállításai nem használhatók más DNS-kiszolgálókról, például virtuális gépekről érkező lekérdezések lekérdezéséhez. A virtuális hálózatban lévő erőforrásoknak az Azure AD DS által biztosított DNS-szolgáltatást kell használniuk.
@@ -62,7 +62,7 @@ A következő módszerek egyikével kapcsolódhat más Azure-beli virtuális há
 * Virtuális hálózatok közötti társviszony létesítése
 * Virtuális magánhálózat (VPN)
 
-### <a name="virtual-network-peering"></a>Virtual Network peering
+### <a name="virtual-network-peering"></a>Virtuális hálózatok közötti társviszony létesítése
 
 A virtuális hálózat társítása egy olyan mechanizmus, amely két virtuális hálózatot csatlakoztat az adott régióban az Azure gerinc hálózatán keresztül. A globális virtuális hálózati társítás az Azure-régiók közötti virtuális hálózat összekapcsolására is képes. A két virtuális hálózat a társítást követően lehetővé teszi, hogy az erőforrások (például a virtuális gépek) közvetlenül a magánhálózati IP-címek használatával kommunikáljanak egymással. A virtuális hálózati kapcsolatok használata lehetővé teszi, hogy egy Azure AD DS felügyelt tartományt helyezzen üzembe más virtuális hálózatokban üzembe helyezett alkalmazás-munkaterhelésekkel.
 
@@ -70,7 +70,7 @@ A virtuális hálózat társítása egy olyan mechanizmus, amely két virtuális
 
 További információ: az [Azure Virtual Network peering áttekintése](../virtual-network/virtual-network-peering-overview.md).
 
-### <a name="virtual-private-networking"></a>Virtuális magánhálózat
+### <a name="virtual-private-networking-vpn"></a>Virtuális magánhálózat (VPN)
 
 A virtuális hálózatokat ugyanúgy összekapcsolhatja egy másik virtuális hálózattal (VNet – VNet), ahogyan a virtuális hálózatot egy helyszíni helyhez is konfigurálhatja. Mindkét kapcsolat VPN-átjárót használ egy biztonságos alagút létrehozásához az IPsec/IKE használatával. Ez a kapcsolati modell lehetővé teszi az Azure-AD DS üzembe helyezését egy Azure-beli virtuális hálózatban, majd a helyszíni helyek vagy más felhők csatlakoztatását.
 
@@ -91,8 +91,8 @@ Egy Azure AD DS felügyelt tartomány létrehoz néhány hálózati erőforrást
 | Azure-erőforrás                          | Leírás |
 |:----------------------------------------|:---|
 | Hálózati csatolókártya                  | Az Azure AD DS üzemelteti a felügyelt tartományt két tartományvezérlőn (DCs), amely Azure-beli virtuális gépekként fut a Windows Serveren. Minden virtuális gépnek van egy virtuális hálózati adaptere, amely csatlakozik a virtuális hálózati alhálózathoz. |
-| Dinamikus normál nyilvános IP-cím         | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/virtual-network-ip-addresses-overview-arm.md)című témakörben talál. |
-| Azure standard Load Balancer               | Az Azure AD DS standard SKU Load balancert használ a hálózati címfordításhoz (NAT) és a terheléselosztáshoz (ha biztonságos LDAP-használatot használ). További információ az Azure Load balancerről: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
+| Dinamikus normál nyilvános IP-cím      | Az Azure AD DS szabványos SKU nyilvános IP-cím használatával kommunikál a szinkronizálási és a felügyeleti szolgáltatással. A nyilvános IP-címekről további információt az [IP-címek típusai és a kiosztási módszerek az Azure-ban](../virtual-network/virtual-network-ip-addresses-overview-arm.md)című témakörben talál. |
+| Azure standard Load Balancer            | Az Azure AD DS standard SKU Load balancert használ a hálózati címfordításhoz (NAT) és a terheléselosztáshoz (ha biztonságos LDAP-használatot használ). További információ az Azure Load balancerről: [Mi az Azure Load Balancer?](../load-balancer/load-balancer-overview.md) |
 | Hálózati címfordítási (NAT) szabályok | Az Azure AD DS három NAT-szabályt hoz létre és használ a terheléselosztó számára – egy szabályt a biztonságos HTTP-forgalomhoz, és két szabályt a biztonságos PowerShell táveléréshez. |
 | Terheléselosztói szabályok                     | Ha az Azure AD DS felügyelt tartománya biztonságos LDAP-ra van konfigurálva a 636-as TCP-porton, akkor három szabály jön létre, és a terheléselosztó használatával terjeszti a forgalmat. |
 
@@ -160,7 +160,3 @@ További információ az Azure AD DS által használt hálózati erőforrásokr�
 * [Azure-beli virtuális hálózati társítás](../virtual-network/virtual-network-peering-overview.md)
 * [Azure VPN Gateway-átjárók](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md)
 * [Azure hálózati biztonsági csoportok](../virtual-network/security-overview.md)
-
-<!-- INTERNAL LINKS -->
-
-<!-- EXTERNAL LINKS -->

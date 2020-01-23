@@ -8,68 +8,97 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: personalizer
 ms.topic: overview
-ms.date: 10/23/2019
+ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: b5d38ffeda3600fd90c4ee84acdd29ed599886ae
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707954"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514301"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
-Az Azure megszemélyesítő egy felhőalapú API-szolgáltatás, amely lehetővé teszi az alkalmazás számára, hogy kiválassza a legjobb élményt a felhasználók számára, a kollektív valós idejű viselkedéstől való tanulást.
+Az Azure megszemélyesítő egy felhőalapú API-szolgáltatás, amely segít az ügyfélalkalmazás számára kiválasztani a legjobb, egyetlen _tartalmi_ elemet az egyes felhasználók megjelenítéséhez. A szolgáltatás kiválasztja a legjobb elemet, a tartalmi elemektől a tartalommal és környezettel kapcsolatban megadott kollektív valós idejű információk alapján.
 
-* Adja meg a felhasználókkal és a tartalommal kapcsolatos információkat, és fogadja a legfontosabb műveletet a felhasználók megjelenítéséhez. 
-* A személyre szabás használata előtt nem kell megtisztítani és címkéznie az adatfeliratot.
-* Visszajelzés küldése a személyre szabáshoz, ha az kényelmes Önnek. 
-* Valós idejű elemzések megtekintése. 
+Miután megjelentette a tartalmi elemet a felhasználó számára, a rendszer figyeli a felhasználói viselkedést, és visszaküldi a jutalom pontszámát a személyre, hogy javítsa a legjobb tartalmat a kapott környezeti információk alapján.
 
-Tekintse meg a [személyre szabási funkció működésének](https://personalizercontentdemo.azurewebsites.net/) bemutatóját
+A **tartalom** bármely olyan információ lehet, például szöveg, kép, URL-cím vagy e-mail-cím, amelyet ki szeretne választani a felhasználó számára.
 
-## <a name="how-does-personalizer-work"></a>Hogyan működik a személyre szabás?
+<!--
+![What is personalizer animation](./media/what-is-personalizer.gif)
+-->
 
-A személyre szabott gépi tanulási modellekkel megismerheti, hogy milyen műveleteket lehet a legmagasabb szinten rangsorolni. Az ügyfélalkalmazás a lehetséges műveletek listáját, valamint a velük kapcsolatos információkat tartalmazza. és a kontextussal kapcsolatos információk, amelyek a felhasználóval, az eszközzel és egyéb információkkal is rendelkezhetnek. A személyre szabott művelet határozza meg a végrehajtandó műveletet. Miután az ügyfélalkalmazás a kiválasztott műveletet használja, visszajelzéseket küld a személynek a jutalom pontszám formájában. A visszajelzés beérkezése után a személyre szabás automatikusan frissíti a saját modelljét, amelyet a jövőbeli soraihoz használtak. Az idő múlásával a személyre szabott modell egy modellt fog képezni, amely arra utalhat, hogy az egyes kontextusokban a funkciók alapján melyik a legmegfelelőbb művelet.
+## <a name="how-does-personalizer-select-the-best-content-item"></a>Hogyan választja ki a személyre szabott tartalmi elemet?
 
-## <a name="how-do-i-use-the-personalizer"></a>Hogyan használja a személyre szabott szolgáltatást?
+A személyre szabás a **megerősítő tanulás** segítségével kiválasztja a legjobb elemet (_művelet_) a kollektív viselkedés és a jutalom pontszámok alapján az összes felhasználó számára. A műveletek a tartalmi elemek, például hírek, adott mozgóképek vagy termékek, amelyek közül választhatnak.
 
-![A felhasználó személyre szabásával kiválaszthatja, hogy melyik videó jelenjen meg a felhasználónak](media/what-is-personalizer/personalizer-example-highlevel.png)
+A **rangsorban** hívja meg a műveleti elemet, valamint a művelet funkcióit és a környezeti funkciókat, hogy kiválassza a felső műveleti elemet:
 
-1. A személyre szabáshoz válasszon egy felhasználói élményt az alkalmazásban.
-1. Hozza létre és konfigurálja a megszemélyesítési szolgáltatás egy példányát a Azure Portal. Minden példány egy személyre szabott hurok.
-1. A [Rank API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank) -val a felhasználókra vonatkozó információkkal (_funkciókkal_) és a tartalommal (_műveletekkel_) hívhat személyre. A személyre szabás előtt nem kell megadnia tiszta, címkézett adattípust. Az API-k hívhatók közvetlenül vagy különböző programozási nyelvekhez elérhető SDK-k használatával.
-1. Az ügyfélalkalmazás megjeleníti a felhasználó által a személyre szabott művelet által kiválasztott műveletet.
-1. A [jutalmazási API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) -val visszajelzést adhat a személyre szabott személynek, amely jelzi, hogy a felhasználó kiválasztotta-e a testreszabási műveletet. Ez egy _[jutalom pontszám](concept-rewards.md)_ .
-1. Megtekintheti az elemzéseket a Azure Portalban annak kiértékeléséhez, hogy a rendszer hogyan működik, és hogyan segíti az adatai személyre szabását.
+* **Funkciókkal rendelkező műveletek** – az egyes elemekhez tartozó funkciókat tartalmazó tartalmi elemek
+* **Környezeti funkciók** – a felhasználók, a környezetük vagy a környezetük funkciói az alkalmazás használatakor
 
-## <a name="where-can-i-use-personalizer"></a>Hol használhatom a személyre szabott szolgáltatást?
+A rangsor hívása azt az azonosítót adja vissza, amely a felhasználó számára megjelenített tartalmi __elem, a__ **jutalmazási művelet azonosítója** mezőben található.
+A felhasználó számára megjelenő __művelet__ gépi tanulási modellel van kiválasztva, és a teljes jutalom összegét az idő múlásával igyekszik maximalizálni.
 
-Az ügyfélalkalmazás például a következőhöz adhat hozzá személyre szabott elemet:
+Számos példa a következőkre:
 
-* Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.    
-* Optimalizálja az ad-elhelyezést egy webhelyen.
-* Személyre szabott "ajánlott elem" megjelenítése egy bevásárlási webhelyen.
-* Javasoljon olyan felhasználói felületi elemeket, mint például a szűrők, amelyek egy adott fényképre vonatkoznak.
-* Válassza ki a csevegési bot válaszát a felhasználó szándékának tisztázására, vagy tegyen javaslatot egy műveletre.
-* A felhasználók által az üzleti folyamat következő lépéseként megjelenő javaslatok rangsorolása.
+|Tartalomtípus|**Műveletek (funkciókkal)**|**Környezeti funkciók**|Visszaadott jutalom műveleti azonosítója<br>(a tartalom megjelenítése)|
+|--|--|--|--|
+|Hírek listája|a. `The president...` (országos, politikai, [text])<br>b. `Premier League ...` (globális, sport, [szöveg, rendszerkép, videó])<br> c. `Hurricane in the ...` (regionális, időjárás, [szöveg, rendszerkép]|Az eszköz híreinek olvasása<br>Hónap vagy idény<br>|egy `The president...`|
+|Filmek listája|1. `Star Wars` (1977, [művelet, kaland, fantázia], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentumfilm, sport], Steve James<br>3. `Casablanca` (1942, [Romance, dráma, War], Michael Kertész)|A rendszer figyeli az eszköz mozgóképét<br>képernyő mérete<br>Felhasználó típusa<br>|3. `Casablanca`|
+|Termékek listája|i. `Product A` (3 kg, $ $ $ $, 24 órás kézbesítés)<br>ii. `Product B` (20 kg, $ $, 2 hetes szállítás vámmal)<br>iii. `Product C` (3 kg, $ $ $, kézbesítés 48 órán belül)|Az eszköz vásárlásának beolvasása<br>Felhasználói költségkeret<br>Hónap vagy idény|ii. `Product B`|
 
-A személyre szabott szolgáltatás nem a felhasználói profil adatainak megőrzésére és kezelésére, illetve az egyes felhasználók preferenciáinak vagy előzményeinek naplózására szolgál. A személyre szabott információk az egyes interakciók minden funkcióját megismerik egyetlen modell kontextusában, amely a hasonló funkciók esetében maximális jutalmakat érhet el. 
+A személyre szabott megerősítő tanulás segítségével kiválaszthatja az egyetlen legjobb műveletet, amely a _jutalmazási művelet azonosítója_, a következők kombinációja alapján:
+* Betanított modell – múltbeli információk a személyre szabott szolgáltatás fogadásáról
+* Aktuális adatspecifikus műveletek a funkciókkal és a környezeti funkciókkal
 
-## <a name="personalization-for-developers"></a>Személyre szabás a fejlesztők számára
+## <a name="when-to-call-personalizer"></a>A személyre szabás meghívása
 
-A személyre szabott szolgáltatás két API-val rendelkezik:
+A személyre szabott **Range** [API](https://go.microsoft.com/fwlink/?linkid=2092082) -t _minden alkalommal, amikor_ valós időben jelennek meg a tartalomban. Ez az **esemény egy esemény-** _azonosítóval_megjegyezve.
 
-* *Rank*: a Rank API segítségével meghatározhatja, hogy melyik _műveletet_ kell megjeleníteni, az aktuális _környezetben_. A műveletek a JSON-objektumok tömbje lesznek elküldve, az egyes azonosítókkal és információkkal (_funkciókkal_) együtt. a környezet egy másik JSON-objektumként lesz elküldve. Az API azt a Műveletazonosító adja vissza, amelyet az alkalmazásnak a felhasználónak kell megjelenítenie.
-* *Jutalom*: miután a felhasználó kommunikált az alkalmazással, mérje fel, hogy a személyre szabás milyen mértékben működött 0 és 1 közötti számként, és [jutalom pontszámként](concept-rewards.md)küldje el. 
+A személyre szabott **jutalmazási** [API](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Reward) valós időben hívható meg, vagy késleltethető, hogy jobban illeszkedjen az infrastruktúrához. Az üzleti igények alapján határozza meg a jutalom pontszámát. Ez lehet egyetlen érték, például 1, jó, 0 vagy rossz, vagy egy szám, amelyet egy, az üzleti célok és mérőszámok alapján létrehozott algoritmus állít elő.
 
-![Személyre szabott események alapszintű eseménysorozat](media/what-is-personalizer/personalization-intro.png)
+## <a name="personalizer-content-requirements"></a>Személyre szabott tartalomra vonatkozó követelmények
+
+A személyre szabott tartalom használata:
+
+* Korlátozott számú elemet tartalmaz (legfeljebb ~ 50), amelyből kiválaszthatja a következőt:. Ha nagyobb listával rendelkezik, az [ajánlási motor használatával](where-can-you-use-personalizer.md#use-personalizer-with-recommendation-engines) csökkentse a listát 50 elemre.
+* A rangsorolni kívánt tartalmat leíró információkkal rendelkezik: a _funkciók és a_ _környezet funkcióival_kapcsolatos műveletek.
+* Legalább ~ 1k/nap tartalommal kapcsolatos eseményt biztosít a személyre szabáshoz. Ha a személyre szabott nem kapja meg a minimálisan szükséges forgalmat, a szolgáltatás továbbra is megtarthatja az egyetlen legmegfelelőbb tartalmi elemet.
+
+Mivel a személyre szabott, közel valós időben a személyre szabott adatokat használ, a szolgáltatás nem a következő:
+* Felhasználói profil adatainak fenntartása és kezelése
+* Egyéni felhasználói beállítások vagy előzmények naplózása
+* Megtisztított és címkézett tartalom megkövetelése
+
+## <a name="how-to-design-and-implement-personalizer-for-your-client-application"></a>Az ügyfélalkalmazás személyre szabásának megtervezése és implementálása
+
+1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_** . Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
+1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) 1 tanulási ciklusnak minősül. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
+1. Személyre szabás hozzáadása a webhelyhez vagy a tartalmi rendszeren:
+    1. Az alkalmazásban, a webhelyen vagy a rendszeren testreszabhatja a személyre szabási **hívást,** hogy meghatározza a legjobb, egyetlen _tartalmi_ elemet, mielőtt a tartalom megjelenik a felhasználó számára.
+    1. Jelenítse meg a legjobb, egyetlen _tartalmi_ tételt, amely a visszaadott _jutalom műveleti azonosítója_a felhasználónak.
+    1. Alkalmazzon _algoritmust_ a felhasználó működésével kapcsolatos adatok gyűjtésére a **jutalom** pontszámának megállapításához, például:
+
+        |Viselkedés|Számított jutalom pontszáma|
+        |--|--|
+        |A felhasználó a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója) választotta|**1**|
+        |A felhasználó által kiválasztott egyéb tartalom|**0**|
+        |A felhasználó szüneteltetve, a nem határozott módon görgetve, mielőtt kiválasztja a legjobb, egyetlen _tartalmi_ elemet (jutalmazási művelet azonosítója)|**0,5**|
+
+    1. **Jutalom-hívás küldése** 0 és 1 közötti jutalom pontszámának megadásához
+        * A tartalom megjelenítése után azonnal
+        * Vagy valamivel később egy offline rendszeren
+    1. Egy használati időszak után [értékelje ki a hurkot](concepts-offline-evaluation.md) offline kiértékeléssel. Az offline kiértékelés lehetővé teszi a személyre szabott szolgáltatás hatékonyságának tesztelését és értékelését a kód módosítása vagy a felhasználói élmény befolyásolása nélkül.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [A személyre szabás újdonságai](whats-new.md)
-* [Hogyan működik a megszemélyesítő?](how-personalizer-works.md)
+
+* [A megszemélyesítő működése](how-personalizer-works.md)
 * [Mi a megerősítő tanulás?](concepts-reinforcement-learning.md)
 * [További információ a Rank kérelem szolgáltatásairól és műveleteiről](concepts-features.md)
 * [Tudnivalók a jutalmazási kérelem pontszámának meghatározásáról](concept-rewards.md)
+* [Rövid útmutatók]()
+* [Oktatóanyag]()
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

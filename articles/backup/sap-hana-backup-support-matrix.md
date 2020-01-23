@@ -3,14 +3,14 @@ title: A SAP HANA biztonsági mentésének támogatási mátrixa
 description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és korlátozásokat, amikor az Azure Backup használatával biztonsági másolatot készít SAP HANA adatbázisokról az Azure-beli virtuális gépeken.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 0d847d2131a9a9c21fde14cae40a184de4195223
-ms.sourcegitcommit: e50a39eb97a0b52ce35fd7b1cf16c7a9091d5a2a
+ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74288229"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514291"
 ---
-# <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok Azure-beli virtuális gépeken történő biztonsági mentésének támogatási mátrixa
+# <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
 A Azure Backup támogatja SAP HANA adatbázisok biztonsági mentését az Azure-ba. Ez a cikk az Azure-beli virtuális gépeken futó SAP HANA-adatbázisok biztonsági mentésének Azure Backup használatával összefoglalja a támogatott forgatókönyveket és korlátozásokat.
 
@@ -39,7 +39,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **HANA-telepítések**       | SAP HANA egyetlen Azure-beli virtuális gépen – csak vertikális felskálázással               | Kiterjesztés                                                    |
 | **HANA-példányok**         | Egyetlen SAP HANA példány egyetlen Azure-beli virtuális gépen – csak vertikális felskálázás | Több SAP HANA példány egyetlen virtuális gépen                  |
 | **HANA-adatbázisok típusai**    | Önálló adatbázis tároló (SDC) 1. x, több adatbázisból álló tárolón (MDC) a 2. x számítógépen | MDC a HANA 1. x-ben                                              |
-| **HANA-adatbázis mérete**     | 2 – TB teljes biztonsági mentés mérete a tömörítés után (M sorozat 2 TB, 4 TB RAM) |                                                              |
+| **HANA-adatbázis mérete**     | 2 – TB teljes biztonsági mentési méret a HANA által jelentett módon |                                                              |
 | **Biztonsági másolatok típusai**           | Teljes, különbözeti és naplózott biztonsági másolatok                           | Növekményes, Pillanatképek                                       |
 | **Visszaállítási típusok**          | A támogatott visszaállítási típusokról a [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP HANA megjegyzésben tájékozódhat. |                                                              |
 | **Biztonsági mentési korlátok**          | Akár 2 TB teljes biztonsági mentési méret SAP HANA példányban  |                                                              |

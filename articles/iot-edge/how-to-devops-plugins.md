@@ -1,6 +1,6 @@
 ---
-title: Engedélyezze a CI/CD a Jenkins beépülő modul használatával – az Azure IoT Edge |} A Microsoft Docs
-description: Jenkins az Azure IoT Edge bővítmény lehetővé teszi az IoT Edge devlopment és üzembe helyezési feladatokat integrálható a meglévő fejlesztési és üzemeltetési megoldást.
+title: CI/CD engedélyezése a Jenkins beépülő modullal – Azure IoT Edge | Microsoft Docs
+description: A Jenkins Azure IoT Edge-bővítménye lehetővé teszi IoT Edge fejlesztési és üzembe helyezési feladatok integrálását a meglévő DevOps-megoldásba.
 author: kgremban
 manager: philmea
 ms.author: kgremban
@@ -8,19 +8,19 @@ ms.date: 01/22/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 173e6ff91acd2ad28d7203b2b5db65e0ee0ecc43
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 75ed5f5eda48f10776b854ce4de4d2f855a53634
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62126341"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510243"
 ---
-# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Az Azure IoT Edge integrálása a Jenkins-folyamatokban
+# <a name="integrate-azure-iot-edge-with-jenkins-pipelines"></a>Azure IoT Edge integrálása Jenkins-folyamatokkal
 
-Az Azure IoT Edge beépített támogatást nyújt a Azure DevOps és az Azure DevOps Projects, de a fejlesztési és üzemeltetési funkcióbővítés Jenkins beépülő modult is tartalmaz. [A Jenkins](https://jenkins.io/) egy nyílt forráskódú automatizáló kiszolgáló által használt beépülő modulok fejlesztését és üzembe helyezését projektek, beleértve az IoT Edge számos különböző típusú támogatásához. 
+Azure IoT Edge beépített támogatást nyújt az Azure DevOps és a Azure DevOps Projectshoz, de egy beépülő modult is biztosít a DevOps funkciók kibővítéséhez a Jenkins-ben. A [Jenkins](https://jenkins.io/) egy olyan nyílt forráskódú Automation-kiszolgáló, amely beépülő modulok használatával számos fejlesztési és üzembe helyezési projektet támogat, többek között a IoT Edge.
 
-Az Azure IoT Edge beépülő modul a Jenkins folyamatos integrációs és folyamatos üzembe helyezés összpontosít. Létrehozhat egy build és a leküldéses folyamatot, amely összeállítja a modulokat, valamint leküldéses értesítések a tárolórendszerképeket a tárolóregisztrációs adatbázisba. Ezután hozzon létre egy kiadási folyamatot, amely központilag telepíti a modulokat az IoT Edge-eszközökön. 
+A Jenkins-hez készült Azure IoT Edge beépülő modul a folyamatos integrációt és a folyamatos üzembe helyezést is középpontba helyezi. Létrehozhat egy olyan létrehozási és leküldéses folyamatot, amely modulokat készít, és leküldi a tárolói lemezképeket a tároló-beállításjegyzékbe. Ezután hozzon létre egy kiadási folyamatot, amely modulokat telepít a IoT Edge-eszközökre.
 
-Az IoT Edge beépülő modul a Jenkins használatának megkezdése előtt szüksége van egy IoT hubra az Azure és a egy container registry a tárolólemezképek tárolására. Egy egyszerű Azure-szolgáltatás segítségével biztosíthat a Jenkins közreműködői engedélyekkel az IoT hubhoz, úgy, hogy a beépülő modult is az eszközök az IoT Edge üzemelő példány létrehozása. 
+Mielőtt elkezdi használni a Jenkins-hez készült IoT Edge beépülő modult, szüksége lesz egy IoT hub-ra az Azure-ban és egy tároló-beállításjegyzéket a tárolói lemezképek tárolásához. Az Azure egyszerű szolgáltatásával biztosíthatja a Jenkins közreműködői engedélyeit az IoT hub számára, hogy a beépülő modul létrehozza a IoT Edge-eszközök üzembe helyezését.
 
-Ha készen áll a kezdésre, keresse meg a telepítést, és adatait használja a [Jenkins beépülő modul az Azure IoT Edge](https://plugins.jenkins.io/azure-iot-edge).
+Ha készen áll a kezdésre, keresse meg a következőt: a [Azure IoT Edge beépülő moduljának](https://plugins.jenkins.io/azure-iot-edge)telepítési és használati adatai.

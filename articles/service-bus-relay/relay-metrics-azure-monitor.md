@@ -1,6 +1,6 @@
 ---
 title: Azure Monitor Azure Relay metrikák (előzetes verzió) | Microsoft Docs
-description: Az Azure monitoring használata a Azure Relay figyeléséhez
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Monitor az Azure Relay állapotának figyelésére.
 services: service-bus-relay
 documentationcenter: .NET
 author: spelluru
@@ -12,84 +12,84 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/28/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 9933b7857580f29cbb6a54ebc82d4e7207456ad4
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 5c548186ec51cf86f34942cb15d8f984afa60268
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71261794"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514935"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor-preview"></a>Azure Monitor Azure Relay metrikák (előzetes verzió)
-Azure Relay mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével felmérhető a továbbítási erőforrások általános állapota, nem csak a névtér szintjén, hanem az entitás szintjén is. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Azure Relay állapotának figyelésében. Metrikák is segít kiváltó problémák elhárítása anélkül, hogy forduljon az Azure ügyfélszolgálatához.
+Azure Relay mérőszámok az Azure-előfizetésében lévő erőforrások állapotát adják meg. A metrikai adatok gazdag készletével felmérhető a továbbítási erőforrások általános állapota, nem csak a névtér szintjén, hanem az entitás szintjén is. Ezek a statisztikák fontosak lehetnek, mivel segítenek a Azure Relay állapotának figyelésében. A metrikák az Azure-támogatáshoz való kapcsolódás nélkül is segíthetnek a hibák elhárításában.
 
-Az Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [a Microsoft Azure figyelés](../monitoring-and-diagnostics/monitoring-overview.md) és a [lekérése az Azure Monitor-metrikák .NET-tel](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) mintát a Githubon.
+A Azure Monitor egységes felhasználói felületet biztosít a különböző Azure-szolgáltatások figyelésére. További információkért lásd: [Microsoft Azure figyelése](../monitoring-and-diagnostics/monitoring-overview.md) és a [Azure monitor metrikáinak beolvasása](https://github.com/Azure-Samples/monitor-dotnet-metrics-api) a githubon .net-minta használatával.
 
 > [!IMPORTANT]
 > Ez a cikk csak a Azure Relay Hibrid kapcsolatok szolgáltatására vonatkozik, nem a WCF Relay. 
 
-## <a name="access-metrics"></a>Access-metrikák
+## <a name="access-metrics"></a>Hozzáférési metrikák
 
-Az Azure Monitor hozzáférés metrikák több módot is biztosít. Mindkét hozzáférési metrikák keresztül is a [az Azure portal](https://portal.azure.com), vagy használja az Azure Monitor API-k (REST és .NET) és elemzési megoldásokkal, például az Operation Management Suite és az Event Hubs. További információkért lásd: [figyelési adatokat gyűjtött az Azure Monitor](../azure-monitor/platform/data-platform.md).
+Azure Monitor több módszert biztosít a metrikák eléréséhez. A mérőszámokat a [Azure Portalon](https://portal.azure.com)keresztül érheti el, vagy használhatja a Azure monitor API-kat (REST és .net) és az elemzési megoldásokat, például az Operation Management Suite-t és a Event Hubst. További információ: [Azure monitor által összegyűjtött adatok figyelése](../azure-monitor/platform/data-platform.md).
 
-Alapértelmezés szerint engedélyezve vannak a metrikákat, és elérheti az utolsó 30 nap adatait. Ha szeretne egy hosszabb ideig megőrizni az adatokat, úgy archiválhatók metrikák adatai egy Azure Storage-fiókhoz. Ennek a konfigurációja a [diagnosztikai beállítások](../azure-monitor/platform/diagnostic-settings.md) az Azure monitorban.
+A metrikák alapértelmezés szerint engedélyezve vannak, és a legutóbbi 30 nap adatait is elérheti. Ha hosszabb ideig kell megőriznie az adatokat, archiválhatja a metrikák adatait egy Azure Storage-fiókba. Ez a Azure Monitor [diagnosztikai beállításaiban](../azure-monitor/platform/diagnostic-settings.md) van konfigurálva.
 
-## <a name="access-metrics-in-the-portal"></a>Hozzáférés mérőszámok portálon
+## <a name="access-metrics-in-the-portal"></a>Hozzáférési metrikák a portálon
 
-Az idő függvényében segítségével figyelheti a mérőszámokat a [az Azure portal](https://portal.azure.com). Az alábbi példa bemutatja, hogyan sikeres kérések és a fiók szintjén a bejövő kérelmek megtekintése:
+A metrikák a [Azure Portalban](https://portal.azure.com)is megfigyelhetők. Az alábbi példa bemutatja, hogyan tekintheti meg a sikeres kérelmeket és a bejövő kérelmeket a fiók szintjén:
 
 ![][1]
 
-Metrikák a névtér keresztül közvetlenül is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák (előzetes verzió)** elemre. 
+A metrikákat közvetlenül a névtér használatával is elérheti. Ehhez válassza ki a névteret, majd kattintson a **metrikák (előzetes verzió)** elemre. 
 
 A dimenziókat támogató metrikák esetében a kívánt dimenzió értékkel kell szűrnie.
 
 ## <a name="billing"></a>Számlázás
 
-Az Azure monitorban mérőszámok segítségével a jelenleg előzetes verzióban ingyenes. Azonban használ további megoldásokat, amelyek fogadni a mérőszámadatokat, akkor előfordulhat, hogy után kell díjat ezek a megoldások által. Ha például számítjuk fel az Azure Storage által archiválja mérőszámok az Azure Storage-fiók. A Azure Monitor naplók számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Azure Monitor naplókba.
+A Azure Monitor metrikáinak használata jelenleg előzetes verzióban ingyenes. Ha azonban olyan további megoldásokat használ, amelyek metrikai adatokat töltenek fel, akkor ezeket a megoldásokat számlázhatja. Ha például az Azure Storage-ba számít, ha egy Azure Storage-fiókba archiválja a metrikákat. A Azure Monitor naplók számlázása akkor is történik, ha a metrikák adatait a speciális elemzéshez Azure Monitor naplókba.
 
-Az alábbi mérőszámok segítségével a szolgáltatás állapotának áttekintése. 
+A következő mérőszámok áttekintést nyújtanak a szolgáltatás állapotáról. 
 
 > [!NOTE]
-> Más néven áthelyezett azt rendszer kivezetése több metrikát. Ehhez szükség lehet, hogy a hivatkozások frissítését. Metrikák, a "elavult" kulcsszó megjelölve a jövőben nem támogatja.
+> Számos mérőszámot elavultunk, mert más néven vannak áthelyezve. Előfordulhat, hogy frissítenie kell a hivatkozásokat. Az "elavult" kulcsszóval jelölt mérőszámok nem lesznek támogatottak.
 
-Az összes értékeihez kapnak az Azure Monitor percenként. Az idő részletessége határozza meg az időintervallum, amelynek metrikák jelennek meg. Az összes Azure Relay-metrika támogatott időintervalluma 1 perc.
+Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részletessége határozza meg azt az időintervallumot, ameddig a metrikák értékei bemutatva lesznek. Az összes Azure Relay-metrika támogatott időintervalluma 1 perc.
 
-## <a name="connection-metrics"></a>Kapcsolati metrika
+## <a name="connection-metrics"></a>Kapcsolatok metrikái
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Figyelőkapcsolatokra – sikeres (előzetes verzió) | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Figyelőkapcsolatokra-vonatkozó ügyfélhibái (előzetes verzió)|A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Figyelőkapcsolatokra-ServerError (előzetes verzió)|A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Feladói kapcsolatokra – sikeres (előzetes verzió)|A megadott időszakban sikeres küldő kapcsolatok száma.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Feladói kapcsolatokra-vonatkozó ügyfélhibái (előzetes verzió)|Az ügyfél hibáinak száma a küldő kapcsolatain a megadott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Feladói kapcsolatokra-ServerError (előzetes verzió)|A megadott időszakon belül a küldő kapcsolaton futó kiszolgálói hibák száma.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|A figyelő kapcsolatainak teljes száma egy adott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A küldők által megadott időszakon keresztül kezdeményezett kapcsolati kérelmek.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Aktív kapcsolatai (előzetes verzió)|Az aktív kapcsolatok száma egy adott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|ActiveListeners (előzetes verzió)|Az aktív figyelők száma egy adott időszakban.<br/><br/> Egység Count <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|Bontásai (előzetes verzió)|A leválasztott figyelők száma egy adott időszakban.<br/><br/> Egység Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
-|SenderDisconnects (előzetes verzió)|A leválasztott küldők száma egy adott időszakban.<br/><br/> Egység Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
+| Figyelőkapcsolatokra – sikeres (előzetes verzió) | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-vonatkozó ügyfélhibái (előzetes verzió)|A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-ServerError (előzetes verzió)|A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra – sikeres (előzetes verzió)|A megadott időszakban sikeres küldő kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-vonatkozó ügyfélhibái (előzetes verzió)|Az ügyfél hibáinak száma a küldő kapcsolatain a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-ServerError (előzetes verzió)|A megadott időszakon belül a küldő kapcsolaton futó kiszolgálói hibák száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Figyelőkapcsolatokra-TotalRequests (előzetes verzió)|A figyelő kapcsolatainak teljes száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Feladói kapcsolatokra-TotalRequests (előzetes verzió)|A küldők által megadott időszakon keresztül kezdeményezett kapcsolati kérelmek.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Aktív kapcsolatai (előzetes verzió)|Az aktív kapcsolatok száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|ActiveListeners (előzetes verzió)|Az aktív figyelők száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|Bontásai (előzetes verzió)|A leválasztott figyelők száma egy adott időszakban.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|SenderDisconnects (előzetes verzió)|A leválasztott küldők száma egy adott időszakban.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
 ## <a name="memory-usage-metrics"></a>Memóriahasználat mérőszámai
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-|BytesTransferred (előzetes verzió)|A megadott időszakon át továbbított bájtok száma.<br/><br/> Egység Bájt <br/> Összesítés típusa: Összes <br/> Dimenzió EntityName|
+|BytesTransferred (előzetes verzió)|A megadott időszakon át továbbított bájtok száma.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 
-## <a name="metrics-dimensions"></a>Metrikák dimenziók
+## <a name="metrics-dimensions"></a>Metrikák méretei
 
-A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. A metrikák dimenziók hozzáadása nem kötelező. Ha nem adja hozzá a dimenziók, a metrikák a névterek szintjén vannak megadva. 
+A Azure Relay a Azure Monitor metrikáinak következő dimenzióit támogatja. Nem kötelező dimenziókat hozzáadni a metrikához. Ha nem ad hozzá dimenziókat, a metrikák a névtér szintjén vannak megadva. 
 
 |Dimenzió neve|Leírás|
 | ------------------- | ----------------- |
 |EntityName| Azure Relay támogatja az üzenetküldési entitásokat a névtérben.|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a [Azure Figyelés áttekintése](../monitoring-and-diagnostics/monitoring-overview.md).
+Lásd az [Azure monitoring áttekintése](../monitoring-and-diagnostics/monitoring-overview.md)című témakört.
 
 [1]: ./media/relay-metrics-azure-monitor/relay-monitor1.png
 
