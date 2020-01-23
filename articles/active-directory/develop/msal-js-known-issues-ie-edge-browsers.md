@@ -14,12 +14,12 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a3a4e847bc0d297f3aa41551fbf56242ae1a566f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0c75162cc66e9277d111def92842f5a67a132f59
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424330"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548152"
 ---
 # <a name="known-issues-on-internet-explorer-and-microsoft-edge-browsers-msaljs"></a>Az Internet Explorer és a Microsoft Edge böngészők ismert problémái (MSAL. js)
 
@@ -38,10 +38,6 @@ A legtöbb probléma oka a következő: A munkamenet-tároló és a helyi tárol
     `Error :login_required; Error description:AADSTS50058: A silent sign-in request was sent but no user is signed in. The cookies used to represent the user's session were not sent in the request to Azure AD. This can happen if the user is using Internet Explorer or Edge, and the web app sending the silent sign-in request is in different IE security zone than the Azure AD endpoint (login.microsoftonline.com)`
 
 - Az **előugró ablak nem zárul be, vagy a bejelentkező használatával történő bejelentkezéskor a hitelesítéshez beragadt**. Ha a Microsoft Edge vagy az IE (InPrivate) előugró ablakán keresztül végez hitelesítést, a hitelesítő adatok beírása és a bejelentkezés után, ha több tartomány található a biztonsági zónákban, akkor az előugró ablak nem zárul le, mert a MSAL. js elveszti a leírót az előugró ablak.  
-
-    A Microsoft Edge probléma-követési szolgáltatásban a következő problémákra mutató hivatkozások találhatók:  
-    - [13861050-es hiba](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861050/)
-    - [13861663-es hiba](https://developer.microsoft.com/en-us/microsoft-edge/platform/issues/13861663/)
 
 ### <a name="update-fix-available-in-msaljs-023"></a>Frissítés: elérhető javítás a MSAL. js 0.2.3
 A hitelesítés átirányítási ciklusával kapcsolatos hibák javításait a [MSAL. js 0.2.3](https://github.com/AzureAD/microsoft-authentication-library-for-js/releases)tették közzé. A javítás kihasználása érdekében engedélyezze a jelző `storeAuthStateInCookie` a MSAL. js konfigurációban. Alapértelmezés szerint ez a jelző hamis értékre van állítva.

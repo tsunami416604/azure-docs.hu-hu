@@ -4,14 +4,14 @@ description: Az Azure-hoz készült avere-vFXT előfeltételei
 author: ekpgh
 ms.service: avere-vfxt
 ms.topic: conceptual
-ms.date: 01/13/2020
+ms.date: 01/21/2020
 ms.author: rohogue
-ms.openlocfilehash: 7f89ea553bc7198c1faee5ba3549f88da5ec2b2c
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a183989cc666f00da4be077c719c40d2524fd6e0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76152986"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547506"
 ---
 # <a name="prepare-to-create-the-avere-vfxt"></a>Felkészülés az Avere vFXT létrehozására
 
@@ -23,10 +23,10 @@ Első lépésként hozzon létre egy új Azure-előfizetést. Minden avere-vFXT-
 
 Új Azure-előfizetés létrehozása a Azure Portalban:
 
-* Navigáljon az [előfizetések](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) panelre
-* Kattintson a felül található **+ Hozzáadás** gombra
-* Bejelentkezés, ha a rendszer kéri
-* Válasszon egy ajánlatot, és végigvezeti az új előfizetés létrehozásának lépésein
+1. Navigáljon az [előfizetések](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) panelre
+1. Kattintson a felül található **+ Hozzáadás** gombra
+1. Bejelentkezés, ha a rendszer kéri
+1. Válasszon egy ajánlatot, és végigvezeti az új előfizetés létrehozásának lépésein
 
 ## <a name="configure-subscription-owner-permissions"></a>Előfizetés tulajdonosi engedélyeinek konfigurálása
 
@@ -104,6 +104,6 @@ Hozza létre a Storage szolgáltatás végpontját a Azure Portalból.
 
    ![Azure Portal képernyőkép a szolgáltatás végpontjának létrehozási lépéseivel kapcsolatos megjegyzésekkel](media/avere-vfxt-service-endpoint.png)
 
-## <a name="next-step-create-the-vfxt-cluster"></a>Következő lépés: a vFXT-fürt létrehozása
+## <a name="next-steps"></a>Következő lépések
 
 Az előfeltételek teljesítése után létrehozhatja a fürtöt. Útmutatásért olvassa el [a vFXT-fürt üzembe helyezése](avere-vfxt-deploy.md) című témakört.

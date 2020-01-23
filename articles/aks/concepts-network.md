@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.author: mlearned
-ms.openlocfilehash: 429205d1df91b5a63679d1189903e5340ab837f8
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 7c1a25c4d2df83c9bcfb33b658e3d3100d850b6e
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913881"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547965"
 ---
 # <a name="network-concepts-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (ak) futó alkalmazások hálózati fogalmai
 
@@ -45,7 +45,7 @@ Az alkalmazások számítási feladatainak hálózati konfigurációjának leegy
 
     ![A NodePort adatforgalmát ábrázoló diagram egy AK-fürtben][aks-nodeport]
 
-- **Terheléselosztó** – létrehoz egy Azure Load Balancer-erőforrást, konfigurálja a külső IP-címet, és csatlakoztatja a kért hüvelyt a terheléselosztó háttér-készletéhez. Ha engedélyezni szeretné, hogy az ügyfelek elérjék az alkalmazást, a terheléselosztási szabályok a kívánt portokon jönnek létre. 
+- **Terheléselosztó** – létrehoz egy Azure Load Balancer-erőforrást, konfigurálja a külső IP-címet, és csatlakoztatja a kért hüvelyt a terheléselosztó háttér-készletéhez. Ha engedélyezni szeretné, hogy az ügyfelek forgalmát elérjék az alkalmazás, a terheléselosztási szabályok a kívánt portokon jönnek létre. 
 
     ![Egy AK-fürtön Load Balancer forgalom áramlását bemutató diagram][aks-loadbalancer]
 

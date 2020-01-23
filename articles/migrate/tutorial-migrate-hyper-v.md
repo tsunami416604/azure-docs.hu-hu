@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan telepítheti át a helyszíni Hyper-V virtuáli
 ms.topic: tutorial
 ms.date: 11/18/2019
 ms.custom: MVC
-ms.openlocfilehash: b9c0de866a61ee2646d987c4fb98cb24a218417b
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: a321c3e731a6649f0831f7d515f1c464b311c9ac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028968"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545908"
 ---
 # <a name="migrate-hyper-v-vms-to-azure"></a>Hyper-V-alapú virtuális gépek migrálása az Azure-ba 
 
@@ -181,7 +181,7 @@ Ha ez az első virtuális gép, amelyet a Azure Migrate projektben replikál, Az
 - **Service Bus**: Azure Migrate: a kiszolgáló áttelepítése a Service Bus használatával küldi el a replikálási előkészítési üzeneteket a berendezésnek.
 - **Átjáró Storage-fiókja**: Azure Migrate: a kiszolgáló áttelepítése az átjáró Storage-fiók használatával tárolja a replikált virtuális gépekre vonatkozó állapotinformációkat.
 - **Log Storage-fiók**: a Azure Migrate készülék feltölti a virtuális gépek replikációs naplóit egy log Storage-fiókba. Azure Migrate a replikációs adatokat a replika által felügyelt lemezekre alkalmazza.
-- **Key Vault**: a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait. Be kell állítania azokat az engedélyeket, amelyeket a kulcstartónak el kell érnie ahhoz, hogy előkészítse a Storage-fiókot. [előkészített Azure](tutorial-prepare-hyper-v.md#prepare-azure) a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez. 
+- **Key Vault**: a Azure Migrate készülék a kulcstartó használatával kezeli a Service Bus kapcsolati karakterláncait, valamint a replikáció során használt Storage-fiókok hozzáférési kulcsait. Be kell állítania azokat az engedélyeket, amelyeket a Key vaultnak el kell érnie a Storage-fiókhoz, amikor [előkészítette az Azure](tutorial-prepare-hyper-v.md#prepare-azure) -t a Hyper-V virtuális gépek felméréséhez és áttelepítéséhez. 
 
 
 ## <a name="track-and-monitor"></a>Nyomon követés és figyelés

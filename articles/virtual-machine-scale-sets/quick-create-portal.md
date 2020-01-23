@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: H1Hack27Feb2017
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: cc5c7b9f26d74f32c9f6042e3a1deddc57171860
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 2acde4efa1dc118498f3c7da29c75e48c0478ac0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76274250"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543137"
 ---
 # <a name="quickstart-create-a-virtual-machine-scale-set-in-the-azure-portal"></a>Rövid útmutató: Virtuálisgép-méretezési csoport létrehozása az Azure Portalon
 
@@ -31,7 +31,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 
 Az Azure [Load Balancer](../load-balancer/load-balancer-overview.md) az egészséges virtuálisgép-példányok között osztja el a bejövő forgalmat. 
 
-Először hozzon létre egy nyilvános alapszintű Load Balancer a portál használatával. A létrehozott név és nyilvános IP-cím automatikusan be van állítva a terheléselosztó előtér-címére.
+Először hozzon létre egy nyilvános standard Load Balancer a portál használatával. A létrehozott név és nyilvános IP-cím automatikusan be van állítva a terheléselosztó előtér-címére.
 
 1. A keresőmezőbe írja be a **Load Balancer**kifejezést. A találatok között a **piactér** területen válassza a **Load balancert**.
 1. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat:

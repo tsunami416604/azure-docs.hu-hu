@@ -16,12 +16,12 @@ ms.subservice: pim
 ms.date: 01/10/2020
 ms.author: curtand
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 905acd206ba574e092f41707c9a5625bcaed7f8d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 718fd4054d5e21c7f6309b3b1ac65a459c514ea0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932377"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548016"
 ---
 # <a name="view-activity-and-audit-history-for-azure-resource-roles-in-privileged-identity-management"></a>Az Azure Resource szerepköreinek tevékenység-és naplózási előzményeinek megtekintése Privileged Identity Management
 
@@ -111,6 +111,9 @@ A saját audit lehetővé teszi a személyes szerepkör-tevékenységek megtekin
 1. Az előzmények szűrése előre megadott dátummal vagy egyéni tartománnyal.
 
     ![Az aktuális felhasználó naplózási listája](media/azure-pim-resource-rbac/my-audit-time.png)
+    
+> [!NOTE]
+> A naplózási előzmények eléréséhez globális rendszergazdai vagy Kiemelt szerepkörű rendszergazdai szerepkörre van szükség.
 
 ## <a name="next-steps"></a>Következő lépések
 

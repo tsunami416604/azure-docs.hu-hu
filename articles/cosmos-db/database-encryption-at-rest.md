@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.custom: seodec18
-ms.openlocfilehash: a9e89336973b0b13544c5bc0bccec41652c6952e
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 366a8cc2d8b08c9508053eaeb8bf70622fd870cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72755106"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548101"
 ---
 # <a name="data-encryption-in-azure-cosmos-db"></a>Adattitkosítás a Azure Cosmos DBban 
 
@@ -46,7 +46,7 @@ A: a kulcsokat a Microsoft felügyeli.
 A: a Microsoft a titkosítási kulcs elforgatására vonatkozó belső irányelveket tartalmaz, amelyek Cosmos DB következnek. Az adott irányelvek nincsenek közzétéve. A Microsoft közzéteszi a [biztonsági fejlesztési életciklust (SDL)](https://www.microsoft.com/sdl/default.aspx), amelyet a belső útmutatások egy részhalmazának tekintenek, és hasznos gyakorlati tanácsokat tartalmaz a fejlesztők számára.
 
 ### <a name="q-can-i-use-my-own-encryption-keys"></a>K: használhatom a saját titkosítási kulcsokat?
-A: Cosmos DB egy Pásti szolgáltatás, és a szolgáltatás könnyen használható. Észrevettük, hogy ezt a kérdést gyakran megkérdezik proxy-kérdésként a megfelelőségi követelmények (például a PCI-DSS) teljesítése érdekében. A szolgáltatás kiépítése során a megfelelőségi ellenőrökkel együttműködve biztosítjuk, hogy a Cosmos DBt használó ügyfelek a kulcsok felügyeletének szükségessége nélkül is megfeleljenek a követelményeiknek.
+A: igen most ez a szolgáltatás elérhető az új Cosmos-fiókokhoz, és ezt a fiók létrehozásakor kell elvégezni. További információkért tekintse át az [ügyfél által felügyelt kulcsok](https://docs.microsoft.com/azure/cosmos-db/how-to-setup-cmk) című dokumentumot.
 
 ### <a name="q-what-regions-have-encryption-turned-on"></a>K: mely régiókban van engedélyezve a titkosítás?
 A: minden Azure Cosmos DB régióban van a titkosítás bekapcsolva az összes felhasználói adattal.

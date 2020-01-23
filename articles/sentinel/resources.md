@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 12/02/2019
 ms.author: rkarlin
-ms.openlocfilehash: 98c76b2be6a5cc801f9e7b31357cbeb158a966fe
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2ce8b9e82907402538ca2d14b864c02bb8bc2d82
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771291"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547999"
 ---
 # <a name="useful-resources-for-working-with-azure-sentinel"></a>Az Azure Sentinel használatának hasznos erőforrásai
 
@@ -46,13 +46,13 @@ A következő támogatott műveletek naplózhatók.
 |Mentett keresés törlése    |Microsoft. OperationalInsights/munkaterületek/savedSearches|
 |Riasztási szabályok frissítése |Microsoft. SecurityInsights/alertRules|
 |Riasztási szabályok törlése |Microsoft. SecurityInsights/alertRules|
-|Riasztási szabály válaszára vonatkozó műveletek frissítése |Microsoft. SecurityInsights/alertRules|
-|Riasztási szabály válaszára vonatkozó műveletek törlése |Microsoft. SecurityInsights/alertRules|
+|Riasztási szabály válaszára vonatkozó műveletek frissítése |Microsoft. SecurityInsights/alertRules/műveletek|
+|Riasztási szabály válaszára vonatkozó műveletek törlése |Microsoft. SecurityInsights/alertRules/műveletek|
 |Könyvjelzők frissítése   |Microsoft. SecurityInsights/könyvjelzők|
 |Könyvjelzők törlése   |Microsoft. SecurityInsights/könyvjelzők|
 |Esetek frissítése   |Microsoft. SecurityInsights/esetek|
-|Frissítési eset vizsgálata  |Microsoft. SecurityInsights/esetek|
-|Eseti megjegyzések létrehozása   |Microsoft. SecurityInsights/esetek|
+|Frissítési eset vizsgálata  |Microsoft. SecurityInsights/esetek/vizsgálatok|
+|Eseti megjegyzések létrehozása   |Microsoft. SecurityInsights/esetek/megjegyzések|
 |Adatösszekötők frissítése |Microsoft. SecurityInsights/dataConnectors|
 |Adatösszekötők törlése |Microsoft. SecurityInsights/dataConnectors|
 |Beállítások frissítése    |Microsoft. SecurityInsights/beállítások|

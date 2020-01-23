@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functionseke
 ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 571519b996948a9fc4ac98e18e510fcee1dbef9b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 7aceae256c4fc4d18615e181bbcb7425e659955d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769769"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547370"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Azure Functions fejlesztése a Visual Studióval  
 
@@ -136,7 +136,7 @@ Az C# osztály-függvénytár függvények a függvény által használt kötés
     }
     ```
 
-    A rendszer a belépési pont metódusához megadott kötési paraméterekre alkalmazza a kötés-specifikus attribútumot. Az attribútum paraméterként a kötési adatokat veszi fel. Az előző példában az első paraméter egy **QueueTrigger** attribútummal rendelkezik, amely jelzi az üzenetsor által aktivált függvényt. A várólista neve és a kapcsolódási karakterlánc beállításának neve paraméterként a **QueueTrigger** attribútumnak lesz átadva. További információ: [Azure üzenetsor-tárolási kötések Azure Functionshoz](functions-bindings-storage-queue.md#trigger---c-example).
+    A rendszer a belépési pont metódusához megadott kötési paraméterekre alkalmazza a kötés-specifikus attribútumot. Az attribútum paraméterként a kötési adatokat veszi fel. Az előző példában az első paraméter egy **QueueTrigger** attribútummal rendelkezik, amely jelzi az üzenetsor által aktivált függvényt. A várólista neve és a kapcsolódási karakterlánc beállításának neve paraméterként a **QueueTrigger** attribútumnak lesz átadva. További információ: [Azure üzenetsor-tárolási kötések Azure Functionshoz](functions-bindings-storage-queue.md#trigger).
 
 A fenti eljárás segítségével további függvényeket adhat hozzá a Function app-projekthez. A projekt egyes függvényei eltérő triggerrel rendelkezhetnek, de a függvénynek pontosan egy triggerrel kell rendelkeznie. További információ: [Azure functions triggerek és kötések fogalmai](functions-triggers-bindings.md).
 

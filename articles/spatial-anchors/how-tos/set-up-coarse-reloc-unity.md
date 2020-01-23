@@ -1,6 +1,6 @@
 ---
 title: Durva újrahonosítás az egységben
-description: Részletesen ismerteti, hogyan hozhatók létre és találhatók a horgonyok az eszközön lévő érzékelőkkel a alkalmazásban C#.
+description: Részletesen ismerteti, hogyan hozhatók létre és találhatók a durva újrahonosítást használó horgonyok C#a alkalmazásban.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 8b960ee168a1af66cafc52082138097cda240c9a
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 5c976bd020d37672c44c89113bf7786e1ccf141b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277169"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548254"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-c"></a>Horgonyok létrehozása és megkeresése az eszközön lévő érzékelők használatávalC#
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-c"></a>A durva újrahonosítást használó horgonyok létrehozása és megkereséseC#
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

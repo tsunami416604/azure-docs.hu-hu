@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/25/2019
-ms.openlocfilehash: 8e0fcdc97475053dcf285b562b28784deffff28c
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: 5cf1986711479f7330b0cd477744d9f4e2ac6459
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552729"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548934"
 ---
 # <a name="use-the-extended-features-of-the-apache-spark-history-server-to-debug-and-diagnose-spark-applications"></a>A Apache Spark History Server kiterjesztett funkcióinak használata a Spark-alkalmazások hibakereséséhez és diagnosztizálásához
 
@@ -163,7 +163,7 @@ Válassza az **adattorzítás** lapot. A megfelelő ferde feladatok a megadott p
 
 #### <a name="specify-parameters"></a>Paraméterek megadása
 
-A **paraméterek megadása** szakasz megjeleníti azokat a paramétereket, amelyek az adatok eldöntésének észlelésére szolgálnak. Az alapértelmezett szabály a következő: az olvasott feladat több, mint az átlagos feladathoz tartozó adat, és az olvasási feladat több mint 10 MB. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket. A **ferde szakasz** és az elferdítő **karakter** szakaszok ennek megfelelően frissülnek.
+A **paraméterek megadása** szakasz megjeleníti azokat a paramétereket, amelyek az adatok eldöntésének észlelésére szolgálnak. Az alapértelmezett szabály a következő: az olvasott feladat több, mint az átlagos feladathoz tartozó adat, és az olvasási feladat több mint 10 MB. Ha meg szeretné határozni saját szabályát a ferde feladatokhoz, kiválaszthatja a paramétereket. A **ferde szakasz** és a **ferde diagram** szakasza ennek megfelelően frissülni fog.
 
 #### <a name="skewed-stage"></a>Ferde szakasz
 

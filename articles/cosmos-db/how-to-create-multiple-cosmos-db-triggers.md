@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/17/2019
 ms.author: maquaran
-ms.openlocfilehash: fbf1e11d7a283ca6c93356f055198c35350e0332
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: efb0a9229d6061d4df8d67ba8455801d9d2a2964
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445359"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548883"
 ---
 # <a name="create-multiple-azure-functions-triggers-for-cosmos-db"></a>Több Azure Functions eseményindító létrehozása a Cosmos DBhoz
 
@@ -38,7 +38,7 @@ Ennek a cikknek a célja a második lehetőség megvalósítása.
 
 ## <a name="configuring-a-shared-leases-container"></a>Megosztott bérletek tárolójának konfigurálása
 
-A megosztott bérletek tárolójának konfigurálásához az eseményindítók számára szükséges további konfiguráció a `LeaseCollectionPrefix` [attribútum](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---c-attributes) hozzáadása, ha JavaScriptet használ, C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---javascript-example) . Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
+A megosztott bérletek tárolójának konfigurálásához az eseményindítók számára szükséges további konfiguráció a `LeaseCollectionPrefix` [attribútum](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---attributes-and-annotations) hozzáadása, ha JavaScriptet használ, C# vagy `leaseCollectionPrefix` [attribútumot](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) . Az attribútum értékének logikai leírónak kell lennie az adott triggernél.
 
 Ha például három eseményindítóval rendelkezik: egy olyan e-maileket küld, amelyek összesítést végeznek egy anyagbeli nézet létrehozásához, és az egyiket, amely egy másik tárhelyre küldi a módosításokat, a későbbi elemzésekhez az "e-mailek" `LeaseCollectionPrefix` az első "anyag", a második pedig a "analitika" értékre.
 
@@ -109,5 +109,5 @@ A JavaScript esetében pedig a `function.json` fájl konfigurációját is alkal
 ## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Cosmos DB Azure functions trigger](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---configuration) teljes konfigurációját
-* Keresse meg az összes nyelvhez tartozó [minták kiterjesztett listáját](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger---example) .
+* Keresse meg az összes nyelvhez tartozó [minták kiterjesztett listáját](../azure-functions/functions-bindings-cosmosdb-v2.md#trigger) .
 * További példákért látogasson el a kiszolgáló nélküli receptek Azure Cosmos DB és Azure Functions [GitHub-tárházba](https://github.com/ealsur/serverless-recipes/tree/master/cosmosdbtriggerscenarios) .

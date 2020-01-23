@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/23/2019
 ms.author: pabutler
-ms.openlocfilehash: 29b69499b708726b10947bd3202d3a52893f5c90
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2430d7e6fa74438c148d3cb849510be06243faa0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826174"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543154"
 ---
 # <a name="azure-application-skus-tab"></a>Azure-alkalmazások SKU-i lapja
 
@@ -82,17 +82,19 @@ Konfigurálja a következő SKU-beállításokat. A csillaggal hozzáfűzött me
 
 ### <a name="package-details-for-solution-template"></a>Csomag részletei a megoldási sablonhoz
 
-   ![Csomag részletei a megoldási sablonhoz](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
+![Csomag részletei a megoldási sablonhoz](./media/azureapp-sku-pkgdetails-solutiontemplate.png)
 
 Adja meg a következő **csomag részleteinek** értékét.  A csillaggal hozzáfűzött mezők megadása kötelező.
 
 - **Verzió\*** – a feltöltendő csomag verziószáma. A verziószámnak X. Y. Z formátumúnak kell lennie, ahol az X, az Y és a Z egész számok.
 - **Csomagfájl (. zip)\*** – ez a csomag a következő fájlokat tartalmazza, amelyeket egy. zip fájlban mentettek.
-  - MainTemplate. JSON – a megoldás/alkalmazás telepítéséhez és a megoldáshoz definiált erőforrások létrehozásához használt telepítési sablon fájlja. További információ: [telepítési sablon fájljainak](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)készítése.
-  - createUIDefinition. JSON – ezt a fájlt a Azure Portal használja a megoldás/alkalmazás üzembe helyezéséhez szükséges felhasználói felület létrehozásához. További információkért lásd: [Azure Portal felhasználói felület létrehozása a felügyelt alkalmazáshoz](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - **mainTemplate. json\*** – a megoldás/alkalmazás üzembe helyezéséhez és a megoldáshoz definiált erőforrások létrehozásához használt telepítési sablon fájlja. További információ: [telepítési sablon fájljainak](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template)készítése.
+  - **createUIDefinition. json\*** – ezt a fájlt a Azure Portal használja a megoldás/alkalmazás üzembe helyezéséhez szükséges felhasználói felület létrehozásához. További információkért lásd: [Azure Portal felhasználói felület létrehozása a felügyelt alkalmazáshoz](https://docs.microsoft.com/azure/azure-resource-manager/managed-application-createuidefinition-overview).
+  - Parancsfájlok (ha szükséges) – a sablon futtatásakor esetlegesen szükséges további parancsfájlokat, például `Microsoft.Compute/virtualMachines/extensions`.
+  - Beágyazott sablonok (ha szükséges) – bármely további beágyazott sablon.
 
-  >[!IMPORTANT] 
-  >Ennek a csomagnak tartalmaznia kell az alkalmazás kiépítéséhez szükséges beágyazott sablonokat vagy parancsfájlokat. A MainTemplate. JSON fájlnak és a createUIDefinition. JSON fájlnak a gyökérkönyvtárban kell lennie.
+  > [!IMPORTANT] 
+  > Ennek a csomagnak tartalmaznia kell az alkalmazás kiépítéséhez szükséges beágyazott sablonokat vagy parancsfájlokat. A mainTemplate. JSON fájlnak és a createUIDefinition. JSON fájlnak a gyökérkönyvtárban kell lennie. További információ az üzembe helyezési összetevőkről: [Azure Resource Manager sablonok – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md#deployment-artifacts-nested-templates-scripts).
 
 
 ### <a name="package-details-for-managed-application"></a>A felügyelt alkalmazás csomagjának részletei
@@ -128,7 +130,7 @@ Felügyelt alkalmazáshoz konfigurálnia kell az engedélyezési és a házirend
 Adja meg annak a felhasználónak, csoportnak vagy alkalmazásnak Azure Active Directory-azonosítóját, amelyhez engedélyt kíván adni a felügyelt erőforráscsoport számára. A megadott engedély a szerepkör-definíció azonosítója alapján van megadva. Ez lehet egy tulajdonos, közreműködő vagy bármely egyéni szerepkör.
 
 
-#### <a name="policy-settings"></a>Házirend-beállítások
+#### <a name="policy-settings"></a>Szabályzatbeállítások
 
 Adja hozzá azokat a házirendeket, amelyeknek a felügyelt alkalmazás megfelel. További információ az Azure erőforrás-házirendekről: [Mi az Azure Policy?](../../../governance/policy/overview.md)
 
@@ -154,6 +156,6 @@ Adja hozzá azokat a házirendeket, amelyeknek a felügyelt alkalmazás megfelel
 4. A **házirend SKU**esetében válassza az ingyenes vagy a standard lehetőséget a szabályzat SKU típusaként. A naplózási házirendekhez a szabványos SKU szükséges.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [piactér lapon](./cpp-marketplace-tab.md)további leírást talál az ajánlatról és a marketing-eszközökről. 

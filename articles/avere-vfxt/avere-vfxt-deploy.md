@@ -6,16 +6,16 @@ ms.service: avere-vfxt
 ms.topic: conceptual
 ms.date: 01/13/2020
 ms.author: rohogue
-ms.openlocfilehash: d1058125d5bb3912b9561027bbe0a977637d3379
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: e70d1dfebcf25ee8f4e90a062cee6dd72a663e02
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153581"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547523"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
 
-Ez az eljárás végigvezeti az Azure piactéren elérhető központi telepítési varázsló használatával. A varázsló Azure Resource Manager sablon használatával automatikusan telepíti a fürtöt. Miután megtörtént a paraméterek megadása az űrlapon, majd a **Létrehozás**gombra kattint, az Azure automatikusan végrehajtja a következő lépéseket:
+Ez az eljárás végigvezeti az Azure piactéren elérhető központi telepítési varázsló használatával. A varázsló Azure Resource Manager sablon használatával automatikusan telepíti a fürtöt. Miután megtörtént a paraméterek megadása az űrlapon, majd a **Létrehozás**gombra kattint, az Azure automatikusan végrehajtja ezeket a feladatokat:
 
 * Létrehozza a fürtöt, amely egy alapszintű virtuális gép, amely tartalmazza a fürt üzembe helyezéséhez és kezeléséhez szükséges szoftvert.
 * Beállítja az erőforráscsoportot és a virtuális hálózati infrastruktúrát, beleértve az új elemek létrehozását is.
@@ -28,10 +28,10 @@ A jelen dokumentumban szereplő utasítások követése után egy virtuális há
 
 A létrehozási sablon használata előtt győződjön meg arról, hogy az alábbi előfeltételeket tárgyalta:  
 
-1. [Új előfizetés](avere-vfxt-prereqs.md#create-a-new-subscription)
-1. [Előfizetés tulajdonosának engedélyei](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
-1. [Kvóta a vFXT-fürthöz](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
-1. [Storage Service-végpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – a meglévő virtuális hálózatot használó központi telepítések és a blob Storage létrehozása szükséges.
+* [Új előfizetés](avere-vfxt-prereqs.md#create-a-new-subscription)
+* [Előfizetés tulajdonosának engedélyei](avere-vfxt-prereqs.md#configure-subscription-owner-permissions)
+* [Kvóta a vFXT-fürthöz](avere-vfxt-prereqs.md#quota-for-the-vfxt-cluster)
+* [Storage Service-végpont (ha szükséges)](avere-vfxt-prereqs.md#create-a-storage-service-endpoint-in-your-virtual-network-if-needed) – a meglévő virtuális hálózatot használó központi telepítések és a blob Storage létrehozása szükséges.
 
 További információ a fürtök üzembe helyezésének lépéseiről és tervezéséről: [a avere-vFXT rendszerének](avere-vfxt-deploy-plan.md) és [telepítésének áttekintése](avere-vfxt-deploy-overview.md).
 

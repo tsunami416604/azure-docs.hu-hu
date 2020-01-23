@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 03/15/2019
 ms.author: jenoller
-ms.openlocfilehash: 4f2e1a6f18a83d1e6c691f3fbcb0d85c7afd1575
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: 7dd22a6803f5248298afddffaee9c4b83891f5f1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73795096"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547914"
 ---
 # <a name="customize-coredns-with-azure-kubernetes-service"></a>A CoreDNS testreszabása az Azure Kubernetes szolgáltatással
 
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a ConfigMaps-t az CoreDNS al
 > [!NOTE]
 > a `kube-dns` különböző [testreszabási lehetőségeket][kubednsblog] kínál a Kubernetes konfigurációs térképén keresztül. A CoreDNS visszafelé **nem** kompatibilis a Kube-DNS szolgáltatással. A korábban használt testreszabásokat frissíteni kell a CoreDNS-mel való használatra.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy rendelkezik egy meglévő AK-fürttel. Ha AK-fürtre van szüksége, tekintse meg az AK gyors üzembe helyezését [Az Azure CLI használatával][aks-quickstart-cli] vagy [a Azure Portal használatával][aks-quickstart-portal].
 
@@ -176,7 +176,22 @@ data:
           }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="enable-logging-for-dns-query-debugging"></a>DNS-lekérdezési hibakeresés naplózásának engedélyezése 
+
+A DNS-lekérdezések naplózásának engedélyezéséhez alkalmazza a következő konfigurációt a coredns-Custom ConfigMap:
+
+```yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: coredns-custom
+  namespace: kube-system
+data:
+  log.override: |
+        log
+```
+
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk néhány példát mutat be a CoreDNS testreszabásához. A CoreDNS projekttel kapcsolatos további információkért tekintse meg [a CoreDNS felső projektje lapot][coredns].
 

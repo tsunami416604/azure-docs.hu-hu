@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: translator-text
 ms.topic: reference
-ms.date: 03/29/2018
+ms.date: 01/21/2020
 ms.author: swmachan
-ms.openlocfilehash: bd725d41f75bdfb1048b5bee7e8224679dbece4c
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: bd27827441082698bb4e0b43e7dd22d5b7e66539
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73837256"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548951"
 ---
 # <a name="translator-text-api-30-dictionary-lookup"></a>Translator Text API 3,0: szótár keresése
 
@@ -33,45 +33,21 @@ https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0
 
 A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 
-<table width="100%">
-  <th width="20%">Lekérdezési paraméter</th>
-  <th>Leírás</th>
-  <tr>
-    <td>API-Version</td>
-    <td>*Kötelező paraméter*.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`nak kell lennie.</td>
-  </tr>
-  <tr>
-    <td>a</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a `dictionary` hatókörében szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie.</td>
-  </tr>
-  <tr>
-    <td>erre:</td>
-    <td>*Kötelező paraméter*.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a `dictionary` hatókörében szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie.</td>
-  </tr>
-</table>
+| Lekérdezési paraméter  | Leírás |
+| ------ | ----------- |
+| api-verzió <img width=200/>   | **Kötelező paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek `3.0`nak kell lennie |
+| forrás | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a `dictionary` hatókörében szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie. |
+| erre:   | **Kötelező paraméter**.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a `dictionary` hatókörében szereplő [támogatott nyelvek](v3-0-languages.md) egyikének kell lennie. |
+
 
 A kérelem fejlécei a következők:
 
-<table width="100%">
-  <th width="20%">Fejlécek</th>
-  <th>Leírás</th>
-  <tr>
-    <td>Hitelesítési fejléc (ek)</td>
-    <td><em>Kötelező kérelem fejléce</em><br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>.</td>
-  </tr>
-  <tr>
-    <td>Content-Type</td>
-    <td>*Kötelező kérelem fejléce*<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json`.</td>
-  </tr>
-  <tr>
-    <td>Content-Length</td>
-    <td>*Kötelező kérelem fejléce*<br/>A kérelem törzsének hossza</td>
-  </tr>
-  <tr>
-    <td>X – ClientTraceId</td>
-    <td>*Választható*.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Ezt a fejlécet kihagyhatja, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító egy `ClientTraceId`nevű lekérdezési paraméter használatával.</td>
-  </tr>
-</table> 
+| Fejlécek  | Leírás |
+| ------ | ----------- |
+| Hitelesítési fejléc (ek) <img width=200/>  | **Kötelező kérelem fejléce**<br/>Tekintse <a href="https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#authentication">meg a hitelesítés elérhető beállításait</a>. |
+| Tartalomtípus | **Kötelező kérelem fejléce**<br/>Megadja az adattartalom tartalomtípusát. A lehetséges értékek a következők: `application/json`. |
+| Content-Length   | **Kötelező kérelem fejléce**<br/>A kérelem törzsének hossza |
+| X – ClientTraceId   | **Választható**.<br/>Ügyfél által generált GUID a kérelem egyedi azonosításához. Ezt a fejlécet kihagyhatja, ha a lekérdezési karakterláncban szerepel a nyomkövetési azonosító egy `ClientTraceId`nevű lekérdezési paraméter használatával. |
 
 ## <a name="request-body"></a>A kérés törzse
 
@@ -83,7 +59,7 @@ A kérelem törzse egy JSON-tömb. Minden tömb elem egy `Text`nevű karakterlá
 ]
 ```
 
-A következő korlátozások érvényesek:
+Az alábbi korlátozások érvényesek:
 
 * A tömb legfeljebb 10 elemet tartalmazhat.
 * Egy tömb elemének szöveges értéke nem lehet hosszabb 100 karakternél, beleértve a szóközöket is.
@@ -104,18 +80,18 @@ A sikeres válasz egy JSON-tömb, amely egyetlen eredménnyel rendelkezik a beme
 
     * `posTag`: az ezt a kifejezést társító karakterlánc egy beszédfelismerési címkével.
 
-        | Címke neve | Leírás  |
+        | címke neve | Leírás  |
         |----------|--------------|
         | ADJ      | Melléknevek   |
         | ADV      | Határozószók      |
         | CONJ     | Kötőszavak |
         | DET      | Határozószók  |
-        | MODÁLIS    | Igék        |
+        | MODÁLIS    | Parancsok        |
         | Főnév     | Főnevek        |
         | PREP     | Elöljárószavakat |
         | PRON     | Névmások     |
-        | MŰVELET     | Igék        |
-        | MÁS    | Egyéb        |
+        | MŰVELET     | Parancsok        |
+        | EGYÉB    | Egyéb        |
 
         Megvalósítási megjegyzésként ezeket a címkéket az angol oldal beszédfelismerési címkézése, majd az egyes forrás/cél párok számára a leggyakoribb címke alapján állapították meg. Tehát ha a felhasználók gyakran fordítanak egy spanyol szót egy másik, angol nyelvű szövegrészre, akkor a címkék helytelenek lehetnek (a spanyol szó esetében).
 

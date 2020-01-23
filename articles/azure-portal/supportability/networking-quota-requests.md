@@ -3,85 +3,90 @@ title: Hálózati korlát növekedése | Microsoft Docs
 description: Hálózatkezelési korlát növelése
 author: anavinahar
 ms.author: anavin
-ms.date: 06/19/2019
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: 04a22d987e27f054648637890fbd61c56533c2ee
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9b5c7043b06172c2d4931ca1c3fd3ac5d0e80883
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896804"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547779"
 ---
 # <a name="networking-limit-increase"></a>Hálózatkezelési korlát növelése
 
-Ha meg szeretné tekinteni a jelenlegi hálózatkezelési használatot és kvótát, látogasson el a Azure Portal **használat + kvóta** paneljére. A hálózati használat és korlátok megtekintéséhez használhatja a [CLI](https://docs.microsoft.com//cli/azure/network?view=azure-cli-latest#az-network-list-usages)-t, a [PowerShellt](https://docs.microsoft.com/powershell/module/azurerm.network/get-azurermnetworkusage?view=azurermps-6.13.0) vagy a [hálózati használati API](https://docs.microsoft.com/rest/api/virtualnetwork/virtualnetworks/listusage) -t is.
+A hálózati kvóta növeléséhez használja a [Azure Portal](https://portal.azure.com) .
 
-A portálon a **Súgó + támogatás** panel vagy a **használat + kvóta** panel használatával növelheti a növekedést.
+Ha meg szeretné tekinteni az aktuális hálózatkezelési használatot és kvótát Azure Portalban, nyissa meg az előfizetését, majd válassza a **kihasználtságok és kvóták**lehetőséget Az alábbi beállításokkal is megtekintheti a hálózat használatát és korlátozásait.
+
+* [Használati CLI](/cli/azure/network#az-network-list-usages)
+* [PowerShell](/powershell/module/azurerm.network/get-azurermnetworkusage)
+* [A hálózati használati API](/rest/api/virtualnetwork/virtualnetworks/listusage)
+
+A portálon a **Súgó + támogatás** vagy a **használat + kvóták** használatával növelheti a növelést.
 
 > [!Note]
-> A nyilvános IP-előtag alapértelmezett méretének módosításához a legördülő listából válassza a "minimális nyilvános IP-cím összetett előtag hossza" lehetőséget.
+> A **nyilvános IP-** előtagok alapértelmezett méretének módosításához válassza a **minimális nyilvános IP-alhálózati előtag hossza** elemet a legördülő listából.
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Hálózati kvóta növelésének kérése az előfizetés szintjén a **Súgó + támogatás** panelen
+## <a name="request-networking-quota-increase-at-subscription-level-using-help--support"></a>Hálózati kvóta növelésének kérése az előfizetés szintjén a Súgó és támogatás használatával
 
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
+Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure Portal **Súgó és támogatás** szolgáltatásával.
 
-1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
+1. Jelentkezzen be [Azure Portalba](https://portal.azure.com), majd válassza a **Súgó + támogatás** lehetőséget a Azure Portal menüben, vagy keresse meg a **Súgó + támogatás**elemet.
 
-    ![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Válassza az **Új támogatási kérelem** lehetőséget. 
+    ![Súgó + támogatás](./media/networking-quota-request/help-plus-support.png)
 
-    ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. Válassza az **Új támogatási kérelem** lehetőséget.
 
-3. A probléma típusa legördülő menüben válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
+    ![Új támogatási kérelem](./media/networking-quota-request/new-support-request.png)
 
-    ![Probléma típusa legördülő lista](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. A **probléma típusa**beállításnál válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
 
-4. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+    ![Válassza ki az előfizetési korlátok elemet a probléma típusa legördülő listából](./media/networking-quota-request/select-quota-issue-type.png)
 
-    ![Előfizetés-hírolvasó kiválasztása](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Válassza a **hálózatkezelés** lehetőséget a **kvóta típusa** legördülő menüben. 
+1. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+
+    ![Előfizetés-hírolvasó kiválasztása](./media/networking-quota-request/select-subscription-support-request.png)
+
+1. A **kvóta típusa**területen válassza a **hálózatkezelés**lehetőséget. Válassza a Next (tovább) lehetőséget **: megoldások**.
 
     ![Kvóta típusának kiválasztása](./media/networking-quota-request/select-quota-type-network.png)
 
-6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
+1. A **probléma részletei**lapon válassza a **részletek megadása** lehetőséget, és adja meg a kérés feldolgozásához szükséges további információkat.
 
-    ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
+    ![Részletek megadása](./media/networking-quota-request/provide-details-link.png)
 
-7. A **kvóta részletei** panelen válassza a telepítési modell, a hely és az erőforrások, amelyeknek a növelését kéri.
+1. A **kvóta részletei** panelen válasszon ki egy telepítési modellt, egy helyet és a kérésbe felvenni kívánt erőforrásokat.
 
     ![Kvóta részletei – DM](./media/networking-quota-request/quota-details-network.png)
 
-8.  Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához törölje az erőforrást az erőforrás legördülő menüből, vagy kattintson az Elvetés "x" ikonra. Miután megadta a kívánt kvótát az egyes erőforrásokhoz, kattintson a Save (Mentés) gombra, **és folytassa** a kvóta részletei panelen a támogatási kérelem létrehozásával folytatott folytatáshoz.
+1. Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához szüntesse meg az erőforrás kiválasztását az **erőforrások** menüből, vagy válassza az Elvetés "x" ikont. Az egyes erőforrások kvótájának megadása után válassza a **Mentés** lehetőséget, és folytassa a támogatási kérések létrehozásával.
 
     ![Új korlátok](./media/networking-quota-request/network-new-limits.png)
 
+## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quotas"></a>A hálózati kvóta növelésének kérése az előfizetési szinten a használat és a kvóták használatával
 
-## <a name="request-networking-quota-increase-at-subscription-level-using-usages--quota-blade"></a>A hálózati kvóta növelésének kérése az előfizetési szinten a használat és a **kvóta** panelen
-
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
+Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure Portal **használati és kvótájának** használatával.
 
 1. https://portal.azure.com válassza az **előfizetések**lehetőséget.
 
-    ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
+    ![Előfizetések](./media/networking-quota-request/search-for-suscriptions.png)
 
-2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+1. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
 
-    ![Előfizetés kiválasztása](./media/resource-manager-core-quotas-request/select-subscription.png)
+    ![Előfizetés kiválasztása](./media/networking-quota-request/select-subscription-change-quota.png)
 
-3. **Használat + kvóták** kiválasztása
+1. **Használat + kvóták** kiválasztása
 
-    ![Használat és kvóták kiválasztása](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+    ![Használat és kvóták kiválasztása](./media/networking-quota-request/select-usage-plus-quotas.png)
 
-4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
+1. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
 
-    ![Kérések növekedése](./media/resource-manager-core-quotas-request/request-increase.png)
+    ![Kérések növekedése](./media/networking-quota-request/request-increase-from-subscription.png)
 
-5. Kövesse a 3. lépéssel kezdődő lépéseket a *hálózatkezelési kvóták növekedése az előfizetés szintjén* szakaszban a **Súgó + támogatás** panel szakaszban
+1. Kövesse a 2. lépéssel kezdődő lépéseket az [előfizetés hálózati kvótájának növeléséhez az előfizetési szinten](#request-networking-quota-increase-at-subscription-level-using-help--support).
 
 ## <a name="about-networking-limits"></a>Tudnivalók a hálózati korlátokról
 
-A hálózati korlátokkal kapcsolatos további tudnivalókért tekintse meg a korlátozások lap [hálózatkezelés szakaszát](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) , vagy a hálózat korlátai – gyakori kérdések
+A hálózati korlátokkal kapcsolatos további tudnivalókért tekintse meg a korlátozások lap [hálózatkezelés szakaszát](../../azure-resource-manager/management/azure-subscription-service-limits.md#networking-limits) , vagy a hálózat korlátozásai – gyakori kérdések című témakört.

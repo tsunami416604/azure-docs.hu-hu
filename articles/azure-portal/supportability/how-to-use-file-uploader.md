@@ -6,16 +6,17 @@ tags: billing
 ms.assetid: 86697fdf-3499-4cab-ab3f-10d40d3c1f70
 ms.service: azure-supportability
 ms.topic: article
-ms.date: 10/31/2018
+ms.date: 01/23/2020
 ms.author: genli
-ms.openlocfilehash: 8c22ce859aa58aeb8339b16265f6614bd7e723f8
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: ac8dffe3b1200f3925478f968170498ee744bb79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896999"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548968"
 ---
 # <a name="microsoft-azure-new-support-request-file-upload-utility-guidelines"></a>Microsoft Azure új támogatási kérelem fájl feltöltése segédprogramra vonatkozó irányelvek
+
 Ha [támogatási kérést hoz létre](https://portal.azure.com/#create/Microsoft.Support), a fájlfeltöltés lehetőséggel könnyedén feltöltheti az incidenshez kapcsolódó diagnosztikai fájlokat vagy más fájlokat.  
 
 > [!NOTE]
@@ -25,12 +26,13 @@ Ha [támogatási kérést hoz létre](https://portal.azure.com/#create/Microsoft
 
 A fájlfeltöltés lehetőség használata esetén kövesse az alábbi irányelveket:
 
-* Minden fájlnak rendelkeznie kell fájlnévkiterjesztés (például. docx vagy. xlsx). Tekintse meg az engedélyezett fájlnévkiterjesztések listáját tartalmazó táblázatot.
+* Minden fájlnak rendelkeznie kell fájlnévkiterjesztés (például *. docx* vagy *. xlsx*). Tekintse meg az engedélyezett fájlnévkiterjesztések táblázatát.
 * A fájl neve nem lehet hosszabb 110 karakternél.
 * Legfeljebb egy fájlt tölthet fel.
 * A fájlok nem lehetnek nagyobbak 4 MB-nál.
 
 ## <a name="table-of-the-allowed-file-name-extensions"></a>Az engedélyezett fájlnévkiterjesztések táblázata
+
 | 0-9, A – C    | D-G   | H-M         | N – P   | R-T      | U-W        | X – Z     |
 |-------------|-------|-------------|-------|----------|------------|---------|
 | .7z         | . dat  | .hwl        | . ODX  | . rar     | . TDB       | .xlam   |

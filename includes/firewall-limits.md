@@ -5,21 +5,21 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: include
-ms.date: 12/06/2019
+ms.date: 01/22/2020
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a7b6867033e750f476b3d995926f0b670965a5d7
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 92c2e79910e40721a0ef62d44825bd1f3e19fc79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74875522"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548209"
 ---
 | Erőforrás | Alapértelmezett korlát |
 | --- | --- |
 | Adatátviteli sebesség |30 GB/s<sup>1</sup> |
 |Szabályok|10 000. Minden szabálytípus kombinálva.|
-|DNAT-szabályok/nyilvános IP-címek|299|
+|Maximális DNAT-szabályok|299|
 |Minimális AzureFirewallSubnet-méret |/26|
 |Porttartomány a hálózat és az alkalmazás szabályaiban|0 – 64000. A művelet elvégzése folyamatban van.|
 |Nyilvános IP-címek|100 maximális (jelenleg a SNAT portok csak az első öt nyilvános IP-címhez lesznek hozzáadva.)|

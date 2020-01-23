@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: mlearned
-ms.openlocfilehash: 4629e4e9cfd5c8f9861b692b2aec89057f83587c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2377cc2e0824911217fbc2783fdf8e86fd7b9405
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75442924"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549206"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök biztonságához és frissítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -24,7 +24,7 @@ Ebből a cikkből megtudhatja, hogyan védheti meg az AK-fürtöt. Az alábbiak 
 > * Az API Server-hozzáférés biztonságossá tétele Azure Active Directory és szerepköralapú hozzáférés-vezérléssel
 > * Biztonságos tároló hozzáférése a csomópont erőforrásaihoz
 > * AK-fürt frissítése a legújabb Kubernetes-verzióra
-> * A csomópontok frissítésének naprakészen tartása és a biztonsági javítások automatikus alkalmazása
+> * A csomópontok naprakészen tartása és a biztonsági javítások automatikus alkalmazása
 
 Olvassa el a [tárolók képkezelésével][best-practices-container-image-management] és a [Pod biztonsággal][best-practices-pod-security]kapcsolatos ajánlott eljárásokat is.
 

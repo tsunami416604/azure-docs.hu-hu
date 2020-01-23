@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 12/10/2018
 ms.author: mlearned
-ms.openlocfilehash: d1bc865b38b52c8a7c3ac6ec4dab6408a1d0430c
-ms.sourcegitcommit: 0f54f1b067f588d50f787fbfac50854a3a64fff7
+ms.openlocfilehash: 5b138849538cb9bbd6af6cbcf3e7a11b0cf66395
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2019
-ms.locfileid: "67614747"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549121"
 ---
 # <a name="best-practices-for-network-connectivity-and-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások hálózati kapcsolatokhoz és biztonsághoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -23,7 +23,7 @@ Ez az ajánlott eljárási cikk a fürtszolgáltatások hálózati kapcsolatára
 > [!div class="checklist"]
 > * A kubenet és az Azure CNI hálózati módjai összehasonlítása az AK-ban
 > * A szükséges IP-címzés és-kapcsolat tervezése
-> * Forgalom elosztása terheléselosztó, bejövő vezérlők vagy webalkalmazási tűzfalak használatával (WAF)
+> * Forgalom elosztása terheléselosztó, bejövő vezérlők vagy webalkalmazási tűzfal (WAF) használatával
 > * Biztonságos kapcsolódás fürtcsomópontok számára
 
 ## <a name="choose-the-appropriate-network-model"></a>A megfelelő hálózati modell kiválasztása
@@ -45,9 +45,9 @@ Ha Azure CNI hálózatkezelést használ, a virtuális hálózati erőforrás eg
   * `Microsoft.Network/virtualNetworks/subnets/join/action`
   * `Microsoft.Network/virtualNetworks/subnets/read`
 
-Az AK szolgáltatás egyszerű delegálásával kapcsolatos további információkért lásd: [hozzáférés delegálása más Azure][sp-delegation]-erőforrásokhoz.
+Az AK szolgáltatás egyszerű delegálásával kapcsolatos további információkért lásd: [hozzáférés delegálása más Azure-erőforrásokhoz][sp-delegation].
 
-Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A vertikális Felskálázási események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ (jelenleg előzetes verzióban), mivel a csomópont-készletek frissítésére van szükség a legújabb biztonsági javítások alkalmazásához. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
+Mivel a csomópontok és a pod a saját IP-címüket kapják, tervezze meg az AK-alhálózatok címtartományt. Az alhálózatnak elég nagynak kell lennie ahhoz, hogy az Ön által telepített összes csomópont, hüvely és hálózati erőforrás IP-címét meg lehessen adni. Az egyes AK-fürtöket a saját alhálózatán kell elhelyezni. A helyszíni vagy az Azure-beli helyi hálózatokhoz való kapcsolódás engedélyezéséhez ne használjon olyan IP-címtartományt, amely átfedésben van a meglévő hálózati erőforrásokkal. Az egyes csomópontok által futtatott kubenet és az Azure CNI hálózatkezelésének alapértelmezett korlátai vannak. A kibővíthető események és a fürtök frissítésének kezeléséhez további IP-címekre is szükség van a hozzárendelt alhálózatban való használathoz. Ez a további címterület különösen fontos, ha Windows Server-tárolókat használ (jelenleg előzetes verzióban), mivel a csomópont-készletek frissítésére van szükség a legújabb biztonsági javítások alkalmazásához. A Windows Server-csomópontokkal kapcsolatos további információkért lásd: [csomópont-készlet frissítése az AK-ban][nodepool-upgrade].
 
 A szükséges IP-cím kiszámításához lásd: az [Azure CNI Networking konfigurálása az AK-ban][advanced-networking].
 
@@ -58,7 +58,7 @@ Bár a kubenet nem igényli a virtuális hálózatok beállítását a fürt üz
 * A csomópontok és a hüvelyek eltérő IP-alhálózatokra vannak helyezve. A felhasználó által megadott útválasztás (UDR) és az IP-továbbítás a hüvelyek és a csomópontok közötti forgalom irányítására szolgál. Ez a további útválasztás csökkentheti a hálózati teljesítményt.
 * A meglévő helyszíni hálózatokhoz vagy más Azure-beli virtuális hálózatokhoz való csatlakozás bonyolult lehet.
 
-A Kubenet alkalmas a kisebb fejlesztési vagy tesztelési feladatokhoz, mivel nem kell külön létrehoznia a virtuális hálózatot és az alhálózatokat az AK-fürtből. Az alacsony forgalmú egyszerű webhelyek, illetve a számítási feladatok tárolóba való átemelése a kubenet hálózatkezeléssel üzembe helyezett AK-fürtök egyszerűségét is kihasználhatja. A legtöbb éles környezetben az Azure CNI hálózatkezelését kell terveznie és használni. [A kubenet használatával saját IP-címtartományt és virtuális hálózatokat][aks-configure-kubenet-networking]is konfigurálhat.
+A Kubenet alkalmas a kisebb fejlesztési vagy tesztelési feladatokhoz, mivel nem kell külön létrehoznia a virtuális hálózatot és az alhálózatokat az AK-fürtből. Az alacsony forgalmú egyszerű webhelyek, illetve a számítási feladatok tárolóba való átemelése a kubenet hálózatkezeléssel üzembe helyezett AK-fürtök egyszerűségét is kihasználhatja. A legtöbb éles környezetben az Azure CNI hálózatkezelését kell terveznie és használni. [A kubenet használatával saját IP-címtartományt és virtuális hálózatokat is konfigurálhat][aks-configure-kubenet-networking].
 
 ## <a name="distribute-ingress-traffic"></a>Bejövő forgalom elosztása
 
@@ -71,9 +71,9 @@ Az Azure Load Balancer az ügyfelek adatforgalmát az AK-fürtben lévő alkalma
  Két összetevő áll rendelkezésre a bejövő forgalomhoz:
 
  * Egy bejövő *erőforrás*, és
- * Bejövő adatkezelő
+ * Bejövő *adatkezelő*
 
-A bejövő erőforrás egy YAML-jegyzék `kind: Ingress` , amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyekkel átirányíthatja a forgalmat az AK-fürtön futó szolgáltatásokra. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice*egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
+A bejövő erőforrás a `kind: Ingress` YAML-jegyzéke, amely meghatározza a gazdagépet, a tanúsítványokat és a szabályokat, amelyek a forgalmat az AK-fürtön futó szolgáltatásoknak irányítják. Az alábbi példa YAML-jegyzék a *MyApp.com* forgalmát a két szolgáltatás, a *blogservice* vagy a *storeservice*egyikére terjeszti. Az ügyfél egy szolgáltatásra vagy a másikra irányítja az általuk elért URL-cím alapján.
 
 ```yaml
 kind: Ingress
@@ -118,9 +118,9 @@ A szolgáltatások és alkalmazások forgalmát terjesztő bejövő vezérlő á
 
 ![A webalkalmazási tűzfal (WAF), például az Azure app Gateway képes a forgalom biztonságára és terjesztésére az AK-alapú fürt számára](media/operator-best-practices-network/web-application-firewall-app-gateway.png)
 
-A webalkalmazási tűzfal (WAF) egy további biztonsági réteget biztosít a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) olyan szabályokat tartalmaz, amelyekkel megfigyelheti a több helyre történő parancsfájlok vagy a cookie-mérgezés elleni támadásokat. [Azure-Application Gateway][app-gateway] (az AK-ban jelenleg előzetes verzióban érhető el) egy olyan WAF, amely az AK-fürtökkel integrálva biztosítja ezeket a biztonsági funkciókat, mielőtt a forgalom elérné az AK-fürtöt és-alkalmazásokat. Más, harmadik féltől származó megoldások is végrehajtják ezeket a funkciókat, így továbbra is használhatnak egy adott termék meglévő befektetéseit vagy szakértelmét.
+A webalkalmazási tűzfal (WAF) egy további biztonsági réteget biztosít a bejövő forgalom szűrésével. Az Open Web Application Security Project (OWASP) olyan szabályokat tartalmaz, amelyekkel megfigyelheti a több helyre történő parancsfájlok vagy a cookie-mérgezés elleni támadásokat. Az [Azure Application Gateway][app-gateway] (jelenleg előzetes verzióban érhető el) egy olyan WAF, amely az AK-fürtökkel integrálva biztosítja ezeket a biztonsági funkciókat, mielőtt a forgalom eléri az AK-fürtöt és-alkalmazásokat. Más, harmadik féltől származó megoldások is végrehajtják ezeket a funkciókat, így továbbra is használhatnak egy adott termék meglévő befektetéseit vagy szakértelmét.
 
-A terheléselosztó vagy a bejövő erőforrások továbbra is futnak az AK-fürtön, hogy tovább pontosítsák a forgalom eloszlását. Az alkalmazás-átjáró központilag felügyelhető egy erőforrás-definícióval rendelkező bejövő vezérlőként. Első lépésként [hozzon létre egy Application Gateway bejövő][app-gateway-ingress]adatkezelőt.
+A terheléselosztó vagy a bejövő erőforrások továbbra is futnak az AK-fürtön, hogy tovább pontosítsák a forgalom eloszlását. Az alkalmazás-átjáró központilag felügyelhető egy erőforrás-definícióval rendelkező bejövő vezérlőként. Első lépésként [hozzon létre egy Application Gateway bejövő adatkezelőt][app-gateway-ingress].
 
 ## <a name="control-traffic-flow-with-network-policies"></a>A forgalmi forgalom szabályozása hálózati házirendekkel
 
@@ -160,7 +160,7 @@ Az AK-ban a legtöbb művelet az Azure felügyeleti eszközeivel vagy a Kubernet
 
 A megerősített gazdagép felügyeleti hálózatát is védeni kell. Egy [Azure ExpressRoute][expressroute] vagy [VPN Gateway][vpn-gateway] használatával csatlakozhat egy helyszíni hálózathoz, és szabályozhatja a hozzáférést hálózati biztonsági csoportokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk a hálózati kapcsolatra és a biztonságra koncentrál. További információ a Kubernetes hálózati alapjairól: az [Azure Kubernetes szolgáltatásban található alkalmazások hálózati fogalmai (ak)][aks-concepts-network]
 
@@ -168,7 +168,7 @@ Ez a cikk a hálózati kapcsolatra és a biztonságra koncentrál. További info
 [cni-networking]: https://github.com/Azure/azure-container-networking/blob/master/docs/cni.md
 [kubenet]: https://kubernetes.io/docs/concepts/cluster-administration/network-plugins/#kubenet
 [app-gateway-ingress]: https://github.com/Azure/application-gateway-kubernetes-ingress
-[nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
+[Nginx]: https://www.nginx.com/products/nginx/kubernetes-ingress-controller
 [contour]: https://github.com/heptio/contour
 [haproxy]: https://www.haproxy.org
 [traefik]: https://github.com/containous/traefik

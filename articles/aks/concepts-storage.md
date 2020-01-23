@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 03/01/2019
 ms.author: mlearned
-ms.openlocfilehash: 601f89c4510899dbb1f5d8a238961d9a4e5864e0
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: d6c14f78fd3cefa5ec41a686ca385639eb3fcb67
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74913716"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549274"
 ---
 # <a name="storage-options-for-applications-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes szolgáltatásban (ak) lévő alkalmazások tárolási lehetőségei
 
@@ -40,7 +40,7 @@ A hagyományos kötetek tárolására és lekérésére az Azure Storage által 
 
 A Kubernetes-ben a kötetek több, mint egy hagyományos lemezt képviselnek, ahol az információ tárolható és lekérhető. A Kubernetes kötetek a tárolók általi használatra is használhatók a pod-ba történő adatbevitelhez. A Kubernetes-ben a gyakori további mennyiségi típusok a következők:
 
-- *emptyDir* – ezt a kötetet általában a pod ideiglenes tárolóhelyként használják. A hüvelyen belüli összes tároló hozzáfér a köteten lévő adatforgalomhoz. Az ebbe a kötetbe írt adattípusok csak a pod élettartama esetén maradnak meg, a kötetet törli a rendszer. Ez a kötet jellemzően a mögöttes helyi csomópont lemezes tárterületét használja, de csak a csomópont memóriájában lehet.
+- *emptyDir* – ezt a kötetet általában a pod ideiglenes tárolóhelyként használják. A hüvelyen belüli összes tároló hozzáfér a köteten lévő adatforgalomhoz. Az ebbe a kötetbe írt adattípusok csak a pod élettartama esetén maradnak meg, a kötetet törli a rendszer. Ez a kötet jellemzően a mögöttes helyi csomópont lemezes tárterületét használja, bár csak a csomópont memóriájában létezhet.
 - *Secret (titkos* ) – Ez a kötet a bizalmas adatok hüvelybe, például jelszavakba való beadására szolgál. Először hozzon létre egy titkos kulcsot a Kubernetes API használatával. A pod vagy az üzembe helyezés megadásakor a rendszer egy adott titkot kérhet. A titkos kulcsokat csak olyan csomópontok számára biztosítjuk, amelyekhez szükség van egy ütemezett Pod-re, és a titkot a *tmpfs*tárolja, nem lemezre írva. Ha a titkos kulcsot tartalmazó csomópont utolsó podét törli, a titkos kulcsot a rendszer törli a csomópont tmpfs. A titkos kulcsok tárolása egy adott névtéren belül történik, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
 - *configMap* – ezt a kötetet a kulcs-érték párok tulajdonságainak hüvelybe való beírására, például az alkalmazás konfigurációs adataiba kell beszúrni. Ahelyett, hogy az alkalmazás konfigurációs információit definiálja egy tároló képén belül, megadhatja azt Kubernetes-erőforrásként, amely könnyen frissíthető és alkalmazható a hüvelyek új példányaira, amelyeket üzembe helyeztek. A titkos kulcshoz hasonlóan először is létre kell hoznia egy ConfigMap a Kubernetes API használatával. Ezt a ConfigMap akkor lehet kérni, ha egy Pod vagy üzemelő példányt határoz meg. A ConfigMaps egy adott névtéren belül tárolódnak, és csak ugyanazon a névtéren belüli hüvelyek érhetik el.
 

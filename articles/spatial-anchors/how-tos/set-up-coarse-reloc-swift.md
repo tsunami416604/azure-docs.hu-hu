@@ -1,6 +1,6 @@
 ---
 title: Durva újrahonosítás a Swift-ben
-description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a gyors használatban lévő eszközökön futó érzékelők.
+description: Részletesen ismertetjük, hogyan hozhatók létre és találhatók a gyors használatú, durva újrahonosítást használó horgonyok.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 1381f6340d1b85376ad5be9e00c596aa921d957f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 7b568c43f8420b5a2f994b4cba145bf4d70b9010
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277184"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546163"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-swift"></a>Horgonyok létrehozása és megkeresése az eszközön futó érzékelők használatával Swift-ben
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-swift"></a>Horgonyok létrehozása és megkeresése a Swift-ben a durva újrahonosítás használatával
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

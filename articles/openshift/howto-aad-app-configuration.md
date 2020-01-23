@@ -6,12 +6,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: conceptual
 ms.date: 05/13/2019
-ms.openlocfilehash: 09ae896d26d534d3f9d5651834e181d37581c8f3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6e2437fadb743706d4f4215bbcbab8616817de5f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76288956"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545619"
 ---
 # <a name="azure-active-directory-integration-for-azure-red-hat-openshift"></a>Azure Active Directory integráció az Azure Red Hat OpenShift
 
@@ -55,6 +55,9 @@ A fürt rendszergazdai hozzáférésének megadásához az Azure AD biztonsági 
 
 9. A csoport létrehozásakor megjelenik az összes csoport listájában. Kattintson az új csoportra.
 10. A megjelenő lapon másolja le az **objektum azonosítóját**. Erre az értékre az [Azure Red Hat OpenShift-fürt létrehozása](tutorial-create-cluster.md) című oktatóanyagban `GROUPID` fogunk hivatkozni.
+
+> [!IMPORTANT]
+> Ha a csoportot az OSA-Customer-adminok OpenShift csoporttal szeretné szinkronizálni, hozza létre a fürtöt az Azure CLI használatával. A Azure Portal jelenleg nem rendelkezik a csoport beállításához szükséges mezővel.
 
 ## <a name="create-an-azure-ad-app-registration"></a>Azure AD-alkalmazás regisztrálásának létrehozása
 

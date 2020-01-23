@@ -6,12 +6,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: cshoe
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 70254e42b5964c7c7a3bf15c396f4c118f68a5ed
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: ea213921c736bc3b6bf88c0bdd81a96656ecbe5b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121233"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547285"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Azure üzenetsor-tárolási kötések Azure Functionshoz
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure üzenetsor-tárolási kö
 
 ## <a name="packages---functions-1x"></a>Csomagok – 1. x függvények
 
-A várólista-tárolási kötések a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) NuGet csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-tárházban található.
+A várólista-tárolási kötések a [Microsoft. Azure. webjobs](https://www.nuget.org/packages/Microsoft.Azure.WebJobs) Nuget csomagban, 2. x verzióban találhatók. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/v2.x/src/Microsoft.Azure.WebJobs.Storage/Queue) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-auto](../../includes/functions-package-auto.md)]
 
@@ -29,7 +29,7 @@ A várólista-tárolási kötések a [Microsoft. Azure. webjobs](https://www.nug
 
 ## <a name="packages---functions-2x-and-higher"></a>Csomagok – 2. x és újabb függvények
 
-A várólista-tárolási kötések a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) NuGet csomag 3. x verziójában érhetők el. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-tárházban található.
+A várólista-tárolási kötések a [Microsoft. Azure. webjobs. Extensions. Storage](https://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.Storage) Nuget csomag 3. x verziójában érhetők el. A csomag forráskódja az [Azure-webjobs-SDK](https://github.com/Azure/azure-webjobs-sdk/tree/dev/src/Microsoft.Azure.WebJobs.Extensions.Storage/Queues) GitHub-tárházban található.
 
 [!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
@@ -40,17 +40,7 @@ A függvények *Base64* kódolású karakterláncot várnak. A kódolási típus
 
 A várólista-trigger használatával elindíthat egy függvényt, ha új elem érkezik egy várólistán. A várakozó üzenetet a függvény bemeneteként adja át.
 
-## <a name="trigger---example"></a>Trigger – példa
-
-Tekintse meg a nyelvspecifikus példát:
-
-* [C#](#trigger---c-example)
-* [C#parancsfájl (. CSX)](#trigger---c-script-example)
-* [JavaScript](#trigger---javascript-example)
-* [Java](#trigger---java-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger – C# példa
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely lekérdezi a `myqueue-items` várólistát, és minden alkalommal beírja a naplót, amikor a várólista-elemek feldolgozása történik.
 
@@ -67,7 +57,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger – C# parancsfájl-példa
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy üzenetsor-trigger kötést mutat be egy *function. JSON* fájlban és [ C# a kötést használó script (. CSX)](functions-reference-csharp.md) kódban. A függvény lekérdezi a `myqueue-items` várólistát, és minden alkalommal egy naplót ír a várólista-elemek feldolgozásakor.
 
@@ -122,7 +112,7 @@ public static void Run(CloudQueueMessage myQueueItem,
 
 A [használat](#trigger---usage) szakasz ismerteti `myQueueItem`, amelyet a function. json fájl `name` tulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#trigger---message-metadata) a többi megjelenített változót ismerteti.
 
-### <a name="trigger---javascript-example"></a>Trigger – JavaScript-példa
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy várólista-trigger kötését mutatja be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény lekérdezi a `myqueue-items` várólistát, és minden alkalommal egy naplót ír a várólista-elemek feldolgozásakor.
 
@@ -167,23 +157,7 @@ module.exports = async function (context, message) {
 
 A [használat](#trigger---usage) szakasz ismerteti `myQueueItem`, amelyet a function. json fájl `name` tulajdonsága nevez el.  Az [üzenet metaadatainak szakasza](#trigger---message-metadata) a többi megjelenített változót ismerteti.
 
-### <a name="trigger---java-example"></a>Trigger – Java-példa
-
-A következő Java-példa egy Storage üzenetsor-kiváltó függvényt mutat be, amely naplózza az aktivált üzenetet a várólistára `myqueuename`.
-
- ```java
- @FunctionName("queueprocessor")
- public void run(
-    @QueueTrigger(name = "msg",
-                   queueName = "myqueuename",
-                   connection = "myconnvarname") String message,
-     final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
- ```
-
-### <a name="trigger---python-example"></a>Trigger – Python-példa
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Az alábbi példa azt szemlélteti, hogyan lehet beolvasni egy függvénynek egy trigger használatával átadott üzenetsor-üzenetet.
 
@@ -204,7 +178,7 @@ A Storage-várólista triggere a *function. JSON* fájlban van definiálva, ahol
 }
 ```
 
-*_\_init_\_. a. a. a. a.* a (z) paraméter deklarál egy paramétert `func.ServiceBusMessage`ként, amely lehetővé teszi a várólista-üzenet olvasását a függvényben.
+A kód  *_\_init_\_. a. a. a. a. a.* a paramétert `func.ServiceBusMessage`ként deklarálja, amely lehetővé teszi a várólista-üzenet olvasását a függvényben.
 
 ```python
 import logging
@@ -231,7 +205,27 @@ def main(msg: func.QueueMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger – attribútumok
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A következő Java-példa egy Storage üzenetsor-kiváltó függvényt mutat be, amely naplózza az elindított üzenetet az üzenetsor `myqueuename`ba.
+
+ ```java
+ @FunctionName("queueprocessor")
+ public void run(
+    @QueueTrigger(name = "msg",
+                   queueName = "myqueuename",
+                   connection = "myconnvarname") String message,
+     final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+ ```
+
+ ---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger – attribútumok és jegyzetek
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat az üzenetsor-trigger konfigurálásához:
 
@@ -261,7 +255,7 @@ Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja
   }
   ```
 
-  A teljes példa: [trigger- C# example](#trigger---c-example).
+  A teljes példa: [trigger- C# example](#trigger).
 
 * [StorageAccountAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs)
 
@@ -287,6 +281,47 @@ A használandó Storage-fiók a következő sorrendben van meghatározva:
 * Az osztályra alkalmazott `StorageAccount` attribútum.
 * A "AzureWebJobsStorage" alkalmazás beállításai.
 
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az C# attribútumokat a parancsfájl nem támogatja.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A Java-parancsfájlok nem támogatják az attribútumokat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A `QueueTrigger` jegyzet hozzáférést biztosít a függvényt kiváltó várólistához. A következő példa az üzenetsor-üzenetet elérhetővé teszi a függvény számára a `message` paraméterrel.
+
+```java
+package com.function;
+import com.microsoft.azure.functions.annotation.*;
+import java.util.Queue;
+import com.microsoft.azure.functions.*;
+
+public class QueueTriggerDemo {
+    @FunctionName("QueueTriggerDemo")
+    public void run(
+        @QueueTrigger(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info("Queue message: " + message);
+    }
+}
+```
+
+| Tulajdonság    | Leírás |
+|-------------|-----------------------------|
+|`name`       | Deklarálja a paraméter nevét a függvény aláírásában. A függvény indításakor ennek a paraméternek az értéke az üzenetsor üzenetének tartalmát jeleníti meg. |
+|`queueName`  | Deklarálja a várólista nevét a Storage-fiókban. |
+|`connection` | A Storage-fiók kapcsolódási karakterláncára mutat. |
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger – konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és a `QueueTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
@@ -303,7 +338,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `QueueTrigger` attribút
 
 ## <a name="trigger---usage"></a>Trigger – használat
 
-A C# ( C# z) és a (z) rendszerekben a (z) és a (z) parancsfájlban az üzenet adatai egy metódus `string paramName`paraméter A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. A következő típusokhoz köthető:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Az üzenet adatai egy metódus-paraméter (például `string paramName`) használatával érhetők el. A következő típusokhoz köthető:
 
 * Objektum – a függvények futtatókörnyezete deszerializál egy JSON-adattartalmat a kódban definiált tetszőleges osztály egy példányára. 
 * `string`
@@ -312,7 +349,30 @@ A C# ( C# z) és a (z) rendszerekben a (z) és a (z) parancsfájlban az üzenet 
 
 Ha `CloudQueueMessage`hoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
 
-A JavaScriptben `context.bindings.<name>` használatával férhet hozzá a várólista-elem hasznos adataihoz. Ha a hasznos adat JSON, deszerializálja egy objektumba. Ezt a hasznos adatot a függvény második paramétereként is átadja.
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az üzenet adatai egy metódus-paraméter (például `string paramName`) használatával érhetők el. A `paramName` a *function. json*`name` tulajdonságában megadott érték. A következő típusokhoz köthető:
+
+* Objektum – a függvények futtatókörnyezete deszerializál egy JSON-adattartalmat a kódban definiált tetszőleges osztály egy példányára. 
+* `string`
+* `byte[]`
+* [CloudQueueMessage]
+
+Ha `CloudQueueMessage`hoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A várólista-elem hasznos tartalma `context.bindings.<NAME>`on keresztül érhető el, ahol a `<NAME>` megegyezik a *function. JSON*fájlban megadott névvel. Ha a hasznos adat JSON, az érték deszerializálása egy objektumba történik.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Nyissa meg az üzenetsor-üzenetet a [QueueMessage](https://docs.microsoft.com/python/api/azure-functions/azure.functions.queuemessage?view=azure-python)típussal megadott paraméterrel.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A [QueueTrigger](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queuetrigger?view=azure-java-stable) jegyzet hozzáférést biztosít a függvényt kiváltó üzenetsor-üzenethez.
+
+---
 
 ## <a name="trigger---message-metadata"></a>Trigger – üzenet metaadatainak
 
@@ -365,22 +425,12 @@ A [Host. JSON](functions-host-json.md#queues) fájl olyan beállításokat tarta
 
 Az Azure üzenetsor-tároló kimeneti kötésével üzeneteket írhat a várólistákba.
 
-## <a name="output---example"></a>Kimenet – példa
-
-Tekintse meg a nyelvspecifikus példát:
-
-* [C#](#output---c-example)
-* [C#parancsfájl (. CSX)](#output---c-script-example)
-* [JavaScript](#output---javascript-example)
-* [Java](#output---java-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Kimenet – C# példa
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely létrehoz egy üzenetsor-üzenetet minden fogadott http-kérelemhez.
 
 ```csharp
-[StorageAccount("AzureWebJobsStorage")]
+[StorageAccount("MyStorageConnectionAppSetting")]
 public static class QueueFunctions
 {
     [FunctionName("QueueOutput")]
@@ -393,7 +443,7 @@ public static class QueueFunctions
 }
 ```
 
-### <a name="output---c-script-example"></a>Kimenet – C# parancsfájl – példa
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy http-trigger kötést mutat be egy *function. JSON* fájlban és [ C# parancsfájlban (. CSX)](functions-reference-csharp.md) , amely a kötést használja. A függvény egy **CustomQueueMessage** objektum-adattartalommal rendelkező üzenetsor-objektumot hoz létre minden fogadott http-kérelemhez.
 
@@ -454,7 +504,7 @@ public static void Run(
 }
 ```
 
-### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy HTTP-trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény minden fogadott HTTP-kérelemhez létrehoz egy üzenetsor-tételt.
 
@@ -504,25 +554,7 @@ module.exports = function(context) {
 };
 ```
 
-### <a name="output---java-example"></a>Kimenet – Java-példa
-
- Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre, amikor HTTP-kérést indít el.
-
-```java
-@FunctionName("httpToQueue")
-@QueueOutput(name = "item", queueName = "myqueue-items", connection = "AzureWebJobsStorage")
- public String pushToQueue(
-     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-     final String message,
-     @HttpOutput(name = "response") final OutputBinding<String> result) {
-       result.setValue(message + " has been added.");
-       return message;
- }
-```
-
-A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzéseket azon paramétereknél, amelyek értékét a rendszer a várólista-tárolóba írja.  A paraméter típusának `OutputBinding<T>`nak kell lennie, ahol a T egy POJO natív Java-típusa.
-
-### <a name="output---python-example"></a>Kimenet – Python-példa
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja, hogyan lehet egy és több értéket kiadni a tárolási várólistáknak. A *function. JSON* fájlhoz szükséges konfiguráció ugyanaz, mint az egyik módja.
 
@@ -585,7 +617,29 @@ def main(req: func.HttpRequest, msg: func.Out[typing.List[str]]) -> func.HttpRes
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Kimenet – attribútumok
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+ Az alábbi példa egy Java-függvényt mutat be, amely üzenetsor-üzenetet hoz létre a HTTP-kérések indításakor.
+
+```java
+@FunctionName("httpToQueue")
+@QueueOutput(name = "item", queueName = "myqueue-items", connection = "MyStorageConnectionAppSetting")
+ public String pushToQueue(
+     @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+     final String message,
+     @HttpOutput(name = "response") final OutputBinding<String> result) {
+       result.setValue(message + " has been added.");
+       return message;
+ }
+```
+
+A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzéseket azon paramétereknél, amelyek értékét a rendszer a várólista-tárolóba írja.  A paraméter típusának `OutputBinding<T>`nak kell lennie, ahol a `T` egy POJO natív Java-típusa.
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Kimenet – attribútumok és jegyzetek
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [QueueAttribute](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs).
 
@@ -611,9 +665,54 @@ public static string Run([HttpTrigger] dynamic input,  ILogger log)
 }
 ```
 
-Teljes példa: [kimenet – C# példa](#output---c-example).
+Teljes példa: [kimenet – C# példa](#output).
 
 Az `StorageAccount` attribútummal megadhatja a Storage-fiókot osztály, metódus vagy paraméter szintjén. További információ: trigger-attributes.
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az C# attribútumokat a parancsfájl nem támogatja.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A Java-parancsfájlok nem támogatják az attribútumokat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A `QueueOutput` jegyzet lehetővé teszi, hogy egy függvény kimenetének megírásával üzenetet írjon. Az alábbi példa egy HTTP által aktivált függvényt mutat be, amely üzenetsor-üzenetet hoz létre.
+
+```java
+package com.function;
+import java.util.*;
+import com.microsoft.azure.functions.annotation.*;
+import com.microsoft.azure.functions.*;
+
+public class HttpTriggerQueueOutput {
+    @FunctionName("HttpTriggerQueueOutput")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.FUNCTION) HttpRequestMessage<Optional<String>> request,
+            @QueueOutput(name = "message", queueName = "messages", connection = "MyStorageConnectionAppSetting") OutputBinding<String> message,
+            final ExecutionContext context) {
+
+        message.setValue(request.getQueryParameters().get("name"));
+        return request.createResponseBuilder(HttpStatus.OK).body("Done").build();
+    }
+}
+```
+
+| Tulajdonság    | Leírás |
+|-------------|-----------------------------|
+|`name`       | Deklarálja a paraméter nevét a függvény aláírásában. A függvény indításakor ennek a paraméternek az értéke az üzenetsor üzenetének tartalmát jeleníti meg. |
+|`queueName`  | Deklarálja a várólista nevét a Storage-fiókban. |
+|`connection` | A Storage-fiók kapcsolódási karakterláncára mutat. |
+
+A `QueueOutput` jegyzethez társított paraméter a [OutputBinding\<t\>](https://github.com/Azure/azure-functions-java-library/blob/master/src/main/java/com/microsoft/azure/functions/OutputBinding.java) példányként van beírva.
+
+---
 
 ## <a name="output---configuration"></a>Kimenet – konfiguráció
 
@@ -631,7 +730,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `Queue` attribútumban b
 
 ## <a name="output---usage"></a>Kimenet – használat
 
-A C# és C# a parancsfájlban írjon egy üzenetsor-üzenetet egy metódus-paraméter (például `out T paramName`) használatával. A C# szkriptben `paramName` a *function. JSON*`name` tulajdonságában megadott érték. `out` paraméter helyett a metódus visszatérési típusát is használhatja, és a `T` a következő típusok bármelyike lehet:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName`) használatával. `out` paraméter helyett a metódus visszatérési típusát is használhatja, és a `T` a következő típusok bármelyike lehet:
 
 * Egy, JSON-ként szerializálható objektum
 * `string`
@@ -645,8 +746,43 @@ A C# és C# a parancsfájlban több üzenetsor-üzenetet is írhat a következő
 * `ICollector<T>` vagy `IAsyncCollector<T>`
 * [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
 
-A JavaScript-függvények területen `context.bindings.<name>` használatával férhet hozzá a kimeneti üzenetsor-üzenethez. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
+Egyetlen üzenetsor-üzenetet írhat egy metódus-paraméter (például `out T paramName`) használatával. A `paramName` a *function. json*`name` tulajdonságában megadott érték. `out` paraméter helyett a metódus visszatérési típusát is használhatja, és a `T` a következő típusok bármelyike lehet:
+
+* Egy, JSON-ként szerializálható objektum
+* `string`
+* `byte[]`
+* [CloudQueueMessage] 
+
+Ha `CloudQueueMessage`hoz próbál kötni, és hibaüzenetet kap, ellenőrizze, hogy rendelkezik-e [a megfelelő Storage SDK-verzióra](#azure-storage-sdk-version-in-functions-1x)mutató hivatkozással.
+
+A C# és C# a parancsfájlban több üzenetsor-üzenetet is írhat a következő típusok egyikének használatával: 
+
+* `ICollector<T>` vagy `IAsyncCollector<T>`
+* [CloudQueue](/dotnet/api/microsoft.azure.storage.queue.cloudqueue)
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A kimeneti várólista elem `context.bindings.<NAME>`on keresztül érhető el, ahol a `<NAME>` megegyezik a *function. JSON*fájlban megadott névvel. A várólista-elem hasznos adatainak karakterláncot vagy JSON-szerializálható objektumot is használhat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Az Event hub-üzenetek egy függvényből való üzembe helyezésének két lehetősége van:
+
+- **Visszatérési érték**: állítsa be az `name` tulajdonságot a *function. json* fájlban a `$return`. Ezzel a konfigurációval a függvény visszatérési értéke üzenetsor-tárolási üzenetként is megmarad.
+
+- **Elengedhetetlen**: adjon meg egy értéket a [set](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python#set-val--t-----none) metódusnak, amely [kimenő](https://docs.microsoft.com/python/api/azure-functions/azure.functions.out?view=azure-python) típusként van deklarálva. Az `set`nek átadott értéket üzenetsor-tárolóként megőrzi a rendszer.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Az Event hub-üzenetek egy függvényből való üzembe helyezésére két lehetőség áll rendelkezésre a [QueueOutput](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.annotation.queueoutput) jegyzet használatával:
+
+- Visszaadott **érték**: Ha a jegyzetet a függvényhez alkalmazza, a függvény visszatérési értéke Event hub-üzenetként marad.
+
+- **Fontos**: Ha explicit módon be szeretné állítani az üzenet értékét, alkalmazza a jegyzetet a [`OutputBinding<T>`](https://docs.microsoft.com/java/api/com.microsoft.azure.functions.OutputBinding)típusú adott paraméterre, ahol a `T` POJO vagy bármely natív Java-típus. Ezzel a konfigurációval a `setValue` metódus értékének átadásával az érték az Event hub üzenete marad.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
@@ -679,7 +815,6 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
     }
 }
 ```
-
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|

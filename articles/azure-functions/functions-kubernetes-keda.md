@@ -5,12 +5,12 @@ author: jeffhollan
 ms.topic: conceptual
 ms.date: 11/18/2019
 ms.author: jehollan
-ms.openlocfilehash: 9978bd567b1b07e8dd0e22e1f02834626281a5dd
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 83c57b27c1cd1d524805a92381a1ba9eb2e1fbd6
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75920664"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549036"
 ---
 # <a name="azure-functions-on-kubernetes-with-keda"></a>Azure Functions a Kubernetes és a KEDA
 
@@ -26,15 +26,9 @@ A Kubernetes-alapú függvények egy [Docker-tárolóban](functions-create-funct
 
 A függvények a Kubernetes-fürtön való futtatásához telepítenie kell a KEDA összetevőt. Ezt az összetevőt [Azure functions Core Tools](functions-run-local.md)használatával telepítheti.
 
-### <a name="installing-with-the-azure-functions-core-tools"></a>Telepítés a Azure Functions Core Tools
+### <a name="installing-with-helm"></a>Telepítés a Helmtal
 
-Alapértelmezés szerint a Core Tools a KEDA és az Osiris összetevőket is telepíti, amelyek támogatják az eseményvezérelt és a HTTP-méretezést.  A telepítés `kubectl` az aktuális környezetben fut.
-
-Telepítse a KEDA a fürtben a következő telepítési parancs futtatásával:
-
-```cli
-func kubernetes install --namespace keda
-```
+A KEDA különböző módokon telepíthető bármely Kubernetes-fürtben, beleértve a Helm-t is.  Az üzembe helyezési lehetőségek dokumentálva vannak a [KEDA webhelyen](https://keda.sh/deploy/).
 
 ## <a name="deploying-a-function-app-to-kubernetes"></a>Function-alkalmazás üzembe helyezése a Kubernetes
 
@@ -73,11 +67,7 @@ kubectl delete secret <name-of-function-deployment>
 
 ## <a name="uninstalling-keda-from-kubernetes"></a>A KEDA eltávolítása a Kubernetes-ből
 
-A következő alapvető eszközök parancs futtatásával távolíthatja el a KEDA egy Kubernetes-fürtből:
-
-```cli
-func kubernetes remove --namespace keda
-```
+A KEDA eltávolításának lépései dokumentálva vannak [a KEDA webhelyen](https://keda.sh/deploy/).
 
 ## <a name="supported-triggers-in-keda"></a>Támogatott eseményindítók a KEDA-ben
 
@@ -91,7 +81,7 @@ A KEDA a következő Azure Function triggereket támogatja:
 
 ### <a name="http-trigger-support"></a>HTTP-trigger támogatása
 
-Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A Azure Functions Core Tools egy kapcsolódó projektet telepít, amely lehetővé teszi a HTTP-végpontok 0 és 1 közötti skálázását.  Az 1 és *n* közötti skálázás a hagyományos Kubernetes skálázási szabályzatokra támaszkodik.
+Használhatja a HTTP-eseményindítókat közzétevő Azure Functionsokat, de a KEDA nem kezeli közvetlenül.  A KEDA Prometheus trigger kihasználható a [http-Azure functions 1 és *n* példány közötti méretezésére](https://dev.to/anirudhgarg_99/scale-up-and-down-a-http-triggered-function-app-in-kubernetes-using-keda-4m42).
 
 ## <a name="next-steps"></a>Következő lépések
 További információkért lásd a következőket:

@@ -8,36 +8,36 @@ ms.date: 06/17/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 731c51894126a6de75c9fc25e4e7bdb3dfa4dd03
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 4684daf2a1095a40c478170be37edcae788868ef
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665797"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548611"
 ---
 # <a name="properties-of-the-iot-edge-agent-and-iot-edge-hub-module-twins"></a>A IoT Edge-ügynök és az IoT Edge hub-modulok ikrek tulajdonságai
 
-A IoT Edge ügynök és a IoT Edge hub két, a IoT Edge futtatókörnyezetet alkotó modul. További információ arról, hogy az egyes modulok milyen feladatokat végeznek el: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md). 
+A IoT Edge ügynök és a IoT Edge hub két, a IoT Edge futtatókörnyezetet alkotó modul. Az egyes futásidejű modulok feladataival kapcsolatos további információkért lásd: [a Azure IoT Edge futtatókörnyezet és az architektúrájának megismerése](iot-edge-runtime.md).
 
 Ez a cikk a futtatókörnyezeti modulok kívánt tulajdonságait és az ikrek által jelentett tulajdonságokat tartalmazza. A modulok IoT Edge eszközökön való telepítésével kapcsolatos további információkért lásd: [modulok üzembe helyezése és útvonalak létrehozása IoT Edgeokban](module-composition.md).
 
-A modulok Twin-tartalma: 
+A modulok Twin-tartalma:
 
 * **Kívánt tulajdonságok**. A megoldás háttere beállíthatja a kívánt tulajdonságokat, a modul pedig elolvashatja őket. A modul a kívánt tulajdonságok változásairól is fogadhat értesítéseket. A kívánt tulajdonságok a jelentett tulajdonságokkal együtt használhatók a modul konfigurációjának vagy feltételeinek szinkronizálásához.
 
-* **Jelentett tulajdonságok**. A modul beállíthatja a jelentett tulajdonságokat, és a megoldás háttere olvasható és kérdezhető le. A jelentett tulajdonságokat a rendszer a kívánt tulajdonságokkal együtt használja a modul konfigurációjának vagy feltételeinek szinkronizálásához. 
+* **Jelentett tulajdonságok**. A modul beállíthatja a jelentett tulajdonságokat, és a megoldás háttere olvasható és kérdezhető le. A jelentett tulajdonságokat a rendszer a kívánt tulajdonságokkal együtt használja a modul konfigurációjának vagy feltételeinek szinkronizálásához.
 
 ## <a name="edgeagent-desired-properties"></a>EdgeAgent kívánt tulajdonságai
 
-Az IoT Edge-ügynökhöz tartozó modul neve `$edgeAgent`, és koordinálja az eszközön és IoT Hubon futó IoT Edge ügynök közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket. 
+Az IoT Edge-ügynökhöz tartozó modul neve `$edgeAgent`, és koordinálja az eszközön és IoT Hubon futó IoT Edge ügynök közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
 
 | Tulajdonság | Leírás | Szükséges |
 | -------- | ----------- | -------- |
-| Sémaverzióval | "1,0"-nek kell lennie | Igen |
+| sémaverzióval | "1,0"-nek kell lennie | Igen |
 | futtatókörnyezet. Type | A "Docker"-nek kell lennie | Igen |
 | Runtime. Settings. minDockerVersion | Állítsa be az üzembe helyezési jegyzékben szükséges minimális Docker-verziót | Igen |
 | Runtime. Settings. loggingOptions | Egy sztringesített JSON, amely a IoT Edge Agent tároló naplózási beállításait tartalmazza. [Docker naplózási beállításai](https://docs.docker.com/engine/admin/logging/overview/) | Nem |
-| Runtime. Settings. registryCredentials<br>. {registryId}. Felhasználónév | A tároló-beállításjegyzék felhasználóneve. Azure Container Registry esetén a Felhasználónév általában a beállításjegyzék neve.<br><br> Beállításjegyzékbeli hitelesítő adatok szükségesek a nem nyilvános modul-lemezképekhez. | Nem |
+| Runtime. Settings. registryCredentials<br>. {registryId}. Felhasználónév | A tároló-beállításjegyzék felhasználóneve. Azure Container Registry esetén a Felhasználónév általában a beállításjegyzék neve.<br><br> A beállításjegyzékbeli hitelesítő adatok szükségesek a privát modulok képeihez. | Nem |
 | Runtime. Settings. registryCredentials<br>. {registryId}. jelszó | A tároló beállításjegyzékének jelszava. | Nem |
 | Runtime. Settings. registryCredentials<br>. {registryId}. címe | A tároló beállításjegyzékének címe. Azure Container Registry esetén a címnek általában *{Registry Name}. azurecr. IO nevűnek*kell lennie. | Nem |  
 | systemModules. edgeAgent. Type | A "Docker"-nek kell lennie | Igen |
@@ -67,7 +67,7 @@ A IoT Edge ügynök által jelentett tulajdonságok három fő információt tar
 2. Az eszközön jelenleg futó modulok állapota a IoT Edge ügynök által jelentett módon; és
 3. Az eszközön jelenleg futó kívánt tulajdonságok másolata.
 
-Ez az utolsó adat, az aktuálisan kívánt tulajdonságok másolata, hasznos lehet megállapítani, hogy az eszköz alkalmazta-e a legújabb kívánt tulajdonságokat, vagy továbbra is fut-e a korábbi telepítési jegyzék.
+Az aktuálisan szükséges tulajdonságok másolata hasznos annak megadásához, hogy az eszköz alkalmazta-e a legújabb telepítést, vagy továbbra is egy korábbi telepítési jegyzék fut-e.
 
 > [!NOTE]
 > A IoT Edge ügynök jelentett tulajdonságai hasznosak lehetnek, mivel lekérdezhető a [IoT hub lekérdezési nyelvvel](../iot-hub/iot-hub-devguide-query-language.md) , hogy kivizsgálják a központi telepítések állapotát a skálán. További információ a IoT Edge ügynök tulajdonságainak állapotáról: [IoT Edge központi telepítések ismertetése egyetlen eszközhöz vagy nagy méretekben](module-deployment-monitoring.md).
@@ -102,11 +102,11 @@ A következő táblázat nem tartalmazza a kívánt tulajdonságokból másolt a
 
 ## <a name="edgehub-desired-properties"></a>EdgeHub kívánt tulajdonságai
 
-Az IoT Edge hub különálló moduljának neve `$edgeHub`, és koordinálja az eszközön futó IoT Edge hub és IoT Hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket. 
+Az IoT Edge hub különálló moduljának neve `$edgeHub`, és koordinálja az eszközön futó IoT Edge hub és IoT Hub közötti kommunikációt. A kívánt tulajdonságok akkor jelennek meg, ha egy adott eszközön egy eszköz vagy egy méretezéses telepítés részeként alkalmazza a központi telepítési jegyzéket.
 
 | Tulajdonság | Leírás | Szükséges az üzembe helyezési jegyzékben |
 | -------- | ----------- | -------- |
-| Sémaverzióval | "1,0"-nek kell lennie | Igen |
+| sémaverzióval | "1,0"-nek kell lennie | Igen |
 | útvonalak. z | Egy IoT Edge hub-útvonalat jelölő sztring. További információ: [útvonalak deklarálása](module-composition.md#declare-routes). | A `routes` elem lehet jelen, de üres. |
 | storeAndForwardConfiguration.timeToLiveSecs | Az az időtartam (másodpercben), ameddig IoT Edge hub megtartja az üzeneteket, ha leválasztják az útválasztási végpontokat, függetlenül attól, hogy IoT Hub vagy egy helyi modulról. Az érték bármilyen pozitív egész szám lehet. | Igen |
 

@@ -6,12 +6,12 @@ ms.assetid: daedacf0-6546-4355-a65c-50873e74f66b
 ms.topic: reference
 ms.date: 04/01/2017
 ms.author: cshoe
-ms.openlocfilehash: 4deae28d172bf717f527824be4be050975614c7d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 424d797410c091dc53687284c2b32e2f1f0358e1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277395"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549070"
 ---
 # <a name="azure-service-bus-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Service Bus
 
@@ -40,16 +40,7 @@ A Service Bus triggerrel válaszolhat Service Bus üzenetsor vagy témakör üze
 
 ## <a name="trigger---example"></a>Trigger – példa
 
-Tekintse meg a nyelvspecifikus példát:
-
-* [C#](#trigger---c-example)
-* [C#parancsfájl (. CSX)](#trigger---c-script-example)
-* [F#](#trigger---f-example)
-* [Java](#trigger---java-example)
-* [JavaScript](#trigger---javascript-example)
-* [Python](#trigger---python-example)
-
-### <a name="trigger---c-example"></a>Trigger – C# példa
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet:
 
@@ -70,7 +61,7 @@ public static void Run(
 }
 ```
 
-### <a name="trigger---c-script-example"></a>Trigger – C# parancsfájl-példa
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet.
 
@@ -110,90 +101,7 @@ public static void Run(string myQueueItem,
 }
 ```
 
-### <a name="trigger---f-example"></a>Trigger – F# példa
-
-Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# függvényt](functions-reference-fsharp.md) , amely a kötést használja. A függvény naplóz egy Service Bus üzenetsor-üzenetet. 
-
-Itt található a *function. JSON* fájlban található kötési adat:
-
-```json
-{
-"bindings": [
-    {
-    "queueName": "testqueue",
-    "connection": "MyServiceBusConnection",
-    "name": "myQueueItem",
-    "type": "serviceBusTrigger",
-    "direction": "in"
-    }
-],
-"disabled": false
-}
-```
-
-A F# szkript kódja:
-
-```fsharp
-let Run(myQueueItem: string, log: ILogger) =
-    log.LogInformation(sprintf "F# ServiceBus queue trigger function processed message: %s" myQueueItem)
-```
-
-### <a name="trigger---java-example"></a>Trigger – Java-példa
-
-A következő Java-függvény a [Java functions runtime library](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` megjegyzését használja egy Service Bus üzenetsor-trigger konfigurációjának leírásához. A függvény megragadja a várólistára helyezett üzenetet, és hozzáadja azt a naplókhoz.
-
-```java
-@FunctionName("sbprocessor")
- public void serviceBusProcess(
-    @ServiceBusQueueTrigger(name = "msg",
-                             queueName = "myqueuename",
-                             connection = "myconnvarname") String message,
-   final ExecutionContext context
- ) {
-     context.getLogger().info(message);
- }
-```
-
-A következő Java-függvény egy Service Bus üzenet _felhasználói tulajdonságaiban_ definiált metaadatok lekérését jeleníti meg: 
-```java
-public class ServiceBusQueueTriggerJava {
-    @FunctionName("ServiceBusQueueTriggerJava")
-    public void run(
-            @ServiceBusQueueTrigger(name = "message", queueName = "myqueue", connection = "AzureWebJobsStorage") String message,
-            @BindingName("UserProperties") UserProperties userProperties,
-            final ExecutionContext context
-    ) {
-        context.getLogger().info("Java Service Bus Queue trigger function executed.");
-        context.getLogger().info(message);
-        context.getLogger().info(userProperties.key1);
-        context.getLogger().info(userProperties.key2);
-    }
-}
-
-public class UserProperties {
-    public String key1;
-    public String key2;
-}
-```
-
-A Java-függvények akkor is elindíthatók, amikor egy üzenet bekerül egy Service Bus témakörbe. Az alábbi példa a `@ServiceBusTopicTrigger` jegyzetet használja az trigger konfigurációjának leírásához.
-
-```java
-@FunctionName("sbtopicprocessor")
-    public void run(
-        @ServiceBusTopicTrigger(
-            name = "message",
-            topicName = "mytopicname",
-            subscriptionName = "mysubscription",
-            connection = "ServiceBusConnection"
-        ) String message,
-        final ExecutionContext context
-    ) {
-        context.getLogger().info(message);
-    }
-```
-
-### <a name="trigger---javascript-example"></a>Trigger – JavaScript-példa
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy Service Bus trigger kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény beolvassa az [üzenet metaadatait](#trigger---message-metadata) , és naplóz egy Service Bus üzenetsor-üzenetet. 
 
@@ -226,7 +134,7 @@ module.exports = function(context, myQueueItem) {
 };
 ```
 
-### <a name="trigger---python-example"></a>Trigger – Python-példa
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja, hogyan olvashat egy Service Bus üzenetsor-üzenetet egy trigger használatával.
 
@@ -277,7 +185,44 @@ def main(msg: func.ServiceBusMessage):
     logging.info(result)
 ```
 
-## <a name="trigger---attributes"></a>Trigger – attribútumok
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A következő Java-függvény a [Java functions runtime library](/java/api/overview/azure/functions/runtime) `@ServiceBusQueueTrigger` megjegyzését használja egy Service Bus üzenetsor-trigger konfigurációjának leírásához. A függvény megragadja a várólistára helyezett üzenetet, és hozzáadja azt a naplókhoz.
+
+```java
+@FunctionName("sbprocessor")
+ public void serviceBusProcess(
+    @ServiceBusQueueTrigger(name = "msg",
+                             queueName = "myqueuename",
+                             connection = "myconnvarname") String message,
+   final ExecutionContext context
+ ) {
+     context.getLogger().info(message);
+ }
+```
+
+A Java-függvények akkor is elindíthatók, amikor egy üzenet bekerül egy Service Bus témakörbe. Az alábbi példa a `@ServiceBusTopicTrigger` jegyzetet használja az trigger konfigurációjának leírásához.
+
+```java
+@FunctionName("sbtopicprocessor")
+    public void run(
+        @ServiceBusTopicTrigger(
+            name = "message",
+            topicName = "mytopicname",
+            subscriptionName = "mysubscription",
+            connection = "ServiceBusConnection"
+        ) String message,
+        final ExecutionContext context
+    ) {
+        context.getLogger().info(message);
+    }
+```
+
+---
+
+## <a name="trigger---attributes-and-annotations"></a>Trigger – attribútumok és jegyzetek
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a következő attribútumokat egy Service Bus trigger konfigurálásához:
 
@@ -308,7 +253,7 @@ Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja
   }
   ```
 
-  A teljes példa: [trigger- C# example](#trigger---c-example).
+  A teljes példa: [trigger-example](#trigger---example).
 
 * [ServiceBusAccountAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAccountAttribute.cs)
 
@@ -336,6 +281,28 @@ A használni kívánt Service Bus fiók a következő sorrendben van meghatároz
 * Az osztályra alkalmazott `ServiceBusAccount` attribútum.
 * A "AzureWebJobsServiceBus" alkalmazás beállításai.
 
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az C# attribútumokat a parancsfájl nem támogatja.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A `ServiceBusQueueTrigger` Megjegyzés lehetővé teszi, hogy olyan függvényt hozzon létre, amely egy Service Bus üzenetsor létrehozásakor fut. Az elérhető konfigurációs lehetőségek közé tartozik a várólista neve és a kapcsolatok karakterláncának neve.
+
+A `ServiceBusTopicTrigger` jegyzet lehetővé teszi egy témakör és előfizetés kijelölését a függvényt kiváltó adat megcélzásához.
+
+További részletekért tekintse meg az trigger [példáját](#trigger---example) .
+
+---
+
 ## <a name="trigger---configuration"></a>Trigger – konfiguráció
 
 Az alábbi táblázat a *function. JSON* fájlban és a `ServiceBusTrigger` attribútumban beállított kötési konfigurációs tulajdonságokat ismerteti.
@@ -356,7 +323,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `ServiceBusTrigger` attr
 
 ## <a name="trigger---usage"></a>Trigger – használat
 
-A C# és C# a szkriptben a következő paramétereket használhatja a várólista vagy a témakör üzenetéhez:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+A következő típusparaméter-típusok érhetők el a várólista vagy a témakör üzeneteihez:
 
 * `string` – ha az üzenet szövege.
 * `byte[]` – hasznos a bináris adattároláshoz.
@@ -365,7 +334,32 @@ A C# és C# a szkriptben a következő paramétereket használhatja a várólist
 
 Ezek a paraméterek a Azure Functions 1. x verzióra vonatkoznak. a 2. x és újabb verziók esetében a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) használata `BrokeredMessage`helyett.
 
-A JavaScriptben a `context.bindings.<name from function.json>`használatával férhet hozzá az üzenetsor vagy a témakörhöz. A Service Bus üzenetet karakterlánc vagy JSON-objektumként adja át a függvénynek.
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+A következő típusparaméter-típusok érhetők el a várólista vagy a témakör üzeneteihez:
+
+* `string` – ha az üzenet szövege.
+* `byte[]` – hasznos a bináris adattároláshoz.
+* Egyéni típus – ha az üzenet JSON-t tartalmaz, Azure Functions megpróbálja deszerializálni a JSON-adattípust.
+* `BrokeredMessage` – a deszerializált üzenetet adja a [BrokeredMessage. GetBody\<t > ()](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.getbody?view=azure-dotnet#Microsoft_ServiceBus_Messaging_BrokeredMessage_GetBody__1) metódussal.
+
+Ezek a paraméterek az 1. x Azure Functions-verzióra vonatkoznak. a 2. x és újabb verziók esetében a [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) használata `BrokeredMessage`helyett.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A várólista vagy a témakör üzenete `context.bindings.<name from function.json>`használatával érhető el. A Service Bus üzenetet karakterlánc vagy JSON-objektumként adja át a függvénynek.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+Az üzenetsor-üzenet `func.ServiceBusMessage`ként beírt paraméterrel érhető el a függvény számára. A Service Bus üzenetet karakterlánc vagy JSON-objektumként adja át a függvénynek.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A bejövő Service Bus üzenet `ServiceBusQueueMessage` vagy `ServiceBusTopicMessage` paraméter használatával érhető el.
+
+[A részletekért tekintse meg a példát](#trigger).
+
+---
 
 ## <a name="trigger---poison-messages"></a>Trigger – Megmérgező üzenetek
 
@@ -404,18 +398,9 @@ Tekintse meg a jelen cikk korábbi részében említett tulajdonságokat haszná
 
 A várólista vagy a témakör üzeneteinek küldéséhez használjon Azure Service Bus kimeneti kötést.
 
-## <a name="output---example"></a>Kimenet – példa
+### <a name="output---example"></a>Kimenet – példa
 
-Tekintse meg a nyelvspecifikus példát:
-
-* [C#](#output---c-example)
-* [C#parancsfájl (. CSX)](#output---c-script-example)
-* [F#](#output---f-example)
-* [Java](#output---java-example)
-* [JavaScript](#output---javascript-example)
-* [Python](#output---python-example)
-
-### <a name="output---c-example"></a>Kimenet – C# példa
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az alábbi példa egy olyan [ C# függvényt](functions-dotnet-class-library.md) mutat be, amely Service Bus üzenetsor-üzenetet küld:
 
@@ -429,7 +414,7 @@ public static string ServiceBusOutput([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-### <a name="output---c-script-example"></a>Kimenet – C# parancsfájl – példa
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
 Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ C# parancsfájl-függvényt](functions-reference-csharp.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
 
@@ -480,79 +465,7 @@ public static async Task Run(TimerInfo myTimer, ILogger log, IAsyncCollector<str
 }
 ```
 
-### <a name="output---f-example"></a>Kimenet – F# példa
-
-Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy olyan [ F# parancsfájl-függvényt](functions-reference-fsharp.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
-
-Itt található a *function. JSON* fájlban található kötési adat:
-
-```json
-{
-    "bindings": [
-        {
-            "schedule": "0/15 * * * * *",
-            "name": "myTimer",
-            "runsOnStartup": true,
-            "type": "timerTrigger",
-            "direction": "in"
-        },
-        {
-            "name": "outputSbQueue",
-            "type": "serviceBus",
-            "queueName": "testqueue",
-            "connection": "MyServiceBusConnection",
-            "direction": "out"
-        }
-    ],
-    "disabled": false
-}
-```
-
-Az alábbi F# parancsfájl-kód egyetlen üzenetet hoz létre:
-
-```fsharp
-let Run(myTimer: TimerInfo, log: ILogger, outputSbQueue: byref<string>) =
-    let message = sprintf "Service Bus queue message created at: %s" (DateTime.Now.ToString())
-    log.LogInformation(message)
-    outputSbQueue = message
-```
-
-### <a name="output---java-example"></a>Kimenet – Java-példa
-
-Az alábbi példa egy Java-függvényt mutat be, amely egy üzenetet küld egy Service Bus üzenetsor `myqueue`, ha HTTP-kérést indít el.
-
-```java
-@FunctionName("httpToServiceBusQueue")
-@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
-public String pushToQueue(
-  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
-  final String message,
-  @HttpOutput(name = "response") final OutputBinding<T> result ) {
-      result.setValue(message + " has been sent.");
-      return message;
- }
-```
-
- A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@ServiceBusQueueOutput` megjegyzése a függvény paramétereit, amelyek értékét egy Service Bus-várólistába kívánja írni.  A paraméter típusának `OutputBinding<T>`nak kell lennie, ahol a T egy POJO natív Java-típusa.
-
-A Java functions is írhat Service Bus témakörbe. A következő példa a `@ServiceBusTopicOutput` jegyzetet használja a kimeneti kötés konfigurációjának leírásához. 
-
-```java
-@FunctionName("sbtopicsend")
-    public HttpResponseMessage run(
-            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
-            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
-            final ExecutionContext context) {
-        
-        String name = request.getBody().orElse("Azure Functions");
-
-        message.setValue(name);
-        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
-        
-    }
-```
-
-### <a name="output---javascript-example"></a>Kimenet – JavaScript-példa
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
 
 Az alábbi példa egy Service Bus kimeneti kötést mutat be egy *function. JSON* fájlban, valamint egy [JavaScript-függvényt](functions-reference-node.md) , amely a kötést használja. A függvény egy időzítő trigger használatával küld üzenetsor-üzenetet 15 másodpercenként.
 
@@ -604,7 +517,7 @@ module.exports = function (context, myTimer) {
 };
 ```
 
-### <a name="output---python-example"></a>Kimenet – Python-példa
+# <a name="pythontabpython"></a>[Python](#tab/python)
 
 Az alábbi példa bemutatja, hogyan írhat egy Service Bus üzenetsor-várólistára a Pythonban.
 
@@ -654,7 +567,46 @@ def main(req: func.HttpRequest, msg: func.Out[str]) -> func.HttpResponse:
     return 'OK'
 ```
 
-## <a name="output---attributes"></a>Kimenet – attribútumok
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+Az alábbi példa egy Java-függvényt mutat be, amely egy üzenetet küld egy Service Bus üzenetsor `myqueue`, ha HTTP-kérést indít el.
+
+```java
+@FunctionName("httpToServiceBusQueue")
+@ServiceBusQueueOutput(name = "message", queueName = "myqueue", connection = "AzureServiceBusConnection")
+public String pushToQueue(
+  @HttpTrigger(name = "request", methods = {HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS)
+  final String message,
+  @HttpOutput(name = "response") final OutputBinding<T> result ) {
+      result.setValue(message + " has been sent.");
+      return message;
+ }
+```
+
+ A [Java functions runtime library](/java/api/overview/azure/functions/runtime)-ben használja a `@QueueOutput` megjegyzése a függvény paramétereit, amelyek értékét egy Service Bus-várólistába kívánja írni.  A paraméter típusának `OutputBinding<T>`nak kell lennie, ahol a T egy POJO natív Java-típusa.
+
+A Java functions is írhat Service Bus témakörbe. A következő példa a `@ServiceBusTopicOutput` jegyzetet használja a kimeneti kötés konfigurációjának leírásához. 
+
+```java
+@FunctionName("sbtopicsend")
+    public HttpResponseMessage run(
+            @HttpTrigger(name = "req", methods = {HttpMethod.GET, HttpMethod.POST}, authLevel = AuthorizationLevel.ANONYMOUS) HttpRequestMessage<Optional<String>> request,
+            @ServiceBusTopicOutput(name = "message", topicName = "mytopicname", subscriptionName = "mysubscription", connection = "ServiceBusConnection") OutputBinding<String> message,
+            final ExecutionContext context) {
+        
+        String name = request.getBody().orElse("Azure Functions");
+
+        message.setValue(name);
+        return request.createResponseBuilder(HttpStatus.OK).body("Hello, " + name).build();
+        
+    }
+```
+
+---
+
+## <a name="output---attributes-and-annotations"></a>Kimenet – attribútumok és jegyzetek
+
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
 
 Az [ C# osztályok könyvtáraiban](functions-dotnet-class-library.md)használja a [ServiceBusAttribute](https://github.com/Azure/azure-functions-servicebus-extension/blob/master/src/Microsoft.Azure.WebJobs.Extensions.ServiceBus/ServiceBusAttribute.cs).
 
@@ -680,9 +632,27 @@ public static string Run([HttpTrigger] dynamic input, ILogger log)
 }
 ```
 
-Teljes példa: [kimenet – C# példa](#output---c-example).
+Teljes példa: [kimenet – példa](#output---example).
 
-A `ServiceBusAccount` attribútum segítségével megadhatja az osztály, a metódus vagy a paraméter szintjén használandó Service Bus fiókot.  További információ: [trigger-attributes](#trigger---attributes).
+A `ServiceBusAccount` attribútum segítségével megadhatja az osztály, metódus vagy paraméter szintjén használandó Service Bus fiókot.  További információ: [trigger-attributes](#trigger---attributes-and-annotations).
+
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
+
+Az C# attribútumokat a parancsfájl nem támogatja.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+A JavaScript nem támogatja az attribútumokat.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A Python nem támogatja az attribútumokat.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A `ServiceBusQueueOutput` és `ServiceBusTopicOutput` jegyzetek is elérhetők egy üzenet függvény kimenetként való írásához. Az ezekkel a megjegyzésekkel díszített paramétert olyan `OutputBinding<T>` kell deklarálni, amelyben a `T` az üzenet típusának megfelelő típus.
+
+---
 
 ## <a name="output---configuration"></a>Kimenet – konfiguráció
 
@@ -704,7 +674,9 @@ Az alábbi táblázat a *function. JSON* fájlban és a `ServiceBus` attribútum
 
 Azure Functions 1. x esetén a futtatókörnyezet létrehozza a várólistát, ha az nem létezik, és beállította a `accessRights` a `manage`. A functions 2. x vagy újabb verziójában a várólistának vagy a témakörnek már léteznie kell; Ha olyan üzenetsor vagy témakört ad meg, amely nem létezik, a függvény sikertelen lesz. 
 
-A C# és C# a szkriptben a következő paramétereket használhatja a kimeneti kötéshez:
+# <a name="ctabcsharp"></a>[C#](#tab/csharp)
+
+A kimeneti kötéshez használja a következő paramétereket:
 
 * `out T paramName` - `T` bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
 * `out string` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
@@ -719,9 +691,36 @@ A C# függvények használatakor:
 
 * A munkamenet-azonosító eléréséhez kötést [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) típushoz kell kötni, és a `sessionId` tulajdonságot kell használnia.
 
-A JavaScriptben a `context.bindings.<name from function.json>`használatával férhet hozzá az üzenetsor vagy a témakörhöz. Hozzárendelhet egy karakterláncot, egy bájt tömböt vagy egy, a JSON-ba szerializált JavaScript-objektumot `context.binding.<name>`.
+# <a name="c-scripttabcsharp-script"></a>[C#Parancsfájl](#tab/csharp-script)
 
-Ha nemC# nyelven szeretne üzenetet küldeni egy munkamenet-kompatibilis várólistához, használja a [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) -t a beépített kimeneti kötés helyett.
+A kimeneti kötéshez használja a következő paramétereket:
+
+* `out T paramName` - `T` bármely JSON-szerializálható típus lehet. Ha a paraméter értéke null, ha a függvény kilép, a függvény Null objektummal hozza létre az üzenetet.
+* `out string` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out byte[]` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet.
+* `out BrokeredMessage` – ha a paraméter értéke null, ha a függvény kilép, a függvények nem hoznak létre üzenetet (az 1. x függvények esetében).
+* `out Message` – ha a paraméter értéke null, ha a függvény kilép, a functions nem hoz létre üzenetet (a 2. x és újabb függvények esetében).
+* `ICollector<T>` vagy `IAsyncCollector<T>` – több üzenet létrehozásához. A `Add` metódus meghívásakor létrejön egy üzenet.
+
+A C# függvények használatakor:
+
+* Az aszinkron függvények visszatérési értéknek vagy `IAsyncCollector`nak kell lennie `out` paraméter helyett.
+
+* A munkamenet-azonosító eléréséhez kötést [`Message`](https://docs.microsoft.com/dotnet/api/microsoft.azure.servicebus.message) típushoz kell kötni, és a `sessionId` tulajdonságot kell használnia.
+
+# <a name="javascripttabjavascript"></a>[JavaScript](#tab/javascript)
+
+Az üzenetsor vagy témakör elérése `context.bindings.<name from function.json>`használatával. Hozzárendelhet egy karakterláncot, egy bájt tömböt vagy egy, a JSON-ba szerializált JavaScript-objektumot `context.binding.<name>`.
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+
+A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) -t.
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](https://docs.microsoft.com/azure/service-bus-messaging) -t.
+
+---
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 

@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 54bbc46c703646f4680f6dc22d5c4b6781614ae7
-ms.sourcegitcommit: 541e6139c535d38b9b4d4c5e3bfa7eef02446fdc
+ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75667541"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547421"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -146,7 +146,7 @@ using Microsoft.Azure.WebJobs.Extensions.Storage;
 
 A `msg` paraméter egy `ICollector<T>` típus, amely a függvény befejeződése után kimeneti kötésbe írt üzenetek gyűjteményét jelöli. Egy vagy több üzenetet ad hozzá a gyűjteményhez. Ezeket az üzeneteket a rendszer a függvény befejeződése után elküldi a várólistára.
 
-További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue.md#output---c-example) dokumentációjában talál.
+További információt a [várólista-tároló kimeneti kötési](functions-bindings-storage-queue.md#output) dokumentációjában talál.
 
 # <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
 
@@ -184,7 +184,7 @@ A függvény kódjában a `msg` kötés a `context`ból érhető el, az alábbi 
 context.bindings.msg = "Name passed to the function: " req.query.name;
 ```
 
-További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue.md#output---javascript-example) referenciáját.
+További információért lásd a várólista- [tároló kimeneti kötési](functions-bindings-storage-queue.md#output) referenciáját.
 
 ---
 

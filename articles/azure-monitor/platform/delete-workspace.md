@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: 739f97e912a33402aa7482e59dd78f5aeb005772
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 03be29cde42478abf32492f55a296aeee0a4a478
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75944431"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547251"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
 
@@ -57,6 +57,29 @@ A munkaterületeket a [PowerShell](https://docs.microsoft.com/powershell/module/
 ```PowerShell
 PS C:\>Remove-AzOperationalInsightsWorkspace -ResourceGroupName "resource-group-name" -Name "workspace-name"
 ```
+
+## <a name="permanent-workspace-delete"></a>Állandó munkaterület törlése
+Előfordulhat, hogy a Soft-Delete metódus nem fér el bizonyos helyzetekben, például a fejlesztéshez és a teszteléshez, ahol meg kell ismételnie egy központi telepítést ugyanazzal a beállításokkal és a munkaterület nevével. Ilyen esetekben véglegesen törölheti a munkaterületet, és "felülbírálhatja" a Soft-delete időszakot. Az állandó munkaterület törlési művelete felszabadítja a munkahely nevét, és létrehozhat egy új munkaterületet ugyanazzal a névvel.
+
+
+> [!IMPORTANT]
+> Körültekintően járjon el, ha véglegesen törli a munkaterületet, mert a művelet visszavonhatatlan, és a munkaterület és az adatai nem állíthatók vissza.
+
+Az állandó munkaterület törlése jelenleg REST APIon keresztül végezhető el.
+
+> [!NOTE]
+> Minden API-kérésnek tartalmaznia kell egy tulajdonosi engedélyezési jogkivonatot a kérelem fejlécében.
+>
+> A jogkivonat beszerzéséhez használja a következőket:
+> - [Alkalmazásregisztrációk](https://docs.microsoft.com/graph/auth/auth-concepts#access-tokens)
+> - Navigáljon a Azure Portal a fejlesztői konzolján (F12) a böngészőben. Megkeresi a **Batch?** példányokat a hitelesítési karakterlánchoz a **kérelmek fejléce**alatt. Ez lesz a minta *engedélyezési: tulajdonos <token>* . Másolja és adja hozzá ezt az API-híváshoz, ahogy az a példákban is látható.
+> - Navigáljon az Azure REST dokumentációs webhelyére. kattintson a **kipróbálás** bármely API-ra lehetőségre, másolja a tulajdonosi jogkivonatot, és adja hozzá az API-híváshoz.
+A munkaterület végleges törléséhez használja a [munkaterületeket – törölje a REST API-]( https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete) hívást egy kényszerítő címkével:
+>
+> ```rst
+> DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
+> Authorization: Bearer eyJ0eXAiOiJKV1Qi….
+> ```
 
 ## <a name="recover-workspace"></a>Munkaterület helyreállítása
 

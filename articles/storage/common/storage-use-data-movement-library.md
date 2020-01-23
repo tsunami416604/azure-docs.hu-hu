@@ -10,16 +10,16 @@ ms.topic: how-to
 ms.date: 12/04/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 5fe1e45f2ff80c1a212009291ab880a57f347fdf
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: ce7f6320ffa4d3e8c258c9d05542f12079ee355d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978391"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509002"
 ---
 # <a name="transfer-data-with-the-data-movement-library"></a>Adatok átvitele az adatátviteli kódtárral
 
-Az Azure Storage adatátviteli könyvtára egy többplatformos nyílt forráskódú kódtár, amely nagy teljesítményű blobok és fájlok feltöltésére, letöltésére és másolására szolgál. Ez a könyvtár a [AzCopy](../storage-use-azcopy.md)hatáskörök alapszintű adatáthelyezési keretrendszere. Az adatáthelyezési függvénytár olyan kényelmes metódusokat biztosít, amelyek nem érhetők el az Azure Storage .NET-hez készült ügyféloldali kódtáraban. Ezekkel a módszerekkel beállíthatja a párhuzamos műveletek számát, nyomon követheti a folyamat előrehaladását, egyszerűen folytathatja a megszakított átvitelt, és még sok más lehetőséget is.
+Az Azure Storage adatátviteli könyvtára egy többplatformos nyílt forráskódú kódtár, amely nagy teljesítményű blobok és fájlok feltöltésére, letöltésére és másolására szolgál. Az adatáthelyezési függvénytár olyan kényelmes metódusokat biztosít, amelyek nem érhetők el az Azure Storage .NET-hez készült ügyféloldali kódtáraban. Ezekkel a módszerekkel beállíthatja a párhuzamos műveletek számát, nyomon követheti a folyamat előrehaladását, egyszerűen folytathatja a megszakított átvitelt, és még sok más lehetőséget is.
 
 Ez a könyvtár a .NET Core-t is használja, ami azt jelenti, hogy Windows, Linux és macOS rendszerű .NET-alkalmazások létrehozásakor használható. Ha többet szeretne megtudni a .NET Core-ról, tekintse meg a [.net Core dokumentációját](https://dotnet.github.io/). Ez a könyvtár a Windows hagyományos .NET-keretrendszerbeli alkalmazásaihoz is használható.
 
