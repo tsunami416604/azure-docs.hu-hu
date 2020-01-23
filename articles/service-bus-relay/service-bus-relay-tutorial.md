@@ -1,6 +1,6 @@
 ---
 title: Helyszíni WCF REST-szolgáltatás elérhetővé tétele az ügyfeleknek a Azure Relay használatával
-description: 'Oktatóanyag: ügyfél-és szolgáltatásalkalmazás létrehozása WCF Relay használatával.'
+description: Ez az oktatóanyag azt ismerteti, hogyan tehet elérhetővé egy helyszíni WCF REST-szolgáltatást egy külső ügyfél számára az Azure WCF Relay használatával.
 services: service-bus-relay
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/05/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: ee090ca0d7bbdad70147b85644952143c086d336
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 551c8e662669737d9d074a69cb03d6060ab87ad5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452292"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513082"
 ---
 # <a name="tutorial-expose-an-on-premises-wcf-rest-service-to-external-client-by-using-azure-wcf-relay"></a>Oktatóanyag: helyszíni WCF REST-szolgáltatás közzététele külső ügyfél számára az Azure WCF Relay használatával
 
