@@ -16,6 +16,8 @@
       href: azure-resource-manager-security-controls.md
     - name: Erőforrás-szolgáltatók szolgáltatás alapján
       href: azure-services-resource-providers.md
+    - name: Bővítményerőforrás-típusok
+      href: extension-resource-types.md
     - name: Erőforráspéldányra vonatkozó korlátozás
       href: resources-without-resource-group-limit.md
 - name: Útmutató
@@ -68,44 +70,44 @@
           href: tag-resources.md
         - name: Címketámogatás
           href: tag-support.md
-    - name: Kezelés
+    - name: Erőforráscsoportok kezelése
       items:
-        - name: Erőforráscsoportok kezelése
-          items:
-            - name: Az Azure Portal használata
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-portal.md
-            - name: Az Azure parancssori felületének használata
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-cli.md
-            - name: Azure PowerShell használatával
-              displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
-              href: manage-resource-groups-powershell.md
-        - name: Erőforrások kezelése
-          items:
-            - name: Az Azure Portal használata
-              displayName: 'open,delete,deploy,move,lock,tag,monitor'
-              href: manage-resources-portal.md
-            - name: Az Azure parancssori felületének használata
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-cli.md
-            - name: Azure PowerShell használatával
-              displayName: 'open,delete,deploy,move,lock,tag'
-              href: manage-resources-powershell.md
-        - name: Erőforráscsoportok és erőforrások törlése
-          href: delete-resource-group.md
-        - name: Erőforrások zárolása
-          href: lock-resources.md
-        - name: EA-előfizetések létrehozása
+        - name: Azure Portal
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-portal.md
+        - name: Azure CLI
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-cli.md
+        - name: Azure PowerShell
+          displayName: 'create,list,open,delete,deploy,move,lock,tag,export'
+          href: manage-resource-groups-powershell.md
+    - name: Erőforrások kezelése
+      items:
+        - name: Azure Portal
+          displayName: 'open,delete,deploy,move,lock,tag,monitor'
+          href: manage-resources-portal.md
+        - name: Azure CLI
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-cli.md
+        - name: Azure PowerShell
+          displayName: 'open,delete,deploy,move,lock,tag'
+          href: manage-resources-powershell.md
+    - name: Nagyvállalati előfizetések
+      items:
+        - name: Létrehozás
           href: programmatically-create-subscription.md
-        - name: Hozzáférés biztosítása EA-előfizetések létrehozásához
+        - name: Hozzáférés biztosítása létrehozáshoz
           href: grant-access-to-create-subscription.md
-        - name: Hitelesítés bérlőkön keresztül
-          href: authenticate-multi-tenant.md
-    - name: Tevékenységnaplók megtekintése
-      href: view-activity-logs.md
     - name: Erőforrás-szolgáltatók és típusaik
       href: resource-providers-and-types.md
+    - name: Erőforráscsoportok és erőforrások törlése
+      href: delete-resource-group.md
+    - name: Erőforrások zárolása
+      href: lock-resources.md
+    - name: Hitelesítés bérlőkön keresztül
+      href: authenticate-multi-tenant.md
+    - name: Tevékenységnaplók megtekintése
+      href: view-activity-logs.md
     - name: Kérelmek szabályozása
       href: request-limits-and-throttling.md
     - name: Aszinkron műveletek követése

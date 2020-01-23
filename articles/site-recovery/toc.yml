@@ -309,7 +309,7 @@
                   href: vmware-physical-mobility-service-overview.md
                 - name: A mobilitási szolgáltatás leküldéses telepítésének előkészítése
                   href: vmware-azure-install-mobility-service.md
-                - name: A mobilitási szolgáltatás üzembe helyezése a System Center Configuration Managerrel
+                - name: Mobilitási szolgáltatás üzembe helyezése a Configuration Managerrel
                   href: vmware-azure-mobility-install-configuration-mgr.md
         - name: Feladatátvétel és feladat-visszavétel futtatása
           href: physical-to-azure-failover-failback.md
