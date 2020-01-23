@@ -1,6 +1,6 @@
 ---
-title: Oszlopszintű biztonság
-description: Az oszlop szintű biztonság (CLS) lehetővé teszi az ügyfelek számára, hogy a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák az adatbázis-táblázat oszlopaihoz való hozzáférést. A CLS leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. A CLS lehetővé teszi az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását.
+title: Mi a SQL Data Warehousehoz tartozó oszlop szintű biztonság?
+description: Az oszlop szintű biztonság lehetővé teszi az ügyfelek számára, hogy az adatbázis-táblázat oszlopaihoz való hozzáférést a felhasználó végrehajtási környezete vagy csoporttagság alapján szabályozzák, leegyszerűsítve az alkalmazás biztonságának megtervezését és kódolását, és lehetővé teszik az oszlopokra vonatkozó korlátozások megvalósítását. hozzáférés.
 services: sql-data-warehouse
 author: julieMSFT
 manager: craigg
@@ -11,21 +11,24 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan, carlrab
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85f705022a0ff5970d30c61206d4f2631254b7ce
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 344701989a753e17d8a026f6bb771a6030bdb71f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74077107"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513048"
 ---
 # <a name="column-level-security"></a>Oszlop szintű biztonság
-Az oszlop szintű biztonság (CLS) lehetővé teszi az ügyfelek számára, hogy a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák az adatbázis-táblázat oszlopaihoz való hozzáférést.
-Frissítsen az alábbi videóra – mivel ez a videó közzé lett téve a [sor szintjének biztonsága](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) SQL Data Warehouseban is elérhető. 
+
+Az oszlop szintű biztonság lehetővé teszi, hogy az ügyfelek a felhasználó végrehajtási környezete vagy a csoporttagság alapján szabályozzák a Table oszlopokhoz való hozzáférést.
+
+
 > [!VIDEO https://www.youtube.com/embed/OU_ESg0g8r8]
+Mivel ez a videó az SQL Data Warehouse számára elérhetővé vált a [sor szintjének biztonsági](/sql/relational-databases/security/row-level-security?toc=%2Fazure%2Fsql-data-warehouse%2Ftoc&view=sql-server-2017) feladásával. 
 
-A CLS leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását. A CLS lehetővé teszi a bizalmas adatok védelme érdekében az oszlopok hozzáférésére vonatkozó korlátozások megvalósítását. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden olyan alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás a biztonsági rendszerek megbízhatóságát és megbízhatóságát teszi lehetővé a teljes biztonsági rendszerek felületének csökkentésével. Emellett a CLS is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
+Az oszlop szintű biztonság leegyszerűsíti az alkalmazás biztonságának megtervezését és kódolását, ami lehetővé teszi az oszlopokhoz való hozzáférés korlátozását a bizalmas adatok védelme érdekében. Tegyük fel például, hogy egy adott felhasználó csak a saját részlegéhez tartozó táblázat bizonyos oszlopaihoz fér hozzá. A hozzáférés-korlátozási logika az adatbázis-szinten található, nem pedig egy másik alkalmazási szinten lévő adatoktól. Az adatbázis minden alkalommal alkalmazza a hozzáférési korlátozásokat, amikor az adathozzáférés bármely szintjéről megkísérelhető. Ez a korlátozás megbízhatóbb és robusztus biztonságot tesz lehetővé azáltal, hogy csökkenti az általános biztonsági rendszerek felületi területét. Emellett az oszlop szintű biztonság is szükségtelenné teszi a nézetek bevezetését, hogy kiszűrje a hozzáférési korlátozásokat a felhasználók számára.
 
-A CLS-T a [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (HRE) hitelesítés is támogatott.
+Az oszlop szintű biztonságot a [Grant](https://docs.microsoft.com/sql/t-sql/statements/grant-transact-sql) T-SQL-utasítással implementálhatja. Ezzel a mechanizmussal az SQL és a Azure Active Directory (HRE) hitelesítés is támogatott.
 
 ![CLS](./media/column-level-security/cls.png)
 
@@ -48,9 +51,9 @@ GRANT <permission> [ ,...n ] ON
 ```
 
 ## <a name="example"></a>Példa
-Az alábbi példa bemutatja, hogyan korlátozhatja a "tesztfelhasználó" a "tagság" tábla "SSN" oszlopának elérését:
+Az alábbi példa bemutatja, hogyan korlátozható `TestUser` a `Membership` tábla `SSN` oszlopának elérésére:
 
-A "tagság" tábla létrehozása a társadalombiztosítási számok tárolására szolgáló SSN-oszloppal:
+Hozzon létre `Membership` táblát a társadalombiztosítási számok tárolására szolgáló SSN oszlop használatával:
 
 ```sql
 CREATE TABLE Membership
@@ -62,13 +65,13 @@ CREATE TABLE Membership
    Email varchar(100) NULL);
 ```
 
-A "tesztfelhasználó" engedélyezése az összes oszlop eléréséhez, kivéve az SSN oszlopot, amely bizalmas adatokat tartalmaz:
+A bizalmas adatokkal rendelkező SSN oszlop kivételével az összes oszlop elérésének engedélyezése a `TestUser` számára:
 
 ```sql
 GRANT SELECT ON Membership(MemberID, FirstName, LastName, Phone, Email) TO TestUser;
 ```
 
-A "tesztfelhasználó" művelettel végrehajtott lekérdezések sikertelenek lesznek, ha tartalmazzák a SSN oszlopot:
+A `TestUser`ként végrehajtott lekérdezések sikertelenek lesznek, ha tartalmazzák a SSN oszlopot:
 
 ```sql
 SELECT * FROM Membership;
@@ -78,6 +81,8 @@ The SELECT permission was denied on the column 'SSN' of the object 'Membership',
 ```
 
 ## <a name="use-cases"></a>Használati példák
-Néhány példa arra, hogyan használják a CLS-t a mai napon:
+
+Néhány példa arra, hogyan használják az oszlop szintű biztonságot a mai napon:
+
 - A pénzügyi szolgáltatások vállalata csak a fiókok kezelői számára teszi lehetővé, hogy hozzáférjenek az ügyfél társadalombiztosítási számaihoz (SSN), a telefonszámokhoz és az egyéb személyazonosításra alkalmas adatokhoz.
-- Az állapotfigyelő szolgáltató csak az orvosok és ápolók számára teszi lehetővé, hogy hozzáférjenek a bizalmas orvosi adatokhoz, miközben nem engedélyezik a számlázási részleg tagjai számára az adatok megtekintését.
+- Az egészségügyi szolgáltató lehetővé teszi, hogy csak az orvosok és ápolók férhessenek hozzá bizalmas egészségügyi adatokhoz, miközben a számlázási részleg tagjai nem tekintik meg ezeket az adatokat.

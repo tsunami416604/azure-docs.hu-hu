@@ -9,14 +9,14 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: article
-ms.date: 10/08/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: f462a3743eb33bd33e2d392eba1c5944f40ade4f
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: b08c3854ef330081b4c55331cb410c5925f00dec
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74704528"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512759"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Jelszó-és fiókzárolási házirendek a felügyelt tartományokban
 
@@ -65,7 +65,7 @@ Ezekkel az alapértelmezett beállításokkal a felhasználói fiókok 30 percig
 
 A fiókzárolás csak a felügyelt tartományon belül történik. A felhasználói fiókok csak az Azure AD DSban vannak kizárva, és csak a felügyelt tartományon végrehajtott sikertelen bejelentkezési kísérletek miatt. Az Azure AD-ból vagy a helyszíni környezetből szinkronizált felhasználói fiókok nincsenek kizárva a forrás-címtárakban, csak az Azure AD DSban.
 
-Ha rendelkezik egy Azure AD-beli jelszavas házirenddel, amely 90 napnál hosszabb ideig adja meg a jelszót, akkor a rendszer az Azure AD DS alapértelmezett házirendjére alkalmazza a jelszót. Beállíthatja, hogy az Azure-AD DS eltérő jelszavakat adjon meg egy egyéni jelszóházirend számára. Ügyeljen arra, hogy az Azure AD DS jelszóházirend esetében az Azure AD-ban vagy a helyszíni AD DS-környezetben rövidebb jelszóval rendelkezzen. Ebben az esetben előfordulhat, hogy a felhasználó jelszava lejár az Azure-AD DS, mielőtt a rendszer megkéri az Azure AD-ben a helyszíni AD DS-környezetben való módosítását.
+Ha rendelkezik egy Azure AD-beli jelszavas házirenddel, amely 90 napnál hosszabb ideig adja meg a jelszót, akkor a rendszer az Azure AD DS alapértelmezett házirendjére alkalmazza a jelszót. Beállíthatja, hogy az Azure-AD DS eltérő jelszavakat adjon meg egy egyéni jelszóházirend számára. Ügyeljen arra, hogy az Azure AD DS jelszóházirend esetében az Azure AD-ban vagy a helyszíni AD DS-környezetben rövidebb jelszóval rendelkezzen. Ebben az esetben előfordulhat, hogy a felhasználó jelszava lejár az Azure AD DSban, mielőtt a rendszer megkéri az Azure AD-ben vagy egy helyszíni AD DS-környezetben való megváltoztatását.
 
 Az Azure AD DS felügyelt tartományokban manuálisan létrehozott felhasználói fiókok esetében az alapértelmezett házirend az alábbi további jelszavas beállításokat is alkalmazza. Ezek a beállítások nem vonatkoznak az Azure AD-ből szinkronizált felhasználói fiókokra, mivel a felhasználó nem tudja közvetlenül frissíteni a jelszavát az Azure AD DSban.
 
@@ -103,7 +103,7 @@ Egyéni jelszóházirend létrehozásához a Active Directory felügyeleti eszk�
 1. Szükség szerint szerkessze a többi jelszóházirend-beállítást. Jegyezze fel a következő kulcsfontosságú pontokat:
 
     * A beállítások, például a jelszó bonyolultsága, az életkor vagy a lejárati idő csak az Azure AD DS felügyelt tartományában manuálisan létrehozott felhasználók számára.
-    * A fiókzárolási beállítások az összes felhasználóra érvényesek, de csak a felügyelt tartományon belül lépnek életbe.
+    * A fiókzárolási beállítások minden felhasználóra érvényesek, de csak a felügyelt tartományon belül lépnek életbe, és nem az Azure AD-ben.
 
     ![Egyéni részletes jelszóházirendek létrehozása](./media/how-to/custom-fgpp.png)
 

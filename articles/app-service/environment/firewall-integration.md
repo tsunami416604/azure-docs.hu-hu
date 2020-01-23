@@ -4,30 +4,27 @@ description: Ismerje meg, hogyan integrálható a Azure Firewall a kimenő forga
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 08/31/2019
+ms.date: 01/14/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: c78749d9d0f0bd4b1dadb8dc0d2f6dd84408a95e
-ms.sourcegitcommit: 48b7a50fc2d19c7382916cb2f591507b1c784ee5
+ms.openlocfilehash: 6b9633e8a37e665577f1e69e8008a64b7e139c1c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74687229"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513344"
 ---
 # <a name="locking-down-an-app-service-environment"></a>App Service Environment zárolása
 
 A App Service Environment (beadási) számos külső függőséggel rendelkezik, amelyekhez hozzáférést igényel ahhoz, hogy megfelelően működjön. A beszállító az Azure Virtual Networkban (VNet) él. Az ügyfeleknek engedélyezniük kell a bevezető függőségi forgalmat, ami olyan ügyfelek számára jelent problémát, akik az összes kimenő forgalomból le szeretnék zárni a VNet.
 
-Számos bejövő függőség van. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és közzé lesznek téve a [app Service Environment felügyeleti címek](https://docs.microsoft.com/azure/app-service/environment/management-addresses) dokumentumban. Ezekkel az adatokkal hálózati biztonsági csoportokra vonatkozó szabályokat hozhat létre a bejövő forgalom biztonságossá tételéhez.
+Számos bejövő végpontot használnak a bevezetéshez. A bejövő felügyeleti forgalmat nem lehet tűzfal-eszközön keresztül elküldeni. A forgalomhoz tartozó forrásoldali címek ismertek, és közzé lesznek téve a [app Service Environment felügyeleti címek](https://docs.microsoft.com/azure/app-service/environment/management-addresses) dokumentumban. Létezik egy AppServiceManagement nevű szolgáltatási címke is, amely hálózati biztonsági csoportokkal (NSG) is használható a bejövő forgalom biztonságossá tételéhez.
 
-A kihelyezett kifelé irányuló kimenő függőségek szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek a mögöttes statikus címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok (NSG-EK) nem használhatók a kimenő forgalom leállítására egy központból. A címek elég gyakran változnak, hogy az aktuális felbontáson alapuló szabályok nem állíthatók be, és ezt a NSG létrehozásához használja. 
+A kihelyezett kifelé irányuló kimenő függőségek szinte teljesen meg vannak határozva teljes TARTOMÁNYNEVEk használatával, amelyek nem rendelkeznek a mögöttes statikus címekkel. A statikus címek hiánya azt jelenti, hogy a hálózati biztonsági csoportok nem használhatók a kifelé irányuló kimenő forgalom zárolására. A címek elég gyakran változnak, hogy az aktuális felbontáson alapuló szabályok nem állíthatók be, és ezt a NSG létrehozásához használja. 
 
 A kimenő címek biztonságossá tételére szolgáló megoldás egy olyan tűzfal-eszköz használata, amely a tartománynevek alapján képes a kimenő forgalom vezérlésére. A Azure Firewall a cél teljes tartományneve alapján korlátozhatja a kimenő HTTP-és HTTPS-forgalmat.  
 
-> [!NOTE]
-> Jelenleg nem tudjuk teljes mértékben zárolni a kimenő kapcsolatokat.
-
-## <a name="system-architecture"></a>Rendszerarchitektúra
+## <a name="system-architecture"></a>Rendszer-architektúra
 
 Egy olyan, a tűzfalon áthaladó kimenő forgalommal rendelkező bevezetéshez, amely az útvonalakat a bevezető alhálózaton át kívánja módosítani. Az útvonalak IP-szinten működnek. Ha nem érdekli az útvonalak meghatározása, a TCP-válasz forgalmát más címről is kikényszerítheti a forrásra. Ha a válasz címe eltér a címek adatforgalmával, akkor a problémát aszimmetrikus útválasztásnak nevezzük, és a rendszer megszakítja a TCP-t.
 
@@ -42,6 +39,12 @@ A befelé irányuló adatforgalomnak a következő egyezményeknek kell megfelel
 
 ![BeAzure Firewalli kapcsolatok folyamata][5]
 
+## <a name="locking-down-inbound-management-traffic"></a>Bejövő felügyeleti forgalom zárolása
+
+Ha a betanító alhálózat még nincs hozzárendelve NSG, hozzon létre egyet. A NSG belül állítsa be az első szabályt, amely engedélyezi a forgalmat a AppServiceManagement nevű szolgáltatási címkétől az 454-es, 455-as porton. Ez minden, ami szükséges a nyilvános IP-címekről a bevezetésének kezeléséhez. A szolgáltatás címkéje mögött található címek csak a Azure App Service felügyeletére használhatók. Az ezeken a kapcsolatokon áthaladó felügyeleti forgalom titkosítva van, és biztonságos a hitelesítési tanúsítványokkal. Az ezen a csatornán jellemző forgalom olyan dolgokat tartalmaz, mint például az ügyfél által kezdeményezett parancsok és az állapot-mintavétel. 
+
+A portálon egy új alhálózattal létrehozott ASE egy olyan NSG készülnek, amely tartalmazza a AppServiceManagement címke engedélyezési szabályát.  
+
 ## <a name="configuring-azure-firewall-with-your-ase"></a>Azure Firewall konfigurálása a beadással 
 
 A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalom zárolásának lépései a következők:
@@ -51,14 +54,19 @@ A meglévő és a Azure Firewall rendszerből kifelé irányuló kimenő forgalo
    ![szolgáltatási végpontok kiválasztása][2]
   
 1. Hozzon létre egy AzureFirewallSubnet nevű alhálózatot abban a VNet, ahol a központjának létezik. A Azure Firewall létrehozásához kövesse az [Azure Firewall dokumentációjának](https://docs.microsoft.com/azure/firewall/) utasításait.
+
 1. Az Azure Firewall felhasználói felület > szabályok > az alkalmazási szabályok gyűjteménye területen válassza az alkalmazás-szabály gyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A FQDN-címkék szakaszban adjon meg egy nevet, állítsa be a címeket a * értékre, és válassza ki a App Service Environment FQDN címkét és a Windows Update. 
    
    ![Alkalmazás-szabály hozzáadása][1]
    
-1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban adja meg a nevet, válassza a **bármely**lehetőséget, állítsa be a forrás-és célcím beállítást, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását.
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban az IP-címek területen adjon meg egy nevet, válasszon ki egy **tetszőleges**ptocol, állítsa be a forrás-és célcím beállítást, majd állítsa a portokat 123-re. Ez a szabály lehetővé teszi, hogy a rendszerállapot-szinkronizálást az NTP használatával hajtsa végre. Hozzon létre egy másik szabályt úgy, hogy az a 12000-es porttal azonos módon segítse a rendszerproblémák osztályozását. 
 
    ![NTP hálózati szabály hozzáadása][3]
+   
+1. A Azure Firewall felhasználói felület > szabályok > hálózati szabály gyűjteménye területen válassza a hálózati szabálygyűjtemény hozzáadása elemet. Adjon meg egy nevet, egy prioritást, és állítsa be az Engedélyezés lehetőséget. A szabályok szakaszban a szolgáltatás címkék területén adjon meg egy nevet, válasszon ki egy **tetszőleges**protokollt, állítsa * a forrás címekre, válassza ki a AzureMonitor szolgáltatási címkéjét, és állítsa a portokat 80, 443 értékre. Ez a szabály lehetővé teszi, hogy a Azure Monitor állapot-és mérőszámokkal kapcsolatos információkat adjon meg.
 
+   ![NTP szolgáltatási címke hálózati szabályának hozzáadása][6]
+   
 1. Hozzon létre egy útválasztási táblázatot a [app Service Environment felügyeleti címekből]( https://docs.microsoft.com/azure/app-service/environment/management-addresses) származó felügyeleti címekkel az Internet következő ugrásával. Az útválasztási tábla bejegyzéseinek elkerülheti az aszimmetrikus útválasztási problémákat. Vegyen fel útvonalakat az IP-címek függőségeinél alább látható, az Internet következő ugrásával elérhető IP-címek függőségeibe. Adjon hozzá egy virtuális berendezési útvonalat a 0.0.0.0/0 útválasztási táblázathoz, és a következő ugrás a Azure Firewall magánhálózati IP-címe legyen. 
 
    ![Útválasztási táblázat létrehozása][4]
@@ -248,7 +256,25 @@ A Azure Firewall automatikusan megkapja a teljes tartománynév-címkékkel konf
 
 ## <a name="us-gov-dependencies"></a>US Gov függőségek
 
-US Gov a Storage, az SQL és az Event hub szolgáltatásbeli végpontokat is be kell állítania.  A Azure Firewall a jelen dokumentum korábbi részében található utasításokkal is használhatja. Ha saját kimenő tűzfal eszközét kell használnia, a végpontok alább láthatók.
+US Gov régiókban található ASE esetében kövesse a jelen dokumentum [Azure Firewall konfigurálása](https://docs.microsoft.com/azure/app-service/environment/firewall-integration#configuring-azure-firewall-with-your-ase) a beadással című szakaszának utasításait, és konfigurálja az Azure Firewallt a központhoz.
+
+Ha a Azure Firewallon kívül más eszközt szeretne használni US Gov 
+
+* A szolgáltatási végponttal kompatibilis szolgáltatásokat a szolgáltatási végpontokkal kell konfigurálni.
+* Az FQDN HTTP-/HTTPS-végpontok a tűzfal eszközén helyezhetők el.
+* A helyettesítő HTTP-/HTTPS-végpontok olyan függőségek, amelyek számos minősítőtől függően eltérőek lehetnek a kiszervezettől.
+
+A Linux US Gov régióban nem érhető el, ezért nem választható konfigurációként szerepel.
+
+#### <a name="service-endpoint-capable-dependencies"></a>Szolgáltatási végpontok számára alkalmas függőségek ####
+
+| Végpont |
+|----------|
+| Azure SQL |
+| Azure Storage |
+| Azure Event Hub |
+
+#### <a name="dependencies"></a>Függőségek ####
 
 | Végpont |
 |----------|
@@ -375,3 +401,4 @@ US Gov a Storage, az SQL és az Event hub szolgáltatásbeli végpontokat is be 
 [3]: ./media/firewall-integration/firewall-ntprule.png
 [4]: ./media/firewall-integration/firewall-routetable.png
 [5]: ./media/firewall-integration/firewall-topology.png
+[6]: ./media/firewall-integration/firewall-ntprule-monitor.png

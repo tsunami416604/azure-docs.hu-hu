@@ -1,5 +1,5 @@
 ---
-title: Video Indexer Üzletmenet-folytonosság és vész-helyreállítási (BCDR) – Azure | Microsoft Docs
+title: Video Indexer Üzletmenet-folytonosság és vész-helyreállítás – Azure
 description: Megtudhatja, hogyan hajthat végre feladatátvételt másodlagos Video Indexer-fiókra, ha regionális adatközpont-leállás vagy-meghibásodás történik.
 services: media-services
 documentationcenter: ''
@@ -13,12 +13,12 @@ ms.topic: article
 ms.custom: ''
 ms.date: 07/29/2019
 ms.author: juliako
-ms.openlocfilehash: ce788b4640f0a6c6f25b3280ce4f52fd018d1699
-ms.sourcegitcommit: fecb6bae3f29633c222f0b2680475f8f7d7a8885
+ms.openlocfilehash: 2f54c340226a9ea78643df8e0a984c8ed8475c94
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2019
-ms.locfileid: "68668306"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513575"
 ---
 # <a name="handle-video-indexer-business-continuity-and-disaster-recovery"></a>Kezelheti Video Indexer üzletmenet folytonosságát és a vész-helyreállítást
 
@@ -40,8 +40,8 @@ A BCDR megvalósítása érdekében két Video Indexer fiókkal kell rendelkezni
 > [!TIP]
 > A BCDR automatizálásához állítsa be a tevékenységek naplójának riasztásait a szolgáltatás állapotával kapcsolatos értesítésekhez, mint a [szolgáltatási értesítéseken a létrehozási tevékenység naplójának riasztásai](../../service-health/alerts-activity-log-service-notifications.md).
 
-További információ a több bérlő használatáról: [több bérlő kezelése](manage-multiple-tenants.md). A BCDR megvalósításához válasszon a következő két lehetőség közül: [Video Indexer fiók/](manage-multiple-tenants.md#video-indexer-account-per-tenant) bérlő vagy [Azure-előfizetés](manage-multiple-tenants.md#azure-subscription-per-tenant)
+További információ a több bérlő használatáról: [több bérlő kezelése](manage-multiple-tenants.md). A BCDR megvalósításához válasszon egyet a következő két lehetőség közül: [video Indexer fiók/bérlő](manage-multiple-tenants.md#video-indexer-account-per-tenant) vagy [Azure-előfizetés bérlőn](manage-multiple-tenants.md#azure-subscription-per-tenant).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Azure-hoz csatlakoztatott video Indexer-fiók kezelése](manage-account-connected-to-azure.md).

@@ -1,6 +1,6 @@
 ---
-title: Az Azure Event Grid-sémát a IoT Hub |} A Microsoft Docs
-description: Az esemény sémája formátum és az IoT Hub tulajdonságainak referenciaoldala
+title: IoT Hub Azure Event Grid sémája | Microsoft Docs
+description: Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Felsorolja a rendelkezésre álló eseménytípus, a példa esemény és az esemény tulajdonságait.
 services: iot-hub
 documentationcenter: ''
 author: kgremban
@@ -8,38 +8,38 @@ manager: timlt
 editor: ''
 ms.service: event-grid
 ms.topic: reference
-ms.date: 01/17/2019
+ms.date: 01/21/2020
 ms.author: kgremban
-ms.openlocfilehash: 4e96276a862844cea1d0800eafb952d4a0df97ab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: cfbd46ad961bd1dc914bae98e761cd83d445ff88
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67076357"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513031"
 ---
-# <a name="azure-event-grid-event-schema-for-iot-hub"></a>Az Azure IoT hub Event Grid-eseménysémája
+# <a name="azure-event-grid-event-schema-for-iot-hub"></a>IoT Hub Azure Event Gridi esemény sémája
 
-Ez a cikk a séma és az Azure IoT Hub-események. Eseménysémák szeretné megismerni, lásd: [Azure Event Grid-esemény séma](event-schema.md). 
+Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md). 
 
-Mintaszkriptek és oktatóanyagok listáját lásd: [az IoT Hub-eseményforrás](event-sources.md#iot-hub).
+A mintául szolgáló parancsfájlok és oktatóanyagok listáját itt tekintheti meg: [IoT hub eseményforrás](event-sources.md#iot-hub).
 
-## <a name="available-event-types"></a>Rendelkezésre álló események típusai
+## <a name="available-event-types"></a>Elérhető események típusai
 
-Az Azure IoT Hub a következő esemény típusú bocsát ki:
+Az Azure IoT Hub a következő típusú eseményeket bocsátja ki:
 
-| Esemény típusa | Leírás |
+| Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft.Devices.DeviceCreated | Amikor regisztrál egy eszközt egy IoT hubra közzé. |
-| Microsoft.Devices.DeviceDeleted | Ha egy eszköz IoT hubról törlik közzé. | 
-| Microsoft.Devices.DeviceConnected | Ha egy eszköz csatlakozik az IoT hub közzé. |
-| Microsoft.Devices.DeviceDisconnected | Ha egy eszköz nem kapcsolódik az IoT hub közzé. | 
-| Microsoft.Devices.DeviceTelemetry | Ha egy telemetriai üzenetet küld az IoT hub közzé. |
+| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. | 
+| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. | 
+| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy telemetria üzenetet küld egy IoT hub-nak. |
 
-Eszköz telemetriai események kivételével minden eszköz események általánosan elérhetők az Event Grid által támogatott összes régióban. Eszköz telemetriai esemény nyilvános előzetes verzióban érhető el, és érhető el minden régióban, kivéve az USA keleti RÉGIÓJA, USA nyugati RÉGIÓJA, Nyugat-Európa, [Azure Government](../azure-government/documentation-government-welcome.md), [Azure China 21Vianet](/azure/china/china-welcome), és [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/).
+A Event Grid által támogatott összes régióban általánosan elérhetők az eszközök telemetria, kivéve az eszközök összes eseményét. Az telemetria-esemény nyilvános előzetes verzióban érhető el, és minden régióban elérhető az USA keleti régiója, az USA nyugati régiója, Nyugat-Európa, [Azure Government](../azure-government/documentation-government-welcome.md), az [Azure China 21Vianet](/azure/china/china-welcome)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével.
 
-## <a name="example-event"></a>Példa esemény
+## <a name="example-event"></a>Példa eseményre
 
-A séma DeviceConnected és DeviceDisconnected események ugyanazzal a struktúrával rendelkeznek. Ezt az eseményt a minta egy esemény jelenik meg, ha egy eszköz csatlakozik az IoT hub sémája mutatja be:
+A DeviceConnected-és DeviceDisconnected-események sémája ugyanazzal a szerkezettel rendelkezik. Ez a példa egy olyan esemény sémáját mutatja be, amely akkor következik be, amikor egy eszköz egy IoT hubhoz csatlakozik:
 
 ```json
 [{
@@ -62,7 +62,7 @@ A séma DeviceConnected és DeviceDisconnected események ugyanazzal a struktúr
 }]
 ```
 
-A DeviceTelemetry esemény jelenik meg, ha a telemetriai adatokat a rendszer egy IoT hubot. Az alábbiakban látható egy példa az esemény sémája.
+A DeviceTelemetry esemény akkor következik be, amikor telemetria eseményt küld egy IoT Hub. Az eseményhez tartozó minta séma alább látható.
 
 ```json
 [{
@@ -96,7 +96,7 @@ A DeviceTelemetry esemény jelenik meg, ha a telemetriai adatokat a rendszer egy
 }]
 ```
 
-A séma DeviceCreated és DeviceDeleted események ugyanazzal a struktúrával rendelkeznek. Ezt az eseményt a minta egy esemény jelenik meg, ha regisztrál egy eszközt egy IoT hubra sémája mutatja be:
+A DeviceCreated-és DeviceDeleted-események sémája ugyanazzal a szerkezettel rendelkezik. Ez a példa egy olyan esemény sémáját mutatja be, amely akkor következik be, amikor egy eszköz regisztrálva van egy IoT-hubhoz:
 
 ```json
 [{
@@ -146,67 +146,67 @@ A séma DeviceCreated és DeviceDeleted események ugyanazzal a struktúrával r
 
 ### <a name="event-properties"></a>Esemény tulajdonságai
 
-Az összes esemény legfelső szintű ugyanazokat az adatokat tartalmazza: 
+Minden esemény ugyanazt a legfelső szintű adatértéket tartalmazza: 
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| id | string | Az esemény egyedi azonosítója. |
-| topic | string | A forrás teljes erőforrás elérési útja. Ez a mező nem írható. Event Grid biztosítja ezt az értéket. |
-| subject | string | Az esemény tárgya közzétevő által megadott elérési útja. |
-| eventType | string | Ehhez eseményre adatforráshoz regisztrált esemény típusok egyikét. |
-| eventTime | string | Az esemény akkor jön létre az idő alapján a szolgáltató UTC idő. |
-| data | object | Az IoT Hub eseményadatokat.  |
-| dataVersion | string | Az adatobjektum sémaverziója. A közzétevő a sémaverziót határozza meg. |
-| metadataVersion | string | Az esemény-metaadatok sémaverziója. Event Grid sémáját, a legfelső szintű tulajdonságait határozza meg. Event Grid biztosítja ezt az értéket. |
+| id | sztring | Az esemény egyedi azonosítója. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| EventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| EventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| data | objektum | IoT Hub az eseményekre vonatkozó adatgyűjtést.  |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
-Minden IoT Hub-események az objektum a következő tulajdonságokat tartalmazza:
+Az adatobjektum minden IoT Hub eseményhez a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| hubName | string | Ahol az eszköz létrehozása vagy törlése az IoT Hub nevét. |
-| deviceId | string | Az eszköz egyedi azonosítója. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| hubName | sztring | Azon IoT Hub neve, ahová az eszközt létrehozták vagy törölték. |
+| deviceId | sztring | Az eszköz egyedi azonosítója. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
 
-Az objektum tartalmát minden egyes esemény-közzétevő eltérőek. 
+Az adatobjektum tartalma eltér az egyes esemény-közzétevők esetében. 
 
-A **csatlakoztatott eszköz** és **eszköz leválasztott** IoT Hub-események, az objektum a következő tulajdonságokat tartalmazza:
+A **csatlakoztatott eszköz** és az **eszköz leválasztott** IoT hub eseményeihez az adatobjektum a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| moduleId | string | A modul egyedi azonosítója. Ez a mező egy modul eszközök csak a kimenet. Ez a karakterlánc kis-és nagybetűket legfeljebb 128 karakter hosszú, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket tartalmazhatja: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
-| deviceConnectionStateEventInfo | object | Kapcsolat Eszközállapot-esemény adatokat
-| sequenceNumber | string | Egy szám, amely segít jelezheti, hogy az eszköz csatlakoztatva van, vagy az eszköz sorrendben események leválasztása. Legutóbbi esemény egy megfelelő sorszám lesz ez nagyobb, mint az előző esemény. Ez a szám több mint 1 változhat, de szigorúan növekszik. Lásd: [sorszáma használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
+| moduleId | sztring | A modul egyedi azonosítója. Ez a mező csak modul-eszközök esetén kimenet. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '`. |
+| deviceConnectionStateEventInfo | objektum | Az eszköz kapcsolati állapotával kapcsolatos események adatai
+| Sorszám | sztring | Egy szám, amely segít jelezni az eszköz csatlakoztatott vagy leválasztott eseményeinek sorrendjét. A legutóbbi eseménynél az előző eseménynél nagyobb sorszám szerepel. Ez a szám több mint 1, de szigorúan növekszik. Lásd: [a sorozatszám használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
-A **Eszköztelemetria** IoT Hub event, az objektum tartalmazza az eszköz a felhőbe irányuló üzenetet [IoT hub üzenet formátuma](../iot-hub/iot-hub-devguide-messages-construct.md) és tulajdonságai a következők:
+Az **eszköz telemetria** IoT hub esemény esetén az adatobjektum tartalmazza az eszközről a felhőbe irányuló üzenetet az [IoT hub üzenet formátumában](../iot-hub/iot-hub-devguide-messages-construct.md) , és a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| Törzs | string | Az eszközről az üzenet tartalma. |
-| properties | string | Alkalmazástulajdonságok olyan felhasználó által definiált karakterláncok az üzenet adható hozzá. Ezek a mezők kitöltése nem kötelező. |
-| Rendszertulajdonságok | string | [A Rendszertulajdonságok](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) tartalmát és az üzenetek forrás segít azonosítani. A contentType állítsa a JSON és contentEncoding UTF-8 üzenet rendszer tulajdonságai párbeszédpanelen állítsa be az eszköz telemetriai üzenetet egy érvényes JSON formátumban kell lennie. Ha nincs beállítva, majd az IoT Hub ír üzeneteket base 64 kódolású formátumban.  |
+| törzs | sztring | Az üzenet tartalma az eszközről. |
+| properties | sztring | Az alkalmazás tulajdonságai olyan felhasználó által definiált karakterláncok, amelyek hozzáadhatók az üzenethez. Ezeket a mezőket nem kötelező megadni. |
+| Rendszertulajdonságok | sztring | A [rendszer tulajdonságai](../iot-hub/iot-hub-devguide-routing-query-syntax.md#system-properties) segítenek az üzenetek tartalmának és forrásának azonosításában. Az eszköz telemetria érvényes JSON-formátumúnak kell lennie, és a contentType JSON-ra, a contentEncoding pedig UTF-8 értékre kell állítani az üzenetrendszer tulajdonságaiban. Ha a beállítás nincs megadva, akkor a IoT Hub a 64 kódolású formátumban fogja írni az üzeneteket.  |
 
-A **létre az eszköz** és **eszköz törlése** IoT Hub-események, az objektum a következő tulajdonságokat tartalmazza:
+Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub eseményeket, az adatobjektum a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Leírás |
+| Tulajdonság | Type (Típus) | Leírás |
 | -------- | ---- | ----------- |
-| twin | object | Az ikereszközök, amely a felhőalapú alkalmazások eszköz metaadatainak ábrázolása kapcsolatos információk. | 
-| deviceID | string | Az ikereszközök egyedi azonosítója. | 
-| etag | string | Egy érvényesítő egy ikereszköz-frissítések konzisztencia biztosításához. Minden egyes etag garantáltan ikereszköz minden egyedi. |  
-| deviceEtag| string | Egy érvényesítő frissítések egy eszközjegyzékébe konzisztencia biztosításához. Minden egyes deviceEtag garantáltan eszközjegyzék minden egyedi. |
-| status | string | Az ikereszközök e engedélyezése vagy letiltása. | 
-| statusUpdateTime | string | Az utolsó ikereszköz Eszközállapot ISO8601 időbélyegzője frissítése. |
-| connectionState | string | Hogy az eszköz van csatlakoztatva, vagy csatlakoztatva. | 
-| lastActivityTime | string | Legutóbbi tevékenység ISO8601 időbélyegét. | 
-| cloudToDeviceMessageCount | egész szám | Felhőalapú erre az eszközre küldött eszköz üzenetek száma. | 
-| authenticationType | string | Ehhez az eszközhöz használt hitelesítés típusa: vagy `SAS`, `SelfSigned`, vagy `CertificateAuthority`. |
-| x509Thumbprint | string | Az ujjlenyomat egy egyedi értéket a x509 tanúsítvány, általában használt egy adott tanúsítvány található a tanúsítványtárolóban. Az ujjlenyomat dinamikusan hozzuk létre az SHA1 algoritmusok használatával, és a tanúsítvány ténylegesen nem létezik. | 
-| primaryThumbprint | string | Elsődleges ujjlenyomat a x509 a tanúsítványt. |
-| secondaryThumbprint | string | Másodlagos ujjlenyomat a x509 a tanúsítványt. | 
-| version | egész szám | Egész szám, amely értéke eggyel mindegyik az eszköz ideje ikereszköz frissül. |
-| desired | object | Csak az alkalmazás háttér-írják, és olvassa el az eszköz tulajdonságok egy részét. | 
-| reported | object | Csak az eszköz által írt, és az alkalmazás háttér által beolvasott tulajdonságok egy részét. |
-| lastUpdated | string | Az utolsó ikereszköz eszköztulajdonság ISO8601 időbélyegzője frissítése. | 
+| ikereszköz | objektum | A Twin eszközre vonatkozó információ, amely az alkalmazás-eszköz metaadatainak Felhőbeli ábrázolása. | 
+| deviceID | sztring | Az eszköz egyedi azonosítója. | 
+| ETag | sztring | Egy érvényesítő, amely biztosítja, hogy a frissítések konzisztensek legyenek egy adott eszközön. Minden ETAG egyedinek kell lennie eszközönként. |  
+| deviceEtag| sztring | Egy érvényesítő, amely biztosítja a frissítések egységességét az eszköz beállításjegyzékében. Minden deviceEtag egyedinek kell lennie az eszközönkénti beállításjegyzékben. |
+| status | sztring | Azt jelzi, hogy a Twin eszköz engedélyezve van-e vagy le van tiltva. | 
+| statusUpdateTime | sztring | Az utolsó eszköz kettős állapotának ISO8601 időbélyegzője. |
+| connectionState | sztring | Azt jelzi, hogy az eszköz csatlakoztatva van-e, vagy le van választva. | 
+| lastActivityTime | sztring | Az utolsó tevékenység ISO8601 időbélyegzője. | 
+| cloudToDeviceMessageCount | egész szám | Az eszközre küldött Felhőbeli üzenetek száma. | 
+| authenticationType | sztring | Az eszközhöz használt hitelesítési típus: `SAS`, `SelfSigned`vagy `CertificateAuthority`. |
+| X509Thumbprint | sztring | Az ujjlenyomat a x509 tanúsítvány egyedi értéke, amely általában egy adott tanúsítvány megkeresésére szolgál a tanúsítványtárolóban. Az ujjlenyomatot a rendszer dinamikusan hozza létre az SHA1 algoritmus használatával, és fizikailag nem létezik a tanúsítványban. | 
+| primaryThumbprint | sztring | Az x509-tanúsítvány elsődleges ujjlenyomata. |
+| secondaryThumbprint | sztring | A x509-tanúsítvány másodlagos ujjlenyomata. | 
+| version | egész szám | Egy egész szám, amely eggyel nő, amikor az eszköz külön frissül. |
+| kívánt | objektum | A tulajdonságok egy része, amely csak az alkalmazás hátterében írható, és az eszköz beolvassa. | 
+| jelentett | objektum | A tulajdonságok egy része, amelyet csak az eszköz írhat, és az alkalmazás háttérbe is beolvashatja. |
+| lastUpdated | sztring | Az utolsó eszköz Twin tulajdonságának ISO8601 időbélyegzője. | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Azure Event Grid bemutatása, lásd: [Mi az Event Grid?](overview.md)
-* Hogyan működik együtt az IoT Hub és az Event Griddel kapcsolatos további információkért lásd: [reagálhat rájuk az IoT Hub Event Grid használatával a műveletek indítása](../iot-hub/iot-hub-event-grid.md).
+* A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
+* Ha többet szeretne megtudni a IoT Hub és a Event Grid együttműködéséről, olvassa el a következő témakört: [reagálás a IoT hub eseményekre Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md).

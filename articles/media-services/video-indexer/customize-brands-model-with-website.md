@@ -1,5 +1,5 @@
 ---
-title: A Brands Model testreszabása a Video Indexer webhelyen – Azure
+title: A márkák modelljeinek testreszabása a Video Indexer webhelyen – Azure
 titleSuffix: Azure Media Services
 description: Ez a cikk bemutatja, hogyan szabhatja testre a márkák modelljét a Video Indexer webhelyén.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 05/15/2019
 ms.author: anzaman
-ms.openlocfilehash: f4b2f7a8b43c1723beb0dd8da82814f74cd7b135
-ms.sourcegitcommit: 35715a7df8e476286e3fee954818ae1278cef1fc
+ms.openlocfilehash: 956ca7af055768398392045ecf9b383d2eb1060f
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73838352"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513898"
 ---
 # <a name="customize-a-brands-model-with-the-video-indexer-website"></a>Márkák modell testreszabása a Video Indexer webhellyel
 
@@ -89,6 +89,6 @@ A **márkák kizárása** szakasz azokat a márkákat jelenti, amelyeket a video
 1. Kattintson a törölni kívánt márka melletti Kuka ikonra.
 2. Kattintson a "Törlés" gombra, és a márka többé nem jelenik meg a *kizárási márkák* listájában.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A Brands modell testreszabása API-k használatával](customize-brands-model-with-api.md)
