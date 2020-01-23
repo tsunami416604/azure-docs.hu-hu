@@ -4,7 +4,7 @@
   items:
     - name: A Spatial Anchors ismertetése
       href: overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Unity-alkalmazás létrehozása
@@ -57,7 +57,7 @@
           href: how-tos/create-locate-anchors-cpp-ndk.md
         - name: A C++/WinRT-ben
           href: how-tos/create-locate-anchors-cpp-winrt.md
-    - name: Helyszíni érzékelők használata a közeli horgonyok felderítéséhez
+    - name: Durva helyzet-újrameghatározás használata a közeli horgonyok felderítéséhez
       items:
         - name: 'A C#/Unityben'
           href: how-tos/set-up-coarse-reloc-unity.md

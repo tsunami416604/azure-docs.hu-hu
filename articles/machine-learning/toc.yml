@@ -191,6 +191,9 @@
         - name: Képek címkézése
           displayName: 'data, dataset, labeling'
           href: how-to-label-images.md
+        - name: Címkézett adathalmazok létrehozása
+          displayName: 'data, labels, torchvision'
+          href: how-to-use-labeled-dataset.md
     - name: Modellek betanítása
       items:
         - name: A tervező használata
