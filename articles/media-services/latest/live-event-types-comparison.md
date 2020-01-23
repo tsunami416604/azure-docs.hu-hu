@@ -13,12 +13,12 @@ ms.devlang: ne
 ms.topic: article
 ms.date: 06/13/2019
 ms.author: juliako
-ms.openlocfilehash: 8377c4339b07e0b917e10ed413ffc79baef91fac
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 2dd3b3ffae39d43a3b865804af2e743bad87f8ea
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74888393"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543052"
 ---
 # <a name="live-event-types-comparison"></a>Élő eseménytípus összehasonlítása
 
@@ -28,7 +28,7 @@ Azure Media Services egy [élő esemény](https://docs.microsoft.com/rest/api/me
 
 Az alábbi táblázat összehasonlítja az élő események típusának funkcióit. A típusok beállítása a [LiveEventEncodingType](https://docs.microsoft.com/rest/api/media/liveevents/create#liveeventencodingtype)használatával történik a létrehozás során:
 
-* **LiveEventEncodingType. None** – a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményen. 
+* **LiveEventEncodingType. None** – a helyszíni élő kódoló több bitrátás streamet küld. A betöltött adatfolyamok további feldolgozás nélkül haladnak át az élő eseményen. Más néven átmenő élő esemény.
 * **LiveEventEncodingType. Standard** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás streamet hoz létre. Ha a hozzájárulási hírcsatorna 720p vagy nagyobb felbontású, a **Default720p** -készlet 6 feloldási/bitrátás párokat kódol (részletek a cikk későbbi részében).
 * **LiveEventEncodingType. Premium1080p** – a helyszíni élő kódoló egyetlen sávszélességű adatfolyamot küld az élő eseménynek, és Media Services több bitrátás adatfolyamot hoz létre. A Default1080p-készlet meghatározza a feloldási/bitráta párok kimeneti készletét (részletek a cikk későbbi részében). 
 
@@ -52,6 +52,7 @@ Az alábbi táblázat összehasonlítja az élő események típusának funkció
 | Ár|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|Tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/media-services/) , és kattintson az "élő videó" fülre.|
 | Maximális futási idő| 24 óra x 365 nap, élő lineáris | 24 óra x 365 nap, élő lineáris (előzetes verzió)|
 | A beágyazott CEA 608/708 feliratok-adattovábbítási képesség|Igen|Igen|
+| Az élő átírások bekapcsolásának lehetősége|Igen|Igen|
 | A beágyazások behelyezésének támogatása|Nem|Nem|
 | Az ad-jelzés támogatása API-n keresztül| Nem|Nem|
 | Az ad-jelzés támogatása SCTE-35 sávon belüli üzenetek használatával|Igen|Igen|

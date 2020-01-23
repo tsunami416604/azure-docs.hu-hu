@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/28/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b7e872f3320a2c72b6e9fb3ffba65510b205ca03
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9cb23dc11a853401d8d99a750a0c79082adbe036
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425551"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547591"
 ---
 # <a name="tutorial-create-an-azure-active-directory-b2c-tenant"></a>Oktatóanyag: Azure Active Directory B2C bérlő létrehozása
 
@@ -43,7 +43,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
     ![Előfizetés bérlője, könyvtár + előfizetés-szűrő és előfizetés-bérlő kiválasztva](media/tutorial-create-tenant/portal-01-pick-directory.png)
 
-1. Az Azure Portal menüjében vagy a **Kezdőlapon** lapon válassza az **Erőforrás létrehozása** elemet.
+1. Az Azure Portal menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet.
 1. Keresse meg **Azure Active Directory B2C**, majd válassza a **Létrehozás**lehetőséget.
 1. Válassza az **Új Azure AD B2C-bérlő létrehozása** lehetőséget.
 
@@ -68,6 +68,8 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     Az **Erőforráscsoport** esetében válassza az **Új létrehozása** lehetőséget. Adja meg a bérlőt tartalmazó erőforráscsoport **nevét** , válassza ki az **erőforráscsoport helyét**, majd válassza a **Létrehozás**lehetőséget.
 
     ![Az előfizetési beállítások űrlapjának csatolása Azure Portal](media/tutorial-create-tenant/portal-06-link-subscription-settings.png)
+    
+    Egy Azure-előfizetéshez több Azure AD B2C bérlőt is csatolhat számlázási célokra. 
 
 ## <a name="select-your-b2c-tenant-directory"></a>A B2C-bérlő címtárának kiválasztása
 

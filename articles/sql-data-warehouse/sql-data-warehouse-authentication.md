@@ -11,19 +11,19 @@ ms.date: 04/02/2019
 ms.author: jrasnick
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: fda29e432fbd952261893f3c32a4df7b9990ae66
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: 706c68cb7a139a5c4f6def5aed7ad67e49090ede
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73692934"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545143"
 ---
 # <a name="authenticate-to-azure-sql-data-warehouse"></a>Hitelesítés Azure SQL Data Warehouse
 Megtudhatja, hogyan végezhet hitelesítést a Azure SQL Data Warehouse Azure Active Directory (HRE) vagy a SQL Server hitelesítés használatával.
 
 A SQL Data Warehousehoz való kapcsolódáshoz hitelesítő adatokat kell átadnia hitelesítési célokra. A kapcsolat létrehozásakor a rendszer bizonyos kapcsolatbeállításokat a lekérdezési munkamenet létrehozásának részeként konfigurál.  
 
-A biztonsággal és az adattárház kapcsolatainak engedélyezésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban][Secure a database in SQL Data Warehouse].
+A biztonsággal és az adattárház kapcsolatainak engedélyezésével kapcsolatos további információkért lásd: [adatbázis biztonságossá tétele SQL Data Warehouseban](sql-data-warehouse-overview-manage-security.md).
 
 ## <a name="sql-authentication"></a>SQL-hitelesítés
 A SQL Data Warehousehoz való kapcsolódáshoz a következő információkat kell megadnia:
@@ -40,12 +40,12 @@ Alapértelmezés szerint a kapcsolat a *Master* adatbázishoz csatlakozik, nem p
 * A SSDT-munkamenet létrehozása előtt jelölje ki a felhasználói adatbázist.
 
 > [!NOTE]
-> A Transact-SQL-utasítás a **MyDatabase; használata** nem támogatott a kapcsolatok adatbázisának módosításához. A SQL Data Warehouse és a SSDT közötti csatlakozással kapcsolatos útmutatásért tekintse meg a [lekérdezés a Visual Studióval][Query with Visual Studio] című cikket.
+> A Transact-SQL-utasítás a **MyDatabase; használata** nem támogatott a kapcsolatok adatbázisának módosításához. A SQL Data Warehouse és a SSDT közötti csatlakozással kapcsolatos útmutatásért tekintse meg a [lekérdezés a Visual Studióval](sql-data-warehouse-query-visual-studio.md) című cikket.
 > 
 > 
 
 ## <a name="azure-active-directory-aad-authentication"></a>Azure Active Directory (HRE) hitelesítés
-[Azure Active Directory][What is Azure Active Directory] hitelesítés a Microsoft Azure SQL Data Warehousehoz való kapcsolódási mechanizmus a Azure Active Directory (Azure ad) identitások használatával. A Azure Active Directory hitelesítéssel központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít a SQL Data Warehouse felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését. 
+[Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md) hitelesítés a Microsoft Azure SQL Data Warehousehoz való kapcsolódási mechanizmus a Azure Active Directory (Azure ad) identitások használatával. A Azure Active Directory hitelesítéssel központilag kezelheti az adatbázis-felhasználók és más Microsoft-szolgáltatások identitásait egy központi helyen. A központi AZONOSÍTÓk kezelése egyetlen helyet biztosít a SQL Data Warehouse felhasználók felügyeletéhez, és egyszerűsíti az engedélyek kezelését. 
 
 ### <a name="benefits"></a>Előnyök
 A Azure Active Directory előnyei a következők:
@@ -60,7 +60,7 @@ A Azure Active Directory előnyei a következők:
 * A többtényezős hitelesítést Active Directory univerzális hitelesítéssel támogatja különböző eszközökhöz, például [SQL Server Management Studio](../sql-database/sql-database-ssms-mfa-authentication.md) és [SQL Server Data Toolsekhez](https://docs.microsoft.com/sql/ssdt/azure-active-directory?toc=/azure/sql-data-warehouse/toc.json).
 
 > [!NOTE]
-> Azure Active Directory még mindig viszonylag új, és bizonyos korlátozásokkal rendelkezik. Annak biztosítása érdekében, hogy Azure Active Directory a környezetnek megfelelő legyen, tekintse meg az [Azure ad-szolgáltatások és-korlátozások][Azure AD features and limitations]című témakört, pontosabban a további szempontokat.
+> Azure Active Directory még mindig viszonylag új, és bizonyos korlátozásokkal rendelkezik. Annak biztosítása érdekében, hogy Azure Active Directory a környezetnek megfelelő legyen, tekintse meg az [Azure ad-szolgáltatások és-korlátozások](../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations)című témakört, pontosabban a további szempontokat.
 > 
 > 
 
@@ -80,11 +80,5 @@ Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Ex
 * A Azure Active Directory hitelesítés konfigurálásának és használatának lépései közel azonosak a Azure SQL Database és a Azure SQL Data Warehouse esetében. Azure Active Directory hitelesítés használatával kövesse a következő témakör részletes lépéseit: [csatlakozás SQL Database vagy SQL Data Warehousehoz](../sql-database/sql-database-aad-authentication.md).
 * Hozzon létre egyéni adatbázis-szerepköröket, és adja hozzá a felhasználókat a szerepkörökhöz. Ezután adjon meg részletes engedélyeket a szerepkörökhöz. További információ: [első lépések az adatbázismotor engedélyeivel](https://msdn.microsoft.com/library/mt667986.aspx).
 
-## <a name="next-steps"></a>További lépések
-További információ az adatraktár lekérdezéséről a Visual Studio vagy egyéb alkalmazások használatával: [Query with Visual Studio][Query with Visual Studio] (Lekérdezés a Visual Studióval).
-
-<!-- Article references -->
-[Secure a database in SQL Data Warehouse]: ./sql-data-warehouse-overview-manage-security.md
-[Query with Visual Studio]: ./sql-data-warehouse-query-visual-studio.md
-[What is Azure Active Directory]:../active-directory/fundamentals/active-directory-whatis.md
-[Azure AD features and limitations]: ../sql-database/sql-database-aad-authentication.md#azure-ad-features-and-limitations
+## <a name="next-steps"></a>Következő lépések
+További információ az adatraktár lekérdezéséről a Visual Studio vagy egyéb alkalmazások használatával: [Query with Visual Studio](sql-data-warehouse-query-visual-studio.md) (Lekérdezés a Visual Studióval).

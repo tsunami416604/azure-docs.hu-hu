@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 175ba6b4e65b4a6e276dbfb586e210027a6cd9b3
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: cacc01151edaf31db938cf8abf3d46e75397758f
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822423"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545024"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>A Batch használata az alkalmazások teljesítményének javítására SQL Database
 
@@ -91,7 +91,7 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-A tranzakciók ténylegesen használatban vannak mindkét példában. Az első példában minden egyes hívás egy implicit tranzakció. A második példában egy explicit tranzakció az összes hívást lezárja. Az [írási tranzakciós naplóhoz](https://msdn.microsoft.com/library/ms186259.aspx)tartozó dokumentáció alapján a rendszer a tranzakció véglegesíte után naplózza a rekordokat a lemezre. Így azáltal, hogy több hívást is megadhat egy tranzakcióban, a tranzakciós naplóba való írás késleltetheti a tranzakció véglegesítését. Érvényben van, ha engedélyezi a kötegelt feldolgozást az írásokhoz a kiszolgáló tranzakciónaplójában.
+A tranzakciók ténylegesen használatban vannak mindkét példában. Az első példában minden egyes hívás egy implicit tranzakció. A második példában egy explicit tranzakció az összes hívást lezárja. Az [írási tranzakciós naplóhoz](https://docs.microsoft.com/sql/relational-databases/sql-server-transaction-log-architecture-and-management-guide?view=sql-server-ver15#WAL)tartozó dokumentáció alapján a rendszer a tranzakció véglegesíte után naplózza a rekordokat a lemezre. Így azáltal, hogy több hívást is megadhat egy tranzakcióban, a tranzakciós naplóba való írás késleltetheti a tranzakció véglegesítését. Érvényben van, ha engedélyezi a kötegelt feldolgozást az írásokhoz a kiszolgáló tranzakciónaplójában.
 
 Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A tesztek azonos szekvenciális lapkákat hajtottak végre tranzakciókkal és anélkül. További perspektívához az első tesztek távolról, egy laptopról a Microsoft Azure-adatbázisba futottak. A második teszt egy olyan felhőalapú szolgáltatásból és adatbázisból futott, amely mindkettő ugyanazon Microsoft Azure adatközpontban (USA nyugati régiójában) található. A következő táblázat az időtartamot mutatja be ezredmásodpercben, és tranzakció nélkül.
 
@@ -124,7 +124,7 @@ Az előző példa azt mutatja be, hogy egy helyi tranzakciót is hozzáadhat a k
 
 További információ a ADO.NET-beli tranzakciókról: [helyi tranzakciók a ADO.net-ben](https://docs.microsoft.com/dotnet/framework/data/adonet/local-transactions).
 
-### <a name="table-valued-parameters"></a>tábla értékű paraméterek
+### <a name="table-valued-parameters"></a>Tábla értékű paraméterek
 
 A tábla értékű paraméterek a felhasználó által definiált táblázat típusú paramétereket támogatják a Transact-SQL-utasításokban, tárolt eljárásokban és függvényekben. Ez az ügyféloldali batch-eljárás lehetővé teszi több sornyi adat küldését a tábla értékű paraméteren belül. Ha táblázat értékű paramétereket szeretne használni, először adjon meg egy táblát. A következő Transact-SQL-utasítás egy **MyTableType**nevű táblát hoz létre.
 
@@ -325,7 +325,7 @@ A kompromisszum miatt értékelje ki a kötegelt műveletek típusát. A Batch-t
 
 A tesztek során általában nem volt előnye a nagyméretű kötegek kisebb adattömbökbe való betörésének. Valójában ez az albontás gyakran lassabb teljesítményt eredményezett, mint egyetlen nagy köteg elküldése. Vegyünk például egy olyan forgatókönyvet, amelyben 1000 sort kíván beszúrni. A következő táblázat azt mutatja be, hogy mennyi ideig tart a táblázat értékű paraméterek használata az 1000-es sorok beszúrásához kisebb kötegekre osztva.
 
-| Köteg mérete | Ismétlések | Tábla értékű paraméterek (MS) |
+| Köteg mérete | Iterációk | Tábla értékű paraméterek (MS) |
 | --- | --- | --- |
 | 1000 |1 |347 |
 | 500 |2 |355 |
@@ -674,7 +674,7 @@ Az alábbi lista összefoglalja a cikkben tárgyalt kötegelt javaslatokat:
 * Kerülje az egyetlen táblán működő kötegek párhuzamos végrehajtását egyetlen adatbázisban. Ha úgy dönt, hogy egyetlen köteget oszt szét több munkavégző szál között, futtasson teszteket a szálak ideális számának megállapításához. Egy meghatározatlan küszöbérték után több szál csökkenti a teljesítményt, és nem növeli.
 * További forgatókönyvek esetén érdemes lehet a méret és az idő pufferelését figyelembe venni a Batch-feladatok végrehajtásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk arra összpontosít, hogy miként javítható az alkalmazások teljesítménye és méretezhetősége az adatbázis-létrehozással kapcsolatos tervezési és kódolási technikákban. Ez azonban csak egy tényező a teljes stratégiában. A teljesítmény és a méretezhetőség javítása érdekében tekintse meg a következő témakört: [Azure SQL Database teljesítményre vonatkozó útmutató az önálló adatbázisokhoz](sql-database-performance-guidance.md) , valamint a [rugalmas készlet árának és teljesítményének szempontjait](sql-database-elastic-pool-guidance.md).
 

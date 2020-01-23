@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2018
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 8b7a743ebcdf74f6ad740e4e4193bbd98da1536d
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 9849e8ab918562267e93506771a4c32cf96533a4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76291124"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544939"
 ---
 # <a name="troubleshoot-azure-files-problems-in-linux"></a>A Linux Azure Files problémáinak elhárítása
 
@@ -131,9 +131,8 @@ A Linux rendszerhez készült SMB 3.0 titkosítási szolgáltatása a 4.11-es ke
 Ha a Linuxos SMB-ügyfél nem támogatja a titkosítást, az Azure Files csatlakoztatásához használja az SMB 2.1-et egy olyan Azure-beli, Linux rendszerű virtuális gépen, amely ugyanabban az adatközpontban található, mint a fájlmegosztás. Győződjön meg arról, hogy [Biztonságos átvitelre van szükség]( https://docs.microsoft.com/azure/storage/common/storage-require-secure-transfer) beállítás le van tiltva a tárfiókban. 
 
 <a id="noaaccessfailureportal"></a>
-## <a name="error-no-access-when-browsing-to-an-azure-file-share-in-the-portal"></a>"Nincs hozzáférés" hibaüzenet a portálon található Azure-fájlmegosztás tallózása során
-
-Amikor egy Azure-fájlmegosztást keres a portálon, a következő hibaüzenetet kaphatja:
+## <a name="error-no-access-when-you-try-to-access-or-delete-an-azure-file-share"></a>Hiba: "nincs hozzáférés", amikor megpróbál hozzáférni vagy törölni egy Azure-fájlmegosztást  
+Amikor megpróbál hozzáférni vagy törölni egy Azure-fájlmegosztást a portálon, a következő hibaüzenetet kaphatja:
 
 Nincs hozzáférés  
 Hibakód: 403 

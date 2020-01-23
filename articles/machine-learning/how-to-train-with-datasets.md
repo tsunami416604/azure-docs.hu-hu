@@ -11,12 +11,12 @@ author: MayMSFT
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 09/25/2019
-ms.openlocfilehash: 24a19487567f2753457d5886cbb9fa4bf438bad4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: f87dbedb1428b5884e20a9f7daabea792387fe88
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76311342"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543307"
 ---
 # <a name="train-with-datasets-in-azure-machine-learning"></a>Betanítás Azure Machine Learning-adatkészletekkel
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -105,8 +105,11 @@ experiment_run.wait_for_completion(show_output=True)
 Ha szeretné, hogy az adatfájlok elérhetők legyenek a számítási célra a betanításhoz, használja a [FileDataset](https://docs.microsoft.com/python/api/azureml-core/azureml.data.file_dataset.filedataset?view=azure-ml-py) az általa hivatkozott fájlok csatlakoztatásához vagy letöltéséhez.
 
 ### <a name="mount-vs-download"></a>Varga csatlakoztatása Letöltés
-Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. Ha az adatok mérete meghaladja a számítási lemez méretét, vagy csak az adatkészlet egy részét tölti be a parancsfájlba, a csatlakoztatás javasolt. Mivel a lemez méretnél nagyobb méretű adatkészletek letöltése sikertelen lesz, és a csatlakoztatás csak a parancsfájl által a feldolgozáskor használt adat részét fogja betölteni. Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. Ha a parancsfájl az adatkészlet által hivatkozott összes fájlt feldolgozza, és a számítási lemez elfér a teljes adatkészletben, akkor a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében.
+Adatkészlet csatlakoztatásakor az adatkészlet által hivatkozott fájlokat csatolja egy könyvtárhoz (csatlakoztatási ponthoz), és elérhetővé teszi azt a számítási célra. A csatlakoztatás Linux-alapú számításokhoz, többek között Azure Machine Learning számításokhoz, virtuális gépekhez és HDInsight támogatott. Ha az adatok mérete meghaladja a számítási lemez méretét, vagy csak az adatkészlet egy részét tölti be a parancsfájlba, a csatlakoztatás javasolt. Mivel a lemez méretnél nagyobb méretű adatkészletek letöltése sikertelen lesz, és a csatlakoztatás csak a parancsfájl által a feldolgozáskor használt adat részét fogja betölteni. 
 
+Adatkészlet letöltésekor a rendszer az adatkészlet által hivatkozott összes fájlt letölti a számítási célra. A letöltés minden számítási típus esetében támogatott. Ha a parancsfájl az adatkészlet által hivatkozott összes fájlt feldolgozza, és a számítási lemez elfér a teljes adatkészletben, akkor a letöltés javasolt a tárolási szolgáltatásokból származó adatok átvitelének elkerülése érdekében.
+
+Az Azure Blob Storage, Azure Files, Azure Data Lake Storage Gen1, Azure Data Lake Storage Gen2, Azure SQL Database és Azure Database for PostgreSQL által létrehozott adatkészletek esetében bármilyen formátumú fájlok csatlakoztatása vagy letöltése támogatott. 
 
 ### <a name="create-a-filedataset"></a>FileDataset létrehozása
 

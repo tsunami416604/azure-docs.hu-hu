@@ -9,16 +9,16 @@ ms.author: eustacea
 ms.date: 08/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
-ms.openlocfilehash: 871f2ec029379f37fc02bcd79847fa04091f0507
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: d5cfa16196a8815b711fd5277a80f6eb67d3a388
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74666069"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548696"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Azure IoT Edge Security Manager
 
-A Azure IoT Edge Security Manager egy jól körülhatárolt biztonsági mag, amely az IoT Edge eszköz és annak összes összetevőjének védelmét biztosítja a biztonságos szilícium-hardver eltulajdonítása révén. Ez a biztonság megerősítésének középpontja, és technológiai integrációs pontot biztosít az eredeti berendezésgyártó (OEM) számára.
+A Azure IoT Edge Security Manager egy jól körülhatárolt biztonsági mag, amely az IoT Edge eszköz és annak összes összetevőjének védelmét biztosítja a biztonságos szilícium-hardver eltulajdonítása révén. A Security Manager a biztonság megerősítésének középpontja, és technológiai integrációs pontot biztosít az eredeti berendezésgyártó (OEM) számára.
 
 ![Azure IoT Edge Security Manager](media/edge-security-manager/iot-edge-security-manager.png)
 
@@ -41,7 +41,7 @@ A IoT Edge Security Manager három összetevőt tartalmaz:
 
 ## <a name="the-iot-edge-security-daemon"></a>A IoT Edge biztonsági démon
 
-A IoT Edge biztonsági démon felelős a IoT Edge Security Manager logikai műveleteiért. Ez a IoT Edge eszköz megbízható számítástechnikai alapjainak jelentős részét képezi. 
+A IoT Edge biztonsági démon felelős a IoT Edge Security Manager logikai műveleteiért. Ez a IoT Edge eszköz megbízható számítástechnikai alapjainak jelentős részét képezi.
 
 ### <a name="design-principles"></a>Tervezési alapelvek
 
@@ -79,11 +79,11 @@ A Cloud Interface lehetővé teszi, hogy a IoT Edge biztonsági démon hozzáfé
 
 #### <a name="management-api"></a>Felügyeleti API
 
-IoT Edge Security Daemon egy felügyeleti API-t kínál, amelyet az IoT Edge ügynök hív meg egy IoT Edge modul létrehozásakor/elindításakor/leállításakor vagy eltávolításakor. A biztonsági démon az összes aktív modul "regisztrációját" tárolja. Ezek a regisztrációk egy modul identitását képezik le a modul egyes tulajdonságaihoz. Ezen tulajdonságok közül néhány példa a tárolóban futó folyamat azonosítójának (PID) vagy a Docker-tároló tartalmának kivonata.
+IoT Edge Security Daemon egy felügyeleti API-t kínál, amelyet az IoT Edge ügynök hív meg egy IoT Edge modul létrehozásakor/elindításakor/leállításakor vagy eltávolításakor. A biztonsági démon az összes aktív modul "regisztrációját" tárolja. Ezek a regisztrációk egy modul identitását képezik le a modul egyes tulajdonságaihoz. Ilyenek például például a tárolóban futó folyamat azonosítója (PID) és a Docker-tároló tartalmának kivonata.
 
 Ezeket a tulajdonságokat a munkaterhelés API (lásd alább) használja annak ellenőrzéséhez, hogy a hívó jogosult-e a művelet végrehajtására.
 
-A felügyeleti API egy kiemelt API, amely csak a IoT Edge ügynöktől hívható meg.  Mivel a IoT Edge biztonsági démon rendszerindítást hajt végre, és elindítja a IoT Edge ügynököt, a IoT Edge ügynök számára implicit regisztrációt hozhat létre, miután igazolta, hogy a IoT Edge ügynök nem lett illetéktelenül módosítva. Ugyanez az igazolási folyamat, amelyet a számítási feladatok API használ, korlátozza a felügyeleti API elérését is, hogy csak a IoT Edge ügynökhöz.
+A felügyeleti API egy kiemelt API, amely csak a IoT Edge ügynöktől hívható meg.  Mivel a IoT Edge biztonsági démon rendszerindítást kezdeményez, és elindítja a IoT Edge ügynököt, ellenőrzi, hogy az IoT Edge-ügynök nem lett-e illetéktelenül módosítva, majd létrehozhatja az IoT Edge ügynök implicit regisztrációját. Ugyanez az igazolási folyamat, amelyet a számítási feladatok API használ, korlátozza a felügyeleti API elérését is, hogy csak a IoT Edge ügynökhöz.
 
 #### <a name="container-api"></a>Container API
 
@@ -93,7 +93,7 @@ A Container API a modul felügyeletéhez használt tárolórendszer (például a
 
 A számítási feladatok API minden modul számára elérhető. Az identitást a HSM-feltört aláírt tokenként vagy egy X509-tanúsítványként, valamint a megfelelő megbízhatósági csomagban adja meg egy modulnak. A megbízhatósági csomag HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmaz az összes többi kiszolgálónak, amelyeknek a moduloknak megbízhatónak kell lenniük.
 
-A IoT Edge Security Daemon egy igazolási folyamattal fogja védeni ezt az API-t. Amikor egy modul meghívja ezt az API-t, a biztonsági démon megpróbálja megkeresni az identitás regisztrációját. Ha a művelet sikeres, a a regisztráció tulajdonságait használja a modul méréséhez. Ha a mérési folyamat eredménye megegyezik a regisztrációval, a rendszer új identitást hoz létre. A rendszer visszaadja a megfelelő HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat (megbízhatósági csomagot) a modulnak.  A modul ezt a tanúsítványt használja a IoT Hubhoz, más modulokhoz való kapcsolódáshoz vagy a kiszolgáló indításához. Ha az aláírt jogkivonat vagy tanúsítvány hamarosan lejár, a modul feladata az új tanúsítvány igénylése. 
+A IoT Edge Security Daemon egy igazolási folyamattal fogja védeni ezt az API-t. Amikor egy modul meghívja ezt az API-t, a biztonsági démon megpróbálja megkeresni az identitás regisztrációját. Ha a művelet sikeres, a a regisztráció tulajdonságait használja a modul méréséhez. Ha a mérési folyamat eredménye megegyezik a regisztrációval, a rendszer új identitást hoz létre. A rendszer visszaadja a megfelelő HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat (megbízhatósági csomagot) a modulnak.  A modul ezt a tanúsítványt használja a IoT Hubhoz, más modulokhoz való kapcsolódáshoz vagy a kiszolgáló indításához. Ha az aláírt jogkivonat vagy tanúsítvány hamarosan lejár, a modul feladata az új tanúsítvány igénylése.
 
 ### <a name="integration-and-maintenance"></a>Integráció és karbantartás
 

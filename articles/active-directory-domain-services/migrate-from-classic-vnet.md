@@ -7,20 +7,20 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 10/15/2019
+ms.date: 01/22/2020
 ms.author: iainfou
-ms.openlocfilehash: aafefeb94f3b150789a91c3cf669520ccb522dd8
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 5c50e3c17fe09b735aa4f4104615c4833164d94d
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74893059"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544157"
 ---
 # <a name="preview---migrate-azure-ad-domain-services-from-the-classic-virtual-network-model-to-resource-manager"></a>Előnézet – Azure AD Domain Services migrálása a klasszikus virtuális hálózati modellből a Resource Managerbe
 
-A Azure Active Directory Domain Services (AD DS) támogatja az egyszeri áthelyezést a klasszikus virtuális hálózati modellt használó ügyfelek számára a Resource Manager virtuális hálózati modelljére.
+A Azure Active Directory Domain Services (AD DS) támogatja az egyszeri áthelyezést a klasszikus virtuális hálózati modellt használó ügyfelek számára a Resource Manager virtuális hálózati modelljére. Az Azure AD DS a Resource Manager-alapú üzemi modellt használó felügyelt tartományok olyan további funkciókat biztosítanak, mint például a részletes jelszóházirendek, a naplók és a fiókzárolás elleni védelem.
 
-Ez a cikk az áttelepítés előnyeit és szempontjait ismerteti, majd egy meglévő Azure AD DS-példány sikeres áttelepítéséhez szükséges lépéseket. Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
+Ez a cikk az áttelepítés előnyeit és szempontjait ismerteti, majd egy meglévő Azure AD DS-példány sikeres áttelepítéséhez szükséges lépéseket. Ez az áttelepítési funkció jelenleg előzetes verzióban érhető el.
 
 ## <a name="overview-of-the-migration-process"></a>Az áttelepítési folyamat áttekintése
 
@@ -106,7 +106,7 @@ Egy Azure AD DS felügyelt tartomány előkészítésekor és áttelepítésén 
 
 ### <a name="ip-addresses"></a>IP-címek
 
-Az Azure AD DS felügyelt tartomány tartományvezérlői IP-címei módosulnak az áttelepítés után. Ez magában foglalja a biztonságos LDAP-végpont nyilvános IP-címét. Az új IP-címek a Resource Manager virtuális hálózatban lévő új alhálózat címtartomány-tartományán belül találhatók.
+Az Azure AD DS felügyelt tartomány tartományvezérlői IP-címei módosulnak az áttelepítés után. Ez a változás tartalmazza a biztonságos LDAP-végpont nyilvános IP-címét. Az új IP-címek a Resource Manager virtuális hálózatban lévő új alhálózat címtartomány-tartományán belül találhatók.
 
 Visszaállítás esetén az IP-címek a visszagörgetés után változhatnak.
 
@@ -122,13 +122,13 @@ A klasszikus virtuális hálózatokon futó Azure AD DS felügyelt tartományokh
 
 Alapértelmezés szerint az 5 hibás jelszó 2 percen belül kizárja a fiókot 30 percig.
 
-Nem lehet bejelentkezni a szolgáltatásba, ami zavarhatja az Azure AD DS felügyelt tartomány vagy a fiók által kezelt alkalmazások felügyeletének képességét. Egy Azure AD DS felügyelt tartomány migrálása után a fiókok megtapasztalják, hogy az állandó zárolási kísérlet miatt hogyan lehet maradandó zárolást végezni, mert ismétlődő sikertelen bejelentkezések történtek. Az áttelepítés utáni két gyakori forgatókönyv a következő:
+Kizárt fiók nem használható a bejelentkezéshez, ami zavarhatja az Azure AD DS felügyelt tartomány vagy a fiók által kezelt alkalmazások felügyeletének képességét. Egy Azure AD DS felügyelt tartomány migrálása után a fiókok megtapasztalják, hogy az állandó zárolási kísérlet miatt hogyan lehet maradandó zárolást végezni, mert ismétlődő sikertelen bejelentkezések történtek. Az áttelepítés utáni két gyakori forgatókönyv a következő:
 
 * Olyan szolgáltatásfiók, amely lejárt jelszót használ.
     * A szolgáltatásfiók többször is megpróbál bejelentkezni egy lejárt jelszóval, amely kizárja a fiókot. A probléma megoldásához keresse meg a lejárt hitelesítő adatokkal rendelkező alkalmazást vagy virtuális gépet, és frissítse a jelszót.
 * A rosszindulatú entitások találgatásos kísérletekkel jelentkeznek be a fiókba.
     * Ha a virtuális gépek ki vannak téve az internethez, a támadók gyakran megpróbálnak közös felhasználóneveket és jelszavakat használni a bejelentkezés megkísérlése során. Ezek az ismétlődő sikertelen bejelentkezési kísérletek le tudják zárni a fiókokat. A rendszergazdai fiókokat nem ajánlott általános névvel *(például rendszergazda vagy* *rendszergazda*) használni, például a rendszergazdai fiókok kizárásának minimalizálására.
-    * Csökkentse az interneten elérhetővé tett virtuális gépek számát. Az [Azure Bastion (jelenleg előzetes][azure-bastion] verzióban elérhető) használatával biztonságosan csatlakozhat a virtuális gépekhez a Azure Portal használatával.
+    * Csökkentse az interneten elérhetővé tett virtuális gépek számát. Az [Azure Bastion][azure-bastion] segítségével biztonságosan csatlakozhat a virtuális gépekhez a Azure Portal használatával.
 
 Ha azt gyanítja, hogy egyes fiókok kizárhatók az áttelepítés után, akkor a végső áttelepítési lépések azt ismertetik, hogyan lehet a naplózást engedélyezni, vagy módosítani a részletes jelszóházirendek beállításait.
 
@@ -153,7 +153,7 @@ A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történ�
 
 | Lépés:    | Végrehajtás  | Becsült idő  | Leállás  | Vissza/vissza? |
 |---------|--------------------|-----------------|-----------|-------------------|
-| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure Portal | 15 perc | Nincs szükség állásidőre | – |
+| [1. lépés – az új virtuális hálózat frissítése és megkeresése](#update-and-verify-virtual-network-settings) | Azure portál | 15 perc | Nincs szükség állásidőre | – |
 | [2. lépés – az Azure AD DS felügyelt tartomány előkészítése áttelepítésre](#prepare-the-managed-domain-for-migration) | PowerShell | 15 – 30 perc átlagosan | Az Azure AD DS leállása a parancs befejezése után kezdődik. | Visszaállítás és helyreállítás elérhető. |
 | [3. lépés – az Azure AD DS felügyelt tartomány áthelyezése meglévő virtuális hálózatra](#migrate-the-managed-domain) | PowerShell | átlagosan 1 – 3 óra | A parancs befejezése után egy tartományvezérlő érhető el, a leállás véget ér. | Hiba esetén mind a visszaállítás (önkiszolgáló), mind a visszaállítás elérhető. |
 | [4. lépés – tesztelés és várakozás a replika tartományvezérlőre](#test-and-verify-connectivity-after-the-migration)| PowerShell és Azure Portal | 1 óra vagy több, a tesztek számától függően | Mindkét tartományvezérlő elérhető, és általában működnie kell. | N/A. Az első virtuális gép sikeres áttelepítése után nincs lehetőség visszaállításra vagy visszaállításra. |
@@ -164,11 +164,11 @@ A Resource Manager-alapú üzemi modellre és a virtuális hálózatra történ�
 
 ## <a name="update-and-verify-virtual-network-settings"></a>Virtuális hálózati beállítások frissítése és ellenőrzése
 
-Az áttelepítés megkezdése előtt végezze el a következő kezdeti ellenőrzéseket és frissítéseket. Ezek a lépések bármikor megtörténhetnek az áttelepítés előtt, és nem érinthetik az Azure AD DS felügyelt tartomány működését.
+Az áttelepítési folyamat megkezdése előtt végezze el a következő kezdeti ellenőrzéseket és frissítéseket. Ezek a lépések bármikor megtörténhetnek az áttelepítés előtt, és nem érinthetik az Azure AD DS felügyelt tartomány működését.
 
 1. Frissítse helyi Azure PowerShell környezetét a legújabb verzióra. Az áttelepítési lépések végrehajtásához legalább *2.3.2*-es verziójúnak kell lennie.
 
-    További információ az ellenőrzési és frissítési útmutatóról: [Azure PowerShell Overview (áttekintés][azure-powershell]).
+    További információ a PowerShell-verziójának vizsgálatáról és frissítéséről: [Azure PowerShell Overview (áttekintés][azure-powershell]).
 
 1. Hozzon létre vagy válasszon ki egy meglévő, Resource Manager-beli virtuális hálózatot.
 
@@ -210,7 +210,8 @@ Az Azure AD DS felügyelt tartomány áttelepítésre való előkészítéséhez
 
     ```powershell
     Migrate-Aadds `
-        -Prepare -ManagedDomainFqdn contoso.com `
+        -Prepare `
+        -ManagedDomainFqdn contoso.com `
         -Credentials $creds
     ```
 
@@ -273,27 +274,27 @@ Az áttelepítési parancsmag befejezését követően a második tartományvez�
 
 Ha az áttelepítési folyamat sikeresen befejeződött, néhány választható konfigurációs lépés tartalmazza a naplók és az e-mail-értesítések engedélyezését, illetve a részletes jelszóházirendek frissítését.
 
-#### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Előfizetés a naplókra Azure Monitor használatával
+### <a name="subscribe-to-audit-logs-using-azure-monitor"></a>Előfizetés a naplókra Azure Monitor használatával
 
 Az Azure AD DS a tartományvezérlőkön található események hibakeresését és megtekintését megkönnyítő naplókat tesz elérhetővé. További információt a [naplók engedélyezése és használata][security-audits]című témakörben talál.
 
 A sablonok segítségével figyelheti a naplókban elérhető fontos információkat. A naplózási napló munkafüzet-sablonja például nyomon követheti a lehetséges fiókzárolási lehetőségeket az Azure AD DS felügyelt tartományon.
 
-#### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-mail-értesítések konfigurálása
+### <a name="configure-azure-ad-domain-services-email-notifications"></a>Azure AD Domain Services e-mail-értesítések konfigurálása
 
 Ha értesítést szeretne kapni, amikor problémát észlel az Azure AD DS felügyelt tartományon, frissítse az e-mail értesítési beállításokat a Azure Portal. További információ: az [értesítési beállítások konfigurálása][notifications].
 
-#### <a name="update-fine-grained-password-policy"></a>Részletes jelszóházirendek frissítése
+### <a name="update-fine-grained-password-policy"></a>Részletes jelszóházirendek frissítése
 
 Ha szükséges, frissítheti a részletes jelszóházirendek, hogy az alapértelmezett konfigurációnál kevésbé legyen korlátozó. A naplók segítségével meghatározhatja, hogy egy kevésbé korlátozó beállítás logikus-e, majd szükség szerint konfigurálja a házirendet. A következő magas szintű lépésekkel tekintheti át és frissítheti az áttelepítés után ismétlődően zárolt fiókok házirend-beállításait:
 
 1. Az Azure AD DS felügyelt tartománynál kevesebb korlátozást kell [beállítania][password-policy] , és figyelnie kell az eseményeket a naplókban.
 1. Ha bármelyik szolgáltatásfiók a naplókban azonosított lejárt jelszavakat használ, frissítse ezeket a fiókokat a megfelelő jelszóval.
-1. Ha a virtuális gép elérhető az internethez, tekintse át az általános fiókok neveit, például a rendszergazda, a *felhasználó*vagy a *vendég* *szerepkört*a magas bejelentkezési kísérletekkel. Ha lehetséges, frissítse ezeket a virtuális gépeket úgy, hogy azok kevésbé általános névvel ellátott fiókokat használjanak.
-1. Használjon hálózati nyomkövetést a virtuális gépen, hogy megkeresse a támadások forrását, és blokkolja ezeket az IP-címeket, hogy képes legyen a bejelentkezésre.
+1. Ha egy virtuális gép elérhető az internethez, tekintse át az általános fiókok neveit, például a rendszergazda, a *felhasználó*vagy a *vendég* *szerepkört*a magas bejelentkezési kísérletekkel. Ha lehetséges, frissítse ezeket a virtuális gépeket úgy, hogy azok kevésbé általános névvel ellátott fiókokat használjanak.
+1. A virtuális gépen található hálózati nyomkövetés használatával keresse meg a támadások forrását, és tiltsa le az IP-címeket, hogy a rendszer megkísérelje a bejelentkezést.
 1. Ha minimális zárolási probléma merül fel, frissítse a részletes jelszóházirendek a szükségesnél szigorúbb korlátozást.
 
-#### <a name="creating-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
+### <a name="creating-a-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 
 Az Azure AD DS hálózati biztonsági csoportra van szüksége a felügyelt tartományhoz szükséges portok biztonságossá tételéhez és az összes többi bejövő forgalom blokkolásához. Ez a hálózati biztonsági csoport kiegészítő védelmi rétegként működik a felügyelt tartományhoz való hozzáférés zárolása érdekében, és nem jön létre automatikusan. A hálózati biztonsági csoport létrehozásához és a szükséges portok megnyitásához tekintse át a következő lépéseket:
 
@@ -301,6 +302,8 @@ Az Azure AD DS hálózati biztonsági csoportra van szüksége a felügyelt tart
 1. Ha biztonságos LDAP-t használ, vegyen fel egy szabályt a hálózati biztonsági csoportba, hogy engedélyezze a bejövő forgalmat a *636*-as *TCP* -porton. További információ: [Secure LDAP konfigurálása][secure-ldap].
 
 ## <a name="roll-back-and-restore-from-migration"></a>Visszaállítás és helyreállítás az áttelepítésből
+
+Az áttelepítési folyamat egy bizonyos pontjáig dönthet úgy, hogy visszaállítja vagy visszaállíthatja az Azure AD DS felügyelt tartományt.
 
 ### <a name="roll-back"></a>Visszaállítás
 
@@ -322,7 +325,7 @@ Végső megoldásként Azure AD Domain Services visszaállíthatók a legutóbbi
 
 Az Azure AD DS felügyelt tartomány biztonsági másolatból történő visszaállításához [Nyisson meg egy támogatási esetet a Azure Portal használatával][azure-support]. Adja meg a címtár-azonosítót, a tartománynevet és a visszaállítás okát. A támogatási és visszaállítási folyamat több napot is igénybe vehet.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Ha a Resource Manager-alapú üzemi modellre való áttelepítést követően problémák léptek fel, tekintse át a következő gyakori hibaelhárítási területek némelyikét:
 

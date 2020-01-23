@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/08/2019
 ms.author: mlottner
-ms.openlocfilehash: e85738c344189486726b4e7b7f5a76ab03c0ffa9
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 7dff2a88da2e12388bfb3a97cfdad236045170cf
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991431"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543885"
 ---
 # <a name="deploy-a-security-module-on-your-iot-edge-device"></a>Biztonsági modul üzembe helyezése a IoT Edge eszközön
 
@@ -66,15 +66,15 @@ A következő lépésekkel telepítheti a IoT Edge IoT biztonsági moduljának A
     >[!Note] 
     >Ha a **központi telepítés méretezése**lehetőséget választotta, adja hozzá az eszköz nevét és részleteit, mielőtt továbblép a **modulok hozzáadása** lapra az alábbi utasításokban.     
 
-A IoT számára három lépésben hozhat létre IoT Edge központi Azure Security Center telepítést. A következő szakasz végigvezeti a műveletet. 
+Hajtsa végre az egyes lépéseket a Azure Security Center IoT való IoT Edge telepítésének befejezéséhez. 
 
-#### <a name="step-1-add-modules"></a>1\. lépés: modulok hozzáadása
+#### <a name="step-1-modules"></a>1\. lépés: modulok
 
-1. A **modulok hozzáadása** lap **üzembe helyezési modulok** területén kattintson a AzureSecurityCenterforIoT **beállítására** . 
-   
-1. Módosítsa a **nevet** a **azureiotsecurity**értékre.
-1. Módosítsa a **rendszerkép URI-ját** a **MCR.microsoft.com/ascforiot/azureiotsecurity:1.0.0**értékre.
-1. Ellenőrizze, hogy a **tároló létrehozási beállításai** érték a következőre van-e beállítva:      
+1. Válassza ki a **AzureSecurityCenterforIoT** modult.
+1. A **modul beállításai** lapon módosítsa a **nevet** a **azureiotsecurity**értékre.
+1. A **környezeti változók** lapon adjon hozzá egy változót, ha szükséges (például hibakeresési szint).
+1. A **tároló létrehozása beállítások** lapon adja hozzá a következő konfigurációt:
+
     ``` json
     {
         "NetworkingConfig": {
@@ -92,24 +92,20 @@ A IoT számára három lépésben hozhat létre IoT Edge központi Azure Securit
         }
     }    
     ```
-1. Ellenőrizze, hogy be van-e jelölve a **Module Twin kívánt tulajdonságainak beállítása** elem, majd módosítsa a konfigurációs objektumot a következőre:
+    
+1. A **modul Twin beállítások** lapján adja hozzá a következő konfigurációt:
       
     ``` json
-    { 
-       "properties.desired":{ 
-      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{ 
-
-          }
-       }
-    }
+      "ms_iotn:urn_azureiot_Security_SecurityAgentConfiguration":{}
     ```
 
-1. Kattintson a **Save** (Mentés) gombra.
-1. Görgessen a lap aljára, majd válassza a **speciális Edge-futtatókörnyezet beállításainak konfigurálása**lehetőséget. 
-   
-1. Módosítsa a **képet** az **Edge Hub** alatt a **MCR.microsoft.com/azureiotedge-hub:1.0.8.3**értékre.
+1. Válassza a **Frissítés** lehetőséget.
 
-1. A **létrehozási beállítások** ellenőrzése a következőre van beállítva: 
+#### <a name="step-2-runtime-settings"></a>2\. lépés: futtatókörnyezet beállításai
+
+1. Válassza a **futtatókörnyezet beállításait**.
+1. Az **Edge hub**alatt módosítsa a **képet** **MCR.microsoft.com/azureiotedge-hub:1.0.8.3**.
+1. A **létrehozási beállítások** ellenőrzése a következő konfigurációra van beállítva: 
          
     ``` json
     { 
@@ -134,25 +130,30 @@ A IoT számára három lépésben hozhat létre IoT Edge központi Azure Securit
        }
     }
     ```
-1. Kattintson a **Save** (Mentés) gombra.
+    
+1. Kattintson a **Mentés** gombra.
    
 1. Kattintson a **Tovább** gombra.
 
-#### <a name="step-2-specify-routes"></a>2\. lépés: útvonalak meghatározása 
+#### <a name="step-3-specify-routes"></a>3\. lépés: útvonalak meghatározása 
 
-1. Az **útvonalak meghatározása** lapon győződjön meg arról, hogy rendelkezik olyan útvonallal (explicit vagy implicit), amely az alábbi példáknak megfelelően továbbítja a **azureiotsecurity** modul üzeneteinek **$upstreamét** , csak ezután kattintson a **tovább**gombra. 
+1. Az **útvonalak meghatározása** lapon győződjön meg arról, hogy van olyan útvonala (explicit vagy implicit), amely továbbítja az üzeneteket a **azureiotsecurity** modulból az alábbi példáknak megfelelően **$upstream** . Csak ha az útvonal van érvényben, válassza a **tovább**lehetőséget.
 
-~~~Default implicit route
-"route": "FROM /messages/* INTO $upstream" 
-~~~
+   Példa útvonalak:
 
-~~~Explicit route
-"ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
-~~~
+    ~~~Default implicit route
+    "route": "FROM /messages/* INTO $upstream" 
+    ~~~
 
-#### <a name="step-3-review-deployment"></a>3\. lépés: az üzembe helyezés áttekintése
+    ~~~Explicit route
+    "ASCForIoTRoute": "FROM /messages/modules/azureiotsecurity/* INTO $upstream"
+    ~~~
 
-- A központi telepítés **áttekintése** lapon tekintse át a központi telepítési adatokat, majd a telepítés befejezéséhez válassza a **Submit (Küldés** ) lehetőséget.
+1. Kattintson a **Tovább** gombra.
+
+#### <a name="step-4-review-deployment"></a>4\. lépés: az üzembe helyezés áttekintése
+
+- A központi telepítés **áttekintése** lapon tekintse át a központi telepítési adatokat, majd válassza a **Létrehozás** lehetőséget a telepítés befejezéséhez.
 
 ## <a name="diagnostic-steps"></a>Diagnosztikai lépések
 
@@ -166,7 +167,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. Ellenőrizze, hogy a következő tárolók futnak-e:
    
-   | Name (Név) | LEMEZKÉP |
+   | Name (Név) | RENDSZERKÉP |
    | --- | --- |
    | azureiotsecurity | mcr.microsoft.com/ascforiot/azureiotsecurity:1.0.1 |
    | edgeHub | mcr.microsoft.com/azureiotedge-hub:1.0.8.3 |
@@ -182,7 +183,7 @@ Ha problémába ütközik, a tároló naplói a legjobb módszer a IoT Edge bizt
    
 1. A részletes naplókhoz adja hozzá a következő környezeti változót a **azureiotsecurity** modul telepítéséhez: `logLevel=Debug`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A konfigurációs beállításokkal kapcsolatos további információkért folytassa a modul konfigurálásának útmutatójában. 
 > [!div class="nextstepaction"]

@@ -1,6 +1,6 @@
 ---
 title: Durva újrahonosítás a/NDK C++-ben
-description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a horgonyok a C++/NDK. eszközön lévő érzékelők használatával
+description: Részletes magyarázat arról, hogyan hozhatók létre és találhatók a/NDK.- C++alapú durva újrahonosítást használó horgonyok
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,14 +8,14 @@ ms.author: bobuc
 ms.date: 09/19/2019
 ms.topic: tutorial
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: e505e6a8a3c9f28905c1b1fc3d90dbeee959a793
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: db7480b8aa2a78e40cf52d22cbaa7a15422602e8
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277251"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545415"
 ---
-# <a name="how-to-create-and-locate-anchors-using-on-device-sensors-in-cndk"></a>Horgonyok létrehozása és megkeresése az eszközön lévő szenzorok C++használatával a/NDK-ben
+# <a name="how-to-create-and-locate-anchors-using-coarse-relocalization-in-cndk"></a>Horgonyok létrehozása és megkeresése durva újrahonosítással a/NDK C++-ben
 
 > [!div  class="op_single_selector"]
 > * [Unity](set-up-coarse-reloc-unity.md)

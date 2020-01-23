@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.date: 09/03/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: b2ebb4c5a0df360cede084a90ebe5da041a08aa0
-ms.sourcegitcommit: 49c4b9c797c09c92632d7cedfec0ac1cf783631b
+ms.openlocfilehash: 70d5481c37777150927914042133286a77f53b89
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/05/2019
-ms.locfileid: "70241377"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514408"
 ---
 ::: zone target = "docs"
 
@@ -109,7 +109,7 @@ Ez a lépés nagyjából 10–15 percet vesz igénybe.
 
 Ez a lépés kb. 5–7 percet vesz igénybe.
 
-1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com) **Általános > Eszköz adatai** lapján találja. Az eszköz mindkét csomópontjához ugyanazt a jelszót használja.
+1. Az eszköz jelszavát az [Azure Portal](https://portal.azure.com)**Általános > Eszköz adatai** lapján találja. Az eszköz mindkét csomópontjához ugyanazt a jelszót használja.
 2. A Data Box Heavyhez csatlakoztatott számítógépen rendelje a 192.168.100.5 statikus IP-címet és a 255.255.255.0 alhálózatot az Ethernet-adapterhez. Nyissa meg az eszköz helyi webes felületét a következő helyen: `https://192.168.100.10`. A csatlakozás az eszköz bekapcsolását követően 5 percet is igénybe vehet.
 3. Jelentkezzen be az Azure Portalról beszerzett jelszóval. Egy hibaüzenet jelenik meg, miszerint a webhely biztonsági tanúsítványa hibás. A böngészőspecifikus utasításokat követve lépjen a weblapra.
 4. Alapértelmezés szerint az adapterek hálózati beállításai (az MGMT kivételével) DHCP-ként vannak konfigurálva. Szükség esetén statikusként is konfigurálhatja az adaptereket, és megadhat egy IP-címet.

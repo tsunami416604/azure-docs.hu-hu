@@ -4,16 +4,16 @@ description: Ez a cikk a rendszergazdák Azure EA Portalon elvégzendő gyakori 
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 01/02/2020
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: cost-management-billing
 manager: boalcsva
-ms.openlocfilehash: 469bd66a6074db34d1efb6f82fda229400239058
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: effc7dfb8ca540d044b5698b90b3195da0f29b19
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75992308"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547574"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -117,82 +117,74 @@ A Dev/Test ajánlat jelenleg nem érhető el az Azure Government-ügyfelek szám
 
 ## <a name="transfer-an-enterprise-account-to-a-new-enrollment"></a>Vállalati fiók átvitele egy új regisztrációba
 
-A fiókok tulajdonosai áthelyezik a fiók tulajdonosát az egyik regisztrációból a másikba. A fiók tulajdonosának minden kapcsolódó előfizetése a cél beléptetésére kerül át. Ez akkor történik meg, ha több aktív regisztráció van, és csak a kiválasztott fiók tulajdonosait szeretné áthelyezni.
+A fiókátvitellel egy fióktulajdonos áthelyezhető az egyik regisztrációból egy másikba. A fióktulajdonos alá tartozó összes kapcsolódó előfizetés átkerül a célregisztrációba. Ez akkor történik meg, ha több aktív regisztráció van, és csak a kiválasztott fióktulajdonosokat szeretné áthelyezni.
 
 Amikor vállalati fiókokat visz át egy új regisztrációba, tartsa szem előtt a következőket:
 
 - A rendszer csak a kérelemben megadott fiókokat viszi át. Ha az összes fiókot kiválasztotta, mindet át fogja vinni.
 - A forrásregisztráció megőrzi az állapotát (aktív vagy meghosszabbítva). Tovább folytathatja a használatát, amíg le nem jár.
 
-### <a name="effective-transfer-date"></a>Átvitel hatálybalépési dátuma
-
-A hátsóajtó a cél beléptetésének kezdő dátumánál, vagy a fiók kezdő dátumánál is megadhatja, attól függően, hogy melyik a későbbi kezdési dátuma. A fiók átvitele után a fiókban lévő, átvitel dátuma előtti használati adatok abban a regisztrációban maradnak, amelyből átviszi a fiókot. A használati adatokat az átvitel dátuma után a rendszer áthelyezi a cél regisztrációba.
-
 ### <a name="prerequisites"></a>Előfeltételek
 
 A fiókátvitel kérésekor adja meg az alábbi adatokat:
 
-- A cél beléptetésének, a fiók nevének és a fiók tulajdonosának az átvinni kívánt e-mail-címének száma
+- A célregisztráció számát, az átvinni kívánt fiók nevét és a fióktulajdonos e-mail-címét
 - A forrásregisztrációhoz a regisztrációs számot és az átvinni kívánt fiókot
-- A fiók átvitelének érvényességi idejére visszamenőlegesen visszakeltezett a cél beléptetésének kezdő dátuma vagy a fiók kezdő dátuma, attól függően, hogy melyik a későbbi kezdési dátuma
 
 Egyéb szempontok, amelyeket érdemes észben tartani a fiókok átvitele előtt:
 
 - A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására
 - Ha egy fiókátvitel nem felel meg az elvárásainak, vegye fontolóra a regisztráció átvitelét.
 - A fiókátvitel az adott fiókokhoz tartozó összes szolgáltatást és előfizetést átviszi.
-- Az átvitel befejezése után az átvitt fiók inaktív állapotba kerül a forrás beléptetése alatt, és a cél regisztrálása alatt aktívként jelenik meg.
+- Az átvitel befejezését követően az átvitt fiók inaktívként jelenik meg a forrásregisztráció alatt, és aktívként a célregisztráció alatt.
 - A fiók a záró dátumot a forrásregisztráció hatályos átviteli dátumaként jelenít meg és a célregisztráció kezdő dátumaként.
 - A fiók esetében a hatályos átviteli dátum előtti bármilyen használat a forrásregisztrációhoz tartozik.
 
 
 ## <a name="transfer-enterprise-enrollment-to-a-new-one"></a>Vállalati regisztráció átvitele egy új regisztrációba
 
-A beléptetési átvitel a következőket veszi figyelembe:
+A regisztrációátvitel a következő esetben megfontolandó:
 
-- A jelenlegi beléptetési kötelezettségvállalás időtartama véget ért.
-- A beléptetés lejárt/kiterjesztett állapotban van, és egy új szerződés van egyeztetve.
-- Ha több regisztrációt is tartalmaz, és egyetlen regisztráció keretében szeretné összevonni az összes fiókot és számlázást.
+- A jelenlegi regisztráció kötelezettségvállalási időtartama véget ért.
+- A regisztráció lejárt/meghosszabbított állapotban van, és egy új szerződés egyeztetése folyamatban van.
+- Ha több regisztrációval rendelkezik, és egyetlen regisztráció keretében szeretné összevonni az összes fiókot és számlázást.
 
 Ha egy teljes vállalati regisztráció átvitelét kéri egy regisztrációba, a következő műveletek mennek végbe:
 
-- A rendszer az összes Azure-szolgáltatást, előfizetést, fiókot, részleget és a teljes regisztrációs struktúrát, beleértve az összes nagyvállalati szerződéssel rendelkező rendszergazdát is áthelyezi egy új célhelyre.
+- A rendszer az összes Azure-szolgáltatást, előfizetést, fiókot, részleget, valamint a teljes regisztrációs struktúrát átviszi az új célregisztrációba, az EA-részlegek rendszergazdáival együtt.
 - A regisztráció állapota _Átvitt_ értékre módosul. Az átvitt regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet elérni.
 - Az átvitt regisztrációkhoz nem adhat hozzá szerepköröket vagy előfizetéseket. Az átvitt állapot megakadályozza a regisztráció további használatának felszámítását.
 - A szerződés pénzügyi keretének fennmaradó egyenlege elveszik, a jövőbeli időszakokkal együtt.
 -   Ha a regisztráció, amelyről az átvitelt végzi rendelkezik megvásárolt fenntartott példányokkal, a fenntartott példány vételára továbbra is a forrásregisztrációban marad, azonban a fenntartott példány összes előnye az új regisztrációban lesz elérhető.
 -   A Marketplace-en kifizetett egyszeri vételár és a régi regisztrációban felmerült fix havi díjak nem lesznek áthelyezve az új regisztrációba. A használatalapú Marketplace-díjak átvitele megtörténik.
--   Visszakeltezett regisztrációátvitelt követően a vásárlásokból származó egyszeri díjak a forrásregisztrációban maradnak.
 
 ### <a name="effective-transfer-date"></a>Átvitel hatálybalépési dátuma
 
-A tényleges átvitel napja a cél beléptetésének kezdő dátumán vagy után is lehet.
+Az átvitel hatályba lépésének napja a célregisztráció kezdődátuma vagy egy későbbi időpont lehet.
 
 A forrásregisztráció használatának költsége a pénzügyi keretből lesz levonva, vagy túlhasználatként lesz kiszámlázva. Az átvitel dátuma utáni használat átkerül az új regisztrációba, és ennek megfelelően kell majd érte fizetni.
-
-A visszakeltezett-átvitel a cél beléptetésének kezdő dátumánál visszamenőlegesen támogatott. A kiválasztott átvitel dátumának megadása nem befolyásolja a már kibocsátott túlhasználatú számla használatát.
 
 ### <a name="prerequisites"></a>Előfeltételek
 
 A regisztrációátvitel kérésekor adja meg az alábbi adatokat:
 
-- A beléptetési szám a forrás beléptetéséhez.
+- A forrásregisztrációhoz a regisztrációs számot.
 - A célregisztrációhoz az átvitel céljának regisztrációs számát.
 - A regisztrációátvitel hatálybalépési dátuma lehet a célregisztráció kezdő dátuma vagy egy későbbi időpont. A kiválasztott dátum nem lehet hatással a már kiállított túlhasználati számlákban feltüntetett használatra.
 
 Egyéb szempontok, amelyeket érdemes észben tartani a regisztrációk átvitele előtt:
 
-- A cél-és forrás-beléptetési EA-rendszergazdák jóváhagyása szükséges.
+- A cél- és a forrásregisztráció esetében is szükség van egy EA-rendszergazda jóváhagyására.
 - Ha egy regisztrációátvitel nem felel meg az elvárásainak, vegye fontolóra a fiókátvitelt.
-- A forrás-beléptetési állapot át lesz frissítve az átvitelre, és csak a korábbi használat jelentéskészítési célokra lesz elérhető.
+- A forrásregisztráció állapota átvitt lesz, és ezt a regisztrációt csak a korábbi használatról szóló jelentések elkészítéséhez lehet majd elérni.
 
 ### <a name="monetary-commitment"></a>Pénzügyi keret
 
 A pénzügyi keretet nem lehet átvinni egyik regisztrációból a másikba. A pénzügyi keret egyenlegeit a szerződés ahhoz a regisztrációhoz köti, amelyhez megrendelték őket. A rendszer nem viszi át a pénzügyi keretet a fiók vagy a regisztráció átviteli folyamatának részeként.
 
-### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>Nincsenek érintett szolgáltatások a fiókok és a beléptetési átvitelek esetében
+### <a name="no-services-affected-for-account-and-enrollment-transfers"></a>A fiókok és a regisztrációk átvitele nem érinti a szolgáltatásokat
 
-A fiók vagy a beléptetési átvitel során nincs leállás. Ha az összes szükséges információt megadja, a kérelem benyújtásának napján is el lehet végezni.
+A fiókok és a regisztrációk átvitele során nincs állásidő. Ha az összes szükséges információt megadja, a kérelem benyújtásának napján is el lehet végezni.
 
 ## <a name="change-account-owner"></a>Fiók tulajdonosának módosítása
 

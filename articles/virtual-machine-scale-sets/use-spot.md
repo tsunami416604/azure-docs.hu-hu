@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: cynthn
-ms.openlocfilehash: 4f434afdd02d15f98e005b44f5563847f4c5847d
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: a7afb80276147c1562a5963a3ae9a319a8b73264
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76278205"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544786"
 ---
 # <a name="preview-azure-spot-vms-for-virtual-machine-scale-sets"></a>Előzetes verzió: Azure-beli helyszíni virtuális gépek a virtuálisgép-méretezési csoportokhoz 
 
@@ -91,50 +91,20 @@ $vmssConfig = New-AzVmssConfig `
 
 ## <a name="resource-manager-templates"></a>Erőforrás-kezelői sablonok
 
-A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépéseket ismertető cikkben leírtakkal. Adja hozzá a "priority" tulajdonságot a sablonban található *Microsoft. számítási/virtualMachineScaleSets/virtualMachineProfile* erőforrástípus számára, és adja meg a *spot* értéket. Ügyeljen arra, hogy a *2019-03-01* API vagy újabb verzióját használja. 
+A helyszíni virtuális gépeket használó méretezési csoport létrehozásának folyamata megegyezik a [Linux](quick-create-template-linux.md) vagy [Windows rendszerhez](quick-create-template-windows.md)készült első lépéseket ismertető cikkben leírtakkal. 
 
-A törlési házirend beállításához adja hozzá a "evictionPolicy" paramétert, és állítsa a *törlésre*.
-
-A következő példa létrehoz egy *myScaleSet* nevű Linux-méretezési készletet az *USA nyugati középső*régiójában, amely *törli a kiürítési* csoportba tartozó virtuális gépeket:
+Helyszíni központi telepítések esetén használjon`"apiVersion": "2019-03-01"` vagy újabb verziót. Adja hozzá a `priority`, `evictionPolicy` és `billingProfile` tulajdonságokat a sablon `"virtualMachineProfile":` szakaszához: 
 
 ```json
-{
-  "type": "Microsoft.Compute/virtualMachineScaleSets",
-  "name": "myScaleSet",
-  "location": "East US 2",
-  "apiVersion": "2019-03-01",
-  "sku": {
-    "name": "Standard_DS2_v2",
-    "capacity": "2"
-  },
-  "properties": {
-    "upgradePolicy": {
-      "mode": "Automatic"
-    },
-    "virtualMachineProfile": {
-       "priority": "Spot",
-       "evictionPolicy": "delete",
-       "storageProfile": {
-        "osDisk": {
-          "caching": "ReadWrite",
-          "createOption": "FromImage"
-        },
-        "imageReference":  {
-          "publisher": "Canonical",
-          "offer": "UbuntuServer",
-          "sku": "16.04-LTS",
-          "version": "latest"
-        }
-      },
-      "osProfile": {
-        "computerNamePrefix": "myvmss",
-        "adminUsername": "azureuser",
-        "adminPassword": "P@ssw0rd!"
-      }
-    }
-  }
-}
+                "priority": "Spot",
+                "evictionPolicy": "Deallocate",
+                "billingProfile": {
+                    "maxPrice": -1
+                }
 ```
+
+Ha törölni szeretné a példányt a kizárása után, módosítsa a `evictionPolicy` paramétert `Delete`re.
+
 ## <a name="faq"></a>Gyakori kérdések
 
 **K:** A létrehozása után a a standard példány megegyeznek?

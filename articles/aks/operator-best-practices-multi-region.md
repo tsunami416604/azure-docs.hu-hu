@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/28/2018
 ms.author: thfalgou
 ms.custom: fasttrack-edit
-ms.openlocfilehash: ff55257891ff379bea9ff44aa5136195ced44354
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 855d40f9c20f966f6fa2b89949e47c943704bf2b
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613108"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549155"
 ---
 # <a name="best-practices-for-business-continuity-and-disaster-recovery-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások az üzletmenet folytonosságához és a vész-helyreállításhoz az Azure Kubernetes szolgáltatásban (ak)
 
@@ -66,7 +66,7 @@ A Traffic Manager a DNS (3. réteg) használatával alakítja át a forgalmat. A
 
 Ha a fürtöknek egymással kell beszélgetni, a virtuális hálózatok egymáshoz való csatlakoztatása a [virtuális hálózati](https://docs.microsoft.com/azure/virtual-network/virtual-network-peering-overview)kapcsolaton keresztül is megvalósítható. Ez a technológia összekapcsolódik a virtuális hálózatokkal egymással, és a Microsoft gerinces hálózatán is nagy sávszélességet biztosít, akár különböző földrajzi régiók között is.
 
-A virtuális hálózatok és az AK-fürtök futtatásának előfeltétele, hogy a standard Load Balancer használja az AK-fürtben, hogy a kubernetes-szolgáltatások elérhetők legyenek a virtuális hálózatok között.
+A virtuális hálózatok és az AK-fürtök futtatásának előfeltétele, hogy a standard Load Balancer használja az AK-fürtben, hogy a Kubernetes-szolgáltatások elérhetők legyenek a virtuális hálózatok között.
 
 ## <a name="enable-geo-replication-for-container-images"></a>Földrajzi replikálás engedélyezése a tároló lemezképei számára
 

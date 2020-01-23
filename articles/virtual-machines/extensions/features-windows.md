@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 79c6658d2b3758eed94f273bf0b3685bbd146278
-ms.sourcegitcommit: a107430549622028fcd7730db84f61b0064bf52f
+ms.openlocfilehash: 69d08af9fd34728860343db3578f7283802f1611
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74073083"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544752"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
 
-Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha például egy virtuális gépnek szoftver telepítésére, vírusirtó elleni védelemre vagy egy parancsfájl futtatására van szüksége, a rendszer egy virtuálisgép-bővítményt is használhat. Az Azure-beli virtuálisgép-bővítmények az Azure CLI-vel, a PowerShell-lel, a Azure Resource Manager-sablonokkal és a Azure Portal is futtathatók. A bővítmények egy új virtuálisgép-telepítéssel is elhelyezhetők, vagy bármely meglévő rendszeren futtathatók.
+Az Azure virtuálisgép-bővítmények olyan kisméretű alkalmazások, amelyek üzembe helyezés utáni konfigurációs és automatizálási feladatokat biztosítanak az Azure-beli virtuális gépeken. Ha egy virtuális gépen például szoftver telepítésére, vírusvédelemre vagy egy szkript futtatására van szükség, erre felhasználható egy virtuálisgép-bővítmény. Az Azure virtuálisgép-bővítmények az Azure CLI, a PowerShell, az Azure Resource Manager-sablonok és az Azure Portal használatával futtathatók. A bővítmények egy kötegben hajthatók végre az új virtuális gépek üzembe helyezésével, vagy meglévő rendszereken is futtathatók.
 
 Ez a cikk áttekintést nyújt a virtuálisgép-bővítményekről, az Azure virtuálisgép-bővítmények használatára vonatkozó előfeltételekről, valamint útmutatást nyújt a virtuálisgép-bővítmények észleléséhez, kezeléséhez és eltávolításához. Ez a cikk általánosított információkat nyújt, mivel számos virtuálisgép-bővítmény elérhető, amelyek mindegyike potenciálisan egyedi konfigurációval rendelkezik. A bővítményekre vonatkozó részletek az egyes bővítményekre jellemző minden dokumentumban találhatók.
 
@@ -65,7 +65,7 @@ Egyes bővítmények nem támogatottak az összes operációs rendszeren, és a 
 
 #### <a name="network-access"></a>Hálózati hozzáférés
 
-A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, ahogy az ügynök használatával átirányíthatja a kommunikációt az Azure Fabric Controller for Agent Communications (HostGAPlugin szolgáltatás emelt szintű csatorna magánhálózati IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)). Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
+A bővítmények letöltése az Azure Storage bővítmény-tárházból történik, és a bővítmény állapotának feltöltése az Azure Storage-ba kerül. Ha az ügynökök [támogatott](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support) verzióját használja, nem kell engedélyeznie az Azure Storage-hoz való hozzáférést a virtuálisgép-régióban, mivel az ügynökkel átirányíthatja a kommunikációt az Azure Fabric-vezérlővel az ügynök-kommunikációhoz (HostGAPlugin funkció a privát IP- [168.63.129.16](https://docs.microsoft.com/azure/virtual-network/what-is-ip-address-168-63-129-16)található privilegizált csatornán keresztül). Ha az ügynök nem támogatott verzióját használ, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
 
 > [!IMPORTANT]
 > Ha letiltotta a hozzáférést a *168.63.129.16* a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül meghiúsulnak. A 80, 443 és 32526 portok megadása kötelező.
@@ -140,7 +140,7 @@ Set-AzVMAccessExtension -ResourceGroupName "myResourceGroup" -VMName "myVM" -Nam
 A `Set-AzVMExtension` parancs használatával bármely virtuálisgép-bővítmény elindítható. További információkért lásd a [set-AzVMExtension referenciát](https://docs.microsoft.com/powershell/module/az.compute/set-azvmextension).
 
 
-### <a name="azure-portal"></a>Azure Portal
+### <a name="azure-portal"></a>Azure portál
 
 A virtuálisgép-bővítmények a Azure Portal használatával alkalmazhatók egy meglévő virtuális gépre. Válassza ki a virtuális gépet a portálon, válassza a **bővítmények**, majd a **Hozzáadás**lehetőséget. Válassza ki a kívánt bővítményt az elérhető bővítmények listájából, és kövesse a varázsló utasításait.
 
@@ -251,6 +251,10 @@ Ha a **parancs áthelyezésével végrehajtja** a tulajdonságot a **védett** k
     }
 }
 ```
+
+A bővítményeket használó Azure IaaS-alapú virtuális gépeken a tanúsítványok konzolon láthatja, hogy a tulajdonos **_Windows Azure CRP-tanúsítványt létrehozó_** tanúsítványokat tartalmaz. A klasszikus RDFE virtuális gépeken ezek a tanúsítványok a **_Windows Azure Service Management_** szolgáltatással rendelkeznek a kiterjesztésekhez.
+
+Ezek a tanúsítványok biztosítják a virtuális gép és a gazdagép közötti kommunikációt a védett beállítások (jelszó, egyéb hitelesítő adatok) a bővítmények által használt átvitele során. A tanúsítványokat az Azure Fabric Controller készíti el, és továbbítja a virtuálisgép-ügynöknek. Ha minden nap leállítja és elindítja a virtuális gépet, előfordulhat, hogy a háló vezérlő létrehoz egy új tanúsítványt. A tanúsítványt a számítógép személyes tanúsítványtárolójában tárolja a rendszer. Ezeket a tanúsítványokat törölni lehet. A virtuálisgép-ügynök szükség esetén újra létrehozza a tanúsítványokat.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Hogyan frissülnek az ügynökök és a bővítmények?
 
@@ -419,11 +423,11 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 ## <a name="common-vm-extensions-reference"></a>Gyakori virtuálisgép-bővítmények ismertetése
 | Kiterjesztés neve | Leírás | További információ |
 | --- | --- | --- |
-| Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni parancsfájl-bővítmény a Windowshoz](custom-script-windows.md) |
+| Egyéni parancsfájl-bővítmény a Windowshoz |Parancsfájlok futtatása Azure-beli virtuális gépeken |[Egyéni szkriptbővítmények a Windowshoz](custom-script-windows.md) |
 | DSC-bővítmény a Windowshoz |PowerShell DSC (kívánt állapot konfiguráció) bővítmény |[DSC-bővítmény a Windowshoz](dsc-overview.md) |
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

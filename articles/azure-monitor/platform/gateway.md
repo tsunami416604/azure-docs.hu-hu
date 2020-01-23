@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: 8d48c889681eabc2519a0a60d0f9846b8f30bfd5
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830139"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547302"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -60,7 +60,7 @@ Az alábbi ábrán egy Operations Manager felügyeleti csoportból Log Analytics
 Az Log Analytics átjáró futtatására kijelölt számítógépeknek a következő konfigurációval kell rendelkezniük:
 
 * Windows 10, Windows 8,1 vagy Windows 7
-* Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 vagy Windows Server 2008
+* Windows Server 2019, Windows Server 2016, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 vagy Windows Server 2008
 * Microsoft .NET-keretrendszer 4.5
 * Legalább 4 magos processzor és 8 GB memória 
 * A Windows rendszerhez készült [log Analytics ügynök](agent-windows.md) , amely az átjárón keresztül kommunikáló ügynökökkel azonos munkaterületre való jelentésre van konfigurálva

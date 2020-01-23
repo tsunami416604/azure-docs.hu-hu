@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 12/08/2016
 ms.author: jucoriol
 ms.custom: mvc
-ms.openlocfilehash: 860c277e88918dc37eceb496d852691ced2af114
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 11a6debe735459b617f6f93c3f67a32350dd4623
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277906"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549053"
 ---
 # <a name="deprecated-full-cicd-pipeline-to-deploy-a-multi-container-application-on-azure-container-service-with-docker-swarm-using-azure-devops-services"></a>ELAVULT Teljes CI/CD-folyamat egy többtárolós alkalmazás üzembe helyezéséhez Azure Container Service a Docker Swarm használatával az Azure DevOps Services segítségével
 
@@ -50,7 +50,7 @@ Az oktatóanyag elindítása előtt el kell végeznie a következő feladatokat:
 
 [!INCLUDE [container-service-swarm-mode-note](../../../includes/container-service-swarm-mode-note.md)]
 
-Szükség van egy Ubuntu (14,04 vagy 16,04) gépre is, amelyen telepítve van a Docker. Ezt a gépet az Azure DevOps Services használja az Azure-folyamatok folyamatai során. A gép létrehozásának egyik módja az [Azure Marketplace](https://azure.microsoft.com/marketplace/partners/canonicalandmsopentech/dockeronubuntuserver1404lts/)-en elérhető rendszerkép használata. 
+Szükség van egy Ubuntu (14,04 vagy 16,04) gépre is, amelyen telepítve van a Docker. Ezt a gépet az Azure DevOps Services használja az Azure-folyamatok folyamatai során. A gép létrehozásának egyik módja az Azure Marketplace-en elérhető rendszerkép használata. 
 
 ## <a name="step-1-configure-your-azure-devops-services-organization"></a>1\. lépés: az Azure DevOps Services-szervezet konfigurálása 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.date: 01/09/2020
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: e52a859c86ff451293ac6ff795c7fe427a383b9d
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: 459d75bec3d4b4d0cf9057e0c6de238e7f165bfb
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75835299"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548985"
 ---
 # <a name="tutorial-use-deployment-scripts-to-create-a-self-signed-certificate-preview"></a>Oktatóanyag: az üzembe helyezési parancsfájlok használata önaláírt tanúsítvány létrehozásához (előzetes verzió)
 
@@ -267,7 +267,7 @@ Az üzembe helyezési parancsfájl hozzáadja a tanúsítványt a kulcstartóhoz
     * **scriptContent**: adja meg a parancsfájl tartalmát. Külső parancsfájl futtatásához használja helyette a **primaryScriptURI** . További információ: [külső parancsfájl használata](./deployment-script-template.md#use-external-scripts).
         **$DeploymentScriptOutputs** deklarálása csak akkor szükséges, ha a parancsfájlt egy helyi gépen teszteli. A változó deklarálása lehetővé teszi, hogy a parancsfájl egy helyi gépen és egy deploymentScript-erőforráson fusson anélkül, hogy módosítani kellene. Az $DeploymentScriptOutputshoz rendelt érték az üzemelő példányokban kimenetként érhető el. További információ: [az üzembehelyezési szkriptek kimenetének használata](./deployment-script-template.md#work-with-outputs-from-deployment-scripts).
     * **cleanupPreference**: adja meg a telepítési parancsfájl erőforrásainak törlésére vonatkozó beállítást.  Az alapértelmezett érték **mindig**, ami azt jelenti, hogy az üzembe helyezési parancsfájl erőforrásai törlődnek a terminál állapota (sikeres, sikertelen, megszakított) ellenére. Ebben az oktatóanyagban a **OnSuccess** -t használjuk, így a szkriptek végrehajtási eredményei is megtekinthetők.
-    * **retentionInterval**: adja meg azt az intervallumot, ameddig a szolgáltatás megőrzi a parancsfájl erőforrásait, miután elérte a terminál állapotát. Az erőforrások az adott időtartam lejárta után törlődnek. Az időtartam az ISO 8601 mintán alapul. Ez az oktatóanyag P1D használ, ami egy napot jelent.  Ezt a tulajdonságot akkor használja a rendszer, ha a **retentionInterval** értéke **OnExpiration**. Ez a tulajdonság jelenleg nincs engedélyezve.
+    * **retentionInterval**: adja meg azt az intervallumot, ameddig a szolgáltatás megőrzi a parancsfájl erőforrásait, miután elérte a terminál állapotát. Az erőforrások az adott időtartam lejárta után törlődnek. Az időtartam az ISO 8601 mintán alapul. Ez az oktatóanyag P1D használ, ami egy napot jelent.  Ezt a tulajdonságot akkor használja a rendszer, ha a **cleanupPreference** értéke **OnExpiration**. Ez a tulajdonság jelenleg nincs engedélyezve.
 
     Az üzembe helyezési parancsfájl három paramétert fogad: a kulcstároló nevét, a tanúsítvány nevét és a tulajdonos nevét.  Létrehoz egy tanúsítványt, majd hozzáadja a tanúsítványt a kulcstartóhoz.
 

@@ -7,12 +7,12 @@ ms.author: jzim
 ms.service: container-service
 ms.topic: article
 ms.date: 09/25/2019
-ms.openlocfilehash: 0cb875122c63be18f7c39cdfea7986d705ed434e
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 610b1e0112b8135aa09ade5c800eaed987635cb4
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539277"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545636"
 ---
 # <a name="azure-red-hat-openshift-customer-administrator-role"></a>Azure Red Hat OpenShift ügyfél-rendszergazdai szerepkör
 
@@ -22,7 +22,6 @@ Ha a fiókja az ügyfél-rendszergazda-fürt engedélyezési szerepkörrel van k
 
 > [!Note] 
 > Az ügyfél-rendszergazda-fürt szerepkör nem azonos a fürt – rendszergazda fürt szerepkörével.
-
 
 Például végrehajthat műveleteket egy adott művelethez társított műveletek végrehajtásához (`create`) az erőforrásnevek (`templates`) egy készletén való működéshez. Az alábbi parancs futtatásával tekintheti meg a szerepkörök és a hozzájuk tartozó műveletek és erőforrások készletének részleteit:
 
@@ -34,7 +33,13 @@ A `list` művelettel például azt jelenti, hogy megjelenítheti egy erőforrás
 
 ## <a name="configure-the-customer-administrator-role"></a>Az ügyfél-rendszergazdai szerepkör konfigurálása
 
-Az ügyfél-rendszergazda fürt szerepkört csak a fürt létrehozása során állíthatja be úgy, hogy megadja a jelző `--customer-admin-group-id`. A Azure Active Directory és a rendszergazdák csoport konfigurálásának megismeréséhez tekintse meg az [Azure Red Hat OpenShift való Azure Active Directory integrációját](howto-aad-app-configuration.md)ismertető témakört.
+Az ügyfél-rendszergazda fürt szerepkört csak a fürt létrehozása során állíthatja be úgy, hogy megadja a jelző `--customer-admin-group-id`. Ez a mező jelenleg nem konfigurálható a Azure Portalban. A Azure Active Directory és a rendszergazdák csoport konfigurálásának megismeréséhez tekintse meg az [Azure Red Hat OpenShift való Azure Active Directory integrációját](howto-aad-app-configuration.md)ismertető témakört.
+
+## <a name="confirm-membership-in-the-customer-administrator-role"></a>Tagság megerősítése az ügyfél-rendszergazdai szerepkörben
+
+Ha szeretné megerősíteni a tagságát a Customer admin csoportban, próbálja ki a OpenShift CLI-parancsokat `oc get nodes` vagy `oc projects`. `oc get nodes` a csomópontok listáját jeleníti meg, ha az ügyfél-rendszergazda-fürt szerepkörrel rendelkezik, és ha csak az ügyfél-rendszergazda projekt szerepkörrel rendelkezik. `oc projects` a fürtben lévő összes projektet megjeleníti, nem csupán azokat a projekteket, amelyeken dolgozik.
+
+A szerepkörök és engedélyek további megismeréséhez a fürtben használhatja a [`oc policy who-can <verb> <resource>`](https://docs.openshift.com/container-platform/3.11/admin_guide/manage_rbac.html#managing-role-bindings) parancsot.
 
 ## <a name="next-steps"></a>Következő lépések
 

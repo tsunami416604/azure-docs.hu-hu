@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 9332079cd77c4dcc972059071165ba0631135b5c
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: cd10bd2a04bfb2a3e3316d86e64a98c75c12e36d
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74012535"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76530880"
 ---
 Ez a cikk bemutatja, hogyan tervezheti meg a IaaS virtuális gépek és lemezek biztonsági mentését és a vész-helyreállítást (DR) az Azure-ban. Ez a dokumentum a felügyelt és a nem felügyelt lemezeket is tartalmazza.
 
@@ -33,7 +33,7 @@ Mielőtt megnézzük a biztonsági mentési és a DR-beállításokat, a honosí
 
 ### <a name="azure-iaas-resiliency"></a>Az Azure IaaS rugalmassága
 
-A *rugalmasság* a hardveres összetevőkben előforduló normál hibákra vonatkozó tűréshatárra utal. A rugalmasság lehetővé teszi a hibák helyreállítását, és folytathatja a működést. Nem a hibák elkerüléséről van szó, de a hibákra válaszol olyan módon, amely elkerüli az állásidőt vagy az adatvesztést. A rugalmasság célja, hogy az alkalmazás egy hibát követően teljesen működőképes állapotba térjen vissza. Az Azure-beli virtuális gépek és lemezek úgy vannak kialakítva, hogy rugalmasak legyenek a gyakori hardveres hibákhoz. Nézzük meg, hogyan biztosítja ezt a rugalmasságot az Azure IaaS platform.
+A *rugalmasság* a hardveres összetevőkben előforduló normál hibákra vonatkozó tűréshatárra utal. A rugalmasság lehetővé teszi a hibák helyreállítását, és folytathatja a működést. Nem a hibák elkerülését jelenti, hanem a hibákra adott olyan válaszokat, amelyek kiküszöbölik az állásidőt és az adatveszteséget. A rugalmasság célja, hogy az alkalmazás egy hibát követően teljesen működőképes állapotba térjen vissza. Az Azure-beli virtuális gépek és lemezek úgy vannak kialakítva, hogy rugalmasak legyenek a gyakori hardveres hibákhoz. Nézzük meg, hogyan biztosítja ezt a rugalmasságot az Azure IaaS platform.
 
 A virtuális gépek főleg két részből állnak: egy számítási kiszolgálóból és az állandó lemezből. Mindkettő befolyásolja a virtuális gépek hibatűrését.
 
@@ -107,10 +107,10 @@ A nem felügyelt lemezek esetében használhatja a helyileg redundáns tárolás
 
  A következő táblázat a DR számára elérhető megoldások összegzését tartalmazza.
 
-| Forgatókönyv | Automatikus replikáció | DR megoldás |
+| Alkalmazási helyzet | Automatikus replikáció | DR megoldás |
 | --- | --- | --- |
-| prémium SSD lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
-| Felügyelt lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Prémium SSD-lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
+| Managed Disks | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt helyileg redundáns tároló lemezek | Helyi ([helyileg redundáns tárolás](../articles/storage/common/storage-redundancy-lrs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/) |
 | Nem felügyelt geo-redundáns tárolási lemezek | Régiók közötti ([geo-redundáns tárolás](../articles/storage/common/storage-redundancy-grs.md)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzisztens Pillanatképek](#alternative-solution-consistent-snapshots) |
 | Nem felügyelt olvasási hozzáférésű geo-redundáns Storage-lemezek | Régiók közötti[kapcsolat (olvasási hozzáférés geo-redundáns tárolás](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)) | [Azure Backup](https://azure.microsoft.com/services/backup/)<br/>[Konzisztens Pillanatképek](#alternative-solution-consistent-snapshots) |
@@ -121,10 +121,10 @@ Az alkalmazások és az infrastruktúra szintjén a magas rendelkezésre állás
 
 | Szint |   Magas rendelkezésre állás   | Biztonsági mentés vagy DR |
 | --- | --- | --- |
-| Alkalmazás | SQL Server AlwaysOn | Azure Backup |
+| Jelentkezés | SQL Server AlwaysOn | Azure Backup |
 | Infrastruktúra    | Rendelkezésre állási csoport  | Földrajzilag redundáns tárolás konzisztens pillanatképekkel |
 
-### <a name="using-azure-backup"></a>Azure Backup használata 
+### <a name="using-azure-backup"></a>Az Azure Backup használata 
 
 A [Azure Backup](../articles/backup/backup-azure-vms-introduction.md) Windows vagy Linux rendszerű virtuális gépek biztonsági mentését végezheti el az Azure Recovery Services-tárolóba. Az üzleti szempontból kritikus fontosságú adatbiztonsági mentést és helyreállítást az a tény nehezíti, hogy az üzleti szempontból kritikus fontosságú adatbiztonsági mentést kell készíteni, miközben az adatfeldolgozást végző alkalmazások futnak. 
 
@@ -151,8 +151,6 @@ A következő lépésekkel engedélyezheti a virtuális gépek biztonsági ment�
 1.  Konfigurálja a biztonsági mentési szabályzatot, és válassza ki a virtuális gépet ugyanabból a felhasználói felületről.
 
 1.  Győződjön meg arról, hogy a biztonsági mentési ügynök telepítve van a virtuális gépen. Ha a virtuális gépet egy Azure Gallery-rendszerkép használatával hozza létre, a biztonsági mentési ügynök már telepítve van. Ellenkező esetben (ha egyéni rendszerképet használ), az utasításokat követve [telepítse a virtuálisgép-ügynököt egy virtuális gépre](../articles/backup/backup-azure-arm-vms-prepare.md#install-the-vm-agent).
-
-1.  Győződjön meg arról, hogy a virtuális gép engedélyezi a hálózati kapcsolatot a biztonsági mentési szolgáltatás működéséhez. Kövesse a [hálózati kapcsolatra](../articles/backup/backup-azure-arm-vms-prepare.md#establish-network-connectivity)vonatkozó utasításokat.
 
 1.  Az előző lépések elvégzése után a biztonsági mentés a biztonsági mentési szabályzatban megadott rendszeres időközönként fut. Szükség esetén manuálisan is aktiválhatja az első biztonsági mentést a tároló irányítópultján a Azure Portal.
 
@@ -229,7 +227,7 @@ Pillanatkép lekéréséhez másolja azt egy új blob létrehozásához. Ha a pi
 
 Több lemezzel rendelkező virtuális gépek esetén az azonos koordinált visszaállítási pont részét képező összes pillanatképet át kell másolnia. A pillanatképek írható VHD-blobokra másolását követően a Blobokkal újból létrehozhatja a virtuális gépet a virtuális gép sablonjának használatával.
 
-## <a name="other-options"></a>Egyéb beállítások
+## <a name="other-options"></a>Egyéb lehetőségek
 
 ### <a name="sql-server"></a>SQL Server
 

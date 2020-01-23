@@ -4,15 +4,15 @@ description: Azure File Syncával kapcsolatos gyakori problémák elhárítása.
 author: jeffpatt24
 ms.service: storage
 ms.topic: conceptual
-ms.date: 12/8/2019
+ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: 9318944004ae98eeb2a3300cabca07dfbe4e4fc7
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514629"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545041"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -48,6 +48,19 @@ meghajtóbetűjel: \ nem érhető el.
 A paraméter helytelen.
 
 A megoldáshoz telepítse a Windows Server 2012 R2 legújabb frissítéseit, és indítsa újra a kiszolgálót.
+
+<a id="server-registration-missing-subscriptions"></a>**A kiszolgáló regisztrálása nem tartalmazza az összes Azure-előfizetést**  
+Ha a ServerRegistration. exe használatával regisztrál egy kiszolgálót, az előfizetések hiányoznak, amikor rákattint az Azure-előfizetés legördülő menüjére.
+
+Ez a probléma azért fordul elő, mert a ServerRegistration. exe jelenleg nem támogatja a több-bérlős környezeteket. Ezt a problémát egy későbbi Azure File Sync ügynök frissítése fogja megállapítani.
+
+A probléma megoldásához használja a következő PowerShell-parancsokat a kiszolgáló regisztrálásához:
+
+```powershell
+Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.PowerShell.Cmdlets.dll"
+Login-AzureRmStorageSync -SubscriptionID "<guid>" -TenantID "<guid>"
+Register-AzureRmStorageSyncServer -SubscriptionId "<guid>" -ResourceGroupName "<string>" -StorageSyncServiceName "<string>"
+```
 
 <a id="server-registration-prerequisites"></a>**A kiszolgáló regisztrálása a következő üzenetet jeleníti meg: "Előfeltételek hiányoznak"**  
 Ez az üzenet akkor jelenik meg, ha az az vagy az AzureRM PowerShell-modul nincs telepítve a PowerShell 5,1-ben. 
@@ -311,6 +324,7 @@ Ezeknek a hibáknak a megtekintéséhez futtassa a **FileSyncErrorsReport. ps1**
 | 0x8000ffff | – 2147418113 | E_UNEXPECTED | Váratlan hiba miatt nem lehet szinkronizálni a fájlt. | Ha a hiba több napig is fennáll, nyisson meg egy támogatási esetet. |
 | 0x80070020 | – 2147024864 | ERROR_SHARING_VIOLATION | A fájl nem szinkronizálható, mert használatban van. A fájl szinkronizálása akkor megy végbe, amikor már nem lesz használatban. | Nincs szükség beavatkozásra. |
 | 0x80c80017 | – 2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | A fájl módosult a szinkronizálás során, ezért újra kell szinkronizálni. | Nincs szükség beavatkozásra. |
+| 0x80070017 | – 2147024873 | ERROR_CRC | CRC-hiba miatt nem lehet szinkronizálni a fájlt. Ez a hiba akkor fordulhat elő, ha egy lépcsőzetes fájl nem lett meghívva a kiszolgálói végpont törlése előtt, vagy ha a fájl sérült. | A probléma megoldásához tekintse [meg a kiszolgálói végpont törlése után a-kiszolgálón nem érhető](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=portal1%2Cazure-portal#tiered-files-are-not-accessible-on-the-server-after-deleting-a-server-endpoint) el a többkötetes fájlok az árva fájlok eltávolításához. Ha a hiba továbbra is a oprhaned rétegű fájlok eltávolítása után következik be, futtassa a [chkdsk](https://docs.microsoft.com/windows-server/administration/windows-commands/chkdsk) parancsot a köteten. |
 | 0x80c80200 | – 2134375936 | ECS_E_SYNC_CONFLICT_NAME_EXISTS | A fájl nem szinkronizálható, mert elérte az ütköző fájlok maximális számát. A Azure File Sync fájlon keresztül támogatja az 100-es ütközési fájlokat. További információ a fájlokkal kapcsolatos ütközésekről: Azure File Sync [GYIK](https://docs.microsoft.com/azure/storage/files/storage-files-faq#afs-conflict-resolution). | A probléma megoldásához csökkentse az ütköző fájlok számát. A fájl szinkronizálva lesz, amint az ütköző fájlok száma kevesebb, mint 100. |
 
 #### <a name="handling-unsupported-characters"></a>Nem támogatott karakterek feldolgozása
@@ -442,6 +456,17 @@ Ez a hiba azért fordul elő, mert a Azure File Sync ügynöknek nincs engedély
 
 1. [Ellenőrizze, hogy létezik-e a Storage-fiók.](#troubleshoot-storage-account)
 2. [Győződjön meg arról, hogy a tárfiók tűzfal- és virtuális hálózati beállításai megfelelően vannak konfigurálva (ha engedélyezve vannak).](https://docs.microsoft.com/azure/storage/files/storage-sync-files-deployment-guide?tabs=azure-portal#configure-firewall-and-virtual-network-settings)
+
+<a id="-2134364014"></a>**A szinkronizálás nem sikerült, mert a Storage-fiók zárolva van.**  
+
+| | |
+|-|-|
+| **HRESULT** | 0x80c83092 |
+| **HRESULT (decimális)** | – 2134364014 |
+| **Hiba karakterlánca** | ECS_E_STORAGE_ACCOUNT_LOCKED |
+| **Szervizelés szükséges** | Igen |
+
+Ez a hiba azért fordul elő, mert a Storage-fiók csak olvasható [erőforrás-zárolással](https://docs.microsoft.com/azure/azure-resource-manager/management/lock-resources)rendelkezik. A probléma megoldásához távolítsa el a írásvédett erőforrás-zárolást a Storage-fiókon. 
 
 <a id="-1906441138"></a>**A szinkronizálás nem sikerült, mert a szinkronizálási adatbázissal kapcsolatos probléma merült fel.**  
 

@@ -8,12 +8,12 @@ ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
-ms.openlocfilehash: b84855057b43daa0aeff4878a69dac4ae765d2ef
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47eae55493c5db281ee1be0f9d32f8f8190fc286
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429306"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546945"
 ---
 # <a name="control-access-to-iot-hub"></a>Hozzáférés elérésének szabályozása
 
@@ -57,7 +57,7 @@ Például egy tipikus IoT-megoldásban:
 > [!NOTE]
 > Részletes információk: [engedélyek](#iot-hub-permissions) .
 
-## <a name="authentication"></a>Hitelesítés
+## <a name="authentication"></a>Authentication
 
 Az Azure IoT Hub egy biztonsági jogkivonatnak a megosztott hozzáférési szabályzatok és az identitásjegyzékbeli biztonsági hitelesítő adatok alapján végzett ellenőrzésével ad hozzáférést a végpontokhoz.
 
@@ -347,7 +347,7 @@ Az eredmény, amely hozzáférést biztosít az összes eszköz identitásának 
 
 ## <a name="supported-x509-certificates"></a>Támogatott X. 509 tanúsítványok
 
-Bármely X. 509 tanúsítvány használatával hitelesítheti az eszközöket IoT Hub egy tanúsítvány-ujjlenyomat vagy egy hitelesítésszolgáltató (CA) az Azure IoT Hubba való feltöltésével. A tanúsítvány ujjlenyomatai megfelelnek használatával történő hitelesítés csak azt ellenőrzi, hogy a megjelenített ujjlenyomat megegyezik-e a beállított ujjlenyomattal. A hitelesítésszolgáltatóval történő hitelesítés ellenőrzi a tanúsítványláncot. 
+Bármely X. 509 tanúsítvány használatával hitelesítheti az eszközöket IoT Hub egy tanúsítvány-ujjlenyomat vagy egy hitelesítésszolgáltató (CA) az Azure IoT Hubba való feltöltésével. Hitelesítés a ujjlenyomatai megfelelnek használatával ellenőrzi, hogy a megjelenített ujjlenyomat megegyezik-e a beállított ujjlenyomattal. A hitelesítésszolgáltatóval történő hitelesítés ellenőrzi a tanúsítványláncot. Mindkét esetben a TLS-kézfogás megköveteli, hogy az eszköz rendelkezzen érvényes tanúsítvánnyal és titkos kulccsal. További részletekért tekintse meg a TLS-specifikációt, például: [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/).
 
 A támogatott tanúsítványok a következők:
 
@@ -461,6 +461,8 @@ A IoT Hub Fejlesztői útmutatóban található további témakörök a követke
 * [IoT hub lekérdezési nyelv](iot-hub-devguide-query-language.md) leírja a lekérdezési nyelvet, amellyel információkat kérhet le az eszközökről, és feladatairól IoT hub.
 
 * [IOT hub MQTT-támogatás](iot-hub-mqtt-support.md) további információkat nyújt a MQTT protokoll IoT hub támogatásáról.
+
+* [RFC 5246 – a Transport Layer Security (TLS) protokoll 1,2-es verziója](https://tools.ietf.org/html/rfc5246/) további információkat nyújt a TLS-hitelesítésről.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 11/26/2018
 ms.author: mlearned
-ms.openlocfilehash: 88b2da863b30157de7bb749ae0ca4d040484af52
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: cb15f637337df05c61eeac611286b49e23b6adac
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293640"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76549189"
 ---
 # <a name="best-practices-for-cluster-isolation-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök elkülönítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -26,7 +26,7 @@ Ez az ajánlott eljárási cikk a fürtcsomópontok elkülönítésére koncentr
 
 ## <a name="design-clusters-for-multi-tenancy"></a>Több-bérlős tervezési fürtök
 
-A Kubernetes olyan funkciókat biztosít, amelyek lehetővé teszik a csapatok és munkaterhelések logikai elkülönítését ugyanabban a fürtben. A cél az, hogy a lehető legkevesebb jogosultságot adja meg, az egyes csoportok erőforrásainak hatóköre alapján. A Kubernetes egyik [névtere][k8s-namespaces] logikai elkülönítési határt hoz létre. Az elkülönítésre és a több-bérlőre vonatkozó további kubernetes-funkciók és-megfontolások a következő területeket foglalják magukban:
+A Kubernetes olyan funkciókat biztosít, amelyek lehetővé teszik a csapatok és munkaterhelések logikai elkülönítését ugyanabban a fürtben. A cél az, hogy a lehető legkevesebb jogosultságot adja meg, az egyes csoportok erőforrásainak hatóköre alapján. A Kubernetes egyik [névtere][k8s-namespaces] logikai elkülönítési határt hoz létre. Az elkülönítésre és a több-bérlőre vonatkozó további Kubernetes-funkciók és-megfontolások a következő területeket foglalják magukban:
 
 * Az **Ütemezés** magában foglalja az olyan alapszintű szolgáltatások használatát, mint az erőforrás-kvóták és a pod-megszakadási költségvetés. További információ ezekről a funkciókról: [ajánlott eljárások az alapszintű Scheduler-funkciókhoz az AK-ban][aks-best-practices-scheduler].
   * A fejlettebb Scheduler-funkciók közé tartozik a szennyező elemek és a tolerálás, a csomópont-választó, valamint a csomópont-és a pod-affinitás, illetve a kapcsolati affinitás. További információ ezekről a funkciókról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][aks-best-practices-advanced-scheduler].

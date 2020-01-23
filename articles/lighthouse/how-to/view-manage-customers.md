@@ -1,14 +1,14 @@
 ---
 title: Ügyfelek és delegált erőforrások megtekintése és kezelése
 description: Az Azure-beli delegált erőforrás-kezelést használó szolgáltatóként megtekintheti az összes delegált ügyfél-erőforrást és-előfizetést, ha a Azure Portalban lévő ügyfelekre kerül.
-ms.date: 12/18/2019
+ms.date: 01/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: ac268d2899dcc3d940072bfbfd17770044dc3c66
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d4b3187066754e8a549f029623762df539b30b1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456833"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76543426"
 ---
 # <a name="view-and-manage-customers-and-delegated-resources"></a>Ügyfelek és delegált erőforrások megtekintése és kezelése
 
@@ -40,13 +40,20 @@ Az alábbi adatokat tekintheti meg erről az oldalról:
 - Ha további részleteket szeretne látni egy ajánlatról és annak delegálásáról, válassza az ajánlat nevét.
 - A delegált előfizetések vagy erőforráscsoportok szerepkör-hozzárendeléseivel kapcsolatos további részletek megtekintéséhez válassza ki a bejegyzést a **delegálások** oszlopban.
 
-## <a name="view-delegations"></a>Delegálások megtekintése
+## <a name="view-and-manage-delegations"></a>Delegálások megtekintése és kezelése
 
 A delegálások a delegált előfizetést/erőforráscsoportot, valamint a hozzájuk tartozó felhasználókat és engedélyeket jelenítik meg. Az adatok megtekintéséhez válassza a **saját ügyfelek** lap bal oldalán található **delegálások** lehetőséget.
 
 A lap tetején található szűrők segítségével rendezheti és csoportosíthatja a hozzáférés-hozzárendelési adatokat, illetve szűrheti az egyes ügyfelek, ajánlatok vagy kulcsszavak alapján.
 
+### <a name="view-role-assignments"></a>Szerepkör-hozzárendelések megtekintése
+
 Az egyes delegálásokhoz társított felhasználók és engedélyek a szerepkör- **hozzárendelések** oszlopban jelennek meg. Az egyes bejegyzéseket kiválasztva megtekintheti azoknak a felhasználóknak, csoportoknak és egyszerű szolgáltatásoknak a teljes listáját, amelyek hozzáférést kaptak az előfizetéshez vagy az erőforráscsoporthoz. Az adott felhasználó, csoport vagy egyszerű szolgáltatásnév kiválasztásával további részleteket tudhat meg.
+
+### <a name="remove-delegations"></a>Delegálások eltávolítása
+
+Ha a [felügyelt szolgáltatások regisztrációs hozzárendelésének törlési szerepkörrel](../../role-based-access-control/built-in-roles.md#managed-services-registration-assignment-delete-role) rendelkező felhasználók számára felvette az ügyfelet az Azure-beli delegált erőforrás-kezeléshez, a felhasználók eltávolíthatnak egy delegálást úgy, hogy kiválasztja az adott delegálás sorában megjelenő Kuka ikont. Ha igen, a szolgáltató bérlője egyik felhasználója sem férhet hozzá a korábban delegált erőforrásokhoz.
+
 
 ## <a name="work-in-the-context-of-a-delegated-subscription"></a>Meghatalmazott előfizetés kontextusában működik
 

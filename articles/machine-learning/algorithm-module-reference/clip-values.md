@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: ca35af997834a897572555e752597026b5159712
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5f695bf739a6e096083cd6d8271b6936f24c16da
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314453"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546826"
 ---
 # <a name="clip-values"></a>Értékek levágása
 
-Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 A Clip Values modul segítségével azonosíthatja és tetszés szerint lecserélheti a megadott küszöbérték alatti vagy feletti adatértékeket egy középérték, egy konstans vagy más helyettesítő érték megadásával.  
 

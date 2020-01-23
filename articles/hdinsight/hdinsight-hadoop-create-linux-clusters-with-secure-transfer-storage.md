@@ -7,24 +7,26 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
-ms.date: 12/04/2019
-ms.openlocfilehash: bcb0e9551f4415b2aac9eb2d641c91df9f692437
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/22/2020
+ms.openlocfilehash: a8176cc07296b7de7b6aba5356485280ef5ebde1
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979127"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76548815"
 ---
 # <a name="create-apache-hadoop-cluster-with-secure-transfer-storage-accounts-in-azure-hdinsight"></a>Biztonságos átvitelű Storage-fiókkal rendelkező Apache Hadoop-fürt létrehozása az Azure HDInsight
 
 A [biztonságos átvitelt szükséges](../storage/common/storage-require-secure-transfer.md) funkció megnöveli az Azure Storage-fiók biztonságát azáltal, hogy minden, a fiókra beérkező kérést biztonságos kapcsolat használatára kényszerít. Ezt a funkciót és a wasbs sémát csak a HDInsight-fürt 3.6-os vagy újabb verziója támogatja.
+
+**A Biztonságos tár átvitelének engedélyezése a fürt létrehozása után hibákat eredményezhet a Storage-fiókkal, és nem ajánlott. Jobb, ha új fürtöt hoz létre, amelynek a tulajdonsága engedélyezve van.**
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 A cikk elkezdése előtt a következőket kell tennie:
 
 * Azure-előfizetés: egy hónapos ingyenes próbaverziós fiók létrehozásához keresse meg a [Azure.microsoft.com/Free](https://azure.microsoft.com/free).
-* Egy biztonságos átvitelt engedélyező Azure Storage-fiók. Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-account-create.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat. A Biztonságos tár átvitelének a fürt létrehozása után történő engedélyezése a jelen cikkben nem tárgyalt további lépéseket igényel.
+* Egy biztonságos átvitelt engedélyező Azure Storage-fiók. Az utasításokért lásd a [Tárfiók létrehozása](../storage/common/storage-account-create.md) és a [Biztonságos átvitel megkövetelése](../storage/common/storage-require-secure-transfer.md) szakaszokat. 
 * Egy blob-tároló a Storage-fiókban.
 
 ## <a name="create-cluster"></a>Fürt létrehozása

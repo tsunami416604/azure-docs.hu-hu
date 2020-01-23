@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 09/21/2018
 ms.author: akjosh
-ms.openlocfilehash: 8a5b54131210d243015b37bf234408fd9d2b4c12
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: a21b8f2fea7433e9f65fd790321a28ea47a38c79
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933610"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76544718"
 ---
 # <a name="chef-vm-extension-for-linux-and-windows"></a>Chef VM-bővítmény Linux és Windows rendszerekhez
 
@@ -50,7 +50,7 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
   "properties": {
     "publisher": "Chef.Bootstrap.WindowsAzure",
     "type": "[parameters('chef_vm_extension_type')]",
-    "typeHandlerVersion": "1210.12",
+    "typeHandlerVersion": "1210.13",
     "settings": {
       "bootstrap_options": {
         "chef_server_url": "[parameters('chef_server_url')]",
@@ -72,7 +72,7 @@ A következő JSON a Chef virtuálisgép-bővítmény sémáját mutatja be. A k
 | apiVersion | `2017-12-01` | karakterlánc (dátum) |
 | közzétevő | `Chef.Bootstrap.WindowsAzure` | sztring |
 | type | `LinuxChefClient` (Linux), `ChefClient` (Windows) | sztring |
-| typeHandlerVersion | `1210.12` | karakterlánc (dupla) |
+| typeHandlerVersion | `1210.13` | karakterlánc (dupla) |
 
 ### <a name="settings"></a>Beállítások
 
@@ -118,7 +118,7 @@ az vm extension set \
   --vm-name myExistingVM \
   --name LinuxChefClient \
   --publisher Chef.Bootstrap.WindowsAzure \
-  --version 1210.12 --protected-settings '{"validation_key": "<validation_key>"}' \
+  --version 1210.13 --protected-settings '{"validation_key": "<validation_key>"}' \
   --settings '{ "bootstrap_options": { "chef_server_url": "<chef_server_url>", "validation_client_name": "<validation_client_name>" }, "runlist": "<run_list>" }'
 ```
 

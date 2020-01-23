@@ -9,16 +9,16 @@ ms.topic: reference
 author: xiaoharper
 ms.author: zhanxia
 ms.date: 10/22/2019
-ms.openlocfilehash: 9c17cd36d91d113ad59db7b7155c092e4aa7fad1
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 9263f9741a1921550a2ed683dbed441552d6cce0
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76315065"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76546333"
 ---
 # <a name="two-class-neural-network-module"></a>Kétosztályos neurális hálózati modul
 
-Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
 
 Ezzel a modullal létrehozhat egy olyan neurális hálózati modellt, amely egy olyan cél előrejelzésére használható, amely csak két értékkel rendelkezik.
 

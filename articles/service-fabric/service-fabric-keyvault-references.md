@@ -3,12 +3,12 @@ title: Azure Service Fabric – a Service Fabric Application kulcstartó-referen
 description: Ez a cikk azt ismerteti, hogyan használható a Service-Fabric KeyVaultReference támogatása az alkalmazás titkos kulcsaihoz.
 ms.topic: article
 ms.date: 09/20/2019
-ms.openlocfilehash: 3f4c4979d0ce1329ac8ba49b236dae20a4e88b53
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: f7d8a083ea5ec4b66c29d392ee98927915465875
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167127"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76545483"
 ---
 #  <a name="keyvaultreference-support-for-service-fabric-applications-preview"></a>Service Fabric alkalmazások KeyVaultReference támogatása (előzetes verzió)
 
@@ -22,7 +22,7 @@ A felhőalapú alkalmazások készítése során gyakran előforduló kihívás 
 
 - Központi titkok tárolója (CSS).
 
-    A Central Secrets Store (CSS) a Service-Fabric titkosított helyi titkok gyorsítótára, a beolvasott KeyVaultReference pedig a CSS-ben vannak gyorsítótárazva.
+    A központi titkok tárolója (CSS) Service Fabric titkosított helyi titkok gyorsítótára. A CSS egy helyi titkos tároló-gyorsítótár, amely a memóriában titkosított bizalmas adatokat, például jelszavakat, jogkivonatokat és kulcsokat tárol. A beolvasott KeyVaultReference a CSS-ben vannak gyorsítótárazva.
 
     Adja hozzá az alábbit a fürtkonfiguráció `fabricSettings` a KeyVaultReference támogatásához szükséges összes funkció engedélyezéséhez.
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 01/12/2020
 ms.author: mlearned
-ms.openlocfilehash: 054113da7fe06436fab0cdfff6c4257f1263de97
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 23a5dbf2333ca86c2d51d54bf983b00a71936eec
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290359"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76547948"
 ---
 # <a name="bring-your-own-keys-byok-with-azure-disks-in-azure-kubernetes-service-aks"></a>Saját kulcsok (BYOK) használata Azure-lemezekkel az Azure Kubernetes szolgáltatásban (ak)
 
@@ -98,7 +98,7 @@ az role assignment create --assignee $desIdentity --role Reader --scope $keyVaul
 
 ## <a name="create-a-new-aks-cluster-and-encrypt-the-os-disk"></a>Új AK-fürt létrehozása és az operációsrendszer-lemez titkosítása
 
-Hozzon létre egy **új erőforráscsoportot** és egy AK-fürtöt, majd használja a kulcsot az operációsrendszer-lemez titkosításához. Az ügyfél által felügyelt kulcsok csak a 1,17-nél nagyobb kubernetes-verziókban támogatottak. 
+Hozzon létre egy **új erőforráscsoportot** és egy AK-fürtöt, majd használja a kulcsot az operációsrendszer-lemez titkosításához. Az ügyfél által felügyelt kulcsok csak a 1,17-nél nagyobb Kubernetes-verziókban támogatottak. 
 
 > [!IMPORTANT]
 > Győződjön meg arról, hogy létrehoz egy új erőforrások-csoportot az AK-fürthöz
