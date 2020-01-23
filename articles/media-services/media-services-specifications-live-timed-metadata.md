@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services – időzített metaadatok jelzése élő adatfolyamban | Microsoft Docs
+title: Azure Media Services – időzített metaadatok jelzése élő adatfolyamban
 description: Ez a specifikáció olyan metódusokat vázol fel, amelyek jelzik az időzített metaadatokat a Azure Media Servicesba való betöltéskor és továbbításkor. Ez magában foglalja az általános időzített metaadatok (ID3) használatát, valamint a SCTE-35 jelzést az ad-beszúráshoz és a összekötési feltétel jelzéséhez.
 services: media-services
 documentationcenter: ''
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
-ms.openlocfilehash: fd8533ff310e307604e5ce25a4285cc90f3ea4ab
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: e686328464ac88abf28a0a8985d338838abca3d0
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933990"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514238"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
 

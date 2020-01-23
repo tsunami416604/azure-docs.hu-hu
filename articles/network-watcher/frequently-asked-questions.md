@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
-ms.openlocfilehash: 570b8057fc09e3f054152d09467519a167d938e9
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 856c249b72e9e0ff8667d10821ad14b3432b0775
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280781"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509189"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
 Az [azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview) szolgáltatás olyan eszközöket biztosít, amelyekkel figyelheti, diagnosztizálhatja és megtekintheti a metrikákat, valamint engedélyezheti vagy letilthatja az Azure-beli virtuális hálózatok erőforrásaihoz tartozó naplókat. Ez a cikk a szolgáltatással kapcsolatos gyakori kérdésekre ad választ.
@@ -75,17 +75,17 @@ Az Azure hálózati erőforrásait [hálózati biztonsági csoportok (NSG-EK)](h
 
 Ha tűzfallal szeretné használni a Storage-fiókot, meg kell adnia egy kivételt a megbízható Microsoft-szolgáltatások számára a Storage-fiókhoz való hozzáféréshez:
 
-* Keresse meg a tárfiók nevét. Ehhez keresse meg az NSG-t az [NSG-forgalom naplóinak áttekintési oldalán](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs)
-* Lépjen a tárfiókhoz a tárfiók nevét a portál globális keresési eszközébe beírva
+* Navigáljon a Storage-fiókhoz úgy, hogy beírja a Storage-fiók nevét a portálon vagy a [Storage-fiókok lapon](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResource/resourceType/Microsoft.Storage%2FStorageAccounts) található globális Keresés mezőbe.
 * A **BEÁLLÍTÁSOK** szakaszban válassza a **Tűzfalak és virtuális hálózatok** elemet
 * A "hozzáférés engedélyezése innen" területen válassza a **kiválasztott hálózatok**elemet. Ezután a **kivételek**alatt jelölje be a **"megbízható Microsoft-szolgáltatások hozzáférésének engedélyezése a Storage-fiókhoz"** jelölőnégyzetet. 
 * Ha ez a beállítás már ki lett választva, nincs szükség módosításra.  
+* Keresse meg a cél NSG a [NSG flow naplói – áttekintés oldalon](https://ms.portal.azure.com/#blade/Microsoft_Azure_Network/NetworkWatcherMenuBlade/flowLogs) , és engedélyezze a NSG-folyamat naplóit a fenti Storage-fiók kiválasztásával.
 
 Pár perc elteltével ellenőrizheti a tárnaplókat – egy frissített időbélyeget vagy egy újonnan létrehozott JSON-fájlt kell látnia.
 
 ### <a name="how-do-i-use-nsg-flow-logs-with-service-endpoints-for-storage"></a>Hogyan a NSG-flow-naplókat a tárolási végpontokkal együtt használni?
 
-Tekintse meg a [szolgáltatási végpontok engedélyezését ismertető oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint). 
+Tekintse [meg a szolgáltatási végpontok engedélyezésével foglalkozó oktatóanyagot](https://docs.microsoft.com/azure/virtual-network/tutorial-restrict-network-access-to-resources#enable-a-service-endpoint). 
 
 
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?

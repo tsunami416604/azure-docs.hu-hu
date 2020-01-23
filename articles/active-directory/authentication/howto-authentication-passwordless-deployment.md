@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb8398decd1a447d0676195d6369cdc7e791e40
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: 8323333f378f95f0a640313524f198bdd00dc340
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848493"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512572"
 ---
 # <a name="complete-a-passwordless-authentication-deployment"></a>Jelszóval nem rendelkező hitelesítési telepítés befejezése
 
@@ -108,7 +108,7 @@ Ahhoz, hogy a Windows 10-es bejelentkezés engedélyezve legyen a FIDO2 biztons�
    - Az Intune üzembe helyezése az ajánlott lehetőség.
 - [Hitelesítőadat-szolgáltató engedélyezése kiépítési csomaggal](howto-authentication-passwordless-security-key-windows.md#enable-with-a-provisioning-package)
    - Ha az Intune üzembe helyezése nem lehetséges, a rendszergazdáknak minden gépen telepíteniük kell egy csomagot, hogy engedélyezze a hitelesítő adatok szolgáltatójának működőképességét. A csomag telepítését a következő lehetőségek egyikével végezheti el:
-      - Csoportházirend vagy System Center Configuration Manager (SCCM)
+      - Csoportházirend vagy Configuration Manager
       - Helyi telepítés Windows 10 rendszerű gépen
 
 ### <a name="register-security-keys"></a>Biztonsági kulcsok regisztrálása

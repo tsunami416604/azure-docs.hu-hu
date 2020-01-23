@@ -7,13 +7,13 @@ manager: bertvanhoof
 ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
-ms.date: 11/22/2019
-ms.openlocfilehash: 95dbed72aeca639041d259e9c92c2a3b73ef63fe
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/21/2020
+ms.openlocfilehash: 3803802a3d81655091d8be543ae9cb17221a98d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456924"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511569"
 ---
 # <a name="egress-and-endpoints-in-azure-digital-twins"></a>Kimenő és végpontok az Azure Digital Twinsban
 
@@ -47,16 +47,16 @@ Az eseményeket IoT-objektumok (például eszközök és érzékelők) küldik e
 }
 ```
 
-| Attribútum | Típus | Leírás |
+| Attribútum | Type (Típus) | Leírás |
 | --- | --- | --- |
 | id | sztring | Az esemény egyedi azonosítója. |
-| subject | sztring | Közzétevő által megadott elérési út az esemény tárgya számára. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | data | objektum | Az erőforrás-szolgáltatóhoz tartozó esemény-adatértékek. |
-| eventType | sztring | Az eseményforrás egyik regisztrált eseménytípus. |
-| eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| dataVersion | sztring | Az adatobjektum séma-verziója. A közzétevő határozza meg a séma verzióját. |
-| metadataVersion | sztring | Az esemény metaadatainak séma-verziója. Event Grid a legfelső szintű tulajdonságok sémáját határozza meg. Event Grid megadja ezt az értéket. |
-| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Event Grid megadja ezt az értéket. |
+| EventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
+| EventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
+| dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
+| metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
+| témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 
 További információ a Event Grid esemény sémával kapcsolatban:
 
@@ -122,7 +122,7 @@ A **TopologyOperation** a diagram módosításaira vonatkozik. A **tulajdonos** 
 }
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -153,7 +153,7 @@ A **UdfCustom** egy felhasználó által definiált függvény (UDF) által elju
 }
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -188,7 +188,7 @@ A **SensorChange** az érzékelők állapotának frissítése a telemetria vált
 }
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -223,7 +223,7 @@ A **SpaceChange** a telemetria változásai alapján frissíti a terület állap
 }
 ```
 
-| Érték | Csere erre |
+| Value (Díj) | Csere erre |
 | --- | --- |
 | YOUR_TOPIC_NAME | A testreszabott témakör neve |
 
@@ -248,7 +248,7 @@ Az alábbi példák bemutatják, hogyan konfigurálhatja a támogatott végponto
 
 Hitelesített HTTP POST-kérelem a következőket illetően:
 
-```plaintext
+```URL
 YOUR_MANAGEMENT_API_URL/endpoints
 ```
 
@@ -268,7 +268,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
@@ -291,7 +291,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring|
     | YOUR_SECONDARY_KEY | A hitelesítéshez használt másodlagos kapcsolódási sztring |
@@ -313,7 +313,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |
@@ -334,7 +334,7 @@ YOUR_MANAGEMENT_API_URL/endpoints
   }
   ```
 
-    | Érték | Csere erre |
+    | Value (Díj) | Csere erre |
     | --- | --- |
     | YOUR_NAMESPACE | A végpont névtere |
     | YOUR_PRIMARY_KEY | A hitelesítéshez használt elsődleges kapcsolódási sztring |

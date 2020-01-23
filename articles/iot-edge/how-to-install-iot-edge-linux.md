@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 07/22/2019
 ms.author: kgremban
-ms.openlocfilehash: 7cd0935177ad4070750a9b2a0ff129af2e13959f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a8725e3ba7be2dc572798d1397e098046a4b352
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772414"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510226"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-debian-based-linux-systems"></a>A Azure IoT Edge Runtime telepítése Debian-alapú Linux rendszereken
 
@@ -30,7 +30,7 @@ Ez a cikk a Azure IoT Edge futtatókörnyezet x64-, ARM32-vagy ARM64-alapú Linu
 
 ## <a name="install-the-latest-runtime-version"></a>A legújabb futtatókörnyezet-verzió telepítése
 
-Az alábbi részekben a Azure IoT Edge Runtime legújabb verzióját telepítheti az eszközre. 
+Az alábbi részekben a Azure IoT Edge Runtime legújabb verzióját telepítheti az eszközre.
 
 ### <a name="register-microsoft-key-and-software-repository-feed"></a>A Microsoft-kulcs és a szoftver tárház-hírcsatorna regisztrálása
 
@@ -39,16 +39,19 @@ Készítse elő az eszközt az IoT Edge Runtime telepítéséhez.
 Telepítse az adattár konfigurációját. Válassza ki a **16,04** vagy **18,04** parancsot, amely megfelel az eszköz operációs rendszerének:
 
 * **Ubuntu Server 16,04**:
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/16.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Ubuntu Server 18,04**:
+
    ```bash
    curl https://packages.microsoft.com/config/ubuntu/18.04/multiarch/prod.list > ./microsoft-prod.list
    ```
 
 * **Raspbian stretch**:
+
    ```bash
    curl https://packages.microsoft.com/config/debian/stretch/multiarch/prod.list > ./microsoft-prod.list
    ```
@@ -88,7 +91,7 @@ Telepítse a Moby parancssori felületet (CLI). A CLI hasznos a fejlesztéshez, 
    sudo apt-get install moby-cli
    ```
 
-Ha hiba lép fel a Moby Container Runtime telepítésekor, kövesse a jelen cikk későbbi részében ismertetett, a [Linux-kernel a Moby Compatibility szolgáltatással való ellenőrzésének](#verify-your-linux-kernel-for-moby-compatibility)lépéseit. 
+Ha hiba lép fel a Moby Container Runtime telepítésekor, kövesse a jelen cikk későbbi részében ismertetett, a [Linux-kernel a Moby Compatibility szolgáltatással való ellenőrzésének](#verify-your-linux-kernel-for-moby-compatibility)lépéseit.
 
 ### <a name="install-the-azure-iot-edge-security-daemon"></a>A Azure IoT Edge biztonsági démon telepítése
 
@@ -108,7 +111,7 @@ Telepítse a biztonsági démont. A csomag telepítése `/etc/iotedge/`.
    sudo apt-get install iotedge
    ```
 
-A IoT Edge sikeres telepítése után a kimenet rákérdez a konfigurációs fájl frissítésére. Az eszköz kiépítés befejezéséhez kövesse a [biztonsági démon konfigurálása](#configure-the-security-daemon) szakasz lépéseit. 
+A IoT Edge sikeres telepítése után a kimenet rákérdez a konfigurációs fájl frissítésére. Az eszköz kiépítés befejezéséhez kövesse a [biztonsági démon konfigurálása](#configure-the-security-daemon) szakasz lépéseit.
 
 ## <a name="install-a-specific-runtime-version"></a>Egy adott futtatókörnyezet-verzió telepítése
 
@@ -145,7 +148,7 @@ Ha a legújabb verziók használata helyett a Moby és a Azure IoT Edge futtató
       ```bash
       curl -L <libiothsm-std link> -o libiothsm-std.deb && sudo dpkg -i ./libiothsm-std.deb
       ```
-   
+
    3. A IoT Edge eszköz architektúrájának megfelelő **iotedge** -fájl megkeresése. Kattintson a jobb gombbal a fájl hivatkozásra, és másolja a hivatkozás címe. 
 
    4. A következő parancsban található másolt hivatkozásra kattintva telepítse a IoT Edge biztonsági démon adott verzióját. 
@@ -174,7 +177,7 @@ Nyissa meg a konfigurációs fájlt.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Keresse meg a fájl üzembe helyezési konfigurációit, és tegye meg a **manuális kiépítési konfiguráció** szakasz megjegyzését. **Device_connection_string** értékének frissítése a IoT Edge eszközhöz tartozó kapcsolatok karakterláncával. Ügyeljen rá, hogy a többi kiépítési szakaszt is jegyezze fel.
+Keresse meg a fájl üzembe helyezési konfigurációit, és tegye meg a **manuális kiépítési konfiguráció** szakasz megjegyzését. **Device_connection_string** értékének frissítése a IoT Edge eszközhöz tartozó kapcsolatok karakterláncával. Ügyeljen rá, hogy a többi kiépítési szakaszt is jegyezze fel. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
 
    ```yaml
    # Manual provisioning configuration
@@ -190,7 +193,8 @@ Keresse meg a fájl üzembe helyezési konfigurációit, és tegye meg a **manu�
    #   attestation:
    #     method: "tpm"
    #     registration_id: "{registration_id}"
-```
+   ```
+
 A vágólap tartalmának Nano `Shift+Right Click`ba való beillesztéséhez vagy a `Shift+Insert`megnyomásához.
 
 Mentse és zárja be a fájlt.
@@ -213,7 +217,7 @@ Nyissa meg a konfigurációs fájlt.
 sudo nano /etc/iotedge/config.yaml
 ```
 
-Keresse meg a fájl kiépítési konfigurációit, és adja meg az igazolási mechanizmusnak megfelelő szakaszt. Ha például TPM-igazolást használ, frissítse a **scope_id** és a **registration_id** értékeit a IOT hub Device PROVISIONING szolgáltatás és a tpm-sel rendelkező IoT Edge eszköz értékeivel.
+Keresse meg a fájl kiépítési konfigurációit, és adja meg az igazolási mechanizmusnak megfelelő szakaszt. Ha például TPM-igazolást használ, frissítse a **scope_id** és a **registration_id** értékeit a IOT hub Device PROVISIONING szolgáltatás és a tpm-sel rendelkező IoT Edge eszköz értékeivel. Győződjön meg arról, hogy a **kiépítés:** sor nem tartalmaz korábbi szóközt, és a beágyazott elemek két szóközzel vannak behúzva.
 
    ```yaml
    # Manual provisioning configuration
@@ -265,7 +269,7 @@ Futtasson automatizált vizsgálatot a leggyakoribb konfigurációs és hálóza
 sudo iotedge check
 ```
 
-Amíg nem telepíti az első modult az eszközön való IoT Edgere, a rendszer nem telepíti a **$edgeHub** rendszermodult az eszközre. Ennek eredményeképpen az automatikus ellenőrzés hibát ad vissza a `Edge Hub can bind to ports on host` kapcsolat-ellenőrzéshez. Ez a hiba akkor állítható le, ha egy modulnak az eszközre történő telepítése után következik be.
+Amíg nem telepíti az első modult az eszközön való IoT Edgere, a rendszer nem telepíti a **$edgeHub** rendszermodult az eszközre. Ennek eredményeképpen az automatikus ellenőrzés hibát ad vissza a `Edge Hub can bind to ports on host` kapcsolat-ellenőrzéshez. Ez a hiba figyelmen kívül hagyható, kivéve, ha egy modulnak az eszközre történő telepítése után következik be.
 
 Végül a futó modulok listázása:
 

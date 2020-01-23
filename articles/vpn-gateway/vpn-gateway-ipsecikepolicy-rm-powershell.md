@@ -8,12 +8,12 @@ ms.service: vpn-gateway
 ms.topic: article
 ms.date: 02/14/2018
 ms.author: yushwang
-ms.openlocfilehash: ed7b12b24e6129d6cf609f4345203abc783e9f62
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 8ed32ccedcd6cc4ffd159069399c0417842325d8
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864060"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514918"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-házirend konfigurálása a S2S VPN-hez vagy a VNet – VNet kapcsolatokhoz
 
@@ -341,7 +341,7 @@ DhGroup             : DHGroup24
 PfsGroup            : PFS24
 ```
 
-Ha nincs konfigurálva IPsec/IKE-házirend, a parancs (PS > $connection 6. Policy) üres visszatérést kap. Nem jelenti azt, hogy az IPsec/IKE nincs konfigurálva a kapcsolatban, de nincs Egyéni IPsec/IKE-házirend. A tényleges kapcsolat a helyszíni VPN-eszköz és az Azure VPN Gateway között egyeztetett alapértelmezett házirendet használja.
+Ha nincs konfigurálva IPsec/IKE-házirend, a parancs (PS > $connection 6. A IpsecPolicies) üres értéket ad vissza. Nem jelenti azt, hogy az IPsec/IKE nincs konfigurálva a kapcsolatban, de nincs Egyéni IPsec/IKE-házirend. A tényleges kapcsolat a helyszíni VPN-eszköz és az Azure VPN Gateway között egyeztetett alapértelmezett házirendet használja.
 
 #### <a name="2-add-or-update-an-ipsecike-policy-for-a-connection"></a>2. IPsec/IKE-házirend hozzáadása vagy frissítése a kapcsolatok számára
 

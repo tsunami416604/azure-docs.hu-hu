@@ -1,18 +1,18 @@
 ---
 title: Azure Service Bus Relay biztonsági vezérlői
-description: A Azure Service Bus Relay kiértékelésére szolgáló biztonsági vezérlők ellenőrzőlistája
+description: Ez a cikk a Azure Service Bus Relay kiértékelésére szolgáló beépített biztonsági ellenőrzésekről nyújt feladatlistát.
 services: service-bus-relay
 ms.service: service-bus-relay
 author: spelluru
 ms.topic: conceptual
-ms.date: 09/23/2019
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 7f4e2a31673905a7e28d1dbb5520650aefc6f368
-ms.sourcegitcommit: 3fa4384af35c64f6674f40e0d4128e1274083487
+ms.openlocfilehash: 28d3ba14aa7769ac4f3fc22bd2b5bd7acd30557c
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/24/2019
-ms.locfileid: "71219982"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514017"
 ---
 # <a name="security-controls-for-azure-service-bus-relay"></a>Azure Service Bus Relay biztonsági vezérlői
 
@@ -36,12 +36,12 @@ Ez a cikk a Azure Service Bus Relaybe beépített biztonsági vezérlőket dokum
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül. |   |
 | Adatsíkok naplózása és naplózása| Igen | A sikeres és sikertelen kapcsolatok, valamint a naplózott hibák.  |   |
 
-## <a name="identity"></a>Identitás
+## <a name="identity"></a>Identitáskezelés
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
 |---|---|--|--|
 | Authentication| Igen | SAS-n keresztül. | [Hitelesítés és engedélyezés Azure Relay](relay-authentication-and-authorization.md) |
-| Authorization|  Igen | SAS-n keresztül. | [Hitelesítés és engedélyezés Azure Relay](relay-authentication-and-authorization.md) |
+| Engedélyezés|  Igen | SAS-n keresztül. | [Hitelesítés és engedélyezés Azure Relay](relay-authentication-and-authorization.md) |
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -60,6 +60,6 @@ Ez a cikk a Azure Service Bus Relaybe beépített biztonsági vezérlőket dokum
 |---|---|--|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | [Azure Resource Manageron](../azure-resource-manager/index.yml)keresztül.|   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [beépített biztonsági vezérlőkről az Azure-szolgáltatások között](../security/fundamentals/security-controls.md).

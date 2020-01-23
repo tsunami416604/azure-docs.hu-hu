@@ -11,12 +11,12 @@ ms.workload: identity
 ms.subservice: fundamentals
 ms.date: 10/31/2019
 ms.author: martinco
-ms.openlocfilehash: 85281088692d1c4b0245eb9d069519198f8f315d
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 934fe8271796ed6196c9e50a0eddd5d7de3d8432
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74919341"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511892"
 ---
 # <a name="azure-active-directory-authentication-management-operations-reference-guide"></a>A Azure Active Directory Authentication Management üzemeltetési útmutatója
 
@@ -127,8 +127,8 @@ A szervezetben lévő felhasználóhoz hasonlóan az eszköz a védelemmel ellá
 
 Ezt a célt az eszköz identitásának és az Azure AD-ben való kezelésének az alábbi módszerek egyikével végezheti el:
 
-- A szervezetek a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Manager/System Center Configuration Manager) és az androidos mobileszközök közös felügyeletét.
-- A [hibrid Azure ad JOIN](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) a csoportházirendekkel, System Center Configuration Managerokkal vagy a Microsoft Endpoint Managerrel való felügyeletet biztosít a Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a felhőben és a helyszíni erőforrásokban lévő egyszeri bejelentkezéssel maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és a helyszíni erőforrások elérését egy időben a [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) .
+- A szervezetek a [Microsoft Intune](https://docs.microsoft.com/intune/what-is-intune) használatával kezelhetik az eszközt, és kikényszerítik a megfelelőségi szabályzatokat, tanúsítják az eszköz állapotát, valamint feltételes hozzáférési házirendeket állíthatnak be attól függően, hogy az eszköz megfelel-e Microsoft Intune felügyelheti az iOS-eszközöket, a Mac-asztalokat (JAMF-integráción keresztül), a Windows-asztalokat (natív módon a Windows 10 mobileszköz-felügyeletét, valamint a Microsoft Endpoint Configuration Manager) és az androidos mobileszközök közös felügyeletét.
+- A [hibrid Azure ad-csatlakozás](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-managed-domains) a csoportházirendekkel vagy a Microsoft Endpoint Configuration managerekkel való felügyeletet biztosít Active Directory tartományhoz csatlakoztatott számítógépeket használó környezetekben. A szervezetek a PHS vagy a PTA, zökkenőmentes SSO használatával telepíthetnek felügyelt környezetet. Ha az eszközöket az Azure AD-be szeretné állítani, a felhőben és a helyszíni erőforrásokban lévő egyszeri bejelentkezéssel maximalizálja a felhasználói hatékonyságot, miközben lehetővé teszi a Felhőbeli és a helyszíni erőforrások elérését egy időben a [feltételes hozzáférési](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal) .
 
 Ha olyan tartományhoz csatlakoztatott Windows-eszközöket használ, amelyek nincsenek a felhőben regisztrálva, vagy a felhőben regisztrált, de feltételes hozzáférési házirendek nélküli tartományhoz csatlakoztatott Windows-eszközök, akkor regisztrálnia kell a nem regisztrált eszközöket, és mindkét esetben [használja a hibrid Azure ad JOIN vezérlőt](https://docs.microsoft.com/azure/active-directory/conditional-access/require-managed-devices) a feltételes hozzáférési szabályzatokban.
 

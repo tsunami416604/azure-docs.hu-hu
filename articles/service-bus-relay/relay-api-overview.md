@@ -1,6 +1,6 @@
 ---
-title: Az Azure Relay API – áttekintés |} A Microsoft Docs
-description: Elérhető az Azure Relay API-k áttekintése
+title: A Azure Relay API áttekintése | Microsoft Docs
+description: Ez a cikk az elérhető Azure Relay API-k (.NET Standard, .NET-keretrendszer, Node. js stb.) áttekintését tartalmazza.
 services: event-hubs
 documentationcenter: na
 author: spelluru
@@ -12,51 +12,51 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 05/02/2018
+ms.date: 01/21/2020
 ms.author: spelluru
-ms.openlocfilehash: 05d7ac56d6c1c48125eb458d0eee852ba396b300
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 41d9e2026c19c959dc6fe2546b0ef699571ec7cd
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60593339"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513966"
 ---
-# <a name="available-relay-apis"></a>Rendelkezésre álló Relay API-k
+# <a name="available-relay-apis"></a>Elérhető Relay API-k
 
 ## <a name="runtime-apis"></a>Futásidejű API-k
 
-Az alábbi táblázat a jelenleg elérhető Relay futásidejű ügyfelek.
+A következő táblázat felsorolja az összes jelenleg elérhető Relay Runtime-ügyfelet.
 
-A [további információkat](#additional-information) szakasz egyes futtatókörnyezeti kódtárának állapotával kapcsolatos további információkat tartalmaz.
+A [További információ](#additional-information) szakasz további információkat tartalmaz az egyes futtatókörnyezeti függvénytárak állapotáról.
 
-| Nyelv és Platform | Elérhető a szolgáltatásban | Ügyfélcsomag | Tárház |
+| Nyelv/platform | Elérhető funkció | Ügyfélcsomag | Adattár |
 | --- | --- | --- | --- |
-| .NET Standard | Hibrid kapcsolatok | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHubon](https://github.com/azure/azure-relay-dotnet) |
-| .NET-keretrendszer | WCF-továbbító | [WindowsAzure.ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
-| Csomópont | Hibrid kapcsolatok | [A websockets protokoll: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[A websockets protokoll: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-kéréseket: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHubon](https://github.com/Azure/azure-relay-node) |
+| .NET Standard | Hibrid kapcsolatok | [Microsoft.Azure.Relay](https://www.nuget.org/packages/Microsoft.Azure.Relay/) | [GitHub](https://github.com/azure/azure-relay-dotnet) |
+| .NET-keretrendszer | WCF Relay | [WindowsAzure. ServiceBus](https://www.nuget.org/packages/WindowsAzure.ServiceBus/) | – |
+| Csomópont | Hibrid kapcsolatok | [WebSockets: `hyco-ws`](https://www.npmjs.com/package/hyco-ws)<br/>[WebSockets: `hyco-websocket`](https://www.npmjs.com/package/hyco-websocket)<br/>[HTTP-kérelmek: `hyco-https`](https://www.npmjs.com/package/hyco-https) | [GitHub](https://github.com/Azure/azure-relay-node) |
 
-### <a name="additional-information"></a>További információ
+### <a name="additional-information"></a>További információk
 
 #### <a name="net"></a>.NET
 
-A .NET-ökoszisztéma több modulok rendelkezik, így nincsenek a Relay több .NET-kódtárakra. A .NET Standard kódtár is futtatható a .NET Core vagy a .NET-keretrendszer használatával, míg a .NET-keretrendszer könyvtár csak a .NET-keretrendszer környezetben futtatható. További információ a .NET-keretrendszert: [keretrendszer-verziókat](/dotnet/articles/standard/frameworks).
+A .NET-ökoszisztéma több futtatókörnyezettel rendelkezik, ezért a továbbításhoz több .NET-kódtár is tartozik. A .NET Standard könyvtár a .NET Core vagy a .NET-keretrendszer használatával futtatható, míg a .NET-keretrendszer könyvtára csak .NET-keretrendszerbeli környezetben futtatható. További információ a .NET-Keretrendszerekről: [Framework Versions](/dotnet/articles/standard/frameworks).
 
-A .NET-keretrendszer könyvtár csak a WCF programozási modellt támogatja, és a szellemi tulajdont képező bináris protokoll alapján a WCF támaszkodik `net.tcp` átviteli. A protokoll és a könyvtár változatlan marad visszamenőleges kompatibilitási együtt a meglévő alkalmazásokkal.
+A .NET-keretrendszer könyvtára csak a WCF programozási modellt támogatja, és a WCF `net.tcp`-átvitelen alapuló, védett bináris protokollra támaszkodik. Ez a protokoll és a könyvtár a meglévő alkalmazásokkal való visszamenőleges kompatibilitás érdekében tart fenn.
 
-A .NET Standard kódtár a hibrid kapcsolatok Relay, amely épül, amely a HTTP és a WebSockets protokoll nevű nyílt definíciója alapján történik. A kódtár támogatja egy stream absztrakciós keresztül a websockets protokoll és a egy egyszerű kérés-válasz API kézmozdulat fogadó HTTP-kérelmekre. A [webes API-t](https://github.com/Azure/azure-relay-dotnet) minta bemutatja, hogyan integrálható a hibrid kapcsolatok az ASP.NET Core web services.
+A .NET Standard könyvtár a HTTP-és WebSocket-alapú Hibrid kapcsolatok-továbbító nyílt protokoll-definícióján alapul. A függvénytár támogatja a WebSockets szolgáltatással való adatátvitelt, valamint egy egyszerű kérelem-válasz API-kézmozdulatot a HTTP-kérések megválaszolásához. A [webes API](https://github.com/Azure/azure-relay-dotnet) -minta bemutatja, hogyan integrálható a Hibrid kapcsolatok az ASP.net Core webszolgáltatásokhoz.
 
 #### <a name="nodejs"></a>Node.js
 
-A hibrid kapcsolatok modulok, a fenti táblázatban szereplő cserélje le, vagy módosítani kell a meglévő Node.js modulok az alternatív megvalósításokhoz, amelyen az Azure Relay szolgáltatás helyett a helyi hálózati verem figyelnie.
+A fenti táblázatban felsorolt Hibrid kapcsolatok modulok lecserélik vagy módosítják a meglévő Node. js-modulokat olyan alternatív implementációkkal, amelyek a helyi hálózati verem helyett a Azure Relay szolgáltatást figyelik.
 
-A `hyco-https` modul módosítja, és részben felülbírálja a core Node.js modulok `http` és `https`, egy HTTPS-figyelő végrehajtása, amely kompatibilis a számos meglévő Node.js modulok és a használó alkalmazások ezek alapvető biztosítása modulok.
+A `hyco-https` modul módosítja és részben felülbírálja az alapszintű Node. js-modulokat `http` és `https`, így biztosítva egy olyan HTTPS-figyelő megvalósítását, amely kompatibilis a számos meglévő Node. js modullal és alkalmazással, amelyek ezen alapmodulokra támaszkodnak.
 
-A `hyco-ws` és `hyco-websocket` modulok módosítani kell a népszerű `ws` és `websocket` modulok használata a Node.js, alternatív figyelő megvalósításokhoz, amelyek lehetővé teszik a modulok és a hibrid mögött dolgoznak a vagy a modul a függő alkalmazások kezeléséről Továbbítási kapcsolatok.
+A `hyco-ws` és `hyco-websocket` modulok a Node. js-hez készült népszerű `ws` és `websocket` modulokat módosítják, amelyek olyan alternatív figyelő-implementációkat biztosítanak, amelyek lehetővé teszik a modulok és alkalmazások számára, hogy az Hibrid kapcsolatok továbbító mögött működjenek.
 
-Ezek a modulok részleteit található a [azure relay-csomópontból álló](https://github.com/Azure/azure-relay-node) GitHub-adattárban.
+Ezekről a modulokról az [Azure-Relay-Node](https://github.com/Azure/azure-relay-node) GitHub-tárházban találhat további információt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az Azure Relay kapcsolatos további információkért látogasson el ezeket a hivatkozásokat:
+Ha többet szeretne megtudni a Azure Relayről, tekintse meg a következő hivatkozásokat:
 * [Mi az az Azure Relay?](relay-what-is-it.md)
-* [Relay – gyakori kérdések](relay-faq.md)
+* [Továbbító – gyakori kérdések](relay-faq.md)

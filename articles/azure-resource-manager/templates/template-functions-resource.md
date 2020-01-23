@@ -3,12 +3,12 @@ title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 56ace8c75ea27eb4d730b1630115b6fcbdc3f575
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310532"
+ms.locfileid: "76513864"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokhoz tartozó Resource functions
 
@@ -32,7 +32,7 @@ A paraméterek, változók vagy a jelenlegi központi telepítés értékeinek l
 extensionResourceId(resourceId, resourceType, resourceName1, [resourceName2], ...)
 ```
 
-A [bővítmény erőforrásának](extension-resource-types.md)erőforrás-azonosítóját adja vissza, amely egy másik erőforrásra alkalmazott erőforrástípus, amely a képességeihez való hozzáadásra szolgál.
+A [bővítmény erőforrásának](../management/extension-resource-types.md)erőforrás-azonosítóját adja vissza, amely egy másik erőforrásra alkalmazott erőforrástípus, amely a képességeihez való hozzáadásra szolgál.
 
 ### <a name="parameters"></a>Paraméterek
 
@@ -536,7 +536,7 @@ Példa:
 
 ### <a name="get-managed-identity"></a>Felügyelt identitás beolvasása
 
-[Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A `Full` használatával beolvashatja az összes tulajdonságot, beleértve az implicit módon létrehozott identitást is.
+[Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](../management/extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A `Full` használatával beolvashatja az összes tulajdonságot, beleértve az implicit módon létrehozott identitást is.
 
 Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
@@ -888,7 +888,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name (Név) | Type (Típus) | Value (Díj) |
+| Név | Type (Típus) | Value (Díj) |
 | ---- | ---- | ----- |
 | sameRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/examplegroup/providers/Microsoft.Storage/storageAccounts/examplestorage |
 | differentRGOutput | Sztring | /subscriptions/{current-sub-id}/resourceGroups/otherResourceGroup/providers/Microsoft.Storage/storageAccounts/examplestorage |

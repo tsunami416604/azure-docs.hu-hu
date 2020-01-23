@@ -1,6 +1,6 @@
 ---
-title: Mi a hibrid Azure ad-ben csatlakoztatott eszköz?
-description: Ismerje meg, hogyan eszköz identity management segítségével kezelheti az eszközöket, amelyek a környezetében erőforrásokat érnek el.
+title: Mi az a hibrid Azure AD-hez csatlakoztatott eszköz?
+description: Megtudhatja, hogyan segítheti a környezet erőforrásaihoz hozzáférő eszközök felügyeletét.
 services: active-directory
 ms.service: active-directory
 ms.subservice: devices
@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 5c57180ba10322cb790c05b3f8f48043ca08b545
-ms.sourcegitcommit: aa66898338a8f8c2eb7c952a8629e6d5c99d1468
+ms.openlocfilehash: 15cdaba7d63d72aab25757e7ba6f5eadc48e026a
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/28/2019
-ms.locfileid: "67462745"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76512249"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
 
@@ -25,45 +25,45 @@ Több mint egy évtizede számos cég használja a tartományi csatlakoztatást 
 - Az informatikai részlegek egy központi helyről felügyelhetik a vállalati tulajdonú eszközöket.
 - A felhasználók bejelentkezhetnek az eszközeiken a munkahelyi vagy iskolai Active Directory-fiókokkal.
 
-A helyszíni lábnyommal rendelkező cégek általában rendszerképkezelő megoldásokat használnak az eszközök üzembe helyezéséhez, és a **System Center Configuration Manager (SCCM)** vagy **csoportszabályzatok (GP)** használatával felügyelik azokat.
+A helyszíni lábnyommal rendelkező szervezetek általában az eszközök kiépítéséhez használják a képmódszereket, és gyakran **Configuration Manager** vagy **Csoportházirend (GP)** használatával kezelik azokat.
 
-Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezeken az eszközökön, amelyek a helyszíni Active Directoryhez csatlakozik, és az Azure Active Directoryban regisztrált eszközökön is.
+Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek az eszközök a helyszíni Active Directoryhoz csatlakoztatott és a Azure Active Directory regisztrált eszközök.
 
 |   | Hibrid Azure AD-csatlakozás |
 | --- | --- |
-| **Definíció** | Csatlakozik a helyszíni AD és az Azure AD, igénylő szervezeti fiókkal bejelentkezni az eszköz |
-| **Elsődleges célközönséget** | Megfelelő hibrid cégekhez és vállalkozásokhoz a meglévő helyszíni AD-infrastruktúrát |
-|   | A szervezet összes felhasználójára |
-| **Eszközök tulajdonjoga** | Szervezet |
-| **Operációs rendszerek** | A Windows 10, 8.1 és a 7 |
-|   | A Windows Server 2008/R2, 2012/R2, 2016 és a 2019 |
+| **Definíció** | Csatlakozott a helyszíni AD-hez és az Azure AD-hez, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
+| **Elsődleges célközönség** | Alkalmas a meglévő helyszíni AD-infrastruktúrával rendelkező hibrid szervezetek számára |
+|   | Egy szervezet összes felhasználójára érvényes |
+| **Eszköz tulajdonjoga** | Szervezet |
+| **Operációs rendszerek** | Windows 10, 8,1 és 7 |
+|   | Windows Server 2008/R2, 2012/R2, 2016 és 2019 |
 | **Kiépítés** | Windows 10, Windows Server 2016/2019 |
-|   | A tartományhoz való csatlakozás informatikai és az automatikus illesztés keresztül az Azure AD Connect vagy az ADFS-config |
-|   | Windows Autopilot és az automatikus illesztés keresztül az Azure AD Connect és az AD FS konfigurációs csatlakozás tartományhoz |
-|   | Windows 8.1, Windows 7, Windows Server 2012 R2, Windows Server 2012 és Windows Server 2008 R2 - MSI megkövetelése |
-| **Eszköz bejelentkezési lehetőségek** | Szervezeti fiókok használatával: |
+|   | Tartományhoz való csatlakozás, valamint Azure AD Connect vagy ADFS-konfiguráción keresztüli autojoin |
+|   | Tartományhoz való csatlakozás a Windows Autopilot és az autojoin használatával Azure AD Connect vagy ADFS-konfiguráció segítségével |
+|   | Windows 8,1, Windows 7, Windows Server 2012 R2, Windows Server 2012 és Windows Server 2008 R2 – MSI megkövetelése |
+| **Eszköz bejelentkezési beállításai** | Szervezeti fiókok a használatával: |
 |   | Jelszó |
-|   | Win10 a vállalati Windows Hello |
+|   | Vállalati Windows Hello Win10 |
 | **Eszközkezelés** | Csoportházirend |
-|   | A System Center Configuration Manager önálló vagy a Microsoft Intune-nal közös felügyelet |
-| **Főbb képességek** | Egyszeri bejelentkezés a felhőbeli és a helyszíni erőforrásokhoz |
-|   | Feltételes hozzáférés csatlakozás tartományhoz vagy az Intune-ban, ha egy felügyelt |
-|   | Az önkiszolgáló jelszó-visszaállítási és a Windows Hello PIN-kód alaphelyzetbe állítása a zárolási képernyőn |
+|   | Önálló vagy közös felügyelet Configuration Manager Microsoft Intune |
+| **Főbb képességek** | Egyszeri bejelentkezés mind a Felhőbeli, mind a helyszíni erőforrásokhoz |
+|   | Feltételes hozzáférés tartományhoz illesztéssel vagy az Intune-on keresztül, ha közösen felügyelt |
+|   | Önkiszolgáló jelszó-visszaállítás és a Windows Hello PIN-kód alaphelyzetbe állítása a zárolási képernyőn |
 |   | Enterprise State Roaming eszközök között |
 
 ![Hibrid Azure AD-csatlakoztatott eszközök](./media/concept-azure-ad-join-hybrid/azure-ad-hybrid-joined-device.png)
 
-## <a name="scenarios"></a>Forgatókönyvek
+## <a name="scenarios"></a>Alkalmazási helyzetek
 
-Ha használja a hibrid Azure AD-hez csatlakoztatott eszközök:
+Használja az Azure AD Hybrid-hez csatlakoztatott eszközöket, ha:
 
 - Ha Win32-alkalmazások vannak telepítve azokon az eszközökön, amelyek az Active Directory-géphitelesítést használják.
-- Eszköz konfigurációjának kezelése csoportházirend használatával továbbra is szeretné.
-- Szeretne továbbra is használhatja a meglévő lemezkép-készítési megoldások üzembe helyezését, és konfigurálhatja az eszközöket.
-- Támogatnia kell a régebbi verziójú Windows 7 és Windows 10-es mellett 8.1 rendszerű eszközök
+- Továbbra is használni szeretné a Csoportházirend az eszköz konfigurációjának kezeléséhez.
+- Továbbra is meglévő lemezkép-készítési megoldásokat kíván használni az eszközök telepítéséhez és konfigurálásához.
+- A Windows 10 rendszeren kívül a Windows 7 és a 8,1 rendszerű eszközök támogatását is támogatnia kell
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A hibrid Azure AD-csatlakozás implementálásának megtervezése](hybrid-azuread-join-plan.md)
-- [Az Azure portal használatával eszközidentitások kezelése](device-management-azure-portal.md)
-- [Elavult eszközök kezelése az Azure ad-ben](manage-stale-devices.md)
+- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
+- [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

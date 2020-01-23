@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: helohr
-ms.openlocfilehash: 44430f5a150952ba7cfc32b3e54d004cb0d0b761
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 318997e2ebd7a423d7793a75575617d06ab842ac
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/22/2020
-ms.locfileid: "76312345"
+ms.locfileid: "76514272"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -66,87 +66,87 @@ Azt tervezzük, hogy támogatást biztosítunk a következő operációs rendsze
 
 |Operációs rendszer|Szükséges licenc|
 |---|---|
-|Windows 10 Enterprise multi-session vagy Windows 10 Enterprise|Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, a3, a5|
-|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, a3, a5|
-|Windows Server 2012 R2, 2016, 2019|Távoli asztali ügyféllicenc (CAL) frissítési garanciával|
+|Windows 10 Enterprise multi-session vagy Windows 10 Enterprise|Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows 7 Enterprise |Microsoft 365 E3, E5, a3, a5, F1, Business<br>Windows E3, E5, A3, A5|
+|Windows Server 2012 R2, 2016, 2019|RDS Client Access License (CAL) with Software Assurance|
 
-Az infrastruktúrának a következő dolgokra van szüksége a Windows rendszerű virtuális asztalok támogatásához:
+Your infrastructure needs the following things to support Windows Virtual Desktop:
 
-* Egy [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
-* A Windows Server Active Directory Azure Active Directorysal szinkronizálva. Ezt a következők egyikével konfigurálhatja:
-  * Azure AD Connect (hibrid szervezetekhez)
-  * Azure AD Domain Services (hibrid vagy Felhőbeli szervezetekhez)
-* Olyan Azure-előfizetés, amely egy olyan virtuális hálózatot tartalmaz, amely vagy amely a Windows Serverhez csatlakozik, vagy amely kapcsolódik a Active Directory
+* An [Azure Active Directory](https://docs.microsoft.com/azure/active-directory/)
+* A Windows Server Active Directory in sync with Azure Active Directory. You can configure this with one of the following:
+  * Azure AD Connect (for hybrid organizations)
+  * Azure AD Domain Services (for hybrid or cloud organizations)
+* An Azure subscription that contains a virtual network that either contains or is connected to the Windows Server Active Directory
   
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek a következőknek kell lenniük:
+The Azure virtual machines you create for Windows Virtual Desktop must be:
 
-* [Szabványos tartományhoz csatlakoztatott](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) vagy [hibrid ad-csatlakozás](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). A virtuális gépek nem csatlakoztathatók Azure AD-hez.
-* A következő [támogatott operációsrendszer-lemezképek](#supported-virtual-machine-os-images)egyikének futtatása.
+* [Standard domain-joined](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-comparison) or [Hybrid AD-joined](https://docs.microsoft.com/azure/active-directory/devices/hybrid-azuread-join-plan). Virtual machines can't be Azure AD-joined.
+* Running one of the following [supported OS images](#supported-virtual-machine-os-images).
 
 >[!NOTE]
->Ha Azure-előfizetésre van szüksége, [regisztrálhat egy hónapos ingyenes próbaverzióra](https://azure.microsoft.com/free/). Ha az Azure ingyenes próbaverzióját használja, akkor a Azure AD Domain Services segítségével tartsa a Windows Server Active Directory szinkronizálását Azure Active Directory használatával.
+>If you need an Azure subscription, you can [sign up for a one-month free trial](https://azure.microsoft.com/free/). If you're using the free trial version of Azure, you should use Azure AD Domain Services to keep your Windows Server Active Directory in sync with Azure Active Directory.
 
-A Windows rendszerű virtuális asztali környezethez létrehozott Azure-beli virtuális gépeknek hozzáféréssel kell rendelkezniük a következő URL-címekhez:
+The Azure virtual machines you create for Windows Virtual Desktop must have access to the following URLs:
 
 |Cím|Kimenő port|Rendeltetés|
 |---|---|---|
-|*. wvd.microsoft.com|443-as TCP-port|Szolgáltatás forgalma|
-|*.blob.core.windows.net|443-as TCP-port|Ügynök, SXS-verem frissítései és ügynöki forgalom|
-|*.core.windows.net|443-as TCP-port|Ügynök forgalma|
-|*.servicebus.windows.net|443-as TCP-port|Ügynök forgalma|
-|prod.warmpath.msftcloudes.com|443-as TCP-port|Ügynök forgalma|
+|*.wvd.microsoft.com|443-as TCP-port|Service traffic|
+|*.blob.core.windows.net|443-as TCP-port|Agent, SXS stack updates, and Agent traffic|
+|*.core.windows.net|443-as TCP-port|Agent traffic|
+|*.servicebus.windows.net|443-as TCP-port|Agent traffic|
+|prod.warmpath.msftcloudes.com|443-as TCP-port|Agent traffic|
 |catalogartifact.azureedge.net|443-as TCP-port|Azure Piactér|
-|kms.core.windows.net|1688-es TCP-port|Windows 10 aktiválása|
+|kms.core.windows.net|TCP port 1688|Windows 10 activation|
 
 >[!IMPORTANT]
->Ezen URL-címek megnyitása elengedhetetlen a megbízható Windowsos virtuális asztali környezethez. Az ezekhez az URL-címekhez való hozzáférés letiltása nem támogatott, és a szolgáltatás funkcióit is befolyásolja. Ezek az URL-címek csak a Windows rendszerű virtuális asztali helyekhez és erőforrásokhoz tartoznak, és nem tartalmaznak URL-címeket más szolgáltatásokhoz, például az Azure AD-hez.
+>Opening these URLs is essential for a reliable Windows Virtual Desktop deployment. Blocking access to these URLs is unsupported and will affect service functionality. These URLs only correspond to Windows Virtual Desktop sites and resources, and do not include URLs for other services like Azure AD.
 
 >[!NOTE]
->A szolgáltatás forgalmát tartalmazó URL-címekhez a helyettesítő karaktert (*) kell használnia. Ha nem kívánja használni az ügynökkel kapcsolatos forgalmat, a következő módon keresheti meg az URL-címeket helyettesítő karakterek nélkül:
+>You must use the wildcard character (*) for URLs involving service traffic. If you prefer to not use * for agent-related traffic, here's how to find the URLs without wildcards:
 >
->1. Regisztrálja a virtuális gépeket a Windows rendszerű virtuális asztali gazdaszámítógépen.
->2. Nyissa meg az **eseménynaplót** , és navigáljon a **Windows** > **alkalmazás naplóihoz** , és keresse meg a 3712-es azonosítójú eseményt.
->3. Az 3712-as AZONOSÍTÓJÚ esemény alatt található URL-címek engedélyezési listája. Az 3712-es AZONOSÍTÓJÚ esemény URL-címei régiónként jellemzőek. Az engedélyezési folyamatot meg kell ismételnie minden olyan régióhoz tartozó URL-címmel, amelybe telepíteni kívánja a virtuális gépeket.
+>1. Register your virtual machines to the Windows Virtual Desktop host pool.
+>2. Open **Event viewer** and navigate to **Windows** > **Application logs** and look for Event ID 3702.
+>3. Whitelist the URLs that you find under Event ID 3702. The URLs under Event ID 3702 are region-specific. You'll need to repeat the whitelisting process with the relevant URLs for each region you want to deploy your virtual machines in.
 
-A Windows rendszerű virtuális asztali szolgáltatások a felhasználók és a felügyeleti megoldás által szolgáltatott Windows-asztalok és-alkalmazások, amelyeket a Microsoft az Azure-szolgáltatásként üzemeltet. Az asztali számítógépek és alkalmazások bármely Azure-régióban üzembe helyezhetők virtuális gépeken, valamint a felügyeleti megoldás és az ezen virtuális gépekhez tartozó adat a Egyesült Államok. Ez adatátvitelt eredményezhet a Egyesült Államokba.
+Windows Virtual Desktop comprises the Windows desktops and apps you deliver to users and the management solution, which is hosted as a service on Azure by Microsoft. Desktops and apps can be deployed on virtual machines (VMs) in any Azure region, and the management solution and data for these VMs will reside in the United States. This may result in data transfer to the United States.
 
-Az optimális teljesítmény érdekében győződjön meg arról, hogy a hálózat megfelel a következő követelményeknek:
+For optimal performance, make sure your network meets the following requirements:
 
-* Az ügyfél hálózatáról az Azure-régióba, ahol a gazdagépek üzembe helyezése megtörtént, a RTT késése nem haladhatja meg a 150 MS-ot.
-* A hálózati forgalom az ország/régió határain kívül is eltarthat, amikor asztali számítógépeket és alkalmazásokat futtató virtuális gépek csatlakoznak a felügyeleti szolgáltatáshoz.
-* A hálózati teljesítmény optimalizálása érdekében javasoljuk, hogy a munkamenet-gazdagép virtuális gépei a közös elhelyezésű azonos Azure-régióban legyenek.
+* Round-trip (RTT) latency from the client's network to the Azure region where host pools have been deployed should be less than 150 ms.
+* Network traffic may flow outside country/region borders when VMs that host desktops and apps connect to the management service.
+* To optimize for network performance, we recommend that the session host's VMs are collocated in the same Azure region as the management service.
 
-## <a name="supported-remote-desktop-clients"></a>Támogatott Távoli asztal ügyfelek
+## <a name="supported-remote-desktop-clients"></a>Supported Remote Desktop clients
 
-A következő Távoli asztal-ügyfelek támogatják a Windows rendszerű virtuális asztalt:
+The following Remote Desktop clients support Windows Virtual Desktop:
 
 * [Windows](connect-windows-7-and-10.md)
 * [Web](connect-web.md)
 * [Mac](connect-macos.md)
 * [iOS](connect-ios.md)
-* [Android (előzetes verzió)](connect-android.md)
+* [Android (Preview)](connect-android.md)
 
-## <a name="supported-virtual-machine-os-images"></a>Támogatott virtuális gépek operációsrendszer-lemezképei
+## <a name="supported-virtual-machine-os-images"></a>Supported virtual machine OS images
 
-A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operációsrendszer-lemezképeket támogatja:
+Windows Virtual Desktop supports the following x64 operating system images:
 
-* Windows 10 Enterprise multi-session, 1809-es vagy újabb verzió
-* Windows 10 Enterprise, 1809-es vagy újabb verzió
+* Windows 10 Enterprise multi-session, version 1809 or later
+* Windows 10 Enterprise, version 1809 or later
 * Windows 7 Enterprise
 * Windows Server 2019
 * Windows Server 2016
 * Windows Server 2012 R2
 
-A Windows virtuális asztal nem támogatja az x86-os (32 bites), a Windows 10 Enterprise N vagy a Windows 10 Enterprise KN-lemezképek használatát.
+Windows Virtual Desktop does not support x86 (32-bit), Windows 10 Enterprise N, or Windows 10 Enterprise KN operating system images.
 
-Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható: 
+Available automation and deployment options depend on which OS and version you choose, as shown in the following table: 
 
-|Operációs rendszer|Azure képtára|VIRTUÁLIS gépek manuális üzembe helyezése|Azure Resource Manager sablonok integrációja|Gazdagép-készletek kiépítése az Azure piactéren|Windows rendszerű virtuális asztali ügynök frissítései|
+|Operációs rendszer|Azure Image Gallery|Manual VM deployment|Azure Resource Manager template integration|Provision host pools on Azure Marketplace|Windows Virtual Desktop Agent updates|
 |--------------------------------------|:------:|:------:|:------:|:------:|:------:|
-|Windows 10 multi-session, 1903-es verzió|Igen|Igen|Igen|Igen|Automatikus|
-|Windows 10 multi-session, 1809-es verzió|Igen|Igen|Nem|Nem|Automatikus|
-|Windows 10 Enterprise, 1903-es verzió|Igen|Igen|Igen|Igen|Automatikus|
-|Windows 10 Enterprise, 1809-es verzió|Igen|Igen|Nem|Nem|Automatikus|
+|Windows 10 multi-session, version 1903|Igen|Igen|Igen|Igen|Automatikus|
+|Windows 10 multi-session, version 1809|Igen|Igen|Nem|Nem|Automatikus|
+|Windows 10 Enterprise, version 1903|Igen|Igen|Igen|Igen|Automatikus|
+|Windows 10 Enterprise, version 1809|Igen|Igen|Nem|Nem|Automatikus|
 |Windows 7 Enterprise|Igen|Igen|Nem|Nem|Kézi|
 |Windows Server 2019|Igen|Igen|Nem|Nem|Automatikus|
 |Windows Server 2016|Igen|Igen|Igen|Igen|Automatikus|
@@ -154,7 +154,7 @@ Az elérhető automatizálási és üzembe helyezési lehetőségek attól függ
 
 ## <a name="next-steps"></a>Következő lépések
 
-Első lépésként létre kell hoznia egy bérlőt. Ha többet szeretne megtudni a bérlők létrehozásáról, folytassa a bérlői létrehozási oktatóanyaggal.
+To get started, you'll need to create a tenant. To learn more about how to create a tenant, continue to the tenant creation tutorial.
 
 > [!div class="nextstepaction"]
 > [Bérlő létrehozása a Windows Virtual Desktopon](tenant-setup-azure-active-directory.md)

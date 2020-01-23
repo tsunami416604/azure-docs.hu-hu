@@ -9,12 +9,12 @@ ms.date: 12/30/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 1e15f237bddd586f81c3b04483111f7e211bfb10
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 0a20ea4236683e26c51bc75309435c65e24271d7
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75563411"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510260"
 ---
 # <a name="deploy-and-monitor-iot-edge-modules-at-scale-using-the-azure-portal"></a>IoT Edge-modulok üzembe helyezése és figyelése a Azure Portal használatával
 
@@ -24,7 +24,7 @@ További információ: [IoT Edge automatikus központi telepítésének ismertet
 
 ## <a name="identify-devices-using-tags"></a>Címkék használatával azonosíthatja az eszközöket
 
-A központi telepítés létrehozása előtt meg kell határozni, hogy mely eszközöket kívánja érinteni. A Azure IoT Edge a **címkével** rendelkező eszközöket azonosítja az eszköz Twin-ben. Minden eszköz több címkével is rendelkezhet, amelyeket bármilyen módon meghatározhat a megoldásához. 
+A központi telepítés létrehozása előtt meg kell határozni, hogy mely eszközöket kívánja érinteni. A Azure IoT Edge a **címkével** rendelkező eszközöket azonosítja az eszköz Twin-ben. Minden eszköz több címkével is rendelkezhet, amelyeket bármilyen módon meghatározhat a megoldásához.
 
 Ha például egy intelligens épületből álló campusot kezel, akkor a hely, a szobatípus és a környezeti címkék is hozzáadhatók egy eszközhöz:
 
@@ -63,7 +63,7 @@ Az üzemelő példány létrehozásának öt lépése van. A következő szakasz
 
 Akár 20 modult is hozzáadhat egy központi telepítéshez. Ha modulokat nem tartalmazó központi telepítést hoz létre, az eltávolítja a megcélzott eszközökről származó aktuális modulokat.
 
-A központi telepítések során a IoT Edge ügynök és IoT Edge hub-modulok beállításait kezelheti. Válassza a **Futásidejű beállítások** lehetőséget a két futásidejű modul konfigurálásához. A rétegzett központi telepítésben a futásidejű modulok nincsenek megadva, ezért nem konfigurálhatók. 
+A központi telepítések során a IoT Edge ügynök és IoT Edge hub-modulok beállításait kezelheti. Válassza a **Futásidejű beállítások** lehetőséget a két futásidejű modul konfigurálásához. A rétegzett központi telepítésben a futásidejű modulok nincsenek megadva, ezért nem konfigurálhatók.
 
 Három típusú modult is hozzáadhat:
 
@@ -83,8 +83,8 @@ Egyéni kód modulként való hozzáadásához, illetve Azure-szolgáltatási mo
 1. Az **Újraindítási szabályzat**kiválasztásához használja a legördülő menüt. Az alábbi lehetőségek közül választhat:
    * **mindig** – a modul mindig újraindul, ha valamilyen okból leáll.
    * **soha** – a modul soha nem indul újra, ha bármilyen okból leáll.
-   * **hiba** esetén – a modul újraindul, ha összeomlik, de nem, ha nem áll le tisztán. 
-   * **sérült** állapotban – a modul újraindul, ha összeomlik vagy visszaadja a nem kifogástalan állapotot. Az állapotfigyelő funkció megvalósításához az egyes modulok is felhasználhatók. 
+   * **hiba** esetén – a modul újraindul, ha összeomlik, de nem, ha nem áll le tisztán.
+   * **sérült** állapotban – a modul újraindul, ha összeomlik vagy visszaadja a nem kifogástalan állapotot. Az állapotfigyelő funkció megvalósításához az egyes modulok is felhasználhatók.
 1. A modul **kívánt állapotának** kiválasztásához használja a legördülő menüt. Az alábbi lehetőségek közül választhat:
    * a **futó** Futtatás az alapértelmezett beállítás. A modul a telepítése után azonnal elindul.
    * **Leállítva** – az üzembe helyezés után a modul tétlen marad mindaddig, amíg meg nem hívja az Ön vagy egy másik modul indítását.
@@ -113,9 +113,9 @@ Ha Azure Stream Analytics-modult szeretne hozzáadni, kövesse az alábbi lépé
 
 #### <a name="configure-module-settings"></a>A modul beállításainak konfigurálása
 
-Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel. 
+Miután hozzáadta a modult egy központi telepítéshez, kiválaszthatja a nevét, és megnyithatja a **IoT Edge modul frissítése** lapot. Ezen az oldalon szerkesztheti a modul beállításait, a környezeti változókat, a létrehozási beállításokat és a modult. Ha hozzáadta a modult a piactéren, előfordulhat, hogy már rendelkezik a paraméterekkel.
 
-Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. hozzon létre egy új **modul Twin tulajdonságot** , amely egy egyedi névvel rendelkezik egy alszakaszhoz a modul két kívánt tulajdonságában, például `properties.desired.settings`. Ha csak a `properties.desired` mezőben adja meg a tulajdonságokat, a rendszer felülírja az alacsonyabb prioritású üzemelő példányokban definiált modul kívánt tulajdonságait. 
+Ha többrétegű központi telepítést hoz létre, akkor lehet, hogy olyan modult konfigurál, amely az ugyanazon eszközöket célzó más központi telepítések között található. Ha a modult a többi verzió felülírása nélkül szeretné frissíteni, nyissa meg a **modul Twin Settings** fület. hozzon létre egy új **modul Twin tulajdonságot** , amely egy egyedi névvel rendelkezik egy alszakaszhoz a modul két kívánt tulajdonságában, például `properties.desired.settings`. Ha csak a `properties.desired` mezőben adja meg a tulajdonságokat, a rendszer felülírja az alacsonyabb prioritású üzemelő példányokban definiált modul kívánt tulajdonságait.
 
 ![A modul Twin tulajdonságának beállítása rétegzett központi telepítéshez](./media/how-to-deploy-monitor/module-twin-property.png)
 
@@ -154,9 +154,9 @@ Az eszközök címkék tulajdonságával megcélozhatja azokat az eszközöket, 
 
 Mivel több üzemelő példány is megcélozhatja ugyanazt az eszközt, minden egyes központi telepítésnek prioritási számot kell megadnia. Ha ütközés lép fel, a legmagasabb prioritású üzemelő példány (a nagyobb érték magasabb prioritást jelez) a WINS. Ha két üzemelő példány azonos prioritási számmal rendelkezik, akkor a legutóbb létrehozott WINS.
 
-Ha több üzemelő példány ugyanazt az eszközt célozza meg, akkor csak a magasabb prioritású rendszer lesz alkalmazva. Ha a többrétegű üzemelő példányok ugyanazt az eszközt célozzák meg, akkor azokat alkalmazza a rendszer. Ha azonban bármely tulajdonság duplikálva van, például ha két útvonal ugyanazzal a névvel, akkor a magasabb prioritású, rétegzett központi telepítésből származó adatok felülírják a többit. 
+Ha több üzemelő példány ugyanazt az eszközt célozza meg, akkor csak a magasabb prioritású rendszer lesz alkalmazva. Ha a többrétegű üzemelő példányok ugyanazt az eszközt célozzák meg, akkor azokat alkalmazza a rendszer. Ha azonban bármely tulajdonság duplikálva van, például ha két útvonal ugyanazzal a névvel, akkor a magasabb prioritású, rétegzett központi telepítésből származó adatok felülírják a többit.
 
-Az eszközre irányuló összes rétegzett telepítésnek magasabb prioritással kell rendelkeznie, mint az alapszintű üzemelő példány alkalmazása. 
+Az eszközre irányuló összes rétegzett telepítésnek magasabb prioritással kell rendelkeznie, mint az alapszintű üzemelő példány alkalmazása.
 
 1. Adjon meg egy pozitív egész számot a központi telepítési **prioritáshoz**.
 1. Adja meg a **cél feltételt** annak meghatározásához, hogy mely eszközök lesznek megcélozva a központi telepítéssel. A feltétel a Device Twin-címkék vagy az eszközök Twin jelentett tulajdonságain alapul, és meg kell egyeznie a kifejezés formátumával. Például `tags.environment='test'` vagy `properties.reported.devicemodel='4000x'`.
@@ -179,7 +179,7 @@ A központi telepítés részleteinek megtekintéséhez és az azt futtató eszk
 
 1. Vizsgálja meg a központi telepítés listáját. Az egyes központi telepítések esetében az alábbi adatokat tekintheti meg:
    * **Azonosító** – az üzemelő példány neve.
-   * **Típus** – a központi telepítés típusa, vagy a **telepítés vagy a** **rétegzett telepítés**. 
+   * **Típus** – a központi telepítés típusa, vagy a **telepítés vagy a** **rétegzett telepítés**.
    * **Cél feltétel** – a megcélzott eszközök definiálásához használt címke.
    * **Prioritás** – az üzemelő példányhoz rendelt prioritási szám.
    * A - **megcélzott** **rendszermetrikák** határozzák meg a célcsoport-kezelési feltételnek megfelelő IoT hub az ikrek számát **, valamint azt** , hogy hány eszközön lett alkalmazva a központi telepítési tartalom a IoT hub.

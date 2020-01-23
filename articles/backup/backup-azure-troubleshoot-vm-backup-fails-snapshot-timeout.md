@@ -5,12 +5,12 @@ ms.reviewer: saurse
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
-ms.openlocfilehash: 255c18144fe0089a3f630d90f527a57d2b4ed68b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 47adda38bb39a95fe9abc0775a1822d677f19dab
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75391841"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513847"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
 
@@ -89,7 +89,6 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 
 **1. ok: [a pillanatkép állapota nem olvasható be, vagy nem lehet pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**  
 **2. ok: [a biztonsági mentési bővítmény frissítése vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
-**3. ok: [a virtuális gépnek nincs internet-hozzáférése](#the-vm-has-no-internet-access)**
 
 ## <a name="ExtensionOperationFailed-vmsnapshot-extension-operation-failed"></a>ExtensionOperationFailedForManagedDisks – a VMSnapshot-bővítmény művelete sikertelen volt
 
@@ -113,7 +112,7 @@ Miután regisztrálta és beütemezte a virtuális gépet a Azure Backup szolgá
 **3. ok: [a pillanatkép állapota nem olvasható be, vagy nem lehet pillanatképet készíteni](#the-snapshot-status-cannot-be-retrieved-or-a-snapshot-cannot-be-taken) .**  
 **4. ok: [a biztonsági mentési bővítmény frissítése vagy betöltése sikertelen](#the-backup-extension-fails-to-update-or-load)**  
 **5. ok: a Backup szolgáltatásnak nincs engedélye a régi visszaállítási pontok törlésére egy erőforráscsoport-zárolás miatt** <br>
-**6. ok: [a virtuális gépnek nincs internet-hozzáférése](#the-vm-has-no-internet-access)**
+
 
 ## <a name="usererrorunsupporteddisksize---the-configured-disk-sizes-is-currently-not-supported-by-azure-backup"></a>UserErrorUnsupportedDiskSize – a rendszer jelenleg nem támogatja a konfigurált lemezes méret (eke) t Azure Backup.
 
@@ -141,16 +140,6 @@ A legutóbbi biztonsági mentési feladata sikertelen volt, mert folyamatban van
 Ha az ütemezett biztonsági mentési művelet tovább tart, ütközik a következő biztonsági mentési konfigurációval, tekintse át az [ajánlott eljárásokat](backup-azure-vms-introduction.md#best-practices), a [biztonsági mentés teljesítményét](backup-azure-vms-introduction.md#backup-performance)és a [visszaállítási szempontot](backup-azure-vms-introduction.md#backup-and-restore-considerations).
 
 ## <a name="causes-and-solutions"></a>Okok és megoldások
-
-### <a name="the-vm-has-no-internet-access"></a>A virtuális gépnek nincs internet-hozzáférése
-
-A központi telepítés követelménye szerint a virtuális gépnek nincs internet-hozzáférése. Vagy előfordulhat, hogy korlátozásokkal rendelkezik, amelyek megakadályozzák az Azure-infrastruktúrához való hozzáférést.
-
-A megfelelő működéshez a biztonsági mentési bővítménynek kapcsolódnia kell az Azure nyilvános IP-címeihez. A bővítmény parancsokat küld egy Azure Storage-végpontnak (HTTPs URL-cím) a virtuális gép pillanatképének kezeléséhez. Ha a bővítmény nem fér hozzá a nyilvános internethez, a biztonsági mentés végül sikertelen lesz.
-
-#### <a name="solution"></a>Megoldás
-
-A hálózati probléma megoldásához tekintse meg a [hálózati kapcsolat létesítése](backup-azure-arm-vms-prepare.md#establish-network-connectivity)című témakört.
 
 ### <a name="the-agent-installed-in-the-vm-but-unresponsive-for-windows-vms"></a>Az ügynök telepítve van a virtuális gépen, de nem válaszol (Windows rendszerű virtuális gépek esetén)
 

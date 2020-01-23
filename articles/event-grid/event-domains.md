@@ -1,18 +1,18 @@
 ---
 title: Azure Event Grid található esemény-tartományok
-description: Leírja, hogyan használják az eseménynaplókat a Azure Event Grid témaköreinek kezeléséhez.
+description: Ez a cikk azt ismerteti, hogyan használhatók az események a különböző üzleti szervezetekhez, ügyfelekhez vagy alkalmazásokhoz tartozó egyéni események forgalmának kezeléséhez.
 services: event-grid
 author: banisadr
 ms.service: event-grid
 ms.author: babanisa
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: ef0a9213d095d0b7ae4343e2af145236a7e005a1
-ms.sourcegitcommit: 770b060438122f090ab90d81e3ff2f023455213b
+ms.date: 01/21/2020
+ms.openlocfilehash: df560df21740d5396bc177e20de5d0eb4bf47713
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/17/2019
-ms.locfileid: "68305406"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511382"
 ---
 # <a name="understand-event-domains-for-managing-event-grid-topics"></a>Az Event Grid témakörök kezeléséhez kapcsolódó események tartományának ismertetése
 
@@ -53,7 +53,7 @@ További információ ezekről a szerepkörökről: [Event Grid beépített szer
 
 ## <a name="subscribing-to-topics"></a>Feliratkozás a témakörökre
 
-Egy esemény tartományon belüli eseményekre való feliratkozás megegyeznek az esemény-előfizetések [Egyéni témakörben](./custom-event-quickstart.md) való létrehozásával, vagy egy Azure-szolgáltatás eseményeire való feliratkozással.
+Egy esemény tartományon belüli eseményekre való feliratkozás megegyeznek az [esemény-előfizetések egyéni témakörben való létrehozásával](./custom-event-quickstart.md) , vagy egy Azure-szolgáltatás eseményeire való feliratkozással.
 
 ### <a name="domain-scope-subscriptions"></a>Tartományi hatókör-előfizetések
 
@@ -65,7 +65,7 @@ Amikor létrehoz egy eseményt, egy közzétételi végpontot kap, amely ahhoz h
 
 Az események egy adott esemény tartomány bármely témakörében való közzétételéhez küldje el az eseményeket a tartomány végpontjának [ugyanúgy, mint egy egyéni témakört](./post-to-custom-topic.md). Az egyetlen különbség, hogy meg kell adnia azt a témakört, amelyre az eseményt el szeretné küldeni.
 
-Tegyük fel például, hogy az alábbi tömbben szereplő események az `"id": "1111"` eseményt a `foo` témakörben küldi `"id": "2222"` el, miközben az eseményt `bar`a következő témakörben küldi el:
+Például a következő eseménysorozat közzétételével az eseményt `"id": "1111"` témakörben küldi el, `foo` az eseményt `"id": "2222"` a témakör `bar`:
 
 ```json
 [{
@@ -96,7 +96,7 @@ Tegyük fel például, hogy az alábbi tömbben szereplő események az `"id": "
 
 Az esemény-tartományok kezelik a témakörökre való közzétételt. Ahelyett, hogy minden egyes, egyenként felügyelt témakörhöz eseményeket tegyen közzé, az összes eseményt közzéteheti a tartomány végpontján. Event Grid gondoskodik arról, hogy az egyes események a megfelelő témakörbe legyenek küldve.
 
-## <a name="limits-and-quotas"></a>Korlátok és kvóták
+## <a name="limits-and-quotas"></a>Korlátozások és kvóták
 Az esemény-tartományokhoz kapcsolódó korlátok és kvóták:
 
 - 100 000 témakör/esemény tartománya 
@@ -105,13 +105,13 @@ Az esemény-tartományokhoz kapcsolódó korlátok és kvóták:
 - 50 tartományhoz tartozó előfizetések 
 - 5 000 esemény/másodperc betöltési arány (tartományba)
 
-Ha ezek a korlátozások nem felelnek meg Önnek, a terméktámogatási jegy megnyitásával vagy e-mailben történő [askgrid@microsoft.com](mailto:askgrid@microsoft.com)elküldésével elérheti a termék csapatát. 
+Ha ezek a korlátozások nem felelnek meg Önnek, a terméktámogatási jegy megnyitásával vagy a [askgrid@microsoft.com](mailto:askgrid@microsoft.com)e-mailben történő elküldésével elérheti a termék csapatát. 
 
 ## <a name="pricing"></a>Díjszabás
 Az esemény-tartományok ugyanazokat az [üzemeltetési díjszabást](https://azure.microsoft.com/pricing/details/event-grid/) használják, mint amelyeket a Event Grid összes többi funkciója használ.
 
 A műveletek ugyanúgy működnek az esemény-tartományokban, mint az egyéni témakörökben. Az események egy adott esemény tartományba való beáramlása egy művelet, és az eseményekhez tartozó minden kézbesítési kísérlet egy művelet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Az események tartományának beállításával, a témakörök létrehozásával, az esemény-előfizetések létrehozásával és az események közzétételével kapcsolatos további tudnivalókért lásd: események [tartományának kezelése](./how-to-event-domains.md).

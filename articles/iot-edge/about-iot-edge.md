@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
-ms.openlocfilehash: 1c14d1dd171f9bca6b6bdc61e35c0d541b29cb3c
-ms.sourcegitcommit: d47a30e54c5c9e65255f7ef3f7194a07931c27df
+ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73026161"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76511212"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
 
@@ -25,8 +25,8 @@ Az elemzések jelentős üzleti értékeket teremthetnek az IoT-megoldásokban, 
 
 Az Azure IoT Edge három összetevőből áll:
 
-* **IoT Edge modulok** olyan tárolók, amelyek Azure-szolgáltatásokat, harmadik féltől származó szolgáltatásokat vagy saját kódot futtatnak. A modulok üzembe helyezése IoT Edge eszközökön történik, és az eszközökön helyileg végrehajtható.
-* A **IoT Edge futtatókörnyezet** minden IoT Edge eszközön fut, és az egyes eszközökön üzembe helyezett modulokat kezeli. 
+* **IoT Edge modulok** olyan tárolók, amelyek Azure-szolgáltatásokat, harmadik féltől származó szolgáltatásokat vagy saját kódot futtatnak. A modulokat IoT Edge-eszközökön lehet üzembe helyezni, és a végrehajtásuk is helyileg, az eszközökön zajlik.
+* A **IoT Edge futtatókörnyezet** minden IoT Edge eszközön fut, és az egyes eszközökön üzembe helyezett modulokat kezeli.
 * A **felhőalapú felület** lehetővé teszi IoT Edge-eszközök távoli figyelését és kezelését.
 
 >[!NOTE]
@@ -62,7 +62,7 @@ Az Azure IoT Edge futtatókörnyezet számos IoT-eszközön fut, amely lehetőv�
 
 ## <a name="iot-edge-cloud-interface"></a>Az IoT Edge felhőalapú interfésze
 
-Nehezen kezelhető a szoftver életciklusa több millió IoT-eszközön, amelyek gyakran eltérő módon, illetve modellekben vagy földrajzilag elszórtan jelennek meg. A számítási feladatok egy adott típusú eszközhöz jönnek létre és konfigurálhatók, és az összes eszközön üzembe helyezhetők, és megfigyelhetők a nem megfelelő eszközök befogására. Ezeket a tevékenységeket nem lehet eszközönként végrehajtani, ezért nagy léptékben kell elvégezni őket.
+Nehezen kezelhető a szoftver életciklusa több millió IoT-eszközön, amelyek gyakran eltérő módon, illetve modellekben vagy földrajzilag elszórtan jelennek meg. A számítási feladatokat az adott eszköztípus sajátosságai szerint hozhatja létre és konfigurálhatja, az összes eszközön üzembe helyezheti, és megfigyelés útján minden helytelenül működő eszközt észlelhet. Ezeket a tevékenységeket nem lehet eszközönként végrehajtani, ezért nagy léptékben kell elvégezni őket.
 
 Az Azure IoT Edge zökkenőmentesen integrálható az Azure IoT-megoldásgyorsítókkal, hogy a megoldás igényeit egyetlen felületről lehessen kezelni. A Cloud Services a következőket teszi lehetővé:
 

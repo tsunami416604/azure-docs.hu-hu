@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-t
 description: Ismerteti, hogyan lehet biztonsági másolatot készíteni az Azure-beli virtuális gépekről egy Recovery Services-tárolóban a Azure Backup használatával
 ms.topic: conceptual
 ms.date: 04/03/2019
-ms.openlocfilehash: 95c185c09558f3d1a525c9bcf15f3957118c4311
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: e5ff3a00d8cb3bf0c5fa3cb4929b7c22d92c7834
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294031"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76513813"
 ---
 # <a name="back-up-azure-vms-in-a-recovery-services-vault"></a>Azure-beli virtuális gépek biztonsági mentése egy Recovery Services-tárolóban
 
@@ -36,7 +36,6 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 
 * **Telepítse a virtuálisgép-ügynököt a virtuális gépre**: Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a számítógépen futó Azure VM-ügynök bővítményének telepítésével. Ha a virtuális gép Azure Piactéri rendszerképből lett létrehozva, akkor az ügynök telepítve van és fut. Ha egyéni virtuális gépet hoz létre, vagy egy helyszíni gépet telepít át, előfordulhat, hogy [manuálisan kell telepítenie az ügynököt](#install-the-vm-agent).
-* A **kimenő hozzáférés explicit engedélyezése**: általában nem szükséges explicit módon engedélyezni az Azure-beli virtuális gépek kimenő hálózati hozzáférését ahhoz, hogy a Azure Backup kommunikáljon. Előfordulhat azonban, hogy egyes virtuális gépek kapcsolódási problémákba ütközik, és a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenetet jelenítenek meg. Ha ez történik, [explicit módon engedélyeznie kell a kimenő hozzáférést](#explicitly-allow-outbound-access), így a Azure Backup bővítmény képes kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentési forgalomhoz.
 
 ## <a name="create-a-vault"></a>Tároló létrehozása
 
@@ -45,7 +44,7 @@ Emellett van néhány dolog, amit bizonyos esetekben szükség lehet:
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. A Keresés mezőbe írja be a következőt: **Recovery Services**. A **szolgáltatások**területen kattintson a **Recovery Services**-tárolók elemre.
 
-     ![Recovery Services-tárolók keresése](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png) <br/>
+     ![Recovery Services-tárolók keresése](./media/backup-azure-arm-vms-prepare/browse-to-rs-vaults-updated.png)
 
 3. A **Recovery Services** -tárolók menüben kattintson a **+ Hozzáadás**elemre.
 
@@ -121,6 +120,7 @@ A biztonsági mentés engedélyezése után:
 * A biztonsági mentések futtatásakor vegye figyelembe a következőket:
   * A-t futtató virtuális gépeknek a legnagyobb esélye van egy alkalmazás-konzisztens helyreállítási pont rögzítésére.
   * Azonban akkor is, ha a virtuális gép ki van kapcsolva, biztonsági másolat készül róla. Az ilyen virtuális gépek offline virtuális gép néven ismertek. Ebben az esetben a helyreállítási pont összeomlás-konzisztens lesz.
+* Az Azure-beli virtuális gépek biztonsági mentésének engedélyezéséhez nem szükséges explicit kimenő kapcsolat.
 
 ### <a name="create-a-custom-policy"></a>Egyéni szabályzat létrehozása
 
@@ -177,7 +177,7 @@ Meghiúsult | Meghiúsult | Meghiúsult
 Ezzel a képességgel ugyanezen a virtuális gépen két biztonsági mentés futtatható párhuzamosan, de mindkét fázisban (pillanatkép, adatok átvitele a tárba) csak egy Alfeladat futhat. Így az olyan helyzetekben, amikor a következő napi biztonsági mentés sikertelen lesz, a biztonsági mentési feladat elkerülhető a leválasztási funkciókkal. A következő napi biztonsági másolatok rendelkezhetnek pillanatképtel **, miközben az adatok átvitele a tárba** kihagyva, ha egy korábbi nap biztonsági mentési feladata folyamatban van.
 A tárolóban létrehozott növekményes helyreállítási pont rögzíti a tárolóban létrehozott utolsó helyreállítási pont összes változását. Nincs hatással a felhasználóra.
 
-## <a name="optional-steps-install-agentallow-outbound"></a>Választható lépések (ügynök telepítése/kimenő engedélyezése)
+## <a name="optional-steps"></a>Nem kötelező lépések
 
 ### <a name="install-the-vm-agent"></a>A virtuálisgép-ügynök telepítése
 
@@ -187,114 +187,6 @@ Azure Backup biztonsági mentést készít az Azure-beli virtuális gépekről a
 --- | ---
 **Windows** | 1. [töltse le és telepítse](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409) az ügynök MSI-fájlját.<br/><br/> 2. telepítsen rendszergazdai engedélyekkel a gépen.<br/><br/> 3. Ellenőrizze a telepítést. A virtuális gép *C:\WindowsAzure\Packages* kattintson a jobb gombbal a **WaAppAgent. exe** > **Tulajdonságok**elemre. A **részletek** lapon a **termék verziószámának** 2.6.1198.718 vagy magasabbnak kell lennie.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, majd [telepítse újra az ügynököt](https://go.microsoft.com/fwlink/?LinkID=394789&clcid=0x409).
 **Linux** | A telepítést egy RPM vagy egy DEB-csomag használatával telepítheti a terjesztési csomag adattárában. Ez az Azure Linux-ügynök telepítésének és frissítésének előnyben részesített módszere. Az összes [támogatott terjesztési szolgáltató](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) integrálja az Azure Linux-ügynök csomagját a lemezképbe és a tárházba. Az ügynök elérhető a [githubon](https://github.com/Azure/WALinuxAgent), de nem javasoljuk, hogy innen telepítsen.<br/><br/> Ha frissíti az ügynököt, győződjön meg arról, hogy nem fut biztonsági mentési művelet, és frissítse a bináris fájlokat.
-
-### <a name="explicitly-allow-outbound-access"></a>Kimenő hozzáférés explicit engedélyezése
-
-A virtuális gépen futó biztonsági mentési bővítménynek kimenő hozzáférésre van szüksége az Azure nyilvános IP-címeihez.
-
-* Általában nem kell explicit módon engedélyeznie egy Azure-beli virtuális gép kimenő hálózati hozzáférését ahhoz, hogy kommunikálni tudjon a Azure Backupával.
-* Ha nehézségekbe ütközik a csatlakozó virtuális gépekkel kapcsolatban, vagy ha a kapcsolódási kísérlet során **ExtensionSnapshotFailedNoNetwork** hibaüzenet jelenik meg, explicit módon engedélyeznie kell a hozzáférést, hogy a biztonsági mentési bővítmény képes legyen kommunikálni az Azure nyilvános IP-címeivel a biztonsági mentési forgalom számára. A hozzáférési módszereket az alábbi táblázat foglalja össze.
-
-**Beállítás** | **Művelet** | **Részletek**
---- | --- | ---
-**NSG-szabályok beállítása** | Engedélyezze az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/details.aspx?id=41653).<br/><br/> Az összes címtartomány engedélyezése és kezelése helyett hozzáadhat egy olyan szabályt, amely lehetővé teszi a Azure Backup szolgáltatás elérését egy [szolgáltatási címkével](backup-azure-arm-vms-prepare.md#set-up-an-nsg-rule-to-allow-outbound-access-to-azure). | [További](../virtual-network/security-overview.md#service-tags) információ a szolgáltatási címkékről.<br/><br/> A szolgáltatások címkéi leegyszerűsítik a hozzáférés-kezelést, és nem merülnek fel további költségek.
-**Proxy üzembe helyezése** | HTTP-proxykiszolgáló üzembe helyezése az útválasztási forgalomhoz. | Hozzáférést biztosít az egész Azure-hoz, és nem csupán a tárterülethez.<br/><br/> A tárolási URL-címek részletes szabályozása engedélyezett.<br/><br/> Virtuális gépek egypontos internet-hozzáférése.<br/><br/> A proxy további költségei.
-**Azure Firewall beállítása** | A virtuális gépen a Azure Firewallon átmenő forgalom engedélyezése a Azure Backup szolgáltatáshoz tartozó FQDN címke használatával | Egyszerűen használható, ha Azure Firewall beállítani egy VNet-alhálózatban.<br/><br/> Nem hozhat létre saját FQDN-címkéket, illetve nem módosíthatja a címke teljes tartománynevét.<br/><br/> Ha az Azure-beli virtuális gépek felügyelt lemezekkel rendelkeznek, lehetséges, hogy egy további portot (8443) kell megnyitnia a tűzfalakon.
-
-#### <a name="establish-network-connectivity"></a>Hálózati kapcsolat létesítése
-
-Kapcsolat létesítése NSG, proxy vagy a tűzfalon keresztül
-
-##### <a name="set-up-an-nsg-rule-to-allow-outbound-access-to-azure"></a>NSG-szabály beállítása az Azure-hoz való kimenő hozzáférés engedélyezéséhez
-
-Ha egy NSG kezeli a virtuális gép hozzáférését, engedélyezze a biztonsági mentési tár kimenő hozzáférését a szükséges tartományokhoz és portokhoz.
-
-1. A virtuális gép tulajdonságai > **hálózatkezelés**területen válassza a **kimenő Portszabály hozzáadása**elemet.
-2. A **kimenő biztonsági szabály hozzáadása**lapon válassza a **speciális**lehetőséget.
-3. A **forrás**területen válassza a **VirtualNetwork**lehetőséget.
-4. A **forrásport tartományokban**adjon meg egy csillagot (*), amely engedélyezi a kimenő hozzáférést bármely portról.
-5. A **cél**mezőben válassza a **szolgáltatás címkéje**elemet. A listából válassza a **Storage. region**elemet. A régió az a hely, ahol a tároló és a biztonsági mentésre használni kívánt virtuális gépek találhatók.
-6. A **célport tartományokban**válassza ki a portot.
-    * Nem felügyelt lemezeket használó virtuális gép titkosítatlan Storage-fiókkal: 80
-    * Nem felügyelt lemezeket használó virtuális gép titkosított Storage-fiókkal: 443 (alapértelmezett beállítás)
-    * Felügyelt lemezeket használó virtuális gép: 8443.
-7. A **protokoll**területen válassza a **TCP**lehetőséget.
-8. A **prioritás**mezőben a magasabb megtagadási szabályoknál kisebb prioritást kell megadni.
-
-   Ha van olyan szabály, amely megtagadja a hozzáférést, az új engedélyezési szabálynak magasabbnak kell lennie. Ha például a 1000-es prioritásban van egy **Deny_All** szabálykészlet, az új szabály értéke nem lehet kisebb, mint 1000.
-9. Adja meg a szabály nevét és leírását, majd kattintson **az OK gombra**.
-
-A NSG szabályt több virtuális gépre is alkalmazhatja a kimenő hozzáférés engedélyezéséhez. Ez a videó végigvezeti a folyamaton.
-
->[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
-
-##### <a name="route-backup-traffic-through-a-proxy"></a>Biztonsági mentési forgalom irányítása proxyn keresztül
-
-A biztonsági mentési forgalmat egy proxyn keresztül irányíthatja, majd a proxyhoz hozzáférést adhat a szükséges Azure-tartományokhoz. Konfigurálja a proxy virtuális gépet a következők engedélyezéséhez:
-
-* Az Azure virtuális gépnek a proxyn keresztül kell átirányítani az összes, a nyilvános internethez kötött HTTP-forgalmat.
-* A proxynak engedélyeznie kell a bejövő forgalmat a megfelelő virtuális hálózatban lévő virtuális gépekről.
-* A NSG **NSF-Lockdown** olyan szabályt igényel, amely lehetővé teszi a proxy virtuális gépről kimenő internetes forgalmat.
-
-###### <a name="set-up-the-proxy"></a>A proxy beállítása
-
-Ha nem rendelkezik rendszerfiók-proxyval, állítsa be egyet a következő módon:
-
-1. Töltse le a [PsExec](https://technet.microsoft.com/sysinternals/bb897553).
-2. Futtassa a **PsExec. exe-i-s cmd. exe** parancsot, hogy a parancssort egy rendszerfiókban futtassa.
-3. Futtassa a böngészőt a rendszerkörnyezetben. Használja például a **%ProgramFiles%\Internet Explorer\iexplore.exe** for Internet Explorert.  
-4. Adja meg a proxybeállításokat.
-   * Linux rendszerű gépeken:
-     * Adja hozzá ezt a sort a **/etc/Environment** -fájlhoz:
-       * **http_proxy = http:\//proxy IP-címe: proxy port**
-     * Adja hozzá ezeket a sorokat a **/etc/waagent.conf** -fájlhoz:
-         * **Http. Host = proxy IP-címe**
-         * **Http. port = proxy port**
-   * Windows rendszerű gépeken a böngésző beállításainál határozza meg, hogy a proxyt kell-e használni. Ha jelenleg használ egy proxyt egy felhasználói fiókon, akkor a parancsfájl segítségével alkalmazhatja a beállítást a rendszerfiók szintjén.
-
-       ```powershell
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name DefaultConnectionSettings -Value $obj.DefaultConnectionSettings
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings\Connections" -Name SavedLegacySettings -Value $obj.SavedLegacySettings
-      $obj = Get-ItemProperty -Path Registry::"HKEY_CURRENT_USER\Software\Microsoft\Windows\CurrentVersion\Internet Settings"
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name ProxyEnable -Value $obj.ProxyEnable
-      Set-ItemProperty -Path Registry::"HKEY_USERS\S-1-5-18\Software\Microsoft\Windows\CurrentVersion\Internet Settings" -Name Proxyserver -Value $obj.Proxyserver
-
-       ```
-
-###### <a name="allow-incoming-connections-on-the-proxy"></a>Bejövő kapcsolatok engedélyezése a proxyn
-
-Bejövő kapcsolatok engedélyezése a proxybeállítások között.
-
-1. A Windows tűzfalban nyissa meg **a fokozott biztonságú Windows tűzfalat**.
-2. Kattintson a jobb gombbal a **Bejövő szabályok** > **új szabály**elemre.
-3. A **szabály típusa mezőben**válassza az **Egyéni** > **tovább**lehetőséget.
-4. A **program**területen válassza a **minden program** > **tovább**lehetőséget.
-5. A **protokollok és portok**területén:
-   * Állítsa a típust a **TCP**értékre.
-   * **Helyi portok** beállítása **adott portokra**.
-   * Állítsa be a **távoli portot** az **összes portra**.
-
-6. Fejezze be a varázslót, és adja meg a szabály nevét.
-
-###### <a name="add-an-exception-rule-to-the-nsg-for-the-proxy"></a>Kivételi szabály hozzáadása a proxy NSG
-
-A NSG **NSF-Lockdown**esetében engedélyezze a 10.0.0.5 bármely portjáról érkező forgalmat a 80-as (http) vagy a 443-es (https-) porton lévő internetes címekre.
-
-A következő PowerShell-szkript egy példát biztosít a forgalom engedélyezésére.
-Ahelyett, hogy az összes nyilvános internetes címre engedélyezi a kimenő forgalmat, megadhat egy IP-címtartományt (`-DestinationPortRange`), vagy használhatja a Storage. region szolgáltatás címkéjét.
-
-```powershell
-Get-AzureNetworkSecurityGroup -Name "NSG-lockdown" |
-Set-AzureNetworkSecurityRule -Name "allow-proxy " -Action Allow -Protocol TCP -Type Outbound -Priority 200 -SourceAddressPrefix "10.0.0.5/32" -SourcePortRange "*" -DestinationAddressPrefix Internet -DestinationPortRange "80-443"
-```
-
-##### <a name="allow-firewall-access-with-an-fqdn-tag"></a>Tűzfal hozzáférésének engedélyezése FQDN-címkével
-
-A Azure Firewall beállítható úgy, hogy engedélyezze a kimenő hozzáférést Azure Backup számára a hálózati forgalom számára.
-
-* [Tudnivalók a](https://docs.microsoft.com/azure/firewall/tutorial-firewall-deploy-portal) Azure Firewall üzembe helyezéséről.
-* [További információ](https://docs.microsoft.com/azure/firewall/fqdn-tags) FQDN-Címkék
 
 >[!NOTE]
 > A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.

@@ -9,18 +9,18 @@ ms.service: active-directory
 ms.subservice: domain-services
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 09/10/2019
+ms.date: 01/21/2020
 ms.author: iainfou
-ms.openlocfilehash: 501214f87a65c71436e262608f7e9b3471cc9775
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: f0719542eb693e52f9a7996e28699b7425b0e0fe
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705408"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76509138"
 ---
 # <a name="check-the-health-of-an-azure-active-directory-domain-services-managed-domain"></a>Azure Active Directory Domain Services felügyelt tartomány állapotának ellenőrzését
 
-Azure Active Directory Domain Services (Azure AD DS) néhány háttérben futó feladatot futtat a felügyelt tartomány kifogástalan állapotának és naprakész állapotának megőrzése érdekében. Ezek a feladatok magukban foglalják a biztonsági másolatok készítését, a biztonsági frissítések alkalmazását és az adatok szinkronizálását az Azure AD-ból. Ha problémák merülnek fel az Azure AD DS felügyelt tartományával kapcsolatban, előfordulhat, hogy ezek a feladatok nem futnak sikeresen. A problémák áttekintéséhez és megoldásához a Azure Portal használatával ellenőrizheti egy Azure AD DS felügyelt tartomány állapotát.
+Azure Active Directory Domain Services (Azure AD DS) néhány háttérben futó feladatot futtat a felügyelt tartomány kifogástalan állapotának és naprakész állapotának megőrzése érdekében. Ezek a feladatok magukban foglalják a biztonsági másolatok készítését, a biztonsági frissítések alkalmazását és az adatok szinkronizálását az Azure AD-ból. Ha problémák merülnek fel az Azure AD DS felügyelt tartományával kapcsolatban, előfordulhat, hogy ezek a feladatok nem hajthatók végre sikeresen. A problémák áttekintéséhez és megoldásához a Azure Portal használatával ellenőrizheti egy Azure AD DS felügyelt tartomány állapotát.
 
 Ez a cikk bemutatja, hogyan tekintheti meg az Azure AD DS állapotát, és megismerheti a megjelenített információkat vagy riasztásokat.
 
@@ -38,22 +38,22 @@ Az állapot lap *utolsó kiértékelt* időbélyegzője azt mutatja, hogy az Azu
 
 A jobb felső sarokban az Azure AD DS felügyelt tartomány általános állapota látható. Az állapot a tartomány összes meglévő riasztását befolyásolja. Az alábbi táblázat az elérhető állapotjelzőket ismerteti:
 
-| Állapot | ikon | Magyarázat |
+| Állapot | Ikon | Magyarázat |
 | --- | :----: | --- |
 | Fut | <img src= "./media/active-directory-domain-services-alerts/running-icon.png" width = "15" alt="Green check mark for running"> | Az Azure AD DS felügyelt tartománya megfelelően fut, és nem rendelkezik kritikus vagy figyelmeztető riasztásokkal. Előfordulhat, hogy a tartomány tájékoztató riasztásokkal rendelkezik. |
 | Figyelmet igényel (figyelmeztetés) | <img src= "./media/active-directory-domain-services-alerts/warning-icon.png" width = "15" alt="Yellow exclamation mark for warning"> | Nincsenek kritikus riasztások az Azure AD DS felügyelt tartományon, de egy vagy több figyelmeztető riasztást kell kezelni. |
 | Figyelmet igényel (kritikus) | <img src= "./media/active-directory-domain-services-alerts/critical-icon.png" width = "15" alt="Red exclamation mark for critical"> | Egy vagy több kritikus riasztás található az Azure AD DS felügyelt tartományon, amelyet meg kell oldani. Figyelmeztetési és/vagy tájékoztató riasztásokat is tartalmazhat. |
-| Telepítése | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Az Azure AD DS-tartomány üzembe helyezése folyamatban van. |
+| Üzembe helyezés | <img src= "./media/active-directory-domain-services-alerts/deploying-icon.png" width = "15" alt="Blue circular arrows for deploying"> | Az Azure AD DS-tartomány üzembe helyezése folyamatban van. |
 
 ## <a name="understand-monitors-and-alerts"></a>A figyelők és a riasztások ismertetése
 
-Egy Azure AD DS felügyelt tartomány állapota két típusú információt mutat be – figyelők és riasztások. A figyelők megjelenítik az alapvető háttér-feladatok befejezésének időpontját. A riasztások a felügyelt tartomány stabilitásának javításához nyújtanak információt vagy javaslatokat.
+Egy Azure AD DS felügyelt tartomány állapota két típusú információt mutat be – *figyelők*és *riasztások*. A figyelők megjelenítik az alapvető háttér-feladatok befejezésének időpontját. A riasztások a felügyelt tartomány stabilitásának javításához nyújtanak információt vagy javaslatokat.
 
 ### <a name="monitors"></a>Monitorozások
 
-A figyelők egy Azure AD DS felügyelt tartomány azon területei, amelyek ellenőrzése rendszeresen megtörténik. Ha van aktív riasztás az Azure AD DS felügyelt tartományhoz, akkor előfordulhat, hogy az egyik figyelő egy problémát jelent. Azure AD Domain Services jelenleg a következő területeket figyeli:
+A figyelők egy Azure AD DS felügyelt tartomány azon területei, amelyek ellenőrzése rendszeresen megtörténik. Ha van aktív riasztás az Azure AD DS felügyelt tartományhoz, akkor előfordulhat, hogy az egyik figyelő egy problémát jelent. Azure AD Domain Services jelenleg a következő területekhez tartozó figyelőket tartalmaz:
 
-* Backup
+* Biztonsági mentés
 * Szinkronizálás az Azure AD-vel
 
 #### <a name="backup-monitor"></a>Biztonsági mentési figyelő
@@ -68,7 +68,7 @@ A biztonsági mentési figyelő ellenőrzi, hogy az Azure AD DS felügyelt tarto
 
 #### <a name="synchronization-with-azure-ad-monitor"></a>Szinkronizálás az Azure AD-figyelővel
 
-Egy Azure AD DS felügyelt tartomány rendszeresen szinkronizál a Azure Active Directoryokkal. A felhasználók és a csoport objektumainak száma, valamint az Azure AD-címtárban az utolsó szinkronizálás óta végrehajtott módosítások száma befolyásolja, hogy mennyi ideig tart a szinkronizálás. Ha az Azure AD DS felügyelt tartomány utolsó szinkronizálása három nappal ezelőtt történt, keresse meg és oldja fel az aktív riasztásokat. Ha a szinkronizálási figyelő nem frissíti az állapotot a legutóbbi szinkronizálás megjelenítéséhez, [Nyisson meg egy Azure-támogatási kérelmet][azure-support].
+Egy Azure AD DS felügyelt tartomány rendszeresen szinkronizál a Azure Active Directoryokkal. A felhasználók és a csoport objektumainak száma, valamint az Azure AD-címtárban az utolsó szinkronizálás óta végrehajtott módosítások száma befolyásolja, hogy mennyi ideig tart a szinkronizálás. Ha az Azure AD DS felügyelt tartomány utolsó szinkronizálása három nappal ezelőtt történt, keresse meg és oldja fel az aktív riasztásokat. Ha a szinkronizációs figyelő nem frissíti az állapotot, hogy az aktív riasztások kezelése után egy legutóbbi szinkronizálás jelenjen [meg, nyisson meg egy Azure-támogatási kérelmet][azure-support].
 
 ### <a name="alerts"></a>Értesítések
 

@@ -1,5 +1,5 @@
 ---
-title: Vizsgálja meg a v2 API által létrehozott Azure Media Services Video Indexer kimenetet
+title: Vizsgálja meg a v2 API által létrehozott Video Indexer kimenetet – Azure
 titleSuffix: Azure Media Services
 description: Ez a témakör a v2 API által előállított Azure Media Services Video Indexer kimenetét vizsgálja.
 services: media-services
@@ -10,12 +10,12 @@ ms.subservice: video-indexer
 ms.topic: article
 ms.date: 12/09/2019
 ms.author: juliako
-ms.openlocfilehash: ab48787edcdd8c28891ca49d0f8b64305ce0e747
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2fac5e07f9646c4fc0fac7b1be53b5a5ac1ea803
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454637"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514391"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-api"></a>Vizsgálja meg az API által létrehozott Video Indexer kimenetet
 
@@ -501,7 +501,7 @@ Az üzleti és a termék márkanevei a szöveg átiratának és/vagy a videó OC
 |referenceId | A márka wikipedia URL-címének utótagja Például a "Target_Corporation" a [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation)utótagja.
 |referenceUrl | A márka wikipedia URL-címe, ha van ilyen. Például: [https://en.wikipedia.org/wiki/Target_Corporation](https://en.wikipedia.org/wiki/Target_Corporation).
 |leírás|A márkák leírása.|
-|címkét|A márkához társított előre definiált címkék listája.|
+|tags|A márkához társított előre definiált címkék listája.|
 |megbízhatóság|A Video Indexer Brand detektor (0-1) megbízhatósági értéke.|
 |példányok|A márka időtartományának listája. Minden példány rendelkezik egy brandType, amely azt jelzi, hogy ez a márka szerepel-e az átiratban vagy az OCR-ben.|
 

@@ -7,12 +7,12 @@ ms.date: 11/19/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 6cc37875b84e215066c52ca8daef0fa0d879c54f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 12aa78d0ba7c9300fc012958660e2282e91568aa
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75434470"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510821"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge eszköz konfigurálása proxykiszolgálón keresztüli kommunikációhoz
 
@@ -40,7 +40,7 @@ Ez a cikk bemutatja a következő négy lépést a proxykiszolgáló mögötti I
 
 4. **A modul minden későbbi központi telepítésére vonatkozóan állítsa be a környezeti változókat a proxyn keresztül kommunikáló modulok esetében.**
 
-   Miután beállította IoT Edge eszközét, és csatlakoztatva van IoT Hub a proxykiszolgálón keresztül, meg kell őriznie a kapcsolatot az összes jövőbeli modul-telepítésben. A részletes lépésekért tekintse meg a jelen cikk [központi telepítési jegyzékek konfigurálása](#configure-deployment-manifests) című szakaszát. 
+   Miután beállította IoT Edge eszközét, és csatlakoztatva van IoT Hub a proxykiszolgálón keresztül, meg kell őriznie a kapcsolatot az összes jövőbeli modul-telepítésben. A részletes lépésekért tekintse meg a jelen cikk [központi telepítési jegyzékek konfigurálása](#configure-deployment-manifests) című szakaszát.
 
    Ez a lépés egy folyamatban lévő folyamat, amely lehetővé teszi, hogy minden új modul vagy központi telepítés frissítése fenntartsa az eszköznek a proxykiszolgálón keresztüli kommunikációt.
 
@@ -70,7 +70,7 @@ Ha Windows rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, két
 
 Az alábbi lépések a `-proxy` argumentumot használó Windows-telepítés példáját szemléltetik:
 
-1. A meghívó-webkérési parancsnak proxy-információra van szüksége a telepítési parancsfájl eléréséhez. Ezután az Deploy-IoTEdge parancsnak szüksége van a proxy adataira a telepítési fájlok letöltéséhez. 
+1. A meghívó-webkérési parancsnak proxy-információra van szüksége a telepítési parancsfájl eléréséhez. Ezután az Deploy-IoTEdge parancsnak szüksége van a proxy adataira a telepítési fájlok letöltéséhez.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
@@ -164,13 +164,13 @@ Restart-Service iotedge
 
 A IoT Edge ügynök az első modul, amely bármely IoT Edge eszközön elindul. Először a IoT Edge config. YAML fájlban található információk alapján indult el. A IoT Edge ügynök ezután csatlakozik a IoT Hubhoz az üzembe helyezési jegyzékek lekéréséhez, amely azt deklarálja, hogy az eszközön milyen más modulok legyenek telepítve.
 
-Ez a lépés a IoT Edge eszközön a kezdeti eszköz beállításakor kerül megrendezésre. 
+Ez a lépés a IoT Edge eszközön a kezdeti eszköz beállításakor kerül megrendezésre.
 
-1. Nyissa meg a config. YAML fájlt a IoT Edge eszközön. Linux rendszereken a fájl a következő helyen található: **/etc/iotedge/config.YAML**. Windows rendszereken ez a fájl a következő helyen található: **C:\ProgramData\iotedge\config.YAML**. A konfigurációs fájl védett, ezért rendszergazdai jogosultságok szükségesek az eléréséhez. Linux rendszereken használja a `sudo` parancsot, mielőtt megnyitja a fájlt a kívánt szövegszerkesztőben. Windows rendszeren nyisson meg egy szövegszerkesztőt, például a Jegyzettömböt rendszergazdaként, majd nyissa meg a fájlt. 
+1. Nyissa meg a config. YAML fájlt a IoT Edge eszközön. Linux rendszereken a fájl a következő helyen található: **/etc/iotedge/config.YAML**. Windows rendszereken ez a fájl a következő helyen található: **C:\ProgramData\iotedge\config.YAML**. A konfigurációs fájl védett, ezért rendszergazdai jogosultságok szükségesek az eléréséhez. Linux rendszereken használja a `sudo` parancsot, mielőtt megnyitja a fájlt a kívánt szövegszerkesztőben. Windows rendszeren nyisson meg egy szövegszerkesztőt, például a Jegyzettömböt rendszergazdaként, majd nyissa meg a fájlt.
 
-2. A config. YAML fájlban keresse meg az **Edge Agent moduljának spec** szakaszát. A IoT Edge ügynök definíciója tartalmaz egy **env** paramétert, ahol környezeti változókat adhat hozzá. 
+2. A config. YAML fájlban keresse meg az **Edge Agent moduljának spec** szakaszát. A IoT Edge ügynök definíciója tartalmaz egy **env** paramétert, ahol környezeti változókat adhat hozzá.
 
-3. Távolítsa el az ENV paraméter helyőrzőit tartalmazó kapcsos zárójeleket, és vegye fel az új változót egy új sorba. Ne feledje, hogy a YAML behúzása két szóköz. 
+3. Távolítsa el az ENV paraméter helyőrzőit tartalmazó kapcsos zárójeleket, és vegye fel az új változót egy új sorba. Ne feledje, hogy a YAML behúzása két szóköz.
 
    ```yaml
    https_proxy: "<proxy URL>"
@@ -184,7 +184,7 @@ Ez a lépés a IoT Edge eszközön a kezdeti eszköz beállításakor kerül meg
 
    ![edgeAgent-definíció környezeti változókkal](./media/how-to-configure-proxy-support/edgeagent-edited.png)
 
-5. Mentse a változtatásokat a config. YAML fájlba, és zárjuk be a szerkesztőt. A módosítások érvénybe léptetéséhez indítsa újra IoT Edge. 
+5. Mentse a változtatásokat a config. YAML fájlba, és zárjuk be a szerkesztőt. A módosítások érvénybe léptetéséhez indítsa újra IoT Edge.
 
    * Linux:
 

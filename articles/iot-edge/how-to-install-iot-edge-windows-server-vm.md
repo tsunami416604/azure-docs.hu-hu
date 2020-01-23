@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 06/12/2019
 ms.author: gregman
-ms.openlocfilehash: b32bbfa5e849c1a0490bba5d09d1838268033b26
-ms.sourcegitcommit: c4700ac4ddbb0ecc2f10a6119a4631b13c6f946a
+ms.openlocfilehash: 99474246bf1ff5cbcc39861d56f05aa38f177f31
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/27/2019
-ms.locfileid: "72964661"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76510039"
 ---
 # <a name="run-azure-iot-edge-on-windows-server-virtual-machines"></a>Azure IoT Edge futtatása Windows Serveren Virtual Machines
 
@@ -26,28 +26,30 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](
 
 ## <a name="deploy-from-the-azure-marketplace"></a>Üzembe helyezés az Azure piactéren
 
-1.  Navigáljon a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace ajánlathoz, vagy keressen rá a "Windows Server" kifejezésre az [Azure piactéren](https://azuremarketplace.microsoft.com/)
-2.  Válassza a **Letöltés most** lehetőséget. 
-3.  A **szoftvercsomag**területen keresse meg a "Windows Server 2019 Datacenter Server Core with containers" kifejezést, majd válassza a **tovább** gombot a következő párbeszédpanelen.
+1. Navigáljon a [Windows Server](https://azuremarketplace.microsoft.com/marketplace/apps/microsoftwindowsserver.windowsserver?tab=Overview) Azure Marketplace ajánlathoz, vagy keressen rá a "Windows Server" kifejezésre az [Azure piactéren](https://azuremarketplace.microsoft.com/)
+2. Válassza a **Letöltés most** lehetőséget.
+3. A **szoftvercsomag**területen keresse meg a "Windows Server 2019 Datacenter Server Core with containers" kifejezést, majd válassza a **tovább** gombot a következő párbeszédpanelen.
     * Ezeket az utasításokat a Windows Server más verzióihoz is használhatja tárolókkal
-4.  A Azure Portalban kattintson a **Létrehozás** gombra, és kövesse a varázslót a virtuális gép üzembe helyezéséhez. 
-    *   Ha először próbálkozik egy virtuális géppel, a legegyszerűbb, ha jelszót használ, és engedélyezi az RDP-t és az SSH-t a nyilvános bejövő port menüjében. 
-    *   Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
-5.  A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
-    1.  Másolja a IoT Edge eszközön a IoT Hub létrehozott eszköz-csatlakoztatási karakterláncot. Tekintse meg az eljárást a [Azure Portal a kapcsolatok karakterláncának beolvasásához](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
-    1.  Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
-    1.  Válassza a **RunPowerShellScript** lehetőséget.
-    1.  Másolja ezt a szkriptet a parancssorablakba az eszközhöz tartozó kapcsolási karakterlánccal: 
+4. A Azure Portalban kattintson a **Létrehozás** gombra, és kövesse a varázslót a virtuális gép üzembe helyezéséhez.
+    * Ha először próbálkozik egy virtuális géppel, a legegyszerűbb, ha jelszót használ, és engedélyezi az RDP-t és az SSH-t a nyilvános bejövő port menüjében.
+    * Ha erőforrás-igényes számítási feladattal rendelkezik, a virtuális gép méretét további processzorok és/vagy memória hozzáadásával kell frissítenie.
+5. A virtuális gép üzembe helyezését követően konfigurálja úgy, hogy az IoT Hubhoz kapcsolódjon:
+    1. Másolja a IoT Edge eszközön a IoT Hub létrehozott eszköz-csatlakoztatási karakterláncot. Tekintse meg az eljárást a [Azure Portal a kapcsolatok karakterláncának beolvasásához](how-to-register-device.md#retrieve-the-connection-string-in-the-azure-portal).
+    1. Válassza ki az újonnan létrehozott virtuálisgép-erőforrást a Azure Portal, és nyissa meg a **parancs futtatása** lehetőséget.
+    1. Válassza a **RunPowerShellScript** lehetőséget.
+    1. Másolja ezt a szkriptet a parancssorablakba az eszközhöz tartozó kapcsolási karakterlánccal:
+
         ```powershell
         . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; `
         Install-IoTEdge -Manual -DeviceConnectionString '<connection-string>'
         ```
-    1.  Futtassa a parancsfájlt az IoT Edge futtatókörnyezet telepítéséhez, és állítsa be a kapcsolódási karakterláncot a **Futtatás** lehetőség kiválasztásával.
-    1.  Egy-két perc múlva megjelenik egy üzenet arról, hogy a peremhálózati futtatókörnyezet telepítése és üzembe helyezése sikeres volt.
+
+    1. Futtassa a parancsfájlt az IoT Edge futtatókörnyezet telepítéséhez, és állítsa be a kapcsolódási karakterláncot a **Futtatás** lehetőség kiválasztásával.
+    1. Egy-két perc múlva megjelenik egy üzenet arról, hogy a peremhálózati futtatókörnyezet telepítése és üzembe helyezése sikeres volt.
 
 ## <a name="deploy-from-the-azure-portal"></a>Üzembe helyezés a Azure Portal
 
-1. A Azure Portalban keressen rá a "Windows Server" kifejezésre, és válassza a **Windows server 2019 Datacenter** lehetőséget a virtuális gép létrehozási munkafolyamatának megkezdéséhez. 
+1. A Azure Portalban keressen rá a "Windows Server" kifejezésre, és válassza a **Windows server 2019 Datacenter** lehetőséget a virtuális gép létrehozási munkafolyamatának megkezdéséhez.
 2. Válassza ki **a kívánt szoftvercsomagot** : "Windows Server 2019 Datacenter Server Core with containers", majd válassza a **Létrehozás** lehetőséget.
 3. Fejezze be az 5. lépést az "üzembe helyezés az Azure Marketplace-en" című részben ismertetett utasítások alapján.
 
@@ -69,7 +71,7 @@ Ez a cikk azokat a lépéseket sorolja fel, amelyekkel [a Windows Server Azure](
    1. A használni kívánt előfizetés SubscriptionID mezőjének másolása
    1. Futtassa ezt a parancsot a másolt AZONOSÍTÓval:
 
-      ```azurecli-interactive 
+      ```azurecli-interactive
       az account set -s {SubscriptionId}
       ```
 
