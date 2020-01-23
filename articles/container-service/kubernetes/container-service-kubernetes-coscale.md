@@ -1,85 +1,83 @@
 ---
-title: (ELAVULT) Coscale-Azure-beli Kubernetes-fürt megfigyelése
-description: Az Azure Container Service használatával CoScale Kubernetes-fürt monitorozása
-services: container-service
+title: ELAVULT Azure Kubernetes-fürt figyelése együttesen
+description: Kubernetes-fürt figyelése Azure Container Service a méretarányos használatával
 author: fryckbos
-manager: jeconnoc
 ms.service: container-service
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/22/2017
 ms.author: saudas
 ms.custom: mvc
-ms.openlocfilehash: 895346447e33926dcaa5ca09302f35c9d6636ed9
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: f1d0ca1ffc2e7a3d645ac5acbaafdf45f85550be
+ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60713087"
+ms.lasthandoff: 01/19/2020
+ms.locfileid: "76271099"
 ---
-# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>(ELAVULT) Coscale-Azure Container Service Kubernetes-fürt megfigyelése
+# <a name="deprecated-monitor-an-azure-container-service-kubernetes-cluster-with-coscale"></a>ELAVULT Azure Container Service Kubernetes-fürt figyelése együttesen
 
 [!INCLUDE [ACS deprecation](../../../includes/container-service-kubernetes-deprecation.md)]
 
-Ebben a cikkben bemutatjuk, hogyan helyezhet üzembe a [CoScale](https://web.archive.org/web/20180317071550/ https://www.coscale.com/) ügynök minden csomópontján és tárolók az Azure Container Service-ben a Kubernetes-fürt monitorozásához. Ez a konfiguráció coscale-fiók szükséges. 
+Ebben a cikkben bemutatjuk, hogyan helyezheti üzembe [az Kubernetes](https://web.archive.org/web/20180317071550/https://www.coscale.com/) -fürtben lévő összes csomópontot és tárolót a Azure Container Serviceban. Ehhez a konfigurációhoz szükség van egy olyan fiókra, amely együttesen méretezhető. 
 
 
-## <a name="about-coscale"></a>CoScale kapcsolatban 
+## <a name="about-coscale"></a>A méretarány 
 
-CoScale a megfigyelő platformnak, metrikákkal és eseményekkel gyűjt több vezénylési platformokon az összes tárolót. CoScale kínál a teljes veremre kiterjedő figyelést Kubernetes-környezetekből. A veremben lévő összes rétegének adatmegjelenítési és elemzési biztosítja: az operációs rendszer, Kubernetes, Docker és a tárolókban futó alkalmazások. CoScale kínál számos beépített figyelési irányítópultokat, és rendelkezik beépített anomáliadetektálást, hogy a kezelők és fejlesztők infrastruktúráját és alkalmazási problémák gyors keresése.
+A méretarány egy figyelési platform, amely az összes tárolóból származó mérőszámokat és eseményeket gyűjti össze számos összehangoló platformon. A Kubernetes-környezetek teljes körű figyelését a skála biztosítja. Vizualizációkat és elemzéseket biztosít a veremben lévő összes réteghez: az operációs rendszer, a Kubernetes, a Docker és a tárolókban futó alkalmazások számára. A skála számos beépített monitorozási irányítópultot kínál, és beépített anomáliák észlelése lehetővé teszi, hogy a kezelők és a fejlesztők gyorsan megtalálják az infrastruktúrát és az alkalmazások problémáit.
 
-![CoScale UI](./media/container-service-kubernetes-coscale/coscale.png)
+![Többméretű felhasználói felület](./media/container-service-kubernetes-coscale/coscale.png)
 
-Ebben a cikkben látható, a Kubernetes-fürtön történő futtatásra a Szolgáltatottszoftver-megoldás CoScale ügynökök is telepítheti. Ha meg szeretné tartani az adatokat a helyszíni, CoScale érhető el a helyszíni telepítéshez.
+Ahogy az ebben a cikkben is látható, az ügynököket telepítheti egy Kubernetes-fürtre, ha SaaS-megoldásként szeretné futtatni a méretezést. Ha a helyszínen szeretné megőrizni az adatait, a helyszíni telepítéshez is rendelkezésre áll a skálázás.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Először létre kell [CoScale-fiók létrehozása](https://web.archive.org/web/20170507123133/ https://www.coscale.com/free-trial).
+Először [létre kell hoznia egy méretarányos fiókot](https://web.archive.org/web/20170507123133/https://www.coscale.com/free-trial).
 
-Az útmutató feltételezi, hogy [egy Kubernetes-fürtöt az Azure Container Service használatával létrehozott](container-service-kubernetes-walkthrough.md).
+Ez a bemutató azt feltételezi, hogy [Azure Container Service használatával hozott létre egy Kubernetes-fürtöt](container-service-kubernetes-walkthrough.md).
 
-Azt is feltételezi, hogy a `az` Azure CLI-vel és `kubectl` telepített eszközök.
+Azt is feltételezi, hogy telepítve van a `az` Azure CLI és `kubectl` eszközök.
 
-Ha rendelkezik tesztelheti a `az` futtatásával telepített eszköz:
+A futtatásával tesztelheti, hogy telepítve van-e a `az` eszköz:
 
 ```azurecli
 az --version
 ```
 
-Ha nem rendelkezik a `az` eszközt telepítette, az e-mail utasításokat is [Itt](/cli/azure/install-azure-cli).
+Ha nincs telepítve a `az` eszköz, [itt](/cli/azure/install-azure-cli)talál útmutatást.
 
-Ha rendelkezik tesztelheti a `kubectl` futtatásával telepített eszköz:
+A futtatásával tesztelheti, hogy telepítve van-e a `kubectl` eszköz:
 
 ```bash
 kubectl version
 ```
 
-Ha nem rendelkezik `kubectl` telepítve, futtatható:
+Ha nincs `kubectl` telepítve, akkor a következőket futtathatja:
 
 ```azurecli
 az acs kubernetes install-cli
 ```
 
-## <a name="installing-the-coscale-agent-with-a-daemonset"></a>A DaemonSet a az CoScale-ügynök telepítése
-[DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) egy tárolót egyetlen példányát futtatni a fürt minden gazdagépen Kubernetes használják.
-Azok a futó monitorozási ügynökök, például a CoScale-ügynök tökéletes.
+## <a name="installing-the-coscale-agent-with-a-daemonset"></a>A méretarányos ügynök telepítése Daemonset elemet
+A Kubernetes a [DaemonSets](https://kubernetes.io/docs/concepts/workloads/controllers/daemonset/) használja a tároló egyetlen példányának futtatására a fürt minden gazdagépén.
+Tökéletesek a figyelési ügynökök, például az egyméretű ügynök futtatásához.
 
-CoScale való bejelentkezés után nyissa meg a [ügynök lapján](https://app.coscale.com/) CoScale-ügynök telepítéséhez a saját fürtjében, egy DaemonSet. A CoScale felhasználói felületén hozzon létre egy ügynököt, és megkezdheti a figyelést a teljes Kubernetes-fürt részletes konfigurációs lépéseit ismerteti.
+Miután bejelentkezett a Méretarányba, lépjen az [ügynök lapra](https://app.coscale.com/) , és telepítse a daemonset elemet-t használó, a fürthöz tartozó méretarányos ügynököket. A méretarányos felhasználói felület interaktív konfigurációs lépéseket biztosít az ügynökök létrehozásához és a teljes Kubernetes-fürt figyelésének megkezdéséhez.
 
-![Az ügynök konfigurációs coScale](./media/container-service-kubernetes-coscale/installation.png)
+![A méretezési ügynök konfigurációja](./media/container-service-kubernetes-coscale/installation.png)
 
-Az ügynök a fürt elindításához futtassa a megadott parancsot:
+Az ügynök a fürtön való indításához futtassa a megadott parancsot:
 
-![Indítsa el a CoScale-ügynök](./media/container-service-kubernetes-coscale/agent_script.png)
+![A méretarányos ügynök elindítása](./media/container-service-kubernetes-coscale/agent_script.png)
 
-Ennyi az egész! Miután az ügynökök üzembe helyezéséig, megtekintheti a konzol adatainak néhány perc múlva. Látogasson el a [ügynök lapján](https://app.coscale.com/) tekintse meg a fürt összegzését, további konfigurációs lépésekre, és tekintse meg például az irányítópultok a **Kubernetes-fürt áttekintés**.
+Ennyi az egész! Az ügynökök üzembe helyezése után néhány percen belül meg kell jelennie az adatnak a-konzolon. Az [ügynök lapon](https://app.coscale.com/) megtekintheti a fürt összegzését, további konfigurációs lépéseket hajthat végre, és megtekintheti az irányítópultok, például a **Kubernetes-fürt áttekintését**.
 
-![Kubernetes-fürt – áttekintés](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
+![A Kubernetes-fürt áttekintése](./media/container-service-kubernetes-coscale/dashboard_clusteroverview.png)
 
-A CoScale-ügynök automatikusan telepíti a fürtöt az új gépeken. Az ügynök frissítések automatikusan, amikor egy új verziója.
+A rendszer a fürtben lévő új gépekre automatikusan telepíti a méretezési ügynököt. Az ügynök automatikusan frissül, amikor megjelent egy új verzió.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Tekintse meg a [dokumentáció CoScale](https://web.archive.org/web/20180415164304/ http://docs.coscale.com:80/) és [blog](https://web.archive.org/web/20170501021344/ http://www.coscale.com:80/blog) CoScale figyelési megoldások további információt. 
+A többméretű figyelési megoldásokkal kapcsolatos további információkért tekintse meg a többoldalas [dokumentációt](https://web.archive.org/web/20180415164304/http://docs.coscale.com:80/) és a [blogot](https://web.archive.org/web/20170501021344/http://www.coscale.com:80/blog) . 
 
