@@ -90,7 +90,7 @@
     - name: Csomagolás és kézbesítés
       items:
         - name: Dinamikus csomagolás
-          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest'
+          displayName: 'origin, packager, HLS, DASH, CMAF, Smooth, manifest, deliver, format, URL, streaming'
           href: dynamic-packaging-overview.md
         - name: Dinamikus jegyzékek
           href: filters-dynamic-manifest-overview.md

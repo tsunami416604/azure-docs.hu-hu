@@ -84,9 +84,9 @@
 - name: Alapelvek
   items:
     - name: TLS-támogatás
-      href: iot-hub-tls.md
+      href: iot-hub-tls-support.md
     - name: Megszűnik a TLS 1.0 és 1.1 támogatása
-      href: tls-1.2-everywhere.md
+      href: iot-hub-tls-deprecating-1-0-and-1-1.md
     - name: Az üzenetbővítések áttekintése
       href: iot-hub-message-enrichments-overview.md
     - name: Az eszközfelügyelet áttekintése

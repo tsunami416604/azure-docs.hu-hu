@@ -5,12 +5,12 @@ metadata:
   title: Csoportos adatelemzési folyamat dokumentációja
   description: 'Útmutató a csoportos adatelemzési folyamat használatához, amely egy olyan rugalmas és iteratív adatelemzési módszer, amelynek célja a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.'
   services: machine-learning
-  author: cjgronlund
+  author: marktab
   ms.service: machine-learning
   ms.subservice: team-data-science-process
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: cgronlun
+  ms.date: 01/10/2020
+  ms.author: marktab
 abstract:
   description: 'A csoportos adatelemzési folyamat rugalmas és iteratív adatelemzési módszer, amelynek célja a prediktív elemzési megoldások és intelligens alkalmazások hatékony megvalósítása. A csoportos adatelemzési folyamat elősegíti a csoportok hatékonyabb együttműködését és tanulását. A Microsofttól és az iparág más vállalataitól származó, olyan ajánlott eljárásokból és szerkezetekből álló válogatást tartalmaz, amelyek az adatelemzési kezdeményezések sikeres megvalósítását segítik elő. A cél a vállalatok segítése az elemzési programjuk előnyeinek teljes körű megvalósításában.'
 sections:

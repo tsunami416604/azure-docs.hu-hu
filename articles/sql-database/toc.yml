@@ -86,12 +86,6 @@
               href: sql-database-ssms-mfa-authentication.md
             - name: Többtényezős hitelesítés konfigurálása
               href: sql-database-ssms-mfa-authentication-configure.md
-            - name: A TDE konfigurálása BYOK megoldással
-              href: transparent-data-encryption-byok-azure-sql-configure.md
-            - name: TDE BYOK-kulcsok váltása
-              href: transparent-data-encryption-byok-azure-sql-key-rotation.md
-            - name: A TDE-védő eltávolítása
-              href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
         - name: Adatvédelem
           items:
             - name: Transzparens adattitkosítás (TDE)
@@ -100,6 +94,12 @@
                   href: transparent-data-encryption-azure-sql.md
                 - name: TDE saját kulcs használatával
                   href: transparent-data-encryption-byok-azure-sql.md
+                - name: A TDE konfigurálása BYOK megoldással
+                  href: transparent-data-encryption-byok-azure-sql-configure.md
+                - name: TDE BYOK-kulcsok váltása
+                  href: transparent-data-encryption-byok-azure-sql-key-rotation.md
+                - name: A TDE-védő eltávolítása
+                  href: transparent-data-encryption-byok-azure-sql-remove-tde-protector.md
             - name: Dinamikus adatmaszkolás
               href: sql-database-dynamic-data-masking-get-started.md
             - name: Always Encrypted
