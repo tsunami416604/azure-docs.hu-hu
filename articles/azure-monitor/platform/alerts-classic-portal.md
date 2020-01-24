@@ -1,73 +1,73 @@
 ---
-title: Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
-description: Ismerje meg, hogyan használható az Azure Portalon, a parancssori felület vagy Powershell létrehozása, megtekintése és klasszikus metrikaalapú riasztási szabályok kezelése.
-author: snehithm
+title: Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
+description: Ismerje meg, hogyan hozhatja létre, tekintheti meg és kezelheti a klasszikus metrikus riasztási szabályokat a Azure Portal, a CLI vagy a PowerShell használatával.
+author: yanivlavi
 ms.service: azure-monitor
 ms.topic: conceptual
 ms.date: 09/18/2018
-ms.author: snmuvva
-ms.openlocfilehash: 4a225dbc8e84d65a6ea25f63627599e5bb7d2ced
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: yalavi
+ms.openlocfilehash: fd15d6bb9442d91c672fdd444313880001880e07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66129750"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705598"
 ---
-# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat az Azure Monitor használatával
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Klasszikus metrikai riasztások létrehozása, megtekintése és kezelése Azure Monitor használatával
 
-Az Azure monitorban klasszikus metrikariasztásokat hardvermódosításainak értesítést kaphat, amikor egy, a mérőszámok átlépnek egy küszöbértéket. Klasszikus metrikariasztásokat egy régebbi funkció, amely lehetővé teszi, hogy csak a nem többdimenziós metrikák riasztás. Egy meglévő újabb szolgáltatásra nevű metrikákhoz kapcsolódó riasztások továbbfejlesztett funkcióval rendelkezik a klasszikus metrikariasztásokat felett van. Az új funkcióiról metrikákhoz kapcsolódó riasztások többet is megtudhat [metrika riasztások – áttekintés](../../azure-monitor/platform/alerts-metric-overview.md). Ebben a cikkben azt azt ismerteti, hogyan hozhat létre, megtekintése és kezelése a klasszikus metrikaalapú riasztási szabályok az Azure Portalon az Azure CLI és PowerShell használatával.
+A klasszikus metrikus riasztások Azure Monitor lehetővé teszik, hogy értesítést kapjon, ha az egyik mérőszám egy küszöbértéket túlnyúlik. A klasszikus metrikai riasztások olyan régebbi funkciók, amelyek csak a nem dimenziós metrikák esetében engedélyezik a riasztást. Létezik egy metrikus riasztások nevű meglévő újabb funkció, amely továbbfejlesztett funkciókat biztosít a klasszikus metrikai riasztások terén. További információ az új metrikai riasztások funkcióról a [metrikus riasztások áttekintése című témakörben](../../azure-monitor/platform/alerts-metric-overview.md)olvasható. Ebben a cikkben azt ismertetjük, hogyan hozhatók létre, tekinthetők meg és kezelhetők a klasszikus metrikus riasztási szabályok Azure Portal, az Azure CLI és a PowerShell használatával.
 
-## <a name="with-azure-portal"></a>Az Azure Portalon
+## <a name="with-azure-portal"></a>Azure Portal
 
-1. Az a [portál](https://portal.azure.com/), keresse meg a figyelni kívánt a erőforrást, és válassza ki azt.
+1. Keresse meg a figyelni kívánt erőforrást a [portálon](https://portal.azure.com/), majd jelölje ki.
 
-2. Az a **figyelés** szakaszban jelölje be **riasztások (klasszikus)** . A szöveg és ikon kis mértékben eltérő lehet a különböző erőforrásokat. Ha nem találja a **riasztások (klasszikus)** Itt láthatja a **riasztások** vagy **riasztási szabályok**.
+2. A **figyelés** szakaszban válassza a **riasztások (klasszikus)** lehetőséget. A szöveg és az ikon némileg eltérő lehet a különböző erőforrások esetében. Ha nem találja a **riasztásokat (klasszikus)** , akkor előfordulhat, hogy **riasztási** vagy **riasztási szabályokban**találja.
 
-    ![Figyelés](media/alerts-classic-portal/AlertRulesButton.png)
+    ![Monitoring](media/alerts-classic-portal/AlertRulesButton.png)
 
-3. Válassza ki a **metrikariasztás hozzáadása (klasszikus)** parancsot, és töltse ki a mezőket.
+3. Válassza a **metrikai riasztás hozzáadása (klasszikus)** parancsot, majd töltse ki a mezőket.
 
     ![Riasztás hozzáadása](media/alerts-classic-portal/AddAlertOnlyParamsPage.png)
 
-4. **Név** a riasztási szabályt. Majd válassza ki a **leírás**, amely értesítő e-mailek is megjelenik.
+4. **Nevezze** el a riasztási szabályt. Ezután válasszon egy **leírást**, amely szintén megjelenik az értesítési e-mailekben.
 
-5. Válassza ki a **metrika** , amelyet figyelni szeretne. Majd válassza ki a **feltétel** és **küszöbérték** a mérőszám értéke. Is kiválaszthatják a **időszak** , ameddig a metrikaszabály riasztási triggerek előtt teljesülniük kell. Például ha az időszak "keresztül az elmúlt 5 percben" használja, és a riasztás egy CPU 80 % fölötti keres, a riasztást aktivál, ha a CPU volt következetesen fenti 80 %-os 5 perc. Miután az első eseményindító történik, újra aktivál, ha 5 percig 80 % alatt marad a Processzor. A Processzor metrikamérési percenként történik.
+5. Válassza ki a figyelni kívánt **metrikát** . Ezután válasszon egy **feltételt** és egy **küszöbértéket** a metrika számára. Adja meg azt az **időtartamot** is, ameddig a metrikai szabálynak meg kell felelnie a riasztási eseményindítók előtt. Ha például az "elmúlt 5 perc" időszakot használja, és a riasztás a 80%-nál nagyobb CPU-t keres, akkor a riasztás akkor aktiválódik, ha a processzor 5 percen át konzisztensen meghaladja a 80%-ot. Az első indítás után újraindul, ha a processzor 5 percig 80% alatt marad. A CPU-metrika mérése percenként történik.
 
-6. Válassza ki **E-mail-tulajdonosok...**  Ha azt szeretné, hogy e-mailben értesítést kapni, amikor a riasztás akkor aktiválódik, a rendszergazdák és a társadminisztrátorok.
+6. Válassza ki az **e-mail-tulajdonosokat...** ha azt szeretné, hogy a rendszergazdák és a társ-rendszergazdák e-mail értesítéseket kapjanak, amikor a riasztás tüzek
 
-7. Értesítések küldése további e-mail-címeket, a riasztás akkor aktiválódik, ha szeretné, ha hozzá őket a **további rendszergazdai email(s)** mező. Pontosvesszővel több e-mailek, a következő formátumban: *e-mail\@contoso.com;email2\@contoso.com*
+7. Ha értesítést szeretne küldeni a riasztások további e-mail-címeire, vegye fel őket a **további rendszergazdai e-mailek (ok)** mezőbe. Több e-mail-cím elválasztása pontosvesszővel, a következő formátumban: *e-mail\@contoso. com; email2\@contoso.com*
 
-8. Érvényes URI-t a helyezni a **Webhook** mezőben, ha azt szeretné, ha a riasztás akkor aktiválódik, která bude volána.
+8. Ha azt szeretné, hogy a riasztás bekövetkezik, a **webhook** mezőben érvényes URI-t kell létrehoznia.
 
-9. Azure Automation használatakor választhatja futtatja, a riasztás akkor aktiválódik, amikor egy runbookot.
+9. Ha Azure Automation használ, kiválaszthat egy runbook, amelyet a riasztás tüzek esetén szeretne futtatni.
 
-10. Válassza ki **OK** a riasztás létrehozásához.
+10. A riasztás létrehozásához kattintson **az OK gombra** .
 
-Néhány percen belül a riasztás aktív, és elindítja a fent leírtaknak megfelelően.
+Néhány percen belül a riasztás aktív, és a korábban leírt módon aktiválódik.
 
-Miután létrehozta a riasztást, válassza ki, és hajtsa végre a következő feladatok közül:
+A riasztás létrehozása után kiválaszthatja a következő feladatok egyikét, és elvégezheti a következőket:
 
-* Tekintse meg a metrika küszöbértéke és a tényleges értékek az előző nap megjelenítő grafikon.
-* Szerkesztheti, és törölje azt.
-* **Tiltsa le** vagy **engedélyezése** , ha azt szeretné, ideiglenesen leállíthatja, vagy folytathatja a riasztás-mailjeire.
+* Megtekintheti a mérőszám küszöbértékét és az előző naptól számított tényleges értékeket bemutató diagramot.
+* Szerkessze vagy törölje.
+* **Tiltsa le** vagy **engedélyezze** , ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását az adott riasztáshoz.
 
 ## <a name="with-azure-cli"></a>Az Azure CLI-vel
 
-A fentebbi szakaszokban leírt létrehozása, megtekintése és kezelése a metrikaalapú riasztási szabályok az Azure portal használatával. Ez a szakasz azt ismerteti, hogyan végezze el ugyanezt a platformok közötti átjárhatóságról használatával való [Azure CLI-vel](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). Leggyorsabb módja, hogy megkezdhesse az Azure CLI-vel van keresztül [Azure Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest).
+Az előző szakasz ismerteti, hogyan hozhat létre, tekinthet meg és kezelhet metrikus riasztási szabályokat a Azure Portal használatával. Ez a szakasz azt írja le, hogyan végezheti el ugyanezt a platformfüggetlen [Azure CLI](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli?view=azure-cli-latest)használatával. Az Azure CLI használatának leggyorsabb módja a [Azure Cloud Shellon](https://docs.microsoft.com/azure/cloud-shell/overview?view=azure-cli-latest)keresztül.
 
-### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Egy erőforráscsoportba tartozó összes klasszikus metrikaalapú riasztási szabályok beolvasása
+### <a name="get-all-classic-metric-alert-rules-in-a-resource-group"></a>Az összes klasszikus metrikai riasztási szabály beolvasása egy erőforráscsoport esetében
 
 ```azurecli
 az monitor alert list --resource-group <group name>
 ```
 
-### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Tekintse meg az adott klasszikus a metrikaalapú riasztási szabály részletei
+### <a name="see-details-of-a-particular-classic-metric-alert-rule"></a>Egy adott klasszikus metrikai riasztási szabály részleteinek megtekintése
 
 ```azurecli
 az monitor alert show --resource-group <group name> --name <alert name>
 ```
 
-### <a name="create-a-classic-metric-alert-rule"></a>Klasszikus a metrikaalapú riasztási szabály létrehozása
+### <a name="create-a-classic-metric-alert-rule"></a>Klasszikus metrikai riasztási szabály létrehozása
 
 ```azurecli
 az monitor alert create --name <alert name> --resource-group <group name> \
@@ -77,7 +77,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
     --condition "<METRIC> {>,>=,<,<=} <THRESHOLD> {avg,min,max,total,last} ##h##m##s"
 ```
 
-### <a name="delete-a-classic-metric-alert-rule"></a>Klasszikus a metrikaalapú riasztási szabály törlése
+### <a name="delete-a-classic-metric-alert-rule"></a>Klasszikus metrikai riasztási szabály törlése
 
 ```azurecli
 az monitor alert delete --name <alert name> --resource-group <group name>
@@ -87,49 +87,49 @@ az monitor alert delete --name <alert name> --resource-group <group name>
 
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
-Ez a szakasz azt mutatja be, hogyan használható a PowerShell-parancsok létrehozása, megtekintése és kezelése a klasszikus metrikariasztásokat. A cikkben szereplő példák bemutatják, hogyan használhatja az Azure Monitor-parancsmagok a klasszikus metrikariasztásokat.
+Ez a rész bemutatja, hogyan hozhat létre, tekinthet meg és kezelhet klasszikus metrikai riasztásokat a PowerShell-parancsok használatával. A cikkben szereplő példák bemutatják, hogyan használhatók Azure Monitor-parancsmagok a klasszikus metrikai riasztásokhoz.
 
-1. Ha még nem tette, PowerShell beállítása a futást a számítógépen. További információkért lásd: [telepítése és konfigurálása PowerShell](/powershell/azure/overview). Emellett áttekintheti a teljes listáját, az Azure Monitor PowerShell-parancsmagok [Azure Monitor (elemzés) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights).
+1. Ha még nem tette meg, állítsa be a PowerShellt úgy, hogy a számítógépen fusson. További információ: [a PowerShell telepítése és konfigurálása](/powershell/azure/overview). Áttekintheti Azure Monitor PowerShell-parancsmagok teljes listáját Azure Monitor (betekintő [) parancsmagok](https://docs.microsoft.com/powershell/module/az.applicationinsights)esetén is.
 
-2. Első lépésként jelentkezzen be az Azure-előfizetéshez.
+2. Először jelentkezzen be az Azure-előfizetésbe.
 
     ```powershell
     Connect-AzAccount
     ```
 
-3. Megjelenik egy bejelentkezési képernyő. Egyszer, jelentkezzen be a fiók a bérlő azonosítója, és alapértelmezett előfizetés-azonosító jelennek meg. Az összes Azure-parancsmagjaival működik az alapértelmezett előfizetést kontextusában. Hozzáfér az előfizetések listájának megtekintéséhez használja a következő parancsot:
+3. Ekkor megjelenik a bejelentkezési képernyő. Miután bejelentkezett a fiókjába, a TenantID és az alapértelmezett előfizetés-azonosító megjelenik. Az összes Azure-parancsmag az alapértelmezett előfizetés kontextusában működik. A következő parancs használatával tekintheti meg az Ön számára elérhető előfizetések listáját:
 
     ```powershell
     Get-AzSubscription
     ```
 
-4. A működő környezet másik előfizetésbe való módosításához használja a következő parancsot:
+4. Ha módosítani szeretné a munkakörnyezetét egy másik előfizetésre, használja a következő parancsot:
 
     ```powershell
     Set-AzContext -SubscriptionId <subscriptionid>
     ```
 
-5. Az összes klasszikus metrikaalapú riasztási szabályok az erőforráscsoport kérheti le:
+5. Egy erőforráscsoport összes klasszikus metrikai riasztási szabályát lekérheti:
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest
     ```
 
-6. Megtekintheti a klasszikus a metrikaalapú riasztási szabály részletei
+6. Megtekintheti a klasszikus metrika riasztási szabályának részleteit
 
     ```powershell
     Get-AzAlertRule -Name simpletestCPU -ResourceGroup montest -DetailedOutput
     ```
 
-7. Állítsa be a célerőforrás összes riasztási szabályt kérheti le. Például állítsa be a riasztási szabályok az összes virtuális gépen.
+7. Lekérheti a célként megadott erőforráshoz beállított összes riasztási szabályt. Például a virtuális gépen beállított összes riasztási szabály.
 
     ```powershell
     Get-AzAlertRule -ResourceGroup montest -TargetResourceId /subscriptions/s1/resourceGroups/montest/providers/Microsoft.Compute/virtualMachines/testconfig
     ```
 
-8. Klasszikus riasztási szabályok a Powershellen keresztül többé nem hozható létre. Szeretné használni az Új riasztási szabály létrehozása ["Add-AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) parancsot.
+8. A klasszikus riasztási szabályok már nem hozhatók létre a PowerShell használatával. Riasztási szabály létrehozásához az új ["Add-AzMetricAlertRule"](/powershell/module/az.monitor/add-azmetricalertrule) parancsot kell használnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Klasszikus metrikariasztás létrehozása Resource Manager-sablonnal](../../azure-monitor/platform/alerts-enable-template.md).
-- [Rendelkezik egy webhook használatával nem Azure-beli system értesítése klasszikus metrikariasztás](../../azure-monitor/platform/alerts-webhooks.md).
+- [Hozzon létre egy klasszikus metrikai riasztást egy Resource Manager-sablonnal](../../azure-monitor/platform/alerts-enable-template.md).
+- [Klasszikus metrikai riasztást küld egy nem Azure-rendszerről webhook használatával](../../azure-monitor/platform/alerts-webhooks.md).

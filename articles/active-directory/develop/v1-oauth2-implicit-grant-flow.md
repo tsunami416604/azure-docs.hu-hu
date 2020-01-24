@@ -17,13 +17,12 @@ ms.date: 08/15/2019
 ms.author: ryanwi
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: eb751d4cad036135865af9f97e159da104749388
-ms.sourcegitcommit: 040abc24f031ac9d4d44dbdd832e5d99b34a8c61
+ms.openlocfilehash: 2591485c6e528eb9f422ce966ec7738af49dbddc
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69532406"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701042"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>A OAuth2 implicit engedélyezési folyamatának megértése Azure Active Directoryban (AD)
 
@@ -35,7 +34,7 @@ A OAuth2 implicit megadása a leghírhedtebb, hogy a OAuth2-specifikációban a 
 
 A tömör [OAuth2 engedélyezési kód megadása](https://tools.ietf.org/html/rfc6749#section-1.3.1) az engedélyezési engedély, amely két különálló végpontot használ. A rendszer az engedélyezési végpontot használja a felhasználói interakciós fázishoz, amely egy engedélyezési kódot eredményez. Az ügyfél ezt követően a jogkivonat-végpontot használja a hozzáférési jogkivonat kódjának cseréjére, és gyakran frissítési jogkivonatra is. A webalkalmazásoknak saját alkalmazásbeli hitelesítő adataikat kell megadniuk a jogkivonat-végponthoz, hogy az engedélyezési kiszolgáló hitelesíteni tudja az ügyfelet.
 
-A [OAuth2 implicit támogatás](https://tools.ietf.org/html/rfc6749#section-1.3.2) más engedélyezési támogatások egy változata. Lehetővé teszi, hogy az ügyfél hozzáférési tokent szerezzen (és id_token az [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)használatakor) közvetlenül az engedélyezési végpontról, anélkül, hogy a jogkivonat-végponttal kellene kapcsolatba lépnie, és nem hitelesíti az ügyfelet. Ez a változat a webböngészőben futó JavaScript-alapú alkalmazásokhoz lett tervezve: az eredeti OAuth2-specifikációban a tokenek egy URI-töredékben lesznek visszaadva. Így a jogkivonat-bitek elérhetővé válnak az ügyfél JavaScript-kódjában, de garantálják, hogy a rendszer a kiszolgáló felé irányuló átirányítások során nem fog szerepelni. Az OAuth2 implicit megadása esetén az engedélyezési végpont a korábban megadott átirányítási URI használatával kiadja a hozzáférési jogkivonatokat közvetlenül az ügyfélnek. Emellett megvan az előnye, hogy kiküszöböli a kereszthivatkozási hívások követelményeit, amelyek akkor szükségesek, ha a JavaScript-alkalmazásnak a jogkivonat-végponthoz kell kapcsolódnia.
+A [OAuth2 implicit támogatás](https://tools.ietf.org/html/rfc6749#section-1.3.2) más engedélyezési támogatások egy változata. Lehetővé teszi, hogy az ügyfél hozzáférési jogkivonatot szerezzen be (és id_token az [OpenId Connect](https://openid.net/specs/openid-connect-core-1_0.html)használatakor) közvetlenül az engedélyezési végpontról, a jogkivonat-végponttal való kapcsolatfelvétel és az ügyfél hitelesítése nélkül. Ez a változat a webböngészőben futó JavaScript-alapú alkalmazásokhoz lett tervezve: az eredeti OAuth2-specifikációban a tokenek egy URI-töredékben lesznek visszaadva. Így a jogkivonat-bitek elérhetővé válnak az ügyfél JavaScript-kódjában, de garantálják, hogy a rendszer a kiszolgáló felé irányuló átirányítások során nem fog szerepelni. Az OAuth2 implicit megadása esetén az engedélyezési végpont a korábban megadott átirányítási URI használatával kiadja a hozzáférési jogkivonatokat közvetlenül az ügyfélnek. Emellett megvan az előnye, hogy kiküszöböli a kereszthivatkozási hívások követelményeit, amelyek akkor szükségesek, ha a JavaScript-alkalmazásnak a jogkivonat-végponthoz kell kapcsolódnia.
 
 Az OAuth2 implicit támogatás fontos jellemzője, hogy az ilyen folyamatok soha nem adnak vissza frissítési jogkivonatokat az ügyfélnek. A következő szakasz azt mutatja be, hogy ez miért nem szükséges, és valójában biztonsági probléma lenne.
 
@@ -62,13 +61,13 @@ Ez a modell lehetővé teszi, hogy a JavaScript-alkalmazás önállóan megújí
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Az implicit engedélyezési funkció megfelelő az alkalmazáshoz?
 
-Az implicit támogatás nagyobb kockázatot jelent, mint a többi támogatás, és a figyelmet igényelő területek jól dokumentálva vannak (például a hozzáférési jogkivonattal való [visszaélés az erőforrás-tulajdonosnak az implicit flow-ban][OAuth2-Spec-Implicit-Misuse] való megszemélyesítése és a [OAuth 2,0 Threat Model és Security használatával Megfontolások][OAuth2-Threat-Model-And-Security-Implications]). A magasabb kockázati profilt azonban nagyrészt az a tény okozza, hogy az aktív kódot végrehajtó alkalmazásokat egy távoli erőforrás szolgáltatja egy böngészőnek. Ha gyógyfürdő-architektúrát tervez, nem rendelkezik háttér-összetevőkkel, vagy webes API-t szeretne meghívni JavaScripten keresztül, a jogkivonat-beszerzéshez használt implicit folyamat használata javasolt.
+Az implicit támogatás nagyobb kockázatot jelent, mint a többi támogatás, és a figyelmet igénylő területeknek megfelelően dokumentálva kell lennie (például a [hozzáférési jogkivonattal való visszaéléssel, hogy megszemélyesítse az erőforrás-tulajdonost az implicit flow-ban][OAuth2-Spec-Implicit-Misuse] , és [OAuth a 2,0-es veszélyforrás-modellt és biztonsági szempontokat][OAuth2-Threat-Model-And-Security-Implications]). A magasabb kockázati profilt azonban nagyrészt az a tény okozza, hogy az aktív kódot végrehajtó alkalmazásokat egy távoli erőforrás szolgáltatja egy böngészőnek. Ha gyógyfürdő-architektúrát tervez, nem rendelkezik háttér-összetevőkkel, vagy webes API-t szeretne meghívni JavaScripten keresztül, a jogkivonat-beszerzéshez használt implicit folyamat használata javasolt.
 
 Ha az alkalmazás egy natív ügyfél, az implicit folyamat nem remekül illeszkedik. Az Azure AD-munkamenet cookie-nak a natív ügyfél kontextusában való hiánya megfosztja az alkalmazást a hosszú élettartamú munkamenet fenntartásának eszközeitől. Ez azt jelenti, hogy az alkalmazás többször is kéri a felhasználót, amikor hozzáférési jogkivonatokat kap az új erőforrásokhoz.
 
 Ha olyan webalkalmazást fejleszt, amely hátteret tartalmaz, és egy API-t használ a háttér-kódjából, az implicit folyamat szintén nem megfelelő. A többi támogatás sokkal nagyobb teljesítményt nyújt. A OAuth2 ügyfél-hitelesítő adatok megadása például lehetővé teszi az alkalmazáshoz hozzárendelt engedélyeket tükröző jogkivonatok beszerzését, a felhasználói delegálásokkal szemben. Ez azt jelenti, hogy az ügyfélnek lehetősége van az erőforrásokhoz való programozott hozzáférés fenntartására, még akkor is, ha a felhasználó nem vesz aktívan részt egy munkamenetben, és így tovább. Nem csak ez, de az ilyen támogatások nagyobb biztonsági garanciákat biztosítanak. Például a hozzáférési tokenek soha nem haladnak át a felhasználói böngészőn keresztül, ezért a böngésző előzményeiben nem kerülnek mentésre, így tovább. Az ügyfélalkalmazás emellett erős hitelesítést is végezhet a jogkivonat kérésekor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A fejlesztői erőforrások teljes listáját, beleértve az Azure AD által támogatott protokollok és OAuth2 engedélyezési folyamatokra vonatkozó referenciákat, tekintse [meg az Azure ad fejlesztői útmutatóját][AAD-Developers-Guide]
 * Ismerje meg, [Hogyan integrálhat egy alkalmazást az Azure ad-vel][ACOM-How-To-Integrate] az alkalmazás-integrációs folyamat további mélysége érdekében.

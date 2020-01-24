@@ -17,25 +17,24 @@ ms.date: 07/19/2017
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: hirsin
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf512f802e0e4944e6ce949830719b87301adfc4
-ms.sourcegitcommit: bc3a153d79b7e398581d3bcfadbb7403551aa536
+ms.openlocfilehash: cecb78a82eb2925813bdc7f6df2503fae94b6437
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2019
-ms.locfileid: "68834811"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701399"
 ---
 # <a name="single-sign-on-saml-protocol"></a>Egyszeri bejelentkezéses SAML protokoll
 
 Ez a cikk az SAML 2,0 hitelesítési kéréseit és válaszait ismerteti, amelyeket Azure Active Directory (Azure AD) támogat az egyszeri bejelentkezéshez.
 
-Az alábbi protokoll-diagram az egyszeri bejelentkezési sorozatot ismerteti. A Cloud Service (a szolgáltató) egy HTTP-átirányítási kötést `AuthnRequest` használ a (hitelesítési kérelem) elem Azure ad-be (az identitás-szolgáltatóhoz) való átadásához. Az Azure ad ezután egy HTTP Post-kötést használ `Response` egy elem a Cloud Service-be való közzétételéhez.
+Az alábbi protokoll-diagram az egyszeri bejelentkezési sorozatot ismerteti. A Cloud Service (a szolgáltató) egy HTTP-átirányítási kötést használ egy `AuthnRequest` (hitelesítési kérelem) elem átadására az Azure AD-be (az identitás-szolgáltató). Az Azure AD ezután egy HTTP Post-kötést használ a `Response` elemnek a Cloud Service-be való közzétételéhez.
 
 ![Egyszeri bejelentkezés munkafolyamata](./media/single-sign-on-saml-protocol/active-directory-saml-single-sign-on-workflow.png)
 
 ## <a name="authnrequest"></a>AuthnRequest
 
-Felhasználói hitelesítés igényléséhez a Cloud Services egy `AuthnRequest` elemet küld az Azure ad-nek. Az SAML-2,0 `AuthnRequest` minta az alábbi példához hasonlóan néz ki:
+Felhasználói hitelesítés igényléséhez a Cloud Services `AuthnRequest` elemet küld az Azure AD-nek. Az SAML-2,0 minta `AuthnRequest` a következő példához hasonlóan néz ki:
 
 ```
 <samlp:AuthnRequest
@@ -49,22 +48,22 @@ xmlns:samlp="urn:oasis:names:tc:SAML:2.0:protocol">
 
 | Paraméter |  | Leírás |
 | --- | --- | --- |
-| id | Kötelező | Az Azure ad ezt az attribútumot használja a `InResponseTo` visszaadott válasz attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
-| Version | Kötelező | Ezt a paramétert **2,0**-re kell állítani. |
-| IssueInstant | Kötelező | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
-| AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie `RedirectUri` az Azure ad-ban található felhőalapú szolgáltatással. |
+| ID (Azonosító) | Szükséges | Az Azure AD ezt az attribútumot használja a visszaadott válasz `InResponseTo` attribútumának feltöltéséhez. Az azonosító nem kezdődhet számmal, ezért a közös stratégia egy olyan karakterláncot, mint az "id", egy GUID karakterlánc-ábrázolására. Például `id6c1c178c166d486687be4aaf5e482730` érvényes azonosító. |
+| Verzió | Szükséges | Ezt a paramétert **2,0**-re kell állítani. |
+| IssueInstant | Szükséges | Ez egy UTC-értékkel rendelkező DateTime karakterlánc, amely az ["o" formátummal](https://msdn.microsoft.com/library/az4se3k1.aspx)rendelkezik. Az Azure AD egy ilyen típusú DateTime értéket vár, de nem értékeli vagy nem használja az értéket. |
+| AssertionConsumerServiceUrl | Választható | Ha meg van adni, ennek a paraméternek meg kell egyeznie a Cloud Service `RedirectUri` az Azure AD-ben. |
 | ForceAuthn | Választható | Ez egy logikai érték. Ha az értéke igaz, az azt jelenti, hogy a felhasználónak újra hitelesítenie kell magát, még akkor is, ha az Azure AD-vel érvényes munkamenetük van. |
 | IsPassive | Választható | Ez egy logikai érték, amely azt határozza meg, hogy az Azure AD-nak csendes felhasználói beavatkozás nélkül kell-e hitelesítenie a felhasználót a munkamenet-cookie-val, ha van ilyen. Ha ez igaz, az Azure AD megkísérli hitelesíteni a felhasználót a munkamenet-cookie használatával. |
 
-A `AuthnRequest` **rendszer figyelmen kívül hagyja**az összes többi attribútumot, például a beleegyezett, a célhelyet, a AssertionConsumerServiceIndex, a AttributeConsumerServiceIndex és a ProviderName.
+A **rendszer figyelmen kívül hagyja**az összes többi `AuthnRequest` attribútumot, például a beleegyezett, a célhelyet, a AssertionConsumerServiceIndex, a AttributeConsumerServiceIndex és a ProviderName.
 
-Az Azure ad emellett figyelmen kívül `Conditions` hagyja a `AuthnRequest`elemet a alkalmazásban.
+Az Azure AD a `AuthnRequest``Conditions` elemét is figyelmen kívül hagyja.
 
 ### <a name="issuer"></a>Kiállító
 
-Az `Issuer` egy`AuthnRequest` elemének pontosan egyeznie kell az Azure ad felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.
+Egy `AuthnRequest` `Issuer` elemének pontosan egyeznie kell az Azure AD felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.
 
-Az `Issuer` elemet tartalmazó SAML-kivonat az alábbi példához hasonlóan néz ki:
+A `Issuer` elemet tartalmazó SAML-kivonat az alábbi példához hasonlóan néz ki:
 
 ```
 <Issuer xmlns="urn:oasis:names:tc:SAML:2.0:assertion">https://www.contoso.com</Issuer>
@@ -72,36 +71,36 @@ Az `Issuer` elemet tartalmazó SAML-kivonat az alábbi példához hasonlóan né
 
 ### <a name="nameidpolicy"></a>NameIDPolicy
 
-Ez az elem egy adott név-azonosító formátumot kér a válaszban, és `AuthnRequest` nem kötelező az Azure ad-ba küldött elemekben.
+Ez az elem egy adott név-azonosító formátumot kér a válaszban, és nem kötelező `AuthnRequest` az Azure AD-ba küldött elemek esetében.
 
-Egy `NameIdPolicy` elem az alábbi példához hasonlóan néz ki:
+A `NameIdPolicy` elem az alábbi példához hasonlóan néz ki:
 
 ```
 <NameIDPolicy Format="urn:oasis:names:tc:SAML:2.0:nameid-format:persistent"/>
 ```
 
-Ha `NameIDPolicy` meg van adni, a választható `Format` attribútumot is megadhatja. Az `Format` attribútum csak a következő értékek egyikével rendelkezhet: bármely más érték hibát eredményez.
+Ha `NameIDPolicy` van megadva, a választható `Format` attribútumot is megadhatja. A `Format` attribútumnak a következő értékek egyike lehet: bármely más érték hibát eredményez.
 
 * `urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`: Azure Active Directory a NameID-jogcímet páros-azonosítóként adja ki.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: Azure Active Directory a NameID-jogcímet e-mail cím formátumban adja ki.
-* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: Ez az érték engedélyezi Azure Active Directory számára a jogcím formátumának kiválasztását. Azure Active Directory a NameID páros-azonosítóként adja ki a problémát.
-* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory a NameID-jogcímet véletlenszerűen generált értékként adja ki, amely egyedi az aktuális egyszeri bejelentkezési művelethez. Ez azt jelenti, hogy az érték ideiglenes, és nem használható a hitelesítő felhasználó azonosítására.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:emailAddress`: a Azure Active Directory a NameID-jogcímet e-mail cím formátumban adja ki.
+* `urn:oasis:names:tc:SAML:1.1:nameid-format:unspecified`: ez az érték engedélyezi a Azure Active Directory számára a jogcím formátumának kiválasztását. Azure Active Directory a NameID páros-azonosítóként adja ki a problémát.
+* `urn:oasis:names:tc:SAML:2.0:nameid-format:transient`: Azure Active Directory a NameID jogcím véletlenszerűen generált értékként jelenik meg, amely egyedi az aktuális egyszeri bejelentkezési művelethez. Ez azt jelenti, hogy az érték ideiglenes, és nem használható a hitelesítő felhasználó azonosítására.
 
-Az Azure ad figyelmen kívül `AllowCreate` hagyja az attribútumot.
+Az Azure AD figyelmen kívül hagyja a `AllowCreate` attribútumot.
 
 ### <a name="requestauthncontext"></a>RequestAuthnContext
-Az `RequestedAuthnContext` elem megadja a kívánt hitelesítési módszereket. Az Azure ad- `AuthnRequest` be eljuttatott elemek esetében nem kötelező. Az Azure ad `AuthnContextClassRef` olyan értékeket támogat `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`, mint például a.
+A `RequestedAuthnContext` elem határozza meg a kívánt hitelesítési módszereket. A `AuthnRequest` az Azure AD-be eljuttatott elemek esetében nem kötelező. Az Azure AD olyan `AuthnContextClassRef` értékeket támogat, mint például a `urn:oasis:names:tc:SAML:2.0:ac:classes:Password`.
 
 ### <a name="scoping"></a>Tartalmazó
-Az `Scoping` identitás-szolgáltatók listáját tartalmazó elem nem kötelező az Azure ad- `AuthnRequest` be eljuttatott elemekben.
+Az `Scoping` elem, amely tartalmazza az identitás-szolgáltatók listáját, nem kötelező az Azure AD-ben eljuttatott `AuthnRequest` elemek esetében.
 
-Ha meg van adni, ne `ProxyCount` adja meg `IDPListOption` az `RequesterID` attribútumot vagy az elemet, mivel azok nem támogatottak.
+Ha meg van adni, ne adja meg a `ProxyCount` attribútumot, `IDPListOption` vagy `RequesterID` elemet, mivel azok nem támogatottak.
 
 ### <a name="signature"></a>Aláírás
-Ne tartalmazzon `Signature` elemet az `AuthnRequest` elemekben, mert az Azure ad nem támogatja az aláírt hitelesítési kérelmeket.
+Ne tartalmazzon `Signature` elemet `AuthnRequest` elemekben, mivel az Azure AD nem támogatja az aláírt hitelesítési kérelmeket.
 
-### <a name="subject"></a>Subject
-Az Azure ad figyelmen kívül `Subject` hagyja az `AuthnRequest` elemek elemét.
+### <a name="subject"></a>Tárgy
+Az Azure AD figyelmen kívül hagyja `AuthnRequest` elemek `Subject` elemét.
 
 ## <a name="response"></a>Válasz
 Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a Cloud Service-nek. A sikeres bejelentkezési kísérletre adott válasz az alábbi példához hasonlóan néz ki:
@@ -151,14 +150,14 @@ Ha a kért bejelentkezés sikeresen befejeződik, az Azure AD választ küld a C
 
 ### <a name="response"></a>Válasz
 
-Az `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azure ad beállítja `ID`az `Version` elemet `IssueInstant` és az értékeket `Response` a elemben. A következő attribútumokat is beállítja:
+A `Response` elem az engedélyezési kérelem eredményét tartalmazza. Az Azure AD a `Response` elemben lévő `ID`, `Version` és `IssueInstant` értékeket állítja be. A következő attribútumokat is beállítja:
 
-* `Destination`: Ha a bejelentkezés sikeresen befejeződött, ez a szolgáltató (Cloud Service) `RedirectUri` értékre van állítva.
-* `InResponseTo`: Ez a válasz kezdeményező `ID` `AuthnRequest` elem attribútumára van beállítva.
+* `Destination`: Ha a bejelentkezés sikeresen befejeződött, ez a szolgáltató (Cloud Service) `RedirectUri`ra van beállítva.
+* `InResponseTo`: a választ kezdeményező `AuthnRequest` elem `ID` attribútumára van beállítva.
 
 ### <a name="issuer"></a>Kiállító
 
-Az Azure ad az `Issuer` elemet arra `https://login.microsoftonline.com/<TenantIDGUID>/` az \<esetre állítja be, ahol a TenantIDGUID > Az Azure ad-bérlő bérlői azonosítója.
+Az Azure AD úgy állítja be a `Issuer` elemet, hogy `https://login.microsoftonline.com/<TenantIDGUID>/`, ahol a \<TenantIDGUID > Az Azure AD-bérlő bérlői azonosítója.
 
 A kiállítói elemmel kapcsolatos válasz például a következő mintához hasonlóan néz ki:
 
@@ -168,7 +167,7 @@ A kiállítói elemmel kapcsolatos válasz például a következő mintához has
 
 ### <a name="status"></a>Állapot
 
-Az `Status` elem a bejelentkezés sikerességét vagy meghibásodását közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
+A `Status` elem a bejelentkezés sikerességét vagy sikertelenségét közvetíti. Tartalmazza a `StatusCode` elemet, amely tartalmaz egy kódot vagy egy beágyazott kódot, amely a kérelem állapotát jelöli. Emellett tartalmazza a `StatusMessage` elemet is, amely a bejelentkezési folyamat során létrehozott egyéni hibaüzeneteket tartalmazza.
 
 <!-- TODO: Add an authentication protocol error reference -->
 
@@ -187,13 +186,13 @@ Timestamp: 2013-03-18 08:49:24Z</samlp:StatusMessage>
   </samlp:Status>
 ```
 
-### <a name="assertion"></a>Állítás
+### <a name="assertion"></a>állítás
 
-`ID`A `IssueInstant` és az`Version` Azureadmellettaválaszelemébenakövetkező`Assertion` elemeket is beállítja.
+A `ID`, `IssueInstant` és `Version`mellett az Azure AD az alábbi elemeket állítja be a válasz `Assertion` elemében.
 
 #### <a name="issuer"></a>Kiállító
 
-Erre a beállításra `https://sts.windows.net/<TenantIDGUID>/`akkor \<kerül sor, ha a TenantIDGUID > Az Azure ad-bérlő bérlői azonosítója.
+Ez úgy van beállítva, hogy `https://sts.windows.net/<TenantIDGUID>/`, hogy \<TenantIDGUID > Az Azure AD-bérlő bérlői azonosítója.
 
 ```
 <Issuer>https://login.microsoftonline.com/82869000-6ad1-48f0-8171-272ed18796e9/</Issuer>
@@ -201,9 +200,9 @@ Erre a beállításra `https://sts.windows.net/<TenantIDGUID>/`akkor \<kerül so
 
 #### <a name="signature"></a>Aláírás
 
-Az Azure AD a sikeres bejelentkezésre adott válaszként aláírja az állítást. Az `Signature` elem egy digitális aláírást tartalmaz, amelyet a felhőalapú szolgáltatás a forrás hitelesítésére használhat a kikényszerítés integritásának ellenőrzéséhez.
+Az Azure AD a sikeres bejelentkezésre adott válaszként aláírja az állítást. A `Signature` elem egy digitális aláírást tartalmaz, amelyet a felhőalapú szolgáltatás a forrás hitelesítésére használhat a kikényszerítés integritásának ellenőrzéséhez.
 
-A digitális aláírás létrehozásához az Azure ad az aláíró kulcsot használja a `IDPSSODescriptor` metaadat-dokumentum elemében.
+A digitális aláírás létrehozásához az Azure AD az aláíró kulcsot használja a metaadat-dokumentum `IDPSSODescriptor` elemében.
 
 ```
 <ds:Signature xmlns:ds="https://www.w3.org/2000/09/xmldsig#">
@@ -211,11 +210,11 @@ A digitális aláírás létrehozásához az Azure ad az aláíró kulcsot haszn
     </ds:Signature>
 ```
 
-#### <a name="subject"></a>Subject
+#### <a name="subject"></a>Tárgy
 
-Ez határozza meg az utasításban szereplő utasítások tárgyát képező rendszerbiztonsági tag. Tartalmaz egy `NameID` elemet, amely a hitelesített felhasználót jelöli. Az `NameID` érték egy célzott azonosító, amely csak a jogkivonat célközönségét képező szolgáltatóhoz van irányítva. Állandó – visszavonható, de soha nem lesz hozzárendelve. Az is átlátszatlan, hogy nem fedi fel a felhasználót, és nem használható azonosítóként az attribútumok lekérdezéséhez.
+Ez határozza meg az utasításban szereplő utasítások tárgyát képező rendszerbiztonsági tag. `NameID` elemet tartalmaz, amely a hitelesített felhasználót jelöli. A `NameID` érték olyan célzott azonosító, amely csak a jogkivonat célközönségét képező szolgáltatóhoz van irányítva. Állandó – visszavonható, de soha nem lesz hozzárendelve. Az is átlátszatlan, hogy nem fedi fel a felhasználót, és nem használható azonosítóként az attribútumok lekérdezéséhez.
 
-`SubjectConfirmation` Az elem attribútuma mindig a következőre van beállítva:. `urn:oasis:names:tc:SAML:2.0:cm:bearer` `Method`
+A `SubjectConfirmation` elem `Method` attribútuma mindig `urn:oasis:names:tc:SAML:2.0:cm:bearer`re van állítva.
 
 ```
 <Subject>
@@ -238,14 +237,14 @@ Ez az elem olyan feltételeket határoz meg, amelyek meghatározzák az SAML-ér
 </Conditions>
 ```
 
-A `NotBefore` és`NotOnOrAfter` attribútumok határozzák meg azt az időközt, amely alatt az érvényesítés érvényes.
+A `NotBefore` és `NotOnOrAfter` attribútumok határozzák meg azt az időközt, amely alatt az érvényesítés érvényes.
 
-* Az `NotBefore` attribútum értéke nem lehet kisebb (másodpercnél kevesebb), mint az `Assertion` elem `IssueInstant` attribútumának értéke. Az Azure AD nem veszi figyelembe a saját maga és a felhőalapú szolgáltatás (szolgáltató) közötti időeltérést, és nem ad hozzá puffert ehhez az időponthoz.
-* Az `NotOnOrAfter` attribútum értéke 70 perccel későbbi, mint az `NotBefore` attribútum értéke.
+* A `NotBefore` attribútum értéke a `Assertion` elem `IssueInstant` attribútumának értékeként vagy valamivel kisebb (egy másodpercnél rövidebb) értékkel egyenlő. Az Azure AD nem veszi figyelembe a saját maga és a felhőalapú szolgáltatás (szolgáltató) közötti időeltérést, és nem ad hozzá puffert ehhez az időponthoz.
+* A `NotOnOrAfter` attribútum értéke 70 perccel későbbi, mint a `NotBefore` attribútum értéke.
 
-#### <a name="audience"></a>Célközönség
+#### <a name="audience"></a>Közönség
 
-Ez egy olyan URI-t tartalmaz, amely a célközönséget azonosítja. Az Azure ad az elem értékét a bejelentkezést kezdeményező `Issuer` elem `AuthnRequest` értékére állítja be. Az `Audience` érték kiértékeléséhez használja az alkalmazás regisztrációja `App ID URI` során megadott értéket.
+Ez egy olyan URI-t tartalmaz, amely a célközönséget azonosítja. Az Azure AD az elem értékét a bejelentkezést kezdeményező `AuthnRequest` `Issuer` elemének értékére állítja be. Az `Audience` érték kiértékeléséhez használja az alkalmazás regisztrációja során megadott `App ID URI` értékét.
 
 ```
 <AudienceRestriction>
@@ -253,11 +252,11 @@ Ez egy olyan URI-t tartalmaz, amely a célközönséget azonosítja. Az Azure ad
 </AudienceRestriction>
 ```
 
-Az értékhez hasonlóan az `Audience` értéknek pontosan egyeznie kell az Azure ad-ben a Cloud Service-t jelölő egyszerű szolgáltatásnév egyikével. `Issuer` Ha azonban az `Issuer` elem értéke nem URI `Audience` -érték, a válaszban `Issuer` szereplő érték az előtaggal `spn:`megadott érték.
+A `Issuer` értékhez hasonlóan a `Audience` értéknek pontosan egyeznie kell az Azure AD-ben a Cloud Service-t jelképező egyszerű szolgáltatásnév egyikével. Ha azonban a `Issuer` elem értéke nem URI-érték, a válaszban szereplő `Audience` érték az `Issuer` érték `spn:`.
 
 #### <a name="attributestatement"></a>AttributeStatement
 
-Ez a tulajdonossal vagy a felhasználóval kapcsolatos jogcímeket tartalmaz. A következő részlet egy minta `AttributeStatement` elemet tartalmaz. A három pont azt jelzi, hogy az elem több attribútumot és attribútumérték is tartalmazhat.
+Ez a tulajdonossal vagy a felhasználóval kapcsolatos jogcímeket tartalmaz. Az alábbi részlet egy minta `AttributeStatement` elemet tartalmaz. A három pont azt jelzi, hogy az elem több attribútumot és attribútumérték is tartalmazhat.
 
 ```
 <AttributeStatement>
@@ -271,15 +270,15 @@ Ez a tulajdonossal vagy a felhasználóval kapcsolatos jogcímeket tartalmaz. A 
 </AttributeStatement>
 ```        
 
-* **Név jogcím** – az `Name` attribútum (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) értéke a hitelesített felhasználó egyszerű felhasználóneve, például `testuser@managedtenant.com`:.
-* **Típusinformáció jogcím** – az `ObjectIdentifier` attribútum`http://schemas.microsoft.com/identity/claims/objectidentifier`() `ObjectId` értéke az Azure ad-ben a hitelesített felhasználót jelképező címtár-objektum. `ObjectId`a hitelesített felhasználó nem módosítható, globálisan egyedi, és használható biztonságos azonosítója.
+* **Név jogcím** – a `Name` attribútum (`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/name`) értéke a hitelesített felhasználó egyszerű felhasználóneve, például `testuser@managedtenant.com`.
+* **Típusinformáció jogcím** – a `ObjectIdentifier` attribútum (`http://schemas.microsoft.com/identity/claims/objectidentifier`) értéke az Azure ad-ben a hitelesített felhasználót jelképező Directory-objektum `ObjectId`. a `ObjectId` egy nem módosítható, globálisan egyedi, és a hitelesített felhasználó biztonságos azonosítóját használja.
 
 #### <a name="authnstatement"></a>AuthnStatement
 
 Ez az elem azt állítja be, hogy az állítás tárgyát egy adott időpontban hitelesítették.
 
-* Az `AuthnInstant` attribútum azt az időpontot határozza meg, amikor a felhasználó az Azure ad-vel lett hitelesítve.
-* Az `AuthnContext` elem a felhasználó hitelesítéséhez használt hitelesítési környezetet határozza meg.
+* A `AuthnInstant` attribútum azt az időpontot határozza meg, amikor a felhasználó az Azure AD-vel lett hitelesítve.
+* A `AuthnContext` elem határozza meg a felhasználó hitelesítéséhez használt hitelesítési környezetet.
 
 ```
 <AuthnStatement AuthnInstant="2013-03-18T07:33:56.000Z" SessionIndex="_bf9c623d-cc20-407a-9a59-c2d0aee84d12">

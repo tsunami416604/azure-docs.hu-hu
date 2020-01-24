@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 08/13/2019
 ms.author: lizross
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 78acb1f27b27c53aaaac508e0aa99a5b9c14ff2d
-ms.sourcegitcommit: 083aa7cc8fc958fc75365462aed542f1b5409623
+ms.openlocfilehash: 74d443cc87a71950a31732db48e94ea3b5ced7ba
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70914920"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705309"
 ---
 # <a name="manage-app-passwords-for-two-step-verification"></a>Alkalmazások jelszavainak kezelése kétlépéses ellenőrzéshez
 
@@ -43,11 +42,11 @@ A kezdeti kétfaktoros ellenőrzési regisztrációs folyamat során egyetlen al
 
 Az alkalmazáshoz tartozó jelszavakat a kétfaktoros ellenőrzés használata alapján hozhatja létre és törölheti:
 
-- **A szervezet kétfaktoros ellenőrzést és a további biztonsági ellenőrzés oldalt használja.** Ha munkahelyi vagy iskolai fiókját ( alain@contoso.compéldául:) használja a szervezeten belüli kétfaktoros ellenőrzéssel, akkor az alkalmazás jelszavait a [további biztonsági ellenőrzés lapról](https://account.activedirectory.windowsazure.com/Proofup.aspx)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése a további biztonsági ellenőrzés használatával](#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikkben talál.
+- **A szervezet kétfaktoros ellenőrzést és a további biztonsági ellenőrzés oldalt használja.** Ha munkahelyi vagy iskolai fiókját (például alain@contoso.com) használja a szervezeten belüli kétfaktoros ellenőrzéssel, akkor az alkalmazás jelszavait a [további biztonsági ellenőrzés lapról](https://account.activedirectory.windowsazure.com/Proofup.aspx)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése a további biztonsági ellenőrzés használatával](#create-and-delete-app-passwords-from-the-additional-security-verification-page) című cikkben talál.
 
-- **A szervezet kétfaktoros ellenőrzést és az Office 365 portált használja.** Ha munkahelyi vagy iskolai fiókját (például:, alain@contoso.com), kétfaktoros ellenőrzést és Office 365 alkalmazást használ a szervezetben, az alkalmazás jelszavait az [Office 365 portálról](https://www.office.com)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése az Office 365-portál használatával](#create-and-delete-app-passwords-using-the-office-365-portal) című cikkben talál.
+- **A szervezet kétfaktoros ellenőrzést és az Office 365 portált használja.** Ha munkahelyi vagy iskolai fiókját (például alain@contoso.com), Kéttényezős ellenőrzést és Office 365 alkalmazást használ a szervezetében, az alkalmazás jelszavait az [Office 365 portál oldaláról](https://www.office.com)kezelheti. Részletes útmutatást az [alkalmazás jelszavainak létrehozása és törlése az Office 365-portál használatával](#create-and-delete-app-passwords-using-the-office-365-portal) című cikkben talál.
 
-- **Kétfaktoros ellenőrzést használ személyes Microsoft-fiók.** Ha személyes Microsoft-fiók (például alain@outlook.com) használ kétfaktoros ellenőrzéssel, a [biztonsági alapok lapról](https://account.microsoft.com/security/)kezelheti az alkalmazáshoz tartozó jelszavakat. Részletes útmutatás: [alkalmazások jelszavainak használata olyan alkalmazásokkal, amelyek nem támogatják a kétlépéses ellenőrzést](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
+- **Kétfaktoros ellenőrzést használ személyes Microsoft-fiók.** Ha személyes Microsoft-fiók (például alain@outlook.com) használ kétfaktoros ellenőrzéssel, az alkalmazás jelszavait a [Biztonság alapjai lapról](https://account.microsoft.com/security/)kezelheti. Részletes útmutatás: [alkalmazások jelszavainak használata olyan alkalmazásokkal, amelyek nem támogatják a kétlépéses ellenőrzést](https://support.microsoft.com/help/12409/microsoft-account-app-passwords-and-two-step-verification).
 
 ## <a name="create-and-delete-app-passwords-from-the-additional-security-verification-page"></a>Alkalmazások jelszavainak létrehozása és törlése a további biztonsági ellenőrzés lapról
 
@@ -123,7 +122,7 @@ Ha kétlépéses ellenőrzést használ munkahelyi vagy iskolai fiókjával és 
 
 Győződjön meg arról, hogy helyesen írta be a jelszót. Ha biztos benne, hogy helyesen adta meg a jelszót, próbáljon meg ismét bejelentkezni, és hozzon létre egy új jelszót. Ha a probléma egyike sem oldja meg a problémát, lépjen kapcsolatba a szervezet ügyfélszolgálatával, hogy törölje a meglévő alkalmazás jelszavait, és hozzon létre teljesen új alkalmazásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A kétlépéses ellenőrzési beállítások kezelése](multi-factor-authentication-end-user-manage-settings.md)
 

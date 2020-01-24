@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: aaddev, vs-azure
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 225940052e1f40f8050059532e4657df2b5410a3
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: e2216d1f489acea27bbc788c6ded21c6d9835915
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68851904"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699937"
 ---
 # <a name="get-started-with-azure-active-directory-webapi-projects"></a>Ismerkedés a Azure Active Directoryrel (WebApi-projektek)
 
@@ -31,9 +30,9 @@ Megtudhatja [, mi történt a WebAPI-projekttel?](vs-active-directory-webapi-wha
 
 ## <a name="requiring-authentication-to-access-controllers"></a>Hitelesítés megkövetelése a hozzáférés-vezérléshez
 
-A projekt összes vezérlőjét az `[Authorize]` attribútummal díszítették. Ez az attribútum megköveteli a felhasználó hitelesítését, mielőtt hozzáfér az ezen vezérlők által definiált API-khoz. Annak engedélyezéséhez, hogy a vezérlő névtelenül legyen elérhető, távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebben szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely az engedélyezést igényli a vezérlő osztályra való alkalmazása helyett.
+A projekt összes vezérlőjét a `[Authorize]` attribútummal díszítették. Ez az attribútum megköveteli a felhasználó hitelesítését, mielőtt hozzáfér az ezen vezérlők által definiált API-khoz. Annak engedélyezéséhez, hogy a vezérlő névtelenül legyen elérhető, távolítsa el ezt az attribútumot a vezérlőből. Ha az engedélyeket részletesebben szeretné beállítani, alkalmazza az attribútumot minden olyan metódusra, amely az engedélyezést igényli a vezérlő osztályra való alkalmazása helyett.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](authentication-scenarios.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v1-aspnet-webapp.md)

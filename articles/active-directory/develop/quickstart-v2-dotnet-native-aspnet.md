@@ -11,13 +11,12 @@ ms.workload: identity
 ms.date: 12/12/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1c6c51b0a7ae7255391fd35d234b5ee47b7a9525
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 582afef8929da2ba75aab70c1ed0fa9e57fd3f19
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424043"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76703473"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET web API meghívása
 
@@ -49,7 +48,7 @@ Ezt a mintát a rendszerhéjból vagy parancssorból is klónozott:
 
 Ha manuálisan szeretné regisztrálni az alkalmazásokat, első lépésként a következőket kell tennie:
 
-1. Jelentkezzen be [Azure Portalra](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, illetve személyes Microsoft-fiókjával.
+1. Jelentkezzen be egy munkahelyi vagy iskolai fiókkal vagy a személyes Microsoft-fiókjával az [Azure Portalra](https://portal.azure.com).
 1. Ha a fiókja egynél több Azure AD-bérlőn található, válassza ki a profilt a lap tetején található menü jobb felső sarkában, majd **váltson át a könyvtárra**.
    Módosítsa a portál munkamenetét a kívánt Azure AD-bérlőre.
 

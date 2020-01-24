@@ -4,12 +4,12 @@ description: Azure azonnali visszaállítási képesség és gyakori kérdések 
 ms.reviewer: sogup
 ms.topic: conceptual
 ms.date: 04/23/2019
-ms.openlocfilehash: 21e5ae82fc8274874e97d5e91a140b811b36c05e
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 7cf437c6b20ea6b688e8e93e401cf71ef0260888
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293827"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705428"
 ---
 # <a name="get-improved-backup-and-restore-performance-with-azure-backup-instant-restore-capability"></a>Továbbfejlesztett biztonsági mentési és visszaállítási teljesítmény Azure Backup azonnali visszaállítási képességgel
 
@@ -110,16 +110,15 @@ Az új modell nem engedélyezi a visszaállítási pont (szint) törlését, kiv
 
 ### <a name="why-is-my-snapshot-existing-even-after-the-set-retention-period-in-backup-policy"></a>Miért van a pillanatképem még a biztonsági mentési szabályzatban megadott megőrzési időszak után is?
 
-Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer megőrzi a következő sikeres biztonsági mentés idejét. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely a virtuális gép hibája miatt nem tesz kötelezővé legalább egy legújabb RP-t, hogy mindig legyen jelen. Normál forgatókönyvekben az RPs-t a lejárat után legfeljebb 24 órával töröljük.
+Ha a helyreállítási pont pillanatképtel rendelkezik, és ez a legújabb RP, akkor a rendszer megőrzi a következő sikeres biztonsági mentés idejét. Ez a tervezett "Garbage Collection" (GC) szabályzatnak megfelelően, amely a virtuális gép hibája miatt nem tesz kötelezővé legalább egy legújabb RP-t, hogy mindig legyen jelen. In normal scenarios, RPs are cleaned up in maximum of 24 hours after their expiry.
+
+### <a name="i-dont-need-instant-restore-functionality-can-it-be-disabled"></a>I don’t need Instant Restore functionality. Can it be disabled?
+
+Instant restore feature is enabled for everyone and cannot be disabled. You can reduce the snapshot retention to a minimum of one day.
 
 >[!NOTE]
-> A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.
+> **Azure Backup now supports selective disk backup and restore using the Azure Virtual Machine backup solution.**
 >
->Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
+>Today, Azure Backup supports backing up all the disks (Operating System and data) in a VM together using the Virtual Machine backup solution. With exclude-disk functionality, you get an option to backup one or a few from the many data disks in a VM. This provides an efficient and cost-effective solution for your backup and restore needs. Each recovery point contains data of the disks included in the backup operation, which further allows you to have a subset of disks restored from the given recovery point during the restore operation. This applies to restore both from the snapshot and the vault.
 >
-> Ez a megoldás különösen a következő esetekben hasznos:
->  
->1. A kritikus fontosságú adatok biztonsági mentését csak egy lemezen végezheti el, és nem kíván biztonsági másolatot készíteni a virtuális géphez csatolt többi lemezről. Ez lekicsinyíti a biztonsági másolatok tárolási költségeit.  
->2. Más biztonsági mentési megoldásokkal rendelkezik a virtuális gép adataihoz. Például biztonsági mentést készíthet az adatbázisairól vagy az adatokról egy másik munkaterhelés biztonsági mentési megoldással, és az Azure-beli virtuális gép biztonsági mentését szeretné használni a többi lemez és adat számára, hogy egy hatékony és robusztus rendszer kihasználja az elérhető legjobb funkciókat.
->
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
+>**To sign up for the preview, write to us at AskAzureBackupTeam@microsoft.com**

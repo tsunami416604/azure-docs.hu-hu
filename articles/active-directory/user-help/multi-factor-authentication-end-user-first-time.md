@@ -1,5 +1,5 @@
 ---
-title: Mi a további ellenőrző oldal? – Azure AD
+title: Hol található a további ellenőrzési oldal? – Azure AD
 description: A kétfaktoros ellenőrzés további biztonsági ellenőrzés oldalának beszerzése.
 services: active-directory
 author: eross-msft
@@ -10,15 +10,14 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 01/15/2020
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7dfcc02928cc92aedd0eb0f966bea9804be5fdcc
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: d7ec884cb55d876edd93f9fe1c5cc59f5ee13295
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156250"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705292"
 ---
-# <a name="what-is-the-additional-verification-page"></a>Mi a további ellenőrző oldal?
+# <a name="what-is-the-additional-verification-page"></a>Hol található a további ellenőrzési oldal?
 
 Kapott egy e-mailt az informatikai részlegről vagy a főnökétől, amely szerint a szervezet biztonsági ellenőrzést adott a fiókjához. Mit jelent ez? Azt jelenti, hogy a cége további lépésekkel ellenőrzi, hogy Ön tényleg az-e, akinek a bejelentkezésnél mondja magát. Ez a további ellenőrzés, más néven kétfaktoros ellenőrzés, a Felhasználónév, a jelszó, valamint egy mobileszköz vagy telefon kombinációján keresztül történik.
 

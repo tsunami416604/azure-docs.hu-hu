@@ -12,13 +12,12 @@ ms.date: 01/21/2019
 ms.author: ryanwi
 ms.reviewer: jlu
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9cc038e67e5528a52b0b98ea1698da07e8120242
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ad908b814a7c2b4dce9d15153b0991f51f623e8b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966945"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697098"
 ---
 # <a name="how-to-reactivate-disabled-access-control-service-namespaces"></a>Útmutató: a letiltott Access Control Service névterek újraaktiválása
 
@@ -94,7 +93,7 @@ A További bővítmények többé nem lesznek automatikusan jóváhagyva. Ha tov
     |-----------------------|--------------------|
     | **Probléma típusa** | `Technical` |
     | **Előfizetés** | Beállítás az előfizetésre |
-    | **Szolgáltatás** | `All services` |
+    | **Service** | `All services` |
     | **Erőforrás** | `General question/Resource not available` |
     | **Probléma típusa** | `ACS to SAS Migration` |
     | **Tárgy** | A probléma leírása |

@@ -11,13 +11,12 @@ ms.subservice: user-help
 ms.topic: conceptual
 ms.date: 10/28/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ff1a030a17ce4f63427eb6bfebbf84be74f6500d
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 232a17a21c7172bbf5056ae990679d87600ee6a0
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231821"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705088"
 ---
 # <a name="view-how-your-organization-uses-your-privacy-related-data"></a>Annak megtekintése, hogy a szervezet hogyan használja az adatvédelmet érintő adatokat
 
@@ -33,7 +32,7 @@ Megtekintheti, hogyan használja a **szervezet az adatokat a fiókom portál** *
 
 3. Tekintse át az információkat, beleértve a következőket:
 
-    - **Szolgáltatások.** A munkahelyi vagy iskolai fiókkal összekapcsolt online szolgáltatások listája.
+    - **Services.** A munkahelyi vagy iskolai fiókkal összekapcsolt online szolgáltatások listája.
 
     - **Használati feltételek**. A szervezet használati feltételei.
 

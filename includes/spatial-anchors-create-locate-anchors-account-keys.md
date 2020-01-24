@@ -4,17 +4,17 @@ ms.service: azure-spatial-anchors
 ms.topic: include
 ms.date: 02/21/2019
 ms.author: rgarcia
-ms.openlocfilehash: 72616d5d79b4dbdb8e14463c706c1626eeb50e97
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 9bd213b63b69a25fb2530cd8f6659abf5357616a
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178816"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694317"
 ---
 ## <a name="set-up-authentication"></a>Hitelesítés beállítása
 
-A szolgáltatás eléréséhez meg kell adnia egy fiókkulcs, a hozzáférési jogkivonat vagy az Azure Active Directory-hitelesítési tokent.
+A szolgáltatás eléréséhez meg kell adnia egy fiókot, hozzáférési tokent vagy Azure Active Directory hitelesítési tokent. Erről további információt a [hitelesítési koncepció oldalon](/azure/spatial-anchors/concepts/authentication)olvashat.
 
-### <a name="account-keys"></a>Fiókkulcsok
+### <a name="account-keys"></a>Fiók kulcsai
 
-Fiók kulcsai, amely lehetővé teszi az alkalmazás hitelesítéséhez az Azure térbeli horgonyok szolgáltatással hitelesítő adatot. Az importálni kívánt Fiókkulcsok célja, hogy segít gyorsan használatba vehető. Különösen fejlesztési fázisában Azure térbeli horgonyok integrálható az alkalmazás. Emiatt a Fiókkulcsok is használhatja a történő beágyazásával őket az ügyfél-alkalmazások fejlesztése során. Végrehajtási kívül, mert erősen ajánlott át olyan hitelesítési mechanizmust, amely az éles környezetre, a hozzáférési jogkivonatok, vagy az Azure Active Directory felhasználói hitelesítést is támogat. Fejlesztési fiók kulcsára, látogasson el a térbeli horgonyok Azure-fiókjával, és keresse meg a "Kulcsok" lapot.
+A fiók kulcsa olyan hitelesítő adat, amely lehetővé teszi az alkalmazás számára az Azure térbeli horgonyok szolgáltatással történő hitelesítést. A fiók kulcsainak célja, hogy segítséget nyújtson a gyors kezdéshez. Különösen az alkalmazás Azure térbeli Horgonyokkal való integrációjának fejlesztési fázisában. Ennek megfelelően a fiókok kulcsait úgy használhatja, hogy a fejlesztés során beágyazza őket az ügyfélalkalmazásokba. Ahogy a fejlesztésen kívül halad, javasoljuk, hogy olyan hitelesítési mechanizmusra váltson, amely a hozzáférési jogkivonatok által támogatott, illetve a felhasználói hitelesítés Azure Active Directory. A fiók kulcsának beszerzéséhez látogasson el az Azure térbeli horgonyok fiókjába, és lépjen a "kulcsok" lapra.

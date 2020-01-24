@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/13/2019
 ms.author: victorh
-ms.openlocfilehash: dcbc20f768ae80404979d47f23e7e08098757b41
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 51c191a7815bb64243e2324e150c00c2dcb7ec4c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75613329"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705326"
 ---
 # <a name="create-an-application-gateway-with-http-to-https-redirection-using-the-azure-portal"></a>HTTP-alapú Application Gateway létrehozása a HTTPS-átirányítás Azure Portal használatával
 
@@ -83,7 +83,7 @@ A létrehozott erőforrások közötti kommunikációhoz virtuális hálózatra 
    - A virtuális hálózat neve *myVNet*.
    - A virtuális hálózat címtere *10.0.0.0/16*.
    - Az alhálózat neve *myAGSubnet*.
-   - *10.0.1.0/24* – az alhálózati címtartomány esetében.
+   - Az alhálózat címtere *10.0.0.0/24*.
 
      ![Virtuális hálózat létrehozása](./media/create-url-route-portal/application-gateway-vnet.png)
 

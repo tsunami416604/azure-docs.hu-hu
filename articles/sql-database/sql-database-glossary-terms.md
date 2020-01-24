@@ -10,45 +10,29 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: ''
-ms.date: 04/26/2019
-ms.openlocfilehash: 86da4ecab387da80954c2267ddeabe32a723474c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.date: 01/22/2020
+ms.openlocfilehash: 733901d38703e02ab7dbe811b0f80a1dfedf03d5
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73802734"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705785"
 ---
 # <a name="azure-sql-database-glossary-of-terms"></a>A kifejezések szószedetének Azure SQL Database
 
 |Környezet|Időtartam|További információ|
 |:---|:---|:---|
-|Azure-szolgáltatás neve|Azure SQL Database vagy SQL Database|[A Azure SQL Database szolgáltatás](sql-database-technical-overview.md)|
-|Számítási szintek|Kiszolgáló nélküli |[Kiszolgáló nélküli számítási szintek](sql-database-serverless.md)
-||Kiépítve|[Kiszolgáló nélküli számítási szintek](sql-database-serverless.md)
-|Üzembe helyezési beállítások |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
+|Azure-szolgáltatás|Azure SQL Database vagy SQL Database|[A Azure SQL Database szolgáltatás](sql-database-technical-overview.md)|
+|Vásárlási modell|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
+||Virtuálismag-alapú vásárlási modell|[Virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
+|Üzembe helyezési lehetőség |Önálló adatbázis|[Önálló adatbázisok](sql-database-single-database.md)|
 ||Rugalmas készlet|[Rugalmas készlet](sql-database-elastic-pool.md)|
 ||Felügyelt példány|[Felügyelt példány](sql-database-managed-instance.md)|
-|Kiszolgálói objektumok|SQL Database kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
+|Szolgáltatáscsomag|Alapszintű, standard, prémium, általános célú, nagy kapacitású, üzletileg kritikus|A virtuális mag modellben található szolgáltatási szintekért lásd: [önálló adatbázis és rugalmas készlet](sql-database-service-tiers-vcore.md#service-tiers) és [felügyelt példány](sql-database-managed-instance.md#managed-instance-service-tiers). A DTU modellben található szolgáltatási szintekért lásd: [DTU-modell](sql-database-service-tiers-dtu.md#compare-the-dtu-based-service-tiers).|
+|Számítási szintek|Kiszolgáló nélküli számítástechnika|[Kiszolgáló nélküli számítás](sql-database-service-tiers-vcore.md#compute-tiers)
+||Kiépített számítási teljesítmény|[Kiépített számítás](sql-database-service-tiers-vcore.md#compute-tiers)
+|Számítási generáció|Gen5, M-sorozat, Fsv2 sorozat|[Hardver generációi](sql-database-service-tiers-vcore.md#hardware-generations)
+|Kiszolgáló entitása|SQL Database kiszolgáló vagy adatbázis-kiszolgáló|[Adatbázis-kiszolgáló](sql-database-servers.md)|
 ||SQL Database felügyelt példány kiszolgálója, felügyelt példány kiszolgálója vagy példány-kiszolgálója|[Felügyelt példány](sql-database-managed-instance.md)|
-Adatbázis-objektumok|Azure SQL-adatbázis|Azure SQL Database összes adatbázisa|
-||Önálló adatbázis|Egyetlen adatbázis-telepítési beállítással létrehozott adatbázis|
-||Készletezett adatbázis|Egy rugalmas készleten belül létrehozott vagy áthelyezett adatbázis|
-||Példány-adatbázis|Felügyelt példányon belül létrehozott adatbázis|
-||Alapszintű adatbázis|A DTU-alapú vásárlási modell alapszintű szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Szabványos adatbázis|A DTU-alapú vásárlási modell standard szintű szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Prémium szintű adatbázis|A DTU-alapú vásárlási modell prémium szintű szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Általános célú adatbázis|A virtuális mag-alapú vásárlási modell általános célú szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Nagy kapacitású-adatbázis|A virtuális mag-alapú vásárlási modell nagy kapacitású szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Üzleti szempontból kritikus adatbázis|A virtuális mag-alapú vásárlási modell üzleti szempontból kritikus szolgáltatási szintjére létrehozott vagy áthelyezett adatbázis|
-||Kiépített adatbázis|A kiépített számítási szinten konfigurált adatbázis|
-|[Modellek és erőforrások vásárlása](sql-database-purchase-models.md)|DTU-alapú vásárlási modell|[DTU-alapú vásárlási modell](sql-database-service-tiers-dtu.md)|
-||Virtuálismag-alapú vásárlási modell|[Virtuális mag-alapú vásárlási modell](sql-database-service-tiers-vcore.md)|
-||Virtuális mag|A vendég operációs rendszer által a hypervisor által biztosított mag.|
-||Szolgáltatásszint|Egy szolgáltatási szint egy beszerzési modellen belül|
-||Számítási méret|A szolgáltatási rétegen belüli önálló adatbázis, rugalmas készlet vagy felügyelt példány számítási erőforrásainak mennyisége|
-||Tárolási mennyiség|Egy adatbázis, rugalmas készlet vagy felügyelt példány számára elérhető tárterület|
-||Számítási generáció|A processzor egy szolgáltatási szinten belüli generálása|
-|Adatbázis-kiszolgáló IP-tűzfalszabályai|IP-tűzfalszabályok|[IP-tűzfalszabályok](sql-database-firewall-configure.md)|
-||Kiszolgálószintű IP-tűzfalszabályok|[Kiszolgálói szintű IP-tűzfalszabályok](sql-database-firewall-configure.md)|
-|| Adatbázis szintű IP-tűzfalszabályok|[Adatbázis szintű IP-tűzfalszabályok](sql-database-firewall-configure.md)|
-||Virtuális hálózati végpontok és szabályok|[Virtuális hálózati végpontok és szabályok](sql-database-vnet-service-endpoint-rule-overview.md)|
+|Erőforrás típusa|Virtuális mag|Egyetlen adatbázishoz, rugalmas készlethez vagy felügyelt példányhoz tartozó számítási erőforráshoz megadott CPU-mag.|
+||Számítási méret és tárterület mennyisége|A számítási méret a CPU, a memória és az egyéb, nem Storage szolgáltatáshoz kapcsolódó erőforrások maximális mennyisége, amely egyetlen adatbázishoz, rugalmas készlethez vagy felügyelt példányhoz érhető el.  A tárterület mérete az egyetlen adatbázishoz, a rugalmas készlethez vagy a felügyelt példányhoz rendelkezésre álló tárterület maximális mennyisége.  A virtuális mag modell méretezési lehetőségeiért lásd: [virtuális mag önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md), [virtuális mag rugalmas készletek](sql-database-vcore-resource-limits-elastic-pools.md) és [felügyelt példányok](sql-database-managed-instance-resource-limits.md).  A DTU modell méretezési lehetőségeiért lásd: [DTU önálló adatbázisok](sql-database-dtu-resource-limits-single-databases.md) és [DTU rugalmas készletek](sql-database-dtu-resource-limits-elastic-pools.md).

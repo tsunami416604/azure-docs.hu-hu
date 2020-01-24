@@ -16,19 +16,18 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8afb226406c02f395c7112d485d4616bfbec140e
-ms.sourcegitcommit: 0576bcb894031eb9e7ddb919e241e2e3c42f291d
+ms.openlocfilehash: d956bdfe793f2e8fa3ce8ce83e03b9dae8033757
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/15/2019
-ms.locfileid: "72373857"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701433"
 ---
 # <a name="single-page-applications"></a>Egyoldalas alkalmazások
 
 Az egyoldalas alkalmazások (SPAs) jellemzően JavaScript megjelenítési rétegként (előtér) vannak strukturálva, amely a böngészőben fut, valamint egy webes API-háttérrendszer, amely egy kiszolgálón fut, és megvalósítja az alkalmazás üzleti logikáját. Ha többet szeretne megtudni az implicit engedélyezési támogatásról, és segít eldönteni, hogy megfelelő-e az alkalmazási forgatókönyvhöz, tekintse meg [a OAuth2 implicit engedélyezési folyamat Azure Active Directoryban való megismerését](v1-oauth2-implicit-grant-flow.md)ismertető témakört.
 
-Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript előtér [Active Directory-hitelesítési tárt használ a javascripthez (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az implicit engedélyezési engedély az azonosító jogkivonat (id_token) Azure ad-ből való beszerzéséhez. A rendszer gyorsítótárazza a tokent, és az ügyfél a tulajdonosi jogkivonatként csatolja a kérést a webes API-háttér felé irányuló hívásokhoz, amely a OWIN-alapú middleware használatával biztosítva van.
+Ebben a forgatókönyvben, amikor a felhasználó bejelentkezik, a JavaScript előtér [Active Directory-hitelesítési tárt használ a javascripthez (ADAL. JS)](https://github.com/AzureAD/azure-activedirectory-library-for-js) és az implicit engedélyezési engedély megadása az azonosító jogkivonat (id_token) Azure ad-ből való beszerzéséhez. A rendszer gyorsítótárazza a tokent, és az ügyfél a tulajdonosi jogkivonatként csatolja a kérést a webes API-háttér felé irányuló hívásokhoz, amely a OWIN-alapú middleware használatával biztosítva van.
 
 ## <a name="diagram"></a>Ábra
 

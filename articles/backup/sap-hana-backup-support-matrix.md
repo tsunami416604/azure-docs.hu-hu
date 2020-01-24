@@ -3,12 +3,12 @@ title: A SAP HANA biztonsági mentésének támogatási mátrixa
 description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és korlátozásokat, amikor az Azure Backup használatával biztonsági másolatot készít SAP HANA adatbázisokról az Azure-beli virtuális gépeken.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: a0a7c25ec718dcd6a903d2149a8b3930fb25941e
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514291"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705649"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -33,17 +33,17 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Forgatókönyv**               | **Támogatott konfigurációk**                                | **Nem támogatott konfigurációk**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topológia**               | Csak az Azure Linux rendszerű virtuális gépeken futó SAP HANA                    | HANA Large instances (HLI)                                   |
-| **Térségek**                   | Kelet-Ausztrália, Délkelet-Ausztrália, Dél-Kanada, Közép-Kanada, Kelet-japán Kelet-Ázsia, Kelet-Ázsia USA keleti régiója, USA 2. keleti régiója, az USA nyugati középső régiója, az USA nyugati régiója, USA 2. nyugati régiója, az USA középső régiója, az USA déli középső régiója, Dél-India keleti régiója Dél-Korea Közép-Korea, Észak-Európa, Nyugat-Európa Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója | Ausztrália középső régiója, Ausztrália 2. középső Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2 Nyugat-India Franciaország középső régiója, Dél-Kanada Észak-Németország, Középnyugat-Németország Észak-Svájc, Nyugat-Svájc Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Észak-Európa, Egyesült Arab Emírségek l Azure Government régiók |
-| **OPERÁCIÓSRENDSZER-verziók**            | SLES 12 SP2, SP3 vagy SP4 szervizcsomaggal           | SLES 15, RHEL                                                |
-| **HANA-verziók**          | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 44           | -                                                            |
+| **Térségek**                   | **GA**<br />**Európa** – Nyugat-Európa, Észak-Európa, Közép-Franciaország, Dél-franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Észak-Németország, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc<br />**Ázsia és a csendes-óceáni térség** – Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea<br /><br>**Előnézet**<br />**Amerikai** Egyesült Államok, USA középső régiója, USA 2. keleti régiója, az USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója, Nyugat-Kanada<br />**Ázsia és a csendes-óceáni térség** – Kelet-Ázsia, Délkelet-Ázsia, Közép-India, Dél-India | Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2, Nyugat-India, Közép-Észak-Svájc, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Észak-Ausztrália, Egyesült Arab Emírségek középső régiója, Azure Government régiók |
+| **OPERÁCIÓSRENDSZER-verziók**            | SLES 12 SP2, SP3 vagy SP4 szervizcsomaggal                                | SLES 15, RHEL                                                |
+| **HANA-verziók**          | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **HANA-telepítések**       | SAP HANA egyetlen Azure-beli virtuális gépen – csak vertikális felskálázással               | Kiterjesztés                                                    |
 | **HANA-példányok**         | Egyetlen SAP HANA példány egyetlen Azure-beli virtuális gépen – csak vertikális felskálázás | Több SAP HANA példány egyetlen virtuális gépen                  |
 | **HANA-adatbázisok típusai**    | Önálló adatbázis tároló (SDC) 1. x, több adatbázisból álló tárolón (MDC) a 2. x számítógépen | MDC a HANA 1. x-ben                                              |
-| **HANA-adatbázis mérete**     | 2 – TB teljes biztonsági mentési méret a HANA által jelentett módon |                                                              |
-| **Biztonsági másolatok típusai**           | Teljes, különbözeti és naplózott biztonsági másolatok                           | Növekményes, Pillanatképek                                       |
+| **HANA-adatbázis mérete**     | 2 – TB teljes biztonsági mentési méret a HANA által jelentett módon                   |                                                              |
+| **Biztonsági másolatok típusai**           | Teljes, különbözeti és naplózott biztonsági másolatok                          | Növekményes, Pillanatképek                                       |
 | **Visszaállítási típusok**          | A támogatott visszaállítási típusokról a [1642148](https://launchpad.support.sap.com/#/notes/1642148) -es SAP HANA megjegyzésben tájékozódhat. |                                                              |
-| **Biztonsági mentési korlátok**          | Akár 2 TB teljes biztonsági mentési méret SAP HANA példányban  |                                                              |
-| **Speciális konfigurációk** |                                                              | SAP HANA + dinamikus rétegek <br>  Klónozás a láma használatával            |
+| **Biztonsági mentési korlátok**          | Akár 2 TB teljes biztonsági mentési méret SAP HANA példányban         |                                                              |
+| **Speciális konfigurációk** |                                                              | SAP HANA + dinamikus rétegek <br>  Klónozás a láma használatával        |
 
 ------
 

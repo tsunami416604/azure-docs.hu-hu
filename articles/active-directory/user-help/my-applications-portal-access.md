@@ -12,15 +12,14 @@ ms.date: 10/30/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: ed450f67b152bef4eb68ac8252b586b62992aa0d
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: dee6973a638a2cabc0ccc2138ed9db8b798f4d1c
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73820396"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705122"
 ---
-# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Alkalmazások elérése és elindítása a saját alkalmazások (előzetes verzió) portálján
+# <a name="access-and-start-apps-from-the-my-apps-preview-portal"></a>Alkalmazások hozzáférése és elindítása az (előzetes verziójú) Saját alkalmazások portálon
 
 Használhatja munkahelyi vagy iskolai fiókját a Web-based **My apps** (előzetes verzió) portálon, ahol megtekintheti, rendszerezheti és elindíthatja a szervezete felhőalapú alkalmazásait. Ha nem rendelkezik hozzáféréssel a **saját alkalmazások** portálhoz, kérjen engedélyt a szervezet ügyfélszolgálatának.
 
@@ -53,7 +52,7 @@ Ha rendelkezik engedéllyel a szervezet felhőalapú alkalmazásainak elérésé
 
 1. Jelentkezzen be a munkahelyi vagy iskolai fiókjába a számítógépén.
 
-2. Nyisson meg egy támogatott webböngészőt, és lépjen a https://myapps.microsoft.comra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapját kívánja használni, például `https://myapps.microsoft.com/contoso.com`.
+2. Nyisson meg egy támogatott webböngészőt, és lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapját kívánja használni, például `https://myapps.microsoft.com/contoso.com`.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -63,7 +62,7 @@ Az iOS-vagy Android-eszközökön a Intune Managed Browser alkalmazásban megtek
 
 1. A mobileszközön töltse le és telepítse a Intune Managed Browser alkalmazást az [Apple App Store](https://itunes.apple.com/us/app/microsoft-intune-managed-browser/id943264951?mt=8) -ból vagy a [Google Play áruházból](https://play.google.com/store/apps/details?id=com.microsoft.intune.mam.managedbrowser).
 
-2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.comra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Nyissa meg a Intune Managed Browser alkalmazást, lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -73,7 +72,7 @@ Az iOS 7-es vagy újabb verzióját futtató iPhone-vagy iPad-eszközön megteki
 
 1. A mobileszközön indítson el egy webböngészőt, például a Safari alkalmazást.
 
-2. Lépjen a https://myapps.microsoft.comra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -83,7 +82,7 @@ A **My apps** portál megtekintése és használata Android-eszközön.
 
 1. A mobileszközön indítsa el a webböngésző alkalmazást, például a Google Chrome-ot.
 
-2. Lépjen a https://myapps.microsoft.comra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
+2. Lépjen a https://myapps.microsoft.com ra, vagy használja a szervezete által biztosított hivatkozást. Előfordulhat például, hogy a szervezete testreszabott lapjára irányítja át, például https://myapps.microsoft.com/contoso.com.
 
     Megjelenik az **alkalmazások** lap, amely megjeleníti a szervezete tulajdonában lévő összes felhőalapú alkalmazást, és elérhető a használatra.
 
@@ -95,7 +94,7 @@ Az elérhető felhőalapú alkalmazások bármelyikét elindíthatja a **saját 
 
     Megnyílik egy új lap az alkalmazáshoz, ahol bejelentkezhet (ha szükséges), vagy megkezdheti az alkalmazás használatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután elvégezte a **saját alkalmazások** portált, a következőket teheti:
 

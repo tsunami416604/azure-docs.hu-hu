@@ -12,13 +12,12 @@ ms.date: 03/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 11a7376720661e13a03be65df4ee180e0bca20c3
-ms.sourcegitcommit: 04ec7b5fa7a92a4eb72fca6c6cb617be35d30d0c
+ms.openlocfilehash: 2987183900ad3232d46b2152bd52808ae96c802b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/22/2019
-ms.locfileid: "68383078"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704833"
 ---
 # <a name="troubleshoot-problems-with-the-my-apps-portal"></a>A My apps portál problémáinak elhárítása
 
@@ -48,11 +47,11 @@ Ha problémákat tapasztal a saját alkalmazások biztonságos bejelentkezési b
 
 Ha nem sikerül bejelentkeznie a **My apps** portálra, a következőket teheti meg:
 
-- Győződjön meg arról, hogy a megfelelő URL-címet használja. A szervezetnek https://myapps.microsoft.com vagy egy testreszabott lapnak kell lennie, https://myapps.microsoft.com/contoso.com például:.
+- Győződjön meg arról, hogy a megfelelő URL-címet használja. https://myapps.microsoft.com vagy a szervezete testreszabott oldalának kell lennie, például https://myapps.microsoft.com/contoso.com.
 
-- Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának](active-directory-passwords-update-your-own-password.md)alaphelyzetbe állítása.
+- Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md).
 
-- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: mit jelent [Az Azure multi-Factor Authentication a számomra?](multi-factor-authentication-end-user.md) vagy [a biztonsági adatokra vonatkozó módszerek és információk módosítása](security-info-add-update-methods-overview.md).
+- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure multi-Factor Authentication a számomra?](multi-factor-authentication-end-user.md) vagy [a biztonsági adatok módszereinek és adatainak módosítása](security-info-add-update-methods-overview.md).
 
 - Adja hozzá a **My app** Portal URL-címét az **Internet Properties > Security > megbízható helyek** beállításhoz.
 
@@ -60,7 +59,7 @@ Ha nem sikerül bejelentkeznie a **My apps** portálra, a következőket teheti 
 
 ## <a name="my-password-isnt-working"></a>A jelszavam nem működik
 
-Ha elfelejtette a jelszavát, soha nem kapta meg az egyiket a szervezettől, a fiókja ki van zárva, vagy módosítani szeretné a jelszavát, lásd: [Súgó, elfelejtettem az Azure ad](active-directory-passwords-update-your-own-password.md)-jelszavam.
+Ha elfelejtette a jelszavát, soha nem kapta meg az egyiket a szervezettől, a fiókja ki van zárva, vagy módosítani szeretné a jelszavát, lásd: [Súgó, elfelejtettem az Azure ad-jelszavam](active-directory-passwords-update-your-own-password.md).
 
 ## <a name="i-want-to-be-able-to-reset-my-own-password"></a>Szeretném visszaállítani a saját jelszavát
 
@@ -68,21 +67,21 @@ A saját jelszavának alaphelyzetbe állításához a rendszergazdának előszö
 
 ## <a name="im-getting-an-access-denied-message-when-i-start-an-app"></a>Hozzáférés-megtagadási üzenetet kapok az alkalmazás indításakor
 
-Ha **hozzáférés** -megtagadási üzenetet kap az alkalmazásnak az **alkalmazás** -portálról történő elindítása után, a következőket teheti meg:
+Ha **hozzáférés-megtagadási** üzenetet kap az alkalmazásnak az **alkalmazás** -portálról történő elindítása után, a következőket teheti meg:
 
 - Győződjön meg arról, hogy telepítette a [saját alkalmazások biztonságos bejelentkezési bővítményét](my-apps-portal-end-user-access.md#download-and-install-the-my-apps-secure-sign-in-extension) , és hogy [támogatott böngészőt](my-apps-portal-end-user-access.md#supported-browsers)használ.
 
 - Győződjön meg arról, hogy a megfelelő URL-címet használja az alkalmazáshoz, és hogy az URL-cím az **Internet tulajdonságok > biztonsági > megbízható helyek** listáján található.
 
-- Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának](active-directory-passwords-update-your-own-password.md)alaphelyzetbe állítása.
+- Győződjön meg arról, hogy a jelszó helyes, és nem járt le. További információ: [a munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása](active-directory-passwords-update-your-own-password.md).
 
-- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: mit jelent [Az Azure multi-Factor Authentication a számomra?](multi-factor-authentication-end-user.md) vagy [a biztonsági adatokra vonatkozó módszerek és információk módosítása](security-info-add-update-methods-overview.md).
+- Győződjön meg arról, hogy az ellenőrzési adatok naprakészek és pontosak. További információ: [Mit jelent az Azure multi-Factor Authentication a számomra?](multi-factor-authentication-end-user.md) vagy [a biztonsági adatok módszereinek és adatainak módosítása](security-info-add-update-methods-overview.md).
 
 - Törölje a böngésző gyorsítótárát, és próbálkozzon újra a bejelentkezéssel.
 
 Ha az ilyen dolgok kipróbálása után sem tud hozzáférni az alkalmazáshoz, segítségért forduljon a szervezet ügyfélszolgálatához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután bejelentkezett a **saját alkalmazások** portálra, frissítheti a profilját és a fiókadatok adatait, a csoport adatait és a hozzáférési felülvizsgálati információkat (ha van ilyen engedélye).
 

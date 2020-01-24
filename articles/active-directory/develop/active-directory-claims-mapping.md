@@ -13,13 +13,12 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin, jeedes, luleon
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 6ad2d6ec7a98a82917916bba2930149705ebfd87
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 57a66f73a2c0c37426c23c7274853148fd976ac8
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75531071"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76699070"
 ---
 # <a name="how-to-customize-claims-emitted-in-tokens-for-a-specific-app-in-a-tenant-preview"></a>Útmutató: a jogkivonatokban kibocsátott jogcímek testreszabása egy adott alkalmazáshoz a bérlőben (előzetes verzió)
 
@@ -328,7 +327,7 @@ Az ID elem azonosítja, hogy a forrás melyik tulajdonsága biztosítja a jogcí
 | Felhasználó | érték facsimiletelephonenumber | Fax telefonszáma |
 | alkalmazás, erőforrás, célközönség | DisplayName | Megjelenítendő név |
 | alkalmazás, erőforrás, célközönség | kifogásolta | ObjectID |
-| alkalmazás, erőforrás, célközönség | címkét | Egyszerű szolgáltatásnév címkéje |
+| alkalmazás, erőforrás, célközönség | tags | Egyszerű szolgáltatásnév címkéje |
 | Cég | tenantcountry | Bérlő országa |
 
 **TransformationID:** A TransformationID elemet csak akkor kell megadni, ha a forrásoldali elem "átalakítás" értékre van állítva.

@@ -12,13 +12,12 @@ ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: tomfitz
 ms.custom: aaddev, seoapril2019, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0261c060358b9f0f42624008341f80245ff57aca
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0d3e1e10120dce404f0fdfe781661c4c169ae00a
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75424532"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76697217"
 ---
 # <a name="how-to-use-the-portal-to-create-an-azure-ad-application-and-service-principal-that-can-access-resources"></a>Útmutató: a portál használatával létrehozhat egy Azure AD-alkalmazást és egy egyszerű szolgáltatásnevet, amely hozzáférhet az erőforrásokhoz
 
@@ -58,7 +57,7 @@ Megadhatja a hatókört az előfizetés, az erőforráscsoport vagy az erőforr�
    Ha nem látja a keresett előfizetést, válassza a **globális előfizetések szűrőt**. Győződjön meg arról, hogy a portálon a kívánt előfizetés van kiválasztva.
 
 1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget.
-1. Válassza a **szerepkör-hozzárendelés hozzáadása**lehetőséget.
+1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
 1. Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört. Ha például engedélyezni szeretné, hogy az alkalmazás olyan műveleteket hajtson végre, mint például az **Újraindítás**, a példányok **elindítása** és **leállítása** , válassza ki a **közreműködő** szerepkört.  További információ az [elérhető szerepkörökről](../../role-based-access-control/built-in-roles.md) alapértelmezés szerint az Azure ad-alkalmazások nem jelennek meg az elérhető lehetőségek között. Az alkalmazás megkereséséhez keresse meg a nevet, és jelölje ki.
 
    ![Válassza ki az alkalmazáshoz hozzárendelni kívánt szerepkört](./media/howto-create-service-principal-portal/select-role.png)

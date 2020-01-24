@@ -16,13 +16,12 @@ ms.date: 05/08/2019
 ms.author: ryanwi
 ms.reviewer: agirling, saeeda, benv
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: fbbcd854434bcc085f1b63fb864755dd0e928fc9
-ms.sourcegitcommit: 670c38d85ef97bf236b45850fd4750e3b98c8899
+ms.openlocfilehash: 8bf4039ac968883628a72974b64d90faf707c9af
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/08/2019
-ms.locfileid: "68852162"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76700294"
 ---
 # <a name="microsoft-identity-platform-v20-overview"></a>Microsoft Identity platform (v 2.0) – áttekintés
 
@@ -33,7 +32,7 @@ A Microsoft identitásplatformja az Azure Active Directory (Azure AD) fejlesztő
   - Személyes Microsoft-fiókok (például Skype, Xbox és Outlook.com)
   - Közösségi vagy helyi fiókok (Azure AD B2Con keresztül)
 - **Nyílt forráskódú kódtárak**: Microsoft Authentication librarys (MSAL) és más szabványoknak megfelelő kódtárak támogatása
-- **Alkalmazás-felügyeleti portál**: A Azure Portal beépített regisztrációs és konfigurációs élmény, valamint az összes többi Azure-felügyeleti lehetőség.
+- **Application Management Portal**: a Azure Portal beépített regisztrációs és konfigurációs élmény, valamint az összes többi Azure-felügyeleti lehetőség.
 - Az **Application CONFIGURATION API és a PowerShell**: lehetővé teszi az alkalmazások programozott konfigurálását REST API (Microsoft Graph és Azure Active Directory gráf 1,6) és a PowerShell segítségével, így automatizálhatja a DevOps-feladatokat.
 - **Fejlesztői tartalom**: elméleti és hivatkozási dokumentáció, gyors üzembe helyezési minták, mintakód-minták, oktatóanyagok és útmutatók.
 
@@ -56,9 +55,9 @@ Nem kell, hogy az identitások használata nehéz legyen. Válasszon egy olyan [
 
 Az alábbi táblázat a gyakori hitelesítési alkalmazási forgatókönyveket ismerteti – a Microsoft Identity platform és az alkalmazás integrálására szolgáló hivatkozásként használja.
 
-[![Alkalmazás-forgatókönyvek a Microsoft Identity platformon](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
+[Alkalmazás-forgatókönyvek ![a Microsoft Identity platformon](./media/v2-overview/application-scenarios-identity-platform.png)](./media/v2-overview/application-scenarios-identity-platform.svg#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az alapvető hitelesítési fogalmakról, javasoljuk, hogy kezdje a következő témakörökkel:
 
@@ -67,17 +66,17 @@ Ha többet szeretne megtudni az alapvető hitelesítési fogalmakról, javasolju
 - [Alkalmazás-és egyszerű szolgáltatások](app-objects-and-service-principals.md)
 - [Közönség](v2-supported-account-types.md)
 - [Engedélyek és beleegyezik](v2-permissions-and-consent.md)
-- [Azonosító](id-tokens.md) jogkivonatok és [hozzáférési](access-tokens.md) jogkivonatok
+- [Azonosító jogkivonatok](id-tokens.md) és [hozzáférési jogkivonatok](access-tokens.md)
 
 Hozzon létre egy olyan adatgazdag alkalmazást, amely meghívja az [Microsoft Graph](https://docs.microsoft.com/graph/overview).
 
 Ha készen áll az alkalmazás **éles környezetbe**való elindítására, tekintse át az alábbi ajánlott eljárásokat:
 
-- [Engedélyezze](msal-logging.md) a naplózást az alkalmazásban.
+- [Engedélyezze a naplózást](msal-logging.md) az alkalmazásban.
 - Telemetria engedélyezése az alkalmazásban.
-- Proxyk engedélyezése [és a http-ügyfelek testreszabása](msal-net-provide-httpclient.md).
+- [Proxyk engedélyezése és a http-ügyfelek testreszabása](msal-net-provide-httpclient.md).
 - Tesztelje az integrációt a [Microsoft Identity platform Integration ellenőrzőlista](identity-platform-integration-checklist.md)követésével.
 
-## <a name="learn-more"></a>Tudnivalók a modellalapú alkalmazások létrehozásáról
+## <a name="learn-more"></a>További információk
 
 Ha olyan ügyfél-alkalmazást szeretne létrehozni, amely a közösségi és a helyi identitásokban jelentkezik be, tekintse meg a [Azure ad B2C áttekintést](https://docs.microsoft.com/azure/active-directory-b2c/tutorial-add-identity-providers).

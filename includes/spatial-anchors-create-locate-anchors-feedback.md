@@ -1,14 +1,14 @@
 ---
-ms.openlocfilehash: 685d982835042aa4a697d19a650e8dcb1476b400
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 7b9954930c668e338cc289e948a5591c09ec2654
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178817"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694232"
 ---
-## <a name="provide-feedback-to-the-user"></a>Visszajelzés küldése a felhasználónak
+## <a name="provide-feedback-to-the-user"></a>Visszajelzés küldése a felhasználó számára
 
-A munkamenet frissített esemény kezeléséhez szükséges kódot is írhat. Ez az esemény akkor következik be, minden alkalommal, amikor a munkamenet növeli a környezete annak ismerete. Ilyen esetben lehetővé teszi:
+A munkamenet frissített eseményének kezelésére kódot írhat. Ez az esemény minden alkalommal aktiválódik, amikor a munkamenet javítja a környezetének megértését. Ezzel lehetővé teszi a következőket:
 
-- Visszajelzés küldése a felhasználónak az eszközhöz mozog, és a munkamenet frissíti a környezet ismertetése.
-- Határozza meg, milyen pont rendelkezik elegendő nyomon követett térbeli adatok létrehozásához vagy keresse meg a térbeli horgonyok – hogy többet is egy későbbi lépésben.
+- A `UserFeedback` osztály használatával visszajelzést adhat a felhasználónak, amikor az eszköz áthelyezi, és a munkamenet frissíti a környezetének ismeretét. Ehhez
+- Határozza meg, hogy a térbeli horgonyok létrehozásához milyen ponton van elég nyomon követett térbeli adatmennyiség. Ezt `ReadyForCreateProgress` vagy `RecommendedForCreateProgress`alapján állapíthatja meg. Ha `ReadyForCreateProgress` meghaladja az 1-et, elegendő mennyiségű adattal rendelkezünk a Felhőbeli térbeli horgonyok mentéséhez, de azt javasoljuk, hogy várjon, amíg a `RecommendedForCreateProgress` meghaladja az 1-et.

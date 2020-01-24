@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 10/15/2019
 ms.author: ajburnle
 ms.custom: include file
-ms.openlocfilehash: 88e11adadcc06875964146ad2046828267258038
-ms.sourcegitcommit: bb65043d5e49b8af94bba0e96c36796987f5a2be
+ms.openlocfilehash: e971af5d415ea788f97ab11b58541e629c7eb0ed
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72389380"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694339"
 ---
 ## <a name="lifecycle"></a>Életciklus
 
@@ -33,7 +33,7 @@ Az **életciklus** lapon megadhatja, hogy mikor járjon le egy felhasználó a h
 
 1. Annak engedélyezéséhez, hogy a felhasználó kiterjessze a hozzárendeléseket, állítsa a **felhasználók számára az** **Igen**értékre való kiterjesztést.
 
-    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének megkezdése előtt pedig 1 nappal e-mailt kap, hogy lejárja a hozzárendelés kiterjesztését.
+    Ha a kiterjesztések engedélyezve vannak a szabályzatban, a felhasználó 14 napig, a hozzáférési csomag hozzárendelésének megkezdése előtt pedig 1 nappal e-mailt kap, hogy lejárja a hozzárendelés kiterjesztését. Ha a felhasználó a hozzáférés kiterjesztésére vonatkozó kérést küld, a bővítmény dátumának vagy annál korábbinak kell lennie, mint a hozzáférési csomaghoz a felhasználói hozzáférés biztosításához használt Szabályzatban meghatározottak szerint. Ha például a házirend azt jelzi, hogy a hozzárendelések június 30-án lejárnak, a felhasználó által igényelhető maximális kiterjesztés június 30-ig tart.
 
     Ha a felhasználó hozzáférése ki van bővítve, a megadott kiterjesztési dátum (a szabályzatot létrehozó felhasználó időzónájában beállított dátum) után nem fogja tudni kérni a hozzáférési csomagot.
 

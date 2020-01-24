@@ -13,13 +13,12 @@ ms.date: 07/16/2019
 ms.author: twhitney
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: d14546a63db952119303428140c65ee402010816
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 549e36099e06d665ecab879ceb3c38987d000852
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74921796"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76695092"
 ---
 # <a name="universal-windows-platform-specific-considerations-with-msalnet"></a>Univerzális Windows-platform-specifikus megfontolások a MSAL.NET
 A UWP-on több szempontot is figyelembe kell vennie a MSAL.NET használatakor.
@@ -43,7 +42,7 @@ A UWP platform (WAB) mögöttes implementációja nem működik megfelelően oly
 
 A megkerülő megoldás egy alternatív módszer használata (felhasználónév/jelszó + telefonos hitelesítés), de a felület nem jó.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 Néhány ügyfél jelezte, hogy bizonyos vállalati környezetekben a következő bejelentkezési hiba történt:
 

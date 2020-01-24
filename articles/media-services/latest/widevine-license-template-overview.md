@@ -1,5 +1,5 @@
 ---
-title: Azure Media Services a Widevine-licenc sablonnal – áttekintés | Microsoft Docs
+title: A Azure Media Services v3 és a Widevine-licenc sablonjának áttekintése
 description: Ez a témakör áttekintést nyújt a Widevine-licencek konfigurálásához használt Widevine-licencekről.
 author: juliako
 manager: femila
@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 02/10/2019
 ms.author: juliako
-ms.openlocfilehash: dcfe9c1c3e12aa726f57db29db59732cceb87a69
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 94ce5e45a9a43e81020096ddc0a67429b286d9b1
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74967456"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705632"
 ---
-# <a name="widevine-license-template-overview"></a>A Widevine-licenc sablonjának áttekintése 
+# <a name="media-services-v3-with-widevine-license-template-overview"></a>A Media Services v3 és a Widevine-licenc sablonjának áttekintése
 
 A Azure Media Services lehetővé teszi a tartalom titkosítását a **Google Widevine**. A Media Services egy szolgáltatást is biztosít a Widevine-licencek kézbesítéséhez. A Widevine-licencek konfigurálásához Azure Media Services API-kat használhat. Amikor egy játékos megpróbál lejátszani a Widevine-védelemmel ellátott tartalmat, a rendszer elküldi a licenc kézbesítési szolgáltatásának a licenc beszerzésére irányuló kérelmet. Ha a licencelési szolgáltatás jóváhagyja a kérelmet, a szolgáltatás kiadja a licencet. A rendszer elküldi az ügyfélnek, és a megadott tartalom visszafejtésére és lejátszására szolgál.
 
@@ -62,7 +62,7 @@ A Widevine-licencszerződés JSON-üzenetként van formázva.
 
 | Név | Value (Díj) | Leírás |
 | --- | --- | --- |
-| Adattartalom |Base64 kódolású karakterlánc |Az ügyfél által eljuttatott licencelési kérelem. |
+| adattartalom |Base64 kódolású karakterlánc |Az ügyfél által eljuttatott licencelési kérelem. |
 | content_id |Base64 kódolású karakterlánc |Az egyes content_key_specshoz tartozó kulcs-azonosító és a tartalmi kulcs származtatása céljából használt azonosító. track_type. |
 | szolgáltató |sztring |A tartalmi kulcsok és szabályzatok keresésére szolgál. Ha a Microsoft Key Delivery szolgáltatás a Widevine-licencek kézbesítéséhez használatos, ezt a paramétert a rendszer figyelmen kívül hagyja. |
 | policy_name |sztring |Egy korábban regisztrált szabályzat neve. Választható. |

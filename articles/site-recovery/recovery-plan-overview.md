@@ -2,25 +2,27 @@
 title: A Azure Site Recovery helyreállítási tervei
 description: A Azure Site Recovery helyreállítási terveinek megismerése.
 ms.topic: conceptual
-ms.date: 11/12/2019
-ms.openlocfilehash: 1dd83be03c5b412708e89058ce7667a2ddfef530
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/23/2020
+ms.openlocfilehash: beb92bd62d011ef8aaf304dbb769e7694e6d7e60
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75497891"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705853"
 ---
 # <a name="about-recovery-plans"></a>A helyreállítási tervek ismertetése
 
 Ez a cikk a [Azure site Recovery](site-recovery-overview.md)helyreállítási terveinek áttekintését tartalmazza.
 
-A helyreállítási terv helyreállítási csoportokba gyűjti a gépeket. A helyreállítási terv segítséget nyújt egy rendszeres helyreállítási folyamat definiálásához, ha olyan kis független egységeket hoz létre, amelyek feladatátvételt hajtanak végre. Egy egység általában egy alkalmazást jelöl a környezetben.
+A helyreállítási terv a gépeket helyreállítási csoportokba gyűjti a feladatátvétel céljából. A helyreállítási terv segítséget nyújt egy rendszeres helyreállítási folyamat definiálásához, ha olyan kis független egységeket hoz létre, amelyek feladatátvételt hajtanak végre. Egy egység általában egy alkalmazást jelöl a környezetben.
 
 - A helyreállítási terv meghatározza a gépek feladatátvételét, valamint azt a sorozatot, amelyben a feladatátvétel után indulnak.
+- A helyreállítási tervek az Azure-ba történő feladatátvételhez használhatók, de nem használhatók az Azure-beli feladat-visszavételhez.
 - Akár 100 védett példány is hozzáadható egy helyreállítási tervhez.
 - A tervet testreszabhatja rendelés, utasítások és feladatok hozzáadásával.
 - A terv meghatározása után futtathatja a feladatátvételt.
 - A gépek több helyreállítási tervben is szerepelhetnek, amelyekben a következő tervek kihagyják a gép központi telepítését/indítását, ha korábban egy másik helyreállítási terv használatával telepítették.
+
 
 
 ### <a name="why-use-a-recovery-plan"></a>Miért érdemes helyreállítási tervet használni?

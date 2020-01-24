@@ -1,6 +1,6 @@
 ---
-title: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése |} A Microsoft Docs
-description: Hogyan használható az ADAL SDK funkcióit az egyszeri bejelentkezés engedélyezése az alkalmazások között.
+title: Alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával | Microsoft Docs
+description: A ADAL SDK funkcióinak használata az egyszeri bejelentkezés engedélyezéséhez az alkalmazások között.
 services: active-directory
 author: rwike77
 manager: CelesteDG
@@ -15,70 +15,69 @@ ms.date: 09/24/2018
 ms.author: ryanwi
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 19b010091ebd909745b272fca704bb87adf7924b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 7915c0dae652e113410002128e4ea19ddba68a07
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65962623"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76696911"
 ---
-# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: IOS-es adal-t használó alkalmazások közötti SSO engedélyezése
+# <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával
 
 [!INCLUDE [active-directory-develop-applies-v1-adal](../../../includes/active-directory-develop-applies-v1-adal.md)]
 
-Egyszeri bejelentkezés (SSO) lehetővé teszi a felhasználóknak csak egyszer adja meg a hitelesítő adataikat, és ezeket a hitelesítő adatokat automatikusan működnek a különböző alkalmazások és több platformon, amely a más alkalmazások (például Microsoft Accounts vagy egy munkahelyi fiókot a Microsoft 365-ből) nélkül a közzétevő számít.
+Az egyszeri bejelentkezés (SSO) lehetővé teszi, hogy a felhasználók csak egyszer adják meg a hitelesítő adataikat, és hogy ezek a hitelesítő adatok automatikusan működjenek az alkalmazásokban és a más alkalmazások által használható platformok között (például Microsoft-fiókok vagy munkahelyi fiók Microsoft 365) a közzétevő számítása.
 
-A Microsoft identity platform, az SDK-k, valamint megkönnyíti az egyszeri bejelentkezés engedélyezése belül a saját suite, az alkalmazásokat, vagy a közvetítő képesség and Authenticator alkalmazásokhoz, a teljes eszköz között.
+A Microsoft Identity platformja az SDK-k használatával egyszerűen engedélyezheti az egyszeri bejelentkezést a saját csomagján belül, illetve a közvetítői képességgel és a hitelesítő alkalmazásokkal a teljes eszközön.
 
-Ebben az útmutatóban megismerheti, hogyan egyszeri Bejelentkezést biztosítani ügyfeleinek az alkalmazáson belül az SDK konfigurálására fogjuk.
+Ebben az útmutatóban megtudhatja, hogyan konfigurálhatja az SDK-t az alkalmazáson belül, hogy SSO-t nyújtson ügyfeleinek.
 
-Ebben az útmutatóban a következőkre vonatkozik:
+Ez a következő útmutatók érvényesek:
 
-* Az Azure Active Directory (Azure Active Directory)
+* Azure Active Directory (Azure Active Directory)
 * Azure Active Directory B2C
-* Azure Active Directory B2B
+* B2B Azure Active Directory
 * Azure Active Directory feltételes hozzáférés
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ebben az útmutatóban azt feltételezi, hogy tudja, hogyan lehet:
+Ez az útmutató feltételezi, hogy tudja, hogyan:
 
-* A régi portál használata az Azure ad az alkalmazás üzembe helyezése. További információ: [alkalmazás regisztrálása](quickstart-register-app.md)
-* Az alkalmazás integrálja az [Azure ad-ben iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc).
+* Az alkalmazás kiépítése az Azure AD-hez készült örökölt portálon. További információ: [alkalmazás regisztrálása](quickstart-register-app.md)
+* Az alkalmazás integrálása az [Azure ad iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc)-val.
 
-## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezés fogalmak
+## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezési fogalmak
 
-### <a name="identity-brokers"></a>Identitásszervezőinek
+### <a name="identity-brokers"></a>Identity Broker
 
-A Microsoft biztosít az alkalmazások minden mobilplatformra, amelyek lehetővé teszik az adatközponthíd-képzés hitelesítő adatokat a különböző alkalmazások különböző szállítóktól származó és amelyek speciális funkcióival megkövetelhető egy adott biztonságos hely, ahonnan a hitelesítő adatok ellenőrzése. Ezek az úgynevezett **közvetítők**.
+A Microsoft minden olyan mobil platformhoz biztosít alkalmazásokat, amely lehetővé teszi a különböző gyártóktól származó alkalmazások hitelesítő adatainak összekapcsolását, valamint olyan továbbfejlesztett funkciókat, amelyekhez egyetlen biztonságos hely szükséges a hitelesítő adatok érvényesítéséhez. Ezeket **közvetítőknek**nevezzük.
 
-IOS és Android rendszeren közvetítők szolgáltatáson keresztül letölthető alkalmazás, hogy ügyfeleink egymástól függetlenül telepítése vagy a felhasználók számára egy olyan cég, az egyes felügyeli, vagy minden, az eszköz az eszközre leküldve. A biztonság, és az egyes alkalmazások vagy informatikai felügyeleti konfiguráció alapján a teljes eszköz kezelése közvetítők támogatása. A Windows Ez a funkció-szervezőként ismert szakszóval Webeshitelesítés-szervező a az operációs rendszer beépített biztosítja.
+Az iOS-és Android-eszközökön a közvetítőket olyan letölthető alkalmazásokkal biztosítjuk, amelyeket az ügyfelek önállóan telepítenek vagy továbbítanak az eszközre egy olyan vállalat, aki az alkalmazottak számára az eszközöket felügyeli. A brókerek csak bizonyos alkalmazások vagy a teljes eszköz biztonságának felügyeletét támogatják a rendszergazda konfigurációja alapján. A Windowsban ezt a funkciót egy, az operációs rendszerbe beépített fiók-Chooser biztosítja, amely technikailag a webes hitelesítési közvetítőként is ismert.
 
-### <a name="patterns-for-logging-in-on-mobile-devices"></a>A mobil eszközökön naplózási minták
+### <a name="patterns-for-logging-in-on-mobile-devices"></a>A mobileszközökön való bejelentkezéshez használt minták
 
-Hitelesítő adatok az eszközökön való hozzáférést két alapvető mintázatokból kövesse:
+Az eszközök hitelesítő adataihoz való hozzáférés két alapvető mintát követ:
 
-* Nem közvetített személyes bejelentkezések
-* A közvetítő személyes bejelentkezések
+* Nem brókerek által támogatott bejelentkezések
+* A közvetítő által támogatott bejelentkezések
 
-#### <a name="non-broker-assisted-logins"></a>Nem közvetített személyes bejelentkezések
+#### <a name="non-broker-assisted-logins"></a>Nem brókerek által támogatott bejelentkezések
 
-Nem közvetített személyes bejelentkezések olyan bejelentkezési élményt, amely beágyazott az alkalmazással együtt történik, és a helyi tároló használata az eszközön, az adott alkalmazáshoz. Ez a tároló előfordulhat, hogy az alkalmazások megoszthatók, de a hitelesítő adatokat az alkalmazás vagy a hitelesítő adatok használatával alkalmazáscsomagunkkal szorosan vannak kötve. Nagy valószínűséggel tapasztal Ez sok mobilalkalmazások a felhasználónév és jelszó belül magának az alkalmazásnak megadásakor.
+A nem brókerek által támogatott bejelentkezések olyan bejelentkezési élmények, amelyek az alkalmazással összhangban történnek, és az eszközön lévő helyi tárolót használják az adott alkalmazáshoz. Ez a tárterület több alkalmazás között is megosztható, de a hitelesítő adatok szorosan kötődnek az alkalmazáshoz vagy az alkalmazásokhoz a hitelesítő adatok használatával. Valószínűleg sok mobil alkalmazásban tapasztalta ezt, ha az alkalmazásban felhasználónevet és jelszót ad meg.
 
-Ezek a bejelentkezések rendelkezik a következő előnyökkel jár:
+Ezek a bejelentkezések az alábbi előnyökkel járnak:
 
-* Felhasználói élmény létezik-e az alkalmazás egészében.
-* Hitelesítő adatok, amelyek ugyanazt a tanúsítványt, egyszeri bejelentkezés biztosítása érdekében az alkalmazások Suite által aláírt alkalmazások között is megoszthatók.
-* A kérelem előtt és után jelentkezzen be a vezérlő körül a bejelentkezési élmény biztosítunk.
+* A felhasználói élmény teljes mértékben az alkalmazáson belül van.
+* A hitelesítő adatok megoszthatók az azonos tanúsítvánnyal aláírt alkalmazások között, így egyszeri bejelentkezéses felhasználói élményt biztosíthatnak az alkalmazások alkalmazáscsomag számára.
+* A bejelentkezés felhasználói élményének szabályozása a bejelentkezés előtt és után biztosított az alkalmazás számára.
 
-Ezek a bejelentkezések a következő hátrányokkal rendelkezik:
+Ezek a bejelentkezések a következő hátrányokkal rendelkeznek:
 
-* Felhasználók nem egyszeri bejelentkezést, felületének ezeket, amely az alkalmazás konfigurálva van a Microsoft-identitások között csak a Microsoft identity használó összes alkalmazása tekintetében.
-* Az alkalmazás az Intune-ban termékcsomagot használja, illetve összetettebb üzleti funkciók, például a feltételes hozzáférés nem használható.
-* Az alkalmazás nem támogatja a tanúsítványalapú hitelesítést az üzleti felhasználóknak.
+* A felhasználók nem tapasztalhatnak egyszeri bejelentkezést a Microsoft-identitást használó összes alkalmazásban, csak azokon a Microsoft-identitásokon, amelyeket az alkalmazása konfigurált.
+* Az alkalmazás nem használható olyan speciális üzleti funkciókkal, mint például a feltételes hozzáférés, vagy az Intune Suite termékek használata.
+* Az alkalmazás nem támogatja a tanúsítvány alapú hitelesítést az üzleti felhasználók számára.
 
-Itt látható az SDK-k az alkalmazások egyszeri bejelentkezés engedélyezéséhez a megosztott tárolóhellyel rendelkező működése reprezentációját:
+Az alábbi példa azt mutatja be, hogy az SDK hogyan működik együtt az alkalmazások megosztott tárhelyével az egyszeri bejelentkezés engedélyezéséhez:
 
 ```
 +------------+ +------------+  +-------------+
@@ -94,39 +93,39 @@ Itt látható az SDK-k az alkalmazások egyszeri bejelentkezés engedélyezésé
 +--------------------------------------------+
 ```
 
-#### <a name="broker-assisted-logins"></a>A közvetítő személyes bejelentkezések
+#### <a name="broker-assisted-logins"></a>A közvetítő által támogatott bejelentkezések
 
-Bejelentkezések Broker támogatású olyan bejelentkezési élmény a közvetítő alkalmazás belül, és a storage és a közvetítő biztonsági hitelesítő adatok megosztása az eszközön minden olyan alkalmazás, amely a alkalmazni az identity platform használatával. Ez azt jelenti, hogy az alkalmazások támaszkodnak, jelentkezzen be a felhasználók a közvetítőn. IOS és Android rendszeren ezeket a közvetítők letölthető alkalmazásokkal, hogy ügyfeleink egymástól függetlenül telepítése vagy leküldeni az eszközre által biztosított egy olyan cég, az eszközt a felhasználó kezeli. Ez az alkalmazástípus egyik példája a Microsoft Authenticator alkalmazás IOS rendszerű eszközökön. Ezt a funkciót a Windows-szervezőként ismert szakszóval Webeshitelesítés-szervező a az operációs rendszer beépített biztosítja.
+A közvetítő által támogatott bejelentkezések a közvetítő alkalmazáson belül bekövetkező bejelentkezési élmények, és a közvetítő tárterületének és biztonságának használatával megoszthatják a hitelesítő adatokat az eszközön található összes alkalmazásban, amely az Identity platformot alkalmazza. Ez azt jelenti, hogy alkalmazásai támaszkodnak a közvetítőre, hogy aláírják a felhasználókat a alkalmazásban. Az iOS és az Android rendszerekben ezek a közvetítők olyan letölthető alkalmazásokon keresztül érhetők el, amelyeket az ügyfelek önállóan telepítenek, vagy az eszközt egy olyan vállalat küldi el, aki felügyeli az eszközt a felhasználó számára. Ilyen típusú alkalmazás például az iOS rendszeren futó Microsoft Authenticator alkalmazás. A Windowsban ez a funkció egy olyan fiók, amely az operációs rendszerhez készült, amely technikailag ismert a webes hitelesítési közvetítőként.
 
-A felhasználói élményt platformonként és néha a felhasználók számára zavaró lehet ha nem megfelelően kezeli. Ismerkedjen meg valószínűleg legtöbb ezt a mintát, ha a Facebook-alkalmazás telepítve van, és a Facebook Connect használata egy másik alkalmazás. Az identity platform hasonló mintát alkalmaz.
+Az élmény a platformtól függ, és esetenként zavaró lehet a felhasználók számára, ha nem megfelelően kezeli őket. Valószínűleg ismeri ezt a mintát, ha telepítve van a Facebook-alkalmazás, és használja a Facebook-kapcsolatot egy másik alkalmazásból. Az Identity platform ugyanazt a mintát használja.
 
-Ez egy "átmeneti" vezet iOS-es animáció, ahol az alkalmazás, miközben a Microsoft Authenticator alkalmazást a háttérben zajlik az előtérben, a felhasználó számára, válassza ki a bejelentkezéshez szeretnék, hogy melyik fiók származnak.
+Az iOS esetén ez egy "átmenet" animációhoz vezet, ahol az alkalmazást a háttérben küldik el, míg a Microsoft Authenticator-alkalmazások előtérben elérhetővé válnak a felhasználó számára annak kiválasztására, hogy melyik fiókot szeretnék bejelentkezni.
 
-Android és Windows, a fiók kiválasztásakor az alkalmazás fölött jelenik meg, amelyek kevésbé zavaró a felhasználónak.
+Android és Windows esetén a fiók kiválasztása az alkalmazás tetején jelenik meg, ami kevésbé zavaró a felhasználó számára.
 
-#### <a name="how-the-broker-gets-invoked"></a>Hogyan a közvetítő meghívása beolvasása
+#### <a name="how-the-broker-gets-invoked"></a>A közvetítő meghívásának módja
 
-Ha az eszközt, például a Microsoft Authenticator alkalmazás kompatibilis ügynök telepítve van az SDK-k automatikusan elvégzi meghívása a közvetítő az Ön számára, amikor egy felhasználó azt jelzi, hogy minden olyan fiókkal, az identity platform kívánnak munkáját. Ez a fiók lehet a személyes Microsoft-Account, egy munkahelyi vagy iskolai fiókját, vagy egy Ön által megadott fiók és az Azure-ban a B2C-vel és a B2B termékeink gazdagép.
+Ha a kompatibilis közvetítő telepítve van az eszközön, például a Microsoft Authenticator alkalmazáshoz, az SDK-k automatikusan elvégzik a közvetítő meghívását, ha a felhasználó azt jelzi, hogy az Identity platform bármely fiókjának használatával szeretne bejelentkezni. Ez a fiók lehet személyes Microsoft-fiók, munkahelyi vagy iskolai fiók, valamint az Azure-ban a B2C-és B2B-termékekkel üzemeltetett fiók.
 
-#### <a name="how-we-ensure-the-application-is-valid"></a>Hogyan biztosítható az alkalmazás érvénytelen.
+#### <a name="how-we-ensure-the-application-is-valid"></a>Az alkalmazás érvényességének biztosítása
 
-Az identitás-átvitelszervező kínálunk biztonsági elengedhetetlen a közvetítő alkalmazás hívás szükséges bejelentkezések segítik. IOS és Android nem biztonsága ne sérüljön egyedi azonosítók, amelyek csak egy adott alkalmazás esetében érvényes, így rosszindulatú alkalmazások, előfordulhat, hogy "agresszívebb" egy megbízható alkalmazás azonosítója és a megbízható alkalmazás webszolgáltatásokban a jogkivonatokat fogadni. Annak érdekében, hogy mindig a megfelelő alkalmazás a futásideje kommunikál, megkérjük, ha az alkalmazás regisztrálása a Microsoft egyéni redirectURI a fejlesztő. Az alábbiakban tárgyalt hogyan a fejlesztők formázhatják az átirányítási URI-t kell. Az egyéni redirectURI tartalmazza az alkalmazás Csomagazonosítóját, és az Apple App Store által biztosított az alkalmazás egyedinek kell lennie. Amikor egy alkalmazás a közvetítő hív, a közvetítő megkérdezi, hogy biztosítsa az alkalmazáscsomag-Azonosítót, amelynek a neve a közvetítő számára az iOS operációs rendszer. A közvetítő az Alkalmazásköteg-azonosító biztosít a Microsoft identity rendszerben hívásában. Ha az alkalmazás Csomagazonosítóját nem egyezik meg a regisztráció során fejlesztője által készített velünk a kapcsolatot az Alkalmazásköteg-azonosító, hogy megtagadja a jogkivonatok hozzáférést az erőforráshoz, az alkalmazás által kért. Ez az ellenőrzés biztosítja, hogy csak az alkalmazás fejlesztője által regisztrált jogkivonatokat kap-e.
+A közvetítő által támogatott bejelentkezések által biztosított biztonság szempontjából elengedhetetlen, hogy az alkalmazás meghívja a közvetítőt. Sem az iOS, sem az Android nem kényszeríti ki az olyan egyedi azonosítókat, amelyek csak egy adott alkalmazás esetében érvényesek, így a rosszindulatú alkalmazások "hamisítják" a legitim alkalmazás azonosítóját, és megkapják a legitim alkalmazás számára jelentett jogkivonatokat. Annak biztosítása érdekében, hogy a rendszer mindig a megfelelő alkalmazással kommunikáljon futásidőben, megkéri a fejlesztőt, hogy adjon meg egy egyéni redirectURI, amikor az alkalmazást a Microsofttal regisztrálja. A fejlesztők számára az átirányítási URI-t az alábbi részletesen tárgyaljuk. Ez az egyéni redirectURI tartalmazza az alkalmazás csomag-AZONOSÍTÓját, és gondoskodik arról, hogy az Apple App Store-ban egyedi legyen az alkalmazás. Amikor egy alkalmazás meghívja a közvetítőt, a közvetítő arra kéri az iOS operációs rendszert, hogy a közvetítőnek nevezett köteg-AZONOSÍTÓval lássa el. A közvetítő ezt a köteg-azonosítót biztosítja a Microsoftnak a személyazonossági rendszer meghívása során. Ha az alkalmazás csomag-azonosítója nem egyezik meg a fejlesztő által a regisztráció során nekünk megadott köteg-AZONOSÍTÓval, a rendszer megtagadja a hozzáférést az alkalmazás által kért erőforrás jogkivonatához. Ez az ellenőrzés biztosítja, hogy csak a fejlesztő által regisztrált alkalmazás fogadja a jogkivonatokat.
 
-**A fejlesztői lehetősége van arra, hogy az SDK meghívja a közvetítő vagy a nem közvetített személyes folyamat használja.** Azonban ha a fejlesztői úgy dönt, hogy nem használja a közvetítő támogatású folyamat megszakad az egyszeri bejelentkezés használatának előnye, hogy a felhasználó már felvett előfordulhat, hogy az eszköz hitelesítő adatait, és megakadályozza, hogy a Microsoft biztosít üzleti funkciókat használja el az alkalmazását a ügyfelek, például a feltételes hozzáférés Intune-kezelési képességei és Tanúsítványalapú hitelesítés.
+**A fejlesztő választhat, hogy az SDK meghívja-e a közvetítőt, vagy a nem közvetítő által támogatott folyamatot használja-e.** Ha azonban a fejlesztő úgy dönt, hogy nem használja a közvetítő által támogatott folyamatot, elveszítik a felhasználó által az eszközön már hozzáadott SSO hitelesítő adatok használatának előnyeit, és meggátolják, hogy alkalmazásaikat a Microsoft üzleti funkcióival együtt használják ügyfelek, például a feltételes hozzáférés, az Intune felügyeleti képességei és a tanúsítványalapú hitelesítés.
 
-Ezek a bejelentkezések rendelkezik a következő előnyökkel jár:
+Ezek a bejelentkezések az alábbi előnyökkel járnak:
 
-* Felhasználói függetlenül attól, gyártó az alkalmazások közötti SSO teljesen.
-* Az alkalmazás összetettebb üzleti funkciók, például a feltételes hozzáférés vagy az Intune-ban termékcsomagot használhatja.
-* Az alkalmazás az üzleti felhasználók is támogatja a Tanúsítványalapú hitelesítés.
-* A közvetítő alkalmazás további biztonsági algoritmusokkal és a titkosítás sokkal biztonságosabb bejelentkezés rendelkezik, mint az alkalmazás és a felhasználó identitásának ellenőrzése.
+* A felhasználó az összes alkalmazásában egyszeri bejelentkezést észlel a gyártótól függetlenül.
+* Az alkalmazás olyan speciális üzleti funkciókat is használhat, mint például a feltételes hozzáférés vagy az Intune-csomag használata.
+* Az alkalmazás képes a tanúsítványalapú hitelesítés támogatására az üzleti felhasználók számára.
+* Sokkal biztonságosabb bejelentkezési élmény az alkalmazás identitása és a felhasználó ellenőrzése a közvetítő alkalmazás által további biztonsági algoritmusokkal és titkosítással történik.
 
-Ezek a bejelentkezések a következő hátrányokkal rendelkezik:
+Ezek a bejelentkezések a következő hátrányokkal rendelkeznek:
 
-* Az iOS-ben a felhasználó továbbítjuk kívül az alkalmazás felhasználói élményt közben a hitelesítő adatok közül választ.
-* Lehetővé teszi a bejelentkezési élmény az ügyfeleknek az alkalmazáson belül kezelését elvesztését.
+* Az iOS-ben a felhasználó átvált az alkalmazás felhasználói felületéről, miközben a rendszer hitelesítő adatokat választ.
+* Az alkalmazáson belüli ügyfelek bejelentkezési élményének kezelése.
 
-Itt látható az SDK-k működését a közvetítő alkalmazások engedélyezhető az SSO-ábrázolása:
+Az alábbi példa azt szemlélteti, hogy az SDK hogyan működik együtt a közvetítő alkalmazásokkal az egyszeri bejelentkezés engedélyezéséhez:
 
 ```
 +------------+ +------------+   +-------------+
@@ -152,39 +151,39 @@ Itt látható az SDK-k működését a közvetítő alkalmazások engedélyezhet
               +-------------+
 ```
 
-## <a name="enabling-cross-app-sso-using-adal"></a>Adal-t használó alkalmazások közötti SSO engedélyezése
+## <a name="enabling-cross-app-sso-using-adal"></a>Alkalmazások közötti egyszeri bejelentkezés engedélyezése a ADAL használatával
 
-Itt az ADAL iOS SDK-t használjuk az:
+Itt a ADAL iOS SDK-t használjuk a következőkre:
 
-* Nem közvetített személyes egyszeri bejelentkezés az alkalmazások a suite bekapcsolása
-* Kapcsolja be a közvetítő támogatású egyszeri bejelentkezés támogatása
+* A nem bróker által támogatott egyszeri bejelentkezés bekapcsolása az alkalmazások alkalmazáscsomag számára
+* Támogatás bekapcsolása a közvetítő által támogatott egyszeri bejelentkezéshez
 
-### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>Nem közvetített egyszeri Bejelentkezést bekapcsolás segítik az egyszeri bejelentkezés
+### <a name="turning-on-sso-for-non-broker-assisted-sso"></a>SSO bekapcsolása nem bróker által támogatott egyszeri bejelentkezéshez
 
-Az alkalmazások nem közvetített személyes SSO az SDK-k kezelése nagy része az egyszeri bejelentkezés összetettsége az Ön számára. Ez magában foglalja a megfelelő felhasználói keresése a gyorsítótárban, és karbantartása, hogy a lekérdezés bejelentkezett felhasználók listáját.
+A nem brókerek által támogatott egyszeri bejelentkezések esetében az SDK-k az egyszeri bejelentkezés sok összetettségét kezelik. Ebbe beletartozik a megfelelő felhasználó megkeresése a gyorsítótárban, és a bejelentkezett felhasználók listájának fenntartása a lekérdezéshez.
 
-Alkalmazások közötti SSO engedélyezése saját kell tegye a következőket:
+Ha engedélyezni szeretné az egyszeri bejelentkezést a saját alkalmazásai között, a következőket kell tennie:
 
-1. Győződjön meg arról az alkalmazások az azonos ügyfél-azonosító vagy alkalmazás azonosítóját.
-2. Győződjön meg arról, hogy ugyanazt a aláíró tanúsítványt az Apple-től az összes alkalmazás megosztott, hogy keychains megoszthatja.
-3. Az alkalmazások mindegyike ugyanazon kulcslánc jogosultság kérelmet.
-4. Az SDK-k figyelmének a megosztott kulcslánc azt szeretné, hogy mi legyen.
+1. Győződjön meg arról, hogy az összes alkalmazás ugyanazt az ügyfél-azonosítót vagy az alkalmazás-azonosítót használja.
+2. Győződjön meg arról, hogy az összes alkalmazás ugyanazzal az aláírási tanúsítvánnyal rendelkezik az Apple-től, hogy meg tudja osztani a kulcstartókat.
+3. Az egyes alkalmazásokhoz ugyanazt a kulcstartó jogosultságot kell kérnie.
+4. Tájékoztassa az SDK-kat a használni kívánt megosztott kulcstartóról.
 
-#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Az azonos Ügyfélazonosítót használó / alkalmazást az alkalmazások a csomagban található összes alkalmazás AZONOSÍTÓJÁT
+#### <a name="using-the-same-client-id--application-id-for-all-the-applications-in-your-suite-of-apps"></a>Ugyanaz az ügyfél-azonosító/alkalmazás-azonosító használata az alkalmazások alkalmazáscsomag összes alkalmazásához
 
-Ahhoz, hogy az identity platform tudnia, hogy engedélyezett jogkivonatok megosztása az alkalmazások az alkalmazások mindegyike kell megosztani az azonos ügyfél-azonosító vagy alkalmazás azonosítóját. Ez az Ön számára a portálon az első alkalmazás regisztrációja során megadott egyedi azonosítója.
+Ahhoz, hogy az Identity platform tudja, hogy a tokenek megoszthatók az alkalmazásokban, minden alkalmazásnak ugyanazzal az ügyfél-AZONOSÍTÓval vagy alkalmazás-AZONOSÍTÓval kell rendelkeznie. Ez az egyedi azonosító, amelyet az első alkalmazásnak a portálon való regisztrálása során adott meg.
 
-Átirányítási URI-k lehetővé teszi, hogy a Microsoft identity Service különböző alkalmazásokat, ha használja az ugyanazon alkalmazás azonosítóját. Minden alkalmazás több átirányítási URI-k a felvételi portálra a regisztrálni lehet. Minden alkalmazás a csomagban található különböző átirányítási URI-t tartalmaz. Ez kinézetét egy példa alatt van:
+Az átirányítási URI-k lehetővé teszik a különböző alkalmazások azonosítását a Microsoft Identity Service-ben, ha ugyanazt az alkalmazást használják. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa erre a nézetre:
 
-Az App1 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 átirányítási URI-ja: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 
-Ezek azonos Ügyfélazonosítót vannak beágyazva / alkalmazás azonosítója és az átirányítási URI-t, vissza velünk a kapcsolatot az SDK konfigurációjában alapján kulcskeresési.
+Ezek az ügyfél-azonosító/alkalmazás-azonosító alá vannak ágyazva, és a rendszer az SDK-konfigurációban részünkre visszaadott átirányítási URI alapján keresi fel őket.
 
 ```
 +-------------------+
@@ -209,13 +208,13 @@ Ezek azonos Ügyfélazonosítót vannak beágyazva / alkalmazás azonosítója �
 
 ```
 
-A formátum, ezek az átirányítási URI-k alábbi ismertetését. Használhat bármilyen átirányítási URI-t, ha kíván támogatni a közvetítő ebben az esetben akkor kell megjelenése a fenti *
+Az átirányítási URI-k formátumát alább találja. Bármely átirányítási URI-t használhat, hacsak nem szeretné támogatni a közvetítőt, ebben az esetben a fentiekhez hasonlóan kell kinéznie *
 
-#### <a name="create-keychain-sharing-between-applications"></a>Hozzon létre a kulcslánc megosztása az alkalmazások között
+#### <a name="create-keychain-sharing-between-applications"></a>Kulcstartó megosztásának létrehozása az alkalmazások között
 
-A kulcslánc megosztása a dokumentum nem terjed, és a dokumentum az Apple által kezelt [Adding Capabilities](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html). Fontos, hogy úgy dönt, hogy mi a meghívandó kulcslánc, és adja hozzá ezt a képességet az alkalmazások közötti.
+A kulcstartó megosztásának engedélyezése meghaladja a dokumentum hatókörét, és az Apple a dokumentumhoz való [hozzáadásával](https://developer.apple.com/library/ios/documentation/IDEs/Conceptual/AppDistributionGuide/AddingCapabilities/AddingCapabilities.html)is rendelkezik. Fontos, hogy eldöntse, mit szeretne meghívni a kulcstartóhoz, és adja hozzá ezt a képességet az összes alkalmazásához.
 
-Ha jogosultságokat állítsa be a megfelelő, tekintse meg a egy fájlt a projekt könyvtárában jogosult `entitlements.plist` , amely tartalmazza a hiba, amely a következőhöz hasonló:
+Ha a jogosultságok megfelelően vannak beállítva, akkor meg kell jelennie egy, a projekt könyvtárában található fájlnak `entitlements.plist`, amely a következőhöz hasonló dolgot tartalmaz:
 
 ```
 <?xml version="1.0" encoding="UTF-8"?>
@@ -231,46 +230,46 @@ Ha jogosultságokat állítsa be a megfelelő, tekintse meg a egy fájlt a proje
 </plist>
 ```
 
-A kulcslánc-jogosultság engedélyezve van az alkalmazások minden rendelkezik, és készen áll az egyszeri bejelentkezés használata után mutassa be az identitást, SDK-t a kulcskarikában az alábbi beállítást a `ADAuthenticationSettings` a következő beállítással:
+Miután az összes alkalmazásban engedélyezte a kulcstartó jogosultságot, és készen áll az egyszeri bejelentkezés használatára, tájékoztassa az Identity SDK-t a kulcstartóról a következő beállítással a `ADAuthenticationSettings`ban:
 
 ```
 defaultKeychainSharingGroup=@"com.myapp.mycache";
 ```
 
 > [!WARNING]
-> Ha a kulcslánc megosztása az alkalmazások bármely alkalmazás törölheti felhasználók vagy rosszabb összes jogkivonatok az alkalmazásról. Ez akkor különösen katasztrofális, ha a háttérben futó munkáját a jogkivonatokat használó alkalmazások. Kulcslánc megosztása azt jelenti, hogy minden a nagyon gondosan kell eltávolítási műveletek az identitás SDK-k használatával.
+> Amikor megoszt egy kulcstartót az alkalmazásai között, bármely alkalmazás törölheti a felhasználókat, vagy rosszabban törölheti az összes tokent az alkalmazásban. Ez különösen akkor katasztrofális, ha olyan alkalmazásokkal rendelkezik, amelyek a jogkivonatokat használják a háttérben végzett munkához. A kulcstartó megosztása azt jelenti, hogy nagyon körültekintően kell lennie az összes eltávolítási műveletnek az Identity SDK-k használatával.
 
-Ennyi az egész! Az SDK-val most fájlmegosztási hitelesítő adatokat az alkalmazások közötti. A Felhasználólista alkalmazáspéldányok között is megosztható.
+Ennyi az egész! Az SDK ekkor megosztja a hitelesítő adatokat az összes alkalmazásban. A felhasználói lista az alkalmazás példányai között is meg lesz osztva.
 
-### <a name="turning-on-sso-for-broker-assisted-sso"></a>Egyszeri bejelentkezés bekapcsolásával Broker támogatott egyszeri bejelentkezés
+### <a name="turning-on-sso-for-broker-assisted-sso"></a>Az SSO bekapcsolása a közvetítő által támogatott egyszeri bejelentkezéshez
 
-Az, hogy az alkalmazás számára az eszközön telepített bármely brokert **alapértelmezés szerint ki van kapcsolva**. A közvetítő alkalmazás használatához néhány további konfigurációs lehetőségek és kód hozzáadása az alkalmazáshoz.
+**Alapértelmezés szerint ki van kapcsolva**az alkalmazás azon képessége, hogy bármely, az eszközön telepített közvetítőt használhassanak. Ahhoz, hogy az alkalmazást a közvetítővel használhassa, további konfigurációt kell végrehajtania, és hozzá kell adnia egy kódot az alkalmazáshoz.
 
 A követendő lépések a következők:
 
-1. Az MS SDK az alkalmazás kódjában hívásában broker mód engedélyezéséhez.
-2. Hozzon létre egy új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrációját is.
-3. Regisztrálás egy URL-sémát.
-4. Az info.plist fájlban adja hozzá egy engedélyt.
+1. Engedélyezze a Broker üzemmódot az alkalmazás kódjának az MS SDK-ban való meghívásakor.
+2. Hozzon létre egy új átirányítási URI-t, és adja meg, hogy az alkalmazás és az alkalmazás regisztrálása is megtörténjen.
+3. URL-séma regisztrálása.
+4. Adjon hozzá egy engedélyt az info. plist fájlhoz.
 
-#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: Az alkalmazás a közvetítő mód engedélyezése
+#### <a name="step-1-enable-broker-mode-in-your-application"></a>1\. lépés: a közvetítő mód engedélyezése az alkalmazásban
 
-Lehetővé teszi, hogy az alkalmazás a közvetítő használata be van kapcsolva a "környezet" vagy a kezdeti beállítás és a hitelesítési objektum létrehozásakor. Ehhez beállítás a hitelesítő adatok típusa a kódban:
+Az alkalmazás a közvetítő használatára való képessége a "környezet" vagy a hitelesítési objektum kezdeti beállításának létrehozásakor be van kapcsolva. Ezt a hitelesítő adatoknak a kódban való megadásával teheti meg:
 
 ```
 /*! See the ADCredentialsType enumeration definition for details */
 @propertyADCredentialsType credentialsType;
 ```
-A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi az SDK-t hívja a közvetítőn próbál `AD_CREDENTIALS_EMBEDDED` megakadályozza, hogy az SDK hívása a közvetítőn.
+A `AD_CREDENTIALS_AUTO` beállítás lehetővé teszi, hogy az SDK megpróbálja meghívni a közvetítőt, `AD_CREDENTIALS_EMBEDDED` megakadályozza, hogy az SDK meghívja a közvetítőt.
 
-#### <a name="step-2-registering-a-url-scheme"></a>2\. lépés: Regisztrálás egy URL-séma
+#### <a name="step-2-registering-a-url-scheme"></a>2\. lépés: URL-séma regisztrálása
 
-Az identity platform indítja el a közvetítő, és visszatér a vezérlő az alkalmazásnak URL-címeket használ. Befejezés adott adatváltási egy URL-sémát, az identity platform ismert lesz az alkalmazás regisztrálva van szükség. Ez lehet kívül más alkalmazás rendszerek lehet, hogy korábban már regisztrált az alkalmazását.
+Az Identity platform URL-címeket használ a közvetítő meghívásához, majd visszaküldi a vezérlést az alkalmazáshoz. A kerekítés befejezéséhez szüksége lesz egy, az alkalmazáshoz regisztrált URL-sémára, amelyet az Identity platform tudni fog. Ez bármilyen más alkalmazás-sémán kívül is lehet, amelyet korábban már regisztrált az alkalmazásában.
 
 > [!WARNING]
-> Azt javasoljuk, így az URL-séma viszonylag egyedi, a szoftver-és a egy másik alkalmazás használja az ugyanazon URL-séma minimalizálása érdekében. Apple nem kényszeríti ki az app store-ban regisztrált URL-sémákat egyediségét.
+> Azt javasoljuk, hogy az URL-séma meglehetősen egyedi legyen, hogy csökkentse egy másik alkalmazás esélyét ugyanazzal az URL-séma használatával. Az Apple nem kényszeríti ki az App Store-ban regisztrált URL-sémák egyediségét.
 
-Alább egy példát, hogyan Ez jelenik meg a projekt konfigurációs van. Előfordulhat, hogy még ehhez az xcode-ban is:
+Az alábbi példa bemutatja, hogyan jelenik meg ez a projekt konfigurációjában. Ezt XCode is elvégezheti:
 
 ```
 <key>CFBundleURLTypes</key>
@@ -288,29 +287,29 @@ Alább egy példát, hogyan Ez jelenik meg a projekt konfigurációs van. Előfo
 </array>
 ```
 
-#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>3\. lépés: Új átirányítási URI az az URL-séma létrehozása
+#### <a name="step-3-establish-a-new-redirect-uri-with-your-url-scheme"></a>3\. lépés: hozzon létre egy új átirányítási URI-t az URL-sémával
 
-Győződjön meg arról, hogy a Microsoft bármikor visszatérhet a hitelesítőadat-jogkivonatokat a megfelelő alkalmazáshoz, kell, hogy vissza úgy, hogy az iOS operációs rendszer ellenőrizheti az alkalmazás nevezzük. Az iOS operációs rendszer a jelentések a Microsoft-közvetítő alkalmazások hívása, az alkalmazás Csomagazonosítóját. Ez a nem egy engedélyezetlen alkalmazás megtévesztésre. Ezért azt használja ki a Ez az URI-t, győződjön meg arról, hogy a megfelelő alkalmazáshoz a jogkivonatokat a rendszer visszairányítja a közvetítő alkalmazás együtt. Kérjük, az egyedi átirányítási URI-t mind az alkalmazás és átirányítási URI-t a fejlesztői portálon állítja be.
+Annak biztosítása érdekében, hogy mindig a megfelelő alkalmazáshoz adja vissza a hitelesítő jogkivonatokat, meg kell győződni arról, hogy az iOS operációs rendszer által ellenőrizhető módon vissza kell hívni az alkalmazásba. Az iOS operációs rendszer jelentései a Microsoft Broker-alkalmazások számára a meghívó alkalmazás köteg-azonosítója. Ezt nem lehet meghamisítani egy szélhámos alkalmazás. Ezért ezt a közvetítői alkalmazás URI-JÁT is kihasználjuk, hogy a jogkivonatok a megfelelő alkalmazáshoz legyenek visszaküldve. Ehhez egyedi átirányítási URI-t kell létrehoznia az alkalmazásban, és az átirányítási URI-t kell beállítani a fejlesztői portálon.
 
-Az átirányítási URI-t, a megfelelő formátumban kell lennie:
+Az átirányítási URI-nak a megfelelő formában kell lennie:
 
 `<app-scheme>://<your.bundle.id>`
 
-például: *x-msauth-mytestiosapp://com.myapp.mytestapp*
+pl.: *x-msauth-mytestiosapp://com.MyApp.mytestapp*
 
-Az átirányítási URI-t meg kell határozni az alkalmazás regisztrációs használatával a [az Azure portal](https://portal.azure.com/). További információ az Azure AD-alkalmazás regisztrációjának: [integrálása az Azure Active Directoryval](active-directory-how-to-integrate.md).
+Ezt az átirányítási URI-t meg kell adni az alkalmazás regisztrációjában a [Azure Portal](https://portal.azure.com/)használatával. Az Azure AD-alkalmazás regisztrálásával kapcsolatos további információkért lásd: [integráció a Azure Active Directoryával](active-directory-how-to-integrate.md).
 
-##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>3a. lépés: Adjon hozzá egy átirányítási URI-t az alkalmazás és a fejlesztői portál támogatja a Tanúsítványalapú hitelesítés
+##### <a name="step-3a-add-a-redirect-uri-in-your-app-and-dev-portal-to-support-certificate-based-authentication"></a>3a. lépés: adjon hozzá egy átirányítási URI-t az alkalmazásban és a fejlesztői portálon a tanúsítványalapú hitelesítés támogatásához
 
-Támogatás Tanúsítványalapú hitelesítés egy második "msauth" regisztrálva kell lennie az alkalmazás és a [az Azure portal](https://portal.azure.com/) Tanúsítványalapú hitelesítés kezelésére, ha szeretné, hogy az alkalmazás hozzáadása.
+A tanúsítványalapú hitelesítés támogatásához egy második "msauth" kell regisztrálni az alkalmazásban és a [Azure Portal](https://portal.azure.com/) a tanúsítvány-hitelesítés kezeléséhez, ha a támogatást hozzá kívánja adni az alkalmazáshoz.
 
 `msauth://code/<broker-redirect-uri-in-url-encoded-form>`
 
-ex: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
+pl.: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.MyApp.mytestapp*
 
-#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4\. lépés: Egy konfigurációs paraméter hozzáadása az alkalmazáshoz
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>4\. lépés: konfigurációs paraméter hozzáadása az alkalmazáshoz
 
-Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van-e az eszközön. Az iOS 9-on az Apple zárolva mi kérdezhetők le egy rendszerek. Az Info.plist szakaszt az "msauth" hozzá kell adnia a `info.plist file`.
+ADAL – canOpenURL: annak ellenőrzését, hogy a közvetítő telepítve van-e az eszközön. Az iOS 9-es verziójában az Apple lezárta az alkalmazás által lekérdezhető sémákat. Hozzá kell adnia a "msauth" kifejezést a `info.plist file`összes szakaszához.
 
 ```
     <key>LSApplicationQueriesSchemes</key>
@@ -320,10 +319,10 @@ Adal-t használ – canOpenURL: Ellenőrizze, hogy ha az ügynök telepítve van
 
 ```
 
-### <a name="youve-configured-sso"></a>Egyszeri bejelentkezés konfigurálása!
+### <a name="youve-configured-sso"></a>Konfigurálta az SSO-t!
 
-Most már az identitás SDK automatikusan is hitelesítő adatok megosztása az alkalmazások és a közvetítő meghívása az eszközön telepítve, ha.
+Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Ismerje meg [egyszeri bejelentkezéses SAML-protokoll](single-sign-on-saml-protocol.md)
+* Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](single-sign-on-saml-protocol.md)

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 745e3f0b6c7bd4e6d984ce2df29b9965d4b8ca21
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513735"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705666"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -37,9 +37,7 @@ Az érzékelők adatközvetítésének megkezdése után megkezdheti az adatgyű
  - Titkos ügyfélkulcs
  - EventHub-kapcsolatok karakterlánca
 
-Az előző adatokat a rendszerintegrátor kapja meg. Az eszközök integrációjának engedélyezésekor esetlegesen felmerülő problémákért forduljon a rendszerintegrátorhoz.
-
-A hitelesítő adatokat úgy is létrehozhatja, hogy a parancsfájlt Azure Cloud Shellról futtatja. Kövesse az alábbi lépéseket.
+Az alábbi lépéseket követve hozhatja elő a fenti információkat: (kérjük, vegye figyelembe, hogy az Azure-ban elvégzendő lépések szükségesek ahhoz, hogy hozzáférhessen az Azure-előfizetéshez, ahol a FarmBeats telepítve van)
 
 1. Töltse le a [zip-fájlt](https://aka.ms/farmbeatspartnerscriptv2), és bontsa ki a helyi meghajtóra. Egy fájl lesz a zip-fájlban.
 2. Jelentkezzen be https://portal.azure.com/, és lépjen a Azure Active Directory-> alkalmazás regisztrációi

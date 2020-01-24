@@ -1,11 +1,11 @@
 ---
-ms.openlocfilehash: db88a166cd59e96b459f8d4dcaa6a6d2b8c4ff99
-ms.sourcegitcommit: 3e98da33c41a7bbd724f644ce7dedee169eb5028
+ms.openlocfilehash: 5835e4c29fde280bcd00422ff71d28526a7f0f95
+ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/18/2019
-ms.locfileid: "67178831"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76694324"
 ---
 ## <a name="set-properties"></a>Tulajdonságok beállítása
 
-Dönthet úgy adja hozzá az egyes tulajdonságok, a felhőbeli horgonyok mentésekor. Objektum típusa például mentett vagy alapszintű tulajdonságok, például hogy azt engedélyezni kell a kapcsolati folyamatban. Ezt akkor lehet hasznos, felderítés alapján: azonnal jelennek meg az objektum a felhasználó számára, például egy kép képkocka üres tartalommal. Ezután egy másik letöltése a háttérben lekérdezi további állapot részleteit, például a képet a keret megjelenítése.
+A Felhőbeli térbeli horgonyok mentésekor egyes tulajdonságokat is hozzáadhat. Például a menteni kívánt objektum típusát vagy az alapvető tulajdonságokat, például azt, hogy engedélyezve legyen-e az interakció. Ez a felderítés során hasznos lehet: azonnal megjelenítheti a felhasználó objektumát, például egy üres tartalmú képkockát. Ezután a háttérben egy másik Letöltés további állapotot kap, például a keretben megjelenítendő kép.

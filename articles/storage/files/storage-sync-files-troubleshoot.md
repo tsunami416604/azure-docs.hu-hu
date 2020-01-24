@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 1/22/2019
 ms.author: jeffpatt
 ms.subservice: files
-ms.openlocfilehash: f211d1c1a8a315ed9d999d146ce4eaf28af43206
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 009d9e864773fb3a2578504b043fb30302cedb22
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 01/23/2020
-ms.locfileid: "76545041"
+ms.locfileid: "76704544"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Azure-fájlok szinkronizálásának hibaelhárítása
 A Azure File Sync segítségével központilag kezelheti a szervezete fájlmegosztást Azure Filesban, miközben megőrizheti a helyszíni fájlkiszolgáló rugalmasságát, teljesítményét és kompatibilitását. Az Azure File Sync a Windows Servert az Azure-fájlmegosztás gyors gyorsítótárává alakítja át. A Windows Serveren elérhető bármely protokoll használatával helyileg férhet hozzá az adataihoz, beleértve az SMB-t, az NFS-t és a FTPS is. Tetszőleges számú gyorsítótárral rendelkezhet a világ minden tájáról.
@@ -298,6 +298,15 @@ Vegye figyelembe, hogy ha közvetlenül az Azure-fájlmegosztás módosításait
 Ha a kiszolgálón lévő PerItemErrorCount vagy a portálon nem szinkronizált fájlok száma meghaladja a 0 értéket az adott szinkronizálási munkamenet esetében, az azt jelenti, hogy egyes elemek szinkronizálása sikertelen. A fájlok és mappák tartalmazhatnak olyan jellemzőket, amelyek megakadályozzák a szinkronizálást. Ezek a jellemzők tartósak lehetnek, és a szinkronizálás folytatásához explicit műveletre van szükség, például a nem támogatott karakterek eltávolítása a fájl vagy a mappa nevéből. Átmenetiek is lehetnek, ami azt jelenti, hogy a fájl vagy mappa automatikusan folytatja a szinkronizálást. a megnyitott leíróval rendelkező fájlok például automatikusan folytatják a szinkronizálást a fájl bezárásakor. Ha a Azure File Sync motor észleli ezt a problémát, a rendszer egy olyan naplófájlt állít elő, amely elemezhető a jelenleg nem szinkronizált elemek listázásához.
 
 Ezeknek a hibáknak a megtekintéséhez futtassa a **FileSyncErrorsReport. ps1** PowerShell-szkriptet (a Azure file Sync-ügynök ügynök-telepítési könyvtárában), hogy azonosítsa azokat a fájlokat, amelyeket nem sikerült szinkronizálni a megnyitott kezelők, a nem támogatott karakterek vagy más problémák miatt. A Elemelérési út mező megadja a fájl helyét a gyökérszintű szinkronizálási könyvtárhoz viszonyítva. Az alábbi gyakori szinkronizálási hibák listáját itt találja: szervizelési lépések.
+
+> [!Note]  
+> Ha a FileSyncErrorsReport. ps1 parancsfájl "nem talált hibákat", vagy nem sorolja fel a szinkronizálási csoporton belüli hibákat, az ok a következő lehet:
+>
+>- 1\. ok: az utolsó befejezett szinkronizálási munkamenet nem rendelkezett az egyes elemek hibáival. A portált hamarosan frissíteni kell a 0 fájl nem szinkronizált állapotának megjelenítéséhez. 
+>   - Ellenőrizze az telemetria Eseménynapló 9102-es [azonosítójú eseményét](https://docs.microsoft.com/azure/storage/files/storage-sync-files-troubleshoot?tabs=server%2Cazure-portal#broken-sync) , és erősítse meg, hogy a PerItemErrorCount 0. 
+>
+>- 2\. ok: a kiszolgálón a ItemResults-Eseménynapló túl sok hiba miatt be van csomagolva, és az Eseménynapló már nem tartalmaz hibákat a szinkronizálási csoport számára.
+>   - A probléma megelőzése érdekében növelje a ItemResults-Eseménynapló méretét. Az ItemResults eseménynaplója Eseménynapló alkalmazások és szolgáltatások Logs\Microsoft\FileSync\Agent területén található. 
 
 #### <a name="troubleshooting-per-filedirectory-sync-errors"></a>Hibaelhárítás/fájl/címtár-szinkronizálási hibák
 **ItemResults-naplózási hibák**  
