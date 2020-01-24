@@ -11,13 +11,12 @@ ms.topic: conceptual
 ms.date: 01/24/2019
 ms.author: lizross
 ms.reviewer: olhaun
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: c01377280c4e4c97b729e27c22496c388652924f
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: da5e2f60334148be1206ce61a9c6397a3acf85e3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278882"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704765"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
 
@@ -45,7 +44,7 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá Google-fiókját, majd
 
 ### <a name="turn-on-two-factor-verification"></a>Kétfaktoros ellenőrzés bekapcsolása
 
-1. A számítógépen lépjen a https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcomera, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
+1. A számítógépen lépjen a https://myaccount.google.com/signinoptions/two-step-verification/enroll-welcome ra, válassza az első **lépések**lehetőséget, majd ellenőrizze az identitását.
 
 2. A személyes Google-fiókra vonatkozó kétlépéses ellenőrzés bekapcsolásához kövesse az oldalon található lépéseket.
 
@@ -139,7 +138,7 @@ Adja hozzá a GitHub-fiókját a kétfaktoros ellenőrzés bekapcsolásával, ma
 
     Az oldal úgy változik, hogy megmutassa a QR-kódot. Ne zárjuk be ezt a lapot.
 
-4. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a jobb felső sarokban található **Testreszabás és vezérlés** ikonban, majd válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget, majd jelölje be a **szöveges kód megadása** elemet a tetején lévő szövegből. a lap.
+4. Nyissa meg a Microsoft Authenticator alkalmazást, válassza a **fiók hozzáadása** lehetőséget a jobb felső sarokban található **Testreszabás és vezérlés** ikonban, válassza az **egyéb fiók (Google, Facebook stb.)** lehetőséget, majd a lap tetején lévő szövegből válassza a **szöveg megadása** lehetőséget.
 
     A Microsoft Authenticator alkalmazás nem tudja beolvasni a QR-kódot, ezért manuálisan kell megadnia a kódot.
 

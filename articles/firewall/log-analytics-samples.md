@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: article
-ms.date: 11/19/2019
+ms.date: 01/23/2020
 ms.author: victorh
-ms.openlocfilehash: 714054b8e538b2fb1bfb3fb4f2293636802f3bc4
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: bc34afe82c1b73afb5f3d5d1a07f2a5059590146
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74168886"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705979"
 ---
 # <a name="azure-firewall-log-analytics-samples"></a>Log Analytics-minták Azure Firewall
 
@@ -28,9 +28,9 @@ A nézet a Log Analytics munkaterülethez való hozzáadásához hajtsa végre a
 
 1. Nyissa meg a Log Analytics munkaterületet a Azure Portalban.
 2. Nyissa meg az **általános** **nézet tervezőjét** .
-3. Kattintson a **importálás**.
+3. Kattintson az **Importálás** gombra.
 4. Tallózással keresse meg és válassza ki a letöltött **AzureFirewall. omsview** fájlt.
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 A nézet az alkalmazási szabály naplózási információit keresi:
 
@@ -166,6 +166,15 @@ AzureDiagnostics
 | sort by TimeGenerated desc | project TimeGenerated, msg_s, Protocol, SourceIP,SourcePort,TargetIP,TargetPort,Action,Message
 ```
 
+## <a name="sample-logs"></a>Mintanaplók
+
+Az alábbi naplók egy naplóbejegyzés részét képezik.
+
+![naplóbejegyzés](media/log-analytics-samples/log1.png)
+
+![naplóbejegyzés](media/log-analytics-samples/log2.png)
+
+![naplóbejegyzés](media/log-analytics-samples/log3.png)
 ## <a name="next-steps"></a>Következő lépések
 
 A Azure Firewall monitorozási és diagnosztikai funkcióinak megismeréséhez tekintse meg a következő [oktatóanyagot: Azure Firewall naplók és metrikák figyelése](tutorial-diagnostics.md).

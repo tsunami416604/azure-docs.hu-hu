@@ -12,13 +12,12 @@ ms.topic: overview
 ms.date: 10/30/2019
 ms.author: lizross
 ms.custom: user-help
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9fa8bc27f014b794059f30a62d47f298096df2f1
-ms.sourcegitcommit: f4d8f4e48c49bd3bc15ee7e5a77bee3164a5ae1b
+ms.openlocfilehash: 36abbee0bf25550425f4e476e6a4e7b75df815a6
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73573802"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705054"
 ---
 # <a name="edit-or-revoke-application-permissions-in-the-my-apps-preview-portal"></a>Alkalmazás engedélyeinek szerkesztése vagy visszavonása a saját alkalmazások (előzetes verzió) portálon
 
@@ -29,7 +28,7 @@ Ha szervezeti alkalmazásokat használ a **saját alkalmazások** (előzetes ver
 >[!Important]
 >Ezek az anyagok felhasználók számára készültek. Ha Ön rendszergazda, további információt talál arról, hogyan állíthatja be és kezelheti felhőalapú alkalmazásait az [alkalmazás-felügyeleti dokumentációban](https://docs.microsoft.com/azure/active-directory/manage-apps/access-panel-workspaces).
 
-## <a name="manage-app-permissions"></a>Alkalmazás engedélyeinek kezelése
+## <a name="manage-app-permissions"></a>Alkalmazásengedélyek kezelése
 
 Ha meg szeretné tekinteni az Ön vagy a rendszergazda által megadott engedélyeket, válassza a **...** lehetőséget, ha a **saját alkalmazások** portálon egy alkalmazásra viszi a kurzort, majd válassza az **alkalmazás kezelése**lehetőséget:
 
@@ -43,7 +42,7 @@ Az **engedélyek visszavonása**lehetőség kiválasztásával visszavonhatja a 
 
 Az engedélyek ablak alsó részén látható, hogy a rendszergazda hogyan járult hozzá az Ön nevében. Ez a szakasz nem jelenik meg, ha nincsenek rendszergazdai jogosultságok. Ezek az engedélyek nem vonhatók vissza, mert a rendszergazda beleegyezett nekik, és gyakran szükségesek a szervezet házirendjéhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután felügyelte az alkalmazás engedélyeit és a mentett fiókokat a **saját alkalmazások** portálján, a következőket teheti:
 

@@ -12,13 +12,12 @@ ms.date: 08/14/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: a45b3ee9bf9cea71255ac9a83f970d2b6c72b67f
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e005ba9c5458849863bd4668ffde1e0f6fb4bf91
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74966112"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704221"
 ---
 # <a name="quickstart-configure-an-application-to-expose-web-apis"></a>Gyors útmutató: alkalmazás konfigurálása webes API-k megjelenítéséhez
 
@@ -31,7 +30,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan konfigurálhat alkalmazást �
 Először is győződjön meg arról, hogy az alábbi előfeltételek teljesülnek:
 
 * Megismerte a támogatott [engedélyekkel és hozzájárulással](v2-permissions-and-consent.md) kapcsolatos tudnivalókat, mivel fontos szem előtt tartania őket olyan alkalmazások készítésekor, amelyeket más felhasználóknak vagy alkalmazásoknak is használniuk kell.
-* Rendelkezik olyan bérlővel, amelyhez regisztrált alkalmazások tartoznak.
+* Rendelkezik egy olyan bérlővel, amelyen vannak alkalmazások regisztrálva.
   * Ha nincsenek regisztrált alkalmazásai, [ismerje meg, hogyan regisztrálhat alkalmazásokat a Microsoft Identity Platformon](quickstart-register-app.md).
 
 ## <a name="sign-in-to-the-azure-portal-and-select-the-app"></a>Bejelentkezés az Azure Portalra és az alkalmazás kiválasztása
@@ -129,7 +128,7 @@ Az alkalmazásjegyzékekkel kapcsolatos fogalmakról általános felvilágosít�
 
 Tekintse meg az alkalmazásokra vonatkozó alábbi rövid alkalmazásfelügyeleti útmutatókat is:
 
-* [Alkalmazás regisztrálása a Microsoft Identity Platformon](quickstart-register-app.md)
+* [Alkalmazás regisztrálása a Microsoft identitásplatformján](quickstart-register-app.md)
 * [Ügyfélalkalmazás konfigurálása a webes API-k elérésére](quickstart-configure-app-access-web-apis.md)
 * [Alkalmazás által támogatott fiókok módosítása](quickstart-modify-supported-accounts.md)
 * [Microsoft Identity Platformon regisztrált alkalmazás eltávolítása](quickstart-remove-app.md)

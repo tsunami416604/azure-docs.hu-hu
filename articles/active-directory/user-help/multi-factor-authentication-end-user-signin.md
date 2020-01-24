@@ -13,13 +13,12 @@ ms.date: 04/02/2017
 ms.author: lizross
 ms.reviewer: librown
 ms.custom: end-user, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86c7be7f786a4fcecc39ea9af552a0dc03f2fcac
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 648de7903a965d477343b974fdd615df45c3adc3
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233236"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705241"
 ---
 # <a name="sign-in-to-your-work-or-school-account-using-your-two-factor-verification-method"></a>Jelentkezzen be a munkahelyi vagy iskolai fiókjába a kétfaktoros ellenőrzési módszer használatával
 
@@ -61,7 +60,7 @@ Az alábbi információk az Microsoft Authenticator alkalmazás kétlépéses el
    ![A Microsoft értesítést küld](./media/multi-factor-authentication-end-user-signin/notify.png)
 
 3. Nyissa meg az értesítést a telefonján, és válassza az **ellenőrzés** kulcsot. Ha a vállalata PIN-kódot igényel, adja meg itt.
-4. Most be kell jelentkeznie.
+4. A bejelentkezés megtörtént.
 
 ### <a name="to-sign-in-using-a-verification-code-with-the-microsoft-authenticator-app"></a>Bejelentkezés ellenőrző kóddal a Microsoft Authenticator alkalmazással
 
@@ -83,7 +82,7 @@ Előfordulhat, hogy nem rendelkezik az előnyben részesített ellenőrzési mó
 
    ![Alternatív módszer használata](./media/multi-factor-authentication-end-user-signin/alt.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Ha problémák merülnek fel a kétlépéses ellenőrzéssel való bejelentkezés során, további információhoz juthat az [Azure multi-Factor Authenticationával](multi-factor-authentication-end-user-troubleshoot.md)kapcsolatban.
 
 - Ismerje meg, hogyan [kezelheti a kétlépéses ellenőrzési beállításokat](multi-factor-authentication-end-user-manage-settings.md).

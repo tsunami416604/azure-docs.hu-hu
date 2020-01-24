@@ -10,13 +10,12 @@ ms.workload: identity
 ms.topic: overview
 ms.date: 08/12/2019
 ms.author: lizross
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: e3a09ccdc867cb6d0e84a6e0f85e532839604f5e
-ms.sourcegitcommit: e42c778d38fd623f2ff8850bb6b1718cdb37309f
+ms.openlocfilehash: 078379c52c7e7fe5072ecc19c95d6b7e40b5f876
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2019
-ms.locfileid: "69619438"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705258"
 ---
 # <a name="set-up-an-authenticator-app-as-your-two-factor-verification-method"></a>Hitelesítő alkalmazás beállítása kétfaktoros ellenőrzési módszerként
 
@@ -30,9 +29,9 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-send-notifications"></a>Az Microsoft Authenticator alkalmazás beállítása értesítések küldéséhez
 
-1. A **további biztonsági ellenőrzés** lapon válassza a **Mobile App** **(1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
+1. A **további biztonsági ellenőrzés** **lapon válassza az** 1. **lépés: How to Contact You (útmutató)** lehetőséget.
 
-2. Válassza az **értesítések fogadása** az ellenőrzéshez lehetőséget, **hogy a hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
+2. Válassza az **értesítések fogadása az ellenőrzéshez** lehetőséget, **hogy a hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 
     ![További biztonsági ellenőrzés lap a Mobile App és az értesítések lehetőséggel](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-notification.png)
 
@@ -55,11 +54,11 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 6. A mobileszközön válassza a **jóváhagyás**lehetőséget.
 
-7. A számítógépen adja hozzá a mobileszköz-telefonszámát a **3. lépéshez: Ha elveszti a hozzáférést a Mobile App (alkalmazás** ) területen, kattintson a **tovább**gombra.
+7. A számítógépen adja hozzá a mobileszköz telefonszámát a **3. lépés: abban az esetben, ha elveszti a hozzáférést a Mobile App (alkalmazás** ) területen, majd kattintson a **tovább**gombra.
 
     Javasoljuk, hogy a mobileszköz-telefonszámot úgy adja hozzá, hogy biztonsági mentést végezzen, ha bármilyen okból nem fér hozzá a Mobile alkalmazáshoz, vagy nem használhatja azt.
 
-8. A **4. lépés: Használja továbbra is a** meglévő alkalmazások részét, másolja a megadott alkalmazás jelszavát, és illessze be biztonságosba.
+8. A **4. lépés: a meglévő alkalmazások használatának megtartása** területen másolja a megadott alkalmazás jelszavát, és illessze be biztonságosba.
 
     ![A további biztonsági ellenőrzés lap alkalmazások jelszavai területe](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -70,7 +69,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 ## <a name="set-up-the-microsoft-authenticator-app-to-use-verification-codes"></a>Az Microsoft Authenticator alkalmazás beállítása az ellenőrző kódok használatára
 
-1. A **további biztonsági ellenőrzés** lapon válassza a **Mobile App** **(1. lépés) elemet: Mi a teendő, ha** felvesszük Önnel a kapcsolatot.
+1. A **további biztonsági ellenőrzés** **lapon válassza az** 1. **lépés: How to Contact You (útmutató)** lehetőséget.
 
 2. Válassza az **ellenőrző kód használata** lehetőséget, hogy a **hogyan szeretné használni a mobileszköz-alkalmazást** , majd válassza a **beállítás**lehetőséget.
 
@@ -93,15 +92,15 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
     A hitelesítő alkalmazás tesztként kérni fogja az ellenőrző kódot.
 
-6. A Microsoft Authenticator alkalmazásból görgessen le a munkahelyi vagy iskolai fiókjába, másolja és illessze be a 6 számjegyű kódot az alkalmazásból a **2. lépésbe: Adja meg az ellenőrző kódot a számítógép Mobile** app (mobileszköz) mezőjében, majd kattintson az **ellenőrzés**gombra.
+6. A Microsoft Authenticator alkalmazásban görgessen le a munkahelyi vagy iskolai fiókjába, másolja és illessze be a 6 számjegyű kódot az alkalmazásból a **2. lépés: adja meg az ellenőrző kódot a Mobile App (mobileszköz** ) mezőben a számítógépén, majd válassza az **ellenőrzés**lehetőséget.
 
     ![További biztonsági ellenőrzés lap ellenőrző kód tesztelésével](media/multi-factor-authentication-verification-methods/multi-factor-authentication-auth-app-verification-test.png)
 
-7. A számítógépen adja hozzá a mobileszköz-telefonszámát a **3. lépéshez: Ha elveszti a hozzáférést a Mobile App (alkalmazás** ) területen, kattintson a **tovább**gombra.
+7. A számítógépen adja hozzá a mobileszköz telefonszámát a **3. lépés: abban az esetben, ha elveszti a hozzáférést a Mobile App (alkalmazás** ) területen, majd kattintson a **tovább**gombra.
 
     Javasoljuk, hogy a mobileszköz-telefonszámot úgy adja hozzá, hogy biztonsági mentést végezzen, ha bármilyen okból nem fér hozzá a Mobile alkalmazáshoz, vagy nem használhatja azt.
 
-8. A **4. lépés: Használja továbbra is a** meglévő alkalmazások részét, másolja a megadott alkalmazás jelszavát, és illessze be biztonságosba.
+8. A **4. lépés: a meglévő alkalmazások használatának megtartása** területen másolja a megadott alkalmazás jelszavát, és illessze be biztonságosba.
 
     ![A további biztonsági ellenőrzés lap alkalmazások jelszavai területe](media/multi-factor-authentication-verification-methods/multi-factor-authentication-app-passwords.png)
 
@@ -110,7 +109,7 @@ Beállíthat egy hitelesítő alkalmazást, hogy értesítést küldjön a mobil
 
 9. Válassza a **Done** (Kész) lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kétfaktoros ellenőrzési módszer beállítása után további metódusokat adhat hozzá, kezelheti a beállításokat és az alkalmazás jelszavait, bejelentkezhet, vagy segítséget kérhet a kétfaktoros ellenőrzésekkel kapcsolatos gyakori problémákkal kapcsolatban.
 

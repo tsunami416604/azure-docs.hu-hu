@@ -3,12 +3,12 @@ title: Azure-beli virtuális gépek biztonsági mentésének támogatási mátri
 description: Összefoglalja az Azure-beli virtuális gépek Azure Backup szolgáltatással történő biztonsági mentésével kapcsolatos támogatási beállításokat és korlátozásokat.
 ms.topic: conceptual
 ms.date: 09/13/2019
-ms.openlocfilehash: c57f625e7f44dc5de6a801ec93bad5433e9a9a66
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 8475e90e247aa2a0c081d25486c4ada0854a9e89
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294286"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705394"
 ---
 # <a name="support-matrix-for-azure-vm-backup"></a>Azure-beli virtuális gépek biztonsági mentésének támogatási mátrixa
 
@@ -33,16 +33,11 @@ Azure-beli virtuális gép biztonsági mentése a Backup Serverbe  | Fájlok/map
 További információ a biztonsági mentésről [a Backup Server használatával](backup-architecture.md#architecture-back-up-to-dpmmabs) és a [támogatási követelményekkel](backup-support-matrix-mabs-dpm.md)kapcsolatban.
 
 >[!NOTE]
-> A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.
+> **A Azure Backup mostantól támogatja a szelektív lemezek biztonsági mentését és visszaállítását az Azure-beli virtuális gép biztonsági mentési megoldásával.**
 >
 >Napjainkban a Azure Backup támogatja a virtuális gép összes lemezének (operációs rendszerének és adattípusának) biztonsági mentését egy virtuális gépen, a virtuális gépek biztonsági mentési megoldásával együtt. A lemezek kizárása funkcióval lehetősége van arra, hogy a virtuális gép számos adatlemezéről egy vagy több biztonsági másolatot készítsen. Ez hatékony és költséghatékony megoldást kínál a biztonsági mentési és visszaállítási igények kielégítésére. Mindegyik helyreállítási pont a biztonsági mentési műveletben található lemezek adatait tartalmazza, így a visszaállítási művelet során a megadott helyreállítási pontról visszaállított lemezek egy részhalmaza is elérhető. Ez a pillanatképből és a tárolóból történő visszaállításra vonatkozik.
 >
-> Ez a megoldás különösen a következő esetekben hasznos:
->  
->1. A kritikus fontosságú adatok biztonsági mentését csak egy lemezen végezheti el, és nem kíván biztonsági másolatot készíteni a virtuális géphez csatolt többi lemezről. Ez lekicsinyíti a biztonsági másolatok tárolási költségeit.  
->2. Más biztonsági mentési megoldásokkal rendelkezik a virtuális gép adataihoz. Például biztonsági mentést készíthet az adatbázisairól vagy az adatokról egy másik munkaterhelés biztonsági mentési megoldással, és az Azure-beli virtuális gép biztonsági mentését szeretné használni a többi lemez és adat számára, hogy egy hatékony és robusztus rendszer kihasználja az elérhető legjobb funkciókat.
->
->Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
+>**Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com**
 
 ## <a name="supported-backup-actions"></a>Támogatott biztonsági mentési műveletek
 

@@ -13,13 +13,12 @@ ms.date: 10/10/2018
 ms.author: lizross
 ms.reviewer: jairoc
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3d6385343ed26e5043e1491529fd2454caff4d04
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 55a6e9976706cb12a53dd5d540a2b6f2edb9e41b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74028560"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704629"
 ---
 # <a name="possible-fixes-for-the-you-cant-get-there-from-here-error-message"></a>A "nem érhető el innen" hibaüzenet lehetséges javításai
 
@@ -39,7 +38,7 @@ Győződjön meg arról, hogy az operációs rendszer támogatott verzióját fu
 
 - **Windows Server.** Windows Server 2008 R2 vagy újabb.
 
-- **macOS.** macOS X vagy újabb
+- **MacOS.** macOS X vagy újabb
 
 - **Android és iOS.** Az Android és iOS rendszerű mobil operációs rendszerek legújabb verziója
 

@@ -8,12 +8,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 01/08/2020
 ms.author: spelluru
-ms.openlocfilehash: 11548ba180a2dd6541240431d670812448c502b8
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981582"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705343"
 ---
 # <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Események küldése vagy fogadása Event Hubsról a Python használatával
 
@@ -42,7 +42,7 @@ Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szükség
     Telepítse ezt a csomagot az események fogadásához az Azure Blob Storage-ban ellenőrzőpont-tárolóként.
 
     ```cmd
-    pip install azure-eventhub-checkpointstoreblobaio
+    pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>Események küldése

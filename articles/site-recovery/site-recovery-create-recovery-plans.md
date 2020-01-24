@@ -1,22 +1,18 @@
 ---
 title: Helyreállítási tervek létrehozása/testreszabása Azure Site Recovery
 description: Megtudhatja, hogyan hozhat létre és szabhat testre helyreállítási terveket a vész-helyreállítási tervekhez a Azure Site Recovery szolgáltatás használatával.
-author: rayne-wiselman
-manager: carmonm
-ms.service: site-recovery
-ms.topic: article
-ms.date: 11/14/2019
-ms.author: raynew
-ms.openlocfilehash: 9bb5a1a3aa0c2a4681ddecb5e20df41d481755ec
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.topic: how-to
+ms.date: 01/23/2020
+ms.openlocfilehash: 6540317324a9f0d9bccc046ecf95824d4128bd09
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084507"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76705836"
 ---
 # <a name="create-and-customize-recovery-plans"></a>Helyreállítási tervek létrehozása és testreszabása
 
-Ez a cikk azt ismerteti, hogyan hozhat létre és szabhat testre egy helyreállítási tervet a [Azure site Recoveryban](site-recovery-overview.md). Mielőtt elkezdené, [további](recovery-plan-overview.md) információt a helyreállítási tervekről a következő témakörben olvashat:.
+Ez a cikk azt ismerteti, hogyan lehet helyreállítási tervet létrehozni és testre szabni a [Azure site Recovery](site-recovery-overview.md)feladatátvételéhez. Mielőtt elkezdené, [további](recovery-plan-overview.md) információt a helyreállítási tervekről a következő témakörben olvashat:.
 
 ## <a name="create-a-recovery-plan"></a>Helyreállítási terv létrehozása
 
@@ -24,22 +20,25 @@ Ez a cikk azt ismerteti, hogyan hozhat létre és szabhat testre egy helyreáll�
 2. A **helyreállítási terv létrehozása**lapon adja meg a csomag nevét.
 3. Válasszon forrást és célt a csomag gépei alapján, majd válassza a **Resource Manager** lehetőséget a telepítési modellhez. A forrás helyének rendelkeznie kell a feladatátvételhez és a helyreállításhoz engedélyezett gépekkel. 
 
-   **Feladatátvétel** | **Forrás** | **Cél** 
+    **Feladatátvétel** | **Forrás** | **Cél** 
    --- | --- | ---
-   Azure – Azure | Azure-régió |Azure-régió
-   VMware – Azure | Konfigurációs kiszolgáló | Azure
-   Fizikai gépek az Azure-ba | Konfigurációs kiszolgáló | Azure   
-   A VMM által az Azure-ba felügyelt Hyper-V  | VMM megjelenítendő neve | Azure
-   Hyper-V VMM nélkül az Azure-ba | Hyper-V hely neve | Azure
-   VMM – VMM |VMM rövid neve | VMM megjelenítendő neve 
+   Azure – Azure | Válassza ki az Azure-régiót | Válassza ki az Azure-régiót
+   VMware – Azure | A konfigurációs kiszolgáló kiválasztása | Az Azure kiválasztása
+   Fizikai gépek az Azure-ba | A konfigurációs kiszolgáló kiválasztása | Az Azure kiválasztása   
+   Hyper-V – Azure | A Hyper-V hely nevének kiválasztása | Az Azure kiválasztása
+   Hyper-V (VMM által felügyelt) az Azure-ba  | VMM-kiszolgáló kiválasztása | Az Azure kiválasztása
+  
+    Vegye figyelembe a következőket:
+    -  Helyreállítási tervet csak a forrás helyéről az Azure-ba történő feladatátvételre használhat. Nem használhat helyreállítási tervet az Azure-beli feladat-visszavételhez.
+    - A forrás helyének rendelkeznie kell a feladatátvételhez és a helyreállításhoz engedélyezett gépekkel. 
+    - A helyreállítási terv ugyanazzal a forrással és céllal rendelkező gépeket tartalmazhat. 
+    - A VMM által felügyelt VMware virtuális gépeket és Hyper-V virtuális gépeket is megadhatja ugyanabban a csomagban.
+    - A VMware virtuális gépek és a fizikai kiszolgálók is lehetnek ugyanabban a csomagban.
 
-   > [!NOTE]
-   > A helyreállítási terv ugyanazzal a forrással és céllal rendelkező gépeket tartalmazhat. A VMM által felügyelt VMware-és Hyper-V virtuális gépek nem lehetnek ugyanabban a csomagban. A VMware virtuális gépek és a fizikai kiszolgálók ugyanabban a csomagban lehetnek, ahol a forrás egy konfigurációs kiszolgáló.
-
-2. Az **elemek kiválasztása virtuális gépek**területen válassza ki a tervhez hozzáadni kívánt gépeket (vagy replikációs csoportot). Ezután kattintson az **OK** gombra.
+4. Az **elemek kiválasztása virtuális gépek**területen válassza ki a tervhez hozzáadni kívánt gépeket (vagy replikációs csoportot). Ezután kattintson az **OK** gombra.
     - A rendszer hozzáadja a gépek alapértelmezett csoportját (1. csoport) a csomaghoz. A feladatátvételt követően az ebben a csoportban lévő összes gép egy időben indul el.
     - Csak a megadott forrás-és célhelyek közül választhat ki gépeket. 
-1. A terv létrehozásához kattintson **az OK** gombra.
+5. A terv létrehozásához kattintson **az OK** gombra.
 
 ## <a name="add-a-group-to-a-plan"></a>Csoport hozzáadása egy csomaghoz
 
@@ -54,7 +53,7 @@ További csoportokat hoz létre, és különböző csoportokba helyezheti el a g
 
 A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával is testreszabhatja. Vegye figyelembe:
 
-- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információ](site-recovery-runbook-automation.md).
+- Ha az Azure-ba replikál, integrálhatja az Azure Automation-runbookok a helyreállítási tervbe. [További információk](site-recovery-runbook-automation.md).
 - Ha a System Center VMM által felügyelt Hyper-V virtuális gépeket replikál, létrehozhat egy parancsfájlt a helyszíni VMM-kiszolgálón, és belefoglalhatja azt a helyreállítási tervbe.
 - Parancsfájl hozzáadásakor a rendszer hozzáad egy új műveletet a csoporthoz. Például az 1. csoport előzetes lépéseinek egy készlete jön létre az 1. nevű *csoporttal: előzetes lépések*. A készleten belül minden előzetes lépés megjelenik. Az elsődleges helyen csak akkor adhat hozzá parancsfájlt, ha a VMM-kiszolgáló telepítve van.
 - Ha manuális műveletet ad hozzá, a helyreállítási terv futtatásakor a manuális művelet beszúrt pontján leáll. Megjelenik egy párbeszédpanel, amelyen megadhatja, hogy a manuális művelet befejeződött-e.
@@ -64,10 +63,10 @@ A helyreállítási tervet parancsfájl vagy manuális művelet hozzáadásával
     **Forgatókönyv** | **Feladatátvétel** | **Feladat-visszavétel**
     --- | --- | --- 
     Azure – Azure  | Forgatókönyv | Forgatókönyv
-    VMware – Azure | Forgatókönyv | NA 
-    Hyper-V a VMM-ből az Azure-ba | Forgatókönyv | Szkript
-    Replikálás Hyper-V-helyről az Azure-ba | Forgatókönyv | NA
-    VMM másodlagos VMM | Szkript | Szkript
+    VMware – Azure | Forgatókönyv | n/a 
+    Hyper-V a VMM-ből az Azure-ba | Forgatókönyv | Parancsprogramok használata
+    Hyper-V helyről az Azure-be | Forgatókönyv | n/a
+    VMM másodlagos VMM | Parancsprogramok használata | Parancsprogramok használata
 
 1. A helyreállítási tervben kattintson arra a lépésre, amelyre a műveletet hozzá szeretné adni, majd adja meg, hogy mikor történjen a művelet:
     1. Ha azt szeretné, hogy a művelet a csoportba tartozó gépek feladatátvétel után induljon el, válassza az **előzetes művelet hozzáadása**lehetőséget.

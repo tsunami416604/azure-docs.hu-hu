@@ -12,17 +12,16 @@ ms.date: 3/21/2019
 ms.author: lizross
 ms.reviewer: kasimpso
 ms.custom: user-help, seo-update-azuread-jan
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3ecdffae61fbadfd5d975af942861e24589c6fbf
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 787a0b38cecd76c58017e6dff3da1607ac283d23
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74233170"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76704867"
 ---
 # <a name="update-your-profile-and-work-or-school-account-information-on-the-my-apps-portal"></a>A profil és a munkahelyi vagy iskolai fiókadatok frissítése a saját alkalmazások portálján
 
-Használhatja munkahelyi vagy iskolai fiókját a webalapú **saját alkalmazások** portálján, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, hogy frissítse a profilját és a fiókadatok adatait, és megtekintse a **csoportok** adatait, és elvégezze a következő műveleteket **: alkalmazások és csoportok hozzáférési felülvizsgálatai** . Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
+Használhatja munkahelyi vagy iskolai fiókját a webalapú **My apps** portálon, hogy megtekintse és elindítsa a szervezete felhőalapú alkalmazásait, a profil-és fiókadatok frissítését, a **csoportok** adatainak megtekintését, valamint az alkalmazások és csoportok **hozzáférési felülvizsgálatának** elvégzését. Ha nincs hozzáférése a **saját alkalmazások** portálhoz, akkor engedélyt kell adnia az ügyfélszolgálatnak.
 
 [!INCLUDE [preview-notice](../../../includes/active-directory-end-user-my-apps-portal.md)]
 
@@ -77,7 +76,7 @@ Ha módosítani szeretné a munkahelyi vagy iskolai fiókjához tartozó jelszó
 
     ![Jelszó módosítása lap](media/my-apps-portal/my-apps-portal-change-password-page.png)
 
-3. Válassza a **Küldés**lehetőséget.
+3. Válassza a **Küldés** lehetőséget.
 
     A jelszó módosítása megtörténik. Be kell jelentkeznie minden olyan alkalmazásba, amelyre korábban bejelentkezett a munkahelyi vagy iskolai fiókjával.
 
@@ -108,7 +107,7 @@ A kétfaktoros ellenőrzéshez két ellenőrzési adatot, például jelszót és
 
     - **A Microsoft Authenticator alkalmazás beállítása.** Beállíthatja, hogy a Microsoft Authenticator alkalmazás az ellenőrzési módszerként működjön. További információ a Microsoft Authenticator alkalmazásról: [Mi a Microsoft Authenticator alkalmazás?](user-help-auth-app-overview.md)
 
-3. A módosítások mentéséhez kattintson a **Save (Mentés** ) gombra.
+3. Kattintson a **Mentés** gombra a módosítások mentéséhez.
 
 ## <a name="review-your-organizations-terms-of-use-statement"></a>Tekintse át a szervezet használati feltételeinek utasításait
 
