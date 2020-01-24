@@ -5,12 +5,12 @@ ms.assetid: bb51e565-e462-4c60-929a-2ff90121f41d
 ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
-ms.openlocfilehash: 1168faa1f39546dc75af28b885c9095cfffa1135
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 62d0bf776b2d0c97d95b992ed6a1fd2a356e467a
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75422136"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75967382"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe olyan alkalmazásokat, amelyekben a [Azure app Service](https://azure.microsoft.com/services/app-service/) egy egységként, a [JSON-erőforráscsoportok](https://en.wikipedia.org/wiki/Microservices) és a PowerShell-parancsfájlok használatával kiszámítható módon használható. 
@@ -123,7 +123,7 @@ Vegye figyelembe a következőket a Kiemelt JSON-kóddal kapcsolatban:
 * A `dependsOn` elem hatása, hogy Azure Resource Manager tudja, hogy mely erőforrások hozhatók létre párhuzamosan, és hogy mely erőforrásokat kell egymás után létrehozni. 
 
 #### <a name="app-service-app"></a>App Service-alkalmazás
-Most térjünk át a tényleges alkalmazásokra, amelyek bonyolultabbak. A JSON-vázlatban kattintson a [változók (' apiSiteName ')]] alkalmazásra a JSON-kód kiemeléséhez. Megfigyelheti, hogy a dolgok sokkal érdekesebbek. Erre a célra az alábbi funkciókkal fogunk beszélni:
+Most térjünk át a tényleges alkalmazásokra, amelyek bonyolultabbak. A JSON-vázlatban kattintson a [változók (' apiSiteName ')] alkalmazásra a JSON-kód kiemeléséhez. Megfigyelheti, hogy a dolgok sokkal érdekesebbek. Erre a célra az alábbi funkciókkal fogunk beszélni:
 
 ##### <a name="root-resource"></a>Gyökérszintű erőforrás
 Az alkalmazás két különböző erőforrástól függ. Ez azt jelenti, hogy a Azure Resource Manager csak akkor hozza létre az alkalmazást, ha a App Service tervet és a SQL Server példányt is létrehozták.
@@ -135,7 +135,7 @@ Az Alkalmazásbeállítások beágyazott erőforrásként is definiálva lesznek
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-6-webappsettings.png)
 
-A `config/appsettings``properties` elemében a következő formátumban van két Alkalmazásbeállítások: `"<name>" : "<value>"`.
+A  `properties`elemében a`config/appsettings` következő formátumban van két Alkalmazásbeállítások: `"<name>" : "<value>"`.
 
 * `PROJECT` egy olyan [KUDU-beállítás](https://github.com/projectkudu/kudu/wiki/Customizing-deployments) , amely az Azure üzembe helyezését mutatja be, amelyet egy többprojektes Visual Studio-megoldásban kell használni. Megmutatom, hogy a verziókövetés hogyan van konfigurálva, de mivel a ToDoApp-kód egy többprojektes Visual Studio-megoldásban van, erre a beállításra van szükség.
 * `clientUrl` egyszerűen egy alkalmazás-beállítás, amelyet az alkalmazás kód használ.
@@ -145,7 +145,7 @@ A kapcsolatok karakterlánca beágyazott erőforrásként is definiálva van.
 
 ![](./media/app-service-deploy-complex-application-predictably/examinejson-7-webappconnstr.png)
 
-A `config/connectionstrings``properties` elemében az egyes kapcsolódási karakterláncok neve: érték párokként is definiálva vannak, a `"<name>" : {"value": "…", "type": "…"}`adott formátumával. A `type` elem esetében a lehetséges értékek a következők: `MySql`, `SQLServer`, `SQLAzure`és `Custom`.
+A  `properties`elemében`config/connectionstrings` az egyes kapcsolódási karakterláncok neve: érték párokként is definiálva vannak, a `"<name>" : {"value": "…", "type": "…"}`adott formátumával. A `type` elem esetében a lehetséges értékek a következők: `MySql`, `SQLServer`, `SQLAzure`és `Custom`.
 
 > [!TIP]
 > A kapcsolatok karakterlánc-típusainak végleges listáját a következő parancs futtatásával Azure PowerShell: \[Enum]:: GetNames ("Microsoft. WindowsAzure. commands. Utilities. websites. Services. webentitások. DatabaseType")
@@ -252,10 +252,10 @@ A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely e
 ## <a name="more-resources"></a>További források
 * [Azure Resource Manager sablon nyelve](../azure-resource-manager/templates/template-syntax.md)
 * [Azure Resource Manager sablonok készítése](../azure-resource-manager/templates/template-syntax.md)
-* [Azure Resource Manager sablon függvények](../azure-resource-manager/resource-group-template-functions.md)
-* [Alkalmazás üzembe helyezése Azure Resource Manager sablonnal](../azure-resource-manager/resource-group-template-deploy.md)
+* [Azure Resource Manager sablon függvények](../azure-resource-manager/templates/template-functions.md)
+* [Alkalmazás üzembe helyezése Azure Resource Manager sablonnal](../azure-resource-manager/templates/deploy-powershell.md)
 * [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/powershell-azure-resource-manager.md)
-* [Erőforráscsoport-telepítések hibaelhárítása Az Azure-ban](../azure-resource-manager/resource-manager-common-deployment-errors.md)
+* [Erőforráscsoport-telepítések hibaelhárítása Az Azure-ban](../azure-resource-manager/templates/common-deployment-errors.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

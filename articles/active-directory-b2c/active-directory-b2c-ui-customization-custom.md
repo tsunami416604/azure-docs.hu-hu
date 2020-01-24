@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/11/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1ac0f59ea709e25f3d71a78ece5ebf40690bd3be
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: db9b95f82a18072af538d4aa946431dcef8d9cff
+ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949626"
+ms.lasthandoff: 01/16/2020
+ms.locfileid: "76154641"
 ---
 # <a name="customize-the-user-interface-of-your-application-using-a-custom-policy-in-azure-active-directory-b2c"></a>Testre szabhatja az alkalmazás felhasználói felületét egy egyéni házirend használatával Azure Active Directory B2C
 
@@ -106,7 +106,7 @@ Az alábbi lépések végrehajtásával konfigurálja a blob Storage-t az idegen
 1. Az **engedélyezett fejlécek**mezőbe írjon be egy csillagot (*).
 1. A közzétett **fejlécek**esetében írjon be egy csillagot (*).
 1. A **Max Age**értéknél adja meg a 200 értéket.
-1. Kattintson a **Save** (Mentés) gombra.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="test-cors"></a>CORS tesztelése
 
@@ -120,7 +120,7 @@ Ellenőrizze, hogy készen áll-e a következő lépések végrehajtásával:
 
 A felhasználói felület testreszabásának konfigurálásához másolja a **ContentDefinition** és annak alárendelt elemeit az alapfájlból a kiterjesztések fájlba.
 
-1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em> . Ez az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
+1. Nyissa meg a szabályzat alapfájlját. Például <em>`SocialAndLocalAccounts/` **`TrustFrameworkBase.xml`** </em>. Ez az egyéni házirend alapszintű csomagban található egyik házirend-fájl, amelyet az előfeltételben kell megszereznie az [Egyéni szabályzatok használatának első lépéseiben](https://docs.microsoft.com/azure/active-directory-b2c/active-directory-b2c-get-started-custom).
 1. Keresse meg és másolja a **ContentDefinitions** elem teljes tartalmát.
 1. Nyissa meg a kiterjesztési fájlt. Például: *TrustFrameworkExtensions. XML*. Keresse meg a **BuildingBlocks** elemet. Ha az elem nem létezik, adja hozzá.
 1. Illessze be a **ContentDefinitions** elem teljes tartalmát, amelyet a **BuildingBlocks** elem gyermekeiként másolt.
@@ -146,19 +146,19 @@ A felhasználói felület testreszabásának konfigurálásához másolja a **Co
 
 1. Mentse a bővítmények fájlt.
 
-## <a name="upload-your-updated-custom-policy"></a>Töltse fel a frissített egyéni szabályzatot
+## <a name="upload-and-test-your-updated-custom-policy"></a>A frissített egyéni szabályzat feltöltése és tesztelése
+
+### <a name="upload-the-custom-policy"></a>Egyéni szabályzat feltöltése
 
 1. Győződjön meg arról, hogy a Azure AD B2C bérlőjét tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki a bérlőt tartalmazó könyvtárat.
-1. Válassza ki az **összes szolgáltatást** a Azure Portal bal felső sarkában, majd keresse meg és válassza ki a **Azure ad B2C**.
-1. Válassza az **identitási élmény keretrendszert**.
-1. Kattintson **a minden házirend**elemre.
-1. Kattintson a **szabályzat feltöltése**elemre.
+1. Keresse meg és válassza ki a **Azure ad B2C**.
+1. A **szabályzatok**területen válassza az **identitási élmény keretrendszere**elemet.
+1. Válassza az **egyéni házirend feltöltése**lehetőséget.
 1. Töltse fel a korábban módosított kiterjesztéseket tartalmazó fájlt.
 
-## <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a **Futtatás most** használatával
+### <a name="test-the-custom-policy-by-using-run-now"></a>Az egyéni házirend tesztelése a **Futtatás most** használatával
 
-1. A **Azure ad B2C** lapon lépjen a **minden házirend**elemre.
-1. Válassza ki a feltöltött egyéni szabályzatot, majd kattintson a **Futtatás most** gombra.
+1. Válassza ki a feltöltött szabályzatot, majd válassza a **Futtatás most**lehetőséget.
 1. Regisztrálnia kell egy e-mail-cím használatával.
 
 ## <a name="reference"></a>Leírások

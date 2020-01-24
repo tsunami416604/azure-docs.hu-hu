@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 09/05/2018
-ms.openlocfilehash: 860694a750ae313f04aceab924429dcf08ecbb66
-ms.sourcegitcommit: cf36df8406d94c7b7b78a3aabc8c0b163226e1bc
+ms.openlocfilehash: f915764deaa70117b96a42c5e7310b691125d731
+ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/09/2019
-ms.locfileid: "73887543"
+ms.lasthandoff: 01/15/2020
+ms.locfileid: "75979847"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](https://docs.microsoft.com/azure/monitoring-and-diagnostics/azure-diagnostics) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -52,7 +52,7 @@ A következő szakaszban megtudhatja, hogyan igazíthatja saját Cloud Service-p
 ## <a name="plan-resources-and-resource-groups"></a>Erőforrások és erőforráscsoportok tervezése
 Az alkalmazás telemetria tárolása, elemzése és megjelenítése Application Insights típusú Azure-erőforrásban történik. 
 
-Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok a költségek kezelésére, a csoporttagok hozzáférésének biztosítására, valamint a frissítések egyetlen koordinált tranzakcióban történő központi telepítésére szolgálnak. [Írhat például egy parancsfájlt](../../azure-resource-manager/resource-group-template-deploy.md) egy Azure Cloud Service üzembe helyezéséhez és annak Application Insights figyelési erőforrásaihoz egy művelettel.
+Mindegyik erőforrás egy erőforráscsoportba tartozik. Az erőforráscsoportok a költségek kezelésére, a csoporttagok hozzáférésének biztosítására, valamint a frissítések egyetlen koordinált tranzakcióban történő központi telepítésére szolgálnak. [Írhat például egy parancsfájlt](../../azure-resource-manager/templates/deploy-powershell.md) egy Azure Cloud Service üzembe helyezéséhez és annak Application Insights figyelési erőforrásaihoz egy művelettel.
 
 ### <a name="resources-for-components"></a>Az összetevők erőforrásai
 Javasoljuk, hogy hozzon létre egy külön erőforrást az alkalmazás minden összetevőjéhez. Így minden webes szerepkörhöz és feldolgozói szerepkörhöz létre kell hoznia egy erőforrást. Az egyes összetevőket külön is elemezheti, de létrehozhat egy [irányítópultot](../../azure-monitor/app/overview-dashboard.md) , amely összefoglalja az összes összetevőből származó legfontosabb diagramokat, így egyetlen nézetben összehasonlíthatja és figyelheti azokat. 

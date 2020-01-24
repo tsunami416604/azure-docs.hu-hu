@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: bonova
 ms.author: bonova
 ms.reviewer: sstein, carlrab, vanto
-ms.date: 11/27/2019
-ms.openlocfilehash: d5b3733947876958b4d72da4cb7bb0f10a3a9165
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.date: 01/21/2020
+ms.openlocfilehash: fb9b665f5631e6992966679b1dc0864539fde543
+ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614944"
+ms.lasthandoff: 01/22/2020
+ms.locfileid: "76514555"
 ---
 # <a name="what-is-azure-sql-database-managed-instance"></a>Mi Azure SQL Database felügyelt példány?
 
@@ -72,7 +72,7 @@ A felügyelt példányok legfontosabb funkciói a következő táblázatban lát
 
 ## <a name="vcore-based-purchasing-model"></a>Virtuálismag-alapú vásárlási modell
 
-A felügyelt példányok [virtuális mag-alapú vásárlási modellje](sql-database-service-tiers-vcore.md) rugalmasságot, irányítást, átláthatóságot és egyszerű módszert biztosít a helyszíni számítási feladatok követelményeinek a felhőbe való lefordításához. Ez a modell lehetővé teszi a számítási feladatok, a memória és a tárterület módosítását a munkaterhelés igényei alapján. A virtuális mag modell akár 30%-os megtakarítást is igénybe vehet, [Azure Hybrid Benefit SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
+A felügyelt példányok [virtuális mag-alapú vásárlási modellje](sql-database-service-tiers-vcore.md) rugalmasságot, irányítást, átláthatóságot és egyszerű módszert biztosít a helyszíni számítási feladatok követelményeinek a felhőbe való lefordításához. Ez a modell lehetővé teszi a számítási feladatok, a memória és a tárterület módosítását a munkaterhelés igényei alapján. A virtuális mag modell akár 55%-os megtakarítást is igénybe vehet, [Azure Hybrid Benefit SQL Server](https://azure.microsoft.com/pricing/hybrid-benefit/).
 
 A virtuális mag modellben a hardver generációi közül választhat.
 
@@ -325,10 +325,10 @@ A következő táblázat több, a Transact SQL szolgáltatáson keresztül elér
 
 |Tulajdonság|Value (Díj)|Megjegyzés|
 |---|---|---|
-|`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez az érték ugyanaz, mint a SQL Databaseban.|
+|`@@VERSION`|Microsoft SQL Azure (RTM) – 12.0.2000.8 2018-03-07 Copyright (C) 2018 Microsoft Corporation.|Ez az érték ugyanaz, mint a SQL Databaseban. Ez **nem** jelzi az SQL Engine 12-es verzióját (SQL Server 2014). A felügyelt példány mindig a legújabb, stabil SQL Engine-verziót futtatja, amely egyenlő vagy magasabb, mint a legutolsó elérhető RTM-verzió SQL Server.  |
 |`SERVERPROPERTY ('Edition')`|SQL Azure|Ez az érték ugyanaz, mint a SQL Databaseban.|
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
-|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>`.`<dnsPrefix>`. database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
+|`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban:`<instanceName>`.`<dnsPrefix>`.database.windows.net, ahol a `<instanceName>` az ügyfél által megadott név, míg a `<dnsPrefix>` a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98") automatikusan generált része (például)|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
 ## <a name="next-steps"></a>Következő lépések
 
