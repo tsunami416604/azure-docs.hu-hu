@@ -95,6 +95,10 @@
           href: concepts-data-access-security-private-link.md
         - name: Adattitkosítás
           href: concepts-data-encryption-mysql.md
+        - name: Adattitkosítás
+          href: concepts-data-encryption-mysql.md
+        - name: Azure AD-hitelesítés
+          href: concepts-azure-ad-authentication.md
     - name: Az üzletmenet folytonossága
       items:
         - name: Az üzletmenet folytonossága – bevezetés
@@ -238,6 +242,10 @@
       items:
         - name: Azure Portal
           href: howto-data-encryption-portal.md
+    - name: Azure AD-integráció
+      items:
+        - name: Az Azure AD-integráció konfigurálása
+          href: howto-configure-sign-in-azure-ad-authentication.md
     - name: Kiszolgáló újraindítása
       items:
         - name: Azure Portal
