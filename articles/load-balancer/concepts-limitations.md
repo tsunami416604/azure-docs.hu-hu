@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 01/14/2019
 ms.author: allensu
-ms.openlocfilehash: 31c247199bfbfc57ffef376649edefd487fd1962
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: f570e0cd7361b365a4034e318511cf8227c425a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263540"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722475"
 ---
 # <a name="load-balancer-components-and-limitations"></a>Összetevők és korlátozások Load Balancer
 Azure Load Balancer számos kulcsfontosságú összetevőt tartalmaz a működéséhez.  Ezek az összetevők az előfizetésben a Azure Portal, az Azure CLI vagy a Azure PowerShell használatával konfigurálhatók.  
@@ -58,7 +58,7 @@ Az alapszintű Load Balancer nem támogatja a kimenő szabályokat.
 
 A Load Balancer az alábbi alapvető képességeket biztosítja a TCP- és UDP-alkalmazások számára:
 
-* **Terheléselosztási algoritmus**: a Azure Load Balancer használatával terheléselosztási szabályt hozhat létre, amellyel terjesztheti a frontenden a háttérrendszer-példányokra érkező forgalmat. A Load Balancer kivonatoló algoritmust használ a bejövő folyamatok elosztásához, és átírja a folyamatok fejléceit a háttérbeli készlet példányaiba. A kiszolgálók új folyamatok fogadására használhatók, ha az állapot-mintavétel állapota Kifogástalan.
+* **Terheléselosztási algoritmus**: a Azure Load Balancer használatával terheléselosztási szabályt hozhat létre, amellyel terjesztheti a frontenden a háttérrendszer-példányokra érkező forgalmat. A Load Balancer kivonatoló algoritmust használ a bejövő folyamatok (nem bájt) elosztásához, és átírja a folyamatok fejléceit a háttérbeli készlet példányaiba. A kiszolgálók új folyamatok fogadására használhatók, ha az állapot-mintavétel állapota Kifogástalan.
 Alapértelmezés szerint a Load Balancer 5 rekordos kivonatot használ. 
 
    A kivonat a következőket tartalmazza: 

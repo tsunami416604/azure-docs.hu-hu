@@ -1,22 +1,22 @@
 ---
-title: Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészletben – csoportos adatelemzési folyamat
+title: Azure HDInsight Hadoop-fürt használata 1 TB-adatkészletben – csoportos adatelemzési folyamat
 description: A csoportos adatelemzési folyamat használata egy HDInsight Hadoop-fürtöt alkalmazó teljes körű forgatókönyvhöz, amely nagy (1 TB) nyilvánosan elérhető adatkészletet használó modell készítésére és üzembe helyezésére használható.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8d47f6f5b983c0f785c76d1b2cede815dda699a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75968731"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721404"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
 
@@ -25,7 +25,7 @@ Ez a bemutató azt mutatja be, hogyan használható a csoportos adatelemzési fo
 Az útmutatóban ismertetett feladatok elvégzéséhez egy IPython-jegyzetfüzet is használható. Azok a felhasználók, akik szeretnék kipróbálni ezt a megközelítést, a [kaptár ODBC-kapcsolódási témakör használatával](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb) tekintse meg a Criteo útmutatót.
 
 ## <a name="dataset"></a>Criteo adatkészlet leírása
-A Criteo-adatok Egy kattintásos előrejelzési adatkészlet, amely körülbelül 370GB (~ 1,3 TB tömörítetlen), amely több mint 4 300 000 000 rekordot tartalmaz. A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)által elérhetővé tett adatok közül 24 nap múlva kerül sor. Az adatszakértők kényelme érdekében az általunk a kísérlethez elérhetővé tett adatmennyiség kibontva.
+A Criteo adatok Egy kattintásos előrejelzési adatkészlet, amely 370 GB gzip tömörített TSV-fájlokkal rendelkezik (~ 1,3 TB tömörítetlen), amely több mint 4 300 000 000 rekordot tartalmaz. A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/)által elérhetővé tett adatok közül 24 nap múlva kerül sor. Az adatszakértők kényelme érdekében az általunk a kísérlethez elérhetővé tett adatmennyiség kibontva.
 
 Az adatkészlet minden rekordja 40 oszlopot tartalmaz:
 
@@ -44,7 +44,7 @@ Az oszlopok névtelenek, és a "Col1" (a Label oszlop esetében) és a "Col40" (
 
 Az adatkészlet numerikus és kategorikus oszlopaiban hiányoznak értékek. A hiányzó értékek kezelésére szolgáló egyszerű módszert ismertetjük. Az adatokra vonatkozó további részleteket a rendszer a kaptár-táblákba való tároláskor vizsgálja meg.
 
-**Definíció:** *átkattintási arány (CTR):* ez az adatkattintások százalékos aránya. Ebben a Criteo-adatkészletben a CTR körülbelül 3,3% vagy 0,033.
+**Definíció:** *átkattintási arány (CTR):* ez a metrika az adatokban található kattintások százalékos arányát határozza meg. Ebben a Criteo-adatkészletben a CTR körülbelül 3,3% vagy 0,033.
 
 ## <a name="mltasks"></a>Példák az előrejelzési feladatokra
 Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
@@ -56,39 +56,39 @@ Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
 2. **Regresszió**: előre jelezheti, hogy az ad-ra való kattintás valószínűsége a felhasználói funkciókból származik.
 
 ## <a name="setup"></a>HDInsight Hadoop-fürt beállítása adatelemzéshez
-**Megjegyzés:** Ez általában egy **rendszergazdai** feladat.
+**Megjegyzés:** Ez a lépés általában egy **rendszergazdai** feladat.
 
 Állítsa be az Azure adatelemzési környezetét a prediktív elemzési megoldások HDInsight-fürtökkel való létrehozásához három lépésben:
 
 1. [Storage-fiók létrehozása](../../storage/common/storage-account-create.md): ezt a Storage-fiókot használjuk az Azure Blob Storageban tárolt adattároláshoz. Itt tárolódnak a HDInsight-fürtökben használt adathalmazok.
 2. [Azure HDInsight Hadoop-fürtök testreszabása az adatelemzéshez](customize-hadoop-cluster.md): Ez a lépés egy Azure HDInsight Hadoop-fürtöt hoz létre, amely az összes csomóponton telepítve van a 64 bites Anaconda Python 2,7. A HDInsight-fürt testreszabásakor két fontos lépést kell végrehajtania (lásd ebben a témakörben).
 
-   * A létrehozáskor az 1. lépésben létrehozott Storage-fiókot az HDInsight-fürthöz kell kapcsolni. Ez a Storage-fiók a fürtön belül feldolgozható adatok elérésére szolgál.
-   * A létrehozás után engedélyeznie kell a távoli hozzáférést a fürt fő csomópontja számára. Jegyezze meg az itt megadott távelérési hitelesítő adatokat (a fürt által a létrehozáskor megadott értéktől eltérő): az alábbi eljárások elvégzéséhez szükség van rájuk.
+   * Az 1. lépésben létrehozott Storage-fiók összekapcsolása a HDInsight-fürttel a létrehozásakor. Ez a Storage-fiók a fürtön belül feldolgozható adatok elérésére szolgál.
+   * A fürt fő csomópontjának távoli elérésének engedélyezése a létrehozása után. Jegyezze meg az itt megadott távelérési hitelesítő adatokat (a fürt létrehozásakor megadott hitelesítő adatoktól eltérő): végezze el az alábbi eljárásokat.
 3. [Azure Machine learning Studio (klasszikus) munkaterület létrehozása](../studio/create-workspace.md): ez a Azure Machine learning munkaterület a gépi tanulási modellek létrehozásához használatos a HDInsight-fürtön végzett kezdeti adatfelderítés és-vizsgálat után.
 
 ## <a name="getdata"></a>Nyilvános forrásból származó adatok beolvasása és felhasználása
-A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészletet úgy érheti el, ha a hivatkozásra kattint, elfogadja a használati feltételeket, és megadja a nevet. Itt látható egy pillanatkép arról, hogy ez hogyan néz ki:
+A [Criteo](https://labs.criteo.com/downloads/download-terabyte-click-logs/) adatkészletet úgy érheti el, ha a hivatkozásra kattint, elfogadja a használati feltételeket, és megadja a nevet. Itt látható egy pillanatkép:
 
 ![Criteo feltételeinek elfogadása](./media/hive-criteo-walkthrough/hLxfI2E.png)
 
 A **letöltéshez** kattintson a Tovább gombra, hogy többet tudjon meg az adatkészletről és annak rendelkezésre állásáról.
 
-Az adat egy nyilvános [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) -beli helyen található: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. Az "wasb" az Azure Blob Storage helyére utal.
+Az adat egy [Azure Blob Storage](../../storage/blobs/storage-dotnet-how-to-use-blobs.md) -beli helyen található: wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/. Az "wasb" az Azure Blob Storage helyére utal.
 
-1. Az ebben a nyilvános blob-tárolóban található információ a kibontott adatmennyiség három almappájából áll.
+1. Az Azure Blob Storage-ban tárolt adattárolók három almappából állnak a kibontott adatsorokból.
 
    1. Az almappa *nyers/darabszám/* az első 21 nap adat – napról\_00 nap\_20
    2. Az almappa *nyers/betanítása/* egyetlen nap adatból áll, a nap\_21
    3. Az almappa *nyers/tesztelés/* két napos adatból áll, nap\_22 és nap\_23
-2. Azok számára, akik a nyers gzip-adatokkal szeretnének kezdeni, ezek a fő mappában ( *RAW/* as day_NN. gz) is elérhetők, ahol az NN a 00 és 23 közötti értékre mutat.
+2. A nyers gzip-adatok a fő mappában ( *RAW/* as day_NN. gz) is elérhetők, ahol az NN a 00 és 23 közötti értékre mutat.
 
 A jelen útmutató későbbi részében a kaptárak létrehozásakor a további, a helyi letöltéseket nem igénylő adatelérést, megismerést és modellezést is elmagyarázhatja.
 
 ## <a name="login"></a>Bejelentkezés a fürt átjárócsomóponthoz
-A fürt átjárócsomóponthoz való bejelentkezéshez használja a [Azure Portal](https://ms.portal.azure.com) a fürt megkereséséhez. Kattintson a bal oldali HDInsight Elephant ikonra, majd kattintson duplán a fürt nevére. Lépjen a **konfiguráció** lapra, kattintson duplán a Csatlakozás ikonra az oldal alján, és amikor a rendszer kéri, adja meg a távelérési hitelesítő adatait. Ekkor a fürt átjárócsomóponthoz kerül.
+A fürt átjárócsomóponthoz való bejelentkezéshez használja a [Azure Portal](https://ms.portal.azure.com) a fürt megkereséséhez. Kattintson a bal oldali HDInsight Elephant ikonra, majd kattintson duplán a fürt nevére. Navigáljon a **konfiguráció** lapra, kattintson duplán az oldal alján található Csatlakozás ikonra, és amikor a rendszer kéri, adja meg a távelérési hitelesítő adatait a fürt átjárócsomóponthoz.
 
-Itt láthatja, hogy a fürt átjárócsomóponthoz általában a következőképpen jelenik meg:
+A fürt átjárócsomóponthoz a következőképpen néz ki:
 
 ![Bejelentkezés a fürtbe](./media/hive-criteo-walkthrough/Yys9Vvm.png)
 
@@ -114,7 +114,7 @@ A Criteo adatkészlethez tartozó kaptár-táblázatok létrehozásához nyissa 
 
 Miután a struktúra REPL megjelenik egy "kaptár >" jellel, egyszerűen kivágja és beilleszti a lekérdezést a végrehajtásához.
 
-A következő kód egy "criteo" adatbázist hoz létre, majd 4 táblát hoz létre:
+A következő kód létrehozza a "criteo" adatbázist, majd négy táblát hoz létre:
 
 * egy *tábla, amely a (z)* \_00 és a (z)\_20. nap közötti napokra épül.
 * egy táblázat, amely a (z)\_21. napra épülő *vonat-adatkészletként használható* , és
@@ -153,17 +153,17 @@ A szkript [minta&#95;&#95;struktúrája&#95;criteo&#95;-&#95;adatbázist&#95;és
     LINES TERMINATED BY '\n'
     STORED AS TEXTFILE LOCATION 'wasb://criteo@azuremlsampleexperiments.blob.core.windows.net/raw/test/day_23';
 
-Az összes táblázat külső, így egyszerűen az Azure Blob Storage (wasb) helyeire mutathat.
+Az összes táblázat külső, így az Azure Blob Storage (wasb) helyeire mutathat.
 
 **A kaptár-lekérdezések két módon hajthatók végre:**
 
-1. **A kaptár repl parancssori**felületének használata: az első a "kaptár" parancs kiadása, valamint egy lekérdezés másolása és beillesztése a kaptár repl-parancssorba. Ehhez tegye a következőket:
+* **A kaptár repl parancssor használata**: az első a "kaptár" parancs kiadása, és a lekérdezés másolása és beillesztése a kaptár repl parancssorba:
 
         cd %hive_home%\bin
         hive
 
      Most a REPL parancssorában a lekérdezés kivágása és beillesztése végrehajtja azt.
-2. **Lekérdezések mentése fájlba és a parancs végrehajtása**: a második az, hogy mentse a lekérdezéseket egy. HQL fájlba ([&#95;minta struktúra&#95;Create&#95;criteo&#95;Database&#95;and&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következő parancsot a lekérdezés végrehajtásához:
+* **Lekérdezések mentése fájlba és a parancs végrehajtása**: a második az, hogy mentse a lekérdezéseket egy ". HQL" fájlba ([&#95;minta struktúra&#95;Create&#95;criteo&#95;Database&#95;and&#95;Tables. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_create_criteo_database_and_tables.hql)), majd adja ki a következő parancsot a lekérdezés végrehajtásához:
 
         hive -f C:\temp\sample_hive_create_criteo_database_and_tables.hql
 
@@ -225,7 +225,7 @@ A szokásos módon a következő parancs kiadásával is meghívhatja a parancsf
 
 Végezetül vizsgáljuk meg a tesztelési adatkészletben szereplő tesztelési példák számát a\_23. nap alapján.
 
-A parancs ehhez hasonlóan jelenik meg, mint az imént látható (lásd a [&#95;&#95;kaptárak száma&#95;criteo&#95;teszt&#95;nap&#95;23&#95;példát. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
+Az ehhez hasonló parancs a következőhöz hasonlóan jelenik meg (lásd a [&#95;&#95;kaptárak száma&#95;criteo&#95;teszt&#95;nap&#95;23&#95;példáit. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_count_criteo_test_day_23_examples.hql)):
 
         SELECT COUNT(*) FROM criteo.criteo_test_day_23;
 
@@ -245,7 +245,7 @@ Ez a címke eloszlását eredményezi:
         0       185922280
         Time taken: 459.435 seconds, Fetched: 2 row(s)
 
-Vegye figyelembe, hogy a pozitív feliratok százalékos aránya körülbelül 3,3% (az eredeti adatkészlettel összhangban).
+A pozitív feliratok százalékos aránya körülbelül 3,3% (az eredeti adatkészlettel összhangban).
 
 ### <a name="histogram-distributions-of-some-numeric-variables-in-the-train-dataset"></a>Néhány numerikus változó hisztogram eloszlása a vonat adatkészletében
 A kaptár natív "hisztogram-\_numerikus" függvényével megtudhatja, hogy a numerikus változók eloszlása milyen módon fog kinézni. Itt láthatók a [minta&#95;struktúra&#95;criteo&#95;hisztogramjának&#95;tartalma. HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_histogram_numeric.hql):
@@ -282,7 +282,7 @@ Ez a következőket eredményezi:
         65510   3446
         Time taken: 317.851 seconds, Fetched: 20 row(s)
 
-Az oldalirányú nézet – a struktúra kibontása a struktúrában úgy szolgálja ki, hogy a szokásos lista helyett egy SQL-szerű kimenetet hozzon létre. Vegye figyelembe, hogy az ebben a táblázatban szereplő első oszlop a bin centert, a második pedig a raktárhely gyakoriságát tartalmazza.
+Az oldalirányú nézet – a struktúra kibontása a struktúrában úgy szolgálja ki, hogy a szokásos lista helyett egy SQL-szerű kimenetet hozzon létre. Ebben a táblázatban az első oszlop a bin központnak felel meg, a második pedig a raktárhely gyakorisága.
 
 ### <a name="approximate-percentiles-of-some-numeric-variables-in-the-train-dataset"></a>Néhány numerikus változó hozzávetőleges százalékos értéke a vonat adatkészletében
 A numerikus változók esetében is a hozzávetőleges százalékos érték kiszámítása. A kaptár natív "percentilis-\_kb-ban" Ez a számunkra. A [minta&#95;struktúra&#95;criteo&#95;hozzávetőleges&#95;százalékos értéke. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_approximate_percentiles.hql) a következők:
@@ -306,7 +306,7 @@ A következő hozamok:
         19011825
         Time taken: 448.116 seconds, Fetched: 1 row(s)
 
-Vegye figyelembe, hogy a Col15 egyedi értékeket 19M. Az ilyen nagy dimenziós kategorikus változók kódolásához a naiv módszerek (például az "egy gyors kódolás") használata nem valósítható meg. Különösen fontos, hogy a [tanulás](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) hatékony és robusztus módszere az, hogy a probléma hatékonyan kezelhető legyen.
+A Col15 egyedi értékeket 19M. Az ilyen nagy dimenziós kategorikus változók kódolásához a naiv módszerek (például az "egy gyors kódolás") használata nem valósítható meg. Különösen fontos, hogy a [tanulás](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) hatékony és robusztus módszere az, hogy a probléma hatékonyan kezelhető legyen.
 
 Végül tekintse meg a többi kategorikus oszlop egyedi értékeinek számát is. A [&#95;minta&#95;struktúra criteo&#95;egyedi&#95;értékeket&#95;tartalmaz több&#95;kategorikus. a HQL](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_unique_values_multiple_categoricals.hql) a következők:
 
@@ -323,7 +323,7 @@ Vegye figyelembe, hogy a Col20 kivételével az összes többi oszlopnak sok egy
 
 ### <a name="co-occurrence-counts-of-pairs-of-categorical-variables-in-the-train-dataset"></a>A betanítási adatkészletben található kategorikus változók számainak együttes előfordulása
 
-A kategorikus változók együttes előfordulási száma szintén érdekes. Ezt a [&#95;&#95;criteo&#95;párosított&#95;&#95;kategorikus Counts](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql)kód használatával lehet meghatározni. HQL:
+A kategorikus változók számának eloszlása is érdekes. Ezt a [&#95;&#95;criteo&#95;párosított&#95;&#95;kategorikus Counts](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/DataScienceScripts/sample_hive_criteo_paired_categorical_counts.hql)kód használatával lehet meghatározni. HQL:
 
         SELECT Col15, Col16, COUNT(*) AS paired_count FROM criteo.criteo_train GROUP BY Col15, Col16 ORDER BY paired_count DESC LIMIT 15;
 
@@ -405,9 +405,9 @@ Ezzel készen áll arra, hogy felhasználja a modelleket az Azure Machine Learni
 Az utolsó fontos összetevő a Azure Machine Learningre való áttérés előtt, amely a Count (darabszám) táblára vonatkozik. A következő alszakaszban részletesen tárgyalja a Count táblát.
 
 ## <a name="count"></a>A Count tábla rövid megbeszélése
-Ahogy látta, számos kategorikus változónak nagyon magas a dimenzióját. Az útmutatóban egy olyan hatékony technikát kell [megtanulnia](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) , amely a változók hatékony és robusztus módon történő kódolását mutatja be. A technikával kapcsolatos további információkat a megadott hivatkozás tartalmaz.
+Ahogy látta, számos kategorikus változó magas dimenzióját rendelkezik. Az útmutatóban egy olyan hatékony technikát kell [megtanulnia](https://blogs.technet.com/b/machinelearning/archive/2015/02/17/big-learning-made-easy-with-counts.aspx) , amely a változók hatékony és robusztus módon történő kódolását mutatja be. A technikával kapcsolatos további információkat a megadott hivatkozás tartalmaz.
 
-[!NOTE]
+>[!NOTE]
 >Ebben az útmutatóban a hangsúly a Count Tables használatával történik a nagy dimenziós kategorikus funkciók kompakt ábrázolásának létrehozásához. Ez nem az egyetlen módszer a kategorikus funkciók kódolására; a más módszerekkel kapcsolatos további információkért az érdeklődő felhasználók [egy-egy gyors kódolást](https://en.wikipedia.org/wiki/One-hot) és a [funkció-kivonatolást](https://en.wikipedia.org/wiki/Feature_hashing)is igénybe vehetnek.
 >
 
@@ -458,22 +458,22 @@ A Machine learning-kísérletben használható mentett adatkészlet kiválasztá
 >
 >
 
-### <a name="step2"></a>2. lépés: hozzon létre egy egyszerű kísérletet Azure Machine Learning a kattintások és a kattintások előrejelzéséhez
+### <a name="step2"></a>2. lépés: kísérlet létrehozása Azure Machine Learningban a kattintások és a kattintások előrejelzéséhez
 A Azure Machine Learning Studio (klasszikus) kísérlet így néz ki:
 
 ![Machine Learning kísérlet](./media/hive-criteo-walkthrough/xRpVfrY.png)
 
-Most vizsgáljuk meg a kísérlet legfontosabb összetevőit. Először húzza a mentett betanítási és tesztelési adatkészleteket a kísérleti vászonra.
+Most vizsgáljuk meg a kísérlet legfontosabb összetevőit. Húzza a mentett betanítási és tesztelési adatkészleteket a kísérleti vászonra először.
 
 #### <a name="clean-missing-data"></a>Hiányzó adatok törlése
 A **tiszta hiányzó** adatmodul a neve azt sugallja, hogy a felhasználó által megadott módon törli a hiányzó adatforrásokat. Tekintse meg ezt a modult a következő megjelenítéséhez:
 
 ![Hiányzó adatértékek törlése](./media/hive-criteo-walkthrough/0ycXod6.png)
 
-Itt úgy döntött, hogy lecseréli az összes hiányzó értéket 0-ra. Más lehetőségek is megtalálhatók, amelyek a modul legördülő menüjében láthatók.
+Itt választhatja ki az összes hiányzó értéket 0-ra. Más lehetőségek is megtalálhatók, amelyek a modul legördülő menüjében láthatók.
 
 #### <a name="feature-engineering-on-the-data"></a>Az adatkezelési funkciók tervezése
-A nagyméretű adathalmazok néhány kategorikus funkciójának több millió egyedi értéke lehet. A naiv módszerekkel, például az ilyen nagy dimenziós kategorikus funkciók ábrázolására szolgáló, egy gyors kódolással teljes mértékben nem valósítható meg. Ez a bemutató azt mutatja be, hogyan használhatók a Count funkciók a beépített Azure Machine Learning modulok használatával a nagy dimenziós kategorikus változók kompakt ábrázolásának létrehozásához. A végeredmény a modell kisebb mérete, a gyorsabb betanítási idő és a teljesítménnyel kapcsolatos mérőszámok, amelyek hasonlóan hasonlítanak más technikák használatára.
+A nagyméretű adathalmazok néhány kategorikus funkciójának több millió egyedi értéke lehet. A naiv módszerekkel, például az ilyen nagy dimenziós kategorikus funkciók ábrázolására szolgáló, egy gyors kódolással teljes mértékben nem valósítható meg. Ez a bemutató azt mutatja be, hogyan használhatók a Count funkciók a beépített Azure Machine Learning modulok használatával a nagy dimenziós kategorikus változók kompakt ábrázolásának létrehozásához. A végeredmény a modell kisebb mérete, a gyorsabb betanítási idő és a teljesítménnyel kapcsolatos mérőszámok, amelyek hasonlóak más módszerek használatához.
 
 ##### <a name="building-counting-transforms"></a>Számlálási átalakítások kiépítése
 A Count-funkciók létrehozásához használja a Azure Machine Learningban elérhető, **számlálási transzformációs** modult. A modul így néz ki:
@@ -505,7 +505,7 @@ Miután a Count-átalakító elkészült, a felhasználó kiválaszthatja, hogy 
 Ebben az esetben, ahogy az látható, a rendszer a log-oddsot használja, és figyelmen kívül hagyja a back off oszlopot. Olyan paramétereket is beállíthat, mint például a garbage bin küszöbértéke, hány pszeudo-korábbi példát kell hozzáadni a simításhoz, illetve hogy a Laplacian-zajt vagy sem használja. Mindezek speciális funkciók, és meg kell jegyezni, hogy az alapértelmezett értékek jó kiindulási pont azoknak a felhasználóknak, akik az ilyen típusú szolgáltatások generációja számára újak.
 
 ##### <a name="data-transformation-before-generating-the-count-features"></a>Adatátalakítás a Count-funkciók létrehozása előtt
-Most a hangsúly egy fontos pont, amely a betanítási és tesztelési célú adatelemzést is tartalmazza, mielőtt ténylegesen generálja a Count funkcióit. Vegye figyelembe, hogy a Count átalakító alkalmazása előtt két **R-parancsfájl** -modult használunk.
+Most a hangsúly egy fontos pont, amely a betanítási és tesztelési célú adatelemzést is tartalmazza, mielőtt ténylegesen generálja a Count funkcióit. A Count átalakító alkalmazása előtt két **végrehajtási R-parancsfájl** -modult használunk.
 
 ![R-parancsfájl-modulok végrehajtása](./media/hive-criteo-walkthrough/aF59wbc.png)
 
@@ -542,7 +542,7 @@ Először ki kell választania egy tanulót. A tanulónk kétosztályos, megnöv
 
 ![Kétosztályos megnövelt döntési fa paraméterei](./media/hive-criteo-walkthrough/bH3ST2z.png)
 
-A kísérlethez válassza az alapértelmezett értékeket. Vegye figyelembe, hogy az alapértelmezett értékek általában hasznosak, és jó módszert biztosítanak a teljesítmény gyors alapértékeinek beszerzéséhez. Ha az alaptervet választja, a teljesítmény növelése a paraméterek elindításával végezhető el.
+A kísérlethez válassza az alapértelmezett értékeket. Az alapértelmezett értékek az értelmesek, és jó módszer a gyors alapkonfigurációk beszerzésére a teljesítményre. Ha az alaptervet választja, a teljesítmény növelése a paraméterek elindításával végezhető el.
 
 #### <a name="train-the-model"></a>A modell tanítása
 A betanításhoz egyszerűen hívja meg a **betanítási modell** modulját. A két kategóriába tartozó bemenetek a kétosztályos kibővített döntési fa-tanulók és a vonat adatkészletei. Ez itt látható:
@@ -555,18 +555,18 @@ Ha már rendelkezik egy betanított modellel, készen áll a tesztelési adatké
 ![A Score model (Modell montozása) modul](./media/hive-criteo-walkthrough/fydcv6u.png)
 
 ### <a name="step4"></a>4. lépés: a modell kiértékelése
-Végezetül elemezni kell a modell teljesítményét. A két osztályos (bináris) besorolási probléma esetén a megfelelő mérték a AUC. Ennek megjelenítéséhez csatlakoztassa a **pontszám modell** modult a **modell kiértékelése** modulhoz. Ha **a** **modell kiértékelése** modulban a vizualizáció elemre kattint, az a következőhöz hasonló ábrát eredményez:
+Végezetül elemezni kell a modell teljesítményét. A két osztályos (bináris) besorolási probléma esetén a megfelelő mérték a AUC. A görbe megjelenítéséhez csatlakoztassuk a **pontszám modell** modult egy **kiértékelési modell** modulhoz. Ha **a** **modell kiértékelése** modulban a vizualizáció elemre kattint, az a következőhöz hasonló ábrát eredményez:
 
 ![A modul BDT modell kiértékelése](./media/hive-criteo-walkthrough/0Tl0cdg.png)
 
-A bináris (vagy két osztály) besorolási problémák esetében az előrejelzési pontosság jó mértéke a görbe alatti terület (AUC). A következő szakaszban a modell használatával kapcsolatos eredményeket láthatjuk a tesztelési adatkészleten. Ehhez kattintson a jobb gombbal a **modell kiértékelése** modul kimeneti portjára, majd **jelenítse**meg a következőt:.
+A bináris (vagy két osztály) besorolási problémák esetében az előrejelzési pontosság jó mértéke a görbe alatti terület (AUC). A következő szakaszban a modell használatával kapcsolatos eredményeket láthatjuk a tesztelési adatkészleten. Kattintson a jobb gombbal a **modell kiértékelése** modul kimeneti portjára, majd **jelenítse**meg a vizualizációt.
 
 ![Modell kiértékelése modul megjelenítése](./media/hive-criteo-walkthrough/IRfc7fH.png)
 
 ### <a name="step5"></a>5. lépés: a modell közzététele webszolgáltatásként
 Egy Azure Machine Learning-modell webszolgáltatásként való közzétételének lehetősége, amely a lehető legszélesebb körben elérhető. Ezt követően bárki megteheti, hogy meghívja a webszolgáltatást olyan bemeneti adatokkal, amelyekhez előrejelzések szükségesek, és a webszolgáltatás a modellt használja az előrejelzések visszaadásához.
 
-Ehhez először mentse a betanított modellt egy betanított modell-objektumként. Ezt úgy teheti meg, hogy a jobb gombbal a **Train Model** modulra kattint, és a **Save as betanított modell** lehetőséget használja.
+Először mentse a betanított modellt egy betanított modell-objektumként. ehhez kattintson a jobb gombbal a **vonat modell** modulra, és használja a **Save as betanított modell** lehetőséget.
 
 Következő lépésként hozzon létre bemeneti és kimeneti portokat a webszolgáltatás számára:
 
@@ -582,7 +582,7 @@ Célszerű az **alkalmazás SQL-transzformációs** modulját használni, hogy c
 Most már készen áll egy kis kísérlet futtatására, amely a webszolgáltatás közzétételére használható.
 
 #### <a name="generate-input-data-for-webservice"></a>Bemeneti adatok előállítása a webszolgáltatáshoz
-Nulladik lépésként, mivel a Count tábla nagy méretű, néhány sornyi vizsgálati adatból áll, és kimeneti adatokat állít elő belőle a Count funkcióival. Ez a webszolgáltatás bemeneti adatformátuma lehet. Ez itt látható:
+Nulladik lépésként, mivel a Count tábla nagy méretű, néhány sornyi vizsgálati adatból áll, és kimeneti adatokat állít elő belőle a Count funkcióival. Ez a kimenet a webszolgáltatások bemeneti adatformátuma lehet, ahogy az itt látható:
 
 ![BDT bemeneti adatok létrehozása](./media/hive-criteo-walkthrough/OEJMmst.png)
 
@@ -592,7 +592,7 @@ Nulladik lépésként, mivel a Count tábla nagy méretű, néhány sornyi vizsg
 >
 
 #### <a name="scoring-experiment-for-publishing-webservice"></a>Pontozási kísérlet a webszolgáltatások közzétételéhez
-Először is látható, hogy ez hogyan néz ki. Az alapvető struktúra egy **pontszám-modell** modul, amely elfogadja a betanított modell objektumát és az előző lépésekben generált bemeneti adatok néhány sorát a **Count Képtulajdonság** modul használatával. Használja az "Oszlopok kiválasztása az adatkészletben" lehetőséget a mutatós címkék és a pontszám valószínűségek kivetítéséhez.
+Először is az alapvető struktúra egy **pontszám-modell** modul, amely elfogadja a betanított modell objektumát és az előző lépésekben generált bemeneti adatok néhány sorát a **Count Képtulajdonság** modul használatával. Használja az "Oszlopok kiválasztása az adatkészletben" lehetőséget a mutatós címkék és a pontszám valószínűségek kivetítéséhez.
 
 ![Oszlopok kiválasztása az adathalmazban](./media/hive-criteo-walkthrough/kRHrIbe.png)
 
@@ -613,7 +613,7 @@ Figyelje meg a webszolgáltatások két hivatkozását a bal oldalon:
 * A **kérelem/válasz** szolgáltatás (vagy az RR) egyetlen előrejelzéshez készült, és az, amit ebben a workshopban használtak.
 * A kötegelt **végrehajtási** szolgáltatás (BES) a Batch-előrejelzésekhez használatos, és megköveteli, hogy az előrejelzések elvégzéséhez használt bemeneti adatok az Azure Blob Storageban legyenek.
 
-A link **kérelem/válasz** elemre kattintva egy olyan oldalra kerül, amely a Pythonban és az R C#-ben előre definiált kódot ad nekünk. Ez a kód kényelmesen használható a webszolgáltatásra irányuló hívások kezdeményezéséhez. Vegye figyelembe, hogy a lapon lévő API-kulcsot a hitelesítéshez kell használni.
+A link **kérelem/válasz** elemre kattintva egy olyan oldalra kerül, amely a Pythonban és az R C#-ben előre definiált kódot ad nekünk. Ez a kód kényelmesen használható a webszolgáltatásra irányuló hívások kezdeményezéséhez. A lapon az API-kulcsot kell használni a hitelesítéshez.
 
 Érdemes átmásolni ezt a Python-kódot egy új cellába a IPython notebookon.
 
@@ -621,11 +621,11 @@ Itt látható a megfelelő API-kulccsal rendelkező Python-kód szegmense.
 
 ![Python-kód](./media/hive-criteo-walkthrough/f8N4L4g.png)
 
-Vegye figyelembe, hogy az alapértelmezett API-kulcsot a webszolgáltatások API-kulcsa váltotta fel. Ha a IPython notebookon ezen a cellán a **Futtatás** gombra kattint, az a következő választ eredményezi:
+Az alapértelmezett API-kulcsot a webszolgáltatás API-kulcsa váltotta fel. Ha a IPython notebookon ezen a cellán a **Futtatás** gombra kattint, az a következő választ eredményezi:
 
 ![IPython válasz](./media/hive-criteo-walkthrough/KSxmia2.png)
 
-A következő két teszt példán (a Python-szkript JSON-keretrendszerében) a válaszokat a "pontozásos címkék, a mutató valószínűségek" formában kapja meg. Ebben az esetben az alapértelmezett értékek úgy lettek kiválasztva, hogy az előre definiált kód (0 az összes numerikus oszlopra, a "value" karakterláncot pedig az összes kategorikus oszlop esetében) adja meg.
+A Python-parancsfájl JSON-keretrendszerében feltett két tesztelési példát a "pontozásos címkék", a mutatós valószínűségek című űrlapon kaphat választ. Ebben az esetben az alapértelmezett értékek úgy lettek kiválasztva, hogy az előre definiált kód (0 az összes numerikus oszlopra, a "value" karakterláncot pedig az összes kategorikus oszlop esetében) adja meg.
 
-Ez az útmutató azt mutatja be, hogyan lehet kezelni a nagyméretű adatkészleteket Azure Machine Learning használatával. Elindított egy terabájtos adatmennyiséget, létrehozta az előrejelzési modellt, és üzembe helyezte azt webszolgáltatásként a felhőben.
+Az útmutató bemutatja, hogyan kezelheti a nagyméretű adatkészleteket Azure Machine Learning használatával. Elindított egy terabájtos adatmennyiséget, létrehozta az előrejelzési modellt, és üzembe helyezte azt webszolgáltatásként a felhőben.
 

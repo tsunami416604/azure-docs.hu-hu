@@ -1,6 +1,6 @@
 ---
-title: Beavatkozás nélküli telepítés az Azure AD-alkalmazásproxy-összekötő |} A Microsoft Docs
-description: A cikk ismerteti, hogyan hajtsa végre az Azure AD alkalmazásproxy-összekötő a helyszíni alkalmazások biztonságos távoli hozzáférést biztosítanak a felügyelet nélküli telepítéséhez.
+title: Csendes telepítés Azure AD alkalmazás proxy-összekötővel | Microsoft Docs
+description: Az Azure AD Application Proxy-összekötő felügyelet nélküli telepítését ismerteti a helyszíni alkalmazások biztonságos távoli elérésének biztosításához.
 services: active-directory
 documentationcenter: ''
 author: msmimart
@@ -11,62 +11,62 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2018
+ms.date: 01/23/2020
 ms.author: mimart
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0eb3e52dfd02bd7948f1b5ffd908ac1255118008
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 45ca40e9717394690374f5ca289a69e5c22551eb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65782925"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712006"
 ---
-# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Hozzon létre egy felügyelet nélküli telepítési parancsfájlt, az Azure AD-alkalmazásproxy-összekötő
+# <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Felügyelet nélküli telepítési parancsfájl létrehozása az Azure AD Application Proxy-összekötőhöz
 
-Ez a témakör segít a Windows PowerShell-parancsfájl, amely lehetővé teszi a felügyelet nélküli telepítési és regisztrációs az Azure AD-alkalmazásproxy-összekötő létrehozásához.
+Ebből a témakörből megtudhatja, hogyan hozhat létre felügyelet nélküli telepítést és regisztrációt lehetővé tevő Windows PowerShell-parancsfájlt az Azure AD Application Proxy-összekötőhöz.
 
-Ez a funkció akkor hasznos, ha meg szeretné:
+Ez a funkció akkor hasznos, ha a következőket kívánja használni:
 
-* Telepítse a Windows-kiszolgálók, amely nem rendelkezik a felhasználói felület engedélyezve van, vagy a távoli asztal nem érhetők el.
-* Telepíti és regisztrálja a számos összekötő egyszerre.
-* Az összekötő telepítése és a egy másik eljárás részeként regisztrációs integrálhatja.
-* Hozzon létre egy szabványos server-lemezképet, az összekötő bits tartalmaz, de nincs regisztrálva.
+* Telepítse az összekötőt olyan Windows-kiszolgálókra, amelyeken nincs engedélyezve a felhasználói felület, vagy nem férhet hozzá Távoli asztalhoz.
+* Egyszerre több összekötőt is telepíthet és regisztrálhat.
+* Az összekötő telepítésének és regisztrálásának integrálása egy másik eljárás részeként.
+* Hozzon létre egy szabványos kiszolgálói rendszerképet, amely tartalmazza az összekötő biteit, de nincs regisztrálva.
 
-Az a [Application Proxy connector](application-proxy-connectors.md) regisztrálni kell az Azure AD-címtárhoz, egy alkalmazás-rendszergazda és a jelszóval rendelkezik használatát. Rendszerint ezeket az információkat is meg kell adni egy felugró párbeszédpanel összekötő telepítése során, de a PowerShell használatával automatizálható ehelyett Ez a folyamat.
+Az [alkalmazásproxy-összekötő](application-proxy-connectors.md) működéséhez regisztrálnia kell az Azure ad-címtárban az alkalmazás-rendszergazda és a jelszó használatával. Általában ez az információ az összekötő telepítésekor kerül be egy előugró párbeszédpanelen, de a PowerShell használatával automatizálhatja ezt a folyamatot.
 
-Felügyelet nélküli telepítéséhez két lépésből áll. Először telepítse az összekötőt. Másodszor az összekötő regisztrálására az Azure ad-ben. 
+A felügyelet nélküli telepítéshez két lépés szükséges. Először telepítse az összekötőt. Másodszor regisztrálja az összekötőt az Azure AD-ben. 
 
 ## <a name="install-the-connector"></a>Az összekötő telepítése
-A következő lépések segítségével telepítse az összekötőt, akkor regisztrálás nélkül:
+A következő lépésekkel telepítheti az összekötőt a regisztráció nélkül:
 
 1. Nyisson meg egy parancssort.
-2. Futtassa a következő parancsot, amelyben a /q azt jelenti, hogy csendes telepítést. A csendes telepítést nem kérni fogja, hogy a végfelhasználói licencszerződés elfogadásához.
+2. Futtassa a következő parancsot, amelyben a/q csendes telepítést jelent. A csendes telepítés nem kéri, hogy fogadja el a végfelhasználói licencszerződést.
    
         AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
 
-## <a name="register-the-connector-with-azure-ad"></a>Az összekötő regisztrálására az Azure ad-vel
-Az összekötő regisztrálására használható két módszer van:
+## <a name="register-the-connector-with-azure-ad"></a>Az összekötő regisztrálása az Azure AD-ben
+Az összekötő regisztrálására két módszer használható:
 
-* A Windows PowerShell hitelesítő objektumot használ az összekötő regisztrálása
-* A létrehozott kapcsolat nélküli tokennel összekötő regisztrálása
+* Az összekötő regisztrálása Windows PowerShell hitelesítőadat-objektum használatával
+* Az összekötő regisztrálása offline kapcsolattal létrehozott jogkivonat használatával
 
-### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>A Windows PowerShell hitelesítő objektumot használ az összekötő regisztrálása
-1. Hozzon létre egy Windows PowerShell hitelesítő objektumot `$cred` , amely tartalmazza a megfelelő rendszergazdai felhasználónév és jelszó a címtár számára. Futtassa a következő parancsot, és cserélje le *\<felhasználónév\>* és  *\<jelszó\>* :
+### <a name="register-the-connector-using-a-windows-powershell-credential-object"></a>Az összekötő regisztrálása Windows PowerShell hitelesítőadat-objektum használatával
+1. Hozzon létre egy Windows PowerShell hitelesítő adatokat tartalmazó objektumot `$cred`, amely tartalmazza a címtárhoz tartozó rendszergazdai felhasználónevet és jelszót. Futtassa a következő parancsot, és cserélje le *\<username\>* és *\<Password\>* :
    
         $User = "<username>"
         $PlainPassword = '<password>'
         $SecurePassword = $PlainPassword | ConvertTo-SecureString -AsPlainText -Force
         $cred = New-Object –TypeName System.Management.Automation.PSCredential –ArgumentList $User, $SecurePassword
-2. Lépjen a **C:\Program Files\Microsoft AAD-alkalmazás alkalmazásproxy-összekötő** , és futtassa az alábbi szkriptet az a `$cred` létrehozott objektum:
+2. Nyissa meg a **C:\Program FILES\MICROSOFT HRE app proxy-összekötőt** , és futtassa a következő szkriptet a létrehozott `$cred` objektum használatával:
    
         .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Credentials -Usercredentials $cred -Feature ApplicationProxy
 
-### <a name="register-the-connector-using-a-token-created-offline"></a>A létrehozott kapcsolat nélküli tokennel összekötő regisztrálása
-1. Ez a kódrészlet vagy az alábbi PowerShell-parancsmagok az értékek AuthenticationContext osztállyal offline jogkivonat létrehozása:
+### <a name="register-the-connector-using-a-token-created-offline"></a>Az összekötő regisztrálása offline kapcsolattal létrehozott jogkivonat használatával
+1. Hozzon létre egy offline tokent a AuthenticationContext osztály használatával az alábbi kódrészlet vagy PowerShell-parancsmagok értékeivel:
 
-    **C# használatával:**
+    **Használat C#:**
 
         using System;
         using System.Diagnostics;
@@ -88,7 +88,7 @@ Az összekötő regisztrálására használható két módszer van:
         /// <summary>
         /// The reply address of the connector application in AAD
         /// </summary>
-        static readonly Uri ConnectorRedirectAddress = new Uri("urn:ietf:wg:oauth:2.0:oob");
+        static readonly Uri ConnectorRedirectAddress = new Uri("https://login.microsoftonline.com/common/oauth2/nativeclient");
 
         /// <summary>
         /// The AppIdUri of the registration service in AAD
@@ -121,7 +121,7 @@ Az összekötő regisztrálására használható két módszer van:
             tenantID = authResult.TenantId;
         }
 
-    **PowerShell-lel:**
+    **A PowerShell használata:**
 
         # Locate AzureAD PowerShell Module
         # Change Name of Module to AzureAD after what you have installed
@@ -141,7 +141,7 @@ Az összekötő regisztrálására használható két módszer van:
         [string]$ConnectorAppId = "55747057-9b5d-4bd4-b387-abf52a8bd489"
         
         # The reply address of the connector application in AAD
-        [uri]$ConnectorRedirectAddress = "urn:ietf:wg:oauth:2.0:oob" 
+        [uri]$ConnectorRedirectAddress = "https://login.microsoftonline.com/common/oauth2/nativeclient" 
         
         # The AppIdUri of the registration service in AAD
         [uri]$RegistrationServiceAppIdUri = "https://proxy.cloudwebappproxy.net/registerapp"
@@ -171,17 +171,17 @@ Az összekötő regisztrálására használható két módszer van:
         
         #endregion
 
-2. Miután a jogkivonatot, hozzon létre egy SecureString a jogkivonat használatával:
+2. Ha rendelkezik a jogkivonattal, hozzon létre egy SecureString a jogkivonat használatával:
 
    `$SecureToken = $Token | ConvertTo-SecureString -AsPlainText -Force`
 
-3. Futtassa a következő Windows PowerShell-parancsot, és cserélje le \<GUID bérlői\> a címtár-azonosító:
+3. Futtassa a következő Windows PowerShell-parancsot, és cserélje le \<bérlő GUID-\> a címtár-azonosítójával:
 
    `.\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy`
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 * [Alkalmazások közzététele saját tartománynév használatával](application-proxy-configure-custom-domain.md)
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
-* [Problémák merültek fel az alkalmazásproxy használatával](application-proxy-troubleshoot.md)
+* [Az Application proxyval kapcsolatos problémák elhárítása](application-proxy-troubleshoot.md)
 
 

@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/08/2020
-ms.openlocfilehash: fc0bac99aa70d7028412c68563a3024720fa49d9
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 9fdbf3888b4302946fe20259a333842caa122836
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75745400"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717788"
 ---
 # <a name="faq-about-using-azure-database-migration-service"></a>Gyakori kérdések a Azure Database Migration Service használatáról
 
@@ -96,8 +96,8 @@ Egy tipikus, egyszerű adatbázis-áttelepítés során a következőket végezh
 1. Hozzon létre egy céladatbázis (eke) t.
 2. Mérje fel a forrás-adatbázis (oka) t.
     * A homogén áttelepítések esetében a meglévő adatbázis (oka) t a [DMA](https://www.microsoft.com/download/details.aspx?id=53595)használatával értékelheti ki.
-    * A különböző áttelepítések esetén (a versengő forrásokból) mérje fel a meglévő adatbázis (oka) t a [SSMA](https://aka.ms/get-ssma)-mel. A SSMA használatával is konvertálhatja az adatbázis-objektumokat, és áttelepítheti a sémát a célként megadott platformra.
-3. Hozzon létre egy Azure Database Migration Service-példányt.
+    * Heterogén áttelepítések esetén (a versengő forrásokból) mérje fel a meglévő adatbázis (oka) t a [SSMA](https://aka.ms/get-ssma). A SSMA használatával is konvertálhatja az adatbázis-objektumokat, és áttelepítheti a sémát a célként megadott platformra.
+3. Azure Database Migration Service-példány létrehozása.
 4. Hozzon létre egy áttelepítési projektet, amely meghatározza a forrásadatbázis (oka) t, a célként megadott adatbázist és az áttelepítendő táblákat.
 5. Indítsa el a teljes betöltést.
 6. Válassza ki a következő érvényesítést.

@@ -1,21 +1,21 @@
 ---
-title: A projekthez tartozó feladatok vezethet a a csoportos adatelemzési folyamat
+title: A projekthez vezető feladatok a csoportos adatelemzési folyamat során
 description: Egy projekt feladatainak részletes bemutatása egy csoportos adatelemzési folyamat munkacsoportján
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 8a94a2ae5298bbee8bb1c9c0fa044eb3189147be
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: 4a4d3a1480a852218e698862a509c4af45e49eb8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244380"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714410"
 ---
 # <a name="project-lead-tasks-in-the-team-data-science-process"></a>Projekt-érdeklődői feladatok a csoportos adatelemzési folyamatban
 
@@ -45,10 +45,10 @@ Ez az oktatóanyag feltételezi, hogy a csoportvezető és a [Team](team-lead-ta
 - A Team template és a Utilities **tárházai**
 - A szervezeti fiók **engedélyei** a projekt adattárainak létrehozásához és szerkesztéséhez
 
-A Tárházak klónozásához és a tartalom módosításához a helyi gépen vagy Data Science Virtual Machineon (DSVM), illetve az Azure file Storage beállításával és a DSVM való csatlakoztatásával a következőkre is szüksége lesz:
+A Tárházak klónozásához és a tartalmak módosításához a helyi gépen vagy Data Science Virtual Machineon (DSVM), illetve az Azure file Storage beállítása és csatlakoztatása a DSVM-hez az alábbi ellenőrzőlista is szükséges:
 
 - Azure-előfizetés.
-- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
 - Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
@@ -95,6 +95,6 @@ Ha testre kell szabnia a projekt-tárház tartalmát, hogy az megfeleljen a proj
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
-- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
-- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
+- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
+- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
 - [Adatelemzési csapat Egyéni közreműködő feladatai](project-ic-tasks.md)

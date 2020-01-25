@@ -12,12 +12,12 @@ ms.date: 10/17/2019
 ms.author: martinco
 ms.reviewer: arvindha
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: b1e8128066794932abaca4290a5c896354522544
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 44ed85ac8171484cccf39c0b048a5c7a026a657d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732450"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711590"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
 
@@ -25,7 +25,7 @@ Számos szervezet olyan szoftveres (SaaS) alkalmazásokra támaszkodik, mint a S
 
 A Azure Active Directory (Azure AD) automatikus felhasználó-kiépítés leegyszerűsíti ezt a folyamatot azáltal, hogy az üzleti szabályok alapján biztonságosan automatizálja a felhasználói identitások létrehozását, karbantartását és eltávolítását az SaaS-alkalmazásokban. Ez az automatizálás lehetővé teszi, hogy hatékonyan méretezze az Identitáskezelés rendszereit mind a felhőalapú, mind a hibrid környezetekben, miközben kibővíti a felhőalapú megoldásoktól való függőségét.
 
-A funkciók jobb megismeréséhez lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) segítségével.
+A funkciók jobb megismeréséhez lásd: a felhasználók kiépítésének [automatizálása és az SaaS-alkalmazások kiépítése a Azure Active Directory](user-provisioning.md) segítségével.
 
 ## <a name="learn"></a>Oktatóanyagok
 
@@ -59,7 +59,7 @@ Ez a cikk a következő kifejezéseket használja:
 
 * Egyszeri bejelentkezés (SSO) – lehetővé teszi, hogy a felhasználó egyszer jelentkezzen be, és hozzáférhessen az összes SSO-kompatibilis alkalmazáshoz. A felhasználók kiépítés kontextusában az SSO az a felhasználó, aki egyetlen fiókkal fér hozzá az összes olyan rendszerhez, amely a felhasználók automatikus kiépítés használja.
 
-* Forrásoldali rendszer – az Azure AD által kiépített felhasználók tárháza. Az Azure AD a legtöbb előre integrált kiépítési összekötőhöz tartozó forrásoldali rendszer. Vannak azonban kivételek a felhőalapú alkalmazásokhoz, például az SAP, a munkanap és az AWS esetében. Például tekintse meg a [felhasználók üzembe helyezése a munkahelyről az ad-be](https://docs.microsoft.com/azure/active-directory/saas-apps/workday-inbound-tutorial)című témakört.
+* Forrásoldali rendszer – az Azure AD által kiépített felhasználók tárháza. Az Azure AD a legtöbb előre integrált kiépítési összekötőhöz tartozó forrásoldali rendszer. Vannak azonban kivételek a felhőalapú alkalmazásokhoz, például az SAP, a munkanap és az AWS esetében. Például tekintse meg a [felhasználók üzembe helyezése a munkahelyről az ad-be](../saas-apps/workday-inbound-tutorial.md)című témakört.
 
 * Célrendszer – azon felhasználók tárháza, akikre az Azure AD kiépít. A célként megadott rendszer általában SaaS-alkalmazás, például ServiceNow, Zscaler és Slack. A célként megadott rendszer lehet egy helyszíni rendszer is, például az AD.
 
@@ -73,8 +73,8 @@ Ez a cikk a következő kifejezéseket használja:
 | Videók| [Mi a felhasználók üzembe helyezése az aktív Azure-címtárban?](https://youtu.be/_ZjARPpI6NI) <br> [A felhasználók üzembe helyezésének központi telepítése az Active Directory Azure-címtárban](https://youtu.be/pKzyts6kfrw) <br> [A Salesforce integrálása az Azure AD-vel: a felhasználók üzembe helyezésének automatizálása](https://azure.microsoft.com/resources/videos/integrating-salesforce-with-azure-ad-how-to-automate-user-provisioning/) |
 | Online képzések| SkillUp online: [Identitások kezelése](https://skillup.online/courses/course-v1:Microsoft+AZ-100.5+2018_T3/about) <br> Ismerje meg, hogyan integrálhatja az Azure AD-t számos SaaS-alkalmazással, és hogyan biztosíthatja a felhasználók hozzáférését az alkalmazásokhoz. |
 | Könyvek| [Modern hitelesítés a Azure Active Directory for web Applications (fejlesztői segédlet) első kiadása](https://www.amazon.com/Authentication-Directory-Applications-Developer-Reference/dp/0735696942/ref=sr_1_fkmr0_1?keywords=Azure+multifactor+authentication&qid=1550168894&s=gateway&sr=8-1-fkmr0).  <br> Ez egy mérvadó, részletes útmutató, amellyel Active Directory hitelesítési megoldásokat hozhat létre az új környezetekhez. |
-| Oktatóanyagok| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)kapcsolatban tekintse meg az oktatóanyagok listáját. |
-| Gyakori kérdések| [Gyakori kérdések](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) az automatikus felhasználó-kiépítési folyamatról |
+| Oktatóanyagok| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](../saas-apps/tutorial-list.md)kapcsolatban tekintse meg az oktatóanyagok listáját. |
+| Gyakori kérdések| [Gyakori kérdések](user-provisioning.md) az automatikus felhasználó-kiépítési folyamatról |
 
 ### <a name="solution-architectures"></a>Megoldásarchitektúrák
 
@@ -92,9 +92,9 @@ Ebben a példában a felhasználók és a csoportok egy helyszíni címtárhoz c
 
 1. **Azure ad Connect ügynök** az identitások (felhasználók és csoportok) ütemezett szinkronizálását futtatja a helyi ad-ből az Azure ad-be.
 
-1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
+1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](user-provisioning.md) a forrásrendszer és a célként megadott rendszeren. 
 
-1. Az **Azure ad kiépítési szolgáltatás** a kezdeti ciklus óta megváltoztatott bármely felhasználó és csoport forrásrendszer-rendszerét lekérdezi, és elküldi a módosításokat a [növekményes ciklusokban](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Az **Azure ad kiépítési szolgáltatás** a kezdeti ciklus óta megváltoztatott bármely felhasználó és csoport forrásrendszer-rendszerét lekérdezi, és elküldi a módosításokat a [növekményes ciklusokban](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-only-enterprises"></a>Automatikus felhasználó-kiépítés a csak felhőalapú vállalatok számára
 
@@ -106,9 +106,9 @@ Ebben a példában a felhasználó létrehozása az Azure AD-ben történik, az 
 
 1. A felhasználók/csoportok az Azure AD-ben jönnek létre.
 
-1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) a forrásrendszer és a célként megadott rendszeren. 
+1. Az **Azure ad kiépítési szolgáltatás** megkezdi a [kezdeti ciklust](user-provisioning.md) a forrásrendszer és a célként megadott rendszeren. 
 
-1. Az **Azure ad kiépítési szolgáltatás** lekérdezi a forrásrendszer minden olyan felhasználó és csoport számára, amely a kezdeti ciklus óta frissült, és végrehajtja a [növekményes ciklusokat](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning).
+1. Az **Azure ad kiépítési szolgáltatás** lekérdezi a forrásrendszer minden olyan felhasználó és csoport számára, amely a kezdeti ciklus óta frissült, és végrehajtja a [növekményes ciklusokat](user-provisioning.md).
 
 #### <a name="automatic-user-provisioning-for-cloud-hr-applications"></a>A Felhőbeli HR-alkalmazások automatikus felhasználó általi üzembe helyezése 
 
@@ -132,13 +132,13 @@ Gondolja át, hogy a szervezetnek meg kell határoznia a felhasználói kiépít
 
 A technológiai projektek meghibásodása esetén általában a hatás, az eredmények és a felelősségi körök eltérő elvárásai vannak. A buktatók elkerülése érdekében [Győződjön meg arról, hogy a megfelelő érintett feleket folytatja](https://aka.ms/deploymentplans) , és hogy a projektben érintett szerepköröket jól megértette az érintett felek és a projekt bemeneti és elszámoltathatóság dokumentálása révén.
 
-### <a name="plan-communications"></a>A kommunikáció tervezése
+### <a name="plan-communications"></a>Kommunikáció tervezése
 
 A kommunikáció minden új szolgáltatás sikeressége szempontjából kritikus fontosságú. Proaktív módon kommunikálhat a felhasználókkal, hogy a felhasználói élmény hogyan módosuljon, mikor módosul, és hogyan szerezhet támogatást, ha problémákat tapasztal.
 
 ### <a name="plan-a-pilot"></a>Pilóta megtervezése
 
-Javasoljuk, hogy az automatikus felhasználó-kiépítés kezdeti konfigurációjának tesztelési környezetben legyen a felhasználók kis részhalmaza, mielőtt az összes éles üzemben lévő felhasználónak méreteznie kellene. Lásd: [ajánlott eljárások](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-deployment-plans#best-practices-for-a-pilot) a próbaüzem futtatásához.
+Javasoljuk, hogy az automatikus felhasználó-kiépítés kezdeti konfigurációjának tesztelési környezetben legyen a felhasználók kis részhalmaza, mielőtt az összes éles üzemben lévő felhasználónak méreteznie kellene. Lásd: [ajánlott eljárások](../fundamentals/active-directory-deployment-plans.md#best-practices-for-a-pilot) a próbaüzem futtatásához.
 
 #### <a name="best-practices-for-a-pilot"></a>Ajánlott eljárások a pilóták számára  
 
@@ -146,29 +146,29 @@ Egy próba lehetővé teszi egy kis csoport tesztelését, mielőtt mindenki sz�
 
 Az első hullámban célozza meg, a használhatóságot és az egyéb megfelelő felhasználókat, akik kipróbálhatják és elküldhetik a visszajelzést. Ezzel a visszajelzéssel tovább fejlesztheti a felhasználók számára elküldött kommunikációt és útmutatást, és betekintést nyerhet a támogatási munkatársak által látható problémák típusaiba.
 
-Bővítse a bevezetést a felhasználók nagyobb csoportjaira a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
+Bővítse a bevezetést a felhasználók nagyobb csoportjaira a megcélzott csoport (ok) hatókörének növelésével. Ez a [dinamikus csoporttagság](../users-groups-roles/groups-dynamic-membership.md)használatával végezhető el, vagy manuálisan is hozzáadhatja a felhasználókat a megcélozott csoport (ok) hoz.
 
 ## <a name="plan-application-connections-and-administration"></a>Az alkalmazások kapcsolatainak és felügyeletének megtervezése
 
-Az Azure AD portálon megtekintheti és kezelheti az összes olyan alkalmazást, amely támogatja a kiépítés használatát. Lásd: [alkalmazások keresése a portálon](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal).
+Az Azure AD portálon megtekintheti és kezelheti az összes olyan alkalmazást, amely támogatja a kiépítés használatát. Lásd: [alkalmazások keresése a portálon](configure-automatic-user-provisioning-portal.md).
 
 ### <a name="determine-the-type-of-connector-to-use"></a>A használandó összekötő típusának meghatározása
 
-Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükséges tényleges lépések az alkalmazástól függően változnak. Ha az automatikusan kiépíteni kívánt alkalmazás megjelenik az [Azure ad SaaS-alkalmazás](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)-katalógusban, akkor az [alkalmazás-specifikus integrációs oktatóanyagot](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) kell választania az előre integrált felhasználói üzembe helyezési összekötő konfigurálásához.
+Az automatikus kiépítés engedélyezéséhez és konfigurálásához szükséges tényleges lépések az alkalmazástól függően változnak. Ha az automatikusan kiépíteni kívánt alkalmazás megjelenik az [Azure ad SaaS-alkalmazás](../saas-apps/tutorial-list.md)-katalógusban, akkor az [alkalmazás-specifikus integrációs oktatóanyagot](../saas-apps/tutorial-list.md) kell választania az előre integrált felhasználói üzembe helyezési összekötő konfigurálásához.
 
 Ha nem, kövesse az alábbi lépéseket:
 
-1. [Hozzon létre egy](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
+1. [Hozzon létre egy](../develop/howto-app-gallery-listing.md) , az előre integrált felhasználó-létesítési összekötőre vonatkozó kérelmet. Csapatunk együttműködik Önnel és az alkalmazás fejlesztővel, hogy az alkalmazást a platformon, ha az támogatja a SCIM-t.
 
-1. Használja az [BYOA scim](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) általános felhasználói üzembe helyezési támogatását az alkalmazáshoz. Ez a követelmény, hogy az Azure AD-ben a felhasználók az előre integrált létesítési összekötő nélkül legyenek kiépítve az alkalmazásba.
+1. Használja az [BYOA scim](use-scim-to-provision-users-and-groups.md) általános felhasználói üzembe helyezési támogatását az alkalmazáshoz. Ez a követelmény, hogy az Azure AD-ben a felhasználók az előre integrált létesítési összekötő nélkül legyenek kiépítve az alkalmazásba.
 
-1. Ha az alkalmazás képes a BYOA SCIM-összekötő használatára, tekintse meg a [BYOA scim Integration oktatóanyagot](https://docs.microsoft.com/azure/active-directory/active-directory-scim-provisioning) az alkalmazás BYOA scim-összekötő konfigurálásához.
+1. Ha az alkalmazás képes a BYOA SCIM-összekötő használatára, tekintse meg a [BYOA scim Integration oktatóanyagot](use-scim-to-provision-users-and-groups.md) az alkalmazás BYOA scim-összekötő konfigurálásához.
 
-További információ: [milyen alkalmazásokat és rendszereket használhatok az Azure ad automatikus felhasználói üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) helyezéséhez?
+További információ: [milyen alkalmazásokat és rendszereket használhatok az Azure ad automatikus felhasználói üzembe](user-provisioning.md) helyezéséhez?
 
 ### <a name="collect-information-to-authorize-application-access"></a>Adatgyűjtés az alkalmazás-hozzáférés engedélyezéséhez
 
-Az automatikus felhasználó-kiépítés beállítása egy alkalmazáson belüli folyamat. Minden alkalmazáshoz [rendszergazdai hitelesítő adatokat](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) kell megadnia a célrendszer felhasználói felügyeleti végpontjának való kapcsolódáshoz.
+Az automatikus felhasználó-kiépítés beállítása egy alkalmazáson belüli folyamat. Minden alkalmazáshoz [rendszergazdai hitelesítő adatokat](configure-automatic-user-provisioning-portal.md) kell megadnia a célrendszer felhasználói felügyeleti végpontjának való kapcsolódáshoz.
 
 Az alábbi képen a szükséges rendszergazdai hitelesítő adatok egy verziója látható:
 
@@ -198,17 +198,17 @@ Az egyes alkalmazásokhoz a következő információkat dokumentálja:
 
 Az automatikus felhasználó-kiépítés megvalósítása előtt meg kell határoznia az alkalmazáshoz kiépíteni kívánt felhasználókat és csoportokat.
 
-* A [hatóköri szűrők](https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters) használatával olyan attribútum-alapú szabályokat határozhat meg, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
+* A [hatóköri szűrők](define-conditional-rules-for-provisioning-user-accounts.md) használatával olyan attribútum-alapú szabályokat határozhat meg, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
 
-* Ezután szükség szerint használja a [felhasználói és csoportos hozzárendeléseket](https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal) a további szűréshez.
+* Ezután szükség szerint használja a [felhasználói és csoportos hozzárendeléseket](assign-user-or-group-access-portal.md) a további szűréshez.
 
 ### <a name="define-user-and-group-attribute-mapping"></a>Felhasználói és csoportos attribútumok társításának meghatározása
 
-Az automatikus felhasználó-kiépítés megvalósításához meg kell határoznia az alkalmazáshoz szükséges felhasználói és csoportosítási attribútumokat. Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között van egy előre konfigurált attribútum és [attribútum-hozzárendelés](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal) . Nem minden SaaS-alkalmazás engedélyezi a csoport attribútumait.
+Az automatikus felhasználó-kiépítés megvalósításához meg kell határoznia az alkalmazáshoz szükséges felhasználói és csoportosítási attribútumokat. Az Azure AD felhasználói objektumai és az egyes SaaS-alkalmazások felhasználói objektumai között van egy előre konfigurált attribútum és [attribútum-hozzárendelés](configure-automatic-user-provisioning-portal.md) . Nem minden SaaS-alkalmazás engedélyezi a csoport attribútumait.
 
-Az Azure AD támogatja a közvetlen attribútum-attribútum hozzárendelést, állandó értékek biztosítását vagy [kifejezések írását az attribútumok leképezéséhez](https://docs.microsoft.com/azure/active-directory/active-directory-saas-writing-expressions-for-attribute-mappings). Ez a rugalmasság részletesen szabályozza, hogy mi történjen a megtalált rendszer attribútumában. A [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration) és a Graph Explorer használatával exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure ad-be.
+Az Azure AD támogatja a közvetlen attribútum-attribútum hozzárendelést, állandó értékek biztosítását vagy [kifejezések írását az attribútumok leképezéséhez](functions-for-customizing-application-data.md). Ez a rugalmasság részletesen szabályozza, hogy mi történjen a megtalált rendszer attribútumában. A [Microsoft Graph API](export-import-provisioning-configuration.md) és a Graph Explorer használatával exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure ad-be.
 
-További információkért lásd: [felhasználói kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory-ben](https://docs.microsoft.com/azure/active-directory/manage-apps/customize-application-attributes).
+További információkért lásd: [felhasználói kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory-ben](customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>A felhasználók üzembe helyezésének speciális szempontjai
 
@@ -216,9 +216,9 @@ Az üzembe helyezés utáni problémák csökkentése érdekében vegye figyelem
 
 * Győződjön meg arról, hogy a forrás és a cél alkalmazások közötti felhasználói/csoport objektumok leképezésére használt attribútumok rugalmasak. Nem okozzák, hogy a felhasználók vagy csoportok helytelenül legyenek kiépítve, ha az attribútumok megváltoznak (például egy felhasználó a vállalat egy másik részére lép).
 
-* Előfordulhat, hogy az alkalmazásoknak olyan konkrét korlátozásokkal és/vagy követelményekkel kell rendelkezniük, amelyeknek teljesülniük kell a felhasználók megfelelő működéséhez. A Slack például bizonyos attribútumok értékeit csonkolja. Az egyes alkalmazásokra vonatkozó [automatikus felhasználói üzembe helyezési oktatóanyagokat](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list) itt találja.
+* Előfordulhat, hogy az alkalmazásoknak olyan konkrét korlátozásokkal és/vagy követelményekkel kell rendelkezniük, amelyeknek teljesülniük kell a felhasználók megfelelő működéséhez. A Slack például bizonyos attribútumok értékeit csonkolja. Az egyes alkalmazásokra vonatkozó [automatikus felhasználói üzembe helyezési oktatóanyagokat](../saas-apps/tutorial-list.md) itt találja.
 
-* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN az *john_smith@contoso.com* és az alkalmazásban *jsmith@contoso.com* . További információ: a [felhasználói és a csoport sémájának referenciája](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups).
+* Erősítse meg a séma konzisztenciáját a forrás-és a célszámítógépeken. Gyakori problémák például az egyszerű felhasználónév vagy a levelezés nem megfelelő attribútumokat tartalmaznak. Például az Azure AD-beli UPN az *john_smith@contoso.com* és az alkalmazásban *jsmith@contoso.com* . További információ: a [felhasználói és a csoport sémájának referenciája](use-scim-to-provision-users-and-groups.md).
 
 ## <a name="plan-testing-and-security"></a>A tesztelés és a biztonság tervezése
 
@@ -233,7 +233,7 @@ Miután beállította az automatikus felhasználó-kiépítést az alkalmazásho
 | A felhasználó hozzá lett adva a célként megadott rendszerhez rendelt csoporthoz | A felhasználói objektum kiépítve a célként megadott rendszerbe. <br>A felhasználó be tud jelentkezni a célcsoportba, és végrehajtja a kívánt műveleteket. |
 | A felhasználó el lett távolítva a célként megadott rendszerhez rendelt csoportból. | A felhasználói objektumot a rendszer kiépíti a célszámítógépen.<br>A felhasználó nem tud bejelentkezni a célként megadott rendszerbe. |
 | A felhasználói adatok az Azure AD-ben bármilyen módon frissülnek | A frissített felhasználói attribútumok a célként megadott rendszeren a növekményes ciklust követően jelennek meg |
-| A felhasználó hatókörön kívül van | A felhasználói objektum le van tiltva vagy törölve van. <br>Megjegyzés: Ez a viselkedés felül van bírálva a [munkanap kiépítés](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)során. |
+| A felhasználó hatókörön kívül van | A felhasználói objektum le van tiltva vagy törölve van. <br>Megjegyzés: Ez a viselkedés felül van bírálva a [munkanap kiépítés](skip-out-of-scope-deletions.md)során. |
 
 ### <a name="plan-security"></a>A biztonság megtervezése
 
@@ -243,7 +243,7 @@ Az üzembe helyezés részeként gyakran előfordul, hogy biztonsági felülvizs
 
 Ha az automatikus felhasználó-kiépítési implementáció nem tud megfelelően működni az éles környezetben, a következő visszaállítási lépések segítséget nyújthatnak a korábbi ismert jó állapot visszaállításához:
 
-1. Tekintse át a [kiépítési összefoglalás jelentését](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) és az üzembe helyezési [naplókat](https://docs.microsoft.com/azure/active-directory/active-directory-saas-provisioning-reporting) , és állapítsa meg, hogy milyen helytelen műveletek történtek az érintett felhasználókon és/vagy csoportokon.
+1. Tekintse át a [kiépítési összefoglalás jelentését](check-status-user-account-provisioning.md) és az üzembe helyezési [naplókat](check-status-user-account-provisioning.md#provisioning-logs-preview) , és állapítsa meg, hogy milyen helytelen műveletek történtek az érintett felhasználókon és/vagy csoportokon.
 
 1. A kiépítési naplók használatával határozza meg az érintett felhasználók és/vagy csoportok utolsó ismert helyes állapotát. Tekintse át a forrásoldali rendszereket (Azure AD vagy AD) is.
 
@@ -257,13 +257,13 @@ Válassza ki a megoldás követelményeihez igazodó lépéseket.
 
 Amikor az Azure AD-létesítési szolgáltatás első alkalommal fut, a forrásrendszer és a célrendszer kezdeti ciklusa minden felhasználói objektumról pillanatképet készít az egyes célszámítógépeken.
 
-Az alkalmazások automatikus kiosztásának engedélyezésekor a kezdeti ciklus akár 20 perctől akár több óráig is eltarthat. Az időtartam az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függ. Lásd: [a kiépítési teljesítmény javítása](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish).
+Az alkalmazások automatikus kiosztásának engedélyezésekor a kezdeti ciklus akár 20 perctől akár több óráig is eltarthat. Az időtartam az Azure AD-címtár méretétől és a kiépítés hatókörében lévő felhasználók számától függ. Lásd: [a kiépítési teljesítmény javítása](application-provisioning-when-will-provisioning-finish.md).
 
 A kiépítési szolgáltatás mindkét rendszer állapotát a kezdeti ciklus után, a későbbi növekményes ciklusok teljesítményének növelésével tárolja.
 
 ### <a name="configure-automatic-user-provisioning"></a>A felhasználók automatikus átadásának konfigurálása
 
-A [Azure Portal](https://portal.azure.com/) segítségével kezelheti a felhasználói fiókok automatikus üzembe helyezését és kiépítheti az azt támogató alkalmazások felügyeletét. Kövesse a Hogyan az [automatikus kiépítés beállítása egy alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) című szakasz lépéseit.
+A [Azure Portal](https://portal.azure.com/) segítségével kezelheti a felhasználói fiókok automatikus üzembe helyezését és kiépítheti az azt támogató alkalmazások felügyeletét. Kövesse a Hogyan az [automatikus kiépítés beállítása egy alkalmazáshoz](user-provisioning.md) című szakasz lépéseit.
 
 Az Azure AD-beli felhasználói kiépítési szolgáltatás a [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)használatával is konfigurálható és kezelhető.
 
@@ -273,7 +273,7 @@ Most, hogy üzembe helyezte, felügyelni kell a megoldást.
 
 ### <a name="monitor-user-provisioning-operation-health"></a>A felhasználó üzembe helyezési állapotának figyelése
 
-A sikeres [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning)követően az Azure ad kiépítési szolgáltatás határozatlan ideig, az egyes alkalmazásokra jellemző időközönként futtatja a növekményes frissítéseket, amíg az alábbi események egyike nem következik be:
+A sikeres [kezdeti ciklust](user-provisioning.md)követően az Azure ad kiépítési szolgáltatás határozatlan ideig, az egyes alkalmazásokra jellemző időközönként futtatja a növekményes frissítéseket, amíg az alábbi események egyike nem következik be:
 
 * A szolgáltatás kézi leállítása megtörtént, és a rendszer elindítja az új kezdeti ciklust a [Azure Portal](https://portal.azure.com/)használatával, vagy a megfelelő [Microsoft Graph API](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview) -parancs használatával.
 
@@ -281,15 +281,15 @@ A sikeres [kezdeti ciklust](https://docs.microsoft.com/azure/active-directory/ma
 
 * A kiépítési folyamat magas szintű hibák miatt Karanténba kerül, és a karanténban marad, ha a rendszer automatikusan letiltja a műveletet.
 
-Az események áttekintéséhez és a kiépítési szolgáltatás által végzett összes egyéb tevékenységhez tekintse meg az Azure AD- [kiépítési naplókat](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs?context=azure/active-directory/manage-apps/context/manage-apps-context).
+Az események áttekintéséhez és a kiépítési szolgáltatás által végzett összes egyéb tevékenységhez tekintse meg az Azure AD- [kiépítési naplókat](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context).
 
-Annak megismeréséhez, hogy a kiépítési ciklusok mennyi ideig tartanak és figyeljenek a kiépítési feladatok állapotát, [ellenőrizheti a felhasználók üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user)helyezésének állapotát.
+Annak megismeréséhez, hogy a kiépítési ciklusok mennyi ideig tartanak és figyeljenek a kiépítési feladatok állapotát, [ellenőrizheti a felhasználók üzembe](application-provisioning-when-will-provisioning-finish-specific-user.md)helyezésének állapotát.
 
 ### <a name="gain-insights-from-reports"></a>Betekintést nyerhet a jelentésekből
 
-Az Azure AD [további betekintést](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish-specific-user) nyújt a szervezet felhasználó általi használatára és működési állapotára a naplók és a jelentések segítségével.
+Az Azure AD [további betekintést](application-provisioning-when-will-provisioning-finish-specific-user.md) nyújt a szervezet felhasználó általi használatára és működési állapotára a naplók és a jelentések segítségével.
 
-A rendszergazdáknak ellenőriznie kell a kiépítési összefoglaló jelentést a kiépítési feladatok működési állapotának figyeléséhez. A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD-naplók rögzítik. Lásd [: oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe](https://docs.microsoft.com/azure/active-directory/manage-apps/check-status-user-account-provisioning)helyezéséhez.
+A rendszergazdáknak ellenőriznie kell a kiépítési összefoglaló jelentést a kiépítési feladatok működési állapotának figyeléséhez. A kiépítési szolgáltatás által végrehajtott összes tevékenységet az Azure AD-naplók rögzítik. Lásd [: oktatóanyag: jelentéskészítés a felhasználói fiókok automatikus üzembe](check-status-user-account-provisioning.md)helyezéséhez.
 
 Javasoljuk, hogy fogadja el a jelentések tulajdonjogát, és használja ezeket a jelentéseket egy olyan lépésszám esetében, amely megfelel a szervezet igényeinek. Az Azure AD 30 napig őrzi meg a legtöbb naplózási adatát.
 
@@ -297,27 +297,27 @@ Javasoljuk, hogy fogadja el a jelentések tulajdonjogát, és használja ezeket 
 
 A kiépítés során esetlegesen felmerülő problémák elhárításához tekintse meg az alábbi hivatkozásokat:
 
-* [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem)
+* [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](application-provisioning-config-problem.md)
 
-* [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning-sync-attributes-for-mapping)
+* [Egy attribútum szinkronizálása a helyszíni Active Directory az Azure AD-be az alkalmazásba való kiépítéshez](user-provisioning-sync-attributes-for-mapping.md)
 
-* [Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-when-will-provisioning-finish)
+* [Az Azure AD Gallery alkalmazásba történő felhasználói üzembe helyezése órákat vesz igénybe](application-provisioning-when-will-provisioning-finish.md)
 
-* [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-storage-limit)
+* [Probléma a rendszergazdai hitelesítő adatok mentésekor, miközben a felhasználók üzembe helyezését egy Azure Active Directory Gallery-alkalmazáshoz konfigurálja](application-provisioning-config-problem-storage-limit.md)
 
-* [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-no-users-provisioned)
+* [Egyetlen felhasználó sincs kiépítve egy Azure AD Gallery-alkalmazásba](application-provisioning-config-problem-no-users-provisioned.md)
 
-* [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-config-problem-wrong-users-provisioned)
+* [Helytelenek a felhasználók egy Azure AD Gallery-alkalmazásban való üzembe helyezése](application-provisioning-config-problem-wrong-users-provisioned.md)
 
 ### <a name="helpful-documentation"></a>Hasznos dokumentáció
 
-* [Kifejezések írása attribútum-hozzárendelésekhez](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Kifejezések írása attribútum-hozzárendelésekhez](functions-for-customizing-application-data.md)
 
 * [Az Azure AD szinkronizációs API áttekintése](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/synchronization-overview)
 
-* [A hatókörön kívüli felhasználói fiókok törlésének kihagyása](https://docs.microsoft.com/azure/active-directory/manage-apps/skip-out-of-scope-deletions)
+* [A hatókörön kívüli felhasználói fiókok törlésének kihagyása](skip-out-of-scope-deletions.md)
 
-* [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](https://docs.microsoft.com/azure/active-directory/manage-apps/provisioning-agent-release-version-history)
+* [Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei](provisioning-agent-release-version-history.md)
 
 #### <a name="resources"></a>Segédanyagok és eszközök
 
@@ -328,8 +328,8 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 * [Stack túlfolyó Azure AD-fórum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
 ## <a name="next-steps"></a>Következő lépések
-* [Automatikus felhasználó-kiépítés konfigurálása](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-automatic-user-provisioning-portal)
+* [Automatikus felhasználó-kiépítés konfigurálása](configure-automatic-user-provisioning-portal.md)
 
-* [Kiépítési konfiguráció exportálása vagy importálása Microsoft Graph API használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/export-import-provisioning-configuration)
+* [Kiépítési konfiguráció exportálása vagy importálása Microsoft Graph API használatával](export-import-provisioning-configuration.md)
 
-* [Kifejezések írása az attribútum-hozzárendelésekhez az Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)
+* [Kifejezések írása az attribútum-hozzárendelésekhez az Azure Active Directoryban](functions-for-customizing-application-data.md)

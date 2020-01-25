@@ -8,12 +8,12 @@ ms.devlang: java
 ms.topic: reference
 ms.date: 03/13/2019
 ms.author: sngun
-ms.openlocfilehash: 3e36aa268286b9127f36859a1fa4402644994a32
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a7eaabedd6736c107625204f982a530f2bab73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444845"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718173"
 ---
 # <a name="azure-cosmos-db-java-sdk-for-sql-api-release-notes-and-resources"></a>Azure Cosmos DB Java SDK for SQL API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
@@ -36,12 +36,15 @@ Az SQL API Java SDK támogatja a szinkron műveleteket. Aszinkron támogatáshoz
 |---|---|
 |**SDK letöltése**|[Maven 3](https://search.maven.org/#search%7Cgav%7C1%7Cg%3A%22com.microsoft.azure%22%20AND%20a%3A%22azure-documentdb%22)|
 |**API-dokumentáció**|[Java API-referenciák dokumentációja](/java/api/com.microsoft.azure.documentdb)|
-|**Közreműködés az SDK-val**|[GitHubon](https://github.com/Azure/azure-documentdb-java/)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-documentdb-java/)|
 |**Első lépések**|[Ismerkedés a Java SDK-val](sql-api-java-get-started.md)|
 |**Webalkalmazás-oktatóanyag**|[Webalkalmazás-fejlesztés Azure Cosmos DB](sql-api-java-application.md)|
 |**Minimális támogatott futtatókörnyezet**|[Java Development Kit (JDK) 7 +](https://aka.ms/azure-jdks)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="a-name246246"></a><a name="2.4.6"/>2.4.6
+* Frissítette a megfelelő ügyféloldali replika házirend-címkét a databaseAccount-ben, és a databaseAccount konfigurációját a gyorsítótárból olvassa be.
 
 ### <a name="a-name245245"></a><a name="2.4.5"/>2.4.5
 * Nem sikerült elkerülni az újrapróbálkozást a partíciós kulcs tartományának érvénytelen hibája esetén, ha a felhasználó pkRangeId biztosít.
@@ -254,7 +257,7 @@ A szolgáltatás elutasítja a kivont SDK-val Cosmos DBre irányuló kéréseket
 
 <br/>
 
-| Verzió | Megjelenés dátuma | Nyugdíjazás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
 | [2.1.3](#2.1.3) |Mar 13, 2018 |--- |
 | [2.1.2](#2.1.2) |Mar 09, 2018 |--- |

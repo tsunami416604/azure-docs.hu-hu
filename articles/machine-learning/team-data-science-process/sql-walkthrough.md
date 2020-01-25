@@ -3,26 +3,26 @@ title: Modell létrehozása és üzembe helyezése egy SQL Server VM csoportos a
 description: Hozzon létre és helyezzen üzembe egy gépi tanulási modellt a SQL Server használatával egy nyilvánosan elérhető adatkészlettel rendelkező Azure-beli virtuális gépen.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 533c91bdc02425cabf5eeae93f37811144b32149
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: a47f30cf00624faf098c8b605534cf355eacadee
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75976324"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718531"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>A csoportos adatelemzési folyamat működés közben: a SQL Server használata
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe gépi tanulási modellt SQL Server és nyilvánosan elérhető adatkészlettel – a [New York-i taxis](https://www.andresmh.com/nyctaxitrips/) adatkészlettel. Az eljárás egy szabványos adatelemzési munkafolyamatot követ: az adatgyűjtést és-elemzést, a mérnöki funkciókat a tanulás megkönnyítésére, majd a modellek elkészítésére és üzembe helyezésére.
 
 ## <a name="dataset"></a>NYC taxi TRIPS adatkészlet leírása
-A New York-i taxi Trip-adatmennyiség körülbelül 20 GB tömörített CSV-fájlból áll (~ 48GB tömörítve), amely több mint 173 000 000 egyedi utazást és az egyes utazásokhoz fizetett viteldíjat foglal magában. Az egyes utazási rekordok tartalmazzák a felvételi és a lemorzsolódási helyét és időpontját, a névtelen csapkod (illesztőprogram) licencének számát és a Digitális medál (a taxi egyedi azonosítóját). Az adat a 2013-as év összes utazására vonatkozik, és a következő két adatkészletben szerepel minden hónapban:
+A New York-i taxi Trip-adat körülbelül 20 GB tömörített CSV-fájlból áll (~ 48 GB tömörítetlen), amely több mint 173 000 000 egyedi utazást és az egyes utazásokhoz fizetett viteldíjat foglal magában. Az egyes utazási rekordok tartalmazzák a felvételi és a lemorzsolódási helyét és időpontját, a névtelen csapkod (illesztőprogram) licencének számát és a Digitális medál (a taxi egyedi azonosítóját). Az adat a 2013-as év összes utazására vonatkozik, és a következő két adatkészletben szerepel minden hónapban:
 
 1. A (z) "trip_data" CSV-fájl tartalmazza az utazás részleteit, például az utasok számát, a felvételi és a lemorzsolódási, az utazási időtartamot és a menetidő hosszát. Íme néhány példa a rekordokra:
    
@@ -46,15 +46,15 @@ Az utazáshoz\_az adathoz és az utazáshoz\_viteldíj a következő mezőkből 
 ## <a name="mltasks"></a>Példák az előrejelzési feladatokra
 Három előrejelzési problémát fogunk kialakítani a *tipp\_összeg*alapján, nevezetesen:
 
-1. Bináris besorolás: megjósolhatja, hogy egy adott útra fizetett-e borravalót, például egy *tipp\_* , amely nagyobb, mint $0, de a tipp\_$0 *mennyisége* negatív példa.
-2. Többosztályos besorolás: az utazáshoz fizetett tipp tartományának előrejelzése. A *tipp\_összegét* öt raktárhelyre vagy osztályra osztjuk:
+* Bináris besorolás: megjósolhatja, hogy egy adott utazási tipp kifizetése megtörtént-e, azaz egy *tipp\_* , amely nagyobb, mint $0, pozitív példa, míg a *tip\_mennyiségű* $0 értéke negatív példa.
+* Többosztályos besorolás: az utazáshoz fizetett tipp tartományának előrejelzése. A *tipp\_összegét* öt raktárhelyre vagy osztályra osztjuk:
    
         Class 0 : tip_amount = $0
         Class 1 : tip_amount > $0 and tip_amount <= $5
         Class 2 : tip_amount > $5 and tip_amount <= $10
         Class 3 : tip_amount > $10 and tip_amount <= $20
         Class 4 : tip_amount > $20
-3. Regressziós feladat: az utazáshoz fizetett tipp mennyiségének előrejelzése.  
+* Regressziós feladat: az utazáshoz fizetett tipp mennyiségének előrejelzése.  
 
 ## <a name="setup"></a>Az Azure adatelemzési környezet beállítása a speciális elemzésekhez
 Ahogy a [terv a környezeti](plan-your-environment.md) útmutatóban is látható, több lehetőség is használható a New York-i taxis adatkészlettel az Azure-ban:
@@ -62,7 +62,7 @@ Ahogy a [terv a környezeti](plan-your-environment.md) útmutatóban is láthat�
 * Az Azure-blobokban tárolt adatmennyiségek, majd a Model in Azure Machine Learning
 * Töltse be az SQL Server adatbázisba, majd a modellbe Azure Machine Learning
 
-Ebben az oktatóanyagban az adat párhuzamos tömeges importálását mutatjuk be egy SQL Serverba, az adatfeltárásba, a funkciók mérnöki és leállási mintavételezésére SQL Server Management Studio és a IPython notebook használatával. [](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) A IPython- [jegyzetfüzetek](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) a githubon vannak megosztva. Az Azure-blobokban tárolt adatmennyiségű IPython-jegyzetfüzet ugyanazon a helyen is elérhető.
+Ebben az oktatóanyagban az adat párhuzamos tömeges importálását mutatjuk be egy SQL Serverba, az adatfeltárásba, a szolgáltatások fejlesztésére, valamint a SQL Server Management Studio és a IPython notebook használatával végzett mintavételezésre. [](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) A IPython- [jegyzetfüzetek](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks) a githubon vannak megosztva. Az Azure-blobokban tárolt adatmennyiségű IPython-jegyzetfüzet ugyanazon a helyen is elérhető.
 
 Az Azure-beli adatelemzési környezet beállítása:
 
@@ -87,7 +87,7 @@ Az új virtuális gépre történő másolásához az adatok [áthelyezéséhez 
 Az Adatmásolás az AzCopy használatával:
 
 1. Bejelentkezés a virtuális gépre (VM)
-2. Hozzon létre egy új könyvtárat a virtuális gép adatlemezén (Megjegyzés: ne használja a virtuális géppel rendelkező ideiglenes lemezt adatlemezként).
+2. Hozzon létre egy új könyvtárat a virtuális gép adatlemezén (Megjegyzés: ne használja a virtuális géphez tartozó ideiglenes lemezt adatlemezként).
 3. A parancssori ablakban futtassa a következő Azcopy-parancssort, és cserélje le a < path_to_data_folder >t a (2) elemben létrehozott adatmappába:
    
         "C:\Program Files (x86)\Microsoft SDKs\Azure\AzCopy\azcopy" /Source:https://nyctaxitrips.blob.core.windows.net/data /Dest:<path_to_data_folder> /S
@@ -96,32 +96,32 @@ Az Adatmásolás az AzCopy használatával:
 4. Bontsa ki a letöltött fájlokat. Jegyezze fel a mappát, ahol a tömörítetlen fájlok találhatók. Ezt a mappát a rendszer < elérési útra\_\_\_fájlok\>.
 
 ## <a name="dbload"></a>SQL Server adatbázisba való tömeges importálás
-A nagy mennyiségű adat egy SQL-adatbázisba való betöltésének, illetve az azt követő lekérdezéseknek a teljesítménye *particionált táblák és nézetek*használatával javítható. Ebben a szakaszban a [párhuzamos tömeges adatimportálás az SQL Partition Tables használatával](parallel-load-sql-partitioned-tables.md) című rész útmutatását követve hozzon létre egy új adatbázist, és párhuzamosan töltse be az információkat particionált táblákba.
+A nagy mennyiségű adat egy SQL Databaseba való betöltésének és továbbításának, valamint az azt követő lekérdezéseknek a teljesítményét *particionált táblák és nézetek*használatával lehet javítani. Ebben a szakaszban a [párhuzamos tömeges adatimportálás az SQL Partition Tables használatával](parallel-load-sql-partitioned-tables.md) című rész útmutatását követve hozzon létre egy új adatbázist, és párhuzamosan töltse be az információkat particionált táblákba.
 
 1. Ha bejelentkezett a virtuális gépre, indítsa el **SQL Server Management Studio**.
 2. Kapcsolódjon a Windows-hitelesítés használatával.
    
     ![SSMS-kapcsolat][12]
-3. Ha még nem módosította a SQL Server hitelesítési módot, és létrehozott egy új SQL-bejelentkezési felhasználót, nyissa meg a **change\_auth. SQL** nevű parancsfájlt a **minta parancsfájlok** mappában. Módosítsa az alapértelmezett felhasználónevet és jelszót. Kattintson a **!** Futtassa a parancsot az eszköztáron a szkript futtatásához.
+3. Ha még nem módosította a SQL Server hitelesítési módot, és létrehozott egy új SQL-bejelentkezési felhasználót, nyissa meg a **change\_auth. SQL** nevű parancsfájlt a **minta parancsfájlok** mappában. Módosítsa az alapértelmezett felhasználónevet és jelszót. A parancsfájl futtatásához kattintson a **végrehajtás** gombra az eszköztáron.
    
     ![Parancsfájl végrehajtása][13]
-4. Ellenőrizze és/vagy módosítsa a SQL Server alapértelmezett adatbázis-és napló-mappákat, hogy az újonnan létrehozott adatbázisok adatlemezen legyenek tárolva. A datawarehousing-terhelésre optimalizált SQL Server VM-rendszerkép előre konfigurálva van az adatok és a naplók lemezével. Ha a virtuális gép nem tartalmaz adatlemezt, és új virtuális merevlemezeket adott a virtuálisgép-telepítési folyamat során, módosítsa az alapértelmezett mappákat a következőképpen:
+4. Ellenőrizze és/vagy módosítsa a SQL Server alapértelmezett adatbázis-és napló-mappákat, hogy az újonnan létrehozott adatbázisok adatlemezen legyenek tárolva. Az adattárolási terhelésre optimalizált SQL Server VM rendszerkép előre konfigurálva van az adatok és a naplók lemezekkel. Ha a virtuális gép nem tartalmaz adatlemezt, és új virtuális merevlemezeket adott a virtuálisgép-telepítési folyamat során, módosítsa az alapértelmezett mappákat a következőképpen:
    
    * Kattintson a jobb gombbal a SQL Server nevére a bal oldali panelen, majd kattintson a **Tulajdonságok**elemre.
      
        ![SQL Server tulajdonságai][14]
    * Válassza ki az **adatbázis-beállítások** elemet a bal oldali **lap kiválasztása** listából.
-   * Ellenőrizze és/vagy módosítsa az **adatbázis alapértelmezett helyét** az Ön által választott **adatlemez** -helyekre. Itt találhatók az új adatbázisok, ha az alapértelmezett hely beállításaival jönnek létre.
+   * Ellenőrizze és/vagy módosítsa az **adatbázis alapértelmezett helyét** az Ön által választott **adatlemez** -helyekre. Ez a hely, ahol az új adatbázisok találhatók, ha az alapértelmezett beállításokkal lettek létrehozva.
      
        ![SQL Database alapértelmezett beállítások][15]  
-5. Új adatbázis létrehozásához és a particionált táblák tárolására szolgáló fájlcsoportok megnyitásához nyissa meg a **\_adatbázis létrehozása\_default. SQL**. A szkript létrehoz egy **TaxiNYC** és 12 fájlcsoportok nevű új adatbázist az alapértelmezett adatelérési helyen. Minden fájlcsoportja egy hónapig tart az utazás\_az adatgyűjtés és az utazás\_a díjszabási adatmennyiség. Szükség esetén módosítsa az adatbázis nevét. Kattintson a **! Végrehajtás** a szkript futtatásához.
+5. Új adatbázis létrehozásához és a particionált táblák tárolására szolgáló fájlcsoportok megnyitásához nyissa meg a **\_adatbázis létrehozása\_default. SQL**. A szkript létrehoz egy **TaxiNYC** és 12 fájlcsoportok nevű új adatbázist az alapértelmezett adatelérési helyen. Minden fájlcsoportja egy hónapig tart az utazás\_az adatgyűjtés és az utazás\_a díjszabási adatmennyiség. Szükség esetén módosítsa az adatbázis nevét. A szkript futtatásához kattintson a **végrehajtás** gombra.
 6. Következő lépésként hozzon létre két partíciós táblát, egyet az utazáshoz\_, egy másikat pedig az utazás\_a viteldíjat. Nyissa meg a minta parancsfájl **létrehozás\_particionált\_table. SQL**, amely a következőket teszi:
    
    * Hozzon létre egy Partition függvényt az adat hónapok szerinti felosztásához.
    * Hozzon létre egy particionálási sémát, amely az egyes hónapok összes adatfájlját egy másik fájlcsoportja rendeli.
    * Hozzon létre két particionált táblát a particionálási sémához: a **nyctaxi\_Trip** megtartja az utazás\_az adatelérési és a **nyctaxi\_viteldíj** az utazás\_viteldíjat fogja tárolni.
      
-     Kattintson a **! Végrehajtás** a parancsfájl futtatásához és a particionált táblák létrehozásához.
+     A parancsfájl futtatásához és a particionált táblák létrehozásához kattintson a **végrehajtás** gombra.
 7. A **Sample Scripts** mappában két PowerShell-szkript van megadva, amelyek az adatSQL Server táblákba való párhuzamos tömeges importálást mutatják be.
    
    * a **bcp\_parallel\_általános. ps1** egy általános parancsfájl, amely párhuzamosan importálja az adattáblázatba az adatmennyiséget. Módosítsa a parancsfájlt úgy, hogy a bemeneti és a cél változót a parancsfájl Megjegyzés soraiban megadott módon állítsa be.
@@ -132,8 +132,8 @@ A nagy mennyiségű adat egy SQL-adatbázisba való betöltésének, illetve az 
    
     Azt is megteheti, hogy a hitelesítési módot választja, az alapértelmezett érték a Windows-hitelesítés. A futtatáshoz kattintson a zöld nyílra az eszköztáron. A szkript 24 tömeges importálási műveletet indít el párhuzamosan, 12 minden particionált táblához. Az Adatimportálási folyamat figyeléséhez nyissa meg az SQL Server alapértelmezett adatmappát a fentiekben leírtak szerint.
 9. A PowerShell-parancsfájl a kezdési és befejezési időpontokat jelenti. Ha az összes tömeges importálás befejeződött, a befejezési idő jelentés. A cél napló mappájában ellenőrizze, hogy a tömeges importálások sikeresek voltak-e, azaz nem történtek-e hibák a cél napló mappában.
-10. Az adatbázis most már készen áll a feltárásra, a szolgáltatások fejlesztésére és az egyéb, igény szerinti műveletekre. Mivel a táblázatok a **pickup\_datetime** mező szerint vannak particionálva, a **Where** záradékban lévő **felvételi\_datetime** feltételekkel rendelkező lekérdezések a partíciós séma előnyeit is kihasználhatják.
-11. A **SQL Server Management Studioban**tekintse át a megadott minta parancsfájl- **mintát\_lekérdezések. SQL**. A lekérdezések bármelyikének futtatásához jelölje ki a lekérdezési sorokat, majd kattintson a gombra **. Végrehajtás** az eszköztáron.
+10. Az adatbázis most már készen áll a feltárásra, a szolgáltatások fejlesztésére és az egyéb, igény szerinti műveletekre. Mivel a táblák a **pickup\_datetime** mező szerint vannak particionálva, a **Where** záradékban lévő **felvételi\_datetime** feltételekkel rendelkező lekérdezések kihasználhatják a partíciós sémát.
+11. A **SQL Server Management Studioban**tekintse át a megadott minta parancsfájl- **mintát\_lekérdezések. SQL**. A lekérdezési sorok bármelyikének futtatásához jelölje ki a lekérdezések sorát, majd kattintson az eszköztáron a **végrehajtás** lehetőségre.
 12. A New York-i taxi-körutazások adatkészlete két külön táblában van betöltve. Az illesztési műveletek javítása érdekében erősen ajánlott a táblák indexelése. A parancsfájl **létrehozása\_particionált\_index. SQL** létrehoz egy particionált indexeket a kompozit JOIN Key **medalion, a hack\_License és a pickup\_datetime**.
 
 ## <a name="dbexplore"></a>Adatfeltárási és-szolgáltatás-mérnöki SQL Server
@@ -201,7 +201,7 @@ Ez a példa megkeresi a kiosztott vagy a megadott időszakban nem leképezett ut
     GROUP BY tipped
 
 #### <a name="exploration-tip-classrange-distribution"></a>Feltárás: tipp osztály/tartomány eloszlása
-Ez a példa a tip-tartományok adott időszakban (vagy a teljes adathalmazban, ha a teljes évre kiterjedő) eloszlását számítja ki. Ez a címke osztályok eloszlása, amelyet később a többosztályos besorolás modellezéséhez fog használni.
+Ez a példa a tip-tartományok adott időszakban (vagy a teljes adathalmazban, ha a teljes évre kiterjedő) eloszlását számítja ki. A címkézési osztályok ezen eloszlását később a többosztályos besorolás modellezéséhez fogjuk használni.
 
     SELECT tip_class, COUNT(*) AS tip_freq FROM (
         SELECT CASE
@@ -230,7 +230,7 @@ Ez a példa átalakítja a felvételi és a lemorzsolódási hosszúságot és a
     AND   pickup_longitude != '0' AND dropoff_longitude != '0'
 
 #### <a name="feature-engineering-in-sql-queries"></a>Funkciók mérnöki funkciója SQL-lekérdezésekben
-A címkék és a földrajz átalakítására szolgáló elemzési lekérdezések a számlálási rész eltávolításával is felhasználhatók címkék vagy szolgáltatások létrehozására. További mérnöki SQL-példákat az [adatelemzési és funkció-mérnöki IPython notebook](#ipnb) szakaszban talál. Hatékonyabban futtathatja a szolgáltatás-létrehozási lekérdezéseket a teljes adathalmazon vagy az SQL-lekérdezésekkel, amelyek közvetlenül a SQL Server adatbázis-példányon futnak. A lekérdezések **SQL Server Management Studio**, IPython notebookon vagy bármely olyan fejlesztési eszközön vagy környezetben hajthatók végre, amely helyileg vagy távolról is elérheti az adatbázist.
+A címkék és a földrajz átalakítására szolgáló elemzési lekérdezések a számlálási rész eltávolításával is felhasználhatók címkék vagy szolgáltatások létrehozására. További mérnöki SQL-példákat az [adatelemzési és funkció-mérnöki IPython notebook](#ipnb) szakaszban talál. Hatékonyabban futtathatja a szolgáltatás-létrehozási lekérdezéseket a teljes adatkészletre vagy annak nagy részhalmazára az SQL-lekérdezések használatával, amelyek közvetlenül a SQL Server adatbázis-példányon futnak. A lekérdezések **SQL Server Management Studio**, IPython jegyzetfüzetben vagy bármely olyan fejlesztési eszközön vagy környezetben hajthatók végre, amely helyileg vagy távolról is hozzáfér az adatbázishoz.
 
 #### <a name="preparing-data-for-model-building"></a>Az adatmodell-létrehozási adatelőkészítés
 A következő lekérdezés összekapcsolja a **nyctaxi\_Trip** és a **nyctaxi\_viteldíjak** táblázatát, **létrehoz**egy bináris besorolási címkét, egy többosztályos besorolási címke **\_osztályt**, és Kinyer egy 1%-os véletlenszerű mintát a teljes csatlakoztatott adatkészletből. Ez a lekérdezés átmásolható közvetlenül a [Azure Machine learning Studio](https://studio.azureml.net) [Importálás][import-data] adatmodulba az Azure-beli SQL Server-adatbázis példányának közvetlen adatfeldolgozásához. A lekérdezés helytelen (0, 0) koordinátákat tartalmazó rekordokat hagy figyelmen kívül.
@@ -254,7 +254,7 @@ A következő lekérdezés összekapcsolja a **nyctaxi\_Trip** és a **nyctaxi\_
 ## <a name="ipnb"></a>Adatfelderítési és-funkció-mérnöki IPython notebookon
 Ebben a szakaszban az adatelemzési és-szolgáltatás-létrehozási műveleteket hajtjuk végre a Python és az SQL lekérdezések használatával a korábban létrehozott SQL Server adatbázison. Egy **Machine-learning-adat-Science-Process-SQL-Story** nevű minta IPython jegyzetfüzet. a Ipynb a **minta IPython jegyzetfüzetek** mappában található. Ez a jegyzetfüzet a [githubon](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/iPythonNotebooks)is elérhető.
 
-A big data használatakor az alábbi lépéseket kell végrehajtani:
+Big data használatakor kövesse az alábbi javasolt sorozatot:
 
 * Olvasson be egy kis mintát az adatból egy memóriában tárolt adatkeretbe.
 * A mintavételen áttekinthető vizualizációk és felderítések elvégzése.
@@ -264,7 +264,7 @@ A big data használatakor az alábbi lépéseket kell végrehajtani:
 
 Ha készen áll a Azure Machine Learning folytatására, a következők lehetnek:  
 
-1. Mentse a végső SQL-lekérdezést az adatok kinyeréséhez és mintavételéhez, és másolja be a lekérdezést közvetlenül a Azure Machine Learning [importálási][import-data] adatmodulba. Ez a módszer a Azure Machine Learning szakaszban bemutatott [építési modellekben](#mlmodel) látható.    
+1. Mentse a végső SQL-lekérdezést az adatok kinyeréséhez és mintavételéhez, és másolja be a lekérdezést közvetlenül a Azure Machine Learning [Importálás][import-data] adatmodulba. Ez a módszer a Azure Machine Learning szakaszban bemutatott [építési modellekben](#mlmodel) látható.    
 2. Maradjon meg az új adatbázis-táblában a modell-létrehozáshoz használni kívánt mintavételes és megtervezett adatértékek, majd használja az új táblát az [adatimportálás][import-data] modulban.
 
 A következőkben néhány adat-feltárási, adatvizualizációs és funkció-mérnöki példa található. További példákért tekintse meg az SQL IPython jegyzetfüzetet a **minta IPython jegyzetfüzetek** mappában.
@@ -405,7 +405,7 @@ Ebben a szakaszban összekapcsoljuk a táblákat a **nyctaxi\_az utazást** és 
     cursor.commit()
 
 ### <a name="data-exploration-using-sql-queries-in-ipython-notebook"></a>Adatelemzés az SQL-lekérdezések használatával a IPython notebookon
-Ebben a szakaszban az 1%-os mintavételen alapuló adateloszlást vizsgáljuk meg, amelyet a fent létrehozott új táblában tartunk fenn. Vegye figyelembe, hogy hasonló feltárások végezhetők az eredeti táblázatok használatával, opcionálisan a **TABLESAMPLE** használatával korlátozhatja a feltárási mintát, vagy az eredményeket egy adott időszakra korlátozhatja a **pickup\_datetime** partíciók használatával, ahogyan az SQL Server szakaszban található [adatelemzési és szolgáltatás-fejlesztésekben](#dbexplore) is látható.
+Ebben a szakaszban a fent létrehozott új táblázatban megőrzött 1%-os mintavételes adateloszlásokat vizsgáljuk. Hasonló feltárások hajthatók végre az eredeti táblák használatával, opcionálisan a **TABLESAMPLE** használatával korlátozhatja a feltárási mintát, vagy az eredményeket egy adott időszakra korlátozhatja a **pickup\_datetime** partíciók használatával, ahogyan az a SQL Server szakaszban szereplő [adatelemzési és szolgáltatás-fejlesztésekben](#dbexplore) is látható.
 
 #### <a name="exploration-daily-distribution-of-trips"></a>Feltárás: az utak napi eloszlása
     query = '''
@@ -487,7 +487,7 @@ Ez a példa egy kategorikus mezőt alakít át egy numerikus mezőbe úgy, hogy 
     cursor.commit()
 
 #### <a name="feature-engineering-bin-features-for-numerical-columns"></a>Feature Engineering: a numerikus oszlopokhoz tartozó bin-funkciók
-Ez a példa egy folytonos numerikus mezőt alakít át előre definiált kategóriákba, azaz a numerikus mezőt egy kategorikus mezővé alakítja át.
+Ez a példa egy folytonos numerikus mezőt alakít át előre definiált kategóriákba, azaz a numerikus mezőt egy kategorikus mezővé alakítja.
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent ADD trip_time_bin int
@@ -515,7 +515,7 @@ Ez a példa egy folytonos numerikus mezőt alakít át előre definiált kategó
     cursor.commit()
 
 #### <a name="feature-engineering-extract-location-features-from-decimal-latitudelongitude"></a>Szolgáltatások mérnöki jellemzői: a hely funkcióinak kinyerése decimális szélesség/hosszúság alapján
-Ez a példa egy szélességi és/vagy hosszúsági mező decimális megjelenítését bontja fel több, különböző részletességgel rendelkező régióba, például ország/régió, város, város, blokk stb. Vegye figyelembe, hogy az új geo-mezők nincsenek a tényleges helyükre leképezve. További információ a geocode-telephelyek hozzárendeléséről: [Bing Maps Rest Services](https://msdn.microsoft.com/library/ff701710.aspx).
+Ez a példa egy szélességi és/vagy hosszúsági mező decimális megjelenítését bontja fel több, különböző részletességgel rendelkező régióba, például ország/régió, város, város, blokk stb. Az új geo-mezők nincsenek a tényleges helyükre leképezve. További információ a geocode-telephelyek hozzárendeléséről: [Bing Maps Rest Services](https://msdn.microsoft.com/library/ff701710.aspx).
 
     nyctaxi_one_percent_insert_col = '''
         ALTER TABLE nyctaxi_one_percent
@@ -557,20 +557,20 @@ A modellezési gyakorlat elindításához jelentkezzen be Azure Machine Learning
 2. Jelentkezzen be [Azure Machine learning Studioba](https://studio.azureml.net).
 3. A Studio kezdőlapja rengeteg információt, videót, oktatóanyagokat, hivatkozásokat tartalmaz a modulok hivatkozásához és más erőforrásokhoz. További információ a Azure Machine Learningről: [Azure Machine learning dokumentációs központ](https://azure.microsoft.com/documentation/services/machine-learning/).
 
-Egy tipikus betanítási kísérlet a következőkből áll:
+Egy tipikus betanítási kísérlet a következő lépésekből áll:
 
 1. Hozzon létre egy **+ új** kísérletet.
 2. Az Azure Machine Learningba való beolvasása.
-3. Előre feldolgozhatja az adatfeldolgozást, és szükség szerint átalakíthatja és kezelheti azokat.
+3. Szükség szerint előre feldolgozhatja, átalakíthatja és kezelheti az adatfeldolgozást.
 4. Szükség szerint állítson elő szolgáltatásokat.
 5. Az adatokat kioszthatja képzési/ellenőrzési/tesztelési adatkészletekbe (vagy külön adatkészletekkel).
-6. Válasszon ki egy vagy több gépi tanulási algoritmust attól függően, hogy milyen tanulási problémát kell megoldania. Ilyenek például a bináris besorolás, a többosztályos besorolás, a regresszió.
+6. Válasszon ki egy vagy több gépi tanulási algoritmust attól függően, hogy milyen tanulási problémát kell megoldania. Például a bináris besorolás, a többosztályos besorolás, a regresszió.
 7. Egy vagy több modell betanítása a betanítási adatkészlet használatával.
 8. Az érvényesítési adatkészlet kiértékelése a betanított modell (ek) használatával.
 9. Értékelje ki a modell (eke) t, hogy kiszámítsa a tanulási probléma releváns mérőszámait.
-10. Állítsa be a modell (ek) finomhangolását, és válassza ki a telepítendő legjobb modellt.
+10. Hangolja be a modell (eke) t, és válassza ki a telepítendő legjobb modellt.
 
-Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az SQL Server-ban lévő adatot, és úgy döntöttünk, hogy a minta mérete bekerül a Azure Machine Learningba. Egy vagy több eldöntött előrejelzési modell kiépítése:
+Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az SQL Server-ban lévő adatot, és úgy döntöttünk, hogy a minta mérete bekerül a Azure Machine Learningba. Egy vagy több előrejelzési modell kiépítéséhez a következőket döntöttük:
 
 1. Az adatok beolvasása **és a kimenet** szakaszban elérhető adatok [importálása][import-data] modul használatával Azure Machine learning adatokat. További információ: az [adatok importálása][import-data] modul referenciája lap.
    
@@ -579,7 +579,7 @@ Ebben a gyakorlatban már megvizsgáltuk és megtervezjük az SQL Server-ban lé
 3. Adja meg az adatbázis DNS-nevét az **adatbázis-kiszolgáló neve** mezőben. Formátum: `tcp:<your_virtual_machine_DNS_name>,1433`
 4. Adja meg az **adatbázis nevét** a megfelelő mezőben.
 5. Adja meg az **SQL-felhasználónevet** a **kiszolgáló felhasználói fiókjának nevében**, és a **jelszót** a **kiszolgáló felhasználói fiókjának jelszavában**.
-7. Az **adatbázis-lekérdezés** szövegének szerkesztése területen illessze be azt a lekérdezést, amely Kinyeri a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a feliratokat), és a lenti mintákat az adatoknak a kívánt méretre való kibontásával.
+7. Az **adatbázis-lekérdezés** szövegmezőben illessze be azt a lekérdezést, amely kibontja a szükséges adatbázis-mezőket (beleértve a kiszámított mezőket, például a címkéket), és a legördülő menüben az adatok kinyerését a kívánt minta méretre.
 
 Az alábbi ábrán egy példa látható a bináris besorolási kísérletre, amely közvetlenül az SQL Server adatbázisból olvas be adatot. A többosztályos besoroláshoz és a regressziós problémákhoz hasonló kísérletek is létrehozhatók.
 
@@ -610,7 +610,7 @@ Azure Machine Learning megpróbál létrehozni egy pontozási kísérletet a bet
 2. Azonosítson egy logikai **bemeneti portot** , amely a várt bemeneti adatsémát jelképezi.
 3. Azonosítson egy logikai **kimeneti portot** a várt webszolgáltatás kimeneti sémájának megjelenítéséhez.
 
-A pontozási kísérlet létrehozásakor tekintse át és módosítsa a szükséges módon. Egy tipikus beállítás a bemeneti adatkészlet és/vagy lekérdezés cseréje, amely kizárja a címke mezőket, mivel ezek nem lesznek elérhetők a szolgáltatás meghívásakor. Emellett célszerű a bemeneti adatkészlet és/vagy lekérdezés méretének csökkentése néhány rekordra is, elég ahhoz, hogy jelezze a bemeneti sémát. A kimeneti port esetében gyakori, hogy kizárják az összes bemeneti mezőt, és csak a kimenetben szereplő **mutatókat** és a kimutatott **valószínűségeket** tartalmazzák a [DataSet oszlopok kiválasztása az adatkészlet][select-columns] modulban.
+A pontozási kísérlet létrehozásakor tekintse át és módosítsa a szükséges módon. Egy tipikus beállítás, ha a bemeneti adatkészletet és/vagy lekérdezést lecseréli egy olyanra, amely kizárja a címke mezőket, mivel ezek a címkék nem lesznek elérhetők a sémában a szolgáltatás hívásakor. Ajánlott továbbá a bemeneti adatkészlet és/vagy a lekérdezés méretének csökkentése néhány rekordra, amely elegendő a bemeneti séma jelzéséhez. A kimeneti port esetében gyakori, hogy kizárják az összes bemeneti mezőt, és csak a kimenetben szereplő **mutatókat** és a kimutatott **valószínűségeket** tartalmazzák a [DataSet oszlopok kiválasztása az adatkészlet][select-columns] modulban.
 
 A minta pontozási kísérlet az alábbi ábrán látható. Ha készen áll a telepítésre, kattintson a **közzétételi webszolgáltatás** gombra az alsó műveleti sávon.
 
@@ -619,7 +619,7 @@ A minta pontozási kísérlet az alábbi ábrán látható. Ha készen áll a te
 Ahhoz, hogy bedugni, ebben az útmutatóban létrehozott egy Azure-beli adatelemzési környezetet, amely egy nagyméretű nyilvános adatkészlettel dolgozott, amely az adatok beszerzésének modellezésére és a Azure Machine Learning webszolgáltatás üzembe helyezésére szolgál.
 
 ### <a name="license-information"></a>Licencelési információk
-Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért tekintse meg a LICENSE. txt fájlt a GitHub-mintakód könyvtárában.
+Ez a minta-útmutató és a hozzá tartozó parancsfájlok és IPython-jegyzetfüzet (ek) a Microsoft által a MIT licenc alatt vannak megosztva. További részletekért olvassa el a következőt a GitHubon található mintakód könyvtárában: LICENSE. txt.
 
 ### <a name="references"></a>Tudástár
 • [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  

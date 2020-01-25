@@ -8,12 +8,12 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 04/24/2019
 ms.author: pabutler
-ms.openlocfilehash: 57bae42eb44c174657e59fa8b017da2931ae681b
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 8021b6fe40e006a95b3eeff1031606c38cc47b87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73814605"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721625"
 ---
 # <a name="iot-edge-module-marketplace-tab"></a>IoT Edge modul Marketplace lapja
 
@@ -34,7 +34,7 @@ A következő táblázat a mezők célját és tartalmát ismerteti. A kötelez�
 | **Összefoglalás\***               | Az ajánlat rövid összefoglalása. Legfeljebb 100 karakter hosszú lehet. <!--ADD PICTURE IN ACTION-->|
 | **Hosszú összefoglalás\***          | Az ajánlat összefoglalása (bár lehet, hogy megegyezik az **összegzéssel**).  Legfeljebb 256 karakter hosszú lehet. <!--ADD PICTURE IN ACTION-->|
 | **Leírás\***           | Az ajánlat leírása.  Legfeljebb 3000 karakter hosszú lehet, és támogatja az egyszerű HTML-formázást.<br/> Tartalmaznia kell a *minimális hardverkövetelmények* bekezdést az alján. például: <br/> <p><u>Minimális hardverkövetelmények:</u> Linux x64 és arm32 OS, 1 GB RAM, 500 MB tárterület</p>
-| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Például: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
+| **Marketing-azonosító\***  | Az ajánlathoz társítandó egyedi URL-cím, amely jellemzően a szervezet és a megoldás nevét, a maximális hossz 50 karaktert tartalmazza.  Példa: <br/> `https://azuremarketplace.microsoft.com/marketplace/apps/contoso.sampleIoTEdgeModule`  |
 | **Előfizetési azonosítók előnézete** | Adja hozzá az előnézetek egy 100 előfizetés-azonosítóját. Ezek a felsorolt előfizetések a közzétételük előtt hozzáférhetnek az ajánlathoz, mielőtt a szolgáltatás elérhetővé válik. |
 | **Hasznos hivatkozások**          | Többek között az üzleti és technikai kategóriák közül választhat, melyeket a legjobban társíthat.  Legfeljebb 10 engedélyezett. Ügyeljen arra, hogy legalább egy hivatkozást adjon hozzá a dokumentációhoz, és egy hivatkozást az [Azure IoT-eszköz](https://catalog.azureiotsolutions.com/)kompatibilis IoT Edge eszközeire. |
 | **Javasolt kategóriák\*** | Válasszon legfeljebb öt kategóriát. A termék részletei lapon jelennek meg. A Tallózás lapokon az összes IoT Edge modul a *eszközök internetes hálózata \> IoT Edge modul* kategóriában látható.|
@@ -129,7 +129,7 @@ Kövesse az alábbi irányelveket a Hero emblémához:
 *  Ne használja a legtöbb szöveget a logó tervezésekor. A közzétevő neve, a csomag címe, az ajánlat hosszú összegzése és a létrehozás gomb programozott módon van beágyazva az emblémán belül, ha az ajánlat fel van sorolva. 
 * Vegyen fel egy nem használt téglalap alakú helyet a hős emblémájának jobb oldalán. Ez az üres terület 415x100 képpont, a bal oldali eltolás pedig 370 képpont.  
 
-<!-- P2: woudl be nice to also have an picture int he context of iot edge of the hero image
+<!-- P2: would be nice to also have an picture int he context of iot edge of the hero image
 As an example, the following hero icon is for the Azure Container Service.
 
 ![Example hero icon for Azure Container Service](./media/publishvm_010.png)
@@ -171,6 +171,6 @@ Ebben a szakaszban megadhatja az egyes ajánlatokhoz szükséges két jogi dokum
 |  |  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [támogatás](./cpp-support-tab.md) lapon megadhatja az ajánlat technikai és felhasználói támogatási erőforrásait.

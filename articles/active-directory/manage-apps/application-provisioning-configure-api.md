@@ -16,21 +16,21 @@ ms.date: 11/15/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1ca26c7277f69a817a48884acce116e3a66608ff
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 9a891f87c3d03cf95c8051ee684916bb55441cb0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275718"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712216"
 ---
 # <a name="configure-provisioning-using-microsoft-graph-apis"></a>Kiépítés konfigurálása Microsoft Graph API-k használatával
 
-A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](https://docs.microsoft.com/azure/active-directory/saas-apps/amazon-web-service-tutorial#configure-azure-ad-sso).
+A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfigurálására egyszerre. Ha azonban több – vagy akár több száz – is létrehoz egy alkalmazást, egyszerűbb lehet az alkalmazások létrehozásának és konfigurálásának automatizálása Microsoft Graph API-kkal. Ez a cikk azt ismerteti, hogyan automatizálható a kiépítési konfiguráció az API-kon keresztül. Ezt a módszert gyakran használják olyan alkalmazások esetében, mint a [Amazon Web Services](../saas-apps/amazon-web-service-tutorial.md#configure-azure-ad-sso).
 
 **A kiépítési konfiguráció automatizálásához Microsoft Graph API-k használatával kapcsolatos lépések áttekintése**
 
 
-|Lépés  |Részletek  |
+|Lépés:  |Részletek  |
 |---------|---------|
 |[1. lépés. A Gallery-alkalmazás létrehozása](#step-1-create-the-gallery-application)     |Bejelentkezés az API-ügyfélbe <br> A katalógus alkalmazás sablonjának beolvasása <br> A Gallery-alkalmazás létrehozása         |
 |[2. lépés. Kiépítési feladatok létrehozása sablon alapján](#step-2-create-the-provisioning-job-based-on-the-template)     |A létesítési összekötő sablonjának beolvasása <br> A kiépítési feladatok létrehozása         |
@@ -48,7 +48,7 @@ A Azure Portal egy kényelmes módszer az egyes alkalmazások kiépített konfig
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
 1. Válassza a "Bejelentkezés Microsofttal" gombot, és jelentkezzen be az Azure AD globális rendszergazdai vagy alkalmazás-rendszergazdai hitelesítő adataival.
 
-    ![Gráf bejelentkezés](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Gráf bejelentkezés](media/application-provisioning-configure-api/wd_export_02.png)
 
 1. A sikeres bejelentkezés után a bal oldali ablaktáblán megjelenik a felhasználói fiók adatai.
 

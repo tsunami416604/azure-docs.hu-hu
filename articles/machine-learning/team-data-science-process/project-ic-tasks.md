@@ -1,23 +1,23 @@
 ---
-title: A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
+title: A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
 description: Az adatelemzési csapat projektjein az egyes közreműködők feladatainak részletes áttekintése.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/24/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: b64d9669c11f15de5e6bd616ff7a79f59b748363
-ms.sourcegitcommit: 824e3d971490b0272e06f2b8b3fe98bbf7bfcb7f
+ms.openlocfilehash: d9942c31b63de77196b8b51b88376cb8ef74b990
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/10/2019
-ms.locfileid: "72244264"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721251"
 ---
-# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat a egy egyedi közreműködői feladatok
+# <a name="tasks-for-an-individual-contributor-in-the-team-data-science-process"></a>A csoportos adatelemzési folyamat egyes közreműködői által feldolgozható feladatok
 
 Ez a témakör azokat a feladatokat ismerteti, amelyeket az *egyes közreműködők* a [csoportos adatelemzési folyamat](overview.md) (TDSP) projekt beállításához végeznek. A cél a TDSP szabványosított együttműködési csoportmunka-környezet használata. A TDSP célja az együttműködés és a csapatmunka fejlesztése. A munkatársak szerepköreinek és az adatelemzési csapat által a TDSP szabványosított feladatainak a körvonalazása: a [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
@@ -42,10 +42,10 @@ Ez az oktatóanyag azt feltételezi, hogy a [Group Manager](group-manager-tasks.
 - Az Azure **file Storage** a csoporthoz vagy projekthez tartozó megosztott eszközökhöz van beállítva, ha van ilyen
 - **Engedélyek** a projekt-adattárba való klónozáshoz és azok visszaküldéséhez 
 
-A Tárházak klónozása és a tartalom módosítása a helyi gépen vagy DSVM, vagy az Azure file Storage csatlakoztatása a DSVM a következőkre lesz szüksége:
+A Tárházak klónozása és a tartalom módosítása a helyi gépen vagy DSVM, vagy az Azure file Storage csatlakoztatása a DSVM a következő ellenőrzőlista szükséges:
 
 - Azure-előfizetés.
-- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben a [platformok és eszközök függelék](platforms-and-tools.md#appendix).
+- A git telepítve van a gépen. Ha DSVM használ, a git előre telepítve van. Egyéb esetben lásd: [platformok és eszközök függelék](platforms-and-tools.md#appendix).
 - Ha DSVM szeretne használni, az Azure-ban létrehozott és konfigurált Windows-vagy Linux-DSVM. További információt és útmutatást a [Data Science Virtual Machine dokumentációjában](/azure/machine-learning/data-science-virtual-machine/)talál.
 - Windows DSVM esetén a [git Hitelesítőadat-kezelő (GCM)](https://github.com/Microsoft/Git-Credential-Manager-for-Windows) telepítve van a gépen. A *readme.MD* fájlban görgessen le a **letöltés és telepítés** szakaszban, és válassza ki a **legújabb telepítőt**. Töltse le az *. exe* -telepítőt a telepítő lapról, és futtassa. 
 - Linux DSVM esetében egy nyilvános SSH-kulcs, amely be van állítva a DSVM, és hozzá lett adva az Azure DevOps. További információt és útmutatást az **SSH nyilvános kulcs létrehozása** című szakaszban talál a [platformok és eszközök függelékben](platforms-and-tools.md#appendix). 
@@ -100,7 +100,7 @@ Ha a csapata vagy projektje megosztott eszközöket tartalmaz az Azure file Stor
 
 Az alábbiakban a csoportos adatelemzési folyamat által meghatározott egyéb szerepkörök és feladatok részletes ismertetésére talál hivatkozásokat:
 
-- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
-- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
-- [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
+- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
+- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
+- [Az adatelemzési csapat projekt-vezető feladatai](project-lead-tasks.md)
 

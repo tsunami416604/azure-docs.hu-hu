@@ -3,25 +3,25 @@ title: Azure Machine Learning – csoportos adatelemzési folyamat forgatóköny
 description: Válassza ki a megfelelő forgatókönyveket a csoportos adatelemzési folyamat fejlett prediktív elemzéséhez.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 3e7d747901fb73afa78b6162316709d7d2e78927
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 48b51c40e5de8f10d9d1d16b02e2c70b045816b3
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981118"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710491"
 ---
 # <a name="scenarios-for-advanced-analytics-in-azure-machine-learning"></a>Speciális elemzési forgatókönyvek az Azure Machine Learning rendszerben
 Ez a cikk a különböző típusú adatforrások és a [csoportos adatelemzési folyamat (TDSP)](overview.md)által kezelhető célzott forgatókönyvek körét ismerteti. A TDSP egy szisztematikus módszert biztosít a csapatok számára, hogy működjenek együtt az intelligens alkalmazások létrehozásán. Az itt bemutatott forgatókönyvek az adatfeldolgozási munkafolyamatban elérhető lehetőségeket illusztrálják, amelyek az Azure-ban az adatok jellemzőitől, a forrás helyeitől és a cél adattáraktól függenek.
 
-Az adatokhoz és célkitűzéshez megfelelő minta-forgatókönyvek kiválasztásának **döntési fáját** az utolsó szakaszban mutatjuk be.
+Az adatokhoz és a célkitűzéshez megfelelő minta-forgatókönyvek kiválasztásának **döntési fáját** az utolsó szakaszban mutatjuk be.
 
 A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókönyvek esetében a rendszer a lehetséges adatelemzési vagy fejlett elemzési folyamatokat és az Azure-erőforrások támogatását tartalmazza.
 
@@ -50,7 +50,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Hozzon létre egy IPython notebookot futtató Azure-beli virtuális gépet.
 1. Adatok feltöltése egy Azure Storage-tárolóba.
 1. Az Azure Storage-tárolóból származó adatokhoz való hozzáférés a IPython Notebookban előre feldolgozható és törölhető.
-1. Az adatokat megtisztított, táblázatos formában alakíthatja át.
+1. Az adatokat egy tisztított táblázatos űrlapra alakíthatja át.
 1. Az átalakított adatfájlok mentése az Azure-blobokban.
 1. Jelentkezzen be a [Azure Machine learning Studioba](https://studio.azureml.net/).
 1. Az Azure-blobokból származó adatok beolvasása az [adatok importálása][import-data] modul használatával.
@@ -63,7 +63,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Hozzon létre egy IPython notebookot futtató Azure-beli virtuális gépet.
 1. Adatok feltöltése egy Azure Storage-tárolóba.
 1. Az Azure-blobokból származó adatokhoz való hozzáférés előtt a IPython notebookon megjelenő adatok előfeldolgozása és tisztítása.
-1. Az adatokat megtisztítva, táblázatos formában alakíthatja át, ha szükséges.
+1. Szükség esetén alakítsa át az adatokat egy tisztított táblázatos űrlapra.
 1. Ismerje meg az adatelemzést, és szükség szerint hozzon létre szolgáltatásokat.
 1. Kis-és közepes adatminta kibontása.
 1. Mentse a mintául szolgáló adatkészletet az Azure-blobokban.
@@ -78,7 +78,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. SQL Server + IPython notebookot futtató Azure-beli virtuális gép létrehozása.
 1. Adatok feltöltése egy Azure Storage-tárolóba.
 1. Az Azure Storage-tárolóban az IPython notebook használatával előre feldolgozható és törölhető az adat.
-1. Az adatokat megtisztítva, táblázatos formában alakíthatja át, ha szükséges.
+1. Szükség esetén alakítsa át az adatokat egy tisztított táblázatos űrlapra.
 1. Az adatmentést a virtuális gép helyi fájljaiba (a IPython notebook virtuális gépen fut, a helyi meghajtók a virtuálisgép-meghajtókra vonatkoznak).
 1. Az Azure-beli virtuális gépen futó SQL Server adatbázis betöltése.
    
@@ -95,13 +95,13 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
    * Az ODBC-kapcsolati karakterlánc használatával férhet hozzá SQL Server a virtuális gépen.
    * Adatbázis és céltábla létrehozása
    * A tömeges importálási módszerek egyikével betöltheti az adatok virtuális helyi fájlokból való betöltését.
-1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. Vegye figyelembe, hogy a funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
+1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. A funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
 1. Döntse el, hogy szükség van-e az adatminta méretére, ha szükséges és/vagy kívánatos.
 1. Jelentkezzen be a [Azure Machine learning Studioba](https://studio.azureml.net/).
 1. Olvassa el közvetlenül a SQL Server az adatok [importálása][import-data] modul használatával. Illessze be a szükséges lekérdezést, amely kibontja a mezőket, létrehozza a szolgáltatásokat és mintákat, ha szükséges, közvetlenül az [adatimportálási][import-data] lekérdezésben.
 1. A betöltött adatkészlet (ek) től kezdve Azure Machine Learning kísérlet folyamatának kiépítése.
 
-## <a name="largelocaltodb"></a>5. forgatókönyv \#: nagyméretű adatkészlet helyi fájlokban, célként megadott SQL Server az Azure-beli virtuális gépen
+## <a name="largelocaltodb"></a>5. forgatókönyv \#: nagyméretű adathalmaz helyi fájlokban, cél SQL Server az Azure-beli virtuális gépen
 ![Nagyméretű helyi fájlok az Azure-beli SQL-ADATBÁZIShoz][5]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (SQL Server/IPython notebook Server)
@@ -109,34 +109,30 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 1. Adatok feltöltése egy Azure Storage-tárolóba.
 1. Választható Előre feldolgozható és megtisztított adathalmazok.
    
-   a.  Adatok előfeldolgozása és tisztítása IPython-jegyzetfüzetben, adatok elérése az Azure-ból
+    a.  Az Azure-blobokból származó adatokhoz való hozzáférés előtt a IPython notebookon megjelenő adatok előfeldolgozása és tisztítása.
    
-       blobs.
+    b.  Szükség esetén alakítsa át az adatokat egy tisztított táblázatos űrlapra.
    
-   b.  Az adatokat megtisztítva, táblázatos formában alakíthatja át, ha szükséges.
-   
-   c.  Az adatmentést a virtuális gép helyi fájljaiba (a IPython notebook virtuális gépen fut, a helyi meghajtók a virtuálisgép-meghajtókra vonatkoznak).
+    c.  Az adatmentést a virtuális gép helyi fájljaiba (a IPython notebook virtuális gépen fut, a helyi meghajtók a virtuálisgép-meghajtókra vonatkoznak).
 1. Az Azure-beli virtuális gépen futó SQL Server adatbázis betöltése.
    
-   a.  Jelentkezzen be SQL Server VM.
+    a.  Jelentkezzen be SQL Server VMba.
    
-   b.  Ha az adatok mentése nem történt meg, töltse le az adatfájlokat az Azure-ból
+    b.  Ha az adatok nem lettek mentve, töltse le az adatfájlokat az Azure Storage-tárolóból a helyi virtuális gép mappájába.
    
-       storage container to local-VM folder.
+    c.  SQL Server Management Studio futtatása.
    
-   c.  SQL Server Management Studio futtatása.
+    d.  Adatbázis és céltábla létrehozása
    
-   d.  Adatbázis és céltábla létrehozása
+    e.  Az betöltéshez használja az egyik tömeges importálási módszert.
    
-   e.  Az betöltéshez használja az egyik tömeges importálási módszert.
-   
-   f.  Ha táblázat-illesztésekre van szükség, hozzon létre indexeket az illesztések felgyorsításához.
+    f.  Ha táblázat-illesztésekre van szükség, hozzon létre indexeket az illesztések felgyorsításához.
    
    > [!NOTE]
    > A nagyméretű adatméretek gyorsabb betöltéséhez ajánlott particionált táblákat létrehozni és párhuzamosan importálni az adatmennyiséget. További információ: [párhuzamos adatok importálása az SQL particionált táblákba](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. Vegye figyelembe, hogy a funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
+1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. A funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
 1. Döntse el, hogy szükség van-e az adatminta méretére, ha szükséges és/vagy kívánatos.
 1. Jelentkezzen be a [Azure Machine learning Studioba](https://studio.azureml.net/).
 1. Olvassa el közvetlenül a SQL Server az adatok [importálása][import-data] modul használatával. Illessze be a szükséges lekérdezést, amely kibontja a mezőket, létrehozza a szolgáltatásokat és mintákat, ha szükséges, közvetlenül az [adatimportálási][import-data] lekérdezésben.
@@ -172,7 +168,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
    > A nagyméretű adatméretek gyorsabb betöltéséhez particionált táblákat kell létrehozni, és párhuzamosan importálni kell az adatmennyiséget. További információ: [párhuzamos adatok importálása az SQL particionált táblákba](parallel-load-sql-partitioned-tables.md).
    > 
    > 
-1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. Vegye figyelembe, hogy a funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
+1. Ismerje meg az adatelemzést, szükség szerint hozzon létre szolgáltatásokat. A funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
 1. Döntse el, hogy szükség van-e az adatminta méretére, ha szükséges és/vagy kívánatos.
 1. Jelentkezzen be a [Azure Machine learning Studioba](https://studio.azureml.net/).
 1. Olvassa el közvetlenül a SQL Server az adatok [importálása][import-data] modul használatával. Illessze be a szükséges lekérdezést, amely kibontja a mezőket, létrehozza a szolgáltatásokat és mintákat, ha szükséges, közvetlenül az [adatimportálási][import-data] lekérdezésben.
@@ -182,7 +178,7 @@ A következő részekben egy minta forgatókönyvet talál. Az egyes forgatókö
 ![Helyi adatbázis leválasztása és csatolása az Azure-beli SQL-ADATBÁZIShoz][7]
 
 #### <a name="additional-azure-resources-azure-virtual-machine-sql-server--ipython-notebook-server"></a>További Azure-erőforrások: Azure-beli virtuális gép (SQL Server/IPython notebook Server)
-Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akkor az adatbázist az egyik helyről/kiszolgálóról a másikra kell másolni, feltéve, hogy az adatbázis átmenetileg offline állapotba kerül. Ezt a SQL Server Management Studio Object Explorer, vagy a megfelelő Transact-SQL-parancsok használatával végezheti el.
+Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akkor az adatbázist az egyik helyről/kiszolgálóról a másikra kell másolni, feltéve, hogy az adatbázis átmenetileg offline állapotba kerül. Használhatja SQL Server Management Studio Object Explorer vagy a megfelelő Transact-SQL-parancsokat.
 
 1. Válassza le az adatbázist a forrás helyén. További információ: [adatbázis leválasztása](https://technet.microsoft.com/library/ms191491\(v=sql.110\).aspx).
 1. A Windows Intézőben vagy a Windows parancssorablakban másolja a leválasztott adatbázisfájlt vagy fájlokat, illetve naplófájlokat vagy fájlokat a célhelyre az Azure-beli SQL Server VM.
@@ -202,7 +198,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
    
        blobs.
    
-   b.  Az adatokat megtisztítva, táblázatos formában alakíthatja át, ha szükséges.
+   b.  Szükség esetén alakítsa át az adatokat egy tisztított táblázatos űrlapra.
    
    c.  Az adatmentést a virtuális gép helyi fájljaiba (a IPython notebook virtuális gépen fut, a helyi meghajtók a virtuálisgép-meghajtókra vonatkoznak).
 1. Töltse fel az adatok a 2. lépésben kiválasztott Hadoop-fürt alapértelmezett tárolójába.
@@ -220,7 +216,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
    > Ha az adatmennyiség nagy, a felhasználók létrehozhatják a kaptár táblát partíciókkal. Ezt követően a felhasználók használhatnak egy `for` hurkot a Hadoop parancssorában a fő csomóponton, hogy az adatkészletet a partíciók particionált particionálási táblájában tárolja.
    > 
    > 
-1. Ismerje meg az adatelemzést, és szükség szerint hozzon létre szolgáltatásokat a Hadoop parancssorban. Vegye figyelembe, hogy a funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
+1. Ismerje meg az adatelemzést, és szükség szerint hozzon létre szolgáltatásokat a Hadoop parancssorban. A funkciók nem szükségesek az adatbázis tábláiban. Csak jegyezze fel a szükséges lekérdezést a létrehozásához.
    
    a.  Jelentkezzen be a Hadoop-fürt fő csomópontjára.
    
@@ -236,7 +232,7 @@ Ha a teljes SQL Server adatbázist szeretné replikálni a SQL Server VMban, akk
 
 ## <a name="decisiontree"></a>Döntési fa a forgatókönyvek kiválasztásához
 ---
-A következő ábra összefoglalja a fent ismertetett forgatókönyveket, valamint a speciális elemzési folyamatokat és a technológia azon lehetőségeit, amelyek az egyes részletezett forgatókönyvekre épülnek. Vegye figyelembe, hogy az adatfeldolgozás, a feltárás, a szolgáltatások és a mintavételezés egy vagy több módszerrel/környezetben – a forrás-, a köztes és/vagy a cél környezetekben –, és szükség esetén folytathatja a iteratív. A diagram csak néhány lehetséges folyamat szemléltetését szolgálja, és nem biztosít teljes enumerálást.
+A következő ábra összefoglalja a fent ismertetett forgatókönyveket, valamint a speciális elemzési folyamatokat és a technológia azon lehetőségeit, amelyek az egyes részletezett forgatókönyvekre épülnek. Az adatfeldolgozás, a feltárás, a szolgáltatások és a mintavételezés egy vagy több módszerrel/környezetben, a forrás, a köztes és/vagy a cél környezetekben is elvégezhető, és szükség esetén folytathatja a iteratív. A diagram csak néhány lehetséges folyamat szemléltetését szolgálja, és nem biztosít teljes enumerálást.
 
 ![Példa a DS folyamat-forgatókönyvekre][8]
 

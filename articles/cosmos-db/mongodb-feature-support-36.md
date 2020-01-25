@@ -4,29 +4,29 @@ description: Ismerkedjen meg Azure Cosmos DB API-MongoDB (3,6 verzió) támogato
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: overview
-ms.date: 10/16/2019
+ms.date: 01/15/2020
 author: sivethe
 ms.author: sivethe
-ms.openlocfilehash: a48fb82402cd4719cb210ec2dab55b3a0f7883ea
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a32affab45ab99a89113644bb08c4f2b57d69018
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441624"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721013"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>Azure Cosmos DB API a MongoDB-hez (3,6-es verzió): támogatott funkciók és szintaxis
 
-Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-ját a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
+Az Azure Cosmos DB a Microsoft globálisan elosztott többmodelles adatbázis-szolgáltatása. A MongoDB Azure Cosmos DB API-jával a nyílt forráskódú MongoDB [-ügyfelek](https://docs.mongodb.org/ecosystem/drivers)bármelyikének használatával kommunikálhat. A MongoDB Azure Cosmos DB API-je lehetővé teszi a meglévő ügyféloldali illesztőprogramok használatát az MongoDB [Wire protokoll](https://docs.mongodb.org/manual/reference/mongodb-wire-protocol)betartásával.
 
 A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt MongoDB előnyeit, és az összes olyan vállalati funkciót, amelyet a Cosmos DB biztosít: [globális elosztás](distribute-data-globally.md), [automatikus](partition-data.md)horizontális felskálázás, rendelkezésre állási és késési garanciák, az összes mező automatikus indexelése, a titkosítás nyugalmi állapotban, biztonsági mentések és sok más további lehetőség.
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz.
+A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha Azure Cosmos DB API-ját használja a MongoDB-fiókokhoz, a fiókok 3,6-es verziójának formátuma `*.mongo.cosmos.azure.com`, míg a fiókok 3,2-es verziója a végpontot `*.documents.azure.com`formátumban adja meg.
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
-A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezési nyelvi szerkezetekhez. Alább egy részletes listát találhat a jelenleg támogatott műveletekről, operátorokról, fázisokról, parancsokról és beállításokról.
+A Azure Cosmos DB API-MongoDB átfogó támogatást nyújt a MongoDB lekérdezési nyelvi szerkezetekhez. Az alábbiakban megtalálhatja a jelenleg támogatott műveletek, operátorok, szakaszok, parancsok és beállítások részletes listáját.
 
 ## <a name="database-commands"></a>Adatbázisparancsok
 
@@ -34,43 +34,77 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 ### <a name="query-and-write-operation-commands"></a>Lekérdezési és írási műveletek parancsai
 
-- delete
-- find
-- findAndModify
-- getLastError
-- getMore
-- insert
-- update
+|Parancs  |Támogatott |
+|---------|---------|
+|delete | Igen |
+|find | Igen     |
+|findAndModify | Igen  |
+|getLastError|   Igen |
+|getMore  |  Igen  |
+|getPrevError | Nem  |
+|insert  |   Igen  |
+|parallelCollectionScan  | Igen   |
+|resetError |   Nem  |
+|update  |   Igen  |
+|[Adatfolyamok módosítása](mongodb-change-streams.md)  |  Igen  |
+|GridFS |   Igen  |
 
 ### <a name="authentication-commands"></a>Hitelesítési parancsok
 
-- kijelentkezés
-- authenticate
-- getnonce
+|Parancs  |Támogatott |
+|---------|---------|
+|authenticate    |   Igen      |
+|kijelentkezés    |      Igen   |
+|getnonce   |    Igen     |
+
 
 ### <a name="administration-commands"></a>Adminisztrációs parancsok
 
-- dropDatabase
-- listDatabases
-- listCollections
-- drop
-- létrehozás
-- filemd5
-- createIndexes
-- listIndexes
-- dropIndexes
-- connectionStatus
-- reIndex
-- killCursors
+|Parancs  |Támogatott |
+|---------|---------|
+|Korlátozott gyűjtemények   |   Nem      |
+|cloneCollectionAsCapped     |   Nem      |
+|collMod     |   Nem      |
+|collMod: expireAfterSeconds   |   Nem      |
+|convertToCapped   |  Nem       |
+|copydb     |  Nem       |
+|létrehozás   |    Igen     |
+|createIndexes     |  Igen       |
+|currentOp     |  Igen       |
+|drop     |   Igen      |
+|dropDatabase     |  Igen       |
+|dropIndexes     |   Igen      |
+|filemd5    |   Igen      |
+|killCursors    |  Igen       |
+|Mintálné     |   Nem      |
+|listCollections     |  Igen       |
+|listDatabases     |  Igen       |
+|listIndexes     |  Igen       |
+|reIndex     |    Igen     |
+|renameCollection     |    Nem     |
+|connectionStatus    |     Nem    |
 
 ### <a name="diagnostics-commands"></a>Diagnosztikai parancsok
 
-- buildInfo
-- collStats
-- dbStats
-- hostInfo
-- listDatabases
-- whatsmyuri
+|Parancs  |Támogatott |
+|---------|---------|
+|buildInfo       |   Igen      |
+|collStats    |  Igen       |
+|connPoolStats     |  Nem       |
+|connectionStatus     |  Nem       |
+|dataSize     |   Nem      |
+|dbHash    |    Nem     |
+|dbStats     |   Igen      |
+|megmagyarázni     | Nem        |
+|magyarázat: executionStats     |     Nem    |
+|funkciókkal     |    Nem     |
+|hostInfo     |   Nem      |
+|listDatabases       |   Igen      |
+|Parancslista elemre     |  Nem       |
+|Profiler     |  Nem       |
+|serverStatus     |  Nem       |
+|Top     |    Nem     |
+|whatsmyuri     |   Igen      |
 
 <a name="aggregation-pipeline"/>
 
@@ -78,252 +112,433 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 ### <a name="aggregation-commands"></a>Összesítési parancsok
 
-- aggregate
-- count
-- distinct
+|Parancs  |Támogatott |
+|---------|---------|
+|aggregate |   Igen  |
+|count     |   Igen  |
+|distinct  | Igen |
+|mapReduce | Nem |
 
 ### <a name="aggregation-stages"></a>Összesítési fázisok
 
-- $project
-- $match
-- $limit
-- $skip
-- $unwind
-- $group
-- $sample
-- $sort
-- $lookup
-- $out
-- $count
-- $addFields
-- $redact
-- $replaceRoot
+|Parancs  |Támogatott |
+|---------|---------|
+|$collStats |Nem|
+|$project   |Igen|
+|$match |Igen|
+|$redact|   Igen|
+|$limit |Igen|
+|$skip  |Igen|
+|$unwind|   Igen|
+|$group |   Igen|
+|$sample|       Igen|
+|$sort  |Igen|
+|$geoNear|  Nem|
+|$lookup    |   Igen|
+|$out       |Igen|
+|$indexStats|       Nem|
+|$facet |Nem|
+|$bucket|   Nem|
+|$bucketAuto|   Nem|
+|$sortByCount|  Igen|
+|$addFields |Igen|
+|$replaceRoot|  Igen|
+|$count |Igen|
+|$currentOp|    Nem|
+|$listLocalSessions |Nem|
+|$listSessions  |Nem|
+|$graphLookup   |Nem|
 
-### <a name="aggregation-expressions"></a>Összesítő kifejezések
+### <a name="boolean-expressions"></a>Logikai kifejezések
 
-#### <a name="boolean-expressions"></a>Logikai kifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$and| Igen|
+|$or|Igen|
+|$not|Igen|
 
-- $and
-- $or
-- $not
+### <a name="set-expressions"></a>Halmazkifejezések
 
-#### <a name="set-expressions"></a>Halmazkifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+| $setEquals | Igen|
+|$setIntersection|Igen|
+| $setUnion|Igen|
+| $setDifference|Igen|
+| $setIsSubset|Igen|
+| $anyElementTrue|Igen|
+| $allElementsTrue|Igen|
 
-- $setEquals
-- $setIntersection
-- $setUnion
-- $setDifference
-- $setIsSubset
-- $anyElementTrue
-- $allElementsTrue
+### <a name="comparison-expressions"></a>Összehasonlító kifejezések
 
-#### <a name="comparison-expressions"></a>Összehasonlító kifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$cmp     |  Igen       |
+|$eq|   Igen| 
+|$gt |  Igen| 
+|$gte|  Igen| 
+|$lt    |Igen|
+|$lte|  Igen| 
+|$ne    |   Igen| 
+|$in    |   Igen| 
+|$nin   |   Igen| 
 
-- $cmp
-- $eq
-- $gt
-- $gte
-- $lt
-- $lte
-- $ne
+### <a name="arithmetic-expressions"></a>Aritmetikai kifejezések
 
-#### <a name="arithmetic-expressions"></a>Aritmetikai kifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$abs |  Igen       |
+| $add |  Igen       |
+| $ceil |  Igen       |
+| $divide |  Igen       |
+| $exp |  Igen       |
+| $floor |  Igen       |
+| $ln |  Igen       |
+| $log |  Igen       |
+| $log10 |  Igen       |
+| $mod |  Igen       |
+| $multiply |  Igen       |
+| $pow |  Igen       |
+| $sqrt |  Igen       |
+| $subtract |  Igen       |
+| $trunc |  Igen       |
 
-- $abs
-- $add
-- $ceil
-- $divide
-- $exp
-- $floor
-- $ln
-- $log
-- $log10
-- $mod
-- $multiply
-- $pow
-- $sqrt
-- $subtract
-- $trunc
+### <a name="string-expressions"></a>Sztringkifejezések
 
-#### <a name="string-expressions"></a>Sztringkifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$concat |  Igen       |
+| $indexOfBytes|  Igen       |
+| $indexOfCP|  Igen       |
+| $split|  Igen       |
+| $strLenBytes|  Igen       |
+| $strLenCP|  Igen       |
+| $strcasecmp|  Igen       |
+| $substr|  Igen       |
+| $substrBytes|  Igen       |
+| $substrCP|  Igen       |
+| $toLower|  Igen       |
+| $toUpper|  Igen       |
 
-- $concat
-- $indexOfBytes
-- $indexOfCP
-- $split
-- $strLenBytes
-- $strLenCP
-- $strcasecmp
-- $substr
-- $substrBytes
-- $substrCP
-- $toLower
-- $toUpper
+### <a name="text-search-operator"></a>Szöveges keresési operátor
 
-#### <a name="array-expressions"></a>Tömbkifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+| $meta | Nem|
 
-- $arrayElemAt
-- $concatArrays
-- $filter
-- $indexOfArray
-- $isArray
-- $range
-- $reverseArray
-- $size
-- $slice
-- $in
+### <a name="array-expressions"></a>Tömbkifejezések
 
-#### <a name="date-expressions"></a>Dátumkifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$arrayElemAt   |   Igen|
+|$arrayToObject|    Igen|
+|$concatArrays  |   Igen|
+|$filter    |   Igen|
+|$indexOfArray  |Igen|
+|$isArray   |   Igen|
+|$objectToArray |Igen|
+|$range |Igen|
+|$reverseArray  |   Igen|
+|$reduce|   Igen|
+|$size  |   Igen|
+|$slice |   Igen|
+|$zip   |   Igen|
+|$in    |   Igen|
 
-- $dayOfYear
-- $dayOfMonth
-- $dayOfWeek
-- $year
-- $month
-- $week
-- $hour
-- $minute
-- $second
-- $millisecond
-- $isoDayOfWeek
-- $isoWeek
+### <a name="variable-operators"></a>Változó operátorok
 
-#### <a name="conditional-expressions"></a>Feltételes kifejezések
+|Parancs  |Támogatott |
+|---------|---------|
+|$map   |Nem|
+|$let   |Igen|
 
-- $cond
-- $ifNull
+### <a name="system-variables"></a>Rendszerváltozók
 
-## <a name="aggregation-accumulators"></a>Összesítő gyűjtők
+|Parancs  |Támogatott |
+|---------|---------|
+|$ $CURRENT| Igen|
+|$ $DESCEND|     Igen|
+|$ $KEEP     |Igen|
+|$ $PRUNE    |   Igen|
+|$ $REMOVE   |Igen|
+|$ $ROOT     |Igen|
 
-A Cosmos DB az összes MongoDB-v 3.6-gyűjtőt támogatja, kivéve a következőket:
+### <a name="literal-operator"></a>Literális operátor
 
-- $stdDevPop
-- $stdDevSamp
+|Parancs  |Támogatott |
+|---------|---------|
+|$literal   |Igen|
+
+### <a name="date-expressions"></a>Dátumkifejezések
+
+|Parancs  |Támogatott |
+|---------|---------|
+|$dayOfYear |Igen    |
+|$dayOfMonth|   Igen |
+|$dayOfWeek |Igen    |
+|$year  |Igen    |
+|$month |Igen|   
+|$week  |Igen    |
+|$hour  |Igen    |
+|$minute|   Igen|    
+|$second    |Igen    |
+|$millisecond|  Igen|    
+|$dateToString  |Igen    |
+|$isoDayOfWeek  |Igen    |
+|$isoWeek   |Igen    |
+|$dateFromParts|    Nem| 
+|$dateToParts   |Nem |
+|$dateFromString|   Nem|
+|$isoWeekYear   |Igen    |
+
+### <a name="conditional-expressions"></a>Feltételes kifejezések
+
+|Parancs  |Támogatott |
+|---------|---------|
+| $cond| Igen|
+| $ifNull| Igen|
+| $switch |Igen|
+
+### <a name="data-type-operator"></a>Adattípus-operátor
+
+|Parancs  |Támogatott |
+|---------|---------|
+| $type| Igen|
+
+### <a name="accumulator-expressions"></a>Gyűjtői kifejezések
+
+|Parancs  |Támogatott |
+|---------|---------|
+|$sum   |Igen    |
+|$avg   |Igen    |
+|$first|    Igen|
+|$last  |Igen    |
+|$max   |Igen    |
+|$min   |Igen    |
+|$push| Igen|
+|$addToSet| Igen|
+|$stdDevPop|    Nem  |
+|$stdDevSamp|   Nem|
+
+### <a name="merge-operator"></a>Egyesítési operátor
+
+|Parancs  |Támogatott |
+|---------|---------|
+| $mergeObjects | Igen|
+
+## <a name="data-types"></a>Adattípusok
+
+|Parancs  |Támogatott |
+|---------|---------|
+|Duplán |Igen    |
+|Sztring |Igen    |
+|Objektum |Igen    |
+|Tömb  |Igen    |
+|Bináris adatértékek    |Igen|   
+|objectId   |Igen    |
+|Logikai    |Igen    |
+|Dátum   |Igen    |
+|Null   |Igen    |
+|32 bites egész szám (int)   |Igen    |
+|Időbélyeg  |Igen    |
+|64 bites egész szám (hosszú)  |Igen    |
+|MinKey |Igen    |
+|MaxKey |Igen    |
+|Decimal128 |Igen|   
+|Reguláris kifejezés |Igen|
+|JavaScript |Igen|
+|JavaScript (hatókörrel)|   Igen |
+|Nem definiált  |Igen    |
+
+## <a name="indexes-and-index-properties"></a>Indexek és index tulajdonságai
+
+### <a name="indexes"></a>Indexek
+
+|Parancs  |Támogatott |
+|---------|---------|
+|Egyetlen mező indexe |Igen    |
+|Összetett index |Igen    |
+|Multikey index |Igen    |
+|Szöveges index |Nem|
+|2dsphere   |Igen    |
+|2D-index   |Nem |
+|Kivonatos index   | Igen|
+
+### <a name="index-properties"></a>Index tulajdonságai
+
+|Parancs  |Támogatott |
+|---------|---------|
+|TTL|   Igen |
+|Unique |Igen|
+|Részleges|   Nem|
+|Kis-és nagybetűk megkülönböztetése   |Nem|
+|Ritka |Nem |
+|Háttér|    Igen |
 
 ## <a name="operators"></a>Operátorok
 
-Alább a támogatott operátorok láthatók a használatukat bemutató megfelelő példákkal. Tekintse meg a lenti lekérdezésekben használt mintadokumentumot:
+### <a name="logical-operators"></a>Logikai operátorok
 
-```json
-{
-  "Volcano Name": "Rainier",
-  "Country": "United States",
-  "Region": "US-Washington",
-  "Location": {
-    "type": "Point",
-    "coordinates": [
-      -121.758,
-      46.87
-    ]
-  },
-  "Elevation": 4392,
-  "Type": "Stratovolcano",
-  "Status": "Dendrochronology",
-  "Last Known Eruption": "Last known eruption from 1800-1899, inclusive"
-}
-```
+|Parancs  |Támogatott |
+|---------|---------|
+|$or    |   Igen|
+|$and   |   Igen|
+|$not   |   Igen|
+|$nor   |   Igen| 
 
-Művelet | Példa |
---- | --- |
-$eq | `{ "Volcano Name": { $eq: "Rainier" } }` |  | -
-$gt | `{ "Elevation": { $gt: 4000 } }` |  | -
-$gte | `{ "Elevation": { $gte: 4392 } }` |  | -
-$lt | `{ "Elevation": { $lt: 5000 } }` |  | -
-$lte | `{ "Elevation": { $lte: 5000 } }` | | -
-$ne | `{ "Elevation": { $ne: 1 } }` |  | -
-$in | `{ "Volcano Name": { $in: ["St. Helens", "Rainier", "Glacier Peak"] } }` |  | -
-$nin | `{ "Volcano Name": { $nin: ["Lassen Peak", "Hood", "Baker"] } }` | | -
-$or | `{ $or: [ { Elevation: { $lt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$and | `{ $and: [ { Elevation: { $gt: 4000 } }, { "Volcano Name": "Rainier" } ] }` |  | -
-$not | `{ "Elevation": { $not: { $gt: 5000 } } }`|  | -
-$nor | `{ $nor: [ { "Elevation": { $lt: 4000 } }, { "Volcano Name": "Baker" } ] }` |  | -
-$exists | `{ "Status": { $exists: true } }`|  | -
-$type | `{ "Status": { $type: "string" } }`|  | -
-$mod | `{ "Elevation": { $mod: [ 4, 0 ] } }` |  | -
-$regex | `{ "Volcano Name": { $regex: "^Rain"} }`|  | -
+### <a name="element-operators"></a>Elem operátorai
 
-### <a name="notes"></a>Megjegyzések
+|Parancs  |Támogatott |
+|---------|---------|
+|$exists|   Igen|
+|$type  |   Igen|
 
-A $regex lekérdezésekben a balra horgonyzott kifejezések engedélyezik az indexben való keresést. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
-Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni.
-Például ha az eredeti lekérdezés a következő: ```find({x:{$regex: /^abc$/})```, a következőképpen kell módosítani: ```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})```.
-Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket.
-A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+### <a name="evaluation-query-operators"></a>Kiértékelési lekérdezési operátorok
+
+|Parancs  |Támogatott |
+|---------|---------|
+|$expr  |   Nem|
+|$jsonSchema    |   Nem|
+|$mod   |   Igen|
+|$regex |   Igen|
+|$text  | Nem (nem támogatott. Ehelyett használja a $regex.)| 
+|$where |Nem| 
+
+A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé teszik az indexek keresését. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
+
+Ha bele kell foglalni a „$” vagy a „|” karaktert, célszerű két (vagy több) regex lekérdezést létrehozni. Ha például a következő eredeti lekérdezést adta meg: ```find({x:{$regex: /^abc$/})```, azt a következőképpen kell módosítani:
+
+```find({x:{$regex: /^abc/, x:{$regex:/^abc$/}})``` kérdésre adott válaszban foglalt lépéseket.
+
+Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumokra való korlátozásához, a második rész pedig meg fogja feleltetni a pontos bejegyzéseket. A „|” sávoperátor „vagy” függvényként működik – a(z) ```find({x:{$regex: /^abc|^def/})``` lekérdezés megfelelteti azokat a dokumentumokat, amelyekben az „x” mezőben „abc” vagy „def” sztringgel kezdődő értékek találhatók. Az index használatához ajánlott a lekérdezést két külön lekérdezésre bontani, amelyeket az $or operátor kapcsol össze: ```find( {$or : [{x: $regex: /^abc/}, {$regex: /^def/}] })```.
+
+### <a name="array-operators"></a>Tömb operátorai
+
+|Parancs  |Támogatott | 
+|---------|---------|
+| $all | Igen| 
+| $elemMatch | Igen| 
+| $size | Igen | 
+
+### <a name="comment-operator"></a>Megjegyzés operátora
+
+|Parancs  |Támogatott | 
+|---------|---------|
+$comment |Igen| 
+
+### <a name="projection-operators"></a>Kivetítési operátorok
+
+|Parancs  |Támogatott |
+|---------|---------|
+|$elemMatch |Igen|
+|$meta| Nem|
+|$slice | Igen|
 
 ### <a name="update-operators"></a>Frissítési operátorok
 
 #### <a name="field-update-operators"></a>Mezőfrissítő operátorok
 
-- $inc
-- $mul
-- $rename
-- $setOnInsert
-- $set
-- $unset
-- $min
-- $max
-- $currentDate
+|Parancs  |Támogatott |
+|---------|---------|
+|$inc   |   Igen|
+|$mul   |   Igen|
+|$rename    |   Igen|
+|$setOnInsert|  Igen|
+|$set   |Igen|
+|$unset| Igen|
+|$min   |Igen|
+|$max   |Igen|
+|$currentDate   | Igen|
 
 #### <a name="array-update-operators"></a>Tömbfrissítő operátorok
 
-- $addToSet
-- $pop
-- $pullAll
-- $pull
-- $pushAll
-- $push
-- $each
-- $slice
-- $sort
-- $position
+|Parancs  |Támogatott |
+|---------|---------|
+|$  |Igen|
+|$[]|   Igen|
+|$ [<identifier>]|   Igen|
+|$addToSet  |Igen|
+|$pop   |Igen|
+|$pullAll|  Igen|
+|$pull  |Igen|
+|$push  |Igen|
+|$pushAll| Igen|
+
+
+#### <a name="update-modifiers"></a>Módosítók frissítése
+
+|Parancs  |Támogatott |
+|---------|---------|
+|$each  |   Igen|
+|$slice |Igen|
+|$sort  |Igen|
+|$position  |Igen|
 
 #### <a name="bitwise-update-operator"></a>Bitenként frissítő operátor
 
-- $bit
+|Parancs  |Támogatott |
+|---------|---------|
+| $bit  |   Igen|    
+|$bitsAllSet    |   Nem|
+|$bitsAnySet    |   Nem|
+|$bitsAllClear  |Nem|
+|$bitsAnyClear  |Nem|
 
 ### <a name="geospatial-operators"></a>Térinformatikai operátorok
 
-Művelet | Példa | |
---- | --- | --- |
-$geoWithin | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Igen |
-$geoIntersects |  ```{ "Location.coordinates": { $geoIntersects: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
-$near | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
-$nearSphere | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Igen |
-$geometry | ```{ "Location.coordinates": { $geoWithin: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
-$minDistance | ```{ "Location.coordinates": { $nearSphere : { $geometry: {type: "Point", coordinates: [ -121, 46 ]}, $minDistance: 1000, $maxDistance: 1000000 } } }``` | Igen |
-$maxDistance | ```{ "Location.coordinates": { $nearSphere : [ -121, 46  ], $maxDistance: 0.50 } }``` | Igen |
-$center | ```{ "Location.coordinates": { $geoWithin: { $center: [ [-121, 46], 1 ] } } }``` | Igen |
-$centerSphere | ```{ "Location.coordinates": { $geoWithin: { $centerSphere: [ [ -121, 46 ], 5 ] } } }``` | Igen |
-$box | ```{ "Location.coordinates": { $geoWithin: { $box:  [ [ 0, 0 ], [ -122, 47 ] ] } } }``` | Igen |
-$polygon | ```{ "Location.coordinates": { $near: { $geometry: { type: "Polygon", coordinates: [ [ [ -121.9, 46.7 ], [ -121.5, 46.7 ], [ -121.5, 46.9 ], [ -121.9, 46.9 ], [ -121.9, 46.7 ] ] ] } } } }``` | Igen |
+Művelet | Támogatott| 
+--- | --- |
+$geoWithin | Igen |
+$geoIntersects | Igen | 
+$near |  Igen |
+$nearSphere |  Igen |
+$geometry |  Igen |
+$minDistance | Igen |
+$maxDistance | Igen |
+$center | Igen |
+$centerSphere | Igen |
+$box | Igen |
+$polygon |  Igen |
+
+## <a name="cursor-methods"></a>Kurzormetódusok
+
+|Parancs  |Támogatott |
+|---------|---------|
+|cursor. batchSize () |   Igen|
+|kurzor. Bezárás () |Igen|
+|cursor. isClosed ()|     Igen|
+|kurzor. rendezés ()|    Nem|
+|kurzor. comment ()   |Igen|
+|kurzor. Count () |Igen|
+|kurzor. magyarázat ()|  Nem|
+|cursor. forEach ()   |Igen|
+|cursor. hasNext ()   |Igen|
+|cursor. Hint ()  |Igen|
+|cursor. isExhausted ()|  Igen|
+|cursor. itcount ()   |Igen|
+|kurzor. limit () |Igen|
+|kurzor. map ()   |Igen|
+|cursor. maxScan ()   |Igen|
+|cursor. maxTimeMS ()|    Igen|
+|kurzor. max ()   |Igen|
+|kurzor. min ()   |Igen|
+|kurzor. Next ()| Igen|
+|cursor. noCursorTimeout ()   |Nem|
+|cursor. objsLeftInBatch ()   |Igen|
+|kurzor. Pretty ()|   Igen|
+|cursor. readConcern ()|  Igen|
+|cursor. readPref ()      |Igen|
+|kurzor. rekulcsrakész () |Nem|
+|cursor. showRecordId ()| Nem|
+|kurzor. Size ()  |NES|
+|kurzor. skip ()  |Igen|
+|cursor.sort()  |   Igen|
+|kurzor. farok ()| Nem|
+|cursor. toArray ()   |Igen|
 
 ## <a name="sort-operations"></a>Rendezési műveletek
 
 A `findOneAndUpdate` művelet használatakor a rendezési műveletek egyetlen mezőben támogatottak, de a rendezési műveletek több mezőn nem támogatottak.
-
-## <a name="additional-operators"></a>További operátorok
-
-Művelet | Példa | Megjegyzések
---- | --- | --- |
-$all | ```{ "Location.coordinates": { $all: [-121.758, 46.87] } }``` |
-$elemMatch | ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } } }``` |  
-$size | ```{ "Location.coordinates": { $size: 2 } }``` |
-$comment |  ```{ "Location.coordinates": { $elemMatch: {  $lt: 0 } }, $comment: "Negative values"}``` |
-$text |  | Nem támogatott. A $regex használható helyette.
-
-## <a name="unsupported-operators"></a>Nem támogatott operátorok
-
-A Cosmos DB nem támogatja a ```$where``` és az ```$eval``` operátort.
-
-### <a name="methods"></a>Metódusok
-
-A következő metódusok támogatottak:
-
-#### <a name="cursor-methods"></a>Kurzormetódusok
-
-Módszer | Példa | Megjegyzések
---- | --- | --- |
-cursor.sort() | ```cursor.sort({ "Elevation": -1 })``` | A rendszer nem adja vissza a rendezési kulccsal nem rendelkező dokumentumokat
 
 ## <a name="unique-indexes"></a>Egyedi indexek
 
@@ -335,7 +550,7 @@ A Cosmos DB a dokumentum időbélyegzője alapján támogatja a élettartamot (T
 
 ## <a name="user-and-role-management"></a>Felhasználó- és szerepkörkezelés
 
-A Cosmos DB még nem támogatja a felhasználókat és a szerepköröket. A Cosmos DB azonban támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), valamint az írási és olvasási és csak olvasható jelszavakat/kulcsokat, amelyeket a [Azure Portal](https://portal.azure.com) (kapcsolati karakterlánc oldalon) lehet megszerezni.
+A Cosmos DB még nem támogatja a felhasználókat és a szerepköröket. A Cosmos DB azonban támogatja a szerepköralapú hozzáférés-vezérlést (RBAC), valamint az írható és olvasható jelszavakat/kulcsokat, amelyeket a [Azure Portal](https://portal.azure.com) (kapcsolati karakterlánc oldalon) lehet beszerezni.
 
 ## <a name="replication"></a>Replikáció
 

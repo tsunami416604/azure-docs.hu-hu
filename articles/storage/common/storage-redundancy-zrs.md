@@ -10,12 +10,12 @@ ms.date: 12/04/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 7d341c7081fef7aee2c33b9a7080d60417ce410d
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 0e6b87ff34d6555fda50518198f9ae3839aa56e6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895179"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719092"
 ---
 # <a name="build-highly-available-applications-with-zone-redundant-storage-zrs"></a>Hosszú rendelkezésre állású alkalmazások kiépítése a ZRS-tárolóval
 
@@ -34,6 +34,7 @@ Az általános célú v2-fiókok esetében a ZRS általánosan elérhető a köv
 - Nyugat-Európa
 - Közép-Franciaország
 - Kelet-Japán
+- Dél-Afrika északi régiója
 - Egyesült Királyság déli régiója
 - USA középső régiója
 - USA keleti régiója
@@ -88,7 +89,7 @@ Az élő migrálás során használhatja a tárfiókját, miközben az adatok a 
 Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcsolatban:
 
 - Bár a Microsoft azonnal kezeli az élő migrálási kérelmet, a migrálás befejezésének időpontjára nem vállal garanciát. Ha egy adott időpontig szükséges az adatok ZRS-re való migrálása, a Microsoft a manuális migrálás végrehajtását javasolja. Minél több adat található a fiókban, általában annál tovább tart az adatok migrálása. 
-- Az élő áttelepítés csak LRS vagy GRS replikálást használó Storage-fiókok esetén támogatott. Ha a fiókja RA-GRS-t használ, előbb módosítania kell a fiók replikálási típusát a LRS vagy a GRS értékre a továbblépés előtt. Ez a közbenső lépés eltávolítja az RA-GRS által az áttelepítés előtt megadott másodlagos írásvédett végpontot.
+- Az élő áttelepítés csak a LRS-replikációt használó Storage-fiókok esetében támogatott. Ha a fiókja GRS vagy RA-GRS használ, először a továbblépés előtt módosítania kell a fiók replikálási típusát a LRS. Ez a közbenső lépés eltávolítja a GRS/RA-GRS által biztosított másodlagos végpontot.
 - A fióknak adatait kell tartalmaznia.
 - Az adatátvitelt csak ugyanazon a régión belül végezheti el. Ha olyan ZRS-fiókba kívánja áttelepíteni az adatait, amely eltér a forrásoldali fióktól, akkor manuális áttelepítést kell végeznie.
 - Csak a standard szintű Storage-fiókok támogatják az élő áttelepítést. A Premium Storage-fiókokat manuálisan kell áttelepíteni.
@@ -130,9 +131,9 @@ Az áttelepítés befejezése után a fiók (ok) replikációs típusa a "Zone-r
 
 A ZRS csak az általános célú v2-fiókokat támogatja, ezért mielőtt beküld egy élő áttelepítésre vonatkozó kérést a ZRS, ügyeljen arra, hogy a fiók (oka) t az általános célú v2-re frissítse. További részletekért tekintse meg az [Azure Storage-fiók áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview) című témakört, és [frissítsen egy általános célú v2 Storage-fiókra](https://docs.microsoft.com/azure/storage/common/storage-account-upgrade) .
 
-**Megkérhetem az olvasási hozzáférésű geo-redundáns tárolási (RA-GRS) fiók (ok) ZRS való élő áttelepítését?**
+**Kérhetek élő áttelepítést a Geo-redundáns vagy olvasási hozzáférésű geo-redundáns tárolási (GRS/RA-GRS) fiókról a ZRS?**
 
-Mielőtt elküld egy élő áttelepítésre vonatkozó kérelmet a ZRS, győződjön meg arról, hogy az alkalmazás (ok) vagy a munkaterhelések már nem igényelnek hozzáférést a másodlagos írásvédett végponthoz, és módosítsa a Storage-fiók (ok) replikációs típusát a Geo-redundáns tárolóra (GRS). További részletekért lásd a [replikációs stratégia módosítása](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) című témakört.
+Az élő áttelepítés csak a LRS-replikációt használó Storage-fiókok esetében támogatott. Ha a fiókja GRS vagy RA-GRS használ, először a továbblépés előtt módosítania kell a fiók replikálási típusát a LRS. Ez a közbenső lépés eltávolítja a GRS/RA-GRS által biztosított másodlagos végpontot. A ZRS élő áttelepítésre vonatkozó kérés elküldése előtt gondoskodjon arról, hogy az alkalmazás (ok) vagy a munkaterhelés (ok) már ne legyen hozzáférése a másodlagos írásvédett végponthoz, és módosítsa a Storage-fiók (ok) replikációs típusát a helyileg redundáns tárolásra (LRS). További részletekért lásd a [replikációs stratégia módosítása](https://docs.microsoft.com/azure/storage/common/storage-redundancy#changing-replication-strategy) című témakört.
 
 **Kérhetek élő áttelepítést a Storage-fiókom (k) ZRS egy másik régióba?**
 

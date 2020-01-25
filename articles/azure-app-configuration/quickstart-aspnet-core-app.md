@@ -6,14 +6,14 @@ author: jpconnock
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: quickstart
-ms.date: 01/04/2020
+ms.date: 01/21/2020
 ms.author: jeconnoc
-ms.openlocfilehash: f625135f036ec8fc816bc3c3eb6c76c635c51fe9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: 782c18344732362dee96842bcc7c9a6c4ed14a68
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690214"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711234"
 ---
 # <a name="quickstart-create-an-aspnet-core-app-with-azure-app-configuration"></a>Gyors útmutató: ASP.NET Core-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -102,13 +102,15 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
 1. Adja hozzá a `Microsoft.Azure.AppConfiguration.AspNetCore` NuGet-csomagra mutató hivatkozást a következő parancs futtatásával:
 
     ```dotnetcli
-    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-010560002-1165
+    dotnet add package Microsoft.Azure.AppConfiguration.AspNetCore --version 3.0.0-preview-011100002-1192
     ```
+
 1. Futtassa a következő parancsot a projekt csomagjainak visszaállításához:
 
     ```dotnetcli
     dotnet restore
     ```
+
 1. Adjon hozzá egy *ConnectionStrings: AppConfig* nevű titkos kulcsot a Secret Managerhez.
 
     Ez a titok tartalmazza a kapcsolati karakterláncot az alkalmazás konfigurációs tárolójának eléréséhez. Cserélje le a következő parancs értékét az alkalmazás konfigurációs tárolójának a kapcsolatok karakterláncára.
@@ -133,7 +135,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     ```
 
 1. A `config.AddAzureAppConfiguration()` metódus meghívásával frissítse a `CreateWebHostBuilder` metódust az alkalmazás konfigurációjának használatához.
-    
+
     > [!IMPORTANT]
     > a `CreateHostBuilder` a .NET Core 3,0 `CreateWebHostBuilder` helyettesíti.  Válassza ki a megfelelő szintaxist a környezet alapján.
 
@@ -151,7 +153,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
     ```
 
     #### <a name="net-core-3xtabcore3x"></a>[.NET Core 3. x](#tab/core3x)
-    
+
     ```csharp
     public static IHostBuilder CreateHostBuilder(string[] args) =>
         Host.CreateDefaultBuilder(args)
@@ -163,6 +165,7 @@ A Secret Manager eszköz tárolja a projektfán kívüli fejlesztési feladatokh
         })
         .UseStartup<Startup>());
     ```
+
     ---
 
 1. Navigáljon *<app root>/views/Home* , és nyissa meg az *index. cshtml*. Cserélje le a tartalmát a következő kódra:

@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: seodec18
-ms.openlocfilehash: b3192e4bf25763e870cc618e5e45f16384607b7f
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: c1ebedcf93d66c01c80f7f40171a7aa27441488d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76277993"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722152"
 ---
 # <a name="configure-automated-ml-experiments-in-python"></a>Automatizált ML-kísérletek konfigurálása a Pythonban
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -187,11 +187,11 @@ Az elsődleges metrika határozza meg, hogy milyen mérőszámot kell használni
 
 Ismerje meg a mérőszámok konkrét definícióit az [automatizált gépi tanulás eredményeinek megismeréséhez](how-to-understand-automated-ml.md).
 
-### <a name="data-preprocessing--featurization"></a>Adatfeldolgozási & featurization
+### <a name="data-featurization"></a>Az adatfeaturization
 
-Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további előfeldolgozási/featurization is engedélyezheti, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
+Minden automatizált gépi tanulási kísérlet során az adatok [automatikusan méretezhetők és normalizálva](concept-automated-ml.md#preprocess) vannak, hogy a különböző léptékű funkciókra *érzékeny algoritmusok* segítségével segítsenek.  Ugyanakkor további featurization is engedélyezhet, például hiányzó értékeket imputálási, kódolást és átalakításokat. [További információ arról, hogy milyen featurization tartalmaz](how-to-create-portal-experiments.md#preprocess).
 
-A featurization engedélyezéséhez a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)`"preprocess": True`t kell megadni.
+A featurization engedélyezéséhez a [`AutoMLConfig` osztályhoz](https://docs.microsoft.com/python/api/azureml-train-automl/azureml.train.automl.automlconfig?view=azure-ml-py)`"featurization": 'auto'`t kell megadni.
 
 > [!NOTE]
 > Az automatizált gépi tanulás előfeldolgozásának lépései (a funkciók normalizálása, a hiányzó adatkezelés, a szöveg konvertálása a numerikus formátumba stb.) az alapul szolgáló modell részévé válnak. A modell előrejelzésekhez való használatakor a betanítás során alkalmazott azonos előfeldolgozási lépéseket a rendszer automatikusan alkalmazza a bemeneti adatokra.
@@ -240,7 +240,7 @@ Az Ensemble-modellek alapértelmezés szerint engedélyezve vannak, és az autom
 
 Több alapértelmezett argumentum is megadható `kwargs`ként egy `AutoMLConfig` objektumban, hogy megváltoztassa az alapértelmezett stack Ensemble viselkedését.
 
-* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes különböző-modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV`, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`vagy `LinearRegression`.
+* `stack_meta_learner_type`: a meta-Learner egy modell, amely az egyes heterogén modellek kimenetére van kiképezve. Az alapértelmezett meta-tanulók `LogisticRegression` a besorolási feladatokhoz (vagy `LogisticRegressionCV`, ha a kereszt-ellenőrzés engedélyezve van), és `ElasticNet` a regresszió/előrejelzési feladatokhoz (vagy `ElasticNetCV` ha a kereszt-ellenőrzés engedélyezve van). Ez a paraméter a következő karakterláncok egyike lehet: `LogisticRegression`, `LogisticRegressionCV`, `LightGBMClassifier`, `ElasticNet`, `ElasticNetCV`, `LightGBMRegressor`vagy `LinearRegression`.
 * `stack_meta_learner_train_percentage`: a betanítási készlet (a betanítási típus kiválasztásakor) a meta-tanuló betanítása számára fenntartott arányát határozza meg. Az alapértelmezett érték `0.2`.
 * `stack_meta_learner_kwargs`: nem kötelező paramétereket adni a meta-learning inicializáló. Ezek a paraméterek és paraméterek típusai a megfelelő modell konstruktorában lévő paramétereket és paramétereket tükrözik, és továbbítva lesznek a modell konstruktorának.
 
@@ -324,7 +324,7 @@ Megtekintheti a betanítási eredményeket egy widgetben vagy beágyazottan, ha 
 ## <a name="understand-automated-ml-models"></a>Az automatizált ML-modellek ismertetése
 
 Az automatikus ML használatával előállított modellek a következő lépéseket tartalmazzák:
-+ Automatizált funkciók tervezése (ha az előfeldolgozás = true)
++ Automatizált funkciók tervezése (ha `"featurization": 'auto'`)
 + Skálázás/normalizálás és algoritmus hiperparaméter-értékekkel
 
 Ennek az információnak a beolvasása az automatizált ML-ből származó fitted_model kimenetből átlátható.
@@ -337,7 +337,7 @@ best_run, fitted_model = automl_run.get_output()
 
 ### <a name="automated-feature-engineering"></a>Automatizált funkciók tervezése
 
-Tekintse meg az előfeldolgozás és az [automatizált funkciók](concept-automated-ml.md#preprocess) listáját, amely akkor történik meg, amikor a feauturization = Auto.
+Tekintse meg az előfeldolgozás és az [automatizált funkcióinak](concept-automated-ml.md#preprocess) listáját, amely `"featurization": 'auto'`kor történik.
 
 Megfontolandó példa:
 + Négy bemeneti funkció létezik: A (numerikus), B (numerikus), C (numerikus), D (DateTime)

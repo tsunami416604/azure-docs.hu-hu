@@ -15,12 +15,12 @@ ms.date: 09/11/2018
 ms.author: mimart
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 1f018edfa7cbb244c57f12c3b83dba086e1590f2
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: a82efda4cf53931dbf81b993b12a2927f02dfa0b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75778345"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711700"
 ---
 # <a name="attribute-based-application-provisioning-with-scoping-filters"></a>Attribútum-alapú alkalmazás-kiépítés hatóköri szűrőkkel
 Ennek a cikknek a célja annak ismertetése, hogyan használhatók a hatóköri szűrők olyan attribútum-alapú szabályok definiálásához, amelyek meghatározzák, hogy mely felhasználók legyenek kiépítve egy alkalmazáshoz.
@@ -52,7 +52,7 @@ Az Azure AD-létesítési szolgáltatás által feldolgozott minden egyes felhas
 
 Példaként vegye figyelembe a következő hatókör-szűrőt:
 
-![Hatókör-szűrő](./media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
+![Hatókör-szűrő](media/define-conditional-rules-for-provisioning-user-accounts/scoping-filter.PNG) 
 
 A hatókör-szűrőnek megfelelően a felhasználóknak meg kell felelniük a következő feltételeknek:
 
@@ -117,7 +117,7 @@ A hatóköri szűrők az egyes Azure AD-beli felhasználói létesítési össze
 |----|----|----|----|
 |userPrincipalName|REGEX EGYEZÉS|.\*@domain.com |Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatóköre lesz|
 |userPrincipalName|NEM REGEX EGYEZÉS|.\*@domain.com|Minden olyan felhasználó, aki rendelkezik a tartomány @domain.com userPrincipal, a kiépítés hatókörén kívül fog esni|
-|Részleg|EGYENLŐ|értékesítés|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
+|részleg|EGYENLŐ|értékesítési|Az értékesítési részleg összes felhasználója a kiépítés hatókörében van|
 |workerID|REGEX EGYEZÉS|(1 [0-9] [0-9] [0-9] [0-9] [0-9] [0-9])| A 1000000 és 2000000 közötti workerIDs rendelkező alkalmazottak a kiépítés hatókörébe tartoznak.|
 
 ## <a name="related-articles"></a>Kapcsolódó cikkek

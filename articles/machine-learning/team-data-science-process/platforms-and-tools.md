@@ -2,34 +2,35 @@
 title: Adatelemzési projektek platformja és eszközei – csoportos adatelemzési folyamat
 description: Körvonalazza és ismerteti a csoportos adatelemzési folyamattal szabványosított vállalatok számára elérhető adatelemzési és elemzési erőforrásokat.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 97dafe292ff3ed0ef5fa46eb895136e3b32e62c5
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: e3297319c67ad2b7c94371356cde49113c7ef737
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978509"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718888"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
 
-A Microsoft az adat-és elemzési szolgáltatások, valamint az erőforrások teljes spektrumát biztosítja a Felhőbeli vagy a helyszíni platformokhoz. Üzembe helyezhetők az adatelemzési projektek hatékony és skálázható végrehajtásához. Útmutató az adatelemzési projektek nyomon követésére szolgáló, ellenőrzött, és együttműködési módon megvalósított csapatok számára a [csoportos adatelemzési folyamat](overview.md) (TDSP) révén.  A munkatársak szerepköreinek, valamint a folyamaton alapuló adatelemzési csapat által kezelt kapcsolódó feladatoknak a vázlatát lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
+A Microsoft a felhőalapú és a helyszíni platformokhoz egyaránt teljes körű elemzési erőforrásokat biztosít. Üzembe helyezhetők az adatelemzési projektek hatékony és skálázható végrehajtásához. Útmutató az adatelemzési projektek nyomon követésére szolgáló, ellenőrzött, és együttműködési módon megvalósított csapatok számára a [csoportos adatelemzési folyamat](overview.md) (TDSP) révén.  A munkatársak szerepköreinek, valamint a folyamaton alapuló adatelemzési csapat által kezelt kapcsolódó feladatoknak a vázlatát lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md).
 
-A TDSP használó adatelemző csapatok számára elérhető adatelemzési és elemzési szolgáltatások a következők:
+A TDSP használó adatelemző csapatok számára elérhető elemzési erőforrások a következők:
 
 - Adatelemzési Virtual Machines (Windows és Linux CentOS)
 - HDInsight Spark-fürtök
-- SQL Data Warehouse
+- Synapse Analytics
 - Azure Data Lake
 - HDInsight-struktúra fürtök
 - Azure File Storage
-- SQL Server 2016 R-szolgáltatások
+- SQL Server 2019 R és Python szolgáltatások
+- Azure Databricks
 
 Ebben a dokumentumban röviden leírjuk az erőforrásokat, és hivatkozásokat biztosítunk a TDSP csapatok által közzétett oktatóanyagokhoz és útmutatóhoz. Segítségükkel megtudhatja, hogyan használhatja őket lépésről lépésre, és hogyan kezdheti el használni őket az intelligens alkalmazások létrehozásához. Az erőforrásokkal kapcsolatos további információk a termék lapjain érhetők el. 
 
@@ -37,8 +38,8 @@ Ebben a dokumentumban röviden leírjuk az erőforrásokat, és hivatkozásokat 
 
 A Microsoft által a Windows és a Linux rendszeren egyaránt kínált adatelemzési virtuális gép népszerű eszközöket tartalmaz az adatelemzési modellezéshez és a fejlesztési tevékenységekhez. Olyan eszközöket tartalmaz, mint például a következők:
 
-- Microsoft R Server Developer Edition 
-- Anaconda Python-disztribúció
+- Microsoft R Server fejlesztői kiadás 
+- Anaconda Python-eloszlás
 - Jupyter-jegyzetfüzetek a Pythonhoz és az R-hez 
 - Visual Studio Community Edition Python és R Tools on Windows/Eclipse Linux rendszeren
 - Windows asztali Power BI
@@ -50,7 +51,7 @@ Jelenleg a DSVM a **Windows** és a **Linux CentOS** operációs rendszerekben �
 
 A DSVM Windows-kiadásával kapcsolatos további információkért lásd: [Microsoft Data Science Virtual Machine](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.dsvm-windows) az Azure piactéren. A DSVM Linux-kiadását lásd: [linux Data Science Virtual Machine](https://azure.microsoft.com/marketplace/partners/microsoft-ads/linux-data-science-vm/).
 
-Ha szeretné megtudni, hogyan hajthat végre a közös adatelemzési feladatokat a DSVM hatékonyan, tekintse meg [az adatelemzési virtuális gépen](../data-science-virtual-machine/vm-do-ten-things.md) elvégezhető tíz dolgot.
+Ha szeretné megtudni, hogyan hajthat végre a közös adatelemzési feladatokat a DSVM hatékonyan, tekintse meg [az adatelemzési virtuális gépen 10 dolgot](../data-science-virtual-machine/vm-do-ten-things.md) .
 
 
 ## <a name="azure-hdinsight-spark-clusters"></a>Fürtök Azure HDInsight Spark
@@ -71,7 +72,7 @@ Azure SQL Data Warehouseről a [SQL Data Warehouse](https://azure.microsoft.com/
 
 ## <a name="azure-data-lake"></a>Azure Data Lake
 
-Az Azure-beli adat-Lake az összes olyan adattípusú adat vállalati szintű tárháza, amelyet a formális követelmények vagy séma bevezetése előtt adott meg. Ez a rugalmasság lehetővé teszi, hogy a rendszer minden típusú adatot tároljon egy adattóban, függetlenül annak méretétől vagy struktúrájától, illetve hogy milyen gyorsan történjen a betöltés. A szervezetek ezután Hadoop vagy speciális elemzéseket használhatnak az adattavakban található mintázatok kereséséhez. Az adattavak az adattárházat is kihasználhatják az alacsonyabb költséghatékonyságú adatelőkészítéshez, mielőtt az adattárházba helyezné őket.
+A Azure Data Lake a formális követelmények vagy a szükséges sémák megkezdése előtt egyetlen helyen gyűjtött minden típusú adat vállalati szintű tárháza. Ez a rugalmasság lehetővé teszi, hogy a rendszer minden típusú adatot tároljon egy adattóban, függetlenül annak méretétől vagy struktúrájától, illetve hogy milyen gyorsan történjen a betöltés. A szervezetek ezután Hadoop vagy speciális elemzéseket használhatnak az adattavakban található mintázatok kereséséhez. Az adattavak az adattárházat is kihasználhatják az alacsonyabb költséghatékonyságú adatelőkészítéshez, mielőtt az adattárházba helyezné őket.
 
 További információ a Azure Data Lakeről: [Azure Data Lake bemutatása](https://azure.microsoft.com/blog/introducing-azure-data-lake/). Ha szeretné megismerni, hogyan hozhat létre méretezhető, teljes körű adatelemzési megoldást Azure Data Lakekal, tekintse meg a [skálázható adatelemzést a Azure Data Lakeban: teljes körű útmutató](data-lake-walkthrough.md)
 
@@ -94,9 +95,9 @@ Az Azure File Storage egy olyan szolgáltatás, amely fájlmegosztást biztosít
 Különösen az adatelemzési projektek esetében hasznos, ha az Azure file Store-t olyan helyként szeretné létrehozni, amellyel a Project-csoport tagjai megoszthatják a projektadatokat. Mindegyiknek ekkor hozzá kell férnie az Azure file Storage-ban tárolt adatpéldányhoz. Emellett a file Storage használatával is megoszthatják a projekt végrehajtása során létrehozott szolgáltatáskészlet-készleteket. Ha a projekt ügyfél-összevonást használ, az ügyfelek saját Azure-előfizetésük keretében létrehozhatnak egy Azure file Storage-t a projektadatok és szolgáltatások megosztásához. Így az ügyfél teljes mértékben átirányítja a projekt adategységeit. További információ az Azure File Storage-ról: Ismerkedés [Az Azure file Storage](https://azure.microsoft.com/documentation/articles/storage-dotnet-how-to-use-files) szolgáltatással Windows rendszeren és az [Azure file Storage használata Linux](../../storage/files/storage-how-to-use-files-linux.md)rendszeren.
 
 
-## <a name="sql-server-2016-r-services"></a>SQL Server 2016 R-szolgáltatások
+## <a name="sql-server-2019-r-and-python-services"></a>SQL Server 2019 R és Python szolgáltatások
 
-Az R Services (in-Database) platformot biztosít olyan intelligens alkalmazások fejlesztéséhez és üzembe helyezéséhez, amelyek új ismereteket tudnak feltárni. Használhatja a gazdag és nagy teljesítményű R nyelvet, beleértve az R-Közösség által biztosított számos csomagot, hogy modelleket hozzon létre, és előrejelzéseket készítsen a SQL Server adataiból. Mivel az R Services (in-Database) integrálja az R nyelvet a SQL Serverval, az elemzések az adathoz közelednek, ami kiküszöböli az adatáthelyezéshez kapcsolódó költségeket és biztonsági kockázatokat.
+Az R Services (in-Database) platformot biztosít olyan intelligens alkalmazások fejlesztéséhez és üzembe helyezéséhez, amelyek új ismereteket tudnak feltárni. Használhatja a gazdag és nagy teljesítményű R nyelvet, beleértve az R-Közösség által biztosított számos csomagot, hogy modelleket hozzon létre, és előrejelzéseket készítsen a SQL Server adataiból. Mivel az R Services (in-Database) az R nyelvet integrálja SQL Serverokkal, az elemzések az adathoz közelednek, ami kiküszöböli az adatáthelyezéshez kapcsolódó költségeket és biztonsági kockázatokat.
 
 Az r Services (in-Database) támogatja a nyílt forráskódú R nyelvet SQL Server eszközök és technológiák átfogó készletével. Kiváló teljesítményt, biztonságot, megbízhatóságot és kezelhetőséget biztosítanak. Az R-megoldásokat kényelmesen és ismerős eszközökkel is üzembe helyezheti. Az éles alkalmazások hívhatják az R futtatókörnyezetet, és lekérhetik az előrejelzéseket és a vizualizációkat a Transact-SQL használatával. A skálázhatósági kódtárakat is használhatja az R-megoldások méretezésének és teljesítményének javítására. További információ: [SQL Server R Services](https://docs.microsoft.com/sql/advanced-analytics/r/sql-server-r-services).
 
@@ -135,7 +136,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 
 1. Másolja a teljes SSH-kulcsot, beleértve az *SSH-RSA-* t. 
 1. Jelentkezzen be az Azure DevOps-szolgáltatásaiba. 
-1. Kattintson a lap jobb felső sarkában található **\>nevére** , majd kattintson a **Biztonság**elemre. 
+1. Kattintson a lap jobb felső sarkában található **\>nevére** , majd a **Biztonság**elemre. 
     
    ![Kattintson a nevére, majd a Biztonság elemre.](./media/platforms-and-tools/resources-2-user-setting.png)
 
@@ -143,7 +144,7 @@ Ha Linux (CentOS) gépeket használ a git-parancsok futtatásához, hozzá kell 
 
    ![Kattintson a nyilvános SSH-kulcsok elemre, majd a + Hozzáadás gombra.](./media/platforms-and-tools/resources-3-add-ssh.png)
 
-1. Illessze be az imént másolt SSH-kulcsot a szövegmezőbe, és mentse a fájlt.
+1. Illessze be a szövegmezőbe másolt SSH-kulcsot, és mentse a fájlt.
 
 
 ## <a name="next-steps"></a>Következő lépések

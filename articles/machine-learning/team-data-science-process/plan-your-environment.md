@@ -3,20 +3,20 @@ title: Forgatókönyvek azonosítása és az elemzési folyamat megtervezése �
 description: Azonosíthatja a forgatókönyveket, és megtervezheti a fejlett elemzési adatok feldolgozását a legfontosabb kérdések sorozatának megfontolásával.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ba87461c6c195a6b483538fd94d8be76239b8dc5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b0b811a2b7ed432b7fc5015886b28337ca33424e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75647305"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710326"
 ---
 # <a name="how-to-identify-scenarios-and-plan-for-advanced-analytics-data-processing"></a>Forgatókönyvek azonosítása és a bővített analitika adatfeldolgozása
 
@@ -47,7 +47,7 @@ Helyi vagy Felhőbeli adatai vannak? A lehetséges helyszínek a következők:
 
 * nyilvánosan elérhető HTTP-címek
 * helyi vagy hálózati fájl helye
-* SQL Server-adatbázis
+* egy SQL Server adatbázis
 * Azure Storage-tároló
 
 ### <a name="what-is-the-azure-destination"></a>Mi az Azure-cél?
@@ -75,11 +75,11 @@ Vegye fontolóra Azure Data Factory (ADF) használatát, ha folyamatosan át kel
 * hibrid forgatókönyv, amely a helyszíni és a Felhőbeli erőforrásokat egyaránt magában foglalja
 * olyan forgatókönyv, amelyben az üzleti logika az áttelepítés során az adatfeldolgozást, módosítást vagy módosítást végez
 
-További információkért lásd: [adatok áthelyezése helyszíni SQL serverről SQL Azurera Azure Data Factory használatával](move-sql-azure-adf.md).
+További információ: [adatok áthelyezése helyszíni SQL serverről SQL Azurera Azure Data Factory használatával](move-sql-azure-adf.md).
 
 ### <a name="how-much-of-the-data-is-to-be-moved-to-azure"></a>Mennyibe kell helyezni az adatmennyiséget az Azure-ba?
 
-A rendkívül nagy adatkészletek esetében előfordulhat, hogy bizonyos környezetek kapacitása meghaladja a tárolókapacitást. Példaként tekintse meg a következő szakaszban a Machine Learning Studio (klasszikus) méretének korlátozásait. Ilyen esetekben az elemzés során használhat egy mintát az adataihoz. Az adathalmazok különböző Azure-környezetekben történő lebontásával kapcsolatos részletekért lásd: [mintaadatok a csoportos adatelemzési folyamat során](sample-data.md).
+A nagyméretű adathalmazok túllépik bizonyos környezetek tárolási kapacitását. Példaként tekintse meg a következő szakaszban a Machine Learning Studio (klasszikus) méretének korlátozásait. Ilyen esetekben az elemzés során használhat egy mintát az adataihoz. Az adathalmazok különböző Azure-környezetekben történő lebontásával kapcsolatos részletekért lásd: [mintaadatok a csoportos adatelemzési folyamat során](sample-data.md).
 
 ## <a name="data-characteristics-questions-type-format-and-size"></a>Az adatok jellemzőit érintő kérdések: típus, formátum és méret
 
@@ -151,7 +151,7 @@ A nyelvekhez, a fejlesztési környezetekhez és az eszközökhöz számos lehet
 * [RStudio](https://www.rstudio.com)
 * [Python Tools for Visual Studio](https://aka.ms/ptvsdocs)
 * [Anaconda](https://www.continuum.io/why-anaconda)
-* [Jupyter notebookok](https://jupyter.org/)
+* [Jupyter-notebookok](https://jupyter.org/)
 * [Microsoft Power BI](https://powerbi.microsoft.com)
 
 ## <a name="identify-your-advanced-analytics-scenario"></a>A fejlett elemzési forgatókönyv azonosítása

@@ -15,12 +15,12 @@ ms.date: 07/23/2019
 ms.author: baselden
 ms.reviewer: zhchia
 ms.collection: active-directory
-ms.openlocfilehash: 74b991fce132c991ebd5fbd3789328e2a500da86
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: e7f60335b3e75d93f408dec3386ca0bdcd6a0388
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74232315"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711452"
 ---
 # <a name="enable-automatic-user-provisioning-for-your-multi-tenant-application"></a>Automatikus felhasználó-kiépítés engedélyezése a több-bérlős alkalmazáshoz
 
@@ -56,7 +56,7 @@ Azok az alkalmazások, amelyek megkövetelik, hogy egy felhasználói rekord meg
 
 Az Azure AD számos integrációs elérési utat biztosít, amelyek lehetővé teszik az alkalmazás automatikus felhasználó általi üzembe helyezését.
 
-* Az [Azure ad-kiépítési szolgáltatás](https://docs.microsoft.com/azure/active-directory/manage-apps/user-provisioning) felügyeli az Azure ad-ből származó felhasználók kiépítését és megszüntetését az alkalmazásba (kimenő kiépítés) és az alkalmazásból az Azure ad-be (bejövő kiépítés). A szolgáltatás az alkalmazás által biztosított tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-végpontok rendszeréhez csatlakozik.
+* Az [Azure ad-kiépítési szolgáltatás](user-provisioning.md) felügyeli az Azure ad-ből származó felhasználók kiépítését és megszüntetését az alkalmazásba (kimenő kiépítés) és az alkalmazásból az Azure ad-be (bejövő kiépítés). A szolgáltatás az alkalmazás által biztosított tartományok közötti Identitáskezelés (SCIM) felhasználói felügyeleti API-végpontok rendszeréhez csatlakozik.
 
 * A [Microsoft Graph](https://docs.microsoft.com/graph/)használatakor az alkalmazás az Microsoft Graph API lekérdezésével kezeli a felhasználók és csoportok bejövő és kimenő üzembe helyezését az Azure ad-ből az alkalmazásba.
 
@@ -67,7 +67,7 @@ Ha meg szeretné határozni, hogy melyik integrációs lehetőséget szeretné h
 | Az automatikus kiépítés által engedélyezett vagy továbbfejlesztett képességek| Azure AD-kiépítési szolgáltatás (SCIM 2,0)| Microsoft Graph API (OData v 4.0)| SAML JIT |
 |---|---|---|---|
 | Felhasználók és csoportok kezelése az Azure AD-ben| √| √| Csak felhasználó |
-| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √*| √*| Csak felhasználó * |
+| A helyszíni Active Directoryról szinkronizált felhasználók és csoportok kezelése| √| √| Csak felhasználó * |
 | A felhasználók és csoportok feletti adathozzáférés a O365-alapú adathozzáféréshez (csapatok, SharePoint, E-mail, naptár, dokumentumok stb.) való kiépítés során történik.| X +| √| X |
 | Felhasználók létrehozása, olvasása és frissítése üzleti szabályok alapján| √| √| √ |
 | Felhasználók törlése üzleti szabályok alapján| √| √| X |
@@ -87,9 +87,9 @@ Az Azure AD kiépítési szolgáltatás felhasználói SCIM kapcsolatos további
 
 * [További információ a SCIM standardról](https://aka.ms/SCIMOverview)
 
-* [Rendszer használata a tartományok közötti Identitáskezelés (SCIM) számára a felhasználók és csoportok automatikus kiépítéséhez Azure Active Directoryról alkalmazásokba](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Rendszer használata a tartományok közötti Identitáskezelés (SCIM) számára a felhasználók és csoportok automatikus kiépítéséhez Azure Active Directoryról alkalmazásokba](use-scim-to-provision-users-and-groups.md)
 
-* [Az Azure AD SCIM implementációjának ismertetése](https://docs.microsoft.com/azure/active-directory/manage-apps/use-scim-to-provision-users-and-groups)
+* [Az Azure AD SCIM implementációjának ismertetése](use-scim-to-provision-users-and-groups.md)
 
 ## <a name="microsoft-graph-for-provisioning"></a>Kiépítés Microsoft Graph
 
@@ -113,9 +113,9 @@ Ha csak az első bejelentkezés alkalmával szeretné kiépíteni a felhasznál�
 
 Az SAML JIT az SAML-jogkivonat jogcím-információi alapján hozza létre és frissíti a felhasználói adatokat az alkalmazásban. Az ügyfelek igény szerint konfigurálhatják ezeket a szükséges jogcímeket az Azure AD-alkalmazásban. Időnként az JIT-kiépítés engedélyezése szükséges az alkalmazás oldaláról, hogy az ügyfél használhassa ezt a funkciót. Az SAML JIT hasznos a felhasználók létrehozásához és frissítéséhez, de nem tudja törölni vagy inaktiválni a felhasználókat az alkalmazásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](https://docs.microsoft.com/azure/active-directory/manage-apps/isv-sso-content)
+* [Egyszeri bejelentkezés engedélyezése az alkalmazáshoz](isv-sso-content.md)
 
 * [Küldje el alkalmazásait](https://microsoft.sharepoint.com/teams/apponboarding/Apps/SitePages/Default.aspx) a Microsoft webhelyéről, és ossza meg a Microsofttal.
 

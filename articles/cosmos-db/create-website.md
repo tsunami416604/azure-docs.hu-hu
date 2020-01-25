@@ -1,131 +1,131 @@
 ---
-title: Webalkalmazás üzembe helyezése az Azure Cosmos DB - sablonnal
-description: Ismerje meg, hogyan helyezhet üzembe az Azure Cosmos DB-fiók, az Azure App Service Web Apps és a egy minta-webalkalmazáshoz, egy Azure Resource Manager-sablon használatával.
+title: Webalkalmazás üzembe helyezése sablonnal – Azure Cosmos DB
+description: Megtudhatja, hogyan helyezhet üzembe egy Azure Cosmos DB fiókot, Azure App Service Web Appst és egy minta webalkalmazást egy Azure Resource Manager sablon használatával.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
-ms.openlocfilehash: 93cdea453050df8899abf9233991715ae237bcd4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: feab221c24034fe29df420b4f9eb6d84e06a90b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66257241"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719336"
 ---
-# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB és az Azure App Service Web Apps használatával egy Azure Resource Manager-sablon üzembe helyezése
-Az oktatóanyag bemutatja, hogyan használhatja az Azure Resource Manager-sablon üzembe helyezése és integrálása [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/), egy [Azure App Service](https://go.microsoft.com/fwlink/?LinkId=529714) web app és a egy minta-webalkalmazáshoz.
+# <a name="deploy-azure-cosmos-db-and-azure-app-service-web-apps-using-an-azure-resource-manager-template"></a>Azure Cosmos DB-és Azure App Service-Web Apps üzembe helyezése Azure Resource Manager sablon használatával
+Ebből az oktatóanyagból megtudhatja, hogyan helyezhet üzembe és integrálhat [Microsoft Azure Cosmos DBT](https://azure.microsoft.com/services/cosmos-db/), [Azure app Service](https://go.microsoft.com/fwlink/?LinkId=529714) webalkalmazást és egy minta webalkalmazást egy Azure Resource Manager sablon használatával.
 
-Azure Resource Manager-sablonok használatával, könnyedén automatizálható a telepítését és konfigurációját az Azure-erőforrások.  Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy webalkalmazást, és automatikusan konfigurálja az Azure Cosmos DB-fiók kapcsolati adatait.
+Azure Resource Manager sablonok használatával egyszerűen automatizálhatja az Azure-erőforrások üzembe helyezését és konfigurálását.  Ez az oktatóanyag bemutatja, hogyan helyezhet üzembe egy webalkalmazást, és hogyan konfigurálhatja automatikusan Azure Cosmos DB fiók kapcsolati adatait.
 
-Az oktatóanyag elvégzését követően lesz a következő kérdések megválaszolásához:  
+Az oktatóanyag elvégzése után a következő kérdésekre tud válaszolni:  
 
-* Hogyan használhatom az Azure Resource Manager-sablonnal történő üzembe helyezése és integrálása az Azure Cosmos DB-fiók és -webalkalmazás létrehozása az Azure App Service?
-* Hogyan használhatom az Azure Resource Manager-sablonnal történő üzembe helyezése és integrálása az Azure Cosmos DB-fiókot, -webalkalmazás létrehozása az App Service Web Apps és egy Webdeploy-alkalmazás?
+* Hogyan használhatok Azure Resource Manager sablont egy Azure Cosmos DB-fiók és egy webalkalmazás üzembe helyezéséhez és integrálásához a Azure App Service-ben?
+* Hogyan használhatok egy Azure Resource Manager sablont egy Azure Cosmos DB-fiók, egy webalkalmazás App Service Web Apps és egy Webtelepítő alkalmazás üzembe helyezéséhez és integrálásához?
 
 <a id="Prerequisites"></a>
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!TIP]
-> Ez az oktatóanyag korábbi tapasztalata az Azure Resource Manager-sablonok vagy JSON nem feltételezi azt, miközben kell szeretné módosítani a hivatkozott sablonok vagy a központi telepítési beállításokat, majd Tudásbázis ezeknek a területeknek az egyes szükség.
+> Bár ez az oktatóanyag nem feltételezi az Azure Resource Manager-sablonokkal vagy JSON-vel kapcsolatos korábbi tapasztalatokat, érdemes módosítania a hivatkozott sablonokat vagy telepítési beállításokat, majd az egyes területek ismereteit kötelező megadni.
 > 
 > 
 
-Ez az oktatóanyag utasításait követve, előtt gondoskodjon arról, hogy az Azure-előfizetéssel. Az Azure az előfizetés-alapú platform.  Előfizetés beszerzésével kapcsolatos további információkért lásd: [vásárlási lehetőségek](https://azure.microsoft.com/pricing/purchase-options/), [ajánlatok tagoknak](https://azure.microsoft.com/pricing/member-offers/), vagy [ingyenes próbaverzió](https://azure.microsoft.com/pricing/free-trial/).
+Az oktatóanyagban szereplő utasítások követése előtt győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Az Azure egy előfizetés-alapú platform.  Az előfizetés beszerzésével kapcsolatos további információkért lásd a [vásárlási lehetőségeket](https://azure.microsoft.com/pricing/purchase-options/), a [tagok ajánlatait](https://azure.microsoft.com/pricing/member-offers/)vagy az [ingyenes próbaverziót](https://azure.microsoft.com/pricing/free-trial/).
 
-## <a id="CreateDB"></a>1. lépés: A sablon fájlok letöltésére
-Először töltse le a sablonfájlokat, amely ehhez az oktatóanyaghoz.
+## <a id="CreateDB"></a>1. lépés: a sablonfájlok letöltése
+Kezdjük az oktatóanyaghoz szükséges sablonfájlok letöltésével.
 
-1. Töltse le a [hozzon létre egy Azure Cosmos DB-fiók, a Web Apps, és a egy bemutató alkalmazást minta üzembe helyezése](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) egy helyi mappába (például C:\Azure Cosmos DBTemplates) sablont. Ez a sablon üzembe helyezi az Azure Cosmos DB-fiók, egy App Service-webalkalmazást és egy webalkalmazást.  Azt is automatikusan konfigurálja a webalkalmazás az Azure Cosmos DB-fiókhoz való csatlakozáshoz.
-2. Töltse le a [hozzon létre egy Azure Cosmos DB-fiókot és a Web Apps minta](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) egy helyi mappába (például C:\Azure Cosmos DBTemplates) sablont. Ez a sablon üzembe helyez egy Azure Cosmos DB-fiókot, egy App Service-webalkalmazást, és módosítja a hely alkalmazás beállításait, hogy könnyen felszínre hozni azokat az Azure Cosmos DB kapcsolati adatokat, de nem tartalmazza a webalkalmazás.  
+1. Töltse le az [Azure Cosmos db fiók létrehozása, Web Apps és a bemutató alkalmazás sablonjának központi telepítését](https://portalcontent.blob.core.windows.net/samples/DocDBWebsiteTodo.json) egy helyi mappába (például C:\Azure Cosmos DBTemplates). Ez a sablon egy Azure Cosmos DB fiókot, egy App Service webalkalmazást és egy webes alkalmazást telepít.  Emellett automatikusan konfigurálja a webalkalmazást az Azure Cosmos DB-fiókhoz való kapcsolódásra.
+2. Töltse le az [Azure Cosmos db fiók létrehozása és a Web Apps](https://portalcontent.blob.core.windows.net/samples/DocDBWebSite.json) sablon helyi mappába (például C:\Azure Cosmos DBTemplates). Ez a sablon egy Azure Cosmos DB fiókot telepít, egy App Service webalkalmazást, és módosítja a hely alkalmazás-beállításait, hogy könnyen felszínre Azure Cosmos DB a kapcsolati adatokat, de nem tartalmaz webalkalmazást.  
 
 <a id="Build"></a>
 
-## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>2\. lépés: Az Azure Cosmos DB-fiókot, az App Service web app és bemutató példa-alkalmazás üzembe helyezése
-Most már az első saját sablon üzembe helyezni.
+## <a name="step-2-deploy-the-azure-cosmos-db-account-app-service-web-app-and-demo-application-sample"></a>2\. lépés: a Azure Cosmos DB fiók üzembe helyezése, App Service a webalkalmazás és a bemutató alkalmazás mintája
+Most végezze el az első sablon üzembe helyezését.
 
 > [!TIP]
-> A sablon nem ellenőrzi, hogy a webalkalmazás neve és az Azure Cosmos DB-fiók neve a következő sablonban megadott a) érvényes, és (b) érhető el.  Azt javasoljuk, hogy ellenőrizze a rendelkezésre állási azt tervezi, hogy az üzembe helyezés beküldése előtt adja meg a neveket.
+> A sablon nem ellenőrzi, hogy a webalkalmazás neve és a Azure Cosmos DB fiók neve a következő sablonban van-e megadva) érvényes és b) érhető el.  Erősen ajánlott ellenőrizni, hogy a telepítés elküldése előtt milyen nevekkel kell megadnia a rendelkezésre állást.
 > 
 > 
 
-1. Jelentkezzen be a [az Azure Portal](https://portal.azure.com), az új gombra, és keressen rá a "Sablon telepítése".
-    ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment1.png)
-2. Válassza ki a sablon üzembe helyezési elemet, és kattintson a **létrehozás** ![a sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment2.png)
-3. Kattintson a **szerkesztési sablon**illessze be a DocDBWebsiteTodo.json sablon fájl tartalmát, és kattintson a **mentése**.
-   ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment3.png)
-4. Kattintson a **paraméterek szerkesztése**, adja meg a kötelező paraméterek értékeit, és kattintson a **OK**.  A paraméterek a következők:
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com), kattintson az új elemre, és keressen rá a "template Deployment" kifejezésre.
+    ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment1.png)
+2. Jelölje ki a Template deployment elemet, majd kattintson a sablon üzembe helyezése felhasználói felület ![képernyőkép **létrehozása** elemre](./media/create-website/TemplateDeployment2.png)
+3. Kattintson a **Sablon szerkesztése**elemre, illessze be a DocDBWebsiteTodo. JSON sablonfájl tartalmát, majd kattintson a **Mentés**gombra.
+   ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment3.png)
+4. Kattintson a **Paraméterek szerkesztése**elemre, adja meg az egyes kötelező paraméterek értékeit, majd kattintson **az OK**gombra.  A paraméterek a következők:
    
-   1. WEBHELY NEVE: Adja meg az App Service webalkalmazás neve és az URL-cím, amely a web app (például, ha a megadott "mydemodocdbwebapp", majd az URL-címet, amely szerint a webalkalmazás eléréséhez mydemodocdbwebapp.azurewebsites.net) eléréséhez használt létrehozására használható.
-   2. HOSTINGPLANNAME: Az App Service szolgáltatási csomag létrehozásához a nevét adja meg.
-   3. HELY: Itt adhatja meg, amelyben az Azure Cosmos DB és a webes alkalmazás-erőforrások létrehozása az Azure-helyen.
-   4. DATABASEACCOUNTNAME: Meghatározza a hozhat létre az Azure Cosmos DB-fiók nevét.   
+   1. SITENAME: megadja a App Service webalkalmazás nevét, és a webalkalmazás eléréséhez használt URL-cím létrehozásához használatos (például ha a "mydemodocdbwebapp" nevet adja meg, akkor a webalkalmazás elérésére szolgáló URL-cím `mydemodocdbwebapp.azurewebsites.net`).
+   2. HOSTINGPLANNAME: a létrehozandó App Service üzemeltetési terv nevét adja meg.
+   3. HELY: a Azure Cosmos DB és a webalkalmazás-erőforrások létrehozásához használt Azure-beli hely.
+   4. DATABASEACCOUNTNAME: a létrehozandó Azure Cosmos DB fiók nevét adja meg.   
       
-      ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment4.png)
-5. Válasszon ki egy meglévő erőforráscsoportot, vagy adjon meg egy nevet, hogy egy új erőforráscsoportot, és válassza ki az erőforráscsoport helyét.
+      ![Képernyőfelvétel a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment4.png)
+5. Válasszon egy meglévő erőforráscsoportot, vagy adjon meg egy nevet az új erőforráscsoport létrehozásához, és válassza ki az erőforráscsoport helyét.
 
-    ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment5.png)
-6. Kattintson a **jogi feltételek áttekintése**, **beszerzési**, és kattintson a **létrehozás** a telepítés megkezdéséhez.  Válassza ki **rögzítés az irányítópulton** így az eredményül kapott üzemelő példány könnyen látható, az Azure portál kezdőlapján.
-   ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment6.png)
-7. Az üzembe helyezést követően a erőforrás-csoport panel nyílik meg.
-   ![Az erőforrás-csoport panel képernyőképe](./media/create-website/TemplateDeployment7.png)  
-8. Használja az alkalmazást, nyissa meg a webes alkalmazás URL-címe (a fenti példában az URL-cím lenne http://mydemodocdbwebapp.azurewebsites.net).  A következő webes alkalmazás jelenik meg:
+    ![Képernyőfelvétel a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment5.png)
+6. Kattintson a **jogi feltételek áttekintése**, a **vásárlás**elemre, majd a telepítés megkezdéséhez kattintson a **Létrehozás** gombra.  Válassza a **rögzítés az irányítópulton** lehetőséget, hogy az eredményül kapott központi telepítés könnyen látható legyen a Azure Portal kezdőlapján.
+   ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment6.png)
+7. Az üzembe helyezés befejezésekor megnyílik az erőforráscsoport panel.
+   ![képernyőkép az erőforráscsoport panelről](./media/create-website/TemplateDeployment7.png)  
+8. Az alkalmazás használatához navigáljon a webalkalmazás URL-címére (a fenti példában az URL-cím http://mydemodocdbwebapp.azurewebsites.net).  A következő webalkalmazás jelenik meg:
    
-   ![Minta Teendőkezelő alkalmazás](./media/create-website/image2.png)
-9. Lépjen tovább, és hozzon létre néhány feladatot az web app alkalmazásban, és térjen vissza a erőforrás-csoport panelen az Azure Portalon. Az Azure Cosmos DB-fiók erőforrás az erőforrások listájában kattintson, majd **adatkezelő**.
-10. Az alapértelmezett lekérdezés futtatása "VÁLASSZA * FROM c", és vizsgálja meg az eredményeket.  Figyelje meg, hogy a lekérdezés beolvasta a teendőket, a fenti 7. lépésben létrehozott JSON-ábrázolását.  Nyugodtan kísérletezhet a lekérdezések; például, próbálja meg futtatni a SELECT * FROM c WHERE c.isComplete = true értéket ad vissza az összes teendőlista elemeinek jelölt kész.
-11. Nyugodtan Fedezze fel az Azure Cosmos DB portál nyújt lehetőséget, vagy módosítsa a minta Teendőkezelő alkalmazás.  Amikor készen áll, üzembe helyezni egy másik sablonnal.
+   ![Példa Todo-alkalmazásra](./media/create-website/image2.png)
+9. Lépjen tovább, és hozzon létre néhány feladatot a webalkalmazásban, majd térjen vissza a Azure Portal erőforráscsoport ablaktáblájához. Kattintson a Azure Cosmos DB fiók erőforrására az erőforrások listában, majd kattintson az **adatkezelő**elemre.
+10. Futtassa az alapértelmezett lekérdezést, a "SELECT * FROM c" parancsot, és vizsgálja meg az eredményeket.  Figyelje meg, hogy a lekérdezés lekérte a fenti 7. lépésben létrehozott teendők JSON-ábrázolását.  Nyugodtan kísérletezhet a lekérdezésekkel; Próbálkozzon például a SELECT * utasítás futtatásával, ahol a c. isComplete = True érték az összes olyan tennivaló visszaadására szolgál, amely készként van megjelölve.
+11. Nyugodtan megismerheti a Azure Cosmos DB portál felületét, vagy módosíthatja a minta Todo alkalmazást.  Ha elkészült, hozzon üzembe egy másik sablont.
 
 <a id="Build"></a> 
 
-## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3\. lépés: A dokumentum-fiók és a web app minta üzembe helyezése
-Most már a második sablon üzembe helyezni.  Ez a sablon hasznos bemutatják, hogyan lehet szúr be az Azure Cosmos DB kapcsolati információkat, például a fiók végpontját és a főkulcs egy webalkalmazásba Alkalmazásbeállítások vagy egyéni kapcsolati karakterláncként. Például például hogy saját webes alkalmazás üzembe helyezése az Azure Cosmos DB-fiókot, és a kapcsolati adatok automatikusan kitölti az üzembe helyezés során szeretné.
+## <a name="step-3-deploy-the-document-account-and-web-app-sample"></a>3\. lépés: a dokumentum-fiók és a webalkalmazás-minta üzembe helyezése
+Most Helyezzük üzembe a második sablont.  Ez a sablon hasznos lehet bemutatni, hogyan lehet beszúrni Azure Cosmos DB kapcsolati adatokat, például a fiók végpontját és a főkulcsot egy webalkalmazásba Alkalmazásbeállítások vagy egyéni kapcsolati karakterláncként. Tegyük fel például, hogy van egy saját webalkalmazása, amelyet egy Azure Cosmos DB-fiókkal szeretne üzembe helyezni, és a kapcsolati adatok automatikusan fel lesznek töltve az üzembe helyezés során.
 
 > [!TIP]
-> A sablon nem ellenőrzi, hogy a webalkalmazás neve és az Azure Cosmos DB-fiók neve alatt megadott a) érvényes, és (b) érhető el.  Azt javasoljuk, hogy ellenőrizze a rendelkezésre állási azt tervezi, hogy az üzembe helyezés beküldése előtt adja meg a neveket.
+> A sablon nem ellenőrzi, hogy a webalkalmazás neve és az Azure Cosmos DB fiók neve az alábbiakban megadott név érvényes-e, és b) elérhető-e.  Erősen ajánlott ellenőrizni, hogy a telepítés elküldése előtt milyen nevekkel kell megadnia a rendelkezésre állást.
 > 
 > 
 
-1. Az a [az Azure Portal](https://portal.azure.com), az új gombra, és keressen rá a "Sablon telepítése".
-    ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment1.png)
-2. Válassza ki a sablon üzembe helyezési elemet, és kattintson a **létrehozás** ![a sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment2.png)
-3. Kattintson a **szerkesztési sablon**illessze be a DocDBWebSite.json sablon fájl tartalmát, és kattintson a **mentése**.
-   ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment3.png)
-4. Kattintson a **paraméterek szerkesztése**, adja meg a kötelező paraméterek értékeit, és kattintson a **OK**.  A paraméterek a következők:
+1. Az [Azure Portalon](https://portal.azure.com)kattintson az új elemre, és keressen rá a "template Deployment" kifejezésre.
+    ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment1.png)
+2. Jelölje ki a Template deployment elemet, majd kattintson a sablon üzembe helyezése felhasználói felület ![képernyőkép **létrehozása** elemre](./media/create-website/TemplateDeployment2.png)
+3. Kattintson a **Sablon szerkesztése**elemre, illessze be a DocDBWebSite. JSON sablonfájl tartalmát, majd kattintson a **Mentés**gombra.
+   ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment3.png)
+4. Kattintson a **Paraméterek szerkesztése**elemre, adja meg az egyes kötelező paraméterek értékeit, majd kattintson **az OK**gombra.  A paraméterek a következők:
    
-   1. WEBHELY NEVE: Adja meg az App Service webalkalmazás neve és az URL-cím, amely a web app (például, ha a megadott "mydemodocdbwebapp", majd az URL-címet, amely szerint a webalkalmazás eléréséhez mydemodocdbwebapp.azurewebsites.net) eléréséhez használandó létrehozására használható.
-   2. HOSTINGPLANNAME: Az App Service szolgáltatási csomag létrehozásához a nevét adja meg.
-   3. HELY: Itt adhatja meg, amelyben az Azure Cosmos DB és a webes alkalmazás-erőforrások létrehozása az Azure-helyen.
-   4. DATABASEACCOUNTNAME: Meghatározza a hozhat létre az Azure Cosmos DB-fiók nevét.   
+   1. SITENAME: megadja a App Service webalkalmazás nevét, és a webalkalmazás eléréséhez használni kívánt URL-cím összeállítására szolgál (például ha a "mydemodocdbwebapp" nevet adja meg, akkor a webalkalmazás eléréséhez használt URL-cím a mydemodocdbwebapp.azurewebsites.net).
+   2. HOSTINGPLANNAME: a létrehozandó App Service üzemeltetési terv nevét adja meg.
+   3. HELY: a Azure Cosmos DB és a webalkalmazás-erőforrások létrehozásához használt Azure-beli hely.
+   4. DATABASEACCOUNTNAME: a létrehozandó Azure Cosmos DB fiók nevét adja meg.   
       
-      ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment4.png)
-5. Válasszon ki egy meglévő erőforráscsoportot, vagy adjon meg egy nevet, hogy egy új erőforráscsoportot, és válassza ki az erőforráscsoport helyét.
+      ![Képernyőfelvétel a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment4.png)
+5. Válasszon egy meglévő erőforráscsoportot, vagy adjon meg egy nevet az új erőforráscsoport létrehozásához, és válassza ki az erőforráscsoport helyét.
 
-    ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment5.png)
-6. Kattintson a **jogi feltételek áttekintése**, **beszerzési**, és kattintson a **létrehozás** a telepítés megkezdéséhez.  Válassza ki **rögzítés az irányítópulton** így az eredményül kapott üzemelő példány könnyen látható, az Azure portál kezdőlapján.
-   ![A sablon üzembe helyezéséhez felhasználói felület képernyőképe](./media/create-website/TemplateDeployment6.png)
-7. Az üzembe helyezést követően a erőforrás-csoport panel nyílik meg.
-   ![Az erőforrás-csoport panel képernyőképe](./media/create-website/TemplateDeployment7.png)  
-8. Kattintson a webes alkalmazás-erőforrást az erőforrások listájában, majd **Alkalmazásbeállítások** ![képernyőfelvétel az erőforráscsoport](./media/create-website/TemplateDeployment9.png)  
-9. Vegye figyelembe, hogyan vannak jelen, az Azure Cosmos DB végpont és az Azure Cosmos DB főkulcsok mindegyike nastavení aplikace.
+    ![Képernyőfelvétel a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment5.png)
+6. Kattintson a **jogi feltételek áttekintése**, a **vásárlás**elemre, majd a telepítés megkezdéséhez kattintson a **Létrehozás** gombra.  Válassza a **rögzítés az irányítópulton** lehetőséget, hogy az eredményül kapott központi telepítés könnyen látható legyen a Azure Portal kezdőlapján.
+   ![képernyőkép a sablon üzembe helyezésének felhasználói felületéről](./media/create-website/TemplateDeployment6.png)
+7. Az üzembe helyezés befejezésekor megnyílik az erőforráscsoport panel.
+   ![képernyőkép az erőforráscsoport panelről](./media/create-website/TemplateDeployment7.png)  
+8. Kattintson a webalkalmazás-erőforrásra az erőforrások listában, majd kattintson az **alkalmazásbeállítások** ![az erőforráscsoport képernyőképére](./media/create-website/TemplateDeployment9.png)  
+9. Figyelje meg, hogy a Azure Cosmos DB végpont és a Azure Cosmos DB főkulcsok mindegyike rendelkezik-e Alkalmazásbeállítások.
 
-    ![Képernyőkép a nastavení aplikace](./media/create-website/TemplateDeployment10.png)  
-10. Nyugodtan folytassa az ismerkedést az Azure Portalon, vagy kövesse az Azure Cosmos DB az [minták](https://go.microsoft.com/fwlink/?LinkID=402386) a saját Azure Cosmos DB-alkalmazás létrehozásához.
+    ![Az Alkalmazásbeállítások képernyőképe](./media/create-website/TemplateDeployment10.png)  
+10. Nyugodtan folytathatja az Azure Portal megismerését, vagy követheti Azure Cosmos DB [mintáit](https://go.microsoft.com/fwlink/?LinkID=402386) , hogy saját Azure Cosmos db alkalmazást hozzon létre.
 
 <a name="NextSteps"></a>
 
-## <a name="next-steps"></a>További lépések
-Gratulálunk! Üzembe helyezte az Azure Cosmos DB, az App Service web app és a egy minta-webalkalmazás Azure Resource Manager-sablonok használatával.
+## <a name="next-steps"></a>Következő lépések
+Gratulálunk! Üzembe helyezte Azure Cosmos DB, App Service webalkalmazást és egy minta webalkalmazást Azure Resource Manager sablonok használatával.
 
-* Azure Cosmos DB kapcsolatos további tudnivalókért kattintson [Itt](https://azure.microsoft.com/services/cosmos-db/).
-* További információ az Azure App Service Web apps szolgáltatásról, kattintson a [Itt](https://go.microsoft.com/fwlink/?LinkId=325362).
-* Az Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért kattintson [Itt](https://msdn.microsoft.com/library/azure/dn790549.aspx).
+* Ha többet szeretne megtudni a Azure Cosmos DBről, kattintson [ide](https://azure.microsoft.com/services/cosmos-db/).
+* Ha többet szeretne megtudni a Azure App Service Web Apps szolgáltatásról, kattintson [ide](https://go.microsoft.com/fwlink/?LinkId=325362).
+* A Azure Resource Manager-sablonokkal kapcsolatos további tudnivalókért kattintson [ide](https://msdn.microsoft.com/library/azure/dn790549.aspx).
 
-## <a name="whats-changed"></a>A változások
-* A módosítás az App Service-ben webhelyekről útmutatóját lásd: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatások](https://go.microsoft.com/fwlink/?LinkId=529714)
+## <a name="whats-changed"></a>Újdonságok
+* Információk a Websites szolgáltatásról az App Service-re való váltásról: [Az Azure App Service és a hatása a meglévő Azure-szolgáltatásokra](https://go.microsoft.com/fwlink/?LinkId=529714)
 
 > [!NOTE]
-> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Ehhez nincs szükség bankkártyára, és nem jár kötelezettségekkel.
+> Ha az Azure App Service-t az Azure-fiók regisztrálása előtt szeretné kipróbálni, ugorjon [Az Azure App Service kipróbálása](https://go.microsoft.com/fwlink/?LinkId=523751) oldalra. Itt azonnal létrehozhat egy ideiglenes, kezdő szintű webalkalmazást az App Service szolgáltatásban. Nincs szükség bankkártyára, és mindez nem jár kötelezettségekkel.
 > 
 > 
 

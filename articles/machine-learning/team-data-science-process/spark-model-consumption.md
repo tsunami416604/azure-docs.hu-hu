@@ -1,61 +1,61 @@
 ---
-title: A Spark használatával összeállított gépi tanulási modelleket – csoportos adatelemzési folyamat
-description: Hogyan tölthet be és tárolja az Azure Blob Storage (WASB) pythonnal tanulási modellek pontozása.
+title: Működővé tenni Spark – beépített gépi tanulási modellek – csoportos adatelemzési folyamat
+description: Az Azure Blob Storage (WASB) szolgáltatásban tárolt tanulási modellek betöltése és pontszáma Python használatával.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 03/15/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: dd0467479960df30b1d44aeaef7ed0ed0d6c2a87
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3f02690d7c54581ed80b521e8222d1bd5964c878
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60253176"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718548"
 ---
-# <a name="operationalize-spark-built-machine-learning-models"></a>A Spark használatával összeállított gépi tanulási modellek üzembe helyezése
+# <a name="operationalize-spark-built-machine-learning-models"></a>Működővé tenni Spark – beépített gépi tanulási modellek
 
-Ez a témakör bemutatja, hogyan mentett gépi tanulási modell (gépi tanulás) Python használata a HDInsight Spark-fürtök üzembe helyezése. Azt ismerteti, hogyan lehet betölteni a machine learning-modellek, amelyek a Spark MLlib segítségével létrehozott és tárolt Azure Blob Storage (WASB), és hogyan pontszámot rendelni azokat az adatkészleteket, amelyek a WASB is megtalálható. Bemutatja azt, hogyan előzetes feldolgozása a bemeneti adatokat, az indexelés és a kódolási funkcióinak használatát a MLlib eszközkészlet funkciók átalakítása, és hogyan hozhat létre egy címkézett pont objektum, amely bemenetként pontozás a Machine Learning-modellekkel használható. A modellek pontozása használt lineáris regresszió, logisztikai regressziós, véletlenszerű erdő modelleket és átmenetes gyorsított fa modellek tartalmazzák.
+Ez a témakör bemutatja, hogyan működővé tenni egy mentett gépi tanulási modellt (ML) a Python használatával a HDInsight Spark-fürtökön. Ismerteti, hogyan tölthetők be a Spark MLlib használatával létrehozott és az Azure Blob Storageban (WASB) tárolt gépi tanulási modellek, valamint a WASB-ben tárolt adatkészletekkel való kiértékelésük. Azt mutatja be, hogyan lehet előre feldolgozni a bemeneti adatokat, átalakíthatja a szolgáltatásokat az indexelési és kódolási függvények használatával a MLlib Toolkit-ben, és megtudhatja, hogyan hozhat létre olyan címkézett pont típusú adatobjektumot, amely a ML-modellekkel való pontozáshoz bemenetként használható. A pontozáshoz használt modellek közé tartozik a lineáris regresszió, a logisztikai regresszió, a véletlenszerű erdő modelljei és a színátmenetes növelő famodellek.
 
-## <a name="spark-clusters-and-jupyter-notebooks"></a>A Spark-fürtök és a Jupyter notebookok
-Beállítási lépéseket és a kódot, és a egy gépi Tanulási modell üzembe helyezése okat Ez az útmutató egy HDInsight Spark 1.6-os-fürtön, valamint a Spark 2.0-fürt használatával. Ezek az eljárások a kódját a Jupyter notebookok is tartalmaz.
+## <a name="spark-clusters-and-jupyter-notebooks"></a>Spark-fürtök és Jupyter notebookok
+A telepítési lépések és a működővé tenni tartozó kód a HDInsight Spark 1,6-fürt, valamint a Spark 2,0-fürt használata esetén ebben az útmutatóban van megadva. Az eljárások kódja a Jupyter-jegyzetfüzetekben is elérhető.
 
-### <a name="notebook-for-spark-16"></a>A Spark 1.6-os notebook
-A [pySpark-machine-learning-data-science-spark-model-consumption.ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter notebook mutatja be a Python használata a HDInsight-fürtökön mentett modell üzembe helyezése. 
+### <a name="notebook-for-spark-16"></a>Jegyzetfüzet a Spark 1,6-hoz
+A [pySpark-Machine-learning-adat-tudomány-Spark-Model-fogyasztás. ipynb](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Spark1.6/pySpark-machine-learning-data-science-spark-model-consumption.ipynb) Jupyter notebook bemutatja, hogyan működővé tenni egy mentett modellt a Python használatával HDInsight-fürtökön. 
 
-### <a name="notebook-for-spark-20"></a>A Spark 2.0 notebook
-Spark 1.6-os használata egy HDInsight Spark 2.0-fürthöz tartozó Jupyter notebookot módosításához cserélje le a Python-kód fájlt a [ezt a fájlt](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Ez a kód bemutatja, hogyan a Spark 2.0-s verziójában létrehozott modellek felhasználása.
+### <a name="notebook-for-spark-20"></a>Jegyzetfüzet a Spark 2,0-hoz
+Ha módosítani szeretné a Spark 1,6-hoz készült Jupyter-jegyzetfüzetet egy HDInsight Spark 2,0-fürttel való használatra, cserélje le a Python-programkódot [erre a fájlra](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/Python/Spark2.0_ConsumeRFCV_NYCReg.py). Ez a kód a Spark 2,0-ben létrehozott modellek felhasználását mutatja be.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-1. Az Azure-fiók és a egy Spark 1.6-os (vagy a Spark 2.0-s) van szüksége a forgatókönyv végrehajtásához HDInsight-fürtön. Tekintse meg a [áttekintése az adatelemzés az Azure HDInsight Spark használatával](spark-overview.md) ezeknek a követelményeknek való létrehozásával kapcsolatos útmutatást. A témakör leírását a NYC 2013-i taxik adatait itt használt, és hajtsa végre a Spark-fürtön lévő Jupyter notebook kód útmutatást is tartalmaz. 
-2. Létre kell hozni a gépi tanulási modellek által feldolgozása révén ide pontozunk a [adatáttekintés és modellezés a Spark segítségével](spark-data-exploration-modeling.md) a Spark 1.6-os-fürt vagy a Spark 2.0-jegyzetfüzetek a témakört. 
-3. A Spark 2.0 notebookok használata a hálóbesorolási feladat, a jól ismert légitársaság időben indító adatkészlet 2011 és 2012 egy további adatkészlet. A jegyzetfüzetek és a rájuk mutató hivatkozást leírása tartalmazza a [Readme.md](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) az azokat tartalmazó GitHub-adattárban. Továbbá, a kód itt és a társított notebookok az általános és működnie kell bármelyik Spark-fürtön. Ha nem használja a HDInsight Spark, a fürt beállítása és lehet, hogy a felügyeleti lépések kissé eltérhetnek az itt látható. 
+1. A bemutató elvégzéséhez szüksége lesz egy Azure-fiókra és egy Spark 1,6 (vagy Spark 2,0) HDInsight-fürtre. Tekintse át az [adatelemzés a Spark használatával az Azure HDInsight](spark-overview.md) című témakört, amely útmutatást nyújt a követelmények teljesítéséhez. Ez a témakör az itt használt NYC 2013 taxi-adatok leírását is tartalmazza, valamint útmutatást ad a kód a Spark-fürtön lévő Jupyter-jegyzetfüzetből való végrehajtásához. 
+2. Hozza létre az itt látható gépi tanulási modelleket a Spark 1,6-fürthöz vagy a Spark 2,0 notebookokhoz készült Spark témakörrel végzett [adatelemzési és-modellezési](spark-data-exploration-modeling.md) műveletek során. 
+3. A Spark 2,0 jegyzetfüzetek egy további adatkészletet használnak a besorolási feladathoz, a jól ismert légitársaságok időpontját a 2011 és 2012-ból. A jegyzetfüzetek leírását és azok hivatkozásait az azokat tartalmazó GitHub-adattár [readme.MD](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/Spark/pySpark/Readme.md) tartalmazza. Emellett a kód itt és a csatolt jegyzetfüzetekben általános, és minden Spark-fürtön működnie kell. Ha nem a HDInsight Sparkot használja, akkor a fürt beállítása és a felügyeleti lépések némileg eltérnek az itt láthatótól. 
 
 [!INCLUDE [delete-cluster-warning](../../../includes/hdinsight-delete-cluster-warning.md)]
 
-## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>A telepítő: tárolási helyek, kódtárak és az előre beállított Spark-környezetben
-A Spark is képes olvasni és írni egy Azure Storage Blob (WASB). A meglévő adatokat tárolja, Nincs feldolgozható használata Spark- és WASB újra tárolja az eredményeket.
+## <a name="setup-storage-locations-libraries-and-the-preset-spark-context"></a>Beállítás: tárolóhelyek, kódtárak és az előre beállított Spark-környezet
+A Spark képes olvasni és írni egy Azure Storage Blobt (WASB). Így az ott tárolt meglévő adatai feldolgozhatók a Spark használatával és a WASB-ben újra tárolt eredményekkel.
 
-Szeretné menteni a modellek vagy fájlokat a WASB, az elérési utat meg kell határozni megfelelően. Az alapértelmezett tároló csatlakozik a Spark-fürtöt egy elérési út kezdetű használatával lehet hivatkozni: *"wasb / / /"* . Az alábbi kódmintában kell olvasni az adatokat, és a könyvtár elérési útját modell tárolási, amelyhez a modell kimeneti mentett helyét adja meg. 
+A modellek vagy fájlok a WASB-ben való mentéséhez az elérési utat megfelelően kell megadni. A Spark-fürthöz csatolt alapértelmezett tároló a következővel kezdődő elérési úttal lehet hivatkozni: *"wasb///"* . A következő mintakód meghatározza az olvasni kívánt adatokat, valamint annak a modell-tárolási könyvtárnak az elérési útját, amelyre a modell kimenete mentve lesz. 
 
-### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>Állítsa be a tárolási helyek elérési utak a WASB
-Modellek lesznek mentve: "wasb: / / / felhasználó/remoteuser/NYCTaxi/modellek". Ha az elérési út nem megfelelően van beállítva, a modellek nem töltődnek pontozó.
+### <a name="set-directory-paths-for-storage-locations-in-wasb"></a>A tárolási helyszínek elérési útjának beállítása a WASB-ben
+A modellek a következő helyre lesznek mentve: "wasb:///user/remoteuser/NYCTaxi/Models". Ha az elérési út nincs megfelelően beállítva, a modellek nincsenek betöltve a pontozáshoz.
 
-Pontozott eredmények lett mentve: "wasb: / / / felhasználó/remoteuser/NYCTaxi/ScoredResults". Ha a mappa elérési útja nem megfelelő, eredmények mentése nem történik abban a mappában.   
+Az eredményül kapott eredményeket a rendszer a következő helyre mentette: "wasb:///user/remoteuser/NYCTaxi/ScoredResults". Ha a mappa elérési útja helytelen, a rendszer nem menti az eredményeket az adott mappába.   
 
 > [!NOTE]
-> A fájl elérési útjai másolható, és ez a kód az előző cella kimenetében található helyőrzők beillessze a **machine-learning-data-science-spark-data-exploration-modeling.ipynb** notebookot.   
+> A fájl elérési útjának helye átmásolható és beilleszthető a kód helyőrzőbe a **Machine-learning-rescience-Spark-adat-Exploration-Modeling. ipynb** notebook utolsó cellájának kimenetében.   
 > 
 > 
 
-A következő könyvtár elérési útvonalak beállítása a kódot: 
+Itt látható a könyvtár elérési útjának beállítására szolgáló kód: 
 
     # LOCATION OF DATA TO BE SCORED (TEST DATA)
     taxi_test_file_loc = "wasb://mllibwalkthroughs@cdspsparksamples.blob.core.windows.net/Data/NYCTaxi/JoinedTaxiTripFare.Point1Pct.Test.tsv";
@@ -80,12 +80,12 @@ A következő könyvtár elérési útvonalak beállítása a kódot:
     import datetime
     datetime.datetime.now()
 
-**A KIMENETRE:**
+**KIMENETI**
 
-DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
+DateTime. datetime (2016, 4, 25, 23, 56, 19, 229403)
 
-### <a name="import-libraries"></a>Könyvtárak importálása
-Állítsa be a spark környezet, és importálja a következő kódot a szükséges kódtárak
+### <a name="import-libraries"></a>Tárak importálása
+A Spark-környezet beállítása és a szükséges kódtárak importálása a következő kóddal
 
     #IMPORT LIBRARIES
     import pyspark
@@ -103,24 +103,24 @@ DateTime.DateTime (2016, 4, 25, 23, 56, 19, 229403)
     import datetime
 
 
-### <a name="preset-spark-context-and-pyspark-magics"></a>Előre beállított Spark-környezet és a PySpark magics
-A PySpark-kernelek Jupyter notebookok a kell egy előre beállított környezetet. Így nem kell beállítani a Spark vagy a Hive-környezetek az alkalmazás használatának megkezdése előtt explicit módon fejleszti. Ezeket a rendszer alapértelmezés szerint az Ön számára elérhető. Ezek a környezetek a következők:
+### <a name="preset-spark-context-and-pyspark-magics"></a>Előre beállított Spark-környezet és PySpark Magics
+A Jupyter-jegyzetfüzetekhez biztosított PySpark-kernelek előre beállított környezettel rendelkeznek. Ezért nem kell explicit módon beállítania a Spark vagy a kaptár környezetét, mielőtt elkezdi a munkát a fejleszteni kívánt alkalmazással. Ezek a kontextusok alapértelmezés szerint elérhetők:
 
-* sc - és Spark 
-* kontext sqlContext – Hive
+* SC – Spark esetében 
+* sqlContext – struktúra esetén
 
-A PySpark kernel tartalmaz néhány előre meghatározott "magics", amelyek különleges parancsok, amelyek segítségével meghívhatja a %%. Nincsenek két ilyen parancsot a kód a példákon használt.
+A PySpark kernel tartalmaz néhány előre definiált "varázslatot", amelyek a (z)%% használatával hívható speciális parancsok. A kód mintáinak két ilyen parancsa van használatban.
 
-* **%% helyi** megadott helyileg hajtja végre a következő sorokat a kódot. Kód érvényes a Python-kód kell lennie.
-* **%% sql -o \<változó neve >** 
-* Futtatják a Hive-lekérdezést a kontext sqlContext ellen. Az -o paramétert, ha a lekérdezés eredménye a rendszer megőrzi a %% Pandas dataframe helyi Python-környezetben.
+* **%% helyi** Azt adta meg, hogy a következő sorokban található kód helyileg legyen végrehajtva. A kódnak érvényes Python-kódnak kell lennie.
+* **%% SQL-o \<változó neve >** 
+* Struktúra-lekérdezést hajt végre a sqlContext. Ha a-o paraméter át lett adva, a lekérdezés eredménye a (z)%% helyi Python-kontextusban, pandák dataframe.
 
-További információk a-kernelek Jupyter-notebookok és az előre meghatározott "magics", amely számára biztosítanak, lásd: [notebookokhoz elérhető kernelek Jupyter notebookok a HDInsight Spark Linux-fürtök HDInsight az](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
+A Jupyter-jegyzetfüzetek és az azok által megadott "Magics" kernelekkel kapcsolatos további információkért tekintse meg a [Jupyter notebookok számára elérhető kerneleket HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
-## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Gyűjthet adatokat, és hozzon létre egy megtisztított adatok keretet
-Ez a szakasz betöltheti az adatokat a pontozandó szükséges feladatok egy sorozatát kódját tartalmazza. Csatlakoztatott 0,1 % mintában a taxi utazást és diszkont fájlok (.tsv-fájlként tárolja) formátum az adatok olvasását és majd létrehoz egy tiszta adatkeretbe.
+## <a name="ingest-data-and-create-a-cleaned-data-frame"></a>Adatbevitel és megtisztított adatkeret létrehozása
+Ez a szakasz a pontszámok betöltéséhez szükséges feladatok sorozatának kódját tartalmazza. Olvassa el a taxi Trip és a fare fájl (. TSV fájlként tárolt) 0,1%-os mintáját, formázza az adatkeretet, majd hozzon létre egy tiszta adatkeretet.
 
-A taxi utazást és diszkont fájlokat is csatlakoztatott alapján az eljárásban ismertetett a: [A csoportos adatelemzési folyamat működés közben: HDInsight Hadoop-fürtöket használó](hive-walkthrough.md) témakör.
+A taxi Trip-és viteldíj-fájljai a következő eljárásban megadott eljárás alapján lettek összekapcsolva: [a csoportos adatelemzési folyamat: a HDInsight Hadoop-fürtök használata](hive-walkthrough.md) témakör.
 
     # INGEST DATA AND CREATE A CLEANED DATA FRAME
 
@@ -180,19 +180,19 @@ A taxi utazást és diszkont fájlokat is csatlakoztatott alapján az eljárásb
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 46.37 másodperc
+A fenti cella végrehajtásához szükséges idő: 46,37 másodperc
 
-## <a name="prepare-data-for-scoring-in-spark"></a>A Spark pontozó adatok előkészítése
-Ez a szakasz bemutatja, hogyan index, kódolása és készítse elő azokat a besorolási és regressziós felügyelt MLlib tanulási algoritmusok használatra kategorikus szolgáltatások méretezése.
+## <a name="prepare-data-for-scoring-in-spark"></a>Az adatfeldolgozás előkészítése a Sparkban
+Ez a szakasz bemutatja, hogyan indexelheti, kódolhatja és méretezheti a kategorikus funkciókat, hogy előkészítse őket a MLlib felügyelt tanulási algoritmusokban való használatra a besorolás és a regresszió érdekében.
 
-### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Átalakítás funkció: index és a bemeneti pontozó modellekbe kategorikus funkciók kódolása
-Ez a szakasz bemutatja, hogyan kategorikus adatok indexelése egy `StringIndexer` és a funkciókat kódolása `OneHotEncoder` a modellek bemeneteként.
+### <a name="feature-transformation-index-and-encode-categorical-features-for-input-into-models-for-scoring"></a>Szolgáltatások átalakítása: kategorikus funkciók indexelése és kódolása a modellekbe való bevitelhez a pontozáshoz
+Ez a szakasz azt mutatja be, hogyan indexelheti a kategorikus adatokat egy `StringIndexer` használatával, és hogyan kódolhatja `OneHotEncoder` bemenetbe a modellekben.
 
-A [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) kódol, egy karakterláncokat tartalmazó oszlopot tartalmazó oszlop, felirat indexek címkék. Az indexek címke gyakoriságok szerint vannak rendezve. 
+A [StringIndexer](https://spark.apache.org/docs/latest/ml-features.html#stringindexer) a címkék sztring oszlopát kódolja a Label indexek oszlopaiba. Az indexeket a feliratok gyakorisága alapján rendezi a rendszer. 
 
-A [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) címke indexek oszlop képez le egy oszlop bináris vektorok legfeljebb egyetlen one-értékkel. Ehhez a kódoláshoz lehetővé teszi a folyamatos értékelt szolgáltatások, például a logisztikai regressziós kategorikus funkciók alkalmazandó elvárt algoritmusokat.
+A [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.preprocessing.OneHotEncoder.html#sklearn.preprocessing.OneHotEncoder) leképezi a Label indexek oszlopát bináris vektorok egy oszlopára, amely legfeljebb egyetlen egyértékű lehet. Ez a kódolás lehetővé teszi, hogy az algoritmusok a kategorikus funkciókra alkalmazható folyamatos értékű funkciókat, például a logisztikai regressziót.
 
     #INDEX AND ONE-HOT ENCODE CATEGORICAL FEATURES
 
@@ -252,14 +252,14 @@ A [OneHotEncoder](https://scikit-learn.org/stable/modules/generated/sklearn.prep
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 5.37 másodperc
+A fenti cella végrehajtásához szükséges idő: 5,37 másodperc
 
-### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>A modellek be szolgáltatás-tömböket RDD-objektumok létrehozása
-Ez a szakasz tartalmazza a kódot, amely bemutatja, hogyan RDD-objektumként kategorikus szöveges adatok indexelése és a egy gyakori kódolása, így betanítására és MLlib logisztikai regressziós és -fa-alapú modell teszteléséhez használható. Az indexelt adatokat tárolja [rugalmas elosztott adatkészlet (RDD)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objektumokat. Ezek a Spark az alapszintű absztrakció. Az RDD-objektum egy nem módosítható, particionált elemek gyűjteménye, amelyek a Spark párhuzamosan is üzemeltetett jelöli.
+### <a name="create-rdd-objects-with-feature-arrays-for-input-into-models"></a>RDD objektumok létrehozása a modellbe való bevitelhez
+Ez a szakasz olyan kódot tartalmaz, amely bemutatja, hogyan indexelheti a kategorikus szöveges adatok RDD-objektumként való indexelését, és egy-egy gyors kódolást, hogy a MLlib logisztikai regressziós és faalapú modellek betanítására és tesztelésére is használható legyen. Az indexelt adatokat a rendszer [rugalmas elosztott adatkészlet-(RDD-)](https://spark.apache.org/docs/latest/api/java/org/apache/spark/rdd/RDD.html) objektumokban tárolja. A RDD a Spark alapszintű absztrakciója. A RDD objektum a Sparktal párhuzamosan üzemeltethető elemek nem módosítható, particionált gyűjteményét jelöli.
 
-Kód, amely bemutatja, hogyan méretezzünk át az adatokat is tartalmaz a `StandardScalar` MLlib által előírt lineáris regressziós a Sztochasztikus átmenetes Grádiens (SGD), számos machine learning-modellek betanításához egy népszerű algoritmus használatát. A [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) egység eltérése a szolgáltatások méretezése szolgál. A szolgáltatás méretezése adatok normalizálási, más néven adatblokkok, hogy funkciók széles körben folyósított értékekkel van nem adott túlzott mérjük a cél függvényben. 
+Emellett olyan kódot is tartalmaz, amely bemutatja, hogyan méretezhetők az adatmennyiségek a MLlib által biztosított `StandardScalar` a lineáris regressziós és a sztochasztikus gradiens (SGD) használatával, amely egy népszerű algoritmus a gépi tanulási modellek széles körének betanításához. A [StandardScaler](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.feature.StandardScaler) a szolgáltatások egységbeli variancia szerinti skálázására szolgál. A szolgáltatás skálázása, más néven az adatok normalizálása, nem biztosítja, hogy a széles körben kifizetett értékekkel rendelkező funkciók ne legyenek nagy mértékben mérlegelve az objektív függvényben. 
 
     # CREATE RDD OBJECTS WITH FEATURE ARRAYS FOR INPUT INTO MODELS
 
@@ -326,12 +326,12 @@ Kód, amely bemutatja, hogyan méretezzünk át az adatokat is tartalmaz a `Stan
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 11.72 másodperc
+A fenti cella végrehajtásához szükséges idő: 11,72 másodperc
 
-## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>Az a logisztikai regressziós modell pontozása és a kimeneti BLOB mentése
-Ebben a szakaszban a kód bemutatja, hogyan betöltése egy logisztikai regressziós modellt, amely az Azure blob storage-ban mentett, és ezzel e tipp taxi utazás fizetős előrejelzése, pontszám, a standard szintű besorolási metrikákkal, majd mentse el és jeleníti meg az eredményeket a blob-stora a GE. A pontozott eredmények tárolása az RDD-objektumokat. 
+## <a name="score-with-the-logistic-regression-model-and-save-output-to-blob"></a>Pontszám a logisztikai regressziós modellel, és a kimenet mentése a blobba
+Az ebben a szakaszban található kód azt mutatja be, hogyan tölthető be egy, az Azure Blob Storage-ban mentett logisztikai regressziós modell, amely azt jelzi, hogy a tippet egy taxis útra fizetik-e ki, a szabványos besorolási metrikákkal, majd az eredmények a blob Stora-ba való mentésével és ábrázolásával. GE. A pontszámok eredményei a RDD-objektumokban vannak tárolva. 
 
     # SCORE AND EVALUATE LOGISTIC REGRESSION MODEL
 
@@ -357,14 +357,14 @@ Ebben a szakaszban a kód bemutatja, hogyan betöltése egy logisztikai regressz
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 19.22 másodperc
+A fenti cella végrehajtásához szükséges idő: 19,22 másodperc
 
-## <a name="score-a-linear-regression-model"></a>Egy lineáris regressziós modell pontozása
-Használtuk [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) egy előre fizetett tipp mennyisége Sztochasztikus átmenetes Grádiens (SGD) optimalizálás használatával lineáris regressziós modell betanításához. 
+## <a name="score-a-linear-regression-model"></a>Lineáris regressziós modell pontszáma
+A [LinearRegressionWithSGD](https://spark.apache.org/docs/latest/api/python/pyspark.mllib.html#pyspark.mllib.regression.LinearRegressionWithSGD) -t egy lineáris regressziós modell betanítására használták a sztochasztikus GRADIENS (SGD) használatával, amellyel előre jelezhető a kifizetett tip mennyisége. 
 
-Ebben a szakaszban a kódot egy lineáris regressziós modell betöltése az Azure blob storage-ból, és pontozása méretezett változók használata, majd mentse vissza az eredményeket a blob jeleníti meg.
+Az ebben a szakaszban található kód azt mutatja be, hogyan tölthető be egy lineáris regressziós modell az Azure Blob Storage-ból, és hogyan méretezhető változókat használ, majd visszamenti az eredményeket a blobba.
 
     #SCORE LINEAR REGRESSION MODEL
 
@@ -390,16 +390,16 @@ Ebben a szakaszban a kódot egy lineáris regressziós modell betöltése az Azu
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 16.63 másodperc
+A fenti cella végrehajtásához szükséges idő: 16,63 másodperc
 
-## <a name="score-classification-and-regression-random-forest-models"></a>Besorolási és regressziós véletlenszerű erdő modellek pontozása
-Ebben a szakaszban a kód bemutatja, hogyan betölteni a mentett besorolási és regressziós véletlenszerű erdő modellek mentése az Azure blob storage-ban, a standard szintű osztályozó és regressziós mértékek teljesítményük, és mentse az eredményeket a blob storage-ba való.
+## <a name="score-classification-and-regression-random-forest-models"></a>Pontszám besorolása és regressziós véletlenszerű erdő modelljei
+Az ebben a szakaszban található kód azt mutatja be, hogyan tölthetők be az Azure Blob Storage-ban mentett mentett besorolási és regressziós véletlenszerű erdős modellek, a teljesítményük a szabványos osztályozó és regressziós mértékekkel történik, majd az eredmények visszamenthetők a blob Storage-ba.
 
-[Véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) együttesek döntési fák vannak.  Overfitting kockázatának csökkentése érdekében számos döntési fák kombinálhatja azokat. Véletlenszerű erdők képes kezelni a kategorikus funkciók bővítése a többosztályos osztályozási beállításait, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Véletlenszerű erdők a legsikeresebb gépi tanulási besorolási és regressziós modellek tartoznak.
+A [véletlenszerű erdők](https://spark.apache.org/docs/latest/mllib-ensembles.html#Random-Forests) a döntési fák együttesei.  Számos döntési fát egyesítenek a túlilleszkedés kockázatainak csökkentése érdekében. A véletlenszerű erdők képesek kezelni a kategorikus funkciókat, kiterjeszteni a többosztályos besorolási beállításra, nem szükségesek a funkciók skálázása, és képesek rögzíteni a nem lineáris és a funkciók közötti interakciókat. A véletlenszerű erdők a besorolás és a regresszió egyik legsikeresebb gépi tanulási modellje.
 
-[Spark.mllib](https://spark.apache.org/mllib/) támogatja az erdők véletlenszerű bináris és többosztályos osztályozási regressziós, mind a folyamatos, mind a kategorikus funkciók használatával. 
+a [Spark. mllib](https://spark.apache.org/mllib/) a véletlenszerű erdőket támogatja a bináris és a többosztályos besoroláshoz, valamint a folyamatos és kategorikus funkciók használatával történő regresszióhoz. 
 
     # SCORE RANDOM FOREST MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -436,16 +436,16 @@ Ebben a szakaszban a kód bemutatja, hogyan betölteni a mentett besorolási és
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds";
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 31.07 másodperc
+A fenti cella végrehajtásához szükséges idő: 31,07 másodperc
 
-## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Besorolási és regressziós átmenetes gyorsított fa modellek pontozása
-Ebben a szakaszban a kód bemutatja, hogyan besorolási és regressziós átmenetes gyorsított fa modellek betöltése az Azure blob storage-ból, a standard szintű osztályozó és regressziós mértékek teljesítményük és mentse az eredményeket a blob storage-ba való. 
+## <a name="score-classification-and-regression-gradient-boosting-tree-models"></a>Pontszám besorolása és regressziós átmenet fokozása famodellek
+Az ebben a szakaszban található kód azt mutatja be, hogyan tölthető be a besorolási és a regressziós színátmenet az Azure Blob Storage-ból származó famodellek betöltésére, a szabványos osztályozó és regressziós mértékek teljesítményére, majd a blob Storage-ba való visszaállítására. 
 
-**Spark.mllib** GBTs támogatja a bináris osztályozási és regressziós, mind a folyamatos, mind a kategorikus funkciók használatával. 
+a **Spark. mllib** támogatja a GBTS a bináris besoroláshoz és a regresszióhoz a folyamatos és kategorikus funkciók használatával. 
 
-[Színátmenet kiemelési fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTs) együttesek döntési fák. GBTs iteratív, hogy minimalizálják az adatvesztést függvény döntési fák betanítása. GBTs képes kezelni a kategorikus szolgáltatásokat, nincs szükség a szolgáltatás méretezése és tudnak nemlinearitás rögzítése és a szolgáltatás kapcsolati. Ezek is használható osztályú-besorolás beállításban.
+A [Gradient növelő fák](https://spark.apache.org/docs/latest/ml-classification-regression.html#gradient-boosted-trees-gbts) (GBTS-EK) a döntési fák együttesei. GBTS betanítása a iteratív a veszteségek csökkentése érdekében. A GBTS képes kezelni a kategorikus funkciókat, nem szükséges a funkciók skálázása, és képes rögzíteni a nem lineáris és a funkciók közötti interakciókat. Ez az algoritmus többosztályos besorolású beállításban is használható.
 
     # SCORE GRADIENT BOOSTING TREE MODELS FOR CLASSIFICATION AND REGRESSION
 
@@ -486,11 +486,11 @@ Ebben a szakaszban a kód bemutatja, hogyan besorolási és regressziós átmene
     timedelta = round((timeend-timestart).total_seconds(), 2) 
     print "Time taken to execute above cell: " + str(timedelta) + " seconds"; 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-Cella fent végrehajtásához felhasznált idő: 14.6 másodperc
+A fenti cella végrehajtásához szükséges idő: 14,6 másodperc
 
-## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a>Távolítsa el a memória és a nyomtatási objektumait pontozását Alapkönyvtár
+## <a name="clean-up-objects-from-memory-and-print-scored-file-locations"></a>Objektumok törlése a memóriából és a kinyomtatott fájlok helyeinek nyomtatása
     # UNPERSIST OBJECTS CACHED IN MEMORY
     taxi_df_test_cleaned.unpersist()
     indexedTESTbinary.unpersist();
@@ -509,47 +509,47 @@ Cella fent végrehajtásához felhasznált idő: 14.6 másodperc
     print "BoostedTreeRegressionFileLoc: " + btregressionfilename;
 
 
-**A KIMENETRE:**
+**KIMENETI**
 
-logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05-0317_22_38.953814.txt
+logisticRegFileLoc: LogisticRegressionWithLBFGS_2016-05 -0317_22_ 38.953814. txt
 
-linearRegFileLoc: LinearRegressionWithSGD_2016-05-0317_22_58.878949
+linearRegFileLoc: LinearRegressionWithSGD_2016-05 -0317 _22_ 58.878949
 
-randomForestClassificationFileLoc: RandomForestClassification_2016-05-0317_23_15.939247.txt
+randomForestClassificationFileLoc: RandomForestClassification_2016-05 -0317_23_ 15.939247. txt
 
-randomForestRegFileLoc: RandomForestRegression_2016-05-0317_23_31.459140.txt
+randomForestRegFileLoc: RandomForestRegression_2016-05 -0317_23_ 31.459140. txt
 
-BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05-0317_23_49.648334.txt
+BoostedTreeClassificationFileLoc: GradientBoostingTreeClassification_2016-05 -0317_23_ 49.648334. txt
 
-BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05-0317_23_56.860740.txt
+BoostedTreeRegressionFileLoc: GradientBoostingTreeRegression_2016-05 -0317_23_ 56.860740. txt
 
 ## <a name="consume-spark-models-through-a-web-interface"></a>Spark-modellek felhasználása webes felületen keresztül
-A Spark lehetővé teszi a távolról a Livy összetevőt a elküldeni a kötegelt vagy interaktív lekérdezések egy REST-felületen keresztül. A HDInsight Spark-fürthöz alapértelmezés szerint engedélyezve van a Livy. Livy további információkért lásd: [Távolról a Livy használatával Spark-feladatok elküldése](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
+A Spark lehetővé teszi a Batch-feladatok vagy interaktív lekérdezések távoli beküldését egy Livy nevű összetevővel rendelkező REST-felületen keresztül. A Livy alapértelmezés szerint engedélyezve van a HDInsight Spark-fürtön. A Livy kapcsolatos további információkért lásd: [Spark-feladatok távoli elküldése a Livy használatával](../../hdinsight/spark/apache-spark-livy-rest-interface.md). 
 
-Használhatja Livy egy feladatot, amely a batch-pontszámok távolról elküldeni egy fájlt, amely egy Azure-blobból tárolja, és az eredményeket ezután ír egy másik blob. Ehhez a Python-szkript feltöltése  
-[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) a blobba, a Spark-fürt. Egy hasonló eszközzel **Microsoft Azure Storage Explorer** vagy **AzCopy** a szkript a fürt blob másolása. Ebben az esetben azt a parancsfájlt a feltöltött ***wasb:///example/python/ConsumeGBNYCReg.py***.   
+A Livy használatával távolról is elküldhet egy olyan feladatot, amely egy Azure-blobban tárolt fájlt szerzi be, majd az eredményeket egy másik blobba írja. Ehhez töltse fel a Python-szkriptet a következőből:  
+[GitHub](https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/Spark/Python/ConsumeGBNYCReg.py) a Spark-fürt blobján. A szkript a fürt blobba másolásához használhatja a **Microsoft Azure Storage Explorer** vagy a **AzCopy** eszközt. Ebben az esetben feltöltöttük a szkriptet a ***wasb:///example/Python/ConsumeGBNYCReg.py***.   
 
 > [!NOTE]
-> Meg kell találhatók a portálon, a Spark-fürthöz társított storage-fiók hozzáférési kulcsait. 
+> A szükséges hozzáférési kulcsok a-portálon találhatók a Spark-fürthöz társított Storage-fiókhoz. 
 > 
 > 
 
-Miután feltöltötte erre a helyre, ez a szkript egy elosztott környezetben. a Spark-fürtön belül fut. Ez betölti a modell és előrejelzések futtat a bemeneti fájlokat, a modell alapján.  
+Az erre a helyre történő feltöltés után ez a szkript egy elosztott környezetben fut a Spark-fürtön belül. Betölti a modellt, és a modell alapján a bemeneti fájlokra vonatkozó előrejelzéseket futtat.  
 
-Ez a szkript távoli hívhat azáltal, hogy egy egyszerű HTTPS, illetve a REST-kérés a Livy.  Íme a curl-parancsot a Python-szkript meghívása távolról a HTTP-kérelem létrehozásához. Cserélje le a megfelelő értékeket a Spark-fürt CLUSTERLOGIN, CLUSTERPASSWORD, CLUSTERNAME.
+Ezt a szkriptet távolról is meghívhatja, ha egy egyszerű HTTPS/REST-kérelmet készít a Livy-on.  Itt található egy curl parancs a Python-szkript távoli meghívására szolgáló HTTP-kérelem létrehozásához. Cserélje le a CLUSTERLOGIN, a CLUSTERPASSWORD és a CLUSTERNAME értéket a Spark-fürt megfelelő értékeire.
 
     # CURL COMMAND TO INVOKE PYTHON SCRIPT WITH HTTP REQUEST
 
     curl -k --user "CLUSTERLOGIN:CLUSTERPASSWORD" -X POST --data "{\"file\": \"wasb:///example/python/ConsumeGBNYCReg.py\"}" -H "Content-Type: application/json" https://CLUSTERNAME.azurehdinsight.net/livy/batches
 
-A távoli rendszeren lévő bármilyen nyelv használatával livy-n keresztül a Spark-feladat indítása azáltal, hogy az egyszerű hitelesítés egy egyszerű HTTPS-hívással.   
+A távoli rendszer bármilyen nyelvét használhatja a Spark-feladat a Livy-n keresztüli meghívásához azáltal, hogy egyszerű HTTPS-hívást végez az alapszintű hitelesítéssel.   
 
 > [!NOTE]
-> Használható a Python-kérelmek könyvtár, amikor a HTTP-hívás kényelmes lenne, de jelenleg nincs telepítve az Azure Functions alapértelmezés szerint. Így a régebbi HTTP-kódtárak használja.   
+> Érdemes használni a Python-kérelmek függvénytárát a HTTP-hívás során, de az alapértelmezés szerint nincs telepítve Azure Functionsban. Így a régebbi HTTP-kódtárak használata is megtörténik.   
 > 
 > 
 
-Íme a HTTP-hívás a Python-kódban:
+Itt látható a HTTP-hívás Python-kódja:
 
     #MAKE AN HTTPS CALL ON LIVY. 
 
@@ -576,16 +576,16 @@ A távoli rendszeren lévő bármilyen nyelv használatával livy-n keresztül a
     conn.close()
 
 
-Azt is megteheti, a Python-kód [Azure Functions](https://azure.microsoft.com/documentation/services/functions/) egy Spark-feladat küldése, amely egy blobot, például egy időzítő, létrehozás vagy frissítés egy BLOB különféle események alapján pontszámmodell aktiválásához. 
+Azt is megteheti, hogy ezt a Python-kódot [Azure functions](https://azure.microsoft.com/documentation/services/functions/) a Spark-feladatok beküldésének elindításához, amely különböző események (például időzítő, létrehozás vagy frissítés) alapján szerzi be a blobot. 
 
-Ha inkább a kód ingyenes ügyféloldali felhasználói élményt, használja a [Azure Logic Apps](https://azure.microsoft.com/documentation/services/app-service/logic/) Spark kötegelt pontozási egy HTTP-művelet a definiálásával meghívni a **Logic Apps Designerben** és a paraméterek beállítása. 
+Ha a kód ingyenes felhasználói felületét szeretné használni, használja a [Azure Logic apps](https://azure.microsoft.com/documentation/services/app-service/logic/) a Spark batch pontozás meghívásához egy HTTP-művelet definiálásával a **Logic apps Designerben** , és állítsa be a paramétereit. 
 
-* Az Azure Portalról, hozzon létre egy új logikai alkalmazás kiválasztásával **+ új** -> **Web + mobil** -> **logikai alkalmazás**. 
-* Csatlakozva a **Logic Apps Designerben**, adja meg a logikai alkalmazás és az App Service-csomag nevét.
-* Válasszon ki egy HTTP-műveletet, és adja meg a paramétereket, az alábbi ábrán látható:
+* Azure Portal hozzon létre egy új logikai alkalmazást az **+ új** -> **web és mobil** -> **Logic app**lehetőség kiválasztásával. 
+* A **Logic apps Designer**kiépítéséhez adja meg a logikai alkalmazás nevét és a app Service tervet.
+* Válasszon ki egy HTTP-műveletet, és adja meg a következő ábrán látható paramétereket:
 
 ![Logic Apps Designer](./media/spark-model-consumption/spark-logica-app-client.png)
 
-## <a name="whats-next"></a>A következő lépések
-**Kereszt-ellenőrzési és a hiperparaméter kezdik**: Lásd: [speciális adatáttekintés és modellezés a Spark segítségével](spark-advanced-data-exploration-modeling.md) meg, hogyan lehet a modellek tanítása az kereszt-ellenőrzési és a hyper-paraméter kezdik.
+## <a name="whats-next"></a>Vajon mi a következő lépés?
+**Több ellenőrzés és hiperparaméter**: a [fejlett adatfeltárás és-modellezés a Spark](spark-advanced-data-exploration-modeling.md) segítségével a modellek több ellenőrzéssel és a Hyper-paraméterekkel történő használatával is betanítható.
 

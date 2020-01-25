@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: industrial-iot
 services: iot-industrialiot
 manager: philmea
-ms.openlocfilehash: 66e2cb30dcd58b7ad0c6cedbb547f75c8039bc58
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 2f99f50ffcccb052526981a712ac5046836a44ae
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73824142"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712898"
 ---
 # <a name="run-opc-publisher"></a>Az OPC Publisher futtatása
 
@@ -579,7 +579,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Az alapértelmezett konfiguráció 10 másodpercenként küldi az adatokat IoT Hub, vagy ha a IoT Hub számára elérhető 256 kB. Ez a konfiguráció körülbelül 10 másodperces késleltetést okoz, de a nagy méretű üzenetek mérete miatt a legkevesebb valószínűséggel veszíti el az adatvesztést. A diagnosztika kimenete azt mutatja, hogy nincsenek elveszett OPC csomópont-frissítések: `monitored item notifications enqueue failure: 0`.
+Az alapértelmezett konfiguráció 10 másodpercenként küldi az adatokat IoT Hub, vagy ha a IoT Hub számára elérhető 256 kB. Ez a konfiguráció körülbelül 10 másodperces késleltetést tesz fel, de a nagy méretű üzenetek mérete miatt a rendszer az adatvesztés legalacsonyabb valószínűséggel rendelkezik. A diagnosztika kimenete azt mutatja, hogy nincsenek elveszett OPC csomópont-frissítések: `monitored item notifications enqueue failure: 0`.
 
 #### <a name="constant-send-interval---si-1---ms-0"></a>Állandó küldési időköz (--si 1--MS 0)
 
@@ -681,7 +681,7 @@ current working set in MB: 90
 ==========================================================================
 ```
 
-Ebben a konfigurációban a lehető legtöbb OPC-csomópont-érték frissül. A maximális IoT Hub üzenet mérete 256 kB, amely itt van konfigurálva. Nincs kért küldési időköz, ami azt jelenti, hogy a betöltéshez IoT Hub adatmennyiség határozza meg a késést. Ez a konfiguráció a legkisebb valószínűséggel veszíti el az OPC-csomópontok értékeit, és alkalmas a nagy számú csomópont közzétételére. Ha ezt a konfigurációt használja, győződjön meg arról, hogy a forgatókönyv nem rendelkezik olyan feltételekkel, amelyek nagy késleltetést mutatnak, ha az 256 kB méretű üzenet nem érhető el.
+Ebben a konfigurációban a lehető legtöbb OPC-csomópont-érték frissül. A maximális IoT Hub üzenet mérete 256 kB, amely itt van konfigurálva. Nincs kért küldési időköz, ami azt jelenti, hogy a betöltéshez IoT Hub adatmennyiség határozza meg a késést. Ez a konfiguráció a legkisebb valószínűséggel elveszíti az OPC-csomópontok értékeit, és alkalmas a nagy számú csomópont közzétételére. Ha ezt a konfigurációt használja, győződjön meg arról, hogy a forgatókönyv nem rendelkezik olyan feltételekkel, amelyek nagy késleltetést mutatnak, ha az 256 kB méretű üzenet nem érhető el.
 
 ## <a name="debug-the-application"></a>Az alkalmazás hibakeresése
 
@@ -710,6 +710,6 @@ Ha nem rendelkezik valós OPC UA-kiszolgálóval, a kezdéshez használhatja a [
 
 Számos címkét valósít meg, amelyek véletlenszerű adatmennyiségeket és címkéket eredményeznek. Kiterjesztheti a mintát, ha további címkéző értékeket kell szimulálnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte az OPC-közzétevő futtatását, a javasolt következő lépések az [OPC Twin](overview-opc-twin.md) és az [OPC](overview-opc-vault.md)-tároló megismerése.

@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 12/20/2019
-ms.openlocfilehash: 35b087cdf190585ae98de35bc3f920c2cb66204a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a994a72ae57b39dba8025e7636e0f822f483bc8c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75461232"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720673"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-cognitive-skillset-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search kognitív készségkészlet létrehozása a Azure Portal
 
@@ -156,7 +156,7 @@ Most létrehozta az első készségkészlet, és fontos fogalmakat tanult meg, a
 
 Az általunk közvetíteni kívánt legfontosabb alapelvek egyike az Azure-adatforrásoktól való függőség. Egy készségkészlet egy indexelő van kötve, és az indexelő az Azure és a forrás-specifikus. Bár ez a rövid útmutató az Azure Blob Storage-ot használja, más Azure-adatforrások használata is lehetséges. További információ: [Indexelő az Azure Cognitive Searchban](search-indexer-overview.md). 
 
-Egy másik fontos szempont, hogy a képességek többek között a különböző és a tartalommal való munka során is kimaradnak. Emellett előfordulhat, hogy a nagyméretű fájlok vagy mezők túllépik a szolgáltatási szintek indexelő korlátait. A figyelmeztetések az események bekövetkezésekor normálisan jelennek meg. 
+Egy másik fontos szempont, hogy a képességek többek között a tartalomtípusok és a heterogén tartalom használata esetén is kimaradnak. Emellett előfordulhat, hogy a nagyméretű fájlok vagy mezők túllépik a szolgáltatási szintek indexelő korlátait. A figyelmeztetések az események bekövetkezésekor normálisan jelennek meg. 
 
 A kimenet egy keresési indexre van irányítva, és az indexelés során és az index egyes mezőiben létrehozott név-érték párok között van leképezés. Belsőleg a portál [jegyzeteket](cognitive-search-concept-annotations-syntax.md) állít be és definiál egy [képességcsoportot](cognitive-search-defining-skillset.md), amellyel megalapozza a műveletek sorrendjét és az általános folyamatot. Ezeket a lépéseket a rendszer elrejti a portálon, ám az alapelvek ismerete fontos, amikor hozzálát a kód írásához.
 
@@ -164,7 +164,7 @@ Végezetül megtanulta, hogy az index lekérdezésével ellenőrizheti a tartalm
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
-Ha a saját előfizetésében dolgozik, érdemes az egyes projektek végén eldöntenie, hogy szüksége lesz-e még a létrehozott erőforrásokra. A továbbra is futó erőforrások díjfizetéssel járhatnak. Az erőforrásokat törölheti egyesével, vagy egyszerre, az erőforráscsoport törlésével.
+Ha saját előfizetésében dolgozik, a projekt végén érdemes megállapítani, hogy továbbra is szüksége van-e a létrehozott erőforrásokra. A már futó erőforrások pénzbe kerülnek. Az erőforrásokat egyenként is törölheti, vagy az erőforráscsoport törlésével törölheti a teljes erőforrás-készletet.
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 

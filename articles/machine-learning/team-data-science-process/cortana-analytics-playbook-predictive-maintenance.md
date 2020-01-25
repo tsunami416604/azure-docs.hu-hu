@@ -3,20 +3,20 @@ title: Azure AI-útmutató a prediktív karbantartási megoldásokhoz – csopor
 description: Az adatelemzés átfogó leírása, amely a prediktív karbantartási megoldásokat több vertikális iparágban is kikapcsolja.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 05/11/2018
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=fboylu, previous-ms.author=fboylu
-ms.openlocfilehash: d5201cd2e7c117e1229fcd04d77e8c429c1fc8ba
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 5cd16280ba942404ffb23fd1c9d0e1a20af8c7c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74977131"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721812"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-útmutató a prediktív karbantartási megoldásokhoz
 
@@ -36,14 +36,14 @@ Az útmutató első fele a tipikus üzleti problémákat ismerteti, a PdM megval
 | [Megoldási sablonok a prediktív karbantartáshoz](#solution-templates-for-predictive-maintenance)|egy szoftverfejlesztő vagy AI-fejlesztő, aki gyorsan fel szeretne készíteni egy bemutatót vagy egy próba-koncepciót |
 | [Erőforrások betanítása a prediktív karbantartáshoz](#training-resources-for-predictive-maintenance) | a fentiek bármelyike vagy mindegyike, és szeretné megismerni az adatelemzés, az eszközök és a technikák mögötti alapvető fogalmakat.
 
-### <a name="prerequisite-knowledge"></a>Ismeretekre vonatkozó előfeltételek
+### <a name="prerequisite-knowledge"></a>Előfeltételek ismerete
 A BDM tartalma nem várja az olvasót, hogy bármilyen korábbi adatelemzési ismerettel rendelkezzen. A TDM-tartalomhoz a statisztikák és adatelemzések alapszintű ismerete hasznos. Az Azure-beli adat-és AI-szolgáltatások, a Python, az R, az XML és a JSON ismerete ajánlott. Az AI-technikák Python-és R-csomagokban vannak implementálva. A megoldási sablonok az Azure-szolgáltatások, a fejlesztői eszközök és az SDK-k használatával valósíthatók meg.
 
 ## <a name="business-case-for-predictive-maintenance"></a>Üzleti eset a prediktív karbantartáshoz
 
 A cégeknek a tőkebefektetéseik megtérüléséhez kritikus fontosságú berendezésekre van szükségük, amelyeknek maximális hatékonysággal kell működniük. Ezek az eszközök lehetnek több milliós költségeket felhalmozó repülőgép-hajtóművek, turbinák, liftek, vagy ipari hűtők, de akár olyan hétköznapi berendezések is, mint fénymásolók, kávéfőzők vagy vízhűtők.
 - Alapértelmezés szerint a legtöbb vállalat a _javító karbantartásra_támaszkodik, ahol a részek a és a meghibásodása esetén is lecserélhetők. A javító karbantartás garantálja, hogy minden alkatrész teljes mértékben ki legyen használva (így nem pazarolja az összetevők élettartamát), azonban költséges a leállások, a munka és a nem tervezett karbantartási munkálatok (munkaidőn kívül vagy nehezen elérhető helyeken található eszközökön végzett munka) miatt.
-- A következő szinten a vállalatok _megelőző karbantartást_végeznek, ahol egy rész hasznos élettartamát határozzák meg, és a hiba előtt megtarthatják vagy lecserélhetik azokat. A megelőző karbantartással elkerülhetők a nem tervezett és végzetes hibák. Azonban az ütemezett leállás magas költségei, az összetevő kihasználtsága a használat teljes élettartama előtt, és továbbra is fennáll a munka.
+- A következő szinten a vállalatok _megelőző karbantartást_végeznek, ahol egy rész hasznos élettartamát határozzák meg, és a hiba előtt megtarthatják vagy lecserélhetik azokat. A megelőző karbantartással elkerülhetők a nem tervezett és végzetes hibák. Azonban az ütemezett leállás magas költségei, az összetevő kihasználtsága a hasznos élettartama alatt is fennáll, és továbbra is fennáll a munka.
 - A _prediktív karbantartás_ célja, hogy optimalizálja az egyensúlyt a javítási és a megelőző karbantartás között az összetevők _időben_ történő cseréje révén. Ezzel a megközelítéssel csak akkor kell lecserélni az alkatrészeket, amikor azok meghibásodáshoz közel állnak. Az alkatrészek élettartamának kiterjesztésével (a megelőző karbantartáshoz képest) és a nem tervezett karbantartási és munkaköltségek csökkentésével (a javító karbantartás helyett) a cégek költségeket takaríthatnak meg és versenyelőnyt szerezhetnek.
 
 ## <a name="business-problems-in-pdm"></a>Üzleti problémák a PdM-ben
@@ -92,7 +92,7 @@ Ez a szakasz a különböző iparágak, például a Repülőgépipar, a segédpr
 |**Pénzügyi** |                         |
 |Az _ATM-hiba_ a bankszektor gyakori problémája. A probléma az, ha azt a valószínűséget jelenti, hogy egy ATM-alapú készpénz-visszavonási tranzakció megszakad, mert a készpénz-adagolóban Papírelakadás vagy részleges hiba történt. A tranzakciós hibák előrejelzése alapján az ATM-ket proaktív módon lehet kiszolgálni, hogy elkerülje a hibák előfordulását.| Ahelyett, hogy a gép a tranzakció felé irányuló feladatátvételt hajtja végre, a kívánt alternatíva a számítógép beprogramozása a szolgáltatás megtagadására az előrejelzés alapján.|
 |**Energiafogyasztás** |                          |
-|_Szélturbinák meghibásodásai_: a szélerőművek a legfontosabb energiaforrások a környezetvédelmi szempontból felelős országokban/régiókban, és nagy beruházási költségekkel járnak. A szélerőművek egyik fő összetevője a Generator motor. a hiba miatt a turbina hatástalan. Emellett nagyon költséges a javítás.|A KPI-k (például a TTF) előrejelzése segíthet az energetikai vállalatoknak megakadályozni a turbina meghibásodását, és minimális állásidőt biztosítani. A meghibásodási valószínűségek tájékoztatják a technikusokat a közeljövőben várhatóan sikertelen turbinák monitorozásáról és az időalapú karbantartási rendszerek bevezetéséről. A prediktív modellek olyan különböző tényezőket biztosítanak, amelyek hozzájárulnak a hibákhoz, ami segít a technikusoknak jobban megismerni a problémák kiváltó okait.|
+|_Szélturbinák meghibásodásai_: a szélerőművek a legfontosabb energiaforrások a környezetvédelmi szempontból felelős országokban/régiókban, és nagy beruházási költségekkel járnak. A szélerőművek egyik fő összetevője a Generator motor, amelynek meghibásodása miatt a turbina hatástalan. Emellett nagyon költséges a javítás.|A KPI-k (például a TTF) előrejelzése segíthet az energetikai vállalatoknak megakadályozni a turbina meghibásodását, és minimális állásidőt biztosítani. A meghibásodási valószínűségek tájékoztatják a technikusokat a közeljövőben várhatóan sikertelen turbinák monitorozásáról és az időalapú karbantartási rendszerek bevezetéséről. A prediktív modellek olyan különböző tényezőket biztosítanak, amelyek hozzájárulnak a hibákhoz, ami segít a technikusoknak jobban megismerni a problémák kiváltó okait.|
 |_Áramkör-megszakítói hibák_: a villamos energia és a vállalkozások közötti elosztáshoz a Power Lines szolgáltatásnak mindig működőképesnek kell lennie az energiaellátás biztosításához. Az áramkör-megszakítók segítenek korlátozni vagy elkerülni a energiaellátási vonalak károsodását a túlterhelés vagy a kedvezőtlen időjárási viszonyok során. Az üzleti probléma az áramkör-megszakító meghibásodásának előrejelzése.| A PdM-megoldások segítenek a javítási költségek csökkentésében és a berendezések, például az áramkör-megszakítók élettartamának növelésében. A váratlan hibák és a szolgáltatás-megszakítások csökkentésével javítják az energiagazdálkodás minőségét.|
 |**Szállítás és logisztika** |    |
 |_Lift Door-hibák_: a nagyméretű lifttel rendelkező vállalatok teljes stack szolgáltatást biztosítanak a világ számos millió működési felvonója számára. A lift biztonsága, megbízhatósága és a rendelkezésre állás a legfontosabb szempont az ügyfelek számára. Ezek a vállalatok az érzékelők segítségével követik nyomon ezeket és más attribútumokat, hogy azok megfelelő és megelőző karbantartást tudjanak nyújtani. Egy liftben a legjelentősebb ügyfél-probléma a lift ajtajának meghibásodása. Az üzleti probléma ebben az esetben egy olyan prediktív alkalmazás, amely a meghibásodások lehetséges okait Jósolja meg.| A felvonók olyan tőkebefektetések, amelyek potenciálisan 20-30 éves élettartamot biztosítanak. Így minden lehetséges értékesítés nagyon versenyképes lehet; Ezért a szolgáltatás és a támogatás iránti elvárások magasak. A prediktív karbantartás lehetővé teszi a vállalatok számára, hogy a termék-és szolgáltatás-kínálatuk versenytársain keresztül kihasználhassák a versenytársakat.|
@@ -271,7 +271,7 @@ A kérdés itt látható: "mi a valószínűsége annak, hogy az eszköz a köve
 3\. ábra Címkézés a bináris besoroláshoz
 
 Az alábbiakban felsorolunk néhány példát a címkézési stratégiára néhány használati esethez.
-- _Repülési késések_: X lehet 1 nap kiválasztva a késések előrejelzésére a következő 24 órában. Ezután az összes olyan járat, amely 24 órán belül van, a hibák előtt 1 lesz címkézve.
+- _Repülési késések_: X kiválasztható egy nap, a késések előrejelzésére a következő 24 órában. Ezután az összes olyan járat, amely 24 órán belül van, a hibák előtt 1 lesz címkézve.
 - _ATM készpénz_-kiosztási hibák: a következő egy órában egy tranzakció meghibásodási valószínűségét lehet meghatározni. Ebben az esetben a hiba elmúlt órájában történt összes tranzakció 1. A hiba valószínűségének előrejelzése a következő N pénznemre vonatkozó megjegyzések esetében: az utolsó N megjegyzésekben megadott összes Megjegyzés 1.
 - _Áramkör-megszakítói hibák_: a cél lehet előre jelezni a következő áramkör-megszakító parancs hibáját. Ebben az esetben az X egy jövőbeli parancsként van kiválasztva.
 - _Betanítási ajtó meghibásodása_: az X két napra kiválasztható.
@@ -362,7 +362,7 @@ Sok PdM probléma merül fel ilyen kiegyensúlyozatlan adatkészletekben, ahol a
 
 Az adatkezelési osztályok esetében a legtöbb szabványos tanulási algoritmus teljesítménye sérült, mivel ezek a hibák a teljes hiba mértékének minimalizálását célozzák meg. Az 99%-os negatív és 1%-os pozitív példákkal rendelkező adatkészletek esetében a modell az összes példány negatívként való címkézésével megjeleníthető 99%-os pontossággal. A modell azonban helytelenül osztályozza az összes pozitív példát; Tehát még ha a pontossága is magas, az algoritmus nem hasznos. Ennek következtében a hagyományos értékelési mérőszámok, például _a hibák összesített pontossága_ nem elegendő a kiegyensúlyozatlan tanuláshoz. Ha kiegyensúlyozatlan adatkészletekkel szembesül, a modell kiértékeléséhez más mérőszámok is használhatók:
 - Pontosság
-- Előhívás
+- Visszahívás
 - F1 pontszámok
 - Cost kiigazított ROC (fogadó működési jellemzői)
 
@@ -384,7 +384,7 @@ A PdM a kisebbségi osztályt alkotó hibák a szokásos példáknál nagyobb é
 
 Ezt az egyensúlyt többféle módon is elérheti. A nem egyenlő veszteségek problémájának enyhítéséhez rendeljen magas költségeket a kisebbségi osztály hibás besorolásához, és próbálja meg minimálisra csökkenteni a teljes költségeket. Az olyan algoritmusok, mint a _SVMs (support Vector machines)_ , ez a metódus önmagában is bevezethető, mivel lehetővé teszi a pozitív és negatív példák bevezetését a képzés során. Hasonlóképpen, a többek között a _megnövelt döntési fákat_ is kihasználó módszerek általában a jó teljesítményt mutatják be a kiegyensúlyozatlan adatokkal.
 
-## <a name="model-evaluation"></a>A modell kiértékelése
+## <a name="model-evaluation"></a>Modell kiértékelése
 A helytelen besorolás jelentős problémát jelent a PdM-forgatókönyvek esetében, ahol a hamis riasztások üzleti szempontból magas a díja. Ha például egy repülőgépnek a motor meghibásodása miatt nem megfelelő előrejelzése alapján dönt, akkor megszakadhat az ütemtervek és az utazási csomagok. Ha egy gépet offline állapotba helyez egy szerelvényből, a bevétel elvesztését vonhatja maga után. Így a modell kiértékelése a megfelelő teljesítmény-mérőszámokkal az új tesztelési adatok esetében kritikus fontosságú.
 
 A PdM modellek kiértékeléséhez használt jellemző teljesítménymutatókat az alábbiakban tárgyaljuk:
@@ -425,7 +425,7 @@ Az útmutató utolsó szakasza az Azure-ban megvalósított PdM-megoldási sablo
 
 | # | Cím | Leírás |
 |--:|:------|-------------|
-| 2 | [Azure prediktív karbantartási megoldás sablonja](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldási sablon, amely bemutatja az Azure ML-modellezést és egy teljes körű Azure-infrastruktúrát, amely képes a prediktív karbantartási forgatókönyvek támogatására a IoT távoli monitorozásával kapcsolatban. |
+| 2 | [Azure prediktív karbantartási megoldás sablonja](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldási sablon, amely bemutatja az Azure ML-modellezést és egy teljes körű Azure-infrastruktúrát, amely képes a prediktív karbantartási forgatókönyvek támogatására a IoT távoli monitorozása kontextusában. |
 | 3 | [Mélyreható tanulás a prediktív karbantartáshoz](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook egy bemutató megoldással, amely a LSTM (hosszú rövid távú memória) hálózatokat (az ismétlődő neurális hálózatok osztályát) használja a prediktív karbantartáshoz, egy [blogbejegyzésben a mintában](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Prediktív karbantartási modellezési útmutató az R-ben](https://gallery.azure.ai/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) | PdM modellezési útmutató az R-szkriptekkel.|
 | 5 | [Azure prediktív karbantartás a repülőgépipar számára](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az egyik első PdM megoldás-sablon, amely az Azure ML v 1.0-s verzióján alapul a repülőgépek karbantartásához. Ez az útmutató ebből a projektből származik. |

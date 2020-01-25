@@ -16,18 +16,18 @@ ms.date: 09/03/2019
 ms.author: mimart
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 55b9b8dae6ff47099935f42f75286b1b4ddd3708
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 4da7c874cc5f883d63f8613242c7a7e8b1e83cbd
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275762"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712271"
 ---
 # <a name="problem-configuring-user-provisioning-to-an-azure-ad-gallery-application"></a>Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor
 
-Az [automatikus felhasználó-kiépítés](https://docs.microsoft.com/azure/active-directory/active-directory-saas-app-provisioning) beállítása egy alkalmazáshoz (ahol támogatott) a szükséges, hogy az alkalmazás előkészítése az automatikus kiépítés előtt történjen. Ezután a Azure Portal használatával konfigurálhatja a kiépítési szolgáltatást, hogy szinkronizálja a felhasználói fiókokat az alkalmazással.
+Az [automatikus felhasználó-kiépítés](user-provisioning.md) beállítása egy alkalmazáshoz (ahol támogatott) a szükséges, hogy az alkalmazás előkészítése az automatikus kiépítés előtt történjen. Ezután a Azure Portal használatával konfigurálhatja a kiépítési szolgáltatást, hogy szinkronizálja a felhasználói fiókokat az alkalmazással.
 
-Az alkalmazáshoz való kiépítés beállítására vonatkozó beállítási oktatóanyag megkeresésével mindig érdemes kezdeni. Ezután kövesse az alábbi lépéseket az alkalmazás és az Azure AD konfigurálásához a létesítési kapcsolatok létrehozásához. Az alkalmazás-oktatóanyagok listája az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagokban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)található.
+Az alkalmazáshoz való kiépítés beállítására vonatkozó beállítási oktatóanyag megkeresésével mindig érdemes kezdeni. Ezután kövesse az alábbi lépéseket az alkalmazás és az Azure AD konfigurálásához a létesítési kapcsolatok létrehozásához. Az alkalmazás-oktatóanyagok listája az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagokban](../saas-apps/tutorial-list.md)található.
 
 ## <a name="how-to-see-if-provisioning-is-working"></a>Hogyan lehet megtekinteni, hogy működik-e a kiépítés 
 
@@ -62,13 +62,13 @@ Ahhoz, hogy a kiépítés működjön, az Azure AD-nek érvényes hitelesítő a
 
 Ha egy felhasználó "kihagyva" állapotba kerül a kiépítési naplókban, nagyon fontos, hogy a naplófájlban részletesen olvassa el a kibővített részleteket az ok megállapításához. Az alábbi gyakori okok és megoldások:
 
-- **Egy hatókör-szűrő konfigurálva** **van, amely egy attribútumérték alapján szűri ki a felhasználót**. A szűrők hatókörével kapcsolatos további információkért lásd: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-scoping-filters>.
+- **Egy hatókör-szűrő konfigurálva** **van, amely egy attribútumérték alapján szűri ki a felhasználót**. További információ: [attribútum-alapú alkalmazás kiépítés hatóköri szűrőkkel](define-conditional-rules-for-provisioning-user-accounts.md).
 
-- **A felhasználó "nem lesz ténylegesen jogosult".** Ha ezt a hibaüzenetet látja, az azért van, mert probléma van az Azure AD-ben tárolt felhasználói hozzárendelési rekorddal. A probléma megoldásához szüntesse meg a felhasználó (vagy csoport) hozzárendelését az alkalmazásból, majd újból rendelje hozzá újra. További információ a hozzárendelésről: <https://docs.microsoft.com/azure/active-directory/active-directory-coreapps-assign-user-azure-portal>.
+- **A felhasználó "nem lesz ténylegesen jogosult".** Ha ezt a hibaüzenetet látja, az azért van, mert probléma van az Azure AD-ben tárolt felhasználói hozzárendelési rekorddal. A probléma megoldásához szüntesse meg a felhasználó (vagy csoport) hozzárendelését az alkalmazásból, majd újból rendelje hozzá újra. További információ: [felhasználó vagy csoport társítása vállalati alkalmazáshoz](assign-user-or-group-access-portal.md).
 
-- **Egy kötelező attribútum hiányzik vagy nincs feltöltve a felhasználó számára.** A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ebbe beletartozik a "megfeleltetés" tulajdonság beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére használható. További információ erről a fontos folyamatról: <https://docs.microsoft.com/azure/active-directory/active-directory-saas-customizing-attribute-mappings>.
+- **Egy kötelező attribútum hiányzik vagy nincs feltöltve a felhasználó számára.** A kiépítés beállításakor megfontolandó szempont, hogy áttekintse és konfigurálja azokat az attribútum-hozzárendeléseket és munkafolyamatokat, amelyek meghatározzák, hogy mely felhasználói (vagy csoport-) tulajdonságokat kell az Azure AD-ből az alkalmazásba áthelyezni. Ebbe beletartozik a "megfeleltetés" tulajdonság beállítása, amely a felhasználók/csoportok egyedi azonosítására és a két rendszer közötti egyeztetésére használható. További információ erről a fontos folyamatról: a [felhasználó kiépítési attribútumának testreszabása – leképezések](customize-application-attributes.md).
 
   * **Csoportok attribútumainak hozzárendelése:** A csoport neve és a csoport adatainak kiépítés a tagokon kívül, ha egyes alkalmazások esetében támogatott. A funkció engedélyezéséhez vagy letiltásához engedélyezze vagy tiltsa le a **kiépítés** lapon megjelenő csoportosítási objektumok **leképezését** . Ha a létesítési csoportok engedélyezve vannak, tekintse át az attribútumok leképezéseit, és győződjön meg arról, hogy a megfelelő mező használatban van a "megfeleltetési azonosító" beállításnál. Ez lehet a megjelenítendő név vagy az e-mail-alias, mivel a csoport és a tagjai nem lesznek kiépítve, ha a megfelelő tulajdonság üres vagy nincs feltöltve az Azure AD-beli csoportokra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](user-provisioning.md)

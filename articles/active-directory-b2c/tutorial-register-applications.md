@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 10/16/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 2a9e4828428a91c1d1b75fb9d1b9004e52988084
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 214797f187c1812932c00bdf2a39c5ed79e15d4b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425484"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712657"
 ---
 # <a name="tutorial-register-an-application-in-azure-active-directory-b2c"></a>Oktatóanyag: alkalmazás regisztrálása Azure Active Directory B2Cban
 
@@ -44,7 +44,7 @@ Az alkalmazások Azure AD B2C-bérlőben való regisztrálásához használhatja
 1. Válassza ki a **címtár + előfizetés** ikont a portál eszköztárán, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A Azure Portal keresse meg és válassza a **Azure ad B2C**lehetőséget.
 1. Válassza az **alkalmazások**lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
-1. Adjon nevet az alkalmazásnak. Például: *webapp1*.
+1. Adja meg az alkalmazás nevét. Például: *webapp1*.
 1. A **Web App/web API belefoglalása** és az **implicit folyamat engedélyezése**lehetőségnél válassza az **Igen**lehetőséget.
 1. A **Válasz URL-cím**mezőben adjon meg egy végpontot, amelyben Azure ad B2C vissza kell adnia az alkalmazás által kért jogkivonatokat. Beállíthatja például, hogy helyileg figyeljen a `https://localhost:44316`. Ha még nem ismeri a portszámot, megadhat egy helyőrző értéket, és később módosíthatja azt.
 
@@ -88,7 +88,7 @@ Az alkalmazás regisztrációjának befejezése után engedélyezze az implicit 
 
 ## <a name="create-a-client-secret"></a>Ügyfél titkos kulcsának létrehozása
 
-Ha az alkalmazás egy jogkivonathoz tartozó kódot cserél, létre kell hoznia egy alkalmazás-titkot.
+Ha az alkalmazás egy hozzáférési jogkivonat engedélyezési kódját cseréli, létre kell hoznia egy alkalmazás-titkot.
 
 #### <a name="applicationstabapplications"></a>[Alkalmazások](#tab/applications/)
 

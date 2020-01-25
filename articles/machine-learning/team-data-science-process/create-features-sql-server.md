@@ -3,20 +3,20 @@ title: Szolgáltatások létrehozása SQL Server az SQL és a Python – csoport
 description: Szolgáltatások létrehozása az Azure-beli SQL Server VM tárolt adataihoz az SQL és a Python használatával – a csoportos adatelemzési folyamat részeként.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 5aa9a4f0ab536c197f08cb64a5cee8280c23039f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 58fa98005d7d89e84404d99cf4f55e456fd91f21
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982059"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721744"
 ---
 # <a name="create-features-for-data-in-sql-server-using-sql-and-python"></a>Funkciók létrehozása az adatokhoz az SQL Serveren SQL és Python használatával
 Ebből a dokumentumból megtudhatja, hogyan hozhatja ki az Azure-beli SQL Server VM tárolt adatok szolgáltatásait, amelyek segítségével az algoritmusok hatékonyabban megismerhetik az adatokból. Ezt a feladatot SQL vagy programozási nyelv (például Python) használatával hajthatja végre. Mindkét módszert itt mutatjuk be.
@@ -37,9 +37,9 @@ Ez a cikk feltételezi, hogy rendelkezik a következővel:
 ## <a name="sql-featuregen"></a>Funkciók létrehozása SQL-sel
 Ebben a szakaszban az SQL-t használó szolgáltatások létrehozásának módjait ismertetjük:  
 
-1. [Darabszám-alapú szolgáltatás létrehozása](#sql-countfeature)
-2. [Dobozolási szolgáltatás létrehozása](#sql-binningfeature)
-3. [A funkciók kimutatása egyetlen oszlopból](#sql-featurerollout)
+* [Darabszám-alapú szolgáltatás létrehozása](#sql-countfeature)
+* [Dobozolási szolgáltatás létrehozása](#sql-binningfeature)
+* [A funkciók kimutatása egyetlen oszlopból](#sql-featurerollout)
 
 > [!NOTE]
 > Miután létrehozta a további szolgáltatásokat, hozzáadhatja őket oszlopként a meglévő táblához, vagy létrehozhat egy új táblát a további funkciókkal és elsődleges kulccsal, amelyek az eredeti táblával csatlakoztathatók.
@@ -47,7 +47,7 @@ Ebben a szakaszban az SQL-t használó szolgáltatások létrehozásának módja
 > 
 
 ### <a name="sql-countfeature"></a>Darabszám-alapú szolgáltatás létrehozása
-Ez a dokumentum két módszert mutat be a Count-funkciók létrehozásához. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek ezután az eredeti táblában (az elsődleges kulcs oszlopai használatával) is összekapcsolhatók, hogy az eredeti adategységek is meglegyenek.
+Ez a dokumentum két módszert mutat be a Count-funkciók létrehozásához. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek az új funkciók ezután csatlakoztathatók az eredeti táblához (az elsődleges kulcs oszlopainak használatával), hogy az eredeti adatértékekkel együtt is megszámolják a szolgáltatásokat.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3>
 
@@ -55,7 +55,7 @@ Ez a dokumentum két módszert mutat be a Count-funkciók létrehozásához. Az 
     where <column_name3> = '<some_value>' group by <column_name1>,<column_name2>
 
 ### <a name="sql-binningfeature"></a>Dobozolási szolgáltatás létrehozása
-Az alábbi példa bemutatja, hogyan hozhatja ki a dobozolni-szolgáltatásokat a dobozolási (5 raktárhely használatával) egy numerikus oszlopot, amely szolgáltatásként használható:
+Az alábbi példa azt szemlélteti, hogyan hozhatók dobozolni-funkciók a dobozolási (öt raktárhely használatával) egy numerikus oszlop, amely szolgáltatásként használható.
 
     `SELECT <column_name>, NTILE(5) OVER (ORDER BY <column_name>) AS BinNumber from <tablename>`
 
@@ -74,9 +74,9 @@ Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát 
 * A harmadik tizedes tört akár 110 m is lehet: a nagy mezőgazdasági mező vagy intézményi kampusz azonosítására alkalmas.
 * A negyedik tizedes tört érték legfeljebb 11 m lehet: a parcella azonosítható. A megoldás a nem megfelelő, interferencia nélküli GPS-egységek jellemző pontosságával összehasonlítható.
 * Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
-* A hatodik tizedes tört érték akár 0,11 m is lehet: a szerkezetek részletes kialakításához, a Tájképek tervezéséhez, az utak létrehozásához használhatja ezt a lehetőséget. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt úgy érheti el, ha a GPS-vel kapcsolatos aprólékos mértékeket, például differentially korrigált GPS-t használ.
+* A hatodik tizedes tört érték 0,11 m-re van korlátozva: ezt a szintet részletesen, a Tájképek kialakításához, az utak létrehozásához használhatja. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt a célt úgy érheti el, ha a GPS-szel, például a differentially korrigált GPS-sel kapcsolatos fáradságos mértékeket használ.
 
-A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Vegye figyelembe, hogy ha egy REST-végpontot is meghívhat, például a `https://msdn.microsoft.com/library/ff701710.aspx` címen elérhető Bing Maps API-t, a régió/kerület információinak beszerzéséhez.
+A tartózkodási hely adatai a régió, a hely és a város információinak elválasztásával is featurized. Ha egyszer is meghívhat egy REST-végpontot, például a Bing Maps API-t (lásd: `https://msdn.microsoft.com/library/ff701710.aspx` a régió/kerület információinak beszerzéséhez).
 
     select
         <location_columnname>
@@ -89,7 +89,7 @@ A tartózkodási hely adatai a régió, a hely és a város információinak elv
         ,l7=case when LEN (PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1)) >= 6 then substring(PARSENAME(round(ABS(<location_columnname>) - FLOOR(ABS(<location_columnname>)),6),1),6,1) else '0' end     
     from <tablename>
 
-Ezek a hely-alapú funkciók további, a korábban leírtak szerint további Count-funkciók létrehozásához használhatók.
+Ezek a hely-alapú funkciók további, a korábban leírtaknak megfelelően további Count-funkciók létrehozásához használhatók.
 
 > [!TIP]
 > Programozott módon beszúrhatja a rekordokat a választott nyelv használatával. Előfordulhat, hogy az írási hatékonyság javítása érdekében be kell szúrnia az adattömbökbe az adathalmazokat. [Íme egy példa arra, hogyan teheti ezt meg a pyodbc használatával](https://code.google.com/p/pypyodbc/wiki/A_HelloWorld_sample_to_access_mssql_with_python).

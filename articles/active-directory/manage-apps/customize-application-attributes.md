@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 04/03/2019
 ms.author: mimart
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2cbe5066974734093e440e64eb0b47542e569765
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: d21ebabb34b828624c196922f88380f02234dc05
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940909"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711863"
 ---
 # <a name="customizing-user-provisioning-attribute-mappings-for-saas-applications-in-azure-active-directory"></a>A felhasználó kiépítési attribútumának testreszabása – SaaS-alkalmazások leképezése Azure Active Directory
 
@@ -39,17 +39,17 @@ Kövesse az alábbi lépéseket a felhasználók kiosztásának **leképezési**
 1. A **kiépítés** lehetőség kiválasztásával kezelheti a kiválasztott alkalmazás felhasználói fiókjának kiépítési beállításait.
 1. A **leképezések** kibontásával megtekintheti és szerkesztheti a felhasználói attribútumokat, amelyek az Azure ad és a célalkalmazás között áramlanak. Ha a célalkalmazás támogatja azt, ez a szakasz lehetővé teszi a csoportok és felhasználói fiókok üzembe helyezésének igény szerinti konfigurálását.
 
-   ![Leképezések használata felhasználói attribútumok megtekintéséhez és szerkesztéséhez](./media/customize-application-attributes/21.png)
+   ![Leképezések használata felhasználói attribútumok megtekintéséhez és szerkesztéséhez](media/customize-application-attributes/21.png)
 
 1. Válassza ki a **leképezések** konfigurációját a kapcsolódó **attribútum-leképezési** képernyő megnyitásához. Az SaaS-alkalmazások megfelelő működéséhez bizonyos attribútum-hozzárendelések szükségesek. A kötelező attribútumok esetében a **törlési** funkció nem érhető el.
 
-   ![Attribútum-hozzárendelés használata az alkalmazások attribútumainak konfigurálásához](./media/customize-application-attributes/22.png)
+   ![Attribútum-hozzárendelés használata az alkalmazások attribútumainak konfigurálásához](media/customize-application-attributes/22.png)
 
    Ebben a képernyőfelvételben láthatja, hogy a Salesforce található felügyelt objektum **username** attribútuma a csatolt Azure Active Directory objektum **userPrincipalName** értékével van feltöltve.
 
 1. Válasszon ki egy meglévő **attribútum-hozzárendelést** az **attribútum szerkesztése** képernyő megnyitásához. Itt szerkesztheti az Azure AD és a célalkalmazás közötti adatforgalom felhasználói attribútumait.
 
-   ![Felhasználói attribútumok szerkesztése a szerkesztési attribútum használatával](./media/customize-application-attributes/23.png)
+   ![Felhasználói attribútumok szerkesztése a szerkesztési attribútum használatával](media/customize-application-attributes/23.png)
 
 ### <a name="understanding-attribute-mapping-types"></a>Az attribútum-leképezési típusok ismertetése
 
@@ -71,7 +71,7 @@ A tulajdonsággal együtt az attribútum-hozzárendelések a következő attrib�
 
 - **Forrásoldali attribútum** – a felhasználói attribútum a forrásoldali rendszerből (példa: Azure Active Directory).
 - **Target attribútum** – a felhasználói attribútum a célként megadott rendszeren (például: ServiceNow).
-- **Alapértelmezett érték, ha Null (nem kötelező)** – a célként megadott rendszernek átadandó érték, ha a forrás attribútum értéke null. Ez az érték csak a felhasználó létrehozásakor lesz kiépítve. Egy meglévő felhasználó frissítésekor az "alapértelmezett érték, ha null" nem lesz kiépítve. Ha például a célrendszer összes meglévő felhasználóját egy adott feladathoz tartozó címmel szeretné kiépíteni (ha a forrásrendszer null értékű, akkor a következő [kifejezést](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)használhatja: Switch (IsPresent ([beosztás]), "DefaultValue", "true", [beosztás]). Ügyeljen arra, hogy a "default Value" értéket cserélje le a forrásrendszer null értékének megadásához. 
+- **Alapértelmezett érték, ha Null (nem kötelező)** – a célként megadott rendszernek átadandó érték, ha a forrás attribútum értéke null. Ez az érték csak a felhasználó létrehozásakor lesz kiépítve. Egy meglévő felhasználó frissítésekor az "alapértelmezett érték, ha null" nem lesz kiépítve. Ha például a célrendszer összes meglévő felhasználóját egy adott feladathoz tartozó címmel szeretné kiépíteni (ha a forrásrendszer null értékű, akkor a következő [kifejezést](functions-for-customizing-application-data.md)használhatja: Switch (IsPresent ([beosztás]), "DefaultValue", "true", [beosztás]). Ügyeljen arra, hogy a "default Value" értéket cserélje le a forrásrendszer null értékének megadásához. 
 - **Objektumok egyeztetése ezzel az attribútummal** – azt határozza meg, hogy ez a leképezés használható-e a felhasználók egyedi azonosítására a forrás-és a célként megadott rendszerek között. Általában az Azure AD userPrincipalName vagy mail attribútumára van beállítva, amely általában egy célalkalmazás username mezőjére van leképezve.
 - **Megfeleltetési prioritás** – a rendszer több egyező attribútumot is beállíthat. Ha több is van, azok kiértékelése a mező által meghatározott sorrendben történik. Amint talál egyezést, nem lesz kiértékelve további egyező attribútumok.
 - **A leképezés alkalmazása**
@@ -92,7 +92,7 @@ Az Azure AD-kiépítési szolgáltatás a "zöldmezős" forgatókönyvekben is �
 
 A kiválasztott számú alkalmazás, például a ServiceNow, a Box és a G Suite lehetővé teszi a csoport objektumainak és felhasználói objektumainak kiépítését. A csoport objektumai tartalmazhatnak olyan csoport-tulajdonságokat, mint a megjelenítendő nevek és az e-mail-aliasok, a csoporttagokkal együtt.
 
-![Példa a kiépített csoporttal és felhasználói objektumokkal rendelkező ServiceNow](./media/customize-application-attributes/24.png)
+![Példa a kiépített csoporttal és felhasználói objektumokkal rendelkező ServiceNow](media/customize-application-attributes/24.png)
 
 A csoportok kiosztása opcionálisan engedélyezhető vagy letiltható úgy, hogy kijelöli a **hozzárendelések**csoport leképezése elemét, és **engedélyezi** az **attribútum-leképezési** képernyőn a kívánt beállítást.
 
@@ -193,13 +193,13 @@ Az egyéni attribútumok nem lehetnek hivatkozási attribútumok vagy többért�
 ## <a name="provisioning-a-role-to-a-scim-app"></a>Szerepkör üzembe helyezése egy SCIM-alkalmazásban
 Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye figyelembe, hogy az alábbi leírás az egyéni SCIM-alkalmazásokra vonatkozik. A Gallery-alkalmazások, például a Salesforce és a ServiceNow esetében használja az előre meghatározott szerepkör-leképezéseket. Az alábbi felsorolás leírja, hogyan alakíthatja át az AppRoleAssignments attribútumot az alkalmazás által várt formátumra.
 
-- Az Azure AD-beli appRoleAssignment az alkalmazás egyik szerepköréhez való leképezéséhez az attribútumot [kifejezéssel](https://docs.microsoft.com/azure/active-directory/manage-apps/functions-for-customizing-application-data)kell átalakítani. A appRoleAssignment attribútum **nem képezhető le közvetlenül** egy szerepkör-attribútumra anélkül, hogy kifejezést kellene használnia a szerepkör részleteinek elemzéséhez. 
+- Az Azure AD-beli appRoleAssignment az alkalmazás egyik szerepköréhez való leképezéséhez az attribútumot [kifejezéssel](functions-for-customizing-application-data.md)kell átalakítani. A appRoleAssignment attribútum **nem képezhető le közvetlenül** egy szerepkör-attribútumra anélkül, hogy kifejezést kellene használnia a szerepkör részleteinek elemzéséhez. 
 
 - **SingleAppRoleAssignment** 
   - **Mikor kell használni:** A SingleAppRoleAssignment kifejezés használatával egyetlen szerepkört helyezhet üzembe egy felhasználó számára, és meghatározhatja az elsődleges szerepkört. 
   - **Konfigurálás:** A fent ismertetett lépések végrehajtásával navigáljon az attribútum-hozzárendelések lapra, és használja a SingleAppRoleAssignment kifejezést a roles attribútum leképezéséhez. Három szerepkör-attribútum közül választhat: (szerepkörök [elsődleges EQ "igaz"]. megjelenítés, szerepkörök [elsődleges EQ "igaz]. típus és szerepkörök [elsődleges EQ" true "]. Value). Dönthet úgy, hogy a hozzárendelések bármelyikét vagy az összes szerepkör-attribútumot tartalmazza. Ha egynél többre szeretne belefoglalni, csak adjon hozzá egy új leképezést, és adja meg a célként megadott attribútumként.  
   
-  ![SingleAppRoleAssignment hozzáadása](./media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
+  ![SingleAppRoleAssignment hozzáadása](media/customize-application-attributes/edit-attribute-singleapproleassignment.png)
   - **Megfontolandó dolgok**
     - Győződjön meg arról, hogy a rendszer nem rendel hozzá több szerepkört a felhasználóhoz. Nem garantáljuk, hogy melyik szerepkört kell kiépíteni.
     
@@ -231,11 +231,11 @@ Az alábbi lépésekkel szerepköröket hozhat létre az alkalmazáshoz. Vegye f
   - **Mikor kell használni:** A AppRoleAssignmentsComplex kifejezés használatával több szerepkört is kiépítheti egy felhasználó számára. 
   - **Konfigurálás:** Szerkessze a fentiekben ismertetett támogatott attribútumok listáját, és adjon hozzá egy új attribútumot a szerepkörökhöz: 
   
-    ![Szerepkörök hozzáadása](./media/customize-application-attributes/add-roles.png)<br>
+    ![Szerepkörök hozzáadása](media/customize-application-attributes/add-roles.png)<br>
 
     Ezután a AppRoleAssignmentsComplex kifejezés használatával képezhető le az egyéni szerepkör attribútumra az alábbi képen látható módon:
 
-    ![AppRoleAssignmentsComplex hozzáadása](./media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
+    ![AppRoleAssignmentsComplex hozzáadása](media/customize-application-attributes/edit-attribute-approleassignmentscomplex.png)<br>
   - **Megfontolandó dolgok**
     - Az összes szerepkör elsődleges = hamis értékként lesz kiépítve.
     - A bejegyzés tartalmazza a szerepkör típusát. A javítási kérelem nem tartalmaz típust. Dolgozunk a típus küldésében a POST-és a PATCH-kérésekben.

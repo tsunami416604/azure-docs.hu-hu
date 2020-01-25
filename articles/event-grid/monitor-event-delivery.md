@@ -1,19 +1,19 @@
 ---
 title: Figyelő Azure Event Grid üzenet kézbesítése
-description: Útmutató Azure Event Grid üzenetek kézbesítésének figyeléséhez.
+description: Ez a cikk azt ismerteti, hogyan használható a Azure Portal az Azure Event Grid üzenetek kézbesítési állapotának megtekintéséhez.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b1035046cc3c3b6cd7bde895e2e779d1c966abe0
-ms.sourcegitcommit: 4821b7b644d251593e211b150fcafa430c1accf0
+ms.openlocfilehash: 16587feaca65aa21836d9be1c44e00faa0f4f8d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/19/2019
-ms.locfileid: "74170011"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722135"
 ---
 # <a name="monitor-event-grid-message-delivery"></a>Figyelő Event Grid üzenet kézbesítése 
 
@@ -21,7 +21,7 @@ Ez a cikk azt ismerteti, hogyan használható a portál az események kézbesít
 
 Event Grid tartós kézbesítést biztosít. Minden egyes előfizetéshez legalább egyszer kézbesít minden üzenetet. Az eseményeket azonnal elküldi az egyes előfizetések regisztrált webhookjának. Ha egy webhook nem igazolja az esemény kézhezvételét az első kézbesítési kísérlet 60 másodpercén belül, Event Grid újrapróbálkozik az esemény kézbesítésével.
 
-Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
+További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 
 ## <a name="delivery-metrics"></a>Kézbesítési metrikák
 
@@ -46,7 +46,7 @@ Ha szeretné megtekinteni az esemény-előfizetés mérőszámait, kereshet az e
 
 Ha az esemény-előfizetés típusa szerint szeretne keresni, válassza a **minden szolgáltatás**lehetőséget.
 
-![Válassza ki az összes szolgáltatás](./media/monitor-event-delivery/all-services.png)
+![Minden szolgáltatás kiválasztása](./media/monitor-event-delivery/all-services.png)
 
 Keressen az **Event Grid** kifejezésre, és válassza ki **Event Grid előfizetéseket** az elérhető lehetőségek közül.
 
@@ -84,6 +84,6 @@ Megadhatja a riasztásokat a témakörben és a tartományi szintű mérőszámo
 
 ## <a name="next-steps"></a>Következő lépések
 
-* Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
+* További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
 * Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
-* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).
+* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

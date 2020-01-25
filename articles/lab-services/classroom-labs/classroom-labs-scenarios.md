@@ -1,6 +1,6 @@
 ---
-title: Osztályterem-tesztkörnyezetek használata betanítások – Azure Lab Services |} A Microsoft Docs
-description: Ismerje meg, hogyan használhatja az Azure DevTest Labs-képzési forgatókönyveihez.
+title: Tantermi Labs használata képzésekhez – Azure Lab Services
+description: Ez a cikk azt ismerteti, hogyan használhatók a Azure DevTest Labs az Azure-beli laborok létrehozásához a betanítási forgatókönyvekhez.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,48 +11,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/22/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 4d2ba11181977f1976b5ae933e8b93a92424fa96
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 155806222f9e11fec177487b7147d81054ac06ed
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60695275"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717983"
 ---
-# <a name="use-classroom-labs-for-trainings"></a>Osztályterem-tesztkörnyezetek használata betanítások
-Beállíthat egy tesztkörnyezetet betanítások. Tanterem Laborgyakorlatok az Azure Lab Services lehetővé teszi a képzési tesztkörnyezetek létrehozása amelyben minden tanuló használ a betanításhoz azonos és elkülönített környezetben. Annak érdekében, hogy képzési környezetek elérhető minden tanuló, csak akkor, amikor szükség van rájuk, és tartalmaz elég erőforrások – például a virtuális gépek – szükséges a képzés-szabályzatok alkalmazása. 
+# <a name="use-classroom-labs-for-trainings"></a>A tanterem Labs használata képzésekhez
+Beállíthat egy labort tréningekhez. A Azure Lab Services tanterem Labs segítségével létrehozhat egy labort a betanításhoz, ahol minden egyes gyakornok azonos és elszigetelt környezetet használ a képzéshez. Házirendeket alkalmazhat annak biztosítására, hogy a képzési környezetek csak akkor legyenek elérhetők az egyes gyakornokok számára, ha szükségük van rájuk, és elegendő erőforrást (például virtuális gépeket) tartalmaznak, amelyek a képzéshez szükségesek 
 
-![Osztályterem-tesztkörnyezet](../media/classroom-labs-scenarios/classroom.png)
+![Tantermi labor](../media/classroom-labs-scenarios/classroom.png)
 
-Osztályterem-tesztkörnyezetek megfelel a következő képzést bármely virtuális környezetben szükséges: 
+A tanterem Labs megfelel a következő követelményeknek, amelyek szükségesek a képzéshez bármely virtuális környezetben: 
 
-- Résztvevők gyorsan üzembe helyezhet a betanítási környezetek
-- Minden Azure-képzési gép azonosnak kell lenniük.
-- Résztvevők nem látható egyéb résztvevők által létrehozott virtuális gépek
-- Költség szabályozhatja, hogy a résztvevők nem olvasható be a szükséges a képzési, valamint a virtuális gépek leállítása, ha azok nem használja őket több virtuális gépet biztosítva
-- A képzési labor könnyedén megoszthatja minden tanuló
-- A képzési labor újra és újra felhasználhatja
+- A gyakornokok gyorsan üzembe helyezhetik a képzési környezeteket
+- Minden betanítási gépnek azonosnak kell lennie
+- A gyakornokok nem látják a más gyakornokok által létrehozott virtuális gépeket
+- Szabályozhatja a költségeket azáltal, hogy a gyakornokok nem tudnak több virtuális gépet lekérni, mint amennyit a képzéshez és a virtuális gépek leállításához, amikor nem használják őket
+- Az oktatási laborok könnyedén megoszthatók az egyes gyakornokokkal
+- Újra és újra újra felhasználja a betanítási labort
 
-Ez a cikk bemutatja, amely megfelel a dátumtáblázatok fenti képzési követelményekkel és részletes lépéseket követve állítsa be a képzési tesztkörnyezetek segítségével különböző Azure Lab Services szolgáltatásairól.  
+Ebben a cikkben megismerheti azokat a különböző Azure Lab Services funkciókat, amelyek a korábban leírt képzési követelmények teljesítéséhez használhatók, és részletesen ismertetjük azokat a lépéseket, amelyekkel labort állíthat be a képzéshez.  
 
-## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>A lab fiók létrehozása a lab fiók rendszergazdaként
-Az Azure Lab Services használatának első lépése, hogy a labor-fiók létrehozása az Azure Portalon. Miután egy tesztlabor fiókadminisztrátort a labor-fiókot, a rendszergazda hozzáadja a felhasználók, akik létre szeretné hozni a laborgyakorlat a **tesztkörnyezet létrehozója** szerepkör. Az oktatók labort létrehozni ehhez a tanfolyam azok tantárgyak gyakorlatok diákoknak virtuális gépekkel. További információkért lásd: [létrehozása és a labor-fiók kezelése](how-to-manage-lab-accounts.md).
+## <a name="create-the-lab-account-as-a-lab-account-administrator"></a>A labor-fiók létrehozása Lab-fiók rendszergazdájaként
+A Azure Lab Services használatának első lépéseként létre kell hoznia egy Lab-fiókot a Azure Portalban. Miután egy labor-fiók rendszergazdája létrehozta a labor-fiókot, a rendszergazda hozzáadja azokat a felhasználókat, akik a **labor létrehozói** szerepkörhöz szeretnék létrehozni a laborokat. Az oktatók olyan virtuális gépeket hoznak létre a diákoknak, akik a tanulók számára gyakorlatokat végeznek a tanítás során. Részletekért lásd: [labor-fiók létrehozása és kezelése](how-to-manage-lab-accounts.md).
 
 ## <a name="create-and-manage-classroom-labs"></a>Osztálytermi tesztkörnyezetek létrehozása és kezelése
-Egy trainer, aki tagja a tesztkörnyezet létrehozója szerepkör a lab-fiókokban, a labor-fiók egy vagy több labs hozhat létre. Hozzon létre, és a Virtuálisgép-sablon konfigurálásához a szükséges szoftverhez adatelemzésre gyakorlatok a tanfolyam során. Válasszon egy előre elkészített képet osztályterem-tesztkörnyezet létrehozásához az elérhető rendszerképek közül, és majd testre szabhatja a labor létrehozása szükséges a szoftver telepítésével. További információkért lásd: [létrehozása és kezelése az osztályterem-tesztkörnyezetek](how-to-manage-classroom-labs.md).
+Egy oktató, aki a labor létrehozói szerepkör tagja egy labor-fiókban, létrehozhat egy vagy több labort a labor-fiókban. Az összes szükséges szoftverrel létrehozhatja és konfigurálhatja a sablonhoz tartozó virtuális gépet a tanfolyamon végzett gyakorlatok végrehajtásához. A rendelkezésre álló rendszerképekből kiválaszthatja a tantermi labor létrehozásához szükséges lemezképeket, majd testreszabhatja azt a laborhoz szükséges szoftver telepítésével. Részletekért lásd: [tantermi laborok létrehozása és kezelése](how-to-manage-classroom-labs.md).
 
-## <a name="configure-usage-settings-and-policies"></a>És használati beállítások és szabályzatok konfigurálása
-A tesztkörnyezet létrehozója hozzáadhat vagy eltávolíthat felhasználókat a labor létrehozása, szerezzen be regisztrációs hivatkozást labor felhasználókat, például egyéni kvóták beállítással felhasználónként, frissítést el a tesztkörnyezetben, és további virtuális gépek szabályzatok beállítása. További információkért lásd: [és használati beállítások és szabályzatok konfigurálása](how-to-configure-student-usage.md).
+## <a name="configure-usage-settings-and-policies"></a>Használati beállítások és szabályzatok konfigurálása
+A tesztkörnyezet létrehozója hozzáadhat vagy eltávolíthat felhasználókat a laborhoz, beolvashatja a labor-felhasználók számára küldendő regisztrációs hivatkozást, házirendeket állíthat be, például beállíthatja az egyes kvótákat felhasználónként, frissítheti a laborban elérhető virtuális gépek számát, és így tovább. Részletekért lásd: [használati beállítások és házirendek konfigurálása](how-to-configure-student-usage.md).
 
 ## <a name="create-and-manage-schedules"></a>Ütemezések létrehozása és felügyelete
-Ütemezésekkel osztályterem-tesztkörnyezet konfigurálása, hogy a labor virtuális gépeinek automatikusan elindítani, és állítsa le a megadott időpontban. Egyszeri ütemezés szerint vagy ismétlődő ütemezés szerint határozhatja meg. További információkért lásd: [létrehozása és ütemezése a osztályterem-tesztkörnyezetek kezelése](how-to-create-schedules.md).
+Az ütemtervek lehetővé teszik a tantermi laborok konfigurálását, hogy a laborban lévő virtuális gépek automatikusan elindulnak és leálljanak egy adott időpontban. Meghatározhat egy egyszeri vagy ismétlődő ütemtervet. Részletekért lásd: [a tanterem Labs-ütemtervek létrehozása és kezelése](how-to-create-schedules.md).
 
-## <a name="set-up-and-publish-a-template-vm"></a>Állítsa be, és a virtuális gép sablon közzététele
-A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. A Virtuálisgép-sablon beállítása, hogy pontosan mit szeretne biztosítani a betanítási résztvevőknek lesz konfigurálva. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezt követően a sablont a Virtuálisgép-sablon példányainak a labor számára elérhetővé tehet közzé. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. További információkért lásd: [állítsa be, és közzététele a sablon virtuális gépek](how-to-create-manage-template.md). 
+## <a name="set-up-and-publish-a-template-vm"></a>Sablon virtuális gép beállítása és közzététele
+A tesztkörnyezet sablonja egy alapszintű virtuálisgép-rendszerkép, amelyből az összes felhasználó virtuális gépe létrejön. Állítsa be a sablon virtuális gépet úgy, hogy az pontosan úgy legyen konfigurálva, amit a képzés résztvevőinek szeretne biztosítani. A sablonhoz megadhat egy nevet és egy leírást, amely a tesztkörnyezet felhasználói számára jelenik meg. Ezután közzéteszi a sablont, hogy a sablonban lévő virtuális gép példányai elérhetővé tegyék a tesztkörnyezet felhasználói számára. Amikor közzétesz egy sablont, az Azure Lab Services létrehozza a virtuális gépeket a tesztkörnyezetben a sablon használatával. A folyamat során létrehozott virtuális gépek száma megegyezik a tesztkörnyezet felhasználóinak maximális számával, amelyet a tesztkörnyezet használati szabályzatában állíthat be. A virtuális gépek konfigurációja megegyezik a sablonéval. Részletekért lásd: [sablon virtuális gépek beállítása és közzététele](how-to-create-manage-template.md). 
 
-## <a name="use-vms-in-the-classroom-lab"></a>Virtuális gépek használata az osztályterem-tesztkörnyezet
-Egy tanuló vagy a képzés résztvevői a laborhoz regisztrálja, és letöltésekhez a tanfolyam ehhez a virtuális gép csatlakozik. További információkért lásd: [osztályterem-tesztkörnyezet elérése](how-to-use-classroom-lab.md).
+## <a name="use-vms-in-the-classroom-lab"></a>Virtuális gépek használata az osztályterem laborban
+Egy tanuló vagy betanítási résztvevő regisztrálja a labort, és csatlakozik a virtuális géphez, hogy a tanfolyamon gyakorlatokat hajtson végre. Részletekért lásd: a [tantermi labor elérése](how-to-use-classroom-lab.md).
 
-## <a name="next-steps"></a>További lépések
-Indítsa el a tesztkörnyezetfiók osztályterem-tesztkörnyezetek létrehozása a cikkben található utasításokat követve: [Oktatóanyag: Az Azure Lab Services tesztkörnyezetfiók beállítása](tutorial-setup-lab-account.md).
+## <a name="next-steps"></a>Következő lépések
+A Lab-fiók létrehozása az osztályterem Labs szolgáltatásban című cikk útmutatását követve megtudhatja, hogyan állíthat be [laboratóriumi fiókot a Azure Lab Services](tutorial-setup-lab-account.md).

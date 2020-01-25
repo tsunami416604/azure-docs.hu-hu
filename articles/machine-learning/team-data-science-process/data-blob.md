@@ -3,28 +3,28 @@ title: Azure Blob-alapú adatfeldolgozás speciális elemzésekkel – csoportos
 description: Az adatok megismerése és szolgáltatások készítése az Azure Blob Storage-ban tárolt adatokból speciális elemzések használatával.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d056226ce8ade93e63d7bca49b975a6983dc126a
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 4c47dfb8b221b6cb4b6237669ecd17c1637107a2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492422"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721098"
 ---
 # <a name="heading"></a>Azure Blob-adatfeldolgozás speciális analitikai szolgáltatásokkal
 Ez a dokumentum az Azure Blob Storage-ban tárolt adatokkal kapcsolatos adatok feltárását és funkcióinak generálását ismerteti. 
 
 ## <a name="load-the-data-into-a-pandas-data-frame"></a>Az adatgyűjtés egy Panda-adatkeretbe
-Az adatkészletek feltárásához és kezeléséhez le kell tölteni a blob-forrásból egy helyi fájlba, amely ezután betölthető egy Panda-adatkeretbe. A következő lépéseket kell követnie ehhez az eljáráshoz:
+Az adatkészletek feltárásához és kezeléséhez le kell tölteni a blob-forrásból egy helyi fájlba, amelyet azután be lehet tölteni egy Panda-adatkeretbe. A következő lépéseket kell követnie ehhez az eljáráshoz:
 
-1. Töltse le az Azure Blob adatait az alábbi Python-kóddal a blob Service használatával. Cserélje le a változót az alábbi kódban az adott értékekre: 
+1. Töltse le az Azure Blob adatait az alábbi Python-kóddal Blob service használatával. Cserélje le a változót az alábbi kódban az adott értékekre: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -131,7 +131,7 @@ A dobozolni funkcióinak generálásához a következő lépések szükségesek:
         dataframe_blobdata_with_bin_bool = dataframe_blobdata.join(dataframe_blobdata_bin_bool)    
 
 ## <a name="sql-featuregen"></a>Az Azure blobba való visszaírás és a Azure Machine Learning
-Az adatok megismerése és a szükséges funkciók létrehozása után feltöltheti az adatok (minta vagy featurized) egy Azure-blobba, és felhasználhatja azokat Azure Machine Learning a következő lépések végrehajtásával: vegye figyelembe, hogy az Azure-gépen további funkciók is létrehozhatók. A Learning Studio (klasszikus) is. 
+Az adatok vizsgálatát és a szükséges funkciók létrehozását követően feltöltheti az adatok (minta vagy featurized) egy Azure-blobba, és felhasználhatja azokat Azure Machine Learning a következő lépések végrehajtásával: további funkciók hozhatók létre a Azure Machine Learning Studio (klasszikus) is. 
 
 1. Az adatkeret írása helyi fájlba
    

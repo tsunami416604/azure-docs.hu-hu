@@ -3,20 +3,20 @@ title: Az adatelemzési funkció az adattudományban – csoportos adatelemzési
 description: Ismerteti a funkció-mérnöki célokat, és példákat tartalmaz a gépi tanulás adatfejlesztési folyamatában betöltött szerepére.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e633c5742b8a7882149a347ced46e55440cb6913
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 02f109f250fa9bcd4c77cecd0b1b3e4514ecd8bc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73492436"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721132"
 ---
 # <a name="feature-engineering-in-data-science"></a>Az adatelemzés funkcióinak mérnöki funkciója
 Ez a cikk ismerteti a funkció-mérnöki célokat, és példákat nyújt a szerepkörére a gépi tanulás adatfejlesztési folyamatában. A folyamat szemléltetésére szolgáló példák a Azure Machine Learning Studioból készülnek. 
@@ -67,14 +67,14 @@ A négy modell teljesítmény-eredményeinek összehasonlítását az alábbi t�
 
 ![eredmény-összehasonlítás](./media/create-features/result1.png)
 
-A legjobb eredményeket a + B + C funkció mutatja be. Vegye figyelembe, hogy a hiba mértéke csökken, ha további szolgáltatáskészlet szerepel a betanítási adatkészletben. Ellenőrzi azt a feltételezést, hogy a B, C beállított funkció további releváns információkat biztosít a regressziós feladathoz. A D funkció hozzáadása azonban úgy tűnik, hogy nem biztosít további csökkentést a hibák arányában.
+A legjobb eredményeket a + B + C funkció mutatja be. A hiba mértéke csökken, ha további szolgáltatáskészlet szerepel a betanítási adatkészletben. Ellenőrzi azt a feltételezést, hogy a B, C beállított funkció további releváns információkat biztosít a regressziós feladathoz. A D funkció hozzáadása azonban úgy tűnik, hogy nem biztosít további csökkentést a hibák arányában.
 
 ## <a name="example2"></a>2. példa: szolgáltatások létrehozása a szöveges adatbányászatban
 A szolgáltatások fejlesztését széles körben alkalmazzák a szöveges adatbányászatgal kapcsolatos feladatokban, például a dokumentumok besorolásával és a hangulat elemzésével. Ha például több kategóriába kívánja minősíteni a dokumentumokat, a rendszer általában feltételezi, hogy az egyik doc kategóriába tartozó szó/kifejezés kisebb valószínűséggel egy másik doc-kategóriában fordul elő. Más szóval a szavak/kifejezések eloszlásának gyakorisága különböző dokumentum-kategóriákat képes jellemezni. A szöveges adatbányászati alkalmazásokban, mivel az egyes szövegrészek tartalma általában bemeneti adatokként szolgál, a szolgáltatás mérnöki folyamata szükséges a szó/kifejezés gyakoriságot érintő funkciók létrehozásához.
 
 Ennek a feladatnak a megvalósításához a rendszer a **szolgáltatás-kivonatolás** nevű technikát alkalmazza, hogy hatékonyan kapcsolja be a tetszőleges szöveges funkciókat az indexekben. Ahelyett, hogy az egyes szöveges funkciókat (szavakat/kifejezéseket) egy adott indexhez társítsa, ez a módszer egy kivonatoló függvényt alkalmaz a funkciókra, és a kivonatok értékeit közvetlenül a következő módon használja.
 
-A Azure Machine Learning-ben egy [szolgáltatás-kivonatolási](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul található, amely kényelmesen létrehozza ezeket a szó/kifejezés funkciókat. Az alábbi ábrán egy példa látható a modul használatára. A bemeneti adatkészlet két oszlopot tartalmaz: a könyv minősítése 1-től 5-ig terjed, és a tényleges felülvizsgálati tartalom. A [szolgáltatás-kivonatolási](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul célja, hogy beolvasson egy olyan új funkciót, amely megjeleníti az adott könyv-ellenőrzésen belüli megfelelő szó (ok)/phrase előfordulási gyakoriságát. A modul használatához hajtsa végre a következő lépéseket:
+Azure Machine Learning-ben egy funkció- [kivonatolási](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul, amely a szó/kifejezés funkciók kényelmes létrehozását hozza létre. Az alábbi ábrán egy példa látható a modul használatára. A bemeneti adatkészlet két oszlopot tartalmaz: a könyv minősítése 1-től 5-ig terjed, és a tényleges felülvizsgálati tartalom. A [szolgáltatás-kivonatolási](https://msdn.microsoft.com/library/azure/c9a82660-2d9c-411d-8122-4d9e0b3ce92a/) modul célja, hogy beolvasson egy olyan új funkciót, amely megjeleníti az adott könyv-ellenőrzésen belüli megfelelő szó (ok)/phrase előfordulási gyakoriságát. A modul használatához hajtsa végre a következő lépéseket:
 
 * Először válassza ki a bemeneti szöveget tartalmazó oszlopot (ebben a példában a "Col2").
 * Másodszor állítsa a "kivonatolási bitsize" a 8-as értékre, ami azt jelenti, hogy 2 ^ 8 = 256 funkció lesz létrehozva. Az összes szövegben szereplő szó/fázis kivonata 256-es indexbe kerül. A "kivonatolási bitsize" paraméter 1 és 31 közötti tartományba esik. A/phrase (ok) kevésbé valószínű, hogy ugyanabba az indexbe kerül, ha nagyobb számra van beállítva.

@@ -3,24 +3,24 @@ title: CI/CD-folyamat létrehozása Azure-adatcsatornákkal – csoportos adatel
 description: Hozzon létre folyamatos integrációs és folyamatos átviteli folyamatot a mesterséges intelligencia (AI) alkalmazások számára a Docker és a Kubernetes használatával.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/06/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=jainr, previous-ms.author=jainr
-ms.openlocfilehash: f07ce8e8834a2804b6a5b7668718c8e6bff00fa6
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: 42433ec419ac9e02077cd0359e18b5114206f27d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260668"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721829"
 ---
 # <a name="create-cicd-pipelines-for-ai-apps-using-azure-pipelines-docker-and-kubernetes"></a>CI/CD-folyamatok létrehozása AI-alkalmazásokhoz az Azure-folyamatok, a Docker és a Kubernetes használatával
 
-A mesterséges intelligencia (AI) alkalmazás olyan alkalmazási kód, amely egy előképzéssel ellátott Machine learning (ML) modellel van beágyazva. Egy AI-alkalmazáshoz mindig két stream működik: Az adatszakértők felépítik az ML modellt, az alkalmazások fejlesztői pedig felépítik az alkalmazást, és teszik elérhetővé a végfelhasználók számára. Ez a cikk azt ismerteti, hogyan valósítható meg egy folyamatos integrációs és folyamatos teljesítési (CI/CD) folyamat egy olyan AI-alkalmazáshoz, amely az ML-modellt az alkalmazás forráskódjában ágyazza be. A mintakód és az oktatóanyag egy egyszerű Python-lombik webalkalmazást használ, és egy saját Azure Blob Storage-fiókból olvassa be az előképzésen alapuló modellt. Egy AWS S3 Storage-fiókot is használhat.
+A mesterséges intelligencia (AI) alkalmazás olyan alkalmazási kód, amely egy előképzéssel ellátott Machine learning (ML) modellel van beágyazva. Egy AI-alkalmazásnak mindig két streamje van: az adatszakértők kiépítik a ML modellt, az alkalmazások fejlesztői pedig felépítik az alkalmazást, és teszik elérhetővé a végfelhasználók számára. Ez a cikk azt ismerteti, hogyan valósítható meg egy folyamatos integrációs és folyamatos teljesítési (CI/CD) folyamat egy olyan AI-alkalmazáshoz, amely az ML-modellt az alkalmazás forráskódjában ágyazza be. A mintakód és az oktatóanyag egy Python-lombik webalkalmazást használ, és egy saját Azure Blob Storage-fiókból beolvassa az előképzésen alapuló modellt. Egy AWS S3 Storage-fiókot is használhat.
 
 > [!NOTE]
 > A következő folyamat a CI/CD-k számos módszerének egyike. Az eszközökre és az előfeltételekre vonatkozó alternatívák is rendelkezésre állnak.
@@ -60,9 +60,9 @@ Az alábbi ábra és lépések a CI/CD folyamat architektúráját írják le:
 10. Az alkalmazásra vonatkozó felhasználói kérések a DNS-kiszolgálón haladnak át.
 11. A DNS-kiszolgáló továbbítja a kéréseket egy terheléselosztó számára, és visszaküldi a válaszokat a felhasználóknak.
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 - [Csoportos adatelemzési folyamat (TDSP)](/azure/machine-learning/team-data-science-process/)
-- [Az Azure Machine Learning (AML)](/azure/machine-learning/)
-- [Az Azure DevOps](https://azure.microsoft.com/services/devops/)
-- [Az Azure Kubernetes-szolgáltatás (AKS)](/azure/aks/intro-kubernetes)
+- [Azure Machine Learning (pénzmosás)](/azure/machine-learning/)
+- [Azure DevOps](https://azure.microsoft.com/services/devops/)
+- [Azure Kubernetes-szolgáltatások (ak)](/azure/aks/intro-kubernetes)

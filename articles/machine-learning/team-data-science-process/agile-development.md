@@ -1,27 +1,27 @@
 ---
-title: Az adatelemzési projektek - csoportos adatelemzési folyamat rugalmas fejlesztés
+title: Adatelemzési projektek gyors fejlesztése – csoportos adatelemzési folyamat
 description: Az adatelemzési projektet a csoportos adatelemzési folyamat segítségével szisztematikus, vezérelt, és együttműködési módon hajthatja végre a projektcsapat keretében.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/05/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 09c5962e62077fbecc9b327320d0bb5b88416ffa
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c097c14406349d973e905fadb806cc159d9b16d8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260681"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722101"
 ---
-# <a name="agile-development-of-data-science-projects"></a>Hatékony adatelemzési projektek fejlesztését
+# <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
 
-Ez a dokumentum ismerteti, hogyan fejlesztők végrehajthat egy a egy szisztematikus adatelemzési projektjéhez, a szabályozott verzió és a egy projektcsapattal remek használatával a [csoportos adatelemzési folyamat](overview.md) (TDSP). A TDSP a Microsoft által kifejlesztett keretrendszer, amely strukturált tevékenységeket biztosít a felhőalapú, prediktív elemzési megoldások hatékony végrehajtásához. Az adatelemzési csapat által a TDSP szabványosított szerepkörök és feladatok áttekintését lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md). 
+Ez a dokumentum azt ismerteti, hogyan futtathatják a fejlesztők az adatelemzési projekteket a [csoportos adatelemzési folyamat](overview.md) (TDSP) használatával, a projekt-csoportokon belüli, szisztematikus, vezérelt és együttműködési módon. A TDSP a Microsoft által kifejlesztett keretrendszer, amely strukturált tevékenységeket biztosít a felhőalapú, prediktív elemzési megoldások hatékony végrehajtásához. Az adatelemzési csapat által a TDSP szabványosított szerepkörök és feladatok áttekintését lásd: [csoportos adatelemzési folyamat szerepkörei és feladatai](roles-tasks.md). 
 
-Ez a cikk útmutatást tartalmazza: 
+Ez a cikk útmutatást nyújt a következőkhöz: 
 
 - A *Sprint* a projektben résztvevő munkaelemeket tervezi.
 - *Munkaelemek* hozzáadása a sprinthez.
@@ -35,13 +35,13 @@ Az alábbi ábra egy adatelemzési projekt tipikus Sprint-tervezését, kódolá
 
 ##  <a name='Terminology-1'></a>Munkaelemek típusai
 
-A TDSP Sprint tervezési keretrendszerében négy gyakran használt *munkaelem* -típus létezik: *Funkciók*, *felhasználói történetek*, *feladatok*és *hibák*. Az összes munkaelem várakozó értéke a projekt szintjén van, nem a git-tárház szintjén. 
+A TDSP Sprint tervezési keretrendszere négy gyakran használt *munkaelem* -típust *tartalmaz: funkciók*, *felhasználói történetek*, *feladatok*és *hibák*. Az összes munkaelem várakozó értéke a projekt szintjén van, nem a git-tárház szintjén. 
 
 Itt láthatók a munkaelem-típusok definíciói:
 
-- **Szolgáltatás**: Egy szolgáltatás a projekt bevonásának felel meg. Az ügyféllel különböző funkciók különböznek egymástól, és érdemes a projekt különböző fázisait különböző Funkciókként figyelembe venni. Ha olyan sémát választ, mint  *\<például a CLIENTNAME\<>-EngagementName >* a szolgáltatások elnevezéséhez, egyszerűen felismerheti a projekt kontextusát, és magától a nevektől is elvégezheti a részvételt.
+- **Funkció**: a szolgáltatás a projekt bevonásának felel meg. Az ügyféllel különböző funkciók különböznek egymástól, és érdemes a projekt különböző fázisait különböző Funkciókként figyelembe venni. Ha olyan sémát választ ki, mint például a *\<ClientName >-\<EngagementName >* a szolgáltatások elnevezéséhez, egyszerűen felismerheti a projekt kontextusát, és maguktól a nevekből is elvégezheti a részvételt.
   
-- **Felhasználói történet**: A felhasználói történetek a funkciók végpontok közötti befejezéséhez szükséges munkaelemek. A felhasználói történetek például a következők:
+- **Felhasználói történet**: a felhasználói történetek olyan munkaelemek, amelyek a funkciók végpontok közötti befejezéséhez szükségesek. A felhasználói történetek például a következők:
   - Adatok lekérése 
   - Adatok megismerése 
   - Szolgáltatások előállítása
@@ -49,11 +49,11 @@ Itt láthatók a munkaelem-típusok definíciói:
   - Modellek üzembe helyezése 
   - Modellek újratanítása
   
-- **Feladat**: A feladatok olyan hozzárendelhető munkaelemek, amelyeket egy adott felhasználói történet végrehajtásához kell elvégezni. Például a felhasználói történetnek az *adatok lekérése* :
+- **Feladat**: a feladatok olyan hozzárendelhető munkaelemek, amelyeket egy adott felhasználói történet végrehajtásához kell elvégezni. Például a felhasználói történetnek az *adatok lekérése* :
   - SQL Server hitelesítő adatok beolvasása
   - Adatok feltöltése a SQL Data Warehouseba
   
-- **Hiba**: A hibák olyan meglévő kódok vagy dokumentumok hibái, amelyeket a feladatok elvégzéséhez javítani kell. Ha a hibákat a hiányzó munkaelemek okozzák, a felhasználók megadhatják, hogy felhasználói történetek vagy feladatok legyenek. 
+- **Hiba**: a hibák olyan meglévő kódok vagy dokumentumok hibái, amelyeket a feladatok elvégzéséhez javítani kell. Ha a hibákat a hiányzó munkaelemek okozzák, a felhasználók megadhatják, hogy felhasználói történetek vagy feladatok legyenek. 
 
 Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonnal, amely felváltja a funkciók, a felhasználói történetek és a TDSP életciklus-szakaszait és alszakaszait használó feladatokat. A TDSP életciklus szakaszait kifejezetten összehangoló, agilisan származtatott sablon létrehozásával kapcsolatban lásd: [agilis TDSP munkahelyi sablon használata](#set-up-agile-dsp-6).
 
@@ -62,7 +62,7 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
 
 ## <a name='SprintPlanning-2'></a>A Sprint tervezése
 
-Számos adattudós több projekthez is felhasználható, amely hónapokig eltarthat, és különböző ütemekben végezhető el. Sprint tervezési hasznos projekt rangsorolási, és az erőforrás-tervezés és lefoglalás. Az Azure-táblákban egyszerűen létrehozhatja, kezelheti és nyomon követheti a projektek munkaelemeit, és a Sprint tervezésével biztosíthatja, hogy a projektek a várt módon haladnak előre.
+Számos adattudós több projekthez is felhasználható, amely hónapokig eltarthat, és különböző ütemekben végezhető el. A Sprint tervezése hasznos a projektek rangsorolásához, valamint az erőforrások tervezéséhez és kiosztásához. Az Azure-táblákban egyszerűen létrehozhatja, kezelheti és nyomon követheti a projektek munkaelemeit, és a Sprint tervezésével biztosíthatja, hogy a projektek a várt módon haladnak előre.
 
 A Sprint tervezésével kapcsolatos további információkért lásd: [dulakodás Sprint](https://en.wikipedia.org/wiki/Scrum_(software_development)#Sprint). 
 
@@ -72,7 +72,7 @@ Az Azure-táblák Sprint-tervezésével kapcsolatos további információkért l
 
 A projekt és a projekt kódjának tárházának létrehozása után hozzáadhat egy funkciót a várakozó fájlok számára a projekt munkájának ábrázolásához.
 
-1. A projekt lapon válassza a bal oldali navigációs**sávon a** **táblákat** > . 
+1. A projekt lapon válassza ki a bal oldali navigációs sávon > a **várakozó** **táblákat** . 
    
 1. A **várakozó** fájlok lapon, ha a felső sávban a munkaelem típusa a **történetek**, a legördülő menüben válassza a **funkciók**lehetőséget. Ezután válassza az **új munkaelem lehetőséget.**
    
@@ -86,17 +86,17 @@ A projekt és a projekt kódjának tárházának létrehozása után hozzáadhat
    
    A funkció a projekt Azure Repos-kódjának tárházához is összekapcsolható a **fejlesztési** szakasz **hivatkozás hozzáadása** lehetőségével. 
    
-   A szolgáltatás szerkesztésének befejezése után válassza a **mentés & Bezárás**lehetőséget.
+   A szolgáltatás szerkesztése után válassza a **mentés & Bezárás**lehetőséget.
    
    ![Szerkessze a funkciót, és válassza a mentés & Bezárás lehetőséget.](./media/agile-development/3a-add-link-repo.png)
 
 ## <a name='AddStoryunderfeature-4'></a>Felhasználói történet hozzáadása a szolgáltatáshoz 
 
-A szolgáltatás alatt felhasználói történeteket adhat hozzá a projekt befejezéséhez szükséges fő lépések leírásához. 
+A szolgáltatás alatt felhasználói történeteket adhat hozzá a projekt végrehajtásához szükséges fő lépések leírásához. 
 
 Új felhasználói történet hozzáadása egy szolgáltatáshoz:
 
-1. A **várakozó** fájlok lapon válassza a **+** szolgáltatástól balra található elemet. 
+1. A **várakozó** fájlok lapon válassza ki a szolgáltatástól balra **+** . 
    
    ![Új felhasználói történet hozzáadása a funkció alatt](./media/agile-development/4-sprint-add-story.png)
    
@@ -112,7 +112,7 @@ A szolgáltatás alatt felhasználói történeteket adhat hozzá a projekt befe
 
 A feladatok az egyes felhasználói történetek végrehajtásához szükséges részletes lépések. Egy felhasználói történet összes feladatának befejezése után a felhasználói történetet is el kell végezni. 
 
-Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, jelölje **+** be a felhasználói szövegegység elem melletti gombot, és válassza a **feladat**elemet. Adja meg a címet és az egyéb információkat a feladatban.
+Ha feladatot szeretne felvenni egy felhasználói szövegegységbe, válassza ki a **+** a felhasználói szövegegység elem mellett, és válassza a **feladat**elemet. Adja meg a címet és az egyéb információkat a feladatban.
 
 ![Feladat hozzáadása egy felhasználói történethez](./media/agile-development/7-sprint-add-task.png)
 
@@ -158,7 +158,7 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
    
 1. Kövesse ugyanezen lépéseket a **szolgáltatások** *TDSP szakaszokra*való átnevezéséhez, és adja hozzá a következő új munkaelem-típusokat:
    
-   - *Az üzleti igények felmérése*
+   - *Üzleti ismeretek*
    - *Adatgyűjtés*
    - *Modellezés*
    - *Üzembe helyezés*
@@ -183,7 +183,7 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
    
    ![TDSP-projekt létrehozása](./media/agile-development/15-newproject.png)
    
-1. Az újonnan létrehozott projektben válassza a bal oldali navigációs**sávon a** **táblákat** > .
+1. Az újonnan létrehozott projektben válassza ki a bal oldali navigációs sávon > a **várakozó** **lapokat** .
    
 1. A TDSP-projektek láthatóvá tételéhez válassza a **csoport beállításainak konfigurálása** ikont. A **Beállítások** képernyőn jelölje be a **TDSP-projektek** jelölőnégyzetet, majd kattintson a **Mentés és bezárás**gombra.
    
@@ -195,20 +195,20 @@ Az adatelemzési folyamat sablonja segítségével TDSP-projekteket hozhat létr
    
    ![Adatelemzési projekt munkaelemének létrehozása](./media/agile-development/17-dsworkitems0.png)
    
-1. Ha munkaelemet szeretne felvenni a TDSP projekt alá, **+** válassza ki a projekt melletti elemet, majd válassza ki a létrehozandó munkaelem típusát. 
+1. Ha a TDSP projektben munkaelemet szeretne felvenni, válassza ki a projekt melletti **+** , majd válassza ki a létrehozandó munkaelem típusát. 
    
    ![Adatelemzési munkaelem típusának kiválasztása](./media/agile-development/17-dsworkitems1.png)
    
 1. Adja meg a részleteket az új munkaelemben, majd válassza a **mentés & Bezárás**lehetőséget.
    
-1. Folytassa a **+** munkaelemek melletti szimbólumok kijelölésével új TDSP szakaszok, alszakaszok és feladatok hozzáadásához. 
+1. Továbbra is válassza ki a munkaelemek melletti **+** szimbólumokat új TDSP szakaszok, alszakaszok és feladatok hozzáadásához. 
    
 Íme egy példa arra, hogy az adatelemzési projekt munkaelemei megjelenjenek a **várakozó** fájlok nézetben:
 
 ![18](./media/agile-development/18-workitems1.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [git együttműködésen alapuló kódolása](collaborative-coding-with-git.md) leírja, hogyan lehet az adatelemzési projektek együttműködési programkódjának fejlesztését használni a git-t a közös programkód fejlesztési keretrendszereként, és hogyan kapcsolhatja össze ezeket a kódolási tevékenységeket az agilis folyamattal tervezett munkavégzéshez.
 

@@ -8,15 +8,15 @@ editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 1/04/2020
+ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 124fe4f69396286dbe383f8823a36b4ba52d346c
-ms.sourcegitcommit: 2c59a05cb3975bede8134bc23e27db5e1f4eaa45
+ms.openlocfilehash: e9d98f03b2c97245517e3fbb6d7dc7624cfb724d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/05/2020
-ms.locfileid: "75665069"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721387"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
 
@@ -36,11 +36,11 @@ A TDSP a következő fő összetevőkből áll:
 
 ## <a name="data-science-lifecycle"></a>Adatelemzési életciklus
 
-A csoportos adatelemzési folyamat (TDSP) életciklust biztosít az adatelemzési projektek fejlesztésének struktúrájához. Az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek.
+A csoportos adatelemzési folyamat (TDSP) életciklust biztosít az adatelemzési projektek fejlesztésének struktúrájához. Az életciklus a sikeres projektek követésének teljes lépéseit ismerteti.
 
 Ha más adatelemzési életciklust használ, például a [ropogós DM-](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining)t, a [KDD](https://wikipedia.org/wiki/Data_mining#Process) -t vagy a szervezet saját egyéni folyamatát, akkor továbbra is használhatja a feladat-alapú TDSP a fejlesztési életciklusok kontextusában. Ezek a különböző módszertanok nagy mértékben közösek. 
 
-Ez az életciklus olyan adatelemzési projektekhez lett tervezve, amelyek intelligens alkalmazások részeként szállítanak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia-modelleket helyeznek üzembe a prediktív elemzésekhez. A feltáró adatelemzési projektek vagy alkalmi elemzési projektek is hasznosak lehetnek ennek a folyamatnak a használatával. Ilyen esetekben azonban előfordulhat, hogy az ismertetett lépések némelyike nem szükséges.    
+Ez az életciklus olyan adatelemzési projektekhez lett tervezve, amelyek intelligens alkalmazások részeként szállítanak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia-modelleket helyeznek üzembe a prediktív elemzésekhez. A feltáró adatelemzési projektek vagy az improvizált elemzési projektek is hasznosak lehetnek ennek a folyamatnak a használatával. Ilyen esetekben azonban előfordulhat, hogy az ismertetett lépések némelyike nem szükséges.    
 
 Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
 
@@ -57,7 +57,7 @@ Itt látható a **csoportos adatelemzési folyamat életciklusának**vizuális �
 A TDSP-életciklus egyes szakaszaihoz tartozó célok, feladatok és dokumentációs összetevők leírása a [csoportos adatelemzési folyamat életciklusa](lifecycle.md) című témakörben található. Ezek a feladatok és összetevők a projekt szerepköreihez vannak társítva:
 
 - Megoldás-építész
-- Projektvezető
+- Projektmenedzser
 - Adatelemző
 - Projektvezető 
 
@@ -69,7 +69,7 @@ Az alábbi ábrán láthatók a (kék) és az összetevők (a vízszintes tengel
 
 Ha minden projekt megoszt egy címtár-struktúrát, és a Project-dokumentumokhoz sablonokat használ, a csapattagok számára megkönnyíti a projektekkel kapcsolatos információk megtalálását. Minden kód és dokumentum egy verziókövető rendszer (VCS), például a git, a TFS vagy a Subversion használatával van tárolva a csapat együttműködésének engedélyezéséhez. A feladatok és funkciók nyomon követése egy agilis projekt-követési rendszeren, például a JIRA, a rally és az Azure DevOps segítségével az egyes funkciókhoz tartozó kódok szorosabb nyomon követését teszik lehetővé. Az ilyen nyomon követés lehetővé teszi a csapatok számára a jobb költségbecslés megszerzését is. A TDSP javasolja, hogy külön tárházat hozzon létre a VCS minden projekthez a verziószámozás, az információbiztonság és az együttműködés érdekében. Az összes projekt szabványosított szerkezete segíti a szervezeten belüli intézményi ismeretek kiépítését.
 
-A mappák felépítéséhez és a szükséges dokumentumokhoz a standard szintű helyen biztosítunk sablonokat. Ez a mappastruktúrát rendszerezi az adatelemzési és-szolgáltatás-kinyerési kódot tartalmazó fájlokat, és rögzíti a modellre vonatkozó iterációkat. Ezek a sablonok megkönnyítik a csapattagok számára a mások által végzett munka megértését, és új tagok hozzáadását a csapatokhoz. A dokumentumok sablonját egyszerűen megtekintheti és frissítheti Markdown formátumban. A sablonok segítségével az egyes projektek legfontosabb kérdéseivel biztosíthat feladatlistákat, hogy a probléma megfelelően legyen meghatározva, és hogy a termékek megfeleljenek a várt minőségnek. Példák:
+A mappák felépítéséhez és a szükséges dokumentumokhoz a standard szintű helyen biztosítunk sablonokat. Ez a mappastruktúrát rendszerezi az adatelemzési és-szolgáltatás-kinyerési kódot tartalmazó fájlokat, és rögzíti a modellre vonatkozó iterációkat. Ezek a sablonok megkönnyítik a csapattagok számára a mások által végzett munka megértését, és új tagok hozzáadását a csapatokhoz. A dokumentumok sablonját egyszerűen megtekintheti és frissítheti Markdown formátumban. A sablonok segítségével az egyes projektek legfontosabb kérdéseivel biztosíthatók a feladatlisták, így biztosítható, hogy a probléma megfelelően legyen meghatározva, és hogy a termékek megfeleljenek a várt minőségnek. Példák:
 
 - az üzleti problémát és a projekt hatókörét dokumentáló projekt Charta
 - adatjelentések a nyers adatok szerkezetének és statisztikai adatainak dokumentálására
@@ -90,7 +90,7 @@ A TDSP ajánlásokat nyújt a megosztott elemzési és tárolási infrastruktúr
 - big data (Hadoop vagy Spark) fürtök 
 - Machine learning-szolgáltatás 
 
-Az elemzési és tárolási infrastruktúra lehet a felhőben vagy a helyszínen. Itt tárolódnak a nyers és a feldolgozott adatkészletek. Ez az infrastruktúra lehetővé teszi a reprodukálható elemzést. Emellett elkerüli az ismétlődést, ami inkonzisztenciát és szükségtelen infrastrukturális költségeket eredményezhet. Eszközöket biztosítanak a megosztott erőforrások kiépítéséhez, nyomon követéséhez, valamint az egyes csapattagok biztonságos elérésének engedélyezéséhez. Azt is érdemes elkészíteni, hogy a projekt tagjai konzisztens számítási környezetet hozzanak létre. A csapattagok ezután képesek replikálni és érvényesíteni a kísérleteket.
+Az elemzési és tárolási infrastruktúrát, ahol a nyers és a feldolgozott adatkészletek tárolva vannak, a felhőben vagy a helyszínen lehet. Ez az infrastruktúra lehetővé teszi a reprodukálható elemzést. Emellett elkerüli az ismétlődést, ami inkonzisztenciát és szükségtelen infrastrukturális költségeket eredményezhet. Eszközöket biztosítanak a megosztott erőforrások kiépítéséhez, nyomon követéséhez, valamint az egyes csapattagok biztonságos elérésének engedélyezéséhez. Azt is érdemes elkészíteni, hogy a projekt tagjai konzisztens számítási környezetet hozzanak létre. A csapattagok ezután képesek replikálni és érvényesíteni a kísérleteket.
 
 Íme egy példa arra, hogy egy csapat több projekten dolgozik, és különböző felhőalapú elemzési infrastruktúra-összetevőket oszt meg.
 

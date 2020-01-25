@@ -4,15 +4,15 @@ description: Ismerkedjen meg a bevezető hálózati forgalommal, valamint a hál
 author: ccompy
 ms.assetid: 955a4d84-94ca-418d-aa79-b57a5eb8cb85
 ms.topic: article
-ms.date: 05/31/2019
+ms.date: 01/24/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 3b16d7cbba63be9f50b0d186b2162a5755b76802
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: fb931c309b5f85902d8abc9cc6da45576bff4041
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75375015"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713196"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Hálózatkezelési megfontolások App Service Environment #
 
@@ -88,7 +88,7 @@ A beadás a következő portokon keresztül kommunikál az internettel elérhet�
 |-----|------|
 | DNS | 53 |
 | NTP | 123 |
-| 8CRL, Windows-frissítések, Linux-függőségek, Azure-szolgáltatások | 80/443 |
+| CRL, Windows-frissítések, Linux-függőségek, Azure-szolgáltatások | 80/443 |
 | Azure SQL | 1433 | 
 | Monitoring | 12000 |
 
@@ -108,9 +108,9 @@ Ha megváltoztatja a VNet DNS-beállítását, akkor újra kell indítania a szo
 
 A központilag működő működési függőségek mellett a portál felületének néhány további eleme is van. A Azure Portal egyes képességei az _SCM-helyhez_való közvetlen hozzáféréstől függenek. Azure App Service minden alkalmazásához két URL van. Az első URL-cím az alkalmazás elérésére szolgál. A második URL-cím az SCM-hely elérésére szolgál, amely más néven a _kudu-konzol_. Az SCM-helyet használó szolgáltatások a következők:
 
--   WebJobs
+-   Webes feladatok
 -   Functions
--   Naplóstreamelés
+-   Naplózási adatfolyam
 -   Kudu
 -   Bővítmények
 -   Process Explorer

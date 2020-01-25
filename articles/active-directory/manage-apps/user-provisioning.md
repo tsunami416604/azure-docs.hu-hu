@@ -15,16 +15,16 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d515731b8da186ef7e44a397d5abf87dfa65e83a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433796"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711476"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>A felhasználók kiépítésének automatizálása és az alkalmazásokkal való kiépítés Azure Active Directory
 
-Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](https://docs.microsoft.com/azure/active-directory/saas-apps/dropboxforbusiness-provisioning-tutorial), a [Salesforce](https://docs.microsoft.com/azure/active-directory/saas-apps/salesforce-provisioning-tutorial), a [ServiceNow](https://docs.microsoft.com/azure/active-directory/saas-apps/servicenow-provisioning-tutorial)és még sok más.
+Azure Active Directory (Azure AD) esetében az **alkalmazás üzembe** helyezésének kifejezése arra a felhasználói identitások és szerepkörök automatikus létrehozására utal, amelyekhez[](https://azure.microsoft.com/overview/what-is-saas/)a felhasználóknak hozzá kell férniük. A felhasználói identitások létrehozása mellett az automatikus kiépítés a felhasználói identitások karbantartását és eltávolítását is magában foglalja az állapot vagy a szerepkörök módosításakor. Gyakori forgatókönyvek például az Azure AD-felhasználók üzembe helyezése olyan alkalmazásokban, mint a [Dropbox](../saas-apps/dropboxforbusiness-provisioning-tutorial.md), a [Salesforce](../saas-apps/salesforce-provisioning-tutorial.md), a [ServiceNow](../saas-apps/servicenow-provisioning-tutorial.md)és még sok más.
 
 ![Kiépítés – áttekintés diagram](media/user-provisioning/provisioning-overview.png)
 
@@ -63,7 +63,7 @@ Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer e
 
    ![Salesforce embléma](media/user-provisioning/gallery-app-logos.png)
 
-   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](https://docs.microsoft.com/azure/active-directory/develop/howto-app-gallery-listing)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
+   Ha új alkalmazást szeretne igényelni az üzembe helyezéshez, [kérheti, hogy az alkalmazás integrálva legyen](../develop/howto-app-gallery-listing.md)az alkalmazás-galériával. A felhasználó kiépítési kérelméhez az alkalmazásnak SCIM-kompatibilis végponttal kell rendelkeznie. Kérje meg, hogy az alkalmazás gyártója kövesse a SCIM standardot, így gyorsan üzembe helyezhetjük az alkalmazást a platformon.
 
 * **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 
@@ -81,7 +81,7 @@ Az Azure AD-katalógusban található alkalmazások támogatják a két üzembe 
 
 * A **manuális** kiépítés azt jelenti, hogy még nincs automatikus Azure ad-létesítési összekötő az alkalmazáshoz. A felhasználói fiókokat manuálisan kell létrehozni, például a felhasználókat közvetlenül az alkalmazás felügyeleti portálján, vagy a felhasználói fiók részleteit tartalmazó számolótábla feltöltésével. Tekintse át az alkalmazás által biztosított dokumentációt, vagy lépjen kapcsolatba az alkalmazás fejlesztővel, és határozza meg, hogy milyen mechanizmusok érhetők el.
 
-* Az **automatikus** beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Kövesse az alkalmazás üzembe helyezésének beállítására vonatkozó telepítési oktatóanyagot. Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagban](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)találhatók.
+* Az **automatikus** beállítás azt jelenti, hogy az alkalmazáshoz egy Azure ad-létesítési összekötő lett kifejlesztve. Kövesse az alkalmazás üzembe helyezésének beállítására vonatkozó telepítési oktatóanyagot. Az alkalmazás-oktatóanyagok az [SaaS-alkalmazások Azure Active Directory használatával történő integrálását ismertető oktatóanyagban](../saas-apps/tutorial-list.md)találhatók.
 
 Az Azure AD-katalógusban az automatikus kiépítés támogatására szolgáló alkalmazásokat **kiépítési** ikon jelöli. Váltson az új katalógus előzetes verziójára, és tekintse meg ezeket az ikonokat (az **alkalmazás hozzáadása lap**tetején található szalagcímben, majd válassza ki azt a hivatkozást, amely az **új és továbbfejlesztett alkalmazás-gyűjtemény kipróbálásához kattintson ide**).
 
@@ -91,7 +91,7 @@ Az alkalmazás által támogatott kiépítési mód a **kiépítés** lapon is l
 
 ## <a name="how-do-i-set-up-automatic-provisioning-to-an-application"></a>Hogyan automatikus kiépítés beállítása egy alkalmazáshoz?
 
-A katalógusban felsorolt előre integrált alkalmazások esetében az automatikus kiépítés beállításához lépésenkénti útmutató áll rendelkezésre. Tekintse [meg az integrált katalógus-alkalmazásokhoz tartozó oktatóanyagok listáját](https://docs.microsoft.com/azure/active-directory/saas-apps/). A következő videó bemutatja, hogyan állíthatja be az automatikus felhasználó-kiépítés SalesForce.
+A katalógusban felsorolt előre integrált alkalmazások esetében az automatikus kiépítés beállításához lépésenkénti útmutató áll rendelkezésre. Tekintse [meg az integrált katalógus-alkalmazásokhoz tartozó oktatóanyagok listáját](../saas-apps/tutorial-list.md). A következő videó bemutatja, hogyan állíthatja be az automatikus felhasználó-kiépítés SalesForce.
 
 > [!VIDEO https://www.youtube.com/embed/pKzyts6kfrw]
 

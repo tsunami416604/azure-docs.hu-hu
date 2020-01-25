@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 12/10/2019
 ms.author: chmutali
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d5a40b699c01f50ceb1bedbc36e7f1467772336f
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: c0664cbc8097f18ec9722e789ad40d5925781637
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74997071"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711656"
 ---
 # <a name="skip-deletion-of-user-accounts-that-go-out-of-scope"></a>A hatókörön kívüli felhasználói fiókok törlésének kihagyása
 
@@ -37,14 +37,14 @@ Mivel ezt a konfigurációt széles körben használják a *Munkanapokon Active 
 1. Indítsa el a [Azure Portal](https://portal.azure.com), és navigáljon a kiépítési alkalmazás tulajdonságok szakaszába. Például ha a *munkanapokat az ad-felhasználók kiépítési alkalmazás-* hozzárendeléséhez szeretné exportálni, navigáljon az alkalmazás tulajdonságok szakaszába. 
 1. A kiépítési alkalmazás tulajdonságok szakaszában másolja az *objektumazonosító* mezőhöz társított GUID értéket. Ezt az értéket az alkalmazás **ServicePrincipalId** is nevezik, és a Graph Explorer műveleteiben fogja használni.
 
-   ![Munkanapok App Service résztvevő azonosítója](./media/export-import-provisioning-mappings/wd_export_01.png)
+   ![Munkanapok App Service résztvevő azonosítója](media/skip-out-of-scope-deletions/wd_export_01.png)
 
 ## <a name="step-2-sign-into-microsoft-graph-explorer"></a>2\. lépés: bejelentkezés Microsoft Graph Explorerbe
 
 1. [Microsoft Graph Explorer](https://developer.microsoft.com/graph/graph-explorer) elindítása
 1. Kattintson a "Bejelentkezés Microsofttal" gombra, és jelentkezzen be az Azure AD globális rendszergazdai vagy az alkalmazás-rendszergazdai hitelesítő adataival.
 
-    ![Gráf bejelentkezés](./media/export-import-provisioning-mappings/wd_export_02.png)
+    ![Gráf bejelentkezés](media/skip-out-of-scope-deletions/wd_export_02.png)
 
 1. A sikeres bejelentkezés után a bal oldali ablaktáblán megjelenik a felhasználói fiók adatai.
 
@@ -56,11 +56,11 @@ A Microsoft Graph Explorerben futtassa a következő GET lekérdezést a [servic
    GET https://graph.microsoft.com/beta/servicePrincipals/[servicePrincipalId]/synchronization/secrets
 ```
 
-   ![Feladatok lekérdezésének beolvasása](./media/skip-out-of-scope-deletions/skip-03.png)
+   ![Feladatok lekérdezésének beolvasása](media/skip-out-of-scope-deletions/skip-03.png)
 
 Másolja a választ egy szövegfájlba. Az alábbi JSON-szöveghez hasonlóan fog kinézni, amely az üzembe helyezéshez tartozó sárga színnel van kiemelve. Adja hozzá a zöld színnel jelölt vonalakat a végponthoz, és frissítse a munkanapokhoz való kapcsolódási jelszót kék színnel. 
 
-   ![Válasz beolvasása](./media/skip-out-of-scope-deletions/skip-04.png)
+   ![Válasz beolvasása](media/skip-out-of-scope-deletions/skip-04.png)
 
 Itt látható a leképezéshez hozzáadandó JSON-blokk. 
 
@@ -82,22 +82,22 @@ Az alábbi URL-címben cserélje le a [servicePrincipalId] elemet az [1. lépés
 ```
 Másolja a 3. lépésben szereplő frissített szöveget a "kérés törzse" értékre, és állítsa be a "Content-Type" fejlécet "Application/JSON" értékre a "kérések fejléce" kifejezésben. 
 
-   ![PUT kérelem](./media/skip-out-of-scope-deletions/skip-05.png)
+   ![PUT kérelem](media/skip-out-of-scope-deletions/skip-05.png)
 
 Kattintson a "lekérdezés futtatása" gombra. 
 
 A kimenetet "sikeres – állapotkód 204" értékre kell beolvasni. 
 
-   ![Válasz elhelyezése](./media/skip-out-of-scope-deletions/skip-06.png)
+   ![Válasz elhelyezése](media/skip-out-of-scope-deletions/skip-06.png)
 
 ## <a name="step-5-verify-that-out-of-scope-users-dont-get-disabled"></a>5\. lépés: annak ellenőrzése, hogy a hatókörön kívüli felhasználók ne legyenek letiltva
 
 Ezt a jelzőt tesztelheti a várt viselkedés alapján, ha frissíti a hatóköri szabályokat egy adott felhasználó kihagyásához. Az alábbi példában egy új hatókör-szabály hozzáadásával kizárja a 21173-as AZONOSÍTÓJÚ alkalmazottat (aki korábban a hatókörben volt): 
 
-   ![Hatókör – példa](./media/skip-out-of-scope-deletions/skip-07.png)
+   ![Hatókör – példa](media/skip-out-of-scope-deletions/skip-07.png)
 
 A következő üzembe helyezési ciklusban az Azure AD kiépítési szolgáltatás megállapítja, hogy a 21173-es felhasználó kikerült a hatókörből, és ha a SkipOutOfScopeDeletions tulajdonság engedélyezve van, akkor az adott felhasználó szinkronizálási szabálya az alábbi képen látható üzenetet jeleníti meg: 
 
-   ![Hatókör – példa](./media/skip-out-of-scope-deletions/skip-08.png)
+   ![Hatókör – példa](media/skip-out-of-scope-deletions/skip-08.png)
 
 

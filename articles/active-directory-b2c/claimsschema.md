@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 1a26d6228fd2d0383f22d4f286cc84e263facfe6
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 1e72e100bcb3d06403af1514dea13de59c623310
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "70999105"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713072"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -42,39 +42,39 @@ A **ClaimsSchema** elem határozza meg azokat a jogcímeket, amelyeket a szabál
 
 A **claimType** elem a következő attribútumot tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Id | Igen | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
+| Azonosító | Igen | A jogcím típusához használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
 
 A **claimType** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| DisplayName | 0:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték honosítható [](localization.md). |
+| displayName | 0:1 | A különböző képernyőkön lévő felhasználók számára megjelenő cím. Az érték [honosítható](localization.md). |
 | Adattípus | 0:1 | A jogcím típusa. A logikai, dátum, dateTime, int, Long, string, StringCollection stb és alternativeSecurityIdCollection adattípusok használhatók. |
 | DefaultPartnerClaimTypes | 0:1 | A partner alapértelmezett jogcím-típusai, amelyeket egy adott protokollhoz kell használni. Az érték felülírható a **InputClaim** vagy a **OutputClaim** elemekben megadott **PartnerClaimType** . Ezzel az elemmel adhatja meg egy protokoll alapértelmezett nevét.  |
 | Maszk | 0:1 | A jogcímek megjelenítésekor alkalmazható maszkolási karakterek nem kötelező karakterlánca. Például a 324-232-4343-as telefonszám a XXX-XXX-4343 lehet. |
-| UserHelpText | 0:1 | A jogcím típusának leírása, amely hasznos lehet a felhasználók számára, hogy megértsék a célját. Az érték honosítható [](localization.md). |
+| UserHelpText | 0:1 | A jogcím típusának leírása, amely hasznos lehet a felhasználók számára, hogy megértsék a célját. Az érték [honosítható](localization.md). |
 | UserInputType | 0:1 | A felhasználó számára elérhető bemeneti vezérlő típusa, amikor manuálisan adja meg a jogcím-adatokat a jogcím típusához. Tekintse meg az ezen a lapon később definiált felhasználói beviteli típusokat. |
-| Korlátozás | 0:1 | A jogcím korlátozásai, például reguláris kifejezés (regex) vagy elfogadható értékek listája. Az érték honosítható [](localization.md). |
-PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mutató hivatkozás. A **PredicateValidationReference** elemek lehetővé teszik egy ellenőrzési folyamat elvégzését annak érdekében, hogy csak a megfelelően formázott adatok legyenek megadva. További információ: predikátumok [](predicates.md). |
+| Korlátozás | 0:1 | A jogcím korlátozásai, például reguláris kifejezés (regex) vagy elfogadható értékek listája. Az érték [honosítható](localization.md). |
+PredicateValidationReference| 0:1 | Egy **PredicateValidationsInput** elemre mutató hivatkozás. A **PredicateValidationReference** elemek lehetővé teszik egy ellenőrzési folyamat elvégzését annak érdekében, hogy csak a megfelelően formázott adatok legyenek megadva. További információ: [predikátumok](predicates.md). |
 
 ### <a name="defaultpartnerclaimtypes"></a>DefaultPartnerClaimTypes
 
 A **DefaultPartnerClaimTypes** a következő elemet tartalmazhatja:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Protocol | 0: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
+| Protocol (Protokoll) | 0: n | A protokollok listája az alapértelmezett partneri jogcím típusának nevével. |
 
 A **protokoll** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Name (Név) | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. Lehetséges értékek a következők:  OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
+| Név | Igen | A Azure AD B2C által támogatott érvényes protokoll neve. A lehetséges értékek a következők: OAuth1, OAuth2, egy SAML2, OpenIdConnect. |
 | PartnerClaimType | Igen | A használni kívánt jogcím-típus neve. |
 
-A következő példában, amikor az Identity Experience Framework egy egy saml2-identitás szolgáltatóval vagy egy függő entitás alkalmazásával kommunikál **, a OpenIdConnect** és a OAuth2 `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname` `family_name` -mel leképezi a jogcímet. .
+A következő példában, amikor az identitás-keretrendszer egy egy SAML2-identitás szolgáltatóval vagy függő entitással működik együtt, a **vezetéknév** `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`ra van leképezve, és a OpenIdConnect és a OAuth2 a jogcímek `family_name`re vannak leképezve.
 
 ```XML
 <ClaimType Id="surname">
@@ -88,7 +88,7 @@ A következő példában, amikor az Identity Experience Framework egy egy saml2-
 </ClaimType>
 ```
 
-Ennek eredményeképpen a Azure ad B2C által kiállított JWT-jogkivonat a claimType neve `family_name` helyett kibocsátjaa nevet.
+Ennek eredményeképpen a Azure AD B2C által kiállított JWT-jogkivonat **a nevet a**claimType neve helyett a `family_name` bocsátja ki.
 
 ```JSON
 {
@@ -104,10 +104,10 @@ Ennek eredményeképpen a Azure ad B2C által kiállított JWT-jogkivonat a clai
 
 A **maszk** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. Az `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszk van alkalmazva egy karakterlánc-jogcím vezető részére. Az `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha az `Regex` érték meg van adva, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
-| `Regex` | Nem | Ha **`Type`** a értéke `Regex`, akkor adja meg a használni kívánt reguláris kifejezést.
+| `Type` | Igen | A jogcím maszkjának típusa Lehetséges értékek: `Simple` vagy `Regex`. A `Simple` érték azt jelzi, hogy egy egyszerű szöveges maszkot alkalmaz a rendszer egy karakterlánc-jogcím vezető részére. A `Regex` érték azt jelzi, hogy egy reguláris kifejezés lesz alkalmazva a karakterlánc-jogcímek egészére.  Ha meg van adva a `Regex` értéke, egy opcionális attribútumot is meg kell adni a használni kívánt reguláris kifejezéssel. |
+| `Regex` | Nem | Ha **`Type`** `Regex`re van beállítva, adja meg a használni kívánt reguláris kifejezést.
 
 A következő példa egy **telefonszám** jogcímet konfigurál a `Simple` maszkkal:
 
@@ -144,28 +144,28 @@ Az Identity Experience Framework csak az e-mail-cím és az e-mail tartományné
 
 A **korlátozási** elem a következő attribútumot is tartalmazhatja:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`, vagy `ReplaceAll`. Az `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. Az `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. Az `ReplaceAll` érték a szülő házirendben megadott, figyelmen kívül hagyott adatgyűjtemény. |
+| MergeBehavior | Nem | Az enumerálási értékek ClaimType való egyesítésére szolgáló metódus ugyanazzal az azonosítóval rendelkező szülő házirendben. Ezt az attribútumot akkor használja, ha felülírja az alapházirendben megadott jogcímet. Lehetséges értékek: `Append`, `Prepend`vagy `ReplaceAll`. A `Append` érték olyan adatgyűjtemény, amelyet a fölérendelt házirendben megadott gyűjtemény végéhez kell hozzáfűzni. A `Prepend` érték olyan adatgyűjtemény, amelyet hozzá kell adni a szülő házirendben megadott gyűjtemény előtt. A `ReplaceAll` érték a szülő házirendben megadott adatgyűjtemény, amelyet figyelmen kívül kell hagyni. |
 
 A **korlátozási** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Enumerálás | 1: n | A felhasználó felhasználói felületének elérhető beállításai, amelyek kiválaszthatják a jogcímek, például a legördülő lista értékét. |
-| Pattern | 1:1 | A használandó reguláris kifejezés. |
+| Mintázat | 1:1 | A használandó reguláris kifejezés. |
 
 ### <a name="enumeration"></a>Enumerálás
 
 A **számbavételi** elem a következő attribútumokat tartalmazza:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| Text | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
-|Value | Igen | A beállítás kiválasztásához társított jogcím értéke. |
-| SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: IGAZ vagy hamis. |
+| Szöveg | Igen | Az ehhez a beállításhoz tartozó felhasználói felületen megjelenített megjelenítési karakterlánc. |
+|Value (Díj) | Igen | A beállítás kiválasztásához társított jogcím értéke. |
+| SelectByDefault | Nem | Azt jelzi, hogy ez a beállítás alapértelmezés szerint ki van-e választva a felhasználói felületen. Lehetséges értékek: true vagy FALSE. |
 
-Az alábbi példa egy, a **város** legördülő lista jogcímet konfigurálja alapértelmezett értékre beállítva `New York`:
+Az alábbi **példa egy legördülő lista** jogcímet konfigurál egy alapértelmezett értékkel `New York`:
 
 ```XML
 <ClaimType Id="city">
@@ -184,13 +184,13 @@ A legördülő lista alapértelmezett értéke New York:
 
 ![A böngészőben megjelenített legördülő menü és az alapértelmezett érték megjelenítése](./media/claimsschema/dropdownsingleselect.png)
 
-### <a name="pattern"></a>Pattern
+### <a name="pattern"></a>Mintázat
 
 A **minta** elem a következő attribútumokat tartalmazhatja:
 
-| Attribútum | Kötelező | Leírás |
+| Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| RegularExpression | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
+| Válaszban | Igen | Ahhoz, hogy az ilyen típusú jogcímek érvényesek legyenek, a reguláris kifejezésnek egyeznie kell. |
 | HelpText | Nem | A jogcím mintája vagy reguláris kifejezése. |
 
 Az alábbi példa egy **e-mail-** jogcímet konfigurál a reguláris kifejezéses beviteli ellenőrzéssel és a Súgó szöveggel:
@@ -216,9 +216,9 @@ Az Identity Experience Framework az e-mail-cím jogcímet a bemeneti ellenőrzé
 
 ## <a name="userinputtype"></a>UserInputType
 
-A Azure AD B2C számos felhasználói beviteli típust támogat, például a szövegmezőt, a jelszót és a legördülő listát, amely akkor használható, ha a jogcím-adatok manuális bevitele a jogcím típusához történik. A **UserInputType** akkor kell megadnia, amikor adatokat gyűjt a felhasználótól egy önérvényesített [technikai profil](self-asserted-technical-profile.md)használatával.
+A Azure AD B2C számos felhasználói beviteli típust támogat, például a szövegmezőt, a jelszót és a legördülő listát, amely akkor használható, ha a jogcím-adatok manuális bevitele a jogcím típusához történik. A **UserInputType** akkor kell megadnia, amikor adatokat gyűjt a felhasználótól egy [önérvényesített technikai profil](self-asserted-technical-profile.md)használatával.
 
-### <a name="textbox"></a>Szövegmező
+### <a name="textbox"></a>TextBox
 
 A **szövegmező** felhasználói beviteli típus egy egysoros szövegmező megadására szolgál.
 
@@ -251,7 +251,7 @@ Az **EmailBox** felhasználói bevitel típusa egy alapszintű e-mail-beviteli m
 </ClaimType>
 ```
 
-### <a name="password"></a>Windows 10
+### <a name="password"></a>Jelszó
 
 A **jelszó** felhasználói beviteli típusa a felhasználó által megadott jelszó rögzítésére szolgál.
 
@@ -356,7 +356,7 @@ A **readonly** felhasználói bevitel típusa írásvédett mező biztosításá
 
 ### <a name="paragraph"></a>Bekezdés
 
-A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget. Például &lt;: p&gt;Text&lt;/p.&gt;
+A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgál, amely csak egy bekezdés címkéjén jelenít meg szöveget. Például &lt;p&gt;Text&lt;/p&gt;.
 
 ![Jogcím típusának használata bekezdéssel](./media/claimsschema/paragraph.png)
 
@@ -368,11 +368,11 @@ A **bekezdés** felhasználói beviteli típusa olyan mező megadására szolgá
   <UserHelpText>A claim responsible for holding response messages to send to the relying party</UserHelpText>
   <UserInputType>Paragraph</UserInputType>
   <Restriction>
-    <Enumeration Text="B2C_V1_90001" Value="You cant sign in because you are a minor" />
+    <Enumeration Text="B2C_V1_90001" Value="You cannot sign in because you are a minor" />
     <Enumeration Text="B2C_V1_90002" Value="This action can only be performed by gold members" />
     <Enumeration Text="B2C_V1_90003" Value="You have not been enabled for this operation" />
   </Restriction>
 </ClaimType>
 ```
 
-Egy **responseMsg** -jogcímben lévő **enumerálási** értékek egyikének megjelenítéséhez használja `GetMappedValueFromLocalizedCollection` a `CreateStringClaim` vagy a jogcím-átalakítást. További információ: karakterlánc- [jogcímek átalakítása](string-transformations.md)
+Egy **responseMsg** jogcím egyik **enumerálási** értékének megjelenítéséhez használja `GetMappedValueFromLocalizedCollection` vagy `CreateStringClaim` jogcím-átalakítást. További információ: karakterlánc- [jogcímek átalakítása](string-transformations.md)

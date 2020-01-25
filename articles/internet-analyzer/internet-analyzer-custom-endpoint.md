@@ -7,12 +7,12 @@ ms.service: internet-analyzer
 ms.topic: quickstart
 ms.date: 10/16/2019
 ms.author: mebeatty
-ms.openlocfilehash: 44d570746a54154a2f8d3c7a200c761a59b7422b
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 6a781e767393f35a1ec22f195ba787e3018d8d1e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73501924"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713097"
 ---
 # <a name="measure-custom-endpoints-to-evaluate-in-your-internet-analyzer-tests"></a>Az Internet Analyzer-tesztek alapján kiértékelt egyéni végpontok mérése 
 
@@ -30,10 +30,10 @@ Győződjön meg arról, hogy létrehoz egy Internet Analyzer-erőforrást, és 
 ## <a name="create-custom-endpoint"></a>Egyéni végpont létrehozása
 
 1. [Itt](https://fpc.msedge.net/apc/trans.gif)töltheti le az átlátszó, egyképpontos tesztelési képet. Ez az egyképpontos rendszerkép az az objektum, amelyet a JavaScript a teljesítmény mérésére fog kérni.
-2. Az egyéni webalkalmazásban telepítse a teszt lemezképet egy nyilvánosan elérhető útvonalon. Az elérési útnak HTTPS-kapcsolaton keresztül kell működnie. 
+2. Az egyéni webalkalmazásban telepítse a teszt lemezképet egy nyilvánosan elérhető elérési úton. Az elérési útnak HTTPS-kapcsolaton keresztül kell működnie. 
 3. Másolja a teljes egyéni végpont URL-címét (például https://contoso.com/test/trans.gif) az egyéni végpont mezőbe a tesztelés létrehozásakor.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása
 

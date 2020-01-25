@@ -2,15 +2,15 @@
 title: SendGrid-kötések Azure Functions
 description: Azure Functions SendGrid kötések hivatkozása.
 author: craigshoemaker
-ms.topic: conceptual
+ms.topic: reference
 ms.date: 11/29/2017
 ms.author: cshoe
-ms.openlocfilehash: d70b05842fc7f251af6aefd743f064c037f63b7b
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: e318e5f9b192b9f857a0b97d076ce4cc87cfb73d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922354"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76710981"
 ---
 # <a name="azure-functions-sendgrid-bindings"></a>SendGrid-kötések Azure Functions
 
@@ -353,8 +353,8 @@ A következő táblázat a *function. JSON* fájlban és a `SendGrid` attribútu
 | név |–| A kérelem vagy a kérelem törzse függvény kódjában használt változó neve. Ez az érték `$return`, ha csak egy visszatérési érték van. | Nem |
 | apiKey | apiKey | Az API-kulcsot tartalmazó Alkalmazásbeállítás neve. Ha nincs beállítva, az alapértelmezett Alkalmazásbeállítás neve *AzureWebJobsSendGridApiKey*.| Nem |
 | erre:| – | A címzett e-mail-címe. | Igen |
-| forrás| Kezdő ár | A feladó e-mail-címe. |  Igen |
-| tárgy| Tárgy | Az e-mail tárgya. | Igen |
+| a| Kezdő ár | A feladó e-mail-címe. |  Igen |
+| Tulajdonos| Tárgy | Az e-mail tárgya. | Igen |
 | szöveg| Szöveg | Az e-mail tartalma. | Igen |
 
 A választható tulajdonságok rendelkezhetnek a kötésben definiált alapértelmezett értékekkel, és akár programozott módon is hozzáadhatók vagy felülbíráltak.
@@ -383,7 +383,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
-|forrás|–|A küldő e-mail-címe az összes függvényen belül.| 
+|a|–|A küldő e-mail-címe az összes függvényen belül.| 
 
 
 ## <a name="next-steps"></a>Következő lépések

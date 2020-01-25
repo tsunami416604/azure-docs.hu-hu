@@ -8,26 +8,26 @@ ms.custom: ''
 titleSuffix: Azure SQL Database and SQL Data Warehouse
 ms.devlang: ''
 ms.topic: conceptual
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 08/22/2019
-ms.openlocfilehash: 7161c5554fe2d4993f3bd30ad82d675a71927f23
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: dda65c94671044f3c5a569a3f9753951de9eee3a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76279204"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717685"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-data-discovery--classification"></a>Adatfelderítési & besorolása Azure SQL Database és SQL Data Warehouse
 
 Az adatfelderítési & besorolása olyan speciális képességeket **biztosít, amelyek**a Azure SQL Databasebe vannak építve, így a bizalmas adatoknak az adatbázisokban való felderítéséhez, **besorolásához**, **címkézéséhez** ** & .**
 
-A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. Infrastruktúraként alkalmas lehet az alábbiakra:
+A legérzékenyebb adatok (üzleti, pénzügyi, egészségügyi, személyazonosításra alkalmas adatok) felfedése és besorolása kulcsfontosságú szerepet játszik a szervezeti adatok védelmében. A következő infrastruktúrát nyújtja:
 
-- Segíthet megfelelni az adatvédelmi szabványoknak és a szabályozási megfelelőség követelményeinek.
+- Az adatvédelmi szabványoknak és a szabályozási megfelelőségi követelményeknek való megfelelés elősegítése.
 - Különböző biztonsági forgatókönyvek, például a figyelés (naplózás) és a bizalmas adatok rendellenes hozzáférésének riasztása.
-- Vezérelhető és megerősíthető vele a bizalmas adatokat tartalmazó adatbázisok biztonsága.
+- A szigorúan bizalmas adatokat tartalmazó adatbázisok biztonságának szabályozása és a hozzáférés megerősítése.
 
 Az adatfelderítési & besorolása a [speciális adatbiztonsági](sql-database-advanced-data-security.md) (ADS) ajánlat része, amely a speciális SQL-alapú biztonsági funkciók egységes csomagja. az adatfelderítési & besorolása a központi SQL ADS portálon keresztül érhető el és kezelhető.
 
@@ -40,11 +40,11 @@ Az adatfelderítési & besorolása fejlett szolgáltatásokat és új SQL-képes
 
 - **Felderítési & javaslatok**
 
-  A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezt követően egy egyszerű módszert kínál a megfelelő besorolási javaslatok áttekintésére és alkalmazására az Azure Portalon keresztül.
+  A besorolási motor megvizsgálja az adatbázist, és azonosítja a potenciálisan bizalmas adatokat tartalmazó oszlopokat. Ezt követően egyszerű módszert biztosít a megfelelő besorolási javaslatok áttekintésére és alkalmazására a Azure Portal használatával.
 
 - **Címkézés**
 
-  Az érzékenységi besorolási címkék az SQL Engine-be bevezetett új besorolási metaadatokat használó oszlopokban tartósan címkézve lehetnek. Ezeket a metaadatokat aztán speciális bizalmasságalapú naplózáshoz és védelmi helyzetekben lehet hasznosítani.
+  Az érzékenységi besorolási címkék az SQL Engine-be bevezetett új besorolási metaadatokat használó oszlopokban tartósan címkézve lehetnek. Ezt a metaadatokat ezután speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvekhez lehet használni.
 
 - **Lekérdezési eredményhalmaz érzékenysége**
 
@@ -52,7 +52,7 @@ Az adatfelderítési & besorolása fejlett szolgáltatásokat és új SQL-képes
 
 - **Láthatóság**
 
-  Az adatbázis besorolási állapota a portálon található részletes irányítópulton tekinthető meg. Ezenkívül letölthet egy jelentést (Excel-formátumban), amelyet egyebek mellett megfelelőségi és naplózási célokra használhat.
+  Az adatbázis besorolási állapota a portálon található részletes irányítópulton tekinthető meg. Emellett letölthet egy jelentést (Excel-formátumban), amely megfelelőségi & naplózási célokra, valamint más igényekre is használható.
 
 ## <a id="subheading-2"></a>Felderítés, besorolás & címke bizalmas oszlopai
 
@@ -69,7 +69,7 @@ Az SQL adatfelderítési & besorolása tartalmaz egy beépített érzékenységi
 
 A besorolási besorolás meghatározása és testreszabása a teljes Azure-bérlő egyik központi helyén történik. Ez a hely [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), a biztonsági szabályzat részeként. Ezt a feladatot csak azok a felhasználók hajthatják végre, akik rendszergazdai jogokkal rendelkeznek a bérlő gyökérszintű felügyeleti csoportjában.
 
-A Information Protection házirend-kezelés részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Saját egyéni információtípusokat is felvehet, és olyan sztringmintákkal konfigurálhatja őket, amelyek a felderítési logika részévé válva biztosítják az adattípus azonosíthatóságát.
+A Information Protection házirend-kezelés részeként egyéni címkéket adhat meg, rangsorolhatja őket, és társíthatja őket egy kiválasztott adattípussal. Hozzáadhat saját egyéni adattípusokat is, és a karakterlánc-mintázatokkal konfigurálhatja azokat, amelyeket a rendszer az adatbázisokban az ilyen típusú adatok azonosításához ad hozzá a felderítési logikához.
 További információ a szabályzatok testreszabásáról és kezeléséről a [Information Protection szabályzat útmutatójában](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
 
 Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyéni adatbázisok besorolását a testreszabott szabályzat használatával.
@@ -98,7 +98,7 @@ Miután meghatározta a bérlőre kiterjedő házirendet, folytathatja az egyén
 
    - A javasolt oszlop besorolások listájának megtekintéséhez kattintson az ablak alján található javaslatok panelre:
 
-      ![Az adatok besorolása](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
+      ![Az adatai osztályozása](./media/sql-data-discovery-and-classification/5_data_classification_recommendations_panel.png)
 
    - Tekintse át a javaslatok listáját – egy adott oszlopra vonatkozó javaslat elfogadásához jelölje be a megfelelő sor bal oldali oszlopában található jelölőnégyzetet. A javaslatok tábla fejlécében a jelölőnégyzet bejelölésével megadhatja az elfogadásra váró *összes javaslatot* is.
 

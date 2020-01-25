@@ -1,71 +1,71 @@
 ---
-title: Az Azure Event Grid-előfizetések a portálon keresztül
-description: Ismerteti, hogyan hozhat létre Event Grid-előfizetések a portálon keresztül.
+title: Előfizetések Azure Event Grid portálon keresztül
+description: Ez a cikk azt ismerteti, hogyan hozhatók létre Event Grid-előfizetések a támogatott forrásokhoz, például az Azure Blob Storagehoz a Azure Portal használatával.
 services: event-grid
 author: spelluru
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/08/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: b54bc52a2feaf4646d801265ddb273c2c86158ee
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3172c92ecae094ab5d978803d2ccac7e6404a5e1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60823519"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721506"
 ---
-# <a name="subscribe-to-events-through-portal"></a>Fizessen elő az eseményekre a portálon keresztül
+# <a name="subscribe-to-events-through-portal"></a>Előfizetés az eseményekre a portálon keresztül
 
-Ez a cikk ismerteti, hogyan hozhat létre Event Grid-előfizetések a portálon keresztül.
+Ez a cikk azt ismerteti, hogyan hozhatók létre Event Grid-előfizetések a portálon keresztül.
 
 ## <a name="create-event-subscriptions"></a>Esemény-előfizetések létrehozása
 
-Bármelyik támogatott az Event Grid-előfizetés létrehozása [eseményforrások](event-sources.md), kövesse az alábbi lépéseket. Ez a cikk bemutatja, hogyan hozhat létre egy Event Grid-előfizetés Azure-előfizetésre.
+Ha Event Grid-előfizetést szeretne létrehozni bármelyik támogatott [eseményforrás](event-sources.md)esetében, kövesse az alábbi lépéseket. Ez a cikk bemutatja, hogyan hozhat létre Event Grid-előfizetést egy Azure-előfizetéshez.
 
 1. Válassza az **Összes szolgáltatás** elemet.
 
-   ![Válassza ki az összes szolgáltatás](./media/subscribe-through-portal/select-all-services.png)
+   ![Minden szolgáltatás kiválasztása](./media/subscribe-through-portal/select-all-services.png)
 
-1. Keresse meg **Event Grid-előfizetések** , és jelölje ki az elérhető lehetőségek közül.
+1. Keressen **Event Grid előfizetéseket** , és válassza ki az elérhető lehetőségek közül.
 
-   ![Keresés](./media/subscribe-through-portal/search.png)
+   ![Search](./media/subscribe-through-portal/search.png)
 
 1. Válassza a **+ Esemény-előfizetés** lehetőséget.
 
    ![Előfizetés hozzáadása](./media/subscribe-through-portal/add-subscription.png)
 
-1. Válassza ki a létrehozni kívánt előfizetést. Feliratkozás az Azure-előfizetés eseményeire, például válassza ki a **Azure-előfizetések** és a cél előfizetésben.
+1. Válassza ki a létrehozni kívánt előfizetés típusát. Ha például az Azure-előfizetéséhez tartozó eseményekre szeretne előfizetni, válassza az **Azure-előfizetések** és a cél előfizetés lehetőséget.
 
-   ![Válassza ki az Azure-előfizetés](./media/subscribe-through-portal/azure-subscription.png)
+   ![Azure-előfizetés kiválasztása](./media/subscribe-through-portal/azure-subscription.png)
 
-1. Fizessen elő az összes eseménytípusra ehhez eseményre adatforráshoz, hagyja a **fizessen elő az összes eseménytípusra** lehetőség be van jelölve. Ellenkező esetben válassza az eseménytípusok, ehhez az előfizetéshez.
+1. Az eseményforrás összes eseménytípus előfizetéséhez tartsa be az **előfizetést az összes eseménytípus** beállításnál. Egyéb esetben válassza ki az előfizetéshez tartozó eseménytípus típusát.
 
-   ![Válassza ki az események típusai](./media/subscribe-through-portal/select-event-types.png)
+   ![Eseménytípus kiválasztása](./media/subscribe-through-portal/select-event-types.png)
 
-1. Az esemény-előfizetés, például az események és a egy előfizetésnevet végpontját további részleteket nyújtanak.
+1. Adja meg az esemény-előfizetés további részleteit, például az események kezelésére szolgáló végpontot és az előfizetés nevét.
 
-   ![Adja meg az előfizetés részletei](./media/subscribe-through-portal/provide-subscription-details.png)
+   ![Előfizetés részleteinek megadása](./media/subscribe-through-portal/provide-subscription-details.png)
 
-1. Kézbesíthetetlen levelek közé helyezésének engedélyezése és testre szabhatja az újrapróbálkozási szabályzatok **további funkciók**.
+1. A kézbesítetlen üzenetek engedélyezéséhez és az újrapróbálkozási szabályzatok testreszabásához válassza a **További szolgáltatások**lehetőséget.
 
-   ![Válassza ki a további funkciók](./media/subscribe-through-portal/select-additional-features.png)
+   ![További funkciók kiválasztása](./media/subscribe-through-portal/select-additional-features.png)
 
-1. Válassza ki egy tárolót, amely nem szállított események tárolásához, majd állítsa be, hogyan lesznek visszaküldve az újrapróbálkozásokat.
+1. Válasszon ki egy tárolót, amelyet nem kézbesítő események tárolására kíván használni, és állítsa be az újrapróbálkozások küldésének módját.
 
-   ![Engedélyezze a kézbesíthetetlen levelek közé helyezésének, majd próbálkozzon újra](./media/subscribe-through-portal/set-deadletter-retry.png)
+   ![A kézbesítetlen levelek engedélyezése és újrapróbálkozás](./media/subscribe-through-portal/set-deadletter-retry.png)
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
 
-## <a name="create-subscription-on-resource"></a>Előfizetés létrehozása az erőforráson
+## <a name="create-subscription-on-resource"></a>Előfizetés létrehozása erőforráson
 
-Néhány eseményforrások támogatja az adott erőforráshoz a portál felületén keresztül egy esemény-előfizetés létrehozása. Válassza ki az esemény forrását, és keressen **események** bal oldali panelen.
+Néhány eseményforrás támogatja az esemény-előfizetések létrehozását az adott erőforráshoz tartozó portál felületén keresztül. Válassza ki az eseményforrás, és keresse meg az **eseményeket** a bal oldali ablaktáblán.
 
-![Adja meg az előfizetés részletei](./media/subscribe-through-portal/resource-events.png)
+![Előfizetés részleteinek megadása](./media/subscribe-through-portal/resource-events.png)
 
-A portál megjelenít egy esemény-előfizetést, amely kapcsolódik az adatforráshoz való létrehozásának lehetőségeit.
+A portálon megtekintheti az adott forráshoz kapcsolódó esemény-előfizetések létrehozásának lehetőségeit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Eseménykézbesítés és újrapróbálkozás [Event Grid az üzenetek kézbesítését, és ismételje meg](delivery-and-retry.md).
-* Az Event Grid megismeréséhez tekintse meg [az Event Grid bevezetőjét](overview.md).
-* Tekintse meg a gyors kezdéshez Event Grid használatával [az Azure Event Griddel egyéni események létrehozása és útvonal](custom-event-quickstart.md).
+* További információ az események kézbesítéséről és újrapróbálkozásáról, [Event Grid az üzenetek kézbesítéséről, és próbálkozzon újra](delivery-and-retry.md).
+* Az Event Grid ismertetése: [Az Event Grid bemutatása](overview.md).
+* Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

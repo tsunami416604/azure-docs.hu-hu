@@ -9,16 +9,16 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 02/15/2019
-ms.openlocfilehash: 8cbc067326bf77648d242cadaf91b491f50c3848
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 68771ee3d2ae2d43245bd217bedcf59b987786f1
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294269"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716734"
 ---
 # <a name="data-transformation-expressions-in-mapping-data-flow"></a>Adatátalakítási kifejezések a leképezési adatfolyamban 
 
-## <a name="expression-functions"></a>Kifejezésfüggvények
+## <a name="expression-functions"></a>Expression függvények
 
 A Data Factoryban az adatátalakítások konfigurálásához használja a leképezési adatfolyam funkciójának kifejezés nyelvét.
 ___
@@ -485,7 +485,7 @@ NULL értéket ad vissza. Ha van "NULL" nevű oszlop, használja a Function szin
 ___
 ### <code>or</code>
 <code><b>or(<i>&lt;value1&gt;</i> : boolean, <i>&lt;value2&gt;</i> : boolean) => boolean</b></code><br/><br/>
-Logikai VAGY operátor. Ugyanaz, mint | | * ``or(true, false) -> true``
+Logikai vagy operátor. Ugyanaz, mint | | * ``or(true, false) -> true``
 * ``true || false -> true``
 ___
 ### <code>pMod</code>
@@ -717,7 +717,7 @@ Egy primitív adattípust karakterlánccá alakít át. A számok és a dátum f
 ___
 ### <code>toTimestamp</code>
 <code><b>toTimestamp(<i>&lt;string&gt;</i> : any, [<i>&lt;timestamp format&gt;</i> : string], [<i>&lt;time zone&gt;</i> : string]) => timestamp</b></code><br/><br/>
-Egy karakterláncot egy időbélyeg-formátumra konvertál, és nem kötelező időbélyeg-formátumot. Tekintse meg a Java SimpleDateFormat az összes lehetséges formátumot. Ha az időbélyeg ki van hagyva az alapértelmezett mintának. éééé-[M] M-[d] d óó: PP: SS [. f...] használatos. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg támogatja a legfeljebb ezredmásodperces pontosságot a 999Refer Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
+Egy karakterláncot egy időbélyeg-formátumra konvertál, és nem kötelező időbélyeg-formátumot. Tekintse meg a Java SimpleDateFormat az összes lehetséges formátumot. Ha az időbélyeg ki van hagyva az alapértelmezett mintának. éééé-[M] M-[d] d óó: PP: SS [. f...] használatos. A választható időzónát "GMT", "PST", "UTC", "America/Cayman" formában adhatja át. Az időbélyeg legfeljebb ezredmásodperces pontosságot támogat a 999Refer Java SimpleDateFormat az elérhető formátumokhoz. https://docs.oracle.com/javase/8/docs/api/java/text/SimpleDateFormat.html * ``toTimestamp('2016-12-31 00:12:00') -> toTimestamp('2016-12-31 00:12:00')``
 * ``toTimestamp('2016-12-31T00:12:00', 'yyyy-MM-dd\'T\'HH:mm:ss', 'PST') -> toTimestamp('2016-12-31 00:12:00')``
 * ``toTimestamp('12/31/2016T00:12:00', 'MM/dd/yyyy\'T\'HH:mm:ss') -> toTimestamp('2016-12-31 00:12:00')``
 * ``millisecond(toTimestamp('2019-02-03 05:19:28.871', 'yyyy-MM-dd HH:mm:ss.SSS')) -> 871``

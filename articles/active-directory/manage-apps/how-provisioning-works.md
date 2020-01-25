@@ -15,12 +15,12 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 910317201275ba1598ed3e4d89815542b88fb108
-ms.sourcegitcommit: 02160a2c64a5b8cb2fb661a087db5c2b4815ec04
+ms.openlocfilehash: 5238f8ca9258e4f7907d9d9755b7252e60f40de8
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75719970"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76711528"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -29,13 +29,13 @@ Az automatikus kiépítés olyan felhasználói identitások és szerepkörök l
 Az **Azure ad-kiépítési szolgáltatás** a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az alkalmazás gyártójától származó tartományok közötti IDENTITÁSKEZELÉS (SCIM) 2,0 felhasználói felügyeleti API-végponthoz való csatlakozással. Ez a SCIM-végpont lehetővé teszi, hogy az Azure AD programozott módon hozza létre, frissítse és távolítsa el a felhasználókat. A kiválasztott alkalmazások esetében a kiépítési szolgáltatás további, identitással kapcsolatos objektumokat, például csoportokat és szerepköröket is létrehozhat, frissíthet és eltávolíthat. Az Azure AD és az alkalmazás közötti üzembe helyezéshez használt csatorna HTTPS SSL-titkosítás használatával van titkosítva.
 
 
-![Azure AD-létesítési szolgáltatás](./media/user-provisioning/provisioning0.PNG)
+![Azure AD-létesítési szolgáltatás](media/how-provisioning-works/provisioning0.PNG)
 *1. ábra: az Azure ad-kiépítési szolgáltatás*
 
-![kimenő felhasználó kiépítési munkafolyamata](./media/user-provisioning/provisioning1.PNG)
+![kimenő felhasználó kiépítési munkafolyamata](media/how-provisioning-works/provisioning1.PNG)
 *2. ábra: "kimenő" felhasználó kiépítési munkafolyamata az Azure ad-ből a népszerű SaaS-alkalmazásokhoz*
 
-![bejövő felhasználó kiépítési munkafolyamata](./media/user-provisioning/provisioning2.PNG)
+![bejövő felhasználó kiépítési munkafolyamata](media/how-provisioning-works/provisioning2.PNG)
 *3. ábra: "bejövő" felhasználó kiépítési munkafolyamata a népszerű humántőke-felügyeleti (HCM) alkalmazásokból a Azure Active Directory és a Windows serverre Active Directory*
 
 ## <a name="provisioning-using-scim-20"></a>Kiépítés a SCIM 2,0 használatával
@@ -73,11 +73,11 @@ Az Azure AD-ből egy SaaS-alkalmazásba való kimenő kiépítés esetén a felh
 
   * A dinamikus csoportok befolyásolhatják a végpontok közötti kiépítés teljesítményét az Azure AD-ből az SaaS-alkalmazásokba.
 
-  * A dinamikus csoportokban lévő felhasználók egy SaaS-alkalmazásban való kiépítésének vagy kiépítésének gyorsasága attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. További információ a dinamikus csoportok feldolgozási állapotának vizsgálatáról: [tagsági szabály feldolgozási állapotának](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)megtekintése.
+  * A dinamikus csoportokban lévő felhasználók egy SaaS-alkalmazásban való kiépítésének vagy kiépítésének gyorsasága attól függ, hogy a dinamikus csoport milyen gyorsan tudja kiértékelni a tagsági változásokat. További információ a dinamikus csoportok feldolgozási állapotának vizsgálatáról: [tagsági szabály feldolgozási állapotának](../users-groups-roles/groups-create-rule.md)megtekintése.
 
   * Ha a felhasználó elveszti a dinamikus csoport tagságát, akkor az egy kiépítési eseménynek számít. Vegye figyelembe ezt a forgatókönyvet a dinamikus csoportok szabályainak létrehozásakor.
 
-* **Beágyazott csoportok.** Az Azure AD-beli felhasználói kiépítési szolgáltatás nem tudja beolvasni vagy kiépíteni a felhasználókat a beágyazott csoportokban. A szolgáltatás csak olyan felhasználókat tud olvasni és kiépíteni, akik közvetlenül tagjai egy explicit módon hozzárendelt csoportnak. Ez a "csoportos hozzárendelések alkalmazások számára" korlátozás az egyszeri bejelentkezést is befolyásolja (lásd: [csoport használata az SaaS-alkalmazásokhoz való hozzáférés kezeléséhez](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-saasapps)). Ehelyett közvetlenül a kiépíteni kívánt felhasználókat tartalmazó csoportokban vagy más [hatókörben](https://docs.microsoft.com/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts) kell kiosztania.
+* **Beágyazott csoportok.** Az Azure AD-beli felhasználói kiépítési szolgáltatás nem tudja beolvasni vagy kiépíteni a felhasználókat a beágyazott csoportokban. A szolgáltatás csak olyan felhasználókat tud olvasni és kiépíteni, akik közvetlenül tagjai egy explicit módon hozzárendelt csoportnak. Ez a "csoportos hozzárendelések alkalmazások számára" korlátozás az egyszeri bejelentkezést is befolyásolja (lásd: [csoport használata az SaaS-alkalmazásokhoz való hozzáférés kezeléséhez](../users-groups-roles/groups-saasapps.md)). Ehelyett közvetlenül a kiépíteni kívánt felhasználókat tartalmazó csoportokban vagy más [hatókörben](define-conditional-rules-for-provisioning-user-accounts.md) kell kiosztania.
 
 ### <a name="attribute-based-scoping"></a>Attribútum-alapú hatókör 
 
@@ -85,7 +85,7 @@ A hatókör-szűrők használatával olyan attribútum-alapú szabályokat hatá
 
 ### <a name="b2b-guest-users"></a>B2B (vendég) felhasználók
 
-Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+Az Azure AD-beli felhasználói üzembe helyezési szolgáltatás használatával az Azure AD-ben elérhetővé teheti a VÁLLALATKÖZI (vagy vendég) felhasználókat az SaaS-alkalmazásokhoz. Ahhoz azonban, hogy a B2B-felhasználók az Azure AD-vel jelentkezzenek be az SaaS-alkalmazásba, az SaaS-alkalmazásnak adott módon konfigurált SAML-alapú egyszeri bejelentkezési képességgel kell rendelkeznie. További információ az SaaS-alkalmazások a B2B-felhasználóktól való támogatásához való konfigurálásáról: [SaaS-alkalmazások konfigurálása B2B-együttműködéshez](../b2b/configure-saas-apps.md).
 
 ## <a name="provisioning-cycles-initial-and-incremental"></a>Kiépítési ciklusok: kezdeti és növekményes
 
@@ -160,7 +160,7 @@ Ha a megcélzott rendszerre irányuló hívások többsége vagy mindegyike egy 
 
 Karantén esetén a növekményes ciklusok gyakorisága naponta egyszer csökken.
 
-A kiépítési feladatok kilépnek a karanténba helyezésből az összes jogsértő hiba kijavítása után, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](https://docs.microsoft.com/azure/active-directory/manage-apps/application-provisioning-quarantine-status).
+A kiépítési feladatok kilépnek a karanténba helyezésből az összes jogsértő hiba kijavítása után, és a következő szinkronizálási ciklus elindul. Ha a kiépítési feladatok több mint négy hétig maradnak karanténban, a kiépítési feladatok le vannak tiltva. További [információ itt található a karantén állapotáról](application-provisioning-quarantine-status.md).
 
 ### <a name="how-long-provisioning-takes"></a>Mennyi időt vesz igénybe az átadás?
 
@@ -184,7 +184,7 @@ Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót az alka
 
 Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból. 
 
-30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót]( https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-users-restore), amely törlési kérelmet küld az alkalmazásnak.
+30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
 
 Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát határozza meg, valamint azt, hogy az aktív = false értékkel rendelkező frissítési kérést szeretné-e elküldeni a felhasználó számára. 
 

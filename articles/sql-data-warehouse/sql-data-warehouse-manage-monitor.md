@@ -10,12 +10,12 @@ ms.subservice: manage
 ms.date: 08/23/2019
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: b71d3b4824d8c1c73f40c8c6d87db315aabd423b
-ms.sourcegitcommit: 428fded8754fa58f20908487a81e2f278f75b5d0
+ms.openlocfilehash: 14c4bb843a93fe6d235354f24475b9974142db79
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74555493"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721149"
 ---
 # <a name="monitor-your-workload-using-dmvs"></a>Monitor your workload using DMVs
 Ez a cikk azt ismerteti, hogyan használhatók a dinamikus felügyeleti nézetek (DMV) a számítási feladatok figyelésére. Ide tartozik a lekérdezés végrehajtásának vizsgálata Azure SQL Data Warehouseban.
@@ -28,7 +28,7 @@ GRANT VIEW DATABASE STATE TO myuser;
 ```
 
 ## <a name="monitor-connections"></a>Kapcsolatok figyelése
-Az SQL Data Warehouse összes bejelentkezését naplózza a rendszer a [sys. dm_pdw_exec_sessions][sys.dm_pdw_exec_sessions].  Ez a DMV tartalmazza az utolsó 10 000 bejelentkezést.  A session_id az elsődleges kulcs, és minden új bejelentkezéshez egymás után van rendelve.
+Az SQL Data Warehouse összes bejelentkezését naplózza a rendszer a [sys. dm_pdw_exec_sessions](https://msdn.microsoft.com/library/mt203883.aspx).  Ez a DMV tartalmazza az utolsó 10 000 bejelentkezést.  A session_id az elsődleges kulcs, és minden új bejelentkezéshez egymás után van rendelve.
 
 ```sql
 -- Other Active Connections
@@ -36,7 +36,7 @@ SELECT * FROM sys.dm_pdw_exec_sessions where status <> 'Closed' and session_id <
 ```
 
 ## <a name="monitor-query-execution"></a>Lekérdezés végrehajtásának figyelése
-Az SQL Data Warehouseon végrehajtott összes lekérdezést a [sys. dm_pdw_exec_requests][sys.dm_pdw_exec_requests]naplózza.  Ez a DMV tartalmazza az utolsó 10 000-lekérdezést.  A request_id egyedileg azonosítja az egyes lekérdezéseket, és ez a DMV elsődleges kulcsa.  A request_id minden új lekérdezéshez sorrendben van hozzárendelve, és a QID előtaggal van ellátva, amely a lekérdezés AZONOSÍTÓját jelöli.  A DMV lekérdezése egy adott session_id megjeleníti az adott bejelentkezéshez tartozó összes lekérdezést.
+Az SQL Data Warehouseon végrehajtott összes lekérdezést a [sys. dm_pdw_exec_requests](https://msdn.microsoft.com/library/mt203887.aspx)naplózza.  Ez a DMV tartalmazza az utolsó 10 000-lekérdezést.  A request_id egyedileg azonosítja az egyes lekérdezéseket, és ez a DMV elsődleges kulcsa.  A request_id minden új lekérdezéshez sorrendben van hozzárendelve, és a QID előtaggal van ellátva, amely a lekérdezés AZONOSÍTÓját jelöli.  A DMV lekérdezése egy adott session_id megjeleníti az adott bejelentkezéshez tartozó összes lekérdezést.
 
 > [!NOTE]
 > A tárolt eljárások több kérelem azonosítóját használják.  A kérelmek azonosítói sorrendben vannak hozzárendelve. 
@@ -63,9 +63,9 @@ ORDER BY total_elapsed_time DESC;
 
 A fenti lekérdezési eredményekből jegyezze fel a vizsgálni kívánt lekérdezés **azonosítóját** .
 
-A **felfüggesztett** állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések is megjelennek a [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: Azure SQL Data Warehouse vagy erőforrás [-osztályok memória-és egyidejűségi korlátai](memory-concurrency-limits.md) a számítási [feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását][Investigating queries waiting for resources] ismertető cikket.
+A **felfüggesztett** állapotú lekérdezések a nagy számú aktív futó lekérdezés miatt várólistára helyezhetők. Ezek a lekérdezések is megjelennek a [sys. dm_pdw_waits](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql) a lekérdezés UserConcurrencyResourceType. A párhuzamossági korlátokkal kapcsolatos információkért lásd: Azure SQL Data Warehouse vagy erőforrás [-osztályok memória-és egyidejűségi korlátai](memory-concurrency-limits.md) a számítási [feladatok kezeléséhez](resource-classes-for-workload-management.md). A lekérdezések más okokat is várhatnak, például az objektumok zárolását.  Ha a lekérdezés egy erőforrásra vár, tekintse meg a jelen cikk további [erőforrásaira váró lekérdezések kivizsgálását](#monitor-waiting-queries) ismertető cikket.
 
-Ha le szeretné egyszerűsíteni egy lekérdezés keresését a [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, a [címke][LABEL] használatával rendeljen hozzá egy megjegyzést a lekérdezéshez, amely a sys. dm_pdw_exec_requests nézetben kereshető.
+Ha le szeretné egyszerűsíteni egy lekérdezés keresését a [sys. dm_pdw_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) táblában, a [címke](https://msdn.microsoft.com/library/ms190322.aspx) használatával rendeljen hozzá egy megjegyzést a lekérdezéshez, amely a sys. dm_pdw_exec_requests nézetben is megkereshető.
 
 ```sql
 -- Query with Label
@@ -82,7 +82,7 @@ WHERE   [label] = 'My Query';
 ```
 
 ### <a name="step-2-investigate-the-query-plan"></a>2\. lépés: a lekérdezési terv vizsgálata
-A kérelem azonosítója segítségével kérje le a lekérdezés elosztott SQL-(DSQL-) tervét a [sys. dm_pdw_request_steps][sys.dm_pdw_request_steps].
+A kérelem azonosítója segítségével kérje le a lekérdezés elosztott SQL-(DSQL-) tervét a [sys. dm_pdw_request_steps](https://msdn.microsoft.com/library/mt203913.aspx).
 
 ```sql
 -- Find the distributed query plan steps for a specific query.
@@ -93,7 +93,7 @@ WHERE request_id = 'QID####'
 ORDER BY step_index;
 ```
 
-Ha egy DSQL-csomag a vártnál hosszabb időt vesz igénybe, az ok lehet egy összetett csomag, amely sok DSQL lépést vagy csak egy lépést tart hosszú idő alatt.  Ha a csomag számos lépésből áll, több áthelyezési művelettel, érdemes lehet optimalizálni a táblázatok eloszlását az adatmozgatás csökkentése érdekében. A [táblázat terjesztési][Table distribution] cikke leírja, hogy miért kell áthelyezni az adatátvitelt a lekérdezés megoldásához, és elmagyarázza néhány terjesztési stratégiát az adatáthelyezés minimalizálásához.
+Ha egy DSQL-csomag a vártnál hosszabb időt vesz igénybe, az ok lehet egy összetett csomag, amely sok DSQL lépést vagy csak egy lépést tart hosszú idő alatt.  Ha a csomag számos lépésből áll, több áthelyezési művelettel, érdemes lehet optimalizálni a táblázatok eloszlását az adatmozgatás csökkentése érdekében. A [táblázat terjesztési](sql-data-warehouse-tables-distribute.md) cikke leírja, hogy miért kell áthelyezni az adatáthelyezést a lekérdezés megoldásához. A cikk az adatáthelyezés minimalizálására szolgáló terjesztési stratégiákat is ismerteti.
 
 Egyetlen lépéssel kapcsolatos további részletek vizsgálatához a hosszan futó lekérdezési lépés *operation_type* oszlopát, és jegyezze fel a **lépés indexét**:
 
@@ -101,7 +101,7 @@ Egyetlen lépéssel kapcsolatos további részletek vizsgálatához a hosszan fu
 * Folytassa a 3b lépéssel az **adatáthelyezési műveletekhez**: ShuffleMoveOperation, BroadcastMoveOperation, TrimMoveOperation, PartitionMoveOperation, MoveOperation, CopyOperation.
 
 ### <a name="step-3a-investigate-sql-on-the-distributed-databases"></a>3a. lépés: az SQL vizsgálata az elosztott adatbázisokon
-A Request ID és a Step index használatával kérheti le a [sys. dm_pdw_sql_requests][sys.dm_pdw_sql_requests]adatait, amely az összes elosztott adatbázis lekérdezési lépésének végrehajtási információit tartalmazza.
+A Request ID és a Step index használatával kérheti le a [sys. dm_pdw_sql_requests](https://msdn.microsoft.com/library/mt203889.aspx)adatait, amely az összes elosztott adatbázis lekérdezési lépésének végrehajtási információit tartalmazza.
 
 ```sql
 -- Find the distribution run times for a SQL step.
@@ -111,7 +111,7 @@ SELECT * FROM sys.dm_pdw_sql_requests
 WHERE request_id = 'QID####' AND step_index = 2;
 ```
 
-Ha a lekérdezési lépés fut, a [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] használatával lekérheti a SQL Server becsült tervét az SQL Server-terv gyorsítótárból egy adott eloszláson futó lépéshez.
+Ha a lekérdezési lépés fut, a [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) használatával lekérheti a SQL Server becsült tervét az SQL Server-terv gyorsítótárból egy adott eloszláson futó lépéshez.
 
 ```sql
 -- Find the SQL Server execution plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -121,7 +121,7 @@ DBCC PDW_SHOWEXECUTIONPLAN(1, 78);
 ```
 
 ### <a name="step-3b-investigate-data-movement-on-the-distributed-databases"></a>3b. lépés: az adatáthelyezés vizsgálata az elosztott adatbázisokon
-A kérelem azonosítója és a lépés indexe segítségével lekérheti a [sys. dm_pdw_dms_workers][sys.dm_pdw_dms_workers]összes eloszlásán futó adatáthelyezési lépés adatait.
+A kérelem azonosítója és a lépés indexe segítségével lekérheti a [sys. dm_pdw_dms_workers](https://msdn.microsoft.com/library/mt203878.aspx)összes eloszlásán futó adatáthelyezési lépés adatait.
 
 ```sql
 -- Find the information about all the workers completing a Data Movement Step.
@@ -134,7 +134,7 @@ WHERE request_id = 'QID####' AND step_index = 2;
 * A *total_elapsed_time* oszlopban ellenőrizze, hogy egy adott eloszlás jelentősen hosszabb időt vesz igénybe, mint mások az adatáthelyezéshez.
 * A hosszú ideig futó eloszlásnál tekintse meg a *rows_processed* oszlopot, és ellenőrizze, hogy az adott eloszlásból áthelyezett sorok száma lényegesen nagyobb-e, mint a többi. Ha igen, ez a megállapítás a mögöttes adatokat is jelezheti.
 
-Ha a lekérdezés fut, a [DBCC PDW_SHOWEXECUTIONPLAN][DBCC PDW_SHOWEXECUTIONPLAN] segítségével lekérheti a SQL Server becsült tervét az SQL Server-csomag gyorsítótárában a jelenleg futó SQL-lépéshez egy adott eloszláson belül.
+Ha a lekérdezés fut, a [DBCC PDW_SHOWEXECUTIONPLAN](https://msdn.microsoft.com/library/mt204017.aspx) segítségével lekérheti a SQL Server becsült tervét az SQL Server-terv gyorsítótárában a jelenleg futó SQL-lépéshez egy adott eloszláson belül.
 
 ```sql
 -- Find the SQL Server estimated plan for a query running on a specific SQL Data Warehouse Compute or Control node.
@@ -265,7 +265,7 @@ GROUP BY t.pdw_node_id, nod.[type]
 ```
 
 ## <a name="monitor-polybase-load"></a>A kiinduló terhelés figyelése
-A következő lekérdezés a terhelés előrehaladásának becslését tartalmazza. A lekérdezés csak a jelenleg feldolgozás alatt álló fájlokat jeleníti meg. 
+A következő lekérdezés a terhelés előrehaladásának hozzávetőleges becslését tartalmazza. A lekérdezés csak a jelenleg feldolgozás alatt álló fájlokat jeleníti meg. 
 
 ```sql
 
@@ -290,23 +290,4 @@ ORDER BY
 ```
 
 ## <a name="next-steps"></a>Következő lépések
-További információ a DMV: [rendszernézetek][System views].
-
-
-<!--Image references-->
-
-<!--Article references-->
-[SQL Data Warehouse best practices]: ./sql-data-warehouse-best-practices.md
-[System views]: ./sql-data-warehouse-reference-tsql-system-views.md
-[Table distribution]: ./sql-data-warehouse-tables-distribute.md
-[Investigating queries waiting for resources]: ./sql-data-warehouse-manage-monitor.md#waiting
-
-<!--MSDN references-->
-[sys.dm_pdw_dms_workers]: https://msdn.microsoft.com/library/mt203878.aspx
-[sys.dm_pdw_exec_requests]: https://msdn.microsoft.com/library/mt203887.aspx
-[sys.dm_pdw_exec_sessions]: https://msdn.microsoft.com/library/mt203883.aspx
-[sys.dm_pdw_request_steps]: https://msdn.microsoft.com/library/mt203913.aspx
-[sys.dm_pdw_sql_requests]: https://msdn.microsoft.com/library/mt203889.aspx
-[DBCC PDW_SHOWEXECUTIONPLAN]: https://msdn.microsoft.com/library/mt204017.aspx
-[DBCC PDW_SHOWSPACEUSED]: https://msdn.microsoft.com/library/mt204028.aspx
-[LABEL]: https://msdn.microsoft.com/library/ms190322.aspx
+További információ a DMV: [rendszernézetek](./sql-data-warehouse-reference-tsql-system-views.md).

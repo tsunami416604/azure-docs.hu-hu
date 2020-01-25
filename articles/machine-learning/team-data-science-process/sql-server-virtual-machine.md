@@ -3,23 +3,23 @@ title: SQL Server virtuális gép adatelemzési folyamatának megismerése
 description: Az Azure-beli SQL Server virtuális gépeken megismerheti az adatfeldolgozást és a szolgáltatások létrehozását a Python vagy az SQL használatával.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 01/23/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 877c639c35378b173b6ec9c8697725e3b3c09290
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: d3eb4d2faf58d1861fda9d04437f9f9530c77672
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053617"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76718480"
 ---
 # <a name="heading"></a>Az Azure-ban SQL Server virtuális gépen tárolt adatfeldolgozás
-Ez a dokumentum ismerteti, hogyan lehet az Azure-ban SQL Server VM tárolt adatkezelési funkciókat és szolgáltatásokat előállítani. Ezt a huzavona az SQL használatával vagy programozási nyelv, például a Python használatával végezheti el.
+Ez a dokumentum ismerteti, hogyan lehet az Azure-ban SQL Server VM tárolt adatkezelési funkciókat és szolgáltatásokat előállítani. Ezt a célt az SQL használatával vagy a Pythonhoz hasonló programozási nyelv használatával lehet elvégezni az huzavona.
 
 > [!NOTE]
 > A dokumentumban szereplő minta SQL-utasítások azt feltételezik, hogy az adatokat SQL Server. Ha nem, tekintse meg a felhőalapú adatelemzési folyamat térképét, amelyből megtudhatja, hogyan helyezheti át az adatait SQL Serverba.
@@ -66,7 +66,7 @@ Ebben a szakaszban az SQL-t használó szolgáltatások létrehozásának módja
 > 
 
 ### <a name="sql-countfeature"></a>Darabszám-alapú szolgáltatás létrehozása
-Az alábbi példák a Count-funkciók létrehozásának két módját szemléltetik. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek ezután az eredeti táblában (az elsődleges kulcs oszlopai használatával) is összekapcsolhatók, hogy az eredeti adategységek is meglegyenek.
+Az alábbi példák a Count-funkciók létrehozásának két módját szemléltetik. Az első metódus feltételes összeget használ, a második metódus pedig a "WHERE" záradékot használja. Ezek az eredmények ezután az eredeti táblával (az elsődleges kulcs oszlopainak használatával) is összekapcsolhatók, hogy az eredeti adatmennyiség mellett is meglegyenek a Count funkciók.
 
     select <column_name1>,<column_name2>,<column_name3>, COUNT(*) as Count_Features from <tablename> group by <column_name1>,<column_name2>,<column_name3> 
 
@@ -82,7 +82,7 @@ Az alábbi példa azt szemlélteti, hogyan hozhatók dobozolni-funkciók a doboz
 ### <a name="sql-featurerollout"></a>A funkciók kimutatása egyetlen oszlopból
 Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát további funkciók létrehozásához. A példa azt feltételezi, hogy a táblázatban a szélesség vagy hosszúság oszlop szerepel, amelyből a szolgáltatásokat kívánja előállítani.
 
-Íme egy rövid ismertető a szélességi és hosszúsági adatokról (a StackOverflow származik, [hogyan mérhető a szélességi és a hosszúsági pontosság?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Ez akkor hasznos, ha meg szeretné ismerni, mielőtt featurizing a hely mezőjét:
+Íme egy rövid ismertető a szélességi és hosszúsági adatokról (a StackOverflow származik, [hogyan mérhető a szélességi és a hosszúsági pontosság?](https://gis.stackexchange.com/questions/8650/how-to-measure-the-accuracy-of-latitude-and-longitude)). Ez az útmutató akkor hasznos, ha a helyet egy vagy több szolgáltatásként is meg szeretné érteni:
 
 * A jel azt jelzi, hogy Észak-vagy Dél-, Kelet-vagy nyugati régiója a világon van-e.
 * A nullától eltérő száz számjegy azt jelzi, hogy a földrajzi hosszúság nem!
@@ -95,7 +95,7 @@ Ebben a szakaszban bemutatjuk, hogyan hozhatja ki egy tábla egyetlen oszlopát 
 * Az ötödik tizedes tört érték 1,1 m-re van beállítva: megkülönbözteti a fákat egymástól. Az ehhez a szinthez tartozó pontosságot a kereskedelmi GPS-egységekkel csak különbözeti korrekcióval lehet megvalósítani.
 * A hatodik tizedes tört érték akár 0,11 m is lehet: a szerkezetek részletes kialakításához, a Tájképek tervezéséhez, az utak létrehozásához használhatja ezt a lehetőséget. A gleccserek és a folyók forgalmának nyomon követéséhez elég jó legyen. Ezt úgy érheti el, ha a GPS-vel kapcsolatos aprólékos mértékeket, például differentially korrigált GPS-t használ.
 
-A tartózkodási hely adatai a következőképpen featurized, elkülönítve a régió, a hely és a város információit. Vegye figyelembe, hogy egy REST-végpontot is meghívhat, például a Bing Maps API-t, ha a régió/körzet információinak lekérése [pont alapján](https://msdn.microsoft.com/library/ff701710.aspx) elérhető.
+A tartózkodási hely adatai a következőképpen featurized, elkülönítve a régió, a hely és a város információit. Meghívhat egy REST-végpontot is, például a Bing Maps API-t, [ahol megkeresheti](https://msdn.microsoft.com/library/ff701710.aspx) a régió/körzet információit.
 
     select 
         <location_columnname>
@@ -121,7 +121,7 @@ Az újonnan létrehozott funkció hozzáadhatók oszlopként egy meglévő tábl
 ![azureml-olvasók][1] 
 
 ## <a name="python"></a>Programozási nyelv (például Python) használata
-A Python használata az adatelemzéshez és a szolgáltatások létrehozásához, amikor az adatai SQL Server hasonlóak az Azure blobban tárolt adatfeldolgozáshoz az [adatelemzési környezet Azure Blob-adatainak](data-blob.md)feldolgozása során dokumentált módon. Az adatoknak az adatbázisból egy Panda-adatkeretbe kell betölteniük, majd később is feldolgozhatók. Dokumentáljuk az adatbázishoz való csatlakozás folyamatát és az adatkeretbe való betöltését ebben a szakaszban.
+A Python használata az adatelemzéshez és a szolgáltatások létrehozásához, amikor az adatai SQL Server hasonlóak az Azure blobban tárolt adatfeldolgozáshoz az [adatelemzési környezet Azure Blob-adatainak](data-blob.md)feldolgozása során dokumentált módon. Az adatok betöltése az adatbázisból egy Panda-adatkeretbe további feldolgozás céljából. Dokumentáljuk az adatbázishoz való csatlakozás folyamatát és az adatkeretbe való betöltését ebben a szakaszban.
 
 A következő kapcsolati karakterlánc-formátum használható egy SQL Server-adatbázishoz való kapcsolódáshoz a Pythonból a pyodbc használatával (a kiszolgálónév, a dbname, a Felhasználónév és a jelszó lecserélése a megadott értékekkel):
 

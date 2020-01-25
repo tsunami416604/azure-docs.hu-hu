@@ -16,12 +16,12 @@ ms.date: 12/03/2018
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eee480d4a52f77e054bf8f0780707444b6db28b0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: c6da171db6535100342342571a5c1f6468abd0fc
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275800"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712345"
 ---
 # <a name="known-issues-and-resolutions-with-scim-20-protocol-compliance-of-the-azure-ad-user-provisioning-service"></a>Az Azure AD felhasználói kiépítési szolgáltatás SCIM 2,0-es protokoll-megfelelőségének ismert problémái és megoldásai
 
@@ -61,12 +61,12 @@ Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezé
 1. Jelentkezzen be a Azure Portal https://portal.azure.com.
 2. A Azure Portal **Azure Active Directory > vállalati alkalmazások** szakaszában keresse meg és válassza ki a meglévő scim alkalmazást.
 3. A meglévő SCIM-alkalmazás **Tulajdonságok** szakaszában másolja át az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorer t, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot a kiépítési feladatok AZONOSÍTÓjának megkereséséhez. Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs` 
 
-   ![Feladatok beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Feladatok beolvasása") 
+   ![Feladatok beolvasása](media/application-provisioning-config-problem-scim-compatibility/get-jobs.PNG "Feladatok beolvasása") 
 
 
 6. Az eredmények között másolja a "customappsso" vagy a "scim" kifejezéssel kezdődő teljes "ID" karakterláncot.
@@ -74,7 +74,7 @@ Igen. Ha már használja ezt az alkalmazás-példányt az egyszeri bejelentkezé
  
    `GET https://graph.microsoft.com/beta/servicePrincipals/[object-id]/synchronization/jobs/[job-id]/schema`
  
-   ![Séma beolvasása](./media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Séma beolvasása") 
+   ![Séma beolvasása](media/application-provisioning-config-problem-scim-compatibility/get-schema.PNG "Séma beolvasása") 
 
 8. Másolja a JSON-kimenetet az utolsó lépésből, és mentse egy szövegfájlba. Ez tartalmaz minden egyéni attribútumot, amelyet a régi alkalmazáshoz adott hozzá, és körülbelül néhány ezer sornyi JSON-t kell használnia.
 9. Futtassa az alábbi parancsot a kiépítési feladatok törléséhez:
@@ -101,7 +101,7 @@ Igen. Ha az alkalmazást a javítások előtt meglévő régi viselkedéshez kó
 1. Jelentkezzen be a Azure Portal https://portal.azure.com.
 2. a **Azure Active Directory > vállalati alkalmazások > alkalmazás létrehozása** című Azure Portal szakaszában hozzon létre egy új, **nem** katalógusbeli alkalmazást.
 3. Az új egyéni alkalmazás **Tulajdonságok** szakaszában másolja ki az **objektumazonosítót**.
-4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorert, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
+4. Egy új böngészőablakban nyissa meg a https://developer.microsoft.com/graph/graph-explorer t, és jelentkezzen be rendszergazdaként az Azure AD-bérlőhöz, ahol az alkalmazás hozzá van adva.
 5. A Graph Explorerben futtassa az alábbi parancsot az alkalmazás létesítési konfigurációjának inicializálásához.
    Cserélje le az "[Object-id]" kifejezést a harmadik lépésből másolt egyszerű szolgáltatásnév (objektumazonosító) helyére.
 

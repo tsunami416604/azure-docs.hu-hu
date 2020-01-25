@@ -1,22 +1,22 @@
 ---
-title: Hadoop-fürtben található adatszolgáltatások létrehozása – csoportos adatelemzési folyamat
+title: Szolgáltatások létrehozása egy Azure HDInsight Hadoop-fürtben lévő adatelemzési folyamathoz
 description: Példák a Azure HDInsight Hadoop-fürtben tárolt adatszolgáltatásokat létrehozó kaptár-lekérdezésekre.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/21/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 979652a467ea91c05884d2f7a24781f82035e505
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c926aac3ea4360793ff52b616a55dc6198357c8a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982046"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721778"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával
 Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Azure HDInsight Hadoop-fürtön tárolt adatszolgáltatásokat a kaptár-lekérdezések használatával. Ezek a kaptár-lekérdezések a beágyazott kaptár felhasználó által definiált függvényeit (UDF), a megadott parancsfájlokat használják.
@@ -144,14 +144,14 @@ Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai n
         set mapreduce.map.java.opts=-Xmx4096m;
         set mapreduce.task.io.sort.mb=-Xmx1024m;
 
-    Ez a paraméter 4 GB memóriát foglal le a Java-heap terület számára, és hatékonyabbá teszi a rendezést azáltal, hogy több memóriát foglal le. Érdemes lehet lejátszani ezeket a foglalásokat, ha a rendszer feladattal kapcsolatos hibákat észlelt a heap területtel kapcsolatban.
+    Ez a paraméter 4 GB memóriát foglal le a Java kupac területéhez, és hatékonyabbá teszi a rendezést azáltal, hogy több memóriát foglal le. Érdemes lehet lejátszani ezeket a foglalásokat, ha a rendszer feladattal kapcsolatos hibákat észlelt a heap területtel kapcsolatban.
 
 1. **DFS-blokk mérete**: Ez a paraméter a fájlrendszer által tárolt adatmennyiség legkisebb egységét állítja be. Ha például az elosztott fájlrendszerbeli blokk mérete 128 MB, akkor a méretnél kisebb és legfeljebb 128 MB méretű adatmennyiség egyetlen blokkban tárolódik. A 128 MB-nál nagyobb adatmennyiség további blokkokat is kiosztott. 
 2. A kis blokk méretének kiválasztásakor a Hadoop nagy méretűek lehetnek, mivel a név csomópontnak több kérést kell feldolgoznia, hogy megtalálja a fájlhoz tartozó megfelelő blokkot. A gigabájt (vagy nagyobb) adatmennyiség esetén ajánlott beállítás:
 
         set dfs.block.size=128m;
 
-2. **Összekapcsolási művelet optimalizálása a kaptárban**: míg a Térkép/csökkentés keretrendszerben lévő csatlakozási műveletek jellemzően a csökkentési fázisban vannak, időnként a térképi fázisban (más néven "mapjoins") lévő összekapcsolások ütemezésével is nagy nyereség érhető el. Ha a Kaptárat a lehető legpontosabban szeretné elvégezni, állítsa be a következőt:
+2. **Összekapcsolási művelet optimalizálása a kaptárban**: míg a Térkép/csökkentés keretrendszerben lévő csatlakozási műveletek jellemzően a csökkentési fázisban vannak, időnként a térképi fázisban (más néven "mapjoins") lévő összekapcsolások ütemezésével is nagy nyereség érhető el. Beállítás beállítása:
    
        set hive.auto.convert.join=true;
 
@@ -167,7 +167,7 @@ Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai n
 
      Ahogy láthatjuk, az adatok méretének megfelelően hangolja ezeket a paramétereket "beállítás" értékre, így beállíthatja, hogy a használt leképezések száma módosítható legyen.
 
-4. Íme néhány további **speciális lehetőség** a struktúra teljesítményének optimalizálásához. Ezek lehetővé teszik a leképezési és a feladatokhoz lefoglalt memória beállítását, és hasznos lehet a teljesítmény finomhangolásához. Ne feledje, hogy a *MapReduce. csökkentse a memóriát. MB* nem lehet nagyobb, mint a Hadoop-fürtben lévő egyes munkavégző csomópontok fizikai memóriájának mérete.
+4. Íme néhány további **speciális lehetőség** a struktúra teljesítményének optimalizálásához. Ezekkel a beállításokkal megadhatja a leképezési és a feladatokhoz lefoglalt memóriát, és hasznos lehet a teljesítmény finomhangolásához. Ne feledje, hogy a *MapReduce. csökkentse a memóriát. MB* nem lehet nagyobb, mint a Hadoop-fürtben lévő egyes munkavégző csomópontok fizikai memóriájának mérete.
    
         set mapreduce.map.memory.mb = 2048;
         set mapreduce.reduce.memory.mb=6144;

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/11/2019
 ms.author: dapine
-ms.openlocfilehash: 5bd7352230d4d9daaed219f654be51dc528bea8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46e9f8e660c3fd62807d630481e6b3057d2351a5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75380184"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717020"
 ---
 # <a name="create-a-custom-keyword-using-speech-studio"></a>Egyéni kulcsszó létrehozása a Speech Studio használatával
 
@@ -49,7 +49,7 @@ Egyéni kulcsszó használata előtt létre kell hoznia egy kulcsszót a [Speech
 
     ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-choose-prons.png)
 
-1. A modell létrehozása akár tíz percet is igénybe vehet. A kulcsszó listája a **feldolgozástól** a **sikeres** modell befejeződése után módosul. Ezután letöltheti a fájlt.
+1. A modell létrehozása akár harminc percet is igénybe vehet. A kulcsszó listája a **feldolgozástól** a **sikeres** modell befejeződése után módosul. Ezután letöltheti a fájlt.
 
     ![A kulcsszó áttekintése](media/custom-keyword/custom-kws-portal-download-model.png)
 

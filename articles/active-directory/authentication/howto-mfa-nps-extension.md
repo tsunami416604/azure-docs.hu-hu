@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 283bd56b9d9cbe412e9c28127dd9dab7decc2d7c
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a4da2e3696dd1fad1dcce81831385f1e21891f97
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848306"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712527"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Meglévő NPS-infrastruktúra integrálása az Azure Multi-Factor Authentication
 
@@ -51,7 +51,7 @@ A hálózati házirend-kiszolgáló bővítmény célja, hogy működjön a megl
 
 Az Azure MFA NPS-bővítménye az [azure multi-Factor Authentication-licenccel](multi-factor-authentication.md) rendelkező ügyfelek számára érhető el (prémium szintű Azure ad, EMS vagy egy MFA önálló licenccel). Az Azure MFA-hoz készült, például felhasználónként vagy hitelesítési licenccel rendelkező, fogyasztáson alapuló licencek nem kompatibilisek a hálózati házirend-kiszolgáló bővítménnyel. 
 
-### <a name="software"></a>Szoftver
+### <a name="software"></a>Szoftverek
 
 Windows Server 2008 R2 SP1 vagy újabb.
 
@@ -165,7 +165,7 @@ Ha egy meglévő NPS-bővítmény frissítését végzi, a mögöttes kiszolgál
 
 A telepítő létrehoz egy PowerShell-parancsfájlt a következő helyen: `C:\Program Files\Microsoft\AzureMfa\Config` (ahol a C:\ a telepítési meghajtója). Ez a PowerShell-parancsfájl minden futtatáskor végrehajtja a következő műveleteket:
 
-- Önaláírt tanúsítvány létrehozása.
+- Hozzon létre egy önaláírt tanúsítványt.
 - Rendelje hozzá a tanúsítvány nyilvános kulcsát az egyszerű szolgáltatásnév számára az Azure AD-ben.
 - Tárolja a tanúsítványt a helyi számítógép tanúsítvány-tárolójában.
 - Hozzáférés biztosítása a tanúsítvány titkos kulcsához a hálózati felhasználó számára.
@@ -229,7 +229,7 @@ Ennek a beállításnak a célja annak meghatározása, hogy mi a teendő, ha eg
 
 Dönthet úgy, hogy létrehozza ezt a kulcsot, és FALSE (hamis) értékre állítja a felhasználók bevezetését, és az Azure MFA még nem minden esetben regisztrálható. Mivel azonban a kulcs beállítása lehetővé teszi, hogy az MFA-ban nem regisztrált felhasználók bejelentkezzenek, el kell távolítania ezt a kulcsot az éles környezetbe való belépés előtt.
 
-## <a name="troubleshooting"></a>Hibakeresés
+## <a name="troubleshooting"></a>Hibaelhárítás
 
 ### <a name="nps-extension-health-check-script"></a>NPS-bővítmény állapot-ellenőrzési parancsfájlja
 
@@ -273,7 +273,7 @@ Az érvényes – és az érvényes – csak az emberi olvashatóságot eredmén
 
 ---
 
-### <a name="why-cant-i-sign-in"></a>Miért nem tud bejelentkezni?
+### <a name="why-cannot-i-sign-in"></a>Miért nem tudok bejelentkezni?
 
 Győződjön meg arról, hogy a jelszó még nem járt le. A hálózati házirend-kiszolgáló bővítmény nem támogatja a jelszavak módosítását a bejelentkezési munkafolyamat részeként. További segítségért forduljon a szervezet informatikai részlegéhez.
 

@@ -1,39 +1,39 @@
 ---
-title: Egyéni Azure Event Grid-témakör esemény közzététele
-description: Ismerteti, hogyan lehet egy egyéni témakört az esemény közzététele az Azure Event Gridhez
+title: Esemény közzététele egyéni Azure Event Grid témakörben
+description: Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy egyéni témakörbe. Megjeleníti a bejegyzés és az esemény formátumát.
 services: event-grid
 author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 01/17/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 14ae5f2a0b6a950889d8587cd4d03ff4fc9a171b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 0afad249f71a36bf7552da499e985b68d48ee7a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66304215"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721557"
 ---
-# <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel egyéni témakörben az Azure Event Gridhez
+# <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel a Azure Event Grid egyéni témakörében
 
-Ez a cikk ismerteti egy egyéni témakört az esemény közzététele. Azt mutatja, hogy a post és az adatok formátumát. A [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) riasztáspéldányhoz tartoznak, amelyekre a várt formátumú.
+Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy egyéni témakörbe. Megjeleníti a bejegyzés és az esemény formátumát. A [szolgáltatói szerződés (SLA)](https://azure.microsoft.com/support/legal/sla/event-grid/v1_0/) csak a várt formátumnak megfelelő bejegyzésekre vonatkozik.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="endpoint"></a>Végpont
 
-Amikor a HTTP POST küld egy egyéni témakör, használja az URI-formátum: `https://<topic-endpoint>?api-version=2018-01-01`.
+Ha a HTTP-BEJEGYZÉST egyéni témakörbe küldi, használja a következő URI-formátumot: `https://<topic-endpoint>?api-version=2018-01-01`.
 
-Ha például egy érvényes URI-ja: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
+Érvényes URI például a következő: `https://exampletopic.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01`.
 
-A végpont egy egyéni témakör az Azure CLI-vel használja:
+Az Azure CLI-vel rendelkező egyéni témakör végpontjának beszerzéséhez használja a következőt:
 
 ```azurecli-interactive
 az eventgrid topic show --name <topic-name> -g <topic-resource-group> --query "endpoint"
 ```
 
-Egy egyéni témakört az Azure PowerShell használatával a végpont beszerzéséhez használja:
+Ahhoz, hogy a végpontot a Azure PowerShell használó egyéni témakörhöz lehessen beolvasni, használja a következőt:
 
 ```powershell
 (Get-AzEventGridTopic -ResourceGroupName <topic-resource-group> -Name <topic-name>).Endpoint
@@ -41,17 +41,17 @@ Egy egyéni témakört az Azure PowerShell használatával a végpont beszerzés
 
 ## <a name="header"></a>Fejléc
 
-A kérelemben, például egy nevű fejléc értéke `aeg-sas-key` , amelyek a hitelesítési kulcsot tartalmaz.
+A kérelemben adjon meg egy `aeg-sas-key` nevű fejléc-értéket, amely a hitelesítés kulcsát tartalmazza.
 
-Ha például egy érvényes fejléc értéke `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
+Egy érvényes fejléc-érték például `aeg-sas-key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg==`.
 
-Egy egyéni témakört az Azure CLI-vel a kulcsot használja:
+Az Azure CLI-vel való egyéni témakör kulcsának beszerzéséhez használja a következőt:
 
 ```azurecli
 az eventgrid topic key list --name <topic-name> -g <topic-resource-group> --query "key1"
 ```
 
-Egy egyéni témakör a PowerShell-lel a kulcs lekéréséhez használja:
+A PowerShell-lel rendelkező egyéni témakör kulcsának beszerzéséhez használja a következőt:
 
 ```powershell
 (Get-AzEventGridTopicKey -ResourceGroupName <topic-resource-group> -Name <topic-name>).Key1
@@ -59,7 +59,7 @@ Egy egyéni témakör a PowerShell-lel a kulcs lekéréséhez használja:
 
 ## <a name="event-data"></a>Eseményadatok
 
-Egyéni témakörök a legfelső szintű adatok tartalmazzák a standard szintű erőforrás által definiált események, ugyanazokat a mezőket. Ezek a tulajdonságok egyike az egyéni témakörbe egyedi tulajdonságokat tartalmazó adatok tulajdonság. Esemény-közzétevő, mint az adott objektum tulajdonságait határozza meg. Használja a következő mintát követik:
+Egyéni témakörök esetén a legfelső szintű adat ugyanazokat a mezőket tartalmazza, mint a szabványos erőforrás-definíciós események. Ezen tulajdonságok egyike egy olyan adattulajdonság, amely az egyéni témakörben egyedi tulajdonságokat tartalmaz. Esemény-közzétevőként meg kell határoznia az adatobjektum tulajdonságait. Használja az alábbi sémát:
 
 ```json
 [
@@ -76,12 +76,12 @@ Egyéni témakörök a legfelső szintű adatok tartalmazzák a standard szintű
 ]
 ```
 
-Ezek a tulajdonságok leírását lásd: [Azure Event Grid-esemény séma](event-schema.md). Az eseményeket egy event grid-témakör az üzenetküldés, ha a tömb rendelkezhet egy teljes mérete legfeljebb 1 MB. A tömbben szereplő minden esemény korlátozódik 64 KB-os (nyilvánosan elérhetők) vagy 1 MB (előzetes verzió).
+A tulajdonságok leírását itt tekintheti meg: [Azure Event Grid Event Schema](event-schema.md). Amikor eseményeket küld egy Event Grid-témakörbe, a tömb legfeljebb 1 MB méretű lehet. A tömbben lévő összes esemény 64 KB-ra (általános rendelkezésre állás) vagy 1 MB-ra (előzetes verzió) korlátozódik.
 
 > [!NOTE]
-> Egy esemény mérete legfeljebb 64 KB-os által általánosan elérhető (GA) szolgáltatói szerződés (SLA) vonatkozik. Támogatást biztosít az esemény mérete legfeljebb 1 MB jelenleg előzetes verzióban érhető el. Események több mint 64 KB-os 64 KB-os egységekben számoljuk. 
+> A 64 KB-ig terjedő méretű események általánosan elérhetők (GA) szolgáltatói szerződés (SLA). A legfeljebb 1 MB méretű esemény támogatása jelenleg előzetes verzióban érhető el. Az 64 KB-nál nagyobb számú esemény díja 64 KB. 
 
-Például egy érvényes adatok eseménysémája van:
+Egy érvényes esemény-Adatséma például a következő:
 
 ```json
 [{
@@ -99,17 +99,17 @@ Például egy érvényes adatok eseménysémája van:
 
 ## <a name="response"></a>Válasz
 
-A témakör végpontra könyvelés után kapott választ. A válasz egy normál HTTP-válaszkód. Néhány gyakori válaszokat a következők:
+A témakör-végpontra való közzététel után választ kap. A válasz egy szabványos HTTP-válasz kódja. Néhány gyakori Válasz:
 
 |Eredmény  |Válasz  |
 |---------|---------|
-|Siker  | 200 OK  |
-|Eseményadatok formátuma helytelen | 400 Hibás kérés |
-|Érvénytelenek a hozzáférési kulcs | 401-es nem engedélyezett |
-|Nem megfelelő végpont | 404 – Nem található |
-|Tömb vagy esemény meghaladja a méretbeli korlátokat | 413 adattartalom túl nagy |
+|Sikeres  | 200 OK  |
+|Az esemény adatformátuma helytelen formátumú | 400 hibás kérelem |
+|Érvénytelen hozzáférési kulcs | 401 jogosulatlan |
+|Helytelen végpont | 404 – Nem található |
+|Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-A hibákat az üzenet törzsének formátuma a következő:
+Hibák esetén az üzenet törzsének formátuma a következő:
 
 ```json
 {
@@ -124,8 +124,8 @@ A hibákat az üzenet törzsének formátuma a következő:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* Esemény kézbesítések figyelésével kapcsolatos további információkért lásd: [figyelő Event Grid üzenetkézbesítése](monitor-event-delivery.md).
-* A hitelesítési kulcs kapcsolatos további információkért lásd: [Event Grid biztonsági és hitelesítési](security-authentication.md).
-* Az Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid-előfizetés séma](subscription-creation-schema.md).
+* További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
+* További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).
+* Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

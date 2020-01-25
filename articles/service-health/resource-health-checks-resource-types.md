@@ -3,12 +3,12 @@ title: Támogatott erőforrástípusok a Azure Resource Healthon keresztül | Mi
 description: Támogatott erőforrástípusok az Azure Resource Health használatával
 ms.topic: conceptual
 ms.date: 01/29/2019
-ms.openlocfilehash: f25dc32774cb040a2b9873c6811ff184373c5104
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3a61c8b90f4dc5e52a875488afb5374e3d6b7ce4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75465266"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76717066"
 ---
 # <a name="resource-types-and-health-checks-in-azure-resource-health"></a>Erőforrástípusok és állapot-ellenőrzések az Azure Resource Health-ben
 Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes ellenőrzés teljes listáját tartalmazza.
@@ -23,7 +23,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Működik az API Management szolgáltatás?</li></ul>|
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft. batch/batchAccounts
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Működik a Batch-fiókja?</li><li>Túllépte a készlet kvótáját ehhez a Batch-fiókhoz?</li></ul>|
@@ -139,7 +139,7 @@ Az alábbi lista az erőforrás-állapoton keresztül végrehajtott összes elle
 |---|
 |<ul><li>Csatlakozik a VPN-alagút?</li><li>Vannak konfigurációs ütközések a kapcsolatban?</li><li>Megfelelően vannak-e konfigurálva az előmegosztott kulcsok?</li><li>Elérhető a helyszíni VPN-eszköz?</li><li>Eltérnek az IPSec/IKE biztonsági házirend?</li><li>A S2S VPN-kapcsolat megfelelően van kiépítve vagy hibás állapotban van?</li><li>Megfelelően van-e kiépítve vagy hibás állapotban a VNET-VNET-kapcsolatok?</li></ul>|
 
-## <a name="microsoftnetworkexpressreoutecircuits"></a>Microsoft. Network/expressreoutecircuits
+## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressroutecircuits
 |Végrehajtott ellenőrzések|
 |---|
 |<ul><li>Kifogástalan a ExpressRoute áramkör?</li></ul>|

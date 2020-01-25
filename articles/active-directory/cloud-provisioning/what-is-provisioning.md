@@ -11,18 +11,18 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 305108e576ad4e60089c929c9b780e8cee559540
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 28513c57101af67695d10056b3dc8e6537dcddb2
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167626"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76712551"
 ---
 # <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
 
 Napjainkban a vállalatok és a vállalatok egyre többen használják a helyszíni és a felhőalapú alkalmazásokat.  A felhasználóknak a helyszíni és a Felhőbeli alkalmazásokhoz is hozzá kell férniük. A különböző alkalmazásokban (a helyszínen és a felhőben) egyetlen identitással kell rendelkeznie.
 
-A kiépítés során a rendszer bizonyos feltételek alapján hozza létre az objektumot, megtartja az objektum előállítási dátumát és törli az objektumot, amikor a feltételek már nem teljesülnek. Ha például egy új felhasználó csatlakozik a szervezethez, a felhasználó bekerül a HR rendszerbe.  Ezen a ponton a kiépítés létrehozhat egy megfelelő felhasználói fiókot a felhőben, Active Directoryban és különböző alkalmazásokban, amelyekhez a felhasználónak hozzá kell férnie.  Ez lehetővé teszi a felhasználó számára, hogy megkezdje a munkát, és hozzáférhessen az első napon szükséges alkalmazásokhoz és rendszerekhez. 
+A kiépítés során a rendszer bizonyos feltételek alapján hozza létre az objektumot, és az objektumot naprakészen tartja, és törli az objektumot, amikor a feltételek már nem teljesülnek. Ha például egy új felhasználó csatlakozik a szervezethez, a felhasználó bekerül a HR rendszerbe.  Ezen a ponton a kiépítés létrehozhat egy megfelelő felhasználói fiókot a felhőben, Active Directoryban és különböző alkalmazásokban, amelyekhez a felhasználónak hozzá kell férnie.  Ez lehetővé teszi a felhasználó számára, hogy megkezdje a munkát, és hozzáférhessen az első napon szükséges alkalmazásokhoz és rendszerekhez. 
 
 ![Felhőbeli kiépítés](media/what-is-provisioning/cloud1.png)
 

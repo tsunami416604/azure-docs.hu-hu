@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 12/10/2019
+ms.date: 1/24/2020
 ms.author: mlearned
-ms.openlocfilehash: 2344e2189d6b0f02e7fed1aab25d32551c1fedcf
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: a477c2011ff3c6cf1987ed80ef5c19c26abc40f0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154341"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713330"
 ---
 # <a name="create-a-private-azure-kubernetes-service-cluster-preview"></a>Privát Azure Kubernetes Service-fürt létrehozása (előzetes verzió)
 
@@ -128,14 +128,16 @@ Az API-kiszolgáló végpontjának nincs nyilvános IP-címe. Ennek következté
 
 ## <a name="dependencies"></a>Függőségek  
 * A Private link Service csak a standard Azure Load Balancer esetén támogatott. Az alapszintű Azure Load Balancer nem támogatott.  
+* Ha egyéni DNS-kiszolgálót szeretne használni, telepítsen egy DNS-t használó AD-kiszolgálót az IP-168.63.129.16 való továbbításhoz
 
 ## <a name="limitations"></a>Korlátozások 
+* A Availability Zones jelenleg nem támogatott
 * Az [Azure Private link Service korlátozásai][private-link-service] a privát fürtökre, az Azure privát végpontokra és a virtuális hálózati szolgáltatás-végpontokra vonatkoznak, amelyek jelenleg nem támogatottak ugyanabban a virtuális hálózatban.
-* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI-ket).
-* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból.
+* A privát fürtben lévő virtuális csomópontok nem támogatják a privát Azure-beli virtuális hálózatokon lévő Azure Container Instances (ACI) használatát
+* Nem támogatott az Azure DevOps integrációja a privát fürtökkel rendelkező dobozból
 * Azon ügyfelek számára, akik számára engedélyezni kell a Azure Container Registryt a privát AK-val való munkavégzéshez, az Container Registry virtuális hálózatot az ügynök-fürt virtuális hálózatának kell megadnia.
-* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz.
-* Nem támogatott a meglévő AK-fürtök privát fürtökre való konvertálása.  
+* Nincs aktuális támogatás az Azure dev Spaces szolgáltatáshoz
+* Meglévő AK-fürtök privát fürtökre való konvertálása nem támogatott
 * Ha törli vagy módosítja a magánhálózati végpontot az ügyfél alhálózatán, a fürt működése leáll. 
 * A tárolók élő adatAzure Monitor jelenleg nem támogatottak.
 * *A saját DNS* használata jelenleg nem támogatott.

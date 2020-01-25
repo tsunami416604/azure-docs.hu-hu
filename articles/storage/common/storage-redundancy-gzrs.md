@@ -8,12 +8,12 @@ ms.date: 08/13/2019
 ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
-ms.openlocfilehash: 2591f1846574994b878814f3b08df1de2a6e9fc1
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: c102941920d2b8746a49be47ef4c5613fa0bc281
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973366"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719075"
 ---
 # <a name="build-highly-available-azure-storage-applications-with-geo-zone-redundant-storage-gzrs-preview"></a>Hosszú rendelkezésre állású Azure Storage-alkalmazások kiépítése a Geo-Zone-redundáns tárolással (GZRS) (előzetes verzió)
 
@@ -32,6 +32,7 @@ A GZRS és az RA-GZRS jelenleg előzetes verzióként érhető el a következő 
 - Délkelet-Ázsia
 - Észak-Európa
 - Nyugat-Európa
+- Kelet-Japán
 - Egyesült Királyság déli régiója
 - USA keleti régiója
 - USA 2. keleti régiója
@@ -129,6 +130,7 @@ Az áttelepítés befejezése után a rendszer frissíti a Storage-fiók replik�
 Tartsa szem előtt az alábbi korlátozásokat az élő áttelepítéssel kapcsolatban:
 
 - Bár a Microsoft azonnal kezeli az élő migrálási kérelmet, a migrálás befejezésének időpontjára nem vállal garanciát. Ha szüksége van az adatok GZRS vagy RA-GZRS való áttelepítésére egy adott napon keresztül, a Microsoft azt javasolja, hogy ehelyett manuális áttelepítést végezzen. Minél több adat található a fiókban, általában annál tovább tart az adatok migrálása.
+- Az élő áttelepítés csak GRS vagy RA-GRS replikálást használó Storage-fiókok esetén támogatott. Ha a fiókja LRS használ, akkor a továbblépés előtt először módosítania kell a fiók replikálási típusát GRS vagy RA-GRS. Ez a közbenső lépés hozzáadja a GRS/RA-GRS által biztosított másodlagos végpontot.
 - A fióknak adatait kell tartalmaznia.
 - Az adatátvitelt csak ugyanazon a régión belül végezheti el.
 - Csak a standard szintű Storage-fiókok támogatják az élő áttelepítést. A Premium Storage-fiókokat manuálisan kell áttelepíteni.
