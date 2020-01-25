@@ -6,13 +6,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/30/2019
-ms.openlocfilehash: 38966d537398d2770fba185a59b51956cf2223c3
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/23/2020
+ms.openlocfilehash: b0ec82807857be60f30aa777ff5871334383acf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76290342"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715935"
 ---
 # <a name="azure-monitor-frequently-asked-questions"></a>Azure Monitor gyakori kérdések
 
@@ -85,7 +85,7 @@ Ha meg szeretné tekinteni a megoldásokat a Azure Portalban, kattintson **a** *
 ## <a name="logs"></a>Naplók
 
 ### <a name="whats-the-difference-between-azure-monitor-logs-and-azure-data-explorer"></a>Mi a különbség a Azure Monitor naplók és az Azure Adatkezelő között?
-Az Azure Data Explorer egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Azure Monitor naplók az Azure Adatkezelőra épülnek, és ugyanazokat a Kusto-lekérdezési nyelvet (KQL) használják néhány kisebb eltéréssel. Lásd: [Azure monitor a naplózási lekérdezés nyelvi különbségeit](log-query/data-explorer-difference.md).
+Az Azure Adatkezelő egy gyors és hatékonyan skálázható adatáttekintési szolgáltatás napló- és telemetriaadatokhoz. Azure Monitor naplók az Azure Adatkezelőra épülnek, és ugyanazokat a Kusto-lekérdezési nyelvet (KQL) használják néhány kisebb eltéréssel. Lásd: [Azure monitor a naplózási lekérdezés nyelvi különbségeit](log-query/data-explorer-difference.md).
 
 ### <a name="how-do-i-retrieve-log-data"></a>Hogyan beolvasni az adatnaplót?
 Az összes adatok beolvasása egy Log Analytics munkaterületről a Kusto Query Language (KQL) használatával írt napló lekérdezés használatával. Írhat saját lekérdezéseket, vagy használhat olyan megoldásokat és bepillantást, amelyek egy adott alkalmazáshoz vagy szolgáltatáshoz tartozó naplózási lekérdezéseket tartalmaznak. Lásd: [Azure monitorban található naplók áttekintése](log-query/log-query-overview.md).
@@ -95,6 +95,18 @@ A Azure Monitor által gyűjtött összes naplózási adatokat egy Log Analytics
 
 ### <a name="can-you-move-an-existing-log-analytics-workspace-to-another-azure-subscription"></a>Át lehet helyezni egy meglévő Log Analytics munkaterületet egy másik Azure-előfizetésbe?
 Áthelyezheti a munkaterületet erőforráscsoportok vagy előfizetések között, de nem egy másik régióba. Lásd: [log Analytics munkaterület áthelyezése másik előfizetésre vagy erőforráscsoporthoz](platform/move-workspace.md).
+
+### <a name="why-cant-i-see-query-explorer-and-save-buttons-in-log-analytics"></a>Miért nem látom a Query Explorer és a Save gombokat a Log Analyticsban?
+
+A **lekérdezési tallózó**, a **Mentés** és az **új riasztási szabály** gomb nem érhető el, ha a [lekérdezési hatókör](log-query/scope.md) egy adott erőforrásra van beállítva. Riasztások létrehozásához, illetve egy lekérdezés mentéséhez vagy betöltéséhez Log Analytics hatókörét egy munkaterületre kell korlátozni. Ha Log Analytics szeretne megnyitni a munkaterület környezetében, válassza a **Azure monitor** menüjének **naplók** elemét. A legutóbb használt munkaterület van kiválasztva, de más munkaterületet is kijelölhet. Lásd: [a naplózási lekérdezés hatóköre és időbeli tartománya Azure Monitor log Analytics](log-query/scope.md)
+
+### <a name="why-am-i-getting-the-error-register-resource-provider-microsoftinsights-for-this-subscription-to-enable-this-query-when-opening-log-analytics-from-a-vm"></a>Miért kapok hibaüzenetet: "az erőforrás-szolgáltató regisztrálása a Microsoft. reinsights" ehhez az előfizetéshez, hogy engedélyezze ezt a lekérdezést a virtuális gép Log Analytics megnyitásakor? 
+Számos erőforrás-szolgáltató automatikusan regisztrálva van, de előfordulhat, hogy manuálisan kell regisztrálnia néhány erőforrás-szolgáltatót. A regisztráció hatóköre mindig az előfizetés. További információ: [Erőforrás-szolgáltatók és típusaik](../azure-resource-manager/management/resource-providers-and-types.md#azure-portal).
+
+### <a name="why-am-i-am-getting-no-access-error-message-when-opening-log-analytics-from-a-vm"></a>Miért nem kapok hibaüzenetet a Log Analytics virtuális gépről való megnyitásakor? 
+A virtuális gépek naplófájljainak megtekintéséhez olvasási engedéllyel kell rendelkeznie a virtuálisgép-naplókat tároló munkaterületekhez. Ezekben az esetekben a rendszergazdának Önnek kell megadnia Önnek az Azure-beli engedélyeket.
+
+
 
 
 ## <a name="alerts"></a>Értesítések
@@ -181,6 +193,12 @@ Válasszon egy meglévő vagy új [műveleti csoportot](platform/action-groups.m
 A tűzfalra vonatkozó követelmények részleteiért lásd a [hálózati tűzfalakra vonatkozó követelményeket](platform/log-analytics-agent.md#network-firewall-requirements).
 
 
+## <a name="visualizations"></a>Vizualizációk
+
+### <a name="why-cant-i-cant-see-view-designer"></a>Miért nem látható a Tervező nézet?
+
+A tervező csak közreműködői engedélyekkel rendelkező felhasználók számára érhető el a Log Analytics munkaterületen.
+
 
 ## <a name="application-insights"></a>Application Insights
 
@@ -189,7 +207,7 @@ A tűzfalra vonatkozó követelmények részleteiért lásd a [hálózati tűzfa
 
 * [.NET-alkalmazás](app/asp-net-troubleshoot-no-data.md)
 * [Már futó alkalmazás figyelése](app/monitor-performance-live-website-now.md#troubleshoot)
-* [Azure diagnostics](platform/diagnostics-extension-to-application-insights.md)
+* [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
 * [Java webalkalmazások](app/java-troubleshoot.md)
 
 *Nem kapok adatok a kiszolgálóról*
@@ -224,94 +242,94 @@ A nagyvállalati csomag minden nap esetében díjat számít fel, amelyet minden
 
 ### <a name="how-much-does-it-cost"></a>Mennyibe kerül?
 
-* Open the **Usage and estimated costs page** in an Application Insights resource. There's a chart of recent usage. You can set a data volume cap, if you want.
-* Open the [Azure Billing blade](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) to see your bills across all resources.
+* Nyissa meg a **használati és becsült költségek lapot** egy Application Insights erőforrásban. Van egy diagram a közelmúltbeli használatról. Ha kívánja, beállíthatja az adatmennyiség korlátját.
+* Nyissa meg az [Azure számlázási](https://portal.azure.com/#blade/Microsoft_Azure_Billing/BillingBlade/Overview) paneljét, és tekintse meg a számlákat az összes erőforráson.
 
-### <a name="q14"></a>What does Application Insights modify in my project?
-The details depend on the type of project. For a web application:
+### <a name="q14"></a>Mit Application Insights módosítani a projektben?
+A részletek a projekt típusától függenek. Webalkalmazások esetén:
 
-* Adds these files to your project:
+* Hozzáadja ezeket a fájlokat a projekthez:
   * ApplicationInsights.config
-  * ai.js
-* Installs these NuGet packages:
-  * *Application Insights API* - the core API
-  * *Application Insights API for Web Applications* - used to send telemetry from the server
-  * *Application Insights API for JavaScript Applications* - used to send telemetry from the client
-* The packages include these assemblies:
-  * Microsoft.ApplicationInsights
-  * Microsoft.ApplicationInsights.Platform
-* Inserts items into:
+  * ai. js
+* A következő NuGet-csomagokat telepíti:
+  * *Application INSIGHTS API* – a Core API
+  * *Application INSIGHTS API webalkalmazásokhoz* – telemetria küldésére szolgál a kiszolgálóról
+  * *Application INSIGHTS API JavaScript-alkalmazásokhoz* – telemetria küldésére szolgál az ügyféltől
+* A csomagok közé tartoznak a következő szerelvények:
+  * Microsoft. ApplicationInsights
+  * Microsoft. ApplicationInsights. platform
+* Elemek beszúrása a következőkbe:
   * Web.config
-  * packages.config
-* (New projects only - if you [add Application Insights to an existing project][start], you have to do this manually.) Inserts snippets into the client and server code to initialize them with the Application Insights resource ID. For example, in an MVC app, code is inserted into the master page Views/Shared/\_Layout.cshtml
+  * packages. config
+* (Csak új projektek – ha [Application Insightst ad hozzá egy meglévő projekthez][start], ezt manuálisan kell elvégeznie.) Kódrészleteket szúr be az ügyfél és a kiszolgáló kódjába az Application Insights erőforrás-AZONOSÍTÓval való inicializáláshoz. Egy MVC-alkalmazásban például a rendszer beszúrja a kódot a mesterlap-nézetbe, illetve a megosztott/\_elrendezésbe. cshtml
 
-### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>How do I upgrade from older SDK versions?
-See the [release notes](app/release-notes.md) for the SDK appropriate to your type of application.
+### <a name="how-do-i-upgrade-from-older-sdk-versions"></a>Hogyan frissíteni a régebbi SDK-verziókról?
+Tekintse meg az SDK [kibocsátási megjegyzéseit](app/release-notes.md) , amelyek megfelelnek az adott alkalmazás típusának.
 
-### <a name="update"></a>How can I change which Azure resource my project sends data to?
-In Solution Explorer, right-click `ApplicationInsights.config` and choose **Update Application Insights**. You can send the data to an existing or new resource in Azure. The update wizard changes the instrumentation key in ApplicationInsights.config, which determines where the server SDK sends your data. Unless you deselect "Update all," it will also change the key where it appears in your web pages.
+### <a name="update"></a>Hogyan változtathatom meg, hogy a projekt melyik Azure-erőforráshoz küld adatokat?
+A Megoldáskezelő kattintson a jobb gombbal az `ApplicationInsights.config` elemre, majd válassza a **frissítés Application Insights**lehetőséget. Az Azure-ban egy meglévő vagy új erőforráshoz is elküldheti az adott adatforrást. A frissítési varázsló megváltoztatja a kialakítási kulcsot a ApplicationInsights. config fájlban, amely meghatározza, hogy a kiszolgáló SDK hogyan küldje el az adatokat. Ha kijelöli az "összes frissítése" lehetőséget, akkor az azt is megváltoztatja, hogy a kulcs hol jelenik meg a weblapok között.
 
 ### <a name="what-is-status-monitor"></a>Mi az Állapotfigyelő?
 
-A desktop app that you can use in your IIS web server to help configure Application Insights in web apps. It doesn't collect telemetry: you can stop it when you are not configuring an app. 
+Egy asztali alkalmazás, amelyet az IIS-webkiszolgálóban használhat a Application Insights webalkalmazásokban való konfigurálásához. Nem gyűjt telemetria: leállíthatja, ha nem konfigurál egy alkalmazást. 
 
 [További információk](app/monitor-performance-live-website-now.md#questions).
 
-### <a name="what-telemetry-is-collected-by-application-insights"></a>What telemetry is collected by Application Insights?
+### <a name="what-telemetry-is-collected-by-application-insights"></a>Milyen telemetria gyűjtenek Application Insights?
 
-From server web apps:
+A Server Web appsből:
 
 * HTTP-kérések
-* [Dependencies](app/asp-net-dependencies.md). Calls to: SQL Databases; HTTP calls to external services; Azure Cosmos DB, table, blob storage, and queue. 
-* [Exceptions](app/asp-net-exceptions.md) and stack traces.
-* [Performance Counters](app/performance-counters.md) - If you use [Status Monitor](app/monitor-performance-live-website-now.md), [Azure monitoring for App Services](app/azure-web-apps.md), [Azure monitoring for VM or virtual machine scale set](app/azure-vm-vmss-apps.md), or the [Application Insights collectd writer](app/java-collectd.md).
-* [Custom events and metrics](app/api-custom-events-metrics.md) that you code.
-* [Trace logs](app/asp-net-trace-logs.md) if you configure the appropriate collector.
+* [Függőségek](app/asp-net-dependencies.md). Hívások: SQL-adatbázisok; HTTP-hívások külső szolgáltatásokhoz; Azure Cosmos DB, tábla, blob Storage és üzenetsor. 
+* [Kivételek](app/asp-net-exceptions.md) és verem-Nyomkövetések.
+* [Teljesítményszámlálók](app/performance-counters.md) – ha [Állapotmonitort](app/monitor-performance-live-website-now.md)használ, a [app Services Azure-figyelést](app/azure-web-apps.md), a [virtuális gép vagy a virtuálisgép-méretezési csoport azure-figyelését](app/azure-vm-vmss-apps.md), vagy a [Application Insights gyűjtött író](app/java-collectd.md).
+* [Egyéni események és mérőszámok](app/api-custom-events-metrics.md) .
+* [Nyomkövetési naplók](app/asp-net-trace-logs.md) , ha a megfelelő gyűjtőt konfigurálja.
 
-From [client web pages](app/javascript.md):
+Az [ügyfél weblapjairól](app/javascript.md):
 
-* [Page view counts](app/usage-overview.md)
-* [AJAX calls](app/asp-net-dependencies.md) Requests made from a running script.
-* Page view load data
-* User and session counts
-* [Authenticated user IDs](app/api-custom-events-metrics.md#authenticated-users)
+* [Oldalmegtekintések száma](app/usage-overview.md)
+* [Ajax-hívások](app/asp-net-dependencies.md) Futó parancsfájlból végrehajtott kérelmek.
+* Az oldal nézet betöltési adatkészlete
+* Felhasználók és munkamenetek száma
+* [Hitelesített felhasználói azonosítók](app/api-custom-events-metrics.md#authenticated-users)
 
-From other sources, if you configure them:
+Más forrásokból, ha konfigurálja őket:
 
-* [Azure diagnostics](platform/diagnostics-extension-to-application-insights.md)
-* [Import to Analytics](platform/data-collector-api.md)
+* [Azure-diagnosztika](platform/diagnostics-extension-to-application-insights.md)
+* [Importálás az Analytics szolgáltatásba](platform/data-collector-api.md)
 * [Log Analytics](platform/data-collector-api.md)
 * [Logstash](platform/data-collector-api.md)
 
-### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Can I filter out or modify some telemetry?
+### <a name="can-i-filter-out-or-modify-some-telemetry"></a>Kiszűrhetők vagy módosíthatok néhány telemetria?
 
-Yes, in the server you can write:
+Igen, a kiszolgálón írhat:
 
-* Telemetry Processor to filter or add properties to selected telemetry items before they are sent from your app.
-* Telemetry Initializer to add properties to all items of telemetry.
+* A telemetria a kiválasztott telemetria-elemekhez tartozó tulajdonságokat szűrheti vagy adja hozzá az alkalmazásból való elküldése előtt.
+* A telemetria inicializáló tulajdonságot adhat hozzá a telemetria összes eleméhez.
 
-Learn more for [ASP.NET](app/api-filtering-sampling.md) or [Java](app/java-filter-telemetry.md).
+További információ a [ASP.net](app/api-filtering-sampling.md) és a [Java](app/java-filter-telemetry.md)-ról.
 
-### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>How are city, country/region, and other geo location data calculated?
+### <a name="how-are-city-countryregion-and-other-geo-location-data-calculated"></a>Hogyan számítják ki a város, az ország/régió és az egyéb földrajzi hely adatértékét?
 
-We look up the IP address (IPv4 or IPv6) of the web client using [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/).
+A [GeoLite2](https://dev.maxmind.com/geoip/geoip2/geolite2/)használatával megkeresjük a webes ügyfél IP-címét (IPv4 vagy IPv6).
 
-* Browser telemetry: We collect the sender's IP address.
-* Server telemetry: The Application Insights module collects the client IP address. It is not collected if `X-Forwarded-For` is set.
-* To learn more about how IP address and geolocation data is collected in Application Insights refer to this [article](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
-
-
-You can configure the `ClientIpHeaderTelemetryInitializer` to take the IP address from a different header. In some systems, for example, it is moved by a proxy, load balancer, or CDN to `X-Originating-IP`. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
-
-You can [use Power BI](app/export-power-bi.md ) to display your request telemetry on a map.
+* Böngésző telemetria: összegyűjtjük a küldő IP-címét.
+* Kiszolgáló telemetria: a Application Insights modul gyűjti az ügyfél IP-címét. Ha `X-Forwarded-For` van beállítva, a rendszer nem gyűjti.
+* Ha többet szeretne megtudni arról, hogy az IP-cím és a térinformatikai adatok hogyan kerülnek gyűjtésre Application Insights tekintse meg ezt a [cikket](https://docs.microsoft.com/azure/azure-monitor/app/ip-collection).
 
 
-### <a name="data"></a>How long is data retained in the portal? Is it secure?
-Take a look at [Data Retention and Privacy][data].
+A `ClientIpHeaderTelemetryInitializer` úgy is beállíthatja, hogy az IP-címet egy másik fejlécből hajtsa végre. Egyes rendszerekben például egy proxy, terheléselosztó vagy CDN áthelyezi a `X-Originating-IP`ba. [További információk](https://apmtips.com/blog/2016/07/05/client-ip-address/).
 
-### <a name="could-personal-data-be-sent-in-the-telemetry"></a>Could personal data be sent in the telemetry?
+A [Power bi](app/export-power-bi.md ) segítségével megjelenítheti a kérések telemetria egy térképen.
 
-This is possible if your code sends such data. It can also happen if variables in stack traces include personal data. Your development team should conduct risk assessments to ensure that personal data is properly handled. [További információ az adatmegőrzésről és az adatvédelemről](app/data-retention-privacy.md).
+
+### <a name="data"></a>Mennyi ideig tartanak a portálon tárolt adat? Biztonságos?
+Vessen egy pillantást az [adatok megőrzésére és az adatvédelemre][data].
+
+### <a name="could-personal-data-be-sent-in-the-telemetry"></a>A személyes adatküldés a telemetria?
+
+Ez akkor lehetséges, ha a kód ilyen adatokat küld. Akkor is előfordulhat, ha a stack-nyomkövetésben szereplő változók személyes adatba tartoznak. A fejlesztési csapatnak kockázatértékelést kell végeznie, hogy a személyes adatai megfelelően legyenek kezelve. [További információ az adatmegőrzésről és az adatvédelemről](app/data-retention-privacy.md).
 
 Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi hely attribútumainak megvizsgálása után.
 
@@ -322,7 +340,7 @@ Az ügyfél-webcímek **minden** oktettje mindig 0-ra van állítva a földrajzi
 * Felhasználhatja az adatait, vagy riasztásokat indíthat.
 * Nem tudtuk meghallgatni, hogy minden ügyfélnek ilyen problémája volt.
 
-Ön ilyenkor az alábbiakat teheti:
+A következőket teheti:
 
 * Az ügyfél-és a kiszolgálói adatforrásokhoz két különálló rendszerkulcs (külön Application Insights erőforrás) használata szükséges. vagy
 * Írjon be egy proxyt, amely a kiszolgálón fut, és hogy a webes ügyfél az adott proxyn keresztül küldje el az adatait.

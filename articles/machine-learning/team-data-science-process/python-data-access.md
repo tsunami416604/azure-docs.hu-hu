@@ -3,20 +3,20 @@ title: Adatkészletek elérése a Python ügyféloldali függvénytárával – 
 description: A Python ügyféloldali kódtár telepítése és használata a Azure Machine Learning adatok biztonságos eléréséhez és kezeléséhez a helyi Python-környezetből.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 241f804b0519fd744e8b980b2d311a72680aafad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 93ec5e740ac6acf9420a9d980092ed772ac1618e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427388"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720979"
 ---
 # <a name="access-datasets-with-python-using-the-azure-machine-learning-python-client-library"></a>Hozzáférés az adathalmazokhoz Python segítségével, az Azure Machine Learning Python ügyfélkönyvtárat használva
 Microsoft Azure Machine Learning Python ügyféloldali kódtár előzetes verziója lehetővé teszi a Azure Machine Learning adatkészletek biztonságos elérését egy helyi Python-környezetből, és lehetővé teszi a munkaterületen lévő adatkészletek létrehozását és kezelését.
@@ -43,7 +43,7 @@ A következő csomagoktól függ:
 Javasoljuk, hogy olyan Python-disztribúciót használjon, mint például a [anaconda](http://continuum.io/downloads#all) vagy a [lombkorona](https://store.enthought.com/downloads/), amely a Pythonhoz, a IPython-hoz és a fent felsorolt három csomaghoz készült. Bár a IPython nem feltétlenül szükséges, ez nagyszerű környezet az adatkezeléshez és az interaktív megjelenítéshez.
 
 ### <a name="installation"></a>A Azure Machine Learning Python ügyféloldali kódtár telepítése
-A jelen témakörben ismertetett feladatok végrehajtásához a Azure Machine Learning Python ügyféloldali függvénytárát is telepíteni kell. A [Python-csomag indexében](https://pypi.python.org/pypi/azureml)érhető el. A Python-környezetbe való telepítéséhez futtassa a következő parancsot a helyi Python-környezetből:
+A jelen témakörben ismertetett feladatok végrehajtásához telepítse a Azure Machine Learning Python ügyféloldali kódtárat. Ez a könyvtár a Python- [csomag indexében](https://pypi.python.org/pypi/azureml)érhető el. A Python-környezetbe való telepítéséhez futtassa a következő parancsot a helyi Python-környezetből:
 
     pip install azureml
 
@@ -70,13 +70,13 @@ Biztonsági okokból a kódrészlet funkció csak olyan felhasználók számára
 
 Ha a szerepkör nem **tulajdonosként**van beállítva, kérheti, hogy a rendszer visszahívja tulajdonosként, vagy kérje meg a munkaterület tulajdonosát, hogy megadja a kódrészletet.
 
-Az engedélyezési jogkivonat beszerzéséhez a következők egyikét teheti:
+Az engedélyezési jogkivonat beszerzéséhez válasszon egyet a következő lehetőségek közül:
 
 * Kérjen meg egy jogkivonatot a tulajdonostól. A tulajdonosok a Azure Machine Learning Studio (klasszikus) munkaterületének beállítások lapján érhetik el az engedélyezési jogkivonatokat. A bal oldali ablaktáblában válassza a **Beállítások** lehetőséget, majd kattintson az **engedélyezési tokenek** elemre az elsődleges és másodlagos tokenek megtekintéséhez. Bár az elsődleges vagy a másodlagos engedélyezési token használható a kódrészletben, ajánlott, hogy a tulajdonosok csak a másodlagos engedélyezési jogkivonatokat használják.
 
    ![Engedélyezési jogkivonatok](./media/python-data-access/ml-python-access-settings-tokens.png)
 
-* Kérje, hogy népszerűsítse a tulajdonos szerepkörét. Ehhez a munkaterület aktuális tulajdonosának először el kell távolítania a munkaterületről, majd újra meg kell hívnia a tulajdonosként.
+* Kérje, hogy népszerűsítse a tulajdonos szerepkörét: a munkaterület aktuális tulajdonosának először el kell távolítania a munkaterületről, majd újra meg kell hívnia a tulajdonosként.
 
 Ha a fejlesztők megszerezték a munkaterület-azonosítót és az engedélyezési jogkivonatot, akkor a szerepkörtől függetlenül hozzáférhetnek a munkaterülethez a kódrészlet használatával.
 
@@ -100,9 +100,9 @@ Machine Learning Studio (klasszikus) kísérlet után a közbenső adatkészlete
 
 A köztes adatkészletek akkor érhetők el, ha az adatformátum kompatibilis a Python ügyféloldali kódtár használatával.
 
-A következő formátumok támogatottak (az állandók a `azureml.DataTypeIds` osztályban találhatók):
+A következő formátumok támogatottak (a formátumok állandói a `azureml.DataTypeIds` osztályban találhatók):
 
-* PlainText
+* Egyszerű szöveges
 * GenericCSV
 * GenericTSV
 * GenericCSVNoHeader
@@ -124,7 +124,7 @@ Az alábbi lépések egy kísérletet létrehozó példát mutatnak be, és a k�
 2. Helyezzen be egy **felnőtt népszámlálás-bevétel bináris besorolási adatkészlet** modulját.
 3. Szúrjon be egy [felosztott][split] modult, és csatlakoztassa a bemenetét az adatkészlet moduljának kimenetéhez.
 4. Helyezzen be egy [Konvertálás CSV][convert-to-csv] -modulba, és csatlakoztassa a bemenetét az egyik [felosztott][split] modul kimenetéhez.
-5. Mentse a kísérletet, futtassa, majd várjon, amíg a rendszer befejeződik.
+5. Mentse a kísérletet, futtassa, majd várjon, amíg a feladatok befejeződik.
 6. Kattintson a kimenet csomópontra az [átalakítás CSV-][convert-to-csv] modulba.
 7. Amikor megjelenik a helyi menü, válassza az **adatelérési kód létrehozása**lehetőséget.
    
@@ -238,7 +238,7 @@ Ha az adatai már szerializálva vannak, a következőket használhatja:
 
 A Python ügyféloldali kódtár a következő formátumokba tudja szerializálni a pandák DataFrame (az állandók a `azureml.DataTypeIds` osztályban találhatók):
 
-* PlainText
+* Egyszerű szöveges
 * GenericCSV
 * GenericTSV
 * GenericCSVNoHeader
@@ -293,7 +293,7 @@ A `description` paraméter értékének megadásával megadhat egy új leírást
     print(dataset.name)         # 'existing dataset'
     print(dataset.description)  # 'data up to feb 2015'
 
-A `name` paraméter értékének megadásával új nevet is beállíthat. Mostantól a csak az új név használatával kérdezi le az adatkészletet. A következő kód frissíti az adatfájlokat, a nevet és a leírást.
+A `name` paraméter értékének megadásával új nevet is beállíthat. Mostantól a csak az új név használatával kérdezi le az adatkészletet. A következő kód frissíti az adathalmazt, a nevet és a leírást.
 
     dataset = ws.datasets['existing dataset']
 

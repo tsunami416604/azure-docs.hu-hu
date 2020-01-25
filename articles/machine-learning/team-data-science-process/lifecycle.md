@@ -3,26 +3,26 @@ title: A csoportos adatelemzési folyamat életciklusa
 description: A csoportos adatelemzési folyamat (TDSP) egy ajánlott életciklust biztosít, amelyet az adatelemzési projektek felépítéséhez használhat.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 00efe89314d4a1a5c3302e820b8609adf194aa59
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: a043a1655950f3ed7688e59352f8a912146e12c9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053246"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720452"
 ---
 # <a name="the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusa
 
-A csoportos adatelemzési folyamat (TDSP) egy ajánlott életciklust biztosít, amelyet az adatelemzési projektek felépítéséhez használhat. Az életciklus az elejétől a végéig terjedő lépéseket ismerteti, amelyeket a projektek általában a végrehajtásuk után követnek. Ha más adattudományi életciklust használ, mint például az adatbányászat [(éles DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), az adatbázisok [(KDD](https://wikipedia.org/wiki/Data_mining#Process)-k) és a szervezet saját egyéni folyamatának az iparági szabványos folyamata, továbbra is használhatja a feladat-alapú TDSP. 
+A csoportos adatelemzési folyamat (TDSP) egy ajánlott életciklust biztosít, amelyet az adatelemzési projektek felépítéséhez használhat. Az életciklus a sikeres projektek követésének teljes lépéseit ismerteti. Ha más adattudományi életciklust használ, mint például az adatbányászat [(éles DM)](https://wikipedia.org/wiki/Cross_Industry_Standard_Process_for_Data_Mining), az adatbázisok [(KDD](https://wikipedia.org/wiki/Data_mining#Process)-k) és a szervezet saját egyéni folyamatának az iparági szabványos folyamata, továbbra is használhatja a feladat-alapú TDSP. 
 
-Ez az életciklus olyan adattudományi projektekhez készült, amelyek intelligens alkalmazások részeként való szállításra szolgálnak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia-modelleket helyeznek üzembe a prediktív elemzésekhez. A felderítő adatelemzési projektek és az alkalmi elemzési projektek is hasznosak lehetnek a folyamat használatából. Ezen projektek esetében azonban előfordulhat, hogy az itt ismertetett lépések némelyike nem szükséges. 
+Ez az életciklus olyan adattudományi projektekhez készült, amelyek intelligens alkalmazások részeként való szállításra szolgálnak. Ezek az alkalmazások gépi tanulási vagy mesterséges intelligencia-modelleket helyeznek üzembe a prediktív elemzésekhez. A feltáró adatelemzési projektek és az improvizált elemzési projektek is hasznosak lehetnek a folyamat használatából. Ezen projektek esetében azonban előfordulhat, hogy az itt ismertetett lépések némelyike nem szükséges. 
 
 ## <a name="five-lifecycle-stages"></a>Öt életciklus szakasz
 

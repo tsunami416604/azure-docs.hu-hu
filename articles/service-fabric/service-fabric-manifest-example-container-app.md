@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: pepogors
-ms.openlocfilehash: e4050dedeb48b19b6848a95fc904f7f37fb5b04a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5efdbd17db20e69ace33b379ddbb99b2c4a20e69
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75349389"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722560"
 ---
 # <a name="multi-container-application-and-service-manifest-examples"></a>Példák többtárolós alkalmazások és szolgáltatások jegyzékeire
 A következő példák a többtárolós Service Fabric alkalmazás alkalmazás-és szolgáltatási jegyzékfájlját szemléltetik. A példák célja, hogy megmutassa, milyen beállítások érhetők el, és hogyan használhatja őket. Ezek az alkalmazások és szolgáltatások jegyzékfájli a [Windows Server 2016-tároló mintájának](https://github.com/Azure-Samples/service-fabric-containers/tree/master/Windows) jegyzékfájlján alapulnak.
@@ -342,7 +342,7 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
  További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép https://hub.docker.com vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép [https://hub.docker.com](https://hub.docker.com) vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="environmentvariables-element"></a>EnvironmentVariables elem
 Adja át a környezeti változókat a tárolóba vagy az exe-be.  További információ: [EnvironmentVariables elem](service-fabric-service-model-schema-elements.md#EnvironmentVariablesElementEnvironmentVariablesTypeComplexTypeDefinedInCodePackageTypecomplexType)
@@ -386,7 +386,7 @@ A BelépésiPont által megadott végrehajtható fájl általában a hosszan fut
 További információ: [ContainerHost elem](service-fabric-service-model-schema-elements.md#ContainerHostElementContainerHostEntryPointTypeComplexTypeDefinedInEntryPointDescriptionTypecomplexType)
 
 ### <a name="imagename-element"></a>ImageName elem
-A tárház és a rendszerkép https://hub.docker.com vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
+A tárház és a rendszerkép [https://hub.docker.com](https://hub.docker.com) vagy Azure Container Registry. További információ: [imagename elem](service-fabric-service-model-schema-elements.md#ImageNameElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)
 
 ### <a name="commands-element"></a>Parancsok elem
 Adja meg a parancsok vesszővel tagolt listáját a tárolóhoz. További információ: [commands Element](service-fabric-service-model-schema-elements.md#CommandsElementxs:stringComplexTypeDefinedInContainerHostEntryPointTypecomplexType)

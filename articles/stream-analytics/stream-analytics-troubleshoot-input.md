@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 20a161ffc82cb8f74cfcac838856434f83c4e258
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: dac3037f82c38980c9ac16685aa7fddac68a2e7b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75354285"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720299"
 ---
 # <a name="troubleshoot-input-connections"></a>Bemeneti kapcsolatok hibaelhárítása
 
@@ -24,11 +24,13 @@ Ez a lap a bemeneti kapcsolatokkal és azok hibaelhárításával kapcsolatos gy
 
 2.  Vizsgálja meg a bemeneti adatokat.
 
-    Annak ellenőrzéséhez, hogy a bemeneti adatok beáramlanak-e az Event hub-ba, a [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) használatával kapcsolódjon az Azure Event hub-hoz (ha az Event hub bemenete van használatban).
+    1. Annak ellenőrzéséhez, hogy a bemeneti adatok beáramlanak-e az Event hub-ba, a [Service Bus Explorer](https://code.msdn.microsoft.com/windowsapps/Service-Bus-Explorer-f2abca5a) használatával kapcsolódjon az Azure Event hub-hoz (ha az Event hub bemenete van használatban).
         
-    Használja az egyes bemenetek [**mintaadatok**](stream-analytics-sample-data-input.md) gombját, és töltse le a bemeneti mintaadatok közül.
+    1. Használja az egyes bemenetek [**mintaadatok**](stream-analytics-sample-data-input.md) gombját. Töltse le a bemeneti mintaadatok.
         
-    A mintaadatok megvizsgálása az adatalakzatok értelmezése érdekében: a séma és az [adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics).
+    1. Tekintse át a mintaadatok az adatalakzatok, azaz a séma és az [adattípusok](https://docs.microsoft.com/stream-analytics-query/data-types-azure-stream-analytics)értelmezéséhez.
+
+3.  Győződjön meg arról, hogy a bemeneti előnézetben időtartományt jelölt ki. Válassza az **időtartomány kiválasztása**lehetőséget, majd adja meg a minta időtartamát a lekérdezés tesztelése előtt.
 
 ## <a name="malformed-input-events-causes-deserialization-errors"></a>A helytelen formátumú bemeneti események deszerializálási hibákat okoznak 
 A deszerializálási problémákat akkor okozhatja a rendszer, ha a Stream Analytics-feladathoz tartozó bemeneti adatfolyam helytelenül formázott üzeneteket tartalmaz. A helytelenül formázott üzenetet például egy hiányzó zárójel vagy egy JSON-objektumban lévő kapcsos zárójel vagy egy helytelen időbélyeg-formátum okozhatja a Time mezőben. 

@@ -1,72 +1,72 @@
 ---
-title: Csatlakozás az Azure Cosmos DB használatával, BI elemzési eszközök
-description: Ismerje meg, hogyan normalizált adatok BI és az adatok elemzési szoftver lehet megtekinteni, hogy a táblák és nézetek létrehozásához az Azure Cosmos DB ODBC-illesztő használatával.
+title: Kapcsolódás Azure Cosmos DB BI Analytics-eszközök használatával
+description: Ebből a témakörből megtudhatja, hogyan hozhat létre táblázatokat és nézeteket a Azure Cosmos DB ODBC-illesztővel, hogy a normalizált információkat BI-és adatelemzési szoftverekben lehessen megtekinteni.
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 10/02/2019
 ms.author: sngun
-ms.openlocfilehash: e8a982a100655934d4ae3ecd64564cf2da82dbbc
-ms.sourcegitcommit: f9e81b39693206b824e40d7657d0466246aadd6e
+ms.openlocfilehash: 8be17f0b624c5c34709fb420adb434b77dbc0d91
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2019
-ms.locfileid: "72035595"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721081"
 ---
-# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Csatlakozás az Azure Cosmos DB BI elemzési eszközök használata az ODBC-illesztő
+# <a name="connect-to-azure-cosmos-db-using-bi-analytics-tools-with-the-odbc-driver"></a>Kapcsolódás Azure Cosmos DB BI Analytics-eszközökkel az ODBC-illesztővel
 
-Az Azure Cosmos DB ODBC-illesztő segítségével csatlakozhat az Azure Cosmos DB használatával BI elemzési eszközök, például az SQL Server Integration Services, a Power BI Desktop és a Tableau, így elemezheti és az Azure Cosmos DB-adatok vizualizációkat létrehozni a ezen megoldások.
+Az Azure Cosmos DB ODBC-illesztő lehetővé teszi, hogy olyan BI Analytics-eszközökkel kapcsolódjon Azure Cosmos DBhoz, mint például a SQL Server Integration Services, a Power BI Desktop és a tabló, így az ezekben a megoldásokban lévő Azure Cosmos DB-adataikat is elemezheti és létrehozhatja.
 
 Az Azure Cosmos DB ODBC-illesztő kompatibilis az ODBC 3.8-as verzióval, és támogatja az ANSI SQL-92 szintaxist. Az illesztő rengeteg funkciót tartalmaz, amelyek segítségével újranormalizálhatja az Azure Cosmos DB adatait. Az illesztő használatával az Azure Cosmos DB-ben található adatokat táblaként és nézetként jelenítheti meg. Az illesztő lehetővé teszi az SQL-műveletek elvégzését a táblákon és nézeteken, például a lekérdezések szerinti csoportosítást, beszúrást, frissítést és törlést.
 
 > [!NOTE]
-> Az ODBC-illesztő az Azure Cosmos DB-összekötő csak az Azure Cosmos DB SQL API-fiókok jelenleg támogatott.
+> Az ODBC-illesztővel való Azure Cosmos DBhoz való csatlakozás jelenleg csak Azure Cosmos DB SQL API-fiókok esetén támogatott.
 
-## <a name="why-do-i-need-to-normalize-my-data"></a>Miért kell normalizálása az adataimat?
-Az Azure Cosmos DB egy séma nélküli adatbázis, amely lehetővé teszi alkalmazások gyors fejlesztésére és az adatmodellek anélkül, hogy folyamatban van egy szigorú sémát korlátozódik ismételt futtatásával lehetővé teszi a. Egyetlen Azure Cosmos-adatbázis tartalmazhat különböző szerkezetű JSON-dokumentumokat. Ez kiválóan alkalmazható az alkalmazások gyors fejlesztésére, de azt szeretné, elemzésére és az adatok adatelemzés és BI-eszközök használatával jelentéseket hozhat létre, amikor az adatok gyakran kell egybesimított és a egy adott sémára formátumhoz.
+## <a name="why-do-i-need-to-normalize-my-data"></a>Miért kell normalizálni az adataimat?
+Azure Cosmos DB egy séma nélküli adatbázis, amely lehetővé teszi az alkalmazások gyors fejlesztését és az adatmodellek megismétlését anélkül, hogy szigorú sémára kellene korlátozódnia. Egyetlen Azure Cosmos-adatbázis tartalmazhat különböző szerkezetű JSON-dokumentumokat. Ez nagyszerűen használható az alkalmazások gyors fejlesztéséhez, de ha az adatelemzés és a BI-eszközök használatával szeretné elemezni és létrehozni az adatait, az adatmennyiséget gyakran össze kell egyengetni, és be kell tartani egy adott sémát.
 
-Ez az, ahol az ODBC-illesztőprogram érhető el. Az ODBC-illesztő használatával az adatokat az Azure Cosmos DB-táblák és nézetek, amelyek illeszkednek az adatelemzési és jelentéskészítési szükségletek most normalizálását. A renormalized sémák nincs hatással az alapul szolgáló adatokat, és nem korlátozza a fejlesztők igazodnia kell őket. Ehelyett lehetővé teszik az ODBC-kompatibilis eszközeivel férhet hozzá az adatokhoz. Így most az Azure Cosmos-adatbázis nem csak a kedvenc fejlesztői csapatának, hanem az adatelemzők is szeretik.
+Itt jön az ODBC-illesztő. Az ODBC-illesztővel mostantól az adatelemzési és jelentéskészítési igényeknek megfelelő táblákba és nézetekben is újranormalizálhatja Azure Cosmos DB adatait. A normalizált sémák nem befolyásolják a mögöttes adatokat, és nem szűkítik a fejlesztőket a számukra való betartásra. Ehelyett lehetővé teszik az ODBC-kompatibilis eszközök kihasználása az adateléréshez. Így most az Azure Cosmos-adatbázis nem csak a kedvenc fejlesztői csapatának, hanem az adatelemzők is szeretik.
 
-Kezdjük az ODBC-illesztőt.
+Ismerkedjen meg az ODBC-illesztővel.
 
-## <a id="install"></a>1. lépés: Az Azure Cosmos DB ODBC-illesztőprogram telepítése
+## <a id="install"></a>1. lépés: az Azure Cosmos DB ODBC-illesztő telepítése
 
-1. Töltse le az illesztőprogramokat az adott környezetben:
+1. Töltse le a környezetéhez tartozó illesztőprogramokat:
 
     | Telepítő | Támogatott operációs rendszerek| 
     |---|---| 
-    |[A Microsoft Azure Cosmos DB ODBC 64-bit.msi](https://aka.ms/cosmos-odbc-64x64) a 64 bites Windows| 64 bites Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 és Windows Server 2008 R2.| 
-    |[A Microsoft Azure Cosmos DB ODBC 32 x 64-bit.msi](https://aka.ms/cosmos-odbc-32x64) a 32 bites Windows 64 bites| 64 bites Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 és Windows Server 2003.| 
-    |[A Microsoft Azure Cosmos DB ODBC 32-bit.msi](https://aka.ms/cosmos-odbc-32x32) a 32 bites Windows|32 bites Windows 8.1 vagy újabb, Windows 8, Windows 7, Windows XP és Windows Vista.|
+    |[Microsoft Azure Cosmos db ODBC 64-bit. msi](https://aka.ms/cosmos-odbc-64x64) a 64 bites Windows rendszerekhez| a Windows 8,1 vagy újabb, Windows 8, Windows 7, Windows Server 2012 R2, Windows Server 2012 és Windows Server 2008 R2 64 bites verziói.| 
+    |[Microsoft Azure Cosmos db ODBC 32x64-bit. msi](https://aka.ms/cosmos-odbc-32x64) for 32-bit 64-bites Windows rendszeren| 64 – Windows 8,1 vagy újabb verziók, Windows 8, Windows 7, Windows XP, Windows Vista, Windows Server 2012 R2, Windows Server 2012, Windows Server 2008 R2 és Windows Server 2003.| 
+    |[Microsoft Azure Cosmos db ODBC 32-bit. msi](https://aka.ms/cosmos-odbc-32x32) a 32 bites Windows rendszerekhez|a Windows 8,1 vagy újabb, Windows 8, Windows 7, Windows XP és Windows Vista 32 bites verziói.|
 
-    Futtassa az msi-fájl helyi, amely elindítja a **Microsoft Azure Cosmos DB ODBC illesztőprogram telepítővarázsló**. 
+    Futtassa helyileg az msi-fájlt, amely elindítja az **Microsoft Azure Cosmos db ODBC illesztőprogram-telepítő varázslót**. 
 
-1. A bemeneti az ODBC-illesztőprogram telepítéséhez az alapértelmezett telepítési varázsló befejezése.
+1. Az ODBC-illesztő telepítéséhez az alapértelmezett bemenettel végezze el a telepítési varázslót.
 
-1. Nyissa meg a **ODBC adatforrás-rendszergazda** alkalmazást a számítógépre. Ezt megteheti beírásával is **ODBC adatforrások** a Windows keresőmezőbe. 
-    Az illesztőprogram lett telepítve a kattintva ellenőrizheti a **illesztőprogramok** lapra, és hogy **Microsoft Azure Cosmos DB ODBC-illesztő** szerepel a listán.
+1. Nyissa meg az **ODBC adatforrás-felügyeleti** alkalmazást a számítógépen. Ezt úgy teheti meg, hogy beírja az **ODBC-adatforrásokat** a Windows keresési mezőjébe. 
+    Az illesztőprogram telepítésének megerősítéséhez kattintson az **illesztőprogramok** lapra, és győződjön meg arról, **Microsoft Azure Cosmos db ODBC-illesztő** szerepel a felsorolásban.
 
-    ![Az Azure Cosmos DB ODBC Data Source Administrator](./media/odbc-driver/odbc-driver.png)
+    ![Azure Cosmos DB ODBC-adatforrás rendszergazdája](./media/odbc-driver/odbc-driver.png)
 
 ## <a id="connect"></a>2. lépés: Kapcsolódás az Azure Cosmos-adatbázishoz
 
-1. Után [telepítése az Azure Cosmos DB ODBC-illesztő](#install), a a **ODBC Data Source Administrator** ablakban kattintson a **Hozzáadás**. Létrehozhat egy felhasználói vagy Rendszeradatforrás. Ebben a példában létrehoz egy felhasználói DSN.
+1. [Az Azure Cosmos db ODBC-illesztő telepítése](#install)után az **ODBC-adatforrás rendszergazdája** ablakban kattintson a **Hozzáadás**gombra. Létrehozhat egy felhasználói vagy rendszer-DSN-t. Ebben a példában felhasználói ADATFORRÁSNEVET hoz létre.
 
-1. Az a **új adatforrás létrehozása** ablakban válassza **Microsoft Azure Cosmos DB ODBC-illesztő**, és kattintson a **Befejezés**.
+1. Az **új adatforrás létrehozása** ablakban válassza ki **Microsoft Azure Cosmos db ODBC-illesztő**elemet, majd kattintson a **Befejezés**gombra.
 
-1. Az a **Azure Cosmos DB ODBC illesztőprogram SDN-alapú beállítási** ablakban adja meg a következő információkat: 
+1. Az **Azure Cosmos db ODBC-ILLESZTŐ Sdn beállítása** ablakban adja meg a következő információkat: 
 
-    ![Az Azure Cosmos DB ODBC-illesztőprogram DSN-beállítások ablak](./media/odbc-driver/odbc-driver-dsn-setup.png)
-    - **Adatforrás neve**: saját ODBC DSN rövid nevét. Ez a név egyedi az Azure Cosmos DB-fiókja, így neki megfelelő, ha több fiókot.
-    - **Leírás**: az adatforrás rövid leírását.
-    - **Gazdagép**: URI-azonosítóját az Azure Cosmos DB-fiókot. Letöltheti ezt az Azure Portalon az Azure Cosmos DB kulcsok oldalról az alábbi képernyőképen látható módon. 
-    - **Hozzáférési kulcs**: az Azure Cosmos DB-kulcsok az elsődleges vagy másodlagos, olvasási és írási vagy olvasási kulcs lapon az Azure Portalon, az alábbi képernyőképen látható módon. Azt javasoljuk, hogy az írásvédett kulcsát, használható, ha a DSN csak olvasható adatok feldolgozása és a jelentéskészítés.
-    ![Azure Cosmos DB kulcsok oldalán](./media/odbc-driver/odbc-cosmos-account-keys.png)
-    - **A hozzáférési kulcs titkosítására**: válassza ki a legjobb választás alapján a felhasználók ezt a gépet. 
+    ![Azure Cosmos DB ODBC-illesztő DSN beállítása ablak](./media/odbc-driver/odbc-driver-dsn-setup.png)
+    - Adatforrás **neve**: az ODBC-DSN saját felhasználóbarát neve. Ez a név egyedi a Azure Cosmos DB-fiókban, ezért a megfelelő módon nevezze el, ha több fiókja van.
+    - **Description (Leírás**): az adatforrás rövid leírása.
+    - **Gazdagép**: a Azure Cosmos db-fiókhoz tartozó URI. Ezt a Azure Portal Azure Cosmos DB kulcsok lapjáról kérheti le, ahogy az alábbi képernyőképen is látható. 
+    - **Hozzáférési kulcs**: a Azure Portal Azure Cosmos db kulcsok oldalának elsődleges vagy másodlagos, írható-olvasható vagy írásvédett kulcsa, ahogy az alábbi képernyőfelvételen is látható. Javasoljuk, hogy a csak olvasási jogosultsággal rendelkező kulcsot használja, ha a DSN csak olvasható adatfeldolgozásra és jelentéskészítésre szolgál.
+    ![Azure Cosmos DB kulcsok lapja](./media/odbc-driver/odbc-cosmos-account-keys.png)
+    - **Hozzáférési kulcs titkosítása**: válassza ki a legjobb választást a számítógép felhasználói alapján. 
     
-1. Kattintson a **teszt** gombra, hogy az Azure Cosmos DB-fiókhoz kapcsolódhat. 
+1. Kattintson a **teszt** gombra, és ellenőrizze, hogy tud-e csatlakozni a Azure Cosmos db-fiókjához. 
 
-1.  Kattintson a **speciális beállítások** állítsa be a következő értékeket:
+1.  Kattintson a **Speciális beállítások** elemre, és állítsa be a következő értékeket:
     *  **REST API verziója**: válassza ki a [REST API verzióját](https://docs.microsoft.com/rest/api/cosmos-db/) a műveletekhez. Az alapértelmezett 2015-12-16. Ha [nagyméretű partíciós kulcsokkal](large-partition-keys.md) rendelkező tárolókkal rendelkezik, és a REST API 2018-12-31-es verziójának megkövetelése:
         - Írja be a **2018-12-31** -es verzióját REST API verzióra
         - A **Start** menüben írja be a "regedit" parancsot a rendszerleíróadatbázis- **szerkesztő** alkalmazás megkereséséhez és megnyitásához.
@@ -77,77 +77,77 @@ Kezdjük az ODBC-illesztőt.
             - Érték neve: **IgnoreSessionToken**
             - Érték: **1**
             ![Rendszerleíróadatbázis-szerkesztő beállításai](./media/odbc-driver/cosmos-odbc-edit-registry.png)
-    - **Lekérdezési konzisztenciát**: válassza ki a [konzisztenciaszint](consistency-levels.md) a műveletek. Az alapértelmezett érték a munkamenet.
-    - **Újrapróbálkozások száma**: Adja meg az újrapróbálkozások egy műveletet, ha a kezdeti kérelem befejezése sikertelennek bizonyul szolgáltatás sebesség korlátozása miatt.
-    - **Soubor schématu**: Itt több lehetőség van.
-        - Alapértelmezés szerint, ha a bejegyzést (üres) hagyja, az illesztőprogram megvizsgálja az összes tárolóhoz tartozó adat első oldalát az egyes tárolók sémájának meghatározásához. Ezt nevezzük tároló-hozzárendelésnek. Egy sémafájlt definiált nélkül az illesztőprogram a vizsgálat végrehajtania az egyes illesztőprogram-munkamenet, és hatására a DSN használó alkalmazások magasabb indítási idő. Azt javasoljuk, hogy mindig társít egy sémafájlt az Adatbázisnevet.
+    - **Lekérdezés konzisztenciája**: válassza ki a műveletek [konzisztenciáji szintjét](consistency-levels.md) . Az alapértelmezett érték a munkamenet.
+    - **Újrapróbálkozások száma**: Itt adhatja meg, hogy a rendszer hányszor próbálkozzon újra egy művelettel, ha a kezdeti kérelem nem fejeződött be a szolgáltatási díjak korlátozása miatt.
+    - **Sémafájl**: itt számos lehetőség közül választhat.
+        - Alapértelmezés szerint, ha a bejegyzést (üres) hagyja, az illesztőprogram megvizsgálja az összes tárolóhoz tartozó adat első oldalát az egyes tárolók sémájának meghatározásához. Ezt nevezzük tároló-hozzárendelésnek. A séma definiálása nélkül az illesztőprogramnak el kell végeznie az egyes illesztőprogram-munkamenetek vizsgálatát, és a DSN használatával magasabb indítási időt eredményezhet az alkalmazás számára. Azt javasoljuk, hogy mindig rendeljen hozzá egy sémafájl-fájlt egy DSN-hez.
         - Ha már rendelkezik egy sémafájl (valószínűleg a séma-szerkesztő használatával létrehozott), kattintson a **Tallózás**gombra, keresse meg a fájlt, és kattintson a **Mentés**elemre, majd **az OK**gombra.
-        - Ha azt szeretné, hogy hozzon létre egy új sémát, kattintson a **OK**, és kattintson a **Sémaszerkesztőt** a fő ablakban. Ezután folytassa a séma-szerkesztő adataival. Miután létrehozta az új sémafájl, ne felejtse el lépjen vissza a **speciális beállítások** az újonnan létrehozott sémafájl ablak.
+        - Ha új sémát szeretne létrehozni, kattintson az **OK**gombra, majd kattintson a főablakban található **sémakezelő szerkesztő** elemre. Ezután folytassa a séma-szerkesztő adataival. Az új sémafájl létrehozása után ne felejtse el visszatérni a **Speciális beállítások** ablakra az újonnan létrehozott sémafájl belefoglalásához.
 
-1. Miután befejezte a, és zárja be a **Azure Cosmos DB ODBC DSN illesztőinek** ablakot, az új felhasználó DSN bekerül a felhasználói DSN lap.
+1. Miután elvégezte és bezárta az **Azure Cosmos db ODBC-ILLESZTŐ DSN-telepítőjének** ablakát, a rendszer hozzáadja az új felhasználói DSN-t a felhasználói DSN lapra.
 
-    ![Új Azure Cosmos DB ODBC DSN felhasználói DSN lapon](./media/odbc-driver/odbc-driver-user-dsn.png)
+    ![Új Azure Cosmos DB ODBC DSN a felhasználói DSN lapon](./media/odbc-driver/odbc-driver-user-dsn.png)
 
 ## <a id="#container-mapping"></a>3. lépés: séma-definíció létrehozása a tároló-hozzárendelési módszer használatával
 
-Kétféle mintavételi módszer használható: **tároló-hozzárendelés** vagy **tábla-határolójelek**. A mintavételi munkamenetek mindkét mintavételi módszert használhatják, de mindegyik tároló csak egy adott mintavételi módszert használhat. Az alábbi lépések egy sémát hoznak létre egy vagy több tárolóban lévő adataihoz a tároló-hozzárendelési módszer használatával. Ez a mintavételi módszer a tárolók oldalán lévő összes adat lekérésével határozza meg az adat szerkezetét. Egy tárolót helyez át az ODBC-oldalon található táblába. Ez a mintavételi módszer hatékony és gyors, ha a tárolóban lévő adathalmaz homogén. Ha egy tároló különböző-adattípust tartalmaz, javasoljuk, hogy használja a [Table-határolójelek leképezési módszerét](#table-mapping) , mivel ez robusztusabb mintavételi módszert biztosít a tárolóban lévő adatstruktúrák meghatározásához. 
+Kétféle mintavételi módszer használható: **tároló-hozzárendelés** vagy **tábla-határolójelek**. A mintavételi munkamenetek mindkét mintavételi módszert használhatják, de mindegyik tároló csak egy adott mintavételi módszert használhat. Az alábbi lépések egy sémát hoznak létre egy vagy több tárolóban lévő adataihoz a tároló-hozzárendelési módszer használatával. Ez a mintavételi módszer a tárolók oldalán lévő összes adat lekérésével határozza meg az adat szerkezetét. Egy tárolót helyez át az ODBC-oldalon található táblába. Ez a mintavételi módszer hatékony és gyors, ha a tárolóban lévő adathalmaz homogén. Ha egy tároló heterogén típusú adattípust tartalmaz, javasoljuk, hogy használja a [Table-határolójelek leképezési módszerét](#table-mapping) , mivel ez robusztusabb mintavételi módszert biztosít a tárolóban lévő adatstruktúrák meghatározásához. 
 
 1. Miután befejezte a 1-4-es lépést az [Azure Cosmos-adatbázishoz való kapcsolódás](#connect)során, kattintson a **Azure Cosmos db ODBC-illesztő DSN-telepítő** ablakában található **Schema Editor** elemre.
 
-    ![Az Azure Cosmos DB ODBC DSN illesztőinek ablakban séma szerkesztő gomb](./media/odbc-driver/odbc-driver-schema-editor.png)
-1. Az a **Sémaszerkesztőt** ablakban kattintson a **hozzon létre új**.
+    ![Schema Editor gomb a Azure Cosmos DB ODBC-illesztő DSN beállítása ablakban](./media/odbc-driver/odbc-driver-schema-editor.png)
+1. A **séma-szerkesztő** ablakban kattintson az **új létrehozása**elemre.
     A **séma létrehozása** ablak megjeleníti a Azure Cosmos db fiókban található összes tárolót. 
 
 1. Válasszon ki egy vagy több mintát a mintavételezéshez, majd kattintson a **minta**elemre. 
 
-1. Az a **Tervező nézetben** lapon, az adatbázis, a séma és a tábla szerepelnek. A táblázatban megtekintheti a vizsgálat megjelenítése az oszlopneveket (SQL-neve, adatforrás neve, stb.) társított tulajdonságok.
-    Az oszlop SQL nevét, az SQL-típus, SQL hossza (ha van ilyen), módosíthatja az egyes oszlopok méretezés (ha van ilyen), a pontosság (ha alkalmazható) és a üresen hagyható.
-    - Beállíthat **oszlop elrejtése** való **igaz** Ha azt szeretné, ez az oszlop kizárása a lekérdezés eredményeit. Oszlopok jelölt oszlop elrejtése = true nem lehet megjeleníteni a kijelölés és felhasználását, bár továbbra is a séma részét képezik. Ha például az Azure Cosmos DB-hez szükséges rendszer a tulajdonságokat, "_" kezdetű elrejtheti.
-    - A **azonosító** oszlop egyetlen mező nem lehet rejtett, ahogy a normalizált séma az elsődleges kulcs használatban van. 
+1. A **tervezési nézet** lapon az adatbázis, a séma és a tábla képviselteti magát. A táblázat nézetben a vizsgálat az oszlopnevek (az SQL-név, a forrás neve stb.) tulajdonságaihoz tartozó tulajdonságokat jeleníti meg.
+    Minden oszlop esetében módosíthatja az SQL-név, az SQL-típus, az SQL-hossz (ha van), a skálázás (ha alkalmazható), a pontosság (ha van) és a null értékű.
+    - Beállíthatja az **oszlop elrejtését** **true** értékre, ha ki szeretné zárni az oszlopot a lekérdezési eredményekből. A kiválasztáshoz és a kivetítéshez nem ad vissza oszlopokat a Hide oszlop = true értékkel, de még mindig a séma részét képezik. Elrejtheti például az összes Azure Cosmos DB szükséges tulajdonságot a "_" értékkel kezdődően.
+    - Az **ID** oszlop az egyetlen olyan mező, amely nem rejthető el, mert a normalizált sémában elsődleges kulcsként van használatban. 
 
-1. Miután befejezte a sémájának definiálásához, kattintson a **fájl** | **mentése**, lépjen abba a könyvtárba menteni a sémát, és kattintson **mentése**.
+1. Miután befejezte a séma definiálását, kattintson a **fájl** | **Mentés**gombra, navigáljon a címtárhoz a séma mentéséhez, majd kattintson a **Mentés**gombra.
 
-1. Ha a sémát DSN-sel szeretné használni, nyissa meg az **Azure Cosmos db ODBC-ILLESZTŐ DSN-telepítő ablakát** (az ODBC adatforrás-rendszergazdája használatával), kattintson a **Speciális beállítások**elemre, majd a **séma fájlja** mezőben navigáljon a mentett sémához. Meglévő DSN mentése folyamatban van egy sémafájlt módosítja a DSN-kapcsolat hatókör struktúra séma határozza meg az adatokat.
+1. Ha a sémát DSN-sel szeretné használni, nyissa meg az **Azure Cosmos db ODBC-ILLESZTŐ DSN-telepítő ablakát** (az ODBC adatforrás-rendszergazdája használatával), kattintson a **Speciális beállítások**elemre, majd a **séma fájlja** mezőben navigáljon a mentett sémához. A sémafájl meglévő DSN-re való mentése módosítja a séma által definiált adathoz és struktúrához tartozó DSN-kapcsolatokat.
 
-## <a id="table-mapping"></a>4. lépés: Hozzon létre egy sémadefiníciót a tábla-elválasztó karakterek használatával metódus leképezése
+## <a id="table-mapping"></a>4. lépés: séma-definíció létrehozása a tábla-határolójelek leképezési módszerével
 
 Kétféle mintavételi módszer használható: **tároló-hozzárendelés** vagy **tábla-határolójelek**. A mintavételi munkamenetek mindkét mintavételi módszert használhatják, de mindegyik tároló csak egy adott mintavételi módszert használhat. 
 
-A következő lépések egy sémát hoznak létre egy vagy több tárolóban lévő adatkészletek számára a **Table-határolójelek** leképezési módszerének használatával. Javasoljuk, hogy ezt a mintavételi módszert használja, ha a tárolók heterogén adattípust tartalmaznak. Ez a módszer segítségével attribútumokat és a megfelelő értékeket a mintavételt hatókörét. Ha egy dokumentum egy "Type" tulajdonságot tartalmaz, például korlátozhatja, ez a tulajdonság értékét a mintavételezés körét. A végeredmény a mintavételi lenne minden egyes érték megadása esetén a táblák egy készlete. Írja be például = autó egy autó tábla típusú során állítja elő = Adatsík akkor az eredmény egy Adatsík táblát.
+A következő lépések egy sémát hoznak létre egy vagy több tárolóban lévő adatkészletek számára a **Table-határolójelek** leképezési módszerének használatával. Javasoljuk, hogy ezt a mintavételi módszert használja, ha a tárolók heterogén adattípust tartalmaznak. Ezzel a módszerrel a mintavételezést attribútumok és a hozzájuk tartozó értékek halmazára is felhasználhatja. Ha például egy dokumentum "type" (típus) tulajdonságot tartalmaz, akkor a mintavételezést a tulajdonság értékeire szűkítheti. A mintavétel végeredménye a megadott típusú értékekhez tartozó táblák halmaza lesz. Írja be például, hogy = Car egy táblát hoz létre, miközben a Type = Plane (sík) táblát fogja létrehozni.
 
 1. Miután befejezte a 1-4-es lépést az [Azure Cosmos-adatbázishoz való kapcsolódás](#connect)során, kattintson a Azure Cosmos db ODBC-illesztő DSN-telepítő ablakában található **Schema Editor** elemre.
 
-1. Az a **Sémaszerkesztőt** ablakban kattintson a **hozzon létre új**.
+1. A **séma-szerkesztő** ablakban kattintson az **új létrehozása**elemre.
     A **séma létrehozása** ablak megjeleníti a Azure Cosmos db fiókban található összes tárolót. 
 
-1. Válasszon egy tárolót a **Minta nézet** lapon, a tároló **hozzárendelés definíciója** oszlopban kattintson a **Szerkesztés**elemre. Ezt a a **leképezést definiáló** ablakban válassza **tábla elválasztó** metódust. Ezután tegye a következőket:
+1. Válasszon egy tárolót a **Minta nézet** lapon, a tároló **hozzárendelés definíciója** oszlopban kattintson a **Szerkesztés**elemre. Ezután a **leképezés definíciója** ablakban válassza a **tábla** határolójelek metódus elemet. Ezután tegye a következőket:
 
-    a. Az a **attribútumok** mezőbe írja be egy elválasztó tulajdonság nevét. Ez a tulajdonság a dokumentumot, amelyet szeretne a mintavételt, például az városa hatókörét, és nyomja le az enter. 
+    a. Az **attribútumok** mezőbe írja be a határolójelek tulajdonság nevét. Ez a dokumentum azon tulajdonsága, amelynek a mintavételezési hatókörét meg szeretné jeleníteni, például a városra, és nyomja le az ENTER billentyűt. 
 
-    b. Ha csak egyes értékek a fent megadott attribútum a mintavételezés hatóköre, jelölje ki az attribútumot a kiválasztási mező, adjon meg egy értéket a **érték** (pl. budapest) mezőbe, majd nyomja le, adja meg. Továbbra is több érték attribútumok hozzáadása. Csak győződjön meg arról, hogy a megfelelő attribútum kiválasztott értékeket adjon meg.
+    b. Ha a fent megadott attribútumhoz csak bizonyos értékekre szeretné szűkíteni a mintavételezést, jelölje ki az attribútumot a kiválasztási mezőben, adjon meg egy értéket az **érték** mezőben (például Seattle), majd nyomja le az ENTER billentyűt. Továbbra is hozzáadhat több értéket az attribútumokhoz. Győződjön meg arról, hogy a megfelelő attribútum van kiválasztva az értékek megadásakor.
 
-    Ha például belefoglalja egy **attribútumok** értéket az városa, és érdemes korlátozni a táblázat csak a New York-i és Dubai város értékű sorok befoglalása, a aazattribútumokmezőben,ésaNewYork,majdDubaiazvárosakellenemegadnia**Értékek** mezőbe.
+    Ha például a város **attribútum** értékét tartalmazza, és korlátozni szeretné a táblázatot úgy, hogy csak a New York-i és a Dubai városi értékkel rendelkező sorokat foglalja bele, akkor a City értéket kell megadnia az attribútumok mezőben, valamint a New York-i, majd a Dubai **értéket az értékek** mezőben.
 
 1. Kattintson az **OK** gombra. 
 
 1. A mintaként használni kívánt tárolók leképezési definícióinak befejezése után a **sémakezelő** ablakban kattintson a **minta**elemre.
-     Az oszlop SQL nevét, az SQL-típus, SQL hossza (ha van ilyen), módosíthatja az egyes oszlopok méretezés (ha van ilyen), a pontosság (ha alkalmazható) és a üresen hagyható.
-    - Beállíthat **oszlop elrejtése** való **igaz** Ha azt szeretné, ez az oszlop kizárása a lekérdezés eredményeit. Oszlopok jelölt oszlop elrejtése = true nem lehet megjeleníteni a kijelölés és felhasználását, bár továbbra is a séma részét képezik. Például az összes az Azure Cosmos DB szükséges Rendszertulajdonságok kezdve elrejtheti `_`.
-    - A **azonosító** oszlop egyetlen mező nem lehet rejtett, ahogy a normalizált séma az elsődleges kulcs használatban van. 
+     Minden oszlop esetében módosíthatja az SQL-név, az SQL-típus, az SQL-hossz (ha van), a skálázás (ha alkalmazható), a pontosság (ha van) és a null értékű.
+    - Beállíthatja az **oszlop elrejtését** **true** értékre, ha ki szeretné zárni az oszlopot a lekérdezési eredményekből. A kiválasztáshoz és a kivetítéshez nem ad vissza oszlopokat a Hide oszlop = true értékkel, de még mindig a séma részét képezik. Elrejtheti például az összes Azure Cosmos DB rendszerkövetelményt a `_`tól kezdődően.
+    - Az **ID** oszlop az egyetlen olyan mező, amely nem rejthető el, mert a normalizált sémában elsődleges kulcsként van használatban. 
 
-1. Miután befejezte a sémájának definiálásához, kattintson a **fájl** | **mentése**, lépjen abba a könyvtárba menteni a sémát, és kattintson **mentése**.
+1. Miután befejezte a séma definiálását, kattintson a **fájl** | **Mentés**gombra, navigáljon a címtárhoz a séma mentéséhez, majd kattintson a **Mentés**gombra.
 
-1. Térjen vissza a **Azure Cosmos DB ODBC DSN illesztőinek** ablakban kattintson a **speciális beállítások**. Ezt követően a a **sémafájl** mezőbe, keresse meg a séma mentett fájlt, és kattintson a **OK**. Kattintson a **OK** újra a DSN mentésére. Ez a séma hozott létre a DSN menti. 
+1. A **Azure Cosmos db ODBC-ILLESZTŐ DSN-telepítő** ablakában kattintson a **Speciális beállítások**elemre. Ezután a **sémafájl** mezőben navigáljon a mentett sémafájl elemhez, és kattintson az **OK**gombra. Kattintson ismét az **OK** gombra a DSN mentéséhez. Ezzel elmenti a létrehozott sémát a DSN-ben. 
 
-## <a name="optional-set-up-linked-server-connection"></a>(Nem kötelező) A csatolt kiszolgáló-kapcsolat beállítása
+## <a name="optional-set-up-linked-server-connection"></a>Választható Csatolt kiszolgáló kapcsolatának beállítása
 
-Azure Cosmos DB az SQL Server Management Studio (SSMS) kapcsolatot hoz létre csatolt kiszolgáló beállításával lekérdezheti.
+A SQL Server Management Studio (SSMS) Azure Cosmos DB lekérdezhető egy csatolt kiszolgáló kapcsolatának beállításával.
 
-1. Hozzon létre egy adatforrás leírtak [2. lépés](#connect)nevű például `SDS Name`.
+1. Hozzon létre egy rendszeradatforrást a [2. lépés](#connect), például a `SDS Name`néven leírtak szerint.
 
-1. [Telepítse az SQL Server Management Studio](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) és csatlakozás a kiszolgálóhoz. 
+1. [Telepítse a SQL Server Management Studiot](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) , és kapcsolódjon a kiszolgálóhoz. 
 
-1. Az SSMS query-szerkesztő, hozzon létre egy csatolt kiszolgáló objektum `DEMOCOSMOS` az adatforrás az alábbi parancsokkal. Cserélje le `DEMOCOSMOS` a csatolt kiszolgáló nevét és `SDS Name` a rendszer az adatforrás nevét.
+1. A SSMS lekérdezési szerkesztőjében hozzon létre egy csatolt kiszolgáló objektumot `DEMOCOSMOS` az adatforráshoz az alábbi parancsokkal. Cserélje le a `DEMOCOSMOS` nevet a csatolt kiszolgáló nevére, és `SDS Name` a rendszeradatforrás nevével.
 
     ```sql
     USE [master]
@@ -160,19 +160,19 @@ Azure Cosmos DB az SQL Server Management Studio (SSMS) kapcsolatot hoz létre cs
     GO
     ```
     
-Az új csatolt kiszolgáló nevének megtekintéséhez frissítse a csatolt kiszolgálók listájához.
+Az új csatolt kiszolgáló nevének megtekintéséhez frissítse a társított kiszolgálók listáját.
 
-![A csatolt kiszolgáló az ssms-ben](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
+![Csatolt kiszolgáló a SSMS-ben](./media/odbc-driver/odbc-driver-linked-server-ssms.png)
 
 ### <a name="query-linked-database"></a>Csatolt adatbázis lekérdezése
 
-Csatolt adatbázis lekérdezése, adja meg az SSMS-lekérdezést. Ebben a példában a lekérdezés a (z) `customers`nevű tárolóban lévő táblából van kiválasztva:
+A csatolt adatbázis lekérdezéséhez adjon meg egy SSMS-lekérdezést. Ebben a példában a lekérdezés a (z) `customers`nevű tárolóban lévő táblából van kiválasztva:
 
 ```sql
 SELECT * FROM OPENQUERY(DEMOCOSMOS, 'SELECT *  FROM [customers].[customers]')
 ```
 
-Hajtsa végre a lekérdezést. Az eredmény ehhez hasonló lesz:
+Hajtsa végre a lekérdezést. Ennek az eredménynek a következőhöz hasonlónak kell lennie:
 
 ```
 attachments/  1507476156    521 Bassett Avenue, Wikieup, Missouri, 5422   "2602bc56-0000-0000-0000-59da42bc0000"   2015-02-06T05:32:32 +05:00 f1ca3044f17149f3bc61f7b9c78a26df
@@ -183,7 +183,7 @@ attachments/  1507476156    570 Ruby Street, Spokane, Idaho, 9025       "2602c15
 ```
 
 > [!NOTE]
-> A Cosmos DB csatolt kiszolgáló nem támogatja a négyrészes elnevezési. Hibát ad vissza az alábbihoz hasonló:
+> A csatolt Cosmos DB kiszolgáló nem támogatja a négy részből álló elnevezést. A rendszer a következő üzenethez hasonló hibaüzenetet ad vissza:
 
 ```
 Msg 7312, Level 16, State 1, Line 44
@@ -191,57 +191,57 @@ Msg 7312, Level 16, State 1, Line 44
 Invalid use of schema or catalog for OLE DB provider "MSDASQL" for linked server "DEMOCOSMOS". A four-part name was supplied, but the provider does not expose the necessary interfaces to use a catalog or schema.
 ``` 
 
-## <a name="optional-creating-views"></a>(Nem kötelező) Nézetek létrehozása
-Adja meg, és a mintavételi folyamat részeként nézeteket hozhat létre. Ezek a nézetek az SQL-nézetek egyenértékűek. Ezek csak olvasható és hatókör a beállításokat és az Azure Cosmos DB SQL-lekérdezés definiált leképezések. 
+## <a name="optional-creating-views"></a>Választható Nézetek létrehozása
+A mintavételi folyamat részeként megadhatja és létrehozhatja a nézeteket. Ezek a nézetek az SQL-nézetekkel egyenértékűek. Ezek csak olvashatók, és hatókörük a Azure Cosmos DB SQL-lekérdezés kiválasztásait és kivetítéseit határozza meg. 
 
 Az adatnézet létrehozásához a **séma szerkesztő** ablakában, a **definíciók megtekintése** oszlopban kattintson a **Hozzáadás** elemre a tárolóhoz a minta sorban. 
-    ![Adatok nézet létrehozása](./media/odbc-driver/odbc-driver-create-view.png)
+    ![az adatnézet létrehozása](./media/odbc-driver/odbc-driver-create-view.png)
 
 
-Ezt a a **Nézetdefiníciókból** ablakban tegye a következőket:
+Ezután a **definíciók megtekintése** ablakban tegye a következőket:
 
-1. Kattintson a **új**, adja meg a nézet, például EmployeesfromSeattleView nevét, majd kattintson **OK**.
+1. Kattintson az **új**elemre, adja meg a nézet nevét, például EmployeesfromSeattleView, majd kattintson **az OK**gombra.
 
-1. Az a **nézet szerkesztése** ablakban adja meg az Azure Cosmos DB-lekérdezést. Ez lehet egy [Azure Cosmos DB SQL-lekérdezés](how-to-sql-query.md), például `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`, és kattintson a **OK**.
+1. A **nézet szerkesztése** ablakban adjon meg egy Azure Cosmos db lekérdezést. Ennek [Azure Cosmos db SQL-lekérdezésnek](how-to-sql-query.md)kell lennie, például `SELECT c.City, c.EmployeeName, c.Level, c.Age, c.Manager FROM c WHERE c.City = "Seattle"`, majd kattintson **az OK**gombra.
 
-    ![A nézet létrehozásakor, a lekérdezés hozzáadása](./media/odbc-driver/odbc-driver-create-view-2.png)
+    ![Lekérdezés hozzáadása nézet létrehozásakor](./media/odbc-driver/odbc-driver-create-view-2.png)
 
 
-Tetszés szerint számos nézet hozhat létre. Ha elkészült a nézetek meghatározása, segítségével majd mintavételi az adatokat. 
+Több nézetet is létrehozhat, ahogy szeretné. Ha elkészült a nézetek definiálásával, megtekintheti azokat. 
 
-## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>5\. lépés: Az üzleti Intelligencia eszközök, például a Power BI Desktop-adatok megtekintése
+## <a name="step-5-view-your-data-in-bi-tools-such-as-power-bi-desktop"></a>5\. lépés: az adatai megtekintése BI-eszközökön, például Power BI Desktop
 
-Az új DSN segítségével bármely ODBC-kompatibilis eszközök az Azure Cosmos DB csatlakozni – ebben a lépésben egyszerűen bemutatja, hogyan csatlakozhat a Power BI Desktop és a Power BI-Vizualizációk létrehozása.
+Az új DSN használatával bármely ODBC-kompatibilis eszközzel csatlakozhat Azure Cosmos DBhoz – ez a lépés egyszerűen azt mutatja be, hogyan csatlakozhat a Power BI Desktophoz, és hogyan hozhat létre Power BI vizualizációt.
 
 1. Nyissa meg a Power BI Desktopot.
 
-1. Kattintson a **adatok**.
+1. Kattintson **az adatlekérdezés**elemre.
 
-    ![A Power BI Desktop adatok lekérése](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
+    ![Az Power BI Desktopban lévő adatlekérdezés](./media/odbc-driver/odbc-driver-power-bi-get-data.png)
 
-1. Az a **adatok lekérése** ablakban kattintson a **más** | **ODBC** | **Connect**.
+1. Az **adatlekérdezés** ablakban kattintson az **egyéb** | **ODBC** | a **kapcsolat**elemre.
 
-    ![Válassza ki az ODBC-adatforrás a Power BI adatok lekérése](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
+    ![Válassza ki az ODBC-adatforrást az Power BI lekérése elemnél](./media/odbc-driver/odbc-driver-power-bi-get-data-2.png)
 
-1. Az a **származó ODBC** ablakban, majd jelölje ki az adatforrás nevét, a létrehozott, és kattintson a **OK**. Hagyhatja az **speciális beállítások** bejegyzés üres.
+1. A **from ODBC** ablakban válassza ki a létrehozott adatforrás nevét, majd kattintson az **OK**gombra. A **Speciális beállítások** bejegyzéseket üresen hagyhatja.
 
-    ![Válassza ki a Power BI adatok lekérése adatforrás neve (DSN)](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
+    ![Adatforrás nevének (DSN) kiválasztása Power BI](./media/odbc-driver/odbc-driver-power-bi-get-data-3.png)
 
-1. Az a **egy ODBC-illesztő használatával adatforrás elérése** ablakban válassza **alapértelmezett vagy egyéni** majd **Connect**. Nem kell tartalmaznia a **hitelesítőadat-kapcsolati karakterlánc tulajdonságai**.
+1. Az **adatforráshoz való hozzáférés ODBC-illesztő használatával** ablakban válassza az **alapértelmezett vagy az egyéni** lehetőséget, majd kattintson a **Kapcsolódás**elemre. Nem kell megadnia a **hitelesítő adatok kapcsolódási karakterláncának tulajdonságait**.
 
-1. Az a **kezelő** ablakban a bal oldali ablaktáblán bontsa ki az adatbázist, a sémát, és válassza ki a tábla. Az eredmények ablaktáblán a létrehozott séma használatával adatokat tartalmazza.
+1. A **navigátor** ablak bal oldali ablaktábláján bontsa ki az adatbázist, a sémát, majd válassza ki a táblázatot. Az eredmények ablaktábla a létrehozott sémával együtt tartalmazza az adatmennyiséget.
 
-    ![Válassza ki a táblát az adatok a Power BI beszerzése](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
+    ![Válassza ki a táblát Power BI az adatlekérdezés](./media/odbc-driver/odbc-driver-power-bi-get-data-4.png)
 
-1. Az adatok megjelenítése a Power BI desktopban, jelölje be a táblázat neve elé, és kattintson **terhelés**.
+1. Az Power BI Desktopban található adatmegjelenítéshez jelölje be a tábla neve előtt található jelölőnégyzetet, majd kattintson a **Betöltés**elemre.
 
-1. A Power BI Desktopban, a bal oldali, válassza ki az adatok lapot ![Az adatok lapon, a Power BI Desktopban](./media/odbc-driver/odbc-driver-data-tab.png) Erősítse meg az adatokat a rendszer importálta.
+1. Power BI Desktop a bal szélen válassza az adatlapot ![A Power BI Desktop Adatlapja](./media/odbc-driver/odbc-driver-data-tab.png) erősítse meg, hogy az adatai importálása megtörtént.
 
-1. Mostantól létrehozhat vizualizációkat Power bi-ban a jelentések fülre kattintva ![a Power BI Desktopban jelentés lap](./media/odbc-driver/odbc-driver-report-tab.png), majd **új vizuális**, majd testreszabja a csempe. A Power BI Desktopban Vizualizációk létrehozásával kapcsolatos további információkért lásd: [vizualizációtípusok a Power BI](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
+1. Mostantól a Power BI használatával is létrehozhat vizualizációkat, ha a jelentés lapra ![jelentés lapra kattint Power BI Desktop](./media/odbc-driver/odbc-driver-report-tab.png), majd az **új vizualizáció**elemre kattint, majd testreszabja a csempét. További információ a vizualizációk létrehozásáról a Power BI Desktopban: [Power bi vizualizációs típusai](https://powerbi.microsoft.com/documentation/powerbi-service-visualization-types-for-reports-and-q-and-a/).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-Ha a következő hibaüzenet jelenik meg, győződjön meg róla a **gazdagép** és **hozzáférési kulcs** az Azure Portalon, kimásolt értékekkel [2. lépés](#connect) helyes-e, és próbálkozzon újra. Jobb oldalán található másolási gombok a **gazdagép** és **hívóbetű** értékek az ingyenes értékek hiba másolása az Azure Portalon.
+Ha a következő hibaüzenetet kapja, győződjön meg arról, hogy a [2. lépésben](#connect) a Azure Portal átmásolt **gazdagép** -és **hozzáférési kulcs** értéke helyes, majd próbálkozzon újra. Használja a **gazdagép** és a kulcs értékeinek jobb oldalán lévő másolási gombokat a Azure Portal az értékek szabad **eléréséhez** .
 
     [HY000]: [Microsoft][Azure Cosmos DB] (401) HTTP 401 Authentication Error: {"code":"Unauthorized","message":"The input authorization token can't serve the request. Please check that the expected payload is built as per the protocol, and check the key being used. Server used the following payload to sign: 'get\ndbs\n\nfri, 20 jan 2017 03:43:55 gmt\n\n'\r\nActivityId: 9acb3c0d-cb31-4b78-ac0a-413c8d33e373"}`
 

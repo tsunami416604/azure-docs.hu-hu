@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 06b54c3038e8b4f5879a93b696920534c2199008
-ms.sourcegitcommit: f523c8a8557ade6c4db6be12d7a01e535ff32f32
+ms.openlocfilehash: 4860dcac666f790fed199536338e50a967113c20
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74414516"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748855"
 ---
 Ez a cikk áttekintést nyújt az Azure Virtual Machines (VM) rendelkezésre állási funkcióiról.
 
@@ -62,7 +62,7 @@ A Virtual Machines Scale sets segítségével megadhatja az előkészítési mó
 
 **Tartalék tartományok és frissítési tartományok**
 
-A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissítési tartományok igazításával egyszerűbbé teszik a magas rendelkezésre állás kialakítását. A méretezési csoporthoz csak a tartalék tartományok darabszámát kell megadnia. A méretezési csoportok számára elérhető tartalék tartományok száma régiónként eltérő lehet. Tekintse meg [régiónként a tartalék tartományok számát](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability#number-of-fault-domains-per-region).
+A virtuálisgép-méretezési csoportok a tartalék tartományok és a frissítési tartományok igazításával egyszerűbbé teszik a magas rendelkezésre állás kialakítását. A méretezési csoporthoz csak a tartalék tartományok darabszámát kell megadnia. A méretezési csoportok számára elérhető tartalék tartományok száma régiónként eltérő lehet. Lásd: [virtuális gépek rendelkezésre állásának kezelése az Azure-ban](https://docs.microsoft.com/azure/virtual-machines/windows/manage-availability).
 
 
 ## <a name="availability-sets"></a>Rendelkezésre állási csoportok

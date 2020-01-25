@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 9bf5608a44aa19650a507ada3a0a437d34c13277
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d56504c96c5e039f2563a1bfee577fe9b15e8563
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705666"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715575"
 ---
 # <a name="get-sensor-data-from-sensor-partners"></a>Érzékelők adatainak beolvasása az érzékelő partnereitől
 
@@ -60,7 +60,7 @@ Az alábbi lépéseket követve hozhatja elő a fenti információkat: (kérjük
 
 8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
 
-9. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+9. Futtassa az alábbi szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -72,13 +72,16 @@ Az alábbi lépéseket követve hozhatja elő a fenti információkat: (kérjük
 
 ### <a name="integrate-device-data-by-using-the-generated-credentials"></a>Az eszközök adatainak integrálása a generált hitelesítő adatok használatával
 
-A FarmBeats az előző szakaszban létrehozott hitelesítő adatokkal való összekapcsolásához nyissa meg az eszköz partner portálját:
-
+Most a következő információk jönnek létre az előző szakaszban.
  - API-végpont
  - EventHub-kapcsolatok karakterlánca
  - Ügyfél-azonosító
  - Titkos ügyfélkulcs
  - Bérlőazonosító
+ 
+Ezt a FarmBeats összekapcsolásához meg kell adnia az eszköz partnerének. Ha ugyanezt teszi, nyissa meg az eszköz partner portálját. Ha például a Davis-eszközökről származó eszközöket használ, lépjen az alábbi oldalra:
+
+[Davis-eszközök](https://weatherlink.github.io/azure-farmbeats/setup)
 
  Az eszköz szolgáltatója megerősíti a sikeres integrációt. A megerősítést követően megtekintheti az összes eszközt és érzékelőt az Azure FarmBeats.
 

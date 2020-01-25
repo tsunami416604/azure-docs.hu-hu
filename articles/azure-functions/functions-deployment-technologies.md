@@ -6,12 +6,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: cotresne
-ms.openlocfilehash: 6c946667befdf34a2ae6769b2c1bb43871111c24
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: 39b3a96ddd3a9007600d1fa956c4e2d48f6adae9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921026"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714805"
 ---
 # <a name="deployment-technologies-in-azure-functions"></a>Üzembe helyezési technológiák Azure Functions
 
@@ -114,10 +114,10 @@ A zip-telepítés használatával leküldheti a Function alkalmazást az Azure-b
 
 Telepítheti a Function alkalmazást tartalmazó Linux-tároló lemezképét.
 
->__Használat:__ Hozzon létre egy Linux-függvény alkalmazást a prémium vagy a dedikált csomagban, és adja meg, melyik tárolót szeretné futtatni. Ezt két módon teheti meg:
+>__Használat:__ Hozzon létre egy Linux-függvény alkalmazást a prémium vagy a dedikált csomagban, és adja meg, melyik tárolót szeretné futtatni. Ezt kétféleképpen teheti meg:
 >
 >* Hozzon létre egy Linux-függvény alkalmazást egy Azure App Service csomaggal a Azure Portal. A **közzétételhez**válassza a **Docker-rendszerkép**lehetőséget, majd konfigurálja a tárolót. Adja meg azt a helyet, ahol a rendszerkép található.
->* Hozzon létre egy Linux-függvény alkalmazást egy App Service csomagon az Azure CLI használatával. További információ: [függvény létrehozása Linux rendszeren egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md#create-a-premium-plan).
+>* Hozzon létre egy Linux-függvény alkalmazást egy App Service csomagon az Azure CLI használatával. További információ: [függvény létrehozása Linux rendszeren egyéni rendszerkép használatával](functions-create-function-linux-custom-image.md#create-supporting-azure-resources-for-your-function).
 >
 >Ha egy meglévő alkalmazást szeretne üzembe helyezni egy egyéni tárolóval, akkor a [Azure functions Core Toolsban](functions-run-local.md)használja a [`func deploy`](functions-run-local.md#publish) parancsot.
 

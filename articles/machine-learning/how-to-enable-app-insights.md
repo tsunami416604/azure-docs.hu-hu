@@ -11,12 +11,12 @@ ms.author: copeters
 author: lostmygithubaccount
 ms.date: 11/12/2019
 ms.custom: seoapril2019
-ms.openlocfilehash: d12cd24cb8cf31cc55a4cb6128b26a1c55a540d4
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 68c7f3082adbf10ee6f5b5e6b6fd0bf79232a7d0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771410"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722424"
 ---
 # <a name="monitor-and-collect-data-from-ml-web-service-endpoints"></a>A ML webszolgáltatás-végpontokról származó adatok figyelése és gyűjtése
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Ebből a cikkből megtudhatja, hogyan gyűjthet adatokat a webszolgáltatási v�
 ## <a name="web-service-metadata-and-response-data"></a>Webszolgáltatás metaadatainak és válaszideje
 
 >[!Important]
-> Az Azure Application Insights csak a upto 64 kb-adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
+> Az Azure Application Insights csak a legfeljebb 64 kb adattartalmakat naplózza. Ha eléri ezt a korlátot, a rendszer csak a modell legújabb kimeneteit naplózza. 
 
 A szolgáltatás metaadatainak és válaszai – a webszolgáltatás metaadatainak és a modell előrejelzésének megfelelően – a rendszer az üzenet `"model_data_collection"`jában naplózza az Azure Application Insights nyomkövetéseit. Az Azure Application Insights közvetlenül is lekérdezheti az adatok eléréséhez, vagy beállíthat [folyamatos exportálást](https://docs.microsoft.com/azure/azure-monitor/app/export-telemetry) egy Storage-fiókba a hosszú megőrzés vagy a további feldolgozás érdekében. A modell adatai ezután felhasználhatók a Azure Machine Learning a címkézés, az átképzés, a magyarázat, az adatelemzés vagy más felhasználás beállításához. 
 

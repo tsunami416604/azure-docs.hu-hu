@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/14/2019
 ms.author: allensu
-ms.openlocfilehash: f5fa39e07eba6bdf24d96e72c9229e215ff6730b
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9fd1e72568b4f0c8813a5d050ce7fa7214ca7cd9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772040"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722441"
 ---
 # <a name="standard-load-balancer-diagnostics-with-metrics-alerts-and-resource-health"></a>Metrikák, riasztások és az erőforrások állapotának diagnosztikái a standard Load Balancerben
 
@@ -27,7 +27,7 @@ Az Azure standard Load Balancer a következő diagnosztikai képességeket teszi
 
 * **Erőforrás állapota**: a Azure Portal Load Balancer lapja és a Resource Health lap (a figyelő alatt) tegye elérhetővé a standard Load Balancer Resource Health szakaszát. 
 
-Ez a cikk gyors áttekintést nyújt ezekről a képességekről, és lehetőséget nyújt a standard Load Balancer használatára.
+Ez a cikk gyors áttekintést nyújt ezekről a képességekről, és lehetőséget nyújt a standard Load Balancer használatára. 
 
 ## <a name = "MultiDimensionalMetrics"></a>Többdimenziós metrikák
 
@@ -41,7 +41,7 @@ A különböző standard Load Balancer konfigurációk a következő metrikákat
 | Állapot mintavételi állapota (DIP rendelkezésre állása) | Nyilvános és belső terheléselosztó | A standard Load Balancer egy elosztott állapot-ellenőrzési szolgáltatást használ, amely figyeli az alkalmazás-végpont állapotát a konfigurációs beállításoknak megfelelően. Ez a metrika a terheléselosztó készletében lévő minden példány végpontjának összesített vagy végponti szűrt nézetét biztosítja. Megtudhatja, hogyan tekintheti meg Load Balancer az alkalmazás állapotát, ahogy azt az állapot-mintavételi konfiguráció jelzi. |  Átlag |
 | (Szinkronizált) csomagok | Nyilvános és belső terheléselosztó | A standard Load Balancer nem szakítja meg Transmission Control Protocol (TCP) kapcsolatait, vagy nem kommunikál a TCP-vagy UDP-csomagok forgalmával. A folyamatok és a kézfogások mindig a forrás és a virtuálisgép-példány között vannak. A TCP protokollal kapcsolatos forgatókönyvek jobb megoldásához használhatja az SYN-csomagok számlálóit, hogy megtudja, hány TCP-kapcsolati kísérletet hajt végre a rendszer. A metrika a fogadott TCP SYN-csomagok számát jelenti.| Átlag |
 | SNAT-kapcsolatok | Nyilvános Load Balancer |Standard Load Balancer a nyilvános IP-címhez maszkolás kimenő folyamatok számát jelenti. A forrásoldali hálózati címfordítási (SNAT) portok kimeríthető erőforrások. Ez a metrika arra utalhat, hogy az alkalmazás milyen mértékben támaszkodik a SNAT a kimenő folyamatokból. A sikeres és sikertelen kimenő SNAT folyamatokra vonatkozó számlálókat jelentettek, és felhasználhatók a kimenő folyamatok állapotának hibakeresésére és megismerésére.| Átlag |
-| Bájtok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer az előtér által feldolgozott adatmennyiséget jelenti.| Átlag |
+| Bájtok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer az előtér által feldolgozott adatmennyiséget jelenti. Észreveheti, hogy a bájtok nincsenek egyenlően elosztva a háttérbeli példányok között. Ez várhatóan az Azure Load Balancer algoritmusa a folyamatokon alapul. | Átlag |
 | Csomagok számlálói |  Nyilvános és belső terheléselosztó | Standard Load Balancer jelentést készít az előtér által feldolgozott csomagokról.| Átlag |
 
 ### <a name="view-your-load-balancer-metrics-in-the-azure-portal"></a>A terheléselosztó metrikáinak megtekintése a Azure Portalban
@@ -61,7 +61,7 @@ A standard Load Balancer erőforrások metrikáinak megtekintése:
 
 ### <a name="retrieve-multi-dimensional-metrics-programmatically-via-apis"></a>Többdimenziós mérőszámok programozott módon történő beolvasása API-kon keresztül
 
-A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api).
+A többdimenziós metrikák definícióinak és értékeinek beolvasására szolgáló API-útmutatásért lásd: [Azure Monitoring REST API útmutató](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-rest-api-walkthrough#retrieve-metric-definitions-multi-dimensional-api). Ezek a metrikák csak az "összes metrika" lehetőségen keresztül írhatók a Storage-fiókba. 
 
 ### <a name = "DiagnosticScenarios"></a>Gyakori diagnosztikai forgatókönyvek és javasolt nézetek
 

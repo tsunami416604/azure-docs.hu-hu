@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 03/23/2018
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 4175dfe4ed5b7aa1064e8ba25c5b44243e4c79b0
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: e751b3dd9108d364c900bbd059dc89c1eb3770c4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76028505"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722339"
 ---
 # <a name="azure-service-fabric-node-types-and-virtual-machine-scale-sets"></a>Azure Service Fabric Node-típusok és virtuálisgép-méretezési csoportok
 
@@ -74,12 +74,12 @@ A tulajdonságok leírása a következő:
 | --- | --- | --- | --- |
 | név | sztring | kiterjesztés egyedi neve |
 | type | "ServiceFabricLinuxNode" vagy "ServiceFabricWindowsNode" | Meghatározza, hogy az operációs rendszer Service Fabric |
-| autoUpgradeMinorVersion | true (igaz) vagy false (hamis) | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
-| közzétevő | Microsoft. Azure. ServiceFabric | a Service Fabric-kiterjedési közzétevő neve |
+| autoUpgradeMinorVersion | Igaz vagy hamis | Az SF Runtime másodlagos verzióinak automatikus frissítésének engedélyezése |
+| Publisher | Microsoft. Azure. ServiceFabric | Az Service Fabric-bővítmény közzétevőének neve |
 | clusterEndpont | sztring | URI: PORT – felügyeleti végpont |
 | nodeTypeRef | sztring | nodeType neve |
 | durabilityLevel | bronz, ezüst, arany, platina | a nem módosítható Azure-infrastruktúra szüneteltetésének ideje |
-| enableParallelJobs | true (igaz) vagy false (hamis) | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
+| enableParallelJobs | Igaz vagy hamis | A számítási ParallelJobs engedélyezése, például a virtuális gép eltávolítása és a virtuális gép újraindítása ugyanabban a méretezési csoportba párhuzamosan |
 | nicPrefixOverride | sztring | Alhálózat-előtag, például "10.0.0.0/24" |
 | commonNames | karakterlánc [] | Telepített fürtözött tanúsítványok köznapi nevei |
 | x509StoreName | sztring | Azon áruház neve, ahol a telepített fürt tanúsítványa található |

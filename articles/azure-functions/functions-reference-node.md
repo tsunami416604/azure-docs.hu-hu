@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan fejlesztheti a függvényeket a JavaScript hasz
 ms.assetid: 45dedd78-3ff9-411f-bb4b-16d29a11384c
 ms.topic: reference
 ms.date: 12/17/2019
-ms.openlocfilehash: a34efe20e796570358771ec53fbfb797daa15b93
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: ee6b886c6ed18aad54092005d800b4087280190b
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75922001"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714797"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
 
@@ -232,7 +232,7 @@ Kiválaszthatja, hogy a `context.binding` objektum helyett a `context.done` met�
 context.bindingData
 ```
 
-Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény Meghívási adatokat tartalmaz (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs.md#trigger---javascript-example)-ra.
+Egy elnevezett objektumot ad vissza, amely trigger-metaadatokat és függvény Meghívási adatokat tartalmaz (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Az eseményindító metaadatainak példáját itt tekintheti meg: [példa az Event hub](functions-bindings-event-hubs.md#trigger)-ra.
 
 ### <a name="contextdone-method"></a>Context. Done metódus
 
@@ -487,7 +487,7 @@ Helyileg futtatva az Alkalmazásbeállítások a [Local. Settings. JSON](functio
 
 A `function.json` tulajdonságok `scriptFile` és `entryPoint` az exportált függvény helyének és nevének konfigurálására használhatók. Ezek a tulajdonságok akkor lehetnek fontosak, ha a JavaScript transpiled.
 
-### <a name="using-scriptfile"></a>Az `scriptFile` használata
+### <a name="using-scriptfile"></a>`scriptFile` használata
 
 Alapértelmezés szerint a JavaScript-függvényt a rendszer `index.js`ból hajtja végre, és egy olyan fájlt, amely ugyanazt a szülő könyvtárat osztja meg a megfelelő `function.json`.
 
@@ -516,7 +516,7 @@ A `myNodeFunction` `function.json` tartalmaznia kell egy `scriptFile` tulajdons�
 }
 ```
 
-### <a name="using-entrypoint"></a>Az `entryPoint` használata
+### <a name="using-entrypoint"></a>`entryPoint` használata
 
 `scriptFile` (vagy `index.js`) esetében a függvényt az `module.exports` használatával kell exportálni, hogy azok megtalálhatók és fussanak. Alapértelmezés szerint az aktiváláskor végrehajtandó függvény az egyetlen Exportálás az adott fájlból, a `run`nevű exportálásból, vagy a `index`nevű exportálásból.
 

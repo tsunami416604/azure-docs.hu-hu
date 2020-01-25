@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: c4d5716c8a31ceccbe23c1f77ad3b88030ff3065
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: f10be8efcd2d8e838b4b5f62310eb405f6ed0158
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75972129"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714632"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -40,8 +40,8 @@ A következő beállításokat tekintheti meg és konfigurálhatja az **erőforr
     * [Speciális beállítások](#advanced-settings)
     * [Azure cache a Redis Advisorhoz](#azure-cache-for-redis-advisor)
     * [Méretezés](#scale)
-    * [Redis-fürt mérete](#cluster-size)
-    * [Redis-adatmegőrzés](#redis-data-persistence)
+    * [Fürt mérete](#cluster-size)
+    * [Adatmegőrzés](#redis-data-persistence)
     * [Frissítések ütemezése](#schedule-updates)
     * [Georeplikáció](#geo-replication)
     * [Virtuális hálózat](#virtual-network)
@@ -92,8 +92,8 @@ A **Settings (beállítások** ) szakasz a gyorsítótár következő beállít�
 * [Speciális beállítások](#advanced-settings)
 * [Azure cache a Redis Advisorhoz](#azure-cache-for-redis-advisor)
 * [Méretezés](#scale)
-* [Redis-fürt mérete](#cluster-size)
-* [Redis-adatmegőrzés](#redis-data-persistence)
+* [Fürt mérete](#cluster-size)
+* [Adatmegőrzés](#redis-data-persistence)
 * [Frissítések ütemezése](#schedule-updates)
 * [Georeplikáció](#geo-replication)
 * [Virtuális hálózat](#virtual-network)
@@ -185,7 +185,7 @@ Az egyes díjszabási szintek eltérő korlátokkal rendelkeznek az ügyfélkapc
 
 | Azure cache a Redis metrikához | További információ |
 | --- | --- |
-| Hálózatisávszélesség-felhasználás |[Gyorsítótár teljesítményének rendelkezésre álló sávszélessége](cache-faq.md#cache-performance) |
+| Hálózati sávszélesség használata |[Gyorsítótár teljesítményének rendelkezésre álló sávszélessége](cache-faq.md#cache-performance) |
 | Csatlakoztatott ügyfelek |[Alapértelmezett Redis-kiszolgáló konfigurációja – MaxClients](#maxclients) |
 | Kiszolgáló terhelése |[Használati diagramok – Redis-kiszolgáló terhelése](cache-how-to-monitor.md#usage-charts) |
 | Memóriahasználat |[Gyorsítótár teljesítményének mérete](cache-faq.md#cache-performance) |
@@ -201,14 +201,9 @@ Kattintson a **Scale (méretezés** ) elemre a gyorsítótár díjszabási szint
 <a name="cluster-size"></a>
 
 ### <a name="redis-cluster-size"></a>Redis-fürt mérete
-Az **(előzetes verzió) Redis** elemre kattintva módosíthatja a fürt méretét egy futó prémium gyorsítótárban, ha a fürtözés engedélyezve van.
+Kattintson a **fürt mérete** lehetőségre a fürt méretének módosításához egy futó prémium szintű gyorsítótárban, ha a fürtözés engedélyezve van.
 
-> [!NOTE]
-> Vegye figyelembe, hogy habár az Redis prémium szintű Azure cache-t általánosan elérhetővé tettük, a Redis-fürt mérete funkció jelenleg előzetes verzióban érhető el.
->
->
-
-![Redis-fürt mérete](./media/cache-configure/redis-cache-redis-cluster-size.png)
+![Fürt mérete](./media/cache-configure/redis-cache-redis-cluster-size.png)
 
 A fürt méretének módosításához használja a csúszkát, vagy írjon be egy 1 és 10 közötti számot a szegmensek **száma** szövegmezőbe, majd kattintson **az OK** gombra a mentéshez.
 
@@ -219,7 +214,7 @@ A fürt méretének módosításához használja a csúszkát, vagy írjon be eg
 
 
 ### <a name="redis-data-persistence"></a>Redis-adatmegőrzés
-A prémium szintű gyorsítótárban az adatmegőrzés engedélyezéséhez, letiltásához vagy konfigurálásához kattintson az **Redis adatmegőrzés** lehetőségre. A Redis-hez készült Azure cache a [RDB-megőrzés](cache-how-to-premium-persistence.md#configure-rdb-persistence) vagy a [AOF-megőrzés](cache-how-to-premium-persistence.md#configure-aof-persistence)használatával biztosít Redis-megőrzést.
+Az **adatmegőrzés** lehetőségre kattintva engedélyezheti, letilthatja vagy konfigurálhatja az adatmegőrzést a prémium szintű gyorsítótárban. A Redis-hez készült Azure cache a [RDB-megőrzés](cache-how-to-premium-persistence.md#configure-rdb-persistence) vagy a [AOF-megőrzés](cache-how-to-premium-persistence.md#configure-aof-persistence)használatával biztosít Redis-megőrzést.
 
 További információ: az [adatmegőrzés konfigurálása prémium szintű Azure cache-hez a Redis](cache-how-to-premium-persistence.md)-hez.
 
@@ -286,7 +281,7 @@ Kattintson a **Tulajdonságok** elemre a gyorsítótárra vonatkozó informáci�
 ### <a name="locks"></a>Zárolások
 A **zárolások** szakasz lehetővé teszi egy előfizetés, erőforráscsoport vagy erőforrás zárolását, hogy megakadályozza a szervezet más felhasználói számára a kritikus erőforrások véletlen törlését vagy módosítását. További információ: [Erőforrások zárolása az Azure Resource Manager eszközzel](../azure-resource-manager/management/lock-resources.md).
 
-### <a name="automation-script"></a>Automation-szkript
+### <a name="automation-script"></a>Automation-parancsfájl
 
 Kattintson az **Automation script (automatizálási parancsfájl** ) lehetőségre a üzembe helyezett erőforrások sablonjának létrehozásához és exportálásához a későbbi üzembe helyezésekhez. További információ a sablonok használatáról: [erőforrások központi telepítése Azure Resource Manager-sablonokkal](../azure-resource-manager/templates/deploy-powershell.md).
 
@@ -359,7 +354,7 @@ Alapértelmezés szerint a Azure Monitor gyorsítótár-metrikái [30 napig tár
 ## <a name="support--troubleshooting-settings"></a>Támogatási & hibaelhárítási beállítások
 A **támogatási és hibaelhárítási** szakaszban található beállítások lehetővé teszik a gyorsítótárral kapcsolatos problémák megoldását.
 
-![Támogatás + hibaelhárítás](./media/cache-configure/redis-cache-support-troubleshooting.png)
+![Támogatás és hibaelhárítás](./media/cache-configure/redis-cache-support-troubleshooting.png)
 
 * [Erőforrás állapota](#resource-health)
 * [Új támogatási kérelem](#new-support-request)
@@ -457,9 +452,9 @@ Az adatbázisokkal kapcsolatos további információkért lásd: [Mik a Redis-ad
 > * BGREWRITEAOF
 > * BGSAVE
 > * CONFIG
-> * HIBAKERESÉS
+> * DEBUG
 > * ÁTTELEPÍTÉSE
-> * MENTÉS
+> * Mentés
 > * SHUTDOWN
 > * SLAVEOF
 > * A FÜRTön belüli írási parancsok le vannak tiltva, de a csak olvasási jogosultsággal rendelkező fürt parancsai engedélyezettek.

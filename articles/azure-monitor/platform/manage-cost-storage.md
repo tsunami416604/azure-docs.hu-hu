@@ -14,12 +14,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: bwren
 ms.subservice: ''
-ms.openlocfilehash: 43c9ba4ff21f32ca321a62c7f11430d82dfc4ec0
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 8c4169ccfb35b74b92ea4996cbc779bac35d6ccb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045168"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715859"
 ---
 # <a name="manage-usage-and-costs-with-azure-monitor-logs"></a>A használat és a költségek kezelése Azure Monitor naplókkal
 
@@ -149,7 +149,7 @@ Ha egy adott adattípus (ebben a példában SecurityEvent) megőrzését 730 nap
 
 A `Usage` és `AzureActivity` adattípusok nem állíthatók be egyéni megőrzéssel. Ezek az alapértelmezett munkaterület-megőrzési vagy a 90 napos maximális értékkel lesznek végrehajtva. 
 
-Egy nagyszerű eszköz, amellyel közvetlenül csatlakozhat Azure Resource Managerhoz az adattípusok megőrzésének beállításához az OSS-eszköz [ARMclient](https://github.com/projectkudu/ARMClient).  További információ a cikkek ARMclient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Íme egy példában a ARMClient használatával, amely a SecurityEvent-adatok 730 napos megőrzését állítja be:
+Egy nagyszerű eszköz, amellyel közvetlenül csatlakozhat Azure Resource Managerhoz az adattípusok megőrzésének beállításához az OSS-eszköz [ARMclient](https://github.com/projectkudu/ARMClient).  További információ a cikkek ARMclient: [David Ebbo](http://blog.davidebbo.com/2015/01/azure-resource-manager-client.html) és [Daniel Bowbyes](https://blog.bowbyes.co.nz/2016/11/02/using-armclient-to-directly-access-azure-arm-rest-apis-and-list-arm-policy-details/).  Íme egy példa a ARMClient használatával, amely a SecurityEvent-adatok 730 napos megőrzését állítja be:
 
 ```
 armclient PUT /subscriptions/00000000-0000-0000-0000-00000000000/resourceGroups/MyResourceGroupName/providers/Microsoft.OperationalInsights/workspaces/MyWorkspaceName/Tables/SecurityEvent?api-version=2017-04-26-preview "{properties: {retentionInDays: 730}}"
@@ -191,7 +191,7 @@ Noha a Azure Portal vizualizációs mutatót mutatunk be, amikor eléri az adatk
 Az első lépésekhez tekintse meg a riasztás ajánlott beállításait:
 
 - Cél: válassza ki a Log Analytics erőforrást
-- Feltételek: 
+- Kritériumok 
    - Jel neve: egyéni naplók keresése
    - Keresési lekérdezés: művelet | ahol a Részletek "túlkvóta"
    - A következő alapján: az eredmények száma
@@ -486,7 +486,7 @@ Amikor az adatgyűjtés leáll, a OperationStatus **figyelmeztetést**jelenít m
 |-----------------------|---------|
 |Elérte az örökölt ingyenes díjszabási csomag napi korlátját |Várjon, amíg a gyűjtemény automatikusan újraindul, vagy váltson egy fizetős díjszabási csomagra.|
 |Elérte a munkaterület napi korlátját|Várjon, amíg a gyűjtemény automatikusan újraindul, vagy növelje a napi adatmennyiség kezelése című témakörben leírt napi adatmennyiség korlátját. A napi korlát alaphelyzetbe állításának ideje az **adatmennyiség-kezelés** oldalon látható. |
-|Az Azure-előfizetés felfüggesztett állapotban van, a következő okból:<br> Az ingyenes próbaverzió véget ért<br> Az Azure pass lejárt<br> Elérte a havi költségkeretet (például MSDN-vagy Visual Studio-előfizetéssel)|Átállás a fizetős verzióra<br> Törlési korlát, vagy várjon, amíg a korlát alaphelyzetbe nem áll|
+|Az Azure-előfizetés felfüggesztett állapotban van, a következő okból:<br> Az ingyenes próbaverzió véget ért<br> Az Azure pass lejárt<br> Elérte a havi költségkeretet (például MSDN-vagy Visual Studio-előfizetéssel)|Váltás fizetős előfizetésre<br> Törlési korlát, vagy várjon, amíg a korlát alaphelyzetbe nem áll|
 
 Ha értesítést szeretne kapni az adatgyűjtés leállításakor, kövesse a *napi adatsapka* -riasztás létrehozása című témakörben leírt lépéseket az adatgyűjtés leállításakor. A következő témakörben ismertetett lépések végrehajtásával konfigurálhat egy e-mailt, webhookot vagy runbook műveletet a riasztási szabályhoz: [műveleti csoport létrehozása](action-groups.md) . 
 

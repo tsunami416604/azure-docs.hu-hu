@@ -6,12 +6,12 @@ ms.topic: article
 ms.date: 08/12/2019
 ms.reviewer: mahender
 ms.custom: seodec18
-ms.openlocfilehash: ff0eb102d37f285279c041ff91b7a89e157259eb
-ms.sourcegitcommit: 265f1d6f3f4703daa8d0fc8a85cbd8acf0a17d30
+ms.openlocfilehash: efef578f5c62bef4ae33b98b568fd6d5c1389c4a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74672247"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715107"
 ---
 # <a name="authentication-and-authorization-in-azure-app-service"></a>Hitelesítés és engedélyezés az Azure App Service-ben
 
@@ -24,9 +24,9 @@ A Azure App Service beépített hitelesítési és engedélyezési támogatást 
 A biztonságos hitelesítés és az engedélyezés a biztonság alapos megismerését igényli, beleértve az összevonás, a titkosítás, a [JSON webes tokenek (JWT)](https://wikipedia.org/wiki/JSON_Web_Token) kezelését, a [támogatás típusát](https://oauth.net/2/grant-types/)és így tovább. App Service biztosítja ezeket a segédprogramokat, így több időt és energiát is igénybe vehet, hogy üzleti értéket biztosítson az ügyfelek számára.
 
 > [!IMPORTANT]
-> Nem szükséges App Service használni a AuthN/AuthO. Számos webes keretrendszer biztonsági funkciókkal van ellátva, és igény szerint használhatja őket. Ha több rugalmasságra van szüksége, mint amennyit App Service biztosít, saját segédprogramjait is megírhatja.  
+> Nem szükséges App Service használni a AuthN/AuthO. Használhatja a választott webes keretrendszer csomagban található biztonsági funkcióit, vagy megírhatja saját segédprogramjait is. Ne feledje azonban, hogy a [Chrome 80 a cookie-k SameSite-re való bevezetését](https://www.chromestatus.com/feature/5088147346030592) (2020. március), valamint az egyéni távoli hitelesítést vagy más, a helyek közötti cookie-kat használó egyéb forgatókönyveket is megszakíthatja az ügyfél Chrome-böngészők frissítésekor. A megkerülő megoldás összetett, mert a különböző böngészőkhöz különböző SameSite-viselkedéseket kell támogatni. 
 >
-> Ha azonban a távoli hitelesítéshez nem App Service lehetőségek bármelyikét használja, vegye figyelembe, hogy a [Chrome 80 a cookie-k SameSite-re való bevezetését](https://www.chromestatus.com/feature/5088147346030592) (kiadás dátuma: március 2020), és az alkalmazás hitelesítési mechanizmusa megszakíthatja az ügyféloldali böngészők frissítésének időpontját. Az ASP.NET Core dokumentációja arról tartalmaz információt, hogyan kezelheti ezt az alkalmazásban, a [http: Browser SameSite módosítja a hatás hitelesítését](/dotnet/core/compatibility/3.0-3.1#http-browser-samesite-changes-impact-authentication). Hasznos útmutatást nyújt arról, hogyan tesztelheti ezt a feltörési változást a főbb böngészőknél, függetlenül attól, hogy ASP.NET Core vagy sem használ.
+> A App Service által üzemeltetett ASP.NET Core 2,1-es és újabb verziók már nem javítottak ehhez a feltörési változáshoz, és a Chrome 80 és a régebbi böngészők megfelelő kezelését végzik. Továbbá ugyanez a javítás a ASP.NET-keretrendszer 4.7.2 is üzembe kerül a App Service példányokon a januári 2020-es verzióban. További információért, például arról, hogy miként fogadta el az alkalmazás a javítást, tekintse meg a [Azure app Service SameSite-cookie frissítése](https://azure.microsoft.com/updates/app-service-samesite-cookie-update/)című témakört.
 >
 
 A natív Mobile apps szolgáltatással kapcsolatos információkért lásd: a [felhasználói hitelesítés és a mobileszközök engedélyezése a Azure app Service](../app-service-mobile/app-service-mobile-auth.md)használatával.
@@ -85,7 +85,7 @@ App Service [összevont identitást](https://en.wikipedia.org/wiki/Federated_ide
 
 Ha engedélyezi a hitelesítést és az engedélyezést ezen szolgáltatók egyikével, a bejelentkezési végpontja elérhetővé válik a felhasználói hitelesítéshez és a szolgáltatótól származó hitelesítési jogkivonatok érvényesítéséhez. Megadhatja, hogy a felhasználók tetszőleges számú bejelentkezési lehetőséget biztosítson könnyedén. Egy másik identitás-szolgáltatót vagy [saját egyéni identitási megoldást][custom-auth]is integrálhat.
 
-## <a name="authentication-flow"></a>Hitelesítési folyamat
+## <a name="authentication-flow"></a>hitelesítési folyamat
 
 A hitelesítési folyamat az összes szolgáltató esetében azonos, de attól függően különbözik, hogy be kíván-e jelentkezni a szolgáltató SDK-val:
 

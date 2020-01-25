@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/15/2019
 ms.author: absha
-ms.openlocfilehash: ce6f07a20044efed43cf24b3f0652691dff8b8aa
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 146dbdbf2f4e107e81515ce83188fa48c52aef36
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75658338"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714852"
 ---
 # <a name="application-gateway-configuration-overview"></a>Application Gateway konfiguráció áttekintése
 
@@ -53,7 +53,7 @@ Application Gateway a hálózati biztonsági csoportok (NSG-EK) támogatottak. V
 - A kimenő internetkapcsolatot nem lehet blokkolni. A NSG alapértelmezett kimenő szabályai lehetővé teszik az internetkapcsolatot. A következő megoldást javasoljuk:
 
   - Ne távolítsa el az alapértelmezett kimenő szabályokat.
-  - Ne hozzon létre más kimenő szabályokat, amelyek megtagadják a kimenő internetkapcsolatot.
+  - Ne hozzon létre más kimenő szabályokat, amelyek megtagadják a kimenő kapcsolatokat.
 
 - A **AzureLoadBalancer** címkétől érkező forgalmat engedélyezni kell.
 
@@ -220,7 +220,7 @@ Válassza ki a szükséges átirányítás típusát: *Permanent (301)* , *ideig
 
 Válasszon egy másik figyelőt vagy egy külső helyet az átirányítás céljaként.
 
-##### <a name="listener"></a>Figyelő
+##### <a name="listener"></a>Hallgató
 
 Válassza a figyelő lehetőséget, hogy átirányítsa a forgalmat az egyik figyelőről egy másikra az átjárón. Erre a beállításra akkor van szükség, ha engedélyezni szeretné a HTTP – HTTPS átirányítást. Átirányítja a forgalmat a forrás-figyelőtől, amely ellenőrzi a bejövő HTTP-kéréseket a cél figyelőnek, amely ellenőrzi a bejövő HTTPS-kéréseket. Azt is megteheti, hogy a lekérdezési karakterláncot és az elérési utat az eredeti kérelemből is felveszi az átirányítási célra továbbított kérelembe.
 

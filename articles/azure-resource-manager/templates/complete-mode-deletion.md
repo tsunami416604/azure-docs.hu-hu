@@ -2,13 +2,13 @@
 title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
-ms.date: 11/19/2019
-ms.openlocfilehash: 37d055503b8c9524392bedaa265025554dc4f8ee
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: b24bf2d8076dbaa1975f5444d597647156a31f4f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75479617"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715593"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -132,6 +132,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. Portal](#microsoftportal)
 > - [Microsoft. PowerBI](#microsoftpowerbi)
 > - [Microsoft. PowerBIDedicated](#microsoftpowerbidedicated)
+> - [Microsoft. ProjectBabylon](#microsoftprojectbabylon)
 > - [Microsoft. Recoveryservices szolgáltatónál](#microsoftrecoveryservices)
 > - [Microsoft. Relay](#microsoftrelay)
 > - [Microsoft. RemoteApp](#microsoftremoteapp)
@@ -165,6 +166,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > - [Microsoft. előfizetés](#microsoftsubscription)
 > - [Microsoft. TimeSeriesInsights](#microsofttimeseriesinsights)
 > - [Microsoft. VMwareCloudSimple](#microsoftvmwarecloudsimple)
+> - [Microsoft. VnfManager](#microsoftvnfmanager)
 > - [Microsoft. Web](#microsoftweb)
 > - [Microsoft. WindowsDefenderATP](#microsoftwindowsdefenderatp)
 > - [Microsoft. WindowsIoT](#microsoftwindowsiot)
@@ -282,6 +284,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | policySetDefinitions | Nem |
 > | providerOperations | Nem |
 > | roleAssignments | Nem |
+> | roleAssignmentsUsageMetrics | Nem |
 > | roleDefinitions | Nem |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
@@ -366,6 +369,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | billingAccounts / billingProfiles / billingSubscriptions | Nem |
 > | billingAccounts / billingProfiles / createBillingRoleAssignment | Nem |
 > | billingAccounts/billingProfiles/ügyfelek | Nem |
+> | billingAccounts/billingProfiles/utasítások | Nem |
 > | billingAccounts/billingProfiles/számlák | Nem |
 > | billingAccounts/billingProfiles/számlák/árlista | Nem |
 > | billingAccounts / billingProfiles / invoiceSections | Nem |
@@ -476,7 +480,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | botServices | Igen |
 > | botServices/csatornák | Nem |
 > | botServices/kapcsolatok | Nem |
-> | nyelv | Nem |
+> | nyelvek | Nem |
 > | sablonok | Nem |
 
 ## <a name="microsoftcache"></a>Microsoft. cache
@@ -493,6 +497,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | appliedReservations | Nem |
+> | autoQuotaIncrease | Nem |
 > | calculateExchange | Nem |
 > | calculatePrice | Nem |
 > | calculatePurchasePrice | Nem |
@@ -509,6 +514,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | reservationOrders/felosztás | Nem |
 > | reservationOrders/swap | Nem |
 > | foglalások | Nem |
+> | resourceProviders | Nem |
 > | erőforrások | Nem |
 > | validateReservationOrder | Nem |
 
@@ -672,7 +678,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | számos | Nem |
 > | Piacterek | Nem |
 > | Pricesheets | Nem |
-> | termék | Nem |
+> | termékek | Nem |
 > | ReservationDetails | Nem |
 > | ReservationRecommendations | Nem |
 > | ReservationSummaries | Nem |
@@ -744,13 +750,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | Értesítések | Nem |
-> | BillingAccounts | Nem |
+> | billingAccounts | Nem |
 > | Költségkeret | Nem |
 > | CloudConnectors | Nem |
 > | Összekötők | Igen |
-> | Részlegek | Nem |
+> | részlegek | Nem |
 > | Dimenziók | Nem |
-> | EnrollmentAccounts | Nem |
+> | enrollmentAccounts | Nem |
 > | Exportálások | Nem |
 > | ExternalBillingAccounts | Nem |
 > | ExternalBillingAccounts/riasztások | Nem |
@@ -762,9 +768,9 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ExternalSubscriptions/méretek | Nem |
 > | ExternalSubscriptions/előrejelzés | Nem |
 > | ExternalSubscriptions/lekérdezés | Nem |
-> | Előrejelzés | Nem |
+> | Időjárás | Nem |
 > | Lekérdezés | Nem |
-> | regisztráció | Nem |
+> | Regisztráció | Nem |
 > | Reportconfigs | Nem |
 > | Jelentések | Nem |
 > | Beállítások | Nem |
@@ -806,6 +812,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | munkaterületek | Igen |
+> | munkaterületek/dbWorkspaces | Nem |
+> | munkaterületek/storageEncryption | Nem |
 > | munkaterületek/virtualNetworkPeerings | Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
@@ -883,6 +891,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Kiszolgálók | Igen |
 > | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
 > | kiszolgálók/privateEndpointConnectionProxies | Nem |
 > | kiszolgálók/privateEndpointConnections | Nem |
 > | kiszolgálók/privateLinkResources | Nem |
@@ -899,6 +908,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | Kiszolgálók | Igen |
 > | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
 > | kiszolgálók/privateEndpointConnectionProxies | Nem |
 > | kiszolgálók/privateEndpointConnections | Nem |
 > | kiszolgálók/privateLinkResources | Nem |
@@ -961,8 +971,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | ElasticPools | Igen |
 > | ElasticPools / IotHubTenants | Igen |
+> | ElasticPools/IotHubTenants/securitySettings | Nem |
 > | IotHubs | Igen |
 > | IotHubs/eventGridFilters | Nem |
+> | IotHubs/securitySettings | Nem |
 > | ProvisioningServices | Igen |
 > | használat | Nem |
 
@@ -1005,7 +1017,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tartomány | Igen |
+> | tartományok | Igen |
 > | tartományok/domainOwnershipIdentifiers | Nem |
 > | generateSsoRequest | Nem |
 > | topLevelDomains | Nem |
@@ -1032,11 +1044,17 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tartomány | Igen |
+> | tartományok | Igen |
 > | tartományok/témakörök | Nem |
 > | eventSubscriptions | Nem |
 > | extensionTopics | Nem |
-> | témakör | Igen |
+> | partnerNamespaces | Igen |
+> | partnerNamespaces/eventChannels | Nem |
+> | partnerRegistrations | Igen |
+> | partnerTopics | Igen |
+> | systemTopics | Igen |
+> | systemTopics / eventSubscriptions | Nem |
+> | témakörök | Igen |
 > | topicTypes | Nem |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
@@ -1066,7 +1084,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | regisztrálás | Nem |
+> | beiratkozik | Nem |
 > | galleryitems | Nem |
 > | generateartifactaccessuri | Nem |
 > | myareas | Nem |
@@ -1075,7 +1093,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | myareas/területek/területek/galleryitems | Nem |
 > | myareas/területek/galleryitems | Nem |
 > | myareas / galleryitems | Nem |
-> | regisztráció | Nem |
+> | Regisztráció | Nem |
 > | erőforrások | Nem |
 > | retrieveresourcesbyid | Nem |
 
@@ -1091,6 +1109,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
+> | autoManagedAccounts | Igen |
+> | autoManagedVmConfigurationProfiles | Igen |
 > | configurationProfileAssignments | Nem |
 > | guestConfigurationAssignments | Nem |
 > | szoftver | Nem |
@@ -1202,6 +1222,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | fürtök/adatbázisok | Nem |
 > | fürtök/adatbázisok/dataconnections | Nem |
 > | fürtök/adatbázisok/eventhubconnections | Nem |
+> | fürtök/adatbázisok/principalassignments | Nem |
+> | fürtök/principalassignments | Nem |
 > | fürtök/sharedidentities | Nem |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
@@ -1247,7 +1269,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Identitások | Nem |
+> | identitások | Nem |
 > | userAssignedIdentities | Igen |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
@@ -1292,7 +1314,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk | Nem |
 > | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk/importImage | Nem |
 > | privategalleryitems | Nem |
-> | termék | Nem |
+> | privateStoreClient | Nem |
+> | termékek | Nem |
 > | közzétevők | Nem |
 > | kiadók/ajánlatok | Nem |
 > | közzétevők/ajánlatok/módosítások | Nem |
@@ -1350,6 +1373,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | assessmentProjects | Igen |
 > | migrateprojects | Igen |
+> | moveCollections | Igen |
 > | projektek | Igen |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
@@ -1492,8 +1516,12 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | linkTargets | Nem |
 > | storageInsightConfigs | Nem |
 > | munkaterületek | Igen |
+> | munkaterületek/dataExports | Nem |
 > | munkaterületek/adatforrások | Nem |
 > | munkaterületek/linkedServices | Nem |
+> | munkaterületek/privateEndpointConnectionProxies | Nem |
+> | munkaterületek/privateEndpointConnections | Nem |
+> | munkaterületek/privateLinkResources | Nem |
 > | munkaterületek/lekérdezés | Nem |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
@@ -1535,7 +1563,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | ------------- | ----------- |
 > | konzolok | Nem |
 > | irányítópultok | Igen |
-> | UserSettings | Nem |
+> | userSettings | Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
@@ -1550,6 +1578,13 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
 > | kapacitások | Igen |
+
+## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Törlés Teljes mód esetén |
+> | ------------- | ----------- |
+> | fiókok | Igen |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
 
@@ -1602,6 +1637,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | availabilityStatuses | Nem |
 > | childAvailabilityStatuses | Nem |
 > | childResources | Nem |
+> | emergingissues | Nem |
 > | események | Nem |
 > | impactedResources | Nem |
 > | metaadatok | Nem |
@@ -1620,12 +1656,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | notifyResourceJobs | Nem |
 > | szolgáltatók | Nem |
 > | resourceGroups | Nem |
-> | erőforrások | Nem |
 > | előfizetések | Nem |
-> | előfizetések/szolgáltatók | Nem |
-> | előfizetések/erőforrások | Nem |
-> | előfizetések/tagNames | Nem |
-> | előfizetések/tagNames/tagValues | Nem |
 > | bérlők | Nem |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
@@ -1678,7 +1709,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | Nem |
 > | jitNetworkAccessPolicies | Nem |
 > | networkData | Nem |
-> | policies | Nem |
+> | szabályzatok | Nem |
 > | pricings | Nem |
 > | regulatoryComplianceStandards | Nem |
 > | regulatoryComplianceStandards / regulatoryComplianceControls | Nem |
@@ -1862,7 +1893,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Gyorsítótárak | Igen |
+> | gyorsítótárak | Igen |
 > | gyorsítótárak/storageTargets | Nem |
 > | usageModels | Nem |
 
@@ -1928,10 +1959,10 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | mégse | Nem |
+> | Mégse | Nem |
 > | CreateSubscription | Nem |
-> | engedélyezés | Nem |
-> | átnevezés | Nem |
+> | engedélyezése | Nem |
+> | átnevezése | Nem |
 > | SubscriptionDefinitions | Nem |
 > | SubscriptionOperations | Nem |
 
@@ -1954,6 +1985,16 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | dedicatedCloudServices | Igen |
 > | virtualMachines | Igen |
 
+## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
+
+> [!div class="mx-tableFixed"]
+> | Erőforrás típusa | Törlés Teljes mód esetén |
+> | ------------- | ----------- |
+> | eszközök | Igen |
+> | szállítók | Nem |
+> | szállítók/SKU-i | Nem |
+> | vnfs | Igen |
+
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
@@ -1975,8 +2016,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | kapcsolatok | Igen |
 > | customApis | Igen |
 > | deletedSites | Nem |
-> | functions | Nem |
 > | hostingEnvironments | Igen |
+> | hostingEnvironments / eventGridFilters | Nem |
 > | hostingEnvironments / multiRolePools | Nem |
 > | hostingEnvironments / workerPools | Nem |
 > | publishingUsers | Nem |
@@ -1985,7 +2026,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | Runtimes | Nem |
 > | Kiszolgálófarmok | Igen |
 > | Kiszolgálófarmok/eventGridFilters | Nem |
-> | webhelyek | Igen |
+> | helyek | Igen |
 > | helyek/konfiguráció  | Nem |
 > | helyek/eventGridFilters | Nem |
 > | helyek/hostNameBindings | Nem |
@@ -1996,6 +2037,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | helyek/bővítőhelyek/hostNameBindings | Nem |
 > | helyek/bővítőhelyek/networkConfig | Nem |
 > | sourceControls | Nem |
+> | staticSites | Igen |
 > | érvényesít | Nem |
 > | verifyHostingEnvironmentVnet | Nem |
 

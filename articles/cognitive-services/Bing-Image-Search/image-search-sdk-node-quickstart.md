@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: bing-image-search
 ms.topic: quickstart
-ms.date: 12/06/2019
+ms.date: 01/22/2020
 ms.author: aahi
 ms.custom: seodec2018
-ms.openlocfilehash: e41c3409ac5b81fe9e099ab34abd7256ef39d330
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: dd81942832e598319261829e67fd0b8f1704fc99
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74930574"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716203"
 ---
 # <a name="quickstart-search-for-images-with-the-bing-image-search-sdk-for-nodejs"></a>Rövid útmutató: Képek keresése a Node.js-hez készült Bing Image Search SDK használatával
 
@@ -26,10 +26,10 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/azure-cognitiveservices-imagesearch)
-    * Végezze el a telepítést az `npm install azure-cognitiveservices-imagesearch` paranccsal.
+* A [Node.js-hez készült Cognitive Services Image Search SDK](https://www.npmjs.com/package/@azure/cognitiveservices-imagesearch)
+    * Végezze el a telepítést a `npm install @azure/cognitiveservices-imagesearch` paranccsal
 * A [Node.js Azure Rest](https://www.npmjs.com/package/ms-rest-azure) modul
-    * Végezze el a telepítést az `npm install ms-rest-azure` paranccsal.
+    * Végezze el a telepítést a `npm install ms-rest-azure` paranccsal
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
@@ -39,7 +39,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
     ```javascript
     'use strict';
-    const ImageSearchAPIClient = require('azure-cognitiveservices-imagesearch');
+    const ImageSearchAPIClient = require('@azure/cognitiveservices-imagesearch');
     const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
     ```
 
@@ -52,7 +52,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
     //the search term for the request
     let searchTerm = "canadian rockies";
 
-    //instantiate the image search client 
+    //instantiate the image search client
     let credentials = new CognitiveServicesCredentials(serviceKey);
     let imageSearchApiClient = new ImageSearchAPIClient(credentials);
 
@@ -60,7 +60,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="create-an-asynchronous-helper-function"></a>Aszinkron segítő függvény létrehozása
 
-1. Hozzon létre egy függvényt, amely aszinkron módon hívja meg az ügyfelet, és visszaadja a Bing Image Search szolgáltatás válaszát.  
+1. Hozzon létre egy függvényt, amely aszinkron módon hívja meg az ügyfelet, és visszaadja a Bing Image Search szolgáltatás válaszát.
     ```javascript
     //a helper function to perform an async call to the Bing Image Search API
     const sendQuery = async () => {
@@ -71,7 +71,7 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 1. Hívja meg a segítő függvényt, és kezelje annak `promise` elemét a válaszban visszaadott képtalálatok elemzéséhez.
 
-    Ha a válasz tartalmaz keresési eredményeket, tárolja az első találatot, és jelenítse meg annak részleteit, például a miniatűr URL-címét és az eredeti URL-címet a visszaadott képek teljes számával együtt.  
+    Ha a válasz tartalmaz keresési eredményeket, tárolja az első találatot, és jelenítse meg annak részleteit, például a miniatűr URL-címét és az eredeti URL-címet a visszaadott képek teljes számával együtt.
     ```javascript
     sendQuery().then(imageResults => {
         if (imageResults == null) {
@@ -98,9 +98,9 @@ A minta forráskódja további hibakezeléssel és megjegyzésekkel együtt elé
 
 ## <a name="see-also"></a>Lásd még:
 
-* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
-* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Mi a Bing Image Search?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)
+* [Online interaktív bemutató kipróbálása](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)
 * [Ingyenes Cognitive Services hozzáférési kulcs beszerzése](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)
 * [Node.js-minták az Azure Cognitive Services SDK-hoz](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 * [Az Azure Cognitive Services dokumentációja](https://docs.microsoft.com/azure/cognitive-services)
-* [Bing Image Search API – referenciaanyag](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)
+* [Bing Image Search API – referencia](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference)

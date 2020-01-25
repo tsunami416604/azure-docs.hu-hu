@@ -9,19 +9,17 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 917ded03892f3a8a5812948bcbfe31f029fc5cf8
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 639a61cddde27b0d989e5a3dd4c599c353182a73
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314980"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720170"
 ---
-# <a name="tutorial-predict-automobile-price-with-the-designer"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel
+# <a name="tutorial-predict-automobile-price-with-the-designer-preview"></a>Oktatóanyag: az autó árának előrejelzése a tervezővel (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
-Ebben a kétrészes oktatóanyagban megtudhatja, hogyan hozhat létre és helyezhet üzembe egy prediktív elemzési megoldást a Azure Machine Learning Designer használatával, amely előre jelezheti a személygépkocsik árát. 
-
-Az első részen beállíthatja a környezetet, a modulokat egy interaktív vászonra húzhatja, és összekapcsolhatja őket egy Azure Machine Learning folyamat létrehozásához.
+Ebben a kétrészes oktatóanyagban megtudhatja, hogyan hozhat létre és helyezhet üzembe egy prediktív elemzési megoldást a Azure Machine Learning Designer használatával, amely előre jelezheti a személygépkocsik árát.
 
 Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
 
@@ -32,7 +30,7 @@ Az oktatóanyag első részében az alábbiakkal fog elsajátítani:
 > * Gépi tanulási modell betanítása.
 > * A Machine learning-modell kiértékelése.
 
-Az oktatóanyag [második részében](tutorial-designer-automobile-price-deploy.md) megtudhatja, hogyan helyezheti üzembe a prediktív modelljét valós idejű következtetési végpontként, hogy az Ön által elküldött technikai specifikációk alapján előre megjósolja az autó árát. 
+Az oktatóanyag [második részében](tutorial-designer-automobile-price-deploy.md) a modelljét valós idejű következtetési végpontként helyezheti üzembe, hogy az Ön által elküldött technikai specifikációk alapján előre megjósolja az autó árát. 
 
 > [!NOTE]
 >Az oktatóanyag befejezett verziója minta folyamatként érhető el.
@@ -41,7 +39,9 @@ Az oktatóanyag [második részében](tutorial-designer-automobile-price-deploy.
 
 ## <a name="create-a-new-pipeline"></a>Új folyamat létrehozása
 
-Azure Machine Learning folyamatok több, függő gépi tanulási és adatfeldolgozási lépést szerveznek egyetlen erőforrásba. A folyamatok segítségével összetett gépi tanulási munkafolyamatokat szervezheti, kezelheti és használhatja fel a projektek és a felhasználók számára. Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
+Azure Machine Learning folyamatok több gépi tanulási és adatfeldolgozási lépést szerveznek egyetlen erőforrásba. A folyamatok lehetővé teszik összetett gépi tanulási munkafolyamatok rendszerezését, kezelését és felhasználását a projektek és a felhasználók számára.
+
+Azure Machine Learning folyamat létrehozásához Azure Machine Learning munkaterületre van szükség. Ebből a szakaszból megtudhatja, hogyan hozhat létre mindkét erőforrást.
 
 ### <a name="create-a-new-workspace"></a>Új munkaterület létrehozása
 
@@ -59,7 +59,7 @@ Ha vállalati kiadással rendelkező Azure Machine Learning munkaterülettel ren
 
 1. Válassza **a könnyen használható előre elkészített modulok**elemet.
 
-1. Válassza ki a vászon tetején **lévő alapértelmezett folyamat neve folyamatot** . Nevezze át valami értelmesre. Ilyen például az *autó árának előrejelzése*. A névnek nem kell egyedinek lennie.
+1. A vászon tetején válassza ki az alapértelmezett folyamat neve **folyamat – létrehozva**lehetőséget. Nevezze át az *autó árának előrejelzésére*. A névnek nem kell egyedinek lennie.
 
 ## <a name="import-data"></a>Adatok importálása
 
@@ -109,7 +109,7 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget.
 
-1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza a **paraméterek** > **oszlop szerkesztése**lehetőséget.
+1. A vászontól jobbra található Tulajdonságok ablaktáblán válassza az **összes oszlop**lehetőséget.
 
 1. Új szabály hozzáadásához válassza ki a **+** .
 
@@ -120,12 +120,12 @@ A modellek betanításakor meg kell tennie valamit a hiányzó információkkal 
 1. A jobb alsó sarokban kattintson a **Mentés** gombra az oszlop választójának bezárásához.
 
     ![Oszlop kizárása](./media/tutorial-designer-automobile-price-train-score/exclude-column.png)
-        
-    A Tulajdonságok panelen látható, hogy a **normalizált veszteségek** oszlop ki van zárva.
 
 1. Válassza az **Oszlopok kiválasztása az adatkészlet** modulban lehetőséget. 
 
-1. A Tulajdonságok ablaktáblán válassza a **paraméterek** > a **Megjegyzés** lehetőséget, és adja meg a *normalizált veszteségek kizárása*beállítást.
+1. A Tulajdonságok ablaktáblán válassza a **Megjegyzés** szövegmezőt, és adja meg a *normalizált veszteségek kizárása*elemet.
+
+    A diagramon megjegyzések jelennek meg, amelyek segítenek a folyamat rendszerezésében.
 
 ### <a name="clean-missing-data"></a>Hiányzó adatértékek törlése
 
@@ -148,31 +148,30 @@ A **normalizált veszteségek** oszlop eltávolítása után az adatkészlet tov
 
 ## <a name="train-a-machine-learning-model"></a>Gépi tanulási modell betanítása
 
-Most, hogy feldolgozta az adatfeldolgozást, elvégezheti a prediktív modell betanítását.
-
-### <a name="select-an-algorithm"></a>Algoritmus kiválasztása
-
-A *besorolás* és a *regresszió* két algoritmus, amelynek segítségével felügyelt gépi tanítás valósítható meg. A besorolás egy adott kategóriába tartozó, például piros, kék vagy zöld színű választ ad meg. A rendszer a számok előrejelzésére regressziós módszert használ.
+Most, hogy már rendelkezik az adatfeldolgozáshoz szükséges modulokkal, beállíthatja a betanítási modulokat.
 
 Mivel előre jelezni szeretné az árat, ami egy szám, regressziós algoritmust is használhat. Ebben a példában egy lineáris regressziós modellt használunk.
 
-### <a name="split-the-data"></a>Az adatok felosztása
+### <a name="split-the-data"></a>Az adatfelosztás
 
-Ossza meg az adatait két külön adatkészletbe a modell betanításához és teszteléséhez.
+Az adatok felosztása gyakori feladat a gépi tanulásban. Az adatokat két külön adatkészletbe kell bontania. Az egyik adatkészlet betanítja a modellt, a másik pedig teszteli, hogy a modell milyen jól van elvégezve.
 
-1. Az **Adatfelosztási** modul megkereséséhez írja be a **feldarabolt** adatelemet a keresőmezőbe. Csatlakozás a **tiszta hiányzó** adatmodul bal oldali portjához.
+1. Az **Adatfelosztási** modul megkereséséhez írja be a **feldarabolt** adatelemet a keresőmezőbe. A **tiszta hiányzó** adatmodul bal oldali portjának összekötése az **adatfelosztási** modulba.
+
+    > [!IMPORTANT]
+    > Ügyeljen arra, hogy a **tiszta hiányzó adatokat** tartalmazó bal oldali kimeneti portok a **felosztott adatokat**csatlakoztassa. A bal oldali port a megtisztított adathalmazokat tartalmazza. A megfelelő port tartalmazza a lefoglalt adatlemezeket.
 
 1. Válassza ki az **Adatfelosztási** modult.
 
 1. A Tulajdonságok ablaktáblában állítsa az **első kimeneti adatkészletben lévő sorok töredékét** 0,7-re.
 
-    Ez a beállítás az adatmennyiség 70 százalékát felbontja a modell betanításához, valamint 30 százalékot a teszteléshez.
+    Ez a beállítás az adatmennyiség 70 százalékát felbontja a modell betanításához, valamint 30 százalékot a teszteléshez. A 70 százalékos adatkészlet a bal oldali kimeneti porton keresztül lesz elérhető. A fennmaradó adatokat a megfelelő kimeneti porton keresztül érheti el a rendszer.
 
 1. A Tulajdonságok ablaktábla **Megjegyzés** mezőjébe írja be *az adatkészlet felosztása betanítási készletbe (0,7) és a test set (0,3)* értéket.
 
 ### <a name="train-the-model"></a>A modell tanítása
 
-A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az árat. A modell megkeresi az adatforrásokat, és összefüggéseket keres az autó funkciói és a modell kiépítése között.
+A modell betanításához adja meg az árat tartalmazó adatkészletet. Az algoritmus létrehoz egy modellt, amely ismerteti a funkciók és a betanítási információ által bemutatott ár közötti kapcsolatot.
 
 1. A tanulási algoritmus kiválasztásához törölje a modul-paletta keresési mezőjét.
 
@@ -187,6 +186,9 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 1. Kapcsolja össze a **lineáris regressziós** modul kimenetét a **Train Model** modul bal oldali bemenetével.
 
 1. Kapcsolja össze az **adatok felosztása** modul betanítási adat kimenetét (bal oldali port) a **Train Model** modul jobb oldali bemenetével.
+    
+    > [!IMPORTANT]
+    > Ügyeljen arra, hogy a **felosztott adatokat** tartalmazó bal oldali kimeneti portok a **betanítási modellhez**kapcsolódjanak. A bal oldali port tartalmazza a betanítási készletet. A megfelelő port tartalmazza a tesztelési készletet.
 
     ![Képernyőfelvétel a Train Model modul helyes konfigurációjának megjelenítéséről. A lineáris regressziós modul a betanítási modell moduljának bal oldali portjához csatlakozik, és a felosztott adatmodul csatlakozik a betanítási modell jobb portjához.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-model.png)
 
@@ -196,19 +198,23 @@ A modell betanításához adjon meg egy olyan adathalmazt, amely tartalmazza az 
 
 1. Az **oszlop felirata** párbeszédpanelen bontsa ki a legördülő menüt, és válassza az **oszlopnevek**lehetőséget. 
 
-1. A szövegmezőbe írja be az *Ár*értéket. Az ár az az érték, amelyet a modell előre meg fog jósolni.
+1. A szövegmezőbe írja be a *Price (ár* ) értéket a modell által előre jelzett érték megadásához.
 
     A folyamatnak így kell kinéznie:
 
     ![Képernyőfelvétel: a folyamat helyes konfigurációjának megjelenítése a Train Model modul hozzáadása után.](./media/tutorial-designer-automobile-price-train-score/pipeline-train-graph.png)
 
-## <a name="evaluate-a-machine-learning-model"></a>Gépi tanulási modell kiértékelése
+## <a name="score-a-machine-learning-model"></a>A Machine learning-modell pontszáma
 
 Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalékra kiterjedően megtekintheti, hogy a modell milyen jól működik.
 
 1. A **pontszám modell** modul megkereséséhez írja be a *score Model* kifejezést a keresőmezőbe. Húzza a modult a folyamat vászonra. 
 
 1. A **Train Model** modul kimenetének összekötése a **score Model**bal oldali bemeneti portjával. Az **adatforráshoz** tartozó adat kimenetének (jobb oldali portjának) összekötése a **score Model**megfelelő bemeneti portjára.
+
+## <a name="evaluate-a-machine-learning-model"></a>Gépi tanulási modell kiértékelése
+
+A **modell kiértékelése** modul használatával kiértékelheti, hogy a modell milyen jól szerezte be a teszt adatkészletet.
 
 1. A **modell kiértékelése** modul megkereséséhez írja be a *kiértékelés* kifejezést a keresőmezőbe. Húzza a modult a folyamat vászonra. 
 
@@ -218,25 +224,29 @@ Miután az adatok 70 százalékával betanítja a modellt, a másik 30 százalé
 
     ![A folyamat helyes konfigurációját ábrázoló képernyőfelvétel.](./media/tutorial-designer-automobile-price-train-score/pipeline-final-graph.png)
 
-### <a name="run-the-pipeline"></a>A folyamat futtatása
+## <a name="run-the-pipeline"></a>A folyamat futtatása
 
 [!INCLUDE [aml-ui-create-training-compute](../../includes/aml-ui-create-training-compute.md)]
 
-### <a name="view-results"></a>Eredmények megtekintése
+### <a name="view-scored-labels"></a>Pontozásos címkék megtekintése
 
-A Futtatás után megtekintheti a folyamat futtatásának eredményét. 
+A Futtatás után megtekintheti a folyamat futtatásának eredményét. Először tekintse meg a regressziós modell által generált előrejelzéseket.
 
 1. A **pontszám modell** modul kiválasztásával megtekintheti a kimenetét.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > **Megjelenítés**elemet.
+1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > gráf ikon ![megjelenítés ikon](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
     Itt láthatja az előrejelzett árakat és a tényleges árakat a tesztelési adatokból.
 
     ![Képernyőkép a kimeneti vizualizáció kiemeléséről a mutató feliratú oszlop](./media/tutorial-designer-automobile-price-train-score/score-result.png)
 
+### <a name="evaluate-models"></a>Modellek kiértékelése
+
+A **kiértékelési modell** használatával megtekintheti, hogy a betanított modell milyen jól lett elvégezve a teszt adatkészleten.
+
 1. Válassza ki a **modell kiértékelése** modult a kimenet megtekintéséhez.
 
-1. A Tulajdonságok ablaktáblán válassza a **kimenet** > **Megjelenítés**elemet.
+1. A Tulajdonságok ablaktáblán válassza ki a **kimenet** > gráf ikont ![megjeleníteni az ikont](./media/tutorial-designer-automobile-price-train-score/visualize-icon.png) az eredmények megtekintéséhez.
 
 A modellhez a következő statisztikák láthatók:
 

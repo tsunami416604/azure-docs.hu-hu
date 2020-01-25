@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/22/2020
 ms.author: diberry
-ms.openlocfilehash: 65611dfb171008deab9d1d6cb15f0470fcbc2753
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 808fdfb04cbe3b2b9e5f2de0c653bb978196269c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170553"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748826"
 ---
 A Node. js-hez készült ügyféloldali kódtár Language Understanding (LUIS) létrehozásához használja a következőt:
 
@@ -25,7 +25,7 @@ A Node. js-hez készült ügyféloldali kódtár Language Understanding (LUIS) l
 * Alkalmazás betanítása és közzététele.
 * Alkalmazás törlése
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [authoring Package (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/cognitiveservices/cognitiveservices-luis-authoring) | [authoring Package (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring), [futtatókörnyezeti csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime) | [minták](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/javascript/LUIS/luis_authoring_quickstart.js)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -100,7 +100,7 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 * [Verziók](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/versions?view=azure-node-latest) – kezelés klónozással, exportálással és törléssel
 
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Node. js-hez készült Language Understanding (LUIS) authoring ügyféloldali kódtár használatával:
 
@@ -125,7 +125,7 @@ Hozzon létre változókat az erőforrás Azure-végpontjának és-kulcsának l�
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
-Hozzon létre egy [CognitiveServicesCredentials]() objektumot a kulccsal, és használja a végpontján egy [LUISAuthoringClient]() objektum létrehozásához.
+Hozzon létre egy [CognitiveServicesCredentials](https://docs.microsoft.com/javascript/api/@azure/ms-rest-js/apikeycredentials?view=azure-node-latest) objektumot a kulccsal, és használja a végpontján egy [LUISAuthoringClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/luisauthoringclient?view=azure-node-latest) objektum létrehozásához.
 
 [!code-javascript[Create LUIS client object](~/cognitive-services-quickstart-code/javascript/LUIS/luis_authoring_quickstart.js?name=AuthoringCreateClient)]
 

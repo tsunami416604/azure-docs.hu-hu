@@ -3,20 +3,20 @@ title: BLOB Storage-adatAzure Storage Explorer-csoport adatelemzési folyamatán
 description: Ismerje meg, hogyan töltheti fel és töltheti le az Azure Blob Storage-ból az Azure Storage Explorer-t.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 880b81c07aeed7359dfe35e1361a20ecb11e27dd
-ms.sourcegitcommit: 87efc325493b1cae546e4cc4b89d9a5e3df94d31
+ms.openlocfilehash: bfc63c6f5aca92fb7fda9e3ecf63ce4c332b12ef
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73053956"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720911"
 ---
 # <a name="move-data-to-and-from-azure-blob-storage-using-azure-storage-explorer"></a>Adatok áthelyezése Azure-Blob Storageba és onnan az Azure Storage Explorer használatával
 A Azure Storage Explorer a Microsoft ingyenes eszköze, amely lehetővé teszi az Azure Storage-adatok használatát Windows, macOS és Linux rendszeren. Ez a témakör azt ismerteti, hogyan használható az Azure Blob Storage-ból származó adatok feltöltése és letöltése. Az eszköz letölthető [Microsoft Azure Storage Explorerról](https://storageexplorer.com/).
@@ -44,12 +44,14 @@ Ez a dokumentum feltételezi, hogy rendelkezik Azure-előfizetéssel, egy Storag
 A következő lépések bemutatják, hogyan tölthetők fel/tölthetők le az adatok a Azure Storage Explorer használatával. 
 
 1. Microsoft Azure Storage Explorer elindítása.
-2. Ha be szeretné állítani a **bejelentkezést a fiókjába...** varázsló, válassza az **Azure-Fiókbeállítások** ikont, majd **vegyen fel egy fiókot** , és adja meg a hitelesítő adatokat. ![Azure Storage-fiók hozzáadása](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
+2. Ha be szeretné állítani a **bejelentkezést a fiókjába...** varázsló, válassza az **Azure-Fiókbeállítások** ikont, majd **vegyen fel egy fiókot** , és adja meg a hitelesítő adatokat. 
+![Azure Storage-fiók hozzáadása](./media/move-data-to-azure-blob-using-azure-storage-explorer/add-an-azure-store-account.png)
 3. A **Kapcsolódás az Azure Storage** -hoz varázsló létrehozásához válassza a **Kapcsolódás az Azure Storage-hoz** ikont. ![kattintson a "kapcsolódás az Azure Storage-hoz" lehetőségre](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-1.png)
 4. Adja meg az Azure Storage-fiók elérési kulcsát a **Kapcsolódás az Azure Storage-hoz** varázsló, majd a **tovább**gombra. ![adja meg az Azure Storage-fiók elérési kulcsát](./media/move-data-to-azure-blob-using-azure-storage-explorer/connect-to-azure-storage-2.png)
 5. Adja meg a Storage-fiók nevét a **fióknév** mezőben, majd kattintson a **tovább**gombra. ![külső tároló csatolása](./media/move-data-to-azure-blob-using-azure-storage-explorer/attach-external-storage.png)
-6. A hozzáadott Storage-fióknak mostantól szerepelnie kell a listáján. Ha BLOB-tárolót szeretne létrehozni egy Storage-fiókban, kattintson a jobb gombbal a **blob** -tárolók csomópontra a fiókban, válassza a **blob-tároló létrehozása**elemet, és adjon meg egy nevet.
-7. Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra.![Storage-fiókok](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
+6. Ekkor megjelenik a hozzáadott Storage-fiók. Ha BLOB-tárolót szeretne létrehozni egy Storage-fiókban, kattintson a jobb gombbal a **blob** -tárolók csomópontra a fiókban, válassza a **blob-tároló létrehozása**elemet, és adjon meg egy nevet.
+7. Az adatok tárolóba való feltöltéséhez válassza ki a tárolót, és kattintson a **feltöltés** gombra.
+![Tárfiókok](./media/move-data-to-azure-blob-using-azure-storage-explorer/storage-accounts.png)
 8. A **fájlok** mező jobb oldalán kattintson a **...** elemre, válasszon ki egy vagy több fájlt a fájlrendszerből való feltöltéshez, majd kattintson a **feltöltés** gombra a fájlok feltöltésének megkezdéséhez. fájlok feltöltése![](./media/move-data-to-azure-blob-using-azure-storage-explorer/upload-files-to-blob.png)
 9. Az adatletöltéshez válassza ki a blobot a megfelelő tárolóban a letöltéshez, majd kattintson a **Letöltés**gombra. ![fájlok letöltése](./media/move-data-to-azure-blob-using-azure-storage-explorer/download-files-from-blob.png)
 

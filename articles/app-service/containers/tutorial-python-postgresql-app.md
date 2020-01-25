@@ -3,17 +3,17 @@ title: 'Oktatóanyag: Linux Python-alkalmazás és Postgre'
 description: Megtudhatja, hogyan szerezhet be egy Azure App Serviceon működő Linux Python-alkalmazást, amely egy Azure-beli PostgreSQL-adatbázishoz csatlakozik. Ebben az oktatóanyagban a Django van használatban.
 ms.devlang: python
 ms.topic: tutorial
-ms.date: 12/14/2019
+ms.date: 01/23/2020
 ms.custom:
 - mvc
 - seodec18
 - seo-python-october2019
-ms.openlocfilehash: e0880cd1c16a8a0080551bbeaefe04f2f8dd705b
-ms.sourcegitcommit: a100e3d8b0697768e15cbec11242e3f4b0e156d3
+ms.openlocfilehash: 3aa5b5085a6120ca513f0aeba344e7f541f0fd72
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75681032"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76713407"
 ---
 # <a name="tutorial-run-a-python-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Python-(Django-) webalkalmazás futtatása a PostgreSQL-sel Azure App Service
 
@@ -47,6 +47,11 @@ Először kapcsolódjon a helyi PostgreSQL-kiszolgálóhoz, és hozzon létre eg
 Egy helyi terminál ablakban futtassa `psql` a helyi PostgreSQL-kiszolgálóhoz való kapcsolódáshoz a beépített `postgres` felhasználóként.
 
 ```bash
+sudo su - postgres
+psql
+```
+vagy
+```PowerShell
 psql -U postgres
 ```
 
@@ -166,7 +171,7 @@ A következő parancsban cserélje le *\<PostgreSQL-name >* egyedi kiszolgálón
 Cserélje le *\<resourcegroup >* és *\<régiót >* a használni kívánt erőforráscsoport nevére és régiójára. *\<admin-username >* és *\<admin-password >* hozzon létre felhasználói hitelesítő adatokat az adatbázis-rendszergazdai fiókhoz. Ne feledje, hogy a *\<admin-username >* és *\<admin-password >* , hogy később jelentkezzen be a PostgreSQL-kiszolgálóra és-adatbázisokra.
 
 ```azurecli-interactive
-az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen4_1
+az postgres server create --resource-group <resourcegroup-name> --name <postgresql-name> --location "<region>" --admin-user <admin-username> --admin-password <admin-password> --sku-name B_Gen5_1
 ```
 
 Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor az Azure CLI a következő példához hasonló JSON-kódot ad vissza:
@@ -174,15 +179,19 @@ Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor az Azure CLI a k�
 ```json
 {
   "administratorLogin": "myusername",
+  "earliestRestoreDate": "2020-01-22T19:02:15.727000+00:00",
   "fullyQualifiedDomainName": "myservername.postgres.database.azure.com",
   "id": "/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/myresourcegroup/providers/Microsoft.DBforPostgreSQL/servers/myservername",
-  "location": "westus",
+  "location": "westeurope",
+  "masterServerId": "",
   "name": "myservername",
+  "replicaCapacity": 5,
+  "replicationRole": "None",
   "resourceGroup": "myresourcegroup",
   "sku": {
     "capacity": 1,
-    "family": "Gen4",
-    "name": "B_Gen4_1",
+    "family": "Gen5",
+    "name": "B_Gen5_1",
     "size": null,
     "tier": "Basic"
   },
@@ -276,6 +285,8 @@ Nyissa meg a *http:\//localhost: 8000/admin*, jelentkezzen be a létrehozott ren
 
 Lépjen a *http:\//localhost: 8000* elemre, és tekintse meg a megjelenő lekérdezési kérdést. Az alkalmazás most már beírja az adatait a Azure Database for PostgreSQL adatbázisba.
 
+A Django-kiszolgáló leállításához írja be a CTRL + C billentyűkombinációt a terminálon.
+
 ## <a name="deploy-the-web-app-to-azure-app-service"></a>A webalkalmazás üzembe helyezése Azure App Service
 
 Ebben a lépésben üzembe helyezi a Azure Database for PostgreSQL adatbázishoz csatlakoztatott Python-alkalmazást a Azure App Service.
@@ -353,25 +364,29 @@ További információ arról, hogy a kód hogyan fér hozzá ezekhez az alkalmaz
 [!INCLUDE [app-service-plan-no-h](../../../includes/app-service-web-git-push-to-azure-no-h.md)]
 
 ```bash 
-Counting objects: 7, done.
+Counting objects: 60, done.
 Delta compression using up to 8 threads.
-Compressing objects: 100% (7/7), done.
-Writing objects: 100% (7/7), 775 bytes | 0 bytes/s, done.
-Total 7 (delta 4), reused 0 (delta 0)
+Compressing objects: 100% (51/51), done.
+Writing objects: 100% (60/60), 15.37 KiB | 749.00 KiB/s, done.
+Total 60 (delta 9), reused 0 (delta 0)
+remote: Deploy Async
 remote: Updating branch 'master'.
 remote: Updating submodules.
-remote: Preparing deployment for commit id '6520eeafcc'.
-remote: Generating deployment script.
-remote: Running deployment command...
-remote: Python deployment.
-remote: Kudu sync from: '/home/site/repository' to: '/home/site/wwwroot'
+remote: Preparing deployment for commit id '06f3f7c0cb'.
+remote: Repository path is /home/site/repository
+remote: Running oryx build...
+remote: Build orchestrated by Microsoft Oryx, https://github.com/Microsoft/Oryx
+remote: You can report issues at https://github.com/Microsoft/Oryx/issues
 . 
 . 
 . 
+remote: Done in 100 sec(s).
+remote: Running post deployment command(s)...
+remote: Triggering recycle (preview mode disabled).
 remote: Deployment successful.
-remote: App container will begin restart within 10 seconds.
+remote: Deployment Logs : 'https://<app-name>.scm.azurewebsites.net/newui/jsonviewer?view_url=/api/deployments/06f3f7c0cb52ce3b4aff85c2b5099fbacb65ab94/log'
 To https://<app-name>.scm.azurewebsites.net/<app-name>.git 
-   06b6df4..6520eea  master -> master
+ * [new branch]      master -> master
 ```  
 
 A App Service központi telepítési kiszolgáló a *követelmények. txt fájlt* látja az adattár gyökerében, és `git push`után automatikusan futtatja a Python-csomagok felügyeletét.

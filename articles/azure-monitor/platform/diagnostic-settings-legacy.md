@@ -6,21 +6,21 @@ ms.service: azure-monitor
 ms.subservice: logs
 ms.topic: conceptual
 ms.author: bwren
-ms.date: 12/20/2019
-ms.openlocfilehash: 55efdfe2bb1b37e566654b8041f2cf5ed411cc3f
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/21/2020
+ms.openlocfilehash: dff4901f1488406ed1259d1411a6b05b949382cb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977574"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715840"
 ---
-# <a name="collect-azure-activity-log-with-legacy-settings"></a>Az Azure-tevékenység naplójának összegyűjtése örökölt beállításokkal
-Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. A legutóbbi időpontig létrehozott egy log-profilt, amely a műveletnapló-bejegyzéseket [egy Event hub-vagy Storage-fiókba](activity-log-export.md) küldi, és egy összekötőt használt egy [log Analytics munkaterületre](activity-log-collect.md)való begyűjtéséhez. Ez a cikk a módszerek közötti különbséget ismerteti, a meglévő örökölt beállításokkal való munkavégzést, valamint a korábbi beállítások törlését a diagnosztikai beállítások előkészítése során.
+# <a name="update-to-azure-activity-log-collection-and-export"></a>Frissítés az Azure Activity log-gyűjteményre és-exportálásra
+Az [Azure-tevékenység naplója](platform-logs-overview.md) egy olyan [platform-napló](platform-logs-overview.md) , amely betekintést nyújt az Azure-ban bekövetkezett előfizetési szintű eseményekre. Az [Event hub-vagy Storage-fiókba](activity-log-export.md) vagy [log Analytics-munkaterületre](activity-log-collect.md) irányuló tevékenység-naplóbejegyzések küldési módszere a [diagnosztikai beállítások](diagnostic-settings.md)használatára változott. Ez a cikk a módszerek közötti különbséget ismerteti, valamint azt, hogy miként lehet törölni a régi beállításokat az előkészítés során a diagnosztikai beállításokra való váltáshoz.
 
 
 ## <a name="differences-between-methods"></a>A módszerek közötti különbségek
 
-### <a name="advantages"></a>Előnyök
+### <a name="advantages"></a>Előnyei
 A diagnosztikai beállítások használata a következő előnyökkel jár az aktuális módszereknél:
 
 - Konzisztens módszer az összes platform naplójának összegyűjtéséhez.
@@ -39,14 +39,16 @@ A funkció engedélyezése előtt vegye figyelembe a következő részleteket a 
 ### <a name="differences-in-data"></a>Adateltérések
 A diagnosztikai beállítások a tevékenység naplójának összegyűjtéséhez használt korábbi módszerekkel azonos adatokat gyűjtenek a következő jelenlegi eltérésekkel:
 
-A következő tulajdonságok lettek eltávolítva:
+A következő oszlopok el lettek távolítva. Ezeknek az oszlopoknak a pótlása eltérő formátumú, ezért előfordulhat, hogy módosítania kell azokat a napló-lekérdezéseket, amelyek használják azokat. Előfordulhat, hogy az eltávolított oszlopok továbbra is láthatók a sémában, de az adatokkal nem lesznek feltöltve.
 
-- ActivityStatus
-- ActivitySubstatus
-- OperationName
-- ResourceProvider
+| Oszlop eltávolítva | Helyettesítő oszlop |
+|:---|:---|
+| ActivityStatus    | Oszlopazonosítón    |
+| ActivitySubstatus | ActivitySubstatusValue |
+| OperationName     | OperationNameValue     |
+| ResourceProvider  | ResourceProviderValue  |
 
-A következő tulajdonságok lettek hozzáadva:
+A következő oszlop lett hozzáadva:
 
 - Authorization_d
 - Claims_d

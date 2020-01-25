@@ -1,28 +1,28 @@
 ---
-title: Csapat adatelemzési folyamat szerepkörök és feladatok
+title: Csoportos adatelemzési folyamat szerepkörei és feladatai
 description: A kulcsfontosságú összetevők, a személyzet szerepkörei és az adatelemzési csoportok kapcsolódó feladatainak vázlata.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 09/12/2019
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: bbc066f4b01a01a589849ad524b58a9b5d9dfae1
-ms.sourcegitcommit: 55f7fc8fe5f6d874d5e886cb014e2070f49f3b94
+ms.openlocfilehash: c1ed731943abf0efdd99ea54d2318fa402835e08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2019
-ms.locfileid: "71260654"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720010"
 ---
-# <a name="team-data-science-process-roles-and-tasks"></a>Csapat adatelemzési folyamat szerepkörök és feladatok
+# <a name="team-data-science-process-roles-and-tasks"></a>Csoportos adatelemzési folyamat szerepkörei és feladatai
 
 A csoportos adatelemzési folyamat (TDSP) a Microsoft által kifejlesztett keretrendszer, amely strukturált módszertant biztosít a prediktív elemzési megoldások és intelligens alkalmazások hatékony létrehozásához. Ez a cikk ismerteti a kulcsfontosságú személyzeti szerepköröket és az adatelemzési csapathoz kapcsolódó feladatokat, amelyek a folyamaton alapulnak.
 
-Ez a bevezető cikk a TDSP-környezet teljes adatelemzési csoportra, adatelemzési csapatokra és TDSP-projektekre való beállításával kapcsolatos oktatóanyagokra mutató hivatkozásokat tartalmaz. Az oktatóanyagok részletes útmutatást nyújtanak a Azure DevOps Projects, az Azure Repos-Tárházak és az Azure-táblák agilis tervezési eszközeinek használatához a hozzáférés, a gazdagépek és a megosztási kódok kezeléséhez, valamint a csoportos feladatok felügyeletéhez.
+Ez a bevezető cikk a TDSP-környezet beállításával kapcsolatos oktatóanyagokra mutató hivatkozásokat tartalmaz. Az oktatóanyagok részletes útmutatást nyújtanak a Azure DevOps Projects, az Azure Repos-Tárházak és az Azure-táblák használatához.  A motivációs cél a koncepcióról a modellezésre és a telepítésre való áttérés.
 
 Az oktatóanyagok az Azure DevOps-t használják, mivel ez az útmutató a TDSP megvalósításához a Microsoftnál. Az Azure DevOps a szerepköralapú biztonság, a munkaelemek kezelésének és nyomon követésének, valamint a kódok üzemeltetésének, megosztásának és verziókövetés integrálásával segíti az együttműködést. Az oktatóanyagok az Azure [Data Science Virtual Machine](https://aka.ms/dsvm) (DSVM) szolgáltatást is használják az analitikai asztalként, amelynek számos népszerű adatelemző eszköze van előre konfigurálva, és integrálva van a Microsoft szoftverrel és az Azure-szolgáltatásokkal. 
 
@@ -40,13 +40,13 @@ Ilyen struktúrában a csoport-és a Team-érdeklődők találhatók. Az adatele
 ## <a name="definition-and-tasks-for-the-four-tdsp-roles"></a>A négy TDSP-szerepkör definíciója és feladatai
 Feltételezve, hogy az adatelemzési egység egy csoporton belül csapatokból áll, a TDSP-munkatársaknak négy különböző szerepe van:
 
-1. **Csoport kezelője**: Felügyeli a teljes adattudományi egységet egy vállalaton belül. Előfordulhat, hogy a data science egység több csapat, amelyek mindegyike több különböző üzleti referenciaegyenesen az adatelemzési projektek dolgozik. A csoport kezelőjének előfordulhat, hogy delegálni a feladatokat a helyettes, de a szerepkörhöz tartozó feladatok ne módosítsa.
+1. A **Group Manager**: a teljes adattudományi egységet kezeli egy vállalaton belül. Az adatelemzési egységek több csapattal is rendelkezhetnek, amelyek mindegyike több adatelemzési projekten dolgozik a különböző üzleti vertikális szolgáltatásokban. A csoporttagok delegálást végezhetnek a feladataik között, de a szerepkörhöz kapcsolódó feladatok nem változnak.
    
-2. **Csapat érdeklődője**: Felügyel egy csapatot egy vállalat adattudományi egységében. Egy csoport több adatszakértők áll. Egy kis adatelemzési egység esetében a csoportvezető és a csapat vezetője is lehet ugyanaz a személy.
+2. **Csapat érdeklődője**: egy vállalat adattudományi egységében kezeli a csapatot. A csapat több adatszakértőből áll. Egy kis adatelemzési egység esetében a csoportvezető és a csapat vezetője is lehet ugyanaz a személy.
    
-3. **Projekt-érdeklődő**: Kezeli az egyes adatszakértők napi tevékenységeit egy adott adatelemzési projektben.
+3. **Projekt vezetője**: az egyes adatszakértők napi tevékenységeit kezeli egy adott adatelemzési projektben.
    
-4. **Projekt egyéni közreműködői**: Adatszakértők, üzleti elemzők, adatmérnökök, építészek és az adatelemzési projekteket végrehajtó mások.
+4. **Projekt – egyéni közreműködők**: adatszakértők, üzleti elemzők, adatmérnökök, építészek és az adatelemzési projektet végrehajtó mások.
 
 > [!NOTE]
 > A vállalatok struktúrájától és méretétől függően egyetlen személy több szerepkört is játszhat, vagy több személy is kitöltheti a szerepkört.
@@ -55,9 +55,9 @@ Feltételezve, hogy az adatelemzési egység egy csoporton belül csapatokból �
 
 Az alábbi ábrán az egyes csoportos adatelemzési folyamatokhoz tartozó legfelső szintű feladatok láthatók. Ez a séma és az alábbi, az egyes TDSP-szerepkörökkel kapcsolatos feladatok részletesebb áttekintése segíthet kiválasztani a szükséges oktatóanyagot a feladatai alapján.
 
-![Szerepkörök és feladatok áttekintése](./media/roles-tasks/overview-tdsp-top-level.png)
+![Szerepkörök és feladatok – áttekintés](./media/roles-tasks/overview-tdsp-top-level.png)
 
-## <a name="group-manager-tasks"></a>Csoportkezelő feladatok
+## <a name="group-manager-tasks"></a>A Group Manager feladatai
 
 A Group Manager vagy a kijelölt TDSP-rendszergazda a következő feladatokat hajtja végre a TDSP elfogadásához:
 
@@ -70,21 +70,21 @@ A Group Manager vagy a kijelölt TDSP-rendszergazda a következő feladatokat ha
 
 Részletes útmutatásért lásd: [a Group Manager feladatai egy adatelemzési csapat számára](group-manager-tasks.md).
 
-## <a name="team-lead-tasks"></a>Csapat vezető feladatok
+## <a name="team-lead-tasks"></a>Csapat vezető feladatai
 
 A csapat érdeklődője vagy egy kijelölt projekt rendszergazdája a következő feladatokat hajtja végre a TDSP elfogadásához:
 
 - Létrehoz egy Team- **projektet** a csoport Azure DevOps-szervezetében.
 - Létrehozza a Project **template-tárházat** a projektben, és a Group Manager vagy a delegált által beállított Group Project template adattárból magot.
 - Létrehozza a **csapat segédprogram-tárházat**, magot a csoport segédprogram-tárházból, és hozzáadja a csoportra jellemző segédprogramokat a tárházhoz.
-- Opcionálisan létrehozza az [Azure file Storage](https://azure.microsoft.com/services/storage/files/) -t a hasznos adategységek tárolásához a csapat számára. Más csapattagokat is csatlakoztatása a megosztott felhőalapú fájltároló analytics gépeiken.
+- Opcionálisan létrehozza az [Azure file Storage](https://azure.microsoft.com/services/storage/files/) -t a hasznos adategységek tárolásához a csapat számára. Más csapattagok is csatlakoztathatja ezt a megosztott Felhőbeli tárolót az Analytics-asztalokon.
 - Opcionálisan csatlakoztatja az Azure file Storage-t a csapat **DSVM** , és hozzáadja a csapat adategységeit.
 - Beállítja a **biztonsági vezérlést** a csapattagok hozzáadásával és az engedélyeik konfigurálásával.
 
 Részletes útmutatásért lásd: az [adatelemzési csapat csapatának vezető feladatai](team-lead-tasks.md).
 
 
-## <a name="project-lead-tasks"></a>Érdeklődő tevékenységeket
+## <a name="project-lead-tasks"></a>Projekt érdeklődői feladatai
 
 A projekt vezetője a következő feladatokat hajtja végre a TDSP elfogadásához:
 
@@ -95,7 +95,7 @@ A projekt vezetője a következő feladatokat hajtja végre a TDSP elfogadásáh
 
 Részletes útmutatást az [adatelemzési csapat projekt-érdeklődői feladatai](project-lead-tasks.md)című témakörben talál.
 
-## <a name="project-individual-contributor-tasks"></a>Egyéni közreműködő tevékenységeket
+## <a name="project-individual-contributor-tasks"></a>Projekt egyéni közreműködői feladatai
 
 A projekt egyéni közreműködője – általában egy adattudós – a következő feladatokat hajtja végre a TDSP:
 
@@ -116,7 +116,7 @@ Az alábbi ábra a projekt végrehajtásának TDSP-munkafolyamatát ismerteti:
 A munkafolyamat lépései három tevékenységbe sorolhatók:
 
 - A Project-érdeklődők a Sprint tervezését végzik
-- Az adatszakértők a `git` munkaelemek kezelésére szolgáló ágakat fejlesztenek
+- Az adatszakértők a munkaelemek kezelésére `git` ágakat fejlesztenek.
 - A projekt-vagy más csapattagok a kód felülvizsgálatát és a munkaágak egyesítését a Master ág számára
 
 A projekt-végrehajtási munkafolyamattal kapcsolatos részletes utasításokért lásd: az [adatelemzési projektek agilis fejlesztése](agile-development.md).
@@ -125,11 +125,11 @@ A projekt-végrehajtási munkafolyamattal kapcsolatos részletes utasításokér
 
 A Microsoft TDSP csapata [Project template adattárával](https://github.com/Azure/Azure-TDSP-ProjectTemplate) hatékonyan támogathatja a projektek végrehajtását és együttműködését. Az adattár a saját TDSP-projektjeihez használható szabványosított címtár-struktúrát és dokumentumtárakat biztosít.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg a szerepkörök és feladatok határozzák meg a csoportos adatelemzési folyamat részletes leírása:
+Ismerkedjen meg a csoportos adatelemzési folyamat által meghatározott szerepkörökkel és feladatokkal kapcsolatos részletesebb leírásokkal:
 
-- [Adatelemzési csapatával csoport Manager-feladatok](group-manager-tasks.md)
-- [Csoportos adatelemzési csapatával az érdeklődő feladatok](team-lead-tasks.md)
-- [Érdeklődő tevékenységeket az adatelemzési csapatával](project-lead-tasks.md)
+- [Az adatelemzési csapat Group Manager-feladatai](group-manager-tasks.md)
+- [A csapat vezető feladatai egy adattudományi csapat számára](team-lead-tasks.md)
+- [Az adatelemzési csapat projekt-vezető feladatai](project-lead-tasks.md)
 - [Az adatelemzési csapat egyedi közreműködő feladatainak projektje](project-ic-tasks.md)

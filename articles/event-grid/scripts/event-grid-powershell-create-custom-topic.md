@@ -1,23 +1,22 @@
 ---
 title: Azure PowerShell-példaszkript – Egyéni témakör létrehozása | Microsoft Docs
-description: Azure PowerShell-példaszkript – Egyéni témakör létrehozása
+description: Ez a cikk egy minta Azure PowerShell parancsfájlt tartalmaz, amely bemutatja, hogyan hozhat létre Event Grid egyéni témakört.
 services: event-grid
 documentationcenter: na
-author: tfitzmac
-manager: timlt
+author: spelluru
 ms.service: event-grid
 ms.devlang: powershell
 ms.topic: sample
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 12/10/2018
+ms.date: 01/23/2020
 ms.author: tomfitz
-ms.openlocfilehash: 20ad58c2e7209f8bed8014d5ce1dff094907590c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.openlocfilehash: 900f31ff87e6a588fc1d1e3efd854437d2c8c1b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "66117151"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719942"
 ---
 # <a name="create-event-grid-custom-topic-with-powershell"></a>Egyéni Event Grid-témakör létrehozása a PowerShell-lel
 
@@ -37,9 +36,9 @@ A szkript a következő parancsot használja az egyéni témakör létrehozásá
 
 | Parancs | Megjegyzések |
 |---|---|
-| [New-AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Egyéni Event Grid-témakör létrehozása. |
+| [Új – AzEventGridTopic](https://docs.microsoft.com/powershell/module/az.eventgrid/new-azeventgridtopic) | Egyéni Event Grid-témakör létrehozása. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A felügyelt alkalmazásokra vonatkozó részleteket az [Azure felügyelt alkalmazásokat áttekintő](../overview.md) cikk ismerteti.
 * A PowerShell-lel kapcsolatos további tudnivalókért tekintse meg az [Azure PowerShell dokumentációját](https://docs.microsoft.com/powershell/azure/get-started-azureps).

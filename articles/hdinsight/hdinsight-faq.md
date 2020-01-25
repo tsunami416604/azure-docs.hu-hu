@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/20/2019
-ms.openlocfilehash: d9daefaec33c435ae9f8eceec370c83de4535f8b
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.openlocfilehash: b05b83086cc9d8449d9517897f347b6e2685aa95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830377"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720350"
 ---
 # <a name="azure-hdinsight-frequently-asked-questions"></a>Azure HDInsight: gyakori kérdések
 
@@ -233,7 +233,7 @@ A cron-feladatok beállításával és futtatásával kapcsolatos további infor
 ### <a name="why-is-llap-available-on-spark-esp-clusters"></a>Miért érhető el a LLAP a Spark ESP-fürtökön?
 ESP Spark-fürtökön a LLAP biztonsági okokból (pl. Apache Ranger) van engedélyezve, nem pedig a teljesítmény. Nagyobb csomópontos virtuális gépeket kell használnia a LLAP erőforrás-használatának (például minimális D13V2) kielégítéséhez. 
 
-### <a name="how-can-i-add-addional-aad-groups-after-creating-an-esp-cluster"></a>Hogyan adhatok hozzá addional HRE-csoportokat az ESP-fürt létrehozása után?
+### <a name="how-can-i-add-additional-aad-groups-after-creating-an-esp-cluster"></a>Hogyan adhatok hozzá további HRE-csoportokat az ESP-fürt létrehozása után?
 Ez kétféleképpen valósítható meg: 1 – a fürt újból létrehozható, és a fürt létrehozásakor a további csoport is hozzáadható. Ha hatókörön belüli szinkronizálást használ a HRE-DS-ben, győződjön meg arról, hogy a B csoport szerepel a hatókörön belüli szinkronizálásban.
 2 – a csoport hozzáadása az ESP-fürt létrehozásához használt előző csoport beágyazott alcsoportjaként. Ha például egy `A`csoporttal rendelkező ESP-fürtöt hozott létre, később a csoport hozzáadása `B` beágyazott alcsoportként `A` és körülbelül egy óra elteltével a rendszer automatikusan szinkronizálja és elérhetővé teszi azokat a fürtben. 
 
@@ -249,7 +249,7 @@ A beállításokat a fürt tulajdonságai között, a Azure Portalban találhatj
  
 ### <a name="how-can-i-calculate-the-usage-of-storage-accounts-and-blob-containers-for-my-hdinsight-clusters"></a>Hogyan számítható ki a Storage-fiókok és a blob-tárolók használata a HDInsight-fürtökhöz?
 
-Folytassa a következők egyikével:
+Tegye a következők egyikét:
 
 - [A PowerShell használata](../storage/scripts/storage-blobs-container-calculate-size-powershell.md)
 

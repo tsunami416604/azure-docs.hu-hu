@@ -1,25 +1,25 @@
 ---
 title: Azure Resource Manager-sablonminták – Event Grid | Microsoft Docs
-description: Azure Resource Manager-sablonminták az Event Gridhez
+description: Ez a cikk a GitHub-Azure Event Grid Azure Resource Manager sablonjának mintáit sorolja fel.
 services: event-grid
-author: tfitzmac
+author: spelluru
 manager: timlt
 ms.service: event-grid
 ms.devlang: na
 ms.topic: sample
 ms.tgt_pltfrm: na
-ms.date: 01/04/2019
-ms.author: tomfitz
-ms.openlocfilehash: 788d23c7bddd90c1e12a118742c651eb9759529c
-ms.sourcegitcommit: 3102f886aa962842303c8753fe8fa5324a52834a
+ms.date: 01/23/2020
+ms.author: spelluru
+ms.openlocfilehash: 38d8db0bcc504760595fe51b63072f63e785577a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/23/2019
-ms.locfileid: "60822710"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720622"
 ---
 # <a name="azure-resource-manager-templates-for-event-grid"></a>Azure Resource Manager-sablonok az Event Gridhez
 
-A JSON-szintaxist és a egy sablonban használandó tulajdonságokat: [Microsoft.EventGrid erőforrástípusok](/azure/templates/microsoft.eventgrid/allversions). A következő táblázat az Event Gridhez való Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz.
+A sablonban használandó JSON-szintaxis és-tulajdonságok megtekintéséhez lásd: [Microsoft. EventGrid-erőforrástípusok](/azure/templates/microsoft.eventgrid/allversions). A következő táblázat az Event Gridhez való Azure Resource Manager-sablonokra mutató hivatkozásokat tartalmaz.
 
 | | |
 |-|-|

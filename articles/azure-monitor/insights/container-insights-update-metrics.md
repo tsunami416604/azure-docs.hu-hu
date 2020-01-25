@@ -3,12 +3,12 @@ title: A tárolók Azure Monitorának frissítése a metrikák számára | Micro
 description: Ez a cikk azt ismerteti, hogyan frissítheti Azure Monitor a tárolók számára az összesített metrikák vizsgálatát és riasztását támogató egyéni metrikák funkció engedélyezéséhez.
 ms.topic: conceptual
 ms.date: 11/11/2019
-ms.openlocfilehash: 0a2674df4a05d856b35dd51dbb33af0f407db29f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a7f40cb0523c2366c47da228e49311c2f9579212
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75403227"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715921"
 ---
 # <a name="how-to-update-azure-monitor-for-containers-to-enable-metrics"></a>Tárolók Azure Monitor frissítése a metrikák engedélyezéséhez
 
@@ -20,7 +20,7 @@ A tárolók Azure Monitor támogatja a metrikák gyűjtését az Azure Kubernete
 
 A szolgáltatás részeként a következő metrikák engedélyezettek:
 
-| Metrika névtere | Metrika | Leírás |
+| Metrikai névtér | Metrika | Leírás |
 |------------------|--------|-------------|
 | bepillantást nyerhet. tároló/csomópontok | cpuUsageMillicores, cpuUsagePercentage, memoryRssBytes, memoryRssPercentage, memoryWorkingSetBytes, memoryWorkingSetPercentage, nodesCount | Ezek a *csomópont* -metrikák, és a *gazdagép* dimenzióként is szerepelnek, és a<br> a csomópont neve a *gazdagép* dimenziójának értékeként. |
 | bepillantást nyerhet. tároló/hüvely | podCount | Ezek a *Pod* mérőszámok, és a következő dimenziókat tartalmazzák: ControllerName, Kubernetes névtér, név, fázis. |
@@ -529,7 +529,7 @@ A következő lépések végrehajtásával frissítheti egy adott fürtöt a Azu
     }
 
     #
-    #   Check AKS cluster existance and access check
+    #   Check AKS cluster existence and access check
     #
     Write-Host("Checking aks cluster exists...")
     $cluster = Get-AzAks -ResourceGroupName $resourceGroupName -Name $clusterName  -ErrorVariable notPresent -ErrorAction SilentlyContinue

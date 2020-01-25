@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/26/2019
+ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 40bda408731e90ab4c0c987b981a1c7f16b0de5d
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2493e893f9afda0642bd838c94538dd0b984bce5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979342"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720656"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
@@ -62,7 +62,7 @@ Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felha
 
 ### <a name="differences-for-guest-users"></a>A vendég felhasználói közötti különbségek
 
-A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Gondolkodjon el az alábbi megoldáson:
+A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegyük példaként a következő esetet:
 
 - Az A felhasználó Azure AD-fiókkal (munkahelyi vagy iskolai fiókkal) az Azure-előfizetések szolgáltatás-rendszergazdája.
 - A B felhasználó Microsoft-fiók rendelkezik.
@@ -89,7 +89,7 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 1. Vegyen fel egy pipát az eltávolítani kívánt társ-rendszergazda mellett.
 
-1. Kattintson az **Eltávolítás** elemre.
+1. Kattintson az **Eltávolítás**gombra.
 
 1. A megjelenő üzenetablakban kattintson az **Igen**gombra.
 
@@ -99,29 +99,11 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 Csak a fiók rendszergazdája módosíthatja az előfizetés szolgáltatás-rendszergazdáját. Alapértelmezés szerint az Azure-előfizetésre való regisztráláskor a szolgáltatás rendszergazdája megegyeznek a fiók rendszergazdájával. A fiók-rendszergazdai szerepkörrel rendelkező felhasználó nem fér hozzá a Azure Portalhoz. A szolgáltatás-rendszergazdai szerepkörrel rendelkező felhasználó teljes hozzáféréssel rendelkezik a Azure Portalhoz. Ha a fiók rendszergazdája és a szolgáltatás rendszergazdája ugyanaz a felhasználó, és egy másik felhasználóra módosítja a szolgáltatás-rendszergazdát, akkor a fiók rendszergazdája elveszti a hozzáférést Azure Portal. A fiók rendszergazdája azonban mindig használhatja a Account centert a szolgáltatás-rendszergazda saját magukra való visszaállítására.
 
-A szolgáltatásadminisztrátort kétféleképpen módosíthatja. A **Azure Portal** vagy a **fiók központban**is megváltoztathatja.
-
-### <a name="azure-portal"></a>Azure portál
-
-1. Győződjön meg arról, hogy a forgatókönyvek támogatottak, ha ellenőrzi a szolgáltatás-rendszergazdák módosításának korlátozásait.
-
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) fiókadminisztrátorként.
-
-1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
-
-1. Kattintson a **Tulajdonságok** elemre.
-
-    ![A fiók rendszergazdáját ábrázoló képernyőfelvétel](./media/classic-administrators/account-admin.png)
-
-1. A lap tetején kattintson a **szolgáltatás** -rendszergazda lehetőségre a szolgáltatás-rendszergazdai ablaktábla megnyitásához.
-
-    Ha a szolgáltatás-rendszergazda gomb le van tiltva, nem rendelkezik a megfelelő engedélyekkel. Csak a fiók rendszergazdája által felügyelt felhasználó módosíthatja a szolgáltatás-rendszergazdát.
-
-1. Válasszon ki egy új szolgáltatás-rendszergazdát, majd kattintson a **Mentés**gombra.
+Kövesse az alábbi lépéseket a szolgáltatás-rendszergazda módosításához a **Account Centerben**.
 
 ### <a name="account-center"></a>Account Center
 
-1. Győződjön meg arról, hogy a forgatókönyvek támogatottak, ha ellenőrzi a szolgáltatás-rendszergazdák módosításának korlátozásait.
+1. Ellenőrizze, hogy a forgatókönyv támogatott-e, [Ha ellenőrzi a szolgáltatás-rendszergazda módosításának korlátozásait](#limitations-for-changing-the-service-administrator).
 
 1. Jelentkezzen be a [Account Centerbe](https://account.windowsazure.com/subscriptions) a fiók rendszergazdájaként.
 

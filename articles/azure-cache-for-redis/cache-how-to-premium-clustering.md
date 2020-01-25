@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 06/13/2018
-ms.openlocfilehash: ddb44a064090a108f77d6a6f9a270fab8c55ec90
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 761c464730096eba36bc7c04227745cf362e5cc6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433431"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714465"
 ---
 # <a name="how-to-configure-redis-clustering-for-a-premium-azure-cache-for-redis"></a>A Redis-fürtözés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk azt ismerteti, hogyan konfigurálható a fürtözés a prémium szintű Azure cache-ben a Redis-példányhoz.
@@ -58,12 +58,7 @@ A StackExchange. Redis ügyféllel való fürtözéssel kapcsolatos mintakód a 
 <a name="cluster-size"></a>
 
 ## <a name="change-the-cluster-size-on-a-running-premium-cache"></a>A fürt méretének módosítása egy futó prémium szintű gyorsítótárban
-Ha módosítani szeretné a fürt méretét egy futó prémium szintű gyorsítótárban, amelyen engedélyezve van a fürtözés, kattintson az **erőforrás menü** **Redis-fürt mérete** elemére.
-
-> [!NOTE]
-> Habár az Redis prémium szintű Azure cache elérhető az általános elérhetőségre, a Redis-fürt mérete funkció jelenleg előzetes verzióban érhető el.
-> 
-> 
+Ha módosítani szeretné a fürt méretét egy futó prémium szintű gyorsítótárban, amelyen engedélyezve van a fürtözés, kattintson a **fürt mérete** elemre az **erőforrás menüben**.
 
 ![Redis-fürt mérete][redis-cache-redis-cluster-size]
 

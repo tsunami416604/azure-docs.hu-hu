@@ -1,34 +1,34 @@
 ---
-title: Az Azure-ban a mintaadatokat a blob storage - csoportos adatelemzési folyamat
-description: Töltse le a programozott módon, és ezután mintavételezi a pythonban írt eljárások az Azure blob storage-ban tárolt adatok mintavételezésének.
+title: Mintaadatok az Azure Blob Storage-ban – csoportos adatelemzési folyamat
+description: Az Azure Blob Storage-ban tárolt mintavételi adatai programozott módon történő letöltésével, majd a Pythonban írt eljárások használatával történő mintavételezéssel.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 1c455106e5faa4aa20ec56f37788e0b8c324fee1
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4832762a88073f4d819925659bf9078e18f60c2d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "61042922"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720282"
 ---
-# <a name="heading"></a>Adatmintavétel az Azure blob storage-ban
+# <a name="heading"></a>Mintaadatok az Azure Blob Storage-ban
 
-Ez a cikk ismerteti a mintavételi, töltse le a programozott módon, és ezután mintavételezi a pythonban írt eljárások az Azure blob storage-ban tárolt adatok.
+Ez a cikk az Azure Blob Storage-ban tárolt mintavételi adataira vonatkozik, ha programozott módon letölti, majd a Pythonban írt eljárásokkal mintavételezést végez.
 
-**Miért érdemes az az adatokat?**
-Ha azt tervezi, hogy elemezheti az adatkészlet túl nagy, általában egy célszerű való az adatokat egy kisebb, de reprezentatív és könnyebben kezelhető méretű-re csökkenteni. Ez lehetővé teszi az adatok megértését, feltárási és funkciófejlesztési. Szerepét a Cortana Analytics-folyamatban, az adatfeldolgozás funkciók és a gépi tanulási modellek gyors prototípus-készítés engedélyezése.
+**Miért érdemes felvenni az adatait?**
+Ha az elemezni kívánt adatkészlet nagy méretű, általában egy jó ötlet, hogy lerövidítse az adatokat, hogy csökkentse azt kisebb, de reprezentatív és felügyelhető méretre. A mintavétel megkönnyíti az adatmegismerést, a feltárást és a funkciók mérnöki felépítését. A Cortana Analytics-folyamat feladata az adatfeldolgozási függvények és a gépi tanulási modellek gyors prototípusának engedélyezése.
 
-Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/).
+Ez a mintavételi feladat a [csoportos adatelemzési folyamat (TDSP)](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/)egyik lépése.
 
-## <a name="download-and-down-sample-data"></a>Töltse le és lefelé mintaadatok
-1. Töltse le az adatokat a blob szolgáltatással az alábbi Python-mintakód az Azure blob storage-ból: 
+## <a name="download-and-down-sample-data"></a>Az adatminta letöltése és leállása
+1. Töltse le az Azure Blob Storage-ból származó adatait az alábbi Python-kód Blob service használatával: 
    
         from azure.storage.blob import BlobService
         import tables
@@ -46,14 +46,14 @@ Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP
         t2=time.time()
         print(("It takes %s seconds to download "+blobname) % (t2 - t1))
 
-2. Adatokat olvas be egy Pandas-adatkeretbe a fent letöltött fájlból.
+2. Adatok beolvasása egy Panda-adatkeretbe a fent letöltött fájlból.
    
         import pandas as pd
    
         #directly ready from file on disk
         dataframe_blobdata = pd.read_csv(LOCALFILE)
 
-3. Az adatokat az alsó-minta a `numpy`a `random.choice` módon:
+3. Lefelé – a `numpy``random.choice` a következőképpen tekintheti meg az adatmintákat:
    
         # A 1 percent sample
         sample_ratio = 0.01 
@@ -61,16 +61,16 @@ Ez a mintavételi feladat Ez a lépés a [csoportos adatelemzési folyamat (TDSP
         sample_rows = np.random.choice(dataframe_blobdata.index.values, sample_size)
         dataframe_blobdata_sample = dataframe_blobdata.ix[sample_rows]
 
-Most már dolgozhat a fenti adatok keret további feltárása és a szolgáltatás-létrehozás a 1 százalékát mintával.
+Most már dolgozhat a fenti adatkerettel, és az egyszázalékos mintát is használhatja a további feltáráshoz és a funkciók létrehozásához.
 
-## <a name="heading"></a>Adatok feltöltése és olvassa el, az Azure Machine Learningbe
-Az alábbi mintakód segítségével lefelé-minta az adatok, és közvetlenül az Azure Machine Learning használhatja:
+## <a name="heading"></a>Adatok feltöltése és beolvasása Azure Machine Learning
+Az alábbi mintakód segítségével leállíthatja az adatmintavételezést, és közvetlenül a Azure Machine Learningban is használhatja:
 
-1. Az adathalmaz egy helyi fájl írása
+1. Az adatkeret írása helyi fájlba
    
         dataframe.to_csv(os.path.join(os.getcwd(),LOCALFILENAME), sep='\t', encoding='utf-8', index=False)
 
-2. A helyi fájl feltöltése az Azure-blobba az alábbi mintakód segítségével:
+2. Töltse fel a helyi fájlt egy Azure-blobba a következő mintakód használatával:
    
         from azure.storage.blob import BlobService
         import tables
@@ -92,7 +92,7 @@ Az alábbi mintakód segítségével lefelé-minta az adatok, és közvetlenül 
         except:            
             print ("Something went wrong with uploading to the blob:"+ BLOBNAME)
 
-3. Olvassa el az adatokat az Azure-blobból az Azure Machine Learning segítségével [adatok importálása](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) az alábbi képen látható módon:
+3. Olvassa el az Azure Blob adatait az alábbi képen látható Azure Machine Learning [importálási adatok](https://msdn.microsoft.com/library/azure/4e1b0fe6-aded-4b3f-a36f-39b8862b9004/) használatával:
 
 ![olvasó blob](./media/sample-data-blob/reader_blob.png)
 

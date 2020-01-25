@@ -3,20 +3,20 @@ title: A csoportos adatelemzési folyamat életciklusának modellezési szakasza
 description: Az adatelemzési projektek modellezési fázisának céljai, feladatai és termékei
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d72d39a2a59e06954c36473083af2d2b4689a7b6
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.openlocfilehash: 1d3cd61ea3da88c4c5231f22c0e127508591fb8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74538225"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720469"
 ---
 # <a name="modeling-stage-of-the-team-data-science-process-lifecycle"></a>A csoportos adatelemzési folyamat életciklusának modellezési szakasza
 
@@ -74,7 +74,7 @@ Az ebben a szakaszban bemutatott összetevők a következők:
 
    * [Szolgáltatások készletei](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/Data%20Defintion.md): a modellezéshez kifejlesztett funkciók leírása az **adatdefiníciós** jelentés **szolgáltatáskészlet-készletek** szakaszában található. A kód mutatóit tartalmazza a funkciók létrehozásához és a szolgáltatás létrehozásának leírásához.
    * [Modell jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Model/Model%201/Model%20Report.md): minden olyan modell esetében, amely minden egyes kísérlethez meg van határozva, egy standard, sablon alapú jelentés készül, amely részletesen ismerteti az egyes kísérletek részleteit.
-   * **Ellenőrzőpont-döntés**: annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben való üzembe helyezéshez. Néhány fontos kérdés:
+   * **Ellenőrzőpont-döntés**: annak kiértékelése, hogy a modell megfelelően működik-e az éles környezetben. Néhány fontos kérdés:
      * A modell megfelelő megbízhatósággal válaszol a kérdésre a tesztelési adat miatt? 
      * Érdemes kipróbálnia bármilyen alternatív megközelítést? További adatok gyűjtése, több funkció-mérnöki megoldás vagy más algoritmusok kipróbálása?
 

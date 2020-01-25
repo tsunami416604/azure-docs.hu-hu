@@ -8,33 +8,80 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 53856b4157afa5976947c451952fc26eefcdd0ea
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 20a2c18875096680cd1eba7601e88965fcbcc568
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76264186"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715354"
 ---
-# <a name="find-an-address-using-the-azure-maps-search-service"></a>Címek keresése a Azure Maps Search szolgáltatással
+# <a name="using-azure-maps-search-services-for-geocoding-and-reverse-geocoding"></a>Azure Maps keresési szolgáltatások használata helymeghatározáshoz és fordított helymeghatározáshoz
 
-A Maps Search szolgáltatás fejlesztők számára tervezett REST API-k készlete. A szolgáltatás kereshet címeket, helyeket, érdekes pontokat, üzleti listákat és egyéb földrajzi információkat. A következők mindegyike egy szélességi és hosszúsági értékkel rendelkezik: egy adott címnek, a Cross Street, a földrajzi funkció vagy egy érdekes hely (POI). A lekérdezésben megadott szélességi és hosszúsági értékeket paraméterekként használhatja más térképi szolgáltatások esetében. Például a visszaadott értékek paraméterek lehetnek a Route Service vagy a Traffic flow szolgáltatáshoz. 
+A Azure Maps [Search Service](https://docs.microsoft.com/rest/api/maps/search) olyan REST API-k készlete, amelyek segítségével a fejlesztők megkereshetik a címeket, a helyeket, az üzleti listákat név vagy kategória alapján, valamint egyéb földrajzi információkat. A hagyományos helymeghatározáshoz támogatása mellett a szolgáltatások a földrajzi szélesség és a hosszúságok alapján is visszafordítják a címeket és a geocode. A keresés által visszaadott szélességi és hosszúsági értékek paraméterekként használhatók más Azure Maps-szolgáltatásokban, például az [útvonal](https://docs.microsoft.com/rest/api/maps/route) -és [időjárási](https://docs.microsoft.com/rest/api/maps/weather) szolgáltatásokban.
 
 Ismerkedjen meg a következőkkel:
 
-* Címek keresése a [fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) használatával
+* Címek szélességi és hosszúsági koordinátáinak lekérdezése (geocode) a [Search-címek API]( https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) használatával
+* Keresse meg a keresett címeket vagy érdekes pontokat (POI) a [fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) használatával
 * Címek keresése a tulajdonságok és koordináták mellett
-* [Fordított címtartomány keresése](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) az utca-címek kereséséhez
+* [Fordított címtartomány-keresés](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) a koordináta helyének az utca címeként való lefordításához
 * A Cross Street keresése a [névkeresési fordított Cross Street API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreversecrossstreet) használatával
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ahhoz, hogy a Maps Service API-kon bármilyen hívást lehessen kezdeményezni, szüksége van egy Maps-fiókra és egy kulcsra. Ha Azure Maps fiókot szeretne létrehozni, kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait. Ha segítségre van szüksége az elsődleges kulcs beszerzéséhez, kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
+A cikkben szereplő lépések végrehajtásához először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie a Maps-fiók előfizetési kulcsát. Kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) egy Azure Maps fiók előfizetésének létrehozásához című témakör utasításait, és kövesse az [elsődleges kulcs lekérése](quick-demo-map-app.md#get-the-primary-key-for-your-account) a fiók elsődleges kulcsának lekérése című szakasz lépéseit. A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [Azure Maps hitelesítés kezelése](./how-to-manage-authentication.md).
 
 Ez a cikk a [Poster alkalmazást](https://www.getpostman.com/apps) használja a REST-hívások létrehozásához. Bármilyen, Ön által előnyben részesített API-fejlesztési környezetet használhat.
 
-## <a name="using-fuzzy-search"></a>A fuzzy Search használata
+## <a name="request-latitude-and-longitude-for-an-address-geocoding"></a>Címek szélességének és hosszúságának kérése (helymeghatározáshoz)
 
-A keresési szolgáltatás alapértelmezett API-a [zavaros keresés](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy). Ez a szolgáltatás akkor hasznos, ha nem biztos benne, hogy a felhasználó bemeneti formátuma egy keresési lekérdezésben szerepel. Az API ötvözi a POI-kereséseket és a helymeghatározáshoz egy kanonikus "egysoros" kereséssel. Az API például képes kezelni bármilyen címek vagy POI-token kombinációjának bemeneteit. Azt is megteheti, hogy környezetfüggő pozícióval (lat./Lon. párosítva), teljes mértékben korlátozza a koordináta és a sugár, vagy általánosabban végrehajtja a földrajzi torzítási pontok nélkül.
+Ebben a példában a Azure Maps [keresési címek API](https://docs.microsoft.com/rest/api/maps/search/getsearchaddress) -t használjuk, hogy az utca címeit a szélességi és a hosszúsági koordinátákra alakítsa át. Átadhatja az API-nak teljes vagy részleges lakcímét, és olyan választ kaphat, amely olyan részletes címeket tartalmaz, mint például az utca, az irányítószám, az ország/régió, valamint a szélességi és a hosszúsági pozícióbeli értékek.
+
+Ha a geocode címei vannak, a [keresési cím KÖTEGELT API](https://docs.microsoft.com/rest/api/maps/search/postsearchaddressbatch) használatával egyetlen API-hívásban is elküldheti a lekérdezések kötegét.
+
+1. A Poster területen kattintson az **új kérelem** | **Get kérelem** és a név it- **címek keresése**elemre.
+
+2. A Builder (szerkesztő) lapon válassza **a http lekérése** módszert, adja meg az API-végponthoz tartozó kérelem URL-címét, és válasszon ki egy hitelesítési protokollt, ha van ilyen.
+
+![Keresési címek](./media/how-to-search-for-address/address_search_url.png)
+
+| Paraméter | Ajánlott érték |
+|---------------|------------------------------------------------| 
+| HTTP-metódus | GET |
+| Kérés URL-címe | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) | 
+| Engedélyezés | Nincs hitelesítés |
+
+3. Kattintson a **Paraméterek**elemre, és adja meg a következő kulcs/érték párokat, amelyeket lekérdezésként vagy elérésiút-paraméterekként kíván használni a kérelem URL-címében: 
+
+![Keresési címek](./media/how-to-search-for-address/address_search_params.png) 
+
+| Jelmagyarázat | Value (Díj) | 
+|------------------|-------------------------| 
+| API-Version | 1.0 | 
+| előfizetés – kulcs | \<a Azure Maps kulcsot\> | 
+| lekérdezés | 400 Broad St, Seattle, WA 98109 | 
+
+4. Kattintson a **Küldés** gombra, és tekintse át a válasz törzsét. 
+
+Ebben az esetben teljes címzési lekérdezést adott meg, és egyetlen eredményt kap a válasz törzsében. 
+
+5. A params paraméterben szerkessze a lekérdezési karakterláncot a következő értékre: 
+
+    ```plaintext 
+        400 Broad, Seattle 
+    ``` 
+
+6. Adja hozzá a következő kulcs/érték párokat a **params (paraméterek** ) szakaszhoz, majd kattintson a Send ( **Küldés**) gombra: 
+
+| Jelmagyarázat | Value (Díj) | 
+|-----|------------| 
+| typeahead | igaz | 
+
+A **typeahead** jelző azt jelzi, hogy a címek keresési API-ját részleges bemenetként kezeli a lekérdezés, és a prediktív értékek tömbjét adja vissza.
+
+## <a name="search-for-an-address-using-fuzzy-search-api"></a>Címek keresése a fuzzy Search API használatával
+
+Azure Maps a[ fuzzy Search API](https://docs.microsoft.com/rest/api/maps/search/getsearchfuzzy) -t ajánlott használni, ha nem tudja, mi a felhasználói bemenet egy keresési lekérdezéshez. Az API összekapcsolja az érdeklődési pont (POI) keresését és a helymeghatározáshoz egy canonical "single-line Search" kifejezéssel. Az API például képes kezelni bármilyen címek vagy POI-token kombinációjának bemeneteit. Az is lehet, hogy környezetfüggő pozícióval (lat./Lon. párosítva), teljes mértékben korlátozza a koordináta és a sugár, vagy általánosabban végrehajtja a földrajzi torzítási pontok nélkül.
 
 A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a teljesítmény eléréséhez és a szokatlan eredmények csökkentéséhez. Ez az alapértelmezett beállítás felülbírálható igény szerint, ha a lekérdezési paramétert `maxFuzzyLevel=2` vagy `3`átadja.
 
@@ -48,7 +95,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
-    | HTTP method | GET |
+    | HTTP-metódus | GET |
     | Kérés URL-címe | [https://atlas.microsoft.com/search/fuzzy/json?](https://atlas.microsoft.com/search/fuzzy/json?) |
     | Engedélyezés | Nincs hitelesítés |
 
@@ -60,7 +107,7 @@ A legtöbb keresési lekérdezés alapértelmezett értéke `maxFuzzyLevel=1` a 
 
     | Jelmagyarázat | Value (Díj) |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | API-Version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | pizza |
 
@@ -100,7 +147,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
-    | HTTP method | GET |
+    | HTTP-metódus | GET |
     | Kérés URL-címe | [https://atlas.microsoft.com/search/address/json?](https://atlas.microsoft.com/search/address/json?) |
     | Engedélyezés | Nincs hitelesítés |
 
@@ -110,7 +157,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Jelmagyarázat | Value (Díj) |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | API-Version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | 400 Broad St, Seattle, WA 98109 |
   
@@ -131,7 +178,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
 
     A **typeahead** jelző azt jelzi, hogy a címek keresési API-ját részleges bemenetként kezeli a lekérdezés, és a prediktív értékek tömbjét adja vissza.
 
-## <a name="search-for-a-street-address-using-reverse-address-search"></a>Házszám keresése fordított címek használatával
+## <a name="make-a-reverse-address-search"></a>Fordított címek keresésének elkészítése
 
 1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és adja meg a **fordított címtartomány-keresés**nevet.
 
@@ -141,7 +188,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
-    | HTTP method | GET |
+    | HTTP-metódus | GET |
     | Kérés URL-címe | [https://atlas.microsoft.com/search/address/reverse/json?](https://atlas.microsoft.com/search/address/reverse/json?) |
     | Engedélyezés | Nincs hitelesítés |
   
@@ -151,7 +198,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Jelmagyarázat | Value (Díj) |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | API-Version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | 47.591180,-122,332700 |
   
@@ -189,9 +236,9 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
     |-----|------------|
     | roadUse | igaz |
 
-    A fordított geocode-lekérdezést egy adott típusú útra korlátozhatja, ha a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paramétert használja.
+    A fordított geocode-lekérdezést egy adott típusú útra korlátozhatja a [roadUse](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse) lekérdezési paraméter használatával.
   
-## <a name="search-for-the-cross-street-using-reverse-address-cross-street-search"></a>A Cross Street keresése fordított címekkel Cross Street Search használatával
+## <a name="search-for-cross-street-using-reverse-address-cross-street-search"></a>A Cross Street keresése fordított címekkel Cross Street Search használatával
 
 1. A Poster területen kattintson az **új kérelem** | **Get kérelem** elemre, és nevezze **vissza a Cross Street Search kifejezésre**.
 
@@ -201,7 +248,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Paraméter | Ajánlott érték |
     |---------------|------------------------------------------------|
-    | HTTP method | GET |
+    | HTTP-metódus | GET |
     | Kérés URL-címe | [https://atlas.microsoft.com/search/address/reverse/crossstreet/json?](https://atlas.microsoft.com/search/address/reverse/crossstreet/json?) |
     | Engedélyezés | Nincs hitelesítés |
   
@@ -209,7 +256,7 @@ A keresési címek API-hoz teljes vagy részleges lakcímet adhat át. Továbbra
   
     | Jelmagyarázat | Value (Díj) |
     |------------------|-------------------------|
-    | api-verzió | 1.0 |
+    | API-Version | 1.0 |
     | előfizetés – kulcs | \<a Azure Maps kulcsot\> |
     | lekérdezés | 47.591180,-122,332700 |
   

@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: 11dcf5dc0f05e51f3f427b09745cb581cc0d3780
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 32eb8e71cfb978fac5b4d6d05af4da4fdc9f67b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513932"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715520"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
 
@@ -59,7 +59,7 @@ Kövesse az alábbi lépéseket.
 
 8. Nyissa meg azt a könyvtárat, ahová a fájl fel lett töltve. Alapértelmezés szerint a fájlok a Felhasználónév alatt töltődnek fel a saját könyvtárba.
 
-9. Futtassa az alábbi parancsprogramot. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
+9. Futtassa az alábbi szkriptet. A parancsfájl kéri a bérlő AZONOSÍTÓját, amely a Azure Active Directory-> áttekintő oldaláról kérhető le.
 
     ```azurepowershell-interactive 
 
@@ -72,7 +72,7 @@ Kövesse az alábbi lépéseket.
 
  Most, hogy rendelkezik a szükséges hitelesítő adatokkal, megadhatja az eszközt és az érzékelőket. Ehhez hozza létre a metaadatokat a FarmBeats API-k meghívásával. Vegye figyelembe, hogy az API-kat a fenti szakaszban létrehozott ügyfélalkalmazásként kell meghívni.
 
- A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét.
+ A FarmBeats Datahub a következő API-kkal rendelkezik, amelyek lehetővé teszik az eszköz vagy az érzékelő metaadatainak létrehozását és felügyeletét. Vegye figyelembe, hogy partnereként csak olvasási, létrehozási és frissítési metaadatokat lehet elérni. **Egy partner nem engedélyezte a törlést.**
 
 - /**DeviceModel**: a DeviceModel az eszköz metaadatait, például a gyártót és az eszköz típusát, amely vagy egy átjáró vagy egy csomópont.
 - /**eszköz**: az eszköz a farmon lévő fizikai eszköznek felel meg.
@@ -80,7 +80,7 @@ Kövesse az alábbi lépéseket.
 - /**érzékelő**: az érzékelő olyan fizikai érzékelőnek felel meg, amely értékeket rögzít. Az érzékelő általában eszköz-AZONOSÍTÓval van csatlakoztatva egy eszközhöz.  
 
 
-|        DeviceModel   |  Javaslatok   |
+|        deviceModel   |  Javaslatok   |
 | ------- | -------             |
 |     Típus (csomópont, átjáró)        |          Az eszköz – csomópont vagy átjáró típusa      |
 |          Gyártó            |         A gyártó neve    |
@@ -115,7 +115,7 @@ Kövesse az alábbi lépéseket.
 |  SensorModelId     |    A társított érzékelő modell azonosítója.   |
 | Földrajzi egység          |  Érzékelő szélesség (-90 és + 90), hosszúság (-180 – 180) és Jogosultságszint-emelés (méterben).|
 |   Port > neve        |  Annak a portnak a neve és típusa, amelyhez az érzékelő csatlakozik az eszközhöz. Ennek a névnek meg kell egyeznie az eszköz modelljében megadott névvel. |
-|    DeviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
+|    deviceID  |    Annak az eszköznek az azonosítója, amelyhez az érzékelő csatlakozik.     |
 | Név            |   Az erőforrást azonosító név. Például az érzékelő neve, a terméknév és a modell száma vagy a termékkód.|
 |    Leírás      | Adjon meg egy értelmes leírást. |
 |    Tulajdonságok        |További tulajdonságok a gyártótól. |
@@ -172,7 +172,7 @@ Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amik
 
 ### <a name="input-payload-to-create-metadata"></a>A metaadatok létrehozására szolgáló bemeneti adattartalom
 
-DeviceModel
+deviceModel
 
 
 ```json
@@ -381,6 +381,41 @@ Példa egy telemetria-üzenetre:
       ]
     }
   ]
+}
+```
+
+## <a name="troubleshooting"></a>Hibaelhárítás
+
+### <a name="cant-view-telemetry-data-after-ingesting-historicalstreaming-data-from-your-sensors"></a>Nem lehet megtekinteni a telemetria adatait az érzékelőkből származó múltbeli/adatfolyam-adatok betöltése után
+
+**Tünet**: az eszközök vagy érzékelők üzembe helyezése megtörténik, és létrehozta az eszközöket/érzékelőket a FarmBeats-on és a betöltött telemetria a EventHub, de nem tudja lekérdezni vagy megtekinteni a telemetria-adatot a FarmBeats.
+
+**Javítási művelet**:
+
+1. Győződjön meg arról, hogy helyesen végrehajtotta a partner regisztrációját – ezt megteheti, ha a datahub henceg, a/partner API-ra navigálva elvégezheti a lekérést, és ellenőrizheti, hogy a partner regisztrálva van-e. Ha nem, kövesse az [itt található lépéseket](get-sensor-data-from-sensor-partner.md#enable-device-integration-with-farmbeats) a partner hozzáadásához.
+2. Győződjön meg arról, hogy létrehozta a metaadatokat (DeviceModel, eszköz, SensorModel, érzékelő) a partner ügyfél hitelesítő adataival.
+3. Győződjön meg arról, hogy a megfelelő telemetria-formátumot használta (az alább megadott módon):
+
+```json
+{
+"deviceid": "<id of the Device created>",
+"timestamp": "<timestamp in ISO 8601 format>",
+"version" : "1",
+"sensors": [
+    {
+      "id": "<id of the sensor created>",
+      "sensordata": [
+        {
+          "timestamp": "< timestamp in ISO 8601 format >",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        },
+        {
+          "timestamp": "<timestamp in ISO 8601 format>",
+          "<sensor measure name (as defined in the Sensor Model)>": <value>
+        }
+      ]
+    }
+ ]
 }
 ```
 

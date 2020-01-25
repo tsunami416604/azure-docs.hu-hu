@@ -5,12 +5,12 @@ author: suhuruli
 ms.topic: conceptual
 ms.date: 11/17/2017
 ms.author: suhuruli
-ms.openlocfilehash: 178b8c120bc7a886eaca94d1551e489f96ba22b2
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: f2ca1566358fad45f6ec2860fcca96b887c54adb
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75609876"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722577"
 ---
 # <a name="set-up-your-development-environment-on-mac-os-x"></a>A fejlesztési környezet beállítása Mac OS X-en
 > [!div class="op_single_selector"]
@@ -48,7 +48,7 @@ Egy helyi Docker-tároló beállításához és egy Service Fabric-fürt rajta v
     
     >[!NOTE]
     >
-    >A démon közvetlenül a Docker-ben való módosítása javasolt, mert a Daemon. JSON fájl helye változhat a gép és a gép között. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
+    >A démon közvetlenül a Docker-ben való módosítása ajánlott, mert a Daemon. JSON fájl helye változhat a gép és a gép között. Például: ~/Library/Containers/com.docker.docker/Data/database/com.docker.driver.amd64-linux/etc/docker/daemon.json.
     >
 
     >[!TIP]

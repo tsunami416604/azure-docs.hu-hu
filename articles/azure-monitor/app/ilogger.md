@@ -8,12 +8,12 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 02/19/2019
 ms.reviewer: mbullwin
-ms.openlocfilehash: 86ed494d3a6005ae74ee3f1aa4d5aa53ffc3098e
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: b538196467ba1d69e679a111ca313f922738b048
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74931161"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716026"
 ---
 # <a name="applicationinsightsloggerprovider-for-net-core-ilogger-logs"></a>ApplicationInsightsLoggerProvider a .NET Core ILogger-naplókhoz
 
@@ -29,7 +29,7 @@ A ApplicationInsightsLoggerProvider alapértelmezés szerint engedélyezve van a
 
 A ApplicationInsightsLoggerProvider által rögzített ILogger-naplók ugyanazon konfigurációra vonatkoznak, mint a többi összegyűjtött telemetria. Ugyanazzal a TelemetryInitializers és TelemetryProcessors rendelkeznek, ugyanazokat a TelemetryChannel használják, és ugyanúgy vannak összehasonlítva és mint a többi telemetria. Ha a 2.7.1-es vagy újabb verzióját használja, a ILogger-naplók rögzítéséhez nincs szükség beavatkozásra.
 
-Alapértelmezés szerint csak a *Figyelmeztetési* vagy a magasabb ILogger-naplók (az összes kategóriából) lesznek elküldve a Application Insights. A [viselkedés módosításához azonban szűrőket is alkalmazhat](#control-logging-level). A ILogger-naplók **program.cs** vagy **Startup.cs**való rögzítéséhez további lépések szükségesek. (Lásd: [ILogger-naplók rögzítése ASP.net Core alkalmazásokban a Startup.cs és a program.cs](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
+Alapértelmezés szerint csak a *Figyelmeztetési* vagy a magasabb ILogger-naplók (az összes [kategóriából](https://docs.microsoft.com/aspnet/core/fundamentals/logging/?view=aspnetcore-3.1#log-category)) lesznek elküldve a Application Insights. A [viselkedés módosításához azonban szűrőket is alkalmazhat](#control-logging-level). A ILogger-naplók **program.cs** vagy **Startup.cs**való rögzítéséhez további lépések szükségesek. (Lásd: [ILogger-naplók rögzítése ASP.net Core alkalmazásokban a Startup.cs és a program.cs](#capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps).)
 
 Ha a Microsoft. ApplicationInsights. AspNet SDK egy korábbi verzióját használja, vagy ha más Application Insights figyelés nélkül kívánja használni a ApplicationInsightsLoggerProvider-t, kövesse az alábbi eljárást:
 
@@ -108,7 +108,7 @@ public class ValuesController : ControllerBase
 ### <a name="capture-ilogger-logs-from-startupcs-and-programcs-in-aspnet-core-apps"></a>ILogger-naplók rögzítése a Startup.cs és a Program.cs alkalmazásban ASP.NET Core alkalmazásokban
 
 > [!NOTE]
-> A ASP.NET Core 3,0-es és újabb verzióiban már nem lehet `ILogger`t beszúrni a Startup.cs és a Program.cs. További részleteket a https://github.com/aspnet/Announcements/issues/353 dokumentumban talál.
+> A ASP.NET Core 3,0-es és újabb verzióiban már nem lehet `ILogger`t beszúrni a Startup.cs és a Program.cs. További részletekért tekintse meg https://github.com/aspnet/Announcements/issues/353.
 
 Az új ApplicationInsightsLoggerProvider az alkalmazás-indítási folyamat elején rögzíthet naplókat. Bár a ApplicationInsightsLoggerProvider automatikusan engedélyezve van Application Insights (a 2.7.1-es verziótól kezdődően), nem rendelkezik a kialakítási kulccsal, amely a folyamat későbbi részében nem szerepel. Így csak a **vezérlő**/other osztályaiból származó naplók lesznek rögzítve. Ha a **program.cs** és a **Startup.cs** -től kezdődően minden naplót rögzíteni szeretne, explicit módon engedélyeznie kell a ApplicationInsightsLoggerProvider rendszerállapot-kulcsát. Emellett a *TelemetryConfiguration* nincs teljesen beállítva, ha a **Program.cs** vagy a **Startup.cs** -ből jelentkezik be. Így ezek a naplók a InMemoryChannel-t használó minimális konfigurációval rendelkeznek, nem mintavételezéssel, és nem rendelkeznek szabványos telemetria-inicializálással vagy processzorokkal.
 

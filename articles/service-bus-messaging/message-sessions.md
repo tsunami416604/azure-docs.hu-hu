@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 7264b8e5a536c90d106b3bf4a5e26093744327d6
-ms.sourcegitcommit: c79aa93d87d4db04ecc4e3eb68a75b349448cd17
+ms.openlocfilehash: 7da3c3de5074df80c676238e4d43dbd677b0a3b4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/18/2019
-ms.locfileid: "71091817"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720231"
 ---
 # <a name="message-sessions-first-in-first-out-fifo"></a>Üzenet-munkamenetek: először a, első kimenő (FIFO) 
 
@@ -54,13 +54,13 @@ A munkamenetek egyidejű, egymással párhuzamosan megjelenő üzeneteket biztos
 
 A munkamenetet elfogadó ügyfél létrehoz egy [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -fogadót. Az ügyfél meghívja a [QueueClient. AcceptMessageSession](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesession#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSession) vagy a [QueueClient. AcceptMessageSessionAsync](/dotnet/api/microsoft.servicebus.messaging.queueclient.acceptmessagesessionasync#Microsoft_ServiceBus_Messaging_QueueClient_AcceptMessageSessionAsync) metódust a alkalmazásban C#. A reaktív visszahívási modellben regisztrál egy munkamenet-kezelőt.
 
-Ha a [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -objektumot elfogadják, és az ügyfél tárolja, az ügyfél kizárólagos zárolást biztosít minden olyan üzenetben, amely tartalmazza az adott [munkamenet munkamenet-](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) azonosítóját, amely szerepel a várólistában vagy az előfizetésben, valamint az adott munkamenet-azonosítóval rendelkező összes üzenet esetében is.ez továbbra is megérkezik a munkamenet megtartása közben.
+Ha a [MessageSession](/dotnet/api/microsoft.servicebus.messaging.messagesession) -objektumot elfogadják, és egy ügyfél tárolja, az ügyfél kizárólagos zárolást biztosít az adott munkamenethez [tartozó,](/dotnet/api/microsoft.servicebus.messaging.messagesession.sessionid#Microsoft_ServiceBus_Messaging_MessageSession_SessionId) a várólistán vagy az előfizetésen belüli összes üzenetre vonatkozóan, valamint az azon munkamenet-azonosítóval rendelkező összes üzeneten is **, amely még** mindig megérkezik a munkamenet megtartása közben.
 
 A zárolás akkor jelenik meg, ha a **Bezárás** vagy a **CloseAsync** meghívása megtörténik, vagy ha a zárolás olyan esetekben jár le, amikor az alkalmazás nem tudja végrehajtani a bezárási műveletet. A munkamenet-zárolást úgy kell kezelni, mint egy fájl kizárólagos zárolását, ami azt jelenti, hogy az alkalmazásnak azonnal le kell zárnia a munkamenetet, ha már nincs rá szüksége, és/vagy nem vár semmilyen további üzenetet.
 
 Ha több párhuzamos fogadó is lekéri a várólistáról, az adott munkamenethez tartozó üzeneteket a rendszer az adott munkamenethez tartozó zárolást betöltő adott fogadónak küldi el. Ezzel a művelettel egy várólistában vagy előfizetésben található, egymással összekapcsolt üzenetküldési adatfolyam tiszta módon, különböző fogadók számára érhető el, és ezek a fogadók különböző ügyfélszámítógépeken is élhetnek, mivel a zárolás kezelése a szolgáltatás mellett történik Service Bus.
 
-Az előző ábrán három egyidejű munkamenet-fogadó látható. Az egyik munkamenetben a `SessionId` = 4 nem rendelkezik aktív, tulajdonosi ügyféllel, ami azt jelenti, hogy az adott munkamenetből nem érkeznek üzenetek. A munkamenetek számos módon működnek, mint például az alárendelt üzenetsor.
+Az előző ábrán három egyidejű munkamenet-fogadó látható. Egy `SessionId` = 4 azonosítójú munkamenet nem rendelkezik aktív, tulajdonosi ügyféllel, ami azt jelenti, hogy az adott munkamenetből nem érkeznek üzenetek. A munkamenetek számos módon működnek, mint például az alárendelt üzenetsor.
 
 A munkamenet-fogadó által tárolt munkamenet-zárolás egy esernyő a *betekintési zárolási* mód által használt üzenetek zárolásához. A fogadónak nem lehet egyszerre két üzenete "a repülésben", de az üzeneteket sorrendben kell feldolgozni. Egy új üzenet csak akkor szerezhető be, ha az előző üzenet el lett hajtva, vagy a kézbesítve van. Az üzenet elhagyása azt eredményezi, hogy ugyanazt az üzenetet ismét a következő fogadási művelettel kézbesíti a rendszer.
 
@@ -82,15 +82,15 @@ Egy várólistában vagy előfizetésben tárolt munkamenet-állapot az entitás
 
 ## <a name="impact-of-delivery-count"></a>A kézbesítések számának következményei
 
-Az üzenetek kézbesítési számának a munkamenetek kontextusában való meghatározása a absense definíciójában némileg eltér. Itt látható egy táblázat, amely összegzi a kézbesítések számának növelését.
+Az üzenetek kézbesítési számának a munkamenetek kontextusában való meghatározása a munkamenetek hiányában a definíciótól némileg eltér. Itt látható egy táblázat, amely összegzi a kézbesítések számának növelését.
 
-| Forgatókönyv | Az üzenet kézbesítési száma nő |
+| Alkalmazási helyzet | Az üzenet kézbesítési száma nő |
 |----------|---------------------------------------------|
 | A munkamenet el van fogadva, de a munkamenet zárolása lejár (időtúllépés miatt) | Igen |
 | A munkamenet el van fogadva, a munkameneten belüli üzenetek nem lesznek végrehajtva (még akkor is, ha zárolva vannak), és a munkamenet be van zárva. | Nem |
 | A munkamenet elfogadva, az üzenetek befejeződtek, majd a munkamenet explicit módon be van zárva | N/A (ez a standard folyamat. Itt az üzenetek el lesznek távolítva a munkamenetből) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a [Microsoft. Azure. ServiceBus Samples](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/Sessions) vagy a [Microsoft. ServiceBus. Messaging példákat](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.ServiceBus.Messaging/Sessions) egy olyan példához, amely a .NET-keretrendszer ügyfelet használja a munkamenet-kompatibilis üzenetek kezelésére. 
 

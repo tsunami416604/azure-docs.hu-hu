@@ -9,16 +9,16 @@ ms.devlang: ''
 ms.topic: conceptual
 f1_keywords:
 - mi.azure.sqlaudit.general.f1
-author: barmichal
-ms.author: mibar
+author: DavidTrigano
+ms.author: datrigan
 ms.reviewer: vanto
 ms.date: 04/08/2019
-ms.openlocfilehash: 41d632b145a7187dd0aeaab740cd8546a3955e7f
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9b96969027431f289e366b150fbfc6a62ee6a908
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73818994"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719908"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Ismerkedés a Azure SQL Database felügyelt példányok naplózásával
 
@@ -31,7 +31,7 @@ A [felügyelt példányok](sql-database-managed-instance.md) naplózása nyomon 
 
 A következő szakasz ismerteti a felügyelt példány naplózásának konfigurációját.
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 1. Hozzon létre egy Azure Storage- **tárolót** , amelyben a naplók tárolása történik.
 
    1. Navigáljon az Azure Storage-ba, ahol a naplókat tárolni szeretné.
@@ -171,7 +171,7 @@ A felügyelt példányokból származó naplókat még hubokba vagy Azure Monito
 
 5. Válassza ki a naplózási események (Event hub, Azure Monitor naplók vagy mindkettő) célhelyét. Konfigurálja az egyes célkitűzésekhez a szükséges paramétereket (például Log Analytics munkaterület).
 
-6. Kattintson a **Save** (Mentés) gombra.
+6. Kattintson a **Mentés** gombra.
 
     ![Diagnosztikai beállítások konfigurálása](./media/sql-managed-instance-auditing/9_mi_configure_diagnostics.png)
 
@@ -237,7 +237,7 @@ Az Azure Blob Storage-ba való naplózás `CREATE AUDIT` szintaxisának főbb el
 - A Leállítás beállítás **nem támogatott**.
 - a 0 `queue_delay` **nem támogatott**.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A naplózási naplók használatának teljes listájáért tekintse meg az [SQL Database naplózásának első lépéseivel](sql-database-auditing.md)foglalkozó témakört.
 - A szabványok megfelelőségét támogató Azure-programokkal kapcsolatos további információkért tekintse meg a [Azure biztonsági és adatkezelési központ](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) , ahol megtalálhatja a SQL Database megfelelőségi tanúsítványok legújabb listáját.

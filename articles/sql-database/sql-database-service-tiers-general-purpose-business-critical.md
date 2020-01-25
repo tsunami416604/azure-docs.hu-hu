@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: stevestein
 ms.author: sstein
 ms.reviewer: sashan, moslake, carlrab
-ms.date: 10/01/2019
-ms.openlocfilehash: 5e3cc12351313b8fb1dedf795031202070ac7cf7
-ms.sourcegitcommit: b5d59c6710046cf105236a6bb88954033bd9111b
+ms.date: 01/23/2020
+ms.openlocfilehash: fab24d55509ab315775437ca343e35fc90174f63
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74558988"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715105"
 ---
 # <a name="azure-sql-database-service-tiers"></a>Azure SQL Database szolgáltatási szintek
 
@@ -51,7 +51,7 @@ A következő táblázat ismerteti a legújabb generációs szolgáltatási szin
 |**Rendelkezésre állás**|Mind| 99.99% |  [99,95% egyetlen másodlagos replikával, 99,99%-kal több replikával](sql-database-service-tier-hyperscale-faq.md#what-slas-are-provided-for-a-hyperscale-database) | 99.99% <br/> [99,995% a zóna redundáns önálló adatbázisával](https://azure.microsoft.com/blog/understanding-and-leveraging-azure-sql-database-sla/) |
 |**Mentések**|Mind|RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap)| RA-GRS, 7 nap, állandó időpontra történő helyreállítás (PITR) | RA-GRS, 7-35 nap (alapértelmezés szerint 7 nap) |
 |**Memóriában tárolt OLTP** | | – | – | Elérhető |
-|**Írásvédett replikák**| | 0  | 0 - 4 | 1 (beépített, árba belefoglalva) |
+|**Írásvédett replikák**| | 0 beépített <br> 0-4 [geo-replikáció](sql-database-active-geo-replication.md) használatával | 0-4 beépített | 1 beépített, árba belefoglalva <br> 0-4 [geo-replikáció](sql-database-active-geo-replication.md) használatával |
 |**Díjszabás/számlázás** | Önálló adatbázis | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. | [az egyes replikák és a felhasznált tárolók virtuális mag](https://azure.microsoft.com/pricing/details/sql-database/single/) számítunk fel díjat. <br/>A IOPS még nincs felszámítva. | a [virtuális mag, a fenntartott tárterület és a biztonsági mentési tár](https://azure.microsoft.com/pricing/details/sql-database/single/) díja. <br/>A IOPS nem számítunk fel díjat. |
 || Felügyelt példány | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | – | a [virtuális mag és a fenntartott tároló](https://azure.microsoft.com/pricing/details/sql-database/managed/) díja. <br/>A IOPS nem számítunk fel díjat.<br/>A biztonsági mentési tár még nincs felszámítva. | 
 |**Kedvezményes modellek**| | [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések| [Fenntartott példányok](sql-database-reserved-capacity.md)<br/>[Azure Hybrid Benefit](sql-database-azure-hybrid-benefit.md) (nem érhető el a fejlesztési és tesztelési előfizetéseken)<br/>[Nagyvállalati](https://azure.microsoft.com/offers/ms-azr-0148p/) és [utólagos](https://azure.microsoft.com/offers/ms-azr-0023p/) elszámolású fejlesztési és tesztelési előfizetések|

@@ -8,12 +8,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 10/18/2019
 ms.author: diberry
-ms.openlocfilehash: cc8f01d5608b36521185695cd5f7be531ba7aeaf
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: a262db04e51015edb760a8b04952dfa24b2ad63a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73503765"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748796"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,8 +89,8 @@ A go használatával adjon hozzá egy géppel megtanult entitás [API](https://a
             body: utterances
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     const train = async (verb) => {
     
@@ -104,8 +104,8 @@ A go használatával adjon hozzá egy géppel megtanult entitás [API](https://a
             body: null // The body can be empty for a training request
         };
     
-        const reponse = await requestpromise(options)
-        console.log(reponse.body);
+        const response = await requestpromise(options)
+        console.log(response.body);
     }
     
     // MAIN
@@ -131,7 +131,7 @@ A go használatával adjon hozzá egy géppel megtanult entitás [API](https://a
 
 Ha elkészült a rövid útmutatóval, törölje a fájlt a fájlrendszerből. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ajánlott eljárások az alkalmazásokhoz](../luis-concept-best-practices.md)

@@ -8,12 +8,12 @@ ms.author: vanto
 ms.topic: article
 ms.date: 12/23/2019
 ms.reviewer: ''
-ms.openlocfilehash: f93ab61fcba53ebf39adf8ad56137f4a1df7d5fd
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75615028"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715179"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database ajánlott biztonsági eljárások
 
@@ -260,7 +260,7 @@ A következő ajánlott eljárások nem kötelezőek, de a biztonsági stratégi
   - Rendszergazda 
   - Fejlesztői 
   - Támogatási munkatársak 
-  - Könyvvizsgáló 
+  - Auditor 
   - Automatizált folyamatok 
   - Végfelhasználó 
 
@@ -462,7 +462,7 @@ A CLE használatakor:
 - A 3DES használatának elkerüléséhez használjon aszimmetrikus kulcsokkal vagy tanúsítványokkal (nem jelszavakkal) rendelkező szimmetrikus kulcsokat. 
 
 - Ügyeljen arra, hogy az adatbázist a cella szintű titkosítás használatával exportálja és importálja (bacpac-fájlok). 
-  - Tekintse meg a következő cikket: [javaslatok a cella szintű titkosítás használatára a Azure SQL Databaseban](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) , hogy miként lehet megakadályozni a kulcsok áttelepítését az adatáttelepítés során, valamint az ajánlott eljárásokkal kapcsolatos további útmutatást.
+  - Tekintse meg a következő cikket: [javaslatok a cella szintű titkosítás használatára a Azure SQL Databaseban](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) , hogy miként lehet megakadályozni a kulcsok elindítását az adatáttelepítés során, valamint az ajánlott eljárásokkal kapcsolatos további útmutatást.
 
 Always Encrypted használatakor vegye figyelembe, hogy Always Encrypted elsődlegesen az Azure SQL Database (Cloud Operators, Adattervezők) magas jogosultsági szintű felhasználóitól származó bizalmas adatok védelme érdekében van kialakítva, lásd: [bizalmas adatok védelme magas jogosultságú, jogosulatlan felhasználóktól](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Az alkalmazás felhasználóitól származó adatok védelme Always Encrypted használatakor vegye figyelembe az alábbi kihívásokat:
 

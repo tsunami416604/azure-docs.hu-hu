@@ -8,12 +8,12 @@ ms.subservice: cosmosdb-table
 ms.devlang: dotnet
 ms.topic: sample
 ms.date: 12/03/2019
-ms.openlocfilehash: b3497df8acdb2e7d184dba54e93506146d842348
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5206aa6769b8866e93e295a2cefe2a7810aa363a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314385"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720639"
 ---
 # <a name="get-started-with-azure-cosmos-db-table-api-and-azure-table-storage-using-the-net-sdk"></a>Az Azure Cosmos DB Table API és az Azure Table Storage használatának első lépései a .NET SDK-val
 
@@ -178,6 +178,12 @@ public static async Task<CloudTable> CreateTableAsync(string tableName)
     Console.WriteLine();
     return table;
 }
+```
+
+Ha "503 szolgáltatás nem érhető el" hibaüzenet jelenik meg, lehetséges, hogy a kapcsolódási mód szükséges portjait tűzfal blokkolja. A probléma megoldásához nyissa meg a szükséges portokat, vagy használja az átjáró módú kapcsolatot az alábbi kódban látható módon:
+
+```csharp
+tableClient.TableClientConfiguration.UseRestExecutorForCosmosEndpoint = true;
 ```
 
 ## <a name="define-the-entity"></a>Az entitás definiálása 

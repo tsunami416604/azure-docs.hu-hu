@@ -2,20 +2,20 @@
 title: Modellek üzembe helyezése élesben – csoportos adatelemzési folyamat
 description: Modellek üzembe helyezése az éles környezetben, amely lehetővé teszi, hogy aktív szerepet játsszon az üzleti döntések meghozatalában.
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/30/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: ed48ab9f85d28bec926120fea87a5ccf8bb6f9af
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: e3e2ef3340ca836f56176c21cf3d221f0bf172b9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75526770"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722237"
 ---
 # <a name="deploy-models-to-production-to-play-an-active-role-in-making-business-decisions"></a>Modellek üzembe helyezése éles környezetben az üzleti döntések meghozatala érdekében
 
@@ -39,7 +39,7 @@ A modellek éles környezetben való üzembe helyezéséhez különböző megkö
 
 ## <a name="ab-testing"></a>A/B-tesztelés
 
-Ha több modell van éles környezetben, hasznos lehet a [/B teszt](https://en.wikipedia.org/wiki/A/B_testing) végrehajtása a modellek teljesítményének összehasonlításához. 
+Ha több modell is éles üzemben van, [a/B tesztelést](https://en.wikipedia.org/wiki/A/B_testing) is használhatja a modell teljesítményének összehasonlítására. 
  
 ## <a name="next-steps"></a>Következő lépések
 

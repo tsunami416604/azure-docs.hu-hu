@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 11/08/2019
+ms.date: 01/22/2020
 ms.author: diberry
-ms.openlocfilehash: a05bfcf5da2dc9336d04668b09b82038b00caf9d
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 2f351ac570080c83e78697bbca94340bb96cbcf7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76168751"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716132"
 ---
 # <a name="developer-resources-for-language-understanding"></a>Language Understanding fejlesztői erőforrásai
 
@@ -44,7 +44,7 @@ A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhet�
 |Type (Típus)|Verzió|
 |--|--|
 |Tartalomkészítés|[V2](https://go.microsoft.com/fwlink/?linkid=2092087)<br>[előzetes verzió – v3](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview)|
-|Előrejelzés|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
+|Jóslás|[V2](https://go.microsoft.com/fwlink/?linkid=2092356)<br>[V3](https://westcentralus.dev.cognitive.microsoft.com/docs/services/luis-endpoint-api-v3-0/)|
 
 ### <a name="language-based-sdks"></a>Language-alapú SDK-k
 
@@ -53,7 +53,7 @@ A szerzői és előrejelzési végpont API-jai a REST API-kon keresztül érhet�
 |C#|[Tartalomkészítés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.authoring?view=azure-dotnet)</br>[Előrejelzés](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.language.luis.runtime?view=azure-dotnet)|[NuGet készítése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Authoring/)<br>[NuGet előrejelzése](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Language.LUIS.Runtime/)|[.Net SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/LUIS)|[Alkalmazás létrehozása és kezelése](sdk-authoring.md?pivots=programming-language-csharp)<br>[Lekérdezés-előrejelzési végpont](sdk-query-prediction-endpoint.md)|
 |Indítás|[Szerzői műveletek és előrejelzések](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.0/luis)|[SDK](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v2.0/luis)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/go)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/go)|[Szerzői műveletek és előrejelzések a REST használatával](luis-get-started-get-intent-from-rest.md)|
 |Java|[Szerzői műveletek és előrejelzések](https://docs.microsoft.com/java/api/overview/azure/cognitiveservices/client/languageunderstanding?view=azure-java-stable)|[Maven-készítés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-authoring)<br>[Maven-előrejelzés](https://search.maven.org/artifact/com.microsoft.azure.cognitiveservices/azure-cognitiveservices-luis-runtime)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/java)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/java)|[Szerzői műveletek és előrejelzések](luis-get-started-get-intent-from-rest.md)
-|Node.js|[Tartalomkészítés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/azure-cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/azure-cognitiveservices-luis-runtime)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Szerzői műveletek és előrejelzések a REST használatával](luis-get-started-get-intent-from-rest.md)|
+|Node.js|[Tartalomkészítés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-authoring/?view=azure-node-latest)<br>[Előrejelzés](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-luis-runtime/?view=azure-node-latest)|[NPM készítése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-authoring)<br>[NPM előrejelzése](https://www.npmjs.com/package/@azure/cognitiveservices-luis-runtime)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/change-model/node)<br>[Előrejelzés](https://github.com/Azure-Samples/cognitive-services-language-understanding/tree/master/documentation-samples/quickstarts/analyze-text/node)|[Szerzői műveletek és előrejelzések a REST használatával](luis-get-started-get-intent-from-rest.md)|
 |Python|[Szerzői műveletek és előrejelzések](sdk-authoring.md?pivots=programming-language-python)|[Pip](https://pypi.org/project/azure-cognitiveservices-language-luis/)|[Tartalomkészítés](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/python/LUIS/application_quickstart.py)|[Tartalomkészítés](sdk-authoring.md?pivots=programming-language-python)<br>[Előrejelzés REST használatával](luis-get-started-get-intent-from-rest.md)
 
 

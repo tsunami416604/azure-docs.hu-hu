@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 11/4/2019
 ms.author: caya
-ms.openlocfilehash: 0e1ba6d86778b40f96940c417050e242fde33845
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.openlocfilehash: b98ab8d3c4d03115ea689b4dfd3d8dee753f019d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73797581"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715077"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
 
@@ -94,7 +94,7 @@ kubectl get --raw "/apis/external.metrics.k8s.io/v1beta1/namespaces/default/appg
 
 Ha a metrika-kiszolgálón keresztül elérhetővé `appgw-request-count-metric`, készen állunk a [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) használatára a cél üzembe helyezésének vertikális felskálázásához.
 
-A következő példában egy minta üzembe helyezési `aspnet`fogunk megcélozni. A hüvelyek felskálázása akkor történik, amikor a `appgw-request-count-metric` > 200/Pod Max `10` hüvelyek maximális száma.
+A következő példában egy minta üzembe helyezési `aspnet`fogunk megcélozni. A hüvelyek felskálázása akkor történik, amikor a `appgw-request-count-metric` > 200/Pod akár Max `10` Hüvelyig.
 
 Cserélje le a cél központi telepítési nevét, és alkalmazza a következő automatikus méretezési konfigurációt:
 ```yaml
@@ -121,5 +121,5 @@ Tesztelje a telepítőt egy terhelési teszt eszközzel, például az Apache pad
 ab -n10000 http://<applicaiton-gateway-ip-address>/
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - A [**beáramló vezérlővel kapcsolatos problémák elhárítása**](ingress-controller-troubleshoot.md): a bejövő adatkezelővel kapcsolatos problémák elhárítása.

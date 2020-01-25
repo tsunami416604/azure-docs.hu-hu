@@ -5,12 +5,12 @@ ms.date: 01/16/2020
 ms.topic: conceptual
 description: Ismerje meg, hogyan futtathat Azure dev-helyeket meglévő fürtön Windows-tárolókkal
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Windows-tárolók
-ms.openlocfilehash: 886f71dcaaca6a636b385ef6b101f0a893ff7035
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 882cdaa8a7b01578b2f04cf939aa14fe4aee7e2e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156998"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720367"
 ---
 # <a name="interact-with-windows-containers-using-azure-dev-spaces"></a>Windows-tárolók használata az Azure dev Spaces használatával
 
@@ -61,7 +61,7 @@ git clone https://github.com/Azure/dev-spaces
 cd dev-spaces/samples/existingWindowsBackend/mywebapi-windows
 ```
 
-A minta alkalmazás [Helm][helm-installed] használatával futtatja a Windows-szolgáltatást a fürtön. Navigáljon a `charts` könyvtárba, és használja a Windows-szolgáltatás futtatását:
+A minta alkalmazás a [Helm 3][helm-installed] használatával futtatja a Windows-szolgáltatást a fürtön. Navigáljon a `charts` könyvtárba, és használja a Windows-szolgáltatás futtatását:
 
 ```console
 cd charts/

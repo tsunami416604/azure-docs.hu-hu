@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.author: ilahat
 author: ilahat
 ms.date: 11/01/2019
-ms.openlocfilehash: b33366b65fed0042eb3024c2264bce1c4a1c4c1d
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: ff058d7b51bd2e5efd80db69e5928d58fc5a7725
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75651630"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715669"
 ---
 # <a name="azure-managed-applications-with-notifications"></a>Azure által felügyelt alkalmazások értesítésekkel
 
@@ -69,7 +69,7 @@ A következő táblázat a EventType és a ProvisioningState lehetséges kombin�
 
 EventType | ProvisioningState | Értesítési trigger
 ---|---|---
-PUT | Elfogadva | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen befejeződött (a felügyelt erőforráscsoporthoz való központi telepítés elindítását megelőzően).
+PUT | Elfogadott | A felügyelt erőforráscsoport létre lett hozva, és az alkalmazás üzembe helyezése után sikeresen befejeződött (a felügyelt erőforráscsoporthoz való központi telepítés elindítását megelőzően).
 PUT | Sikeres | A felügyelt alkalmazás teljes kiépítés sikerült egy PUT után.
 PUT | Meghiúsult | Az alkalmazás-példány üzembe helyezésének meghibásodása bármely ponton.
 JAVÍTÁS | Sikeres | A felügyelt alkalmazás példányának sikeres JAVÍTÁSát követően a címkék, a JIT hozzáférési házirend vagy a felügyelt identitás frissítése sikerült.
@@ -179,17 +179,17 @@ POST https://{your_endpoint_URI}/resource?{optional_parameter}={optional_paramet
 Paraméter | Leírás
 ---|---
 EventType | Az értesítést kiváltó esemény típusa. (Például PUT, PATCH, DELETE.)
-applicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett.
+ApplicationId | Annak a felügyelt alkalmazásnak a teljes erőforrás-azonosítója, amelyhez az értesítés aktiválva lett.
 EventTime | Az értesítést kiváltó esemény időbélyegzője. (Dátum és idő UTC ISO 8601 formátumban)
-provisioningState | A felügyelt alkalmazás példányának kiépítési állapota. (Például sikeres, sikertelen, törlés, törölt.)
+ProvisioningState | A felügyelt alkalmazás példányának kiépítési állapota. (Például sikeres, sikertelen, törlés, törölt.)
 error | *Csak akkor van megadva, ha a ProvisioningState sikertelen*. A hibát okozó probléma kódját, üzenetét és részleteit tartalmazza.
 applicationDefinitionId | *Csak a Service Catalog által felügyelt alkalmazásokhoz van megadva*. Annak az alkalmazás-definíciónak a teljes erőforrás-azonosítóját jelöli, amelyhez a felügyelt alkalmazás példánya ki lett építve.
-útiterv | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva*. A felügyelt alkalmazás példányának közzétevőjét, ajánlatát, SKU-jának és verziószámát jelöli.
+csomag | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva*. A felügyelt alkalmazás példányának közzétevőjét, ajánlatát, SKU-jának és verziószámát jelöli.
 billingDetails | *Csak az Azure Marketplace által felügyelt alkalmazásokhoz van megadva.* A felügyelt alkalmazás példányának számlázási adatai. Azokat a resourceUsageId tartalmazza, amelyekkel lekérdezheti az Azure Marketplace-en a használati adatokat.
 
 ## <a name="endpoint-authentication"></a>Végponti hitelesítés
 A webhook-végpont biztonságossá tételéhez és az értesítés hitelességének biztosításához:
-1. Adjon meg egy lekérdezési paramétert a webhook URI-ja felett, például: https://your-endpoint.com?sig=Guid. Minden értesítésnél győződjön meg arról, hogy a lekérdezési paraméter `sig` a várt érték `Guid`.
+1. Adjon meg egy lekérdezési paramétert a webhook URI-ja felett, például: https\://Your-Endpoint.com? SIG = GUID. Minden értesítésnél győződjön meg arról, hogy a lekérdezési paraméter `sig` a várt érték `Guid`.
 2. Adja ki a beolvasást a felügyelt alkalmazás példányán a applicationId használatával. Ellenőrizze, hogy a provisioningState megegyezik-e az értesítés provisioningState, hogy a konzisztencia biztosítható legyen.
 
 ## <a name="notification-retries"></a>Értesítési újrapróbálkozások

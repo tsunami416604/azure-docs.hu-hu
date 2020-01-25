@@ -4,29 +4,29 @@ description: 'Oktatóanyag: a környezet előkészítése a gépi tanuláshoz k�
 author: kgremban
 manager: philmea
 ms.author: kgremban
-ms.date: 11/11/2019
+ms.date: 1/23/2020
 ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 2ea4248ebaedd318e4112e41169f72bc80b1120f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: a36427616691b0a0d400dadb4e35c2f7fbf23b22
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74114071"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722286"
 ---
 # <a name="tutorial-set-up-an-environment-for-machine-learning-on-iot-edge"></a>Oktatóanyag: környezet beállítása a gépi tanuláshoz IoT Edge
 
 > [!NOTE]
 > Ez a cikk egy sorozat részét képezi a Azure Machine Learning IoT Edge-on való használatáról szóló oktatóanyaghoz. Ha ezt a cikket közvetlenül megérkezett, javasoljuk, hogy kezdje a sorozat [első cikkével](tutorial-machine-learning-edge-01-intro.md) a legjobb eredmények érdekében.
 
-Ez a cikk a IoT Edge oktatóanyagának végpontok közötti Azure Machine Learningával segíti elő a környezet fejlesztését és üzembe helyezését. Először állítson be egy fejlesztői gépet minden szükséges eszközzel. Ezután hozza létre a szükséges Felhőbeli erőforrásokat az Azure-ban.
+Ez a cikk segít felkészülni a környezet fejlesztésére és üzembe helyezésére. Először állítson be egy fejlesztői gépet minden szükséges eszközzel. Ezután hozza létre a szükséges Felhőbeli erőforrásokat az Azure-ban.
 
-## <a name="set-up-a-development-machine"></a>Fejlesztői gép beállítása
+## <a name="set-up-the-development-vm"></a>A fejlesztési virtuális gép beállítása
 
 Ezt a lépést általában egy felhőalapú fejlesztő hajtja végre. Néhány szoftver hasznos lehet egy adattudós számára is.
 
-Ebben a cikkben a különböző fejlesztői feladatokat hajtjuk végre, például a kódolást, a fordítást, a konfigurálást és az üzembe helyezést IoT Edge modulokat és IoT eszközöket. Az egyszerű használat érdekében egy PowerShell-szkriptet hoztunk létre, amely egy Azure-beli virtuális gépet hoz létre, amely számos előfeltételt már konfigurált. Az általunk létrehozott virtuális gépnek képesnek kell lennie a [beágyazott virtualizálás](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kezelésére, ezért a [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) gép méretét választotta.
+Létrehoztunk egy PowerShell-szkriptet, amely létrehoz egy Azure-beli virtuális gépet a már konfigurált előfeltételek közül. Az általunk létrehozott virtuális gépnek képesnek kell lennie a [beágyazott virtualizálás](https://docs.microsoft.com/azure/virtual-machines/windows/nested-virtualization)kezelésére, ezért a [Standard_D8s_v3](../virtual-machines/windows/sizes-general.md#dsv3-series-1) gép méretét választotta.
 
 A fejlesztői virtuális gép a következőket fogja beállítani:
 
@@ -50,101 +50,95 @@ A fejlesztői virtuális gép nem feltétlenül szükséges – az összes fejle
 
 A virtuális gép létrehozása és konfigurálása körülbelül 30 percet vesz igénybe.
 
-### <a name="get-the-script"></a>A parancsfájl letöltése
+1. A Machine Learning klónozása vagy letöltése a helyi számítógépre [IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) .
 
-A PowerShell-szkript klónozása vagy letöltése a [Machine learning és IoT Edge](https://github.com/Azure-Samples/IoTEdgeAndMlSample) minta adattárból.
-
-### <a name="create-an-azure-virtual-machine"></a>Azure-beli virtuális gép létrehozása
-
-A DevVM könyvtár tartalmazza az oktatóanyag elvégzéséhez megfelelő Azure-beli virtuális gép létrehozásához szükséges fájlokat.
-
-1. Nyissa meg a PowerShellt rendszergazdaként, és navigáljon ahhoz a könyvtárhoz, ahová letöltötte a kódot. A forrás gyökérkönyvtárát `<srcdir>`ként fogjuk megtekinteni.
+1. Nyissa meg a PowerShellt rendszergazdaként, és navigáljon a gyökérkönyvtár alatt található **\IoTEdgeAndMlSample\DevVM** könyvtárhoz, ahol letöltötte a kódot. A forrás gyökérkönyvtárát `srcdir`ként fogjuk megtekinteni.
 
     ```powershell
-    cd <srcdir>\IoTEdgeAndMlSample\DevVM
+    cd c:\srcdir\IoTEdgeAndMlSample\DevVM
     ```
 
-2. Futtassa a következő parancsot a parancsfájlok végrehajtásának engedélyezéséhez. Ha **a rendszer kéri, válassza az igen** lehetőséget.
+   A DevVM könyvtár tartalmazza az oktatóanyag elvégzéséhez megfelelő Azure-beli virtuális gép létrehozásához szükséges fájlokat.
+
+1. Futtassa a következő parancsot a parancsfájlok végrehajtásának engedélyezéséhez. Ha **a rendszer kéri, válassza az igen** lehetőséget.
 
     ```powershell
     Set-ExecutionPolicy Bypass -Scope Process
     ```
 
-3. Futtassa a Create-AzureDevVM. ps1 mappát erről a címtárból.
+1. Futtassa a Create-AzureDevVM. ps1 parancsot.
 
     ```powershell
     .\Create-AzureDevVm.ps1
     ```
 
-    * Ha a rendszer kéri, adja meg a következő információkat:
-      * **Azure-előfizetés azonosítója**: az előfizetés azonosítója, amely a Azure Portal található
-      * **Erőforráscsoport neve**: új vagy meglévő erőforráscsoport neve az Azure-ban
-      * **Hely**: válassza ki azt az Azure-helyet, ahová a virtuális gépet létre kívánja hozni. Például: westus2 vagy northeurope. További információ: Azure-beli [telephelyek](https://azure.microsoft.com/global-infrastructure/locations/).
-      * **AdminUsername**: adjon meg egy emlékezetes nevet a virtuális gépen létrehozni és használni kívánt rendszergazdai fiók számára.
-      * **AdminPassword**: állítsa be a rendszergazdai fiók jelszavát a virtuális gépen.
+    Ha a rendszer kéri, adja meg a következő információkat:
 
-    * Ha nincs Azure PowerShell telepítve, a parancsfájl telepíti [Azure PowerShell az modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0)
+    * **Azure-előfizetés azonosítója**: az előfizetés-azonosítója, amely az [Azure-előfizetésekben](https://ms.portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) található a portálon.
+    * **Erőforráscsoport neve**: egy új vagy meglévő erőforráscsoport neve az Azure-ban.
+    * **Hely**: válassza ki azt az Azure-helyet, ahová a virtuális gépet létre kívánja hozni. Például: "West US 2" vagy "Észak-Európa". További információ: Azure-beli [telephelyek](https://azure.microsoft.com/global-infrastructure/locations/).
+    * **Felhasználónév**: adjon meg egy emlékezetes nevet a virtuális gép rendszergazdai fiókjához.
+    * **Password (jelszó**): állítsa be a virtuális gép rendszergazdai fiókjához tartozó jelszót.
 
-    * A rendszer kéri majd, hogy jelentkezzen be az Azure-ba.
+   A szkript több percig fut, ahogy a következő lépéseket hajtja végre:
 
-    * A parancsfájl megerősíti a virtuális gép létrehozásához szükséges információkat. A folytatáshoz nyomja meg `y` vagy `Enter`.
+    1. Telepíti a [Azure PowerShell az modult](https://docs.microsoft.com/powershell/azure/new-azureps-module-az?view=azps-1.1.0).
+    1. Felszólítja, hogy jelentkezzen be az Azure-ba.
+    1. Megerősíti a virtuális gép létrehozásához szükséges információkat. Nyomja le az **y** vagy az **ENTER** billentyűt a folytatáshoz.
+    1. Létrehozza az erőforráscsoportot, ha az nem létezik.
+    1. Üzembe helyezi a virtuális gépet.
+    1. Engedélyezi a Hyper-V használatát a virtuális gépen.
+    1. Telepíti a szoftverek fejlesztésére és a minta tárház klónozására vonatkozó szükséges szoftvereket.
+    1. Újraindítja a virtuális gépet.
+    1. RDP-fájlt hoz létre az asztalon a virtuális géphez való csatlakozáshoz.
 
-A szkript több percig fut, ahogy a következő lépéseket hajtja végre:
-
-* Hozzon létre egy erőforráscsoportot, ha az nem létezik
-* A virtuális gép üzembe helyezése
-* Hyper-V engedélyezése a virtuális gépen
-* A minta-adattár fejlesztéséhez és klónozásához szükséges szoftverek telepítése
-* A virtuális gép újraindítása
-* RDP-fájl létrehozása az asztalon a virtuális géphez való csatlakozáshoz
+   Ha a rendszer felszólítja a virtuális gép nevének újraindítására, akkor a szkript kimenetéről másolhatja a nevét. A kimenet a virtuális géphez való csatlakozáshoz használt RDP-fájl elérési útját is megjeleníti.
 
 ### <a name="set-auto-shutdown-schedule"></a>Automatikus leállítási ütemterv beállítása
 
-A Cost csökkentése érdekében a virtuális gép a 1900 PST-re beállított automatikus leállítási ütemtervtel lett létrehozva. Előfordulhat, hogy a helytől és az ütemezéstől függően frissítenie kell ezt az időzítést. A leállítási ütemterv frissítése:
+A Cost csökkentése érdekében a fejlesztési virtuális gép a 1900 PST-re beállított automatikus leállítási ütemtervtel lett létrehozva. Előfordulhat, hogy frissítenie kell ezt a beállítást a helytől és az ütemtervtől függően. A leállítási ütemterv frissítése:
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. A Azure Portal navigáljon a parancsfájl által létrehozott virtuális gépre.
 
-2. Navigáljon a virtuális géphez az előző szakaszban megadott erőforráscsoporthoz.
+1. A bal oldali ablaktábla **műveletek**területén válassza az **automatikus leállítás**lehetőséget.
 
-3. Válassza az **automatikus leállítás** lehetőséget az oldalsó Navigátorban.
+1. Igény szerint módosítsa az **ütemezett leállítást** és az **időzónát** , majd válassza a **Mentés**lehetőséget.
 
-4. Adjon meg egy új leállítási időt az **ütemezett leállítás** során, vagy módosítsa az **időzónát** , majd kattintson a **Mentés**gombra.
-
-### <a name="connect-and-configure-development-machine"></a>A fejlesztési gép összekapcsolásának és konfigurálásának engedélyezése
+## <a name="connect-to-the-development-vm"></a>Kapcsolódás a fejlesztési virtuális géphez
 
 Most, hogy létrehozott egy virtuális gépet, be kell fejeznie az oktatóanyag befejezéséhez szükséges szoftver telepítését.
 
-#### <a name="start-a-remote-desktop-session"></a>Távoli asztali munkamenet elindítása
+1. Kattintson duplán arra az RDP-fájlra, amelyet a parancsfájl hozott létre az asztalon.
 
-1. A virtuális gép létrehozási parancsfájlja egy RDP-fájlt hozott létre az asztalon.
+1. Ekkor megjelenik egy párbeszédpanel, amely azt jelzi, hogy a távoli kapcsolatok közzétevője ismeretlen. Ez elfogadható, ezért válassza a **kapcsolat**lehetőséget.
 
-2. Kattintson duplán az **\<Azure-beli virtuális gép neve\>. rdp**nevű fájlra.
+1. Adja meg a virtuális gép létrehozásához megadott rendszergazdai jelszót, majd kattintson **az OK**gombra.
 
-3. Ekkor megjelenik egy párbeszédpanel, amely azt jelzi, hogy a távoli kapcsolatok közzétevője ismeretlen. Kattintson a **ne Kérdezzen rá ismét a számítógép kapcsolatai** jelölőnégyzetre, majd válassza a **Csatlakozás**lehetőséget.
+1. A rendszer kérni fogja, hogy fogadja el a virtuális gép tanúsítványát. Válassza az **Igen** lehetőséget.
 
-4. Ha a rendszer kéri, adja meg a virtuális gép beállításához a parancsfájl futtatásakor használt AdminPassword, és kattintson **az OK**gombra.
-
-5. A rendszer kérni fogja, hogy fogadja el a virtuális gép tanúsítványát. Válassza a **ne Kérdezzen újra a számítógép kapcsolataihoz** lehetőséget, és válassza az **Igen**lehetőséget.
-
-#### <a name="install-visual-studio-code-extensions"></a>Visual Studio Code-bővítmények telepítése
+## <a name="install-visual-studio-code-extensions"></a>Visual Studio Code-bővítmények telepítése
 
 Most, hogy csatlakozott a fejlesztői géphez, adjon hozzá néhány hasznos bővítményt a Visual Studio Code-hoz, hogy egyszerűbbé váljon a fejlesztési élmény.
 
-1. Egy PowerShell-ablakban navigáljon a **C:\\forrás\\IoTEdgeAndMlSample\\DevVM**.
-
-2. Parancsfájlok futtatásának engedélyezése a virtuális gépen a beírásával.
+1. Kapcsolódjon a fejlesztői virtuális géphez, nyisson meg egy PowerShell-ablakot, és navigáljon a **C:\source\IoTEdgeAndMlSample\DevVM** könyvtárhoz. Ezt a könyvtárat a virtuális gépet létrehozó parancsfájl hozta létre.
 
     ```powershell
-    Set-ExecutionPolicy Bypass -Scope CurrentUser -Force
+    cd C:\source\IoTEdgeAndMlSample\DevVM
     ```
 
-3. Futtassa a szkriptet.
+1. Futtassa a következő parancsot a parancsfájlok végrehajtásának engedélyezéséhez. Ha **a rendszer kéri, válassza az igen** lehetőséget.
+
+    ```powershell
+    Set-ExecutionPolicy Bypass -Scope Process
+    ```
+
+1. Futtassa a Visual Studio Code Extensions parancsfájlt.
 
     ```powershell
     .\Enable-CodeExtensions.ps1
     ```
 
-4. A szkript néhány percig fut a VS Code-bővítmények telepítése során:
+1. A szkript néhány percig fut a VS Code-bővítmények telepítése során:
 
     * Azure IoT-eszközök
     * Python
@@ -156,19 +150,15 @@ Most, hogy csatlakozott a fejlesztői géphez, adjon hozzá néhány hasznos bő
 
 Ezeket a lépéseket általában egy felhőalapú fejlesztő hajtja végre.
 
-Az Azure IoT Hub bármely IoT-alkalmazás szíve. Kezeli a IoT-eszközök és a felhő közötti biztonságos kommunikációt. Ez a fő koordinációs pont a IoT Edge Machine learning megoldás működéséhez.
+Az Azure IoT Hub bármely IoT-alkalmazás szíve, mivel kezeli a IoT-eszközök és a felhő közötti biztonságos kommunikációt. Ez a fő koordinációs pont a IoT Edge Machine learning megoldás működéséhez.
 
-* A IoT Hub útvonalak használatával irányítja a bejövő adatok IoT-eszközökről más alsóbb rétegbeli szolgáltatásokba. Kihasználjuk IoT Hub útvonalakat az eszközök Azure Storage-ba való küldéséhez, ahol a Azure Machine Learning felhasználható a hátralévő hasznos élettartam (RUL) besorolás betanításához.
+* A IoT Hub útvonalak használatával irányítja a bejövő adatok IoT-eszközökről más alsóbb rétegbeli szolgáltatásokba. Kihasználjuk IoT Hub útvonalak előnyeit, hogy az eszközről az Azure Storage-ba küldjük az eszközöket. Az Azure Storage-ban a Azure Machine Learning a hátralévő hasznos élettartam (RUL) besorolás betanításához használja az eszközön tárolt adatmennyiséget.
 
 * Az oktatóanyag későbbi részében a IoT Hub használatával konfigurálhatja és kezelheti Azure IoT Edge eszközét.
 
-Ebben a szakaszban egy parancsfájl használatával létrehoz egy Azure IoT hubot és egy Azure Storage-fiókot. Ezután konfiguráljon egy útvonalat, amely továbbítja a hub által fogadott adatAzure Storage Blob tárolónak a Azure Portal használatával. Ezek a lépések körülbelül 10 percet vesznek igénybe.
+Ebben a szakaszban egy parancsfájl használatával létrehoz egy Azure IoT hubot és egy Azure Storage-fiókot. Ezután a Azure Portal egy olyan útvonalat állít be, amely továbbítja a hub által az Azure Storage-tárolóba fogadott adattovábbítási útvonalakat. Ezek a lépések körülbelül 10 percet vesznek igénybe.
 
-### <a name="create-cloud-resources"></a>Felhőbeli erőforrások létrehozása
-
-1. Nyisson meg egy PowerShell-ablakot a fejlesztői gépen.
-
-1. Váltson át a IoTHub könyvtárra.
+1. Kapcsolódjon a fejlesztői virtuális géphez, nyisson meg egy PowerShell-ablakot, és navigáljon a **IoTHub** könyvtárhoz.
 
     ```powershell
     cd C:\source\IoTEdgeAndMlSample\IoTHub
@@ -177,50 +167,50 @@ Ebben a szakaszban egy parancsfájl használatával létrehoz egy Azure IoT hubo
 1. Futtassa a létrehozási parancsfájlt. Használja ugyanazokat az értékeket az előfizetés-AZONOSÍTÓhoz, a helyhez és az erőforráscsoporthoz, mint a fejlesztési virtuális gép létrehozásakor.
 
     ```powershell
-    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location
-    <location> -ResourceGroupName <resource group>
+    .\New-HubAndStorage.ps1 -SubscriptionId <subscription id> -Location <location> -ResourceGroupName <resource group>
     ```
 
     * A rendszer kéri majd, hogy jelentkezzen be az Azure-ba.
-    * A parancsfájl megerősíti a hub és a Storage-fiók létrehozásához szükséges információkat. A folytatáshoz nyomja meg `y` vagy `Enter`.
+    * A parancsfájl megerősíti a hub és a Storage-fiók létrehozásához szükséges információkat. Nyomja le az **y** vagy az **ENTER** billentyűt a folytatáshoz.
 
-A szkript körülbelül két percet vesz igénybe. Ha elkészült, a parancsfájl a központ és a Storage-fiók nevét adja meg.
+A szkript körülbelül két percet vesz igénybe. Ha elkészült, a parancsfájl az IoT hub és a Storage-fiók nevét adja meg.
 
-### <a name="review-route-to-storage-in-iot-hub"></a>Áttekintheti a tárolási útvonalat IoT Hub
+## <a name="review-route-to-storage-in-iot-hub"></a>Áttekintheti a tárolási útvonalat IoT Hub
 
 Az IoT hub létrehozásának részeként az előző szakaszban futtatott szkript létrehozta az egyéni végpontot és egy útvonalat is. IoT Hub útvonalak egy lekérdezési kifejezésből és egy végpontból állnak. Ha egy üzenet megfelel a kifejezésnek, az adatküldés a társított végpont útvonalán történik. A végpontok lehetnek Event Hubs, Service Bus várólisták és témakörök. Ebben az esetben a végpont egy blob-tároló egy Storage-fiókban. A szkripttel létrehozott útvonal áttekintéséhez használja a Azure Portal.
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
+1. Nyissa meg a [Azure Portalt](https://portal.azure.com) , és keresse meg az oktatóanyaghoz használt erőforráscsoportot.
 
-1. Válassza a minden szolgáltatás lehetőséget a bal oldali navigátorban, írja be a IoT kifejezést a keresőmezőbe, majd válassza a **IoT hub**lehetőséget.
+1. Az erőforrások listájában válassza ki a parancsfájl által létrehozott IoT Hub. A név egy véletlenszerű karakterrel végződő névvel fog rendelkezni, például `IotEdgeAndMlHub-jrujej6de6i7w`.
 
-1. Válassza ki az előző lépésben létrehozott IoT Hub.
+1. A bal oldali ablaktábla **üzenetkezelés**területén válassza az üzenet- **Útválasztás**lehetőséget.
 
-1. Az IoT Hub oldali Navigátorban válassza az **üzenet-útválasztás**elemet.
+1. Az **üzenet-útválasztás** lapon válassza az **Egyéni végpontok** fület.
 
-1. Az üzenet-útválasztási lapon két lap, **útvonal** és **Egyéni végpont**található. Válassza az **Egyéni végpontok** fület.
+1. Bontsa ki a **Storage** szakaszt:
 
-1. A **blob Storage**területen válassza a **turbofanDeviceStorage**lehetőséget.
+   ![Ellenőrizze, hogy az turbofandevicestorage szerepel-e az egyéni végpontok listájában](media/tutorial-machine-learning-edge-02-prepare-environment/custom-endpoints.png)
 
-1. Vegye figyelembe, hogy ez a végpont egy **devicedata** nevű blob-tárolóra mutat az utolsó lépésben létrehozott Storage-fiókban, amelynek neve **iotedgeandml\<egyedi utótag\>** .
+   A **turbofandevicestorage** az egyéni végpontok listájában látható. Figyelje meg a végpont alábbi jellemzőit:
 
-1. Azt is vegye figyelembe, hogy a **blob fájlnevének formátuma** az alapértelmezett formátumból lett módosítva ahelyett, hogy a partíciót a név utolsó elemeként helyezze el. Ezt a formátumot úgy találjuk, hogy az oktatóanyag későbbi részében Azure Notebooks a fájl műveleteihez.
-
-1. A végpont részletei panel bezárásával térjen vissza az **üzenet-útválasztási** lapra.
+   * Az `devicedata` nevű blob Storage-tárolóra mutat, amelyet a **tároló neve**jelez.
+   * A **Fájlnév formátuma** a név utolsó elemének partíciója. Ezt a formátumot úgy találjuk, hogy az oktatóanyag későbbi részében Azure Notebooks a fájl műveleteihez.
 
 1. Válassza az **útvonalak** fület.
 
 1. Válassza ki a **turbofanDeviceDataToStorage**nevű útvonalat.
 
-1. Vegye figyelembe, hogy az útvonal végpontja a **turbofanDeviceStorage** egyéni végpontja.
+1. Az **útvonalak részletei** lapon vegye figyelembe, hogy az útvonal végpontja az **turbofanDeviceStorage** végpont.
 
-1. Tekintse meg az útválasztási lekérdezést, amely **igaz**értékre van beállítva. Ez azt jelenti, hogy minden telemetria-üzenet megfelel ennek az útvonalnak, ezért a rendszer minden üzenetet elküld az **turbofanDeviceStorage** -végpontnak.
+   ![A turbofanDeviceDataToStorage útvonal részleteinek áttekintése](media/tutorial-machine-learning-edge-02-prepare-environment/route-details.png)
 
-1. Az útvonal részleteinek lezárása.
+1. Tekintse meg az **útválasztási lekérdezést**, amely **igaz**értékre van beállítva. Ez a beállítás azt jelenti, hogy az összes eszköz telemetria-üzeneteinek egyezniük kell ezzel az útvonallal; Ezért minden üzenet el lesz küldve a **turbofanDeviceStorage** -végpontnak.
+
+1. Mivel nem történt módosítás, csak zárjuk be ezt a lapot.
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben létrehoztunk egy IoT Hub, és konfiguráltunk egy útvonalat egy Azure Storage-fiókhoz. A következő cikkben a szimulált eszközökből származó adatok küldését a IoT Hub a Storage-fiókba. Az oktatóanyag későbbi részében, miután konfiguráltuk IoT Edge eszközt és modulokat, újra felkeresjük az útvonalakat, és egy kicsit többet is megvizsgálunk az útválasztási lekérdezésben.
+Ebben a cikkben létrehoztunk egy IoT Hub, és konfiguráltunk egy útvonalat egy Azure Storage-fiókhoz. A következő lépésben szimulált eszközökből származó adatok lesznek elküldve a IoT Hub a Storage-fiókba. Az oktatóanyag későbbi részében, miután konfiguráltuk IoT Edge eszközt és modulokat, újra felkeresjük az útvonalakat, és egy kicsit többet is megvizsgálunk az útválasztási lekérdezésben.
 
 A IoT Edge oktatóanyag Machine Learning ezen részében ismertetett lépésekkel kapcsolatos további információkért lásd:
 

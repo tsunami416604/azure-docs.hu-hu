@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 04/11/2017
-ms.openlocfilehash: e8a1cf0e197841b6af8c65fe00c25aa42dbd0e7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 68c668561123aee943f54e6fdcbad7c6450957f4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433499"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714448"
 ---
 # <a name="how-to-scale-azure-cache-for-redis"></a>Az Azure cache méretezése a Redis
 A Redis készült Azure cache különböző gyorsítótár-ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak kiválasztásában. A gyorsítótár létrehozása után méretezheti a gyorsítótár méretét és díjszabási szintjét, ha az alkalmazás követelményei megváltoznak. Ez a cikk bemutatja, hogyan méretezheti a gyorsítótárat a Azure Portal és az eszközök, például a Azure PowerShell és az Azure CLI használatával.
@@ -24,7 +24,7 @@ A következő mérőszámok figyelésével megállapíthatja, hogy szükség van
 * Redis-kiszolgáló terhelése
 * Memóriahasználat
 * Hálózati sávszélesség
-* Processzorhasználat
+* CPU-használat
 
 Ha azt állapítja meg, hogy a gyorsítótár már nem felel meg az alkalmazás követelményeinek, egy nagyobb vagy kisebb gyorsítótár-díjszabási csomagra méretezheti, amely megfelelő az alkalmazásához. A gyorsítótár-díjszabási csomag kiválasztásával kapcsolatos további információkért tekintse meg az [Azure cache Redis-ajánlat és-méret használatát](cache-faq.md#what-azure-cache-for-redis-offering-and-size-should-i-use)ismertető témakört.
 
@@ -166,7 +166,7 @@ Ha a skálázási művelet meghiúsul, a szolgáltatás megkísérli visszaáll�
 
 
 ### <a name="how-long-does-scaling-take"></a>Mennyi ideig tart a skálázás?
-A skálázás körülbelül 20 percet vesz igénybe attól függően, hogy mennyi az információ a gyorsítótárban.
+A skálázási idő attól függ, hogy mennyi az adatok a gyorsítótárban, és nagyobb mennyiségű adattal hosszabb időt vesz igénybe. A skálázás körülbelül 20 percet vesz igénybe. A fürtözött gyorsítótárak esetében a skálázás körülbelül 20 percet vesz igénybe.
 
 ### <a name="how-can-i-tell-when-scaling-is-complete"></a>Honnan tudhatom meg, hogy mikor fejeződik be a skálázás?
 A Azure Portalban láthatja a skálázási műveletet. A skálázás befejeződése után a gyorsítótár állapota **fut**értékre változik.
@@ -176,6 +176,3 @@ A Azure Portalban láthatja a skálázási műveletet. A skálázás befejeződ�
 [redis-cache-pricing-tier-blade]: ./media/cache-how-to-scale/redis-cache-pricing-tier-blade.png
 
 [redis-cache-scaling]: ./media/cache-how-to-scale/redis-cache-scaling.png
-
-
-

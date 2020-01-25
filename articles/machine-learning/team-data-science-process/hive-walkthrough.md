@@ -3,32 +3,32 @@ title: Hadoop-fürtben lévő adatelemzési folyamat vizsgálata
 description: A csoportos adatelemzési folyamat egy végpontok közötti forgatókönyv esetén, amely egy HDInsight Hadoop-fürtöt használ egy modell létrehozásához és üzembe helyezéséhez.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/29/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 0549427cfc99703af9f13280cf7377106423367b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 005d4fe1b6ec59e7f05be3dd2ab3e72d0e7aa8e0
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982007"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720571"
 ---
 # <a name="the-team-data-science-process-in-action-use-azure-hdinsight-hadoop-clusters"></a>A csoportos adatelemzési folyamat működés közben: Azure HDInsight Hadoop fürtök használata
 Ebben az útmutatóban egy végpontok közötti forgatókönyvben használjuk a [csoportos adatelemzési folyamatot (TDSP)](overview.md) . Egy Azure HDInsight Hadoop- [fürtöt](https://azure.microsoft.com/services/hdinsight/) használunk a nyilvánosan elérhető [NYC-taxis](https://www.andresmh.com/nyctaxitrips/) adatkészletből származó adatok tárolására, megismerésére és szolgáltatására, valamint az adatok leállására. A bináris és a többosztályos besorolás és a regressziós prediktív feladatok kezeléséhez az adatok modelljeit Azure Machine Learning használatával kell kiépíteni. 
 
 A nagyobb adatkészletek kezelésére szolgáló bemutatóhoz lásd: [csoportos adatelemzési folyamat – Azure HDInsight Hadoop fürtök használata 1 TB-os adatkészleten](hive-criteo-walkthrough.md).
 
-Az 1 TB-os adatkészletet használó útmutatóban ismertetett feladatok elvégzéséhez IPython-jegyzetfüzetet is használhat. További információ: Criteo- [útmutató a kaptár ODBC-kapcsolatok használatával](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
+Az 1 TB-os adatkészletet használó bemutatóban bemutatott feladatok elvégzéséhez IPython notebookot is használhat. További információ: Criteo- [útmutató a kaptár ODBC-kapcsolatok használatával](https://github.com/Azure/Azure-MachineLearning-DataScience/blob/master/Misc/DataScienceProcess/iPythonNotebooks/machine-Learning-data-science-process-hive-walkthrough-criteo.ipynb).
 
 ## <a name="dataset"></a>NYC taxi TRIPS adatkészlet leírása
 A New York-i taxi Trip-adat körülbelül 20 GB tömörített, vesszővel tagolt (CSV) fájlból áll (a ~ 48 GB tömörítetlen). Több mint 173 000 000 egyedi utazást tartalmaz, és tartalmazza az egyes utazásokhoz fizetett viteldíjat. Az egyes utazási rekordok tartalmazzák a pick-up és a lemorzsolódási helyét és időpontját, a névtelen hack-(illesztőprogram-) licenc számát és a Digitális medál-számot (a taxi egyedi AZONOSÍTÓját). Az adat a 2013-as év összes utazására vonatkozik, és a következő két adatkészletben szerepel minden hónapban:
 
-- A trip_data CSV-fájlok a Trip részleteit tartalmazzák. Ide tartozik az utasok, a kivételezések és a lemorzsolódási pontok száma, az utazási idő és a menetidő. Íme néhány példa a rekordokra:
+- A trip_data CSV-fájlok az utazás részleteit tartalmazzák: az utasok számát, a beléptetést és a lemorzsolódási, az utazási időtartamot és a menetidő hosszát. Íme néhány példa a rekordokra:
    
         medallion,hack_license,vendor_id,rate_code,store_and_fwd_flag,pickup_datetime,dropoff_datetime,passenger_count,trip_time_in_secs,trip_distance,pickup_longitude,pickup_latitude,dropoff_longitude,dropoff_latitude
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,1,N,2013-01-01 15:11:48,2013-01-01 15:18:10,4,382,1.00,-73.978165,40.757977,-73.989838,40.751171
@@ -36,7 +36,7 @@ A New York-i taxi Trip-adat körülbelül 20 GB tömörített, vesszővel tagolt
         0BD7C8F5BA12B88E0B67BED28BEA73D8,9FD8F69F0804BDB5549F40E9DA1BE472,CMT,1,N,2013-01-05 18:49:41,2013-01-05 18:54:23,1,282,1.10,-74.004707,40.73777,-74.009834,40.726002
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:54:15,2013-01-07 23:58:20,2,244,.70,-73.974602,40.759945,-73.984734,40.759388
         DFD2202EE08F7A8DC9A57B02ACB81FE2,51EE87E3205C985EF8431D850C786310,CMT,1,N,2013-01-07 23:25:03,2013-01-07 23:34:24,1,560,2.10,-73.97625,40.748528,-74.002586,40.747868
-- Az trip_fare CSV-fájlok tartalmazzák az egyes utazásokhoz fizetett viteldíj részleteit. Ez magában foglalja a fizetés típusát, a viteldíjak mennyiségét, a pótdíjat, az adókat, a tippeket és az autópályadíjat, valamint a teljes fizetett összeget. Íme néhány példa a rekordokra:
+- Az trip_fare CSV-fájlok tartalmazzák az egyes utazások díjait, a fizetés típusát, a díjszabást, a pótdíjat, az adókat, a tippeket és az autópályadíjat, valamint a teljes fizetett összeget. Íme néhány példa a rekordokra:
    
         medallion, hack_license, vendor_id, pickup_datetime, payment_type, fare_amount, surcharge, mta_tax, tip_amount, tolls_amount, total_amount
         89D227B655E5C82AECF13C3F540D4CF4,BA96DE419E711691B9445D6A6307C170,CMT,2013-01-01 15:11:48,CSH,6.5,0,0.5,0,0,7
@@ -48,7 +48,7 @@ A New York-i taxi Trip-adat körülbelül 20 GB tömörített, vesszővel tagolt
 Az utazás\_az adat-és az\_utazáshoz való csatlakozáshoz szükséges egyedi kulcs a következő mezőkből áll: emlékérem, Hack\_License, és pickup\_DateTime. Egy adott útra vonatkozó összes adat beszerzéséhez elegendő a három kulcshoz csatlakozni.
 
 ## <a name="mltasks"></a>Példák az előrejelzési feladatokra
-Határozza meg, hogy milyen előrejelzések alapján kívánja végezni az adatelemzést. Ez segít tisztázni, hogy milyen feladatokat kell felvennie a folyamatba. Íme három példa az útmutatóban ismertetett előrejelzési problémákra. Ezek a *tipp\_összege*alapján érhetők el:
+Határozza meg, hogy milyen előrejelzések alapján kívánja végrehajtani az adatelemzést a szükséges folyamat-feladatok tisztázásához. Íme három példa az útmutatóban ismertetett előrejelzési problémákra, mindezt a *tipp\_összeg*alapján:
 
 - **Bináris besorolás**: megjósolhatja, hogy fizetett-e borravalót egy útra. Ez egy olyan *tipp\_* , amely nagyobb, mint $0 pozitív példa, míg a *tip\_mennyiség* $0 értéke negatív példa.
    
@@ -104,7 +104,7 @@ A következő AzCopy-parancsokban cserélje le a következő paramétereket a Ha
 
 * ***\<path_to_data_folder >*** A kibontott adatfájlokat tartalmazó könyvtár (az elérési úttal együtt) a gépen.  
 * ***a Hadoop-fürt\<Storage-fiókjának neve >*** A HDInsight-fürthöz társított Storage-fiók.
-* ***a Hadoop-fürt alapértelmezett tárolójának\<*** A fürt által használt alapértelmezett tároló. Vegye figyelembe, hogy az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
+* ***a Hadoop-fürt alapértelmezett tárolójának\<*** A fürt által használt alapértelmezett tároló. Az alapértelmezett tároló neve általában megegyezik a fürt nevével. Ha például a fürt neve "abc123.azurehdinsight.net", az alapértelmezett tároló a abc123.
 * ***\<Storage-fiók kulcsa >*** A fürt által használt Storage-fiók kulcsa.
 
 A parancssorból vagy egy Windows PowerShell-ablakból futtassa a következő két AzCopy parancsot.
@@ -127,19 +127,19 @@ Az adatmennyiségnek most a blob Storage-ban kell lennie, és készen kell álln
 
 A fürt fő csomópontjának a felderítő adatelemzéshez és az adat-leállási mintavételezéshez való hozzáféréséhez kövesse az [Hadoop-fürt fő csomópontjának eléréséhez](customize-hadoop-cluster.md)című témakörben leírt eljárást.
 
-Ebben az útmutatóban elsősorban a [kaptárban](https://hive.apache.org/), egy SQL-szerű lekérdezési nyelven írt lekérdezéseket használjuk az előzetes adatfeltárások végrehajtásához. A struktúra lekérdezéseit. HQL-fájlok tárolják. Ezután leállítjuk azokat az adattípusokat, amelyeket a modellek létrehozásához Machine Learning használhat.
+Ebben az útmutatóban elsősorban a [kaptárban](https://hive.apache.org/), egy SQL-szerű lekérdezési nyelven írt lekérdezéseket használjuk az előzetes adatfeltárások végrehajtásához. A kaptár-lekérdezések a ". HQL" fájlban tárolódnak. Ezután leállítjuk azokat az adattípusokat, amelyeket a modellek létrehozásához Machine Learning használhat.
 
-A fürt a felderítő adatok elemzéséhez való előkészítéséhez töltse le a megfelelő kaptár-parancsfájlokat tartalmazó. HQL fájlokat a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) a helyi könyvtárba (C:\Temp) a fő csomóponton. Ehhez nyissa meg a parancssort a fürt fő csomópontján belül, és futtassa a következő két parancsot:
+Ha a fürtöt a felderítő adatok elemzéséhez szeretné előkészíteni, töltse le a megfelelő kaptár-parancsfájlokat tartalmazó ". HQL" fájlokat a [githubról](https://github.com/Azure/Azure-MachineLearning-DataScience/tree/master/Misc/DataScienceProcess/DataScienceScripts) egy helyi könyvtárba (C:\Temp) a fő csomóponton. Nyissa meg a parancssort a fürt fő csomópontján belül, és futtassa a következő két parancsot:
 
     set script='https://raw.githubusercontent.com/Azure/Azure-MachineLearning-DataScience/master/Misc/DataScienceProcess/DataScienceScripts/Download_DataScience_Scripts.ps1'
 
     @powershell -NoProfile -ExecutionPolicy unrestricted -Command "iex ((new-object net.webclient).DownloadString(%script%))"
 
-Ez a két parancs az ebben a bemutatóban szükséges összes. HQL fájlt letölti a fő csomópont helyi könyvtár ***C:\Temp&#92;***  .
+Ez a két parancs letölti az ebben a bemutatóban szükséges összes ". HQL" fájlt a fő csomópont helyi ***C:\Temp&#92;***  .
 
 ## <a name="#hive-db-tables"></a>Struktúra-adatbázis és-táblázatok létrehozása hónap szerint particionálva
 > [!NOTE]
-> Ez általában egy rendszergazdai feladat.
+> Ez a feladat általában rendszergazdák számára készült.
 > 
 > 
 
@@ -153,11 +153,11 @@ A Hadoop-fürt fő csomópontján nyissa meg a Hadoop parancssort a fő csomópo
 > 
 > 
 
-A kaptár könyvtárának parancssorában futtassa az alábbi parancsot a fő csomópont Hadoop parancssorában. Ez elküldi a kaptár-lekérdezést a kaptár-adatbázis és táblák létrehozásához:
+A kaptár-könyvtár parancssorában futtassa a következő parancsot a kaptár-adatbázist és-táblákat létrehozó fő csomópont Hadoop parancssorában:
 
     hive -f "C:\temp\sample_hive_create_db_and_tables.hql"
 
-Itt látható a **C:\temp\sample\_struktúra tartalma\_\_db\_és\_Tables. HQL fájl létrehozása** . Ez létrehozza a struktúra-adatbázis **nyctaxidb**, valamint a **táblákat és a** **viteldíjat**.
+Itt látható a **C:\temp\sample\_struktúra tartalma\_a\_db\_és\_Tables. HQL fájlt hozza létre** , amely létrehozza a kaptár-adatbázis **nyctaxidb**, valamint **a táblákat és a** **viteldíjat**.
 
     create database if not exists nyctaxidb;
 
@@ -207,7 +207,7 @@ Ha további segítségre van szüksége ezekkel az eljárásokkal kapcsolatban, 
 
 ## <a name="#load-data"></a>Adatgyűjtés a struktúra tábláiba partíciók szerint
 > [!NOTE]
-> Ez általában egy rendszergazdai feladat.
+> Ez a feladat általában rendszergazdák számára készült.
 > 
 > 
 
@@ -220,7 +220,7 @@ A **minta\_struktúrában\_\_a\_\_Partitions. HQL** -fájl a következő **betö
     LOAD DATA INPATH 'wasb:///nyctaxitripraw/trip_data_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.trip PARTITION (month=${hiveconf:MONTH});
     LOAD DATA INPATH 'wasb:///nyctaxifareraw/trip_fare_${hiveconf:MONTH}.csv' INTO TABLE nyctaxidb.fare PARTITION (month=${hiveconf:MONTH});
 
-Vegye figyelembe, hogy a feltárási folyamat során használt kaptár-lekérdezések száma csak egy vagy két partíciót keres. Ezek a lekérdezések azonban a teljes adathalmazon is futtathatók.
+A feltárási folyamat során használt kaptár-lekérdezések száma csak egy vagy két partíciót érint. Ezek a lekérdezések azonban a teljes adathalmazon is futtathatók.
 
 ### <a name="#show-db"></a>Adatbázisok megjelenítése a HDInsight Hadoop-fürtben
 A HDInsight Hadoop-fürtben létrehozott adatbázisok megjelenítéséhez a Hadoop parancssori ablakban futtassa a következő parancsot a Hadoop parancssorban:
@@ -302,7 +302,7 @@ A legjobb 10 rekord beszerzése a viteldíj táblában az első hónapból:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;"
 
-A rekordok fájlba menthetők a megfelelő megtekintés érdekében. Az előző lekérdezés kis módosítása a következőt hajtja végre:
+Mentheti a rekordokat egy fájlba, hogy az előző lekérdezés kis módosításával kényelmesen megtekinthető legyen:
 
     hive -e "select * from nyctaxidb.fare where month=1 limit 10;" > C:\temp\testoutput
 
@@ -316,7 +316,7 @@ Az érdekesség az, hogy az utazások száma milyen mértékben változik a napt
 
     hive -e "select month, count(*) from nyctaxidb.trip group by month;"
 
-Ez a következő kimenetet adja nekünk:
+Ez a parancs a következő kimenetet hozza létre:
 
     1       14776615
     2       13990176
@@ -338,7 +338,7 @@ A következő parancsnak a kaptár könyvtárában való futtatásával is megsz
 
     hive -e "select count(*) from nyctaxidb.trip;"
 
-A következő hozamok:
+Ez a parancs a következőket eredményezi:
 
     173179759
     Time taken: 284.017 seconds, Fetched: 1 row(s)
@@ -347,7 +347,7 @@ Az utazás adatkészletéhez hasonló parancsok használatával kiállíthat kap
 
     hive -e "select month, count(*) from nyctaxidb.fare group by month;"
 
-Ez a következő kimenetet adja nekünk:
+Ez a parancs a következő kimenetet hozza létre:
 
     1       14776615
     2       13990176
@@ -363,22 +363,22 @@ Ez a következő kimenetet adja nekünk:
     12      13971118
     Time taken: 253.955 seconds, Fetched: 12 row(s)
 
-Vegye figyelembe, hogy a havonta megegyező számú utazást mindkét adatkészlethez adja vissza. Ez biztosítja az első érvényesítést, amely szerint az adatgyűjtés megfelelően lett betöltve.
+A havonta megegyező számú utazást mindkét adatkészletnél visszaadja a rendszer, így biztosítva az első érvényesítést, hogy az adatokat helyesen töltötték be.
 
 A viteldíj-adatkészletben lévő rekordok teljes számát a következő parancs alapján számíthatja ki a kaptár könyvtárának parancssorában:
 
     hive -e "select count(*) from nyctaxidb.fare;"
 
-A következő hozamok:
+Ez a parancs a következőket eredményezi:
 
     173179759
     Time taken: 186.683 seconds, Fetched: 1 row(s)
 
-A két táblában található rekordok száma is megegyezik. Ez egy második érvényesítést biztosít, amely szerint az adatgyűjtés megfelelően van betöltve.
+A két táblában található rekordok teljes száma szintén azonos, és egy második érvényesítést biztosít az adatok megfelelő betöltéséhez.
 
 ### <a name="exploration-trip-distribution-by-medallion"></a>Kutatás: utazások eloszlása a medál alapján
 > [!NOTE]
-> Ez általában egy adattudós-feladat.
+> Ez az elemzés általában egy adattudós-feladat.
 > 
 > 
 
@@ -412,11 +412,11 @@ Futtassa a következő parancsot a kaptár könyvtárában:
 
 ### <a name="exploration-trip-distribution-by-medallion-and-hack-license"></a>Feltárás: az utazások terjesztése a medál és a hack licenc alapján
 > [!NOTE]
-> Ez általában egy adattudós-feladat.
+> Ez a feladat általában egy adattudós számára készült.
 > 
 > 
 
-Az adathalmazok feltárásakor gyakran szeretnénk megvizsgálni az értékek csoportjai közötti együttes előfordulások számát. Ez a szakasz bemutatja, hogyan végezheti el ezt a vezetőfülke és az illesztőprogramok számára.
+Az adathalmazok feltárásakor gyakran szeretnénk megvizsgálni az értékek csoportjai eloszlását. Ez a szakasz bemutatja, hogyan végezheti el ezt az elemzést a vezetőfülkék és az illesztőprogramok számára.
 
 A **minta\_struktúra\_trip\_\_\_medalion\_License. HQL** file groups a díjszabási adatkészletet a **medál** és a **hack_license**esetében, és az egyes kombinációk számát adja vissza. A tartalma:
 
@@ -457,7 +457,7 @@ A kaptár könyvtárának parancssorában futtassa a következőt:
 
     hive -S -f "C:\temp\sample_hive_quality_assessment.hql"
 
-A parancsban szereplő *-S* argumentum letiltja a struktúra-hozzárendelési Térkép/feladatok csökkentése állapot képernyőjét. Ez azért hasznos, mert a struktúra lekérdezési kimenetének nyomtatása olvashatóbb lesz.
+A parancsban szereplő *-S* argumentum letiltja a struktúra-hozzárendelési Térkép/feladatok csökkentése állapot képernyőjét. Ez a parancs azért hasznos, mert a kaptár-lekérdezés kimenete olvashatóbb formában jelenik meg.
 
 ### <a name="exploration-binary-class-distributions-of-trip-tips"></a>Feltárás: az utazási tippek bináris osztályának eloszlása
 > [!NOTE]
@@ -470,7 +470,7 @@ Az [előrejelzési feladatok](hive-walkthrough.md#mltasks) című szakaszban ism
 * Tipp megadva (1. osztály, Tipp\_mennyiség > $0)  
 * nincs tipp (0. osztály, Tipp\_összeg = $0)
 
-A következő **minta\_struktúra\_a kimutatott\_frekvenciákon. HQL** fájl ezt teszi:
+A következő **minta\_struktúra\_kimutatott\_frekvenciákon. a HQL** -fájl a futtatandó parancsot mutatja:
 
     SELECT tipped, COUNT(*) AS tip_freq
     FROM
@@ -537,7 +537,7 @@ A tényleges utazási távolság és a [Haversine közötti távolság](https://
     and dropoff_longitude between -90 and -30
     and dropoff_latitude between 30 and 90;
 
-Az előző lekérdezésben az R a föld sugarát mérföldben, a PI pedig radián-re lesz konvertálva. Vegye figyelembe, hogy a földrajzi hosszúság – szélesség pontok úgy vannak szűrve, hogy eltávolítsa a NYC-területektől távol lévő értékeket.
+Az előző lekérdezésben az R a föld sugarát mérföldben, a PI pedig radián-re lesz konvertálva. A földrajzi hosszúság – szélesség pontok úgy vannak szűrve, hogy eltávolítsanak a New York-i régiótól távol lévő értékeket.
 
 Ebben az esetben az eredményeket egy **queryoutputdir**nevű könyvtárba írjuk. A következő parancsok sora először létrehozza ezt a kimeneti könyvtárat, majd futtatja a kaptár parancsot.
 
@@ -578,10 +578,10 @@ Ebben az eljárásban két lépés található. Először csatlakoztassa a **nyc
 
 Ahhoz, hogy közvetlenül a Machine Learning [adatimportálási][import-data] modulból lehessen használni a lefelé vett mintákat, az előző lekérdezés eredményét egy belső struktúra-táblába kell menteni. A következő lépésekben létrehozunk egy belső struktúrás táblát, és feltöltjük annak tartalmát az összevont és a lefelé mintavételezéssel ellátott adatokkal.
 
-A lekérdezés a standard kaptár-függvényeket közvetlenül a **pickup\_datetime** mezőjéből állítja elő:
+A lekérdezés a standard kaptár függvényeit közvetlenül alkalmazza a következő időparaméterek létrehozásához a **pickup\_datetime (dátum** /idő) mezőjéből:
 - nap órája
 - év hete
-- hétköznap (1 a hétfő, a 7-es pedig a vasárnapot jelenti)
+- a hétköznap (1) a hétfő, a "7" pedig a vasárnapot jelenti.
 
 A lekérdezés a közvetlen távolságot is létrehozza a kivételezési és a lemorzsolódási helyei között. Az ilyen függvények teljes listáját lásd: [LANGUAGEMANUAL UDF](https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF).
 
@@ -721,17 +721,17 @@ A Machine Learning adatimportálási moduljában a kaptár-lekérdezések [kikü
 
 Íme néhány információ az [adatimportálási][import-data] modulról és a bemeneti paraméterekről:
 
-**HCatalog-kiszolgáló URI-ja**: Ha a fürt neve **abc123**, egyszerűen: https://abc123.azurehdinsight.net.
+**HCatalog-kiszolgáló URI-ja**: Ha a fürt neve **abc123**, használja a következőket: https://abc123.azurehdinsight.net.
 
 **Hadoop felhasználói fiók neve**: a fürthöz választott Felhasználónév (nem a távelérés felhasználóneve).
 
-**Hadoop ser-fiók jelszava**: a fürthöz választott jelszó (nem a távelérési jelszó).
+**Hadoop felhasználói fiók jelszava**: a fürthöz választott jelszó (nem a távelérési jelszó).
 
-**Kimeneti adatokat tároló hely**: ezt az Azure-nak kell kiválasztania.
+**Kimeneti adatokat tároló hely**: az Azure-ra lett kiválasztva.
 
 **Azure Storage-fiók neve**: a fürthöz társított alapértelmezett Storage-fiók neve.
 
-**Azure-tároló neve**: Ez a fürt alapértelmezett tárolójának neve, és általában ugyanaz, mint a fürt neve. A **abc123**nevű fürt esetében ez a abc123.
+**Azure-tároló neve**: a fürt alapértelmezett tárolójának neve, és általában ugyanaz, mint a fürt neve. A **abc123**nevű fürt esetében a név a következő: abc123.
 
 > [!IMPORTANT]
 > Minden olyan tábla, amelyet a Machine Learning [adatimportálási][import-data] moduljának használatával szeretne lekérdezni, belső táblának kell lennie.
@@ -750,7 +750,7 @@ Itt látható a kaptár-lekérdezés és az [adatimportálási][import-data] mod
 
 ![Képernyőfelvétel a kaptár-lekérdezésről az Adatimportálási modulhoz](./media/hive-walkthrough/1eTYf52.png)
 
-Mivel a rendszer az alapértelmezett tárolóban tárolja a levett minta adatait, a Machine Learningből származó kaptár-lekérdezés nagyon egyszerű. Ez csak egy **select * from nyctaxidb. nyctaxi\_downsampled\_adatok**.
+Mivel a rendszer az alapértelmezett tárolóban tárolja a levett mintavételen alapuló adatforrásokat, a Machine Learningből származó kaptár-lekérdezés egyszerű. Ez csak egy **select * from nyctaxidb. nyctaxi\_downsampled\_adatok**.
 
 Az adatkészlet mostantól kiindulási pontként használható Machine Learning modellek létrehozásához.
 
@@ -791,11 +791,11 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 
   ![A tesztelési osztály eloszlásának diagramja](./media/hive-walkthrough/Vy1FUKa.png)
 
-  b. Ebben a kísérletben egy zavart mátrixot használunk az előrejelzési pontosság megkereséséhez. Ez itt látható:
+  b. Ebben a kísérletben egy zavart mátrixot használunk az előrejelzési pontosság az itt látható módon:
 
   ![Zavart mátrix](./media/hive-walkthrough/cxFmErM.png)
 
-  Vegye figyelembe, hogy habár a pontosság osztály meglehetősen jó, a modell nem végez jó munkát a ritkább osztályokon a "learning".
+  Míg a pontosság osztály jó, a modell nem végez jó munkát a ritkább osztályokon a "learning".
 
 - **Regressziós feladat**: az utazáshoz fizetett tipp mennyiségének előrejelzése.
 
@@ -819,7 +819,7 @@ Most már folytathatja a [Machine learning](https://studio.azureml.net)-ben val�
 > 
 
 ## <a name="license-information"></a>Licencelési információk
-Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További részletekért tekintse meg a **License. txt** fájlt a githubon található mintakód könyvtárában.
+Ezt a minta-bemutatót és a hozzá tartozó parancsfájlokat a Microsoft a MIT licenc alatt osztja meg. További információ: **License. txt** fájl a githubon található mintakód könyvtárában.
 
 ## <a name="references"></a>Tudástár
 • [Andrés MONROY NYC taxi TRIPS letöltési oldal](https://www.andresmh.com/nyctaxitrips/)  

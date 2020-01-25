@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: sharadag
-ms.openlocfilehash: 3579aee46c610e5bb3efc0942944bbfc3fcb801d
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 7c77527b7300c1149e96c94a4dbe122da226ac6d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74790513"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720435"
 ---
 # <a name="protocol-support-for-http-headers-in-azure-front-door-service"></a>A HTTP-fejlécek protokoll-támogatása az Azure-beli előtérben szolgáltatásban
 Ez a cikk azt a protokollt ismerteti, amelyet a bevezető ajtó szolgáltatás a hívási útvonal részeivel támogat (lásd a képet). A következő szakaszokban további információk találhatók a bejárati szolgáltatás által támogatott HTTP-fejlécekről.
@@ -43,7 +43,7 @@ A befelé irányuló szolgáltatás a bejövő kérelmek fejléceit is tartalmaz
 | X – továbbított – a következőhöz: | X – továbbított – a következőhöz: 127.0.0.1 </br> Az X-továbbított-for (XFF) HTTP-fejléc mező gyakran azonosítja a webkiszolgálóhoz a HTTP-proxyn vagy a Load balanceren keresztül csatlakozó ügyfél származó IP-címét. Ha van meglévő XFF-fejléc, akkor a bejárati ajtó hozzáfűzi az ügyfél szoftvercsatorna IP-címét, vagy hozzáadja a XFF-fejlécet az ügyfél szoftvercsatorna IP-címéhez. |
 | X-továbbított-gazdagép | X-továbbított-gazdagép: contoso.azurefd.net </br> Az X-Forwarded-Host HTTP-fejléc mező az ügyfél által a gazdagép HTTP-kérelmének fejlécében kért eredeti gazdagép azonosítására szolgáló közös módszer. Ennek az az oka, hogy az előtérben lévő gazdagép neve eltérhet a kérést kezelő háttér-kiszolgálótól. |
 | X – továbbított – proto | X – továbbított – proto: http </br> Az X-továbbított-proto HTTP-fejléc mező gyakran használatos a HTTP-kérések kezdeményező protokolljának azonosítására, mert a bejárati ajtó a konfiguráció alapján a HTTPS használatával kommunikálhat a háttérrel. Ez akkor is igaz, ha a fordított proxyra irányuló kérelem HTTP. |
-| X-FD-HealthProbe | Az X-FD-HealthProbe HTTP-fejléc mező a bejárati állapot azonosítására szolgál. Ha ez a fejléc 1 értékre van beállítva, a kérelem állapota az állapot. Akkor használhatja, ha az paticular bejárati ajtón lévő, X-Host fejléc mezővel szeretne szigorú hozzáférést elérni. |
+| X-FD-HealthProbe | Az X-FD-HealthProbe HTTP-fejléc mező a bejárati állapot azonosítására szolgál. Ha ez a fejléc 1 értékre van beállítva, a kérelem állapota az állapot. Akkor használhatja, ha szigorú hozzáférést szeretne elérni az adott bejárati ajtóról az X-Forwarded-Host fejléc mezővel. |
 
 ## <a name="front-door-service-to-client"></a>A bejárati ajtó szolgáltatás az ügyfél felé
 

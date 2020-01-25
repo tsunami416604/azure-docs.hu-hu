@@ -9,19 +9,19 @@ ms.topic: reference
 ms.date: 05/23/2019
 ms.author: evansma
 ROBOTS: NOINDEX
-ms.openlocfilehash: 99dd6db7003e0358ddde2438f6897cd767932227
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: f56e9b4f6c3db6fb47452c7478f5a27445955e87
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73816568"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715389"
 ---
 # <a name="saas-fulfillment-apis-version-1-deprecated"></a>SaaS-teljesítési API-k 1-es verziója (elavult)
 
 Ez a cikk bemutatja, hogyan hozhat létre SaaS-ajánlatokat API-kkal. A REST metódusokból és végpontokból álló API-k azért szükségesek, hogy engedélyezze az előfizetéseket az SaaS-ajánlathoz, ha az Azure-t választotta.  
 
 > [!WARNING]
-> A SaaS-teljesítési API ezen kezdeti verziója elavult; Ehelyett használja a [SaaS-beteljesülés API v2](./pc-saas-fulfillment-api-v2.md)-t.  Az API ezen kezdeti-verziója jelenleg csak a meglévő közzétevők kiszolgálására van fenntartva. 
+> A SaaS-teljesítési API ezen kezdeti verziója elavult; Ehelyett használja a [SaaS-beteljesülés API v2](./pc-saas-fulfillment-api-v2.md)-t.  Az API ezen kezdeti verzióját jelenleg csak a meglévő közzétevők kiszolgálására kell fenntartani. 
 
 A következő API-k segítenek a SaaS-szolgáltatás Azure-beli integrálásában:
 
@@ -335,8 +335,8 @@ Ez a végpont lehetővé teszi, hogy a felhasználó nyomon követhesse az aktiv
 | id                 | Sztring        | A művelet azonosítója.                                                                      |
 | status             | Felsorolás          | A művelet állapota, a következők egyike: `In Progress`, `Succeeded`vagy `Failed`.          |
 | resourceLocation   | Sztring        | A létrehozott vagy módosított előfizetésre mutató hivatkozás. Ez segíti az ügyfelet a frissített állapot utáni művelet megszerzésében. Ez az érték nincs beállítva `Unsubscribe` műveletekhez. |
-| létrehozott            | DateTime      | Művelet létrehozásának időpontja (UTC).                                                           |
-| lastModified       | DateTime      | A művelet utolsó frissítése UTC szerint.                                                      |
+| létrehozott            | Dátum és idő      | Művelet létrehozásának időpontja (UTC).                                                           |
+| lastModified       | Dátum és idő      | A művelet utolsó frissítése UTC szerint.                                                      |
 |  |  |  |
 
 *Reagálási kódok*
@@ -403,12 +403,12 @@ A Get művelet az előfizetés-végponton lehetővé teszi, hogy a felhasználó
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban.    |
-| OfferId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett.         |
+| offerId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett.         |
 | planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója.          |
 | saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve.                |
-| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  A következők egyike:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
-| létrehozott                | DateTime      | Előfizetés-létrehozási időbélyeg értéke UTC szerint. |
-| lastModified           | DateTime      | Az előfizetés módosított időbélyeg-értéke UTC szerint. |
+| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  Az alábbiak valamelyikének telepítve kell lennie:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
+| létrehozott                | Dátum és idő      | Előfizetés-létrehozási időbélyeg értéke UTC szerint. |
+| lastModified           | Dátum és idő      | Az előfizetés módosított időbélyeg-értéke UTC szerint. |
 |  |  |  |
 
 *Reagálási kódok*
@@ -475,12 +475,12 @@ A Get művelet az előfizetések végponton lehetővé teszi, hogy a felhasznál
 | **Paraméter neve**     | **Adattípus** | **Leírás**                               |
 |------------------------|---------------|-----------------------------------------------|
 | id                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban    |
-| OfferId                | Sztring        | A felhasználó által előfizetett ajánlat azonosítója         |
+| offerId                | Sztring        | A felhasználó által előfizetett ajánlat azonosítója         |
 | planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója          |
 | saasSubscriptionName   | Sztring        | Az SaaS-előfizetés neve                |
-| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  A következők egyike:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
-| létrehozott                | DateTime      | Előfizetés-létrehozási időbélyeg értéke UTC szerint |
-| lastModified           | DateTime      | Előfizetés módosított időbélyeg-értéke UTC szerint |
+| saasSubscriptionStatus | Felsorolás          | Művelet állapota.  Az alábbiak valamelyikének telepítve kell lennie:  <br/> - `Subscribed`: az előfizetés aktív.  <br/> - `Pending`: a felhasználó hozza létre az erőforrást, de az ISV nem aktiválja.   <br/> - `Unsubscribed`: a felhasználó leiratkozott.   <br/> - `Suspended`: a felhasználó felfüggesztette az előfizetést.   <br/> - `Deactivated`: az Azure-előfizetés fel van függesztve.  |
+| létrehozott                | Dátum és idő      | Előfizetés-létrehozási időbélyeg értéke UTC szerint |
+| lastModified           | Dátum és idő      | Előfizetés módosított időbélyeg-értéke UTC szerint |
 |  |  |  |
 
 *Reagálási kódok*
@@ -527,7 +527,7 @@ SaaS-webhookot használ a változások proaktív módon történő értesítés�
 | id  | Sztring       | Az aktivált művelet egyedi azonosítója.                |
 | Tevékenységazonosító   | Sztring        | Egyedi karakterlánc-érték a kérésnek a szolgáltatásból való nyomon követéséhez. Ez minden egyeztetéshez használatos.               |
 | subscriptionId                     | Sztring        | SaaS-előfizetési erőforrás azonosítója az Azure-ban.    |
-| OfferId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett. Csak a "frissítés" művelettel biztosítva.        |
+| offerId                | Sztring        | Az ajánlat azonosítója, amelyhez a felhasználó előfizetett. Csak a "frissítés" művelettel biztosítva.        |
 | publisherId                | Sztring        | Az SaaS-ajánlat közzétevő-azonosítója         |
 | planId                 | Sztring        | A felhasználó által előfizetett csomag azonosítója. Csak a "frissítés" művelettel biztosítva.          |
 | action                 | Sztring        | Az értesítést kiváltó művelet. Lehetséges értékek – aktiválás, törlés, felfüggesztés, visszaállítása, frissítés          |
@@ -535,6 +535,6 @@ SaaS-webhookot használ a változások proaktív módon történő értesítés�
 |  |  |  |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fejlesztők a [Cloud Partner Portal REST API](https://docs.microsoft.com/azure/marketplace/cloud-partner-portal-orig/cloud-partner-portal-api-overview)-k használatával programozott módon is lekérhetik és módosíthatják a munkaterheléseket, az ajánlatokat és a közzétevői profilokat.

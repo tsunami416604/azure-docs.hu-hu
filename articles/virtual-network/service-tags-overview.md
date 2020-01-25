@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: ed9b893b11f96a813cee4c751743ceb182a9a0bf
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76543035"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715409"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi 
 <a name="network-service-tags"></a>
@@ -64,7 +64,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **AzureInformationProtection** | Azure Information Protection.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory** és a **AzureFrontDoor. frontend** címkével. A következő IP-címeket is meg kell adni (ez a függőség hamarosan el lesz távolítva): 13.107.6.181 & 13.107.9.181. | Kimenő | Nem | Nem |
 | **AzureIoTHub** | Azure IoT Hub. | Kimenő | Nem | Nem |
 | **AzureKeyVault** | Az Azure Key Vault.<br/><br/>*Megjegyzés:* Ez a címke függőséget tartalmaz a **AzureActiveDirectory** címkével. | Kimenő | Igen | Igen |
-| **AzureLoadBalancer** | Az Azure-infrastruktúra Load Balancer. A címke a gazdagép (168.63.129.16) [virtuális IP-címére van](security-overview.md#azure-platform-considerations) lefordítva, ahol az Azure Health-Szondák származnak. Ha nem Azure Load Balancer használ, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
+| **AzureLoadBalancer** | Az Azure-infrastruktúra Load Balancer. A címke a gazdagép (168.63.129.16) [virtuális IP-címére van](security-overview.md#azure-platform-considerations) lefordítva, ahol az Azure Health-Szondák származnak. Ez nem tartalmazza a Azure Load Balancer-erőforrás felé irányuló forgalmat. Ha nem Azure Load Balancer használ, felülbírálhatja ezt a szabályt. | Mindkettő | Nem | Nem |
 | **AzureMachineLearning** | Azure Machine Learning. | Mindkettő | Nem | Igen |
 | **AzureMonitor** | Log Analytics, Application Insights, AzMon és egyéni metrikák (GiG-végpontok).<br/><br/>*Megjegyzés:* Log Analytics esetén ez a címke függőséget tartalmaz a **tárolási** címkével. | Kimenő | Nem | Igen |
 | **AzurePlatformDNS** | Az alapszintű infrastruktúra (alapértelmezett) DNS szolgáltatás.<br/><br>Ezt a címkét használhatja az alapértelmezett DNS letiltásához. Ha ezt a címkét használja, körültekintően járjon el. Javasoljuk, hogy olvassa el az [Azure platformmal kapcsolatos szempontokat](https://docs.microsoft.com/azure/virtual-network/security-overview#azure-platform-considerations). Javasoljuk továbbá, hogy a címke használata előtt végezzen tesztelést. | Kimenő | Nem | Nem |
@@ -83,7 +83,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **HDInsight** | Azure-HDInsight. | Bejövő | Igen | Nem |
 | **Internet** | Az IP-címtartomány, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el.<br/><br/>A címtartomány magában foglalja az [Azure tulajdonában lévő nyilvános IP-címterület területét](https://www.microsoft.com/download/details.aspx?id=41653). | Mindkettő | Nem | Nem |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Kimenő | Nem | Nem |
-| **MicrosoftContainerRegistry** | Azure Container Registry. | Kimenő | Igen | Igen |
+| **MicrosoftContainerRegistry** | Microsoft-tároló lemezképek tároló-beállításjegyzéke. <br/><br/>*Megjegyzés:* Adja meg a következő IP-címet is (ez a függőség hamarosan el lesz távolítva): 204.79.197.219. | Kimenő | Igen | Igen |
 | **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
 | **ServiceFabric** | Azure Service Fabric. | Kimenő | Nem | Nem |
 | **Sql** | Azure SQL Database, Azure Database for MySQL, Azure Database for PostgreSQL és Azure SQL Data Warehouse.<br/><br/>*Megjegyzés:* Ez a címke a szolgáltatást jelöli, de a szolgáltatás adott példányai nem. Például a címke az Azure SQL Database szolgáltatást jelöli, de nem egy adott SQL-adatbázist vagy -kiszolgálót. | Kimenő | Igen | Igen |

@@ -1,16 +1,16 @@
 ---
 author: cynthn
 ms.author: cynthn
-ms.date: 11/25/2019
+ms.date: 01/23/2020
 ms.topic: include
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 2a763bbd50f009ae469be889e6ebae0b0d90848b
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: ec1b77118f94501363d950d72a65a67ece79ff77
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74796000"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748885"
 ---
 A szabványosított virtuálisgép-lemezképek lehetővé teszik a szervezetek számára a felhőbe való Migrálás és az üzemelő példányok egységességének biztosítását. A képek jellemzően előre definiált biztonsági és konfigurációs beállításokat és szükséges szoftvereket tartalmaznak. A saját képfeldolgozási folyamatának beállítása idő, infrastruktúra és beállítás szükséges, de az Azure VM rendszerkép-készítővel egyszerűen egy egyszerű konfigurációt kell megadnia, amely leírja a lemezképet, beküldi a szolgáltatást, és a lemezképet összeállította és terjeszti.
  
@@ -45,8 +45,10 @@ Az Azure rendszerkép-szerkesztő szolgáltatás elérhető lesz az előzetes ve
 A AIB az Azure Marketplace alap operációsrendszer-lemezképeit fogja támogatni:
 - Ubuntu 18.04
 - Ubuntu 16.04
-- RHEL 7,6
-- CentOS 7,6
+- RHEL 7,6, 7,7
+- CentOS 7,6, 7,7
+- SLES 12 SP4
+- SLES 15, SLES 15 SP1
 - Windows 10 RS5 Enterprise/Professional/Enterprise virtuális asztali (EVD) 
 - Windows 2016
 - Windows 2019
@@ -91,6 +93,13 @@ az role assignment create \
     --role Contributor \
     --scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName>
 ```
+
+A PowerShell használatával is hozzárendelhet hozzáférést:
+
+```azurePowerShell-interactive
+New-AzRoleAssignment -ObjectId ef511139-6170-438e-a6e1-763dc31bdf74 -Scope /subscriptions/$subscriptionID/resourceGroups/<distributeResoureGroupName> -RoleDefinitionName Contributor
+```
+
 
 Ha a szolgáltatásfiók nem található, az azt jelentheti, hogy az előfizetés, amelyhez hozzáadja a szerepkör-hozzárendelést, még nincs regisztrálva az erőforrás-szolgáltatónál.
 

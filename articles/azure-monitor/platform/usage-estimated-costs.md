@@ -9,12 +9,12 @@ ms.date: 10/28/2019
 ms.author: mbullwin
 ms.reviewer: Dale.Koetke
 ms.subservice: ''
-ms.openlocfilehash: 48abf95e65b6185f5c95a1f5d942091ed0f33122
-ms.sourcegitcommit: 38251963cf3b8c9373929e071b50fd9049942b37
+ms.openlocfilehash: 3fb51a9dc3f607d89934f6962588195e0f5c83f5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/29/2019
-ms.locfileid: "73044192"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715775"
 ---
 # <a name="monitoring-usage-and-estimated-costs-in-azure-monitor"></a>A használat és a becsült költségek figyelése Azure Monitor
 
@@ -68,10 +68,10 @@ Ez a következő nézetet eredményezi:
 
 Innen kihasználhatja ezt a halmozott díjszabási összefoglalót, hogy minél finomabb részleteket kapjon a "Cost by Resource" nézetben. A jelenlegi díjszabási szinten az Azure log-adatok ugyanarra a mérőórákra vannak terhelve, függetlenül attól, hogy Log Analytics vagy Application Insights származik-e. A költségek Log Analytics vagy Application Insights használatból való elkülönítéséhez hozzáadhat egy szűrőt az erőforrás- **típushoz**. Az Application Insights összes költségének megjelenítéséhez szűrje az erőforrás típusát "Microsoft. bepillantások/összetevők" értékre, és Log Analytics a költségek, az erőforrástípus szűrése "Microsoft. operationalinsights/workspaces" értékre. 
 
-A használatról részletesebben is tájékozódhat, ha [letölti a használatot a Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). A letöltött számolótáblában napi Azure-erőforrás-használatot láthat. Ebben az Excel-táblázatban a Application Insights-erőforrásokkal való használat első szűréssel megtalálhatók a "Application Insights" és a "Log Analytics" megjelenítéséhez, majd hozzá kell adni egy szűrőt a "példány azonosítója" oszlophoz, amely "tartalmaz Microsoft. bepillantások/összetevők ".  A legtöbb Application Insights-használat a Log Analytics mérőszám-kategóriával rendelkező fogyasztásmérőn szerepel, mivel az összes Azure Monitor összetevőhöz egyetlen naplós háttér tartozik.  A rendszer csak a régi árképzési szinteken és a többlépéses webes tesztek Application Insights erőforrásait jeleníti meg Application Insights fogyasztásmérő-kategóriája alapján.  A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részleteket a [Microsoft Azure számla megismeréséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)talál. 
+A használatról részletesebben is tájékozódhat, ha [letölti a használatot a Azure Portal](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-in-azure-portal). A letöltött számolótáblában napi Azure-erőforrás-használatot láthat. Ebben az Excel-táblázatban a Application Insights-erőforrásokkal való használat első szűréssel megtalálhatók a "Application Insights" és a "Log Analytics" megjelenítéséhez, majd hozzá kell adni egy szűrőt a "példány azonosítója" oszlophoz, amely "a Microsoft. bepillantást vagy összetevőket tartalmazza".  A legtöbb Application Insights-használat a Log Analytics mérőszám-kategóriával rendelkező fogyasztásmérőn szerepel, mivel az összes Azure Monitor összetevőhöz egyetlen naplós háttér tartozik.  A rendszer csak a régi árképzési szinteken és a többlépéses webes tesztek Application Insights erőforrásait jeleníti meg Application Insights fogyasztásmérő-kategóriája alapján.  A használat megjelenik a "felhasznált mennyiség" oszlopban, és az egyes bejegyzések egysége a "mértékegység" oszlopban látható.  További részleteket a [Microsoft Azure számla megismeréséhez](https://docs.microsoft.com/azure/billing/billing-understand-your-bill)talál. 
 
 > [!NOTE]
-> A **Cost Management** használata a **Azure Cost Management + számlázási** központban az előnyben részesített megközelítés a figyelési költségek széles körű megismerése érdekében.  A **használat és a becsült költségek** a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) és a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) számára egyaránt lehetővé teszik a Azure monitor egyes részeinek mélyebb elemzését.
+> A **Cost Management** használata a **Azure Cost Management + számlázási** központban az előnyben részesített módszer a figyelési költségek széles körű megismerésére.  A **használat és a becsült költségek** a [Log Analytics](https://docs.microsoft.com/azure/azure-monitor/platform/manage-cost-storage#understand-your-usage-and-estimate-costs) és a [Application Insights](https://docs.microsoft.com/azure/azure-monitor/app/pricing#understand-your-usage-and-estimate-costs) számára egyaránt lehetővé teszik a Azure monitor egyes részeinek mélyebb elemzését.
 
 Egy másik lehetőség a Azure Monitor használatának megtekintésére a figyelő központ **használati és becsült költségek** lapja. Ez az alapvető figyelési funkciók, például a [riasztások, a metrikák](https://azure.microsoft.com/pricing/details/monitor/), az értesítések, az [Azure log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/)és az [Azure Application Insights](https://azure.microsoft.com/pricing/details/application-insights/)használatát mutatja be. A 2018. április előtt elérhető díjszabási csomaggal rendelkező ügyfelek esetében az elemzések és az elemzési ajánlat keretében vásárolt Log Analytics használat is szerepel.
 

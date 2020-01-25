@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 01/08/2019
-ms.openlocfilehash: ad9437b135e48dcfaff9efa5f6daf345d78e79ef
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 094d9fe7425a6192ce2af94c3ea18cac20ff9ded
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895340"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720333"
 ---
 # <a name="archived-release-notes"></a>Archivált kibocsátási megjegyzések
 
@@ -41,7 +41,7 @@ A HDInsight mostantól lehetővé teszi saját SQL-adatbázis használatát az A
 ### <a name="deprecation"></a>Elavulás
 Nincs elavultság ehhez a kiadáshoz. A közelgő elavulás elkezdéséhez tekintse meg a [közelgő változásokat](#upcoming-changes).
 
-### <a name="behavior-changes"></a>Viselkedésbeli változások
+### <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés. A közelgő viselkedés változásairól a [közelgő változások](#upcoming-changes)című szakaszban olvashat.
 
 ### <a name="upcoming-changes"></a>Közelgő változások
@@ -52,10 +52,10 @@ A Transport Layer Security (TLS) és a SSL (SSL) olyan titkosítási protokollok
 
 A következő kiadástól kezdve lehetőség van arra, hogy bekapcsolja és konfigurálja az új HDInsight-fürtöket, hogy csak a TLS 1,2-kapcsolatokat fogadja el. 
 
-Az év későbbi részében az Azure HDInsight a 6/30/2020-es verziótól kezdődően a TLS 1,2-es vagy újabb verzióját fogja érvényesíteni az összes HTTPS-kapcsolathoz. Javasoljuk, hogy minden ügyfél készen álljon a TLS 1,2-es vagy újabb verzióinak kezelésére.
+Az év későbbi részében az Azure HDInsight a 6/30/2020-es verziótól kezdődően a TLS 1,2-es vagy újabb verzióját fogja érvényesíteni az összes HTTPS-kapcsolathoz. Javasoljuk, hogy minden ügyfélt készítsen fel a TLS 1.2-es vagy újabb verzióinak kezelésére.
 
 #### <a name="moving-to-azure-virtual-machine-scale-sets"></a>Áttérés Azure-beli virtuálisgép-méretezési csoportokra
-A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. A Feburary 2020-től kezdődően (a pontos dátumot később közli), a HDInsight az Azure virtuálisgép-méretezési csoportokat fogja használni helyette. További információ az [Azure-beli virtuálisgép-méretezési csoportokról](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
+A HDInsight mostantól Azure-beli virtuális gépeket használ a fürt kiépítéséhez. Február 2020-től kezdődően (a pontos dátumot később közli), a HDInsight az Azure virtuálisgép-méretezési csoportokat fogja használni helyette. További információ az [Azure-beli virtuálisgép-méretezési csoportokról](https://docs.microsoft.com/azure/virtual-machine-scale-sets/overview).
 
 #### <a name="esp-spark-cluster-node-size-change"></a>ESP Spark-fürt csomópontjának méretének változása 
 A következő kiadásban:
@@ -125,7 +125,7 @@ Ebből a kiadásból a G sorozatú virtuális gépeket már nem ajánljuk fel a 
 #### <a name="dv1-virtual-machine-deprecation"></a>Dv1 virtuális gép elavult
 Ettől a kiadástól kezdve a Dv1 virtuális gépek HDInsight-mel való használata elavult. A Dv1-hez tartozó összes ügyfél-kérelem automatikusan a Dv2 lesz kézbesítve. A Dv1 és a Dv2 virtuális gépek között nincs árkülönbség.
 
-### <a name="behavior-changes"></a>Viselkedésbeli változások
+### <a name="behavior-changes"></a>Viselkedési változások
 
 #### <a name="cluster-managed-disk-size-change"></a>Fürtözött felügyelt lemez méretének változása
 A HDInsight felügyelt lemezterületet biztosít a fürt számára. Ebből a kiadásból az új létrehozott fürt egyes csomópontjainak felügyelt lemez mérete 128 GB-ra módosul.
@@ -212,7 +212,7 @@ A HDInsight 4,0 esetében hajtsa végre a következő lépéseket:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Írja be a `sudo kinit <domainuser>` parancsot.
+1. Írja be a `sudo kinit <domainuser>`parancsot.
 1. A parancsfájl futtatásához írja be a következő parancsot:
 
     ```
@@ -225,7 +225,7 @@ A HDInsight 3,6 esetében tegye a következőket:
     ```
     sudo wget https://raw.githubusercontent.com/Azure/hbase-utils/master/replication/hdi_enable_replication.sh
     ```
-1. Írja be a `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>` parancsot.
+1. Írja be a `sudo kinit -k -t /etc/security/keytabs/hbase.service.keytab hbase/<FQDN>@<DOMAIN>`parancsot.
 1. Írja be a következő parancsot:
 
     ```bash
@@ -1673,7 +1673,7 @@ A rögzített problémák olyan kiválasztott problémákat jelentenek, amelyek 
 
     -   <https://spark.apache.org/releases/spark-release-2-3-0.html#deprecations>
 
-### <a name="upgrading"></a>Frissítés
+### <a name="upgrading"></a>Frissítése
 
 Az összes funkció elérhető a HDInsight 3,6-ben. A Spark, a Kafka és a R Server (Machine Learning Services) legújabb verziójának lekéréséhez válassza ki a Spark, Kafka, ML szolgáltatások verzióját, amikor [HDInsight 3,6-fürtöt hoz létre](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). A ADLS támogatásának beszerzéséhez válassza a ADLS tárolási típust lehetőségként. A meglévő fürtök nem frissülnek automatikusan ezekre a verzióra.
 

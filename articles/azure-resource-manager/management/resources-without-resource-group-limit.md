@@ -2,13 +2,13 @@
 title: 800-os korláttal nem rendelkező erőforrások száma
 description: Azokat az Azure-erőforrásokat sorolja fel, amelyek több mint 800 példányt tartalmazhatnak egy erőforráscsoporthoz.
 ms.topic: conceptual
-ms.date: 11/07/2019
-ms.openlocfilehash: c4f452a13c2059c02bf675ca4fe80243257183d5
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.date: 01/23/2020
+ms.openlocfilehash: 42e8ddeebcd1dda4fc67e4e7be137c5e01decdf4
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659321"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715624"
 ---
 # <a name="resources-not-limited-to-800-instances-per-resource-group"></a>Az erőforrások nem korlátozódnak 800 példányra az erőforráscsoport esetében
 
@@ -26,6 +26,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 * regisztrációk
 * regisztrációk/customerSubscriptions
 * regisztrációk/termékek
+* verificationKeys
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
@@ -82,6 +83,7 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
+* autoManagedVmConfigurationProfiles
 * configurationProfileAssignments
 * guestConfigurationAssignments
 * szoftver
@@ -176,8 +178,12 @@ Egyes erőforrástípusok esetében kapcsolatba kell lépnie az ügyfélszolgál
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 * apiManagementAccounts/API-k
-* webhelyek
+* helyek
+
+## <a name="microsoftinsights"></a>Microsoft. bepillantások
+
+* metricalerts
 
 ## <a name="next-steps"></a>Következő lépések
 
-A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md)című témakörben tekintheti meg.
+A kvóták és korlátok teljes listáját az Azure- [előfizetés és a szolgáltatás korlátai, kvótái és megkötései](azure-subscription-service-limits.md)című témakörben tekintheti meg.

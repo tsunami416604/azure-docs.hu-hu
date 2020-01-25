@@ -4,12 +4,12 @@ ms.service: azure-functions
 ms.topic: include
 ms.date: 03/05/2019
 ms.author: cshoe
-ms.openlocfilehash: 6324fd0e2957aea46fb5876aa8c91f0906205ccc
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: ec3a7b6420144278df66f693d9fd9933449b3d80
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76694614"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748942"
 ---
 ## <a name="trigger"></a>Eseményindító
 
@@ -394,7 +394,7 @@ A [Host. JSON](../articles/azure-functions/functions-host-json.md#eventhub) fáj
 
 ## <a name="output"></a>Kimenet
 
-Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Küldési engedéllyel kell rendelkeznie ahhoz, hogy eseményeket írhasson egy eseményközpontba.
+Az események egy esemény-adatfolyamba való írásához használja a Event Hubs kimeneti kötést. Az Event hub-nak Küldés engedéllyel kell rendelkeznie az események írásához.
 
 A kimeneti kötés megvalósítása előtt győződjön meg arról, hogy a szükséges csomagokra vonatkozó hivatkozások vannak érvényben.
 
@@ -699,6 +699,6 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 |Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
-|`maxBatchSize`|64|A fogadott események száma fogadási hurokban.|
-|`prefetchCount`|–|Az alapul szolgáló `EventProcessorHost`által használt alapértelmezett előzetes lehívási szám.|
+|`maxBatchSize`|10|A fogadott események száma fogadási hurokban.|
+|`prefetchCount`|300|Az alapul szolgáló `EventProcessorHost`által használt alapértelmezett előzetes lehívási szám.|
 |`batchCheckpointFrequency`|1|Az EventHub kurzor ellenőrzőpontjának létrehozása előtt feldolgozandó eseményvezérelt kötegek száma.|

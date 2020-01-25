@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 11/04/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: dd94f29317e703a68ba1b4a78639f635034d4492
-ms.sourcegitcommit: f2149861c41eba7558649807bd662669574e9ce3
+ms.openlocfilehash: 16a0fa29c067262f1794528b16abfce662d05605
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75751510"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748980"
 ---
 <!-- F-series, Fs-series* -->
 
@@ -31,7 +31,7 @@ Premium Storage: támogatott
 
 Premium Storage gyorsítótárazás: támogatott
 
-| Méret             | vCPU-k | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
+| Méret             | vCPU | Memória: GiB | Ideiglenes tárterület (SSD) GiB | Adatlemezek max. száma | Maximális gyorsítótárazott és ideiglenes tárolóteljesítmény: IOPS/MBps (gyorsítótár mérete GiB-ban) | Max. gyorsítótárazás nélküli lemezteljesítmény: IOPS/MBps | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
 |------------------|--------|-------------|----------------|----------------|--------------------------|--------------------------|-------------------------|
 | Standard_F2s_v2  | 2      | 4           | 16             | 4              | 4000/31 (32)           | 3200/47                | 2 / 875                 |
 | Standard_F4s_v2  | 4      | 8           | 32             | 8              | 8000/63 (64)           | 6400/95                | 2 / 1750               |
@@ -48,7 +48,7 @@ Premium Storage gyorsítótárazás: támogatott
 - Windows Server 2016 vagy újabb
 - Ubuntu 16,04 LTS vagy újabb, az Azure-ban hangolt kernel (4,15 kernel vagy újabb)
 - SLES 12 SP2 vagy újabb
-- RHEL vagy CentOS 6,7-es verzió a 6,10-es verziójával, a Microsoft által biztosított LIS-csomag 4.3.1 (vagy újabb) telepítésével
+- RHEL vagy CentOS 6,7-es verzió – 6,10, a Microsoft által biztosított LIS-csomag 4.3.1-es (vagy újabb) verziójával
 - RHEL vagy CentOS 7,3-es verzió, a Microsoft által biztosított LIS csomag 4.2.1 (vagy újabb) telepítésével
 - RHEL vagy CentOS 7,6-es vagy újabb verzió
 - Oracle Linux UEK4 vagy újabb verzióval

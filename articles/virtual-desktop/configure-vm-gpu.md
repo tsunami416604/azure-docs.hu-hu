@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.author: denisgun
-ms.openlocfilehash: a0965dc4011b449e617f6dbaeafb68bfa796b620
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 64e8fab3ac352c906cfb63cd39f89acda4109b18
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73953950"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719755"
 ---
 # <a name="configure-graphics-processing-unit-gpu-acceleration-for-windows-virtual-desktop"></a>A grafikus processzor (GPU) gyorsításának beállítása a Windows rendszerű virtuális asztalhoz
 
@@ -37,9 +37,9 @@ Az új címkészlet létrehozásakor is konfigurálnia kell egy alkalmazás-csop
 
 ## <a name="install-supported-graphics-drivers-in-your-virtual-machine"></a>Támogatott grafikus illesztőprogramok telepítése a virtuális gépen
 
-Az Azure N sorozatú virtuális gépek GPU-képességeinek kihasználásához a Windows Virtual Desktopban telepítenie kell az NVIDIA grafikus illesztőprogramokat. Kövesse az [NVIDIA GPU-illesztőprogramok telepítése a Windows rendszerű N sorozatú virtuális gépeken](/azure/virtual-machines/windows/n-series-driver-setup) című témakör utasításait az illesztőprogramok manuális vagy az [NVIDIA GPU-illesztőprogram bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows)használatával történő telepítéséhez.
+Ahhoz, hogy kihasználhassa az Azure N sorozatú virtuális gépek GPU-képességeit a Windows Virtual Desktopban, telepítenie kell a megfelelő grafikus illesztőprogramokat. A [támogatott operációs rendszerek és illesztőprogramok](/azure/virtual-machines/windows/sizes-gpu#supported-operating-systems-and-drivers) utasításait követve telepítse a megfelelő grafikus gyártótól származó illesztőprogramokat manuálisan vagy Azure virtuálisgép-bővítmény használatával.
 
-Vegye figyelembe, hogy csak az Azure által terjesztett [NVIDIA Grid-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) támogatottak a Windows rendszerű virtuális asztali gépeken.
+Csak az Azure által terjesztett illesztőprogramok támogatottak a Windows rendszerű virtuális asztali gépeken. További információk az NVIDIA GPU-val rendelkező Azure-beli virtuális gépekhez csak az [NVIDIA Grid-illesztőprogramok](/azure/virtual-machines/windows/n-series-driver-setup#nvidia-grid-drivers) támogatottak a Windows Virtual Desktopban.
 
 Az illesztőprogram telepítése után szükség van egy virtuális gép újraindítására. A fenti utasításokban található ellenőrzési lépések segítségével ellenőrizze, hogy a grafikus illesztőprogramok telepítése sikeres volt-e.
 
@@ -74,7 +74,7 @@ Távoli asztal kódolja az alkalmazások és az asztali számítógépek által 
 
 Annak ellenőrzéséhez, hogy az alkalmazások a GPU-t használják a rendereléshez, próbálkozzon a következők bármelyikével:
 
-* Az alkalmazások futtatásakor használja a `nvidia-smi` segédprogramot az [illesztőprogram-telepítés ellenőrzése](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) a GPU-használat ellenőrzéséhez című témakörben leírtak szerint.
+* Az NVIDIA GPU-val rendelkező Azure-beli virtuális gépek esetén használja a `nvidia-smi` segédprogramot az [illesztőprogramok telepítésének ellenőrzése](/azure/virtual-machines/windows/n-series-driver-setup#verify-driver-installation) a GPU-használat ellenőrzéséhez az alkalmazások futtatásakor című témakörben leírtak szerint.
 * A támogatott operációsrendszer-verziók esetében a Feladatkezelő segítségével keresse meg a GPU-kihasználtságot. Válassza ki a GPU-t a "teljesítmény" lapon annak megtekintéséhez, hogy az alkalmazások használják-e a GPU-t.
 
 ## <a name="verify-gpu-accelerated-frame-encoding"></a>GPU-gyorsított keret kódolásának ellenőrzése
@@ -90,5 +90,5 @@ Annak ellenőrzése, hogy a Távoli asztal GPU-gyorsított kódolást használ-e
 
 Ezeknek az utasításoknak a GPU-gyorsítással együtt kell működniük egyetlen munkamenet-gazda virtuális gépen. Néhány további megfontolandó szempont a GPU-gyorsítás nagyobb gazdagép-készleten való engedélyezéséhez:
 
-* Érdemes lehet az [NVIDIA GPU illesztőprogram-bővítmény](/azure/virtual-machines/extensions/hpccompute-gpu-windows) használatával leegyszerűsíteni az illesztőprogramok telepítését és a frissítéseket számos virtuális gépen.
+* Vegye fontolóra egy virtuálisgép-bővítmény használatát, amely leegyszerűsíti az illesztőprogramok telepítését és a frissítéseket a több virtuális [gépen](/azure/virtual-machines/extensions/overview) keresztül. Használja az NVIDIA [GPU illesztőprogram-bővítményt](/azure/virtual-machines/extensions/hpccompute-gpu-windows) az NVIDIA GPU-val rendelkező virtuális gépekhez, és használja az AMD GPU illesztőprogram-bővítményt (hamarosan) az AMD GPU-val rendelkező virtuális gépekhez.
 * Vegye fontolóra Active Directory Csoportházirend használatát a csoportházirend konfigurálásának leegyszerűsítéséhez több virtuális gép között. További információ a Csoportházirend telepítéséről a Active Directory tartományban: [csoportházirend objektumok használata](https://go.microsoft.com/fwlink/p/?LinkId=620889).

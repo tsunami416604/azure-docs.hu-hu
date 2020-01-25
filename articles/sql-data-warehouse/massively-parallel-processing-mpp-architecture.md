@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: ea9629c63fcab97ba8ba83cd88592c37ae41818a
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 1d808210861d971b2915206e7be0fe9b955616c5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73646393"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720316"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája 
 
-Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a használati feltételek alapján, akár kiszolgáló nélküli igény szerinti vagy kiépített erőforrásokkal is lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához.
+Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint.
 
  Az Azure szinapszis négy összetevőből áll:
 - SQL Analytics: teljes T-SQL-alapú elemzés 
@@ -33,11 +33,11 @@ Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti a v
 
 ## <a name="sql-analytics-mpp-architecture-components"></a>SQL Analytics MPP architektúra-összetevők
 
-Az [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) egy kibővíthető architektúrát használ a számítási folyamatok több csomóponton történő elosztásához. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, amely lehetővé teszi a számítások egymástól független méretezését a rendszeren lévő adatoktól függetlenül.
+Az [SQL Analytics](sql-data-warehouse-overview-what-is.md#sql-analytics-and-sql-pool-in-azure-synapse) egy kibővíthető architektúrát használ a számítási folyamatok több csomóponton történő elosztására. A skála egysége az [adattárház-egységként](what-is-a-data-warehouse-unit-dwu-cdwu.md)ismert számítási teljesítmény absztrakciója. A számítás elkülönül a tárterülettől, ami lehetővé teszi a számítások egymástól független skálázását a rendszeren lévő adatoktól függetlenül.
 
 ![SQL Analytics-architektúra](media/massively-parallel-processing-mpp-architecture/massively-parallel-processing-mpp-architecture.png)
 
-Az SQL Analytics node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely az SQL Analytics egyszeri belépési pontja. A vezérlő csomópontja futtatja az MPP motort, amely optimalizálja a párhuzamos feldolgozásra irányuló lekérdezéseket, majd a műveleteket a számítási csomópontokon továbbítja a munkájukat párhuzamosan. 
+Az SQL Analytics node-alapú architektúrát használ. Az alkalmazások a T-SQL-parancsokat egy vezérlő csomóponthoz csatlakoznak, amely az SQL Analytics egyszeri belépési pontja. A vezérlő csomópont az MPP motort futtatja, amely optimalizálja a párhuzamos feldolgozáshoz szükséges lekérdezéseket, majd a műveleteket a számítási csomópontokra továbbítja a munkájukat párhuzamosan. 
 
 A számítási csomópontok az Azure Storage-ban tárolják az összes felhasználói adatforrást, és futtatják a párhuzamos lekérdezéseket. Az adatátviteli szolgáltatás (DMS) egy rendszerszintű belső szolgáltatás, amely a lekérdezések párhuzamos futtatásához szükséges módon helyezi át az adatait, és pontos eredményeket ad vissza. 
 
@@ -48,9 +48,9 @@ A leválasztott tárolással és számítással az SQL Analytics használata ese
 * Szüneteltetheti a számítási kapacitást az adatok érintetlenül hagyásával, így csak a tárterületért kell fizetnie.
 * A működési időn belül folytatni tudja a számítási kapacitást.
 
-### <a name="azure-storage"></a>Azure Storage-tárterület
+### <a name="azure-storage"></a>Azure Storage
 
-Az SQL Analytics kihasználja az Azure Storage-t, hogy a felhasználói adatai biztonságban maradjanak.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Maga az adat **eloszlásba** van osztva a rendszer teljesítményének optimalizálása érdekében. Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
+Az SQL Analytics kihasználja az Azure Storage-t, hogy a felhasználói adatai biztonságban maradjanak.  Mivel az Azure Storage tárolja és kezeli az adatait, külön díjat számítunk fel a tárterület-felhasználásért. Az adat felosztása a rendszer teljesítményének **optimalizálása érdekében történik** . Kiválaszthatja, hogy melyik horizontális Felskálázási mintát kell használnia az adatterjesztéshez a tábla meghatározásakor. Ezek a horizontális skálázási minták támogatottak:
 
 * Kivonat
 * Ciklikus időszeletelés
@@ -64,7 +64,7 @@ A vezérlő csomópont az architektúra agya. Ez az az előtérbeli rendszer, am
 
 A számítási csomópontok biztosítják a számítási teljesítményt. A disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért az SQL Analytics újra leképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1 és 60 közötti tartományba esik, és az SQL Analytics szolgáltatási szintje határozza meg.
 
-Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys. PDW _nodes kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
+Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a rendszernézetek node_id oszlopát, amelynek neve a sys. pdw_nodes kezdetű. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=aps-pdw-2016-au7).
 
 ### <a name="data-movement-service"></a>Adatátviteli szolgáltatás
 Az adatátviteli szolgáltatás (DMS) az adatátviteli technológia, amely koordinálja az adatátvitelt a számítási csomópontok között. Egyes lekérdezések adatáthelyezést igényelnek annak biztosításához, hogy a párhuzamos lekérdezések pontos eredményeket állítsanak vissza. Ha adatáthelyezésre van szükség, a DMS biztosítja a megfelelő adatelérést a megfelelő helyre. 
@@ -93,55 +93,27 @@ A terjesztési oszlop kiválasztásához teljesítménnyel kapcsolatos szemponto
 ## <a name="round-robin-distributed-tables"></a>Ciklikus multiplexelés – elosztott táblák
 A betöltések előkészítési táblája, amely gyors teljesítményt nyújt, és rövid idő alatt készíti el a táblázatot.
 
-A Round-Robin elosztott tábla egyenletesen osztja el az adategységeket a táblázatban, de további optimalizálás nélkül. A rendszer először véletlenszerűen választja ki a eloszlást, majd a sorok puffereit egymás utáni eloszláshoz rendeli. Gyorsan betöltheti az adatokat egy ciklikus multiplexelés-táblázatba, de a lekérdezési teljesítmény gyakran jobb lehet a kivonatoló elosztott táblákkal. A ciklikus időszeletelésű táblákhoz való kapcsolódáshoz szükség van az adatkeverésre, és ez további időt vesz igénybe.
+A Round-Robin elosztott tábla egyenletesen osztja el az adategységeket a táblázatban, de további optimalizálás nélkül. A rendszer először véletlenszerűen választja ki a eloszlást, majd a sorok puffereit egymás utáni eloszláshoz rendeli. Gyorsan betöltheti az adatokat egy ciklikus multiplexelés-táblázatba, de a lekérdezési teljesítmény gyakran jobb lehet a kivonatoló elosztott táblákkal. A ciklikus időszeletelésű táblákhoz való csatlakozáshoz szükség van az adatelemzésre, ami további időt vesz igénybe.
 
 
 ## <a name="replicated-tables"></a>Replikált táblák
 A replikált táblák a leggyorsabb lekérdezési teljesítményt biztosítják a kis táblákhoz.
 
-A replikált tábla a tábla teljes másolatát gyorsítótárazza az egyes számítási csomópontokon. Ennek következtében a táblázatok replikálásával megszűnik az adatok átvitele a számítási csomópontok között a csatlakozás vagy összesítés előtt. A replikált táblákat a legjobban kis táblák használják. További tárterületre van szükség, és a nagyméretű táblázatokat nem használó adatírás során további terhelést kell fizetni.  
+A replikált tábla a tábla teljes másolatát gyorsítótárazza az egyes számítási csomópontokon. Ennek következtében a táblázatok replikálásával megszűnik az adatok átvitele a számítási csomópontok között a csatlakozás vagy összesítés előtt. A replikált táblákat a legjobban kis táblák használják. További tárterületre van szükség, és az adatírás során felmerülő további terhelés, amely a nagyméretű táblákat nem praktikus formában hajtja végre.  
 
-Az alábbi ábrán egy olyan replikált tábla látható, amely az egyes számítási csomópontok első eloszlásában van gyorsítótárazva.  
+Az alábbi ábrán egy olyan replikált tábla látható, amely az első eloszlásban van gyorsítótárazva az egyes számítási csomópontokon.  
 
 ![Replikált tábla](media/sql-data-warehouse-distributed-data/replicated-table.png "Replikált tábla") 
 
-## <a name="next-steps"></a>További lépések
-Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan SQL-készletet][create a SQL pool] , és hogyan [tölthető be a mintaadatok][load sample data]. Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét][Azure glossary], amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
+## <a name="next-steps"></a>Következő lépések
+Most, hogy már ismeri az Azure Szinapszisot, megtudhatja, hogyan [hozhat létre gyorsan SQL-készletet](./sql-data-warehouse-get-started-provision.md) , és hogyan [tölthető be a mintaadatok](./sql-data-warehouse-load-sample-databases.md). Ha az Azure új felhasználója, hasznosnak találhatja az [Azure szószedetét](../azure-glossary-cloud-terminology.md), amikor az új fogalmakkal ismerkedik. Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
 
-* [Ügyfelek sikertörténetei]
-* [Blogok]
-* [Funkciókérések]
-* [Videók]
-* [Az ügyféltanácsadói csapat blogjai]
-* [Támogatási jegy létrehozása]
-* [MSDN-fórum]
-* [Stack Overflow-fórum]
-* [Twitter]
+* [Ügyfelek sikertörténetei](https://azure.microsoft.com/case-studies/?service=sql-data-warehouse)
+* [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [Funkciókérések](https://feedback.azure.com/forums/307516-sql-data-warehouse)
+* [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse)
+* [Támogatási jegy létrehozása](./sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse)
+* [Stack Overflow-fórum](https://stackoverflow.com/questions/tagged/azure-sqldw)
+* [Twitter](https://twitter.com/hashtag/SQLDW)
 
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a SQL pool]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Ügyfelek sikertörténetei]: https://azure.microsoft.com/case-studies/?service=sql-data-warehouse
-[Blogok]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-fórum]: https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videók]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/

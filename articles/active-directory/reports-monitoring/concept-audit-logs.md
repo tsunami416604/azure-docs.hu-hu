@@ -17,12 +17,12 @@ ms.date: 07/17/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8883e3ade7e5d52f3a62346bf8be51ac36042f82
-ms.sourcegitcommit: ae8b23ab3488a2bbbf4c7ad49e285352f2d67a68
+ms.openlocfilehash: 49b49949c1765c3cb1598d728e21479c65037930
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74008542"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714490"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -45,7 +45,7 @@ Ez a cikk áttekintést nyújt a naplózási jelentésről.
 
 ## <a name="audit-logs"></a>Naplók
 
-Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **tevékenység** szakaszában. Vegye figyelembe, hogy a naplók késése akár egy óráig is eltarthat, ezért előfordulhat, hogy a naplózási tevékenység adatai a feladat befejezése után a portálon jelennek meg.
+Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **tevékenység** szakaszában. Vegye figyelembe, hogy a naplók késése akár egy óráig is tarthat, így a naplózási tevékenység adatai a feladat befejezése után a portálon jelennek meg.
 
 
 
@@ -56,7 +56,7 @@ Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 - a tevékenység kategóriája és neve (*mit*) 
 - a tevékenység állapota (sikeres vagy sikertelen)
 - a célt
-- Egy tevékenység kezdeményezője/szereplője
+- egy tevékenység kezdeményezője/szereplője
 
 ![Naplók](./media/concept-audit-logs/listview.png "Naplók")
 
@@ -80,7 +80,7 @@ A naplózási adat a következő mezőkön szűrhető:
 - Szolgáltatás
 - Kategória
 - Tevékenység
-- status
+- Állapot
 - Cél
 - Kezdeményező (Szereplő)
 - Dátumtartomány
@@ -89,7 +89,7 @@ A naplózási adat a következő mezőkön szűrhető:
 
 A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltatások legördülő listájából válasszon ki:
 
-- Összes
+- Mind
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -107,12 +107,12 @@ A **szolgáltatás** szűrője lehetővé teszi, hogy a következő szolgáltat�
 
 A **Kategória** szűrővel a következő szűrők közül választhat:
 
-- Összes
+- Mind
 - AdministrativeUnit
 - ApplicationManagement
 - Authentication
 - Engedélyezés
-- Kapcsolattartó
+- Kapcsolatfelvétel
 - Eszköz
 - DeviceConfiguration
 - DirectoryManagement
@@ -130,7 +130,7 @@ Az összes naplózási tevékenység listáját a Graph API használatával érh
 
 Az **állapot** szűrő lehetővé teszi a szűrést egy naplózási művelet állapota alapján. Az állapot a következők egyike lehet:
 
-- Összes
+- Mind
 - Sikeres
 - Hiba
 

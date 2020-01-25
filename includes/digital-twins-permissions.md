@@ -7,14 +7,14 @@ author: alinamstanciu
 manager: bertvanhoof
 ms.service: digital-twins
 ms.topic: include
-ms.date: 01/06/2020
+ms.date: 01/23/2020
 ms.custom: include file
-ms.openlocfilehash: a6adbe095b3ed486be8eb2e2611db5a40162d5dd
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a1576e4a97af5de0b936c662de636aae542a19b5
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895504"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76749011"
 ---
 >[!NOTE]
 >Ez a szakasz az [Azure ad-alkalmazás regisztrálására](https://docs.microsoft.com/azure/active-directory/develop/quickstart-register-app)vonatkozó utasításokat tartalmazza.
@@ -33,9 +33,18 @@ ms.locfileid: "75895504"
 
 1. Győződjön meg arról, hogy [az alkalmazás **nyilvános ügyfélként**van regisztrálva](https://docs.microsoft.com/azure/active-directory/develop/scenario-desktop-app-registration), nyissa meg az alkalmazás regisztrációjának **hitelesítés** paneljét, majd görgessen le az ablaktáblán. Az **alapértelmezett ügyfél típusa** szakaszban válassza az **Igen** lehetőséget az **alkalmazás nyilvános ügyfélként**való kezeléséhez, és kattintson a **Mentés**gombra.
 
-    Jelölje be a **hozzáférési jogkivonatok** lehetőséget a **oauth2AllowImplicitFlow** beállítás engedélyezéséhez a manifest. JSON fájlban.
+    1. Az **átirányítási URI-azonosítóknak** meg kell egyezniük a hitelesítési kérelem által megadott címtől:
 
-    [![nyilvános ügyfél-konfigurációs beállítás](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
+        * Helyi fejlesztési környezetben üzemeltetett alkalmazásokhoz válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget. Ügyeljen arra, hogy az **alapértelmezett ügyfél típusát** állítsa Igen értékre.
+        * Azure App Serviceon üzemeltetett egylapos alkalmazások esetében válassza a **web**lehetőséget.
+
+        Válassza a **nyilvános ügyfél (mobil & asztali)** lehetőséget, és adja meg `http://localhost:8080/`.
+
+        [![átirányítási URI-k konfigurálása](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png)](./media/digital-twins-permissions/aad-app-configure-redirect-uris.png#lightbox)
+
+    1. A **hozzáférési jogkivonatok** beállításával konfigurálja a **oauth2AllowImplicitFlow** beállítást úgy, hogy `true` az erőforrás **jegyzékfájljának** JSON-fájljában.
+
+        [![nyilvános ügyfél-konfigurációs beállítás](./media/digital-twins-permissions/aad-configure-public-client.png)](./media/digital-twins-permissions/aad-configure-public-client.png#lightbox)
 
 1.  Nyissa meg a regisztrált alkalmazás **Áttekintés** paneljét, és másolja a következő entitások értékeit egy ideiglenes fájlba. Ezeket az értékeket fogja használni a minta alkalmazás konfigurálásához a következő fejezetekben.
 

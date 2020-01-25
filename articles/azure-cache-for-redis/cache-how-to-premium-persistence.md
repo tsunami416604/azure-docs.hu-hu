@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 08/24/2017
-ms.openlocfilehash: 6ff7500712f57d7cf2adad1fc73f68a29f3afc20
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 40cd3467c7a4377427bb8db437e1047382933b1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75412824"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714873"
 ---
 # <a name="how-to-configure-data-persistence-for-a-premium-azure-cache-for-redis"></a>Az adatmegőrzés konfigurálása prémium szintű Azure cache-Redis
 A Redis készült Azure cache különböző gyorsítótárazási ajánlatokat tartalmaz, amelyek rugalmasságot biztosítanak a gyorsítótár méretének és funkcióinak, beleértve a prémium szintű funkciókat, például a fürtözést, az adatmegőrzést és a virtuális hálózatok támogatását. Ez a cikk bemutatja, hogyan konfigurálhatja az adatmegőrzést egy prémium szintű Azure cache-ben a Redis-példány esetében.
@@ -26,7 +26,13 @@ A Redis-hez készült Azure cache a következő modellek használatával nyújt 
 * **RDB-megőrzés** – ha a RDB (Redis-adatbázis) megőrzése konfigurálva van, az Azure cache a Redis számára megőrzi az Azure cache-t a Redis bináris formátumból a lemezre egy konfigurálható biztonsági mentési gyakoriság alapján. Ha végzetes esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a rendszer a legutóbbi pillanatkép használatával újraépíti a gyorsítótárat. További információ az RDB megőrzésének [előnyeiről](https://redis.io/topics/persistence#rdb-advantages) és [hátrányairól](https://redis.io/topics/persistence#rdb-disadvantages) .
 * **AOF-megőrzés** – ha a AOF (csak Hozzáfűzés) adatmegőrzés konfigurálva van, az Azure cache for Redis minden írási műveletet egy olyan naplóba ment, amely másodpercenként legalább egyszer ment egy Azure Storage-fiókba. Ha olyan katasztrofális esemény következik be, amely letiltja az elsődleges és a replika gyorsítótárat is, a gyorsítótárat a tárolt írási műveletek használatával rekonstruáljuk. További információ az AOF megőrzésének [előnyeiről](https://redis.io/topics/persistence#aof-advantages) és [hátrányairól](https://redis.io/topics/persistence#aof-disadvantages) .
 
-Az adatmegőrzés a **Redis panel új Azure-gyorsítótárában** , a gyorsítótár létrehozásakor és a meglévő prémium gyorsítótárak **erőforrás menüjében** van konfigurálva.
+Az adatmegőrzés a saját és felügyelt Azure Storage-fiókba írja a Redis-adatot. A gyorsítótár létrehozásakor és a meglévő prémium gyorsítótárak **erőforrás menüjében** konfigurálhatja az **új Azure cache for Redis** panelt.
+
+> [!NOTE]
+> 
+> Az Azure Storage automatikusan titkosítja az adataikat, amikor azok megmaradnak. A titkosításhoz saját kulcsokat is használhat. További információ: [ügyfél által felügyelt kulcsok Azure Key Vault használatával](/azure/storage/common/storage-service-encryption?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#customer-managed-keys-with-azure-key-vault).
+> 
+> 
 
 [!INCLUDE [redis-cache-create](../../includes/redis-cache-premium-create.md)]
 
@@ -38,7 +44,7 @@ A következő szakaszban ismertetett lépések azt ismertetik, hogyan konfigurá
 
 ## <a name="enable-redis-persistence"></a>Redis megőrzésének engedélyezése
 
-A Redis-megőrzés engedélyezve van a **Redis adatmegőrzési** paneljén a **RDB** vagy a **AOF** -megőrzés kiválasztásával. Új gyorsítótárak esetén ez a panel a gyorsítótár-létrehozási folyamat során érhető el az előző szakaszban leírtak szerint. A meglévő gyorsítótárak esetében a **Redis adatmegőrzési** panelje a gyorsítótár **erőforrás menüjéből** érhető el.
+Az **adatmegőrzés** panelen az Redis-megőrzés engedélyezve van az **RDB** vagy a **AOF** -megőrzés kiválasztásával. Új gyorsítótárak esetén ez a panel a gyorsítótár-létrehozási folyamat során érhető el az előző szakaszban leírtak szerint. Meglévő gyorsítótárak esetében az **adatmegőrzési** panel a gyorsítótár **erőforrás menüjéből** érhető el.
 
 ![Redis-beállítások][redis-cache-settings]
 
@@ -125,7 +131,7 @@ Mind a RDB, mind a AOF megőrzése esetén:
 * Ha kisebb méretre méretezett, és nincs elég hely a kisebb méretekben az utolsó biztonsági mentésből származó összes adatok tárolásához, a kulcsok a visszaállítási folyamat során törlődnek, jellemzően a [allkeys-LRU](https://redis.io/topics/lru-cache) kizárási házirend használatával.
 
 ### <a name="can-i-change-the-rdb-backup-frequency-after-i-create-the-cache"></a>Módosíthatom a RDB biztonsági mentésének gyakoriságát a gyorsítótár létrehozása után?
-Igen, a **Redis adatmegőrzési** paneljén módosíthatja a RDB megőrzésének biztonsági mentésének gyakoriságát. Útmutatásért lásd: a Redis megőrzésének konfigurálása.
+Igen, az **adatmegőrzés** panelen módosíthatja a RDB megőrzésének biztonsági mentésének gyakoriságát. Útmutatásért lásd: a Redis megőrzésének konfigurálása.
 
 ### <a name="why-if-i-have-an-rdb-backup-frequency-of-60-minutes-there-is-more-than-60-minutes-between-backups"></a>Miért van a RDB biztonsági mentés gyakorisága 60 percnél több, mint 60 perc a biztonsági másolatok között?
 A RDB megőrzése biztonsági mentési gyakorisága nem indul el, amíg az előző biztonsági mentési folyamat sikeresen befejeződött. Ha a biztonsági mentés gyakorisága 60 perc, és a biztonsági mentési folyamat 15 percet vesz igénybe, a következő biztonsági mentés nem indul el, amíg az előző biztonsági mentés kezdési időpontja nem fog megjelenni a 75 percben.

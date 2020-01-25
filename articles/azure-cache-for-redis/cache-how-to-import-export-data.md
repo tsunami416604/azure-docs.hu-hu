@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/31/2017
 ms.author: yegu
-ms.openlocfilehash: df8b65fcb4dd2b9622716052be2df59cbfa5424a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 29ad5ca6c9058b88a539c7a3bb8ace4d9a65083a
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75971806"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714520"
 ---
 # <a name="import-and-export-data-in-azure-cache-for-redis"></a>Az Azure cache-ben lévő Redis importálása és exportálása
 Az import/export egy Azure cache a Redis adatkezelési művelethez, amely lehetővé teszi az adatok importálását az Azure cache-be a Redis, vagy exportálja az Azure cache-ből a Redis-be adatok exportálását egy Azure cache for Redis Database (RDB) pillanatkép importálásával és exportálásával egy Azure Storage-fiókban található blobba.
@@ -24,7 +24,7 @@ Az Importálás/exportálás lehetővé teszi, hogy áttelepítse a különböz�
 Ez a cikk útmutatást nyújt az Azure cache-sel való adatimportáláshoz és-exportáláshoz az Redis-hez, és megadja a válaszokat a gyakran ismételt kérdésekre.
 
 > [!IMPORTANT]
-> Az importálási/exportálási funkció előzetes verzióban érhető el, és csak a [prémium szintű](cache-premium-tier-intro.md) csomagok gyorsítótárai esetében érhető el.
+> Az import/export csak a [prémium szintű](cache-premium-tier-intro.md) csomagok gyorsítótárai esetében érhető el.
 >
 >
 
@@ -41,7 +41,7 @@ Az importálással bármilyen felhőben vagy környezetben futó Redis-kiszolgá
     ![Adatok importálása](./media/cache-how-to-import-export-data/cache-import-data.png)
 2. Kattintson a **blob (ok) kiválasztása** elemre, és válassza ki azt a Storage-fiókot, amely az importálandó adatkészletet tartalmazza.
 
-    ![Tárfiók kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
+    ![Storage-fiók kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-storage-account.png)
 3. Kattintson arra a tárolóra, amely az importálandó adatkészletet tartalmazza.
 
     ![Tároló kiválasztása](./media/cache-how-to-import-export-data/cache-import-choose-container.png)

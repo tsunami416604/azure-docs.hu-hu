@@ -8,65 +8,65 @@ ms.topic: include
 ms.date: 04/17/2019
 ms.author: azcspmt;jonbeck;cynthn
 ms.custom: include file
-ms.openlocfilehash: b98aebfd7bef3edff8e046d7ef1c388ea57afa04
-ms.sourcegitcommit: ac1cfe497341429cf62eb934e87f3b5f3c79948e
+ms.openlocfilehash: 765ee3c737adbe1da89b9e908d0e22e44d0f29ba
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2019
-ms.locfileid: "67501239"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748874"
 ---
-Tárolási optimalizált Virtuálisgép-méretek magas lemez-adatátviteli és i/o-e, és ideálisak a Big Data, SQL, nosql-alapú adatbázisok, az adattárházak és nagy tranzakciós adatbázisok.  Ilyenek például Cassandra, MongoDB, Cloudera vagy Redis. Ez a cikk ismerteti a vcpu-k, az adatlemezeket és a hálózati adapterek, valamint helyi tároló átviteli sebesség és a hálózati sávszélesség optimalizált méreteire vonatkoztatva számát.
+A tárolásra optimalizált virtuálisgép-méretek nagy méretű adatátviteli sebességet és IO-t biztosítanak, és ideálisak a Big Database, az SQL, a NoSQL adatbázisok, az adattárház és a nagy tranzakciós adatbázisok számára.  Ilyenek például a Cassandra, a MongoDB, a Cloudera és a Redis. Ez a cikk a vCPU, az adatlemezek és a hálózati adapterek számáról, valamint a helyi tárterület-átviteli sebességről és a hálózati sávszélességről nyújt információt az egyes optimalizált méretekhez.
 
-A Lsv2 sorozat funkciók nagy teljesítményű, kis késésű, közvetlenül hozzá van rendelve helyi futó NVMe-tároló a [AMD EPYC &trade; 7551 processzor](https://www.amd.com/en/products/epyc-7000-series) -az összes mag boost 2.55 GHz-es és a egy maximális kiemelése 3.0 GHz-es. Az Lsv2 sorozatú virtuális gépek elérhetőek 8 és 80 vCPU-s méretekben egy párhuzamos többszálas konfigurációban.  A vCPU-nkénti memória 8 GiB, és 8 vCPU-nkét egy 1,92 TB-os NVMe SSD M.2 eszköz, és az L80s v2-nél akár 19,2 TB (10x1,92 TB) is elérhető.
+A Lsv2 sorozat nagy átviteli sebességű, kis késleltetésű, közvetlenül leképezett helyi NVMe tárolót biztosít az [AMD EPYC &trade; 7551 processzoron](https://www.amd.com/en/products/epyc-7000-series) , amely a 2.55 GHz-es és a 3,0 GHz-es maximális növekedést is tartalmazza. Az Lsv2 sorozatú virtuális gépek elérhetőek 8 és 80 vCPU-s méretekben egy párhuzamos többszálas konfigurációban.  A vCPU-nkénti memória 8 GiB, és 8 vCPU-nkét egy 1,92 TB-os NVMe SSD M.2 eszköz, és az L80s v2-nél akár 19,2 TB (10x1,92 TB) is elérhető.
 
 > [!NOTE]
-> A Lsv2 sorozatú virtuális gépek közvetlenül a virtuális Géphez csatolt adatlemezek tartós használata helyett a csomóponton a helyi lemez használatára van optimalizálva. Ez lehetővé teszi a nagyobb IOPs és átviteli sebességet a számítási feladatokhoz. A Lsv2 és Ls-sorozat nem támogatja az elérhető IOPs tartós adatlemezek-kal növelni a helyi gyorsítótárat a létrehozása.
+> A Lsv2 sorozatú virtuális gépek úgy vannak optimalizálva, hogy az állandó adatlemezek használata helyett közvetlenül a virtuális géphez csatolt helyi lemezt használják. Ez nagyobb IOPs/átviteli sebességet tesz lehetővé a munkaterhelések számára. A Lsv2 és az ls-sorozat nem támogatja a helyi gyorsítótár létrehozását, hogy növelje a tartós adatlemezekkel elérhető IOPs.
 >
-> A magas teljesítmény és a helyi lemez IOPs lehetővé teszi a Lsv2 és Ls-sorozat virtuális gépei NoSQL-tárolókat, mint például az Apache Cassandra- és MongoDB replikálhatja adatait, így több virtuális gép folyamataik megőrzésére a meghiúsulása esetén egyetlen virtuális Gépet, amely ideális.
+> A helyi lemez nagy átviteli sebessége és IOPs révén a Lsv2 és az ls sorozatú virtuális gépek ideálisak olyan NoSQL-tárolók számára, mint például az Apache Cassandra és a MongoDB, amelyek több virtuális gépen replikálják az adatmegőrzést, és így az egyetlen virtuális gép meghibásodása esetén is képesek az adatok megőrzésére.
 >
-> További tudnivalókért lásd: [a Lsv2 sorozatú virtuális gépek teljesítményének optimalizálásához](../articles/virtual-machines/linux/storage-performance.md).  
+> További információ: [a teljesítmény optimalizálása a Lsv2-sorozatú virtuális gépeken](../articles/virtual-machines/linux/storage-performance.md).  
 
 
 ## <a name="lsv2-series"></a>Lsv2 sorozat
 
 ACU: 150-175
 
-Prémium szintű Storage: Támogatott
+Premium Storage: támogatott
 
-Prémium szintű Storage gyorsítótárazást: Nem támogatott
+Premium Storage gyorsítótárazás: nem támogatott
 
-| Méret          | vCPU | Memória (GiB) | Ideiglenes lemez<sup>1</sup> (GiB) | NVMe lemezeket<sup>2</sup> | NVMe lemezteljesítmény<sup>3</sup> (olvasási IOPS / Mbps) | Maximális lemezteljesítmény adatok (IOPs vagy Mbps)<sup>4</sup> | Adatlemezek maximális száma | Hálózati adapterek max. száma / várt hálózati sávszélesség (Mbps) |
+| Méret          | vCPU | Memória (GiB) | <sup>1</sup> . ideiglenes lemez (GIB) | NVMe-lemezek<sup>2</sup> | NVMe lemez átviteli sebessége<sup>3</sup> (olvasási IOPS/Mbps) | Gyorsítótár nélküli adatlemez maximális átviteli sebessége (IOPs/MBps)<sup>4</sup> | Adatlemezek maximális száma | Hálózati adapterek maximális száma/várt hálózati sávszélesség (Mbps) |
 |---------------|-----------|-------------|--------------------------|----------------|---------------------------------------------------|-------------------------------------------|------------------------------|------------------------------| 
-| Standard_L8s_v2   |  8 |  64 |  80 |  1x1.92 TB  | 400000 / 2000  | 8000/160   | 16 | 2 / 3200  |
-| Standard_L16s_v2  | 16 | 128 | 160 |  2x1.92 TB  | 800000 / 4000  | 16000/320  | 32 | 4 / 6400  |
-| Standard_L32s_v2  | 32 | 256 | 320 |  4x1.92 TB  | 1,5 MILLIÓ / 8000-ES    | 32000/640  | 32 | 8 / 12800 |
-| Standard_L48s_v2  | 48 | 384 | 480 |  6x1.92 TB  | 2.2-ES M / 14000   | 48000/960  | 32 | 8 / 16000+ |
-| Standard_L64s_v2  | 64 | 512 | 640 |  8x1.92 TB  | 2.9 M / 16000   | 64000/1280 | 32 | 8 / 16000+ |
-| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x1.92TB   | 3.8 M / 20000   | 80000/1400 | 32 | 8 / 16000+ |
+| Standard_L8s_v2   |  8 |  64 |  80 |  1x 1.92 TB  | 400000/2000  | 8000/160   | 16 | 2 / 3200  |
+| Standard_L16s_v2  | 16 | 128 | 160 |  2x 1.92 TB  | 800000/4000  | 16000/320  | 32 | 4 / 6400  |
+| Standard_L32s_v2  | 32 | 256 | 320 |  4x 1.92 TB  | 1,5 m/8000    | 32000/640  | 32 | 8 / 12800 |
+| Standard_L48s_v2  | 48 | 384 | 480 |  6x 1.92 TB  | 2.2 m/14000   | 48000/960  | 32 | 8/16000 + |
+| Standard_L64s_v2  | 64 | 512 | 640 |  8x 1.92 TB  | 2.9 m/16000   | 64000/1280 | 32 | 8/16000 + |
+| Standard_L80s_v2<sup>5</sup> | 80 | 640 | 800 | 10x 1.92 TB   | 3.8 m/20000   | 80000/1400 | 32 | 8/16000 + |
 
-<sup>1</sup> Lsv2 sorozatú virtuális gépek egy standard SCSI-alapú ideiglenes erőforrás lemez az operációs rendszer stránkování/felcserélés fájl használata (a Windows, Linux rendszeren /dev/sdb D:) rendelkezik. Ezt a lemezt biztosít a tároló 80 GB, 4 000 iops-t, és 80 Mbps átviteli sebesség a minden 8 Vcpu (pl. Standard_L80s_v2 biztosít 800 GiB 40 000 IOPS és 800 Mbps). Ez biztosítja, hogy az NVMe-meghajtókkal teljes dedikálhatja alkalmazás használatát. Ez a lemez elmúló, és minden adat el fog veszni a Leállítás/felszabadítás.
+<sup>1</sup> a Lsv2 sorozatú virtuális gépek szabványos SCSI-alapú ideiglenes erőforrás-lemezzel rendelkeznek az operációs rendszer lapozófájljának/swap-fájljának használatához (D: Windows rendszeren, Linuxon/dev/sdb). Ez a lemez 80 GiB tárterületet, 4 000 IOPS és 80 MBps átviteli sebességet biztosít minden 8 vCPU (például Standard_L80s_v2 biztosítja a 800 GiB-t az 40 000 IOPS és a 800 MBPS-ban). Ez biztosítja, hogy a NVMe-meghajtók teljes mértékben kiállíthatók legyenek az alkalmazások általi használatra. Ez a lemez elmúló, és az összes adatvesztés a Leállítás/felszabadítás során elvész.
 
-<sup>2</sup> helyi NVMe lemezeket a rövid élettartamú, az adatok a lemezeken lévő elvesznek, ha, állítsa le vagy szabadítsa fel a virtuális Gépet.
+<sup>2</sup> a helyi NVMe-lemezek elmúlóak, a virtuális gép leállítása/felszabadítása után az adatvesztés történik.
 
-<sup>3</sup> Hyper-V NVMe közvetlen technológia leszabályozás férhet hozzá biztonságosan a Vendég virtuális gép terén leképezett helyi NVMe-meghajtókkal.  A maximális teljesítmény eléréséhez szükséges vagy a legújabb WS2019 build vagy Ubuntu 18.04, 16.04 használatával az Azure Marketplace-ről.  Írási teljesítmény i/o-mérete, a meghajtó terhelés és a tárolókapacitás kihasználtságát alapján változik.
+<sup>3</sup> a Hyper-V NVMe Direct technológiája nem szabályozott hozzáférést biztosít a helyi NVMe-meghajtókhoz, amelyek biztonságosan vannak leképezve a vendég virtuális gép területére.  A maximális teljesítmény eléréséhez a legújabb WS2019 Build vagy Ubuntu 18,04 vagy 16,04 használatával kell használnia az Azure Marketplace-en.  Az írási teljesítmény az IO-méret, a meghajtó terhelése és a kapacitás kihasználtsága alapján változhat.
 
-<sup>4</sup> Lsv2-sorozat virtuális gépei nem biztosít gazdagép gyorsítótár adatlemez nem tudják igénybe a Lsv2 számítási feladatokhoz.  Azonban Lsv2 virtuális gépek az Azure virtuális gép rövid élettartamú operációsrendszer lemez lehetőséget (akár 30 GiB) képes kezelni.
+<sup>4</sup> a Lsv2 sorozatú virtuális gépek nem biztosítanak gazdagép-gyorsítótárat az adatlemez számára, mivel az nem használja ki a Lsv2 számítási feladatait.  A Lsv2 virtuális gépek azonban az Azure ideiglenes VM operációsrendszer-lemezének beállítását (legfeljebb 30 GiB) tudják kezelni.
 
-<sup>5</sup> több mint 64 virtuális processzorral rendelkező virtuális gépek megkövetelése a támogatott vendég operációs rendszerek egyikét:
-- A Windows Server 2016 vagy újabb
-- Ubuntu 16.04 LTS vagy újabb, az Azure-ral kernel lehetőségeire (4.15 kernel vagy újabb)
+<sup>5</sup> a több mint 64 vCPU rendelkező virtuális gépekhez a következő támogatott vendég operációs rendszerek egyike szükséges:
+- Windows Server 2016 vagy újabb
+- Ubuntu 16,04 LTS vagy újabb, az Azure-ban hangolt kernel (4,15 kernel vagy újabb)
 - SLES 12 SP2 vagy újabb
-- Érvényes 6.10, a Microsoft által biztosított LIS csomaggal 4.3.1 RHEL vagy CentOS verzió 6.7 (vagy újabb) telepítve van
-- RHEL vagy CentOS 7.3-as verzió, Microsoft által biztosított LIS 4.2.1 csomaggal (vagy újabb) telepítve van
-- RHEL vagy CentOS 7.6 vagy újabb verzió
-- Oracle Linux UEK4 vagy újabb
-- Debian 9 portolások kernel, a Debian, 10 vagy újabb
-- CoreOS 4.14 kernel vagy újabb
+- RHEL vagy CentOS 6,7-es verzió – 6,10, a Microsoft által biztosított LIS-csomag 4.3.1-es (vagy újabb) verziójával
+- RHEL vagy CentOS 7,3-es verzió, a Microsoft által biztosított LIS csomag 4.2.1 (vagy újabb) telepítésével
+- RHEL vagy CentOS 7,6-es vagy újabb verzió
+- Oracle Linux UEK4 vagy újabb verzióval
+- Debian 9 a backports rendszermaggal, Debian 10 vagy újabb verzióval
+- CoreOS 4,14 kernelsel vagy újabb verzióval
 
 
 ## <a name="size-table-definitions"></a>Mérettábla definíciói
 
 - A tárolókapacitás mértékegysége GiB (gibibájt = 1024^3 bájt). A gigabájtban (1000^3 bájt) és a gibibájtban (1024^3 bájt) mért meghajtók összehasonlításakor tartsa észben, hogy a GiB-ban kifejezett kapacitások kisebbnek tűnhetnek. Például: 1023 GiB = 1098,4 GB
-- A lemezteljesítmény másodpercenkénti bemeneti/kimeneti műveletek (IOPS) mennyiségeként van kifejezve, valamint Mbps-ben, ahol 1 Mbps = 10^6 bájt/másodperc.
-- Ha azt szeretné, a virtuális gépek számára a legjobb teljesítmény, a vCPU / 2 lemezt az adatlemezek száma korlátozza.
-- **Várható hálózati sávszélesség** maximális összesített értéket jelenít meg [Virtuálisgép-típusonként kiosztott sávszélesség](../articles/virtual-network/virtual-machine-network-throughput.md) összes hálózati adapteren az összes célhelyre. A felső határértékek nem garantáltak, csak útmutatóul szolgálnak a kívánt alkalmazásra megfelelő VM-típus kiválasztásához. A tényleges hálózati teljesítmény számos tényezőtől függ, többek között a hálózat túlterhelésétől, az alkalmazás terhelésétől, valamint az alkalmazás hálózati beállításaitól. A hálózati átviteli sebesség optimalizálásával kapcsolatos információkért lásd: [A hálózati átviteli sebesség optimalizálása Windows és Linux rendszeren](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Linux vagy Windows rendszeren a várt hálózati teljesítmény eléréséhez egy adott verzió kiválasztására vagy a virtuális gép optimalizálására lehet szükség. További információkért lásd: [Virtuális gépek átviteli sebességének megbízható tesztelése](../articles/virtual-network/virtual-network-bandwidth-testing.md).
+- A lemezteljesítmény másodpercenkénti bemeneti/kimeneti műveletek (IOPS) mennyiségeként van kifejezve, valamint MBps-ben, ahol 1 MBps = 10^6 bájt/másodperc.
+- Ha a legjobb teljesítményt szeretné használni a virtuális gépek számára, az adatlemezek számát a vCPU 2 lemezre kell korlátoznia.
+- A **várt hálózati sávszélesség** a virtuálisgép- [típusokban lefoglalt](../articles/virtual-network/virtual-machine-network-throughput.md) maximális összesített sávszélesség az összes hálózati adapteren, minden célhelynél. A felső határértékek nem garantáltak, csak útmutatóul szolgálnak a kívánt alkalmazásra megfelelő VM-típus kiválasztásához. A tényleges hálózati teljesítmény számos tényezőtől függ, többek között a hálózat túlterhelésétől, az alkalmazás terhelésétől, valamint az alkalmazás hálózati beállításaitól. A hálózati átviteli sebesség optimalizálásával kapcsolatos információkért lásd: [A hálózati átviteli sebesség optimalizálása Windows és Linux rendszeren](../articles/virtual-network/virtual-network-optimize-network-bandwidth.md). Linux vagy Windows rendszeren a várt hálózati teljesítmény eléréséhez egy adott verzió kiválasztására vagy a virtuális gép optimalizálására lehet szükség. További információkért lásd: [Virtuális gépek átviteli sebességének megbízható tesztelése](../articles/virtual-network/virtual-network-bandwidth-testing.md).

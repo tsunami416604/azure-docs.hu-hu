@@ -4,14 +4,14 @@ description: Az ügyfél-konfigurációs beállítások megismerése az Azure Co
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/15/2020
 ms.author: sngun
-ms.openlocfilehash: 27f39af480db8c0a044489a2efe6d2e4447b6db1
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: eec5ab6cdf4afd63db2e77046bb19436e600ece6
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "71261311"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720996"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>A Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -23,14 +23,14 @@ ms.locfileid: "71261311"
 
 A Azure Cosmos DB egy gyors és rugalmas elosztott adatbázis, amely zökkenőmentesen méretezhető a garantált késés és az átviteli sebesség tekintetében. Nem kell megváltoztatnia a jelentős architektúrát, vagy összetett kódot kell írnia az adatbázis méretezéséhez Azure Cosmos DB. A fel-és leskálázás olyan egyszerű, mint egyetlen API-hívás. További információkért lásd: [a tárolók teljesítményének kiépítése](how-to-provision-container-throughput.md) vagy [az adatbázis átviteli sebességének kiépítése](how-to-provision-database-throughput.md). Mivel azonban a Azure Cosmos DB hálózati hívásokkal érhetők el, ügyféloldali optimalizálási lehetőségek érhetők el, amelyekkel elérheti a maximális teljesítményt az [SQL .net SDK](sql-api-sdk-dotnet-standard.md)használatakor.
 
-Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? vegye figyelembe a következő lehetőségeket:
+Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témakört kérdezi le? Vegye figyelembe a következő lehetőségeket:
 
 ## <a name="networking"></a>Hálózatkezelés
 <a id="direct-connection"></a>
 
 1. **Csatlakoztatási házirend: közvetlen kapcsolási mód használata**
 
-    Az ügyfél Azure Cosmos DBhoz való csatlakozásának módja fontos hatással van a teljesítményre, különösen a megfigyelt ügyféloldali késések tekintetében. Az ügyfélkapcsolati házirend konfigurálásához két fő konfigurációs beállítás érhető el – a kapcsolati *mód* és a kapcsolati *protokoll*.  A két elérhető mód a következők:
+    Az ügyfél Azure Cosmos DB-hez való csatlakozásának módja jelentősen befolyásolja a teljesítményt, főként a megfigyelt ügyféloldali késés szempontjából. Az ügyfélkapcsolati házirend konfigurálásához két fő konfigurációs beállítás érhető el – a kapcsolati *mód* és a kapcsolati *protokoll*.  A két elérhető mód a következők:
 
    * Átjáró üzemmód
       
@@ -40,7 +40,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
    * Közvetlen mód
 
-     A közvetlen mód a TCP és a HTTPS protokollon keresztül támogatja a kapcsolódást, és az alapértelmezett csatlakozási mód, ha a [Microsoft. Azure. Cosmos/.net v3 SDK-](sql-api-sdk-dotnet-standard.md)t használja.
+     A közvetlen mód a TCP protokollon keresztüli csatlakozást támogatja, és az alapértelmezett csatlakozási mód, ha a [Microsoft. Azure. Cosmos/.net v3 SDK-](sql-api-sdk-dotnet-standard.md)t használja.
 
      Az átjáró mód használata esetén a Cosmos DB a 443-es portot és a 10250-es, 10255-as és 10256-es portokat használja a MongoDB API-k Azure Cosmos DB használatakor. Az 10250-es port az alapértelmezett MongoDB-példányra van leképezve, a Geo-replikálás és a 10255/10256-portok nélkül, a MongoDB-példányhoz a Geo-replikálási funkcióval. Ha a TCP-t közvetlen módban használja, az átjáró portjain kívül meg kell győződnie arról, hogy a 10000 és a 20000 közötti porttartomány meg van nyitva, mert Azure Cosmos DB dinamikus TCP-portokat használ. Ha ezek a portok nincsenek megnyitva, és a TCP-t próbálja használni, a 503-es szolgáltatás nem érhető el hibaüzenetet kap. Az alábbi táblázat a különböző API-k és a szolgáltatási portok felhasználói számára elérhető csatlakozási módokat mutatja be az egyes API-kra vonatkozóan:
 
@@ -49,9 +49,9 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      |Átjáró  |   HTTPS    |  Minden SDK    |   SQL (443), Mongo (10250, 10255, 10256), tábla (443), Cassandra (10350), Graph (443)    |
      |Direct    |     TCP    |  .NET SDK    | 10 000 000 tartományon belüli portok |
 
-     Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A közvetlen TCP és a HTTPS egyaránt SSL-t használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
+     Azure Cosmos DB egy egyszerű és nyitott, REST-alapú programozási modellt biztosít a HTTPS-en keresztül. Emellett hatékony TCP protokollt is biztosít, amely a kommunikációs modellben is elérhető, és a .NET Client SDK-n keresztül érhető el. A TCP protokoll SSL protokollt használ a kezdeti hitelesítéshez és a forgalom titkosításához. A legjobb teljesítmény érdekében a TCP protokollt használja, ha lehetséges.
 
-     Az SDK V3 esetében a kapcsolati mód a CosmosClient-példány létrehozásakor van konfigurálva a CosmosClientOptions részeként.
+     Az SDK V3 esetében a kapcsolati mód a CosmosClient-példány létrehozásakor van konfigurálva, a CosmosClientOptions részeként ne feledje, hogy a közvetlen mód az alapértelmezett.
 
      ```csharp
      var serviceEndpoint = new Uri("https://contoso.documents.net");
@@ -59,7 +59,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      CosmosClient client = new CosmosClient(serviceEndpoint, authKey,
      new CosmosClientOptions
      {
-        ConnectionMode = ConnectionMode.Direct
+        ConnectionMode = ConnectionMode.Gateway // ConnectionMode.Direct is the default
      });
      ```
 
@@ -71,7 +71,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
      DocumentClient client = new DocumentClient(serviceEndpoint, authKey,
      new ConnectionPolicy
      {
-        ConnectionMode = ConnectionMode.Direct,
+        ConnectionMode = ConnectionMode.Direct, //ConnectionMode.Gateway is the default
         ConnectionProtocol = Protocol.Tcp
      });
      ```
@@ -185,7 +185,7 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
     - A VSTest-alapú tesztelési projektek esetében ehhez válassza a **tesztelés**->**tesztelési beállítások**->**alapértelmezett processzor-architektúra x64-ként**lehetőséget a **Visual Studio test** menüpontban.
 
-    - Helyileg telepített ASP.NET-webalkalmazások esetén ezt a **webhelyekhez és projektekhez készült IIS Express 64 bites verziójának használata**a következő **eszközök**->**lehetőségek**->**projektek és megoldások** részében ellenőrizheti-> **Webes projektek**.
+    - Helyileg telepített ASP.NET-webalkalmazások esetén ezt a **webhelyekhez és projektekhez készült IIS Express 64 bites verziójának használata**a következő **eszközök**->**lehetőségek**->**projektek és megoldások**->**webes projektek**menüpontban végezheti el.
 
     - Az Azure-on üzembe helyezett webalkalmazások esetében ez a **Platform 64 bitesként** való kiválasztásával végezhető el **a Azure Portal** ASP.net.
 
@@ -209,13 +209,13 @@ Tehát ha a "Hogyan javíthatom az adatbázis teljesítményét?" című témak�
 
 1. **Az alacsonyabb kérelmek egységének mérése és finomhangolása/második használat**
 
-    A Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja, beleértve a UDF, tárolt eljárásokkal és triggerekkel kapcsolatos, és az adatbázis-gyűjteményen belüli összes műveletet. Az egyes műveletekhez kapcsolódó díjak a művelet végrehajtásához szükséges CPU, IO és memória alapján változnak. A hardveres erőforrások gondolkodása és kezelése helyett a kérések egysége (RU) egyetlen mértékként használható a különböző adatbázis-műveletek végrehajtásához és az alkalmazásokra vonatkozó kérések kiszolgálásához szükséges erőforrásokhoz.
+    A Azure Cosmos DB az adatbázis-műveletek gazdag készletét kínálja, beleértve a UDF, tárolt eljárásokkal és triggerekkel kapcsolatos, és az adatbázis-gyűjteményen belüli összes műveletet. Az egyes ilyen műveletekhez kapcsolódó költségek a művelet végrehajtásához szükséges CPU, IO és memória függvényében változnak. A hardveres erőforrások gondolkodása és kezelése helyett a kérések egysége (RU) egyetlen mértékként használható a különböző adatbázis-műveletek végrehajtásához és az alkalmazásokra vonatkozó kérések kiszolgálásához szükséges erőforrásokhoz.
 
     Az átviteli sebesség az egyes tárolók számára beállított [kérelmek egységeinek](request-units.md) száma alapján lett kiépítve. A kérelem egységének felhasználását a rendszer másodpercenkénti arányban értékeli. Azok az alkalmazások, amelyek túllépik a tárolók kiépített kérelmi egységének sebességét, csak a tároló számára kiépített szint alá csökkennek. Ha az alkalmazás magasabb adatátviteli kapacitást igényel, akkor a további kérelmek kiszámításával növelheti a teljesítményt. 
 
     A lekérdezés bonyolultsága befolyásolja, hogy hány kérelem-egységet használ a művelet. A predikátumok száma, a predikátumok természete, a UDF száma és a forrásadatok készletének mérete egyaránt befolyásolja a lekérdezési műveletek költségeit.
 
-    Bármilyen művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécét (vagy a ResourceResponse\<t > vagy FeedResponse\<t > a .net SDK-ban) a következő méréséhez: a műveletek által felhasznált kérelmek egységeinek száma.
+    Az összes művelet (létrehozás, frissítés vagy törlés) mértékének méréséhez vizsgálja meg az [x-MS-Request-Charge](https://docs.microsoft.com/rest/api/cosmos-db/common-cosmosdb-rest-response-headers) fejlécet (vagy a ResourceResponse\<t > vagy FeedResponse\<t > a .net SDK-ban) a műveletek által felhasznált kérelmek mennyiségének méréséhez.
 
     ```csharp
     // Measure the performance (request units) of writes

@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 73314cb2d3ac77347e0de720a6a3ab0084181218
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732416"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76722543"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -71,6 +71,13 @@ A valós Üzletmenet-folytonosság eléréséhez az adatközpontok közötti ada
 - **Adatbázisok hozzáadása rugalmas készletből a feladatátvételi csoportba**
 
   Egy rugalmas készletben lévő összes vagy több adatbázis ugyanabba a feladatátvételi csoportba helyezhető. Ha az elsődleges adatbázis egy rugalmas készletben van, a rendszer automatikusan létrehozza a másodlagost a rugalmas készletben ugyanazzal a névvel (másodlagos készlettel). Győződjön meg arról, hogy a másodlagos kiszolgáló tartalmaz egy rugalmas készletet ugyanazzal a pontos névvel és elegendő szabad kapacitással a feladatátvételi csoport által létrehozandó másodlagos adatbázisok üzemeltetéséhez. Ha olyan adatbázist ad hozzá a készlethez, amely már rendelkezik másodlagos adatbázissal a másodlagos készletben, akkor a csoport örökli a földrajzi replikálási hivatkozást. Ha olyan adatbázist ad hozzá, amely már rendelkezik másodlagos adatbázissal egy olyan kiszolgálón, amely nem része a feladatátvételi csoportnak, a rendszer egy új másodlagost hoz létre a másodlagos készletben.
+  
+- **Kezdeti előkészítés** 
+
+  Adatbázisok, rugalmas készletek vagy felügyelt példányok feladatátvételi csoportba való felvételekor az adatreplikáció elindítása előtt kezdeti előkészítési fázis van. A kezdeti előkészítési fázis a leghosszabb és legdrágább művelet. A kezdeti beültetés befejezése után a rendszer szinkronizálja az adatokat, majd csak a további adatváltozásokat replikálja. A kezdeti vetõmag befejezéséhez szükséges idő az adatok méretétől, a replikált adatbázisok számától, valamint a feladatátvételi csoportban lévő entitások közötti kapcsolat sebességétől függ. Normál körülmények között a tipikus előkészítési sebesség 50-500 GB egy óra egyetlen adatbázishoz vagy rugalmas készlethez, és 18-35 GB a felügyelt példányok számára. A rendszer az összes adatbázis párhuzamos előkészítését végzi. A jelzett előkészítési sebességet, valamint az adatbázisok számát és az adatmennyiség teljes méretét is használhatja, hogy megbecsülje, mennyi ideig tart a kezdeti előkészítési fázis az adatreplikáció megkezdése előtt.
+
+  Felügyelt példányok esetén a két példány közötti expressz útvonal-kapcsolat sebességét is figyelembe kell venni a kezdeti előkészítési fázis idejének becslése során. Ha a két példány közötti kapcsolat sebessége lassabb a szükségesnél, a magokra adott idő valószínűleg különösen hatással van. Felhasználhatja a megadott előkészítési sebességet, az adatbázisok számát, az adatmennyiség teljes méretét, valamint a kapcsolat sebességét annak becsléséhez, hogy mennyi ideig tart a kezdeti előkészítési fázis az adatreplikálás megkezdése előtt. Egy 100 GB-os adatbázis esetében például a kezdeti vetőmag-fázis a 2,8-5,5 órán belül bárhol elveszik, ha a hivatkozás képes a 35 GB/óra lenyomására. Ha a hivatkozás csak 10 GB/óra átvitelt tud végezni, akkor a 100 GB-os adatbázis kivetése körülbelül 10 órát vesz igénybe. Ha több adatbázis replikálására van szükség, a rendszer párhuzamosan hajtja végre a bevezetést, és ha lassú kapcsolati sebességgel kombinálja, a kezdeti előkészítési fázis jóval hosszabb időt is igénybe vehet, különösen akkor, ha az összes adatbázisból származó adatok párhuzamos kihelyezése meghaladja a rendelkezésre álló sávszélesség csatolása. Ha a két példány közötti hálózati sávszélesség korlátozott, és több felügyelt példányt ad hozzá egy feladatátvételi csoporthoz, érdemes egymás után több felügyelt példányt hozzáadni a feladatátvételi csoporthoz.
+
   
 - **DNS-zóna**
 
@@ -453,7 +460,7 @@ Ahogy azt korábban említettük, az automatikus feladatátvételi csoportok és
 | [Feladatátvételi csoport törlése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/delete) | Feladatátvételi csoport eltávolítása a példányból |
 | [Feladatátvétel (tervezett)](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/failover) | A teljes adatszinkronizálással elindítja az aktuális elsődleges példány feladatátvételét erre a példányra. |
 | [Adatvesztés kényszerített feladatátvételének engedélyezése](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/forcefailoverallowdataloss) | Az aktuális elsődleges példányról a másodlagos példányra történő feladatátvételt az adatok szinkronizálása nélkül indítja el. A művelet adatvesztést okozhat. |
-| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | lekéri a feladatátvételi csoport konfigurációját. |
+| [Feladatátvételi csoport beolvasása](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/get) | Lekéri a feladatátvételi csoport konfigurációját. |
 | [Feladatátvételi csoportok listázása hely szerint](https://docs.microsoft.com/rest/api/sql/instancefailovergroups/listbylocation) | Egy helyen lévő feladatátvételi csoportok felsorolása. |
 
 ## <a name="next-steps"></a>Következő lépések

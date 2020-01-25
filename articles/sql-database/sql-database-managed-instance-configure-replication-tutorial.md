@@ -9,12 +9,12 @@ author: MashaMSFT
 ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 11/21/2019
-ms.openlocfilehash: e1ee616adadcabb2deb3fa08a5f3d4f768fddfd5
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: fa6e393500e9deeb91ee84aa5255320003817f08
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045648"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719891"
 ---
 # <a name="tutorial-configure-transactional-replication-between-two-managed-instances-and-sql-server"></a>Oktatóanyag: tranzakciós replikáció konfigurálása két felügyelt példány és SQL Server között
 
@@ -38,7 +38,7 @@ A felügyelt példányok közzétevője és egy felügyelt példány-előfizető
 
 Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a következő előfeltételekkel:
 
-- [Azure-előfizetés](https://azure.microsoft.com/free/). 
+- Egy [Azure-előfizetés](https://azure.microsoft.com/free/). 
 - A két felügyelt példány ugyanazon a virtuális hálózaton belüli üzembe helyezésének élménye. 
 - Egy SQL Server előfizető, akár helyszíni, akár egy Azure-beli virtuális gép. Ez az oktatóanyag egy Azure-beli virtuális gépet használ.  
 - [SQL Server Management Studio (SSMS) 18,0 vagy újabb](/sql/ssms/download-sql-server-management-studio-ssms).
@@ -385,7 +385,7 @@ Lehetséges megoldások:
 
 Amikor új előfizetést ad hozzá az **új előfizetés** varázslóval, a **kiadvány** lapon láthatja, hogy nincsenek elérhető beállításokként felsorolt adatbázisok és kiadványok, és a következő hibaüzenet jelenhet meg:
 
-`There are no publications to which yuo can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
+`There are no publications to which you can subscribe, either because this server has no publications or because you do not have sufficient privileges to access the publications.`
  
 Habár lehetséges, hogy ez a hibaüzenet pontos, és valójában nem érhető el kiadványok az Ön által csatlakoztatott közzétevőn, vagy ha nem rendelkezik megfelelő engedélyekkel, ezt a hibát a SQL Server Management Studio egy régebbi verziója is okozhatja. Próbálja meg frissíteni a SQL Server Management Studio 18,0-es vagy újabb verziójára, hogy kizárja a problémát kiváltó okként. 
 
@@ -400,7 +400,7 @@ Az adatbázis biztonságossá tételének részletes listáját a következő [f
 - [Mindig titkosított](/sql/relational-databases/security/encryption/always-encrypted-database-engine)
 - [Fenyegetések észlelése](sql-database-managed-instance-threat-detection.md) 
 - [Dinamikus adatmaszkolás](/sql/relational-databases/security/dynamic-data-masking)
-- [Sorszintű biztonság](/sql/relational-databases/security/row-level-security) 
+- [Sor szintű biztonság](/sql/relational-databases/security/row-level-security) 
 - [Transzparens adattitkosítás (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)
 
 ### <a name="managed-instance-capabilities"></a>Felügyelt példány képességei

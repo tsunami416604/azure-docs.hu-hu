@@ -3,29 +3,29 @@ title: Előkészítési adat ML Studio (klasszikus) – csoportos adatelemzési 
 description: Előre feldolgozhatja és megtisztíthatja az adatfeldolgozást, hogy előkészítse a gépi tanuláshoz való hatékony használatot.
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/09/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: d17ca5d4bd709ec2529a771008e47ce6f1b68daf
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: caedcf313ab809e9607907545f26ca1b62bbeca7
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75432139"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720044"
 ---
 # <a name="tasks-to-prepare-data-for-enhanced-machine-learning"></a>Az adatok bővített gépi tanulásra való előkészítésének feladatai
-Az adatok előfeldolgozása és tisztítása olyan fontos feladatok, amelyeket általában el kell végezni, mielőtt az adatkészlet hatékonyan használható legyen a gépi tanuláshoz. A nyers adatok gyakran zajosak és megbízhatatlanok, és lehet, hogy hiányoznak az értékek. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Ezek a feladatok a csoportos adatelemzési folyamat (TDSP) részét képezik, és általában egy olyan adatkészlet kezdeti vizsgálatát végzik, amely a szükséges előzetes feldolgozás felderítésére és megtervezésére szolgál. A TDSP folyamatával kapcsolatos részletesebb útmutatásért tekintse meg a [csoportos adatelemzési folyamat](overview.md)lépéseit.
+Az adatok előfeldolgozása és tisztítása olyan fontos feladatok, amelyeket el kell végezni ahhoz, hogy adatkészletet lehessen használni a modell betanításához. A nyers adatok gyakran zajosak és megbízhatatlanok, és lehet, hogy hiányoznak az értékek. Ha ilyen adatokat használ a modellezéshez, félrevezető eredményeket hozhat létre. Ezek a feladatok a csoportos adatelemzési folyamat (TDSP) részét képezik, és általában egy olyan adatkészlet kezdeti vizsgálatát végzik, amely a szükséges előzetes feldolgozás felderítésére és megtervezésére szolgál. A TDSP folyamatával kapcsolatos részletesebb útmutatásért tekintse meg a [csoportos adatelemzési folyamat](overview.md)lépéseit.
 
 Az előfeldolgozási és tisztítási feladatok, például az adatfeltárási feladat számos különböző környezetben, például az SQL-ben vagy a kaptárban, illetve a Azure Machine Learning Studio (klasszikus), valamint különböző eszközökkel és nyelvekkel (például R vagy Python) végezhetők el, attól függően, hogy hol találhatók az adatok tárolása és formázása. Mivel a TDSP ismétlődő jellegű, ezeket a feladatokat a folyamat munkafolyamatának különböző lépésein végezheti el.
 
 Ez a cikk különféle adatfeldolgozási fogalmakat és feladatokat mutat be, amelyek az adatoknak a Azure Machine Learning Studioba (klasszikus) történő betöltése előtt vagy után hajthatók végre.
 
-Az Azure Machine Learning Studio (klasszikus) szolgáltatásban végzett adatfeltárásra és előfeldolgozásra például a következő helyen olvashat: az [adatfeldolgozást előkészítő](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videó.
+Az Azure Machine Learning Studio (klasszikus) szolgáltatásban végzett adatfeltárásra és előfeldolgozásra például az [adatfeldolgozást előkészítő](https://azure.microsoft.com/documentation/videos/preprocessing-data-in-azure-ml-studio/) videóban olvashat.
 
 ## <a name="why-pre-process-and-clean-data"></a>Miért érdemes előre feldolgozni és megtisztítani az adatfeldolgozást?
 A valós világbeli adatok gyűjtése különböző forrásokból és folyamatokból történik, és az adatkészletek minőségét veszélyeztető szabálytalanságokat vagy sérült adatokat is tartalmazhat. A felmerülő jellemző adatminőségi problémák a következők:
@@ -43,22 +43,22 @@ Az általános minőséget az alábbiak ellenőrzésével ellenőrizheti:
 * Az **attribútumok** (vagy **szolgáltatások**) száma.
 * Az attribútum **adattípusai** (névleges, sorszám vagy folytonos).
 * A **hiányzó értékek**száma.
-* Az adatmennyiség **jól formált** .
+* **Jól formázott** adategységek.
   * Ha az adatközpont TSV vagy CSV formátumú, ellenőrizze, hogy az oszlopok és a sorok elválasztói mindig helyesen vannak-e elkülönítve az oszlopokat és a sorokat.
   * Ha az adatai HTML-vagy XML-formátumban vannak, ellenőrizze, hogy az adatai megfelelően vannak-e kialakítva a megfelelő szabványok alapján.
   * A strukturált adatok félig strukturált vagy strukturálatlan adatokból való kinyeréséhez is szükség lehet az elemzésre.
-* **Inkonzisztens adatrekordok**. Győződjön meg arról, hogy az értékek tartománya engedélyezett. például, ha az adattanulói GPA tartalmaz, ellenőrizze, hogy a GPA a kijelölt tartományban van-e, azaz 0 ~ 4.
+* **Inkonzisztens adatrekordok**. Győződjön meg arról, hogy az értékek tartománya engedélyezett. Például, ha az adattanulói GPA (a minőségi pont átlaga) tartalmaz, ellenőrizze, hogy a GPA a kijelölt tartományban van-e, azaz 0 ~ 4.
 
-Ha az adatokkal kapcsolatos problémákat tapasztal, a **feldolgozási lépések** szükségesek, ami gyakran magában foglalja a hiányzó értékek tisztítását, az adatnormalizálás, a diszkretizálási, a szöveg feldolgozását a beágyazott karakterek eltávolítására és/vagy cseréjére, ami hatással lehet az adatok igazítására, a közös mezőkben szereplő vegyes adattípusokra és egyebek
+Ha az adatokkal kapcsolatos problémákat tapasztal, a **feldolgozási lépések** szükségesek, ami gyakran magában foglalja a hiányzó értékek törlését, az adatnormalizálás, a diszkretizálási, a szöveg feldolgozását, valamint a beágyazott karakterek eltávolítását és/vagy cseréjét, amelyek hatással lehetnek az adatok igazítására, a közös mezőkben szereplő vegyes adattípusokra és mások
 
 A **Azure Machine learning jól formázott táblázatos adatokat**használ.  Ha az adatokat már táblázatos formában végzik, az adatfeldolgozást közvetlenül a Machine Learning Azure Machine Learning Studio (klasszikus) használatával is elvégezheti.  Ha az adatokat nem táblázatos formában, tegyük fel, hogy az XML-ben van, akkor az adatokat táblázatos formában kell konvertálni.  
 
 ## <a name="what-are-some-of-the-major-tasks-in-data-pre-processing"></a>Mik az adatok előfeldolgozásával kapcsolatos főbb feladatok?
-* **Adatok tisztítása**: töltse ki vagy adja meg a hiányzó értékeket, azonosítsa és távolítsa el a zajos adatokat és a kiugró adatokat.
+* **Adattisztítás**: adja meg a hiányzó értékeket, azonosítsa és távolítsa el a zajos adatokat és a kiugró adatokat.
 * **Adatátalakítás**: a méretek és a zaj csökkentése érdekében normalizálja az adatmennyiséget.
 * **Adatmennyiség-csökkentés**: adatrekordok vagy attribútumok a könnyebb adatkezelés érdekében.
 * **Adatdiszkretizálási**: folyamatos attribútumok átalakítása kategorikus attribútumokra a könnyű használat érdekében bizonyos gépi tanulási módszerekkel.
-* **Szöveg tisztítása**: távolítsa el a beágyazott karaktereket, ami az adatok helytelen igazítását okozhatja, például a tabulátorral elválasztott adatfájlban lévő beágyazott lapokat, a beágyazott új sorokat, amelyek a rekordokat megszakítják stb.
+* **Szöveg tisztítása**: távolítsa el az adatok helytelen igazítását okozó beágyazott karaktereket, például a tabulátorral tagolt adatfájlban lévő beágyazott lapokat, a beágyazott új sorokat, amelyek például a rekordokat bontják fel.
 
 Az alábbi részekben részletesen ismertetjük ezeket az adatfeldolgozási lépéseket.
 
@@ -92,9 +92,9 @@ A könnyebb adatkezelés érdekében különböző módszerekkel csökkentheti a
 * **Összesítés**: az adatok csoportokba osztása és az egyes csoportok számának tárolása. Például az elmúlt 20 évben egy éttermi lánc napi bevételi száma összesíthető a havi bevételsel az adatok méretének csökkentése érdekében.  
 
 ## <a name="how-to-clean-text-data"></a>Hogyan lehet megtisztítani a szöveges adatbevitelt?
-**A táblázatos adatok szöveges mezői** tartalmazhatják az oszlopok igazítását és/vagy a rekordok határait befolyásoló karaktereket. Például a tabulátorral tagolt fájlok beágyazott lapjai az oszlopok helytelen igazítását okozzák, a beágyazott új sortörési sorok pedig megtörik a rekordokat. A szöveg írása/olvasása során nem megfelelő kódolás a szöveges adatok elvesztését eredményezi, a nem olvasható karakterek véletlen bevezetését, például nullát, és a szöveg elemzését is érintheti. Alapos elemzésre és szerkesztésre lehet szükség ahhoz, hogy a szövegmezőket a megfelelő igazításhoz és/vagy strukturált adatok kinyeréséhez strukturálatlan vagy részben strukturált szöveges adatokból lehessen kinyerni.
+**A táblázatos adatok szöveges mezői** tartalmazhatják az oszlopok igazítását és/vagy a rekordok határait befolyásoló karaktereket. A tabulátorral tagolt fájlok beágyazott lapjai például az oszlopok helytelen igazítását okozzák, a beágyazott új sortörési sorok pedig sortöréseket is tartalmazhatnak. A szöveges kódolás nem megfelelő, ha a szöveg írása vagy olvasása során az adatok elvesztését eredményezi, a nem olvasható karakterek (például nullák) véletlen bevezetését, és a szöveg elemzését is érintheti. Alapos elemzésre és szerkesztésre lehet szükség ahhoz, hogy a szövegmezőket a megfelelő igazításhoz és/vagy strukturált adatok kinyeréséhez strukturálatlan vagy részben strukturált szöveges adatokból lehessen kinyerni.
 
-Az **adatfeltárási** szolgáltatás korai áttekintést nyújt az adatvédelemről. Ebben a lépésben számos adatprobléma feloldható, és a kapcsolódó módszerek alkalmazhatók a problémák megoldására.  Fontos, hogy olyan kérdéseket tegyenek fel, mint a probléma forrása, és hogy a probléma milyen módon lett bevezetve. Ez segít a megoldásához szükséges adatfeldolgozási lépések eldöntésében is. Az adatokból származtatott megállapítások egyike az adatfeldolgozási erőfeszítések rangsorolására is használható.
+Az **adatfeltárási** szolgáltatás korai áttekintést nyújt az adatvédelemről. Ebben a lépésben számos adatprobléma feloldható, és a kapcsolódó módszerek alkalmazhatók a problémák megoldására.  Fontos, hogy olyan kérdéseket tegyenek fel, mint a probléma forrása, és hogy a probléma milyen módon lett bevezetve. Ez a folyamat a megoldásához szükséges adatfeldolgozási lépések eldöntését is segíti. A végső használati esetek és a personák azonosításával is felhasználható az adatfeldolgozási tevékenység rangsorolása.
 
 ## <a name="references"></a>Tudástár
 > *Adatbányászat: fogalmak és technikák*, harmadik kiadás, Morgan Kaufmann, 2011, Jiawei Han, Michelin Kamber és Jian Pei

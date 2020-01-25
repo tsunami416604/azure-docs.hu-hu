@@ -3,15 +3,15 @@ title: Az Azure Cosmos Emulator letöltése és kibocsátási megjegyzései
 description: Szerezze be az Azure Cosmos Emulator kiadási megjegyzéseit a különböző verziókhoz, és töltse le az információkat.
 ms.service: cosmos-db
 ms.topic: tutorial
-author: markjbrown
-ms.author: mjbrown
+author: milismsft
+ms.author: adrianmi
 ms.date: 06/20/2019
-ms.openlocfilehash: e14ee617aca20fc18226651acfadab6ab2bdd939
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3878f6d01a2adfff2adc6a22aad20a5f83992b8d
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445294"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719687"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -25,6 +25,10 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 |**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="290"></a>2.9.0
+
+- Ezzel a kiadással beállíthatja, hogy a konzisztencia konzisztens előtagra legyen beállítva, és növelje a felhasználók és az engedélyek maximális korlátját.
 
 ### <a name="272"></a>2.7.2
 

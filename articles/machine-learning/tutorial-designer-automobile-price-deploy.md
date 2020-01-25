@@ -1,7 +1,7 @@
 ---
 title: 'Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel'
 titleSuffix: Azure Machine Learning
-description: Ez az oktatóanyag bemutatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben. A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
+description: Ez az oktatóanyag bemutatja, hogyan hozhat létre prediktív elemzési megoldást Azure Machine Learning Designerben (előzetes verzió). A gépi tanulási modellek betanítása, pontszáma és üzembe helyezése drag-and-drop modulok használatával.
 author: peterclu
 ms.author: peterlu
 services: machine-learning
@@ -9,14 +9,14 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: tutorial
 ms.date: 11/04/2019
-ms.openlocfilehash: 89fdac5e59b59c60d7e20b94799d78b029d236d6
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 470e633b2c64283db9b6a5b1cd777a6a054dad16
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76314997"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719789"
 ---
-# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
+# <a name="tutorial-deploy-a-machine-learning-model-with-the-designer-preview"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a Designerben (előzetes verzió)
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
 
 Az [oktatóanyag első részében](tutorial-designer-automobile-price-train-score.md) létrehozott prediktív modell üzembe helyezésével mások számára is lehetővé teheti a használatát. Az első részben betanított egy modellt. Most itt az ideje, hogy a felhasználói bevitel alapján új előrejelzéseket hozzon. Az oktatóanyag ezen részében a következőket fogja elsajátítani:
@@ -55,10 +55,6 @@ A folyamat üzembe helyezéséhez először át kell alakítania a betanítási 
     >
 
 1. Válassza a **Futtatás**lehetőséget, és használja ugyanazt a számítási célt és kísérletet, amelyet az első részben használt.
-
-1. Válassza ki a **pontszám modell** modult.
-
-1. A Tulajdonságok ablaktáblán válassza a **kimenetek** > **Megjelenítés** elemet annak ellenőrzéséhez, hogy a modell továbbra is működik-e. Láthatja, hogy az eredeti adatértékek az előre jelzett árral ("pontozásos címkék") együtt jelennek meg.
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
 

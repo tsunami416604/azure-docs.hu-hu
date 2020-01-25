@@ -11,15 +11,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 01/10/2020
+ms.date: 01/23/2020
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 6117f22b24887e913ed2f8d3a43e80335121636d
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 099cf74dd27f39a4289397d5178511125d9ebf6f
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75934474"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720714"
 ---
 # <a name="list-role-assignments-using-azure-rbac-and-the-azure-portal"></a>Szerepkör-hozzárendelések listázása az Azure RBAC és a Azure Portal használatával
 
@@ -125,6 +125,16 @@ Egy felhasználó, csoport, szolgáltatásnév vagy felügyelt identitás hozzá
     ![Szerepkör-hozzárendelések egy rendszerhez rendelt felügyelt identitáshoz](./media/role-assignments-list-portal/azure-resources-user-assigned.png)
 
 1. Az előfizetés módosításához kattintson az **előfizetések** listára.
+
+## <a name="list-number-of-role-assignments"></a>Szerepkör-hozzárendelések számának listázása
+
+Az egyes előfizetésekben akár **2000** szerepkör-hozzárendelést is megadhat. A korlátozások nyomon követése érdekében a **szerepkör-hozzárendelések** lapon szerepel egy diagram, amely felsorolja a szerepkör-hozzárendelések aktuális számát.
+
+![Hozzáférés-vezérlés – szerepkör-hozzárendelési diagram száma](./media/role-assignments-list-portal/access-control-role-assignments-chart.png)
+
+Ha a maximális számhoz közeledik, és további szerepkör-hozzárendeléseket próbál hozzáadni, a **szerepkör-hozzárendelés hozzáadása** panelen figyelmeztetés jelenik meg. A szerepkör-hozzárendelések számát csökkentheti a már nem szükséges szerepkör-hozzárendelések törlésével, illetve az egyes felhasználók helyett a csoportok szerepköreinek hozzárendelésével.
+
+![Hozzáférés-vezérlés – szerepkör-hozzárendelési figyelmeztetés hozzáadása](./media/role-assignments-list-portal/add-role-assignment-warning.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

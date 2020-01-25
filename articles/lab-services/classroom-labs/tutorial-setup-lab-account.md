@@ -1,6 +1,6 @@
 ---
 title: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással | Microsoft Docs
-description: Ebben az oktatóanyagban egy tesztkörnyezetfiókot állíthat be az Azure Lab Services szolgáltatással.
+description: Ismerje meg, hogyan állíthat be labor-fiókot Azure Lab Serviceskal, hozzáadhat egy labor-létrehozót, és megadhatja a Labs által a labor-fiókban használandó Piactéri lemezképeket.
 services: devtest-lab, lab-services, virtual-machines
 documentationcenter: na
 author: spelluru
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 04/24/2019
+ms.date: 01/23/2020
 ms.author: spelluru
-ms.openlocfilehash: 8c252870a82a60a561f12fab9d728c028458212a
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 62ccda96563a53ebc77337bb2f89cfddd4410a26
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562102"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719041"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással
 Az Azure Lab Services szolgáltatásban a tesztkörnyezetfiók központi fiókként szolgál a vállalat összes tesztkörnyezetének felügyeletéhez. A tesztkörnyezetfiókban engedélyeket adhat másoknak a tesztkörnyezetek létrehozására, és szabályzatokat állíthat be, amelyek a tesztkörnyezetfiók alá tartozó összes tesztkörnyezetben érvényesek. Ebben az oktatóanyagban megismerheti, hogyan hozhat létre tesztkörnyezetfiókot tesztkörnyezet-rendszergazdaként. 

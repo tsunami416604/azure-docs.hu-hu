@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/13/2020
-ms.openlocfilehash: e115316daf3673d9ad854e7ccd6d5256d729b5af
-ms.sourcegitcommit: f34165bdfd27982bdae836d79b7290831a518f12
+ms.openlocfilehash: a9c64f4bafa770de9bbbd97ae9a0295b72d81f54
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75921012"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719823"
 ---
 # <a name="whats-new-in-azure-cognitive-search"></a>Az Azure Cognitive Search újdonságai
 
@@ -21,15 +21,13 @@ Ismerje meg a szolgáltatás újdonságait. Könyvjelző ezen az oldalon naprak�
 
 <a name="new-service-name"></a>
 
-## <a name="new-service-name-for-azure-search"></a>Új szolgáltatás neve Azure Search
+## <a name="new-service-name"></a>Új szolgáltatás neve
 
-A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükrözze a kognitív képességek és az AI-feldolgozás kibővített használatát az alapvető műveletekben. Míg a kognitív képességek új képességeket vesznek fel, az AI használata szigorúan nem kötelező. Továbbra is használhatja az Azure Cognitive Search AI-t anélkül, hogy gazdag, teljes szöveges keresési megoldásokat építsen ki magán-, különböző-és szöveges tartalommal a felhőben létrehozott és kezelt indexekben. 
-
-Az API-verziók, a Nuget-csomagok, a névterek és a végpontok változatlanok. A szolgáltatás nevének változása nem érinti a meglévő keresési megoldásokat.
+A Azure Search most átnevezve lett az **Azure Cognitive Searchra** , hogy tükrözze a kognitív képességek kibővített (de opcionális) használatát a fő műveletekben. Az API-verziók, a NuGet-csomagok, a névterek és a végpontok változatlanok. Az új és a meglévő keresési megoldásokat nem érinti a szolgáltatás nevének változása.
 
 ## <a name="feature-announcements"></a>Szolgáltatások hirdetményei
 
-### <a name="january-2020"></a>Január 2020
+### <a name="january-2020"></a>2020. január
 
 + Az [ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) már általánosan elérhetők. Ha REST-t használ, `api-version=2019-05-06`használatával érheti el a szolgáltatást. A felügyelt kód esetében a megfelelő csomag még mindig a [.net SDK 8,0-es verziója – előzetes verzió](search-dotnet-sdk-migration-version-9.md) , bár a funkció nem előzetes verzió. 
 

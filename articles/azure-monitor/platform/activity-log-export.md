@@ -5,20 +5,21 @@ author: bwren
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/20/2019
+ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: 0e5780561df121d3d5af3a9b754d774cc7d6cf76
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75969661"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76715899"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
 
-> [!WARNING]
-> Mostantól a tevékenység naplóját begyűjtheti egy Log Analytics munkaterületre egy, az erőforrás-naplók összegyűjtéséhez hasonló diagnosztikai beállítás használatával. Lásd: [Az Azure-Tevékenységnaplók összegyűjtése és elemzése log Analytics munkaterületen Azure monitor](diagnostic-settings-legacy.md).
+> [!IMPORTANT]
+> Az Azure-tevékenység naplójának az Azure Storage-ba és az Azure Event Hubsba való küldésének módszere [diagnosztikai beállításokra](diagnostic-settings.md)változott. Ez a cikk azt az örökölt metódust ismerteti, amelynek a folyamata elavult. Az összehasonlításhoz lásd: frissítés az [Azure Activity log-gyűjteményhez és exportálás](diagnostic-settings-legacy.md) .
+
 
 Az [Azure-tevékenység naplója](platform-logs-overview.md) betekintést nyújt az Azure-előfizetésében bekövetkezett előfizetési szintű eseményekre. Amellett, hogy megtekinti a tevékenység naplóját a Azure Portal, vagy átmásolja egy Log Analytics-munkaterületre, ahol az a Azure Monitor által gyűjtött egyéb adatokkal is elemezhető, létrehozhat egy log-profilt, amely archiválja a műveletnapló egy Azure Storage-fiókba, vagy továbbíthatja azt egy  Event hub.
 
@@ -59,7 +60,7 @@ A napló profilja a következőket határozza meg.
 
 **Az exportálandó régiókat (helyszíneket) exportálni kell.** Minden helyet fel kell vennie, mivel a tevékenység naplójában számos esemény globális esemény.
 
-**Mennyi ideig kell megőrizni a tevékenység naplóját egy Storage-fiókban.** A nulla napos megőrzés azt jelenti, hogy a naplók örökre meg lesznek őrizve. Ellenkező esetben az érték tetszőleges számú nap lehet 1 és 365 között.
+**Mennyi ideig kell megőrizni a tevékenység naplóját egy Storage-fiókban.** A nulla nap megőrzése azt jelenti, hogy a naplók örökre megmaradnak. Ellenkező esetben az érték tetszőleges számú nap lehet 1 és 365 között.
 
 Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy Storage-fiókban le van tiltva, akkor a megőrzési szabályzatok nem lépnek érvénybe. Az adatmegőrzési szabályzatok naponta lesznek alkalmazva, így a nap végén (UTC) az adatmegőrzési házirendben már nem szereplő naplók törlődnek. Ha például egy nap adatmegőrzési szabályzattal rendelkezett, akkor a nap elején a tegnapi nap előtti naplók törlődnek. A törlési folyamat az UTC éjfélkor kezdődik, de vegye figyelembe, hogy a naplók törlését akár 24 óráig is eltarthat a Storage-fiókból.
 
@@ -72,9 +73,14 @@ Ha adatmegőrzési házirend van beállítva, de a naplófájlok tárolása egy 
 
 Hozzon létre vagy szerkesszen egy log-profilt a Azure Portal **Exportálás az Event hub** -be lehetőségével.
 
-1. A Azure Portal **figyelés** menüjében válassza az Exportálás az **Event hubhoz**lehetőséget.
+1. A Azure Portal **Azure monitor** menüjében válassza a **műveletnapló**elemet.
+3. Kattintson a **Diagnosztikai beállítások** elemre.
 
-    ![Exportálás gomb a portálon](media/activity-log-export/portal-export.png)
+   ![Diagnosztikai beállítások](media/diagnostic-settings-subscription/diagnostic-settings.png)
+
+4. A régi élményhez kattintson a lila szalagcímre.
+
+    ![Korábbi élmény](media/diagnostic-settings-subscription/legacy-experience.png)
 
 3. A megjelenő panelen a következőt kell megadnia:
    * Az exportálandó eseményekkel rendelkező régiók. Válassza ki az összes régiót, hogy ne hagyja ki a legfontosabb eseményeket, mivel a tevékenység naplója globális (nem regionális) napló, így a legtöbb eseményhez nem tartozik régió társítva.
@@ -160,7 +166,7 @@ Ha már létezik egy naplózási profil, először el kell távolítania a megl�
     | Storage-Account-ID |Igen |Azon Storage-fiók erőforrás-azonosítója, amelybe menteni szeretné a tevékenység naplóit. |
     | helyek |Igen |Szóközzel tagolt lista azoknak a régióknak a listájához, amelyeknek a tevékenység-naplózási eseményeket össze szeretné gyűjteni. Az előfizetéshez tartozó összes régió listáját megtekintheti `az account list-locations --query [].name`használatával. |
     | nap |Igen |Azon napok száma, amelyekhez meg kell őrizni az eseményeket 1 és 365 között. A nulla érték a naplókat határozatlan ideig (Forever) tárolja.  Ha nulla, akkor az engedélyezett paramétert false értékre kell állítani. |
-    |engedélyezve | Igen |Igaz vagy hamis?  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
+    |engedélyezve | Igen |Igaz vagy hamis.  Az adatmegőrzési szabály engedélyezésére vagy letiltására szolgál.  Ha az értéke igaz, akkor a Days paraméternek 0-nál nagyobbnak kell lennie.
     | kategóriák |Igen |Az összegyűjteni kívánt események kategóriáinak szóközzel tagolt listája. A lehetséges értékek a következők: írás, törlés és művelet. |
 
 

@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 01/13/2020
+ms.date: 01/23/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 85987ca1ff7d2dd204d0a501367efffc8277f138
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 86390132be0440b197b680803e5b6032670a7d1c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75939917"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76721030"
 ---
 # <a name="sql-data-warehouse-workload-group-isolation-preview"></a>SQL Data Warehouse munkaterhelési csoport elkülönítése (előzetes verzió)
 
@@ -32,7 +32,7 @@ A következő szakaszokban bemutatjuk, hogy a munkaterhelési csoportok hogyan h
 
 A számítási feladatok elkülönítése azt jelenti, hogy az erőforrások kizárólag a munkaterhelés-csoportok számára vannak fenntartva.  A számítási feladatok elkülönítése úgy érhető el, hogy a MIN_PERCENTAGE_RESOURCE paramétert nullánál nagyobb értékre konfigurálja a [munkaterhelés-csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) szintaxisban.  A szűk SLA-kat betartó folyamatos végrehajtást igénylő számítási feladatokhoz az elkülönítés biztosítja, hogy az erőforrások mindig elérhetők legyenek a munkaterhelés csoport számára. 
 
-A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet. Ha egy MIN_PERCENTAGE_RESOURCE 30%-ra van beállítva, és a REQUEST_MIN_RESOURCE_GRANT_PERCENT 2%-ra van beállítva, a munkaterhelés-csoport esetében a 15 párhuzamossági szint garantált.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
+A számítási feladatok elkülönítésének implicit beállítása implicit módon meghatároz egy garantált párhuzamossági szintet. Például egy munkaterhelési csoport, amelynek `MIN_PERCENTAGE_RESOURCE` 30%-ra van beállítva, és `REQUEST_MIN_RESOURCE_GRANT_PERCENT` 2%-ra van beállítva, 15 párhuzamosságot biztosít.  Az egyidejűség szintje garantált, mert az erőforrások 15-2%-os tárolóhelye mindig a munkaterhelés-csoporton belül van lefoglalva (függetlenül attól, hogy milyen `REQUEST_*MAX*_RESOURCE_GRANT_PERCENT` van konfigurálva).  Ha a `REQUEST_MAX_RESOURCE_GRANT_PERCENT` nagyobb, mint `REQUEST_MIN_RESOURCE_GRANT_PERCENT`, és a `CAP_PERCENTAGE_RESOURCE` nagyobb, mint `MIN_PERCENTAGE_RESOURCE` további erőforrások hozzáadására vonatkozó kérések száma.  Ha `REQUEST_MAX_RESOURCE_GRANT_PERCENT` és `REQUEST_MIN_RESOURCE_GRANT_PERCENT` egyenlő, és `CAP_PERCENTAGE_RESOURCE` nagyobb, mint `MIN_PERCENTAGE_RESOURCE`, további Egyidejűség lehetséges.  Vegye figyelembe az alábbi módszert a garantált Egyidejűség meghatározásához:
 
 [Garantált Egyidejűség] = [`MIN_PERCENTAGE_RESOURCE`]/[`REQUEST_MIN_RESOURCE_GRANT_PERCENT`]
 

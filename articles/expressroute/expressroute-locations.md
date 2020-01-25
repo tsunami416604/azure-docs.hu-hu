@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 01/17/2020
 ms.author: cherylmc
-ms.openlocfilehash: 0eafd090366623919891ff0b03dd85a0d3dbcf88
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: da84bea51271829e7d3e513ada21c69dbd61916c
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263574"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76719959"
 ---
 # <a name="expressroute-partners-and-peering-locations"></a>ExpressRoute-partnerek és társviszony-létesítési helyszínek.
 
@@ -87,7 +87,7 @@ Az alábbi táblázat a szolgáltatók szerint jeleníti meg a helyeket. Ha az e
 | **CDC** | Támogatott | Támogatott | Canberra, Canberra2 |
 | **[CenturyLink Cloud Connect](https://www.centurylink.com/cloudconnect)** |Támogatott |Támogatott |Amsterdam2, Chicago, Hongkong, Las Vegas, New York, Párizs, San Antonio, Szilícium-völgy, Tokió, Toronto, Washington, D.C., Washington DC2 |
 | **[Telekommunikációs vezető](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** |Támogatott |Támogatott |Hongkong, Taipei |
-| **China Telecom Global** |Támogatott |Támogatott |Hongkong KKT |
+| **China Telecom Global** |Támogatott |Támogatott |Hongkong (KKT) |
 | **[Cologix](https://www.cologix.com/hyperscale/microsoft-azure/)** |Támogatott |Támogatott |Chicago, Dallas, Montreal, Toronto, Washington, D.C. |
 | **[Colt](https://www.colt.net/uk/en/news/colt-announces-dedicated-cloud-access-for-microsoft-azure-services-en.htm)** |Támogatott |Támogatott |Amszterdam, Amsterdam2, Chicago, Dublin, Frankfurt, London, London2, Newport, New York, Oszaka, Párizs, Szilícium-völgy, szilícium-Valley2, Szingapúr2, Tokió, Washington, D.C. |
 | **[Comcast](https://business.comcast.com/landingpage/microsoft-azure)** |Támogatott |Támogatott |Chicago, Szilícium-völgy, Washington, D.C. |
@@ -236,7 +236,7 @@ Ha távoli, és nem rendelkezik száloptikás kapcsolattal, vagy más csatlakoz�
 | **[BICS](https://bics.com/bics-solutions-suite/cloud-connect/)** | Equinix | Amszterdam, Frankfurt, London, Szingapúr, Washington, D.C. |
 | **[BroadBand Tower, Inc.](https://www.bbtower.co.jp/product-service/data-center/network/dcconnect-for-azure/)** | Equinix | Tokió |
 | **[C3ntro Telecom](https://www.c3ntro.com/data/express-route)** | Equinix, Megaport | Dallas |
-| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong KKT |
+| **[Chief](https://www.chief.com.tw/dispPageBox/ct.aspx?ddsPageID=ENCLOUDSERVICE&dbid=4852937342)** | Equinix | Hongkong (KKT) |
 | **[Cinia](https://www.cinia.fi/en/services/connectivity-services/direct-public-cloud-connection.html)** | Equinix, Megaport | Frankfurt, Hamburg |
 | **[CloudXpress](https://www2.telenet.be/fr/business/produits-services/internet/cloudxpress/)** | Equinix | Amszterdam | 
 | **[CMC Telecom](https://cmctelecom.vn/san-pham/value-added-service-and-it/cmc-telecom-cloud-express-en/)** | Equinix | Szingapúr | 
@@ -256,7 +256,7 @@ Ha távoli, és nem rendelkezik száloptikás kapcsolattal, vagy más csatlakoz�
 | **[IVedha Inc](http://www.ivedha.com/cloud/manage-azure-cloud/express-route-4/)**| Equinix | Toronto |
 | **[Kaalam Telecom Bahrein B. S. C](http://www.kalaam-telecom.com/en/inbusiness/expressroute.html)**| Level 3 Communications |Amszterdam |
 | **LGA Telecom** |Equinix |Szingapúr|
-| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong KKT 
+| **[Macroview Telecom](http://www.macroview.com/en/scripts/catitem.php?catid=solution&sectionid=expressroute)** |Equinix |Hongkong (KKT) 
 | **[Macquarie Telecom Group](https://macquariegovernment.com/secure-cloud/secure-cloud-exchange/)** | Megaport | Sydney |
 | **[MainOne](https://www.mainone.net/services/connectivity/cloud-connect/)** |Equinix | Amszterdam |
 | **[Masergy](https://www.masergy.com/solutions/hybrid-networking/cloud-marketplace/microsoft-azure)** | Equinix | Washington DC |

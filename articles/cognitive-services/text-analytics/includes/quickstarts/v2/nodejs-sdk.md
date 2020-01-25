@@ -2,18 +2,18 @@
 author: aahill
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 10/28/2019
+ms.date: 01/22/2020
 ms.author: aahi
-ms.openlocfilehash: 7cb3dce31592771deb5c57b9d73670465f7424fe
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: d5197cfe749ae27b9f8807ba62825c8a73371c85
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281368"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76748910"
 ---
 <a name="HOLTop"></a>
 
-[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [csomag (NPM)](https://www.npmjs.com/package/azure-cognitiveservices-textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
+[Dokumentáció](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/cognitiveServicesTextAnalytics) | [csomag (NPM)](https://www.npmjs.com/package/@azure/cognitiveservices-textanalytics) | [minták](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/)
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -28,13 +28,13 @@ ms.locfileid: "76281368"
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
 
-Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
+Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá.
 
 ```console
 mkdir myapp && cd myapp
 ```
 
-A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json`-fájllal. 
+A `npm init` parancs futtatásával hozzon létre egy csomópont-alkalmazást egy `package.json`-fájllal.
 
 ```console
 npm init
@@ -67,11 +67,11 @@ Az alkalmazás `package.json` fájlja a függőségekkel lesz frissítve.
 
 Az Text Analytics-ügyfél egy [TextAnalyticsClient](https://docs.microsoft.com/javascript/api/@azure/cognitiveservices-textanalytics/textanalyticsclient) objektum, amely az Azure-ban hitelesíti magát a kulcs használatával. Az ügyfél számos módszert biztosít a szöveg elemzéséhez, egyetlen sztringként vagy kötegként.
 
-A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat `dictionary`. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet. 
+A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a használt módszertől függően `id`, `text`és `language` attribútumok kombinációját tartalmazó objektumokat `dictionary`. A `text` attribútum tárolja a forrás `language`elemezni kívánt szöveget, és a `id` értéke lehet.
 
-A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
+A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 * [Az ügyfél hitelesítése](#authenticate-the-client)
 * [Hangulatelemzés](#sentiment-analysis)

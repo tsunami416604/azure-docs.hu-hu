@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 6a107936d290609fec73d46a93a277c3bdcce354
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: affa182145645b9a91801a9c6b38e682e6bd77ec
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75832924"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720061"
 ---
 # <a name="about-keys-secrets-and-certificates"></a>Kulcsok, titkos kódok és tanúsítványok
 
@@ -76,7 +76,7 @@ Helyszín:
 |`keyvault-name`|A Microsoft Azure Key Vault szolgáltatásban található kulcstartó neve.<br /><br /> A felhasználók a Key Vault neveket választják, és globálisan egyediek.<br /><br /> Key Vault neve csak 0-9, a-z, A-Z és-. karakterláncot tartalmazó 3-24 karakterből állhat.|  
 |`object-type`|Az objektum típusa "Keys" vagy "Secrets".|  
 |`object-name`|Az `object-name` a felhasználó által megadott név, és egyedinek kell lennie egy Key Vault belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, amely csak 0-9, a-z, A-Z és-.|  
-|`object-version`|Az `object-version` egy rendszer által generált, 32 karakterből álló karakterlánc-azonosító, amely opcionálisan * az objektum egyedi verzióját használja.|  
+|`object-version`|Az `object-version` egy rendszer által létrehozott, 32 karakterből álló karakterlánc-azonosító, amely egy objektum egyedi verziójának kezelésére szolgál.|  
 
 ## <a name="key-vault-keys"></a>Kulcsok Key Vault
 
@@ -166,7 +166,7 @@ A JWK-objektumokkal kapcsolatos további információkért lásd a [JSON webkulc
 
 ###  <a name="key-attributes"></a>Fő attribútumok
 
-A fő elemek mellett a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
+A kulcs anyagán kívül a következő attribútumok is megadhatók. JSON-kérelemben az attribútumok kulcsszó és a kapcsos zárójelek ({"}") szükségesek, még akkor is, ha nincsenek megadva attribútumok.  
 
 - *engedélyezve*: logikai, nem kötelező, az alapértelmezett érték **true (igaz**). Megadja, hogy a kulcs engedélyezve van-e, és használható-e titkosítási műveletekhez. Az *engedélyezett* attribútum a *NBF* és az *exp*együttes használata esetén használatos. Ha a *NBF* és az *exp*közötti művelet történik, akkor csak akkor lesz *engedélyezve* , ha a beállítás értéke **true (igaz**). A *NBF* -en kívüli műveletek / *exp* ablak automatikusan le lesz tiltva, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat.
 - *NBF*: IntDate, nem kötelező, alapértelmezés szerint most. A *NBF* (nem előtte) attribútum azt az időpontot határozza meg, ameddig a kulcs nem használható a titkosítási műveletekhez, kivéve az [adott körülmények között](#date-time-controlled-operations)meghatározott műveleti típusokat. A *NBF* attribútum feldolgozásához az aktuális dátumnak és időpontnak a *NBF* attribútumban felsorolt nem korábbi dátummal és időponttal kell rendelkeznie. Előfordulhat, hogy a Key Vault némi mozgásteret biztosít, amely általában legfeljebb néhány percet vesz igénybe, hogy az óra döntse. Az értéknek egy IntDate értéket tartalmazó számnak kell lennie.  
@@ -230,7 +230,7 @@ A kulcsok használatával kapcsolatos további információkért tekintse meg [a
 
 Fejlesztői szempontból Key Vault API-k elfogadják és visszaadják a titkos értékeket karakterláncként. Belsőleg Key Vault a titkokat az oktettek (8 bites bájtok) sorozatának megfelelően tárolja és kezeli, és a 25k maximális mérete (bájt). A Key Vault szolgáltatás nem biztosít szemantikai adatokat a titkokhoz. Csupán elfogadja az adatot, titkosítja, tárolja, és visszaadja a titkos azonosítót ("id"). Az azonosító segítségével később is lekérheti a titkos kulcsot.  
 
-A szigorúan bizalmas adatokhoz az ügyfeleknek ajánlott további adatvédelmi rétegeket is használni. Ez lehet például az adatok külön védelmi kulccsal történő titkosítása a Key Vaultba helyezés előtt.  
+A szigorúan bizalmas adatok esetében az ügyfeleknek az adatok védelmének további rétegeit kell figyelembe venniük. Az adattitkosítás egy külön védelmi kulccsal történik, a tárolás előtt Key Vault egy példa.  
 
 A Key Vault a Secrets (contentType) mezőt is támogatja. Az ügyfelek megadhatják a titkos kód tartalomtípusát, hogy segítséget nyújtsanak a titkos adatokat a beolvasás során. A mező maximális hossza 255 karakter. Nincsenek előre definiált értékek. A javasolt használat a titkos adatok értelmezésére utal. Előfordulhat például, hogy egy implementáció titkos kulcsként tárolja a jelszavakat és a tanúsítványokat, majd ezt a mezőt használja a megkülönböztetéshez. Nincsenek előre definiált értékek.  
 

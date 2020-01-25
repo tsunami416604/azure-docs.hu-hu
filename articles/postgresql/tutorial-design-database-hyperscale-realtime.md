@@ -8,12 +8,12 @@ ms.subservice: hyperscale-citus
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 05/14/2019
-ms.openlocfilehash: e38de89902c46c6a77060d0d1e2532ab5bb59bb7
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: f4eeb646de8b68c2c8d30586d0c75cece5317e40
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978100"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76716327"
 ---
 # <a name="tutorial-design-a-real-time-analytics-dashboard-by-using-azure-database-for-postgresql--hyperscale-citus"></a>Oktatóanyag: valós idejű elemzési irányítópult tervezése Azure Database for PostgreSQL – nagy kapacitású (Citus) használatával
 
@@ -196,7 +196,7 @@ A függvény helyett hajtsa végre az adatösszesítést:
 SELECT rollup_http_request();
 ```
 
-Az adatokat pedig előre összevont formában is lekérdezheti a kumulatív táblázatból, hogy ugyanazt a jelentést kapja, mint korábban. Futtassa az alábbi lekérdezést:
+Az adatokat pedig előre összevont formában is lekérdezheti a kumulatív táblázatból, hogy ugyanazt a jelentést kapja, mint korábban. Futtassa a következő lekérdezést:
 
 ```sql
 SELECT site_id, ingest_time as minute, request_count,
@@ -222,7 +222,7 @@ Az előző lépésekben Azure-erőforrásokat hozott létre egy kiszolgálócsop
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogy a nyers űrlapon is lekérdezze az adatokat, rendszeresen összesíti az adatokat, lekérdezi az összesített táblákat, és lejárja a régi adatokat.
+Ebből az oktatóanyagból megtudhatta, hogyan építhet ki egy nagy kapacitású-(Citus-) kiszolgáló csoportot. Csatlakoztatta azt a psql-hoz, létrehozott egy sémát és egy elosztott adatkészletet. Megtanulta, hogyan lehet adatokat lekérdezni a nyers űrlapon, rendszeresen összesíti az adatokat, lekérdezni az összesített táblákat, és lejárati a régi adatokat.
 
 Ezután megismerheti a nagy kapacitású fogalmait.
 > [!div class="nextstepaction"]

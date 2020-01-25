@@ -16,12 +16,12 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 17cc6df651a82b416e670ee5ca5683c428eac6b5
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: 01bcc3678485119afae1d567d97eff9dcebe6b95
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72596277"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76714616"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-acquireio"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a AcquireIO
 
@@ -103,9 +103,9 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
 1. Válassza az **új felhasználó** lehetőséget a képernyő tetején.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
-   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension értéket. Például: `B.Simon@contoso.com`.
+   1. A **Felhasználónév** mezőbe írja be a username@companydomain.extension. Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a  **Create** (Létrehozás) gombra.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
      ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config01.png)
 
-1. Görgessen le upto **Active Directory** és kattintson a **telepítés**gombra.
+1. Görgessen le a **Active Directoryra** , majd kattintson a **telepítés**gombra.
 
     ![AcquireIO-konfiguráció](./media/acquireio-tutorial/config02.png)
 

@@ -11,12 +11,12 @@ author: tsikiksr
 manager: cgronlun
 ms.reviewer: nibaccam
 ms.date: 11/04/2019
-ms.openlocfilehash: 00a316f69cfa77d705a789d40868105e9a098def
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 808d7ac7ded9b250e0835da51b6b547c05c622a9
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75894023"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720401"
 ---
 # <a name="create-explore-and-deploy-automated-machine-learning-experiments-with-azure-machine-learning-studio"></a>Gépi tanulási kísérletek létrehozása, megismerése és üzembe helyezése Azure Machine Learning Studióval
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-enterprise-sku.md)]
@@ -133,7 +133,7 @@ Az adatkészletek széles skáláját veheti igénybe, így ellenőrizheti, hogy
 >[!NOTE]
 > A lényegtelen típusokkal rendelkező funkciók esetében üres bejegyzések jelennek meg.
 
-Statisztika|Leírás
+statisztika|Leírás
 ------|------
 Szolgáltatás| Az összesíteni kívánt oszlop neve.
 Profil| Beágyazott vizualizáció a következtetett típus alapján. Például a karakterláncok, a logikai értékek és a dátumok értékének számít, míg a tizedesjegyek (numerikus értékek) közelítő hisztogramtal rendelkeznek. Ez lehetővé teszi az adateloszlás gyors megismerését.
@@ -144,7 +144,7 @@ Maximum| Az oszlop maximális értéke.
 Mennyiség| Az oszlop hiányzó és nem hiányzó bejegyzéseinek száma.
 Hiányzó darabszám| A hiányzó oszlop bejegyzéseinek száma. Az üres karakterláncok és hibák értékekként vannak kezelve, így nem járulnak hozzá a "nem hiányzó darabszám" értékhez.
 Quantiles| Az egyes quantile megközelített értékek biztosítják az adatok terjesztésének érzékét.
-Középérték| Az oszlop számtani középértéke vagy átlaga.
+értem| Az oszlop számtani középértéke vagy átlaga.
 Szórás| Az oszlop adateloszlásának vagy variációjának mértékét.
 Variancia| Az oszlop adatainak kiszóródásának mértéke az átlagos értéktől számítva. 
 Ferdeség| Az oszlop adatainak normál eloszlásból való megmérése.
@@ -153,9 +153,15 @@ Csúcsosságát| Azt méri, hogy az oszlop adatmennyisége milyen mértékben le
 
 <a name="preprocess"></a>
 
-## <a name="advanced-preprocessing-options"></a>Speciális előfeldolgozási beállítások
+## <a name="advanced-featurization-options"></a>Speciális featurization beállítások
 
-A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `Preprocess`. Ez azt jelenti, hogy a következő guardrails-és featurization-lépések előfeldolgozásának részeként a rendszer automatikusan végrehajtja a lépéseket.
+A kísérletek konfigurálásakor engedélyezheti a speciális beállítást `feauturization`. 
+
+|Featurization-konfiguráció | Leírás |
+| ------------- | ------------- |
+|"feauturization" = "FeaturizationConfig"| Azt jelzi, hogy a testreszabott featurization lépést kell használni. [Megtudhatja, hogyan szabhatja testre a featurization](how-to-configure-auto-train.md#customize-feature-engineering).|
+|"feauturization" = "off"| Azt jelzi, hogy a featurization lépést nem szabad automatikusan elvégezni.|
+|"feauturization" = "automatikus"| Azt jelzi, hogy a következő guardrails-és featurization-lépések előfeldolgozásának részeként a rendszer automatikusan végrehajtja a lépéseket.|
 
 |&nbsp;lépések előfeldolgozása| Leírás |
 | ------------- | ------------- |

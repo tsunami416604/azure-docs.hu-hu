@@ -1,85 +1,85 @@
 ---
-title: Adatgyűjtés és adatértelmezés a csoportos adatelemzési folyamat
-description: A célok, feladatok és az adatgyűjtés és a data-adatelemzési projektek ismertetése szakasza a termékek
+title: A csoportos adatelemzési folyamat adatgyűjtése és megértése
+description: Az adatgyűjtéssel és az adatelemzési projektekkel kapcsolatos célok, feladatok és végtermékek
 services: machine-learning
 author: marktab
-manager: cgronlun
-editor: cgronlun
+manager: marktab
+editor: marktab
 ms.service: machine-learning
 ms.subservice: team-data-science-process
 ms.topic: article
-ms.date: 11/04/2017
+ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: e29f36897dd52fcb09456768a799209a385d74fe
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 3c299e9ec42d63812804b5ff7e50324a2de94200
+ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60303513"
+ms.lasthandoff: 01/24/2020
+ms.locfileid: "76720503"
 ---
-# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>Adatgyűjtés és a csoportos adatelemzési folyamat ismertetése szakasza
+# <a name="data-acquisition-and-understanding-stage-of-the-team-data-science-process"></a>A csoportos adatelemzési folyamat adatgyűjtési és-megértési szakasza
 
-Ez a cikk ismerteti a célokat, feladatok és az adatok beszerzése és megértése fázis, a csoportos adatelemzési folyamat (TDSP) társított le. Ez a folyamat egy ajánlott életciklussal, amely használatával a data-adatelemzési projektek strukturálása biztosít. Az életciklus a fő szakaszai, projektek általában végrehajtható, iteratív gyakran ismerteti:
+Ez a cikk a csoportos adatelemzési folyamat (TDSP) adatgyűjtési és-megértési szakaszával kapcsolatos célokat, feladatokat és teljesítéseket ismerteti. Ez a folyamat egy javasolt életciklust biztosít, amely segítségével strukturálhatja az adatelemzési projekteket. Az életciklus a projektek jellemzően végrehajtandó főbb szakaszait vázolja fel, gyakran iteratív:
 
-   1. **Az üzleti igények felmérése**
-   2. **Adatgyűjtés és adatértelmezés**
+   1. **Üzleti ismeretek**
+   2. **Adatgyűjtés és-megértés**
    3. **Modellezés**
    4. **Üzembe helyezés**
-   5. **Felhasználói elfogadás**
+   5. **Ügyfél-elfogadás**
 
-A TDSP életciklus ábrázolása a következő: 
+Itt látható a TDSP életciklus vizuális ábrázolása: 
 
-![TDSP-életciklus](./media/lifecycle/tdsp-lifecycle2.png) 
+![TDSP életciklusa](./media/lifecycle/tdsp-lifecycle2.png) 
 
 
 ## <a name="goals"></a>Célok
-* A célként megadott változókat, amelyek kapcsolatát érthető tiszta, magas minőségű adatkészlet létrehozásához. Keresse meg az adatkészlet a megfelelő elemzési környezet így modell készen áll.
-* Egy megoldás architektúrája, amely frissíti, és az adatokat rendszeresen pontszámmodell adatfolyamat fejleszthet.
+* Olyan tiszta, magas színvonalú adatkészletet hoz létre, amelynek a megcélzott változókkal való kapcsolata megértette. Keresse meg az adatkészletet a megfelelő elemzési környezetben, hogy készen álljon a modellre.
+* Fejlesszen ki egy olyan megoldási architektúrát, amely frissíti az adatfolyamatot, és rendszeres időközönként kiértékeli az adatmennyiséget.
 
-## <a name="how-to-do-it"></a>Megtudhatja, hogyan teheti
-Nincsenek az ebben a szakaszban leírt három fő feladat:
+## <a name="how-to-do-it"></a>Útmutató
+Ebben a szakaszban három fő feladat foglalkozik:
 
-   * **Az adatok betöltését** a cél elemzési környezetbe.
-   * **Az adatok** annak megállapításához, hogy a data quality megfelelő a választ a kérdésre. 
-   * **Egy adatfolyamat beállítása** pontszámot rendelni az új vagy rendszeresen frissülnek az adatok.
+   * **Az adatgyűjtést** a cél elemzési környezetbe.
+   * **Fedezze fel az** adatmennyiséget, és állapítsa meg, hogy az adatminőség megfelelő-e a kérdés megválaszolásához. 
+   * **Állítson be egy adatfolyamatot** az új vagy rendszeresen frissített adatértékek kiértékeléséhez.
 
-### <a name="ingest-the-data"></a>Az adatok betöltése
-Állítsa be a folyamat az adatok áthelyezése az adatforrás helyének a célhelyek analytics műveletek, például a képzés és az előrejelzések futtatásához. Technikai részletek és a lehetőségek, hogyan helyezheti át az adatokat a különböző Azure-adatszolgáltatások, lásd: [adatok betöltése a tárolási környezetekbe elemzés céljából](ingest-data.md). 
+### <a name="ingest-the-data"></a>Az adatfeldolgozás
+Állítsa be, hogy az adatok a forrás helyeiről a célhelyre legyenek áthelyezve az elemzési műveletek, például a képzés és az előrejelzések futtatásához. Az adatok különböző Azure-adatszolgáltatásokkal való áthelyezésével kapcsolatos technikai részletekért lásd: [adatok betöltése tárolási környezetbe elemzés céljából](ingest-data.md). 
 
 ### <a name="explore-the-data"></a>Az adatok vizsgálata
-Mielőtt-modellek betanításához az adatait eredményes ismeretekkel fejlesztéshez szükséges. Valós adatkészletek általában zajos, hiányoznak az értékek, vagy számos egyéb eltérések rendelkezik. Adatok összegzési és vizualizációs segítségével naplózása az adatok minőségét, és adja meg az adatok feldolgozására, mielőtt készen áll a modellezési szükséges információkat. Ez a folyamat gyakran meghatározási.
+A modellek betanítása előtt ki kell alakítania az adatelemzést. A valós adathalmazok gyakran zajosak, hiányoznak az értékek, vagy más eltéréseket tartalmaznak. Az adatösszesítés és a vizualizáció használatával naplózhatja az adatok minőségét, és megadhatja az adatok feldolgozásához szükséges adatokat, mielőtt készen áll a modellezésre. Ez a folyamat gyakran ismétlődő.
 
-TDSP biztosít nevű automatikus segédprogram [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils), megjelenítheti az adatokat, és készítse elő az adatokat összegző jelentéseket. Azt javasoljuk, hogy először a IDEAR, először az adatok kezdeti adatok megértését, interaktív módon kódolás nélkül fejlesztéséhez. Majd az adatok feltárása és képi megjelenítés egyéni kódot is írhat. Az adatok tisztítása, tekintse át [feladatok készíti elő az adatok bővített gépi tanulás](prepare-data.md).  
+A TDSP egy [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils)nevű automatizált segédprogramot biztosít az adatmegjelenítéshez és az adatösszegző jelentések előkészítéséhez. Javasoljuk, hogy első lépésként kezdje el az ismereteket, hogy a kezdeti adatfelismerést interaktív módon fejlessze a kódolás nélkül. Ezután egyéni kódot írhat az adatfeltáráshoz és a vizualizációhoz. Az adatok tisztításával kapcsolatos útmutatásért lásd: [feladatok az adatok előkészítéséhez a továbbfejlesztett gépi tanuláshoz](prepare-data.md).  
 
-Ha elégedett a tisztított adatok minőségét, a következő lépés az a, amelyek az adatokban rejlő mintázatok jobb megértéséhez. Ennek segítségével válassza ki, és a cél egy megfelelő prediktív modellek fejlesztése. Tekintse meg az, hogy hogyan bizonyíték jó csatlakozású az adatokat, hogy a cél. Majd vizsgálja meg, hogy van-e elegendő adatot előrelépés a további teendőkről modellezéshez. Ez a folyamat újra, gyakran iteratív. Előfordulhat, hogy meg kell keresnie és pontosabb több megfelelő adataival, mivel megvédi a az adatkészlet kezdetben az előző szakaszban azonosított új adatforrásokat. 
+Miután elégedett a megtisztított adatmennyiség minőségével, a következő lépés az, hogy jobban megértse az adatelemekben rejlő mintákat. Ez az adatelemzés segít a célnak megfelelő prediktív modell kiválasztásában és fejlesztésében. Keresse meg azt a bizonyítékot, hogy az adatok mennyire jól kapcsolódnak a célhoz. Ezután állapítsa meg, hogy van-e elegendő mennyiségű adattal a következő modellezési lépésekkel való előrelépéshez. Ez a folyamat többször is ismétlődő. Előfordulhat, hogy az előző fázisban eredetileg azonosított adatkészletek kibővítéséhez az új adatforrások pontosabb vagy további releváns adatokat kell keresnie. 
 
-### <a name="set-up-a-data-pipeline"></a>Egy adatfolyamat beállítása
-A kezdeti betöltési és az adatok tisztítása kívül általában kell beállítani egy folyamatot, hogy az új adatok pontozásához, vagy frissítheti az adatokat rendszeresen egy folyamatban lévő tanulási folyamat részeként. Ehhez adatok folyamattá vagy munkafolyamattá beállítása szerint. A [adatok áthelyezése a helyszíni SQL Server-példány az Azure SQL Database az Azure Data Factoryvel](move-sql-azure-adf.md) cikk biztosít a példa bemutatja, hogyan állíthatja be a folyamat [Azure Data Factory](https://azure.microsoft.com/services/data-factory/). 
+### <a name="set-up-a-data-pipeline"></a>Adatfolyamat beállítása
+Az adatok kezdeti betöltése és tisztítása mellett általában egy olyan folyamatot kell beállítania, amely új adatokkal szerzi be vagy rendszeresen frissíti az adatmennyiséget egy folyamatban lévő tanulási folyamat részeként. A pontozás egy adatfolyamattal vagy munkafolyamattal is elvégezhető. Az [adatok áthelyezése egy helyszíni SQL Server-példányból a Azure SQL Databaseba Azure Data Factory](move-sql-azure-adf.md) cikkből megtudhatja, hogyan állíthat be egy folyamatot [Azure Data Factory](https://azure.microsoft.com/services/data-factory/)használatával. 
 
-Ebben a szakaszban egy adatfolyamat megoldás architektúrája, fejlesztése. A folyamat következő szakaszában az adatelemzési projektjéhez párhuzamos fejleszt. Attól függően, és az üzleti igényeknek megfelelően, amelybe ez a megoldás integrálva van a meglévő rendszerek korlátait a folyamat a következő egyike lehet: 
+Ebben a szakaszban fejleszti az adatfolyamatok megoldási architektúráját. Az adatelemzési projekt következő szakaszába párhuzamosan fejlesztheti a folyamatot. Az üzleti igényektől és a meglévő rendszerek korlátaitól függően, amelyekben a megoldás integrálva van, a folyamat az alábbi lehetőségek egyike lehet: 
 
    * Batch-alapú
-   * Streamelés és valós idejű 
+   * Folyamatos átvitel vagy valós idejű 
    * Hibrid 
 
-## <a name="artifacts"></a>Összetevők
-Az alábbiakban a termékek ebben a szakaszban:
+## <a name="artifacts"></a>Artifacts
+Ebben a szakaszban a következő termékek szerepelnek:
 
-   * [Adatok minőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Ez a jelentés összefoglaló adatokat, mindegyik attribútum és a cél, a kapcsolatokat tartalmaz változó rangsorolás és egyebek. A [IDEAR](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) TDSP részét is gyorsan létrehozhatja a jelentés minden táblázatos adatkészlet, például a CSV-fájl vagy egy relációs tábla megadott eszköz. 
-   * **Megoldásarchitektúra**: A megoldásarchitektúra lehet egy diagram vagy a leírást a pontozási futtatásához használt adatfolyamat vagy előrejelzéseket új adatokat a modell létrehozása után. A folyamat újratanítása a modellt az új adatok alapján is tartalmaz. A dokumentum a Store a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtár a TDSP directory struktúra sablon használatakor.
-   * **Ellenőrzőpont döntési**: A szolgáltatás teljes termékgondozó csoportja és a modell létrehozásának megkezdése előtt, annak megállapításához, hogy a várt értéket eljárásokat, a folytatáshoz elegendő-e a projekt is kiértékeli. Előfordulhat például lehet készen áll a folytatáshoz kell további adatok gyűjtése, illetve a projekt abandon, mert az adatok nem létezik a választ a kérdésre.
+   * [Adatminőségi jelentés](https://github.com/Azure/Azure-TDSP-ProjectTemplate/blob/master/Docs/Data_Report/DataSummaryReport.md): Ez a jelentés az adatösszegzéseket, az egyes attribútumok és a cél, a változó rangsorolás és egyéb kapcsolatok közötti kapcsolatokat tartalmazza. A TDSP részeként nyújtott [ideaer](https://github.com/Azure/Azure-TDSP-Utilities/blob/master/DataScienceUtilities/DataReport-Utils) eszköz gyorsan létrehozhatja ezt a jelentést bármilyen táblázatos adathalmazon, például egy CSV-fájlban vagy egy kapcsolati táblában. 
+   * **Megoldás-architektúra**: a megoldás architektúrája lehet az adatfolyamatok egy diagramja vagy leírása, amellyel a modell létrehozása után az új adatsorokra vonatkozó pontozási vagy előrejelzések futtathatók. Emellett tartalmazza azt a folyamatot is, amely új adatai alapján újratanítja a modellt. Tárolja a dokumentumot a [projekt](https://github.com/Azure/Azure-TDSP-ProjectTemplate/tree/master/Docs/Project) könyvtárában a TDSP Directory-struktúra sablonjának használatakor.
+   * **Ellenőrzőpont-döntés**: Mielőtt megkezdené a teljes körű fejlesztést és a modell kialakítását, a projekt újraértékelésével megállapíthatja, hogy a várt érték elegendő-e a folytatáshoz. Előfordulhat például, hogy készen áll a folytatásra, további adatokat kell gyűjtenie, vagy fel kell vennie a projektet, mert az adatok nem léteznek a kérdés megválaszolására.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az alábbiakban a TDSP életciklusának minden lépése mutató hivatkozásokat:
+Az alábbiakban a TDSP életciklusának egyes lépéseire mutató hivatkozásokat talál:
 
-   1. [Az üzleti igények felmérése](lifecycle-business-understanding.md)
-   2. [Adatgyűjtés és adatértelmezés](lifecycle-data.md)
+   1. [Üzleti ismeretek](lifecycle-business-understanding.md)
+   2. [Adatgyűjtés és-megértés](lifecycle-data.md)
    3. [Modellezés](lifecycle-modeling.md)
    4. [Üzembe helyezés](lifecycle-deployment.md)
-   5. [Felhasználói elfogadás](lifecycle-acceptance.md)
+   5. [Ügyfél-elfogadás](lifecycle-acceptance.md)
 
-Azt adja meg a teljes, végpontok közötti forgatókönyvek, amelyek bemutatják, bizonyos forgatókönyvek esetén a folyamat összes lépését. A [példa forgatókönyvek](walkthroughs.md) a cikk a forgatókönyvek miniatűr leírások és hivatkozások listáját tartalmazza. A forgatókönyvek bemutatják, hogyan kombinálhatja a felhőbeli, helyszíni eszközöket és szolgáltatásokat, munkafolyamat vagy folyamat, intelligens alkalmazások létrehozására. 
+Teljes körű bemutatókat biztosítunk, amelyek bemutatják a folyamat összes lépését adott forgatókönyvek esetében. A [példákat](walkthroughs.md) bemutató cikk a hivatkozásokat és a miniatűr leírásait tartalmazza. Az útmutató bemutatja, hogyan egyesítheti a felhőt, a helyszíni eszközöket és a szolgáltatásokat egy munkafolyamatban vagy folyamatban egy intelligens alkalmazás létrehozásához. 
 
-Hogyan hajtható végre a lépéseket az Azure Machine Learning Studio használó TDSPs példákért lásd [a TSDP használata az Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
+A Azure Machine Learning Studiot használó TDSPs lépéseinek végrehajtásával kapcsolatos Példákért lásd: [a TDSP használata Azure Machine learning használatával](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/lifecycle-data).
