@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: diberry
-ms.openlocfilehash: 9a7599cd71c087201b54c594954a6fff377b3e45
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 5205b12a5f9f6acad8755b69d6da2216ffd4d83e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73490766"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760827"
 ---
 # <a name="features-are-information-about-actions-and-context"></a>A funkciók a műveletekkel és környezettel kapcsolatos információk
 
@@ -56,7 +56,7 @@ A személyre szabás a névterekben rendezett funkciókat veszi igénybe. Ön ha
 Az alábbi példák az alkalmazások által használt szolgáltatások névtereit mutatják be:
 
 * User_Profile_from_CRM
-* Time
+* Idő
 * Mobile_Device_Info
 * http_user_agent
 * VideoResolution
@@ -107,6 +107,7 @@ A névtér elnevezéséhez használt karakterláncnak bizonyos korlátozásokat 
 * Nem lehet Unicode.
 * A névterek neveihez < 256 kóddal ellátott nyomtatható szimbólumokat használhat. 
 * Nem használhat szimbólumokat < 32 (nem nyomtatható), 32 (szóköz), 58 (Colon), 124 (pipe) és 126 – 140 kóddal.
+* Nem kezdődhet aláhúzással (_), vagy a szolgáltatás figyelmen kívül lesz hagyva.
 
 ## <a name="how-to-make-feature-sets-more-effective-for-personalizer"></a>A funkciók hatékonyabbvé tétele a személyre szabáshoz
 
@@ -178,7 +179,7 @@ A Rank API-nak küldött műveletek attól függnek, hogy mit próbál személyr
 
 Néhány példa:
 
-|Cél|Műveletek|
+|Rendeltetés|Műveletek|
 |--|--|
 |Személyre szabhatja, hogy mely cikkek legyenek kiemelve a hírek webhelyén.|Minden művelet egy lehetséges újságcikk.|
 |Optimalizálja az ad-elhelyezést egy webhelyen.|Minden művelet elrendezést vagy szabályokat tartalmaz a hirdetések elrendezésének létrehozásához (például felül, a jobb oldalon, a kis képeken és a nagyméretű képeken).|
@@ -319,6 +320,6 @@ A JSON-objektumok tartalmazhatnak beágyazott JSON-objektumokat és egyszerű tu
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Megerősítő tanulás](concepts-reinforcement-learning.md) 

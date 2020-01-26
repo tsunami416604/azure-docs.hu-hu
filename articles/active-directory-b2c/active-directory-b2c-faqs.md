@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 10/14/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 803c82c9926c3b75545b42a9a382fd5c327b7151
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: c14bebca775345ab478228f42d9b8416dd223032
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289084"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756194"
 ---
 # <a name="azure-ad-b2c-frequently-asked-questions-faq"></a>Azure AD B2C: gyakori kérdések (GYIK)
 
@@ -39,7 +39,7 @@ Egy Azure AD-bérlőben a bérlőhöz tartozó felhasználók a `<xyz>@<tenant d
 
 Egy Azure AD B2C bérlőben a legtöbb alkalmazás azt szeretné, hogy a felhasználó tetszőleges e-mail-címmel jelentkezzen be (például joe@comcast.net, bob@gmail.com, sarah@contoso.comvagy jim@live.com). Ez a fióktípus helyi fiók. A helyi fiókok (például Joe, Bob, Sarah vagy Jim) alapján is támogatjuk az tetszőleges felhasználóneveket. Ezt a két helyi fióktípus közül választhatja ki, ha az Azure Portal Azure AD B2C identitás-szolgáltatóját konfigurálja. A Azure AD B2C-bérlőben válassza az **identitás-szolgáltatók**, majd a **helyi fiók**lehetőséget, és válassza a **username (Felhasználónév**) lehetőséget.
 
-Az alkalmazásokhoz tartozó felhasználói fiókokat mindig létre kell hozni egy regisztrációs felhasználói folyamaton, regisztrációs vagy bejelentkezési felhasználói folyamaton, vagy az Azure AD Graph API használatával. A Azure Portal létrehozott felhasználói fiókokat csak a bérlő felügyeletére használják.
+Az alkalmazásokhoz tartozó felhasználói fiókok létrehozhatók egy regisztrációs felhasználói folyamaton, a regisztrációs vagy bejelentkezési felhasználói folyamaton, a Microsoft Graph API-n vagy a Azure Portal.
 
 ### <a name="which-social-identity-providers-do-you-support-now-which-ones-do-you-plan-to-support-in-the-future"></a>Mely közösségi identitás-szolgáltatókat támogatja most? Melyeket tervezi a jövőben támogatni?
 
@@ -77,7 +77,7 @@ Az ellenőrző e-mailek tartalmának testreszabásához használhatja a [vállal
 Az e-mail-aláírás tartalmazza azt a Azure AD B2C bérlő nevét, amelyet a Azure AD B2C bérlő első létrehozásakor adott meg. A nevet a következő utasítások használatával módosíthatja:
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com/) globális rendszergazdaként.
-1. Nyissa meg az **Azure Active Directory** panelt.
+1. Nyissa meg a **Azure Active Directory** panelt.
 1. Kattintson a **Tulajdonságok** fülre.
 1. Módosítsa a **név** mezőt.
 1. Kattintson az oldal tetején lévő **Mentés** elemre.
@@ -150,7 +150,7 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
-1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
+1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
@@ -170,7 +170,7 @@ Használhatja az aktuális **alkalmazásokat** , vagy az új Unified **Alkalmaz�
 1. A **kezelés**területen válassza a **felhasználói beállítások**lehetőséget.
 1. Ha van ilyen, a **LinkedIn-fiók kapcsolatai**területen válassza a **nem**, majd a **Mentés**lehetőséget.
 1. A **kezelés**területen válassza a **Tulajdonságok** lehetőséget.
-1. Az **Azure-erőforrásokhoz való hozzáférés kezelése** területen válassza az **Igen**, majd a **Mentés** lehetőséget.
+1. Az **Azure-erőforrások hozzáférés-kezelés**területén válassza az **Igen**, majd a **Mentés**lehetőséget.
 1. Jelentkezzen ki a Azure Portal, majd jelentkezzen be újra a hozzáférésének frissítéséhez.
 1. A bal oldali menüben válassza a **Azure Active Directory** lehetőséget.
 1. Az **Áttekintés** lapon válassza a **könyvtár törlése**lehetőséget. A folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.

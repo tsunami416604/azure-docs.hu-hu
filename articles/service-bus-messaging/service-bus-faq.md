@@ -1,22 +1,22 @@
 ---
 title: Azure Service Bus gyakori kérdések (GYIK) | Microsoft Docs
-description: Válaszok a Azure Service Busekkel kapcsolatos gyakori kérdésekre.
+description: Ez a cikk a Azure Service Bus kapcsolatos gyakori kérdések (GYIK) néhány válaszát tartalmazza.
 services: service-bus-messaging
 author: axisc
 manager: timlt
 editor: spelluru
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: c303e2b691f8e7aa7ea3c8fcc69e39d7970ef54e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3cd4e69481fb452391e6dc027cb41fd6dae71b7e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75352875"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760249"
 ---
-# <a name="service-bus-faq"></a>Service Bus – GYIK
+# <a name="azure-service-bus---frequently-asked-questions-faq"></a>Azure Service Bus – gyakran ismételt kérdések (GYIK)
 
 Ez a cikk a Microsoft Azure Service Busokkal kapcsolatos gyakori kérdéseket tárgyalja. Az Azure- [támogatási GYIK](https://azure.microsoft.com/support/faq/) általános Azure-díjszabást és támogatási információkat is talál.
 

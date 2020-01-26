@@ -1,5 +1,5 @@
 ---
-title: Kísérleti beállításkészlet a Content-Aware kódoláshoz – Azure | Microsoft Docs
+title: A Content-Aware kódoláshoz beállított beállításkészlet – Azure Media Services |
 description: Ez a cikk az Microsoft Azure Media Services v3 tartalommal kompatibilis kódolását ismerteti.
 services: media-services
 documentationcenter: ''
@@ -12,14 +12,14 @@ ms.topic: article
 ms.date: 04/05/2019
 ms.author: juliako
 ms.custom: ''
-ms.openlocfilehash: c2846759a8daa04fc5c1d3b7f69e2c061bacb272
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 34b4386d536a9845c8a48e7e54612548367b52bc
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933484"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759346"
 ---
-# <a name="experimental-preset-for-content-aware-encoding"></a>Kísérleti beállításkészlet a Content-Aware kódoláshoz
+# <a name="a-preset-for-content-aware-encoding"></a>A Content-Aware kódoláshoz beállított beállításkészlet
 
 A tartalom [adaptív sávszélességű adatfolyamként](https://en.wikipedia.org/wiki/Adaptive_bitrate_streaming)történő továbbításához a videót több átviteli sebességre kell kódolni (magasról alacsonyra). A minőség zavartalan romlásának biztosítása érdekében, mivel a bitrátát csökkenti, így a videó felbontása is megtörténik. Ez egy úgynevezett kódolási létrát eredményez, amely a felbontások és a bitráták táblázata. Tekintse meg a Media Services [beépített kódolási előkészleteket](https://docs.microsoft.com/rest/api/media/transforms/createorupdate#encodernamedpreset).
 

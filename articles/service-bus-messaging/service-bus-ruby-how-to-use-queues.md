@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Azure Service Bus várólisták használata a Ruby használatával'
-description: 'Gyors útmutató: Service Bus-várólisták használata az Azure-ban. A Rubyban írt kód-minták.'
+title: Azure Service Bus várólisták használata a Ruby használatával
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre Ruby-alkalmazásokat egy Service Bus üzenetsor üzeneteinek küldéséhez és fogadásához.
 services: service-bus-messaging
 documentationcenter: ruby
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: ruby
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 09fdc58254d260b6ffeff958b6bbda50332adfac
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a699543bb442e7c57d57e72acb2cdf6ac40159c1
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718768"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760589"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-ruby"></a>Gyors útmutató: Service Bus várólisták használata a Ruby használatával
 
@@ -62,9 +62,9 @@ queue = azure_service_bus_service.create_queue(queue)
 ```
 
 ## <a name="how-to-send-messages-to-a-queue"></a>Üzenetek küldése egy várólistára
-Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send_queue_message()` metódust az **Azure:: ServiceBusService** objektumon. Az Service Bus várólisták az **Azure:: ServiceBus:: BrokeredMessage** objektumok, valamint a szabványos tulajdonságok (például `label` és `time_to_live`) egy készlete, amely az egyéni alkalmazásspecifikus tulajdonságok tárolására szolgál. és a tetszőleges alkalmazásadatok törzse. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy sztringet küld az üzenetnek, és a szükséges standard tulajdonságokat az alapértelmezett értékekkel tölti fel.
+Ha üzenetet szeretne küldeni egy Service Bus üzenetsor számára, az alkalmazás meghívja a `send_queue_message()` metódust az **Azure:: ServiceBusService** objektumon. A (z) Service Bus várólistákból küldött üzenetek az **Azure:: ServiceBus:: BrokeredMessage** objektumok, valamint a szabványos tulajdonságok (például `label` és `time_to_live`) készlete, az egyedi alkalmazásspecifikus tulajdonságok tárolására szolgáló szótár, valamint egy tetszőleges alkalmazásadatok törzse. Egy alkalmazás beállíthatja az üzenet törzsét úgy, hogy egy sztringet küld az üzenetnek, és a szükséges standard tulajdonságokat az alapértelmezett értékekkel tölti fel.
 
-Az alábbi példa bemutatja, hogyan küldhet tesztüzenet a `test-queue` nevű várólistára `send_queue_message()` használatával:
+Az alábbi példa bemutatja, hogyan küldhet tesztüzenet a `test-queue` nevű várólistára `send_queue_message()`használatával:
 
 ```ruby
 message = Azure::ServiceBus::BrokeredMessage.new("test queue message")
@@ -77,11 +77,11 @@ A Service Bus-üzenetsorok a [Standard csomagban](service-bus-premium-messaging.
 ## <a name="how-to-receive-messages-from-a-queue"></a>Üzenetek fogadása egy üzenetsorból
 Az üzenetek egy várólistából érkeznek az **Azure:: ServiceBusService** objektum `receive_queue_message()` metódusának használatával. Alapértelmezés szerint az üzenetek az üzenetsor törlése nélkül olvashatók és zárolva lesznek. Az üzenetek a várólistáról való törlését azonban a `:peek_lock` beállítás **hamis**értékre állításával törölheti.
 
-Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), az `delete_queue_message()` metódus meghívásával, valamint az üzenet paraméterként való törlésével elvégezte a fogadási folyamat második szakaszát. A `delete_queue_message()` metódus az üzenetet felhasználva fogja megjelölni, és eltávolítja azt a várólistából.
+Az alapértelmezett viselkedés lehetővé teszi a kétfázisú művelet olvasását és törlését, ami lehetővé teszi az olyan alkalmazások támogatását, amelyek nem tudják elviselni a hiányzó üzeneteket. Amikor a Service Bus fogad egy kérést, megkeresi és zárolja a következő feldolgozandó üzenetet, hogy más fogyasztók ne tudják fogadni, majd visszaadja az alkalmazásnak. Miután az alkalmazás befejezte az üzenet feldolgozását (vagy megbízhatóként tárolja azt a későbbi feldolgozáshoz), a `delete_queue_message()` metódus meghívásával, valamint a paraméterként törlendő üzenet megadásával végrehajtja a fogadási folyamat második szakaszát. A `delete_queue_message()` metódus az üzenetet felhasználva fogja megjelölni, és eltávolítja azt a várólistából.
 
 Ha a `:peek_lock` paraméter értéke **hamis**, az olvasás és az üzenet törlése a legegyszerűbb modell lesz, és a legjobban olyan helyzetekben működik, amikor egy alkalmazás meghibásodás esetén nem dolgozza fel az üzenetet. Ennek megértéséhez képzeljen el egy forgatókönyvet, amelyben a fogyasztó kiad egy fogadási kérést, majd összeomlik a feldolgozása előtt. Mivel Service Bus az üzenetet felhasználva jelölte meg, az alkalmazás újraindításakor és az üzenetek újrafelhasználásának megkezdése után a rendszer kihagyta az összeomlás előtt felhasznált üzenetet.
 
-Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket `receive_queue_message()` használatával. A példa először fogad és töröl egy üzenetet `:peek_lock` beállítás **hamis**értékre állításával, majd egy másik üzenetet kap, majd az `delete_queue_message()`használatával törli az üzenetet:
+Az alábbi példa bemutatja, hogyan fogadhat és dolgozhat fel üzeneteket `receive_queue_message()`használatával. A példa először fogad és töröl egy üzenetet `:peek_lock` beállítás **hamis**értékre állításával, majd egy másik üzenetet kap, majd az `delete_queue_message()`használatával törli az üzenetet:
 
 ```ruby
 message = azure_service_bus_service.receive_queue_message("test-queue",
@@ -100,7 +100,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozását követően össze
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a Service Bus-üzenetsorok alapjait, az alábbi hivatkozásokból tudhat meg többet.
 
 * A [várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)áttekintése.

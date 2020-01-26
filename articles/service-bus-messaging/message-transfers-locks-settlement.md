@@ -1,6 +1,6 @@
 ---
-title: Az üzenetek átvitelének, zárolásának és rendezésének Azure Service Busa | Microsoft Docs
-description: Az üzenetküldési és a rendezési műveletek Service Bus áttekintése
+title: Az üzenetek átvitelének, zárolásának és elszámolásának Azure Service Bus
+description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetek átviteléről, zárolásáról és elszámolási műveleteiről.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 01/24/2019
 ms.author: aschhab
-ms.openlocfilehash: 9aaada1ede8912b8b70f37c628ec918eca9be9d2
-ms.sourcegitcommit: 5f0f1accf4b03629fcb5a371d9355a99d54c5a7e
+ms.openlocfilehash: a2c353d612280981a83b32463d34efdc70878495
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2019
-ms.locfileid: "71676261"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759278"
 ---
 # <a name="message-transfers-locks-and-settlement"></a>Üzenetek átvitele, zárolása és elszámolása
 
@@ -34,7 +34,7 @@ A támogatott Service Bus API-ügyfelek bármelyikének használatakor a rendsze
 
 Ha Service Bus elutasítja az üzenetet, az elutasítás egy hibaüzenetet és egy "nyomkövetési azonosítót" tartalmazó szöveget tartalmaz. Az elutasítás azt is tartalmazza, hogy a művelet újrapróbálkozhat-e a siker várható sikerességével. Az ügyfélben ez az információ kivételbe kerül, és a küldési művelet hívója számára lett kiemelve. Ha az üzenet el lett fogadva, a művelet csendben befejeződött.
 
-A AMQP protokoll használata esetén, amely a .NET Standard-ügyfél és a Java-ügyfél kizárólagos protokollja, és [amely a .NET-keretrendszer ügyfelének egyik beállítása, a](service-bus-amqp-dotnet.md)Message Transfers és a kiegyenlítések folyamatos és teljesen aszinkron, és Javasoljuk, hogy használja az aszinkron programozási modell API-variánsait.
+A AMQP protokoll használata esetén, amely a .NET Standard ügyfélhez és a Java-ügyfélhez tartozó kizárólagos protokoll, és [amely a .NET-keretrendszer ügyfelének egyik beállítása](service-bus-amqp-dotnet.md), az üzenetek átvitele és a kiegyenlítések a folyamattal és teljesen aszinkron módon használhatók, és javasoljuk, hogy használja az aszinkron programozási modell API-variánsait.
 
 A küldő a gyors egymásutánban több üzenetet is helyezhet a huzalon anélkül, hogy meg kellene várnia az egyes üzenetek elismerését, ahogyan azt egyébként a SBMP protokoll vagy a HTTP 1,1 esetében is tenné. Az aszinkron küldési műveletek elvégzése a megfelelő üzenetek elfogadásának és tárolásának, particionált entitások esetén, illetve a különböző entitások küldési műveletének átfedésével történik. Előfordulhat, hogy a Befejezés az eredeti küldési sorrendben is előfordulhat.
 
@@ -96,7 +96,7 @@ Alacsony szintű AMQP-ügyféllel a Service Bus "előre letelepedett" átvitelek
 
 ## <a name="settling-receive-operations"></a>Fogadási műveletek rendezése
 
-A fogadási műveletek esetében a Service Bus API-ügyfelek két különböző explicit módot tesznek lehetővé: *Fogadás és törlés* és *betekintés – zárolás*.
+A fogadási műveletek esetében a Service Bus API-ügyfelek két különböző explicit módot tesznek lehetővé: *fogadás és törlés* és *betekintés – zárolás*.
 
 ### <a name="receiveanddelete"></a>ReceiveAndDelete
 
@@ -106,23 +106,23 @@ Ennek a módnak az a célja, hogy a fogadónak ne kelljen további műveleteket 
 
 ### <a name="peeklock"></a>PeekLock
 
-A [](/dotnet/api/microsoft.servicebus.messaging.receivemode) betekintési zárolási mód közli a közvetítővel, hogy a fogadó ügyfél explicit módon kívánja rendezni a fogadott üzeneteket. Az üzenet elérhetővé válik a fogadó számára, miközben a szolgáltatás kizárólagos zárolása alatt áll, így a többi versengő fogadó nem látja azt. A zárolás időtartama kezdetben a várólista vagy az előfizetés szintjén van meghatározva, és a zárolást birtokló ügyfél kiterjeszthető a [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) művelettel.
+A [betekintési zárolási](/dotnet/api/microsoft.servicebus.messaging.receivemode) mód közli a közvetítővel, hogy a fogadó ügyfél explicit módon kívánja rendezni a fogadott üzeneteket. Az üzenet elérhetővé válik a fogadó számára, miközben a szolgáltatás kizárólagos zárolása alatt áll, így a többi versengő fogadó nem látja azt. A zárolás időtartama kezdetben a várólista vagy az előfizetés szintjén van meghatározva, és a zárolást birtokló ügyfél kiterjeszthető a [RenewLock](/dotnet/api/microsoft.azure.servicebus.core.messagereceiver.renewlockasync#Microsoft_Azure_ServiceBus_Core_MessageReceiver_RenewLockAsync_System_String_) művelettel.
 
 Ha egy üzenet zárolva van, az azonos várólistából vagy előfizetésből érkező többi ügyfél zárolja a zárolásokat, és lekéri a következő elérhető üzeneteket, amelyek nem aktív zárolás alatt találhatók. Ha az üzenet zárolása explicit módon fel van szabadítva, vagy ha lejár a zárolás, az üzenet a lekérési megrendelés elején vagy annak közelében jelenik meg.
 
 Ha az üzenetet a fogadók ismételten kiadják, vagy lehetővé teszik, hogy a zárolás egy meghatározott számú alkalommal legyen eltelni ([maxDeliveryCount](/dotnet/api/microsoft.servicebus.messaging.queuedescription.maxdeliverycount#Microsoft_ServiceBus_Messaging_QueueDescription_MaxDeliveryCount)), a rendszer automatikusan eltávolítja az üzenetet a várólistából vagy az előfizetésből, és elhelyezi a kapcsolódó kézbesítetlen levelek várólistáján.
 
-A fogadó ügyfél elindít egy pozitív nyugtával rendelkező fogadott üzenet rendezését, amikor az az [](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) API szintjén meghívja a hívást. Ez azt jelzi, hogy a közvetítő sikeresen feldolgozta az üzenetet, és az üzenet el lett távolítva a sorból vagy az előfizetésből. A közvetítő választ küld a fogadó elszámolási céljára egy olyan választal, amely jelzi, hogy a rendezés elvégezhető-e.
+A fogadó ügyfél elindít egy pozitív nyugtával rendelkező fogadott üzenet rendezését, amikor az az API szintjén [meghívja a](/dotnet/api/microsoft.servicebus.messaging.queueclient.complete#Microsoft_ServiceBus_Messaging_QueueClient_Complete_System_Guid_) hívást. Ez azt jelzi, hogy a közvetítő sikeresen feldolgozta az üzenetet, és az üzenet el lett távolítva a sorból vagy az előfizetésből. A közvetítő választ küld a fogadó elszámolási céljára egy olyan választal, amely jelzi, hogy a rendezés elvégezhető-e.
 
-Ha a fogadó ügyfél nem tud feldolgozni egy üzenetet, de azt szeretné, hogy a rendszer visszakézbesítse az üzenetet, akkor explicit módon megkérheti, hogy az üzenet [](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) azonnal fel legyen szabadítva, és a lemondás meghívásával azonnal feloldja az üzenetet, ha a zárolás eltelik.
+Ha a fogadó ügyfél nem tud feldolgozni egy üzenetet, de azt szeretné, hogy a rendszer visszakézbesítse az üzenetet, akkor explicit módon megkérheti, hogy az üzenet azonnal fel legyen szabadítva, és a [lemondás](/dotnet/api/microsoft.servicebus.messaging.queueclient.abandon) meghívásával azonnal feloldja az üzenetet, ha a zárolás eltelik.
 
-Ha a fogadó ügyfél nem tud feldolgozni egy üzenetet, és tudja, hogy az üzenet újbóli kézbesítése és a művelet újrapróbálása nem segít, elutasítja az üzenetet, amely a kézbesítetlen levelek várólistába helyezi a [kézbesítetlen levelek](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter), amely lehetővé teszi az egyéni beállítások beállítását is. az a tulajdonság, amely a kézbesítetlen levelek várólistáján található üzenettel beolvasható okkódot tartalmazza.
+Ha a fogadó ügyfél nem tud feldolgozni egy üzenetet, és tudja, hogy az üzenet újbóli kézbesítése és a művelet újrapróbálása nem segít, elutasítja az üzenetet, amely a kézbesítetlen levelek várólistába helyezi a [kézbesítetlen levelek](/dotnet/api/microsoft.servicebus.messaging.queueclient.deadletter)hívásával, amely lehetővé teszi az egyéni tulajdonság beállítását is, amely a kézbesítetlen levelek várólistáján lévő üzenettel lekérhető okkódot is tartalmazza.
 
 A kiegyenlítés egy különleges esete a halasztás, amely külön cikkben van tárgyalva.
 
 A **teljes** vagy **kézbesítetlen levelek** műveletek, valamint a **RenewLock** műveletek hálózati problémák miatt sikertelenek lehetnek, ha a tárolt zárolás lejárt, vagy más, a rendezést megakadályozó szolgáltatási oldali feltételek vannak. Az utóbbi esetek egyikében a szolgáltatás negatív visszaigazolást küld, amely a felületek kivételként szolgál az API-ügyfeleken. Ha az OK sérült hálózati kapcsolat, a rendszer elveti a zárolást, mivel Service Bus nem támogatja a meglévő AMQP-hivatkozások helyreállítását egy másik kapcsolaton.
 
-Ha a **Befejezés** nem sikerül, ami általában az üzenetkezelés legvégén fordul elő, és bizonyos esetekben a feldolgozás után néhány perc elteltével a fogadó alkalmazás eldöntheti, hogy megőrzi-e a munka állapotát, és figyelmen kívül hagyja a kézbesítéskor megjelenő üzenetet. Másodszor, vagy azt, hogy a rendszer felveszi-e a munka eredményét, és újrapróbálkozik az üzenet újrakézbesítésével.
+Ha a **Befejezés** nem sikerül, ami általában az üzenetkezelés legvégén fordul elő, és bizonyos esetekben a feldolgozást követő percek elteltével a fogadó alkalmazás eldöntheti, hogy megőrzi-e a munka állapotát, és figyelmen kívül hagyja az üzenetet, ha másodszor is kézbesíti azt, vagy felveszi a munkát, és újrapróbálkozik az üzenet újrakézbesítésével.
 
 Az ismétlődő üzenetek azonosítására szolgáló jellemző mechanizmus az üzenet-azonosító ellenőrzése, amelyet a küldőnek egy egyedi értékre kell beállítania, amely valószínűleg a kezdeményező folyamat azonosítójával van összhangban. A Feladatütemező valószínűleg azt a feladatot állítja be az üzenet-azonosító értékre, amelyet a munkavégzőhöz a megadott feldolgozóhoz hozzárendelni próbál, és a feldolgozó figyelmen kívül hagyja a feladat-hozzárendelés második előfordulását, ha a feladat már elkészült.
 
@@ -134,7 +134,7 @@ Az ismétlődő üzenetek azonosítására szolgáló jellemző mechanizmus az �
 >
 > A zárolás elvesztése után Azure Service Bus egy LockLostException fog előállítani, amely az ügyfélalkalmazás kódján lesz feldolgozva. Ebben az esetben az ügyfél alapértelmezett újrapróbálkozási logikájának automatikusan be kell jelentkeznie, és újra kell próbálkoznia a művelettel.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

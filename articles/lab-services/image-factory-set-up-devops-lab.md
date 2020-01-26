@@ -1,6 +1,6 @@
 ---
-title: Rendszerkép-előállító futtatása az Azure DevOps Azure DevTest Labs-ban | Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre egyéni rendszerkép-előállítót Azure DevTest Labsban.
+title: Rendszerkép-előállító futtatása az Azure DevOps Azure DevTest Labs
+description: Ez a cikk a rendszerkép-előállító Azure DevOps (korábban Visual Studio Team Services) való futtatásához szükséges előkészületeket ismerteti.
 services: devtest-lab, lab-services
 documentationcenter: na
 author: spelluru
@@ -10,14 +10,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/25/2019
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 101ed792f091a5074b42e3d06eed27d606d3d2a7
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: bb67f765684c77ed5f8527226bef578e450579e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75638952"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758682"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Rendszerkép-előállító futtatása az Azure DevOpsból
 Ez a cikk a rendszerkép-előállító Azure DevOps (korábban Visual Studio Team Services) való futtatásához szükséges előkészületeket ismerteti.
@@ -32,7 +32,7 @@ A rendszerkép-előállító beállításának első lépéseként létre kell h
 A csapat rendszerkép-előállítójának bevezetésének következő lépése az elérhetőség megismerése. A rendszerkép-előállító szkriptek és sablonok nyilvánosan elérhetők a [DevTest Labs GitHub](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/Scripts/ImageFactory)-tárházban. Itt látható a darabok vázlata:
 
 - Rendszerkép-előállító. Ez a gyökérmappa.
-    - Konfigurációs adatok. A rendszerkép-előállító bemenetei
+    - Configuration. A rendszerkép-előállító bemenetei
         - GoldenImages. Ez a mappa olyan JSON-fájlokat tartalmaz, amelyek az egyéni lemezképek definícióit jelölik.
         - Labs. JSON. Az a fájl, ahol a csapatok a megadott egyéni rendszerképek fogadására regisztrálhatnak.
 - Parancsfájlok. A rendszerkép-előállító motorja.
@@ -52,7 +52,7 @@ A rendszerkép-előállítóhoz tartozó összes PowerShell, sablon és konfigur
 1. Keresse fel az előző lépésben létrehozott Azure DevOps-projektet (az URL-cím a **https:\//\<accountname >. VisualStudio. com/MyFirstProject**).
 2. Válassza **az adattár importálása**lehetőséget.
 3. Adja meg a DevTest Labs **-tárház klónozási URL-címét** : `https://github.com/Azure/azure-devtestlab`.
-4. Kattintson az **Importálás** gombra.
+4. Válassza az **Importálás**lehetőséget.
 
     ![Git-tárház importálása](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -106,7 +106,7 @@ Az egyszerű szolgáltatásnév beállításának leggyorsabb módja az, hogy az
 2. Az **Azure-kapcsolatok típusa**beállításnál válassza a **Azure Resource Manager**lehetőséget.
 3. Válassza a **kezelés** hivatkozást az egyszerű szolgáltatásnév beállításához.
 
-További információkat [ebben a blogbejegyzésben](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/) talál. Ha kiválasztja a **kezelés** hivatkozást, a DevOps (második képernyőkép a blogbejegyzésben) a megfelelő helyen fog megjelenni az Azure-hoz való csatlakozás beállításához. Ha ezt a beállítást választja, ügyeljen arra, hogy **Azure Resource Manager szolgáltatási végpontot** válassza.
+További információt ebben a [blogbejegyzésben](https://devblogs.microsoft.com/devops/automating-azure-resource-group-deployment-using-a-service-principal-in-visual-studio-online-buildrelease-management/)talál. Ha kiválasztja a **kezelés** hivatkozást, a DevOps (második képernyőkép a blogbejegyzésben) a megfelelő helyen fog megjelenni az Azure-hoz való csatlakozás beállításához. Ha ezt a beállítást választja, ügyeljen arra, hogy **Azure Resource Manager szolgáltatási végpontot** válassza.
 
 ## <a name="complete-the-build-task"></a>A Build feladat befejezése
 Ha kijelöli a felépítési feladatot, a jobb oldali ablaktáblán látható összes adat megjelenik, amelyet ki kell tölteni.

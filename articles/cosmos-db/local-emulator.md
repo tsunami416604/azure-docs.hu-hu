@@ -6,12 +6,12 @@ ms.topic: tutorial
 author: markjbrown
 ms.author: mjbrown
 ms.date: 07/26/2019
-ms.openlocfilehash: bcab5f76b95939b0a9a4232eab2bcf8b2a5fd40b
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 3e51db98403b507c1c34ee455cfe218ea52c529b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309982"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760572"
 ---
 # <a name="use-the-azure-cosmos-emulator-for-local-development-and-testing"></a>Az Azure Cosmos Emulator használata helyi fejlesztéshez és teszteléshez
 
@@ -47,7 +47,7 @@ Az Azure Cosmos Emulator az alábbi hardver-és szoftver-követelményekkel rend
 
 * Szoftverkövetelmények
   * Windows Server 2012 R2, Windows Server 2016 vagy Windows 10
-  * 64 bites operációs rendszer esetén:
+  * 64 bites operációs rendszer
 * Minimális hardverkövetelmények
   * 2 GB RAM
   * 10 GB szabad merevlemez-terület
@@ -181,7 +181,7 @@ Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableCassandraE
 
 Indítsa el az emulátort egy rendszergazdai parancssorból a "/EnableGremlinEndpoint" paranccsal. Másik lehetőségként beállíthatja a környezeti változót is `AZURE_COSMOS_EMULATOR_GREMLIN_ENDPOINT=true`
 
-* [Az Apache-tinkerpop-Gremlin-Console-3.3.4 telepítése](https://tinkerpop.apache.org/downloads.html)
+* Az [Apache-tinkerpop-Gremlin-Console-3.3.4 telepítése](https://archive.apache.org/dist/tinkerpop/3.3.4).
 
 * Az emulátor Adatkezelő hozzon létre egy "db1" adatbázist és egy "coll1" gyűjteményt; a partíciós kulcshoz válassza a "/Name" elemet.
 

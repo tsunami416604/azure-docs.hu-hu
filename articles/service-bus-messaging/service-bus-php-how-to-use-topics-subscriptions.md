@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: Service Bus témák használata a PHP-vel'
-description: 'Gyors útmutató: Ismerje meg, hogyan használhatja Service Bus témákat a PHP-vel az Azure-ban.'
+title: A PHP-vel Azure Service Bus témák használata
+description: Ebből az oktatóanyagból megtudhatja, hogyan használhatók Azure Service Bus témakörök és előfizetések egy PHP-alkalmazásból.
 services: service-bus-messaging
 documentationcenter: php
 author: axisc
@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: b55d3c93f9926b7446dadf069b37a878caa81e15
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 92f25f4bdac4942478c93f717c81eadd2c2f5b4a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721648"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760674"
 ---
 # <a name="quickstart-how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata PHP-vel
 
@@ -72,7 +72,7 @@ Ez a cikk azt ismerteti, hogyan használhatók olyan szolgáltatási funkciók, 
 ## <a name="configure-your-application-to-use-service-bus"></a>Az alkalmazás konfigurálása Service Bus használatára
 A Service Bus API-k használata:
 
-1. Hivatkozzon az automatikus betöltő fájlra az [require_once][require-once] utasítás használatával.
+1. Hivatkozzon az automatikus betöltő fájlra a [require_once][require-once] utasítás használatával.
 2. Hivatkozzon az esetlegesen használt osztályokra.
 
 Az alábbi példa azt mutatja be, hogyan lehet felvenni az automatikus betöltő fájlt, és hivatkozni a **ServiceBusService** osztályra.
@@ -98,7 +98,7 @@ Endpoint=[yourEndpoint];SharedAccessKeyName=RootManageSharedAccessKey;SharedAcce
 
 Ahol a `Endpoint` általában a formátum `https://[yourNamespace].servicebus.windows.net`.
 
-Bármely Azure-szolgáltatás ügyfelének létrehozásához a `ServicesBuilder` osztályt kell használnia. A következőket teheti:
+Bármely Azure-szolgáltatás ügyfelének létrehozásához a `ServicesBuilder` osztályt kell használnia. Előnyök:
 
 * Adja át közvetlenül a kapcsolódási karakterláncot.
 * A **CloudConfigurationManager (CCM)** segítségével több külső forrást is megvizsgálhat a kapcsolódási karakterlánchoz:
@@ -363,7 +363,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions].
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage

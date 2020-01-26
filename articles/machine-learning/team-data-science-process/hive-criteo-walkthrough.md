@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
-ms.openlocfilehash: 04bc29fb8a89f6e863f7c009e5299d1c702bf976
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 218fb96f6960e194f0fc4a4a3a3e603388b961c8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721404"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760810"
 ---
 # <a name="the-team-data-science-process-in-action---using-an-azure-hdinsight-hadoop-cluster-on-a-1-tb-dataset"></a>A csoportos adatelemzési folyamat működés közben – egy Azure HDInsight Hadoop-fürt használata 1 TB-os adatkészleten
 
@@ -56,7 +56,8 @@ Ebben az útmutatóban két példa előrejelzési problémát ismertetünk:
 2. **Regresszió**: előre jelezheti, hogy az ad-ra való kattintás valószínűsége a felhasználói funkciókból származik.
 
 ## <a name="setup"></a>HDInsight Hadoop-fürt beállítása adatelemzéshez
-**Megjegyzés:** Ez a lépés általában egy **rendszergazdai** feladat.
+> [!NOTE]
+> Ez a lépés általában egy **rendszergazdai** feladat.
 
 Állítsa be az Azure adatelemzési környezetét a prediktív elemzési megoldások HDInsight-fürtökkel való létrehozásához három lépésben:
 
@@ -107,10 +108,8 @@ A Criteo adatkészlethez tartozó kaptár-táblázatok létrehozásához nyissa 
 > [!NOTE]
 > A kaptár-lekérdezések végrehajtásához az egyik mindig a következő parancsokat használhatja:
 >
->
-
-        cd %hive_home%\bin
-        hive
+>        cd %hive_home%\bin
+>        hive
 
 Miután a struktúra REPL megjelenik egy "kaptár >" jellel, egyszerűen kivágja és beilleszti a lekérdezést a végrehajtásához.
 

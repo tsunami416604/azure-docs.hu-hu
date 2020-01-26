@@ -1,6 +1,6 @@
 ---
-title: Indítsa újra a virtuális gép az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs
-description: Ismerje meg, hogyan indítsa újra a virtuális gép az Azure DevTest Labs szolgáltatásban
+title: Virtuális gép újraindítása Azure DevTest Labs laborban | Microsoft Docs
+description: Ez a cikk azokat a lépéseket ismerteti, amelyekkel gyorsan és egyszerűen újraindítható a virtuális gépek (VM) a Azure DevTest Labs.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,48 +12,48 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 34c08a79abf6acb5ae8582ecd0743a890d850fc8
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 52d3b92909483a99eb82c86b727261bbeb5f8d46
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60864397"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759994"
 ---
-# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Indítsa újra a virtuális gép az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet
-Gyorsan és egyszerűen indítsa újra a virtuális gépek DevTest Labs szolgáltatásban Ez a cikk lépéseit követve. Vegye figyelembe a következő virtuális gép újraindítása előtt:
+# <a name="restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép újraindítása Azure DevTest Labs tesztkörnyezetben
+A virtuális gépeket gyorsan és egyszerűen újraindíthatja a DevTest Labs szolgáltatásban a jelen cikkben ismertetett lépéseket követve. A virtuális gép újraindítása előtt vegye figyelembe a következőket:
 
-- A virtuális gép az újraindítás funkció engedélyezésének kell futnia.
-- Egy felhasználó egy futó virtuális géphez csatlakoztatva van, amikor egy újrainduljon, ha azok kell csatlakozni a virtuális gép biztonsági mentése elindítása után.
-- Ha egy összetevő alkalmazása folyamatban van, a virtuális gép újraindításakor, hogy az összetevő nem alkalmazható figyelmeztetés jelenik meg.
+- Az újraindítás funkció engedélyezéséhez a virtuális gépnek futnia kell.
+- Ha a felhasználó egy futó virtuális géphez csatlakozik, amikor újraindítást végez, újra kell csatlakozniuk a virtuális géphez a biztonsági mentés elindítása után.
+- Ha a virtuális gép újraindításakor egy összetevőt alkalmaz a rendszer, akkor a rendszer figyelmeztetést küld arról, hogy az összetevő nem lesz alkalmazva.
 
-    ![Összetevők alkalmazása közben újraindításához figyelmeztetés](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
+    ![Figyelmeztetés az összetevők alkalmazása során történő újraindításkor](./media/devtest-lab-restart-vm/devtest-lab-restart-vm-apply-artifacts.png)
 
 
    > [!NOTE]
-   > Ha a virtuális gép egy alkalmazása közben elakadt, használhatja a indítsa újra a virtuális gép szolgáltatás egyik lehetséges módja a probléma megoldásához.
+   > Ha a virtuális gép elakadt egy összetevő alkalmazása közben, a probléma megoldásához használhatja a virtuális gép újraindítása funkciót.
    >
    >
 
-## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>Indítsa újra a virtuális gép az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet lépései
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
-1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
-1. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amely tartalmazza a virtuális Gépet újraindítja.
-1. A bal oldali panelen válassza ki a **saját virtuális gépek**.
-1. Virtuális gépek listájából válassza ki a futó virtuális gépek.
-1. Válassza ki a virtuális gép kezelése panel tetején lévő **indítsa újra a**.
+## <a name="steps-to-restart-a-vm-in-a-lab-in-azure-devtest-labs"></a>A virtuális gép újraindításának lépései Azure DevTest Labs tesztkörnyezetben
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+1. A Labs listából válassza ki azt a labort, amely tartalmazza az újraindítani kívánt virtuális gépet.
+1. A bal oldali panelen válassza a **saját Virtual Machines**elemet.
+1. A virtuális gépek listájából válassza ki a futó virtuális gépet.
+1. A virtuális gép kezelése panel felső részén válassza az **Újraindítás**lehetőséget.
 
-    ![Indítsa újra a virtuális gép gomb](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
+    ![Virtuális gép újraindítása gomb](./media/devtest-lab-restart-vm/devtest-lab-restart-vm.png)
 
-1. Válassza az újraindítás állapotának figyelése a **értesítések** ikonra a felső, az ablak jobb.
+1. Az újraindítás állapotának figyeléséhez válassza az ablak jobb felső sarkában található **értesítések** ikont.
 
-    ![A virtuális gép újraindítási állapotának megtekintése](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
+    ![A virtuális gép újraindításának állapotának megtekintése](./media/devtest-lab-restart-vm/devtest-lab-restart-notification.png)
 
-Futó virtuális gépek listájában melletti három pontra (...) kiválasztásával is újraindíthatja **saját virtuális gépek**.
+A futó virtuális gépeket a **Virtual Machines**listájában lévő három pont (...) kiválasztásával is újraindíthatja.
 
-![Indítsa újra a virtuális Gépet keresztül három pont](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
+![Virtuális gép újraindítása ellipszisekkel](./media/devtest-lab-restart-vm/devtest-lab-restart-elipses.png)
 
-## <a name="next-steps"></a>További lépések
-* Újraindul, miután újra csatlakozhat a virtuális gép kiválasztásával **Connect** a a saját felügyeleti panel.
-* Fedezze fel a [DevTest Labs Azure Resource Manager gyorsindítási sablon galéria](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)
+## <a name="next-steps"></a>Következő lépések
+* Az újraindítás után újra csatlakozhat a virtuális géphez a felügyeleti paneljén a **Kapcsolódás** lehetőség kiválasztásával.
+* Ismerkedés a [DevTest Labs Azure Resource Manager a rövid útmutató sablonjának galériájában](https://github.com/Azure/azure-devtestlab/tree/master/samples/DevTestLabs/QuickStartTemplates)

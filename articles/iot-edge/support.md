@@ -8,16 +8,16 @@ ms.date: 08/13/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 0d6b5e826720cf51d38b3bc3c2b87d274a2ea816
-ms.sourcegitcommit: 57eb9acf6507d746289efa317a1a5210bd32ca2c
+ms.openlocfilehash: 3f1f4efc13e2d11e7111264564a227a484d611d5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/01/2019
-ms.locfileid: "74665882"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760096"
 ---
 # <a name="azure-iot-edge-supported-systems"></a>Azure IoT Edge támogatott rendszerek
 
-Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogatottak a IoT Edge, akár hivatalosan, akár előzetes verzióban. 
+Ez a cikk részletesen ismerteti, hogy mely rendszerek és összetevők támogatottak a IoT Edge, akár hivatalosan, akár előzetes verzióban.
 
 Ha a Azure IoT Edge szolgáltatás használata során problémákba ütközik, többféleképpen is kérhet támogatást. Próbálja ki a következő csatornák egyikét a támogatáshoz:
 
@@ -34,18 +34,20 @@ Azure IoT Edge-modulok tárolóként vannak megvalósítva, ezért IoT Edge a t�
 <br>
 <center>
 
-![a Moby as Container Runtime](./media/support/only-moby-for-production.png)
+![a Moby Engine-t tároló futtatókörnyezetként](./media/support/only-moby-for-production.png)
 </center>
 
 ## <a name="operating-systems"></a>Operációs rendszerek
-Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; Ezek a rendszerek azonban nem egyformán támogatottak. Az operációs rendszerek olyan rétegekbe vannak csoportosítva, amelyek a támogatási felhasználók által elvárt szintet jelölik.
+
+Azure IoT Edge a tárolók futtatására képes legtöbb operációs rendszeren fut; azonban nem mindegyik rendszer egyformán támogatott. Az operációs rendszerek olyan rétegekbe vannak csoportosítva, amelyek a támogatási felhasználók által elvárt szintet jelölik.
+
 * Az 1. szintű rendszerek támogatottak. Az 1. szintű rendszerek esetében a Microsoft:
-    * az operációs rendszer automatikus tesztek
-    * telepítési csomagokat biztosít számukra
+  * az operációs rendszer automatikus tesztek
+  * telepítési csomagokat biztosít számukra
 * A 2. szintű rendszerek kompatibilisek Azure IoT Edgeekkel, és viszonylag könnyen használhatók. 2\. szintű rendszerek esetén:
-    * A Microsoft ad hoc tesztelést végez a platformokon, vagy tudja, hogy egy partner sikeresen futtatott Azure IoT Edge a platformon
-    * A más platformokhoz tartozó telepítési csomagok működhetnek ezeken a platformokon
-    
+  * A Microsoft informális tesztelést végzett a platformokon, vagy olyan partnert ismer, amely sikeresen futtatott Azure IoT Edge a platformon
+  * A más platformokhoz tartozó telepítési csomagok működhetnek ezeken a platformokon
+
 A gazda operációs rendszer családjának mindig egyeznie kell a modul tárolójában használt vendég operációs rendszer családjának. Ez azt jelenti, hogy a Linux-tárolókat csak Linux-és Windows-tárolókban használhatja Windows rendszeren. A Windows használata esetén csak az elkülönített tárolók feldolgozása támogatott, a Hyper-V elkülönített tárolók nem.  
 
 <br>
@@ -68,7 +70,6 @@ A Microsoft a következő táblázatban felsorolt rendszereket támogatja: álta
 | [Windows Server 2019](https://docs.microsoft.com/windows-server/get-started-19/rel-notes-19), 17763-es Build | ![Windows Server 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 | [Windows Server IoT 2019](https://docs.microsoft.com/windows/iot-core/windows-server), Build 17763 | ![Windows Server IoT 2019 + AMD64](./media/tutorial-c-module/green-check.png) |  |  |
 
-
 A fent felsorolt Windows operációs rendszerek a Windows-tárolókat futtató eszközökre vonatkozó követelmények a Windows rendszeren, amely az egyetlen támogatott konfiguráció az éles környezetben. A Windows Azure IoT Edge telepítési csomagjai lehetővé teszik a Linux-tárolók használatát Windows rendszeren; Ez a konfiguráció azonban csak fejlesztési és tesztelési célokra használható. További információ: [IoT Edge használata Windows rendszeren Linux-tárolók futtatásához](how-to-install-iot-edge-windows-with-linux.md).
 
 ### <a name="tier-2"></a>2\. szint
@@ -90,13 +91,14 @@ Az alábbi táblázatban felsorolt rendszerek kompatibilisek Azure IoT Edge, de 
 | [Yocto](https://www.yoctoproject.org/) | ![Yocto + AMD64](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Yocto + ARM64](./media/tutorial-c-module/green-check.png) |
 | Raspbian Buster <sup>1</sup> |  | ![Raspbian Buster + ARM32v7](./media/tutorial-c-module/green-check.png) | ![Raspbian Buster + ARM64](./media/tutorial-c-module/green-check.png) |
 
-<sup>1</sup> a Debian 10 rendszer, köztük a Raspian Buster, az OpenSSL olyan verzióját használja, IoT Edge nem támogatja. A következő parancs használatával telepítsen egy korábbi verziót a IoT Edge telepítése előtt: 
+<sup>1</sup> a Debian 10 rendszer, köztük a Raspian Buster, az OpenSSL olyan verzióját használja, IoT Edge nem támogatja. A következő parancs használatával telepítsen egy korábbi verziót a IoT Edge telepítése előtt:
 
 ```bash
 sudo apt-get install libssl1.0.2
 ```
 
 ## <a name="virtual-machines"></a>Virtual Machines
+
 A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Edge eszközként való használata gyakori, ha az ügyfelek a meglévő infrastruktúrát szeretnék kibővíteni a peremhálózati intelligenciával. A gazda VM operációs rendszer családjának meg kell egyeznie a modul tárolójában használt vendég operációs rendszer családjának. Ez a követelmény ugyanaz, mint amikor a Azure IoT Edge közvetlenül egy eszközön fut. Azure IoT Edge a mögöttes virtualizációs technológia, és olyan platformokon működik, mint például a Hyper-V és a vSphere.
 
 <br>
@@ -106,13 +108,14 @@ A Azure IoT Edge virtuális gépeken is futtathatók. A virtuális gépek IoT Ed
 </center>
 
 ## <a name="minimum-system-requirements"></a>Minimális rendszerkövetelmények
+
 A Azure IoT Edge nagyszerűen fut az eszközökön, mint a Pi3 a kiszolgálói minőségű hardverek számára. Ha kiválasztja a megfelelő hardvert a forgatókönyvhöz, a futtatni kívánt munkaterheléstől függ. Az eszköz végső döntése bonyolult lehet; a hagyományos laptopokon és asztali számítógépeken azonban könnyedén elindíthatja a prototípust.
 
-A prototípus-készítés során a rendszer segít a végső eszköz kiválasztásában. Vegye figyelembe a következőket: 
+A prototípus-készítés során a rendszer segít a végső eszköz kiválasztásában. Vegye figyelembe a következőket:
 
 * Hány modul van a munkaterhelésben?
 * Hány réteget osztanak meg a modulok tárolói?
-* Milyen nyelven íródott modulok? 
+* Milyen nyelven íródott modulok?
 * Mennyi adattal fog dolgozni a modulok feldolgozása?
 * Szükség van-e a modulok speciális hardverre a számítási feladatok felgyorsításához?
 * Mik a megoldás kívánt teljesítménybeli jellemzői?

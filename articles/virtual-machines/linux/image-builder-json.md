@@ -1,18 +1,18 @@
 ---
 title: Azure rendszerkép-készítő sablon létrehozása (előzetes verzió)
 description: Megtudhatja, hogyan hozhat létre sablont az Azure rendszerkép-készítővel való használatra.
-author: cynthn
-ms.author: cynthn
-ms.date: 07/31/2019
+author: danis
+ms.author: danis
+ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 4a411603ca5c3c79da0d596396d8fde80b568af2
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763079"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760011"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -28,11 +28,15 @@ Ez az alapszintű sablon formátuma:
     "tags": {
         "<name": "<value>",
         "<name>": "<value>"
-             },
+             }
     "identity":{},           
     "dependsOn": [], 
     "properties": { 
         "buildTimeoutInMinutes": <minutes>, 
+        "vmProfile": 
+            {
+            "vmSize": "<vmSize>"
+            },
         "build": {}, 
         "customize": {}, 
         "distribute": {} 
@@ -64,6 +68,24 @@ A hely az a régió, ahol az egyéni rendszerkép létre lesz hozva. A rendszerk
 
 ```json
     "location": "<region>",
+```
+## <a name="vmprofile"></a>vmProfile
+Alapértelmezés szerint a rendszerkép-készítő egy "Standard_D1_v2" Build virtuális gépet használ, felülbírálhatja ezt, például ha egy GPU virtuális gép rendszerképét szeretné testre szabni, GPU-s virtuálisgép-méretre van szüksége. Ez nem kötelező.
+
+```json
+ {
+    "vmSize": "Standard_D1_v2"
+ },
+```
+
+## <a name="osdisksizegb"></a>osDiskSizeGB
+
+Alapértelmezés szerint a képszerkesztő nem változtatja meg a rendszerkép méretét, a méretet a forrás rendszerképből fogja használni. Az operációsrendszer-lemez (Win és Linux) méretének módosításához vegye figyelembe, hogy ne legyen túl kicsi, mint az operációs rendszer minimálisan szükséges lemezterülete. Ez nem kötelező, és a 0 érték azt jelenti, hogy a forrás képével megegyező méretet hagy. Ez nem kötelező.
+
+```json
+ {
+    "osDiskSizeGB": 100
+ },
 ```
 
 ## <a name="tags"></a>Címkék
@@ -135,13 +157,7 @@ A **Red Hat Enterprise Linux-kiszolgáló telepítői és rendszerképeinek**lis
 > A hivatkozások hozzáférési jogkivonatai gyakori időközönként frissülnek, így minden alkalommal, amikor sablont szeretne beküldeni, ellenőriznie kell, hogy módosult-e az RH-hivatkozás címe.
  
 ### <a name="platformimage-source"></a>PlatformImage forrása 
-Az Azure Image Builder a következő Azure Marketplace-rendszerképeket támogatja:
-* Ubuntu 18.04
-* Ubuntu 16.04
-* RHEL 7,6
-* CentOS 7,6
-* Windows 2016
-* Windows 2019
+Az Azure Image Builder a Windows Servert és az ügyfelet, valamint a Linux Azure Marketplace-rendszerképeket is támogatja, [itt](https://docs.microsoft.com/azure/virtual-machines/windows/image-builder-overview#os-support) találja a teljes listát. 
 
 ```json
         "source": {
@@ -220,7 +236,8 @@ A rendszerkép-szerkesztő több "testreszabó" használatát is támogatja. A t
             {
                 "type": "Shell",
                 "name": "<name>",
-                "scriptUri": "<path to script>"
+                "scriptUri": "<path to script>",
+                "sha256Checksum": "<sha256 checksum>"
             },
             {
                 "type": "Shell",
@@ -246,7 +263,8 @@ A rendszerhéj-testreszabó támogatja a rendszerhéj-parancsfájlok futtatásá
         { 
             "type": "Shell", 
             "name": "<name>", 
-            "scriptUri": "<link to script>"        
+            "scriptUri": "<link to script>",
+            "sha256Checksum": "<sha256 checksum>"       
         }, 
     ], 
         "customize": [ 
@@ -266,7 +284,12 @@ Tulajdonságok testreszabása:
 - **név** – a Testreszabás követésének neve 
 - **scriptUri** – URI a fájl helyéhez 
 - beépített rendszerhéj-parancsok **beágyazott** tömbje, vesszővel elválasztva.
- 
+- **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
+    * A sha256Checksum létrehozása Mac/Linux rendszeren futó terminál használatával: `sha256sum <fileName>`
+
+
+A felügyelői jogosultságokkal futtatandó parancsok esetében `sudo`kell előállítani.
+
 > [!NOTE]
 > Ha a rendszerhéj-testreszabó a RHEL ISO-forrással futtatja, gondoskodnia kell arról, hogy az első testreszabási rendszerhéj a Red Hat jogosultsági kiszolgálóval való regisztrálást a testreszabások előtt is kezelje. A Testreszabás befejeződése után a parancsfájlnak meg kell szüntetnie a jogosultsági kiszolgáló regisztrációját.
 
@@ -275,12 +298,15 @@ Az újraindítási testreszabó lehetővé teszi egy Windows rendszerű virtuál
 
 ```json 
      "customize": [ 
-         {
-            "type": "WindowsRestart", 
-            "restartCommand": "shutdown /r /f /t 0 /c", 
-            "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > buildArtifacts/azureImageBuilderRestart.txt",
-            "restartTimeout": "5m"
-         }],
+
+            {
+                "type": "WindowsRestart",
+                "restartCommand": "shutdown /r /f /t 0 /c", 
+                "restartCheckCommand": "echo Azure-Image-Builder-Restarted-the-VM  > c:\\buildArtifacts\\azureImageBuilderRestart.txt",
+                "restartTimeout": "5m"
+            }
+  
+        ],
 ```
 
 Operációs rendszer támogatása: Windows
@@ -300,13 +326,16 @@ A rendszerhéj-testreszabó támogatja a PowerShell-parancsfájlok és a beágya
         { 
              "type": "PowerShell",
              "name":   "<name>",  
-             "scriptUri": "<path to script>" 
+             "scriptUri": "<path to script>",
+             "runElevated": "<true false>",
+             "sha256Checksum": "<sha256 checksum>" 
         },  
         { 
              "type": "PowerShell", 
              "name": "<name>", 
              "inline": "<PowerShell syntax to run>", 
-             "valid_exit_codes": "<exit code>" 
+             "valid_exit_codes": "<exit code>",
+             "runElevated": "<true or false>" 
          } 
     ], 
 ```
@@ -319,6 +348,10 @@ Tulajdonságok testreszabása:
 - **scriptUri** – URI a PowerShell-parancsfájl helyéhez. 
 - **beágyazott** – a futtatandó beágyazott parancsok, vesszővel elválasztva.
 - **valid_exit_codes** – nem kötelező, érvényes kódok, amelyek visszatérhetnek a parancsfájlból/beágyazott parancsból, így elkerülhető a parancsfájl/beágyazott parancs hibájának jelentése.
+- **runElevated** – opcionális, logikai, támogatás emelt szintű engedélyekkel rendelkező parancsok és parancsfájlok futtatásához.
+- **sha256Checksum** – a fájl sha256-ellenőrzőösszegének értéke, ezt helyileg létrehozhatja, majd a rendszerkép-szerkesztő ellenőrzőösszeget és érvényesítést végez.
+    * A sha256Checksum létrehozása a Windows [Get-hash](https://docs.microsoft.com/powershell/module/microsoft.powershell.utility/get-filehash?view=powershell-6) PowerShell használatával
+
 
 ### <a name="file-customizer"></a>Fájl-testreszabó
 
@@ -330,7 +363,8 @@ A fájl-testreszabó lehetővé teszi, hogy a rendszerkép-készítő letöltse 
             "type": "File", 
              "name": "<name>", 
              "sourceUri": "<source location>",
-             "destination": "<destination>" 
+             "destination": "<destination>",
+             "sha256Checksum": "<sha256 checksum>"
          }
      ]
 ```
@@ -398,8 +432,39 @@ Az Azure rendszerkép-szerkesztő három terjesztési célt támogat:
 
 A rendszerképeket az azonos konfigurációban található cél típusokra is terjesztheti, [példákat](https://github.com/danielsollondon/azvmimagebuilder/blob/7f3d8c01eb3bf960d8b6df20ecd5c244988d13b6/armTemplates/azplatform_image_deploy_sigmdi.json#L80)talál.
 
-Mivel több célt is kiterjesztheti a szolgáltatásba, a rendszerkép-szerkesztő minden olyan terjesztési cél állapotát fenntartja, amely a `runOutputName`lekérdezésével érhető el.  A `runOutputName` egy olyan objektum, amelyről lekérdezheti a terjesztés utáni adatokat. Lekérdezheti például a virtuális merevlemez helyét, illetve azokat a régiókat, amelyeken a rendszerkép verziója replikálva van. Ez az összes terjesztési cél tulajdonsága. A `runOutputName`nak egyedinek kell lennie az egyes terjesztési célkitűzéseknél.
- 
+Mivel több célt is kiterjesztheti a szolgáltatásba, a rendszerkép-szerkesztő minden olyan terjesztési cél állapotát fenntartja, amely a `runOutputName`lekérdezésével érhető el.  A `runOutputName` egy olyan objektum, amelyről lekérdezheti a terjesztés utáni adatokat. Lekérdezheti például a virtuális merevlemez helyét, illetve azokat a régiókat, amelyeken a rendszerkép verziója replikálva lett, vagy a SIG-rendszerkép verziója létrejött. Ez az összes terjesztési cél tulajdonsága. A `runOutputName`nak egyedinek kell lennie az egyes terjesztési célkitűzéseknél. Íme egy példa, amely egy megosztott képgyűjtemény-eloszlás lekérdezését szemlélteti:
+
+```bash
+subscriptionID=<subcriptionID>
+imageResourceGroup=<resourceGroup of image template>
+runOutputName=<runOutputName>
+
+az resource show \
+        --ids "/subscriptions/$subscriptionID/resourcegroups/$imageResourceGroup/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/$runOutputName"  \
+        --api-version=2019-05-01-preview
+```
+
+Kimenet:
+```json
+{
+  "id": "/subscriptions/xxxxxx/resourcegroups/rheltest/providers/Microsoft.VirtualMachineImages/imageTemplates/ImageTemplateLinuxRHEL77/runOutputs/rhel77",
+  "identity": null,
+  "kind": null,
+  "location": null,
+  "managedBy": null,
+  "name": "rhel77",
+  "plan": null,
+  "properties": {
+    "artifactId": "/subscriptions/xxxxxx/resourceGroups/aibDevOpsImg/providers/Microsoft.Compute/galleries/devOpsSIG/images/rhel/versions/0.24105.52755",
+    "provisioningState": "Succeeded"
+  },
+  "resourceGroup": "rheltest",
+  "sku": null,
+  "tags": null,
+  "type": "Microsoft.VirtualMachineImages/imageTemplates/runOutputs"
+}
+```
+
 ### <a name="distribute-managedimage"></a>Terjesztés: managedImage
 
 A rendszerkép kimenete felügyelt rendszerkép-erőforrás lesz.
@@ -503,13 +568,4 @@ az resource show \
 ## <a name="next-steps"></a>Következő lépések
 
 Az [Azure rendszerkép-készítő githubon](https://github.com/danielsollondon/azvmimagebuilder)különböző forgatókönyvekhez készült minta. JSON fájlok találhatók.
- 
- 
- 
- 
- 
- 
- 
- 
- 
  

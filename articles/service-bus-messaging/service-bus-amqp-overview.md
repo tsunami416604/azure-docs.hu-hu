@@ -1,6 +1,6 @@
 ---
-title: Az AMQP 1.0-t az Azure Service Bus – áttekintés |} A Microsoft Docs
-description: További információ a speciális Message Queuing AMQP protokoll 1.0-s az Azure-ban.
+title: A AMQP 1,0-es verziójának áttekintése Azure Service Bus
+description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Message Queueing Protocol (AMQP), egy nyílt szabványú protokollt.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
@@ -14,87 +14,87 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 01/23/2019
 ms.author: aschhab
-ms.openlocfilehash: 34829482e570354c1ab1e1fd6cec0c96b993cd83
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 50d21cfe8136b9c794eae5104bbb34e28f7c1661
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60403925"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759312"
 ---
-# <a name="amqp-10-support-in-service-bus"></a>A Service Bus AMQP 1.0-támogatás
-Az Azure Service Bus felhőalapú szolgáltatás és a helyszíni [Service Bus Windows Server (Service Bus 1.1)](https://msdn.microsoft.com/library/dn282144.aspx) támogatja a speciális üzenet sorba rendezését AMQP protokoll 1.0-t. Az AMQP lehetővé teszi többplatformos hibrid alkalmazások egy nyílt szabványú protokoll használatával hozhat létre. Alkalmazások, amelyek különböző nyelv és keretrendszer használatával készült, és a különböző operációs rendszereket futtató összetevők használatával hozhatnak létre. Ezeket az összetevőket a Service Bus, és zökkenőmentesen kapcsolódik az összes alkalmazásközi strukturált üzleti hatékonyan és teljes visszaadása.
+# <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
+A Windows Server Azure Service Bus Cloud Service és a helyszíni [Service Bus (Service Bus 1,1)](https://msdn.microsoft.com/library/dn282144.aspx) egyaránt támogatja a speciális Message Queuing PROTOKOLLT (AMQP) 1,0. A AMQP lehetővé teszi többplatformos hibrid alkalmazások készítését egy nyílt szabványú protokoll használatával. Az alkalmazásokat a különböző nyelvekkel és keretrendszerekkel, valamint a különböző operációs rendszereken futó összetevőkkel építheti fel. Ezek az összetevők kapcsolódhatnak a Service Bushoz, és zökkenőmentesen cserélhetik fel a strukturált üzleti üzeneteket hatékonyan és teljes hűséggel.
 
-## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Bemutatása: Mi az AMQP 1.0-t, és miért fontos?
-Hagyományosan üzenetorientált termékeket használták saját protokoll ügyfélalkalmazások és közvetítők közötti kommunikációhoz. Ez azt jelenti, hogy egy adott gyártó üzenetközvetítő kiválasztása után kell használnia gyártója által biztosított kódtárak csatlakoztatása az ügyfélalkalmazások számára, hogy a közvetítőn. Az eredmény mértékű függés szállítót, mivel egy másik termékkel, egy alkalmazás portolása az összes csatlakoztatott alkalmazások kódmódosítás szükséges. 
+## <a name="introduction-what-is-amqp-10-and-why-is-it-important"></a>Bevezetés: mi a AMQP 1,0, és miért fontos?
+A hagyományosan az üzenetsor-orientált middleware-termékek saját protokollokat használnak az ügyfélalkalmazások és a brókerek közötti kommunikációhoz. Ez azt jelenti, hogy ha kiválasztotta egy adott szállító üzenetkezelési közvetítőjét, akkor a gyártó kódtárait kell használnia az ügyfélalkalmazások ehhez a közvetítőhöz való összekapcsolásához. Ez az adott gyártótól való függőséget eredményez, mivel az alkalmazások egy másik termékhez való portolása minden csatlakoztatott alkalmazásban kód módosítását igényli. 
 
-Emellett két üzenetkezelő közvetítők különböző szállítóktól származó nagyon bonyolult feladat. Ehhez általában alkalmazásszintű adatközponthíd-képzés üzenetek áthelyezése a rendszer a másikra, és az átalakításra a szellemi tulajdont képező üzenetformátumok között. Ez az általános követelmény; például, amikor meg kell egy új, egységes felületet biztosítanak a régebbi különálló rendszerek vagy egyesülés következő informatikai rendszerek integrálását.
+Emellett a különböző gyártóktól származó üzenetkezelési közvetítők összekapcsolása bonyolult. Ez általában az alkalmazás-szintű áthidalót igényli az üzenetek egyik rendszerről egy másikra való áthelyezéséhez, illetve a saját üzenetek formátumának lefordításához. Ez egy gyakori követelmény; Ha például egy új egységesített felületet kell megadnia a régebbi, különálló rendszerekhez, vagy integrálnia kell az informatikai rendszereket az egyesítést követően.
 
-A szoftvergyártói ágazat egy gyorsan változó üzleti; új programozási nyelvet és alkalmazás-keretrendszerek néha bewildering ütemben jelennek meg. Ehhez hasonlóan időbeli alakulásával az informatikai rendszerek követelményeinek, és a fejlesztők szeretne a legújabb platform funkcióinak kihasználása. Azonban néha a kiválasztott üzenetkezelési szállító nepodporuje ezekről a platformokról. Mivel jogvédett üzenetküldési protokollokat, nincs lehetőség mások kódtárakat biztosít ezen új platformokat. Ezért módszerekkel, például átjárókat vagy hidak, amelyek lehetővé teszik, hogy továbbra is használhatja az üzenetkezelési termék létrehozásához kell használnia.
+A szoftveres iparág egy gyorsan változó üzleti tevékenység; az új programozási nyelvek és alkalmazás-keretrendszerek időnként megzavarják a lépést. Hasonlóképpen, az informatikai rendszerek követelményei idővel fejlődnek, és a fejlesztők a platform legújabb funkcióit szeretnék kihasználni. Előfordulhat azonban, hogy a kiválasztott üzenetküldési szállító nem támogatja ezeket a platformokat. Mivel az üzenetkezelési protokollok védettek, nem lehetséges, hogy mások is biztosítanak könyvtárakat ezekhez az új platformokhoz. Ezért olyan megközelítéseket kell használnia, mint például az átjárók vagy hidak létrehozása, amelyek lehetővé teszik az üzenetkezelési termék használatának folytatását.
 
-A fejlesztés, a speciális Message Queuing protokoll AMQP 1.0 indokolta, hogy ezeket a problémákat. Azt adja meg, a JP Morgan belőlük az ember, akik, például a pénzügyi szolgáltatásokat nyújtó cégek az üzenetorientált (nagy erőforrásigényű) felhasználói. Egyszerű volt a cél: egy nyílt szabványú üzenetkezelő protokoll, amely lehetségessé vált összetevővel felhasználásával különböző nyelv, keretrendszer és operációs rendszerek esetén üzenet-alapú alkalmazások létrehozásához minden használata a lehető legjobb videóterjesztési-összetevőt számos Szállítók.
+A Advanced Message Queueing Protocol (AMQP) 1,0 fejlesztését ezen problémák indokolták. A JP Morgan Chasetől származik, akik a legtöbb pénzügyi szolgáltatóhoz hasonlóan nagy mennyiségű, az üzenetsor-orientált middleware-t használó felhasználók. A cél egyszerű volt: egy nyílt szabványú üzenetküldési protokoll létrehozásához, amely a különböző nyelvekkel, keretrendszerekkel és operációs rendszerekkel létrehozott összetevők használatával teszi elérhetővé az üzenetsor-alapú alkalmazásokat beszállítói.
 
-## <a name="amqp-10-technical-features"></a>Az AMQP 1.0-s műszaki szolgáltatások
-Az AMQP 1.0 egy hatékony, megbízható, alkalmazásszintű üzenetkezelő protokoll, amely segítségével hozhat létre nagy teherbírású, többplatformos üzenetkezelési alkalmazások. A protokoll egy egyszerű célja van: a idejéről biztonságos, megbízható és hatékony üzenetek két fél közötti meghatározásához. Maguk az üzenetek kódolt használatával, amely lehetővé teszi a heterogén küldők és fogadók strukturált üzleti üzeneteket teljes visszaadása, hordozható adatok jelképeként. Az alábbiakban a legfontosabb funkcióit:
+## <a name="amqp-10-technical-features"></a>AMQP 1,0 – technikai funkciók
+A AMQP 1,0 egy hatékony, megbízható, vezetékes üzenetkezelési protokoll, amellyel robusztus, platformfüggetlen, üzenetkezelési alkalmazásokat hozhat létre. A protokoll egyszerű célja: az üzenetek biztonságos, megbízható és hatékony átvitelének mechanikája két fél között. Maguk az üzenetek olyan hordozható adatábrázolással vannak kódolva, amely lehetővé teszi a heterogén küldők és fogadók számára a strukturált üzleti üzenetek teljes megbízhatóságú cseréjét. Az alábbiakban a legfontosabb funkciók összegzését ismertetjük:
 
-* **Hatékony**: Az AMQP 1.0-s egy kapcsolat alapú protokoll, amely használja a bináris kódolás protokoll utasításokat és az üzleti üzenetek továbbítja azt. Kifinomult forgalomszabályozás rendszerek maximalizálhatja a kihasználtság a hálózat és a kapcsolódó összetevőket tartalmazza. Mindemellett a protokoll úgy lett kialakítva, hogy hatékonyságának, rugalmasságának és együttműködési közötti egyensúlyt.
-* **Megbízható**: Az AMQP 1.0 protokoll lehetővé teszi, hogy az üzenetek küldését megbízhatóságot garantálja a tűz-és-felejtse el megbízható, számos pontosan – egyszer arra vonatkozik, szállítási.
-* **Rugalmas**: Az AMQP 1.0-s egy rugalmas protokoll, amely támogatja a különböző topológiák használható. Ugyanazt a protokollt ügyfél-ügyfél, ügyfél-közvetítő és broker átvitelszervező kommunikációhoz használható.
-* **Munkamenet-átvitelszervező-modell független**: Az AMQP 1.0 specifikáció nem derül kapcsolatos követelmények egy közvetítő által használt üzenetküldési modelljével. Ez azt jelenti, hogy könnyen hozzá lehet adni az AMQP 1.0 támogatása meglévő üzenetkezelő közvetítők.
+* **Hatékony**: a AMQP 1,0 egy kapcsolaton alapuló protokoll, amely bináris kódolást használ a protokoll utasításainak és a rajta továbbított üzleti üzeneteknek. Kifinomult folyamat-ellenőrzési sémákat tartalmaz a hálózat és a csatlakoztatott összetevők kihasználtságának maximalizálása érdekében. Ez azt jelenti, hogy a protokoll úgy lett kialakítva, hogy egyensúlyt teremteni a hatékonyság, a rugalmasság és az együttműködési képesség között.
+* **Megbízható**: a AMQP 1,0 protokoll lehetővé teszi, hogy az üzenetek számos megbízhatósági garanciával legyenek kicserélve, a tűz és a felejtsd el a megbízható, pontosan egyszeri nyugtázott kézbesítést.
+* **Rugalmas**: a AMQP 1,0 egy rugalmas protokoll, amely különböző topológiák támogatásához használható. Ugyanez a protokoll használható az ügyfél és az ügyfél, az ügyfelek és a közvetítők közötti kommunikációhoz is.
+* **Közvetítő – modell független**: a AMQP 1,0 specifikáció nem tesz követelményt a közvetítő által használt üzenetkezelési modellre vonatkozóan. Ez azt jelenti, hogy könnyen hozzáadhat AMQP 1,0-támogatást a meglévő üzenetkezelési közvetítőknek.
 
-## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>Az AMQP 1.0 egy olyan szabvány (egy tőkével ")
-Az AMQP 1.0-t az nemzetközi szabványa, ISO és IEC, ISO/IEC 19464:2014 jóvá.
+## <a name="amqp-10-is-a-standard-with-a-capital-s"></a>A AMQP 1,0 egy standard (Capital 'S)
+A AMQP 1,0 egy nemzetközi szabvány, amelyet az ISO és az IEC is jóváhagy ISO/IEC 19464:2014 néven.
 
-Az AMQP 1.0-s lett a vállalatok több mint 20 core csoportja által 2008 óta fejlesztési technológia szállítók és a végfelhasználói cégek. Ez idő alatt felhasználói cégek által a való életből vett üzleti követelmények és a technológia-szállítók fejlődtek, a protokoll erőforrásigények kielégítéséhez. A folyamat során szállítók közreműködő ellenőrzése saját megvalósításaikban együttműködésével workshopokat vett részt.
+A AMQP 1,0 a 2008-es, több mint 20 vállalat, a technológiai beszállítók és a végfelhasználói vállalatok egyik fő csoportjának fejlesztései óta. Ebben az időszakban a felhasználói cégek járultak hozzá a valós üzleti követelményekhez, és a technológiai szolgáltatók kifejlődtek a protokollon, hogy megfeleljenek a követelményeknek. A folyamat során a szállítók részt vettek a workshopokban, amelyekben együttműködtek a megvalósításuk közötti együttműködés ellenőrzéséhez.
 
-A 2011. október a fejlesztési munkálatok során, a szervezet a előrelépésnek számít, strukturált adatokat szabványok (FEJLESZTÉSÉÉRT) és az OASIS AMQP 1.0-s standard szintű technikai bizottság továbbítjuk 2012. októberi jelent meg. A standard fejlesztése során az alábbi vállalkozások részt vett a technikai bizottság:
+Október 2011-án a fejlesztési munka a szervezeten belüli technikai bizottságba került át a strukturált információs szabványok (OASIS) és az OASIS AMQP 1,0 standard 2012 kiadásában. A következő cégek részt vettek a technikai bizottságban a standard fejlesztése során:
 
-* **Technológiai szállítók**: Axway szoftver, Huawei technológiákat, IIT szoftver, INETCO rendszerek, Kaazing, Microsoft, Mitre Corporation, Primeton technológiákat, folyamatban szoftver, Red Hat, SITA, szoftver rendelkezésre állási csoport, Solace rendszerek, a VMware, WSO2, Zenika.
-* **Felhasználói cégek**: Kredit Suisse, az Amerikai Deutsche Boerse, Goldman Bank Sachs, JPMorgan belőlük az ember.
+* **Technológiai szállítók**: Axway szoftver, Huawei Technologies, IIT szoftver, INETCO-rendszerek, Kaazing, Microsoft, Mitre Corporation, Primeton Technologies, folyamatjelző szoftver, Red Hat, a, a Software AG, a vigaszrendszer, a VMware, a WSO2 és a Zenika.
+* **Felhasználói cégek**: Bank of America, Credit Suisse, Deutsche Boerse, Goldman Sachs, JPMorgan Chase.
 
-Gyakran idézett előnyeit nyílt szabványokat, többek között:
+A nyílt szabványok általánosan idézett előnyei többek között a következők:
 
-* A szállítói zárolása a kevesebb alkalommal
+* A gyártó zárolásának kisebb esélye
 * Együttműködési lehetőség
-* Kódtárak és eszközök széles körű elérhetősége
-* Elavulás elleni védelem
-* A tapasztalt személyzet rendelkezésre állása
-* Alacsonyabb és kezelhető a kockázat
+* Könyvtárak és eszközök széles körű rendelkezésre állása
+* Az elavultság elleni védelem
+* A hozzáértő munkatársak rendelkezésre állása
+* Alacsonyabb és kezelhető kockázat
 
-## <a name="amqp-10-and-service-bus"></a>Az AMQP 1.0-ás és Service Bus
-AMQP 1.0-támogatás az Azure Service Busban azt jelenti, hogy mostantól használhatja a Service Bus üzenetsor-kezelési és közzétételi/előfizetési közvetítőalapú üzenettovábbítási szolgáltatások egy hatékony bináris protokoll használatával platformok listája. Emellett hozhat létre olyan alkalmazásokat, használja a programozási nyelvek, keretrendszerek és operációs rendszerek-összetevői áll.
+## <a name="amqp-10-and-service-bus"></a>AMQP 1,0 és Service Bus
+A AMQP 1,0-es verziójának támogatása a Azure Service Bus azt jelenti, hogy mostantól kihasználhatja a Service Bus Queuing szolgáltatást, és a felügyelt és előfizetéseket számos platformról kihasználhatja egy hatékony bináris protokoll használatával. Emellett a különböző nyelvek, keretrendszerek és operációs rendszerek együttes használatával létrehozott összetevőkből álló alkalmazásokat is készíthet.
 
-Az alábbi ábra telepítését bemutató példát, amelyben írt a szabványos Java Message Service (JMS) API és .NET-ügyfelek futó Windows, Linux rendszeren futó Java-ügyfelek keresztül váltanak üzeneteket a Service Bus AMQP 1.0-val.
+Az alábbi ábra egy példát mutat be egy olyan központi telepítésre, amelyben a Linux rendszeren futó Java-ügyfelek a standard Java Message Service (JMS) API-val és a Windows rendszeren futó .NET-ügyfelekkel, az AMQP 1,0-es verzióját használva Exchange-Service Bus üzeneteket küldenek.
 
 ![][0]
 
-**1. ábra: Többplatformos üzenetkezelés a Service Bus és az AMQP 1.0 használatával bemutató példa üzembe helyezési forgatókönyv**
+**1. ábra: példa a többplatformos üzenetküldést Service Bus és AMQP 1,0-et használó üzembe helyezési forgatókönyvre**
 
-Jelenleg a következő ügyfélkódtárak ismert, hogy a Service Bus használata:
+Jelenleg a következő ügyféloldali függvénytárak ismertek a Service Bus-vel való együttműködésre:
 
-| Nyelv | Erőforrástár |
+| Nyelv | Részletes ismertetés |
 | --- | --- |
-| Java |Az Apache Qpid Java Message Service (JMS) ügyfél<br/>IIT szoftver SwiftMQ Java ügyfél |
-| C |Az Apache Qpid Proton-C |
-| PHP |Az Apache Qpid Proton – PHP |
-| Python |Az Apache Qpid Proton – Python |
-| C# |Az AMQP .NET Lite |
+| Java |Apache csontos Java Message Service (JMS) ügyfél<br/>IIT szoftver SwiftMQ Java-ügyfél |
+| C# |Apache csontos-proton – C |
+| PHP |Apache csontos proton – PHP |
+| Python |Apache csontos proton – Python |
+| C# |AMQP .NET Lite |
 
-**2. ábra: Az AMQP 1.0-s ügyfél kódtárak táblázatát**
+**2. ábra: AMQP 1,0 ügyféloldali kódtárak táblázata**
 
 ## <a name="summary"></a>Összefoglalás
-* Az AMQP 1.0-s egy nyitott, megbízható üzenetkezelő protokoll, amely segítségével többplatformos, a hibrid alkalmazások készítését. Az AMQP 1.0-t az OASIS szabványa.
-* Az AMQP 1.0 támogatása már elérhető az Azure Service Bus, valamint a Service Bus Windows Server (Service Bus 1.1-es). Díjszabás ugyanúgy történik, mint a meglévő protokollokat.
+* A AMQP 1,0 egy nyílt, megbízható üzenetkezelési protokoll, amellyel többplatformos hibrid alkalmazások hozhatók létre. A AMQP 1,0 egy oázis standard.
+* A AMQP 1,0 támogatás mostantól elérhető Azure Service Busban, valamint Service Bus a Windows Serverhez (Service Bus 1,1). A díjszabás megegyezik a meglévő protokollokkal.
 
-## <a name="next-steps"></a>További lépések
-Készen áll további? Látogasson el az alábbi hivatkozásokat:
+## <a name="next-steps"></a>Következő lépések
+Készen áll a további részletekre? Látogasson el a következő hivatkozásokra:
 
-* [Az AMQP használatával a Service Bus, a .NET használatával]
-* [Az AMQP használatával a Service Bus, a Java használatával]
-* [Az Azure Linux rendszerű virtuális gépen Apache Qpid Proton-C telepítése]
-* [A Windows Server a Service Bus AMQP]
+* [Service Bus használata a .NET-ről a AMQP használatával]
+* [Service Bus használata a Java és a AMQP használatával]
+* [Az Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]
+* [A Windows Server Service Bus AMQP]
 
 [0]: ./media/service-bus-amqp-overview/service-bus-amqp-1.png
-[Az AMQP használatával a Service Bus, a .NET használatával]: service-bus-amqp-dotnet.md
-[Az AMQP használatával a Service Bus, a Java használatával]: service-bus-amqp-java.md
-[Az Azure Linux rendszerű virtuális gépen Apache Qpid Proton-C telepítése]: service-bus-amqp-apache.md
-[A Windows Server a Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx
+[Service Bus használata a .NET-ről a AMQP használatával]: service-bus-amqp-dotnet.md
+[Service Bus használata a Java és a AMQP használatával]: service-bus-amqp-java.md
+[Az Apache csontos proton-C telepítése Azure Linux rendszerű virtuális gépen]: service-bus-amqp-apache.md
+[A Windows Server Service Bus AMQP]: https://msdn.microsoft.com/library/dn574799.aspx

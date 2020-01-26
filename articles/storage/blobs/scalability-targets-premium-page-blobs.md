@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: tamram
 ms.subservice: common
-ms.openlocfilehash: 39153b05b16395cf2dfc0511efa601d1cc4da550
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: e134c69f5d602cb4369e9410e3e2b9d3478b11a0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749709"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756249"
 ---
 # <a name="scalability-and-performance-targets-for-premium-page-blob-storage-accounts"></a>Méretezhetőségi és teljesítményi célok a prémium oldal blob Storage-fiókjaihoz
 
@@ -31,7 +31,7 @@ A prémium oldal blob Storage-fiókjai a következő skálázhatósági célokat
 
 | Teljes fiók kapacitása                            | Teljes sávszélesség egy helyileg redundáns Storage-fiókhoz                     |
 | ------------------------------------------------- | --------------------------------------------------------------------------- |
-| Lemez kapacitása: 35 TB <br>Pillanatkép kapacitása: 10 TB | Akár 50 Gigabit másodpercenként a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
+| Lemez kapacitása: 4 TB (különálló lemez)/35 TB (az összes lemez összesített összege) <br>Pillanatkép kapacitása: 10 TB | Akár 50 Gigabit másodpercenként a bejövő<sup>1</sup> + kimenő<sup>2</sup> |
 
 <sup>1</sup> a Storage-fiókba küldött összes adatérték (kérelem)
 

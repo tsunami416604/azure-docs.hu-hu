@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 11/21/2019
-ms.openlocfilehash: eb8540ac1904b46ba428b3b1e703e59c8b18d9e8
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 69d7bc81f5adc4797be86f946fdb656b4b6cc682
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76046045"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760894"
 ---
 # <a name="create-an-azure-application-offer"></a>Azure-alkalmazásajánlat létrehozása
 
@@ -156,19 +156,9 @@ A **Tulajdonságok** lapon megadhatja az ajánlatnak a piactéren, az alkalmazá
 
 Válasszon ki legalább egyet, és legfeljebb három kategóriát, amelyek az ajánlatnak a piactér megfelelő keresési területeire való elhelyezésére szolgálnak. Ügyeljen arra, hogy az ajánlat leírásában ne adja meg, hogy az ajánlat hogyan támogatja ezeket a kategóriákat. 
 
-### <a name="standard-marketplace-terms-and-conditions"></a>Standard szintű piactér – feltételek és kikötések
+### <a name="standard-contract-for-the-microsoft-commercial-marketplace"></a>Standard szintű szerződés a Microsoft kereskedelmi piactérről
 
-Az ügyfelek beszerzési folyamatának leegyszerűsítése és a szoftvergyártók jogi összetettségének csökkentése érdekében a Microsoft egy standard szintű szerződést biztosít, amely megkönnyíti a tranzakciót a piactéren.
-
-Az egyéni használati feltételek és kikötések elvégzése helyett dönthet úgy, hogy a standard szintű szerződés keretében kínálja a szoftverét, amelyet csak egyszer kell kiadnia, és csak egyszer kell elfogadni.
-
-A standard szintű szerződés a következő címen érhető el: https://go.microsoft.com/fwlink/?linkid=2041178
-
-A standard szintű szerződés használatához jelölje be a **standard szintű szerződés használata** jelölőnégyzetet.
-
-#### <a name="terms-of-use"></a>Használati feltételek
-
-Ha nem jelöli be a **standard szintű szerződés használata?** jelölőnégyzetet, meg kell adnia a saját jogi feltételeit a **használati feltételek** mezőben. Akár 10 000 karaktert is megadhat, vagy ha a használati feltételek hosszabb leírást igényelnek, adja meg azt az URL-címet, ahol a további licencfeltételek találhatók. Az ügyfeleknek el kell fogadniuk ezeket a feltételeket az alkalmazás kipróbálása előtt.
+[!INCLUDE [Commercial marketplace Standard Contract](./includes/marketplace-contract-text.md)]
 
 ## <a name="offer-listing"></a>Ajánlati lista
 
@@ -352,7 +342,7 @@ Beállíthatja, hogy az egyes tervek mindenki számára láthatók legyenek, vag
 
 Ha a megoldás sablonja kizárólag központilag telepíthető, ha egy másik megoldási sablon vagy egy felügyelt alkalmazás hivatkozik rá, jelölje be ezt a jelölőnégyzetet a megoldás sablonjának közzétételéhez, de az ügyfelek általi keresés és Tallózás közvetlenül a felhasználók elől való elrejtéséhez.
 
-## <a name="pricing-and-availability"></a>Árazás és elérhetőség
+## <a name="pricing-and-availability"></a>Díjszabás és rendelkezésre állás
 
 A **díjszabás és rendelkezésre állás** lap csak a felügyelt alkalmazások csomagjai számára látható.  Konfigurálhatja azokat a piacokat, amelyekre ez a csomag elérhető lesz, a megoldás felügyeletének havi díja, valamint azt, hogy a tervet mindenki számára vagy csak bizonyos ügyfeleknek (privát célközönségnek) kívánja-e megjeleníteni.
 
@@ -461,7 +451,7 @@ Minden egyes rendszerbiztonsági tag esetében válassza ki az egyik Azure AD be
 
 Alkalmazza az [Azure-szabályzatokat](https://docs.microsoft.com/azure/governance/policy/overview) a felügyelt alkalmazásra a telepített megoldás megfelelőségi követelményeinek meghatározásához.  A szabályzatdefiníciókról és a paraméterértékek formátumáról tekintse meg a következő dokumentumot: [Azure Policy-minták](https://docs.microsoft.com/azure/governance/policy/samples/index).  Legfeljebb öt házirendet konfigurálhat, és az egyes házirendek közül csak egy példányt lehet beállítani.  Egyes házirendek további paramétereket igényelnek.  A naplózási házirendekhez a szabványos SKU szükséges.  A szabályzat neve legfeljebb 50 karakter hosszú lehet.
 
-## <a name="co-sell"></a>Együttes értékesítés
+## <a name="co-sell"></a>Közös értékesítés
 
 Az ajánlat közzétételéhez teljes mértékben nem kötelező megadni a beadás lapon található információkat. A közös értékesítésre kész és az IP közös értékesítésre kész állapotot kell elérni. Az Ön által megadott információkat a Microsoft értékesítési csapatai fogják használni, hogy a megoldásra vonatkozó további információkat kapjanak az ügyfelek igényeinek megfelelő kiértékelése során. Nem érhető el közvetlenül az ügyfeleknek.
 

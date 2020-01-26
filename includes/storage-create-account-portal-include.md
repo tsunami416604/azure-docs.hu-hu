@@ -8,35 +8,36 @@ ms.topic: include
 ms.date: 05/06/2019
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: d34f18b688be2afd7febf1f948b3093696ee9118
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: ea8ed75bf91850abb95ebe983923989375c0fcf5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74451659"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759848"
 ---
 Kövesse az alábbi lépéseket egy általános célú v2-tárfiók létrehozásához az Azure Portalon:
 
 1. A Azure Portal menüben válassza a **minden szolgáltatás**lehetőséget. Az erőforrások listájába írja be a **Storage-fiókok** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza a **Tárfiókok** lehetőséget.
-1. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
-1. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
-1. Az **Erőforráscsoport** mező alatt válassza az **Új létrehozása** elemet. Az alábbi képen látható módon nevezze el az új erőforráscsoportot.
+2. A megjelenő **Storage-fiókok** ablakban válassza a **Hozzáadás** lehetőséget.
+3. Válassza ki azt az előfizetést, amelyben létre kívánja hozni a tárfiókot.
+4. Az **Erőforráscsoport** mező alatt válassza az **Új létrehozása** elemet. Az alábbi képen látható módon nevezze el az új erőforráscsoportot.
 
     ![Erőforráscsoport portálon való létrehozását bemutató képernyőkép](./media/storage-create-account-portal-include/create-resource-group-for-storage.png)
 
-1. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
-1. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
-1. Ne módosítsa a következő mezők alapértelmezett értékeit:
+5. Ezután adja meg a tárfiók nevét. A választott névnek az Azure-on belül egyedinek kell lennie. A név 3–24 karakter hosszúságú lehet, és csak számokból és kisbetűkből állhat.
+6. Válassza ki a tárfiókja helyét, vagy használja az alapértelmezett helyet.
+7. Ne módosítsa a következő mezők alapértelmezett értékeit:
 
-   |Mező  |Érték  |
+   |Mező  |Value (Díj)  |
    |---------|---------|
-   |Üzemi modell     |Resource Manager         |
+   |Üzemi modell     |Erőforrás-kezelő         |
    |Teljesítmény     |Standard         |
    |Fióktípus     |StorageV2 (általános célú v2)         |
    |Replikáció     |Írásvédett georedundáns tárolás (RA-GRS)         |
    |Elérési szint     |Gyakori         |
 
-1. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
-1. Kattintson a **Létrehozás** gombra.
+8. Ha [Azure Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)használatát tervezi, válassza a **speciális** fület, majd állítsa be a **hierarchikus névteret** **engedélyezve**értékre.
+9. A tárfiók beállításainak áttekintéséhez és a fiók létrehozásához válassza a **Felülvizsgálat + létrehozás** elemet.
+10. Kattintson a **Létrehozás** gombra.
 
 További információ a tárfiókok típusairól és a tárfiókok egyéb beállításairól: [Az Azure Storage-fiókok áttekintése](https://docs.microsoft.com/azure/storage/common/storage-account-overview). További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview). 

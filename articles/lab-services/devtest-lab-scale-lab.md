@@ -1,6 +1,6 @@
 ---
 title: Kvóták és korlátok méretezése a laborban Azure DevTest Labsban | Microsoft Docs
-description: Megtudhatja, hogyan méretezheti a labort Azure DevTest Labs
+description: Ez a cikk bemutatja, hogyan méretezheti a labort Azure DevTest Labsban. Megtekintheti a használati kvótákat és korlátozásokat, és megnövelheti a kérést.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 231a227cbccaa4cbf74f3b13839c0ba42895cf24
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f3299c24bc751263ccd284a4fddb492fba5dd1e0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75644851"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761185"
 ---
 # <a name="scale-quotas-and-limits-in-devtest-labs"></a>Kvóták és korlátozások méretezése a DevTest Labs szolgáltatásban
 A DevTest Labs szolgáltatásban végzett munka során észreveheti, hogy egyes Azure-erőforrások esetében bizonyos alapértelmezett korlátozások vannak érvényben, ami hatással lehet a DevTest Labs szolgáltatásra. Ezeket a korlátokat **kvótáknak**nevezzük.
@@ -26,7 +26,7 @@ A DevTest Labs szolgáltatásban végzett munka során észreveheti, hogy egyes 
 > [!NOTE]
 > A DevTest Labs szolgáltatás nem kényszeríti ki a kvótákat. Az esetlegesen felmerülő kvóták a teljes Azure-előfizetés alapértelmezett korlátai.
 
-Minden Azure-erőforrást használhat, amíg el nem éri a kvótáját. Minden előfizetéshez külön kvóta tartozik, a felhasználás pedig előfizetésenként van nyilvántartva.
+Minden Azure-erőforrást használhat, amíg el nem éri a kvótáját. Minden előfizetéshez külön kvóta tartozik, és az előfizetések nyomon követése történik.
 
 Például minden előfizetéshez tartozik egy 20 maggal alapértelmezett kvóta. Így ha a laborban virtuális gépeket hoz létre négy maggal, akkor csak öt virtuális gépet hozhat létre.
 

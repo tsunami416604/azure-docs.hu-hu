@@ -1,6 +1,6 @@
 ---
-title: VHD-fájl feltöltése a PowerShell-lel az Azure DevTest Labs |} A Microsoft Docs
-description: VHD-fájl feltöltése PowerShell használatával tesztkörnyezet tárfiókba
+title: VHD-fájl feltöltése Azure DevTest Labs PowerShell használatával | Microsoft Docs
+description: Ez a cikk egy olyan bemutatót tartalmaz, amely bemutatja, hogyan tölthet fel egy VHD-fájlt Azure DevTest Labs a PowerShell használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,54 +12,54 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 56a66c3eb1dad93fad3ad1572989dc0c0aa14632
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a9e5a69cd7840bbaff081a4d47cb60f62a76eda6
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60622761"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759755"
 ---
-# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-fájl feltöltése PowerShell használatával tesztkörnyezet tárfiókba
+# <a name="upload-vhd-file-to-labs-storage-account-using-powershell"></a>VHD-fájl feltöltése a labor Storage-fiókjába a PowerShell használatával
 
 [!INCLUDE [devtest-lab-upload-vhd-selector](../../includes/devtest-lab-upload-vhd-selector.md)]
 
-Az Azure DevTest Labs szolgáltatásban a VHD-fájlok létrehozása az egyéni lemezképek, amelyek segítségével a virtuális gépek üzembe helyezése használható. A következő lépések végigvezetik egy tesztkörnyezet egy storage-fiók egy VHD-fájl feltöltése a PowerShell használatával. Miután feltöltötte a VHD-fájl a [további lépések szakaszt](#next-steps) felsorolja az egyes cikkeket, amelyek bemutatják, hogyan hozhat létre egy egyéni rendszerképet a feltöltött VHD-fájlból. Lemezek és virtuális merevlemezek, az Azure-ban kapcsolatos további információkért lásd: [Bevezetés a managed Disks szolgáltatásba](../virtual-machines/linux/managed-disks-overview.md)
+Azure DevTest Labs a VHD-fájlok használhatók a virtuális gépek kiépítéséhez használt egyéni rendszerképek létrehozására. Az alábbi lépések végigvezetik a PowerShell használatával egy VHD-fájlnak a labor Storage-fiókjába való feltöltéséhez. A VHD-fájl feltöltése után a [következő lépések szakasz](#next-steps) azokat a cikkeket sorolja fel, amelyek bemutatják, hogyan hozhat létre egyéni rendszerképet a feltöltött VHD-fájlból. További információ az Azure-beli lemezekről és virtuális merevlemezekről: [Bevezetés a Managed Disks](../virtual-machines/linux/managed-disks-overview.md) szolgáltatásba
 
 ## <a name="step-by-step-instructions"></a>Részletes útmutató
 
-A következő lépések végigvezetik egy VHD-fájl feltöltése a PowerShell-lel az Azure DevTest Labs szolgáltatásban. 
+A következő lépések végigvezetik a VHD-fájlok Azure DevTest Labs a PowerShell használatával történő feltöltésének lépésein. 
 
-1. Jelentkezzen be az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
-1. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
+1. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
 
-1. Tesztkörnyezetek listájában jelölje ki a kívánt tesztkörnyezetben.  
+1. A laborok listájából válassza ki a kívánt labort.  
 
-1. A labor paneljén válassza ki a **konfigurációs**. 
+1. A labor paneljén válassza a **Konfigurálás**lehetőséget. 
 
-1. A laborgyakorlat **konfigurációs** panelen válassza ki **egyéni lemezképeket (VHD)** .
+1. A labor- **konfiguráció** panelen válassza az **Egyéni lemezképek (VHD-k)** lehetőséget.
 
-1. Az a **egyéni lemezképek** panelen válasszon ki **+ Hozzáadás**. 
+1. Az **Egyéni lemezképek** panelen válassza a **+ Hozzáadás**lehetőséget. 
 
-1. Az a **egyéni lemezkép** panelen válassza ki **VHD**.
+1. Az **Egyéni rendszerkép** panelen válassza a **VHD**elemet.
 
-1. Az a **VHD** panelen válassza ki **Nahrát VHD pomocí PowerShell**.
+1. A **VHD** panelen válassza **a virtuális merevlemez feltöltése a PowerShell használatával**lehetőséget.
 
-    ![Töltse fel a VHD pomocí Powershellu](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
+    ![VHD feltöltése a PowerShell használatával](./media/devtest-lab-upload-vhd-using-powershell/upload-image-using-psh.png)
 
-1. Az a **Nahrát image pomocí PowerShell** panelen másolja ki a létrehozott PowerShell-szkript egy szövegszerkesztőbe.
+1. A **rendszerkép feltöltése a PowerShell használatával** panelen másolja a generált PowerShell-szkriptet egy szövegszerkesztőbe.
 
-1. Módosítsa a **LocalFilePath** paraméterében a **Add-AzureVhd** parancsmagot, hogy a feltölteni kívánt VHD-fájl helyére mutasson.
+1. Módosítsa az **Add-AzureVhd** parancsmag **LocalFilePath** paraméterét úgy, hogy a feltölteni kívánt vhd-fájl helyére mutasson.
 
-1. Futtassa a következő PowerShell-parancssorból, a **Add-AzureVhd** parancsmag (és a módosított **LocalFilePath** paraméter).
+1. A PowerShell-parancssorban futtassa az **Add-AzureVhd** parancsmagot (a módosított **LocalFilePath** paraméterrel).
 
 > [!WARNING] 
 > 
-> A VHD-fájlt, és az átviteli sebesség méretétől függően a folyamat egy VHD-fájl feltöltése megnőhet.
+> A VHD-fájlok feltöltésének folyamata a VHD-fájl méretétől és a kapcsolatok sebességétől függően hosszadalmas lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [Egy egyéni lemezkép készítése VHD-fájlból az Azure portal segítségével Azure DevTest Labs szolgáltatásban](devtest-lab-create-template.md)
-- [Egyéni rendszerkép létrehozása a PowerShell-lel VHD-fájlból az Azure DevTest Labs szolgáltatásban](devtest-lab-create-custom-image-from-vhd-using-powershell.md)
+- [Egyéni rendszerkép létrehozása Azure DevTest Labs egy VHD-fájlból a Azure Portal használatával](devtest-lab-create-template.md)
+- [Egyéni rendszerkép létrehozása Azure DevTest Labs VHD-fájlból a PowerShell használatával](devtest-lab-create-custom-image-from-vhd-using-powershell.md)

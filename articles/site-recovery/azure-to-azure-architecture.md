@@ -6,14 +6,14 @@ author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 1/08/2020
+ms.date: 1/23/2020
 ms.author: raynew
-ms.openlocfilehash: e5fdf0a14586a0a2ea97d222f4be481e8fe31e51
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 852059317c45dec4885b3f56de5617695d82e1e8
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754514"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759806"
 ---
 # <a name="azure-to-azure-disaster-recovery-architecture"></a>Az Azure-ból Azure-ba történő vészhelyreállítás architektúrája
 
@@ -63,7 +63,7 @@ A cél erőforrásait a következőképpen kezelheti:
 
 Az Azure-beli virtuális gépek replikálásának engedélyezésekor a Site Recovery alapértelmezés szerint létrehoz egy új replikációs házirendet a táblázatban összegzett alapértelmezett beállításokkal.
 
-**Szabályzat-beállítás** | **Részletek** | **Alapértelmezett**
+**Házirend-beállítás** | **Részletek** | **Alapértelmezett**
 --- | --- | ---
 **Helyreállítási pont megőrzése** | Meghatározza, hogy a Site Recovery mennyi ideig tart a helyreállítási pontok | 24 óra
 **Alkalmazás-konzisztens pillanatkép gyakorisága** | Milyen gyakran Site Recovery egy alkalmazás-konzisztens pillanatképet. | Négy óránként
@@ -146,7 +146,7 @@ Vegye figyelembe, hogy a hálózati kapcsolatra vonatkozó követelmények rész
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
 HTTPS-kimenő engedélyezése: 443-es port | A forrás régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >
-HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directory (Azure AD)-nak megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új hálózati biztonsági csoport (NSG) szabályokat kell létrehoznia.  | AzureActiveDirectory
+HTTPS-kimenő engedélyezése: 443-es port | Azure Active Directorynak (Azure AD) megfelelő tartományok engedélyezése  | AzureActiveDirectory
 HTTPS-kimenő engedélyezése: 443-es port | A célként megadott régióban található Events hubhoz tartozó tartományok engedélyezése. | EventsHub.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 
@@ -155,7 +155,7 @@ HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő t
 **Szabály** |  **Részletek** | **Szolgáltatáscímke**
 --- | --- | --- 
 HTTPS-kimenő engedélyezése: 443-es port | A cél régióban lévő Storage-fiókoknak megfelelő tartományok engedélyezése | Storage.\<régió – név >
-HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése.<br/><br/> Ha a jövőben Azure AD-címeket adnak hozzá, új NSG-szabályokat kell létrehoznia.  | AzureActiveDirectory
+HTTPS-kimenő engedélyezése: 443-es port | Az Azure AD-nek megfelelő tartományok engedélyezése  | AzureActiveDirectory
 HTTPS-kimenő engedélyezése: 443-es port | Az Events hub-nak megfelelő tartományok engedélyezése a forrás régióban. | EventsHub.\<régió – név >
 HTTPS-kimenő engedélyezése: 443-es port | Azure Site Recoverynak megfelelő tartományok engedélyezése  | AzureSiteRecovery
 

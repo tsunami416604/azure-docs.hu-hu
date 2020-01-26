@@ -1,6 +1,6 @@
 ---
-title: Azure Service Bus üzenetkezelési entitások automatikus továbbítása | Microsoft Docs
-description: Service Bus üzenetsor vagy előfizetés összeláncolása egy másik várólistára vagy témakörre.
+title: Azure Service Bus üzenetkezelési entitások automatikus továbbítása
+description: Ez a cikk egy Azure Service Bus üzenetsor vagy előfizetés egy másik várólistára vagy témakörre való láncolását ismerteti.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 01/23/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 1d7b76a58a427b687d0dc36d13cfc00f32196853
-ms.sourcegitcommit: 88ae4396fec7ea56011f896a7c7c79af867c90a1
+ms.openlocfilehash: 8b8883b579233962de61e7247e6ac1cbcb2a6d80
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2019
-ms.locfileid: "70390134"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761049"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
 
@@ -27,7 +27,7 @@ Az Service Bus- *továbbítási* funkció lehetővé teszi egy üzenetsor vagy e
 
 ## <a name="using-autoforwarding"></a>Az autoforwarding használata
 
-A [QueueDescription. továbbítás][QueueDescription.ForwardTo] vagy a [SubscriptionDescription. továbbítás][SubscriptionDescription.ForwardTo] tulajdonságainak beállításával engedélyezheti a forráshoz tartozó [QueueDescription][QueueDescription] -vagy [SubscriptionDescription][SubscriptionDescription] -objektumokon a következőt: következő példa:
+A [QueueDescription. továbbítás][QueueDescription.ForwardTo] vagy a [SubscriptionDescription. továbbítás][SubscriptionDescription.ForwardTo] tulajdonságainak beállításával engedélyezheti a forráshoz tartozó [QueueDescription][QueueDescription] -vagy [SubscriptionDescription][SubscriptionDescription] -objektumokon a következő példában látható módon:
 
 ```csharp
 SubscriptionDescription srcSubscription = new SubscriptionDescription (srcTopic, srcSubscriptionName);
@@ -63,7 +63,7 @@ Service Bus egy műveletet számláz az egyes továbbított üzenetekhez. Ha pé
 
 Egy másik várólistához vagy témakörhöz láncolt előfizetés létrehozásához az előfizetés létrehozójának a forrás és a cél entitáson is **kezelnie** kell a felügyeleti jogosultságokat. Az üzenetek a forrás témakörbe való küldése csak a forrás témakör **küldési** engedélyeit igényli.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az autoforwarding szolgáltatással kapcsolatos részletes információkért tekintse meg a következő témaköröket:
 

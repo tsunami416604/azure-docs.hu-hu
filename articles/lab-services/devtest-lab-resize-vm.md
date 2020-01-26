@@ -1,6 +1,6 @@
 ---
-title: Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet virtuális gép átméretezése |} A Microsoft Docs
-description: Ismerje meg, az Azure DevTest Labs szolgáltatásban virtuális gép átméretezése
+title: Virtuális gép átméretezése laborban Azure DevTest Labs
+description: Megtudhatja, hogyan módosíthatja a virtuális gép (VM) méretét a Azure DevTest Labs a processzor, a hálózat vagy a lemez teljesítményének igénye alapján.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,44 +12,44 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/11/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: a0bc618a9c0a02aae884d8be359df6bdbf4c0d2a
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: bf7c425766a97aaa1d143133f04502a0aa3c36cb
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60868090"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756177"
 ---
-# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet virtuális gép átméretezése
-Azure-beli virtuális gépek fontos jellemzőit egyik célja, hogy lehetővé teszi a virtuális gép (VM) a CPU-, hálózati vagy lemez teljesítménye az igények alapján méretének módosítása. Az Azure DevTest Labs támogatja ezt a szolgáltatást a virtuális gépek tesztkörnyezetben most. Az átméretezési funkció engedélyezett Virtuálisgép-méretek a lab-ben a labor házirend csatlakozik. Azt jelenti módosíthatja a virtuális gép méretét csak engedélyezett méretek a tesztkörnyezetben. 
+# <a name="resize-a-vm-in-a-lab-in-azure-devtest-labs"></a>Virtuális gép átméretezése laborban Azure DevTest Labs
+Az Azure Virtual Machines egyik fontos funkciója, hogy lehetővé teszi a virtuális gépek (VM-EK) méretének módosítását a CPU, a hálózat vagy a lemez teljesítményének megfelelően. Azure DevTest Labs támogatja ezt a funkciót a laborban lévő virtuális gépekhez. Az átméretezés funkció betartja a labor házirendet az engedélyezett virtuálisgép-méretekhez a laborban. Ez azt eredményezi, hogy a virtuális gép méretét csak a laborban engedélyezett méretekre lehet módosítani. 
 
 
-## <a name="steps-to-resize-a-vm-in-a-lab"></a>A lépéseket a labor virtuális gépek átméretezése 
-Egy virtuális Géphez az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet méretezéséhez hajtsa végre az alábbi lépéseket: 
+## <a name="steps-to-resize-a-vm-in-a-lab"></a>A virtuális gépek tesztkörnyezetben való átméretezésének lépései 
+A virtuális gépek Azure DevTest Labs tesztkörnyezetben való átméretezéséhez hajtsa végre a következő lépéseket: 
 
 > [!NOTE]
-> Ha a virtuális géphez távoli asztali kapcsolat (RDP) keresztül kapcsolódik, mentse a munkáját, és a virtuális gép átméretezése előtt válassza le.
+> Ha távoli asztali munkameneten (RDP) keresztül csatlakozik a virtuális géphez, mentse a munkáját, és húzza le a virtuális gépet a méretezés előtt.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **minden szolgáltatás**, majd válassza ki **DevTest Labs** a listából.
-3. Tesztkörnyezetek listájában jelölje ki a labor létrehozása, amely tartalmazza a virtuális gép átméretezése szeretné.  
-4. A bal oldali panelen válassza ki a **saját virtuális gépek**. 
-5. Virtuális gépek listájából válasszon ki egy virtuális Gépet.
-6. Válassza ki **leállítása** az eszköztáron, ha a virtuális gép fut-e. A művelet állapotának ellenőrzéséhez a **értesítések** ablak. Várjon, amíg a virtuális gép leállt, majd zárja be a **értesítések** ablak. 
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a **minden szolgáltatás**lehetőséget, majd válassza ki a **DevTest Labs** elemet a listából.
+3. A Labs listából válassza ki azt a labort, amely tartalmazza az átméretezni kívánt virtuális gépet.  
+4. A bal oldali panelen válassza a **saját Virtual Machines**elemet. 
+5. A virtuális gépek listájából válasszon ki egy virtuális gépet.
+6. Ha a virtuális gép fut, válassza az eszköztár **Leállítás** elemét. Az **értesítések** ablakban tekintse meg a művelet állapotát. Várjon, amíg a virtuális gép leáll, majd az **értesítések** ablak bezárásához. 
 
     ![A virtuális gép leállítása](media/devtest-lab-resize-vm/stop-vm.png)
-1. A virtuális géphez a virtuális gép oldalon válassza ki a **mérete** alatt **beállítások** a bal oldali menüben.
+1. A virtuális gép virtuálisgép-lapján válassza a **méret** lehetőséget a bal oldali menü **Beállítások** területén.
 
     ![Méret menü](media/devtest-lab-resize-vm/size-menu.png)
-1. Az a **méret kiválasztása** ablakban keresse meg és válassza ki a kívánt méretet a virtuális gép, és kattintson **kiválasztása**.     
-1. Az átméretezés az állapotának ellenőrzéséhez a **értesítések** ablak.
+1. A **méret kiválasztása** ablakban keresse meg és válassza ki a virtuális gép méretét, majd kattintson a **kiválasztás**gombra.     
+1. Tekintse át az átméretezési művelet állapotát az **értesítések** ablakban.
 
-    ![Méretezze át a állapota](media/devtest-lab-resize-vm/resize-status.png)
-10. Az átméretezést követően a művelet sikeres, zárja be a **értesítések** ablak. 
-11. Válassza ki **áttekintése** a bal oldali menüben, és válassza a **indítsa újra a** gombra az eszköztárban, indítsa újra a virtuális Gépet. 
+    ![Állapot átméretezése](media/devtest-lab-resize-vm/resize-status.png)
+10. Az átméretezési művelet sikeres elvégzése után lépjen be az **értesítések** ablakba. 
+11. Válassza az **Áttekintés** lehetőséget a bal oldali menüben, majd kattintson az **Újraindítás** gombra az eszköztáron a virtuális gép újraindításához. 
 
-## <a name="next-steps"></a>További lépések
-Az Azure-beli virtuális gépek által támogatott átméretezése funkcióival kapcsolatos részletes információkért lásd: [méretezze át a virtuális gépek](https://azure.microsoft.com/blog/resize-virtual-machines/).
+## <a name="next-steps"></a>Következő lépések
+Az Azure Virtual Machines által támogatott átméretezési funkcióval kapcsolatos részletes információkért lásd: [virtuális gépek átméretezése](https://azure.microsoft.com/blog/resize-virtual-machines/).
 
 

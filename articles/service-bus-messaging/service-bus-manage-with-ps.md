@@ -1,6 +1,6 @@
 ---
-title: Az Azure Service Bus erőforrásainak kezelése a PowerShell használatával |} A Microsoft Docs
-description: PowerShell-modul segítségével létrehozhat, és a Service Bus erőforrásainak kezelése
+title: Azure Service Bus-erőforrások kezelése a PowerShell használatával | Microsoft Docs
+description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet Service Bus entitásokat (névtereket, várólistákat, témákat, előfizetéseket) a Azure PowerShell modul használatával.
 services: service-bus-messaging
 documentationcenter: .NET
 author: axisc
@@ -12,52 +12,52 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/21/2018
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: 0d15aa4d7b8a922f7606b7c4d1b357a80b3cbfab
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: e333dfb109840538fd5dec8110e1c32adedce989
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60311046"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759261"
 ---
-# <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus erőforrásainak kezelése a PowerShell használatával
+# <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus erőforrások kezelése a PowerShell használatával
 
-A Microsoft Azure PowerShell-parancsfájl-kezelési környezet, amellyel szabályozhatja és automatizálhatja a telepítése és felügyelete az Azure-szolgáltatások. Ez a cikk ismerteti, hogyan használható a [Service Bus Resource Manager PowerShell-modul](/powershell/module/az.servicebus) történő kialakításához és kezeléséhez a Service Bus-entitások (névterek, üzenetsorok, témakörök és előfizetések) egy helyi Azure PowerShell-konzolt vagy parancsfájl használatával.
+Microsoft Azure PowerShell az Azure-szolgáltatások üzembe helyezésének és felügyeletének vezérlésére és automatizálására használható parancsfájlkezelési környezet. Ez a cikk azt ismerteti, hogyan használható a [Service Bus Resource Manager PowerShell-modul](/powershell/module/az.servicebus) Service Bus entitások (névterek, várólisták, témakörök és előfizetések) egy helyi Azure PowerShell konzol vagy parancsfájl használatával történő kiépítéséhez és kezeléséhez.
 
-Service Bus-entitások Azure Resource Manager-sablonok használatával is kezelheti. További információkért tekintse meg a cikket [Azure Resource Manager-sablonok létrehozása a Service Bus-erőforrások](service-bus-resource-manager-overview.md).
+Service Bus entitásokat Azure Resource Manager sablonok használatával is kezelheti. További információkért tekintse meg a [Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával](service-bus-resource-manager-overview.md)című cikket.
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, szüksége lesz a következő előfeltételek vonatkoznak:
+Mielőtt elkezdené, a következő előfeltételekre lesz szüksége:
 
-* Azure-előfizetés. Előfizetés beszerzésével kapcsolatos további információkért lásd: [vásárlási lehetőségek][purchase options], [ajánlatok tagoknak][member offers], vagy [ingyenes fiók][free account].
-* Egy számítógép az Azure PowerShell használatával. Útmutatásért lásd: [Ismerkedés az Azure PowerShell-parancsmagok](/powershell/azure/get-started-azureps).
-* PowerShell-parancsfájlok NuGet-csomagok és a .NET-keretrendszer általános ismeretekkel.
+* Azure-előfizetés. Az előfizetés beszerzésével kapcsolatos további információkért lásd a [vásárlási lehetőségek][purchase options], a [tagok ajánlatai][member offers]vagy az [ingyenes fiók][free account]lehetőséget.
+* Azure PowerShell-t futtató számítógép. Útmutatásért lásd: [Azure PowerShell-parancsmagok első lépései](/powershell/azure/get-started-azureps).
+* A PowerShell-parancsfájlok, a NuGet-csomagok és a .NET-keretrendszer általános ismerete.
 
-## <a name="get-started"></a>Bevezetés
+## <a name="get-started"></a>Az első lépések
 
-Az első lépés, hogy jelentkezzen be az Azure-fiók és az Azure-előfizetést a PowerShell használatával. Kövesse a [Ismerkedés az Azure PowerShell-parancsmagok](/powershell/azure/get-started-azureps) jelentkezzen be az Azure-fiókjával, és a lekérésére és elérhessék az erőforrásokat az Azure-előfizetésében.
+Első lépésként a PowerShell használatával jelentkezzen be az Azure-fiókjába és az Azure-előfizetésbe. Az Azure-fiókjába való bejelentkezéshez és az Azure-előfizetésében található erőforrások lekéréséhez és eléréséhez kövesse az első [lépések a Azure PowerShell-parancsmagokkal](/powershell/azure/get-started-azureps) című témakör utasításait.
 
-## <a name="provision-a-service-bus-namespace"></a>Service Bus-névtér kiépítése
+## <a name="provision-a-service-bus-namespace"></a>Service Bus névtér kiépítése
 
-Amikor a Service Bus-névterek dolgozik, használhatja a [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace), és [ Set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) parancsmagok.
+Service Bus névterek használatakor a [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), a [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), a [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)és a [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) parancsmagot használhatja.
 
-Ez a példa létrehoz néhány helyi változók a parancsfájl; `$Namespace` és `$Location`.
+Ez a példa néhány helyi változót hoz létre a parancsfájlban; `$Namespace` és `$Location`.
 
-* `$Namespace` a Service Bus-névtér, amellyel működéséhez szeretnénk neve van.
-* `$Location` Adja meg az adatközpontot, amelyben a névtér kiépítve.
-* `$CurrentNamespace` a referencia-névteret, amelyet tudjuk lekérdezni (vagy hozzon létre) tárolja.
+* `$Namespace` annak a Service Bus névtérnek a neve, amellyel dolgozni szeretne.
+* `$Location` azonosítja azt az adatközpontot, amelyben kiépítjük a névteret.
+* `$CurrentNamespace` a beolvasott (vagy létrehozandó) hivatkozási névteret tárolja.
 
-Egy tényleges szkriptben `$Namespace` és `$Location` paraméterként adhatók.
+Egy tényleges parancsfájlban `$Namespace` és `$Location` paraméterként adható át.
 
-A parancsfájl ebben a részében a következőket teszi:
+A szkript ezen része a következő műveleteket végzi el:
 
-1. Próbálja meg lekérni a Service Bus-névtér, a megadott néven.
-2. Ha a névtérben található, jelentések, mi található.
-3. Ha a névtérben nem található, a névteret hoz létre, és az újonnan létrehozott névtér ezután lekéri.
+1. Megkísérli beolvasni egy Service Bus névteret a megadott névvel.
+2. Ha a névtér található, akkor a rendszer jelentést készít arról, hogy mi található.
+3. Ha a névtér nem található, létrehozza a névteret, majd lekéri az újonnan létrehozott névteret.
    
     ``` powershell
     # Query to see if the namespace currently exists
@@ -81,9 +81,9 @@ A parancsfájl ebben a részében a következőket teszi:
     }
     ```
 
-### <a name="create-a-namespace-authorization-rule"></a>Egy névtér-engedélyezési szabály létrehozása
+### <a name="create-a-namespace-authorization-rule"></a>Névtér-engedélyezési szabály létrehozása
 
-Az alábbi példa bemutatja, hogyan kezelheti a névtér-engedélyezési szabályok használatával a [New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule), [Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule), [ Set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule), és [Remove-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) parancsmagok.
+Az alábbi példa bemutatja, hogyan kezelhetők a névtér-engedélyezési szabályok a [New-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/new-azservicebusauthorizationrule), a [Get-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/get-azservicebusauthorizationrule), a [set-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/set-azservicebusauthorizationrule)és a [Remove-AzServiceBusAuthorizationRule](/powershell/module/az.servicebus/remove-azservicebusauthorizationrule) parancsmagok használatával.
 
 ```powershell
 # Query to see if rule exists
@@ -125,7 +125,7 @@ else
 
 ## <a name="create-a-queue"></a>Üzenetsor létrehozása
 
-Egy üzenetsor vagy témakör létrehozásához hajtsa végre az előző szakaszban a szkripttel névtér ellenőrzése. Ezután hozzon létre a várólista:
+Üzenetsor vagy témakör létrehozásához hajtson végre egy névtér-ellenőrzést az előző szakaszban található parancsfájl használatával. Ezután hozza létre a várólistát:
 
 ```powershell
 # Check if queue already exists
@@ -147,7 +147,7 @@ else
 
 ### <a name="modify-queue-properties"></a>Várólista tulajdonságainak módosítása
 
-Az előző szakaszban a parancsfájl végrehajtása után használhatja a [Set-AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) parancsmag egy üzenetsorba, a következő példához hasonlóan tulajdonságainak frissítésére:
+Az előző szakaszban leírt parancsfájl végrehajtása után a [set-AzServiceBusQueue](/powershell/module/az.servicebus/set-azservicebusqueue) parancsmaggal frissítheti egy üzenetsor tulajdonságait, ahogy az alábbi példában is látható:
 
 ```powershell
 $CurrentQ.DeadLetteringOnMessageExpiration = $True
@@ -158,21 +158,21 @@ $CurrentQ.EnableExpress = $True
 Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -QueueName $QueueName -QueueObj $CurrentQ
 ```
 
-## <a name="provisioning-other-service-bus-entities"></a>Kiépítés a többi Service Bus-entitások
+## <a name="provisioning-other-service-bus-entities"></a>Más Service Bus entitások kiépítés
 
-Használhatja a [Service Bus PowerShell-modul](/powershell/module/az.servicebus) egyéb entitások, például a témakörök és előfizetések kiépítéséhez. Ezek a parancsmagok szintaktikailag hasonlóak az előző szakaszban bemutatott várólista létrehozására szolgáló parancsmagokhoz.
+Más entitások, például témakörök és előfizetések kiépítéséhez használhatja a [Service Bus PowerShell-modult](/powershell/module/az.servicebus) . Ezek a parancsmagok szintaktikai módon hasonlóak az előző szakaszban bemutatott üzenetsor-létrehozási parancsmagokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- A teljes Service Bus Resource Manager PowerShell-modul dokumentációjában [Itt](/powershell/module/az.servicebus). Ezen a lapon az összes elérhető parancsmagjainak listája.
-- Az Azure Resource Manager-sablonok használatával kapcsolatos információkért tekintse meg a cikket [Azure Resource Manager-sablonok létrehozása a Service Bus-erőforrások](service-bus-resource-manager-overview.md).
-- Információ a [Service Bus .NET kezelési kódtárak](service-bus-management-libraries.md).
+- Tekintse meg a teljes Service Bus Resource Manager PowerShell- [modul dokumentációját](/powershell/module/az.servicebus). Ezen az oldalon az összes elérhető parancsmag szerepel.
+- Azure Resource Manager sablonok használatával kapcsolatos információkért tekintse meg [Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával](service-bus-resource-manager-overview.md)című cikket.
+- Információk a [Service Bus .net felügyeleti könyvtárairól](service-bus-management-libraries.md).
 
-Ezek a blogbejegyzések leírtak szerint, van néhány alternatív módszer a Service Bus-entitások kezelését:
+Az Service Bus entitások kezelésének további módjai a következő blogbejegyzésekben olvashatók:
 
-* [Hogyan hozhat létre a Service Bus-üzenetsorokat, üzenettémákat és előfizetéseket, egy PowerShell-parancsfájl használatával](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
-* [A Service Bus-Namespace és a egy Eseményközpontba egy PowerShell-parancsprogram létrehozása](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
-* [Service Bus PowerShell-parancsprogramok](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
+* [Service Bus várólisták, témakörök és előfizetések létrehozása PowerShell-parancsfájl használatával](https://blogs.msdn.com/b/paolos/archive/2014/12/02/how-to-create-a-service-bus-queues-topics-and-subscriptions-using-a-powershell-script.aspx)
+* [Service Bus névtér és az Event hub létrehozása PowerShell-parancsfájl használatával](https://blogs.msdn.com/b/paolos/archive/2014/12/01/how-to-create-a-service-bus-namespace-and-an-event-hub-using-a-powershell-script.aspx)
+* [PowerShell-parancsfájlok Service Bus](https://code.msdn.microsoft.com/Service-Bus-PowerShell-a46b7059)
 
 <!--Anchors-->
 

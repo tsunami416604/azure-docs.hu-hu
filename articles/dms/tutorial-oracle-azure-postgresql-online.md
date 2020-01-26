@@ -11,13 +11,13 @@ ms.service: dms
 ms.workload: data-services
 ms.custom: seo-lt-2019
 ms.topic: article
-ms.date: 01/08/2020
-ms.openlocfilehash: 45b0c012ec8b8d70c1fad99db40f38fb92daf8a0
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.date: 01/24/2020
+ms.openlocfilehash: 956523e2b51795a4bc97c653dab8b408b06061f4
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770645"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759909"
 ---
 # <a name="tutorial-migrate-oracle-to-azure-database-for-postgresql-online-using-dms-preview"></a>Oktatóanyag: Oracle migrálása Azure Database for PostgreSQL online-ba a DMS használatával (előzetes verzió)
 
@@ -28,7 +28,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 >
 > * Mérje fel az áttelepítési erőfeszítést a ora2pg eszközzel.
 > * Telepítse át a minta sémát a ora2pg eszköz használatával.
-> * Hozzon létre egy Azure Database Migration Service-példányt.
+> * Azure Database Migration Service-példány létrehozása.
 > * Hozzon létre egy áttelepítési projektet Azure Database Migration Service használatával.
 > * A migrálás futtatása.
 > * A migrálás monitorozása.
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 
 * Töltse le és telepítse az [Oracle 11g 2. kiadását (Standard Edition, Standard Edition One vagy Enterprise Edition)](https://www.oracle.com/technetwork/database/enterprise-edition/downloads/index.html).
 * Töltse le [innen](https://docs.oracle.com/database/121/COMSC/installation.htm#COMSC00002)a minta **HR** -adatbázist.
-* Töltse le és telepítse a ora2pg-t [Windows](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf) vagy [Linux](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Linux.pdf)rendszeren.
+* Töltse le és [telepítse a ora2pg-t Windows vagy Linux rendszeren](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf).
 * [Példány létrehozása Azure Database for PostgreSQL-ben](https://docs.microsoft.com/azure/postgresql/quickstart-create-server-database-portal).
 * Kapcsolódjon a példányhoz, és hozzon létre egy adatbázist a jelen [dokumentum](https://docs.microsoft.com/azure/postgresql/tutorial-design-database-using-azure-portal)utasításai alapján.
 * Hozzon létre egy Microsoft Azure Virtual Network a Azure Database Migration Service számára a Azure Resource Manager üzemi modell használatával, amely helyek közötti kapcsolatot biztosít a helyszíni forráskiszolgáló számára a [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) vagy a [VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways)használatával. A virtuális hálózatok létrehozásával kapcsolatos további információkért tekintse meg a [Virtual Network dokumentációt](https://docs.microsoft.com/azure/virtual-network/), és különösen a gyors üzembe helyezési cikkeket részletesen ismerteti.
@@ -198,7 +198,7 @@ A ora2pg konfigurálásához és futtatásához tekintse meg az Oracle **áttele
 
 Megadhatja, hogy az Oracle Table-sémákat, tárolt eljárásokat, csomagokat és más adatbázis-objektumokat úgy alakítsa ki, hogy a ora2pg használatával kompatibilisek legyenek a postgres, mielőtt elkezdené a Azure Database Migration Service áttelepítési folyamatát. Tekintse meg az alábbi hivatkozásokat a ora2pg való használathoz:
 
-* [A ora2pg telepítése Windows rendszeren](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows.pdf)
+* [A ora2pg telepítése Windows rendszeren](https://github.com/microsoft/DataMigrationTeam/blob/master/Whitepapers/Steps%20to%20Install%20ora2pg%20on%20Windows%20and%20Linux.pdf)
 * [Oracle – Azure PostgreSQL Migration Cookbook](https://github.com/Microsoft/DataMigrationTeam/blob/master/Whitepapers/Oracle%20to%20Azure%20PostgreSQL%20Migration%20Cookbook.pdf)
 
 Azure Database Migration Service is létrehozhatja a PostgreSQL Table sémát. A szolgáltatás hozzáfér a tábla sémához a csatlakoztatott Oracle-forrásban, és létrehoz egy kompatibilis Table sémát Azure Database for PostgreSQL. Győződjön meg arról, hogy a séma formátumának érvényesítése és ellenőrzése Azure Database for PostgreSQL azt követően, hogy Azure Database Migration Service befejezte a séma létrehozását és az adatáthelyezést.

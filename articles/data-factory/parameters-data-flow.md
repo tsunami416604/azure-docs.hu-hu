@@ -1,5 +1,5 @@
 ---
-title: Parameterizing-leképezési adatfolyamok
+title: Leképezési adatfolyamok paraméterezése
 description: Ismerje meg, hogyan parametrizálja egy leképezési adatfolyamot a adatfeldolgozó-folyamatokból
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.reviewer: daperlov
 ms.service: data-factory
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: c589cfeab7a812e09ce7f7620e93b72bd362859a
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: c717d9ab44493d15589030073cd2ab260ef52e1c
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75746128"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760215"
 ---
-# <a name="parameterizing-mapping-data-flows"></a>Parameterizing-leképezési adatfolyamok
+# <a name="parameterizing-mapping-data-flows"></a>Leképezési adatfolyamok paraméterezése
 
 A Azure Data Factory adatforgalmának leképezése támogatja a paraméterek használatát. A paramétereket definiálhatja az adatfolyam-definícióban, amelyet aztán használhat a kifejezésekben. A paraméterek értékeit a hívó folyamat állíthatja be az adatfolyam végrehajtása tevékenységen keresztül. Az adatáramlási tevékenység kifejezésekben az értékek beállítására három lehetőség áll rendelkezésre:
 
@@ -23,9 +23,6 @@ A Azure Data Factory adatforgalmának leképezése támogatja a paraméterek has
 * A kifejezés nyelvének használata statikus literál érték megadásához
 
 Ezzel a képességgel általános célú, rugalmas és újrahasznosítható adatfolyamatokat végezhet. Ezekkel a paraméterekkel parametrizálja az adatáramlási beállításokat és kifejezéseket.
-
-> [!NOTE]
-> A folyamat-vezérlési folyamat kifejezésének használatához az adatfolyam-paraméternek karakterlánc típusúnak kell lennie.
 
 ## <a name="create-parameters-in-a-mapping-data-flow"></a>Paraméterek létrehozása egy leképezési adatfolyamban
 

@@ -2,14 +2,14 @@
 title: Általános kérdések a Azure Site Recovery szolgáltatással kapcsolatban
 description: Ez a cikk a Azure Site Recoveryekkel kapcsolatos népszerű általános kérdéseket tárgyalja.
 ms.topic: conceptual
-ms.date: 1/10/2020
+ms.date: 1/24/2020
 ms.author: raynew
-ms.openlocfilehash: 44abe9eafa9aef9e027778470d3f0483f99b0d32
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a9d0ae4a6e60a72bbb1148aca1a75c44506b2e9e
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75863563"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760351"
 ---
 # <a name="general-questions-about-azure-site-recovery"></a>Általános kérdések a Azure Site Recovery
 
@@ -147,7 +147,7 @@ Azure Site Recovery replikálja az Azure Storage-fiókba vagy a felügyelt lemez
 
 ### <a name="why-cant-i-replicate-over-vpn"></a>Miért nem lehet replikálni VPN-en keresztül?
 
-Az Azure-ba való replikáláskor a replikálási forgalom eléri az Azure Storage nyilvános végpontját. Így csak a nyilvános interneten keresztül replikálhat ExpressRoute (Microsoft-társ vagy meglévő nyilvános társ), és a VPN nem működik.
+Az Azure-ba való replikáláskor a replikálási forgalom eléri az Azure Storage nyilvános végpontját. Így csak a nyilvános interneten vagy a ExpressRoute (Microsoft-társ vagy egy meglévő nyilvános társon) keresztül lehet replikálni.
 
 ### <a name="can-i-use-riverbed-steelheads-for-replication"></a>Használhatom a Riverbed-SteelHeads a replikáláshoz?
 

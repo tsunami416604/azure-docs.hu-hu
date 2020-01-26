@@ -1,5 +1,5 @@
 ---
-title: 'Rövid útmutató: a Python használata a lekérdezéshez'
+title: A Python használata adatbázis lekérdezéséhez
 description: Ez a témakör bemutatja, hogyan használható a Python olyan program létrehozásához, amely egy Azure SQL Database-adatbázishoz csatlakozik, és hogyan kérdezheti le a Transact-SQL-utasítások használatával.
 services: sql-database
 ms.service: sql-database
@@ -11,44 +11,58 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/25/2019
-ms.openlocfilehash: 42d5b500a48e427aad2372710597e0266b2e80aa
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 9929c483c2e27983254033e2e26b3b753699260b
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73826995"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758308"
 ---
 # <a name="quickstart-use-python-to-query-an-azure-sql-database"></a>Rövid útmutató: Python használata Azure SQL-adatbázis lekérdezéséhez
 
- Ez a cikk bemutatja, hogyan használható a [Python](https://python.org) egy Azure SQL Database-adatbázishoz való kapcsolódáshoz, és hogyan lehet Transact-SQL-utasítások használatával adatokat lekérdezni. További SDK-részletekért tekintse meg [a dokumentációt](https://docs.microsoft.com/python/api/overview/azure/sql) , a [pyodbc GitHub-tárházat](https://github.com/mkleehammer/pyodbc/wiki/)és egy [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
+Ebben a rövid útmutatóban a Python használatával csatlakozik egy Azure SQL Database-adatbázishoz, és T-SQL-utasítások használatával kérdez le adatokat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-A rövid útmutató elvégzéséhez győződjön meg arról, hogy rendelkezik az alábbiakkal:
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- Azure SQL-adatbázis. Az alábbi rövid útmutatók segítségével hozhat létre és konfigurálhat egy adatbázist Azure SQL Databaseban:
-
-  || Önálló adatbázis | Felügyelt példány |
-  |:--- |:--- |:---|
-  | Létrehozás| [Portál](sql-database-single-database-get-started.md) | [Portál](sql-database-managed-instance-get-started.md) |
-  || [Parancssori felület](scripts/sql-database-create-and-configure-database-cli.md) | [Parancssori felület](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44) |
-  || [PowerShell](scripts/sql-database-create-and-configure-database-powershell.md) | [PowerShell](scripts/sql-database-create-configure-managed-instance-powershell.md) |
-  | Konfigurálás | [Kiszolgálói szintű IP-tűzfalszabály](sql-database-server-level-firewall-rule.md)| [Kapcsolódás virtuális gépről](sql-database-managed-instance-configure-vm.md)|
-  |||[Kapcsolódás a webhelyről](sql-database-managed-instance-configure-p2s.md)
-  |Adatok betöltése|Adventure Works betöltve|[Széles körű globális importőrök visszaállítása](sql-database-managed-instance-get-started-restore.md)
-  |||Adventure Works visszaállítása vagy importálása a [BACPAC](sql-database-import.md) -fájlból a [githubról](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works)|
-  |||
-
-  > [!IMPORTANT]
-  > A cikkben található parancsfájlok az Adventure Works-adatbázis használatára íródnak. Felügyelt példány esetén importálnia kell az Adventure Works-adatbázist egy példány-adatbázisba, vagy módosítania kell a jelen cikkben szereplő parancsfájlokat a Wide World Importálós adatbázis használatára.
+- Egy [Azure SQL Database-adatbázis](sql-database-single-database-get-started.md)
   
-- Python és az operációs rendszerhez kapcsolódó szoftverek:
-  
-  - **MacOS**: telepítse a Homebrew-t és a Pythont, telepítse az ODBC-illesztőt és a Sqlcmd, majd telepítse a Python-illesztőprogramot a SQL Serverhoz. Tekintse meg a 1,2, 1,3 és 2,1 lépéseket a [Python-alkalmazások létrehozása a macOS SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/)című témakörben. További információ: [a Microsoft ODBC-illesztőprogram telepítése Linux és MacOS](https://docs.microsoft.com/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server)rendszereken.
+- [Python](https://python.org/downloads) 3 és kapcsolódó szoftverek
 
-  - **Ubuntu**: telepítse a Pythont és az egyéb szükséges csomagokat `sudo apt-get install python python-pip gcc g++ build-essential`. Töltse le és telepítse az ODBC-illesztőt, a SQLCMD-t és a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+  # <a name="macostabmacos"></a>[macOS](#tab/macos)
 
-  - **Windows**: telepítse a Pythont, az ODBC-illesztőt és a Sqlcmd, valamint a SQL Server Python-illesztőprogramját. Útmutatásért lásd: [fejlesztési környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows).
+  A Homebrew és a Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez használja a **1,2**, **1,3**és **2,1** lépéseket a [python-alkalmazások létrehozása a MacOS rendszeren SQL Server használatával](https://www.microsoft.com/sql-server/developer-get-started/python/mac/).
+
+  További információ: [Microsoft ODBC-illesztőprogram MacOS rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+
+  # <a name="ubuntutabubuntu"></a>[Ubuntu](#tab/ubuntu)
+
+  A Python és az egyéb szükséges csomagok telepítéséhez használja a `sudo apt-get install python python-pip gcc g++ build-essential`.
+
+  Az ODBC-illesztő, a SQLCMD és a SQL Server Python-illesztőprogram telepítéséhez lásd: [környezet konfigurálása Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#linux).
+
+  További információ: [Microsoft ODBC-illesztőprogram Linux rendszeren](/sql/connect/odbc/linux-mac/installing-the-microsoft-odbc-driver-for-sql-server).
+
+  # <a name="windowstabwindows"></a>[Windows](#tab/windows)
+
+  A Python, az ODBC-illesztő és a SQLCMD, valamint a SQL Server Python-illesztőprogramjának telepítéséhez tekintse meg a [környezet konfigurálása a Pyodbc Python-fejlesztéshez](/sql/connect/python/pyodbc/step-1-configure-development-environment-for-pyodbc-python-development#windows)című témakört.
+
+  További információ: [Microsoft ODBC-illesztő](/sql/connect/odbc/microsoft-odbc-driver-for-sql-server).
+
+---
+
+> [!IMPORTANT]
+> A cikkben található parancsfájlok az **Adventure Works** -adatbázis használatára íródnak.
+
+> [!NOTE]
+> Dönthet úgy is, hogy egy Azure SQL felügyelt példányt használ.
+>
+> A létrehozásához és konfigurálásához használja az [Azure Portalt](sql-database-managed-instance-get-started.md), a [PowerShellt](scripts/sql-database-create-configure-managed-instance-powershell.md)vagy a [CLI](https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44)-t, majd a helyszíni vagy a [VM](sql-database-managed-instance-configure-vm.md) [-](sql-database-managed-instance-configure-p2s.md) kapcsolat beállítását.
+>
+> Az betöltéssel kapcsolatban lásd: [visszaállítás a BACPAC](sql-database-import.md) az [Adventure Works](https://github.com/Microsoft/sql-server-samples/tree/master/samples/databases/adventure-works) -fájllal, vagy lásd: [a Wide World](sql-database-managed-instance-get-started-restore.md)importing-adatbázis visszaállítása.
+
+A Python és az Azure SQL Database további megismeréséhez tekintse meg a [Pythonhoz készült Azure SQL Database-kódtárakat](/python/api/overview/azure/sql), a [pyodbc-tárházat](https://github.com/mkleehammer/pyodbc/wiki/)és egy [pyodbc-mintát](https://github.com/mkleehammer/pyodbc/wiki/Getting-started).
 
 ## <a name="get-sql-server-connection-information"></a>SQL Server-kapcsolatok adatainak beolvasása
 
@@ -96,7 +110,7 @@ Az Azure SQL Database-adatbázishoz való kapcsolódáshoz szükséges kapcsolat
 
 1. Győződjön meg arról, hogy a 20 legfontosabb kategória/termék sorait adja vissza, majd a parancsablakban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az első Azure SQL-adatbázis megtervezése](sql-database-design-first-database.md)
 - [Microsoft Python-illesztőprogramok a SQL Server](https://docs.microsoft.com/sql/connect/python/python-driver-for-sql-server/)

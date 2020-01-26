@@ -6,14 +6,14 @@ author: sujayt
 manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 1/8/2020
+ms.date: 1/23/2020
 ms.author: sutalasi
-ms.openlocfilehash: 9fe3b4c0b7acc9c1e980d5885043d30503c211c4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: aeab1960b065538635fdd63c43d779287f8cd9ee
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75754497"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759823"
 ---
 # <a name="about-networking-in-azure-vm-disaster-recovery"></a>Tudnivalók az Azure-beli virtuális gépek vész-helyreállításáról
 
@@ -50,76 +50,20 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolat vezérléséhez, enged
 --- | ---
 *.blob.core.windows.net | Kötelező megadni, hogy az adatok a virtuális gépről származó forrás régióban lévő cache Storage-fiókba írhatók legyenek. Ha ismeri a virtuális gépekhez tartozó összes gyorsítótár-tárolási fiókot, a *. blob.core.windows.net helyett engedélyezheti a hozzáférést az adott Storage-fiók URL-címeihez (például: cache1.blob.core.windows.net és cache2.blob.core.windows.net).
 login.microsoftonline.com | Az engedélyezéshez és a hitelesítéshez szükséges a Site Recovery szolgáltatás URL-címeihez.
-*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery IP-címet".
-*.servicebus.windows.net | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek. Ha a tűzfal proxyja támogatja az IP-címeket, használhatja a megfelelő "Site Recovery figyelési IP-címet".
+*.hypervrecoverymanager.windowsazure.com | Szükséges, hogy a Site Recovery szolgáltatás kommunikációja a virtuális gépről is megtörténjen.
+*.servicebus.windows.net | Szükséges, hogy a Site Recovery monitorozási és diagnosztikai adatok a virtuális gépről is írhatók legyenek.
 
 ## <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha IP-alapú tűzfal-proxyt használ, vagy NSG a kimenő kapcsolatok vezérlésére, akkor ezeket az IP-tartományokat engedélyezni kell.
+Ha NSG használ a kimenő kapcsolatok vezérlésére, akkor ezeket a szolgáltatási címkéket engedélyezni kell.
 
 - Minden olyan IP-címtartomány, amely a forrástartomány Storage-fiókjainak felel meg
     - Hozzon létre egy [tárolási szolgáltatás címkén](../virtual-network/security-overview.md#service-tags) ALAPULó NSG-szabályt a forrás régióhoz.
     - Engedélyezze ezeket a címeket úgy, hogy az adatok a virtuális gépről a gyorsítótárbeli Storage-fiókba legyenek írva.
 - Hozzon létre egy [Azure Active Directory (HRE) Service tag](../virtual-network/security-overview.md#service-tags) -alapú NSG-szabályt, amely lehetővé teszi a HRE-hoz tartozó összes IP-cím elérését
-    - Ha a jövőben új címeket adnak hozzá a Azure Active Directoryhoz (HRE), új NSG-szabályokat kell létrehoznia.
 - Hozzon létre egy EventsHub-alapú NSG-szabályt a célként megadott régióhoz, és engedélyezze a hozzáférést Site Recovery figyeléshez.
 - Hozzon létre egy AzureSiteRecovery-alapú NSG-szabályt, amellyel bármely régióban engedélyezheti a hozzáférést Site Recovery szolgáltatáshoz.
 - Javasoljuk, hogy hozza létre a szükséges NSG-szabályokat egy teszt NSG, és ellenőrizze, hogy nincsenek-e problémák a szabályok éles NSG való létrehozása előtt.
-
-
-Ha inkább Site Recovery IP-címtartományok használatát szeretné használni (nem ajánlott), tekintse meg az alábbi táblázatot:
-
-   **Cél** | **Site Recovery IP-cím** |  **Site Recovery figyelési IP-cím**
-   --- | --- | ---
-   Kelet-Ázsia | 52.175.17.132 | 13.94.47.61
-   Délkelet-Ázsia | 52.187.58.193 | 13.76.179.223
-   Közép-India | 52.172.187.37 | 104.211.98.185
-   Dél-India | 52.172.46.220 | 104.211.224.190
-   USA északi középső régiója | 23.96.195.247 | 168.62.249.226
-   Észak-Európa | 40.69.212.238 | 52.169.18.8
-   Nyugat-Európa | 52.166.13.64 | 40.68.93.145
-   USA keleti régiója | 13.82.88.226 | 104.45.147.24
-   USA nyugati régiója | 40.83.179.48 | 104.40.26.199
-   USA déli középső régiója | 13.84.148.14 | 104.210.146.250
-   USA középső régiója | 40.69.144.231 | 52.165.34.144
-   USA 2. keleti régiója | 52.184.158.163 | 40.79.44.59
-   Kelet-Japán | 52.185.150.140 | 138.91.1.105
-   Nyugat-Japán | 52.175.146.69 | 138.91.17.38
-   Dél-Brazília | 191.234.185.172 | 23.97.97.36
-   Ausztrália keleti régiója | 104.210.113.114 | 191.239.64.144
-   Délkelet-Ausztrália | 13.70.159.158 | 191.239.160.45
-   Közép-Kanada | 52.228.36.192 | 40.85.226.62
-   Kelet-Kanada | 52.229.125.98 | 40.86.225.142
-   USA nyugati középső régiója | 52.161.20.168 | 13.78.149.209
-   USA 2. nyugati régiója | 52.183.45.166 | 13.66.228.204
-   Egyesült Királyság nyugati régiója | 51.141.3.203 | 51.141.14.113
-   Egyesült Királyság déli régiója | 51.140.43.158 | 51.140.189.52
-   Egyesült Királyság 2. déli régiója | 13.87.37.4| 13.87.34.139
-   Egyesült Királyság északi régiója | 51.142.209.167 | 13.87.102.68
-   Korea középső régiója | 52.231.28.253 | 52.231.32.85
-   Dél-Korea | 52.231.198.185 | 52.231.200.144
-   Közép-Franciaország | 52.143.138.106 | 52.143.136.55
-   Dél-Franciaország | 52.136.139.227 |52.136.136.62
-   Közép-Ausztrália| 20.36.34.70 | 20.36.46.142
-   Ausztrália 2. középső régiója| 20.36.69.62 | 20.36.74.130
-   Dél-Afrika nyugati régiója | 102.133.72.51 | 102.133.26.128
-   Dél-Afrika északi régiója | 102.133.160.44 | 102.133.154.128
-   US Gov Virginia | 52.227.178.114 | 23.97.0.197
-   US Gov Iowa | 13.72.184.23 | 23.97.16.186
-   US Gov Arizona | 52.244.205.45 | 52.244.48.85
-   US Gov Texas | 52.238.119.218 | 52.238.116.60
-   US DoD – keleti régió | 52.181.164.103 | 52.181.162.129
-   US DoD – középső régió | 52.182.95.237 | 52.182.90.133
-   Észak-Kína | 40.125.202.254 | 42.159.4.151
-   Kína 2. északi régiója | 40.73.35.193 | 40.73.33.230
-   Kelet-Kína | 42.159.205.45 | 42.159.132.40
-   Kína 2. keleti régiója | 40.73.118.52| 40.73.100.125
-   Észak-Németország| 51.116.208.58| 51.116.58.128
-   Középnyugat-Németország | 51.116.156.176 | 51.116.154.192
-   Nyugat-Svájc | 51.107.231.223| 51.107.154.128
-   Észak-Svájc | 51.107.68.31| 51.107.58.128
-   Norvégia keleti régiója | 51.120.100.64| 51.120.98.128
-   Norvégia nyugati régiója | 51.120.220.65| 51.120.218.160
 
 ## <a name="example-nsg-configuration"></a>Példa NSG-konfigurációra
 

@@ -1,22 +1,14 @@
 ---
 title: Korlátok és határok – QnA Maker
-titleSuffix: Azure Cognitive Services
 description: A QnA Maker meta-korlátozásokkal rendelkezik a Tudásbázis és a szolgáltatás részeihez. A teszteléshez és közzétételhez fontos, hogy megőrizze a tudásbázist a korlátokon belül.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
 ms.topic: article
-ms.date: 12/10/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: ddf2cb5730f123038c5dbde7ab07b4022f021ced
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/23/2020
+ms.openlocfilehash: 32e12d9e983795d2fb403a5b6bc304289ece92c2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381120"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760232"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -33,6 +25,15 @@ A tudásbázisok maximális száma az [Azure Cognitive Search szintű korlátoko
  Ha például a réteg 15 engedélyezett indextel rendelkezik, a közzétett Tudásbázisban 14 tudásbázist (1 indexet) tehet közzé. A rendszer a tizenötödik indexet (`testkb`) használja a szerzői és tesztelési célú összes tudásbázishoz.
 
 ## <a name="extraction-limits"></a>Kinyerési korlátok
+
+### <a name="file-naming-constraints"></a>Fájl elnevezési korlátozásai
+
+A fájlnevek nem tartalmazhatják a következő karaktereket:
+
+|Ne használja a karaktert|
+|--|
+|Szimpla idézőjelek `'`|
+|Idézőjelek `"`|
 
 ### <a name="maximum-file-size"></a>Maximális fájlméret
 

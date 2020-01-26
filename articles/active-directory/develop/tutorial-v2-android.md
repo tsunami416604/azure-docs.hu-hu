@@ -15,12 +15,12 @@ ms.date: 11/26/2019
 ms.author: hahamil
 ms.reviwer: brandwe
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 81a6d61580eb97e5793e05faf204f1acba19c1f5
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d851e23e8f6915c7d52565f18eff4a73bd96c9c0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701280"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758835"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-from-an-android-application"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph meghívása Android-alkalmazásból 
 
@@ -85,7 +85,7 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
 6. Az **Android-alkalmazás konfigurálása** lap **aláírás-kivonatolás** szakaszában kattintson a **fejlesztési aláírás kivonatának létrehozása** lehetőségre. és másolja a Főeszköz parancsot a platformhoz való használatra.
 
    > [!Note]
-   > A. exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt.
+   > A. exe a Java Development Kit (JDK) részeként van telepítve. Az OpenSSL eszközt is telepítenie kell, hogy végrehajtsa a parancssori eszközt. További információkért tekintse [meg az Android dokumentációját a kulcs létrehozásához](https://developer.android.com/studio/publish/app-signing#generate-key) . 
 
 7. Adja meg a Főeszköz által generált **aláírási kivonatot** .
 8. Kattintson a `Configure` elemre, és mentse az Android- **konfiguráció** lapon megjelenő **MSAL-konfigurációt** , hogy később is megadhatja azt az alkalmazás konfigurálásakor.  Kattintson a **Done** (Kész) gombra.
@@ -155,13 +155,16 @@ Ha még nem rendelkezik Android-alkalmazással, kövesse az alábbi lépéseket 
         jcenter()
     }  
     dependencies{
-        implementation 'com.microsoft.identity.client:msal:1.0.+'
+        implementation 'com.microsoft.identity.client:msal:1.2.+'
         implementation 'com.microsoft.graph:microsoft-graph:1.5.+'
+    }
+    packagingOptions{
+        exclude("META-INF/jersey-module-version") 
     }
     ```
     [További információ a Microsoft Graph SDK-ról](https://github.com/microsoftgraph/msgraph-sdk-java/)
 
-### <a name="required-imports"></a>A szükséges importálások 
+### <a name="required-imports"></a>Szükséges importálások 
 
 Adja hozzá a következőt az **app** > **src** > **fő**> **Java** > **com. example (yourapp)**  > **MainActivity. Java** 
 
@@ -190,7 +193,7 @@ import com.microsoft.identity.client.exception.*;
 ## <a name="instantiate-publicclientapplication"></a>PublicClientApplication példányának példányai
 #### <a name="initialize-variables"></a>Változók inicializálása 
 ```java
-private final static String[] SCOPES = {"User.Read"};
+private final static String[] SCOPES = {"File.Read"};
 /* Azure AD v2 Configs */
 final static String AUTHORITY = "https://login.microsoftonline.com/common";
 private ISingleAccountPublicClientApplication mSingleAccountApp;

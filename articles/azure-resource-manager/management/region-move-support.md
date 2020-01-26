@@ -4,14 +4,14 @@ description: Az Azure-régiók között áthelyezhető Azure-erőforrástípusok
 author: rayne-wiselman
 ms.service: azure-resource-manager
 ms.topic: reference
-ms.date: 11/21/2019
+ms.date: 01/20/2020
 ms.author: raynew
-ms.openlocfilehash: 60b8708458e081d66514e092edc9ef9af7c33494
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9bc7dc66ccf3049ac878f7871c816e5ade1afde5
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75485246"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760708"
 ---
 # <a name="support-for-moving-azure-resources-across-regions"></a>Azure-erőforrások régiók közötti áthelyezésének támogatása
 
@@ -186,7 +186,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | szolgáltatás | Nem |
+> | szolgáltatás |  Igen | 
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
@@ -439,7 +439,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | hubok | Nem |  
+> | Hubs | Nem |  
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
@@ -613,7 +613,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartomány | Nem | 
+> | tartományok | Nem | 
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
@@ -627,8 +627,8 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | tartomány | Nem |  
-> | témakör | Nem | 
+> | tartományok | Nem |  
+> | témakörök | Nem | 
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
 
@@ -1001,7 +1001,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | boltívek | Igen (a Backup-tárolók esetében gondolok? | 
+> | boltívek | Nem. A tár [letiltása és a site Recovery újbóli létrehozása](https://docs.microsoft.com/azure/site-recovery/move-vaults-across-regions)  | 
 
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
@@ -1030,7 +1030,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | folyamatok |  Nem |  
+> | flow |  Nem |  
 > | feladatgyűjtemények |  Nem | 
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
@@ -1142,14 +1142,14 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | storageaccounts | igen?? | 
+> | storageaccounts | Igen | 
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Régió áthelyezése | 
 > | ------------- | ----------- |
-> | Gyorsítótárak | Nem | 
+> | gyorsítótárak | Nem | 
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
@@ -1260,7 +1260,7 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > | customapis |  Nem | 
 > | hostingenvironments | Nem | 
 > | kiszolgálófarmok |  Nem |  
-> | webhelyek |  Nem | 
+> | helyek |  Nem | 
 > | helyek/premieraddons |  Nem |  
 > | helyek/bővítőhelyek |  Nem |  
 

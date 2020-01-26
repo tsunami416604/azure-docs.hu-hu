@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/28/2019
+ms.date: 1/24/2020
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: b3d5aa74705d858349eaca543a7fd86e315a63e6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 15293f6cf5ceafda2dd5727ad85804b432bae54a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702997"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758750"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai 
 
@@ -33,14 +33,27 @@ A hitelesítési rendszer folyamatosan módosítja és hozzáadja a szolgáltat�
 - A legújabb funkciók
 - Ismert problémák
 - Protokoll módosításai
-- Elavult funkció
+- Elavult funkciók
 
 > [!TIP] 
 > Ez az oldal rendszeresen frissül, ezért gyakran látogatnak. Hacsak másként nincs jelezve, ezek a módosítások csak az újonnan regisztrált alkalmazások esetében kerülnek érvénybe.  
 
 ## <a name="upcoming-changes"></a>Közelgő változások
 
-Szeptember 2019: további kényszerítés a szemantika utáni URL-elemzési szabályok alapján – az ismétlődő paraméterek hibát jeleznek, és az [Anyagjegyzék](https://www.w3.org/International/questions/qa-byte-order-mark) figyelmen kívül lesz hagyva.
+Jelenleg nincs ütemezve.  Tekintse meg az alábbi, a vagy az éles környezetben futó módosításokat. 
+
+## <a name="february-2020"></a>Február 2020: 
+
+### <a name="empty-fragments-will-be-appended-to-every-http-redirect-from-the-login-endpoint"></a>A rendszer az összes HTTP-átirányításhoz hozzáfűzi az üres töredékeket a bejelentkezési végpontról. 
+
+Hatálybalépés **dátuma**: február 8., 2020
+
+Érintett **végpontok**: v 1.0 és v 2.0
+
+Érintett **protokoll**: response_type = lekérdezést használó OAuth-és OIDC-folyamatok, amelyek bizonyos esetekben az [engedélyezési kód folyamatát](v2-oauth2-auth-code-flow.md) , valamint az [implicit folyamatot](v2-oauth2-implicit-grant-flow.md)fedik le. 
+
+Ha a login.microsoftonline.com egy alkalmazáshoz HTTP-átirányítás útján küldenek hitelesítési választ, a szolgáltatás hozzáfűz egy üres töredéket a válasz URL-címéhez.  Ezzel megakadályozhatja, hogy a böngésző kitörölje a hitelesítési kérelemben szereplő meglévő töredékeket.  Ehhez a viselkedéshez egyetlen alkalmazásnak sincs függősége. 
+
 
 ## <a name="august-2019"></a>2019. augusztus
 

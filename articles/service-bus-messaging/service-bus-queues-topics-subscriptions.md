@@ -1,6 +1,6 @@
 ---
 title: Üzenetkezelés – várólisták, témakörök és előfizetések Azure Service Bus
-description: Service Bus üzenetkezelési entitások áttekintése.
+description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési entitásokról (Üzenetsor, témakörök és előfizetések).
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -10,12 +10,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 01/16/2020
 ms.author: aschhab
-ms.openlocfilehash: e5ef189f5ce7b0cb53e5070fcc88630c72239503
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 3dc78a22e0e596d812d90fec63475a0b21e9164f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76260723"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759584"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
 

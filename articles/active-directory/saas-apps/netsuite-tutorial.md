@@ -12,15 +12,15 @@ ms.subservice: saas-app-tutorial
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.topic: tutorial
-ms.date: 01/16/2020
+ms.date: 01/22/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: a9be353e6a030708ea0b9939689d8669506d3b80
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 6a920e58f1ffd4c3e3e9769bf6346100a8677b90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289033"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760052"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-sso-with-netsuite"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés (SSO) integrálása a NetSuite-nal
 
@@ -98,8 +98,12 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
     | `https://<Account ID>.na1.sandbox.NetSuite.com/saml2/acs`|
     | `https://<Account ID>.na2.sandbox.NetSuite.com/saml2/acs`|
 
-    > [!NOTE]
-    > Az előző URL-címek értékei nem valósak. Frissítse őket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [NetSuite ügyfél-támogatási csapathoz](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
+    * A (z) **<`Account ID`>** értéket a NetSuite konfigurációs szakaszban találja, amelyet később az oktatóanyag a NetSuite-konfiguráció szakaszának 8. lépésében ismertet. Itt megtalálja a pontos tartományt (például system.na0.netsuite.com ebben az esetben).
+
+        ![Egyszeri bejelentkezés konfigurálása](./media/NetSuite-tutorial/domain-value.png)
+
+        > [!NOTE]
+        > Az előző URL-címek értékei nem valósak. Frissítse őket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a [NetSuite ügyfél-támogatási csapathoz](http://www.netsuite.com/portal/services/support-services/suitesupport.shtml). A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának formátumait is megtekintheti.
 
 1. A NetSuite-alkalmazás meghatározott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -107,7 +111,7 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, tegy
 
 1. A fentieken kívül a NetSuite alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | account  | `account id` |
 
@@ -194,7 +198,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     b. Az **SAMLV2-szolgáltató metaadatainak**területén válassza a **identitásszolgáltató-metaadatok feltöltése**lehetőséget, majd a **Tallózás** gombra kattintva töltse fel a letöltött metaadat-fájlt a Azure Portal.
 
-    c. Válassza a **Küldés** lehetőséget.
+    c. Válassza a **Küldés**lehetőséget.
 
 9. A NetSuite felső navigációs sávban válassza a **beállítás**lehetőséget, majd válassza a **vállalati** > **vállalati adatok**elemet.
 
@@ -204,7 +208,7 @@ Ebben a szakaszban engedélyezheti a B. Simon felhasználó számára az Azure e
 
     b. A **Vállalati információk** ablaktáblán, a jobb oldali oszlopban másolja ki a **fiókazonosító** értékét.
 
-    c. Illessze be a NetSuite-fiókból másolt **fiók azonosítóját** az Azure ad **attribútum érték** mezőjébe. 
+    c. Illessze be a NetSuite-fiókból másolt **fiók azonosítóját** az Azure ad **attribútum érték** mezőjébe.
 
 10. Ahhoz, hogy a felhasználók egyszeri bejelentkezést tudjanak végezni a NetSuite-ba, először hozzá kell rendelni a megfelelő engedélyeket a NetSuite-ban. Az engedélyek hozzárendeléséhez tegye a következőket:
 

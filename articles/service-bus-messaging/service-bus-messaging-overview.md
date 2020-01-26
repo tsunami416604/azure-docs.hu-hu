@@ -1,6 +1,6 @@
 ---
 title: Az Azure Service Bus-üzenetkezelés áttekintése | Microsoft Docs
-description: A Service Bus-üzenetkezelés ismertetése
+description: Ez a cikk átfogó áttekintést nyújt a Azure Service Busről, amely egy teljes körűen felügyelt Enterprise Integration Message Broker.
 services: service-bus-messaging
 documentationcenter: ''
 author: axisc
@@ -11,12 +11,12 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.custom: mvc
 ms.author: aschhab
-ms.openlocfilehash: 12d4bada4f84098f1559ea7b59fbbd35e0801347
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 49a54491c36ef29209d1a53094cc5baf57057557
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561600"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759380"
 ---
 # <a name="what-is-azure-service-bus"></a>Mi az Azure Service Bus?
 

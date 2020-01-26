@@ -8,16 +8,16 @@ ms.date: 01/21/2020
 ms.topic: conceptual
 ms.service: azure-portal
 manager: mtillman
-ms.openlocfilehash: 7a443f24bfae8f3433107aa441d223b3639232da
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: ead9dab61e0cb60505aed9db43c61eb73a0e22a9
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722732"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760198"
 ---
 # <a name="recover-a-deleted-dashboard-in-the-azure-portal"></a>Törölt irányítópult helyreállítása a Azure Portal
 
-Ha töröl egy _közzétett_ irányítópultot a Azure Portal, akkor a törlés 90 napon belül helyreállíthatja az irányítópultot. Ha az irányítópult nincs közzétéve, nem állíthatja helyre, és újra kell építenie. Az irányítópultok közzétételével kapcsolatos további információkért lásd: [irányítópult közzététele](azure-portal-dashboard-share-access.md#publish-dashboard). A közzétett irányítópult helyreállításához kövesse az alábbi lépéseket:
+Ha töröl egy _közzétett_ irányítópultot a Azure Portal, akkor a törlést követő 14 napon belül helyreállíthatja az irányítópultot. Ha az irányítópult nincs közzétéve, nem állíthatja helyre, és újra kell építenie. Az irányítópultok közzétételével kapcsolatos további információkért lásd: [irányítópult közzététele](azure-portal-dashboard-share-access.md#publish-dashboard). A közzétett irányítópult helyreállításához kövesse az alábbi lépéseket:
 
 1. A Azure Portal menüben válassza az **erőforráscsoportok**elemet, majd válassza ki azt az erőforráscsoportot, amelyben az irányítópultot közzétette (alapértelmezés szerint az **irányítópultok**neve).
 

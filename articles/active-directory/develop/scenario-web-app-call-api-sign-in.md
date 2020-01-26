@@ -14,28 +14,28 @@ ms.workload: identity
 ms.date: 09/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: a77bb59afa753fa9d1655e787d4f7a18715ed2ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: ea18538662dc63876a50f52e9e6a8b3fffb3b35a
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701586"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76758870"
 ---
-# <a name="remove-accounts-from-the-cache-on-global-sign-out"></a>Fiókok eltávolítása a gyorsítótárból a globális kijelentkezéskor
+# <a name="a-web-app-that-calls-web-apis-remove-accounts-from-the-token-cache-on-global-sign-out"></a>Webes API-kat meghívó webalkalmazás: fiókok eltávolítása a jogkivonat-gyorsítótárból a globális kijelentkezéskor
 
-Már tudja, hogyan adhat hozzá bejelentkezést a webalkalmazáshoz. Megtudhatja, hogy a [webalkalmazásban, amely bejelentkezik a felhasználóknak – bejelentkezés hozzáadása](scenario-web-app-sign-user-sign-in.md).
+Megtanulta, hogyan adhat hozzá bejelentkezést a webalkalmazáshoz a webalkalmazásban, amely bejelentkezik [a felhasználókba: bejelentkezés és](scenario-web-app-sign-user-sign-in.md)kijelentkezés.
 
-Mi a különbség itt, hogy amikor a felhasználó kijelentkezett, ebből az alkalmazásból vagy bármely alkalmazásból, el szeretné távolítani a jogkivonat-gyorsítótárból a felhasználóhoz társított jogkivonatokat.
+A webes API-kat meghívó webalkalmazások esetében a kijelentkezés nem egyezik. Ha a felhasználó kijelentkezik az alkalmazásból, vagy bármely alkalmazásból, el kell távolítania az adott felhasználóhoz társított jogkivonatokat a jogkivonat-gyorsítótárból.
 
-## <a name="intercepting-the-callback-after-sign-out---single-sign-out"></a>A visszahívás elfogása a kijelentkezés után – egyszeri kijelentkezés
+## <a name="intercept-the-callback-after-single-sign-out"></a>Visszahívás elfogása az egyszeri kijelentkezés után
 
-Az alkalmazás elfogja a `logout` eseményt, így például törli a kijelentkezett fiókhoz társított jogkivonat-gyorsítótár bejegyzését. A webalkalmazás a gyorsítótárban tárolja a felhasználó hozzáférési jogkivonatait. A `logout` visszahívás utáni elfogása lehetővé teszi, hogy a webalkalmazás eltávolítsa a felhasználót a jogkivonat-gyorsítótárból.
+A kijelentkezett fiókhoz társított jogkivonat-gyorsítótár-bejegyzés törléséhez az alkalmazás a következő `logout` eseményt fogja feltartóztatni. A Web Apps tárolja a hozzáférési jogkivonatokat a jogkivonat-gyorsítótárban lévő egyes felhasználók számára. Az `logout` visszahívás utáni elfogásával a webalkalmazás el tudja távolítani a felhasználót a gyorsítótárból.
 
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
-Ez `AddMsal()` a mechanizmus a [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157) metódusban látható.
+ASP.NET Core esetében az elfogó mechanizmus a [WebAppServiceCollectionExtensions. cs # L151-L157](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/WebAppServiceCollectionExtensions.cs#L151-L157)`AddMsal()` metódusában látható.
 
-Az alkalmazáshoz regisztrált **kijelentkezési URL-cím** lehetővé teszi az egyszeri kijelentkezés megvalósítását. A Microsoft Identity platform `logout` végpontja hívja meg az alkalmazásban regisztrált **kijelentkezési URL-címet** . Ez a hívás akkor fordul elő, ha a kijelentkezést a webalkalmazásból vagy egy másik webalkalmazásból vagy a böngészőből kezdeményezték. További információ: [egyszeri kijelentkezés](v2-protocols-oidc.md#single-sign-out).
+Az alkalmazáshoz korábban regisztrált kijelentkezési URL-cím lehetővé teszi az egyszeri kijelentkezés megvalósítását. A Microsoft Identity platform `logout` végpontja meghívja a kijelentkezési URL-címet. Ez a hívás akkor fordul elő, ha a kijelentkezést a webalkalmazásból vagy egy másik webalkalmazásból vagy a böngészőből indította el. További információ: [egyszeri kijelentkezés](v2-protocols-oidc.md#single-sign-out).
 
 ```csharp
 public static class WebAppServiceCollectionExtensions
@@ -48,10 +48,10 @@ public static class WebAppServiceCollectionExtensions
   {
    // Code omitted here
 
-   // Handling the sign-out: removing the account from MSAL.NET cache
+   // Handling the sign-out: Remove the account from MSAL.NET cache.
    options.Events.OnRedirectToIdentityProviderForSignOut = async context =>
    {
-    // Remove the account from MSAL.NET token cache
+    // Remove the account from MSAL.NET token cache.
     var tokenAcquisition = context.HttpContext.RequestServices.GetRequiredService<ITokenAcquisition>();
     await tokenAcquisition.RemoveAccountAsync(context).ConfigureAwait(false);
    };
@@ -61,19 +61,19 @@ public static class WebAppServiceCollectionExtensions
 }
 ```
 
-A RemoveAccountAsync kódja elérhető a [Microsoft. Identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288).
+A `RemoveAccountAsync` kódja a [Microsoft. Identity. Web/TokenAcquisition. cs # L264-L288](https://github.com/Azure-Samples/active-directory-aspnetcore-webapp-openidconnect-v2/blob/db7f74fd7e65bab9d21092ac1b98a00803e5ceb2/Microsoft.Identity.Web/TokenAcquisition.cs#L264-L288)címen érhető el.
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
-A ASP.NET minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor
+A ASP.NET minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor.
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
-A Java-minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor
+A Java-minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor.
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
-A Python-minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor
+A Python-minta nem távolítja el a fiókokat a gyorsítótárból a globális kijelentkezéskor.
 
 ---
 
@@ -82,21 +82,21 @@ A Python-minta nem távolítja el a fiókokat a gyorsítótárból a globális k
 # <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 > [!div class="nextstepaction"]
-> [Token beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
+> [Jogkivonat beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnetcore)
 
 # <a name="aspnettabaspnet"></a>[ASP.NET](#tab/aspnet)
 
 > [!div class="nextstepaction"]
-> [Token beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
+> [Jogkivonat beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=aspnet)
 
 # <a name="javatabjava"></a>[Java](#tab/java)
 
 > [!div class="nextstepaction"]
-> [Token beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
+> [Jogkivonat beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=java)
 
 # <a name="pythontabpython"></a>[Python](#tab/python)
 
 > [!div class="nextstepaction"]
-> [Token beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
+> [Jogkivonat beszerzése a webalkalmazáshoz](https://docs.microsoft.com/azure/active-directory/develop/scenario-web-app-call-api-acquire-token?tabs=python)
 
 ---

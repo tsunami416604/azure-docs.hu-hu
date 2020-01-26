@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
-ms.openlocfilehash: 8fab85b6f1d876cc65ceb44acd60b53c379e59e8
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: c6e74e7992326d2a4b8fe24510742422b005c2e2
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121947"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756160"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
 Az Azure lehetővé teszi alkalmazások és virtuális gépek (VM-EK) futtatását megosztott fizikai infrastruktúrán. Az alkalmazások felhőalapú környezetben való futtatásának egyik legfőbb gazdasági indítéka az, hogy a megosztott erőforrások költségeit több ügyfél között is el tudja osztani. A több-bérlős megoldás a hatékonyságot növeli a különböző ügyfelek számára alacsony költségek mellett. Sajnos a fizikai kiszolgálók és más infrastruktúra-erőforrások megosztásának kockázata is fennáll, hogy az érzékeny alkalmazásokat és virtuális gépeket tetszőleges és potenciálisan rosszindulatú felhasználóhoz lehessen futtatni.
@@ -73,7 +73,7 @@ Az Azure RBAC három alapvető szerepkörrel rendelkezik, amelyek minden erőfor
 
 - Az **olvasó** megtekintheti a meglévő Azure-erőforrásokat.
 
-![Azure szerepköralapú hozzáférés-vezérlés](./media/isolation-choices/azure-isolation-fig3.png)
+![Azure szerepköralapú Access Control](./media/isolation-choices/azure-isolation-fig3.png)
 
 Az Azure további RBAC szerepkörei lehetővé teszik bizonyos Azure-erőforrások kezelését. A virtuális gépi közreműködő szerepkör például lehetővé teszi a felhasználó számára a virtuális gépek létrehozását és felügyeletét. Nem biztosít számukra hozzáférést az Azure Virtual Network vagy az alhálózathoz, amelyhez a virtuális gép csatlakozik.
 
@@ -111,6 +111,9 @@ A Microsoft Azure különböző felhőalapú számítástechnikai szolgáltatás
 ### <a name="isolated-virtual-machine-sizes"></a>Elkülönített virtuálisgép-méretek
 
 [!INCLUDE [virtual-machines-common-isolation](../../../includes/virtual-machines-common-isolation.md)]
+
+### <a name="dedicated-hosts"></a>Dedikált gazdagépek
+Az előző szakaszban ismertetett elkülönített gazdagépeken kívül az Azure dedikált gazdagépeket is biztosít. A dedikált gazdagépek az Azure-ban olyan szolgáltatás, amely egy vagy több virtuális gép üzemeltetésére képes fizikai kiszolgálókat biztosít, és amelyek egyetlen Azure-előfizetéshez vannak hozzárendelve. A dedikált gazdagépek hardveres elkülönítést biztosítanak a fizikai kiszolgáló szintjén. Más virtuális gépek nem lesznek elhelyezve a gazdagépeken. A dedikált gazdagépek ugyanabban az adatközpontban vannak üzembe helyezve, és ugyanazon a hálózaton és a mögöttes tárolási infrastruktúrán osztoznak, mint más, nem elkülönített gazdagépek. További információ: az [Azure dedikált gazdagépek](https://docs.microsoft.com/azure/virtual-machines/windows/dedicated-hosts)részletes áttekintése.
 
 ### <a name="hyper-v--root-os-isolation-between-root-vm--guest-vms"></a>Hyper-V & root VM & vendég virtuális gépek között
 Az Azure számítási platformja a gép virtualizálása alapján történik – ami azt jelenti, hogy minden ügyfél kódja egy Hyper-V virtuális gépen fut. Minden egyes Azure-csomóponton (vagy hálózati végponton) található egy olyan hypervisor, amely közvetlenül a hardveren fut, és a csomópontot egy változó számú vendég Virtual Machines (VM) értékre osztja.
@@ -161,10 +164,10 @@ A szabályok két kategóriába sorolhatók:
 
 -   **Szerepkör-konfigurációs fájl:** Ez határozza meg a beérkező Access Control listákat (ACL-eket) a bérlő szolgáltatási modellje alapján.
 
-### <a name="vlan-isolation"></a>Virtuális helyi hálózati elkülönítés
+### <a name="vlan-isolation"></a>VLAN-elkülönítés
 Az egyes fürtökön három VLAN van:
 
-![Virtuális helyi hálózati elkülönítés](./media/isolation-choices/azure-isolation-fig8.jpg)
+![VLAN-elkülönítés](./media/isolation-choices/azure-isolation-fig8.jpg)
 
 
 -   A fő VLAN – a nem megbízható ügyfél-csomópontok közötti kapcsolat
@@ -196,7 +199,7 @@ Az IP-tárolási adatokat olyan hálózati mechanizmussal lehet védeni a jogosu
 
 ### <a name="encryption"></a>Titkosítás
 Az Azure a következő titkosítási típusokat biztosítja az adatvédelem érdekében:
--   Titkosítás az átvitel során
+-   Titkosítás átvitel közben
 
 -   Titkosítás inaktív állapotban
 

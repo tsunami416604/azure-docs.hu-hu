@@ -9,12 +9,12 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/07/2020
 tags: connectors
-ms.openlocfilehash: ebedb68f8826642437f53e5c5fa8cd0843e7c20e
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: dccb715c974037b4e3080f3e51576feae34c03df
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75665840"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76757968"
 ---
 # <a name="manage-ibm-informix-database-resources-by-using-azure-logic-apps"></a>IBM Informix-adatbázis-erőforrások kezelése Azure Logic Apps használatával
 
@@ -83,7 +83,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
    | Kapcsolat neve | `name` | Igen | `informix-demo-connection` | Az Informix-adatbázishoz való kapcsolódáshoz használandó név |
    | Kiszolgáló | `server` | Igen | – Felhő: `informixdemo.cloudapp.net:9089` <br>-Helyszíni: `informixdemo:9089` | Az IPv4-vagy IPv6-formátumú TCP/IP-cím vagy alias, amelyet egy kettőspont és egy TCP/IP-portszám követ |
    | Adatbázis | `database` | Igen | `nwind` | A DRDA-kapcsolatok adatbázisának neve (RDBNAM) vagy az Informix-adatbázis neve (dbname). Az Informix 128 bájtos karakterláncot fogad el. |
-   | Hitelesítés | `authentication` | Csak helyszíni | **Alapszintű** vagy **Windows** (Kerberos) | Az Informix-adatbázis által igényelt hitelesítési típus. Ez a tulajdonság csak akkor jelenik meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
+   | Authentication | `authentication` | Csak helyszíni | **Alapszintű** vagy **Windows** (Kerberos) | Az Informix-adatbázis által igényelt hitelesítési típus. Ez a tulajdonság csak akkor jelenik meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
    | Felhasználónév | `username` | Nem | <*adatbázis – felhasználónév*> | Az adatbázis felhasználóneve |
    | Jelszó | `password` | Nem | <*adatbázis – jelszó*> | Az adatbázis jelszava |
    | Átjáró | `gateway` | Csak helyszíni | -<*Azure-előfizetés*> <br>-<*Azure-helyszíni-adatátjáró-erőforrás*> | Az Azure-előfizetés és az Azure-Erőforrás neve a Azure Portalban létrehozott helyszíni adatátjáróhoz. Az **átjáró** tulajdonság és az alárendelt tulajdonságok csak akkor jelennek meg, ha **a csatlakozás helyszíni adatátjárón keresztül**lehetőséget választja. |
@@ -117,7 +117,7 @@ Ebből a témakörből megtudhatja, hogyan használhatja az összekötőt egy lo
 
 1. A bemenetek megtekintéséhez a **bemenetek hivatkozás**alatt válassza ki az URL-hivatkozást. A kimenetek megtekintéséhez a **kimenetek hivatkozás** hivatkozása alatt válassza ki az URL-hivatkozást. Íme néhány példa a kimenetekre:
 
-   * A **táblázatok beolvasása** a táblák listáját jeleníti meg:
+   * **Get_tables** a táblák listáját jeleníti meg:
 
      ![Kimenetek a "táblák beolvasása" műveletből](./media/connectors-create-api-informix/InformixconnectorGetTablesLogicAppRunOutputs.png)
 

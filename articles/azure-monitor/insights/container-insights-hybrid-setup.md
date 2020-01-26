@@ -2,13 +2,13 @@
 title: Hibrid Kubernetes-fürtök konfigurálása a Azure Monitor for containers szolgáltatásban | Microsoft Docs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható Azure Monitor a tárolók számára Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök figyelésére.
 ms.topic: conceptual
-ms.date: 12/04/2019
-ms.openlocfilehash: d6218550f4b5a3a59b4addc69b19ff11e282d45a
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.date: 01/24/2020
+ms.openlocfilehash: 7796cc7300f34a7a412495754c083b112ba05041
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75977739"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759892"
 ---
 # <a name="configure-hybrid-kubernetes-clusters-with-azure-monitor-for-containers"></a>Hibrid Kubernetes-fürtök konfigurálása Azure Monitor tárolók számára
 
@@ -39,7 +39,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik a következőkkel
     |*.blob.core.windows.net |443-es port |  
     |*. dc.services.visualstudio.com |443-es port |
 
-* A tároló ügynöknek `cAdvisor port: 10255` kell megnyitnia a fürt összes csomópontján a teljesítmény-metrikák gyűjtéséhez.
+* A tároló ügynök a Kubelet `cAdvisor secure port: 10250` vagy `unsecure port :10255` megnyitását igényli a fürt összes csomópontján a teljesítmény-metrikák gyűjtéséhez. Javasoljuk, hogy konfigurálja `secure port: 10250` a Kubelet cAdvisor, ha még nincs konfigurálva.
 
 * A tároló ügynöknek a következő környezeti változókat kell megadnia a tárolón ahhoz, hogy kommunikálni tudjon a fürtön belüli Kubernetes API szolgáltatással a leltári adatok összegyűjtéséhez – `KUBERNETES_SERVICE_HOST` és `KUBERNETES_PORT_443_TCP_PORT`.
 
@@ -290,12 +290,12 @@ Ha a hibrid Kubernetes-fürt figyelésének engedélyezésére tett kísérlet s
 * A OmsAgent állapotfigyelő szolgáltatás fut
 * A tároló ügynökön konfigurált Log Analytics munkaterület azonosítója és kulcsa megegyezik azzal a munkaterülettel, amelyhez az Insight konfigurálva van.
 * Ellenőrizze, hogy az összes linuxos feldolgozó csomópont rendelkezik-e `kubernetes.io/role=agent` címkével az RS Pod-hoz. Ha nem létezik, adja hozzá.
-* A `cAdvisor port: 10255` ellenőrzése a fürt összes csomópontján megnyitható.
+* Ellenőrizze, `cAdvisor secure port:10250` vagy `unsecure port: 10255` meg van-e nyitva a fürt összes csomópontján.
 
 Azure PowerShell végrehajtásához használja a következő parancsokat a parancsfájlt tartalmazó mappában:
 
 ```powershell
-.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile>
+.\TroubleshootError_nonAzureK8s.ps1 - azureLogAnalyticsWorkspaceResourceId </subscriptions/<subscriptionId>/resourceGroups/<resourcegroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName> -kubeConfig <kubeConfigFile> -clusterContextInKubeconfig <clusterContext>
 ```
 
 ## <a name="next-steps"></a>Következő lépések

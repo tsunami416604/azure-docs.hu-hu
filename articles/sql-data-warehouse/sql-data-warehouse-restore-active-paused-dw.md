@@ -11,12 +11,12 @@ ms.date: 08/29/2018
 ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: a73658510111df44c522d88ed5eceb7dcfa80d0d
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: d0bcf9ca6373984989d24efd2af4ffbbb19c5548
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685532"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759686"
 ---
 # <a name="restore-an-existing-azure-sql-data-warehouse"></a>Meglévő Azure SQL Data Warehouse visszaállítása
 
@@ -24,16 +24,16 @@ Ebből a cikkből megtudhatja, hogyan állíthatja vissza egy meglévő SQL Data
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése][Request a DTU quota change].
+**Ellenőrizze a DTU kapacitását.** Mindegyik SQL Data Warehouse egy SQL-kiszolgáló (például myserver.database.windows.net) üzemelteti, amely rendelkezik alapértelmezett DTU-kvótával. Ellenőrizze, hogy az SQL-kiszolgáló rendelkezik-e elegendő fennmaradó DTU-kvótával az adatbázis visszaállításához. A szükséges DTU kiszámításához, illetve további DTU igényléséhez lásd: [DTU-kvóta megváltoztatásának kérése](sql-data-warehouse-get-started-create-support-ticket.md).
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
-1. Győződjön meg arról, hogy a [Azure PowerShell telepítését][Install Azure PowerShell]végzi.
-2. Rendelkeznie kell egy meglévő visszaállítási ponttal, amelyet vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az új felhasználó által definiált visszaállítási pont létrehozását ismertető oktatóanyagot][the tutorial to create a new user-defined restore point].
+1. Győződjön meg arról, hogy a [Azure PowerShell telepítését](https://docs.microsoft.com/powershell/azure/overview)végzi.
+2. Rendelkeznie kell egy meglévő visszaállítási ponttal, amelyet vissza szeretne állítani. Ha új visszaállítást szeretne létrehozni, tekintse meg [az új felhasználó által definiált visszaállítási pont létrehozását ismertető oktatóanyagot](sql-data-warehouse-restore-points.md).
 
 ## <a name="restore-an-existing-data-warehouse-through-powershell"></a>Meglévő adattárház visszaállítása a PowerShell használatával
 
-Egy meglévő adattárház visszaállítási pontról történő visszaállításához használja a [Restore-AzSqlDatabase PowerShell-][Restore-AzSqlDatabase] parancsmagot.
+Egy meglévő adattárház visszaállítási pontról történő visszaállításához használja a [Restore-AzSqlDatabase PowerShell-](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) parancsmagot.
 
 1. Nyissa meg a PowerShellt.
 
@@ -45,13 +45,13 @@ Egy meglévő adattárház visszaállítási pontról történő visszaállítá
 
 5. Válassza ki a kívánt visszaállítási pontot a RestorePointCreationDate használatával.
 
-6. Állítsa vissza az adatraktárat a kívánt visszaállítási pontra a [Restore-AzSqlDatabase PowerShell-][Restore-AzSqlDatabase] parancsmag használatával.
+6. Állítsa vissza az adatraktárat a kívánt visszaállítási pontra a [Restore-AzSqlDatabase PowerShell-](https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase) parancsmag használatával.
         1. Ha másik logikai kiszolgálóra szeretné visszaállítani a SQL Data Warehouse, akkor ügyeljen arra, hogy a másik logikai kiszolgáló nevét adja meg.  Ez a logikai kiszolgáló más erőforráscsoport és régió is lehet.
         2. Másik előfizetésre való visszaállításhoz használja az "áthelyezés" gombot a logikai kiszolgáló másik előfizetésre való áthelyezéséhez.
 
 7. Ellenőrizze, hogy a visszaállított adattárház online állapotban van-e.
 
-8. A visszaállítás befejezése után a helyreállított adattárházat a [helyreállítás után az adatbázis konfigurálása][Configure your database after recovery]után állíthatja be.
+8. A visszaállítás befejezése után a helyreállított adattárházat a [helyreállítás után az adatbázis konfigurálása](../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery)után állíthatja be.
 
 ```Powershell
 
@@ -89,7 +89,7 @@ $RestoredDatabase.status
 
 ## <a name="restore-an-existing-data-warehouse-through-the-azure-portal"></a>Meglévő adattárház visszaállítása a Azure Portal
 
-1. Jelentkezzen be az [Azure portálra][Azure portal].
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com/).
 2. Navigáljon ahhoz a SQL Data Warehouse, amelyet vissza szeretne állítani.
 3. Az Áttekintés panel tetején válassza a **visszaállítás**lehetőséget.
 
@@ -99,30 +99,8 @@ $RestoredDatabase.status
 
     ![Automatikus visszaállítási pontok](./media/sql-data-warehouse-restore-active-paused-dw/restoring-11.png)
 
-## <a name="next-steps"></a>További lépések
-- [Törölt adattárház visszaállítása][Restore a deleted data warehouse]
-- [Visszaállítás földrajzi biztonsági mentési adattárházból][Restore from a geo-backup data warehouse]
+## <a name="next-steps"></a>Következő lépések
+- [Törölt adattárház visszaállítása](sql-data-warehouse-restore-deleted-dw.md)
+- [Visszaállítás földrajzi biztonsági mentési adattárházból](sql-data-warehouse-restore-from-geo-backup.md)
+
  
-<!--Image references-->
-
-<!--Article references-->
-[Azure SQL Database business continuity overview]: ../sql-database/sql-database-business-continuity.md
-[Request a DTU quota change]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[How to install and configure Azure PowerShell]: /powershell/azureps-cmdlets-docs
-[Overview]: ./sql-data-warehouse-restore-database-overview.md
-[Portal]: ./sql-data-warehouse-restore-database-portal.md
-[PowerShell]: ./sql-data-warehouse-restore-database-powershell.md
-[REST]: ./sql-data-warehouse-restore-database-rest-api.md
-[Configure your database after recovery]: ../sql-database/sql-database-disaster-recovery.md#configure-your-database-after-recovery
-[the tutorial to create a new user-defined restore point]:../sql-data-warehouse/sql-data-warehouse-restore-points.md
-[Install Azure PowerShell]: https://docs.microsoft.com/powershell/azure/overview
-[Restore an existing data warehouse]:./sql-data-warehouse-restore-active-paused-dw.md
-[Restore a deleted data warehouse]:./sql-data-warehouse-restore-deleted-dw.md
-[Restore from a geo-backup data warehouse]:./sql-data-warehouse-restore-from-geo-backup.md
-
-<!--MSDN references-->
-[Restore-AzSqlDatabase]: https://docs.microsoft.com/powershell/module/az.sql/restore-azsqldatabase
-
-<!--Other Web references-->
-[Azure Portal]: https://portal.azure.com/

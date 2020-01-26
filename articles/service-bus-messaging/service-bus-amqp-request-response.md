@@ -1,6 +1,6 @@
 ---
 title: AMQP 1,0 kérelem/válasz művelet Azure Service Bus
-description: Microsoft Azure Service Bus kérelem/válasz alapú műveletek listája.
+description: Ez a cikk a Microsoft Azure Service Bus AMQP kérelmek/válasz alapú műveleteinek listáját határozza meg.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/22/2019
+ms.date: 01/23/2020
 ms.author: aschhab
-ms.openlocfilehash: b549aee197f35df29a982a1a86644c46b9061c63
-ms.sourcegitcommit: b050c7e5133badd131e46cab144dd5860ae8a98e
+ms.openlocfilehash: 338b411eade35fa357f64131c64b8ef2034c92b0
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72785278"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761083"
 ---
 # <a name="amqp-10-in-microsoft-azure-service-bus-request-response-based-operations"></a>AMQP 1,0 Microsoft Azure Service Bus: kérelem-válasz alapú műveletek
 
@@ -133,7 +133,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:renew-lock`|  
+|művelet|sztring|Igen|`com.microsoft:renew-lock`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
  A kérelem üzenet törzsének tartalmaznia kell egy amqp szakaszt, amely egy térképet tartalmaz a következő bejegyzésekkel:  
@@ -171,7 +171,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:peek-message`|  
+|művelet|sztring|Igen|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -212,7 +212,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:schedule-message`|  
+|művelet|sztring|Igen|`com.microsoft:schedule-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -256,7 +256,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:cancel-scheduled-message`|  
+|művelet|sztring|Igen|`com.microsoft:cancel-scheduled-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -286,7 +286,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:renew-session-lock`|  
+|művelet|sztring|Igen|`com.microsoft:renew-session-lock`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -308,7 +308,7 @@ A válaszüzenet törzsének olyan **amqp** szakaszból kell állnia, amely egy 
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|lejárati|időbélyeg|Igen|Új lejárat.|  
+|Lejárati|időbélyeg|Igen|Új lejárat.|  
   
 ### <a name="peek-session-message"></a>Betekintési munkamenet üzenete  
 
@@ -320,7 +320,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:peek-message`|  
+|művelet|sztring|Igen|`com.microsoft:peek-message`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -362,7 +362,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:set-session-state`|  
+|művelet|sztring|Igen|`com.microsoft:set-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -391,7 +391,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:get-session-state`|  
+|művelet|sztring|Igen|`com.microsoft:get-session-state`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -425,7 +425,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:get-message-sessions`|  
+|művelet|sztring|Igen|`com.microsoft:get-message-sessions`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -462,7 +462,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:add-rule`|  
+|művelet|sztring|Igen|`com.microsoft:add-rule`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -523,7 +523,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:remove-rule`|  
+|művelet|sztring|Igen|`com.microsoft:remove-rule`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -549,7 +549,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
 
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:enumerate-rules`|  
+|művelet|sztring|Igen|`com.microsoft:enumerate-rules`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
 
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -632,7 +632,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:receive-by-sequence-number`|  
+|művelet|sztring|Igen|`com.microsoft:receive-by-sequence-number`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  
@@ -674,7 +674,7 @@ A kérelem üzenetének tartalmaznia kell a következő alkalmazás-tulajdonság
   
 |Jelmagyarázat|Érték típusa|Szükséges|Érték tartalma|  
 |---------|----------------|--------------|--------------------|  
-|Művelet|sztring|Igen|`com.microsoft:update-disposition`|  
+|művelet|sztring|Igen|`com.microsoft:update-disposition`|  
 |`com.microsoft:server-timeout`|uint|Nem|A műveleti kiszolgáló időtúllépése ezredmásodpercben.|  
   
 A kérelem üzenet törzsének tartalmaznia kell egy **amqp** szakaszt, amely egy **térképet** tartalmaz a következő bejegyzésekkel:  

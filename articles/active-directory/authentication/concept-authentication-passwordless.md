@@ -1,26 +1,26 @@
 ---
 title: Jelszó nélküli bejelentkezés Azure Active Directory (előzetes verzió)
-description: Jelszó nélküli bejelentkezés az Azure AD-be az FIDO2 biztonsági kulcsaival vagy a Microsoft Authenticator alkalmazással (előzetes verzió)
+description: További tudnivalók a jelszó nélküli bejelentkezés lehetőségeiről Azure Active Directory FIDO2 biztonsági kulcsok vagy a Microsoft Authenticator alkalmazás használatával
 services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 10/08/2019
+ms.date: 01/24/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 28d4dd3f0d4432930d62bb499fe72533b79d2a08
-ms.sourcegitcommit: c38a1f55bed721aea4355a6d9289897a4ac769d2
+ms.openlocfilehash: a0d426fb743e6b1ce5d279544f12bcb490d529f9
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74848731"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756793"
 ---
 # <a name="passwordless-authentication-options"></a>Jelszóval nem rendelkező hitelesítési lehetőségek
 
-A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók a további rétegekkel is megjegyezik a jelszavukat. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, amit Ön, vagy amit tud.
+A többtényezős hitelesítés (MFA) egy nagyszerű módszer a szervezet biztonságossá tételére, de a felhasználók gyakran frusztráltak a további biztonsági réteggel szemben, hogy emlékezzenek a jelszavára. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, vagy valamire, amit tud.
 
 |   | Valamilyen dolog | Amit Ön vagy ismer |
 | --- | --- | --- |
@@ -36,23 +36,23 @@ A hitelesítéshez minden szervezetnek eltérő igényeire van szüksége. A Mic
 
 ## <a name="windows-hello-for-business"></a>Vállalati Windows Hello
 
-A vállalati Windows Hello ideális olyan információkkal dolgozó munkatársak számára, akik saját kijelölt Windows-számítógéppel rendelkeznek. A biometrikus és PIN-kód közvetlenül a felhasználó SZÁMÍTÓGÉPéhez van kötve, ami megakadályozza a hozzáférést a tulajdonostól eltérő személyek számára. A PKI-integrációval és az egyszeri bejelentkezés (SSO) beépített támogatásával a Windows Hello for Business egyszerű és kényelmes módszert kínál a vállalati erőforrások zökkenőmentes elérésére a helyszínen és a felhőben.
+A vállalati Windows Hello ideális olyan információkkal dolgozó munkatársak számára, akik saját kijelölt Windows-számítógéppel rendelkeznek. A biometrikus és PIN-kód közvetlenül a felhasználó SZÁMÍTÓGÉPéhez van kötve, ami megakadályozza a hozzáférést a tulajdonostól eltérő személyek számára. A nyilvános kulcsokra épülő infrastruktúrával (PKI) való integrációval és az egyszeri bejelentkezés (SSO) beépített támogatásával a Windows Hello for Business kényelmes módszert kínál a vállalati erőforrások zökkenőmentes elérésére a helyszínen és a felhőben.
 
 A vállalati Windows Hello [tervezési útmutató](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-planning-guide) segítségével döntéseket hozhat a vállalati Windows Hello üzembe helyezésének típusáról és a szükséges lehetőségekről.
 
 ## <a name="microsoft-authenticator-app"></a>Microsoft Authenticator alkalmazás
 
-Annak engedélyezése, hogy az alkalmazott telefonja jelszavas hitelesítésen alapuló hitelesítési módszer legyen. Előfordulhat, hogy a jelszó mellett már használja a Microsoft Authenticator alkalmazást kényelmes multi-Factor Authentication beállításként. Mostantól azonban jelszó nélkül is elérhető.
+Annak engedélyezése, hogy az alkalmazott telefonja jelszavas hitelesítésen alapuló hitelesítési módszer legyen. Előfordulhat, hogy a jelszó mellett már használja a Microsoft Authenticator alkalmazást kényelmes multi-Factor Authentication beállításként. A hitelesítő alkalmazást jelszóval nem rendelkező megoldásként is használhatja.
 
 ![Bejelentkezés a Microsoft Edge-be a Microsoft Authenticator alkalmazással](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
-Az iOS-vagy Android-telefonokat egy erős, jelszó nélküli hitelesítő adatba helyezi, mivel lehetővé teszi, hogy a felhasználók bármilyen platformra vagy böngészőbe bejelentkezzenek, ha értesítést küldenek a telefonján, és a képernyőn megjelenő számot megadják a telefonján, majd a biometrikus adatokat használják ( érintés vagy szembenézés) vagy PIN-kód a megerősítéshez.
+A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik.
 
 ## <a name="fido2-security-keys"></a>FIDO2 biztonsági kulcsok
 
-A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. Lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközre épített platform-kulccsal.
+A FIDO2 biztonsági kulcsai egy nem adattípusra épülő, szabványos jelszavas hitelesítési módszer, amely bármilyen típusú tényezőt tartalmazhat. A gyors identitású online (pont) egy nyílt szabvány a jelszó nélküli hitelesítéshez. A parancs lehetővé teszi, hogy a felhasználók és a szervezetek a standard használatával bejelentkezzenek az erőforrásaik számára Felhasználónév vagy jelszó nélkül, egy külső biztonsági kulccsal vagy egy eszközbe épített platform-kulccsal.
 
-A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsokkal jelentkezhetnek be az Azure AD-hez csatlakoztatott Windows 10 rendszerű eszközökre, és egyszeri bejelentkezést kapnak a felhőbe és a helyszíni erőforrásokhoz. A támogatott böngészőkbe is bejelentkezhetnek.
+A nyilvános előzetes verzióban az alkalmazottak a biztonsági kulcsokkal jelentkezhetnek be az Azure AD-hez csatlakoztatott Windows 10-es eszközökre, és egyszeri bejelentkezést is kaphatnak a Felhőbeli és helyszíni erőforrásaik számára. A felhasználók a támogatott böngészőkbe is bejelentkezhetnek. A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
 
 ![Bejelentkezés a Microsoft Edge-be egy biztonsági kulccsal](./media/concept-authentication-passwordless/concept-web-sign-in-security-key.png)
 
@@ -67,7 +67,7 @@ A biztonsági kulcsnak a következő szolgáltatásokat és bővítményeket **k
 | 3 | HMAC – titkos kód | Ez a bővítmény biztosítja, hogy bejelentkezzen az eszközre, amikor az offline vagy a repülőgép üzemmódban van. |
 | 4 | Több fiók/RP | Ez a funkció biztosítja, hogy ugyanazt a biztonsági kulcsot használja több szolgáltatáshoz, például a Microsoft-fiókhoz és a Azure Active Directory. |
 
-A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. A Microsoft arra bátorítja az ügyfeleket, hogy értékelik a kulcsok biztonsági tulajdonságait, ha kapcsolatba lép a szállítóval, valamint a következővel:.
+A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amelyekről ismert, hogy kompatibilisek a jelszóval nem rendelkező felülettel. Javasoljuk, hogy a kulcsok biztonsági tulajdonságainak kiértékeléséhez vegye fel a kapcsolatot a gyártóval, valamint a következőt:.
 
 | Szolgáltató | Kapcsolatfelvétel |
 | --- | --- |
@@ -79,11 +79,9 @@ A következő szolgáltatók olyan FIDO2 biztonsági kulcsokat kínálnak, amely
 | AuthenTrend | [https://authentrend.com/about-us/#pg-35-3](https://authentrend.com/about-us/#pg-35-3) |
 
 > [!NOTE]
-> Az NFC-alapú biztonsági kulcsok megvásárlása és megtervezése esetén támogatott NFC-olvasóra lesz szüksége.
+> Ha NFC-alapú biztonsági kulcsok megvásárlását és megtervezését tervezi, akkor a biztonsági kulcshoz támogatott NFC-olvasóra van szükség. Az NFC-olvasó nem Azure-követelmény vagy-korlátozás. A támogatott NFC-olvasók listáját az NFC-alapú biztonsági kulcs gyártójánál találja.
 
-Ha Ön szállító, és szeretné lekérni az eszközt ezen a listán, forduljon a [Fido2Request@Microsoft.comhoz ](mailto:Fido2Request@Microsoft.com).
-
-A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvállalatok számára, akik nagyon érzékenyek a biztonságra, vagy olyan forgatókönyvekkel vagy alkalmazottakkal rendelkeznek, akik nem hajlandók vagy nem tudják használni a telefont második tényezőként.
+Ha Ön szállító, és szeretné lekérni az eszközt a támogatott eszközök listáján, forduljon a [Fido2Request@Microsoft.comhoz ](mailto:Fido2Request@Microsoft.com).
 
 ## <a name="what-scenarios-work-with-the-preview"></a>Milyen forgatókönyvek működnek az előzetes verzióban?
 
@@ -91,8 +89,8 @@ A FIDO2 biztonsági kulcsai nagyszerű lehetőséget biztosítanak olyan nagyvá
 - A rendszergazdák az összes felhasználót megcélozhatja, vagy kiválaszthatják a bérlőn belüli felhasználókat és csoportokat az egyes módszereknél
 - A végfelhasználók a fiók-portálon regisztrálhatják és kezelhetik ezeket a jelszó nélküli hitelesítési módszereket
 - A végfelhasználók ezekkel a jelszó nélküli hitelesítési módszerekkel jelentkezhetnek be
-   - Microsoft Authenticator alkalmazás: olyan helyzetekben fog működni, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) telepítése során, valamint az integrált Mobile apps bármely operációs rendszeren.
-   - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjén működik a Microsoft Edge-hez hasonló támogatott böngészőkben.
+   - Microsoft Authenticator alkalmazás: olyan helyzetekben működik, ahol az Azure AD-hitelesítés használatban van, beleértve az összes böngészőt, a Windows 10-es (OOBE) beállítása során, valamint az integrált Mobile apps bármely operációs rendszeren.
+   - Biztonsági kulcsok: a Windows 10 és a web zárolási képernyőjének használata a Microsoft Edge-hez hasonló támogatott böngészőkben.
 
 ## <a name="next-steps"></a>Következő lépések
 

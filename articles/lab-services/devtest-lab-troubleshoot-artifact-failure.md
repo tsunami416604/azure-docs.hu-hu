@@ -1,6 +1,6 @@
 ---
 title: Az összetevők hibáinak diagnosztizálása egy Azure DevTest Labs virtuális gépen
-description: Ismerje meg, hogyan lehet elhárítani a Azure DevTest Labs az összetevők hibáit.
+description: A DevTest Labs olyan információkat biztosít, amelyek segítségével diagnosztizálhatja az összetevő meghibásodását. Ez a cikk bemutatja, hogyan lehet elhárítani az összetevők hibáit.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -12,19 +12,19 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/16/2020
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 50cb3138b8d79c4d60c94513d931996d667d9c01
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 7229f1ee4061eb38b7c6da09df21102ab302ab42
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170315"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760317"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Az összetevők hibáinak diagnosztizálása a laborban 
 Miután létrehozott egy összetevőt, megtekintheti, hogy sikeres vagy sikertelen volt-e. A Azure DevTest Labs található összetevők naplói olyan információkat tartalmaznak, amelyek segítségével diagnosztizálhatja az összetevő meghibásodását. A Windows rendszerű virtuális gépek esetében több lehetőség közül választhat:
 
-* Az Azure Portalon
+* A Azure Portal
 * A virtuális gépen
 
 > [!NOTE]

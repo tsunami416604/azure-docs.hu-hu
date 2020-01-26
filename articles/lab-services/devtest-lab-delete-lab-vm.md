@@ -1,6 +1,6 @@
 ---
-title: A labor- vagy virtuális gép törlése az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan labor- vagy virtuális gép törlése a tesztkörnyezetben.
+title: Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
+description: Ez a cikk bemutatja, hogyan törölheti a labort, vagy törölhet egy virtuális gépet egy laborban a Azure Portal (Azure DevTest Labs) használatával.
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -11,68 +11,68 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 01/24/2020
 ms.author: spelluru
-ms.openlocfilehash: 9634c70566aba21bdd28ee016c9fa94464ec9c1b
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 28fb464714f464a4c0a8f5eaf304dcdd5d603c90
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "62127412"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759720"
 ---
-# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Az Azure DevTest Labs szolgáltatásban létrehozott tesztkörnyezet egy labor- vagy virtuális gép törlése
-Ez a cikk bemutatja, hogyan labor- vagy virtuális gép törlése a tesztkörnyezetben.
+# <a name="delete-a-lab-or-vm-in-a-lab-in-azure-devtest-labs"></a>Tesztkörnyezet vagy virtuális gép törlése a laborban Azure DevTest Labs
+Ebből a cikkből megtudhatja, hogyan törölhet laboratóriumi vagy virtuális gépet egy laborban.
 
 ## <a name="delete-a-lab"></a>Tesztkörnyezet törlése
-Ha töröl egy erőforráscsoportot egy DevTest Labs-példányt, a DevTest Labs szolgáltatás a következő műveleteket hajtja végre: 
+Ha töröl egy DevTest Labs-példányt egy erőforráscsoporthoz, a DevTest Labs szolgáltatás a következő műveleteket hajtja végre: 
 
-- A labor létrehozásának időpontjában automatikusan létrehozott összes erőforrást a rendszer automatikusan törli. Nem törlődik automatikusan magát az erőforráscsoportot. Ha korábban manuálisan létrehozott erőforrásokat az erőforráscsoport, a szolgáltatás nem törli őket. 
-- Ezek a virtuális gépek társított a labor- és erőforrás csoportokban lévő összes virtuális gép automatikusan törlődnek. Ha egy virtuális Gépet hoz létre a tesztkörnyezetben, a szolgáltatás egy külön erőforráscsoportot a virtuális géphez hoz létre erőforrások (lemez, hálózati adapter, nyilvános IP-cím, stb.). Azonban ha manuálisan hoz létre egyéb erőforrásokat az ezeket az erőforráscsoportokat, a DevTest Labs szolgáltatás nem törli ezeket az erőforrásokat és az erőforráscsoportot. 
+- A rendszer automatikusan törli az összes, a labor létrehozásakor létrehozott erőforrást. Maga az erőforráscsoport nem törlődik. Ha kézzel hozta létre az erőforráscsoport erőforrásait, a szolgáltatás nem törli őket. 
+- A laborban és az ezekhez a virtuális gépekhez társított erőforráscsoportok összes virtuális gépe automatikusan törlődik. Amikor laborban hoz létre virtuális gépet, a szolgáltatás erőforrásokat (lemezt, hálózati adaptert, nyilvános IP-címet stb.) hoz létre a virtuális géphez egy külön erőforráscsoporthoz. Ha azonban a további erőforrásokat manuálisan hozza létre ezekben az erőforráscsoportokban, a DevTest Labs szolgáltatás nem törli ezeket az erőforrásokat és az erőforráscsoportot. 
 
-Labor törléséhez tegye a következőket: 
+Labor törléséhez hajtsa végre a következő műveleteket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **összes erőforrás** válassza a bal oldali menü **DevTest Labs** típusának megfelelő szolgáltatás, és válassza a labor létrehozása.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a bal oldali menü **minden erőforrás** elemét, válassza ki a **DevTest Labs** lehetőséget a szolgáltatás típusához, és válassza ki a labort.
 
-    ![Válassza ki a labor](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Az a **fejlesztési és tesztelési labor** kattintson **törlése** az eszköztáron. 
+    ![Válassza ki a labort](media/devtest-lab-delete-lab-vm/select-lab.png)
+3. A **DevTest labor** lapon kattintson a **Törlés** elemre az eszköztáron. 
 
     ![Törlés gomb](media/devtest-lab-delete-lab-vm/delete-button.png)
-4. Az a **megerősítő** lap, adja meg a **neve** a labor, és válassza ki a **törlése**. 
+4. A **jóváhagyás** lapon adja meg a labor **nevét** , és válassza a **Törlés**lehetőséget. 
 
     ![Megerősítés](media/devtest-lab-delete-lab-vm/confirm-delete.png)
-5. A művelet állapotának megtekintéséhez válassza ki a **értesítések** ikonra (harang). 
+5. A művelet állapotának megtekintéséhez válassza az **értesítések** ikon (harang) lehetőséget. 
 
     ![Értesítések](media/devtest-lab-delete-lab-vm/delete-status.png)
 
  
-## <a name="delete-a-vm-in-a-lab"></a>A labor virtuális gép törlése
-Ha a labor virtuális gépek törléséhez egyes erőforrások (összes) a labor létrehozásakor létrehozott törlődnek. A következő erőforrások nem törlődnek: 
+## <a name="delete-a-vm-in-a-lab"></a>Virtuális gép törlése tesztkörnyezetben
+Ha egy laborban törölek egy virtuális gépet, a labor létrehozásakor létrehozott egyes erőforrások (nem az összes) törlődnek. A következő erőforrások nem törlődnek: 
 
--   Kulcstartó-fő az erőforráscsoportban
--   Rendelkezésre állási beállítása, a terheléselosztó nyilvános IP-címet a virtuális gép az erőforráscsoportban. Ezeket az erőforrásokat egy erőforráscsoportba tartozó több virtuális gép vannak megosztva. 
+-   Key Vault a fő erőforráscsoporthoz
+-   Rendelkezésre állási csoport, terheléselosztó, nyilvános IP-cím a virtuális gép erőforráscsoporthoz. Ezeket az erőforrásokat az erőforráscsoport több virtuális gépe osztja meg. 
 
-Virtuális gép, hálózati adapter és a virtuális Géphez tartozó lemez törlődnek. 
+A virtuális gép, a hálózati adapter és a virtuális géphez társított lemez törölve lett. 
 
-A labor virtuális gépek törléséhez tegye a következőket: 
+A laborban lévő virtuális gépek törléséhez hajtsa végre a következő műveleteket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-2. Válassza ki **összes erőforrás** válassza a bal oldali menü **DevTest Labs** típusának megfelelő szolgáltatás, és válassza a labor létrehozása.
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
+2. Válassza a bal oldali menü **minden erőforrás** elemét, válassza ki a **DevTest Labs** lehetőséget a szolgáltatás típusához, és válassza ki a labort.
 
-    ![Válassza ki a labor](media/devtest-lab-delete-lab-vm/select-lab.png)
-3. Válassza ki **... három (pont)**  listájában, a virtuális gépeket, és válassza ki a virtuális gép **törlése**. 
+    ![Válassza ki a labort](media/devtest-lab-delete-lab-vm/select-lab.png)
+3. Válassza a **... lehetőséget. (három pont)** a virtuális gépek listájában, és válassza a **Törlés**lehetőséget. 
 
-    ![A menüben a virtuális gép törlése](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
-4. Az a **megerősítő** párbeszédpanelen jelölje ki **Ok**. 
-5. A művelet állapotának megtekintéséhez válassza ki a **értesítések** ikonra (harang). 
+    ![Virtuális gép törlése a menüben](media/devtest-lab-delete-lab-vm/delete-vm-menu-in-list.png)
+4. A **megerősítő** párbeszédpanelen kattintson **az OK gombra**. 
+5. A művelet állapotának megtekintéséhez válassza az **értesítések** ikon (harang) lehetőséget. 
 
-A virtuális gép törlése a **virtuális gép**válassza **törlése** az eszköztárról, a következő képen látható módon:
+Ha törölni szeretne egy virtuális **gépet a virtuális gép lapról**, válassza a **Törlés** lehetőséget az eszköztárról az alábbi ábrán látható módon:
 
-![Virtuális gép törlése a virtuális gép oldalról](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
+![Virtuális gép törlése a virtuális gép lapról](media/devtest-lab-delete-lab-vm/delete-from-vm-page.png) 
 
 
-## <a name="next-steps"></a>További lépések
-Ha azt szeretné, labor létrehozásához a következő cikkekben talál: 
+## <a name="next-steps"></a>Következő lépések
+Ha labort szeretne létrehozni, tekintse meg a következő cikkeket: 
 
 - [Labor létrehozása](devtest-lab-create-lab.md)
-- [A labor virtuális gép hozzáadása](devtest-lab-add-vm.md)
+- [Virtuális gép hozzáadása a laborhoz](devtest-lab-add-vm.md)

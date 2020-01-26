@@ -10,12 +10,12 @@ ms.reviewer: larryfr
 ms.author: aashishb
 author: aashishb
 ms.date: 01/13/2020
-ms.openlocfilehash: 8c3265210f6ba5bb291401ce4691581dac8a0325
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 53644066276aa8e9fb57b4802142bca3fe4b342f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289612"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760851"
 ---
 # <a name="secure-azure-ml-experimentation-and-inference-jobs-within-an-azure-virtual-network"></a>Egy Azure-Virtual Networkon belül biztonságossá teheti az Azure ML-kísérletezést és a feladatok következtetéseit
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -179,11 +179,14 @@ Ha nem szeretné az alapértelmezett kimenő szabályokat használni, és korlá
 
 - A kimenő internetkapcsolat megtagadása a NSG szabályok használatával.
 
-- A kimenő forgalom korlátozása a következő elemekre:
-   - Azure Storage a __Storage. Region_Name__ (például Storage. EastUS) __szolgáltatás címkéjével__
-   - Azure Container Registry a __AzureContainerRegistry. Region_Name__ __szolgáltatás címkéjével__ (például AzureContainerRegistry. EastUS)
+- __Számítási példány__ vagy __számítási fürt__esetén korlátozza a kimenő forgalmat a következő elemekre:
+   - Azure Storage a __Storage__ __szolgáltatási címkéje__ használatával
+   - Azure Container Registry a __AzureContainerRegistry__ __szolgáltatási címkéjének__ használatával
    - Azure Machine Learning a __AzureMachineLearning__ __szolgáltatási címkéjének__ használatával
-   - Számítási példány esetén az Azure Cloud a __AzureResourceManager__ __szolgáltatási címkéje__ használatával
+   
+- __Számítási példány__esetén adja hozzá a következő elemeket is:
+   - Azure Resource Manager a __AzureResourceManager__ __szolgáltatási címkéjének__ használatával
+   - Azure Active Directory a __AzureActiveDirectory__ __szolgáltatási címkéjének__ használatával
 
 A Azure Portal NSG-szabályának konfigurációja a következő képen látható:
 
@@ -206,12 +209,12 @@ A Azure Portal NSG-szabályának konfigurációja a következő képen látható
 > run_config.environment.python.user_managed_dependencies = True
 > ```
 >
-> Kalkulátor training__
+> __Kalkulátor-képzés__
 > ```python
-> est = Estimator(source_directory='.', 
->                 script_params=script_params, 
->                 compute_target='local', 
->                 entry_script='dummy_train.py', 
+> est = Estimator(source_directory='.',
+>                 script_params=script_params,
+>                 compute_target='local',
+>                 entry_script='dummy_train.py',
 >                 user_managed=True)
 > run = exp.submit(est)
 > ```

@@ -1,6 +1,6 @@
 ---
-title: Kvóták és korlátok Microsoft Azure Service Busa | Microsoft Docs
-description: A Azure Service Bus korlátainak és kvótáinak megkeresése.
+title: Kvóták és korlátozások Microsoft Azure Service Bus
+description: Ez a cikk a Azure Service Bus üzenetkezelés alapszintű kvótáit és sávszélesség-szabályozási küszöbértékeit sorolja fel. Például a névterek maximális száma előfizetésben.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 11/27/2019
+ms.date: 01/24/2020
 ms.author: aschhab
-ms.openlocfilehash: ae2c55486e0489006395a1630eba0b1c3f56b5be
-ms.sourcegitcommit: c31dbf646682c0f9d731f8df8cfd43d36a041f85
+ms.openlocfilehash: 7a6d8e56d7f70d637b2c963814b66e6e7cb3a907
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/27/2019
-ms.locfileid: "74561503"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759567"
 ---
 # <a name="service-bus-quotas"></a>Service Bus-kvóták
 Ez a szakasz az alapszintű kvótákat és a szabályozás küszöbértékeit sorolja fel Azure Service Bus üzenetkezelésben.

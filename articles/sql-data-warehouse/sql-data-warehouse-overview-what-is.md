@@ -10,16 +10,16 @@ ms.subservice: design
 ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
-ms.openlocfilehash: 07bf3070e42af8a03ce1fd7ea4445fc76557e8a3
-ms.sourcegitcommit: 359930a9387dd3d15d39abd97ad2b8cb69b8c18b
+ms.openlocfilehash: 40f779fa5545e0e9c8fd1aa2cc2689b29dffdb82
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73645516"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76760759"
 ---
 # <a name="what-is-azure-synapse-analytics-formerly-sql-dw"></a>Mi az Azure szinapszis Analytics (korábban SQL DW)?
 
-Az Azure szinapszis egy korlátlan elemzési szolgáltatás, amely egyesíti a vállalati adattárházat és a Big adatelemzést. Lehetővé teszi, hogy a használati feltételek alapján, akár kiszolgáló nélküli igény szerinti vagy kiépített erőforrásokkal is lekérdezze az adatait. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatfeldolgozáshoz,-előkészítéshez,-kezeléshez és-kiszolgáláshoz
+Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatfeldolgozáshoz,-előkészítéshez,-kezeléshez és-kiszolgáláshoz
 
 Az Azure szinapszis négy összetevőből áll:
 - SQL Analytics: teljes T-SQL-alapú elemzés – általánosan elérhető
@@ -52,45 +52,16 @@ Az SQL Analytics oszlopos tárolással rendelkező, kapcsolódó táblákban tá
 
 Az elemzések eredményei globális jelentéskészítési adatbázisokba vagy alkalmazásokba küldhetőek. Az üzleti elemzők így az ezekből nyerhető betekintések révén tájékozott üzleti döntéseket hozhatnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- Az [Azure szinapszis architektúrájának](/azure/sql-data-warehouse/massively-parallel-processing-mpp-architecture) megismerése
+- Az [Azure szinapszis architektúrájának](massively-parallel-processing-mpp-architecture.md) megismerése
 - [SQL-készlet gyors létrehozása](create-data-warehouse-portal.md)
-- [Mintaadatok betöltése][load sample data].
-- [Videók](/azure/sql-data-warehouse/sql-data-warehouse-videos) megismerése
+- [Mintaadatok betöltése](sql-data-warehouse-load-sample-databases.md).
+- [Videók](https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse) megismerése
 
 Vagy tekintse meg a többi Azure szinapszis-erőforrást.  
-* Keresési [Blogok]
-* [Funkciókérések] elküldése
-* [Az ügyféltanácsadói csapat blogjai] keresése
-* [Támogatási jegy létrehozása]
-* [MSDN-fórum] keresése
-* [Stack Overflow-fórum] keresése
-
-
-<!--Image references-->
-[1]: ./media/sql-data-warehouse-overview-what-is/dwarchitecture.png
-
-<!--Article references-->
-[Támogatási jegy létrehozása]: ./sql-data-warehouse-get-started-create-support-ticket.md
-[load sample data]: ./sql-data-warehouse-load-sample-databases.md
-[create a data warehouse]: ./sql-data-warehouse-get-started-provision.md
-[Migration documentation]: ./sql-data-warehouse-overview-migrate.md
-[Azure Synapse Analytics solution partners]: ./sql-data-warehouse-partner-business-intelligence.md
-[Integrated tools overview]: ./sql-data-warehouse-overview-integrate.md
-[Backup and restore overview]: ./sql-data-warehouse-restore-database-overview.md
-[Azure glossary]: ../azure-glossary-cloud-terminology.md
-
-<!--MSDN references-->
-
-<!--Other Web references-->
-[Blogok]: https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/
-[Az ügyféltanácsadói csapat blogjai]: https://blogs.msdn.microsoft.com/sqlcat/tag/sql-dw/
-[Funkciókérések]: https://feedback.azure.com/forums/307516-sql-data-warehouse
-[MSDN-fórum]: https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=AzureSQLDataWarehouse
-[Stack Overflow-fórum]: https://stackoverflow.com/questions/tagged/azure-sqldw
-[Twitter]: https://twitter.com/hashtag/SQLDW
-[Videos]: https://azure.microsoft.com/documentation/videos/index/?services=sql-data-warehouse
-[SLA for Azure Synapse Analytics]: https://azure.microsoft.com/support/legal/sla/sql-data-warehouse/v1_0/
-[Volume Licensing]: https://www.microsoftvolumelicensing.com/DocumentSearch.aspx?Mode=3&DocumentTypeId=37
-[Service Level Agreements]: https://azure.microsoft.com/support/legal/sla/
+* Keresési [Blogok](https://azure.microsoft.com/blog/tag/azure-sql-data-warehouse/)
+* [Szolgáltatási kérelmek](https://feedback.azure.com/forums/307516-sql-data-warehouse) elküldése
+* [Támogatási jegy létrehozása](sql-data-warehouse-get-started-create-support-ticket.md)
+* [MSDN-fórum](https://social.msdn.microsoft.com/Forums/azure/home?forum=AzureSQLDataWarehouse) keresése
+* [Stack overflow fórum](https://stackoverflow.com/questions/tagged/azure-sqldw) keresése

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/10/2019
 ms.author: wolfma
-ms.openlocfilehash: 7bd4541d135020e297bef26f234ae35d953abfce
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ea879cbfc3b9b1d1a627add52f26a473aca53cdf
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75446818"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759875"
 ---
 # <a name="about-the-speech-sdk"></a>A Speech SDK ismertetése
 
@@ -32,6 +32,9 @@ A képességek és a támogatott platformok általános áttekintése a dokument
 ## <a name="get-the-sdk"></a>Az SDK beszerzése
 
 ### <a name="windows"></a>Windows
+
+> [!WARNING]
+> A Speech SDK támogatja a Windows 10-es vagy újabb verziókat. A korábbi Windows-verziók **nem támogatottak**.
 
 A Windows esetében a következő nyelveket támogatjuk:
 

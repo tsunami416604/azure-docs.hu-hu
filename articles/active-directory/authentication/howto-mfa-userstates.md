@@ -11,12 +11,12 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7fadd974fdc572dddb403c25e90246fd92b1989
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 61d7227c57422cfe2228002750ec29bffa385d44
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763232"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76756766"
 ---
 # <a name="how-to-require-two-step-verification-for-a-user"></a>Egy felhasználó kétlépéses ellenőrzésének megkövetelése
 
@@ -62,9 +62,8 @@ Az összes felhasználó *le van tiltva*. Amikor felhasználókat regisztrál az
 A következő lépésekkel érheti el az oldalt, amelyen megtekintheti és kezelheti a felhasználói állapotokat:
 
 1. Jelentkezzen be az [Azure Portal](https://portal.azure.com) felületére rendszergazdaként.
-2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **Felhasználók** > **Minden felhasználó** lehetőséget.
-3. Válassza a **Multi-Factor Authentication** lehetőséget.
-   ![válassza ki a Multi-Factor Authentication](./media/howto-mfa-userstates/selectmfa.png)
+2. Keresse meg és válassza ki a *Azure Active Directory*. Válassza a **felhasználók** > **minden felhasználó**lehetőséget.
+3. Válassza a **multi-Factor Authentication**lehetőséget. Előfordulhat, hogy a menüpontra kell görgetni a jobb oldalon. Válassza az alábbi képernyőképet a teljes Azure Portal ablak és menü helyének megtekintéséhez:[![](media/howto-mfa-userstates/selectmfa-cropped.png "Multi-Factor Authentication kiválasztása az Azure AD felhasználók ablakában")](media/howto-mfa-userstates/selectmfa.png#lightbox)
 4. Megnyílik egy új oldal, amely megjeleníti a felhasználói állapotokat.
    ![multi-Factor Authentication felhasználói állapot – képernyőfelvétel](./media/howto-mfa-userstates/userstate1.png)
 

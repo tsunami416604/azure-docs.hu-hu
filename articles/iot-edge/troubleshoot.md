@@ -8,12 +8,12 @@ ms.date: 11/20/2019
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 93e3a5ed442c975f75045d86d6b890ee4113c465
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 255ccb5c8e9529ab9b36186ec0eeb5b3f55ed64f
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514255"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76759227"
 ---
 # <a name="common-issues-and-resolutions-for-azure-iot-edge"></a>Az Azure IoT Edge gyakori problémái és azok megoldásai
 
@@ -21,7 +21,7 @@ Ha a környezetében az Azure IoT Edge futtatásakor problémákat tapasztal, ez
 
 ## <a name="run-the-iotedge-check-command"></a>A iotedge "pipa" parancs futtatása
 
-A IoT Edge hibaelhárításakor az első lépés a `check` parancs használata, amely az általános problémákhoz tartozó konfigurációs és kapcsolati tesztek gyűjteményét hajtja végre. A `check` parancs a [kiadási 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) és újabb verziókban érhető el.
+Az első lépés a IoT Edge hibaelhárításakor a `check` parancs használata, amely a konfigurációs és kapcsolati tesztek gyűjteményét futtatja a gyakori problémákhoz. A `check` parancs a [kiadási 1.0.7](https://github.com/Azure/azure-iotedge/releases/tag/1.0.7) és újabb verziókban érhető el.
 
 A `check` parancsot az alábbiak szerint futtathatja, vagy belefoglalhatja a `--help` jelzőt a lehetőségek teljes listájának megjelenítéséhez:
 
@@ -265,7 +265,7 @@ Error parsing user input data: invalid hostname. Hostname cannot be empty or gre
 
 **Alapvető ok**
 
-A IoT Edge futtatókörnyezet csak 64 karakternél rövidebb gazdagépeket támogat. A fizikai gépek általában nem rendelkeznek hosszú állomásnévvel, de a probléma gyakoribb a virtuális gépen. Az Azure-ban üzemeltetett Windows rendszerű virtuális gépek automatikusan generált állomásneve általában hosszúak. 
+A IoT Edge futtatókörnyezet csak 64 karakternél rövidebb gazdagépeket támogat. A fizikai gépek általában nem rendelkeznek hosszú állomásnévvel, de a probléma gyakoribb a virtuális gépen. Az Azure-ban üzemeltetett Windows rendszerű virtuális gépek automatikusan generált állomásneve általában hosszúak.
 
 **Felbontás**
 
@@ -302,7 +302,7 @@ A IoT Edge futtatókörnyezet részét képező IoT Edge hub alapértelmezés sz
 
 **Felbontás**
 
-Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis**értékre. Ezt kétféleképpen teheti meg:
+Az IoT Edge hub esetében állítsa be a **OptimizeForPerformance** környezeti változót **hamis**értékre. A környezeti változók két módon állíthatók be:
 
 Az Azure Portalon:
 
@@ -310,7 +310,7 @@ A IoT Hub válassza ki a IoT Edge eszközt, majd az eszköz adatai lapon válass
 
 ![A OptimizeForPerformance hamis értékre van állítva](./media/troubleshoot/optimizeforperformance-false.png)
 
-**OR**
+**VAGY**
 
 Az üzembe helyezési jegyzékben:
 
@@ -340,7 +340,7 @@ A `Get-WinEvent` PowerShell-parancs egy olyan beállításjegyzék-bejegyzésre 
 
 Adja meg a IoT Edge démon beállításjegyzékbeli bejegyzését. Hozzon létre egy **iotedge. reg** fájlt a következő tartalommal, és importálja a Windows beállításjegyzékbe úgy, hogy duplán rákattint rá, vagy használja a `reg import iotedge.reg` parancsot:
 
-```
+```reg
 Windows Registry Editor Version 5.00
 
 [HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\EventLog\Application\iotedged]
@@ -351,10 +351,10 @@ Windows Registry Editor Version 5.00
 
 ## <a name="iot-edge-module-fails-to-send-a-message-to-the-edgehub-with-404-error"></a>IoT Edge modul nem tud üzenetet küldeni a edgeHub a 404-as hibával
 
-Egy egyéni IoT Edge modul nem tud üzenetet küldeni a edgeHub egy 404 `Module not found` hibával. A IoT Edge démon a következő üzenetet nyomtatja ki a naplókba: 
+Egy egyéni IoT Edge modul nem tud üzenetet küldeni a edgeHub egy 404 `Module not found` hibával. A IoT Edge démon a következő üzenetet nyomtatja ki a naplókba:
 
 ```output
-Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 ) 
+Error: Time:Thu Jun  4 19:44:58 2018 File:/usr/sdk/src/c/provisioning_client/adapters/hsm_client_http_edge.c Func:on_edge_hsm_http_recv Line:364 executing HTTP request fails, status=404, response_buffer={"message":"Module not found"}u, 04 )
 ```
 
 **Alapvető ok**
@@ -373,7 +373,7 @@ Azure IoT Edge lehetővé teszi a helyszíni kiszolgálóról az Azure-felhőbe 
 
 Míg a IoT Edge továbbfejlesztett konfigurációt biztosít Azure IoT Edge futtatókörnyezet és a telepített modulok biztonságossá tételéhez, továbbra is függ a mögöttes gépről és hálózati konfigurációtól. Ezért fontos, hogy a megfelelő hálózati és tűzfalszabályok a Felhőbeli kommunikáció biztonságos peremén legyenek beállítva. A következő táblázat használható a konfigurációs tűzfalszabályok azon alapuló kiszolgálókon való konfigurálásához, amelyeken a Azure IoT Edge Runtime fut:
 
-|Protocol (Protokoll)|Port|Bejövő|Kimenő|Segédletek|
+|Protocol (Protokoll)|Port|bejövő|Kimenő|Segédletek|
 |--|--|--|--|--|
 |MQTT|8883|Letiltva (alapértelmezett)|Letiltva (alapértelmezett)|<ul> <li>Konfigurálja a kimenő (kimenő) t, ha a MQTT kommunikációs protokollként való használatakor megnyitható.<li>a IoT Edge nem támogatja a MQTT használatát. 1883 <li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul>|
 |AMQP|5671|Letiltva (alapértelmezett)|Megnyitás (alapértelmezett)|<ul> <li>Az IoT Edge alapértelmezett kommunikációs protokollja. <li> Úgy kell konfigurálni, hogy nyitva legyen, ha Azure IoT Edge nincs más támogatott protokollhoz konfigurálva, vagy a AMQP a kívánt kommunikációs protokoll.<li>a IoT Edge nem támogatja a AMQP használatát. 5672<li>A port letiltása, ha a Azure IoT Edge egy másik IoT Hub támogatott protokollt használ.<li>A bejövő (bejövő) kapcsolatokat le kell tiltani.</ul></ul>|
@@ -401,7 +401,7 @@ Adja meg a környezethez tartozó DNS-kiszolgálót a tároló motorjának beál
 
 A fenti példa egy nyilvánosan elérhető DNS-szolgáltatásra állítja be a DNS-kiszolgálót. Ha a peremhálózati eszköz nem fér hozzá ehhez az IP-címhez a környezetében, cserélje le az elérhető DNS-kiszolgáló címére.
 
-`daemon.json` elhelyezése a platform megfelelő helyén: 
+`daemon.json` elhelyezése a platform megfelelő helyén:
 
 | Platform | Földrajzi egység |
 | --------- | -------- |
@@ -410,7 +410,7 @@ A fenti példa egy nyilvánosan elérhető DNS-szolgáltatásra állítja be a D
 
 Ha a hely már tartalmaz `daemon.json` fájlt, adja hozzá a **DNS-** kulcsot, és mentse a fájlt.
 
-*A frissítések érvénybe léptetéséhez indítsa újra a tároló motorját*
+A frissítések érvénybe léptetéséhez indítsa újra a tároló motorját.
 
 | Platform | Parancs |
 | --------- | -------- |
@@ -431,7 +431,7 @@ A DNS-kiszolgáló minden modul *createOptions* beállítható a IoT Edge üzeme
 }
 ```
 
-Ügyeljen arra, hogy ezt a *edgeAgent* és a *edgeHub* modulok is megállítsa.
+Ügyeljen arra, hogy ezt a konfigurációt a *edgeAgent* és a *edgeHub* modulhoz is állítsa be.
 
 ## <a name="next-steps"></a>Következő lépések
 
