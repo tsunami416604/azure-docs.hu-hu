@@ -27,9 +27,11 @@
       href: visualize-power-bi.md
 - name: Alapelvek
   items:
-    - name: Az adatbetöltés áttekintése
-      displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
-      href: ingest-data-overview.md
+    - name: Adatfeldolgozás
+      items:
+        - name: Az adatbetöltés áttekintése
+          displayName: 'pipelines, connectors, plugins, Python, .NET, Java, Node, REST'
+          href: ingest-data-overview.md
     - name: Az adatmegjelenítés áttekintése
       href: viz-overview.md
     - name: Biztonsági áttekintés
@@ -84,18 +86,20 @@
           href: ingest-data-one-click.md
         - name: Streamek feldolgozása
           href: ingest-data-streaming.md
+        - name: SDK-k használata
+          items:
+            - name: Python
+              href: python-ingest-data.md
+            - name: Node SDK
+              href: node-ingest-data.md
+            - name: .Net Standard SDK
+              href: net-standard-ingest-data.md
         - name: Kafka
           href: ingest-data-kafka.md
-        - name: Python
-          href: python-ingest-data.md
-        - name: Node SDK
-          href: node-ingest-data.md
-        - name: .Net Standard SDK
-          href: net-standard-ingest-data.md
         - name: LogStash
           href: ingest-data-logstash.md
-        - name: Adatok másolása az Azure Data Factoryval
-          href: data-factory-load-data.md
+        - name: JSON formátumú adatok
+          href: ingest-json-formats.md
     - name: Adatok lekérdezése
       items:
         - name: Lekérdezések írása
@@ -204,6 +208,8 @@
           items:
             - name: Integráció a Data Factoryvel
               href: data-factory-integration.md
+            - name: Adatok másolása az Azure Data Factoryval
+              href: data-factory-load-data.md
             - name: Adatok tömeges másolása Azure Data Factory-sablonnal
               href: data-factory-template.md
             - name: Vezérlési parancsok futtatása az Azure Data Factoryvel

@@ -4,7 +4,7 @@
   items:
     - name: Tudnivalók a Time Series Insightsról
       href: time-series-insights-update-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Az Azure Time Series Insights általánosan elérhető verziója
@@ -91,7 +91,7 @@
           href: time-series-insights-send-events.md
         - name: A környezet skálázása
           href: time-series-insights-how-to-scale-your-environment.md
-        - name: A JSON testreszabása lekérdezésekhez
+        - name: A JSON testreszabása bejövő adatforgalomhoz és lekérdezésekhez
           href: how-to-shape-query-json.md
         - name: A szabályozás csökkentése
           href: time-series-insights-environment-mitigate-latency.md
@@ -107,7 +107,7 @@
           href: time-series-insights-update-how-to-troubleshoot.md
         - name: Adatmodellezés
           href: time-series-insights-update-how-to-tsm.md
-        - name: A JSON testreszabása lekérdezésekhez
+        - name: A JSON testreszabása bejövő adatforgalomhoz és lekérdezésekhez
           href: time-series-insights-update-how-to-shape-events.md
         - name: Csatlakozás a Power BI-hoz
           href: how-to-connect-power-bi.md

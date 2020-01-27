@@ -56,6 +56,8 @@
               href: supportability/networking-quota-requests.md
     - name: Az Azure Portal hibaelhárítása
       items:
+        - name: Törölt irányítópult helyreállítása
+          href: recover-shared-deleted-dashboard.md
         - name: A régióval vagy termékváltozattal kapcsolatos előfizetési problémák elhárítása
           href: supportability/sku-series-unavailable.md
         - name: Böngésző-nyomkövetés rögzítése hibaelhárításhoz
