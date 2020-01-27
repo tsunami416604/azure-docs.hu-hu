@@ -10,12 +10,12 @@ ms.date: 01/02/2020
 ms.topic: include
 ms.author: erhopf
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: 7654d952469e35c3b45af252e910cb0e36693029
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
+ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75772982"
+ms.lasthandoff: 01/26/2020
+ms.locfileid: "76761411"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -37,7 +37,7 @@ Az első lépések előtt:
 
 Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,69-76)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-20,68-75)]
 
 ## <a name="create-a-speech-configuration"></a>Beszédfelismerési konfiguráció létrehozása
 
@@ -45,8 +45,8 @@ Vegyünk fel egy olyan kódot, amely csontvázként működik a projekthez.
 
 Szúrja be ezt a kódot a `main()`kipróbálás/Catch blokkjában. Győződjön meg róla, hogy frissíti ezeket az értékeket:
 
-* Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra. 
-* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére. 
+* Cserélje le a `"YourLanguageUnderstandingSubscriptionKey"`t a LUIS-előrejelzési kulcsra.
+* Cserélje le a `"YourLanguageUnderstandingServiceRegion"`t a LUIS helyére.
 
 >[!TIP]
 > Ha segítségre van szüksége ezeknek az értékeknek a megtalálásához, tekintse meg [a Luis-alkalmazás létrehozása a szándék felismeréséhez](#create-a-luis-app-for-intent-recognition)című témakört.
@@ -65,14 +65,14 @@ Most hozzon létre egy `IntentRecognizer`. Szúrja be a kódot közvetlenül a b
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel és szándékok hozzáadása
 
-Hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára. 
+Hozzá kell rendelnie egy `LanguageUnderstandingModel`t a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára.
 
-Szúrja be ezt a kódot a `IntentRecognizer`alá. Győződjön meg arról, hogy a `"YourLanguageUnderstandingAppId"`t a LUIS-alkalmazás azonosítójával helyettesíti. 
+Szúrja be ezt a kódot a `IntentRecognizer`alá. Győződjön meg arról, hogy a `"YourLanguageUnderstandingAppId"`t a LUIS-alkalmazás azonosítójával helyettesíti.
 
 >[!TIP]
 > Ha segítségre van szüksége az érték megkereséséhez, tekintse meg [a Luis-alkalmazás létrehozása a szándék-felismeréshez](#create-a-luis-app-for-intent-recognition)című témakört.
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-36)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=33-35)]
 
 ## <a name="recognize-an-intent"></a>Szándék felismerése
 
@@ -80,19 +80,19 @@ A `IntentRecognizer` objektumban meg kell hívnia a `recognizeOnceAsync()` metó
 
 Szúrja be a kódot a modell alá:
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=41)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=40)]
 
 ## <a name="display-the-recognition-results-or-errors"></a>Az elismerési eredmények (vagy hibák) megjelenítése
 
 Ha a beszédfelismerési szolgáltatás visszaadja a felismerés eredményét, érdemes megtennie a dolgot. Megtartjuk az egyszerűséget, és kinyomtathatjuk az eredményt a konzolon.
 
-Szúrja be ezt a kódot a hívása alá `recognizeOnceAsync()`: [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=44-65)]
+Szúrja be ezt a kódot a hívása alá `recognizeOnceAsync()`: [!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=43-64)]
 
 ## <a name="release-resources"></a>Kiadási erőforrások
 
 Fontos, hogy a használat során kiszabadítsa a beszédfelismerési erőforrásokat. Szúrja be ezt a kódot a try/catch blokk végén:
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=67-68)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=66-67)]
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
@@ -101,7 +101,7 @@ Ezen a ponton a kódnak így kell kinéznie:
 > [!NOTE]
 > Ehhez a verzióhoz hozzáadott néhány megjegyzést.
 
-[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-76)]
+[!code-java[](~/samples-cognitive-services-speech-sdk/quickstart/java/jre/intent-recognition/src/speechsdk/quickstart/Main.java?range=6-75)]
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
