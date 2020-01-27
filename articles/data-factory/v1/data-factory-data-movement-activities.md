@@ -119,7 +119,7 @@ Ha a forrás-és fogadó adattárak is a felhőben vannak, Data Factory a szolg�
 | Japán | Kelet-Japán | Kelet-Japán |
 | &nbsp; | Nyugat-Japán | Kelet-Japán |
 | Dél-Korea | Korea középső régiója | Korea középső régiója |
-| &nbsp; | Dél-Korea | Korea középső régiója |
+| &nbsp; | Korea déli régiója | Korea középső régiója |
 
 Azt is megteheti, hogy explicit módon megadhatja Data Factory szolgáltatás azon régióját, amelyet a másolás végrehajtásához kíván használni a `executionLocation` tulajdonság megadásával a másolási tevékenység `typeProperties`. A tulajdonsághoz tartozó támogatott értékek az **adatáthelyezési** oszlophoz használt fenti régióban vannak felsorolva. Vegye figyelembe, hogy az adatai a másolás során a hálózaton keresztül haladnak át az adott régióban. Például a Koreában található Azure-áruházak közötti másoláshoz megadhatja, hogy `"executionLocation": "Japan East"` a japán régión keresztüli átirányításhoz (lásd: a [JSON minta](#by-using-json-scripts) hivatkozásként).
 

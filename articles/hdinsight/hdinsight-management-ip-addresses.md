@@ -69,7 +69,7 @@ Az Azure HDInsight Health and Management Services szolgáltatásban felsorolt IP
 | Japán | Kelet-Japán | 13.78.125.90</br>13.78.89.60 | \*: 443 | Bejövő |
 | &nbsp; | Nyugat-Japán | 40.74.125.69</br>138.91.29.150 | \*: 443 | Bejövő |
 | Dél-Korea | Korea középső régiója | 52.231.39.142</br>52.231.36.209 | \*: 443 | Bejövő |
-| &nbsp; | Dél-Korea | 52.231.203.16</br>52.231.205.214 | \*: 443 | Bejövő
+| &nbsp; | Korea déli régiója | 52.231.203.16</br>52.231.205.214 | \*: 443 | Bejövő
 | Egyesült Királyság | Egyesült Királyság nyugati régiója | 51.141.13.110</br>51.141.7.20 | \*: 443 | Bejövő |
 | &nbsp; | Egyesült Királyság déli régiója | 51.140.47.39</br>51.140.52.16 | \*: 443 | Bejövő |
 | Egyesült Államok | USA középső régiója | 13.89.171.122</br>13.89.171.124 | \*: 443 | Bejövő |

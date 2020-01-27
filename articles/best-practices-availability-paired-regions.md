@@ -35,7 +35,7 @@ Minden egyes Azure-régió párosítva van egy másik régióval, amely ugyanabb
 | Kanada |Közép-Kanada |Kelet-Kanada |
 | Kína |Észak-Kína |Kelet-Kína|
 | Kína |Kína 2. északi régiója |Kína 2. keleti régiója|
-| Európa |Észak-Európa (Írország) |Észak-Európa (Hollandia) |
+| Európa |Észak-Európa (Írország) |Nyugat-Európa (Hollandia) |
 | Franciaország |Közép-Franciaország|Dél-Franciaország|
 | Németország |Közép-Németország |Északkelet-Németország |
 | India |Közép-India |Dél-India |

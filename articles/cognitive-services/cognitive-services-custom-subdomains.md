@@ -92,7 +92,7 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | | Nyugat-Európa | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA nyugati régiója | `https://westus.api.cognitive.microsoft.com` |
 | | USA 2. nyugati régiója | `https://westus2.api.cognitive.microsoft.com` |
-| USA-beli államigazgatás | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
+| US Gov | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Kína | Kína 2. keleti régiója | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 

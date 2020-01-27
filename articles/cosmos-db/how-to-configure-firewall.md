@@ -40,7 +40,7 @@ Ha programozott módon engedélyezi az IP-hozzáférés-vezérlési házirendet,
 |------|----------|
 |Németország|51.4.229.218|
 |Kína|139.217.8.252|
-|USA-beli államigazgatás|52.244.48.71|
+|US Gov|52.244.48.71|
 |Minden más régió|104.42.195.92,40.76.54.131,52.176.6.30,52.169.50.45,52.187.184.26|
 
 A Azure Portal elérését engedélyezheti a hozzáférés **engedélyezése Azure Portal** lehetőség kiválasztásával, ahogy az alábbi képernyőfelvételen is látható:

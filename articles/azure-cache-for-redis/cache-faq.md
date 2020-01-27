@@ -160,7 +160,7 @@ Igen, a Redis-hez készült Azure cache Azure Government felhőben, az Azure Chi
 | Felhőbeli   | Redis DNS-utótagja            |
 |---------|---------------------------------|
 | Nyilvános  | *. redis.cache.windows.net       |
-| USA-beli államigazgatás  | *. redis.cache.usgovcloudapi.net |
+| US Gov  | *. redis.cache.usgovcloudapi.net |
 | Németország | *. redis.cache.cloudapi.de       |
 | Kína   | *. redis.cache.chinacloudapi.cn  |
 
