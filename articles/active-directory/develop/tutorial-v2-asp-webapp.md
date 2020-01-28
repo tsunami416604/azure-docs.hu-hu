@@ -16,13 +16,12 @@ ms.workload: identity
 ms.date: 08/28/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40
-ms.collection: M365-identity-device-management
-ms.openlocfilehash: cf1abc42fd3639bf76f752e5fe6a8f62c7d9e66d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 50eb88373b05d979d7f4b67b317e98c2a944459b
+ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75423469"
+ms.lasthandoff: 01/23/2020
+ms.locfileid: "76701330"
 ---
 # <a name="add-sign-in-to-microsoft-to-an-aspnet-web-app"></a>Bejelentkezés felvétele a Microsoftba ASP.NET-webalkalmazásba
 
@@ -42,7 +41,7 @@ A létrehozott minta alkalmazás egy olyan forgatókönyvön alapul, ahol a bön
 
 Ez az útmutató a következő könyvtárakat használja:
 
-|Részletes ismertetés|Leírás|
+|Erőforrástár|Leírás|
 |---|---|
 |[Microsoft.Owin.Security.OpenIdConnect](https://www.nuget.org/packages/Microsoft.Owin.Security.OpenIdConnect/)|Közbenső szoftver, amely lehetővé teszi az alkalmazások számára az OpenIdConnect hitelesítésre való használatát|
 |[Microsoft.Owin.Security.Cookies](https://www.nuget.org/packages/Microsoft.Owin.Security.Cookies)|Middleware, amely lehetővé teszi az alkalmazások számára a felhasználói munkamenetek cookie-k használatával történő fenntartását|
@@ -56,7 +55,7 @@ Ez a szakasz azt ismerteti, hogyan telepítheti és konfigurálhatja a hitelesí
 
 ### <a name="create-your-aspnet-project"></a>ASP.NET-projekt létrehozása
 
-1. A Visual Studióban: lépjen a **fájl** > **új** > **projekt**elemre.
+1. A Visual Studióban: Lépjen a **fájl** > **új** > **projekthez**.
 2. A **Visual C#\Web** területen válassza az **ASP.NET Web Application (.NET Framework)** (ASP.NET-webalkalmazás (.NET-keretrendszer)) lehetőséget.
 3. Nevezze el az alkalmazást, és kattintson az **OK** gombra.
 4. Válassza az **üres**lehetőséget, majd jelölje be a jelölőnégyzetet **MVC** -hivatkozások hozzáadásához.
@@ -86,7 +85,7 @@ A következő lépésekkel hozhat létre egy OWIN middleware indítási osztály
 > 1. Kattintson a jobb gombbal a projekt gyökérkönyvtárára, majd válassza a **hozzáadás** > **új elem** > **OWIN indítási osztály**elemet.<br/>
 > 2. Nevezze el **Startup.cs**.
 >
->> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás)]]] a névtér fölött.
+>> Győződjön meg arról, hogy a kiválasztott osztály egy OWIN indítási osztály, nem C# pedig egy standard osztály. Győződjön meg arról, hogy a következőt látja: [Assembly: OwinStartup (typeof ({névtér}). Indítás))] a névtér fölött.
 
 1. Adja hozzá a *OWIN* és a *Microsoft. IdentityModel* hivatkozásokat a Startup.cs-hez:
 
@@ -358,7 +357,7 @@ A Visual Studióban hozzon létre egy új nézetet a felhasználói jogcímek we
 
 Az alkalmazás regisztrálásához és az alkalmazás regisztrációs adatainak a megoldáshoz való hozzáadásához két lehetőség közül választhat:
 
-### <a name="option-1-express-mode"></a>1\. lehetőség: expressz mód
+### <a name="option-1-express-mode"></a>1\. módszer: Expressz mód
 
 Az alkalmazás gyors regisztrálásához kövesse az alábbi lépéseket:
 
@@ -366,7 +365,7 @@ Az alkalmazás gyors regisztrálásához kövesse az alábbi lépéseket:
 1. Adja meg az alkalmazás nevét, majd kattintson a **Regisztráció** elemre.
 1. Az új alkalmazás egyetlen kattintással való letöltéséhez és automatikus konfigurálásához kövesse az utasításokat.
 
-### <a name="option-2-advanced-mode"></a>2\. lehetőség: speciális mód
+### <a name="option-2-advanced-mode"></a>2\. lehetőség: Speciális mód
 
 Az alkalmazás regisztrálásához és az alkalmazás regisztrációs információinak a megoldáshoz való kézi hozzáadásához kövesse az alábbi lépéseket:
 
@@ -426,12 +425,12 @@ A felhasználó jogcímeinek megtekintéséhez kattintson a hivatkozásra, és k
 
 A vezérlő nézet megkeresése után a felhasználó alapszintű tulajdonságait tartalmazó táblát kell látnia:
 
-|Tulajdonság |Value (Díj) |Leírás |
+|Tulajdonság |Érték |Leírás |
 |---|---|---|
-|**Name (Név)** |Felhasználó teljes neve | A felhasználó vezeték- és utóneve
+|**Name** |Felhasználó teljes neve | A felhasználó vezeték- és utóneve
 |**Felhasználónév** |felhasználói<span>@domain.com</span> | A felhasználó azonosítására használt Felhasználónév|
-|**Tárgy** |Tárgy |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
-|**Bérlő azonosítója** |GUID | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|
+|**Subject** |Subject |Egy karakterlánc, amely egyedileg azonosítja a felhasználót a weben keresztül|
+|**Bérlő azonosítója** |Guid | A felhasználó Azure AD-szervezetét egyedileg jelképező **GUID**|
 
 Emellett meg kell jelennie a hitelesítési kérelemben szereplő összes jogcím táblájának. További információ: [azonosító jogkivonatban található jogcímek listája](https://docs.microsoft.com/azure/active-directory/develop/active-directory-token-and-claims).
 
@@ -446,7 +445,7 @@ Ha névtelen felhasználóként szeretné tesztelni a hozzáférést a `Authoriz
 
 A rendszer a védett vezérlő nézet használatára kéri a hitelesítést.
 
-## <a name="advanced-options"></a>Speciális lehetőségek
+## <a name="advanced-options"></a>Speciális beállítások
 
 <!--start-collapse-->
 ### <a name="protect-your-entire-website"></a>A teljes webhely megóvása
@@ -463,24 +462,24 @@ Alapértelmezés szerint az útmutató alapján létrehozott alkalmazás létreh
 
 Az alkalmazás felhasználói bejelentkezési hozzáférésének korlátozásához több lehetőség is rendelkezésre áll.
 
-#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1\. lehetőség: korlátozza, hogy a felhasználók csak egy szervezet Active Directory példányáról jelentkezzenek be az alkalmazásba (egy bérlő)
+#### <a name="option-1-restrict-users-from-only-one-organizations-active-directory-instance-to-sign-in-to-your-application-single-tenant"></a>1\. módszer: Csak egy adott szervezet Active Directory-példányának felhasználói jelentkezhetnek be az alkalmazásba (egybérlős)
 
-Ezt a beállítást gyakran használják *LOB-alkalmazásokhoz*: Ha azt szeretné, hogy az alkalmazás csak az adott Azure ad-példányhoz tartozó fiókokból fogadja a bejelentkezéseket (beleértve az adott példány *vendég fiókjait* is), kövesse az alábbi lépéseket:
+Ezt a beállítást gyakran használják *LOB-alkalmazásokhoz*: Ha azt szeretné, hogy az alkalmazás csak egy adott Azure AD-példányhoz tartozó fiókokról fogadja el a bejelentkezéseket (a példány *vendégfiókjait* is beleértve), kövesse az alábbi lépéseket:
 
 1. A web. config fájlban módosítsa a `Tenant` paraméter értékét `Common`ról a szervezet bérlői nevére, például `contoso.onmicrosoft.com`.
 2. A [OWIN indítási osztályában](#configure-the-authentication-pipeline)állítsa a `ValidateIssuer` argumentumot `true`re.
 
-#### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>2\. lehetőség: a felhasználók hozzáférésének korlátozása a szervezetek egy adott listájában
+#### <a name="option-2-restrict-access-to-users-in-a-specific-list-of-organizations"></a>2\. lehetőség: A felhasználók hozzáférésének korlátozása a szervezetek egy adott listájában
 
 A bejelentkezési hozzáférést csak azokra a felhasználói fiókokra korlátozhatja, amelyek egy olyan Azure AD-szervezetben találhatók, amely az engedélyezett szervezetek listáján található:
 1. A [OWIN indítási osztályában](#configure-the-authentication-pipeline)állítsa a `ValidateIssuer` argumentumot `true`re.
 2. Állítsa a `ValidIssuers` paraméter értékét az engedélyezett szervezetek listájára.
 
-#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3\. lehetőség: egyéni módszer használata a kibocsátók érvényesítéséhez
+#### <a name="option-3-use-a-custom-method-to-validate-issuers"></a>3\. lehetőség: Egyéni módszer használata a kibocsátók érvényesítéséhez
 
 A **IssuerValidator** paraméter használatával egyéni módszert alkalmazhat a kiállítók érvényesítésére. További információ a paraméter használatáról: [TokenValidationParameters Class](/previous-versions/visualstudio/dn464192(v=vs.114)).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogy a Web Apps hogyan hívhatja meg a webes API-kat.
 

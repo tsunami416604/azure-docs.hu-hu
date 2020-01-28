@@ -10,13 +10,13 @@ metadata:
   ms.collection: performance
   author: CarlRabeler
   ms.author: carlrab
-  ms.date: 01/24/2020
-  ms.openlocfilehash: 237e9dccb84948b9d60ba6d54367d538b90e1d55
-  ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+  ms.date: 01/25/2020
+  ms.openlocfilehash: 9ef3980b61f60deaa929c932cecc093a82025cbd
+  ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/24/2020
-  ms.locfileid: "76715216"
+  ms.lasthandoff: 01/26/2020
+  ms.locfileid: "76756623"
 landingContent:
 - title: Tudnivalók a monitorozással és teljesítmény-finomhangolással kapcsolatban
   linkLists:
@@ -56,7 +56,7 @@ landingContent:
   linkLists:
   - linkListType: overview
     links:
-    - text: Mesterséges intelligencia használata az Azure Portalon a teljesítmény finomhangolásához
+    - text: Monitorozás és finomhangolás mesterséges intelligencia használatával
       url: sql-database-performance.md
   - linkListType: concept
     links:
@@ -94,6 +94,8 @@ landingContent:
       url: sql-database-xevent-db-diff-from-svr.md
     - text: Rugalmas skálázás teljesítménydiagnosztikája
       url: sql-database-hyperscale-performance-diagnostics.md
+    - text: Intelligens lekérdezés-feldolgozás
+      url: https://docs.microsoft.com/sql/relational-databases/performance/intelligent-query-processing
 - title: Erőforrások skálázása
   linkLists:
   - linkListType: overview

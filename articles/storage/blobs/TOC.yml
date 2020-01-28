@@ -619,18 +619,6 @@
       items:
         - name: Adatelemzés a Databricksszel
           href: ../blobs/data-lake-storage-quickstart-create-databricks-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Blobok kezelése kód nélkül
-          items:
-            - name: PowerShell
-              href: storage-quickstart-blobs-powershell.md
-            - name: parancssori felület
-              href: storage-quickstart-blobs-cli.md
-        - name: Fejlesztés blobok használatával
-          items:
-            - name: .NET
-              href: storage-quickstart-blobs-dotnet.md
-            - name: Python
-              href: storage-quickstart-blobs-python.md
     - name: Oktatóanyagok
       items:
         - name: 'Adatok kinyerése, átalakítása és betöltése az Azure Databricks használatával'
@@ -657,36 +645,12 @@
           href: ../blobs/data-lake-storage-namespace.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: Ajánlott eljárások
           href: data-lake-storage-best-practices.md
-        - name: Hozzáférési szintek
-          items:
-            - name: Hozzáférési szintek
-              href: storage-blob-storage-tiers.md
-            - name: Azure Blob Storage-életciklus felügyelete
-              href: storage-lifecycle-management-concepts.md
-        - name: Biztonság
-          items:
-            - name: Tárolóbiztonság – áttekintés
-              href: ../blobs/security-recommendations.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Hozzáférés-vezérlés
-              href: data-lake-storage-access-control.md
-        - name: Naplózás
-          items:
-            - name: Storage Analytics
-              href: ../common/storage-analytics.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Storage Analytics-naplók
-              href: ../common/storage-analytics-logging.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Eseménykezelés
-          href: storage-blob-event-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Hozzáférés-vezérlés (könyvtárak és fájlok)
+          href: data-lake-storage-access-control.md
     - name: Útmutató
       items:
-        - name: Tárfiókok létrehozása és kezelése
-          items:
-            - name: Tárfiók létrehozása a Data Lake-hez
-              href: ../blobs/data-lake-storage-quickstart-create-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Adatok kezelése a Storage Explorerrel
-              href: ../blobs/data-lake-storage-explorer.md
-            - name: Tárfiók frissítése
-              href: ../common/storage-account-upgrade.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
+        - name: Tárfiók létrehozása a Data Lake-hez
+          href: ../common/storage-account-create.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
         - name: 'Könyvtárak, fájlok és ACL-ek kezelése'
           items:
             - name: .NET
@@ -700,43 +664,7 @@
             - name: parancssori felület
               href: data-lake-storage-directory-file-acl-cli.md
             - name: Storage Explorer
-              href: data-lake-storage-how-to-set-permissions-storage-explorer.md
-        - name: Adatátvitel
-          items:
-            - name: AzCopy
-              items:
-                - name: Bevezetés
-                  href: ../common/storage-use-azcopy-v10.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Használat a Data Lake Storage 2. generációjával
-                  href: ../common/storage-use-azcopy-blobs.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: 'Konfigurálás, optimalizálás, hibaelhárítás'
-                  href: ../common/storage-use-azcopy-configure.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: A Distcp használata
-              href: ../blobs/data-lake-storage-use-distcp.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Az Azure Data Factory használata
-              href: ../../data-factory/load-azure-data-lake-storage-gen2.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-        - name: Adatok védelme
-          items:
-            - name: Tűzfalak és virtuális hálózatok konfigurálása
-              href: ../common/storage-network-security.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Felhasználó által kezelt kulcsok konfigurálása szolgáltatástitkosításhoz
-              items:
-                - name: Portál
-                  href: ../common/storage-encryption-keys-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-encryption-keys-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-encryption-keys-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Hozzáférési jogosultságok felügyelete RBAC használatával
-              items:
-                - name: Portál
-                  href: ../common/storage-auth-aad-rbac-portal.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: PowerShell
-                  href: ../common/storage-auth-aad-rbac-powershell.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-                - name: Azure CLI
-                  href: ../common/storage-auth-aad-rbac-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
-            - name: Fájl- és könyvtárszintű tulajdonságok beállítása
-              href: ../blobs/data-lake-storage-how-to-set-permissions-storage-explorer.md
+              href: data-lake-storage-explorer.md
         - name: Teljesítmény optimalizálása
           items:
             - name: Áttekintés
@@ -761,43 +689,16 @@
           href: ../blobs/data-lake-storage-use-power-bi.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json
     - name: Referencia
       items:
-        - name: PowerShell
-          href: /powershell/module/azure.storage
-        - name: Azure CLI
-          href: /cli/azure/storage
         - name: .NET
-          items:
-            - name: Blobok (12.x verzió)
-              href: /dotnet/api/azure.storage.blobs
-            - name: Adatáthelyezés
-              href: /dotnet/api/microsoft.azure.storage.datamovement
-            - name: Storage Resource Provider
-              href: /dotnet/api/overview/azure/storage/management
+          href: /dotnet/api/azure.storage.files.datalake
         - name: Java
-          items:
-            - name: Blobok (12.x verzió)
-              href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-blob/12.0.0/index.html'
-            - name: Blobok (8.x verzió)
-              href: /java/api/com.microsoft.azure.storage.blob
-            - name: Storage Resource Provider
-              href: /java/api/overview/azure/storage/management
-        - name: JavaScript (12.x verzió)
-          href: /javascript/api/@azure/storage-blob/
-        - name: Python (12.x verzió)
-          href: /python/api/azure-storage-blob/
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/java/azure-storage-file-datalake/12.0.0-preview.6/index.html'
+        - name: Python
+          href: 'https://azuresdkdocs.blob.core.windows.net/$web/python/azure-storage-file-datalake/12.0.0b5/index.html'
+        - name: Javascript
+          href: 'https://www.npmjs.com/package/@azure/storage-file-datalake/v/12.0.0-preview.6'
         - name: REST
-          items:
-            - name: 'Blobok, üzenetsorok, táblák és fájlok'
-              href: /rest/api/storageservices
-            - name: 2. generációs Data Lake Storage
-              href: /rest/api/storageservices/data-lake-storage-gen2
-            - name: Erőforrás-szolgáltató
-              href: /rest/api/storagerp
-            - name: Import/Export
-              href: /rest/api/storageimportexport
-        - name: Resource Manager-sablon
-          displayName: ARM
-          href: /azure/templates/microsoft.storage/allversions
+          href: /rest/api/storageservices/data-lake-storage-gen2
     - name: További források
       items:
         - name: Ismert problémák
