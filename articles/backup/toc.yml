@@ -178,6 +178,10 @@
           items:
             - name: Backup
               href: backup-azure-afs-automation.md
+            - name: Visszaállítás
+              href: restore-afs-powershell.md
+            - name: Kezelés
+              href: manage-afs-powershell.md
     - name: Azure-beli virtuális gépen tárolt SAP HANA-adatbázis biztonsági mentése
       items:
         - name: Áttekintés
