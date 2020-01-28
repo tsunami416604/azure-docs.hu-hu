@@ -98,7 +98,7 @@ A forgalom áttelepítésének részletei az egyes régiókban lévő új átjá
 | Kelet-Japán           | 13.78.61.196, 40.79.184.8, 13.78.106.224, 191.237.240.43, 40.79.192.5 | 
 | Nyugat-Japán           | 104.214.148.156, 40.74.100.192, 191.238.68.11, 40.74.97.10 | 
 | Korea középső régiója        | 52.231.32.42       |
-| Dél-Korea          | 52.231.200.86      |
+| Korea déli régiója          | 52.231.200.86      |
 | USA északi középső régiója     | 23.96.178.199, 23.98.55.75, 52.162.104.33 |
 | Észak-Európa         | 40.113.93.91, 191.235.193.75, 52.138.224.1 | 
 | Dél-Afrika északi régiója   | 102.133.152.0      |

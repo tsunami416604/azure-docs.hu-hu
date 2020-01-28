@@ -222,7 +222,7 @@ A standard fájlmegosztás minden régióban 5 TiB-ig elérhető. Bizonyos régi
 |Kelet-Japán     |LRS     |
 |Nyugat-Japán     |LRS     |
 |Korea középső régiója  |LRS     |
-|Dél-Korea    |LRS     |
+|Korea déli régiója    |LRS     |
 |USA északi középső régiója |LRS   |
 |Észak-Európa   |LRS     |
 |Dél-India    |LRS     |

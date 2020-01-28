@@ -119,8 +119,8 @@ Az üzletmenet folytonossága és a vész-helyreállítás (BCDR) miatt előford
 | Nyilvános | USA 2. keleti régiója | https:\//kailani-ess.one.microsoft.com | USA középső régiója | https:\//tm-kailani-ess.one.microsoft.com |
 | Nyilvános | Kelet-Japán | https:\//japaneast01.afs.azure.net | Nyugat-Japán | https:\//tm-japaneast01.afs.azure.net |
 | Nyilvános | Nyugat-Japán | https:\//japanwest01.afs.azure.net | Kelet-Japán | https:\//tm-japanwest01.afs.azure.net |
-| Nyilvános | Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Dél-Korea | https:\//tm-koreacentral01.afs.azure.net/ |
-| Nyilvános | Dél-Korea | https:\//koreasouth01.afs.azure.net/ | Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
+| Nyilvános | Korea középső régiója | https:\//koreacentral01.afs.azure.net/ | Korea déli régiója | https:\//tm-koreacentral01.afs.azure.net/ |
+| Nyilvános | Korea déli régiója | https:\//koreasouth01.afs.azure.net/ | Korea középső régiója | https:\//tm-koreasouth01.afs.azure.net/ |
 | Nyilvános | USA északi középső régiója | https:\//northcentralus01.afs.azure.net | USA déli középső régiója | https:\//tm-northcentralus01.afs.azure.net |
 | Nyilvános | Észak-Európa | https:\//kailani7.one.microsoft.com | Nyugat-Európa | https:\//tm-kailani7.one.microsoft.com |
 | Nyilvános | USA déli középső régiója | https:\//southcentralus01.afs.azure.net | USA északi középső régiója | https:\//tm-southcentralus01.afs.azure.net |
