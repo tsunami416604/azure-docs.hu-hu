@@ -4,7 +4,7 @@
   items:
     - name: A Network Watcher névjegye
       href: network-watcher-monitoring-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Virtuális gép forgalomszűrési problémáinak diagnosztizálása – Portal
@@ -101,6 +101,8 @@
               href: network-watcher-nsg-flow-logging-cli.md
             - name: REST
               href: network-watcher-nsg-flow-logging-rest.md
+            - name: Azure Resource Manager
+              href: network-watcher-nsg-flow-logging-azure-resource-manager.md
         - name: NSG-folyamatnapló tárolóblobjainak törlése
           href: network-watcher-delete-nsg-flow-log-blobs.md
         - name: NSG-forgalom naplóinak elemzése

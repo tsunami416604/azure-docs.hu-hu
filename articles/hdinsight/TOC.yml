@@ -503,16 +503,20 @@
               href: ./hadoop/apache-ambari-troubleshoot-down-hosts-services.md
             - name: Elavult Apache Ambari-riasztások
               href: ./hadoop/apache-ambari-troubleshoot-stale-alerts.md
+            - name: Apache Ambari-könyvtárriasztások
+              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
             - name: Lassú vagy meghibásodott HDInsight-fürt hibaelhárítása
               href: ./hdinsight-troubleshoot-failed-cluster.md
             - name: Apache Hadoop HDFS-hibaelhárítás
               href: ./hdinsight-troubleshoot-hdfs.md
             - name: Apache Hadoop YARN-hibaelhárítás
               href: ./hdinsight-troubleshoot-yarn.md
+            - name: Érvénytelen BCFile hiba a Yarn-naplóból
+              href: ./hadoop/troubleshoot-yarn-log-invalid-bcfile.md
             - name: Data Lake Store-fájlok hibaelhárítása
               href: ./hadoop/hdinsight-troubleshoot-data-lake-files.md
-            - name: Apache Ambari-könyvtárriasztások
-              href: ./hadoop/apache-ambari-troubleshoot-directory-alerts.md
+            - name: Portütközés a szolgáltatások indításakor
+              href: ./hadoop/troubleshoot-port-conflict.md
 - name: Apache Kafka
   items:
     - name: Áttekintés
@@ -870,5 +874,5 @@
           items:
             - name: Az ESP hitelesítéssel kapcsolatos problémái
               href: ./domain-joined/domain-joined-authentication-issues.md
-            - name: Nem sikerült bejelentkezni a Zeppelinbe ESP-vel
-              href: ./domain-joined/domain-joined-zeppelin-signin.md
+            - name: A fürtlétrehozás meghiúsul a DomainNotFound hibakóddal
+              href: ./domain-joined/troubleshoot-domainnotfound.md

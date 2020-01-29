@@ -2,10 +2,12 @@
   href: index.yml
 - name: Áttekintés
   items:
-    - name: Bevezetés
+    - name: Introduction (Bevezetés)
       href: iot-introduction.md
     - name: Azure IoT-szolgáltatások és -technológiák
       href: iot-services-and-technologies.md
+    - name: Támogatási és súgólehetőségek
+      href: iot-support-help.md
 - name: Biztonság
   items:
     - name: Javaslatok

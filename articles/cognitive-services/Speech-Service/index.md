@@ -1,15 +1,15 @@
 ---
 layout: HubPage
-ms.date: 11-21-2019
+ms.date: 01-24-2020
 ms.topic: hub-page
 title: A Speech szolgáltatás dokumentációja
 description: Bevezetés a Speech Service használatába. Beszédfelismerés, beszédszintézis, valós idejű fordítások, beszédátírás vagy beszéd integrálása a robotokba.
-ms.openlocfilehash: 7ae8f33e949519cc32d81b591503a159e045178b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a965090be737a10633ead2ca1ed7033ec061ed7f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75381273"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771981"
 ---
 <div id="main" class="v2">
     <div class="container">
@@ -316,6 +316,63 @@ ms.locfileid: "75381273"
                                     </div>
                                 </a>
                             </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#speech-translation">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Nyelvi támogatás</h3>
+                                                    <p>Megtudhatja, hogy a szándékfelismerés mely nyelveket támogatja.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-pricing.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Díjszabás</h3>
+                                                    <p>További információ a szándékfelismeréshez kapcsolódó költségekről.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/luis/what-is-luis">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>A dokumentáció elolvasása</h3>
+                                                    <p>Megtudhatja, hogyan építhet be szándékfelismerést az alkalmazásaiba, eszközeibe és termékeibe. Tartalmazza a fogalmakat, oktatóanyagokat, API-referenciát és kiadási megjegyzéseket.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                     <li>
@@ -441,25 +498,6 @@ ms.locfileid: "75381273"
                         <a href="#conversationtranscription">Beszédátírás</a>
                         <ul id="conversationtranscription" class="cardsC">
                             <li>
-                                <a href="https://aka.ms/speech/cts-overview">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Áttekintés</h3>
-                                                    <p>További információ a beszédátírásról és a termékekbe való integrálásáról.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
                                 <a href="https://aka.ms/speech/cts-microphone">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -491,6 +529,25 @@ ms.locfileid: "75381273"
                                                 <div class="cardText">
                                                     <h3>Beszélgetések aszinkron átírása</h3>
                                                     <p>Megtudhatja, hogyan írhat át beszélgetéseket aszinkron módon, kérdezheti le az állapotot, és töltheti le a kimeneteket.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/call-center-transcription">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Telefonos ügyfélszolgálati felvételek átírása</h3>
+                                                    <p>Megtudhatja, hogyan írhat át nagy mennyiségű, különböző rendszerekről származó telefonos adatot.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -535,13 +592,8 @@ ms.locfileid: "75381273"
                                     </div>
                                 </a>
                             </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#voice-assistants">Hangvezérelt asszisztensek</a>
-                        <ul id="voice-assistants" class="cardsC">
                             <li>
-                                <a href="https://aka.ms/speech/va-overview">
+                                <a href="https://aka.ms/speech/cts-overview">
                                     <div class="cardSize">
                                         <div class="cardPadding">
                                             <div class="card">
@@ -551,14 +603,19 @@ ms.locfileid: "75381273"
                                                     </div>
                                                 </div>
                                                 <div class="cardText">
-                                                    <h3>Áttekintés</h3>
-                                                    <p>További információ a hangvezérelt asszisztensek létrehozásáról.</p>
+                                                    <h3>A dokumentáció elolvasása</h3>
+                                                    <p>További információ a beszédátírásról és a termékekbe való integrálásáról.</p>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                 </a>
                             </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#voice-assistants">Hangvezérelt asszisztensek</a>
+                        <ul id="voice-assistants" class="cardsC">
                             <li>
                                 <a href="https://aka.ms/speech/va-bot-framework">
                                     <div class="cardSize">
@@ -591,6 +648,106 @@ ms.locfileid: "75381273"
                                                 <div class="cardText">
                                                     <h3>Egyéni parancsok használata</h3>
                                                     <p>Megtudhatja, hogyan hozhat létre egyszerűen hatékony hangalapú parancs- és vezérlési alkalmazásokat, amelyekkel a felhasználók saját hangjukat használva hajthatnak végre feladatokat.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://aka.ms/speech/va-overview">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-reference.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>A dokumentáció elolvasása</h3>
+                                                    <p>További információ a hangvezérelt asszisztensek létrehozásáról.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#deploy-architecture">Üzemeltetés</a>
+                        <ul id="deploy-architecture" class="cardsC">
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started#create-a-speech-resource-in-azure">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-how-to.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Azure Speech-szolgáltatáserőforrás létrehozása</h3>
+                                                    <p>Megtudhatja, hogyan kaphat előfizetési kulcsot, hogyan hozhat létre Speech-erőforrást és hogyan végezheti el az első lépéseket.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="speech-container-howto.md?tabs=stt">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-containers.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Speech-szolgáltatástárolók üzembe helyezése</h3>
+                                                    <p>Megtudhatja, hogyan használhatja a Speech-tárolókat a helyszínen, a Kubernetesszel, a Helmmel vagy az Azure Container Instanceszel.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/sovereign-clouds">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Független felhők</h3>
+                                                    <p>A Speech-szolgáltatáserőforrások rendelkezésre állása különálló Azure-felhőkben.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="regions.md">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Támogatott régiók</h3>
+                                                    <p>Megtudhatja, hol támogatott a Speech szolgáltatás.</p>
                                                 </div>
                                             </div>
                                         </div>
@@ -658,7 +815,45 @@ ms.locfileid: "75381273"
                                         </div>
                                     </div>
                                 </a>
-                            </li>                                                    
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/scenario-availability">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Forgatókönyvek és funkciók elérhetősége</h3>
+                                                    <p>Megismerheti a Speech SDK funkcióinak számos felhasználási körét különféle programozási nyelveken és környezetekben.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/regions">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-regions.png" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Támogatott régiók</h3>
+                                                    <p>Megismerheti a Speech szolgáltatás rendelkezésre álló régióit és végpontjait.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
                         </ul>
                     </li>
                 </ul>
@@ -849,6 +1044,25 @@ ms.locfileid: "75381273"
                                 </a>
                             </li>
                             <li>
+                                <a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/language-support#text-to-speech">
+                                    <div class="cardSize">
+                                        <div class="cardPadding">
+                                            <div class="card">
+                                                <div class="cardImageOuter">
+                                                    <div class="cardImage bgdAccent1">
+                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
+                                                    </div>
+                                                </div>
+                                                <div class="cardText">
+                                                    <h3>Nyelvi támogatás</h3>
+                                                    <p>További információ a Custom Voice programozásáról és beszélt nyelvi támogatásáról.</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
                                 <a href="https://aka.ms/speech/custom-tts-pricing">
                                     <div class="cardSize">
                                         <div class="cardPadding">
@@ -870,97 +1084,6 @@ ms.locfileid: "75381273"
                             </li>
                         </ul>
                     </li>
-                </ul>
-            </li>
-            <li>
-                <a href="#scenarios">Forgatókönyvek</a>
-                <ul id="scenarios">
-                    <li>
-                        <a href="#use-cases">Használati esetek</a>
-                        <ul id="use-cases" class="cardsC">
-                            <li>
-                                <a href="call-center-transcription.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-call-center-transcription.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Telefonos ügyfélszolgálati felvételek átírása</h3>
-                                                    <p>Gyakori forgatókönyv diktálás esetén a nagy mennyiségű telefonos adat átírása, amelyek olyan forrásokból származnak, mint a hangalapú interaktív válaszrendszer (IVR). </p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="scenario-availability.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-generic-programming-languages.jpg" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Forgatókönyvek és funkciók elérhetősége</h3>
-                                                    <p>Megismerheti, mely forgatókönyvek és funkciók érhetők el az egyes platformokon és programozási nyelveken.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#deploy-architecture">Üzembe helyezés</a>
-                        <ul id="deploy-architecture" class="cardsC">
-                            <li>
-                                <a href="speech-container-howto.md?tabs=stt">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-containers.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Speech szolgáltatás üzembe helyezése tárolókba</h3>
-                                                    <p>A Dockerrel üzembe helyezheti a Speech szolgáltatást egy tárolópéldányba.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="regions.md">
-                                    <div class="cardSize">
-                                        <div class="cardPadding">
-                                            <div class="card">
-                                                <div class="cardImageOuter">
-                                                    <div class="cardImage bgdAccent1">
-                                                        <img src="media/hub/speech-regions.png" alt="" />
-                                                    </div>
-                                                </div>
-                                                <div class="cardText">
-                                                    <h3>Támogatott régiók</h3>
-                                                    <p>Megtudhatja, hol támogatott a Speech szolgáltatás.</p>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </li>                                    
-                        </ul>
-                    </li>                    
                 </ul>
             </li>
         </ul>

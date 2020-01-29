@@ -378,6 +378,8 @@
   items:
     - name: Azure CLI
       href: /cli/azure/iot
+    - name: Azure PowerShell
+      href: '/powershell/module/az.iothub#iot'
     - name: .NET (Szolgáltatás)
       href: /dotnet/api/microsoft.azure.devices
     - name: .NET (Eszközök)
@@ -432,7 +434,7 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-megoldások
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
@@ -440,6 +442,8 @@
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
 - name: További források
   items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 'Azure IoT-minták C#-hoz (.NET)'
       href: 'https://azure.microsoft.com/resources/samples/azure-iot-samples-csharp/'
     - name: Azure IoT-minták Node.js-hez

@@ -105,9 +105,13 @@
           href: /azure/azure-maps
         - name: Time Series Insights
           href: /azure/time-series-insights
-    - name: IoT Edge
+    - name: Edge-megoldások
       items:
         - name: Azure IoT Edge
           href: /azure/iot-edge
         - name: IoT eszközoldali SDK-k
           href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+- name: További források
+  items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help

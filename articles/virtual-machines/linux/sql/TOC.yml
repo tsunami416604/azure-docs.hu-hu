@@ -2,10 +2,14 @@
   items:
     - name: Tudnivalók a Linux SQL Server virtuális gépekről
       href: sql-server-linux-virtual-machines-overview.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   items:
     - name: SQL-alapú virtuális gép létrehozása – portál
       href: provision-sql-server-linux-virtual-machine.md
+- name: Oktatóanyagok
+  items:
+    - name: Azure RHEL-alapú virtuális gépek rendelkezésreállási csoportjának beállítása a STONITH használatával
+      href: sql-server-linux-rhel-ha-stonith-tutorial.md
 - name: Referencia
   items:
     - name: Azure CLI

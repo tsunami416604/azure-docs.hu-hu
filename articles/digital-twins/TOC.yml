@@ -4,7 +4,7 @@
   items:
     - name: Az Azure Digital Twins bemutatása
       href: about-digital-twins.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Szabad szobák keresése
@@ -73,6 +73,8 @@
       href: reference-user-defined-functions-client-library.md
 - name: További források
   items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help
     - name: 'Azure Digital Twins-minták C# nyelvhez (.NET)'
       href: 'https://github.com/Azure-Samples/digital-twins-samples-csharp'
     - name: Azure Digital Twins REST API
@@ -93,3 +95,31 @@
       href: 'https://azure.microsoft.com/roadmap/?category=iot'
     - name: Videók
       href: 'https://channel9.msdn.com/Search?term=%22Azure%20Digital%20Twins%22&lang-en=true'
+- name: Kapcsolódó témakörök
+  items:
+    - name: Megoldások
+      items:
+        - name: IoT-megoldásgyorsítók
+          href: /azure/iot-suite
+        - name: IoT-központ
+          href: /azure/iot-central/iot-support-help
+    - name: Platformszolgáltatások
+      items:
+        - name: IoT Hub
+          href: /azure/iot-hub
+        - name: IoT Plug and Play
+          href: /azure/iot-pnp
+        - name: IoT Hub Device Provisioning Service
+          href: /azure/iot-dps
+        - name: Maps
+          href: /azure/azure-maps
+        - name: Szolgáltatási SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+        - name: Time Series Insights
+          href: /azure/time-series-insights
+    - name: Edge-megoldások
+      items:
+        - name: IoT Edge
+          href: /azure/iot-edge
+        - name: IoT eszközoldali SDK-k
+          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'

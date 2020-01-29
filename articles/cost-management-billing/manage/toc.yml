@@ -75,6 +75,8 @@
           href: pay-by-invoice.md
         - name: További előfizetések létrehozása
           href: create-subscription.md
+        - name: CSP-előfizetések átvitele
+          href: transfer-subscriptions-subscribers-csp.md
         - name: Előfizetési adatok exportálása
           href: export-subscriptions.md
     - name: Nagyvállalati szerződéses előfizetések kezelése

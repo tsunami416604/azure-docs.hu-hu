@@ -137,6 +137,8 @@
           href: 'https://github.com/microsoft/tsiclient/blob/master/docs/API.md'
 - name: További források
   items:
+    - name: Támogatási és súgólehetőségek
+      href: /azure/iot-fundamentals/iot-support-help
     - name: Ügyfelek adatkérései
       href: time-series-insights-customer-data-requests.md
     - name: Azure-ütemterv

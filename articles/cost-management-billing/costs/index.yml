@@ -9,14 +9,13 @@ metadata:
   ms.collection: collection
   author: bandersmsft
   ms.author: banders
-  ms.manager: dougeby
-  ms.date: 12/18/2019
-  ms.openlocfilehash: 33821c027d242da1a9361a796280213b5265dcde
-  ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+  ms.date: 01/24/2020
+  ms.openlocfilehash: 274d4f6b88923fc0c6d3cda03a4ffa73535e13b1
+  ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
   ms.translationtype: HT
   ms.contentlocale: hu-HU
-  ms.lasthandoff: 01/15/2020
-  ms.locfileid: "75983222"
+  ms.lasthandoff: 01/28/2020
+  ms.locfileid: "76769655"
 landingContent:
 - title: A Cost Management ismertetése
   linkLists:
@@ -32,6 +31,10 @@ landingContent:
       url: understand-cost-mgt-data.md
     - text: A hatókörök ismertetése és használata
       url: understand-work-scopes.md
+  - linkListType: video
+    links:
+    - text: Azure Cost Management-videók
+      url: https://www.youtube.com/c/AzureCostManagement
 - title: Az Azure-költségek elemzése és kezelése
   linkLists:
   - linkListType: quickstart
@@ -58,14 +61,6 @@ landingContent:
       url: get-started-partners.md
     - text: Kapcsolódás Power BI Desktoppal
       url: /power-bi/desktop-connect-azure-cost-management
-- title: Az AWS-költségek elemzése és kezelése
-  linkLists:
-  - linkListType: how-to-guide
-    links:
-    - text: AWS-integráció beállítása és konfigurálása
-      url: aws-integration-set-up-configure.md
-    - text: Az AWS-költségek és -használat kezelése
-      url: aws-integration-manage.md
 - title: Cost Management API-k
   linkLists:
   - linkListType: concept
@@ -82,3 +77,19 @@ landingContent:
       url: /azure/templates/microsoft.consumption/budgets
     - text: Cost Management REST API-minták
       url: https://github.com/Azure-Samples/Cost-Management-Samples
+- title: A legújabb funkciók
+  linkLists:
+  - linkListType: whats-new
+    links:
+    - text: Havi frissítések
+      url: https://azure.microsoft.com/blog/tag/cost-management/
+    - text: Funkciófrissítések
+      url: https://azure.microsoft.com/updates/?product=cost-management
+- title: Az AWS-költségek elemzése és kezelése
+  linkLists:
+  - linkListType: how-to-guide
+    links:
+    - text: AWS-integráció beállítása és konfigurálása
+      url: aws-integration-set-up-configure.md
+    - text: Az AWS-költségek és -használat kezelése
+      url: aws-integration-manage.md
