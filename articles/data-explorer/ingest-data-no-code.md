@@ -6,13 +6,13 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: tutorial
-ms.date: 11/17/2019
-ms.openlocfilehash: 2574f27b4b86bab276a56f95fda9fa2a1434c095
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.date: 01/29/2020
+ms.openlocfilehash: c160f04ef7120a6c90991d8e6ecdf98b2f0d348e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995932"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836559"
 ---
 # <a name="tutorial-ingest-and-query-monitoring-data-in-azure-data-explorer"></a>Oktatóanyag: figyelési adatfeldolgozás és-lekérdezés az Azure Adatkezelő 
 
@@ -330,7 +330,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
 2. Adja hozzá a [frissítési szabályzatot](/azure/kusto/concepts/updatepolicy) a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a *DiagnosticRawRecords* köztes adattábla bármely újonnan betöltött adattáblájában, és betölti az eredményeket a *DiagnosticMetrics* táblába:
 
     ```kusto
-    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticMetrics policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticMetricsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="diagnostic-logstabdiagnostic-logs"></a>[Diagnosztikai naplók](#tab/diagnostic-logs)
@@ -344,7 +344,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
         | mv-expand events = Records
         | where isnotempty(events.operationName)
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Result = tostring(events.resultType),
@@ -363,7 +363,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
 2. Adja hozzá a [frissítési szabályzatot](/azure/kusto/concepts/updatepolicy) a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a *DiagnosticRawRecords* köztes adattábla bármely újonnan betöltött adattáblájában, és betölti az eredményeket a *DiagnosticLogs* táblába:
 
     ```kusto
-    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True"}]'
+    .alter table DiagnosticLogs policy update @'[{"Source": "DiagnosticRawRecords", "Query": "DiagnosticLogsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 
 # <a name="activity-logstabactivity-logs"></a>[Tevékenységnaplók](#tab/activity-logs)
@@ -376,7 +376,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
         ActivityLogsRawRecords
         | mv-expand events = Records
         | project
-            Timestamp = todatetime(events.time),
+            Timestamp = todatetime(events['time']),
             ResourceId = tostring(events.resourceId),
             OperationName = tostring(events.operationName),
             Category = tostring(events.category),
@@ -393,7 +393,7 @@ A tevékenység naplójának az adattáblához való leképezéséhez használja
 2. Adja hozzá a [frissítési szabályzatot](/azure/kusto/concepts/updatepolicy) a cél táblához. Ez a szabályzat automatikusan futtatja a lekérdezést a *ActivityLogsRawRecords* köztes adattábla bármely újonnan betöltött adattáblájában, és betölti az eredményeket a *ActivityLogs* táblába:
 
     ```kusto
-    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True"}]'
+    .alter table ActivityLogs policy update @'[{"Source": "ActivityLogsRawRecords", "Query": "ActivityLogRecordsExpand()", "IsEnabled": "True", "IsTransactional": true}]'
     ```
 ---
 
@@ -435,12 +435,12 @@ Válasszon ki egy erőforrást, amelyből exportálni kívánja a metrikákat. S
 
     ![Diagnosztikai beállítások](media/ingest-data-no-code/diagnostic-settings.png)
 
-1. Megnyílik a **diagnosztika beállításai** panel. Tegye a következőket:
+1. Megnyílik a **diagnosztika beállításai** panel. Hajtsa végre a következő lépéseket:
    1. Adja meg a diagnosztikai napló adatait a *ADXExportedData*néven.
    1. A **napló**területen jelölje be a **SucceededIngestion** és a **FailedIngestion** jelölőnégyzetet is.
    1. A **metrika**területen jelölje be a **lekérdezési teljesítmény** jelölőnégyzetet.
    1. Jelölje ki az **adatfolyamot az Event hub számára** jelölőnégyzetet.
-   1. Válassza ki a **Konfigurálás** lehetőséget.
+   1. Válassza a **Konfigurálás**lehetőséget.
 
       ![Diagnosztikai beállítások ablaktábla](media/ingest-data-no-code/diagnostic-settings-window.png)
 

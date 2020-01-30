@@ -1,5 +1,5 @@
 ---
-title: Kapcsolatokkal és hálózatkezeléssel kapcsolatos problémák
+title: Kapcsolódási és hálózati problémák
 titleSuffix: Azure Cloud Services
 description: Ez a cikk a Microsoft Azure Cloud Services kapcsolatával és hálózatkezelésével kapcsolatos gyakori kérdéseket sorolja fel.
 services: cloud-services
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: e41c2424e970c9493d612da99b64b8c2d649002f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 22f7c0ba98390b391a79a121f120b8ab6172cfb9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75386748"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845367"
 ---
 # <a name="connectivity-and-networking-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services kapcsolódási és hálózatkezelési problémái: gyakori kérdések (GYIK)
 
@@ -101,8 +101,8 @@ Mivel ez a állomásfejléc-kötés a csdef-fájlban van kikényszerítve, a szo
 
 Annak érdekében, hogy a felhőalapú szolgáltatás (más néven VIP) nyilvános IP-címe soha ne legyen módosítva, hogy az egyes ügyfelek ne tudják a szokásos módon engedélyezni azokat, javasoljuk, hogy fenntartott IP-címet társítson hozzá. Ellenkező esetben az Azure által biztosított virtuális IP-cím le van foglalva az előfizetésből, ha törli az üzemelő példányt. A sikeres VIP-swap művelethez egyedi, fenntartott IP-címekre van szükség a termelési és az előkészítési tárolóhelyek esetében. Enélkül a swap művelet sikertelen lesz. Az IP-cím lefoglalásához és a felhőalapú szolgáltatáshoz való hozzárendeléséhez tekintse meg a következő cikkeket:
 
-- [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-- [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+- [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+- [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 Ha több példánya van a szerepkörökhöz, a RIP és a felhőalapú szolgáltatás társítása nem okozhat állásidőt. Azt is megteheti, hogy hozzáadja az Azure-adatközpont IP-tartományát az engedélyezési listához. Az összes Azure IP-tartomány megtalálható a [Microsoft letöltőközpontból](https://www.microsoft.com/en-us/download/details.aspx?id=41653).
 

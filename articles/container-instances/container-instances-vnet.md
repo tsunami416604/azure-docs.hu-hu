@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan helyezhet üzembe tároló csoportokat egy új 
 ms.topic: article
 ms.date: 01/06/2020
 ms.author: danlep
-ms.openlocfilehash: 12260dcb43a675414d38cb5067b230832dd2d16b
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 920ad9598f17fbab25218827045a396d953a6531
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75887956"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845174"
 ---
 # <a name="deploy-container-instances-into-an-azure-virtual-network"></a>Tároló-példányok üzembe helyezése Azure-beli virtuális hálózatban
 
@@ -33,6 +33,7 @@ Bizonyos korlátozások akkor lépnek érvénybe, ha a tároló-csoportokat virt
 
 * A tároló-csoportok alhálózatra történő telepítéséhez az alhálózat nem tartalmazhat más típusú erőforrásokat. Távolítsa el a meglévő alhálózatból az összes meglévő erőforrást a tároló-csoportok üzembe helyezése előtt, vagy hozzon létre egy új alhálózatot.
 * Nem használhat [felügyelt identitást](container-instances-managed-identity.md) egy virtuális hálózatra központilag telepített tároló csoportba.
+* Egy virtuális hálózatra központilag üzembe helyezett tároló csoportban nem engedélyezhető az [élő](container-instances-liveness-probe.md) vagy a [készültségi](container-instances-readiness-probe.md) mintavétel.
 * A további hálózati erőforrások miatt a tároló-csoportok virtuális hálózatra történő telepítése általában lassabb, mint a standard Container-példányok üzembe helyezése.
 
 [!INCLUDE [container-instances-vnet-limits](../../includes/container-instances-vnet-limits.md)]
@@ -261,7 +262,7 @@ az container delete --resource-group myResourceGroup --name appcontaineryaml -y
 
 
 > [!NOTE]
-> Ha hibaüzenet jelenik meg a hálózati profil eltávolítására tett kísérlet során, engedélyezze a 2-3 nap elteltével, hogy a platform automatikusan csökkentse a problémát, és próbálkozzon újra a törléssel. Ha továbbra is problémába ütközik a hálózati profil eltávolításával, [Nyisson meg egy támogatási kérést](https://azure.microsoft.com/support/create-ticket/).
+> Ha hibaüzenet jelenik meg a hálózati profil eltávolítására tett kísérlet során, engedélyezze a 3-4 nap elteltével, hogy a platform automatikusan csökkentse a problémát, és próbálkozzon újra a törléssel. Ha azonnal törölnie kell egy hálózati profilt, [Nyisson meg egy támogatási kérést, amely](https://azure.microsoft.com/support/create-ticket/) a Azure Container instances szolgáltatásra hivatkozik.
 
 Ennek a funkciónak jelenleg több további parancsra van szüksége a korábban létrehozott hálózati erőforrások törléséhez. Ha a cikk előző részében szereplő, a virtuális hálózat és az alhálózat létrehozásához használt példás parancsokat használta, akkor a következő parancsfájllal törölheti a hálózati erőforrásokat.
 

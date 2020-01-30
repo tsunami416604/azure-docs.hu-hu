@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/28/2020
 ms.author: dapine
 ms.custom: seodec18
-ms.openlocfilehash: 34d362a4b28ade5116c68e2243a2341bab9fca9d
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 008f0b1b83e8ba856fae2fe40b026dcc645e46ab
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760623"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845333"
 ---
 # <a name="language-and-region-support-for-the-speech-service"></a>Nyelvi és területi támogatás a Speech Service-hez
 
@@ -72,7 +72,7 @@ https://cris.ai -> Click on Adaptation Data -> scroll down to section "Pronuncia
 `ta-IN` | Tamil (India) | Igen | Nyelvi modell
 `te-IN` | Telugu (India) | Igen | Nem
 `th-TH` | Thai (Thaiföld) | Igen | Nem
-`tr-TR` | Törökország | Igen | Nem
+`tr-TR` | Török (Törökország) | Igen | Nem
 `zh-CN` | Kínai (mandarin, egyszerűsített) | Igen | Akusztikai modell<br>Nyelvi modell
 `zh-HK` | Kínai (kantoni, hagyományos) | Igen | Nyelvi modell
 `zh-TW` | Kínai (tajvani mandarin) | Igen | Nyelvi modell
@@ -111,7 +111,7 @@ Több mint 75 standard hang érhető el több mint 45 nyelven és területi beá
 
 Területi beállítás | Nyelv | Nem | Teljes szolgáltatásnév-hozzárendelés | Rövid név
 -------|----------|---------|----------|----------
-<sup>**1**</sup>`ar-EG` | Arab (Egyiptom) | Nő | "Microsoft Server Speech Text to Speech hang (AR-EG, a és a (z))" | "AR-EG-a (z)"
+<sup>1</sup>`ar-EG` | Arab (Egyiptom) | Nő | "Microsoft Server Speech Text to Speech hang (AR-EG, a és a (z))" | "AR-EG-a (z)"
 `ar-SA` | Arab (Szaúd-Arábiai) | Férfi | "Microsoft Server Speech Text to Speech hang (AR-SA, Naayf)" | "AR-SA-Naayf"
 `bg-BG` | bolgár | Férfi | "Microsoft Server Speech Text to Speech Voice (BG-BG, Ivan)" | "BG-BG-Ivan"
 `ca-ES` | Katalán (Spanyolország) | Nő | "Microsoft Server Speech Text to Speech Voice (CA-ES, HerenaRUS)" | "CA-ES-HerenaRUS"
@@ -181,7 +181,7 @@ Területi beállítás | Nyelv | Nem | Teljes szolgáltatásnév-hozzárendelés
 `ta-IN` | Tamil (India) | Férfi | "Microsoft Server Speech Text to Speech hang (TA-IN, Valluvar)" | "TA-IN-Valluvar"
 `te-IN` | Telugu (India) | Nő | "Microsoft Server Speech Text to Speech hang (te-IN, chiton)" | "saját
 `th-TH` | thai | Férfi | "Microsoft Server Speech Text to Speech Voice (th-TH, Pattara)" | "th-TH-Pattara"
-`tr-TR` | török | Nő | "Microsoft Server Speech Text to Speech hang (TR-TR, SedaRUS)" | "TR-TR-SedaRUS"
+`tr-TR` | Török (Törökország) | Nő | "Microsoft Server Speech Text to Speech hang (TR-TR, SedaRUS)" | "TR-TR-SedaRUS"
 `vi-VN` | vietnami | Férfi | "Microsoft Server Speech Text to Speech Voice (VI – VN, an)" | "VI-VN-an"
 `zh-CN` | Kínai (anyaország) | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, HuihuiRUS)" | "zh-CN-HuihuiRUS"
 | | | Nő | "Microsoft Server Speech Text to Speech Voice (zh-CN, Yaoyao, Apollo)" | "zh-CN-Yaoyao-Apollo"

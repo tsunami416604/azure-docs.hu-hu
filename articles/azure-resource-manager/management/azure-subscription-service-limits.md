@@ -3,13 +3,13 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/02/2020
-ms.openlocfilehash: ebfa1139ba0649280634bc0fd18627ba74f0c3cc
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.date: 01/28/2020
+ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294116"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845994"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 
@@ -93,7 +93,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Nyilvános IP-cím](#publicip-address)
   * [Privát kapcsolat](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtual Network](#networking-limits)
+  * [Virtuális hálózat](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)

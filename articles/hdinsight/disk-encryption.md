@@ -7,14 +7,14 @@ ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 01/06/2019
-ms.openlocfilehash: 2c015db828bcbfa8b26f519b3a4707b5ec69b8f3
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: b452cb986e6f662aeb33c2a475f18695ebc75745
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982497"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846065"
 ---
-# <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcs lemezének titkosítása
+# <a name="customer-managed-key-disk-encryption"></a>Ügyfél által felügyelt kulcson alapuló lemeztitkosítás
 
 Az Azure HDInsight támogatja az ügyfél által felügyelt kulcsokat, más néven Bring Your Own Key (BYOK) titkosítást a felügyelt lemezeken és a HDInsight-fürt virtuális gépekhez csatolt. Ez a funkció lehetővé teszi, hogy a Azure Key Vault segítségével kezelje a HDInsight-fürtökön tárolt adatok védelmét biztosító titkosítási kulcsokat. Előfordulhat, hogy a fürtök egy vagy több mellékelt Azure Storage-fiókkal rendelkeznek, amelyekben a titkosítási kulcsok Microsoft által felügyelt vagy felhasználó által felügyelt, de a titkosítási szolgáltatás eltérő.
 
@@ -79,7 +79,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     b. A **rendszerbiztonsági tag kiválasztása**területen válassza ki a létrehozott, felhasználó által hozzárendelt felügyelt identitást.
 
-    ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/add-key-vault-access-policy-select-principal.png)
+    ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/disk-encryption/azure-portal-add-access-policy.png)
 
     c. Kulcs **engedélyeinek** beállítása a **beolvasáshoz**, a **kicsomagoláshoz**és a **becsomagolási kulcshoz**.
 
@@ -100,6 +100,8 @@ Most már készen áll egy új HDInsight-fürt létrehozására. Az ügyfél ál
 ### <a name="using-the-azure-portal"></a>Az Azure Portal használata
 
 A fürt létrehozása során adja meg a teljes kulcs URL-címét, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/myClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
+
+![Új fürt létrehozása](./media/disk-encryption/create-cluster-portal.png)
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 

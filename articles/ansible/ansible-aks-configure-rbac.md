@@ -4,12 +4,12 @@ description: Ismerje meg, hogyan konfigurálhatja a RBAC az Azure Kubernetes Ser
 keywords: Ansible, Azure, devops, bash, cloudshellben, ötletekbõl, AK, tároló, AK, kubernetes, Azure Active Directory, RBAC
 ms.topic: tutorial
 ms.date: 04/30/2019
-ms.openlocfilehash: 1be123eb06bd2679169478daf27a7148d2a8b055
-ms.sourcegitcommit: 28688c6ec606ddb7ae97f4d0ac0ec8e0cd622889
+ms.openlocfilehash: 5fac42383ee56318cc4b8f39323c02d05853dbb6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/18/2019
-ms.locfileid: "74156872"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836966"
 ---
 # <a name="tutorial-configure-role-based-access-control-rbac-roles-in-azure-kubernetes-service-aks-using-ansible"></a>Oktatóanyag: szerepköralapú hozzáférés-vezérlési (RBAC) szerepkörök konfigurálása az Azure Kubernetes szolgáltatásban (ak) a Ansible használatával
 
@@ -119,7 +119,7 @@ Mentse a következő forgatókönyvet `aks-create.yml` néven:
 
 RBAC-kötés létrehozásához először le kell kérnie az Azure AD-objektum AZONOSÍTÓját. 
 
-1. Bejelentkezés az [Azure Portalra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
+1. Jelentkezzen be az [Azure portálra](https://go.microsoft.com/fwlink/p/?LinkID=525040).
 
 1. A lap tetején található Keresés mezőben adja meg a `Azure Active Directory`. 
 
@@ -156,7 +156,7 @@ subjects:
   name: <your-aad-account>
 ```
 
-Cserélje le az `&lt;your-aad-account>` helyőrzőt az Azure AD-bérlői [objektum azonosítójával](#get-the-azure-ad-object-id).
+Cserélje le az `<your-aad-account>` helyőrzőt az Azure AD-bérlői [objektum azonosítójával](#get-the-azure-ad-object-id).
 
 Mentse a következő ötletekbõl-t, amely üzembe helyezi az új szerepkört az AK-ban – `aks-kube-deploy.yml`:
 

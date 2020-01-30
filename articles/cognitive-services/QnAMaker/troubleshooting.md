@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 01/23/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: e56722831ef05364b8ee4d342553158fba19ffaa
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 159b00f9417f4a572655f1f93208dbc755012922
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760725"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844853"
 ---
 # <a name="troubleshooting-for-qna-maker"></a>QnA Maker hibaelhárítása
 
@@ -95,7 +95,7 @@ Az alapértelmezett üzenet az App Service beállításainak részét képezi.
 
 ### <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Miért nem kapok kibontásban a SharePoint-hivatkozást?
 
-További információ: [adatforrás helyei](./Concepts/data-sources-supported.md#data-source-locations) .
+További információ: [adatforrás helyei](./Concepts/knowledge-base.md#data-source-locations) .
 
 ### <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>A Tudásbázisban létrehozott frissítések nem jelennek meg a közzététel során. Mi ennek az oka?
 

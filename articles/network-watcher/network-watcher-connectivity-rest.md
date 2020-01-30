@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit az Azure REST API használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
@@ -14,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
-ms.openlocfilehash: 792556a63b5ca9ef53a33960e8284354972b3895
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: f1d4b02731f9e0f22fb1eaba03e55e49f84cd87a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275957"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845094"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
 
@@ -31,7 +29,7 @@ ms.locfileid: "74275957"
 
 Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 

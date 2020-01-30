@@ -3,12 +3,12 @@ title: Alkalmazások, szerepkörök és szolgáltatások felderítése helyszín
 description: Ismerje meg, hogyan derítheti fel az alkalmazásokat, szerepköröket és szolgáltatásokat a helyszíni kiszolgálókon Azure Migrate Server Assessment használatával.
 ms.topic: article
 ms.date: 11/20/2019
-ms.openlocfilehash: 454d70a53c3ea00a4dc592703c0bc04d5517b97f
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 7c3a6360e051b8cb694393695e75578ce2c135ec
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76280764"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846316"
 ---
 # <a name="discover-machine-apps-roles-and-features"></a>Gépi alkalmazások, szerepkörök és szolgáltatások felderítése
 
@@ -28,7 +28,7 @@ Alkalmazások felderítése Azure Migrate használatával: a kiszolgáló érté
 2. Győződjön meg arról, hogy [hozzáadta](how-to-assess.md) a Azure Migrate: Server Assessment eszközt egy projekthez.
 4. A VMWare virtuális gépeknek a Azure Migrate berendezéssel való felfedésére és értékelésére vonatkozó [VMware-követelmények](migrate-support-matrix-vmware.md#vmware-requirements) ellenőrzése.
 5. Az Azure Migrate berendezés telepítésére [vonatkozó követelmények](migrate-appliance.md) megtekintése.
-6. Ellenőrizze az alkalmazások felderítésének [támogatását és követelményeit](/migrate-support-matrix-vmware.md#application-discovery) .
+6. Ellenőrizze az alkalmazások felderítésének [támogatását és követelményeit](migrate-support-matrix-vmware.md#application-discovery) .
 
 ## <a name="prepare-for-app-discovery"></a>Az alkalmazások felderítésének előkészítése
 

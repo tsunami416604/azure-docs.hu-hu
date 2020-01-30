@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/25/2019
 ms.author: kasing
 ms.custom: include file
-ms.openlocfilehash: c550174bff0529e0fc619f1de79c41ab7cf62a36
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0ffbbe5505c9316f362ebbc41d311f97408f1b17
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76021153"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887694"
 ---
 Ez a cikk bemutatja, hogyan telepíthet át szolgáltatásként (IaaS) elérhető erőforrásokat a Klasszikusról Resource Manager-alapú üzemi modellekre, és hogyan kapcsolódhat az előfizetésben található két üzembe helyezési modellből a virtuális hálózat használatával helyek közötti átjárók. További információ: [Azure Resource Manager funkciók és előnyök](../articles/azure-resource-manager/management/overview.md). 
 
@@ -124,6 +124,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 | Számítási szolgáltatások | Több rendelkezésre állási csoportot vagy több rendelkezésre állási készletet tartalmazó Cloud Services. |Ez jelenleg nem támogatott. A Migrálás előtt helyezze át a Virtual Machinest ugyanarra a rendelkezésre állási csoportba. |
 | Számítási szolgáltatások | Virtuális gép Azure Security Center bővítménnyel | A Azure Security Center automatikusan telepíti a bővítményeket a Virtual Machines a biztonsági és riasztási riasztások figyelésére. Ezek a bővítmények általában automatikusan települnek, ha a Azure Security Center szabályzat engedélyezve van az előfizetésben. A Virtual Machines áttelepítése érdekében tiltsa le az előfizetéshez tartozó Security Center-szabályzatot, amely eltávolítja a Virtual Machines Security Center figyelési bővítményét. |
 | Számítási szolgáltatások | Virtuális gép biztonsági mentési vagy pillanatkép-bővítménnyel | Ezek a bővítmények a Azure Backup szolgáltatással konfigurált virtuális gépre vannak telepítve. A virtuális gépek áttelepítése nem támogatott, az [itt](https://docs.microsoft.com/azure/virtual-machines/windows/migration-classic-resource-manager-faq#vault) található útmutatást követve megőrizheti a Migrálás előtt végrehajtott biztonsági mentéseket.  |
+| Számítási szolgáltatások | Virtuális gép Azure Site Recovery bővítménnyel | Ezek a bővítmények a Azure Site Recovery szolgáltatással konfigurált virtuális gépre vannak telepítve. Amíg a Site Recovery által használt tárterület áttelepítése működni fog, a rendszer hatással lesz a jelenlegi replikálásra. A tároló áttelepítése után le kell tiltania és engedélyeznie kell a virtuális gépek replikálását. |
 | Network (Hálózat) |Virtuális gépeket és webes/feldolgozói szerepköröket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. Migrálás előtt helyezze át a webes/feldolgozói szerepköröket a saját Virtual Networkba. A klasszikus Virtual Network áttelepítését követően az áttelepített Azure Resource Manager Virtual Network a klasszikus Virtual Networkkal is összehívhatók, hogy hasonló konfigurációt érjenek el, mint korábban.|
 | Network (Hálózat) | Klasszikus expressz Route-áramkörök |Ez jelenleg nem támogatott. A IaaS áttelepítés megkezdése előtt át kell telepíteni ezeket az áramköröket Azure Resource Manager. További információ: [ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager](../articles/expressroute/expressroute-move.md)-alapú üzemi modellbe.|
 | Azure App Service |App Service környezeteket tartalmazó virtuális hálózatok |Ez jelenleg nem támogatott. |

@@ -9,12 +9,12 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 77b4b265b2e993ccdbc9e07fd2dab5a37ed22a6b
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 5dfa17fd702b76e2cfaa7a91066dbc6749c1069e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992157"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844513"
 ---
 # <a name="security-and-authentication"></a>Biztonság és hitelesítés
 
@@ -37,7 +37,7 @@ A következő szakaszok részletesen ismertetik a beállítások védelmét és 
 
 Event Grid modul HTTP-és HTTPS-végpontokat is üzemeltet. Minden IoT Edge modulhoz hozzá van rendelve egy kiszolgálói tanúsítvány a IoT Edge biztonsági démonával. A végpont védelméhez a kiszolgálói tanúsítványt használjuk. A lejáratkor a modul automatikusan frissíti a IoT Edge biztonsági démonból származó új tanúsítvánnyal.
 
-Alapértelmezés szerint csak HTTPS-kommunikáció engedélyezett. Ezt a viselkedést **beérkező: serverAuth: tlsPolicy** Configuration használatával bírálhatja felül. A következő táblázat a tulajdonság lehetséges értékeit rögzíti.
+Alapértelmezés szerint csak HTTPS-kommunikáció engedélyezett. Ezt a viselkedést **inbound__serverAuth__tlsPolicy** konfiguráción keresztül bírálhatja felül. A következő táblázat a tulajdonság lehetséges értékeit rögzíti.
 
 | Lehetséges érték (ek) | Leírás |
 | ---------------- | ------------ |
@@ -49,50 +49,50 @@ Alapértelmezés szerint csak HTTPS-kommunikáció engedélyezett. Ezt a viselke
 
 Az ügyfelek felügyeleti és/vagy futásidejű műveleteket végző entitások. Az ügyfelek lehetnek más IoT Edge modulok, nem IoT alkalmazások.
 
-Event Grid modul két típusú ügyfél-hitelesítést támogat: –
+Event Grid modul két típusú ügyfél-hitelesítést támogat:
 
 * Közös hozzáférésű aláírás (SAS) kulcs alapú
-* tanúsítvány alapú
+* Tanúsítvány alapú
 
 Alapértelmezés szerint a Event Grid modul úgy van konfigurálva, hogy csak a tanúsítványalapú hitelesítést fogadja el. Indításkor Event Grid modul beolvassa a "TrustBundle" elemet IoT Edge biztonsági démonból, és a használatával érvényesíti az összes ügyféltanúsítványt. Az erre a láncra nem feloldható Ügyféltanúsítványok `UnAuthorized`el lesznek utasítva.
 
 ### <a name="certificate-based-client-authentication"></a>Tanúsítványalapú ügyfél-hitelesítés
 
-A tanúsítvány alapú hitelesítés alapértelmezés szerint be van kapcsolva. A tanúsítvány alapú hitelesítést letilthatja a **beérkező: clientAuth: clientCert: enabled**tulajdonság használatával. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
+A tanúsítvány alapú hitelesítés alapértelmezés szerint be van kapcsolva. Dönthet úgy, hogy letiltja a tanúsítványalapú hitelesítést a ( **inbound__clientAuth__clientCert__enabled**) tulajdonság használatával. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------ |
-| igaz | Default (Alapértelmezett): Az összes kérelem beírása a Event Grid modulba az ügyféltanúsítvány bemutatása érdekében. Emellett be kell állítania a **bejövő: clientAuth: clientCert: Source**lehetőséget.
-| hamis | Ne kényszerítse az ügyfelet a tanúsítvány bemutatására.
+| igaz | Default (Alapértelmezett): Az összes kérelem beírása a Event Grid modulba az ügyféltanúsítvány bemutatása érdekében. Emellett konfigurálnia kell **inbound__clientAuth__clientCert__source**.
+| false | Ne kényszerítse az ügyfelet a tanúsítvány bemutatására.
 
-A következő táblázat a lehetséges érték (eke) t rögzíti a **bejövő: clientAuth: clientCert: Source**
+Az alábbi táblázat a lehetséges érték (eke) t rögzíti **inbound__clientAuth__clientCert__source**
 
 | Lehetséges érték (ek) | Leírás |
 | ---------------- | ------------ |
 | IoT Edge | Default (Alapértelmezett): A IoT Edge Trustbundle használatával ellenőrzi az összes ügyféltanúsítványt.
 
-Ha egy ügyfél önaláírt, alapértelmezés szerint a Event Grid modul elveti az ilyen kérelmeket. Megadhatja, hogy az önaláírt Ügyféltanúsítványok engedélyezve legyenek a **bejövő: clientAuth: clientCert: allowUnknownCA** tulajdonság használatával. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
+Ha egy ügyfél önaláírt, alapértelmezés szerint a Event Grid modul elveti az ilyen kérelmeket. Dönthet úgy, hogy engedélyezi az önaláírt Ügyféltanúsítványok használatát **inbound__clientAuth__clientCert__allowUnknownCA** tulajdonság használatával. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------|
 | igaz | Default (Alapértelmezett): Lehetővé teszi az önaláírt tanúsítványok sikeres megjelenítését.
-| hamis | Sikertelen kérések, ha önaláírt tanúsítványok jelennek meg.
+| false | Sikertelen kérések, ha önaláírt tanúsítványok jelennek meg.
 
 >[!IMPORTANT]
->Éles környezetekben érdemes lehet a **bejövő: clientAuth: clientCert: allowUnknownCA** **értéket**beállítani.
+>Éles környezetekben érdemes lehet **Hamis értéket**beállítani **inbound__clientAuth__clientCert__allowUnknownCA** .
 
 ### <a name="sas-key-based-client-authentication"></a>SAS-kulcs alapú ügyfél-hitelesítés
 
 A tanúsítványalapú hitelesítésen kívül a Event Grid modul is képes az SAS-kulcson alapuló hitelesítésre. Az SAS-kulcs olyan, mint a Event Grid modulban konfigurált titok, amelyet az összes bejövő hívás ellenőrzéséhez használnia kell. Az ügyfeleknek meg kell adniuk a titkot az "AEG-sas-Key" HTTP-fejlécben. Ha nem egyezik, a rendszer elutasítja a kérelmet `UnAuthorized`.
 
-Az SAS-kulcs alapú hitelesítés vezérlésére szolgáló konfiguráció **bejövő: clientAuth: sasKeys: engedélyezve**.
+Az SAS-kulcs alapú hitelesítés vezérlésének beállítása **inbound__clientAuth__sasKeys__enabled**.
 
 | Lehetséges érték (ek) | Leírás  |
 | ----------------  | ------------ |
-| igaz | Lehetővé teszi az SAS-kulcson alapuló hitelesítés használatát. **Bejövő szükséges: clientAuth: sasKeys: key1** vagy **bejövő: clientAuth: sasKeys: key2**
-| hamis | Default (Alapértelmezett): Az SAS-kulcs alapú hitelesítés le van tiltva.
+| igaz | Lehetővé teszi az SAS-kulcson alapuló hitelesítés használatát. **Inbound__clientAuth__sasKeys__key1** vagy **inbound__clientAuth__sasKeys__key2** szükséges
+| false | Default (Alapértelmezett): Az SAS-kulcs alapú hitelesítés le van tiltva.
 
- **bejövő: clientAuth: sasKeys: key1** és **bejövő: clientAuth: sasKeys: key2** olyan kulcsok, amelyekkel a Event Grid modult konfigurálhatja a bejövő kérések elleni kereséshez. Legalább egy kulcsot be kell állítani. A kérést kérő ügyfélnek be kell mutatnia a kulcsot az "**AEG-sas-Key**" kérelem fejlécének részeként. Ha mindkét kulcs konfigurálva van, az ügyfél a kulcsok egyikét láthatja.
+ a **inbound__clientAuth__sasKeys__key1** és a **inbound__clientAuth__sasKeys__key2** olyan kulcsok, amelyekkel a Event Grid modult konfigurálhatja a bejövő kérelmekkel való kereséshez. Legalább egy kulcsot be kell állítani. A kérést kérő ügyfélnek be kell mutatnia a kulcsot az "**AEG-sas-Key**" kérelem fejlécének részeként. Ha mindkét kulcs konfigurálva van, az ügyfél a kulcsok egyikét láthatja.
 
 > [!NOTE]
 >Mindkét hitelesítési módszert konfigurálhatja. Ebben az esetben az SAS-kulcs először van bejelölve, és ha ez nem sikerül, a rendszer a tanúsítványalapú hitelesítést hajtja végre. A sikeres kéréshez csak az egyik hitelesítési módszernek kell sikeresnek lennie.
@@ -103,14 +103,14 @@ A kimenő környezetben lévő ügyfél Event Grid modulra hivatkozik. Az elvég
 
 Minden IoT Edge modulhoz hozzá van rendelve egy azonosító tanúsítvány a IoT Edge biztonsági démonával. A kimenő hívásokhoz a személyazonossági tanúsítványt használjuk. A lejáratkor a modul automatikusan frissíti a IoT Edge biztonsági démonból származó új tanúsítvánnyal.
 
-A kimenő ügyfél-hitelesítés vezérlésére szolgáló konfiguráció **kimenő: clientAuth: clientCert: engedélyezve**.
+A kimenő ügyfél-hitelesítés vezérlésére szolgáló konfiguráció **outbound__clientAuth__clientCert__enabled**.
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------ |
-| igaz | Default (Alapértelmezett): Az Event Grid modul összes kimenő kérelmét egy tanúsítvány bemutatására kéri. Be kell állítania a **kimenő: clientAuth: clientCert: Source**lehetőséget.
-| hamis | Nincs szükség Event Grid modulra a tanúsítvány bemutatásához.
+| igaz | Default (Alapértelmezett): Az Event Grid modul összes kimenő kérelmét egy tanúsítvány bemutatására kéri. A **outbound__clientAuth__clientCert__source**konfigurálására van szükség.
+| false | Nincs szükség Event Grid modulra a tanúsítvány bemutatásához.
 
-A tanúsítvány forrását vezérlő konfiguráció a **kimenő: clientAuth: clientCert: Source**.
+A tanúsítvány forrását vezérlő konfiguráció **outbound__clientAuth__clientCert__source**.
 
 | Lehetséges érték (ek) | Leírás |
 | ---------------- | ------------ |
@@ -120,29 +120,29 @@ A tanúsítvány forrását vezérlő konfiguráció a **kimenő: clientAuth: cl
 
 Egy Event Grid előfizető egyik típusa a "webhook". Alapértelmezés szerint a rendszer csak a HTTPS-végpontokat fogadja el az ilyen előfizetők számára.
 
-A webhook cél-házirendjét a következő konfiguráció vezérli **: kimenő: webhook: httpsOnly**.
+A webhook célhely-házirend **outbound__webhook__httpsOnly**vezérlésére szolgáló konfiguráció.
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------ |
 | igaz | Default (Alapértelmezett): Csak HTTPS-végponttal rendelkező előfizetőket engedélyez.
-| hamis | Engedélyezi az előfizetők számára a HTTP-vagy HTTPS-végpontot.
+| false | Engedélyezi az előfizetők számára a HTTP-vagy HTTPS-végpontot.
 
-Alapértelmezés szerint Event Grid modul érvényesíti az előfizető kiszolgálói tanúsítványát. Az érvényesítést kihagyhatja, ha felülbírálja a **kimenő: webhook: skipServerCertValidation**. A lehetséges értékek a következők: –
+Alapértelmezés szerint Event Grid modul érvényesíti az előfizető kiszolgálói tanúsítványát. Az érvényesítést kihagyhatja **outbound__webhook__skipServerCertValidation**felülbírálásával. Lehetséges értékek:
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------ |
 | igaz | Ne érvényesítse az előfizető kiszolgálói tanúsítványát.
-| hamis | Default (Alapértelmezett): Érvényesítse az előfizető kiszolgálói tanúsítványát.
+| false | Default (Alapértelmezett): Érvényesítse az előfizető kiszolgálói tanúsítványát.
 
-Ha az előfizető tanúsítványa önaláírt, akkor alapértelmezés szerint Event Grid modul elveti az ilyen előfizetőket. Ha engedélyezni szeretné az önaláírt tanúsítványt, felülbírálhatja a **kimenő: webhook: allowUnknownCA**. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
+Ha az előfizető tanúsítványa önaláírt, akkor alapértelmezés szerint Event Grid modul elveti az ilyen előfizetőket. Az önaláírt tanúsítványok engedélyezéséhez felülbírálhatja **outbound__webhook__allowUnknownCA**. A következő táblázat rögzíti a lehetséges értékeket (ka) t.
 
 | Lehetséges érték (ek) | Leírás |
 | ----------------  | ------------ |
 | igaz | Default (Alapértelmezett): Lehetővé teszi az önaláírt tanúsítványok sikeres megjelenítését.
-| hamis | Sikertelen kérések, ha önaláírt tanúsítványok jelennek meg.
+| false | Sikertelen kérések, ha önaláírt tanúsítványok jelennek meg.
 
 >[!IMPORTANT]
->Éles környezetben a **kimenő: webhook: allowUnknownCA** **false értéket**kell beállítania.
+>Éles környezetben a **outbound__webhook__allowUnknownCA** **hamis**értékre kell állítani.
 
 > [!NOTE]
 >IoT Edge környezet önaláírt tanúsítványokat hoz létre. Javasoljuk, hogy a jóváhagyott hitelesítésszolgáltatók által kiadott tanúsítványokat előállítson a termelési számítási feladatokhoz, és állítsa a **allowUnknownCA** tulajdonságot mind a bejövő, mind a **kimenő értékre.**
@@ -151,7 +151,7 @@ Ha az előfizető tanúsítványa önaláírt, akkor alapértelmezés szerint Ev
 
 Az Event Grid-modul **alapértelmezés szerint biztonságos**. Javasoljuk, hogy ezeket az alapértelmezéseket az éles környezetekben is megőrizze.
 
-A konfigurálás során a következő irányadó elveket kell használni: –
+A konfigurálás során a következő irányadó elveket kell használni:
 
 * Csak HTTPS-kérelmek engedélyezése a modulnak.
 * Csak tanúsítvány alapú ügyfél-hitelesítés engedélyezése. Csak a jól ismert hitelesítésszolgáltatók által kiadott tanúsítványokat engedélyezze. Önaláírt tanúsítványok letiltása.
@@ -160,22 +160,22 @@ A konfigurálás során a következő irányadó elveket kell használni: –
 * Csak HTTPS-előfizetők engedélyezése webhook-célhelyek számára.
 * Mindig ellenőrizze az előfizető kiszolgálói tanúsítványát a webhook-célhelyek típusaihoz. Csak a jól ismert hitelesítésszolgáltatók által kiadott tanúsítványok engedélyezése. Önaláírt tanúsítványok letiltása.
 
-Alapértelmezés szerint a Event Grid modul a következő konfigurációval van telepítve: –
+Alapértelmezés szerint a Event Grid modul a következő konfigurációval van telepítve:
 
  ```json
  {
   "Env": [
-    "inbound:serverAuth:tlsPolicy=strict",
-    "inbound:serverAuth:serverCert:source=IoTEdge",
-    "inbound:clientAuth:sasKeys:enabled=false",
-    "inbound:clientAuth:clientCert:enabled=true",
-    "inbound:clientAuth:clientCert:source=IoTEdge",
-    "inbound:clientAuth:clientCert:allowUnknownCA=true",
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge",
-    "outbound:webhook:httpsOnly=true",
-    "outbound:webhook:skipServerCertValidation=false",
-    "outbound:webhook:allowUnknownCA=true"
+    "inbound__serverAuth__tlsPolicy=strict",
+    "inbound__serverAuth__serverCert__source=IoTEdge",
+    "inbound__clientAuth__sasKeys__enabled=false",
+    "inbound__clientAuth__clientCert__enabled=true",
+    "inbound__clientAuth__clientCert__source=IoTEdge",
+    "inbound__clientAuth__clientCert__allowUnknownCA=true",
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge",
+    "outbound__webhook__httpsOnly=true",
+    "outbound__webhook__skipServerCertValidation=false",
+    "outbound__webhook__allowUnknownCA=true"
   ],
   "HostConfig": {
     "PortBindings": {

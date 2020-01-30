@@ -4,28 +4,26 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk bemutatja, hogyan diagnosztizálhatja a helyszíni kapcsolatot Azure Automation és Network Watcher
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 07847289c156aaa48b9d15c40d4135ce2cf39c10
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 74c9f44ff5fbbbb50bba1594d371633fd49857eb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275914"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845042"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
 A hálózati teljesítmény alapos betekintést biztosít a megbízható szolgáltatások biztosításához az ügyfeleknek. Ezért fontos, hogy gyorsan felderítse a hálózati leállás feltételeit, és javítsa a kiesési feltétel enyhítését. A Azure Automation lehetővé teszi a feladatok programozott módon történő megvalósítását és futtatását a runbookok használatával. A Azure Automation használata tökéletes receptet hoz létre a folyamatos és proaktív hálózati figyelés és riasztások elkészítése során.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 Az alábbi képen egy többrétegű alkalmazás található, amely VPN Gateway és alagút használatával létesített helyszíni kapcsolattal rendelkezik. A VPN Gateway működésének biztosítása kritikus fontosságú az alkalmazások teljesítményében.
 
@@ -38,7 +36,7 @@ Ez a forgatókönyv a következőket teszi:
 - A `Start-AzureRmNetworkWatcherResourceTroubleshooting` parancsmagot hívó runbook létrehozása a kapcsolatok állapotának hibakereséséhez
 - Ütemterv összekapcsolása a runbook
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A forgatókönyv elindítása előtt a következő előfeltételeknek kell megfelelnie:
 

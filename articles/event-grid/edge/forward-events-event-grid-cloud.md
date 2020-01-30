@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 502a495bad4115daf9f0f4ffed276a307adf1fc4
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7184fb5c45ce41de2bd63b55fb67cbd9ba6361e3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100654"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844717"
 ---
 # <a name="tutorial-forward-events-to-event-grid-cloud"></a>Oktatóanyag: események továbbítása Event Grid felhőbe
 
@@ -23,7 +23,7 @@ Ez a cikk végigvezeti az Azure-felhőben Event Grid peremhálózati események 
 * Reagáljon a Felhőbeli peremhálózati eseményekre.
 * Továbbítsa az eseményeket a felhőben Event Gridre, és az Azure Event Hubs vagy az Azure Storage-várólistákat használja az események puffereléséhez a felhőben való feldolgozás előtt.
 
-Az oktatóanyag elvégzéséhez ismernie kell Event Grid fogalmakat a [Edge](concepts.md) -ben és az [Azure](../concepts.md)-ban.
+ Az oktatóanyag elvégzéséhez ismernie kell Event Grid fogalmakat a [Edge](concepts.md) -ben és az [Azure](../concepts.md)-ban. További célhelyek: [eseménykezelők](event-handlers.md). 
 
 ## <a name="prerequisites"></a>Előfeltételek 
 Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
@@ -83,6 +83,7 @@ Ha például az USA nyugati régiójában létrehozott egy `testegcloudtopic` ne
   
 ## <a name="create-event-grid-subscription-at-the-edge"></a>Event Grid-előfizetés létrehozása a peremhálózat szélén
 
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Hozza létre a subscription3. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md) .
 
@@ -201,3 +202,4 @@ Ebben az oktatóanyagban egy eseményt tett közzé az Edge-ben, és továbbíto
 * A IoT Edge Azure Event Grid használatával kapcsolatos problémák elhárításához tekintse meg a [hibaelhárítási útmutatót](troubleshoot.md).
 * Események továbbítása a IoTHub az [oktatóanyag](forward-events-iothub.md) követésével
 * Események továbbítása a webhookba a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
+* [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)

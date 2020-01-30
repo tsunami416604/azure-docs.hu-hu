@@ -10,18 +10,18 @@ ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 11/08/2019
 ms.author: diberry
-ms.openlocfilehash: 94c2f86b6d0a592e53c2ab1f9833bdb045f81583
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 2d7615d810e96beb61c3fe0b182a88158dc77c07
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74325874"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844836"
 ---
 # <a name="whats-new-in-qna-maker"></a>A QnA Maker újdonságai
 
-Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.  
+Ismerje meg a szolgáltatás újdonságait. Ezek az elemek megjegyzések, videók, blogbejegyzések és más típusú információk kiadását is tartalmazhatják. A lapon lévő könyvjelzővel naprakészen tarthatja a szolgáltatást.
 
-## <a name="release-notes"></a>Kibocsátási megjegyzések 
+## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 Ismerje meg a QnA Maker újdonságait.
 
@@ -33,15 +33,15 @@ Ismerje meg a QnA Maker újdonságait.
 
 ### <a name="october-2019"></a>2019. október
 
-* [Explicit módon állítja be az összes Tudásbázis nyelvét](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) a QnA Maker szolgáltatásban. 
+* [Explicit módon állítja be az összes Tudásbázis nyelvét](./how-to/language-knowledge-base.md#select-language-when-creating-first-knowledge-base) a QnA Maker szolgáltatásban.
 
 ### <a name="september-2019"></a>2019. szeptember
 
-* Importálás és exportálás [xls fájlformátummal](concepts/data-sources-supported.md) 
+* Importálás és exportálás [xls fájlformátummal](concepts/content-types.md)
 
 ### <a name="june-2019"></a>2019. június
 
-* Továbbfejlesztett [ranker-modell](concepts/knowledge-base.md#ranker-process) francia, olasz, német, spanyol, portugál nyelven
+* Továbbfejlesztett [ranker-modell](concepts/query-knowledge-base.md#ranker-process) francia, olasz, német, spanyol, portugál nyelven
 
 ### <a name="april-2019"></a>2019. április
 
@@ -51,7 +51,7 @@ Ismerje meg a QnA Maker újdonságait.
 ### <a name="march-2019"></a>2019. március
 
 * Az [aktív tanulás](how-to/improve-knowledge-base.md) a valódi felhasználói kérdések alapján javaslatokat tesz az új kérdésekkel kapcsolatos alternatívákra
-* Továbbfejlesztett természetes nyelvi feldolgozási (NLP) [ranker](concepts/knowledge-base.md#ranker-process) -modell angol nyelven 
+* Továbbfejlesztett természetes nyelvi feldolgozási (NLP) [ranker](concepts/query-knowledge-base.md#ranker-process) -modell angol nyelven
 
 > [!div class="nextstepaction"]
 > [QnA Maker-szolgáltatás létrehozása](how-to/set-up-qnamaker-service-azure.md)

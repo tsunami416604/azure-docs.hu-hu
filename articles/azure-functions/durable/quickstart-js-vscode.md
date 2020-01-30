@@ -5,12 +5,12 @@ author: ColbyTresness
 ms.topic: quickstart
 ms.date: 11/07/2018
 ms.reviewer: azfuncdf, cotresne
-ms.openlocfilehash: 94ba2830824c4a918e9451a9fc5140d422110370
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: b0a1d1a9305f6de2a072ee1ded310d8de174436b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231314"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845723"
 ---
 # <a name="create-your-first-durable-function-in-javascript"></a>Az első tartós függvény létrehozása a JavaScriptben
 
@@ -38,7 +38,31 @@ Az oktatóanyag elvégzéséhez:
 
 [!INCLUDE [functions-install-vs-code-extension](../../../includes/functions-install-vs-code-extension.md)]
 
-[!INCLUDE [functions-create-function-app-vs-code](../../../includes/functions-create-function-app-vs-code.md)]
+## <a name="create-an-azure-functions-project"></a>A helyi projekt létrehozása 
+
+Ebben a szakaszban a Visual Studio Code használatával hozzon létre egy helyi Azure Functions projektet. 
+
+1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Create new project...`.
+
+1. Válasszon egy címtárbeli helyet a projekt munkaterülethez, és válassza a **kiválasztás**lehetőséget.
+
+    > [!NOTE]
+    > Ezeket a lépéseket úgy tervezték, hogy a munkaterületen kívül is el lehessen végezni. Ebben az esetben ne válasszon olyan projektmappát, amely valamely munkaterület része.
+
+1. Az utasításokat követve adja meg a következő információkat a kívánt nyelvhez:
+
+    | Kérdés | Value (Díj) | Leírás |
+    | ------ | ----- | ----------- |
+    | Válasszon nyelvet a Function app-projekthez | JavaScript | Hozzon létre egy helyi Node. js functions-projektet. |
+    | Válasszon verziót | Azure Functions v2 | Ez a beállítás csak akkor jelenik meg, ha az alapvető eszközök még nincsenek telepítve. Ebben az esetben a rendszer az alkalmazás első futtatásakor telepíti az alapvető eszközöket. |
+    | Válasszon sablont a projekt első függvényéhez | HTTP eseményindító | Hozzon létre egy HTTP által aktivált függvényt az új Function alkalmazásban. |
+    | Adja meg a függvény nevét | HttpTrigger | Az alapértelmezett név használatához nyomja le az ENTER billentyűt. |
+    | Authorization level (Engedélyszint) | Függvény | A `function` engedélyezési szint használatához hozzáférési kulcsot kell megadnia a függvény HTTP-végpontjának meghívásakor. Ez nehezebbé teszi a nem biztonságos végpontokhoz való hozzáférést. További információ: [engedélyezési kulcsok](../functions-bindings-http-webhook.md#authorization-keys).  |
+    | Válassza ki, hogyan szeretné megnyitni a projektet? | Hozzáadás a munkaterülethez | Létrehozza a Function alkalmazást az aktuális munkaterületen. |
+
+A Visual Studio Code szükség esetén telepíti a Azure Functions Core Tools. Emellett egy Function app-projektet is létrehoz egy új munkaterületen. Ez a projekt tartalmazza a [Host. JSON](../functions-host-json.md) és a [Local. Settings. JSON](../functions-run-local.md#local-settings-file) konfigurációs fájlokat. Emellett létrehoz egy HttpExample mappát, amely tartalmazza a [function. JSON definíciós fájlt](../functions-reference-node.md#folder-structure) és az [index. js fájlt](../functions-reference-node.md#exporting-a-function), a függvény kódját tartalmazó Node. js fájlt.
+
+A rendszer a gyökérkönyvtárban is létrehoz egy Package. JSON fájlt.
 
 ## <a name="install-the-durable-functions-npm-package"></a>A Durable Functions NPM-csomag telepítése
 

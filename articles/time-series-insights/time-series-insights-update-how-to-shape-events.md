@@ -10,12 +10,12 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 12/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: 567770c00c645aeb79e1efb0e9119b9ac829f3fe
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: fd744e6283b00b0dfdd50805cb628f5bc40ab8d6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75861659"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846144"
 ---
 # <a name="shape-events-with-azure-time-series-insights-preview"></a>Események Azure Time Series Insights előzetes verzióval
 
@@ -156,5 +156,4 @@ A fenti példában az összeolvasztott `data_flow` tulajdonság elnevezési ütk
 
 ## <a name="next-steps"></a>Következő lépések
 
-- Az irányelvek gyakorlatba való beírásához olvassa el [Azure Time Series Insights előnézeti lekérdezés szintaxisát](./time-series-insights-query-data-csharp.md). A lekérdezési szintaxissal kapcsolatos további információkért tekintse meg az adatelérés Time Series Insights előzetes verzió REST APIét.
-- A támogatott JSON-alakzatokkal kapcsolatos további tudnivalókért olvassa el a [támogatott JSON-alakzatok](./time-series-insights-send-events.md#supported-json-shapes)című témakört.
+Az irányelvek gyakorlatba való beírásához olvassa el [Azure Time Series Insights előnézeti lekérdezés szintaxisát](./time-series-insights-query-data-csharp.md). A lekérdezési szintaxissal kapcsolatos további információkért tekintse meg az adatelérés Time Series Insights előzetes verzió REST APIét.

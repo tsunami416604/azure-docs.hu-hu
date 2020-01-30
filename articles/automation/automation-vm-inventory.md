@@ -4,18 +4,23 @@ description: Virtuális gép kezelése leltár használatával
 services: automation
 ms.subservice: change-inventory-management
 keywords: leltár, automatizálás, változás, követés
-ms.date: 02/06/2019
+ms.date: 01/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: c5ac5cb1b1f02ea1e8b7eccb65fba978c99cc4f7
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: d0324038b8a38d7eba84e5472b8f90439b0322c1
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75419816"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844819"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Azure-beli virtuális gépek kezelése leltár használatával
 
-A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőforráslapján engedélyezhető. Összegyűjtheti a számítógépeken található szoftverek, fájlok, Linux-démonok, Windows-szolgáltatások és Windows-beállításkulcsok listáját, és leltárt készíthet belőlük. Ez a módszer egy böngészőalapú felhasználói felületet biztosít a leltározás beállításához és konfigurálásához.
+A leltár nyomon követése az egyes Azure-beli virtuális gépeken a gép erőforráslapján engedélyezhető. A következő leltározási információkat gyűjtheti és tekintheti meg a számítógépeken:
+
+- Windows-szoftverek (Windows-alkalmazások és Windows-frissítések),-szolgáltatások,-fájlok és-beállításkulcsok
+- Linux-szoftverek (csomagok) démonok és fájlok
+
+Ez a módszer egy böngészőalapú felhasználói felületet biztosít a leltározás beállításához és konfigurálásához.
 
 ## <a name="before-you-begin"></a>Előzetes teendők
 
@@ -101,7 +106,7 @@ Ha kijelöl egy gépcsoport elemet a listából, megnyílik a számítógép-cso
 
 A számítógép csoport klónozásához kattintson a **+ klónozás** gombra. Itt meg kell adnia a csoport új nevét és aliasnevét. A definíció most már módosítható. A lekérdezés módosítása után nyomja le a **lekérdezés ellenőrzése** elemet a kijelölni kívánt gépek előnézetének megtekintéséhez. Ha elégedett a csoporttal, kattintson a **Létrehozás** elemre a számítógépcsoport létrehozásához.
 
-Ha új számítógépcsoportot szeretne létrehozni, válassza **a + számítógépcsoport létrehozása**lehetőséget. Ezzel a gombbal megnyílik a **számítógép-csoport létrehozása lap** , amelyen megadhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** parancsra.
+Ha új számítógépcsoportot szeretne létrehozni, válassza **a + számítógépcsoport létrehozása**lehetőséget. Ezzel a gombbal megnyílik a **számítógép-csoport létrehozása lap** , amelyen megadhatja az új csoportot. A csoport létrehozásához kattintson a **Létrehozás** gombra.
 
 ![Új számítógépcsoport létrehozása](./media/automation-vm-inventory/create-new-group.png)
 

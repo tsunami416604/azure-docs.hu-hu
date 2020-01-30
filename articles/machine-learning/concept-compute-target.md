@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 11/04/2019
-ms.openlocfilehash: 58df0fe6a598d97e0a9d985052cf3a8c198eb4cc
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 15bf6533106fe826c56b38cfb345c509d6d67966
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75541334"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844092"
 ---
 #  <a name="what-are-compute-targets-in-azure-machine-learning"></a>Mik azok a számítási célok Azure Machine Learning? 
 
@@ -58,7 +58,7 @@ A következő esetekben hozhat létre Azure Machine Learning számítási péld�
 Ha létrehozta ezeket a számítási erőforrásokat, az automatikusan a munkaterület részét képezi, a más típusú számítási céloktól eltérően.
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
+> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 ### <a name="compute-clusters"></a>Számítási fürtök

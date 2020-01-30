@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: include file
-ms.openlocfilehash: 5350ecdd3b73894e43db3b9f342fc657cf73f224
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 40810b9a9b295f2aa9d56caaf4b51cab7dbbe5bc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76268331"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887582"
 ---
 ## <a name="understand-vm-reboots---maintenance-vs-downtime"></a>A virtuális gépek újraindításának ismertetése – karbantartás és állásidő
 Az Azure-beli virtuális gépeket három forgatókönyv befolyásolja: nem tervezett hardveres karbantartás, váratlan leállás és tervezett karbantartás.
@@ -79,12 +79,13 @@ Get-AzComputeResourceSku | where{$_.ResourceType -eq 'availabilitySets' -and $_.
 az vm list-skus --resource-type availabilitySets --query '[?name==`Aligned`].{Location:locationInfo[0].location, MaximumFaultDomainCount:capabilities[0].value}' -o Table
 ```
 
-> Megjegyzés: bizonyos esetekben előfordulhat, hogy az azonos üzemmódú két virtuális gép ugyanazon a FaultDomain van megosztva. Ezt megerősítheti a üzemmódú, és a "tartalék tartomány" oszlopot is megtekintheti.
-> Ez a viselkedés akkor figyelhető meg, ha a virtuális gépek telepítése során a következő folyamat történt:
+> [!NOTE]
+> Bizonyos körülmények között a két virtuális gép ugyanabban a üzemmódú osztható meg ugyanazzal a FaultDomain. Ezt a rendelkezésre állási csoport és a tartalék **tartomány** oszlop ellenőrzésével lehet megerősíteni.
+> Ezt a virtuális gépek üzembe helyezése során a következő folyamat okozhatja:
 > - Az első virtuális gép üzembe helyezése
 > - Az első virtuális gép leállítása/felszabadítása
 > - A 2. virtuális gép üzembe helyezése ilyen körülmények között előfordulhat, hogy a második virtuális gép operációsrendszer-lemeze ugyanazon a tartalék tartományon jön létre, mint az első virtuális gép, így a második virtuális gép is ugyanazon a FaultDomain fog futni. 
-> A probléma elkerülése érdekében javasoljuk, hogy ne állítsa le/szabadítsa fel a virtuális gépet az üzemelő példányok között.
+> A probléma elkerülése érdekében javasoljuk, hogy ne állítsa le/szabadítsa fel a virtuális gépeket az üzemelő példányok között.
 
 Ha nem felügyelt lemezekkel rendelkező virtuális gépeket szeretne használni, kövesse az alábbi ajánlott eljárásokat azokhoz a tárolási fiókokhoz, amelyekben a virtuális merevlemezek (VHD-k) [blobként](https://docs.microsoft.com/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs)vannak tárolva.
 

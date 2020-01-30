@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: spelluru
-ms.openlocfilehash: 3a87475146e2b23c4a824e568ea3da33e1f4abf0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 3a52d906d958fdfd1d7e09c6229b12af3204bc52
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76512946"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846380"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>A Azure Event Gridban lévő eseményforrás
 
@@ -132,6 +132,9 @@ Fizessen elő Service Bus eseményekre, amelyek aktív figyelő nélküli üzene
 ## <a name="storage"></a>Adattárolás
 
 Fizessen elő Blob Storage eseményekre, hogy válaszoljanak a blob által létrehozott és törölt eseményekre.
+
+>[!NOTE]
+> Csak a **StorageV2 (általános célú v2)** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (Genral Purpose v1)** *nem* támogatja a Event Grid integrációját.
 
 |Cím  |Leírás  |
 |---------|---------|

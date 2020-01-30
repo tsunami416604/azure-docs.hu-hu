@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Network Watcher és a nyílt forráskódú eszközök a hálózati behatolás észleléséhez
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: 0f043f08-19e1-4125-98b0-3e335ba69681
 ms.service: network-watcher
 ms.devlang: na
@@ -14,21 +12,21 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 8a0b4ff4fc985355d8dc76f2f3fd7fb35da55ec0
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 781f3788c9001276315a2baed7060450fa00d77a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275919"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845023"
 ---
 # <a name="perform-network-intrusion-detection-with-network-watcher-and-open-source-tools"></a>Hálózati behatolás-észlelés végrehajtása Network Watcher és nyílt forráskódú eszközökkel
 
 A csomagok rögzítése kulcsfontosságú összetevő a hálózati behatolás-észlelési rendszerek (AZONOSÍTÓk) megvalósításához és a hálózati biztonsági monitorozás (NSM) végrehajtásához. Több nyílt forráskódú azonosító eszköz is feldolgozza a csomagok rögzítését, és megkeresi a lehetséges hálózati behatolások és rosszindulatú tevékenységek aláírásait. A Network Watcher által biztosított csomagok rögzítései segítségével elemezheti a hálózatot az ártalmas behatolások vagy sebezhetőségek tekintetében.
 
-Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére https://suricata-ids.org/címen.
+Az egyik ilyen nyílt forráskódú eszköz a Suricata, egy szabályrendszerek használó azonosító motor, amely figyeli a hálózati forgalmat, és riasztást küld, amikor gyanús események történnek. A Suricata többszálas motort kínál, ami azt jelenti, hogy a hálózati forgalom elemzése nagyobb sebességgel és hatékonysággal végezhető. A Suricata és képességeivel kapcsolatos további információkért látogasson el a webhelyére https://suricata-ids.org/ címen.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a környezetet hálózati behatolás-észlelés végrehajtásához Network Watcher, Suricata és a rugalmas verem használatával. Network Watcher biztosítja a hálózati behatolás-észlelés végrehajtásához használt csomagok rögzítését. A Suricata feldolgozza a csomagot, és elindítja a riasztásokat az adott fenyegetéseknek megfelelő csomagok alapján. Ezeket a riasztásokat a helyi számítógépen található naplófájlban tárolja a rendszer. A rugalmas verem használatával a Suricata által generált naplók indexelve lehetnek, és felhasználhatók egy Kibana-irányítópult létrehozására, amely lehetővé teszi a naplók vizuális megjelenítését, valamint az esetleges hálózati biztonsági rések gyors elemzését.  
 

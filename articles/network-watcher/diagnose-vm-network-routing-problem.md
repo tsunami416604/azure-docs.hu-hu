@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ez az oktatóanyag bemutatja, hogyan diagnosztizálhatja egy virtuális gép hálózati útválasztási problémáit az Azure Network Watcher következő ugrás funkciójával.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose virtual machine (VM) network routing problem that prevents communication to different destinations.
@@ -16,14 +15,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: f9c7139dc9c27ed5b4f97f38e98b4663e9676288
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 52d398fa9c258528ef8f87842ba94f139bbf737b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276046"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845209"
 ---
 # <a name="tutorial-diagnose-a-virtual-machine-network-routing-problem-using-the-azure-portal"></a>Oktatóanyag: Virtuálisgép-hálózat útválasztási problémáinak diagnosztizálása az Azure Portal használatával
 
@@ -49,14 +48,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server 17.10-es virtuális gép** lehetőséget.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Érték|
+    |Beállítás|Value (Díj)|
     |---|---|
-    |Név|myVM|
+    |Name (Név)|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Előfizetés| Válassza ki előfizetését.|
+    |Előfizetést| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -70,7 +69,7 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először l
 
 Ha már engedélyezte a Network Watchert legalább egy régióban, ugorjon a [Következő ugrás használata](#use-next-hop) szakaszra.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -84,19 +83,19 @@ Az Azure automatikusan létrehoz útvonalakat az alapértelmezett célokhoz. Egy
 1. Az Azure Portalon **Network Watcher** területén válassza a **Következő ugrás** elemet.
 2. Válassza ki előfizetését, adja meg vagy válassza ki az alábbi értékeket, majd válassza a **Következő ugrás** lehetőséget az alábbi képen látható módon:
 
-    |Beállítás                  |Érték                                                   |
+    |Beállítás                  |Value (Díj)                                                   |
     |---------                |---------                                               |
     | Erőforráscsoport          | Válassza a myResourceGroup lehetőséget                                 |
     | Virtuális gép         | Válassza a myVm lehetőséget                                            |
     | Hálózati illesztő       | myvm – A hálózati adapter neve eltérő lehet.   |
     | Forrás IP-címe       | 10.0.0.4                                               |
-    | Cél IP-címe  | 13.107.21.200 – a www. Bing. com > < címeinek egyike. |
+    | Cél IP-cím  | 13.107.21.200 – a www. Bing. com > < címeinek egyike. |
 
     ![Következő ugrás](./media/diagnose-vm-network-routing-problem/next-hop.png)
 
     Néhány másodperc múlva a rendszer tájékoztatja, hogy a következő ugrás típusa **Internet**, az **Útválasztási táblázat azonosítója** pedig **Rendszerútvonal**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a célhoz.
 
-3. Módosítsa a **Cél IP-címét** *172.31.0.100* értékre, majd újból válassza ki a **Következő ugrás** lehetőséget. A visszaadott eredmény tájékoztatja, hogy a **Következő ugrás típusa** **Nincs**, és az **Útválasztási táblázat azonosítója** szintén a **Rendszerútvonal**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
+3. Módosítsa a **Cél IP-címét***172.31.0.100* értékre, majd újból válassza ki a **Következő ugrás** lehetőséget. A visszaadott eredmény tájékoztatja, hogy a **Következő ugrás típusa** **Nincs**, és az **Útválasztási táblázat azonosítója** szintén a **Rendszerútvonal**. Ez az eredmény azt jelzi, hogy létezik érvényes rendszerútvonal a cél felé, de nincs következő ugrás, hogy a forgalmat a cél felé irányítsa.
 
 ## <a name="view-details-of-a-route"></a>Útvonal részleteinek megtekintése
 
@@ -117,7 +116,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy virtuális gépet, és diagnosztizálta a hálózati útválasztást a virtuális géptől. Megtudta, hogy az Azure számos alapértelmezett utat létrehoz, és tesztelte az útválasztást két különböző cél felé. További tudnivalók az [Azure-beli útválasztásról](../virtual-network/virtual-networks-udr-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és az [egyéni útvonalak létrehozásáról](../virtual-network/manage-route-table.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-route).
 

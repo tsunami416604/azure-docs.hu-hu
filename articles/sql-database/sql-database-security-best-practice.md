@@ -6,20 +6,20 @@ ms.subservice: security
 author: VanMSFT
 ms.author: vanto
 ms.topic: article
-ms.date: 12/23/2019
+ms.date: 01/22/2020
 ms.reviewer: ''
-ms.openlocfilehash: 82297850bf6d03215963a1f81dda166550f2b0d5
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 095d435b9a595c420821da0813fdfc0893d70d89
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715179"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845867"
 ---
 # <a name="azure-sql-database-security-best-practices-playbook"></a>Azure SQL Database ajánlott biztonsági eljárások
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a dokumentum útmutatást nyújt az új vagy meglévő alkalmazások Azure SQL Database-t használó gyakori biztonsági követelményeinek megoldásához. Ezt magas szintű biztonsági területek szervezik. Az adott veszélyforrások kezeléséhez tekintse meg a [gyakori biztonsági fenyegetéseket és a lehetséges kockázatcsökkentő](#common-security-threats-and-potential-mitigations) szakaszokat. Bár a bemutatott javaslatok némelyike az alkalmazások helyszíni rendszerből az Azure-ba történő áttelepítésekor alkalmazható, az áttelepítési forgatókönyvek nem a dokumentum középpontjában állnak.
+Ez a dokumentum útmutatást nyújt az új vagy meglévő alkalmazások Azure SQL Database-t használó gyakori biztonsági követelményeinek megoldásához. Ez magas szintű biztonsági területek szerint van rendszerezve. Az adott veszélyforrások kezeléséhez tekintse meg a [gyakori biztonsági fenyegetéseket és a lehetséges kockázatcsökkentő](#common-security-threats-and-potential-mitigations) szakaszokat. Bár a bemutatott javaslatok némelyike az alkalmazások helyszíni rendszerből az Azure-ba történő áttelepítésekor alkalmazható, az áttelepítési forgatókönyvek nem a dokumentum középpontjában állnak.
 
 ### <a name="azure-sql-database-deployment-offers-covered-in-this-guide"></a>Azure SQL Database az útmutatóban foglalt központi telepítési ajánlatok
 
@@ -103,10 +103,10 @@ A központi Identitáskezelés a következő előnyöket kínálja:
 > - Az Azure-ban megadott RBAC engedélyek nem vonatkoznak az Azure SQL DB engedélyeire. Ezeket az engedélyeket manuálisan kell létrehozni/leképezni az SQL-adatbázisban meglévő SQL-engedélyek használatával.
 > - Az ügyféloldali Azure AD-hitelesítéshez hozzá kell férnie az internethez, vagy a felhasználó által megadott útvonalon (UDR) keresztül egy VNet.
 > - Az Azure AD hozzáférési jogkivonat gyorsítótárazva van az ügyféloldali oldalon, és az élettartama a jogkivonat konfigurációjától függ. Tekintse meg a következő cikket: [konfigurálható jogkivonat élettartama Azure Active Directory](../active-directory/develop/active-directory-configurable-token-lifetimes.md)
+> - Az Azure AD-hitelesítési problémák elhárításával kapcsolatos útmutatásért tekintse meg a következő blogot: <https://techcommunity.microsoft.com/t5/azure-sql-database/troubleshooting-problems-related-to-azure-ad-authentication-with/ba-p/1062991>
 
 ### <a name="multi-factor-authentication-mfa"></a>Multi-Factor Authentication (MFA)
 
-> [!NOTE]
 > Megemlítve: OSA Practice #2, ISO Access Control (AC)
 
 Az Azure Multi-Factor Authentication (MFA) további biztonságot nyújt a több hitelesítési módszer megkövetelésével.
@@ -143,7 +143,6 @@ Az Azure Multi-Factor Authentication (MFA) további biztonságot nyújt a több 
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-users"></a>A jelszó-alapú hitelesítés használatának csökkentése a felhasználók számára
 
-> [!NOTE]
 > Megemlítve: OSA Practice #4, ISO Access Control (AC)
 
 A jelszó-alapú hitelesítési módszerek a hitelesítés gyengébb formája. A hitelesítő adatok biztonsága vagy tévedése nem lehetséges.
@@ -159,7 +158,6 @@ A jelszó-alapú hitelesítési módszerek a hitelesítés gyengébb formája. A
 
 ### <a name="minimize-the-use-of-password-based-authentication-for-applications"></a>A jelszó-alapú hitelesítés használatának csökkentése az alkalmazásoknál 
 
-> [!NOTE]
 > Megemlítve: OSA Practice #4, ISO Access Control (AC)
 
 **Megvalósítás**:
@@ -217,7 +215,6 @@ A hozzáférés-kezelés a jogosult felhasználók hozzáférésének és a Azur
 
 ### <a name="implement-principle-of-least-privilege"></a>A legalacsonyabb jogosultsági szint megvalósítási elve
 
-> [!NOTE]
 > Megemlítve: FedRamp Controls AC-06, NIST: AC-6, OSA Practice #3
 
 A minimális jogosultság elve szerint a felhasználóknak a feladataik elvégzéséhez a szükségesnél több jogosultsággal kell rendelkezniük. További információ: [elég adminisztráció](https://docs.microsoft.com/powershell/scripting/learn/remoting/jea/overview).
@@ -276,10 +273,9 @@ A következő ajánlott eljárások nem kötelezőek, de a biztonsági stratégi
 
 ### <a name="implement-separation-of-duties"></a>A feladatok elkülönítésének megvalósítása
 
-> [!NOTE]
 > Megemlítve: FedRamp: AC-04, NIST: AC-5, ISO: A. 6.1.2, PCI 6.4.2, SOC: CM-3, SDL-3
 
-A feladatok elkülönítése – más néven a vámok elkülönítése – azt a követelményt írja le, hogy a bizalmas feladatokat több, különböző felhasználókhoz rendelt feladatba ossza fel, általában az adatok megsértésének megelőzése érdekében.
+A feladatok elkülönítése – más néven a vámok elkülönítése – azt a követelményt írja le, hogy a bizalmas feladatokat több, különböző felhasználókhoz rendelt feladatba ossza fel. A feladatok elkülönítése segít megelőzni az adatok megsértését.
 
 **Megvalósítás**:
 
@@ -295,7 +291,7 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
   - Kiszolgálói szerepköröket hozhat létre a felügyelt példányok kiszolgáló szintű feladatai számára (új bejelentkezések és adatbázisok létrehozása). 
   - Adatbázis-szintű feladatokhoz tartozó adatbázis-szerepkörök létrehozása.
 
-- Bizonyos bizalmas feladatok esetében érdemes lehet egy tanúsítvány által aláírt speciális tárolt eljárásokat létrehozni a feladatok végrehajtásához a felhasználók nevében. 
+- Bizonyos bizalmas feladatok esetében érdemes lehet olyan speciális tárolt eljárásokat létrehozni, amelyeket egy tanúsítvány írt alá a feladatok a felhasználók nevében történő végrehajtásához. 
   - Példa: [oktatóanyag: tárolt eljárások aláírása tanúsítvánnyal](https://docs.microsoft.com/sql/relational-databases/tutorial-signing-stored-procedures-with-a-certificate) 
 
 - Transzparens adattitkosítás (TDE) implementálása az ügyfél által felügyelt kulcsokkal Azure Key Vault, hogy lehetővé tegye a feladatok elkülönítését az adatok tulajdonosa és a biztonsági tulajdonos között. 
@@ -326,9 +322,9 @@ A feladatok elkülönítése – más néven a vámok elkülönítése – azt a
 
 - A beépített RBAC-szerepkörök definíciójának beszerzésével megtekintheti a használatban lévő engedélyeket, és létrehozhat egy egyéni szerepkört a részletek és az ezek összesítései alapján a PowerShell használatával 
 
-- Mivel a db_owner adatbázis-szerepkör bármelyik tagja módosíthatja a biztonsági beállításokat, például a transzparens adattitkosítás (TDE), vagy módosíthatja az SLO-t, ezt a tagságot körültekintően kell megadnia. Másfelől számos feladatot, például az adatbázis-beállítások módosítását, db_owner jogosultságokat kell megadnia. A naplózás kulcsfontosságú szerepet játszik bármely megoldásban.
+- Mivel a db_owner adatbázis-szerepkör bármelyik tagja módosíthatja a biztonsági beállításokat, például a transzparens adattitkosítás (TDE), vagy módosíthatja az SLO-t, ezt a tagságot körültekintően kell megadnia. Azonban számos olyan feladatra van szükség, amely db_owner jogosultságokat igényel. Olyan feladat, mint például az adatbázis-beállítások módosítása. A naplózás kulcsfontosságú szerepet játszik bármely megoldásban.
 
-- Nem lehet megőrizni db_owner a felhasználói adatok megtekintését csak engedélyekkel. Ha egy adatbázisban nagyon bizalmas adatok találhatók, Always Encrypted segítségével biztonságosan megakadályozhatja db_owners vagy bármely más DBA megtekintését.
+- Nem lehet korlátozni egy db_owner engedélyeit, így megakadályozhatja, hogy egy rendszergazdai fiók megtekintse a felhasználói adatait. Ha egy adatbázisban nagyon bizalmas adatok találhatók, Always Encrypted segítségével biztonságosan megakadályozhatja db_owners vagy bármely más DBA megtekintését.
 
 > [!NOTE]
 > A feladatok elkülönítésének megvalósítása (SoD) a biztonsággal kapcsolatos vagy hibaelhárítási feladatokra is kihívást jelent. Más területek, például a fejlesztés és a végfelhasználói szerepkörök könnyebben elkülöníthető. A többségi megfelelőséggel kapcsolatos vezérlők lehetővé teszik alternatív vezérlési függvények használatát, például a naplózást, ha más megoldások nem praktikusak.
@@ -348,7 +344,6 @@ A SoD-ban mélyebbre szánt olvasóknak a következő erőforrásokat ajánlott 
 
 ### <a name="perform-regular-code-reviews"></a>Szabványos kód-felülvizsgálatok végrehajtása
 
-> [!NOTE]
 > Megemlítve: PCI: 6.3.2, SOC: SDL-3 
 
 A feladatok elkülönítése nem korlátozódik az adatbázisban lévő adatokra, de tartalmazza az alkalmazás kódját. A kártékony kódok megkerülhetik a biztonsági vezérlőket. Az egyéni kód éles környezetben való üzembe helyezése előtt elengedhetetlen, hogy áttekintse az üzembe helyezett környezeteket.
@@ -375,7 +370,7 @@ A feladatok elkülönítése nem korlátozódik az adatbázisban lévő adatokra
 
 - Győződjön meg arról, hogy a felülvizsgálatot végző személy nem a kezdeményező kód szerzője, és a Code-Reviews és a Secure kódolással jól tájékozott.
 
-- Ügyeljen arra, hogy a Code-Changes minden forrását megismerje: a kód T-SQL-szkriptekben is szerepelhet; lehet, hogy ad-hoc parancsok hajthatók végre, vagy a nézetek, függvények, eseményindítók és tárolt eljárások formájában telepíthetők. Emellett az SQL Agent-feladatdefiníciók (lépések) részét képezheti, SSIS-csomagokon, Azure Data Factoryeken és más szolgáltatásokon belül is végrehajtható.
+- Győződjön meg arról, hogy a Code-Changes minden forrását ismeri. A kód lehet T-SQL-szkriptekben. Az ad-hoc parancsok hajthatók végre, illetve a nézetek, függvények, eseményindítók és tárolt eljárások formájában is üzembe helyezhetők. Ez az SQL Agent-feladatdefiníciók (lépések) része lehet. A SSIS-csomagokon, Azure Data Factoryeken és más szolgáltatásokon belül is végrehajtható.
 
 ## <a name="data-protection"></a>Adatvédelem
 
@@ -387,14 +382,12 @@ Az adatvédelem olyan képességek összessége, amelyekkel a titkosítás vagy 
 
 ### <a name="encrypt-data-in-transit"></a>Adatforgalom titkosítása
 
-> [!NOTE]
 > Megemlítve: OSA Practice #6, ISO Control Family: titkosítás
 
 Védi az adatait, miközben az ügyfél és a kiszolgáló közötti adatátvitelt. Tekintse meg a [hálózati biztonság](#network-security)című témakört.
 
 ### <a name="encrypt-data-at-rest"></a>Inaktív adatok titkosítása
 
-> [!NOTE]
 > Megemlítve: OSA Practice #6, ISO Control Family: titkosítás
 
 A inaktív adatok titkosítása az adatok titkosítási védelme, ha az adatbázis-, napló-és biztonságimásolat-fájlokban is megmarad.
@@ -402,7 +395,7 @@ A inaktív adatok titkosítása az adatok titkosítási védelme, ha az adatbáz
 **Megvalósítás**:
 
 - A szolgáltatás által felügyelt kulcsokkal rendelkező [transzparens adatbázis-titkosítás (TDE)](transparent-data-encryption-azure-sql.md) alapértelmezés szerint engedélyezve van minden olyan adatbázis esetében, amelyet a 2017-es Azure SQL Database követően hozott létre.
-- Felügyelt példány esetén, ha az adatbázis egy helyszíni kiszolgálóról történő visszaállítási művelet eredményeképpen jön létre, a rendszer tiszteletben tartja az eredeti adatbázis TDE-beállítását. Ha az eredeti adatbázis nem rendelkezik TDE-engedélyezéssel, javasoljuk, hogy a felügyelt példányhoz manuálisan be kell kapcsolni a TDE.
+- Felügyelt példány esetén, ha az adatbázis egy helyszíni kiszolgáló használatával történő visszaállítási műveletből jön létre, a rendszer az eredeti adatbázis TDE-beállítását fogja tiszteletben venni. Ha az eredeti adatbázis nem rendelkezik TDE-engedélyezéssel, javasoljuk, hogy a felügyelt példányhoz manuálisan be kell kapcsolni a TDE.
 
 **Ajánlott eljárások**:
 
@@ -414,42 +407,42 @@ A inaktív adatok titkosítása az adatok titkosítási védelme, ha az adatbáz
 
 ### <a name="protect-sensitive-data-in-use-from-high-privileged-unauthorized-users"></a>Magas jogosultsági szintű, jogosulatlan felhasználók által használt bizalmas adatok védelme
 
-A használatban lévő adatmennyiség az adatbázis-rendszer memóriájában tárolt, az SQL-lekérdezések végrehajtása során tárolt adatmennyiség. Ha az adatbázis bizalmas adatokat tárol, a szervezetnek meg kell győződnie arról, hogy a magas jogosultságú felhasználók, például a szervezeten belüli Microsoft-operátorok vagy a Adattervezők nem tudják kinyerni az adatokat a SQL Serveri folyamat memóriájában, és nem képesek az egyszerű szöveges adatértékek megtekintése az adatbázis lekérdezése során.
+A használatban lévő adatmennyiség az adatbázis-rendszer memóriájában tárolt, az SQL-lekérdezések végrehajtása során tárolt adatmennyiség. Ha az adatbázis bizalmas adatokat tárol, előfordulhat, hogy a szervezetnek meg kell győződnie arról, hogy a magas jogosultságú felhasználók nem tudják megtekinteni a bizalmas adatokat az adatbázisban. A magas szintű jogosultsággal rendelkező felhasználóknak, például a Microsoft-kezelőknek vagy a szervezeten belüli Adattervezők képesnek kell lenniük az adatbázis felügyeletére, de nem lehet megtekinteni és potenciálisan hogy kiszivárogtassák a bizalmas adatokat a SQL Server folyamat memóriájában vagy az adatbázis lekérdezésével.
 
 **Megvalósítás**:
 
-- A [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) használatával biztosíthatja, hogy a bizalmas adatok ne legyenek elérhetők a Azure SQL Databaseban, akár a memóriában, akár a használatban. Ez védi az adatbázis-rendszergazdák (Adattervezők-EK) és a Felhőbeli rendszergazdák (vagy a magas jogosultságú, de jogosulatlan felhasználók megszemélyesítését végző rossz szereplők) adatait, és így nagyobb mértékben szabályozhatja, hogy ki férhet hozzá az adataihoz.
+- A [Always encrypted](https://docs.microsoft.com/sql/relational-databases/security/encryption/always-encrypted-database-engine) használatával biztosíthatja, hogy a bizalmas adatok ne legyenek elérhetők a Azure SQL Databaseban, akár a memóriában, akár a használatban. Always Encrypted védi az adatbázis-rendszergazdák (Adattervezők-EK) és a Felhőbeli rendszergazdák (vagy a magas jogosultságú, de jogosulatlan felhasználók megszemélyesítését végző rossz szereplők) adatait, és így jobban szabályozhatja, hogy ki férhet hozzá az adataihoz.
 
 **Ajánlott eljárások**:
 
-- A Always Encrypted nem helyettesíti az inaktív adatok titkosítását (TDE) vagy átvitelét (SSL/TLS), és nem használható a nem bizalmas adatokhoz a teljesítmény és a funkciók hatásának csökkentése érdekében. A Always Encrypted a TDE és a TLS együttes használata ajánlott a REST-alapú, a tranzit-és a használatban lévő adatok átfogó védelméhez. 
+- A Always Encrypted nem helyettesíti az inaktív adatok titkosítását (TDE) vagy átvitelét (SSL/TLS). A teljesítmény és a funkciók hatásának csökkentése érdekében a Always Encrypted nem használhatók a nem bizalmas adatokhoz. A Always Encrypted a TDE és a Transport Layer Security (TLS) együttes használata ajánlott a REST-alapú, a tranzit-és a használatban lévő adatok átfogó védelméhez. 
 
-- Always Encrypted kulcsok kezelése szerepkör-elkülönítéssel, ha Always Encryptedt használ a rosszindulatú Adattervezők származó adatok védelme érdekében. A szerepkörök elkülönítésével a biztonsági rendszergazda létrehozza a fizikai kulcsokat, és egy DBA oszlop főkulcsát és az oszlop titkosítási kulcsának metaadat-objektumait hozza létre, amelyek a fizikai kulcsokat ismertetik az adatbázisban. A folyamat során a biztonsági rendszergazdának nem kell hozzáférése az adatbázishoz, és a DBA-nek nem kell hozzáférése a fizikai kulcsokhoz az egyszerű szöveges verzióban. 
+- Always Encrypted kulcsok kezelése szerepkör-elkülönítéssel, ha Always Encryptedt használ a rosszindulatú Adattervezők származó adatok védelme érdekében. A szerepkörök elkülönítésével a biztonsági rendszergazda létrehozza a fizikai kulcsokat. A DBA létrehozza az oszlop főkulcsát és az oszlop titkosítási kulcsának metaadat-objektumait, amelyek a fizikai kulcsokat ismertetik az adatbázisban. A folyamat során a biztonsági rendszergazdának nem kell hozzáférése az adatbázishoz, és a DBA-nek nem kell hozzáférése a fizikai kulcsokhoz az egyszerű szöveges verzióban. 
   - A részletekért tekintse meg a [kulcsok kezelése a szerepkörök elkülönítésével](https://docs.microsoft.com/sql/relational-databases/security/encryption/overview-of-key-management-for-always-encrypted#managing-keys-with-role-separation) című cikket. 
 
 - Az egyszerű felügyelet érdekében az oszlopok főkulcsait Azure Key Vault tárolja. Kerülje a Windows-tanúsítványtároló használatát (és az elosztott kulcstároló-megoldásokat, amelyek nem rendelkeznek a kulcsfontosságú felügyeleti megoldásokkal). 
 
-- Alaposan gondolja át a több kulcs (oszlop főkulcsa vagy az oszlop titkosítási kulcsa) használatának kompromisszumait. Csökkentse a kulcsok számát a legfontosabb felügyeleti díjak csökkentése érdekében. Az adatbázisokban az egyik főkulcs és egy oszlopos titkosítási kulcs általában elegendő az állandó állapotú környezetekben (nem a kulcs forgásának közepéhez), hacsak nem rendelkezik különböző felhasználói csoportokkal, amelyek mindegyike különböző kulcsokat használ, és különböző adatokhoz fér hozzá.  
+- Alaposan gondolja át a több kulcs (oszlop főkulcsa vagy az oszlop titkosítási kulcsa) használatának kompromisszumait. Csökkentse a kulcsok számát a legfontosabb felügyeleti díjak csökkentése érdekében. Az adatbázisokban az egyik főkulcs és egy oszlop titkosítási kulcsa általában elegendő az állandó állapotú környezetekben (nem a kulcs forgásának közepéhez). További kulcsokra lehet szükség, ha különböző felhasználói csoportokkal rendelkezik, amelyek mindegyike különböző kulcsokat használ, és különböző adatokhoz fér hozzá.  
 
 - A megfelelőségi követelmények alapján forgassa el az oszlop főkulcsait. Ha az oszlop titkosítási kulcsait is el kell forgatni, érdemes lehet online titkosítást használni az alkalmazások leállásának minimalizálásához. 
   - Tekintse meg a cikk, a [teljesítmény és a rendelkezésre állás szempontjait](https://docs.microsoft.com/sql/relational-databases/security/encryption/configure-column-encryption-using-powershell#performance-and-availability-considerations). 
 
 - Használjon determinisztikus titkosítást, ha az adatok számításait (egyenlőségét) támogatni kell. Egyéb esetben véletlenszerű titkosítást használjon. Kerülje a determinisztikus titkosítás használatát az alacsony entrópia-adatkészletekhez, vagy nyilvánosan ismert eloszlású adatkészletekhez. 
 
-- Ha azt szeretné, hogy a harmadik fél az Ön beleegyezike nélkül férhet hozzá az adataihoz, akkor győződjön meg arról, hogy az összes olyan alkalmazás és eszköz, amely nem fér hozzá a kulcsokhoz és az adataihoz a Microsoft Azure felhőn kívülről. A kulcsokhoz való hozzáférés nélkül a harmadik fél semmilyen módon nem tudja visszafejteni az adattitkosítást, kivéve, ha megkerüli a titkosítást.
+- Ha arról van szó, hogy Ön beleegyezik a harmadik féltől származó adatokkal, az Ön engedélye nélkül férhet hozzá a kulcsokhoz és az Microsoft Azure adatokhoz. A kulcsokhoz való hozzáférés nélkül a harmadik fél semmilyen módon nem tudja visszafejteni az adattitkosítást, kivéve, ha megkerüli a titkosítást.
 
-- Always Encrypted nem támogatja a kulcsok (és a védett adat) ideiglenes hozzáférésének megadását. Ha például a kulcsokat egy DBA-vel kell megosztania, hogy a DBA bizonyos tisztítási műveleteket hajtson végre a bizalmas és titkosított adatokon, akkor az egyetlen módszer a megbízhatóság visszavonására a DBA-ből származó adatokhoz való hozzáférés visszavonása az oszlop titkosítási kulcsainak és a oszlopok az adatok védelmét szolgáló MN főkulcsok költséges művelet. 
+- Always Encrypted nem támogatja a kulcsok (és a védett adat) ideiglenes hozzáférésének megadását. Ha például a kulcsokat egy DBA-vel kell megosztania, hogy a DBA bizonyos tisztítási műveleteket végezzen a bizalmas és titkosított adatokon. Az egyetlen módja annak, hogy a megbízhatóság visszavonja a DBA-ből származó adatokhoz való hozzáférést, az oszlop titkosítási kulcsainak és az adatok védelmét szolgáló oszlop főkulcsának elforgatásával, ami költséges művelet. 
 
-- A titkosított oszlopokban lévő egyszerű szöveges értékek eléréséhez a felhasználónak hozzáféréssel kell rendelkeznie a CMK, és védenie kell az oszlopokat, amely a CMK tároló kulcstárolóban van konfigurálva. Emellett a felhasználónak meg kell jelenítenie bármely oszlop főkulcs-DEFINÍCIÓját, és meg kell tekintenie az oszlop titkosítási KULCSának DEFINÍCIÓs adatbázisának engedélyeit.
+- Ha titkosított oszlopokban szeretné elérni a szöveges értékeket, a felhasználónak hozzáféréssel kell rendelkeznie az oszlopokat védő CMK, amely a CMK tároló kulcstárolóban van konfigurálva. A felhasználónak Emellett meg kell adnia **bármely oszlop FŐkulcsának definícióját** , és **meg kell TEKINTENIE az összes oszlop titkosítási kulcsának definícióját** tartalmazó adatbázis engedélyeit.
 
 ### <a name="control-access-of-application-users-to-sensitive-data-through-encryption"></a>Az alkalmazás felhasználói bizalmas adatokhoz való hozzáférésének szabályozása titkosítás útján
 
-A titkosítás segítségével biztosítható, hogy csak bizonyos alkalmazás-felhasználók férhessenek hozzá a titkosítási kulcsokhoz, és megtekinthetik vagy frissíthetik az adatfájlokat.
+A titkosítás használatával biztosítható, hogy csak a titkosítási kulcsokhoz hozzáférő alkalmazás-felhasználók tekinthetik meg vagy frissíthetik az adatfájlokat.
 
 **Megvalósítás**:
 
 - Használjon cella szintű titkosítást (CLE). A részletekért tekintse meg a következő cikket: [adatok adatoszlopának titkosítása](https://docs.microsoft.com/sql/relational-databases/security/encryption/encrypt-a-column-of-data) . 
-- Azt is megteheti, hogy Always Encryptedt használ, de az alább felsorolt korlátozásokat figyelembe kell vennie.
+- Használja Always Encrypted, de vegye figyelembe a korlátozását. A korlátozások alább láthatók.
 
 **Ajánlott eljárások**
 
@@ -464,11 +457,9 @@ A CLE használatakor:
 - Ügyeljen arra, hogy az adatbázist a cella szintű titkosítás használatával exportálja és importálja (bacpac-fájlok). 
   - Tekintse meg a következő cikket: [javaslatok a cella szintű titkosítás használatára a Azure SQL Databaseban](https://blogs.msdn.microsoft.com/sqlsecurity/2015/05/12/recommendations-for-using-cell-level-encryption-in-azure-sql-database/) , hogy miként lehet megakadályozni a kulcsok elindítását az adatáttelepítés során, valamint az ajánlott eljárásokkal kapcsolatos további útmutatást.
 
-Always Encrypted használatakor vegye figyelembe, hogy Always Encrypted elsődlegesen az Azure SQL Database (Cloud Operators, Adattervezők) magas jogosultsági szintű felhasználóitól származó bizalmas adatok védelme érdekében van kialakítva, lásd: [bizalmas adatok védelme magas jogosultságú, jogosulatlan felhasználóktól](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Az alkalmazás felhasználóitól származó adatok védelme Always Encrypted használatakor vegye figyelembe az alábbi kihívásokat:
+Ne feledje, hogy a Always Encrypted elsődlegesen a Azure SQL Database (Cloud Operators, Adattervezők) magas jogosultságú felhasználóitól származó bizalmas adatok védelme érdekében van kialakítva – lásd: [bizalmas adatok védelme magas jogosultságú, jogosulatlan felhasználóktól](#protect-sensitive-data-in-use-from-high-privileged-unauthorized-users). Az alkalmazás felhasználóitól származó adatok védelme Always Encrypted használatakor vegye figyelembe az alábbi kihívásokat:
 
-- Miután megadta a felhasználó számára a bizalmas adatokhoz való hozzáférést azáltal, hogy a felhasználónak engedélyt ad az oszlop titkosítási kulcsának és az oszlop főkulcsának elérésére, hogy megbízhatóan visszavonja a hozzáférést az oszlop titkosítási kulcsának elforgatásához, ami egy költséges művelet, amelyre szükség van az összes oszlop újratitkosítása az oszlop titkosítási kulcsa véd. 
-
-- Alapértelmezés szerint az összes Always Encrypted támogató Microsoft-ügyfél-illesztőprogram az oszlop titkosítási kulcsainak globális (egy-egy/alkalmazás-) gyorsítótárát tartja karban. Ha az ügyfél-illesztőprogram egy egyszerű szöveges oszlop titkosítási kulcsát kéri le egy olyan kulcstárolóval, amely egy oszlop főkulcsát tárolja, a rendszer gyorsítótárazza az egyszerű szöveges oszlop titkosítási kulcsát, amely a többfelhasználós alkalmazások felhasználóitól származó adatok elkülönítését teszi lehetővé. Ha az alkalmazás megszemélyesíti a végfelhasználókat a kulcstárolókkal való interakció során (például Azure Key Vault), azt követően, hogy egy felhasználó lekérdezése egy oszlopos titkosítási kulccsal tölti fel a gyorsítótárat, egy későbbi, ugyanazt a kulcsot igénylő lekérdezést, amelyet egy másik felhasználó indít el, a következőt fogja használni: gyorsítótárazott kulcs. Az illesztőprogram nem hívja meg a kulcstárolót, és nem fogja megnézni, hogy a második felhasználó rendelkezik-e engedéllyel az oszlop titkosítási kulcsának eléréséhez. Ennek eredményeképpen a felhasználó akkor is láthatja a titkosított információt, ha a felhasználó nem fér hozzá a kulcsokhoz. Ha a felhasználók elkülönítését egy többfelhasználós alkalmazásban szeretné elérni, előfordulhat, hogy le kell tiltania az oszlop-titkosítási kulcs gyorsítótárazását, ami további teljesítmény-ellenőrzéseket eredményez, mivel az illesztőprogramnak fel kell vennie a kapcsolatot a kulcstárolóval az egyes adattitkosítások vagy visszafejtések számára. művelet.
+- Alapértelmezés szerint az összes Always Encrypted támogató Microsoft-ügyfél-illesztőprogram az oszlop titkosítási kulcsainak globális (egy-egy/alkalmazás-) gyorsítótárát tartja karban. Ha az ügyfél-illesztőprogram egy egyszerű szöveges oszlop titkosítási kulcsát szerzi be, lépjen kapcsolatba egy, az oszlop főkulcsát tároló kulcstárolóval, a rendszer gyorsítótárazza az egyszerű szöveges oszlop titkosítási kulcsát. Így a többfelhasználós alkalmazások felhasználóitól származó adatok elkülönítését teszik lehetővé. Ha az alkalmazás megszemélyesíti a végfelhasználókat a kulcstárolókkal való interakció során (például Azure Key Vault), azt követően, hogy egy felhasználó lekérdezése egy oszlopos titkosítási kulccsal tölti fel a gyorsítótárat, egy későbbi, ugyanazt a kulcsot igénylő lekérdezést, amelyet egy másik felhasználó indít el, a következőt fogja használni: gyorsítótárazott kulcs. Az illesztőprogram nem hívja meg a kulcstárolót, és nem fogja tudni, hogy a második felhasználónak van-e engedélye az oszlop titkosítási kulcsának elérésére. Ennek eredményeképpen a felhasználó akkor is láthatja a titkosított információt, ha a felhasználó nem rendelkezik hozzáféréssel a kulcsokhoz. A felhasználók egy többfelhasználós alkalmazáson belüli elkülönítésének eléréséhez letilthatja az oszlop titkosítási kulcsának gyorsítótárazását. A gyorsítótárazás letiltása további teljesítménybeli terhelést eredményez, mivel az illesztőprogramnak kapcsolatba kell lépnie a kulcstárolóval az egyes adattitkosítási vagy visszafejtési műveletekhez.
 
 ### <a name="protect-data-against-unauthorized-viewing-by-application-users-while-preserving-data-format"></a>Az alkalmazások felhasználói általi jogosulatlan megtekintésének védelme az adatformátum megőrzése mellett
 Egy másik módszer, amellyel megakadályozható, hogy a jogosulatlan felhasználók megtekintsék az adatmegjelenítést, és az adattípusok és a formátumok megtartásával megőrizze az adattípusokat és a formátumokat, hogy a felhasználói alkalmazások továbbra is képesek legyenek kezelni
@@ -488,15 +479,15 @@ Egy másik módszer, amellyel megakadályozható, hogy a jogosulatlan felhaszná
 - Ne engedélyezze az alkalmazások felhasználóinak alkalmi lekérdezések futtatását (mivel lehetséges, hogy a dinamikus adatmaszkolás megkerülheti őket).  
   - A részletekért tekintse meg a következő cikket: a [maszkolás kihagyása a következtetések és a találgatásos technikák használatával](https://docs.microsoft.com/sql/relational-databases/security/dynamic-data-masking#security-note-bypassing-masking-using-inference-or-brute-force-techniques) .  
 
-- A megfelelő hozzáférés-vezérlési házirend (SQL-engedélyek, szerepkörök, RLS) használatával korlátozza a felhasználók engedélyeit a maszkolt oszlopokban lévő frissítések biztosításához. Egy oszlophoz tartozó maszk létrehozása nem akadályozza meg az adott oszlop frissítését. Ezért bár a felhasználók a maszkolt oszlop lekérdezése során maszkolt adatkérést kapnak, ugyanazokat a felhasználókat frissíthetik, ha írási engedéllyel rendelkeznek.    
+- A megfelelő hozzáférés-vezérlési házirend (SQL-engedélyek, szerepkörök, RLS) használatával korlátozza a felhasználók engedélyeit a maszkolt oszlopokban lévő frissítések biztosításához. Egy oszlophoz tartozó maszk létrehozása nem akadályozza meg az adott oszlop frissítését. Azok a felhasználók, akik maszkolt adattárolást kapnak a maszkolt oszlop lekérdezése során, frissíthetik az adatkérést, ha írási engedéllyel rendelkeznek.    
 
--  A dinamikus adatmaszkolás nem őrzi meg a maszkolt értékek statisztikai tulajdonságait, ami hatással lehet a lekérdezés eredményeire (például a szűrési predikátumokat vagy a maszkolt adatokhoz tartozó illesztéseket tartalmazó lekérdezések).
+-  A dinamikus adatmaszkolás nem őrzi meg a maszkolt értékek statisztikai tulajdonságait. Ez befolyásolhatja a lekérdezési eredményeket (például a szűrési predikátumokat vagy a maszkolt adategyesítéseket tartalmazó lekérdezéseket).
 
 ## <a name="network-security"></a>Hálózati biztonság
 A hálózati biztonság a hozzáférés-vezérlésre és az ajánlott eljárásokra hivatkozik, hogy az adatátvitelt az Azure SQL Databaseba.
 
 ### <a name="configure-my-client-to-connect-securely-to-azure-sql-database"></a>Az ügyfél konfigurálása, hogy biztonságosan kapcsolódjon Azure SQL Database 
-Annak megakadályozása, hogy az ügyfélszámítógépek és alkalmazások a Azure SQL Databasehoz kapcsolódjanak jól ismert biztonsági rések miatt, a régebbi protokollok és a titkosítási csomagoktól való függőség miatt.
+Ajánlott eljárások, amelyekkel megakadályozható, hogy az ügyfélszámítógépek és az alkalmazások jól ismert biztonsági rések (például a régebbi TLS-protokollok és a titkosító csomagok használata) Azure SQL Database való csatlakozással.
 
 **Megvalósítás**:
 
@@ -511,16 +502,16 @@ Annak megakadályozása, hogy az ügyfélszámítógépek és alkalmazások a Az
 
 - Csökkentse a támadási vektorokat az SSL 2,0, az SSL 3,0, a TLS 1,0 és a TLS 1,1 biztonsági rések révén, ha letiltja azokat a Azure SQL Database [Transport Layer Security (TLS) beállításjegyzék-beállításokhoz](https://docs.microsoft.com/windows-server/security/tls/tls-registry-settings#tls-10)csatlakozó ügyfélszámítógépeken. 
 
-- Az ügyfélen lévő titkosítási csomagokat a [TLS/SSL (Schannel SSP)](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel) kiszolgálón, és a [TLS titkosítási csomag konfigurálásakor](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order)kifejezetten tiltsa le a 3DES-t. 
+- Győződjön meg arról, hogy az ügyfélen elérhető titkosítási csomagok találhatók a [TLS/SSL (Schannel SSP) titkosítási csomagjaiban](https://docs.microsoft.com/windows/desktop/SecAuthN/cipher-suites-in-schannel). Pontosabban tiltsa le a 3DES-t a [TLS titkosítási csomag megrendelésének konfigurálásával](https://docs.microsoft.com/windows-server/security/tls/manage-tls#configuring-tls-cipher-suite-order). 
 
-- Ha felügyelt példányt használ, használja a **proxy** kapcsolattípus (alapértelmezett) értéket, mivel ez kikényszeríti a titkosítást a kiszolgáló oldaláról. Az **átirányítási** kapcsolat típusa jelenleg nem támogatja a titkosítás kényszerítését, és csak magánhálózati IP-kapcsolatokon érhető el. 
-  - További információ: [Azure SQL connectivity Architecture – kapcsolati házirend](sql-database-connectivity-architecture.md#connection-policy).
-  - A titkosítás a proxy és az átirányítás típusú kapcsolatok esetében is érvényben van. 
+- A Azure SQL Database esetében a titkosítás a proxy és az átirányítás típusú kapcsolatok esetében is érvényben van. Ha felügyelt példányt használ, használja a **proxy** kapcsolattípus (alapértelmezett) értéket, mivel ez kikényszeríti a titkosítást a kiszolgáló oldaláról. Az **átirányítási** kapcsolat típusa jelenleg nem támogatja a titkosítás kényszerítését, és csak magánhálózati IP-kapcsolatokon érhető el. 
+
+- További információ: [Azure SQL connectivity Architecture – kapcsolati házirend](sql-database-connectivity-architecture.md#connection-policy).
+
 
 ### <a name="minimize-attack-surface"></a>A támadási felület csökkentése
-A Azure SQL Database hálózati hozzáférés-vezérlésének megvalósításával csökkentheti a kártékony felhasználók által megtámadható szolgáltatások számát.
+A rosszindulatú felhasználók által megtámadható szolgáltatások számának csökkentése. A Azure SQL Database hálózati hozzáférés-vezérlésének implementálása.
 
-> [!NOTE]
 > Megemlítve: OSA Practice #5
 
 **Megvalósítás**:
@@ -528,7 +519,7 @@ A Azure SQL Database hálózati hozzáférés-vezérlésének megvalósításáv
 Egy Azure SQL Database-kiszolgálón (különálló adatbázist vagy rugalmas készleteket tartalmazó):
 - Állítsa be az Azure-szolgáltatásokhoz való hozzáférés engedélyezése lehetőséget.
 
-- Virtuális hálózati szolgáltatás-végpontok és virtuális hálózati tűzfalszabályok használata.
+- VNet-szolgáltatási végpontok és VNet-tűzfalszabályok használata.
 
 - Használjon privát hivatkozást (előzetes verzió).
 
@@ -538,10 +529,10 @@ Felügyelt példányban:
 **Ajánlott eljárások**:
 
 - Azure SQL Database hozzáférésének korlátozása privát végponthoz való csatlakozással (például privát adatútvonal használatával): 
-  - A külső hozzáférés megakadályozása érdekében a felügyelt példányok elkülöníthetők egy virtuális hálózaton belül. Azok az alkalmazások és eszközök, amelyek ugyanabban a régióban található azonos vagy egyenrangú virtuális hálózaton találhatók, közvetlenül is hozzáférhetnek. A különböző régiókban található alkalmazások és eszközök a kapcsolat létesítéséhez VNet-VNet kapcsolatot vagy ExpressRoute áramkör-társítást használhatnak. Az ügyfélnek hálózati biztonsági csoportokat (NSG) kell használnia az 1433-as porton keresztüli hozzáférés korlátozásához a felügyelt példányokhoz hozzáférést igénylő erőforrásokhoz. 
-  - Egy SQL Database-kiszolgáló (amely önálló adatbázisokat vagy rugalmas készleteket tartalmaz) esetében használja a [privát kapcsolat](sql-database-private-endpoint-overview.md) funkciót, amely dedikált magánhálózati IP-címet biztosít a virtuális hálózaton belüli SQL Database-kiszolgálóhoz. Virtuális hálózati szolgáltatás- [végpontokat is használhat virtuális hálózati tűzfalszabályok](sql-database-vnet-service-endpoint-rule-overview.md) használatával a SQL Database-kiszolgálókhoz való hozzáférés korlátozására.
-  - A mobil felhasználóknak a pont – hely VPN-kapcsolatokkal kell használniuk az adatútvonalon keresztüli csatlakozást.
-  - A helyszíni hálózathoz csatlakozó felhasználóknak a helyek közötti VPN-kapcsolatot vagy ExpressRoute kell használniuk az adatútvonalon való csatlakozáshoz.
+  - A felügyelt példányok elkülöníthetők egy VNet belül a külső hozzáférés megakadályozása érdekében. Az azonos régióban található azonos vagy egyenrangú VNet lévő alkalmazások és eszközök közvetlenül hozzáférhetnek hozzá. A különböző régiókban található alkalmazások és eszközök a kapcsolat létesítéséhez VNet-VNet kapcsolatot vagy ExpressRoute áramkör-összevonást használhatnak. Az ügyfélnek hálózati biztonsági csoportokat (NSG) kell használnia az 1433-as porton keresztüli hozzáférés korlátozásához a felügyelt példányokhoz hozzáférést igénylő erőforrásokhoz. 
+  - SQL Database-kiszolgáló esetén (amely önálló adatbázisokat vagy rugalmas készleteket tartalmaz) használja a [privát kapcsolat](sql-database-private-endpoint-overview.md) funkciót, amely dedikált magánhálózati IP-címet biztosít a VNet belüli SQL Database-kiszolgálóhoz. A [VNet szolgáltatás-végpontokat VNet tűzfalszabályok](sql-database-vnet-service-endpoint-rule-overview.md) használatával is korlátozhatja a SQL Database-kiszolgálókhoz való hozzáférés korlátozására.
+  - A mobil felhasználóknak pont – hely típusú VPN-kapcsolatokat kell használniuk az adatútvonalon való csatlakozáshoz.
+  - A helyszíni hálózathoz csatlakozó felhasználóknak helyek közötti VPN-kapcsolatot vagy ExpressRoute kell használniuk az adatútvonalon való csatlakozáshoz.
 
 - A Azure SQL Database egy nyilvános végponthoz való csatlakozással (például nyilvános adatútvonal használatával) érheti el. A következő ajánlott eljárásokat kell figyelembe venni: 
   - SQL Database-kiszolgáló esetén az [IP-tűzfalszabályok](sql-database-firewall-configure.md) használatával korlátozza a hozzáférést csak a jogosult IP-címekhez.
@@ -577,7 +568,7 @@ Felügyelt példányban:
 
 - Az [alkalmazás integrálása Azure-Virtual Network](../app-service/web-sites-integrate-with-vnet.md) a felügyelt példányokhoz való magánhálózati adatelérési utakhoz való kapcsolódáshoz. Igény szerint egy webalkalmazást is üzembe helyezhet [app Service környezetekkel](../app-service/environment/intro.md). 
 
-- A SQL Database-kiszolgálón található adatbázishoz csatlakozó vagy VNet integrált webalkalmazással rendelkező webalkalmazások esetében a [VNet szolgáltatás-végpontok és a VNet tűzfalszabályok](sql-database-vnet-service-endpoint-rule-overview.md) használatával korlátozhatja a hozzáférést egy adott VNet és alhálózatról, majd beállíthatja az **Azure-szolgáltatások** kikapcsolását. Egy felügyelt példányhoz is csatlakozhat egy privát adatútvonalon keresztül.  
+- A SQL Database-kiszolgálón található adatbázishoz csatlakozó vagy VNet integrált webalkalmazással rendelkező webalkalmazások esetében a [VNet szolgáltatás-végpontok és a VNet tűzfalszabályok](sql-database-vnet-service-endpoint-rule-overview.md) használatával korlátozhatja a hozzáférést egy adott VNet és alhálózatról. Ezután állítsa be az Azure-szolgáltatások kikapcsolásának **engedélyezése lehetőséget** . Egy felügyelt példányhoz is csatlakozhat egy privát adatútvonalon keresztül.  
 
 - Győződjön meg arról, hogy a webalkalmazás konfigurálva van a következő cikkben [: ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez Azure app Service használatával](../security/security-paas-applications-using-app-services.md). 
 
@@ -606,14 +597,13 @@ Felügyelt példányban:
 ### <a name="protect-against-distributed-denial-of-service-ddos-attacks"></a>Az elosztott szolgáltatásmegtagadási (DDoS) támadások elleni védelem
 Az elosztott szolgáltatásmegtagadási (DDoS) támadások arra irányulnak, hogy a rosszindulatú felhasználók elküldjék a hálózati forgalom Azure SQL Databaseét az Azure-infrastruktúra túlnyomó részeként, és így az érvényes bejelentkezések és számítási feladatok elutasítását.
 
-> [!NOTE]
 > Megemlítve: OSA Practice #9
 
 **Megvalósítás**:
 
 A DDoS elleni védelem automatikusan engedélyezve van az Azure platform részeként. Magában foglalja a forgalom folyamatos figyelését és a nyilvános végpontok hálózati szintű támadásának valós idejű enyhítését. 
 
-- A [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) használatával figyelheti a virtuális hálózatokban üzembe helyezett erőforrásokhoz társított nyilvános IP-címeket.
+- A [Azure DDoS Protection](../virtual-network/ddos-protection-overview.md) használatával figyelheti a virtuális hálózatok-ben üzembe helyezett erőforrásokhoz társított nyilvános IP-címeket.
 
 - A [Azure SQL Database komplex veszélyforrások elleni védelem](sql-database-threat-detection-overview.md) használatával észlelheti a szolgáltatásmegtagadási (DOS) támadásokat az adatbázisokon.
 
@@ -644,12 +634,12 @@ A komplex veszélyforrások elleni védelem lehetővé teszi, hogy a rendellenes
 
 **Ajánlott eljárások**:
 
-- A [speciális adatbiztonsági](sql-database-advanced-data-security.md#getting-started-with-ads) Azure SQL Database konfigurálása egy adott SQL Database kiszolgálóhoz vagy felügyelt példányhoz, illetve az előfizetésben lévő összes SQL Database-kiszolgáló és felügyelt példány esetében [Azure Security Center Standard szintre](../security-center/security-center-pricing.md)váltással. 
+- Egy adott SQL Database-kiszolgáló vagy egy felügyelt példány esetében a Azure SQL Database [speciális adatbiztonsági (ADS)](sql-database-advanced-data-security.md#getting-started-with-ads) konfigurálása. Az előfizetésben lévő összes SQL Database-kiszolgálóhoz és felügyelt példányhoz is beállíthat HIRDETÉSEKET úgy, hogy [Azure Security Center standard szintű](../security-center/security-center-pricing.md)csomagra vált. 
 
-- Teljes körű vizsgálat esetén ajánlott engedélyezni [SQL Database naplózást](sql-database-auditing.md) az adatbázis-események nyomon követéséhez és az Azure Storage-fiók vagy az Azure log Analytics-munkaterület naplójába való íráshoz. 
+- A teljes körű vizsgálathoz javasolt a [SQL Database naplózás](sql-database-auditing.md)engedélyezése. A naplózással nyomon követheti az adatbázis eseményeit, és egy Azure Storage-fiókban vagy Azure Log Analytics-munkaterületen is megírhatja őket egy naplóba. 
 
 ### <a name="audit-critical-security-events"></a>Kritikus biztonsági események naplózása
-Az adatbázis-események nyomon követése segít megérteni az adatbázis-tevékenységeket, és olyan eltéréseket és rendellenességeket mutat be, amelyek üzleti problémákat vagy feltételezett biztonsági szabálysértéseket jelezhetnek. Emellett a megfelelőségi szabványok betartását is lehetővé teszi és megkönnyíti. 
+Az adatbázis-események nyomon követése segít megérteni az adatbázis tevékenységeit. Olyan eltéréseket és rendellenességeket szerezhet be, amelyek üzleti vagy feltételezett biztonsági szabálysértéseket jelezhetnek. Emellett a megfelelőségi szabványok betartását is lehetővé teszi és megkönnyíti. 
 
 **Megvalósítás**:
 
@@ -660,7 +650,7 @@ Az adatbázis-események nyomon követése segít megérteni az adatbázis-tevé
 **Ajánlott eljárások**:
 
 - Ha [SQL Database naplózást](sql-database-auditing.md) konfigurál az adatbázis-kiszolgálón az események naplózásához, a rendszer naplózza az adott kiszolgálón lévő összes meglévő és újonnan létrehozott adatbázist.
-- Alapértelmezés szerint a naplózási házirend minden műveletet (lekérdezéseket, tárolt eljárásokat és sikeres és sikertelen bejelentkezést) tartalmaz az adatbázisokon, ami nagy mennyiségű naplót eredményezhet. Javasoljuk, hogy az ügyfelek a [PowerShell használatával konfigurálja a különböző típusú műveletek és műveleti csoportok naplózását](sql-database-auditing.md#subheading-7), hogy a naplózott műveletek számát szabályozzák, valamint az események elvesztésének kockázatát. Ez lehetővé teszi az ügyfeleknek, hogy csak a valóban szükséges naplózási adatmennyiséget rögzítsen.
+- Alapértelmezés szerint a naplózási házirend minden műveletet (lekérdezéseket, tárolt eljárásokat és sikeres és sikertelen bejelentkezést) tartalmaz az adatbázisokon, ami nagy mennyiségű naplót eredményezhet. Javasoljuk, hogy az ügyfelek a [PowerShell használatával konfigurálják a különböző típusú műveletek és műveleti csoportok naplózását](sql-database-auditing.md#subheading-7). A konfigurálásával szabályozhatja a naplózott műveletek számát, és csökkentheti az események elvesztésének kockázatát. Az egyéni naplózási konfiguráció lehetővé teszi, hogy az ügyfelek csak a szükséges naplózási adatmennyiséget rögzítik.
 - A naplók közvetlenül a [Azure Portal](https://portal.azure.com/)vagy a konfigurált tárolási helyről is felhasználhatók. 
 
 
@@ -673,13 +663,12 @@ Az adatbázis-események nyomon követése segít megérteni az adatbázis-tevé
 - [SQL Server naplózás](https://docs.microsoft.com/sql/relational-databases/security/auditing/sql-server-audit-database-engine) 
 
 ### <a name="secure-audit-logs"></a>Biztonságos naplózási naplók
-A feladatok elkülönítésének támogatásához és a-ellenőröktől való elkülönítéshez kulcsfontosságú, hogy a szükséges mértékeket a Storage-fiókhoz való hozzáférés korlátozására lehessen korlátozni. 
+Korlátozza a hozzáférést a Storage-fiókhoz a feladatok elkülönítésének támogatásához és a DBA-ket a könyvvizsgálók elkülönítéséhez. 
 
 **Megvalósítás**:
 
-- A naplók Azure Storage-ba mentésekor győződjön meg arról, hogy a Storage-fiókhoz való hozzáférés a minimális biztonsági alapelvekre korlátozódik a Storage-fiókhoz való hozzáférés szabályozásával.
-
-- További információ: az [Azure Storage hozzáférésének engedélyezése](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
+- A naplók Azure Storage-ba mentésekor győződjön meg arról, hogy a Storage-fiókhoz való hozzáférés a minimális biztonsági alapelvekre korlátozódik. Szabályozhatja, hogy ki férhet hozzá a Storage-fiókhoz.
+    - További információ: az [Azure Storage hozzáférésének engedélyezése](../storage/common/storage-auth.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
 **Ajánlott eljárások**:
 
@@ -701,13 +690,13 @@ Proaktív módon fejlesztheti adatbázisa biztonságát a lehetséges adatbázis
 
 **Ajánlott eljárások**:
 
-- Először futtassa a VA-t az adatbázisain, és ismételje meg a szervizelését, hogy nem ellenőrzi az ajánlott biztonsági eljárásokat, és beállítja az alapkonfigurációkat az elfogadható konfigurációkhoz, amíg a vizsgálat kikerül a "tiszta" (minden ellenőrzés) értékre.  
+- Először futtassa a VA-t az adatbázisain, és ismételje meg a szervizelését, ha nem végez ellenőrzéseket az ajánlott biztonsági eljárásokkal szemben. Állítsa be az alapkonfigurációkat az elfogadható konfigurációkhoz, amíg a vizsgálat nem kerül _tiszta_állapotba, vagy az összes ellenőrzés el lett mentve.  
 
 - Konfigurálja a rendszeres ismétlődő vizsgálatokat hetente egyszer, és konfigurálja az érintett személyt az összegző e-mailek fogadására. 
 
-- Tekintse át az összes heti vizsgálatot követő VA összefoglalót. Az észlelt biztonsági rések esetében értékelje ki az előző vizsgálat eredményének eltolódását, és állapítsa meg, hogy az ellenőrzést meg kell-e oldani, vagy ha a konfiguráció módosításának jogos oka van.   
+- Tekintse át az összes heti vizsgálatot követő VA összefoglalót. A talált biztonsági rések esetében értékelje ki az előző vizsgálat eredményének eltolódását, és állapítsa meg, hogy az ellenőrzést meg kell-e oldani. Ellenőrizze, hogy van-e jogos oka a konfiguráció változásának.   
 
-- Oldja fel az ellenőrzéseket és a frissítési alapterveket, ahol szükséges, vagy hozzon létre jegyeket a műveletek feloldásához, és kövesse ezeket, amíg meg nem oldódik. 
+- Az ellenőrzések és a frissítési alaptervek feloldása, ahol szükséges. Hozzon létre jegyeket a műveletek feloldásához, és kövesse ezeket, amíg meg nem oldódik. 
 
 **További források**:
 
@@ -716,12 +705,12 @@ Proaktív módon fejlesztheti adatbázisa biztonságát a lehetséges adatbázis
 
 ### <a name="identify-and-tag-sensitive-data"></a>Bizalmas adatok azonosítása és címkézése 
 
-Olyan oszlopok felderítése, amelyek potenciálisan bizalmas adatokat tartalmaznak. Osztályozza az oszlopokat a speciális érzékenységi alapú naplózási és védelmi forgatókönyvek kihasználása érdekében. 
+Olyan oszlopok felderítése, amelyek potenciálisan bizalmas adatokat tartalmaznak. Az oszlopok osztályozása speciális, érzékenységen alapuló naplózási és védelmi forgatókönyvek használatához. 
 
 **Megvalósítás**:
 
 - Az [SQL-adatfelderítés és-besorolás](sql-database-data-discovery-and-classification.md) használatával felderítheti, osztályozhatja, címkézheti és megóvja a bizalmas adatokat az adatbázisaiban. 
-  - Tekintse meg az automatikus észlelés által az SQL-adatfelderítés és besorolási irányítópulton létrehozott besorolási javaslatokat, és fogadja el a megfelelő besorolásokat, hogy a bizalmas adatok tartósan címkével legyenek ellátva besorolással Címkék. 
+  - Megtekintheti az automatikus észlelés által létrehozott besorolási javaslatokat az SQL-adatfelderítés és besorolás irányítópulton. Fogadja el a releváns besorolásokat, így a bizalmas adatok állandó címkével vannak ellátva a besorolási címkékkel. 
   - Adja meg manuálisan a besorolásokat az automatikus mechanizmus által nem felderített további bizalmas adatmezőkhöz. 
 - További információ: SQL- [adatfelderítés & besorolása](https://docs.microsoft.com/sql/relational-databases/security/sql-data-discovery-and-classification).
 
@@ -729,7 +718,7 @@ Olyan oszlopok felderítése, amelyek potenciálisan bizalmas adatokat tartalmaz
 
 - Az adatbázis besorolási állapotának pontos értékeléséhez rendszeresen figyelje a besorolási irányítópultot. Az adatbázis besorolási állapotáról szóló jelentés exportálható vagy kinyomtatható a megfelelőségi és naplózási célokra való megosztáshoz.
 
-- Az ajánlott bizalmas adatok állapotát folyamatosan figyelemmel kísérheti az SQL sebezhetőségi felmérésben, a bizalmas adatfelderítési szabály nyomon követésével és az ajánlott oszlopok besorolással való eltolódásának azonosításával.  
+- Az ajánlott bizalmas adatok állapotának folyamatos figyelése az SQL sebezhetőségi felmérésben. Nyomon követheti a bizalmas adatfelderítési szabályt, és azonosíthatja a besorolást az ajánlott oszlopokban.  
 
 - A besorolást a szervezet konkrét igényeihez igazított módon használhatja. Szabja testre a Information Protection szabályzatot (érzékenységi címkék, adattípusok, felderítési logika) a Azure Security Center [SQL Information Protection](../security-center/security-center-info-protection-policy.md) házirendjében. 
 
@@ -739,7 +728,7 @@ Figyelje meg, hogy ki fér hozzá a bizalmas adatokhoz, és hogyan rögzíthet l
 **Megvalósítás**:
 
 - Az SQL audit és az adatbesorolás együttes használata. 
-  - A [SQL Database](sql-database-auditing.md) a naplóban a hozzáférést a bizalmas adatokhoz is nyomon követheti, és megtekintheti azokat az adatokat, mint például az elért adatok, valamint az érzékenységi címke (lásd: a [bizalmas adatokhoz való hozzáférés naplózása](sql-database-data-discovery-and-classification.md#subheading-3)). 
+  - A [SQL Database naplójában](sql-database-auditing.md) a hozzáférést a bizalmas adatokhoz is nyomon követheti. Megtekintheti az adatok, például az elért adatokat, valamint az érzékenységi címkét is. További információ: [a bizalmas adatokhoz való hozzáférés naplózása](sql-database-data-discovery-and-classification.md#subheading-3). 
 
 **Ajánlott eljárások**:
 
@@ -765,7 +754,7 @@ Az adatok kiszűrése az adatok jogosulatlan másolása, továbbítása vagy lek
 
 Ha egy nyilvános végponton keresztül csatlakozik Azure SQL Database-kiszolgálóhoz, az kiszűrése kockázatot jelent, mivel az ügyfeleknek meg kell nyitniuk a tűzfalat a nyilvános IP-címekre.  
 
-**1. eset**: egy Azure-beli virtuális gépen futó alkalmazás egy Azure SQL Database-kiszolgáló adatbázisához csatlakozik. A szélhámos színész hozzáfér a virtuális géphez, és megsérül. Ebben az esetben az kiszűrése azt jelenti, hogy a szélhámos virtuális gépet használó külső entitás csatlakozik az adatbázishoz, átmásolja a személyes adataikat, és a blob Storage-ban tárolja, vagy egy másik SQL Database egy másik előfizetésben.
+**1. eset**: egy Azure-beli virtuális gépen futó alkalmazás egy Azure SQL Database-kiszolgáló adatbázisához csatlakozik. A szélhámos színész hozzáfér a virtuális géphez, és megsérül. Ebben az esetben az kiszűrése azt jelenti, hogy a szélhámos virtuális gépet használó külső entitás csatlakozik az adatbázishoz, átmásolja a személyes adataikat, és egy blob Storage-ban tárolja, vagy egy másik SQL Database egy másik előfizetésben.
 
 **2. forgatókönyv**: egy Rouge dBA. Ezt a forgatókönyvet gyakran a szabályozott iparágak biztonsági szempontból érzékeny ügyfelei okozják. Ebben a forgatókönyvben egy magas szintű jogosultságú felhasználó másolhatja az adatok Azure SQL Databaseról egy másik előfizetésre, amelyet nem az adatok tulajdonosa ellenőriz.
 
@@ -774,16 +763,16 @@ Ha egy nyilvános végponton keresztül csatlakozik Azure SQL Database-kiszolgá
 Napjainkban Azure SQL Database a következő technikákat kínálja az adatkiszűrése fenyegetések enyhítésére: 
 
 - Az engedélyezési és megtagadási szabályok kombinációját használhatja az Azure-beli virtuális gépek NSG, hogy megtudja, mely régiók érhetők el a virtuális gépről. 
-- Ha Azure SQL Database-kiszolgálót használ (egyedi adatbázisokat vagy rugalmas készleteket tartalmaz), állítsa be a következőket:
+- Ha Azure SQL Database-kiszolgálót használ (egyedi adatbázisokat vagy rugalmas készleteket tartalmaz), állítsa be az alábbi beállításokat:
   - Az Azure-szolgáltatások kikapcsolásának engedélyezése.
   - Csak az Azure-beli virtuális gépet tartalmazó alhálózatról érkező forgalom engedélyezése VNet tűzfalszabály beállításával.
   - [Privát hivatkozás](sql-database-private-endpoint-overview.md) használata
-- Felügyelt példány esetén a magánhálózati IP-hozzáférés alapértelmezés szerint az első olyan kiszűrése vonatkozik, amely egy szélhámos virtuális gép esetében érintett. Kapcsolja be az alhálózati delegálás funkciót olyan alhálózaton, amely automatikusan beállítja a legszigorúbb házirendet egy felügyelt példány alhálózatán.
+- Felügyelt példány esetén a magánhálózati IP-hozzáférés alapértelmezés szerint az első olyan kiszűrése vonatkozik, amely egy szélhámos virtuális gép esetében érintett. Kapcsolja be az alhálózat-delegálás funkciót egy alhálózaton, hogy automatikusan beállítja a legszigorúbb házirendet egy felügyelt példány alhálózatán.
 - A szélhámos DBA-mel kapcsolatos aggályok nagyobb mértékben vannak kitéve egy felügyelt példánnyal, mivel nagyobb felülettel rendelkeznek, és a hálózati követelmények láthatók az ügyfelek számára. A legjobb megoldás az ebben a biztonsági útmutatóban található összes eljárás alkalmazásával megakadályozza a szélhámos DBA-forgatókönyvet az első helyen (nem csak az adatkiszűrése esetében). Always Encrypted egy módszer a bizalmas adatok védelmére azáltal, hogy titkosítja, és a kulcs nem érhető el a DBA számára.
 
 ## <a name="security-aspects-of-business-continuity-and-availability"></a>Az üzletmenet folytonosságának és rendelkezésre állásának biztonsági szempontjai
 
-A legtöbb biztonsági szabvány a működés folytonossága szempontjából az adatrendelkezésre állást kezeli, és a redundancia és a feladatátvételi funkciók megvalósításával kerülhető el, hogy elkerülje az egyes meghibásodási pontokat. Katasztrófa esetén az adatok és a naplófájlok biztonsági mentéseit gyakran érdemes megtartani. A következő szakasz áttekintést nyújt az Azure-ba beépített képességekről, valamint a speciális igényeknek megfelelő további beállításokról: 
+A legtöbb biztonsági szabvány a működés folytonossága szempontjából az adatrendelkezésre állást kezeli, és a redundancia és a feladatátvételi funkciók megvalósításával kerülhető el, hogy elkerülje az egyes meghibásodási pontokat. Katasztrófa esetén az adatok és a naplófájlok biztonsági mentéseit gyakran érdemes megtartani. A következő szakasz átfogó áttekintést nyújt az Azure-ba beépített képességekről. Emellett további beállításokat is biztosít, amelyek az adott igények kielégítésére konfigurálhatók: 
 
 - Az Azure beépített magas rendelkezésre állást kínál: [magas rendelkezésre állást és Azure SQL Database](sql-database-high-availability.md) 
 

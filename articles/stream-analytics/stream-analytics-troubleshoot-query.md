@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: 5534a46ba99d1536d331b5852ef47588f03d73a4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: bf0740bbdd4754aeba43e64f1076a1bea33cffc6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980276"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844419"
 ---
 # <a name="troubleshoot-azure-stream-analytics-queries"></a>Azure Stream Analytics lekérdezések hibáinak megoldása
 
@@ -21,21 +21,24 @@ Ez a cikk a Stream Analytics-lekérdezések fejlesztésével és hibaelhárítá
 
 ## <a name="query-is-not-producing-expected-output"></a>A lekérdezés nem hozza létre a várt kimenetet
 1.  Hibák vizsgálata helyi teszteléssel:
-    - A **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
-    - A lekérdezést a Visual studióhoz készült Stream Analytics Tools használatával [közvetlenül is tesztelheti élő bemeneten](stream-analytics-live-data-local-testing.md) .
+    - Azure Portal a **lekérdezés** lapon válassza a **teszt**elemet. A letöltött mintaadatok használatával [tesztelheti a lekérdezést](stream-analytics-test-query.md). Vizsgálja meg a hibákat, és próbálja meg kijavítani azokat.   
+    - [A lekérdezést helyileg is tesztelheti](stream-analytics-live-data-local-testing.md) a Visual studióhoz vagy a [Visual Studio Code](visual-studio-code-local-run-live-input.md)-hoz készült Azure stream Analytics eszközökkel. 
 
-2.  Ha [**időbélyegzőt**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](stream-analytics-out-of-order-and-late-events.md).
+2.  A [lekérdezések hibakeresése lépésről lépésre helyileg](debug-locally-using-job-diagram.md) , a Azure stream Analytics Tools for Visual Studio alkalmazásban a feladatütemezés használatával. A feladatütemezés azt mutatja be, hogy az adatok hogyan áramlanak be a bemeneti forrásokból (Event hub, IoT Hub stb.) több lekérdezési lépés és végül a mosogatók kimenete között. Minden lekérdezési lépés egy ideiglenes eredményhalmaz számára van leképezve, amely a WITH utasítás használatával van definiálva a parancsfájlban. Az egyes közbenső eredményhalmaz lekérdezési lépéseiben az adatokat és a metrikákat is megtekintheti, hogy megtalálja a probléma forrását.
+    ![a feladatok diagramjának előzetes verziójának eredménye](./media/debug-locally-using-job-diagram/preview-result.png)
 
-3.  Távolítsa el a gyakori buktatókat, például a következőket:
+3.  Ha [**időbélyegzőt**](https://docs.microsoft.com/stream-analytics-query/timestamp-by-azure-stream-analytics)használ, ellenőrizze, hogy az események időbélyegei nagyobbak-e a [feladatok kezdési idejénél](stream-analytics-out-of-order-and-late-events.md).
+
+4.  Távolítsa el a gyakori buktatókat, például a következőket:
     - A lekérdezés [**Where**](https://docs.microsoft.com/stream-analytics-query/where-azure-stream-analytics) záradéka szűrte az összes eseményt, ami megakadályozza a kimenet generálását.
     - A [**Cast**](https://docs.microsoft.com/stream-analytics-query/cast-azure-stream-analytics) függvény meghiúsul, így a feladat sikertelen lesz. Ha el szeretné kerülni a leadott hibák beírását, használja a [**TRY_CAST**](https://docs.microsoft.com/stream-analytics-query/try-cast-azure-stream-analytics) helyet.
     - Ha a Window functions funkciót használja, várja meg a teljes ablak időtartamát, hogy megjelenjen a lekérdezés kimenete.
     - Az események időbélyegzője megelőzi a feladatok kezdési idejét, ezért az események el lesznek dobva.
 
-4.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** elemre, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között.
+5.  Győződjön meg arról, hogy az esemény-rendezési házirendek a várt módon vannak konfigurálva. Lépjen a **Beállítások** elemre, és válassza az [**események rendezése**](stream-analytics-out-of-order-and-late-events.md)lehetőséget. A rendszer *nem* alkalmazza a házirendet, ha a **teszt** gombot használja a lekérdezés teszteléséhez. Ez az eredmény az egyik különbség a böngészőn belüli tesztelés és az éles környezetben futó feladatok között. 
 
-5. Hibakeresés naplózási és diagnosztikai naplók használatával:
-    - Használjon [naplókat](../azure-resource-manager/management/view-activity-logs.md), és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
+6. Hibakeresés naplózási és diagnosztikai naplók használatával:
+    - Használjon [naplókat](../azure-resource-manager/resource-group-audit.md), és szűrje a hibákat a hibák azonosításához és hibakereséséhez.
     - A hibák azonosításához és hibakereséséhez használja a [feladatok diagnosztikai naplóit](stream-analytics-job-diagnostic-logs.md) .
 
 ## <a name="job-is-consuming-too-many-streaming-units"></a>A feladatok túl sok átviteli egységet fogyasztanak

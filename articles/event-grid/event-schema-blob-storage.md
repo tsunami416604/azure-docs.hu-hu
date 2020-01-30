@@ -7,18 +7,21 @@ ms.service: event-grid
 ms.topic: reference
 ms.date: 01/17/2019
 ms.author: spelluru
-ms.openlocfilehash: 9c5b7b4301eb9cf019399795fc45b69fe152061d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 4a71f50a130bd9b22965d39fa942b47c70857a86
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722322"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844479"
 ---
 # <a name="azure-event-grid-event-schema-for-blob-storage"></a>A blob Storage-hoz Azure Event Grid esemény sémája
 
 Ez a cikk a blob Storage-események tulajdonságait és sémáját ismerteti. Az események sémáinak bemutatása: [Azure Event Grid Event Schema](event-schema.md).
 
 A mintául szolgáló parancsfájlok és oktatóanyagok listáját itt tekintheti meg: [tárolási esemény forrása](event-sources.md#storage).
+
+>[!NOTE]
+> Csak a **StorageV2 (általános célú v2)** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (Genral Purpose v1)** *nem* támogatja a Event Grid integrációját.
 
 ## <a name="list-of-events-for-blob-rest-apis"></a>BLOB REST API-k eseményeinek listája
 

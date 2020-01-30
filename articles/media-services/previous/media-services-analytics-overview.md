@@ -15,23 +15,22 @@ ms.topic: article
 ms.date: 11/13/2019
 ms.author: juliako
 ms.reviewer: milanga; johndeu
-ms.openlocfilehash: 66edbc872fe5f1d4320107aa21ed2792bdd4fecc
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: 4b0d360c11313e086f6ec26e5ee46b8d6f49869a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74083891"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844343"
 ---
 # <a name="media-analytics-on-the-media-services-platform"></a>Media Analytics a Media Services platformon 
 
 ## <a name="retirement-plans"></a>Nyugdíjazási tervek
 
 > [!IMPORTANT]
-> A következő régi adathordozó-processzorok a 2020-es verzióban lesznek kivezetve, a részletek a következő táblázatban láthatók. 
+> A 2020-ben a következő örökölt adathordozó-processzort fogjuk kivonni: az alábbi táblázatban található részletek. 
 
 |Médiafeldolgozó neve|Nyugdíjazás dátuma|További megjegyzések|
 |---|---|
-|[Azure Media Indexer 2](media-services-process-content-with-indexer2.md)| 2020. január 1.|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. További információ: [áttelepítés Azure Media Indexer 2 rendszerről Azure Media Services video Indexerre](migrate-indexer-v1-v2.md).|
 |[Azure Media Indexer](media-services-index-content.md)|Október 1-től 2020|Ezt a médialejátszó-processzort [Azure Media Services video Indexer](https://docs.microsoft.com/azure/media-services/video-indexer/)váltja fel. További információ: [áttelepítés Azure Media Indexerról Azure Media Servicesra video Indexer](migrate-indexer-v1-v2.md)
  
 ## <a name="overview"></a>Áttekintés
@@ -51,21 +50,25 @@ A Médiaelemzés médiafeldolgozói MP4- vagy JSON-fájlokat hoznak létre. Ha e
 ## <a name="media-analytics-services"></a>Media Analytics szolgáltatások
 
 ### <a name="indexer"></a>Indexelő
-A Azure Media Indexer segítségével kereshetővé teheti a tartalmat, és létrehozhat lezárt feliratozási számokat. Az előző verzióhoz képest a Azure Media Indexer 2 előzetes verziója gyorsabb indexelést és szélesebb nyelvi támogatást nyújt. A támogatott nyelvek közé tartoznak a következők: angol, spanyol, francia, német, olasz, kínai, portugál és arab. Részletes információkért és példákért tekintse meg a [videók feldolgozása a Azure Media Indexer 2](media-services-process-content-with-indexer2.md)-mel című témakört.
+A Azure Media Indexer segítségével kereshetővé teheti a tartalmat, és létrehozhat lezárt feliratozási számokat. Részletes információkért és Példákért lásd: [médiafájlok indexelése Azure Media Indexerokkal](media-services-index-content.md).
+
 ### <a name="motion-detector"></a>Mozgásérzékelő
 A mozgásérzékelő használatával érzékelheti a mozgást egy álló hátterű videóban. Ez lehetővé teszi, hogy a megfigyelő kamerák által észlelt mozgási eseményeken hamis pozitív eredményt keressen. A részletes információkat és példákat lásd: [a Azure Media Analytics mozgásészlelésének észlelése](media-services-motion-detection.md).
+
 ### <a name="face-detector"></a>Arcérzékelő
 A Face detektor használatával azonosíthatja az emberek arcát és érzelmeit, például a boldogságot, a szomorúságot és a meglepetést. Ez számos hasznos iparági alkalmazást tartalmaz, amelyeket később ismertetünk, beleértve az eseményekben részt vevő személyek reakcióinak összesítését és elemzését. Részletes információkat és példákat a [Azure Media Analytics arc-és érzelem-észlelése](media-services-face-and-emotion-detection.md)című témakörben talál.
+
 ### <a name="video-summarization"></a>Videók összegzése
 A videó-összefoglalás segítségével összefoglalókat hozhat létre a hosszú videókról a forrás videóból származó érdekes kódrészletek automatikus kiválasztásával. Ez a funkció akkor hasznos, ha gyors áttekintést szeretne nyújtani arról, hogy mire számíthat egy hosszú videóban. Részletes információkat és példákat a következő témakörben talál: a [Azure Media Video thumbnails használata a videók összegzésének létrehozásához](media-services-video-summarization.md).
 ### <a name="optical-character-recognition"></a>Optikai karakterfelismerés
 Az Azure Media OCR (optikai karakterfelismerés) használatával szerkeszthető, kereshető digitális szövegként konvertálhatja a videofájlok szövegét. Ezt követően automatizálhatja az értelmes metaadatok kinyerését az adathordozó Videójának jelének használatával.
 ### <a name="scalable-face-redaction"></a>Skálázható arc kivonása
 A Azure Media Redactor egy Media Analytics adathordozó-feldolgozó, amely méretezhető Arcfelismerés a felhőben. Az Arcfelismerés használatával módosíthatja a videót a kijelölt személyek életlenítési lapjaira. Előfordulhat, hogy az Arcfelismerés szolgáltatást szeretné használni a hírek adathordozóján, vagy ha a közbiztonság is érintett. Néhány perces felvétel, amely több arcot tartalmaz, akár órákat is igénybe vehet manuálisan, de ezzel a szolgáltatással az arc kivonása csupán néhány egyszerű lépést vesz igénybe. További információ: [kivonási arcok Azure Media Analytics](media-services-face-redaction.md) cikkből.
+
 ### <a name="content-moderation"></a>Tartalom-jóváhagyás
 Az Azure Content Moderator lehetővé teszi, hogy a videókhoz géppel támogatott moderálást használjon. Például előfordulhat, hogy szeretné észlelni az esetleges felnőtt vagy kényes tartalmakat a videókban, majd egy emberi moderátorcsapattal kívánja felülvizsgáltatni a megjelölt tartalmakat. A videók a nemkívánatos tartalomhoz történő manuális moderálása időigényes és költséges feladat. Ezzel a szolgáltatással és a kapcsolódó felülvizsgálati eszközökkel kombinálhatja a gépi támogatással rendelkező moderálásokat a legjobb eredmények hatékony és költséghatékony megoldásával. További információkért tekintse meg a [videók Azure-Content Moderatorval való feldolgozását](media-services-content-moderation.md) ismertető cikket.
 
-## <a name="common-scenarios"></a>Gyakori alkalmazási helyzetek
+## <a name="common-scenarios"></a>Gyakori forgatókönyvek
 Media Analytics segítségével a szervezetek és a vállalatok új bepillantást nyerhetnek a videóból, és hatékonyabban kezelhetik a nagy mennyiségű videó tartalmát. Íme néhány forgatókönyv:
 
 * **Központilag hívható**. A közösségi média beköszöntével még az ügyfél-szolgáltatási tranzakciók nagy hányadát is megkönnyíti az ügyfelek hívási központjai. Az ebben a hangadatokban kódolva nagy mennyiségű ügyfél-információ elemezhető, így magasabb szintű vásárlói elégedettség érhető el. Media Indexer használatával a szervezetek szövegeket gyűjthetnek, és keresési indexeket és irányítópultokat hozhatnak létre. Ezután kinyerhetik az intelligenciát a gyakori panaszok, a panaszok forrásai és egyéb releváns adatok köré.
@@ -75,7 +78,7 @@ Media Analytics segítségével a szervezetek és a vállalatok új bepillantás
 Ez a szakasz felsorolja a Media Analytics adathordozó-processzorokat, és bemutatja, hogyan használható a .NET vagy a REST egy Media Processor (MP) objektum beszerzéséhez.
 
 ### <a name="mp-names"></a>MP-nevek
-* Azure Media Indexer 2 előzetes verzió
+
 * Azure Media Indexer
 * Azure Media Face Detector
 * Azure Media Motion Detector
@@ -112,7 +115,7 @@ Kérés:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.12
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Válasz:

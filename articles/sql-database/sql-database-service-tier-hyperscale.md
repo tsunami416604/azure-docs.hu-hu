@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 10/01/2019
-ms.openlocfilehash: aeda79ec4cb850ce73db18398c57d90aa4eb2acd
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 226ed1fcc72eada399c0a9a9eb4225d79cd83dd7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76759499"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845885"
 ---
 # <a name="hyperscale-service-tier"></a>Rugalmas skálázás szolgáltatási szint
 
@@ -72,7 +72,7 @@ A nagy kapacitású szolgáltatási szintje csak a [virtuális mag modellben](sq
 
 - **Tárterület**:
 
-  A nagy kapacitású-adatbázis konfigurálásakor nem kell megadnia a maximális adatméretet. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges felosztás alapján lesznek kiszámlázva. A tárterületet a rendszer a 40 GB és 100 TB között automatikusan kiosztja a 10 GB és 40 GB közötti dinamikusan igazított növekményekben. A nagy kapacitású-adatbázis 10 GB-os kezdő mérettel jön létre, és 10 percenként 10 GB-onként növekszik, amíg el nem éri a 40 GB-os méretet.
+  A nagy kapacitású-adatbázis konfigurálásakor nem kell megadnia a maximális adatméretet. A rugalmas méretezés szintjén az adatbázis tárolási díjai a tényleges felosztás alapján lesznek kiszámlázva. A tárterületet a rendszer a 40 GB és 100 TB közötti, 10 GB-os növekményekben automatikusan lefoglalja. Szükség esetén egyszerre több adatfájl is növekedhet. A nagy kapacitású-adatbázis 10 GB-os kezdő mérettel jön létre, és 10 percenként 10 GB-onként növekszik, amíg el nem éri a 40 GB-os méretet.
 
 További információ a nagy kapacitású díjszabásáról: [Azure SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/single/)
 
@@ -117,8 +117,8 @@ Nagy kapacitású-adatbázis hozható létre a [Azure Portal](https://portal.azu
 A következő T-SQL-parancs egy nagy kapacitású-adatbázist hoz létre. A kiadás és a szolgáltatás célját is meg kell adnia a `CREATE DATABASE` utasításban. Tekintse át az érvényes szolgáltatási célkitűzések listáját az [erőforrás-korlátok között](https://docs.microsoft.com/azure/sql-database/sql-database-vcore-resource-limits-single-databases#hyperscale---provisioned-compute---gen4) .
 
 ```sql
--- Create a HyperScale Database
-CREATE DATABASE [HyperScaleDB1] (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Create a Hyperscale Database
+CREATE DATABASE [HyperscaleDB1] (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 Ez egy nagy kapacitású-adatbázist hoz létre a Gen5 hardveren 4 maggal.
@@ -130,8 +130,8 @@ A meglévő Azure SQL-adatbázisokat a [Azure Portal](https://portal.azure.com),
 A következő T-SQL parancs egy adatbázist helyez át a nagy kapacitású szolgáltatási szintjére. A kiadás és a szolgáltatás célját is meg kell adnia a `ALTER DATABASE` utasításban.
 
 ```sql
--- Alter a database to make it a HyperScale Database
-ALTER DATABASE [DB2] MODIFY (EDITION = 'HyperScale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
+-- Alter a database to make it a Hyperscale Database
+ALTER DATABASE [DB2] MODIFY (EDITION = 'Hyperscale', SERVICE_OBJECTIVE = 'HS_Gen5_4');
 GO
 ```
 
@@ -160,7 +160,7 @@ Ha egy Azure SQL Database nagy kapacitású ADATBÁZISát egy olyan régióba k�
 2. Kövesse az Azure SQL Database-adatbázisok automatikus biztonsági mentésből való visszaállítására szolgáló oldal [geo-visszaállítás](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups#geo-restore) témakörében található utasításokat.
 
 > [!NOTE]
-> Mivel a forrás és a cél különálló régiókban található, az adatbázis nem tudja megosztani a pillanatkép-tárolót a forrás-adatbázissal a nem geo-visszaállítások során, ami rendkívül gyorsan elvégezhető.  Ha a nagy kapacitású-adatbázis geo-visszaállítást végez, akkor akkor is adatmennyiség-adatművelet lesz, ha a cél a földrajzilag replikált tároló párosított régiójában található.  Ez azt jelenti, hogy a Geo-visszaállítás a visszaállított adatbázis méretével arányos időt vesz igénybe.  Ha a cél a párosított régióban található, a másolás egy adatközpontban fog megjelenni, ami jóval gyorsabb, mint az interneten keresztüli távolság, de az összes bitet továbbra is másolja.
+> Mivel a forrás és a cél különálló régiókban található, az adatbázis nem tudja megosztani a pillanatkép-tárolót a forrás-adatbázissal a nem geo-visszaállítások során, ami rendkívül gyorsan elvégezhető. Ha a nagy kapacitású-adatbázis geo-visszaállítást végez, akkor akkor is adatmennyiség-adatművelet lesz, ha a cél a földrajzilag replikált tároló párosított régiójában található.  Ez azt jelenti, hogy a Geo-visszaállítás a visszaállított adatbázis méretével arányos időt vesz igénybe.  Ha a cél a párosított régióban található, a másolás egy régión belül lesz, ami jelentősen gyorsabb lesz, mint a régiók közötti másolás, de továbbra is adatméreti művelet marad.
 
 ## <a name=regions></a>Elérhető régiók
 
@@ -180,7 +180,7 @@ A Azure SQL Database nagy kapacitású szintje jelenleg a következő régiókba
 - Kelet-Japán
 - Nyugat-Japán
 - Korea középső régiója
-- Korea déli régiója
+- Dél-Korea
 - USA északi középső régiója
 - Észak-Európa
 - Dél-Afrika északi régiója

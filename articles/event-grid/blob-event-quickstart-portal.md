@@ -9,12 +9,12 @@ ms.date: 11/05/2019
 ms.topic: quickstart
 ms.service: event-grid
 ms.custom: seodec18
-ms.openlocfilehash: 1aa8c9ff26b85f5af8095ad1cff062b224abff83
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2daf17ccef1bca363fe92f71a332fbfa78637135
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75982182"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844776"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
 
@@ -41,6 +41,9 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
 1. Az eseményekre feliratkozáshoz vagy egy általános célú v2 tárfiókot vagy Blob Storage-fiókot hozzon létre. További információ: [Tárfiók létrehozása](../storage/common/storage-account-create.md).
 
    ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)
+
+>[!NOTE]
+> Csak a **StorageV2 (általános célú v2)** és a **BlobStorage** típusú tárolási fiókok támogatják az események integrálását. A **Storage (Genral Purpose v1)** *nem* támogatja a Event Grid integrációját.
 
 ## <a name="create-a-message-endpoint"></a>Üzenetvégpont létrehozása
 

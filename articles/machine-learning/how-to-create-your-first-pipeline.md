@@ -11,12 +11,12 @@ ms.author: sanpil
 author: sanpil
 ms.date: 12/05/2019
 ms.custom: seodec18
-ms.openlocfilehash: 5b2fa550029c35ca989d6746254298cf1e92992d
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 01ab09383a29db38d2ce8c7c513bed76aafcc44a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75764575"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845937"
 ---
 # <a name="create-and-run-machine-learning-pipelines-with-azure-machine-learning-sdk"></a>Gépi tanulási folyamatokat hozhat létre és futtathat Azure Machine Learning SDK-val
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -40,7 +40,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy ing
 * [Konfigurálja a fejlesztési környezetet](how-to-configure-environment.md) az Azure Machine learning SDK telepítéséhez, vagy használjon egy [Azure Machine learning számítási példányt (előzetes verzió)](concept-compute-instance.md) a már telepített SDK-val.
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
+> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 Első lépésként csatolja a munkaterületet:
@@ -143,7 +143,7 @@ Azure Machine Learning a __számítások__ (vagy __számítási cél__) kifejez�
 
 Az alábbi példák a számítási célok létrehozásához és csatolásához szükségesek a következőkhöz:
 
-* Azure Machine Learning Compute
+* Azure Machine Learning számítás
 * Azure Databricks 
 * Azure Data Lake Analytics
 

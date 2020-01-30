@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 01/23/2020
 ms.author: bwren
 ms.subservice: logs
-ms.openlocfilehash: e46574ae7f8faa67c2cc0c1afef1917270f69175
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 1c2047fc4b92ecd5776cb835a2f2138c25f5cb65
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715899"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845463"
 ---
 # <a name="export-azure-activity-log-to-storage-or-azure-event-hubs"></a>Azure-Tevékenységnaplók exportálása a Storage-ba vagy az Azure Event Hubsba
 
@@ -36,9 +36,10 @@ Az [Azure Event Hubs](/azure/event-hubs/) egy adatstreaming platform-és esemén
 ### <a name="storage-account"></a>Tárfiók
 Ha archiválja a tevékenység naplóját, [létre kell hoznia egy Storage-fiókot](../../storage/common/storage-account-create.md) , ha még nem rendelkezik ilyennel. Ne használjon olyan meglévő Storage-fiókot, amely más, nem figyelési adattárolási információkkal rendelkezik, így hatékonyabban vezérelheti a figyeléshez való hozzáférést. Ha a naplókat és mérőszámokat is archiválja egy Storage-fiókba, akkor dönthet úgy, hogy ugyanazt a Storage-fiókot használja, hogy az összes figyelési adat központi helyen maradjon.
 
-A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfizetéshez tartozó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik.
-> [!NOTE]
->  Jelenleg nem archiválhatja az adatok egy biztonságos virtuális hálózat mögött található Storage-fiókba.
+A Storage-fióknak nem kell ugyanabban az előfizetésben lennie, mint az előfizetéshez tartozó naplókat, ha a beállítást konfiguráló felhasználó mindkét előfizetéshez megfelelő RBAC-hozzáféréssel rendelkezik. 
+
+> [!TIP]
+> Lásd: [Azure Storage-tűzfalak és virtuális hálózatok konfigurálása](https://docs.microsoft.com/azure/storage/common/storage-network-security#exceptions) a biztonságos virtuális hálózat mögötti Storage-fiókhoz való hozzáférés biztosításához.
 
 ### <a name="event-hubs"></a>Azure Event Hubs-eseményközpontok
 Ha egy Event hubhoz küldi a tevékenység naplóját, akkor [létre kell hoznia egy Event hub](../../event-hubs/event-hubs-create.md) -t, ha még nem rendelkezik ilyennel. Ha korábban naplózta a tevékenység naplózási eseményeit erre a Event Hubs névtérre, az Event hub újra fel lesz használva.

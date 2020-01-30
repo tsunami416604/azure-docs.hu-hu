@@ -9,16 +9,16 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 5fb6cab4bfeea4308873210fb5f9122b37b61dcd
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: c82f1edfc3acd73c1d38425f963aaaf2976a1cc5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100325"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844589"
 ---
 # <a name="tutorial-publish-subscribe-to-events-in-cloud"></a>Oktatóanyag: közzététel, előfizetés a Felhőbeli eseményekre
 
-Ez a cikk végigvezeti az eseményeknek a Event Grid on IoT Edge használatával történő közzétételéhez és előfizetéséhez szükséges lépéseken.
+Ez a cikk végigvezeti az eseményeknek a Event Grid on IoT Edge használatával történő közzétételéhez és előfizetéséhez szükséges lépéseken. Ez az oktatóanyag az Azure-függvényt használja eseménykezelőként. További célhelyek: [eseménykezelők](event-handlers.md).
 
 A folytatás előtt tekintse meg az [Event Grid fogalmakat](concepts.md) , amelyekből megtudhatja, mi az Event Grid-témakör és az előfizetés.
 
@@ -107,6 +107,8 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A téma
 ## <a name="create-an-event-subscription"></a>Esemény-előfizetés létrehozása
 
 Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, az előfizetőknek létre kell hozniuk egy Event Grid-előfizetést egy érdekes témakörben.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Hozza létre a előfizetés2. JSON fájlt a következő tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
 
@@ -203,3 +205,4 @@ Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést �
 * Event Grid modul megőrzésének beállítása [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
 * Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
 * Események továbbítása Azure Event Grid a felhőben az [oktatóanyag](forward-events-event-grid-cloud.md) követésével
+* [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)

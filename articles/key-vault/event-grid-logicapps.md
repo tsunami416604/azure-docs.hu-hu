@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 7ccc4aaed8e5827fbc06b252c8c88b814d9a31fb
-ms.sourcegitcommit: 2d3740e2670ff193f3e031c1e22dcd9e072d3ad9
+ms.openlocfilehash: c2a15393c5c8e685e9a565f1099eeee935c0d5da
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/16/2019
-ms.locfileid: "74135018"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845841"
 ---
 # <a name="use-logic-apps-to-receive-email-about-status-changes-of-key-vault-secrets"></a>A Key Vault-titkok állapotának változásairól szóló e-mailek fogadása Logic Apps használatával
 
@@ -34,7 +34,6 @@ Először hozzon létre logikai alkalmazást az Event Grid-kezelővel, és fizes
 
 Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
-1. Nyissa meg a Azure Portal a következő hivatkozással: https://portal.azure.com/?Microsoft_Azure_KeyVault_ShowEvents=true&Microsoft_Azure_EventGrid_publisherPreview=true 
 1. A Azure Portal nyissa meg a Key vaultot, válassza az **események > első lépések** lehetőséget, majd kattintson a **Logic apps**
 
     
@@ -84,7 +83,7 @@ Azure Event Grid előfizetés létrehozásához kövesse az alábbi lépéseket:
 
 A titkos kulcs létrehozásakor a rendszer egy e-mailt fog kapni a konfigurált címeken.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Áttekintés: [Key Vault figyelése Azure Event Grid (előzetes verzió)](event-grid-overview.md)
 - Útmutató: [Key Vault-értesítések átirányítása a Azure Automationba](event-grid-tutorial.md).

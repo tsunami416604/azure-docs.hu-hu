@@ -3,12 +3,12 @@ title: Oktatóanyag – Application Gateway bejövő adatkezelő létrehozása a
 description: Az oktatóanyag bemutatja, hogyan hozhat létre Kubernetes-fürtöt az Azure Kubernetes szolgáltatással a bejövő adatforgalom-vezérlővel Application Gateway
 ms.topic: tutorial
 ms.date: 11/13/2019
-ms.openlocfilehash: 898a2052f31965ee45ab2cc5df6956af4831b0d2
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: da9768c8b2ad854b116ef1b9eab801661f547bfa
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867403"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772858"
 ---
 # <a name="tutorial-create-an-application-gateway-ingress-controller-in-azure-kubernetes-service"></a>Oktatóanyag: Application Gateway bejövő adatkezelő létrehozása az Azure Kubernetes szolgáltatásban
 
@@ -51,7 +51,7 @@ Az első lépés a könyvtár létrehozása, amely a feladathoz tartozó Terrafo
     cd clouddrive
     ```
 
-1. Hozzon létre egy `terraform-aks-k8s` nevű könyvtárat.
+1. Hozzon létre egy `terraform-aks-appgw-ingress` nevű könyvtárat.
 
     ```bash
     mkdir terraform-aks-appgw-ingress
@@ -731,8 +731,8 @@ Az ebben a szakaszban szereplő kód a [Helm](/azure/aks/kubernetes-helm) -Kuber
     - `armAuth.secretJSON`: csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusa van kiválasztva (ha `armAuth.type` van beállítva a következőre: `servicePrincipal`).
 
     Fontos megjegyzések:
-    - A `identityResourceID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_client_id)"`.
-    - A `identityClientID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_resource_id)"`.
+    - A `identityResourceID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_resource_id)"`.
+    - A `identityClientID` érték a Terraform parancsfájlban jön létre, és a következő futtatásával érhető el: `echo "$(terraform output identity_client_id)"`.
     - Az `<resource-group>` érték az App Gateway erőforráscsoport.
     - A `<identity-name>` érték a létrehozott identitás neve.
     - Az adott előfizetéshez tartozó összes identitás a következő használatával listázható: `az identity list`.

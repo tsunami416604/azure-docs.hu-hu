@@ -3,12 +3,12 @@ title: Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.date: 08/21/2019
-ms.openlocfilehash: 4a5f60c2da8a77f385dba40dcd4d342583e989c1
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 59c350b267583a2bccfdd66996aa6c1f97954218
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547421"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845402"
 ---
 # <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
 
@@ -65,11 +65,13 @@ A functions bővítmény lehetővé teszi egy Function app-projekt létrehozás�
 
 1. Válassza ki a Function app-projekt mappáját, majd **válasszon egy nyelvet a függvény projekthez**.
 
+1. Ha még nem telepítette az alapvető eszközöket, a rendszer arra kéri, hogy válassza ki a telepítendő alapeszközök **egy verzióját** . Válassza a 2. x vagy újabb verzió elemet. 
+
 1. Válassza ki a **http-trigger** függvény sablonját, vagy a **kihagyás** gombra kattintva hozzon létre egy projektet anélkül, hogy függvényt kellene létrehoznia. Később bármikor [hozzáadhat egy függvényt a projekthez](#add-a-function-to-your-project) .
 
     ![A HTTP-eseményindító sablon kiválasztása](./media/functions-develop-vs-code/create-function-choose-template.png)
 
-1. Írja be a **HTTPTrigger** nevet a függvény neveként, majd válassza az ENTER, majd a **függvény** engedélyezése lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [funkcióbillentyűk](functions-bindings-http-webhook.md#authorization-keys) használatát a függvény végpontjának meghívásakor.
+1. Írja be a **HttpExample** nevet a függvény neveként, majd válassza az ENTER, majd a **függvény** engedélyezése lehetőséget. Ehhez az engedélyezési szinthez meg kell adnia egy [funkcióbillentyűk](functions-bindings-http-webhook.md#authorization-keys) használatát a függvény végpontjának meghívásakor.
 
     ![Függvény engedélyezésének kiválasztása](./media/functions-develop-vs-code/create-function-auth.png)
 
@@ -189,6 +191,8 @@ További információért lásd a várólista- [tároló kimeneti kötési](func
 ---
 
 [!INCLUDE [Supported triggers and bindings](../../includes/functions-bindings.md)]
+
+[!INCLUDE [functions-sign-in-vs-code](../../includes/functions-sign-in-vs-code.md)]
 
 ## <a name="publish-to-azure"></a>Közzététel az Azure platformon
 
@@ -404,7 +408,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Azure Functions Core Tools telepítése vagy frissítése** | A [Azure functions Core Tools]telepítése vagy frissítése, amely a függvények helyi futtatására szolgál. |
 | **Ismételt üzembe helyezése**  | Lehetővé teszi, hogy egy csatlakoztatott git-tárházból újratelepítse a projektfájlok egy adott üzembe helyezését az Azure-ban. Ha újra közzé szeretné tenni a helyi frissítéseket a Visual Studio Code-ból, [tegye közzé újra a projektet](#republish-project-files). |
 | **Beállítások átnevezése** | Megváltoztatja egy meglévő Function app-beállítás kulcsának nevét az Azure-ban. Ez a parancs nem érinti a helyi. Settings. JSON fájl beállításait. Miután átnevezte az Azure-beli beállításokat, [töltse le ezeket a módosításokat a helyi projektbe](#download-settings-from-azure). |
-| **Újraindítás** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
+| **Indítsa újra** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
 | **AzureWebJobsStorage beállítása**| Beállítja a `AzureWebJobsStorage` alkalmazás beállítás értékét. Ezt a beállítást a Azure Functions kötelező megadni. Akkor van beállítva, amikor egy Function-alkalmazás létrejön az Azure-ban. |
 | **Kezdés** | Elindít egy leállított Function alkalmazást az Azure-ban. |
 | **Adatfolyam-naplók indítása** | Elindítja az Azure-beli Function alkalmazás adatfolyam-naplóit. Ha a naplózási információkat közel valós időben kell megtekinteni, használja az Azure-ban a távoli hibaelhárítás során használt adatfolyam-naplókat. További információ: [streaming logs](#streaming-logs). |

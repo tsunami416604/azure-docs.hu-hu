@@ -3,12 +3,12 @@ title: Azure-fájlmegosztás biztonsági mentése az Azure CLI-vel
 description: Ismerje meg, hogyan használhatja az Azure-fájlmegosztás biztonsági mentését az Azure CLI-vel az Recovery Services-tárolóban
 ms.topic: conceptual
 ms.date: 01/14/2020
-ms.openlocfilehash: 10ae6d88e8a40ba4175e664ed338f0a02be7a7ca
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: ff1d8c6245521d2d0262b0440177d65713058742
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294486"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844041"
 ---
 # <a name="back-up-azure-file-shares-with-cli"></a>Azure-fájlmegosztás biztonsági mentése a CLI-vel
 
@@ -104,7 +104,7 @@ Ha egy igény szerinti biztonsági mentést szeretne elindítani a fájlmegoszt�
 
 Az igény szerinti biztonsági mentés elindításához a következő paramétereket kell megadnia:
 
-* **--Container-Name** a fájlmegosztást üzemeltető Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](https://docs.microsoft.com/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsot.
+* **--Container-Name** a fájlmegosztást üzemeltető Storage-fiók neve. A tároló **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Container List](/cli/azure/backup/container?view=azure-cli-latest#az-backup-container-list) parancsot.
 * **--Item-Name** annak a fájlmegosztásnak a neve, amelynek el szeretné indítani az igény szerinti biztonsági mentést. A biztonsági másolatban szereplő elem **nevének** vagy **rövid nevének** lekéréséhez használja az az [Backup Item List](https://docs.microsoft.com/cli/azure/backup/item?view=azure-cli-latest#az-backup-item-list) parancsot.
 * **--megtartás – addig** , amíg meg nem adja a helyreállítási pont megőrzésének dátumát. Az értéket UTC formátumban kell megadni (nn-hh-éééé).
 

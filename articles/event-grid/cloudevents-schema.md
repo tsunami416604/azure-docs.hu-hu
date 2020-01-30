@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 01/21/2020
 ms.author: babanisa
-ms.openlocfilehash: e7cddf95a6537e5799acc523effb484c2249453d
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 25a24c5bb44c77038a508e4c2f4e099132101f6a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76548050"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844734"
 ---
 # <a name="use-cloudevents-v10-schema-with-event-grid"></a>CloudEvents v 1.0 séma használata Event Grid
 
@@ -73,7 +73,6 @@ A CloudEvents-sémában lévő események bemenetéhez és kimenetéhez Event Gr
 |--------------------|---------------------
 | CloudEvents formátuma | CloudEvents formátuma
 | Event Grid formátum  | CloudEvents formátuma
-| CloudEvents formátuma | Event Grid formátum
 | Event Grid formátum  | Event Grid formátum
 
 Az összes esemény sémája esetében a Event Grid érvényesítést igényel az Event Grid-témakörre való közzétételkor és az esemény-előfizetés létrehozásakor. További információ: [Event Grid biztonság és hitelesítés](security-authentication.md).
@@ -109,8 +108,6 @@ New-AzureRmEventGridTopic `
   -Name <topic_name> `
   -InputSchema CloudEventSchemaV1_0
 ```
-
-A CloudEvents jelenlegi verziója nem támogatja az események kötegelt feldolgozását. Ha CloudEvent-sémával rendelkező eseményeket szeretne közzétenni egy témakörben, tegye közzé az egyes eseményeket egyenként.
 
 ### <a name="output-schema"></a>Kimeneti séma
 

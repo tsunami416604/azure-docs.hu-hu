@@ -11,12 +11,12 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 376b7b8a734e5064713237e9250542a4c5cc18f1
-ms.sourcegitcommit: bc193bc4df4b85d3f05538b5e7274df2138a4574
+ms.openlocfilehash: a4a2eccc3c46b7f982836c73d3144f1793e5034b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/10/2019
-ms.locfileid: "73903068"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846196"
 ---
 # <a name="using-transactions-in-sql-data-warehouse"></a>Tranzakciók használata a SQL Data Warehouseban
 Tippek a tranzakciók megvalósításához Azure SQL Data Warehouse a megoldások fejlesztéséhez.
@@ -25,7 +25,7 @@ Tippek a tranzakciók megvalósításához Azure SQL Data Warehouse a megoldáso
 Ahogy azt várnánk, SQL Data Warehouse a tranzakciókat az adatraktár számítási feladatának részeként támogatja. Annak érdekében azonban, hogy a SQL Data Warehouse teljesítményének fenntartása bizonyos szolgáltatások esetében korlátozott legyen, a SQL Server összehasonlítva. Ez a cikk kiemeli a különbségeket, és felsorolja a többiet. 
 
 ## <a name="transaction-isolation-levels"></a>Tranzakciók elkülönítési szintjei
-SQL Data Warehouse végrehajtja a savas tranzakciókat. A tranzakciós támogatás elkülönítési szintje azonban a nem véglegesített OLVASÁSI értékre korlátozódik. Ez a szint nem módosítható. Ha az olvasás VÉGLEGESÍTÉSe aggodalomra ad okot, számos kódolási módszert alkalmazhat, amelyekkel megelőzhető az adatvesztés. A legnépszerűbb módszerek a CTAS és a táblázatos partíciós váltást is használják (gyakran a csúszó ablak mintaként is ismert), hogy a felhasználók ne tudják lekérdezni a még előkészített adatok lekérdezését. Az adatszűrést előkészítő nézetek szintén népszerűek.  
+SQL Data Warehouse végrehajtja a savas tranzakciókat. A tranzakciós támogatás elkülönítési szintje alapértelmezés szerint nem VÉGLEGESÍThető.  Ha a Master adatbázishoz csatlakozik, a felhasználói adatbázis READ_COMMITTED_SNAPSHOT adatbázis lehetőségének bekapcsolásával módosíthatja az előjegyzett PILLANATKÉPek ELKÜLÖNÍTÉSét.  Ha engedélyezve van, a rendszer az ebben az adatbázisban lévő összes tranzakciót az OLVASÁSI véglegesített PILLANATKÉPek ELKÜLÖNÍTÉSe területen hajtja végre, és a munkamenet szintjén az olvasás VÉGLEGESÍTÉSe beállítást nem fogja figyelembe venni. A részletekért lásd az [Alter Database set Options (Transact-SQL) beállítást](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azure-sqldw-latest) .
 
 ## <a name="transaction-size"></a>Tranzakció mérete
 Egyetlen adatmódosítási tranzakció mérete korlátozott. A korlátot a rendszer eloszlás alapján alkalmazza. Ezért a teljes foglalás kiszámításához a korlátot a terjesztési szám alapján kell megszorozni. Annak érdekében, hogy a tranzakció sorainak maximális száma megközelítse a terjesztési korlátot az egyes sorok teljes méretével. A változó hosszúságú oszlopok esetében érdemes lehet átlagos oszlopszélességet használni a maximális méret helyett.

@@ -6,13 +6,13 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
-ms.date: 12/30/2019
-ms.openlocfilehash: a64912921e5ce8c0dc76fbf2ae0be8fb34bacf1a
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.date: 1/28/2020
+ms.openlocfilehash: 270e9a31c28e7209cfe43ea8307b928ed3257a35
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75553018"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845259"
 ---
 # <a name="read-input-in-any-format-using-net-custom-deserializers"></a>A bemeneti adatok bármilyen formátumban olvashatók a .NET-alapú egyéni deszerializálók használatával
 
@@ -80,7 +80,7 @@ a `briefMessage` rövid hibaüzenetet jelenít meg. Ez az üzenet a diagnosztika
 
 ## <a name="deserializer-examples"></a>Deszerializáló – példák
 
-Ez a szakasz bemutatja, hogyan írhat egyéni deszerializált a Protopuf és a CSV-hez. További példákért látogasson el [Azure stream Analytics a githubon](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
+Ez a szakasz bemutatja, hogyan írhat egyéni deszerializált a Protopuf és a CSV-hez. További példákat, például az Event hub Capture AVRO-formátumát, látogasson el [a Azure stream Analyticsre a githubon](https://github.com/Azure/azure-stream-analytics/tree/master/CustomDeserializers).
 
 ### <a name="protocol-buffer-protobuf-format"></a>Protokoll-puffer (Protopuf) formátuma
 

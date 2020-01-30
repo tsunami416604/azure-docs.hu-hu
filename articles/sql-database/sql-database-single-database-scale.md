@@ -11,18 +11,16 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: carlrab
 ms.date: 04/26/2019
-ms.openlocfilehash: 8d4917bb8956185e0cb557368fbb0c64343c0ac6
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: e23a4c39f93ea4de7f5dd38bb266d63ed52913cb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74422538"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845862"
 ---
 # <a name="scale-single-database-resources-in-azure-sql-database"></a>Önálló adatbázis-erőforrások méretezése Azure SQL Database
 
 Ez a cikk azt ismerteti, hogyan méretezheti a számítási és a tárolási erőforrásokat a kiépített számítási szinten lévő Azure SQL Database számára. Azt is megteheti, hogy a [kiszolgáló nélküli számítási réteg](sql-database-serverless.md) számítási automatikus skálázást és másodpercenkénti számlákat biztosít a felhasznált számítási feladatokhoz.
-
-## <a name="change-compute-size-vcores-or-dtus"></a>Számítási méret módosítása (virtuális mag vagy DTU)
 
 A virtuális mag vagy a DTU számának kezdeti kiválasztását követően a [Azure Portal](sql-database-single-databases-manage.md#manage-an-existing-sql-database-server), a [Transact-SQL](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql?view=azuresqldb-current#examples-1), a [PowerShell](/powershell/module/az.sql/set-azsqldatabase), az [Azure CLI](/cli/azure/sql/db#az-sql-db-update)vagy a [REST API](https://docs.microsoft.com/rest/api/sql/databases/update)használatával dinamikusan méretezheti az önálló adatbázisokat a tényleges tapasztalatok alapján.
 
@@ -31,9 +29,9 @@ A következő videó bemutatja, hogyan lehet dinamikusan módosítani a szolgál
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
-### <a name="impact-of-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának vagy a számítási méret átméretezésének a következményei
+## <a name="impact"></a>Hatás
 
 A szolgáltatási réteg vagy a számítási méret módosítása főleg a következő lépéseket hajtja végre:
 
@@ -48,7 +46,7 @@ A szolgáltatási réteg vagy a számítási méret módosítása főleg a köve
 > [!IMPORTANT]
 > A munkafolyamat egyik lépése sem vesz fel adatvesztést. Győződjön meg arról, hogy implementált néhány [újrapróbálkozási logikát](sql-database-connectivity-issues.md) a Azure SQL Database használó alkalmazásokban és összetevőkben, miközben a szolgáltatási szintet módosítják.
 
-### <a name="latency-of-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának késése vagy a számítási méret átméretezése
+## <a name="latency"></a>Késés 
 
 A szolgáltatási réteg módosításának becsült késése vagy egy önálló adatbázis vagy rugalmas készlet számítási méretének átméretezése a következő paraméterekkel történik:
 
@@ -59,13 +57,13 @@ A szolgáltatási réteg módosításának becsült késése vagy egy önálló 
 |**Prémium vagy üzletileg kritikus önálló adatbázis vagy rugalmas készlet**|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|&bull; &nbsp;késés az Adatmásolás miatt használt adatbázis-területhez viszonyítva</br>&bull; &nbsp;általában kevesebb, mint 1 perc/GB felhasznált lemezterület|
 
 > [!TIP]
-> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [ Stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
+> A folyamatban lévő műveletek figyeléséhez tekintse meg a következő témakört: [műveletek kezelése az SQL REST API használatával](https://docs.microsoft.com/rest/api/sql/operations/list), műveletek [kezelése a CLI](/cli/azure/sql/db/op)használatával, a műveletek [FIGYELÉSe a T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) használatával és a következő két PowerShell-paranccsal: [Get-AzSqlDatabaseActivity](/powershell/module/az.sql/get-azsqldatabaseactivity) és [stop-AzSqlDatabaseActivity](/powershell/module/az.sql/stop-azsqldatabaseactivity).
 
-### <a name="cancelling-service-tier-changes-or-compute-rescaling-operations"></a>Szolgáltatási szintek módosításainak vagy számítási Felskálázási műveleteinek megszakítása
+## <a name="cancelling-changes"></a>Módosítások megszakítása
 
 A szolgáltatási szintek változási vagy számítási átméretezési művelete megszakítható.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portál
 
 Az adatbázis-Áttekintés panelen navigáljon az **értesítésekhez** , és kattintson a csempére, amely azt jelzi, hogy folyamatban van egy művelet:
 
@@ -90,7 +88,7 @@ else {
 }
 ```
 
-### <a name="additional-considerations-when-changing-service-tier-or-rescaling-compute-size"></a>A szolgáltatási réteg módosításának és a számítási méret átméretezésének további szempontjai
+## <a name="additional-considerations"></a>Néhány fontos megjegyzés
 
 - Ha magasabb szolgáltatási szintre vagy számítási méretre frissít, az adatbázis maximális mérete nem növekszik, ha explicit módon nagyobb méretet (MaxSize) ad meg.
 - Egy adatbázis visszalépéséhez az adatbázis felhasznált területének kisebbnek kell lennie, mint a cél szolgáltatási csomag maximálisan megengedett mérete és a számítási méret.
@@ -100,7 +98,7 @@ else {
 - A visszaállítási szolgáltatásajánlatok eltérőek a különböző szolgáltatási szintek esetében. Ha az **alapszintű szintre van** leértékelve, a biztonsági mentés alacsonyabb megőrzési időszakot vesz fel. Lásd: [Azure SQL Database biztonsági mentések](sql-database-automated-backups.md).
 - Az adatbázis új tulajdonságai csak akkor lesznek alkalmazva, ha a módosítások befejeződtek.
 
-### <a name="billing-during-compute-rescaling"></a>Számlázás a számítási átméretezés során
+## <a name="billing"></a>Számlázás 
 
 Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasabb szolgáltatási réteg + számítási méret alapján történik, függetlenül a használattól, illetve attól, hogy az adatbázis egy óránál kevesebb ideig volt-e aktív. Ha például létrehoz egy adatbázist, és öt perccel később törli azt, akkor a számla egy adatbázis-órára vonatkozó díjat számít fel.
 
@@ -114,7 +112,7 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - Az önálló adatbázisok tárterületének ára az adattárolás és a naplózási tárolók összege, a szolgáltatási réteg tárolási egységének díja. A TempDB díja a virtuális mag ár része. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
 
 ### <a name="dtu-based-purchasing-model"></a>DTU-alapú vásárlási modell
 
@@ -123,7 +121,11 @@ Az adatbázis óránkénti számlázása az adott órában alkalmazott legmagasa
 - Az önálló adatbázisok extra tárterületének díja a szolgáltatás rétegének extra tárolási egységével megszorzott extra tárterület. További információ az extra tárterület díjszabásáról: [SQL Database díjszabása](https://azure.microsoft.com/pricing/details/sql-database/).
 
 > [!IMPORTANT]
-> Bizonyos körülmények között szükség lehet az adatbázis nem használt terület felszabadítását zsugorítani. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+> Bizonyos körülmények között előfordulhat, hogy az adatbázist fel kell zsugorodnia a fel nem használt területek visszaigényléséhez. További információ: [a tárterület kezelése Azure SQL Databaseban](sql-database-file-space-management.md).
+
+### <a name="geo-replicated-database"></a>Földrajzilag replikált adatbázis
+
+A replikált másodlagos adatbázis adatbázis-méretének módosításához módosítsa az elsődleges adatbázis méretét. Ezt a változást ezután a rendszer replikálja és implementálja a másodlagos adatbázisban is. 
 
 ## <a name="p11-and-p15-constraints-when-max-size-greater-than-1-tb"></a>P11 és P15 megkötések, ha a maximális méret nagyobb, mint 1 TB
 
@@ -135,6 +137,6 @@ A prémium szinten több mint 1 TB tárterület érhető el az összes régióba
   - Az elsődleges adatbázis frissítése földrajzi replikálási kapcsolatban: az elsődleges adatbázison az 1 TB-nál nagyobb maximális méret megváltozása a másodlagos adatbázison ugyanezt a változást indítja el. Mindkét frissítésnek sikeresnek kell lennie ahhoz, hogy az elsődleges módosítás érvénybe lépjen. Az 1 TB-nál nagyobb területi korlátozások érvényesek. Ha a másodlagos olyan régióban található, amely nem támogatja az 1 TB-ot, az elsődleges nem frissül.
 - Az import/export szolgáltatás használata az 1 TB-nál nagyobb P11-vagy P15-adatbázisok betöltéséhez nem támogatott. Az SqlPackage. exe használatával [importálhat](sql-database-import.md) és [exportálhat](sql-database-export.md) adatfájlokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A teljes erőforrás-korlátokkal kapcsolatban lásd: [SQL Database virtuális mag-alapú erőforrás-korlátok – önálló adatbázisok](sql-database-vcore-resource-limits-single-databases.md) és [SQL Database DTU-alapú erőforrás-korlátok – rugalmas készletek](sql-database-dtu-resource-limits-single-databases.md).

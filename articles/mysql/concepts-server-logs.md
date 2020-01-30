@@ -5,13 +5,13 @@ author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
-ms.date: 01/21/2020
-ms.openlocfilehash: e0c58c5c3fef41a472fe791f66292c9280531493
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/28/2020
+ms.openlocfilehash: 9a3a58cab2d9673a4660967e3a11d7f88900e718
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514680"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844955"
 ---
 # <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
@@ -37,7 +37,7 @@ Alapértelmezés szerint a lassú lekérdezési napló le van tiltva. Az engedé
 
 Az egyéb paraméterek a következők:
 
-- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték a 10 másodperc.
+- **long_query_time**: Ha a lekérdezés a lekérdezés naplózása long_query_time (másodpercben) hosszabb időt vesz igénybe. Az alapértelmezett érték 10 másodperc.
 - **log_slow_admin_statements**: Ha a on olyan felügyeleti utasítások is szerepelnek, mint például a ALTER_TABLE és a ANALYZE_TABLE a slow_query_logba írt utasításokban.
 - **log_queries_not_using_indexes**: meghatározza, hogy az indexeket nem használó lekérdezések naplózva vannak-e a slow_query_log
 - **log_throttle_queries_not_using_indexes**: Ez a paraméter korlátozza a lassú lekérdezési naplóba írható nem indexelt lekérdezések számát. Ez a paraméter akkor lép életbe, amikor a log_queries_not_using_indexes be van állítva.
@@ -51,9 +51,6 @@ A lassú lekérdezési napló paramétereinek teljes leírását a MySQL [lassú
 
 ## <a name="diagnostic-logs"></a>Diagnosztikai naplók
 Azure Database for MySQL integrálva van Azure Monitor diagnosztikai naplókba. Ha engedélyezte a lassú lekérdezési naplókat a MySQL-kiszolgálón, kiválaszthatja, hogy a naplókat, Event Hubsokat vagy az Azure Storage-t Azure Monitor. A diagnosztikai naplók engedélyezésével kapcsolatos további tudnivalókért tekintse meg a [diagnosztikai naplók dokumentációjának](../azure-monitor/platform/platform-logs-overview.md)útmutató szakaszát.
-
-> [!IMPORTANT]
-> A kiszolgálói naplókhoz tartozó diagnosztikai funkció csak a általános célú és a memória optimalizált [díjszabási szintjein](concepts-pricing-tiers.md)érhető el.
 
 Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől függően a befoglalt mezők és a megjelenő sorrend eltérő lehet.
 
@@ -82,7 +79,7 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 | `insert_id_s` | AZONOSÍTÓ beszúrása |
 | `sql_text_s` | Teljes lekérdezés |
 | `server_id_s` | A kiszolgáló azonosítója |
-| `thread_id_s` | Szálazonosító |
+| `thread_id_s` | Szál azonosítója |
 | `\_ResourceId` | Erőforrás URI-ja |
 
 > [!Note]

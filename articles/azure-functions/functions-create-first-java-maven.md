@@ -5,12 +5,12 @@ author: rloutlaw
 ms.topic: quickstart
 ms.date: 08/10/2018
 ms.custom: mvc, devcenter, seo-java-july2019, seo-java-august2019, seo-java-september2019
-ms.openlocfilehash: ef81ff1d3d42e3c9e2ba5d4187f5b5805d35d900
-ms.sourcegitcommit: 5925df3bcc362c8463b76af3f57c254148ac63e3
+ms.openlocfilehash: 813e65eadf9f54f7a0ac148681b25988ed6950b9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75562034"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845441"
 ---
 # <a name="quickstart-use-java-and-maven-to-create-and-publish-a-function-to-azure"></a>Gyors útmutató: függvények létrehozása és közzététele az Azure-ban a Java és a Maven használatával
 
@@ -29,9 +29,8 @@ A Java-t használó függvények fejlesztéséhez a következőkre van szükség
 - [Apache Maven](https://maven.apache.org), 3,0-es vagy újabb verzió
 - [Azure CLI]
 - [Azure functions Core Tools](./functions-run-local.md#v2) 2.6.666 vagy újabb verzió
-- Azure-előfizetés.
 
-[!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
+Aktív Azure-előfizetésre is szüksége van. [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 
 > [!IMPORTANT]

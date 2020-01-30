@@ -4,8 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ebből a rövid útmutatóból megtudhatja, hogyan diagnosztizálhatja a virtuális gépek hálózati forgalmi szűrőproblémáit az Azure Network Watcher IP-folyamat ellenőrzése funkciójával.
 services: network-watcher
 documentationcenter: network-watcher
-author: KumudD
-manager: twooley
+author: damendo
 editor: ''
 tags: azure-resource-manager
 Customer intent: I need to diagnose a virtual machine (VM) network traffic filter problem that prevents communication to and from a VM.
@@ -16,14 +15,14 @@ ms.topic: quickstart
 ms.tgt_pltfrm: network-watcher
 ms.workload: infrastructure
 ms.date: 04/20/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: d436fab100dc05cde8a434af564c67477b33d8d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.openlocfilehash: 68f575164487f726c2f6c7477ceacd731bb52b0f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74276013"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844921"
 ---
 # <a name="quickstart-diagnose-a-virtual-machine-network-traffic-filter-problem-using-the-azure-portal"></a>Rövid útmutató: Virtuális gép hálózati forgalmi szűrőhibájának diagnosztizálása az Azure Portal használatával
 
@@ -41,14 +40,14 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com címen.
 2. Válassza a **számítás**lehetőséget, majd válassza a **Windows Server 2016 Datacenter** vagy az **Ubuntu Server**verzióját.
 3. Adja meg vagy válassza ki az alábbi adatokat, a többi beállítás esetében fogadja el az alapértelmezett értéket, majd válassza az **OK** elemet:
 
-    |Beállítás|Érték|
+    |Beállítás|Value (Díj)|
     |---|---|
     |Név|myVM|
     |Felhasználónév| Adjon meg egy tetszőleges felhasználónevet.|
     |Jelszó| Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     |Előfizetés| Válassza ki előfizetését.|
     |Erőforráscsoport| Válassza az **Új létrehozása** elemet, és adja meg a **myResourceGroup** nevet.|
-    |Hely| Válassza az **USA keleti régiója** lehetőséget.|
+    |Földrajzi egység| Válassza az **USA keleti régiója** lehetőséget.|
 
 4. Válassza ki a virtuális gép méretét, majd kattintson a **Kiválasztás** gombra.
 5. A **Beállítások** területen fogadja el az összes alapértelmezett beállítást, majd kattintson az **OK** gombra.
@@ -62,7 +61,7 @@ A hálózati kommunikáció Network Watcherrel való teszteléséhez először e
 
 Ha már van hálózati figyelő engedélyezve legalább egy régióban, akkor folytassa az [IP-folyamat ellenőrzésének használata](#use-ip-flow-verify) lépéssel.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. Engedélyezze a hálózati figyelőt az USA keleti régiójában, mert az előző lépésben ebben a régióban helyezte üzembe a virtuális gépet. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-vm-network-traffic-filtering-problem/enable-network-watcher.png)
@@ -73,16 +72,16 @@ Ha már van hálózati figyelő engedélyezve legalább egy régióban, akkor fo
 
 Amikor létrehoz egy virtuális gépet, az Azure az alapértelmezésnek megfelelően engedélyezi és tiltja le a virtuális gépre irányuló és onnan érkező forgalmat. Később felülbírálhatja az Azure alapértelmezett beállításait, és további forgalomtípusokat engedélyezhet vagy tilthat le.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Minden szolgáltatás** *Szűrő* mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **minden szolgáltatás** *szűrő* mezőbe írja be a *Network Watcher*. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. A **HÁLÓZATI DIAGNOSZTIKAI ESZKÖZÖK** területen válassza az **IP-folyamat ellenőrzése** lehetőséget.
 3. Jelölje ki az előfizetését, adja meg vagy válassza ki a következő értékeket, és válassza az **Ellenőrzés** lehetőséget, az alábbi képen látható módon:
 
-    |Beállítás            |Érték                                                                                              |
+    |Beállítás            |Value (Díj)                                                                                              |
     |---------          |---------                                                                                          |
     | Erőforráscsoport    | Válassza a myResourceGroup lehetőséget                                                                            |
     | Virtuális gép   | Válassza a myVm lehetőséget                                                                                       |
     | Hálózati illesztő | myvm – A portál által a virtuális gép létrehozásakor létrehozott hálózati adapter neve ettől eltérő. |
-    | Protokoll          | TCP                                                                                               |
+    | Protocol (Protokoll)          | TCP                                                                                               |
     | Irány         | Kimenő                                                                                          |
     | Helyi IP-cím  | 10.0.0.4                                                                                          |
     | Helyi port      | 60000                                                                                                |
@@ -123,7 +122,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot és a benne lév�
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *myResourceGroup* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy virtuális gépet, és diagnosztizálta a bejövő és kimenő hálózati forgalom szűrőit. Megtudta, hogy hálózati biztonsági csoportszabályok engedélyezik vagy tiltják le a virtuális gépekről érkező vagy oda irányuló adatforgalmat. További információ a [biztonsági szabályokról](../virtual-network/security-overview.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) és a [biztonsági szabályok létrehozásának](../virtual-network/manage-network-security-group.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json#create-a-security-rule) módjáról.
 

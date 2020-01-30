@@ -10,12 +10,12 @@ ms.subservice: personalizer
 ms.topic: overview
 ms.date: 01/21/2020
 ms.author: diberry
-ms.openlocfilehash: 756363d0c46dee6f7d0037fda48ab22dbdaeb0b0
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 685e4f841ba077c81f46a27af8040fa6c57c0021
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514301"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846212"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -43,7 +43,7 @@ A felhasználó számára megjelenő __művelet__ gépi tanulási modellel van k
 
 Számos példa a következőkre:
 
-|Tartalomtípus|**Műveletek (funkciókkal)**|**Környezeti funkciók**|Visszaadott jutalom műveleti azonosítója<br>(a tartalom megjelenítése)|
+|Tartalom típusa|**Műveletek (funkciókkal)**|**Környezeti funkciók**|Visszaadott jutalom műveleti azonosítója<br>(a tartalom megjelenítése)|
 |--|--|--|--|
 |Hírek listája|a. `The president...` (országos, politikai, [text])<br>b. `Premier League ...` (globális, sport, [szöveg, rendszerkép, videó])<br> c. `Hurricane in the ...` (regionális, időjárás, [szöveg, rendszerkép]|Az eszköz híreinek olvasása<br>Hónap vagy idény<br>|egy `The president...`|
 |Filmek listája|1. `Star Wars` (1977, [művelet, kaland, fantázia], George Lucas)<br>2. `Hoop Dreams` (1994, [dokumentumfilm, sport], Steve James<br>3. `Casablanca` (1942, [Romance, dráma, War], Michael Kertész)|A rendszer figyeli az eszköz mozgóképét<br>képernyő mérete<br>Felhasználó típusa<br>|3. `Casablanca`|
@@ -99,6 +99,6 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 * [Mi a megerősítő tanulás?](concepts-reinforcement-learning.md)
 * [További információ a Rank kérelem szolgáltatásairól és műveleteiről](concepts-features.md)
 * [Tudnivalók a jutalmazási kérelem pontszámának meghatározásáról](concept-rewards.md)
-* [Rövid útmutatók]()
-* [Oktatóanyag]()
+* [Rövid útmutatók](sdk-learning-loop.md)
+* [Oktatóanyag](tutorial-use-azure-notebook-generate-loop-data.md)
 * [Az interaktív bemutató használata](https://personalizationdemo.azurewebsites.net/)

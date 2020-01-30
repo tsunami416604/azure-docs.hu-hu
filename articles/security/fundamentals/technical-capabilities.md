@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/31/2019
 ms.author: TomSh
-ms.openlocfilehash: a8dd859b05c3e95a1c584a7947334dad25813122
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 61afad1d9994fd703bd8df047d1861baddeae997
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970656"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845344"
 ---
 # <a name="azure-security-technical-capabilities"></a>Az Azure biztonságtechnikai képességei
 Ez a cikk az Azure-beli biztonsági szolgáltatások bevezetését ismerteti, amelyek segítségével megvédheti adatait, erőforrásait és alkalmazásait a felhőben, és teljesítheti a vállalata biztonsági igényeit.
@@ -57,7 +57,7 @@ A Microsoft identitás-és hozzáférés-kezelési megoldásai segítenek a vál
 
 Az Azure Active Directory (Azure AD) biztonsági előnyei közé tartozik a következők lehetősége:
 
-- A hibrid vállalat minden felhasználójához létrehozhat és kezelhet egy-egy identitást, így a felhasználók, csoportok és eszközök folyamatosan szinkronizálva lesznek.
+- Egyetlen identitás létrehozása és kezelése minden felhasználó számára a hibrid vállalaton belül, a felhasználók, csoportok és eszközök szinkronizálással való megőrzése.
 
 - Egyszeri bejelentkezéses hozzáférést biztosíthat az alkalmazásokhoz, több ezer előre integrált SaaS-alkalmazáshoz.
 
@@ -81,7 +81,7 @@ A következő alapvető Azure Identity Management-képességek:
 
 - Eszközregisztráció
 
-- Privileged Identity Management
+- Privilegizált identitások kezelése
 
 - Identity Protection
 
@@ -119,7 +119,7 @@ A Azure Portal vagy a [Azure Active Directory portálon](https://aad.portal.azur
 
 A [Azure Active Directory B2C](https://azure.microsoft.com/services/active-directory-b2c/) egy nagyszámú, globális, identitás-kezelési szolgáltatás, amely több száz millió identitásra méretezhető. Mobil- és webes platformokba is integrálható. A felhasználók testreszabható felületeken, meglévő közösségi hálózati fiókjaikkal vagy új hitelesítő adatok létrehozásával jelentkezhetnek be minden alkalmazásába.
 
-A múltban az alkalmazások fejlesztői számára, akik regisztrálni akartak, [és bejelentkeznek a felhasználók](../../active-directory-b2c/active-directory-b2c-overview.md) alkalmazásaiba, saját programkódot kellett volna beírniuk. Ennek keretében általában helyszíni adatbázisokat vagy rendszereket használtak a felhasználónevek és jelszavak tárolására. A Azure Active Directory B2C a biztonságos, szabványokon alapuló platform és a bővíthető házirendek széles választékának segítségével lehetővé teszi, hogy a szervezet jobban integrálja a felhasználói identitások kezelését az alkalmazásokba.
+A múltban az alkalmazások fejlesztői számára, akik regisztrálni akartak, [és bejelentkeznek a felhasználók](../../active-directory-b2c/overview.md) alkalmazásaiba, saját programkódot kellett volna beírniuk. Ennek keretében általában helyszíni adatbázisokat vagy rendszereket használtak a felhasználónevek és jelszavak tárolására. A Azure Active Directory B2C a biztonságos, szabványokon alapuló platform és a bővíthető házirendek széles választékának segítségével lehetővé teszi, hogy a szervezet jobban integrálja a felhasználói identitások kezelését az alkalmazásokba.
 
 Azure Active Directory B2C használatakor a felhasználók a meglévő közösségi fiókjaik (Facebook, Google, Amazon, LinkedIn) használatával regisztrálhatják alkalmazásaikat, vagy új hitelesítő adatokat (e-mail-címet, jelszót vagy felhasználónevet és jelszót) hoznak létre.
 
@@ -129,7 +129,7 @@ Az [Azure ad-eszközök regisztrációja](../../active-directory/devices/overvie
 
 A [mobileszköz-kezelési (Mdm)](https://www.microsoft.com/itshowcase/Article/Content/588/Mobile-device-management-at-Microsoft) megoldással, például az Intune-nal együtt a Azure Active Directoryban található eszköz attribútumai frissülnek az eszközre vonatkozó további információkkal. Ez lehetővé teszi, hogy olyan feltételes hozzáférési szabályokat hozzon létre, amelyek az eszközök hozzáférését kényszerítik, hogy megfeleljenek a biztonsági és megfelelőségi szabványoknak.
 
-#### <a name="privileged-identity-management"></a>Privileged Identity Management
+#### <a name="privileged-identity-management"></a>Privilegizált identitások kezelése
 
 [Azure Active Directory (ad) Privileged Identity Management](../../active-directory/privileged-identity-management/pim-configure.md) lehetővé teszi a Kiemelt identitások kezelését, vezérlését és figyelését, valamint az Azure ad-ben és más Microsoft-online szolgáltatások, például az Office 365-as vagy Microsoft Intune-beli erőforrásokhoz való hozzáférést.
 
@@ -256,7 +256,7 @@ Nagyobb adatkészletek helyezhetők át egy dedikált nagy sebességű WAN-kapcs
 
 Ha az Azure Storage-t az Azure Portalon keresztül használja, az összes tranzakció HTTPS-kapcsolaton keresztül történik. A [storage REST API](https://msdn.microsoft.com/library/azure/dd179355.aspx) HTTPS protokollon keresztül is használható az [Azure storage](https://azure.microsoft.com/services/storage/) és a [Azure SQL Database](https://azure.microsoft.com/services/sql-database/)használatára.
 
-Azok a szervezetek, amelyek nem tudnak védelmet biztosítani az átvitel során, érzékenyebbek a [támadók](https://technet.microsoft.com/library/gg195821.aspx), a [lehallgatás](https://technet.microsoft.com/library/gg195641.aspx)és a munkamenet-eltérítések számára. Ezek a támadások a bizalmas adatokhoz való hozzáférés első lépései lehetnek.
+Azok a szervezetek, amelyek nem tudnak védelmet biztosítani az átvitel során, érzékenyebbek a [támadók](https://technet.microsoft.com/library/gg195821.aspx), a [lehallgatás](https://technet.microsoft.com/library/gg195641.aspx)és a munkamenet-eltérítések számára. Ezeket a támadásokat a bizalmas adatokhoz való hozzáférés első lépéseként lehet megszerezni.
 
 Ha többet szeretne megtudni az Azure VPN-ről, tekintse át a [VPN Gateway tervezésének és kialakításának](../../vpn-gateway/vpn-gateway-about-vpngateways.md)cikkét.
 
@@ -432,7 +432,7 @@ A Security Center automatikusan gyűjti, elemzi és integrálja az Azure-erőfor
 
 - Az integrált kártevőirtó programok és a tűzfalak biztonsági riasztásai
 
-### <a name="azure-monitor"></a>Azure monitor
+### <a name="azure-monitor"></a>Azure-figyelő
 
 A [Azure monitor](../../azure-monitor/overview.md) az adott típusú erőforrásokra mutató tájékoztatókat biztosít. Vizualizációkat, lekérdezéseket, útválasztást, riasztásokat, automatikus méretezést és automatizálást biztosít az Azure-infrastruktúra (műveletnapló) és az egyes Azure-erőforrások (diagnosztikai naplók) esetében egyaránt.
 
@@ -513,7 +513,7 @@ A biztonságról további információt a részletes biztonsági témakörökben
 
 - [Titkosítás](https://www.microsoft.com/en-us/trustcenter/security/encryption)
 
-- [Identitás- és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity)
+- [Identitás-és hozzáférés-kezelés](https://www.microsoft.com/en-us/trustcenter/security/identity)
 
 - [Hálózati biztonság](https://www.microsoft.com/en-us/trustcenter/security/networksecurity)
 

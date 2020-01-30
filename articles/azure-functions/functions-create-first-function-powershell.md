@@ -6,12 +6,12 @@ ms.author: jaiello
 ms.reviewer: glenga
 ms.date: 04/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: 8cc89805ce53c141ff2c012fccb3c01ff2e9db49
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: b1a1caf985e9693e261684c1edb21184071ebfc8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76167904"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845901"
 ---
 # <a name="create-your-first-powershell-function-in-azure"></a>Az első PowerShell-függvény létrehozása az Azure-ban
 
@@ -67,36 +67,7 @@ A Visual Studio Code Azure Functions projektsablonja egy olyan projektet hoz lé
 
 A Visual Studio Code létrehozza a PowerShell-függvény alkalmazás projektjét egy új munkaterületen. Ez a projekt tartalmazza a [Host. JSON](functions-host-json.md) és a [Local. Settings. JSON](functions-run-local.md#local-settings-file) konfigurációs fájlokat, amelyek a projekt összes függvényére érvényesek. Ez a [PowerShell-projekt](functions-reference-powershell.md#folder-structure) ugyanaz, mint az Azure-ban futó Function alkalmazás.
 
-## <a name="run-the-function-locally"></a>Függvény helyi futtatása
-
-A Azure Functions Core Tools a Visual Studio Code-ban integrálva lehetővé teszi egy Azure Functions-projekt helyi futtatását és hibakeresését.  
-
-1. A függvény hibakereséséhez helyezzen be egy hívást az [`Wait-Debugger`] parancsmaghoz a függvény kódjában, mielőtt csatolni szeretné a hibakeresőt, majd nyomja le az F5 billentyűt a Function app projekt elindításához, és csatolja a hibakeresőt. A Core Tools kimenete a **Terminal** (Terminál) panelen jelenik meg.
-
-1. A **Terminal** (Terminál) panelen másolja a vágólapra a HTTP által indított függvény URL-végpontját.
-
-    ![Az Azure helyi kimenete](./media/functions-create-first-function-powershell/functions-vscode-f5.png)
-
-1. Fűzze hozzá a lekérdezési karakterláncot `?name=<yourname>` ehhez az URL-címhez, majd a `Invoke-RestMethod` használatával hajtsa végre a kérést, a következőképpen:
-
-    ```powershell
-    PS > Invoke-RestMethod -Method Get -Uri http://localhost:7071/api/HttpTrigger?name=PowerShell
-    Hello PowerShell
-    ```
-
-    A GET kérést egy böngészőből is végrehajthatja.
-
-    Ha a HttpTrigger-végpontot úgy hívja meg, hogy `name` paramétert nem egy lekérdezési paraméterként vagy a törzsben adja át, a függvény egy [HttpStatusCode]:: BadRequest hibát ad vissza. Amikor a Run. ps1 kódban áttekinti a kódot, láthatja, hogy ez a hiba a tervezés szerint történik.
-
-1. A hibakeresés leállításához nyomja le a Shift + F5 billentyűkombinációt.
-
-Miután ellenőrizte, hogy a függvény megfelelően fut a helyi számítógépen, tegye közzé a projektet az Azure-ban.
-
-> [!NOTE]
-> A függvények Azure-ba való közzététele előtt ne felejtse el eltávolítani a `Wait-Debugger` hívásokat. 
->
-> A Function alkalmazás Azure-beli létrehozása csak a Function alkalmazás nevének megadását kéri. Más értékek is meg vannak határozva.
-> Állítsa be `azureFunctions.advancedCreation`, hogy `true`, hogy a rendszer az összes többi értéket kéri.
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
 
 [!INCLUDE [functions-publish-project-vscode](../../includes/functions-publish-project-vscode.md)]
 
@@ -135,4 +106,4 @@ A Visual Studio Code használatával egy egyszerű HTTP-triggerrel aktivált fü
 [Azure portal]: https://portal.azure.com
 [Azure Functions Core Tools]: functions-run-local.md
 [Azure Functions-bővítmény a Visual Studio Code-hoz]: https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurefunctions
-["WAIT-Debugger"]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6
+[`Wait-Debugger`]: /powershell/module/microsoft.powershell.utility/wait-debugger?view=powershell-6

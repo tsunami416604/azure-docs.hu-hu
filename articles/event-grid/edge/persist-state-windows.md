@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 485c6d4a92539a2ba67aece319c68d31649e8045
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 42f7b5315cecd75e2aaf67145c57982872f43550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992261"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844615"
 ---
 # <a name="persist-state-in-windows"></a>Állapot megőrzése a Windowsban
 
-A Event Grid modulban létrehozott témaköröket és előfizetéseket alapértelmezés szerint a tároló fájlrendszerében tárolja a rendszer. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. Az adatüzemelő példányok közötti megőrzéshez a tároló fájlrendszerén kívül kell megőriznie az adattárolást. Jelenleg csak a metaadatok maradnak meg. Az eseményeket a memóriában tárolja a rendszer. Ha Event Grid modul újratelepítése vagy újraindítása megtörtént, akkor a rendszer elveszi a nem kézbesítési eseményeket.
+A Event Grid modulban létrehozott témaköröket és előfizetéseket a rendszer alapértelmezés szerint a tároló fájlrendszerében tárolja. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. A központi telepítések és újraindítások közötti adatmegőrzéshez a tároló fájlrendszerén kívül kell megőriznie az adattárolást. 
+
+Alapértelmezés szerint a rendszer csak a metaadatokat őrzi meg, az eseményeket pedig a memóriában tárolja a jobb teljesítmény érdekében. Az esemény-megőrzés engedélyezéséhez kövesse az események megőrzése szakaszt is.
 
 Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a Windows rendszerű központi telepítések Event Grid moduljának telepítéséhez.
 
@@ -27,7 +29,7 @@ Ez a cikk azokat a lépéseket ismerteti, amelyek szükségesek a Windows rendsz
 
 ## <a name="persistence-via-volume-mount"></a>Adatmegőrzés a Volume Mount használatával
 
-A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával megőrizhető az egyes központi telepítések. Kötet csatlakoztatásához a Docker-parancsokkal létre kell hoznia a tárolót, engedélyeket kell adnia, hogy a tároló képes legyen olvasni, írni, majd üzembe helyezni a modult. Nincs lehetőség arra, hogy automatikusan hozzon létre egy kötetet a Windows rendszeren szükséges engedélyekkel. A telepítés előtt létre kell hozni.
+A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával megőrizhető az egyes központi telepítések. Kötet csatlakoztatásához a Docker-parancsokkal létre kell hoznia a tárolót, engedélyeket kell adnia, hogy a tároló képes legyen olvasni, írni, majd üzembe helyezni a modult.
 
 1. Hozzon létre egy kötetet a következő parancs futtatásával:
 
@@ -82,17 +84,17 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     ```json
         {
               "Env": [
-                "inbound:serverAuth:tlsPolicy=strict",
-                "inbound:serverAuth:serverCert:source=IoTEdge",
-                "inbound:clientAuth:sasKeys:enabled=false",
-                "inbound:clientAuth:clientCert:enabled=true",
-                "inbound:clientAuth:clientCert:source=IoTEdge",
-                "inbound:clientAuth:clientCert:allowUnknownCA=true",
-                "outbound:clientAuth:clientCert:enabled=true",
-                "outbound:clientAuth:clientCert:source=IoTEdge",
-                "outbound:webhook:httpsOnly=true",
-                "outbound:webhook:skipServerCertValidation=false",
-                "outbound:webhook:allowUnknownCA=true"
+                "inbound__serverAuth__tlsPolicy=strict",
+                "inbound__serverAuth__serverCert__source=IoTEdge",
+                "inbound__clientAuth__sasKeys__enabled=false",
+                "inbound__clientAuth__clientCert__enabled=true",
+                "inbound__clientAuth__clientCert__source=IoTEdge",
+                "inbound__clientAuth__clientCert__allowUnknownCA=true",
+                "outbound__clientAuth__clientCert__enabled=true",
+                "outbound__clientAuth__clientCert__source=IoTEdge",
+                "outbound__webhook__httpsOnly=true",
+                "outbound__webhook__skipServerCertValidation=false",
+                "outbound__webhook__allowUnknownCA=true"
               ],
               "HostConfig": {
                 "Binds": [
@@ -118,21 +120,22 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "myeventgridvol:C:\\app\\metadataDb"
+                "myeventgridvol:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -147,7 +150,7 @@ A [Docker-kötetek](https://docs.docker.com/storage/volumes/) használatával me
 
 ## <a name="persistence-via-host-directory-mount"></a>Adatmegőrzés a gazdagép könyvtárának csatlakoztatása révén
 
-Azt is megteheti, hogy létrehoz egy könyvtárat a gazda rendszeren, és csatlakoztatja azt a címtárhoz.
+Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és csatlakoztathatja a könyvtárat.
 
 1. Hozzon létre egy könyvtárat a gazdagép fájlrendszerén a következő parancs futtatásával.
 
@@ -180,21 +183,22 @@ Azt is megteheti, hogy létrehoz egy könyvtárat a gazda rendszeren, és csatla
     ```json
     {
         "Env": [
-            "inbound:serverAuth:tlsPolicy=strict",
-            "inbound:serverAuth:serverCert:source=IoTEdge",
-            "inbound:clientAuth:sasKeys:enabled=false",
-            "inbound:clientAuth:clientCert:enabled=true",
-            "inbound:clientAuth:clientCert:source=IoTEdge",
-            "inbound:clientAuth:clientCert:allowUnknownCA=true",
-            "outbound:clientAuth:clientCert:enabled=true",
-            "outbound:clientAuth:clientCert:source=IoTEdge",
-            "outbound:webhook:httpsOnly=true",
-            "outbound:webhook:skipServerCertValidation=false",
-            "outbound:webhook:allowUnknownCA=true"
+            "inbound__serverAuth__tlsPolicy=strict",
+            "inbound__serverAuth__serverCert__source=IoTEdge",
+            "inbound__clientAuth__sasKeys__enabled=false",
+            "inbound__clientAuth__clientCert__enabled=true",
+            "inbound__clientAuth__clientCert__source=IoTEdge",
+            "inbound__clientAuth__clientCert__allowUnknownCA=true",
+            "outbound__clientAuth__clientCert__enabled=true",
+            "outbound__clientAuth__clientCert__source=IoTEdge",
+            "outbound__webhook__httpsOnly=true",
+            "outbound__webhook__skipServerCertValidation=false",
+            "outbound__webhook__allowUnknownCA=true"
          ],
          "HostConfig": {
             "Binds": [
-                "C:\\myhostdir:C:\\app\\metadataDb"
+                "C:\\myhostdir:C:\\app\\metadataDb",
+                "C:\\myhostdir2:C:\\app\\eventsDb"
              ],
              "PortBindings": {
                     "4438/tcp": [
@@ -206,3 +210,30 @@ Azt is megteheti, hogy létrehoz egy könyvtárat a gazda rendszeren, és csatla
          }
     }
     ```
+## <a name="persist-events"></a>Események megőrzése
+
+Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell a metaadatok megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti fejezetek segítségével.
+
+Fontos tudnivalók a megőrzött eseményekről:
+
+* Az események megtartása esemény-előfizetések alapján engedélyezett, és a kötet vagy a könyvtár csatlakoztatása után is engedélyezve van.
+* Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
+* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum minden üzenetkezelő rendszerhez alkalmazkodik, de csak nagy léptékű észrevehető válik.
+
+Ha engedélyezni szeretné az esemény-megőrzést egy esemény-előfizetésben, állítsa a `persistencePolicy` `true`:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

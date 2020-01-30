@@ -9,14 +9,14 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: mbaldwin
 ms.custom: mvc
-ms.openlocfilehash: fbda2f645308e30a6f408335b7a1b37095522921
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 5082ed06b4ce5baf3869fc035654be3c7a45f29f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71003315"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845290"
 ---
-# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Oktatóanyag: Azure Key Vault használata Windows rendszerű virtuális géppel a .NET-ben
+# <a name="tutorial-use-azure-key-vault-with-a-windows-virtual-machine-in-net"></a>Oktatóanyag: a Azure Key Vault használata Windows rendszerű virtuális géppel a .NET-ben
 
 Azure Key Vault segítséget nyújt a titkok, például az API-kulcsok, az alkalmazások, szolgáltatások és informatikai erőforrások eléréséhez szükséges adatbázis-kapcsolati karakterláncok védelemmel való ellátásához.
 
@@ -45,7 +45,7 @@ Windows, Mac és Linux rendszerekhez:
 
 ## <a name="about-managed-service-identity"></a>Tudnivalók a felügyeltszolgáltatás-identitásról
 
-A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító identitást biztosít, amely leegyszerűsíti a folyamatot.
+A Azure Key Vault biztonságosan tárolja a hitelesítő adatokat, így azok nem jelennek meg a kódban. A kulcsok lekéréséhez azonban hitelesítenie kell Azure Key Vault. Key Vault hitelesítéséhez szüksége lesz egy hitelesítő adatra. Ez egy klasszikus rendszerindítási dilemma. Managed Service Identity (MSI) ezt a problémát úgy oldja meg, hogy egy rendszerindító _identitást_ biztosít, amely leegyszerűsíti a folyamatot.
 
 Ha az MSI-t egy Azure-szolgáltatáshoz (például Azure Virtual Machines, Azure App Service vagy Azure Functions) engedélyezi, az Azure létrehoz egy [egyszerű szolgáltatást](basic-concepts.md). Az MSI ezt a szolgáltatást a Azure Active Directory (Azure AD) szolgáltatás példányán végzi el, és az egyszerű szolgáltatásnév hitelesítő adatait beinjektálja a példányba. 
 
@@ -84,7 +84,7 @@ Hozzon létre egy Key vaultot az erőforráscsoporthoz úgy, hogy az az kulcstar
 
 * Key Vault neve: 3 – 24 karakterből álló karakterlánc, amely csak számokat (0-9), betűket (a-z, A-z) és kötőjeleket (-) tartalmazhat.
 * Erőforráscsoport neve
-* Helyen **USA nyugati régiója**
+* Hely: **USA nyugati** régiója
 
 ```azurecli
 az keyvault create --name "<YourKeyVaultName>" --resource-group "<YourResourceGroupName>" --location "West US"
@@ -138,7 +138,7 @@ A virtuális gépre való bejelentkezéshez kövesse a [Kapcsolódás és bejele
 
 ## <a name="set-up-the-console-app"></a>A konzol alkalmazásának beállítása
 
-Hozzon létre egy Console-alkalmazást, és telepítse a `dotnet` szükséges csomagokat a parancs használatával.
+Hozzon létre egy Console-alkalmazást, és telepítse a szükséges csomagokat a `dotnet` parancs használatával.
 
 ### <a name="install-net-core"></a>A .NET Core telepítése
 
@@ -181,10 +181,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 ```
 
-Szerkessze a következő kétlépéses folyamat kódját tartalmazó osztályt:
+Szerkessze a kódot a következő három lépésből álló folyamat során:
 
 1. A virtuális gép helyi MSI-végpontján lévő jogkivonat beolvasása. Ezzel az Azure AD-ből is lekéri a tokent.
-1. Továbbítsa a tokent a kulcstartóba, majd olvassa be a titkot. 
+2. Továbbítsa a tokent a kulcstartóba, majd olvassa be a titkot. 
+3. Adja hozzá a tároló nevét és a titkos nevet a kéréshez.
 
 ```csharp
  class Program
@@ -205,9 +206,10 @@ Szerkessze a következő kétlépéses folyamat kódját tartalmazó osztályt:
             WebResponse response = request.GetResponse();
             return ParseWebResponse(response, "access_token");
         }
-
+        
         static string FetchSecretValueFromKeyVault(string token)
         {
+            //Step 3: Add the vault name and secret name to the request.
             WebRequest kvRequest = WebRequest.Create("https://<YourVaultName>.vault.azure.net/secrets/<YourSecretName>?api-version=2016-10-01");
             kvRequest.Headers.Add("Authorization", "Bearer "+  token);
             WebResponse kvResponse = kvRequest.GetResponse();
@@ -237,7 +239,7 @@ Az előző kód azt mutatja be, hogyan végezheti el a műveleteket a Azure Key 
 
 Ha már nincs rájuk szükség, törölje a virtuális gépet és a kulcstartót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Azure Key Vault REST API](https://docs.microsoft.com/rest/api/keyvault/)

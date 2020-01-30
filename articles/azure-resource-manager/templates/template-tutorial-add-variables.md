@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: a27022f8c06449d8b05f90f78055b983bc88c01c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 881d91d5b8ca06a9591b8752af0a73da7f00b0c1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472855"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765507"
 ---
 # <a name="tutorial-add-variables-to-your-resource-manager-template"></a>Oktatóanyag: változók hozzáadása a Resource Manager-sablonhoz
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json":::
 
 A Storage-fiók nevének paramétere nem használható, mert egyedi nevet kell megadni. Ha elvégezte a sorozat korábbi oktatóanyagait, akkor valószínűleg egy egyedi nevet is kitalál. Ezt a problémát úgy oldja meg, hogy hozzáad egy változót, amely egyedi nevet hoz létre a Storage-fiókhoz.
 
@@ -34,7 +34,7 @@ A Storage-fiók nevének paramétere nem használható, mert egyedi nevet kell m
 
 A következő példa kiemeli azokat a módosításokat, amelyek segítségével egy változót adhat hozzá a sablonhoz, amely létrehoz egy egyedi Storage-fiók nevét. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json?range=1-47&highlight=5-9,29-31,36)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-variable/azuredeploy.json" range="1-47" highlight="5-9,29-31,36":::
 
 Figyelje meg, hogy tartalmaz egy **uniqueStorageName**nevű változót. Ez a változó négy függvényt használ egy karakterlánc-érték létrehozásához.
 

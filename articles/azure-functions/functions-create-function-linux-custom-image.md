@@ -5,12 +5,12 @@ ms.date: 01/15/2020
 ms.topic: tutorial
 ms.custom: mvc
 zone_pivot_groups: programming-languages-set-functions01
-ms.openlocfilehash: 67d9ff3d4a69ed12d1fd023085eb33a68d02d37b
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: edb947f0748c186e146bce5f4dbe9d0b95a2568d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711082"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846482"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszeren egyéni tároló használatával
 
@@ -290,7 +290,7 @@ A függvény kódjának az Azure-ba történő üzembe helyezéséhez három er�
 
 Ezeket az elemeket az Azure CLI-parancsok használatával hozhatja létre. Az egyes parancsok a JSON-kimenetet biztosítják a befejezés után.
 
-1. Jelentkezzen be az Azure-ba az az [login](/cli/azure/group#az-login) paranccsal:
+1. Jelentkezzen be az Azure-ba az az [login](/cli/azure/reference-index#az-login) paranccsal:
 
     ```azurecli
     az login

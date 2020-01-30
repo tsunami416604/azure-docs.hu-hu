@@ -9,12 +9,12 @@ ms.date: 10/03/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: a9bac9a84e1ba034b011691ae82a1cb67eb71af0
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 841b5092775353bbe3340dbbd55610026f998a15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992430"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846468"
 ---
 # <a name="event-grid-configuration"></a>Event Grid konfiguráció
 
@@ -26,8 +26,8 @@ Az ügyfél-hitelesítés általános ismertetése: [Biztonság és hitelesíté
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-|`inbound:serverAuth:tlsPolicy`| A Event Grid modul TLS-házirendje. Az alapértelmezett érték csak HTTPS.
-|`inbound:serverAuth:serverCert:source`| A Event Grid modul által a TLS-konfigurációhoz használt kiszolgálói tanúsítvány forrása. Az alapértelmezett érték IoT Edge.
+|`inbound__serverAuth__tlsPolicy`| A Event Grid modul TLS-házirendje. Az alapértelmezett érték csak HTTPS.
+|`inbound__serverAuth__serverCert__source`| A Event Grid modul által a TLS-konfigurációhoz használt kiszolgálói tanúsítvány forrása. Az alapértelmezett érték IoT Edge.
 
 ## <a name="incoming-client-authentication"></a>Bejövő ügyfél-hitelesítés
 
@@ -35,20 +35,20 @@ Az ügyfél-hitelesítés általános ismertetése: [Biztonság és hitelesíté
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-|`inbound:clientAuth:clientCert:enabled`| A tanúsítványalapú ügyfél-hitelesítés be-és kikapcsolása. Az alapértelmezett érték TRUE (igaz).
-|`inbound:clientAuth:clientCert:source`| Az ügyféltanúsítványok érvényesítésének forrása. Az alapértelmezett érték IoT Edge.
-|`inbound:clientAuth:clientCert:allowUnknownCA`| Önaláírt ügyféltanúsítványt engedélyező házirend. Az alapértelmezett érték TRUE (igaz).
-|`inbound:clientAuth:sasKeys:enabled`| Az SAS-kulcs alapú ügyfél-hitelesítés be-és kikapcsolása. Az alapértelmezett érték ki van kapcsolva.
-|`inbound:clientAuth:sasKeys:key1`| Az egyik érték a beérkező kérések érvényesítéséhez.
-|`inbound:clientAuth:sasKeys:key2`| Nem kötelező második érték a beérkező kérések érvényesítéséhez.
+|`inbound__clientAuth__clientCert__enabled`| A tanúsítványalapú ügyfél-hitelesítés be-és kikapcsolása. Az alapértelmezett érték TRUE (igaz).
+|`inbound__clientAuth__clientCert__source`| Az ügyféltanúsítványok érvényesítésének forrása. Az alapértelmezett érték IoT Edge.
+|`inbound__clientAuth__clientCert__allowUnknownCA`| Önaláírt ügyféltanúsítványt engedélyező házirend. Az alapértelmezett érték TRUE (igaz).
+|`inbound__clientAuth__sasKeys__enabled`| Az SAS-kulcs alapú ügyfél-hitelesítés be-és kikapcsolása. Az alapértelmezett érték ki van kapcsolva.
+|`inbound__clientAuth__sasKeys__key1`| Az egyik érték a beérkező kérések érvényesítéséhez.
+|`inbound__clientAuth__sasKeys__key2`| Nem kötelező második érték a beérkező kérések érvényesítéséhez.
 
 ## <a name="outgoing-client-authentication"></a>Kimenő ügyfél-hitelesítés
 Az ügyfél-hitelesítés általános ismertetése: [Biztonság és hitelesítés](security-authentication.md). [Ebben a cikkben](configure-identity-auth.md)a példákat is megtalálhatja.
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-|`outbound:clientAuth:clientCert:enabled`| A kimenő kérésekhez tartozó Identity tanúsítvány csatolásának be-és kikapcsolása. Az alapértelmezett érték TRUE (igaz).
-|`outbound:clientAuth:clientCert:source`| Event Grid modul kimenő tanúsítványának beolvasására szolgáló forrás. Az alapértelmezett érték IoT Edge.
+|`outbound__clientAuth__clientCert__enabled`| A kimenő kérésekhez tartozó Identity tanúsítvány csatolásának be-és kikapcsolása. Az alapértelmezett érték TRUE (igaz).
+|`outbound__clientAuth__clientCert__source`| Event Grid modul kimenő tanúsítványának beolvasására szolgáló forrás. Az alapértelmezett érték IoT Edge.
 
 ## <a name="webhook-event-handlers"></a>Webhook-eseménykezelők
 
@@ -56,9 +56,9 @@ Az ügyfél-hitelesítés általános ismertetése: [Biztonság és hitelesíté
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-|`outbound:webhook:httpsOnly`| Házirend annak szabályozására, hogy csak HTTPS-előfizetők engedélyezettek-e. Az alapértelmezett érték igaz (csak HTTPS).
-|`outbound:webhook:skipServerCertValidation`| Annak a jelzője, amely meghatározza, hogy ellenőrizni kell-e az előfizető tanúsítványát. Az alapértelmezett érték TRUE (igaz).
-|`outbound:webhook:allowUnknownCA`| Házirend annak szabályozására, hogy egy előfizető tud-e önaláírt tanúsítványt megjeleníteni. Az alapértelmezett érték TRUE (igaz). 
+|`outbound__webhook__httpsOnly`| Házirend annak szabályozására, hogy csak HTTPS-előfizetők engedélyezettek-e. Az alapértelmezett érték igaz (csak HTTPS).
+|`outbound__webhook__skipServerCertValidation`| Annak a jelzője, amely meghatározza, hogy ellenőrizni kell-e az előfizető tanúsítványát. Az alapértelmezett érték TRUE (igaz).
+|`outbound__webhook__allowUnknownCA`| Házirend annak szabályozására, hogy egy előfizető tud-e önaláírt tanúsítványt megjeleníteni. Az alapértelmezett érték TRUE (igaz). 
 
 ## <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
 
@@ -66,16 +66,24 @@ A szolgáltatás általános megismeréséhez lásd: [kézbesítés és újrapr�
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Az alapértelmezett érték 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Élettartam (TTL) másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Az alapértelmezett érték **7200** másodperc
+| `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Az alapértelmezett érték 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Élettartam (TTL) másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Az alapértelmezett érték **7200** másodperc
 
-## <a name="output-batching"></a>Kimeneti köteg
+## <a name="output-batching"></a>Kimenet kötegelése
 
 Ha többet szeretne megtudni erről a szolgáltatásról, olvassa el a [továbbítás és a kimenetek kötegelt feldolgozását](delivery-output-batching.md)ismertető témakört.
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-| `api:deliveryPolicyLimits:maxBatchSizeInBytes` | Az `ApproxBatchSizeInBytes` Knob számára engedélyezett maximális érték. Az alapértelmezett érték `1_058_576`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | Az `MaxEventsPerBatch` Knob számára engedélyezett maximális érték. Az alapértelmezett érték `50`.
-| `broker:defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak `MaxEventsPerBatch` van megadva. Az alapértelmezett érték `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` van megadva. Az alapértelmezett érték `10`.
+| `api__deliveryPolicyLimits__maxBatchSizeInBytes` | Az `ApproxBatchSizeInBytes` Knob számára engedélyezett maximális érték. Az alapértelmezett érték `1_058_576`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Az `MaxEventsPerBatch` Knob számára engedélyezett maximális érték. Az alapértelmezett érték `50`.
+| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak `MaxEventsPerBatch` van megadva. Az alapértelmezett érték `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` van megadva. Az alapértelmezett érték `10`.
+
+## <a name="metrics"></a>Metrikák
+
+Ha szeretné megtudni, hogyan használhatja a metrikákat a IoT Edge Event Grid, tekintse meg a [témakörök és előfizetések figyelése](monitor-topics-subscriptions.md)
+
+| Tulajdonság neve | Leírás |
+| ---------------- | ------------ |
+| `metrics__reporterType` | A végpontot metrikái a Reporter típusa. Az alapértelmezett érték `none`, és letiltja a metrikákat. A `prometheus` beállítása lehetővé teszi a metrikák használatát a Prometheus kiállítási formátumában.

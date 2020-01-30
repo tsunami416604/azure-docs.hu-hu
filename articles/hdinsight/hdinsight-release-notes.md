@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 01/08/2019
-ms.openlocfilehash: 56be45b8d0f8086d9a64811fe715fad967fca33e
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.date: 01/24/2020
+ms.openlocfilehash: 9d484afb1d80ee6b110438cc3ddea1d3d67ad999
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76027771"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844683"
 ---
 # <a name="release-notes"></a>Kibocsátási megjegyzések
 
@@ -23,7 +23,7 @@ Ez a cikk az Azure HDInsight **legújabb** kiadási frissítéseivel kapcsolatos
 
 Az Azure HDInsight az egyik legnépszerűbb szolgáltatás a nagyvállalati ügyfelek körében az Azure-beli nyílt forráskódú elemzésekhez.
 
-## <a name="release-date-01092019"></a>Kiadás dátuma: 01/09/2019
+## <a name="release-date-01092020"></a>Kiadás dátuma: 01/09/2020
 
 Ez a kiadás a 3,6-es és a 4,0-es HDInsight is érvényes. A HDInsight-kiadás több napon keresztül elérhetővé válik minden régióban. A kiadás dátuma itt jelzi az első régió kiadásának dátumát. Ha nem látja az alábbi módosításokat, várjon, amíg a kiadás több napon belül élő marad a régióban.
 
@@ -42,7 +42,7 @@ A HDInsight összes felügyelt lemeze az Azure Storage Service Encryption (SSE) 
 ## <a name="deprecation"></a>Elavulás
 Nincs elavultság ehhez a kiadáshoz. A közelgő elavulás elkezdéséhez tekintse meg a [közelgő változásokat](#upcoming-changes).
 
-## <a name="behavior-changes"></a>Viselkedésbeli változások
+## <a name="behavior-changes"></a>Viselkedési változások
 Ebben a kiadásban nem változik a viselkedés. A közelgő változásokról a [közelgő változások](#upcoming-changes)című szakaszban olvashat.
 
 ## <a name="upcoming-changes"></a>Közelgő változások
@@ -65,3 +65,34 @@ A HDInsight továbbra is a fürt megbízhatóságának és teljesítményének n
 
 ## <a name="component-version-change"></a>Összetevő verziójának módosítása
 Ehhez a kiadáshoz nem módosult az összetevő verziószáma. A HDInsight 4,0 ad HDInsight 3,6 aktuális összetevő-verzióit itt találja.
+
+## <a name="known-issues"></a>Ismert problémák
+
+2020. január 24-én egy aktív probléma merül fel, amelyben a Jupyter-Jegyzetfüzet használatának megkísérlése során hibaüzenet jelenhet meg. A probléma megoldásához kövesse az alábbi lépéseket. Ezt az [MSDN-bejegyzést](https://social.msdn.microsoft.com/Forums/en-us/8c763fb4-79a9-496f-a75c-44a125e934ac/hdinshight-create-not-create-jupyter-notebook?forum=hdinsight) vagy ezt a [StackOverflow bejegyzést](https://stackoverflow.com/questions/59687614/azure-hdinsight-jupyter-notebook-not-working/59831103) is megtekintheti naprakész információkkal, vagy további kérdéseket is feltehet. Ez a lap a probléma kijavítása után frissül.
+
+**Hibák**
+
+* ValueError: a jegyzetfüzet nem konvertálható V5-re, mert ez a verzió nem létezik
+* Hiba történt a jegyzetfüzet betöltésekor, mert a jegyzetfüzet betöltése során ismeretlen hiba történt. Ez a verzió a v4-es vagy korábbi notebook-formátumokat tudja betölteni.
+
+**Ok** 
+
+A fürt _version. a fájlja 5. x. x-re frissült a 4.4. x helyett. # #.
+
+**Megoldás**
+
+Ha új Jupyter-jegyzetfüzetet hoz létre, és a fent felsorolt hibák valamelyikét fogadja, a probléma megoldásához hajtsa végre a következő lépéseket.
+
+1. Nyissa meg a Ambari egy böngészőben a https://CLUSTERNAME.azurehdinsight.net, ahol a CLUSTERNAME a fürt neve.
+1. A Ambari bal oldali menüjében kattintson a **Jupyter**, majd a **szolgáltatási műveletek**elemre, végül a **Leállítás**gombra.
+1. SSH-t a fürt átjárócsomóponthoz, ahol a Jupyter szolgáltatás fut.
+1. Nyissa meg a következő fájlt a _version./usr/bin/anaconda/lib/python2.7/site-Packages/nbformat/fájlból sudo módban.
+1. A meglévő bejegyzésnek a következő kódhoz hasonlóhoz kell mutatnia: 
+
+    version_info = (5, 0, 3)
+
+    Módosítsa a bejegyzést a következőre: 
+    
+    version_info = (4, 4, 0)
+1. Mentse a fájlt.
+1. Lépjen vissza a Ambari, és a **szolgáltatási műveletek**területen kattintson az **összes újraindítása**elemre.

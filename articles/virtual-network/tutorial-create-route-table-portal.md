@@ -5,25 +5,20 @@ description: Ez az oktatóanyag azt ismerteti, hogyan irányítható a hálózat
 services: virtual-network
 documentationcenter: virtual-network
 author: KumudD
-manager: twooley
-editor: ''
-tags: azure-resource-manager
 Customer intent: I want to route traffic from one subnet, to a different subnet, through a network virtual appliance.
-ms.assetid: ''
 ms.service: virtual-network
 ms.devlang: azurecli
 ms.topic: tutorial
 ms.tgt_pltfrm: virtual-network
 ms.workload: infrastructure
-ms.date: 12/12/2018
+ms.date: 01/22/2019
 ms.author: kumud
-ms.custom: mvc
-ms.openlocfilehash: be4a47d26bcfc407734956a3d9bf8778c5afcfb4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 96b6788e48b845ef7f0add11767eb36b47cac36b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75350290"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775283"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom útválasztási táblázattal való irányítása az Azure Portalon
 
@@ -48,19 +43,19 @@ Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="create-a-route-table"></a>Útválasztási táblázat létrehozása
 
-1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **útválasztási táblázat**lehetőséget.
-
-1. Az **útvonal létrehozása táblában**adja meg vagy válassza ki az alábbi adatokat:
+1. A Azure Portal menüben válassza az **erőforrás létrehozása**lehetőséget.
+2. A keresőmezőbe írja be az *útválasztási táblázat*kifejezést. Ha az **útválasztási tábla** megjelenik a keresési eredmények között, válassza ki.
+3. Az **útválasztási táblázat** lapon válassza a **Létrehozás**lehetőséget.
+4. Az **útvonal létrehozása táblában**adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *myroutetablepublic elemet*. |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Name (Név) | Adja meg a *myroutetablepublic elemet*. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson *az OK gombra*. |
-    | Földrajzi egység | Hagyja meg az alapértelmezett **USA keleti**régióját.
+    | Földrajzi egység | Válassza az **USA keleti régiója** lehetőséget.
     | Virtual Network átjáró útvonalának propagálása | Hagyja meg az alapértelmezett **beállítást**. |
-
-1. Kattintson a **Létrehozás** gombra.
+5. Kattintson a **Létrehozás** gombra.
 
 ## <a name="create-a-route"></a>Útvonal létrehozása
 
@@ -95,9 +90,9 @@ Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, l
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *myVirtualNetwork*. |
+    | Name (Név) | Adja meg a *myVirtualNetwork*. |
     | Címtér | Adja meg a *10.0.0.0/16*értéket. |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a meglévő > **MyResourceGroup** ***kiválasztása*** lehetőséget. |
     | Földrajzi egység | Hagyja meg az alapértelmezett **USA keleti**régióját. |
     | Alhálózat – név | Adja meg a *nyilvános*értéket. |
@@ -119,7 +114,7 @@ Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, l
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *magánjellegű*értéket. |
+    | Name (Név) | Adja meg a *magánjellegű*értéket. |
     | Címtér | Adja meg a *10.0.1.0/24*értéket. |
 
 1. Tartsa meg az alapértelmezett értékeket a többi beállításnál, majd kattintson az **OK** gombra.
@@ -128,7 +123,7 @@ Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, l
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *DMZ*-t. |
+    | Name (Név) | Adja meg a *DMZ*-t. |
     | Címtér | Adja meg a *10.0.2.0/24*értéket. |
 
 1. Az utolsó alkalomhoz hasonlóan hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
@@ -137,7 +132,7 @@ Ahhoz, hogy egy útválasztási táblázatot alhálózathoz lehessen rendelni, l
 
 ### <a name="associate-myroutetablepublic-to-your-public-subnet"></a>Myroutetablepublic elemet hozzárendelése a nyilvános alhálózathoz
 
-1. Válassza a **Nyilvános** lehetőséget.
+1. Válassza a **nyilvános**lehetőséget.
 
 1. A **nyilvános**területen válassza az **útválasztási táblázat** > **myroutetablepublic elemet** > **Mentés**lehetőséget.
 
@@ -154,7 +149,7 @@ A NVA olyan virtuális gépek, amelyek a hálózati funkciók, például az Útv
     | Beállítás | Value (Díj) |
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
-    | Előfizetés | Válassza ki előfizetését. |
+    | Előfizetést | Válassza ki előfizetését. |
     | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVmNva*. |
@@ -167,7 +162,7 @@ A NVA olyan virtuális gépek, amelyek a hálózati funkciók, például az Útv
     | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Adja meg újra a jelszót. |
     | **BEJÖVŐ PORTOK SZABÁLYAI** |  |
-    | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **nincs**értéket.
+    | Nyilvános bejövő portok | Válassza a **nincs**lehetőséget.
     | **PÉNZ MEGTAKARÍTÁSA** |  |
     | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
 
@@ -183,7 +178,7 @@ A NVA olyan virtuális gépek, amelyek a hálózati funkciók, például az Útv
     | ------- | ----- |
     | Virtuális hálózat | Hagyja meg az alapértelmezett **myVirtualNetwork**. |
     | Alhálózat | Válassza a **DMZ (10.0.2.0/24)** lehetőséget. |
-    | Nyilvános IP-cím | Válassza a **Nincs** lehetőséget. Nincs szüksége nyilvános IP-címekre. A virtuális gép nem kapcsolódik az internethez.|
+    | Nyilvános IP-cím | Válassza a **nincs**lehetőséget. Nincs szüksége nyilvános IP-címekre. A virtuális gép nem kapcsolódik az internethez.|
 
 1. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Tovább: kezelés**lehetőséget.
 
@@ -193,7 +188,7 @@ A NVA olyan virtuális gépek, amelyek a hálózati funkciók, például az Útv
 
     | Beállítás | Value (Díj) |
     | ------- | ----- |
-    | Név | Adja meg a *mynvastorageaccount*. |
+    | Name (Név) | Adja meg a *mynvastorageaccount*. |
     | Fióktípus | Hagyja meg az alapértelmezett **tárolót (általános célú v1)** . |
     | Teljesítmény | Hagyja meg az alapértelmezett **standard**értéket. |
     | Replikáció | Hagyja meg az alapértelmezett **helyileg redundáns tárolást (LRS)** .
@@ -224,7 +219,7 @@ Kapcsolja be az IP-továbbítást a *myVmNva*. Ha az Azure hálózati forgalmat 
 
     ![IP-továbbítás engedélyezése](./media/tutorial-create-route-table-portal/enable-ip-forwarding.png)
 
-## <a name="create-public-and-private-virtual-machines"></a>Nyilvános és privát virtuális gépek létrehozása
+## <a name="create-public-and-private-virtual-machines"></a>Nyilvános és magánhálózati virtuális gépek létrehozása
 
 Hozzon létre egy nyilvános virtuális gépet és egy privát virtuális GÉPET a virtuális hálózaton. Később azt fogja látni, hogy az Azure a NVA keresztül átirányítja a *nyilvános* alhálózat forgalmát a *privát* alhálózatra.
 
@@ -233,25 +228,25 @@ Hajtsa végre az 1-12-es lépéseket a [NVA létrehozásához](#create-an-nva). 
 | Beállítás | Value (Díj) |
 | ------- | ----- |
 | **NYILVÁNOS VIRTUÁLIS GÉP** | |
-| BASICS |  |
+| ALAPJAI |  |
 | Virtuális gép neve | Adja meg a *myVmPublic*. |
-| HÁLÓZAT | |
+| HÁLÓZATI | |
 | Alhálózat | Válassza a **nyilvános (10.0.0.0/24)** lehetőséget. |
 | Nyilvános IP-cím | Fogadja el az alapértelmezett értéket. |
 | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
 | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget. |
-| KEZELÉS | |
-| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| FELÜGYELETI | |
+| Diagnosztikai Storage-fiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 | **PRIVÁT VIRTUÁLIS GÉP** | |
-| BASICS |  |
+| ALAPJAI |  |
 | Virtuális gép neve | Adja meg a *myVmPrivate*. |
-| HÁLÓZAT | |
+| HÁLÓZATI | |
 | Alhálózat | Válassza a **magánjellegű (10.0.1.0/24)** lehetőséget. |
 | Nyilvános IP-cím | Fogadja el az alapértelmezett értéket. |
 | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
 | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget. |
-| KEZELÉS | |
-| Diagnosztikai tárfiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
+| FELÜGYELETI | |
+| Diagnosztikai Storage-fiók | Hagyja meg az alapértelmezett **mynvastorageaccount**. |
 
 Létrehozhatja a *myVmPrivate* virtuális gépet, miközben az Azure létrehozza a *myVmPublic* virtuális gépet. Ne folytassa a további lépéseket, amíg az Azure befejezi mindkét virtuális gép létrehozását.
 

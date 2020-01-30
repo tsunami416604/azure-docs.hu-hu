@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk azt ismerteti, hogyan diagnosztizálható a helyszíni kapcsolat a VPN-átjárón keresztül az Azure Network Watcher erőforrás-hibaelhárítással.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: aeffbf3d-fd19-4d61-831d-a7114f7534f9
 ms.service: network-watcher
 ms.devlang: na
@@ -14,13 +12,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 528684031404dbd907205e69f3565155fa1856b0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.author: damendo
+ms.openlocfilehash: 835b3a69e779b536961110b674ae67f4e8c13ce0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75454292"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845052"
 ---
 # <a name="diagnose-on-premises-connectivity-via-vpn-gateways"></a>Helyszíni kapcsolatok diagnosztizálása VPN-átjárók használatával
 
@@ -82,14 +80,14 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="gateway"></a>Átjáró
 
-| Hibatípus | Ok | Napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba. |Igen|
+| Nincs hiba | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance |  Az átjárópéldány karbantartása van folyamatban.  |Nem|
+| PlannedMaintenance |  Az átjáró példánya karbantartás alatt áll.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet. | Nem |
 | VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Ez akkor fordul elő, ha az állapot-ellenőrzés sikertelen. | Nem |
-| PlatformInActive | A platformmal kapcsolatos probléma áll fenn. | Nem|
+| PlatformInActive | Probléma van a platformmal. | Nem|
 | ServiceNotRunning | A mögöttes szolgáltatás nem fut. | Nem|
 | NoConnectionsFoundForGateway | Nem található kapcsolat az átjárón. Ez csak egy figyelmeztetés.| Nem|
 | ConnectionsNotConnected | A kapcsolatok egyike sincs csatlakoztatva. Ez csak egy figyelmeztetés.| Igen|
@@ -97,18 +95,18 @@ Az Azure Network Watcher-hibakeresési funkciója lehetővé teszi a VPN Gateway
 
 ### <a name="connection"></a>Kapcsolat
 
-| Hibatípus | Ok | Napló|
+| Hiba típusa | Ok | Napló|
 |---|---|---|
-| NoFault | Ha nem észlelhető hiba. |Igen|
+| Nincs hiba | Ha nem észlelhető hiba. |Igen|
 | GatewayNotFound | Nem található az átjáró vagy az átjáró nincs kiépítve. |Nem|
-| PlannedMaintenance | Az átjárópéldány karbantartása van folyamatban.  |Nem|
+| PlannedMaintenance | Az átjáró példánya karbantartás alatt áll.  |Nem|
 | UserDrivenUpdate | Egy felhasználói frissítés folyamatban van. Ez lehet átméretezési művelet.  | Nem |
 | VipUnResponsive | Az átjáró elsődleges példánya nem érhető el. Akkor következik be, amikor az állapot mintavétele sikertelen. | Nem |
 | ConnectionEntityNotFound | Hiányzik a kapcsolatok konfigurációja. | Nem |
 | ConnectionIsMarkedDisconnected | A kapcsolat "leválasztva" jelölésű. |Nem|
 | ConnectionNotConfiguredOnGateway | A mögöttes szolgáltatáshoz nincs konfigurálva a hálózat. | Igen |
 | ConnectionMarkedStandby | A mögöttes szolgáltatás készenléti állapotban van megjelölve.| Igen|
-| Hitelesítés | Az előmegosztott kulcs nem egyezik. | Igen|
+| Authentication | Az előmegosztott kulcs nem egyezik. | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
 | WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|

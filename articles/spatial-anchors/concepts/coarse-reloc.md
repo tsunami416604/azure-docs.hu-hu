@@ -1,6 +1,6 @@
 ---
 title: Durva újrahonosítás
-description: Durva újrahonosítási útmutató.
+description: Ismerje meg, hogyan használhat durva áthonosítást a közeli horgonyok megtalálásához.
 author: bucurb
 manager: dacoghl
 services: azure-spatial-anchors
@@ -8,12 +8,12 @@ ms.author: bobuc
 ms.date: 09/18/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
-ms.openlocfilehash: 6143f50b9f1f6738daf3e69d4cc0e00742e1e35a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4c1604eaad1ebdedf6a360a647fe5b9f95c829c6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75356352"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844394"
 ---
 # <a name="coarse-relocalization"></a>Durva helyzet-újrameghatározás
 
@@ -124,7 +124,7 @@ Ezután el kell döntenie, hogy mely érzékelőket szeretné használni a durva
 |             | Beltéri | Szabadban |
 |-------------|---------|----------|
 | GPS         | Ki | Be |
-| Wi-Fi        | Be | Bekapcsolva (nem kötelező) |
+| Fi        | Be | Bekapcsolva (nem kötelező) |
 | Egyazon figyelő | Bekapcsolva (nem kötelező a kikötésekkel kapcsolatban lásd alább) | Ki |
 
 
@@ -651,7 +651,7 @@ Az alábbi táblázat a várt keresési helyet becsüli meg az egyes érzékelő
 | Érzékelő      | Keresési terület sugara (kb.) | Részletek |
 |-------------|:-------:|---------|
 | GPS         | 20 m – 30 m | A többi tényező között a GPS-bizonytalanság határozza meg. A jelentett számok a-GPS-vel ellátott mobiltelefonok medián GPS-pontosságának becslése, amely 7 méter. |
-| Wi-Fi        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
+| Fi        | 50 m – 100 m | A vezeték nélküli hozzáférési pontok tartománya határozza meg. A gyakoriságtól, az adó erősségtől, a fizikai akadályoktól, a beavatkozástól és így tovább függ. |
 | Egyazon figyelő |  70 m | A jeladó tartománya határozza meg. A gyakoriságtól, az átviteli erősségtől, a fizikai akadályoktól, a beavatkozástól és egyebektől függ. |
 
 ## <a name="per-platform-support"></a>Platformon belüli támogatás
@@ -662,7 +662,7 @@ A következő táblázat összefoglalja az egyes támogatott platformokon össze
 |             | HoloLens | Android | iOS |
 |-------------|----------|---------|-----|
 | GPS         | – | [LocationManager][3] API-kon keresztül támogatott (a GPS és a hálózat is) | [CLLocationManager][4] API-kon keresztül támogatott |
-| Wi-Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
+| Fi        | 3 másodpercenként körülbelül egy vizsgálattal támogatott | Támogatott. A 28-as API-szinttől kezdve a Wi-Fi vizsgálat 2 percenként 4 hívásra van Leszabályozva. Az Android 10-es verzióban a szabályozás le lehet tiltani a fejlesztői beállítások menüből. További információt az [Android dokumentációjában][5]talál. | N/A – nincs nyilvános API |
 | Egyazon figyelő | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik | [Eddystone][1] és [iBeacon][2] korlátozódik |
 
 ## <a name="next-steps"></a>Következő lépések

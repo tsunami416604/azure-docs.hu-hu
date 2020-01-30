@@ -4,12 +4,12 @@ description: Megtudhatja, hogy mely metrikákat használják általában a Cloud
 ms.topic: conceptual
 ms.date: 12/6/2016
 ms.subservice: autoscale
-ms.openlocfilehash: 7b9c19ba3b85813eb12f6b906427f3cfdc9a0f67
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2c335168683212337876c963a7cfdb441d0ac69a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75364594"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845561"
 ---
 # <a name="azure-monitor-autoscaling-common-metrics"></a>Általános mérőszámok automatikus skálázása Azure Monitor
 
@@ -36,7 +36,7 @@ Az Azure-beli virtuális gép és a VMSS esetében alapértelmezés szerint a k�
 - [A Resource Manager-alapú Windows és Linux rendszerű virtuális gépek gazdagép-metrikái](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachines)
 - [A Resource Manager-alapú Windows-és Linux-VM Scale Sets gazdagép-metrikái](../../azure-monitor/platform/metrics-supported.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Vendég operációs rendszer metrikái Resource Manager-alapú Windows virtuális gépek
+### <a name="guest-os-metrics-for-resource-manager-based-windows-vms"></a>Vendég operációs rendszer metrikái a Resource Manager-alapú Windows rendszerű virtuális gépekhez
 Amikor létrehoz egy virtuális gépet az Azure-ban, a diagnosztika a diagnosztika bővítmény használatával engedélyezhető. A diagnosztikai bővítmény a virtuális gép belsejéből származó mérőszámok készletét bocsátja ki. Ez azt jelenti, hogy az alapértelmezés szerint nem kibocsátott mérőszámok autoskálázása is megtörténik.
 
 A metrikák listáját a PowerShellben a következő parancs használatával hozhatja meg.
@@ -129,8 +129,8 @@ Get-AzMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,U
 | \NetworkInterface\TotalTxErrors |Mennyiség |
 | \NetworkInterface\TotalCollisions |Mennyiség |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Gyakran használt web (kiszolgálófarm) metrikák
-Az autoskálázást a gyakori webkiszolgáló-metrikák, például a http-várólista hossza alapján is elvégezheti. A metrika neve **HttpQueueLength**.  A következő szakasz felsorolja a rendelkezésre álló kiszolgálófarm (Web Apps) mérőszámait.
+## <a name="commonly-used-app-service-server-farm-metrics"></a>Gyakran használt App Service (kiszolgálófarm) metrikák
+Az autoskálázást a gyakori webkiszolgáló-metrikák, például a http-várólista hossza alapján is elvégezheti. A metrika neve **HttpQueueLength**.  A következő szakasz felsorolja a rendelkezésre álló kiszolgálófarm (App Service) mérőszámait.
 
 ### <a name="web-apps-metrics"></a>Web Apps metrikák
 A Web Apps metrikáinak listáját a PowerShellben a következő paranccsal hozhatja meg.
@@ -159,8 +159,8 @@ Egy klasszikus Storage-fiókkal például a metricTrigger az autoskálázási be
 
 ```
 "metricName": "ApproximateMessageCount",
- "metricNamespace": "",
- "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
+"metricNamespace": "",
+"metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
 Egy (nem klasszikus) Storage-fiók esetében a metricTrigger a következőket foglalja magában:
@@ -177,7 +177,7 @@ Service Bus üzenetsor hosszával méretezheti a méretezést, amely a Service B
 A virtuálisgép-méretezési csoportok esetében frissítheti a Resource Manager-sablonban található autoskálázási beállítást úgy, hogy a *MetricName* *ApproximateMessageCount* használja, és a *metricResourceUri*azonosítóját adja át.
 
 ```
-"metricName": "MessageCount",
+"metricName": "ApproximateMessageCount",
  "metricNamespace": "",
 "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ServiceBus/namespaces/SB_NAMESPACE/queues/QUEUE_NAME"
 ```

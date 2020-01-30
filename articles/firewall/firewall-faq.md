@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 11/19/2019
+ms.date: 01/29/2020
 ms.author: victorh
-ms.openlocfilehash: ac8ec9a86c388f41493d60d79a21db28fbf2aa95
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 8b55f31f12ab1057ac2e0f625a0285b6518cc44a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646211"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845772"
 ---
 # <a name="azure-firewall-faq"></a>Azure Firewall GYIK
 
@@ -54,7 +54,7 @@ Háromféle típusú szabálygyűjtemény létezik:
 
 ## <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Támogatja Azure Firewall a bejövő forgalom szűrését?
 
-Azure Firewall támogatja a bejövő és a kimenő szűrést. A bejövő védelem nem HTTP/S protokollokhoz készült. Például RDP, SSH és FTP protokoll.
+Azure Firewall támogatja a bejövő és a kimenő szűrést. A bejövő védelem általában nem HTTP/S protokollokhoz használatos. Például RDP, SSH és FTP protokoll. A legjobb bejövő HTTP/S-védelem érdekében használjon egy webalkalmazási tűzfalat, például az [Azure webalkalmazási tűzfalat az azure Application Gatewayon](../web-application-firewall/ag/ag-overview.md).
 
 ## <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Mely naplózási és elemzési szolgáltatásokat támogatja a Azure Firewall?
 

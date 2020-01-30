@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 12/17/2019
-ms.openlocfilehash: 690a9751111ca4c86ebb34825f2845ea59d6f186
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6ee339cb709a5d825b39b4accf294761c99ee41a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462490"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846287"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Szolgáltatási korlátozások az Azure Cognitive Search
 
@@ -117,7 +117,7 @@ A maximális futási idő a szolgáltatás egészére vonatkozó egyensúlyt és
 | Maximális futási idő <sup>5</sup> | 1-3 perc |24 óra |24 óra |24 óra |24 óra |–  |24 óra |24 óra |
 | A kognitív keresési szakértelmével vagy a blob-indexelés maximális futási ideje képanalízissel <sup>5</sup> | 3-10 perc |2 óra |2 óra |2 óra |2 óra |–  |2 óra |2 óra |
 | BLOB indexelő: blob maximális mérete (MB) |16 |16 |128 |256 |256 |–  |256 |256 |
-| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |4&nbsp;millió |4&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
+| BLOB indexelő: blobból kinyert tartalom maximális száma |32 000 |64 000 |4&nbsp;millió |8&nbsp;millió |16&nbsp;millió |– |4&nbsp;millió |4&nbsp;millió |
 
 <sup>1</sup> az ingyenes szolgáltatások esetében az indexelő maximális végrehajtási ideje 3 perc a blob-forrásokhoz és 1 perc az összes többi adatforráshoz. A Cognitive Servicesba beérkező AI-indexelés esetén az ingyenes szolgáltatások napi 20 ingyenes tranzakcióra korlátozódnak, ahol a tranzakciót olyan dokumentumként határozzák meg, amely sikeresen áthalad a dúsítási folyamaton.
 
@@ -151,7 +151,7 @@ A tárterületre optimalizált csomagok esetében az alacsonyabb lekérdezési s
 
 ## <a name="data-limits-ai-enrichment"></a>Adatkorlátok (AI-dúsítás)
 
-Egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat, amely egy Text Analytics erőforrás meghívását teszi lehetővé az [entitások felismeréséhez](cognitive-search-skill-entity-recognition.md), a [kulcs kifejezésének kinyeréséhez](cognitive-search-skill-keyphrases.md), a [hangulat elemzéséhez](cognitive-search-skill-sentiment.md)és a [nyelvi észleléshez](cognitive-search-skill-language-detection.md) az adatkorlátok vonatkoznak. A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
+Egy [mesterséges intelligencia](cognitive-search-concept-intro.md) -bővítési folyamat, amely egy Text Analytics erőforrást hív meg az [entitások felismerése](cognitive-search-skill-entity-recognition.md), a [kulcsfontosságú kifejezés kinyerése](cognitive-search-skill-keyphrases.md), a [hangulat elemzése](cognitive-search-skill-sentiment.md), a [nyelvfelismerés](cognitive-search-skill-language-detection.md)és a személyre szabott adatok [észlelése](cognitive-search-skill-pii-detection.md) az adatkorlátokra vonatkozik. A rekordok maximális méretének 50 000 karakternek kell lennie [`String.Length`](https://docs.microsoft.com/dotnet/api/system.string.length)alapján mérve. Ha meg kell szakítania az adatait, mielőtt elküldené az érzelmeket elemző eszköznek, használja a [szöveg felosztása készséget](cognitive-search-skill-textsplit.md).
 
 ## <a name="throttling-limits"></a>Szabályozási korlátok
 

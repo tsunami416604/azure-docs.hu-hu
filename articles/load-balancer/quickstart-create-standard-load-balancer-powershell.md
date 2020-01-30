@@ -1,29 +1,29 @@
 ---
-title: 'Gyors útmutató: standard Load Balancer létrehozása Azure PowerShell'
+title: 'Gyors útmutató: Load Balancer létrehozása Azure PowerShell'
 titleSuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre standard Load Balancer a Azure PowerShell használatával
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Load Balancer a Azure PowerShell használatával
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load balancer so that I can load balance internet traffic to VMs.
 ms.assetid: ''
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/07/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms:custom: seodec18
-ms.openlocfilehash: 21488fbc8a5a9354db74d5b93719d100bce8878c
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 50a7854688164383bff08bfe55d356fe32239812
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045665"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846514"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-using-azure-powershell"></a>Rövid útmutató: standard Load Balancer létrehozása Azure PowerShell használatával
+# <a name="quickstart-create-a-load-balancer-using-azure-powershell"></a>Rövid útmutató: Load Balancer létrehozása Azure PowerShell használatával
 
 Ez a rövid útmutató bemutatja, hogyan hozhat létre Standard Load Balancert az Azure PowerShell használatával. A terheléselosztó teszteléséhez telepítsen három virtuális gépet (VM) a Windows Server rendszert futtató virtuális gépekre, és helyezzen terheléselosztást egy webalkalmazásba a virtuális gépek között. További információk a Standard Load Balancerről: [Mi a Standard Load Balancer?](load-balancer-standard-overview.md).
 
@@ -45,7 +45,7 @@ New-AzResourceGroup -Name $rgName -Location $location
 
 ## <a name="create-a-public-ip-address"></a>Hozzon létre egy nyilvános IP-címet
 
-Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP [-címet a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). A következő példa egy *myPublicIP* nevű nyilvános IP-címet hoz létre a *myresourcegroupslb erőforráscsoportban* erőforráscsoporthoz:
+Az alkalmazás internetes eléréséhez a terheléselosztónak nyilvános IP-címmel kell rendelkeznie. Hozzon létre egy nyilvános IP [-címet a New-AzPublicIpAddress](/powershell/module/az.network/new-azpublicipaddress). A következő példa létrehoz egy *myPublicIP* nevű zóna redundáns nyilvános IP-címet a *myresourcegroupslb erőforráscsoportban* erőforráscsoporthoz:
 
 ```azurepowershell
 $publicIp = New-AzPublicIpAddress `
@@ -56,11 +56,25 @@ $publicIp = New-AzPublicIpAddress `
  -SKU Standard
 ```
 
-## <a name="create-standard-load-balancer"></a>Standard Load Balancer létrehozása
+Ha egy nyilvános IP-címet szeretne létrehozni az 1. zónában, használja a következőt:
+
+```azurepowershell
+$publicIp = New-AzPublicIpAddress `
+ -ResourceGroupName $rgName `
+ -Name 'myPublicIP' `
+ -Location $location `
+ -AllocationMethod static `
+ -SKU Standard
+ -zone 1
+```
+
+Hozzon létre egy alapszintű nyilvános IP-címet a ```-SKU Basic``` használatával. A Microsoft a standard szintű használatot javasolja a termelési munkaterhelésekhez.
+
+## <a name="create-load-balancer"></a>Load Balancer létrehozása
 
 Ebben a szakaszban az előtér-IP-címet és a háttérbeli címkészletet konfigurálja a terheléselosztó számára, majd létrehozza a standard Load Balancer.
 
-### <a name="create-front-end-ip"></a>Előtér-IP-cím létrehozása
+### <a name="create-frontend-ip"></a>Előtérbeli IP-cím létrehozása
 
 Hozzon létre egy előtér-IP-címet a [New-AzLoadBalancerFrontendIpConfig](/powershell/module/az.network/new-azloadbalancerfrontendipconfig). A következő példa létrehoz egy *myFrontEnd* nevű előtérbeli IP-konfigurációt, és csatolja a *myPublicIP* -címet:
 
@@ -146,6 +160,8 @@ $lb = New-AzLoadBalancer `
   -InboundNatRule $natrule1,$natrule2,$natrule3
 ```
 
+Alapszintű Load Balancer létrehozásához használja a ```-SKU Basic```. A Microsoft a standard szintű használatot javasolja a termelési munkaterhelésekhez.
+
 ## <a name="create-network-resources"></a>Hálózati erőforrások létrehozása
 Mielőtt üzembe helyezne néhány virtuális gépet és tesztelhetné a terheléselosztót, hozza létre a támogató virtuális hálózati erőforrásokat: a virtuális hálózatot és a virtuális hálózati kártyákat. 
 
@@ -195,6 +211,9 @@ $RdpPublicIP_3 = New-AzPublicIpAddress `
   -AllocationMethod static
 
 ```
+
+Alapszintű nyilvános IP-címek létrehozásához használja a ```-SKU Basic```. A Microsoft a standard szintű használatot javasolja a termelési munkaterhelésekhez.
+
 ### <a name="create-network-security-group"></a>Hálózati biztonsági csoport létrehozása
 Hozzon létre hálózati biztonsági csoportot a virtuális hálózat bejövő kapcsolatainak meghatározásához.
 
@@ -356,7 +375,6 @@ Remove-AzResourceGroup -Name myResourceGroupSLB
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy standard terheléselosztót, virtuális gépeket csatolt hozzá, konfigurálta a terheléselosztó forgalmi szabályát és az állapot-mintavételt, majd tesztelte a terheléselosztót. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
+Ebben a rövid útmutatóban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [Azure Load Balancer oktatóanyagokkal](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-basic-internal-portal.md)
+További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).

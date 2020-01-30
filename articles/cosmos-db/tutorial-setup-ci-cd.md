@@ -4,15 +4,15 @@ description: Oktatóanyag a buildelési és kiadási munkafolyamatok Azure DevOp
 author: deborahc
 ms.service: cosmos-db
 ms.topic: tutorial
-ms.date: 05/23/2019
+ms.date: 01/28/2020
 ms.author: dech
 ms.reviewer: sngun
-ms.openlocfilehash: e3f7bcee8969939e3c3e9d9e10b43a3eb234fd50
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 4b05b4b44df53846a4880249785c6a5deda62f8a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441055"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846542"
 ---
 # <a name="set-up-a-cicd-pipeline-with-the-azure-cosmos-db-emulator-build-task-in-azure-devops"></a>CI-/CD-folyamat beállítása az Azure Cosmos DB Emulator buildelési feladatával az Azure DevOpsban
 
@@ -47,12 +47,17 @@ Most, hogy a bővítmény települt, jelentkezzen be az Azure DevOps-fiókjába,
 
    ![Válassza ki a csapatprojektet, az adattárat és az ágat a buildfolyamathoz.](./media/tutorial-setup-ci-cd/CreateNewBuildDef_2.png)
 
-3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. 
+3. Végül válassza ki a buildfolyamathoz használni kívánt sablont. Ebben az oktatóanyagban az **ASP.NET** sablont választjuk. Most már rendelkezik egy olyan összeállítási folyamattal, amely a Azure Cosmos DB Emulator Build feladatának használatára beállítható. 
 
 > [!NOTE]
 > A CI számára kijelölni kívánt ügynök-készletnek a Windows rendszerhez készült Docker-nek kell lennie, kivéve, ha a telepítést manuálisan végzik el egy korábbi feladatban a CI részeként. Tekintse meg a [Microsoft által üzemeltetett ügynökökkel](https://docs.microsoft.com/azure/devops/pipelines/agents/hosted?view=azure-devops&tabs=yaml) foglalkozó cikket az ügynök-készletek kiválasztásához. Javasoljuk, hogy kezdje a `Hosted VS2017`.
 
-Most már van buildfolyamatunk, amelyet beállíthatunk az Azure Cosmos DB emulátor buildelési feladatának használatára. 
+Azure Cosmos DB emulátor jelenleg nem támogatja az üzemeltetett VS2019-ügynök készletét. Az emulátor azonban már telepítve van a VS2019, és a következő PowerShell-parancsmagokkal elindítja az emulátort. Ha a VS2019 használata során problémákba ütközik, az [Azure DevOps](https://developercommunity.visualstudio.com/spaces/21/index.html) csapata segítségért tájékozódhat:
+
+```powershell
+Import-Module "$env:ProgramFiles\Azure Cosmos DB Emulator\PSModules\Microsoft.Azure.CosmosDB.Emulator"
+Start-CosmosDbEmulator
+```
 
 ## <a name="addEmulatorBuildTaskToBuildDefinition"></a>Feladat hozzáadása buildfolyamathoz
 

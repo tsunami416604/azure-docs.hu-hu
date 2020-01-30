@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: b32b0377502697e32e56e5c8324ca287c9a3cf69
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 1db391f42aeb4fdf80baf001150f845daef3bf4f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473051"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773225"
 ---
 # <a name="tutorial-add-template-functions-to-your-resource-manager-template"></a>Oktatóanyag: template functions hozzáadása a Resource Manager-sablonhoz
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json":::
 
 A Storage-fiók helye az **USA keleti**régiójában rögzített. Előfordulhat azonban, hogy más régiókban is telepítenie kell a Storage-fiókot. A sablon problémája még nincs rugalmassága. Hozzáadhat egy paramétert a helyhez, de nagyszerű lenne, ha az alapértelmezett értéke több értelme, mint a nehezen kódolt érték.
 
@@ -40,7 +40,7 @@ A következő példa kiemeli a **Location**nevű paraméter hozzáadásának mó
 
 Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json?range=1-44&highlight=24-27,34)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-location/azuredeploy.json" range="1-44" highlight="24-27,34":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 

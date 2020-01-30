@@ -4,18 +4,18 @@ description: Azure-beli virtuális gép visszaállítása helyreállítási pont
 ms.reviewer: geg
 ms.topic: conceptual
 ms.date: 09/17/2019
-ms.openlocfilehash: 98101639d82ede2a6c625ea9da413bcf93f6a185
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: d0b2e85fa3dfb0168c40c6b8838c7b9890c92ab6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753929"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844007"
 ---
 # <a name="how-to-restore-azure-vm-data-in-azure-portal"></a>Azure-beli virtuális gépekre vonatkozó Azure Portal visszaállítása
 
 Ez a cikk azt ismerteti, hogyan állíthatja vissza az Azure-beli virtuális gépek adatait a [Azure Backup](backup-overview.md) Recovery Services-tárolókban tárolt helyreállítási pontokból.
 
-## <a name="restore-options"></a>Visszaállítási lehetőségek
+## <a name="restore-options"></a>Visszaállítási beállítások
 
 A Azure Backup számos módszert biztosít a virtuális gépek visszaállítására.
 
@@ -214,7 +214,7 @@ A visszaállítási művelet elindítását követően a Backup szolgáltatás l
 A virtuális gépek visszaállítása után számos dolgot érdemes megjegyezni:
 
 - A biztonsági mentési konfigurációban lévő bővítmények telepítve vannak, de nem engedélyezettek. Ha problémát tapasztal, telepítse újra a bővítményeket.
-- Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](../virtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
+- Ha a biztonsági másolatban szereplő virtuális gép statikus IP-címmel rendelkezik, a visszaállított virtuális gép dinamikus IP-címmel fog rendelkezni, hogy elkerülje az ütközést. [Statikus IP-címet adhat hozzá a visszaállított virtuális géphez](/previous-versions/azurevirtual-network/virtual-networks-reserved-private-ip.md#how-to-add-a-static-internal-ip-to-an-existing-vm).
 - A helyreállított virtuális gépek nem rendelkeznek rendelkezésre állási csoporttal. Ha a lemez visszaállítása lehetőséget használja, [megadhat egy rendelkezésre állási készletet](../virtual-machines/windows/tutorial-availability-sets.md) , ha a megadott sablonnal vagy PowerShell-lel hozza létre a virtuális gépet a lemezről.
 - Ha felhő-init-alapú Linux-disztribúciót, például Ubuntut használ, biztonsági okokból a rendszer letiltja a jelszót a visszaállítás után. A [jelszó alaphelyzetbe állításához](../virtual-machines/linux/reset-password.md)használja a VISSZAÁLLÍTOTT virtuális gép VMAccess bővítményét. Javasoljuk, hogy SSH-kulcsokat használjon ezeken a disztribúciókban, így a visszaállítás után nem kell alaphelyzetbe állítania a jelszót.
 - Ha a virtuális gép a tartományvezérlővel megszakadt kapcsolat miatt nem fér hozzá a virtuális géphez, akkor az alábbi lépéseket követve hozza létre a virtuális gépet:

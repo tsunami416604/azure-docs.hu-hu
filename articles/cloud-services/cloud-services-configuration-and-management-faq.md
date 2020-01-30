@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
-ms.openlocfilehash: 47a75d10f6016eb49061f9e7158b00899a387f2f
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: 50dd6e2387abbf5b24adcee708dd2ff387e33261
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75660613"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845374"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
 
@@ -174,11 +174,11 @@ További információ [: Azure Load Balancer konfigurálható Üresjárati idők
 
 ### <a name="how-do-i-associate-a-static-ip-address-to-my-cloud-service"></a>Hogyan statikus IP-címet rendelni a felhőalapú szolgáltatáshoz?
 Statikus IP-cím beállításához létre kell hoznia egy fenntartott IP-címet. Ez a fenntartott IP-cím társítható egy új felhőalapú szolgáltatáshoz vagy egy meglévő üzembe helyezéshez is. A részletekért tekintse meg a következő dokumentumokat:
-* [Fenntartott IP-cím létrehozása](../virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
-* [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](../virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
-* [Fenntartott IP-cím hozzárendelése egy új felhőalapú szolgáltatáshoz](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
-* [Fenntartott IP-cím hozzárendelése futó központi telepítéshez](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
-* [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](../virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
+* [Fenntartott IP-cím létrehozása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#manage-reserved-vips)
+* [Meglévő felhőalapú szolgáltatás IP-címének lefoglalása](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#reserve-the-ip-address-of-an-existing-cloud-service)
+* [Fenntartott IP-cím hozzárendelése egy új felhőalapú szolgáltatáshoz](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-new-cloud-service)
+* [Fenntartott IP-cím hozzárendelése futó központi telepítéshez](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-running-deployment)
+* [Fenntartott IP-cím hozzárendelése egy felhőalapú szolgáltatáshoz szolgáltatás-konfigurációs fájl használatával](/previous-versions/azure/virtual-network/virtual-networks-reserved-public-ip.md#associate-a-reserved-ip-to-a-cloud-service-by-using-a-service-configuration-file)
 
 ### <a name="what-are-the-features-and-capabilities-that-azure-basic-ipsids-and-ddos-provides"></a>Milyen funkciókat és képességeket biztosít az Azure alapszintű IP-címei/AZONOSÍTÓi és a DDOS?
 Az Azure az adatközpont-fizikai kiszolgálók IP-címeivel és AZONOSÍTÓkkal rendelkezik a fenyegetések elleni védelemhez. Emellett az ügyfelek telepíthetnek harmadik féltől származó biztonsági megoldásokat, például a webalkalmazási tűzfalakat, a hálózati tűzfalakat, a kártevő szoftvereket, a behatolás észlelését, a megelőzési rendszereket (AZONOSÍTÓk/IP-címek) és egyebeket. További információkért tekintse [meg az adatok és eszközök védelme és a globális biztonsági szabványok betartása](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity)című témakört.
@@ -250,7 +250,7 @@ További információ a Cloud Services Application Insightsének engedélyezés�
 
 További információ a Cloud Services Azure Diagnostics naplózásának engedélyezéséről: [diagnosztika beállítása az Azure Cloud Services és a Virtual Machines](/visualstudio/azure/vs-azure-tools-diagnostics-for-cloud-services-and-virtual-machines#turn-on-diagnostics-in-cloud-service-projects-before-you-deploy-them) szolgáltatáshoz
 
-## <a name="generic"></a>Általánosítás
+## <a name="generic"></a>Általános
 
 ### <a name="how-do-i-add-nosniff-to-my-website"></a>Hogyan adja hozzá a "nem szippantás" kifejezést a saját webhelyéhez?
 Ha meg szeretné akadályozni, hogy az ügyfelek ne tudják a MIME-típusok elemzését, adjon hozzá egy beállítást a *web. config* fájlban.

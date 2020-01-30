@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 8ec3e399459adfbb7cef9e3eafbaa024fec1589f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447605"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844262"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -53,7 +53,7 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 
 1. Vegyen fel  **_professzionális_ Chit-csevegést** a kb-ra.
 
-1. Válassza a **Tudásbázis létrehozása** lehetőséget.
+1. Válassza **a kb létrehozása**lehetőséget.
 
     A kinyerési folyamat eltarthat néhány percig, hogy beolvassa a dokumentumot, és azonosítsa a kérdéseket és a válaszokat.
 
@@ -155,9 +155,8 @@ Törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
 További információ:
 
-* [Markdown-formátum a válaszokban](../concepts/data-sources-supported.md)
-* [A Markdown tesztelése](../concepts/data-sources-supported.md#testing-your-markdown)
-* QnA Maker [adatforrások](../Concepts/data-sources-supported.md).
+* [Markdown-formátum a válaszokban](../reference-markdown-format.md)
+* QnA Maker [adatforrások](../concepts/knowledge-base.md).
 * A [robot erőforrás-konfigurációs beállításai](../tutorials/create-qna-bot.md).
 
 > [!div class="nextstepaction"]

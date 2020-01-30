@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: ed5e5c63bed90136e498491a6735cbaa127cf1f9
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: d7853d388b9159328a515818697ba9ddd5b95637
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75689684"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773179"
 ---
 # <a name="tutorial-add-tags-in-your-resource-manager-template"></a>Oktatóanyag: Címkék hozzáadása a Resource Manager-sablonban
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző sablon üzembe helyezte a Storage-fiókot, a App Service-csomagot és a webalkalmazást.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json":::
 
 Az erőforrások telepítése után lehetséges, hogy nyomon kell követnie a költségeket, és meg kell keresnie egy kategóriához tartozó erőforrásokat. A problémák megoldásához címkéket adhat hozzá.
 
@@ -36,7 +36,7 @@ Az erőforrások címkézésével olyan értékeket adhat hozzá, amelyek segít
 
 A következő példa kiemeli a sablon módosításait. Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json?range=1-118&highlight=46-52,64,86,103)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json" range="1-118" highlight="46-52,64,78,102":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 

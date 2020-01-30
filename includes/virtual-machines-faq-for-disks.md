@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 05/13/2019
 ms.author: rogarana
 ms.custom: include file
-ms.openlocfilehash: 7e83aa69cb4099885fc45e719c812a6c92299b7a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 161d9d18c914f65b3ab3ef7e44f8cd2f4a1992db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75359960"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76887634"
 ---
 Ez a cikk az Azure Managed Disks és az Azure prémium SSD-lemezekkel kapcsolatos gyakori kérdésekre ad választ.
 
@@ -145,31 +145,23 @@ A [2. generációs lemezképek](https://docs.microsoft.com/azure/virtual-machine
 
 Prémium SSD, standard SSD és standard szintű HDD-támogatási Pillanatképek. Ebben a három lemez típusban a pillanatképek minden lemez mérete esetén támogatottak (beleértve a lemezeket akár 32 TiB méretig). Az ultra-lemezek nem támogatják a pillanatképeket.
 
-### <a name="disk-reservation"></a>Lemezes foglalás
+**Mik azok az Azure Disk Reservations?**
+A lemezes foglalás az a lehetőség, hogy egy évig előre megvásárolja a lemezes tárolást, ami csökkenti a teljes költségeket. Az Azure-lemezek foglalásával kapcsolatos részletekért tekintse meg a tárgyat ismertető cikket: a [foglalási kedvezményt az Azure diskre alkalmazza](../articles/cost-management-billing/reservations/understand-disk-reservations.md).
 
-**Mi az Azure Disk Reservation?**
-A lemezes foglalás az a lehetőség, hogy egy évig előre megvásárolja a lemezes tárolást, ami csökkenti a teljes költségeket.
+**Milyen lehetőségeket kínál az Azure Disk foglalás?** Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett egyetlen összegben, előre kifizetheti a díjat, vagy havidíjas fizetést választhat. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj. 
 
-**Milyen lehetőségeket kínál az Azure Disk foglalás?**
-Az Azure Disk foglalás lehetőséget biztosít a prémium SSD-k megvásárlására a megadott SKU-P30 (1 TiB) akár P80 (32 TiB), egy éves időszakra. A lemezes foglalás megvásárlásához szükséges lemezek minimális száma nem korlátozott. Emellett egyetlen összegben, előre kifizetheti a díjat, vagy havidíjas fizetést választhat. Prémium SSD Managed Disks esetében nem alkalmazható további tranzakciós díj.
+A foglalások lemezek formájában, nem kapacitással történnek. Más szóval, ha P80 (32 TiB) lemezt foglal le, egyetlen P80-lemezt kap, akkor az adott foglalást nem lehet két kisebb P70 (16 TiB) lemezre osztani. Természetesen a lehető legtöbb vagy kevés lemezt is lefoglalhatja, többek között két külön P70 (16 TiB) lemezt.
 
-A foglalások lemezek formájában, nem kapacitással történnek. Más szóval, ha P80 (32 TiB) lemezt foglal le, egyetlen P80-lemezt kap, akkor az adott foglalást nem divvy két kisebb P70 (16 TiB) lemezre. Természetesen a lehető legtöbb vagy kevés lemezt is lefoglalhatja, többek között két külön P70 (16 TiB) lemezt.
+**Hogyan történik az Azure Disk-foglalás alkalmazása?**  
+A lemezek foglalása a fenntartott virtuális gépek (VM) példányaihoz hasonló modellt követ. A különbség az, hogy a lemezek foglalása nem alkalmazható a különböző SKU-ra, míg a virtuálisgép-példányok is. A virtuálisgép-példányokkal kapcsolatos további információkért tekintse meg a [költségek mentése a Azure Reserved VM Instancesával](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) című témakört.    
 
-**Hogyan kell fizetnem az Azure-lemezes foglalásért?**
-- Nagyvállalati Szerződés (EA) ügyfelek esetében az Azure-beli pénzügyi kötelezettségvállalás először az Azure-lemezek foglalásának megvásárlására lesz felhasználva. Azokban az esetekben, amelyekben a nagyvállalati szerződéssel rendelkező ügyfelek felhasználták az összes pénzügyi kötelezettségvállalását, továbbra is megvásárolhatják a lemezes foglalásokat, és ezek a vásárlások az egyszeri, előzetes fizetés után kerülnek kiszámlázásra.
+**Használhatom az Azure-lemezek foglalásán keresztül vásárolt adattárolót több régióban?**     
+Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. keleti P30) van megvásárolva, ezért nem használható ezen szerkezeteken kívül. További Azure-lemezek foglalását is megvásárolhatja a lemezes tároláshoz más régiókban vagy SKU-ban. 
 
-- A Azure.com-on keresztül megvásárolt ügyfelek esetében a megvásárláskor a rendszer az Azure-lemezek foglalásának teljes előlegét (vagy havi rögzített fizetését) terheli.
-
-**Hogyan történik az Azure Disk-foglalás alkalmazása?**
-A lemezek foglalása a fenntartott virtuális gépek (VM) példányaihoz hasonló modellt követ. A különbség az, hogy a lemezek foglalása nem alkalmazható a különböző SKU-ra, míg a virtuálisgép-példányok is. A virtuálisgép-példányokkal kapcsolatos további információkért tekintse meg a [költségek mentése a Azure Reserved VM Instancesával](../articles/virtual-machines/linux/prepay-reserved-vm-instances.md) című témakört. 
-
-**Használhatom az Azure-lemezek foglalásán keresztül vásárolt adattárolót több régióban?**
-Az Azure-lemezek foglalása egy adott régióra és SKU-ra (például az USA 2. keleti P30) van megvásárolva, ezért nem használható ezen szerkezeteken kívül. További Azure-lemezek foglalását is megvásárolhatja a lemezes tároláshoz más régiókban vagy SKU-ban.
-
-**Mi történik, ha az Azure-lemezek foglalása lejár?**
+**Mi történik, ha az Azure-lemezek foglalása lejár?**    
 Az e-mail-értesítéseket a lejárat előtt 30 nappal, a lejárati dátum után pedig újra megkapja. Ha a foglalás lejár, a telepített lemezek továbbra is futni fognak, és az utólagos elszámolású [díjszabással](https://azure.microsoft.com/pricing/details/managed-disks/)számolunk fel díjat.
 
-## <a name="ultra-disks"></a>Ultralemezek
+## <a name="ultra-disks"></a>Ultra-lemezek
 
 **Mire kell beállítani az ultra Disk átviteli sebességét?**
 Ha nem biztos abban, hogy mit kell beállítania a lemez átviteli sebességének beállításához, javasoljuk, hogy először a 16 KiB i/o-méretet adja meg, és az alkalmazás figyelése után állítsa be a teljesítményt. A képlet a következő: átviteli sebesség (MB/s) = IOPS * 16/1000.

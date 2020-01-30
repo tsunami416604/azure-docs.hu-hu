@@ -3,19 +3,29 @@ title: Változások követése Azure Automation
 description: A Change Tracking megoldás segítséget nyújt a környezetében előforduló szoftverek és Windows-szolgáltatások változásainak azonosításához.
 services: automation
 ms.subservice: change-inventory-management
-ms.date: 04/29/2019
+ms.date: 01/28/2019
 ms.topic: conceptual
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7dce249a3e1e13fc9d7d2a962e7f056c803eb23e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 83babd65fdf22ab40b0137d93a1cbe7f1fd7ff04
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75418750"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844802"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>A környezet változásainak követése a Change Tracking megoldással
 
-Ez a cikk segítséget nyújt a Change Tracking megoldás használatában a környezet változásainak egyszerű azonosításához. A megoldás nyomon követi a Windows-és Linux-szoftverek, a Windows-és Linux-fájlok, a Windows-beállításkulcsok, a Windows-szolgáltatások és a Linux-démonok változásait. A konfigurációs változások azonosítása segíthet a működési problémák megoldásában.
+Ez a cikk segítséget nyújt a Change Tracking megoldás használatában a környezet változásainak egyszerű azonosításához. A megoldás a következő konfigurációs módosításokat követi nyomon a működési problémák azonosításához:
+
+- Windows-szoftver
+- Linuxos szoftverek (csomagok)
+
+    >[!NOTE]
+    >Change Tracking csak a Distribution Package Managerrel felügyelt szoftvereket követi nyomon.
+
+- Windows-és Linux-fájlok
+- Windows-beállításkulcsok
+- Windows-szolgáltatások
+- Linux-démonok
 
 A felügyelt kiszolgálókon a telepített szoftverek, a Windows-szolgáltatások, a Windows-beállításjegyzék és a fájlok, valamint a Linux-démonok módosításai a felhőben a Azure Monitor szolgáltatásba kerülnek feldolgozásra. A felhőszolgáltatás egy logikát alkalmaz a kapott adatokon, és rögzíti azokat. A Change Tracking irányítópulton található információk használatával egyszerűen megtekintheti a kiszolgálói infrastruktúrában végrehajtott módosításokat.
 
@@ -159,6 +169,8 @@ Az Change Tracking-megoldás jelenleg nem támogatja a következő elemeket:
 
 * Rekurzió a Windows beállításjegyzékének nyomon követéséhez
 * Hálózati fájlrendszerek
+* A különböző telepítési módszerek nincsenek nyomon követve
+* a *. exe fájlok nincsenek nyomon követve a Windows rendszerben
 
 Egyéb korlátozások:
 
@@ -241,7 +253,7 @@ A beállításkulcsok változásainak figyelése az a bővíthetőségi pontok k
 
 A következő címek megadása kifejezetten a Change Tracking. Az ezekkel a címekkel folytatott kommunikáció az 443-as porton keresztül történik.
 
-|Azure Public  |Azure Government  |
+|Nyilvános Azure  |Azure Government  |
 |---------|---------|
 |*.ods.opinsights.azure.com     |*. ods.opinsights.azure.us         |
 |*.oms.opinsights.azure.com     | *. oms.opinsights.azure.us        |
@@ -264,7 +276,7 @@ Ha egy módosításra vagy eseményre kattint, megjelenik a változással kapcso
 
 A portálon megjelenő részletek mellett a keresések a naplókon is elvégezhető. Nyissa meg a **change Tracking** lapot, és kattintson a **log Analytics**lehetőségre, amely megnyitja a **naplók** lapot.
 
-### <a name="sample-queries"></a>Mintalekérdezések
+### <a name="sample-queries"></a>Példák a lekérdezésekre
 
 A következő táblázat a megoldás által gyűjtött változási rekordokra vonatkozó példákat tartalmaz:
 

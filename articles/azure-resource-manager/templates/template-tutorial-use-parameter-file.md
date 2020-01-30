@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: abafa00febe0431acf5c678cc179c6c114fa9179
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 6a12d92c0cfb9d86ebf4c335c351944997f79b4e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472372"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773151"
 ---
 # <a name="tutorial-use-parameter-files-to-deploy-your-resource-manager-template"></a>Oktatóanyag: paraméterek használata a Resource Manager-sablon üzembe helyezéséhez
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 A sablon számos, az üzembe helyezés során megadható paramétert tartalmaz. Az előző oktatóanyag végén a sablon a következőképpen néz ki:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.json":::
 
 Ez a sablon jól működik, de most egyszerűen kezelheti a sablonhoz megadott paramétereket.
 
@@ -36,13 +36,13 @@ A paraméter fájljai a sablonhoz hasonló struktúrával rendelkező JSON-fájl
 
 A VS Code-ban hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. dev. JSON**néven.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.dev.json":::
 
 Ez a fájl a fejlesztési környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_LRSt használ a Storage-fiókhoz, az erőforrásokat pedig **fejlesztői** előtaggal látja el, és beállítja a **környezeti** címkét a **dev**értékre.
 
 Ismét hozzon létre egy új fájlt a következő tartalommal. Mentse a fájlt a **azuredeploy. Parameters. prod. JSON**néven.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-tags/azuredeploy.parameters.prod.json":::
 
 Ez a fájl az éles környezethez tartozó paraméter-fájl. Figyelje meg, hogy Standard_GRSt használ a Storage-fiókhoz, és megnevezi az erőforrásokat a **contoso** előtaggal, és beállítja a környezeti címkét az **éles** **környezetben** . Valós éles környezetben érdemes lehet olyan app Service-t használni, amely nem ingyenes, de továbbra is ezt az SKU-t fogjuk használni ehhez az oktatóanyaghoz.
 

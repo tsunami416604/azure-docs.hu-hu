@@ -4,12 +4,12 @@ description: Kiszolgáló nélküli Python-kód létrehozása és üzembe helyez
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 01c586c9077fd8cf244d7e26fe55252cc455c6fb
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710911"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845508"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Gyors útmutató: HTTP által aktivált Python-függvény létrehozása az Azure-ban
 
@@ -207,7 +207,7 @@ A függvény kódjának az Azure-ba történő üzembe helyezéséhez három er�
 
 Ezeket az elemeket az Azure CLI-parancsok használatával hozhatja létre. Az egyes parancsok a JSON-kimenetet biztosítják a befejezés után.
 
-1. Ha még nem tette meg, jelentkezzen be az Azure-ba az az [login](/cli/azure/group#az-login) paranccsal:
+1. Ha még nem tette meg, jelentkezzen be az Azure-ba az az [login](/cli/azure/reference-index#az-login) paranccsal:
 
     ```azurecli
     az login

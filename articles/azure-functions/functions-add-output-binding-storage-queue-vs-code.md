@@ -3,12 +3,13 @@ title: Függvények összekapcsolhatók az Azure Storage-ba a Visual Studio Code
 description: Megtudhatja, hogyan adhat hozzá kimeneti kötést a függvények Azure Storage-várólistákhoz való összekapcsolásához a Visual Studio Code használatával.
 ms.date: 06/25/2019
 ms.topic: quickstart
-ms.openlocfilehash: baddb6f02fe3d9c66e3c52d826ffe70c151d313e
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+zone_pivot_groups: programming-languages-set-functions
+ms.openlocfilehash: 5b7d7be7854a216b7cb7b610ea6d51fdc496a93f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74227437"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845655"
 ---
 # <a name="connect-functions-to-azure-storage-using-visual-studio-code"></a>Függvények összekapcsolhatók az Azure Storage-ba a Visual Studio Code használatával
 
@@ -23,8 +24,13 @@ A legtöbb kötéshez olyan tárolt kapcsolati karakterlánc szükséges, amelye
 A cikk elindítása előtt a következő követelményeknek kell megfelelnie:
 
 * Telepítse az [Azure Storage-bővítményt a Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-azurestorage)-hoz.
+
 * Telepítse a [Azure Storage Explorer](https://storageexplorer.com/). Storage Explorer egy eszköz, amellyel megvizsgálhatja a kimeneti kötés által létrehozott üzenetsor-üzeneteket. A Storage Explorer macOS-, Windows-és Linux-alapú operációs rendszereken támogatott.
-* [A .net Core parancssori felülete eszközök](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x) telepítése (C# csak projektek).
+
+::: zone pivot="programming-language-csharp"
+* [A .net Core parancssori felülete eszközök](https://docs.microsoft.com/dotnet/core/tools/?tabs=netcore2x)telepítése.
+::: zone-end
+
 * Hajtsa végre a [Visual Studio Code](functions-create-first-function-vs-code.md)rövid útmutatójának 1. részében ismertetett lépéseket. 
 
 Ez a cikk azt feltételezi, hogy már be van jelentkezve az Azure-előfizetésbe a Visual Studio Code-ból. `Azure: Sign In` futtatásával a parancssorból is bejelentkezhet. 
@@ -46,49 +52,162 @@ Az [előző](functions-create-first-function-vs-code.md)rövid útmutatóban lé
 
 Mivel a várólista-tároló kimeneti kötését használja, a projekt futtatása előtt telepítenie kell a Storage-kötések bővítményt. 
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-extension-bundles](../../includes/functions-extension-bundles.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 A HTTP-és időzítő-eseményindítók kivételével a kötések kiterjesztési csomagként vannak implementálva. Futtassa a következő [DotNet-csomag hozzáadása](/dotnet/core/tools/dotnet-add-package) parancsot a terminál ablakban a tárolási bővítmény csomagjának a projekthez való hozzáadásához.
 
 ```bash
 dotnet add package Microsoft.Azure.WebJobs.Extensions.Storage --version 3.0.4
 ```
----
+
+::: zone-end
+
 Most hozzáadhatja a tárolási kimeneti kötést a projekthez.
 
 ## <a name="add-an-output-binding"></a>Kimeneti kötés hozzáadása
 
 A functions szolgáltatásban minden típusú kötéshez szükség van egy `direction`, `type`ra és egy egyedi `name`ra, amelyet a function. JSON fájlban kell meghatározni. Az attribútumok definiálásának módja a Function alkalmazás nyelvétől függ.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript,programming-language-typescript,programming-language-python,programming-language-powershell"
 
 [!INCLUDE [functions-add-output-binding-json](../../includes/functions-add-output-binding-json.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library](../../includes/functions-add-storage-binding-csharp-library.md)]
 
----
+::: zone-end
 
 ## <a name="add-code-that-uses-the-output-binding"></a>Kimeneti kötést használó kód hozzáadása
 
 A kötés meghatározása után a kötés `name` használhatja a függvény aláírása attribútumként való eléréséhez. Kimeneti kötés használatával nem szükséges az Azure Storage SDK-kód használata hitelesítéshez, üzenetsor-hivatkozás beszerzése vagy az adatírás. A functions futtatókörnyezet és a várólista kimeneti kötése elvégzi ezeket a feladatokat.
 
-# <a name="javascripttabnodejs"></a>[JavaScript](#tab/nodejs)
+::: zone pivot="programming-language-javascript"
 
 [!INCLUDE [functions-add-output-binding-js](../../includes/functions-add-output-binding-js.md)]
 
-# <a name="ctabcsharp"></a>[C\#](#tab/csharp)
+::: zone-end
+
+::: zone pivot="programming-language-typescript"
+
+Vegyen fel egy olyan kódot, amely a `msg` kimeneti kötési objektumot használja `context.bindings` egy üzenetsor-üzenet létrehozásához. Adja hozzá ezt a kódot a `context.res` utasítás előtt.
+
+```typescript
+// Add a message to the Storage queue.
+context.bindings.msg = "Name passed to the function: " + name;
+```
+
+Ezen a ponton a függvénynek a következőképpen kell kinéznie:
+
+```javascript
+import { AzureFunction, Context, HttpRequest } from "@azure/functions"
+
+const httpTrigger: AzureFunction = async function (context: Context, req: HttpRequest): Promise<void> {
+    context.log('HTTP trigger function processed a request.');
+    const name = (req.query.name || (req.body && req.body.name));
+
+    if (name) {
+        // Add a message to the Storage queue.
+        context.bindings.msg = "Name passed to the function: " + name; 
+        // Send a "hello" response.
+        context.res = {
+            // status: 200, /* Defaults to 200 */
+            body: "Hello " + (req.query.name || req.body.name)
+        };
+    }
+    else {
+        context.res = {
+            status: 400,
+            body: "Please pass a name on the query string or in the request body"
+        };
+    }
+};
+
+export default httpTrigger;
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+Vegyen fel olyan kódot, amely a `Push-OutputBinding` parancsmagot használja, hogy szöveget írjon a várólistához a `msg` kimeneti kötés használatával. Adja hozzá ezt a kódot, mielőtt beállítja az OK állapotot a `if` utasításban.
+
+```powershell
+# Write the $name value to the queue.
+$outputMsg = "Name passed to the function: $name"
+Push-OutputBinding -name msg -Value $outputMsg
+```
+
+Ezen a ponton a függvénynek a következőképpen kell kinéznie:
+
+```powershell
+using namespace System.Net
+
+# Input bindings are passed in via param block.
+param($Request, $TriggerMetadata)
+
+# Write to the Azure Functions log stream.
+Write-Host "PowerShell HTTP trigger function processed a request."
+
+# Interact with query parameters or the body of the request.
+$name = $Request.Query.Name
+if (-not $name) {
+    $name = $Request.Body.Name
+}
+
+if ($name) {
+    # Write the $name value to the queue.
+    $outputMsg = "Name passed to the function: $name"
+    Push-OutputBinding -name msg -Value $outputMsg
+
+    $status = [HttpStatusCode]::OK
+    $body = "Hello $name"
+}
+else {
+    $status = [HttpStatusCode]::BadRequest
+    $body = "Please pass a name on the query string or in the request body."
+}
+
+# Associate values to output bindings by calling 'Push-OutputBinding'.
+Push-OutputBinding -Name Response -Value ([HttpResponseContext]@{
+    StatusCode = $status
+    Body = $body
+})
+```
+
+::: zone-end
+
+::: zone pivot="programming-language-python"
+
+[!INCLUDE [functions-add-output-binding-python](../../includes/functions-add-output-binding-python.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-csharp"
 
 [!INCLUDE [functions-add-storage-binding-csharp-library-code](../../includes/functions-add-storage-binding-csharp-library-code.md)]
 
----
+::: zone-end
+
+::: zone pivot="programming-language-csharp,programming-language-javascript,programming-language-python"
 
 [!INCLUDE [functions-run-function-test-local-vs-code](../../includes/functions-run-function-test-local-vs-code.md)]
+
+::: zone-end
+
+::: zone pivot="programming-language-powershell"
+
+[!INCLUDE [functions-run-function-test-local-vs-code-ps](../../includes/functions-run-function-test-local-vs-code-ps.md)]
+
+::: zone-end
 
 A **rendszer létrehoz** egy új üzenetsor-várólistát a Storage-fiókban a functions futtatókörnyezetben a kimeneti kötés első használatakor. A Storage Explorer segítségével ellenőrizheti, hogy a várólista létrejött-e az új üzenettel együtt.
 
@@ -112,7 +231,7 @@ Miután sikeresen bejelentkezett a fiókjába, megjelenik a fiókjához társít
 
 1. Bontsa ki az **Üzenetsorok** csomópontot, majd válassza ki az **outqueue** nevű üzenetsort. 
 
-   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett `name`Azure értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
+   Az üzenetsor tartalmazza az üzenetet, amelyet az üzenetsor kimeneti kötése létrehozott a HTTP által aktivált függvény futtatásakor. Ha az alapértelmezett *Azure*`name` értékkel hívta meg a függvényt, az üzenetsorban található üzenet a következő lesz: *A függvénynek átadott név: Azure*.
 
     ![Üzenetsor-üzenet látható Azure Storage Explorer](./media/functions-add-output-binding-storage-queue-vs-code/function-queue-storage-output-view-queue.png)
 
@@ -140,27 +259,13 @@ Az *erőforrások* kifejezés az Azure-ban például függvényalkalmazásokra, 
 
 E rövid útmutatók elvégzéséhez erőforrásokat hozott létre. [Fiókjának állapotától](https://azure.microsoft.com/account/) és a [szolgáltatási díjszabástól](https://azure.microsoft.com/pricing/) függően lehetséges, hogy az erőforrások használata díjköteles. Ha már nincs szüksége ezekre az erőforrásokra, a következőképpen törölheti őket:
 
-1. A Visual Studio Code-ban nyomja le az F1 billentyűt a parancs paletta megnyitásához. A parancs palettáján keresse meg és válassza ki `Azure Functions: Open in portal`.
-
-1. Válassza ki a Function alkalmazást, és nyomja le az ENTER billentyűt. Megnyílik a Function app (alkalmazás) lap a [Azure Portal](https://portal.azure.com).
-
-1. Az **Áttekintés** lapon válassza ki az elnevezett hivatkozást az **erőforráscsoport**területen.
-
-    ![Válassza ki az erőforráscsoportot, amelyet törölni kíván a függvényalkalmazás oldaláról.](./media/functions-add-output-binding-storage-queue-vs-code/functions-app-delete-resource-group.png)
-
-1. Az **Erőforráscsoport** oldalon tekintse át a csoportban lévő erőforrások listáját, és győződjön meg arról, hogy a törölni kívánt elemek szerepelnek benne.
- 
-1. Válassza az **Erőforráscsoport törlése** elemet, majd kövesse az utasításokat.
-
-   A törlés eltarthat néhány percig. Amint a művelet befejeződött, néhány másodpercre egy értesítés jelenik meg. Az értesítést úgy is megtekintheti, ha kiválasztja a harang ikont az oldal tetején.
+[!INCLUDE [functions-cleanup-resources-vs-code.md](../../includes/functions-cleanup-resources-vs-code.md)]
 
 ## <a name="next-steps"></a>Következő lépések
 
-Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. További információ a függvények fejlesztéséről: [Azure functions fejlesztése a Visual Studio Code használatával](functions-develop-vs-code.md).
-
-Ezután engedélyezze Application Insights figyelését a Function alkalmazáshoz:
+Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Ezután további információt a függvények a Visual Studio Code használatával történő fejlesztéséről a következő témakörben olvashat:
 
 > [!div class="nextstepaction"]
-> [Application Insights-integráció engedélyezése](functions-monitoring.md#manually-connect-an-app-insights-resource)
+> [Azure Functions fejlesztése a Visual Studio Code használatával](functions-develop-vs-code.md)
 
 [Azure Storage Explorer]: https://storageexplorer.com/

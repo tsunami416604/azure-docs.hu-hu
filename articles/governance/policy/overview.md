@@ -3,12 +3,13 @@ title: Az Azure szabályzatának áttekintése
 description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatdefiníciókat hozhat létre, rendelhet hozzá és kezelhet az Azure-környezetben.
 ms.date: 11/25/2019
 ms.topic: overview
-ms.openlocfilehash: a7cc5ebca74e249057d159334e4207a3efca37f5
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 9babfd52071ed7d033761802f696c3b6021287af
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885466"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846047"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
 
@@ -16,9 +17,9 @@ A szabályozás azt ellenőrzi, hogy a szervezet hatékony és hatékony haszná
 
 A cégben jelentős mennyiségű, láthatóan megoldhatatlan informatikai probléma jelentkezik? A hatékony informatikai szabályozás stratégiai szinten kezeli a kezdeményezések tervezését és a prioritások meghatározását a problémák kezelése és megelőzése érdekében. Ennek a stratégiai szükségletnek az a része, ahol a Azure Policy bekerül.
 
-Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatokat hozhat létre, rendelhet hozzá és kezelhet. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. Az Azure Policy úgy tesz eleget ezeknek az elvárásoknak, hogy kiértékeli, megfelelnek-e az erőforrások a hozzájuk rendelt szabályzatoknak. A Azure Policy által tárolt összes adatok titkosítva maradnak.
+Az Azure Policy az Azure egy szolgáltatása, amelynek használatával szabályzatokat hozhat létre, rendelhet hozzá és kezelhet. A szabályzatok különböző szabályokat és hatásokat kényszerítenek ki az erőforrásokon, hogy azok megfeleljenek a vállalati szabványoknak és szolgáltatói szerződéseknek. A Azure Policy megfelel ennek az igénynek, ha kiértékeli az erőforrásokat, és nem felel meg a hozzárendelt házirendeknek. A Azure Policy által tárolt összes adatok titkosítva maradnak.
 
-Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos méretű virtuálisgép-termékváltozatot engedélyez a környezetben. Ennek a szabályzatnak a bevezetése után a rendszer kiértékeli, hogy az új és meglévő erőforrások megfelelnek-e annak. A megfelelő típusú szabályzattal biztosítható a meglévő erőforrások megfelelősége. A dokumentáció későbbi részében részletesebben ismertetjük a szabályzatok létrehozásával és megvalósításával Azure Policy.
+Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos méretű virtuálisgép-termékváltozatot engedélyez a környezetben. A szabályzat megvalósítása után az új és a meglévő erőforrások megfelelőségét értékeli ki a rendszer. A megfelelő típusú házirenddel a meglévő erőforrások megfelelősége is beállítható. A dokumentáció későbbi részében részletesebben ismertetjük a szabályzatok létrehozásával és megvalósításával Azure Policy.
 
 > [!IMPORTANT]
 > Az Azure Policy megfelelőségértékelése mostantól tarifacsomagtól függetlenül minden hozzárendeléshez elérhető. Ha a hozzárendeléseknél nem láthatók a megfelelőségi adatok, győződjön meg róla, hogy az előfizetés regisztrálva van a Microsoft.PolicyInsights erőforrás-szolgáltatón.
@@ -27,7 +28,7 @@ Például rendelkezhet egy olyan szabályzattal, amely csak bizonyos méretű vi
 
 ## <a name="how-is-it-different-from-rbac"></a>Mennyiben különbözik ez az RBAC-től?
 
-A Azure Policy és a szerepköralapú hozzáférés-vezérlés (RBAC) között van néhány lényeges különbség. Az RBAC a különféle hatókörű felhasználói műveletekre összpontosít. Lehet, hogy hozzáadva lesz egy erőforráscsoport közreműködői szerepköréhez, amely lehetővé teszi, hogy módosítsa az adott erőforráscsoportot. A Azure Policy az erőforrás tulajdonságaira koncentrál az üzembe helyezés során és a már meglévő erőforrások esetében. Az Azure Policy szabályozza az erőforrások típusához vagy helyéhez hasonló tulajdonságokat. A RBAC-től eltérően a Azure Policy egy alapértelmezett engedélyezési és explicit megtagadás rendszer.
+A Azure Policy és a szerepköralapú hozzáférés-vezérlés (RBAC) között van néhány lényeges különbség. Az RBAC a különféle hatókörű felhasználói műveletekre összpontosít. Lehet, hogy hozzáadva lesz egy erőforráscsoport közreműködői szerepköréhez, amely lehetővé teszi, hogy módosítsa az adott erőforráscsoportot. A Azure Policy az erőforrás tulajdonságaira koncentrál az üzembe helyezés során és a már meglévő erőforrások esetében. Azure Policy a vezérlők tulajdonságait, például az erőforrások típusait vagy helyét. A RBAC-től eltérően a Azure Policy egy alapértelmezett engedélyezési és explicit megtagadás rendszer.
 
 ### <a name="rbac-permissions-in-azure-policy"></a>RBAC-engedélyek az Azure Policyban
 
@@ -62,7 +63,7 @@ További, a szabályzatdefiníciók szerkezetéről szóló információkért l�
 
 ## <a name="policy-assignment"></a>Szabályzat-hozzárendelés
 
-A szabályzat-hozzárendelés egy olyan szabályzatdefiníció, amely egy adott hatókörön belül érvényes. Ez a hatókör bármi lehet egy [felügyeleti csoporttól](../management-groups/overview.md) egy erőforráscsoportig. A *hatókör* kifejezés az összes olyan erőforráscsoportra, előfizetésre vagy felügyeleti csoportra vonatkozik, amelyekhez a szabályzatdefiníció hozzá lett rendelve. A szabályzat-hozzárendeléseket az összes alárendelt erőforrás örökli. Ez a kialakítás azt jelenti, hogy az erőforráscsoporthoz alkalmazott szabályzat az adott erőforráscsoport erőforrásaira is vonatkozik. Azt is meg lehet azonban adni, hogy a szabályzat-hozzárendelés egy adott alhatókörre ne vonatkozzon.
+A szabályzat-hozzárendelés egy olyan szabályzatdefiníció, amely egy adott hatókörön belül érvényes. Ez a hatókör egy [felügyeleti csoportból](../management-groups/overview.md) egy adott erőforrásra terjedhet. A *hatókör* kifejezés az összes olyan erőforrásra, erőforrás-csoportra, előfizetésre vagy felügyeleti csoportra vonatkozik, amelyhez a házirend-definíció hozzá van rendelve. A szabályzat-hozzárendeléseket az összes alárendelt erőforrás örökli. Ez a kialakítás azt jelenti, hogy az erőforráscsoporthoz alkalmazott szabályzat az adott erőforráscsoport erőforrásaira is vonatkozik. Azt is meg lehet azonban adni, hogy a szabályzat-hozzárendelés egy adott alhatókörre ne vonatkozzon.
 
 Egy előfizetésre vonatkozóan megadhat például egy olyan szabályzatot, amely megakadályozza a hálózati erőforrások létrehozását, Kizárhatja az adott előfizetéshez tartozó erőforráscsoportot, amely a hálózati infrastruktúrához készült. Ezután hozzáférést biztosíthat ehhez a hálózati erőforrás-csoporthoz azokhoz a felhasználókhoz, akikkel megbízik a hálózati erőforrások létrehozásában.
 
@@ -74,7 +75,7 @@ További, a szabályzatdefiníciók és -hozzárendelések a portálon keresztü
 
 A szabályzatparaméterek leegyszerűsítik a szabályzatok kezelését, mert csökkentik a létrehozandó szabályzatdefiníciók számát. A szabályzatdefiníciók létrehozásakor megadhat paramétereket, amelyek általánosabb érvényűvé teszik a definíciót. Ezután az adott szabályzatdefiníciót különböző helyzetekben újra felhasználhatja, ha a szabályzatdefiníció hozzárendelésekor más és más értékeket ad meg. Megadhat például egy adott helykészletet egy előfizetéshez.
 
-A paraméterek meghatározása házirend-definíció létrehozásakor történik. A paraméterek a definiálásukkor kapnak egy nevet és esetleg egy értéket is. Például megadhat egy paramétert egy *hely* nevű szabályzathoz. Ezután a szabályzat hozzárendelésekor különböző értékeket adhat meg a paraméterhez, például *EastUS* vagy *WestUS*.
+A paraméterek meghatározása házirend-definíció létrehozásakor történik. Ha meghatároz egy paramétert, a név és opcionálisan egy érték adható meg. Például megadhat egy paramétert egy *hely* nevű szabályzathoz. Ezután a szabályzat hozzárendelésekor különböző értékeket adhat meg a paraméterhez, például *EastUS* vagy *WestUS*.
 
 A házirend-paraméterekkel kapcsolatos további információkért lásd: [definíciós struktúra – paraméterek](./concepts/definition-structure.md#parameters).
 
@@ -93,7 +94,7 @@ Egy ilyen kezdeményezés a következő szabályzatdefiníciókat tartalmazhatja
 
 ## <a name="initiative-assignment"></a>Kezdeményezési hozzárendelés
 
-A szabályzat-hozzárendelésekhez hasonlóan a kezdeményezési hozzárendelések olyan kezdeményezési definíciók, amelyek egy adott hatókörhöz vannak hozzárendelve. A kezdeményezési hozzárendeléseknek köszönhetően nem kell olyan sok kezdeményezési definíciót létrehozni az egyes hatókörökhöz. Ez a hatókör szintén bármi lehet egy felügyeleti csoporttól egy erőforráscsoportig.
+A szabályzat-hozzárendelésekhez hasonlóan a kezdeményezési hozzárendelések olyan kezdeményezési definíciók, amelyek egy adott hatókörhöz vannak hozzárendelve. A kezdeményezési hozzárendeléseknek köszönhetően nem kell olyan sok kezdeményezési definíciót létrehozni az egyes hatókörökhöz. Ez a hatókör egy felügyeleti csoporttól egy adott erőforrásra is terjedhet.
 
 Minden kezdeményezés különböző hatókörökhöz rendelhető. Az egyik kezdeményezés az **előfizetéshez** és a **subscriptionB**is hozzárendelhető.
 

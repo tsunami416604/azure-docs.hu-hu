@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 28c171dfa067ec9b3eff2e0d7e5d5dd0a0c274c0
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 89101a96f4fc228e2d5c45d67e10b52ac5d8aa11
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472967"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773204"
 ---
 # <a name="tutorial-add-parameters-to-your-resource-manager-template"></a>Oktatóanyag: paraméterek hozzáadása a Resource Manager-sablonhoz
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-storage/azuredeploy.json":::
 
 Előfordulhat, hogy észrevette, hogy probléma merült fel ezzel a sablonnal. A Storage-fiók neve nem rögzített. Ezt a sablont csak akkor használhatja, ha minden alkalommal ugyanazt a Storage-fiókot telepíti. Egy másik névvel rendelkező Storage-fiók üzembe helyezéséhez létre kell hoznia egy új sablont, ami nyilvánvalóan nem praktikus módszer az üzemelő példányok automatizálására.
 
@@ -36,7 +36,7 @@ A sablon újrafelhasználhatóvé tételéhez vegyünk fel egy paramétert, amel
 
 Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json?range=1-26&highlight=4-10,15)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-name/azuredeploy.json" range="1-26" highlight="4-10,15":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 
@@ -80,7 +80,7 @@ Paraméterek megadásával testreszabhatja az üzemelő példányt úgy, hogy az
 
 Az előző sablon mindig Standard_LRS Storage-fiókot telepített. A környezettől függően előfordulhat, hogy a rugalmasságot a különböző SKU-ket érdemes telepíteni. Az alábbi példa bemutatja, hogyan adhat hozzá egy paramétert az SKU-hoz. Másolja a teljes fájlt, és illessze be a sablont.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json?range=1-40&highlight=10-23,32)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-sku/azuredeploy.json" range="1-40" highlight="10-23,32":::
 
 A **storageSKU** paraméter alapértelmezett értékkel rendelkezik. Ezt az értéket akkor kell használni, ha nincs megadva érték az üzemelő példányban. Emellett az engedélyezett értékek listája is szerepel. Ezek az értékek megegyeznek a Storage-fiók létrehozásához szükséges értékekkel. Nem szeretné, hogy a sablon felhasználói ne adjanak át olyan SKU-ket, amelyek nem működnek.
 

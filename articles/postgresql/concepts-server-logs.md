@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 10/25/2019
-ms.openlocfilehash: 9d71dd854c9a5059c2d0a48f57ad3ba5bb1eddf9
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2636e9a225002148e4cd79bb2176e0883aed623a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721319"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844938"
 ---
 # <a name="logs-in-azure-database-for-postgresql---single-server"></a>Naplók Azure Database for PostgreSQL – egyetlen kiszolgáló
 Azure Database for PostgreSQL lehetővé teszi a postgres szabványos naplófájljainak konfigurálását és elérését. A naplók használatával azonosíthatja, elháríthatja és kijavíthatja a konfigurációs hibákat és az optimális teljesítményt. A konfigurálható és elérhető naplózási információk közé tartoznak a hibák, a lekérdezési információk, az autoporszívós rekordok, a kapcsolatok és az ellenőrzőpontok. (A tranzakciós naplókhoz való hozzáférés nem érhető el).
@@ -69,7 +69,7 @@ Ha a PowerShell, a CLI vagy a REST API használatával szeretné engedélyezni a
 
 ### <a name="access-diagnostic-logs"></a>Diagnosztikai naplók elérése
 
-A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage esetében a séma a [naplók Storage-fiókja](../azure-monitor/platform/resource-logs-collect-storage.md) című cikkben található. Event Hubs esetében tekintse meg a [stream Azure-naplók](../azure-monitor/platform/resource-logs-stream-event-hubs.md) című cikket.
+A naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../azure-monitor/platform/resource-logs-collect-storage.md) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../azure-monitor/platform/resource-logs-stream-event-hubs.md) című cikket.
 
 Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../azure-monitor/log-query/log-query-overview.md) – áttekintés.
 
@@ -78,7 +78,7 @@ Az alábbi lekérdezésekből megpróbálkozhat a kezdéshez. A riasztásokat le
 Egy adott kiszolgáló összes postgres-naplójának keresése az elmúlt nap során
 ```
 AzureDiagnostics
-| where LogicalServerName_s == 'myservername'
+| where LogicalServerName_s == "myservername"
 | where TimeGenerated > ago(1d) 
 ```
 

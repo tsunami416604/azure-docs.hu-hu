@@ -10,12 +10,12 @@ ms.author: larryfr
 author: Blackmist
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: e3dcd9305a48b0d34f1bcbea64d6628efabc1235
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 8e1f144fdf94df445fb64b9b489cba1e9998f381
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546061"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76845616"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
 
@@ -58,7 +58,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 + <a href="#compute-targets">Számítási célok</a>
 + <a href="#datasets-and-datastores">Adathalmaz & adattárolók</a>
 + <a href="#endpoints">Végpontok</a>
-+ <a href="#environments">Környezetek</a>
++ <a href="#environments">Környezetben</a>
 + [Becslések](#estimators)
 + <a href="#experiments">Kísérletek</a>
 + <a href="#github-tracking-and-integration">Git-követés</a>
@@ -66,7 +66,7 @@ Ezeket az eszközöket Azure Machine Learning használhatja:
 + <a href="#logging">Logging</a>
 + <a href="#ml-pipelines">ML-folyamatok</a>
 + <a href="#models">Modellek</a>
-+ <a href="#runs">Futtatás</a>
++ <a href="#runs">Futtassa</a>
 + <a href="#run-configurations">Konfiguráció futtatása</a>
 + <a href="#snapshots">Pillanatkép</a>
 + <a href="#training-scripts">Betanítási szkript</a>
@@ -85,7 +85,7 @@ A tevékenységek az SDK-n vagy a webes felületen keresztül nyújthatnak érte
 ### <a name="compute-instance"></a>Számítási példány (előzetes verzió)
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
+> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) . 
 
 A **Azure Machine learning számítási példány** (korábban notebook VM) egy teljes körűen felügyelt felhőalapú munkaállomás, amely több eszközt és környezetet is tartalmaz a gépi tanuláshoz. A számítási példányok számítási célként használhatók a betanítási és a következtetési feladatokhoz. A nagyméretű feladatokhoz Azure Machine Learning a többcsomópontos skálázási képességekkel rendelkező [számítási fürtök](how-to-set-up-training-targets.md#amlcompute) jobb számítási célt választhatnak.

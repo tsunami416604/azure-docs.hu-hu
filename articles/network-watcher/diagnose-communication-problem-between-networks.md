@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Ebből az oktatóanyagból megtudhatja, hogyan diagnosztizálhatja a kommunikációs problémát egy helyszíni vagy más virtuális hálózathoz csatlakoztatott Azure-beli virtuális hálózat között egy Azure-beli virtuális hálózati átjárón keresztül, Network Watcher VPN-diagnosztika funkciójának használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: I need to determine why resources in a virtual network can't communicate with resources in a different network.
 ms.service: network-watcher
 ms.devlang: na
@@ -14,14 +12,14 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/27/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: e2ec59cf609fcde79d289e321331ca5018401a5e
-ms.sourcegitcommit: 4c831e768bb43e232de9738b363063590faa0472
+ms.openlocfilehash: 974e45b761fb45e4bc1c451fa6755e16cab49e11
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/23/2019
-ms.locfileid: "74419730"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834684"
 ---
 # <a name="tutorial-diagnose-a-communication-problem-between-networks-using-the-azure-portal"></a>Oktatóanyag: Hálózatok közötti kommunikációs probléma diagnosztizálása az Azure Portal használatával
 
@@ -47,13 +45,13 @@ A szkript nagyjából egy óra alatt hozza létre a VPN Gatewayt. A további lé
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 
 ## <a name="enable-network-watcher"></a>A Network Watcher engedélyezése
 
 Ha már engedélyezve van a Network Watcher az USA keleti régiójában, folytassa az [Átjáró diagnosztizálása](#diagnose-a-gateway) szakasszal.
 
-1. Válassza a portálon a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+1. A portálon válassza a **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
 2. Válassza a **Régiók** lehetőséget a kibontáshoz, majd válassza a **...** jelet az **USA keleti régiója** melletti jobb oldalon, az alábbi ábrán látható módon:
 
     ![A Network Watcher engedélyezése](./media/diagnose-communication-problem-between-networks/enable-network-watcher.png)
@@ -99,7 +97,7 @@ Az átjárók átjárókapcsolatokkal csatlakoznak más hálózatokhoz. Az átj�
 
     A VPN-diagnosztika megmutatja a hibát az **Állapot** lapon, és a **Művelet** lapon több javaslatot is tesz arra, hogy mi okozhatja a problémát.
 
-    Ha a tesztelt átjáró az [Előfeltételek](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) szakaszban leírt [szkript](#prerequisites) által üzembe helyezett átjáró volt, akkor az **Állapot** lapon szereplő probléma és a **Műveletek** lapon szereplő első két elem pontosan megegyezik a problémával. A szkript konfigurál egy helyőrző IP-címet (23.99.221.164) a helyszíni VPN Gateway eszköz számára.
+    Ha a tesztelt átjáró az [Előfeltételek](#prerequisites) szakaszban leírt [szkript](../vpn-gateway/scripts/vpn-gateway-sample-site-to-site-powershell.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) által üzembe helyezett átjáró volt, akkor az **Állapot** lapon szereplő probléma és a **Műveletek** lapon szereplő első két elem pontosan megegyezik a problémával. A szkript konfigurál egy helyőrző IP-címet (23.99.221.164) a helyszíni VPN Gateway eszköz számára.
 
     A probléma megoldásához ellenőrizze, hogy a helyszíni VPN Gateway [megfelelően van-e konfigurálva](../vpn-gateway/vpn-gateway-about-vpn-devices.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json), és módosítsa a szkript által a helyi hálózati átjáró számára konfigurált IP-címet a helyszíni VPN Gateway tényleges nyilvános címére.
 
@@ -111,7 +109,7 @@ Ha csak az oktatóanyag elvégzése érdekében hozott létre egy VPN Gatewayt a
 2. Válassza az **Erőforráscsoport törlése** elemet.
 3. Írja be a *TestRG1* nevet az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag a virtuális hálózati átjárókkal kapcsolatos problémák diagnosztizálását mutatta be. Érdemes naplózni a virtuális gépek bejövő és kimenő hálózati kommunikációját, hogy átnézhesse a naplókat rendellenességek után kutatva. Ennek megismeréséhez folytassa a következő oktatóanyaggal.
 

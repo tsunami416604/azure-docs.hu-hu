@@ -7,19 +7,19 @@ ms.service: event-grid
 ms.topic: overview
 ms.date: 10/22/2019
 ms.author: babanisa
-ms.openlocfilehash: e03429ed3df5bd3518d5e5194bd842b9a4f290ba
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: feac5891734731e6f7377750127958a40a815036
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72991945"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844656"
 ---
 # <a name="what-is-azure-event-grid-on-azure-iot-edge"></a>Mi a Azure IoT Edge Azure Event Grid?
-A Event Grid on IoT Edge az összes pub/Sub és Event-vezérelt forgatókönyv esetében az Azure Event Gridek hatékonyságát és rugalmasságát teszi lehetővé. Témákat hozhat létre, eseményeket tehet közzé, és előfizethet több célhelyre, függetlenül attól, hogy ugyanazon az eszközön, a többi peremhálózati eszközön vagy a felhőben található modulok.
+A Event Grid on IoT Edge a Azure Event Grid hatékonyságát és rugalmasságát teszi lehetővé a peremhálózat számára. Témákat hozhat létre, eseményeket tehet közzé, és előfizethet több célhelyre, függetlenül attól, hogy ugyanazon az eszközön, a többi peremhálózati eszközön vagy a felhőben található modulok.
 
-Ahogy a felhőben, a Event Grid a IoT Edge modulban a nagy léptékű események útválasztását, szűrését és megbízható kézbesítését kezeli. Az események szűrésével biztosíthatja, hogy csak a megfelelő eseményeket küldje el a rendszer a különböző eseménykezelőknek speciális sztring, numerikus és logikai szűrők használatával. Az újrapróbálkozási logika ellenőrzi, hogy az esemény eléri-e a cél modult, peremhálózati eszközt vagy felhőalapú szolgáltatást, még akkor is, ha a közzétételkor nem érhető el. Lehetővé teszi, hogy a Event Grid IoT Edge hatékony tárolási és továbbítási mechanizmusként használja.
+Ahogy a felhőben, a Event Grid a IoT Edge modulban a nagy léptékű események útválasztását, szűrését és megbízható kézbesítését kezeli. Az események szűrésével biztosíthatja, hogy csak a megfelelő eseményeket küldje el a rendszer a különböző eseménykezelőknek speciális sztring, numerikus és logikai szűrők használatával. Az újrapróbálkozási logika ellenőrzi, hogy az esemény eléri-e a célhelyet, még akkor is, ha a közzétételkor nem érhető el. Lehetővé teszi, hogy a Event Grid IoT Edge hatékony tárolási és továbbítási mechanizmusként használja.
 
-A Event Grid on IoT Edge a CloudEvents 1.0-s és az egyéni esemény-sémákat is támogatja. Emellett ugyanazokat a közzétételi és feliratkozási szemantikai, mint a felhőben Event Grid is támogatja az Azure-ban és a harmadik felekkel való egyszerű együttműködés érdekében.
+A Event Grid on IoT Edge a CloudEvents 1.0-s és az egyéni esemény-sémákat is támogatja. Emellett ugyanazokat a pub/sub-szemantikaokat támogatja, mint a felhőben Event Grid a könnyű együttműködési képesség érdekében.
 
 Ez a cikk áttekintést nyújt a IoT Edge Azure Event Gridról. A modul peremén való használatának lépésenkénti lépéseiért lásd: [közzététel, helyi előfizetés az eseményekre](pub-sub-events-webhook-local.md). 
 
@@ -29,7 +29,7 @@ Ez a rendszerkép néhány módszert mutat be a Event Grid IoT Edgeon való hasz
 
 ## <a name="when-to-use-event-grid-on-iot-edge"></a>Mikor kell használni a Event Gridt a IoT Edge
 
-A Event Grid on IoT Edge úgy lett felépítve, hogy egységes, könnyen használható és megbízható eseményvezérelt modellt biztosítson a peremhálózat és a felhő közötti eseményvezérelt architektúrák létrehozásához.
+A Event Grid on IoT Edge egy könnyen használható és megbízható eseményvezérelt modellt biztosít a peremhálózat és a felhő között.
 
 A Event Grid on IoT Edge egy szimmetrikus futtatókörnyezeti felülettel rendelkezik az Azure Cloud Service-hez, így bármikor használhatja ugyanazokat az eseményeket és API-hívásokat. Legyen szó akár a felhőben lévő pub/sub-ról, akár a két IoT Edge, akár a kettőről, a Event Gridon.
 
@@ -55,8 +55,12 @@ A Event Grid on IoT Edge úgy van felépítve, hogy a kívánt helyre küldjön 
 
 * Egyéb modulok, például a IoT Hub, a functions és az egyéni modulok
 * Egyéb peremhálózati eszközök
-* A felhőben üzemeltetett szolgáltatások, beleértve a Azure Event Grid és Azure Functions
-* Webhook
+* Webhookok
+* Azure Event Grid Cloud Service
+* Azure Event Hubs-eseményközpontok
+* Service Bus által kezelt üzenetsorok
+* Service Bus-üzenettémák
+* Tárolási várólisták
 
 ## <a name="supported-environments"></a>Támogatott környezetek
 Jelenleg a Windows 64 bites, a Linux 64 bites és az ARM 32-bites környezetek támogatottak.

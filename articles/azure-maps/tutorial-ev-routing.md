@@ -9,20 +9,20 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.custom: mvc
-ms.openlocfilehash: f45859370ae178fb186399fdd2648bf37f0985aa
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: dfc9c045af5347ebd3f15df48d5a5756dd2a9e05
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910904"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844751"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
 
-Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezekkel az API-kkal a fejlesztők, a vállalatok és az ISV-k létrehozhatnak helyet támogató alkalmazásokat és IoT, mobilitási, logisztikai és Asset-követési megoldásokat. 
+Azure Maps a térinformatikai szolgáltatási API-k portfóliója, amelyek natív módon vannak integrálva az Azure-ba. Ezekkel az API-kkal a fejlesztők, a vállalatok és az ISV-k létrehozhatnak Location-kompatibilis alkalmazásokat, IoT, mobilitási, logisztikai és Asset Tracking megoldásokat. 
 
 A Azure Maps REST API-k olyan nyelvekről hívhatók, mint például a Python és az R a térinformatikai adatok elemzésének és a gépi tanulási forgatókönyvek engedélyezéséhez. Azure Maps az [útválasztási API](https://docs.microsoft.com/rest/api/maps/route) -k robusztus készletét kínálja, amelyek lehetővé teszik a felhasználók számára az útvonalak kiszámítását több adatpont között. A számítások különböző feltételeken, például járműtípuson vagy elérhető területen alapulnak. 
 
-Ebben az oktatóanyagban egy olyan forgatókönyvet ismertetünk, amely segít egy olyan illesztőprogramban, amelynek az elektromos járművek akkumulátorának töltöttsége alacsony, hogy megkeresse a legközelebbi lehetséges díjszabási állomást a jármű helyétől függően.
+Ebben az oktatóanyagban egy olyan illesztőprogramot fog segíteni, amelynek az elektromos jármű akkumulátora alacsony. Az illesztőprogramnak meg kell keresnie a lehető legközelebb töltő állomást a jármű helyétől.
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -39,7 +39,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
 Az oktatóanyag elvégzéséhez először létre kell hoznia egy Azure Maps fiókot, és le kell kérnie az elsődleges kulcsot (előfizetési kulcs). 
 
-Azure Maps fiók előfizetésének S1 árképzési szinten való létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps) az S1 díjszabási csomaggal rendelkező Azure Maps fiók létrehozása című témakör utasításait. 
+Azure Maps fiók előfizetésének létrehozásához kövesse a [fiók létrehozása](quick-demo-map-app.md#create-an-account-with-azure-maps)című témakör utasításait. Az S1 árszintje Azure Maps fiók-előfizetésre van szüksége. 
 
 A fiók elsődleges előfizetési kulcsának beszerzéséhez kövesse az [elsődleges kulcs beolvasása](quick-demo-map-app.md#get-the-primary-key-for-your-account)című témakör utasításait.
 
@@ -47,7 +47,7 @@ A Azure Maps-hitelesítéssel kapcsolatos további információkért lásd: a [A
 
 ## <a name="create-an-azure-notebook"></a>Azure-beli jegyzetfüzet létrehozása
 
-Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Azure notebook-projekt létrehozásához és a Jupyter notebook-dokumentum feltöltéséhez tegye a következőket:
+Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-projektet, és le kell töltenie és futtatnia kell a Jupyter notebook-fájlt. A jegyzetfüzet-fájl Python-kódot tartalmaz, amely megvalósítja a forgatókönyvet ebben az oktatóanyagban. Hozzon létre egy Azure notebook-projektet, és töltse fel a Jupyter notebook-dokumentumot a következő lépésekkel:
 
 1. Lépjen [Azure Notebooks](https://notebooks.azure.com) , és jelentkezzen be. További információ: gyors útmutató [: bejelentkezés és felhasználói azonosító beállítása](https://docs.microsoft.com/azure/notebooks/quickstart-sign-in-azure-notebooks).
 1. A nyilvános profil lap tetején válassza a **saját projektek**lehetőséget.
@@ -64,7 +64,7 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-
 
 1. Kattintson a **Létrehozás** gombra.
 
-1. A projekt létrehozása után töltse le a [Jupyter notebook Document fájlt](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook). 
+1. A projekt létrehozása után töltse le ezt a [Jupyter notebook-dokumentumot](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/EVrouting.ipynb) a [Azure Maps Jupyter notebook-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook).
 
 1. A **saját projektek** lap projektek listájában válassza ki a projektet, majd válassza a **feltöltés** lehetőséget a Jupyter notebook-dokumentum fájljának feltöltéséhez. 
 
@@ -72,15 +72,15 @@ Ennek az oktatóanyagnak a követéséhez létre kell hoznia egy Azure notebook-
 
 1. Töltse fel a fájlt a számítógépről, majd válassza a **kész**lehetőséget.
 
-1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Válassza ki a fájlt, hogy Jupyter jegyzetfüzetként nyissa meg.
+1. Miután a feltöltés sikeresen befejeződött, a fájl megjelenik a projekt oldalon. Kattintson duplán a fájlra, hogy megnyissa Jupyter jegyzetfüzetként.
 
-A jegyzetfüzet-fájlban megvalósított funkciók jobb megismerése érdekében javasoljuk, hogy egyszerre egy cellában futtassa a kódot a jegyzetfüzetben. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
+A jegyzetfüzet-fájlban megvalósított funkciók jobb megismeréséhez futtassa a kódot a jegyzetfüzetben egyszerre egy cellában. A kódot minden cellában futtathatja, ha a **Futtatás** gombra kattint a notebook alkalmazás tetején.
 
   ![A Futtatás gomb](./media/tutorial-ev-routing/run.png)
 
 ## <a name="install-project-level-packages"></a>Projekt szintű csomagok telepítése
 
-A kód a jegyzetfüzetben való futtatásához a következő lépésekkel telepítse a csomagokat a projekt szintjén:
+A kód a jegyzetfüzetben való futtatásához a következő lépések végrehajtásával telepítse a csomagokat a projekt szintjén:
 
 1. Töltse le a [*követelmények. txt*](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook/blob/master/AzureMapsJupyterSamples/Tutorials/EV%20Routing%20and%20Reachable%20Range/requirements.txt) fájlt a [Azure Maps Jupyter jegyzetfüzet-tárházból](https://github.com/Azure-Samples/Azure-Maps-Jupyter-Notebook), majd töltse fel a projektbe.
 1. A projekt irányítópultján válassza a **projekt beállításai**lehetőséget. 
@@ -95,9 +95,9 @@ A kód a jegyzetfüzetben való futtatásához a következő lépésekkel telep�
 
 ## <a name="load-the-required-modules-and-frameworks"></a>A szükséges modulok és keretrendszerek betöltése
 
-Az összes szükséges modul és keretrendszer betöltéséhez futtassa a következő parancsfájlt:
+Az összes szükséges modul és keretrendszer betöltéséhez futtassa az alábbi szkriptet.
 
-```python
+```Python
 import time
 import aiohttp
 import urllib.parse
@@ -106,9 +106,9 @@ from IPython.display import Image, display
 
 ## <a name="request-the-reachable-range-boundary"></a>Elérhető tartomány határának kérése
 
-Ebben a példában egy Package Delivery Company rendelkezik néhány elektromos járművel a flottájában. A nap folyamán az elektromos járműveket újra kell számlázni anélkül, hogy vissza kellene térnie a tárházba. Minden alkalommal, amikor az aktuálisan hátralévő díj egy óránál kevesebb időt vesz igénybe (azaz az akkumulátor töltöttsége alacsony), a rendszer a rendelkezésre álló tartományon belüli töltőállomásokon keres, és az adott tartományhoz tartozó határokra vonatkozó információkat keresi meg. 
+A Package Delivery Company rendelkezik néhány elektromos járművel a flottájában. A nap folyamán az elektromos járműveket újra kell számlázni anélkül, hogy vissza kellene térnie a tárházba. Minden alkalommal, amikor a fennmaradó díj egy óránál kevesebb időt vesz igénybe, megkeresi azokat a díjszabási állomásokat, amelyek egy elérhető tartományon belül vannak. A díjszabást alapvetően akkor érdemes megkeresni, ha az akkumulátor töltöttsége alacsony. Emellett a díjszabási állomások ezen tartományához tartozó határokra vonatkozó információkat is megkapja. 
 
-Mivel a vállalat inkább olyan útvonalakat használ, amelyeknek a gazdaságosság és a sebesség egyensúlyát igénylik, a kért routeType *Eco*. A következő parancsfájl meghívja a Azure Maps útválasztási szolgáltatáshoz tartozó [Route Range API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) -t a jármű felhasználási modelljének paramétereinek használatával. A szkript ezután elemzi a választ, hogy létrehoz egy geojson formátumú sokszög objektumot, amely az autó maximálisan elérhető tartományát jelöli.
+Mivel a vállalat inkább olyan útvonalakat használ, amelyeknek a gazdaságosság és a sebesség egyensúlyát igénylik, a kért routeType *Eco*. A következő parancsfájl meghívja a Azure Maps útválasztási szolgáltatás [lekérési Route Range API](https://docs.microsoft.com/rest/api/maps/route/getrouterange) -t. Paramétereket használ a jármű felhasználási modelljéhez. A szkript ezután elemzi a választ, hogy létrehoz egy geojson formátumú sokszög objektumot, amely az autó maximálisan elérhető tartományát jelöli.
 
 Az elektromos jármű elérhető tartományának határainak meghatározásához futtassa a szkriptet a következő cellában:
 
@@ -173,7 +173,7 @@ for loc in range(len(searchPolyResponse["results"])):
 
 ## <a name="upload-the-reachable-range-and-charging-points-to-azure-maps-data-service"></a>A elérhető tartomány és a töltési pontok feltöltése Azure Maps adatszolgáltatásba
 
-Szeretné megjeleníteni az elektromos jármű maximálisan elérhető tartományához tartozó díjszabási állomásokat és határokat. Ehhez töltse fel a határokat és az állomások adatait geojson-objektumokként az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)használatával Azure Maps adatszolgáltatásba. 
+A térképen a díjszabási állomásokat és a határt szeretné megjeleníteni az elektromos jármű maximálisan elérhető tartománya számára. Ehhez töltse fel a határokat és az állomások adatait geojson objektumként Azure Maps adatszolgáltatásba. Használja az [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)-t. 
 
 A határ és a töltési pont adatok Azure Maps adatszolgáltatásba való feltöltéséhez futtassa a következő két cellát:
 
@@ -239,7 +239,7 @@ poiUdid = getPoiUdid["udid"]
 
 ## <a name="render-the-charging-stations-and-reachable-range-on-a-map"></a>A díjszabási állomások és a rendelkezésre álló tartomány leképezése
 
-Miután feltöltötte az adatokat az adatszolgáltatásba, a következő parancsfájl futtatásával hívja meg az Azure Maps [Térkép rendszerkép-szolgáltatását](https://docs.microsoft.com/rest/api/maps/render/getmapimage) , hogy megjelenítse a kitöltési pontokat és a maximálisan elérhető határt a statikus térképi képen:
+Az adatok az adatszolgáltatásba való feltöltése után hívja meg a Azure Maps [Térkép rendszerkép-szolgáltatását](https://docs.microsoft.com/rest/api/maps/render/getmapimage). Ezzel a szolgáltatással a következő parancsfájl futtatásával jelenítheti meg a kitöltési pontokat és a maximálisan elérhető határokat a statikus térképi képen:
 
 ```python
 # Get boundaries for the bounding box.
@@ -281,9 +281,9 @@ display(Image(poiRangeMap))
 
 ## <a name="find-the-optimal-charging-station"></a>Az optimális töltési állomás megkeresése
 
-Miután meghatározta az összes lehetséges díjszabási állomást a rendelkezésre álló tartományon belül, tudnia kell, hogy a lehető legkevesebb ideig legyenek elérhetők. 
+Először is meg szeretné határozni az összes lehetséges díjszabási állomást a rendelkezésre álló tartományon belül. Ezt követően tudni szeretné, hogy melyeket lehet a lehető legkevesebb idő alatt elérni. 
 
-A következő parancsfájl meghívja a Azure Maps [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)-t, amely visszaadja a megadott jármű helyének az utazási időt és a távolságot az egyes díjszabási állomások számára. A következő cellában lévő parancsfájl elemzi a választ, hogy megkeresse a legközelebbi elérhető díjszabási állomást az idő tekintetében.
+A következő parancsfájl meghívja a Azure Maps [Matrix Routing API](https://docs.microsoft.com/rest/api/maps/route/postroutematrix)-t. Visszaadja a megadott jármű helyét, az utazási időt, valamint az egyes díjszabási állomások távolságát. A következő cellában lévő parancsfájl elemzi a választ, hogy megkeresse a legközelebbi elérhető díjszabási állomást az idő tekintetében.
 
 A lehető legkevesebb idő alatt elérhető, legközelebb álló töltőállomás megtalálásához futtassa a szkriptet a következő cellában:
 
@@ -336,7 +336,7 @@ routeData = {
 
 ## <a name="visualize-the-route"></a>Az útvonal megjelenítése
 
-Az útvonal megjelenítéséhez először töltse fel az útválasztási adatok geojson objektumként Azure Maps adatszolgáltatásra a Azure Maps [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)használatával. Ezután meghívja a renderelési szolgáltatást, [lekérheti a Térkép képapi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)-ját, hogy megjelenítse az útvonalat a térképen, és láthatóvá tegye azt.
+Az útvonal megjelenítéséhez először fel kell töltenie az geojson objektumként az útvonal-adatok Azure Maps az adatszolgáltatásba. Ehhez használja a Azure Maps [Adatfeltöltő API](https://docs.microsoft.com/rest/api/maps/data/uploadpreview)-t. Ezt követően hívja meg a renderelési szolgáltatást, töltse le a [Térkép képapi](https://docs.microsoft.com/rest/api/maps/render/getmapimage)-ját, hogy megjelenítse az útvonalat a térképen, és jelenítse meg.
 
 A térképen megjelenített útvonalhoz tartozó rendszerkép beszerzéséhez futtassa a következő parancsfájlt:
 

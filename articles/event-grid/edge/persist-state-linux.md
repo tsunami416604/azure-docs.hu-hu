@@ -9,16 +9,18 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 3506399537fe2cb16014ceb3429bce5aeee8cb69
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 39b16c6cfd5b94d412827ed88197edbef2da1453
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100335"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844632"
 ---
 # <a name="persist-state-in-linux"></a>Állapot megőrzése Linuxon
 
-A Event Grid modulban létrehozott témaköröket és előfizetéseket alapértelmezés szerint a tároló fájlrendszerében tárolja a rendszer. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. Jelenleg csak a metaadatok maradnak meg. Az eseményeket a memóriában tárolja a rendszer. Ha Event Grid modul újratelepítése vagy újraindítása megtörtént, akkor a rendszer elveszi a nem kézbesítési eseményeket.
+A Event Grid modulban létrehozott témaköröket és előfizetéseket a rendszer alapértelmezés szerint a tároló fájlrendszerében tárolja. Az adatmegőrzés nélkül, ha a modul újratelepítése megtörténik, az összes létrehozott metaadat elvész. A központi telepítések és újraindítások közötti adatmegőrzéshez a tároló fájlrendszerén kívül kell megőriznie az adattárolást.
+
+Alapértelmezés szerint a rendszer csak a metaadatokat őrzi meg, az eseményeket pedig a memóriában tárolja a jobb teljesítmény érdekében. Az esemény-megőrzés engedélyezéséhez kövesse az események megőrzése szakaszt is.
 
 Ez a cikk azokat a lépéseket ismerteti, amelyekkel üzembe helyezheti a Event Grid modult a Linux rendszerű üzemelő példányokban.
 
@@ -61,7 +63,8 @@ A következő konfiguráció például azt eredményezi, hogy a kötet **egmetad
   ],
   "HostConfig": {
     "Binds": [
-      "egmetadataDbVol:/app/metadataDb"
+      "egmetadataDbVol:/app/metadataDb",
+      "egdataDbVol:/app/eventsDb"
     ],
     "PortBindings": {
       "4438/tcp": [
@@ -74,7 +77,7 @@ A következő konfiguráció például azt eredményezi, hogy a kötet **egmetad
 }
 ```
 
-Azt is megteheti, hogy létrehoz egy Docker-kötetet a Docker-ügyfél parancsaival. 
+Kötet csatlakoztatása helyett létrehozhat egy könyvtárat a gazdagépen, és csatlakoztathatja a könyvtárat.
 
 ## <a name="persistence-via-host-directory-mount"></a>Adatmegőrzés a gazdagép könyvtárának csatlakoztatása révén
 
@@ -138,7 +141,8 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
           ],
           "HostConfig": {
                 "Binds": [
-                  "/myhostdir:/app/metadataDb"
+                  "/myhostdir:/app/metadataDb",
+                  "/myhostdir2:/app/eventsDb"
                 ],
                 "PortBindings": {
                       "4438/tcp": [
@@ -153,3 +157,32 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
 
     >[!IMPORTANT]
     >Ne módosítsa a kötési érték második részét. Egy adott helyre mutat a modulon belül. A Linux Event Grid moduljának **/app/metadata**kell lennie.
+
+
+## <a name="persist-events"></a>Események megőrzése
+
+Az események megőrzésének engedélyezéséhez előbb engedélyeznie kell a metaadatok megőrzését a Volume Mount vagy a Host Directory Mount használatával a fenti fejezetek segítségével.
+
+Fontos tudnivalók a megőrzött eseményekről:
+
+* Az események megtartása esemény-előfizetések alapján engedélyezett, és a kötet vagy a könyvtár csatlakoztatása után is engedélyezve van.
+* Az esemény-megőrzés a létrehozáskor egy esemény-előfizetésen van konfigurálva, és az esemény-előfizetés létrehozása után nem módosítható. Az események megőrzésének váltásához törölnie kell, majd újra létre kell hoznia az esemény-előfizetést.
+* A megőrzött események szinte mindig lassabbak, mint a memóriabeli műveletekben, azonban a sebességbeli különbség nagymértékben függ a meghajtó jellemzőitől. A gyorsaság és a megbízhatóság közötti kompromisszum minden üzenetkezelő rendszerhez alkalmazkodik, de általában nagy léptékű észrevehető válik.
+
+Ha engedélyezni szeretné az esemény-megőrzést egy esemény-előfizetésben, állítsa a `persistencePolicy` `true`:
+
+ ```json
+        {
+          "properties": {
+            "persistencePolicy": {
+              "isPersisted": "true"
+            },
+            "destination": {
+              "endpointType": "WebHook",
+              "properties": {
+                "endpointUrl": "<your-webhook-url>"
+              }
+            }
+          }
+        }
+ ```

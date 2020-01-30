@@ -3,9 +3,7 @@ title: Azure Network Watcher | Microsoft Docs
 description: Megismerheti az Azure Network Watcher virtuális hálózatokban található erőforrásokra vonatkozó monitorozási, diagnosztikai, metrikai és naplózási funkcióit.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 Customer intent: As someone with basic Azure network experience, I want to understand how Azure Network Watcher can help me resolve some of the network-related problems I've encountered and provide insight into how I use Azure networking.
 ms.assetid: 14bc2266-99e3-42a2-8d19-bd7257fec35e
 ms.service: network-watcher
@@ -14,14 +12,14 @@ ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/24/2018
-ms.author: kumud
+ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: 45470733c9cfed104e39786be48a6edae20ad489
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645208"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844989"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
 
@@ -100,7 +98,7 @@ Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [
 Lehetősége van engedélyezni az Azure hálózati erőforrások (pl. hálózati biztonsági csoportok, nyilvános IP-címek, terheléselosztók, virtuális hálózati átjárók és alkalmazásátjárók) diagnosztikai naplózását. A *Diagnosztikai naplók* funkció egyetlen felületet biztosít, ahol engedélyezheti vagy letilthatja azon már meglévő hálózati erőforrások diagnosztikai naplóit, amelyek ilyen naplókat hoznak létre. A diagnosztikai naplókat olyan eszközökkel tekintheti meg, mint a Microsoft Power BI és a Azure Monitor naplók. Ha többet szeretne megtudni az Azure hálózati diagnosztikai naplók elemzéséről, tekintse meg [Az Azure hálózati megoldásait Azure monitor-naplókban](../azure-monitor/insights/azure-networking-analytics.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json).
 
 ## <a name="network-watcher-automatic-enablement"></a>Automatikus engedélyezés Network Watcher
-Amikor virtuális hálózatot hoz létre vagy módosít az előfizetésben, a Network Watcher automatikusan engedélyezve lesz a virtuális hálózat régiójában. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információ: [Network Watcher Create](network-watcher-create.md).
+Amikor létrehoz vagy frissít egy virtuális hálózatot az előfizetésében, Network Watcher automatikusan engedélyezve lesz a Virtual Network régiójában. A Network Warcher automatikus engedélyezése semmilyen hatással sincs az Ön erőforrásaira, sem a díjaikra. További információ: [Network Watcher Create](network-watcher-create.md).
 
 ## <a name="next-steps"></a>Következő lépések
 

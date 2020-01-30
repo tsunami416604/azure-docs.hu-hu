@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 169b0c8084259ac27b466dbfd3606e465da35d99
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: e403d690470f3c4f1d0c8e565e90641d9c114a80
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098625"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844544"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
 
@@ -59,11 +59,13 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
    * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Tároló-létrehozási beállítások**:
 
+   [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
+
     ```json
         {
           "Env": [
-            "inbound:clientAuth:clientCert:enabled=false",
-            "outbound:webhook:httpsOnly=false"
+            "inbound__clientAuth__clientCert__enabled=false",
+            "outbound__webhook__httpsOnly=false"
           ],
           "HostConfig": {
             "PortBindings": {
@@ -178,6 +180,8 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. Azure E
 ## <a name="create-an-event-subscription"></a>Esemény-előfizetés létrehozása
 
 Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést egy érdekes témakörhöz.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Hozzon létre egy előfizetés. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API-dokumentációt](api.md)
 
@@ -307,4 +311,5 @@ Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, előfizetést �
 - Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
 - Események továbbítása Azure Functions a felhőben az [oktatóanyag](pub-sub-events-webhook-cloud.md) követésével
 - [Reagálás Blob Storage eseményekre IoT Edge](react-blob-storage-events-locally.md)
+- [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)
 

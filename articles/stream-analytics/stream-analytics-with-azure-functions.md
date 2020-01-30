@@ -2,18 +2,17 @@
 title: Oktatóanyag – Azure Functions futtatása Azure Stream Analytics feladatokban
 description: Ebben az oktatóanyagban megtanulhatja, hogy hogyan konfigurálhatja az Azure Functionst a Stream Analytics-feladatok kimeneti fogadójaként.
 author: mamccrea
+ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: tutorial
 ms.custom: mvc
-ms.date: 06/05/2019
-ms.author: mamccrea
-ms.reviewer: mamccrea
-ms.openlocfilehash: 84df3edcebb1ca9f14a68125ae9793f004e56c4d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/27/2020
+ms.openlocfilehash: 1797654f290d751eb5c1cb65a77aaa7ca7a35aa1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369320"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772877"
 ---
 # <a name="tutorial-run-azure-functions-from-azure-stream-analytics-jobs"></a>Oktatóanyag: Azure Functions futtatása Azure Stream Analytics feladatokból 
 
@@ -51,7 +50,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
 
 ## <a name="create-a-function-in-azure-functions-that-can-write-data-to-azure-cache-for-redis"></a>Olyan függvény létrehozása Azure Functionsban, amely az Azure cache-be tud írni egy Redis
 
-1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ebből megtudhatja, hogyan hozhat létre függvényalkalmazást és egy [HTTP-eseményindítóval aktivált függvényt az Azure Functionsben](../azure-functions/functions-create-first-azure-function.md#create-function) CSharp nyelven.  
+1. Tekintse meg a Functions dokumentációjának [Függvényalkalmazás létrehozása](../azure-functions/functions-create-first-azure-function.md#create-a-function-app) című szakaszát. Ez a szakasz bemutatja, hogyan hozhat létre egy Function-alkalmazást és egy [http által aktivált függvényt Azure Functionsban](../azure-functions/functions-create-first-azure-function.md#create-function)a csharp nyelvének használatával.  
 
 2. Keresse meg a **run.csx** függvényt. Frissítse az alábbi kóddal. A **"\<Azure cache for Redis-kapcsolatok karakterláncának lecserélésekor itt\>"** az előző szakaszban lekért elsődleges Redis Azure cache-vel. 
 
@@ -149,7 +148,7 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
    |Importálási beállítás| A függvényt használhatja az aktuális előfizetésből, vagy megadhatja manuálisan a beállításokat, ha a függvény egy másik előfizetésben található. |
    |Függvényalkalmazás| A Functions-alkalmazás neve. |
    |Függvény| A függvény neve a Functions-alkalmazásban (a run.csx függvény neve).|
-   |Maximális kötegméret|Beállítja az egyes kimeneti kötegek maximális méretét bájtban elküldve a függvénynek. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB).|
+   |Maximális kötegméret|Beállítja az egyes kimeneti kötegek maximális méretét, amelyet a függvénynek bájtban kell elküldeni. Alapértelmezés szerint ez az érték 262 144 bájt (256 KB).|
    |Maximális kötegszám|A függvénybe küldött egyes kötegekben lévő események maximális számának megadására szolgál. Az alapértelmezett érték 100. Ez a tulajdonság nem kötelező.|
    |Jelmagyarázat|Más előfizetésből származó függvény használatát teszi lehetővé. A függvény eléréséhez adja meg a kulcs értékét. Ez a tulajdonság nem kötelező.|
 
@@ -187,13 +186,10 @@ Ez a szakasz azt mutatja be, hogyan konfigurálható egy Stream Analytics felada
    Ennek a parancsnak a megadott kulcshoz tartozó értéket kell kiírnia:
 
    ![Az Azure cache Redis kimenetének képernyőképe](./media/stream-analytics-with-azure-functions/image5.png)
-   
-## <a name="error-handling-and-retries"></a>Hibakezelés és újrapróbálkozások
-Ha hiba történik az események Azure Functionsbe való küldése során, a Stream Analytics újra megpróbálja végrehajtani a műveletet. Bizonyos hibák előfordulása esetén a rendszer nem próbálkozik újra. Ezek a következők:
 
- 1. HttpRequestExceptions
- 2. A kérelemegység túl nagy (413-as HTTP-hibakód)
- 3. ApplicationExceptions
+## <a name="error-handling-and-retries"></a>Hibakezelés és újrapróbálkozások
+
+Ha hiba történik az események Azure Functionsba való küldésekor, Stream Analytics újrapróbálkozik a legtöbb művelettel. A rendszer minden http-kivételt újrapróbálkozik, amíg a 413-es HTTP-hiba (az entitás túl nagy) kivételével sikertelen lesz. Az entitás túl nagy hibája olyan Adathiba, amely az [újrapróbálkozási vagy a eldobási szabályzat](stream-analytics-output-error-policy.md)hatálya alá esik.
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -210,7 +206,7 @@ Ha már nincs szükség rá, törölheti az erőforráscsoportot, a folyamatos �
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban létrehozott egy Azure-függvényt futtató egyszerű Stream Analytics-feladatot. A Stream Analytics-feladatokkal kapcsolatos további információkért folytassa a következő oktatóanyaggal:
+Ebben az oktatóanyagban létrehozott egy egyszerű Stream Analytics feladatot, amely egy Azure-függvényt futtat. A Stream Analytics-feladatokról a következő oktatóanyagban talál további információt:
 
 > [!div class="nextstepaction"]
 > [Felhasználói JavaScript-függvények futtatása Stream Analytics-feladatokban](stream-analytics-javascript-user-defined-functions.md)

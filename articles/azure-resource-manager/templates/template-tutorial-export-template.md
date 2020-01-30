@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 6c22a8e2b479ed7d3a225bc649d89f5302d0f536
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0680309b13bf4499f0d153f44e575c1762b54d79
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472575"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773175"
 ---
 # <a name="tutorial-use-exported-template-from-the-azure-portal"></a>Oktatóanyag: az exportált sablon használata a Azure Portal
 
@@ -26,17 +26,17 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/add-outputs/azuredeploy.json":::
 
 Ez a sablon jól működik a Storage-fiókok telepítéséhez, de érdemes lehet további erőforrásokat hozzáadni hozzá. Egy meglévő erőforrásból is exportálhat sablonokat, így gyorsan lekérheti a JSON-t az adott erőforráshoz.
 
 ## <a name="create-app-service-plan"></a>App Service-csomag létrehozása
 
 1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
-1. Válassza az **Erőforrás létrehozása** lehetőséget.
+1. Válassza **az erőforrás létrehozása**lehetőséget.
 1. A **Keresés a piactéren**mezőbe írja be **app Service csomagot**, majd válassza a **app Service tervet**.  Ne válassza ki a **app Service csomagot (klasszikus)**
 1. Kattintson a **Létrehozás** gombra.
-1. Adja meg a következőt:
+1. Be
 
     - **Előfizetés**: válassza ki az Azure-előfizetést.
     - **Erőforráscsoport**: válassza az **új létrehozása** lehetőséget, majd adjon meg egy nevet. Adjon meg egy másik erőforráscsoport-nevet, mint amelyet a jelen oktatóanyag-sorozatban használt.
@@ -76,7 +76,7 @@ Az alábbi példa kiemeli a sablon kiegészítéseit. Az exportált kódot és n
 
 Másolja a teljes fájlt, és cserélje le a sablont a tartalmára.
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json?range=1-77&highlight=28-31,50-69)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json" range="1-77" highlight="28-31,50-69":::
 
 ## <a name="deploy-template"></a>Sablon üzembe helyezése
 

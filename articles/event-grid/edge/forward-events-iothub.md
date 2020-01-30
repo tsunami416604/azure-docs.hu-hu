@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 073205b5bdc3f6de80bd7e347469c3f06aeb515b
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: d0034810ff86de2a40e275ca54a2f0f9cbc856c2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73098689"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76844700"
 ---
 # <a name="tutorial-forward-events-to-iothub"></a>Oktatóanyag: események továbbítása a IoTHub
 
@@ -81,6 +81,8 @@ Egy esemény kiadójaként létre kell hoznia egy Event Grid-témakört. A téma
 ## <a name="create-event-subscription"></a>Esemény-előfizetés létrehozása
 
 Az előfizetők regisztrálhatnak a témakörben közzétett eseményekre. Ha bármilyen eseményt szeretne kapni, létre kell hoznia egy Event Grid-előfizetést egy érdekes témakörben.
+
+[!INCLUDE [event-grid-deploy-iot-edge](../../../includes/event-grid-edge-persist-event-subscriptions.md)]
 
 1. Hozza létre a subscription4. JSON fájlt az alábbi tartalommal. A hasznos adatokkal kapcsolatos részletekért tekintse meg az [API dokumentációját](api.md) .
 
@@ -212,3 +214,4 @@ Ebben az oktatóanyagban létrehozott egy Event Grid-témakört, az Edge hub-el�
 * Event Grid modul megőrzésének beállítása [Linux](persist-state-linux.md) vagy [Windows](persist-state-windows.md) rendszeren
 * Az ügyfél-hitelesítés konfigurálásához kövesse a [dokumentációt](configure-client-auth.md)
 * Események továbbítása Azure Event Grid a felhőben az [oktatóanyag](forward-events-event-grid-cloud.md) követésével
+* [Témakörök és előfizetések figyelése a peremhálózat szélén](monitor-topics-subscriptions.md)
