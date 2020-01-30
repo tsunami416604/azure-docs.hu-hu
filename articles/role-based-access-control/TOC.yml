@@ -40,8 +40,6 @@
           href: role-definitions.md
         - name: Szerepkör-definíciók felsorolása
           href: role-definitions-list.md
-        - name: Beépített szerepkörök
-          href: built-in-roles.md
     - name: Szerepkör-hozzárendelések felsorolása
       items:
         - name: Portál
@@ -96,6 +94,8 @@
       href: troubleshooting.md
 - name: Referencia
   items:
+    - name: Beépített szerepkörök
+      href: built-in-roles.md
     - name: Erőforrás-szolgáltatói műveletek
       href: resource-provider-operations.md
     - name: RBAC-korlátozások

@@ -10,12 +10,12 @@ ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 11/22/2019
 ms.author: diberry
-ms.openlocfilehash: ae5e3481d51a27b05afdb334e6e04c785a68c01a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 664d6006ab78f91a8ed0e199cf78fae9512efd73
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447678"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843039"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
@@ -86,7 +86,7 @@ Ebben az eljárásban további kérdéseket is megadhat.
 
 ## <a name="add-metadata-to-filter-the-answers"></a>Metaadatok hozzáadása a válaszok szűréséhez
 
-Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalkalmazás szűrt válaszokat kér. Ezt a szűrőt az [első és a második rangsor](../concepts/knowledge-base.md#ranker-process) alkalmazása előtt alkalmazza a rendszer.
+Ha metaadatokat ad hozzá egy kérdéshez és a válaszhoz, akkor az ügyfélalkalmazás szűrt válaszokat kér. Ezt a szűrőt az [első és a második rangsor](../concepts/query-knowledge-base.md#ranker-process) alkalmazása előtt alkalmazza a rendszer.
 
 1. Adja hozzá a második kérdést és választ a metaadatok nélkül a rövid útmutató [első táblájából](#qna-table), majd folytassa a következő lépésekkel.
 

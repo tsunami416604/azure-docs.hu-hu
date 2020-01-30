@@ -9,15 +9,15 @@
 - name: Számítási feladatok
   items:
     - name: Red Hat
-      href: /redhat/redhat-overview.md
+      href: ./workloads/redhat/redhat-overview.md
     - name: Nagy teljesítményű feldolgozás
-      href: /hpc/overview.md
+      href: ./workloads/hpc/overview.md
     - name: SAP
-      href: /sap/get-started.md
+      href: ./workloads/sap/get-started.md
     - name: Oracle
-      href: /oracle/oracle-considerations.md
+      href: ./workloads/oracle/oracle-considerations.md
     - name: Nagyszámítógépes áthelyezés
-      href: /mainframe-rehosting/overview.md
+      href: ./workloads/mainframe-rehosting/overview.md
 - name: Klasszikus üzembe helyezések
   items:
     - name: Linux rendszerű virtuális gépek klasszikus üzembe helyezéssel
