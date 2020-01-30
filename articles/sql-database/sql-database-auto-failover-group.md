@@ -11,12 +11,12 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 1/05/2020
-ms.openlocfilehash: 7b45ddce0435a903c63855dea8a01353a7ab36ec
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9b838edea4b5f47fe57305c593944ef5fa93a63c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722543"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768667"
 ---
 # <a name="use-auto-failover-groups-to-enable-transparent-and-coordinated-failover-of-multiple-databases"></a>Automatikus feladatátvételi csoportok használata több adatbázis átlátható és koordinált feladatátvételének engedélyezéséhez
 
@@ -326,8 +326,8 @@ Ha [Virtual Network szolgáltatási végpontokat és szabályokat](sql-database-
 Ha az üzletmenet-folytonossági terv automatikus feladatátvételi csoportokkal való feladatátvételt igényel, akkor a hagyományos tűzfalszabályok használatával korlátozhatja az SQL-adatbázishoz való hozzáférést. Az automatikus feladatátvétel támogatásához kövesse az alábbi lépéseket:
 
 1. [Nyilvános IP-cím létrehozása](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address)
-2. [Hozzon létre egy nyilvános Load balancert](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-a-basic-load-balancer) , és rendelje hozzá a nyilvános IP-címet.
-3. [Hozzon létre egy virtuális hálózatot és a virtuális gépeket](../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-back-end-servers) az előtér-összetevőkhöz
+2. [Hozzon létre egy nyilvános Load balancert](../load-balancer/quickstart-load-balancer-standard-public-portal.md) , és rendelje hozzá a nyilvános IP-címet.
+3. [Hozzon létre egy virtuális hálózatot és a virtuális gépeket](../load-balancer/quickstart-load-balancer-standard-public-portal.md) az előtér-összetevőkhöz
 4. [Hozzon létre egy hálózati biztonsági csoportot](../virtual-network/security-overview.md) , és konfigurálja a bejövő kapcsolatokat.
 5. Győződjön meg arról, hogy a kimenő kapcsolatok az SQL [szolgáltatás címkével](../virtual-network/security-overview.md#service-tags)vannak megnyitva az Azure SQL Database-ben.
 6. Hozzon létre egy [SQL Database-tűzfalszabály](sql-database-firewall-configure.md) , amely engedélyezi a bejövő forgalmat az 1. lépésben létrehozott nyilvános IP-címről.

@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 12/24/2019
-ms.openlocfilehash: b68f19faa1542b873e90a4ce6d0426db7f3ff871
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.openlocfilehash: 30854382b5a6dfd0faabfc2f59340dc21518d6f2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76547302"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773290"
 ---
 # <a name="connect-computers-without-internet-access-by-using-the-log-analytics-gateway-in-azure-monitor"></a>Internet-hozzáférés nélküli számítógépek összekötése a Log Analytics átjáró használatával Azure Monitor
 
@@ -69,20 +69,20 @@ Az Log Analytics átjáró futtatására kijelölt számítógépeknek a követk
 
 A Log Analytics átjáró a következő nyelveken érhető el:
 
-- kínai (egyszerűsített)
-- kínai (hagyományos)
-- Cseh
-- Holland
+- Kínai (egyszerűsített)
+- Kínai (hagyományos)
+- cseh
+- holland
 - Angol
-- Francia
-- Német
+- francia
+- német
 - magyar
 - olasz
 - japán
 - koreai
 - lengyel
 - Portugál (brazíliai)
-- portugál (Portugália)
+- Portugál (portugáliai)
 - orosz
 - Spanyol (nemzetközi)
 
@@ -204,13 +204,13 @@ A Windows Server 2016 hálózati terheléselosztási fürt kialakításával és
 
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 
-A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása**című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-create-basic-load-balancer-portal.md)   
+A Azure Load Balancer megtervezéséhez és üzembe helyezéséhez tekintse meg a [Mi az a Azure Load Balancer?](../../load-balancer/load-balancer-overview.md)című témakört. Alapszintű terheléselosztó üzembe helyezéséhez kövesse az ebben a rövid útmutatóban ismertetett lépéseket, a **háttér-kiszolgálók létrehozása**című szakaszban ismertetett lépéseket [kizárva.](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)   
 
 > [!NOTE]
 > A Azure Load Balancer **alapszintű SKU**-val történő konfigurálásához az szükséges, hogy az Azure-beli virtuális gépek rendelkezésre állási csoportba tartozzanak. A rendelkezésre állási csoportokkal kapcsolatos további tudnivalókért lásd: [Windows rendszerű virtuális gépek rendelkezésre állásának kezelése az Azure-ban](../../virtual-machines/windows/manage-availability.md). Meglévő virtuális gépek rendelkezésre állási csoportba való felvételéhez tekintse meg [Azure Resource Manager virtuális gép rendelkezésre állási csoportjának beállítása](https://gallery.technet.microsoft.com/Set-Azure-Resource-Manager-f7509ec4)című témakört.
 > 
 
-A terheléselosztó létrehozása után létre kell hozni egy háttér-készletet, amely egy vagy több átjárókiszolgáló forgalmát osztja el. Kövesse a következő témakörben ismertetett lépéseket: a [terheléselosztó erőforrásainak létrehozása](../../load-balancer/quickstart-create-basic-load-balancer-portal.md#create-resources-for-the-load-balancer)szakasz.  
+A terheléselosztó létrehozása után létre kell hozni egy háttér-készletet, amely egy vagy több átjárókiszolgáló forgalmát osztja el. Kövesse a következő témakörben ismertetett lépéseket: a [terheléselosztó erőforrásainak létrehozása](../../load-balancer/quickstart-load-balancer-standard-public-portal.md)szakasz.  
 
 >[!NOTE]
 >Az állapot-mintavétel konfigurálásakor úgy kell konfigurálni, hogy az átjárókiszolgáló TCP-portját használja. Az állapotfigyelő szolgáltatás dinamikusan adja hozzá vagy távolítja el az átjáró-kiszolgálókat a terheléselosztó elforgatásával az állapot-ellenőrzésekre adott válasz alapján. 

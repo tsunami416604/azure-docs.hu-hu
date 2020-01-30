@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/09/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 259ce2b1881c31c2558539fed34513575d193a48
-ms.sourcegitcommit: 39da2d9675c3a2ac54ddc164da4568cf341ddecf
+ms.openlocfilehash: 9d96db5cf062da1b2e8badd80a9a00620b724fd4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73961987"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840417"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>A Azure Portal használatával hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C
 
@@ -37,7 +37,7 @@ Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. 
 
 ## <a name="create-a-consumer-user"></a>Fogyasztói felhasználó létrehozása
 
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com).
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. A **Kezelés** alatt válassza a **Felhasználókat**.
@@ -61,4 +61,4 @@ A felhasználók a törlést követő 30 napon belüli visszaállításával, il
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az automatikus felhasználói felügyeleti forgatókönyvek esetében például a felhasználók áttelepítése egy másik identitás-szolgáltatótól a Azure AD B2C könyvtárba [: Azure ad B2C: felhasználói áttelepítés](active-directory-b2c-user-migration.md).
+Az automatikus felhasználói felügyeleti forgatókönyvek esetében például a felhasználók áttelepítése egy másik identitás-szolgáltatótól a Azure AD B2C könyvtárba [: Azure ad B2C: felhasználói áttelepítés](user-migration.md).

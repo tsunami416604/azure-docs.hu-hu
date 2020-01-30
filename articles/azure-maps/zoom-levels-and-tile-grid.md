@@ -3,26 +3,26 @@ title: Nagyítási szintek és csempék rácsa | Microsoft Azure térképek
 description: Ebben a cikkben megismerheti a nagyítási szinteket és a csempéket Microsoft Azure Maps-ben.
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 01/22/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
-ms.openlocfilehash: 09d6e357b87b59e8010e38693806da5f26f5b679
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: 6ee697ac9b7849a0231d9916c6fa8bc73ef7f9b7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910777"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765844"
 ---
 # <a name="zoom-levels-and-tile-grid"></a>Nagyítási szintek és csemperács
 
-Azure Maps használja a gömb Mercator vetítési koordináta-rendszerrel (EPSG: 3857). A kivetítés az a matematikai modell, amellyel a gömb alakú földgömb átalakítható egy egyszerű térképre. A gömb Mercator-vetítése kiterjeszti a térképet a pólusok között egy négyzetes Térkép létrehozásához. Ez jelentősen torzítja a Térkép méretét és területét, de két fontos tulajdonsága van, amelyek meghaladják ezt a torzítást:
+Azure Maps használja a gömb Mercator vetítési koordináta-rendszerrel (EPSG: 3857). A kivetítés az a matematikai modell, amellyel a gömb alakú földgömb átalakítható egy egyszerű térképre. A gömb Mercator-vetítése a pólusok térképét kiterjesztve egy szögletes térképet hoz létre. Ez a kivetítés jelentősen torzítja a Térkép méretét és területét, de két fontos tulajdonsága van, amely meghaladja a torzítást:
 
-- Ez egy megfelelőségi vetület, ami azt jelenti, hogy megőrzi a viszonylag kis objektumok alakját. Ez különösen fontos a légi felvételek megjelenítéséhez, mert el szeretnénk kerülni az épületek alakjának torzítását. A négyzet alakú épületeknek szögletesnek kell lenniük, nem derékszögben.
-- Ez egy hengeres kivetítés, ami azt jelenti, hogy az Észak-és Dél-mindig egyenesen felfelé és lefelé van, és a nyugati és a keleti régió mindig egyenesen balra és jobbra van. 
+- Ez egy megfelelőségi vetület, ami azt jelenti, hogy megőrzi a viszonylag kis objektumok alakját. A kis objektumok alakjának megőrzése különösen fontos a légi felvételek megjelenítésekor. Tegyük fel például, hogy el szeretné kerülni az épületek alakjának torzítását. A négyzet alakú épületeknek szögletesnek kell lenniük, nem derékszögben.
+- Ez egy hengeres kivetítés. Az Észak-és Dél-a mindig felfelé és lefelé, a nyugati és a keleti régió pedig mindig balra és jobbra van. 
 
-A Térkép lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a Térkép szögletes csempére van osztva. A Azure Maps SDK olyan csempét használ, amelynek mérete 512 x 512 képpont, valamint kisebb 256 x 256 képpont a műholdas képekhez. Az Azure Maps raszteres és vektoros csempéket biztosít 23 nagyítási szinthez, 0 és 22 közötti számmal. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik:
+A Térkép lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a Térkép szögletes csempére van osztva. A Azure Maps SDK olyan csempét használ, amelynek mérete 512 x 512 képpont, valamint kisebb 256 x 256 képpont a műholdas képekhez. A Azure Maps raszteres és vektoros csempéket biztosít 23 nagyítási szinthez, 0 és 22 közötti számmal. A 0. nagyítási szinten a teljes világ egyetlen csempére illeszkedik:
 
 <center>
 
@@ -36,7 +36,7 @@ A nagyítási szint 1 négy csempét használ a világ megjelenítéséhez: 2 x 
 
 Minden további nagyítási szint quad – elosztja az előző csempéket, és létrehoz egy 2.<sup>zoom</sup> x 2<sup>nagyítású</sup>rácsot. A 22-es nagyítási szint a 2<sup>22</sup> x 2<sup>22</sup>vagy 4 194 304 x 4 194 304 csempe (17 592 186 044 416 csempék összesen).
 
-A web és Android rendszerhez készült interaktív térkép-vezérlőelemek Azure Maps a nagyítási szint 25 nagyítási szintjét támogatják, a 0 és 24 közötti számokkal. Bár a közúti adatmennyiség csak a csempék elérhető nagyítási szintjein lesz elérhető.
+Azure Maps a web és Android rendszerhez készült interaktív térkép-vezérlőelemek 25 nagyítási szintet (0 – 24) támogatnak. Bár a közúti adatmennyiség csak a csempék elérhető nagyítási szintjein lesz elérhető.
 
 Az alábbi táblázat a nagyítási szintek azon értékeinek teljes listáját tartalmazza, amelyekben a csempe mérete 512 képpont:
 
@@ -70,7 +70,7 @@ Az alábbi táblázat a nagyítási szintek azon értékeinek teljes listáját 
 
 ## <a name="pixel-coordinates"></a>Képpontok koordinátái
 
-Miután kiválasztotta a kivetítést és a méretezést, amelyet minden nagyítási szinten használni szeretne, a földrajzi koordinátákat képpontos koordinátákba alakíthatja. Egy adott nagyítási szinthez tartozó Térkép képének teljes képpont szélességét és magasságát a következőképpen számíthatja ki:
+Miután kiválasztotta a kivetítést és a méretezést, amelyet minden nagyítási szinten használni szeretne, a földrajzi koordinátákat képpontos koordinátákba alakíthatja. Egy adott nagyítási szinthez tartozó Térkép képének teljes képpont szélességét és magasságát a következőképpen számítjuk ki:
 
 ```javascript
 var mapWidth = tileSize * Math.pow(2, zoom);
@@ -82,9 +82,11 @@ Mivel a Térkép szélessége és magassága eltér a nagyítási szinttől, a k
 
 <center>
 
-![Térkép képpont-dimenziókat ábrázoló](media/zoom-levels-and-tile-grid/map-width-height.png)</center>
+![Képpont dimenziókat ábrázoló Térkép](media/zoom-levels-and-tile-grid/map-width-height.png)
 
-A szélességi és a hosszúsági fok, valamint a részletességi szint alapján a képpont XY koordinátái a következőképpen számíthatók ki:
+</center>
+
+A szélességi és a hosszúsági fok, valamint a részletesség szintje a képpont XY koordinátáit a következőképpen számítja ki:
 
 ```javascript
 var sinLatitude = Math.sin(latitude * Math.PI/180);
@@ -94,11 +96,11 @@ var pixelX = ((longitude + 180) / 360) * tileSize * Math.pow(2, zoom);
 var pixelY = (0.5 – Math.log((1 + sinLatitude) / (1 – sinLatitude)) / (4 * Math.PI)) * tileSize * Math.pow(2, zoom);
 ```
 
-A szélességi és a hosszúsági értékeket a WGS 84 Datum értékre kell feltételezni. Bár a Azure Maps gömb-kivetítést használ, fontos, hogy az összes földrajzi koordinátákat egy közös adatba konvertálja, és a WGS 84 lett kiválasztva. A hosszúsági érték-180 és + 180 fok közé kell esnie, és a szélességi értéket a-85,05112878 és 85,05112878 közötti tartományba kell kivágni. Ez elkerüli a Szingularitás-t a pólusoknál, és a tervezett térképet szögletesre állítja.
+A szélességi és a hosszúsági értékeket a WGS 84 Datum értékre kell feltételezni. Bár a Azure Maps gömb-kivetítést használ, fontos, hogy az összes földrajzi koordinátákat egy közös adatmennyiségre alakítsa át. A WGS 84 a kiválasztott adat. A hosszúsági értéket a-180 fok és a + 180 fok közé kell állítani, és a szélességi értéket a-85,05112878 és 85,05112878 közötti tartományba kell nyírni. Ezeknek az értékeknek a betartásával elkerülhető egy szingularitás a pólusoknál, és biztosítja, hogy a tervezett Térkép négyzet alakú legyen.
 
 ## <a name="tile-coordinates"></a>Csempe koordinátái
 
-A leképezés lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a renderelt Térkép csempére kerül. Mivel a képpontok száma különbözik az egyes nagyítási szinttől, a csempék száma a következő:
+A leképezés lekérésének és megjelenítésének teljesítményének optimalizálása érdekében a renderelt Térkép csempére kerül. A képpontok száma és a csempék száma minden nagyítási szinten eltér:
 
 ```javascript
 var numberOfTilesWide = Math.pow(2, zoom);
@@ -120,9 +122,9 @@ var tileX = Math.floor(pixelX / tileSize);
 var tileY = Math.floor(pixelY / tileSize);
 ```
 
-A csempéket a nagyítási szint és az x és y koordináták hívják meg, amelyek megfelelnek a csempének a rácson belüli pozíciójának.
+A csempéket a nagyítási szint hívja meg. Az x és y koordináták megfelelnek a rácsnak az adott nagyítási szinthez tartozó pozíciójának.
 
-A használni kívánt nagyítási szint meghatározásakor ügyeljen arra, hogy az egyes helyek rögzített pozícióban legyenek a csempén. Ez azt jelenti, hogy az adott kiterjedési terület megjelenítéséhez szükséges csempék száma a világ nagyítási rácsának adott helyének függvénye. Ha például két pont 900 méter távolságra van, akkor csak három csempével *lehet* megjeleníteni a 17. nagyítási szinten közöttük lévő útvonalat. Ha azonban a nyugati pont a csempe jobb oldalán található, a csempe bal oldalán lévő keleti pont pedig négy csempét tartalmazhat:
+A használni kívánt nagyítási szint meghatározásakor ügyeljen arra, hogy az egyes helyek rögzített pozícióban legyenek a csempén. Ennek eredményeképpen az adott kiterjedésű terület megjelenítéséhez szükséges csempék száma a globális Térkép nagyítási rácsának adott elhelyezésén múlik. Ha például két pont 900 méter távolságra van, akkor csak három csempével *lehet* megjeleníteni a 17. nagyítási szinten közöttük lévő útvonalat. Ha azonban a nyugati pont a csempe jobb oldalán található, a csempe bal oldalán lévő keleti pont pedig négy csempét tartalmazhat:
 
 <center>
 

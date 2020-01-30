@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-dps
 services: iot-dps
 manager: briz
-ms.openlocfilehash: b28e09b2d304dc392442d98fe39654bab2c8d09c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f9ac3c85bcd8e50918961649bdb5739fc66f1627
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645055"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772951"
 ---
 # <a name="provisioning-devices-with-azure-iot-hub-device-provisioning-service"></a>Eszközregisztráció az Azure IoT Hub Device Provisioning Service használatával
 A Microsoft Azure integrált nyilvános felhőszolgáltatások széles skáláját biztosítja, az IoT-megoldásokkal kapcsolatos igények teljes körű kielégítése céljából. Az IoT Hub Device Provisioning Service az IoT Hub segítő szolgáltatása, amely emberi beavatkozás nélkül teszi lehetővé a megfelelő IoT Hubon való érintésmentes, igény szerinti üzembe helyezést, így az ügyfelek eszközök millióit építhetik ki biztonságos és méretezhető módon.
@@ -80,7 +80,7 @@ A Device Provisioning Service számos funkciójának köszönhetően ideális az
 * Az esetleg regisztráló eszközök/eszközcsoportok teljes rekordját tartalmazó **regisztrációs lista**. A regisztrációs lista tartalmazza az eszköz kívánt konfigurációjára vonatkozó adatokat, amint az regisztrál, és bármikor frissíthető.
 * **Több kiosztási szabályzat** annak szabályozására, hogy az eszköz kiépítési szolgáltatása hogyan rendeljen eszközöket az IoT-hubokhoz a forgatókönyvek támogatása érdekében: a legalacsonyabb késés, a egyenletesen súlyozott eloszlás (alapértelmezett) és a statikus konfiguráció a beléptetési listán keresztül. Vegye figyelembe, hogy a késleltetést ugyanazzal a módszerrel határozzák meg, mint a [Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods#performance).
 * A **Naplózás monitorozása és hibakeresése** segít biztosítani, hogy minden jól működjön.
-* A **Több központ támogatása** lehetővé teszi, hogy a Device Provisioning Service egynél több IoT Hubhoz rendeljen hozzá eszközöket. A Device Provisioning Service tud kommunikálni a több Azure-előfizetést felölelő központokkal.
+* A **többközpontos támogatás** lehetővé teszi, hogy a Device kiépítési szolgáltatás a IoT hub-hoz késői kötésű eszközöket hozzon létre futásidőben. A Device Provisioning Service tud kommunikálni a több Azure-előfizetést felölelő központokkal.
 * A **Régiófüggetlen támogatás** lehetővé teszi a Device Provisioning Service számára, hogy más régiókban lévő IoT Hubokhoz is hozzárendeljen eszközöket.
 
 Az eszközkiépítéssel kapcsolatban felmerülő alapelvekről és szolgáltatásokról az [eszközzel kapcsolatos alapelvek](concepts-device.md), [szolgáltatással kapcsolatos alapelvek](concepts-service.md) és [biztonsági alapelvek](concepts-security.md) szakaszokban szerezhet további információkat.

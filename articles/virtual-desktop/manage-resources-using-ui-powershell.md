@@ -7,12 +7,12 @@ ms.service: virtual-desktop
 ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: helohr
-ms.openlocfilehash: d7304c1267c4a4f5548bb57ffb3e6016fac21d99
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: e3ea11f4faad204756f9e1296b5190e1f81a5cc0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122508"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772796"
 ---
 # <a name="deploy-a-management-tool-with-powershell"></a>Felügyeleti eszköz üzembe helyezése a PowerShell-lel
 
@@ -163,4 +163,4 @@ Ha a felügyeleti eszközzel vagy más Windowsos virtuális asztali eszközökke
 
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja az Azure szolgáltatás súgóját a szolgáltatással kapcsolatos problémák és az egészségügyi tanácsadók figyelésére. További információ: [set up Service riasztások oktatóanyaga](./set-up-service-alerts.md).
+Most, hogy megismerte, hogyan helyezheti üzembe és csatlakozhat a felügyeleti eszközhöz, megtudhatja, hogyan használhatja a Azure Service Healtht a szolgáltatási problémák és az állapot-útmutatók figyelésére. További információ: [set up Service riasztások oktatóanyaga](./set-up-service-alerts.md).

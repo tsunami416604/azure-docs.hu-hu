@@ -5,12 +5,12 @@ author: masnider
 ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
-ms.openlocfilehash: 56765fa16bc1ea96f1429b72fded38c4385e65ec
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7142e3f9aaa25e7ba327194c04ad6a9b5f4e3ad1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75452121"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774480"
 ---
 # <a name="describe-a-service-fabric-cluster-by-using-cluster-resource-manager"></a>Service Fabric-fürt leírása a fürterőforrás-kezelő használatával
 Az Azure Service Fabric fürterőforrás-kezelő funkciója számos módszert kínál a fürtök leírására:
@@ -375,7 +375,7 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 * Feltételes ellenőrzések adott utasítások létrehozásához:
 
-  | Kimutatás | Szintaxis |
+  | nyilatkozat | Szintaxis |
   | --- |:---:|
   | "egyenlő" | "==" |
   | "nem egyenlő" | "!=" |
@@ -386,7 +386,7 @@ A Node tulajdonságban megadott érték karakterlánc, logikai vagy hosszú lehe
 
 * Logikai utasítások csoportosításhoz és logikai műveletekhez:
 
-  | Kimutatás | Szintaxis |
+  | nyilatkozat | Szintaxis |
   | --- |:---:|
   | és | "& &" |
   | vagy | "&#124;&#124;" |
@@ -472,7 +472,7 @@ Először is gondoskodni kell arról, hogy a gépek ne legyenek túlterhelve. Ez
 
 Másodszor, a szolgáltatások hatékony futtatásához elengedhetetlen a kiegyensúlyozás és az optimalizálás. A költséghatékony vagy a teljesítményre érzékeny szolgáltatási ajánlatok nem teszik lehetővé, hogy egyes csomópontok ne legyenek melegek, míg mások is hidegek. A gyors csomópontok erőforrás-tartalomhoz és gyenge teljesítményhez vezetnek. A hideg csomópontok az elpazarolt erőforrásokat és a megnövekedett költségeket jelentik. 
 
-Service Fabric az erőforrásokat *metrikaként*jeleníti meg. A metrikák bármilyen logikai vagy fizikai erőforrás, amelyet le szeretne írni a Service Fabric. Mérőszámok például a következők: "WorkQueueDepth" vagy "MemoryInMb". További információ a csomópontokon Service Fabric által szabályozható fizikai erőforrásokról: [erőforrás-szabályozás](service-fabric-resource-governance.md). Az egyéni metrikák és azok használatának konfigurálásával kapcsolatos információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
+Service Fabric az erőforrásokat *metrikaként*jeleníti meg. A metrikák bármilyen logikai vagy fizikai erőforrás, amelyet le szeretne írni a Service Fabric. Mérőszámok például a következők: "WorkQueueDepth" vagy "MemoryInMb". További információ a csomópontokon Service Fabric által szabályozható fizikai erőforrásokról: [erőforrás-szabályozás](service-fabric-resource-governance.md). A fürterőforrás-kezelő által használt alapértelmezett metrikákkal és az egyéni metrikák konfigurálásával kapcsolatos információkért tekintse meg [ezt a cikket](service-fabric-cluster-resource-manager-metrics.md).
 
 A metrikák eltérnek az elhelyezési megkötések és a csomópont tulajdonságaitól. A csomópont tulajdonságai maguk a csomópontok statikus leírói. A metrikák leírják, hogy a csomópontok milyen erőforrásokat használnak, és hogy a szolgáltatások mikor futnak a csomópontokon. Lehetséges, hogy a Node tulajdonság **HasSSD** , és igaz vagy hamis értékre van állítva. Az SSD-lemezen rendelkezésre álló szabad terület nagysága és a szolgáltatások által felhasznált mennyiség (például "DriveSpaceInMb") mérőszáma. 
 

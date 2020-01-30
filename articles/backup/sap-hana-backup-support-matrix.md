@@ -3,12 +3,12 @@ title: A SAP HANA biztonsági mentésének támogatási mátrixa
 description: Ebben a cikkben megismerheti a támogatott forgatókönyveket és korlátozásokat, amikor az Azure Backup használatával biztonsági másolatot készít SAP HANA adatbázisokról az Azure-beli virtuális gépeken.
 ms.topic: conceptual
 ms.date: 11/7/2019
-ms.openlocfilehash: 2063da4c5210cace41454d8bdc5b12e636ba76cd
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 82d844385290ab0dc2953537c1f9a3387dd7b2b2
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705649"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842631"
 ---
 # <a name="support-matrix-for-backup-of-sap-hana-databases-on-azure-vms"></a>Azure-beli virtuális gépeken tárolt SAP HANA-adatbázisok biztonsági mentésére vonatkozó támogatási mátrix
 
@@ -33,7 +33,7 @@ Register-AzProviderFeature -FeatureName "HanaBackup" –ProviderNamespace Micros
 | **Forgatókönyv**               | **Támogatott konfigurációk**                                | **Nem támogatott konfigurációk**                              |
 | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **Topológia**               | Csak az Azure Linux rendszerű virtuális gépeken futó SAP HANA                    | HANA Large instances (HLI)                                   |
-| **Térségek**                   | **GA**<br />**Európa** – Nyugat-Európa, Észak-Európa, Közép-Franciaország, Dél-franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Észak-Németország, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc<br />**Ázsia és a csendes-óceáni térség** – Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea<br /><br>**Előnézet**<br />**Amerikai** Egyesült Államok, USA középső régiója, USA 2. keleti régiója, az USA keleti régiója, az USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója, Nyugat-Kanada<br />**Ázsia és a csendes-óceáni térség** – Kelet-Ázsia, Délkelet-Ázsia, Közép-India, Dél-India | Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2, Nyugat-India, Közép-Észak-Svájc, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Észak-Ausztrália, Egyesült Arab Emírségek középső régiója, Azure Government régiók |
+| **Térségek**                   | **GA**<br />**Európa** – Nyugat-Európa, Észak-Európa, Közép-franciaország, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, Észak-Németország, Középnyugat-Németország, Észak-Svájc, Nyugat-Svájc<br />**Ázsia és a csendes-óceáni térség** – Ausztrália középső régiója, Ausztrália középső régiója 2, Kelet-Ausztrália, Délkelet-Ausztrália, Kelet-Japán, Nyugat-Japán, Korea középső régiója, Dél-Korea<br /><br>**Előnézet**<br />**Amerikai** Egyesült Államok, USA középső régiója, USA 2. keleti régiója, USA északi középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA nyugati középső régiója, USA nyugati régiója, Közép-Kanada <br />**Ázsia és a csendes-óceáni térség** – Kelet-Ázsia, Délkelet-Ázsia, Közép-India, Dél-India | Kelet-Kína, Észak-Kína, Kína készletek, Észak-Kína 2, Nyugat-India, központi Észak-Svájc, Dél-Afrika északi régiója, Dél-Afrika nyugati régiója, Észak-Ausztrália, Egyesült Arab Emírségek középső régiója, Azure Government régiók, Dél-Brazília, Dél-Brazília |
 | **OPERÁCIÓSRENDSZER-verziók**            | SLES 12 SP2, SP3 vagy SP4 szervizcsomaggal                                | SLES 15, RHEL                                                |
 | **HANA-verziók**          | SDC on HANA 1. x, MDC on HANA 2. x < = SPS04 Rev 44            | -                                                            |
 | **HANA-telepítések**       | SAP HANA egyetlen Azure-beli virtuális gépen – csak vertikális felskálázással               | Kiterjesztés                                                    |

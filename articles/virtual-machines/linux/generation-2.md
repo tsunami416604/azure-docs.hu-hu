@@ -3,7 +3,7 @@ title: Azure-támogatás a 2. generációs virtuális gépekhez
 description: A 2. generációs virtuális gépek Azure-támogatásának áttekintése
 services: virtual-machines-linux
 documentationcenter: ''
-author: laurenhughes
+author: ju-shim
 manager: gwallace
 editor: ''
 tags: azure-resource-manager
@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: article
-ms.date: 12/03/2019
-ms.author: lahugh
-ms.openlocfilehash: cfa8d28a41bb5551277bca29c118698ecaa8d112
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/28/2020
+ms.author: jushiman
+ms.openlocfilehash: 766ac4f67c0d448f3988eb66c84dddbf44076ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74791730"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841139"
 ---
 # <a name="support-for-generation-2-vms-on-azure"></a>2\. generációs virtuális gépek támogatása az Azure-ban
 
@@ -30,7 +30,7 @@ A 2. generációs virtuális gépek az új UEFI-alapú rendszerindítási archit
 
 ## <a name="generation-2-vm-sizes"></a>2\. generációs VM-méretek
 
-Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban. Az Azure immár 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
+Az 1. generációs virtuális gépeket minden virtuálisgép-méret támogatja az Azure-ban (kivéve a Mv2-sorozatú virtuális gépeket). Az Azure immár 2. generációs támogatást nyújt a következő kiválasztott virtuálisgép-sorozatokhoz:
 
 * [B sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/b-series-burstable)
 * [DC sorozat](https://docs.microsoft.com/azure/virtual-machines/linux/sizes-general#dc-series)
@@ -100,7 +100,7 @@ Az Azure jelenleg nem támogatja a 2. generációs virtuális gépekhez a helysz
 
 A Azure Portal vagy az Azure CLI-ben létrehozhat 2. generációs virtuális gépeket az UEFI rendszerindítást támogató piactér-rendszerképből.
 
-#### <a name="azure-portal"></a>Azure Portal
+#### <a name="azure-portal"></a>Azure portál
 
 A 2. generációs rendszerképek a Windows-és a SLES a Gen1-lemezképekkel megegyező kiszolgálói ajánlatban szerepelnek. A folyamat szempontjából ez azt jelenti, hogy az ajánlatot és az SKU-t a virtuális gép portálján kell kiválasztani. Ha az SKU az 1. és a 2. generációs rendszerképeket is támogatja, kiválaszthatja, hogy létrehoz egy 2. generációs virtuális gépet a virtuális gép létrehozási folyamatának *speciális* lapján.
 
@@ -123,6 +123,12 @@ Például a következő PowerShell-parancsmaggal kérheti le a `WindowsServer` a
 
 ```powershell
 Get-AzVMImageSku -Location westus2 -PublisherName MicrosoftWindowsServer -Offer WindowsServer
+```
+
+Azt is megteheti, hogy az Azure CLI használatával megtekintheti a **kiadó**által megjelenített 2. generációs képeket.
+
+```azurecli
+az vm image list --publisher Canonical --sku gen2 --output table --all
 ```
 
 Ha operációs rendszert futtató virtuális gépet hoz létre a Windows Server 2012-es verziójával, akkor az 1. generáció (BIOS) vagy a 2. generációs (UEFI) VM SKU lesz kiválasztva, amely így néz ki:

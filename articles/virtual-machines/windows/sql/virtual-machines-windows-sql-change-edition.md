@@ -1,6 +1,6 @@
 ---
-title: SQL Server kiadás helyben történő frissítése
-description: Megtudhatja, hogyan módosíthatja az Azure-beli SQL Server VM kiadását.
+title: SQL Server kiadás helyben történő módosítása
+description: Megtudhatja, hogyan módosíthatja a SQL Server virtuális gép kiadását az Azure-ban.
 services: virtual-machines-windows
 documentationcenter: na
 author: MashaMSFT
@@ -10,34 +10,24 @@ ms.service: virtual-machines-sql
 ms.topic: article
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 06/26/2019
+ms.date: 01/14/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 1db45097b0416b680571cb47ec1d9b52f9275c43
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: 7d096f721869e43e9a860733d0f6893f224a6776
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74022215"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772571"
 ---
-# <a name="perform-an-in-place-upgrade-of-a-sql-server-edition-on-an-azure-vm"></a>SQL Server kiadás helyben történő frissítése Azure-beli virtuális gépen
+# <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az SQL Server Edition helyszíni módosítása az Azure-beli virtuális gépen
 
 Ez a cikk azt ismerteti, hogyan módosítható a SQL Server kiadása egy Windows rendszerű virtuális gépen az Azure-ban. 
 
-A SQL Server kiadását a termékkulcs határozza meg, és a telepítési folyamattal van megadva. A kiadás azt szabja meg, hogy mely [funkciók](/sql/sql-server/editions-and-components-of-sql-server-2017) érhetők el a SQL Server termékben. A SQL Server kiadása a telepítési adathordozóval módosítható, és a további funkciók engedélyezéséhez csökkentheti a költségeket vagy a frissítést.
+A SQL Server kiadása a termékkulcs alapján van meghatározva, és a telepítési folyamat során a telepítési adathordozó használatával van megadva. A kiadás azt szabja meg, hogy mely [funkciók](/sql/sql-server/editions-and-components-of-sql-server-2017) érhetők el a SQL Server termékben. A SQL Server kiadása a telepítési adathordozóval módosítható, és a további funkciók engedélyezéséhez csökkentheti a költségeket vagy a frissítést.
 
-Ha az SQL VM erőforrás-szolgáltatóval való regisztrációt követően a telepítési adathordozó használatával frissítette SQL Server kiadását, akkor az Azure-számlázás megfelelő frissítéséhez az alábbi módon kell beállítania az SQL VM-erőforrás SQL Server Edition tulajdonságát:
-
-1. Bejelentkezés az [Azure Portalra](https://portal.azure.com). 
-1. Nyissa meg a SQL Server virtuális gép erőforrását. 
-1. A **Beállítások**területen válassza a **Konfigurálás**lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás**alatti legördülő listából. 
-
-   ![Kiadási metaadatok módosítása](media/virtual-machines-windows-sql-change-edition/edition-change-in-portal.png)
-
-1. Tekintse át azt a figyelmeztetést, amely szerint először módosítania kell a SQL Server kiadást, és hogy a kiadás tulajdonságnak meg kell egyeznie a SQL Server kiadással. 
-1. Válassza az **alkalmaz** elemet a kiadás metaadatainak módosításainak alkalmazásához. 
-
+Ha a SQL Server kiadását belsőleg módosították a SQL Server VMre, akkor a Azure Portal SQL Server kiadás tulajdonságát a számlázáshoz kell frissítenie. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +35,7 @@ A SQL Server kiadásának helyben történő megváltoztatásához a következő
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Az [SQL VM erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md)regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
-- Állítsa be az adathordozót SQL Server kívánt kiadásával. A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják.
+- Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában `c:\SQLInstalls`). 
 
 
 ## <a name="upgrade-an-edition"></a>Kiadás frissítése
@@ -53,7 +43,7 @@ A SQL Server kiadásának helyben történő megváltoztatásához a következő
 > [!WARNING]
 > A SQL Server kiadásának verziófrissítése újraindul a szolgáltatás SQL Serverhoz, valamint a hozzájuk kapcsolódó szolgáltatásokhoz, például a Analysis Serviceshoz és az R szolgáltatásokhoz. 
 
-SQL Server frissítéséhez szerezze be a SQL Server kívánt kiadásához tartozó SQL Server telepítési adathordozót, majd tegye a következőket:
+SQL Server kiadásának frissítéséhez szerezze be a SQL Server kívánt kiadásához tartozó SQL Server telepítési adathordozót, majd tegye a következőket:
 
 1. Nyissa meg a Setup. exe fájlt a SQL Server telepítési adathordozóról. 
 1. Lépjen a **karbantartás** menüpontra, és válassza a **kiadás frissítése** lehetőséget. 
@@ -62,11 +52,11 @@ SQL Server frissítéséhez szerezze be a SQL Server kívánt kiadásához tarto
 
 1. Kattintson a **Next (tovább** ) gombra, amíg el nem éri a **Verziófrissítési kiadás** oldalát, majd válassza a **frissítés**lehetőséget. Előfordulhat, hogy a beállítási időszak néhány percen belül leáll, amíg a módosítás érvénybe lép. A **teljes** oldal megerősíti, hogy a kiadás frissítése befejeződött. 
 
-A SQL Server kiadás frissítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát a korábban látható módon. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
+A SQL Server kiadás frissítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
 
 ## <a name="downgrade-an-edition"></a>Kiadás visszaminősítése
 
-SQL Server kiadásának visszalépéséhez teljesen el kell távolítania SQL Server, majd újra újra kell telepítenie a kívánt kiadás telepítési adathordozóján.
+SQL Server kiadásának visszalépéséhez teljesen el kell távolítania SQL Server, majd újra újra kell telepítenie a kívánt kiadás telepítési adathordozóján. 
 
 > [!WARNING]
 > A SQL Server eltávolítása további állásidőt eredményezhet. 
@@ -81,7 +71,21 @@ A SQL Server kiadásának visszalépéséhez kövesse az alábbi lépéseket:
 1. Telepítse a legújabb szervizcsomagokat és összesítő frissítéseket.  
 1. Cserélje le a telepítés során létrehozott új rendszeradatbázisokat azokra a rendszeradatbázisokra, amelyeket korábban más helyre helyezett át. 
 
-A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát a korábban látható módon. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
+A SQL Server kiadásának visszaminősítése után módosítsa a Azure Portal SQL Server virtuális gép kiadás tulajdonságát. Ezzel frissíti a virtuális géphez társított metaadatokat és számlázást.
+
+## <a name="change-edition-in-portal"></a>Kiadás módosítása a portálon 
+
+Miután módosította SQL Server kiadását a telepítési adathordozó használatával, és regisztrálta a SQL Server VM az [SQL VM erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md), a Azure Portal használatával módosíthatja a SQL Server VM kiadási tulajdonságát a számlázási célokra. Ehhez kövesse az alábbi lépéseket: 
+
+1. Jelentkezzen be az [Azure portálra](https://portal.azure.com). 
+1. Nyissa meg a SQL Server virtuális gép erőforrását. 
+1. A **Beállítások**területen válassza a **Konfigurálás**lehetőséget. Ezután válassza ki az SQL Server kívánt kiadását a **kiadás**alatti legördülő listából. 
+
+   ![Kiadási metaadatok módosítása](media/virtual-machines-windows-sql-change-edition/edition-change-in-portal.png)
+
+1. Tekintse át azt a figyelmeztetést, amely szerint először módosítania kell a SQL Server kiadást, és hogy a kiadás tulajdonságnak meg kell egyeznie a SQL Server kiadással. 
+1. Válassza az **alkalmaz** elemet a kiadás metaadatainak módosításainak alkalmazásához. 
+
 
 ## <a name="remarks"></a>Megjegyzések
 

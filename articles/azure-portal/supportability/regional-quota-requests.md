@@ -1,106 +1,107 @@
 ---
-title: Az Azure Regional vCPU-kvóták korlátainak növelését kéri | Microsoft Docs
-description: Regionális kvóta-növelési kérelmek
+title: Az Azure regionális vCPU-kvótáinak növelésére vonatkozó kérelmek
+description: A Azure Portal egy régiójának vCPU-kvótájának növelését kéri.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/07/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: e262651a6e040c40dbe240ad3437eff1914aa3e5
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: 9236989f7bbb4695db24f86a2a049f5bb58f302a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75896739"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843684"
 ---
-# <a name="standard-quota-increase-limits-by-region"></a>Standard kvóta: korlátok növekedése régiónként 
+# <a name="standard-quota-increase-limits-by-region"></a>Standard kvóta: korlátok növekedése régiónként
 
 A Azure Resource Manager két típusú vCPU-kvótát támogat a virtuális gépekhez:
-* Az utólagos elszámolású *virtuális gépek* és a *fenntartott virtuálisgép-példányok* *standard vCPU-kvóta*alá esnek.
-* A *helyszíni virtuális gépekre* a *helyszínen vCPU kvóta*vonatkozik. 
 
-Az utólagos elszámolású és a fenntartott VM-példányokra vonatkozó standard vCPU-kvóta az egyes régiókban található minden egyes előfizetés esetében két szinten érvényes:
-* Az első szint a *regionális vCPU teljes korlátja* (az összes virtuálisgép-sorozaton belül).
-* A második réteg a virtuálisgép *-sorozat vCPU korlátja* (például a D sorozat vCPU).
- 
-Amikor új helyszíni virtuális gépet telepít, az adott virtuálisgép-sorozat összes új és meglévő vCPU-használata nem lépheti túl az adott virtuálisgép-sorozat jóváhagyott vCPU-kvótáját. Emellett az összes virtuálisgép-sorozatban üzembe helyezett új és meglévő vCPU teljes száma nem haladhatja meg az előfizetés teljes jóváhagyott regionális vCPU vonatkozó kvótáját. Ha túllépi a kvóták valamelyikét, a virtuális gép üzembe helyezése nem engedélyezett. 
+* Az utólagos elszámolású *virtuális gépek* és a *fenntartott virtuálisgép-példányok* *standard vCPU-kvóta*alá esnek.
+* A *helyszíni virtuális gépekre* a *helyszínen vCPU kvóta*vonatkozik.
+
+Az utólagos elszámolású és a fenntartott virtuálisgép-példányok esetében a standard szintű vCPU kvóta minden egyes régióban az egyes előfizetések esetén két szinten érvényes:
+
+* Az első szint a *teljes regionális vCPU korlát*, az összes virtuálisgép-sorozaton belül.
+* A második réteg a *VM-sorozat vCPU korlátja*, például a D sorozat vCPU.
+
+Amikor új helyszíni virtuális gépet telepít, az adott virtuálisgép-sorozat összes új és meglévő vCPU-használata nem lépheti túl az adott virtuálisgép-sorozat jóváhagyott vCPU-kvótáját. Emellett az összes virtuálisgép-sorozatban üzembe helyezett új és meglévő vCPU teljes száma nem haladhatja meg az előfizetés teljes jóváhagyott regionális vCPU vonatkozó kvótáját. Ha túllépi a kvóták valamelyikét, a virtuális gép üzembe helyezése nem engedélyezett.
 
 A virtuálisgép-sorozat vCPU-kvótájának növekedését a Azure Portal használatával kérheti le. A virtuálisgép-sorozat kvótájának növekedése automatikusan megnöveli a teljes regionális vCPU-korlátot ugyanazzal az összeggel.
 
 Ha új előfizetést hoz létre, akkor előfordulhat, hogy a regionális vCPU alapértelmezett száma nem egyezik meg az összes egyedi virtuálisgép-sorozat alapértelmezett vCPU-kvótájának összegével. Ez az eltérés olyan előfizetést eredményezhet, amely elegendő kvótával rendelkezik minden egyes telepíteni kívánt virtuálisgép-sorozathoz. Előfordulhat azonban, hogy nem áll rendelkezésre elegendő kvóta az összes üzemelő példány regionális vCPU befogadásához. Ebben az esetben kérelmet kell benyújtania, hogy explicit módon növelje a regionális vCPU teljes számának korlátját. A regionális vCPU teljes korlátja nem lépheti túl a régió összes virtuálisgép-sorozatának jóváhagyott teljes kvótáját.
 
-A standard vCPU-kvótákkal kapcsolatos további információkért lásd a [virtuális gépek vCPU kvótáit](https://docs.microsoft.com/azure/virtual-machines/windows/quotas) és az [Azure-előfizetések és-szolgáltatások korlátozásait](https://aka.ms/quotalimits).
+A standard vCPU-kvótákkal kapcsolatos további információkért lásd: a [virtuális gépek vCPU kvótái](../../virtual-machines/windows/quotas.md) és az [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md).
 
-Ha többet szeretne megtudni a virtuális gépek vCPU korlátainak növeléséről, tekintse meg a következőt [: a helyszíni kvóta: az összes virtuálisgép-sorozat korlátainak növelése](https://docs.microsoft.com/azure/azure-supportability/low-priority-quota).
+Ha többet szeretne megtudni a virtuális gépek vCPU korlátainak növeléséről, tekintse meg a következőt [: a helyszíni kvóta: az összes virtuálisgép-sorozat korlátainak növelése](low-priority-quota.md).
 
-A következő szakaszokban leírtak szerint a vCPU standard kvóta korlátozását két módon, régiónként is megnövelheti.
+A vCPU standard kvóta növelését kétféle módon, régiónként is megteheti.
 
-## <a name="request-a-quota-increase-by-region-from-the-help--support-pane"></a>Kvóta növelésének kérése régiónként a "Súgó + támogatás" panelen
+## <a name="request-a-quota-increase-by-region-from-help--support"></a>Kvóta növelésének kérése régiónként a Súgó + támogatás szolgáltatásban
 
-Ha a **Súgó + támogatás** ablaktáblán régió alapján szeretne vCPU-kvótát emelni, tegye a következőket: 
+A vCPU kvóta növelésének **megkönnyítése a Súgó + támogatás**területen:
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján kattintson a **Súgó és támogatás**elemre.
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás**lehetőséget.
 
-   ![A "Súgó + támogatás" hivatkozás](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-1. A **Súgó + támogatás** ablaktáblán válassza az **új támogatási kérelem**lehetőséget. 
+   ![A "Súgó + támogatás" hivatkozás](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-    ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. A **Súgó és támogatás**területen válassza az **új támogatási kérelem**lehetőséget.
 
-1. A **probléma típusa** legördülő listában válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
+    ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![A "probléma típusa" legördülő lista](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. A **probléma típusa**beállításnál válassza a **szolgáltatás-és előfizetési korlátok (kvóták)** lehetőséget.
 
-1. Az **előfizetés** legördülő listában válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
+   ![Probléma típusának kiválasztása](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
 
-   ![Az "előfizetés" legördülő lista](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-1. A **kvóta típusa** legördülő listában válassza az **egyéb kérelmek**elemet.
+1. Az **előfizetés**mezőben válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
 
-   ![A "kvóta típusa" legördülő lista](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+   ![Előfizetés kiválasztása](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
 
-1. A **probléma részletei** ablaktáblában, a **Leírás** mezőben adja meg a következő további információkat: 
+1. A **kvóta típusa**beállításnál válassza az **egyéb kérések**lehetőséget.
 
-    a. A **telepítési modellhez**a **Resource Managert**kell megadni.  
-    b. A **régió**mezőben adja meg a szükséges régiót (például: **USA 2. keleti**régiója).  
-    c. Az **új korlát**beállításnál a régióhoz új vCPU-korlátot kell megadni. Ez az érték nem haladhatja meg az előfizetéshez tartozó egyedi SKU-sorozatokra vonatkozó jóváhagyott kvóták összegét.
+   ![Adja meg a kvóta típusát](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-    ![A "probléma részletei" panel](./media/resource-manager-core-quotas-request/regional-details.png)
+1. Kattintson a Next (tovább) gombra **: megoldások** a **probléma részleteinek**megnyitásához. A **Leírás**mezőben adja meg a következő információkat:
 
-1. Válassza a mentés lehetőséget, **és** folytassa a támogatási kérelem létrehozásával.
+    1. A **telepítési modellhez**a **Resource Managert**kell megadni.  
+    1. A **régió**mezőben adja meg a szükséges régiót (például: **USA 2. keleti**régiója).  
+    1. Az **új korlát**beállításnál a régióhoz új vCPU-korlátot kell megadni. Ez az érték nem haladhatja meg az előfizetéshez tartozó egyedi SKU-sorozatokra vonatkozó jóváhagyott kvóták összegét.
 
-## <a name="request-a-quota-increase-by-region-from-the-subscriptions-pane"></a>Kvóta növelésének kérése régiónként az "előfizetések" panelen
+    ![Adja meg a kvóta kérésének részleteit](./media/resource-manager-core-quotas-request/regional-details.png)
 
-Ha a vCPU kvóta növelését az **előfizetések** panelről származó régió alapján szeretné kérni, tegye a következőket: 
+1. A támogatási kérelem létrehozásának folytatásához válassza a **felülvizsgálat + létrehozás** lehetőséget.
 
-1. A [Azure Portal](https://portal.azure.com)bal oldali ablaktábláján válassza az **előfizetések**lehetőséget.
+## <a name="request-a-quota-increase-by-region-from-subscriptions"></a>Kvóta növelésének kérése régiónként az előfizetések között
 
-   ![Az "előfizetések" hivatkozás](./media/resource-manager-core-quotas-request/subscriptions.png)
+VCPU-kvóta növelésének kérése régiónként az **előfizetések**:
+
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **előfizetések**elemet.
+
+   ![Ugrás az előfizetések Azure Portal](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
 
 1. Válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
 
-   ![Az "előfizetések" panel](./media/resource-manager-core-quotas-request/select-subscription.png)
+   ![Válassza ki a módosítani kívánt előfizetést](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
 
-1. A **\<előfizetés neve >** oldal bal oldali ablaktábláján válassza a **használat + kvóták**lehetőséget.
+1. A bal oldali ablaktáblán válassza a **használat + kvóták**lehetőséget.
 
-   ![A "használat + kvóták" hivatkozás](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
+   ![Használati és kvóták hivatkozásának követése](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
 
 1. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
 
-   ![Kérések növekedése](./media/resource-manager-core-quotas-request/request-increase.png)
+   ![Válassza ki a kvóta növelését](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
 
-1. A **kvóta típusa** legördülő listában válassza az **egyéb kérelmek**elemet.
+1. A **kvóta típusa**területen válassza az **egyéb kérések**lehetőséget.
 
-   ![A "kvóta típusa" legördülő lista](./media/resource-manager-core-quotas-request/regional-quotatype.png)
+   ![Válassza ki a kvóta típusát](./media/resource-manager-core-quotas-request/regional-quotatype.png)
 
-1. A **probléma részletei** ablaktáblában, a **Leírás** mezőben adja meg a következő további információkat: 
+1. Kattintson a Next (tovább) gombra **: megoldások** a **probléma részleteinek**megnyitásához. A **Leírás** mezőben adja meg a következő további információkat:
 
-    a. A **telepítési modellhez**a **Resource Managert**kell megadni.  
-    b. A **régió**mezőben adja meg a szükséges régiót (például: **USA 2. keleti**régiója).  
-    c. Az **új korlát**beállításnál a régióhoz új vCPU-korlátot kell megadni. Ez az érték nem haladhatja meg az előfizetéshez tartozó egyedi SKU-sorozatokra vonatkozó jóváhagyott kvóták összegét.
+    1. A **telepítési modellhez**a **Resource Managert**kell megadni.  
+    1. A **régió**mezőben adja meg a szükséges régiót (például: **USA 2. keleti**régiója).  
+    1. Az **új korlát**beállításnál a régióhoz új vCPU-korlátot kell megadni. Ez az érték nem haladhatja meg az előfizetéshez tartozó egyedi SKU-sorozatokra vonatkozó jóváhagyott kvóták összegét.
 
-    ![A "probléma részletei" panel](./media/resource-manager-core-quotas-request/regional-details.png)
+    ![Adja meg az adatokat a részletek között](./media/resource-manager-core-quotas-request/regional-details.png)
 
-1. Válassza a mentés lehetőséget, **és** folytassa a támogatási kérelem létrehozásával.
-
+1. A támogatási kérelem létrehozásának folytatásához válassza a **felülvizsgálat + létrehozás** lehetőséget.

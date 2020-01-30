@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 12/03/2019
-ms.openlocfilehash: 35d568afa0c45529b33b7918fd453213f432ba06
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.date: 01/23/2020
+ms.openlocfilehash: fd6d3e24adfc22d2f6ea17f09b8dea4638a054b6
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792300"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769044"
 ---
 # <a name="read-replicas-in-azure-database-for-postgresql---single-server"></a>Replikák olvasása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -59,8 +59,6 @@ A következő szempontokat kell figyelembe venni:
 
 
 ## <a name="create-a-replica"></a>Replika létrehozása
-A főkiszolgálónak a `azure.replication_support` paraméterrel kell megadnia a **replikát**. Ha módosítja ezt a paramétert, a módosítás érvénybe léptetéséhez újra kell indítani a kiszolgálót. (A `azure.replication_support` paraméter csak a általános célú és a memória optimalizált szintjeire vonatkozik).
-
 A replika létrehozása munkafolyamat indításakor létrejön egy üres Azure Database for PostgreSQL-kiszolgáló. Az új kiszolgáló a főkiszolgálón található adatokkal van feltöltve. A létrehozási idő a főkiszolgálón tárolt adatok mennyiségétől és az utolsó heti teljes biztonsági mentés óta eltelt idővel függ. Az idő néhány perctől akár több órára is terjedhet.
 
 Minden replika engedélyezve van a tárterület [automatikus növelésére](concepts-pricing-tiers.md#storage-auto-grow). Az automatikus növekedés funkció lehetővé teszi, hogy a replika megőrizze az általa replikált adatmennyiséget, és megakadályozza, hogy a replikálás megszakítása a tárolási hibák miatt meghiúsult.

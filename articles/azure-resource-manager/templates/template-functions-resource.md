@@ -3,12 +3,12 @@ title: Sablon functions – erőforrások
 description: Leírja a Azure Resource Manager-sablonban használandó függvényeket az erőforrások értékeinek lekéréséhez.
 ms.topic: conceptual
 ms.date: 01/20/2020
-ms.openlocfilehash: 1b860876b0d8967a6a3f90c7bb68f20d6c442109
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 9021d7419820a9d321658c2b1fea8edb7e79b9a0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513864"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773240"
 ---
 # <a name="resource-functions-for-azure-resource-manager-templates"></a>Azure Resource Manager-sablonokhoz tartozó Resource functions
 
@@ -45,7 +45,7 @@ A [bővítmény erőforrásának](../management/extension-resource-types.md)erő
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A függvény által visszaadott erőforrás-azonosító alapszintű formátuma a következő:
 
@@ -135,7 +135,7 @@ A (z) * lista lehetséges felhasználási módjai a következő táblázatban l�
 | Microsoft. AnalysisServices/kiszolgálók | [listGatewayStatus](/rest/api/analysisservices/servers/listgatewaystatus) |
 | Microsoft. AppConfiguration/configurationStores | Listkeys műveletének beolvasása |
 | Microsoft. Automation/automationAccounts | [Listkeys műveletének beolvasása](/rest/api/automation/keys/listbyautomationaccount) |
-| Microsoft.Batch/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
+| Microsoft. batch/batchAccounts | [listkeys műveletének beolvasása](/rest/api/batchmanagement/batchaccount/getkeys) |
 | Microsoft. BatchAI/munkaterületek/kísérletek/feladatok | [listoutputfiles](/rest/api/batchai/jobs/listoutputfiles) |
 | Microsoft. Blockchain/blockchainMembers | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/blockchainmembers/listapikeys) |
 | Microsoft. Blockchain/blockchainMembers/transactionNodes | [listApiKeys](/rest/api/blockchain/2019-06-01-preview/transactionnodes/listapikeys) |
@@ -256,7 +256,7 @@ Annak megállapításához, hogy mely erőforrástípusok rendelkeznek lista-mű
   az provider operation show --namespace Microsoft.Storage --query "resourceTypes[?name=='storageAccounts'].operations[].name | [?contains(@, 'list')]"
   ```
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A visszaadott objektum a használt lista függvénytől függ. A Storage-fiók Listkeys műveletének beolvasása például a következő formátumot adja vissza:
 
@@ -369,7 +369,7 @@ Egy erőforrás-szolgáltatóval és annak támogatott erőforrásaival kapcsola
 | providerNamespace |Igen |sztring |A szolgáltató névtere |
 | resourceType |Nem |sztring |Az erőforrás típusa a megadott névtéren belül. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Minden támogatott típus a következő formátumban lesz visszaadva: 
 
@@ -443,11 +443,11 @@ Egy erőforrás futásidejű állapotát jelképező objektumot ad vissza.
 
 | Paraméter | Szükséges | Type (Típus) | Leírás |
 |:--- |:--- |:--- |:--- |
-| resourceName vagy resourceIdentifier |Igen |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Egy korábban központilag telepített erőforrásra hivatkozva adja meg az erőforrás-azonosítót. |
+| resourceName vagy resourceIdentifier |Igen |sztring |Egy erőforrás neve vagy egyedi azonosítója. Ha az aktuális sablonban lévő erőforrásra hivatkozik, csak az erőforrás nevét adja meg paraméterként. Ha egy korábban központilag telepített erőforrásra hivatkozik, vagy ha az erőforrás neve nem egyértelmű, adja meg az erőforrás-azonosítót. |
 | apiVersion |Nem |sztring |A megadott erőforrás API-verziója. Adja meg ezt a paramétert, ha az erőforrás nincs kiépítve ugyanazon a sablonon belül. Általában az **éééé-hh-nn**formátumban kell megadni. Az erőforrás érvényes API-verzióihoz lásd: [sablon-hivatkozás](/azure/templates/). |
 | Teljes |Nem |sztring |Az érték, amely megadja, hogy a rendszer visszaadja-e a teljes erőforrás-objektumot. Ha nem ad meg `'Full'`, a rendszer csak az erőforrás tulajdonságok objektumát adja vissza. A teljes objektum olyan értékeket tartalmaz, mint például az erőforrás-azonosító és a hely. |
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Minden erőforrástípus a hivatkozási függvény különböző tulajdonságait adja vissza. A függvény nem ad vissza egyetlen, előre definiált formátumot. Emellett a visszaadott érték attól függően különbözik, hogy a teljes objektumot adta-e meg. Az erőforrástípus tulajdonságainak megtekintéséhez adja vissza az objektumot a kimenetek szakaszban, ahogy az a példában látható.
 
@@ -460,11 +460,11 @@ A **Reference** függvénnyel általában egy adott értéket adhat vissza egy o
 ```json
 "outputs": {
     "BlobUri": {
-        "value": "[reference(concat('Microsoft.Storage/storageAccounts/', parameters('storageAccountName')), '2016-01-01').primaryEndpoints.blob]",
+        "value": "[reference(resourceId('Microsoft.Storage/storageAccounts', parameters('storageAccountName')).primaryEndpoints.blob]",
         "type" : "string"
     },
     "FQDN": {
-        "value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')), '2016-03-30').dnsSettings.fqdn]",
+        "value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName')).dnsSettings.fqdn]",
         "type" : "string"
     }
 }
@@ -476,11 +476,11 @@ Akkor használja a `'Full'`, ha olyan erőforrás-értékekre van szüksége, am
 {
   "type": "Microsoft.KeyVault/vaults",
   "properties": {
-    "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
+    "tenantId": "[subscription().tenantId]",
     "accessPolicies": [
       {
-        "tenantId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.tenantId]",
-        "objectId": "[reference(concat('Microsoft.Compute/virtualMachines/', variables('vmName')), '2017-03-30', 'Full').identity.principalId]",
+        "tenantId": "[reference(reosurceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.tenantId]",
+        "objectId": "[reference(resourceId('Microsoft.Compute/virtualMachines', variables('vmName')), '2019-03-01', 'Full').identity.principalId]",
         "permissions": {
           "keys": [
             "all"
@@ -520,10 +520,10 @@ Ha olyan erőforrásra hivatkozik, amely nem ugyanabban a sablonban van telepít
 "value": "[reference(resourceId(parameters('storageResourceGroup'), 'Microsoft.Storage/storageAccounts', parameters('storageAccountName')), '2018-07-01')]"
 ```
 
-Annak elkerülése érdekében, hogy a rendszer melyik erőforrásra hivatkozik, megadhat egy teljesen minősített erőforrás nevét.
+Annak elkerülése érdekében, hogy a rendszer melyik erőforrásra hivatkozik, megadhat egy teljesen minősített erőforrás-azonosítót.
 
 ```json
-"value": "[reference(concat('Microsoft.Network/publicIPAddresses/', parameters('ipAddressName')))]"
+"value": "[reference(resourceId('Microsoft.Network/publicIPAddresses', parameters('ipAddressName'))]"
 ```
 
 Egy erőforrásra vonatkozó teljes körű hivatkozás létrehozásakor a szegmensek és a név összevonásának sorrendje nem csupán a kettő összefűzése. Ehelyett a névtér után olyan *típusú/név* párokat használjon, amelyek legalább a legpontosabbak:
@@ -534,6 +534,8 @@ Példa:
 
 `Microsoft.Compute/virtualMachines/myVM/extensions/myExt` helyes `Microsoft.Compute/virtualMachines/extensions/myVM/myExt` helytelen
 
+Az erőforrás-AZONOSÍTÓk létrehozásának egyszerűbbé tétele érdekében a `concat()` függvény helyett használja a dokumentumban ismertetett `resourceId()` függvényeket.
+
 ### <a name="get-managed-identity"></a>Felügyelt identitás beolvasása
 
 [Az Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/overview.md) az egyes erőforrásokhoz implicit módon létrehozott [bővítmény-erőforrástípusok](../management/extension-resource-types.md) . Mivel a felügyelt identitás nincs explicit módon definiálva a sablonban, hivatkozni kell arra az erőforrásra, amelyre az identitás vonatkozik. A `Full` használatával beolvashatja az összes tulajdonságot, beleértve az implicit módon létrehozott identitást is.
@@ -541,7 +543,7 @@ Példa:
 Ha például egy virtuálisgép-méretezési csoportra alkalmazott felügyelt identitás bérlői AZONOSÍTÓját szeretné lekérni, használja a következőt:
 
 ```json
-"tenantId": "[reference(concat('Microsoft.Compute/virtualMachineScaleSets/',  variables('vmNodeType0Name')), variables('vmssApiVersion'), 'Full').Identity.tenantId]"
+"tenantId": "[reference(resourceId('Microsoft.Compute/virtualMachineScaleSets',  variables('vmNodeType0Name')), '2019-03-01', 'Full').Identity.tenantId]"
 ```
 
 ### <a name="reference-example"></a>Példa hivatkozásra
@@ -672,7 +674,7 @@ resourceGroup()
 
 Egy olyan objektumot ad vissza, amely az aktuális erőforráscsoportot jelképezi. 
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A visszaadott objektum formátuma a következő:
 
@@ -764,7 +766,7 @@ Egy erőforrás egyedi azonosítóját adja vissza. Ezt a függvényt akkor hasz
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az erőforrás-azonosítót a következő formátumban adja vissza:
 
@@ -903,7 +905,7 @@ subscription()
 
 Az aktuális üzemelő példányra vonatkozó előfizetés részleteit adja vissza. 
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 A függvény a következő formátumot adja vissza:
 
@@ -957,7 +959,7 @@ Az előfizetési szinten üzembe helyezett erőforrás egyedi azonosítóját ad
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az azonosító a következő formátumban lesz visszaadva:
 
@@ -1040,7 +1042,7 @@ A bérlői szinten üzembe helyezett erőforrás egyedi azonosítóját adja vis
 
 Ha az erőforrás típusa több szegmenst tartalmaz, folytassa a paraméterek hozzáadását paraméterként.
 
-### <a name="return-value"></a>Visszatérítési érték
+### <a name="return-value"></a>Visszatérési érték
 
 Az azonosító a következő formátumban lesz visszaadva:
 

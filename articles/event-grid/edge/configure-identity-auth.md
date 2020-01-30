@@ -9,16 +9,16 @@ ms.date: 10/05/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 336b6157128468169264d6ffa9564da4d9338aae
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: 0aedeea2a6ad08e1627c2d1a6ebde6c91a4d02d9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992443"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841765"
 ---
 # <a name="configure-identity-for-the-event-grid-module"></a>Identitás konfigurálása a Event Grid modulhoz
 
-Ez a cikk példákat mutat be egy Event Grid modul lehetséges identitási konfigurációjáról. Alapértelmezés szerint a Event Grid modul a IoT biztonsági démon által konfigurált identitás-tanúsítványt fogja bemutatni. Az Identity Certificate a Event Grid modulban jelenik meg, amely a kimenő hívásokat mutatja be, amikor eseményeket kézbesít. Egy Event Grid esemény előfizetője ellenőrizheti, hogy valóban az a Event Grid modul, amely elküldje az eseményt az esemény elfogadása előtt.
+Ebből a cikkből megtudhatja, hogyan konfigurálhatja a rácshoz tartozó identitást az Edge-ben. Alapértelmezés szerint a Event Grid modul a IoT biztonsági démon által konfigurált identitás-tanúsítványt jeleníti meg. Az Edge Event Grid a kimenő hívásával mutatja be az identitási tanúsítványát, amikor eseményeket küld. Az előfizető ezt követően ellenőrizheti, hogy az a Event Grid modul, amely elküldje az eseményt az elfogadás előtt.
 
 Tekintse meg a [biztonsági és hitelesítési](security-authentication.md) útmutatót az összes lehetséges konfigurációhoz.
 
@@ -28,8 +28,8 @@ A következő példa egy olyan konfigurációt mutat be, amely a kimenő hívás
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=true",
-    "outbound:clientAuth:clientCert:source=IoTEdge"
+    "outbound__clientAuth__clientCert__enabled=true",
+    "outbound__clientAuth__clientCert__source=IoTEdge"
   ]
 }
  ```
@@ -40,7 +40,7 @@ Az alábbi példa egy olyan konfigurációt mutat be, amely nem mutatja be a kim
 ```json
  {
   "Env": [
-    "outbound:clientAuth:clientCert:enabled=false"
+    "outbound__clientAuth__clientCert__enabled=false"
   ]
 }
  ```

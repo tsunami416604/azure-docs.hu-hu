@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk leírja, hogyan elemezheti a virtuális gépek biztonságát a biztonsági csoport nézettel a PowerShell használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 04e76b49-6a1b-4d0f-9a9b-51cf2f4df5a2
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 3127d60263437a18e0c8d9a98ebdfad31049c58d
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 4cba2c7e25b5f76b0638da1c551514f102247ae0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277916"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840791"
 ---
 # <a name="analyze-your-virtual-machine-security-with-security-group-view-using-powershell"></a>A virtuális gép biztonságának elemzése a biztonsági csoport nézetben a PowerShell használatával
 
@@ -34,13 +31,13 @@ A biztonsági csoport nézet a virtuális gépekre alkalmazott konfigurált és 
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ebben az esetben a `Get-AzNetworkWatcherSecurityGroupView` parancsmagot futtatja a biztonsági szabály adatainak lekéréséhez.
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 A cikkben ismertetett forgatókönyv egy adott virtuális gép konfigurált és érvényes biztonsági szabályait kérdezi le.
 

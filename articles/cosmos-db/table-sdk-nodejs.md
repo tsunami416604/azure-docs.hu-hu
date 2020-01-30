@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB Table API a node.js-ben
-description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
+title: Azure Cosmos DB Table API a Node. js-hez
+description: Ismerkedjen meg a Azure Cosmos DB Table APIekkel, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és az egyes verziókon végrehajtott módosításokat.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: nodejs
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: b849db465bb9a30456e9f93f9439c53cb26c9e52
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 0f94ae4a4b5ad7806658c4ae54146d4ac940750e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480173"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771295"
 ---
-# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a node.js-ben: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-table-api-for-nodejs-release-notes-and-resources"></a>Azure Cosmos DB Table API Node. js-hez: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,8 +27,8 @@ ms.locfileid: "66480173"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NPM](https://www.npmjs.com/package/azure-storage)|
-|**API-dokumentáció**|[NODE.js API dokumentációja](https://azure.github.io/azure-storage-node/)|
-|**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-storage-node#contribute)|
+|**API-dokumentáció**|[Node. js API-referenciák dokumentációja](https://azure.github.io/azure-storage-node/)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-storage-node#contribute)|
 
 > [!IMPORTANT]
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
@@ -37,20 +37,20 @@ ms.locfileid: "66480173"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Általánosan elérhető kiadások
+* Általánosan elérhető kiadás
 
-## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
-A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |2017\. november 15. |--- |
+| [1.0.0](#1.0.0) |November 15., 2017 |--- |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
+## <a name="see-also"></a>Lásd még:
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
 

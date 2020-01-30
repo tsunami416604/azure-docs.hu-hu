@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 10/16/2019
+ms.date: 1/27/2020
 ms.author: mlottner
-ms.openlocfilehash: aaf3111270687e3921d542d87981a25868842f93
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: ac0152d0164c3577ade3d862e9512b920c451518
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72554925"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766507"
 ---
 # <a name="azure-security-center-for-iot-security-alerts"></a>IoT biztonsági riasztások Azure Security Center
 
@@ -30,7 +30,7 @@ A riasztás a lehetséges kompromisszumok indikátorként működik, és meg kel
 
 Ebben a cikkben megtalálja a beépített riasztások listáját, amelyek a IoT Hub és/vagy IoT eszközökön indíthatók el.
 A beépített riasztások mellett a Azure Security Center for IoT lehetővé teszi egyéni riasztások definiálását a várt IoT Hub és/vagy az eszköz viselkedése alapján.
-További részleteket az [egyéni riasztások létrehozása](quickstart-create-custom-alerts.md)című témakörben talál.
+További részletek: [testreszabható riasztások](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Beépített riasztások a IoT-eszközökhöz
 
@@ -88,13 +88,13 @@ További részleteket az [egyéni riasztások létrehozása](quickstart-create-c
 | Súlyosság | Név                                                                         | Leírás | Javasolt szervizelés|
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|----------|
 |**Közepes** súlyosság|  |  |  |
-|  Új tanúsítvány lett hozzáadva egy IoT Hubhoz  | Közepes                                     |@No__t_0% {DescCertificateName} \' nevű tanúsítványt adott hozzá a (z) IoT Hub \'% {DescIoTHubName} \'hoz. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.| 1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél adta hozzá. <br> 2. Ha nem adtak hozzá egy nem megfelelő fél, távolítsa el a tanúsítványt, és a riasztást a szervezeti biztonsági csapattal bővítse.  |
-|  A tanúsítvány törölve lett egy IoT Hubból  | Közepes                             | A (z) \'% {DescCertificateName} \' nevű tanúsítvány törölve lett IoT Hub \'% {DescIoTHubName} \'ból. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.| 1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította. <br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a szervezeti biztonsági csapathoz. |
-| Sikertelen kísérlet történt tanúsítvány hozzáadására egy IoT Hub   | Közepes    | Sikertelen kísérlet történt a (z)% {DescCertificateName} \' tanúsítvány hozzáadására a (z)% {DescIoTHubName} \' IoT Hub \' \'. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.|   Győződjön meg arról, hogy csak a jogosult felek kapnak engedélyeket a tanúsítványok módosításához.  |
-|  Sikertelen kísérlet történt a tanúsítvány törlésére egy IoT Hub | Közepes  | Sikertelen kísérlet történt a (z)% {DescCertificateName} \' tanúsítvány törlésére a (z)% {DescIoTHubName} \' IoT Hub \' \'. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet. |Győződjön meg arról, hogy a tanúsítványok módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
+|  Új tanúsítvány lett hozzáadva egy IoT Hubhoz  | Közepes                                     |\'% {DescCertificateName}\' nevű tanúsítványt adott hozzá a (z) IoT Hub \'% {DescIoTHubName}\'hoz. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.| 1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél adta hozzá. <br> 2. Ha nem adtak hozzá egy nem megfelelő fél, távolítsa el a tanúsítványt, és a riasztást a szervezeti biztonsági csapattal bővítse.  |
+|  A tanúsítvány törölve lett egy IoT Hubból  | Közepes                             | A (z) \'% {DescCertificateName}\' nevű tanúsítvány törölve lett IoT Hub \'% {DescIoTHubName}\'ból. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.| 1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította. <br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a szervezeti biztonsági csapathoz. |
+| Sikertelen kísérlet történt tanúsítvány hozzáadására egy IoT Hub   | Közepes    | Sikertelen kísérlet történt a (z)% {DescCertificateName} \'tanúsítvány hozzáadására a (z)% {DescIoTHubName}\'IoT Hub \'\'. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet.|   Győződjön meg arról, hogy csak a jogosult felek kapnak engedélyeket a tanúsítványok módosításához.  |
+|  Sikertelen kísérlet történt a tanúsítvány törlésére egy IoT Hub | Közepes  | Sikertelen kísérlet történt a (z)% {DescCertificateName} \'tanúsítvány törlésére a (z)% {DescIoTHubName}\'IoT Hub \'\'. Ha ezt a műveletet egy jogosulatlan fél hozta létre, akkor rosszindulatú tevékenységet jelezhet. |Győződjön meg arról, hogy a tanúsítványok módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
 |**Alacsony** súlyosság|  |  |  |
 |   Kísérlet történt az észlelt IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére   | Alacsony     | A rendszer a IoT Hub diagnosztikai beállításainak hozzáadására vagy szerkesztésére tett kísérletet észlelt. A diagnosztikai beállítások lehetővé teszik a tevékenységi nyomvonalak újbóli létrehozását vizsgálat céljára, amikor biztonsági incidens következik be, vagy a hálózat biztonsága sérül. Ha ezt a műveletet nem egy engedélyező fél hozta létre, akkor kártékony tevékenységet jelezhet.  |1. Győződjön meg arról, hogy a tanúsítványt egy, a hitelesítő fél eltávolította.<br> 2. Ha a tanúsítványt nem a hitelesítő fél törölte, adja hozzá újra a tanúsítványt, és a riasztást a tájékoztatási biztonsági csapatnak.
-|   Kísérlet történt diagnosztikai beállítás törlésére egy észlelt IoT Hub        | Alacsony      | A (z)% {DescAttemptStatusMessage} \' megkísérelte a (z)% {DescIoTHubName} \' IoT Hub \'% {DescDiagnosticSettingName} \'ához tartozó diagnosztikai \' beállítás hozzáadását vagy szerkesztését. A diagnosztikai beállítás lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. Ha ezt a műveletet nem egy engedélyező fél hajtotta végre, akkor előfordulhat, hogy rosszindulatú tevékenységet jelez. |Győződjön meg arról, hogy a diagnosztikai beállítások módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
+|   Kísérlet történt diagnosztikai beállítás törlésére egy észlelt IoT Hub        | Alacsony      | A (z)% {DescAttemptStatusMessage}\' megkísérelte a (z)% {DescIoTHubName} \'IoT Hub\'% {DescDiagnosticSettingName}\'ához tartozó diagnosztikai \'beállítás hozzáadását vagy szerkesztését. A diagnosztikai beállítás lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. Ha ezt a műveletet nem egy engedélyező fél hajtotta végre, akkor előfordulhat, hogy rosszindulatú tevékenységet jelez. |Győződjön meg arról, hogy a diagnosztikai beállítások módosítására vonatkozó engedélyek csak egy jogosult fél számára vannak megadva.
 |
 
 ## <a name="next-steps"></a>Következő lépések

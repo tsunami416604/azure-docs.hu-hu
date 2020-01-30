@@ -5,20 +5,20 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 02/18/2019
 ms.author: cshoe
-ms.openlocfilehash: a9c45321d12b659febfeb4913d66ea3732813918
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9b9e39776e519a91a4464532e11e85da711087b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75769523"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766249"
 ---
 # <a name="azure-functions-binding-expression-patterns"></a>Azure Functions kötési kifejezés mintái
 
 Az [Eseményindítók és kötések](./functions-triggers-bindings.md) egyik leghatékonyabb funkciója a *kötés kifejezése*. A *function. JSON* fájlban és a függvény paraméterei és kódja területen olyan kifejezéseket használhat, amelyek különböző forrásokból származó értékekre vannak feloldva.
 
-A legtöbb ilyen kifejezés könnyen azonosítható, mivel kapcsos zárójelek között vannak. Egy üzenetsor-kiváltó függvényben például `{queueTrigger}` a rendszer feloldja az üzenetsor-üzenet szövegét. Ha egy blob kimeneti kötés `path` tulajdonsága `container/{queueTrigger}`, és a függvényt egy üzenetsor-üzenet `HelloWorld`indítja el, a rendszer létrehoz egy `HelloWorld` nevű blobot.
+A legtöbb kifejezést kapcsos zárójelek közé kell becsomagolni. Egy üzenetsor-kiváltó függvényben például `{queueTrigger}` a rendszer feloldja az üzenetsor-üzenet szövegét. Ha egy blob kimeneti kötés `path` tulajdonsága `container/{queueTrigger}`, és a függvényt egy üzenetsor-üzenet `HelloWorld`indítja el, a rendszer létrehoz egy `HelloWorld` nevű blobot.
 
-Kötéskifejezések típusai
+Kötési kifejezések típusai
 
 * [Alkalmazásbeállítások](#binding-expressions---app-settings)
 * [Trigger fájljának neve](#trigger-file-name)
@@ -67,7 +67,7 @@ public static void Run(
 }
 ```
 
-## <a name="trigger-file-name"></a>Eseményindító fájl neve
+## <a name="trigger-file-name"></a>Trigger fájljának neve
 
 A blob-triggerek `path` egy olyan minta lehet, amely lehetővé teszi az indító blob nevét más kötésekben és a függvény kódjában. A minta tartalmazhat olyan szűrési feltételeket is, amelyek meghatározzák, hogy mely Blobok indíthatnak el egy függvényt.
 
@@ -131,9 +131,21 @@ public static void Run(
 
 ```
 
-A fájlnevek részeihez (például a kiterjesztéshez) is létrehozhat kifejezéseket. A kifejezéseknek és mintáknak a blob Path karakterláncban történő használatáról további információt a [Storage blob kötési referenciájában](functions-bindings-storage-blob.md)talál.
+A fájlnevek részeihez is létrehozhat kifejezéseket. A következő példában a függvény csak olyan fájlneveken aktiválódik, amelyek megfelelnek a mintának: `anyname-anyfile.csv`
 
-## <a name="trigger-metadata"></a>Eseményindító metaadatok
+```json
+{
+    "name": "myBlob",
+    "type": "blobTrigger",
+    "direction": "in",
+    "path": "testContainerName/{date}-{filetype}.csv",
+    "connection": "OrderStorageConnection"
+}
+```
+
+A kifejezéseknek és mintáknak a blob Path karakterláncban történő használatáról további információt a [Storage blob kötési referenciájában](functions-bindings-storage-blob.md)talál.
+
+## <a name="trigger-metadata"></a>Trigger metaadatainak
 
 Az eseményindító által biztosított adattartalom (például a függvényt kiváltó üzenetsor-üzenet tartalma) mellett számos eseményindító további metaadat-értékeket is biztosít. Ezek az értékek a (z) C# és a ( F# z) és a (z) `context.bindings` objektumban található bemeneti paraméterekként használhatók a JavaScriptben. 
 
@@ -141,7 +153,7 @@ Az Azure üzenetsor-tárolói trigger például a következő tulajdonságokat t
 
 * QueueTrigger – az üzenet tartalmának elindítása, ha érvényes karakterlánc
 * DequeueCount
-* ExpirationTime
+* Expirationtime tulajdonságok
 * Azonosító
 * InsertionTime
 * NextVisibleTime
@@ -169,7 +181,7 @@ Ezek a metaadat-értékek a *function. JSON* fájl tulajdonságaiban érhetők e
 
 Az egyes triggerek metaadat-tulajdonságainak részletes ismertetését a megfelelő hivatkozási cikk ismerteti. Példa: [üzenetsor-trigger metaadatainak](functions-bindings-storage-queue.md#trigger---message-metadata). A dokumentáció a portál Integration ( **integrálás** ) lapján, a kötési konfiguráció terület alatti **dokumentáció** szakaszban is elérhető.  
 
-## <a name="json-payloads"></a>JSON-adattartalmak
+## <a name="json-payloads"></a>JSON-adattartalom
 
 Ha egy trigger adattartalma JSON, akkor a más kötésekhez tartozó tulajdonságokat a konfigurációban tekintheti meg ugyanabban a függvényben és a függvény kódjában.
 

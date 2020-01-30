@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/24/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: fdb925f820cad79fe68e7082f4ed63292a7d9444
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 8bda1d3bcce37cbb7b5306d460bddd4652349fe9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951088"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840349"
 ---
 # <a name="define-an-openid-connect-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OpenID Connect műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -103,6 +103,6 @@ Ha az Identitáskezelő átirányítási URI-JÁT konfigurálja, írja be a `htt
 
 Példák:
 
-- [Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával](active-directory-b2c-custom-setup-msa-idp.md)
-- [Bejelentkezés Azure AD-fiókok használatával](active-directory-b2c-setup-aad-custom.md)
-- [Lehetővé teszi, hogy a felhasználók egyéni szabályzatok használatával jelentkezzenek be egy több-bérlős Azure AD-identitás-szolgáltatóba](active-directory-b2c-setup-commonaad-custom.md)
+- [Microsoft-fiók (MSA) hozzáadása identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-microsoft-account-custom.md)
+- [Bejelentkezés Azure AD-fiókok használatával](identity-provider-azure-ad-single-tenant-custom.md)
+- [Lehetővé teszi, hogy a felhasználók egyéni szabályzatok használatával jelentkezzenek be egy több-bérlős Azure AD-identitás-szolgáltatóba](identity-provider-azure-ad-multi-tenant-custom.md)

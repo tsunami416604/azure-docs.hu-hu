@@ -9,18 +9,20 @@ ms.topic: conceptual
 author: FrancescaLazzeri
 ms.author: lazzeri
 ms.date: 11/04/2019
-ms.openlocfilehash: b43f2f351345f05c3eb56a84fb1a0eadb4826707
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 82d4131170002a3d9ffd78933c9dc566c3b1d921
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771512"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767634"
 ---
 # <a name="machine-learning-algorithm-cheat-sheet-for-azure-machine-learning-designer"></a>A Azure Machine Learning Designer Machine Learning algoritmushoz tartozó Cheat Sheet
 
 A **Azure Machine learning algoritmust tartalmazó Cheat Sheet** segítségével kiválaszthatja a prediktív elemzési modell megfelelő algoritmusát.
 
-A Azure Machine Learning a ***besorolás***, az ***ajánló rendszerek***, a ***fürtözés***, a ***rendellenességek észlelése***, a ***regresszió*** és a ***szöveges elemzési*** családok nagy könyvtára. Mindegyik úgy van kialakítva, hogy más típusú gépi tanulási problémát lehessen kezelni.
+A Azure Machine Learning a ***besorolás***, az ***ajánló rendszerek***, a ***fürtözés***, a ***rendellenességek észlelése***, a ***regresszió***és a ***szöveges elemzési*** családok nagy könyvtára. Mindegyik úgy van kialakítva, hogy más típusú gépi tanulási problémát lehessen kezelni.
+
+További útmutatás: [algoritmusok kiválasztása](how-to-select-algorithms.md)
 
 ## <a name="download-machine-learning-algorithm-cheat-sheet"></a>Letöltés: Machine Learning algoritmus Cheat Sheet
 
@@ -32,7 +34,7 @@ Töltse le és nyomtassa ki a Machine Learning algoritmust tartalmazó Cheat lap
 
 ## <a name="how-to-use-the-machine-learning-algorithm-cheat-sheet"></a>A Machine Learning algoritmust tartalmazó Cheat adatlap használata
 
-Az ebben az algoritmusban felajánlott javaslatok megközelítik a szabályokat. Néhány lehet hajlított, és néhány nyíltan megsérthető. Ennek célja, hogy kiindulási pontot javasoljon. Ne féljen, hogy az adatain alapuló több algoritmus között ne kelljen Head-to-Head versenyt futtatni. Egyszerűen nem helyettesíthető az egyes algoritmusok alapelveinek és az adatait létrehozó rendszernek az értelmezése.
+Az ebben az algoritmusban felajánlott javaslatok megközelítik a szabályokat. Néhány lehet hajlított, és néhány nyíltan megsérthető. Ez a Cheat-táblázat kiindulási pontot javasol. Ne féljen, hogy az adatain alapuló több algoritmus között ne kelljen Head-to-Head versenyt futtatni. Egyszerűen nem helyettesíthető az egyes algoritmusok alapelveinek és az adatait létrehozó rendszernek az értelmezése.
 
 Minden gépi tanulási algoritmusnak saját stílusa vagy induktív torzítása van. Egy adott probléma esetén több algoritmus is lehetséges, és az egyik algoritmus jobban illeszkedik, mint a többi. Ez azonban nem mindig lehet előre, ami a legjobb illeszkedés. Ilyen esetekben több algoritmus is szerepel a Cheat táblázatban. Egy megfelelő stratégia egy algoritmus kipróbálására szolgál, és ha az eredmények még nem kielégítőek, próbálkozzon a többivel. 
 
@@ -48,17 +50,17 @@ A felügyelt tanulásban az egyes adatpontok címkéje vagy kategóriája vagy �
 
 ### <a name="unsupervised-learning"></a>Felügyelet nélküli tanulás
 
-A nem felügyelt tanulásban az adatpontokhoz nem tartoznak címkék. Ehelyett egy nem felügyelt tanulási algoritmus célja az, hogy valamilyen módon szervezze az adatmennyiséget, vagy leírja a szerkezetét. Ez azt jelentheti, hogy a fürtökbe csoportosítva, a K-azt jelenti, vagy különböző módokon keresi az összetett adatnézeteket, hogy egyszerűbben megjelenjenek.
+A nem felügyelt tanulásban az adatpontokhoz nem tartoznak címkék. Ehelyett egy nem felügyelt tanulási algoritmus célja az, hogy valamilyen módon szervezze az adatmennyiséget, vagy leírja a szerkezetét. A nem felügyelt tanulási csoportokba tartozó adatcsoportok, mint K-azt jelenti, hogy nem, vagy különböző módokon keresi az összetett adatnézeteket, így egyszerűbbnek tűnik.
 
 ### <a name="reinforcement-learning"></a>Megerősítő tanulás
 
-A megerősítő tanulásban az algoritmus az egyes adatpontokra adott válaszként kiválaszt egy műveletet. A robotika közös megközelítése, amelyben egy adott időpontban az érzékelő beolvasása egy adatpont, és az algoritmusnak a robot következő műveletét kell választania. A eszközök internetes hálózata-alkalmazások számára is természetes. A tanulási algoritmus rövid idő múlva egy jutalom jelzést is kap, amely azt jelzi, hogy milyen jó döntés volt. Ennek alapján az algoritmus a legmagasabb jutalom elérése érdekében módosítja a stratégiáját. 
+A megerősítő tanulásban az algoritmus az egyes adatpontokra adott válaszként kiválaszt egy műveletet. A robotika közös megközelítése, amelyben egy adott időpontban az érzékelő beolvasása egy adatpont, és az algoritmusnak a robot következő műveletét kell választania. A eszközök internetes hálózata-alkalmazások számára is természetes. A tanulási algoritmus rövid idő múlva egy jutalom jelzést is kap, amely azt jelzi, hogy milyen jó döntés volt. A jel alapján az algoritmus módosítja a stratégiát a legmagasabb jutalom elérése érdekében. 
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Ismerkedjen meg a studióval Azure Machine learning és az Azure Portal](overview-what-is-azure-ml.md).
+* Az [algoritmusok kiválasztásával](how-to-select-algorithms.md) kapcsolatos további útmutatásért lásd:
 
-* Tekintse meg az algoritmus [és a modul hivatkozásában](algorithm-module-reference/module-reference.md)található algoritmusok és modulok listáját.
+* [Ismerkedjen meg a studióval Azure Machine learning és az Azure Portal](overview-what-is-azure-ml.md).
 
 * [Oktatóanyag: előrejelzési modell létrehozása Azure Machine learning Designerben](tutorial-designer-automobile-price-train-score.md).
 

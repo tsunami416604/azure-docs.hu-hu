@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.topic: conceptual
 ms.date: 12/27/2019
 ms.custom: seodec18
-ms.openlocfilehash: b70fcb1d63636984e1d014723b50170651a553d9
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 0fef7d6f59b8893ff400914f491f421cddf436b7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156879"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842920"
 ---
 # <a name="configure-a-development-environment-for-azure-machine-learning"></a>Fejlesztési környezet konfigurálása Azure Machine Learninghoz
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -25,7 +25,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhat egy fejlesztési környezet
 
 A következő táblázat a jelen cikkben tárgyalt összes fejlesztési környezetet tartalmazza, valamint az előnyeit és hátrányait.
 
-| Környezet | Előnyök | Hátrányok |
+| Környezet | Szakemberek | Hátrányok |
 | --- | --- | --- |
 | [Felhőalapú Azure Machine Learning számítási példány (előzetes verzió)](#compute-instance) | A legegyszerűbb módszer a kezdéshez. A teljes SDK már telepítve van a munkaterület virtuális gépén, és a jegyzetfüzet-oktatóanyagok előre klónozottak, és készen állnak a futtatásra. | A fejlesztési környezet és a függőségek szabályozásának hiánya. A Linux rendszerű virtuális gépekkel kapcsolatos további költségek (a virtuális gép leállítható, ha nem használatban van a költségek elkerülése érdekében). Tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/virtual-machines/linux/). |
 | [Helyi környezet](#local) | A fejlesztési környezet és a függőségek teljes körű vezérlése. Bármilyen felépíthető eszközzel, környezettel vagy tetszőleges IDE-val futtatható. | A kezdéshez tovább tart. Telepíteni kell a szükséges SDK-csomagokat, és a környezetnek is telepítve kell lennie, ha még nem rendelkezik ilyennel. |
@@ -59,7 +59,7 @@ A [helyi számítógép](#local)SDK-környezetének telepítéséhez a [Jupyter 
 A Azure Machine Learning [számítási példány (előzetes verzió)](concept-compute-instance.md) egy biztonságos felhőalapú Azure-munkaállomás, amely Jupyter notebook-kiszolgálóval, JupyterLab és teljes mértékben előkészített ml-környezettel biztosítja az adatszakértőket.
 
 > [!NOTE]
-> A számítási példányok csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületekhez érhetők el.
+> A számítási példányok csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, **Észak-Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .
 
 A számítási példányok telepítése és konfigurálása nem szükséges.  Hozzon létre egyet bármikor a Azure Machine Learning munkaterületen belülről. Adjon meg csak egy nevet, és adjon meg egy Azure-beli virtuális gép típusát. Próbálja ki most ezt az [oktatóanyagot: telepítési környezet és munkaterület](tutorial-1st-experiment-sdk-setup.md).
@@ -300,7 +300,7 @@ Használja ezeket a beállításokat:
 | Python-verzió |mindig| 3 |
 | Feldolgozók |mindig| 2 vagy magasabb |
 | Munkavégző csomópont virtuálisgép-típusai <br>(meghatározza az egyidejű ismétlések maximális számát) |Automatizált ML<br>csak| A memóriára optimalizált virtuális gép előnyben részesített |
-| Automatikus skálázás engedélyezése |Automatizált ML<br>csak| Törölje a jelet a |
+| Automatikus skálázás engedélyezése |Automatizált ML<br>csak| Akadálytalan |
 
 A folytatás előtt várjon, amíg a fürt fut.
 
@@ -341,7 +341,7 @@ Databricks-hez készült SDK a Databricks Azure Machine Learning SDK-val **_nem 
 
 Databricks-hez **készült** SDK az automatikus gépi tanulás ![SDK-val a Databricks-on telepített automatikus gépi tanulással](./media/how-to-configure-environment/automlonadb.png)
 
-### <a name="start-exploring"></a>Kezdje el az ismerkedést
+### <a name="start-exploring"></a>Ismerkedés a felfedezéssel
 
 Próbálja ki:
 + Habár több jegyzetfüzet is elérhető, **csak ezek a [minta-jegyzetfüzetek](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/azure-databricks) működnek együtt Azure Databricksokkal.**
@@ -373,7 +373,7 @@ A konfigurációs fájlt háromféleképpen is létrehozhatja:
 
 * **Töltse le a fájlt**: a [Azure Portal](https://ms.portal.azure.com)a munkaterület **Áttekintés** szakaszában válassza a **config. JSON letöltése** lehetőséget.
 
-     ![Azure Portal](./media/how-to-configure-environment/configure.png)
+     ![Azure portál](./media/how-to-configure-environment/configure.png)
 
 * **Hozza létre a fájlt programozott**módon: az alábbi kódrészletben az előfizetés-azonosító, az erőforráscsoport és a munkaterület nevének megadásával csatlakozhat egy munkaterülethez. Ezután menti a munkaterület konfigurációját a következő fájlba:
 

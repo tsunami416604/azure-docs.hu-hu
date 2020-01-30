@@ -5,14 +5,14 @@ services: container-service
 author: jnoller
 ms.service: container-service
 ms.topic: article
-ms.date: 04/01/2019
+ms.date: 01/24/2020
 ms.author: jenoller
-ms.openlocfilehash: c018e511bbeed41bc9caf721562349a37ad0e748
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 9a68a0d0a288a27d67a9615385391c06be2b662d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74707222"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767370"
 ---
 # <a name="support-policies-for-azure-kubernetes-service"></a>Támogatási szabályzatok az Azure Kubernetes Service-hez
 
@@ -42,6 +42,8 @@ A szolgáltatások *kezelése* abban az értelemben történik, hogy a Microsoft
 
 > [!NOTE]
 > Az AK munkavégző csomópontok a Azure Portalban normál Azure IaaS-erőforrásokként jelennek meg. Ezeket a virtuális gépeket azonban egy egyéni Azure-erőforráscsoporthoz helyezik üzembe (az MC\\* előtaggal ellátott előtagja). Az AK munkavégző csomópontok módosíthatók. Például a Secure Shell (SSH) segítségével módosíthatja az AK feldolgozó csomópontokat a normál virtuális gépek módosításakor (azonban nem módosíthatja az alapszintű rendszerképet, és előfordulhat, hogy a módosítások nem maradnak meg frissítés vagy újraindítás közben), és más Azure-erőforrásokat is csatolhat az AK-hoz munkavégző csomópontok. Ha azonban a *sávon kívüli felügyeletet és a testreszabást* hajtja végre, az AK-fürt nem lesz támogatott. Kerülje a munkavégző csomópontok módosítását, kivéve, ha a Microsoft ügyfélszolgálata a módosítások elvégzésére utasítja.
+
+A fent meghatározott, nem támogatott műveletek kiadása, például az összes ügynök csomópontjának lefoglalása nem támogatott, a fürtöt nem támogatja. Az AK fenntartja a jogot arra, hogy archiválja azokat a vezérlési síkokat, amelyek a további 30 napnál nem hosszabb időszakra vonatkozó támogatási irányelvek alapján vannak konfigurálva. Az AK biztonsági mentéseket tart fenn a fürt etcd metaadataiban, és a fürt könnyen újra kiosztható. Ezt az újraosztást bármely PUT művelet kezdeményezheti, amely a fürtöt visszahelyezi a támogatásba, például frissítésre vagy méretezésre az Active Agent-csomópontokra.
 
 ## <a name="shared-responsibility"></a>Közös felelősség
 

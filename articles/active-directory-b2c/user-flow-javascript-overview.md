@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 92925dc32d7f26b224811aa852112a275f112b35
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 3f6d4849b02f320c7479469b4ee56be50e4f8dee
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950833"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840094"
 ---
 # <a name="javascript-and-page-layout-versions-in-azure-active-directory-b2c"></a>JavaScript-és lapelrendezés-verziók a Azure Active Directory B2C
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-A Azure AD B2C a felhasználói felület és az egyéni házirendek felhasználói felületi elemeihez tartalmaz HTML-, CSS-és JavaScript-készletet tartalmazó csomagolt tartalmat. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](active-directory-b2c-overview-custom.md) , vagy engedélyeznie kell azt a portálon a felhasználói folyamatok számára, ki kell választania egy lapelrendezést, és [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
+A Azure AD B2C a felhasználói felület és az egyéni házirendek felhasználói felületi elemeihez tartalmaz HTML-, CSS-és JavaScript-készletet tartalmazó csomagolt tartalmat. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](custom-policy-overview.md) , vagy engedélyeznie kell azt a portálon a felhasználói folyamatok számára, ki kell választania egy lapelrendezést, és [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
 
 Ha engedélyezni kívánja a [JavaScript](javascript-samples.md) ügyféloldali kódját, érdemes meggyőződnie arról, hogy a JavaScript-alapú elemek nem változtathatók meg. Ellenkező esetben előfordulhat, hogy a módosítások váratlan viselkedést okoznak a felhasználói lapokon. Ezen problémák elkerülése érdekében kikényszerítheti a lapelrendezés használatát, és megadhatja a lapelrendezés verzióját. Ez biztosítja, hogy a JavaScripten alapuló összes tartalmi definíció nem változtatható. Ha nem kívánja engedélyezni a JavaScriptet, megadhatja a lapokhoz tartozó lapelrendezés-verziót is.
 

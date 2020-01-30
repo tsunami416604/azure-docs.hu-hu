@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph, carlrab
 manager: cgronlun
 ms.date: 05/29/2019
-ms.openlocfilehash: 0288d8c4710d12d8e67658caab93157c534b75ee
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 7103afc29e4021d950d9a3634b190f4439ecfe8d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758359"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768518"
 ---
 # <a name="quickstart-use-r-with-machine-learning-services-to-query-an-azure-sql-database-preview"></a>Rövid útmutató: az R és a Machine Learning Services használata Azure SQL Database-adatbázisok lekérdezéséhez (előzetes verzió)
 
@@ -29,11 +29,8 @@ Ebben a rövid útmutatóban az R és a Machine Learning Services használatáva
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - Egy [Azure SQL Database-adatbázis](sql-database-single-database-get-started.md)
-  
 - Az R-t engedélyező [Machine learning Services](sql-database-machine-learning-services-overview.md) . [Regisztráljon az előzetes](sql-database-machine-learning-services-overview.md#signup)verzióra.
-
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!IMPORTANT]

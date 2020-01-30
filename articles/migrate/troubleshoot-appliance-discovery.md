@@ -6,12 +6,12 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.topic: troubleshooting
 ms.date: 01/02/2020
-ms.openlocfilehash: d66e792b901742f903dccf7a0e7999db4d02e26a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 3f3604205d4aedffdda128ec4a6b895786245e56
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289526"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772035"
 ---
 # <a name="troubleshoot-the-azure-migrate-appliance-and-discovery"></a>A Azure Migrate készülék és a felderítés hibáinak megoldása
 
@@ -96,7 +96,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
 - Ha érvényesítési hiba történt, tekintse át a Szervizelési útmutatót a hibák kijavításához, majd próbálkozzon újra a **Mentés és a felderítés megkezdése** lehetőséggel.
 
 ## <a name="error-60025-azure-ad-operation-failed"></a>60025-es hiba: nem sikerült az Azure AD-művelet 
-60025-es hiba: "az Azure AD-művelet nem sikerült. Hiba történt az Azure AD-alkalmazás létrehozásakor vagy frissítésekor: akkor következik be, amikor a felderítés elindításához használt Azure-felhasználói fiók eltér a berendezés regisztrálásához használt fióktól. Folytassa a következők egyikével:
+60025-es hiba: "az Azure AD-művelet nem sikerült. Hiba történt az Azure AD-alkalmazás létrehozásakor vagy frissítésekor: akkor következik be, amikor a felderítés elindításához használt Azure-felhasználói fiók eltér a berendezés regisztrálásához használt fióktól. Tegye a következők egyikét:
 
 - Győződjön meg arról, hogy a felderítést kezdeményező felhasználói fiók megegyezik a berendezés regisztrálásához használttal.
 - Adja meg Azure Active Directory alkalmazás hozzáférési engedélyeit ahhoz a felhasználói fiókhoz, amelyhez a felderítési művelet sikertelen.
@@ -113,7 +113,7 @@ Ha a 60030-es vagy a 60031-es hibát kapja, "az Azure Key Vault felügyeleti mű
     1. Nyissa meg a Jegyzettömböt rendszergazdaként.
     2. Nyissa meg a C:\Windows\System32\Drivers\etc\hosts fájlt.
     3. Adja hozzá az IP-címet és az állomásnevet egy sorban. Ismételje meg az összes olyan gazdagépet vagy fürtöt, ahol ez a hiba látható.
-    4. Mentse és zárja be a hosts fájlt.
+    4. Mentse és zárjuk be a Hosts fájlt.
     5. Győződjön meg arról, hogy a készülék tud-e csatlakozni a gazdagépekhez a berendezés-kezelő alkalmazás használatával. 30 perc elteltével a Azure Portalban láthatja a gazdagépek legfrissebb információit.
 
 ## <a name="discovered-vms-not-in-portal"></a>Felderített virtuális gépek nem a portálon
@@ -131,7 +131,7 @@ Ha ez nem működik, és a VMware-kiszolgálókat felkeresi:
 
 ## <a name="vm-data-not-in-portal"></a>A virtuális gép nem a portálon
 
-Ha a felderített virtuális gépek nem jelennek meg a portálon, várjon néhány percet. Akár 30 percet is igénybe vehet, hogy a felderített információ megjelenjen a portálon. Ha a 30 perc után nem áll rendelkezésre adatérték, próbálja meg frissíteni a következőt
+Ha a felderített virtuális gépek nem jelennek meg a portálon, vagy ha a VM-adat elavult, várjon néhány percet. Akár 30 percet is igénybe vehet, hogy a felderített virtuális gépek konfigurációs információi megjelenjenek a portálon. Eltarthat néhány órát az alkalmazásadatok változásainak megjelenítéséhez. Ha ez idő után nem állnak rendelkezésre adatsorok, próbálkozzon a frissítéssel, a következőképpen
 
 1. A **kiszolgálók** > **Azure Migrate kiszolgáló értékelése**lapon válassza az **Áttekintés**lehetőséget.
 2. A **kezelés**területen válassza a **Agent Health**lehetőséget.
@@ -148,7 +148,7 @@ Azure Migrate támogatja az alkalmazások, szerepkörök és szolgáltatások fe
 
 A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 
-**Hiba:** | **Ok** | **Művelet**
+**Hiba** | **Ok** | **Művelet**
 --- | --- | --- | ---
 10000: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat". | Ez akkor fordulhat elő, ha a gép operációs rendszere nem Windows vagy Linux. | Csak az alkalmazás-észlelés használata Windows/Linux rendszeren.
 10001: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba – néhány hiányzó fájl a berendezésben. | Vegye fel a kapcsolatot a Microsoft támogatási szolgálatával.
@@ -166,7 +166,8 @@ A szokásos alkalmazás-felderítési hibák a táblázatban vannak összegezve.
 9009: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Akkor fordulhat elő, ha a kiszolgálón a Windows felhasználói fiókok felügyelete (UAC) beállításai korlátozóak, és megakadályozza a telepített alkalmazások felderítését. | Keressen rá a "felhasználói fiókok felügyelete" beállításokra a kiszolgálón, és konfigurálja az UAC-beállítást a kiszolgálón az alacsonyabb két szint egyikére.
 9010: "nem sikerült beolvasni a kiszolgálót telepített alkalmazások". | Belső hiba lehet.  | TF a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
 8084: "nem sikerült felderíteni az alkalmazásokat VMware-hiba miatt: <Exception from VMware>" | Az Azure Migrate készülék VMware API-kat használ az alkalmazások felderítéséhez. Ez a probléma akkor fordulhat elő, ha a vCenter Server kivételt okoz az alkalmazások felderítésére tett kísérlet során. A VMware hibaüzenet jelenik meg a portálon megjelenített hibaüzenetben. | Keresse meg az üzenetet a [VMware-dokumentációban](https://pubs.vmware.com/vsphere-51/topic/com.vmware.wssdk.apiref.doc/index-faults.html), és kövesse a lépéseket a javításhoz. Ha nem tudja kijavítani, forduljon a Microsoft ügyfélszolgálatához.
-
+9012: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat" | A probléma belső hiba miatt fordulhat elő.  | Ha a probléma 24 órán belül nem oldódik meg, forduljon az ügyfélszolgálathoz.
+9013: "nem sikerült felderíteni a kiszolgálóra telepített alkalmazásokat" | A rendszer minden alkalommal létrehoz egy új ideiglenes profilt, amikor bejelentkezik a virtuális gépre.  | Győződjön meg arról, hogy a megadott vendég felhasználó nem hoz létre ideiglenes profilt.
 
 
 

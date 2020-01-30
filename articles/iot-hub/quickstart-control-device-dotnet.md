@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: a106699f4e3148eba85acc913e6f97be6ce9be66
-ms.sourcegitcommit: 12de9c927bc63868168056c39ccaa16d44cdc646
+ms.openlocfilehash: bffba0ce5481250a696cdf4ec0aed6b59620bfe9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72515093"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773828"
 ---
 # <a name="quickstart-control-a-device-connected-to-an-iot-hub-net"></a>Rövid útmutató: IoT Hubhoz csatlakozó eszköz vezérlése (.NET)
 
@@ -51,7 +51,7 @@ A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Micr
 az extension add --name azure-cli-iot-ext
 ```
 
-Ha még nem tette meg, töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip címről, és csomagolja ki a ZIP-archívumot.
+Ha még nem tette meg, töltse le az Azure IoT C# -mintákat https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ről, és bontsa ki a zip-archívumot.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

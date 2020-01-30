@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/01/2019
 ms.reviewer: sngun
-ms.openlocfilehash: 4b61cbc8a3e870e9fd2123fd3dcbd941c5dde80c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 43a842c3b6d6d421eca4196c7f3facc7876318cd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74786945"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768000"
 ---
 # <a name="work-with-databases-containers-and-items-in-azure-cosmos-db"></a>Adatbázisok, tárolók és elemek használata Azure Cosmos DBban
 
@@ -110,7 +110,7 @@ Attól függően, hogy melyik API-t használja, egy Azure Cosmos-elem a gyűjtem
 
 | Cosmos-entitás | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Tábla API |
 | --- | --- | --- | --- | --- | --- |
-|Azure Cosmos-tétel | Dokumentum | Sor | Dokumentum | Csomópont vagy peremhálózati | Tétel |
+|Azure Cosmos-tétel | Dokumentum | sor | Dokumentum | Csomópont vagy peremhálózati | Tétel |
 
 ### <a name="properties-of-an-item"></a>Egy tétel tulajdonságai
 
@@ -118,7 +118,7 @@ Minden Azure Cosmos-eleme a következő, rendszerszintű tulajdonságokkal rende
 
 | Rendszerszintű tulajdonság | Rendszer által generált vagy felhasználó által konfigurálható| Rendeltetés | SQL API | Cassandra API | MongoDB-hez készült Azure Cosmos DB API | Gremlin API | Tábla API |
 | --- | --- | --- | --- | --- | --- | --- | --- |
-|\_azonosítója | Rendszer által generált | Az objektum egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
+|\_RID | Rendszer által generált | Az objektum egyedi azonosítója | Igen | Nem | Nem | Nem | Nem |
 |\_ETAG | Rendszer által generált | Optimista Egyidejűség-vezérléshez használt entitás címkéje | Igen | Nem | Nem | Nem | Nem |
 |\_TS | Rendszer által generált | Az elemek utolsó frissítésének időbélyege | Igen | Nem | Nem | Nem | Nem |
 |\_saját | Rendszer által generált | Az elemek címezhető URI-ja | Igen | Nem | Nem | Nem | Nem |

@@ -3,12 +3,12 @@ title: Azure Service Fabric-fürt üzembe helyezésének megtervezése
 description: Ismerje meg, hogyan tervezheti meg és készítse elő az Azure-beli üzemi Service Fabric-fürtök üzembe helyezését.
 ms.topic: conceptual
 ms.date: 03/20/2019
-ms.openlocfilehash: 69fb97e4e679b3ce5817a51d619799a3384fd753
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 32d48f9ffa056d252bdf762304340f245d80fd26
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75463317"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834450"
 ---
 # <a name="plan-and-prepare-for-a-cluster-deployment"></a>A fürt üzembe helyezésének megtervezése és előkészítése
 
@@ -37,9 +37,59 @@ Az egyes csomópont-típusokhoz tartozó virtuális gépek minimális méretét 
 
 Az elsődleges csomópont típusához tartozó virtuális gépek minimális számát a választott [megbízhatósági szint][reliability] határozza meg.
 
-Tekintse meg az [elsődleges csomópontok típusaira](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)vonatkozó minimális javaslatokat, a [nem elsődleges csomópont-típusokra vonatkozó állapot-nyilvántartó munkaterheléseket](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), valamint az [állapot nélküli munkaterheléseket a nem elsődleges csomópontok típusainál](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads). 
+Tekintse meg az [elsődleges csomópontok típusaira](service-fabric-cluster-capacity.md#primary-node-type---capacity-guidance)vonatkozó minimális javaslatokat, a [nem elsődleges csomópont-típusokra vonatkozó állapot-nyilvántartó munkaterheléseket](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateful-workloads), valamint az [állapot nélküli munkaterheléseket a nem elsődleges csomópontok típusainál](service-fabric-cluster-capacity.md#non-primary-node-type---capacity-guidance-for-stateless-workloads).
 
 A csomópontok minimális számánál nagyobbnak kell lennie az ebben a csomópont-típusban futtatni kívánt alkalmazás/szolgáltatások replikáinak száma alapján.  [Service Fabric alkalmazások kapacitásának megtervezése](service-fabric-capacity-planning.md) segít megbecsülni az alkalmazások futtatásához szükséges erőforrásokat. Az alkalmazások számítási feladatainak módosításához a későbbiekben akár később, akár lejjebb is méretezheti a fürtöt. 
+
+#### <a name="use-ephemeral-os-disks-for-virtual-machine-scale-sets"></a>Ideiglenes operációsrendszer-lemezek használata a virtuálisgép-méretezési csoportokhoz
+
+Az *ideiglenes operációsrendszer-lemezek* a helyi virtuális GÉPEN (VM) létrehozott tárolók, és nem menthetők a távoli Azure Storage-ba. A rendszer az összes Service Fabric csomópont-típushoz (elsődleges és másodlagos) ajánlott, mivel a hagyományos állandó operációsrendszer-lemezekhez, az ideiglenes operációsrendszer-lemezekhez képest:
+
+* Olvasási/írási késés csökkentése operációsrendszer-lemezre
+* Gyorsabb alaphelyzetbe állítás vagy Rendszerképbeli csomópont-felügyeleti műveletek engedélyezése
+* Csökkentse a teljes költséget (a lemezek ingyenesek, és nem merülnek fel további tárolási költségek)
+
+Az ideiglenes operációsrendszer-lemezek nem egy adott Service Fabric funkció, hanem az Azure-beli *virtuálisgép-méretezési* csoportok egyik funkciója, amely Service Fabric csomópont-típusokra van leképezve. A Service Fabric használatához a következőkre van szükség a fürt Azure Resource Manager sablonjában:
+
+1. Győződjön meg arról, hogy a csomópont-típusok támogatják az Azure-beli [virtuális gépek támogatott méreteit](../virtual-machines/windows/ephemeral-os-disks.md) az átmeneti operációsrendszer-lemezekhez, és hogy a virtuális gép méretének mérete az operációsrendszer-lemez méretének támogatásához (lásd az alábbi *megjegyzést* ). Például:
+
+    ```xml
+    "vmNodeType1Size": {
+        "type": "string",
+        "defaultValue": "Standard_DS3_v2"
+    ```
+
+    > [!NOTE]
+    > Ügyeljen arra, hogy a virtuális gép operációsrendszer-lemezének méretével megegyező vagy nagyobb méretű virtuálisgép-méretet válasszon, ellenkező esetben az Azure-beli üzembe helyezés hibát eredményezhet (még akkor is, ha az eredetileg el van fogadva).
+
+2. Adja meg `2018-06-01` vagy újabb virtuálisgép-méretezési csoport verzióját (`vmssApiVersion`):
+
+    ```xml
+    "variables": {
+        "vmssApiVersion": "2018-06-01",
+    ```
+
+3. A telepítési sablon virtuálisgép-méretezési csoport szakaszában adja meg a `diffDiskSettings``Local` beállítást:
+
+    ```xml
+    "apiVersion": "[variables('vmssApiVersion')]",
+    "type": "Microsoft.Compute/virtualMachineScaleSets",
+        "virtualMachineProfile": {
+            "storageProfile": {
+                "osDisk": {
+                        "vhdContainers": ["[concat(reference(concat('Microsoft.Storage/storageAccounts/', parameters('vmStorageAccountName')), variables('storageApiVersion')).primaryEndpoints.blob, parameters('vmStorageAccountContainerName'))]"],
+                        "caching": "ReadOnly",
+                        "createOption": "FromImage",
+                        "diffDiskSettings": {
+                            "option": "Local"
+                        },
+                }
+            }
+        }
+    ```
+
+További információ és további konfigurációs lehetőségek: [ideiglenes operációsrendszer-lemezek Azure-beli virtuális gépekhez](../virtual-machines/windows/ephemeral-os-disks.md) 
+
 
 ### <a name="select-the-durability-and-reliability-levels-for-the-cluster"></a>A fürt tartóssági és megbízhatósági szintjeinek kiválasztása
 A tartóssági szint azt jelzi, hogy a rendszer a virtuális gépek által a mögöttes Azure-infrastruktúrához tartozó jogosultságokat használja. Az elsődleges csomópont típusában ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a rendszerszolgáltatások és az állapot-nyilvántartó szolgáltatások Kvórumának követelményeit érintő virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gépek rendszerképét vagy a virtuális gépek áttelepítését). A nem elsődleges csomópontok típusainál ez a jogosultság lehetővé teszi, hogy a Service Fabric szüneteltetni lehessen a virtuálisgép-szintű infrastruktúra-kérelmeket (például a virtuális gépek újraindítását, a virtuális gép rendszerképét és a virtuális gépek áttelepítését), amelyek hatással vannak az állapot-nyilvántartó szolgáltatásokra  A különböző szintek és javaslatok előnyeit, amelyeken a használni kívánt szintet és a-t használja, tekintse meg a [fürt tartóssági jellemzőit][durability].

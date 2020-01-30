@@ -1,6 +1,6 @@
 ---
-title: 'Gyors útmutató: az Azure/Service-Bus-várólisták használata a Node. js-ben'
-description: 'Gyors útmutató: megtudhatja, hogyan használhatja az Azure-ban Service Bus-várólistákat egy Node. js-alkalmazásból az Azure/Service-Bus csomag használatával.'
+title: Az Azure/Service-Bus-várólisták használata a Node. js-ben
+description: Megtudhatja, hogyan írhat NodeJS programot egy Service Bus üzenetsor üzeneteinek üzenetküldéséhez és fogadásához az új @azure/service-bus csomag használatával.
 services: service-bus-messaging
 documentationcenter: nodejs
 author: axisc
@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: nodejs
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 9901ccd6bb1abf27bb1141c618d0bfde167b9cc3
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: 9db359d8331859e3eebf345d91fe5dc6e66c0d4c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73721688"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774574"
 ---
 # <a name="quickstart-how-to-use-service-bus-queues-with-nodejs-and-the-azureservice-bus-package"></a>Gyors útmutató: Service Bus Queues használata Node. js-sel és az Azure/Service-Bus csomaggal
 > [!div class="op_multi_selector" title1="Programozási nyelv" title2="Node. js-csomagjának felvétele"]
@@ -134,7 +134,7 @@ A [createReceiver](https://docs.microsoft.com/javascript/api/%40azure/service-bu
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További tudnivalókat az alábbi forrásokban talál.
 - [Üzenetsorok, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)
 - Egyéb NodeJS-minták kifizetése a [githubon Service Bus](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples/javascript)

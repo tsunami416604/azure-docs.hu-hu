@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: anantr
 ms.author: robb
 ms.date: 03/14/2019
-ms.openlocfilehash: d1d822a5e7dadffd6be841e51ac407995adba2ea
-ms.sourcegitcommit: ae461c90cada1231f496bf442ee0c4dcdb6396bc
+ms.openlocfilehash: fb8c2c7e25f94c66c8cc8f7768071d508da8d3b5
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/17/2019
-ms.locfileid: "72552555"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765677"
 ---
 # <a name="common-alert-schema-definitions"></a>Gyakori riasztásiséma-definíciók
 
@@ -151,7 +151,7 @@ Minden riasztási példány leírja az érintett erőforrást és a riasztás ok
 ### <a name="log-alerts"></a>Naplóriasztások
 
 > [!NOTE]
-> Az egyéni JSON-adattartalommal rendelkező naplózási riasztások esetében a közös séma engedélyezésével visszaállíthatja a hasznos adatcsomag sémáját az alábbi módon leírt módon. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt úgy is meghatározhatja, hogy ellenőrzi a jelzőt `IncludedSearchResults`. Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
+> Az egyéni e-mail-tulajdonossal és/vagy JSON-adattartalommal rendelkező naplózási riasztások esetén az általános séma az alábbi módon visszaállíthatja az e-mailek tárgyát és/vagy a hasznos adatok sémáját. A közös sémával rendelkező riasztások esetében a riasztások felső korlátja 256 KB. A keresési eredmények nem ágyazhatók be a naplóbeli riasztások hasznos adataiba, ha a riasztás mérete miatt a rendszer átlépi a küszöbértéket. Ezt úgy is meghatározhatja, hogy ellenőrzi a jelzőt `IncludedSearchResults`. Ha a keresési eredmények nem szerepelnek, használja a keresési lekérdezést a [log Analytics API](https://docs.microsoft.com/rest/api/loganalytics/query/get)-val együtt. 
 
 #### <a name="monitoringservice--log-analytics"></a>`monitoringService` = `Log Analytics`
 

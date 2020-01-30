@@ -15,20 +15,20 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5a234e0b5d3a88b722257aa80249f4d80182d12f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 338b638d6b33bcbbb5cf377643a96c71b0d314bd
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702232"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775195"
 ---
 # <a name="daemon-app-that-calls-web-apis---call-a-web-api-from-the-app"></a>Webes API-kat meghívó Daemon-alkalmazás – webes API meghívása az alkalmazásból
 
-Egy démon-alkalmazás meghívhat egy webes API-t egy .NET Daemon-alkalmazásból, vagy meghívhat számos előre jóváhagyott webes API-t.
+A .NET Daemon-alkalmazások hívhatnak webes API-t. A .NET Daemon-alkalmazások számos előre jóváhagyott webes API-t is meghívhatnak.
 
-## <a name="calling-a-web-api-daemon-application"></a>Webes API-démon alkalmazásának meghívása
+## <a name="calling-a-web-api-from-a-daemon-application"></a>Webes API meghívása egy Daemon-alkalmazásból
 
-Az alábbi témakörből megtudhatja, hogyan hívhat meg egy API-t a token használatával:
+A token használatával a következő módon hívhat meg API-t:
 
 # <a name="nettabdotnet"></a>[.NET](#tab/dotnet)
 
@@ -67,7 +67,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="calling-several-apis"></a>Több API meghívása
 
-A Daemon-alkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. Nem lesz növekményes beleegyezik a Daemon-alkalmazásokkal (nincs felhasználói beavatkozás). A bérlői rendszergazdának előre jóvá kell hagynia az alkalmazást és az összes API-engedélyt. Ha több API-t szeretne meghívni, minden egyes erőforráshoz meg kell adnia egy jogkivonatot, minden alkalommal, amikor meghívja a `AcquireTokenForClient`. A MSAL az alkalmazás-jogkivonat gyorsítótárát fogja használni a szükségtelen szolgáltatási hívások elkerülése érdekében.
+A Daemon-alkalmazások esetében a hívott webes API-kat előzetesen jóvá kell hagyni. A Daemon-alkalmazásokhoz nem szükséges növekményes beleegyezni. (Nincs felhasználói beavatkozás.) A bérlői rendszergazdának előre meg kell adnia a belefoglalást az alkalmazáshoz és az összes API-engedélyhez. Ha több API-t szeretne meghívni, minden egyes erőforráshoz meg kell adnia egy jogkivonatot, minden alkalommal, amikor meghívja a `AcquireTokenForClient`. A MSAL az alkalmazás-jogkivonat gyorsítótárát fogja használni a szükségtelen szolgáltatási hívások elkerülése érdekében.
 
 ## <a name="next-steps"></a>Következő lépések
 

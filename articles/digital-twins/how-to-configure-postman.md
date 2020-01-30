@@ -8,12 +8,12 @@ ms.service: digital-twins
 services: digital-twins
 ms.topic: conceptual
 ms.date: 01/10/2020
-ms.openlocfilehash: 3d0220f23c8098222b93473dc6c7aa7a4f2dd791
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: 42b697babe2bc004663c80e6e2f71f90ba1e5e5b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75933441"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765394"
 ---
 # <a name="how-to-configure-postman-for-azure-digital-twins"></a>A Poster konfigurálása az Azure Digital Twins szolgáltatáshoz
 
@@ -79,7 +79,6 @@ Konfigurálja a Azure Active Directory alkalmazást az OAuth 2,0 implicit enged�
 
 A Poster beállítása és konfigurálása Azure Active Directory token beszerzéséhez. Ezt követően hozzon végre egy hitelesített HTTP-kérést az Azure Digital Twins számára a beszerzett jogkivonat használatával:
 
-1. Az alkalmazás letöltéséhez nyissa meg a [www.getpostman.com](https://www.getpostman.com/) .
 1. Ellenőrizze, hogy helyes-e az **engedélyezési URL-cím** . A formátum a következőket teszi:
 
     ```plaintext
@@ -88,14 +87,18 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
 
     | Név  | Csere erre | Példa |
     |---------|---------|---------|
-    | YOUR_AZURE_TENANT | A bérlő vagy szervezet neve | `microsoft` |
+    | YOUR_AZURE_TENANT | A bérlő vagy szervezet neve. A Azure Active Directory alkalmazás regisztrációjának alfanumerikus **bérlői azonosítója** helyett használja az emberi felhasználóbarát nevet. | `microsoft` |
 
-1. Válassza az **Engedélyezés** lapot, válassza a **OAuth 2,0**, majd az **új hozzáférési jogkivonat beolvasása**elemet.
+1. Az alkalmazás letöltéséhez nyissa meg a [www.getpostman.com](https://www.getpostman.com/) .
+
+1. Nyissa meg a Poster alkalmazást, és kattintson az új elemre | Hozzon létre egy újat, és válassza a kérelem lehetőséget. Adja meg a kérelem nevét. Válassza ki azt a gyűjteményt vagy mappát, ahová menteni szeretné, majd kattintson a Mentés gombra. 
+
+1. A GET kérést szeretnénk tenni. Válassza az **Engedélyezés** lapot, válassza a OAuth 2,0, majd az **új hozzáférési jogkivonat beolvasása**elemet.
 
     | Mező  | Value (Díj) |
     |---------|---------|
     | Engedélyezési típus | `Implicit` |
-    | Visszahívási URL | `https://www.getpostman.com/oauth2/callback` |
+    | Visszahívási URL-cím | `https://www.getpostman.com/oauth2/callback` |
     | Hitelesítési URL-cím | Az **engedélyezési URL-cím** használata a **2. lépésből** |
     | Ügyfél-azonosító | Az előző szakaszban létrehozott vagy újrafelhasznált Azure Active Directory **alkalmazás azonosítójának** használata |
     | Hatókör | Hagyja üresen |
@@ -106,7 +109,7 @@ A Poster beállítása és konfigurálása Azure Active Directory token beszerz�
 
     [![Poster-ügyfél jogkivonat-példája](media/how-to-configure-postman/configure-postman-oauth-token.png)](media/how-to-configure-postman/configure-postman-oauth-token.png#lightbox)
 
-1. Válassza a **Request Token** (Jogkivonat kérése) lehetőséget.
+1. Válassza a **kérelem tokenje**elemet.
   
 1. Görgessen le, és válassza a **token használata**lehetőséget.
 

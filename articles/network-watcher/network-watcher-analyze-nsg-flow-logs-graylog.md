@@ -1,10 +1,9 @@
 ---
-title: Azure-beli hálózati biztonsági csoport folyamatnaplóit - Graylog elemzése |} A Microsoft Docs
-description: Ismerje meg, hogyan kezelheti és elemezheti a hálózati biztonsági csoport folyamatnaplóit az Azure Network Watcher és a Graylog használatával.
+title: Az Azure hálózati biztonsági csoport flow naplófájljainak elemzése – Graylog | Microsoft Docs
+description: Megtudhatja, hogyan kezelheti és elemezheti a hálózati biztonsági csoportok flow-naplóit az Azure-ban Network Watcher és Graylog használatával.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
+author: damendo
 editor: ''
 tags: azure-resource-manager
 ms.assetid: ''
@@ -14,53 +13,53 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/19/2017
-ms.author: mareat
-ms.openlocfilehash: a5fadcfce154740a79a8764f44f08b21ad18f4d8
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.author: damendo
+ms.openlocfilehash: 1e597a81967a8fb6be2959d53e65ad01135e5e25
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60625204"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842903"
 ---
-# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Kezelheti és elemezheti a hálózati biztonsági csoport folyamatnaplóit az Azure Network Watcher és a Graylog használatával
+# <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Graylog használatával
 
-[Hálózati biztonsági csoport folyamatnaplóit](network-watcher-nsg-flow-logging-overview.md) segítségével megismerheti a bejövő és kimenő IP-forgalom az Azure hálózati adapterek információkat tartalmaznak. Forgalmi naplók megjelenítése a kimenő és bejövő forgalom az egy hálózati biztonsági csoport a szabály alapon történik, a hálózati adaptert a folyamat vonatkozik, 5-ször több információt (forrás és cél IP-cím, forrás és a cél-Port, protokoll) a folyamatot, és ha engedélyezett vagy tiltott a forgalom .
+A [hálózati biztonsági csoport folyamatábrája](network-watcher-nsg-flow-logging-overview.md) olyan információkat biztosít, amelyek segítségével megismerheti az Azure hálózati adapterek bejövő és kimenő IP-forgalmát. A folyamatábrá a kimenő és a bejövő folyamatokat jeleníti meg a hálózati biztonsági csoportokra vonatkozó szabályok alapján, a folyamat hálózati adaptere, 5 rekordos információ (forrás/cél IP-cím, forrás/célport, protokoll), valamint a forgalom engedélyezése vagy megtagadása.
 
-Számos hálózati biztonsági csoportok csoportforgalom naplózása engedélyezve van az a hálózat lehet. Számos hálózati biztonsági csoportok csoportforgalom naplózása engedélyezve van a teszik nehézkes elemezheti és a naplók hasznosításához. Ez a cikk a hálózati biztonsági csoport folyamatnaplóit Graylog, egy nyílt forráskódú log management és az elemző eszköz és a Logstash, egy nyílt forráskódú kiszolgálóoldali adatfeldolgozó folyamat segítségével központilag kezelheti a megoldást kínál.
+A hálózatban számos hálózati biztonsági csoporttal rendelkezhet, amelyeken engedélyezve van a flow naplózása. Számos olyan hálózati biztonsági csoport, amelyen engedélyezve van a flow-naplózás, megnehezíti a naplók elemzését és betekintését. Ez a cikk megoldást nyújt a hálózati biztonsági csoport folyamatábráinak központi felügyeletére a Graylog, egy nyílt forráskódú napló-felügyeleti és-elemzési eszközzel, valamint a Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozási folyamat.
 
 > [!Warning]
-> Az alábbi lépéseket a flow 1-es naplók verzió együttműködve. További információkért lásd: [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md). Az alábbi utasítások nem fog működni a naplófájlokat, módosítás nélküli 2. verzióban.
+> Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
-Hálózati biztonsági csoport folyamatnaplóit engedélyezve vannak a Network Watcher használatával. A folyamat naplók folyamatot az Azure blob storage. A Logstash beépülő modul csatlakoztatása és dolgozza fel a Folyamatnaplók blob storage-ból, és elküldheti azokat Graylog szolgál. A Folyamatnaplók Graylog vannak tárolva, ha azok elemezhetné és személyre szabott irányítópultokat, vizualizálja.
+A hálózati biztonsági csoport folyamatábrái engedélyezve vannak a Network Watcher használatával. A flow-naplók beáramlanak az Azure Blob Storage-ba. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a Graylog való elküldéséhez használható. A flow-naplók Graylog való tárolása után a rendszer elemezheti és testre szabhatja a testreszabott irányítópultok megjelenítését.
 
 ![Graylog munkafolyamat](./media/network-watcher-analyze-nsg-flow-logs-graylog/workflow.png)
 
 ## <a name="installation-steps"></a>A telepítés lépései
 
-### <a name="enable-network-security-group-flow-logging"></a>Engedélyezze a hálózati biztonsági csoportforgalom naplózása
+### <a name="enable-network-security-group-flow-logging"></a>Hálózati biztonsági csoport adatfolyam-naplózásának engedélyezése
 
-Ebben a forgatókönyvben a hálózati biztonsági csoportforgalom naplózása legalább egy hálózati biztonsági csoport a fiókban engedélyezni kell rendelkeznie. Engedélyezésével kapcsolatos hálózati biztonsági csoport folyamatnaplóit, tekintse meg a következő cikket [csoportforgalom naplózása a hálózati biztonsági csoportok bemutatása](network-watcher-nsg-flow-logging-overview.md).
+Ebben a forgatókönyvben a hálózati biztonsági csoport flow-naplózási szolgáltatásának engedélyezve kell lennie legalább egy hálózati biztonsági csoportban a fiókjában. A hálózati biztonsági csoport folyamatábráinak engedélyezésével kapcsolatos utasításokért tekintse meg az alábbi cikket a [hálózati biztonsági csoportok folyamatábrájának naplózása](network-watcher-nsg-flow-logging-overview.md)című cikkben.
 
 ### <a name="setting-up-graylog"></a>Graylog beállítása
 
-Ebben a példában Graylog és a Logstash az Azure-ban üzembe helyezett egy Ubuntu 14.04-es kiszolgálón vannak konfigurálva.
+Ebben a példában a Graylog és a Logstash is az Azure-ban üzembe helyezett Ubuntu 14,04-kiszolgálón van konfigurálva.
 
-- Tekintse meg a [dokumentáció](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) Graylog, a szükséges részletes utasításokról telepítése Ubuntu-kiszolgálóra.
-- Győződjön meg arról is konfigurálhatja a Graylog webes felületén a következő, a [dokumentáció](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif).
+- Tekintse meg a Graylog [dokumentációját](https://docs.graylog.org/en/2.2/pages/installation/os/ubuntu.html) , amely részletes útmutatást nyújt az Ubuntu rendszerre való telepítéshez.
+- Győződjön meg arról, hogy a Graylog webes felületet is konfigurálja a [dokumentációt](https://docs.graylog.org/en/2.2/pages/configuration/web_interface.html#configuring-webif)követve.
 
-Ebben a példában a minimális Graylog beállítása (vagyis) egyetlen példánya egy Graylog), de Graylog is tervezésnek, igényeinek megfelelően függően a rendszer és az éles erőforrások méretezése érdekében. Architekturális szempontok vagy egy részletes architekturális útmutató további információkért lásd: a Graylog [dokumentáció](https://docs.graylog.org/en/2.2/pages/architecture.html) és [architekturális útmutató](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture).
+Ez a példa a minimális Graylog-telepítőt használja (azaz a Graylog egyetlen példánya), de a Graylog a rendszertől és a termelési igényektől függően méretezhető az erőforrások között. Az architektúrával kapcsolatos megfontolásokról vagy a mélyreható építészeti útmutatóról a Graylog [dokumentációjában](https://docs.graylog.org/en/2.2/pages/architecture.html) és [építészeti útmutatójában](https://www.slideshare.net/Graylog/graylog-engineering-design-your-architecture)olvashat bővebben.
 
-Graylog platform és beállítások függően többféleképpen is telepíthető. Lehetséges telepítési módszerek teljes listájáért tekintse meg a Graylog hivatalos [dokumentáció](https://docs.graylog.org/en/2.2/pages/installation.html). A Graylog kiszolgálóalkalmazás Linux-disztribúciót futtat, és előfeltételei a következők:
+A Graylog több módon is telepíthető a platformtól és a beállításoktól függően. A lehetséges telepítési módszerek teljes listájáért tekintse meg a Graylog hivatalos [dokumentációját](https://docs.graylog.org/en/2.2/pages/installation.html). A Graylog Server-alkalmazás Linux-disztribúción fut, és a következő előfeltételekkel rendelkezik:
 
--  Java használata 8 vagy újabb – [Azul Azure JDK-dokumentáció](https://aka.ms/azure-jdks)
--  Rugalmas keresés 2.x (2.1.0 vagy újabb) – [Elasticsearch-dokumentáció](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
--  2\.4-es vagy újabb – MongoDB [MongoDB-dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
+-  Java SE 8 vagy újabb – a [Azul Azure JDK dokumentációja](https://aka.ms/azure-jdks)
+-  Rugalmas keresés 2. x (2.1.0 vagy újabb) – a [Elasticsearch telepítési dokumentációja](https://www.elastic.co/guide/en/elasticsearch/reference/2.4/_installation.html)
+-  MongoDB 2,4 vagy újabb – [MongoDB telepítési dokumentáció](https://docs.mongodb.com/manual/administration/install-on-linux/)
 
-### <a name="install-logstash"></a>A Logstash telepítéséhez
+### <a name="install-logstash"></a>A Logstash telepítése
 
-A flow rekord szintre JSON formátumú Folyamatnaplók simítják Logstash szolgál. A folyamat-Naplók az egybesimítás egyszerűbbé teszi a naplók rendszerezése és a Keresés a Graylog.
+A Logstash a JSON-formázott folyamat naplófájljainak a flow-rekord szintjére való lesimítására szolgál. A flow-naplók összeolvasztásával könnyebben rendszerezheti és keresheti a Graylog.
 
 1. A Logstash telepítéséhez futtassa a következő parancsokat:
 
@@ -69,13 +68,13 @@ A flow rekord szintre JSON formátumú Folyamatnaplók simítják Logstash szolg
    sudo dpkg -i logstash-5.2.0.deb
    ```
 
-2. A folyamat-naplók elemzése, és elküldheti azokat Graylog a Logstash konfigurálása. Hozzon létre egy Logstash.conf fájlt:
+2. Konfigurálja a Logstash a flow-naplók elemzéséhez és a Graylog való elküldéséhez. Hozzon létre egy Logstash. conf fájlt:
 
    ```bash
    sudo touch /etc/logstash/conf.d/logstash.conf
    ```
 
-3. Adja hozzá a következő tartalmat a fájlhoz. Módosítsa a kiemelt értékeket, hogy a tárfiók részleteit:
+3. Adja hozzá a következő tartalmat a fájlhoz. Módosítsa a Kiemelt értékeket a Storage-fiók részleteinek megfelelően:
 
    ```
     input {
@@ -150,101 +149,101 @@ A flow rekord szintre JSON formátumú Folyamatnaplók simítják Logstash szolg
         }
     }
     ```
-   A Logstash konfigurációs fájlt a megadott három részből áll: a bemeneti, szűrheti és kimenete. A bemeneti szakasz jelöli meg a naplók, amely a Logstash dolgozza fel a bemeneti forrás – ebben az esetben fog egy Azure-blogban bemeneti beépülő moduljának használata (a következő lépésben telepítve), amely lehetővé teszi számunkra, hogy a hálózati biztonsági csoport a folyamat eléréséhez jelentkezzen a blob storage-ban tárolt JSON-fájlokat.
+   A megadott Logstash-konfigurációs fájl három részből áll: a bemenetből, a szűrőből és a kimenetből. A beviteli szakasz a Logstash által feldolgozható naplók bemeneti forrását jelöli. ebben az esetben egy Azure-beli blog bemeneti beépülő modulját fogja használni (a következő lépésekben telepítve), amely lehetővé teszi, hogy a blob Storage-ban tárolt hálózati biztonsági csoport folyamatábrá-fájljait elérhetővé tegyük.
 
-Úgy, hogy minden egyes folyamat rekord és a hozzájuk tartozó tulajdonságok külön Logstash esemény válik a szakaszban majd minden egyes folyamat naplófájl simítja egybe.
+A szűrő szakasz ezután összekapcsolja az egyes flow-naplófájlokat, hogy minden egyes flow-rekord és a hozzá tartozó tulajdonságok különálló Logstash-eseményvé válnak.
 
-Végül a kimeneti szakaszban továbbítja a Graylog kiszolgálóhoz Logstash eseményekhez. A konkrét igényeinek megfelelően van szüksége, a Logstash konfigurációs fájlt, szükség szerint módosíthatja.
+Végül a kimeneti szakasz továbbítja az egyes Logstash eseményeket a Graylog-kiszolgálónak. Az adott igényeknek megfelelően módosítsa a Logstash konfigurációs fájlját szükség szerint.
 
    > [!NOTE]
-   > Az előző konfigurációs fájl azt feltételezi, hogy a Graylog kiszolgáló konfigurálva van a helyi gazdagép visszacsatolási IP-cím 127.0.0.1. Ha nem, akkor ügyeljen arra, hogy a gazdagép paraméter, a kimeneti szakaszban módosítsa a megfelelő IP-címet.
+   > Az előző konfigurációs fájl azt feltételezi, hogy a Graylog-kiszolgáló konfigurálva van a helyi gazdagép visszacsatolási IP-címéhez. Ha nem, ügyeljen arra, hogy a kimeneti szakaszban lévő Host paramétert a megfelelő IP-címhez módosítsa.
 
-A Logstash telepítéséhez további utasításokért lásd: a Logstash [dokumentáció](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
+A Logstash telepítésével kapcsolatos további információkért tekintse meg a Logstash [dokumentációját](https://www.elastic.co/guide/en/beats/libbeat/5.2/logstash-installation.html).
 
-### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>A Logstash beépülő modul az Azure blob storage-bA bemeneti telepítése
+### <a name="install-the-logstash-input-plug-in-for-azure-blob-storage"></a>Az Azure Blob Storage Logstash-bemeneti beépülő moduljának telepítése
 
-A Logstash beépülő modul lehetővé teszi, hogy közvetlenül a forgalmi naplók elérését a megadott blob storage-fiók. Az alapértelmezett Logstash telepítési könyvtárában (ez megkülönbözteti a kis /usr/share/logstash/bin) származó, a beépülő modul telepítéséhez futtassa a következő parancsot:
+A Logstash beépülő modul lehetővé teszi, hogy közvetlenül hozzáférhessen a folyamat naplóihoz a kijelölt blob Storage-fiókból. A beépülő modul telepítéséhez az alapértelmezett Logstash telepítési könyvtárból (ebben az esetben a/usr/share/logstash/bin) futtassa a következő parancsot:
 
 ```bash
 cd /usr/share/logstash/bin
 sudo ./logstash-plugin install logstash-input-azureblob
 ```
 
-A beépülő modul kapcsolatos további információkért lásd: a [dokumentáció](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
+A beépülő modullal kapcsolatos további információkért tekintse meg a [dokumentációt](https://github.com/Azure/azure-diagnostics-tools/tree/master/Logstash/logstash-input-azureblob).
 
-### <a name="set-up-connection-from-logstash-to-graylog"></a>Állítson be kapcsolatot a Logstashből Graylog
+### <a name="set-up-connection-from-logstash-to-graylog"></a>Logstash és Graylog közötti kapcsolatok beállítása
 
-Most, hogy a Folyamatnaplók használatával Logstash kapcsolatot hozott létre, és állítsa be a Graylog kiszolgálót, elfogadja a bejövő naplófájlok Graylog konfigurálnia kell.
+Most, hogy létrehozott egy kapcsolódást a folyamat naplóihoz a Logstash használatával, és beállítja a Graylog-kiszolgálót, konfigurálnia kell a Graylog-t a bejövő naplófájlok fogadásához.
 
-1. Keresse meg a Graylog kiszolgálói webes felület, a hozzá tartozó konfigurált URL-cím használatával. A felületen érheti el a böngészőben a irányítja `http://<graylog-server-ip>:9000/`
+1. Navigáljon a Graylog-kiszolgáló webes felületéhez a konfigurált URL-cím használatával. A felületet úgy érheti el, hogy átirányítja a böngészőt `http://<graylog-server-ip>:9000/`
 
-2. A konfiguráció lapon válassza a **rendszer** legördülő menüből a felső navigációs sáv jobb, és kattintson **bemenetek**.
-   Másik lehetőségként lépjen `http://<graylog-server-ip>:9000/system/inputs`
+2. A konfiguráció lapra való navigáláshoz válassza a jobb oldali navigációs sáv **rendszer** legördülő menüjét, majd kattintson a **bemenetek**elemre.
+   Másik lehetőségként navigáljon `http://<graylog-server-ip>:9000/system/inputs`
 
    ![Első lépések](./media/network-watcher-analyze-nsg-flow-logs-graylog/getting-started.png)
 
-3. Az új beviteli indításához válassza *GELF UDP* a a **válassza ki a bemeneti** legördülő menüben, majd töltse ki az űrlapot. Graylog bővített naplóformátumban GELF jelöli. Graylog GELF formátumban dolgozza ki. A maga előnyei kapcsolatos további információkért tekintse meg a Graylog [dokumentáció](https://docs.graylog.org/en/2.2/pages/gelf.html).
+3. Az új bemenet elindításához válassza a *GELF UDP* elemet a **bemenet kiválasztása** legördülő menüben, majd töltse ki az űrlapot. A GELF a Graylog kiterjesztett naplózási formátumát jelenti. A GELF formátumát a Graylog fejlesztette ki. Ha többet szeretne megtudni az előnyeiről, tekintse meg a Graylog [dokumentációját](https://docs.graylog.org/en/2.2/pages/gelf.html).
 
-   Ellenőrizze, hogy a konfigurált a Graylog kiszolgáló IP-címhez a bemeneti kötést. Az IP-címnek egyeznie kell a **gazdagép** mezőjét, a Logstash konfigurációs fájlt UDP kimenetét. Az alapértelmezett port legyen *12201*. Győződjön meg arról, a port megegyezik a **port** az UDP mezője kimeneti a Logstash konfigurációs fájlt a kijelölt.
+   Győződjön meg arról, hogy a bemenetet a Graylog-kiszolgálót konfigurált IP-címhez köti. Az IP-címnek egyeznie kell a Logstash konfigurációs fájljának UDP-kimenetének **gazdagép** mezőjével. Az alapértelmezett port a *12201*. Győződjön meg arról, hogy a port megfelel a Logstash konfigurációs fájlban kijelölt UDP-kimenet **port** mezőjének.
 
    ![Bemenetek](./media/network-watcher-analyze-nsg-flow-logs-graylog/inputs.png)
 
-   A bemeneti indításához után meg kell jelennie meg fog jelenni a **helyi bemenetek** részben, a következő képen látható módon:
+   Miután elindította a bemenetet, megjelenik a **helyi bemenetek** szakaszban, az alábbi képen látható módon:
 
    ![](./media/network-watcher-analyze-nsg-flow-logs-graylog/local-inputs.png)
 
-   Graylog üzenet bemenetek kapcsolatos további információkért tekintse meg a [dokumentáció](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
+   Az Graylog kapcsolatos további tudnivalókért tekintse meg a [dokumentációt](https://docs.graylog.org/en/2.2/pages/sending_data.html#what-are-graylog-message-inputs).
 
-4. Után ezek a konfigurációk volna végbemenniük, elkezdheti a Logstash forgalmi naplók a következő paranccsal beolvasott megkezdéséhez: `sudo systemctl start logstash.service`.
+4. A konfigurációk megkezdése után elindíthatja a Logstash a flow-naplók olvasásának megkezdéséhez a következő paranccsal: `sudo systemctl start logstash.service`.
 
-### <a name="search-through-graylog-messages"></a>Graylog üzenetek kereshet
+### <a name="search-through-graylog-messages"></a>Keresés Graylog-üzenetekben
 
-Lehetővé teszi a Graylog kiszolgáló gyűjtheti az üzeneteket egy kis ideig, után is tudja az üzenetek kereshet. Az üzenetek küldését a Graylog kiszolgálóval, ellenőrizze a **bemenetek** konfigurációs lapon kattintson a "**Show fogadott üzeneteket**" gombra a GELF UDP bemeneti létrehozott. Átirányítjuk egy képernyő, amely a következő képhez hasonlóan néz ki: 
+Miután engedélyezte a Graylog-kiszolgáló számára, hogy üzeneteket gyűjtsön, megkeresheti az üzeneteket. A Graylog-kiszolgálónak küldendő üzenetek megtekintéséhez a **bemenetek** konfigurálása lapon kattintson a létrehozott GELF UDP-bemenet "**fogadott üzenetek megjelenítése**" gombjára. A következő képhez hasonló képernyőre van irányítva: 
 
 ![Hisztogram](./media/network-watcher-analyze-nsg-flow-logs-graylog/histogram.png)
 
-A kék "% {Message}" hivatkozásra kattintva kibontja a minden egyes folyamat rekord paramétereinek megjelenítéséhez üzenetet, az alábbi ábrán látható módon:
+Ha a kék "% {Message}" hivatkozásra kattint, a rendszer kibontja az egyes üzeneteket, hogy megjelenítse az egyes folyamatábrák paramétereit, ahogy az a következő képen látható:
 
 ![Üzenetek](./media/network-watcher-analyze-nsg-flow-logs-graylog/messages.png)
 
-Alapértelmezés szerint az összes üzenet mezők szerepelnek a keresés Ha nem adja meg egy meghatározott üzenet mezővel rákereshet az. Ha szeretne keresni az adott hibaüzenetek (vagyis) – a folyamat rekordokat egy meghatározott forrás IP-cím) is használhatja a Graylog search lekérdezési nyelvet, [dokumentált](https://docs.graylog.org/en/2.2/pages/queries.html)
+Alapértelmezés szerint az összes üzenet mező szerepel a keresésben, ha nem jelöl ki egy adott üzenetet a kereséshez. Ha konkrét üzenetekre szeretne rákeresni (például – a flow rekordok egy adott forrás IP-címről, a Graylog keresési lekérdezési nyelvét [dokumentálva](https://docs.graylog.org/en/2.2/pages/queries.html) használhatja
 
-## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Elemezheti a hálózati biztonsági csoport folyamatnaplóit Graylog használatával
+## <a name="analyze-network-security-group-flow-logs-using-graylog"></a>Hálózati biztonsági csoport folyamatábráinak elemzése a Graylog használatával
 
-Most, hogy Graylog, fut, a jobb megértése érdekében a flow naplózási adatokat használhatja egyes funkcióit. Egy ilyen úgy, hogy az irányítópultok használata az adatok meghatározott nézeteket hozhat létre.
+Most, hogy Graylog-t állított be, használhatja a funkcióit, hogy jobban megértse a folyamat naplójának adatait. Az egyik ilyen módszer az irányítópultok használata az adatnézetek konkrét nézeteinek létrehozásához.
 
 ### <a name="create-a-dashboard"></a>Irányítópult létrehozása
 
-1. A felső navigációs sávon válassza **irányítópultok** , vagy navigáljon arra `http://<graylog-server-ip>:9000/dashboards/`
+1. A felső navigációs sávon válassza az **irányítópultok** lehetőséget, vagy navigáljon `http://<graylog-server-ip>:9000/dashboards/`
 
-2. Itt kattintson a zöld **létrehozás irányítópult** gombra, és töltse ki a rövid űrlapot a title és az irányítópulton leírása. Nyomja le az **mentése** gombra az új irányítópult létrehozásához. A következő képhez hasonló irányítópult jelenik meg:
+2. Innen kattintson a zöld **irányítópult létrehozása** gombra, és töltse ki a rövid űrlapot az irányítópult címével és leírásával. Kattintson a **Save (Mentés** ) gombra az új irányítópult létrehozásához. A következő képhez hasonló irányítópult jelenik meg:
 
     ![Irányítópultok](./media/network-watcher-analyze-nsg-flow-logs-graylog/dashboards.png)
 
 ### <a name="add-widgets"></a>Widgetek hozzáadása
 
-Kattintson az irányítópult jelenik meg, de jelenleg annak üres, mivel azt még nem adott hozzá minden widget címe. Egy egyszerű és a hasznos widget hozzáadása az irányítópulthoz van **gyors értékek** diagramok, amelyek a kijelölt mező, illetve ezek az értékek listájának megjelenítéséhez.
+Az irányítópult címére kattintva megtekintheti, de most már üres is lehet, mivel nem adott hozzá widgeteket. Az irányítópulthoz hozzáadandó egyszerű és hasznos típusú widgetek **gyors értékek** diagramokat tartalmaznak, amelyek a kiválasztott mező értékeinek listáját és azok eloszlását jelenítik meg.
 
-1. Lépjen vissza a keresési eredmények a Folyamatnaplók kiválasztásával fogadó UDP bemeneti **keresési** a felső navigációs sávban.
+1. Váltson vissza a flow-naplókat fogadó UDP-bemenet keresési eredményeire úgy, hogy kiválasztja a **Keresés** lehetőséget a felső navigációs sávon.
 
-2. Alatt a **keresési eredmény** a képernyő bal oldali panelen, keresse meg a **mezők** fülre, amely minden bejövő üzenetet a folyamat rekord a különböző mezők listája.
+2. A **keresési eredmények** panelen a képernyő bal oldalán keresse meg a **mezők** lapot, amely felsorolja az egyes bejövő adatfolyam-üzenetek különböző mezőit.
 
-3. Válassza ki bármelyik kívánt paramétert, amelyben képi megjelenítése érdekében (ebben a példában az IP-adatforrás ki van jelölve). Lehetséges widgetek listájának megjelenítése a mező balra legördülő nyílra, majd jelölje ki **gyors értékek** a widget létrehozásához. Az alábbi képen hasonló kell megjelennie:
+3. Válassza ki a megjeleníteni kívánt paramétereket (ebben a példában az IP-forrás van kiválasztva). A lehetséges widgetek listájának megjelenítéséhez kattintson a mező bal oldalán található kék legördülő nyílra, majd válassza a **gyors értékek** elemet a widget létrehozásához. A következő képhez hasonlóan kell megjelennie:
 
    ![Forrás IP-címe](./media/network-watcher-analyze-nsg-flow-logs-graylog/srcip.png)
 
-4. Innen kiválaszthatja a **hozzáadása irányítópulthoz** a vezérlő jobb felső sarkában található gombra, és válassza ki a megfelelő irányítópultot hozzáadásához.
+4. Innen kiválaszthatja a Hozzáadás az **irányítópulthoz** gombot a widget jobb felső sarkában, és kiválaszthatja a hozzá tartozó irányítópultot.
 
-5. Lépjen vissza az irányítópultra, az imént hozzáadott widget megtekintéséhez.
+5. Váltson vissza az irányítópultra, és tekintse meg az imént hozzáadott widgetet.
 
-   Egyéb widgetek hisztogramok és száma például számos adhat hozzá az irányítópulton követheti a fontos mérőszámokat, például a minta-irányítópult az alábbi képen is látható:
+   Számos más widgetet (például hisztogramokat) adhat hozzá az irányítópulthoz, így nyomon követheti a fontos mérőszámokat, például a következő képen látható minta irányítópultot:
 
-   ![Flowlogs irányítópult](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
+   ![Flowlogs-irányítópult](./media/network-watcher-analyze-nsg-flow-logs-graylog/flowlogs-dashboard.png)
 
-    További magyarázat az irányítópultokon és widgetek más típusú, tekintse meg a Graylog [dokumentáció](https://docs.graylog.org/en/2.2/pages/dashboards.html).
+    Az irányítópultokkal és más típusú widgetekkel kapcsolatos további magyarázatért tekintse meg a Graylog [dokumentációját](https://docs.graylog.org/en/2.2/pages/dashboards.html).
 
-A Network Watcher integrációval Graylog, kezelheti és jelenítheti meg a hálózati biztonsági csoport folyamatnaplóit egy kényelmes és központosított módja most már rendelkezik. Graylog számos más hatékony funkciókat, például a Streamek és a riasztásokat, amelyek tovább kezelheti a forgalmi naplók és jobb megértése érdekében a hálózati forgalmat is használható. Most, hogy állítsa be, és Fedezze fel a többi funkció által kínált továbbra is csatlakozik az Azure-ba, nyugodtan Graylog.
+A Network Watcher és a Graylog integrálásával mostantól kényelmes és központosított módon kezelheti és jelenítheti meg a hálózati biztonsági csoport folyamatábráit. A Graylog számos más hatékony funkcióval rendelkezik, mint például a streamek és a riasztások, amelyek a flow-naplók további kezeléséhez és a hálózati forgalom jobb megismeréséhez is használhatók. Most, hogy már beállította a Graylog, és csatlakozott az Azure-hoz, nyugodtan folytassa az általa kínált egyéb funkciók megismerésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatnaplóit, ha a Power bi-JAL funkcionáló [Visualize hálózati biztonsági csoport és a Power BI forgalomnaplók](network-watcher-visualize-nsg-flow-logs-power-bi.md).
+Megtudhatja, hogyan jelenítheti meg a hálózati biztonsági csoport folyamatának naplóit Power BI a [hálózati biztonsági csoport adatforgalmának naplófájljainak Power bi](network-watcher-visualize-nsg-flow-logs-power-bi.md)használatával történő megjelenítésével.

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f7eb4d8e784acc659f6661ef6efbdb06816b142c
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 1fc63b222fd2f08bb4b5596d58f825c8f6b1910e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71064449"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836236"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Age kapuzás engedélyezése a Azure Active Directory B2Cban
 
@@ -25,27 +25,27 @@ ms.locfileid: "71064449"
 
 Azure Active Directory B2C (Azure AD B2C) Age kapuzás lehetővé teszi az alkalmazást használó kiskorúak azonosítását. Dönthet úgy is, hogy letiltja a kiskorú regisztrációját az alkalmazásba. A felhasználók visszatérhetnek az alkalmazáshoz, és meghatározhatják a korcsoport és a szülői hozzájárulásukat is. A Azure AD B2C szülői engedély nélkül blokkolhatja a kiskorúakat. A Azure AD B2C beállítható úgy is, hogy az alkalmazás eldöntse, mi a teendő a kiskorúakkal.
 
-Miután engedélyezte az Age kapuzás a [felhasználói folyamat](active-directory-b2c-reference-policies.md)során, a rendszer megkérdezi a felhasználókat, hogy mikor születtek és milyen országban/régióban laknak. Ha egy felhasználó bejelentkezik, amely korábban nem adta meg az adatokat, akkor a következő bejelentkezéskor meg kell adnia. A szabályok minden alkalommal érvényesek, amikor egy felhasználó bejelentkezik.
+Miután engedélyezte az Age kapuzás a [felhasználói folyamat](user-flow-overview.md)során, a rendszer megkérdezi a felhasználókat, hogy mikor születtek és milyen országban/régióban laknak. Ha egy felhasználó bejelentkezik, amely korábban nem adta meg az adatokat, akkor a következő bejelentkezéskor meg kell adnia. A szabályok minden alkalommal érvényesek, amikor egy felhasználó bejelentkezik.
 
-Azure AD B2C a felhasználó által megadott adatok alapján azonosítja, hogy azok kisebbek-e. A rendszer ezután frissíti a **beszerzésimennyiség** mezőt a fiókjában. `null`Az érték `Undefined`lehet:,,, és`NotAdult`. `Minor` `Adult`  A rendszer ezután a **beszerzésimennyiség** és a **consentProvidedForMinor** mezőket használja a **legalAgeGroupClassification**értékének kiszámításához.
+Azure AD B2C a felhasználó által megadott adatok alapján azonosítja, hogy azok kisebbek-e. A rendszer ezután frissíti a **beszerzésimennyiség** mezőt a fiókjában. Az érték lehet `null`, `Undefined`, `Minor`, `Adult`és `NotAdult`.  A rendszer ezután a **beszerzésimennyiség** és a **consentProvidedForMinor** mezőket használja a **legalAgeGroupClassification**értékének kiszámításához.
 
 Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki már nem tekint kisebbnek, és azt, hogy a kiskorú gyermekeknek hogyan kell beleegyezniük. A következő táblázat felsorolja azokat a kor-szabályokat, amelyek egy kisebb és egy kisebb, a hozzájuk szükséges engedély definiálásához használatosak.
 
 | Ország/régió | Ország/régió neve | Kisebb beleegyező életkor | Kisebb kor |
 | -------------- | ------------------- | ----------------- | --------- |
-| Alapértelmezett | Nincsenek | Nincsenek | 18 |
-| AE | Egyesült Arab Emírségek | Nincsenek | 21 |
+| Alapértelmezett | None | None | 18 |
+| AE | Egyesült Arab Emírségek | None | 21 |
 | AT | Ausztria | 14 | 18 |
 | BE | Belgium | 14 | 18 |
 | BG | Bulgária | 16 | 18 |
-| BH | Bahrein | Nincsenek | 21 |
-| CM | Kamerun | Nincsenek | 21 |
+| BH | Bahrein | None | 21 |
+| CM | Kamerun | None | 21 |
 | CY | Ciprus | 16 | 18 |
 | CZ | Csehország | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |
-| EG | Egyiptom | Nincsenek | 21 |
+| EG | Egyiptom | None | 21 |
 | ES | Spanyolország | 13 | 18 |
 | JK | Franciaország | 16 | 18 |
 | GB | Egyesült Királyság | 13 | 18 |
@@ -59,19 +59,19 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 | LU | Luxemburg | 16 | 18 |
 | LV | Lettország | 16 | 18 |
 | MT | Málta | 16 | 18 |
-| NA | Namíbia | Nincsenek | 21 |
+| n/a | Namíbia | None | 21 |
 | NL | Hollandia | 16 | 18 |
 | PL | Lengyelország | 13 | 18 |
 | PT | Portugália | 16 | 18 |
 | RO | Románia | 16 | 18 |
 | SE | Svédország | 13 | 18 |
-| SG | Szingapúr | Nincsenek | 21 |
+| SG | Szingapúr | None | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| TD | Csád | Nincsenek | 21 |
-| TH | Thaiföld | Nincsenek | 20 |
-| TW | Tajvan | Nincsenek | 20 |
-| USA | Egyesült Államok | 13 | 18 |
+| TD | Csád | None | 21 |
+| TH | Thaiföld | None | 20 |
+| TW | Tajvan | None | 20 |
+| Egyesült Államok | Egyesült Államok | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Kor kapuzás beállításai
 
@@ -103,7 +103,7 @@ Miután a bérlő beállította az Age kapuzás használatát, ezt a funkciót h
 1. Hozzon létre egy olyan felhasználói folyamatot, amelynél engedélyezve van az Age kapuzás.
 2. A felhasználói folyamat létrehozása után válassza a menü **Tulajdonságok** elemét.
 3. Az **Age kapuzás** szakaszban válassza az **engedélyezve**lehetőséget.
-4. Ezután eldöntheti, hogyan kívánja kezelni a kiskorúakat azonosító felhasználókat. A **regisztrációhoz vagy a bejelentkezéshez**válassza a vagy `Block minors from accessing your application`a `Allow minors to access your application` lehetőséget. Ha kijelöli a kiskorúakat, válassza `Send a JSON back to the application` a `Show an error message`vagy a lehetőséget.
+4. Ezután eldöntheti, hogyan kívánja kezelni a kiskorúakat azonosító felhasználókat. A **regisztrációhoz vagy a bejelentkezéshez**válassza `Allow minors to access your application` vagy `Block minors from accessing your application`lehetőséget. Ha kijelöli a kiskorúakat, válassza a `Send a JSON back to the application` vagy `Show an error message`lehetőséget.
 
 
 

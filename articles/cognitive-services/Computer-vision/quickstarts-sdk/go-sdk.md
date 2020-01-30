@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: computer-vision
 ms.topic: quickstart
-ms.date: 10/22/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: d9d68f018b34c13f6570bf83c408bd436f0cc8c6
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: e4ac76f83ad4bedb420c52606598095c66747f2d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75382309"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765299"
 ---
 # <a name="quickstart-computer-vision-client-library-for-go"></a>Rövid útmutató: Computer Vision ügyféloldali kódtár a Go-hoz
 
@@ -106,7 +106,7 @@ A következő osztályok és felületek a Computer Vision go SDK főbb funkciói
 |[ReadOperationResult](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#ReadOperationResult)| Ez a típus a Batch olvasási műveletének eredményét tartalmazza. |
 |[VisualFeatureTypes](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision#VisualFeatureTypes)| Ez a típus a képelemzés különböző fajtáit határozza meg, amelyeket szabványos elemzési műveletekben lehet elvégezni. Az igényeinek megfelelően adja meg a VisualFeatureTypes-értékek készletét. |
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő feladatokat az Computer Vision ügyféloldali kódtár for go használatával:
 
@@ -263,5 +263,5 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 > [!div class="nextstepaction"]
 > [Computer Vision API referenciája (go)](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v2.1/computervision)
 
-* [Mi a Computer Vision API?](../Home.md)
+* [Mi az Computer Vision?](../Home.md)
 * A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/ComputerVision/ComputerVisionQuickstart.go)található.

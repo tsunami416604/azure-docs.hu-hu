@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 673807377914aabad5b90d1ac2ecc16623870d30
-ms.sourcegitcommit: f209d0dd13f533aadab8e15ac66389de802c581b
+ms.openlocfilehash: 5737a53d3eca0da440f178f9fd34adf5e968dd62
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/17/2019
-ms.locfileid: "71063361"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840179"
 ---
 # <a name="trustframeworkpolicy"></a>TrustFrameworkPolicy
 
@@ -40,13 +40,13 @@ A **TrustFrameworkPolicy** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Szükséges | Leírás |
 |---------- | -------- | ----------- |
-| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek `0.3.0.0` értékűnek kell lennie |
+| PolicySchemaVersion | Igen | A szabályzat végrehajtásához használandó séma verziója. Az értéknek `0.3.0.0`nak kell lennie |
 | TenantObjectId | Nem | A Azure Active Directory B2C (Azure AD B2C) bérlő egyedi objektumazonosító. |
-| TenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
-| `PolicyId` | Igen | A házirend egyedi azonosítója. Ezt az azonosítót a *B2C_1A_* előtaggal kell ellátni |
+| tenantId | Igen | Annak a bérlőnek az egyedi azonosítója, amelyhez ez a szabályzat tartozik. |
+| policyId | Igen | A házirend egyedi azonosítója. Ezt az azonosítót *B2C_1A_* kell előállítani |
 | PublicPolicyUri | Igen | A házirend URI-ja, amely a bérlői azonosító és a házirend-azonosító kombinációja. |
-| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`, `Debugging`, vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](active-directory-b2c-troubleshoot-custom.md). |
-| UserJourneyRecorderEndpoint | Nem | Az a végpont, amelyet a rendszer a **deploymentmode beállítása** `Development` értékre való beállításakor használ. Az értéknek `urn:journeyrecorder:applicationinsights` értékűnek kell lennie. További információkért lásd: [naplók gyűjtése](active-directory-b2c-troubleshoot-custom.md). |
+| Deploymentmode beállítása | Nem | Lehetséges értékek: `Production`, `Debugging`vagy `Development`. A `Production` az alapértelmezett formátum. Ezt a tulajdonságot használhatja a szabályzat hibakereséséhez. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
+| UserJourneyRecorderEndpoint | Nem | Az a végpont, amelyet a rendszer a **deploymentmode beállítása** `Development`értékre való beállításakor használ. Az értéknek `urn:journeyrecorder:applicationinsights`nak kell lennie. További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md). |
 
 
 Az alábbi példa bemutatja, hogyan adhatja meg a **TrustFrameworkPolicy** elemet:
@@ -80,21 +80,21 @@ Az öröklési modell a következő:
 - A gyermek házirend bármilyen szinten örökölhető a szülő házirendtől, és új elemek hozzáadásával bővíthető.
 - A szintek száma nincs korlátozva.
 
-További információ: Ismerkedés [az egyéni szabályzatokkal](active-directory-b2c-get-started-custom.md).
+További információ: Ismerkedés [az egyéni szabályzatokkal](custom-policy-get-started.md).
 
-## <a name="base-policy"></a>Alapszabályzat
+## <a name="base-policy"></a>Alapházirend
 
 Ha egy házirendet egy másik házirendből kíván örökölni, egy **BasePolicy** elemet kell deklarálnia a **TrustFrameworkPolicy** elem alatt. A **BasePolicy** elem azon alapházirendre hivatkozik, amelyből ez a házirend származik.
 
 A **BasePolicy** elem a következő elemeket tartalmazza:
 
-| Elem | Ismétlődések | Leírás |
+| Elem | Események | Leírás |
 | ------- | ----------- | --------|
-| TenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
-| `PolicyId` | 1:1 | A szülő házirend azonosítója. |
+| tenantId | 1:1 | A Azure AD B2C bérlő azonosítója. |
+| policyId | 1:1 | A szülő házirend azonosítója. |
 
 
-Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megadni. Ez a **B2C_1A_TrustFrameworkExtensions** szabályzat a **B2C_1A_TrustFrameworkBase** házirendből származik.
+Az alábbi példa azt szemlélteti, hogyan lehet alapszintű szabályzatot megadni. Ez a **B2C_1A_TrustFrameworkExtensions** házirend a **B2C_1A_TrustFrameworkBase** házirendből származik.
 
 ``` XML
 <TrustFrameworkPolicy
@@ -138,7 +138,7 @@ B2C_1A_TrustFrameWorkBase vagy B2C_1A_TrustFrameworkExtensionPolicy:
 
 A felhasználói út határozza meg, hogy a felhasználó milyen üzleti logikát mutat be. Minden felhasználói út olyan előkészítési lépések összessége, amelyek számos műveletet hajtanak végre a hitelesítés és az adatgyűjtés szempontjából.
 
-Az [alapszintű csomagban](active-directory-b2c-get-started-custom.md#custom-policy-starter-pack) található **SocialAndLocalAccounts** házirend-fájl tartalmazza a SignUpOrSignIn, a ProfileEdit, a PasswordReset felhasználói útvonalakat. További felhasználói útvonalakat is hozzáadhat más forgatókönyvekhez, például egy e-mail-cím módosításához vagy egy közösségi fiók összekapcsolásához.
+Az [alapszintű csomagban](custom-policy-get-started.md#custom-policy-starter-pack) található **SocialAndLocalAccounts** házirend-fájl tartalmazza a SignUpOrSignIn, a ProfileEdit, a PasswordReset felhasználói útvonalakat. További felhasználói útvonalakat is hozzáadhat más forgatókönyvekhez, például egy e-mail-cím módosításához vagy egy közösségi fiók összekapcsolásához.
 
 A előkészítési lépések egy [technikai profilt](technicalprofiles.md)hívhatnak meg. A technikai profil olyan keretrendszert biztosít, amely beépített mechanizmussal rendelkezik a különböző típusú felekkel való kommunikációhoz. A technikai profil például elvégezheti ezeket a műveleteket többek között:
 

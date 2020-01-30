@@ -3,17 +3,15 @@ title: B2B-üzenetek nyomon követése Azure Monitor-naplókkal
 description: Az Azure-beli integrációs fiókok és Azure Logic Apps B2B-kommunikációjának nyomon követése Log Analytics
 services: logic-apps
 ms.suite: integration
-author: divyaswarnkar
-ms.author: divswa
-ms.reviewer: jonfan, estfan, logicappspm
+ms.reviewer: jonfan, divswa, logicappspm
 ms.topic: article
 ms.date: 10/19/2018
-ms.openlocfilehash: 3726b0c8c22614d2acc797295543e69f9358d69c
-ms.sourcegitcommit: 76b48a22257a2244024f05eb9fe8aa6182daf7e2
+ms.openlocfilehash: 6e66bdfcfe9e84c1095f03a41439b904c7cb96df
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74792930"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773716"
 ---
 # <a name="track-b2b-messages-with-azure-monitor-logs"></a>B2B-üzenetek nyomon követése Azure Monitor-naplókkal
 
@@ -106,7 +104,7 @@ A B2B-üzenetek feldolgozása után megtekintheti az üzenetek állapotát és r
 3. Adott üzenetekhez tartozó bemenetek és kimenetek megtekintéséhez vagy exportálásához válassza ki az üzeneteket, és válassza a **Letöltés**lehetőséget. Amikor a rendszer kéri, mentse a. zip fájlt a helyi számítógépre, majd bontsa ki a fájlt. 
 
    A kibontott mappa minden kiválasztott üzenethez tartalmaz egy mappát. 
-   A köszönetnyilvánítás beállításakor az üzenet mappája is tartalmazza a nyugtázás részleteit tartalmazó fájlokat. 
+   Ha a nyugtákat állítja be, az üzenet mappája is tartalmazza a visszaigazolási adatokat tartalmazó fájlokat. 
    Minden üzenet mappája legalább a következő fájlokat tartalmazhatja: 
    
    * Ember által olvasható fájlok a bemeneti adattartalommal és a kimeneti adattartalommal kapcsolatos adatokkal
@@ -167,7 +165,7 @@ Itt látható a letöltött AS2-üzenetek mappájának és fájljainak formátum
 | Mappa vagy fájl | Név formátuma |
 | :------------- | :---------- |
 | Üzenet mappája | [Sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_[Message-ID]\_[időbélyeg] |
-| Bemenet, kimenet és ha beállított, nyugtázási fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimenet\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimenet. txt |
+| Bemenet, kimenet, és ha be van állítva, a nyugtázott fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimenet\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_AS2\_[korrelációs azonosító]\_kimenet. txt |
 |          |             |
 
 <a name="x12-message-properties"></a>
@@ -200,7 +198,7 @@ Az alábbiakban a letöltött X12-üzenetek és-fájlok formátuma látható.
 | Mappa vagy fájl | Név formátuma |
 | :------------- | :---------- |
 | Üzenet mappája | [Sender]\_[fogadó]\_X12\_[Interchange-Control-Number]\_[globális-Control-Number]\_[tranzakció-set-Number]\_[timestamp] |
-| Bemenet, kimenet és ha beállított, nyugtázási fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_kimeneti\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_kimenet. txt |
+| Bemenet, kimenet, és ha be van állítva, a nyugtázott fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_kimeneti\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_X12\_[Interchange-Control-number]\_kimenet. txt |
 |          |             |
 
 <a name="EDIFACT-message-properties"></a>
@@ -233,7 +231,7 @@ Az alábbiakban a letöltött EDIFACT-üzenetek és-fájlok formátuma látható
 | Mappa vagy fájl | Név formátuma |
 | :------------- | :---------- |
 | Üzenet mappája | [Sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-Number]\_[globális-Control-Number]\_[tranzakció-set-Number]\_[timestamp] |
-| Bemenet, kimenet és ha beállított, nyugtázási fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_kimeneti\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_kimenet. txt |
+| Bemenet, kimenet, és ha be van állítva, a nyugtázott fájlok | **Bemeneti adattartalom**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_input_payload. txt </p>**Kimeneti adattartalom**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_kimeneti\_hasznos adat. txt </p></p>**Bemenetek**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_Inputs. txt </p></p>**Kimenetek**: [sender]\_[fogadó]\_EDIFACT\_[Interchange-Control-number]\_kimenet. txt |
 |          |             |
 
 ## <a name="next-steps"></a>Következő lépések

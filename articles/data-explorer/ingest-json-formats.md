@@ -6,17 +6,17 @@ ms.author: orspodek
 ms.reviewer: kerend
 ms.service: data-explorer
 ms.topic: conceptual
-ms.date: 01/23/2020
-ms.openlocfilehash: ef5c7de782d833aad96516d3e5357a0ed575a781
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.date: 01/27/2020
+ms.openlocfilehash: d293b76e004d693813a074cb8551a86cb3c0bec2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76722875"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772331"
 ---
 # <a name="ingest-json-formatted-sample-data-into-azure-data-explorer"></a>JSON formátumú mintaadatok betöltése az Azure-ba Adatkezelő
 
-Ez a cikk bemutatja, hogyan végezheti el a JSON formátumú adatbevitelt egy Azure Adatkezelő-adatbázisba. A RAW és a leképezett JSON egyszerű példáit fogja használni, folytassa a többsoros JSON-t, majd kezelje a tömböket és szótárakat tartalmazó összetettebb JSON-sémákat. 
+Ez a cikk bemutatja, hogyan végezheti el a JSON formátumú adatbevitelt egy Azure Adatkezelő-adatbázisba. A RAW és a leképezett JSON egyszerű példáit fogja használni, folytassa a többsoros JSON-t, majd kezelje a tömböket és szótárakat tartalmazó összetettebb JSON-sémákat.  A példák részletezik a JSON formátumú adatok Kusto lekérdezési nyelv (KQL), C#vagy Python használatával történő betöltésének folyamatát. A Kusto lekérdezési nyelv `ingest` vezérlési parancsokat közvetlenül a motor végpontja hajtja végre. Éles környezetben a rendszer a betöltést az adatkezelés szolgáltatáshoz az ügyfél-kódtárak vagy az adatkapcsolatok használatával hajtja végre. Az [azure adatkezelő Python Library használatával](/azure/data-explorer/python-ingest-data) beolvashatja az adatgyűjtést, és [Az Azure adatkezelő .NET Standard SDK használatával](/azure/data-explorer/net-standard-ingest-data) betöltheti az adatgyűjtést az ezekkel az ügyféloldali kódtárakkal történő adatfeldolgozással kapcsolatban.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -81,9 +81,6 @@ A Kusto lekérdezési nyelv használatával nyers JSON formátumú adatbevitelt 
     ```Kusto
     .ingest into table RawEvents h'https://kustosamplefiles.blob.core.windows.net/jsonsamplefiles/simple.json?st=2018-08-31T22%3A02%3A25Z&se=2020-09-01T22%3A02%3A00Z&sp=r&sv=2018-03-28&sr=b&sig=LQIbomcKI8Ooz425hWtjeq6d61uEaq21UVX7YrM61N4%3D' with (format=json, jsonMappingReference=RawEventMapping)
     ```
-
-    > [!NOTE]
-    > Itt láthatja a motor végpontján közvetlenül végrehajtott `ingest`-vezérlési parancsokat. Éles környezetben a rendszer a betöltést az adatkezelés szolgáltatáshoz az ügyfél-kódtárak vagy az adatkapcsolatok használatával hajtja végre. Az [azure adatkezelő Python Library használatával](/azure/data-explorer/python-ingest-data) beolvashatja az adatgyűjtést, és [Az Azure adatkezelő .NET Standard SDK használatával](/azure/data-explorer/net-standard-ingest-data) betöltheti az adatgyűjtést az ezekkel az ügyféloldali kódtárakkal történő adatfeldolgozással kapcsolatban.
 
 # <a name="ctabc-sharp"></a>[C#](#tab/c-sharp)
 

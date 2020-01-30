@@ -13,12 +13,12 @@ ms.workload: infrastructure-services
 ms.date: 10/22/2019
 ms.author: jispar
 ms.reviewer: kumud
-ms.openlocfilehash: dc64570ccf69c321f33b9689362def8c9caf975e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 8d5377f7ec8de14f3d7d55bc109f6be731991051
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76715409"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775269"
 ---
 # <a name="virtual-network-service-tags"></a>Virtuális hálózati szolgáltatás címkéi 
 <a name="network-service-tags"></a>
@@ -79,7 +79,7 @@ Alapértelmezés szerint a szolgáltatás címkéi a teljes felhő tartományait
 | **ElasticAFD** | Rugalmas Azure bejárati ajtó. | Mindkettő | Nem | Nem |
 | **EventHub** | Azure Event Hubs. | Kimenő | Igen | Igen |
 | **GatewayManager** | Az Azure VPN Gateway és Application Gateway számára dedikált központi telepítések kezelési forgalma. | Bejövő | Nem | Nem |
-| **GuestAndHybridManagement** | Azure Automation és vendég konfiguráció. | Mindkettő | Nem | Igen |
+| **GuestAndHybridManagement** | Azure Automation és vendég konfiguráció. | Kimenő | Nem | Igen |
 | **HDInsight** | Azure-HDInsight. | Bejövő | Igen | Nem |
 | **Internet** | Az IP-címtartomány, amely a virtuális hálózaton kívül esik, és a nyilvános interneten érhető el.<br/><br/>A címtartomány magában foglalja az [Azure tulajdonában lévő nyilvános IP-címterület területét](https://www.microsoft.com/download/details.aspx?id=41653). | Mindkettő | Nem | Nem |
 | **MicrosoftCloudAppSecurity** | Microsoft Cloud App Security. | Kimenő | Nem | Nem |

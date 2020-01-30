@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9927de3ab3fb68cea17095d7255fd8a68f66c9a8
-ms.sourcegitcommit: 375b70d5f12fffbe7b6422512de445bad380fe1e
+ms.openlocfilehash: d256f417fb3bacbf3f363fc2a9f8701a1bb49d71
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74901476"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773628"
 ---
 # <a name="create-content-keys-with-rest"></a>Tartalom-kulcsok létrehozása REST használatával
 > [!div class="op_single_selector"]
@@ -90,7 +90,7 @@ Kérés:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 
@@ -122,7 +122,7 @@ Kérés:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     x-ms-client-request-id: 78d1247a-58d7-40e5-96cc-70ff0dfa7382
     Host: media.windows.net
 
@@ -150,7 +150,7 @@ Válasz:
 ## <a name="create-the-contentkey"></a>A ContentKey létrehozása
 Miután lekérte az X. 509 tanúsítványt, és a nyilvános kulcsát használta a tartalmi kulcs titkosításához, hozzon létre egy **ContentKey** -entitást, és ennek megfelelően állítsa be a tulajdonság értékét.
 
-A tartalmi kulcs létrehozásakor beállított értékek egyike a típus. Az alábbi értékek közül választhat:
+A tartalmi kulcs létrehozásakor beállított értékek egyike a típus. Válasszon az alábbi értékek közül:
 
     public enum ContentKeyType
     {
@@ -189,7 +189,7 @@ Kérelem
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
     {
     "Name":"ContentKey",
@@ -239,7 +239,7 @@ Kérés:
     Accept-Charset: UTF-8
     Content-Type: application/json
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 
@@ -250,7 +250,7 @@ Válasz:
     HTTP/1.1 204 No Content 
 
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

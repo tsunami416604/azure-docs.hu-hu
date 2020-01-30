@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 10/09/2019
 ms.author: mathoma
-ms.openlocfilehash: 2453b29c5efd768930f534df89d4c62320ed4770
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3bd13a63c3f4fa275f7e4789c184802445519388
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75965345"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772607"
 ---
 # <a name="configure-a-sql-server-failover-cluster-instance-with-premium-file-share-on-azure-virtual-machines"></a>SQL Server feladatátvevő fürt példányának konfigurálása prémium fájlmegosztás esetén az Azure Virtual Machines szolgáltatásban
 
@@ -77,13 +77,15 @@ A cikk lépéseinek elvégzése előtt a következőket kell tennie:
 
 - Microsoft Azure előfizetés.
 - Egy Windows-tartomány az Azure Virtual Machines szolgáltatásban.
-- Egy olyan fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
+- Olyan tartományi felhasználói fiók, amely rendelkezik objektumok létrehozásához szükséges engedélyekkel mind az Azure-beli virtuális gépeken, mind pedig a Active Directory.
+- Egy tartományi felhasználói fiók a SQL Server szolgáltatás futtatásához, és a fájlmegosztás csatlakoztatásakor bejelentkezhet a virtuális gépre.  
 - Az alábbi összetevőkhöz elegendő IP-címmel rendelkező Azure-beli virtuális hálózat és alhálózat:
    - Két virtuális gép.
    - A feladatátvevő fürt IP-címe.
    - Egy IP-cím minden egyes egyes adattömbhöz.
 - DNS konfigurálva az Azure-hálózaton, amely a tartományvezérlőkre mutat.
-- [Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
+- A fürtözött meghajtóként használandó [prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) az adatfájlok adatbázisának tárolási kvótája alapján.
+- Ha a Windows Server 2012 R2-es vagy újabb verzióját használja, szüksége lesz egy másik fájlmegosztást, amelyet tanúsító fájlmegosztásként kíván használni, mivel a Felhőbeli tanúk a Windows 2016 és újabb rendszereken támogatottak. Használhat egy másik Azure-fájlmegosztást, vagy használhat egy fájlmegosztást egy különálló virtuális gépen is. Ha másik Azure-fájlmegosztást fog használni, csatlakoztathatja azt ugyanazzal a folyamattal, mint a fürtözött meghajtóhoz használt prémium fájlmegosztás esetében. 
 
 Ezeknek az előfeltételeknek a megkezdése után elkezdheti felépíteni a feladatátvevő fürtöt. Első lépésként hozza létre a virtuális gépeket.
 
@@ -180,7 +182,8 @@ A virtuális gépek létrehozása és konfigurálása után beállíthatja a pr�
 1. Ismételje meg ezeket a lépéseket minden olyan SQL Server VM, amely részt vesz a fürtben.
 
   > [!IMPORTANT]
-  > Érdemes lehet külön fájlmegosztást használni a biztonságimásolat-fájlokhoz, hogy mentse a megosztás IOPS és tárterületét az adatfájlok és a naplófájlok számára. A biztonsági másolati fájlok prémium vagy standard fájlmegosztást is használhatnak.
+  > - Érdemes lehet külön fájlmegosztást használni a biztonságimásolat-fájlokhoz, hogy mentse a megosztás IOPS és tárterületét az adatfájlok és a naplófájlok számára. A biztonsági másolati fájlok prémium vagy standard fájlmegosztást is használhatnak.
+  > - Ha Windows 2012 R2 vagy régebbi operációs rendszert használ, kövesse ugyanezen lépéseket a tanúsító fájlmegosztásként használni kívánt fájlmegosztás csatlakoztatásához. 
 
 ## <a name="step-3-configure-the-failover-cluster-with-the-file-share"></a>3\. lépés: a feladatátvevő fürt konfigurálása a fájlmegosztás segítségével
 
@@ -189,7 +192,7 @@ A következő lépés a feladatátvevő fürt konfigurálása. Ebben a lépésbe
 1. Adja hozzá a Windows Server feladatátvételi fürtszolgáltatást.
 1. Ellenőrizze a fürtöt.
 1. Hozza létre a feladatátvevő fürtöt.
-1. Hozzon létre egy Felhőbeli tanúsító.
+1. Hozzon létre egy Felhőbeli tanúsító (Windows Server 2016 és újabb) vagy a tanúsító fájlmegosztás (Windows Server 2012 R2 és régebbi verziók esetében).
 
 
 ### <a name="add-windows-server-failover-clustering"></a>Windows Server feladatátvételi fürtszolgáltatás hozzáadása
@@ -263,9 +266,9 @@ New-Cluster -Name <FailoverCluster-Name> -Node ("<node1>","<node2>") –StaticAd
 ```
 
 
-### <a name="create-a-cloud-witness"></a>Felhőbeli tanúsító létrehozása
+### <a name="create-a-cloud-witness-win-2016-"></a>Felhőbeli tanúsító létrehozása (Win 2016 +)
 
-A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum tanúsító új típusa. Ezzel a művelettel megszűnik a tanúsító megosztást üzemeltető különálló virtuális gép szükségessége.
+Ha a Windows Server 2016-es és újabb operációs rendszert használ, létre kell hoznia egy Felhőbeli tanúsító. A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum tanúsító új típusa. Ezzel a művelettel megszűnik a tanúsító megosztást üzemeltető különálló virtuális gép, illetve egy különálló fájlmegosztás használata.
 
 1. [Hozzon létre egy Felhőbeli tanúsító a feladatátvevő fürthöz](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness).
 
@@ -273,7 +276,11 @@ A Felhőbeli tanúsító az Azure Storage-blobokban tárolt fürtözött kvórum
 
 1. Mentse a hozzáférési kulcsokat és a tároló URL-címét.
 
-1. Konfigurálja a feladatátvevő fürtöt tanúsító kvórumot. Lásd: [a kvórum tanúsító beállítása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+### <a name="configure-quorum"></a>Kvórum konfigurálása 
+
+A Windows Server 2016-es és újabb rendszereken konfigurálja úgy a fürtöt, hogy az imént létrehozott Felhőbeli tanúsító használja. Kövesse az összes lépést a [kvórum tanúsító konfigurálásához a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness).
+
+A Windows Server 2012 R2 és régebbi verziók esetében kövesse a [kvórum tanúsító konfigurálása a felhasználói felületen](https://technet.microsoft.com/windows-server-docs/failover-clustering/deploy-cloud-witness#to-configure-cloud-witness-as-a-quorum-witness) , de a **kvórum tanúsító kijelölése** lapon jelölje be a tanúsító **fájlmegosztás beállítása** lehetőséget. Adja meg a tanúsító fájlmegosztás számára lefoglalt fájlmegosztást, függetlenül attól, hogy egy különálló virtuális gépen van-e konfigurálva, vagy az Azure-ból van-e csatlakoztatva. 
 
 
 ## <a name="step-4-test-cluster-failover"></a>4\. lépés: a fürt feladatátvételének tesztelése
@@ -296,7 +303,7 @@ Miután konfigurálta a feladatátvevő fürtöt, létrehozhatja a SQL Server-t.
 
 1. Válassza az **új SQL Server feladatátvevő fürt telepítése**lehetőséget. A varázsló utasításait követve telepítse a SQL Server-t.
 
-   Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját, ebben az űrlapban: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy az a fiók, amellyel a fájlmegosztást megtartotta, ugyanaz a fiók, amelyet a SQL Server szolgáltatás használ a lehetséges hibák elkerülése érdekében.
+   Az adatkönyvtárak a prémium fájlmegosztás esetében szükségesek. Adja meg a megosztás teljes elérési útját, ebben az űrlapban: `\\storageaccountname.file.core.windows.net\filesharename\foldername`. Megjelenik egy figyelmeztetés, amely arról tájékoztat, hogy a fájlkiszolgáló adatkönyvtárként van megadva. Ez a figyelmeztetés várható. Győződjön meg arról, hogy a fájlmegosztás megtartása után a virtuális géphez RDP-t használó felhasználói fiók ugyanaz a fiók, amelyet a SQL Server szolgáltatás használ a lehetséges hibák elkerülése érdekében.
 
    :::image type="content" source="media/virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share/use-file-share-as-data-directories.png" alt-text="Fájlmegosztás használata SQL-adatkönyvtárakként":::
 
@@ -356,7 +363,7 @@ A terheléselosztó létrehozása:
 
 1. A háttér-készlet létrehozásához kattintson **az OK gombra** .
 
-### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapotmintájának konfigurálása
+### <a name="configure-a-load-balancer-health-probe"></a>Terheléselosztó állapot-mintavételének konfigurálása
 
 1. A terheléselosztó panelen válassza az **állapot**-mintavétel lehetőséget.
 
@@ -430,7 +437,7 @@ A fürt mintavételének beállítása után a PowerShellben láthatja a fürt �
 
 ## <a name="step-8-test-fci-failover"></a>8\. lépés: a feladatátvétel tesztelése
 
-Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Tegye a következőket:
+Feladatátvételi teszt – a fürt működésének ellenőrzéséhez. Hajtsa végre a következő lépéseket:
 
 1. Az RDP használatával csatlakozzon az egyik SQL Server a csomóponthoz.
 

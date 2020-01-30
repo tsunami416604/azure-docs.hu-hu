@@ -1,10 +1,9 @@
 ---
 title: Az Azure Service Bus – Event Grid integráció áttekintése | Microsoft Docs
-description: A Service Bus-üzenetkezelés és az Event Grid integrációjának leírása
+description: Ez a cikk azt ismerteti, hogyan integrálható az Azure Service Bus üzenetkezelés a Azure Event Gridsal.
 services: service-bus-messaging
 documentationcenter: .net
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: f99766cb-8f4b-4baf-b061-4b1e2ae570e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/15/2018
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 5d4ece6b631882200c6f98f6de5daa543fdf7ce4
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 1e514e2856afae4ff6f877bb193935da1bc5d623
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "67072131"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773478"
 ---
 # <a name="azure-service-bus-to-event-grid-integration-overview"></a>Az Azure Service Bus – Azure Event Grid integráció áttekintése
 
@@ -39,7 +38,7 @@ A funkció engedélyezéséhez a következőkre van szüksége:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 ### <a name="verify-that-you-have-contributor-access"></a>Győződjön meg arról, hogy rendelkezik közreműködői hozzáféréssel
-Nyissa meg a Service Bus-névteret, és válassza ki **hozzáférés-vezérlés (IAM)** , és válassza ki **szerepkör-hozzárendelések** fülre. Győződjön meg arról, hogy a közreműködői hozzáférés a névtérhez. 
+Lépjen a Service Bus névtérhez, majd válassza a **hozzáférés-vezérlés (iam)** lehetőséget, és válassza a **szerepkör-hozzárendelések** lapot. Ellenőrizze, hogy rendelkezik-e a közreműködői hozzáféréssel a névtérhez. 
 
 ### <a name="events-and-event-schemas"></a>Események és eseménysémák
 
@@ -118,7 +117,7 @@ Ha a névtérben például csak egy üzenetsor vagy egy előfizetés eseményeit
 
 Három különböző módon hozhatók létre Event Grid-előfizetések a Service Bus-névterekhez.
 
-* Az Azure Portalon
+* A Azure Portal
 * Az [Azure CLI](#azure-cli-instructions) használatával
 * A [PowerShell](#powershell-instructions) használatával
 
@@ -153,7 +152,7 @@ namespaceid=$(az resource show --namespace Microsoft.ServiceBus --resource-type 
 az eventgrid event-subscription create --resource-id $namespaceid --name "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" --endpoint "<your_function_url>" --subject-ends-with "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-A BASH használata 
+Ha BASH-et használ 
 
 ## <a name="powershell-instructions"></a>PowerShell-utasítások
 
@@ -173,9 +172,9 @@ mespaceName "<YOUR NAMESPACE NAME>").Id
 New-AzEVentGridSubscription -EventSubscriptionName "<YOUR EVENT GRID SUBSCRIPTION NAME (CAN BE ANY NOT EXISTING)>" -ResourceId $NSID -Endpoint "<YOUR FUNCTION URL>” -SubjectEndsWith "<YOUR SERVICE BUS SUBSCRIPTION NAME>"
 ```
 
-Itt Fedezze fel a többi beállítási lehetőséget, vagy tesztelje az események áramlását.
+Itt megtekintheti a többi beállítási lehetőséget, vagy tesztelheti az események folyamatát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Service Bus és Event Grid [példák](service-bus-to-event-grid-integration-example.md) megtekintése.
 * További tudnivalók az [Event Grid](https://docs.microsoft.com/azure/event-grid/) szolgáltatásról.

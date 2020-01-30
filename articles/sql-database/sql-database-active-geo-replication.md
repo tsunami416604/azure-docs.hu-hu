@@ -11,16 +11,16 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: mathoma, carlrab
 ms.date: 07/09/2019
-ms.openlocfilehash: 33697fd8d3b0c6faea423026e1462834c6b1ef4c
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: e32250102d095f341b2de918037b9ad834adfd33
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822660"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842655"
 ---
 # <a name="creating-and-using-active-geo-replication"></a>Aktív geo-replikáció létrehozása és használata
 
-Az aktív geo-replikálás Azure SQL Database funkció, amely lehetővé teszi, hogy az azonos vagy eltérő adatközpontban (régióban) található SQL Database-kiszolgálón lévő egyes adatbázisok olvasható másodlagos adatbázisait hozzon létre.
+Az aktív geo-replikáció egy Azure SQL Database funkció, amely lehetővé teszi, hogy az azonos vagy eltérő adatközpontban (régióban) található SQL Database-kiszolgálón lévő egyes adatbázisok olvasható másodlagos adatbázisait is létrehozza.
 
 > [!NOTE]
 > Felügyelt példány nem támogatja az aktív geo-replikációt. A felügyelt példányok földrajzi feladatátvételéhez használjon [automatikus feladatátvételi csoportokat](sql-database-auto-failover-group.md).
@@ -124,6 +124,79 @@ Ha úgy dönt, hogy az alacsonyabb számítási mérettel hozza létre a másodl
 
 A SQL Database számítási méretekkel kapcsolatos további információkért lásd: [Mi a SQL Database szolgáltatási szintek](sql-database-purchase-models.md).
 
+## <a name="cross-subscription-geo-replication"></a>Előfizetések közötti földrajzi replikáció
+
+A különböző előfizetésekhez tartozó két adatbázis közötti aktív földrajzi replikálás beállításához (függetlenül attól, hogy ugyanazt a bérlőt vagy sem), az ebben a szakaszban ismertetett speciális eljárást kell követnie.  Az eljárás az SQL-parancsokon alapul, és a következőket igényli: 
+
+- Rendszerjogosultságú bejelentkezés létrehozása mindkét kiszolgálón
+- Adja hozzá az IP-címet a mindkét kiszolgáló módosítását végző ügyfél engedélyezési listájához (például az SQL Server Management Studio-t futtató gazdagép IP-címéhez). 
+
+A módosításokat végző ügyfélnek hálózati hozzáférésre van szüksége az elsődleges kiszolgálóhoz. Bár az ügyfél ugyanazt az IP-címet kell hozzáadni a másodlagos kiszolgáló engedélyezési listájához, a másodlagos kiszolgálóhoz való hálózati kapcsolat nem feltétlenül szükséges. 
+
+### <a name="on-the-master-of-the-primary-server"></a>Az elsődleges kiszolgáló főkiszolgálójára
+
+1. Adja hozzá az IP-címet a módosításokat végrehajtó ügyfél engedélyezési listájához (További információ: a [tűzfal konfigurálása](sql-database-firewall-configure.md)). 
+1. Hozzon létre egy dedikált bejelentkezést az aktív geo-replikáció beállításához (és szükség szerint módosítsa a hitelesítő adatokat):
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01'
+   ```
+
+1. Hozzon létre egy megfelelő felhasználót, és rendelje hozzá a DBManager szerepkörhöz: 
+
+   ```sql
+   create user geodrsetup for login gedrsetup
+   alter role geodrsetup dbmanager add member geodrsetup
+   ```
+
+1. Jegyezze fel az új bejelentkezés SID-azonosítóját a következő lekérdezés használatával: 
+
+   ```sql
+   select sid from sys.sql_logins where name = 'geodrsetup'
+   ```
+
+### <a name="on-the-source-database-on-the-primary-server"></a>Az elsődleges kiszolgáló forrás-adatbázisán
+
+1. Hozzon létre egy felhasználót ugyanahhoz a bejelentkezéshez:
+
+   ```sql
+   create user geodrsetup for login geodrsetup
+   ```
+
+1. Adja hozzá a felhasználót a db_owner szerepkörhöz:
+
+   ```sql
+   alter role db_owner add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-secondary-server"></a>A másodlagos kiszolgáló főkiszolgálójára 
+
+1. Adja hozzá az IP-címet a módosításokat végző ügyfél engedélyezési listájához. Az elsődleges kiszolgáló azonos pontos IP-címének kell lennie. 
+1. Hozza létre ugyanazt a bejelentkezést, mint az elsődleges kiszolgálón, ugyanazzal a felhasználónévvel és SID-lel: 
+
+   ```sql
+   create login geodrsetup with password = 'ComplexPassword01', sid=0x010600000000006400000000000000001C98F52B95D9C84BBBA8578FACE37C3E
+   ```
+
+1. Hozzon létre egy megfelelő felhasználót, és rendelje hozzá a DBManager szerepkörhöz:
+
+   ```sql
+   create user geodrsetup for login geodrsetup;
+   alter role dbmanager add member geodrsetup
+   ```
+
+### <a name="on-the-master-of-the-primary-server"></a>Az elsődleges kiszolgáló főkiszolgálójára
+
+1. Jelentkezzen be az elsődleges kiszolgáló főkiszolgálójára az új bejelentkezés használatával. 
+1. Hozzon létre egy másodlagos replikát a forrás-adatbázisról a másodlagos kiszolgálón (szükség szerint módosítsa az adatbázis nevét és a servername-t):
+
+   ```sql
+   alter database dbrep add secondary on server <servername>
+   ```
+
+A kezdeti beállítás után eltávolíthatók a felhasználók, a bejelentkezések és a tűzfalszabályok. 
+
+
 ## <a name="keeping-credentials-and-firewall-rules-in-sync"></a>A hitelesítő adatok és a tűzfalszabályok szinkronizálásának megtartása
 
 Javasoljuk, hogy az [adatbázis-szintű IP-tűzfalszabályok](sql-database-firewall-configure.md) használatával geo-alapú adatbázisokat használjon, így ezek a szabályok replikálhatók az adatbázissal annak biztosítása érdekében, hogy az összes másodlagos adatbázis azonos IP-tűzfalszabályok legyenek az elsődlegesek. Ez a megközelítés szükségtelenné teszi az ügyfelek számára a tűzfalszabályok manuális konfigurálását és karbantartását az elsődleges és másodlagos adatbázisokat üzemeltető kiszolgálókon. Hasonlóképpen, a [tárolt adatbázis-felhasználók](sql-database-manage-logins.md) adathozzáféréshez való használata biztosítja, hogy az elsődleges és a másodlagos adatbázisok mindig ugyanazzal a felhasználói hitelesítő adatokkal rendelkezzenek, ezért a feladatátvétel során a bejelentkezések és a jelszavak nem egyeznek. [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)hozzáadásával az ügyfelek az elsődleges és a másodlagos adatbázisokhoz is kezelhetik a felhasználói hozzáférést, így nem kell a hitelesítő adatoknak az adatbázisokban való kezelését.
@@ -209,7 +282,7 @@ Amint azt korábban már említettük, az aktív geo-replikáció programozott m
 | [Replikációs hivatkozás törlése](https://docs.microsoft.com/rest/api/sql/replicationlinks/delete) | Töröl egy adatbázis-replikációs hivatkozást. Feladatátvétel közben nem végezhető el. |
 |  | |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A minta parancsfájlokat lásd:
   - [Önálló adatbázis konfigurálása és a feladatainak átvétele aktív georeplikációval](scripts/sql-database-setup-geodr-and-failover-database-powershell.md)

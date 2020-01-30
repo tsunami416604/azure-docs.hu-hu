@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: tamram
 ms.subservice: blobs
-ms.openlocfilehash: f393ab23df49751efbbcb3d70314b2ac404a8b77
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 3f9a1cfa92ffa454758849f52cc1977cef6df63a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981819"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768395"
 ---
 # <a name="optimize-costs-for-blob-storage-with-reserved-capacity"></a>A blob Storage költségeinek optimalizálása a fenntartott kapacitással
 
@@ -54,7 +54,7 @@ Fenntartott kapacitás megvásárlása:
 
 - Legalább egy Nagyvállalati vagy egyéni előfizetéshez **tulajdonosi** szerepkörrel kell rendelkeznie, utólagos elszámolású díjszabással.
 - Vállalati előfizetések esetén az EA portálon engedélyezni kell a **fenntartott példányok hozzáadását** . Ha ez a beállítás le van tiltva, akkor az előfizetés egyik nagyvállalati rendszergazdájának kell lennie.
-- A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatják meg Azure Cosmos DB fenntartott kapacitást.
+- A Cloud Solution Provider (CSP) program esetében csak a felügyeleti ügynökök vagy értékesítési ügynökök vásárolhatnak Azure Blob Storage fenntartott kapacitást.
 
 ## <a name="determine-required-capacity-before-purchase"></a>A szükséges kapacitás meghatározása a vásárlás előtt
 
@@ -85,7 +85,7 @@ A fenntartott kapacitás megvásárlásához kövesse az alábbi lépéseket:
    | **Redundancia** | A foglalás redundancia lehetősége. A lehetőségek közé tartozik a *LRS*, a *ZRS*, a *GRS*és az *ra-GZRS*. További információ a redundancia lehetőségeiről: [Azure Storage redundancia](../common/storage-redundancy.md). |
    | **Számlázási gyakoriság** | Azt jelzi, hogy a fiók milyen gyakran kerül kiszámlázásra a foglaláshoz. A lehetőségek közé tartoznak a *havonta* vagy a *kezdeti*beállítások. |
    | **Méret** | Az a régió, ahol a foglalás érvényben van. |
-   |**Kifejezés**  | Egy vagy három év.   |
+   |**Távú**  | Egy vagy három év.   |
 
 1. A foglalás paramétereinek kiválasztása után a Azure Portal megjeleníti a költségeket. A portálon az utólagos elszámolású számlázásnál is látható az engedmény százaléka.
 

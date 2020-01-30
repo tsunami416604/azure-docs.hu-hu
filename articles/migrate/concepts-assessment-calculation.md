@@ -3,19 +3,19 @@ title: Értékelések a Azure Migrate
 description: Ismerje meg a Azure Migrate értékeléseit.
 ms.topic: conceptual
 ms.date: 01/06/2020
-ms.openlocfilehash: a8912263432bc0e9cd7172c4b6c9b118132863d3
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 5fc61d9987c9e728a5d83cb3ab3f91b8e8f5f740
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029117"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833328"
 ---
 # <a name="about-assessments-in-azure-migrate"></a>A Azure Migrate értékelései
 
 Ez a cikk azt ismerteti, hogyan számítják ki az értékeléseket [Azure Migrateban: kiszolgáló értékelése](migrate-services-overview.md#azure-migrate-server-assessment-tool). Az értékeléseket helyszíni gépek csoportjain futtatva kiderítheti, hogy készen állnak-e a Azure Migratere való áttelepítésre.
 
 ## <a name="how-do-i-run-an-assessment"></a>Hogyan egy értékelést?
-Az értékelést Azure Migrate: Server Assessment vagy más Azure vagy harmadik féltől származó eszköz használatával futtathatja. Azure Migrate projekt létrehozása után hozzá kell adnia a szükséges eszközt. [További információ] (how-to-add-tool-first-time.md
+Az értékelést Azure Migrate: Server Assessment vagy más Azure vagy harmadik féltől származó eszköz használatával futtathatja. Azure Migrate projekt létrehozása után hozzá kell adnia a szükséges eszközt. [További információ](how-to-add-tool-first-time.md)
 
 ### <a name="collect-compute-data"></a>Számítási adatok gyűjtése
 

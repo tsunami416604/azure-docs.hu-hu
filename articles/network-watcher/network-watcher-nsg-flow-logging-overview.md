@@ -4,27 +4,24 @@ titleSuffix: Azure Network Watcher
 description: Ez a cikk azt ismerteti, hogyan használható az Azure Network Watcher NSG flow-naplói szolgáltatás.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 47d91341-16f1-45ac-85a5-e5a640f5d59e
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 509545443bc08e8613d5f7a9ba7f33d2a90684b8
-ms.sourcegitcommit: 8b37091efe8c575467e56ece4d3f805ea2707a64
+ms.author: damendo
+ms.openlocfilehash: f231a5339b9c696b2a427b0713118d4b46e30277
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75830513"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840995"
 ---
 # <a name="introduction-to-flow-logging-for-network-security-groups"></a>A hálózati biztonsági csoportok flow-naplózásának bemutatása
 
-A hálózati biztonsági csoport (NSG) forgalomnaplózása a Network Watcher szolgáltatása, amellyel megtekintheti az NSG-n keresztül bejövő és kimenő IP-forgalom adatait. A folyamatnaplók JSON formátumban vannak megírva, és szabályonként jelenítik meg a kimenő és bejövő forgalmat, a forgalom esetében érintett hálózati adaptert (NIC), a forgalomhoz tartozó ötféle információt (forrás/cél IP, forrás-/célport és protokoll), hogy a forgalmat a rendszer engedélyezte vagy elutasította, valamint a 2. verzióban az átviteli sebességre vonatkozó adatokat is (bájtok és csomagok).
+A hálózati biztonsági csoport (NSG) folyamatábrái a Network Watcher szolgáltatása, amely lehetővé teszi a bejövő és kimenő IP-forgalomra vonatkozó információk megtekintését egy NSG keresztül. A flow-naplók JSON formátumban vannak írva, és a kimenő és bejövő folyamatok megjelenítése egy szabály alapján történik, a folyamathoz tartozó hálózati adapter (NIC), 5 rekordos információ a folyamatról (forrás/cél IP-cím, forrás/célport és protokoll), ha a forgalom engedélyezett vagy megtagadott, valamint a 2. verzióban az átviteli sebesség (bájtok és csomagok).
 
 
 ![a flow naplói – áttekintés](./media/network-watcher-nsg-flow-logging-overview/figure1.png)

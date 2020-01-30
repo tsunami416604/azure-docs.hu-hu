@@ -9,12 +9,12 @@ ms.service: key-vault
 ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 908f02807d5a3f7c2c1391c3c59a54fc88bbd831
-ms.sourcegitcommit: 7c5a2a3068e5330b77f3c6738d6de1e03d3c3b7d
+ms.openlocfilehash: 26309bb9a7b9785dbac7f42b0c20de99bca10a17
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2019
-ms.locfileid: "70884143"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769244"
 ---
 # <a name="certificate-creation-methods"></a>Tanúsítvány-létrehozási módszerek
 
@@ -41,10 +41,10 @@ Az alábbi leírások az előző ábrán látható zöld betűs lépéseknek fel
 Az alábbi leírások az előző ábrán látható zöld betűs lépéseknek felelnek meg.
 
 1. A fenti ábrán az alkalmazás olyan tanúsítványt hoz létre, amely belsőleg kezdődik a Key vaultban lévő kulcs létrehozásával.
-2. Key Vault küldési és SSL-tanúsítványkérelem küldése a HITELESÍTÉSSZOLGÁLTATÓNAK.
+2. Key Vault TLS/SSL-tanúsítványkérelmet küld a HITELESÍTÉSSZOLGÁLTATÓNAK.
 3. Az alkalmazás egy hurokban és várakozási folyamatban kérdezi le a Key Vault a tanúsítványok befejezéséhez. A tanúsítvány létrehozása akkor fejeződik be, amikor Key Vault megkapja a HITELESÍTÉSSZOLGÁLTATÓ válaszát az x509-tanúsítvánnyal.
-4. A HITELESÍTÉSSZOLGÁLTATÓ válaszol a Key Vault SSL-tanúsítványára vonatkozó kérelemre egy X509 SSL-tanúsítvánnyal.
-5. Az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ X509-tanúsítványának egyesítésével fejeződik be.
+4. A CA válaszol a TLS/SSL X. 509 tanúsítvánnyal rendelkező TLS/SSL-tanúsítványkérelem Key Vault.
+5. Az új tanúsítvány létrehozása a HITELESÍTÉSSZOLGÁLTATÓ TLS/SSL X. 509 tanúsítványának egyesítésével fejeződik be.
 
 ## <a name="asynchronous-process"></a>Aszinkron folyamat
 A KV-tanúsítvány létrehozása egy aszinkron folyamat. A művelet egy KV-os tanúsítványkérelmet hoz létre, és egy 202-es HTTP-állapotkódot ad vissza (elfogadva). A kérelem állapota nyomon követhető a művelet által létrehozott függő objektum lekérdezésével. A függő objektum teljes URI-ja a LOCATION (hely) fejlécben lesz visszaadva.  
@@ -53,7 +53,7 @@ Ha egy KV-tanúsítvány létrehozására vonatkozó kérelem befejeződik, a f�
 
 ## <a name="first-creation"></a>Első létrehozás
  Ha első alkalommal hoz létre egy KV-os tanúsítványt, a rendszer a tanúsítvány nevével megegyező névvel létrehoz egy címezhető kulcsot és titkos kulcsot is. Ha a név már használatban van, a művelet sikertelen lesz, és a http-állapotkód 409 (ütközés).
-A megcímezhető kulcs és titkos kód az attribútumokat a KV tanúsítvány attribútumaiból kapja meg. Az ily módon létrehozott címezhető kulcs és titkos kód felügyelt kulcsoknak és titoknak van megjelölve, amelynek élettartamát Key Vault kezeli. A felügyelt kulcsok és titkos kódok csak olvashatók. Megjegyzés: Ha egy KV-tanúsítvány lejár vagy le van tiltva, akkor a megfelelő kulcs és titok működésképtelenné válik.  
+A megcímezhető kulcs és titkos kód az attribútumokat a KV tanúsítvány attribútumaiból kapja meg. Az ily módon létrehozott címezhető kulcs és titkos kód felügyelt kulcsoknak és titoknak van megjelölve, amelynek élettartamát Key Vault kezeli. A felügyelt kulcsok és titkos kódok csak olvashatók. Megjegyzés: Ha egy KV-es tanúsítvány lejár vagy le van tiltva, akkor a megfelelő kulcs és titok működésképtelenné válik.  
 
  Ha ez az első művelet egy KV-os tanúsítvány létrehozásához, akkor szükség van egy házirendre.  Egy házirendet a házirend-erőforrás cseréjére szolgáló, egymást követő létrehozási műveletekkel is meg lehet adni. Ha nem adja meg a szabályzatot, a rendszer a szolgáltatáshoz tartozó házirend-erőforrást használja a KV-os tanúsítvány következő verziójának létrehozásához. Vegye figyelembe, hogy míg a következő verzió létrehozásához szükséges kérelem folyamatban van, a jelenlegi KV-tanúsítvány és a hozzá tartozó címezhető kulcs és titkos kód változatlan marad.  
 
@@ -88,7 +88,7 @@ A tanúsítvány létrehozása manuálisan vagy "saját" kibocsátó használat�
 
 Vegye figyelembe, hogy ha rendelést helyez el a kiállító szolgáltatóval, az a tanúsítvány típusától függően megbecsülheti vagy felülbírálhatja a x509 tanúsítvány-kiterjesztéseit és a tanúsítvány érvényességi időtartamát.  
 
- Engedély A tanúsítványok/létrehozási engedély szükséges.
+ Engedélyezés: a tanúsítványok/létrehozási engedély szükséges.
 
 ## <a name="see-also"></a>Lásd még:
  - [Kulcsok, titkos kódok és tanúsítványok](about-keys-secrets-and-certificates.md)

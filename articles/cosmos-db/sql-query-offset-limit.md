@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 06/10/2019
 ms.author: mjbrown
-ms.openlocfilehash: a8df220be211c3c8d8cdeab8a8aebfd35e77ebf8
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 3d23676885323e370cee1e9cc9e98c7128faf2e0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732586"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771573"
 ---
 # <a name="offset-limit-clause-in-azure-cosmos-db"></a>ELTOLÁSi korlát záradéka Azure Cosmos DB
 
@@ -37,7 +37,11 @@ OFFSET <offset_amount> LIMIT <limit_amount>
 
 ## <a name="remarks"></a>Megjegyzések
   
-  Az eltolási korlátot és a KORLÁTot is meg kell adni az OFFSet LIMIT záradékban. Ha nem kötelező `ORDER BY` záradékot használ, az eredményhalmaz a megrendelt értékek kihagyásával jön létre. Ellenkező esetben a lekérdezés az értékek rögzített sorrendjét fogja visszaadni. Ez a záradék mostantól támogatott egyetlen partíción belüli lekérdezések, valamint a több partíciós lekérdezések esetében is.
+  A `OFFSET LIMIT` záradékban a `OFFSET` és a `LIMIT` darabszám is szükséges. Ha nem kötelező `ORDER BY` záradékot használ, az eredményhalmaz a megrendelt értékek kihagyásával jön létre. Ellenkező esetben a lekérdezés az értékek rögzített sorrendjét fogja visszaadni.
+
+  A `OFFSET LIMIT`i lekérdezés RU-díja növekedni fog, ahogy az eltolási feltételek száma növekszik. Az eredmények több oldalát tartalmazó lekérdezések esetében általában a folytatási tokenek használatát javasoljuk. A folytatási tokenek egy "könyvjelző" azon hely számára, ahol a lekérdezés később folytatható. Ha `OFFSET LIMIT`használ, nincs "könyvjelző". Ha a lekérdezés következő lapját szeretné visszaadni, az elejétől kell kezdődnie.
+  
+  Ha a dokumentumokat teljes egészében szeretné kihagyni, és az ügyfelek erőforrásainak mentésére van szüksége, használja a `OFFSET LIMIT`. Ha például a 1000th-lekérdezés eredményét szeretné kihagyni, és nem kell megtekintenie az 1 – 999 eredményt, akkor a `OFFSET LIMIT`t kell használnia. A háttérben `OFFSET LIMIT` továbbra is betölti az egyes dokumentumokat, beleértve azokat is, amelyek kimaradnak. A teljesítmény előnye az ügyfelek erőforrásainak megtakarítása a szükségtelen dokumentumok feldolgozásának elkerülésével.
 
 ## <a name="examples"></a>Példák
 
@@ -50,7 +54,7 @@ Például itt egy olyan lekérdezés, amely kihagyja az első értéket, és a m
     OFFSET 1 LIMIT 1
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [
@@ -69,7 +73,7 @@ Az eredmény a következő:
     OFFSET 1 LIMIT 1
 ```
 
-Az eredmény a következő:
+Az eredmények a következők:
 
 ```json
     [
@@ -82,6 +86,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [Bevezetés](sql-query-getting-started.md)
+- [Első lépések](sql-query-getting-started.md)
 - [SELECT záradék](sql-query-select.md)
 - [ORDER BY záradék](sql-query-order-by.md)

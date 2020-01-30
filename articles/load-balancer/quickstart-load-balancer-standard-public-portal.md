@@ -1,12 +1,12 @@
 ---
-title: 'Gyors útmutató: standard Load Balancer létrehozása Azure Portal'
+title: 'Gyors útmutató: nyilvános Load Balancer létrehozása – Azure Portal'
 titleSuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre standard Load Balancer a Azure Portal használatával.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre Load Balancer a Azure Portal használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard Load Balancer so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a Load Balancer so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/08/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 027e05b3fbf7163c4a1b927a2b83db84c7eef1ff
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 4a5775be66f95fb69db761c2356a61f80068bc75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771461"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843871"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Rövid útmutató: Standard terheléselosztó létrehozása a virtuális gépek terhelésének elosztásához az Azure Portalon
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-using-the-azure-portal"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához a Azure Portal használatával
 
-A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Az Azure Portal használatával létrehozhat egy terheléselosztót a virtuális gépek (VM-ek) terhelésének elosztása érdekében. Ez a rövid útmutató bemutatja, hogyan végezheti el a virtuális gépek terheléselosztását egy Standard Load Balancer használatával.
+A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Az Azure Portal használatával létrehozhat egy terheléselosztót a virtuális gépek (VM-ek) terhelésének elosztása érdekében. Ez a rövid útmutató bemutatja, hogyan lehet terheléselosztást alkalmazni a virtuális gépeket egy nyilvános Load Balancer használatával.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt. 
 
@@ -32,9 +32,9 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
 
-## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
+## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
-Ebben a szakaszban egy olyan standard Load Balancer hoz létre, amely a virtuális gépek terheléselosztását segíti. Létrehozhat egy nyilvános standard Load Balancer vagy egy belső standard Load Balancer is. Standard Load Balancer csak a standard nyilvános IP-címet támogatja, az alapszintű nyilvános IP-címek nem támogatottak. Ha nyilvános standard Load Balancer hoz létre, és létre kell hoznia egy új, szabványos nyilvános IP-címet is, amely a standard Load Balancer számára a előtérként van konfigurálva (alapértelmezés szerint *LoadBalancerFrontend* néven). 
+Ebben a szakaszban egy olyan Load Balancer hoz létre, amely a virtuális gépek terheléselosztását segíti. Létrehozhat egy nyilvános Load Balancer vagy egy belső Load Balancer is. Ha nyilvános Load Balancer hoz létre, és létre kell hoznia egy új nyilvános IP-címet is, amely a Load Balancer számára az előtérként konfigurált (alapértelmezett néven *LoadBalancerFrontend* ).
 
 1. A képernyő bal felső részén válassza az **erőforrás létrehozása** > **hálózatkezelés** > **Load Balancer**lehetőséget.
 2. A **Load Balancer létrehozása** lap **alapok** lapján adja meg vagy válassza ki a következő adatokat, fogadja el az alapértelmezett értékeket a többi beállításnál, majd válassza a **felülvizsgálat + létrehozás**:
@@ -45,11 +45,12 @@ Ebben a szakaszban egy olyan standard Load Balancer hoz létre, amely a virtuál
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegroupslb erőforráscsoportban* szöveget a szövegmezőbe.|
     | Név                   | *myLoadBalancer*                                   |
     | Region (Régió)         | Válassza a **Nyugat-Európa** régiót.                                        |
-    | Type (Típus)          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | SKU (Cikkszám)           | Válassza a **standard**lehetőséget.                          |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
-    | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
-    |Rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
+    | Type (Típus)          | Válassza a **nyilvános**lehetőséget.                                        |
+    | SKU (Cikkszám)           | Válassza a **standard** vagy az **alapszintű**lehetőséget. A Microsoft a standard szintű üzemi számítási feladatokhoz ajánlja.  |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. Ha meglévő nyilvános IP-címmel szeretne használni, válassza a **meglévő használata** lehetőséget. |
+    | Nyilvános IP-cím neve              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
+    | Rendelkezésre állási zóna | Rugalmas Load Balancer létrehozásához írja be a következőt: *Zone-redundáns* . A zóna Load Balancer létrehozásához válasszon ki egy 1, 2 vagy 3 zónát egy adott zónából |
+
 3. A **felülvizsgálat + létrehozás** lapon válassza a **Létrehozás**lehetőséget.   
 
     ![Standard Load Balancer létrehozása](./media/quickstart-load-balancer-standard-public-portal/create-standard-load-balancer.png)
@@ -58,7 +59,7 @@ Ebben a szakaszban egy olyan standard Load Balancer hoz létre, amely a virtuál
 
 Ebben a szakaszban a háttérbeli címkészlet Load Balancer beállításait, az állapot-mintavételt és a Balancer-szabályt adja meg.
 
-### <a name="create-a-backend-address-pool"></a>Hátércímkészlet létrehozása
+### <a name="create-a-backend-pool"></a>Háttérbeli készlet létrehozása
 
 A virtuális gépek felé irányuló forgalom elosztásához a háttérbeli címkészlet tartalmazza a Load Balancerhoz csatlakozó virtuális hálózati adapterek IP-címeit. Hozza létre a háttér-címkészlet *myBackendPool* , hogy a virtuális gépeket a terheléselosztási internetes forgalom számára is tartalmazza.
 
@@ -79,7 +80,7 @@ Ha engedélyezni szeretné a Load Balancer számára az alkalmazás állapotána
     | Protocol (Protokoll) | Válassza a **http**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
     | Intervallum | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a *15* értéket. |
-    | Nem kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
+    | Nem Kifogástalan állapot küszöbértéke | Válassza a **2** értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
     | | |
 4. Kattintson az **OK** gombra.
 
@@ -93,10 +94,10 @@ A terheléselosztási szabállyal azt lehet megadni, hogy a rendszer hogyan ossz
     | Beállítás | Value (Díj) |
     | ------- | ----- |
     | Név | Adja meg a *: myhttprule*. |
-    | Protocol (Protokoll) | Válassza a **TCP** lehetőséget. |
+    | Protocol (Protokoll) | Válassza a **TCP**lehetőséget. |
     | Port | Adja meg a *80*értéket.|
-    | Háttérport | Adja meg a *80*értéket. |
-    | Háttérkészlet | Válassza a *myBackendPool*lehetőséget.|
+    | Háttér-port | Adja meg a *80*értéket. |
+    | Háttér-készlet | Válassza a *myBackendPool*lehetőséget.|
     | Állapotadat-mintavétel | Válassza a *myHealthProbe*lehetőséget. |
 4. Hagyja meg a többi alapértelmezett beállítást, majd kattintson az **OK gombra**.
 
@@ -122,7 +123,7 @@ Ebben a szakaszban létrehoz egy virtuális hálózatot, három virtuális gépe
 1. Hagyja meg a többi alapértelmezett beállítást, és válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-virtual-machines"></a>Virtuális gépek létrehozása
-A standard Load Balancer csak a standard IP-címmel rendelkező virtuális gépeket támogatja a háttér-készletben. Ebben a szakaszban három virtuális gépet hoz létre (*myVM1*, *myVM2* és *myVM3*) egy szabványos nyilvános IP-címmel három különböző zónában (*1. zóna*, *2. zóna*és *3. zóna*), amelyek később a korábban létrehozott Standard Load Balancer háttér-készletéhez lesznek hozzáadva.
+A nyilvános IP-címek és a Load Balancer SKU-nak egyezniük kell. Standard Load Balancer esetén a háttér-készletben használjon szabványos IP-címmel rendelkező virtuális gépeket. Ebben a szakaszban három virtuális gépet hoz létre (*myVM1*, *myVM2* és *myVM3*) egy szabványos nyilvános IP-címmel három különböző zónában (*1. zóna*, *2. zóna*és *3. zóna*), amelyek később a korábban létrehozott Load Balancer háttér-készletéhez lesznek hozzáadva. Ha az alapszintű lehetőséget választotta, használja az alapszintű IP-címmel rendelkező virtuális gépeket.
 
 1. A portál bal felső részén válassza az **erőforrás létrehozása** > **számítás** > **Windows Server 2019 Datacenter**lehetőséget. 
    
@@ -138,7 +139,7 @@ A standard Load Balancer csak a standard IP-címmel rendelkező virtuális gépe
 1. A **hálózatkezelés** lapon győződjön meg arról, hogy a következők vannak kiválasztva:
    - **Virtuális hálózat**: *myVnet*
    - **Alhálózat**: *myBackendSubnet*
-   - **Nyilvános IP-** > válassza az **új létrehozása**lehetőséget, majd a **nyilvános IP-cím létrehozása** ablakban az **SKU**, a **standard**és a **rendelkezésre állási zóna**elemet, válassza a **zóna – redundáns**lehetőséget, majd kattintson **az OK gombra**.
+   - **Nyilvános IP-** > válassza az **új létrehozása**lehetőséget, majd a **nyilvános IP-cím létrehozása** ablakban az **SKU**, a **standard**és a **rendelkezésre állási zóna**elemet, válassza a **zóna – redundáns**lehetőséget, majd kattintson **az OK gombra**. Ha alapszintű Load Balancer hozott létre, válassza az alapszintű lehetőséget. A Microsoft a standard SKU használatát javasolja üzemi számítási feladatokhoz.
    - Új hálózati biztonsági csoport (NSG) létrehozásához, amely egy tűzfal típus, a **hálózati biztonsági csoport**területen válassza a **speciális**lehetőséget. 
        1. A **hálózati biztonsági csoport konfigurálása** mezőben válassza az **új létrehozása**lehetőséget. 
        1. Írja be a *myNetworkSecurityGroup*, majd kattintson **az OK gombra**.
@@ -152,7 +153,7 @@ A standard Load Balancer csak a standard IP-címmel rendelkező virtuális gépe
 1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 1. A 2 – 6. lépés végrehajtásával hozzon létre két további virtuális gépet a következő értékekkel, és az összes többi olyan beállítást, amely ugyanaz, mint a *myVM1*:
 
-    | Beállítás | VM 2| 3\. VIRTUÁLIS GÉP|
+    | Beállítás | 2\. VM| 3\. VIRTUÁLIS GÉP|
     | ------- | ----- |---|
     | Név |  *myVM2* |*myVM3*|
     | Rendelkezésre állási zóna | 2 |3|
@@ -167,15 +168,20 @@ Ebben a szakaszban egy hálózati biztonsági csoportra vonatkozó szabályt hoz
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben, válassza a **minden erőforrás**lehetőséget, majd az erőforrások listából válassza ki a **myNetworkSecurityGroup** , amely a **myresourcegroupslb erőforráscsoportban** erőforráscsoport területén található.
 2. A **Beállítások** területen válassza a **Bejövő biztonsági szabályok** elemet, majd a **Hozzáadás** lehetőséget.
 3. Adja meg az alábbi értékeket a *myHTTPRule* nevű bejövő biztonsági szabály számára a 80-as portot használó, bejövő HTTP-kapcsolatok engedélyezése érdekében:
-    - **Forrás**: *Szolgáltatáscímke*.
-    - **Forrás szolgáltatáscímkéje**: *Internet*
-    - **Célporttartomány**: *80*
+    - **Forrás**: *szolgáltatás címkéje*
+    -  **Forrásoldali szolgáltatás címkéje**: *Internet*
+    - **Célport tartományai**: *80*
     - **Protokoll**: *TCP*
     - **Művelet**: *Engedélyezés*
     - **Prioritás**: *100*
-    - Név: *myHTTPRule*
-    - Leírás: *HTTP engedélyezése*
+    - **Név**: *: myhttprule* 
+    - **Leírás**: "*http engedélyezése* 
 4. Válassza a **Hozzáadás** lehetőséget.
+5. Szükség esetén ismételje meg a bejövő RDP-szabály lépéseit a következő eltérő értékekkel:
+   - **Célport tartományai**: Type *3389*.
+   - **Prioritás**: Type *200*. 
+   - **Név**: írja be a *MyRDPRule*nevet. 
+   - **Leírás**: írja be az *RDP engedélyezése lehetőséget*. 
  
 ### <a name="install-iis"></a>Az IIS telepítése
 
@@ -214,7 +220,6 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, Load Balancer é
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebben a rövid útmutatóban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
+Ebben a rövid útmutatóban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Ha többet szeretne megtudni a Azure Load Balancerről, folytassa a [Azure Load Balancer oktatóanyagokkal](tutorial-load-balancer-standard-public-zone-redundant-portal.md).
 
-> [!div class="nextstepaction"]
-> [Azure Load Balancer-oktatóanyagok](tutorial-load-balancer-standard-public-zone-redundant-portal.md)
+További információ a [Load Balancer és a rendelkezésre állási zónákról](load-balancer-standard-availability-zones.md).

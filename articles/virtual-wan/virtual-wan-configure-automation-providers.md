@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 10/07/2019
 ms.author: cherylmc
-ms.openlocfilehash: 2f847d8db983303d46b465f4f80bff65eeff632f
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 6f95107960cf11ab15cb5a8294a5432498956a7a
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72168490"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775314"
 ---
 # <a name="virtual-wan-partners"></a>Virtuális WAN-partnerek
 
@@ -89,7 +89,7 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
     * **A hubhoz** csatlakozó virtuális hálózatok.<br>Példa:
 
          ```
-        "ConnectedSubnets":["10.2.0.0/16","10.30.0.0/16"]
+        "ConnectedSubnets":["10.2.0.0/16","10.3.0.0/16"]
          ```
     * A virtuális hálózat VPN-átjárójának **IP-címei** Mivel a VPN-átjáró mindegyik kapcsolata 2 alagutat tartalmaz aktív-aktív konfigurációban, a fájlban mindkét IP-cím szerepel. Ebben a példában mindegyik helyhez az „Instance0” és az „Instance1” van feltüntetve.<br>Példa:
 
@@ -118,7 +118,7 @@ Az eszközkonfigurációs fájl a helyszíni VPN-eszköz konfigurálása során 
                "Region":"West Europe",
                "ConnectedSubnets":[ 
                   "10.2.0.0/16",
-                  "10.30.0.0/16"
+                  "10.3.0.0/16"
                ]
             },
             "gatewayConfiguration":{ 
@@ -227,4 +227,4 @@ A helyszíni SDWAN/VPN-eszköznek vagy az SD-WAN konfigurációnak meg kell egye
 
 További információ a virtuális WAN-ról: az [Azure Virtual WAN](virtual-wan-about.md) és az [Azure Virtual WAN gyakori kérdései](virtual-wan-faq.md).
 
-További információkért kérjük, küldjön e-mailt a <azurevirtualwan@microsoft.com> címre. Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.
+További információkért kérjük, küldjön e-mailt a <azurevirtualwan@microsoft.com>. Adja meg a vállalat nevét szögletes zárójelek ([]) között az e-mail tárgymezőjében.

@@ -1,28 +1,28 @@
 ---
-title: 'Gyors útmutató: standard Load Balancer létrehozása – Azure-sablon'
+title: 'Gyors útmutató: Load Balancer létrehozása – Azure-sablon'
 titleSuffix: Azure Load Balancer
-description: Ez a rövid útmutató bemutatja, hogyan hozhat létre standard Load balancert a Azure Resource Manager sablon használatával.
+description: Ez a rövid útmutató bemutatja, hogyan hozhat létre terheléselosztó-t a Azure Resource Manager sablon használatával.
 services: load-balancer
 documentationcenter: na
 author: asudbring
 manager: twooley
-Customer intent: I want to create a Standard load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
+Customer intent: I want to create a load balancer by using an Azure Resource Manager template so that I can load balance internet traffic to VMs.
 ms.service: load-balancer
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/20/2019
+ms.date: 01/27/2020
 ms.author: allensu
 ms.custom: mvc
-ms.openlocfilehash: 28c4ca59b20fcdd8ab0249392dc0f13cbabf1a97
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 69503968ece5e68b6e4777d72713565158009949
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75970631"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843854"
 ---
-# <a name="quickstart-create-a-standard-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: standard Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
+# <a name="quickstart-create-a-load-balancer-to-load-balance-vms-by-using-azure-resource-manager-template"></a>Gyors útmutató: Load Balancer létrehozása a virtuális gépek terheléselosztásához Azure Resource Manager sablon használatával
 
 A terheléselosztás magasabb szintű rendelkezésre állást és méretezést biztosít, mivel a bejövő kérelmeket több virtuális gép között osztja szét. Ez a rövid útmutató bemutatja, hogyan helyezhet üzembe olyan Azure Resource Manager-sablont, amely létrehoz egy standard Load balancert a virtuális gépek terheléselosztásához. A Resource Manager-sablon használata kevesebb lépést vesz igénybe a többi üzembe helyezési módszer összehasonlításával.
 
@@ -30,9 +30,9 @@ A [Resource Manager-sablon](../azure-resource-manager/templates/overview.md) egy
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 
-## <a name="create-a-standard-load-balancer"></a>Standard Load Balancer létrehozása
+## <a name="create-a-load-balancer"></a>Load Balancer létrehozása
 
-A standard Load Balancer csak a standard nyilvános IP-címet támogatja. A standard Load Balancer létrehozásakor létre kell hoznia egy új, szabványos nyilvános IP-címet is, amely a standard Load Balancer előtér-beállítása.
+A Load Balancer és a nyilvános IP-címeknek egyezniük kell. Standard Load Balancer létrehozásakor létre kell hoznia egy új szabványos nyilvános IP-címet is, amely a standard Load Balancer előtérben van konfigurálva. Ha alapszintű Load Balancer szeretne létrehozni, használja [ezt a sablont](https://azure.microsoft.com/resources/templates/201-2-vms-loadbalancer-natrules/). A Microsoft a standard SKU használatát javasolja üzemi számítási feladatokhoz.
 
 Az ebben a rövid útmutatóban használt sablon egy rövid útmutató [sablon](https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-load-balancer-standard-create/azuredeploy.json).
 

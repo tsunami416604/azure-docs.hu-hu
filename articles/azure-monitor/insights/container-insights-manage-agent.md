@@ -2,13 +2,13 @@
 title: A containers Agent Azure Monitor kezelése | Microsoft Docs
 description: Ez a cikk ismerteti a leggyakoribb karbantartási feladatok kezelését a Azure Monitor által a tárolók számára használt Log Analytics ügynökkel.
 ms.topic: conceptual
-ms.date: 01/13/2020
-ms.openlocfilehash: b1fd9b70865dfb6bb71dadfe76620129e053acbb
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.date: 01/24/2020
+ms.openlocfilehash: 1a1f8d690979a846dbf5041999180221752acc0b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932864"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843956"
 ---
 # <a name="how-to-manage-the-azure-monitor-for-containers-agent"></a>A containers Agent Azure Monitor kezelése
 
@@ -16,13 +16,13 @@ A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verz
 
 ## <a name="how-to-upgrade-the-azure-monitor-for-containers-agent"></a>A Azure Monitor a tárolók ügynökének frissítése
 
-A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. Az ügynök új verziójának felszabadításakor az ügynök automatikusan frissül az Azure Kubernetes szolgáltatásban (ak) üzemeltetett felügyelt Kubernetes-fürtökön.  
+A tárolók Azure Monitor a Linux Log Analytics ügynökének egy tárolós verzióját használja. Az ügynök új verziójának felszabadításakor az ügynök automatikusan frissül az Azure Kubernetes szolgáltatásban (ak) és az Azure Red Hat OpenShift üzemeltetett felügyelt Kubernetes-fürtökön. [Hibrid Kubernetes-fürtök](container-insights-hybrid-setup.md) esetében az ügynököt nem felügyeli a rendszer, és manuálisan kell frissítenie az ügynököt.
 
-Ha az ügynök frissítése sikertelen, ez a cikk az ügynök manuális frissítésének folyamatát ismerteti. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.   
+Ha az ügynök frissítése nem sikerül egy AK-on üzemeltetett fürtön, a cikk az ügynök manuális frissítésének folyamatát is leírja. A kiadott verziók követéséhez tekintse meg az [ügynök kiadási hirdetményei](https://github.com/microsoft/docker-provider/tree/ci_feature_prod)című témakört.
 
-### <a name="upgrading-agent-on-monitored-kubernetes-cluster"></a>Ügynök frissítése a figyelt Kubernetes-fürtön
+### <a name="upgrade-agent-on-monitored-kubernetes-cluster"></a>Ügynök frissítése a figyelt Kubernetes-fürtön
 
-Az ügynök az Azure Red Hat OpenShift eltérő fürtökön való frissítésének folyamata két egyenes továbbítási lépésből áll. Első lépésként le kell tiltania a figyelést Azure Monitor az Azure CLI-vel rendelkező tárolók esetében.  Kövesse a [figyelés letiltása](container-insights-optout.md?#azure-cli) című cikkben ismertetett lépéseket. Az Azure CLI használata lehetővé teszi, hogy az ügynököt a fürt csomópontjairól távolítsa el anélkül, hogy ez hatással lenne a megoldásra és a munkaterületen tárolt megfelelő adatokra. 
+Az ügynök az Azure Red Hat OpenShift eltérő fürtökön való frissítésének folyamata két egyenes továbbítási lépésből áll. Első lépésként le kell tiltania a figyelést Azure Monitor az Azure CLI-vel rendelkező tárolók esetében. Kövesse a [figyelés letiltása](container-insights-optout.md?#azure-cli) című cikkben ismertetett lépéseket. Az Azure CLI használata lehetővé teszi, hogy az ügynököt a fürt csomópontjairól távolítsa el anélkül, hogy ez hatással lenne a megoldásra és a munkaterületen tárolt megfelelő adatokra. 
 
 >[!NOTE]
 >A karbantartási tevékenység végrehajtása közben a fürt csomópontjai nem továbbítják az összegyűjtött adatokat, és a teljesítmény nézetek nem jelenítik meg az ügynök eltávolítása és az új verzió telepítésének időpontja közötti adatokat. 
@@ -52,6 +52,29 @@ Az állapotnak az alábbi példához hasonlónak kell lennie, ahol a *omsagent* 
     omi 1.4.2.5
     omsagent 1.6.0-163
     docker-cimprov 1.0.0.31
+
+## <a name="upgrade-agent-on-hybrid-kubernetes-cluster"></a>A hibrid Kubernetes-fürtön futó ügynök frissítése
+
+Az ügynököt a helyszínen üzemeltetett Kubernetes-fürtön, az Azure-on és az Azure Stack-ban található, az alábbi parancs futtatásával lehet elvégezni:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<my_prod_cluster> incubator/azuremonitor-containers
+```
+
+Ha a Log Analytics munkaterület az Azure China-ban van, futtassa a következő parancsot:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.cn,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
+
+Ha az Log Analytics munkaterület az Azure US Governmentben van, futtassa a következő parancsot:
+
+```
+$ helm upgrade --name myrelease-1 \
+--set omsagent.domain=opinsights.azure.us,omsagent.secret.wsid=<your_workspace_id>,omsagent.secret.key=<your_workspace_key>,omsagent.env.clusterName=<your_cluster_name> incubator/azuremonitor-containers
+```
 
 ## <a name="how-to-disable-environment-variable-collection-on-a-container"></a>Környezeti változók gyűjteményének letiltása tárolón
 

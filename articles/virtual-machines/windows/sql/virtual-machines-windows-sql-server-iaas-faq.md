@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 08/05/2019
 ms.author: mathoma
-ms.openlocfilehash: 4919c8f303488b583ea4d10dca87dd29bfb52e99
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 3b73c329c3db54ba78db15ced8e919af4d4a45d7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75374080"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835164"
 ---
 # <a name="frequently-asked-questions-for-sql-server-running-on-windows-virtual-machines-in-azure"></a>Gyakori kérdések az Azure-beli Windows rendszerű virtuális gépeken futó SQL Server
 
@@ -66,7 +66,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
    Nem. SQL Server tartalmazó virtuálisgép-katalógusbeli rendszerképek esetén a megadott rendszerképek egyikét ki kell választania a Azure Portal vagy a [PowerShell](virtual-machines-windows-ps-sql-create.md)használatával. Azonban lehetősége van arra, hogy Windows rendszerű virtuális gépet helyezzen üzembe, és telepítse SQL Server. Ezután [regisztrálnia kell a SQL Server VMt a SQL Server VM erőforrás-szolgáltatóval](virtual-machines-windows-sql-register-with-resource-provider.md) , hogy kezelhesse a SQL Server VM a portálon, valamint olyan funkciókat is használhat, mint például az automatikus javítás és az automatikus biztonsági mentés. 
 
 
-## <a name="creation"></a>Létrehozás
+## <a name="creation"></a>Létrehozása
 
 1. **Hogyan létrehoz egy Azure-beli virtuális gépet SQL Server?**
 
@@ -82,15 +82,6 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 
    Ezt három módon teheti meg. Ha Ön nagyvállalati szerződéssel (EA) rendelkezik, a [licenceket támogató virtuálisgép-rendszerképek](virtual-machines-windows-sql-server-iaas-overview.md#BYOL)közül választhat, amelyek a saját licencek (BYOL) néven is ismertek. Ha rendelkezik frissítési [garanciával](https://www.microsoft.com/en-us/licensing/licensing-programs/software-assurance-default), engedélyezheti a [Azure Hybrid Benefit](virtual-machines-windows-sql-ahb.md) egy meglévő utólagos elszámolású (TB) rendszerképben. Vagy átmásolhatja a SQL Server telepítési adathordozót egy Windows Server rendszerű virtuális gépre, majd telepítheti a SQL Servert a virtuális gépre. Ügyeljen arra, hogy regisztrálja SQL Server VM az [erőforrás-szolgáltatónál](virtual-machines-windows-sql-register-with-resource-provider.md) olyan funkciókhoz, mint a portál kezelése, az automatikus biztonsági mentés és az automatikus javítás. 
 
-1. **Fizetnem kell az SQL Server licenceléséért egy Azure-beli virtuális gépen, ha csak készenlétben tartom vagy feladatátvételre használom?**
-
-   Ahhoz, hogy a készenléti másodlagos rendelkezésre állási csoport vagy a feladatátvételi fürtszolgáltatás számára ingyenes passzív licenc legyen, meg kell felelnie a következő feltételeknek, amint azt a [termék licencelési feltételei](https://www.microsoft.com/licensing/product-licensing/products)ismertetik:
-
-   1. Frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)rendelkezik a [licencek mobilitásával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) . 
-   1. A passzív SQL Server példány nem szolgál SQL Server-adatokra az ügyfeleknek, vagy nem futtat aktív SQL Server munkaterheléseket. A szolgáltatás csak az elsődleges kiszolgálóval való szinkronizálásra használatos, a passzív adatbázist pedig meleg készenléti állapotban tartja. Ha az adatok, például az aktív SQL Server munkaterheléseket futtató ügyfeleknek készült jelentések, vagy a termék használati feltételeiben megadott egyéb feladatok elvégzése, akkor azt fizetős licenccel rendelkező SQL Server példánynak kell lennie. A másodlagos példányon a következő tevékenység engedélyezett: adatbázis konzisztencia-ellenőrzése vagy CHECKDB utasítást, teljes biztonsági mentések, tranzakciónaplók biztonsági mentése, valamint az erőforrás-használati adatok figyelése. Az elsődleges és a hozzá tartozó vész-helyreállítási példányt egyidejűleg is futtathatja a vész-helyreállítási tesztelés rövid időszakára 90 naponta. 
-   1. Az aktív SQL Server licencet a frissítési garancia szabályozza, és lehetővé teszi **egy** passzív másodlagos SQL Server példány használatát, amely akár a licenccel rendelkező aktív kiszolgálóval azonos mennyiségű számítási kapacitással is rendelkezik. 
-   1. A másodlagos SQL Server VM a vész- [helyreállítási](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) licencet használja a Azure Portal.
-
 1. **Módosíthatok egy virtuális gépet, hogy a saját SQL Server-licencemet használja, ha az a használatalapú fizetéses katalógus egyik rendszerképéből lett létrehozva?**
 
    Igen. Az utólagos elszámolású (TB) katalógust egyszerűen átválthatja a saját licenc használatára (BYOL), ha engedélyezi a [Azure Hybrid Benefit](https://azure.microsoft.com/pricing/hybrid-benefit/faq/).  További információ: [a SQL Server VM licencelési modelljének módosítása](virtual-machines-windows-sql-ahb.md). Ez a lehetőség jelenleg csak a nyilvános Felhőbeli ügyfelek számára érhető el.
@@ -98,6 +89,10 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 1. **A licencelési modell módosítása során az SQL Server le fog állni?**
 
    Nem. [A licencelési modell módosítása](virtual-machines-windows-sql-ahb.md) nem igényel leállást SQL Server mivel a változás azonnal hatályba lép, és nem igényli a virtuális gép újraindítását. Ahhoz azonban, hogy a SQL Server VMt a SQL Server VM erőforrás-szolgáltatóval regisztrálja, az [SQL IaaS bővítmény](virtual-machines-windows-sql-server-agent-extension.md) előfeltétele, és az SQL IaaS bővítmény _teljes_ módban történő telepítése újraindítja a SQL Server szolgáltatást. Ilyen esetben, ha az SQL IaaS bővítményt telepíteni kell, vagy a korlátozott funkcionalitás érdekében telepítse azt egy _egyszerű_ módban, vagy a karbantartási időszak során _teljes_ módba kell telepítenie. Az _egyszerűsített_ módban telepített SQL IaaS bővítmény bármikor frissíthető _teljes_ módba, de a SQL Server szolgáltatás újraindítását igényli. 
+   
+1. **Lehetséges a licencelési modell átváltása a klasszikus modell használatával üzembe helyezett SQL Server VMon?**
+
+   Nem. A licencelési modell módosítása klasszikus virtuális gépen nem támogatott. A virtuális gépet áttelepítheti a Azure Resource Manager modellbe, és regisztrálhatja az SQL Server VM erőforrás-szolgáltatóval. Ha a virtuális gép regisztrálva van a SQL Server VM erőforrás-szolgáltatónál, a licencelési modell módosításai elérhetők lesznek a virtuális gépen.
 
 1. **Használhatom a Azure Portal több példány kezelésére ugyanazon a virtuális gépen?**
 
@@ -106,6 +101,32 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 1. **A CSP-előfizetések aktiválja a Azure Hybrid Benefit?**
 
    Igen, a Azure Hybrid Benefit CSP-előfizetésekhez érhető el. A CSP-ügyfeleknek először telepíteniük kell az utólagos elszámolású lemezképet, majd [a licencelési modellt úgy kell megváltoztatnia](virtual-machines-windows-sql-ahb.md) , hogy a saját licencét használja.
+   
+ 
+1. **Fizetnem kell az SQL Server licenceléséért egy Azure-beli virtuális gépen, ha csak készenlétben tartom vagy feladatátvételre használom?**
+
+   Ahhoz, hogy a készenléti másodlagos rendelkezésre állási csoport vagy a feladatátvételi fürtszolgáltatás számára ingyenes passzív licenc legyen, meg kell felelnie a következő feltételeknek, amint azt a [termék licencelési feltételei](https://www.microsoft.com/licensing/product-licensing/products)ismertetik:
+
+   1. Frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default?activetab=software-assurance-default-pivot%3aprimaryr3)rendelkezik a [licencek mobilitásával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-license-mobility?activetab=software-assurance-license-mobility-pivot:primaryr2) . 
+   1. A passzív SQL Server példány nem szolgál SQL Server-adatokra az ügyfeleknek, vagy nem futtat aktív SQL Server munkaterheléseket. A szolgáltatás csak az elsődleges kiszolgálóval való szinkronizálásra használatos, a passzív adatbázist pedig meleg készenléti állapotban tartja. Ha az adatok, például az aktív SQL Server munkaterheléseket futtató ügyfeleknek készült jelentések, vagy a termék használati feltételeiben megadott egyéb feladatok elvégzése, akkor azt fizetős licenccel rendelkező SQL Server példánynak kell lennie. A másodlagos példányon a következő tevékenység engedélyezett: adatbázis konzisztencia-ellenőrzése vagy CHECKDB utasítást, teljes biztonsági mentések, tranzakciónaplók biztonsági mentése, valamint az erőforrás-használati adatok figyelése. Az elsődleges és a hozzá tartozó vész-helyreállítási példányt egyidejűleg is futtathatja a vész-helyreállítási tesztelés rövid időszakára 90 naponta. 
+   1. Az aktív SQL Server licencet a frissítési garancia szabályozza, és lehetővé teszi **egy** passzív másodlagos SQL Server példány használatát, amely akár a licenccel rendelkező aktív kiszolgálóval azonos mennyiségű számítási kapacitással is rendelkezik. 
+   1. A másodlagos SQL Server VM a vész- [helyreállítási](virtual-machines-windows-sql-high-availability-dr.md#free-dr-replica-in-azure) licencet használja a Azure Portal.
+   
+1. **Mi tekinthető passzív példánynak?**
+
+   A passzív SQL Server példány nem szolgál SQL Server-adatokra az ügyfeleknek, vagy nem futtat aktív SQL Server munkaterheléseket. A szolgáltatás csak az elsődleges kiszolgálóval való szinkronizálásra használatos, a passzív adatbázist pedig meleg készenléti állapotban tartja. Ha az adatok, például az aktív SQL Server munkaterheléseket futtató ügyfeleknek készült jelentések, vagy a termék használati feltételeiben megadott egyéb feladatok elvégzése, akkor azt fizetős licenccel rendelkező SQL Server példánynak kell lennie. A másodlagos példányon a következő tevékenység engedélyezett: adatbázis konzisztencia-ellenőrzése vagy CHECKDB utasítást, teljes biztonsági mentések, tranzakciónaplók biztonsági mentése, valamint az erőforrás-használati adatok figyelése. Az elsődleges és a hozzá tartozó vész-helyreállítási példányt egyidejűleg is futtathatja a vész-helyreállítási tesztelés rövid időszakára 90 naponta.
+   
+
+1. **Milyen helyzetekben használhatják a ellenszenves helyreállítást (DR)?**
+
+   A [licencelési útmutató](https://aka.ms/sql2019licenseguide) olyan forgatókönyveket biztosít, amelyekben a vész-helyreállítási juttatás használható. További információkért tekintse meg a termék használati feltételeit, és forduljon a licencelési partnerekhez vagy a fiókkezelőhöz.
+
+1. **Mely előfizetések támogatják a vész-helyreállítási (DR) juttatást?**
+
+   Az olyan átfogó programok, amelyek a frissítési garanciával egyenértékű előfizetési jogokat kínálnak, rögzített juttatásként támogatják a DR juttatást. Ez magában foglalja a következőt:. azonban nem korlátozódik a nyílt értékre (OV), az Open Value előfizetés (OVS), a Nagyvállalati Szerződés (EA), a nagyvállalati előfizetési szerződés (EAS), valamint a kiszolgáló és a felhőalapú regisztráció (SCE) használatára. További információkért tekintse meg a [termék feltételeit](https://www.microsoft.com/licensing/product-licensing/products) , és beszéljen a licencelési partnereivel vagy a félrecsapott-kezelővel. 
+
+   
+ ## <a name="resource-provider"></a>Erőforrás-szolgáltató
 
 1. **Regisztrálja a virtuális gépet az új SQL Server VM erőforrás-szolgáltatónál, hogy további költségekkel jár?**
 
@@ -127,9 +148,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 
     Igen. Ha a saját adathordozóról telepített SQL Serverokat, és telepítette az SQL IaaS bővítményt, akkor az SQL IaaS-bővítmény által biztosított kezelhetőségi előnyök beszerzéséhez regisztrálhatja SQL Server VM az erőforrás-szolgáltatóval. Az öntelepített SQL Server VMokat azonban nem lehet utólagos elszámolású előfizetésre konvertálni.
 
-1. **Lehetséges a licencelési modell átváltása a klasszikus modell használatával üzembe helyezett SQL Server VMon?**
 
-   Nem. A licencelési modell módosítása klasszikus virtuális gépen nem támogatott. A virtuális gépet áttelepítheti a Azure Resource Manager modellbe, és regisztrálhatja az SQL Server VM erőforrás-szolgáltatóval. Ha a virtuális gép regisztrálva van a SQL Server VM erőforrás-szolgáltatónál, a licencelési modell módosításai elérhetők lesznek a virtuális gépen. 
    
 
 
@@ -183,7 +202,7 @@ Ez a cikk az [Azure-beli Windows Virtual Machines SQL Server](https://azure.micr
 
 1. **Az Azure-beli virtuális gépeken támogatottak-e SQL Server feladatátvevő fürt példányai (a)?**
 
-   Igen. Windows rendszerű [feladatátvevő fürtöt a Windows Server 2016-ben hozhat létre](virtual-machines-windows-portal-sql-create-failover-cluster.md) , és a fürt tárterületéhez közvetlen TÁROLÓHELYEK (S2D) is használhat. Azt is megteheti, hogy harmadik féltől származó fürtözési vagy tárolási megoldásokat is használhat a [magas rendelkezésre állás és a vész-helyreállítás SQL Server az Azure Virtual Machinesban](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)című témakörben leírtak szerint.
+   Igen. A feladatátvevő fürt példányát telepítheti a tárolási alrendszer [prémium fájlmegosztás (PFS)](virtual-machines-windows-portal-sql-create-failover-cluster-premium-file-share.md) vagy [közvetlen tárolóhelyek (S2D)](virtual-machines-windows-portal-sql-create-failover-cluster.md) használatával. A prémium szintű fájlmegosztás biztosítja a IOPS és az átviteli kapacitást, amely megfelel a sok számítási feladat igényeinek. Az IO-igényes számítási feladatokhoz érdemes lehet a közvetlen tárolóhelyeket használni a Kiemelt prémium vagy a rendkívül nagy méretű lemezek alapján. Azt is megteheti, hogy harmadik féltől származó fürtözési vagy tárolási megoldásokat is használhat a [magas rendelkezésre állás és a vész-helyreállítás SQL Server az Azure Virtual Machinesban](virtual-machines-windows-sql-high-availability-dr.md#azure-only-high-availability-solutions)című témakörben leírtak szerint.
 
    > [!IMPORTANT]
    > Ekkor a _teljes_ [SQL Server IaaS-ügynök bővítmény](virtual-machines-windows-sql-server-agent-extension.md) nem támogatott az Azure-beli SQL Server-es verziója esetén. Javasoljuk, hogy távolítsa el a _teljes_ bővítményt a modulban részt vevő virtuális gépekről, és telepítse a bővítményt _egyszerűsített_ módban. Ez a bővítmény támogatja a szolgáltatásokat, például az automatikus biztonsági mentést és a javítást, valamint a SQL Server egyes portál-funkcióit. Ezek a funkciók a _teljes_ ügynök eltávolítása után nem fognak működni SQL Server virtuális gépeken.

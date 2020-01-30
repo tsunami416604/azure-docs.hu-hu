@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 12/02/2019
-ms.openlocfilehash: 58f6e49280925b550deff21ecf04528d91d924d7
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: d658a1fb590d117e116321bc854abd2753b5c0f1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760130"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775049"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-mariadb"></a>Kapcsolati architektúra a Azure Database for MariaDBban
 Ez a cikk ismerteti a Azure Database for MariaDB kapcsolati architektúrát, valamint azt, hogy a forgalom hogyan legyen átirányítva a Azure Database for MariaDB-példányra az Azure-on belüli és kívüli ügyfelektől.
@@ -50,14 +50,14 @@ A következő táblázat felsorolja az Azure Database for MariaDB átjáró els�
 | Dél-India | 104.211.224.146  |
 | Nyugat-India | 104.211.160.80    |
 | Kelet-Japán | 13.78.61.196, 191.237.240.43  |
-| Nyugat-Japán | 104.214.148.156, 191.238.68.11    |
+| Nyugat-Japán | 104.214.148.156, 191.238.68.11, 40.74.96.6, 40.74.96.7    |
 | Korea középső régiója | 52.231.32.42   |
-| Korea déli régiója | 52.231.200.86    |
+| Dél-Korea | 52.231.200.86    |
 | USA északi középső régiója | 23.96.178.199, 23.98.55.75, 52.162.104.35, 52.162.104.36    |
 | Észak-Európa | 40.113.93.91, 191.235.193.75    |
 | Dél-Afrika északi régiója  | 102.133.152.0    |
 | Dél-Afrika nyugati régiója | 102.133.24.0   |
-| USA déli középső régiója |13.66.62.124, 23.98.162.75   |
+| USA déli középső régiója |13.66.62.124, 23.98.162.75, 20.45.120.0, 104.214.16.39   |
 | Délkelet-Ázsia | 104.43.15.0, 23.100.117.95, 40.78.233.2, 23.98.80.12     |
 | Egyesült Arab Emírségek középső régiója | 20.37.72.64  |
 | Egyesült Arab Emírségek északi régiója | 65.52.248.0    |

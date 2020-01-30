@@ -13,15 +13,15 @@ ms.service: virtual-machines-linux
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 01/17/2020
+ms.date: 01/28/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 55872d48dcf2a85812e1627e4e85bcd98b25d576
-ms.sourcegitcommit: 5397b08426da7f05d8aa2e5f465b71b97a75550b
+ms.openlocfilehash: 3c609c659d99ce6eca0326a5a14cbbb67099e686
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/19/2020
-ms.locfileid: "76271323"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840468"
 ---
 # <a name="use-azure-to-host-and-run-sap-workload-scenarios"></a>Az Azure használata az SAP munkaterhelés-forgatókönyvek üzemeltetéséhez és futtatásához
 
@@ -121,6 +121,7 @@ Az Azure-szolgáltatások SAP-összetevőkbe való integrálásával kapcsolatos
 
 ## <a name="change-log"></a>Módosítási napló
 
+- 01/28/2020: a [RHEL Azure-beli virtuális gépeken a SAP HANA magas rendelkezésre állásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-hana-high-availability-rhel) megváltozása a SAP HANA-fürt erőforrásainak a Red Hat időtúllépési javaslataihoz való igazításához
 - 01/17/2020: Váltás az [Azure Proximity-elhelyezési csoportjaiban az optimális hálózati késés érdekében SAP-alkalmazásokkal](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-proximity-placement-scenarios) a meglévő virtuális gépek áthelyezésének szakasza
 - 01/17/2020: változás az [SAP munkaterhelés-konfigurációkban Azure Availability Zones](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ha-availability-zones) segítségével, hogy az eljárásra mutasson, amely automatizálja a Availability Zones közötti késés mértékét.
 - 01/16/2020: a [SAP HANA (nagyméretű példányok) telepítésének és konfigurálásának](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-installation) módosítása az Azure-ban az operációsrendszer-kiadások HANA IaaS-hez való telepítéséhez

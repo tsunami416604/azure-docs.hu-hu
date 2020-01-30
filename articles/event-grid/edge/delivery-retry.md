@@ -9,12 +9,12 @@ ms.date: 10/29/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 324c0e9b8dcaafacaac52b622ce9c533d82c7ff1
-ms.sourcegitcommit: b45ee7acf4f26ef2c09300ff2dba2eaa90e09bc7
+ms.openlocfilehash: 7df283b12a0d04d2b785c13a2f12b03115581e79
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73100711"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841712"
 ---
 # <a name="delivery-and-retry"></a>Teljesítés és újrapróbálkozás
 
@@ -27,7 +27,7 @@ Event Grid tartós kézbesítést biztosít. Minden egyes megegyező előfizeté
 
 Egy üzenet kézbesítése után a Event Grid legfeljebb 60 másodpercet vár a válaszra. Ha az előfizető végpontja nem küldi el a választ, akkor az üzenet a további újrapróbálkozások egyik várólistán lévő fog megjelenni.
 
-Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemezést, amelyen az újrapróbálkozási kísérlet történik. Ezek a következők:-
+Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemezést, amelyen az újrapróbálkozási kísérlet történik. Ezek a következők:
 
 | Ütemezés | Leírás |
 | ---------| ------------ |
@@ -43,7 +43,7 @@ Két előre konfigurált várólista van, amelyek meghatározzák azt az ütemez
 
 ## <a name="retry-policy-limits"></a>Újrapróbálkozási szabályzat korlátai
 
-Az újrapróbálkozási szabályzatot két konfiguráció határozza meg. Ezek a következők:-
+Az újrapróbálkozási szabályzatot két konfiguráció határozza meg. Ezek a következők:
 
 * Kísérletek maximális száma
 * Esemény élettartama (TTL)
@@ -52,12 +52,12 @@ Egy esemény el lesz dobva, ha az újrapróbálkozási szabályzat korlátai bá
 
 ## <a name="configuring-defaults-for-all-subscribers"></a>Az összes előfizető alapértelmezett beállításainak konfigurálása
 
-Két tulajdonság létezik: `brokers:defaultMaxDeliveryAttempts` és `broker:defaultEventTimeToLiveInSeconds`, amely a Event Grid központi telepítés részeként konfigurálható, amely az összes előfizető újrapróbálkozási szabályzatának alapértelmezett értékeit szabályozza.
+Két tulajdonság létezik: `brokers__defaultMaxDeliveryAttempts` és `broker__defaultEventTimeToLiveInSeconds`, amely a Event Grid központi telepítés részeként konfigurálható, amely az összes előfizető újrapróbálkozási szabályzatának alapértelmezett értékeit szabályozza.
 
 | Tulajdonság neve | Leírás |
 | ---------------- | ------------ |
-| `broker:defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Alapértelmezett érték: 30.
-| `broker:defaultEventTimeToLiveInSeconds` | Az esemény ÉLETTARTAMa másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Alapértelmezett érték: **7200** másodperc
+| `broker__defaultMaxDeliveryAttempts` | Egy eseményt kézbesítő kísérletek maximális száma. Alapértelmezett érték: 30.
+| `broker__defaultEventTimeToLiveInSeconds` | Az esemény ÉLETTARTAMa másodpercben, amely után az esemény el lesz dobva, ha nem érkezik meg. Alapértelmezett érték: **7200** másodperc
 
 ## <a name="configuring-defaults-per-subscriber"></a>Alapértelmezett beállítások konfigurálása előfizető számára
 
@@ -71,8 +71,8 @@ Az alábbi példa az újrapróbálkozási szabályzatot állítja be a Event Gri
 ```json
 {
   "Env": [
-    "broker:defaultMaxDeliveryAttempts=3",
-    "broker:defaultEventTimeToLiveInSeconds=1800"
+    "broker__defaultMaxDeliveryAttempts=3",
+    "broker__defaultEventTimeToLiveInSeconds=1800"
   ],
   "HostConfig": {
     "PortBindings": {

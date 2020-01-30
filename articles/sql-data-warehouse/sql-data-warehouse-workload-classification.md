@@ -7,16 +7,16 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.subservice: workload-management
-ms.date: 05/01/2019
+ms.date: 01/27/2020
 ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 15ca4b9fe3c40b7bf49d86464858747642e3cb5a
-ms.sourcegitcommit: 609d4bdb0467fd0af40e14a86eb40b9d03669ea1
+ms.openlocfilehash: ab7c8ba64057b4f27e00a2928a65de8eadc78c4b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/06/2019
-ms.locfileid: "73685381"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768830"
 ---
 # <a name="azure-sql-data-warehouse-workload-classification"></a>Azure SQL Data Warehouse munkaterhelés besorolása
 
@@ -36,14 +36,24 @@ Nem minden utasítás van besorolva, mert nincs szükség erőforrásra, vagy fo
 
 ## <a name="classification-process"></a>Besorolási folyamat
 
-A SQL Data Warehouse besorolása ma érhető el, ha olyan szerepkörhöz rendel hozzá felhasználókat, amelyhez hozzá van rendelve egy megfelelő erőforrás-osztály a [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal SQL Data Warehouse a felhasználók fontosságot és erőforrás-osztályt rendelhetnek a kérelmekhez.  
+A SQL Data Warehouse besorolása ma érhető el, ha a felhasználókat olyan szerepkörhöz rendeli hozzá, amely a hozzá tartozó, [sp_addrolemember](/sql/relational-databases/system-stored-procedures/sp-addrolemember-transact-sql)használatával hozzárendelt erőforrás-osztállyal rendelkezik. Az erőforrás-osztályba való bejelentkezésen túli kérések jellemzésének lehetősége korlátozott ezzel a képességgel. Most már elérhető a számítási [feladatok](/sql/t-sql/statements/create-workload-classifier-transact-sql) besorolása szintaxissal, amely a besoroláshoz használható.  Ezzel a szintaxissal SQL Data Warehouse a felhasználók fontosságot rendelhetnek, és mennyi rendszererőforrás rendelhető hozzá egy kérelemhez a `workload_group` paraméter használatával. 
 
 > [!NOTE]
 > A besorolást a rendszer a kérelmek alapján értékeli ki. Egy munkamenetben több kérelem is besorolva különböző módon.
 
-## <a name="classification-precedence"></a>Besorolási sorrend
+## <a name="classification-weighting"></a>Besorolás súlyozása
 
-A besorolási folyamat részeként a rendszer elsőbbséget biztosít annak meghatározásához, hogy melyik erőforrás-osztály van hozzárendelve. Az adatbázis-felhasználó alapján történő besorolás elsőbbséget élvez a szerepkör tagságával szemben. Ha olyan osztályozó hoz létre, amely leképezi a felhasználó adatbázis-felhasználóját a mediumrc-erőforrás osztályba. Ezután képezze le a szerepkör-adatbázis szerepkört (amely a felhasználó tagja) a largerc-erőforrás osztályának. Az adatbázis-felhasználót a mediumrc erőforrás osztályra leképező osztályozó elsőbbséget élvez az osztályozó felett, amely a szerepkör-adatbázis szerepkört leképezi a largerc-erőforrás osztályba.
+A besorolási folyamat részeként súlyozást kell meghatározni, hogy melyik munkaterhelési csoport legyen hozzárendelve.  A súlyozás a következőképpen megy végbe:
+
+|Osztályozó paraméter |Tömeg   |
+|---------------------|---------|
+|TAGNÉV: FELHASZNÁLÓ      |64       |
+|TAGNÉV: SZEREPKÖR      |32       |
+|WLM_LABEL            |16       |
+|WLM_CONTEXT          |8        |
+|START_TIME/END_TIME  |4        |
+
+A `membername` paraméter megadása kötelező.  Ha azonban a megadott tagnév adatbázis-felhasználó, akkor a felhasználó súlyozása magasabb, és így az osztályozó van kiválasztva.
 
 Ha a felhasználó több olyan szerepkör tagja, amely különböző osztályokba van rendelve, vagy több besoroláshoz van társítva, akkor a felhasználó a legmagasabb erőforrás-osztály-hozzárendelést kapja.  Ez a viselkedés összhangban van a meglévő erőforrás-osztály hozzárendelési viselkedésével.
 
@@ -59,14 +69,14 @@ SELECT * FROM sys.workload_management_workload_classifiers where classifier_id <
 
 Az Ön nevében létrehozott rendszerosztályozók egyszerű útvonalat biztosítanak a munkaterhelés-besorolásra való áttéréshez. A besorolási prioritással rendelkező erőforrás-osztály szerepkör-hozzárendelések használata téves besorolást eredményezhet, mivel új osztályozók fontossággal való létrehozásának megkezdése.
 
-Vegye figyelembe a következő helyzetet:
+Vegyük példaként a következő esetet:
 
-- A meglévő adattárházak adatbázis-felhasználói DBAUser vannak hozzárendelve a largerc erőforrás-osztály szerepkörhöz. Az erőforrás-osztály hozzárendelése a sp_addrolemember-mel történt.
+- A meglévő adattárházak adatbázis-felhasználói DBAUser vannak hozzárendelve a largerc erőforrás-osztály szerepkörhöz. Az erőforrás-osztály hozzárendelése a sp_addrolemembertel történt.
 - Az adattárház már frissítve van a munkaterhelés-kezeléssel.
 - Az új besorolási szintaxis teszteléséhez a DBARole adatbázis-szerepkör (amely a DBAUser tagja), rendelkezik egy, a számukra a mediumrc és a nagy fontossággal való leképezéshez létrehozott osztályozó.
 - Amikor a DBAUser bejelentkezik és futtat egy lekérdezést, a lekérdezés a largerc lesz hozzárendelve. Mivel a felhasználók elsőbbséget élveznek a szerepkör tagságával szemben.
 
-A hibák elhárítása érdekében javasoljuk, hogy távolítsa el az erőforrás-osztály szerepkör-hozzárendeléseket a számítási feladatok besorolásának létrehozásakor.  Az alábbi kód az erőforrás-osztály meglévő szerepkör-tagságát adja vissza.  Futtassa a [sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) a megfelelő erőforrás osztályból visszaadott összes tag nevéhez.
+A hibák elhárítása érdekében javasoljuk, hogy távolítsa el az erőforrás-osztály szerepkör-hozzárendeléseket a számítási feladatok besorolásának létrehozásakor.  Az alábbi kód az erőforrás-osztály meglévő szerepkör-tagságát adja vissza.  [Sp_droprolemember](/sql/relational-databases/system-stored-procedures/sp-droprolemember-transact-sql) futtatása a megfelelő erőforrás osztályból visszaadott tagok nevénél.
 
 ```sql
 SELECT  r.name AS [Resource Class]
@@ -80,9 +90,9 @@ WHERE   r.name IN ('mediumrc','largerc','xlargerc','staticrc10','staticrc20','st
 sp_droprolemember ‘[Resource Class]’, membername
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az osztályozó létrehozásával kapcsolatos további információkért lásd a [munkaterhelés-osztályozó létrehozása (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/statements/create-workload-classifier-transact-sql)című témakört.  
 - Tekintse meg a számítási feladatok besorolásának létrehozásával kapcsolatos útmutatót a számítási [feladatok besorolása](quickstart-create-a-workload-classifier-tsql.md)című témakörben.
 - Tekintse meg az útmutatókat a számítási [feladatok fontosságának konfigurálásához](sql-data-warehouse-how-to-configure-workload-importance.md) , valamint a számítási [feladatok felügyeletének kezeléséhez és figyeléséhez](sql-data-warehouse-how-to-manage-and-monitor-workload-importance.md).
-- A lekérdezéseket és a hozzárendelt fontosságot a [sys. DM _pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) tekintheti meg.
+- A lekérdezések és a hozzárendelt fontosság megtekintéséhez lásd: [sys. dm_pdw_exec_requests](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-exec-requests-transact-sql) .

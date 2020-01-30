@@ -9,12 +9,12 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 03/14/2019
 ms.author: robinsh
-ms.openlocfilehash: 14139d56a9a733a284d0ec49cabcb3ff7ce67fce
-ms.sourcegitcommit: a22cb7e641c6187315f0c6de9eb3734895d31b9d
+ms.openlocfilehash: ee709919f550a8b9afaf56e5e071522a494348ac
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/14/2019
-ms.locfileid: "74084297"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773813"
 ---
 # <a name="quickstart-communicate-to-a-device-application-in-c-via-iot-hub-device-streams-preview"></a>Gyors útmutató: IoT Hub- C# adatfolyamon keresztüli kommunikáció egy eszköz alkalmazásával (előzetes verzió)
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     az extension add --name azure-cli-iot-ext
     ```
 
-* [Töltse le a C# minta projektet](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és CSOMAGOLja ki a zip-archívumot. Szüksége lesz rá az eszköz és a szolgáltatás oldalán is.
+* [Töltse le az Azure C# IoT-mintákat](https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip) , és CSOMAGOLja ki a zip-archívumot. Szüksége lesz rá az eszköz és a szolgáltatás oldalán is.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

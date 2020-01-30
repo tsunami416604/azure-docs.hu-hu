@@ -4,16 +4,15 @@ description: Ismerteti, hogyan állítható be a VMM-felhőkben futó Hyper-V vi
 services: site-recovery
 author: sujayt
 manager: rochakm
-ms.service: site-recovery
 ms.topic: article
 ms.date: 1/10/2020
 ms.author: sutalasi
-ms.openlocfilehash: d2f25774f89182004e23605bf4c37d1e1d739df7
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: a46bca5c5c55338f8bea7e1ff370f92ce6a2d577
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867035"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841046"
 ---
 # <a name="set-up-disaster-recovery-of-hyper-v-vms-to-a-secondary-site-by-using-powershell-resource-manager"></a>A Hyper-V virtuális gépek vész-helyreállításának beállítása másodlagos helyre a PowerShell használatával (Resource Manager)
 
@@ -28,23 +27,21 @@ Ez a cikk bemutatja, hogyan automatizálható a System Center Virtual Machine Ma
 - Győződjön meg arról, hogy a Virtual Machine Manager-kiszolgálók és a Hyper-V-gazdagépek megfelelnek a [támogatási követelményeknek](site-recovery-support-matrix-to-sec-site.md).
 - Győződjön meg arról, hogy a replikálni kívánt virtuális gépek megfelelnek a [replikált gépek támogatásának](site-recovery-support-matrix-to-sec-site.md).
 
-
 ## <a name="prepare-for-network-mapping"></a>Hálózatleképezés előkészítése
 
 [Hálózati leképezési](hyper-v-vmm-network-mapping.md) térképek a helyszíni Virtual Machine Manager virtuálisgép-hálózatok között a forrás-és a cél felhőkben. A leképezés a következőket hajtja végre:
 
-- A feladatátvételt követően összekapcsolja a virtuális gépeket a megfelelő céloldali virtuálisgép-hálózatokkal. 
-- Optimális módon helyezi el a virtuális replikagépeket a céloldali Hyper-V gazdakiszolgálókon. 
+- A feladatátvételt követően összekapcsolja a virtuális gépeket a megfelelő céloldali virtuálisgép-hálózatokkal.
+- Optimális módon helyezi el a virtuális replikagépeket a céloldali Hyper-V gazdakiszolgálókon.
 - Ha nem konfigurálja a hálózati leképezést, a replika virtuális gépek nem lesznek csatlakoztatva a virtuálisgép-hálózathoz a feladatátvételt követően.
 
 A Virtual Machine Manager előkészítése a következőképpen történik:
 
-* Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
-
-    - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
-    - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
-* Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
-* A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni. 
+- Győződjön meg arról, hogy rendelkezik [Virtual Machine Manager logikai hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-logical) a forrás és a cél Virtual Machine Manager kiszolgálókon:
+  - A forrásoldali kiszolgálón található logikai hálózatnak ahhoz a forrásfelhőhöz kell tartoznia, amelyikben a Hyper-V gazdagépek találhatók.
+  - A céloldali kiszolgálón található logikai hálózatnak a célfelhőhöz kell tartoznia.
+- Győződjön meg arról, hogy rendelkezik virtuálisgép- [hálózatokkal](https://docs.microsoft.com/system-center/vmm/network-virtual) a forrás-és a cél Virtual Machine Manager-kiszolgálókon. A virtuálisgép-hálózatokat minden helyen össze kell kapcsolni a logikai hálózattal.
+- A forrásoldali Hyper-V gazdagépeken található virtuális gépeket a forrásoldali virtuálisgép-hálózathoz kell csatlakoztatni.
 
 ## <a name="prepare-for-powershell"></a>Felkészülés a PowerShellre
 
@@ -55,153 +52,216 @@ Győződjön meg arról, hogy Azure PowerShell készen áll:
 - Ha többet szeretne megtudni a paraméterek értékeinek, bemenetének és kimenetének a PowerShellben való használatáról, olvassa el az [első lépések](/powershell/azure/get-started-azureps) útmutatóját.
 
 ## <a name="set-up-a-subscription"></a>Előfizetés beállítása
+
 1. Jelentkezzen be az Azure-fiókjába a PowerShellből.
 
-        $UserName = "<user@live.com>"
-        $Password = "<password>"
-        $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
-        $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
-        Connect-AzAccount #-Credential $Cred
-2. Az előfizetések listájának beolvasása az előfizetés-azonosítókkal. Jegyezze fel annak az előfizetésnek az AZONOSÍTÓját, amelyben létre szeretné hozni a Recovery Services-tárolót. 
+   ```azurepowershell
+   $UserName = "<user@live.com>"
+   $Password = "<password>"
+   $SecurePassword = ConvertTo-SecureString -AsPlainText $Password -Force
+   $Cred = New-Object System.Management.Automation.PSCredential -ArgumentList $UserName, $SecurePassword
+   Connect-AzAccount #-Credential $Cred
+   ```
 
-        Get-AzSubscription
-3. Állítsa be a tároló előfizetését.
+1. Az előfizetések listájának beolvasása az előfizetés-azonosítókkal. Jegyezze fel annak az előfizetésnek az AZONOSÍTÓját, amelyben létre szeretné hozni a Recovery Services-tárolót.
 
-        Set-AzContext –SubscriptionID <subscriptionId>
+   ```azurepowershell
+   Get-AzSubscription
+   ```
+
+1. Állítsa be a tároló előfizetését.
+
+   ```azurepowershell
+   Set-AzContext –SubscriptionID <subscriptionId>
+   ```
 
 ## <a name="create-a-recovery-services-vault"></a>Recovery Services-tároló létrehozása
+
 1. Ha még nem rendelkezik ilyennel, hozzon létre egy Azure Resource Manager erőforráscsoportot.
 
-        New-AzResourceGroup -Name #ResourceGroupName -Location #location
-2. Hozzon létre egy új Recovery Services-tárolót. Mentse a tároló objektumot egy változóban, amelyet később szeretne használni. 
+   ```azurepowershell
+   New-AzResourceGroup -Name #ResourceGroupName -Location #location
+   ```
 
-        $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
-   
-    A tároló objektumot a Get-AzRecoveryServicesVault parancsmag használatával kérheti le.
+1. Hozzon létre egy új Recovery Services-tárolót. Mentse a tároló objektumot egy változóban, amelyet később szeretne használni.
+
+   ```azurepowershell
+   $vault = New-AzRecoveryServicesVault -Name #vaultname -ResourceGroupName #ResourceGroupName -Location #location
+   ```
+
+   A tár objektumot a `Get-AzRecoveryServicesVault` parancsmaggal történő létrehozása után kérheti le.
 
 ## <a name="set-the-vault-context"></a>A tár környezetének beállítása
+
 1. Meglévő tár beolvasása.
 
-       $vault = Get-AzRecoveryServicesVault -Name #vaultname
-2. Állítsa be a tár környezetét.
+   ```azurepowershell
+   $vault = Get-AzRecoveryServicesVault -Name #vaultname
+   ```
 
-       Set-AzSiteRecoveryVaultSettings -ARSVault $vault
+1. Állítsa be a tár környezetét.
+
+   ```azurepowershell
+   Set-AzRecoveryServicesAsrVaultContext -Vault $vault
+   ```
 
 ## <a name="install-the-site-recovery-provider"></a>A Site Recovery-szolgáltató telepítése
+
 1. A Virtual Machine Manager gépen hozzon létre egy könyvtárat a következő parancs futtatásával:
 
-       New-Item c:\ASR -type directory
-2. Bontsa ki a fájlokat a letöltött szolgáltató telepítési fájljának használatával.
+   ```azurepowershell
+   New-Item -Path C:\ASR -ItemType Directory
+   ```
 
-       pushd C:\ASR\
-       .\AzureSiteRecoveryProvider.exe /x:. /q
-3. Telepítse a szolgáltatót, és várjon, amíg a telepítés befejeződik.
+1. Bontsa ki a fájlokat a letöltött szolgáltató telepítési fájljának használatával.
 
-       .\SetupDr.exe /i
-       $installationRegPath = "hklm:\software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
-       do
-       {
-         $isNotInstalled = $true;
-         if(Test-Path $installationRegPath)
-         {
-           $isNotInstalled = $false;
-         }
-       }While($isNotInstalled)
+   ```console
+   pushd C:\ASR\
+   .\AzureSiteRecoveryProvider.exe /x:. /q
+   ```
 
-4. Regisztrálja a kiszolgálót a tárolóban.
+1. Telepítse a szolgáltatót, és várjon, amíg a telepítés befejeződik.
 
-       $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
-       pushd $BinPath
-       $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
+   ```console
+   .\SetupDr.exe /i
+   $installationRegPath = "HKLM:\Software\Microsoft\Microsoft System Center Virtual Machine Manager Server\DRAdapter"
+   do
+   {
+     $isNotInstalled = $true;
+     if(Test-Path $installationRegPath)
+     {
+       $isNotInstalled = $false;
+     }
+   }While($isNotInstalled)
+   ```
+
+1. Regisztrálja a kiszolgálót a tárolóban.
+
+   ```console
+   $BinPath = $env:SystemDrive+"\Program Files\Microsoft System Center 2012 R2\Virtual Machine Manager\bin"
+   pushd $BinPath
+   $encryptionFilePath = "C:\temp\".\DRConfigurator.exe /r /Credentials $VaultSettingFilePath /vmmfriendlyname $env:COMPUTERNAME /dataencryptionenabled $encryptionFilePath /startvmmservice
+   ```
 
 ## <a name="create-and-associate-a-replication-policy"></a>Replikációs házirend létrehozása és hozzárendelése
+
 1. Hozzon létre egy replikációs házirendet, ebben az esetben a Hyper-V 2012 R2 esetében a következő módon:
 
-        $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
-        $PolicyName = “replicapolicy”
-        $RepProvider = HyperVReplica2012R2
-        $Recoverypoints = 24                    #specify the number of hours to retain recovery pints
-        $AppConsistentSnapshotFrequency = 4 #specify the frequency (in hours) at which app consistent snapshots are taken
-        $AuthMode = "Kerberos"  #options are "Kerberos" or "Certificate"
-        $AuthPort = "8083"  #specify the port number that will be used for replication traffic on Hyper-V hosts
-        $InitialRepMethod = "Online" #options are "Online" or "Offline"
+   ```azurepowershell
+   $ReplicationFrequencyInSeconds = "300";        #options are 30,300,900
+   $PolicyName = “replicapolicy”
+   $RepProvider = HyperVReplica2012R2
+   $Recoverypoints = 24                    #specify the number of hours to retain recovery points
+   $AppConsistentSnapshotFrequency = 4 #specify the frequency (in hours) at which app consistent snapshots are taken
+   $AuthMode = "Kerberos"  #options are "Kerberos" or "Certificate"
+   $AuthPort = "8083"  #specify the port number that will be used for replication traffic on Hyper-V hosts
+   $InitialRepMethod = "Online" #options are "Online" or "Offline"
 
-        $policyresult = New-AzSiteRecoveryPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -RecoveryPoints $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
+   $policyresult = New-AzRecoveryServicesAsrPolicy -Name $policyname -ReplicationProvider $RepProvider -ReplicationFrequencyInSeconds $Replicationfrequencyinseconds -NumberOfRecoveryPointsToRetain $recoverypoints -ApplicationConsistentSnapshotFrequencyInHours $AppConsistentSnapshotFrequency -Authentication $AuthMode -ReplicationPort $AuthPort -ReplicationMethod $InitialRepMethod
+   ```
 
-    > [!NOTE]
-    > A Virtual Machine Manager felhő tartalmazhat olyan Hyper-V-gazdagépeket, amelyek a Windows Server különböző verzióit futtatják, de a replikációs házirend az operációs rendszer egy adott verziójára vonatkozik. Ha különböző operációs rendszereken futó gazdagépekkel rendelkezik, hozzon létre külön replikációs házirendeket az egyes rendszerekhez. Ha például öt gazdagép fut a Windows Server 2012-on, a Windows Server 2012 R2-ben pedig három gazdagép fut, hozzon létre két replikációs házirendet. Mindegyik operációs rendszerhez létre kell hoznia egyet.
+   > [!NOTE]
+   > A Virtual Machine Manager felhő tartalmazhat olyan Hyper-V-gazdagépeket, amelyek a Windows Server különböző verzióit futtatják, de a replikációs házirend az operációs rendszer egy adott verziójára vonatkozik. Ha különböző operációs rendszereken futó gazdagépekkel rendelkezik, hozzon létre külön replikációs házirendeket az egyes rendszerekhez. Ha például öt gazdagép fut a Windows Server 2012-on, a Windows Server 2012 R2-ben pedig három gazdagép fut, hozzon létre két replikációs házirendet. Mindegyik operációs rendszerhez létre kell hoznia egyet.
 
-2. Kérje le az elsődleges védelmi tárolót (az elsődleges Virtual Machine Manager felhőt) és a helyreállítási védelmi tárolót (Recovery Virtual Machine Manager Cloud).
+1. Kérje le az elsődleges védelmi tárolót (az elsődleges Virtual Machine Manager felhőt) és a helyreállítási védelmi tárolót (Recovery Virtual Machine Manager Cloud).
 
-       $PrimaryCloud = "testprimarycloud"
-       $primaryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloud;  
+   ```azurepowershell
+   $PrimaryCloud = "testprimarycloud"
+   $primaryprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryCloud;
 
-       $RecoveryCloud = "testrecoverycloud"
-       $recoveryprotectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $RecoveryCloud;  
-3. Kérje le a létrehozott replikációs szabályzatot a rövid név használatával.
+   $RecoveryCloud = "testrecoverycloud"
+   $recoveryprotectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $RecoveryCloud;
+   ```
 
-       $policy = Get-AzSiteRecoveryPolicy -FriendlyName $policyname
-4. Indítsa el a védelmi tároló (Virtual Machine Manager felhő) társítását a replikációs házirenddel.
+1. Kérje le a létrehozott replikációs szabályzatot a rövid név használatával.
 
-       $associationJob  = Start-AzSiteRecoveryPolicyAssociationJob -Policy     $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
-5. Várjon, amíg a házirend-hozzárendelési feladatok befejeződik. A következő PowerShell-kódrészlettel ellenőrizze, hogy a feladatok befejeződtek-e:
+   ```azurepowershell
+   $policy = Get-AzRecoveryServicesAsrPolicy -FriendlyName $policyname
+   ```
 
-       $job = Get-AzSiteRecoveryJob -Job $associationJob
+1. Indítsa el a védelmi tároló (Virtual Machine Manager felhő) társítását a replikációs házirenddel.
 
-       if($job -eq $null -or $job.StateDescription -ne "Completed")
-       {
-         $isJobLeftForProcessing = $true;
-       }
+   ```azurepowershell
+   $associationJob  = New-AzRecoveryServicesAsrProtectionContainerMapping -Policy $Policy -PrimaryProtectionContainer $primaryprotectionContainer -RecoveryProtectionContainer $recoveryprotectionContainer
+   ```
 
-6. Miután a folyamat befejezte a feldolgozást, futtassa a következő parancsot:
+1. Várjon, amíg a házirend-hozzárendelési feladatok befejeződik. A következő PowerShell-kódrészlettel ellenőrizze, hogy a feladatok befejeződtek-e:
 
-       if($isJobLeftForProcessing)
-       {
-         Start-Sleep -Seconds 60
-       }
-       }While($isJobLeftForProcessing)
+   ```azurepowershell
+   $job = Get-AzRecoveryServicesAsrJob -Job $associationJob
+
+   if($job -eq $null -or $job.StateDescription -ne "Completed")
+   {
+     $isJobLeftForProcessing = $true;
+   }
+   ```
+
+1. Miután a folyamat befejezte a feldolgozást, futtassa a következő parancsot:
+
+   ```azurepowershell
+   if($isJobLeftForProcessing)
+   {
+     Start-Sleep -Seconds 60
+   }
+   While($isJobLeftForProcessing)
+   ```
 
 A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelése](#monitor-activity)című témakör lépéseit.
 
 ##  <a name="configure-network-mapping"></a>Hálózatleképezés konfigurálása
-1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a $Servers Array változóban tárolja a Site Recovery-kiszolgálókat.
 
-        $Servers = Get-AzSiteRecoveryServer
-2. Futtassa ezt a parancsot a forrás Virtual Machine Manager-kiszolgáló és a cél Virtual Machine Manager-kiszolgáló hálózatának beolvasásához.
+1. Ezzel a paranccsal lekérheti a kiszolgálókat az aktuális tárolóhoz. A parancs a `$Servers` Array változóban tárolja a Site Recovery-kiszolgálókat.
 
-        $PrimaryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[0]        
+   ```azurepowershell
+   $Servers = Get-AzRecoveryServicesAsrFabric
+   ```
 
-        $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
+1. Futtassa ezt a parancsot a forrás Virtual Machine Manager-kiszolgáló és a cél Virtual Machine Manager-kiszolgáló hálózatának beolvasásához.
 
-    > [!NOTE]
-    > A forrás Virtual Machine Manager kiszolgáló lehet az első vagy második a kiszolgáló tömbben. Győződjön meg arról, hogy Virtual Machine Manager a kiszolgálók neveit, és megfelelően kéri le a hálózatokat.
+   ```azurepowershell
+   $PrimaryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[0]
 
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   ```
 
-3. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. A $PrimaryNetworks első elemeként adja meg az elsődleges hálózatot. A helyreállítási hálózatot a $RecoveryNetworks első elemeként adja meg.
+   > [!NOTE]
+   > A forrás Virtual Machine Manager kiszolgáló lehet az első vagy második a kiszolgáló tömbben. Győződjön meg arról, hogy Virtual Machine Manager a kiszolgálók neveit, és megfelelően kéri le a hálózatokat.
 
-        New-AzSiteRecoveryNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
+1. Ez a parancsmag létrehoz egy leképezést az elsődleges hálózat és a helyreállítási hálózat között. A `$PrimaryNetworks`első elemeként adja meg az elsődleges hálózatot. A helyreállítási hálózatot a `$RecoveryNetworks`első elemeként adja meg.
 
+   ```azurepowershell
+   New-AzRecoveryServicesAsrNetworkMapping -PrimaryNetwork $PrimaryNetworks[0] -RecoveryNetwork $RecoveryNetworks[0]
+   ```
 
 ## <a name="enable-protection-for-vms"></a>Virtuális gépek védelmének engedélyezése
+
 Miután a kiszolgálók, a felhők és a hálózatok megfelelően vannak konfigurálva, engedélyezze a Felhőbeli virtuális gépek védelmét.
 
 1. A védelem engedélyezéséhez futtassa a következő parancsot a védelmi tároló lekéréséhez:
 
-          $PrimaryProtectionContainer = Get-AzSiteRecoveryProtectionContainer -friendlyName $PrimaryCloudName
-2. Szerezze be a védelmi entitást (VM) a következőképpen:
+   ```azurepowershell
+   $PrimaryProtectionContainer = Get-AzRecoveryServicesAsrProtectionContainer -FriendlyName $PrimaryCloudName
+   ```
 
-           $protectionEntity = Get-AzSiteRecoveryProtectionEntity -friendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
-3. Engedélyezze a virtuális gép replikálását.
+1. Szerezze be a védelmi entitást (VM) a következőképpen:
 
-          $jobResult = Set-AzSiteRecoveryProtectionEntity -ProtectionEntity $protectionentity -Protection Enable -Policy $policy
+   ```azurepowershell
+   $protectionEntity = Get-AzRecoveryServicesAsrProtectableItem -FriendlyName $VMName -ProtectionContainer $PrimaryProtectionContainer
+   ```
+
+1. Engedélyezze a virtuális gép replikálását.
+
+   ```azurepowershell
+   $jobResult = New-AzRecoveryServicesAsrReplicationProtectedItem -ProtectableItem $protectionentity -ProtectionContainerMapping $policy -VmmToVmm
+   ```
 
 > [!NOTE]
 > Ha a CMK-kompatibilis felügyelt lemezeket az Azure-ban szeretné replikálni, hajtsa végre a következő lépéseket az az PowerShell 3.3.0-től kezdődően:
 >
 > 1. Feladatátvétel engedélyezése a felügyelt lemezeken a virtuális gép tulajdonságainak frissítésével
-> 2. A Get-AsrReplicationProtectedItem parancsmag használatával beolvashatja a védett elemek lemezének AZONOSÍTÓját
-> 3. Hozzon létre egy szótár objektumot a New-Object "System. Collections. Generic. Dictionary" "2 [System. string, System. string]" parancsmag használatával, hogy tartalmazza a lemez titkosítási készletének leképezését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
-> 4. Frissítse a virtuális gép tulajdonságait a set-AsrReplicationProtectedItem parancsmaggal a DiskIdToDiskEncryptionSetMap paraméterben található szótár objektum átadásával.
+> 1. A védett elemek minden lemezének lemez-AZONOSÍTÓjának beolvasásához használja a `Get-AzRecoveryServicesAsrReplicationProtectedItem` parancsmagot
+> 1. Hozzon létre egy szótár-objektumot `New-Object "System.Collections.Generic.Dictionary``2[System.String,System.String]"` parancsmaggal, hogy tartalmazza a lemez titkosítási csoportba való hozzárendelését. Ezeket a lemezes titkosítási csoportokat előre létre kell hoznia a célként megadott régióban.
+> 1. Frissítse a virtuális gép tulajdonságait `Set-AzRecoveryServicesAsrReplicationProtectedItem` parancsmaggal a **DiskIdToDiskEncryptionSetMap** paraméterben található szótár objektum átadásával.
 
 ## <a name="run-a-test-failover"></a>Feladatátvételi teszt futtatása
 
@@ -209,24 +269,30 @@ Az üzemelő példány teszteléséhez futtasson feladatátvételi tesztet egyet
 
 1. Kérje le azt a virtuális gépet, amelybe a virtuális gépek feladatátvételt hajtanak végre.
 
-       $Servers = Get-AzSiteRecoveryServer
-       $RecoveryNetworks = Get-AzSiteRecoveryNetwork -Server $Servers[1]
+   ```azurepowershell
+   $Servers = Get-AzRecoveryServicesASRFabric
+   $RecoveryNetworks = Get-AzRecoveryServicesAsrNetwork -Name $Servers[1]
+   ```
 
-2. Végezzen feladatátvételi tesztet.
+1. Végezzen feladatátvételi tesztet.
 
    Egyetlen virtuális gép esetén:
 
-        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
+   ```azurepowershell
+   $protectionEntity = Get-AzRecoveryServicesAsrProtectableItem -FriendlyName $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity -VMNetwork $RecoveryNetworks[1]
-    
+   $jobIDResult = Start-AzRecoveryServicesAsrTestFailoverJob -Direction PrimaryToRecovery -ReplicationProtectedItem $protectionEntity -VMNetwork $RecoveryNetworks[1]
+   ```
+
    Helyreállítási tervhez:
 
-        $recoveryplanname = "test-recovery-plan"
+   ```azurepowershell
+   $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+   $recoveryplan = Get-AzRecoveryServicesAsrRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzSiteRecoveryTestFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan -VMNetwork $RecoveryNetworks[1]
+   $jobIDResult = Start-AzRecoveryServicesAsrTestFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $recoveryplan -VMNetwork $RecoveryNetworks[1]
+   ```
 
 A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelése](#monitor-activity)című témakör lépéseit.
 
@@ -236,53 +302,62 @@ A művelet befejezésének ellenőrzéséhez kövesse a [tevékenység figyelés
 
    Egyetlen virtuális gép esetén:
 
-        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
+   ```azurepowershell
+   $protectionEntity = Get-AzRecoveryServicesAsrProtectableItem -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+   $jobIDResult = Start-AzRecoveryServicesAsrPlannedFailoverJob -Direction PrimaryToRecovery -ReplicationProtectedItem $protectionEntity
+   ```
 
    Helyreállítási tervhez:
 
-        $recoveryplanname = "test-recovery-plan"
+   ```azurepowershell
+   $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+   $recoveryplan = Get-AzRecoveryServicesAsrRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzSiteRecoveryPlannedFailoverJob -Direction PrimaryToRecovery -Recoveryplan $recoveryplan
+   $jobIDResult = Start-AzRecoveryServicesAsrPlannedFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $recoveryplan
+   ```
 
-2. Végezzen nem tervezett feladatátvételt.
+1. Végezzen nem tervezett feladatátvételt.
 
    Egyetlen virtuális gép esetén:
-        
-        $protectionEntity = Get-AzSiteRecoveryProtectionEntity -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
 
-        $jobIDResult =  Start-AzSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+   ```azurepowershell
+   $protectionEntity = Get-AzRecoveryServicesAsrProtectableItem -Name $VMName -ProtectionContainer $PrimaryprotectionContainer
+
+   $jobIDResult = Start-AzRecoveryServicesAsrUnplannedFailoverJob -Direction PrimaryToRecovery -ReplicationProtectedItem $protectionEntity
+   ```
 
    Helyreállítási tervhez:
 
-        $recoveryplanname = "test-recovery-plan"
+   ```azurepowershell
+   $recoveryplanname = "test-recovery-plan"
 
-        $recoveryplan = Get-AzSiteRecoveryRecoveryPlan -FriendlyName $recoveryplanname
+   $recoveryplan = Get-AzRecoveryServicesAsrRecoveryPlan -FriendlyName $recoveryplanname
 
-        $jobIDResult =  Start-AzSiteRecoveryUnPlannedFailoverJob -Direction PrimaryToRecovery -ProtectionEntity $protectionEntity
+   $jobIDResult = Start-AzRecoveryServicesAsrUnplannedFailoverJob -Direction PrimaryToRecovery -RecoveryPlan $recoveryplan
+   ```
 
 ## <a name="monitor-activity"></a>Tevékenység figyelése
+
 A feladatátvételi tevékenység figyeléséhez használja a következő parancsokat. Várjon, amíg a feldolgozás befejeződik a feladatok között.
 
-    Do
+```azurepowershell
+Do
+{
+    $job = Get-AzRecoveryServicesAsrJob -TargetObjectId $associationJob.JobId;
+    Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
+    if($job -eq $null -or $job.StateDescription -ne "Completed")
     {
-        $job = Get-AzureSiteRecoveryJob -Id $associationJob.JobId;
-        Write-Host "Job State:{0}, StateDescription:{1}" -f Job.State, $job.StateDescription;
-        if($job -eq $null -or $job.StateDescription -ne "Completed")
-        {
-            $isJobLeftForProcessing = $true;
-        }
+        $isJobLeftForProcessing = $true;
+    }
 
-    if($isJobLeftForProcessing)
-        {
-            Start-Sleep -Seconds 60
-        }
-    }While($isJobLeftForProcessing)
-
-
+if($isJobLeftForProcessing)
+    {
+        Start-Sleep -Seconds 60
+    }
+}While($isJobLeftForProcessing)
+```
 
 ## <a name="next-steps"></a>Következő lépések
 

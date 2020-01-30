@@ -9,14 +9,14 @@ ms.date: 10/06/2019
 ms.topic: article
 ms.service: event-grid
 services: event-grid
-ms.openlocfilehash: 7d6b83354baf3db5ddb65f94fee1c3dce2dcca94
-ms.sourcegitcommit: 92d42c04e0585a353668067910b1a6afaf07c709
+ms.openlocfilehash: a6f033af34088081090251f2e5e7cd4a07ce43cc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/28/2019
-ms.locfileid: "72992456"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841747"
 ---
-# <a name="output-batching"></a>Kimeneti köteg
+# <a name="output-batching"></a>Kimenet kötegelése
 
 Event Grid több esemény egyetlen kézbesítési kérelemben való továbbítását támogatja. Ez a funkció lehetővé teszi a teljes kézbesítési sebesség növelését anélkül, hogy a HTTP per-Request típusú terhelést kellene fizetnie. A Batch szolgáltatás alapértelmezés szerint ki van kapcsolva, és előfizetésre is kapcsolható.
 
@@ -79,8 +79,8 @@ A következő üzembe helyezési idő beállítások az esemény-előfizetés l�
 
 | Tulajdonság neve | Leírás |
 | ------------- | ----------- | 
-| `api:deliveryPolicyLimits:maxpreferredBatchSizeInKilobytes` | Az `PreferredBatchSizeInKilobytes` Knob számára engedélyezett maximális érték. Alapértelmezett `1033`.
-| `api:deliveryPolicyLimits:maxEventsPerBatch` | Az `MaxEventsPerBatch` Knob számára engedélyezett maximális érték. Alapértelmezett `50`.
+| `api__deliveryPolicyLimits__maxpreferredBatchSizeInKilobytes` | Az `PreferredBatchSizeInKilobytes` Knob számára engedélyezett maximális érték. Alapértelmezett `1033`.
+| `api__deliveryPolicyLimits__maxEventsPerBatch` | Az `MaxEventsPerBatch` Knob számára engedélyezett maximális érték. Alapértelmezett `50`.
 
 ## <a name="configuring-runtime-default-values"></a>Futásidejű alapértelmezett értékek konfigurálása
 
@@ -88,5 +88,5 @@ A következő üzembe helyezési idő beállításai vezérlik az egyes gombok f
 
 | Tulajdonság neve | Leírás |
 | ------------- | ----------- |
-| `broker:defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak `MaxEventsPerBatch` van megadva. Alapértelmezett `1_058_576`.
-| `broker:defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` van megadva. Alapértelmezett `10`.
+| `broker__defaultMaxBatchSizeInBytes` | A kézbesítési kérelmek maximális mérete, ha csak `MaxEventsPerBatch` van megadva. Alapértelmezett `1_058_576`.
+| `broker__defaultMaxEventsPerBatch` | A köteghez hozzáadandó események maximális száma, ha csak `MaxBatchSizeInBytes` van megadva. Alapértelmezett `10`.

@@ -3,12 +3,12 @@ title: SAP HANA-adatbázis biztonsági mentése az Azure-ba Azure Backup
 description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést egy SAP HANA-adatbázisról az Azure-beli virtuális gépekre a Azure Backup szolgáltatással.
 ms.topic: conceptual
 ms.date: 11/12/2019
-ms.openlocfilehash: c5df198d009f0d4a9f37a68d6b21386f06842722
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: dd4c6fc0e018f3fc8f2a2029ef8a90cdc305e2c2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75753972"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765514"
 ---
 # <a name="back-up-sap-hana-databases-in-azure-vms"></a>SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -23,6 +23,10 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Adatbázisok felderítése
 > * Biztonsági mentések konfigurálása
 > * Igény szerinti biztonsági mentési feladatok futtatása
+
+>[!NOTE]
+>Az Azure-beli virtuális gépeken futó **SQL Server-kiszolgáló és az Azure** -beli virtuális gépekhez készült SAP HANA Soft delete már előzetes verzióban érhető el.<br>
+>Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -78,7 +82,7 @@ Szabály létrehozása a PowerShell használatával:
 
 A csatlakozási lehetőségek a következő előnyökkel és hátrányokkal járnak:
 
-**Beállítás** | **Előnyök** | **Hátrányok**
+**Beállítás** | **Előnyei** | **Hátrányai**
 --- | --- | ---
 IP-címtartományok engedélyezése | Nincs további költség | Összetett a kezeléshez, mert az IP-címtartományok változnak az idő múlásával <br/><br/> Hozzáférést biztosít az egész Azure-hoz, nem csak az Azure Storage-hoz
 NSG szolgáltatásbeli címkék használata | A tartomány módosításainak könnyebb kezelése automatikusan történik <br/><br/> Nincs további költség <br/><br/> | Csak NSG használható <br/><br/> Hozzáférést biztosít a teljes szolgáltatáshoz
@@ -132,7 +136,7 @@ Most engedélyezze a biztonsági mentést.
     ![Válassza ki azokat az elemeket, amelyekről biztonsági másolatot szeretne készíteni](./media/backup-azure-sap-hana-database/select-items.png)
 3. A **biztonsági mentési szabályzat** > **válassza a biztonsági mentési szabályzat lehetőséget**, hozzon létre egy új biztonsági mentési szabályzatot az adatbázisokhoz az alábbi utasítások szerint.
 
-    ![Biztonsági mentési szabályzat kiválasztása](./media/backup-azure-sap-hana-database/backup-policy.png)
+    ![Biztonsági mentési házirend kiválasztása](./media/backup-azure-sap-hana-database/backup-policy.png)
 4. A szabályzat létrehozása után a **biztonsági mentés** menüben kattintson a **biztonsági mentés engedélyezése**elemre.
 
     ![Biztonsági mentés engedélyezése](./media/backup-azure-sap-hana-database/enable-backup.png)

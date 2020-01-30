@@ -8,13 +8,13 @@ ms.subservice: core
 ms.topic: reference
 author: likebupt
 ms.author: keli19
-ms.date: 09/09/2019
-ms.openlocfilehash: c8051126fc4a895c6e72e90942fac65d777afd8e
-ms.sourcegitcommit: 87781a4207c25c4831421c7309c03fce5fb5793f
+ms.date: 01/27/2020
+ms.openlocfilehash: be6fd633f026c98e8f75467dc8661e695e121721
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76546486"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841267"
 ---
 # <a name="summarize-data"></a>Adatok összegzése
 
@@ -46,7 +46,7 @@ A modul kiszámítja az egyes oszlopok fontos pontszámait, és a bemenetként m
 
 A modul jelentései a következő statisztikákat is tartalmazhatják. 
 
-|Oszlop neve|Leírás|
+|oszlop neve|Leírás|
 |------|------|  
 |**Funkció**|Az oszlop neve|
 |**Száma**|Az összes sor száma|
@@ -59,7 +59,7 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 |**1. kvartilis**|Érték az első kvartilis|
 |**Medián**|Medián oszlop értéke|
 |**harmadik kvartilis**|Érték a harmadik kvartilis|
-|**Mode**|Oszlop értékeinek módja|
+|**Mód**|Oszlop értékeinek módja|
 |**Tartomány**|A maximális és a minimális értékek közötti értékek számát jelző egész szám|
 |**Minta eltérése**|Az oszlop eltérése; Lásd: Megjegyzés|
 |**Minta szórása**|Oszlop szórása; Lásd: Megjegyzés|
@@ -70,6 +70,20 @@ A modul jelentései a következő statisztikákat is tartalmazhatják.
 |**P5**|5%-os percentilis|
 |**P95**|95% percentilis|
 |**P 99,5**|99,5% percentilis |
+
+## <a name="technical-notes"></a>Technikai megjegyzések
+
+- A nem numerikus oszlopok esetében a rendszer csak a darabszám, az egyedi értékek száma és a hiányzó értékek értékét számítja ki. Más statisztikák esetében null értéket ad vissza.
+
+- A logikai értékeket tartalmazó oszlopok a következő szabályok használatával lesznek feldolgozva:
+
+    - A min érték kiszámításakor a logikai és a rendszer alkalmazza.
+    
+    - A Max számításakor logikai vagy alkalmazva
+    
+    - A számítási tartománynál a modul először ellenőrzi, hogy az oszlopban szereplő egyedi értékek száma 2-e.
+    
+    - A lebegőpontos számításokat igénylő statisztikai adatok feldolgozásakor az igaz értéket a 1,0-as értékként kezeli a rendszer, a hamis értékek pedig 0,0-ként lesznek kezelve.
 
 ## <a name="next-steps"></a>Következő lépések
 

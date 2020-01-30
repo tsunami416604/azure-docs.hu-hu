@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 162597bf3d02cdfe53d321185b326bfbb1f6bd0d
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 2e2a3dbf0ce3be28a78f04eb5bb1c369aeff1441
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76712770"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773438"
 ---
 # <a name="technicalprofiles"></a>TechnicalProfiles
 
@@ -99,7 +99,7 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 | OutputClaimsTransformations | 0:1 | A korábban meghatározott, a jogcím-átalakításokra mutató hivatkozásokat tartalmazó lista, amelyet a jogcím-szolgáltatótól érkező jogcímek fogadása után kell végrehajtani. |
 | ValidationTechnicalProfiles | 0: n | Azon egyéb műszaki profilokra mutató hivatkozások listája, amelyeket a technikai profil az ellenőrzési célokra használ. További információ: [érvényesítési technikai profil](validation-technical-profile.md)|
 | SubjectNamingInfo | 0:1 | A tulajdonos nevének olyan jogkivonatokban való előállítását szabályozza, amelyekben a tulajdonos neve külön van megadva a jogcímek között. Például: OAuth vagy SAML.  |
-| IncludeInSso | 0:1 |  Azt határozza meg, hogy ennek a technikai profilnak a használata esetén kell-e alkalmazni az egyszeri bejelentkezési (SSO) viselkedést a munkamenethez, vagy Ehelyett explicit interakcióra van szükség. Lehetséges értékek: `true` (alapértelmezett) vagy `false`. |
+| IncludeInSso | 0:1 |  Azt határozza meg, hogy ennek a technikai profilnak a használata esetén kell-e alkalmazni az egyszeri bejelentkezési (SSO) viselkedést a munkamenethez, vagy Ehelyett explicit interakcióra van szükség. Ez az elem csak az érvényesítési technikai profilban használt SelfAsserted-profilokban érvényes. Lehetséges értékek: `true` (alapértelmezett) vagy `false`. |
 | IncludeClaimsFromTechnicalProfile | 0:1 | Egy olyan műszaki profil azonosítója, amelyből hozzá kívánja adni az összes bemeneti és kimeneti jogcímet ehhez a technikai profilhoz. A hivatkozott technikai profilt ugyanabban a házirend-fájlban kell definiálni. |
 | IncludeTechnicalProfile |0:1 | Egy műszaki profil azonosítója, amelyből a technikai profilba felvenni kívánt összes adat bekerül. A hivatkozott technikai profilnak ugyanabban a házirend-fájlban kell lennie. |
 | UseTechnicalProfileForSessionManagement | 0:1 | A munkamenet-kezeléshez használt másik technikai profil. |

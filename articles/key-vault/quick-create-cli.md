@@ -10,12 +10,12 @@ ms.topic: quickstart
 ms.custom: mvc, seo-javascript-september2019, seo-javascript-october2019
 ms.date: 09/03/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f005266b6e2e12a13f79b3f2007b1bbbafb4acef
-ms.sourcegitcommit: 9dec0358e5da3ceb0d0e9e234615456c850550f6
+ms.openlocfilehash: 1b5ebbcd3a891149a72b3dbe8cb19b3c8de528a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/14/2019
-ms.locfileid: "72311562"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773766"
 ---
 # <a name="quickstart-set-and-retrieve-a-secret-from-azure-key-vault-using-azure-cli"></a>Rövid útmutató: Titkos kulcs beállítása és lekérése az Azure Key Vaultból az Azure CLI használatával
 
@@ -59,7 +59,7 @@ az keyvault create --name "Contoso-Vault2" --resource-group "ContosoResourceGrou
 Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott Key Vault tulajdonságait. Jegyezze fel az alábbi két tulajdonságot:
 
 - **Tároló neve**: A példában ez a **Contoso-Vault2**. Ezt a nevet fogja más Key Vault-parancsokban is megadni.
-- **Tároló URI-ja**: A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
+- **Tár URI-ja**: A példában ez a https://contoso-vault2.vault.azure.net/. A tárolót a REST API-ján keresztül használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja jelenleg az egyetlen, amelyik jogosult arra, hogy műveleteket végezzen ezen az új tárolón.
 
@@ -73,7 +73,7 @@ Titkos kód a tárolóhoz való hozzáadásához csak néhány további lépést
 az keyvault secret set --vault-name "Contoso-Vault2" --name "ExamplePassword" --value "hVFkk965BuUv"
 ```
 
-Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A jelenlegi verzió beszerzéséhez használja a következőt: **https://ContosoVault.vault.azure.net/secrets/ExamplePassword** . 
+Az Azure Key Vaulthoz hozzáadott jelszóra ezután az URI használatával hivatkozhat. A jelenlegi verzió beszerzéséhez használja a következőt: **https://Contoso-Vault2.vault.azure.net/secrets/ExamplePassword** . 
 
 A titkos kódban tárolt érték megtekintése egyszerű szövegként:
 

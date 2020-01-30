@@ -8,23 +8,24 @@ ms.custom: seo-javascript-september2019, seo-javascript-october2019
 ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 5/6/2019
-ms.openlocfilehash: 44d99a9420fc33bdd01c05fdb04d94671b7c815b
-ms.sourcegitcommit: b4f201a633775fee96c7e13e176946f6e0e5dd85
+ms.openlocfilehash: ca3a8bb093e81404da638ff869e05b5a4626626e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/18/2019
-ms.locfileid: "72592349"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774836"
 ---
 # <a name="quickstart-use-nodejs-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Node. js használatával kapcsolódhat és lekérdezheti Azure Database for PostgreSQL – egyetlen kiszolgáló
-Ez a rövid útmutató azt ismerteti, hogyan lehet csatlakozni az Azure Database for PostgreSQL-hez egy [Node.js](https://nodejs.org/)-alkalmazással. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
+
+Ebben a rövid útmutatóban egy Node. js-alkalmazással csatlakozhat egy Azure Database for PostgreSQLhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Node.js használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
-- [DB létrehozása – portál](quickstart-create-server-database-portal.md)
-- [DB létrehozása – CLI](quickstart-create-server-database-azure-cli.md)
 
-Emellett a következőket kell elvégezni:
-- [Node.js](https://nodejs.org) telepítése
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
+
+- [Node.js](https://nodejs.org)
 
 ## <a name="install-pg-client"></a>pg-ügyfél telepítése
 Telepítse a [pg](https://www.npmjs.com/package/pg)-t, amely egy PostgreSQL-ügyfél a Node.js-hez.
@@ -42,11 +43,11 @@ npm list
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
-3. Válassza ki a kiszolgálónevet.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![Azure adatbázis a PostgreSQL-kapcsolatok karakterláncához ](./media/connect-nodejs/server-details-azure-database-postgresql.png)
+1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver**).
+
+1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+
+   ![Azure Database for PostgreSQL a kapcsolatok karakterlánca](./media/connect-nodejs/server-details-azure-database-postgresql.png)
 
 ## <a name="running-the-javascript-code-in-nodejs"></a>A JavaScript-kód futtatása a Node.js-ben
 A Node.js-t elindíthatja a Bash felületről, a Terminal eszközből vagy a Windows parancssorból a `node` parancs beírásával. Ezután a JavaScript-kód interaktív futtatásához másolja és illessze be azt a promptba. Másik megoldásként el is mentheti a JavaScript-kódot az adott szövegfájlba, majd a futtatáshoz végezze el a `node filename.js` indítását a paraméterként megadott fájlnévvel.
@@ -152,7 +153,7 @@ function queryDatabase() {
 ```
 
 ## <a name="update-data"></a>Adatok frissítése
-Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **UPDATE** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
+Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását az adott **UPDATE** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 
@@ -199,7 +200,7 @@ function queryDatabase() {
 ```
 
 ## <a name="delete-data"></a>Adat törlése
-Az alábbi kód használatával csatlakozhat és végezheti el az adatok olvasását **DELETE** SQL-utasítás segítségével. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
+A következő kód használatával csatlakozhat, és beolvashatja az adatokat a **DELETE** SQL-utasítással. A [pg.Client](https://github.com/brianc/node-postgres/wiki/Client) objektum a PostgreSQL-kiszolgálóval való használatra szolgál. A [pg.Client.connect()](https://github.com/brianc/node-postgres/wiki/Client#method-connect) függvény a kiszolgálóval való kapcsolat létesítésére szolgál. A [pg.Client.query()](https://github.com/brianc/node-postgres/wiki/Query) függvény az SQL-lekérdezés PostgreSQL-adatbázison való végrehajtására szolgál. 
 
 Cserélje le a gazdagép, az adatbázisnév, a felhasználó és a jelszó paramétereit azokra az értékekre, amelyeket a kiszolgáló és az adatbázis létrehozásakor adott meg. 
 

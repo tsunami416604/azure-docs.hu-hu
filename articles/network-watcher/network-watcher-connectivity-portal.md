@@ -4,22 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2017
-ms.author: kumud
-ms.openlocfilehash: 5236d076939b6972946adfde3557e3534f9adf5c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: e405a91b1ea541b4ed3328fdb3bf80ca82731c93
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275970"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842852"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-portal"></a>Az Azure Network Watcher-kapcsolatok hibáinak megoldása a Azure Portal használatával
 
@@ -31,7 +29,7 @@ ms.locfileid: "74275970"
 
 Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak ellenőrzéséhez, hogy egy virtuális gépről egy adott végpontra irányuló közvetlen TCP-kapcsolódás létesíthető-e.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 

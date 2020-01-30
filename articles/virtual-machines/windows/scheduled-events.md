@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: ericrad
-ms.openlocfilehash: e6aa53ab5e71cbcc830e31ee1f3650feca7db63b
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 107233248e5d0a8d6b578d9395d4cdbade79a842
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74885517"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772631"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
 
@@ -56,7 +56,7 @@ Az Azure metaadat-szolgáltatás a virtuális gépről elérhető REST-végpont 
 ### <a name="endpoint-discovery"></a>Végpont felderítése
 A VNET-kompatibilis virtuális gépek esetében a metaadat-szolgáltatás statikus nem irányítható IP-címről érhető el, `169.254.169.254`. A Scheduled Events legújabb verziójának teljes végpontja a következő: 
 
- > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-11-01`
+ > `http://169.254.169.254/metadata/scheduledevents?api-version=2017-08-01`
 
 Ha a virtuális gép nem egy Virtual Networkon belül jön létre, a Cloud Services és a klasszikus virtuális gépek esetében az alapértelmezett esetekben további logikára van szükség ahhoz, hogy felderítse a használni kívánt IP-címet. Tekintse át ezt a mintát, hogy megtudja, hogyan [derítheti fel a gazdagép végpontját](https://github.com/azure-samples/virtual-machines-python-scheduled-events-discover-endpoint-for-non-vnet-vm).
 

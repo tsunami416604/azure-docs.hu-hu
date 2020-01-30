@@ -5,12 +5,12 @@ author: uhabiba04
 ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
-ms.openlocfilehash: b4f0a082ba68ce9de417d196c1f6ea593c5c8feb
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: b067b18985905b226287f9dd10ad4b937fab6df1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75473499"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767971"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
 
@@ -33,7 +33,7 @@ Az Azure FarmBeats előzetes verziójában a következőket teheti:
 ## <a name="datahub"></a>Datahub
 
 Az Azure FarmBeats Datahub egy API-réteg, amely lehetővé teszi különböző mezőgazdasági adatkészletek összesítését, normalizálása és contextualization a szolgáltatók között. Az Azure FarmBeats a következőket érheti el:
-- **Érzékelői adatok** két érzékelő szolgáltató [Davis-eszközökről](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/)
+- **Érzékelői adatok** két érzékelő szolgáltató [Davis-eszközökről](https://www.davisinstruments.com/product/enviromonitor-gateway/), [Teralytic](https://teralytic.com/), [Pessl Instruments-eszközökről](https://metos.at/)
 - **Műhold-rendszerképek** az Európai Űrügynökség [Sentinel-2 műhold-](https://sentinel.esa.int/web/sentinel/home) missziójáról
 - **Drone-képek** három drone-rendszerképekből [a senseFly](https://www.sensefly.com/) , a [SlantRange](https://slantrange.com/) , a [DJI](https://dji.com/)
 

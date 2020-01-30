@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogy mely Azure szerepköralapú hozzáférés-vezérlési engedélyekre van szükség a Network Watcher képességekkel való együttműködéshez.
 services: network-watcher
 documentationcenter: ''
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: ''
+author: damendo
 ms.service: network-watcher
 ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/10/2018
-ms.author: kumud
-ms.openlocfilehash: 9d56865a558f027a044e990a2da697dc53e7a311
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: f8743f19d6cd262ad140659be55a4fc57e842564
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277704"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840553"
 ---
 # <a name="role-based-access-control-permissions-required-to-use-network-watcher-capabilities"></a>A Network Watcher képességek használatához szükséges szerepköralapú hozzáférés-vezérlési engedélyek
 
@@ -30,75 +27,75 @@ Az Azure szerepköralapú hozzáférés-vezérlés (RBAC) lehetővé teszi, hogy
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/read                              | Network Watcher beszerzése                                          |
-| Microsoft.Network/networkWatchers/write                             | Network Watcher létrehozása vagy frissítése                             |
-| Microsoft.Network/networkWatchers/delete                            | Hálózati figyelő törlése                                       |
+| Microsoft. Network/networkWatchers/READ                              | Network Watcher beszerzése                                          |
+| Microsoft. Network/networkWatchers/Write                             | Network Watcher létrehozása vagy frissítése                             |
+| Microsoft. Network/networkWatchers/delete                            | Hálózati figyelő törlése                                       |
 
 ## <a name="nsg-flow-logs"></a>NSG
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/configureFlowLog/action           | Folyamat naplójának konfigurálása                                           |
-| Microsoft.Network/networkWatchers/queryFlowLogStatus/action         | Folyamat naplójának lekérdezési állapota                                    |
+| Microsoft. Network/networkWatchers/configureFlowLog/Action           | Folyamat naplójának konfigurálása                                           |
+| Microsoft. Network/networkWatchers/queryFlowLogStatus/Action         | Folyamat naplójának lekérdezési állapota                                    |
 
 ## <a name="connection-troubleshoot"></a>Kapcsolatok – problémamegoldás
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectivityCheck/action          | A kapcsolatok hibakeresési tesztelésének kezdeményezése
-| Microsoft.Network/networkWatchers/queryTroubleshootResult/action    | Kapcsolatok hibakeresési tesztelési eredményeinek lekérdezése                |
-| Microsoft.Network/networkWatchers/troubleshoot/action               | Kapcsolatok hibakeresési tesztelésének futtatása                             |
+| Microsoft. Network/networkWatchers/connectivityCheck/Action          | A kapcsolatok hibakeresési tesztelésének kezdeményezése
+| Microsoft. Network/networkWatchers/queryTroubleshootResult/Action    | Kapcsolatok hibakeresési tesztelési eredményeinek lekérdezése                |
+| Microsoft. Network/networkWatchers/hibakeresés/művelet               | Kapcsolatok hibakeresési tesztelésének futtatása                             |
 
 ## <a name="connection-monitor"></a>Csatlakozáskezelő
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/connectionMonitors/start/action   | Csatlakozáskezelő indítása                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/stop/action    | Csatlakozáskezelő leállítása                                      |
-| Microsoft.Network/networkWatchers/connectionMonitors/query/action   | Csatlakozáskezelő lekérdezése                                     |
-| Microsoft.Network/networkWatchers/connectionMonitors/read           | Csatlakozáskezelő beszerzése                                       |
-| Microsoft.Network/networkWatchers/connectionMonitors/write          | Kapcsolatfigyelő létrehozása                                    |
-| Microsoft.Network/networkWatchers/connectionMonitors/delete         | Csatlakozáskezelő törlése                                    |
+| Microsoft. Network/networkWatchers/connectionMonitors/Start/művelet   | Csatlakozáskezelő indítása                                     |
+| Microsoft. Network/networkWatchers/connectionMonitors/leállítás/művelet    | Csatlakozáskezelő leállítása                                      |
+| Microsoft. Network/networkWatchers/connectionMonitors/Query/Action   | Csatlakozáskezelő lekérdezése                                     |
+| Microsoft. Network/networkWatchers/connectionMonitors/READ           | Csatlakozáskezelő beszerzése                                       |
+| Microsoft. Network/networkWatchers/connectionMonitors/Write          | Kapcsolatfigyelő létrehozása                                    |
+| Microsoft. Network/networkWatchers/connectionMonitors/delete         | Csatlakozáskezelő törlése                                    |
 
 ## <a name="packet-capture"></a>Csomagrögzítés
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/packetCaptures/queryStatus/action | A csomagok rögzítési állapotának lekérdezése                           |
-| Microsoft.Network/networkWatchers/packetCaptures/stop/action        | Csomagok rögzítésének leállítása                                          |
-| Microsoft.Network/networkWatchers/packetCaptures/read               | Csomag rögzítésének beolvasása                                           |
+| Microsoft. Network/networkWatchers/packetCaptures/queryStatus/művelet | A csomagok rögzítési állapotának lekérdezése                           |
+| Microsoft. Network/networkWatchers/packetCaptures/leállítás/művelet        | Csomagok rögzítésének leállítása                                          |
+| Microsoft. Network/networkWatchers/packetCaptures/READ               | Csomag rögzítésének beolvasása                                           |
 | Microsoft. Network/networkWatchers/packetCaptures/Write              | Csomag rögzítésének létrehozása                                        |
-| Microsoft.Network/networkWatchers/packetCaptures/delete             | Csomagok rögzítésének törlése                                        |
+| Microsoft. Network/networkWatchers/packetCaptures/delete             | Csomagok rögzítésének törlése                                        |
 
 ## <a name="ip-flow-verify"></a>IP-forgalom ellenőrzése
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/ipFlowVerify/action               | IP-forgalom ellenőrzése                                              |
+| Microsoft. Network/networkWatchers/ipFlowVerify/Action               | IP-forgalom ellenőrzése                                              |
 
 ## <a name="next-hop"></a>Következő ugrás
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/nextHop/action                    | Virtuális gép következő ugrásának beolvasása                                     |
+| Microsoft. Network/networkWatchers/nextHop/Action                    | Virtuális gép következő ugrásának beolvasása                                     |
 
 ## <a name="network-security-group-view"></a>Hálózati biztonsági csoport nézet
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/securityGroupView/action          | Biztonsági csoportok megtekintése                                           |
+| Microsoft. Network/networkWatchers/securityGroupView/Action          | Biztonsági csoportok megtekintése                                           |
 
 ## <a name="topology"></a>Topológia
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/topology/action                   | Topológia beolvasása                                                   |
+| Microsoft. Network/networkWatchers/topológia/művelet                   | Topológia beolvasása                                                   |
 
 ## <a name="reachability-report"></a>Elérhetőségi jelentés
 
 | Műveletek                                                              | Leírás                                                           |
 | ---------                                                           | -------------                                                  |
-| Microsoft.Network/networkWatchers/azureReachabilityReport/action    | Azure-beli elérhetőségi jelentés beszerzése                               |
+| Microsoft. Network/networkWatchers/azureReachabilityReport/Action    | Azure-beli elérhetőségi jelentés beszerzése                               |
 
 
 ## <a name="additional-actions"></a>További műveletek
@@ -109,11 +106,11 @@ Network Watcher képességekhez a következő műveletek is szükségesek:
 | ---------                                                           | -------------                                                  |
 | Microsoft. Authorization/\*/READ                                     | RBAC szerepkör-hozzárendelések és szabályzat-definíciók beolvasásához használatos          |
 | Microsoft. Resources/Subscriptions/resourceGroups/READ               | Egy előfizetésben lévő összes erőforráscsoport enumerálására használatos    |
-| Microsoft.Storage/storageAccounts/Read                              | A megadott Storage-fiók tulajdonságainak beolvasására szolgál   |
-| Microsoft. Storage/storageAccounts/listServiceSas/művelet, </br> Microsoft. Storage/storageAccounts/listAccountSas/művelet, <br> Microsoft.Storage/storageAccounts/listKeys/Action| A [Storage-fiók biztonságos elérését](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) és a Storage-fiókba való írást lehetővé tévő közös hozzáférésű aláírások (SAS) beolvasására szolgál. |
-| Microsoft. számítás/virtualMachines/olvasás, </br> Microsoft.Compute/virtualMachines/Write| A virtuális gépre való bejelentkezéshez használatos, a csomagok rögzítése és feltöltése a Storage-fiókba|
-| Microsoft.Compute/virtualMachines/extensions/Read </br> Microsoft.Compute/virtualMachines/extensions/Write| Annak vizsgálatára használatos, hogy Network Watcher-bővítmény megtalálható-e, és szükség esetén telepítse a telepítést |
-| Microsoft. számítás/virtualMachineScaleSets/olvasás, </br> Microsoft.Compute/virtualMachineScaleSets/Write| A virtuálisgép-méretezési csoportok elérésére használatos, a csomagok rögzítése és a Storage-fiókba való feltöltése|
-| Microsoft. számítási/virtualMachineScaleSets/bővítmények/olvasás, </br> Microsoft.Compute/virtualMachineScaleSets/extensions/Write| Annak vizsgálatára használatos, hogy Network Watcher-bővítmény megtalálható-e, és szükség esetén telepítse a telepítést |
-| Microsoft.Insights/alertRules/*                                     | Metrikai riasztások beállításához használatos                                     |
-| Microsoft.Support/*                                                 | Támogatási jegyek létrehozásához és frissítéséhez használható Network Watcher |
+| Microsoft. Storage/storageAccounts/olvasás                              | A megadott Storage-fiók tulajdonságainak beolvasására szolgál   |
+| Microsoft. Storage/storageAccounts/listServiceSas/művelet, </br> Microsoft. Storage/storageAccounts/listAccountSas/művelet, <br> Microsoft. Storage/storageAccounts/Listkeys műveletének beolvasása/művelet| A [Storage-fiók biztonságos elérését](https://docs.microsoft.com/azure/storage/common/storage-sas-overview) és a Storage-fiókba való írást lehetővé tévő közös hozzáférésű aláírások (SAS) beolvasására szolgál. |
+| Microsoft. számítás/virtualMachines/olvasás, </br> Microsoft. számítás/virtualMachines/írás| A virtuális gépre való bejelentkezéshez használatos, a csomagok rögzítése és feltöltése a Storage-fiókba|
+| Microsoft. számítás/virtualMachines/bővítmények/olvasás </br> Microsoft. számítás/virtualMachines/bővítmények/írás| Annak vizsgálatára használatos, hogy Network Watcher-bővítmény megtalálható-e, és szükség esetén telepítse a telepítést |
+| Microsoft. számítás/virtualMachineScaleSets/olvasás, </br> Microsoft. számítás/virtualMachineScaleSets/írás| A virtuálisgép-méretezési csoportok elérésére használatos, a csomagok rögzítése és a Storage-fiókba való feltöltése|
+| Microsoft. számítási/virtualMachineScaleSets/bővítmények/olvasás, </br> Microsoft. számítás/virtualMachineScaleSets/bővítmények/írás| Annak vizsgálatára használatos, hogy Network Watcher-bővítmény megtalálható-e, és szükség esetén telepítse a telepítést |
+| Microsoft. bepillantások/alertRules/*                                     | Metrikai riasztások beállításához használatos                                     |
+| Microsoft. support/*                                                 | Támogatási jegyek létrehozásához és frissítéséhez használható Network Watcher |

@@ -11,18 +11,18 @@ ms.topic: conceptual
 ms.date: 08/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 345924c10feabe9a7d5f50905689a4a0edb065ce
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 25a8181d404091064c26407c98fe31465cd4f4b3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74948811"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838955"
 ---
 # <a name="pass-an-access-token-through-a-user-flow-to-your-application-in-azure-active-directory-b2c"></a>Hozzáférési token átadása egy felhasználói folyamaton keresztül az alkalmazáshoz Azure Active Directory B2C
 
-Azure Active Directory B2C (Azure AD B2C) [felhasználói folyamata](active-directory-b2c-reference-policies.md) lehetővé teszi az alkalmazás felhasználói számára, hogy regisztráljon vagy jelentkezzen be az identitás-szolgáltatóval. Az utazás megkezdésekor a Azure AD B2C [hozzáférési jogkivonatot](active-directory-b2c-reference-tokens.md) kap az identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A felhasználói folyamat egy jogcímet engedélyez, hogy átadja a jogkivonatot a Azure AD B2Cban regisztrált alkalmazásoknak.
+Azure Active Directory B2C (Azure AD B2C) [felhasználói folyamata](user-flow-overview.md) lehetővé teszi az alkalmazás felhasználói számára, hogy regisztráljon vagy jelentkezzen be az identitás-szolgáltatóval. Az utazás megkezdésekor a Azure AD B2C [hozzáférési jogkivonatot](tokens-overview.md) kap az identitás-szolgáltatótól. Azure AD B2C a token használatával kéri le a felhasználó adatait. A felhasználói folyamat egy jogcímet engedélyez, hogy átadja a jogkivonatot a Azure AD B2Cban regisztrált alkalmazásoknak.
 
-Azure AD B2C jelenleg csak az [OAuth 2,0](active-directory-b2c-reference-oauth-code.md) Identity Providers hozzáférési jogkivonatának továbbítását támogatja, beleértve a [Facebookot](active-directory-b2c-setup-fb-app.md) és a [Google](active-directory-b2c-setup-goog-app.md)-t is. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
+Azure AD B2C jelenleg csak az [OAuth 2,0](authorization-code-flow.md) Identity Providers hozzáférési jogkivonatának továbbítását támogatja, beleértve a [Facebookot](identity-provider-facebook.md) és a [Google](identity-provider-google.md)-t is. Az összes többi Identity Provider esetében a rendszer üresen adja vissza a jogcímet.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -56,4 +56,4 @@ Az alkalmazások Azure AD B2C-ben történő tesztelésekor hasznos lehet, hogy 
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ: [Azure ad B2C tokenek áttekintése](active-directory-b2c-reference-tokens.md).
+További információ: [Azure ad B2C tokenek áttekintése](tokens-overview.md).

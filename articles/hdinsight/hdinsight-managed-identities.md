@@ -8,18 +8,18 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 11/20/2019
-ms.openlocfilehash: e7be8fbf5f6c2c59e93d48729785dd34bae5955e
-ms.sourcegitcommit: b77e97709663c0c9f84d95c1f0578fcfcb3b2a6c
+ms.openlocfilehash: 934c99c25ca37526ac31fd9bbaf58623fdbdf166
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/22/2019
-ms.locfileid: "74327374"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764401"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
 
 A felügyelt identitás a Azure Active Directory (Azure AD) szolgáltatásban regisztrált identitás, amelynek hitelesítő adatait az Azure felügyeli. A felügyelt identitásokkal nem kell regisztrálnia az Azure AD-beli egyszerű szolgáltatásokat, vagy meg kell őriznie a hitelesítő adatokat, például a tanúsítványokat.
 
-A felügyelt identitások használhatók az Azure HDInsight, így a fürtök hozzáférhetnek az Azure AD tartományi szolgáltatásokhoz, hozzáférhetnek Azure Key Vaulthoz, vagy hozzáférhetnek a Azure Data Lake Storage Gen2 található fájlokhoz.
+A felügyelt identitások az Azure HDInsight használhatók az Azure AD tartományi szolgáltatások eléréséhez, illetve a Azure Data Lake Storage Gen2 szükség esetén a fájlok eléréséhez.
 
 A felügyelt identitások két típusa létezik: felhasználó által hozzárendelt és rendszerhez rendelt. Az Azure HDInsight felhasználó által hozzárendelt felügyelt identitásokat használ. A felhasználó által hozzárendelt felügyelt identitás önálló Azure-erőforrásként jön létre, amelyet aztán hozzárendelhet egy vagy több Azure-szolgáltatási példányhoz. Ezzel szemben egy rendszerhez rendelt felügyelt identitás jön létre az Azure AD-ben, majd közvetlenül egy adott Azure-szolgáltatási példányon automatikusan engedélyezve lesz. A rendszer által hozzárendelt felügyelt identitás élettartama ezután a szolgáltatás azon példányának élettartamához kötődik, amelyen engedélyezve van.
 

@@ -11,16 +11,16 @@ ms.topic: article
 ms.date: 07/08/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a49eae95628645f6586a637c103433b122b5d287
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 2bc02433be9ee7955b0e10ac659ee40e315e5a5e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950952"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840162"
 ---
 # <a name="tutorial-add-identity-providers-to-your-applications-in-azure-active-directory-b2c"></a>Oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C
 
-Az alkalmazásaiban engedélyezheti, hogy a felhasználók különböző identitás-szolgáltatókkal jelentkezzenek be. Az *identitás-szolgáltató* identitási adatokat hoz létre, tart karban és felügyel, miközben hitelesítési szolgáltatásokat biztosít az alkalmazásoknak. A Azure Portal használatával adhat hozzá Azure Active Directory B2C (Azure AD B2C) által támogatott identitás-szolgáltatókat a [felhasználói folyamatokhoz](active-directory-b2c-reference-policies.md) .
+Az alkalmazásaiban engedélyezheti, hogy a felhasználók különböző identitás-szolgáltatókkal jelentkezzenek be. Az *identitás-szolgáltató* identitási adatokat hoz létre, tart karban és felügyel, miközben hitelesítési szolgáltatásokat biztosít az alkalmazásoknak. A Azure Portal használatával adhat hozzá Azure Active Directory B2C (Azure AD B2C) által támogatott identitás-szolgáltatókat a [felhasználói folyamatokhoz](user-flow-overview.md) .
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -29,7 +29,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 > * Az identitás-szolgáltatók hozzáadása a bérlőhöz
 > * Az identitás-szolgáltatók hozzáadása a felhasználói folyamathoz
 
-Általában csak egy identitás-szolgáltatót használ az alkalmazásaiban, de lehetősége van további hozzáadására. Ez az oktatóanyag bemutatja, hogyan adhat hozzá Azure AD-identitás-szolgáltatót és egy Facebook-identitást az alkalmazásához. Ha mindkét identitás-szolgáltatót hozzáadja az alkalmazáshoz, nem kötelező megadni. Más identitás-szolgáltatók is hozzáadhatók, például az [Amazon](active-directory-b2c-setup-amzn-app.md), a [GitHub](active-directory-b2c-setup-github-app.md), a [Google](active-directory-b2c-setup-goog-app.md), a [LinkedIn](active-directory-b2c-setup-li-app.md), a [Microsoft](active-directory-b2c-setup-msa-app.md)vagy a [Twitter](active-directory-b2c-setup-twitter-app.md).
+Általában csak egy identitás-szolgáltatót használ az alkalmazásaiban, de lehetősége van további hozzáadására. Ez az oktatóanyag bemutatja, hogyan adhat hozzá Azure AD-identitás-szolgáltatót és egy Facebook-identitást az alkalmazásához. Ha mindkét identitás-szolgáltatót hozzáadja az alkalmazáshoz, nem kötelező megadni. Más identitás-szolgáltatók is hozzáadhatók, például az [Amazon](identity-provider-amazon.md), a [GitHub](identity-provider-github.md), a [Google](identity-provider-google.md), a [LinkedIn](identity-provider-linkedin.md), a [Microsoft](identity-provider-microsoft-account.md)vagy a [Twitter](identity-provider-twitter.md).
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
 

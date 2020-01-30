@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 05/31/2019
 ms.author: robinsh
-ms.openlocfilehash: 073a766662b2ead4b816276fa7fda6dc5e6caca7
-ms.sourcegitcommit: 44c2a964fb8521f9961928f6f7457ae3ed362694
+ms.openlocfilehash: 6c7981d15acf2b2b71dfb4234f85b738efe62ce0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/12/2019
-ms.locfileid: "73954652"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767953"
 ---
 # <a name="visualize-real-time-sensor-data-from-your-azure-iot-hub-in-a-web-application"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT hub-ban egy webalkalmazásban
 
@@ -165,10 +165,10 @@ Ebben a szakaszban egy webalkalmazást hoz létre a App Serviceban, és üzembe 
    az appservice plan create --name <app service plan name> --resource-group <your resource group name> --sku FREE
    ```
 
-2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és telepítését a helyi gépen található git-tárházból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat.
+2. Most hozzon létre egy webalkalmazást a App Service tervben. A `--deployment-local-git` paraméter lehetővé teszi a webalkalmazás kódjának feltöltését és telepítését a helyi gépen található git-tárházból. A webalkalmazás nevének globálisan egyedinek kell lennie, és kis-és nagybetűket, számokat és kötőjeleket tartalmazhat. Ügyeljen arra, hogy a Node. js-futtatókörnyezet 10,6-es vagy újabb verzióját használja a `--runtime` paraméterhez. A `az webapp list-runtimes` parancs használatával lekérheti a támogatott futtatókörnyezetek listáját.
 
    ```azurecli-interactive
-   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --deployment-local-git
+   az webapp create -n <your web app name> -g <your resource group name> -p <your app service plan name> --runtime "node|10.6" --deployment-local-git
    ```
 
 3. Most adja meg az IoT hub kapcsolati karakterláncot és az Event hub fogyasztói csoportot megadó környezeti változók alkalmazás-beállításait. Az egyes beállítások a `-settings` paraméterben vannak elválasztva. Használja a IoT hub szolgáltatási kapcsolatok karakterláncát és az oktatóanyagban korábban létrehozott fogyasztói csoportot. Ne idézze az értékeket.

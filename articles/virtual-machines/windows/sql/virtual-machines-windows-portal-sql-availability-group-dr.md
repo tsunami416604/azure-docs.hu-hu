@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
 ms.date: 05/02/2017
 ms.author: mikeray
-ms.openlocfilehash: 96b7c3cf59f947d1476ad840ae81695356d869b6
-ms.sourcegitcommit: 49cf9786d3134517727ff1e656c4d8531bbbd332
+ms.openlocfilehash: cd27e581aaca241fc15886f9f72546f92391b744
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/13/2019
-ms.locfileid: "74037540"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772685"
 ---
 # <a name="configure-an-availability-group-on-azure-sql-server-virtual-machines-in-different-regions"></a>Rendelkezésre állási csoport konfigurálása az Azure SQL Server-beli virtuális gépeken különböző régiókban
 
@@ -93,9 +93,26 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
 1. [Adja hozzá az új SQL Server a Windows Server feladatátvevő fürthöz](virtual-machines-windows-portal-sql-availability-group-tutorial.md#addNode).
 
-1. Hozzon létre egy IP-cím erőforrást a fürtön.
+1. Adjon hozzá egy IP-cím erőforrást a fürthöz.
 
-   Az IP-cím erőforrást Feladatátvevőfürt-kezelőban is létrehozhatja. Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre, kattintson az **erőforrás hozzáadása**, **További erőforrások**elemre, majd az **IP-cím**elemre.
+   Az IP-cím erőforrást Feladatátvevőfürt-kezelőban is létrehozhatja. Válassza ki a fürt nevét, majd kattintson a jobb gombbal a fürt nevére a fürt **alapvető erőforrásai** területen, és válassza a **Tulajdonságok**elemet: 
+
+   ![Fürt tulajdonságai](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-name-properties.png)
+
+   A **Tulajdonságok** párbeszédpanelen válassza a **Hozzáadás** az **IP-cím**alatt lehetőséget, majd adja hozzá a fürt nevének IP-címét a távoli hálózati régióból. Válassza az **OK** lehetőséget az **IP-cím** párbeszédpanelen, majd kattintson ismét az **OK gombra** a **fürt tulajdonságai** párbeszédpanelen az új IP-cím mentéséhez. 
+
+   ![Fürt IP-címének hozzáadása](./media/virtual-machines-windows-portal-sql-availability-group-dr/add-cluster-ip-address.png)
+
+
+1. Adja hozzá az IP-címet az alapszintű fürt nevéhez.
+
+   Nyissa meg még egyszer a fürt tulajdonságait, és válassza a **függőségek** fület. konfigurálja a következő két IP-cím vagy függőség beállítását: 
+
+   ![Fürt tulajdonságai](./media/virtual-machines-windows-portal-sql-availability-group-dr/cluster-ip-dependencies.png)
+
+1. Adjon hozzá egy IP-cím erőforrást a fürt rendelkezésre állási csoport szerepköréhez. 
+
+   Kattintson a jobb gombbal a rendelkezésre állási csoport szerepkörre a Feladatátvevőfürt-kezelő, majd válassza az **erőforrás hozzáadása**, **További erőforrások**, majd az **IP-cím**lehetőséget.
 
    ![IP-cím létrehozása](./media/virtual-machines-windows-portal-sql-availability-group-dr/20-add-ip-resource.png)
 
@@ -103,16 +120,6 @@ Ha egy távoli adatközpontban szeretne replikát létrehozni, hajtsa végre a k
 
    - Használja a hálózatot a távoli adatközpontból.
    - Rendelje hozzá az IP-címet az új Azure Load Balancerhez. 
-
-1. A SQL Server Konfigurációkezelő új SQL Server [engedélyezze az Always On rendelkezésre állási csoportokat](https://msdn.microsoft.com/library/ff878259.aspx).
-
-1. [Nyissa meg a tűzfal portjait az új SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
-
-   A megnyitásához szükséges portszámok a környezettől függenek. Nyissa meg a tükrözési végpont és az Azure Load Balancer Health mintavétel portjait.
-
-1. [Adjon hozzá egy replikát a rendelkezésre állási csoporthoz az új SQL Serveron](https://msdn.microsoft.com/library/hh213239.aspx).
-
-   Egy távoli Azure-régióban található replika esetében állítsa be az aszinkron replikációhoz manuális feladatátvételsel.  
 
 1. Adja hozzá az IP-cím erőforrást a figyelő ügyfél-hozzáférési pont (hálózatnév) fürtjének függőségéhez.
 
@@ -137,6 +144,17 @@ Futtassa a PowerShell-parancsfájlt az új régióban a terheléselosztó által
 
    Get-ClusterResource $IPResourceName | Set-ClusterParameter -Multiple @{"Address"="$ILBIP";"ProbePort"=$ProbePort;"SubnetMask"="255.255.255.255";"Network"="$ClusterNetworkName";"EnableDhcp"=0}
    ```
+
+1. A SQL Server Konfigurációkezelő új SQL Server [engedélyezze az Always On rendelkezésre állási csoportokat](/sql/database-engine/availability-groups/windows/enable-and-disable-always-on-availability-groups-sql-server).
+
+1. [Nyissa meg a tűzfal portjait az új SQL Server](virtual-machines-windows-portal-sql-availability-group-prereq.md#endpoint-firewall).
+
+   A megnyitásához szükséges portszámok a környezettől függenek. Nyissa meg a tükrözési végpont és az Azure Load Balancer Health mintavétel portjait.
+
+
+1. [Adjon hozzá egy replikát a rendelkezésre állási csoporthoz az új SQL Serveron](/sql/database-engine/availability-groups/windows/use-the-add-replica-to-availability-group-wizard-sql-server-management-studio).
+
+   Egy távoli Azure-régióban található replika esetében állítsa be az aszinkron replikációhoz manuális feladatátvételsel.  
 
 ## <a name="set-connection-for-multiple-subnets"></a>Több alhálózat közötti kapcsolatok beállítása
 
@@ -164,7 +182,7 @@ Ha tesztelni szeretné a figyelőt a távoli régióval, feladatátvételt hajth
 
 A kapcsolat tesztelése után helyezze vissza az elsődleges replikát az elsődleges adatközpontba, és állítsa vissza a rendelkezésre állási módot a normál működési beállításokra. A következő táblázat a jelen dokumentumban ismertetett architektúra normál működési beállításait mutatja be:
 
-| Hely | Kiszolgálópéldány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
+| Földrajzi egység | Kiszolgálópéldány | Szerepkör | Rendelkezésre állási mód | Feladatátvételi mód
 | ----- | ----- | ----- | ----- | -----
 | Elsődleges adatközpont | SQL-1 | Elsődleges | Szinkron | Automatikus
 | Elsődleges adatközpont | SQL-2 | Másodlagos | Szinkron | Automatikus

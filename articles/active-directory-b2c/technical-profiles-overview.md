@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: af08a24ff28d59bf743f92aa69ffa823dcdcc544
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 100f059f7c9f18ab6920f50c850b3b8d5a617908
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951037"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840196"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a Azure Active Directory B2C egyéni szabályzatok technikai profiljairól
 
@@ -38,7 +38,7 @@ A technikai profil a következő típusú forgatókönyveket teszi lehetővé:
 - [Rest-szolgáltató](restful-technical-profile.md) – olyan REST API szolgáltatásokat hív meg, mint például a felhasználói bevitel ellenőrzése, a felhasználói adatok gazdagítása vagy az üzletági alkalmazásokkal való integráció.
 - [Egy saml2](saml-technical-profile.md) – összevonás bármely SAML protokoll identitás-szolgáltatóval.
 - [Önérvényesített](self-asserted-technical-profile.md) – interakció a felhasználóval. Gyűjtsön például a felhasználó hitelesítő adatait a bejelentkezéshez, a regisztrációs oldal megjelenítéséhez vagy a jelszó alaphelyzetbe állításához.
-- [Munkamenet-kezelés](active-directory-b2c-reference-sso-custom.md) – különböző típusú munkamenetek kezelése.
+- [Munkamenet-kezelés](custom-policy-reference-sso.md) – különböző típusú munkamenetek kezelése.
 - **Application bepillantást**
 
 ## <a name="technical-profile-flow"></a>Technikai profil folyamata
@@ -57,7 +57,7 @@ A műszaki profilok minden típusa ugyanazzal a fogalommal rendelkezik. A bemene
 4. **ValidationTechnicalProfiles** – egy [önérvényesített technikai profilhoz](self-asserted-technical-profile.md)meghívhat egy bemeneti [ellenőrzési technikai profilt](validation-technical-profile.md). Az érvényesítési technikai profil ellenőrzi a felhasználó által beolvasott adatokat, és egy hibaüzenetet vagy ok értéket ad vissza kimeneti jogcímek vagy azok nélkül. Például mielőtt a Azure AD B2C új fiókot hoz létre, ellenőrzi, hogy a felhasználó már létezik-e a címtárszolgáltatások szolgáltatásban. A saját üzleti logikájának hozzáadásához meghívhat egy REST API technikai profilt is.<p>Az érvényesítési technikai profil kimeneti jogcímeinek hatóköre a technikai profilra korlátozódik, amely meghívja az érvényesítési műszaki profilt és más ellenőrzési technikai profilokat ugyanazon a technikai profilban. Ha a következő előkészítési lépésben a kimeneti jogcímeket szeretné használni, hozzá kell adnia a kimeneti jogcímeket a technikai profilhoz, amely meghívja az érvényesítési technikai profilt.
 5. **OutputClaims** – a rendszer visszaküldi a jogcímeket a jogcímek táskába. Ezeket a jogcímeket a következő előkészítési lépésekben vagy a kimeneti jogcímek átalakításában használhatja.
 6. **OutputClaimsTransformations** – a kibocsátási [jogcímek átalakításának](claimstransformations.md) bemeneti jogcímeit a rendszer a jogcím-csomagból használja fel. Az előző lépések technikai profiljának kimeneti jogcímei a kimeneti jogcímek átalakításának bemeneti jogcímei. A végrehajtás után a kimeneti jogcímek vissza lesznek helyezve a jogcím-táskába. A kimeneti jogcímek átalakításának kimeneti jogcímei a következő kimeneti jogcímek átalakításának bemeneti jogcímei is lehetnek.
-7. Egyszeri **bejelentkezéses (SSO) munkamenet-felügyeleti** - [egyszeri](active-directory-b2c-reference-sso-custom.md) bejelentkezéses munkamenet-kezelési vezérlők a felhasználóval való kommunikációt követően a felhasználó által már hitelesített hitelesítéssel. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait.
+7. Egyszeri **bejelentkezéses (SSO) munkamenet-felügyeleti** - [egyszeri](custom-policy-reference-sso.md) bejelentkezéses munkamenet-kezelési vezérlők a felhasználóval való kommunikációt követően a felhasználó által már hitelesített hitelesítéssel. A rendszergazda például megadhatja, hogy megjelenjenek-e az identitás-szolgáltatók, vagy hogy meg kell-e adni a helyi fiók adatait.
 
 A technikai profil örökölheti egy másik technikai profilt a beállítások módosításához vagy új funkciók hozzáadásához.  A **IncludeTechnicalProfile** elem arra az alapszintű műszaki profilra hivatkozik, amelyből a technikai profil származik.
 

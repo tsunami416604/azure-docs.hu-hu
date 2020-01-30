@@ -8,17 +8,17 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.author: chalton
-ms.openlocfilehash: a79b0476fccbd2e2b9d3cf47ecfdc99c17c2862d
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 0f67caad03c4ebd1cf8f3721f377d8362219016a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113340"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837731"
 ---
 # <a name="document-extraction-cognitive-skill"></a>Dokumentum-extrakciós kognitív képesség
 
 > [!IMPORTANT] 
-> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). A [REST API 2019-05-06-es verziójának előzetes verziója](search-api-preview.md) előzetes funkciókat biztosít. Jelenleg nincs portál vagy .NET SDK-támogatás.
+> Ez a képesség jelenleg nyilvános előzetes verzióban érhető el. Az előzetes verziójú funkciók szolgáltatói szerződés nélkül érhetők el, és éles számítási feladatokhoz nem ajánlott. További információ: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). Jelenleg nincs portál vagy .NET SDK-támogatás.
 
 A **dokumentum-kivonási** képesség Kinyeri a tartalmat egy fájlból a dúsítási folyamaton belül. Ez lehetővé teszi, hogy kihasználja az olyan dokumentum-kivonási lépést, amely általában a készségkészlet végrehajtása előtt történik, amelyet más szakismeretek is létrehozhatnak.
 
@@ -41,7 +41,7 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Konfigurációs paraméter   | Megengedett értékek | Leírás |
 |-------------------------|----------------|-------------|
-| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Állítsa `none` értékre, hogy figyelmen kívül hagyja az adatkészletben lévő beágyazott képeket vagy képfájlokat. Ez az alapértelmezett érték. <br/>Ha a [képelemzést kognitív képességekkel szeretné használni](cognitive-search-concept-image-scenarios.md), állítsa be `generateNormalizedImages`, hogy a készség a dokumentum repedésének részeként normalizált lemezképek tömbjét hozza létre. Ehhez a művelethez a `parsingMode` `default`re van beállítva, és a `dataToExtract` `contentAndMetadata`értékre van állítva. A normalizált kép olyan további feldolgozásra utal, amely egységes képkimenetet, méretet és elforgatást eredményez, ha a vizuális keresési eredményekben képeket tartalmaz (például egy gráf vezérlőelemben látható azonos méretű fényképeket a [jfkban). bemutató](https://github.com/Microsoft/AzureSearch_JFK_Files)). Ez az információ minden rendszerképhez létrejön, ha ezt a beállítást használja.  <br/>Ha úgy állítja be a `generateNormalizedImagePerPage`, hogy a PDF-fájlokat a rendszer a beágyazott képek kibontása helyett eltérően kezeli, az egyes lapok képként jelennek meg, és ennek megfelelően normalizálva lesznek.  A nem PDF típusú fájltípusok ugyanúgy lesznek kezelve, mint a `generateNormalizedImages` beállításakor.
+| `imageAction`           | `none`<br/> `generateNormalizedImages`<br/> `generateNormalizedImagePerPage` | Állítsa `none` értékre, hogy figyelmen kívül hagyja az adatkészletben lévő beágyazott képeket vagy képfájlokat. Ez az alapértelmezett érték. <br/>Ha a [képelemzést kognitív képességekkel szeretné használni](cognitive-search-concept-image-scenarios.md), állítsa be `generateNormalizedImages`, hogy a készség a dokumentum repedésének részeként normalizált lemezképek tömbjét hozza létre. Ehhez a művelethez a `parsingMode` `default`re van beállítva, és a `dataToExtract` `contentAndMetadata`értékre van állítva. A normalizált kép olyan további feldolgozásra utal, amely egységes képkimenetet, méretet és elforgatást eredményez, így a konzisztens renderelés elősegítése, ha képeket tartalmaz a vizuális keresési eredményekben (például egy gráf vezérlőelemben a [JFK bemutatóban](https://github.com/Microsoft/AzureSearch_JFK_Files)látható azonos méretű fényképeket). Ez az információ minden rendszerképhez létrejön, ha ezt a beállítást használja.  <br/>Ha úgy állítja be a `generateNormalizedImagePerPage`, hogy a PDF-fájlokat a rendszer a beágyazott képek kibontása helyett eltérően kezeli, az egyes lapok képként jelennek meg, és ennek megfelelően normalizálva lesznek.  A nem PDF típusú fájltípusok ugyanúgy lesznek kezelve, mint a `generateNormalizedImages` beállításakor.
 | `normalizedImageMaxWidth` | 50-10000 közötti egész szám | A generált normalizált képek maximális szélessége (képpontban). Az alapértelmezett érték a 2000. | 
 | `normalizedImageMaxHeight` | 50-10000 közötti egész szám | A generált normalizált képek maximális magassága (képpontban). Az alapértelmezett érték a 2000. |
 
@@ -145,7 +145,7 @@ A fájl hivatkozási objektuma háromféleképpen hozható létre:
 }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

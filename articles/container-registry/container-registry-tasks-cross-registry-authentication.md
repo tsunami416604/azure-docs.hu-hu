@@ -2,19 +2,19 @@
 title: Több beállításjegyzékbeli hitelesítés az ACR-feladatból
 description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása az Azure-erőforrások felügyelt identitásának használatával való hozzáféréshez egy másik privát Azure Container registryhez
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: 3dc4792f196ab7553f3167983ce34850669fa5bc
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47b2a50784cf56b089fea0981e5a06d581b8ba3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456192"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842493"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
 Egy [ACR-feladatban](container-registry-tasks-overview.md) [engedélyezheti az Azure-erőforrások felügyelt identitását](container-registry-tasks-authentication-managed-identity.md). A feladat használhatja az identitást más Azure-erőforrások elérésére, anélkül, hogy hitelesítő adatokat kellene megadnia vagy kezelnie. 
 
-Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy olyan feladatban, amely a feladat futtatásához használttól eltérő beállításjegyzékből kér le egy rendszerképet.
+Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásokat egy adott feladatban, hogy egy rendszerképet egy olyan beállításjegyzékből lehessen lekérni, amely eltér a feladat futtatásához használttól.
 
 Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
@@ -55,11 +55,11 @@ az acr build --image baseimages/node:9-alpine --registry mybaseregistry --file D
 A példa [többlépéses feladatának](container-registry-tasks-multi-step.md) lépései egy [YAML-fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `helloworldtask.yaml` nevű fájlt a helyi munkakönyvtárban, és illessze be a következő tartalmakat. Frissítse `REGISTRY_NAME` értékét a Build lépésben az alapszintű beállításjegyzék kiszolgálójának nevével.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 steps:
 # Replace mybaseregistry with the name of your registry containing the base image
-  - build: -t {{.Run.Registry}}/hello-world:{{.Run.ID}}  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
-  - push: ["{{.Run.Registry}}/hello-world:{{.Run.ID}}"]
+  - build: -t $Registry/hello-world:$ID  https://github.com/Azure-Samples/acr-build-helloworld-node.git -f Dockerfile-app --build-arg REGISTRY_NAME=mybaseregistry.azurecr.io
+  - push: ["$Registry/hello-world:$ID"]
 ```
 
 A Build lépés az [Azure-Samples/ACR-Build-HelloWorld-Node](https://github.com/Azure-Samples/acr-build-helloworld-node.git) adattár `Dockerfile-app` fájlját használja egy rendszerkép létrehozásához. A `--build-arg` az alaprendszerkép lekérésére hivatkozik az alap beállításjegyzékre. A sikeres létrehozást követően a rendszer leküldi a rendszerképet a feladat futtatásához használt beállításjegyzékbe.
@@ -116,12 +116,15 @@ baseregID=$(az acr show --name mybaseregistry --query id --output tsv)
 Az az [szerepkör-hozzárendelés létrehozási][az-role-assignment-create] parancs használatával rendelje hozzá a `acrpull` szerepkört az alap beállításjegyzékhez. Ez a szerepkör csak a lemezképek beállításjegyzékből való lekéréséhez rendelkezik jogosultságokkal.
 
 ```azurecli
-az role assignment create --assignee $principalID --scope $baseregID --role acrpull
+az role assignment create \
+  --assignee $principalID \
+  --scope $baseregID \
+  --role acrpull
 ```
 
 ## <a name="add-target-registry-credentials-to-task"></a>Cél beállításjegyzékbeli hitelesítő adatok hozzáadása a feladathoz
 
-Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy hozzáadja az identitás hitelesítő adatait a feladathoz, hogy az képes legyen hitelesíteni az alap beállításjegyzékével. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást, adja át `--use-identity` az identitás ügyfél-azonosítójával. Ha engedélyezte a rendszer által hozzárendelt identitást, adja át `--use-identity [system]`.
+Most használja az az [ACR Task hitelesítőadat Add][az-acr-task-credential-add] paranccsal, hogy a feladat az identitás hitelesítő adataival hitelesítse magát az alapszintű beállításjegyzék használatával. Futtassa a parancsot a feladatban engedélyezett felügyelt identitás típusának megfelelően. Ha engedélyezte a felhasználó által hozzárendelt identitást, adja át `--use-identity` az identitás ügyfél-azonosítójával. Ha engedélyezte a rendszer által hozzárendelt identitást, adja át `--use-identity [system]`.
 
 ```azurecli
 # Add credentials for user-assigned identity to the task

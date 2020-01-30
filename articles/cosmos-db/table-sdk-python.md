@@ -1,21 +1,21 @@
 ---
-title: Az Azure Cosmos DB Table API a Pythonhoz
-description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
+title: Azure Cosmos DB Table API a Pythonhoz
+description: Ismerkedjen meg a Azure Cosmos DB Table APIekkel, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és az egyes verziókon végrehajtott módosításokat.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: python
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: a26e69d756c0f5b8bb26d85d2901e686aba50771
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: 420c9e5a1e86f54e52905e7d7d2459fa2f68e405
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480156"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771288"
 ---
-# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Az Azure Cosmos DB Table API SDK Pythonhoz készült: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-table-api-sdk-for-python-release-notes-and-resources"></a>Azure Cosmos DB Table API SDK for Python: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -27,10 +27,10 @@ ms.locfileid: "66480156"
 |   |   |
 |---|---|
 |**SDK letöltése**|[PyPI](https://pypi.python.org/pypi/azure-cosmosdb-table/)|
-|**API-dokumentáció**|[Python API dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
-|**SDK telepítési utasításokat**|[Python SDK telepítési utasításokat](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
-|**Aktuális támogatott platform**|[Python 2.7-es](https://www.python.org/downloads/) vagy [Python 3.3-as, 3.4-es, 3.5-ös és 3.6-os](https://www.python.org/downloads/)|
+|**API-dokumentáció**|[Python API-referenciák dokumentációja](https://docs.microsoft.com/python/api/overview/azure/cosmosdb?view=azure-python)|
+|**SDK telepítési utasítások**|[A Python SDK telepítési utasításai](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-cosmosdb-python/tree/master/azure-cosmosdb-table)|
+|**Jelenleg támogatott platform**|[Python 2,7](https://www.python.org/downloads/) vagy [python 3,3, 3,4, 3,5 vagy 3,6](https://www.python.org/downloads/)|
 
 > [!IMPORTANT]
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
@@ -39,27 +39,27 @@ ms.locfileid: "66480156"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Általánosan elérhető kiadások
+* Általánosan elérhető kiadás
 
 ### <a name="a-name03710371"></a><a name="0.37.1"/>0.37.1
-* Kiadás előtti SDK
+* Előzetes kiadású SDK
 
-## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
-A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
 <br/>
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |2017\. november 15. |--- |
-| [0.37.1](#0.37.1) |2017\. október 05 |--- |
+| [1.0.0](#1.0.0) |November 15., 2017 |--- |
+| [0.37.1](#0.37.1) |Október 05.2017 |--- |
 
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
+## <a name="see-also"></a>Lásd még:
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
 

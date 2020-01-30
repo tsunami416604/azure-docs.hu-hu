@@ -11,16 +11,16 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: eba9919b7a1d89e6aea8fb93ef8c4b3e92960368
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 1b0ad7049375cb20d2daa0e6f920b680d03530a5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950867"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840128"
 ---
 # <a name="tutorial-customize-the-interface-of-user-experiences-in-azure-active-directory-b2c"></a>Oktatóanyag: a felhasználói élmények felületének testreszabása Azure Active Directory B2C
 
-A gyakori felhasználói élmények, például a regisztráció, a bejelentkezés és a profil szerkesztése során Azure Active Directory B2C (Azure AD B2C) [felhasználói folyamatokat](active-directory-b2c-reference-policies.md) is használhat. Az oktatóanyagban található információk segítségével megtudhatja, hogyan [szabhatja testre a felhasználói felületét](customize-ui-overview.md) a saját HTML-és CSS-fájljaival.
+A gyakori felhasználói élmények, például a regisztráció, a bejelentkezés és a profil szerkesztése során Azure Active Directory B2C (Azure AD B2C) [felhasználói folyamatokat](user-flow-overview.md) is használhat. Az oktatóanyagban található információk segítségével megtudhatja, hogyan [szabhatja testre a felhasználói felületét](customize-ui-overview.md) a saját HTML-és CSS-fájljaival.
 
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
@@ -71,7 +71,7 @@ Bár a fájlok többféleképpen is tárolhatók, ebben az oktatóanyagban az [A
 
     ![A CORS konfigurációs lapja az Azure Blob Storage-ban Azure Portal](./media/tutorial-customize-ui/enable-cors.png)
 
-5. Kattintson a **Save** (Mentés) gombra.
+5. Kattintson a **Mentés** gombra.
 
 ### <a name="create-the-customization-files"></a>A testreszabási fájlok létrehozása
 
@@ -166,4 +166,4 @@ Ebben a cikkben megtanulta, hogyan végezheti el a következőket:
 > * A testreszabott felhasználói felület tesztelése
 
 > [!div class="nextstepaction"]
-> [Nyelvi Testreszabás a Azure Active Directory B2Cban](active-directory-b2c-reference-language-customization.md)
+> [Nyelvi Testreszabás a Azure Active Directory B2Cban](user-flow-language-customization.md)

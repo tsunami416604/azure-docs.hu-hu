@@ -16,12 +16,12 @@ ms.date: 11/07/2019
 ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 11/07/2019
-ms.openlocfilehash: 0cf593ce4ab9e0ba299d10b34422ee30661f38a9
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 618be4bc2d7669879daa927d5c4392b1097d29af
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74228171"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774887"
 ---
 # <a name="tutorial-push-notifications-to-specific-ios-devices-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott iOS-eszközökre az Azure Notification Hubs használatával
 
@@ -159,7 +159,7 @@ Első lépésként adja hozzá a felhasználói FELÜLETi elemeket a meglévő t
 9. A `AppDelegate.m``didRegisterForRemoteNotificationsWithDeviceToken` metódusában cserélje le a metódus kódját a következő kódra, hogy átadja az eszköz jogkivonatát a `notifications` osztálynak. A `notifications` osztály az értesítések regisztrálását végzi a kategóriákkal. Ha a felhasználó megváltoztatja a kategória beállításait, hívja meg a `subscribeWithCategories` metódust az **előfizetés** gombra válaszul a frissítéshez.
 
     > [!NOTE]
-    > Mivel az Apple Push Notification Service (APNS) által hozzárendelt eszköz-token bármikor lehetséges, az értesítési hibák elkerülése érdekében gyakran regisztrálnia kell az értesítéseket. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
+    > Mivel a Apple Push Notification Service (APNS) által hozzárendelt eszköz-jogkivonat bármikor megváltoztatható, az értesítési hibák elkerülése érdekében gyakran regisztrálnia kell az értesítéseket. Ebben a példában a rendszer az alkalmazás minden egyes indításakor regisztrál az értesítésekre. A gyakran, naponta egynél többször futtatott alkalmazások esetén a sávszélesség megőrzése érdekében akár ki is hagyhatja a regisztrációt, ha kevesebb mint egy nap telt el az előző regisztráció óta.
 
     ```objc
     self.notifications.deviceToken = deviceToken;

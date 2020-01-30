@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Hálózati biztonsági csoport Folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és rugalmas verem használatával.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
-ms.assetid: e9b2dcad-4da4-4d6b-aee2-6d0afade0cb8
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: mareat
-ms.openlocfilehash: 53cbfe08d310f7244134e1ae31b18644a83c63d3
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: e567994038fb4f71ef86dc577760ecf4699a0b1d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277742"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840638"
 ---
 # <a name="visualize-azure-network-watcher-nsg-flow-logs-using-open-source-tools"></a>Azure Network Watcher NSG-naplók megjelenítése nyílt forráskódú eszközök használatával
 
@@ -31,7 +28,7 @@ Ezek a flow-naplók nehéz kézzel elemezni és betekintést nyerni. Azonban tö
 > [!Warning]  
 > Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 Ebben a cikkben egy olyan megoldást hozunk létre, amely lehetővé teszi a hálózati biztonsági csoport folyamatábráinak megjelenítését a rugalmas verem használatával.  A Logstash bemeneti beépülő modulja közvetlenül a flow-naplókat tartalmazó tárolási blobból szerzi be a folyamat naplóit. Ezután a rugalmas verem használatával a rendszer indexeli a folyamat naplóit, és egy Kibana-irányítópult létrehozásához használja az információk megjelenítéséhez.
 

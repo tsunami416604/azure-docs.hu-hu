@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: a67852d333a86c5acf20e8bf69004aa9131e1f9f
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0ee2b33aa3388b3cb99aa42c338ded800c9679a4
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75448076"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772491"
 ---
 # <a name="quickstart-deploy-an-app-in-the-luis-portal"></a>Gyors útmutató: alkalmazás üzembe helyezése a LUIS portálon
 
@@ -74,6 +74,9 @@ Minden alkalommal, amikor új-erőforrást hoz létre a LUIS számára, hozzá k
 1. Hajtsa végre ugyanezen lépéseket a szerzői kulcs alkalmazáshoz való hozzáadásához.
 
 1. Keresse meg az új sort a táblában az új előrejelzési erőforráshoz, és másolja a végpont URL-címét. A rendszer megfelelően van kiépítve, hogy egy előrejelzéshez `HTTP GET` kérelmet hozzon létre a LUIS API-végpontnak.
+
+> [!TIP]
+> Ha a LUIS-alkalmazás fejlesztéséhez aktív tanulást szeretne használni, válassza a **lekérdezési paraméterek módosítása** lehetőséget, majd a **naplók mentése**lehetőséget. Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
 
 ## <a name="train-the-app"></a>Az alkalmazás betanítása
 

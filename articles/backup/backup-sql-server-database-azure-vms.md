@@ -4,12 +4,12 @@ description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági ment�
 ms.reviewer: vijayts
 ms.topic: conceptual
 ms.date: 09/11/2019
-ms.openlocfilehash: fc0c3127594fe3ca90b0a66ce548f471c55f4e5f
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 8125f6d98151f91faaccef512e4bcfd2946fcdd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156471"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773118"
 ---
 # <a name="back-up-sql-server-databases-in-azure-vms"></a>SQL Server-adatbázisok biztonsági mentése Azure-beli virtuális gépeken
 
@@ -24,6 +24,10 @@ Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 > * Tároló létrehozása és konfigurálása.
 > * Adatbázisok felderítése és biztonsági mentések beállítása.
 > * Automatikus védelem beállítása adatbázisok számára.
+
+>[!NOTE]
+>Az Azure-beli virtuális gépeken futó **SQL Server-kiszolgáló és az Azure** -beli virtuális gépekhez készült SAP HANA Soft delete már előzetes verzióban érhető el.<br>
+>Az előzetes verzióra való feliratkozáshoz írjon nekünk a következő címen: AskAzureBackupTeam@microsoft.com
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -87,7 +91,7 @@ Szabály létrehozása a PowerShell használatával:
 
 A csatlakozási lehetőségek a következő előnyökkel és hátrányokkal járnak:
 
-**Beállítás** | **Előnyök** | **Hátrányok**
+**Beállítás** | **Előnyei** | **Hátrányai**
 --- | --- | ---
 IP-címtartományok engedélyezése | Nincs további költség | Összetett a kezeléshez, mert az IP-címtartományok változnak az idő múlásával <br/><br/> Hozzáférést biztosít az egész Azure-hoz, nem csak az Azure Storage-hoz
 NSG szolgáltatásbeli címkék használata | A tartomány módosításainak könnyebb kezelése automatikusan történik <br/><br/> Nincs további költség <br/><br/> | Csak NSG használható <br/><br/> Hozzáférést biztosít a teljes szolgáltatáshoz
@@ -189,7 +193,7 @@ Virtuális gépen futó adatbázisok felderítése:
 
 7. A konfigurációs folyamat nyomon követése a portál **értesítések** területén.
 
-    ![Értesítési terület](./media/backup-azure-sql-database/notifications-area.png)
+    ![Értesítési térség](./media/backup-azure-sql-database/notifications-area.png)
 
 ### <a name="create-a-backup-policy"></a>Biztonsági mentési szabályzat létrehozása
 
@@ -247,7 +251,7 @@ Biztonsági mentési szabályzat létrehozásához:
 
     ![A napló biztonsági mentési szabályzatának szerkesztése](./media/backup-azure-sql-database/log-backup-policy-editor.png)
 
-13. A **biztonsági mentési házirend** menüben válassza ki, hogy engedélyezi-e az **SQL biztonsági mentési tömörítést** , vagy sem. A beállítás alapértelmezés szerint le van tiltva. Ha engedélyezve van, SQL Server egy tömörített biztonsági mentési adatfolyamot küld a VDI-nek.  Vegye figyelembe, hogy Azure Backup felülbírálja a példány szintjének alapértelmezett értékét a TÖMÖRÍTÉSi/NO_COMPRESSION záradékkal a vezérlő értékétől függően.
+13. A **biztonsági mentési házirend** menüben válassza ki, hogy engedélyezi-e az **SQL biztonsági mentési tömörítést** , vagy sem. Ez a beállítás alapértelmezés szerint le van tiltva. Ha engedélyezve van, SQL Server egy tömörített biztonsági mentési adatfolyamot küld a VDI-nek.  Vegye figyelembe, hogy Azure Backup felülbírálja a példány szintjének alapértelmezett értékét a TÖMÖRÍTÉSi/NO_COMPRESSION záradékkal a vezérlő értékétől függően.
 
 14. Miután befejezte a módosításokat a biztonsági mentési szabályzatban, kattintson az **OK gombra**.
 

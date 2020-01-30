@@ -14,18 +14,20 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: c7c54c7c4718cea479a812574e961ef2338a6be6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d66a08d4e84a3771d6c3fa46b96c975869435452
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701756"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833379"
 ---
 # <a name="a-web-api-that-calls-web-apis-call-an-api"></a>Webes API-kat meghívó webes API: az API meghívása
 
-A jogkivonat meghívása után meghívhat egy védett webes API-t. Ezt a ASP.NET vagy a ASP.NET Core webes API-k vezérlőjéből teheti meg.
+A jogkivonat meghívása után meghívhat egy védett webes API-t. Ezt a webes API vezérlője hajtja végre.
 
 ## <a name="controller-code"></a>Vezérlő kódja
+
+# <a name="aspnet-coretabaspnetcore"></a>[ASP.NET Core](#tab/aspnetcore)
 
 A következő kód folytatja a webes API-kat meghívó webes API-kon megjelenő példa kódját [: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Egy *ToDoList*nevű alsóbb RÉTEGbeli API-t hív meg.
 
@@ -56,6 +58,35 @@ HttpResponseMessage response = await _httpClient.GetAsync(TodoListBaseAddress + 
 ...
 }
 ```
+
+# <a name="javatabjava"></a>[Java](#tab/java)
+
+A következő kód folytatja a webes API-kat meghívó webes API-kon megjelenő példa kódját [: az alkalmazás jogkivonatának beszerzése](scenario-web-api-call-api-acquire-token.md). A kódot az API-vezérlők műveleteiben hívják meg. Meghívja az alsóbb rétegbeli API MS Graphot.
+
+Miután megszerezte a tokent, használja tulajdonosi jogkivonatként az alsóbb rétegbeli API meghívásához.
+
+```Java
+private String callMicrosoftGraphMeEndpoint(String accessToken){
+    RestTemplate restTemplate = new RestTemplate();
+
+    HttpHeaders headers = new HttpHeaders();
+    headers.setContentType(MediaType.APPLICATION_JSON);
+
+    headers.set("Authorization", "Bearer " + accessToken);
+
+    HttpEntity<String> entity = new HttpEntity<>(null, headers);
+
+    String result = restTemplate.exchange("https://graph.microsoft.com/v1.0/me", HttpMethod.GET,
+            entity, String.class).getBody();
+
+    return result;
+}
+```
+
+# <a name="pythontabpython"></a>[Python](#tab/python)
+A folyamatot bemutató minta a MSAL Python szolgáltatással még nem érhető el.
+
+---
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -6,16 +6,16 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: thweiss
-ms.openlocfilehash: 3b98975df194af4625087e1beb556efb2a347f43
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 58e8767de786ed2ae92d19c01287aa05c8b63fbb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872060"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767988"
 ---
 # <a name="manage-indexing-policies-in-azure-cosmos-db"></a>Az indexelési szabályzatok kezelése a Azure Cosmos DBban
 
-Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési házirendje minden karakterlánc vagy szám esetében kikényszeríti a tartomány indexeit. Ez a szabályzat felülbírálható a saját egyéni indexelési házirendjével.
+Azure Cosmos DB a rendszer az egyes tárolók számára definiált [indexelési házirendek](index-policy.md) alapján indexeli az adatkészleteket. Az újonnan létrehozott tárolók alapértelmezett indexelési szabályzata minden sztring vagy szám esetében tartományindexeket kényszerít. Ez a szabályzat saját egyéni indexelési szabályzattal felülbírálható.
 
 ## <a name="indexing-policy-examples"></a>Példák indexelési házirendre
 
@@ -332,7 +332,7 @@ Ez a szabályzat kikapcsolja az indexelést. Ha a `indexingMode` `none`re van be
 
 Azure Cosmos DB az indexelési házirend az alábbi módszerek bármelyikével frissíthető:
 
-- A Azure Portal
+- a Azure Portal
 - Az Azure CLI használata
 - a PowerShell használata
 - Az SDK-k egyikének használata
@@ -356,7 +356,7 @@ Az Azure Cosmos-tárolók az indexelési szabályzatot JSON-dokumentumként tár
 
 1. Az indexelési szabályzat JSON-dokumentumának módosítása (lásd az [alábbi](#indexing-policy-examples)példákat)
 
-1. Amikor elkészült, kattintson a **Mentés** elemre.
+1. Ha elkészült, kattintson a **Mentés** gombra.
 
 ![Indexelés kezelése Azure Portal használatával](./media/how-to-manage-indexing-policy/indexing-policy-portal.png)
 
@@ -607,9 +607,9 @@ const containerResponse = await client.database('database').container('container
 const indexTransformationProgress = replaceResponse.headers['x-ms-documentdb-collection-index-transformation-progress'];
 ```
 
-## <a name="use-the-python-sdk"></a>A Python SDK használata
+## <a name="use-the-python-sdk-v3"></a>A Python SDK v3 használata
 
-A [PYTHON SDK](https://pypi.org/project/azure-cosmos/) használatakor (tekintse meg [ezt](create-sql-api-python.md) a rövid útmutatót a használatáról) a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
+A [PYTHON SDK v3](https://pypi.org/project/azure-cosmos/) használatakor [(lásd a](create-sql-api-python.md) használatról szóló rövid útmutatót) a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
 
 A tároló részleteinek beolvasása
 
@@ -669,6 +669,72 @@ A tároló frissítése a módosításokkal
 
 ```python
 response = client.ReplaceContainer(containerPath, container)
+```
+
+## <a name="use-the-python-sdk-v4"></a>A Python SDK v4 használata
+
+A [PYTHON SDK v4](https://pypi.org/project/azure-cosmos/)használatakor a tároló konfigurációja szótárként van kezelve. Ebből a szótárból elérhető az indexelési házirend és annak összes attribútuma.
+
+A tároló részleteinek beolvasása
+
+```python
+database_client = cosmos_client.get_database_client('database')
+container_client = database_client.get_container_client('container')
+container = container_client.read()
+```
+
+Az indexelési mód beállítása konzisztens értékre
+
+```python
+indexingPolicy = {
+    'indexingMode': 'consistent'
+}
+```
+
+Egy befoglalt elérési úttal és egy térbeli indexszel rendelkező indexelési szabályzat definiálása
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "spatialIndexes":[
+        {"path":"/location/*","types":["Point"]}
+    ],
+    "includedPaths":[{"path":"/age/*","indexes":[]}],
+    "excludedPaths":[{"path":"/*"}]
+}
+```
+
+Az indexelési szabályzat definiálása kizárt elérési úttal
+
+```python
+indexingPolicy = {
+    "indexingMode":"consistent",
+    "includedPaths":[{"path":"/*","indexes":[]}],
+    "excludedPaths":[{"path":"/name/*"}]
+}
+```
+
+Összetett index hozzáadása
+
+```python
+indexingPolicy['compositeIndexes'] = [
+    [
+        {
+            "path": "/name",
+            "order": "ascending"
+        },
+        {
+            "path": "/age",
+            "order": "descending"
+        }
+    ]
+]
+```
+
+A tároló frissítése a módosításokkal
+
+```python
+response = database_client.replace_container(container_client, container['partitionKey'], indexingPolicy)
 ```
 
 ## <a name="next-steps"></a>Következő lépések

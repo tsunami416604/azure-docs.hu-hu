@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: a514dbce91a98bd51e51b1724d631bc224b2f33a
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: b76441c8b11032d3713d7679acfc7f350533b76b
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75527926"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769198"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-python"></a>Rövid útmutató: Azure Key Vault a Pythonhoz készült ügyféloldali kódtár
 
@@ -22,7 +22,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
 - Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
 - Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
+- Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
 [API-referenciák dokumentációja](/python/api/overview/azure/key-vault?view=azure-python) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/keyvault) | [csomag (Python-csomag indexe)](https://pypi.org/project/azure-keyvault/)
@@ -123,7 +123,7 @@ A Pythonhoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a
 
 A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 

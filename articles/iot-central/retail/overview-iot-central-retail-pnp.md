@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 ms.subservice: iot-central-retail
 services: iot-central
-ms.openlocfilehash: 8b1861b96f7ed53388d49e226bf3880bfcf657cb
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: bff6731e767fccb0800c30dfe3e75a800f54c59d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75895853"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773049"
 ---
 # <a name="building-retail-solutions-with-azure-iot-central"></a>Kiskereskedelmi megoldások létrehozása az Azure IoT Centrallal
 
@@ -30,7 +30,7 @@ Az alábbi szakaszok ismertetik az alkalmazás-sablonok képességeit:
 
 ## <a name="connected-logistics"></a>Összekapcsolt logisztika
 
-A globális logisztikai költségek várhatóan a 2020-as $10,6-ra vonatkoznak. A kiadások és a hajózási szolgáltatók nagy részének szállítása jelentős versenynyomást és kényszereket biztosít.
+A globális logisztikai költségek várhatóan elérik a $10 600 000 000 000-es kiadást 2020-ben. A kiadások és a hajózási szolgáltatók nagy részének szállítása jelentős versenynyomást és kényszereket biztosít.
 
 A IoT érzékelőkkel olyan környezeti körülményeket gyűjthet és figyelheti, mint például a hőmérséklet, a páratartalom, a dőlés, a sokk, a fény és a szállítás helye. A IoT érzékelőkből és eszközökből gyűjtött telemetria kombinálhatja más adatforrásokkal, például időjárási és forgalmi információkkal a felhőalapú üzleti intelligencia rendszerekben.
 

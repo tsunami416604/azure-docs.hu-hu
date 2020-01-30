@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e06c8d5373f8740e8091daae242a4f7af6c0ea4a
-ms.sourcegitcommit: d614a9fc1cc044ff8ba898297aad638858504efa
+ms.openlocfilehash: 0cde8b48e7bd1d1daa8f14dcded87001fb898fa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74995864"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769218"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-java"></a>Gyors útmutató: Azure Key Vault a Javához készült ügyféloldali kódtár
 
@@ -22,7 +22,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
 - Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
 - Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
+- Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
 [Forráskód](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault) | [API-referenciák dokumentációja](https://azure.github.io/azure-sdk-for-java) | [termék dokumentációja](index.yml) | [minták](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/keyvault/azure-security-keyvault-secrets/src/samples/java/com/azure/security/keyvault/secrets)
@@ -170,7 +170,7 @@ A Java-hoz készült Azure Key Vault ügyféloldali kódtár lehetővé teszi a 
 
 A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 

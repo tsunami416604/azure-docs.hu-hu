@@ -12,14 +12,14 @@ ms.service: batch
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 08/15/2019
+ms.date: 01/28/2020
 ms.author: jushiman
-ms.openlocfilehash: 56fcd5a8a02e292fdf43f9d22f3987813bce0743
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: ce3582539d6130e13ef205806d780164ba70c4fe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76029824"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842537"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
 
@@ -119,7 +119,7 @@ Felügyelet nélküli alkalmazást futtató alkalmazás hitelesítéséhez haszn
 
 Ha az alkalmazás egy egyszerű szolgáltatással végzi a hitelesítést, az az alkalmazás AZONOSÍTÓját és az Azure AD titkos kulcsát is elküldi. Létre kell hoznia és át kell másolnia a kód alapján használni kívánt titkos kulcsot.
 
-Hajtsa végre a következő lépéseket az Azure Portalon:
+Kövesse az alábbi lépéseket a Azure Portalban:
 
 1. A Azure Portal bal oldali navigációs paneljén válassza a **minden szolgáltatás**lehetőséget. Válassza az **alkalmazás-regisztrációk**lehetőséget.
 1. Válassza ki az alkalmazást az alkalmazás-regisztrációk listájából.
@@ -144,6 +144,67 @@ Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállít�
 
 ![RBAC-szerepkör társítása az alkalmazáshoz](./media/batch-aad-auth/app-rbac-role.png)
 
+### <a name="assign-a-custom-role"></a>Egyéni szerepkör hozzárendelése
+
+Az egyéni szerepkörök részletes engedélyeket biztosítanak a felhasználóknak a feladatok, feladatok és egyebek elküldéséhez. Ezzel megakadályozható, hogy a felhasználók a költségeket befolyásoló műveleteket végezzenek, például készletek létrehozását vagy csomópontok módosítását.
+
+Az alábbi RBAC műveletekhez egyéni szerepkört is használhat az Azure AD-felhasználók,-csoportok vagy-szolgáltatások engedélyeinek megadásához:
+
+- Microsoft. batch/batchAccounts/készletek/írás
+- Microsoft. batch/batchAccounts/készletek/törlés
+- Microsoft. batch/batchAccounts/készletek/olvasás
+- Microsoft. batch/batchAccounts/jobSchedules/írás
+- Microsoft. batch/batchAccounts/jobSchedules/delete
+- Microsoft. batch/batchAccounts/jobSchedules/olvasás
+- Microsoft. batch/batchAccounts/feladatok/írás
+- Microsoft. batch/batchAccounts/feladatok/törlés
+- Microsoft. batch/batchAccounts/feladatok/olvasás
+- Microsoft. batch/batchAccounts/tanúsítványok/írás
+- Microsoft. batch/batchAccounts/tanúsítványok/törlés
+- Microsoft. batch/batchAccounts/tanúsítványok/olvasás
+- Microsoft. batch/batchAccounts/Read (bármilyen olvasási művelethez)
+- Microsoft. batch/batchAccounts/Listkeys műveletének beolvasása/művelet (bármilyen művelethez)
+
+Az egyéni szerepkörök az Azure AD által hitelesített felhasználókra vonatkoznak, nem a Batch-fiók hitelesítő adataival (megosztott kulcs). Vegye figyelembe, hogy a Batch-fiók hitelesítő adatai teljes hozzáférést biztosítanak a Batch-fiókhoz. Azt is vegye figyelembe, hogy az autopoolt használó feladatok készlet szintű engedélyeket igényelnek.
+
+Íme egy példa egy egyéni szerepkör-definícióra:
+
+```json
+{
+ "properties":{
+    "roleName":"Azure Batch Custom Job Submitter",
+    "type":"CustomRole",
+    "description":"Allows a user to submit jobs to Azure Batch but not manage pools",
+    "assignableScopes":[
+      "/subscriptions/88888888-8888-8888-8888-888888888888"
+    ],
+    "permissions":[
+      {
+        "actions":[
+          "Microsoft.Batch/*/read",
+          "Microsoft.Authorization/*/read",
+          "Microsoft.Resources/subscriptions/resourceGroups/read",
+          "Microsoft.Support/*",
+          "Microsoft.Insights/alertRules/*"
+        ],
+        "notActions":[
+
+        ],
+        "dataActions":[
+          "Microsoft.Batch/batchAccounts/jobs/*",
+          "Microsoft.Batch/batchAccounts/jobSchedules/*"
+        ],
+        "notDataActions":[
+
+        ]
+      }
+    ]
+  }
+}
+```
+
+Az egyéni szerepkörök létrehozásával kapcsolatos általános információkat az Azure- [erőforrások egyéni szerepköreivel](../role-based-access-control/custom-roles.md)foglalkozó témakörben talál.
+
 ### <a name="get-the-tenant-id-for-your-azure-active-directory"></a>A Azure Active Directory bérlői AZONOSÍTÓjának beolvasása
 
 A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesítési szolgáltatásokat biztosít az alkalmazás számára. A bérlő AZONOSÍTÓjának lekéréséhez kövesse az alábbi lépéseket:
@@ -154,7 +215,7 @@ A bérlő azonosítója azonosítja azt az Azure AD-bérlőt, amely hitelesíté
 
 ![A könyvtár AZONOSÍTÓjának másolása](./media/batch-aad-auth/aad-directory-id.png)
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Az ebben a szakaszban szereplő példák azt mutatják be, hogyan lehet hitelesíteni az Azure AD-t az integrált hitelesítéssel és egy egyszerű szolgáltatásnév használatával. A példák többsége a .NET-et használja, de a fogalmak hasonlóak más nyelvekhez.
 

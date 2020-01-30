@@ -7,12 +7,12 @@ ms.reviewer: tzgitlin
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: a65f0918d04f77bc3076449347bb20046f73e92a
-ms.sourcegitcommit: 5b073caafebaf80dc1774b66483136ac342f7808
+ms.openlocfilehash: e622abd16f900ca811385ddada187f3c96e7d758
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75779951"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773936"
 ---
 # <a name="ingest-data-from-event-hub-into-azure-data-explorer"></a>Adatok beolvasása az Event hub-ből az Azure-ba Adatkezelő
 
@@ -118,6 +118,7 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
     | Eseményközpont | *test-hub* | A létrehozott eseményközpont. |
     | Fogyasztói csoport | *test-group* | A létrehozott eseményközponton definiált fogyasztói csoport. |
     | Eseményvezérelt rendszerek tulajdonságai | Válassza ki a megfelelő tulajdonságokat | Az [Event hub rendszertulajdonságai](/azure/service-bus-messaging/service-bus-amqp-protocol-guide#message-annotations) Ha az eseményen több rekord van, akkor a rendszer tulajdonságai hozzáadódnak az elsőhöz. A Rendszertulajdonságok hozzáadásakor [hozzon létre](/azure/kusto/management/tables#create-table) vagy [frissítsen](/azure/kusto/management/tables#alter-table-and-alter-merge-table) egy tábla sémáját és [hozzárendelését](/azure/kusto/management/mappings) a kiválasztott tulajdonságok belefoglalásához. |
+    | Tömörítés | *NEz egy* | Az Event hub-üzenetek adattartalom tömörítési típusa. Támogatott tömörítési típusok: *nincs, gzip*.|
     | | |
 
     **Céltábla:**
@@ -128,15 +129,15 @@ Most csatlakozzon az eseményközponthoz az Azure Data Explorerből. Ha ez a kap
      **Beállítás** | **Ajánlott érték** | **Mező leírása**
     |---|---|---|
     | Table | *TestTable* | A **TestDatabase** adatbázisban létrehozott tábla. |
-    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE és TXT. Támogatott tömörítési beállítások: GZip |
-    | Oszlopleképezés | *TestMapping* | A **TestDatabase**-ben létrehozott [leképezés](/azure/kusto/management/mappings) , amely leképezi a bejövő JSON-adattípusokat a **TestTable**tartozó oszlopnevek és adattípusok számára. JSON-, többsoros JSON-vagy AVRO szükséges, és más formátumokhoz nem kötelező.|
+    | Adatformátum | *JSON* | A támogatott formátumok a következők: Avro, CSV, JSON, többsoros JSON, PSV, SOHSV, SCSV, TSV, TSVE, TXT, ork és parketta. |
+    | Oszlopleképezés | *TestMapping* | A **TestDatabase**-ben létrehozott [leképezés](/azure/kusto/management/mappings) , amely leképezi a bejövő JSON-adattípusokat a **TestTable**tartozó oszlopnevek és adattípusok számára. JSON-vagy többsoros JSON-hoz szükséges, és nem kötelező más formátumokhoz.|
     | | |
 
     > [!NOTE]
     > * Válassza a **saját adatok: útválasztási információ** lehetőséget a dinamikus útválasztás használatához, ahol az adatok tartalmazzák a szükséges útválasztási információkat a [minta alkalmazás](https://github.com/Azure-Samples/event-hubs-dotnet-ingest) megjegyzésében látható módon. Ha a statikus és a dinamikus tulajdonságok is be vannak állítva, a dinamikus tulajdonságok felülbírálják a statikus fájlokat. 
     > * A rendszer csak az adatkapcsolatok létrehozását követően várólistán lévő eseményeket.
-    > * Engedélyezze a GZip-tömörítést a statikus útválasztáshoz egy [támogatási kérelem megnyitásával a Azure Portalban](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/overview). Engedélyezze a GZip-tömörítést a dinamikus útválasztáshoz a [minta alkalmazásban](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)látható módon. 
-    > * A Avro formátum és az eseményrendszer tulajdonságai nem támogatottak a tömörítési adattartalomban.
+    > * A tömörítési típust a [minta alkalmazásban](https://github.com/Azure-Samples/event-hubs-dotnet-ingest)látható dinamikus tulajdonságok használatával is beállíthatja.
+    > * A Avro, az ork és a parketta formátuma, valamint az eseményvezérelt rendszer tulajdonságai nem támogatottak a GZip tömörítési adattartalomban.
 
 [!INCLUDE [data-explorer-container-system-properties](../../includes/data-explorer-container-system-properties.md)]
 

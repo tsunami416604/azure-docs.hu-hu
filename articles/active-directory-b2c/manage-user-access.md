@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: e0fc09ca77e4fb0c3666478873d5d09a13d23ec8
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 90be5b407708f6cca3748dd6d6fa09c28ab7fcdc
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75367110"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840434"
 ---
 # <a name="manage-user-access-in-azure-active-directory-b2c"></a>Felhasználói hozzáférés kezelése Azure Active Directory B2C
 
@@ -56,7 +56,7 @@ A következő példa egy felhasználói folyamatot mutat be a szülői engedély
 
 5. Ha a kiskorú vagy a felnőtt visszavonja a beleegyezését, az Azure AD Graph API a **consentProvidedForMinor** **megtagadására**is használható. Azt is megteheti, hogy az alkalmazás törli azt a kiskorút, amelynek a beleegyezését visszavonták. Lehetőség van a felhasználói folyamat testreszabására is, hogy a hitelesített kiskorú (vagy a kiskorú fiókját használó szülő) visszavonja a beleegyezést. Azure AD B2C a **consentProvidedForMinor** a **megtagadott**módon rögzíti.
 
-A **legalAgeGroupClassification**, a **ConsentProvidedForMinor**és a **beszerzésimennyiség**szolgáltatással kapcsolatos további információkért lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). További információ az egyéni attribútumokról: [Egyéni attribútumok használata a felhasználók adatainak gyűjtéséhez](active-directory-b2c-reference-custom-attr.md). Ha az Azure AD Graph API használatával kezeli a kiterjesztett attribútumokat, az attribútum hosszú verzióját kell használnia, például *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
+A **legalAgeGroupClassification**, a **ConsentProvidedForMinor**és a **beszerzésimennyiség**szolgáltatással kapcsolatos további információkért lásd: [felhasználói erőforrás típusa](https://developer.microsoft.com/graph/docs/api-reference/beta/resources/user). További információ az egyéni attribútumokról: [Egyéni attribútumok használata a felhasználók adatainak gyűjtéséhez](user-flow-custom-attributes.md). Ha az Azure AD Graph API használatával kezeli a kiterjesztett attribútumokat, az attribútum hosszú verzióját kell használnia, például *extension_18b70cf9bb834edd8f38521c2583cd86_dateOfBirth*: *2011-01-01T00:00:00Z*.
 
 ## <a name="gather-date-of-birth-and-countryregion-data"></a>Születési dátum és ország/régió adatok összegyűjtése
 

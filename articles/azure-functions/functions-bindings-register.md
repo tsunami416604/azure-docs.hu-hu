@@ -5,12 +5,12 @@ author: craigshoemaker
 ms.topic: reference
 ms.date: 07/08/2019
 ms.author: cshoe
-ms.openlocfilehash: 599becae0225bea623c383ead49cd9abcea6fff2
-ms.sourcegitcommit: d6b68b907e5158b451239e4c09bb55eccb5fef89
+ms.openlocfilehash: 35df4c6c20345053bcc39a267a90a7bb1b227241
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/20/2019
-ms.locfileid: "74231111"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766233"
 ---
 # <a name="register-azure-functions-binding-extensions"></a>Azure Functions kötési bővítmények regisztrálása
 
@@ -26,10 +26,10 @@ A következő táblázat azt mutatja be, hogy mikor és hogyan regisztrálja a k
 
 | Fejlesztési környezet |Regisztráció<br/> a functions 1. x  |Regisztráció<br/> a functions 2. x  |
 |-------------------------|------------------------------------|------------------------------------|
-|Azure Portal|Automatikus|Automatikus|
+|Azure portál|Automatikus|Automatikus|
 |Non-.NET-nyelvek vagy helyi Azure Core-eszközök fejlesztése|Automatikus|[Azure Functions Core Tools-és bővítmény-csomagok használata](#extension-bundles)|
 |C#osztály könyvtára a Visual Studióval|[NuGet-eszközök használata](#vs)|[NuGet-eszközök használata](#vs)|
-|C#a Visual Studio Code-ot használó osztály könyvtára|N/A|[A .NET Core parancssori felülete használata](#vs-code)|
+|C#a Visual Studio Code-ot használó osztály könyvtára|–|[A .NET Core parancssori felülete használata](#vs-code)|
 
 ## <a name="extension-bundles"></a>Kiterjesztési csomagok helyi fejlesztéshez
 
@@ -62,9 +62,6 @@ Cserélje le a példában szereplő `<TARGET_VERSION>`t a csomag egy adott verzi
 Ha `Install-Package`t használ a kötésre való hivatkozáshoz, nem kell használni a [bővítmények kötegeit](#extension-bundles). Ez a megközelítés kifejezetten a Visual Studióban létrehozott osztályok könyvtáraira vonatkozik.
 
 ## <a name="vs-code"></a>C# osztály könyvtára a Visual Studio Code-ban
-
-> [!NOTE]
-> Javasoljuk, hogy a [bővítmények](#extension-bundles) használatával a függvények automatikusan telepítsék a kötési bővítmények kompatibilis készletét. 
 
 A **Visual Studio Code**-ban a parancssorban C# telepítsen egy Class Library-projekthez tartozó [](https://docs.microsoft.com/dotnet/core/tools/dotnet-add-package) csomagokat a a .net Core parancssori felülete. Az alábbi példa bemutatja, hogyan adhat hozzá kötéseket:
 

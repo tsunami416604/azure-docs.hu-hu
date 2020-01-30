@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: f81bcd84dfb07958f3205f779937b8beac74166f
-ms.sourcegitcommit: 598c5a280a002036b1a76aa6712f79d30110b98d
+ms.openlocfilehash: 98054060210f55803d6e2811e1f494fd3ff00e48
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/15/2019
-ms.locfileid: "74113853"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76838258"
 ---
 # <a name="how-to-process-and-extract-information-from-images-in-ai-enrichment-scenarios"></a>Információk feldolgozása és kinyerése a képekből mesterséges intelligencia-gazdagító forgatókönyvekben
 
@@ -62,7 +62,7 @@ Ha a *imageAction* egy másik értékre van állítva, akkor az új *normalized_
 
 | Rendszerkép tagja       | Leírás                             |
 |--------------------|-----------------------------------------|
-| data               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
+| adatok               | A normalizált képfájl BASE64 kódolású karakterlánca JPEG formátumban.   |
 | szélessége              | A normalizált képek szélessége képpontban megadva |
 | magasság             | A normalizált képek magassága képpontban megadva |
 | originalWidth      | A rendszerkép eredeti szélessége a normalizálás előtt. |
@@ -213,9 +213,9 @@ Segítőként, ha a normalizált koordinátákat át kell alakítani az eredeti 
         }
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 + [Indexelő létrehozása (REST)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
-+ [Képképesség elemzése](cognitive-search-skill-image-analysis.md)
++ [Rendszerkép-elemzési képesség](cognitive-search-skill-image-analysis.md)
 + [OCR-képesség](cognitive-search-skill-ocr.md)
 + [Szöveg egyesítésének képessége](cognitive-search-skill-textmerger.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

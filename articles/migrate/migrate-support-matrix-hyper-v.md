@@ -3,12 +3,12 @@ title: A Hyper-V értékelésének támogatása a Azure Migrateban
 description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrateokkal.
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 1a036e2f22bb1fd9dac65a3cc643224ecbea3c69
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 9c1228992d71e56b9118e88967478e619c14959a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154805"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834467"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
 
@@ -25,7 +25,7 @@ Ha a helyszíni gépeket az Azure-ba való áttelepítésre szeretné felmérni,
 --- | ---
 **Értékelési korlátok**| Akár 35 000 Hyper-V virtuális gép felderítése és értékelése egyetlen [projektben](migrate-support-matrix.md#azure-migrate-projects).
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A projektek tartalmazhatják a VMware virtuális gépeket, a Hyper-V virtuális gépeket és a fizikai kiszolgálókat, akár az értékelési korlátokig is.
-**Felderítés** | A Azure Migrate készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
+**Felfedezés** | A Azure Migrate készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egyetlen értékeléssel akár 35 000 virtuális gépet is megvizsgálhat.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.
@@ -51,7 +51,7 @@ Ha a helyszíni gépeket az Azure-ba való áttelepítésre szeretné felmérni,
 | **Integrációs szolgáltatások**       | Az operációs rendszer adatainak rögzítéséhez a [Hyper-V integrációs szolgáltatásoknak](https://docs.microsoft.com/virtualization/hyper-v-on-windows/reference/integration-services) olyan virtuális gépeken kell futniuk, amelyeket Ön értékelni fog. |
 
 
-## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate készülékre vonatkozó követelmények
+## <a name="azure-migrate-appliance-requirements"></a>Azure Migrate-berendezés követelményei
 
 A Azure Migrate a [Azure Migrate berendezést](migrate-appliance.md) használja a felderítéshez és értékeléshez. A Hyper-V rendszerű gép egy Hyper-V virtuális gépen fut, és a Azure Portalból letöltött tömörített Hyper-V VHD-vel van üzembe helyezve. 
 
@@ -64,7 +64,7 @@ A következő táblázat összefoglalja az értékeléshez szükséges portokra 
 
 **Eszköz** | **Kapcsolat**
 --- | ---
-**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> Kimenő kapcsolatok a 443, 5671 és 5672 portokon a felderítési és teljesítményi metaadatok küldéséhez Azure Migrate.
+**Berendezés** | Bejövő kapcsolatok a 3389-as TCP-porton, hogy engedélyezze a távoli asztali kapcsolatokat a berendezéssel.<br/> Bejövő kapcsolatok a 44368-as porton a berendezés-kezelő alkalmazás távoli eléréséhez az URL-cím használatával: ``` https://<appliance-ip-or-name>:44368 ```<br/> A 443 (HTTPS), 5671 és 5672 (AMQP) portok kimenő kapcsolatainak felderítési és teljesítménybeli metaadatok küldésére Azure Migrate.
 **Hyper-V-gazdagép/-fürt** | A WinRM-portok 5985 (HTTP) és 5986 (HTTPS) bejövő kapcsolatai a Hyper-V virtuális gépek konfigurációjának és teljesítményének lekéréséhez CIM (CIM) munkamenet használatával.
 
 ## <a name="agent-based-dependency-visualization"></a>Ügynök-alapú függőségi vizualizáció
@@ -77,7 +77,7 @@ A függőségi [vizualizáció](concepts-dependency-visualization.md) segítség
 **Üzembe helyezés** | A függőségi vizualizáció üzembe helyezése előtt rendelkeznie kell egy Azure Migrate-projekttel, és a Azure Migrate: Server Assessment Tool hozzáadva a projekthez. A függőségi vizualizációt egy Azure Migrate berendezés beállítása után telepítheti a helyszíni gépek felderítése érdekében.<br/><br/> A függőségi vizualizáció nem érhető el Azure Governmentban.
 **Szolgáltatástérkép** | Az ügynök-alapú függőségi vizualizáció a [Service Map](https://docs.microsoft.com/azure/operations-management-suite/operations-management-suite-service-map) megoldást használja [Azure monitor naplókban](https://docs.microsoft.com/azure/log-analytics/log-analytics-overview).<br/><br/> Az üzembe helyezéshez új vagy meglévő Log Analytics munkaterületet társít egy Azure Migrate projekthez.
 **Log Analytics-munkaterület** | A munkaterületnek ugyanahhoz az előfizetéshez kell tartoznia, mint a Azure Migrate projektnek.<br/><br/> Azure Migrate az USA keleti régiójában, Délkelet-Ázsiában és Nyugat-Európában található munkaterületeket támogatja.<br/><br/>  A munkaterületnek olyan régióban kell lennie, amelyben a [Service Map támogatott](https://docs.microsoft.com/azure/azure-monitor/insights/vminsights-enable-overview#prerequisites).<br/><br/> Egy Azure Migrate projekt munkaterülete nem módosítható a hozzáadása után.
-**Charges** | Az Service Map-megoldás nem számít fel díjat az első 180 napra (a Log Analytics munkaterülethez a Azure Migrate projekttel társított naptól számítva).<br/><br/> 180 nap után a standard Log Analytics díjak érvényesek lesznek.<br/><br/> A társított Log Analytics-munkaterületen a Service Maptól eltérő bármely megoldás használata esetén a rendszer standard Log Analytics díjat számít fel.<br/><br/> Ha törli a Azure Migrate projektet, a munkaterület nincs törölve. A projekt törlése után Service Map nem ingyenes, és az egyes csomópontok Log Analytics munkaterület fizetős szintjéhez hasonlóan lesznek felszámítva.
+**Díjak** | Az Service Map-megoldás nem számít fel díjat az első 180 napra (a Log Analytics munkaterülethez a Azure Migrate projekttel társított naptól számítva).<br/><br/> 180 nap után a standard Log Analytics díjak érvényesek lesznek.<br/><br/> A társított Log Analytics-munkaterületen a Service Maptól eltérő bármely megoldás használata esetén a rendszer standard Log Analytics díjat számít fel.<br/><br/> Ha törli a Azure Migrate projektet, a munkaterület nincs törölve. A projekt törlése után Service Map nem ingyenes, és az egyes csomópontok Log Analytics munkaterület fizetős szintjéhez hasonlóan lesznek felszámítva.
 **Ügynökök** | Az ügynök-alapú függőségi vizualizációhoz két ügynököt kell telepíteni az elemezni kívánt gépeken.<br/><br/> - [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/log-analytics/log-analytics-agent-windows)<br/><br/> - [függőségi ügynök](https://docs.microsoft.com/azure/azure-monitor/platform/agents-overview#dependency-agent). 
 **Internetkapcsolat** | Ha a gépek nem kapcsolódnak az internethez, akkor telepítenie kell a Log Analytics átjárót.
 

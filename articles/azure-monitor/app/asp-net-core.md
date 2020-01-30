@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/22/2019
-ms.openlocfilehash: 52314f0802acd6a296177d53ee9babb133172761
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 5f54605dd5b43236a75fe73aa3b47a4e619530a1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75407511"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765807"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -416,7 +416,7 @@ A `Microsoft.AspNetCore.All` 2,0 metacsomag tartalmazza a Application Insights S
 
 Igen. Az SDK funkcióinak támogatása minden platformon azonos, a következő kivételekkel:
 
-* A teljesítményszámlálók csak a Windows rendszerben támogatottak.
+* Az SDK az [eseménynaplókat](https://docs.microsoft.com/azure/azure-monitor/app/eventcounters) a Linux rendszeren gyűjti [, mivel a teljesítményszámlálók csak](https://docs.microsoft.com/azure/azure-monitor/app/performance-counters) a Windows rendszerben támogatottak. A legtöbb metrika ugyanaz.
 * Bár a `ServerTelemetryChannel` alapértelmezés szerint engedélyezve van, ha az alkalmazás Linux vagy MacOS rendszeren fut, a csatorna nem hoz létre automatikusan helyi tárolási mappát, hogy a telemetria átmenetileg megmaradjanak, ha hálózati problémák vannak. Ennek a korlátozásnak a miatt a telemetria elvész, ha ideiglenes hálózati vagy kiszolgálói problémák merülnek fel. A probléma megkerüléséhez konfigurálja a csatorna helyi mappáját:
 
 ```csharp

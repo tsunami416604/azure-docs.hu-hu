@@ -3,18 +3,18 @@ title: Egyéni adathalmazok renderelése raszteres térképeken | Microsoft Azur
 description: Ebből a cikkből megtudhatja, hogyan teheti elérhetővé az egyéni adatok egy raszteres térképen a Microsoft Azure Maps statikus rendszerkép-szolgáltatás használatával.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 07/29/2019
+ms.date: 01/23/2020
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: c052ae1f7bab902dcd22b3cc081907468874b35c
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: f036847a9d46231d65d150cd4e0a76471d1ad612
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75911476"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766034"
 ---
 # <a name="render-custom-data-on-a-raster-map"></a>Egyéni adathalmazok renderelése egy raszteres térképen
 
@@ -43,7 +43,7 @@ A pushpins címkékkel és egyéni képpel történő megjelenítéséhez hajtsa
 
 1. Hozzon létre egy gyűjteményt, amelyben tárolni szeretné a kérelmeket. A Poster alkalmazásban válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet. Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot. 
 
-2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a pushpins **nevét** , válassza ki az előző lépésben létrehozott gyűjteményt a kérelem mentéséhez használt helyként, majd kattintson a **Mentés**gombra.
+2. A kérelem létrehozásához válassza az **új** újra lehetőséget. Az **új létrehozása** ablakban válassza a **kérelem**lehetőséget. Adja meg a pushpins tartozó **kérelem nevét** . Válassza ki az előző lépésben létrehozott gyűjteményt a kérelem mentési helyeként, majd kattintson a **Mentés**gombra.
     
     ![Kérelem létrehozása a Poster-ban](./media/how-to-render-custom-data/postman-new.png)
 
@@ -142,13 +142,13 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0
    ```
 
-5. Másolja ki az állapot-URI-t, és fűzze hozzá az előfizetés-kulcs paramétert annak értékéhez, hogy a Azure Maps fiókjának előfizetési kulcsa, amelyet az adatok feltöltéséhez használt. Az állapot URI-formátumának az alábbihoz hasonlóan kell kinéznie:
+5. Másolja az állapot-URI-t, és fűzze hozzá az előfizetés-kulcs paramétert a Azure Maps fiók előfizetési kulcsának értékéhez. Használja ugyanazt a fiók-előfizetési kulcsot, amelyet az adatok feltöltéséhez használt. Az állapot URI-formátumának az alábbihoz hasonlóan kell kinéznie:
 
    ```HTTP
    https://atlas.microsoft.com/mapData/{uploadStatusId}/status?api-version=1.0&subscription-key={Subscription-key}
    ```
 
-6. A udId megnyitásához nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder lapon, és hozzon igénybe egy GET kérelmet az állapot URI-n. Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
+6. A udId lekéréséhez nyisson meg egy új fület a Poster alkalmazásban, majd válassza a HTTP-módszer beolvasása lehetőséget a Builder (szerkesztő) lapon, és hozzon igénybe egy GET kérelmet az állapot URI- Ha az adatok feltöltése sikeres volt, egy udId fog kapni a válasz törzsében. Másolja a udId.
 
    ```JSON
    {
@@ -156,7 +156,7 @@ Az elérési utat és a rögzítési hely adatait az [Adatfeltöltő API](https:
    }
    ```
 
-7. Használja az adatfeltöltő API által fogadott `udId` értéket a leképezés funkcióinak megjelenítéséhez. Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Válassza a HTTP beolvasása metódust a szerkesztő lapon, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
+7. Használja az adatfeltöltő API által fogadott `udId` értéket a leképezés funkcióinak megjelenítéséhez. Ehhez nyisson meg egy új fület az előző szakaszban létrehozott gyűjteményben. Jelölje be a HTTP lekérése metódust a szerkesztő lapon, cserélje le az {előfizetés-Key} és {udId} értéket az értékekkel, és írja be ezt az URL-címet a GET kérelem elvégzéséhez:
 
     ```HTTP
     https://atlas.microsoft.com/map/static/png?subscription-key={subscription-key}&api-version=1.0&layer=basic&style=main&zoom=12&center=-73.96682739257812%2C40.78119135317995&pins=default|la-35+50|ls12|lc003C62|co9B2F15||'Times Square'-73.98516297340393 40.758781646381024|'Central Park'-73.96682739257812 40.78119135317995&path=lc0000FF|fc0000FF|lw3|la0.80|fa0.30||udid-{udId}
@@ -192,7 +192,7 @@ A sokszög megjelenését a [path paraméterrel](https://docs.microsoft.com/rest
 > Az ebben a szakaszban ismertetett eljáráshoz egy Azure Maps fiókra van szükség az S1 díjszabási szinten.
 
 
-A pushpins és azok címkéit nagyobb vagy kisebb méretűre teheti a `sc` méretezési stílusának módosító használatával. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
+A PIN-kódok megjelenését a stílus-módosítók hozzáadásával módosíthatja. Ha például a pushpins és a hozzájuk tartozó címkéket nagyobb vagy kisebb értékre szeretné tenni, használja a `sc` "méretezési stílus" módosítót. Ez a módosító egy nullánál nagyobb értéket vesz fel. Az 1 érték a standard skála. Az 1 értéknél nagyobb értékek esetén a PIN-kód nagyobb lesz, és az 1-nél kisebb értékek kisebbek lesznek. A stílus-módosítókkal kapcsolatos további információkért lásd a [statikus képszolgáltatás elérési útja paramétereit](https://docs.microsoft.com/rest/api/maps/render/getmapimage#uri-parameters).
 
 
 A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse az alábbi lépéseket:
@@ -206,6 +206,18 @@ A kör-és pushpins egyéni címkékkel történő megjelenítéséhez kövesse 
     A válasz képe:
 
     ![Kör megjelenítése egyéni pushpins](./media/how-to-render-custom-data/circle-custom-pins.png)
+
+2. Ha módosítani szeretné a pushpins színét az utolsó lépéssel, módosítsa a "co" stílus-módosítót. Tekintse meg `pins=default|la15+50|al0.66|lc003C62|co002D62|`az aktuális színt a CSS-ben #002D62ként adja meg. Tegyük fel, hogy módosítani szeretné #41d42ara. Írja be az új színértéket a "co" megadása után, a következőhöz hasonló módon: `pins=default|la15+50|al0.66|lc003C62|co41D42A|`. Új GET-kérés készítése:
+
+    ```HTTP
+    https://atlas.microsoft.com/map/static/png?api-version=1.0&style=main&layer=basic&zoom=14&height=700&Width=700&center=-122.13230609893799,47.64599069048016&path=lcFF0000|lw2|la0.60|ra1000||-122.13230609893799 47.64599069048016&pins=default|la15+50|al0.66|lc003C62|co41D42A||'Microsoft Corporate Headquarters'-122.14131832122801  47.64690503939462|'Microsoft Visitor Center'-122.136828 47.642224|'Microsoft Conference Center'-122.12552547454833 47.642940335653996|'Microsoft The Commons'-122.13687658309935  47.64452336193245&subscription-key={subscription-key}
+    ```
+
+    A PIN-kód színeinek módosítása után a válasz képe:
+
+    ![Kör megjelenítése frissített pushpins](./media/how-to-render-custom-data/circle-updated-pins.png)
+
+Hasonlóképpen megváltoztathatja, hozzáadhatja és eltávolíthatja a többi stílus-módosítót is.
 
 ## <a name="next-steps"></a>Következő lépések
 

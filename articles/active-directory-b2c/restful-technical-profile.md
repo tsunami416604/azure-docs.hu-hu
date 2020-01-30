@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 00d5ba6fd86ea722270dfbe73324323bd831a529
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: 8a562345caf47540321528560a5ee0b4854c42a9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263370"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840281"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -221,7 +221,7 @@ Előfordulhat, hogy a REST API hibaüzenetet kell visszaadnia, például "a felh
 | --------- | -------- | ----------- |
 | version | Igen | 1.0.0 |
 | status | Igen | 409 |
-| kód | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
+| Kód | Nem | A REST-végpont szolgáltatójának hibakódja, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
 | Kérelemazonosító | Nem | A REST végpont-szolgáltatótól származó kérelem azonosítója, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
 | userMessage | Igen | Egy hibaüzenet jelenik meg, amely megjelenik a felhasználó számára. |
 | developerMessage | Nem | A probléma részletes leírása és a kijavítása, amely akkor jelenik meg, ha `DebugMode` engedélyezve van. |
@@ -260,7 +260,7 @@ public class ResponseContent
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 
-- [REST API jogcímek cseréjének integrálása a Azure AD B2C felhasználói úton a felhasználói bevitel ellenőrzéseként](active-directory-b2c-custom-rest-api-netfw.md)
-- [A REST-szolgáltatások biztonságossá tétele HTTP alapszintű hitelesítés használatával](active-directory-b2c-custom-rest-api-netfw-secure-basic.md)
-- [A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával](active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
-- [Bemutató: REST API jogcím-cserék integrálása a Azure AD B2C felhasználói úton a felhasználói adatok érvényesítése során](active-directory-b2c-rest-api-validation-custom.md)
+- [REST API jogcímek cseréjének integrálása a Azure AD B2C felhasználói úton a felhasználói bevitel ellenőrzéseként](rest-api-claims-exchange-dotnet.md)
+- [A REST-szolgáltatások biztonságossá tétele HTTP alapszintű hitelesítés használatával](secure-rest-api-dotnet-basic-auth.md)
+- [A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával](secure-rest-api-dotnet-certificate-auth.md)
+- [Bemutató: REST API jogcím-cserék integrálása a Azure AD B2C felhasználói úton a felhasználói adatok érvényesítése során](custom-policy-rest-api-claims-validation.md)

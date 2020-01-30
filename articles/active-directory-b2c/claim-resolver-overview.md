@@ -11,16 +11,16 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 3370ec8de0fb49b92c0fb4dd429439e293ad1d8b
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: bc8dbfd315702f666d6b811e855d6bcd99df938e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949874"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836048"
 ---
 # <a name="about-claim-resolvers-in-azure-active-directory-b2c-custom-policies"></a>Tudnivalók a jogcímek feloldóinak Azure Active Directory B2C egyéni házirendekben
 
-A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzatok](active-directory-b2c-overview-custom.md) által felismert feloldók az engedélyezési kérelemre vonatkozó környezeti információkat biztosítanak, például a szabályzat nevét, a kérelem KORRELÁCIÓs azonosítóját, a felhasználói felület nyelvét és egyebeket.
+A Azure Active Directory B2C (Azure AD B2C) [Egyéni szabályzatok](custom-policy-overview.md) által felismert feloldók az engedélyezési kérelemre vonatkozó környezeti információkat biztosítanak, például a szabályzat nevét, a kérelem KORRELÁCIÓs azonosítóját, a felhasználói felület nyelvét és egyebeket.
 
 Ha a jogcím-feloldót egy bemeneti vagy kimeneti jogcímben szeretné használni, Definiáljon egy karakterlánc- **claimType**a [ClaimsSchema](claimsschema.md) elem alatt, majd állítsa be a **DefaultValue** -feloldót a bemeneti vagy kimeneti jogcím elemben. Azure AD B2C beolvassa a jogcím-feloldó értékét, és a technikai profilban szereplő értéket használja.
 
@@ -49,7 +49,7 @@ A következő fejezetei az elérhető jogcímek feloldóit sorolja fel.
 | Jogcím | Leírás | Példa |
 | ----- | ----------- | --------|
 | {Kulturális környezet: LanguageName} | A nyelv két betűs ISO-kódja. | en |
-| {Kulturális környezet: LCID}   | A nyelvi kód LCID-je. | 1038 |
+| {Kulturális környezet: LCID}   | A nyelvi kód LCID-je. | 1033 |
 | {Kulturális környezet: RegionName} | A régió két betűs ISO-kódja. | Egyesült Államok |
 | {Kulturális környezet: RFC5646} | A RFC5646 nyelvének kódja | en-US |
 
@@ -137,7 +137,7 @@ A jogcímek feloldóinak használatával előre feltöltheti a bejelentkezési n
 
 ### <a name="dynamic-ui-customization"></a>Dinamikus felhasználói felület testreszabása
 
-A Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára, így dinamikusan megjelenítheti az oldal tartalmát. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásából származó egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](active-directory-b2c-ui-customization-custom-dynamic.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
+A Azure AD B2C lehetővé teszi a lekérdezési karakterlánc paramétereinek átadását a HTML-tartalom definíciós végpontjai számára, így dinamikusan megjelenítheti az oldal tartalmát. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon a webes vagy mobil alkalmazásából származó egyéni paraméter alapján. További információ: [a felhasználói felület dinamikus konfigurálása egyéni házirendek használatával Azure Active Directory B2Cban](custom-policy-ui-customization-dynamic.md). A HTML-lapot nyelvi paraméter alapján is honosíthatja, vagy az ügyfél-azonosító alapján módosíthatja a tartalmat.
 
 A következő példa egy **campaignId** nevű paramétert ad át a lekérdezési karakterláncban, amelynek értéke `hawaii`, a `en-US`**nyelvi** kódja és az ügyfél-azonosítót jelképező **alkalmazás** :
 
@@ -159,7 +159,7 @@ Ennek eredményeképpen a Azure AD B2C elküldi a fenti paramétereket a HTML-ta
 
 ### <a name="application-insights-technical-profile"></a>Application Insights műszaki profil
 
-Az Azure Application Insights és a jogcím-feloldók segítségével elemzéseket nyerhet a felhasználói viselkedésről. A Application Insights technikai profilban elküldheti azokat a bemeneti jogcímeket, amelyeket az Azure Application Insights tart fenn. További információ: a [felhasználói viselkedés nyomon követése Azure ad B2C-útvonalakon Application Insights használatával](active-directory-b2c-custom-guide-eventlogger-appins.md). Az alábbi példa a házirend-azonosítót, a korrelációs azonosítót, a nyelvet és az ügyfél-azonosítót küldi az Azure Application Insightsnak.
+Az Azure Application Insights és a jogcím-feloldók segítségével elemzéseket nyerhet a felhasználói viselkedésről. A Application Insights technikai profilban elküldheti azokat a bemeneti jogcímeket, amelyeket az Azure Application Insights tart fenn. További információ: a [felhasználói viselkedés nyomon követése Azure ad B2C-útvonalakon Application Insights használatával](analytics-with-application-insights.md). Az alábbi példa a házirend-azonosítót, a korrelációs azonosítót, a nyelvet és az ügyfél-azonosítót küldi az Azure Application Insightsnak.
 
 ```XML
 <TechnicalProfile Id="AzureInsights-Common">

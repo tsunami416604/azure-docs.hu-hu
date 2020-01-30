@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 07/31/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: f07eb65243b4f797a2955e33aca50ed8c46d256e
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: e6a92d12e7f2f24289aafa7e4a9acc9edccbd34c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74950986"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840400"
 ---
 # <a name="migrate-an-owin-based-web-api-to-b2clogincom"></a>OWIN-alapú webes API migrálása b2clogin.com
 
@@ -33,7 +33,7 @@ A következő részek egy példát mutatnak arra, hogyan engedélyezhető több 
 
 A cikk lépéseinek folytatása előtt a következő Azure AD B2C erőforrásokra van szükség:
 
-* A bérlőben létrehozott [felhasználói folyamatok](tutorial-create-user-flows.md) vagy [Egyéni házirendek](active-directory-b2c-get-started-custom.md)
+* A bérlőben létrehozott [felhasználói folyamatok](tutorial-create-user-flows.md) vagy [Egyéni házirendek](custom-policy-get-started.md)
 
 ## <a name="get-token-issuer-endpoints"></a>Jogkivonat-kiállítói végpontok beolvasása
 
@@ -147,7 +147,7 @@ Ha a végponti karakterláncok a webalkalmazás végrehajtása során jönnek l�
 
 Ez a cikk bemutatja a Microsoft OWIN middleware (Katana) megvalósítására szolgáló webes API konfigurálásának módszerét, hogy több kiállítói végponttól fogadja el a jogkivonatokat. Észreveheti, hogy több más karakterlánc is szerepel a *web. config* fájlban mind a TaskService, mind a TaskWebApp projektek esetében, amelyeket módosítania kell, ha a saját bérlője alapján szeretné felépíteni és futtatni ezeket a projekteket. Szívesen módosítja a projekteket megfelelően, ha szeretné megtekinteni őket működés közben, a teljes körű megvalósítás azonban a jelen cikk hatókörén kívül esik.
 
-További információ a Azure AD B2C által kibocsátott biztonsági jogkivonatok különböző típusairól: a [Azure Active Directory B2C tokenek áttekintése](active-directory-b2c-reference-tokens.md).
+További információ a Azure AD B2C által kibocsátott biztonsági jogkivonatok különböző típusairól: a [Azure Active Directory B2C tokenek áttekintése](tokens-overview.md).
 
 <!-- LINKS - External -->
 [sample-archive]: https://github.com/Azure-Samples/active-directory-b2c-dotnet-webapp-and-webapi/archive/master.zip

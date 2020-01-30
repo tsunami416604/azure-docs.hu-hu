@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/17/2020
-ms.openlocfilehash: ac9ded703ed18abd9543b6e32e59afe6ccf711a9
-ms.sourcegitcommit: 2a2af81e79a47510e7dea2efb9a8efb616da41f0
+ms.openlocfilehash: d605b852d37af3b1e2ef0868084f3c0b99c24784
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76263421"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765725"
 ---
 # <a name="what-is-monitored-by-azure-monitor"></a>Mi figyeli a Azure Monitor?
 Ez a cikk a Azure Monitor által figyelt különböző alkalmazásokat és szolgáltatásokat ismerteti. 
@@ -42,7 +42,7 @@ A megoldások egy adott alkalmazáshoz vagy szolgáltatáshoz testreszabott napl
 |:---|:---|
 | [Ügynök állapota](insights/solution-agenthealth.md) | Log Analytics ügynökök állapotának és konfigurációjának elemzése. |
 | [Riasztáskezelés](platform/alert-management-solution.md) | System Center Operations Manager, Nagios vagy Zabbix által gyűjtött riasztások elemzése. |
-| [Szolgáltatástérkép](insights/service-map.md) | A automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. Ugyanezt a funkciót a   |
+| [Szolgáltatástérkép](insights/service-map.md) | A automatikusan feltérképezi az alkalmazás-összetevőket Windows-és Linux-rendszereken, és leképezi a szolgáltatások közötti kommunikációt. |
 
 
 
@@ -63,7 +63,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Advisor | Nem | Nem | Nem |  |
 |AI Builder | Nem | Nem | Nem |  |
 |Analysis Services | Igen | Igen | Nem |  |
-|API for FHIR | Nem | Nem | Nem |  |
+|FHIR API | Nem | Nem | Nem |  |
 |API Management | Igen | Igen | Nem |  |
 |App Service | Igen | Igen | Nem |  |
 |AppConfig | Nem | Nem | Nem |  |
@@ -78,7 +78,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Blockchain szolgáltatás | Nem | Igen | Nem |  |
 |Tervek | Nem | Nem | Nem |  |
 |Bot Service | Nem | Nem | Nem |  |
-|Felhőszolgáltatások | Igen | Igen | Nem | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök.  |
+|Cloud Services | Igen | Igen | Nem | A vendég operációs rendszer és a munkafolyamatok figyeléséhez szükséges ügynök.  |
 |Cloud Shell | Nem | Nem | Nem |  |
 |Cognitive Services | Igen | Igen | Nem |  |
 |Container Instances | Igen | Nem | Nem |  |
@@ -88,13 +88,13 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Költségkezelés | Nem | Nem | Nem |  |
 |Data Box | Nem | Nem | Nem |  |
 |Data Catalog Gen2 | Nem | Nem | Nem |  |
-|Data Explorer | Igen | Igen | Nem |  |
+|Adatkezelő | Igen | Igen | Nem |  |
 |Data Factory | Igen | Igen | Nem |  |
 |Data Factory v2 | Nem | Igen | Nem |  |
-|Data Share | Nem | Nem | Nem |  |
-|Database for MariaDB | Igen | Igen | Nem |  |
-|Database for MySQL | Igen | Igen | Nem |  |
-|Database for PostgreSQL | Igen | Igen | Nem |  |
+|Adatmegosztás | Nem | Nem | Nem |  |
+|MariaDB-adatbázis | Igen | Igen | Nem |  |
+|MySQL-adatbázis | Igen | Igen | Nem |  |
+|PostgreSQL-adatbázis | Igen | Igen | Nem |  |
 |Database Migration Service | Nem | Nem | Nem |  |
 |Databricks | Nem | Igen | Nem |  |
 |DDoS Protection | Igen | Igen | Nem |  |
@@ -111,8 +111,8 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Front Door | Igen | Igen | Nem |  |
 |Functions | Igen | Igen | Nem |  |
 |HDInsight | Nem | Igen | Nem |  |
-|HPC Cache | Nem | Nem | Nem |  |
-|Adatvédelem | Nem | Igen | Nem |  |
+|HPC-gyorsítótár | Nem | Nem | Nem |  |
+|Information Protection | Nem | Igen | Nem |  |
 |Intune | Nem | Igen | Nem |  |
 |IoT Central | Nem | Nem | Nem |  |
 |IoT Hub | Igen | Igen | Nem |  |
@@ -125,9 +125,9 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Térképek  | Nem | Nem | Nem |  |
 |Médiaszolgáltatások | Igen | Igen | Nem |  |
 |Microsoft Flow | Nem | Nem | Nem |  |
-|Microsoft Felügyelt asztal | Nem | Nem | Nem |  |
+|Microsoft által felügyelt asztal | Nem | Nem | Nem |  |
 |Microsoft PowerApps | Nem | Nem | Nem |  |
-|Microsoft Social Engagement | Nem | Nem | Nem |  |
+|Microsoft közösségi szerepvállalás | Nem | Nem | Nem |  |
 |Microsoft Stream | Igen | Igen | Nem |  |
 |Migrate (Áttelepítés) | Nem | Nem | Nem |  |
 |Multi-Factor Authentication | Nem | Igen | Nem |  |
@@ -156,7 +156,7 @@ A következő táblázat az Azure-szolgáltatásokat és a Azure Monitorbe gyűj
 |Verem | Nem | Nem | Nem |  |
 |Adattárolás | Igen | Nem | [Igen](insights/storage-insights-overview.md) |  |
 |Tárolási gyorsítótár | Nem | Nem | Nem |  |
-|Tárolószinkronizálási szolgáltatások | Nem | Nem | Nem |  |
+|Storage Sync Services | Nem | Nem | Nem |  |
 |Stream Analytics | Igen | Igen | Nem |  |
 |Time Series Insights | Igen | Igen | Nem |  |
 |TINA | Nem | Nem | Nem |  |

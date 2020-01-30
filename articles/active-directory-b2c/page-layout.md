@@ -10,18 +10,18 @@ ms.topic: conceptual
 ms.date: 12/18/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: b8bf44893bf23502aaf8c446d9e6d7c9022bfce3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 452687f3886a85bea796e3899410667ee1d592fa
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75425655"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840315"
 ---
 # <a name="select-a-page-layout-in-azure-active-directory-b2c-using-custom-policies"></a>Lapelrendezés kiválasztása Azure Active Directory B2C egyéni házirendek használatával
 
 [!INCLUDE [active-directory-b2c-public-preview](../../includes/active-directory-b2c-public-preview.md)]
 
-Engedélyezheti a JavaScript ügyféloldali kódot a Azure Active Directory B2C (Azure AD B2C) házirendekben, függetlenül attól, hogy felhasználói folyamatokat vagy egyéni házirendeket használ. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](active-directory-b2c-overview-custom.md), ki kell választania egy lapelrendezést, és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
+Engedélyezheti a JavaScript ügyféloldali kódot a Azure Active Directory B2C (Azure AD B2C) házirendekben, függetlenül attól, hogy felhasználói folyamatokat vagy egyéni házirendeket használ. Az alkalmazásokhoz való JavaScript engedélyezéséhez hozzá kell adnia egy elemet az [Egyéni szabályzathoz](custom-policy-overview.md), ki kell választania egy lapelrendezést, és a [b2clogin.com](b2clogin.md) kell használnia a kérésekben.
 
 Az oldalelrendezés olyan elemek társítása, amelyeket Azure AD B2C biztosít, valamint az Ön által megadott tartalmat.
 
@@ -113,4 +113,4 @@ A lapelrendezés-csomagok rendszeres időközönként frissülnek, hogy tartalma
 
 ## <a name="next-steps"></a>Következő lépések
 
-További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](active-directory-b2c-ui-customization-custom.md).
+További információ arról, hogyan szabhatja testre az alkalmazásai felhasználói felületét az [alkalmazás felhasználói felületének testreszabásával az Azure Active Directory B2C egyéni házirendjének használatával](custom-policy-ui-customization.md).

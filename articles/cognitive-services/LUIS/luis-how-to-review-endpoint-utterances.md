@@ -1,7 +1,7 @@
 ---
 title: Felhasználói hosszúságú kimondott szöveg áttekintése – LUIS
 titleSuffix: Azure Cognitive Services
-description: Tekintse át az aktív tanulás által rögzített hosszúságú kimondott szöveg, hogy kiválassza a szándékot, és jelölje meg az entitásokat a Read-World hosszúságú kimondott szöveg; módosítások elfogadása, betanítás és közzététel.
+description: Tekintse át az aktív tanulás által rögzített hosszúságú kimondott szöveg, hogy kiválassza a szándékot, és jelölje meg az entitásokat a Read-World hosszúságú kimondott szöveg; elfogadhatja a módosításokat, a betanítást és a közzétételt.
 services: cognitive-services
 author: diberry
 manager: nitinme
@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: language-understanding
 ms.topic: conceptual
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: diberry
-ms.openlocfilehash: ed0b9450217b06ff145641d9e268ccee28ee49b2
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 95b7c7446a47fafd26d00b0da4d880786340fcd0
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76710597"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775114"
 ---
 # <a name="how-to-improve-the-luis-app-by-reviewing-endpoint-utterances"></a>A LUIS-alkalmazás fejlesztése a végpontok hosszúságú kimondott szöveg áttekintésével
 
@@ -27,6 +27,22 @@ A megfelelő előrejelzésekhez tartozó végpont hosszúságú kimondott szöve
 ## <a name="enable-active-learning"></a>Aktív tanulás engedélyezése
 
 Az aktív tanulás engedélyezéséhez naplóznia kell a felhasználói lekérdezéseket. Ezt úgy hajthatja végre, hogy meghívja a [végponti lekérdezést](luis-get-started-create-app.md#query-the-v3-api-prediction-endpoint) a `log=true` querystring paraméterrel és értékkel.
+
+A LUIS portál használatával hozza létre a megfelelő végpont-lekérdezést.
+
+1. A [Luis-portálon](https://preview.luis.ai/)válassza ki az alkalmazást az alkalmazások listájából.
+1. Lépjen a **kezelés** szakaszra, majd válassza az **Azure-erőforrások**lehetőséget.
+1. A hozzárendelt előrejelzési erőforráshoz válassza a **lekérdezési paraméterek módosítása**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > ![a LUIS Portal használatával mentheti a naplókat, amelyek az aktív tanuláshoz szükségesek.](./media/luis-tutorial-review-endpoint-utterances/azure-portal-change-query-url-settings.png)
+
+1. A **mentési naplók** váltásához válassza a **kész**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > ![a LUIS Portal használatával mentheti a naplókat, amelyek az aktív tanuláshoz szükségesek.](./media/luis-tutorial-review-endpoint-utterances/luis-portal-manage-azure-resource-save-logs.png)
+
+     Ez a művelet megváltoztatja a példa URL-címét a `log=true` querystring paraméter hozzáadásával. Másolja ki és használja a megváltozott példa lekérdezési URL-címét, amikor előrejelzési lekérdezéseket készít a futásidejű végpontra.
 
 ## <a name="correct-intent-predictions-to-align-utterances"></a>A hosszúságú kimondott szöveg igazításához megfelelő leképezési előrejelzések
 

@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: include
 ms.date: 10/28/2019
 ms.author: erhopf
-ms.openlocfilehash: dfe2d5925e19697a2e3ed4491958da1325df5574
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 72086f1df2b497a722b2752b56a32e6c269fe32d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75466478"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768163"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -185,7 +185,7 @@ namespace helloworld
 
 Most már készen áll az alkalmazás létrehozására és a beszédfelismerési szolgáltatás használatával történő tesztelésére.
 
-1. **Fordítsa le a kódot** a vizuális Stuio menüsávján, majd válassza a **Build** > **Build megoldás**elemet.
+1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet.
 2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
 3. **Szintézis indítása** – a rendszer beszédre konvertálja a szöveget, és a megadott hangadatokba menti.
 

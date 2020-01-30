@@ -8,12 +8,12 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 12/07/2018
 ms.custom: seodec18
-ms.openlocfilehash: cda02408f9e90cb9f19a4f7d806a34e5cff9c33c
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f2876ea32bdcd900a454ae6b7ac58c11b8ec67c3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75426038"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840485"
 ---
 # <a name="test-live-data-locally-using-azure-stream-analytics-tools-for-visual-studio-preview"></a>Élő adatellenőrzés helyi tesztelése a Visual Studio Azure Stream Analytics eszközeivel (előzetes verzió)
 
@@ -38,7 +38,6 @@ A következő helyi tesztelési lehetőségek támogatottak:
 2. Az élő adatok teszteléséhez válassza a **Felhőbeli bevitel használata** lehetőséget a legördülő listából.
 
    ![Azure Stream Analytics Visual Studio Live Cloud Input](./media/stream-analytics-live-data-local-testing/stream-analytics-local-testing-cloud-input.png)
-
 
 3. Állítsa be a **kezdési időpontot** annak meghatározásához, hogy a rendszer mikor kezdi meg a bemeneti adatok feldolgozását. Előfordulhat, hogy a feladatnak idő előtt kell beolvasnia a bemeneti adatokat a pontos eredmények biztosítása érdekében. Az alapértelmezett idő 30 perccel az aktuális idő előtt van beállítva.
 
@@ -65,6 +64,5 @@ A következő helyi tesztelési lehetőségek támogatottak:
 ## <a name="next-steps"></a>Következő lépések
 
 * [Stream Analytics-feladatok létrehozása a Visual studióhoz készült Azure Stream Analytics Tools használatával](stream-analytics-quick-create-vs.md)
-* [A Visual studióhoz készült Azure Stream Analytics-eszközök telepítése](stream-analytics-tools-for-visual-studio-install.md)
 * [A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit](stream-analytics-vs-tools-local-run.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

@@ -8,22 +8,26 @@ ms.custom: mvc, devcenter
 ms.devlang: python
 ms.topic: quickstart
 ms.date: 11/07/2019
-ms.openlocfilehash: f01ac67b25cbcc098973a3beb0a2b7b311827a37
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 3694c0b74393068538a0c8f496444a1541d88fee
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74766395"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769063"
 ---
-# <a name="use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>A Python használata a Azure Database for PostgreSQL-egyetlen kiszolgálón tárolt adatlekérdezéshez
-Ez a rövid útmutató azt ismerteti, hogyan használható Azure Database for PostgreSQL a Python használatával macOS, Ubuntu Linux vagy Windows rendszeren. A rövid útmutató bemutatja, hogyan csatlakozhat az adatbázishoz, és hogyan lehet SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni. A cikk feltételezi, hogy már ismeri a Pythont, de a Azure Database for PostgreSQL használatának új módszere.
+# <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Python használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
+
+Ebben a rövid útmutatóban egy Azure Database for PostgreSQL használhat a Python használatával macOS, Ubuntu Linux vagy Windows rendszeren. A rövid útmutató bemutatja, hogyan csatlakozhat az adatbázishoz, és hogyan lehet SQL-utasításokkal adatokat lekérdezni, beszúrni, frissíteni és törölni. A cikk feltételezi, hogy már ismeri a Pythont, de a Azure Database for PostgreSQL használatának új módszere.
 
 ## <a name="prerequisites"></a>Előfeltételek
-- Egy Azure Database for PostgreSQL-kiszolgáló, amelyet a gyors üzembe helyezési útmutató lépéseit követve hozhat létre [Azure Database for PostgreSQL kiszolgáló létrehozása a Azure Portal](quickstart-create-server-database-portal.md) vagy rövid útmutató [: Azure Database for PostgreSQL létrehozása az Azure CLI használatával](quickstart-create-server-database-azure-cli.md). 
+
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
   
 - [Python](https://www.python.org/downloads/) 2.7.9 + vagy 3.4 +.
   
-- Az `pip install -U pip`használatával telepített [pip](https://pip.pypa.io/en/stable/installing/) Package Installer legújabb frissítése. 
+- Legújabb [pip](https://pip.pypa.io/en/stable/installing/) -csomag telepítője.
 
 ## <a name="install-the-python-libraries-for-postgresql"></a>Python-kódtárak telepítése a PostgreSQL-hez
 A [psycopg2](https://pypi.python.org/pypi/psycopg2/) modul lehetővé teszi a PostgreSQL-adatbázishoz való csatlakozást és azok lekérdezését, és Linux, MacOS vagy Windows [Wheel](https://pythonwheels.com/) csomagként érhető el. Telepítse a modul bináris verzióját, beleértve az összes függőséget. A `psycopg2` telepítésével és követelményeivel kapcsolatos további információkért lásd: [telepítés](http://initd.org/psycopg/docs/install.html). 

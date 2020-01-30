@@ -10,12 +10,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 12/27/2019
-ms.openlocfilehash: 247e41faa39520089dc5c95a34b4fb4b6b618761
-ms.sourcegitcommit: ec2eacbe5d3ac7878515092290722c41143f151d
+ms.openlocfilehash: ee5acc97e4b05a0e93f4ceee8c04b400da211b49
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/31/2019
-ms.locfileid: "75552134"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769496"
 ---
 # <a name="understanding-data-factory-pricing-through-examples"></a>A Data Factory díjszabásának ismertetése példákkal
 
@@ -156,7 +156,7 @@ A forgatókönyv végrehajtásához létre kell hoznia egy folyamatot a követke
 | Adatáramlási feltételezések: végrehajtási idő = 10 perc + 10 perc TTL | 10 \* 16 olyan általános számítási mag, amelynek ÉLETTARTAMa 10 |
 | Figyelő folyamat feltételezése: csak 1 Futtatás történt | 2 figyelési futtatási rekordok újrapróbálva (1 a folyamat futtatásához, 1 a tevékenység futtatásához) |
 
-**Forgatókönyvek teljes díjszabása: $0,3011**
+**Forgatókönyvek teljes díjszabása: $1,4631**
 
 - Data Factory műveletek = **$0,0001**
   - Írás/írás = 10\*00001 = $0,0001 [1 R/W = $0,50/50000 = 0,00001]

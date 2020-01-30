@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
-ms.custom: aaddev, fasttrack-edit
-ms.openlocfilehash: d6df9a35191cf9fe9c2803116d5905a74f21e964
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev, identityplatformtop40, fasttrack-edit
+ms.openlocfilehash: bacac67ddd7f379d679a149fe9574676ae0c7567
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76699478"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834421"
 ---
 # <a name="microsoft-identity-platform-access-tokens"></a>Microsoft Identity platform hozzáférési jogkivonatok
 
@@ -252,12 +252,12 @@ A frissítési tokeneket a rendszer bármikor, különböző okok miatt érvény
 |   | Jelszó alapú cookie | Jelszó alapú jogkivonat | Nem jelszó alapú cookie | Nem jelszó alapú jogkivonat | Bizalmas ügyfél jogkivonata |
 |---|-----------------------|----------------------|---------------------------|--------------------------|---------------------------|
 | A jelszó lejár | Életben marad | Életben marad | Életben marad | Életben marad | Életben marad |
-| Jelszó módosítva felhasználó által | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
-| A felhasználó nem SSPR | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
-| Rendszergazdai jelszó alaphelyzetbe állítása | Revoked | Revoked | Életben marad | Életben marad | Életben marad |
-| A felhasználó visszavonja a frissítési jogkivonatokat a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) használatával | Revoked | Revoked | Revoked | Revoked | Revoked |
-| A rendszergazda visszavonja a bérlő összes frissítési jogkivonatát a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) használatával | Revoked | Revoked |Revoked | Revoked | Revoked |
-| [Egyszeri kijelentkezés](v1-protocols-openid-connect-code.md#single-sign-out) a weben | Revoked | Életben marad | Revoked | Életben marad | Életben marad |
+| Jelszó módosítva felhasználó által | Visszavont | Visszavont | Életben marad | Életben marad | Életben marad |
+| A felhasználó nem SSPR | Visszavont | Visszavont | Életben marad | Életben marad | Életben marad |
+| Rendszergazdai jelszó alaphelyzetbe állítása | Visszavont | Visszavont | Életben marad | Életben marad | Életben marad |
+| A felhasználó visszavonja a frissítési jogkivonatokat a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureadsignedinuserallrefreshtoken) használatával | Visszavont | Visszavont | Visszavont | Visszavont | Visszavont |
+| A rendszergazda visszavonja a bérlő összes frissítési jogkivonatát a [PowerShell](https://docs.microsoft.com/powershell/module/azuread/revoke-azureaduserallrefreshtoken) használatával | Visszavont | Visszavont |Visszavont | Visszavont | Visszavont |
+| [Egyszeri kijelentkezés](v1-protocols-openid-connect-code.md#single-sign-out) a weben | Visszavont | Életben marad | Visszavont | Életben marad | Életben marad |
 
 > [!NOTE]
 > A "nem jelszó alapú" bejelentkezési azonosító olyan eset, amikor a felhasználó nem adott meg jelszót a letöltéshez. Például a Windows Hello, egy FIDO2-kulcs vagy egy PIN-kód használatával.

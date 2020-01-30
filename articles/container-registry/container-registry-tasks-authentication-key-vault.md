@@ -1,14 +1,14 @@
 ---
 title: Külső hitelesítés az ACR-feladatból
-description: Felügyelt identitás engedélyezése Azure Container Registry (ACR) feladatban az Azure-erőforrások számára, így a feladat az Azure Key vaultban tárolt Docker hub hitelesítő adatok olvasását teszi lehetővé.
+description: Konfiguráljon egy Azure Container Registry feladatot (ACR-feladatot) az Azure Key vaultban tárolt Docker hub hitelesítő adatok olvasásához az Azure-erőforrások felügyelt identitásának használatával.
 ms.topic: article
-ms.date: 07/12/2019
-ms.openlocfilehash: a7086050a4aef380f11298c819817692396216b2
-ms.sourcegitcommit: 12d902e78d6617f7e78c062bd9d47564b5ff2208
+ms.date: 01/14/2020
+ms.openlocfilehash: 47d3d643ee1287ef4f444095a2c6cfe6dcab294b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/24/2019
-ms.locfileid: "74456215"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842520"
 ---
 # <a name="external-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Külső hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
 
@@ -20,7 +20,7 @@ Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68 vag
 
 ## <a name="scenario-overview"></a>Forgatókönyv áttekintése
 
-A példa feladattal egy Azure Key vaultban tárolt Docker hub hitelesítő adatok olvashatók be. A hitelesítő adatok olyan Docker hub-fiókhoz tartoznak, amely írási (leküldéses) engedélyekkel rendelkezik a Docker hub privát tárházához. A hitelesítő adatok olvasásához a feladatot felügyelt identitással kell konfigurálni, és hozzá kell rendelnie a megfelelő engedélyeket. Az identitáshoz rendelt feladat létrehoz egy rendszerképet, és bejelentkezik a Docker hub-ba, hogy leküldje a képet a privát tárházba. 
+A példa feladattal egy Azure Key vaultban tárolt Docker hub hitelesítő adatok olvashatók be. A hitelesítő adatok olyan Docker hub-fiókhoz tartoznak, amely írási (leküldéses) engedélyekkel rendelkezik egy privát Docker hub-tárházhoz. A hitelesítő adatok olvasásához a feladatot felügyelt identitással kell konfigurálni, és hozzá kell rendelnie a megfelelő engedélyeket. Az identitáshoz rendelt feladat létrehoz egy rendszerképet, és bejelentkezik a Docker hub-ba, hogy leküldje a képet a privát tárházba. 
 
 Ez a példa egy felhasználó által hozzárendelt vagy rendszer által hozzárendelt felügyelt identitást használó lépéseket mutatja be. Az Ön által választott identitás a szervezet igényeitől függ.
 
@@ -71,7 +71,7 @@ Egy valós forgatókönyvben a titkokat valószínűleg egy külön folyamat fog
 A példához tartozó lépések egy [YAML fájlban](container-registry-tasks-reference-yaml.md)vannak meghatározva. Hozzon létre egy `dockerhubtask.yaml` nevű fájlt egy helyi munkakönyvtárban, és illessze be a következő tartalmakat. Ügyeljen arra, hogy a Key Vault nevét a Key Vault nevű fájlban cserélje le.
 
 ```yml
-version: v1.0.0
+version: v1.1.0
 # Replace mykeyvault with the name of your key vault
 secrets:
   - id: username
@@ -80,12 +80,12 @@ secrets:
     keyvault: https://mykeyvault.vault.azure.net/secrets/Password
 steps:
 # Log in to Docker Hub
-  - cmd: docker login --username '{{.Secrets.username}}' --password '{{.Secrets.password}}'
+  - cmd: bash echo '{{.Secrets.password}}' | docker login --username '{{.Secrets.username}}' --password-stdin 
 # Build image
-  - build: -t {{.Values.PrivateRepo}}:{{.Run.ID}} https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
+  - build: -t {{.Values.PrivateRepo}}:$ID https://github.com/Azure-Samples/acr-tasks.git -f hello-world.dockerfile
 # Push image to private repo in Docker Hub
   - push:
-    - {{.Values.PrivateRepo}}:{{.Run.ID}}
+    - {{.Values.PrivateRepo}}:$ID
 ```
 
 A feladat lépései a következők:
@@ -94,6 +94,7 @@ A feladat lépései a következők:
 * Hitelesítés a Docker hub használatával a titkoknak a `docker login` parancsba való átadásával.
 * Hozzon létre egy rendszerképet az [Azure-Samples/ACR-Tasks](https://github.com/Azure-Samples/acr-tasks.git) tárház Docker használatával.
 * Küldje le a rendszerképet a privát Docker hub adattárba.
+
 
 ## <a name="option-1-create-task-with-user-assigned-identity"></a>1\. lehetőség: feladat létrehozása felhasználó által hozzárendelt identitással
 
@@ -140,7 +141,10 @@ az acr task create \
 A Key vaultra vonatkozó hozzáférési szabályzat beállításához futtassa a következőt az kulcstartó [set-Policy][az-keyvault-set-policy] paranccsal. A következő példa lehetővé teszi, hogy az identitás a Key vaultból olvassa a titkos kulcsokat. 
 
 ```azurecli
-az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --object-id $principalID --secret-permissions get
+az keyvault set-policy --name mykeyvault \
+  --resource-group myResourceGroup \
+  --object-id $principalID \
+  --secret-permissions get
 ```
 
 ## <a name="manually-run-the-task"></a>A feladat manuális futtatása
@@ -148,7 +152,7 @@ az keyvault set-policy --name mykeyvault --resource-group myResourceGroup --obje
 Annak ellenőrzéséhez, hogy a felügyelt identitást engedélyező feladat sikeresen fut-e, manuálisan aktiválja a feladatot az az [ACR Task Run][az-acr-task-run] paranccsal. A `--set` paraméterrel lehet átadni a privát tárház nevét a feladatnak. Ebben a példában a helyőrző adattár neve *hubuser/hubrepo*.
 
 ```azurecli
-az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo 
+az acr task run --name dockerhubtask --registry myregistry --set PrivateRepo=hubuser/hubrepo
 ```
 
 A feladat sikeres futtatásakor a kimenet a Docker hub sikeres hitelesítését jeleníti meg, a rendszerkép pedig sikeresen felépítve és leküldve a privát tárházba:

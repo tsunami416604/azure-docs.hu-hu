@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2019
 ms.author: allensu
-ms.openlocfilehash: c093cea9f8719722cc44c9d6424c06039360e90f
-ms.sourcegitcommit: 2f8ff235b1456ccfd527e07d55149e0c0f0647cc
+ms.openlocfilehash: ffb9480508366b223e49f173df3dc76cb711116d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/07/2020
-ms.locfileid: "75690390"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769168"
 ---
 # <a name="load-balancer-health-probes"></a>A Load Balancer állapotmintái
 
@@ -200,7 +200,7 @@ Load Balancer egy átmenő szolgáltatás (nem szakítja meg a TCP-kapcsolatokat
 
 Az UDP-datagramok kifogástalan háttérbeli végpontokra lesznek továbbítva.
 
-Az UDP nem kapcsolódik az UDP-hez, és nincs nyomon követett folyamat. Ha a háttérbeli végpont állapotának mintavétele sikertelen, a meglévő UDP-folyamatok a háttér-készlet egy másik kifogástalan példányára léphetnek.
+Az UDP nem kapcsolódik az UDP-hez, és nincs nyomon követett folyamat. Ha a háttérbeli végpont állapota nem sikerül, a meglévő UDP-folyamatok egy másik Kifogástalan állapotba kerülnek a háttér-készletben.
 
 Ha a háttér-készlet összes példányának összes mintavétele sikertelen, a meglévő UDP-folyamatok megszűnnek az alapszintű és a standard Load Balancer esetében.
 

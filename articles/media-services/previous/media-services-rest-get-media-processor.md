@@ -1,6 +1,6 @@
 ---
-title: A REST használatával Médiafeldolgozót példány beszerzése |} A Microsoft Docs
-description: Ismerje meg, hogyan hozhat létre kódolása, formátum konvertálása, titkosítása vagy visszafejtése a médiatartalmak az Azure Media Services media processzor összetevő.
+title: Adathordozó-feldolgozó példány beszerzése a REST használatával | Microsoft Docs
+description: Megtudhatja, hogyan hozhat létre a médiafájlok kódolására, konvertálására, titkosítására és visszafejtésére szolgáló adathordozó-feldolgozó összetevőt Azure Media Services számára.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,14 +14,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: d342cff6d322195ee88a74215f814be7d702aa5e
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 3d7b3922c9bb7eb79cd6436ba1b265714678fcc8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761976"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774912"
 ---
-# <a name="how-to-get-a-media-processor-instance"></a>Egy Media processzorpéldány beszerzése
+# <a name="how-to-get-a-media-processor-instance"></a>Adathordozó-feldolgozó példány beszerzése
 > [!div class="op_single_selector"]
 > * [.NET](media-services-get-media-processor.md)
 > * [REST](media-services-rest-get-media-processor.md)
@@ -29,26 +29,26 @@ ms.locfileid: "60761976"
 > 
 
 ## <a name="overview"></a>Áttekintés
-A Médiaelemzés Médiafeldolgozói egy összetevő, amely egy adott videó vagy hang feldolgozási feladat, például a kódolás, formátumátalakítás, titkosításakor vagy visszafejtésekor médiatartalmak kezeli. Minden feladat elküldve a Media Services egy médiaprocesszorral kódolása, titkosítása vagy a video- és audiotartalmak tartalom átalakításához szükséges. 
+A Media processors olyan összetevő, amely egy adott videó-vagy hangfeldolgozási feladatot kezel, például a kódolást, a konvertálást, a titkosítást vagy a médiatartalom visszafejtését. A Media Services elküldött összes feladatnak szüksége van egy adathordozó-processzorra a videó-vagy hangtartalom kódolásához, titkosításához vagy átalakításához. 
 
-## <a name="azure-media-processors"></a>Az Azure médiaelemzés médiafeldolgozói 
+## <a name="azure-media-processors"></a>Azure Media processors 
 
-A következő témakör ismerteti a médiaelemzés médiafeldolgozói listáját tartalmazza:
+A következő témakör az adathordozó-processzorok listáját tartalmazza:
 
-* [Médiafeldolgozók kódolása](scenarios-and-availability.md#encoding-media-processors)
-* [Elemzési médiafeldolgozók](scenarios-and-availability.md#analytics-media-processors)
+* [Kódoló adathordozó-processzorok](scenarios-and-availability.md#encoding-media-processors)
+* [Elemzési adathordozó processzorai](scenarios-and-availability.md#analytics-media-processors)
 
 >[!NOTE]
->A Media Services entitások elérésekor a be kell állítani a HTTP-kérelmekre a meghatározott fejlécmezők és értékek. További információkért lásd: [beállítása a Media Services REST API-k fejlesztését](media-services-rest-how-to-use.md).
+>A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
 
-Az AMS API-t kapcsolódás információkért lásd: [eléréséhez az Azure Media Services API Azure AD-hitelesítés](media-services-use-aad-auth-to-access-ams-api.md). 
+További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
 
-## <a name="get-a-media-processor"></a>Get-médiafeldolgozót.
+## <a name="get-a-media-processor"></a>Adathordozó-feldolgozó letöltése
 
-Az alábbi REST-hívás bemutatja, hogyan egy adathordozó processzorpéldány beszerezni a nevét (ebben az esetben **Media Encoder Standard**). 
+A következő REST-hívás azt mutatja be, hogyan kérhető le a Media Processor-példányok neve (ebben az esetben **Media Encoder standard**). 
 
 Kérés:
 
@@ -59,7 +59,7 @@ Kérés:
     Accept-Charset: UTF-8
     User-Agent: Microsoft ADO.NET Data Services
     Authorization: Bearer <token>
-    x-ms-version: 2.17
+    x-ms-version: 2.19
     Host: media.windows.net
 
 Válasz:
@@ -81,12 +81,12 @@ Válasz:
     }
 
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése
 [!INCLUDE [media-services-user-voice-include](../../../includes/media-services-user-voice-include.md)]
 
-## <a name="next-steps"></a>További lépések
-Most, hogy hogyan tehet szert egy adathordozó processzorpéldány ismeri, nyissa meg a [adategység kódolása](media-services-rest-get-started.md) amely adategység kódolása a Media Encoder Standard használatát bemutató cikket.
+## <a name="next-steps"></a>Következő lépések
+Most, hogy már tudja, hogyan szerezhet be egy Media Processor-példányt, ugorjon az adategységek [kódolása](media-services-rest-get-started.md) című cikkre, amely bemutatja, hogyan használható a Media Encoder standard egy eszköz kódolásához.
 

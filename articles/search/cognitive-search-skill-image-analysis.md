@@ -8,12 +8,12 @@ ms.author: luisca
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 4819f34e16efebcdab734270988382e086c44e36
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: 106f83e4c8fdf33ac8752e5942dbb22a2df78693
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73479713"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840502"
 ---
 # <a name="image-analysis-cognitive-skill"></a>Képelemzés – kognitív képesség
 
@@ -34,15 +34,15 @@ A paraméterek megkülönböztetik a kis-és nagybetűket.
 
 | Paraméter neve     | Leírás |
 |--------------------|-------------|
-| defaultLanguageCode   |  A visszaadni kívánt nyelvet jelző sztring. A szolgáltatás egy megadott nyelven adja vissza az elismerés eredményét. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/><br/>A támogatott nyelvek a következők: <br/>*hu* – angol (alapértelmezett) <br/> *zh* -egyszerűsített kínai|
-|visualFeatures |   Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li> *Kategóriák* – a rendszerképek tartalmának kategorizálása a Cognitive Services [Computer Vision dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)meghatározott besorolásnak megfelelően. </li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li><li>*Leírás* – a rendszerkép tartalmának teljes angol mondattal történő leírása.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li>    *imageType* – észleli, ha a kép ClipArt vagy vonalas rajz.</li><li>  *Color (szín* ) – meghatározza az ékezetes színeket, a domináns színeket, valamint azt, hogy a képek fekete & fehérek-e.</li><li>*felnőtt* – észleli, ha a rendszerkép a természetben található (a meztelenség vagy a szexuális cselekedet ábrázolása). A rendszer a szexuálisan szuggesztív tartalmat is észleli.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket.|
+| defaultLanguageCode   |  A visszaadni kívánt nyelvet jelző sztring. A szolgáltatás egy megadott nyelven adja vissza az elismerés eredményét. Ha a paraméter nincs megadva, az alapértelmezett érték az "en". <br/><br/>A támogatott nyelvek a következők: <br/>*hu* – angol (alapértelmezett) <br/> *es* – spanyol <br/> *ja* – Japán <br/> *PT* – portugál <br/> *zh* -egyszerűsített kínai|
+| visualFeatures |  Karakterláncok tömbje, amely a vizuális szolgáltatások visszatérési típusait jelzi. A vizuális funkciók érvényes típusai a következők:  <ul><li>*felnőtt* – észleli, ha a rendszerkép a természetben (meztelenség vagy szexuális cselekmény ábrázolása), vagy véres (a szélsőséges erőszakot vagy vért ábrázol). A rendszer a szexuálisan szuggesztív tartalmat (más néven zamatos tartalmat) is észleli.</li><li>*márkák* – különböző márkákat észlel egy képen belül, beleértve a hozzávetőleges helyet is. A *Brands* vizualizáció funkció csak angol nyelven érhető el.</li><li> *Kategóriák* – a rendszerképek tartalmának kategorizálása a Cognitive Services [Computer Vision dokumentációjában](https://docs.microsoft.com/azure/cognitive-services/computer-vision/category-taxonomy)meghatározott besorolásnak megfelelően. </li><li> *Color (szín* ) – meghatározza az ékezetes színeket, a domináns színeket, valamint azt, hogy a képek fekete & fehérek-e.</li><li>*Leírás* – a képek tartalmának teljes mondatát írja le a támogatott nyelveken.</li><li>*Faces* – észleli, hogy vannak-e arcok. Ha van, a a koordinátákat, a nemeket és a kort hozza létre.</li><li>  *imageType* – észleli, ha a kép ClipArt vagy vonalas rajz.</li><li>  *objektumok* – a képen belül különböző objektumokat észlel, beleértve a hozzávetőleges helyet is. Az *objektumok* vizualizáció funkció csak angol nyelven érhető el.</li><li> *címkék* – a képet a képtartalommal kapcsolatos szavak részletes listájával címkézheti.</li></ul> A vizualizációs funkciók nevei megkülönböztetik a kis-és nagybetűket.|
 | Részletek   | Karakterláncok tömbje, amely azt jelzi, hogy melyik tartományra vonatkozó adatokat kell visszaadnia. A vizuális funkciók érvényes típusai a következők: <ul><li>*hírességek* – azonosítja a hírességeket, ha a rendszerkép észleli őket.</li><li>*tereptárgyak* – a rendszerképben észlelt tereptárgyak azonosítására szolgál. </li></ul> |
 
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 
 | Bemeneti név      | Leírás                                          |
 |---------------|------------------------------------------------------|
-| image         | Összetett típus. A jelenleg csak az Azure Blob indexelő által előállított "/Document/normalized_images" mezővel működik, ha a ```imageAction``` értéke ```none```tól eltérő értékre van állítva. További információért tekintse meg a [mintát](#sample-output) .|
+| image         | Összetett típus. A jelenleg csak az Azure Blob indexelő által előállított "/Document/normalized_images" mezővel működik, ha a ```imageAction``` a ```none```tól eltérő értékre van állítva. További információért tekintse meg a [mintát](#sample-output) .|
 
 
 
@@ -353,138 +353,163 @@ Az alacsonyabb szintű tulajdonságokhoz (például tereptárgyak vagy híressé
 
 ```json
 {
-    "values": [
-        {
-            "recordId": "1",
-            "data": {
-                "categories": [
-                    {
-                        "name": "abstract_",
-                        "score": 0.00390625
-                    },
-                    {
-                        "name": "people_",
-                        "score": 0.83984375,
-                        "detail": {
-                            "celebrities": [
-                                {
-                                    "name": "Satya Nadella",
-                                    "faceBoundingBox": [
-                                        {
-                                            "x": 273,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 309
-                                        },
-                                        {
-                                            "x": 395,
-                                            "y": 431
-                                        },
-                                        {
-                                            "x": 273,
-                                            "y": 431
-                                        }
-                                    ],
-                                    "confidence": 0.999028444
-                                }
-                            ],
-                            "landmarks": [
-                                {
-                                    "name": "Forbidden City",
-                                    "confidence": 0.9978346
-                                }
-                            ]
-                        }
-                    }
-                ],
-                "adult": {
-                    "isAdultContent": false,
-                    "isRacyContent": false,
-                    "adultScore": 0.0934349000453949,
-                    "racyScore": 0.068613491952419281
-                },
-                "tags": [
-                    {
-                        "name": "person",
-                        "confidence": 0.98979085683822632
-                    },
-                    {
-                        "name": "man",
-                        "confidence": 0.94493889808654785
-                    },
-                    {
-                        "name": "outdoor",
-                        "confidence": 0.938492476940155
-                    },
-                    {
-                        "name": "window",
-                        "confidence": 0.89513939619064331
-                    }
-                ],
-                "description": {
-                    "tags": [
-                        "person",
-                        "man",
-                        "outdoor",
-                        "window",
-                        "glasses"
-                    ],
-                    "captions": [
+  "values": [
+    {
+      "recordId": "1",
+      "data": {
+        "categories": [
+          {
+            "name": "abstract_",
+            "score": 0.00390625
+          },
+          {
+            "name": "people_",
+            "score": 0.83984375,
+            "detail": {
+              "celebrities": [
+                {
+                  "name": "Satya Nadella",
+                  "faceBoundingBox": [
                         {
-                            "text": "Satya Nadella sitting on a bench",
-                            "confidence": 0.48293603002174407
+                            "x": 273,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 309
+                        },
+                        {
+                            "x": 395,
+                            "y": 431
+                        },
+                        {
+                            "x": 273,
+                            "y": 431
                         }
-                    ]
-                },
-                "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
-                "metadata": {
-                    "width": 1500,
-                    "height": 1000,
-                    "format": "Jpeg"
-                },
-                "faces": [
-                    {
-                        "age": 44,
-                        "gender": "Male",
-                        "faceBoundingBox": [
-                            {
-                                "x": 1601,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 395
-                            },
-                            {
-                                "x": 1653,
-                                "y": 447
-                            },
-                            {
-                                "x": 1601,
-                                "y": 447
-                            }
-                        ]
-                    }
-                ],
-                "color": {
-                    "dominantColorForeground": "Brown",
-                    "dominantColorBackground": "Brown",
-                    "dominantColors": [
-                        "Brown",
-                        "Black"
                     ],
-                    "accentColor": "873B59",
-                    "isBwImg": false
-                    },
-                "imageType": {
-                    "clipArtType": 0,
-                    "lineDrawingType": 0
+                  "confidence": 0.999028444
                 }
+              ],
+              "landmarks": [
+                {
+                  "name": "Forbidden City",
+                  "confidence": 0.9978346
+                }
+              ]
             }
-        }
-    ]
+          }
+        ],
+        "adult": {
+          "isAdultContent": false,
+          "isRacyContent": false,
+          "isGoryContent": false,
+          "adultScore": 0.0934349000453949,
+          "racyScore": 0.068613491952419281,
+          "goreScore": 0.08928389008070282
+        },
+        "tags": [
+          {
+            "name": "person",
+            "confidence": 0.98979085683822632
+          },
+          {
+            "name": "man",
+            "confidence": 0.94493889808654785
+          },
+          {
+            "name": "outdoor",
+            "confidence": 0.938492476940155
+          },
+          {
+            "name": "window",
+            "confidence": 0.89513939619064331
+          }
+        ],
+        "description": {
+          "tags": [
+            "person",
+            "man",
+            "outdoor",
+            "window",
+            "glasses"
+          ],
+          "captions": [
+            {
+              "text": "Satya Nadella sitting on a bench",
+              "confidence": 0.48293603002174407
+            }
+          ]
+        },
+        "requestId": "0dbec5ad-a3d3-4f7e-96b4-dfd57efe967d",
+        "metadata": {
+          "width": 1500,
+          "height": 1000,
+          "format": "Jpeg"
+        },
+        "faces": [
+          {
+            "age": 44,
+            "gender": "Male",
+            "faceBoundingBox": [
+                {
+                    "x": 1601,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 395
+                },
+                {
+                    "x": 1653,
+                    "y": 447
+                },
+                {
+                    "x": 1601,
+                    "y": 447
+                }
+            ]
+          }
+        ],
+        "color": {
+          "dominantColorForeground": "Brown",
+          "dominantColorBackground": "Brown",
+          "dominantColors": [
+            "Brown",
+            "Black"
+          ],
+          "accentColor": "873B59",
+          "isBwImg": false
+        },
+        "imageType": {
+          "clipArtType": 0,
+          "lineDrawingType": 0
+        },
+        "objects": [
+          {
+            "rectangle": {
+              "x": 25,
+              "y": 43,
+              "w": 172,
+              "h": 140
+            },
+            "object": "person",
+            "confidence": 0.931
+          }
+        ],
+        "brands":[  
+           {  
+              "name":"Microsoft",
+              "rectangle":{  
+                 "x":20,
+                 "y":97,
+                 "w":62,
+                 "h":52
+              }
+           }
+        ]
+      }
+    }
+  ]
 }
 ```
 
@@ -518,7 +543,7 @@ Ha a `"One or more skills are invalid. Details: Error in skill #<num>: Outputs a
             ]
 ```
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Beépített szaktudás](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

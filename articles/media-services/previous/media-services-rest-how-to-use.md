@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
-ms.openlocfilehash: 7df1651be01b4bed533c1173cc37bddda58f0aa3
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 597839f633ed2b925b86c5f859a0fb2d3b64dd59
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74895818"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773660"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése 
 
@@ -45,7 +45,7 @@ A REST használatakor a következő szempontokat kell figyelembe venni.
         Accept: application/json;odata=verbose
         DataServiceVersion: 3.0
         MaxDataServiceVersion: 3.0
-        x-ms-version: 2.17
+        x-ms-version: 2.19
         Authorization: Bearer <ENCODED JWT TOKEN> 
         Host: media.windows.net
   
@@ -60,7 +60,7 @@ A Media Servicesban megjelenő minden egyes híváshoz meg kell adni a szükség
 
 | Fejléc | Type (Típus) | Value (Díj) |
 | --- | --- | --- |
-| Engedélyezés |Tulajdonos |A tulajdonos az egyetlen elfogadott engedélyezési mechanizmus. Az értéknek tartalmaznia kell a Azure Active Directory által biztosított hozzáférési jogkivonatot is. |
+| Engedélyezés |Tulajdonosi |A tulajdonos az egyetlen elfogadott engedélyezési mechanizmus. Az értéknek tartalmaznia kell a Azure Active Directory által biztosított hozzáférési jogkivonatot is. |
 | x-MS-Version |Decimális |2,17 (vagy a legújabb verzió)|
 | DataServiceVersion |Decimális |3.0 |
 | MaxDataServiceVersion |Decimális |3.0 |
@@ -75,12 +75,12 @@ A következő a választható fejlécek halmaza:
 | Fejléc | Type (Típus) | Value (Díj) |
 | --- | --- | --- |
 | Dátum |RFC 1123 dátum |A kérés időbélyege |
-| Elfogadás |Tartalomtípus |A kért tartalomtípus a válaszhoz, például a következő:<p> -Application/JSON; OData = részletes<p> -Application/Atom + XML<p> A válaszok eltérő tartalomtípussal rendelkezhetnek, például egy blob beolvasásával, ahol a sikeres válasz a blob streamet tartalmazza hasznos adattartalomként. |
-| Accept-Encoding |Gzip, deflate |A GZIP és a deflate kódolás, ha alkalmazható. Megjegyzés: a nagyméretű erőforrások esetében Media Services figyelmen kívül hagyhatja ezt a fejlécet, és nem tömörített adatmennyiséget adhat vissza. |
+| Fogadja el |Tartalom típusa |A kért tartalomtípus a válaszhoz, például a következő:<p> -Application/JSON; OData = részletes<p> -Application/Atom + XML<p> A válaszok eltérő tartalomtípussal rendelkezhetnek, például egy blob beolvasásával, ahol a sikeres válasz a blob streamet tartalmazza hasznos adattartalomként. |
+| Elfogadás – kódolás |Gzip, deflate |A GZIP és a deflate kódolás, ha alkalmazható. Megjegyzés: a nagyméretű erőforrások esetében Media Services figyelmen kívül hagyhatja ezt a fejlécet, és nem tömörített adatmennyiséget adhat vissza. |
 | Elfogadás – nyelv |"en", "es" stb. |Megadja a válasz előnyben részesített nyelvét. |
 | Elfogadás – charset |Karakterkészlet típusa, például "UTF-8" |Az alapértelmezett érték az UTF-8. |
 | X-HTTP-Method |HTTP-metódus |Lehetővé teszi az olyan ügyfelek vagy tűzfalak használatát, amelyek nem támogatják az olyan HTTP-metódusokat, mint a PUT vagy a DELETE, ha ezeket a metódusokat szeretné használni, egy GET hívással. |
-| Tartalomtípus |Tartalomtípus |A kérelem törzsének tartalomtípusa a PUT vagy POST kérelmekben. |
+| Content-Type |Tartalom típusa |A kérelem törzsének tartalomtípusa a PUT vagy POST kérelmekben. |
 | ügyfél-kérelem azonosítója |Sztring |Egy hívó által definiált érték, amely az adott kérelmet azonosítja. Ha meg van adva, a rendszer ezt az értéket fogja tartalmazni a válaszüzenetben a kérelem leképezéséhez. <p><p>**Fontos**<p>Az értékeket a 2096b (2k) értékre kell korlátozni. |
 
 ## <a name="standard-http-response-headers-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-válasz fejlécek
@@ -91,7 +91,7 @@ A következőkben egy olyan fejléc található, amely a kért erőforrástól �
 | kérelem azonosítója |Sztring |Az aktuális művelet egyedi azonosítója, a szolgáltatás létrehozva. |
 | ügyfél-kérelem azonosítója |Sztring |A hívó által az eredeti kérelemben megadott azonosító, ha van ilyen. |
 | Dátum |RFC 1123 dátum |A kérelem feldolgozásának dátuma és időpontja. |
-| Tartalomtípus |Változó |A válasz törzsének tartalomtípusa |
+| Content-Type |Változó |A válasz törzsének tartalomtípusa |
 | Content-Encoding |Változó |A gzip vagy a deflate, ha szükséges. |
 
 ## <a name="standard-http-verbs-supported-by-media-services"></a>A Media Services által támogatott szabványos HTTP-műveletek
@@ -100,11 +100,11 @@ A következő lista a http-kérelmekhez használható HTTP-műveletek teljes lis
 | Művelet | Leírás |
 | --- | --- |
 | GET |Egy objektum aktuális értékét adja vissza. |
-| POST |Létrehoz egy objektumot a megadott információk alapján, vagy elküld egy parancsot. |
+| UTÁNI |Létrehoz egy objektumot a megadott információk alapján, vagy elküld egy parancsot. |
 | PUT |Lecserél egy objektumot, vagy létrehoz egy elnevezett objektumot (ha van ilyen). |
 | DELETE |Töröl egy objektumot. |
 | KÖRLEVÉL |Egy meglévő objektumot frissít, amelynek elnevezett tulajdonsága megváltozik. |
-| FEJLÉC |A GET válaszhoz tartozó objektum metaadatait adja vissza. |
+| FEJ |A GET válaszhoz tartozó objektum metaadatait adja vissza. |
 
 ## <a name="discover-and-browse-the-media-services-entity-model"></a>A Media Services entitás modell felderítése és tallózása
 Media Services entitások felderíthetővé tételéhez a $metadata művelet is használható. Lehetővé teszi az összes érvényes entitás típusának, az entitás tulajdonságainak, társításának, funkcióinak, műveleteinek és így beolvasását. Ha hozzáadja a $metadata műveletet a Media Services REST API végpont végéhez, elérheti ezt a felderítési szolgáltatást.
@@ -123,7 +123,7 @@ Az Azure AD-hitelesítéssel REST APIhoz kapcsolódó kódok írásához tekints
 ## <a name="next-steps"></a>Következő lépések
 Az Azure AD-hitelesítés Media Services REST API használatával történő használatáról további információt [Az Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md)című témakörben talál.
 
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

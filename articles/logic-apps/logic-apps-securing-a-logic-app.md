@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 753977ed0516e934f661d81904b60ff9935aa423
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981178"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843548"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -370,7 +370,7 @@ További információt a jelen témakör következő részeiben talál:
 
 Ha [Resource Manager-sablonok használatával automatizálja a Logic apps üzembe helyezését](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md), megadhatja a biztonságos [sablon paramétereit](../azure-resource-manager/templates/template-parameters.md), amelyeket a rendszer a telepítéskor értékel ki a `securestring` és a `secureobject` típus használatával. A sablon paramétereinek definiálásához használja a sablon legfelső szintű `parameters` szakaszát, amely külön és eltér a munkafolyamat-definíció `parameters` szakaszával. A sablon paramétereinek értékeinek megadásához használjon egy külön [paraméter-fájlt](../azure-resource-manager/templates/parameter-files.md).
 
-Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információt az alábbi témakörökben talál:
+Ha például a titkokat használja, megadhatja és használhatja a biztonságos sablon paramétereit, amelyek lekérik ezeket a titkokat [Azure Key Vaultról](../key-vault/key-vault-overview.md) a telepítéskor. Ezután hivatkozhat a Key vaultra és a titkos kulcsra a paraméter fájljában. További információkért tekintse meg a következő témaköröket:
 
 * [Bizalmas értékek átadása az üzembe helyezés során Azure Key Vault használatával](../azure-resource-manager/templates/key-vault-parameter.md)
 * [Biztonságos paraméterek Azure Resource Manager-sablonokban](#secure-parameters-deployment-template) a témakör későbbi részében
@@ -604,7 +604,7 @@ Ez a példa több olyan biztonságos paraméter-definíciót tartalmaz, amelyek 
 
 A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A kimenő hívások vagy a végpontokhoz hozzáférő kérelmek elvégzéséhez használt trigger vagy művelet alapján a különböző hitelesítési típusok közül választhat. Győződjön meg arról, hogy védi a logikai alkalmazás által kezelt bizalmas adatokat, biztonságos paramétereket használ, és szükség szerint kódolja az adatokat. A paraméterek használatával és biztonságossá tételével kapcsolatos további információkért lásd: [hozzáférés paraméter bemenetekhez](#secure-action-parameters).
 
-| Hitelesítés típusa | Támogatás |
+| Hitelesítés típusa | Támogató |
 |---------------------|--------------|
 | [Basic](#basic-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
 | [Ügyféltanúsítvány](#client-certificate-authentication) | Azure API Management, Azure App Services, HTTP, HTTP + hencegés, HTTP webhook |
@@ -620,7 +620,7 @@ A HTTP-és HTTPS-végpontok különböző típusú hitelesítést támogatnak. A
 
 ### <a name="basic-authentication"></a>Alapszintű hitelesítés
 
-Ha az [alapszintű](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-basic.md) beállítás elérhető, akkor a következő tulajdonságértékeket kell megadnia:
+Ha az [alapszintű](../active-directory-b2c/secure-rest-api-dotnet-basic-auth.md) beállítás elérhető, akkor a következő tulajdonságértékeket kell megadnia:
 
 | Tulajdonság (Designer) | Tulajdonság (JSON) | Szükséges | Value (Díj) | Leírás |
 |---------------------|-----------------|----------|-------|-------------|
@@ -682,7 +682,7 @@ A szolgáltatások ügyféltanúsítvány-alapú hitelesítéssel történő biz
 
 * [API-k biztonságossá tétele az Azure-beli ügyféltanúsítvány-alapú hitelesítés használatával API Management](../api-management/api-management-howto-mutual-certificates-for-clients.md)
 * [Az ügyféltanúsítvány-alapú hitelesítést használó Azure-API Management](../api-management/api-management-howto-mutual-certificates.md)
-* [A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával](../active-directory-b2c/active-directory-b2c-custom-rest-api-netfw-secure-cert.md)
+* [A REST-szolgáltatás biztonságossá tétele Ügyféltanúsítványok használatával](../active-directory-b2c/secure-rest-api-dotnet-certificate-auth.md)
 * [Tanúsítvány hitelesítő adatai az alkalmazás hitelesítéséhez](../active-directory/develop/active-directory-certificate-credentials.md)
 * [Használjon SSL-tanúsítványt az alkalmazás kódjában Azure App Service](../app-service/configure-ssl-certificate-in-code.md)
 

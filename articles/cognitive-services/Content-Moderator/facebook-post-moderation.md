@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 10/24/2019
+ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 5aa4cc24484a4ba1da608da9676ade492db35b6c
-ms.sourcegitcommit: 4c3d6c2657ae714f4a042f2c078cf1b0ad20b3a4
+ms.openlocfilehash: 9f25c845302d62e3bc9e230b4a6f8f2669f4ac35
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/25/2019
-ms.locfileid: "72936010"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774267"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
@@ -35,7 +35,7 @@ Ez az ábra a forgatókönyv egyes összetevőit szemlélteti:
 ![A Facebook információinak a "FBListener" és a "CMListener" használatával történő elküldésére szolgáló Content Moderator ábrája](images/tutorial-facebook-moderation.png)
 
 > [!IMPORTANT]
-> 2018-ben a Facebook a Facebook-alkalmazások szigorúbb ellenőrzését is végrehajtotta. Nem fogja tudni befejezni az oktatóanyag lépéseit, ha az alkalmazást a Facebook felülvizsgálati csapata nem tekinti át és hagyta jóvá.
+> A 2018-ben a Facebook szigorúbb bevezetési szabályzatot vezetett be a Facebook-alkalmazásokhoz. Nem fogja tudni befejezni az oktatóanyag lépéseit, ha az alkalmazást a Facebook felülvizsgálati csapata nem tekinti át és hagyta jóvá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -87,7 +87,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
     1. Kattintson a **http-triggert**tartalmazó csempére.
     1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
-    1. Kattintson a  **Create** (Létrehozás) gombra.
+    1. Kattintson a **Create** (Létrehozás) gombra.
     1. Cserélje le a **Run. CSX** tartalmát a **FbListener/Run. CSX** tartalmára.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]

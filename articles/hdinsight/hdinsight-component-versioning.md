@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 11/21/2019
-ms.openlocfilehash: 475b784f4d25e28289536e6c70200fe86dd806f5
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: ed4175d55d3c462c75dad7305f95e2ec4f84baf9
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435602"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764467"
 ---
 # <a name="what-are-the-apache-hadoop-components-and-versions-available-with-hdinsight"></a>Milyen Apache Hadoop-összetevők és-verziók érhetők el a HDInsight-ben?
 
@@ -37,7 +37,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Hive            | 3.1.0         | 2.1.0, 1.2.1                |
 | Apache TEZ Hive2       | -             | 0.8.4                       |
 | Apache Ranger          | 1.1.0         | 0.7.0                       |
-| Apache HBase           | 2.0.1         | 1.1.2                       |
+| Apache HBase           | 2.0.2         | 1.1.2                       |
 | Apache Sqoop           | 1.4.7         | 1.4.6                       |
 | Apache Oozie           | 4.3.1         | 4.2.0                       |
 | Apache Zookeeper       | 3.4.6         | 3.4.6                       |
@@ -49,7 +49,7 @@ A HDInsight-fürtökhöz társított verziók az alábbi táblázatban látható
 | Apache Kafka           | 1.1.1, 2,1    | 1,1, 1,0 * (lásd az alábbi megjegyzést) |
 | Apache Ambari          | 2.7.0         | 2.6.0                       |
 | Apache Zeppelin        | 0.8.0         | 0.7.3                       |
-| Mono                   | 4.2.1         | 4.2.1                       |
+| Monó                   | 4.2.1         | 4.2.1                       |
 
 > [!NOTE]
 > A rendszer teljesítményével kapcsolatos megfontolások miatt a Kafka 0,10-es verziójának támogatása 2019 márciusában lejár.
@@ -70,7 +70,7 @@ A következő táblázat a HDInsight verzióját sorolja fel. A támogatási lej
 
 A következő táblázat felsorolja a Azure Portalban elérhető HDInsight-verziókat, valamint az egyéb központi telepítési módszereket, például a PowerShellt és a .NET SDK-t.
 
-| HDInsight verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
+| HDInsight verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 4.0 |Ubuntu 16.0.4 LTS |2018. szeptember 24. | | |Igen |Igen |
 | HDInsight 3,6 |Ubuntu 16.0.4 LTS |2017. április 4. | December 31., 2020 |December 31., 2020 |Igen |Igen |
@@ -84,7 +84,7 @@ A Spark 2,1, 2,2 & Kafka 1,0 támogatásának érvényessége 2020. június 30-�
 
 A következő táblázat felsorolja azokat a HDInsight-verziókat, amelyek **nem** érhetők el a Azure Portalban.
 
-| HDInsight verziója | HDP verziója | VM OS | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
+| HDInsight verziója | HDP verziója | VM OPERÁCIÓS RENDSZER | Kiadási dátum | Támogatás lejárati dátuma | Nyugdíjazás dátuma | Magas rendelkezésre állás |  Rendelkezésre állás a Azure Portal |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | HDInsight 3,5 |HDP 2,5 |Ubuntu 16.0.4 LTS |Szeptember 30., 2016 |Szeptember 5., 2017 |2018. június 28. |Igen |Nem |
 | HDInsight 3,4 |HDP 2,4 |Ubuntu 14.0.4 LTS |Március 29., 2016 |December 29., 2016 |2018. január 9. |Igen |Nem |

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 07/29/2019
 ms.author: sedusch
-ms.openlocfilehash: ffe68352fed0b9c0df0cdfb971c085d1bb7f18c4
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 2df0bfe8041216e207193832c8f7ca48967c4e5b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75978060"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842435"
 ---
 # <a name="sap-lama-connector-for-azure"></a>Az Azure SAP LaMa összekötője
 
@@ -87,7 +87,7 @@ Az Azure Connector egy egyszerű szolgáltatásnév használatával engedélyezh
 1. Kattintson az új regisztráció elemre.
 1. Adjon meg egy nevet, és kattintson a regisztrálás gombra.
 1. Válassza ki az új alkalmazást, és kattintson a tanúsítványok & Secrets elemre a beállítások lapon
-1. Hozzon létre egy új titkos kulcsot, adja meg az új kulcs leírását, válassza ki, hogy mikor kell exire a titkos kódot, és kattintson a Save (Mentés) gombra.
+1. Hozzon létre egy új titkos kulcsot, adja meg az új kulcs leírását, válassza ki, hogy mikor járjon le a titkos kód, és kattintson a Save (Mentés) gombra.
 1. Jegyezze fel az értéket. Az egyszerű szolgáltatás jelszavaként van használatban
 1. Jegyezze fel az alkalmazás AZONOSÍTÓját. Az egyszerű szolgáltatásnév felhasználóneveként van használatban
 
@@ -438,7 +438,7 @@ C:\Program Files\SAP\hostctrl\exe\sapacext.exe -a ifup -i "Ethernet 3" -h as1-as
 
 Futtassa a SWPM, és használja a *AS1-ASCs* a *ASCs-példány állomásneve*számára.
 
-#### <a name="install-sql-server"></a>Az SQL Server telepítése
+#### <a name="install-sql-server"></a>SQL Server telepítése
 
 Hozzá kell adnia az adatbázis virtuális állomásneve IP-címét egy hálózati adapterhez. Az ajánlott módszer a sapacext használata. Ha az IP-címet az sapacext használatával csatlakoztatja, akkor az újraindítás után mindenképp csatlakoztassa újra az IP-címet.
 

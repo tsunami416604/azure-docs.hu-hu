@@ -1,24 +1,17 @@
 ---
-title: Gyors üzembe helyezési útmutató a Spring boot – Azure app Configuration szolgáltatáshoz | Microsoft Docs
-description: Gyors üzembe helyezési útmutató a Spring boot-alkalmazásokhoz és az Azure-alkalmazások konfigurációjában való kezeléséhez
-services: azure-app-configuration
-documentationcenter: ''
+title: Rövid útmutató szolgáltatás-jelzők hozzáadásához az Azure app Configuration használatával
+description: Szolgáltatás-jelzők hozzáadása Spring boot-alkalmazásokhoz és kezelésük az Azure app Configuration használatával
 author: lisaguthrie
-editor: ''
-ms.assetid: ''
 ms.service: azure-app-configuration
-ms.devlang: csharp
 ms.topic: quickstart
-ms.tgt_pltfrm: Spring Boot
-ms.workload: tbd
-ms.date: 1/9/2019
+ms.date: 01/21/2020
 ms.author: lcozzens
-ms.openlocfilehash: 3e82354116969b01743700485b5c2dd75b4887e4
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 4438851ef7ea015060926075f46822de877b85b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310067"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766438"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -32,47 +25,48 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 - Támogatott [Java Development Kit SDK](https://docs.microsoft.com/java/azure/jdk) a 8-as verzióval.
 - Az [Apache Maven](https://maven.apache.org/download.cgi) 3,0-es vagy újabb verziója.
 
-## <a name="create-an-app-configuration-store"></a>Alkalmazás-konfigurációs tároló létrehozása
+## <a name="create-an-app-configuration-instance"></a>Alkalmazás-konfigurációs példány létrehozása
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **szolgáltatások kezelője** >  **+ Létrehozás** lehetőséget a következő funkció-jelzők hozzáadásához:
+6. Válassza a **Feature Manager** >  **+ Hozzáadás** elemet, és vegyen fel egy `Beta`nevű szolgáltatás-jelölőt.
 
-    | Jelmagyarázat | Állami |
-    |---|---|
-    | Beta | Ki |
+    > [!div class="mx-imgBorder"]
+    > ![a Beta](media/add-beta-feature-flag.png) nevű funkció engedélyezése
+
+    Most ne adjon meg `label`.
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
-A [Spring inicializáló](https://start.spring.io/) használatával új Spring boot-projektet hozhat létre.
+A [Spring inicializáló](https://start.spring.io/) használatával hozzon létre egy új Spring boot-projektet.
 
 1. Nyissa meg a következő címet: <https://start.spring.io/>.
 
-2. Adja meg a következő beállításokat:
+2. A következő beállításokat kell megadnia:
 
    - **Maven** -projekt létrehozása **Javával**.
    - Olyan **Spring boot** -verziót válasszon, amely egyenlő vagy nagyobb, mint 2,0.
-   - Adja meg az alkalmazás **csoport** -és **lelet** -nevét.
+   - Adja meg az alkalmazás **csoport** -és **lelet** -nevét.  Ez a cikk `com.example` és `demo`t használ.
    - Adja hozzá a **rugó webes** függőségét.
 
-3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet egy elérési útra a helyi számítógépen.
+3. Az előző beállítások megadása után válassza a **projekt létrehozása**lehetőséget. Ha a rendszer kéri, töltse le a projektet a helyi számítógépre.
 
 ## <a name="add-feature-management"></a>Szolgáltatások felügyeletének hozzáadása
 
-1. Miután kicsomagolta a fájlokat a helyi rendszeren, az egyszerű Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. XML* fájlt az alkalmazás gyökérkönyvtárában.
+1. Miután kicsomagolta a fájlokat a helyi rendszeren, a Spring boot-alkalmazás készen áll a szerkesztésre. Keresse meg a *Pom. xml fájlt* az alkalmazás gyökérkönyvtárában.
 
-2. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a Spring Cloud Azure config Starter és a features Management szolgáltatást a `<dependencies>`listájához:
+1. Nyissa meg a *Pom. XML* fájlt egy szövegszerkesztőben, és adja hozzá a következőt a `<dependencies>`listájához:
 
     ```xml
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-starter-azure-appconfiguration-config</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
         <groupId>com.microsoft.azure</groupId>
         <artifactId>spring-cloud-azure-feature-management-web</artifactId>
-        <version>1.1.0</version>
+        <version>1.2.1</version>
     </dependency>
     <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -81,35 +75,48 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     ```
 
 > [!Note]
-> A nem webes szolgáltatások felügyeleti könyvtára nem függ a Spring-web-től. Tekintse meg a további [dokumentumokat](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) a különbségekért. Továbbá, ha nem használja az alkalmazás konfigurációját, tekintse meg a [Feature Flag deklarációját](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management#feature-flag-declaration).
+> A nem webes szolgáltatások felügyeleti könyvtára nem függ a Spring-web-től. A különbségekről a GitHub [dokumentációjában](https://github.com/microsoft/spring-cloud-azure/tree/master/spring-cloud-azure-feature-management) tájékozódhat.
 
 ## <a name="connect-to-an-app-configuration-store"></a>Kapcsolódás alkalmazás-konfigurációs tárolóhoz
 
-1. Nyissa meg a _bootstrap. properties_ mappát az alkalmazás _erőforrások_ könyvtára alatt. Ha a _bootstrap. properties_ nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
+1. Navigáljon az alkalmazás `resources` könyvtárába, és nyissa meg `bootstrap.properties`.  Ha a fájl nem létezik, hozza létre. Adja hozzá a következő sort a fájlhoz.
 
     ```properties
     spring.cloud.azure.appconfiguration.stores[0].name= ${APP_CONFIGURATION_CONNECTION_STRING}
     ```
 
-1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon nyissa meg a hozzáférési kulcsokat. Válassza a csak olvasható kulcsok lapot. Ezen a lapon másolja át a kapcsolatok egyik karakterláncának értékét, és vegye fel új környezeti változóként `APP_CONFIGURATION_CONNECTION_STRING`változó nevével.
+1. A konfigurációs tárolóhoz tartozó alkalmazás-konfigurációs portálon válassza a `Access keys` lehetőséget az oldalsávon. Válassza a csak olvasható kulcsok lapot. másolja az elsődleges kapcsolatok karakterláncának értékét.
+
+1. Adja hozzá az elsődleges kapcsolatok karakterláncát környezeti változóként a (z) `APP_CONFIGURATION_CONNECTION_STRING`nevű változó használatával.
 
 1. Nyissa meg az alkalmazás fő Java-fájlját, és adja hozzá a `@EnableConfigurationProperties` a funkció engedélyezéséhez.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.SpringApplication;
+    import org.springframework.boot.context.properties.ConfigurationProperties;
     import org.springframework.boot.context.properties.EnableConfigurationProperties;
+    import org.springframework.boot.autoconfigure.SpringBootApplication;
 
     @SpringBootApplication
     @EnableConfigurationProperties(MessageProperties.class)
     public class DemoApplication {
+
         public static void main(String[] args) {
             SpringApplication.run(DemoApplication.class, args);
         }
     }
     ```
-
-1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+1. Hozzon létre egy új, *MessageProperties. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába.
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.context.annotation.Configuration;
+
+    @Configuration
     @ConfigurationProperties(prefix = "config")
     public class MessageProperties {
         private String message;
@@ -124,11 +131,22 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
     }
     ```
 
-1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. Adja hozzá a következő sorokat:
+1. Hozzon létre egy új, *HelloController. Java* nevű Java-fájlt az alkalmazás csomag könyvtárába. 
 
     ```java
+    package com.example.demo;
+
+    import org.springframework.boot.context.properties.ConfigurationProperties;
+    import org.springframework.stereotype.Controller;
+    import org.springframework.ui.Model;
+
+    import com.microsoft.azure.spring.cloud.feature.manager.FeatureManager;
+    import org.springframework.web.bind.annotation.GetMapping;
+
+
     @Controller
     @ConfigurationProperties("controller")
+
     public class HelloController {
 
         private FeatureManager featureManager;
@@ -139,13 +157,13 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
         @GetMapping("/welcome")
         public String mainWithParam(Model model) {
-            model.addAttribute("Beta", featureManager.isEnabled("Beta"));
+            model.addAttribute("Beta", featureManager.isEnabledAsync("Beta"));
             return "welcome";
         }
     }
     ```
 
-1. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára. Adja hozzá a következő sorokat:
+1. Hozzon létre egy *üdvözlő. html* nevű új HTML-fájlt az alkalmazás sablonok könyvtára.
 
     ```html
     <!DOCTYPE html>
@@ -202,7 +220,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
     ```
 
-1. Hozzon létre egy új, CSS nevű mappát a statikus és a benne található új CSS-fájl, a *Main. css*néven. Adja hozzá a következő sorokat:
+6. Hozzon létre egy CSS nevű új mappát a `static` alatt, és a benne lévő új CSS-fájlt a *Main. css*néven.
 
     ```css
     html {
@@ -237,24 +255,24 @@ A [Spring inicializáló](https://start.spring.io/) használatával új Spring b
 
 ## <a name="build-and-run-the-app-locally"></a>Az alkalmazás helyi létrehozása és futtatása
 
-1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa, például:
+1. Készítse elő a Spring boot-alkalmazást a Maven használatával, és futtassa.
 
     ```shell
     mvn clean package
     mvn spring-boot:run
     ```
 
-2. Nyisson meg egy böngészőablakot, és lépjen a `https://localhost:8080`elemre, amely a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címe.
+1. Nyisson meg egy böngészőablakot, és lépjen a helyileg üzemeltetett webalkalmazás alapértelmezett URL-címére: `https://localhost:8080`.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-before.png)
 
-3. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
+1. Az alkalmazás konfigurációs portálján válassza a **Feature Manager**elemet, és módosítsa a **bétaverzió** **állapotát a következőre:**
 
     | Jelmagyarázat | Állami |
     |---|---|
     | Beta | Be |
 
-4. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
+1. A böngésző oldalának frissítésével tekintheti meg az új konfigurációs beállításokat.
 
     ![Gyorsindítás alkalmazás elindítása helyi](./media/quickstarts/spring-boot-feature-flag-local-after.png)
 

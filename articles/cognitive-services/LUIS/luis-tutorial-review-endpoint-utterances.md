@@ -11,12 +11,12 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 12/17/2019
 ms.author: diberry
-ms.openlocfilehash: 3cecf334189989574e82772205c7d32298240867
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 06f51ca83449b39861e7565cc9accc29efbece3f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447820"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843973"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
 Ebben az oktatóanyagban a Luis HTTPS-végponton keresztül fogadott hosszúságú kimondott szöveg ellenőrzésével vagy javításával fejlesztheti az alkalmazás-előrejelzéseket, hogy a LUIS nem biztos benne. Tekintse át a végpontok hosszúságú kimondott szöveg az ütemezett LUIS-karbantartás rendszeres részeként.
@@ -46,7 +46,7 @@ Egy alkalmazás importálásához kövesse az alábbi lépéseket.
 
 1.  Töltse le és mentse az [alkalmazás JSON-fájlját](https://github.com/Azure-Samples/cognitive-services-language-understanding/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json?raw=true).
 
-1. Az [előnézeti Luis-portálon](https://preview.luis-ai)importálja a. JSON fájlt egy új alkalmazásba.
+1. Az [előnézeti Luis-portálon](https://preview.luis.ai)importálja a. JSON fájlt egy új alkalmazásba.
 
 1. A **Manage** (Kezelés) szakasz **Versions** (Verziók) lapján klónozza a verziót, és adja neki a `review` nevet.
 

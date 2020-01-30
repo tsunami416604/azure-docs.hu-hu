@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 11/05/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: 29e1af5f23b2167a524872731490b5862a14e5c1
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: 9b92796e477ea0dd6795015edd3f400dd2cc9aa7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74975397"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773740"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-net-sdk-v3"></a>Gyors útmutató: Azure Key Vault .NET-hez készült ügyféloldali kódtár (SDK v3)
 
@@ -25,7 +25,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
 - Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
 - Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
+- Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
 [API-referenciák dokumentációja](/dotnet/api/overview/azure/key-vault?view=azure-dotnet) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/keyvault) | [csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.KeyVault/)
@@ -139,7 +139,7 @@ A .NET-hez készült Azure Key Vault ügyféloldali kódtára lehetővé teszi a
 
 A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/akvdotnet.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 

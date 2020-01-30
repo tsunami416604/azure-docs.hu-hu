@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: panosper
-ms.openlocfilehash: 4c2985f35621ff3120217cbe38705ad2c228d6f7
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 5732df2551eafa74b81f9a918a1cb7cf5ac1395c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122100"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768039"
 ---
 # <a name="how-to-use-batch-transcription"></a>A Batch-átírás használata
 
@@ -36,7 +36,7 @@ A könnyen használható API mellett nem kell egyéni végpontokat telepítenie,
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-### <a name="subscription-key"></a>Előfizetői azonosító
+### <a name="subscription-key"></a>Előfizetési kulcs
 
 Ahogy a Speech Service összes funkciója esetében, létrehozhat egy előfizetési kulcsot a [Azure Portal](https://portal.azure.com) az első [lépéseket ismertető útmutatóban](get-started.md).
 
@@ -89,7 +89,7 @@ Ezeket a választható tulajdonságokat az átírás konfigurálásához haszná
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `Masked` amely a csillagokkal való káromkodást váltja fel, `Removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `Tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás: `Masked`. |
+| `ProfanityFilterMode` | Meghatározza, hogyan kezelhető a káromkodás az eredmények felismerésében. Az elfogadott értékek olyan `None`, amelyek letiltják a káromkodások szűrését, `Masked` amely a csillagokkal való káromkodást váltja fel, `Removed`, amely eltávolítja az eredményből az összes káromkodást, vagy `Tags`, amely a "káromkodás" címkét adja meg. Az alapértelmezett beállítás a `Masked`. |
 | `PunctuationMode` | Meghatározza, hogyan kezelhető a központozás a felismerési eredményekben. Az elfogadott értékek olyan `None`, amelyek letiltják a központozást, `Dictated` amely explicit írásjeleket feltételez, `Automatic`, amely lehetővé teszi, hogy a dekóder a központozás vagy a `DictatedAndAutomatic`, amely a diktált írásjeleket vagy az automatikus értéket jelenti. |
 | `AddWordLevelTimestamps` | Megadja, hogy a rendszer hozzáadja-e a Word szintű időbélyegeket a kimenethez. Az elfogadott értékek olyan `true`, amelyek lehetővé teszik a Word szintű időbélyegek és a `false` (az alapértelmezett érték) letiltását. |
 | `AddSentiment` | Azt adja meg, hogy a rendszer milyen érzést kell hozzáadnia a teljes értékhez. Az elfogadott értékek `true`, amelyek lehetővé teszik a vélemények kiértékelését és a `false` (az alapértelmezett érték) letiltását. |
@@ -120,29 +120,29 @@ A Mono bemeneti hang esetében egy átírási eredményű fájl jön létre. Szt
           "Display": string
         }
       ]
-      SegmentResults:[                                     'for each individual segment'
+      SegmentResults:[                                      'for each individual segment'
         {
-          "RecognitionStatus": Success | Failure
+          "RecognitionStatus": "Success | Failure"
           "ChannelNumber": null
-          "SpeakerId": null | "1 | 2"                     'null if no diarization
-                                                            or stereo input file, the
-                                                            speakerId as a string if
-                                                            diarization requested for
-                                                            mono audio file'
-          "Offset": number                                'time in milliseconds'
-          "Duration": number                              'time in milliseconds'
-          "OffsetInSeconds" : number                      'Real number. Two decimal places'
-          "DurationInSeconds" : number                    'Real number. Two decimal places'
+          "SpeakerId": null | "1 | 2"                       'null if no diarization
+                                                             or stereo input file, the
+                                                             speakerId as a string if
+                                                             diarization requested for
+                                                             mono audio file'
+          "Offset": number                                  'time in milliseconds'
+          "Duration": number                                'time in milliseconds'
+          "OffsetInSeconds" : number                        'Real number. Two decimal places'
+          "DurationInSeconds" : number                      'Real number. Two decimal places'
           "NBest": [
             {
-              "Confidence": number                        'between 0 and 1'
+              "Confidence": number                          'between 0 and 1'
               "Lexical": string
               "ITN": string
               "MaskedITN": string
               "Display": string
               "Sentiment":
-                {                                          'this is omitted if sentiment is
-                                                            not requested'
+                {                                           'this is omitted if sentiment is
+                                                             not requested'
                   "Negative": number                        'between 0 and 1'
                   "Neutral": number                         'between 0 and 1'
                   "Positive": number                        'between 0 and 1'
@@ -150,11 +150,11 @@ A Mono bemeneti hang esetében egy átírási eredményű fájl jön létre. Szt
               "Words": [
                 {
                   "Word": string
-                  "Offset": number                         'time in milliseconds'
-                  "Duration": number                       'time in milliseconds'
-                  "OffsetInSeconds": number                'Real number. Two decimal places'
-                  "DurationInSeconds": number              'Real number. Two decimal places'
-                  "Confidence": number                     'between 0 and 1'
+                  "Offset": number                          'time in milliseconds'
+                  "Duration": number                        'time in milliseconds'
+                  "OffsetInSeconds": number                 'Real number. Two decimal places'
+                  "DurationInSeconds": number               'Real number. Two decimal places'
+                  "Confidence": number                      'between 0 and 1'
                 }
               ]
             }

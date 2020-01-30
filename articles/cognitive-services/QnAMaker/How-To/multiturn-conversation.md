@@ -11,12 +11,12 @@ ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 12/05/2019
 ms.author: diberry
-ms.openlocfilehash: de078399a29af1c7eb2ae3fb237e1550ccaeacfa
-ms.sourcegitcommit: 9405aad7e39efbd8fef6d0a3c8988c6bf8de94eb
+ms.openlocfilehash: 681f00adde1d440fbb41f2e66652db34d53fbf99
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/05/2019
-ms.locfileid: "74872298"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843260"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -65,7 +65,7 @@ Ha több bekapcsoló dokumentumot hoz létre, vegye figyelembe a következő ir�
 
 * Fejlécek és alfejlécek használatával jelezheti a hierarchiát. Például a H1 paraméterrel jelezheti, hogy a szülő QnA és a H2 jelzi a QnA, amelyet a rendszer kérni fog. A kisebb fejlécek méretének használata a későbbi hierarchia jelölésére. Ne használjon stílust, színt vagy valamilyen más mechanizmust a dokumentum struktúrájának megjelenítéséhez, QnA Maker nem fogja kibontani a többszörös bekapcsolási utasításokat.
 
-* A fejléc első karakterének tőkésített kell lennie. 
+* A fejléc első karakterének tőkésített kell lennie.
 
 * Ne fejezze be a fejlécet kérdőjeltel, `?`.
 
@@ -368,7 +368,7 @@ A [QnA Maker Update API](https://docs.microsoft.com/rest/api/cognitiveservices/q
 
 ## <a name="export-knowledge-base-for-version-control"></a>Tudásbázis exportálása a verziókövetés számára
 
-A QnA Maker a QnA Maker portálon [támogatja a verziókövetés használatát](../concepts/development-lifecycle-knowledge-base.md#version-control-of-a-knowledge-base) , többek között az exportált fájlban lévő több lépésből álló beszélgetés lépéseivel.
+A QnA Maker támogatja a verziókövetés használatát, többek között az exportált fájlban lévő több lépésből álló beszélgetés lépéseivel.
 
 ## <a name="next-steps"></a>Következő lépések
 

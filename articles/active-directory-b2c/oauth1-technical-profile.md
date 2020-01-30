@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d97d908ddf5d55bf09d96a5ef16fa79a7afde7b4
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: a4f26f180e34ee9c7a0222b0d7f6be95c78de1b4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951105"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840383"
 ---
 # <a name="define-an-oauth1-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>OAuth1 műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
 
@@ -94,7 +94,7 @@ Ha a **b2clogin.com** tartományt használja a **login.microsoftonline.com** hel
 
 Példák:
 
-- [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](active-directory-b2c-custom-setup-twitter-idp.md)
+- [Twitter hozzáadása OAuth1-identitás-szolgáltatóként egyéni szabályzatok használatával](identity-provider-twitter-custom.md)
 
 
 

@@ -3,12 +3,12 @@ title: Azure Active Directory beállítása az ügyfél-hitelesítéshez
 description: Megtudhatja, hogyan állíthatja be Azure Active Directory (Azure AD) a Service Fabric-fürtökhöz tartozó ügyfelek hitelesítéséhez.
 ms.topic: conceptual
 ms.date: 6/28/2019
-ms.openlocfilehash: bbad991e955a31e3f3c53931889f630e521e1a8c
-ms.sourcegitcommit: 003e73f8eea1e3e9df248d55c65348779c79b1d6
+ms.openlocfilehash: 2a6ffdb1c1fdc447545477286a6d131be2449cdb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/02/2020
-ms.locfileid: "75614689"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843820"
 ---
 # <a name="set-up-azure-active-directory-for-client-authentication"></a>Azure Active Directory beállítása az ügyfél-hitelesítéshez
 
@@ -104,9 +104,19 @@ Amikor Service Fabric Explorerban próbál bejelentkezni az Azure AD-be, a lap e
 A fürt (web) alkalmazás, amely Service Fabric Explorer az Azure AD-vel való hitelesítésre irányuló kísérleteket jelképezi, és a kérelem részeként az átirányítási visszaküldési URL-címet adja meg. Az URL-cím azonban nem szerepel az Azure AD **-alkalmazás válaszának URL-címe** listán.
 
 #### <a name="solution"></a>Megoldás
-A HRE lapon válassza a "Alkalmazásregisztrációk" lehetőséget, válassza ki a fürtöt, majd kattintson a **Válasz URL-címek** gombra. A válasz URL-címek lapon adja hozzá Service Fabric Explorer URL-címét a listához, vagy cserélje le a lista egyik elemét. Ha elkészült, mentse a módosítást.
+Az Azure AD lapon válassza a **Alkalmazásregisztrációk**lehetőséget, válassza ki a fürtözött alkalmazást, majd válassza a **Válasz URL-címek**lehetőséget. A **Válasz URL-címek** ablaktáblán adja hozzá a listához a Service Fabric Explorer URL-címet, vagy cserélje le a lista egyik elemét. Mentse a változást.
 
 ![Webalkalmazás válaszának URL-címe][web-application-reply-url]
+
+### <a name="connecting-to-the-cluster-using-azure-ad-authentication-via-powershell-gives-an-error-when-you-sign-in-aadsts50011"></a>Ha az Azure AD-hitelesítéssel a PowerShell használatával csatlakozik a fürthöz, hibaüzenetet ad a bejelentkezéskor: "AADSTS50011"
+#### <a name="problem"></a>Probléma
+Ha Service Fabric-fürthöz próbál csatlakozni az Azure AD-vel a PowerShell használatával, a bejelentkezési oldal hibát jelez: "AADSTS50011: a kérelemben megadott válasz URL-cím nem egyezik az alkalmazáshoz konfigurált válasz URL-címekkel: &lt;GUID&gt;."
+
+#### <a name="reason"></a>Ok
+Az előző hibához hasonlóan a PowerShell megpróbálja hitelesíteni az Azure AD-t, amely egy átirányítási URL-címet ad meg, amely nem szerepel az Azure AD **-alkalmazás válaszának URL-címei** listán.  
+
+#### <a name="solution"></a>Megoldás
+Ugyanazt a folyamatot használja, mint az előző probléma, de az URL-címet `urn:ietf:wg:oauth:2.0:oob`re kell beállítani, egy speciális átirányítást a parancssori hitelesítéshez.
 
 ### <a name="connect-the-cluster-by-using-azure-ad-authentication-via-powershell"></a>A fürt összekötése az Azure AD-hitelesítéssel a PowerShell segítségével
 A Service Fabric-fürt összekapcsolásához használja a következő PowerShell-parancsot:

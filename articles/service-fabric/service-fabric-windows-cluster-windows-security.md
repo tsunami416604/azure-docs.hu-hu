@@ -5,12 +5,12 @@ author: dkkapur
 ms.topic: conceptual
 ms.date: 08/24/2017
 ms.author: dekapur
-ms.openlocfilehash: f7a1ff63f39777c1f7a83190adae2991138a11d3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 46be6acc1ef08770826a2e020c8930eba0787791
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75464054"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774441"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-windows-security"></a>Önálló fürt biztonságossá tétele Windows rendszeren a Windows biztonsági szolgáltatással
 A Service Fabric fürthöz való jogosulatlan hozzáférés megakadályozása érdekében védenie kell a fürtöt. A biztonság különösen akkor fontos, ha a fürt éles számítási feladatokat futtat. Ez a cikk azt ismerteti, hogyan konfigurálható a csomópontok közötti és az ügyfél és a csomópont közötti biztonság a Windows Biztonság használatával a *ClusterConfig. JSON* fájlban.  A folyamat megfelel a [Windows rendszeren futó önálló fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)biztonsági lépéseként. További információ arról, hogy a Service Fabric hogyan használja a Windows-biztonságot: a [fürtök biztonsági forgatókönyvei](service-fabric-cluster-security.md).

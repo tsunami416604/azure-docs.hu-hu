@@ -8,12 +8,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: robinsh
-ms.openlocfilehash: 4cda59448856630468076ef63c51b8a216a31bd0
-ms.sourcegitcommit: e97a0b4ffcb529691942fc75e7de919bc02b06ff
+ms.openlocfilehash: 53bff62795e54d88e768b3a22c8b358519b69a91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2019
-ms.locfileid: "71001946"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767820"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Üzenetküldés a felhőből az eszközre IoT Hub (Python)
 
@@ -51,7 +51,7 @@ Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja 
 
 1. Egy szövegszerkesztővel hozzon létre egy **SimulatedDevice.py** -fájlt.
 
-2. Adja hozzá a `import` következő utasításokat és változókat a **SimulatedDevice.py** fájl elejéhez:
+2. Adja hozzá a következő `import` utasításokat és változókat a **SimulatedDevice.py** -fájl elején:
 
    ```python
     import threading
@@ -85,7 +85,7 @@ Ebben a szakaszban egy Python-konzol alkalmazást hoz létre, amely szimulálja 
     ```python
     def iothub_client_sample_run():
         try:
-            client = iothub_client_init()
+            client = IoTHubDeviceClient.create_from_connection_string(CONNECTION_STRING)
 
             message_listener_thread = threading.Thread(target=message_listener, args=(client,))
             message_listener_thread.daemon = True
@@ -122,7 +122,7 @@ Ebben a szakaszban egy olyan Python-konzol alkalmazást hoz létre, amely a felh
 
 1. Egy szövegszerkesztővel hozzon létre egy **SendCloudToDeviceMessage.py** -fájlt.
 
-2. Adja hozzá a `import` következő utasításokat és változókat a **SendCloudToDeviceMessage.py** fájl elejéhez:
+2. Adja hozzá a következő `import` utasításokat és változókat a **SendCloudToDeviceMessage.py** -fájl elején:
 
     ```python
     import random
@@ -246,7 +246,7 @@ Most már készen áll az alkalmazások futtatására.
 
     ![Üzenet érkezett](./media/iot-hub-python-python-c2d/message-received.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan küldhet és fogadhat üzeneteket a felhőből az eszközre.
 

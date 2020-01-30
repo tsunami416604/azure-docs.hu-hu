@@ -1,6 +1,6 @@
 ---
-title: Szűrők létrehozása az Azure Media Services REST API-val |} A Microsoft Docs
-description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, így az ügyfél használhatja őket stream konkrét szakaszokra datového proudu. A Media Services dinamikus jegyzékek érdekében, ami a szelektív hoz létre.
+title: Szűrők létrehozása Azure Media Services REST API használatával | Microsoft Docs
+description: Ez a témakör azt ismerteti, hogyan hozhatók létre szűrők, hogy az ügyfél egy stream adott szakaszait továbbítsa. A Media Services dinamikus jegyzékfájlokat hoz létre a szelektív streaming eléréséhez.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewr: cenkdin
-ms.openlocfilehash: 29fef3bec90819b252b43491c08e7a5bc2b3d454
-ms.sourcegitcommit: de47a27defce58b10ef998e8991a2294175d2098
+ms.openlocfilehash: b778ad8c59cf51f92584cd3590f7d99244f37b2c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/15/2019
-ms.locfileid: "69014901"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774961"
 ---
 # <a name="creating-filters-with-azure-media-services-rest-api"></a>Szűrők létrehozása Azure Media Services REST API 
 > [!div class="op_single_selector"]
@@ -47,7 +47,7 @@ Szűrők létrehozásakor a következő típusok használatosak:
 > 
 > A Media Servicesban lévő entitásokhoz való hozzáféréskor meg kell adnia a HTTP-kérelmekben megadott fejléc-mezőket és-értékeket. További információ: [Media Services REST API-fejlesztés beállítása](media-services-rest-how-to-use.md).
 
-## <a name="connect-to-media-services"></a>Kapcsolódás a Media Services szolgáltatáshoz
+## <a name="connect-to-media-services"></a>Kapcsolódás a Media Serviceshez
 
 További információ az AMS API-hoz való kapcsolódásról: [a Azure Media Services API Azure ad-hitelesítéssel való elérése](media-services-use-aad-auth-to-access-ams-api.md). 
 
@@ -65,7 +65,7 @@ Kérések fejlécei
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host:media.windows.net 
 
@@ -118,7 +118,7 @@ Kérések fejlécei
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net  
 
@@ -168,7 +168,7 @@ A szűrők listázásához használja az alábbi HTTP-kérelmeket:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ### <a name="get-assetfilters-associated-with-an-asset"></a>Eszközhöz társított **AssetFilter**-k beolvasása
@@ -179,7 +179,7 @@ A szűrők listázásához használja az alábbi HTTP-kérelmeket:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -191,7 +191,7 @@ A szűrők listázásához használja az alábbi HTTP-kérelmeket:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000
 
 
@@ -213,7 +213,7 @@ Kérelem fejlécei:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
     Content-Length: 384
@@ -253,7 +253,7 @@ Kérelem fejlécei:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     x-ms-client-request-id: 00000000-0000-0000-0000-000000000000 
     Host: media.windows.net 
 
@@ -291,7 +291,7 @@ Globális szűrő törléséhez használja a következő HTTP-kérelmeket:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN>  
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 
@@ -305,7 +305,7 @@ Helyi AssetFilter törléséhez használja a következő HTTP-kérelmeket:
     Accept: application/json 
     Accept-Charset: UTF-8 
     Authorization: Bearer <ENCODED JWT TOKEN> 
-    x-ms-version: 2.17 
+    x-ms-version: 2.19 
     Host: media.windows.net 
 
 ## <a name="build-streaming-urls-that-use-filters"></a>Szűrőket használó streaming URL-címek összeállítása
@@ -313,7 +313,7 @@ Az eszközök közzétételével és továbbításával kapcsolatos információ
 
 Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos átviteli URL-címekhez.
 
-**MPEG DASH** 
+**MPEG-KÖTŐJEL** 
 
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(format=mpd-time-csf, filter=MyFilter)
 
@@ -330,7 +330,7 @@ Az alábbi példák bemutatják, hogyan adhat hozzá szűrőket a folyamatos át
     http:\//testendpoint-testaccount.streaming.mediaservices.windows.net/fecebb23-46f6-490d-8b70-203e86b0df58/BigBuckBunny.ism/Manifest(filter=MyFilter)
 
     
-## <a name="media-services-learning-paths"></a>Media Services képzési tervek
+## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

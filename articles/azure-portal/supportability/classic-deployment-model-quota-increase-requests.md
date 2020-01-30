@@ -1,108 +1,108 @@
 ---
-title: Klasszikus Azure üzembe helyezési modell | Microsoft Docs
-description: Klasszikus Azure üzembe helyezési modell
+title: Klasszikus Azure üzembe helyezési modell
+description: A Resource Manager-modell által felülírt klasszikus üzemi modell kikényszeríti a virtuális gépek és a virtuálisgép-méretezési csoportok globális vCPU-kvótájának korlátját.
 author: sowmyavenkat86
 ms.author: svenkat
-ms.date: 06/20/2019
+ms.date: 01/27/2020
 ms.topic: article
 ms.service: azure-supportability
 ms.assetid: ce37c848-ddd9-46ab-978e-6a1445728a3b
-ms.openlocfilehash: d8f4bf04251347c44ea1692cfdda2602e23117f4
-ms.sourcegitcommit: 8e9a6972196c5a752e9a0d021b715ca3b20a928f
+ms.openlocfilehash: a3d5106cafc1d3bfe77f3e42e85cedb668fc4fa0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/11/2020
-ms.locfileid: "75897051"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835614"
 ---
 # <a name="classic-deployment-model"></a>Klasszikus üzemi modell
 
-A klasszikus üzembe helyezési modell a régebbi generációs Azure-telepítési modell. A virtuális gépek és a virtuálisgép-méretezési csoportok esetében a globális vCPU-kvóta korlátozását alkalmazza. A klasszikus üzembe helyezési modell már nem ajánlott, és a Resource Manager-modell már felülírja őket. 
+A klasszikus üzembe helyezési modell a régebbi generációs Azure-telepítési modell. A virtuális gépek és a virtuálisgép-méretezési csoportok esetében a globális vCPU-kvóta korlátozását alkalmazza. A klasszikus üzembe helyezési modell már nem ajánlott, és a Resource Manager-modell már felülírja őket.
 
-Ha többet szeretne megtudni a két üzembe helyezési modellről és a Resource Manager használatának előnyeiről, tekintse meg a [Resource Manager és a klasszikus üzembe helyezés](../../azure-resource-manager/management/deployment-models.md) lapot.
- 
-Új előfizetés létrehozásakor a rendszer a vCPU alapértelmezett kvótáját rendeli hozzá. Amikor új virtuális gépet kíván üzembe helyezni a klasszikus üzemi modell használatával, az összes régió új és meglévő vCPU-használatának összege nem haladhatja meg a klasszikus üzemi modellhez jóváhagyott vCPU-kvótát.
- 
-További információ az [Azure-előfizetés és a szolgáltatás korlátai](https://aka.ms/quotalimits) oldalon található kvótákkal kapcsolatban.
+Ha többet szeretne megtudni a két üzembe helyezési modellről és a Resource Manager használatának előnyeiről, tekintse meg a [Resource Manager és a klasszikus üzembe helyezés](../../azure-resource-manager/management/deployment-models.md)című témakört.
 
-A klasszikus üzemi modellhez tartozó vCPU-kvóta növelését a "Súgó + támogatás" panelen vagy a portál "használat + kvóta" paneljén kérheti le.
+Új előfizetés létrehozásakor a rendszer a vCPU alapértelmezett kvótáját rendeli hozzá. Amikor új virtuális gépet kíván üzembe helyezni a klasszikus üzemi modell használatával, az összes régióban az új és a meglévő vCPU-használat összege nem haladhatja meg a klasszikus üzemi modellhez jóváhagyott vCPU-kvótát.
 
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-the-help--support-blade"></a>Kérelem/virtuálisgép-sorozat vCPU kvótájának növekedése az előfizetés szintjén a **Súgó + támogatás** panelen
+A kvótákkal kapcsolatos további tudnivalókért tekintse meg az [Azure-előfizetés és a szolgáltatás korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md)című témakört.
 
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure "Súgó + támogatás" paneljén, amely a Azure Portal érhető el. 
+A klasszikus üzemi modellre vonatkozó vCPU-kvóta növelését is kérheti. Használja a **Súgó + támogatás** vagy a **használat + kvóták** használatát a Azure Portalban.
 
-1. https://portal.azure.com válassza a **Súgó + támogatás**lehetőséget.
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-help--support"></a>Kérelem/virtuálisgép-sorozat vCPU-kvótájának növekedése az előfizetés szintjén a Súgó + támogatás használatával
 
-   ![Súgó + támogatás](./media/resource-manager-core-quotas-request/helpsupport.png)
- 
-2.  Válassza az **Új támogatási kérelem** lehetőséget. 
+Az alábbi útmutatást követve hozzon létre egy támogatási kérést a Azure Portal **Súgó és támogatás** szolgáltatásával.
 
-      ![Új támogatási kérelem](./media/resource-manager-core-quotas-request/newsupportrequest.png)
+1. A [Azure Portal](https://portal.azure.com) menüben válassza a **Súgó + támogatás**lehetőséget.
 
-3. A probléma típusa legördülő menüben válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
+   ![Válassza a Súgó + támogatás lehetőséget a Azure Portal](./media/resource-manager-core-quotas-request/help-plus-support.png)
 
-   ![Probléma típusa legördülő lista](./media/resource-manager-core-quotas-request/issuetypedropdown.png)
+1. Válassza az **Új támogatási kérelem** lehetőséget.
 
-4. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
+   ![Új támogatási kérelem létrehozása a Azure Portal](./media/resource-manager-core-quotas-request/new-support-request.png)
 
-   ![Előfizetés-hírolvasó kiválasztása](./media/resource-manager-core-quotas-request/select-subscription-sr.png)
-   
-5. Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** a **kvóta típusa** legördülő menüben. 
+1. A **probléma típusa mezőben**válassza a **szolgáltatás és előfizetés korlátai (kvóták)** lehetőséget.
+
+   ![Válassza ki a kvótákat a probléma típusaként.](./media/resource-manager-core-quotas-request/select-quota-issue-type.png)
+
+1. Válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
+
+   ![Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné](./media/resource-manager-core-quotas-request/select-subscription-support-request.png)
+
+1. A **kvóta típusa**beállításnál válassza a **számítási-VM (magok-vCPU) előfizetési korlát növekszik**lehetőséget.
+
+   ![Válassza ki a kvóta típusát a növeléshez](./media/resource-manager-core-quotas-request/select-quota-type.png)
+
+1. Kattintson a Next (tovább) gombra **: megoldások** a **probléma részleteinek**megnyitásához. További információk megadásához válassza a **részletek megadása** lehetőséget.
+
+   ![Adja meg a kérését a következő címen](./media/resource-manager-core-quotas-request/provide-details-link.png)
+
+1. A **kvóta részletei**területen válassza a **klasszikus** lehetőséget, és válasszon egy **helyet**.
+
+   ![Részletek hozzáadása, beleértve a telepítési modellt és a helyet](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+
+1. **SKU-család**esetében jelöljön ki egy vagy több SKU-családot a növeléshez.
+
+   ![A növekedni kívánt SKU-család meghatározása](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+
+1. Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához szüntesse meg az SKU- **család** kijelölését, vagy válassza az Elvetés "X" ikont. Miután megad egy kvótát az egyes SKU-családokhoz, válassza a mentés lehetőséget, **majd folytassa** a **kvóta részleteiben** a támogatási kérelem folytatásához.
+
+   ![Új korlátok kérése](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+
+## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usage--quotas"></a>Kérelem/virtuálisgép-sorozat vCPU-kvóta növelése az előfizetési szinten a használat + kvóták használatával
+
+Az alábbi útmutatást követve hozzon létre egy támogatási kérést a **használat + kvóták** használatával a Azure Portalban.
+
+1. A [Azure Portal](https://portal.azure.com)keresse meg és válassza ki az **előfizetések**elemet.
+
+   ![Ugrás az előfizetések Azure Portal](./media/resource-manager-core-quotas-request/search-for-subscriptions.png)
+
+1. Válassza ki azt az előfizetést, amelynek a kvótáját emelni szeretné.
+
+   ![Válassza ki a módosítandó előfizetést](./media/resource-manager-core-quotas-request/select-subscription-change-quota.png)
+
+1. Válassza a **használat + kvóták**lehetőséget.
+
+   ![Az előfizetéshez tartozó használati és kvóták kiválasztása](./media/resource-manager-core-quotas-request/select-usage-plus-quotas.png)
+
+1. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
+
+   ![Válassza ki a kvóta növelését](./media/resource-manager-core-quotas-request/request-increase-from-subscription.png)
+
+1. Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** a **kvóta típusaként**.
 
    ![Kvóta típusának kiválasztása](./media/resource-manager-core-quotas-request/select-quota-type.png)
 
-6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
+1. Kattintson a Next (tovább) gombra **: megoldások** a **probléma részleteinek**megnyitásához. További információk megadásához válassza a **részletek megadása** lehetőséget.
 
-   ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
+   ![Adja meg a kérés részleteit](./media/resource-manager-core-quotas-request/provide-details-link.png)
 
-7. A **kvóta részletei** panelen válassza a klasszikus lehetőséget, és válasszon egy helyet.
+1. A **kvóta részletei**területen válassza a **klasszikus** és a **hely**lehetőséget.
 
-   ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
+   ![Válassza ki a kvóta részleteit, beleértve a telepítési modellt és a helyet](./media/resource-manager-core-quotas-request/quota-details-classic.png)
 
-8. Válassza ki a növekményt igénylő **SKU-családokat** . 
+1. Válasszon ki egy vagy több SKU-családot a növekedéshez.
 
-   ![Termékváltozat-család](./media/resource-manager-core-quotas-request/sku-family-classic.png)
+   ![Válassza ki az SKU-családot a növekedéshez](./media/resource-manager-core-quotas-request/sku-family-classic.png)
 
-9. Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához törölje az SKU-t a SKU-család legördülő menüből, vagy kattintson az Elvetés "x" ikonra. Miután megadta a kívánt kvótát az egyes SKU-családokhoz, kattintson a Save (Mentés) gombra, **és folytassa** a kvóta részletei panelen a támogatási kérések létrehozásához.
+1. Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához szüntesse meg az SKU- **család** kijelölését, vagy válassza az Elvetés "X" ikont. Miután megad egy kvótát az egyes SKU-családokhoz, válassza a mentés lehetőséget, **majd folytassa** a **kvóta részleteiben** a támogatási kérelem folytatásához.
 
-   ![Új korlátok](./media/resource-manager-core-quotas-request/new-limits-classic.png)
-
-## <a name="request-per-vm-series-vcpu-quota-increase-at-subscription-level-using-usages--quota-blade"></a>Kérelem/virtuálisgép-sorozat vCPU kvótájának növekedése az előfizetési szinten a használat és a **kvóta** panelen
-
-Az alábbi útmutatást követve hozzon létre egy támogatási kérést az Azure-ban a Azure Portalben elérhető "használati + kvóta" panelen. 
-
-1. https://portal.azure.com válassza az **előfizetések**lehetőséget.
-
-   ![Előfizetések](./media/resource-manager-core-quotas-request/subscriptions.png)
-
-2. Válassza ki az előfizetést, amelynek a kvótáját emelni szeretné.
-
-   ![Előfizetés kiválasztása](./media/resource-manager-core-quotas-request/select-subscription.png)
-
-3. **Használat + kvóták** kiválasztása
-
-   ![Használat és kvóták kiválasztása](./media/resource-manager-core-quotas-request/select-usage-quotas.png)
-
-4. A jobb felső sarokban válassza a **kérelem növekedés**lehetőséget.
-
-   ![Kérések növekedése](./media/resource-manager-core-quotas-request/request-increase.png)
-
-5. Válassza a **számítási-VM (magok-vCPU) előfizetési korlátot** az árajánlat típusaként. 
-
-   ![Űrlap kitöltése](./media/resource-manager-core-quotas-request/select-quota-type.png)
-   
-6. A **probléma részletei**területen további információkat adhat meg a kérés feldolgozásához a **részletek megadása**lehetőségre kattintva.
-
-   ![Részletek megadása](./media/resource-manager-core-quotas-request/provide-details.png)
-
-7. A **kvóta részletei** panelen válassza a klasszikus lehetőséget, és válasszon egy helyet.
-
-   ![Kvóta részletei – DM](./media/resource-manager-core-quotas-request/quota-details-classic.png)
-
-8. Válassza ki a növekményt igénylő **SKU-családokat** . 
-
-   ![Termékváltozat-család](./media/resource-manager-core-quotas-request/sku-family-classic.png)
-
-9. Adja meg az előfizetéshez hasonló új korlátozásokat. Egy sor eltávolításához törölje az SKU-t a SKU-család legördülő menüből, vagy kattintson az Elvetés "x" ikonra. Miután megadta a kívánt kvótát az egyes SKU-családokhoz, kattintson a Save (Mentés) gombra, **és folytassa** a kvóta részletei panelen a támogatási kérések létrehozásához.
-
-   ![Új korlátok](./media/resource-manager-core-quotas-request/new-limits-classic.png)
+   ![Új kvóta megadása](./media/resource-manager-core-quotas-request/new-limits-classic.png)
 

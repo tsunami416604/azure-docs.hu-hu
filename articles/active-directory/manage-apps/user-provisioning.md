@@ -15,12 +15,12 @@ ms.date: 11/25/2019
 ms.author: mimart
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eefdb42cebad2b7f532392254b652742527ed862
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 9848e686188288b507a0a74d0f9fa16f8f0e4253
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76711476"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841199"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-applications-with-azure-active-directory"></a>A felhasználók kiépítésének automatizálása és az alkalmazásokkal való kiépítés Azure Active Directory
 
@@ -67,7 +67,7 @@ Az Azure AD számos népszerű SaaS-alkalmazás és emberi erőforrásrendszer e
 
 * **Az SCIM 2,0-et támogató alkalmazások**. Az SCIM 2,0-alapú felhasználói felügyeleti API-kat megvalósító alkalmazások általános összekapcsolásával kapcsolatos információkért lásd: [scim-végpont létrehozása és a felhasználók üzembe](use-scim-to-provision-users-and-groups.md)helyezésének konfigurálása.
 
-## <a name="what-is-scim"></a>Mi az a SCIM?
+## <a name="what-is-system-for-cross-domain-identity-management-scim"></a>Mi a rendszer a tartományok közötti Identitáskezelés kezelésére (SCIM)?
 
 A kiépítés és a megszüntetés automatizálása érdekében az alkalmazások tulajdonosi felhasználói és csoportos API-kat tesznek elérhetővé. Azonban bárki, aki több alkalmazásban próbálta felügyelni a felhasználókat, azt fogja tudni, hogy minden alkalmazás ugyanazt az egyszerű műveletet próbálja végrehajtani, például a felhasználók létrehozását és frissítését, a felhasználók csoportokhoz való hozzáadását vagy a felhasználók megszüntetését. Az ilyen egyszerű műveletek azonban a különböző végponti elérési utakkal, a felhasználói adatok megadására szolgáló különböző módszerekkel, valamint egy másik, az egyes elemek ábrázolására szolgáló sémával eltérő módon valósíthatók meg.
 

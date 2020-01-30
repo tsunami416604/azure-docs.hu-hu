@@ -1,6 +1,6 @@
 ---
-title: 'Az Azure AD Connect szinkronizálása: A szűrés konfigurálása |} A Microsoft Docs'
-description: Ismerteti az Azure AD Connect-szinkronizálás szűrőjének konfigurálása.
+title: 'Azure AD Connect Sync: szűrés konfigurálása | Microsoft Docs'
+description: Elmagyarázza, hogyan konfigurálhatja a szűrést Azure AD Connect szinkronizálásban.
 services: active-directory
 documentationcenter: ''
 author: billmath
@@ -16,318 +16,318 @@ ms.date: 03/26/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: eeb2af6283e5c9d8a41e74152a94b85efdae1866
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 983699dfbfe3e8fa332da4810d1514a11029077f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60243505"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768177"
 ---
-# <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: A szűrés konfigurálása
-Szűrés segítségével szabályozhatja, mely objektumai jelenjenek meg az Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció minden objektumot a konfigurált erdőben lévő minden tartományban vesz igénybe. Ez általában az ajánlott konfiguráció. Felhasználók használják az Office 365 számítási feladatok, például az Exchange Online és Skype vállalati verzió, egy teljes globális címlista előnyös, így e-mailt, és mindenki hívja. Az alapértelmezett konfigurációnál, ugyanazt a felhasználói élményt, hogy azok egy a helyszíni Exchange-hez vagy a Lync végrehajtásának kellene.
+# <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
+A szűrés használatával szabályozhatja, hogy mely objektumok jelenjenek meg Azure Active Directory (Azure AD) a helyszíni címtárból. Az alapértelmezett konfiguráció a konfigurált erdők összes tartományában lévő összes objektumot átveszi. Általában ez az ajánlott konfiguráció. Az Office 365 munkaterheléseket, például az Exchange Online-t és a Skype vállalati alkalmazást használó felhasználók teljes globális címlistát használhatnak, így e-maileket küldhetnek, és meghívhatnak mindenkit. Az alapértelmezett konfigurációval ugyanazzal a tapasztalattal rendelkeznek, mint az Exchange vagy a Lync helyszíni megvalósításával.
 
-Bizonyos esetekben azonban Ön szükséges néhány módosítást az alapértelmezett konfigurációval. Néhány példa:
+Bizonyos esetekben azonban szükség van az alapértelmezett konfiguráció módosítására. Néhány példa:
 
-* Tervezi használni a [több Azure AD directory topológiáját](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant). Szabályozhatja, hogy egy adott szinkronizálandó objektumok körét egy szűrőt kell az Azure AD-címtárban.
-* Egy próbaprogram futtatása az Azure vagy Office 365, és csak felhasználók egy részhalmazát szeretné az Azure ad-ben. A kis program, ez nem fontos a rendelkezik a funkció bemutatása egy teljes globális címlista.
-* Hogy sok szolgáltatás és más megbízhatóságának fiókok, amelyet szeretne az Azure ad-ben.
-* Megfelelőségi okokból minden felhasználói fiókok a helyszíni ne törölje. Csak letiltja őket. De az Azure ad-ben, célszerű csak akkor aktív fiókok meglétét.
+* A [multi-Azure ad címtár-topológiát](plan-connect-topologies.md#each-object-only-once-in-an-azure-ad-tenant)tervezi használni. Ezután egy szűrőt kell alkalmaznia annak szabályozására, hogy mely objektumok legyenek szinkronizálva egy adott Azure AD-címtárral.
+* Az Azure-hoz vagy az Office 365-hoz készült pilóta futtatásakor csak a felhasználók egy részhalmazát szeretné használni az Azure AD-ben. A kis pilóta esetében nem fontos, hogy a funkciók megjelenítéséhez teljes globális címlistát lehessen használni.
+* Számos szolgáltatásfiókot és más olyan nem személyes fiókot tartalmaz, amelyeket nem szeretne az Azure AD-ben használni.
+* Megfelelőségi okokból nem törölheti a helyszíni felhasználói fiókokat. Csak azokat kell letiltani. Az Azure AD-ben azonban csak azt szeretné, hogy az aktív fiókok jelen legyenek.
 
-Ez a cikk ismerteti a különböző szűrési módszerek konfigurálása.
+Ez a cikk a különböző szűrési módszerek konfigurálását ismerteti.
 
 > [!IMPORTANT]
-> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+> A Microsoft nem támogatja az Azure AD Connect szinkronizálásának módosítását vagy a hivatalos dokumentumokban szereplő műveleteken kívüli használat. Ezen műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. Ennek eredményeképpen a Microsoft nem tud technikai támogatást biztosítani az ilyen üzemelő példányokhoz.
 
-## <a name="basics-and-important-notes"></a>Alapjait és a fontos megjegyzések
-Az Azure AD Connect szinkronizálása engedélyezheti a szűrés bármikor. Ha indítsa el a címtár-szinkronizálás alapértelmezett konfigurációja, majd a szűrés konfigurálása az objektumok, amelyek ki vannak szűrve van már nincs szinkronizálva az Azure AD. Miatt ez a változás az Azure ad-ben, amely korábban már szinkronizált, de majd szűrve lettek objektumok törlődnek, az Azure ad-ben.
+## <a name="basics-and-important-notes"></a>Alapismeretek és fontos megjegyzések
+Azure AD Connect Sync szolgáltatásban bármikor engedélyezheti a szűrést. Ha a címtár-szinkronizálás alapértelmezett konfigurációját választja, és a szűrést konfigurálja, a kiszűrt objektumok már nem szinkronizálhatók az Azure AD-vel. Ennek a változásnak a következtében az Azure AD összes olyan objektuma, amely korábban szinkronizálva lett, de az Azure AD-ben törölve lett.
 
-Szűrés módosítása előtt győződjön meg arról, hogy Ön [letiltása az ütemezett feladat](#disable-the-scheduled-task) így véletlenül ne exportálja, az még nem ellenőrizte, hogy a megfelelő módosításokat.
+Mielőtt megkezdené a szűrést, győződjön meg arról, hogy [letiltotta az ütemezett feladatot](#disable-the-scheduled-task) , így nem kell véletlenül exportálnia azokat a módosításokat, amelyeket még nem ellenőrzött, hogy helyesek legyenek.
 
-Szűrés távolíthatja egy időben sok objektumot, mert érdemes győződjön meg arról, hogy az új szűrők helyesen-e módosítások exportálna az Azure AD megkezdése előtt. Miután végzett a konfigurációs lépések, javasoljuk, hogy kövesse a [ellenőrzési lépések](#apply-and-verify-changes) előtt exportálhatja, és hajtsa végre a módosításokat az Azure ad-hez.
+Mivel a szűrés egyszerre több objektumot is eltávolíthat, meg kell győződnie arról, hogy az új szűrők helyesek, mielőtt megkezdené az Azure AD-beli módosítások exportálását. A konfigurációs lépések elvégzése után erősen ajánlott az [ellenőrzési lépések](#apply-and-verify-changes) követése az Azure ad exportálása és módosítása előtt.
 
-Véletlenül iratkozott le, a szolgáltatás számos objektumok törlése elleni "[véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)" alapértelmezés szerint be van kapcsolva. Törlése miatt (alapértelmezés szerint 500) szűrés több objektum esetén kell, hogy a törlések oldhatják fel az Azure ad-ben Ez a cikk lépéseit kövesse.
+A "[véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)" funkció alapértelmezés szerint be van kapcsolva, hogy megakadályozza a sok objektum törlését. Ha a szűrés miatt sok objektumot töröl (500 alapértelmezés szerint), akkor a cikk lépéseit követve engedélyezheti a törlést az Azure AD-be való átugráshoz.
 
-Ha egy build 2015 November előtti ([1.0.9125](reference-connect-version-history.md#1091250)), szűrő beállításait módosítja, és használja a Jelszókivonat-szinkronizálás, akkor kell elindítani a teljes szinkronizálás az összes jelszó, a konfiguráció befejezését követően. Teljes jelszó-szinkronizálás aktiválása lépéseiért lásd: [teljes az összes jelszó-szinkronizálás aktiválása](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a build 1.0.9125 vagy újabb, majd a normál **teljes szinkronizálás** művelet is kiszámítja e szinkronizálni, és ha ez a lépés további már nem szükséges.
+Ha november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) előtti buildet használ, módosítsa a szűrő konfigurációját, és használja a jelszó-kivonatolási szinkronizálást, majd a konfiguráció befejezése után minden jelszó teljes szinkronizálását el kell indítania. A jelszó teljes szinkronizálásának elindítására vonatkozó lépésekért lásd: az [összes jelszó teljes szinkronizálásának elindítása](tshoot-connect-password-hash-synchronization.md#trigger-a-full-sync-of-all-passwords). Ha a build 1.0.9125 vagy újabb verzióját használja, akkor a normál **teljes szinkronizálási** művelet azt is kiszámítja, hogy szinkronizálva legyenek-e a jelszavak, és ha ez a további lépés már nem szükséges.
 
-Ha **felhasználói** objektumok véletlenül törölve lett az Azure ad-ben egy szűrési hiba miatt, akkor újra létrehozhatja a felhasználói objektumok az Azure ad-ben a szűrési beállítások eltávolítása. Ezután újra szinkronizálhatja a címtárakat. Ez a művelet a felhasználók Lomtárból való visszaállítása az Azure ad-ben. Azonban egyéb típusú objektumokat nem törlésének visszavonása. Például ha véletlenül töröl egy biztonsági csoportot, és az ACL-t használta azt egy erőforrást, a csoport és a hozzáférés-vezérlési listák nem állítható helyre.
+Ha egy szűrési hiba miatt véletlenül törölte a **felhasználói** objektumokat az Azure ad-ben, akkor az Azure ad-ben újra létrehozhatja a felhasználói objektumokat a szűrési konfigurációk eltávolításával. Ezután szinkronizálhatja a címtárakat. Ez a művelet visszaállítja a felhasználókat a Lomtárból az Azure AD-ben. Más objektumtípusok törlését azonban nem lehet visszavonni. Ha például véletlenül töröl egy biztonsági csoportot, és az erőforrás-HOZZÁFÉRÉSre volt használva, a csoport és az ACL-ek nem állíthatók helyre.
 
-Az Azure AD Connect csak törli az objektumot, amely rendelkezik a hatókörbe egyszer tekinthető. Ha egy másik szinkronizálási motor által létrehozott objektumok az Azure ad-ben, és ezek az objektumok nem szerepelnek a hatókör, hozzáadása a szűrés nem távolítja el azokat. Például ha megkezdése a teljes címtárban teljes másolata az Azure ad-ben létrehozott DirSync-kiszolgálóval, és a egy új Azure AD Connect szinkronizálási kiszolgáló telepít szűrés engedélyezve van az elejétől párhuzamosan, az Azure AD Connect nem távolítja el a felesleges objektumok a DirSync által létrehozott.
+Azure AD Connect csak azokat az objektumokat törli, amelyeknek a hatókörében szerepelnek. Ha vannak olyan objektumok az Azure AD-ben, amelyeket egy másik szinkronizáló motor hozott létre, és ezek az objektumok nem tartoznak a hatókörbe, a szűrés hozzáadásával nem távolítja el azokat. Ha például egy olyan Azure-kiszolgálóval indul, amely létrehozta a teljes címtár teljes másolatát az Azure AD-ben, és egy új Azure AD Connect szinkronizáló kiszolgálót telepít, párhuzamosan, az elején lévő szűréssel, Azure AD Connect nem távolítja el a felesleges objektumokat. , amelyet az rSync hozott létre.
 
-A szűrési konfigurációját is eltávolítsa telepítése vagy frissítése az Azure AD Connect újabb verzióra. Mindig ajánlott eljárás az, győződjön meg arról, hogy a nem véletlenül módosítása frissítés után egy újabb verzióra első szinkronizálási ciklusának futtatása előtt.
+A szűrési konfiguráció megmarad, ha a Azure AD Connect újabb verziójára telepíti vagy frissíti. Az első szinkronizálási ciklus futtatása előtt mindig érdemes ellenőrizni, hogy a konfigurációt véletlenül nem módosították-e az újabb verzióra való frissítés után.
 
-Ha egynél több erdő, majd telepítenie kell a szűrési konfigurációkat minden erdőben (feltéve, hogy ugyanazt a konfigurációt az összes kívánt) ebben a témakörben ismertetett.
+Ha egynél több erdővel rendelkezik, a jelen témakörben ismertetett szűrési beállításokat minden erdőre alkalmaznia kell (feltéve, hogy mindegyikhez ugyanazt a konfigurációt szeretné használni).
 
 ### <a name="disable-the-scheduled-task"></a>Az ütemezett feladat letiltása
-A beépített ütemezési, amely elindít egy szinkronizálási ciklust 30 percenként letiltásához kövesse az alábbi lépéseket:
+Az alábbi lépéseket követve letilthatja a szinkronizálási ciklust 30 percenként indító beépített Feladatütemezőt:
 
-1. Nyissa meg egy PowerShell parancssorba.
-2. Futtatás `Set-ADSyncScheduler -SyncCycleEnabled $False` az ütemező letiltása.
-3. Hajtsa végre a módosításokat szerepelnek ebben a cikkben.
-4. Futtatás `Set-ADSyncScheduler -SyncCycleEnabled $True` az ütemező újra engedélyezni szeretné az.
+1. Lépjen a PowerShell-parancssorba.
+2. Futtassa `Set-ADSyncScheduler -SyncCycleEnabled $False` az ütemező letiltásához.
+3. Végezze el a cikkben leírt módosításokat.
+4. Futtassa `Set-ADSyncScheduler -SyncCycleEnabled $True` az ütemező újbóli engedélyezéséhez.
 
-**Ha egy Azure AD Connect build 1.1.105.0 előtt**  
-Az ütemezett feladatot, amely elindít egy szinkronizálási ciklust három óránként letiltásához kövesse az alábbi lépéseket:
+**Ha a 1.1.105.0 előtt Azure AD Connect buildet használ**  
+Az alábbi lépéseket követve letilthatja a szinkronizálási ciklust három óránként indító ütemezett feladatot:
 
-1. Indítsa el **Feladatütemező** származó a **Start** menü.
-2. Közvetlenül a **Feladatütemező könyvtár**, keresse meg a feladat nevű **Azure AD Sync Schedulert**, kattintson a jobb gombbal, és válassza ki **letiltása**.  
-   ![A Feladatütemező](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
-3. Mostantól konfigurációs módosítások és a szinkronizálási motor-ból, manuálisan futtassa a **Synchronization Service Managert** konzolon.
+1. Indítsa el a **Feladatütemezőt** a **Start** menüből.
+2. Közvetlenül a Feladatütemező **könyvtár**alatt keresse meg **Azure ad-szinkronizáló Scheduler**nevű feladatot, kattintson a jobb gombbal, és válassza a **Letiltás**lehetőséget.  
+   ![Feladatütemező](./media/how-to-connect-sync-configure-filtering/taskscheduler.png)  
+3. Most már elvégezheti a konfigurációs módosításokat, és manuálisan futtathatja a Szinkronizáló motort a **synchronization Service Manager** -konzolról.
 
-Miután végrehajtotta a szűrési módosításokat, ne felejtse el ismét elérhető nem lesz és **engedélyezése** újra a feladatot.
+Miután elvégezte az összes szűrési módosítást, ne felejtse el visszatérni, és **engedélyezze** újra a feladatot.
 
-## <a name="filtering-options"></a>Szűrés beállításai
-Az alábbi szűrési konfigurációtípusai alkalmazhat a címtár-Szinkronizáló eszköz:
+## <a name="filtering-options"></a>Szűrési beállítások
+A következő szűrési konfigurációs típusokat alkalmazhatja a címtár-szinkronizáló eszközre:
 
-* [**Csoport alapú**](#group-based-filtering): Szűrés egyetlen csoport alapján csak konfigurálható a kezdeti telepítés a telepítési varázsló használatával.
-* [**Tartományalapú**](#domain-based-filtering): Ez a beállítás használatával kiválaszthatja, mely tartományokat az Azure AD szinkronizálása. Is hozzá és távolíthat el tartományokat abból a szinkronizálási motor konfiguráció, ha módosítja a helyszíni infrastruktúrát az Azure AD Connect-szinkronizálás telepítése után.
-* [**Szervezeti egység (OU) – alapú**](#organizational-unitbased-filtering): Ez a beállítás használatával kiválaszthatja, amely szervezeti egységek szinkronizálása az Azure AD. Ez a beállítás akkor a kiválasztott szervezeti minden objektum esetében.
-* [**Attribútumalapú**](#attribute-based-filtering): Ez a beállítás használatával objektumokat az objektumokat az attribútumértékek alapján szűrhetők. Különböző objektumtípusokra vonatkozó különböző szűrőket is rendelkezhet.
+* [**Csoportos**](#group-based-filtering): egyetlen csoport alapján történő szűrés csak a telepítési varázslóval állítható be a kezdeti telepítésre.
+* [**Tartományalapú**](#domain-based-filtering): ezzel a beállítással kiválaszthatja, hogy mely tartományok szinkronizálhatók az Azure ad-vel. A szinkronizálási motor konfigurációjától is hozzáadhat és eltávolíthat tartományokat, amikor a Azure AD Connect Sync telepítése után módosításokat végez a helyszíni infrastruktúrában.
+* [**Szervezeti egység (OU) – alapú**](#organizational-unitbased-filtering): ezzel a beállítással kiválaszthatja, hogy mely szervezeti egységek legyenek szinkronizálva az Azure ad szolgáltatásba. Ez a beállítás a kiválasztott szervezeti egységekben lévő összes objektumtípus esetében használható.
+* [**Attribútum-alapú**](#attribute-based-filtering): Ha ezt a lehetőséget választja, az objektumok attribútumai alapján is szűrheti az objektumokat. Különböző típusú szűrőket is használhat.
 
-Egyszerre több szűrési beállítások is használhatja. Ha például segítségével szervezeti egység szerinti szűrés csak egy szervezeti egység objektumát tartalmazza. Egy időben használhatja attribútum szerinti szűrés objektumok további szűréséhez. Több szűrési módszerek, a szűrők használata logikai "és" a szűrők között.
+Egyszerre több szűrési lehetőséget is használhat. A OU-alapú szűrés használatával például csak egy szervezeti egységben lévő objektumokat tartalmazhat. Ugyanakkor attribútum-alapú szűrést is használhat az objektumok szűréséhez. Több szűrési módszer használata esetén a szűrők logikai "és" kifejezést használnak a szűrők között.
 
 ## <a name="domain-based-filtering"></a>Tartományalapú szűrés
-Ez a szakasz a lépéseket a tartományi szűrő konfigurálásához biztosít. Ha hozzáadja vagy eltávolítja az erdőben lévő tartományok, az Azure AD Connect telepítése után, akkor is a szűrési beállítások frissítése.
+Ez a szakasz a tartományi szűrő konfigurálásának lépéseit ismerteti. Ha a Azure AD Connect telepítése után adott hozzá vagy távolított el tartományokat az erdőben, akkor a szűrési konfigurációt is frissítenie kell.
 
-Az előnyben részesített módosítsa a tartományalapú szűrés módja a telepítési varázsló futtatásával és a módosítása [tartomány és szervezeti egységek szűrése](how-to-connect-install-custom.md#domain-and-ou-filtering). A telepítési varázsló automatikusan a ebben a témakörben ismertetett feladatokat.
+A tartományalapú szűrés módosításának előnyben részesített módja a telepítővarázsló futtatása, valamint a [tartomány és a szervezeti egység szerinti szűrés](how-to-connect-install-custom.md#domain-and-ou-filtering)módosítása. A telepítővarázsló automatizálja a jelen témakörben ismertetett feladatokat.
 
-Ha a telepítővarázsló futtatásához valamilyen okból nem tud csak kövesse ezeket a lépéseket.
+Ezeket a lépéseket csak akkor hajtsa végre, ha valamilyen okból nem tudja futtatni a telepítési varázslót.
 
-Tartományalapú szűrés konfiguráció alábbi lépésekből áll:
+A tartományalapú szűrési konfiguráció a következő lépésekből áll:
 
-1. Válassza ki a tartományok, amelyek fel szeretne venni a szinkronizálást.
-2. Minden hozzáadott és eltávolított tartományhoz módosítsa a futtatási profilokat.
-3. [Módosítások alkalmazása és ellenőrzése](#apply-and-verify-changes).
+1. Válassza ki a szinkronizálásba felvenni kívánt tartományokat.
+2. Minden hozzáadott és eltávolított tartomány esetében módosítsa a futtatási profilokat.
+3. [A módosítások alkalmazása és ellenőrzése](#apply-and-verify-changes).
 
-### <a name="select-the-domains-to-be-synchronized"></a>Válassza ki a szinkronizálandó tartományok
-Válassza ki a szinkronizálandó tartományok két módja van:
+### <a name="select-the-domains-to-be-synchronized"></a>Válassza ki a szinkronizálandó tartományokat
+Kétféleképpen lehet kiválasztani a szinkronizálandó tartományokat:
     - A szinkronizálási szolgáltatás használata
-    - Az Azure AD Connect varázsló használatával.
+    - A Azure AD Connect varázsló használata.
 
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>A szinkronizálási szolgáltatással szinkronizálni a tartományok kiválasztása
-Állítsa a tartomány, hajtsa végre a következő lépéseket:
+#### <a name="select-the-domains-to-be-synchronized-using-the-synchronization-service"></a>Válassza ki a szinkronizálni kívánt tartományokat a szinkronizálási szolgáltatás használatával.
+A tartományi szűrő beállításához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
-2. Indítsa el **szinkronizálási szolgáltatás** származó a **Start** menü.
-3. Válassza ki **összekötők**, majd a a **összekötők** listájához, válassza ki az összekötő típusú **Active Directory Domain Services**. A **műveletek**válassza **tulajdonságok**.  
-   ![Összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Kattintson a **könyvtárpartíciók konfigurálásának**.
-5. Az a **címtárpartíciók kiválasztása** listában, válassza ki, törölje a tartományok, igény szerint. Győződjön meg arról, hogy csak a szinkronizálni kívánt partíciók vannak-e jelölve.  
+1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
+2. Indítsa el a **szinkronizálási szolgáltatást** a **Start** menüből.
+3. Válassza az **Összekötők**lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory tartományi szolgáltatások**. A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.  
+   ![összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
+4. Kattintson a címtárpartíciók **konfigurálása**elemre.
+5. A **Select Directory Partitions (címtárpartíciók kiválasztása** ) listában válassza ki és válassza ki a kívánt tartományokat. Győződjön meg arról, hogy csak a szinkronizálni kívánt partíciók vannak kiválasztva.  
    ![Partíciók](./media/how-to-connect-sync-configure-filtering/connectorpartitions.png)  
-   Ha megváltoztatta a helyszíni Active Directory-infrastruktúrát és a hozzáadott vagy tartományok távolítva az erdő, majd kattintson a **frissítése** gomb lekérni frissített listáját. Amikor frissíti, akkor kéri a hitelesítő adatokat. Adja meg a hitelesítő adatokat, olvasási hozzáférés a Windows Server Active Directory. Nem kell lennie a felhasználót, hogy az előre van töltve a párbeszédpanelen.  
-   ![Frissítés szükséges](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
-6. Ha elkészült, zárja be a **tulajdonságok** kattintva párbeszédpanel **OK**. Az erdő tartományokat eltávolítja, ha egy előugró üzenet szerint, hogy tartományhoz el lett távolítva, és ez a konfiguráció lesznek törölve.
-7. Továbbra is módosíthatja a futtatási profilokat.
+   Ha módosította a helyszíni Active Directory infrastruktúráját, és hozzáadta vagy eltávolította a tartományokat az erdőből, kattintson a **frissítés** gombra egy frissített lista lekéréséhez. A frissítésekor a rendszer a hitelesítő adatok megadását kéri. Adjon meg olyan hitelesítő adatokat, amelyek olvasási hozzáféréssel rendelkeznek a Windows Server Active Directoryhoz. Nem kell a párbeszédpanelen előre feltöltött felhasználónak lennie.  
+   ![frissítés szükséges](./media/how-to-connect-sync-configure-filtering/refreshneeded.png)  
+6. Ha elkészült, a **Tulajdonságok** párbeszédpanel bezárásához kattintson **az OK gombra**. Ha eltávolított tartományokat az erdőből, egy üzenet jelenik meg, amely szerint a tartomány el lett távolítva, és a rendszer törli a konfigurációt.
+7. Folytassa a futtatási profilok módosításával.
 
-#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Válassza ki a tartományok szinkronizálását az Azure AD Connect varázsló használatával
-Állítsa a tartomány, hajtsa végre a következő lépéseket:
+#### <a name="select-the-domains-to-be-synchronized-using-the-azure-ad-connect-wizard"></a>Válassza ki a szinkronizálni kívánt tartományokat a Azure AD Connect varázsló segítségével
+A tartományi szűrő beállításához hajtsa végre a következő lépéseket:
 
-1.  Az Azure AD Connect varázsló indítása
-2.  Kattintson a **Konfigurálás** elemre.
-3.  Válassza ki **szinkronizálási beállítások testreszabása** kattintson **tovább**.
+1.  A Azure AD Connect varázsló elindítása
+2.  Kattintson a **Configure** (Konfigurálás) elemre.
+3.  Válassza a **szinkronizálási beállítások testreszabása lehetőséget** , majd kattintson a **tovább**gombra.
 4.  Adja meg Azure AD hitelesítő adatait
-5.  Az a **csatlakoztatott könyvtárak** kattintson képernyő **tovább**.
-6.  Az a **tartomány és szervezeti egység szűrési lap** kattintson **frissítése**.  Új tartományok ügyfélalkalmazásra most jelenik meg, és a törölt tartományok eltűnik.
+5.  A **csatlakoztatott könyvtárak** képernyőn kattintson a **tovább**gombra.
+6.  A **tartomány és szervezeti egység szűrése lapon** kattintson a **frissítés**gombra.  Az új tartományok rosszul jelennek meg, a törölt tartományok pedig megszűnnek.
    ![Partíciók](./media/how-to-connect-sync-configure-filtering/update2.png)  
 
-### <a name="update-the-run-profiles"></a>A futtatási profil frissítése
-Ha a tartomány-szűrőnek, is frissíteni szeretné a futtatási profilokat.
+### <a name="update-the-run-profiles"></a>A futtatási profilok frissítése
+Ha frissítette a tartományi szűrőt, a futtatási profilokat is frissítenie kell.
 
-1. Az a **összekötők** listában, győződjön meg arról, hogy van-e kiválasztva az összekötőre, amelyet az előző lépésben módosította. A **műveletek**válassza **Configure Run Profiles**.  
-   ![Összekötő futtatási profilokat 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
-2. Keresse meg, és azonosíthatja a következő profilokat:
+1. Az **Összekötők** listájában ellenőrizze, hogy az előző lépésben módosított összekötő ki van-e választva. A **műveletek**területen válassza a **futtatási profilok konfigurálása**lehetőséget.  
+   ![-összekötőn futó profilok 1](./media/how-to-connect-sync-configure-filtering/connectorrunprofiles1.png)  
+2. Keresse meg és azonosítsa a következő profilokat:
     * Teljes importálás
     * Teljes szinkronizálás
     * Különbözeti importálás
     * Különbözeti szinkronizálás
     * Exportálás
-3. Minden profilt, módosítsa a **hozzáadott** és **eltávolított** tartományok.
-    1. Minden egyes az öt profilok esetében kövesse az alábbi lépéseket az egyes **hozzáadott** tartomány:
-        1. Válassza ki a futtatási profil, és kattintson a **új lépés**.
-        2. Az a **konfigurálása lépésben** lap a **típus** legördülő menüben válassza a lépés írja be a neve megegyezik a profil konfigurálásakor. Ezután kattintson a **Next** (Tovább) gombra.  
-        ![Összekötő futtatási profilokat 2](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
-        3. Az a **összekötő-konfiguráció** lap a **partíció** legördülő menüben válassza ki a tartományban, amelyhez hozzáadta a tartomány-szűrő nevét.  
-        ![Összekötő futtatási profilokat 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
-        4. Gombra kattintva zárja be a **futtató profilhoz konfigurálja** párbeszédpanelen kattintson a **Befejezés**.
-    2. Minden egyes az öt profilok esetében kövesse az alábbi lépéseket az egyes **eltávolított** tartomány:
-        1. Válassza ki a futtatási profil.
-        2. Ha a **érték** , a **partíció** attribútumnak egy GUID Azonosítót, válassza ki a futtatási lépés, kattintson a **lépést Törlés**.  
-        ![Összekötő futtatási profilokat 4](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
-    3. Ellenőrizze a módosítást. Minden olyan tartományban, szinkronizálni szeretné az egyes futtatási profilok lépésben szerepelnie kell.
-4. Gombra kattintva zárja be a **Configure Run Profiles** párbeszédpanelen kattintson a **OK**.
-5.  A konfigurálás befejezéséhez, futtatnia kell egy **teljes importálást** és a egy **különbözeti szinkronizálási**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
+3. Az egyes profilok esetében módosítsa a **hozzáadott** és az **eltávolított** tartományokat.
+    1. Mindegyik öt profil esetében hajtsa végre a következő lépéseket az egyes **hozzáadott** tartományokhoz:
+        1. Válassza ki a futtatási profilt, és kattintson az **új lépés**gombra.
+        2. A **lépés konfigurálása** oldalon, a **típus** legördülő menüben válassza ki a lépés típusát ugyanazzal a névvel, mint a konfigurálni kívánt profillal. Ezután kattintson a **Next** (Tovább) gombra.  
+        ![-összekötő 2. profilokat futtat](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep1.png)  
+        3. Az **összekötő konfigurációja** lapon, a **partíció** legördülő menüben válassza ki a tartomány szűrőhöz hozzáadott tartomány nevét.  
+        ![-összekötőn futó profilok 3](./media/how-to-connect-sync-configure-filtering/runprofilesnewstep2.png)  
+        4. A **futtatási profil konfigurálása** párbeszédpanel bezárásához kattintson a **Befejezés**gombra.
+    2. Minden öt profil esetében hajtsa végre a következő lépéseket az egyes **eltávolított** tartományokhoz:
+        1. Válassza ki a futtatási profilt.
+        2. Ha a **Partition** ATTRIBÚTUM **értéke** GUID, válassza a Futtatás lépést, és kattintson a **lépés törlése**gombra.  
+        ![-összekötőn a 4. profil fut](./media/how-to-connect-sync-configure-filtering/runprofilesdeletestep.png)  
+    3. Ellenőrizze a változást. Minden szinkronizálni kívánt tartománynak szerepelnie kell az egyes futtatási profilokban szereplő lépésként.
+4. A **futtatási profilok konfigurálása** párbeszédpanel bezárásához kattintson **az OK**gombra.
+5.  A konfiguráció befejezéséhez **teljes importálást** és **különbözeti szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
-## <a name="organizational-unitbased-filtering"></a>Szervezeti egység-alapú szűrés
-Az előnyben részesített módosítsa a szervezeti egység szerinti szűrés módja a telepítési varázsló futtatásával és a módosítása [tartomány és szervezeti egységek szűrése](how-to-connect-install-custom.md#domain-and-ou-filtering). A telepítési varázsló automatikusan a ebben a témakörben ismertetett feladatokat.
+## <a name="organizational-unitbased-filtering"></a>Szervezeti egység – alapú szűrés
+A szervezeti egység szerinti szűrés elsődleges módja a telepítővarázsló futtatása, valamint a [tartomány és a szervezeti egység szűrésének](how-to-connect-install-custom.md#domain-and-ou-filtering)módosítása. A telepítővarázsló automatizálja a jelen témakörben ismertetett feladatokat.
 
-Ha a telepítővarázsló futtatásához valamilyen okból nem tud csak kövesse ezeket a lépéseket.
+Ezeket a lépéseket csak akkor hajtsa végre, ha valamilyen okból nem tudja futtatni a telepítési varázslót.
 
-Szervezeti egység-alapú szűrés konfigurálásához kövesse az alábbi lépéseket:
+A szervezeti egység-alapú szűrés konfigurálásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
-2. Indítsa el **szinkronizálási szolgáltatás** származó a **Start** menü.
-3. Válassza ki **összekötők**, majd a a **összekötők** listájához, válassza ki az összekötő típusú **Active Directory Domain Services**. A **műveletek**válassza **tulajdonságok**.  
-   ![Összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
-4. Kattintson a **könyvtárpartíciók konfigurálása**, válassza ki a tartományt, konfigurálása, és kattintson a kívánt **tárolók**.
-5. Amikor kéri, adja meg a hitelesítő adatokat, olvasási hozzáférés a helyszíni Active Directory. Nem kell lennie a felhasználót, hogy az előre van töltve a párbeszédpanelen.
-6. Az a **tárolók kijelölése** párbeszédpanel mező mellett a szervezeti egységek, amelyet szeretne a címtárak szinkronizálása, majd törölje **OK**.  
-   ![Szervezeti egységek, a tárolók kijelölése párbeszédpanel](./media/how-to-connect-sync-configure-filtering/ou.png)  
-   * A **számítógépek** a Windows 10-számítógépeket sikerült szinkronizálni az Azure AD-tároló van kiválasztva. A tartományhoz csatlakoztatott számítógépeken található egyéb szervezeti egységek, hogy azok ki van jelölve.
+1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
+2. Indítsa el a **szinkronizálási szolgáltatást** a **Start** menüből.
+3. Válassza az **Összekötők**lehetőséget, majd az **Összekötők** listából válassza ki az összekötőt, amelynek a típusa **Active Directory tartományi szolgáltatások**. A **műveletek**területen válassza a **Tulajdonságok**lehetőséget.  
+   ![összekötő tulajdonságai](./media/how-to-connect-sync-configure-filtering/connectorproperties.png)  
+4. Kattintson a címtárpartíciók **konfigurálása**elemre, jelölje ki a konfigurálni kívánt tartományt, majd kattintson a **tárolók**elemre.
+5. Ha a rendszer kéri, adjon meg a helyszíni Active Directoryhoz olvasási hozzáféréssel rendelkező hitelesítő adatokat. Nem kell a párbeszédpanelen előre feltöltött felhasználónak lennie.
+6. A **tárolók kiválasztása** párbeszédpanelen törölje azokat a szervezeti egységeket, amelyeket nem szeretne szinkronizálni a felhő címtárával, majd kattintson **az OK**gombra.  
+   ![szervezeti egységeket a tárolók kiválasztása párbeszédpanelen](./media/how-to-connect-sync-configure-filtering/ou.png)  
+   * A **számítógépek** tárolót ki kell választani ahhoz, hogy a Windows 10 rendszerű számítógépek sikeresen szinkronizálva legyenek az Azure ad-vel. Ha a tartományhoz csatlakoztatott számítógépek más szervezeti egységekben találhatók, győződjön meg róla, hogy ezek ki vannak választva.
    * Ha több, megbízhatósági kapcsolattal rendelkező erdővel rendelkezik, használja a **ForeignSecurityPrincipals** tárolót. Ez a tároló lehetővé teszi az erdők közötti biztonsági csoporttagságok feloldását.
-   * A **RegisteredDevices** szervezeti egység van kiválasztva, ha az eszköz a jelszóvisszaíró szolgáltatás engedélyezte. Egy másik a jelszóvisszaíró szolgáltatás, ha például a csoportok visszaírásához, győződjön meg arról, ezek a helyek ki van jelölve.
-   * Jelölje ki bármely más szervezeti egység, ahol a felhasználók, iNetOrgPersons, csoportok, névjegyek és számítógépek találhatók. A képen látható az összes szervezeti egységek a ManagedObjects szervezeti egységben található.
-   * Ha Csoportalapú szűrés használja, majd a szervezeti egységre, amelyben a csoport nem található kell foglalni.
-   * Vegye figyelembe, hogy beállítható, hogy a szűrési konfiguráció befejezését követően hozzáadott új szervezeti egységekhez vannak szinkronizálva, vagy nincs szinkronizálva. A részleteket a következő szakaszban talál.
-7. Ha elkészült, zárja be a **tulajdonságok** kattintva párbeszédpanel **OK**.
-8. A konfigurálás befejezéséhez, futtatnia kell egy **teljes importálást** és a egy **különbözeti szinkronizálási**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
+   * Ha engedélyezte az eszköz visszaírási funkcióját, válassza ki az **RegisteredDevices** szervezeti egységet. Ha más visszaírási funkciót használ, például a csoport visszaírási, győződjön meg róla, hogy ezek a helyszínek vannak kiválasztva.
+   * Válassza ki az egyéb szervezeti egységeket, ahol a felhasználók, az iNetOrgPerson, a csoportok, a névjegyek és a számítógépek találhatók. A képen az összes ilyen szervezeti egység a ManagedObjects szervezeti egységben található.
+   * Ha Group-alapú szűrést használ, akkor azt a szervezeti egységet kell tartalmaznia, amelyben a csoport található.
+   * Vegye figyelembe, hogy beállíthatja, hogy a szűrési konfiguráció befejeződése után hozzáadott új szervezeti egységek szinkronizálva legyenek vagy nincsenek szinkronizálva. A részletekért tekintse meg a következő szakaszt.
+7. Ha elkészült, a **Tulajdonságok** párbeszédpanel bezárásához kattintson **az OK gombra**.
+8. A konfiguráció befejezéséhez **teljes importálást** és **különbözeti szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
 ### <a name="synchronize-new-ous"></a>Új szervezeti egységek szinkronizálása
-Szűrés konfigurálása után létrehozott új szervezeti egységeket a rendszer alapértelmezés szerint szinkronizálja. Ez az állapot jelzi jelölőnégyzet be van jelölve. Egyes sub-szervezeti egységek is is törli. Ezt a viselkedést lekéréséhez kattintson a mezőre, nem változik fehér, a kék jel (az alapértelmezett állapotba). Ezután törölje minden sub-szervezeti egységek, amelyet szeretne szinkronizálni.
+A szűrés konfigurálását követően létrehozott új szervezeti egységeket a rendszer alapértelmezés szerint szinkronizálja. Ezt az állapotot jelölte be a jelölőnégyzet. Néhány alszervezeti egység kijelölését is törölheti. Ennek a viselkedésnek a beszerzéséhez kattintson a mezőre, amíg fehér színű pipa (az alapértelmezett állapota) be nem válik. Ezután törölje a nem szinkronizálni kívánt alszervezeti egységek kijelölését.
 
-Ha minden sub-szervezeti egység szinkronizálva van, a box fehér-kék pipa.  
-![Az összes bepipált jelölőnégyzetek szervezeti Egysége](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
+Ha az összes alszervezeti egység szinkronizálva van, a mező fehér színnel van jelölve.  
+![Szervezeti egység az összes kijelölt mezővel](./media/how-to-connect-sync-configure-filtering/ousyncnewall.png)
 
-Ha egyes sub-szervezeti egységek lett nincs bejelölve, akkor a box egy fehér pipa jelre a szürke.  
-![Egyes sub-szervezeti egységek nincs kiválasztva szervezeti Egysége](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
+Ha egyes alhálózatok nem lettek kiválasztva, akkor a doboz szürke színű Pipa jel.  
+![Szervezeti egység néhány nem kijelölt alhálózattal](./media/how-to-connect-sync-configure-filtering/ousyncnew.png)
 
-Ezzel a konfigurációval ManagedObjects alatt létrehozott új szervezeti egység szinkronizálva van.
+Ezzel a konfigurációval a ManagedObjects alatt létrehozott új szervezeti egység szinkronizálva van.
 
-Az Azure AD Connect varázsló mindig létrehozza ezt a konfigurációt.
+A Azure AD Connect telepítővarázsló mindig létrehozza ezt a konfigurációt.
 
-### <a name="dont-synchronize-new-ous"></a>Az új szervezeti egységeket ne legyen szinkronizálás
-A szinkronizálási motor nem szinkronizálni az új szervezeti egységeket, a szűrési konfiguráció befejezése után is beállíthatja. Ebben az állapotban a felhasználói felületen, a jelölőnégyzet nincs bejelölve szürkén jelennek meg a mező jelzi. Ezt a viselkedést lekéréséhez kattintson a mezőre, nem változik fehér, a jelölőnégyzet nincs bejelölve. Ezután válassza ki a szinkronizálni kívánt sub-szervezeti.
+### <a name="dont-synchronize-new-ous"></a>Ne szinkronizáljon új szervezeti egységeket
+A szinkronizálási motor úgy is beállítható, hogy a szűrési konfiguráció befejeződése után ne szinkronizálja az új szervezeti egységeket. Ezt az állapotot a felhasználói felületen a négyzet jelzi, ha a jelölőnégyzet nincs bejelölve. Ennek a viselkedésnek a beszerzéséhez kattintson a mezőre, amíg be nem fejeződik a pipa jel. Ezután válassza ki a szinkronizálni kívánt alszervezeti egységeket.
 
-![Nincs kiválasztva a gyökérszintű szervezeti Egysége](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
+![Nincs kiválasztva a legfelső szintű szervezeti egység](./media/how-to-connect-sync-configure-filtering/oudonotsyncnew.png)
 
-Ezzel a konfigurációval ManagedObjects alatt létrehozott új szervezeti egység nincs szinkronizálva.
+Ezzel a konfigurációval a ManagedObjects alatt létrehozott új szervezeti egység nincs szinkronizálva.
 
-## <a name="attribute-based-filtering"></a>Attribútum szerinti szűrés
-Győződjön meg arról, hogy használ-e az 2015 November ([1.0.9125](reference-connect-version-history.md#1091250)), vagy később létrehozhatja a működéséhez ezeket a lépéseket.
+## <a name="attribute-based-filtering"></a>Attribútum-alapú szűrés
+Győződjön meg arról, hogy a következő lépések végrehajtásához használja a november 2015 ([1.0.9125](reference-connect-version-history.md#1091250)) vagy újabb buildet.
 
 > [!IMPORTANT]
->A Microsoft azt javasolja, nem módosíthatja az alapértelmezett szabályok által létrehozott **az Azure AD Connect**. Ha azt szeretné, a szabály módosításához, klónozza, és letiltja az eredeti szabályt. Ne módosítsa a klónozott szabály. Vegye figyelembe, hogy ezzel a módszerrel (eredeti szabály letiltása) fog kihagyná bármely hibajavításokat és a szolgáltatásokat, hogy a szabály engedélyezve van.
+>A Microsoft azt javasolja, hogy ne módosítsa a **Azure ad Connect**által létrehozott alapértelmezett szabályokat. Ha módosítani kívánja a szabályt, majd klónozást végez, és letiltja az eredeti szabályt. Végezze el a klónozott szabály módosításait. Vegye figyelembe, hogy ezzel (az eredeti szabály letiltásával) az adott szabályon keresztül engedélyezett hibajavítások vagy funkciók hiányoznak.
 
-Attribútum-alapú szűrés az objektumok szűrése a legrugalmasabb módszer. Használhatja a hatékonyságát [deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md) szinte minden szempontból az objektum mikor van szinkronizálva az Azure AD szabályozásához.
+Az attribútum-alapú szűrés a legrugalmasabb módszer az objektumok szűrésére. A [deklaratív kiépítés](concept-azure-ad-connect-sync-declarative-provisioning.md) hatékonyságát használhatja arra, hogy szinte minden aspektusát vezérelje, amikor egy objektumot szinkronizálnak az Azure ad-vel.
 
-Alkalmazhat [bejövő](#inbound-filtering) szűrni az Active Directoryból a metaverzumba és [kimenő](#outbound-filtering) az Azure AD a metaverzumba szűrésére. Azt javasoljuk, hogy bejövő szűrése, mivel az a legegyszerűbb fenntartása a alkalmazni. Csak akkor ajánlott kimenő szűrést, ha ez szükséges egynél több erdőből származó objektumok csatlakozni, mielőtt értékelésére akkor kerül sor.
+[Beérkező](#inbound-filtering) szűrést alkalmazhat Active Directoryról a metaverse-ra, és a metaverse-ből az Azure ad-be történő [kimenő](#outbound-filtering) szűrést. Javasoljuk, hogy alkalmazza a bejövő szűrést, mert ez a legkönnyebb a karbantartáshoz. A kiértékelés megkezdése előtt csak akkor használjon kimenő szűrést, ha egynél több erdő objektumaihoz kell csatlakoznia.
 
-### <a name="inbound-filtering"></a>Bejövő szűrése
-Bejövő szűrése az alapértelmezett konfigurációt használja, ahol objektumokat az Azure ad-hez is rendelkeznie kell a metaverzum-attribútum nincs beállítva egy értékre szinkronizálását cloudFiltered. Ha ez az attribútum értéke **igaz**, akkor az objektum nincs szinkronizálva. Nem állítható be **hamis**, tervező által. Ahhoz, hogy más szabályokat is képes közreműködés a egy értéke, ez az attribútum csak kellene a értékeket **igaz** vagy **NULL** (távol).
+### <a name="inbound-filtering"></a>Bejövő szűrés
+A bejövő szűrés az alapértelmezett konfigurációt használja, ahol az Azure AD-hez hozzáférő objektumoknak a metaverse attribútummal kell cloudFiltered a szinkronizálandó értékre. Ha az attribútum értéke **true (igaz**) értékre van állítva, akkor az objektum nincs szinkronizálva. Nem állítható be **hamis**értékre a tervezés szerint. Annak biztosításához, hogy más szabályok képesek legyenek hozzájárulni egy értékhez, ez az attribútum csak **igaz** vagy **Null** értékkel rendelkezhet (hiányzik).
 
-A bejövő szűrés hatékonyságát használhatja **hatókör** meghatározni, mely objektumok szinkronizálásához, vagy nem szinkronizálja. Ez az, ahol, hajtsa végre a módosításokat a saját szervezet igényeinek megfelelően. A hatókör modul rendelkezik egy **csoport** és a egy **záradék** meghatározni, ha a szinkronizálási szabály hatókörében van. A csoport egy vagy több záradékot tartalmaz. Nincs logikai "és" között több záradékot, és a egy logikai "vagy" több csoport között.
+A bejövő szűrés során a **hatókör** hatékonyságát használva határozza meg, hogy mely objektumokat szinkronizálni vagy ne szinkronizálni. Itt végezheti el a saját szervezet igényeinek megfelelő módosításokat. A hatókör modul tartalmaz egy **csoportot** és egy **záradékot** annak meghatározásához, hogy egy szinkronizálási szabály hatókörben van-e. Egy csoport egy vagy több záradékot tartalmaz. Létezik egy logikai "és" kifejezés több záradék között, valamint logikai "vagy" több csoport között.
 
-Lássunk egy példát:  
+Nézzünk egy példát:  
 ![Hatókör](./media/how-to-connect-sync-configure-filtering/scope.png)  
-Ez olvassa el **(részleg = informatikai) vagy (részleg = értékesítési és c = US)** .
+Ennek a következőnek kell lennie: **(részleg = IT) vagy (részleg = értékesítés és c = US)** .
 
-Az alábbi minták és lépéseket a felhasználói objektum használja példaként, de ezzel minden objektum esetében.
+A következő példákban és lépésekben példaként használja a felhasználói objektumot, de ezt minden objektumtípus esetében használhatja.
 
-Az alábbi minta a sorrend értéke 50 kezdődik. Ez a nem használt tetszőleges szám lehet, de 100-nál kisebbnek kell lennie.
+A következő mintákban a sorrend értéke 50. Ezt a számot nem lehet használni, de a 100-nál kisebbnek kell lennie.
 
-#### <a name="negative-filtering-do-not-sync-these"></a>Negatív szűrés: "nem szinkronizálja ezeket"
-A következő példában a kiszűr (nem a szinkronizálás) minden felhasználó ahol **extensionAttribute15** értéke **NoSync**.
+#### <a name="negative-filtering-do-not-sync-these"></a>Negatív szűrés: "ne szinkronizálja ezeket"
+A következő példában kiszűrjük (nem szinkronizáljuk) az összes olyan felhasználót, ahol a **extensionAttribute15** értéke nem **szinkronizált**.
 
-1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
-2. Indítsa el **szinkronizálási Szabályszerkesztővel** származó a **Start** menü.
-3. Győződjön meg arról, hogy **bejövő** van jelölve, és kattintson a **új szabály hozzáadása**.
-4. Adjon a szabálynak egy nevet, például "*a az AD-ből – felhasználói DoNotSyncFilter*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 50), és kattintson **tovább**.  
-   ![Bejövő 1 leírása](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
-5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **ExtensionAttribute15**. Győződjön meg arról, hogy **operátor** értékre van állítva **egyenlő**, és írja be az értéket **NoSync típusú** a a **érték** mezőbe. Kattintson a **tovább**.  
-   ![Bejövő 2 hatókör](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
-6. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.
-7. Kattintson a **átalakítás hozzáadása**, jelölje be a **FlowType** , **állandó**, és válassza ki **cloudFiltered** , a **cél Attribútum**. Az a **forrás** szövegmezőben **igaz**. Kattintson a **Hozzáadás** a szabály mentéséhez.  
-   ![Bejövő 3 átalakítása](./media/how-to-connect-sync-configure-filtering/inbound3.png)
-8. A konfigurálás befejezéséhez, futtatnia kell egy **teljes szinkronizálás**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
+1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
+2. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a **Start** menüből.
+3. Győződjön meg arról, hogy a **bejövő** lehetőség van kiválasztva, majd kattintson az **új szabály hozzáadása**lehetőségre.
+4. Adjon egy leíró nevet a szabálynak, például *: "in from ad-User DoNotSyncFilter*". Válassza ki a megfelelő erdőt, válassza a **felhasználó** lehetőséget a **cs objektumtípus**elemnél, és válassza a **személy** elemet az **MV Objektumtípus mezőben**. A **kapcsolat típusa**területen válassza a **Csatlakozás**lehetőséget. A **prioritás**mezőben olyan értéket adjon meg, amelyet jelenleg nem használ egy másik szinkronizálási szabály (például 50), majd kattintson a **tovább**gombra.  
+   ![Inbound 1 Leírás](./media/how-to-connect-sync-configure-filtering/inbound1.png)  
+5. A **hatókör szűrőben**kattintson a **Csoport hozzáadása**elemre, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **ExtensionAttribute15**lehetőséget. Győződjön meg arról, hogy az **operátor** értéke **egyenlő**, és írja be az **Érték mezőbe a** **desync** értéket. Kattintson a **Tovább** gombra.  
+   ![bejövő 2. hatókör](./media/how-to-connect-sync-configure-filtering/inbound2.png)  
+6. Hagyja üresen az **illesztési** szabályokat, majd kattintson a **tovább**gombra.
+7. Kattintson az **átalakítás hozzáadása**lehetőségre, válassza ki a **FlowType** **állandóként**, majd válassza a **cloudFiltered** lehetőséget a **cél attribútumként**. A **forrás** szövegmezőbe írja be az **igaz**értéket. A szabály mentéséhez kattintson a **Hozzáadás** gombra.  
+   ![bejövő 3 átalakítás](./media/how-to-connect-sync-configure-filtering/inbound3.png)
+8. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
 #### <a name="positive-filtering-only-sync-these"></a>Pozitív szűrés: "csak szinkronizálja ezeket"
-Pozitív szűrési kifejezése több kihívást jelenthet, mivel is figyelembe kell vennie az objektumok, amelyek nem kell szinkronizálni, például a konferenciahívások nyilvánvaló. Bírálja felül az alapértelmezett szűrő a out-of-box szabályban is kívánja **az AD - felhasználó csatlakozzon-ből**. Az egyéni szűrő létrehozásakor ügyeljen arra, hogy kritikus fontosságú rendszerobjektumok, replikációs ütközés objektumok, speciális postaládák és a szolgáltatásfiókok nem tartalmazzák az Azure AD Connect.
+A pozitív szűrés kinyilvánítása nagyobb kihívást jelenthet, mivel olyan objektumokat is meg kell fontolnia, amelyek nem egyértelműek a szinkronizáláshoz, például a konferenciatermeket. Emellett felülbírálja az alapértelmezett szűrőt is az **ad-User JOIN**utasításban lévő out-of-box szabályban. Az egyéni szűrő létrehozásakor ügyeljen arra, hogy ne szerepeljenek a kritikus rendszerobjektumok, a replikálási ütközési objektumok, a speciális postaládák és a Azure AD Connect tartozó szolgáltatásfiókok.
 
-A pozitív szűrési lehetőség két szinkronizálási szabály szükséges. Egy szabály (vagy több) kell a megfelelő hatókörben objektumok szinkronizálásához. Emellett egy második kevésbé szinkronizálási szabályt, amely kiszűri a még nem még során megállapítottuk, hogy a rendszer szinkronizálja az objektum összes objektumot.
+A pozitív szűrési beállításhoz két szinkronizálási szabály szükséges. Szükség van egy szabályra (vagy többre) a szinkronizálandó objektumok megfelelő hatókörével. Szüksége lesz egy második catch-all szinkronizálási szabályra is, amely kiszűri az összes olyan objektumot, amely még nem lett azonosítva a szinkronizálandó objektumként.
 
-A következő példában csak szinkronizálás felhasználói objektumok, ahol a részleg attribútum értéke a **értékesítési**.
+A következő példában csak azokat a felhasználói objektumokat szinkronizálja, amelyekben a Department attribútum értéke **Sales**.
 
-1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
-2. Indítsa el **szinkronizálási Szabályszerkesztővel** származó a **Start** menü.
-3. Győződjön meg arról, hogy **bejövő** van jelölve, és kattintson a **új szabály hozzáadása**.
-4. Adjon a szabálynak egy nevet, például "*a az AD-ből – felhasználói értékesítési szinkronizálása*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 51), és kattintson **tovább**.  
-   ![Bejövő 4 leírása](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
-5. A **Scoping szűrő**, kattintson a **csoport hozzáadása**, és kattintson a **záradék hozzáadása**. A **attribútum**válassza **részleg**. Győződjön meg arról, hogy az operátor értékre van állítva, **egyenlő**, és írja be az értéket **értékesítési** a a **érték** mezőbe. Kattintson a **tovább**.  
-   ![Bejövő 5 hatókör](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
-6. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.
-7. Kattintson a **átalakítás hozzáadása**, jelölje be **állandó** , a **FlowType**, és válassza ki a **cloudFiltered** , a **cél Attribútum**. Az a **forrás** mezőbe írja be **hamis**. Kattintson a **Hozzáadás** a szabály mentéséhez.  
-   ![Bejövő 6 átalakítása](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
-   Ez az egy különleges esetben, ha explicit módon beállította cloudFiltered **hamis**.
-8. Most már rendelkezünk a kevésbé szinkronizálási szabály létrehozásához. Adjon a szabálynak egy nevet, például "*a az AD-ből – Catch – minden felhasználó szűrő*". Válassza ki a megfelelő erdő, jelölje be **felhasználói** , a **CS objektumtípus**, és válassza ki **személy** , a **MV-objektum típusa**. A **hivatkozás típusa**válassza **csatlakozzon**. A **elsőbbséget**, adjon meg egy értéket, amely jelenleg nem használja egy másik szinkronizálási szabály (például 99). Magasabb (sorrendben) mint az előző szinkronizálási szabály elsőbbséget értéket választotta. De is, hogy elhagyta néhány hely, így további szűrési szinkronizálási szabályok később is hozzáadhat, ha el szeretné indítani a további szervezeti egységek szinkronizálása. Kattintson a **tovább**.  
-   ![Bejövő 7 leírása](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
-9. Hagyja **Scoping szűrő** üres, és kattintson a **tovább**. Egy üres szűrő azt jelzi, hogy a szabály az összes objektum alkalmazható.
-10. Hagyja a **csatlakozzon** szabályok üres, és kattintson a **tovább**.
-11. Kattintson a **átalakítás hozzáadása**, jelölje be **állandó** , a **FlowType**, és válassza ki **cloudFiltered** , a **cél Attribútum**. Az a **forrás** mezőbe írja be **igaz**. Kattintson a **Hozzáadás** a szabály mentéséhez.  
-    ![Bejövő 3 átalakítása](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
-12. A konfigurálás befejezéséhez, futtatnia kell egy **teljes szinkronizálás**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
+1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
+2. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a **Start** menüből.
+3. Győződjön meg arról, hogy a **bejövő** lehetőség van kiválasztva, majd kattintson az **új szabály hozzáadása**lehetőségre.
+4. Adjon egy leíró nevet a szabálynak, például *: "in from ad-User Sales Sync*". Válassza ki a megfelelő erdőt, válassza a **felhasználó** lehetőséget a **cs objektumtípus**elemnél, és válassza a **személy** elemet az **MV Objektumtípus mezőben**. A **kapcsolat típusa**területen válassza a **Csatlakozás**lehetőséget. A **prioritás**mezőben olyan értéket adjon meg, amelyet jelenleg nem használ egy másik szinkronizálási szabály (például 51), majd kattintson a **tovább**gombra.  
+   ![4. bejövő Leírás](./media/how-to-connect-sync-configure-filtering/inbound4.png)  
+5. A **hatókör szűrőben**kattintson a **Csoport hozzáadása**elemre, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **részleg**elemet. Győződjön meg arról, hogy az operátor értéke **egyenlő**, majd írja be az **értékesítés** értéket az **érték** mezőbe. Kattintson a **Tovább** gombra.  
+   ![bejövő 5 hatókör](./media/how-to-connect-sync-configure-filtering/inbound5.png)  
+6. Hagyja üresen az **illesztési** szabályokat, majd kattintson a **tovább**gombra.
+7. Kattintson az **átalakítás hozzáadása**lehetőségre, válassza az **állandó** lehetőséget a **FlowType**, majd válassza ki a **cloudFiltered** a **cél attribútumként**. A **forrás** mezőbe írja be a **false értéket**. A szabály mentéséhez kattintson a **Hozzáadás** gombra.  
+   ![bejövő 6 átalakítás](./media/how-to-connect-sync-configure-filtering/inbound6.png)  
+   Ez egy különleges eset, amikor explicit módon beállította a cloudFiltered **hamis**értékre.
+8. Most létre kell hoznia a catch-all szinkronizálási szabályt. Adjon egy leíró nevet a szabálynak, például *: "in from ad – felhasználói catch-all Filter*". Válassza ki a megfelelő erdőt, válassza a **felhasználó** lehetőséget a **cs objektumtípus**elemnél, és válassza a **személy** elemet az **MV Objektumtípus mezőben**. A **kapcsolat típusa**területen válassza a **Csatlakozás**lehetőséget. A **prioritás**mezőben olyan értéket adjon meg, amelyet jelenleg nem használ egy másik szinkronizálási szabály (például 99). Az előző szinkronizálási szabálynál magasabb (alacsonyabb prioritású) prioritási értéket jelölt ki. Azonban egy kis termet is hagyott, hogy később további szűrési szinkronizálási szabályokat lehessen felvenni, amikor meg szeretné kezdeni a további részlegek szinkronizálását. Kattintson a **Tovább** gombra.  
+   ![Inbound 7 Leírás](./media/how-to-connect-sync-configure-filtering/inbound7.png)  
+9. Hagyja üresen a **hatókör-szűrőt** , és kattintson a **tovább**gombra. Az üres szűrő azt jelzi, hogy a szabályt az összes objektumra alkalmazni kell.
+10. Hagyja üresen az **illesztési** szabályokat, majd kattintson a **tovább**gombra.
+11. Kattintson az **átalakítás hozzáadása**lehetőségre, válassza az **állandó** lehetőséget a **FlowType**, és válassza a **cloudFiltered** lehetőséget a **cél attribútumként**. A **forrás** mezőbe írja be az **igaz**értéket. A szabály mentéséhez kattintson a **Hozzáadás** gombra.  
+    ![bejövő 3 átalakítás](./media/how-to-connect-sync-configure-filtering/inbound3.png)  
+12. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
-Ha kell, ahol további objektumok belefoglalása a szinkronizálást az első típusú további szabályok is létrehozhat.
+Ha szüksége van a szolgáltatásra, létrehozhat több szabályt az első típushoz, ahol további objektumokat is tartalmaz a szinkronizálásban.
 
-### <a name="outbound-filtering"></a>Kimenő szűrése
-Bizonyos esetekben szükség a szűrést, csak azt követően az objektumok van összekapcsolva a metaverzumban. Például lehet szükséges, és tekintse meg az erőforráserdőből a mail attribútum, és a userPrincipalName attribútum a fiók erdőből meghatározni, ha egy objektum szinkronizálásra kerüljenek-e. Ezekben az esetekben hoz létre a szűrést az kimenő szabályt.
+### <a name="outbound-filtering"></a>Kimenő szűrés
+Bizonyos esetekben a szűrés csak akkor szükséges, ha az objektumok a metaverse-ben csatlakoztak. Előfordulhat például, hogy a mail attribútumot az erőforrás-erdőben, a userPrincipalName attribútumot pedig a fiók erdőből kell megvizsgálnia annak megállapításához, hogy egy objektumot szinkronizálni kell-e. Ezekben az esetekben a szűrést a Kimenő szabály alapján hozza létre.
 
-Ebben a példában módosítja a szűrést, hogy csak a felhasználók, amelyek rendelkeznek a levelezés és a userPrincipalName végződése @contoso.com szinkronizált:
+Ebben a példában úgy módosítja a szűrést, hogy csak azok a felhasználók legyenek szinkronizálva, akiknél a levelek és a userPrincipalName is véget ér @contoso.com.
 
-1. Jelentkezzen be a kiszolgálóra, amelyen fut az Azure AD Connect szinkronizálása egy olyan fiókkal, amely tagja a **ADSyncAdmins** biztonsági csoportot.
-2. Indítsa el **szinkronizálási Szabályszerkesztővel** származó a **Start** menü.
-3. A **szabályok típus**, kattintson a **kimenő**.
-4. Connect használata verziójától függően akár található nevű szabályt **ki az aad-be – a felhasználó csatlakozzon** vagy **ki az AAD - felhasználók csatlakozásra SOAInAD**, és kattintson a **szerkesztése**.
-5. Az előugró ablakban választ **Igen** másolatot készítsen a szabály.
-6. Az a **leírás** lapon, majd **elsőbbséget** fel nem használt érték, például 50.
-7. Kattintson a **Scoping szűrő** a bal oldali navigációs, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **mail**. A **operátor**válassza **ENDSWITH**. A **érték**, típus  **\@contoso.com**, és kattintson a **Hozzáadás záradék**. A **attribútum**válassza **userPrincipalName**. A **operátor**válassza **ENDSWITH**. A **érték**, típus  **\@contoso.com**.
-8. Kattintson a **Save** (Mentés) gombra.
-9. A konfigurálás befejezéséhez, futtatnia kell egy **teljes szinkronizálás**. A szakasz olvassa [alkalmaz, és ellenőrizze a módosítások](#apply-and-verify-changes).
+1. Jelentkezzen be Azure AD Connect szinkronizálást futtató kiszolgálóra egy olyan fiókkal, amely a **ADSyncAdmins** biztonsági csoport tagja.
+2. Indítsa el a **szinkronizálási szabályok szerkesztőjét** a **Start** menüből.
+3. A **szabályok típusa**alatt kattintson a **kimenő**elemre.
+4. A használt csatlakozási verziótól függően keresse meg a **HRE – User JOIN** vagy a **HRE-User JOIN SOAInAD**nevű szabályt, és kattintson a **Szerkesztés**gombra.
+5. Az előugró ablakban válaszoljon az **Igen** gombra a szabály másolatának létrehozásához.
+6. A **Leírás** lapon módosítsa a **sorrendet** egy nem használt értékre (például 50).
+7. A bal oldali navigációs sávon kattintson a **hatókör szűrő** elemre, majd kattintson a **záradék hozzáadása**lehetőségre. Az **attribútum**területen válassza az **e-mail**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be **\@contoso.com**, majd kattintson a **záradék hozzáadása**elemre. Az **attribútum**területen válassza a **userPrincipalName**lehetőséget. A **kezelőben**válassza a **ENDSWITH**lehetőséget. Az **érték**mezőbe írja be a következőt: **\@contoso.com**.
+8. Kattintson a **Mentés** gombra.
+9. A konfigurálás befejezéséhez **teljes szinkronizálást**kell futtatnia. Folytassa a szakasz olvasásával [, és ellenőrizze a módosításokat](#apply-and-verify-changes).
 
 ## <a name="apply-and-verify-changes"></a>Módosítások alkalmazása és ellenőrzése
-Miután végzett a konfiguráció módosításait, telepítenie kell őket az objektumok, amelyek már megvannak a rendszerben. Is lehet, hogy az objektumok, amelyek jelenleg a szinkronizálási motor nem kell feldolgozni (és a szinkronizálási motor van szüksége, olvassa el a forrásrendszerben tartalmára megerősítése érdekében).
+A konfigurációs módosítások elvégzése után azokat az objektumokra kell alkalmaznia, amelyek már jelen vannak a rendszeren. Az is előfordulhat, hogy a szinkronizálási motorban jelenleg nem szereplő objektumokat fel kell dolgozni (és a szinkronizálási motornak újra kell olvasnia a forrásoldali rendszerét a tartalom ellenőrzéséhez).
 
-Ha módosította a konfigurációt a **tartomány** vagy **szervezeti egység** szűréshez, akkor kell tennie egy **teljes importálást**, utána pedig **különbözeti szinkronizálási**.
+Ha a konfigurációt **tartomány** vagy **szervezeti egység** szerinti szűrés használatával módosította, akkor **teljes importálást**kell végrehajtania, amelyet a **különbözeti szinkronizálás**követ.
 
-Ha módosította a konfigurációt a **attribútum** szűréshez, akkor kell tennie egy **teljes szinkronizálás**.
+Ha a konfigurációt **attribútum** -szűrés használatával módosította, akkor **teljes szinkronizálást**kell végeznie.
 
-Kövesse az alábbi lépéseket:
+Hajtsa végre a következő lépéseket:
 
-1. Indítsa el **szinkronizálási szolgáltatás** származó a **Start** menü.
-2. Válassza ki **összekötők**. Az a **összekötők** listájához, válassza ki az összekötőt, ha olyan konfigurációs módosítást korábban végzett. A **műveletek**válassza **futtatása**.  
-   ![Összekötő futtatása](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
-3. A **futtatási profilokat**, válassza ki az előző szakaszban említett a műveletet. Ha két műveletek futtatására van szüksége, futtassa az elsőt befejezése után a második. (A **állapot** oszlop **tétlen** a kijelölt összekötő.)
+1. Indítsa el a **szinkronizálási szolgáltatást** a **Start** menüből.
+2. Válassza az **Összekötők**lehetőséget. Az **Összekötők** listában válassza ki azt az összekötőt, amelyben korábban a konfigurációs módosítást hajtotta végre. A **műveletek**területen válassza a **Futtatás**lehetőséget.  
+   ![-összekötő futtatása](./media/how-to-connect-sync-configure-filtering/connectorrun.png)  
+3. A **Run profiles (futtatási profilok**) területen válassza ki az előző szakaszban említett műveletet. Ha két műveletet kell futtatnia, futtassa a másodikat az első befejeződése után. (Az **állapot** oszlopban a kiválasztott összekötő **inaktív** .)
 
-A szinkronizálás után az összes módosítást exportálható elő van készítve. Valójában a módosítása előtt az Azure ad-ben, ellenőrizze, hogy helyesek-e ezeket a módosításokat szeretne.
+A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
-1. Indítson el egy parancssort, és váltson `%Program Files%\Microsoft Azure AD Sync\bin`.
+1. Indítsa el a parancssort, és válassza a `%ProgramFiles%\Microsoft Azure AD Sync\bin`lehetőséget.
 2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
-   Az összekötő neve szerepel a szinkronizálási szolgáltatás. A "contoso.com – AAD" hasonló névvel rendelkezik az Azure ad-hez.
+   Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD-hez hasonló "contoso.com – HRE" névvel.
 3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
-4. Most már rendelkezik egy fájlt a % temp % nevű export.csv, amely megfelel a Microsoft Excelben. Ez a fájl tartalmazza a módosításokat, amelyek az exportálásra váró adatokat.
-5. Az adatok vagy a konfiguráció végezze el a szükséges módosításokat, és futtassa ezeket a lépéseket újra (importálás, Synchronize, és győződjön meg arról) addig, amíg a változtatásokat, hogy exportálásra váró adatokat várt.
+4. Most már van egy fájlja a (z)% Temp% nevű exportálás. csv fájlban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
+5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 
-Ha már elégedett, exportálja a módosításokat az Azure ad-hez.
+Ha elégedett, exportálja a módosításokat az Azure AD-be.
 
-1. Válassza ki **összekötők**. Az a **összekötők** listájához, válassza ki az Azure AD-összekötőt. A **műveletek**válassza **futtatása**.
-2. A **futtatási profilokat**válassza **exportálása**.
-3. Ha a konfigurációs módosítások sok objektumot törölni, majd hibaüzenet jelenik meg az exportálás, ha a szám meghaladja a konfigurált küszöbértéket (alapértelmezés szerint 500-as). Ha ezt a hibaüzenetet, akkor le kell tiltania ideiglenesen a "[véletlen törlések megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)" funkciót.
+1. Válassza az **Összekötők**lehetőséget. Az **Összekötők** listából válassza ki az Azure ad-összekötőt. A **műveletek**területen válassza a **Futtatás**lehetőséget.
+2. A **futtatási profilok**területen válassza az **Exportálás**lehetőséget.
+3. Ha a konfiguráció sok objektum törlését módosítja, akkor az exportálás során hibaüzenet jelenik meg, ha a szám meghaladja a beállított küszöbértéket (alapértelmezés szerint 500). Ha ezt a hibát látja, átmenetileg le kell tiltania a "[véletlen törlés megakadályozása](how-to-connect-sync-feature-prevent-accidental-deletes.md)" funkciót.
 
-Most, az ütemező újra engedélyezni szeretné az ideje.
+Itt az ideje, hogy ismét engedélyezze az ütemező.
 
-1. Indítsa el **Feladatütemező** származó a **Start** menü.
-2. Közvetlenül a **Feladatütemező könyvtár**, keresse meg a feladat nevű **Azure AD Sync Schedulert**, kattintson a jobb gombbal, és válassza ki **engedélyezése**.
+1. Indítsa el a **Feladatütemezőt** a **Start** menüből.
+2. Közvetlenül a Feladatütemező **könyvtár**alatt keresse meg **Azure ad-szinkronizáló Scheduler**nevű feladatot, kattintson a jobb gombbal, majd válassza az **Engedélyezés**lehetőséget.
 
-## <a name="group-based-filtering"></a>Csoportalapú szűrés
-Konfigurálhatja úgy, hogy az Azure AD Connect használatával telepítse először Csoportalapú szűrés [egyéni telepítési](how-to-connect-install-custom.md#sync-filtering-based-on-groups). Próbacélú telepítéshez célja, ahol azt szeretné, hogy csak egy kis készletét objektumok szinkronizálásának. Ha letiltja a Csoportalapú szűrés, nem engedélyezhető újra. Rendelkezik *nem támogatott* egyéni konfiguráció Csoportalapú szűrés használatához. Csak ez a szolgáltatás konfigurálása a telepítési varázsló használatával támogatott. Amikor végzett a próbaüzem, majd használja az egyéb szűrési lehetőségek közül, ebben a témakörben. Együtt szervezeti egység szerinti szűrést a Csoportalapú szűrés használatakor szerepelnie kell a kapcsolnia, ahol a csoportot és annak tagjait találhatók.
+## <a name="group-based-filtering"></a>Csoport alapú szűrés
+Csoportházirend-alapú szűrést úgy konfigurálhat, hogy a Azure AD Connect első telepítésekor [Egyéni telepítéssel](how-to-connect-install-custom.md#sync-filtering-based-on-groups)telepítse a rendszert. Olyan kísérleti üzembe helyezésre szolgál, ahol csak kis mennyiségű objektumot szeretne szinkronizálni. Ha letiltja a csoport alapú szűrést, nem engedélyezhető újra. A csoport-alapú szűrés *nem* használható egyéni konfigurációban. Ezt a funkciót csak a telepítővarázsló használatával lehet konfigurálni. Ha befejezte a próbaverziót, használja a jelen témakör más szűrési lehetőségei közül a megfelelőt. Ha OU-alapú szűrést használ a csoport alapú szűréssel együtt, a csoportot és annak tagjait tartalmazó szervezeti egység (ek) et is tartalmaznia kell.
 
-Több AD-erdővel szinkronizálásakor a Csoportalapú szűrés egy másik csoportot minden egyes AD Connectoron megadásával is beállíthatja. Ha szeretné szinkronizálni a felhasználó egy Active Directory erdőben, és ugyanaz a felhasználó legalább egy további megfelelő azok az objektumok egyéb AD-erdőkkel, győződjön meg arról, hogy a felhasználói objektum és a megfelelő objektumok belül Csoportalapú szűrést végez hatókör. Példák:
+Több AD-erdő szinkronizálásakor a csoport-alapú szűrést egy másik csoport megadásával állíthatja be az egyes AD-összekötők számára. Ha egy felhasználót szeretne szinkronizálni egy AD-erdőben, és ugyanaz a felhasználó rendelkezik egy vagy több megfelelő objektummal más AD-erdőkben, meg kell győződnie arról, hogy a felhasználói objektum és a hozzá tartozó összes objektum a csoport alapú szűrési hatókörön belül van. Példák:
 
-* Egy felhasználó egy olyan erdőben, amely egy megfelelő FSP (idegen rendszerbiztonsági tag) objektumot egy másik erdőben van. Mindkét objektum kell lennie belül Csoportalapú szűrés hatókör. Ellenkező esetben a felhasználó nem szinkronizálja az Azure ad-hez.
+* Az egyik erdőben van egy olyan felhasználó, amely egy másik erdőben található megfelelő FSP (külső rendszerbiztonsági tag) objektummal rendelkezik. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
-* Egy felhasználó egy olyan erdőben, amely egy megfelelő erőforrásfiókot (pl. hivatkozott postafiókkal) egy másik erdőben van. További a felhasználót az erőforrás-fiók összekapcsolása az Azure AD Connect konfigurált. Mindkét objektum kell lennie belül Csoportalapú szűrés hatókör. Ellenkező esetben a felhasználó nem szinkronizálja az Azure ad-hez.
+* Egy erdőben van egy olyan felhasználó, amely egy másik erdőben található megfelelő erőforrás-fiókkal (például csatolt postaládával) rendelkezik. Továbbá úgy konfigurálta Azure AD Connect, hogy összekapcsolja a felhasználót az erőforrás-fiókkal. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
-* A felhasználó rendelkezik egy olyan erdőben, amely rendelkezik a megfelelő levelezési kapcsolattartási egy másik erdőben. További az Azure AD Connect mutató hivatkozást a felhasználó e-mail az ügyfél már konfigurálta. Mindkét objektum kell lennie belül Csoportalapú szűrés hatókör. Ellenkező esetben a felhasználó nem szinkronizálja az Azure ad-hez.
+* Az egyik erdőben van egy olyan felhasználó, amely egy másik erdőben található e-mail-kapcsolattal rendelkezik. Továbbá úgy konfigurálta Azure AD Connect, hogy összekapcsolja a felhasználót a levelezési kapcsolattal. Mindkét objektumnak Group-alapú szűrési hatókörön belül kell lennie. Ellenkező esetben a felhasználó nem lesz szinkronizálva az Azure AD-vel.
 
 
-## <a name="next-steps"></a>További lépések
-- Tudjon meg többet [Azure AD Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációja.
-- Tudjon meg többet [a helyszíni identitások integrálása az Azure ad-ben](whatis-hybrid-identity.md).
+## <a name="next-steps"></a>Következő lépések
+- További információ a [Azure ad Connect szinkronizálási](how-to-connect-sync-whatis.md) konfigurációról.
+- További információ a helyszíni [identitások Azure ad-vel való integrálásáról](whatis-hybrid-identity.md).

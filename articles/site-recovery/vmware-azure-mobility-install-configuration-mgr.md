@@ -5,12 +5,12 @@ author: Rajeswari-Mamilla
 ms.topic: how-to
 ms.date: 12/22/2019
 ms.author: ramamill
-ms.openlocfilehash: 43e6a39a52eb81573b4a4ba8ad63d48d0e51dedd
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 50f8b5b4412e02692bf2b5d57b7f0dee27c2a25a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76514813"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842699"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan lehet automatizálni a mobilitási szolgáltatá
 Ha a helyszíni VMware virtuális gépek és fizikai kiszolgálók Azure-ba történő helyreállításához Site Recovery helyez üzembe, a mobilitási szolgáltatás ügynökét minden replikálni kívánt gépre telepítenie kell. A mobilitási szolgáltatás rögzíti az adatírásokat a gépen, és továbbítja azokat a Site Recovery folyamat-kiszolgálónak a replikáláshoz. A mobilitási szolgáltatást többféleképpen is üzembe helyezheti:
 
 - **Leküldéses telepítés**: site Recovery telepítse a mobilitási szolgáltatás ügynököt, amikor engedélyezi a replikációt a Azure Portal lévő gépeken.
-- **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](/vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
+- **Manuális telepítés**: telepítse a mobilitási szolgáltatást manuálisan az egyes gépeken. [További](vmware-physical-mobility-service-overview.md) információ a leküldéses és manuális telepítésről.
 - **Automatikus telepítés**: a telepítés automatizálása a szoftver központi telepítési eszközeivel, például a Microsoft Endpoint Configuration Manager, vagy külső gyártótól származó eszközök, például a Intigua JetPatch.
 
 Az automatikus telepítés és a frissítés megoldást nyújt, ha:
@@ -44,7 +44,7 @@ Az automatikus telepítéshez a következőkre van szükség:
 
 A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe helyezésének automatizálásához szükséges eszközöket és folyamatokat.
 
-**Eszköz** | **Részletek** | **Utasítások**
+**Eszköz** | **Részletek** | **Utasításokat**
 --- | --- | ---
 **Configuration Manager** | 1. Ellenőrizze, hogy rendelkezik-e a fent felsorolt [előfeltételekkel](#prerequisites) . <br/><br/>2. Telepítse a vész-helyreállítást a forrás környezet beállításával, beleértve a petesejtek letöltését a Site Recovery konfigurációs kiszolgáló VMware virtuális gépként való üzembe helyezéséhez OVF-sablon használatával.<br/><br/> 2. regisztrálja a konfigurációs kiszolgálót a Site Recovery szolgáltatásban, állítsa be a cél Azure-környezetet, és konfigurálja a replikációs házirendet.<br/><br/> 3. a mobilitási szolgáltatás automatikus üzembe helyezéséhez létre kell hoznia egy hálózati megosztást, amely tartalmazza a konfigurációs kiszolgáló jelszavát és a mobilitási szolgáltatás telepítési fájljait.<br/><br/> 4. létrehoz egy Configuration Manager csomagot, amely tartalmazza a telepítést vagy a frissítéseket, és előkészíti a mobilitási szolgáltatás üzembe helyezését.<br/><br/> 5. Ezután engedélyezheti az Azure-ba való replikálást azokon a gépeken, amelyeken telepítve van a mobilitási szolgáltatás. | [Configuration Manager automatizálása](#automate-with-configuration-manager).
 **JetPatch** | 1. Ellenőrizze, hogy rendelkezik-e a fent felsorolt [előfeltételekkel](#prerequisites) . <br/><br/> 2. Telepítse a vész-helyreállítást a forrás-környezet beállításával, beleértve a JetPatch-ügynök Azure Site Recovery kezelőjének letöltését és üzembe helyezését a Site Recovery környezetben, OVF-sablon használatával.<br/><br/> 2. regisztrálja a konfigurációs kiszolgálót Site Recovery, állítsa be a cél Azure-környezetet, és konfigurálja a replikációs házirendet.<br/><br/> 3. az automatikus telepítéshez inicializálja és fejezze be a JetPatch Agent Manager-konfigurációt.<br/><br/> 4. a JetPatch-ben létrehozhat egy Site Recovery szabályzatot a mobilitási szolgáltatás ügynökének üzembe helyezésének és frissítésének automatizálásához. <br/><br/> 5. Ezután engedélyezheti az Azure-ba való replikálást azokon a gépeken, amelyeken telepítve van a mobilitási szolgáltatás. | [Automatizálás a JetPatch-ügynök kezelőjével](https://jetpatch.com/microsoft-azure-site-recovery-deployment-guide/).<br/><br/> Az ügynök telepítése a JetPatch-ben [– problémamegoldás](https://kc.jetpatch.com/hc/articles/360035981812) .
@@ -358,7 +358,7 @@ cd /tmp
     --- | --- | ---
     **Name (Név)** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
     **Parancssor** | install. bat | ./install_linux. sh
-    **A program futtatható** | Függetlenül attól, hogy van-e bejelentkezett felhasználó | Függetlenül attól, hogy van-e bejelentkezett felhasználó
+    **A program futtatható** | Annak megadása, hogy van-e bejelentkezett felhasználó | Annak megadása, hogy van-e bejelentkezett felhasználó
     **Egyéb paraméterek** | Alapértelmezett beállítás használata | Alapértelmezett beállítás használata
 
    ![A csomag és program létrehozása varázsló képernyőképe](./media/vmware-azure-mobility-install-configuration-mgr/sccm-program-properties.png)
@@ -368,7 +368,7 @@ cd /tmp
     - Windows rendszerű gépek esetén válassza **ezt a programot csak a megadott platformokon lehet futtatni**. Ezután válassza ki a [támogatott Windows operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines). Ezután kattintson a **Next** (Tovább) gombra.
     - Linux rendszerű gépek esetén válassza **a program bármely platformon futtatható**lehetőséget. Ezután kattintson a **Next** (Tovább) gombra.
    
-10. Fejezze be a varázsló futtatását.
+10. Fejezze be a varázslót.
 
 
 
@@ -377,7 +377,7 @@ cd /tmp
 1. A Configuration Manager-konzolon kattintson a jobb gombbal a csomagra > a **Tartalom terjesztése**elemre.
    ![képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_distribute.png)
 2. Válassza ki azokat a terjesztési pontokat, amelyeken a csomagokat át szeretné másolni. [További információk](https://docs.microsoft.com/sccm/core/servers/deploy/configure/install-and-configure-distribution-points).
-3. A varázsló befejezése. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
+3. Fejezze be a varázslót. A csomag ezután elindítja a replikálást a megadott terjesztési pontokra.
 4. A csomag terjesztésének befejeződése után kattintson a jobb gombbal a csomagra > az **üzembe helyezés**elemre.
    ![képernyőkép a Configuration Manager-konzolról](./media/vmware-azure-mobility-install-configuration-mgr/sccm_deploy.png)
 5. Válassza ki a korábban létrehozott Windows-vagy Linux-eszköz gyűjteményét.

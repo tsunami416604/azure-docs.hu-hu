@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 96bf088e6db29817d1ae4276c254a84723e5d03d
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8cb0340d9e04db2bfbf088bce9505351d7588cd9
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75480189"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840332"
 ---
 # <a name="set-up-phone-sign-up-and-sign-in-with-custom-policies-in-azure-ad-b2c"></a>A telefonos regisztráció és a bejelentkezés beállítása egyéni szabályzatokkal Azure AD B2C
 
@@ -30,7 +30,7 @@ A cikk lépéseit követve az egyéni szabályzatok használatával engedélyezh
 
 * [Azure AD B2C bérlő](tutorial-create-tenant.md)
 * A bérlőben [regisztrált webalkalmazás](tutorial-register-applications.md)
-* A bérlőre feltöltött [Egyéni szabályzatok](active-directory-b2c-get-started-custom.md)
+* A bérlőre feltöltött [Egyéni szabályzatok](custom-policy-get-started.md)
 
 ## <a name="get-the-phone-sign-up--sign-in-starter-pack"></a>Telefonos regisztráció & bejelentkezési indító csomag beszerzése
 
@@ -44,7 +44,7 @@ A következő lépések azt feltételezik, hogy végrehajtotta az [előfeltétel
 
 1. Minden fájlban cserélje le a `yourtenant` karakterláncot a Azure AD B2C bérlő nevére. Ha például a B2C-bérlő neve *contosob2c*, a `yourtenant.onmicrosoft.com` összes példánya `contosob2c.onmicrosoft.com`válik.
 
-1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](active-directory-b2c-get-started-custom.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](active-directory-b2c-get-started-custom.md)című témakörben. Ebben az esetben frissítse `/phone-number-passwordless/` **`Phone_Email_Base.xml`** az előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóját** .
+1. Hajtsa végre az [alkalmazás-azonosítók hozzáadása az egyéni házirendhez](custom-policy-get-started.md#add-application-ids-to-the-custom-policy) című szakasz lépéseit az [Egyéni szabályzatok beszerzése Azure Active Directory B2Cban](custom-policy-get-started.md)című témakörben. Ebben az esetben frissítse `/phone-number-passwordless/` **`Phone_Email_Base.xml`** az előfeltételek, a *IdentityExperienceFramework* és a *ProxyIdentityExperienceFramework*végrehajtásakor regisztrált két alkalmazás **alkalmazás-(ügyfél-) azonosítóját** .
 
 ## <a name="upload-the-policy-files"></a>A szabályzat fájljainak feltöltése
 

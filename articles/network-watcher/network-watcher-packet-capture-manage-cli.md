@@ -1,11 +1,9 @@
 ---
-title: Csomagrögzítés kezelése az Azure Network Watcher – Azure CLI-vel |} A Microsoft Docs
-description: Jelen lap bemutatja, hogyan kezelheti a packet capture funkciójának a Network Watcher az Azure CLI használatával
+title: A csomagok rögzítésének kezelése az Azure Network Watcher használatával – Azure CLI | Microsoft Docs
+description: Ez az oldal azt ismerteti, hogyan kezelhető a Network Watcher csomag-rögzítési funkciója az Azure CLI használatával
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.assetid: cb0c1d10-f7f2-4c34-b08c-f73452430be8
 ms.service: network-watcher
 ms.devlang: na
@@ -13,56 +11,56 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: 7e6b1d77d002b8c1ed32a4e7adbdd1a46cf65668
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.author: damendo
+ms.openlocfilehash: 7eea4c05a48c5e055766f942cc44ee4cf189de5d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "64687088"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840861"
 ---
-# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>A csomagrögzítés kezelése az Azure Network Watcher az Azure CLI használatával
+# <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>A csomagok rögzítésének kezelése az Azure Network Watcher Az Azure CLI használatával
 
 > [!div class="op_single_selector"]
 > - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
-> - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
+> - [Azure-REST API](network-watcher-packet-capture-manage-rest.md)
 
-Network Watcher csomagrögzítés nyomon követésére, és a virtuális gépről érkező forgalom rögzítése-munkamenetek létrehozását teszi lehetővé. Szűrők annak érdekében, hogy csak a kívánt forgalmat rögzíti a rögzítési munkamenet-okat. A csomagrögzítés segítségével diagnosztizálhatja a hálózat rendellenességeket, proaktív és reaktív is. Más használati módjai többek között, hálózati statisztika, azonosítsa a hálózati behatolásokat, hibakeresése, ügyfél-kiszolgáló közötti kommunikációt, és még sok más információk összegyűjtéséhez. Képes lesz távolról indításához csomagrögzítés, ez a funkció egyszerűsíti a csomagrögzítés fut, manuálisan, a kívánt számítógépre, amelyen értékes időt takarít meg terhe.
+Network Watcher a csomagok rögzítése lehetővé teszi, hogy rögzítési munkameneteket hozzon létre a virtuális gépekre irányuló és onnan érkező forgalom nyomon követéséhez. A rögzítési munkamenethez szűrőket biztosít, hogy csak a kívánt forgalmat rögzítsen. A csomagok rögzítése segít a hálózati rendellenességek reaktív és proaktív módon történő diagnosztizálásában. A többi felhasználás magában foglalja a hálózati statisztikák összegyűjtését, a hálózati behatolásokkal kapcsolatos információk megszerzését, az ügyfél és a kiszolgáló közötti kommunikáció hibakeresését. A csomagok rögzítésének távoli kiváltásához ez a funkció megkönnyíti a csomagok rögzítésének a manuális és a kívánt gépen való futtatásának terhét, ami értékes időt takarít meg.
 
-Ebben a cikkben szereplő lépések végrehajtásához kell [telepítse az Azure parancssori felület Mac, Linux és Windows (Azure CLI)](/cli/azure/install-azure-cli).
+A cikkben szereplő lépések végrehajtásához [telepítenie kell a Mac, Linux és Windows rendszerhez készült Azure parancssori felületet (Azure CLI)](/cli/azure/install-azure-cli).
 
-Ez a cikk végigvezeti a különböző felügyeleti feladatok csomagrögzítés jelenleg elérhető.
+Ez a cikk végigvezeti a csomagok rögzítéséhez jelenleg elérhető különböző felügyeleti feladatokon.
 
-- [**Csomagrögzítés indítása**](#start-a-packet-capture)
-- [**Csomagrögzítés leállítása**](#stop-a-packet-capture)
-- [**Csomagrögzítés törlése**](#delete-a-packet-capture)
-- [**Töltse le a csomagrögzítés**](#download-a-packet-capture)
+- [**Csomag rögzítésének elindítása**](#start-a-packet-capture)
+- [**Csomagok rögzítésének leállítása**](#stop-a-packet-capture)
+- [**Csomagok rögzítésének törlése**](#delete-a-packet-capture)
+- [**Csomagok rögzítésének letöltése**](#download-a-packet-capture)
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
-Ez a cikk feltételezi, hogy az alábbi forrásanyagokat:
+Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
-- Csomagrögzítés létrehozni kívánt példányát, Network Watcher régióban
-- A csomag rögzítése a bővítmény engedélyezve van a virtuális gép.
+- Az Network Watcher egy példánya abban a régióban, amelyben csomagot kíván létrehozni
+- Egy virtuális gép, amelyen engedélyezve van a Packet Capture bővítmény.
 
 > [!IMPORTANT]
-> A csomagrögzítés kell egy ügynököt a virtuális gépen kell futnia. Az ügynök telepítve van a kiterjesztése. Virtuálisgép-bővítményekkel kapcsolatos utasításokért látogasson el a [virtuális gépi bővítmények és szolgáltatások](../virtual-machines/windows/extensions-features.md).
+> A csomagok rögzítése megköveteli, hogy az ügynök fusson a virtuális gépen. Az ügynök bővítményként van telepítve. A virtuálisgép-bővítményekre vonatkozó utasításokért látogasson el a [virtuális gépek bővítményeire és szolgáltatásaira](../virtual-machines/windows/extensions-features.md).
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
 ### <a name="step-1"></a>1\. lépés
 
-Futtassa a `az vm extension set` parancsmag a csomag rögzítési ügynök telepítéséhez a Vendég virtuális gépen.
+Futtassa a `az vm extension set` parancsmagot a csomag-rögzítési ügynök telepítéséhez a vendég virtuális gépen.
 
-Windows virtuális gépek:
+Windows rendszerű virtuális gépek esetén:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentWindows --version 1.4
 ```
 
-Linux rendszerű virtuális gépek:
+Linux rendszerű virtuális gépek esetén:
 
 ```azurecli
 az vm extension set --resource-group resourceGroupName --vm-name virtualMachineName --publisher Microsoft.Azure.NetworkWatcher --name NetworkWatcherAgentLinux--version 1.4
@@ -70,13 +68,13 @@ az vm extension set --resource-group resourceGroupName --vm-name virtualMachineN
 
 ### <a name="step-2"></a>2\. lépés
 
-Győződjön meg arról, hogy az ügynök telepítve van-e, futtassa a `vm extension show` parancsmagot, és adja át azt az erőforrás-csoport és a virtuális gép nevét. Ellenőrizze a megjelenő listában, annak érdekében, hogy az ügynök telepítve van.
+Az ügynök telepítésének biztosításához futtassa az `vm extension show` parancsmagot, és adja át az erőforráscsoportot és a virtuális gép nevét. Ellenőrizze az eredményül kapott listát, és győződjön meg arról, hogy az ügynök telepítve van.
 
 ```azurecli
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name NetworkWatcherAgentWindows
 ```
 
-Az alábbi minta egy példa a válasz futását `az vm extension show`
+Az alábbi példa a `az vm extension show` futtatásának válaszára mutat példát.
 
 ```json
 {
@@ -98,13 +96,13 @@ Az alábbi minta egy példa a válasz futását `az vm extension show`
 }
 ```
 
-## <a name="start-a-packet-capture"></a>Csomagrögzítés indítása
+## <a name="start-a-packet-capture"></a>Csomag rögzítésének elindítása
 
-Ha az előző lépések befejeződött, a csomag rögzítési ügynök telepítve van a virtuális gépen.
+Miután az előző lépések befejeződik, a rendszer telepíti a csomag-rögzítési ügynököt a virtuális gépre.
 
 ### <a name="step-1"></a>1\. lépés
 
-A következő lépés, hogy a Network Watcher-példány beolvasása. A Network Watcher Helyrendszerszerepkörre nevére átadott a `az network watcher show` parancsmag a 4. lépésben.
+A következő lépés az Network Watcher példány beolvasása. A Network Watcher AA neve a 4. lépésben megadott `az network watcher show` parancsmagnak lesz átadva.
 
 ```azurecli
 az network watcher show --resource-group resourceGroup --name networkWatcherName
@@ -112,7 +110,7 @@ az network watcher show --resource-group resourceGroup --name networkWatcherName
 
 ### <a name="step-2"></a>2\. lépés
 
-Storage-fiók beolvasása. Ez a tárfiók a packet capture fájl tárolására szolgál.
+Egy Storage-fiók beolvasása. Ez a Storage-fiók tárolja a csomag rögzítésére szolgáló fájlt.
 
 ```azurecli
 azure storage account list
@@ -120,13 +118,13 @@ azure storage account list
 
 ### <a name="step-3"></a>3\. lépés
 
-Szűrők a csomagrögzítés által tárolt adatok korlátozására használható. Az alábbi példa a több szűrőt beállítja a csomagrögzítés.  Az első három szűrők összegyűjtéséhez kimenő TCP-forgalom csak a helyi IP-cím 10.0.0.3 célportok 20, a 80-as és 443-as porton.  Az utolsó szűrő gyűjti csak az UDP-forgalmat.
+A szűrők használatával korlátozható a csomagok rögzítése által tárolt adatmennyiség. Az alábbi példa egy csomagot állít be több szűrővel.  Az első három szűrő csak a helyi IP-10.0.0.3 gyűjti a kimenő TCP-forgalmat a 20., 80-es és 443-es portra.  Az utolsó szűrő csak az UDP-forgalmat gyűjti.
 
 ```azurecli
 az network watcher packet-capture create --resource-group {resourceGroupName} --vm {vmName} --name packetCaptureName --storage-account {storageAccountName} --filters "[{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"20\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"80\"},{\"protocol\":\"TCP\", \"remoteIPAddress\":\"1.1.1.1-255.255.255\",\"localIPAddress\":\"10.0.0.3\", \"remotePort\":\"443\"},{\"protocol\":\"UDP\"}]"
 ```
 
-Az alábbi példában a várt kimeneti futtatását a `az network watcher packet-capture create` parancsmagot.
+A következő példa a `az network watcher packet-capture create` parancsmag futtatásának várt kimenete.
 
 ```json
 {
@@ -179,15 +177,15 @@ roviders/microsoft.compute/virtualmachines/{vmName}/2017/05/25/packetcapture_16_
 }
 ```
 
-## <a name="get-a-packet-capture"></a>Csomagrögzítés beolvasása
+## <a name="get-a-packet-capture"></a>Csomag rögzítésének beolvasása
 
-Fut a `az network watcher packet-capture show-status` parancsmag jelenleg fut, vagy befejezett csomagrögzítés állapotát kérdezi le.
+A `az network watcher packet-capture show-status` parancsmag futtatásával lekéri egy jelenleg futó, vagy befejezett csomag rögzítési állapotát.
 
 ```azurecli
 az network watcher packet-capture show-status --name packetCaptureName --location {networkWatcherLocation}
 ```
 
-Az alábbi példa kimenetében a `az network watcher packet-capture show-status` parancsmagot. A következő például, amikor a rögzítés le van állítva, és a egy TimeExceeded StopReason. 
+A következő példa a `az network watcher packet-capture show-status` parancsmag kimenete. A következő példa a rögzítés leállítását, a TimeExceeded StopReason. 
 
 ```
 {
@@ -204,40 +202,40 @@ cketCaptures/packetCaptureName",
 }
 ```
 
-## <a name="stop-a-packet-capture"></a>Csomagrögzítés leállítása
+## <a name="stop-a-packet-capture"></a>Csomagok rögzítésének leállítása
 
-Futtassa a `az network watcher packet-capture stop` parancsmagot, ha azt folyamatban a rögzítési munkamenet le van állítva.
+Ha a `az network watcher packet-capture stop` parancsmag futtatásával folyamatban van egy rögzítési munkamenet, leáll.
 
 ```azurecli
 az network watcher packet-capture stop --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> A parancsmag nem választ ad vissza. Ha futtatunk egy éppen futó rögzítési munkamenet vagy egy létező munkamenet már leállt.
+> A parancsmag a jelenleg futó rögzítési munkamenetben vagy már leállított meglévő munkamenetben nem ad vissza választ.
 
-## <a name="delete-a-packet-capture"></a>Csomagrögzítés törlése
+## <a name="delete-a-packet-capture"></a>Csomagok rögzítésének törlése
 
 ```azurecli
 az network watcher packet-capture delete --name packetCaptureName --location westcentralus
 ```
 
 > [!NOTE]
-> Csomagrögzítés törlése nem törli a storage-fiókban a fájlt.
+> A csomagok rögzítésének törlése nem törli a fájlt a Storage-fiókban.
 
-## <a name="download-a-packet-capture"></a>Töltse le a csomagrögzítés
+## <a name="download-a-packet-capture"></a>Csomagok rögzítésének letöltése
 
-A csomag rögzítési munkamenet befejezése után a rögzítési feltöltés blob storage-bA vagy egy helyi fájlba a virtuális gépen. A csomagrögzítés tárolási helyét a munkamenet létrehozásakor van meghatározva. Ezek eléréséhez eszköz rögzítési-fájlokat a storage-fiók itt tölthető le a Microsoft Azure Storage Explorerben:  https://storageexplorer.com/
+A csomag-rögzítési munkamenet befejezése után a rögzítési fájl feltölthető a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a munkamenet létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amely letölthető innen: https://storageexplorer.com/
 
-Ha egy storage-fiók van megadva, packet capture fájlok egy storage-fiókba, a következő helyen találhatóak meg:
+Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a következő helyen menti a Storage-fiókba:
 
 ```
 https://{storageAccountName}.blob.core.windows.net/network-watcher-logs/subscriptions/{subscriptionId}/resourcegroups/{storageAccountResourceGroup}/providers/microsoft.compute/virtualmachines/{VMName}/{year}/{month}/{day}/packetCapture_{creationTime}.cap
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ismerje meg, hogyan automatizálhatja a virtuális gép riasztások csomagrögzítés megtekintésével [hozzon létre egy aktivált riasztás csomagrögzítés](network-watcher-alert-triggered-packet-capture.md)
+Ismerje meg, hogyan automatizálható a csomagok rögzítése a virtuálisgép-riasztásokkal a [riasztások által aktivált csomagok létrehozása](network-watcher-alert-triggered-packet-capture.md) funkció megtekintésével
 
-Keresse meg, ha bizonyos van engedélyezi a forgalmat a virtuális gép vagy a funkcionáló [ellenőrizze IP-folyamat ellenőrzése](diagnose-vm-network-traffic-filtering-problem.md)
+Annak megállapítása, hogy az [IP-forgalom ellenőrzésének](diagnose-vm-network-traffic-filtering-problem.md) meglátogatása esetén engedélyezett-e a virtuális gép bejövő vagy kimenő forgalma
 
 <!-- Image references -->

@@ -1,19 +1,18 @@
 ---
 title: Azure HDInsight gyorsított írások az Apache HBase
 description: Áttekintést nyújt az Azure HDInsight gyorsított írási funkcióról, amely prémium szintű felügyelt lemezeket használ az Apache HBase Write Ahead-napló teljesítményének javítására.
-services: hdinsight
-ms.service: hdinsight
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
+ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 08/21/2019
-ms.openlocfilehash: ebcc91bb374183a3f2fe000f37c66230459befa3
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.date: 01/24/2020
+ms.openlocfilehash: 7165bab96d037f6782bc9aa6767cadd9b35f058c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156930"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764584"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight gyorsított írások az Apache HBase
 
@@ -33,13 +32,13 @@ Ha egy **RegionServer** összeomlik vagy elérhetetlenné válik a MemStore kiü
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Gyorsított írási funkciók az Azure HDInsight for Apache HBase
 
-A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási és olvasási műveletek által okozott nagyobb írási késések problémáját.  Az Apache HBase-fürtök HDInsight gyorsított írási funkciója minden RegionServer (feldolgozó csomópont) prémium szintű SSD által felügyelt lemezeket csatol. Az írási előre megadott naplók ezután a prémium szintű felügyelt lemezekre csatlakoztatott Hadoop fájlrendszerbe (HDFS) lesznek írva, a felhőalapú tárolás helyett.  A prémium szintű Managed-Disks SSD-ket használ, és kiváló I/O-teljesítményt biztosít hibatűréssel.  A nem felügyelt lemezekkel ellentétben, ha az egyik tárolási egység leáll, az nem érinti a többi tárolási egységet ugyanabban a rendelkezésre állási csoportba.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késést és nagyobb rugalmasságot biztosítanak alkalmazásai számára. Az Azure által felügyelt lemezekről az [Azure Managed Disks bemutatása](../../virtual-machines/windows/managed-disks-overview.md)című témakörben olvashat bővebben. 
+A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási és olvasási műveletek által okozott nagyobb írási késések problémáját.  Az Apache HBase-fürtök HDInsight gyorsított írási funkciója minden RegionServer (feldolgozó csomópont) prémium szintű SSD által felügyelt lemezeket csatol. Az írási előre megadott naplók ezután a prémium szintű felügyelt lemezekre csatlakoztatott Hadoop fájlrendszerbe (HDFS) lesznek írva, a felhőalapú tárolás helyett.  A prémium szintű Managed-Disks SSD-ket használ, és kiváló I/O-teljesítményt biztosít hibatűréssel.  A nem felügyelt lemezekkel ellentétben, ha az egyik tárolási egység leáll, az nem érinti az azonos rendelkezésre állási csoportba tartozó más tárolási egységeket.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késést és nagyobb rugalmasságot biztosítanak alkalmazásai számára. Az Azure által felügyelt lemezekről az [Azure Managed Disks bemutatása](../../virtual-machines/windows/managed-disks-overview.md)című témakörben olvashat bővebben.
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 
-Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **metaadattár-beállítások**területen kattintson a **gyorsított írások engedélyezése**melletti jelölőnégyzetre. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
+Ha új HBase-fürtöt szeretne létrehozni a gyorsított írási funkciókkal, kövesse a [fürtök beállítása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md) című szakasz lépéseit, amíg el nem éri a **3. lépést, a tárterületet**. A **Metaadattár beállításai**területen jelölje be a **HBase gyorsított írások engedélyezése**jelölőnégyzetet. Ezután folytassa a fürt létrehozásához szükséges további lépéseket.
 
-![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/accelerated-writes-cluster-creation.png)
+![Gyorsított írási lehetőségek engedélyezése a HDInsight Apache HBase](./media/apache-hbase-accelerated-writes/azure-portal-cluster-storage-hbase.png)
 
 ## <a name="other-considerations"></a>Egyéb szempontok
 

@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: sngun
-ms.openlocfilehash: 1ac4d12f58977497642cdb0706ab7e85e9a4db64
-ms.sourcegitcommit: e9776e6574c0819296f28b43c9647aa749d1f5a6
+ms.openlocfilehash: d06afb3670b1c3af3f1acf0bd690c1e3e266a11c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/13/2020
-ms.locfileid: "75913082"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771792"
 ---
 # <a name="security-controls-for-azure-cosmos-db"></a>A Azure Cosmos DB biztonsági vezérlői
 
@@ -41,7 +41,7 @@ Ez a cikk a Azure Cosmos DB beépített biztonsági vezérlőket dokumentálja.
 
 | Biztonsági ellenőrzés | Igen/nem | Megjegyzések|
 |---|---|--|
-| Hitelesítés| Igen | Igen, az adatbázis-fiók szintjén; az adatsík szintjén Cosmos DB erőforrás-tokeneket és kulcs-hozzáférést használ. |
+| Authentication| Igen | Igen, az adatbázis-fiók szintjén; az adatsík szintjén Cosmos DB erőforrás-tokeneket és kulcs-hozzáférést használ. |
 | Engedélyezés| Igen | Támogatott az Azure Cosmos-fiókban főkulcsokkal (elsődleges és másodlagos) és erőforrás-tokenekkel. Olvasási/írási vagy olvasási hozzáférés csak a főkulcsokkal rendelkező adatokhoz. Az erőforrás-tokenek korlátozott ideig férnek hozzá az erőforrásokhoz, például a dokumentumokhoz és a tárolóhoz. |
 
 ## <a name="data-protection"></a>Adatvédelem
@@ -52,7 +52,7 @@ Ez a cikk a Azure Cosmos DB beépített biztonsági vezérlőket dokumentálja.
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Igen | Lásd: [az ügyfél által felügyelt kulcsok konfigurálása a Azure Cosmos db-fiókhoz](how-to-setup-cmk.md)  |
 | Oszlop szintű titkosítás (Azure Data Services)| Igen | Csak a Tables API Premiumban. Nem minden API támogatja ezt a funkciót. Lásd [: a Azure Cosmos db bemutatása: table API](table-introduction.md). |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az összes Azure Cosmos DB-adatforgalom titkosítva van az átvitel során. |
-| Titkosított API-hívások| Igen | A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-et is támogatja.<br>Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [cosmosdbpm@microsoft.com](maito:cosmosdbpm@microsoft.com]). |
+| Titkosított API-hívások| Igen | A Azure Cosmos DB összes kapcsolata támogatja a HTTPS protokollt. A Azure Cosmos DB a TLS 1,2-et is támogatja.<br>Egy minimális TLS-verzió kiszolgálóoldali kikényszeríthető. Ehhez vegye fel a kapcsolatot [azurecosmosdbtls@service.microsoft.com](mailto:azurecosmosdbtls@service.microsoft.com). |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 

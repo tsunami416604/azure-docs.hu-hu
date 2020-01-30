@@ -8,33 +8,34 @@ ms.custom: seo-java-august2019
 ms.devlang: java
 ms.topic: quickstart
 ms.date: 05/06/2019
-ms.openlocfilehash: 269eb1fe744a31f1f4501c5790e06c1a5e06bab6
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 566bf606b275b8e2c1f456600b46b1d7304d2ce7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74767891"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769027"
 ---
 # <a name="quickstart-use-java-to-connect-to-and-query-data-in-azure-database-for-postgresql---single-server"></a>Rövid útmutató: a Java használata az Azure Database for PostgreSQL-kiszolgálóval való kapcsolódáshoz és az adatlekérdezéshez
-Ebben a rövid útmutatóban azt szemléltetjük, hogy miként lehet Java-alkalmazás használatával csatlakozni a PostgreSQL-hez készült Azure Database-hez. Bemutatjuk, hogy SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
+
+Ebben a rövid útmutatóban egy Java-alkalmazás használatával csatlakozik egy Azure Database for PostgreSQLhoz. Bemutatjuk, hogy az SQL-utasítások használatával hogyan kérdezhetők le, illeszthetők be, frissíthetők és törölhetők az adatok az adatbázisban. A jelen cikkben ismertetett lépések feltételezik, hogy Ön rendelkezik fejlesztési tapasztalatokkal a Java használatával kapcsolatban, az Azure Database for PostgreSQL használatában pedig még járatlan.
 
 ## <a name="prerequisites"></a>Előfeltételek
-A rövid útmutató az alábbi útmutatók valamelyikében létrehozott erőforrásokat használja kiindulópontként:
-- [DB létrehozása – portál](quickstart-create-server-database-portal.md)
-- [DB létrehozása – Azure CLI](quickstart-create-server-database-azure-cli.md)
 
-Emellett a következőket kell elvégezni:
-- Töltse le a Java és a Java fejlesztői készlet verziójának megfelelő [PostgreSQL JDBC-illesztőprogramot](https://jdbc.postgresql.org/download.html).
-- Illessze be a PostgreSQL JDBC jar-fájlját (például postgresql-42.1.1.jar) az alkalmazás osztályútvonalába. További információért lásd: [Az osztályútvonal részletei](https://jdbc.postgresql.org/documentation/head/classpath.html).
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+
+- A rövid útmutató befejezése [: hozzon létre egy Azure Database for PostgreSQL kiszolgálót a Azure Portal vagy a](quickstart-create-server-database-portal.md) rövid útmutatóban [: hozzon létre egy Azure Database for POSTGRESQL az Azure CLI használatával](quickstart-create-server-database-azure-cli.md).
+
+- [POSTGRESQL JDBC-illesztőprogram](https://jdbc.postgresql.org/download.html) – a Java és a Java Development Kit verziójának megfelelő.
+- [Osztályútvonal részletei](https://jdbc.postgresql.org/documentation/head/classpath.html) – a PostgreSQL JDBC jar-fájl (például PostgreSQL-42.1.1. jar) belefoglalása az alkalmazás osztályútvonal.
 
 ## <a name="get-connection-information"></a>Kapcsolatadatok lekérése
 Kérje le a PostgreSQL-hez készült Azure-adatbázishoz való csatlakozáshoz szükséges kapcsolatadatokat. Szüksége lesz a teljes kiszolgálónévre és a bejelentkezési hitelesítő adatokra.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-2. Azure Portal bal oldali menüjében válassza a **minden erőforrás**elemet, majd keresse meg a létrehozott kiszolgálót (például **mydemoserver**).
-3. Válassza ki a kiszolgálónevet.
-4. A kiszolgáló **Áttekintés** paneléről jegyezze fel a **Kiszolgálónevet** és a **Kiszolgáló-rendszergazdai bejelentkezési nevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
- ![Azure Database for PostgreSQL-kiszolgáló neve](./media/connect-java/azure-database-postgresql-server-name.png)
+1. A [Azure Portal](https://portal.azure.com/)keresse meg és válassza ki a létrehozott kiszolgálót (például **mydemoserver**).
+
+1. A kiszolgáló **Áttekintés** paneljén jegyezze fel a **kiszolgáló nevét** és a **rendszergazdai felhasználónevet**. Ha elfelejti a jelszavát, ezen a panelen új jelszót is tud kérni.
+
+    ![Azure Database for PostgreSQL a kapcsolatok karakterlánca](./media/connect-java/server-details-azure-database-postgresql.png)
 
 ## <a name="connect-create-table-and-insert-data"></a>Csatlakozás, táblák létrehozása és adatok beszúrása
 Az alábbi kóddal csatlakozhat és töltheti be adatokat az adatbázisba a függvény és egy **INSERT** SQL-utasítás segítségével. A [getConnection()](https://www.postgresql.org/docs/7.4/static/jdbc-use.html), a [createStatement()](https://jdbc.postgresql.org/documentation/head/query.html) és az [executeQuery()](https://jdbc.postgresql.org/documentation/head/query.html) metódus az adatbázishoz való csatlakozásra, illetve a tábla eltávolítására és létrehozására szolgál. A [prepareStatement](https://jdbc.postgresql.org/documentation/head/query.html) objektummal hozhatja létre a beszúrási parancsokat, valamint a setString() és a setInt() metódusokkal végezheti el a paraméterértékek kötését. Az [executeUpdate()](https://jdbc.postgresql.org/documentation/head/update.html) metódussal futtathatja az egyes paraméterkészletekhez tartozó parancsot. 

@@ -6,15 +6,15 @@ ms.service: firewall
 services: firewall
 ms.topic: overview
 ms.custom: mvc
-ms.date: 01/15/2020
+ms.date: 01/28/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
-ms.openlocfilehash: 1507eb4eba88fbf1ef50645390eaa9f17804359a
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: b19d8f26795dadb14f00aadd86ba99ae664b1a76
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76293232"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76764942"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
 
@@ -113,6 +113,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |SNAT a bejövő kapcsolatokon|A DNAT kívül a tűzfal nyilvános IP-címén (bejövő) keresztül létesített kapcsolatok a címfordítást egyikéhez tartoznak. Ez a követelmény ma (aktív/aktív NVA esetén is) biztosítja a szimmetrikus útválasztást.|A HTTP/S eredeti forrásának megőrzése érdekében érdemes lehet [XFF](https://en.wikipedia.org/wiki/X-Forwarded-For) -fejléceket használni. Például olyan szolgáltatást használhat, mint például az [Azure bejárati ajtó](../frontdoor/front-door-http-headers-protocol.md#front-door-service-to-backend) vagy az [Azure Application Gateway](../application-gateway/rewrite-http-headers.md) a tűzfal előtt. A WAF az Azure bejárati ajtajának részeként is hozzáadhatja a tűzfalhoz.
 |Az SQL FQDN szűrése csak proxy módban támogatott (1433-es port)|Azure SQL Database, Azure SQL Data Warehouse és Azure SQL felügyelt példány esetén:<br><br>Az előzetes verzióban az SQL FQDN-szűrés csak proxy módban támogatott (1433-es port).<br><br>Azure SQL-IaaS esetén:<br><br>Ha nem szabványos portokat használ, megadhatja ezeket a portokat az alkalmazási szabályokban.|Az SQL átirányítási módban, amely az alapértelmezett, ha az Azure-on keresztül csatlakozik, ehelyett a Azure Firewall hálózati szabályok részeként használhatja az SQL-szolgáltatás címkéjét.
 |A 25-ös TCP-porton nem engedélyezett a kimenő forgalom| A 25-ös TCP-portot használó kimenő SMTP-kapcsolatok le vannak tiltva. A 25-ös port elsődlegesen a nem hitelesített e-mailek kézbesítéséhez használatos. Ez a virtuális gépek alapértelmezett platform-viselkedése. További információ: [a kimenő SMTP-kapcsolatokkal kapcsolatos problémák elhárítása az Azure-ban](../virtual-network/troubleshoot-outbound-smtp-connectivity.md). A virtuális gépektől eltérően azonban jelenleg nem lehet engedélyezni ezt a funkciót Azure Firewallon.|Kövesse a javasolt módszert az e-mailek küldéséhez az SMTP hibaelhárítási cikkében leírtak szerint. Másik lehetőségként zárja ki azt a virtuális gépet, amelynek a kimenő SMTP-hozzáférésre van szüksége az alapértelmezett útvonalról a tűzfalra, ehelyett konfigurálja a kimenő hozzáférést közvetlenül az internethez.
+|Az aktív FTP használata nem támogatott|Az aktív FTP szolgáltatás le van tiltva Azure Firewall az FTP-PORT parancs használatával történő FTP-visszafordulási támadásokkal szembeni védelem érdekében.|Ehelyett használhatja a passzív FTP-t. A tűzfalon továbbra is explicit módon meg kell nyitnia a 20. és a 21. TCP-portot.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -13,12 +13,12 @@ ms.date: 10/29/2019
 ms.author: jeferrie
 ms.reviewer: saeeda
 ms.custom: aaddev
-ms.openlocfilehash: 0f3aaa2489b94d254d64d5844e1a2e41d5ecc132
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: f28b7abc2b3a9ba753a2f7923c9cfed1897c8522
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76695704"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834195"
 ---
 # <a name="use-msalnet-to-sign-in-users-with-social-identities"></a>A MSAL.NET használata a felhasználók közösségi identitásokkal való bejelentkezéséhez
 
@@ -167,7 +167,7 @@ Ezek a jogcímek számos Azure AD B2C esetben hiányoznak.
 
 Az ügyfél hatással van arra, hogy amikor a Felhasználónév mezőt szeretné megjeleníteni, "hiányzik a jogkivonat-válaszból" értékként? Ha igen, ennek az az oka, hogy Azure AD B2C nem ad vissza értéket a preferred_username IdToken a közösségi fiókok és külső identitás-szolgáltatók (IDP-EK) korlátai miatt. Az Azure AD egy értéket ad vissza a preferred_usernamehoz, mert tudja, hogy kik a felhasználók, de a Azure AD B2C esetében, mert a felhasználó helyi fiókkal, Facebook-, Google-, GitHub-és egyéb szolgáltatásokkal is bejelentkezhet preferred_username Azure AD B2C. A ADAL-mel való MSAL-kompatibilitás blokkolásának feloldásához úgy döntöttünk, hogy a "hiányzó a jogkivonat-válaszból" kifejezést használjuk az Azure AD B2C-fiókok kezelésekor, amikor a IdToken semmit nem ad vissza a preferred_username. A MSAL-nek egy értéket kell visszaadnia preferred_username számára a gyorsítótár-kompatibilitás fenntartásához a kódtárak között.
 
-### <a name="workarounds"></a>Kerülő megoldások
+### <a name="workarounds"></a>Megoldásai
 
 #### <a name="mitigation-for-the-missing-tenant-id"></a>A hiányzó bérlői azonosító enyhítése
 
@@ -176,7 +176,7 @@ A javasolt Áthidaló megoldás a gyorsítótárazás használata [házirend sze
 Alternatív megoldásként használhatja a `tid` jogcímet is, ha a [B2C egyéni házirendeket](https://aka.ms/ief)használja, mert lehetővé teszi, hogy további jogcímeket ad vissza az alkalmazásnak. További információ a [jogcímek átalakításáról](/azure/active-directory-b2c/claims-transformation-technical-profile)
 
 #### <a name="mitigation-for-missing-from-the-token-response"></a>A "hiányzó jogkivonat-válasz" megoldásának enyhítése
-Az egyik lehetőség a "név" jogcím használata előnyben részesített felhasználónévként. Ennek a [B2C doc](../../active-directory-b2c/active-directory-b2c-reference-policies.md) ->nak a folyamata szerepel a Return jogcím oszlopban, majd válassza ki azokat a jogcímeket, amelyeket az alkalmazásnak a sikeres profil-szerkesztési élmény után visszaküldött engedélyezési jogkivonatokban szeretne visszaadni. Válassza például a megjelenítendő név, az irányítószám lehetőséget.
+Az egyik lehetőség a "név" jogcím használata előnyben részesített felhasználónévként. Ennek a [B2C doc](../../active-directory-b2c/user-flow-overview.md) ->nak a folyamata szerepel a Return jogcím oszlopban, majd válassza ki azokat a jogcímeket, amelyeket az alkalmazásnak a sikeres profil-szerkesztési élmény után visszaküldött engedélyezési jogkivonatokban szeretne visszaadni. Válassza például a megjelenítendő név, az irányítószám lehetőséget.
 
 ## <a name="next-steps"></a>Következő lépések 
 

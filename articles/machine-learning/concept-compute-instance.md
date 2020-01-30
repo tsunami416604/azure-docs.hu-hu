@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.author: sgilley
 author: sdgilley
 ms.date: 12/13/2019
-ms.openlocfilehash: 6bba4414390efa6e07be6c253fe55f1638d414dc
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 7f7e0c3eef96970c1820783225a4ff59be8113b3
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75974104"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769101"
 ---
 # <a name="what-is-an-azure-machine-learning-compute-instance"></a>Mi az Azure Machine Learning számítási példány?
 
@@ -117,7 +117,7 @@ Azure Machine Learning Studio munkaterületén válassza a **számítás**, majd
 
 A következő műveleteket hajthatja végre:
 
-* Hozzon létre egy számítási példányt. Adja meg a nevet, az Azure-beli virtuális gép típusát, beleértve a GPU-k, az SSH-hozzáférés engedélyezése/letiltása és a virtuális hálózati beállítások konfigurálása beállítást A példányokat közvetlenül is létrehozhatja az integrált jegyzetfüzetek, Azure Portal, Resource Manager-sablonok vagy Azure Machine Learning SDK használatával. A számítási példányok létrehozásához szükséges dedikált magok régiónként a rendszer egységesíti és megosztotta Azure Machine Learning számítási fürt kvótáját.
+* Hozzon létre egy számítási példányt. Adja meg a nevet, az Azure-beli virtuális gép típusát, beleértve a GPU-ket (vegye figyelembe, hogy a virtuális gép típusa a létrehozás után nem módosítható), az SSH-hozzáférés engedélyezése/letiltása és a virtuális hálózati beállítások konfigurálása. A példányokat közvetlenül is létrehozhatja az integrált jegyzetfüzetek, Azure Portal, Resource Manager-sablonok vagy Azure Machine Learning SDK használatával. A számítási példányok létrehozásához szükséges dedikált magok régiónként a rendszer egységesíti és megosztotta Azure Machine Learning számítási fürt kvótáját.
 * A számítási példányok lap frissítése
 * Számítási példány elindítása, leállítása és újraindítása
 * Számítási példány törlése

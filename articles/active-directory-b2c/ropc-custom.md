@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/06/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 990493b6b2c3757849168d8fb82a4b38f55364e2
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: 95601735064451a91530907e5e6b59f579ff0e28
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74951064"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840264"
 ---
 # <a name="configure-the-resource-owner-password-credentials-flow-in-azure-active-directory-b2c-using-a-custom-policy"></a>Az erőforrás-tulajdonosi jelszó hitelesítő adatainak konfigurálása Azure Active Directory B2C egyéni házirend használatával
 
@@ -38,7 +38,7 @@ A következő folyamatok nem támogatottak:
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](active-directory-b2c-get-started-custom.md).
+Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure Active Directory B2Cban](custom-policy-get-started.md).
 
 ## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
@@ -342,4 +342,4 @@ Azure AD B2C megfelel a OAuth 2,0 szabványoknak a nyilvános ügyfél erőforr�
 ## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a forgatókönyv teljes példáját a [Azure Active Directory B2C egyéni házirend alapszintű csomagban](https://github.com/Azure-Samples/active-directory-b2c-custom-policy-starterpack/tree/master/scenarios/source/aadb2c-ief-ropc).
-- További információ a Azure Active Directory B2C által használt jogkivonatokról a [jogkivonat-hivatkozásban](active-directory-b2c-reference-tokens.md).
+- További információ a Azure Active Directory B2C által használt jogkivonatokról a [jogkivonat-hivatkozásban](tokens-overview.md).

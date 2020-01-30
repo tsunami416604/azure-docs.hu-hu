@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: immersive-reader
 ms.topic: tutorial
-ms.date: 06/20/2019
+ms.date: 01/14/2020
 ms.author: metan
-ms.openlocfilehash: 37453e1fdd8fdcfc89468731980581652027343c
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: 139dd2ebdabbc91a6de3b0a1eb921b110d47c3f3
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945243"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842027"
 ---
 # <a name="tutorial-launch-the-immersive-reader-nodejs"></a>Oktatóanyag: a lebilincselő olvasó elindítása (node. js)
 
@@ -225,7 +225,7 @@ Alapértelmezés szerint a magával ragadó olvasó felület nyelve megegyezik a
     ImmersiveReader.launchAsync(token, subdomain, content, options);
     ```
 
-2. Lépjen a következő helyre: _http://localhost:3000_ . A lebilincselő olvasó indításakor a felület francia nyelven jelenik meg.
+2. Navigáljon _http://localhost:3000_ . A lebilincselő olvasó indításakor a felület francia nyelven jelenik meg.
 
 ## <a name="launch-the-immersive-reader-with-math-content"></a>A lebilincselő olvasó elindítása matematikai tartalommal
 
@@ -256,7 +256,7 @@ A [MathML](https://developer.mozilla.org/en-US/docs/Web/MathML)használatával a
     });
     ```
 
-2. Lépjen a következő helyre: _http://localhost:3000_ . Amikor elindítja a lebilincselő olvasót, és görgessen az aljára, megjelenik a matematikai képlet.
+2. Navigáljon _http://localhost:3000_ . Amikor elindítja a lebilincselő olvasót, és görgessen az aljára, megjelenik a matematikai képlet.
 
 ## <a name="next-steps"></a>Következő lépések
 

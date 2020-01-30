@@ -1,18 +1,18 @@
 ---
-title: Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
-description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést és visszaállítást Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
+title: Azure Files biztonsági mentése a PowerShell-lel
+description: Ebből a cikkből megtudhatja, hogyan készíthet biztonsági mentést Azure Files a Azure Backup szolgáltatás és a PowerShell használatával.
 ms.topic: conceptual
 ms.date: 08/20/2019
-ms.openlocfilehash: f9665bbc3562faab760562e1e6729d8be0796acd
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 5147ab893d4ebad395d7dbd8cc25872177ec10a2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294048"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773105"
 ---
-# <a name="back-up-and-restore-azure-files-with-powershell"></a>Azure Files biztonsági mentése és visszaállítása a PowerShell-lel
+# <a name="back-up-azure-files-with-powershell"></a>Azure Files biztonsági mentése a PowerShell-lel
 
-Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure Files fájlmegosztás biztonsági mentésére és helyreállítására egy [Azure Backup](backup-overview.md) Recovery Services-tároló használatával.
+Ez a cikk azt ismerteti, hogyan használható a Azure PowerShell egy Azure Files-fájlmegosztás biztonsági mentésére egy [Azure Backup](backup-overview.md) Recovery Services-tároló használatával.
 
 Ez a cikk a következőket ismerteti:
 
@@ -22,8 +22,6 @@ Ez a cikk a következőket ismerteti:
 > * Recovery Services-tároló létrehozása.
 > * Konfigurálja az Azure-fájlmegosztás biztonsági mentését.
 > * Futtasson egy biztonsági mentési feladatot.
-> * Biztonsági másolat készítése Azure-fájlmegosztás vagy egy megosztásból származó egyedi fájl visszaállítása.
-> * A biztonsági mentési és visszaállítási feladatok figyelése.
 
 ## <a name="before-you-start"></a>Előkészületek
 
@@ -274,148 +272,6 @@ A biztonsági mentések során az Azure-fájlmegosztás pillanatképeit használ
 Az igény szerinti biztonsági mentések segítségével 10 évig megőrizheti a pillanatképeket. A ütemező használatával igény szerinti PowerShell-szkripteket futtathat a választott megőrzéssel, és így minden héten, hónapban vagy évben rendszeres időközönként pillanatfelvételeket készíthet. Rendszeres Pillanatképek készítésekor tekintse át az Azure Backup használatával [igény szerinti biztonsági mentések korlátozásait](https://docs.microsoft.com/azure/backup/backup-azure-files-faq#how-many-on-demand-backups-can-i-take-per-file-share) .
 
 Ha minta parancsfájlokat keres, tekintse meg a GitHubon (<https://github.com/Azure-Samples/Use-PowerShell-for-long-term-retention-of-Azure-Files-Backup>) található minta parancsfájlt Azure Automation runbook használatával, amely lehetővé teszi a biztonsági másolatok rendszeres ütemezését, és akár 10 évig is megőrizheti azokat.
-
-### <a name="modify-the-protection-policy"></a>A védelmi szabályzat módosítása
-
-Az Azure-fájlmegosztás biztonsági mentésére használt szabályzat módosításához használja az [enable-AzRecoveryServicesBackupProtection](https://docs.microsoft.com/powershell/module/az.recoveryservices/enable-azrecoveryservicesbackupprotection?view=azps-1.4.0). A megfelelő biztonsági mentési elem és az új biztonsági mentési szabályzat meghatározása.
-
-A következő példa a **testAzureFS** védelmi szabályzatot a **dailyafs** -ről a **monthlyafs**-re módosítja.
-
-```powershell
-$monthlyafsPol =  Get-AzRecoveryServicesBackupProtectionPolicy -Name "monthlyafs"
-$afsContainer = Get-AzRecoveryServicesBackupContainer -FriendlyName "testStorageAcct" -ContainerType AzureStorage
-$afsBkpItem = Get-AzRecoveryServicesBackupItem -Container $afsContainer -WorkloadType AzureFiles -Name "testAzureFS"
-Enable-AzRecoveryServicesBackupProtection -Item $afsBkpItem -Policy $monthlyafsPol
-```
-
-## <a name="restore-azure-file-shares-and-files"></a>Azure-fájlmegosztás és-fájlok visszaállítása
-
-Visszaállíthat egy teljes fájlmegosztást vagy adott fájlokat a megosztáson. Az eredeti helyre vagy egy másik helyre is visszaállíthatja.
-
-### <a name="fetch-recovery-points"></a>Helyreállítási pontok beolvasása
-
-A [Get-AzRecoveryServicesBackupRecoveryPoint](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackuprecoverypoint?view=azps-1.4.0) használatával listázhatja a biztonsági másolatban szereplő elemek összes helyreállítási pontját.
-
-A következő parancsfájlban:
-
-* Az **$RP** változó a kiválasztott biztonsági mentési elemhez tartozó helyreállítási pontok tömbje az elmúlt hét napban.
-* A tömb a **0**. indexben szereplő legutóbbi helyreállítási ponttal fordított sorrendben van rendezve.
-* A helyreállítási pont kiválasztásához használja a PowerShell-tömb szabványos indexelését.
-* A példában a **$RP [0]** kiválasztja a legutóbbi helyreállítási pontot.
-
-```powershell
-$startDate = (Get-Date).AddDays(-7)
-$endDate = Get-Date
-$rp = Get-AzRecoveryServicesBackupRecoveryPoint -Item $afsBkpItem -StartDate $startdate.ToUniversalTime() -EndDate $enddate.ToUniversalTime()
-
-$rp[0] | fl
-```
-
-A kimenet az alábbihoz hasonló.
-
-```powershell
-FileShareSnapshotUri : https://testStorageAcct.file.core.windows.net/testAzureFS?sharesnapshot=2018-11-20T00:31:04.00000
-                       00Z
-RecoveryPointType    : FileSystemConsistent
-RecoveryPointTime    : 11/20/2018 12:31:05 AM
-RecoveryPointId      : 86593702401459
-ItemName             : testAzureFS
-Id                   : /Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/testVaultRG/providers/Micros                      oft.RecoveryServices/vaults/testVault/backupFabrics/Azure/protectionContainers/StorageContainer;storage;teststorageRG;testStorageAcct/protectedItems/AzureFileShare;testAzureFS/recoveryPoints/86593702401462
-WorkloadType         : AzureFiles
-ContainerName        : storage;teststorageRG;testStorageAcct
-ContainerType        : AzureStorage
-BackupManagementType : AzureStorage
-```
-
-A megfelelő helyreállítási pont kiválasztása után visszaállíthatja a fájlmegosztást vagy a fájlt az eredeti helyre, vagy egy másik helyre.
-
-### <a name="restore-an-azure-file-share-to-an-alternate-location"></a>Azure-fájlmegosztás visszaállítása másik helyre
-
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához:
-
-* **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **TargetFolder**: a fájlmegosztás alatt lévő mappa, amelyhez az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
-* **ResolveConflict**: utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás**elfogadása.
-
-Futtassa a parancsmagot a következő paraméterekkel:
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -ResolveConflict Overwrite
-```
-
-A parancs a következő példában látható módon visszaadja a nyomon követett AZONOSÍTÓval ellátott feladatot.
-
-```powershell
-WorkloadName     Operation            Status               StartTime                 EndTime                   JobID
-------------     ---------            ------               ---------                 -------                   -----
-testAzureFS        Restore              InProgress           12/10/2018 9:56:38 AM                               9fd34525-6c46-496e-980a-3740ccb2ad75
-```
-
-### <a name="restore-an-azure-file-to-an-alternate-location"></a>Azure-fájl visszaállítása másik helyre
-
-A [Restore-AzRecoveryServicesBackupItem](https://docs.microsoft.com/powershell/module/az.recoveryservices/restore-azrecoveryservicesbackupitem?view=azps-1.4.0) használatával állítsa vissza a kijelölt helyreállítási pontot. Adja meg ezeket a paramétereket a másik hely azonosításához, valamint a visszaállítani kívánt fájl egyedi azonosításához.
-
-* **TargetStorageAccountName**: a Storage-fiók, amelyhez a biztonsági másolat tartalma vissza lesz állítva. A célként megadott Storage-fióknak a tárolóval megegyező helyen kell lennie.
-* **TargetFileShareName**: a fájlmegosztás azon fiókján belüli megosztás, amelyhez a biztonsági másolat tartalma vissza lesz állítva.
-* **TargetFolder**: a fájlmegosztás alatt lévő mappa, amelyhez az adat vissza lett állítva. Ha a biztonsági másolatban lévő tartalmat vissza szeretné állítani egy gyökérkönyvtárba, adja meg a célmappa értékeit üres karakterláncként.
-* **SourceFilePath**: a fájl abszolút elérési útja, amelyet a fájlmegosztás keretén belül helyre kell állítani karakterláncként. Ez az elérési út a **Get-AzStorageFile** PowerShell-parancsmagban használt elérési út.
-* **SourceFileType**: azt határozza meg, hogy egy könyvtár vagy egy fájl ki van-e választva. **Címtár** vagy **fájl**elfogadása.
-* **ResolveConflict**: utasítás, ha a visszaállított adattal ütközik. A **felülírás** vagy **kihagyás**elfogadása.
-
-A további paraméterek (SourceFilePath és SourceFileType) csak a visszaállítani kívánt egyes fájlokhoz kapcsolódnak.
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -TargetStorageAccountName "TargetStorageAcct" -TargetFileShareName "DestAFS" -TargetFolder "testAzureFS_restored" -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-Ez a parancs visszaadja a nyomon követett AZONOSÍTÓval rendelkező feladatot, ahogy az az előző szakaszban is látható.
-
-### <a name="restore-azure-file-shares-and-files-to-the-original-location"></a>Az Azure-fájlmegosztás és-fájlok visszaállítása az eredeti helyre
-
-Amikor eredeti helyre állítja vissza a visszaállítást, nem kell megadnia a cél és a cél kapcsolatos paramétereket. Csak **ResolveConflict** kell megadni.
-
-#### <a name="overwrite-an-azure-file-share"></a>Azure-fájlmegosztás felülírása
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -ResolveConflict Overwrite
-```
-
-#### <a name="overwrite-an-azure-file"></a>Azure-fájl felülírása
-
-```powershell
-Restore-AzRecoveryServicesBackupItem -RecoveryPoint $rp[0] -SourceFileType File -SourceFilePath "TestDir/TestDoc.docx" -ResolveConflict Overwrite
-```
-
-## <a name="track-backup-and-restore-jobs"></a>Biztonsági mentési és visszaállítási feladatok nyomon követése
-
-Az igény szerinti biztonsági mentési és visszaállítási műveletek a feladatot egy AZONOSÍTÓval együtt visszaadják, ahogyan azt az [igény szerinti biztonsági mentés](#trigger-an-on-demand-backup)futtatásakor is mutatja. A [Get-AzRecoveryServicesBackupJobDetails](https://docs.microsoft.com/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupjob?view=azps-1.4.0) parancsmag használatával követheti nyomon a feladatok előrehaladását és részleteit.
-
-```powershell
-$job = Get-AzRecoveryServicesBackupJob -JobId 00000000-6c46-496e-980a-3740ccb2ad75 -VaultId $vaultID
-
- $job | fl
-
-
-IsCancellable        : False
-IsRetriable          : False
-ErrorDetails         : {Microsoft.Azure.Commands.RecoveryServices.Backup.Cmdlets.Models.AzureFileShareJobErrorInfo}
-ActivityId           : 00000000-5b71-4d73-9465-8a4a91f13a36
-JobId                : 00000000-6c46-496e-980a-3740ccb2ad75
-Operation            : Restore
-Status               : Failed
-WorkloadName         : testAFS
-StartTime            : 12/10/2018 9:56:38 AM
-EndTime              : 12/10/2018 11:03:03 AM
-Duration             : 01:06:24.4660027
-BackupManagementType : AzureStorage
-
-$job.ErrorDetails
-
- ErrorCode ErrorMessage                                          Recommendations
- --------- ------------                                          ---------------
-1073871825 Microsoft Azure Backup encountered an internal error. Wait for a few minutes and then try the operation again. If the issue persists, please contact Microsoft support.
-```
 
 ## <a name="next-steps"></a>Következő lépések
 

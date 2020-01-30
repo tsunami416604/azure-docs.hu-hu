@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: 9a4f5094837b0c642c4de75180039064de4e40c2
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.openlocfilehash: 76219ec454fd105ed4bbf1a2fa0e922475d8dd1f
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513983"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834977"
 ---
 # <a name="develop-secure-applications-on-azure"></a>Biztonságos alkalmazások fejlesztése az Azure-ban
 Ebben a cikkben a Felhőbeli alkalmazások fejlesztésekor megfontolandó biztonsági tevékenységeket és ellenőrzéseket mutatjuk be. A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.com/library/windows/desktop/84aed186-1d75-4366-8e61-8d258746bopq.aspx) megvalósítási és ellenőrzési szakaszaiban megfontolandó biztonsági kérdések és fogalmak. A cél az, hogy segítséget nyújtson olyan tevékenységek és Azure-szolgáltatások definiálásához, amelyeket a biztonságosabb alkalmazások fejlesztéséhez használhat.
@@ -36,7 +36,7 @@ Tegyük fel, hogy az alkalmazás olyan módokon fog használatba venni, amelyeke
 
 A kód beadása előtt a kód [felülvizsgálatával](https://docs.microsoft.com/azure/devops/learn/devops-at-microsoft/code-reviews-not-primarily-finding-bugs) növelheti a kódok általános minőségét, és csökkentheti a hibák kockázatát. A [Visual Studio](https://docs.microsoft.com/azure/devops/repos/tfvc/get-code-reviewed-vs?view=vsts) segítségével kezelheti a kód-felülvizsgálati folyamatot.
 
-### <a name="perform-static-code-analysis"></a>Statikus kódelemzés végrehajtása
+### <a name="perform-static-code-analysis"></a>Statikus kód elemzésének végrehajtása
 
 A [statikus kód elemzését](https://www.owasp.org/index.php/Static_Code_Analysis) (más néven *forráskód-elemzést*) általában a kód felülvizsgálatának részeként hajtja végre a rendszer. A statikus kód elemzése általában arra utal, hogy statikus kód-elemzési eszközöket futtasson, hogy a nem futó kódban lévő lehetséges biztonsági réseket olyan technikák használatával találja meg, mint a [szennyező ellenőrzés](https://en.wikipedia.org/wiki/Taint_checking) és [az adatfolyam-elemzés](https://en.wikipedia.org/wiki/Data-flow_analysis).
 
@@ -89,7 +89,7 @@ Ez azt jelenti, hogy kevesebb ember fér hozzá a valós adataihoz, ami csökken
 
 A találgatásos és a szótáron alapuló találgatások elleni védelemhez erős jelszóházirend szükséges annak biztosításához, hogy a felhasználók összetett jelszót hozzanak létre (például 12 karakter hosszúságú, alfanumerikus és speciális karaktereket igénylő).
 
-A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](../../active-directory-b2c/active-directory-b2c-reference-sspr.md)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
+A jelszó-szabályzatok létrehozásához és érvényesítéséhez használhat identitás-keretrendszert. A Azure AD B2C a [beépített szabályzatok](../../active-directory-b2c/tutorial-create-user-flows.md#create-a-password-reset-user-flow), az [önkiszolgáló jelszó-visszaállítás](../../active-directory-b2c/user-flow-self-service-password-reset.md)és egyéb szolgáltatások biztosításával segít a jelszavak kezelésében.
 
 Az alapértelmezett fiókok elleni támadások elleni védelem érdekében ellenőrizze, hogy az összes kulcs és jelszó cserélhető-e, és hogy az erőforrások telepítése után létrejöttek vagy lecseréltek-e.
 

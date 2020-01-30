@@ -11,12 +11,12 @@ author: jovanpop-msft
 ms.author: jovanpop
 ms.reviewer: jrasnik, carlrab
 ms.date: 06/25/2019
-ms.openlocfilehash: d367d9eedc06dbfe0e5096372a4f09c66ea35013
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: c4366b2718271b1e27325e6946c5016e9230cea4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75462611"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76835912"
 ---
 # <a name="dynamically-scale-database-resources-with-minimal-downtime"></a>Adatbázis-erőforrások dinamikus méretezése minimális állásidővel
 
@@ -55,7 +55,8 @@ A Azure SQL Database mindhárom teljes választéka az adatbázisok dinamikus m�
 - A [felügyelt példányok](sql-database-managed-instance.md) [virtuális mag](sql-database-managed-instance.md#vcore-based-purchasing-model) módot használnak, és lehetővé teszi a maximális CPU-magok és a példányhoz lefoglalt maximális tárterület meghatározását. A példányon belüli összes adatbázis osztozik a példányhoz lefoglalt erőforrásokon.
 - A [rugalmas készletek](sql-database-elastic-pool-scale.md) lehetővé teszik a készletben lévő adatbázisok csoportjára vonatkozó maximális erőforrás-korlátozás meghatározását.
 
-A vertikális fel-vagy leskálázási műveletek kezdeményezése bármely aroma esetében újraindítja az adatbázismotor folyamatát, és szükség esetén áthelyezi egy másik virtuális gépre. Ha az adatbázismotor folyamatát egy új virtuális gépre helyezi át, az **online folyamat** , ahol továbbra is használhatja a meglévő Azure SQL Database szolgáltatást, miközben a folyamat folyamatban van. Ha a célként megadott adatbázis-motor teljesen inicializálva van, és készen áll a lekérdezések feldolgozására, a rendszer a [forrásról a célként megadott adatbázis-motorra vált](sql-database-single-database-scale.md#impact-of-changing-service-tier-or-rescaling-compute-size).
+A vertikális fel-vagy leskálázási műveletek kezdeményezése bármely aroma esetében újraindítja az adatbázismotor folyamatát, és szükség esetén áthelyezi egy másik virtuális gépre. Ha az adatbázismotor folyamatát egy új virtuális gépre helyezi át, az **online folyamat** , ahol továbbra is használhatja a meglévő Azure SQL Database szolgáltatást, miközben a folyamat folyamatban van. Ha a célként megadott adatbázis-motor teljesen inicializálva van, és készen áll a lekérdezések feldolgozására, a rendszer a [forrásról a célként megadott adatbázis-motorra vált](sql-database-single-database-scale.md#impact). 
+
 
 > [!NOTE]
 > A vertikális Felskálázási/skálázási folyamat befejeződése után rövid kapcsolódási szünet várható. Ha implementálta az [újrapróbálkozási logikát a normál átmeneti hibákhoz](sql-database-connectivity-issues.md#retry-logic-for-transient-errors), akkor nem fogja észrevenni a feladatátvételt.

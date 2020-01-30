@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Megtudhatja, hogyan kezelheti Network Watcher Packet Capture funkcióját a Azure Portal használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 59edd945-34ad-4008-809e-ea904781d918
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/10/2018
-ms.author: kumud
-ms.openlocfilehash: 4950ef8b763967e4e852e319429cc263a4a85f6c
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 6fc4a25e39fb8f27151b2e3bec1959d74a619233
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277869"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840827"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával
 
@@ -28,7 +25,7 @@ Network Watcher a csomagok rögzítése lehetővé teszi, hogy rögzítési munk
 
 Ebben a cikkben megismerheti a csomagok rögzítésének elindítását, leállítását, letöltését és törlését. 
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 A csomagok rögzítéséhez a következő kapcsolat szükséges:
 * Kimenő kapcsolat egy Storage-fiókkal a 443-as porton keresztül.

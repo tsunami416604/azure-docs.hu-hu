@@ -7,12 +7,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/29/2019
 ms.author: absha
-ms.openlocfilehash: 12759deb3e1775b5170d40cc609fe8c6226bf0d6
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: a8882a810d18d06b33d6382bd8bd86ffe75b39d8
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76704578"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76766812"
 ---
 # <a name="metrics-for-application-gateway"></a>Application Gateway metrikái
 
@@ -22,7 +22,9 @@ A Application Gateway a metrikák nevű adatpontokat teszi közzé a Application
 
 ### <a name="timing-metrics"></a>Időzítési mérőszámok
 
-A kérelem és válasz időzítésével kapcsolatos következő mérőszámok érhetők el. Az adott figyelőhöz tartozó mérőszámok elemzésével meghatározhatja, hogy a WAN, a Application Gateway, a Application Gateway és a háttérrendszer közötti hálózat, illetve a háttérrendszer-alkalmazás teljesítménye miatti lassulás az alkalmazásban.
+A Application Gateway számos beépített időzítési metrikát biztosít a kérelemhez és a válaszhoz, amely minden ezredmásodpercben mérhető. 
+
+![](./media/application-gateway-metrics/application-gateway-metrics.png)
 
 > [!NOTE]
 >
@@ -30,28 +32,41 @@ A kérelem és válasz időzítésével kapcsolatos következő mérőszámok é
 
 - **Háttérbeli kapcsolat ideje**
 
-  A háttér-alkalmazással létesített kapcsolatok létrehozásának ideje. Ez magában foglalja a hálózati késést, valamint a háttér-kiszolgáló TCP-veremének az új kapcsolatok létrehozásához szükséges időt. SSL esetén a rendszer a kézfogás során eltöltött időt is tartalmazza. 
+  A háttér-alkalmazással létesített kapcsolatok létrehozásának ideje. 
+
+  Ez magában foglalja a hálózati késést, valamint a háttér-kiszolgáló TCP-veremének az új kapcsolatok létrehozásához szükséges időt. SSL esetén a rendszer a kézfogás során eltöltött időt is tartalmazza. 
 
 - **Háttérbeli első bájt válaszideje**
 
-  A háttér-kiszolgálóval létesített kapcsolat létrehozásának és a válasz fejlécének első bájtjának fogadása közötti időtartam. Ez megközelíti a háttérbeli *kapcsolat idejét* és a háttérbeli alkalmazás válaszideje (a kiszolgáló által a tartalom előállítása, az adatbázis-lekérdezések beolvasása, és a válasz átadásának megkezdése Application Gatewayre).
+  A háttér-kiszolgálóval létesített kapcsolat létrehozásának és a válasz fejlécének első bájtjának fogadása közötti időtartam. 
+
+  Ez megközelíti a háttérbeli *kapcsolódási idő*összegét, a kérés által a háttér eléréséhez szükséges időt a Application Gatewaytól, a háttérbeli alkalmazás által a válaszadáshoz szükséges időt (a kiszolgáló által a tartalom előállítására irányuló, esetleg beolvasott adatbázis-lekérdezéseket), valamint a válasz első bájtja által a háttérből való Application Gateway eléréséhez szükséges időt.
 
 - **Háttérbeli utolsó bájt válaszideje**
 
-  A háttér-kiszolgálóval létesített kapcsolat létesítése és a válasz törzse utolsó bájtjának fogadása között eltelt idő. Ez megközelíti a *háttérbeli első bájt* és az adatátviteli idő összegét (ez a szám nagy mértékben változhat a kért objektumok méretétől és a kiszolgáló hálózatának késésével függően)
+  A háttér-kiszolgálóval létesített kapcsolat létesítése és a válasz törzse utolsó bájtjának fogadása között eltelt idő. 
+
+  Ez közelíti a *háttérbeli első bájt* és az adatátviteli idő összegét (ez a szám nagy mértékben változhat a kért objektumok méretétől és a kiszolgáló hálózatának késése alapján).
 
 - **Application Gateway – teljes idő**
 
-  A kérelem feldolgozásának és a válasz elküldésekor elvégezhető átlagos idő. Ez az időszak átlaga, amikor a Application Gateway megkapja egy HTTP-kérelem első bájtját, amikor a válasz küldése művelet befejeződik, és megközelíti a Application Gateway feldolgozási idejének összegét és a *háttérbeli utolsó bájtra adott időpontot* .
+  A kérelem fogadásához, feldolgozásához és az elküldött válaszhoz szükséges átlagos idő. 
+
+  Ez az az időtartam, amikor a Application Gateway megkapja a HTTP-kérelem első bájtját arra az időre, amikor az utolsó válasz bájtot elküldték az ügyfélnek. Ebbe beletartozik a Application Gateway által végrehajtott feldolgozási idő, a *háttérbeli utolsó bájt válaszideje*, a Application Gateway által az összes válasz és az *ügyfél RTT*elküldéséhez szükséges idő.
 
 - **Ügyfél-RTT**
 
-  Az ügyfelek és a Application Gateway közötti átlagos menetidő. Ez a metrika azt jelzi, hogy mennyi ideig tart a kapcsolatok létrehozása és a visszaigazolások visszaküldése. 
-
-Ezek a metrikák segítségével megállapítható, hogy a megfigyelt lassulás a Application Gateway, a hálózat és a háttérrendszer-kiszolgáló TCP-veremének telítettsége, a háttérbeli alkalmazások teljesítménye vagy nagyméretű fájlméret miatt.
-Ha például van egy tüske a háttérbeli első bájtban, de a háttérbeli kapcsolódási idő állandó, akkor arra utalhat, hogy az Application Gateway és a háttérrendszer késése, valamint a kapcsolat létesítéséhez szükséges idő stabil, és a nyárs oka a következő: n nő a háttérbeli alkalmazás válaszideje. Hasonlóképpen, ha a háttérbeli első bájt válaszideje a háttérbeli csatlakozási idő egy megfelelő szegével van társítva, akkor a hálózat vagy a kiszolgáló TCP-vereme telített. Ha egy csúcsot észlel a háttérbeli utolsó bájtban, de a háttér első bájtjának válaszideje állandó, akkor a legnagyobb valószínűséggel a Nyárs a kért nagyobb fájl miatt. Hasonlóképpen, ha az Application Gateway teljes ideje sokkal több, mint a háttérbeli utolsó bájtok válaszideje, akkor a teljesítmény szűk keresztmetszetének jele lehet a Application Gateway.
+  Az ügyfelek és a Application Gateway közötti átlagos menetidő.
 
 
+
+Ezek a metrikák határozzák meg, hogy a megfigyelt lassulás az ügyfél hálózata, a Application Gateway teljesítmény, a háttérrendszer és a háttérrendszer-kiszolgáló TCP stack-telítettsége, a háttérbeli alkalmazás teljesítménye vagy nagyméretű fájlméret miatt történjen-e.
+
+Ha például van egy tüske a *háttérbeli első bájtban* , de a *háttérbeli kapcsolódási idő* trend stabil, akkor arra utalhat, hogy az Application Gateway a háttérbeli késést és a kapcsolat létesítéséhez szükséges időt eredményezi, és a csúcsot a háttérbeli alkalmazás válaszideje miatt megnövekszik. Másfelől, ha a *háttérbeli első bájtban* megadott tüske a *háttérbeli csatlakozási idő*egy megfelelő csúcsához van társítva, akkor azt is lekövetkeztetheti, hogy a Application Gateway és a háttérrendszer-kiszolgáló, illetve a háttérrendszer-kiszolgáló TCP-vereme közötti hálózat telített. 
+
+Ha egy tüske látható a *háttérbeli utolsó bájtban* , de a *háttérbeli első bájt válaszideje* stabil, akkor azt is lekövetkeztetheti, hogy a nyárs egy nagyobb fájl kérése miatt van.
+
+Hasonlóképpen, ha az *Application Gateway teljes ideje* elérte a nyársat, de a *háttérbeli utolsó bájt válaszideje* stabil, akkor a teljesítmény szűk keresztmetszetének jele lehet a Application Gateway vagy a hálózatban az ügyfél és a Application Gateway közötti szűk keresztmetszet. Továbbá, ha az *ügyfél RTT* is rendelkezik, akkor ez azt jelzi, hogy a romlás az ügyfél és a Application Gateway közötti hálózat miatt történt.
 
 ### <a name="application-gateway-metrics"></a>Application Gateway metrikák
 
@@ -112,11 +127,11 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 - **Kifogástalan állapotú gazdagépek száma**
 
-  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készlet kifogástalan/nem megfelelő állapotú gazdagépének megjelenítéséhez szűrést végezhet a háttérbeli készlet alapján.
+  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készletben lévő kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
 
 - **Nem kifogástalan állapotú gazdagépek száma**
 
-  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy háttérbeli készlet alapján szűrheti a nem kifogástalan állapotú gazdagépeket egy adott háttérbeli készletben.
+  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy adott háttérbeli készletben lévő nem kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
 
 ## <a name="metrics-supported-by-application-gateway-v1-sku"></a>Application Gateway v1 SKU által támogatott metrikák
 
@@ -158,11 +173,11 @@ Application Gateway esetén a következő metrikák érhetők el:
 
 - **Kifogástalan állapotú gazdagépek száma**
 
-  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készlet kifogástalan/nem megfelelő állapotú gazdagépének megjelenítéséhez szűrést végezhet a háttérbeli készlet alapján.
+  Az állapot mintavétele által kifogástalanul meghatározott háttérrendszer száma. Egy adott háttérbeli készletben lévő kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
 
 - **Nem kifogástalan állapotú gazdagépek száma**
 
-  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy háttérbeli készlet alapján szűrheti a nem kifogástalan állapotú gazdagépeket egy adott háttérbeli készletben.
+  Az állapot-mintavétel által nem kifogástalan állapotú háttérrendszer száma. Egy adott háttérbeli készletben lévő nem kifogástalan állapotú gazdagépek számának megjelenítéséhez szűrheti a háttérbeli készlet alapján.
 
 ## <a name="metrics-visualization"></a>Metrikák vizualizációja
 

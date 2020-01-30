@@ -10,19 +10,19 @@ ms.author: mnark
 author: MrudulaN
 ms.reviewer: larryfr
 ms.date: 10/25/2019
-ms.openlocfilehash: bfb2d5a5a8918cbfc446c35b39f3e8e9954b7761
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 45f9f9d1c9c8414f7d3c97aab05b012a16079f40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75763521"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843531"
 ---
 # <a name="deploy-a-model-to-azure-machine-learning-compute-instances"></a>Modell üzembe helyezése Azure Machine Learning számítási példányok számára
 
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
 > [!NOTE]
-> A számítási példányok (előzetes verzió) csak az **USA északi középső** régióját vagy **Egyesült Királyság déli régiójat**tartalmazó munkaterületek esetében érhetők el.
+> A számítási példányok (előzetes verzió) csak az **USA északi középső**régiójában, az USA 2. keleti régiójában, Észak- **Európában** vagy **Egyesült Királyság déli régiója**található munkaterületek esetében érhetők el.
 >Ha a munkaterület bármely más régióban található, akkor továbbra is létrehozhat és használhat [notebookos virtuális gépet](concept-compute-instance.md#notebookvm) .  Az ebben a cikkben ismertetett lépéseket követve központilag telepítheti a modelleket számítási példányra vagy notebook virtuális gépre.
 
 Ismerje meg, hogyan helyezhet üzembe egy modellt webszolgáltatásként a Azure Machine Learning számítási példányon Azure Machine Learning használatával. Használjon számítási példányokat, ha a következő feltételek egyike igaz:

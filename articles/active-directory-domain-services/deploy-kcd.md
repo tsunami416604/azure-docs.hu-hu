@@ -11,16 +11,16 @@ ms.workload: identity
 ms.topic: conceptual
 ms.date: 11/26/2019
 ms.author: iainfou
-ms.openlocfilehash: 8860f2bea2877e7775db20be79181352d8cd55c8
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: 6737b75a955bb12072722f274ac589cb6d525ffb
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74705283"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772543"
 ---
 # <a name="configure-kerberos-constrained-delegation-kcd-in-azure-active-directory-domain-services"></a>Kerberos által korlátozott delegálás (KCD) konfigurálása Azure Active Directory Domain Services
 
-Az alkalmazások futtatása során szükség lehet arra, hogy az alkalmazások egy másik felhasználó kontextusában férhessenek hozzá az erőforrásokhoz. A Active Directory tartományi szolgáltatások (AD DS) támogatja a *Kerberos-delegálás* nevű mechanizmust, amely engedélyezi ezt a használati esetet. A Kerberos által *korlátozott* DELEGÁLÁS (KCD) ezt a mechanizmust építi ki a felhasználó környezetében elérhető konkrét erőforrások definiálásához. A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományok biztonságosabban zárhatók le a hagyományos helyszíni AD DS környezetekben, ezért használjon biztonságosabb *erőforrás-alapú* KCD.
+Az alkalmazások futtatása során szükség lehet arra, hogy az alkalmazások egy másik felhasználó kontextusában férhessenek hozzá az erőforrásokhoz. A Active Directory tartományi szolgáltatások (AD DS) támogatja a *Kerberos-delegálás* nevű mechanizmust, amely engedélyezi ezt a használati esetet. A Kerberos által *korlátozott* DELEGÁLÁS (KCD) ezt a mechanizmust építi ki a felhasználó környezetében elérhető konkrét erőforrások definiálásához. A Azure Active Directory Domain Services (Azure AD DS) felügyelt tartományok biztonságosabban zárhatók le, mint a hagyományos helyi AD DS környezetek, ezért használjon biztonságosabb *erőforrás-alapú* KCD.
 
 Ez a cikk bemutatja, hogyan konfigurálhatja az erőforrás-alapú Kerberos által korlátozott delegálást egy Azure AD DS felügyelt tartományban.
 

@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 12/10/2019
+ms.date: 1/3/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 29e099e1c53f83d038caa697d11158fd5939ca7b
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 567df85fa634570b0ac04fe6da906776a74c0550
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700311"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833346"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és beleegyezett a Microsoft Identity platform végpontjában
 
@@ -89,7 +89,7 @@ Ha egy alkalmazás az [OpenID Connect](active-directory-v2-protocols.md)használ
 
 A `email` hatókör a `openid` hatókörrel és másokkal is használható. Az alkalmazás az `email` jogcím formájában hozzáférést biztosít a felhasználó elsődleges e-mail-címéhez. A `email` jogcímet csak akkor tartalmazza a token, ha a felhasználói fiókhoz társított e-mail-cím, amely nem mindig az eset. Ha a `email` hatókört használja, az alkalmazásnak fel kell készülnie arra az esetre, amikor az `email` jogcím nem létezik a jogkivonatban.
 
-### <a name="profile"></a>profil
+### <a name="profile"></a>Profil
 
 A `profile` hatókör a `openid` hatókörrel és másokkal is használható. Hozzáférést biztosít az alkalmazásnak a felhasználóval kapcsolatos jelentős mennyiségű információhoz. Az általa elérhető információ magában foglalja a következőket:, de nem kizárólagosan, a felhasználó vezetéknevét, vezetéknevét, előnyben részesített felhasználónevét és objektum-AZONOSÍTÓját. Egy adott felhasználó id_tokens paraméterében elérhető profil jogcímek teljes listájáért tekintse meg a`id_tokens`- [referenciát](id-tokens.md).
 
@@ -168,13 +168,16 @@ Ha meg szeretne tekinteni egy kódot, amely megvalósítja a lépéseket, tekint
 
 ### <a name="request-the-permissions-in-the-app-registration-portal"></a>Az engedélyek igénylése az alkalmazás regisztrációs portálján
 
-A rendszergazdai jóváhagyás nem fogad el hatókör-paramétert, ezért a kért engedélyeket statikusan meg kell határozni az alkalmazás regisztrációjában. Általánosságban az ajánlott eljárás az, hogy az adott alkalmazáshoz statikusan meghatározott engedélyek a dinamikusan/növekményes igényeknek megfelelő engedélyek kibővítettek legyenek.
+Az alkalmazások megtekinthetik, hogy mely engedélyek szükségesek (delegált és alkalmazásként egyaránt) az alkalmazás regisztrációs portálján.  Ez lehetővé teszi a `/.default` hatókör használatát és az Azure Portal "rendszergazdai jóváhagyás megadása" beállítását.  Általánosságban az ajánlott eljárás az, hogy az adott alkalmazáshoz statikusan meghatározott engedélyek a dinamikusan/növekményes igényeknek megfelelő engedélyek kibővítettek legyenek.
+
+> [!NOTE]
+Az alkalmazás engedélyei csak [`/.default`](#the-default-scope) használatával kérhetők le – ha az alkalmazásnak szüksége van az alkalmazás engedélyeire, győződjön meg róla, hogy szerepelnek az alkalmazás regisztrációs portálján.  
 
 #### <a name="to-configure-the-list-of-statically-requested-permissions-for-an-application"></a>Az alkalmazáshoz tartozó statikusan kért engedélyek listájának konfigurálása
 
 1. Ha még nem tette meg, nyissa meg az alkalmazást az [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felületen, vagy [hozzon létre egy alkalmazást](quickstart-register-app.md) .
 2. Keresse meg az **API-engedélyek** szakaszt, és az API-engedélyek területen kattintson az engedély hozzáadása lehetőségre.
-3. Válassza a **Microsoft Graph** lehetőséget az elérhető API-k listájából, majd adja hozzá az alkalmazás által igényelt engedélyeket.
+3. Válassza ki a kívánt erőforrást (például **Microsoft Graph**) az elérhető API-k listájából, majd adja hozzá az alkalmazás által igényelt engedélyeket.
 3. **Mentse** az alkalmazás regisztrációját.
 
 ### <a name="recommended-sign-the-user-into-your-app"></a>Ajánlott: a felhasználó aláírása az alkalmazásba
@@ -205,7 +208,7 @@ Ha készen áll arra, hogy engedélyt kérjen a szervezete rendszergazdájától
 | `client_id` | Szükséges | Az alkalmazáshoz hozzárendelt [Azure Portal – Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) felhasználói felület **(ügyfél) azonosítója** . |
 | `redirect_uri` | Szükséges |Az az átirányítási URI, ahová az alkalmazásnak el kell juttatnia a választ a kezelésére. Pontosan meg kell egyeznie az alkalmazás regisztrációs portálján regisztrált átirányítási URI-k egyikével. |
 | `state` | Ajánlott | A kérelemben szereplő érték, amelyet a rendszer a jogkivonat-válaszban is visszaad. A kívánt tartalom sztringje lehet. Az állapot használatával kódolja a felhasználó állapotára vonatkozó adatokat az alkalmazásban, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-|`scope`        | Szükséges      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus (/.default használatával) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). | 
+|`scope`        | Szükséges      | Meghatározza az alkalmazás által igényelt engedélyek készletét. Ez lehet statikus ( [`/.default`](#the-default-scope)) vagy dinamikus hatókörök használata.  Ilyenek lehetnek a OIDC hatókörök (`openid`, `profile`, `email`). Ha az alkalmazás engedélyeire van szüksége, a statikusan konfigurált engedélyek listájának lekéréséhez `/.default`t kell használnia.  | 
 
 
 Ezen a ponton az Azure AD-nek a bérlői rendszergazdának kell bejelentkeznie a kérelem teljesítéséhez. A rendszergazda a `scope` paraméterben kért összes engedély jóváhagyását kéri.  Ha statikus (`/.default`) értéket használt, úgy fog működni, mint a v 1.0 rendszergazdai engedélyezési végpont, és az alkalmazáshoz szükséges engedélyekben található összes hatókörre vonatkozó kérelem beleegyezését kéri.
@@ -264,9 +267,9 @@ A OAuth 2,0 protokollról és a hozzáférési jogkivonatok beszerzéséről a [
 
 ## <a name="the-default-scope"></a>A/.default hatóköre
 
-A `/.default` hatókörrel az alkalmazások a 1.0-s végpontról a Microsoft Identity platform végpontra történő áttelepíthetők. Ez egy beépített hatókör minden olyan alkalmazáshoz, amely az alkalmazás regisztrációján konfigurált engedélyek statikus listájára hivatkozik. A `https://graph.microsoft.com/.default` `scope` értéke ugyanúgy működik, mint a v 1.0-s végpontok `resource=https://graph.microsoft.com` – nevezetesen, ha az alkalmazás által a Azure Portalban regisztrált hatókörrel rendelkező jogkivonatot kér Microsoft Graph.
+A `/.default` hatókörrel az alkalmazások a 1.0-s végpontról a Microsoft Identity platform végpontra történő áttelepíthetők. Ez egy beépített hatókör minden olyan alkalmazáshoz, amely az alkalmazás regisztrációján konfigurált engedélyek statikus listájára hivatkozik. A `https://graph.microsoft.com/.default` `scope` értéke ugyanúgy működik, mint a v 1.0-s végpontok `resource=https://graph.microsoft.com` – nevezetesen, ha az alkalmazás által a Azure Portalban regisztrált hatókörrel rendelkező jogkivonatot kér Microsoft Graph.  Az erőforrás URI + `/.default` (például ha az erőforrás URI-ja `https://contosoApp.com`, a kért hatókör `https://contosoApp.com/.default`).  Tekintse [meg](#trailing-slash-and-default) az olyan eseteket, amikor egy második perjelet kell tartalmaznia a token megfelelő kéréséhez.  
 
-A/.default-hatókör bármely OAuth 2,0 [-](v2-oauth2-on-behalf-of-flow.md) flow-ban használható, de szükséges a folyamaton belüli és [ügyfél-hitelesítő adatok folyamata](v2-oauth2-client-creds-grant-flow.md)során.  
+A/.default-hatókör bármely OAuth 2,0-flow-ban használható, de szükséges a [folyamaton](v2-oauth2-on-behalf-of-flow.md) belüli és az [ügyfél-hitelesítő adatok folyamatában](v2-oauth2-client-creds-grant-flow.md), valamint a v2 rendszergazdai jóváhagyás végpontjának használatakor az alkalmazás engedélyeinek kérelmezéséhez.  
 
 > [!NOTE]
 > Az ügyfelek nem kombinálhatók egyetlen kérelemben a statikus (`/.default`) és a dinamikus beleegyező engedélyekkel. Így a `scope=https://graph.microsoft.com/.default+mail.read` a hatókör-típusok kombinációja miatt hibát okoz.
@@ -281,15 +284,15 @@ Mivel a `/.default` a `resource`-központú v 1.0 végpont működésével azono
 
 #### <a name="example-1-the-user-or-tenant-admin-has-granted-permissions"></a>1\. példa: a felhasználó vagy a bérlő rendszergazdája engedélyt kapott
 
-A felhasználó (vagy egy bérlői rendszergazda) engedélyezte az ügyfél számára a Microsoft Graph engedélyeket `mail.read` és `user.read`. Ha az ügyfél `scope=https://graph.microsoft.com/.default`kérelmet küld, akkor a rendszer nem jelenít meg beleegyező kérést, függetlenül attól, hogy az ügyfélalkalmazások milyen tartalmat regisztráltak a Microsoft Graphhoz. `mail.read` és `user.read`hatóköröket tartalmazó tokent ad vissza.
+Ebben a példában a felhasználó (vagy egy bérlői rendszergazda) engedélyezte az ügyfél számára a Microsoft Graph engedélyeket `mail.read` és `user.read`. Ha az ügyfél `scope=https://graph.microsoft.com/.default`kérelmet küld, akkor a rendszer nem jelenít meg beleegyező kérést, függetlenül attól, hogy az ügyfélalkalmazások milyen tartalmat regisztráltak a Microsoft Graphhoz. `mail.read` és `user.read`hatóköröket tartalmazó tokent ad vissza.
 
 #### <a name="example-2-the-user-hasnt-granted-permissions-between-the-client-and-the-resource"></a>2\. példa: a felhasználó nem adott meg engedélyeket az ügyfél és az erőforrás között
 
-Nem létezik beleegyezés a felhasználó számára az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van a `user.read` és `contacts.read` engedélyekhez, valamint a Azure Key Vault hatókör `https://vault.azure.net/user_impersonation`. Amikor az ügyfél `scope=https://graph.microsoft.com/.default`jogkivonatot kér, a felhasználó a `user.read`, `contacts.read`és Key Vault `user_impersonation` hatókörökhöz tartozó beleegyezési képernyőt fog látni. A visszaadott token csak a `user.read` és `contacts.read` hatóköröket fogja tartalmazni.
+Ebben a példában a felhasználó nem rendelkezik beleegyezéssel az ügyfél és a Microsoft Graph között. Az ügyfél regisztrálva van a `user.read` és `contacts.read` engedélyekhez, valamint a Azure Key Vault hatókör `https://vault.azure.net/user_impersonation`. Amikor az ügyfél `scope=https://graph.microsoft.com/.default`jogkivonatot kér, a felhasználó a `user.read`, `contacts.read`és Key Vault `user_impersonation` hatókörökhöz tartozó beleegyezési képernyőt fog látni. A visszaadott token csak a `user.read` és `contacts.read` hatóköröket fogja tartalmazni, és csak Microsoft Graphon használható. 
 
 #### <a name="example-3-the-user-has-consented-and-the-client-requests-additional-scopes"></a>3\. példa: a felhasználó beleegyezett, és az ügyfél további hatóköröket kér
 
-A felhasználó már beleegyezett `mail.read` az ügyfélhez. Az ügyfél regisztrálva van a `contacts.read` hatókörében a regisztrációjában. Ha az ügyfél `scope=https://graph.microsoft.com/.default` és a kérések beleegyezésével kéri a tokent a `prompt=consent`, a felhasználó csak a beleegyezési képernyőt fogja látni, és az alkalmazás által regisztrált összes engedélyt. a `contacts.read` a beleegyezési képernyőn jelennek meg, de `mail.read` nem fog megjelenni. A visszaadott token Microsoft Graph lesz, és `mail.read` és `contacts.read`tartalmaz majd.
+Ebben a példában a felhasználó már beleegyezett a `mail.read`re az ügyfél számára. Az ügyfél regisztrálva van a `contacts.read` hatókörében a regisztrációjában. Ha az ügyfél `scope=https://graph.microsoft.com/.default` és a kérések megadására vonatkozó kérelmet küld a tokennek `prompt=consent`, akkor a felhasználó az alkalmazás által regisztrált engedélyeket az összes (és csak) beleegyezési képernyője fogja látni. a `contacts.read` a beleegyezési képernyőn jelennek meg, de `mail.read` nem fog megjelenni. A visszaadott token Microsoft Graph lesz, és `mail.read` és `contacts.read`tartalmaz majd.
 
 ### <a name="using-the-default-scope-with-the-client"></a>A/.default hatókör használata az ügyféllel
 
@@ -306,7 +309,13 @@ response_type=token            //code or a hybrid flow is also possible here
 &state=1234
 ```
 
-Ez egy beleegyezési képernyőt hoz létre minden regisztrált engedélyhez (ha alkalmazható a beleegyezés és a `/.default`fenti leírásai alapján), majd egy id_token ad vissza, nem pedig hozzáférési jogkivonat.  Ez a viselkedés bizonyos, a ADAL-ből a MSAL-re áthelyezett örökölt ügyfelek esetében létezik, és a Microsoft Identity platform végpontját célzó új ügyfelek nem használhatják.  
+Ez egy beleegyezési képernyőt hoz létre minden regisztrált engedélyhez (ha alkalmazható a beleegyezés és a `/.default`fenti leírásai alapján), majd egy id_token ad vissza, nem pedig hozzáférési jogkivonat.  Ez a viselkedés bizonyos, a ADAL-ből a MSAL-re áthelyezett örökölt ügyfelek esetében létezik, és a Microsoft Identity platform végpontját célzó új ügyfelek **nem** használhatják.  
+
+### <a name="trailing-slash-and-default"></a>Záró perjel és/.default
+
+Egyes erőforrás-URI-k záró perjeltel rendelkeznek (`https://contoso.com/` a `https://contoso.com`), ami problémákat okozhat a jogkivonat-ellenőrzés során.  Ez elsősorban akkor fordulhat elő, ha jogkivonatot kér az Azure Erőforrás-kezelés (`https://management.azure.com/`) számára, amely záró perjelet tartalmaz az erőforrás URI azonosítójában, és megköveteli, hogy a jogkivonat kérésekor legyen jelen.  Ezért, amikor jogkivonatot kér a `https://management.azure.com/`hoz, és `/.default`használ, meg kell adnia `https://management.azure.com//.default`-Note The Double perjelet! 
+
+Általánosságban – ha ellenőrizte, hogy a jogkivonat ki van-e állítva, és a jogkivonatot el kell utasítani az API-nak, amelynek el kell fogadnia, vegye fontolóra egy második perjel hozzáadását, és próbálkozzon újra. Ez azért történik, mert a bejelentkezési kiszolgáló olyan tokent bocsát ki, amely a `scope` paraméterben szereplő URI azonosítóval rendelkezik, `/.default` a végpontból eltávolítva.  Ha ez eltávolítja a záró perjelet, a bejelentkezési kiszolgáló továbbra is feldolgozza a kérést, és érvényesíti az erőforrás URI-ja alapján, annak ellenére, hogy már nem egyeznek – ez nem szabványos, és az alkalmazás nem hivatkozhat rá. 
 
 ## <a name="troubleshooting-permissions-and-consent"></a>Hibaelhárítási engedélyek és beleegyezett
 

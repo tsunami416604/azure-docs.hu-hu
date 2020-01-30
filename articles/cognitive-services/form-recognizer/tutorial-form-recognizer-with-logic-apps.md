@@ -8,18 +8,18 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: forms-recognizer
 ms.topic: tutorial
-ms.date: 10/27/2019
+ms.date: 01/27/2020
 ms.author: nitinme
-ms.openlocfilehash: 14affb2c2aa53fc7a2b1a5946e81ad124800f678
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 0de0c83b0c459d29c304dbf51eaa44a62e895760
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75981268"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773083"
 ---
 # <a name="tutorial-use-form-recognizer-with-azure-logic-apps-to-analyze-invoices"></a>Oktatóanyag: űrlap-felismerő használata a Azure Logic Apps a számlák elemzéséhez
 
-Ebben az oktatóanyagban egy munkafolyamatot hoz létre a Azure Logic Appsban, amely az Azure Cognitive Services Suite részét képező űrlap-felismerőt használja az adatok számlákból való kinyeréséhez. Az űrlap-felismerő használatával a modell első betanítása egy minta adatkészlettel, majd a modell tesztelése egy másik adatkészlettel. Az oktatóanyagban használt mintaadatok az Azure Storage blob-tárolókban tárolódnak.
+Ebben az oktatóanyagban egy munkafolyamatot hoz létre a Azure Logic Appsban, amely az Azure Cognitive Services Suite részét képező űrlap-felismerőt használja az adatok számlákból való kinyeréséhez. Először egy minta adatkészletet használó űrlap-felismerő modellt kell betanítania, majd egy másik adathalmazon tesztelni kell a modellt.
 
 Az oktatóanyag a következőket ismerteti:
 
@@ -41,12 +41,12 @@ Az űrlap-felismerő korlátozott hozzáférésű előzetes verzióban érhető 
 
 ## <a name="understand-the-invoice-to-be-analyzed"></a>Az elemzett számla értelmezése
 
-A modell betanítására és tesztelésére használt mintaadatok készlete. zip-fájlként érhető el a [githubon](https://go.microsoft.com/fwlink/?linkid=2090451). Töltse le és bontsa ki a. zip fájlt, és nyisson meg egy számla PDF-fájlt a **/Train** mappában. Figyelje meg, hogy a tábla tartalmazza a számla számát, a számla dátumát stb. 
+A modell betanításához és teszteléséhez használni kívánt minta-adathalmaz. zip-fájlként érhető el a [githubon](https://go.microsoft.com/fwlink/?linkid=2090451). Töltse le és bontsa ki a. zip fájlt, és nyisson meg egy számla PDF-fájlt a **/Train** mappában. Figyelje meg, hogy a tábla tartalmazza a számla számát, a számla dátumát és így tovább. 
 
 > [!div class="mx-imgBorder"]
 > ![minta számla](media/tutorial-form-recognizer-with-logic-apps/sample-receipt.png)
 
-Ez az oktatóanyag azt ismerteti, hogyan lehet az ilyen táblázatokból származó adatokat JSON formátumba kibontani a Azure Logic Apps és az űrlap felismerő használatával létrehozott munkafolyamatok használatával.
+Ebből az oktatóanyagból megtudhatja, hogyan használhat egy Azure Logic Apps munkafolyamatot az adatok JSON formátumba való kinyeréséhez.
 
 ## <a name="create-an-azure-storage-blob-container"></a>Azure Storage blob-tároló létrehozása
 
@@ -62,7 +62,7 @@ Ezt a tárolót használja a modell betanításához szükséges mintaadatok fel
 
 Töltse le a [githubon](https://go.microsoft.com/fwlink/?linkid=2090451)elérhető mintaadatok letöltését. Bontsa ki az adatok mappát egy helyi mappába, és töltse fel a **/Train** mappa tartalmát a korábban létrehozott **formrecocontainer** . Az adatok tárolóba való feltöltéséhez kövesse az alábbi utasításokat: [Block blob feltöltése](../../storage/blobs/storage-quickstart-blobs-portal.md#upload-a-block-blob) .
 
-Másolja a tároló URL-címét. Erre az oktatóanyag későbbi részében szüksége lesz. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt nevekkel, akkor az URL-cím *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* lesz.
+Másolja a tároló URL-címét. Ezt az URL-címet később az oktatóanyagban kell megadnia. Ha létrehozta a Storage-fiókot és a tárolót az ebben az oktatóanyagban felsorolt nevekkel, akkor az URL-cím *https:\//formrecostorage.blob.Core.Windows.net/formrecocontainer/* lesz.
 
 ## <a name="create-a-form-recognizer-resource"></a>Űrlap-felismerő erőforrás létrehozása
 
@@ -75,7 +75,7 @@ A Azure Logic Apps a feladatok és munkafolyamatok automatizálására és össz
 * Konfigurálja úgy a logikai alkalmazást, hogy az űrlap-felismerő **betanítási** művelettel a modell betanításához használja az Azure Blob Storage-ba feltöltött mintaadatok használatával.
 * Konfigurálja úgy a logikai alkalmazást, hogy a már betanított modell használatára űrlap-felismerőt **elemezzen** . Ez az összetevő elemzi a logikai alkalmazáshoz megadott számlát, amely a korábban betanított modell alapján történik.
 
-Kezdjük! A munkafolyamat beállításához kövesse az alábbi lépéseket.
+A munkafolyamat beállításához kövesse az alábbi lépéseket.
 
 1. Az Azure fő menüjében válassza az **erőforrás létrehozása** > **integráció** > **logikai alkalmazás**lehetőséget.
 
@@ -99,7 +99,7 @@ Kezdjük! A munkafolyamat beállításához kövesse az alábbi lépéseket.
 
 ### <a name="configure-the-logic-app-to-trigger-the-workflow-when-an-email-arrives"></a>A logikai alkalmazás konfigurálása a munkafolyamat elindításához e-mail érkezésekor
 
-Ebben az oktatóanyagban a munkafolyamatot indítja el, amikor egy csatolt számlával rendelkező e-mailt kap. Ebben az oktatóanyagban az Office 365-as e-mail-szolgáltatást választjuk, de bármilyen más használni kívánt e-mail-szolgáltatót használhat.
+Ebben az oktatóanyagban a munkafolyamatot indítja el, amikor egy csatolt számlával rendelkező e-mailt kap. Ez az oktatóanyag az Office 365-et használja e-mail-szolgáltatásként, de bármilyen más használni kívánt e-mail-szolgáltatót használhat.
 
 1. A lapokon válassza az összes lehetőséget, válassza az **Office 365 Outlook**lehetőséget, majd az **Eseményindítók**területen válassza ki, **hogy mikor érkezik új e-mail**.
 
@@ -109,8 +109,8 @@ Ebben az oktatóanyagban a munkafolyamatot indítja el, amikor egy csatolt szám
 
 1. A következő párbeszédpanelen hajtsa végre a következő lépéseket.
     1. Válassza ki az új e-mailekhez figyelni kívánt mappát.
-    1. A **mellékletek** esetében válassza az **Igen**lehetőséget. Ez biztosítja, hogy csak a mellékleteket tartalmazó e-mailek aktiválja a munkafolyamatot.
-    1. A **mellékletek belefoglalása** területen válassza az **Igen**lehetőséget. Ez biztosítja, hogy a melléklet tartalma az alárendelt feldolgozásban legyen használatban.
+    1. A **mellékletek**esetében válassza az **Igen**lehetőséget. Ez biztosítja, hogy csak a mellékleteket tartalmazó e-mailek aktiválja a munkafolyamatot.
+    1. A **mellékletek belefoglalása**beállításnál válassza az **Igen**lehetőséget. Ez biztosítja, hogy a melléklet tartalma az alárendelt feldolgozásban legyen használatban.
 
         > [!div class="mx-imgBorder"]
         > ![logikai alkalmazás e-mail-triggerének konfigurálása](media/tutorial-form-recognizer-with-logic-apps/logic-app-specify-email-folder.png)
@@ -149,14 +149,14 @@ Ebben a szakaszban az elemzési **űrlap** műveletet adja hozzá a munkafolyama
     > [!div class="mx-imgBorder"]
     > Űrlap-felismerő modell ![elemzése](media/tutorial-form-recognizer-with-logic-apps/logic-app-form-reco-analyze-model.png)
 
-1. Az **elemzés az űrlapon** párbeszédpanelen tegye a következőket:
+1. Az **elemzés az űrlapon** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     1. Kattintson a **modell azonosítója** szövegmezőre, és a megnyíló párbeszédpanelen a **dinamikus tartalom** lapon válassza a **modelId**lehetőséget. Ezzel megadja a flow-alkalmazást az utolsó szakaszban betanított modell azonosítójának a modell-azonosítójával.
 
         > [!div class="mx-imgBorder"]
         > ![használja az ModelID az űrlap-felismerőhöz](media/tutorial-form-recognizer-with-logic-apps/analyze-form-model-id.png)
 
-    2. Kattintson a **dokumentum** szövegmezőre, és a megnyíló párbeszédpanelen a **dinamikus tartalom** lapon válassza a **mellékletek tartalom**elemet. Ezzel konfigurálja a folyamatot úgy, hogy a munkafolyamatot elindító e-mailben csatolt minta számlázási fájlt használja.
+    2. Kattintson a **dokumentum** szövegmezőre, és a megnyíló párbeszédpanelen a **dinamikus tartalom** lapon válassza a **mellékletek tartalom**elemet. Ezzel konfigurálja a folyamatot úgy, hogy a munkafolyamatot indító e-mailben csatolt minta számlázási fájlt használja.
 
         > [!div class="mx-imgBorder"]
         > ![e-mail-melléklet használatával elemezze a számlákat](media/tutorial-form-recognizer-with-logic-apps/analyze-form-input-data.png)
@@ -165,7 +165,7 @@ Ebben a szakaszban az elemzési **űrlap** műveletet adja hozzá a munkafolyama
 
 ### <a name="extract-the-table-information-from-the-invoice"></a>A tábla adatainak kibontása a számlából
 
-Ebben a szakaszban a logikai alkalmazást úgy konfigurálja, hogy kibontsa az adatokat a táblán belül a számlákon.
+Ebben a szakaszban a logikai alkalmazást konfigurálja úgy, hogy kibontsa az adatokat a táblán belül a számlákon.
 
 1. Válassza a **művelet hozzáadása**lehetőséget, és a **válasszon műveletet**területen keressen az **összeállítás** elemre, és az elérhető műveletek területen válassza az **összeállítás** újra lehetőséget.
     ![Kinyeri a tábla adatait a számlából](media/tutorial-form-recognizer-with-logic-apps/extract-table.png)
@@ -179,7 +179,7 @@ Ebben a szakaszban a logikai alkalmazást úgy konfigurálja, hogy kibontsa az a
 
 ## <a name="test-your-logic-app"></a>A logikai alkalmazás tesztelése
 
-A logikai alkalmazás teszteléséhez használja a **/test** mappában található minta számlákat a [githubról](https://go.microsoft.com/fwlink/?linkid=2090451)letöltött minta-adatkészletből. Hajtsa végre a következő lépéseket:
+A logikai alkalmazás teszteléséhez használja a **/test** mappában található minta számlákat a [githubról](https://go.microsoft.com/fwlink/?linkid=2090451)letöltött minta-adatkészletből. Kövesse az alábbi lépéseket:
 
 1. A Azure Logic Apps Designer alkalmazásban válassza a **Futtatás** lehetőséget a felső eszköztáron. A munkafolyamat mostantól aktív, és egy e-mailt vár a csatolt számlával.
 1. Küldjön e-mailt a logikai alkalmazás létrehozásakor megadott e-mail-címre. Győződjön meg arról, hogy az e-mailt a rendszer a logikai alkalmazás konfigurálása során megadott mappába továbbítja.

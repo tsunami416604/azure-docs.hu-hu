@@ -3,22 +3,22 @@ title: SSL engedélyezése egy tároló csoportban
 description: SSL-vagy TLS-végpont létrehozása Azure Container Instances-ben futó Container Group számára
 ms.topic: article
 ms.date: 04/03/2019
-ms.openlocfilehash: 7578ad6f8c451694a90dde00b74bf2e8c6c61109
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 541d53a9a9530f7ac80227dbae598b3da2691301
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74483476"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773073"
 ---
 # <a name="enable-an-ssl-endpoint-in-a-container-group"></a>SSL-végpont engedélyezése egy tároló csoportban
 
 Ez a cikk bemutatja, hogyan hozhat létre egy [tároló csoportot](container-instances-container-groups.md) egy alkalmazás-tárolóval és egy SSL-szolgáltatót futtató oldalkocsi-tárolóval. Egy különálló SSL-végponttal rendelkező tároló csoport beállításával az alkalmazás kódjának módosítása nélkül engedélyezheti az SSL-kapcsolatokat az alkalmazáshoz.
 
-Két tárolóból álló tároló csoportot állíthat be:
+Létrehozhat egy két tárolóból álló példa típusú tároló csoportot:
 * Egy alkalmazás-tároló, amely egy egyszerű webalkalmazást futtat a nyilvános Microsoft [ACI-HelloWorld](https://hub.docker.com/_/microsoft-azuredocs-aci-helloworld) rendszerkép használatával. 
 * A nyilvános [Nginx](https://hub.docker.com/_/nginx) -rendszerképet futtató oldalkocsi-tároló, amely SSL használatára van konfigurálva. 
 
-Ebben a példában a Container Group csak a 443-es portot teszi elérhetővé az Nginx nyilvános IP-címével. Az Nginx a HTTPS-kérelmeket a Companion-webalkalmazáshoz irányítja, amely belsőleg figyeli a 80-es porton. A példát a más portokat figyelő tároló-alkalmazások esetében is módosíthatja.
+Ebben a példában a Container Group csak a 443-es portot teszi elérhetővé az Nginx nyilvános IP-címével. Az Nginx a HTTPS-kérelmeket a Companion-webalkalmazáshoz irányítja, amely belsőleg figyeli a 80-es porton. A példát a más portokat figyelő tároló-alkalmazások esetében is módosíthatja. A [következő lépésekben](#next-steps) talál további lépéseket az SSL egy tároló csoportban való engedélyezéséhez.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -38,7 +38,7 @@ openssl req -new -newkey rsa:2048 -nodes -keyout ssl.key -out ssl.csr
 
 Az azonosítási adatok hozzáadásához kövesse az utasításokat. A köznapi név mezőben adja meg a tanúsítványhoz társított állomásnevet. Ha a rendszer jelszót kér, nyomja le az ENTER billentyűt gépelés nélkül, ha ki szeretné hagyni a jelszó hozzáadását.
 
-A következő parancs futtatásával hozza létre az önaláírt tanúsítványt (. CRT-fájlt) a tanúsítványkérelem alapján. Például:
+A következő parancs futtatásával hozza létre az önaláírt tanúsítványt (. CRT-fájlt) a tanúsítványkérelem alapján. Példa:
 
 ```console
 openssl x509 -req -days 365 -in ssl.csr -signkey ssl.key -out ssl.crt
@@ -235,4 +235,10 @@ Ez a cikk bemutatja, hogyan állíthat be egy Nginx-tárolót, amely lehetővé 
 
 Habár ez a cikk a Nginx-et használja az oldalkocsiban, használhat egy másik SSL-szolgáltatót, például a [Caddy](https://caddyserver.com/)-t.
 
-Egy másik módszer, amely lehetővé teszi az SSL használatát egy tároló csoportba, egy Azure-beli [virtuális hálózatban](container-instances-vnet.md) lévő csoport üzembe helyezése egy [Azure Application Gateway](../application-gateway/overview.md)használatával. Az átjárót SSL-végpontként lehet beállítani. Tekintse meg a minta [központi telepítési sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet) , amely lehetővé teszi az SSL-lezárást az átjárón.
+Ha egy Azure-beli [virtuális hálózatban](container-instances-vnet.md)helyezi üzembe a tároló csoportot, megtekintheti azokat a beállításokat, amelyek lehetővé teszik az SSL-végpontok használatát a háttérbeli tárolók példányaihoz, beleértve a következőket:
+
+* [Azure Functions-proxyk](../azure-functions/functions-proxies.md)
+* [Azure API Management](../api-management/api-management-key-concepts.md)
+* [Azure Application Gateway](../application-gateway/overview.md)
+
+Az Application Gateway használatához tekintse meg a minta [központi telepítési sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-aci-wordpress-vnet).

@@ -6,12 +6,12 @@ ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 01/23/2020
-ms.openlocfilehash: bb2c83757bd86d02a93c52bacdd03ce89186614e
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: b10ac3b4bc9dacd723b8b1265911df721b781189
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76719772"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774807"
 ---
 # <a name="create-and-manage-read-replicas-from-the-azure-cli-rest-api"></a>Olvasási replikák létrehozása és kezelése az Azure CLI-ből, REST API
 
@@ -38,8 +38,8 @@ A `azure.replication_support` paramétert a főkiszolgálón lévő **replika** 
    ```
 
 > [!NOTE]
-> Ha "érvénytelen értéket adott meg" hibaüzenet jelenik meg, miközben megpróbálta beállítani az Azure-t. replication_support az Azure CLI-ből, akkor valószínű, hogy a kiszolgáló alapértelmezés szerint már rendelkezik REPLIKAKÉSZLET-készlettel. A hiba megakadályozza, hogy ez a beállítás megfelelően tükrözze az újabb kiszolgálókon, ahol a REPLIKA a belső alapértelmezett.
-> Kihagyhatja a Master előkészítése lépéseket, és a replika létrehozása lehetőségre ugorhat.
+> Ha "érvénytelen értéket adott meg" hibaüzenet jelenik meg, miközben megpróbálta beállítani az Azure-t. replication_support az Azure CLI-ből, akkor valószínű, hogy a kiszolgáló alapértelmezés szerint már rendelkezik REPLIKAKÉSZLET-készlettel. A hiba megakadályozza, hogy ez a beállítás megfelelően tükrözze az újabb kiszolgálókon, ahol a REPLIKA a belső alapértelmezett. <br><br>
+> Kihagyhatja a Master előkészítése lépéseket, és a replika létrehozása lehetőségre ugorhat. <br><br>
 > Ha szeretné megerősíteni, hogy a kiszolgáló ebben a kategóriában található, látogasson el a kiszolgáló replikálás lapjára a Azure Portal. A "replikáció letiltása" szürkén jelenik meg, a "replika hozzáadása" pedig aktív lesz az eszköztáron.
 
 2. A módosítás alkalmazásához indítsa újra a kiszolgálót.

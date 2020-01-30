@@ -10,12 +10,12 @@ ms.devlang: csharp
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 06/21/2019
-ms.openlocfilehash: 9f9e84570c7e7a4a2049c9f357d001c3316a4106
-ms.sourcegitcommit: aef6040b1321881a7eb21348b4fd5cd6a5a1e8d8
+ms.openlocfilehash: 33d0e5c40e4c7d404558fe8fa7a5fb8f5967924e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2019
-ms.locfileid: "72166342"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773801"
 ---
 # <a name="quickstart-send-telemetry-from-a-device-to-an-iot-hub-and-read-it-with-a-back-end-application-net"></a>Gyors útmutató: telemetria küldése egy eszközről egy IoT-hubhoz, és olvasása háttérbeli alkalmazással (.NET)
 
@@ -47,7 +47,7 @@ A következő parancs futtatásával adja hozzá az Azure CLI-hez készült Micr
 az extension add --name azure-cli-iot-ext
 ```
 
-Töltse le a C#-mintaprojektet a https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip címről, és bontsa ki a ZIP-archívumot.
+Töltse le az Azure C# IoT-mintákat https://github.com/Azure-Samples/azure-iot-samples-csharp/archive/master.zip ről, és bontsa ki a zip-archívumot.
 
 ## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
 

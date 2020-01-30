@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 15ccbc568a2986fbb2a547eb958b5e853c8c9f77
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 083433d31f088eae1e138dd9cbd5ac05bbe8a304
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76154822"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773306"
 ---
 # <a name="how-sso-to-on-premises-resources-works-on-azure-ad-joined-devices"></a>Hogyan működik az SSO a helyszíni erőforrásokkal az Azure AD-hez csatlakoztatott eszközökön
 
@@ -30,22 +30,21 @@ Ez a cikk a működésének módját ismerteti.
 
 ## <a name="how-it-works"></a>Működési elv 
 
-Mivel csak egyetlen felhasználónevet és jelszót kell megjegyeznie, az SSO leegyszerűsíti a hozzáférést az erőforrásokhoz, és javítja a környezet biztonságát. Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az egyszeri bejelentkezés hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.  
+Mivel csak egyetlen felhasználónevet és jelszót kell megjegyeznie, az SSO leegyszerűsíti a hozzáférést az erőforrásokhoz, és javítja a környezet biztonságát. Az Azure AD-hez csatlakoztatott eszközzel a felhasználók már rendelkeznek egyszeri bejelentkezéssel a környezetében lévő felhőalapú alkalmazásokhoz. Ha a környezet rendelkezik Azure AD-val és helyszíni AD-vel, érdemes kiterjesztenie az egyszeri bejelentkezés hatókörét a helyszíni üzletági (LOB) alkalmazások, a fájlmegosztás és a nyomtatók számára.
 
 Az Azure AD-hez csatlakoztatott eszközök nem rendelkeznek a helyszíni AD-környezettel kapcsolatos ismeretekkel, mivel azok nem csatlakoznak hozzá. A helyszíni AD-vel kapcsolatos további információkat azonban Azure AD Connect használatával is megadhat.
 
 Az Azure AD-t és a helyszíni AD-t egyaránt tartalmazó környezetek is ismertek hibrid környezettel. Ha hibrid környezettel rendelkezik, valószínű, hogy már rendelkezik Azure AD Connect központilag, hogy szinkronizálja a helyszíni identitás adatait a felhőbe. A szinkronizálási folyamat részeként Azure AD Connect szinkronizálja a helyszíni felhasználói adatokat az Azure AD-vel. Amikor egy felhasználó egy hibrid környezetben jelentkezik be egy Azure AD-hez csatlakoztatott eszközre:
 
-1. Az Azure AD elküldi annak a helyszíni tartománynak a nevét, amelyhez a felhasználó visszaesik az eszközhöz. 
+1. Az Azure AD elküldi annak a helyszíni tartománynak a nevét, amelyhez a felhasználó visszaesik az eszközhöz.
 1. A helyi biztonsági szervezet (LSA) szolgáltatás engedélyezi a Kerberos-hitelesítést az eszközön.
 
-A felhasználó helyszíni tartományában lévő erőforráshoz való hozzáférési kísérlet során az eszköz:
+A felhasználó helyszíni környezetében a Kerberost kérő erőforráshoz való hozzáférési kísérlet során az eszköz:
 
-1. A tartományi információk használatával megkeresi a tartományvezérlőt (DC). 
 1. Elküldi a helyszíni tartományi adatokat és a felhasználói hitelesítő adatokat a helyi tartományvezérlőnek a hitelesített felhasználó beszerzéséhez.
-1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) fogadása.
+1. Az AD-hez csatlakoztatott erőforrások eléréséhez használt Kerberos [-jegy (TGT)](https://docs.microsoft.com/windows/desktop/secauthn/ticket-granting-tickets) fogadása. Ha a HRE kapcsolódási tartomány TGT beolvasására tett kísérlet meghiúsul (a kapcsolódó DCLocator időtúllépése késleltetheti), a Hitelesítőadat-kezelő bejegyzéseit, vagy a felhasználó kaphat egy hitelesítési előugrót, amely a cél erőforráshoz tartozó hitelesítő adatokat kér le.
 
-Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.  
+Minden, a **Windows rendszerhez integrált hitelesítéshez** konfigurált alkalmazás ZÖKKENŐMENTESEN egyszeri bejelentkezést kap, amikor egy felhasználó megpróbál hozzáférni azokhoz.
 
 A vállalati Windows Hello használatához további konfiguráció szükséges, amely lehetővé teszi a helyszíni egyszeri bejelentkezést egy Azure AD-hez csatlakoztatott eszközről. További információ: az [Azure ad-hez csatlakoztatott eszközök konfigurálása helyszíni egyszeri bejelentkezéshez a Windows Hello for Business használatával](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-hybrid-aadj-sso-base). 
 

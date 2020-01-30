@@ -17,12 +17,12 @@ ms.date: 04/12/2019
 ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: 97f05afadf38063a58e15e16cbf2e2c3d3e781ca
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 0ed1cb6a080a35fa81c6a859f88d987020c8504c
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76700260"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773325"
 ---
 # <a name="microsoft-identity-platform-and-openid-connect-protocol"></a>Microsoft Identity platform és OpenID Connect protokoll
 
@@ -75,7 +75,7 @@ A metaadatok egy egyszerű JavaScript Object Notation (JSON) dokumentum. Példak
 }
 ```
 
-Ha az alkalmazás a [jogcímek leképezése](active-directory-claims-mapping.md) funkciójának eredményeként egyéni aláíró kulcsokkal rendelkezik, akkor az alkalmazás azonosítóját tartalmazó `appid` lekérdezési paramétert hozzá kell fűzni ahhoz, hogy egy `jwks_uri` mutasson az alkalmazáshoz tartozó aláíró kulcs adataira. Például: a `https://login.microsoftonline.com/{tenant}/.well-known/v2.0/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`tartalmaz.
+Ha az alkalmazás a [jogcímek leképezése](active-directory-claims-mapping.md) funkciójának eredményeként egyéni aláíró kulcsokkal rendelkezik, akkor az alkalmazás azonosítóját tartalmazó `appid` lekérdezési paramétert hozzá kell fűzni ahhoz, hogy egy `jwks_uri` mutasson az alkalmazáshoz tartozó aláíró kulcs adataira. Például: a `https://login.microsoftonline.com/{tenant}/v2.0/.well-known/openid-configuration?appid=6731de76-14a6-49ae-97bc-6eba6914391e` `jwks_uri` `https://login.microsoftonline.com/{tenant}/discovery/v2.0/keys?appid=6731de76-14a6-49ae-97bc-6eba6914391e`tartalmaz.
 
 Ez a metaadat-dokumentum általában egy OpenID Connect-függvénytár vagy SDK konfigurálására használható. a könyvtár a metaadatokat fogja használni a munkája elvégzéséhez. Ha azonban nem használ előre elkészített OpenID Connect-függvénytárat, a cikk további részében ismertetett lépéseket követve a Microsoft Identity platform végpontján keresztül is bejelentkezhet a webes alkalmazásba.
 

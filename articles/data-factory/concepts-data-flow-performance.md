@@ -6,13 +6,13 @@ ms.topic: conceptual
 ms.author: makromer
 ms.service: data-factory
 ms.custom: seo-lt-2019
-ms.date: 12/19/2019
-ms.openlocfilehash: 3036fb44cdd636c4a7b9e690ee19aa3d5ab2f5ac
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/25/2020
+ms.openlocfilehash: ff128d148abb87959894aee94d257ae71a3ca65e
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75444522"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773847"
 ---
 # <a name="mapping-data-flows-performance-and-tuning-guide"></a>Adatfolyamatok teljesítményének és hangolási útmutatójának leképezése
 
@@ -129,6 +129,12 @@ Az átviteli sebesség és a Batch tulajdonságainak beállítása a CosmosDB-t�
 * Köteg mérete: kiszámítja az adatainak durva sorszámát, és győződjön meg arról, hogy a rowSize * batch mérete kisebb, mint 2 000 000. Ha igen, növelje a köteg méretét, hogy jobb teljesítményt kapjon
 * Átviteli sebesség: állítsa be a nagyobb átviteli sebesség beállítását, hogy a dokumentumok gyorsabban CosmosDB. Ne feledje, hogy a magasabb szintű RU-költségek nagy adatátviteli beállításokon alapulnak.
 *   Írási átviteli sebesség költségvetése: olyan értéket használjon, amely kisebb, mint a percenkénti összes RUs. Ha nagy számú Spark-partícióval rendelkező adatfolyamot tartalmaz, a költségvetés átviteli sebességének beállítása nagyobb egyensúlyt tesz lehetővé a partíciók között.
+
+## <a name="join-performance"></a>Csatlakozás a teljesítményhez
+
+Az adatfolyamok teljesítményének kezelése nagyon gyakori művelet, amelyet az adatátalakítások életciklusa során fog elvégezni. Az ADF-ben az adatfolyamok nem igénylik, hogy az összekapcsolások előtt rendezze az adatokat, mivel ezek a műveletek a Sparkban található kivonatoló illesztések. Ugyanakkor kihasználhatja a jobb teljesítményt a "szórás" Join Optimization használatával. Ezzel a megoldással elkerülhető az illesztési kapcsolat egyik oldalának tartalmának a Spark-csomópontba való lenyomása. Ez jól működik a hivatkozási keresésekhez használt kisebb táblák esetében is. A csomópont memóriájában esetleg nem illeszkedő nagyobb táblák nem jó jelöltek a szórásos optimalizáláshoz.
+
+Egy másik illesztési optimalizálás az összekapcsolások összekapcsolása oly módon, hogy elkerülje a Spark tendenciáját a több illesztés megvalósításában. Ha például belefoglalja az illesztési feltételekben szereplő literál értékeket, a Spark azt láthatja, hogy először egy teljes Descartes-szorzatot kell végrehajtania, majd ki kell szűrnie az illesztett értékeket. Ha azonban gondoskodni szeretne arról, hogy az összekapcsolási feltétel mindkét oldalán legyen oszlopos érték, elkerülheti a Spark által okozott Descartes-szorzatot, és javíthatja az illesztések és az adatfolyamatok teljesítményét.
 
 ## <a name="next-steps"></a>Következő lépések
 

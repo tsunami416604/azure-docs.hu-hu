@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Ez az oldal áttekintést nyújt a Network Watcher erőforrás-hibaelhárítási képességeiről
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: c1145cd6-d1cf-4770-b1cc-eaf0464cc315
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
-ms.author: kumud
-ms.openlocfilehash: 736bbd16456dd0abda3292b9b9e73ea5b941e7ed
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 199b4fc762919c2e3988f477c14d09fc23b0136b
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277777"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840689"
 ---
 # <a name="introduction-to-resource-troubleshooting-in-azure-network-watcher"></a>Az erőforrás-hibaelhárítás bemutatása az Azure Network Watcher
 
@@ -28,7 +25,7 @@ Virtual Network átjárók kapcsolatot biztosítanak a helyszíni erőforrások 
 
 ![portal][2]
 
-## <a name="results"></a>Results (Eredmények)
+## <a name="results"></a>Eredmények
 
 A visszaadott előzetes eredmények átfogó képet adnak az erőforrás állapotáról. Mélyebb információk is megadhatók az erőforrásokhoz az alábbi szakaszban látható módon:
 
@@ -79,7 +76,7 @@ Az alábbi táblázatokban láthatók a különböző típusú hibák (azonosít
 | Authentication | Nem megfelelő előmegosztott kulcs | Igen|
 | PeerReachability | A társ-átjáró nem érhető el. | Igen|
 | IkePolicyMismatch | A társ-átjáró olyan IKE-szabályzatokkal rendelkezik, amelyeket az Azure nem támogat. | Igen|
-| WfpParse Error | Hiba történt a WFP-napló elemzése során. |Igen|
+| WfpParse hiba | Hiba történt a WFP-napló elemzése során. |Igen|
 
 ## <a name="supported-gateway-types"></a>Támogatott átjárók típusai
 
@@ -110,7 +107,7 @@ Az erőforrás-hibaelhárítási naplófájlok tárolása egy Storage-fiókban t
 
 A fájlok Azure Storage-fiókokból való letöltésével kapcsolatos utasításokért tekintse meg az [Azure Blob Storage használatának első lépései a .NET használatával](../storage/blobs/storage-dotnet-how-to-use-blobs.md)című témakört. Egy másik eszköz is használható Storage Explorer. Storage Explorer további információ a következő hivatkozáson található: [Storage Explorer](https://storageexplorer.com/)
 
-### <a name="connectionstatstxt"></a>ConnectionStats.txt
+### <a name="connectionstatstxt"></a>ConnectionStats. txt
 
 A **ConnectionStats. txt** fájl tartalmazza a kapcsolatok általános statisztikáit, beleértve a bejövő és kimenő bájtokat, a kapcsolatok állapotát és a kapcsolatok létrejöttének időpontját.
 
@@ -127,7 +124,7 @@ Egress Bytes (Since last connected) : 288 B
 Connected Since : 2/1/2017 8:22:06 PM
 ```
 
-### <a name="cpustatstxt"></a>CPUStats.txt
+### <a name="cpustatstxt"></a>CPUStats. txt
 
 A **CPUStats. txt** fájl a tesztelés időpontjában rendelkezésre álló CPU-használatot és memóriát tartalmaz.  A fájl tartalma a következő példához hasonló:
 
@@ -148,7 +145,7 @@ Error: On-prem device sent invalid payload.
      based on log : IkeFindPayloadInPacket failed with Windows error 13843(ERROR_IPSEC_IKE_INVALID_PAYLOAD)
 ```
 
-### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag.txt
+### <a name="scrubbed-wfpdiagtxt"></a>Scrubbed-wfpdiag. txt
 
 A **scrubbed-wfpdiag. txt** naplófájl tartalmazza a WFP-naplót. Ez a napló a csomagok eldobásának és az IKE/AuthIP hibák naplózását tartalmazza.
 
@@ -181,7 +178,7 @@ A következő példában a scrubbed-wfpdiag. txt fájl tartalma látható. Ebben
 ...
 ```
 
-### <a name="wfpdiagtxtsum"></a>wfpdiag.txt.sum
+### <a name="wfpdiagtxtsum"></a>wfpdiag. txt. Sum
 
 A **wfpdiag. txt. Sum** fájl egy napló, amely a feldolgozott puffereket és eseményeket mutatja.
 

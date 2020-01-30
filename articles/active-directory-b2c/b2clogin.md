@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 12/04/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: db222515dae51fa5e0334430a3578816b1e8813d
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 5c9054daea76675ed621caf1630c509b16743f4e
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75367654"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836342"
 ---
 # <a name="set-redirect-urls-to-b2clogincom-for-azure-active-directory-b2c"></a>Átirányítási URL-címek beállítása b2clogin.com Azure Active Directory B2C
 
@@ -46,7 +46,7 @@ Az alkalmazások *b2clogin.com*való áttelepíteni több módosítást is szük
 
 * Módosítsa az átirányítási URL-címet az identitás-szolgáltató alkalmazásaiban a *b2clogin.com*hivatkozására.
 * Frissítse Azure AD B2C alkalmazásait a *b2clogin.com* használatára a felhasználói folyamat és a jogkivonat-végpont hivatkozásaiban.
-* Frissítse a [felhasználói felület testreszabására](active-directory-b2c-ui-customization-custom-dynamic.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
+* Frissítse a [felhasználói felület testreszabására](custom-policy-ui-customization-dynamic.md)vonatkozó CORS-beállításokban definiált összes **engedélyezett eredetet** .
 
 ## <a name="change-identity-provider-redirect-urls"></a>Identitás-szolgáltató átirányítási URL-címeinek módosítása
 

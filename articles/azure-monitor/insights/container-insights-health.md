@@ -3,12 +3,12 @@ title: A Kubernetes-fürt állapotának figyelése az Azure Monitor for containe
 description: Ez a cikk bemutatja, hogyan tekintheti meg és elemezheti az AK-beli és a nem ak-beli fürtök állapotát a Azure Monitor for containers használatával.
 ms.topic: conceptual
 ms.date: 12/01/2019
-ms.openlocfilehash: 9ee710eb916923756633e65f3287751ba9a9dde3
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: f50ef13efca78bbb5285b99759b8111dc1915ad0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75405095"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843990"
 ---
 # <a name="understand-kubernetes-cluster-health-with-azure-monitor-for-containers"></a>Kubernetes-fürt állapotának megismerése a Tárolókhoz készült Azure Monitorral
 
@@ -23,7 +23,7 @@ További információ a tárolók Azure Monitorének engedélyezéséről: [Azur
 >[!NOTE]
 >Az AK-alapú motor-fürtök támogatásához ellenőrizze, hogy az megfelel-e a következőknek:
 >- A [Helm-ügyfél](https://helm.sh/docs/using_helm/)legújabb verzióját használja.
->- A tároló ügynök verziója a *Microsoft/OMS: ciprod11012019*. Az ügynök frissítését lásd: az [ügynök frissítése a Kubernetes-fürtön](container-insights-manage-agent.md#upgrading-agent-on-monitored-kubernetes-cluster).
+>- A tároló ügynök verziója a *Microsoft/OMS: ciprod11012019*. Az ügynök frissítését lásd: az [ügynök frissítése a Kubernetes-fürtön](container-insights-manage-agent.md#upgrade-agent-on-monitored-kubernetes-cluster).
 >
 
 ## <a name="overview"></a>Áttekintés
@@ -48,13 +48,13 @@ Az állapot-hierarchia ablaktáblán az összes figyelő hierarchikus elrendezé
 * A memória kihasználtságának kiértékelése a csomópontról és a tárolóból.
 * A hüvelyek és a csomópontok állapota a Kubernetes által jelentett készenléti állapot kiszámítása alapján.
 
-Az állapotot a következő ikonok jelölik:
+Az állapot jelzésére használt ikonok a következők:
 
 |Ikon|Jelentés|  
 |--------|-----------|  
-|![Kifogástalan állapotot jelző zöld pipa ikonja](./media/container-insights-health/healthyicon.png)|Sikeres, az állapot rendben van (zöld)|  
-|![Figyelmeztetést jelző sárga háromszög és felkiáltójel](./media/container-insights-health/warningicon.png)|Figyelmeztetés (sárga)|  
-|![Kritikus állapotot jelző piros gomb fehér X-szel](./media/container-insights-health/criticalicon.png)|Kritikus (piros)|  
+|![Kifogástalan állapotot jelző zöld pipa ikon](./media/container-insights-health/healthyicon.png)|Sikeres, az állapot rendben van (zöld)|  
+|![A sárga háromszög és a felkiáltójel figyelmeztetés](./media/container-insights-health/warningicon.png)|Figyelmeztetés (sárga)|  
+|![A piros gomb fehér X értékkel kritikus állapotot jelez](./media/container-insights-health/criticalicon.png)|Kritikus (piros)|  
 |![Szürke – ki ikon](./media/container-insights-health/grayicon.png)|Ismeretlen (szürke)|  
 
 ## <a name="monitor-configuration"></a>Konfiguráció figyelése

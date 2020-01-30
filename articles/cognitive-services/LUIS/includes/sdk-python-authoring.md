@@ -8,14 +8,14 @@ ms.service: cognitive-services
 ms.subservice: luis
 ms.topic: include
 ms.custom: include file
-ms.date: 01/14/2020
+ms.date: 01/23/2020
 ms.author: diberry
-ms.openlocfilehash: bf09d8e9b2dd8cebcf3ef8414afcc8ac031f4cdf
-ms.sourcegitcommit: d29e7d0235dc9650ac2b6f2ff78a3625c491bbbf
+ms.openlocfilehash: 69814c89c1c44a63febbcac04a4d161cd4c0921f
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/17/2020
-ms.locfileid: "76170567"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774210"
 ---
 Használja a Pythonhoz készült Language Understanding (LUIS) a következőhöz:
 
@@ -99,7 +99,7 @@ Az ügyfél létrehozása után ezt az ügyfelet használhatja a következő fun
 * [Verziók](https://docs.microsoft.com/python/api/azure-cognitiveservices-language-luis/azure.cognitiveservices.language.luis.authoring.operations.versionsoperations?view=azure-python) – kezelés klónozással, exportálással és törléssel
 
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következőket a Pythonhoz készült Language Understanding (LUIS) authoring ügyféloldali kódtár használatával:
 
@@ -187,3 +187,7 @@ Futtassa az alkalmazást a gyors üzembe helyezési fájlban lévő `python` par
 ```console
 python quickstart-file.py
 ```
+
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+Ha elkészült a jóslatokkal, törölje a munkát ebből a rövid útmutatóból a fájl és az alkönyvtárak törlésével.

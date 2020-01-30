@@ -11,12 +11,12 @@ ms.author: sstein
 ms.reviewer: v-masebo
 ms.date: 03/25/2019
 ms.custom: seo-javascript-september2019, seo-javascript-october2019
-ms.openlocfilehash: d22d95a6c4f417f803793d0c87ee251f7f0e9ed5
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: c0da38a41bf613237ea3b164d70e4729a7284ca7
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76758427"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768600"
 ---
 # <a name="quickstart-use-nodejs-to-query-an-azure-sql-database"></a>Rövid útmutató: Node.js használata Azure SQL-adatbázis lekérdezéséhez
 
@@ -25,9 +25,7 @@ Ebben a rövid útmutatóban a Node. js használatával csatlakozhat egy Azure S
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - Egy [Azure SQL Database-adatbázis](sql-database-single-database-get-started.md)
-  
 - [Node. js](https://nodejs.org)-hez kapcsolódó szoftverek
 
   # <a name="macostabmacos"></a>[macOS](#tab/macos)

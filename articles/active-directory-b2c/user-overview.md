@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: a627b0eebc3aa4a19b0670f899d3032d8df58da4
-ms.sourcegitcommit: 6c2c97445f5d44c5b5974a5beb51a8733b0c2be7
+ms.openlocfilehash: f9573f4d226df4eb6068af679f2eb45dc87c7e40
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/05/2019
-ms.locfileid: "73620456"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840060"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
 
@@ -76,12 +76,12 @@ Használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invit
 
 ## <a name="consumer-user"></a>Fogyasztói felhasználó
 
-A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiókot a rendszer egy [regisztrációs vagy bejelentkezési felhasználói folyamattal](../active-directory-b2c/active-directory-b2c-reference-policies.md), az Azure ad Graph API vagy a Azure Portal használatával hozza létre.
+A felhasználó bejelentkezhet Azure AD B2C által védett alkalmazásokba, de nem fér hozzá az Azure-erőforrásokhoz, például a Azure Portalhoz. A fogyasztói felhasználó használhat helyi fiókot vagy összevont fiókot, például a Facebookot vagy a Twittert. A felhasználói fiókot a rendszer egy [regisztrációs vagy bejelentkezési felhasználói folyamattal](user-flow-overview.md), az Azure ad Graph API vagy a Azure Portal használatával hozza létre.
 
-Megadhatja azokat az adatokat, amelyeket a rendszer akkor gyűjt, amikor egyéni felhasználói attribútumokkal hozza létre a fogyasztói felhasználói fiókot. További információ: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](../active-directory-b2c/active-directory-b2c-reference-custom-attr.md).
+Megadhatja azokat az adatokat, amelyeket a rendszer akkor gyűjt, amikor egyéni felhasználói attribútumokkal hozza létre a fogyasztói felhasználói fiókot. További információ: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](user-flow-custom-attributes.md).
 
-Az [Azure AD Graph API használatával](active-directory-b2c-devquickstarts-graph-dotnet.md) a **fogyasztói felhasználói fiókok létrehozása** szakaszban található információk segítségével Azure ad B2C fogyasztói fiókot hozhat létre. A fiók tulajdonságainak kezeléséhez a **felhasználó felhasználói fiókjainak frissítése** című szakaszban található információkat is használhatja.
+Az [Azure AD Graph API használatával](manage-user-accounts-graph-api.md) a **fogyasztói felhasználói fiókok létrehozása** szakaszban található információk segítségével Azure ad B2C fogyasztói fiókot hozhat létre. A fiók tulajdonságainak kezeléséhez a **felhasználó felhasználói fiókjainak frissítése** című szakaszban található információkat is használhatja.
 
 ### <a name="migrate-consumer-user-accounts"></a>Fogyasztói felhasználói fiókok migrálása
 
-Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználó áttelepítése](active-directory-b2c-user-migration.md) vagy [felhasználók áttelepítése közösségi identitásokkal](active-directory-b2c-social-migration.md).
+Előfordulhat, hogy a meglévő felhasználói fiókokat át kell telepítenie bármely identitás-szolgáltatótól a Azure AD B2Cba. További információ: [felhasználó áttelepítése](user-migration.md) vagy [felhasználók áttelepítése közösségi identitásokkal](migrate-social-identities.md).

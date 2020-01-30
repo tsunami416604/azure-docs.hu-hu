@@ -13,12 +13,12 @@ ms.author: garye
 ms.reviewer: davidph
 manager: cgronlun
 ms.date: 04/11/2019
-ms.openlocfilehash: 4db4bf7c9d35d9715f24ac0480abfaad7eb7c9e6
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 5b2f8231952d25f5858f8e06a957f1056ecc3651
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760079"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768495"
 ---
 # <a name="quickstart-create-and-run-simple-r-scripts-in-azure-sql-database-machine-learning-services-preview"></a>Gyors útmutató: egyszerű R-parancsfájlok létrehozása és futtatása Azure SQL Database Machine Learning Servicesban (előzetes verzió)
 
@@ -29,11 +29,8 @@ Ebben a rövid útmutatóban egy R-szkriptek készletét hozza létre és futtat
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
-
 - Egy [kiszolgálói szintű tűzfalszabály használatával](sql-database-server-level-firewall-rule.md) rendelkező [Azure SQL Database](sql-database-single-database-get-started.md)
-
 - Az R-t engedélyező [Machine learning Services](sql-database-machine-learning-services-overview.md) . [Regisztráljon az előzetes](sql-database-machine-learning-services-overview.md#signup)verzióra.
-
 - [SQL Server Management Studio](/sql/ssms/sql-server-management-studio-ssms) (SSMS)
 
 > [!NOTE]

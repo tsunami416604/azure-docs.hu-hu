@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 05/07/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 5673465c9ff1afe83c5d9d549a78e1547a59b72f
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 229f49255fbc72f74f07b1e7098417d136f35c27
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701960"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76775174"
 ---
 # <a name="protected-web-api---move-to-production"></a>Védett webes API – áttérés éles környezetbe
 
@@ -30,14 +30,12 @@ Most, hogy már tudja, hogyan védhető meg a webes API-k, a következőképpen 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Útmutató az alsóbb rétegbeli API-k meghívásához:
+Útmutató az alsóbb rétegbeli API-k meghívásához.
 
 > [!div class="nextstepaction"]
 > [Forgatókönyv – a webes API-hívások alsóbb rétegbeli API-k](scenario-web-api-call-api-overview.md)
 
-
-További információ az oktatóanyagokról és a mintákról:
-
+További információ az oktatóanyagokról és a mintákról.
 
 > [!div class="nextstepaction"]
 > [Védett API meghívása démon használatával](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/tree/master/2-Call-OwnApi)

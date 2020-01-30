@@ -14,12 +14,12 @@ ms.workload: big-compute
 ms.date: 11/14/2018
 ms.author: jushiman
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cf9372cfc89aca3285128c96c1b7e6756ba42cda
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 306407252a6f5bc4071947b6aafa2d50bccc97a8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026216"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842733"
 ---
 # <a name="persist-job-and-task-data-to-azure-storage-with-the-batch-file-conventions-library-for-net"></a>Feladat-és tevékenységadatok megőrzése az Azure Storage-ban a Batch file Conventions Library for .NET
 
@@ -46,7 +46,7 @@ Ha a forgatókönyv eltér a fent felsorolttól, előfordulhat, hogy más megkö
 
 ## <a name="what-is-the-batch-file-conventions-standard"></a>Mi a Batch file Conventions standard?
 
-A [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/psSdkJson6/src/SDKs/Batch/Support/FileConventions#conventions) egy elnevezési sémát biztosít a cél tárolók és a blob elérési útjaihoz, amelyekhez a kimeneti fájlok íródnak. Az Azure Storage szolgáltatásban megőrzött fájlok, amelyek megfelelnek a fájl konvencióinak, automatikusan megtekinthetők a Azure Portalban. A portál tisztában van az elnevezési konvencióval, ezért képes megjeleníteni azokat a fájlokat, amelyek betartják azt.
+A [Batch file Conventions standard](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files) egy elnevezési sémát biztosít a cél tárolók és a blob elérési útjaihoz, amelyekhez a kimeneti fájlok íródnak. Az Azure Storage szolgáltatásban megőrzött fájlok, amelyek megfelelnek a fájl konvencióinak, automatikusan megtekinthetők a Azure Portalban. A portál tisztában van az elnevezési konvencióval, ezért képes megjeleníteni azokat a fájlokat, amelyek betartják azt.
 
 A file Conventions Library for .NET automatikusan a fájl konvenciói standardnak megfelelően nevezi el a tárolókat és a feladat kimeneti fájljait. A file Conventions Library az Azure Storage-beli kimeneti fájlok lekérdezési módszereit is biztosítja a feladat azonosítója, a feladat azonosítója vagy a célja alapján.
 
@@ -228,15 +228,15 @@ A file Conventions könyvtár [forráskódja][github_file_conventions] elérhet�
 - Lásd: tevékenységadatok megőrzése az [Azure Storage-ban a Batch szolgáltatás API-val](batch-task-output-files.md) , amelyből megtudhatja, hogyan használhatja a Batch szolgáltatás API-ját a kimeneti adatok megőrzésére.
 
 [forum_post]: https://social.msdn.microsoft.com/Forums/en-US/87b19671-1bdf-427a-972c-2af7e5ba82d9/installing-applications-and-staging-data-on-batch-compute-nodes?forum=azurebatch
-[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/AutoRest/src/Batch/FileConventions
-[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[github_file_conventions]: https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files
+[github_file_conventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [github_persistoutputs]: https://github.com/Azure/azure-batch-samples/tree/master/CSharp/ArticleProjects/PersistOutputs
 [github_samples]: https://github.com/Azure/azure-batch-samples
 [net_batchclient]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.batchclient.aspx
 [net_cloudjob]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudjob.aspx
 [net_cloudstorageaccount]: https://docs.microsoft.com/java/api/com.microsoft.azure.storage._cloud_storage_account
 [net_cloudtask]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.cloudtask.aspx
-[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/AutoRest/src/Batch/FileConventions/README.md
+[net_fileconventions_readme]: https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/batch/Microsoft.Azure.Batch.Conventions.Files/README.md
 [net_joboutputkind]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputkind.aspx
 [net_joboutputstorage]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.aspx
 [net_joboutputstorage_saveasync]: https://msdn.microsoft.com/library/azure/microsoft.azure.batch.conventions.files.joboutputstorage.saveasync.aspx

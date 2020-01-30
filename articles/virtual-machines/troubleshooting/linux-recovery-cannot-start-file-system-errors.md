@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: azurecli
 ms.date: 10/09/2019
 ms.author: v-six
-ms.openlocfilehash: a47dc1032115f8bcae0c7bdc37c84ab3b68ec4a8
-ms.sourcegitcommit: 77bfc067c8cdc856f0ee4bfde9f84437c73a6141
+ms.openlocfilehash: 455cb1e0067217be6edcf665e8c07e8fcd684ab5
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/16/2019
-ms.locfileid: "72432307"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842401"
 ---
 # <a name="troubleshoot-linux-vm-starting-issues-due-to-file-system-errors"></a>Linux rendszerű virtuális gép hibáinak elhárítása fájlrendszerbeli hibák miatt
 
@@ -94,7 +94,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módba 
 
 4. Adja meg a rendszergazdai fiók jelszavát a vészhelyzeti módba való bejelentkezéshez.
 
-5. A xfs_repair használata a-n kapcsolóval a fájlrendszer hibáinak észleléséhez. A következő példában feltételezzük, hogy a rendszerpartíció/dev/sda1. van. Cserélje le a virtuális gép megfelelő értékére:
+5. A fájlrendszerben található hibák észleléséhez használja a xfs_repair és az-n kapcsolót. A következő példában feltételezzük, hogy a rendszerpartíció/dev/sda1. van. Cserélje le a virtuális gép megfelelő értékére:
 
    ```
    xfs_repair -n /dev/sda1
@@ -110,20 +110,20 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módba 
 
    ```
    mkdir /temp
-   mount /dev/sda2 /temp
+   mount /dev/sda1 /temp
    ```
 
-8. Ha a lemez csatlakoztatása sikertelen, futtassa a xfs_repair parancsot az-L kapcsolóval (kényszerített log Zero):
+8. Ha a lemez nem csatlakoztatható, futtassa az xfs_repair parancsot az-L kapcsolóval (kényszerített log Zero):
 
    ```
-   xfs_repair /dev/sda2 -L
+   xfs_repair /dev/sda1 -L
    ```
 
 9. Ezután próbálja meg csatlakoztatni a fájlrendszert. Ha a lemez sikeresen csatlakoztatva van, a következő kimenet jelenik meg:
  
    ```
-   XFS (sda2): Mounting V1 Filesystem
-   XFS (sda2): Ending clean mount
+   XFS (sda1): Mounting V1 Filesystem
+   XFS (sda1): Ending clean mount
    ```
 
 10. Indítsa újra a virtuális gépet, és ellenőrizze, hogy megoldódott-e a probléma.
@@ -138,7 +138,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módba 
 
 2. Keresse meg a csatlakoztatott rendszerlemez meghajtójának címkéjét. Ebben az esetben feltételezzük, hogy a csatlakoztatott rendszerlemez címkéje/dev/sdc1. Cserélje le a virtuális gép megfelelő értékére.
 
-3. A xfs_repair használata a-n kapcsolóval a fájlrendszer hibáinak észleléséhez.
+3. A fájlrendszerben található hibák észleléséhez használja a xfs_repair és az-n kapcsolót.
 
    ```
    xfs_repair -n /dev/sdc1
@@ -158,7 +158,7 @@ A probléma megoldásához indítsa el a virtuális gépet vészhelyzeti módba 
    mount /dev/sdc1 /temp
    ```
 
-   Ha a lemez csatlakoztatása sikertelen, futtassa a xfs_repair parancsot az-L kapcsolóval (kényszerített log Zero):
+   Ha a lemez nem csatlakoztatható, futtassa az xfs_repair parancsot az-L kapcsolóval (kényszerített log Zero):
 
    ```
    xfs_repair /dev/sdc1 -L

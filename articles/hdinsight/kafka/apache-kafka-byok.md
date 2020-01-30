@@ -6,13 +6,13 @@ ms.author: hrasheed
 ms.reviewer: hrasheed
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 12/09/2019
-ms.openlocfilehash: b4a6ef4a8559276ea1f74e133055a613ddcbcab4
-ms.sourcegitcommit: f0dfcdd6e9de64d5513adf3dd4fe62b26db15e8b
+ms.date: 01/27/2020
+ms.openlocfilehash: 72fd23e4283925b91d749fef0afac4e87e93405c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/26/2019
-ms.locfileid: "75495159"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841656"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight"></a>Saját kulcs használata az Azure HDInsight Apache Kafka
 
@@ -39,13 +39,13 @@ A BYOK-t támogató Kafka-fürt létrehozásához hajtsa végre a következő l�
 
 Ha Key Vault szeretne hitelesíteni, hozzon létre egy felhasználó által hozzárendelt felügyelt identitást a [Azure Portal](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal.md), a [Azure PowerShell](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-powershell.md), a [Azure Resource Manager](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-arm.md)vagy az [Azure CLI](../../active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-cli.md)használatával. További információ arról, hogyan működnek a felügyelt identitások az Azure HDInsight-ben: [felügyelt identitások az Azure HDInsight](../hdinsight-managed-identities.md). Noha az Azure Active Directory szükséges a felügyelt identitásokhoz és a BYOK a Kafka-hez, Enterprise Security Package (ESP) nem követelmény. Ügyeljen arra, hogy a felügyelt identitás erőforrás-AZONOSÍTÓját mentse a Key Vault hozzáférési házirendhez való hozzáadásakor.
 
-![Felhasználó által hozzárendelt felügyelt identitás létrehozása Azure Portalban](./media/apache-kafka-byok/user-managed-identity-portal.png)
+![Felhasználó által hozzárendelt felügyelt identitás létrehozása Azure Portalban](./media/apache-kafka-byok/azure-portal-create-managed-identity.png)
 
 ## <a name="set-up-the-key-vault-and-keys"></a>A Key Vault és a kulcsok beállítása
 
 A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstartóval, a kulcsokat a Azure Key Vaultba importálhatja. Ne feledje, hogy a kulcsoknak "Soft Delete" értékkel kell rendelkezniük. A "Soft Delete" funkció a REST, a .NET/C#, a PowerShell és az Azure CLI felületén keresztül érhető el.
 
-1. Új kulcstartó létrehozásához kövesse az [Azure Key Vault](../../key-vault/key-vault-overview.md) rövid útmutatót. A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md)című témakört.
+1. Új kulcstartó létrehozásához kövesse az [Azure Key Vault](../../key-vault/quick-create-cli.md) rövid útmutatót. A meglévő kulcsok importálásával kapcsolatos további információkért tekintse meg [a kulcsok, titkok és tanúsítványok](../../key-vault/about-keys-secrets-and-certificates.md)című témakört.
 
 1. Engedélyezze a "Soft-Delete" parancsot a Key-vaulton az az kulcstartó [Update](/cli/azure/keyvault?view=azure-cli-latest#az-keyvault-update) CLI parancs használatával.
 
@@ -79,7 +79,7 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
     b. A **rendszerbiztonsági tag kiválasztása**területen válassza ki a létrehozott, felhasználó által hozzárendelt felügyelt identitást.
 
-    ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
+    ![A rendszerbiztonsági tag kiválasztása Azure Key Vault hozzáférési házirendhez](./media/apache-kafka-byok/azure-portal-add-access-policy.png)
 
     c. Kulcs **engedélyeinek** beállítása a **beolvasáshoz**, a **kicsomagoláshoz**és a **becsomagolási kulcshoz**.
 
@@ -97,9 +97,9 @@ A HDInsight csak a Azure Key Vaultt támogatja. Ha rendelkezik saját kulcstart�
 
 Most már készen áll egy új HDInsight-fürt létrehozására. A BYOK csak a fürt létrehozása során alkalmazhatók az új fürtökre. A titkosítás nem távolítható el a BYOK-fürtökből, és a BYOK nem adható hozzá a meglévő fürtökhöz.
 
-![Kafka-lemez titkosítása Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka-byok.png)
+![Kafka-lemez titkosítása Azure Portal](./media/apache-kafka-byok/azure-portal-cluster-security-networking-kafka.png)
 
-A fürt létrehozása során adja meg a teljes kulcs URL-címét, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT.
+A fürt létrehozása során adja meg a teljes kulcs URL-címét, beleértve a kulcs verziószámát is. Például: `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Emellett a felügyelt identitást is hozzá kell rendelnie a fürthöz, és meg kell adnia a kulcs URI-JÁT. A fürt teljes létrehozásával kapcsolatos részletekért lásd: [Apache Hadoop-fürtök létrehozása a Azure Portal használatával](./apache-kafka-get-started.md)
 
 ## <a name="rotating-the-encryption-key"></a>A titkosítási kulcs elforgatása
 

@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/17/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 88ad32a289d499cd385f8f3095113a4b329b80f4
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 6c486e59f32afd09a9934ae2298172ccb4ee2414
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701535"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76768107"
 ---
 # <a name="web-app-that-signs-in-users-move-to-production"></a>Felhasználók számára bejelentkező webalkalmazás: áthelyezés éles környezetbe
 
@@ -29,6 +29,13 @@ Most, hogy tudja, hogyan szerezhet be jogkivonatot webes API-k hívására, megt
 
 ## <a name="next-steps"></a>Következő lépések
 
+### <a name="same-site"></a>Ugyanazon a helyen
+
+Győződjön meg arról, hogy megértette a Chrome böngésző új verzióival kapcsolatos lehetséges problémákat
+
+> [!div class="nextstepaction"]
+> [A SameSite-cookie-változások kezelése a Chrome böngészőben](howto-handle-samesite-cookie-changes-chrome-browser.md)
+
 ### <a name="scenario-for-calling-web-apis"></a>Forgatókönyv a webes API-k meghívásához
 
 Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hívhat a bejelentkezett felhasználók nevében. A webes API-k hívása a webalkalmazásból a következő forgatókönyv objektuma:
@@ -36,7 +43,7 @@ Miután a webalkalmazás bejelentkezett a felhasználókba, a webes API-kat hív
 > [!div class="nextstepaction"]
 > [Webes API-kat hívó webalkalmazás](scenario-web-app-call-api-overview.md)
 
-### <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep Dive: ASP.NET Core webalkalmazás-oktatóanyag
+## <a name="deep-dive-aspnet-core-web-app-tutorial"></a>Deep Dive: ASP.NET Core webalkalmazás-oktatóanyag
 
 További információ a felhasználók bejelentkezésének egyéb módjairól a ASP.NET Core oktatóanyagban: 
 
@@ -51,7 +58,7 @@ Ez a progresszív oktatóanyag éles használatra kész kóddal rendelkezik a we
 - [Azure AD B2C](https://aka.ms/aadb2c)
 - Nemzeti felhők
 
-### <a name="sample-code-java-web-app"></a>Mintakód: Java-webalkalmazás
+## <a name="sample-code-java-web-app"></a>Mintakód: Java-webalkalmazás
 
 További információ a Java-webalkalmazásról ebből a mintából a GitHubon: 
 

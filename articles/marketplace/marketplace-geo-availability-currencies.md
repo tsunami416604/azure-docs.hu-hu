@@ -6,20 +6,20 @@ author: qianw211
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: article
-ms.date: 02/28/2019
+ms.date: 02/28/2020
 ms.author: ellacroi
-ms.openlocfilehash: 0b12e122cef3a05af7a09918ba434d103e33a1a2
-ms.sourcegitcommit: ac56ef07d86328c40fed5b5792a6a02698926c2d
+ms.openlocfilehash: 54ad3049789a737ffb29519b6546973acda9b4ae
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73822938"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843837"
 ---
 # <a name="geographic-availability-and-currency-support"></a>Földrajzi Elérhetőség és pénznemek támogatása
 
 Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe által meghatározott 141 földrajzi régiókban lehet megvásárolni, a tranzakciók pedig 17 pénznemben végezhetők el. Az alábbi táblázat felsorolja az egyes támogatott földrajzi helyeket, az [ISO 3166 2 számjegyű alfa-kódot](https://en.wikipedia.org/wiki/List_of_ISO_3166_country_codes)és a hozzárendelt pénznemet.
 
-|   Ország/régió neve               |   ISO-2   |   Currency (Pénznem)   |
+|   Ország/régió neve               |   ISO-2   |   Currency (Deviza)   |
 |-------------------------------------|-----------|--------------|
 | Afganisztán                         | AF        | USD          |
 | Albánia                             | AL        | USD          |
@@ -49,13 +49,14 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Cabo Verde                          | CV        | USD          |
 | Kajmán-szigetek                      | KY        | USD          |
 | Chile                               | CL        | USD          |
+| Kína\**                            | CN        | –          |
 | Kolumbia                            | CO        | USD          |
 | Costa Rica                          | CR        | USD          |
 | Côte d’Ivoire                       | CI        | USD          |
 | Horvátország                             | HR        | EUR          |
 | Curaçao                             | CW        | USD          |
 | Ciprus                              | CY        | EUR          |
-| Cseh Köztársaság                      | CZ        | EUR          |
+| Csehország                      | CZ        | EUR          |
 | Dánia                             | DK        | DKK          |
 | Dominikai Köztársaság                  | DO        | USD          |
 | Ecuador                             | EC        | USD          |
@@ -107,7 +108,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Mongólia                            | MN        | USD          |
 | Montenegró                          | Nekem        | USD          |
 | Marokkó                             | MA        | USD          |
-| Namíbia                             | NA        | USD          |
+| Namíbia                             | n/a        | USD          |
 | Nepál                               | NP        | USD          |
 | Hollandia                         | NL        | EUR          |
 | Nicaragua                           | NI        | USD          |
@@ -154,7 +155,7 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 | Ukrajna                             | UA        | USD          |
 | Egyesült Arab Emírségek                | AE        | USD          |
 | Egyesült Királyság                      | GB        | GBP          |
-| Egyesült Államok                       | USA        | USD          |
+| Egyesült Államok                       | Egyesült Államok        | USD          |
 | Uruguay                             | UY        | USD          |
 | Üzbegisztán                          | UZ        | USD          |
 | Venezuela                           | VE        | USD          |
@@ -165,3 +166,5 @@ Az Azure Marketplace-és AppSource-ajánlatokat az ügyfél számlázási címe 
 |   |   |   |
 
 a Brazíliában található ügyfelek \* USD-t használnak a Cloud Solution Providers (CSP) által használt piactéren.
+
+\** csak az ingyenes és a BYOL VM-lemezképek.

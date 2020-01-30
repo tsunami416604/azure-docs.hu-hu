@@ -8,14 +8,14 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: text-analytics
 ms.topic: article
-ms.date: 01/06/2019
+ms.date: 01/27/2019
 ms.author: aahi
-ms.openlocfilehash: a9bfa2a51341bf60f92378f5d96a390bd1d92db1
-ms.sourcegitcommit: c32050b936e0ac9db136b05d4d696e92fefdf068
+ms.openlocfilehash: 9aa00898c6a567d495ed0c66bcf7bd475067fa0d
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75732778"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774139"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
 
@@ -23,7 +23,7 @@ A Text Analytics API lehetővé teszi a strukturálatlan szöveg átrendezését
 
 ### <a name="entity-linking"></a>Entitáskapcsolás
 
-Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például annak meghatározását, hogy a szó előfordulása `Mars`-e a bolygón vagy a háború római istene). Ennek a folyamatnak a megfelelő nyelven kell megadnia egy tudásbázist, hogy az felismert entitások szövegben legyenek összekapcsolva. 
+Az entitások összekapcsolása lehetővé teszi egy szövegben talált entitás identitásának azonosítását és egyértelműsítse (például annak meghatározását, hogy a szó előfordulása `Mars`-e a bolygón vagy a háború római istene). Ennek a folyamatnak a megfelelő nyelven kell megadnia egy tudásbázist, hogy az felismert entitások szövegben legyenek összekapcsolva. Az Entity Linking a [wikipedia](https://www.wikipedia.org/) -t használja a Tudásbázisban.
 
 
 ### <a name="named-entity-recognition-ner"></a>Elnevezett entitások felismerése
@@ -46,7 +46,7 @@ További információért lásd a [nyelvi támogatást](../language-support.md#s
 
 #### <a name="version-2tabversion-2"></a>[2-es verzió](#tab/version-2)
 
-### <a name="entity-types"></a>Entitástípusok
+### <a name="entity-types"></a>Entitások típusai
 
 > [!NOTE]
 > Az elnevezett entitások felismerése () 2-es verziója csak a következő entitásokat támogatja. Nyilvános előzetes verzióban érhető el, és nagy mértékben kibővíti a szövegben felismert entitások számát és mélységét.   
@@ -85,7 +85,7 @@ Az elnevezett Entity Recognition v2 egyetlen végpontot használ az egyhelyes é
 
 #### <a name="version-3-public-previewtabversion-3"></a>[3. verzió (nyilvános előzetes verzió)](#tab/version-3)
 
-### <a name="entity-types"></a>Entitástípusok
+### <a name="entity-types"></a>Entitások típusai
 
 A nevesített entitások felismerése v3 több típusra kiterjedő kibővített észlelést biztosít. Jelenleg az alábbi kategóriájú entitások is felismerhetők:
 

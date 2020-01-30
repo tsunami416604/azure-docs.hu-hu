@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: d737d010f323a5d5b230091ad07ba530d25d6e51
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: d14e6f98f49f112c8b20abec573b48c3b12705db
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949406"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841233"
 ---
 # <a name="customize-the-user-interface-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói felületének testreszabása
 
@@ -28,15 +28,15 @@ A felhasználó felhasználói FELÜLETét többféleképpen testreszabhatja az 
 
 ### <a name="user-flows"></a>Felhasználói folyamatok
 
-Ha [felhasználói folyamatokat](active-directory-b2c-reference-policies.md)használ, megváltoztathatja a felhasználói folyamatok lapjainak megjelenését a beépített lapelrendezés- *sablonokkal*, illetve a saját HTML-és CSS-fájl használatával. A cikk későbbi részében mindkét módszert tárgyaljuk.
+Ha [felhasználói folyamatokat](user-flow-overview.md)használ, megváltoztathatja a felhasználói folyamatok lapjainak megjelenését a beépített lapelrendezés- *sablonokkal*, illetve a saját HTML-és CSS-fájl használatával. A cikk későbbi részében mindkét módszert tárgyaljuk.
 
 A [Azure Portal](tutorial-customize-ui.md) használatával konfigurálhatja a felhasználói folyamatok felhasználói felületének testreszabását.
 
 ### <a name="custom-policies"></a>Egyéni szabályzatok
 
-Ha [egyéni házirendeket](active-directory-b2c-overview-custom.md) használ a regisztrációhoz vagy a bejelentkezéshez, a jelszó-visszaállításhoz vagy a profil szerkesztéséhez az alkalmazásban, [a felhasználói felület testreszabásához használjon házirend-fájlokat](active-directory-b2c-ui-customization-custom.md).
+Ha [egyéni házirendeket](custom-policy-overview.md) használ a regisztrációhoz vagy a bejelentkezéshez, a jelszó-visszaállításhoz vagy a profil szerkesztéséhez az alkalmazásban, [a felhasználói felület testreszabásához használjon házirend-fájlokat](custom-policy-ui-customization.md).
 
-Ha az ügyfél döntése alapján dinamikus tartalmat kell megadnia, használjon olyan egyéni házirendeket, amelyek az [oldal tartalmát dinamikusan módosíthatják](active-directory-b2c-ui-customization-custom-dynamic.md) , a lekérdezési karakterláncban elküldett paraméterektől függően. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon egy olyan paraméter alapján, amelyet a webes vagy a mobil alkalmazásból továbbít.
+Ha az ügyfél döntése alapján dinamikus tartalmat kell megadnia, használjon olyan egyéni házirendeket, amelyek az [oldal tartalmát dinamikusan módosíthatják](custom-policy-ui-customization-dynamic.md) , a lekérdezési karakterláncban elküldett paraméterektől függően. Megváltoztathatja például a háttérképet a Azure AD B2C regisztrációs vagy bejelentkezési oldalon egy olyan paraméter alapján, amelyet a webes vagy a mobil alkalmazásból továbbít.
 
 ### <a name="javascript"></a>JavaScript
 
@@ -65,6 +65,8 @@ Ezután válasszon ki egy sablont a listából. Íme néhány példa az egyes sa
 Ha kiválaszt egy sablont, a rendszer a kiválasztott elrendezést alkalmazza a felhasználói folyamat összes lapjára, és az egyes lapok URI-ja látható az **Egyéni lap URI** mezőjében.
 
 ## <a name="custom-html-and-css"></a>Egyéni HTML és CSS
+
+Ha a testreszabott HTML-vel és CSS-vel szeretné megtervezni saját házirend-elrendezését, ezt az "egyéni oldal tartalmának használata" kapcsolóval állíthatja be a szabályzatban található összes elrendezési névhez. Kérjük, kövesse az alábbi utasításokat az egyéni elrendezési konfigurációkra vonatkozóan:
 
 Azure AD B2C az ügyfél böngészőjében kódot futtat az eltérő [eredetű erőforrás-megosztás (CORS)](https://www.w3.org/TR/cors/)nevű megközelítés használatával.
 
@@ -150,7 +152,7 @@ A következő táblázat felsorolja azokat a HTML-töredékeket, amelyeket Azure
 
 ## <a name="localize-content"></a>Tartalom honosítása
 
-A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](active-directory-b2c-reference-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C továbbítsa az OpenID Connect paramétert `ui-locales` a végponthoz. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
+A HTML-tartalmat honosíthatja a Azure AD B2C bérlő [nyelvi testreszabásainak](user-flow-language-customization.md) engedélyezésével. A funkció engedélyezése lehetővé teszi, hogy Azure AD B2C továbbítsa az OpenID Connect paramétert `ui-locales` a végponthoz. A Content Server ezt a paramétert használhatja a nyelvspecifikus HTML-lapok megadásához.
 
 A tartalmat a használt területi beállítás alapján különböző helyekről lehet kihúzni. A CORS-kompatibilis végponton beállíthatja, hogy a rendszer egy adott nyelvhez tartozó tartalmat működtessen. Ha a helyettesítő karaktert `{Culture:RFC5646}`használja, hívja meg a megfelelőt.
 
@@ -179,4 +181,4 @@ A sablonok HTML-és CSS-fájljai a [/sample_templates](https://github.com/AzureA
     [Testreszabhatja alkalmazásai felhasználói felületét Azure Active Directory B2Cban](tutorial-customize-ui.md).
 - Ha **egyéni házirendeket**használ, megkezdheti a felhasználói felület testreszabását a cikk használatával:
 
-    [Testre szabhatja az alkalmazás felhasználói felületét az Azure Active Directory B2C-ban található egyéni házirend használatával](active-directory-b2c-ui-customization-custom.md).
+    [Testre szabhatja az alkalmazás felhasználói felületét az Azure Active Directory B2C-ban található egyéni házirend használatával](custom-policy-ui-customization.md).

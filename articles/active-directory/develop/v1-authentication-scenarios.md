@@ -16,13 +16,13 @@ ms.workload: identity
 ms.date: 10/14/2019
 ms.author: ryanwi
 ms.reviewer: saeeda, sureshja, hirsin
-ms.custom: aaddev, identityplatformtop40
-ms.openlocfilehash: b6271805b9d14db9f2fdcd85d089962e9874f6ba
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.custom: aaddev
+ms.openlocfilehash: 216c4a730828bf0959c2b932077dd110f5843739
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76701144"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833277"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
 
@@ -63,7 +63,7 @@ A fenti példaforgatókönyvben az alkalmazásokat az alábbi két szerepkör sz
 
 Az ügyfél felépítésének módjától függően az Azure AD által támogatott hitelesítési folyamatok közül egy (vagy több) is használható. Ezek a folyamatok különféle tokeneket (id_tokens, frissítési tokeneket, hozzáférési tokeneket) és engedélyezési kódokat hozhatnak létre, és különböző jogkivonatokat igényelnek a működésük érdekében. Ez a diagram áttekintést nyújt:
 
-|Flow | Szükséges | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
+|Flow | Igényel | id_token | hozzáférési jogkivonat | jogkivonat frissítése | engedélyezési kód | 
 |-----|----------|----------|--------------|---------------|--------------------|
 |[Engedélyezési kód folyamatábrája](v1-protocols-oauth-code.md) | | x | x | x | x|  
 |[Implicit folyamat](v1-oauth2-implicit-grant-flow.md) | | x        | x    |      |                    |

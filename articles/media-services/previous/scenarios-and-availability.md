@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 1bdca9de0bb6fea608f2a30aa9928f2518fc9dce
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: ef8596d8dcc9502f590c55223f207e71f5b91cf6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978168"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843939"
 ---
 # <a name="scenarios-and-availability-of-media-services-features-across-datacenters"></a>Forgatókönyvek és a Media Services-szolgáltatások rendelkezésre állása az egyes adatközpontokban
 
@@ -211,9 +211,8 @@ A Médiaelemzés beszéd- és vizuális összetevők gyűjteménye, amely egysze
 |Azure Media Indexer|FE|Mind|
 |Azure Media Motion Detector|Előzetes verzió|Mind|
 |Azure Media OCR|Előzetes verzió|Mind|
-|Azure Media Redactor|Előzetes verzió|Mind|
+|Azure Media Redactor|FE|Mind|
 |Azure Media Video Thumbnails|Előzetes verzió|Mind|
-|Azure Media Indexer 2|Előzetes verzió|Kína és a szövetségi kormányzati régió kivételével|
 
 ### <a name="protection"></a>Védelem
 

@@ -1,144 +1,78 @@
 ---
-title: Tudásbázis – QnA Maker
-titleSuffix: Azure Cognitive Services
-description: A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
-services: cognitive-services
-author: diberry
-manager: nitinme
-ms.service: cognitive-services
-ms.subservice: qna-maker
+title: Importálás adatforrásokból – QnA Maker
+description: A QnA Maker Tudásbázis egy kérdés-válasz típusú (QnA) készletből és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
 ms.topic: conceptual
-ms.date: 08/26/2019
-ms.author: diberry
-ms.custom: seodec18
-ms.openlocfilehash: 355556e98300ecad6aa3141f0f4ab14b834cd91e
-ms.sourcegitcommit: 018e3b40e212915ed7a77258ac2a8e3a660aaef8
+ms.date: 01/27/2020
+ms.openlocfilehash: d47d994366a8057521c1cc2ab1ab8a7ec3393965
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73794901"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76843355"
 ---
-# <a name="what-is-a-qna-maker-knowledge-base"></a>Mi az a QnA Maker Tudásbázis?
+# <a name="importing-from-data-sources"></a>Importálás adatforrásokból
 
-A QnA Maker Tudásbázis a kérdés-válasz típusú (QnA) és az egyes QnA-párokhoz tartozó opcionális metaadatokból áll.
+A Tudásbázis a nyilvános URL-címek és fájlok által benyújtott kérdés-és answer-csoportokból áll.
 
-## <a name="key-knowledge-base-concepts"></a>Alapvető Tudásbázis-fogalmak
+## <a name="data-source-locations"></a>Adatforrás helyei
 
-* **Kérdések**: a kérdés olyan szöveget tartalmaz, amely a legjobban a felhasználó lekérdezését jelöli. 
-* **Válaszok**: a válasz a válasz, amelyet a rendszer akkor ad vissza, ha egy felhasználói lekérdezés megfelel a társított kérdésnek.  
-* **Metaadatok**: a metaadatok egy QnA-párral vannak társítva, és kulcs-érték párokként jelennek meg. A metaadatok címkéi a QnA párok szűrésére és a lekérdezési egyeztetést végző készlet korlátozására használhatók.
+A tartalom egy adatforrásból származó tudásbázisba kerül. Az adatforrás helyei **nyilvános URL-címek vagy fájlok**, amelyek nem igényelnek hitelesítést.
 
-Egy numerikus QnA-azonosító által jelölt egyetlen QnA egy kérdés több változatát (alternatív kérdéseket) tartalmaz, amelyek mindegyike egyetlen választ képez. Emellett minden egyes pár több metaadat-mezővel is rendelkezhet: egy kulcs és egy érték.
+A hitelesítéssel védett [SharePoint-fájlok](../how-to/add-sharepoint-datasources.md)kivételt képeznek. A SharePoint-erőforrásoknak fájlokat, nem weblapokat kell tartalmazniuk. Ha az URL-cím egy webes bővítménnyel végződik, például:. ASPX, a rendszer nem importálja QnA Maker a SharePointból.
 
-![QnA Maker tudásbázisok](../media/qnamaker-concepts-knowledgebase/knowledgebase.png) 
+## <a name="chit-chat-content"></a>Chit-csevegési tartalom
 
-## <a name="knowledge-base-content-format"></a>Tudásbázis tartalmi formátuma
+A Chit Chat QnA teljes tartalom-adatforrásként van felkínálva több nyelven és társalgási stílusban. Ez lehet a bot személyiségének kiindulási pontja, és megtakarítja az időt és a költségeket a semmiből való írás során. Megtudhatja [, hogyan adhatja hozzá](../how-to/chit-chat-knowledge-base.md) ezt a tartalmat a tudásbázishoz.
 
-Amikor gazdag tartalmat tölt be egy tudásbázisba, QnA Maker megkísérli a tartalom átalakítását a Markdown. Olvassa el [ezt a blogot](https://aka.ms/qnamaker-docs-markdown-support) , és ismerkedjen meg a legtöbb csevegési ügyfél által érthető Markdown-formátumokkal.
+## <a name="structured-data-format-through-import"></a>Strukturált adatformátum importálással
 
-A metaadatok mezői egy kettősponttal elválasztott kulcs-érték párokból, például a termék: Iratmegsemmisítőből állnak. A kulcsnak és az értéknek csak szövegesnek kell lennie. A metaadat-kulcs nem tartalmazhat szóközt. A metaadatok csak egy értéket támogatnak a kulcsok esetében.
+A Tudásbázis importálása lecseréli a meglévő Tudásbázis tartalmát. Az importáláshoz strukturált `.tsv` fájl szükséges, amely kérdéseket és válaszokat tartalmaz. Ez az információ segít QnA Maker csoportosítani a kérdés-válasz készleteket, és azokat egy adott adatforráshoz rendelni.
 
-## <a name="how-qna-maker-processes-a-user-query-to-select-the-best-answer"></a>Hogyan dolgozza fel QnA Maker a felhasználói lekérdezéseket a legjobb válasz kiválasztásához
+| Kérdés  | Válasz  | Forrás| Metaadatok (1 kulcs: 1 érték) |
+|-----------|---------|----|---------------------|
+| Question1 | Answer1 | Url1 | <code>Key1:Value1 &#124; Key2:Value2</code> |
+| Question2 | Answer2 | Szerkesztői|    `Key:Value`       |
 
-A betanított és [közzétett](/azure/cognitive-services/qnamaker/quickstarts/create-publish-knowledge-base#publish-the-knowledge-base) QnA Maker Tudásbázis felhasználói lekérdezést kap egy robottól vagy más ügyfélalkalmazástól a [GenerateAnswer API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-ban. A következő ábra a felhasználói lekérdezés fogadásának folyamatát szemlélteti.
+## <a name="structured-multi-turn-format-through-import"></a>Strukturált többsoros formátum importálással
 
-![Felhasználói lekérdezés rangsorolási folyamata](../media/qnamaker-concepts-knowledgebase/rank-user-query-first-with-azure-search-then-with-qna-maker.png)
+A többszörös kapcsolású beszélgetéseket `.tsv` fájlformátumban hozhatja létre. A formátum lehetővé teszi a többfordulatos beszélgetések létrehozását a korábbi csevegési naplók elemzésével (más folyamatokkal, nem a QnA Maker), majd az Automation használatával hozza létre a `.tsv` fájlt. Importálja a fájlt a meglévő Tudásbázis cseréjéhez.
 
-### <a name="ranker-process"></a>Rangsorolási folyamat
+> [!div class="mx-imgBorder"]
+> a 3 szint ![fogalmi modellje többfordulatú kérdésekkel](../media/qnamaker-concepts-knowledgebase/nested-multi-turn.png)
 
-A folyamatot az alábbi táblázat ismerteti.
+A többszörös kapcsolású `.tsv`oszlopa a következőre vonatkozik **:.** Az Excelben látható `.tsv`például megjeleníti a több bekapcsoló gyermekek definiálásához szükséges információkat:
 
-|Lépés|Cél|
-|--|--|
-|1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
-|2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
-|3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
-|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely az eredmények `top` számát fogadja. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje `top` kis értékét. Általában a `top` 10 értéke a lekérdezések 90%-ában működik.|
-|5|A QnA Maker speciális featurization alkalmaz, hogy meghatározza a felhasználói lekérdezés beolvasott keresési eredményeinek helyességét. |
-|6|A betanított Ranger-modell az 5. lépésben a szolgáltatás pontszámát használja az Azure Cognitive Search eredményeinek rangsorolása érdekében.|
-|7|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
-|||
-
-A használatban lévő funkciók közé tartozik például a Word-szintű szemantika, a kifejezés szintű fontosság a corpusban, és a mélyebben megtanult szemantikai modellek határozzák meg a hasonlóságot és a megfelelést két szöveges karakterlánc között.
-
-## <a name="http-request-and-response-with-endpoint"></a>HTTP-kérelem és-válasz végponttal
-A Tudásbázis közzétételekor a szolgáltatás egy REST-alapú HTTP-végpontot hoz létre, amely integrálható az alkalmazásba, és általában egy csevegési robot. 
-
-### <a name="the-user-query-request-to-generate-an-answer"></a>A felhasználó lekérdezési kérelme a válasz létrehozásához
-
-A felhasználó lekérdezése az a kérdés, hogy a végfelhasználó megkérdezi a tudásbázist, például `How do I add a collaborator to my app?`. A lekérdezés gyakran természetes nyelvi formátumban van, vagy néhány kulcsszó, amely a kérdést jelöli, például `help with collaborators`. A rendszer elküldi a lekérdezést az ügyfélalkalmazás HTTP-kérelme alapján.
-
-```json
-{
-    "question": "qna maker and luis",
-    "top": 6,
-    "isTest": true,
-    "scoreThreshold": 20,
-    "strictFilters": [
-    {
-        "name": "category",
-        "value": "api"
-    }],
-    "userId": "sd53lsY="
-}
+```JSON
+[
+    {"displayOrder":0,"qnaId":2,"displayText":"Level 2 Question A"},
+    {"displayOrder":0,"qnaId":3,"displayText":"Level 2 - Question B"}
+]
 ```
 
-A választ a tulajdonságok, például a [scoreThreshold](./confidence-score.md#choose-a-score-threshold), a [Top](../how-to/improve-knowledge-base.md#use-the-top-property-in-the-generateanswer-request-to-get-several-matching-answers)és a [strictFilters](../how-to/metadata-generateanswer-usage.md#filter-results-with-strictfilters-for-metadata-tags)tulajdonságainak beállításával szabályozhatja.
+A **displayOrder** numerikus, és a **szöveg** olyan szöveg, amely nem tartalmaz Markdown.
 
-A beszélgetési [kontextusban](../how-to/metadata-generateanswer-usage.md#use-question-and-answer-results-to-keep-conversation-context) [többfordulatos funkciókkal](../how-to/multiturn-conversation.md) megtarthatja a beszélgetést a kérdések és válaszok pontosításával, hogy megtalálja a megfelelő és a végső választ.
+> [!div class="mx-imgBorder"]
+> ![többirányú kérdéses példa az Excel programban látható módon](../media/qnamaker-concepts-knowledgebase/multi-turn-tsv-columns-excel-example.png)
 
-### <a name="the-response-from-a-call-to-generate-an-answer"></a>Válasz meghívása a válasz létrehozásához
+## <a name="export-as-example"></a>Exportálás példaként
 
-A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezése alapján történik. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha a `top` tulajdonsággal egynél több legfelső szintű választ kér, több legfelső szintű választ kap, amelyek mindegyike egy pontszámmal rendelkezik. 
+Ha nem tudja, hogyan jelöli meg a QnA a `.tsv` fájlban, hozza létre a készletet a QnA Maker portálon, mentse, majd exportálja a tudásbázist, hogy példát mutasson a készlet megjelenítésére.
 
-```json
-{
-    "answers": [
-        {
-            "questions": [
-                "What is the closing time?"
-            ],
-            "answer": "10.30 PM",
-            "score": 100,
-            "id": 1,
-            "source": "Editorial",
-            "metadata": [
-                {
-                    "name": "restaurant",
-                    "value": "paradise"
-                },
-                {
-                    "name": "location",
-                    "value": "secunderabad"
-                }
-            ]
-        }
-    ]
-}
-```
-
-### <a name="test-and-production-knowledge-base"></a>Tesztelési és üzemi Tudásbázis
-A Tudásbázis a QnA Maker használatával létrehozott, karbantartott és felhasználható kérdések és válaszok tárháza. Minden QnA Maker szint több tudásbázishoz is használható.
-
-A Tudásbázis két állapottal rendelkezik: *tesztelés* és *Közzététel*.
-
-A *teszt Tudásbázis* az a verzió, amelyet a rendszer szerkeszt, ment és tesztelt a válaszok pontossága és teljessége érdekében. A teszt Tudásbázisban végrehajtott módosítások nem érintik az alkalmazás vagy a csevegési robot végfelhasználóját. A teszt Tudásbázis a HTTP-kérelemben `test` néven ismert. 
-
-A *közzétett Tudásbázis* a csevegési robotban vagy alkalmazásban használt verzió. A Tudásbázis közzétételének művelete a Tudásbázis közzétett verziójában a teszt Tudásbázis tartalmát helyezi el. Mivel a közzétett Tudásbázis az alkalmazás által a végponton keresztül használt verzió, győződjön meg arról, hogy a tartalom helyes és jól tesztelt. A közzétett Tudásbázis neve `prod` a HTTP-kérelemben.
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis fejlesztési életciklusa](./development-lifecycle-knowledge-base.md)
 
 ## <a name="see-also"></a>Lásd még:
 
+A válaszok formázásához használja a QnA Maker [Markdown-referenciát](../reference-markdown-format.md) .
+
 [A QnA Maker áttekintése](../Overview/overview.md)
 
-Tudásbázis létrehozása és szerkesztése az alábbiakkal: 
+Tudásbázis létrehozása és szerkesztése az alábbiakkal:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamaker/knowledgebase)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.knowledgebase?view=azure-dotnet)
 
-Válasz létrehozása az alábbiakkal: 
+Válasz létrehozása az alábbiakkal:
 * [REST API](https://docs.microsoft.com/rest/api/cognitiveservices/qnamakerruntime/runtime/generateanswer)
 * [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.knowledge.qnamaker.runtime?view=azure-dotnet)

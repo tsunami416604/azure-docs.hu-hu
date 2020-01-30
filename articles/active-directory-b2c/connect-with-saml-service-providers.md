@@ -12,12 +12,12 @@ ms.date: 12/10/2019
 ms.author: marsma
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 16651441919ecd5167e518f68addd8964e767001
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 09c704237e3c1fde8a7591d610d1b801dd016c46
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76043528"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836660"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -41,11 +41,11 @@ A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML h
 | Alkalmazási helyzet | Azure AD B2C szerepkör | Útmutató: |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
-| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](active-directory-b2c-custom-setup-adfs2016-idp.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](active-directory-b2c-setup-sf-app-custom.md)</li></ul> |
+| A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure ad B2Cban](active-directory-b2c-get-started-custom.md). A *SocialAndLocalAccounts* egyéni házirendre van szüksége a cikkben tárgyalt egyéni házirend alapszintű csomagjából.
+* Hajtsa végre a következő témakörben ismertetett lépéseket: Ismerkedés az [Egyéni szabályzatokkal Azure ad B2Cban](custom-policy-get-started.md). A *SocialAndLocalAccounts* egyéni házirendre van szüksége a cikkben tárgyalt egyéni házirend alapszintű csomagjából.
 * A Security Assertion Markup Language (SAML) protokoll alapszintű ismerete.
 * SAML-szolgáltatóként (SP) konfigurált webalkalmazás. Ebben az oktatóanyagban egy általunk biztosított [SAML-teszt alkalmazást][samltest] használhat.
 

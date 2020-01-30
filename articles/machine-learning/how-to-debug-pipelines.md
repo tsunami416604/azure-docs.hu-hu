@@ -9,21 +9,21 @@ ms.topic: conceptual
 author: likebupt
 ms.author: keli19
 ms.date: 12/12/2019
-ms.openlocfilehash: 991f7ebf51be5f805a8b12fa0af0fefeff0ef582
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 5ba26584f08e705b24749a76d6f607aa84b48fab
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76309557"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76769122"
 ---
 # <a name="debug-and-troubleshoot-machine-learning-pipelines"></a>Gépi tanulási folyamatok hibakeresése és hibaelhárítása
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
 
-Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -ban és [Azure Machine learning Designerben](https://docs.microsoft.com/azure/machine-learning/concept-designer).
-
+Ebből a cikkből megtudhatja, hogyan végezhet hibakeresést és hibaelhárítást a [gépi tanulási folyamatokban](concept-ml-pipelines.md) a [Azure Machine learning SDK](https://docs.microsoft.com/python/api/overview/azure/ml/intro?view=azure-ml-py) -ban és [Azure Machine learning Designerben (előzetes verzió)](https://docs.microsoft.com/azure/machine-learning/concept-designer).
 
 ## <a name="debug-and-troubleshoot-in-the-azure-machine-learning-sdk"></a>Hibakeresés és hibaelhárítás az Azure Machine Learning SDK-ban
-A következő szakaszokban áttekintheti a folyamatok összeállításakor előforduló gyakori buktatókat, valamint a folyamatokban futó kód hibakereséséhez szükséges különböző stratégiákat. Ha nem sikerül a folyamat futtatása a várt módon, kövesse az alábbi tippeket. 
+A következő szakaszokban áttekintheti a folyamatok összeállításakor előforduló gyakori buktatókat, valamint a folyamatokban futó kód hibakereséséhez szükséges különböző stratégiákat. Ha nem sikerül a folyamat futtatása a várt módon, kövesse az alábbi tippeket.
+
 ### <a name="testing-scripts-locally"></a>Parancsfájlok helyi tesztelése
 
 A folyamat egyik leggyakoribb meghibásodása, hogy egy csatolt parancsfájl (adattisztítási parancsfájl, pontozási parancsfájl stb.) nem a kívánt módon fut, vagy futásidejű hibákat tartalmaz a távoli számítási környezetben, amelyek nehezen tudnak hibakeresést végezni az Azure-beli munkaterületen. Learning Studio. 
@@ -79,7 +79,49 @@ Az alábbi táblázat a folyamat fejlesztése során felmerülő gyakori problé
 | A folyamat nem használja újra a lépéseket | Az ismételt használat alapértelmezés szerint engedélyezve van, de gondoskodjon arról, hogy ne tiltsa le egy folyamat lépéseiben. Ha az újbóli használat le van tiltva, a lépésben szereplő `allow_reuse` paraméter értéke `False`. |
 | A folyamat feleslegesen fut újra | Annak biztosítása érdekében, hogy a lépések csak akkor fussanak újra, amikor a mögöttes adatokat vagy parancsfájlokat módosítják, az egyes lépésekhez adja meg a címtárakat Ha ugyanazt a könyvtárat használja több lépéshez, előfordulhat, hogy szükségtelen ismétléseket tapasztal. A folyamat lépéseit tartalmazó objektum `source_directory` paraméterének használatával mutasson erre a lépésre az elkülönített könyvtárra, és győződjön meg arról, hogy nem ugyanazt a `source_directory` elérési utat használja több lépéshez. |
 
-## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer"></a>Hibakeresés és hibaelhárítás a Azure Machine Learning Designerben
+### <a name="logging-options-and-behavior"></a>Naplózási beállítások és viselkedés
+
+Az alábbi táblázat a folyamatok különböző hibakeresési lehetőségeiről nyújt információt. Nem kimerítő lista, mert az itt látható Azure Machine Learning, Python és OpenCensus mellett más lehetőségek is vannak.
+
+| Részletes ismertetés                    | Type (Típus)   | Példa                                                          | Cél                                  | Segédanyagok és eszközök                                                                                                                                                                                                                                                                                                                    |
+|----------------------------|--------|------------------------------------------------------------------|----------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| Azure Machine Learning SDK | Metrika | `run.log(name, val)`                                             | Azure Machine Learning portál felhasználói felülete             | [Kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br>[azureml. Core. Run osztály](https://docs.microsoft.com/python/api/azureml-core/azureml.core.run(class)?view=experimental)                                                                                                                                                 |
+| Python-nyomtatás/-naplózás    | Napló    | `print(val)`<br>`logging.info(message)`                          | Illesztőprogram-naplók, Azure Machine Learning Designer | [Kísérletek nyomon követése](how-to-track-experiments.md#available-metrics-to-track)<br><br>[Python-naplózás](https://docs.python.org/2/library/logging.html)                                                                                                                                                                       |
+| OpenCensus Python          | Napló    | `logger.addHandler(AzureLogHandler())`<br>`logging.log(message)` | Application Insights – nyomkövetés                | [Folyamatok hibakeresése Application Insights](how-to-debug-pipelines-application-insights.md)<br><br>[OpenCensus Azure Monitor-exportálók](https://github.com/census-instrumentation/opencensus-python/tree/master/contrib/opencensus-ext-azure)<br>[Python-naplózási szakácskönyv](https://docs.python.org/3/howto/logging-cookbook.html) |
+
+#### <a name="logging-options-example"></a>Naplózási beállítások – példa
+
+```python
+import logging
+
+from azureml.core.run import Run
+from opencensus.ext.azure.log_exporter import AzureLogHandler
+
+run = Run.get_context()
+
+# Azure ML Scalar value logging
+run.log("scalar_value", 0.95)
+
+# Python print statement
+print("I am a python print statement, I will be sent to the driver logs.")
+
+# Initialize python logger
+logger = logging.getLogger(__name__)
+logger.setLevel(args.log_level)
+
+# Plain python logging statements
+logger.debug("I am a plain debug statement, I will be sent to the driver logs.")
+logger.info("I am a plain info statement, I will be sent to the driver logs.")
+
+handler = AzureLogHandler(connection_string='<connection string>')
+logger.addHandler(handler)
+
+# Python logging with OpenCensus AzureLogHandler
+logger.warning("I am an OpenCensus warning statement, find me in Application Insights!")
+logger.error("I am an OpenCensus error statement with custom dimensions", {'step_id': run.id})
+``` 
+
+## <a name="debug-and-troubleshoot-in-azure-machine-learning-designer-preview"></a>Hibakeresés és hibaelhárítás a Azure Machine Learning Designerben (előzetes verzió)
 
 Ez a szakasz áttekintést nyújt a folyamatoknak a tervezőben való hibakereséséről.
 A tervezőben létrehozott folyamatok esetében a **naplófájlokat** a szerzői műveletek lapon vagy a folyamat futtatása Részletek lapon találja.
@@ -103,6 +145,9 @@ Az adott Futtatások naplófájljait a folyamatok vagy **kísérletek** szakaszb
 1. Válassza ki bármelyik modult az előnézet ablaktáblán.
 1. A Tulajdonságok ablaktáblán lépjen a **naplók** lapra.
 1. Válassza ki a naplófájlt `70_driver_log.txt`
+
+## <a name="debug-and-troubleshoot-in-application-insights"></a>Hibakeresés és hibaelhárítás a Application Insights
+A OpenCensus Python-függvénytár ily módon történő használatával kapcsolatos további információkért tekintse meg a következő útmutatót: a [gépi tanulási folyamatok hibakeresése és hibaelhárítása Application Insights](how-to-debug-pipelines-application-insights.md)
 
 ## <a name="next-steps"></a>Következő lépések
 

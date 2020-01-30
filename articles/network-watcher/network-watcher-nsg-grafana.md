@@ -4,9 +4,7 @@ titleSuffix: Azure Network Watcher
 description: Hálózati biztonsági csoport Folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Grafana használatával.
 services: network-watcher
 documentationcenter: na
-author: mattreatMSFT
-manager: vitinnan
-editor: ''
+author: damendo
 tags: azure-resource-manager
 ms.assetid: ''
 ms.service: network-watcher
@@ -15,13 +13,13 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
-ms.author: mareat
-ms.openlocfilehash: e92f4db575e4b318af8dc7bf3ba2eb4b69a3a2d9
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: c48d5a02cdb8ef63904642c6c2c76cb5d61e1f9d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74277943"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840910"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése Network Watcher és Grafana használatával
 
@@ -32,7 +30,7 @@ A [hálózati biztonsági csoport (NSG) folyamatábrája](network-watcher-nsg-fl
 
 A hálózatban számos NSG engedélyezheti a flow naplózását. A naplózási adatok mennyisége nehézkesen elemezheti és betekintést nyerhet a naplókba. Ez a cikk megoldást nyújt ezen NSG-naplók központi felügyeletére a Grafana, egy nyílt forráskódú gráf-kezelő eszköz, egy ElasticSearch, egy elosztott keresési és elemzési motor, valamint a Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozási folyamat.  
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 A NSG-flow naplói engedélyezve vannak a Network Watcher használatával, és az Azure Blob Storage-ban tárolódnak. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a ElasticSearch való elküldéséhez használható.  A flow-naplók ElasticSearch való tárolása után a rendszer elemezheti és testre szabhatja a Grafana testreszabott irányítópultján.
 

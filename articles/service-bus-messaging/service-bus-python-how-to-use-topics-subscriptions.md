@@ -1,10 +1,9 @@
 ---
 title: 'Gyors útmutató: Azure Service Bus témakörök és előfizetések használata a Python használatával'
-description: Megtudhatja, hogyan használhatja a Pythonból Azure Service Bus témaköröket és előfizetéseket.
+description: Ez a cikk bemutatja, hogyan hozhat létre egy Azure Service Bus témakört, előfizetést, üzeneteket küldhet egy témakörnek, és üzeneteket fogadhat az előfizetésből.
 services: service-bus-messaging
 documentationcenter: python
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: c4f1d76c-7567-4b33-9193-3788f82934e4
 ms.service: service-bus-messaging
@@ -12,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: python
 ms.topic: quickstart
-ms.date: 11/05/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: 94a49b31139947c6323ab391b78ecd03ee911e0a
-ms.sourcegitcommit: 827248fa609243839aac3ff01ff40200c8c46966
+ms.openlocfilehash: 03e22c4c179850e5140015c0abc2d89f16d4b624
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73748500"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774541"
 ---
 # <a name="quickstart-use-service-bus-topics-and-subscriptions-with-python"></a>Gyors útmutató: Service Bus témakörök és előfizetések használata a Python használatával
 
@@ -187,7 +186,7 @@ Alapértelmezés szerint a témakörök és az előfizetések állandóak, és a
 > [!TIP]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. Service Bus Explorer lehetővé teszi egy Service Bus névtérhez való kapcsolódást és az üzenetkezelési entitások egyszerű felügyeletét. Az eszköz olyan speciális funkciókat biztosít, mint például az importálási/exportálási funkciók, a témakörök, a várólisták, az előfizetések, a továbbító szolgáltatások, az értesítési központok és az Event hub-eszközök tesztelése. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte Service Bus témakörök alapjait, kövesse az alábbi hivatkozásokat, ahol további információt talál:
 

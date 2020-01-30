@@ -5,14 +5,14 @@ services: virtual-desktop
 author: Heidilohr
 ms.service: virtual-desktop
 ms.topic: overview
-ms.date: 01/23/2020
+ms.date: 01/27/2020
 ms.author: helohr
-ms.openlocfilehash: 83744750a664a3a992d823f0b7e76768e249aaba
-ms.sourcegitcommit: f52ce6052c795035763dbba6de0b50ec17d7cd1d
+ms.openlocfilehash: 168a345427be47dc1c33f43be1af47daa8f638ef
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/24/2020
-ms.locfileid: "76721421"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76772781"
 ---
 # <a name="what-is-windows-virtual-desktop"></a>Mit takar a Windows Virtual Desktop? 
 
@@ -139,7 +139,7 @@ A Windows rendszerű virtuális asztali szolgáltatás a következő x64 operác
 * Windows Server 2016
 * Windows Server 2012 R2
 
-A Windows virtuális asztal nem támogatja az x86-os (32 bites), a Windows 10 Enterprise N vagy a Windows 10 Enterprise KN-lemezképek használatát.
+A Windows virtuális asztal nem támogatja az x86-os (32 bites), a Windows 10 Enterprise N vagy a Windows 10 Enterprise KN-lemezképek használatát. A Windows 7 szintén nem támogatja a felügyelt Azure Storage-ban üzemeltetett VHD-vagy VHDX-alapú profilokat az adott szektor méretének korlátozása miatt.
 
 Az elérhető automatizálási és üzembe helyezési lehetőségek attól függnek, hogy melyik operációs rendszerre és verzióra van kiválasztva, ahogy az a következő táblázatban látható: 
 

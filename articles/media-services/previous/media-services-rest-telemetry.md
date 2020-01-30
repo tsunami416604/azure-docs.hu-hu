@@ -1,6 +1,6 @@
 ---
-title: Az Azure Media Services-telemetria konfigurálása a REST-tel |} A Microsoft Docs
-description: Ez a cikk bemutatja, hogyan használható a REST API használatával az Azure Media Services-telemetria...
+title: Azure Media Services telemetria konfigurálása REST-tel | Microsoft Docs
+description: Ebből a cikkből megtudhatja, hogyan használhatja a Azure Media Services telemetria REST API használatával.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -14,42 +14,42 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
-ms.openlocfilehash: 9c654c65577c44b1773ff98cb1206beeb5206ba4
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: 4cf2bc919ecb8b39a23b23df95a6f37396f50603
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60761777"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774864"
 ---
-# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Az Azure Media Services-telemetria konfigurálása a REST segítségével
+# <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetria konfigurálása REST-tel
 
-Ez a témakör ismerteti, amely akkor is igénybe vehet, az Azure Media Services (AMS) telemetriai adatok REST API-val konfigurálásakor általános lépéseket. 
+Ez a témakör azokat az általános lépéseket ismerteti, amelyeket a Azure Media Services (AMS) telemetria REST API használatával történő konfigurálásakor lehet végrehajtani. 
 
 >[!NOTE]
->Mi részletes leírását az AMS telemetriai és hogyan lehet az azt van, tekintse meg a [áttekintése](media-services-telemetry-overview.md) témakör.
+>Az AMS telemetria és azok felhasználásának részletes ismertetését lásd az [Áttekintés](media-services-telemetry-overview.md) témakörben.
 
 A jelen témakörben ismertetett lépések a következők:
 
-- Bevezetés a Media Services-fiókhoz társított storage-fiók
-- Az értesítési végpontjainak beolvasása
-- Egy értesítési végpont létrehozása a figyelésre. 
+- Media Services fiókhoz társított Storage-fiók beolvasása
+- Az értesítési végpontok beolvasása
+- Értesítési végpont létrehozása figyeléshez. 
 
-    Értesítési végpont létrehozásához állítsa a EndPointType AzureTable (2), és állítsa be a storage-táblához endPontAddress (például https:\//telemetryvalidationstore.table.core.windows.net/).
+    Értesítési végpont létrehozásához állítsa a EndPointType a AzureTable (2) értékre, a endPontAddress pedig a Storage táblára (például https:\//telemetryvalidationstore.table.core.windows.net/).
   
-- A figyelési konfigurációk beszerzése
+- A figyelési konfigurációk beolvasása
 
-    Hozzon létre egy figyelési konfigurációt a figyelni kívánt szolgáltatások beállításait. Legfeljebb egy figyelési konfigurációs beállítások használata engedélyezett. 
+    Hozzon létre egy figyelési konfigurációs beállításokat a figyelni kívánt szolgáltatásokhoz. Legfeljebb egy figyelési konfigurációs beállítás engedélyezett. 
 
 - Figyelési konfiguráció hozzáadása
 
 
  
-## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>A Media Services-fiókhoz társított storage-fiók beszerzése
+## <a name="get-the-storage-account-associated-with-a-media-services-account"></a>Media Services fiókhoz társított Storage-fiók beolvasása
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -72,12 +72,12 @@ A jelen témakörben ismertetett lépések a következők:
     
     {"d":{"results":[{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/StorageAccounts('telemetryvalidationstore')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.StorageAccount"},"Name":"telemetryvalidationstore","IsDefault":true,"BytesUsed":null}]}}
 
-## <a name="get-the-notification-endpoints"></a>Az értesítési végpontjainak beolvasása
+## <a name="get-the-notification-endpoints"></a>Értesítési végpontok beolvasása
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -105,12 +105,12 @@ A jelen témakörben ismertetett lépések a következők:
         }
     }
  
-## <a name="create-a-notification-endpoint-for-monitoring"></a>Hozzon létre egy értesítési végpont figyeléshez
+## <a name="create-a-notification-endpoint-for-monitoring"></a>Értesítési végpont létrehozása a figyeléshez
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -126,7 +126,7 @@ A jelen témakörben ismertetett lépések a következők:
     }
 
 > [!NOTE]
-> Ne felejtse el módosítani a "https:\//telemetryvalidationstore.table.core.windows.net" értéket a tárfiókhoz.
+> Ne felejtse el módosítani a "https:\//telemetryvalidationstore.table.core.windows.net" értéket a Storage-fiókra.
 
 ### <a name="response"></a>Válasz
 
@@ -147,12 +147,12 @@ A jelen témakörben ismertetett lépések a következők:
     
     {"d":{"__metadata":{"id":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","uri":"https://wamsbnp1clus001rest-hs.cloudapp.net/api/NotificationEndPoints('nb%3Anepid%3AUUID%3A76bb4faf-ea29-4815-840a-9a8e20102fc4')","type":"Microsoft.Cloud.Media.Vod.Rest.Data.Models.NotificationEndPoint"},"Id":"nb:nepid:UUID:76bb4faf-ea29-4815-840a-9a8e20102fc4","Name":"monitoring","Created":"\/Date(1449033042667)\/","EndPointAddress":"https://telemetryvalidationstore.table.core.windows.net/","EndPointType":2}}
  
-## <a name="get-the-monitoring-configurations"></a>A figyelési konfigurációk beszerzése
+## <a name="get-the-monitoring-configurations"></a>A figyelési konfigurációk beolvasása
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     GET https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -179,10 +179,10 @@ A jelen témakörben ismertetett lépések a következők:
 
 ## <a name="add-a-monitoring-configuration"></a>Figyelési konfiguráció hozzáadása
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     POST https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations HTTP/1.1
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -222,10 +222,10 @@ A jelen témakörben ismertetett lépések a következők:
 
 ## <a name="stop-telemetry"></a>Telemetria leállítása
 
-### <a name="request"></a>Kérés
+### <a name="request"></a>Kérelem
 
     DELETE https://wamsbnp1clus001rest-hs.cloudapp.net/api/MonitoringConfigurations('nb%3Amcid%3AUUID%3A1a8931ae-799f-45fd-8aeb-9641740295c2')
-    x-ms-version: 2.13
+    x-ms-version: 2.19
     DataServiceVersion: 3.0
     MaxDataServiceVersion: 3.0
     Accept: application/json; odata=verbose
@@ -233,11 +233,11 @@ A jelen témakörben ismertetett lépések a következők:
     Content-Type: application/json; charset=utf-8
     Host: wamsbnp1clus001rest-hs.cloudapp.net
 
-## <a name="consuming-telemetry-information"></a>Fogyasztó telemetrikus adatokat
+## <a name="consuming-telemetry-information"></a>Telemetria-adatok felhasználása
 
-Fogyasztó telemetrikus adatokat kapcsolatos információkért lásd: [ez](media-services-telemetry-overview.md) témakör.
+További információ a telemetria-információk használatáról: [ebben a](media-services-telemetry-overview.md) témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

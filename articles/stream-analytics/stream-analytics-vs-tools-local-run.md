@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 07/10/2018
-ms.openlocfilehash: c4854d050cce18082def436243a669ba09c474ad
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 34c8555356d5c0142d7b677c8119fe66806ab064
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75369660"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834909"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
 
@@ -24,7 +24,7 @@ Ebből a rövid útmutatóból megtudhatja [, hogyan](stream-analytics-quick-cre
 
 A Azure Stream Analytics projektben kattintson duplán a **script. asaql** elemre a szkript megnyitásához a szerkesztőben. A lekérdezés fordításával megállapíthatja, hogy vannak-e szintaktikai hibák. A lekérdezés-szerkesztő támogatja az IntelliSense, a szintaxis színezését és a hiba jelölőjét.
 
-![Lekérdezésszerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
+![Lekérdezés-szerkesztő](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-query-01.png)
  
 ### <a name="add-local-input"></a>Helyi bemenet hozzáadása
 
@@ -71,7 +71,6 @@ A folyamat előrehaladását a **kimenet** ablakban tekintheti meg.
 ![Mintaadatok kimenete](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-03.png)
 
 ## <a name="next-steps"></a>Következő lépések
-
 
 * [Rövid útmutató: Stream Analytics-feladatok létrehozása a Visual Studio használatával](stream-analytics-quick-create-vs.md)
 * [A Visual Studio használata Azure Stream Analytics feladatok megtekintéséhez](stream-analytics-vs-tools.md)

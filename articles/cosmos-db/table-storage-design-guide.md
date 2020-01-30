@@ -5,21 +5,21 @@ ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: conceptual
 ms.date: 05/21/2019
-author: wmengmsft
-ms.author: wmeng
+author: sakash279
+ms.author: akshanka
 ms.custom: seodec18
-ms.openlocfilehash: 74bd22de81e385a4fbd9129a70616e24b594b0b4
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 166076d366cbbf7bef24648772beaba9b3a88253
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75441321"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771523"
 ---
 # <a name="azure-table-storage-table-design-guide-scalable-and-performant-tables"></a>Az Azure Table Storage tábla tervezési útmutatója: skálázható és elvégezhető táblák
 
 [!INCLUDE [storage-table-cosmos-db-tip-include](../../includes/storage-table-cosmos-db-tip-include.md)]
 
-A skálázható és az elvégezhető táblázatok kialakításához számos tényezőt kell figyelembe vennie, beleértve a költségeket is. Ha korábban már tervezett sémákat a kapcsolatok adatbázisaihoz, akkor ezek a szempontok már ismerősek lesznek. De bár vannak hasonlóságok az Azure Table Storage és a kapcsolati modellek között, számos fontos különbség is van. Ezek az eltérések általában olyan különböző kialakításokhoz vezetnek, amelyek a viszonyítási adatbázisokkal való együttműködésre intuitív vagy helytelenül hasonlítanak, de ez logikus, ha NoSQL kulcs/érték tárolót tervez, például a Table Storage-ot.
+A méretezhető és nagy teljesítményű táblák tervezésénél rengeteg szempontot, köztük a költséget is figyelembe kell vennie. Ha korábban már tervezett sémákat relációs adatbázisokhoz, ismerősnek fogja találni ezeket a szempontokat. Bár az Azure Table Storage és a relációs modellek között vannak hasonlóságok, több fontos dologban is eltérnek egymástól. Ezek a különbségek általában olyan eltérő kialakításokhoz vezetnek, amelyek a relációs adatbázisokat ismerő személyek számára ellentmondásosnak vagy helytelennek tűnhetnek, azonban a NoSQL-alapú kulcs/érték tárolók, például a Table Storage számára való tervezésekor van értelmük.
 
 A Table Storage úgy van kialakítva, hogy támogassa a felhőalapú alkalmazásokat, amelyek több milliárd entitást ("sorok") tartalmazhatnak a kapcsolódó adatbázis-terminológiában, illetve olyan adatkészleteket, amelyeknek támogatniuk kell a nagy tranzakciós köteteket. Ezért másképp kell gondolkodnia az adatai tárolásával kapcsolatban, és megismerheti a Table Storage működését. A jól megtervezett NoSQL-adattárak lehetővé teszik, hogy a megoldás sokkal tovább méretezhető legyen (és alacsonyabb költségeket is), mint a viszonyítási adatbázist használó megoldás. Ez az útmutató segítséget nyújt ezekről a témakörökről.  
 
@@ -49,8 +49,8 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -69,13 +69,13 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
 <tr>
-<td>jún.</td>
+<td>Június</td>
 <td>Cao</td>
 <td>47</td>
 <td>junc@contoso.com</td>
@@ -106,8 +106,8 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -193,7 +193,7 @@ Egy jó kiindulási pont, amely lehetővé teszi, hogy az adatolvasások hatéko
 ### <a name="how-your-choice-of-partitionkey-and-rowkey-affects-query-performance"></a>`PartitionKey` és `RowKey` a lekérdezési teljesítményre gyakorolt hatása
 A következő példák azt feltételezik, hogy a Table Storage a következő szerkezettel tárolja az alkalmazotti entitásokat (a legtöbb példa kihagyja a `Timestamp` tulajdonságot az érthetőség kedvéért):  
 
-| Oszlop neve | Data type |
+| oszlop neve | Data type |
 | --- | --- |
 | `PartitionKey` (részleg neve) |Sztring |
 | `RowKey` (alkalmazott azonosítója) |Sztring |
@@ -328,8 +328,8 @@ Az alábbi táblázat összefoglalja az alkalmazotti és részlegi entitások eg
 
 <table>
 <tr>
-<th>Módszer</th>
-<th>Előnyök</th>
+<th>Megközelítés</th>
+<th>Szakemberek</th>
 <th>Hátrányok</th>
 </tr>
 <tr>
@@ -1136,8 +1136,8 @@ A Table Storage *séma nélküli tábla-* tároló. Ez azt jelenti, hogy egyetle
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -1156,8 +1156,8 @@ A Table Storage *séma nélküli tábla-* tároló. Ez azt jelenti, hogy egyetle
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -1193,8 +1193,8 @@ A Table Storage *séma nélküli tábla-* tároló. Ez azt jelenti, hogy egyetle
 <td>
 <table>
 <tr>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -1229,8 +1229,8 @@ Minden entitásnak továbbra is `PartitionKey`, `RowKey`és `Timestamp` értékk
 <table>
 <tr>
 <th>EntityType</th>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -1251,8 +1251,8 @@ Minden entitásnak továbbra is `PartitionKey`, `RowKey`és `Timestamp` értékk
 <table>
 <tr>
 <th>EntityType</th>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>
@@ -1292,8 +1292,8 @@ Minden entitásnak továbbra is `PartitionKey`, `RowKey`és `Timestamp` értékk
 <table>
 <tr>
 <th>EntityType</th>
-<th>Keresztnév</th>
-<th>Vezetéknév</th>
+<th>firstName</th>
+<th>lastName</th>
 <th>Kor</th>
 <th>E-mail cím</th>
 </tr>

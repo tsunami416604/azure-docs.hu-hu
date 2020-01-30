@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 11/04/2019
-ms.openlocfilehash: cf0332909e053a0875d41a00d15f196b193ba15e
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: e73e69f90b1228154d7f209c54c6b52cc03d5eb4
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73466719"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76837790"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
 
@@ -29,7 +29,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
 
 ## <a name="how-to-guidance"></a>Útmutató
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)
-+ [Megjegyzések készségkészlet való hivatkozása](cognitive-search-concept-annotations-syntax.md)
++ [Annotációk hivatkozása képességcsoportokban](cognitive-search-concept-annotations-syntax.md)
 + [Mezők leképezése indexre](cognitive-search-output-field-mapping.md)
 + [Információk feldolgozása és kinyerése képekből](cognitive-search-concept-image-scenarios.md)
 + [Azure Cognitive Search index újraépítése](search-howto-reindex.md)
@@ -43,6 +43,7 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Microsoft. Skills. Text. LanguageDetectionSkill](cognitive-search-skill-language-detection.md)
   + [Microsoft. Skills. Text. EntityRecognitionSkill](cognitive-search-skill-entity-recognition.md)
   + [Microsoft. Skills. Text. MergeSkill](cognitive-search-skill-textmerger.md)
+  + [Microsoft. Skills. Text. PIIDetectionSkill](cognitive-search-skill-pii-detection.md)
   + [Microsoft. Skills. Text. SplitSkill](cognitive-search-skill-textsplit.md)
   + [Microsoft. Skills. Text. SentimentSkill](cognitive-search-skill-sentiment.md)
   + [Microsoft. Skills. Text. TranslationSkill](cognitive-search-skill-text-translation.md)
@@ -62,8 +63,8 @@ A következő cikkek a mesterséges intelligenciával kapcsolatos teljes dokumen
   + [Készségkészlet létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-skillset)
   + [Indexelő létrehozása (API-Version = 2019-05-06)](https://docs.microsoft.com/rest/api/searchservice/create-indexer)
 
-## <a name="see-also"></a>Lásd még
+## <a name="see-also"></a>Lásd még:
 
 + [Azure Cognitive Search REST API](https://docs.microsoft.com/rest/api/searchservice/)
-+ [Indexelő az Azure Cognitive Search](search-indexer-overview.md)
++ [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
 + [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)

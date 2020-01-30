@@ -4,23 +4,20 @@ titleSuffix: Azure Network Watcher
 description: Ez a lap a hálózati biztonsági csoportok naplózásának konfigurálására vonatkozó utasításokat tartalmazza.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
-ms.assetid: 78a01bcf-74fe-402a-9812-285f3501f877
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
-ms.author: kumud
-ms.openlocfilehash: f4c553cd144f7c921121aa943e3c40849891f957
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: 59c1b6e6c281a736a79d110bd7d943344bcd5130
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74278045"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840978"
 ---
 # <a name="automate-nsg-auditing-with-azure-network-watcher-security-group-view"></a>A NSG-naplózás automatizálása az Azure Network Watcher biztonsági csoport nézettel
 
@@ -31,13 +28,13 @@ Ha nem ismeri a hálózati biztonsági csoportokat, tekintse meg a [hálózati b
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 Ebben az esetben összehasonlítja egy ismert jó alapkonfigurációt a virtuális gép biztonsági csoport nézetének eredményeivel.
 
 Ez a forgatókönyv feltételezi, hogy már követte a [Network Watcher létrehozása](network-watcher-create.md) című témakör lépéseit Network Watcher létrehozásához. A forgatókönyv azt is feltételezi, hogy egy érvényes virtuális géppel rendelkező erőforráscsoport használatban van.
 
-## <a name="scenario"></a>Forgatókönyv
+## <a name="scenario"></a>Alkalmazási helyzet
 
 A cikkben ismertetett forgatókönyv beolvassa a virtuális gép biztonsági csoportjának nézetét.
 

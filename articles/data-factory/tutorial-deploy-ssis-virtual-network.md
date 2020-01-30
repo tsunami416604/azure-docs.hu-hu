@@ -11,12 +11,12 @@ ms.service: data-factory
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 1/10/2020
-ms.openlocfilehash: 593ceb884e751ca3115b08baf0c9c7e802057f54
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 065610a9de4898d012cef8a16849c09a81f0774c
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864985"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841097"
 ---
 # <a name="configure-an-azure-sql-server-integration-services-ssis-integration-runtime-ir-to-join-a-virtual-network"></a>Azure-SQL Server Integration Services (SSIS) Integration Runtime (IR) konfigurálása virtuális hálózathoz való csatlakozáshoz
 
@@ -44,7 +44,7 @@ A lépések a következők:
     
         A Azure-SSIS IR létre kell hoznia bizonyos hálózati erőforrásokat a virtuális hálózattal azonos erőforráscsoporthoz. Ezek az erőforrások a következők:
         - Egy Azure Load Balancer, amelynek neve *\<Guid >-azurebatch-cloudserviceloadbalancer*
-        - Egy hálózati munkahelyi biztonsági csoport, amelynek neve *\<GUID >-azurebatch-cloudservicenetworksecuritygroup
+        - Egy hálózati biztonsági csoport, amelynek neve *\<GUID >-azurebatch-cloudservicenetworksecuritygroup
         - Egy Azure-beli nyilvános IP-cím, amelynek neve: azurebatch-cloudservicepublicip
     
         Ezek az erőforrások a Azure-SSIS IR indításakor lesznek létrehozva. Ha a Azure-SSIS IR leáll, a rendszer törli őket. Ha nem szeretné megakadályozni a Azure-SSIS IR leállítását, ne használja újra ezeket a hálózati erőforrásokat a többi erőforrásban.
@@ -66,7 +66,7 @@ A lépések a következők:
 
 ## <a name="configure-a-virtual-network"></a>Virtuális hálózat konfigurálása
 
-Mielőtt megpróbál csatlakozni egy Azure-SSIS IRhoz, használja a Azure Portal egy virtuális hálózathoz.
+A Azure Portal használatával konfigurálhatja a virtuális hálózatokat, mielőtt megpróbál csatlakoztatni egy Azure-SSIS IR.
 
 1. Indítsa el a Microsoft Edge vagy a Google Chrome böngészőt. Jelenleg csak ezek a böngészők támogatják a Data Factory felhasználói felületet.
 

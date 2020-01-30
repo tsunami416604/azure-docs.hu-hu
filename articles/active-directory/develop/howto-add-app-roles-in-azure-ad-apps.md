@@ -14,12 +14,12 @@ ms.date: 09/24/2018
 ms.author: kkrishna
 ms.reviewer: kkrishna, jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: d16ab7acd87fa6cc7907f8fee3400c2e416e6cfe
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 5400ede4f3afd9f94d7380c6dfd55d8aa45d08ca
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76697421"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834246"
 ---
 # <a name="how-to-add-app-roles-in-your-application-and-receive-them-in-the-token"></a>Útmutató: alkalmazás-Szerepkörök hozzáadása az alkalmazáshoz és fogadása a jogkivonatban
 
@@ -44,7 +44,7 @@ Ezek az alkalmazási szerepkörök az alkalmazás regisztrációs jegyzékfájlj
 1. Szerkessze az alkalmazás-jegyzékfájlt úgy, hogy megkeresi a `appRoles`-beállítást, és hozzáadja az összes alkalmazás-szerepkört.
 
      > [!NOTE]
-     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie a `id` tulajdonsághoz. 
+     > A jegyzékfájlban szereplő összes alkalmazás-szerepkör definíciójának eltérő érvényes GUID-azonosítóval kell rendelkeznie az `id` tulajdonság jegyzékfájljának kontextusában.    
      > 
      > Az egyes alkalmazás-szerepkörök definíciójának `value` tulajdonságának pontosan egyeznie kell az alkalmazás kódjában használt karakterláncokkal. A `value` tulajdonság nem tartalmazhat szóközöket. Ha igen, hibaüzenetet kap a jegyzékfájl mentésekor.
      

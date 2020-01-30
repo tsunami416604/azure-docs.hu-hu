@@ -5,13 +5,13 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 10/14/2019
-ms.openlocfilehash: c0ce1648d7b5f7c25044ed8f66eafcca7b0009f4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.date: 01/28/2020
+ms.openlocfilehash: 45490e398abd8b5bd3c10adb95b56e1019d2bb94
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75747338"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842469"
 ---
 # <a name="audit-logging-in-azure-database-for-postgresql---single-server"></a>Naplózás naplózása Azure Database for PostgreSQL – egyetlen kiszolgáló
 
@@ -65,10 +65,8 @@ a pgAudit lehetővé teszi a munkamenet vagy az objektum naplózási naplózás�
 A [pgAudit telepítése](#installing-pgaudit)után a paramétereket a naplózás megkezdéséhez is konfigurálhatja. Az [pgAudit dokumentációja](https://github.com/pgaudit/pgaudit/blob/master/README.md#settings) az egyes paraméterek definícióját tartalmazza. Először tesztelje a paramétereket, és győződjön meg róla, hogy a várt működést tapasztalja.
 
 > [!NOTE]
-> Ha a (z) be értékre állítja a `pgaudit.log_client`, a rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való Ezt a beállítást általában javasolt letiltva hagyni.
-
-> [!NOTE]
-> `pgaudit.log_level` csak akkor engedélyezett, ha `pgaudit.log_client` be van kapcsolva. Emellett a Azure Portalban jelenleg van egy hiba a `pgaudit.log_level`: kombinált lista jelenik meg, ami azt jelenti, hogy több szint is kiválasztható. Azonban csak egy szint választható ki. 
+> Ha a (z) be értékre állítja a `pgaudit.log_client`, a rendszer átirányítja a naplókat egy ügyfél-folyamatba (például psql) a fájlba való Ezt a beállítást általában javasolt letiltva hagyni. <br> <br>
+> `pgaudit.log_level` csak akkor engedélyezett, ha `pgaudit.log_client` be van kapcsolva.
 
 > [!NOTE]
 > A Azure Database for PostgreSQLban `pgaudit.log` nem állítható be a pgAudit dokumentációjában leírtak szerint `-` (mínusz). Az összes kötelező utasítási osztályt (olvasás, írás stb.) külön-külön kell megadni.
@@ -87,6 +85,22 @@ Ha többet szeretne megtudni a `log_line_prefix`ről, látogasson el a [PostgreS
 ### <a name="getting-started"></a>Első lépések
 A gyors kezdéshez állítsa be `pgaudit.log` `WRITE`re, és nyissa meg a naplókat a kimenet áttekintéséhez. 
 
+## <a name="viewing-audit-logs"></a>Naplók megtekintése
+Ha. log fájlokat használ, a rendszer a naplókat a PostgreSQL-hibákkal megegyező fájlban fogja tartalmazni. A naplófájlokat az Azure [Portalról](howto-configure-server-logs-in-portal.md) vagy a [parancssori](howto-configure-server-logs-using-cli.md)felületről töltheti le. 
+
+Ha Azure diagnosztikai naplózást használ, a naplók elérésének módja attól függ, hogy melyik végpontot választja. Az Azure Storage szolgáltatással kapcsolatban lásd a [Storage-fiók naplózása](../azure-monitor/platform/resource-logs-collect-storage.md) című cikket. Event Hubs esetében tekintse meg a [stream Azure-naplók](../azure-monitor/platform/resource-logs-stream-event-hubs.md) című cikket.
+
+Azure Monitor naplók esetében a naplók a kiválasztott munkaterületre kerülnek. A postgres-naplók a **AzureDiagnostics** -gyűjtési módot használják, így a AzureDiagnostics táblából is lekérdezhető. A táblázatban szereplő mezők a következőkben olvashatók. További információ a lekérdezésekről és a riasztásokról: [Azure monitor naplók lekérdezése](../azure-monitor/log-query/log-query-overview.md) – áttekintés.
+
+Ezt a lekérdezést használhatja a kezdéshez. A riasztásokat lekérdezések alapján is konfigurálhatja.
+
+Egy adott kiszolgáló összes postgres-naplójának keresése az elmúlt nap során
+```
+AzureDiagnostics
+| where LogicalServerName_s == "myservername"
+| where TimeGenerated > ago(1d) 
+| where Message contains "AUDIT:"
+```
 
 ## <a name="next-steps"></a>Következő lépések
 - [Tudnivalók a Azure Database for PostgreSQL való bejelentkezésről](concepts-server-logs.md)

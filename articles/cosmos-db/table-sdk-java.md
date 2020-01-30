@@ -1,21 +1,21 @@
 ---
-title: A Javához készült Azure Cosmos DB tábla API
-description: Mindent megtudhat az Azure Cosmos DB Table API többek között a kiadási dátum, használatból való kivonást egyaránt dátumok és minden verzió között végrehajtott módosítások.
+title: Java-Azure Cosmos DB Table API
+description: Ismerkedjen meg a Azure Cosmos DB Table APIekkel, beleértve a kiadási dátumokat, a nyugdíjazási dátumokat és az egyes verziókon végrehajtott módosításokat.
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.devlang: java
 ms.topic: reference
 ms.date: 11/20/2018
-author: wmengmsft
-ms.author: wmeng
-ms.openlocfilehash: c98cd6054b2e48f4c0c886528653e6d3fda96a34
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+author: sakash279
+ms.author: akshanka
+ms.openlocfilehash: b9b5d51d0d35284d9854bd048396df84881266d2
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "66480197"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76771423"
 ---
-# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Az Azure Cosmos DB Table API a Javához készült: Kibocsátási megjegyzések és erőforrások
+# <a name="azure-cosmos-db-table-api-for-java-release-notes-and-resources"></a>Java-Azure Cosmos DB Table API: kibocsátási megjegyzések és erőforrások
 > [!div class="op_single_selector"]
 > * [.NET](table-sdk-dotnet.md)
 > * [.NET Standard](table-sdk-dotnet-standard.md)
@@ -26,9 +26,9 @@ ms.locfileid: "66480197"
 
 |   |   |
 |---|---|
-|**SDK letöltése**|[Letöltési beállítások](https://github.com/azure/azure-storage-java#download)|
-|**API-dokumentáció**|[Java API dokumentációja](https://azure.github.io/azure-storage-java/)|
-|**Hozzájárul az SDK-t**|[GitHubon](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
+|**SDK letöltése**|[Letöltési lehetőségek](https://github.com/azure/azure-storage-java#download)|
+|**API-dokumentáció**|[Java API-referenciák dokumentációja](https://azure.github.io/azure-storage-java/)|
+|**Közreműködés az SDK-val**|[GitHub](https://github.com/Azure/azure-storage-java#contribute-code-or-provide-feedback)|
 
 > [!IMPORTANT]
 > Ha az előzetes verzióban hozta létre a Table API-fiókot, hozzon létre egy [új Table API-fiókot](create-table-dotnet.md#create-a-database-account), amely használható az általánosan elérhető Table API SDK-kkal.
@@ -37,20 +37,20 @@ ms.locfileid: "66480197"
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
 
 ### <a name="a-name100100"></a><a name="1.0.0"/>1.0.0
-* Általánosan elérhető kiadások
+* Általánosan elérhető kiadás
 
-## <a name="release-and-retirement-dates"></a>Kiadás és kivezetési dátuma
-A Microsoft legalább értesítést küldenek **12 hónapig** kivonása egy SDK-t kiegyenlítse az a és újabb támogatott verzióra váltás előtt.
+## <a name="release-and-retirement-dates"></a>Kiadási és nyugdíjazási dátumok
+A Microsoft legalább **12 hónappal** korábban értesítést küld az SDK kivonásáról, hogy zökkenőmentes legyen az áttérés egy újabb/támogatott verzióra.
 
-Új szolgáltatások és funkciók és optimalizálási lehetőségek csak hozzá az aktuális SDK-hoz, ezért javasoljuk, hogy mindig a legújabb SDK verzióra frissít leghamarabb lehető. 
+Az új funkciók és funkciók és optimalizálás csak a jelenlegi SDK-hoz adódik hozzá, ezért azt javasoljuk, hogy a lehető leghamarabb frissítsen a legújabb SDK-verzióra. 
 
-| Verzió | Kiadás dátuma | Visszavonás dátuma |
+| Verzió | Kiadás dátuma | Nyugdíjazás dátuma |
 | --- | --- | --- |
-| [1.0.0](#1.0.0) |2017\. november 15. |--- |
+| [1.0.0](#1.0.0) |November 15., 2017 |--- |
 
-## <a name="faq"></a>GYIK
+## <a name="faq"></a>Gyakori kérdések
 [!INCLUDE [cosmos-db-sdk-faq](../../includes/cosmos-db-sdk-faq.md)]
 
-## <a name="see-also"></a>Lásd még
-Cosmos DB kapcsolatos további információkért lásd: [a Microsoft Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapján. 
+## <a name="see-also"></a>Lásd még:
+További információ a Cosmos DBről: [Microsoft Azure Cosmos db](https://azure.microsoft.com/services/cosmos-db/) szolgáltatás lapja. 
 

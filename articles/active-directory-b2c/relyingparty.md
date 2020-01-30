@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 01/25/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: c2b74830463702e7de02d00bcfe88521fce2c803
-ms.sourcegitcommit: 014e916305e0225512f040543366711e466a9495
+ms.openlocfilehash: caa7cbed7c56b63bcbf5ad8f287ab6cf32575c15
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75932032"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840298"
 ---
 # <a name="relyingparty"></a>RelyingParty
 
@@ -104,7 +104,7 @@ A **DefaultUserJourney** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| ReferenceId | Igen | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
+| referenceId | Igen | A felhasználó által a szabályzatban megjelenő út azonosítója. További információ: [felhasználói útvonalak](userjourneys.md) |
 
 ## <a name="userjourneybehaviors"></a>UserJourneyBehaviors
 
@@ -125,7 +125,7 @@ A **SingleSignon** elem a következő attribútumban szerepel:
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
 | Hatókör | Igen | Az egyszeri bejelentkezés viselkedésének hatóköre. Lehetséges értékek: `Suppressed`, `Tenant`, `Application`vagy `Policy`. A `Suppressed` érték azt jelzi, hogy a rendszer letiltja a viselkedést. Ha például egyszeri bejelentkezéses munkamenetre van szükség, a felhasználó számára a rendszer nem őrzi meg a munkamenetet, és a felhasználó mindig kéri az identitás-szolgáltató kijelölését. A `TrustFramework` érték azt jelzi, hogy a rendszer a megbízhatósági keretrendszer összes házirendjére alkalmazza a viselkedést. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Tenant` érték azt jelzi, hogy a rendszer a bérlő összes házirendjére alkalmazza a viselkedést. Ha például egy felhasználó két házirend-útvonalon keresztül navigál a bérlőhöz, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Application` érték azt jelzi, hogy a rendszer alkalmazza a viselkedést a kérést kérő alkalmazás összes szabályzatára. Ha például egy alkalmazásra két házirend-útvonalon navigál, a rendszer nem kéri az identitás-szolgáltató kijelölését. A `Policy` érték azt jelzi, hogy a viselkedés csak egy házirendre vonatkozik. Egy megbízhatósági keretrendszer két házirend-útvonalon való navigálásakor például a rendszer a házirendek közötti váltáskor megkéri az identitás-szolgáltató kijelölését. |
-| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](active-directory-b2c-reference-kmsi-custom.md)című témakörben talál. |
+| KeepAliveInDays | Igen | Meghatározza, hogy a felhasználó mennyi ideig maradjon bejelentkezve. Ha a 0 értéket állítja be, kikapcsolja a KMSI funkciót. További információt a [bejelentkezett adatok megtartása](custom-policy-keep-me-signed-in.md)című témakörben talál. |
 
 ## <a name="journeyinsights"></a>JourneyInsights
 
@@ -140,7 +140,7 @@ A **JourneyInsights** elem a következő attribútumokat tartalmazza:
 | ServerEnabled | Igen | Lehetséges értékek: `true` vagy `false`. Ha `true`, a a meglévő UserJourneyRecorder JSON-t egyéni eseményként küldi el Application Insights. |
 | TelemetryVersion | Igen | Az értéknek `1.0.0`nak kell lennie. |
 
-További információkért lásd: [naplók gyűjtése](active-directory-b2c-troubleshoot-custom.md)
+További információkért lásd: [naplók gyűjtése](troubleshoot-with-application-insights.md)
 
 ## <a name="contentdefinitionparameters"></a>ContentDefinitionParameters
 
@@ -162,7 +162,7 @@ A **ContentDefinitionParameter** elem a következő attribútumot tartalmazza:
 | --------- | -------- | ----------- |
 | Név | Igen | A kulcs-érték párok neve. |
 
-További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](active-directory-b2c-ui-customization-custom-dynamic.md)
+További információ: [a felhasználói felület konfigurálása dinamikus tartalommal egyéni házirendek használatával](custom-policy-ui-customization-dynamic.md)
 
 ## <a name="technicalprofile"></a>Kivonatjogcím
 
@@ -176,7 +176,7 @@ A **kivonatjogcím** a következő elemeket tartalmazza:
 
 | Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Megjelenítendő név | 0:1 | A felhasználók számára megjelenő technikai profil nevét tartalmazó karakterlánc. |
+| displayName | 0:1 | A felhasználók számára megjelenő technikai profil nevét tartalmazó karakterlánc. |
 | Leírás | 0:1 | A felhasználók számára megjelenített technikai profil leírását tartalmazó karakterlánc. |
 | Protocol (Protokoll) | 1:1 | Az összevonáshoz használt protokoll. |
 | Metaadatok | 0:1 | A protokoll által a végponttal való kommunikációhoz használt kulcs/érték párokból álló *elemek* gyűjteménye a függő entitás és más közösségi résztvevők közötti interakció konfigurálásához. |

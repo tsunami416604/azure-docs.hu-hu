@@ -1,10 +1,9 @@
 ---
-title: Az Azure Service Bus messaging-minták – áttekintés |} A Microsoft Docs
-description: Ismerteti a Service Bus-üzenetkezelés is tartalmaz, hivatkozásokkal az egyes minták
+title: Azure Service Bus üzenetkezelési minták áttekintése
+description: A Service Bus üzenetkezelési minták a Azure Service Bus üzenetkezelés főbb funkcióit mutatják be. A GitHubon található mintákra mutató hivatkozásokat tartalmaz.
 services: service-bus-messaging
 documentationcenter: na
 author: axisc
-manager: timlt
 editor: spelluru
 ms.assetid: 0b420343-2d2a-4c65-98f1-ee0e39ef55c8
 ms.service: service-bus-messaging
@@ -12,32 +11,32 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 03/13/2019
+ms.date: 01/27/2020
 ms.author: aschhab
-ms.openlocfilehash: a5ca41f1d9b1fb5b2dd8b9066af85543f1fddd23
-ms.sourcegitcommit: d4dfbc34a1f03488e1b7bc5e711a11b72c717ada
+ms.openlocfilehash: ccaca451ac4fb7b4301aca429a42baea91e5ed10
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "65786772"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773464"
 ---
-# <a name="service-bus-messaging-samples"></a>A Service Bus üzenettovábbítási mintái
-A Service Bus üzenetkezelési minták bemutatják a legfontosabb jellemzők [Service Bus-üzenetkezelés](https://azure.microsoft.com/services/service-bus/). Jelenleg a minták találja a következő helyeken:
+# <a name="service-bus-messaging-samples"></a>Üzenetkezelési minták Service Bus
+A Service Bus üzenetkezelési minták a [Service Bus üzenetkezelés](https://azure.microsoft.com/services/service-bus/)főbb funkcióit mutatják be. Jelenleg a minták a következő helyeken találhatók:
 
-| Programozási nyelv | SDK-t vagy minták helye |
+| Programozási nyelv | SDK vagy minták helye |
 | -------------------- | ----------------------- |
-| .NET, Java és kezelése | https://github.com/Azure/azure-service-bus/ |
+| .NET, Java és felügyelet | https://github.com/Azure/azure-service-bus/ |
 | Node.js | https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/servicebus/service-bus/samples |
 | Python | https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/servicebus/azure-servicebus |
 
 ## <a name="service-bus-explorer"></a>Service Bus Explorer
 
-Emellett a [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer) , amellyel csatlakozhat egy Service Bus-szolgáltatásnévtér, és könnyen kezelheti az üzenetküldési entitások Githubon található minta. Az eszközt biztosít a fejlett szolgáltatások, mint az importálási/exportálási funkcióit, valamint az üzenetküldési entitások és -továbbítási szolgáltatások teszteléséhez. Annak a teljes Service Bus Explorerrel forrás és a dokumentáció a [GitHub](https://github.com/paolosalvatori/ServiceBusExplorer).
+Továbbá a [Service Bus Explorer](https://github.com/paolosalvatori/ServiceBusExplorer) egy githubon üzemeltetett minta, amely lehetővé teszi a Service Bus szolgáltatás névteréhez való kapcsolódást és az üzenetkezelési entitások egyszerű kezelését. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, valamint az üzenetkezelési entitások és a továbbító szolgáltatások tesztelésének lehetősége. A [githubon](https://github.com/paolosalvatori/ServiceBusExplorer)megtalálhatja a teljes Service Bus Explorer-forrást és a dokumentációt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A Service Bus nyújt fogalmi áttekintést a következő témakörökben talál.
+Tekintse meg a következő témaköröket a Service Bus fogalmi áttekintéséhez.
 
-* [A Service Bus üzenetkezelésének áttekintése](service-bus-messaging-overview.md)
+* [Service Bus messaging overview](service-bus-messaging-overview.md) (A Service Bus üzenetkezelésének áttekintése)
 * [Service Bus-architektúra](service-bus-architecture.md)
 

@@ -3,22 +3,20 @@ title: Azure Traffic Analytics – gyakori kérdések | Microsoft Docs
 description: Választ kaphat a Traffic Analytics szolgáltatással kapcsolatos leggyakrabban feltett kérdésekre.
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
-ms.author: kumud
-ms.openlocfilehash: 991bb91c5bc1f6d695d5b363cdb08268f1ee83df
-ms.sourcegitcommit: 6dec090a6820fb68ac7648cf5fa4a70f45f87e1a
+ms.author: damendo
+ms.openlocfilehash: 5e31ed905f05070c8715a63ef3386b0006df0a75
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/11/2019
-ms.locfileid: "73907094"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840621"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Traffic Analytics gyakori kérdések
 
@@ -74,14 +72,14 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 - USA déli középső régiója
 - USA középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Közép-Franciaország
 - Nyugat-Európa
 - Észak-Európa
 - Dél-Brazília
-- Az Egyesült Királyság nyugati régiója
-- Az Egyesült Királyság déli régiója
-- Kelet-Ausztrália
+- Egyesült Királyság nyugati régiója
+- Egyesült Királyság déli régiója
+- Ausztrália keleti régiója
 - Délkelet-Ausztrália 
 - Kelet-Ázsia
 - Délkelet-Ázsia
@@ -90,7 +88,7 @@ A NSG Traffic Analytics a következő támogatott régiókban használható:
 - Dél-India
 - Kelet-Japán
 - Nyugat-Japán
-- USA-beli államigazgatás – Virginia
+- US Gov Virginia
 - Kína 2. keleti régiója
 
 A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
@@ -102,20 +100,20 @@ A Log Analytics munkaterület a következő régiókban kell, hogy legyen:
 - USA déli középső régiója
 - USA középső régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Közép-Franciaország
 - Nyugat-Európa
 - Észak-Európa
-- Az Egyesült Királyság nyugati régiója
-- Az Egyesült Királyság déli régiója
-- Kelet-Ausztrália
+- Egyesült Királyság nyugati régiója
+- Egyesült Királyság déli régiója
+- Ausztrália keleti régiója
 - Délkelet-Ausztrália
 - Kelet-Ázsia
 - Délkelet-Ázsia 
 - Korea középső régiója
 - Közép-India
 - Kelet-Japán
-- USA-beli államigazgatás – Virginia
+- US Gov Virginia
 - Kína 2. keleti régiója
 
 ## <a name="can-the-nsgs-i-enable-flow-logs-for-be-in-different-regions-than-my-workspace"></a>Engedélyezhető a NSG a különböző régiókban, mint a saját munkaterület?
@@ -265,6 +263,62 @@ A Traffic Analytics nem rendelkezik beépített támogatással a riasztásokhoz.
 - A lekérdezések megírásához használja az [itt dokumentált sémát](traffic-analytics-schema.md) 
 - A riasztás létrehozásához kattintson az "új riasztási szabály" elemre.
 - A riasztás létrehozásához tekintse meg a [riasztások dokumentációját](https://docs.microsoft.com/azure/azure-monitor/platform/alerts-log)
+
+## <a name="how-do-i-check-which-vms-are-receiving-most-on-premise-traffic"></a>Hogyan annak ellenőrzését, hogy mely virtuális gépek kapják meg a legtöbb helyi forgalmat
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            | where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+             | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by vm
+            | render timechart
+
+  IP-címek esetén:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d 
+            | make-series TotalTraffic = sum(traffic) default = 0 on FlowStartTime_t from datetime(<time>) to datetime(<time>) step 1m by IP
+            | render timechart
+
+Az idő használati formátuma: éééé-hh-nn 00:00:00
+
+## <a name="how-do-i-check-standard-deviation-in-traffic-recieved-by-my-vms-from-on-premise-machines"></a>Hogyan a virtuális gépekről a helyszíni gépekről fogadott forgalom szórásának ellenőrzéséhez
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand vm = pack_array(VM1_s, VM2_s) to typeof(string)
+            | where isnotempty(vm) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by vm
+
+
+IP-címek esetén:
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and FlowType_s == "S2S" 
+            //| where <Scoping condition>
+            | mvexpand IP = pack_array(SrcIP_s, DestIP_s) to typeof(string)
+            | where isnotempty(IP) 
+            | extend traffic = AllowedInFlows_d + DeniedInFlows_d + AllowedOutFlows_d + DeniedOutFlows_d // For bytes use: | extend traffic = InboundBytes_d + OutboundBytes_d
+            | summarize deviation = stdev(traffic)  by IP
+            
+## <a name="how-do-i-check-which-ports-are-reachable-or-bocked-between-ip-pairs-with-nsg-rules"></a>Hogyan a NSG-szabályokkal rendelkező IP-párok között elérhető portok
+
+            AzureNetworkAnalytics_CL
+            | where SubType_s == "FlowLog" and TimeGenerated between (startTime .. endTime)
+            | extend sourceIPs = iif(isempty(SrcIP_s), split(SrcPublicIPs_s, " ") , pack_array(SrcIP_s)),
+            destIPs = iif(isempty(DestIP_s), split(DestPublicIPs_s," ") , pack_array(DestIP_s))
+            | mvexpand SourceIp = sourceIPs to typeof(string)
+            | mvexpand DestIp = destIPs to typeof(string)
+            | project SourceIp = tostring(split(SourceIp, "|")[0]), DestIp = tostring(split(DestIp, "|")[0]), NSGList_s, NSGRule_s, DestPort_d, L4Protocol_s, FlowStatus_s 
+            | summarize DestPorts= makeset(DestPort_d) by SourceIp, DestIp, NSGList_s, NSGRule_s, L4Protocol_s, FlowStatus_s
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Hogyan lehet navigálni a Geo Térkép nézet billentyűzetének használatával?
 

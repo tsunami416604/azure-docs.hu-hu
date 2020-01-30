@@ -6,12 +6,12 @@ ms.author: mbaldwin
 ms.date: 10/20/2019
 ms.service: key-vault
 ms.topic: quickstart
-ms.openlocfilehash: e36e3ae9ce2e8ca116921de428b4dcc09b37afb6
-ms.sourcegitcommit: 5ab4f7a81d04a58f235071240718dfae3f1b370b
+ms.openlocfilehash: a59ba62df546c60c4086829eec355d3e69b69363
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/10/2019
-ms.locfileid: "74978577"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76773735"
 ---
 # <a name="quickstart-azure-key-vault-client-library-for-nodejs-v4"></a>Rövid útmutató: Azure Key Vault ügyféloldali kódtár a Node. js-hez (v4)
 
@@ -22,7 +22,7 @@ Az Azure Key Vault segít a felhőalapú alkalmazások és szolgáltatások ált
 - Fokozza a biztonságot, és szabályozhatja a kulcsokat és a jelszavakat.
 - Percek alatt létrehozhatja és importálhatja a titkosítási kulcsokat.
 - Csökkentse a késést a felhő méretezésével és a globális redundanciával.
-- Leegyszerűsítheti és automatizálhatja az SSL/TLS-tanúsítványok feladatait.
+- Leegyszerűsítheti és automatizálhatja a TLS/SSL-tanúsítványok feladatait.
 - Használja az FIPS 140-2 2-es szintű hitelesített HSM.
 
 [API-referenciák dokumentációja](/javascript/api/overview/azure/key-vault?view=azure-node-latest) | [könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/keyvault) | [csomag (NPM)](https://www.npmjs.com/package/@azure/keyvault-secrets)
@@ -123,7 +123,7 @@ A Node. js-hez készült Azure Key Vault ügyféloldali kódtár lehetővé tesz
 
 A teljes konzol alkalmazás a következő címen érhető el: https://github.com/Azure-Samples/key-vault-dotnet-core-quickstart/tree/master/key-vault-console-app.
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 ### <a name="add-directives"></a>Irányelvek hozzáadása
 

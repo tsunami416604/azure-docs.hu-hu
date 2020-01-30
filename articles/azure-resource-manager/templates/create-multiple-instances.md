@@ -3,12 +3,12 @@ title: Több erőforrás-példány üzembe helyezése
 description: A másolási művelet és tömbök használata Azure Resource Manager sablonban több alkalommal is megismételhető az erőforrások telepítésekor.
 ms.topic: conceptual
 ms.date: 09/27/2019
-ms.openlocfilehash: 54d406771f64d97a3ba564556be6dc49677a732d
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 0250f5ee64c91d8d75ad246271ab31324a2553f8
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76121981"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836929"
 ---
 # <a name="resource-property-or-variable-iteration-in-azure-resource-manager-templates"></a>Erőforrás, tulajdonság vagy változó iteráció Azure Resource Manager-sablonokban
 
@@ -205,6 +205,10 @@ Az alábbi példa bemutatja, hogyan alkalmazhatja a `copy`t a virtuális gép da
 
 Figyelje meg, hogy amikor `copyIndex` használ a tulajdonságok iterációjában, meg kell adnia az iteráció nevét. A nevet nem kell megadnia az erőforrás-iterációval való használathoz.
 
+> [!NOTE]
+> A tulajdonság iterációja egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' dataDisks ', 1).
+>
+
 A Resource Manager kibővíti a `copy` tömböt az üzembe helyezés során. A tömb neve lesz a tulajdonság neve. A bemeneti értékek az objektum tulajdonságai lesznek. A központilag telepített sablon a következőket válik:
 
 ```json
@@ -299,6 +303,10 @@ Az erőforrások és a tulajdonságok ismétlését együtt is használhatja. Hi
 ## <a name="variable-iteration"></a>Változó iteráció
 
 Egy változó több példányának létrehozásához használja a változók szakaszban található `copy` tulajdonságot. A `input` tulajdonság értéke alapján létrehozott elemek tömbjét hozza létre. Használhatja a `copy` tulajdonságot egy változón belül, vagy a változók szakasz legfelső szintjén. Ha a `copyIndex` változót használ egy iterációban, meg kell adnia az iteráció nevét.
+
+> [!NOTE]
+> A változó iteráció egy eltolási argumentumot is támogat. Az eltolásnak az iteráció neve után kell érkeznie, például copyIndex (' diskNames ', 1).
+>
 
 A karakterlánc-értékek tömbje létrehozásának egyszerű példáját lásd: [Array sablon másolása](https://github.com/bmoore-msft/AzureRM-Samples/blob/master/copy-array/azuredeploy.json).
 
@@ -484,7 +492,7 @@ Tegyük fel például, hogy az adatkészletet általában alárendelt erőforrá
 
 Egynél több adathalmaz létrehozásához helyezze át azt az adatelőállítón kívülre. Az adatkészletnek a adat-előállítóval megegyező szinten kell lennie, de még mindig az adat-előállító alárendelt erőforrása. Az adatkészletek és a adatfeldolgozók közötti kapcsolatot a típus és a név tulajdonságon keresztül megőrizheti. Mivel a típus már nem következtethető ki a sablonban lévő pozícióból, meg kell adnia a teljes típust a következő formátumban: `{resource-provider-namespace}/{parent-resource-type}/{child-resource-type}`.
 
-Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. Használja a következő formátumot: `{parent-resource-name}/{child-resource-name}`.
+Ha szülő/gyermek kapcsolatot szeretne létesíteni az adatelőállító egy példányával, adja meg a szülő erőforrás nevét tartalmazó adatkészlet nevét. Használja a formátumot: `{parent-resource-name}/{child-resource-name}`.
 
 A következő példa a megvalósítást mutatja be:
 

@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 11/13/2019
-ms.openlocfilehash: 9f49a9224ed123b76f4d300c27a8dd5822e50ea3
-ms.sourcegitcommit: c69c8c5c783db26c19e885f10b94d77ad625d8b4
+ms.openlocfilehash: eceb4b312476d701ec8ce4eb0ce4886621824b3a
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74706021"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841591"
 ---
 # <a name="migrate-azure-hdinsight-36-hive-workloads-to-hdinsight-40"></a>Az Azure HDInsight 3,6 kaptár számítási feladatait áttelepítheti HDInsight 4,0
 
@@ -183,7 +183,9 @@ A HDInsight 3,6-ben a kaptár-kiszolgálóval való interakcióra szolgáló gra
 |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/dasinstaller/LaunchDASInstaller.sh`|
 |Csomópont típusa (i)|Fej|
 
-Várjon 5 – 10 percet, majd indítsa el az adatelemzési stúdiót a következő URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+Várjon 10 – 15 percet, majd indítsa el az adatelemzési stúdiót a következő URL-cím használatával: `https://CLUSTERNAME.azurehdinsight.net/das/`.
+
+A DAS-hoz való hozzáférés előtt a Ambari felhasználói felületének frissítése és/vagy az összes Ambari-összetevő újraindítása szükséges lehet.
 
 Ha a DAS telepítve van, ha nem látja a futtatott lekérdezéseket a lekérdezések megjelenítőben, hajtsa végre a következő lépéseket:
 

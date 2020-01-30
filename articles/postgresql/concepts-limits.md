@@ -5,21 +5,21 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 06/25/2019
+ms.date: 01/28/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: d74206ebdf35a8f5b353553cb89e954cb2313611
-ms.sourcegitcommit: 6bb98654e97d213c549b23ebb161bda4468a1997
+ms.openlocfilehash: 047e722a0e0ade60d1eb93a48e37333fffafd674
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/03/2019
-ms.locfileid: "74768537"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76836456"
 ---
 # <a name="limits-in-azure-database-for-postgresql---single-server"></a>Korlátok Azure Database for PostgreSQL – egyetlen kiszolgáló
 Az alábbi szakaszok az adatbázis-szolgáltatás kapacitását és működési korlátait ismertetik. Ha szeretne többet megtudni az erőforrásról (számítási, memória-, tárolási) szintjeiről, tekintse meg a [díjszabási szintek](concepts-pricing-tiers.md) című cikket.
 
 
 ## <a name="maximum-connections"></a>Kapcsolatok maximális száma
-A kapcsolatok maximális száma az árképzési szinten és a virtuális mag a következő: 
+Alább láthatók a kapcsolatok maximális száma az árképzési szinten és a virtuális mag. Az Azure-rendszernek öt kapcsolattal kell rendelkeznie a Azure Database for PostgreSQL-kiszolgáló figyeléséhez. 
 
 |**Tarifacsomag**| **Virtuális mag (ok)**| **Kapcsolatok maximális száma** | **Felhasználói kapcsolatok maximális száma** |
 |---|---|---|---|
@@ -40,7 +40,10 @@ A kapcsolatok maximális száma az árképzési szinten és a virtuális mag a k
 Ha a kapcsolatok túllépik a korlátot, a következő hibaüzenet jelenhet meg:
 > VÉGZETES: Sajnos túl sok ügyfél már
 
-Az Azure-rendszernek öt kapcsolattal kell rendelkeznie a Azure Database for PostgreSQL-kiszolgáló figyeléséhez. 
+> [!IMPORTANT]
+> A legjobb megoldás érdekében javasoljuk, hogy használjon olyan kapcsolati Pooler, mint a pgBouncer, hogy hatékonyan kezelhesse a kapcsolatokat.
+
+A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát foglalnak magukban. Emellett az új kapcsolatok létrehozása időt vesz igénybe. A legtöbb alkalmazás sok rövid életű kapcsolatot igényel, amely ezt a helyzetet összeképezi. Ennek eredményeképpen kevesebb erőforrás érhető el a tényleges munkaterheléshez, ami csökkenti a teljesítményt. Egy kapcsolati Pooler, amely csökkenti az üresjárati kapcsolatokat, és a meglévő kapcsolatokat újra felhasználva segít elkerülni ezt. További információért látogasson el a [blogbejegyzésbe](https://techcommunity.microsoft.com/t5/azure-database-for-postgresql/not-all-postgres-connection-pooling-is-equal/ba-p/825717).
 
 ## <a name="functional-limitations"></a>Funkcionális korlátozások
 ### <a name="scale-operations"></a>Skálázási műveletek

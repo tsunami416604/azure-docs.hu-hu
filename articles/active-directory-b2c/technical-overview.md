@@ -10,16 +10,16 @@ ms.topic: overview
 ms.date: 09/19/2019
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 4d45e4c79f46061ca177858fd517153fb5f29c41
-ms.sourcegitcommit: fad368d47a83dadc85523d86126941c1250b14e2
+ms.openlocfilehash: 5801cc4fdfeb4bbdf7c22e2be2f686558611a7f6
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/19/2019
-ms.locfileid: "71123825"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840213"
 ---
 # <a name="technical-and-feature-overview-of-azure-active-directory-b2c"></a>A Azure Active Directory B2C technikai és funkcióinak áttekintése
 
-Ez a cikk a [Azure Active Directory B2Cával](active-directory-b2c-overview.md)foglalkozó társa, amely részletesebben ismerteti a szolgáltatást. Itt láthatók azok az elsődleges erőforrások, amelyeket a szolgáltatásban, annak szolgáltatásaiban dolgozik, és ezek lehetővé teszik, hogy teljes körű identitást biztosítson ügyfeleinek az alkalmazásaiban.
+Ez a cikk a [Azure Active Directory B2Cával](overview.md)foglalkozó társa, amely részletesebben ismerteti a szolgáltatást. Itt láthatók azok az elsődleges erőforrások, amelyeket a szolgáltatásban, annak szolgáltatásaiban dolgozik, és ezek lehetővé teszik, hogy teljes körű identitást biztosítson ügyfeleinek az alkalmazásaiban.
 
 ## <a name="azure-ad-b2c-tenant"></a>Azure AD B2C bérlő
 
@@ -38,7 +38,7 @@ A Azure AD B2C-bérlőben használt elsődleges erőforrások a következők:
   * *Helyi* fiókok, amelyek lehetővé teszik a felhasználók számára a regisztrációt és bejelentkezést a felhasználónévvel (vagy e-mail-címmel vagy más azonosítóval) és jelszóval.
 * **Kulcsok** – titkosítási kulcsok hozzáadása és kezelése a jogkivonatok aláírásához és érvényesítéséhez.
 
-A Azure AD B2C bérlő az első olyan erőforrás, amelyet a Azure AD B2C megkezdéséhez létre kell hoznia. Útmutató az [oktatóanyaghoz: Hozzon létre egy](tutorial-create-tenant.md)Azure Active Directory B2C bérlőt.
+A Azure AD B2C bérlő az első olyan erőforrás, amelyet a Azure AD B2C megkezdéséhez létre kell hoznia. Útmutató [: Azure Active Directory B2C-bérlő létrehozása az oktatóanyagban](tutorial-create-tenant.md).
 
 ## <a name="accounts-in-azure-ad-b2c"></a>Fiókok Azure AD B2C
 
@@ -48,7 +48,7 @@ Azure AD B2C különböző típusú felhasználói fiókokat határoz meg. Azure
 * **Vendég fiók** – a külső felhasználók, akiket vendégként hívnak meg a Bérlőnek. Egy tipikus példa arra, hogy a vendég felhasználókat meghívja a Azure AD B2C bérlőre, hogy megossza az adminisztrációs feladatokat.
 * **Fogyasztói fiók** – a fogyasztói fiókok a Azure ad B2C címtárban létrehozott fiókok, amikor a felhasználók a bérlőben regisztrált alkalmazásban teljesítik a regisztrációs felhasználói utat.
 
-![A Azure Portal Azure AD B2C felhasználó-felügyeleti lapja](media/technical-overview/portal-01-users.png)<br/>*Ábra Azure AD B2C-bérlőn belüli felhasználói könyvtár a Azure Portal*
+![Azure AD B2C felhasználó-felügyeleti lapot a Azure Portal](media/technical-overview/portal-01-users.png)<br/>*Ábra: a Azure AD B2C-bérlőn belüli felhasználói könyvtár a Azure Portal*
 
 ### <a name="consumer-accounts"></a>Fogyasztói fiókok
 
@@ -61,7 +61,7 @@ A következő identitási típusokhoz rendelhető fogyasztói fiók:
 
 A felhasználói fiókkal rendelkező felhasználók több identitással is bejelentkezhetnek, például Felhasználónév, e-mail, alkalmazotti azonosító, kormányzati azonosító és egyebek. Egyetlen fióknak több identitása is lehet, helyi és közösségi is.
 
-![Fogyasztói fiókok identitásai](media/technical-overview/identities.png)<br/>*Ábra Egyetlen fogyasztói fiók több identitással a Azure AD B2C*
+![fogyasztói fiók identitásai](media/technical-overview/identities.png)<br/>*Ábra: egyetlen fogyasztói fiók több identitással a Azure AD B2C*
 
 Azure AD B2C lehetővé teszi a fogyasztói fiókok profiljainak, például a megjelenítendő név, a vezetéknév, az utónév, a város és mások közös jellemzőinek kezelését. Az Azure AD-sémát kiterjesztve további információkat is tárolhat a felhasználókról. Például az országuk vagy lakhelyük, az előnyben részesített nyelv és a beállítások, például a hírlevélre vagy a többtényezős hitelesítés engedélyezésére.
 
@@ -79,7 +79,7 @@ A regisztrációs vagy bejelentkezési oldalon Azure AD B2C megjeleníti azon k�
 
 ![Mobil bejelentkezési példa közösségi fiókkal (Facebook)](media/technical-overview/external-idp.png)
 
-Ha szeretné megtudni, hogyan adhat hozzá identitás-szolgáltatókat [a Azure ad B2Cban, tekintse meg az oktatóanyagot: Identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2Cban](tutorial-add-identity-providers.md).
+Ha szeretné megtudni, hogyan adhat hozzá identitás-szolgáltatókat a Azure AD B2Cban, tekintse meg a következőt [: oktatóanyag: identitás-szolgáltatók hozzáadása az alkalmazásokhoz Azure Active Directory B2C](tutorial-add-identity-providers.md).
 
 ## <a name="identity-experiences-user-flows-or-custom-policies"></a>Személyazonossági tapasztalatok: felhasználói folyamatok vagy egyéni házirendek
 
@@ -109,7 +109,7 @@ A felhasználói folyamatok beállításait, például az alábbi beállítások
 
 A mobil-, web-és egyoldalas alkalmazások többségének leggyakoribb identitási forgatókönyvei hatékonyan meghatározhatók és alkalmazhatók a felhasználói folyamatokkal. Javasoljuk, hogy a beépített felhasználói folyamatokat csak akkor használja, ha olyan összetett felhasználói utazási forgatókönyvekkel rendelkezik, amelyek az egyéni házirendek teljes rugalmasságát igénylik.
 
-További információ a [Azure Active Directory B2C felhasználói folyamatainak](active-directory-b2c-reference-policies.md)felhasználói folyamatairól.
+További információ a [Azure Active Directory B2C felhasználói folyamatainak](user-flow-overview.md)felhasználói folyamatairól.
 
 ### <a name="custom-policy"></a>Egyéni szabályzat
 
@@ -130,13 +130,13 @@ Az egyéni házirendeket több XML-fájl határozza meg, amelyek egy hierarchiku
 
 Az egyéni szabályzatok nagy rugalmassága a legmegfelelőbb, ha összetett identitás-forgatókönyveket kell létrehoznia. Az egyéni házirendeket konfiguráló fejlesztőknek alapos részletességgel kell megadniuk a megbízható kapcsolatokat, hogy tartalmazzák a metaadatok végpontját, a pontos jogcím-definíciókat, valamint a titkok, kulcsok és tanúsítványok konfigurálását az egyes identitás-szolgáltatók igényei szerint.
 
-További információ az egyéni házirendekről [Azure Active Directory B2Cban](active-directory-b2c-overview-custom.md).
+További információ az egyéni házirendekről [Azure Active Directory B2Cban](custom-policy-overview.md).
 
 ## <a name="protocols-and-tokens"></a>Protokollok és tokenek
 
-Azure AD B2C támogatja az [OpenID Connect és a OAuth 2,0 protokollt](active-directory-b2c-reference-protocols.md) a felhasználói útvonalakhoz. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat.
+Azure AD B2C támogatja az [OpenID Connect és a OAuth 2,0 protokollt](protocols-overview.md) a felhasználói útvonalakhoz. Az OpenID Connect Azure AD B2C-implementációjában az alkalmazás az Azure AD B2C felé irányuló hitelesítési kérések küldésével indítja el a felhasználói utat.
 
-Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](active-directory-b2c-reference-tokens.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek olyan Azure ad B2C-végpontokból érkeznek, `/token` mint `/authorize` a vagy a végpont. Ezekkel a jogkivonatokkal olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
+Az Azure AD B2Cre irányuló kérelem eredménye biztonsági jogkivonat, például [azonosító jogkivonat vagy hozzáférési jogkivonat](tokens-overview.md). Ez a biztonsági jogkivonat határozza meg a felhasználó identitását. A tokenek olyan Azure AD B2C-végpontokból érkeznek, mint a `/token` vagy a `/authorize` végpont. Ezekkel a jogkivonatokkal olyan jogcímeket érhet el, amelyek segítségével érvényesítheti az identitást, és engedélyezheti a hozzáférést a biztonságos erőforrásokhoz.
 
 Külső identitások esetében a Azure AD B2C támogatja a OAuth 1,0, OAuth 2,0, OpenID Connect, SAML és WS-fed identitás-szolgáltatóval való összevonást.
 
@@ -148,7 +148,7 @@ Az előző ábrán látható, hogy Azure AD B2C képes kommunikálni különböz
 1. Ha az alkalmazás egy felhasználója úgy dönt, hogy egy SAML protokollt használó külső Identitáskezelő használatával jelentkezik be, Azure AD B2C az SAML protokollt hívja meg az identitás-szolgáltatóval való kommunikációra.
 1. Miután a felhasználó befejezte a bejelentkezési műveletet a külső identitás-szolgáltatóval, Azure AD B2C ezt követően visszaadja a tokent a függő entitás alkalmazásnak az OpenID Connect használatával.
 
-## <a name="application-integration"></a>Alkalmazásintegráció
+## <a name="application-integration"></a>Alkalmazásintegrálás
 
 Ha egy felhasználó be szeretne jelentkezni az alkalmazásba, legyen szó webes, mobil-, asztali vagy egyoldalas alkalmazásról (SPA), akkor az alkalmazás egy felhasználói folyamathoz vagy egyéni házirend által megadott végponthoz kezdeményezi az engedélyezési kérelmet. A felhasználói folyamat vagy az egyéni házirend határozza meg és szabályozza a felhasználó élményét. Amikor elvégeznek egy felhasználói folyamatot, például a *regisztrálási vagy bejelentkezési* folyamatot, Azure ad B2C létrehoz egy jogkivonatot, majd visszairányítja a felhasználót az alkalmazáshoz.
 
@@ -172,7 +172,7 @@ A Azure AD B2C nyelvi testreszabása lehetővé teszi, hogy az ügyfelek igénye
 
 ![Három regisztrációs bejelentkezési oldal, amely a felhasználói felület szövegét jeleníti meg különböző nyelveken](media/technical-overview/localization.png)
 
-Megtudhatja, hogyan működik a honosítás a [nyelvi testreszabásban Azure Active Directory B2Cban](active-directory-b2c-reference-language-customization.md).
+Megtudhatja, hogyan működik a honosítás a [nyelvi testreszabásban Azure Active Directory B2Cban](user-flow-language-customization.md).
 
 ## <a name="add-your-own-business-logic"></a>Saját üzleti logika hozzáadása
 
@@ -195,7 +195,7 @@ Az egyéni házirend által definiált felhasználói út bármely lépésében 
 * Miután Azure AD B2C létrehoz egy új fiókot a címtárban
 * Mielőtt Azure AD B2C kiadja a hozzáférési jogkivonatot
 
-Ha szeretné megtekinteni, hogyan használhatók az egyéni házirendek a REST API-integrációhoz a Azure AD B2Cban, tekintse meg a következőt: [REST API jogcím-cserék integrálása Azure ad B2C felhasználói úton](active-directory-b2c-custom-rest-api-netfw.md)
+Ha szeretné megtekinteni, hogyan használhatók az egyéni házirendek a REST API-integrációhoz a Azure AD B2Cban, tekintse meg a következőt: [REST API jogcím-cserék integrálása Azure ad B2C felhasználói úton](rest-api-claims-exchange-dotnet.md)
 
 ## <a name="protect-customer-identities"></a>Ügyfelek identitásának biztosítása
 
@@ -223,7 +223,7 @@ További információ az Azure AD-szerepkörökről, többek között a Azure AD
 
 Azure AD B2C a többtényezős hitelesítés (MFA) segíti az adat-és alkalmazásokhoz való hozzáférés védelmét, miközben a felhasználók számára egyszerűséget biztosít. További biztonságot nyújt a hitelesítés második formáját igényli, és erős hitelesítést biztosít a könnyen használható hitelesítési módszerek széles skáláját kínálva. A felhasználók a rendszergazdaként felhasználható konfigurációs döntések alapján esetleg nem vitatják meg az MFA-t.
 
-Lásd: az MFA engedélyezése a felhasználói folyamatokban a [többtényezős hitelesítés engedélyezése Azure Active Directory B2Cban](active-directory-b2c-reference-mfa.md).
+Lásd: az MFA engedélyezése a felhasználói folyamatokban a [többtényezős hitelesítés engedélyezése Azure Active Directory B2Cban](custom-policy-multi-factor-authentication.md).
 
 ### <a name="smart-account-lockout"></a>Intelligens fiók zárolása
 
@@ -231,13 +231,13 @@ Ha meg szeretné akadályozni a találgatásos támadási kísérleteket, a Azur
 
 ![Fiók intelligens zárolása](media/technical-overview/smart-lockout1.png)
 
-A jelszavas védelem beállításainak kezelésével kapcsolatos további információkért lásd: [veszélyforrások kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](active-directory-b2c-reference-threat-management.md).
+A jelszavas védelem beállításainak kezelésével kapcsolatos további információkért lásd: [veszélyforrások kezelése az erőforrásokra és az adatokra Azure Active Directory B2Cban](threat-management.md).
 
 ### <a name="password-complexity"></a>Jelszó bonyolultsága
 
 A regisztráció vagy a jelszó alaphelyzetbe állítása során a felhasználóknak meg kell adnia egy jelszót, amely megfelel a bonyolultsági szabályoknak. Alapértelmezés szerint a Azure AD B2C kényszeríti az erős jelszóházirend alkalmazását. A Azure AD B2C konfigurációs beállításokat is biztosít az ügyfelek által használt jelszavak összetettségi követelményeinek megadásához.
 
-A jelszó bonyolultságára vonatkozó követelményeket a [felhasználói folyamatokban](active-directory-b2c-reference-password-complexity.md) és az [Egyéni házirendekben](active-directory-b2c-reference-password-complexity-custom.md)is konfigurálhatja.
+A jelszó bonyolultságára vonatkozó követelményeket a [felhasználói folyamatokban](user-flow-password-complexity.md) és az [Egyéni házirendekben](custom-policy-password-complexity.md)is konfigurálhatja.
 
 ## <a name="auditing-and-logs"></a>Naplózás és naplók
 
@@ -254,15 +254,15 @@ A Azure AD B2C bérlőhöz vagy egy adott felhasználóhoz elérhető naplózás
 
 ![A Azure Portalban látható egyéni felhasználói napló](media/technical-overview/audit-log.png)
 
-További részletek a naplókról: [Azure ad B2C naplók elérése](active-directory-b2c-reference-audit-logs.md).
+További részletek a naplókról: [Azure ad B2C naplók elérése](view-audit-logs.md).
 
 ### <a name="usage-insights"></a>Használati adatok
 
 Azure AD B2C segítségével felfedezheti, hogy mikor regisztrálhatnak vagy jelentkezhetnek be a webalkalmazásba, hol találhatók a felhasználók, és milyen böngészőket és operációs rendszereket használnak. Ha egyéni szabályzatokkal integrálja az Azure Application Insightst a Azure AD B2Cba, betekintést nyerhet a felhasználók regisztrálására, a bejelentkezésre, a jelszavuk visszaállítására vagy a profil szerkesztésére. Ilyen ismerettel a közelgő fejlesztési ciklusok esetében adatvezérelt döntéseket hozhat.
 
-További információ a használati elemzésekről: a [felhasználói viselkedés nyomon követése Azure Active Directory B2C a Application Insights használatával](active-directory-b2c-custom-guide-eventlogger-appins.md).
+További információ a használati elemzésekről: a [felhasználói viselkedés nyomon követése Azure Active Directory B2C a Application Insights használatával](analytics-with-application-insights.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy alaposabban megtekintette a Azure Active Directory B2C funkcióit és technikai aspektusait, a szolgáltatással való ismerkedéshez hozzon létre egy B2C-bérlőt:
 

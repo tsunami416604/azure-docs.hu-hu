@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 01/08/2019
-ms.openlocfilehash: f920df20a8dc1cace76f641ce1c71f9b91a30bf4
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 70253e66903916bde05f9e6e55e3c0609cb4a146
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75867675"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841114"
 ---
 # <a name="tutorial-train-and-deploy-a-model-from-the-cli"></a>Oktatóanyag: modellek betanítása és üzembe helyezése a parancssori felületről
 [!INCLUDE [applies-to-skus](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -246,7 +246,7 @@ A parancs kimenete a következő JSON-hoz hasonló:
 > [!IMPORTANT]
 > Másolja a `id` bejegyzés értékét, ahogy azt a következő szakaszban használják.
 
-Az adatkészleteket leíró JSON-fájl átfogóbb sablonjának megjelenítéséhez használja a következő parancsot:
+Az adatkészletek átfogóbb sablonjának megjelenítéséhez használja a következő parancsot:
 ```azurecli-interactive
 az ml dataset register --show-template
 ```
@@ -288,7 +288,7 @@ data:
 
 Módosítsa a `id` bejegyzés értékét úgy, hogy az megfeleljen az adatkészlet regisztrálásakor visszaadott értéknek. Ezzel az értékkel tölthetők be az adatok a számítási célra a betanítás során.
 
-Ez a YAML a következőket teszi:
+Ez a YAML a következő műveleteket eredményezi a betanítás során:
 
 * Csatlakoztatja az adatkészletet (az adatkészlet azonosítója alapján) a képzési környezetben, és a `mnist` környezeti változóban lévő csatlakoztatási pont elérési útját tárolja.
 * A `--data-folder` argumentum használatával átadja az adatelérési pont (Mount Point) helyét a betanítási környezeten belül a parancsfájlnak.
@@ -298,7 +298,7 @@ A runconfig-fájl a betanítási Futtatás által használt környezet konfigur�
 > [!TIP]
 > Habár manuálisan is létrehozhat egy runconfig-fájlt, az ebben a példában szereplő `generate-runconfig.py` a tárházban foglalt fájl használatával jött létre. Ez a fájl a regisztrált adatkészletre mutató hivatkozást kap, létrehoz egy futtatási konfiguráció programozott módon, majd megőrzi a fájlt.
 
-A konfigurációs fájlok futtatásával kapcsolatos további információkért lásd: [számítási célok beállítása és használata a modell betanításához](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli), vagy hivatkozás erre a [JSON-fájlra](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json) a runconfig teljes sémájának megtekintéséhez.
+A konfigurációs fájlok futtatásával kapcsolatos további információkért lásd: [számítási célok beállítása és használata a modell betanításához](how-to-set-up-training-targets.md#create-run-configuration-and-submit-run-using-azure-machine-learning-cli). A teljes JSON-referenciáért tekintse meg a [runconfigschema. JSON](https://github.com/microsoft/MLOps/blob/b4bdcf8c369d188e83f40be8b748b49821f71cf2/infra-as-code/runconfigschema.json)fájlt.
 
 ## <a name="submit-the-training-run"></a>A betanítási Futtatás elküldése
 
@@ -379,7 +379,9 @@ az ml model deploy -n myservice -m "mymodel:1" --ic inferenceConfig.yml --dc aci
 
 Ez a parancs egy `myservice`nevű új szolgáltatást helyez üzembe a korábban regisztrált modell 1. verziójának használatával.
 
-A `inferenceConfig.yml` fájl információkkal szolgál a következtetések elvégzéséről, például a bejegyzési parancsfájl (`score.py`) és a szoftver függőségeiről. A fájl struktúrájával kapcsolatos további információkért tekintse meg a [következtetési konfigurációs sémát](reference-azure-machine-learning-cli.md#inference-configuration-schema). A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning](how-to-deploy-and-where.md#prepare-to-deploy).
+A `inferenceConfig.yml` fájl információkkal szolgál arról, hogyan használható a modell a következtetésekhez. Például hivatkozik a bejegyzési parancsfájlra (`score.py`) és a szoftver függőségeire. 
+
+A fájl struktúrájával kapcsolatos további információkért tekintse meg a [következtetési konfigurációs sémát](reference-azure-machine-learning-cli.md#inference-configuration-schema). A beléptetési parancsfájlokkal kapcsolatos további információkért lásd: [modellek üzembe helyezése a Azure Machine learning](how-to-deploy-and-where.md#prepare-to-deploy).
 
 A `aciDeploymentConfig.yml` ismerteti a szolgáltatás üzemeltetéséhez használt központi telepítési környezetet. A központi telepítési konfiguráció a központi telepítéshez használt számítási típusra vonatkozik. Ebben az esetben egy Azure Container-példányt használunk. További információ: a [központi telepítés konfigurációs sémája](reference-azure-machine-learning-cli.md#deployment-configuration-schema).
 

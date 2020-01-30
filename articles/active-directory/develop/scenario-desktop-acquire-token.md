@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: bc00f348e9443384c7799bf227efd7309d6aeac2
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: 50ac62ded92b69f44324f4f9c5eacee939159449
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76702198"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76834127"
 ---
 # <a name="desktop-app-that-calls-web-apis-acquire-a-token"></a>Webes API-kat meghívó asztali alkalmazás: token beszerzése
 
@@ -413,7 +413,7 @@ Ha tartományi felhasználót szeretne bejelentkezni egy tartományba vagy egy A
 
 - A `PublicClientApplicationBuilder` átadott hatóságnak a következőnek kell lennie:
   - Az űrlap bérlője `https://login.microsoftonline.com/{tenant}/`, ahol a `tenant` vagy a bérlő AZONOSÍTÓját, vagy a bérlőhöz társított tartományt jelképező GUID.
-  - Bármilyen [munkahelyi és iskolai fiókhoz](`https://login.microsoftonline.com/organizations/`).
+  - Bármilyen munkahelyi és iskolai fiókhoz: `https://login.microsoftonline.com/organizations/`.
   - A Microsoft személyes fiókjai nem támogatottak. /Gyakori hibák-vagy/consumers-bérlők nem használhatók.
 
 - Mivel az integrált Windows-hitelesítés csendes folyamat:

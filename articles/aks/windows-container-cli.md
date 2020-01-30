@@ -5,14 +5,14 @@ services: container-service
 author: mlearned
 ms.service: container-service
 ms.topic: article
-ms.date: 06/17/2019
+ms.date: 01/27/2020
 ms.author: mlearned
-ms.openlocfilehash: 497dab37f178a9ae7d0ab6cd647a10bac44539f8
-ms.sourcegitcommit: c22327552d62f88aeaa321189f9b9a631525027c
+ms.openlocfilehash: d1d04ab3ebb96d2739b991620b05aa307d9eaf91
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/04/2019
-ms.locfileid: "73472512"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76767441"
 ---
 # <a name="preview---create-a-windows-server-container-on-an-azure-kubernetes-service-aks-cluster-using-the-azure-cli"></a>Előzetes verzió – Windows Server-tároló létrehozása Azure Kubernetes szolgáltatásbeli (ak) fürtön az Azure CLI használatával
 
@@ -87,7 +87,7 @@ Habár ez a funkció előzetes verzióban érhető el, a következő további ko
 * Az AK-fürt legfeljebb 400 csomóponttal rendelkezhet a nyolc csomópontos készletben.
 * A Windows Server-csomópontok készletének neve legfeljebb 6 karakterből állhat.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai csoport, amelyben az Azure-erőforrások üzembe helyezése és kezelése zajlik. Az erőforráscsoportok létrehozásakor meg kell adnia egy helyet. Ez a hely határozza meg, hogy az erőforráscsoport metaadatai hol vannak tárolva, és az erőforrások hol futnak az Azure-ban, ha nem ad meg másik régiót az erőforrások létrehozásakor. Hozzon létre egy erőforráscsoportot az az [Group Create][az-group-create] paranccsal.
 
@@ -126,7 +126,7 @@ Ha olyan AK-fürtöt szeretne futtatni, amely támogatja a Windows Server-tárol
 > [!NOTE]
 > Annak biztosítása érdekében, hogy a fürt megbízhatóan működjön, legalább 2 (két) csomópontot kell futtatnia az alapértelmezett csomópont-készletben.
 
-Adja meg saját biztonságos *PASSWORD_WIN* (ne feledje, hogy a cikkben szereplő parancsok egy bash-rendszerhéjba kerülnek):
+Saját biztonságos *PASSWORD_WIN* megadása (ne feledje, hogy a cikkben szereplő parancsok egy bash-rendszerhéjba kerülnek):
 
 ```azurecli-interactive
 PASSWORD_WIN="P@ssw0rd1234"
@@ -136,7 +136,7 @@ az aks create \
     --name myAKSCluster \
     --node-count 2 \
     --enable-addons monitoring \
-    --kubernetes-version 1.14.6 \
+    --kubernetes-version 1.15.7 \
     --generate-ssh-keys \
     --windows-admin-password $PASSWORD_WIN \
     --windows-admin-username azureuser \
@@ -162,10 +162,10 @@ az aks nodepool add \
     --os-type Windows \
     --name npwin \
     --node-count 1 \
-    --kubernetes-version 1.14.6
+    --kubernetes-version 1.15.7
 ```
 
-A fenti parancs létrehoz egy *npwin* nevű új csomópont-készletet, és hozzáadja azt a *myAKSCluster*. Ha Windows Server-tárolókat futtató csomópont-készletet hoz létre, a *Standard_D2s_v3*alapértelmezett értéke a *csomópont-VM-size* . Ha úgy dönt, hogy beállítja a *Node-VM-size* paramétert, ellenőrizze a korlátozott virtuálisgép- [méretek][restricted-vm-sizes]listáját. A minimális ajánlott méret a *Standard_D2s_v3*. A fenti parancs a `az aks create`futtatásakor létrehozott alapértelmezett vnet található alapértelmezett alhálózatot is használja.
+A fenti parancs létrehoz egy *npwin* nevű új csomópont-készletet, és hozzáadja azt a *myAKSCluster*. Ha Windows Server-tárolókat futtató csomópont-készletet hoz létre, akkor a *Node-VM méret* alapértelmezett értéke *Standard_D2s_v3*. Ha úgy dönt, hogy beállítja a *Node-VM-size* paramétert, ellenőrizze a korlátozott virtuálisgép- [méretek][restricted-vm-sizes]listáját. A minimális ajánlott méret *Standard_D2s_v3*. A fenti parancs a `az aks create`futtatásakor létrehozott alapértelmezett vnet található alapértelmezett alhálózatot is használja.
 
 ## <a name="connect-to-the-cluster"></a>Csatlakozás a fürthöz
 
@@ -191,8 +191,8 @@ A következő példa kimenete a fürt összes csomópontját mutatja. Győződj�
 
 ```
 NAME                                STATUS   ROLES   AGE    VERSION
-aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.14.6
-aksnpwin987654                      Ready    agent   108s   v1.14.6
+aks-nodepool1-12345678-vmssfedcba   Ready    agent   13m    v1.15.7
+aksnpwin987654                      Ready    agent   108s   v1.15.7
 ```
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
@@ -300,7 +300,7 @@ az group delete --name myResourceGroup --yes --no-wait
 > [!NOTE]
 > A fürt törlésekor az AKS-fürt által használt Azure Active Directory-szolgáltatásnév nem lesz eltávolítva. Az egyszerű szolgáltatás eltávolításának lépéseiért lásd: az [AK szolgáltatással kapcsolatos főbb megfontolások és törlés][sp-delete].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a cikkben üzembe helyezett egy Kubernetes-fürtöt, és telepített egy ASP.NET-minta alkalmazást egy Windows Server-tárolóban. Nyissa meg az imént létrehozott fürthöz tartozó [Kubernetes webes irányítópultot][kubernetes-dashboard] .
 

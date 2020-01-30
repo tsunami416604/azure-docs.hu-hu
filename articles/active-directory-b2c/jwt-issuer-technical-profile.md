@@ -11,12 +11,12 @@ ms.topic: reference
 ms.date: 10/30/2018
 ms.author: marsma
 ms.subservice: B2C
-ms.openlocfilehash: 41661277d89c45baf2350282c6e4b500fae63662
-ms.sourcegitcommit: 5b9287976617f51d7ff9f8693c30f468b47c2141
+ms.openlocfilehash: f0adbac14c2ae886bc002ae56ab0784b608d1e5d
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74949823"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841982"
 ---
 # <a name="define-a-technical-profile-for-a-jwt-token-issuer-in-an-azure-active-directory-b2c-custom-policy"></a>JWT jogkivonat-kiállító technikai profiljának meghatározása egy Azure Active Directory B2C egyéni házirendben
 
@@ -54,7 +54,7 @@ A **szabályzattípushoz**, a **OutputClaims**és a **PersistClaims** elemek ür
 | refresh_token_lifetime_secs | Nem | A jogkivonat élettartamának frissítése. Az a maximális időtartam, ameddig egy frissítési jogkivonat felhasználható új hozzáférési jogkivonat beszerzéséhez, ha az alkalmazás megkapta a offline_access hatókört. Az alapértelmezett érték 120, 9600 másodperc (14 nap). A minimális (inkluzív) érték 86 400 másodperc (24 óra). A maximális érték 7 776 000 másodperc (90 nap). |
 | rolling_refresh_token_lifetime_secs | Nem | A jogkivonat-toló ablak élettartamának frissítése. Az időszak lejárta után a felhasználónak újra hitelesítenie kell magát, függetlenül attól, hogy milyen érvényességi időszakra van az alkalmazás által beszerzett legutóbbi frissítési jogkivonat. Ha nem szeretné kényszeríteni a csúszó ablak élettartamát, állítsa `true`értékre a allow_infinite_rolling_refresh_token értéket. Az alapértelmezett érték 7 776 000 másodperc (90 nap). A minimális (inkluzív) érték 86 400 másodperc (24 óra). A maximális érték 31 536 000 másodperc (365 nap). |
 | allow_infinite_rolling_refresh_token | Nem | Ha `true`értékre van állítva, a jogkivonat-lecsúszó ablak élettartama soha nem jár le. |
-| IssuanceClaimPattern | Igen | A kiállítói (ISS) jogcímet vezérli. Az értékek egyike:<ul><li>AuthorityAndTenantGuid – az ISS-jogcím magában foglalja a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, valamint a bérlői azonosítóját https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp – az ISS jogcím tartalmazza a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, a bérlő azonosítóját és a függő entitás házirendjét. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> |
+| IssuanceClaimPattern | Nem | A kiállítói (ISS) jogcímet vezérli. Az értékek egyike:<ul><li>AuthorityAndTenantGuid – az ISS-jogcím magában foglalja a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, valamint a bérlői azonosítóját https:\//login.microsoftonline.com/00000000-0000-0000-0000-000000000000/v2.0/</li><li>AuthorityWithTfp – az ISS jogcím tartalmazza a tartománynevet, például `login.microsoftonline` vagy `tenant-name.b2clogin.com`, a bérlő azonosítóját és a függő entitás házirendjét. https:\//login.microsoftonline.com/tfp/00000000-0000-0000-0000-000000000000/b2c_1a_tp_sign-up-or-sign-in/v2.0/</li></ul> Alapértelmezett érték: AuthorityAndTenantGuid |
 | AuthenticationContextReferenceClaimPattern | Nem | A `acr` jogcím értékének szabályozása.<ul><li>Nincs – Azure AD B2C nem adja ki az ACR-jogcímet</li><li>PolicyId – az `acr` jogcím tartalmazza a szabályzat nevét</li></ul>Az érték beállításának beállításai a következők: TFP (megbízhatósági keretrendszer házirendje) és ACR (hitelesítési környezet referenciája). Javasoljuk, hogy ezt az értéket TFP adja meg az érték beállításához, győződjön meg arról, hogy a `<Item>` a `Key="AuthenticationContextReferenceClaimPattern"` létezik, és az érték `None`. A függő entitás házirendjében adja hozzá `<OutputClaims>` elemet, adja hozzá ezt az elemet `<OutputClaim ClaimTypeReferenceId="trustFrameworkPolicy" Required="true" DefaultValue="{policy}" />`. Győződjön meg arról is, hogy a szabályzat tartalmazza a jogcím típusát `<ClaimType Id="trustFrameworkPolicy">   <DisplayName>trustFrameworkPolicy</DisplayName>     <DataType>string</DataType> </ClaimType>` |
 
 ## <a name="cryptographic-keys"></a>Titkosítási kulcsok
@@ -63,8 +63,8 @@ A CryptographicKeys elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Szükséges | Leírás |
 | --------- | -------- | ----------- |
-| issuer_secret | Igen | A JWT-token aláírásához használt X509-tanúsítvány (RSA-kulcs). Ez az a `B2C_1A_TokenSigningKeyContainer` kulcs, amelyet az [Egyéni szabályzatok első lépéseiben](active-directory-b2c-get-started-custom.md)alakítottunk ki. |
-| issuer_refresh_token_key | Igen | A frissítési jogkivonat titkosításához használt X509-tanúsítvány (RSA-kulcs). A `B2C_1A_TokenEncryptionKeyContainer` kulcsot konfigurálta az [Egyéni szabályzatok első lépéseiben](active-directory-b2c-get-started-custom.md) |
+| issuer_secret | Igen | A JWT-token aláírásához használt X509-tanúsítvány (RSA-kulcs). Ez az a `B2C_1A_TokenSigningKeyContainer` kulcs, amelyet az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md)alakítottunk ki. |
+| issuer_refresh_token_key | Igen | A frissítési jogkivonat titkosításához használt X509-tanúsítvány (RSA-kulcs). A `B2C_1A_TokenEncryptionKeyContainer` kulcsot konfigurálta az [Egyéni szabályzatok első lépéseiben](custom-policy-get-started.md) |
 
 
 

@@ -4,22 +4,21 @@ titleSuffix: Azure Network Watcher
 description: Ismerje meg, hogyan használhatja az Azure Network Watcher kapcsolódási hibáit a PowerShell használatával.
 services: network-watcher
 documentationcenter: na
-author: KumudD
+author: damendo
 manager: twooley
-editor: ''
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
-ms.author: kumud
-ms.openlocfilehash: 824799254b2706c64a17921034dbde3e4f60e132
-ms.sourcegitcommit: 653e9f61b24940561061bd65b2486e232e41ead4
+ms.author: damendo
+ms.openlocfilehash: abc9389c2c5fd5576795c26a89e3941b6eb5a939
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/21/2019
-ms.locfileid: "74275999"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76842835"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Az Azure Network Watchersal létesített kapcsolatok hibáinak megoldása a PowerShell használatával
 
@@ -34,7 +33,7 @@ Megtudhatja, hogyan hozhatja meg a kapcsolódási hibák megoldását annak elle
 
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="before-you-begin"></a>Előzetes teendők
 
 * Network Watcher egy példánya abban a régióban, ahol a kapcsolódást szeretné elhárítani.
 * Virtuális gépek a szolgáltatással való kapcsolódási hibák megoldásához.

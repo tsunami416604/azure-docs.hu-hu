@@ -7,12 +7,12 @@ ms.reviewer: gabil
 ms.service: data-explorer
 ms.topic: conceptual
 ms.date: 12/09/2019
-ms.openlocfilehash: 52a9c0a13723361bbc93362cdd9e2c73ef0372f2
-ms.sourcegitcommit: b5ff5abd7a82eaf3a1df883c4247e11cdfe38c19
+ms.openlocfilehash: 8ab192957ead806b4bb3ae8e7395589f3b1ecbbe
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/09/2019
-ms.locfileid: "74942239"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76833294"
 ---
 # <a name="manage-cluster-horizontal-scaling-scale-out-in-azure-data-explorer-to-accommodate-changing-demand"></a>A fürt horizontális skálázásának kezelése (horizontális felskálázás) az Azure Adatkezelő a változó igények kielégítése érdekében
 
@@ -31,7 +31,7 @@ A horizontális skálázás használatával az előre meghatározott szabályok 
 
 2. A **kibővítő** ablakban válassza ki a kívánt automatikus méretezési módszert: **manuális méretezés**, **optimalizált automatikus méretezés**vagy egyéni automatikus **Méretezés**.
 
-### <a name="manual-scale"></a>Manuális skálázás
+### <a name="manual-scale"></a>Manuális méretezés
 
 A fürt létrehozása során az alapértelmezett beállítás a manuális skálázás. A fürt statikus kapacitása nem változik automatikusan. A statikus kapacitást a **Példányszám** sáv használatával választhatja ki. A fürt skálázása ebben a beállításban marad, amíg egy másik módosítást nem végez.
 
@@ -58,9 +58,10 @@ Az optimalizált autoscale megkezdi a munkát. A műveletei már láthatók a f�
 Ha a fürt túlzott kihasználtságú állapotot közelít, az optimális teljesítmény érdekében felskálázást biztosít. A vertikális felskálázás a következő esetekben fog történni:
 * A fürtözött példányok száma nem éri el a felhasználó által definiált példányok maximális számát.
 * A gyorsítótár kihasználtsága több mint egy óra alatt magas.
+* A CPU több mint egy óráig magas.
 
 > [!NOTE]
-> A kibővíthető logika jelenleg nem veszi figyelembe a betöltés kihasználtságát és a CPU-metrikákat. Ha ezek a metrikák a használati eset szempontjából fontosak, használja az [Egyéni autoskálázást](#custom-autoscale).
+> A Felskálázási logika jelenleg nem veszi figyelembe a betöltés kihasználtságának mérőszámát. Ha ez a metrika a használati eset szempontjából fontos, használja az [Egyéni autoskálázást](#custom-autoscale).
 
 **Skálázás**
 
@@ -78,13 +79,13 @@ Ha a fürt a használaton kívüli állapotot közelíti meg, az alacsonyabb kö
 > [!NOTE]
 > A méretezés a logikában jelenleg 7 napos kiértékelést igényel az optimalizált skálázás megvalósítása előtt. A kiértékelés 24 óránként történik. Ha gyors módosításra van szükség, használja a [manuális skálázást](#manual-scale).
 
-### <a name="custom-autoscale"></a>Egyéni automatikus skálázás
+### <a name="custom-autoscale"></a>Egyéni méretezés
 
 Az egyéni autoscale használatával dinamikusan méretezheti a fürtöt a megadott mérőszámok alapján. Az alábbi ábrán a folyamat és az egyéni autoskálázás konfigurálásának lépései láthatók. További részletekért kövesse a grafikát.
 
 1. Az **autoskálázási beállítás neve** mezőbe írjon be egy nevet, például *: kibővíthető: gyorsítótár kihasználtsága*. 
 
-   ![Szabály skálázása](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
+   ![Skálázási szabály](media/manage-cluster-horizontal-scaling/custom-autoscale-method.png)
 
 2. A **méretezési mód**beállításnál válassza a **skála mérőszám alapján**lehetőséget. Ez a mód dinamikus skálázást biztosít. Kiválaszthatja **a méretezés adott példányszámot**is.
 

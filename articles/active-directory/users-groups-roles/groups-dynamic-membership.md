@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8ff2ff69ca00a9ed9c48ebd6f1704fac0b16d068
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: 1df823776208418eae3e465693dd51e108c5a8bb
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940989"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76841029"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>A Azure Active Directory csoportok dinamikus tagsági szabályai
 
@@ -98,15 +98,15 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | city |Bármilyen sztring vagy *Null* érték |(User. City-EQ "value") |
 | ország |Bármilyen sztring vagy *Null* érték |(User. Country-EQ "value") |
 | companyName | Bármilyen sztring vagy *Null* érték | (User. cégnév – EQ "érték") |
-| Részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
+| részleg |Bármilyen sztring vagy *Null* érték |(User. Department-EQ "value") |
 | displayName |bármely karakterlánc-érték |(User. displayName-EQ "value") |
 | Alkalmazottkód |bármely karakterlánc-érték |(User. Alkalmazottkód-EQ "value")<br>(User. Alkalmazottkód-ne *Null*) |
 | Érték facsimiletelephonenumber |Bármilyen sztring vagy *Null* érték |(User. érték facsimiletelephonenumber-EQ "value") |
 | givenName |Bármilyen sztring vagy *Null* érték |(User. givenName-EQ "value") |
 | Beosztás |Bármilyen sztring vagy *Null* érték |(User. beosztás-EQ "value") |
-| e-mail |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
+| levelezési |Bármely karakterlánc-érték vagy *Null* (a felhasználó SMTP-címe) |(User. mail-EQ "érték") |
 | mailNickName |Bármely karakterlánc-érték (a felhasználó levelezési aliasa) |(User. mailNickName-EQ "value") |
-| mobil |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
+| mobileszköz |Bármilyen sztring vagy *Null* érték |(User. Mobile-EQ "value") |
 | objectId |A felhasználói objektum GUID azonosítója |(User. objectId-EQ "11111111-1111-1111-1111-111111111111") |
 | onPremisesSecurityIdentifier | Helyszíni biztonsági azonosító (SID) azon felhasználók számára, akik a helyszínről a felhőbe szinkronizálva lettek. |(User. onPremisesSecurityIdentifier-EQ "S-1-1-11-1111111111-1111111111-1111111111-1111111") |
 | passwordPolicies |Nincs DisableStrongPassword DisablePasswordExpiration DisablePasswordExpiration, DisableStrongPassword |(User. passwordPolicies-EQ "DisableStrongPassword") |
@@ -116,7 +116,7 @@ A következő felhasználói tulajdonságokat használhatja egyetlen kifejezés 
 | sipProxyAddress |Bármilyen sztring vagy *Null* érték |(User. sipProxyAddress-EQ "value") |
 | state |Bármilyen sztring vagy *Null* érték |(User. State-EQ "value") |
 | streetAddress |Bármilyen sztring vagy *Null* érték |(User. streetAddress-EQ "value") |
-| surname |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
+| vezetéknév |Bármilyen sztring vagy *Null* érték |(User. vezetéknév – EQ "érték") |
 | telephoneNumber |Bármilyen sztring vagy *Null* érték |(User. telephoneNumber-EQ "value") |
 | usageLocation |Kétbetűs országkód |(User. usageLocation – EQ "US") |
 | userPrincipalName |bármely karakterlánc-érték |(User. userPrincipalName-EQ "alias@domain") |
@@ -140,13 +140,13 @@ A következő táblázat felsorolja az összes támogatott operátort és azok s
 | Nem egyenlő |– ne |
 | Egyenlő |– EQ |
 | Nem kezdődik |-notStartsWith |
-| Ezzel kezdődik: |– startsWith |
+| Kezdete |– startsWith |
 | Nem tartalmazza |-notContains |
 | Contains |– tartalmazza |
 | Nem egyezik |-notMatch |
-| Egyeztetés |– egyezés |
-| Az | – a |
-| Nincs benne | -notIn |
+| mérkőzés |– egyezés |
+| A | – a |
+| Nem a | -notIn |
 
 ### <a name="using-the--in-and--notin-operators"></a>A-in és a-notIn operátorok használata
 
@@ -213,7 +213,7 @@ A következő példák a több kifejezéssel rendelkező, megfelelően kiépíte
 (user.department -eq "Sales") -and -not (user.jobTitle -contains "SDE")
 ```
 
-### <a name="operator-precedence"></a>Operátorok műveleti sorrendje
+### <a name="operator-precedence"></a>Operátori prioritás
 
 Az összes operátor az alábbi sorrendben jelenik meg, a legmagasabbtól a legalacsonyabb értékig. Az azonos sorban lévő operátorok egyenlő prioritással rendelkeznek:
 
@@ -370,7 +370,7 @@ Létrehozhat egy olyan szabályt is, amely kijelöli a csoport tagjainak eszköz
 > [!NOTE]
 > a systemlabels egy írásvédett attribútum, amely nem állítható be az Intune-nal.
 >
-> A Windows 10 esetében a deviceOSVersion attribútum megfelelő formátuma a következő: (Device. deviceOSVersion-EQ "10,0 (17763)"). A formázás ellenőrizhető a Get-MsolDevice PowerShell-parancsmaggal.
+> A Windows 10 esetében a deviceOSVersion attribútum megfelelő formátuma a következő: (Device. deviceOSVersion-EQ "10.0.17763"). A formázás ellenőrizhető a Get-MsolDevice PowerShell-parancsmaggal.
 
 A következő eszköz-attribútumok használhatók.
 

@@ -9,12 +9,12 @@ ms.topic: include
 ms.date: 01/13/2020
 ms.author: aahi
 ms.reviewer: sumeh, assafi
-ms.openlocfilehash: 69899f521e73cb5af1af145a0915dbe1a017f307
-ms.sourcegitcommit: d9ec6e731e7508d02850c9e05d98d26c4b6f13e6
+ms.openlocfilehash: 8ae78bb8c0b70e20bfe12b8dc52c02abb6030bdf
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/20/2020
-ms.locfileid: "76281160"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76774125"
 ---
 <a name="HOLTop"></a>
 
@@ -22,6 +22,7 @@ ms.locfileid: "76281160"
 
 > [!NOTE]
 > * Ez a rövid útmutató a Text Analytics ügyféloldali kódtár `3.0-preview` verzióját használja, amely egy nyilvános előzetes verziót tartalmaz a továbbfejlesztett [Hangulatelemzés](../../../how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features) és az [elnevezett entitások felismeréséhez](../../../how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features).
+>
 > * A cikkben szereplő kód a nem biztonságos hitelesítő adatok tárolását használja az egyszerűség kedvéért. A termelési forgatókönyvek esetében javasoljuk, hogy a kötegekben a teljesítmény és a méretezhetőség érdekében karakterláncokat küldjön. Például a `SentimentBatchAsync()` hívása `Sentiment()`helyett.
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -36,6 +37,9 @@ ms.locfileid: "76281160"
 [!INCLUDE [text-analytics-resource-creation](../resource-creation.md)]
 
 ### <a name="create-a-new-nodejs-application"></a>Új Node.js-alkalmazás létrehozása
+
+> [!NOTE]
+> A [böngészőben](https://github.com/Azure/azure-sdk-for-js/blob/master/documentation/Bundling.md)a Text Analytics ügyféloldali kódtár ezen verzióját is futtathatja.
 
 Egy konzolablak (például a cmd, a PowerShell vagy a bash) ablakban hozzon létre egy új könyvtárat az alkalmazáshoz, és navigáljon hozzá. 
 
@@ -83,7 +87,7 @@ A rendszer elküldi a szöveget az API-nak `documents`-listaként, amely a haszn
 
 A válasz objektum az egyes dokumentumok elemzési információit tartalmazó lista. 
 
-## <a name="code-examples"></a>Kódpéldák
+## <a name="code-examples"></a>Példák a kódokra
 
 * [Ügyfél-hitelesítés](#client-authentication)
 * [Hangulatelemzés](#sentiment-analysis) (nyilvános előzetes verzió)

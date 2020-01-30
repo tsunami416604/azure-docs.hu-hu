@@ -3,22 +3,20 @@ title: NSG-naplók olvasása | Microsoft Docs
 description: Ez a cikk bemutatja, hogyan elemezheti a NSG folyamat naplóit
 services: network-watcher
 documentationcenter: na
-author: KumudD
-manager: twooley
-editor: ''
+author: damendo
 ms.service: network-watcher
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
-ms.author: kumud
-ms.openlocfilehash: cdfcf6b379feb5cc71c173275601ce9c55d57d12
-ms.sourcegitcommit: 36eb583994af0f25a04df29573ee44fbe13bd06e
+ms.author: damendo
+ms.openlocfilehash: ee44dda7a7ca2f7e1ad386498798191fe792cef0
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74539248"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76840842"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
 
@@ -33,7 +31,7 @@ A NSG egy Storage-fiókban tárolódnak, amely [blokkolja a blobokat](https://do
 
 A következő esetben egy Storage-fiókban tárolt folyamat naplója van. Megtudhatja, hogyan olvashatja el a legújabb eseményeket a NSG flow naplóiban. Ebben a cikkben a PowerShellt használja, azonban a cikkben tárgyalt fogalmak nem korlátozódnak a programozási nyelvre, és alkalmazhatók az Azure Storage API-k által támogatott összes nyelvre.
 
-## <a name="setup"></a>Beállítás
+## <a name="setup"></a>Telepítés
 
 Mielőtt elkezdené, a fiókjában egy vagy több hálózati biztonsági csoporton engedélyezni kell a hálózati biztonsági csoport folyamatának naplózását. A hálózati biztonsági folyamatok naplófájljainak engedélyezésével kapcsolatos utasításokért tekintse meg a következő cikket: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md).
 
