@@ -5,12 +5,12 @@ author: mumian
 ms.date: 10/04/2019
 ms.topic: tutorial
 ms.author: jgao
-ms.openlocfilehash: 99eb1581c03732691af5eaf9f482ca4ba0605863
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 0feb0a1a682328f1e23a7d800eb4f5653a6acdd1
+ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75472582"
+ms.lasthandoff: 01/28/2020
+ms.locfileid: "76765421"
 ---
 # <a name="tutorial-use-azure-quickstart-templates"></a>Oktatóanyag: az Azure Gyorsindítás sablonjainak használata
 
@@ -26,7 +26,7 @@ A Visual Studio Code-nak rendelkeznie kell a Resource Manager-eszközök bővít
 
 Az előző oktatóanyag végén a sablon a következő JSON-t használta:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/export-template/azuredeploy.json":::
 
 Ez a sablon a Storage-fiókok és az App Service-csomagok üzembe helyezésére használható, de előfordulhat, hogy hozzá szeretne adni egy webhelyet. Az előre elkészített sablonok segítségével gyorsan felderítheti az erőforrások üzembe helyezéséhez szükséges JSON-t.
 
@@ -45,9 +45,10 @@ Ez a sablon a Storage-fiókok és az App Service-csomagok üzembe helyezésére 
 
 A gyors üzembe helyezési sablon egyesítése a meglévő sablonnal:
 
-[!code-json[](~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json?range=1-108&highlight=32-45,49,85-100)]
+:::code language="json" source="~/resourcemanager-templates/get-started-with-templates/quickstart-template/azuredeploy.json" range="1-108" highlight="32-45,49,85-100":::
 
-A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy a rendszer duplikálja a neveket, a **webAppPortalName** változót a " **webAppPortalName": "[concat (parameters (" webAppName "),"-WebApp "]]** és **" webAppPortalName ":" [concat (parameters (' webAppName '), uniqueString (resourceGroup (). id)] "** értékre frissíti.
+A webalkalmazás nevének egyedinek kell lennie az Azure-ban. Ha meg szeretné akadályozni, hogy a rendszer duplikálja a neveket, a **webAppPortalName** változót a " **webAppPortalName": "[concat (parameters (" webAppName "),"-WebApp "]** és **" webAppPortalName ":" [concat (parameters (' webAppName '), uniqueString (resourceGroup (). id)] "** értékre frissíti.
+
 
 Adja hozzá a `Microsoft.Web/serverfarms` definíciójának végén található vesszőt az erőforrás-definíció `Microsoft.Web/sites`-definícióból való elkülönítéséhez.
 
