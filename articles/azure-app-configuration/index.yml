@@ -4,9 +4,9 @@ title: Az Azure App Configuration (előzetes verzió) dokumentációja
 metadata:
   title: Az Azure App Configuration dokumentációja – oktatóanyagok és API-referencia
   description: 'Az Azure App Configuration egy olyan felügyelt szolgáltatás, amellyel a fejlesztők egyszerűen és biztonságosan központosíthatják az alkalmazás- és funkcióbeállításaikat.'
-  author: yegu-ms
+  author: lisaguthrie
   manager: maiye
-  ms.author: yegu
+  ms.author: lcozzens
   ms.service: azure-app-configuration
   ms.topic: landing-page
   ms.date: 04/19/2019

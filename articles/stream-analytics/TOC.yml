@@ -65,6 +65,7 @@
       items:
         - name: A streamelési egységek ismertetése és módosítása
           href: stream-analytics-streaming-unit-consumption.md
+          displayName: 'scale, performance'
         - name: Jobb lekérdezési teljesítmény
           href: stream-analytics-parallelization.md
         - name: A bemenet újraparticionálása

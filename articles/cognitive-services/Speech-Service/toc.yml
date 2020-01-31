@@ -459,6 +459,8 @@
           href: speech-sdk.md
         - name: Forgatókönyvek rendelkezésre állása
           href: scenario-availability.md
+        - name: Alkalmazáskészítés
+          href: ship-application.md
     - name: Rövid útmutatók
       items:
         - name: Projekt létrehozása

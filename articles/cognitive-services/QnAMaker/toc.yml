@@ -67,23 +67,37 @@
       href: Tutorials/create-qna-bot.md
 - name: Alapelvek
   items:
-    - name: Tudásbázis
-      href: Concepts/knowledge-base.md
-      displayName: 'metadata, pair'
-    - name: A LUIS és a QnA Maker használata
-      href: ../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json
-    - name: A tudásbázisok fejlesztési életciklusa
-      href: Concepts/development-lifecycle-knowledge-base.md
-      displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Azure-erőforrások
+      href: Concepts/azure-resources.md
+    - name: Tudásbázis tervezése
+      items:
+        - name: Nyelvekhez
+          href: Concepts/design-language-culture.md
+        - name: Ügyfélalkalmazásokhoz
+          href: Concepts/integration-with-other-applications.md
+    - name: Adatforrások és tartalom
+      items:
+        - name: Importálás adatforrásokból
+          href: Concepts/knowledge-base.md
+        - name: Importált tartalomtípusok
+          href: Concepts/content-types.md
+        - name: Kérdés- és válaszkészletek
+          href: Concepts/question-answer-set.md
+    - name: Tudásbázis életciklusa
+      items:
+        - name: Fejlesztési életciklus
+          href: Concepts/development-lifecycle-knowledge-base.md
+          displayName: 'version control, test, index, publish, monitor usage, create'
+    - name: Tudásbázis lekérdezése
+      items:
+        - name: Válasz kérése
+          displayName: 'DefaultAnswer, Default answer'
+          href: Concepts/query-knowledge-base.md
+        - name: Megbízhatósági pontszám
+          href: Concepts/confidence-score.md
     - name: Ajánlott eljárások
       href: Concepts/best-practices.md
       displayName: 'tag, rank, score, threshold, question, alternate, filter, synonym, answer, active learning, collaborate, alteration, metadata, bot, personality, extraction, chit-chat'
-    - name: Megbízhatósági pontszám
-      displayName: 'DefaultAnswer, Default answer'
-      href: Concepts/confidence-score.md
-    - name: Támogatott adatforrások
-      href: Concepts/data-sources-supported.md
-      displayName: 'metadata, pair, sharepoint, authentication, permissions, faq, pdf, excel, xls, rtf, html, txt, tsv, url, end of line, new line, carriage return, markdown, commonmark, format, standard'
 - name: Útmutatók
   items:
     - name: Tudásbázis szerkesztése
@@ -106,6 +120,8 @@
         - name: Válasz kérése metaadatok használatával
           href: How-To/metadata-generateanswer-usage.md
           displayName: 'isTest, test, route, request, http, post, body, header, json, metadata, top, strictFilters, GenerateAnswer, API, answer, RankerType, id, text, question, context, 200, 2xx, 400, 401, 403, 404'
+        - name: Alapértelmezett válasz beállítása
+          href: How-to/change-default-answer.md
         - name: Robot létrehozása a QnA Maker és a LUIS használatával
           href: Tutorials/integrate-qnamaker-luis.md
         - name: Nyelv kiválasztása

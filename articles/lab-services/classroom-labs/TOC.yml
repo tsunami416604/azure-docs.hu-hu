@@ -44,6 +44,8 @@
           href: class-type-database-management.md
         - name: Python- és Jupyter-notebook
           href: class-type-jupyter-notebook.md
+        - name: Mobilalkalmazások fejlesztése az Android Studio használatával
+          href: class-type-mobile-dev-android-studio.md
     - name: Tesztkörnyezeti fiókok létrehozása és konfigurálása (tesztkörnyezeti fiók tulajdonosa)
       items:
         - name: Tesztkörnyezeti fiókok létrehozása és felügyelete

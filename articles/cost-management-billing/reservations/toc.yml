@@ -12,6 +12,8 @@
           href: prepay-sql-data-warehouse-charges.md
         - name: Virtuálisgép-foglalás vásárlása
           href: ../../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+        - name: Azure Disk Storage
+          href: ../../virtual-machines/linux/disks-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Azure Storage-foglalás vásárlása
           href: ../../storage/blobs/storage-blob-reserved-capacity.md?toc=/azure/billing/TOC.json
         - name: Cosmos DB-foglalás vásárlása
@@ -40,8 +42,12 @@
       items:
         - name: Fenntartott VM-példányra vonatkozó kedvezmények
           href: ../manage/understand-vm-reservation-charges.md
+        - name: Foglalási javaslatok létrehozása
+          href: reserved-instance-purchase-recommendations.md
         - name: Fenntartott Azure Storage-kapacitásra vonatkozó kedvezmények
           href: understand-storage-charges.md
+        - name: Azure Disk Storage-foglalási kedvezmények
+          href: understand-disk-reservations.md
         - name: Fenntartott Cosmos DB-kapacitásra vonatkozó kedvezmények
           href: understand-cosmosdb-reservation-charges.md
         - name: Fenntartott SQL Database-kapacitásra vonatkozó kedvezmények

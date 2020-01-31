@@ -1327,6 +1327,8 @@
           href: springerlink-tutorial.md
         - name: Sprinklr
           href: sprinklr-tutorial.md
+        - name: Spintr SSO
+          href: spintr-sso-tutorial.md
         - name: 'SSOGEN Azure AD SSO-átjáró az Oracle E Business Suite EBS-hez, a PeopleSofthoz és a JDE-hez'
           href: ssogen-tutorial.md
         - name: StatusPage
@@ -1680,6 +1682,8 @@
           href: merchlogix-provisioning-tutorial.md
         - name: Meta Networks Connector
           href: meta-networks-connector-provisioning-tutorial.md
+        - name: Mixpanel
+          href: mixpanel-provisioning-tutorial.md
         - name: myPolicies
           href: mypolicies-provisioning-tutorial.md
         - name: MindTickle
