@@ -28,12 +28,6 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Porttovábbítás konfigurálása a Load Balancerben
       href: tutorial-load-balancer-port-forwarding-portal.md
-- name: Példák
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Alapelvek
   items:
     - name: Összetevők és korlátozások
@@ -50,8 +44,6 @@
           href: load-balancer-query-metrics-rest-api.md
     - name: Magas rendelkezésre állású portok
       href: load-balancer-ha-ports-overview.md
-    - name: IPv6-támogatás
-      href: 'https://docs.microsoft.com/azure/virtual-network/ipv6-overview'
     - name: Több előtérrendszer
       href: load-balancer-multivip-overview.md
     - name: Kimenő kapcsolatok
@@ -68,10 +60,6 @@
   items:
     - name: 'Egy alapszintű, nyilvános Load Balancer standard szintű, nyilvános Load Balancerre való frissítésének lépései'
       href: upgrade-basic-standard.md
-    - name: Virtuális gépek terheléselosztása rendelkezésre állási zónák között (parancssori felület)
-      href: load-balancer-standard-public-zone-redundant-cli.md
-    - name: Virtuális gépek terheléselosztása zónán belül (parancssori felület)
-      href: load-balancer-standard-public-zonal-cli.md
     - name: Kimenő szabályok konfigurálása
       items:
         - name: Azure CLI
@@ -121,6 +109,12 @@
       items:
         - name: Az Azure Load Balancer hibaelhárítása
           href: load-balancer-troubleshoot.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Referencia
   items:
     - name: Kódminták
