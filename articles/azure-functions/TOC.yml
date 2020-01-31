@@ -10,29 +10,28 @@
       href: functions-compare-logic-apps-ms-flow-webjobs.md
     - name: Szolgáltatási csomag lehetőségei
       href: functions-scale.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
-    - name: 'Függvény létrehozása – C#'
-      href: functions-create-your-first-function-visual-studio.md
-    - name: Függvény létrehozása – Java
-      href: functions-create-first-java-maven.md
-    - name: Függvény létrehozása – JavaScript
-      href: functions-create-first-function-vs-code.md
-    - name: Függvény létrehozása – PowerShell
-      href: functions-create-first-function-powershell.md
-    - name: Függvény létrehozása – Python
-      href: functions-create-first-function-python.md
-    - name: Kapcsolódás szolgáltatásokhoz
+    - name: Függvény létrehozása
+      expanded: true
       items:
-        - name: 'Tár – C#'
-          href: functions-add-output-binding-storage-queue-vs.md
-        - name: Tár – Java
-          href: functions-add-output-binding-storage-queue-java.md
-        - name: Tár – JavaScript
+        - name: Visual Studio Code
+          href: /azure/azure-functions/functions-create-first-function-vs-code
+        - name: Visual Studio
+          href: functions-create-your-first-function-visual-studio.md
+        - name: Parancssor
+          href: functions-create-first-azure-function-azure-cli.md
+        - name: Maven (Java)
+          href: functions-create-first-java-maven.md
+    - name: Csatlakozás a tárolóhoz
+      items:
+        - name: Visual Studio Code
           href: functions-add-output-binding-storage-queue-vs-code.md
-        - name: Storage – Python
-          href: functions-add-output-binding-storage-queue-python.md
+        - name: Visual Studio
+          href: functions-add-output-binding-storage-queue-vs.md
+        - name: Maven (Java)
+          href: functions-add-output-binding-storage-queue-java.md
 - name: Oktatóanyagok
   items:
     - name: A Functions és a Logic Apps
@@ -160,7 +159,7 @@
                 - name: Azure Portal
                   href: functions-create-first-azure-function.md
                 - name: Parancssor
-                  href: functions-create-first-azure-function-azure-cli.md
+                  href: create-cli.md
                 - name: Visual Studio
                   href: create-visual-studio.md
                 - name: Visual Studio Code

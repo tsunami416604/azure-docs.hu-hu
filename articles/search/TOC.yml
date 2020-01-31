@@ -400,6 +400,8 @@
           href: cognitive-search-skill-conditional.md
         - name: Dokumentumkinyerés
           href: cognitive-search-skill-document-extraction.md
+        - name: PII-észlelés
+          href: cognitive-search-skill-pii-detection.md
     - name: Egyéni készségek
       items:
         - name: Egyéni webes API
