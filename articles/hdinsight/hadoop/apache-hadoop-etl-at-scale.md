@@ -2,18 +2,18 @@
 title: Kinyerés, átalakítás és betöltés (ETL) skálán – Azure HDInsight
 description: Megtudhatja, hogyan használják a kinyerési, átalakítási és betöltési HDInsight a Apache Hadoop.
 author: ashishthaps
+ms.author: ashishth
 ms.reviewer: jasonh
 ms.service: hdinsight
-ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/13/2019
-ms.author: ashishth
-ms.openlocfilehash: ceafee2d3356d37e74039789c8243ace41c141b2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.custom: hdinsightactive
+ms.date: 01/27/2020
+ms.openlocfilehash: f2c18a1e858fcebf8d2c82210f2290cf4a14d061
+ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75435778"
+ms.lasthandoff: 01/29/2020
+ms.locfileid: "76846016"
 ---
 # <a name="extract-transform-and-load-etl-at-scale"></a>Kinyerés, átalakítás és betöltés (ETL) skálán
 
@@ -55,7 +55,7 @@ A forrásadatok fájljai általában az Azure Storage-ban vagy Azure Data Lake S
 
 ### <a name="azure-storage"></a>Azure Storage
 
-Az [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) -ban konkrét skálázhatósági célok vannak. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../../storage/blobs/scalability-targets.md)ismertető témakört. A legtöbb analitikus csomópont esetében az Azure Storage a legjobbat méretezi a sok kisebb fájl kezelésekor.  Az Azure Storage ugyanazt a teljesítményt biztosítja, függetlenül attól, hogy hány fájl vagy mekkora a fájl mérete (ha az Ön korlátain belül van).  Ez azt jelenti, hogy több terabájtos adat is tárolható, és továbbra is konzisztens teljesítményt biztosít, függetlenül attól, hogy az adathalmazt vagy az összes adatát használja-e.
+Az [Azure Storage](https://azure.microsoft.com/services/storage/blobs/) -ban konkrét skálázhatósági célok vannak. További információkért lásd [a blob Storage skálázhatósági és teljesítménybeli céljait](../../storage/blobs/scalability-targets.md)ismertető témakört. A legtöbb analitikus csomópont esetében az Azure Storage a legjobbat méretezi a sok kisebb fájl kezelésekor.  Az Azure Storage ugyanazt a teljesítményt biztosítja, függetlenül attól, hogy hány fájl vagy mekkora a fájl mérete (ha az Ön korlátain belül van).  Ez azt jelenti, hogy a terabájtos adatmennyiséget tárolhatja, és továbbra is konzisztens teljesítményt érhet el, függetlenül attól, hogy az adat egy részhalmazát vagy az összes adatát használja-e.
 
 Az Azure Storage számos különböző típusú blobot tartalmaz.  A *hozzáfűző blob* nagyszerű lehetőség webnaplók vagy érzékelők-adattárolók tárolására.  
 
@@ -85,13 +85,13 @@ Az adatkészletek terabájt tartományban való feltöltéséhez a hálózati k�
 
 Az Azure SQL DW remek választás a megtisztított és előkészített eredmények tárolására a jövőbeli elemzésekhez.  Az Azure HDInsight ezen szolgáltatások Azure SQL DW-hez való végrehajtásához használható.
 
-A Azure SQL Data Warehouse (SQL DW) az analitikus számítási feladatokhoz optimalizált, összehasonlítható adatbázis-tároló.  Az Azure SQL DW méretezése particionált táblák alapján.  A táblák több csomópont között is particionálva lehetnek.  Az Azure SQL DW-csomópontok a létrehozáskor vannak kiválasztva.  Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [SQL Data Warehouse – a számítások kezelése](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md) .
+A Azure SQL Data Warehouse (SQL DW) az analitikus számítási feladatokhoz optimalizált, összehasonlítható adatbázis-tároló.  Az Azure SQL DW méretezése particionált táblák alapján.  A táblák több csomópont között is particionálva lehetnek.  Az Azure SQL DW-csomópontok a létrehozáskor vannak kiválasztva.  Az is előfordulhat, hogy a tény után méretezhetők, de ez egy aktív folyamat, amely adatáthelyezést igényelhet. További információ: [SQL Data Warehouse – számítások kezelése](../../sql-data-warehouse/sql-data-warehouse-manage-compute-overview.md).
 
 ### <a name="apache-hbase"></a>Apache HBase
 
 Az Apache HBase egy kulcs-érték tároló, amely az Azure HDInsight érhető el.  Az Apache HBase egy nyílt forráskódú NoSQL-adatbázis, amely a Hadoopra épült, és a Google BigTable után van modellezve. A HBase nagy mennyiségű strukturálatlan és félig strukturált adatokhoz nyújt véletlenszerű hozzáférést és erős konzisztenciát az oszlopos családok által rendezett, séma nélküli adatbázisokban.
 
-Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. A HBase támaszkodhat az adatredundanciára, a kötegelt feldolgozásra és a Hadoop-ökoszisztémában található elosztott alkalmazások által biztosított egyéb funkciókra is.   
+Az adatok a táblasorokban vannak tárolva, és a sorokon belüli adatok oszlopcsalád szerint vannak csoportosítva. A HBase egy séma nélküli adatbázis abban az értelemben, hogy az oszlopokat és a bennük tárolt adattípusokat sem kell meghatározni a használatuk előtt. A nyílt forráskód lineáris módon méreteződik át a több ezer csomópontnyi adat petabájtjainak kezelése érdekében. A HBase támaszkodhat az adatredundanciára, a kötegelt feldolgozásra és a Hadoop-ökoszisztémában található elosztott alkalmazások által biztosított egyéb funkciókra is.
 
 A HBase kiváló hely az érzékelők és a naplózási adatai számára a jövőbeli elemzésekhez.
 
@@ -107,7 +107,7 @@ Az Azure három különböző, a szolgáltatásként kínált platformként szol
 
 Ezek a termékek vertikális felskálázást jelentenek, ami azt jelenti, hogy több processzor és memória hozzáadásával méretezhetők.  Azt is megteheti, hogy prémium szintű lemezeket használ a termékekkel a jobb I/O-teljesítmény érdekében.
 
-## <a name="azure-analysis-services"></a>Azure Analysis Services 
+## <a name="azure-analysis-services"></a>Azure Analysis Services
 
 A Azure Analysis Services (AAS) a döntési támogatásban és az üzleti elemzésben használt analitikai adatmotor, amely az üzleti jelentések és ügyfélalkalmazások, például a Power BI, az Excel, a Reporting Services-jelentések és egyéb adatszolgáltatások analitikus adatkezelőjét biztosítja. vizualizációs eszközök.
 
@@ -115,11 +115,11 @@ Az elemzési kockák méretezése az egyes kockák szintjeinek módosításával
 
 ## <a name="extract-and-load"></a>Kinyerés és betöltés
 
-Ha az adatok már léteznek az Azure-ban, számos szolgáltatás használatával kinyerheti és betöltheti azokat más termékekbe.  A HDInsight támogatja a Sqoop és a Flume. 
+Ha az adatok már léteznek az Azure-ban, számos szolgáltatás használatával kinyerheti és betöltheti azokat más termékekbe.  A HDInsight támogatja a Sqoop és a Flume.
 
 ### <a name="apache-sqoop"></a>Apache Sqoop
 
-Az Apache Sqoop egy olyan eszköz, amely a strukturált, részben strukturált és strukturálatlan adatforrások közötti adatátvitelhez készült. 
+Az Apache Sqoop egy olyan eszköz, amely a strukturált, részben strukturált és strukturálatlan adatforrások közötti adatátvitelhez készült.
 
 A Sqoop a MapReduce használatával importálja és exportálja az adatgyűjtést, így párhuzamos működést és hibatűrést biztosít.
 
@@ -131,10 +131,10 @@ Az Apache Flume nem használható az Azure HDInsight.  A helyszíni Hadoop-telep
 
 ## <a name="transform"></a>Átalakítás
 
-Miután az adatok megtalálhatók a kiválasztott helyen, meg kell tisztítania, össze kell állítania, vagy elő kell készítenie egy adott használati mintához.  A kaptár, a Pig és a Spark SQL minden jó választás az adott típusú munkához.  Ezek mind támogatottak a HDInsight. 
+Miután az adatok megtalálhatók a kiválasztott helyen, meg kell tisztítania, össze kell állítania, vagy elő kell készítenie egy adott használati mintához.  A kaptár, a Pig és a Spark SQL minden jó választás az adott típusú munkához.  Ezek mind támogatottak a HDInsight.
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Az Apache Pig használata a Apache Hadoop on HDInsight](hdinsight-use-pig.md)
-* [Apache Hive használata ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md) 
+* [Apache Hive használata ETL-eszközként](apache-hadoop-using-apache-hive-as-an-etl-tool.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Adatok áthelyezése Azure SQL Databaseból Apache Hive táblázatba](./apache-hadoop-use-sqoop-mac-linux.md)
