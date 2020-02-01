@@ -1,16 +1,16 @@
 ---
 title: Azure Service Fabric CLI – sfctl-tároló
-description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürttípus-rendszerkép-tárolóban a fájl szintű műveletek végrehajtásához szükséges parancsok listáját tartalmazza.
+description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Tartalmazza a fürt rendszerkép-tárolójában a fájl szintű műveletek végrehajtásához szükséges parancsok listáját.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 64a8ea963afa9e20dfafb71db69b2baf66959369
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 75c62b54ff3aa7f3af344aa3e1ca81d431ae0ab2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645259"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905623"
 ---
 # <a name="sfctl-store"></a>sfctl-tároló
 Hajtsa végre az alapszintű fájl szintű műveleteket a fürt rendszerkép-tárolóján.

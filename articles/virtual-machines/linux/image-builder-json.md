@@ -7,12 +7,12 @@ ms.date: 01/23/2020
 ms.topic: article
 ms.service: virtual-machines-linux
 manager: gwallace
-ms.openlocfilehash: 9183805e2817459ac2c408648981b6989edf4e62
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 4ac2c1266933716697a658b1ba88efd8c2f05d34
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76760011"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905759"
 ---
 # <a name="preview-create-an-azure-image-builder-template"></a>Előzetes verzió: Azure rendszerkép-készítő sablon létrehozása 
 
@@ -317,6 +317,8 @@ Tulajdonságok testreszabása:
 - **restartCheckCommand** – a parancs segítségével ellenőrizze, hogy az újraindítás sikeres volt-e (nem kötelező). 
 - **restartTimeout** – újraindítási időkorlát, amely a magnitúdó és az egység értékének megfelelően van megadva. Például `5m` (5 perc) vagy `2h` (2 óra). Az alapértelmezett érték: "5m"
 
+### <a name="linux-restart"></a>Linux újraindítása  
+Nincs Linux-újraindítási testreszabó, azonban ha olyan illesztőprogramokat vagy összetevőket telepít, amelyek újraindítást igényelnek, akkor telepítheti őket, és a rendszerhéj-testreszabó használatával meghívhatják az újraindítást a 20min SSH-időtúllépéssel a Build virtuális géphez.
 
 ### <a name="powershell-customizer"></a>PowerShell-testreszabó 
 A rendszerhéj-testreszabó támogatja a PowerShell-parancsfájlok és a beágyazott parancsok futtatását, a parancsfájloknak nyilvánosan elérhetőnek kell lenniük az IB-hez való hozzáféréshez.

@@ -8,14 +8,14 @@ ms.service: security
 ms.subservice: security-fundamentals
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 10/28/2019
+ms.date: 01/29/2020
 ms.author: martinco
-ms.openlocfilehash: b416b38cfac48260f3375696caa2ecabcb4d57a9
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 870bb9720500b6eda5e7b9eb258b6764a94f01b6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75973914"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903588"
 ---
 # <a name="five-steps-to-securing-your-identity-infrastructure"></a>Öt lépés a személyazonossági infrastruktúra biztonságossá tételéhez
 
@@ -28,8 +28,8 @@ Ez az ellenőrzőlista segítséget nyújt a kritikus fontosságú ajánlott mű
 * Erősítse meg hitelesítő adatait.
 * Csökkentse a támadási felületet.
 * A veszélyforrások megválaszolásának automatizálása.
-* Növelje a naplózási és figyelési ismereteket.
-* Az önsegítő szolgáltatással kiszámítható és teljes körű biztonságot nyújthat a végfelhasználók számára.
+* Használja a Felhőbeli intelligenciát.
+* Végfelhasználói önkiszolgáló engedélyezése.
 
 Győződjön meg róla, hogy nyomon követheti, hogy mely funkciók és lépések állnak készen az ellenőrzőlista elolvasása során.
 
@@ -81,7 +81,7 @@ A PowerShell használatával [megakadályozhatja, hogy a jelszavak lejárjanak](
 Ha a szervezet hibrid identitási megoldást használ átmenő hitelesítéssel vagy összevonással, akkor a jelszó-kivonatolási szinkronizálást a következő két okból kell engedélyeznie:
 
 * A [kiszivárgott hitelesítő adatokkal rendelkező felhasználók](../../active-directory/reports-monitoring/concept-risk-events.md) az Azure ad-ben figyelmeztetnek a Felhasználónév és a jelszó párokra, amelyek elérhetők a "Dark web"-ben. A rendszer az adathalászat, a kártevők és a jelszavak újbóli felhasználását a későbbiekben megsértő külső webhelyeken végezheti el. A Microsoft megkeresi ezeket a kiszivárgott hitelesítő adatokat, és tájékoztatja Önt a jelentésben, ha megfelelnek a szervezet hitelesítő adatainak, de csak akkor, ha [engedélyezi a jelszó-kivonatok szinkronizálását](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md).
-* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például az Office 365-hez. Ebben az esetben a személyzetnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
+* Helyszíni leállás esetén (például egy ransomware támadás esetében) a [jelszó-kivonatolási szinkronizálás használatával](choose-ad-authn.md)átválthat a Felhőbeli hitelesítés használatára. Ez a biztonsági mentési hitelesítési módszer lehetővé teszi, hogy továbbra is hozzáférjen a hitelesítéshez konfigurált alkalmazások Azure Active Directory, például az Office 365-hez. Ebben az esetben az informatikai részlegnek nem kell személyes e-mail-fiókokat használnia az adatmegosztáshoz, amíg a helyszíni leállás megoldódik.
 
 További információ a [jelszó-kivonatolási szinkronizálás](../../active-directory/hybrid/how-to-connect-password-hash-synchronization.md) működéséről.
 
@@ -116,7 +116,7 @@ A szabálysértések megsértésének feltételezésével csökkentheti a feltö
 
 Fontos megérteni a különböző [Azure ad-alkalmazásokhoz való beleegyezési tapasztalatokat](https://docs.microsoft.com/azure/active-directory/develop/application-consent-experience), az [engedélyek és a beleegyezés típusát](https://docs.microsoft.com/azure/active-directory/develop/v2-permissions-and-consent), valamint a szervezet biztonsági helyzetére gyakorolt hatásukat. Alapértelmezés szerint az Azure AD minden felhasználója biztosíthat olyan alkalmazásokat, amelyek kihasználják a Microsoft Identity platformot a szervezet adatainak eléréséhez. A felhasználók saját maguk is engedélyezhetik, hogy a felhasználók egyszerűen beszerezzék a Microsoft 365-, Azure-és egyéb szolgáltatásokkal integrálható hasznos alkalmazásokat, és ez kockázatot jelenthet, ha nem használatos és nem figyeli őket körültekintően.
 
-A Microsoft javasolja a [jövőbeli felhasználói engedélyezési műveletek letiltását](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) a felület csökkentése és a kockázat enyhítése érdekében. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja a korábbi hozzájárulási engedélyeket, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A rendszergazdáknak az integrált [rendszergazdai engedélyezési kérelem munkafolyamatán](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) vagy a saját támogatási folyamatain keresztül kérhetik a rendszergazdai jogosultságokat. A funkció letiltása előtt javasoljuk, hogy tekintse át a naplót annak megértéséhez, hogy mely alkalmazások a felhasználók hozzájárulnak a módosításhoz, és tervezze meg ennek megfelelően a változást. Azon alkalmazások esetében, amelyek számára engedélyezni szeretné az összes felhasználó hozzáférését, fontolóra kell vennie az [összes felhasználó nevében való hozzájárulást](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), így biztosítva, hogy a korábban még nem beleegyezett felhasználók hozzáférhessenek az alkalmazáshoz. Ha nem szeretné, hogy ezek az alkalmazások minden esetben elérhetők legyenek az összes felhasználó számára, használja az [alkalmazás-hozzárendelést](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) és a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) az alkalmazások felhasználói hozzáférésének korlátozásához.
+A Microsoft javasolja a [jövőbeli felhasználói engedélyezési műveletek letiltását](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-removing-user-access#i-want-to-disable-all-future-user-consent-operations-to-any-application) a felület csökkentése és a kockázat enyhítése érdekében. Ha a végfelhasználói hozzájárulás le van tiltva, a rendszer továbbra is tiszteletben tartja a korábbi hozzájárulási engedélyeket, de az összes jövőbeli hozzájárulási műveletet egy rendszergazdának kell elvégeznie. A rendszergazdáknak az integrált [rendszergazdai engedélyezési kérelem munkafolyamatán](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-admin-consent-workflow) vagy a saját támogatási folyamatain keresztül kérhetik a rendszergazdai jogosultságokat. A végfelhasználói Belefoglalás letiltása előtt [javaslataink](https://docs.microsoft.com/azure/active-directory/manage-apps/manage-consent-requests) alapján tervezze meg ezt a változást a szervezetében. Azon alkalmazások esetében, amelyek számára engedélyezni szeretné az összes felhasználó hozzáférését, fontolóra kell vennie az [összes felhasználó nevében való hozzájárulást](https://docs.microsoft.com/azure/active-directory/develop/v2-admin-consent), így biztosítva, hogy a korábban még nem beleegyezett felhasználók hozzáférhessenek az alkalmazáshoz. Ha nem szeretné, hogy ezek az alkalmazások minden esetben elérhetők legyenek az összes felhasználó számára, használja az [alkalmazás-hozzárendelést](https://docs.microsoft.com/azure/active-directory/manage-apps/methods-for-assigning-users-and-groups) és a [feltételes hozzáférést](https://docs.microsoft.com/azure/active-directory/conditional-access/overview) az alkalmazások felhasználói hozzáférésének korlátozásához.
 
 Győződjön meg arról, hogy a felhasználók az új alkalmazások számára rendszergazdai jóváhagyást kérhetnek a felhasználói súrlódás csökkentése érdekében, minimálisra csökkentik a kötetek támogatását, és megakadályozhatják, hogy a felhasználók nem Azure AD-beli hitelesítő adatokkal regisztráljanak. A hozzájárulási műveletek szabályozása után a rendszergazdáknak rendszeresen be kell jelentkezniük az alkalmazásra és a beleegyezési engedélyekre.
 
@@ -134,7 +134,7 @@ A [Azure ad Privileged Identity Management (PIM)](../../active-directory/privile
 
 Engedélyezze az Azure AD PIM-t, majd tekintse meg a rendszergazdai szerepkörökhöz rendelt felhasználókat, és távolítsa el a szerepkörök szükségtelen fiókjait. A többi emelt szintű jogosultsággal rendelkező felhasználó számára az állandóról jogosultra helyezheti át őket. Végül hozza létre a megfelelő szabályzatokat annak biztosításához, hogy mikor van szükségük ahhoz, hogy hozzáférést kapjanak ezekhez a Kiemelt szerepkörökhöz, biztonságosan, a szükséges módosítás-ellenőrzéssel.
 
-A rendszerjogosultságú fiók üzembe helyezésének részeként az ajánlott eljárás [szerint hozzon létre legalább két vészhelyzeti fiókot](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) , hogy biztosan hozzáférjen az Azure ad-hez, ha Ön kizárja magát.
+A rendszerjogosultságú fiók üzembe helyezésének részeként az ajánlott eljárás [szerint hozzon létre legalább két vészhelyzeti fiókot](../../active-directory/users-groups-roles/directory-admin-roles-secure.md) annak érdekében, hogy továbbra is hozzáférhessen az Azure ad-hez, ha zárolja magát.
 
 ## <a name="step-3---automate-threat-response"></a>3\. lépés – a veszélyforrások megválaszolásának automatizálása
 
@@ -152,7 +152,7 @@ A bejelentkezési kockázat annak a valószínűsége, hogy a fiók tulajdonosa 
 
 ![Bejelentkezés névtelen IP-címekről](./media/steps-secure-identity/azure-ad-sec-steps2.png)
 
-## <a name="step-4---increase-your-awareness"></a>4\. lépés – a Hangfelismerés növelése
+## <a name="step-4---utilize-cloud-intelligence"></a>4\. lépés – a Cloud Intelligence kihasználása
 
 A biztonsággal kapcsolatos események és a kapcsolódó riasztások naplózása és naplózása hatékony védelmi stratégia alapvető összetevői. A biztonsági naplók és jelentések lehetővé teszik a gyanús tevékenységek elektronikus feljegyzését, valamint a hálózat külső behatolását, illetve a belső támadásokat jelezhet minták észlelését. A naplózás használatával figyelheti a felhasználói tevékenységeket, a dokumentumok megfelelőségét, a kriminalisztikai elemzést és egyebeket. A riasztások a biztonsági események értesítéseit biztosítják.
 
@@ -180,7 +180,7 @@ Azure AD Identity Protection két fontos jelentést biztosít a napi figyeléshe
 
 A felhasználók bejelentkezhetnek egy olyan feltört webhelyre vagy alkalmazásba, amely hozzáférést szerez a profiljuk adataihoz és a felhasználói adatokhoz, például az e-mailekhez. Egy rosszindulatú színész használhatja a kapott engedélyekkel, hogy Titkosítsa a postaláda tartalmát, és megszerezze a váltságdíjat a postaláda-információk visszaszerzéséhez. A [rendszergazdáknak át kell tekinteniük és ellenőrizniük kell](https://docs.microsoft.com/office365/securitycompliance/detect-and-remediate-illicit-consent-grants) a felhasználók által megadott engedélyeket, vagy le kell tiltaniuk, hogy a felhasználók alapértelmezés szerint megadják a hozzájárulásukat.
 
-A felhasználók által megadott engedélyek naplózása mellett a szolgáltatás a prémium szintű környezetek számára elérhetővé teszi a [kockázatos vagy nemkívánatos OAuth-alkalmazások](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth)kipróbálását és konkrét megkeresését.
+A felhasználók által megadott engedélyek naplózása mellett a [kockázatos vagy nemkívánatos OAuth alkalmazásokat is megtalálhatja](https://docs.microsoft.com/cloud-app-security/investigate-risky-oauth) prémium környezetekben.
 
 ## <a name="step-5---enable-end-user-self-service"></a>5\. lépés – a végfelhasználói önkiszolgáló engedélyezése
 
@@ -192,11 +192,11 @@ Az Azure AD önkiszolgáló [jelszó-visszaállítási szolgáltatása (SSPR)](.
 
 ### <a name="implement-self-service-group-and-application-access"></a>Önkiszolgáló csoport és alkalmazás-hozzáférés megvalósítása
 
-Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférés kezelését, a biztonsági csoportok, az Office 365-csoportok, az alkalmazás szerepkörei és a hozzáférési csomagok katalógusának használatával.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók az Office 365-csoportok létrehozását és felügyeletét anélkül is létrehozhatják és kezelhetik, hogy a rendszergazdákra támaszkodnak a kéréseik kezelésére, a nem használt csoportok pedig automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, amelyekhez a hozzáférés jóváhagyásához szükséges egyéni szabályzatok érvényesek, beleértve az alkalmazottak a vezetők és az üzleti partnerek támogatói.
+Az Azure AD lehetővé teszi a nem rendszergazdák számára az erőforrásokhoz való hozzáférést, a biztonsági csoportok, az Office 365-csoportok, az alkalmazási szerepkörök és a hozzáférési csomagok katalógusának kezelését.  Az [önkiszolgáló csoportok felügyelete](../../active-directory/users-groups-roles/groups-self-service-management.md) lehetővé teszi, hogy a csoport tulajdonosai a saját Csoportjaikat kezelhesse, anélkül, hogy rendszergazdai szerepkört kellene hozzárendelni. A felhasználók az Office 365-csoportok létrehozását és felügyeletét anélkül is létrehozhatják és kezelhetik, hogy a rendszergazdákra támaszkodnak a kéréseik kezelésére, a nem használt csoportok pedig automatikusan lejárnak.  Az [Azure ad-jogosultságok kezelése](../../active-directory/governance/entitlement-management-overview.md) lehetővé teszi a delegálást és a láthatóságot, átfogó hozzáférési kérelmek munkafolyamataival és automatikus lejáratával.  A nem rendszergazdai jogosultsággal rendelkező felhasználók a saját hozzáférési csomagjaikat a saját csoportjaihoz, csoportjaihoz, alkalmazásaihoz és a saját SharePoint Online-webhelyekhez is konfigurálhatják, amelyekhez a hozzáférés jóváhagyásához szükséges egyéni szabályzatok érvényesek, beleértve az alkalmazottak a vezetők és az üzleti partnerek támogatói.
 
 ### <a name="implement-azure-ad-access-reviews"></a>Azure AD hozzáférési felülvizsgálatok megvalósítása
 
-Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók rendszeres felügyelete alá tartoznak, az erőforrás-tulajdonosok és az egyéb felülvizsgálók biztosítják, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
+Az [Azure ad hozzáférési felülvizsgálatok](../../active-directory/governance/access-reviews-overview.md)segítségével kezelheti a hozzáférési csomagokat és a csoporttagságok, a vállalati alkalmazásokhoz való hozzáférést és a Kiemelt szerepkör-hozzárendeléseket, így biztosítva a biztonsági szabványok fenntartását.  A felhasználók saját maguk, az erőforrás-tulajdonosok és az egyéb felülvizsgálók rendszeres felügyelete biztosítja, hogy a felhasználók ne tartsanak meg hosszabb ideig a hozzáférést, amikor már nincs rá szükségük.
 
 ## <a name="summary"></a>Összefoglalás
 
@@ -205,7 +205,7 @@ A biztonságos identitás-infrastruktúrának számos aspektusa van, de ez az ö
 * Erősítse meg hitelesítő adatait.
 * Csökkentse a támadási felületet.
 * A veszélyforrások megválaszolásának automatizálása.
-* Növelje a naplózási és figyelési ismereteket.
+* Használja a Felhőbeli intelligenciát.
 * Az önsegítő szolgáltatással kiszámítható és teljes körű biztonságot nyújthat a végfelhasználók számára.
 
 Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági biztonságot, és reméljük, hogy ez a dokumentum hasznos útiterv a szervezete számára biztonságosabb testhelyzethez.
@@ -214,4 +214,4 @@ Nagyra értékeljük, hogy milyen komolyan vesszük a személyazonossági bizton
 
 Ha segítségre van szüksége a javaslatok megtervezéséhez és üzembe helyezéséhez, tekintse meg az [Azure ad projekt üzembe helyezési terveit](https://aka.ms/deploymentplans) .
 
-Ha biztos abban, hogy mindezen lépések befejeződik, használja a Microsoft [személyazonosságának biztonságos pontszámát](../../active-directory/fundamentals/identity-secure-score.md), amely naprakészen tartja a [legújabb ajánlott eljárásokat](identity-management-best-practices.md) és biztonsági fenyegetéseket.
+Ha biztos benne, hogy mindezek a lépések befejeződik, használja a Microsoft [Identity Secure pontszámát](../../active-directory/fundamentals/identity-secure-score.md), amely naprakészen tartja a [legújabb ajánlott eljárásokat](identity-management-best-practices.md) és biztonsági fenyegetéseket.

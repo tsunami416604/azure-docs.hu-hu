@@ -9,12 +9,12 @@ ms.subservice: forms-recognizer
 ms.topic: conceptual
 ms.date: 12/12/2019
 ms.author: pafarley
-ms.openlocfilehash: cb5639dcf0e13ea03d34604816b3939085674c2e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2109d25d3962063c711dcab491855d9ebf1cf694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75456365"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901880"
 ---
 # <a name="whats-new-in-form-recognizer"></a>A Form Recognizer újdonságai
 
@@ -24,9 +24,6 @@ Ez a cikk az űrlap-felismerő API új verzióival kapcsolatos főbb változáso
 > Az ebben a dokumentumban található rövid útmutatók és útmutatók mindig az API legújabb verzióját használják, kivéve, ha másként vannak megadva.
 
 ## <a name="form-recognizer-20-preview"></a>Űrlap-felismerő 2,0 (előzetes verzió)
-
-> [!IMPORTANT]
-> Az 2,0-es űrlap-felismerő jelenleg a `West US 2`-és `West Europe`-régiókban lévő előfizetésekhez érhető el. Ha az előfizetése nem ebben a régióban van, használja a 1,0 API-t. Az egyéni modell betanítására és használatára szolgáló rövid útmutatók az v 1.0 és a v 2.0 esetében is elérhetők.
 
 ### <a name="new-features"></a>ÚJ funkciók
 

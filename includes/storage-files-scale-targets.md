@@ -4,12 +4,12 @@ ms.service: storage
 ms.topic: include
 ms.date: 05/06/2019
 ms.author: rogarana
-ms.openlocfilehash: d76338ccd4dcdf7a9a9a96baa1fb47ed5272d5ff
-ms.sourcegitcommit: 8e271271cd8c1434b4254862ef96f52a5a9567fb
+ms.openlocfilehash: 8a8619da831dfa5b240bd93d3a046c49cc30affa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/23/2019
-ms.locfileid: "72821991"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901412"
 ---
 | Erőforrás | Szabványos fájlmegosztás | Prémium fájlmegosztás |
 |----------|---------------|------------------------------------------|
@@ -27,4 +27,4 @@ ms.locfileid: "72821991"
 | A maximális objektum (könyvtárak és fájlok) nevének hossza | 2 048 karakter | 2 048 karakter |
 | A maximális elérésiút-összetevő (az elérési út \A\B\C\D, minden betű egy összetevő) | 255 karakter | 255 karakter |
 
-\* nem érhető el az összes régióban: az elérhető régiók listájának [regionális elérhetősége](../articles/storage/files/storage-files-planning.md#regional-availability) .
+a legtöbb régióban elérhető \* az elérhető régiók részleteinek [regionális elérhetősége](../articles/storage/files/storage-files-planning.md#regional-availability) című részben olvashat.

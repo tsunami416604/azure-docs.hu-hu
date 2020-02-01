@@ -9,12 +9,12 @@ manager: ''
 ms.topic: conceptual
 ms.date: 08/22/2019
 ms.author: spelluru
-ms.openlocfilehash: cbd7de7d526e1954aaad60f7d71e5cdf202f6a29
-ms.sourcegitcommit: 007ee4ac1c64810632754d9db2277663a138f9c4
+ms.openlocfilehash: 0c5d3eca4a01488f521f9a85fa129eb0ac72c363
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2019
-ms.locfileid: "69992834"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904551"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-event-hubs-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Event Hubs erőforrások eléréséhez
 Az Azure Event Hubs támogatja a Azure Active Directory (Azure AD) hitelesítést az [Azure-erőforrások felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md). Az Azure-erőforrások felügyelt identitásai engedélyezhetik Event Hubs erőforrásokhoz való hozzáférést az Azure Virtual Machines (VM), a Function apps, a Virtual Machine Scale Sets és más szolgáltatások által futtatott alkalmazások Azure AD-beli hitelesítő adataival. Ha felügyelt identitásokat használ az Azure-erőforrásokhoz az Azure AD-hitelesítéssel együtt, elkerülheti a hitelesítő adatok tárolását a felhőben futó alkalmazásaival.
@@ -43,7 +43,7 @@ Itt egy [Azure app Service](https://azure.microsoft.com/services/app-service/)-b
 Az alkalmazás létrehozása után kövesse az alábbi lépéseket: 
 
 1. Lépjen a **Beállítások** menüpontra, és válassza az **identitás**elemet. 
-1. Válassza ki a bekapcsolni kívánt **állapotot** . 
+1. Válassza ki a **bekapcsolni**kívánt **állapotot** . 
 1. A beállítás mentéséhez kattintson a **Mentés** gombra. 
 
     ![Webalkalmazás felügyelt identitása](./media/authenticate-managed-identity/identity-web-app.png)
@@ -58,9 +58,9 @@ Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon 
 > [!NOTE]
 > A következő lépések szolgáltatás-identitási szerepkört rendelnek a Event Hubs névterekhez. Ugyanezeket a lépéseket követve rendelhet hozzá egy szerepkört egy Event Hubs erőforráshoz. 
 
-1. A Azure Portal navigáljon a Event Hubs névtérhez, és jelenítse meg a névtér áttekintését. 
+1. A Azure Portal navigáljon a Event Hubs névtérhez, és jelenítse meg a névtér **áttekintését** . 
 1. A bal oldali menüben válassza a **Access Control (iam)** lehetőséget az Event hub hozzáférés-vezérlési beállításainak megjelenítéséhez.
-1.  Válassza ki a **szerepkör** -hozzárendelések lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
+1.  Válassza ki a **szerepkör-hozzárendelések** lapot a szerepkör-hozzárendelések listájának megtekintéséhez.
 3.  Új szerepkör hozzáadásához válassza a **Hozzáadás** lehetőséget.
 4.  A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki a hozzárendelni kívánt Event Hubs-szerepköröket. Ezután keresse meg a szerepkör hozzárendeléséhez regisztrált szolgáltatás identitását.
     
@@ -72,17 +72,73 @@ Ha szerepkört szeretne hozzárendelni Event Hubs erőforrásokhoz, navigáljon 
 A szerepkör hozzárendelése után a webalkalmazás hozzáférhet a megadott hatókörben lévő Event Hubs erőforrásokhoz. 
 
 ### <a name="test-the-web-application"></a>A webalkalmazás tesztelése
+1. Hozzon létre egy Event Hubs névteret és egy Event hubot. 
+2. Telepítse a webalkalmazást az Azure-ba. Tekintse meg a következő többoldalas szakaszt a webalkalmazásra mutató hivatkozásokon a GitHubon. 
+3. Győződjön meg arról, hogy a SendReceive. aspx be van állítva a webalkalmazás alapértelmezett dokumentuma. 
+3. A webalkalmazás **identitásának** engedélyezése. 
+4. Rendelje hozzá ezt az identitást a **Event Hubs adat-tulajdonosi** szerepkörhöz a névtér szintjén vagy az Event hub szintjén. 
+5. Futtassa a webalkalmazást, adja meg a névtér nevét és az Event hub nevét, egy üzenetet, és válassza a **Küldés**lehetőséget. Az esemény fogadásához válassza a **fogadás**lehetőséget. 
+
+#### <a name="azuremessagingeventhubs-latesttablatest"></a>[Azure. Messaging. EventHubs (legújabb)](#tab/latest)
+Most már elindíthatja a webalkalmazást, és irányíthatja a böngészőt az aspx-minta lapra. Megtalálhatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/ManagedIdentityWebApp)-tárházban található Event Hubs-erőforrásokból adatokat küldő és fogadó minta webalkalmazást.
+
+Telepítse a legújabb csomagot a [NuGet](https://www.nuget.org/packages/Azure.Messaging.EventHubs/)-ből, és kezdje el az események küldését Event Hubs a **EventHubProducerClient** használatával, és fogadja az eseményeket a **EventHubConsumerClient**segítségével.  
+
+```csharp
+protected async void btnSend_Click(object sender, EventArgs e)
+{
+    await using (EventHubProducerClient producerClient = new EventHubProducerClient(txtNamespace.Text, txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        // create a batch
+        using (EventDataBatch eventBatch = await producerClient.CreateBatchAsync())
+        {
+
+            // add events to the batch. only one in this case. 
+            eventBatch.TryAdd(new EventData(Encoding.UTF8.GetBytes(txtData.Text)));
+
+            // send the batch to the event hub
+            await producerClient.SendAsync(eventBatch);
+        }
+
+        txtOutput.Text = $"{DateTime.Now} - SENT{Environment.NewLine}{txtOutput.Text}";
+    }
+}
+protected async void btnReceive_Click(object sender, EventArgs e)
+{
+    await using (var consumerClient = new EventHubConsumerClient(EventHubConsumerClient.DefaultConsumerGroupName, $"{txtNamespace.Text}.servicebus.windows.net", txtEventHub.Text, new DefaultAzureCredential()))
+    {
+        int eventsRead = 0;
+        try
+        {
+            using CancellationTokenSource cancellationSource = new CancellationTokenSource();
+            cancellationSource.CancelAfter(TimeSpan.FromSeconds(5));
+
+            await foreach (PartitionEvent partitionEvent in consumerClient.ReadEventsAsync(cancellationSource.Token))
+            {
+                txtOutput.Text = $"Event Read: { Encoding.UTF8.GetString(partitionEvent.Data.Body.ToArray()) }{ Environment.NewLine}" + txtOutput.Text;
+                eventsRead++;
+            }
+        }
+        catch (TaskCanceledException ex)
+        {
+            txtOutput.Text = $"Number of events read: {eventsRead}{ Environment.NewLine}" + txtOutput.Text;
+        }
+    }
+}
+```
+
+#### <a name="microsoftazureeventhubs-legacytabold"></a>[Microsoft. Azure. EventHubs (örökölt)](#tab/old)
 Most már elindíthatja a webalkalmazást, és irányíthatja a böngészőt az aspx-minta lapra. Megtalálhatja a [GitHub](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp)-tárházban található Event Hubs-erőforrásokból adatokat küldő és fogadó minta webalkalmazást.
 
-Telepítse a legújabb csomagot a [Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)-ből, és kezdje el küldeni és fogadni az Event huboktól származó adatokat az EventHubClient a következő kódban látható módon: 
+Telepítse a legújabb csomagot a [NuGet](https://www.nuget.org/packages/Microsoft.Azure.EventHubs/)-ből, és kezdje el küldeni és fogadni az Event huboktól származó adatokat az EventHubClient a következő kódban látható módon: 
 
 ```csharp
 var ehClient = EventHubClient.CreateWithManagedIdentity(new Uri($"sb://{EventHubNamespace}/"), EventHubName);
 ```
+---
 
-## <a name="next-steps"></a>További lépések
-- Töltse le a [mintát](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/Rbac/ManagedIdentityWebApp) a githubról.
-- Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a következő cikket: [Mit kell tudni az Azure-erőforrások felügyelt identitásairól?](../active-directory/managed-identities-azure-resources/overview.md)
+## <a name="next-steps"></a>Következő lépések
+- Az Azure-erőforrások felügyelt identitásának megismeréséhez tekintse meg a következő cikket: [Mi az Azure-erőforrások felügyelt identitása?](../active-directory/managed-identities-azure-resources/overview.md)
 - Tekintse meg a következő kapcsolódó cikkeket:
     - [Kérelmek hitelesítése az Azure Event Hubs alkalmazásból Azure Active Directory használatával](authenticate-application.md)
     - [Kérelmek hitelesítése az Azure Event Hubs megosztott hozzáférési aláírások használatával](authenticate-shared-access-signature.md)

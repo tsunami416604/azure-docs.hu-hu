@@ -1,62 +1,78 @@
 ---
-title: Az Azure arc for Servers áttekintése
-description: Ismerje meg, hogyan használható az Azure arc a kiszolgálókon az infrastruktúra és az alkalmazások életciklusának automatizálására.
+title: Azure arc for Servers (előzetes verzió) – áttekintés
+description: Ismerje meg, hogyan kezelheti az Azure arc for Servers szolgáltatásait az Azure-on kívül üzemeltetett gépek kezelésére, mintha az Azure-erőforrás.
 services: azure-arc
 ms.service: azure-arc
 ms.subservice: azure-arc-servers
-author: bobbytreed
-ms.author: robreed
+author: mgoedtel
+ms.author: magoedte
 keywords: Azure Automation, DSC, PowerShell, a kívánt állapot konfigurálása, frissítés kezelése, változások követése, leltár, runbookok, Python, grafikus, hibrid
-ms.date: 11/04/2019
+ms.date: 01/29/2020
 ms.custom: mvc
 ms.topic: overview
-ms.openlocfilehash: 06e3b490f4f9cef64ae8bca5aed4d0518f10ba0e
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: b0f1d235391c4c4e3804a6dccc8174e946035b6a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659621"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899200"
 ---
-# <a name="what-is-azure-arc-for-servers"></a>Mi az Azure arc a kiszolgálókhoz
+# <a name="what-is-azure-arc-for-servers-preview"></a>Mi az Azure arc for Servers (előzetes verzió)
 
-Az Azure arc for Servers szolgáltatás lehetővé teszi az Azure-on kívüli gépek felügyeletét.
-Ha egy nem Azure-beli gép csatlakozik az Azure-hoz, az egy **csatlakoztatott számítógép** lesz, és erőforrásként van kezelve az Azure-ban. Minden **csatlakoztatott számítógép** rendelkezik erőforrás-azonosítóval, egy előfizetéshez tartozó erőforráscsoport részeként, valamint a szabványos Azure-konstrukciók, például a Azure Policy és a címkézés előnyei.
+Az Azure arc for Servers (előzetes verzió) lehetővé teszi az Azure-on kívül üzemeltetett Windows-és Linux-gépek felügyeletét a vállalati hálózaton vagy más felhőalapú szolgáltatón, hasonlóan a natív Azure-beli virtuális gépek kezeléséhez. Ha egy hibrid gép csatlakozik az Azure-hoz, az egy csatlakoztatott gép lesz, és erőforrásként van kezelve az Azure-ban. Minden csatlakoztatott számítógép rendelkezik erőforrás-AZONOSÍTÓval, egy előfizetéshez tartozó erőforráscsoport részeként, valamint a szabványos Azure-konstrukciók, például a Azure Policy és a címkék alkalmazásának előnyei.
 
-Az Azure-hoz való kapcsolódáshoz minden gépen telepíteni kell egy ügynök-csomagot. A dokumentum további részében részletesebben ismertetjük a folyamatot.
+Ahhoz, hogy ezt a szolgáltatást az Azure-on kívül üzemeltetett hibrid gépekkel is el lehessen juttatni, az Azure-hoz csatlakoztatott számítógép-ügynököt minden olyan gépre telepíteni kell, amelyet az Azure-hoz való csatlakozásra tervez. Ez az ügynök nem nyújt semmilyen egyéb funkciót, és nem helyettesíti az Azure [log Analytics Agent ügynököt](../../azure-monitor/platform/log-analytics-agent.md). A Windows és Linux rendszerhez készült Log Analytics-ügynökre akkor van szükség, ha proaktívan szeretné figyelni a gépen futó operációs rendszert és munkaterheléseket, felügyelheti azt automatizálási runbookok vagy olyan megoldások használatával, mint például a Update Management, vagy más Azure-szolgáltatásokat is használhat, mint például a [Azure Security Center](../../security-center/security-center-intro.md).
 
-A gépek **csatlakoztatva** vagy **leválasztva** állapotba kerülnek, attól függően, hogy az ügynök hogyan jelentkezett be a közelmúltban. Az egyes bejelentkezéseket szívverésnek nevezzük. Ha egy gép nem jelentkezett be az elmúlt 5 percen belül, az offline állapotba kerül, amíg a kapcsolat vissza nem áll.  <!-- For more information on troubleshooting agent connectivity, see [Troubleshooting Azure Arc for servers](troubleshoot/arc-for-servers.md). -->
+>[!NOTE]
+>Ez az előzetes kiadás a kiértékelés céljára szolgál, és javasoljuk, hogy ne kezelje a kritikus üzemi gépeket.
+>
 
-![Csatlakoztatott kiszolgálók](./media/overview/arc-for-servers-onboarded-servers.png)
+## <a name="supported-scenarios"></a>Támogatott esetek
 
-## <a name="clients"></a>Ügyfelek
+Az Azure arc for Servers (előzetes verzió) a következő forgatókönyveket támogatja a csatlakoztatott gépekkel kapcsolatban:
+
+- Az Azure Virtual Machines szolgáltatáshoz tartozó szabályzat-hozzárendeléssel megegyező módon rendeljen hozzá [Azure Policy vendég konfigurációkat](../../governance/policy/concepts/guest-configuration.md) .
+- A Log Analytics ügynök által gyűjtött és a Log Analytics munkaterületen tárolt adatok naplózása a gépen a számítógép regisztrálva van, és a gép, például az erőforrás-azonosító, az [erőforrás-környezet](../../azure-monitor/platform/design-logs-deployment.md#access-mode) naplózási hozzáférésének támogatásához használható tulajdonságokat is tartalmaz.
+
+## <a name="supported-regions"></a>Támogatott régiók
+
+Az Azure arc for Servers (előzetes verzió) használata esetén csak bizonyos régiók támogatottak:
+
+- WestUS2
+- WestEurope
+- WestAsia
+
+## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 
-A nyilvános előzetes verzióban a következőket támogatjuk:
+A Windows és a Linux operációs rendszer következő verziói hivatalosan támogatottak az Azure-beli csatlakoztatott gépi ügynöknél: 
 
 - Windows Server 2012 R2 és újabb
 - Ubuntu 16,04 és 18,04
 
-A nyilvános előzetes kiadás kiértékelésre szolgál, és nem használható a kritikus termelési erőforrások kezeléséhez.
+>[!NOTE]
+>A Windowshoz készült csatlakoztatott számítógép ügynökének előzetes kiadása csak az angol nyelv használatára konfigurált Windows Servert támogatja.
+>
 
-## <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
+### <a name="azure-subscription-and-service-limits"></a>Azure-előfizetések és-szolgáltatások korlátai
 
-Győződjön meg arról, hogy elolvasta a Azure Resource Manager korlátozásokat, és tervezze meg a csatlakoztatni kívánt gépek számát az [előfizetéshez](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager)és az [erőforráscsoportokhöz](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits)tartozó útmutatásnak megfelelően. Alapértelmezés szerint az erőforráscsoport legfeljebb 800-kiszolgálót foglal le.
+Mielőtt a gépeket az Azure arc for Servers (előzetes verzió) értékre konfigurálja, tekintse át a Azure Resource Manager [előfizetési korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#subscription-limits---azure-resource-manager) és az [erőforráscsoport korlátait](../../azure-resource-manager/management/azure-subscription-service-limits.md#resource-group-limits) , hogy megtervezze a csatlakoztatni kívánt gépek számát.
 
-## <a name="networking-configuration"></a>Hálózati konfiguráció
+### <a name="networking-configuration"></a>Hálózati konfiguráció
 
-A telepítés és a futtatókörnyezet során az ügynöknek kapcsolódnia kell az **Azure arc Service-végpontokhoz**. Ha a tűzfal blokkolja a kimenő kapcsolatot, győződjön meg arról, hogy a következő URL-címek nincsenek letiltva alapértelmezés szerint. Minden kapcsolat kimenő az ügynöktől az Azure-ba, és **SSL**-védelemmel van ellátva. Minden forgalmat egy **https** -proxyn keresztül lehet irányítani. Ha engedélyezi azokat az IP-tartományokat vagy tartományneveket, amelyekhez a kiszolgálók csatlakozni tudnak, engedélyeznie kell a 443-es portot a következő szolgáltatási címkékhez és DNS-nevekhez.
+A Linux és a Windows rendszerhez csatlakoztatott gépi ügynök a 443-as TCP-porton keresztül kommunikál az Azure-beli ív felé. Ha a gép tűzfalon vagy proxykiszolgálón keresztül csatlakozik az interneten keresztüli kommunikációhoz, tekintse át az alábbi követelményeket a hálózati konfigurációs követelmények megismeréséhez.
+
+Ha a kimenő kapcsolatot a tűzfal vagy a proxykiszolgáló korlátozza, győződjön meg arról, hogy az alább felsorolt URL-címek nincsenek letiltva. Ha csak az ügynöknek a szolgáltatással való kommunikációhoz szükséges IP-tartományokat vagy tartományneveket engedélyezi, akkor a következő szolgáltatási címkékhez és URL-címekhez is engedélyeznie kell a hozzáférést.
 
 Szolgáltatás címkéi:
 
-* AzureActiveDirectory
-* AzureTrafficManager
+- AzureActiveDirectory
+- AzureTrafficManager
 
-Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További részletekért lásd a [szolgáltatás címkéi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags)című témakört.
+URLs
 
-Ezek a DNS-nevek a szolgáltatási címke IP-címtartomány-információi mellett vannak megadva, mert a szolgáltatások többsége jelenleg nem rendelkezik szolgáltatás-címkézési regisztrációval, és így az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-tartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatáshoz való hozzáférés engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, de engedélyezze azokat más internetes forgalomként.
-
-| Tartománykörnyezet | Szükséges Azure-szolgáltatásvégpontok |
+| Ügynök erőforrása | Leírás |
 |---------|---------|
 |management.azure.com|Azure Resource Manager|
 |login.windows.net|Azure Active Directory|
@@ -65,116 +81,58 @@ Ezek a DNS-nevek a szolgáltatási címke IP-címtartomány-információi mellet
 |\* – agentservice-prod-1.azure-automation.net|Vendégkonfiguráció|
 |*. his.hybridcompute.azure-automation.net|Hibrid identitási szolgáltatás|
 
-### <a name="installation-network-requirements"></a>Telepítési hálózati követelmények
+Az egyes szolgáltatási címkék/régiók IP-címeinek listáját lásd: JSON-fájl – [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519). A Microsoft az egyes Azure-szolgáltatásokat és az általa használt IP-tartományokat tartalmazó heti frissítéseket tesz közzé. További információkért tekintse át a [szolgáltatás címkéit](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
-Töltse le az [Azure Connected Machine Agent csomagot](https://aka.ms/AzureConnectedMachineAgent) a hivatalos terjesztési kiszolgálókról az alábbi helyeknek elérhetőknek kell lenniük a környezetből. Dönthet úgy, hogy letölti a csomagot egy fájlmegosztás számára, és onnan telepíti az ügynököt. Ebben az esetben előfordulhat, hogy a Azure Portalból generált bevezetési parancsfájlt módosítani kell.
+Az előző táblázatban szereplő URL-címeket a szolgáltatási címke IP-címtartomány információi mellett is meg kell adni, mivel a szolgáltatások többsége jelenleg nem rendelkezik a szolgáltatási címke regisztrálásával. Ennek megfelelően az IP-címek változhatnak. Ha a tűzfal-konfigurációhoz IP-címtartományok szükségesek, akkor a **AzureCloud** szolgáltatás címkét kell használni az összes Azure-szolgáltatás elérésének engedélyezéséhez. Ne tiltsa le ezen URL-címek biztonsági figyelését vagy ellenőrzését, és engedélyezze azokat más internetes forgalomként.
 
-Windows:
+### <a name="register-azure-resource-providers"></a>Azure-erőforrás-szolgáltatók regisztrálása
 
-* `aka.ms`
-* `download.microsoft.com`
+Az Azure arc for Servers (előzetes verzió) az előfizetés alábbi Azure-erőforrás-szolgáltatói függ a szolgáltatás használatához:
 
-Linux:
+- **Microsoft. HybridCompute**
+- **Microsoft. GuestConfiguration**
 
-* `aka.ms`
-* `packages.microsoft.com`
-
-Tekintse meg a [proxykiszolgáló](quickstart-onboard-powershell.md#proxy-server-configuration)konfigurálása című szakaszt, amely arról nyújt tájékoztatást, hogyan konfigurálhatja az ügynököt a proxy használatára.
-
-## <a name="register-the-required-resource-providers"></a>A szükséges erőforrás-szolgáltatók regisztrálása
-
-Ahhoz, hogy használni lehessen az Azure arc-kiszolgálókat, regisztrálnia kell a szükséges erőforrás-szolgáltatókat.
-
-* **Microsoft. HybridCompute**
-* **Microsoft. GuestConfiguration**
-
-Az erőforrás-szolgáltatókat az alábbi parancsokkal regisztrálhatja:
+Ha nincsenek regisztrálva, akkor az alábbi parancsokkal regisztrálhat:
 
 Azure PowerShell:
 
 ```azurepowershell-interactive
 Login-AzAccount
-Set-AzContext -SubscriptionId [subscription you want to onboard]
-Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
-Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
+Set-AzContext -SubscriptionId [subscription you want to onboard]
+Register-AzResourceProvider -ProviderNamespace Microsoft.HybridCompute
+Register-AzResourceProvider -ProviderNamespace Microsoft.GuestConfiguration
 ```
 
 Azure CLI:
 
 ```azurecli-interactive
-az account set --subscription "{Your Subscription Name}"
-az provider register --namespace 'Microsoft.HybridCompute'
-az provider register --namespace 'Microsoft.GuestConfiguration'
+az account set --subscription "{Your Subscription Name}"
+az provider register --namespace 'Microsoft.HybridCompute'
+az provider register --namespace 'Microsoft.GuestConfiguration'
 ```
 
-Az erőforrás-szolgáltatókat a portálon is regisztrálhatja a [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)alatti lépéseket követve.
+Az erőforrás-szolgáltatókat a Azure Portal is regisztrálhatja a [Azure Portal](../../azure-resource-manager/management/resource-providers-and-types.md#azure-portal)szakaszban leírt lépéseket követve.
 
-## <a name="machine-changes-after-installing-the-agent"></a>A gép módosítása az ügynök telepítése után
+## <a name="connected-machine-agent"></a>Csatlakoztatott számítógép ügynöke
 
-Ha a környezetben üzembe helyezett Change Tracking megoldással rendelkezik, az alábbi lista segítségével nyomon követheti, azonosíthatja és engedélyezheti az **Azure Connected Machine Agent-(AzCMAgent-)** telepítőcsomag által végzett módosításokat.
+A Windows és a Linux rendszerhez készült Azure Connected Machine Agent csomagot az alább felsorolt helyekről töltheti le.
 
-Az ügynök telepítése után a következő, a kiszolgálókon végrehajtott módosítások láthatók.
+- [Windows agent Windows Installer csomag](https://aka.ms/AzureConnectedMachineAgent) a Microsoft letöltőközpontból.
+- A Linux-ügynök csomagja a Microsoft [csomag adattárában](https://packages.microsoft.com/) található, az elosztás előnyben részesített csomag formátuma alapján (. RPM vagy. DEB).
 
-### <a name="windows"></a>Windows
+>[!NOTE]
+>Ebben az előzetes verzióban csak egy csomag jelenik meg, amely Ubuntu 16,04 vagy 18,04 esetén megfelelő.
 
-Telepített szolgáltatások:
+## <a name="install-and-configure-agent"></a>Ügynök telepítése és konfigurálása
 
-* `Himds` – az **Azure Connected Machine Agent** szolgáltatás.
-* `Dscservice` vagy `gcd` – a **vendég konfigurációs** szolgáltatás.
+A hibrid környezetben az Azure-ban közvetlenül csatlakoztatható gépek a követelményektől függően különböző módszerekkel végezhetők el. Az alábbi táblázat az egyes módszereket ismerteti, amelyek alapján meghatározhatja, hogy melyik a legmegfelelőbb a szervezet számára.
 
-A kiszolgálóhoz hozzáadott fájlok:
+| Módszer | Leírás |
+|--------|-------------|
+| Interaktív módon | Manuálisan telepítse az ügynököt egy vagy több gépen a [gépek Azure Portal-ból való összekapcsolása](quickstart-onboard-portal.md)című témakör lépéseit követve.<br> A Azure Portal létrehozhat egy parancsfájlt, és végrehajthatja azt a gépen, hogy automatizálja az ügynök telepítésének és konfigurálásának lépéseit.|
+| Skálán | Telepítse és konfigurálja az ügynököt több gépen a [számítógépek összekapcsolását követően egy egyszerű szolgáltatásnév használatával](quickstart-onboard-powershell.md).<br> Ez a metódus létrehoz egy egyszerű szolgáltatást, amely nem interaktív módon csatlakozik a gépekhez.|
 
-* `%ProgramFiles%\AzureConnectedMachineAgent\*.*` – az **Azure Connected Machine Agent** -fájlok helye.
-* `%ProgramData%\GuestConfig\*.*` - **vendég konfigurációs** naplókat.
-
-Beállításkulcs helyei:
-
-* `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Azure Connected Machine Agent` – beállításkulcsok az Azure-beli **csatlakoztatott gépi ügynökhöz**.
-
-### <a name="linux"></a>Linux
-
-Telepített szolgáltatások:
-
-* `Himdsd` – az **Azure Connected Machine Agent** szolgáltatás.
-* `dscd` vagy `gcd` – a **vendég konfigurációs** szolgáltatás.
-
-A kiszolgálóhoz hozzáadott fájlok:
-
-* `/var/opt/azcmagent/**` – az **Azure Connected Machine Agent** -fájlok helye.
-* `/var/lib/GuestConfig/**` - **vendég konfigurációs** naplókat.
-
-## <a name="supported-scenarios"></a>Támogatott helyzetek
-
-A csomópontok regisztrálása után elkezdheti a csomópontok kezelését más Azure-szolgáltatásokkal.
-
-A nyilvános előzetes verzióban a **csatlakoztatott gépeken**a következő forgatókönyvek támogatottak.
-
-## <a name="guest-configuration"></a>Vendégkonfiguráció
-
-Miután csatlakoztatta a gépet az Azure-hoz, hozzárendelheti az Azure-szabályzatokat a **csatlakoztatott gépekhez** ugyanazzal a tapasztalattal, mint a szabályzat-hozzárendelés az Azure Virtual Machines szolgáltatásban.
-
-További információ: [Azure Policy vendég konfigurációjának ismertetése](../../governance/policy/concepts/guest-configuration.md).
-
-A **csatlakoztatott gépekhez** tartozó vendég-konfigurációs ügynök naplói a következő helyen találhatók:
-
-* Windows – `%ProgramFiles%\AzureConnectedMachineAgent\logs\dsc.log`
-* Linux: – `/opt/logs/dsc.log`
-
-## <a name="log-analytics"></a>Log Analytics
-
-A [Microsoft monitoring Agent (MMA)](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview) által gyűjtött és log Analytics munkaterületen tárolt adatok naplózása mostantól a géphez, például a **ResourceId**-hez kapcsolódó tulajdonságokat is tartalmaz, amelyek az erőforrás-központú napló eléréséhez használhatók.
-
-- Azok a gépek, amelyeken már telepítve van az MMA-ügynök, a frissített felügyeleti csomagokon keresztül engedélyezve lesznek az **Azure arc** funkciói.
-- Az [MMA-ügynök 10.20.18011 vagy újabb verziója](https://docs.microsoft.com/azure/virtual-machines/extensions/oms-windows#agent-and-vm-extension-version) szükséges az Azure arc a kiszolgálók integrálásához.
-- [Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/log-query-overview)a naplózási adatként való lekérdezéskor a visszaadott Adatséma tartalmazni fogja a hibrid **ResourceId** az űrlap `/subscriptions/<SubscriptionId/resourceGroups/<ResourceGroup>/providers/Microsoft.HybridCompute/machines/<MachineName>`.
-
-További információ: [Bevezetés a log Analytics használatába Azure monitor](https://docs.microsoft.com/azure/azure-monitor/log-query/get-started-portal).
-
-<!-- MMA agent version 10.20.18011 and later -->
 
 ## <a name="next-steps"></a>Következő lépések
 
-A számítógépek Azure arc-kiszolgálókkal való összekapcsolásának két módja van.
-
-* **Interaktív módon** – kövesse a [portál](quickstart-onboard-portal.md) rövid útmutatóját egy parancsfájl létrehozásához a portálon, és futtassa azt a gépen. Ez a legjobb megoldás, ha egyszerre egy gépet csatlakoztat.
-* **Léptékben** – kövesse a [PowerShell](quickstart-onboard-powershell.md) rövid útmutatóját egy egyszerű szolgáltatásnév létrehozásához, amely nem interaktív módon csatlakozik a gépekhez.
+- Ha meg szeretné kezdeni a kiszolgálók Azure-ív kiértékelését (előzetes verzió), kövesse a [hibrid gépek az Azure-hoz való összekapcsolását ismertető cikket a Azure Portal](quickstart-onboard-portal.md). 

@@ -9,14 +9,14 @@ ms.custom: seodec18
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: tutorial
-ms.date: 12/11/2019
+ms.date: 01/28/2020
 ms.author: diberry
-ms.openlocfilehash: 0ddce3e4112dfb14309878927493abb3cb6b451a
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: a9afef07af1332910cc9e25f9d66db5930df3bd4
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75447373"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901661"
 ---
 # <a name="tutorial-create-a-qna-bot-with-azure-bot-service-v4"></a>Oktatóanyag: QnA-robot létrehozása Azure Bot Service v4-sel
 
@@ -41,23 +41,23 @@ Hozzon létre egy robotot ügyfélalkalmazásként a Tudásbázisban.
 
 1. A QnA Maker portálon lépjen a **Közzététel** lapra, és tegye közzé a tudásbázist. Válassza a **robot létrehozása**lehetőséget.
 
-    ![A QnA Maker portálon lépjen a közzététel lapra, és tegye közzé a tudásbázist. Válassza a Robot létrehozása lehetőséget.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)
+    [![a QnA Maker portálon lépjen a közzététel lapra, és tegye közzé a tudásbázist. Válassza a robot létrehozása lehetőséget.](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png)](../media/qnamaker-tutorials-create-bot/create-bot-from-published-knowledge-base-page.png#lightbox)
 
-    Megnyílik az Azure Portal a robotlétrehozási konfigurációval.
+    Megnyílik a Azure Portal a robot létrehozási konfigurációjával.
 
-1.  A robot létrehozásához adja meg a beállításokat:
+1.  Adja meg a robot létrehozásának beállításait:
 
     |Beállítás|Value (Díj)|Rendeltetés|
     |--|--|--|
     |Bot-fogantyú|`qna-maker-central-us-bot`|Ez a robothoz tartozó Azure-Erőforrás neve.|
-    |Előfizetés|Lásd: cél.|Válassza ki ugyanazt az előfizetést, mint amit a QnA Maker erőforrások létrehozásához használt.|
+    |Előfizetést|Lásd: cél.|Válassza ki ugyanazt az előfizetést, mint amit a QnA Maker erőforrások létrehozásához használt.|
     |Erőforráscsoport|`docs`|Az összes robottal kapcsolatos Azure-erőforráshoz használt erőforráscsoport.|
     |Földrajzi egység|`west us`|A robot Azure-erőforrásának helye.|
     |Díjcsomag|`F0`|Az Azure bot Service ingyenes szintje.|
     |App neve|`qna-maker-central-us-bot-app`|Ez egy webalkalmazás, amely csak a robotot támogatja. Ez nem lehet azonos az alkalmazás nevével, mert a QnA Maker szolgáltatás már használatban van. A QnA Maker webalkalmazásának más erőforrásokkal való megosztása nem támogatott.|
     |SDK nyelve|C#|Ez a robot Framework SDK által használt mögöttes programozási nyelv. Az Ön választása [C#](https://github.com/Microsoft/botbuilder-dotnet) vagy [Node. js](https://github.com/Microsoft/botbuilder-js).|
     |QnA-hitelesítési kulcs|**Ne változzon**|Ezt az értéket Önnek kell kitöltenie.|
-    |App Service-csomag/Hely|**Ne változzon**|Ebben az oktatóanyagban a hely nem fontos.|
+    |App Service-csomag/hely|**Ne változzon**|Ebben az oktatóanyagban a hely nem fontos.|
     |Application Insights|**Ne változzon**|A rendszer elküldi a naplózást Application Insightsba.|
     |Microsoft-alkalmazás azonosítója|**Ne változzon**|Az Active Directory-felhasználó és a jelszó megadása kötelező.|
 
@@ -70,9 +70,9 @@ Hozzon létre egy robotot ügyfélalkalmazásként a Tudásbázisban.
 
 ## <a name="chat-with-the-bot"></a>Csevegés a robottal
 
-1. Az Azure Portalon nyissa meg az új robot erőforrást az értesítések területen.
+1. A Azure Portalban nyissa meg az új robot-erőforrást az értesítésből.
 
-    ![Az Azure Portalon nyissa meg az új robot erőforrást az értesítések területen.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
+    ![A Azure Portalban nyissa meg az új robot-erőforrást az értesítésből.](../media/qnamaker-tutorials-create-bot/azure-portal-notifications.png)
 
 1. A **bot Management** **szolgáltatásban válassza a tesztelés webes csevegésben** lehetőséget, és írja be a következőt: `How large can my KB be?`. A bot a következőket fogja válaszolni:
 
@@ -101,8 +101,6 @@ Ha nem hozott létre új erőforráscsoportot, meg kell keresnie a robothoz tár
 
 ## <a name="related-to-qna-maker-bots"></a>QnA Maker botokkal kapcsolatos
 
-* A QnA Maker portálon használt QnA Maker Súgó robot [mintaként](https://github.com/microsoft/BotBuilder-Samples/tree/master/experimental/qnamaker-support)érhető el.
-    ![QnA Maker Súgó bot ikon piros robot](../media/qnamaker-tutorials-create-bot/answer-bot-icon.PNG)
 * Az [egészségügyi robotok](https://docs.microsoft.com/HealthBot/qna_model_howto) a QnA Maker használják az egyik [nyelvi modellként](https://docs.microsoft.com/HealthBot/qna_model_howto).
 
 

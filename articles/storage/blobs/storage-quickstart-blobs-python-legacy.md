@@ -3,33 +3,30 @@ title: 'Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v 2.1 a Pyt
 description: Ebben a rövid útmutatóban egy tárfiókot és egy tárolót hoz létre egy objektumtárban (Blob Storage-fiókban). Ezután a Storage ügyféloldali kódtár 2.0-s verziójának használatával feltölt egy blobot az Azure Storage-ba, letölt egy blobot, és kilistázza a tárolóban lévő blobokat.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 09/11/2019
+ms.date: 01/24/2020
 ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019
-ms.openlocfilehash: 3e1adc9220dd9b49c49ff3fe5e798dfcc9d5c928
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 4b0248604b6e9189d5275177a4960e4c352e8215
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122678"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906442"
 ---
-# <a name="quickstart-azure-blob-storage-client-library-v21-for-python"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár v 2.1 a Pythonhoz
+# <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Gyors útmutató: Blobok kezelése a Python v 2.1 SDK-val
 
-Ebben a cikkben a Python használatával tölthet fel, tölthet le és listázhat blokk-blobokat egy tárolóban az Azure Blob Storage-ban. A Blobok egyszerűen olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Az Azure Storage-beli Blobok különböznek a fájlmegosztás, a séma nélküli táblák és az üzenetsor-várólistáktól.  További információ: [Az Azure Storage bemutatása](/azure/storage/common/storage-introduction).
-
-[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
+Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a Python használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. Feltöltheti, letöltheti és listázhatja a blobokat, és létrehozhatja és törölheti a tárolókat.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Storage-fiók. [Tárfiók létrehozása](../common/storage-account-create.md).
+- [Python](https://www.python.org/downloads/).
+- [A Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-sdk-for-python).
 
-Győződjön meg arról, hogy a következő további előfeltételek vannak telepítve:
-
-* [Python](https://www.python.org/downloads/)
-
-* [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-sdk-for-python)
+[!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 

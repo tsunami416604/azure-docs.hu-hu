@@ -2,13 +2,13 @@
 title: Támogatott fürtözött verziók az Azure Service Fabric
 description: Ismerje meg az Azure Service Fabric-beli fürtök verzióit, beleértve a Service Fabric csapat blogján elérhető legújabb kiadásokra mutató hivatkozást is.
 ms.topic: troubleshooting
-ms.date: 11/18/2019
-ms.openlocfilehash: 1d54f4f459b71469c5d10c949d35841572242c07
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.date: 01/28/2020
+ms.openlocfilehash: 80ecf0861f3d740fff6b68b0373f94d0e2845a9d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639003"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903477"
 ---
 # <a name="supported-service-fabric-versions"></a>Támogatott Service Fabric verziók
 
@@ -30,7 +30,7 @@ A következő táblázat felsorolja a Service Fabric verzióit és azok támogat
 | 5,4. * | 5.1.158.* |Kisebb vagy egyenlő, mint a 2,4-es verzió |2017. május 10.       |
 | 5,5. * | 5.4.164.* |Kisebb vagy egyenlő, mint a 2,5-es verzió |2017. augusztus 10.    |
 | 5,6. * | 5.4.164.* |Kisebb vagy egyenlő, mint a 2,6-es verzió |2017. október 13.   |
-| 5,7. * | 5.4.164.* |Kisebb vagy egyenlő, mint a 2,7-es verzió |2017. december 15.  |
+| 5,7. * | 5.4.164.* |Kisebb vagy egyenlő, mint a 2,7-es verzió |December 15., 2017  |
 | 6,0. * | 5.6.205.* |Kisebb vagy egyenlő, mint a 2,8-es verzió |Március 30., 2018     |
 | 6,1. * | 5.7.221.* |Kisebb vagy egyenlő, mint a 3,0-es verzió |2018. július 15.      |
 | 6,2. * | 6.0.232.* |Kisebb vagy egyenlő, mint a 3,1-es verzió |Október 26., 2018   |
@@ -100,3 +100,4 @@ A következő táblázat a Service Fabric verziószámait és a hozzájuk tartoz
 | 6,5 CU3 | 6.5.664.9590 | 6.5.466.1 |
 | 6,5 CU5 | 6.5.676.9590 | 6.5.467.1 |
 | 7,0 RTO | 7.0.457.9590 | 7.0.457.1 |
+| 7,0 CU2 | 7.0.464.9590 | 7.0.464.1 |

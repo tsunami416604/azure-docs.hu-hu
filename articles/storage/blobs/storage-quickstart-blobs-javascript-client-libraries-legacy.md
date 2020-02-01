@@ -6,29 +6,29 @@ author: mhopkins-msft
 ms.custom: mvc
 ms.service: storage
 ms.author: mhopkins
-ms.date: 08/29/2019
+ms.date: 01/24/2020
 ms.topic: quickstart
 ms.subservice: blobs
-ms.openlocfilehash: 7d481b115650c72df95f7516bb3b39411201bf83
-ms.sourcegitcommit: 12a26f6682bfd1e264268b5d866547358728cd9a
+ms.openlocfilehash: 257af309ebdb9080c3cd60b8b89a2c992ecf5145
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75864007"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906573"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
-# <a name="quickstart-upload-list-and-delete-blobs-using-azure-storage-v10-sdk-for-javascripthtml-in-the-browser"></a>Rövid útmutató: Blobok feltöltése, listázása és törlése a böngészőben az Azure Storage v10 SDK-val a JavaScripthez/HTML-hez
+# <a name="quickstart-manage-blobs-with-javascript-v10-sdk-in-browser"></a>Gyors útmutató: Blobok kezelése a JavaScript v10 SDK-val a böngészőben
 
-Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti az [Azure Storage SDK-t a JavaScript-blob-](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/storage/storage-blob#readme) kódtár használatával a Blobok a böngészőben teljes egészében futó JavaScript-kódból való kezeléséhez. Az itt bemutatott megközelítés szemlélteti a megfelelő biztonsági eszközök használatát is a Blob Storage-fiók biztonságos elérése érdekében.
+Ebből a rövid útmutatóból megtudhatja, hogyan kezelheti a blobokat a teljes böngészőben futtatott JavaScript-kód használatával. A Blobok olyan objektumok, amelyek nagy mennyiségű szöveges vagy bináris adatok tárolására képesek, beleértve a képeket, a dokumentumokat, a médiafolyamokat és az archiválási adatokhoz. A szükséges biztonsági intézkedéseket fogja használni a blob Storage-fiókhoz való védett hozzáférés biztosításához.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-[!INCLUDE [storage-quickstart-prereq-include](../../../includes/storage-quickstart-prereq-include.md)]
-
-Az Azure Storage JavaScript ügyféloldali kódtárai nem működnek közvetlenül a fájlrendszerből, és egy webkiszolgálóról kell kiszolgálni. Ez a témakör a [Node. js](https://nodejs.org) használatával indít el egy alapszintű kiszolgálót. Ha nem szeretné telepíteni a csomópontot, bármilyen más eszközt használhat helyi webkiszolgáló futtatásához.
-
-A hibakeresés lépéseinek követéséhez szüksége lesz a [Visual Studio Code](https://code.visualstudio.com) -ra és a [Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge) bővítményhez készült [Chrome](vscode:extension/msjsdiag.debugger-for-chrome) vagy Debugger hibakeresőre.
+- Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
+- Egy Azure Storage-fiók. [Tárfiók létrehozása](../common/storage-account-create.md).
+- Helyi webkiszolgáló. Ez a cikk a [Node. js](https://nodejs.org) használatával nyit meg egy alapszintű kiszolgálót.
+- [Visual Studio Code](https://code.visualstudio.com).
+- Egy VS Code-bővítmény a böngésző hibakereséséhez, például a [Microsoft Edge](vscode:extension/msjsdiag.debugger-for-edge)-hez készült [Chrome](vscode:extension/msjsdiag.debugger-for-chrome) vagy Debugger hibakeresője.
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Tárfiók CORS-szabályainak beállítása
 

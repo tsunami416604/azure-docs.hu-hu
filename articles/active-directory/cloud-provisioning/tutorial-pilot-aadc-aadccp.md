@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b83f634e9f5954e7a465761b117b6ee32f843aa2
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
+ms.lasthandoff: 01/31/2020
 ms.locfileid: "75425082"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
@@ -182,7 +182,7 @@ A kiépítés konfigurálásához kövesse az alábbi lépéseket:
 ## <a name="verify-users-are-provisioned-by-cloud-provisioning"></a>A felhőalapú kiépítés által kiépített felhasználók ellenőrzése
 Ekkor ellenőrzi, hogy a helyszíni címtárban lévő felhasználók szinkronizálva lettek-e, és már léteznek-e az Azure AD-bérlőben.  Vegye figyelembe, hogy ez eltarthat néhány óráig.  Az alábbi lépéseket követve ellenőrizheti, hogy a felhasználók kiépítik-e a felhőalapú kiépítési folyamatokat:
 
-1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
+1. Keresse meg a [Azure Portal](https://portal.azure.com) , és jelentkezzen be egy Azure-előfizetéssel rendelkező fiókkal.
 2. A bal oldalon válassza a **Azure Active Directory**
 3. Kattintson **Azure ad Connect**
 4. Kattintson a **kiépítés kezelése (előzetes verzió)** elemre.
@@ -201,7 +201,7 @@ Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekö
 >[!NOTE] 
 >Ha a HRE-kapcsolat szinkronizálásához saját egyéni ütemező alkalmazást futtat, engedélyezze az ütemező szolgáltatást. 
 
-## <a name="something-went-wrong"></a>Valami hiba történt
+## <a name="something-went-wrong"></a>Hiba történt
 Ha a próbaüzem nem a várt módon működik, térjen vissza a Azure AD Connect Sync telepítőhöz az alábbi lépésekkel:
 1.  A Azure Portal kiépítési konfigurációjának letiltása. 
 2.  Tiltsa le a Felhőbeli kiépítés során létrehozott összes egyéni szinkronizálási szabályt a szinkronizálási szabály szerkesztő eszközének használatával. A letiltás esetén az összes összekötőn teljes szinkronizálást kell okozni.

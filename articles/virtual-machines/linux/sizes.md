@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/06/2019
 ms.author: jonbeck
-ms.openlocfilehash: 5e10c0905237f3cc28dd0ac113dfaf844e781bac
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: c16ff8fed19340811578ccb39cbac7242b7c5861
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646659"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905741"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>A Linux rendszerű virtuális gépek méretei az Azure-ban
 Ez a cikk a Linux-alkalmazások és-munkaterhelések futtatására használható Azure-beli virtuális gépek elérhető méreteit és lehetőségeit ismerteti. Emellett üzembe helyezési megfontolásokat is biztosít, hogy a rendszer mikor tervezi ezeket az erőforrásokat. Ez a cikk a Windows rendszerű [virtuális gépekhez](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json)is elérhető.
@@ -67,7 +67,7 @@ További információ a rendelkezésre álló különböző virtuálisgép-mére
 - [Tárolásra optimalizált](sizes-storage.md)
 - [GPU](sizes-gpu.md)
 - [Nagy teljesítményű számítás](sizes-hpc.md)
-- A standard, a Dv1 (D1-4 és D11-14 v1), valamint az A8-A11 sorozat [előző generációs](sizes-previous-gen.md) oldalának keresése
+- Tekintse meg az [előző generációs](sizes-previous-gen.md) oldalt egy alapszintű és standard, nagy teljesítményű A8-A11, D/DSv1 (D1-4 és D11-14 v1), F/Fsv1, G/GS, Lsv1 és NVv2 sorozat esetén.
 
 
 

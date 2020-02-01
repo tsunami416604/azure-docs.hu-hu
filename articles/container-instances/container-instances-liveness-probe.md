@@ -3,12 +3,12 @@ title: Az élettartam mintavételének beállítása a Container-példányon
 description: Megtudhatja, hogyan konfigurálhat élő mintavételt a nem megfelelő állapotú tárolók újraindításához Azure Container Instances
 ms.topic: article
 ms.date: 06/08/2018
-ms.openlocfilehash: 96d98d18a3f0ac666fb2c057216f7844b176d177
-ms.sourcegitcommit: 8cf199fbb3d7f36478a54700740eb2e9edb823e8
+ms.openlocfilehash: 566f7952aff1cf460272fbb418a2a0efff411881
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/25/2019
-ms.locfileid: "74481672"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901892"
 ---
 # <a name="configure-liveness-probes"></a>Üzemelési tesztek konfigurálása
 
@@ -17,6 +17,9 @@ A tároló alkalmazások hosszabb ideig is futhatnak, így a tároló újraindí
 Ez a cikk azt ismerteti, hogyan helyezhet üzembe olyan tároló csoportot, amely tartalmaz egy élő vizsgálatot, amely egy szimulált, nem kifogástalan állapotú tároló automatikus újraindítását szemlélteti.
 
 A Azure Container Instances támogatja a [készültségi](container-instances-readiness-probe.md)mintavételt is, amelyekkel beállíthatja, hogy a forgalom csak akkor legyen elérhető, amikor készen áll a tárolóra.
+
+> [!NOTE]
+> Jelenleg nem használhat élő mintavételt egy virtuális hálózatra központilag telepített tároló-csoportban.
 
 ## <a name="yaml-deployment"></a>YAML üzembe helyezése
 
@@ -96,7 +99,7 @@ Ha az élettartam-mintavétel folyamatosan leáll, és túl sok újraindítást 
 
 Az újraindítási szabályzatok felülírják az élő tesztek által aktivált újraindítási viselkedést. Ha például beállít egy `restartPolicy = Never`t *és* egy élő mintavételt, a tároló csoport nem indul újra, mert sikertelen az élettartam-ellenőrzési művelet. A tároló csoport Ehelyett a tároló csoport újraindítási szabályzatát fogja betartani `Never`.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A feladaton alapuló forgatókönyvek esetében szükség lehet az automatikus újraindításra, ha az előfeltételként szükséges függvény nem működik megfelelően. A Task-alapú tárolók futtatásával kapcsolatos további információkért lásd: [tárolós feladatok futtatása Azure Container Instancesban](container-instances-restart-policy.md).
 

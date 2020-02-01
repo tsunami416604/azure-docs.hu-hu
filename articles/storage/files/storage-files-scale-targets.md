@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 10/16/2019
 ms.author: rogarana
 ms.subservice: files
-ms.openlocfilehash: 211dafd1ad3e30d37cfee926a7c93ba541037f62
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 2e05f0cb46e1e54ced5911c0a78dd026dbb7f4fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75749508"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905588"
 ---
 # <a name="azure-files-scalability-and-performance-targets"></a>Méretezhetőségi és teljesítménybeli célok Azure Files
 
@@ -51,7 +51,7 @@ Ezeket a korlátokat az [Azure Storage-fiók méretezési céljai](#azure-storag
 ### <a name="file-share-and-file-scale-targets"></a>Fájlmegosztás és méretezési célok
 
 > [!NOTE]
-> Az 5 TiB-nál nagyobb szabványos fájlmegosztás bizonyos korlátozásokkal és regionális korlátozásokkal rendelkezik.
+> Az 5 TiB-nál nagyobb standard fájlmegosztás bizonyos korlátozásokkal rendelkezik.
 > A korlátozások, a regionális információk és a nagyobb fájlmegosztás-méretek engedélyezésére vonatkozó utasítások listáját a tervezési útmutató a további [fájlmegosztás](storage-files-planning.md#onboard-to-larger-file-shares-standard-tier) című szakasza tartalmazza.
 
 [!INCLUDE [storage-files-scale-targets](../../../includes/storage-files-scale-targets.md)]

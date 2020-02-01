@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/15/2019
 ms.author: memildin
-ms.openlocfilehash: bd896cbee98bd61518c9a093f86e088f0b018d73
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 79154a13722654ef5cbbe7ac99bb67d4b761fe60
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76156658"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76903444"
 ---
 # <a name="improve-your-secure-score-in-azure-security-center"></a>Javítsa a biztonságos pontszámot Azure Security Center
 
@@ -34,7 +34,7 @@ Számos olyan szolgáltatás, amely biztonsági előnyöket kínál, gyakran neh
 ## <a name="secure-score-calculation"></a>Biztonságos pontszám kiszámítása
 
 A Security Center a biztonsági elemzők munkáját, a biztonsági javaslatok áttekintését és a speciális algoritmusok alkalmazásával határozza meg, hogy az egyes javaslatok mennyire fontosak.
-Az Azure Security Center folyamatosan áttekinti az aktív ajánlásokat, és kiszámítja a biztonsági pontszámát, és az ajánlat pontszáma a legfontosabb súlyossági és biztonsági gyakorlatból származik, amely a leghatékonyabban befolyásolja a munkaterhelés-biztonságot.
+Az Azure Security Center folyamatosan áttekinti az aktív javaslataikat, és kiszámítja a biztonsági pontszámát, és az ajánlat pontszáma a legfontosabb súlyossági és biztonsági gyakorlatokból származik, amelyekkel a lehető leghatékonyabban befolyásolhatja a munkaterhelés-biztonságot.
 
 A Security Center egy **teljes körű biztonságos pontszámot**is biztosít. 
 

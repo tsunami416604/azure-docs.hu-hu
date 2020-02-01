@@ -8,12 +8,12 @@ ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 04/10/2017
-ms.openlocfilehash: 25dff0cb14467513bf1cc60fd1fb6c2205bd2276
-ms.sourcegitcommit: ff9688050000593146b509a5da18fbf64e24fbeb
+ms.openlocfilehash: 09b77862ad3379efeb8b3063a9d6c60b062ca2d7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/06/2020
-ms.locfileid: "75666903"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905124"
 ---
 # <a name="set-up-cross-region-disaster-recovery-for-integration-accounts-in-azure-logic-apps"></a>Régiók közötti vész-helyreállítás beállítása a Azure Logic Apps integrációs fiókjaihoz
 
@@ -240,5 +240,5 @@ Az időtartam alapján a növekményes futtatókörnyezet állapota az elsődleg
 
 ## <a name="next-steps"></a>Következő lépések
 
-[B2B üzenetek megfigyelése](logic-apps-monitor-b2b-message.md)
+[B2B-üzenetek figyelése Azure Monitor-naplókkal](../logic-apps/monitor-b2b-messages-log-analytics.md)
 

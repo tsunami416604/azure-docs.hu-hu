@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 08/01/2019
-ms.openlocfilehash: 506c518e8bdd889c585feb92f2a6baee8ba0147c
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 662f8c2a4184e858d33dc40effed363ef3ec17e5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75979087"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904957"
 ---
 # <a name="deploy-azure-resource-manager-templates-for-azure-logic-apps"></a>Azure Logic Apps Azure Resource Manager sablonjainak üzembe helyezése
 
@@ -41,7 +41,7 @@ Ha például a Azure Portalba való bejelentkezés után kéri a következő inf
 * Egy teszt URI
 * A megadott feltételek és Kikötések elfogadása
 
-További információt az alábbi témakörökben talál:
+További információkért tekintse meg a következő témaköröket:
 
 * [Áttekintés: a Logic apps üzembe helyezésének automatizálása Azure Resource Manager-sablonokkal](logic-apps-azure-resource-manager-templates-overview.md)
 * [Erőforrások üzembe helyezése Azure Resource Manager-sablonokkal és a Azure Portal](../azure-resource-manager/templates/deploy-portal.md)
@@ -62,7 +62,7 @@ Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a követke
 New-AzResourceGroupDeployment -ResourceGroupName <Azure-resource-group-name> -TemplateUri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-További információt az alábbi témakörökben talál:
+További információkért tekintse meg a következő témaköröket:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure PowerShell-lel](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-template-deploy)
 * [`New-AzResourceGroupDeployment`](https://docs.microsoft.com/powershell/module/azurerm.resources/new-azurermresourcegroupdeployment)
@@ -77,7 +77,7 @@ Egy adott *Azure-erőforráscsoport*üzembe helyezéséhez használja a követke
 az group deployment create -g <Azure-resource-group-name> --template-uri https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/101-logic-app-create/azuredeploy.json
 ```
 
-További információt az alábbi témakörökben talál:
+További információkért tekintse meg a következő témaköröket:
 
 * [Erőforrások üzembe helyezése Resource Manager-sablonokkal és az Azure parancssori felületével](../azure-resource-manager/templates/deploy-cli.md) 
 * [`az group deployment create`](https://docs.microsoft.com/cli/azure/group/deployment?view=azure-cli-latest#az-group-deployment-create)
@@ -128,4 +128,4 @@ Ha a kapcsolatok engedélyezése helyett egy Azure Active Directory (Azure AD [)
 ## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
-> [Logikai alkalmazások figyelése](../logic-apps/logic-apps-monitor-your-logic-apps.md)
+> [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps.md)

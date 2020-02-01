@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 04/25/2019
 ms.author: sukumari
 ms.reviewer: azmetadata
-ms.openlocfilehash: ad3f9329ce79812e908fd15037e2054ca5a8906e
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 5b3f3eea4d23d84d684648d19fb67258d1ea2050
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045161"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906995"
 ---
 # <a name="azure-instance-metadata-service"></a>Azure-példány metaadatainak szolgáltatása
 
@@ -104,9 +104,9 @@ Az alábbi táblázat más adatformátum-API-kat is támogat.
 
 API | Alapértelmezett adatformátum | Egyéb formátumok
 --------|---------------------|--------------
-/instance | json | szöveg
-/scheduledevents | json | Nincs
-/attested | json | Nincs
+/instance | JSON | szöveg
+/scheduledevents | JSON | Nincs
+/attested | JSON | Nincs
 
 A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Példa:
 
@@ -452,7 +452,7 @@ Adatok | Leírás | Verzió bevezetése
 -----|-------------|-----------------------
 igazolt | [Igazolt](#attested-data) információ | 2018-10-01
 identitáskezelés | Felügyelt identitások az Azure-erőforrásokhoz. Lásd: [hozzáférési jogkivonat beszerzése](../../active-directory/managed-identities-azure-resources/how-to-use-vm-token.md) | 2018-02-01
-példány | Lásd: [példány API](#instance-api) | 2017-04-02
+például | Lásd: [példány API](#instance-api) | 2017-04-02
 scheduledevents | Lásd: [Scheduled Events](scheduled-events.md) | 2017-08-01
 
 #### <a name="instance-api"></a>Példány API
@@ -471,23 +471,23 @@ név | A virtuális gép neve | 2017-04-02
 offer | A virtuálisgép-lemezképre vonatkozó információkat nyújtja, és csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
-útiterv | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
+csomag | Egy virtuális gép nevét, termékét és közzétevőjét tartalmazó [csomag megtervezése](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) , ha az Azure Marketplace-rendszerkép | 2018-04-02
 platformUpdateDomain |  A virtuális gépet futtató [tartomány frissítése](manage-availability.md) | 2017-04-02
 Platformfaultdomain tulajdonságot | A virtuális gép által futtatott tartalék [tartomány](manage-availability.md) | 2017-04-02
-szolgáltató | A virtuális gép szolgáltatója | 2018-10-01
+Szolgáltató | A virtuális gép szolgáltatója | 2018-10-01
 publicKeys | A virtuális géphez és elérési utakhoz rendelt [nyilvános kulcsok gyűjteménye](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#sshpublickey) | 2018-04-02
-közzétevő | A virtuális gép rendszerképének közzétevője | 2017-04-02
+Publisher | A virtuális gép rendszerképének közzétevője | 2017-04-02
 resourceGroupName | A virtuális géphez tartozó [erőforráscsoport](../../azure-resource-manager/management/overview.md) | 2017-08-01
 resourceId | Az erőforrás [teljes](https://docs.microsoft.com/rest/api/resources/resources/getbyid) azonosítója | 2019-03-11
 SKU | A virtuális gép rendszerképének adott SKU-jának | 2017-04-02
 storageProfile | Lásd: [tárolási profil](#storage-profile) | 2019-06-01
 subscriptionId | Azure-előfizetés a virtuális géphez | 2017-08-01
-címkét | A virtuális gép [címkéi](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
+tags | A virtuális gép [címkéi](../../azure-resource-manager/management/tag-resources.md)  | 2017-08-01
 tagsList | Az egyszerűbb programozási elemzéshez JSON-tömbként formázott Címkék  | 2019-06-04
 version | A VM-rendszerkép verziója | 2017-04-02
 vmId | A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/) | 2017-04-02
 vmScaleSetName | A virtuálisgép-méretezési csoport virtuálisgép-méretezési [készletének neve](../../virtual-machine-scale-sets/virtual-machine-scale-sets-overview.md) | 2017-12-01
-vmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
+VmSize | [Virtuális gép mérete](sizes.md) | 2017-04-02
 zóna | A virtuális gép [rendelkezésre állási zónája](../../availability-zones/az-overview.md) | 2017-12-01
 
 A következő hálózati kategóriák érhetők el a példány API-n keresztül:
@@ -542,7 +542,7 @@ Az aláírási blob a dokumentum [PKCS7](https://aka.ms/pkcs7) aláírt verziój
 
 A Windows PowerShell-segédprogram `curl`segítségével lekérheti a példány metaadatainak beolvasását:
 
- ```bash
+ ```powershell
 curl -H @{'Metadata'='true'} "http://169.254.169.254/metadata/attested/document?api-version=2018-10-01&nonce=1234567890" | select -ExpandProperty Content
 ```
 
@@ -820,7 +820,7 @@ Verification successful
 Adatok | Leírás
 -----|------------
 egyszeri | A felhasználó nem kötelező karakterláncot adott meg a kérelemmel. Ha a kérelemben nem adtak meg egy adott időpontot, a rendszer az aktuális UTC-időbélyeget adja vissza
-útiterv | [Tervezze](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) meg, hogy a virtuális gép egy Azure Marketplace-rendszerkép, amely tartalmazza a nevet, a terméket és a közzétevőt
+csomag | [Tervezze](https://docs.microsoft.com/rest/api/compute/virtualmachines/createorupdate#plan) meg, hogy a virtuális gép egy Azure Marketplace-rendszerkép, amely tartalmazza a nevet, a terméket és a közzétevőt
 időbélyeg/createdOn | Az első aláírt dokumentum létrehozásának UTC-időbélyege
 időbélyeg/expiresOn | Az aláírt dokumentum érvényességi időpontjának UTC-időbélyege
 vmId |  A virtuális gép [egyedi azonosítója](https://azure.microsoft.com/blog/accessing-and-using-azure-vm-unique-id/)
@@ -914,7 +914,7 @@ Adatok    | Leírás
 --------|-----------------
 id      | Erőforrás-azonosító
 offer   | A platform vagy a piactér rendszerképének ajánlata
-közzétevő | Rendszerkép kiadója
+Publisher | Rendszerkép kiadója
 SKU     | Rendszerkép SKU
 version | A platform vagy a piactér rendszerképének verziója
 

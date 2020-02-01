@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl-fürt
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürtök kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 807457f3edaef8e0edcdbf53b482e2e4ffee174c
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 007ad6f59f0ce304db579f4faa1bb95611a93a37
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639156"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906152"
 ---
 # <a name="sfctl-cluster"></a>sfctl-fürt
 Service Fabric fürtök kiválasztása, kezelése és üzemeltetése.
@@ -22,13 +22,13 @@ Service Fabric fürtök kiválasztása, kezelése és üzemeltetése.
 | kód verziói | Lekéri a Service Fabric-fürtben kiépített háló-programkódok listáját. |
 | konfiguráció – verziók | Lekérdezi a Service Fabric-fürtben kiépített háló-konfigurációs verziók listáját. |
 | egészségügy | Lekéri egy Service Fabric-fürt állapotát. |
-| manifest | A Service Fabric-fürt jegyzékfájljának beolvasása. |
+| nyilvánvaló | A Service Fabric-fürt jegyzékfájljának beolvasása. |
 | művelet – megszakítás | Egy felhasználó által okozott hiba műveletének megszakítása. |
 | művelet – lista | Lekéri a megadott bemenet alapján szűrt, felhasználó által kiváltott hibák listáját. |
 | rendelkezés | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
 | helyreállítás – System | Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum elvesztésekor jelenleg beragadt rendszerszolgáltatások helyreállításával. |
 | jelentés – állapot | Állapotjelentés küldése a Service Fabric-fürtön. |
-| válassza az | Csatlakozás egy Service Fabric-fürt végponthoz. |
+| Válassza | Csatlakozás egy Service Fabric-fürt végponthoz. |
 | kapcsolat megjelenítése | Annak megjelenítése Service Fabric fürt, amelyhez ez a sfctl-példány csatlakozik. |
 | leépítése | Egy Service Fabric-fürt programkódjának vagy konfigurációs csomagjainak kiépítése. |
 | frissítés | A Service Fabric-fürt programkódjának vagy konfigurációs verziójának frissítése megkezdődött. |
@@ -235,7 +235,7 @@ Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum 
 | --Remove-when-lejárt | Az érték, amely azt jelzi, hogy a jelentés törlődik-e a Health Store-ból, amikor lejár. <br><br> Ha az értéke TRUE (igaz), a rendszer eltávolítja a jelentést az állapot-áruházból a lejárat után. Ha hamis értékre van állítva, a jelentés a lejártkor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeresen jelentést küldenek, a Eltávolításlejáratkor false (alapértelmezett) értéket kell beállítania. Így a riporter problémákba ütközik (például holtpont), és nem tud jelentést készíteni, az entitást a rendszer hiba esetén kiértékeli, amikor az állapotjelentés lejár. Ez az entitás a hiba állapotának megfelelően jelenik meg. |
 | --Sequence-Number | Az állapotjelentés sorszáma numerikus karakterláncként. <br><br> A jelentés sorszámát a Health Store használja az elavult jelentések észlelésére. Ha nincs megadva, a rendszer automatikusan létrehozza a sorszámot, amikor egy jelentés hozzáadása történik. |
 | --időtúllépés-t | Alapértelmezett\: 60. |
-| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, akkor az idő is megadható a végtelennek. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
+| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, beállíthatja, hogy az idő a végtelen értékre legyen állítva. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 
@@ -250,7 +250,7 @@ Azt a Service Fabric-fürtöt jelzi, amelynek meg kell próbálkoznia a kvórum 
 ## <a name="sfctl-cluster-select"></a>sfctl-fürt kiválasztása
 Csatlakozás egy Service Fabric-fürt végponthoz.
 
-Ha a biztonságos fürthöz csatlakozik, abszolút elérési utat kell megadnia egy tanúsítványhoz (. CRT) és a kulcsfájl (. Key), vagy egyetlen fájlhoz (. PEM). Mindkettőt ne határozza meg. Ha biztonságos fürthöz csatlakozik, akkor a HITELESÍTÉSSZOLGÁLTATÓI csomag vagy a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok könyvtárának abszolút elérési útját is meg kell adni.  A parancs futtatása nélkül nem lehet fürthöz csatlakozni, beleértve a localhost-hoz való kapcsolódást is. Helyi fürthöz való csatlakozáshoz azonban nincs szükség explicit végpontra.
+Ha a biztonságos fürthöz csatlakozik, abszolút elérési utat kell megadnia egy tanúsítványhoz (. CRT) és a kulcsfájl (. Key), vagy egyetlen fájlhoz (. PEM). Mindkettőt ne határozza meg. Ha biztonságos fürthöz csatlakozik, akkor a HITELESÍTÉSSZOLGÁLTATÓI csomag vagy a megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványok könyvtárának abszolút elérési útját is meg kell adni.  A parancs futtatása nélkül nem lehet fürthöz csatlakozni, beleértve a localhost-hoz való kapcsolódást is. Helyi fürthöz való csatlakozáshoz azonban nincs szükség explicit végpontra.  Ha önaláírt tanúsítványt vagy más, jól ismert HITELESÍTÉSSZOLGÁLTATÓ által nem aláírt tanúsítványt használ, a--CA paramétert kell átadnia, hogy biztosítsa az érvényesítést. Ha nem éles fürtön van, az ügyféloldali ellenőrzés megkerüléséhez (az önaláírt vagy nem jól ismert HITELESÍTÉSSZOLGÁLTATÓI aláírás esetén hasznos) használja a--No-ellenőrzés beállítást. Habár lehetséges, az éles fürtök esetében nem ajánlott. A tanúsítvány-ellenőrzési hiba másként is járhat.
 
 ### <a name="arguments"></a>Argumentumok
 

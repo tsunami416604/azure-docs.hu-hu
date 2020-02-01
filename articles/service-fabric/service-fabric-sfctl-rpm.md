@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl rpm
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Tartalmazza a Repair Manager szolgáltatáshoz tartozó parancsok listáját.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 674970276046034d13801db7c1bb4ab5175385fb
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 1787c0c8a8d5994ce1f1e9e4c55f155bbca6934c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75639088"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904946"
 ---
 # <a name="sfctl-rpm"></a>sfctl rpm
 Parancsok lekérdezése és küldése a Repair Manager szolgáltatásnak.
@@ -77,7 +77,7 @@ Ez az API támogatja a Service Fabric platformot; nem közvetlenül a kódból v
 |Argumentum|Leírás|
 | --- | --- |
 | --végrehajtó-szűrő | Annak a javítási végrehajtónak a neve, amelynek az igényelt feladatait fel kell venni a listára. |
-| --állapot-szűrő | Egy bitenkénti – vagy a következő értékek közül, amelyek meghatározzák, hogy mely feladatok szerepeljenek az eredmények listájában. <br> 1 – létrehozva <br>2 – igényelt  <br>4 – felkészülés  <br>8 – jóváhagyott  <br>16 – végrehajtás  <br>32 – visszaállítás  <br>64 – befejezett |
+| --állapot-szűrő | Egy bitenkénti – vagy a következő értékek közül, amelyek meghatározzák, hogy mely feladatok szerepeljenek az eredmények listájában. <ul><li>1 – létrehozva</li><li>2 – igényelt</li><li>4 – felkészülés</li><li>8 – jóváhagyott</li><li>16 – végrehajtás</li><li>32 – visszaállítás</li><li>64 – befejezett</li></ul>
 | --Task-ID-Filter | A kijavítási feladat AZONOSÍTÓjának előtagja. |
 
 ### <a name="global-arguments"></a>Globális argumentumok

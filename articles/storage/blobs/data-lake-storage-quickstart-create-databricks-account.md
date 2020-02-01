@@ -6,39 +6,29 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: quickstart
-ms.date: 02/15/2019
+ms.date: 01/28/2020
 ms.reviewer: jeking
-ms.openlocfilehash: 193fe96d3e98b2917d9228784b93a9335406283f
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 2a303070b7240bddfd4803ed3d4d796fa52fdef5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75771751"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906648"
 ---
-# <a name="quickstart-analyze-data-in-azure-data-lake-storage-gen2-by-using-azure-databricks"></a>Gyors útmutató: Azure Data Lake Storage Gen2ban lévő adatelemzés Azure Databricks használatával
+# <a name="quickstart-analyze-data-with-databricks"></a>Gyors útmutató: az adatelemzés a Databricks
 
-Ebből a rövid útmutatóból megtudhatja, hogyan futtathat egy Apache Spark feladatot a Azure Databricks használatával, hogy elvégezze az elemzést olyan Storage-fiókban tárolt adatokon, amelyek Azure Data Lake Storage Gen2 engedélyezve vannak.
-
-A Spark-feladatok részeként elemezheti a Radio Channel-előfizetési adatokat, így a demográfiai adatok alapján betekintést nyerhet az ingyenes/fizetős használatba.
-
-Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
+Ebben a rövid útmutatóban egy Apache Spark feladatot futtat Azure Databricks használatával a Storage-fiókban tárolt adatok elemzéséhez. A Spark-feladatok részeként elemezheti a Radio Channel-előfizetési adatokat, így a demográfiai adatok alapján betekintést nyerhet az ingyenes/fizetős használatba.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Hozzon létre egy Data Lake Gen2 Storage-fiókot. Lásd [: rövid útmutató: Azure Data Lake Storage Gen2 Storage-fiók létrehozása](data-lake-storage-quickstart-create-account.md)
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-  Illessze be a Storage-fiók nevét egy szövegfájlba. Hamarosan szüksége lesz rá.
+* A Azure Data Lake Gen2-fiókjának neve. [Hozzon létre egy Azure Data Lake Storage Gen2 Storage-fiókot](data-lake-storage-quickstart-create-account.md).
 
-* Egyszerű szolgáltatásnév létrehozása. [Útmutató: a portál használatával létrehozhat egy Azure ad-alkalmazást és egy egyszerű szolgáltatást, amely hozzáférhet az erőforrásokhoz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal).
-
-  A cikk lépéseinek elvégzése során néhány konkrét dolgot is el kell végeznie.
-
-  : heavy_check_mark: Ha az [alkalmazás társítása szerepkörhöz](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#assign-the-application-to-a-role) című szakasz lépéseit hajtja végre, akkor ügyeljen arra, hogy a szolgáltatáshoz hozzárendelje a **tárolási blob adatközreműködői** szerepkört.
+* Egy Azure-szolgáltatásnév bérlői azonosítója, alkalmazás-azonosítója és jelszava, amely a **Storage blob-Adatközreműködőhöz**hozzárendelt szerepkörrel rendelkezik. [Egyszerű szolgáltatásnév létrehozása](../../active-directory/develop/howto-create-service-principal-portal.md).
 
   > [!IMPORTANT]
-  > Ügyeljen arra, hogy a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében rendelje hozzá. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
-
-  : heavy_check_mark: a cikk [beolvasási értékek beolvasása](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#get-values-for-signing-in) szakaszában szereplő lépések végrehajtásakor illessze be a bérlői azonosítót, az alkalmazás azonosítóját és a jelszó értékét egy szövegfájlba. Ezekre hamarosan szüksége lesz.
+  > Rendelje hozzá a szerepkört a Data Lake Storage Gen2 Storage-fiók hatókörében. Hozzárendelhet egy szerepkört a szülő erőforráscsoporthoz vagy az előfizetéshez, de az engedélyekkel kapcsolatos hibákat addig kapja, amíg a szerepkör-hozzárendelések el nem terjednek a Storage-fiókba.
 
 ## <a name="create-an-azure-databricks-workspace"></a>Azure Databricks-munkaterület létrehozása
 

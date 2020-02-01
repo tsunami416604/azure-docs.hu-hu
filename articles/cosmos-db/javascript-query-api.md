@@ -1,5 +1,5 @@
 ---
-title: A JavaScript integrált lekérdezési API használata Azure Cosmos DB
+title: A JavaScript integrált lekérdezési API használata Azure Cosmos DB tárolt eljárások és eseményindítók használatával
 description: Ez a cikk bemutatja a JavaScript nyelvre épülő lekérdezési API fogalmait a tárolt eljárások és triggerek létrehozásához Azure Cosmos DBban.
 author: markjbrown
 ms.service: cosmos-db
@@ -7,16 +7,16 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 8396608cdbc5638a3640f94c94b44ad7c5f52a73
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 7b7ad470b3330224e80a7160fc1a37bb5ee1cde8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75445315"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901835"
 ---
 # <a name="javascript-query-api-in-azure-cosmos-db"></a>JavaScript lekérdezési API a Azure Cosmos DB
 
-A Azure Cosmos DBban található SQL API-val való lekérdezések mellett a [Cosmos db KISZOLGÁLÓOLDALI SDK](https://azure.github.io/azure-cosmosdb-js-server/) lehetővé teszi, hogy JavaScript-felület használatával optimalizált lekérdezéseket végezzen. Ennek a JavaScript-felületnek a használatához nem kell tisztában lennie az SQL-nyelvvel. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket úgy, hogy a predikátum függvényeit átadja a függvények sorrendjének, és egy olyan szintaxist, amely ismerős a ECMAScript5's Array beépített és népszerű JavaScript-kódtárak, például a Lodash használatával. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DB indexek használatával hatékonyan hajtja végre.
+A Azure Cosmos DBban található SQL API-val végzett lekérdezések mellett a [Cosmos db KISZOLGÁLÓOLDALI SDK JavaScript-](https://azure.github.io/azure-cosmosdb-js-server/) felületet biztosít az optimalizált lekérdezések végrehajtásához Cosmos db tárolt eljárások és eseményindítók esetében. Ennek a JavaScript-felületnek a használatához nem kell tisztában lennie az SQL-nyelvvel. A JavaScript lekérdezési API lehetővé teszi, hogy programozott módon hozza létre a lekérdezéseket úgy, hogy a predikátum függvényeit átadja a függvények sorrendjének, és egy olyan szintaxist, amely ismerős a ECMAScript5's Array beépített és népszerű JavaScript-kódtárak, például a Lodash használatával. A lekérdezéseket a JavaScript futtatókörnyezet elemzi, és a Azure Cosmos DB indexek használatával hatékonyan hajtja végre.
 
 ## <a name="supported-javascript-functions"></a>Támogatott JavaScript-függvények
 

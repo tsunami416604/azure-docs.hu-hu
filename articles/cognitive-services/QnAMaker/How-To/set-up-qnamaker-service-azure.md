@@ -8,15 +8,15 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: conceptual
-ms.date: 09/13/2019
+ms.date: 01/28/2020
 ms.author: diberry
 ms.custom: seodec18
-ms.openlocfilehash: dc3bb6882963205e17e37f52ec9dcdffecdf9e21
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 00b8e6d44ed8449aa4ddf8716039c8c85c558b8f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843146"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901750"
 ---
 # <a name="manage-qna-maker-resources"></a>QnA Maker erőforrások kezelése
 
@@ -28,7 +28,7 @@ A QnA Maker szolgáltatás két típusú kulccsal foglalkozik: az **előfizetés
 
 ![Kulcskezelés](../media/qnamaker-how-to-key-management/key-management.png)
 
-|Név|Földrajzi egység|Rendeltetés|
+|Name (Név)|Földrajzi egység|Rendeltetés|
 |--|--|--|
 |Előfizetői azonosító|[Azure Portal](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)|Ezek a kulcsok a [QnA Maker Management szolgáltatás API-jai](https://go.microsoft.com/fwlink/?linkid=2092179)elérésére szolgálnak. Ezek az API-k lehetővé teszik a tudásbázisban található kérdések és válaszok szerkesztését, valamint a Tudásbázis közzétételét. Ezek a kulcsok akkor jönnek létre, amikor új QnA Maker szolgáltatást hoz létre.<br><br>Keresse meg ezeket a kulcsokat a **kulcsok** oldalon található **Cognitive Services** erőforrásban.|
 |Végpont kulcsa|[QnA Maker portál](https://www.qnamaker.ai)|Ezek a kulcsok a közzétett Tudásbázis-végpont elérésére szolgálnak, így választ kaphat a felhasználó kérdéseire. Ezt a végpontot általában a csevegési robotjában vagy a QnA Maker szolgáltatáshoz csatlakozó ügyfélalkalmazás kódjában használja. Ezek a kulcsok akkor jönnek létre, amikor közzéteszi a QnA Maker tudásbázist.<br><br>Keresse meg ezeket a kulcsokat a **szolgáltatás beállításai** lapon. Keresse meg ezt a lapot a legördülő menüben található oldal jobb felső sarkában található felhasználó menüjében.|
@@ -97,7 +97,8 @@ A végponti kulcsok kezelhetők a [QnA Maker portálról](https://qnamaker.ai).
 
 2. A kulcsok megtekintése és alaphelyzetbe állítása:
 
-    ![Endpoint Key Manager](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
+    > [!div class="mx-imgBorder"]
+    > [a szolgáltatás beállításai között ![a végpont kulcsának megjelenítése, másolása vagy beállítása](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)](../media/qnamaker-how-to-key-management/Endpoint-keys1.png#lightbox)
 
     >[!NOTE]
     >Frissítse a kulcsokat, ha úgy gondolja, hogy sérült a biztonsága. Ehhez szükség lehet az ügyfélalkalmazás vagy a robot kódjának megfelelő módosítására.
@@ -136,7 +137,7 @@ A QnA Maker **app Service** erőforrása a Cognitive Search erőforrást haszná
 1. Válassza a **Beállítások**, majd a **konfiguráció**lehetőséget. Ekkor megjelenik a QnA Maker App Service összes meglévő beállítása.
 
     > [!div class="mx-imgBorder"]
-    > ![képernyőkép a Azure Portalról, amely a App Service konfigurációs beállításait mutatja](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)
+    > [a App Service konfigurációs beállításait bemutató Azure Portal képernyőképe ![](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png)](../media/qnamaker-how-to-upgrade-qnamaker/change-search-service-app-service-configuration.png#lightbox)
 
 1. Módosítsa a következő kulcsok értékeit:
 
@@ -146,7 +147,7 @@ A QnA Maker **app Service** erőforrása a Cognitive Search erőforrást haszná
 1. Az új beállítások használatához újra kell indítania az App Service-t. Válassza az **Áttekintés**, majd az **Újraindítás**lehetőséget.
 
     > [!div class="mx-imgBorder"]
-    > ![képernyőkép a Azure Portal újraindításáról App Service a konfigurációs beállítások módosítása után](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
+    > [![Azure Portal újraindításának képernyőképe a konfigurációs beállítások módosítása után App Service](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)](../media/qnamaker-how-to-upgrade-qnamaker/screenshot-azure-portal-restart-app-service.png)
 
 Ha Azure Resource Manager sablonokon keresztül hoz létre QnA szolgáltatást, az összes erőforrást létrehozhatja, és szabályozhatja a App Service létrehozását egy meglévő keresési szolgáltatás használatára.
 

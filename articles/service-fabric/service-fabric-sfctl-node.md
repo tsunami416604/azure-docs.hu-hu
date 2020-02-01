@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl csomópont
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A fürtcsomópontok kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 43b242d6c7c41b6198b8f909ab5ae056f0982307
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: 5881e6485003abd4fd23a7f6d06a428e768c00fa
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645293"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905874"
 ---
 # <a name="sfctl-node"></a>sfctl-csomópont
 A fürtöt alkotó csomópontok kezelése.
@@ -19,17 +19,44 @@ A fürtöt alkotó csomópontok kezelése.
 
 |Parancs|Leírás|
 | --- | --- |
-| letiltás | Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szándékkal. |
-| engedélyezés | A jelenleg inaktivált Service Fabric fürtcsomópont aktiválása. |
+| Add-Configuration-paraméter-felülbírálások | Hozzáadja a konfigurációs felülbírálások listáját a megadott csomóponton. |
+| Megbénít | Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szándékkal. |
+| engedélyezése | A jelenleg inaktivált Service Fabric fürtcsomópont aktiválása. |
+| beállítások beolvasása – felülbírálások | Lekéri a konfigurációs felülbírálások listáját a megadott csomóponton. |
 | egészségügy | Egy Service Fabric csomópont állapotának beolvasása. |
 | információ | Lekérdezi a Service Fabric fürt egy adott csomópontjának adatait. |
 | lista | Lekéri a Service Fabric fürt csomópontjainak listáját. |
 | betöltés | Lekéri egy Service Fabric csomópont betöltési adatait. |
+| konfiguráció eltávolítása – felülbírálások | Eltávolítja a konfigurációs felülbírálásokat a megadott csomóponton. |
 | állapot eltávolítása | A Service Fabric értesíti arról, hogy a csomóponton megőrzött állapot véglegesen el lett távolítva vagy elveszett. |
 | jelentés – állapot | Állapotjelentés küldése a Service Fabric csomóponton. |
 | restart | Újraindít egy Service Fabric fürtcsomópont-csomópontot. |
 | átmenet | Elindít vagy leállít egy fürtcsomópont-csomópontot. |
 | átmenet – állapot | A StartNodeTransition használatával megkezdett művelet előrehaladásának beolvasása. |
+
+## <a name="sfctl-node-add-configuration-parameter-overrides"></a>sfctl Node Add-Configuration-paraméter-felülbírálások
+Hozzáadja a konfigurációs felülbírálások listáját a megadott csomóponton.
+
+Ez az API lehetővé teszi az összes meglévő konfigurációs felülbírálás hozzáadását a megadott csomóponton.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --config-paraméter-felülbírálás-lista [kötelező] | Leírás a konfigurációs felülbírálások listájának hozzáadásához. |
+| --Node-Name [kötelező] | A csomópont neve. |
+| – kényszerített | Konfiguráció felülbírálásának kényszerítése a megadott csomópontokon. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 ## <a name="sfctl-node-disable"></a>sfctl csomópont letiltása
 Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szándékkal.
@@ -58,6 +85,28 @@ Egy Service Fabric fürtcsomópont inaktiválása a megadott inaktiválási szá
 A jelenleg inaktivált Service Fabric fürtcsomópont aktiválása.
 
 Aktiválja a jelenleg inaktivált Service Fabric fürtcsomópont-csomópontot. Az aktiválást követően a csomópont ismét életképes célpont lesz az új replikák elhelyezéséhez, és a csomóponton maradó deaktivált replikák újra lesznek aktiválva.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Node-Name [kötelező] | A csomópont neve. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
+## <a name="sfctl-node-get-configuration-overrides"></a>sfctl-csomópont lekérése – konfiguráció – felülbírálások
+Lekéri a konfigurációs felülbírálások listáját a megadott csomóponton.
+
+Ez az API lehetővé teszi az összes meglévő konfiguráció felülbírálásának lekérését a megadott csomóponton.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -167,10 +216,32 @@ Lekérdezi egy Service Fabric csomópontjának betöltési adatait az összes ol
 | – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
+## <a name="sfctl-node-remove-configuration-overrides"></a>sfctl csomópont eltávolítása – konfiguráció – felülbírálások
+Eltávolítja a konfigurációs felülbírálásokat a megadott csomóponton.
+
+Ez az API lehetővé teszi az összes meglévő konfiguráció felülbírálásának eltávolítását a megadott csomóponton.
+
+### <a name="arguments"></a>Argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| --Node-Name [kötelező] | A csomópont neve. |
+| --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
+
+### <a name="global-arguments"></a>Globális argumentumok
+
+|Argumentum|Leírás|
+| --- | --- |
+| – hibakeresés | A naplózás részletességének növelésével megjelenítheti az összes hibakeresési naplót. |
+| --Help-h | A súgó üzenet megjelenítése és kilépés. |
+| --output-o | Kimeneti formátum.  Megengedett értékek: JSON, jsonc, Table, TSV\:.  Alapértelmezett\: JSON. |
+| – lekérdezés | JMESPath lekérdezési karakterlánca További információkat és példákat a http\://jmespath.org/című témakörben talál. |
+| --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
+
 ## <a name="sfctl-node-remove-state"></a>sfctl csomópont eltávolítása – állapot
 A Service Fabric értesíti arról, hogy a csomóponton megőrzött állapot véglegesen el lett távolítva vagy elveszett.
 
-Ez azt jelenti, hogy a csomópont megőrzött állapotát nem lehet helyreállítani. Ez általában akkor fordul elő, ha a merevlemez törölve lett tiszta, vagy ha a lemez összeomlik. A művelet sikeres végrehajtásához a csomópontot le kell állítani. Ez a művelet lehetővé teszi, hogy Service Fabric tudja, hogy a csomóponton lévő replikák már nem léteznek, és hogy a Service Fabric ne várja meg, amíg ezek a replikák biztonsági mentést készítenek. Ne futtassa ezt a parancsmagot, ha a csomóponton lévő állapot nem lett eltávolítva, és a csomópont érintetlen állapotba kerülhet. Ha az API-t a magok csomópontjain szeretné használni, Service Fabric 6,5-től kezdődően, módosítsa a magok csomópontjait a normál (nem magok) csomópontokra, majd indítsa el ezt az API-t a csomópont állapotának eltávolításához. Ha a fürt az Azure-on fut, a vetőmag-csomópont leállása után a Service Fabric automatikusan megpróbálja módosítani a nem magot tartalmazó csomópontot. Ennek elvégzéséhez győződjön meg arról, hogy az elsődleges csomópont típusában lévő nem Seed csomópontok száma nem kevesebb, mint a lefektetett vetőmag-csomópontok száma. Ha szükséges, vegyen fel további csomópontokat az elsődleges csomópont-típusba ennek eléréséhez. Önálló fürt esetén, ha a lefelé irányuló mag csomópontja nem várható, hogy az állapota érintetlen marad, távolítsa el a csomópontot a fürtből: https\://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
+Ez azt jelenti, hogy a csomópont megőrzött állapotát nem lehet helyreállítani. Ez általában akkor fordul elő, ha a merevlemez törölve lett tiszta, vagy ha a lemez összeomlik. A művelet sikeres végrehajtásához a csomópontot le kell állítani. Ez a művelet lehetővé teszi, hogy Service Fabric tudja, hogy a csomóponton lévő replikák már nem léteznek, és hogy a Service Fabric ne várja meg, amíg ezek a replikák biztonsági mentést készítenek. Ne futtassa ezt a parancsmagot, ha a csomóponton lévő állapot nem lett eltávolítva, és a csomópont érintetlen állapotba kerülhet. Ha az API-t a magok csomópontjain szeretné használni, Service Fabric 6,5-től kezdődően, módosítsa a magok csomópontjait a normál (nem magok) csomópontokra, majd indítsa el ezt az API-t a csomópont állapotának eltávolításához. Ha a fürt az Azure-on fut, a vetőmag-csomópont leállása után a Service Fabric automatikusan megpróbálja módosítani a nem magot tartalmazó csomópontot. Ennek elvégzéséhez győződjön meg arról, hogy az elsődleges csomópont típusában lévő nem Seed csomópontok száma nem kevesebb, mint a lefektetett vetőmag-csomópontok száma. Ha szükséges, vegyen fel további csomópontokat az elsődleges csomópont-típusba ennek eléréséhez. Önálló fürt esetén, ha a lefelé irányuló mag csomópontja nem várható, hogy az állapota érintetlen marad, távolítsa el a csomópontot a fürtből: https\://docs.microsoft.com/en-us/azure/service-fabric/service-fabric-cluster-windows-server-add-remove-nodes.
 
 ### <a name="arguments"></a>Argumentumok
 
@@ -207,7 +278,7 @@ A megadott Service Fabric csomópont állapotának jelentése. A jelentésnek ta
 | --Remove-when-lejárt | Az érték, amely azt jelzi, hogy a jelentés törlődik-e a Health Store-ból, amikor lejár. <br><br> Ha az értéke TRUE (igaz), a rendszer eltávolítja a jelentést az állapot-áruházból a lejárat után. Ha hamis értékre van állítva, a jelentés a lejártkor hibaként lesz kezelve. A tulajdonság értéke alapértelmezés szerint hamis. Amikor az ügyfelek rendszeresen jelentést küldenek, a Eltávolításlejáratkor false (alapértelmezett) értéket kell beállítania. Így a riporter problémákba ütközik (például holtpont), és nem tud jelentést készíteni, az entitást a rendszer hiba esetén kiértékeli, amikor az állapotjelentés lejár. Ez az entitás a hiba állapotának megfelelően jelenik meg. |
 | --Sequence-Number | Az állapotjelentés sorszáma numerikus karakterláncként. <br><br> A jelentés sorszámát a Health Store használja az elavult jelentések észlelésére. Ha nincs megadva, a rendszer automatikusan létrehozza a sorszámot, amikor egy jelentés hozzáadása történik. |
 | --időtúllépés-t | Alapértelmezett\: 60. |
-| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, akkor az idő is megadható a végtelennek. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
+| --TTL | Az az időtartam, ameddig ez az állapotjelentés érvényes. Ez a mező ISO8601 formátumot használ az időtartam megadásához. <br><br> Amikor az ügyfelek rendszeresen jelentést küldenek, a jelentéseknek az élettartamuk során nagyobb gyakorisággal kell elküldeniük a jelentéseket. Ha az ügyfelek áttérnek a váltásra, beállíthatja, hogy az idő a végtelen értékre legyen állítva. Ha a lejárati idő lejár, az állapottal kapcsolatos információkat tartalmazó állapotot a rendszer eltávolítja az állapotfigyelő tárolóból, ha a Eltávolításlejáratkor értéke TRUE (igaz), vagy hiba esetén kiértékelt, ha a Eltávolításlejáratkor hamis. Ha nincs megadva, a rendszer az alapértelmezett élettartamot a végtelen értékre adja. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 

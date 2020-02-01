@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/26/2019
-ms.openlocfilehash: ea60faf5b5689fa674095201d3db18422d3e0f1b
-ms.sourcegitcommit: 3dc1a23a7570552f0d1cc2ffdfb915ea871e257c
+ms.openlocfilehash: 093bfbd976ace41f635976ff27fa4292e5c4df3c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "75980496"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905150"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
@@ -78,7 +78,7 @@ Más elnevezési korlátozások is érvényesek a fürtök létrehozására. Tov
 
 ## <a name="service-outages"></a>Szolgáltatások kimaradásai
 
-Győződjön meg arról, hogy az [Azure állapota](https://status.azure.com/status) esetleges kimaradások vagy szolgáltatási problémák esetén is fennáll.
+Győződjön meg arról, hogy az [Azure állapota](https://status.azure.com) esetleges kimaradások vagy szolgáltatási problémák esetén is fennáll.
 
 ## <a name="next-steps"></a>Következő lépések
 

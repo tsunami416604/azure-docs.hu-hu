@@ -4,12 +4,12 @@ description: A Hyperledger Fabric Consortium Network üzembe helyezése és konf
 ms.date: 01/08/2020
 ms.topic: article
 ms.reviewer: v-umha
-ms.openlocfilehash: 59e13b671f68c29271227d481b41562256d66fd6
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: 93f78f2c8bc32a2012e5635e0daec10b8c51d167
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76289645"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901627"
 ---
 # <a name="hyperledger-fabric-consortium-on-azure-kubernetes-service-aks"></a>Hyperledger Fabric Consortium az Azure Kubernetes Service-ben (ak)
 
@@ -466,7 +466,7 @@ npm run queryCC -- -o $ORGNAME -u $USER_IDENTITY -n $CC_NAME -c $CHANNEL -f <que
 
 ```
 
-Adja át a lekérdezési függvény nevét és az argumentumok vesszővel tagolt listáját `<queryFunction>` és `<queryFuncArgs>`. Ismét `fabcar` chaincode, hogy az összes, a globális állapotot lekérdező autót lekérdezze `<queryFunction>` a `"queryAllCars"` és `<queryArgs>' to `"" "értékre.
+Adja át a lekérdezési függvény nevét és az argumentumok vesszővel tagolt listáját `<queryFunction>` és `<queryFuncArgs>`. Ismét `fabcar` chaincode, hogy az összes, a globális állapotban lévő összes autót le lehessen kérdezni, `<queryFunction>` `"queryAllCars"`, és `<queryArgs>` `""`.
 
 A parancsban átadott argumentumokkal kapcsolatos további részletekért tekintse meg a Command súgóját.
 

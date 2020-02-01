@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl alkalmazás
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. Az alkalmazások kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: 4d416408fd83d7bc316c7045c2a0031fe50d36f5
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: b4e1066bba1db387c9dc0600bc55522f0b5fe897
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75645412"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906196"
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
 Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelése.
@@ -28,7 +28,7 @@ Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelé
 | információ | Beolvas egy Service Fabric alkalmazással kapcsolatos információkat. |
 | lista | A megadott szűrőknek megfelelő Service Fabric-fürtben létrehozott alkalmazások listájának beolvasása. |
 | betöltés | Beolvas egy Service Fabric alkalmazás betöltési adatait. |
-| manifest | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
+| nyilvánvaló | Beolvassa az alkalmazás típusát leíró jegyzékfájlt. |
 | rendelkezés | Kiépíti vagy regisztrálja Service Fabric alkalmazás típusát a fürtön a külső tárolóban található ". sfpkg" csomaggal, vagy a rendszerkép-tárolóban lévő alkalmazáscsomag használatával. |
 | jelentés – állapot | Állapotjelentést küld a Service Fabric alkalmazásról. |
 | type | Beolvassa a Service Fabric-fürtben található, pontosan a megadott névvel egyező típusú alkalmazások listáját. |
@@ -298,7 +298,7 @@ Egy Service Fabric alkalmazás típusának kiosztása a fürttel. A kiépítés 
 | --Application-Type-Name | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának neve az alkalmazás jegyzékfájljában található alkalmazás típusának neve. |
 | --alkalmazás-típus-verzió | Csak a külső tároló üzembe helyezéséhez. Az alkalmazás típusának verziója az alkalmazás jegyzékfájljában található alkalmazás típusú verziót jelöli. |
 | – külső – kiépítés | Az a hely, ahonnan az alkalmazáscsomag regisztrálható vagy üzembe helyezhető. Azt jelzi, hogy a kiépítés olyan alkalmazáscsomag esetében, amelyet korábban egy külső tárolóba töltöttek fel. Az alkalmazáscsomag a *. sfpkg kiterjesztéssel végződik. |
-| --No-WAIT | Azt jelzi, hogy aszinkron módon történjen-e a kiépítés. <br><br> Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a létesítési művelet időkorlát nélkül folytatódik. Alapértelmezett értéke hamis. Nagyméretű alkalmazáscsomag esetén azt javasoljuk, hogy az értéket állítsa igaz értékre. |
+| --No-WAIT | Azt jelzi, hogy aszinkron módon történjen-e a kiépítés. <br><br> Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a létesítési művelet időkorlát nélkül folytatódik. Az alapértelmezett érték false (hamis). Nagyméretű alkalmazáscsomag esetén azt javasoljuk, hogy az értéket állítsa igaz értékre. |
 | --időtúllépés-t | Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -403,7 +403,7 @@ Ez a művelet csak akkor hajtható végre, ha az alkalmazás összes példánya 
 | --- | --- |
 | --Application-Type-Name [kötelező] | Az alkalmazás típusának neve. |
 | --Application-Type-Version [kötelező] | Az alkalmazás jegyzékfájlban definiált verziója. |
-| --aszinkron-paraméter | Az a jelző, amely azt jelzi, hogy a kiépítés megszüntetése aszinkron módon történik-e. Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a kiépítés művelet időkorlát nélkül folytatódik. Alapértelmezett értéke hamis. Azt javasoljuk azonban, hogy igaz értékre állítsa a nagyméretű, kiépített alkalmazás-csomagokat. |
+| --aszinkron-paraméter | Az a jelző, amely azt jelzi, hogy a kiépítés megszüntetése aszinkron módon történik-e. Ha igaz értékre van állítva, a kiépítési művelet visszaadja, ha a rendszer elfogadja a kérést, és a kiépítés művelet időkorlát nélkül folytatódik. Az alapértelmezett érték false (hamis). Azt javasoljuk azonban, hogy igaz értékre állítsa a nagyméretű, kiépített alkalmazás-csomagokat. |
 | --időtúllépés-t | A kiszolgáló időtúllépése másodpercben a művelet végrehajtására. Ez az időkorlát azt az időtartamot adja meg, ameddig az ügyfélnek várnia kell, amíg a kért művelet befejeződik. A paraméter alapértelmezett értéke 60 másodperc.  Alapértelmezett\: 60. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
@@ -530,9 +530,12 @@ A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthet
 |Argumentum|Leírás|
 | --- | --- |
 | – elérési út [kötelező] | Helyi alkalmazáscsomag elérési útja. |
+| – tömörítés | Csak Service Fabric alkalmazás-csomagokra érvényes. Hozzon létre egy új mappát, amely tartalmazza a tömörített alkalmazáscsomag vagy az alapértelmezett helyet, vagy a tömörített hely paraméter által megadott helyet, majd töltse fel az újonnan létrehozott mappát. <br><br> Ha már van olyan tömörített fájl, amelyet a sfctl hozott létre, a rendszer felülírja, ha ez a jelző be van állítva. Ha a könyvtár nem alkalmazáscsomag, a rendszer hibaüzenetet küld. Ha már tömörített alkalmazáscsomag van, a mappa a következőképpen lesz átmásolva:. Alapértelmezés szerint az újonnan létrehozott tömörített alkalmazáscsomag törlése sikeres feltöltés után megtörténik. Ha a feltöltés nem sikerült, manuálisan törölje a tömörített csomagot szükség szerint. A törlés nem távolít el üres dirs, amelyek akkor hozhatók létre, ha a tömörített Location paraméter nem létező címtárakra hivatkozik. |
+| --tömörített – hely | A tömörített alkalmazáscsomag üzembe helyezésének helye. <br><br> Ha nincs megadva hely, a tömörített csomag egy sfctl_compressed_temp nevű újonnan létrehozott mappába kerül, amely a Path argumentumban megadott szülő könyvtár alatt található. Ha például a Path argumentum értéke C\:/FolderA/AppPkg, akkor a tömörített csomag hozzá lesz adva a C\:/FolderA/sfctl_compressed_temp/AppPkg. |
 | --lemezképtárolóba-string | A cél rendszerkép-tároló az alkalmazáscsomag feltöltéséhez.  Alapértelmezett\: háló\:Lemezképtárolóba. <br><br> Egy fájl helyére való feltöltéshez indítsa el ezt a paramétert a következővel: "file\:". Ellenkező esetben az értéknek a rendszerkép-tárolóhoz tartozó kapcsolatok karakterláncának kell lennie, például az alapértelmezett értéknek. |
+| --Keep-Compressed | Azt határozza meg, hogy a létrehozott tömörített csomag sikeresen feltölthető-e a feltöltés befejezésére. <br><br> Ha nincs beállítva, akkor a sikeres befejezés után a rendszer törli a tömörített alkalmazáscsomag-csomagokat. Ha a feltöltés sikertelen volt, akkor az alkalmazáscsomag mindig a kimeneti könyvtárban marad a feltöltéshez. |
 | --show-Progress | Nagyméretű csomagok esetén a fájlfeltöltés előrehaladásának megjelenítése. |
-| --időtúllépés-t | A teljes időtúllépés másodpercben. A feltöltés sikertelen lesz, és a feltöltés időtúllépési időtartamának lejárta után hibaüzenetet ad vissza. Ez az időkorlát a teljes alkalmazáscsomag érvényes, és az egyes fájlok időtúllépése a hátralévő időtúllépési időtartammal egyenlő lesz.  Alapértelmezett\: 300. |
+| --időtúllépés-t | A teljes időtúllépés másodpercben. A feltöltés sikertelen lesz, és a feltöltés időtúllépési időtartamának lejárta után hibaüzenetet ad vissza. Ez az időkorlát a teljes alkalmazáscsomag érvényes, és az egyes fájlok időtúllépése a hátralévő időtúllépési időtartammal egyenlő lesz. Az időtúllépés nem tartalmazza az alkalmazáscsomag tömörítéséhez szükséges időt.  Alapértelmezett\: 300. |
 
 ### <a name="global-arguments"></a>Globális argumentumok
 

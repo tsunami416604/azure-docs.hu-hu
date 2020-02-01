@@ -8,14 +8,14 @@ services: cognitive-services
 ms.service: cognitive-services
 ms.subservice: qna-maker
 ms.topic: quickstart
-ms.date: 12/17/2019
+ms.date: 01/29/2020
 ms.author: diberry
-ms.openlocfilehash: 26c7996d6a955a183121a59254131dcb1dc6706f
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: a3bdc118be96630ebcf3bf63a2948976dc9b4261
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844262"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901676"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
 
@@ -39,7 +39,7 @@ Egy Chit-Chat-személyiséggel is elvégezheti a tudását, így jobban megtarth
 1. A **Létrehozás** lapon válassza a **QnA szolgáltatás létrehozása**lehetőséget. A rendszer átirányítja az [Azure Portalra](https://ms.portal.azure.com/#create/Microsoft.CognitiveServicesQnAMaker), ahol be kell állítania az előfizetésében egy QnA Maker-szolgáltatást.
 
 1. A Azure Portal hozza létre az erőforrást. Jegyezze fel Azure Active Directory AZONOSÍTÓját, előfizetését, az erőforrás létrehozásakor kiválasztott QnA-erőforrás nevét.
-1. Térjen vissza a QnA Maker portálra, frissítse a webhelyet a portálon, és folytassa a Tudásbázis létrehozásával.
+1. Térjen vissza a QnA Maker portálra, frissítse a webhelyet a portálon, és folytassa a Tudásbázis létrehozásával. Válasszon ki egy meglévő bérlőt, előfizetést és az új erőforrást. Válassza ki a nyelvet. Ez a QnA Maker szolgáltatás összes tudásbázisának nyelve lesz.
 
    ![Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról](../media/qnamaker-quickstart-kb/qnaservice-selection.png)
 

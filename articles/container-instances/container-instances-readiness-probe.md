@@ -3,12 +3,12 @@ title: Készültségi mintavétel beállítása a tároló-példányon
 description: Megtudhatja, hogyan konfigurálhat mintavételt úgy, hogy a tárolók Azure Container Instances fogadása csak akkor legyen elérhető, amikor készen állnak
 ms.topic: article
 ms.date: 10/17/2019
-ms.openlocfilehash: 5ebbcdeee231e3e67abd6758485a12984137997e
-ms.sourcegitcommit: 85e7fccf814269c9816b540e4539645ddc153e6e
+ms.openlocfilehash: 50cb341788434a6dc0bb0a1423d9e59a3d93634d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74533561"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901852"
 ---
 # <a name="configure-readiness-probes"></a>Készültségi tesztek konfigurálása
 
@@ -17,6 +17,9 @@ A forgalmat kiszolgáló tároló alkalmazások esetében érdemes ellenőrizni,
 Ez a cikk azt ismerteti, hogyan helyezhető üzembe egy készültségi vizsgálatot magában foglaló tároló-csoport, hogy a tárolók csak a mintavétel sikeressége után kapják meg a forgalmat.
 
 A Azure Container Instances támogatja az [élettartam](container-instances-liveness-probe.md)-mintavételt is, amelyet beállíthatja úgy, hogy a nem kifogástalan állapotú tárolót automatikusan újrainduljon.
+
+> [!NOTE]
+> Jelenleg nem használhat készenléti mintavételt egy virtuális hálózatra központilag telepített tároló csoportba.
 
 ## <a name="yaml-configuration"></a>YAML-konfiguráció
 

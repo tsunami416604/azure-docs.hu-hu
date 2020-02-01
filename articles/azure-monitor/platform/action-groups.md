@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 8/19/2019
 ms.author: dukek
 ms.subservice: alerts
-ms.openlocfilehash: a954898a334ead15d8ffdf6dab6e6a309bd57089
-ms.sourcegitcommit: 51ed913864f11e78a4a98599b55bbb036550d8a5
+ms.openlocfilehash: cc01145423d2961e32bf17313a2873633399d21a
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/04/2020
-ms.locfileid: "75659831"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901471"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveleti csoportok létrehozása és kezelése a Azure Portal
 A műveleti csoport az Azure-előfizetés tulajdonosa által meghatározott értesítési beállítások gyűjteménye. Azure Monitor és Service Health riasztások használata műveleti csoportok segítségével értesíti a felhasználókat arról, hogy riasztást váltott ki. A különböző riasztások ugyanazt a műveleti csoportot vagy különböző műveleti csoportokat használhatják a felhasználó igényeitől függően. Egy előfizetésben akár 2 000 műveleti csoportot is beállíthat.
@@ -72,7 +72,7 @@ Miután létrehozta a műveleti csoportot, a **figyelő** ablaktábla **művelet
 > [!NOTE]
 > Az alábbi elemeken megtekintheti az [előfizetési szolgáltatás korlátozásait](https://docs.microsoft.com/azure/azure-resource-manager/management/azure-subscription-service-limits#azure-monitor-limits) a numerikus korlátok figyeléséhez.  
 
-### <a name="automation-runbook"></a>Automation-forgatókönyv
+### <a name="automation-runbook"></a>Automation-Runbook
 Tekintse meg az [Azure-előfizetési szolgáltatási](../../azure-resource-manager/management/azure-subscription-service-limits.md) korlátokat a Runbook-adattartalomra vonatkozó korlátozásokkal kapcsolatban.
 
 A műveleti csoportban korlátozott számú Runbook művelet lehet. 
@@ -88,13 +88,13 @@ A rendszer e-maileket küld a következő e-mail-címekről. Győződjön meg ar
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
-### <a name="email-azure-resource-manager-role"></a>Azure Resource Manager-szerepkör küldése e-mailben
+### <a name="email-azure-resource-manager-role"></a>E-mail-Azure Resource Manager szerepkör
 E-mail küldése az előfizetés szerepkörének tagjainak.
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./../../azure-monitor/platform/alerts-rate-limiting.md) ismertető cikket.
 
 ### <a name="function"></a>Függvény
-A műveletként konfigurált functions-alkalmazások kulcsai a functions API-n keresztül olvashatók, amely jelenleg a v2 Function apps-alkalmazásokkal konfigurálja a "AzureWebJobsSecretStorageType" beállítást a "files" értékre. További információ: [változások a kulcskezelő szolgáltatásban a functions v2-ben]( https://aka.ms/funcsecrets).
+Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 A műveleti csoportban korlátozott számú Function művelet lehet.
 

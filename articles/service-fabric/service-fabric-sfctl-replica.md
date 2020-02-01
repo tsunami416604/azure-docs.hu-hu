@@ -3,14 +3,14 @@ title: Azure Service Fabric CLI – sfctl replika
 description: Ismerje meg a sfctl, az Azure Service Fabric parancssori felületét. A replikák kezelésére szolgáló parancsok listáját tartalmazza.
 author: jeffj6123
 ms.topic: reference
-ms.date: 9/17/2019
+ms.date: 1/16/2020
 ms.author: jejarry
-ms.openlocfilehash: a0588d84a79407b5df5033f0a32851fc708d598b
-ms.sourcegitcommit: f788bc6bc524516f186386376ca6651ce80f334d
+ms.openlocfilehash: f6ad0b4c08ac8d710340fe654a068d0a3804e58f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/03/2020
-ms.locfileid: "75646041"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905803"
 ---
 # <a name="sfctl-replica"></a>sfctl-replika
 Kezelheti a szolgáltatási partíciókhoz tartozó replikákat.
@@ -24,7 +24,7 @@ Kezelheti a szolgáltatási partíciókhoz tartozó replikákat.
 | egészségügy | Beolvas egy Service Fabric állapot-nyilvántartó szolgáltatás replikájának vagy állapot nélküli szolgáltatási példányának állapotát. |
 | információ | Egy Service Fabric partíció replikájának adatait kérdezi le. |
 | lista | Lekérdezi a Service Fabric szolgáltatás partíciójának replikáit. |
-| eltávolítás | Eltávolít egy csomóponton futó szolgáltatási replikát. |
+| eltávolítása | Eltávolít egy csomóponton futó szolgáltatási replikát. |
 | jelentés – állapot | Állapotjelentés küldése az Service Fabric-replikán. |
 | restart | Újraindítja egy csomóponton futó megőrzött szolgáltatás szolgáltatás-replikáját. |
 

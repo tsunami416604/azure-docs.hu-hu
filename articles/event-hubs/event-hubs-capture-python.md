@@ -13,23 +13,23 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: quickstart
 ms.custom: seodec18
-ms.date: 01/08/2020
+ms.date: 01/15/2020
 ms.author: shvija
-ms.openlocfilehash: e81871e27c04f8a43f678110d7f44cc9c3be149c
-ms.sourcegitcommit: b5106424cd7531c7084a4ac6657c4d67a05f7068
+ms.openlocfilehash: c6c27a269abfd6fbf29ec7bbb0980d764abaa242
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75940763"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904505"
 ---
-# <a name="quickstart-event-hubs-capture-walkthrough-python"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python
+# <a name="quickstart-event-hubs-capture-walkthrough-python-azure-eventhub-version-1"></a>Gyors útmutató: Event Hubs Capture bemutatója: Python (Azure-eventhub 1. verzió)
 
 A capture az Azure Event Hubs egyik funkciója. A capture használatával automatikusan továbbíthatja az adatátviteli adatait az Event hub-ban egy tetszőleges Azure Blob Storage-fiókba. Ez a funkció megkönnyíti a kötegelt feldolgozást a valós idejű adatfolyam-továbbítási adatátvitelhez. Ez a cikk azt ismerteti, hogyan használható a Event Hubs Capture a Python használatával. További információ a Event Hubs rögzítéséről: [események rögzítése az Azure Event Hubs használatával][Overview of Event Hubs Capture].
 
 Ez az útmutató az [Azure PYTHON SDK](https://azure.microsoft.com/develop/python/) használatával mutatja be a rögzítési funkciót. A *Sender.py* program a szimulált környezeti telemetria JSON formátumban küldi Event Hubs. Az Event hub a rögzítési funkcióval írja be ezeket az adattárakba a blob Storage-ba. A *capturereader.py* alkalmazás beolvassa ezeket a blobokat, létrehoz egy hozzáfűzési fájlt az összes eszközhöz, és az adatokat *. csv* fájlba írja az egyes eszközökön.
 
-> [!IMPORTANT]
-> Ez a rövid útmutató az Azure Event Hubs Python SDK 1. verzióját használja. Ha még nem ismeri az Azure Event Hubs, használja a Python SDK 5-ös verzióját. A Python SDK 5. verzióját használó gyors útmutatóért tekintse meg [ezt a cikket](get-started-capture-python-v2.md). Ha meglévő kódot kell áttelepítenie az 1. verzióról az 5-ös verzióra, tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
+> [!WARNING]
+> Ez a rövid útmutató az Azure Event Hubs Python SDK 1. verziójához készült. Javasoljuk, hogy a kódot [telepítse át](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md) [a Python SDK 5-ös verziójára](get-started-capture-python-v2.md).
 
 Ebben az útmutatóban a következőket végezheti el: 
 

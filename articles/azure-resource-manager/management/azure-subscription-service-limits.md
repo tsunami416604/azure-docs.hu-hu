@@ -3,19 +3,21 @@ title: Azure-előfizetési korlátok és kvóták
 description: Az Azure-előfizetések és-szolgáltatások gyakori korlátainak, kvótáinak és megkötéseinek listáját jeleníti meg. Ez a cikk a korlátok növelésével és a maximális értékekkel kapcsolatos tudnivalókat tartalmazza.
 tags: billing
 ms.topic: conceptual
-ms.date: 01/28/2020
-ms.openlocfilehash: c6661ce6d3e0f62c47b1f234898dbf47de36f3ee
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/30/2020
+ms.openlocfilehash: c5714dd30be4d557086667a74fff2ff8117e2a2b
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845994"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901417"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Az Azure-előfizetésekre és -szolgáltatásokra vonatkozó korlátozások, kvóták és megkötések
 
 Ez a dokumentum felsorolja a leggyakoribb Microsoft Azure-korlátozásokat, amelyeket más néven kvótának is nevezünk. Ez a dokumentum jelenleg nem vonatkozik az összes Azure-szolgáltatásra. Az idő múlásával a listát kibontjuk és frissítik, hogy több szolgáltatásra is kiterjedjen.
 
 További információ az Azure díjszabásáról: az [Azure díjszabásának áttekintése](https://azure.microsoft.com/pricing/). Itt megbecsülheti a költségeket a [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/)használatával. Megtekintheti az adott szolgáltatás díjszabási adatait tartalmazó oldalt, például a [Windows rendszerű virtuális gépeket](https://azure.microsoft.com/pricing/details/virtual-machines/#Windows). A költségek kezelésére szolgáló tippekért lásd: a [váratlan költségek megelőzése az Azure-számlázással és a költségek kezelésével](../../billing/billing-getting-started.md).
+
+Az erőforrásnevek korlátozásait lásd: [Az Azure-erőforrások elnevezési szabályai és korlátozásai](resource-name-rules.md).
 
 > [!NOTE]
 > Ha az alapértelmezett korlátnál magasabb korlátot vagy kvótát szeretne növelni, [Nyisson meg egy online ügyfélszolgálati kérést díjmentesen](../templates/error-resource-quota.md). A határértékek nem állíthatók fel az alábbi táblázatokban látható maximális határérték fölé. Ha nincs maximális korlát oszlop, az erőforrás nem rendelkezik állítható korlátokkal.
@@ -25,7 +27,7 @@ További információ az Azure díjszabásáról: az [Azure díjszabásának át
 
 ## <a name="limits-and-azure-resource-manager"></a>Korlátok és Azure Resource Manager
 
-Most már lehetséges több Azure-erőforrást egyetlen Azure-erőforráscsoporthoz egyesíteni. Az erőforráscsoportok használatakor a korlátozásokat a rendszer a globálisan a Azure Resource Managertel rendelkező regionális szinten felügyeli. További információ az Azure-erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](overview.md)).
+Egyszerre több Azure-erőforrást is egyesítheti egyetlen Azure-erőforráscsoporthoz. Az erőforráscsoportok használatakor a korlátozásokat a rendszer a globálisan a Azure Resource Managertel rendelkező regionális szinten felügyeli. További információ az Azure-erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](overview.md)).
 
 A következő korlátok listájában az új táblázat a Azure Resource Manager használatakor felmerülő eltéréseket mutatja. Például van egy **előfizetési korlát** tábla és egy **előfizetési korlát – Azure Resource Manager** tábla. Ha a korlát mindkét forgatókönyvre vonatkozik, csak az első táblázatban látható. Hacsak másként nincs jelezve, a korlátok globálisak az összes régióban.
 
@@ -93,7 +95,7 @@ A következő korlátok listájában az új táblázat a Azure Resource Manager 
   * [Nyilvános IP-cím](#publicip-address)
   * [Privát kapcsolat](#private-link-limits)
   * [Traffic Manager](#traffic-manager-limits)
-  * [Virtuális hálózat](#networking-limits)
+  * [Virtual Network](#networking-limits)
   * [Virtuális WAN](#virtual-wan-limits)
 * [Értesítési központ](#notification-hubs-limits)
 * [Erőforráscsoport](#resource-group-limits)
@@ -484,3 +486,4 @@ SQL Data Warehouse korlátok esetében lásd: [SQL Data Warehouse erőforrás-ko
 * [Az Azure korlátainak és növekedésének megismerése](https://azure.microsoft.com/blog/2014/06/04/azure-limits-quotas-increase-requests/)
 * [Virtuális gépek és felhőalapú szolgáltatások mérete az Azure-ban](../../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)
 * [Az Azure Cloud Services mérete](../../cloud-services/cloud-services-sizes-specs.md)
+* [Az Azure-erőforrások elnevezési szabályai és korlátozásai](resource-name-rules.md)

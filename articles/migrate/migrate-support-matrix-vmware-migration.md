@@ -3,19 +3,19 @@ title: VMware-Migrálás támogatása Azure Migrateban
 description: További információ a VMware virtuális gépek áttelepítésének támogatásáról Azure Migrateban.
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.openlocfilehash: e33811563063c0f8eb94b9927d07596d51cd45e4
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 6593d4de6823f15f570ab8922d76cbe84fb0e348
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030223"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901539"
 ---
 # <a name="support-matrix-for-vmware-migration"></a>A VMware-Migrálás támogatási mátrixa
 
 Ez a cikk a VMware virtuális gépek [Azure Migrate: kiszolgáló áttelepítéssel](migrate-services-overview.md#azure-migrate-server-migration-tool) történő áttelepítésére vonatkozó támogatási beállításokat és korlátozásokat foglalja össze. Ha a VMware virtuális gépeknek az Azure-ba való áttelepítésre való vizsgálatával kapcsolatos információkat keres, tekintse át az [értékelés támogatási mátrixát](migrate-support-matrix-vmware.md).
 
 
-## <a name="migration-options"></a>Áttelepítési lehetőségek
+## <a name="migration-options"></a>Áttelepítési beállítások
 
 A VMware virtuális gépeket több módon is áttelepítheti:
 
@@ -24,7 +24,7 @@ A VMware virtuális gépeket több módon is áttelepítheti:
 
 Tekintse át [ezt a cikket](server-migrate-overview.md) , hogy kiderítse, melyik módszert szeretné használni.
 
-## <a name="migration-limitations"></a>A migrálásra vonatkozó korlátozások
+## <a name="migration-limitations"></a>Áttelepítési korlátozások
 
 - Egyszerre legfeljebb 10 virtuális gépet választhat a replikáláshoz. Ha több gépet szeretne áttelepíteni, a replikálást a 10 csoportba.
 - A VMware ügynök nélküli Migrálás esetében akár 100 replikálást is futtathat egyszerre.
@@ -123,7 +123,15 @@ Amikor beállítja a replikációs berendezést az Azure Migrate központban meg
 
 - Ismerje meg a VMware-hez készült [replikációs berendezések követelményeit](migrate-replication-appliance.md#appliance-requirements) .
 - A készülékre telepíteni kell a MySQL-t. Tudnivalók a [telepítési lehetőségekről](migrate-replication-appliance.md#mysql-installation).
-- További információ a replikációs berendezés eléréséhez szükséges [URL-címekről](migrate-replication-appliance.md#url-access) .
+- A replikációs berendezés eléréséhez szükséges [URL-címek](migrate-replication-appliance.md#url-access) és [portok]() ismertetése.
+
+## <a name="agent-based-ports"></a>Ügynök-alapú portok
+
+**Eszköz** | **Kapcsolat**
+--- | ---
+VG | A virtuális gépeken futó mobilitási szolgáltatás a replikációs felügyelet érdekében a HTTPS 443 bejövő porton keresztül kommunikál a helyszíni replikációs berendezéssel (konfigurációs kiszolgálóval).<br/><br/> A virtuális gépek replikációs adatküldést küldenek a folyamat-kiszolgálónak (amely a konfigurációs kiszolgáló gépen fut) a HTTPS 9443 bejövő porton. Ez a port módosítható.
+Replikációs berendezés | A replikációs berendezés az Azure-ba irányuló replikációt a HTTPS 443 kimenő porton keresztül hangolja össze.
+Kiszolgáló feldolgozása | A Process Server replikációs adatokat fogad, optimalizálja és titkosítja, majd az Azure Storage-ba küldi az 443-as porton keresztül.<br/> Alapértelmezés szerint a Process Server fut a replikációs berendezésen.
 
 ## <a name="azure-vm-requirements"></a>Azure-beli virtuális gépekre vonatkozó követelmények
 
@@ -138,7 +146,7 @@ Operációsrendszer-lemezek száma | 1 | Az ellenőrzés sikertelen, ha nem tám
 Adatlemezek száma | 64 vagy kevesebb. | Az ellenőrzés sikertelen, ha nem támogatott.
 Adatlemez mérete | Legfeljebb 4 095 GB | Az ellenőrzés sikertelen, ha nem támogatott.
 Hálózati adapterek | Több adapter is támogatott. |
-Megosztott VHD | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
+Megosztott virtuális merevlemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 FC-lemez | Nem támogatott. | Az ellenőrzés sikertelen, ha nem támogatott.
 BitLocker | Nem támogatott. | A számítógép replikálásának engedélyezése előtt le kell tiltani a BitLockert.
 a virtuális gép neve | 1 – 63 karakter.<br/> Csak betűket, számokat és kötőjelet tartalmazhat.<br/><br/> A gép nevének betűvel vagy számmal kell kezdődnie és végződnie. |  Frissítse az értéket a Site Recovery számítógép tulajdonságai között.

@@ -10,12 +10,12 @@ ms.subservice: core
 ms.reviewer: trbye
 ms.topic: conceptual
 ms.date: 11/04/2019
-ms.openlocfilehash: 78654dfd5a11219d39d53b4042157333656f9aa3
-ms.sourcegitcommit: f53cd24ca41e878b411d7787bd8aa911da4bc4ec
+ms.openlocfilehash: f5bd6b741f85f35fe03c941ed09728354d6b3d2d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/10/2020
-ms.locfileid: "75834756"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905704"
 ---
 # <a name="auto-train-a-time-series-forecast-model"></a>Idősorozat-előrejelzési modell automatikus betanítása
 [!INCLUDE [aml-applies-to-basic-enterprise-sku](../../includes/aml-applies-to-basic-enterprise-sku.md)]
@@ -113,7 +113,7 @@ Az előrejelzési feladatokhoz az automatizált gépi tanulás az idősorozat-ad
 
 A [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig?view=azure-ml-py) objektum az automatizált gépi tanulási feladatokhoz szükséges beállításokat és adatmennyiséget határozza meg. A regressziós problémákhoz hasonlóan szabványos betanítási paramétereket is definiálhat, például a feladattípust, az ismétlések számát, a betanítási adatok számát és az eltérő érvényességi értéket. Az előrejelzési feladatokhoz további paramétereket kell megadni, amelyek hatással vannak a kísérletre. Az alábbi táblázat az egyes paramétereket és azok használatát ismerteti.
 
-| Paraméter | Leírás | Szükséges |
+| Param | Leírás | Szükséges |
 |-------|-------|-------|
 |`time_column_name`|A dátum-és idősorozatok létrehozásához használt bemeneti adatok datetime oszlopának megadására szolgál.|✓|
 |`grain_column_names`|Az egyes adatsorozat-csoportokat meghatározó nevek a bemeneti adatokban. Ha a gabona nincs meghatározva, a rendszer az adathalmazt egy idősorozatra feltételezi.||
@@ -124,7 +124,7 @@ A [`AutoMLConfig`](https://docs.microsoft.com/python/api/azureml-train-automl-cl
 
 További információt a [dokumentációban](/python/api/azureml-train-automl-client/azureml.train.automl.automlconfig.automlconfig) talál.
 
-Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa a `time_column_name` az adathalmaz `day_datetime` mezőjére. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adatsorokhoz; az A és B tároló egyike. Végül állítsa a `max_horizon` 50-re, hogy a teljes tesztelési készletet előre meg lehessen jósolni. Állítsa be az előrejelzési időszakot 10, `target_rolling_window_size`értékkel rendelkező időszakra, és az `target_lags` paraméterrel előrébb álló két időszakra vonatkozóan egyetlen késést határozzon meg. Javasoljuk, hogy `max_horizon`, `target_rolling_window_size` és `target_lags` az "Auto" értékre, amely automatikusan felismeri ezeket az értékeket. Az alábbi példában az "Auto" beállítások lettek használva a paramaters. 
+Hozzon létre egy idősorozat-beállításokat szótár objektumként. Állítsa a `time_column_name` az adathalmaz `day_datetime` mezőjére. Adja meg a `grain_column_names` paramétert annak biztosításához, hogy **két különálló idősorozat-csoport** legyen létrehozva az adatsorokhoz; az A és B tároló egyike. Végül állítsa a `max_horizon` 50-re, hogy a teljes tesztelési készletet előre meg lehessen jósolni. Állítsa be az előrejelzési időszakot 10, `target_rolling_window_size`értékkel rendelkező időszakra, és az `target_lags` paraméterrel előrébb álló két időszakra vonatkozóan egyetlen késést határozzon meg. Javasoljuk, hogy `max_horizon`, `target_rolling_window_size` és `target_lags` az "Auto" értékre, amely automatikusan felismeri ezeket az értékeket. Az alábbi példában az "Auto" beállításokat használták a paraméterekhez. 
 
 ```python
 time_series_settings = {
@@ -226,7 +226,7 @@ Kiszámítja a GYÖKÁTLAGOS (a legfelső szintű négyzetes hibát) a `actual_l
 from sklearn.metrics import mean_squared_error
 from math import sqrt
 
-rmse = sqrt(mean_squared_error(actual_lables, predict_labels))
+rmse = sqrt(mean_squared_error(actual_labels, predict_labels))
 rmse
 ```
 

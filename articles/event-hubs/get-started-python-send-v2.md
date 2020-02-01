@@ -1,56 +1,57 @@
 ---
-title: Események küldése vagy fogadása a Python használatával – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre egy olyan Python-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.
+title: Események küldése vagy fogadása az Azure Event Hubs a Python használatával (legújabb)
+description: Ez a cikk egy olyan Python-alkalmazás létrehozásához nyújt útmutatást, amely az Azure-Event Hubs az Azure-eventhub 5. verziójának legújabb csomagjának használatával küld/fogad eseményeket.
 services: event-hubs
 author: spelluru
 ms.service: event-hubs
 ms.workload: core
-ms.topic: article
-ms.date: 01/08/2020
+ms.topic: quickstart
+ms.date: 01/30/2020
 ms.author: spelluru
-ms.openlocfilehash: d7ab79d49aade7dd6e98cf33ce538174d176c784
-ms.sourcegitcommit: af6847f555841e838f245ff92c38ae512261426a
+ms.openlocfilehash: d977ae9ea8b78664ac1d3a318f58553da696c089
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/23/2020
-ms.locfileid: "76705343"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906359"
 ---
-# <a name="send-events-to-or-receive-events-from-event-hubs-using-python"></a>Események küldése vagy fogadása Event Hubsról a Python használatával
+# <a name="send-events-to-or-receive-events-from-event-hubs-by-using-python-azure-eventhub-version-5"></a>Események küldése vagy fogadása az Event hubokból a Python használatával (Azure-eventhub 5. verzió)
 
-Az Azure Event Hubs egy Big Data streamplatform és eseményfeldolgozó szolgáltatás, amely másodpercenként több millió esemény fogadására és feldolgozására képes. Az Event Hubs képes az elosztott szoftverek és eszközök által generált események, adatok és telemetria feldolgozására és tárolására. Az eseményközpontokba elküldött adatok bármilyen valós idejű elemzési szolgáltató vagy kötegelési/tárolóadapter segítségével átalakíthatók és tárolhatók. Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
+Az Azure Event Hubs egy olyan big data streaming platform és esemény-betöltési szolgáltatás, amely másodpercenként több millió eseményt képes fogadni és feldolgozni. Az Event hubok feldolgozhatják és tárolhatják az elosztott szoftverekkel és eszközökkel előállított eseményeket, adatfájlokat vagy telemetria. Az Event hub-nak elküldett adatai bármilyen valós idejű elemzési szolgáltató vagy batch-vagy Storage-adapter használatával átalakíthatók és tárolhatók. További információ: [Event Hubs áttekintése](event-hubs-about.md) és [Event Hubs szolgáltatások](event-hubs-features.md).
 
-Ez az oktatóanyag leírja, hogyan hozhat létre olyan Python-alkalmazásokat, amelyek események küldésére és fogadására használhatók az Event hub-ból.
+Ez a rövid útmutató azt ismerteti, hogyan lehet olyan Python-alkalmazásokat létrehozni, amelyek események küldését és fogadását is elküldhetik az Event hub-ból.
 
 > [!IMPORTANT]
-> Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK régi 1. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-python-get-started-send.md)találja. Ha az SDK 1. verzióját használja, javasoljuk, hogy telepítse át a kódot a legújabb verzióra. Részletekért tekintse meg az [áttelepítési útmutatót](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/migration_guide.md).
-
+> Ez a rövid útmutató az Azure Event Hubs Python SDK 5. verzióját használja. A Python SDK 1. verzióját használó gyors üzembe helyezést [ebben a cikkben](event-hubs-python-get-started-send.md)találja. 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyag teljesítéséhez a következő előfeltételekre lesz szüksége:
+A rövid útmutató elvégzéséhez a következő előfeltételek szükségesek:
 
 - Azure-előfizetés. Ha még nincs előfizetése, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
-- Egy aktív Event Hubs névtér és az Event hub, amelyet a gyors üzembe helyezési útmutatóban talál [: hozzon létre egy Event hub](event-hubs-create.md)-t a Azure Portal használatával. Jegyezze fel a névtér és az Event hub azon neveit, amelyeket később szeretne használni ebben az útmutatóban.
-- A Event Hubs névtér megosztott elérési kulcsának és elsődleges kulcsának értéke. Szerezze be a hozzáférési kulcs nevét és értékét a [kapcsolati karakterlánc beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakör útmutatását követve. Az alapértelmezett hozzáférési kulcs neve **RootManageSharedAccessKey**. Másolja a kulcs nevét és az elsődleges kulcs értékét, hogy az a bemutató későbbi részében legyen használatban.
-- Python 2,7 és 3,5 vagy újabb, `pip` telepítve és frissítve.
-- A Event Hubs Python-csomagja. A csomag telepítéséhez futtassa ezt a parancsot egy olyan parancssorban, amely a Python elérési útjában van:
+- Aktív Event Hubs névtér és Event hub. A létrehozásához kövesse a rövid útmutató [: Event hub létrehozása a Azure Portal használatával](event-hubs-create.md)című témakör utasításait. Jegyezze fel a névtér és az Event hub nevét, hogy a rövid útmutató későbbi részében használni lehessen.
+- A Event Hubs névtér megosztott elérési kulcsának és elsődleges kulcsának értéke. A hozzáférési kulcs nevének és értékének beszerzéséhez kövesse az [Event hub kapcsolati karakterláncának beolvasása](event-hubs-get-connection-string.md#get-connection-string-from-the-portal)című témakör útmutatását. Az alapértelmezett hozzáférési kulcs neve *RootManageSharedAccessKey*. Jegyezze fel a kulcs nevét és az elsődleges kulcs értékét, hogy a rövid útmutatóban később használhassa.
+- Python 2,7 vagy 3,5 vagy újabb, a PIP telepítve és frissítve.
+- A Event Hubs Python-csomagja. 
+
+    A csomag telepítéséhez futtassa ezt a parancsot egy olyan parancssorban, amely a Python elérési útjában van:
 
     ```cmd
     pip install azure-eventhub
     ```
 
-    Telepítse ezt a csomagot az események fogadásához az Azure Blob Storage-ban ellenőrzőpont-tárolóként.
+    Telepítse az alábbi csomagot az események fogadásához az Azure Blob Storage-ban ellenőrzőpont-tárolóként:
 
     ```cmd
     pip install azure-eventhub-checkpointstoreblob-aio
     ```
 
 ## <a name="send-events"></a>Események küldése
-Ebben a szakaszban egy Python-szkriptet hoz létre, amely az eseményeket a korábban létrehozott Event hubhoz küldi.
+Ebben a szakaszban egy Python-szkriptet hoz létre, amely a korábban létrehozott Event hubhoz küld eseményeket.
 
-1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
-2. Hozzon létre egy **Send.py**nevű szkriptet. Ez a parancsfájl egy köteget küld a korábban létrehozott Event hubhoz.
-3. Illessze be a következő kódot a send.py. A részletekért tekintse meg a kód megjegyzéseit.
+1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/)-ot.
+2. Hozzon létre egy *Send.py*nevű szkriptet. Ez a parancsfájl a korábban létrehozott Event hubhoz küldi az események kötegét.
+3. Illessze be a következő kódot a *Send.py*:
 
     ```python
     import asyncio
@@ -58,20 +59,20 @@ Ebben a szakaszban egy Python-szkriptet hoz létre, amely az eseményeket a kor�
     from azure.eventhub import EventData
 
     async def run():
-        # create a producer client to send messages to the event hub
-        # specify connection string to your event hubs namespace and
-            # the event hub name
+        # Create a producer client to send messages to the event hub.
+        # Specify a connection string to your event hubs namespace and
+            # the event hub name.
         producer = EventHubProducerClient.from_connection_string(conn_str="EVENT HUBS NAMESPACE - CONNECTION STRING", eventhub_name="EVENT HUB NAME")
         async with producer:
-            # create a batch
+            # Create a batch.
             event_data_batch = await producer.create_batch()
 
-            # add events to the batch
+            # Add events to the batch.
             event_data_batch.add(EventData('First event '))
             event_data_batch.add(EventData('Second event'))
             event_data_batch.add(EventData('Third event'))
 
-            # send the batch of events to the event hub
+            # Send the batch of events to the event hub.
             await producer.send_batch(event_data_batch)
 
     loop = asyncio.get_event_loop()
@@ -80,28 +81,28 @@ Ebben a szakaszban egy Python-szkriptet hoz létre, amely az eseményeket a kor�
     ```
 
     > [!NOTE]
-    > A teljes forráskódot nagyon hasznos megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py) .
+    > A teljes forráskódhoz, beleértve a tájékoztató megjegyzéseket is, lépjen a [GitHub send_async... lapra](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/send_async.py).
 
 ## <a name="receive-events"></a>Események fogadása
-Ez a rövid útmutató egy Azure-Blob Storage mutat be ellenőrzőpont-tárolóként. Az ellenőrzőpont-tároló az ellenőrzőpontok megőrzésére szolgál (utolsó olvasási pozíció).  
+Ez a rövid útmutató az Azure Blob Storage-t használja ellenőrzőpont-tárolóként. Az ellenőrzőpont-tároló az ellenőrzőpontok (azaz az utolsó olvasási pozíciók) megőrzésére szolgál.  
 
-### <a name="create-an-azure-storage-and-a-blob-container"></a>Azure Storage és blob-tároló létrehozása
-Az alábbi lépéseket követve hozzon létre egy BLOB-tárolót az Azure Storage-fiókban.
+### <a name="create-an-azure-storage-account-and-a-blob-container"></a>Azure Storage-fiók és blob-tároló létrehozása
+Hozzon létre egy Azure Storage-fiókot és egy BLOB-tárolót a következő lépésekkel:
 
 1. [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md?tabs=azure-portal)
 2. [BLOB-tároló létrehozása](../storage/blobs/storage-quickstart-blobs-portal.md#create-a-container)
 3. [A Storage-fiókhoz tartozó kapcsolódási karakterlánc lekérése](../storage/common/storage-configure-connection-string.md?#view-and-copy-a-connection-string)
 
-    Jegyezze fel a kapcsolatok sztringjét és a tároló nevét. Ezeket a fogadási kódban fogja használni.
+A fogadási kódban jegyezze fel a kapcsolódási karakterláncot és a tároló nevét.
 
 
-### <a name="create-python-script-to-receive-events"></a>Python-szkript létrehozása események fogadásához
+### <a name="create-a-python-script-to-receive-events"></a>Python-szkript létrehozása események fogadásához
 
 Ebben a szakaszban egy Python-szkriptet hoz létre az Event hub eseményeinek fogadásához:
 
-1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/) -ot
-2. Hozzon létre egy **recv.py**nevű szkriptet.
-3. Illessze be a következő kódot a recv.py. A részletekért tekintse meg a kód megjegyzéseit.
+1. Nyissa meg kedvenc Python-szerkesztőjét, például a [Visual Studio Code](https://code.visualstudio.com/)-ot.
+2. Hozzon létre egy *recv.py*nevű szkriptet.
+3. Illessze be a következő kódot a *recv.py*:
 
     ```python
     import asyncio
@@ -110,31 +111,31 @@ Ebben a szakaszban egy Python-szkriptet hoz létre az Event hub eseményeinek fo
 
 
     async def on_event(partition_context, event):
-        # print the event data
+        # Print the event data.
         print("Received the event: \"{}\" from the partition with ID: \"{}\"".format(event.body_as_str(encoding='UTF-8'), partition_context.partition_id))
 
-        # update the checkpoint so that the program doesn't read the events
-        # that it has already read when you run it next time
+        # Update the checkpoint so that the program doesn't read the events
+        # that it has already read when you run it next time.
         await partition_context.update_checkpoint(event)
 
     async def main():
-        # create an Azure blob checkpoint store to store the checkpoints
+        # Create an Azure blob checkpoint store to store the checkpoints.
         checkpoint_store = BlobCheckpointStore.from_connection_string("AZURE STORAGE CONNECTION STRING", "BLOB CONTAINER NAME")
 
-        # create a consumer client for the event hub
+        # Create a consumer client for the event hub.
         client = EventHubConsumerClient.from_connection_string("EVENT HUBS NAMESPACE CONNECTION STRING", consumer_group="$Default", eventhub_name="EVENT HUB NAME", checkpoint_store=checkpoint_store)
         async with client:
-            # call the receive method
+            # Call the receive method.
             await client.receive(on_event=on_event)
 
     if __name__ == '__main__':
         loop = asyncio.get_event_loop()
-        # run the main method
+        # Run the main method.
         loop.run_until_complete(main())    
     ```
 
     > [!NOTE]
-    > A teljes forráskódot nagyon hasznos megjegyzésekkel tekintheti [meg a githubon](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py) .
+    > A teljes forráskódhoz, beleértve a további tájékoztató megjegyzéseket is, ugorjon a [GitHub recv_with_checkpoint_store_async... oldalára](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/eventhub/azure-eventhub/samples/async_samples/recv_with_checkpoint_store_async.py).
 
 
 ### <a name="run-the-receiver-app"></a>A fogadó alkalmazás futtatása
@@ -153,10 +154,10 @@ A parancsfájl futtatásához nyisson meg egy parancssort, amely a Python elér�
 python send.py
 ```
 
-Ekkor meg kell jelennie az Event hub számára a fogadó ablakban küldött üzeneteknek.
+A fogadó ablakban az Event hub számára küldött üzeneteket kell megjeleníteni.
 
 
 ## <a name="next-steps"></a>Következő lépések
-Ebben a rövid útmutatóban aszinkron módon küldi el és fogadja az eseményeket. Az események szinkron módon történő küldésével és fogadásával kapcsolatban tekintse meg az [ezen a helyen](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples)található mintákat.
+Ebben a rövid útmutatóban aszinkron módon küldött és fogadott eseményeket. Ha szeretné megtudni, hogyan küldhet és fogadhat eseményeket szinkronban, lépjen a [GitHub sync_samples oldalra](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples/sync_samples).
 
-[Itt](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)megtalálhatja az összes mintát (a szinkronizálást és az aszinkront is) a githubon.
+A GitHubon található összes minta (szinkron és aszinkron) esetében az [Azure Event Hubs Python-mintákhoz készült ügyféloldali kódtár](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/eventhub/azure-eventhub/samples)című részében találhat.

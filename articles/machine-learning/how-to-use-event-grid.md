@@ -10,12 +10,12 @@ ms.author: shipatel
 author: shivp950
 ms.reviewer: larryfr
 ms.date: 11/04/2019
-ms.openlocfilehash: 885ddd5c25a36e2b12379ea7639956c1c4ca5437
-ms.sourcegitcommit: ce4a99b493f8cf2d2fd4e29d9ba92f5f942a754c
+ms.openlocfilehash: 0da5fe56bd56d360cd8052976bdde0cdc910c9a5
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/28/2019
-ms.locfileid: "75538422"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76904280"
 ---
 # <a name="create-event-driven-machine-learning-workflows-preview"></a>Eseményvezérelt gépi tanulási munkafolyamatok létrehozása (előzetes verzió)
 
@@ -32,21 +32,6 @@ A Event Grid használatával engedélyezze a gyakori forgatókönyveket, példá
 
 * Közreműködői vagy tulajdonosi hozzáférés az Azure Machine Learning munkaterülethez, amelyekhez eseményeket fog létrehozni.
 * Válasszon eseménykezelő-végpontot, például egy webhookot vagy egy Event hubot. További információ: [eseménykezelők](https://docs.microsoft.com/azure/event-grid/event-handlers). 
-
-## <a name="register-resource-providers"></a>Erőforrás-szolgáltatók regisztrálása
-
-Ha a Azure Event Gridt vagy Machine Learningt a 1 2019. november előtt használta, lehetséges, hogy újra regisztrálnia kell az erőforrás-szolgáltatókat, mielőtt a jelen dokumentumban ismertetett lépéseket végrehajtja. A szolgáltatók újbóli regisztrálásához kövesse az alábbi lépéseket:
-
-1. Lépjen a Azure Portalra, és válassza az __előfizetések__lehetőséget. Válassza ki a használni kívánt előfizetést.
-1. Válassza az __erőforrás-szolgáltatók__lehetőséget, majd keressen rá a __EventGrid__.
-1. Válassza ki a __Microsoft. EventGrid__ bejegyzést, majd válassza az __újbóli regisztráció__lehetőséget.
-
-    ![erőforrás-szolgáltató újbóli regisztrálása](./media/how-to-use-event-grid/re-register-resource-provider.png)
-
-1. Keresse meg a __MachineLearningServices__, válassza ki a bejegyzést, majd válassza az __újbóli regisztráció__lehetőséget.
-
-> [!TIP]
-> Ha nem rendelkezik a fenti lépések elvégzéséhez szükséges engedélyekkel, kérje meg az előfizetés rendszergazdáját, hogy hajtsa végre őket.
 
 ## <a name="configure-machine-learning-events-using-the-azure-portal"></a>Gépi tanulási események konfigurálása a Azure Portal használatával
 

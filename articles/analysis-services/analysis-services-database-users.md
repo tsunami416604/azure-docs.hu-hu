@@ -4,15 +4,15 @@ description: Ismerje meg, hogyan kezelheti az adatbázis-szerepköröket és a f
 author: minewiskan
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 10/29/2019
+ms.date: 01/30/2020
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9d1f3387fcea732e002689a4cdeaaf1d50d8a56f
-ms.sourcegitcommit: 0b1a4101d575e28af0f0d161852b57d82c9b2a7e
+ms.openlocfilehash: 26d7c2d8919573c4c971edd7cb0e01b06fef3012
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73147009"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901490"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
 
@@ -44,10 +44,10 @@ A **biztonsági csoportoknak** e- [mail-kompatibilisnek](https://docs.microsoft.
   
     |Engedély|Leírás|  
     |----------------|-----------------|  
-    |**Nincsenek**|A tagok nem módosíthatják a modell sémáját, és nem tudnak adatlekérdezést végrehajtani.|  
+    |**NEz egy**|A tagok nem tudják olvasni vagy módosítani a modell sémáját, és nem tudják lekérdezni az adatlekérdezéseket.|  
     |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
     |**Olvasás és feldolgozás**|A tagok adatlekérdezéseket végezhetnek (a sor szintű szűrők alapján), és futtathatják a folyamatokat, és az összes műveletet feldolgozzák, de nem módosíthatják a modell sémáját.|  
-    |**Folyamat**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
+    |**Folyamat**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem olvasható vagy nem módosítható, és nem lehet lekérdezni az adatlekérdezéseket.|  
     |**Rendszergazda**|A tagok módosíthatják a modell sémáját, és lekérhetik az összes adatlekérdezést.|   
   
 5.  Ha a létrehozandó szerepkör olvasási vagy olvasási és feldolgozási engedéllyel rendelkezik, akkor a DAX-képletek használatával hozzáadhat sorokhoz tartozó szűrőket. Kattintson a **sorok szűrők** fülre, majd jelöljön ki egy táblát, majd kattintson a **DAX-szűrő** mezőre, majd írjon be egy DAX-képletet.
@@ -125,7 +125,7 @@ A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-s
 |------------|-----------------| 
 |[Add-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/Add-RoleMember)|Vegyen fel egy tagot egy adatbázis-szerepkörbe.| 
 |[Remove-RoleMember](https://docs.microsoft.com/powershell/module/sqlserver/remove-rolemember)|Egy tag eltávolítása egy adatbázis-szerepkörből.|   
-|[Invoke-ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
+|[Meghívás – ASCmd](https://docs.microsoft.com/powershell/module/sqlserver/invoke-ascmd)|TMSL-szkript végrehajtása.|
 
 ## <a name="row-filters"></a>Sorok szűrői  
 
@@ -137,11 +137,11 @@ A sorok szűrői csak olvasási és olvasási és feldolgozási engedélyekkel r
   
 A sorok szűrői a megadott sorokra és a kapcsolódó sorokra vonatkoznak. Ha egy táblának több kapcsolata van, a szűrők az aktív kapcsolat biztonságát alkalmazzák. A sorok szűrői a kapcsolódó táblákhoz definiált más sorokkal vannak összemetszve, például:  
   
-|Tábla|DAX-kifejezés|  
+|Table|DAX-kifejezés|  
 |-----------|--------------------|  
-|Régió|=Region[Country]="USA"|  
+|Region (Régió)|= Régió [ország] = "USA"|  
 |ProductCategory|= ProductCategory [név] = "kerékpárok"|  
-|Tranzakciók|=Transactions[Year]=2016|  
+|Tranzakciók|= Tranzakciók [év] = 2016|  
   
  A háló hatására a tagok lekérhetik az adatsorokat, ahol az ügyfél az USA-ban található, a termék kategóriája kerékpárok, az év pedig 2016. A felhasználók nem tudják lekérdezni az Egyesült Államokon kívüli tranzakciókat, a nem kerékpárokat vagy a 2016-es tranzakciókat, kivéve, ha azok egy másik szerepkör tagja, amely ezeket az engedélyeket megadja.
   
