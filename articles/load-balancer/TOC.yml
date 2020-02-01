@@ -6,16 +6,14 @@
       href: load-balancer-overview.md
 - name: Első lépések
   items:
-    - name: Azure Load Balancer létrehozása
-      items:
-        - name: Portál
-          href: quickstart-load-balancer-standard-public-portal.md
-        - name: Azure CLI
-          href: quickstart-load-balancer-standard-public-cli.md
-        - name: Azure PowerShell
-          href: quickstart-create-standard-load-balancer-powershell.md
-        - name: Sablon
-          href: quickstart-load-balancer-standard-public-template.md
+    - name: Portál
+      href: quickstart-load-balancer-standard-public-portal.md
+    - name: Azure CLI
+      href: quickstart-load-balancer-standard-public-cli.md
+    - name: Azure PowerShell
+      href: quickstart-create-standard-load-balancer-powershell.md
+    - name: Sablon
+      href: quickstart-load-balancer-standard-public-template.md
 - name: Oktatóanyagok
   items:
     - name: Virtuális gépek internetes forgalmának terheléselosztása
@@ -28,6 +26,12 @@
       href: tutorial-load-balancer-standard-public-zonal-portal.md
     - name: Porttovábbítás konfigurálása a Load Balancerben
       href: tutorial-load-balancer-port-forwarding-portal.md
+- name: Példák
+  items:
+    - name: Azure CLI
+      href: cli-samples.md
+    - name: Azure PowerShell
+      href: powershell-samples.md
 - name: Alapelvek
   items:
     - name: Összetevők és korlátozások
@@ -109,12 +113,6 @@
       items:
         - name: Az Azure Load Balancer hibaelhárítása
           href: load-balancer-troubleshoot.md
-- name: Példák
-  items:
-    - name: Azure CLI
-      href: cli-samples.md
-    - name: Azure PowerShell
-      href: powershell-samples.md
 - name: Referencia
   items:
     - name: Kódminták
