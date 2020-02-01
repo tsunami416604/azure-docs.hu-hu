@@ -8,19 +8,19 @@ ms.author: shvija
 ms.topic: tutorial
 ms.service: event-hubs
 ms.custom: seodec18
-ms.date: 12/20/2019
-ms.openlocfilehash: 1fc791519fd32b35bdbe3a69caec3c64e3ce3178
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/15/2020
+ms.openlocfilehash: 8fa123772ae380cd000c414c63bdf3908d279751
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75437143"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906384"
 ---
 # <a name="tutorial-visualize-data-anomalies-in-real-time-events-sent-to-azure-event-hubs"></a>Oktatóanyag – Az Azure Event Hubsba küldött valós idejű események adatanomáliáinak vizualizációja
 
 Az Azure Event Hubsban az Azure Stream Analytics használatával ellenőrizheti a bejövő adatokat, és azonosíthatja az anomáliákat, amelyeket ezután megjeleníthet a Power BI-ban. Tegyük fel, hogy van több ezer eszköze, amelyek folyamatosan valós idejű adatokat küldenek egy eseményközpontba. Ez több millió eseményt jelent másodpercenként. Hogyan lehet anomáliákat vagy hibákat keresni ennyi adatban? Például mi történik, ha az eszközök bankkártyás tranzakciókat küldenek, és bárhol rögzíteni kell, hogy több országban/régióban több tranzakció van-e egy 5 másodperces időintervallumon belül? Ez akkor történhet, ha valaki hitelkártyákat lop, majd a világ különböző pontjain több dolgot vásárol velük egyszerre. 
 
-Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután valós időben be fogja olvasni az adatstreamet az Azure Stream Analytics segítségével, amely elkülöníti az érvényes tranzakciókat az érvénytelenektől, majd a Power BI használatával vizuálisan azonosítani fogja az érvénytelenként megjelölt tranzakciókat.
+Ebben az oktatóanyagban ezt a példát szimulálja. Futtatni fog egy alkalmazást, amely hitelkártya-tranzakciókat hoz létre, és elküldi őket egy eseményközpontba. Ezután olvassa el az adatstreamet valós időben a Azure Stream Analytics használatával, amely elválasztja az érvénytelen tranzakcióktól származó érvényes tranzakciókat, majd a Power BI segítségével vizuálisan azonosítja az érvénytelenként megjelölt tranzakciókat.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
@@ -156,14 +156,14 @@ Write-Host "Connection string is " $eventHubKey.PrimaryConnectionString
 
 ## <a name="run-app-to-produce-test-event-data"></a>Alkalmazás futtatása a teszt-eseményadatok létrehozásához
 
-A [GitHubon található Event Hubs-minták](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) egy [anomáliaérzékelő alkalmazást](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/AnomalyDetector) tartalmaznak, amely létrehozza a tesztadatokat. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
+A [githubon](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet) található Event Hubs minták olyan anomália-detektor alkalmazást tartalmaznak, amely tesztelési célú adatfeldolgozást készít Önnek. Az alkalmazás szimulálja a hitelkártyák használatát azáltal, hogy hitelkártya-tranzakciókat ír az eseményközpontba, és időnként több tranzakciót ír ugyanahhoz a hitelkártyához, több helyszínen, hogy a rendszer anomáliaként jelölje meg őket. Az alkalmazás futtatásához kövesse az alábbi lépéseket: 
 
 1. Töltse le az [Azure Event Hubs-mintákat](https://github.com/Azure/azure-event-hubs/archive/master.zip) a GitHubról, majd bontsa ki őket helyben.
+2. Navigáljon a **\azure-Event-Hubs-master\samples\DotNet mappa\\** mappájába. 
+3. Váltson az **Azure. Messaging. EventHubs\AnomalyDetector\\** mappára, és kattintson duplán a **AnomalyDetector. SLN** elemre a megoldás megnyitásához a Visual Studióban. 
 
-2. Lépjen az azure-event-hubs-master\samples\DotNet\AnomalyDetector\ mappára, és az AnomalyDetector.sln fájlra duplán kattintva nyissa meg a megoldást a Visual Studióban. 
-
+    A régi Microsoft. Azure. EventHubs csomagot használó minta régi verziójának használatához nyissa meg a megoldást a **Microsoft. Azure. EventHubs\AnomalyDetector** mappából. 
 3. Nyissa meg a Program.cs fájlt, és cserélje le az **Event Hubs kapcsolati sztringjét** a szkript futtatásakor mentett kapcsolati sztringre. 
-
 4. Cserélje le az **Eseményközpont neve** elemet az eseményközpontja nevére. Az alkalmazás futtatásához nyomja le az F5 billentyűt. Az alkalmazás elkezd eseményeket küldeni az eseményközpontba, és addig folytatja, amíg 1000 eseményt el nem küldött. Néhány esetben az alkalmazásnak futnia kell ahhoz, hogy le lehessen kérni az adatokat. Az alábbi utasítások szükség esetén fel fogják hívni a figyelmet ezekre az esetekre.
 
 ## <a name="set-up-azure-stream-analytics"></a>Az Azure Stream Analytics beállítása
@@ -306,7 +306,7 @@ A Stream Analytics-feladat területen kattintson az **Indítás**, a **Most**, m
 
    ![Képernyőkép az irányítópult nevének megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-dashboard-name.png)
 
-7. Az Irányítópult lapon kattintson a **Csempe hozzáadása** elemre, válassza ki az **Egyedi streamelési adatok** elemet a **VALÓS IDEJŰ ADATOK** szakaszban, majd kattintson a **Tovább** gombra.
+7. Az irányítópult lapon kattintson a **csempe hozzáadása**elemre, válassza ki az **Egyéni adatfolyam** -adatátvitelt a **valós idejű** adatszakaszban, majd kattintson a **tovább**gombra.
 
    ![Képernyőkép a csempe forrásának megadásáról.](./media/event-hubs-tutorial-visualize-anomalies/power-bi-add-card-real-time-data.png)
 

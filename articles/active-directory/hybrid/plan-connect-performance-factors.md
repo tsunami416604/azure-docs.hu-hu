@@ -1,192 +1,193 @@
 ---
 title: Az Azure AD Connect teljesítményét befolyásoló tényezők
-description: Ez a dokumentum ismerteti a különféle tényezők befolyásolják a motor kiépítése az Azure AD Connect. Ezek a tényezők segít a szervezetek számára, hogy azok az Azure AD Connect telepítésének megtervezése, hogy megfelelnek-e a szinkronizálási követelményeknek.
+description: Ez a dokumentum ismerteti, hogyan befolyásolják a különböző tényezők a Azure AD Connect kiépítési motort. Ezek a tényezők segítenek a szervezeteknek a Azure AD Connect központi telepítés megtervezésében, hogy azok megfeleljenek a szinkronizálási követelményeiknek.
 services: active-directory
 author: billmath
 manager: daveba
 tags: azuread
 ms.service: active-directory
+ms.subservice: hybrid
 ms.topic: conceptual
 ms.workload: identity
 ms.date: 10/06/2018
 ms.reviewer: martincoetzer
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 3a3a57fbe5df690e4dbdba8cbab85e62648bb298
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: a5518d516848ba7c006827faa41ff76bbca35d0c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60295372"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897056"
 ---
 # <a name="factors-influencing-the-performance-of-azure-ad-connect"></a>Az Azure AD Connect teljesítményét befolyásoló tényezők
 
-Az Azure AD Connect szinkronizálja az Active Directory, az Azure ad-hez. Ez a kiszolgáló a felhasználói identitások a felhőbe való áthelyezés kritikus összetevője. Az Azure AD Connect teljesítményét befolyásoló legfontosabb tényezők a következők:
+Azure AD Connect a Active Directory szinkronizálja az Azure AD-vel. Ez a kiszolgáló a felhasználói identitások felhőbe való áthelyezésének kritikus eleme. Egy Azure AD Connect teljesítményét befolyásoló elsődleges tényezők a következők:
 
 | **Tervezési tényező**| **Definíció** |
 |:-|-|
-| Topológia| A végpontok és -összetevők eloszlása az Azure AD Connect kell kezelni a hálózaton. |
-| Méretezés| A felhasználók, csoportok és szervezeti egységek, az Azure AD Connect által kezelt, például az objektumok száma. |
-| Hardver| A hardver (fizikai vagy virtuális) az Azure AD Connect és minden hardverösszetevő, többek között a CPU, memória, hálózati és merevlemez-meghajtó konfigurációja függő teljesítmény kapacitását. |
-| Konfiguráció| Az Azure AD Connect folyamatok a könyvtárak és információkat. |
-| betöltés| Objektum módosítása gyakorisága. A terhelések egy óra, nap vagy hét folyamán eltérőek lehetnek. Az összetevőtől függően tervezhet a csúcsterheléssel vagy az átlagos terhelés is rendelkezik. |
+| Topológia| A végpontok és összetevők eloszlásának Azure AD Connect kell kezelnie a hálózaton. |
+| Méretezés| A Azure AD Connect által kezelendő objektumok, például a felhasználók, csoportok és szervezeti egységek száma. |
+| Hardver| A hardver (fizikai vagy virtuális) az egyes hardver-összetevők Azure AD Connect és függő teljesítményére, beleértve a CPU-t, a memóriát, a hálózatot és a merevlemez-konfigurációt. |
+| Konfiguráció| Hogyan dolgozza fel a Azure AD Connect a címtárakat és az információkat. |
+| Terhelés| Az objektum változásainak gyakorisága. A terhelések egy óra, nap vagy hét során változhatnak. Az összetevőtől függően előfordulhat, hogy meg kell terveznie a maximális terhelést vagy az átlagos terhelést. |
 
-A jelen dokumentum célja, hogy az az Azure AD Connect-kiépítés motor teljesítményét befolyásoló tényezőket ismerteti. Nagy vagy összetett (a szervezetek több mint 100 000 objektumra kiépítése) is alakíthatók a javaslatok optimalizálása az Azure AD Connect végrehajtásuk esetén az itt vázolt okoznak teljesítményproblémákat. Az Azure AD Connect, a többi összetevő például [az Azure AD Connect health](how-to-connect-health-agent-install.md) és az ügynökök nem terjed ki itt.
+A dokumentum célja a Azure AD Connect kiépítési motor teljesítményének befolyásolását befolyásoló tényezők leírása. A nagy vagy összetett szervezetek (több mint 100 000 objektumot kiépítő szervezetek) a javaslatok segítségével optimalizálják Azure AD Connect megvalósítását, ha az itt ismertetett teljesítménnyel kapcsolatos problémákat tapasztalnak. A Azure AD Connect egyéb összetevői, például [Azure ad Connect Health](how-to-connect-health-agent-install.md) és Agents nem szerepelnek itt.
 
 > [!IMPORTANT]
-> A Microsoft Azure AD Connect műveleteken kívüli módosítását vagy nem támogatja. Minden ilyen művelet azt eredményezheti, hogy az Azure AD Connect szinkronizálása inkonzisztens vagy nem támogatott állapotba kerül. A Microsoft ezért nem tud műszaki támogatást biztosítani az ilyen környezetekhez.
+> A Microsoft nem támogatja a dokumentált műveleteken kívüli Azure AD Connect módosítását vagy működtetését. Ezen műveletek bármelyike inkonzisztens vagy nem támogatott állapotba Azure AD Connect szinkronizálást eredményezhet. Ennek eredményeképpen a Microsoft nem tud technikai támogatást biztosítani az ilyen üzemelő példányokhoz.
 
-## <a name="azure-ad-connect-component-factors"></a>Az Azure AD Connect összetevő tényezők
+## <a name="azure-ad-connect-component-factors"></a>Összetevő-tényezők Azure AD Connect
 
-Az alábbi ábrán egy magas szintű architektúra, üzembe helyezésének motor csatlakozik egyetlen erdő, bár támogatja a több erdőt. Ez az architektúra bemutatja, hogyan a különböző összetevők léphetnek kapcsolatba egymással.
+A következő ábra a kiépítési motor magas szintű architektúráját mutatja egyetlen erdőhöz való csatlakozáshoz, bár több erdő is támogatott. Ez az architektúra azt mutatja be, hogy a különböző összetevők hogyan hatnak egymással.
 
 ![AzureADConnentInternal](media/plan-connect-performance-factors/AzureADConnentInternal.png)
 
-A kiépítési motor minden egyes Active Directory-erdő és az Azure ad-hez csatlakozik. A folyamat minden egyes címtárból információ olvasása importálás nevezzük. Exportálás hivatkozik a könyvtárak frissítése az üzembe helyezési motortól. Szinkronizálási kiértékeli, hogy az objektumokat az üzembe helyezési motorjában átkerülnek a szabályokat. Részletesebben megismerni, olvassa el [Azure AD Connect szinkronizálása: Az architektúra ismertetése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture).
+A kiépítési motor csatlakozik az egyes Active Directory erdőkhöz és az Azure AD-hez. Az adatok az egyes könyvtárakból való olvasásának folyamatát importálásnak nevezzük. Az Exportálás a címtárak a kiépítési motorból való frissítését jelenti. A szinkronizálás kiértékeli az objektumok a kiépítési motoron belüli folyamatának szabályait. A további részletekért tekintse meg [Azure ad Connect Sync: az architektúra megismerése](https://docs.microsoft.com/azure/active-directory/hybrid/concept-azure-ad-connect-sync-architecture)című témakört.
 
-Az Azure AD Connect használja a következő átmeneti területekből, szabályok és folyamatok a szinkronizálás engedélyezése az Active Directoryból az Azure ad-hez:
+Azure AD Connect a következő átmeneti területeket, szabályokat és folyamatokat használja, hogy lehetővé tegye a szinkronizálást Active Directoryról az Azure AD-re:
 
-* **Összekötő-terület (CS)** – minden csatlakoztatott címtárhoz (CD), a tényleges könyvtárak objektumait elő van készítve itt először a kiépítési motor által feldolgozható előtt. Azure ad-ben a saját CS és minden olyan erdőben, hogy csatlakozni a saját CS rendelkezik.
-* **Metaverzum (MV)** -igénylő szinkronizálható objektumok jönnek létre Itt a szinkronizálási szabályok alapján. Objektumok léteznie kell a MV előtt feltöltik objektumoknak és attribútumoknak más csatlakoztatott könyvtáraihoz. Csak egy MV van.
-* **Szabályok szinkronizálása** -úgy döntenek, hogy mely objektumok (tervezett) létrejön vagy a MV objektumokat (csatlakoztatott) csatlakozik. A szinkronizálási szabályokat is döntse el, melyik attribútumértékek kell másolni vagy alakította át, illetve onnan a könyvtárak.
-* **Futtatási profilokat** -Bundles objektumok és azok attribútumértékek az átmeneti területekből és a csatlakoztatott címtárak közötti szinkronizálási szabályai szerint másolása folyamat lépéseit.
+* **Összekötő területe (CS)** – az egyes csatlakoztatott könyvtárakból (CD-ről) származó objektumok, amelyek a tényleges könyvtárak, a kiépítési motor által feldolgozható állapotban vannak. Az Azure AD saját CS-t és minden olyan erdőt tartalmaz, amelyhez csatlakozik.
+* **Metaverse (MV)** – a szinkronizálni kívánt objektumok a szinkronizálási szabályok alapján jönnek létre. Az objektumoknak léteznie kell a MV-ban, mielőtt objektumokat és attribútumokat tölthetnek fel a többi csatlakoztatott címtárba. Csak egy MV van.
+* **Szinkronizálási szabályok** – eldöntik, hogy mely objektumok lesznek létrehozva (tervezett) vagy csatlakoztatva (összekapcsolva) az MV-beli objektumokhoz. A szinkronizálási szabályok azt is eldöntik, hogy mely attribútumok lesznek átmásolva vagy átalakítva a címtárakba.
+* **Futtatási profilok** – az objektumok és az attribútumok másolásának folyamati lépéseit az átmeneti területek és a csatlakoztatott könyvtárak közötti szinkronizálási szabályoknak megfelelően csomagolja.
 
-Különböző futtatási profil létezik a kiépítési motor a teljesítmény optimalizálása érdekében. A legtöbb szervezet használja az alapértelmezett ütemtervét, és futtatási profilokat a szokásos működés, de előfordulhat, egyes szervezetek [ütemezésének módosítása](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) vagy más futtatási profilok méretformátumok figyelembe vétele ritka esetekben az eseményindítót. A következő futtatási profilokból érhetők el:
+Különböző futtatási profilok találhatók a kiépítési motor teljesítményének optimalizálása érdekében. A legtöbb szervezet az alapértelmezett ütemterveket és a futtatási profilokat használja a normál működéshez, de előfordulhat, hogy néhány szervezetnek [módosítania kell az ütemtervet](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-feature-scheduler) , vagy más futtatási profilokat kell elindítania, hogy az ne legyen gyakori helyzetekben. A következő futtatási profilok érhetők el:
 
-### <a name="initial-sync-profile"></a>Kezdeti szinkronizálás profil
+### <a name="initial-sync-profile"></a>Kezdeti szinkronizálási profil
 
-A kezdeti szinkronizálás profil először a csatlakoztatott könyvtárak, például az Active Directory-erdő olvasása során a rendszer. Ezután hajtja végre az összes bejegyzést a szinkronizálási motor adatbázisban elemzését. A kezdeti ciklus új objektumokat hoz létre az Azure ad-ben, és, ha az Active Directory-erdők nagyok további időt vesz igénybe. A kezdeti szinkronizálás a következő lépésekből áll:
+A kezdeti szinkronizálási profil az a folyamat, amelynek során a rendszer első alkalommal beolvassa a csatlakoztatott könyvtárakat, például egy Active Directory erdőt. Ezután elemzést végez a Sync Engine-adatbázis összes bejegyzéséről. A kezdeti ciklus új objektumokat hoz létre az Azure AD-ben, és hosszabb időt vesz igénybe, ha a Active Directory erdők nagyok. A kezdeti szinkronizálás a következő lépéseket tartalmazza:
 
-1. Teljes importálás az összes összekötő
-2. Teljes szinkronizálás az összes összekötő
-3. Exportálás az összes összekötő
+1. Teljes importálás minden összekötőn
+2. Teljes szinkronizálás minden összekötőn
+3. Exportálás az összes összekötőn
 
-### <a name="delta-sync-profile"></a>Különbözeti szinkronizálás profil
+### <a name="delta-sync-profile"></a>Különbözeti szinkronizálási profil
 
-A szinkronizálási folyamat optimalizálása érdekében a futtatási profil csak feldolgozása a módosításokat (hoz létre, törlése és frissítések) objektumok a csatlakoztatott címtárakban, a legutóbbi szinkronizálási folyamat óta. Alapértelmezés szerint a különbözeti szinkronizálás profil 30 percenként fut. Szervezetek törekedni kell tartani, hogy mennyi idő 30 perc alatt ellenőrizze, hogy naprakész az Azure ad-ben. Az Azure AD Connect állapotának monitorozásához használja a [monitoring agent health](how-to-connect-health-sync.md) problémák a folyamat megtekintéséhez. A különbözeti szinkronizálás profilt a következő lépésekből áll:
+A szinkronizálási folyamat optimalizálásához a futtatási profil csak a legutóbbi szinkronizálási folyamat óta dolgozza fel a csatlakoztatott címtárakban található objektumok módosításait (a létrehozási, törlési és frissítési műveleteit). Alapértelmezés szerint a különbözeti szinkronizálási profil 30 percenként fut. A szervezeteknek törekedniük kell arra, hogy a 30 percnél továbbra is megtartsa a szükséges időt, hogy az Azure AD naprakész legyen. Azure AD Connect állapotának figyeléséhez az állapotfigyelő [ügynök](how-to-connect-health-sync.md) használatával tekintheti meg a folyamattal kapcsolatos problémákat. A különbözeti szinkronizálási profil a következő lépéseket tartalmazza:
 
-1. Különbözeti importálás az összes összekötő
-2. Különbözeti szinkronizálás az összes összekötő
-3. Exportálás az összes összekötő
+1. Különbözeti Importálás az összes összekötőn
+2. Különbözeti szinkronizálás az összes összekötőn
+3. Exportálás az összes összekötőn
 
-Egy jellemző nagyvállalati szervezet különbözeti szinkronizálási forgatókönyv a következő:
+Egy tipikus vállalati szervezet Delta-szinkronizálási forgatókönyve a következő:
 
-- a rendszer törli az objektumok ~ 1 %
-- ~ 1 % objektumok jönnek létre.
-- az objektumok ~ 5 % módosítják.
+- az objektumok ~ 1%-a törölve
+- az objektumok ~ 1%-a létrehozva
+- az objektumok 5%-a módosult
 
-A változási gyakoriság eltérőek lehetnek attól függően, hogy milyen gyakran a szervezet frissíti a felhasználók az Active Directoryban. A nagyobb sebesség módosítása például a humánerőforrás-, és csökkenti a munkát végző munkaerőnek szezonalitásához előfordulhatnak.
+A változási arány attól függően változhat, hogy a szervezet milyen gyakran frissíti a felhasználókat a Active Directoryban. Például a magasabb fokú változás a szezonális bérlet és a munkahelyi erő csökkentése esetén fordulhat elő.
 
-### <a name="full-sync-profile"></a>Teljes szinkronizálás profil
+### <a name="full-sync-profile"></a>Teljes szinkronizálási profil
 
-Egy teljes szinkronizálási ciklust szükség, ha módosította a következő konfigurációs módosításokat:
+Ha a következő konfigurációs változások bármelyikét végrehajtotta, teljes szinkronizálási ciklus szükséges:
 
 
 
-- Nagyobb az objektumok vagy lehet importálni a csatlakoztatott könyvtárakat az attribútumok körét. Például ha hozzá tartomány vagy szervezeti egység importálás szolgáltatásainkat.
-- A szinkronizálási szabályok által végrehajtott módosítások. Például, ha szabályt hoz létre egy új adatokkal való feltöltéséhez a felhasználó címe extension_attribute3 az Active Directoryban az Azure AD-ben. A frissítéshez, hogy a kiépítési motor újra megvizsgálja-e frissíteni a címben, a jövőben a módosítás alkalmazása az összes meglévő felhasználót.
+- Megnövelte a csatlakoztatott könyvtárakból importálandó objektumok vagy attribútumok hatókörét. Ha például tartományt vagy szervezeti egységet ad hozzá az importálási hatókörhöz.
+- Módosítások történtek a szinkronizálási szabályokban. Ha például létrehoz egy új szabályt, amely feltölti a felhasználó címét az Azure AD-ben Active Directory extension_attribute3. Ehhez a frissítéshez a kiépítési motornak újra meg kell vizsgálnia az összes meglévő felhasználót, hogy frissítse a címüket, hogy alkalmazza a módosítást.
 
-Egy teljes szinkronizálási ciklust a következő műveleteket tartalmazza:
+A teljes szinkronizálási ciklus a következő műveleteket tartalmazza:
 
-1. Teljes importálás az összes összekötő
-2. Teljes és különbözeti szinkronizálás az összes összekötő
-3. Exportálás az összes összekötő
+1. Teljes importálás minden összekötőn
+2. Teljes/különbözeti szinkronizálás minden összekötőn
+3. Exportálás az összes összekötőn
 
 > [!NOTE]
-> Gondos tervezést akkor szükséges, amikor sok objektumot az Active Directory vagy az Azure AD a tömeges frissítéseit. Tömeges frissítések miatt a különbözeti szinkronizálási folyamat hosszabb időt vesz igénybe, mivel sok objektum változásai importálása során. Hosszú import akkor fordulhat elő, akkor is, ha a kötegelt frissítés nem befolyásolják a szinkronizálási folyamat során. Például sok felhasználó licencek hozzárendelése az Azure ad-ben egy hosszú importálás ciklus miatt az Azure ad-ből, de nem eredményez bármely attribútumainak módosítása az Active Directoryban.
+> Alapos tervezésre van szükség, ha a Active Directory vagy az Azure AD számos objektumához tömeges frissítést végez. A tömeges frissítés miatt a különbözeti szinkronizálási folyamat hosszabb időt vesz igénybe az importálás során, mert sok objektum módosult. A hosszú importálások akkor is megtörténhetnek, ha a tömeges frissítés nem befolyásolja a szinkronizálási folyamatot. Például, ha az Azure AD-ben sok felhasználóhoz rendel hozzá licenceket, a hosszú importálási ciklust eredményez az Azure AD-ből, de a Active Directory nem fog semmilyen attribútumot módosítani.
 
 ### <a name="synchronization"></a>Szinkronizálás
 
-A szinkronizálási folyamat modul a következő teljesítmény jellemzőkkel rendelkezik:
+A szinkronizálási folyamat futtatókörnyezete a következő teljesítménnyel rendelkezik:
 
-* Szinkronizálási egyetlen összefűzött, ami azt jelenti, a kiépítési motor nem csatlakoztatott könyvtárak, objektumok vagy attribútumok futtatási profil párhuzamos feldolgozási.
-* Importálás idő szinkronizálódik objektumok száma lineárisan vele együtt. Például ha 10 000 objektumok importálása 10 percet is igénybe, majd 20 000 objektumra érvénybe körülbelül 20 percig ugyanazon a kiszolgálón.
-* Exportálás az is lineáris.
-* A szinkronizálás más objektumok hivatkozó objektumok száma alapján exponenciálisan növekszik. Csoport tagságát, beágyazott csoportokat kell a fő teljesítményre gyakorolt hatás, mert a tagjaik tekintse meg a felhasználói objektumok vagy más csoportokhoz. Ezeket a hivatkozásokat kell található, és a befejezéséhez a szinkronizálási ciklus MV a tényleges objektumra hivatkozik.
+* A szinkronizálás egyszálas, ami azt jelenti, hogy a kiépítési motor nem hajtja végre a csatlakoztatott könyvtárak, objektumok és attribútumok futtatási profiljainak párhuzamos feldolgozását.
+* Az importálási idő lineárisan nő a szinkronizált objektumok számával. Ha például az 10 000-es objektumok importálása 10 percet vesz igénybe, akkor a 20 000-objektumok körülbelül 20 percet vesznek igénybe ugyanazon a kiszolgálón.
+* Az Exportálás szintén lineáris.
+* A szinkronizálás exponenciálisan növekedni fog a más objektumokra hivatkozó objektumok száma alapján. A csoporttagságok és a beágyazott csoportok a fő teljesítményre gyakorolt hatással rendelkeznek, mivel tagjaik felhasználói objektumokra vagy más csoportokra hivatkoznak. Ezeket a hivatkozásokat meg kell találni, és hivatkozni kell rá az MV-beli tényleges objektumokra a szinkronizálási ciklus befejezéséhez.
 
-### <a name="filtering"></a>Filtering
+### <a name="filtering"></a>Szűrés
 
-Az importálni kívánt Active Directory-topológia mérete a szám egy tényező befolyásolta a teljesítményt és a teljes időtartama a kiépítési motor belső összetevőinek vesz igénybe.
+Az importálni kívánt Active Directory-topológia mérete az a szám, amely befolyásolhatja a teljesítményt és a kiépítési motor belső összetevőinek teljes idejét.
 
-[Szűrés](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) próbálják meg csökkenteni a szinkronizált objektumok kell használni. Megakadályozza, hogy a feldolgozott és a exportálva az Azure AD a szükségtelen objektumokat. A kívánt sorrendben szűrés a következő eljárások érhetők el:
-
-
-
-- **Tartományalapú szűrés** – Ez a beállítás segítségével válassza ki a szinkronizálni az Azure AD-tartományok. Kell hozzá és távolíthat el tartományokat abból a szinkronizálási motor konfiguráció, ha módosítja a helyszíni infrastruktúrát az Azure AD Connect-szinkronizálás telepítése után.
-- **Szervezeti egység (OU) szűrés** -szervezeti egységek használja, amelyekre meghatározott objektumokat az Active Directory-tartományok az Azure ad-ben való üzembe helyezést. Szervezeti egységek szűrése a második, ajánlott a szűrési mechanizmus, mert az objektumok kisebb részhalmazát importálására az Active Directory egyszerű LDAP attribútumhatókör-lekérdezéseket használ.
-- **Objektumonkénti attribútumszűrés** -objektumok az attribútumértékek segítségével döntse el, hogy adott objektumot az Active Directory az Azure ad-ben van kiépítve. Attribútumszűrés kiválóan alkalmazható az finomhangoló a szűrőket, ha a tartomány és szervezeti egységek szűrése nem felel meg a megadott szűrési követelményeinek. Attribútumszűrés nem importálás idő csökkentése érdekében, de csökkenthető a szinkronizálás és időpontok exportálása.
-- **Csoportalapú szűrés** -csoporttagság használ, döntse el, hogy objektumokat kell létrehozni az Azure ad-ben. Csoportalapú szűrés csak az olyan helyzetekben tesztelési és éles környezetben, a felesleges többletterhelést szükséges csoporttagság ellenőrzése közben a szinkronizálási ciklus miatt nem ajánlott.
-
-Több állandó [Terheléskapcsoló objektumok](concept-azure-ad-connect-sync-architecture.md#relationships-between-staging-objects-and-metaverse-objects) az Active Directory CS okozhat szinkronizálás hosszabb időt, mert a kiépítési motor kell kiértékeli az egyes Terheléskapcsoló objektumok lehetséges a kapcsolatra vonatkozóan a a szinkronizálási ciklus. A probléma megoldásához, akkor az alábbi javaslatokat:
+A [szűrést](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-configure-filtering) az objektumok szinkronizált értékre való csökkentésére kell használni. Ez megakadályozza a szükségtelen objektumok feldolgozását és exportálását az Azure AD-be. A preferencia sorrendben a következő szűrési módszerek érhetők el:
 
 
 
-- Helyezze el a Terheléskapcsoló objektumok importálása a tartomány vagy szervezeti egységek szűrése az hatókörén kívül.
-- Projekt/join az objektumokat a MV és a készlet a [cloudFiltered](how-to-connect-sync-configure-filtering.md#negative-filtering-do-not-sync-these) attribútum értéke legyen True, ezeket az objektumokat az Azure Active Directory tanúsítványszolgáltatások kiépítése elkerülése érdekében.
+- **Tartományalapú szűrés** – ezzel a beállítással kiválaszthatja az Azure ad-vel szinkronizálandó, meghatározott tartományokat. Ha a Azure AD Connect Sync telepítése után módosítja a helyszíni infrastruktúrát, akkor a szinkronizálási motor konfigurációjától kell hozzáadnia és eltávolítania a tartományokat.
+- **Szervezeti egység (OU) szűrés** – az Azure ad-be való kiépítéshez a szervezeti egységek használatával célozza meg Active Directory tartományok meghatározott objektumait. A szervezeti egység szerinti szűrés a második ajánlott szűrési mechanizmus, mivel egyszerű LDAP-hatóköri lekérdezésekkel importálja az objektumok kisebb részhalmazát Active Directory.
+- **Attribútumok szűrése objektum** alapján – az objektumok attribútum értékeit használja annak eldöntéséhez, hogy Active Directory adott objektuma az Azure ad-ban van-e kiépítve. Az attribútumok szűrése kiválóan használható a szűrők finomhangolásához, ha a tartomány és a szervezeti egység szűrése nem felel meg az adott szűrési követelményeknek. Az attribútumok szűrése nem csökkenti az importálási időt, de csökkentheti a szinkronizálást és az exportálási időpontokat.
+- **Csoport alapú szűrés** – csoporttagság használatával döntheti el, hogy az objektumokat az Azure ad-ben kell-e kiépíteni. A csoport alapú szűrés csak tesztelési helyzetekben használható, éles környezetben nem ajánlott, mert a csoporttagság ellenőrzéséhez szükséges extra terhelés a szinkronizálási ciklusban.
 
-> [!NOTE]
-> Felhasználók is Zavarba vagy alkalmazás engedélyekkel kapcsolatos probléma akkor fordulhat elő, ha túl sok objektumot szűr a rendszer. Például a hibrid Exchange online megvalósításában, helyszíni postaládákhoz rendelkező felhasználók jelenik meg, mint a postaládák rendelkező felhasználók a globális címlista több felhasználó az Exchange online. Egyéb esetben a felhasználó érdemes hozzáférést biztosítani a cloud App egy másik felhasználónak, amely nem része hatókörébe tartozó objektumok szűrt készlete.
+A Active Directory CS számos állandó [leválasztó objektuma](concept-azure-ad-connect-sync-architecture.md#relationships-between-staging-objects-and-metaverse-objects) több szinkronizálási időt okozhat, mivel a kiépítési motornak újra kell értékelnie az egyes leválasztó objektumokat a szinkronizálási ciklusban lehetséges kapcsolathoz. A probléma megoldása érdekében vegye figyelembe a következő javaslatok egyikét:
 
-### <a name="attribute-flows"></a>Attribútumfolyamok
 
-Attribútumfolyamok azt a folyamatot a Másolás vagy átalakítása egy csatlakoztatott címtárban objektumokat egy másik csatlakoztatott címtárhoz attribútum értékét. Azok a szinkronizálási szabályok részeként van definiálva. Például amikor a felhasználó telefonszáma megváltozott az Active Directoryban, az Azure ad-ben a telefonszámát frissülni fog. Szervezetek is [módosítása az attribútumfolyamok](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) Suite különböző követelményeket. Másolja a meglévő attribútumfolyamok őket módosítása előtt ajánlott.
 
-Egyszerű átirányítások, például egy attribútum értékét egy másik attribútum áramló jelentős hatása nincs. Átirányítási például az irodai telefonszámát, az Active Directory mobiltelefonszám áramlik az Azure ad-ben.
-
-Átalakítása attribútum-érték, a teljesítmény hatással lehet a szinkronizálási folyamatot. Módosítása, újraformázást, összefűzi vagy attribútumának kivonva átalakítása attribútum-érték magában foglalja.
-
-Szervezetek megakadályozhatja, hogy bizonyos áramlását az Azure AD-attribútumok, de azt nem befolyásolják a kiépítési motor teljesítményét.
+- Helyezze el a leválasztó objektumait tartomány vagy szervezeti egység szerinti szűrés használatával az importálás hatókörén kívül.
+- Projekt/csatlakoztassa az objektumokat az MV-hoz, és állítsa a [cloudFiltered](how-to-connect-sync-configure-filtering.md#negative-filtering-do-not-sync-these) attribútumot igaz értékre, hogy megakadályozza ezeknek az objektumoknak az üzembe helyezését az Azure ad cs-ban.
 
 > [!NOTE]
-> Ne törölje a nem kívánt attribútumfolyamok a szinkronizálási szabályokban. Javasolt inkább tiltsa le azokat, mivel a törölt szabályok létrejönnek az Azure AD Connect frissítése során.
+> A felhasználók megkaphatják a zavaros vagy az alkalmazás engedélyeivel kapcsolatos problémákat, ha túl sok objektum szűrve van. Egy hibrid Exchange Online-implementációban például a helyszíni postaládákkal rendelkező felhasználók a globális címlistában több felhasználót láthatnak, mint a postaládákkal rendelkező felhasználók az Exchange Online-ban. Más esetekben előfordulhat, hogy a felhasználók egy felhőalapú alkalmazásban szeretnének hozzáférést adni egy másik felhasználónak, amely nem része a szűrt objektumok hatókörének.
 
-## <a name="azure-ad-connect-dependency-factors"></a>Az Azure AD Connect függőségi tényezők
+### <a name="attribute-flows"></a>Attribútumok folyamatai
 
-A teljesítmény az Azure AD Connect szolgáltatás függ, importálja és exportálja a csatlakoztatott könyvtárak teljesítményét. Például a mérete, importálni kell az Active Directory vagy a hálózati késés, az Azure AD szolgáltatásba. A kiépítési motor használja az SQL-adatbázis is hatással van a szinkronizálási ciklus általános teljesítményét.
+Az attribútumok folyamata az objektumok attribútumainak az egyik csatlakoztatott címtárból egy másik csatlakoztatott könyvtárba történő másolásának vagy átalakításának folyamata. Ezek a szinkronizálási szabályok részeként vannak meghatározva. Ha például egy felhasználó telefonszámát módosítja a Active Directory, a rendszer frissíti az Azure AD telefonszámát. A szervezetek [módosíthatják az attribútum folyamatait](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-sync-change-the-configuration) a különböző követelményekhez. Azt javasoljuk, hogy a módosítás előtt másolja a meglévő attribútumok folyamatait.
 
-### <a name="active-directory-factors"></a>Az Active Directory tényezők
+Az egyszerű átirányítások, például az attribútumérték egy másik attribútumra való továbbítása nem befolyásolja a lényeges teljesítményt. Átirányítási példa egy mobil számra Active Directory az Azure AD-ben az Office Phone-számra.
 
-Ahogy korábban említettük, az importálandó objektumok száma jelentősen befolyásolja a teljesítményt. A [hardver- és az Azure AD Connect előfeltételei](how-to-connect-install-prerequisites.md) szerkezeti az üzemelő példány mérete alapján meghatározott típusú hardveres szinten. Az Azure AD Connect csak támogatja adott topológiák a leírt módon [az Azure AD Connect-topológiák](plan-connect-topologies.md). Nincsenek, nem támogatott topológiák javaslatok és teljesítményoptimalizálás.
+Az attribútumok értékének átalakítása hatással lehet a szinkronizálási folyamat teljesítményére. Az attribútumok átalakítása magában foglalja az attribútumok módosításait, újraformázását, összefűzését vagy kivonását.
 
-Győződjön meg arról, hogy az Azure AD Connect-kiszolgáló megfelel a hardverkövetelményeknek az Active Directory mérete alapján szeretne importálni. Az Azure AD Connect-kiszolgáló és az Active Directory-tartományvezérlők közötti hibás vagy lassú hálózati kapcsolat lelassíthatják az importálás.
+A szervezetek letilthatják bizonyos attribútumok áramlását az Azure AD-be, de nem befolyásolják a kiépítési motor teljesítményét.
 
-### <a name="azure-ad-factors"></a>Az Azure AD-tényezők
+> [!NOTE]
+> Ne törölje a nem kívánt attribútumok folyamatait a szinkronizálási szabályokban. Javasoljuk, hogy inkább tiltsa le őket, mert a törölt szabályok újból létrejönnek a Azure AD Connect frissítése során.
 
-Az Azure AD használatával szabályozás-szolgáltatásmegtagadásos (DoS) támadásokkal szembeni védelemhez a felhőszolgáltatás. Jelenleg az Azure AD esetében a sávszélesség-szabályozási az 7000 írások száma 5 percenként (84,000 óránként). Ha például a következő műveletek szabályozható:
+## <a name="azure-ad-connect-dependency-factors"></a>Függőségi tényezők Azure AD Connect
+
+A Azure AD Connect teljesítménye függ az általa importált és a-ba exportált csatlakoztatott könyvtárak teljesítményével. Például az importálni kívánt Active Directory mérete vagy az Azure AD szolgáltatás hálózati késése. A kiépítési motor által használt SQL-adatbázis a szinkronizálási ciklus általános teljesítményét is befolyásolja.
+
+### <a name="active-directory-factors"></a>Active Directory tényezők
+
+Ahogy azt korábban említettük, az importálandó objektumok száma jelentősen befolyásolja a teljesítményt. A [hardverre és előfeltételekre vonatkozó Azure ad Connect](how-to-connect-install-prerequisites.md) körvonalazza az adott hardveres csomagokat az üzemelő példány mérete alapján. Azure AD Connect csak a [Azure ad Connect topológiák](plan-connect-topologies.md)által meghatározott topológiákat támogatja. Nincsenek teljesítmény-optimalizálási és javaslatok a nem támogatott topológiák esetében.
+
+Győződjön meg arról, hogy a Azure AD Connect-kiszolgáló megfelel a hardverre vonatkozó követelményeknek az importálni kívánt Active Directory-méret alapján. A Azure AD Connect-kiszolgáló és a Active Directory-tartományvezérlők közötti rossz vagy lassú hálózati kapcsolat lelassíthatja az importálást.
+
+### <a name="azure-ad-factors"></a>Azure AD-tényezők
+
+Az Azure AD szabályozást használ a Cloud Service-szolgáltatásoknak a szolgáltatásmegtagadási (DoS) támadások elleni védelemhez. Az Azure AD jelenleg legfeljebb 5 percenként 7 000 írási korlátot (84 000/óra) tartalmaz. Például a következő műveletek szabályozható:
 
 
 
-- Az Azure AD Connect, az Azure AD-exportálás.
-- PowerShell-parancsfájlok vagy alkalmazások közvetlenül az Azure AD frissítése akkor is igaz, a háttérben, például a dinamikus csoporttagságok.
-- A felhasználók a saját identitás rögzíti, például a többtényezős hitelesítés vagy az SSPR (önkiszolgáló jelszó-visszaállítás) regisztrálása frissítése.
-- A grafikus felhasználói felület műveleteit.
+- Azure AD Connect Exportálás az Azure AD-be.
+- A PowerShell-parancsfájlok vagy-alkalmazások közvetlenül a háttérben frissítik az Azure AD-t, például a dinamikus csoporttagságok esetében is.
+- A felhasználók saját identitási rekordokat frissítenek, például az MFA vagy a SSPR regisztrációját (önkiszolgáló jelszó-visszaállítás).
+- Műveletek a grafikus felhasználói felületen belül.
 
-Tervezze meg a központi telepítési és karbantartási feladatok, annak biztosításához, hogy az Azure AD Connect szinkronizálási ciklus nem befolyásolják szabályozási korlátait. Például ha egy nagy felvételi wave, ahol létrehozhatja a felhasználói identitások több ezer, dinamikus csoporttagságok licencelési hozzárendelések, a frissítések okozhat, és önkiszolgáló jelszóátállítási regisztrációk. Érdemes ezen írások több óráig vagy néhány napon keresztül terjednek.
+Tervezze meg az üzembe helyezési és karbantartási feladatokat, és győződjön meg arról, hogy a Azure AD Connect szinkronizálási ciklusa nincs hatással a szabályozás korlátaira. Ha például egy nagy felvételi hullámtal rendelkezik, ahol több ezer felhasználói identitást hoz létre, akkor a dinamikus csoporttagságok, a licencelési hozzárendelések és az önkiszolgáló jelszó-visszaállítási regisztrációk frissítése is okozhat. Ezeket az írásokat érdemes több órán át vagy néhány napig elosztani.
 
-### <a name="sql-database-factors"></a>Az SQL database tényezők
+### <a name="sql-database-factors"></a>SQL Database-tényezők
 
-A forrás az Active Directory-topológia méretét az SQL database szolgáltatás teljesítményének befolyásolják. Kövesse a [hardverkövetelmények](how-to-connect-install-prerequisites.md) az SQL Server adatbázis-, vegye figyelembe az alábbi javaslatokat:
+A forrás Active Directory topológiájának mérete befolyásolja az SQL Database teljesítményét. Kövesse az SQL Server-adatbázis [hardveres követelményeit](how-to-connect-install-prerequisites.md) , és vegye figyelembe a következő javaslatokat:
 
 
 
-- Több mint 100 000 felhasználóval rendelkező szervezetek csökkentheti a hálózati késések közös elhelyezése az SQL database és az üzembe helyezési motor ugyanazon a kiszolgálón.
-- Miatt a magas lemez bemeneti és kimeneti (I/O) követelményeinek a szinkronizálási folyamat használata tartós állapot-meghajtók (SSD) az SQL database, a kiépítési motor az optimális eredmény, ha nem lehetséges, fontolja meg RAID 0 vagy RAID 1 konfigurációk.
-- Jegyértékesítésről; ne végezze el a teljes szinkronizálás a felesleges és a lassabb válaszidők okoz.
+- A több mint 100 000 felhasználóval rendelkező szervezetek csökkenthetik a hálózati késéseket az SQL Database és a kiépítési motor ugyanazon a kiszolgálón való elhelyezésével.
+- A szinkronizálási folyamat nagy bemeneti és kimeneti (I/O) követelményei miatt a kiépítési motor SQL Database-hez szükséges SSD-k használata az optimális eredmények érdekében, ha nem lehetséges, érdemes lehet RAID 0 vagy RAID 1 konfigurációt használni.
+- Ne végezzen teljes szinkronizálást előre jelleggel; szükségtelen adatváltozást és lassabb válaszidőt okoz.
 
 ## <a name="conclusion"></a>Összegzés
 
-Az Azure AD Connect megvalósítási a teljesítmény optimalizálása érdekében fontolja meg az alábbi javaslatokat:
+A Azure AD Connect megvalósításának teljesítményének optimalizálása érdekében vegye figyelembe a következő ajánlásokat:
 
 
 
-- Használja a [hardverkonfiguráció javasolt](how-to-connect-install-prerequisites.md) a megvalósítása az Azure AD Connect-kiszolgáló mérete alapján.
-- Történő frissítés az Azure AD Connect a nagyobb méretű környezetek esetén fontolja meg [áttelepítési módszer párhuzamos](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration), hogy ellenőrizze, hogy a minimális állásidő és a legjobb megbízhatóság. 
-- Az SQL database a legjobb teljesítmény írása SSD használja.
-- Az Active Directory szűrje a csak az, hogy szükség lesz az Azure AD-ben a tartomány, szervezeti egység vagy attribútumszűrés objektumokat tartalmazza.
-- Módosítsa az alapértelmezett szabályok attribútum van szüksége, ha először másolja a szabályt, majd módosítsa a másolás és letiltja az eredeti szabályt. Futtassa újra a teljes szinkronizálás a vágólapra.
-- Tervezze meg a kezdeti teljes szinkronizálás futtatási profil elegendő időt.
-- Arra törekszik, a különbözeti szinkronizálási ciklus 30 percen belül befejeződik. A különbözeti szinkronizálás profil 30 perc múlva indul el, ha egy teljes különbözeti szinkronizálási ciklus tartalmazza alapértelmezett szinkronizálási gyakoriságot módosítani.
-- A figyelő a [az Azure AD Connect szinkronizálási állapot](how-to-connect-health-agent-install.md) az Azure ad-ben.
+- A Azure AD Connect-kiszolgáló megvalósítási méretén alapuló [ajánlott hardverkonfiguráció](how-to-connect-install-prerequisites.md) használata.
+- Ha nagy léptékű központi telepítések során Azure AD Connect frissíteni, érdemes a [swing Migration metódust](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-upgrade-previous-version#swing-migration)használni, hogy a lehető legkevesebb állásidőt és a legjobb megbízhatóságot biztosítsa. 
+- A legjobb írási teljesítmény érdekében használja az SSD-t az SQL Database-hez.
+- Szűrje a Active Directory hatókört úgy, hogy csak olyan objektumokat tartalmazzon, amelyeket az Azure AD-ben kell kiépíteni, tartomány, szervezeti egység vagy attribútum szűrés használatával.
+- Ha módosítania kell az attribútum alapértelmezett folyamatának szabályait, először másolja a szabályt, majd módosítsa a másolást, és tiltsa le az eredeti szabályt. Ne felejtse el újrafuttatni a teljes szinkronizálást.
+- Tervezze meg a megfelelő időt a kezdeti teljes szinkronizálási futtatási profilhoz.
+- Törekedni kell arra, hogy 30 percen belül elvégezze a különbözeti szinkronizálási ciklust. Ha a különbözeti szinkronizálási profil nem fejeződött be 30 percen belül, módosítsa az alapértelmezett szinkronizálási gyakoriságot úgy, hogy az tartalmazza a teljes különbözeti szinkronizálási ciklust.
+- A [Azure ad Connect szinkronizálási állapotának](how-to-connect-health-agent-install.md) figyelése az Azure ad-ben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ: [Helyszíni identitások integrálása az Azure Active Directoryval](whatis-hybrid-identity.md).

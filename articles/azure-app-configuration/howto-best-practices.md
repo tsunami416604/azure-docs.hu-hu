@@ -3,21 +3,21 @@ title: Az Azure app Configuration – ajánlott eljárások | Microsoft Docs
 description: Útmutató az Azure-alkalmazások konfigurációjának legmegfelelőbb használatához
 services: azure-app-configuration
 documentationcenter: ''
-author: yegu-ms
+author: lisaguthrie
 manager: maiye
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.topic: conceptual
 ms.date: 05/02/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 3b43ca5b6bec64d9283a64c9bcc0a3b60c21bca4
-ms.sourcegitcommit: 380e3c893dfeed631b4d8f5983c02f978f3188bf
+ms.openlocfilehash: 37f93099027f810e8089119536e089e07080d0bc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/08/2020
-ms.locfileid: "75750417"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898634"
 ---
 # <a name="azure-app-configuration-best-practices"></a>Az Azure app Configuration ajánlott eljárásai
 
@@ -42,7 +42,7 @@ A *címkék* a kulcsok attribútumai. Egy kulcs változatának létrehozásához
 
 Az alkalmazás konfigurációja a vele együtt tárolt összes kulcsot független entitásként kezeli. Az alkalmazás konfigurációja nem kísérli meg a kulcsok közötti kapcsolat következtetését, illetve a kulcs értékének öröklését a hierarchiájuk alapján. A kulcsok több készletét is összesítheti, ha az alkalmazás kódjában a megfelelő konfiguráció halmozásával párosított címkéket használ.
 
-Lássunk egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
+Nézzük meg egy példát. Tegyük fel, hogy van egy **Asset1**nevű beállítása, amelynek értéke változó lehet a fejlesztési környezettől függően. Hozzon létre egy "Asset1" nevű kulcsot egy üres címkével és egy "fejlesztés" nevű címkével. Az első címkében a **Asset1**alapértelmezett értékét helyezi el, és az utóbbiban egy adott értéket helyez el a "fejlesztés" értékre.
 
 A kódban először le kell kérnie a kulcs értékeit címkék nélkül, majd a "fejlesztés" címkével megegyező számú kulcs-értéket kell lekérnie. Ha a második alkalommal kéri le az értékeket, a kulcsok korábbi értékei felül lesznek írva. A .NET Core konfigurációs rendszer lehetővé teszi, hogy az egymásra épülő konfigurációs adat több készletét "verem". Ha egy kulcs egynél több készletben található, az azt tartalmazó utolsó készletet használja. A modern programozási keretrendszer, például a .NET Core esetében ez a halmozási képesség ingyenesen elérhető, ha natív konfigurációs szolgáltatót használ az alkalmazás konfigurálásához. A következő kódrészlet azt mutatja be, hogyan valósítható meg a halmozás egy .NET Core-alkalmazásban:
 

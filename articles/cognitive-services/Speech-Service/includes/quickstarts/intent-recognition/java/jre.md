@@ -1,28 +1,24 @@
 ---
-title: 'Gyors útmutató: beszédek, szándékok és entitások felismerése, Java-Speech Service'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: c5d70bba32df5940d929482e37317d40bd496676
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: a6bf8bb558e82fefbbe6ff306f628a4b449a4e83
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761411"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900574"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
-* Ha ez az első Java (JRE) projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">hozzon létre egy üres minta projektet</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK</a>-t.
+* Ha ez az első Java (JRE) projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=jre" target="_blank">hozzon létre egy üres minta projektet <span class="docon docon-navigate-external x-hidden-focus"> </span> </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=jre" target="_blank">Telepítse a fejlesztői <span class="docon docon-navigate-external x-hidden-focus"> </span>környezethez készült Speech SDK </a>-t.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
 
@@ -96,7 +92,7 @@ Fontos, hogy a használat során kiszabadítsa a beszédfelismerési erőforrás
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
-Ezen a ponton a kódnak így kell kinéznie:  
+Ezen a ponton a kódnak így kell kinéznie:
 
 > [!NOTE]
 > Ehhez a verzióhoz hozzáadott néhány megjegyzést.
@@ -105,7 +101,7 @@ Ezen a ponton a kódnak így kell kinéznie:
 
 ## <a name="build-and-run-your-app"></a>Az alkalmazás létrehozása és futtatása
 
-Nyomja le az F11 billentyűt, vagy válassza a **Run** > **Debug** (Futtatás, Hibakeresés) lehetőséget.
+Nyomja le az <kbd>F11</kbd>billentyűt, vagy válassza a **Futtatás** > **hibakeresés**lehetőséget.
 A mikrofonból érkező következő 15 másodpercnyi beszédet a rendszer felismeri, és a konzolablakban naplózza.
 
 ## <a name="next-steps"></a>Következő lépések

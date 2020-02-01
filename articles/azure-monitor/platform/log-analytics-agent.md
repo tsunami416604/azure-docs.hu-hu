@@ -6,13 +6,13 @@ ms.subservice: logs
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/24/2019
-ms.openlocfilehash: 8e563ae095cf39cdce3e671d4099d2bf1592100a
-ms.sourcegitcommit: 38b11501526a7997cfe1c7980d57e772b1f3169b
+ms.date: 01/29/2020
+ms.openlocfilehash: d43b580f60f5ae8d2782cf9762b02aa1360e5a40
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76513626"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901202"
 ---
 # <a name="collect-log-data-with-the-log-analytics-agent"></a>A Log Analytics ügynökkel gyűjti a naplózási adatokat
 
@@ -87,11 +87,11 @@ A következő táblázat a támogatott Linux-disztribúciók számára szükség
 
 |Szükséges csomag |Leírás |Minimális verzió |
 |-----------------|------------|----------------|
-|Glibc |    GNU C könyvtár | 2.5-12 
-|Openssl    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
+|Glibc |    GNU C könyvtár | 2,5 – 12 
+|OpenSSL    | OpenSSL-kódtárak | 1.0. x vagy 1.1. x |
 |Curl | cURL webes ügyfél | 7.15.5 |
 |Python – ctypes | | 
-|PAM | Cserélhető hitelesítési modulok | | 
+|PAM | Csatlakoztatható hitelesítési modulok | | 
 
 >[!NOTE]
 >A syslog-üzenetek összegyűjtéséhez a rsyslog vagy a syslog-ng szükséges. A syslog-események gyűjteménye nem támogatja az alapértelmezett syslog démont a Red Hat Enterprise Linux, a CentOS és a Oracle Linux verzió (sysklog) 5. verziójában. A rendszernapló-adatok ezen disztribúciók ezen verziójából való összegyűjtéséhez a rsyslog démont telepíteni és konfigurálni kell a sysklog lecserélése érdekében.
@@ -106,6 +106,7 @@ Az alábbi információk a Linux és a Windows-ügynök által Azure Monitor nap
 
 |Ügynök erőforrása|Portok |Irány |HTTPS-ellenőrzés kihagyása|
 |------|---------|--------|--------|   
+|OMS *. Azure. com |443-es port |Kimenő |Igen |
 |*.ods.opinsights.azure.com |443-es port |Kimenő|Igen |  
 |*.oms.opinsights.azure.com |443-es port |Kimenő|Igen |  
 |*.blob.core.windows.net |443-es port |Kimenő|Igen |  
@@ -126,7 +127,7 @@ A Linux-ügynök esetében a proxykiszolgáló a telepítés során vagy a [tele
 |Tulajdonság| Leírás |
 |--------|-------------|
 |Protocol (Protokoll) | https |
-|felhasználó | Opcionális Felhasználónév a proxy hitelesítéséhez |
+|felhasználói | Opcionális Felhasználónév a proxy hitelesítéséhez |
 |jelszó | Opcionális jelszó a proxy hitelesítéséhez |
 |proxyhost | A proxykiszolgáló/Log Analytics átjáró címe vagy teljes tartományneve |
 |port | A proxykiszolgáló/Log Analytics átjáró nem kötelező portszáma |

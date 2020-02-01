@@ -8,6 +8,7 @@ manager: daveba
 editor: curtand
 ms.assetid: 8dd4e998-747b-4c52-b8d3-3900fe77d88f
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,23 +16,23 @@ ms.topic: reference
 ms.date: 03/20/2019
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27c0d3055512145396f204fdb17e9375f65a0db3
-ms.sourcegitcommit: 39d95a11d5937364ca0b01d8ba099752c4128827
+ms.openlocfilehash: ace8d170a5ba48c00775c3b376df8bb70a337d5d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2019
-ms.locfileid: "69562336"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897033"
 ---
-# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Verziókiadások előzményei
+# <a name="azure-ad-connect-health-version-release-history"></a>Azure AD Connect Health: Version History (Az Azure AD Connect Health verzióelőzményei)
 A Azure Active Directory csapat rendszeresen frissíti Azure AD Connect Health új szolgáltatásokkal és funkciókkal. Ez a cikk felsorolja a kiadott verziókat és szolgáltatásokat.  
 
 > [!NOTE]
-> A csatlakozás állapota automatikusan frissül, amikor megjelent az új verzió. Győződjön meg arról, hogy az automatikus frissítési beállítások engedélyezve vannak a Azure Portal. 
+> A csatlakozás állapota automatikusan frissül, amikor megjelent az új verzió. Győződjön meg arról, hogy az automatikus frissítési beállítások engedélyezve vannak a Azure Portal.
 >
 
-A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect telepítéssel. További információ a szolgáltatással kapcsolatos visszajelzések [Azure ad Connect kiadási előzményeiről](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) , szavazás a [kapcsolat állapota felhasználói](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591) hangcsatornán
+A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect telepítéssel. További információ a szolgáltatással kapcsolatos visszajelzések [Azure ad Connect kiadási előzményeiről](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect-version-history) , szavazás a [kapcsolat állapota felhasználói hangcsatornán](https://feedback.azure.com/forums/169401-azure-active-directory/filters/new?category_id=165591)
 
-## <a name="july-2019"></a>Július 2019
+## <a name="july-2019"></a>2019. július
 **Ügynök frissítése**
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.1.59.0) 
    1. Szöveg módosítása a TestWindowsTransport
@@ -53,12 +54,12 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
    1. Hibajavítás az azonos ügyfél-kérelem-azonosítóval rendelkező több bejelentkezés közötti különbségtételhez.
    2. Hibajavítás a helytelen felhasználónevek és jelszavak elemzéséhez a nyelvi honosított kiszolgálókon.   
 
-## <a name="april-2019"></a>Április 2019
+## <a name="april-2019"></a>2019. április
 **Ügynök frissítése:** 
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.1.46.0) 
    1. Az ADFS duplikált SPN-riasztási folyamatának javítása
 
-## <a name="march-2019"></a>Március 2019
+## <a name="march-2019"></a>2019. március
 **Ügynök frissítése:** 
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.1.41.0)  
    1. .NET-verziók gyűjteménye
@@ -72,7 +73,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
    4. Hibajavítás a több figyelő ügynök példányainak ívásának megakadályozására
 
 
-## <a name="november-2018"></a>November 2018
+## <a name="november-2018"></a>2018. november
 **Új GA-funkciók:** 
 * Azure AD Connect Health szinkronizáláshoz – duplikált attribútum-szinkronizálási hibák diagnosztizálása és szervizelése a portálról
 
@@ -90,7 +91,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 
 ## <a name="august-2018"></a>2018. augusztus 
 *  Azure AD Connect Health-ügynök a (Azure AD Connect verzióhoz tartozó 3.1.7.0) szinkronizálásához (verzió: 1.1.880.0)    
-   1. Gyorsjavítás a [felügyeleti ügynök magas CPU](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync) -problémája számára a .NET-keretrendszer tudásbázisának kiadásaival
+   1. Gyorsjavítás a [felügyeleti ügynök magas CPU-problémája számára a .NET-keretrendszer tudásbázisának kiadásaival](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
 
 ## <a name="june-2018"></a>2018. június 
 **Új előzetes verziójú funkciók:** 
@@ -98,10 +99,10 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 
 **Ügynök frissítése:** 
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.1.7.0)    
-  1. Gyorsjavítás a [felügyeleti ügynök magas CPU](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync) -problémája számára a .NET-keretrendszer tudásbázisának kiadásaival
+  1. Gyorsjavítás a [felügyeleti ügynök magas CPU-problémája számára a .NET-keretrendszer tudásbázisának kiadásaival](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
    
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.1.7.0)  
-  1. Gyorsjavítás a [felügyeleti ügynök magas CPU](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync) -problémája számára a .NET-keretrendszer tudásbázisának kiadásaival
+  1. Gyorsjavítás a [felügyeleti ügynök magas CPU-problémája számára a .NET-keretrendszer tudásbázisának kiadásaival](https://support.microsoft.com/help/4346822/high-cpu-issue-in-azure-active-directory-connect-health-for-sync)
   2. Eredmények javításai az ADFS-kiszolgálón 2016 másodlagos kiszolgálón
    
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.1.2.0)  
@@ -140,7 +141,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
   1. Az ügynök rendelkezésre állásának fejlesztése 
   2. Hibajavítások és általános javítások
 
-## <a name="december-2017"></a>2017. december
+## <a name="december-2017"></a>December 2017
 **Ügynök frissítése:**
 
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.0.145.0)
@@ -152,13 +153,13 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
   2. Az ügynök rendelkezésre állásának fejlesztése 
   3. Hibajavítások és általános javítások
   
-## <a name="october-2017"></a>2017. október
+## <a name="october-2017"></a>Október 2017
 **Ügynök frissítése:**
 
  * Azure AD Connect Health-ügynök a (Azure AD Connect verzióhoz tartozó 3.0.129.0) szinkronizálásához (verzió: 1.1.649.0)
 <br></br> Javítottuk a kompatibilitási problémát Azure AD Connect és Azure AD Connect Health ügynök között a szinkronizáláshoz. Ez a probléma azokat az ügyfeleket érinti, akik Azure AD Connect helyszíni frissítést végeznek a verzió 1.1.647.0, de jelenleg az állapotfigyelő 3.0.127.0 verziója van telepítve. A frissítés után az állapotfigyelő ügynök többé nem küldhet egészségügyi információkat Azure AD Connect szinkronizálási szolgáltatásról az Azure AD-Állapotfigyelő szolgáltatásba. Ezzel a javítással az állapotfigyelő ügynök verziója 3.0.129.0 van telepítve Azure AD Connect helyben történő frissítés során. Az állapotfigyelő ügynök 3.0.129.0 verziója nem rendelkezik kompatibilitási problémával a Azure AD Connect verzió 1.1.649.0.
 
-## <a name="july-2017"></a>2017. július
+## <a name="july-2017"></a>Július 2017
 **Ügynök frissítése:**
 
 * AD DS-ügynök Azure AD Connect Health (verzió: 3.0.68.0)
@@ -170,7 +171,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 * Azure AD Connect Health-ügynök a (Azure AD Connect verzióhoz tartozó 3.0.68.0) szinkronizálásához (verzió: 1.1.614.0)
   1. Microsoft Azure Government Cloud és Microsoft Cloud Germany támogatása
 
-## <a name="april-2017"></a>2017. április      
+## <a name="april-2017"></a>Április 2017      
 **Ügynök frissítése:**
 
 * AD FS-ügynök Azure AD Connect Health (verzió: 3.0.12.0)
@@ -199,7 +200,7 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 
 * A AD FS-IP-cím mező Azure AD Connect Health a hibás felhasználónévvel/jelszóval rendelkező leggyakoribb 50-felhasználók jelentésében érhető el.
 
-## <a name="july-2016"></a>2016. július
+## <a name="july-2016"></a>Július 2016
 **Új előzetes verziójú funkciók:**
 
 * [AD DS Azure ad Connect Health](how-to-connect-health-adds.md).
@@ -250,6 +251,6 @@ A szinkronizálás Azure AD Connect Health integrálva van Azure AD Connect tele
 * A sikertelen kérések trendjei a AD FS-kiszolgálókon alkalmazások, rekordtípusok stb. szerint csoportosítva.
 * Egyszerűbb ügynök üzembe helyezése az Azure AD globális rendszergazdai hitelesítő adataival.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a helyszíni [identitás-infrastruktúra és a szinkronizálási szolgáltatások Felhőbeli figyeléséről](whatis-hybrid-identity-health.md).
 

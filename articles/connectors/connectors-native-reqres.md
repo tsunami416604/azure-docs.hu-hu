@@ -5,14 +5,14 @@ services: logic-apps
 ms.suite: integration
 ms.reviewers: klam, logicappspm
 ms.topic: conceptual
-ms.date: 10/11/2019
+ms.date: 01/14/2020
 tags: connectors
-ms.openlocfilehash: 822a6d1cd812ead8e677a66a9b1e47ebdbcf8aea
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: 0949e50c5a4993dfbcc83b41ef01d2cea82350a8
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76030142"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900261"
 ---
 # <a name="receive-and-respond-to-incoming-https-calls-by-using-azure-logic-apps"></a>Bejövő HTTPS-hívások fogadása és válaszadás a Azure Logic Apps használatával
 
@@ -23,7 +23,9 @@ A [Azure Logic apps](../logic-apps/logic-apps-overview.md) és a beépített ké
 * Egy másik logikai alkalmazástól érkező HTTPS-hívás fogadása és megválaszolása.
 
 > [!NOTE]
-> A kérelem-trigger *csak* TRANSPORT Layer Security (TLS) 1,2-et támogatja a bejövő hívásokhoz. A kimenő hívások továbbra is támogatják a TLS 1,0, 1,1 és 1,2 protokollt. Ha az SSL-kézfogás hibáit látja, ügyeljen arra, hogy a TLS 1,2-et használja. A bejövő hívások esetében itt láthatók a támogatott titkosítási csomagok:
+> A kérelem-trigger *csak* TRANSPORT Layer Security (TLS) 1,2-et támogatja a bejövő hívásokhoz. A kimenő hívások továbbra is támogatják a TLS 1,0, 1,1 és 1,2 protokollt. További információ: [a TLS 1,0-probléma megoldása](https://docs.microsoft.com/security/solving-tls1-problem).
+>
+> Ha az SSL-kézfogás hibáit látja, ügyeljen arra, hogy a TLS 1,2-et használja. A bejövő hívások esetében itt láthatók a támogatott titkosítási csomagok:
 >
 > * TLS_ECDHE_ECDSA_WITH_AES_256_GCM_SHA384
 > * TLS_ECDHE_ECDSA_WITH_AES_128_GCM_SHA256

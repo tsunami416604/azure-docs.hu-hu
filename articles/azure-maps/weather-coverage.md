@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: philmea
-ms.openlocfilehash: 630a018c25ac8663fd369c1256e376b8039182c9
-ms.sourcegitcommit: f9601bbccddfccddb6f577d6febf7b2b12988911
+ms.openlocfilehash: b5875d0672fc187920883abe208ad30c4d2b1051
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/12/2020
-ms.locfileid: "75910805"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898553"
 ---
 # <a name="azure-maps-weather-coverage"></a>Azure Maps időjárási lefedettség
 
@@ -78,7 +78,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Saint Kitts és Nevis                    | ✓ |   |  ✓| 
 | Saint Lucia                              | ✓ |   |  ✓| 
 | Saint Martin                             | ✓ |   |  ✓| 
-| Saint Pierre és Miquelon                | ✓ |   |  ✓| 
+| Saint-Pierre és Miquelon                | ✓ |   |  ✓| 
 | Saint Vincent és Grenadine-szigetek         | ✓ |   |  ✓| 
 | Sint Eustatius                           | ✓ |   |  ✓|  
 | Sint Maarten                             | ✓ |   |  ✓| 
@@ -86,7 +86,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Suriname                                 | ✓ |   |  ✓| 
 | Trinidad és Tobago                      | ✓ |   |  ✓| 
 | Turks- és Caicos-szigetek                 | ✓ |   |  ✓| 
-| Az Amerikai Egyesült Államok lakatlan külbirtokai                    | ✓ |   |  ✓| 
+| Amerikai Egyesült Államok lakatlan külbirtokai                    | ✓ |   |  ✓| 
 | Amerikai Virgin-szigetek                      | ✓ |   |  ✓| 
 | Egyesült Államok                            | ✓ | ✓ |  ✓| 
 | Uruguay                                  | ✓ |   |  ✓| 
@@ -109,8 +109,8 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Cabo Verde                  | ✓               |                              |        ✓| 
 | Közép-afrikai Köztársaság    | ✓               |                              |        ✓| 
 | Csád                        | ✓               |                              |        ✓| 
-| Comore-szigetek                     | ✓               |                              |        ✓| 
-| Kongó (KDK)                 | ✓               |                              |        ✓|
+| Comore                     | ✓               |                              |        ✓| 
+| Kongói Demokratikus Köztársaság                 | ✓               |                              |        ✓|
 | Elefántcsontparti               | ✓               |                              |        ✓| 
 | Dzsibuti                    | ✓               |                              |        ✓| 
 | Egyiptom                       | ✓               |                              |        ✓| 
@@ -118,7 +118,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Eritrea                     | ✓               |                              |        ✓| 
 | eSwatini                    | ✓               |                              |        ✓| 
 | Etiópia                    | ✓               |                              |        ✓| 
-| Francia Déli Területek | ✓               |                              |        ✓| 
+| Francia déli területek | ✓               |                              |        ✓| 
 | Gabon                       | ✓               |                              |        ✓| 
 | Gambia                      | ✓               |                              |        ✓| 
 | Ghána                       | ✓               |                              |        ✓| 
@@ -151,10 +151,10 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Réunion                     | ✓               |                              |        ✓| 
 | Ruanda                      | ✓               |                              |        ✓| 
 | Szent Ilona, Ascension, Tristan da Cunha        | ✓               |                              |        ✓| 
-| Sao Tome és Principe       | ✓               |                              |        ✓| 
+| São Tomé és Príncipe       | ✓               |                              |        ✓| 
 | Szaúd-Arábia                | ✓               |                              |        ✓| 
 | Szenegál                     | ✓               |                              |        ✓| 
-| Seychelle-szigetek                  | ✓               |                              |        ✓| 
+| Seychelle                  | ✓               |                              |        ✓| 
 | Sierra Leone                | ✓               |                              |        ✓| 
 | Szomália                     | ✓               |                              |        ✓| 
 | Dél-Afrika                | ✓               |                              |        ✓| 
@@ -179,7 +179,6 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Afganisztán                       | ✓ |   |  ✓| 
 | Amerikai Szamoa                    | ✓ |   |  ✓| 
 | Ausztrália                         | ✓ | ✓ |  ✓| 
-| Azerbajdzsán                        | ✓ |   |  ✓| 
 | Banglades                        | ✓ |   |  ✓| 
 | Bhután                            | ✓ |   |  ✓| 
 | Brit Indiai-óceáni Terület    | ✓ |   |  ✓| 
@@ -187,13 +186,13 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Kambodzsa                          | ✓ |   |  ✓| 
 | Kína                             | ✓ | ✓ |  ✓| 
 | Karácsony-sziget                  | ✓ |   |  ✓| 
-| Cocos (Keeling)-szigetek           | ✓ |   |  ✓| 
+| Kókusz (Keeling)-szigetek           | ✓ |   |  ✓| 
 | Cook-szigetek                      | ✓ |   |  ✓| 
 | Fidzsi                              | ✓ |   |  ✓| 
 | Francia Polinézia                  | ✓ |   |  ✓| 
 | Guam                              | ✓ |   |  ✓| 
-| Heard- és McDonald-szigetek | ✓ |   |  ✓| 
-| Hongkong KKT                     | ✓ |   |  ✓| 
+| Heard-sziget és McDonald-szigetek | ✓ |   |  ✓| 
+| Hongkong (KKT)                     | ✓ |   |  ✓| 
 | India                             | ✓ |   |  ✓| 
 | Indonézia                         | ✓ |   |  ✓| 
 | Japán                             | ✓ | ✓ |  ✓| 
@@ -202,11 +201,11 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Dél-Korea                             | ✓ | ✓ |  ✓| 
 | Kirgizisztán                        | ✓ |   |  ✓| 
 | Laosz                              | ✓ |   |  ✓| 
-| Makaó (KKT)                         | ✓ |   |  ✓| 
+| Makaó KKT                         | ✓ |   |  ✓| 
 | Malajzia                          | ✓ |   |  ✓| 
 | Maldív-szigetek                          | ✓ |   |  ✓| 
 | Marshall-szigetek                  | ✓ |   |  ✓| 
-| Mikronézia                        | ✓ |   |  ✓| 
+| Mikronéziai szövetséges Államok                        | ✓ |   |  ✓| 
 | Mongólia                          | ✓ |   |  ✓| 
 | Mianmar                           | ✓ |   |  ✓| 
 | Nauru                             | ✓ |   |  ✓| 
@@ -229,7 +228,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Tajvan                            | ✓ |   |  ✓| 
 | Tádzsikisztán                        | ✓ |   |  ✓| 
 | Thaiföld                          | ✓ |   |  ✓| 
-| Timor-Leste                       | ✓ |   |  ✓| 
+| Kelet-Timor                       | ✓ |   |  ✓| 
 | Tokelau                           | ✓ |   |  ✓| 
 | Tonga                             | ✓ |   |  ✓| 
 | Türkmenisztán                      | ✓ |   |  ✓| 
@@ -237,7 +236,7 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Üzbegisztán                        | ✓ |   |  ✓| 
 | Vanuatu                           | ✓ |   |  ✓| 
 | Vietnam                           | ✓ |   |  ✓| 
-| Wallis- és Futuna-szigetek                 | ✓ |   |  ✓| 
+| Wallis és Futuna                 | ✓ |   |  ✓| 
 
 
 ## <a name="europe"></a>Európa
@@ -247,7 +246,8 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Albánia                | ✓ |   |  ✓| 
 | Andorra                | ✓ |   |  ✓| 
 | Örményország                | ✓ |   |  ✓| 
-| Ausztria                | ✓ | ✓ |  ✓| 
+| Ausztria                | ✓ | ✓ |  ✓|
+| Azerbajdzsán             | ✓ |   |  ✓| 
 | Belarusz                | ✓ |   |  ✓| 
 | Belgium                | ✓ | ✓ |  ✓| 
 | Bosznia-Hercegovina | ✓ | ✓ |  ✓| 
@@ -299,4 +299,4 @@ Az alábbi táblázat az egyes országokból/régióktól kérhető időjárási
 | Törökország                 | ✓ |   |  ✓| 
 | Ukrajna                | ✓ |   |  ✓| 
 | Egyesült Királyság         | ✓ | ✓ |  ✓| 
-| Vatikán           | ✓ |   |  ✓| 
+| Vatikáni Városállam           | ✓ |   |  ✓| 

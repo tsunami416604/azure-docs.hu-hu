@@ -5,23 +5,23 @@ author: normesta
 ms.service: storage
 ms.subservice: blobs
 ms.topic: tutorial
-ms.date: 10/22/2019
+ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
-ms.openlocfilehash: cd3db902d713910de5a8199df85089d62569f9d7
-ms.sourcegitcommit: 8074f482fcd1f61442b3b8101f153adb52cf35c9
+ms.openlocfilehash: 97679ec48ee9120005118b6cacaf37e45657db08
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/22/2019
-ms.locfileid: "72757565"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76906630"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
 
 # <a name="tutorial-host-a-static-website-on-blob-storage"></a>Oktatóanyag: statikus webhely üzemeltetése Blob Storage
 
-Ez az oktatóanyag egy sorozat első része. Ez a témakör bemutatja, hogyan hozhat létre és helyezhet üzembe statikus webhelyeket az Azure Storage-ban. Ha elkészült, egy olyan statikus webhellyel fog rendelkezni, amelyet a felhasználók nyilvánosan el tudnak érni. 
+Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe statikus webhelyeket az Azure Storage-ban. Ha elkészült, egy olyan statikus webhellyel fog rendelkezni, amelyet a felhasználók nyilvánosan el tudnak érni. 
 
-A sorozat első részében a következőkkel ismerkedhet meg:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Statikus webhely üzemeltetésének konfigurálása
@@ -57,7 +57,7 @@ Első lépésként konfigurálja a Storage-fiókot egy statikus webhely üzemelt
 1. Válassza az engedélyezve lehetőséget a statikus webhely-üzemeltetési **funkció** engedélyezéséhez a Storage-fiókhoz.
 1. Az **index dokumentum neve** mezőben adja meg az *index. html*alapértelmezett index lapját. Az alapértelmezett index lap akkor jelenik meg, ha a felhasználó a statikus webhely gyökerére navigál.  
 1. A **hiba-dokumentum elérési útja** mezőben a *404. html*alapértelmezett hibaüzenetét kell megadnia. Az alapértelmezett hiba lap akkor jelenik meg, ha a felhasználó olyan oldalra próbál navigálni, amely nem szerepel a statikus webhelyén.
-1. Kattintson a **Save** (Mentés) gombra. A Azure Portal mostantól megjeleníti a statikus webhely végpontját. 
+1. Kattintson a **Mentés** gombra. A Azure Portal mostantól megjeleníti a statikus webhely végpontját. 
 
     ![Statikus webhely üzemeltetésének engedélyezése Storage-fiókhoz](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
@@ -99,9 +99,9 @@ Sikeresen elvégezte az oktatóanyagot, és üzembe helyezett egy statikus webhe
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az oktatóanyag első részében megtanulta, hogyan konfigurálhatja az Azure Storage-fiókját a statikus webhelyek üzemeltetéséhez, és hogyan hozhat létre és helyezhet üzembe statikus webhelyeket egy Azure-végponton.
+Ebből az oktatóanyagból megtudhatta, hogyan konfigurálhatja az Azure Storage-fiókját a statikus webhelyek üzemeltetéséhez, és hogyan hozhat létre és helyezhet üzembe statikus webhelyeket egy Azure-végponton.
 
-Most lépjen tovább a második részre, ahol a statikus webhelye számára az Azure CDN használatával konfigurálhat egy egyéni tartományt.
+Következő lépésként megtudhatja, hogyan konfigurálhat egy egyéni tartományt a statikus webhellyel.
 
 > [!div class="nextstepaction"]
-> [Az SSL-t használó egyéni tartomány engedélyezése a Azure CDN használatával statikus webhelyeken](storage-blob-static-website-custom-domain.md)
+> [Egyéni tartomány leképezése egy Azure Blob Storage-végpontra](storage-custom-domain-name.md)

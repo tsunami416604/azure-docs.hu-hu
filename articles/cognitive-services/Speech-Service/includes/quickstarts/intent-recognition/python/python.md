@@ -1,28 +1,24 @@
 ---
-title: 'Gyors útmutató: beszédek, szándékok és entitások felismerése, Python-Speech szolgáltatás'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: f2a46b8a0868aaa1097dd7f1ae738a2a3e06e3b8
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 9bc514c32d97958d8ab154dc2c5533747f380e86
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75773035"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900548"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
-* Ha ez az első Python-projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">hozzon létre egy üres minta projektet</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK</a>-t.
+* Ha ez az első Python-projekt, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md" target="_blank">hozzon létre egy üres minta <span class="docon docon-navigate-external x-hidden-focus"> </span>projektet </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md" target="_blank">Telepítse a fejlesztői <span class="docon docon-navigate-external x-hidden-focus"> </span>környezethez készült Speech SDK </a>-t.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
 
@@ -65,7 +61,7 @@ Most hozzon létre egy `IntentRecognizer`. Szúrja be a kódot közvetlenül a b
 
 ## <a name="add-a-languageunderstandingmodel-and-intents"></a>LanguageUnderstandingModel és szándékok hozzáadása
 
-Hozzá kell rendelnie egy `LanguageUnderstandingModel` a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára. 
+Hozzá kell rendelnie egy `LanguageUnderstandingModel` a szándék-felismerővel, és fel kell vennie a felismerni kívánt leképezéseket. Az előre elkészített tartományból szándékait fogjuk használni a Home Automation számára.
 
 Szúrja be ezt a kódot a `IntentRecognizer`alá. Győződjön meg arról, hogy a `"YourLanguageUnderstandingAppId"`t a LUIS-alkalmazás azonosítójával helyettesíti. 
 
@@ -90,7 +86,7 @@ A `recognize_once()`hívása alatt adja hozzá a következő kódot: [!code-pyth
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
-Ezen a ponton a kódnak így kell kinéznie:  
+Ezen a ponton a kódnak így kell kinéznie:
 
 > [!NOTE]
 > Ehhez a verzióhoz hozzáadott néhány megjegyzést.

@@ -17,12 +17,12 @@ ms.date: 08/08/2019
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f7a025835275169b260dfd1f91b65341b5ba02ff
-ms.sourcegitcommit: 7221918fbe5385ceccf39dff9dd5a3817a0bd807
+ms.openlocfilehash: da2d598c7bb6d7b06e57dd497d1e2aebf1b63694
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/21/2020
-ms.locfileid: "76294099"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898889"
 ---
 # <a name="sign-in-activity-report-error-codes"></a>Bejelentkezési tevékenység jelentésének hibakódja 
 
@@ -143,6 +143,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |53002|A használt alkalmazás nem jóváhagyott alkalmazás a feltételes hozzáféréshez. A felhasználónak a jóváhagyott alkalmazások listáján szereplő alkalmazást kell használnia a hozzáféréshez.|
 |53003|A hozzáférés a feltételes hozzáférési házirendek miatt le lett tiltva.|
 |53004|A tartalom elérése előtt a felhasználónak el kell végeznie a többtényezős hitelesítés regisztrációs folyamatát. A felhasználónak regisztrálnia kell többtényezős hitelesítésre.|
+|53032|Az akusztikai Azure AD Identity Protection házirendek miatt le lett tiltva.|
 |65001|Az X alkalmazás nem rendelkezik engedéllyel az Y alkalmazás eléréséhez, vagy az engedély vissza lett vonva. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy interaktív engedélyezési kérést ehhez a felhasználóhoz és erőforráshoz. Vagy: a felhasználó vagy a rendszergazda nem egyezett bele az alkalmazás X azonosítóval való használatába. Küldjön egy engedélyezési kérést a bérlő rendszergazdájának, hogy az Y alkalmazás nevében végezzen tevékenységet a Z erőforráson.|
 |65004|A felhasználó elutasította az alkalmazáshoz való hozzáférés jóváhagyását. Kérje meg a felhasználót, hogy jelentkezzen be újra, és hagyja jóvá az alkalmazást|
 |65005|Az alkalmazás által igényelt erőforrás-hozzáférési lista nem tartalmaz az erőforrás által felderíthető alkalmazásokat, vagy az ügyfélalkalmazás olyan erőforrás hozzáférését kérte, amely nincs meghatározva a szükséges erőforrás-hozzáférési listán, vagy a Graph szolgáltatás rossz kérést adott vissza, vagy az erőforrás nem található. Ha az alkalmazás támogatja az SAML-t, akkor előfordulhat, hogy nem a megfelelő azonosítóval (entitással) konfigurálta az alkalmazást. Próbálja ki az SAML-lel kapcsolatos megoldásokat, amelyek a következő hivatkozáson találhatók: [https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav#no-resource-in-requiredresourceaccess-list](https://docs.microsoft.com/azure/active-directory/application-sign-in-problem-federated-sso-gallery?/?WT.mc_id=DMC_AAD_Manage_Apps_Troubleshooting_Nav)|
@@ -184,7 +185,7 @@ A [jelentéskészítési API](concept-reporting-api.md)használatával programoz
 |90010|A kérés különböző okokból nem támogatott. A kérést például nem támogatott kérési módszer használatával (csak a POST metódus támogatott) vagy a kért jogkivonat-aláírási algoritmus nem támogatja. Lépjen kapcsolatba az alkalmazás fejlesztőjével.|
 |90014| A protokoll üzeneteihez kötelező mező hiányzik, lépjen kapcsolatba az alkalmazás tulajdonosával. Ha Ön az alkalmazás tulajdonosa, ellenőrizze, hogy rendelkezik-e az összes szükséges paraméterrel a bejelentkezési kéréshez. |
 |90051| Érvénytelen delegálási jogkivonat. Érvénytelen nemzeti felhő-azonosító ({cloudId}) van megadva.|
-|90072| Előbb a bérlőn külső felhasználóként hozzá kell adni a fiókot. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
+|90072| Először hozzá kell adni a fiókot külső felhasználóként a bérlőhöz. Jelentkezzen ki, majd jelentkezzen be újra egy másik Azure AD-fiókkal.|
 |90094| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó le lett tiltva. |
 |90095| Az alkalmazás olyan engedélyeket kért, amelyeknek a bejelentkezett felhasználó nem jogosult beleegyezni a szolgáltatásba, és a felhasználó megmutatta a [rendszergazdai engedélyezési kérelem](../manage-apps/configure-admin-consent-workflow.md) űrlapját. |
 |500011| Az <site address> nevű egyszerű erőforrás nem található a (z) <tenant ID>nevű bérlőben. Ez akkor fordulhat elő, ha az alkalmazást nem a bérlő rendszergazdája telepítette, vagy a bérlő bármelyik felhasználója beleegyezett. Elképzelhető, hogy rossz bérlőhöz küldte a hitelesítési kérést.|

@@ -1,14 +1,14 @@
 ---
 title: PCI-DSS v 3.2.1 terv minta-vezérlőelemek
 description: A Payment Card Industry adatbiztonsági standard v 3.2.1 tervezetének vezérlése a Azure Policy és a RBAC.
-ms.date: 06/24/2019
+ms.date: 01/29/2020
 ms.topic: sample
-ms.openlocfilehash: 38db59a7f0b93e2c87b3c7acdfbcc2b8cbd11489
-ms.sourcegitcommit: a678f00c020f50efa9178392cd0f1ac34a86b767
+ms.openlocfilehash: db21ac9d628e777b6ff2cc86516cfb1497f5a62f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/26/2019
-ms.locfileid: "74546567"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905637"
 ---
 # <a name="control-mapping-of-the-pci-dss-v321-blueprint-sample"></a>A PCI-DSS v 3.2.1 Blueprint-minta leképezésének vezérlése
 

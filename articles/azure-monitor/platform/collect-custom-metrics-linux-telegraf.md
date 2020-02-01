@@ -1,6 +1,6 @@
 ---
 title: Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-Graf ügynökkel
-description: útmutatás arról, hogyan helyezheti üzembe a InfluxData-gyártói ügynököt egy Linux rendszerű virtuális gépen az Azure-ban, és hogyan konfigurálhatja az ügynököt a metrikák közzétételére Azure Monitor.
+description: Útmutatás arról, hogyan helyezheti üzembe a InfluxData-gyártói ügynököt egy Linux rendszerű virtuális gépen az Azure-ban, és hogyan konfigurálhatja az ügynököt a metrikák közzétételére Azure Monitor.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: b4cf5dc53c0fe256c9ecab5a844300224b860e44
-ms.sourcegitcommit: a5ebf5026d9967c4c4f92432698cb1f8651c03bb
+ms.openlocfilehash: 365330aa445bcf8e5b1aec575d5e646d533ceaf7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/08/2019
-ms.locfileid: "74926750"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901321"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
 
@@ -21,7 +21,7 @@ A Azure Monitor használatával egyéni metrikákat gyűjthet az alkalmazás tel
 
 ## <a name="influxdata-telegraf-agent"></a>InfluxData-s Grafi ügynök 
 
-A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegraf/v1.7/) ügynök, amely lehetővé teszi a metrikák több mint 150 különböző forrásból való gyűjtését. Attól függően, hogy milyen számítási feladatok futnak a virtuális gépen, beállíthatja, hogy az ügynök speciális bemeneti beépülő modulokat használjanak a metrikák összegyűjtéséhez. Ilyenek például a MySQL, az NGINX és az Apache. A kimeneti beépülő modulok használatával az ügynök írhat a kiválasztott célhelyekre. A Grafi ügynök közvetlenül integrált Azure Monitor egyéni metrikák REST API. Támogatja Azure Monitor kimeneti beépülő modult. Ennek a beépülő modulnak a használatával az ügynök a Linux rendszerű virtuális gépen gyűjthet munkaterhelés-specifikus mérőszámokat, és beküldheti azokat egyéni metrikáként Azure Monitorba. 
+A-ben egy olyan beépülő modulra [épülő](https://docs.influxdata.com/telegraf/) ügynök, amely lehetővé teszi a metrikák több mint 150 különböző forrásból való gyűjtését. Attól függően, hogy milyen számítási feladatok futnak a virtuális gépen, beállíthatja, hogy az ügynök speciális bemeneti beépülő modulokat használjanak a metrikák összegyűjtéséhez. Ilyenek például a MySQL, az NGINX és az Apache. A kimeneti beépülő modulok használatával az ügynök írhat a kiválasztott célhelyekre. A Grafi ügynök közvetlenül integrált Azure Monitor egyéni metrikák REST API. Támogatja Azure Monitor kimeneti beépülő modult. Ennek a beépülő modulnak a használatával az ügynök a Linux rendszerű virtuális gépen gyűjthet munkaterhelés-specifikus mérőszámokat, és beküldheti azokat egyéni metrikáként Azure Monitorba. 
 
  ![A távíró-ügynök áttekintése](./media/collect-custom-metrics-linux-telegraf/telegraf-agent-overview.png)
 
@@ -106,7 +106,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
 ## <a name="plot-your-telegraf-metrics-in-the-azure-portal"></a>A saját Graf metrikáinak ábrázolása a Azure Portalban 
 
-1. Nyissa meg az [Azure Portal](https://portal.azure.com). 
+1. Nyissa meg az [Azure portált](https://portal.azure.com). 
 
 1. Navigáljon az új **figyelő** lapra. Ezután válassza a **metrikák**lehetőséget.  
 
@@ -120,7 +120,7 @@ Az ügynök mostantól összegyűjti a megadott bemeneti beépülő modulok metr
 
      ![Névtér és metrika kiválasztása](./media/collect-custom-metrics-linux-telegraf/VM-resource-selector.png)
 
-## <a name="additional-configuration"></a>További konfigurálás 
+## <a name="additional-configuration"></a>További konfiguráció 
 
 Az előző útmutató arról nyújt tájékoztatást, hogyan konfigurálható a (z)-ben a (z) A Grafi ügynök több mint 150 bemeneti beépülő modult támogat, néhány további konfigurációs lehetőséggel. A InfluxData közzétette a [támogatott beépülő modulok listáját](https://docs.influxdata.com/telegraf/v1.7/plugins/inputs/) , és útmutatást ad a [konfigurálásához](https://docs.influxdata.com/telegraf/v1.7/administration/configuration/).  
 

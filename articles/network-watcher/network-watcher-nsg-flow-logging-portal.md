@@ -15,12 +15,12 @@ ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: damendo
 ms.custom: mvc
-ms.openlocfilehash: c295e6c8ffea564e157545c4662cbe7e1841edae
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: f3448765eecf4a586e13155903f1c093607781dc
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76841012"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896450"
 ---
 # <a name="tutorial-log-network-traffic-to-and-from-a-virtual-machine-using-the-azure-portal"></a>Oktatóanyag: Virtuális gép bejövő és kimenő hálózati forgalmának naplózása az Azure Portal használatával
 
@@ -97,10 +97,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
     | Földrajzi egység       | Válassza az **USA keleti régiója** lehetőséget.                                           |
     | Erőforráscsoport | Válassza a **Meglévő használata**, majd a **myResourceGroup** lehetőséget. |
 
-    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. Ha meglévő Storage-fiókot használ új létrehozása helyett, győződjön meg arról, hogy olyan fiókot választ, amely esetében a **BEÁLLÍTÁSOK** területen a **Tűzfalak és virtuális hálózatok** beállítása **Minden hálózat** (alapértelmezett). A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG.
-
-    > [!NOTE]
-    > Noha a Microsoft. Insight és a Microsoft. Network szolgáltatók jelenleg megbízható Microsoft-szolgáltatásokként támogatottak az Azure Storage-ban, a NSG-adatforgalmi naplók még nem teljes körűen bevezetésre kerülnek. A NSG-naplózás engedélyezéséhez az **összes hálózatot** továbbra is ki kell választani, amíg a szolgáltatás teljes mértékben be nem kerül. 
+    A Storage-fiók létrehozása nagyjából egy percet vesz igénybe. Ne folytassa a további lépésekkel, amíg a tárfiók létrehozása be nem fejeződött. A Storage-fióknak minden esetben ugyanabban a régióban kell lennie, mint a NSG.
 4. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 5. A **NAPLÓK** területen válassza az **NSG-folyamatnaplók** lehetőséget, ahogyan az a következő képen látható:
 
@@ -114,9 +111,7 @@ Az NSG-folyamatnaplózáshoz a **Microsoft.insights** szolgáltató szükséges.
 
 9. Válassza ki a 3. lépésben létrehozott Storage-fiókot.
    > [!NOTE]
-   > A NSG nem működnek a Storage-fiókokkal, ha:
-   > * A Storage-fiókokhoz engedélyezve van a tűzfal.
-   > * A Storage-fiókokhoz engedélyezve van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
+   > A NSG-folyamatok naplói nem működnek olyan Storage-fiókokkal, amelyeken engedélyezve van a [hierarchikus névtér](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-namespace) .
 1. Válassza a portál bal felső sarkában található **Minden szolgáltatás** lehetőséget. A **Szűrő** mezőbe írja be a *Network Watcher* kifejezést. Amikor a **Network Watcher** elem megjelenik a keresési eredmények között, válassza ki.
 10. A **Megőrzés (nap)** beállítást állítsa 5 értékre, majd válassza a **Mentés** lehetőséget.
 

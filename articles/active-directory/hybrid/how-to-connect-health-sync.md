@@ -7,6 +7,7 @@ author: zhiweiwangmsft
 manager: daveba
 ms.assetid: 1dfbeaba-bda2-4f68-ac89-1dbfaf5b4015
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,12 +16,12 @@ ms.date: 07/18/2017
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: abed56ee64cbca8646c1aa1d24fea292aa4d8de3
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 61490f75d12967f7f396d5f767f2d2e696474572
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60245402"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897205"
 ---
 # <a name="monitor-azure-ad-connect-sync-with-azure-ad-connect-health"></a>Az Azure AD Connect-szinkronizálás megfigyelése az Azure AD Connect Health szolgáltatással
 Az alábbi dokumentáció az Azure AD Connect (szinkronizálási) szolgáltatás Azure AD Connect Health szolgáltatással végzett megfigyelésére vonatkozik.  Az AD FS az Azure AD Connect Health használatával történő megfigyelésére vonatkozó információkat lásd: [Az Azure AD Connect Health használata az AD FS szolgáltatással](how-to-connect-health-adfs.md). Az Active Directory tartományi szolgáltatások az Azure AD Connect Health használatával történő megfigyelésével kapcsolatos információkat pedig a [Using Azure AD Connect Health with AD DS](how-to-connect-health-adds.md) (Az Azure AD Connect Health használata az AD DS szolgáltatással) című témakörben találja.
@@ -63,24 +64,24 @@ Ez a funkció egy tendenciagrafikonon jeleníti meg a kiértékelt és az Azure 
 
 ![Szinkronizálási késések](./media/how-to-connect-health-sync/syncobjectchanges02.png)
 
-## <a name="object-level-synchronization-error-report"></a>Objektum szintű szinkronizálási hibajelentés
+## <a name="object-level-synchronization-error-report"></a>Objektum szintű szinkronizációs hibajelentés
 Ez a funkció olyan szinkronizálási hibákról készít jelentést, amelyek a Windows Server AD és az Azure AD közötti, Azure AD Connect használatával történő identitásszinkronizálás közben jelentkeznek.
 
 * A jelentésben a szinkronizáló ügyfél (az Azure AD Connect 1.1.281.0 vagy újabb verziói) által rögzített hibák szerepelnek
 * Azokat a hibákat tartalmazza, amelyek a szinkronizálási motor legutóbbi szinkronizálási művelete során jelentkeztek. („Exportálás” az Azure AD Connectoron.)
 * Ahhoz, hogy a jelentés a legfrissebb adatokat tartalmazza, az Azure AD Connect Health szinkronizálási ügynöknek a megfelelő végpontokra irányuló kimenő kapcsolattal kell rendelkeznie.
-* A jelentés **30 percenként frissül** az Azure AD Connect Health szinkronizálási ügynök által feltöltött adatokkal. A jelentés az alábbi fő lehetőségeket nyújtja
+* A jelentés **30 percenként frissül** a Azure ad Connect Health-ügynök által a szinkronizáláshoz feltöltött adatszolgáltatások használatával. A következő főbb képességeket biztosítja
 
   * Hibák kategorizálása
   * Objektumlista kategóriánként összesített hibákkal
   * A hibákkal kapcsolatos minden adat egy helyen látható
   * Objektumok összehasonlítása ütközési hibák alapján
-  * Hibajelentés hibajelentés letöltése
+  * Hibajelentés letöltése CVS-ként
 
 ### <a name="categorization-of-errors"></a>Hibák kategorizálása
 A jelentés az alábbi kategóriák szerint csoportosítja a jelentkező szinkronizálási hibákat:
 
-| Category | Leírás |
+| Kategória | Leírás |
 | --- | --- |
 | Duplikált attribútum |Olyan hibák, amelyek akkor jelentkeznek, amikor az Azure AD Connect megpróbál olyan objektumokat létrehozni vagy frissíteni az Azure AD-ben, amelyek egy vagy több duplikált attribútummal rendelkeznek, noha az attribútumnak (például proxyAddresses vagy UserPrincipalName) egyedinek kell lennie a bérlőben. |
 | Eltérés az adatokban |Olyan hibák, amelyek akkor jelentkeznek, ha közeli egyezéssel nem azonosíthatók be a szinkronizálási hibát kiváltó objektumok. |

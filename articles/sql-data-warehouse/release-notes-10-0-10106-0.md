@@ -11,12 +11,12 @@ ms.author: anjangsh
 ms.reviewer: jrasnick
 manager: craigg
 ms.custom: seo-lt-2019
-ms.openlocfilehash: 6d51213402f852daee8fe4a6b5dbbd473afda659
-ms.sourcegitcommit: 5bbe87cf121bf99184cc9840c7a07385f0d128ae
+ms.openlocfilehash: 917a698840850182d2d41ef780ba01d948e11c2f
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76122457"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896368"
 ---
 # <a name="azure-sql-data-warehouse-release-notes"></a>Azure SQL Data Warehouse kibocsátási megjegyzések
 
@@ -38,6 +38,7 @@ Az azonosított verzió használatával erősítse meg, hogy melyik kiadás lett
 | --- | --- |
 |**Munkaterhelés felügyeleti portál metrikák (előzetes verzió)**|A [munkaterhelések elkülönítésének](/azure/sql-data-warehouse/sql-data-warehouse-workload-isolation) a korábbi októberi előzetes verzióban való kiválasztásával a felhasználók létrehozhatják saját számítási feladataikat a rendszererőforrások hatékony kezeléséhez, [valamint az üzleti](/sql/t-sql/statements/create-workload-group-transact-sql?view=azure-sqldw-latest) SLA-kat.  Az Azure szinapszis Analytics általános [munkaterhelés-kezelési](/azure/sql-data-warehouse/sql-data-warehouse-workload-management) fejlesztései keretében mostantól elérhetők az új [munkaterhelés-kezelési monitorozási mérőszámok](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor) .</br> </br> A számítási feladatok monitorozása mostantól a következő mérőszámokkal bővült: </br> -Effektív Cap-erőforrás százaléka  </br> – Effektív minimális erőforrás-százalék </br> -Munkaterhelési csoport aktív lekérdezései </br> – Munkaterhelési csoport lefoglalása az erőforrás maximális százaléka alapján </br> – Munkaterhelési csoport kiosztása rendszerszázalékkal </br> – A munkaterhelés-csoport lekérdezési időtúllépései </br> – Munkaterhelési csoport várólistán lévő lekérdezései </br></br> Ezekkel a metrikákkal azonosíthatók a [munkaterhelési csoportok olyan szűk keresztmetszetek](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#workload-group-bottleneck) vagy munkaterhelési csoportok, amelyek a [kihasználatlan számítási feladatok elkülönítésével](/azure/sql-data-warehouse/sql-data-warehouse-workload-management-portal-monitor#underutilized-workload-isolation)vannak konfigurálva.  Ezek a metrikák az Azure Portalon használhatók, amely lehetővé teszi a munkaterhelés-csoport szerinti felosztást.  Az eredmények gyors eléréséhez szűrheti és rögzítheti kedvenc diagramjait egy irányítópulton.|
 |**Portál figyelési Metrikái**| A következő metrikák lettek hozzáadva a portálhoz a lekérdezési tevékenység általános figyeléséhez: </br> – Aktív lekérdezések </br> -Várólistán lévő lekérdezések </br> </br>Ezek a metrikák az [erőforrás-kihasználtság figyelése és a lekérdezési tevékenység dokumentációjában](/azure/sql-data-warehouse/sql-data-warehouse-concept-resource-utilization-query-activity)található meglévő metrikákkal együtt vannak leírva.|
+|**Terméknév**|Június 2020-án a @@VERSION által visszaadott terméknév a Microsoft Azure SQL Data Warehouseról az Azure szinapszis Analyticsre változik. A kibocsátási megjegyzésekben közzé fogjuk tenni az ütemtervet. Ez a változás olyan ügyfelek esetében fontos, akik a terméknév elemzését az alkalmazás kódjában válassza a @@VERSION. Ha el szeretné kerülni az alkalmazás kódjának módosítását a termék újrahasznosítása miatt, használja ezeket a parancsokat az adatbázis terméknév és verzió SERVERPROPERTY lekérdezéséhez. </br> A DW-verziószám XX-es számának visszaadása. X. XXXXX. X (Terméknév nélkül) használja ezt a parancsot: SELECT SERVERPROPERTY (' ProductVersion ') </br> A motor kiadásának visszaadásához használja ezt a parancsot, amely az Azure szinapszis Analytics 6 verzióját adja vissza (korábban SQL Data Warehouse): SELECT SERVERPROPERTY (' EngineEdition ')|
 
 ## <a name="october-2019"></a>2019. október
 

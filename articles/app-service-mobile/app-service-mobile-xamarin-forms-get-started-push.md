@@ -6,12 +6,12 @@ ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
 ms.date: 06/25/2019
-ms.openlocfilehash: f8aab2c5e942944f6251eef0aaaec204ce5ad076
-ms.sourcegitcommit: 3d4917ed58603ab59d1902c5d8388b954147fe50
+ms.openlocfilehash: fc05763046da365e7770a9b208100e0366062f25
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/02/2019
-ms.locfileid: "74668779"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898870"
 ---
 # <a name="add-push-notifications-to-your-xamarinforms-app"></a>Leküldéses értesítések hozzáadása a Xamarin. Forms alkalmazáshoz
 
@@ -201,7 +201,8 @@ Az FCM-mel konfigurált háttér-beállításokkal összetevőket és kódokat a
         {
             var intent = new Intent(this, typeof(MainActivity));
             intent.AddFlags(ActivityFlags.ClearTop);
-            var pendingIntent = PendingIntent.GetActivity(this, 0, intent, PendingIntentFlags.OneShot);
+            //Unique request code to avoid PendingIntent collision.
+            var requestCode = new Random().Next();
 
             var notificationBuilder = new NotificationCompat.Builder(this)
                 .SetSmallIcon(Resource.Drawable.ic_stat_ic_notification)
@@ -411,7 +412,7 @@ További információ a leküldéses értesítésekről:
 A következő oktatóanyagok egyikét is folytathatja:
 
 * [Hitelesítés hozzáadása az alkalmazáshoz](app-service-mobile-xamarin-forms-get-started-users.md)  
-  Ismerje meg, hogyan hitelesítheti az alkalmazás felhasználóit egy identitásszolgáltatóval.
+  Ismerje meg, hogyan hitelesítheti alkalmazása felhasználóit identitásszolgáltató használatával.
 * [Az offline szinkronizálás engedélyezése az alkalmazás számára](app-service-mobile-xamarin-forms-get-started-offline-data.md)  
   Ismerje meg, hogyan adhat offline támogatást alkalmazásához egy Mobile Apps-háttéralkalmazás segítségével. A kapcsolat nélküli szinkronizálással a felhasználók a Mobile apps szolgáltatással kezelhetik az adat&mdash;t&mdash;megtekinteni, hozzáadni vagy módosítani, még akkor is, ha nincs hálózati kapcsolat.
 

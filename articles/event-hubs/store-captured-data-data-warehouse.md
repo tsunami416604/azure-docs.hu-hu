@@ -6,15 +6,15 @@ author: ShubhaVijayasarathy
 manager: ''
 ms.author: shvija
 ms.custom: seodec18
-ms.date: 11/05/2019
+ms.date: 01/15/2020
 ms.topic: tutorial
 ms.service: event-hubs
-ms.openlocfilehash: 92c414afbb8121eb03353c79dfe3a51e0cfa7ec0
-ms.sourcegitcommit: bc7725874a1502aa4c069fc1804f1f249f4fa5f7
+ms.openlocfilehash: a83d65e497688fa97fbb2bdb5a4a72c6d29d81ae
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/07/2019
-ms.locfileid: "73718890"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76905690"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-a-sql-data-warehouse-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatSQL Data Warehousek migrálása a Event Grid és Azure Functions használatával
 
@@ -40,9 +40,11 @@ Az oktatóanyag során a következő lépéseket hajtja végre:
 [!INCLUDE [updated-for-az](../../includes/updated-for-az.md)]
 
 - [Visual studio 2019](https://www.visualstudio.com/vs/). Telepítés közben győződjön meg arról, hogy a következő számítási feladatokat is telepíti: .NET asztali fejlesztés, Azure-fejlesztés, ASP.NET- és webfejlesztés, Node.js-fejlesztés és Python-fejlesztés
-- Töltse le a [Git-mintát](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo). A mintamegoldás az alábbi összetevőket tartalmazza:
+- A [git-minta](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Azure.Messaging.EventHubs/EventHubsCaptureEventGridDemo) letöltése a minta megoldás a következő összetevőket tartalmazza:
     - *WindTurbineDataGenerator* – Egy egyszerű közzétevő, amely szélturbina-mintaadatokat küld egy olyan eseményközpontnak, amelyen a Capture engedélyezve van
     - *FunctionDWDumper* – Egy Azure-függvény, amely Event Grid-értesítést kap, ha az Azure Storage blobba egy Avro-fájlt rögzít a rendszer. Megkapja a blob URI elérési útvonalát, kiolvassa a tartalmát és közzéteszi ezt az adatot egy SQL Data Warehouse-ba.
+
+    Ez a példa a legújabb Azure. Messaging. EventHubs csomagot használja. [Itt](https://github.com/Azure/azure-event-hubs/tree/master/samples/e2e/EventHubsCaptureEventGridDemo)megtalálhatja a Microsoft. Azure. EventHubs csomagot használó régi mintát. 
 
 ### <a name="deploy-the-infrastructure"></a>Az infrastruktúra üzembe helyezése
 Az Azure PowerShell vagy Azure CLI használatával helyezheti üzembe az oktatóanyag elvégzéséhez szükséges infrastruktúrát ennek az [Azure Resource Manager-sablonnak](https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/EventHubsDataMigration.json) a segítségével. Ez a sablon a következő erőforrásokat hozza létre:
@@ -68,7 +70,7 @@ A következő szakaszok szolgáltatják az Azure CLI és Azure PowerShell paranc
 
 Hosszabb időt vehet igénybe, amíg a szkriptek létrehozzák az összes Azure-összetevőt. Csak akkor lépjen tovább, ha a szkript futása már befejeződött. Ha az üzembe helyezés valamilyen okból sikertelen, törölje az erőforráscsoportot, hárítsa el a jelentett hibát, és futtassa újra a parancsot. 
 
-#### <a name="azure-cli"></a>Azure CLI
+#### <a name="azure-cli"></a>Azure parancssori felület (CLI)
 A sablon Azure parancssori felülettel történő üzembe helyezéséhez használja a következő parancsokat:
 
 ```azurecli-interactive
@@ -129,7 +131,7 @@ A függvény közzététele után feliratkozhat a rögzítés eseményre az Even
 
 ## <a name="create-an-event-grid-subscription-from-the-functions-app"></a>Event Grid-előfizetés létrehozása a Functions-alkalmazásból
  
-1. Nyissa meg az [Azure Portal](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Válassza ki az erőforráscsoportot és a függvényalkalmazást.
 
    ![Függvényalkalmazás megtekintése](./media/store-captured-data-data-warehouse/view-function-app.png)
 
@@ -174,7 +176,7 @@ Beállította az eseményközpontot, az SQL-adattárházat, az Azure-függvénya
 ## <a name="verify-captured-data-in-data-warehouse"></a>A rögzített adatok ellenőrzése az adattárházban
 Néhány perc elteltével kérdezze le az SQL adattárház tábláját. Megfigyelheti, hogy a rendszer a WindTurbineDataGenerator által létrehozott adatokat az Event Hubra streamelte, rögzítette egy Azure Storage-tárolóban, majd migrálta az Azure-függvény SQL Data Warehouse táblájába.  
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha gyakorlatban is használható elemzésekre vágyik, használjon hatékony adatvizualizációs eszközöket az adattárházával.
 
 Ez a cikk bemutatja a [Power BI és SQL Data Warehouse](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-integrate-power-bi) használatát

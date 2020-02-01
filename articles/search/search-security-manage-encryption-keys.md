@@ -8,12 +8,12 @@ ms.author: natinimn
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 01/08/2020
-ms.openlocfilehash: 6c7be7d92cae992e54ca6e9f50dda6342c57856b
-ms.sourcegitcommit: 49e14e0d19a18b75fd83de6c16ccee2594592355
+ms.openlocfilehash: cb17fe24339ad618229b3456ece15c206f79bdb7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/14/2020
-ms.locfileid: "75945716"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899947"
 ---
 # <a name="encryption-at-rest-of-content-in-azure-cognitive-search-using-customer-managed-keys-in-azure-key-vault"></a>Az Azure Cognitive Search-ban található, az ügyfél által felügyelt kulcsokat használó tartalom titkosítása Azure Key Vault
 
@@ -26,13 +26,13 @@ Az ügyfél által felügyelt kulcsokkal történő titkosítás az index vagy a
 A kulcsoknak nem kell ugyanabban a Key Vault lennie. Egyetlen keresési szolgáltatás több titkosított indexet vagy szinonima-leképezést is képes tárolni, amelyek titkosítása a saját ügyfelek által felügyelt, különböző Kulcstartókban tárolt titkosítási kulcsokkal történik.  Az indexek és a szinonimák is használhatók ugyanabban a szolgáltatásban, amely nem titkosított az ügyfél által felügyelt kulcsokkal. 
 
 > [!IMPORTANT] 
-> Ez a funkció a [REST API 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) -es és a [.net SDK 8,0-es verziójában](search-dotnet-sdk-migration-version-9.md)érhető el. Jelenleg nem támogatott az ügyfél által felügyelt titkosítási kulcsok konfigurálása a Azure Portalban.
+> Ez a funkció a [REST API 2019-05-06](https://docs.microsoft.com/rest/api/searchservice/) -es és a [.net SDK 8,0-es verziójában](search-dotnet-sdk-migration-version-9.md)érhető el. Jelenleg nem támogatott az ügyfél által felügyelt titkosítási kulcsok konfigurálása a Azure Portalban. A Search szolgáltatást január 2019 után kell létrehozni, és nem lehet ingyenes (megosztott) szolgáltatás.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
 Ebben a példában a következő szolgáltatásokat használjuk. 
 
-+ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. A Search szolgáltatást január 2019 után kell létrehozni, és nem lehet ingyenes (megosztott) szolgáltatás.
++ [Hozzon létre egy Azure Cognitive Search szolgáltatást](search-create-service-portal.md) , vagy [keressen egy meglévő szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices) a jelenlegi előfizetése alatt. 
 
 + [Hozzon létre egy Azure Key Vault erőforrást](https://docs.microsoft.com/azure/key-vault/quick-create-portal#create-a-vault) , vagy keressen egy meglévő tárat az előfizetése alatt.
 

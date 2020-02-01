@@ -16,12 +16,12 @@ ms.date: 10/15/2019
 ms.author: ajburnle
 ms.reviewer: ''
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 649a4a50766d26f73584dae4481652c8007b2e9e
-ms.sourcegitcommit: 98ce5583e376943aaa9773bf8efe0b324a55e58c
+ms.openlocfilehash: 493ba6396a7ceb11b917fbda5dd6c37c070f2fee
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/30/2019
-ms.locfileid: "73174674"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897612"
 ---
 # <a name="change-request-and-approval-settings-for-an-access-package-in-azure-ad-entitlement-management"></a>Hozzáférési csomagra vonatkozó kérelem és jóváhagyási beállítások módosítása az Azure AD-jogosultságok kezelésében
 
@@ -42,6 +42,9 @@ Azt határozza meg, hogy ki kérheti a hozzáférési csomag igénylését egy s
 | Szeretném engedélyezni a címtárban lévő felhasználókat és a címtáron kívüli felhasználókat a hozzáférési csomag igényléséhez | Többszörös |
 | Különböző jóváhagyási beállításokat szeretnék megadni egyes felhasználók számára | Többszörös |
 | Azt szeretném, hogy egyes felhasználók a csomagok hozzárendelései lejárnak, míg más felhasználók is kiterjeszthetik a hozzáférésüket | Többszörös |
+
+További információ a több házirend alkalmazása esetén használt prioritási logikáról: [több szabályzat](entitlement-management-troubleshoot.md#multiple-policies
+).
 
 ### <a name="open-an-existing-policy-of-request-and-approval-settings"></a>A kérelem és a jóváhagyási beállítások meglévő házirendjének megnyitása
 

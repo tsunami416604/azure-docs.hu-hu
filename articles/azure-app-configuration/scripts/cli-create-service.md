@@ -3,17 +3,17 @@ title: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárol
 titleSuffix: Azure App Configuration
 description: Azure CLI-parancsfájl minta – Azure-alkalmazás konfigurációs tárolójának létrehozása
 services: azure-app-configuration
-author: jpconnock
+author: lisaguthrie
 ms.service: azure-app-configuration
 ms.topic: sample
 ms.date: 01/24/2020
-ms.author: jeconnoc
-ms.openlocfilehash: 44c381da8648fea74059c9110438cfeb4c366116
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.author: lcozzens
+ms.openlocfilehash: 7cc8454ca8dc8d6313e1cf353292adb47b15ef47
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76766493"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898719"
 ---
 # <a name="create-an-azure-app-configuration-store"></a>Azure-alkalmazás konfigurációs tárolójának létrehozása
 

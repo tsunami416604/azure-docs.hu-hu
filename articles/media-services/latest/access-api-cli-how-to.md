@@ -12,12 +12,12 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 05/15/2019
 ms.author: juliako
-ms.openlocfilehash: d66b3e1b6ed2c8eef9f5cd21c0657648ad550ebe
-ms.sourcegitcommit: 8bd85510aee664d40614655d0ff714f61e6cd328
+ms.openlocfilehash: 06ca26ee9a8af7f49aba6a48a1831d30d5886851
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/06/2019
-ms.locfileid: "74896159"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896319"
 ---
 # <a name="access-azure-media-services-api-with-the-azure-cli"></a>Hozzáférés Azure Media Services API-hoz az Azure CLI-vel
  
@@ -28,7 +28,8 @@ Ha az Azure AD szolgáltatás egyszerű hitelesítését szeretné használni a 
 * Erőforrás URI-ja REST Media Services
 * Azure AD-alkalmazás értékei: az ügyfél-azonosító és az ügyfél titka
 
-Részletes magyarázat: [Media Services V3 API](media-services-apis-overview.md#accessing-the-azure-media-services-api)-k elérése.
+> [!IMPORTANT]
+> Részletes magyarázatot a [Media Services V3 API-k elérését](media-services-apis-overview.md#accessing-the-azure-media-services-api)ismertető oldalon talál.
 
 Ez a cikk bemutatja, hogyan használható az Azure CLI egy Azure AD-alkalmazás és-szolgáltatásnév létrehozásához, valamint a Azure Media Services erőforrások eléréséhez szükséges értékek beszerzéséhez.
 

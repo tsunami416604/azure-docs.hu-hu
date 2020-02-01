@@ -4,13 +4,17 @@ description: 'Az integrációs feladatokhoz optimalizált Microsoft Cloud Servic
 ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
-ms.openlocfilehash: 822726a7a9336df724d6361e40ce5e1da27b94a1
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 9f2c498b55e7c7cc84a047343d084e1f54569dd2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75409837"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898917"
 ---
+> [!NOTE]
+> A Microsoft Flow mostantól automatizálható. További információt [ebben a blogban](https://aka.ms/flow-now-pa) talál.
+> 
+> A rendszer frissíti a tartalmat, hogy tükrözze a következő napokon a márkaépítési változást.
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>Válassza ki a megfelelő integrációs és automatizálási szolgáltatásokat az Azure-ban
 
 Ez a cikk összehasonlítja az alábbi Microsoft-felhőszolgáltatásokat:
@@ -40,7 +44,7 @@ Az alábbi táblázat segítségével meghatározhatja, hogy Microsoft Flow vagy
 | Alkalmazási helyzetek |Önkiszolgáló |Speciális integrációk |
 | Kialakítási eszköz |Böngészőbeli és mobilalkalmazás, kizárólag felhasználói felület |Böngészőbeli, [Visual Studio](../logic-apps/logic-apps-deploy-from-vs.md), [Kódnézet](../logic-apps/logic-apps-author-definitions.md) elérhető |
 | Alkalmazások életciklus-felügyelete (ALM) |Tervezés és tesztelés nem éles környezetekben, előléptetés éles környezetben, ha készen áll |Azure DevOps: verziókövetés, tesztelés, támogatás, automatizálás és kezelhetőség [Azure Resource Manager](../logic-apps/logic-apps-create-deploy-azure-resource-manager-templates.md) |
-| Rendszergazdai feladatok |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
+| Rendszergazdai felület |Microsoft Flow környezetek és adatvesztés-megelőzési (DLP) szabályzatok kezelése, licencelés nyomon követése: [Microsoft flow felügyeleti központ](https://admin.flow.microsoft.com) |Erőforráscsoportok, kapcsolatok, hozzáférés-kezelés és naplózás kezelése: [Azure Portal](https://portal.azure.com) |
 | Biztonság |Office 365 biztonsági és megfelelőségi naplók, DLP, inaktív adatok [titkosítása](https://wikipedia.org/wiki/Data_at_rest#Encryption) bizalmas adatokhoz |Az Azure biztonsági garanciája: [Azure Security](https://www.microsoft.com/en-us/trustcenter/Security/AzureSecurity), [Azure Security Center](https://azure.microsoft.com/services/security-center/), [naplók](https://azure.microsoft.com/blog/azure-audit-logs-ux-refresh/) |
 
 ## <a name="compare-azure-functions-and-azure-logic-apps"></a>Az Azure Functions és az Azure Logic Apps összehasonlítása
@@ -58,7 +62,7 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | Műveletek | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
 | Monitoring | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/logic-apps-monitor-your-logic-apps.md)|
 | Felügyelet | [REST API](durable/durable-functions-http-api.md), [Visual Studio](https://docs.microsoft.com/azure/vs-azure-tools-resources-managing-with-cloud-explorer) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](https://docs.microsoft.com/rest/api/logic/), [PowerShell](https://docs.microsoft.com/powershell/module/az.logicapp), [Visual Studio](https://docs.microsoft.com/azure/logic-apps/manage-logic-apps-with-visual-studio) |
-| Végrehajtási környezet | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
+| Végrehajtási környezet | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak a felhőben fut|
 
 <a name="function"></a>
 

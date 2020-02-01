@@ -1,10 +1,9 @@
 ---
-title: Események küldése és fogadása a .NET Core használatával – Azure Event Hubs | Microsoft Docs
-description: Ez a cikk bemutatja, hogyan hozhat létre olyan .NET Core-alkalmazást, amely eseményeket küld az Azure Event Hubsnak.
+title: Események küldése és fogadása az Azure Event Hubs .NET (régi) használatával
+description: Ez a cikk egy olyan .NET Core-alkalmazás létrehozását ismerteti, amely az Azure Event Hubs a régi Microsoft. Azure. EventHubs csomag használatával küld/fogad eseményeket.
 services: event-hubs
 documentationcenter: na
-author: ShubhaVijayasarathy
-manager: timlt
+author: spelluru
 editor: ''
 ms.assetid: ''
 ms.service: event-hubs
@@ -12,23 +11,23 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.custom: seodec18
-ms.date: 04/15/2019
-ms.author: shvija
-ms.openlocfilehash: 1d3f6357faa8626d48e2aac0efe86e22222c9ba6
-ms.sourcegitcommit: 16c5374d7bcb086e417802b72d9383f8e65b24a7
+ms.date: 01/15/2020
+ms.author: spelluru
+ms.openlocfilehash: a58c344f644f91634fba267ff157bd56a18f40d3
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/08/2019
-ms.locfileid: "73846666"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900110"
 ---
-# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core"></a>Események küldése vagy fogadása Azure-Event Hubs a .NET Core használatával
+# <a name="send-events-to-or-receive-events-from-azure-event-hubs-using-net-core-microsoftazureeventhubs"></a>Események küldése vagy fogadása az Azure Event Hubs a .NET Core használatával (Microsoft. Azure. EventHubs)
 Az Event Hubs szolgáltatás a csatlakoztatott eszközökről és alkalmazásokból származó nagy mennyiségű eseményadatot dolgoz fel (telemetria). Miután összegyűjtötte az adatokat az Event Hubsban, az adatok egy tárolási fürt használatával tárolhatja, vagy átalakíthatja egy valós idejű elemzési szolgáltató segítségével. Ez az átfogó eseménygyűjtési és -feldolgozási képesség kulcsfontosságú alkotóeleme a modern alkalmazásarchitektúráknak, beleértve az eszközök internetes hálózatát (IoT). Az Event Hubs részletes áttekintéséért lásd az [Event Hubs áttekintését](event-hubs-about.md) és az [Event Hubs-szolgáltatásokat](event-hubs-features.md) ismertető cikket.
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat C# létre .net Core-alkalmazásokat az alkalmazásban az Event hub eseményeinek küldéséhez és fogadásához. 
 
-> [!NOTE]
-> A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
+> [!WARNING]
+> Ez a rövid útmutató a régi **Microsoft. Azure. EventHubs** csomagot használja. Javasoljuk, hogy a legújabb [Azure. Messaging. EventHubs](get-started-dotnet-standard-send-v2.md) csomag használatára [telepítse át](https://github.com/Azure/azure-sdk-for-net/blob/master/sdk/eventhub/Azure.Messaging.EventHubs/MIGRATIONGUIDE.md) a kódot.  
+
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -38,6 +37,10 @@ Ebből az oktatóanyagból megtudhatja, hogyan hozhat C# létre .net Core-alkalm
 
 ## <a name="send-events"></a>Események küldése 
 Ebből a szakaszból megtudhatja, hogyan hozhat létre olyan .NET Core Console-alkalmazást, amely eseményeket küld az Event hub-nak. 
+
+> [!NOTE]
+> A rövid útmutatót mintaként letöltheti a [GitHubról](https://github.com/Azure/azure-event-hubs/tree/master/samples/DotNet/Microsoft.Azure.EventHubs/SampleSender). Cserélje le az `EventHubConnectionString` és `EventHubName` sztringeket a saját eseményközpontja értékeire, majd futtassa a mintát. Vagy létrehozhatja saját megoldását is az oktatóanyag lépései alapján.
+
 
 ### <a name="create-a-console-application"></a>Konzolalkalmazás létrehozása
 
@@ -364,7 +367,7 @@ A következő lépéseket végrehajtva adja hozzá a .NET Standard kódtár [**M
 4. Futtassa a programot, és ellenőrizze, hogy nincsenek-e hibák.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a következő cikkeket:
 
 - [EventProcessorHost](event-hubs-event-processor-host.md)

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 12/18/2019
 ms.author: ancav
 ms.subservice: metrics
-ms.openlocfilehash: 475e91957ab94538d07112ba808edd7c7d08f59e
-ms.sourcegitcommit: a9b1f7d5111cb07e3462973eb607ff1e512bc407
+ms.openlocfilehash: 0210317ef74433b740feb043a1cc4f1f9bc2ef57
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/22/2020
-ms.locfileid: "76310781"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901147"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Támogatott metrikák Azure Monitor
 
@@ -31,12 +31,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftanalysisservicesservers"></a>Microsoft. AnalysisServices/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |qpu_metric|QPU|Mennyiség|Átlag|QPU. 0-100-es tartomány S1, 0-200 az S2 és 0-400 for S4 esetében|ServerResourceType|
-|memory_metric|Memória|Bájt|Átlag|Memory. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|ServerResourceType|
-|private_bytes_metric|Saját [nem megosztható] memória (bájt)|Bájt|Átlag|Saját bájtok.|ServerResourceType|
-|virtual_bytes_metric|Felhasznált virtuális memória jelenlegi mérete (bájt)|Bájt|Átlag|Virtuális bájtok.|ServerResourceType|
+|memory_metric|Memória|Bájt|Átlag|Memória. 0-25 GB-os tartomány S1, 0-50 GB az S2 és 0-100 GB for S4 esetében|ServerResourceType|
+|private_bytes_metric|Saját bájtok|Bájt|Átlag|Saját bájtok.|ServerResourceType|
+|virtual_bytes_metric|Virtuális bájtok|Bájt|Átlag|Virtuális bájtok.|ServerResourceType|
 |TotalConnectionRequests|Kapcsolatkérelmek teljes száma|Mennyiség|Átlag|A kapcsolatkérelmek teljes száma. Ezek az érkezések.|ServerResourceType|
 |SuccessfullConnectionsPerSec|Sikeres kapcsolatok másodpercenként|CountPerSecond|Átlag|A sikeres kapcsolatok gyakorisága.|ServerResourceType|
 |TotalConnectionFailures|Összes sikertelen Kapcsolatfelvétel|Mennyiség|Átlag|A sikertelen csatlakozási kísérletek teljes száma.|ServerResourceType|
@@ -75,7 +75,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ShortParsingBusyThreads|Szálak: rövid elemzés – foglalt szálak|Mennyiség|Átlag|A foglalt szálak száma a rövid elemzési szál készletében.|ServerResourceType|
 |ShortParsingIdleThreads|Szálak: rövid elemzési üresjárati szálak|Mennyiség|Átlag|Az üresjárati szálak száma a rövid elemzési szál készletében.|ServerResourceType|
 |ShortParsingJobQueueLength|Szálak: rövid elemzési feladatok várólistájának hossza|Mennyiség|Átlag|A rövid elemzési szál készletének várólistájában lévő feladatok száma.|ServerResourceType|
-|memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Memória átlagos kiverése.|ServerResourceType|
+|memory_thrashing_metric|Memória-Kiverés|Százalék|Átlag|Memória átlagos kiverése.|ServerResourceType|
 |mashup_engine_qpu_metric|M motor QPU|Mennyiség|Átlag|QPU-használat az adategyesítési motor folyamatai szerint|ServerResourceType|
 |mashup_engine_memory_metric|M motor memóriája|Bájt|Átlag|Memóriahasználat az adategyesítési motor folyamatai szerint|ServerResourceType|
 |mashup_engine_private_bytes_metric|M motor saját bájtjai|Bájt|Átlag|Saját bájtok használata az adategyesítési motor folyamatai alapján.|ServerResourceType|
@@ -84,15 +84,15 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftapimanagementservice"></a>Microsoft.ApiManagement/service
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalRequests|Összes átjáró kérelme (elavult)|Mennyiség|Összes|Átjárók kéréseinek száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzióval|Hely, állomásnév|
 |SuccessfulRequests|Sikeres átjáró-kérelmek (elavult)|Mennyiség|Összes|Sikeres átjáró-kérések száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzió helyett|Hely, állomásnév|
 |UnauthorizedRequests|Nem engedélyezett átjáró-kérelmek (elavult)|Mennyiség|Összes|Jogosulatlan átjárók kéréseinek száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzióval|Hely, állomásnév|
 |FailedRequests|Sikertelen átjáró-kérelmek (elavult)|Mennyiség|Összes|Hibák száma az átjáró kéréseiben – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzióval|Hely, állomásnév|
 |OtherRequests|Egyéb átjáró-kérelmek (elavult)|Mennyiség|Összes|Egyéb átjáró-kérelmek száma – a többdimenziós kérelmek metrikájának használata GatewayResponseCodeCategory-dimenzióval|Hely, állomásnév|
-|Időtartam|Az átjárók kéréseinek teljes időtartama|Ezredmásodperc|Átlag|Az átjáró kérelmek teljes időtartama ezredmásodpercben|Hely, állomásnév|
-|BackendDuration|A háttérbeli kérelmek időtartama|Ezredmásodperc|Átlag|A háttérbeli kérelmek időtartama (ezredmásodpercben)|Hely, állomásnév|
+|Időtartam|Az átjárók kéréseinek teljes időtartama|Ezredmásodpercben|Átlag|Az átjáró kérelmek teljes időtartama ezredmásodpercben|Hely, állomásnév|
+|BackendDuration|A háttérbeli kérelmek időtartama|Ezredmásodpercben|Átlag|A háttérbeli kérelmek időtartama (ezredmásodpercben)|Hely, állomásnév|
 |Kapacitás|Kapacitás|Százalék|Átlag|A ApiManagement szolgáltatás kihasználtsági metrikája|Földrajzi egység|
 |EventHubTotalEvents|Összes EventHub esemény|Mennyiség|Összes|A EventHub eljuttatott események száma|Földrajzi egység|
 |EventHubSuccessfulEvents|Sikeres EventHub események|Mennyiség|Összes|Sikeres EventHub események száma|Földrajzi egység|
@@ -107,7 +107,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftappconfigurationconfigurationstores"></a>Microsoft. AppConfiguration/configurationStores
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |HttpIncomingRequestCount|HttpIncomingRequestCount|Mennyiség|Mennyiség|A bejövő HTTP-kérelmek teljes száma.|None|
 |FailedHttpRequestCount|FailedHttpRequestCount|Mennyiség|Mennyiség|Sikertelen HTTP-kérelmek.|None|
@@ -116,7 +116,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftappplatformspring"></a>Microsoft. AppPlatform/Spring
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SystemCpuUsagePercentage|CPU-használat százalékos aránya|Százalék|Átlag|A legújabb CPU-használat a teljes rendszerhez|AppName, Pod|
 |AppCpuUsagePercentage|Alkalmazás CPU-kihasználtságának százalékos aránya|Százalék|Átlag|Alkalmazás JVM CPU-kihasználtsági aránya|AppName, Pod|
@@ -128,16 +128,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |OldGenPromotedBytes|Előléptetés a régi generációs adatméretre|Bájt|Maximum|A régi generációs memória-készlet méretének pozitív növekedésének száma, mielőtt a GC a GC-re lenne|AppName, Pod|
 |YoungGenPromotedBytes|Népszerűsítse a fiatal generáció adatméretét|Bájt|Maximum|Növekszik a fiatal generációs memória-készlet méretének növekedésével, miután egy GC a következőre kerül|AppName, Pod|
 |GCPauseTotalCount|GC-szüneteltetések száma|Mennyiség|Összes|GC-szüneteltetések száma|AppName, Pod|
-|GCPauseTotalTime|GC felfüggesztésének teljes ideje|Ezredmásodperc|Összes|GC felfüggesztésének teljes ideje|AppName, Pod|
+|GCPauseTotalTime|GC felfüggesztésének teljes ideje|Ezredmásodpercben|Összes|GC felfüggesztésének teljes ideje|AppName, Pod|
 |TomcatSentBytes|Tomcat összesen eljuttatott bájtok száma|Bájt|Összes|Tomcat összesen eljuttatott bájtok száma|AppName, Pod|
 |TomcatReceivedBytes|Tomcat összesen fogadott bájtok|Bájt|Összes|Tomcat összesen fogadott bájtok|AppName, Pod|
-|TomcatRequestTotalTime|Tomcat-kérelem teljes ideje|Ezredmásodperc|Összes|Tomcat-kérelem teljes ideje|AppName, Pod|
+|TomcatRequestTotalTime|Tomcat-kérelem teljes ideje|Ezredmásodpercben|Összes|Tomcat-kérelem teljes ideje|AppName, Pod|
 |TomcatRequestTotalCount|Tomcat-kérelem összesített száma|Mennyiség|Összes|Tomcat-kérelem összesített száma|AppName, Pod|
-|TomcatResponseAvgTime|Tomcat-kérelem átlagos ideje|Ezredmásodperc|Átlag|Tomcat-kérelem átlagos ideje|AppName, Pod|
-|TomcatRequestMaxTime|Tomcat-kérelem maximális ideje|Ezredmásodperc|Maximum|Tomcat-kérelem maximális ideje|AppName, Pod|
+|TomcatResponseAvgTime|Tomcat-kérelem átlagos ideje|Ezredmásodpercben|Átlag|Tomcat-kérelem átlagos ideje|AppName, Pod|
+|TomcatRequestMaxTime|Tomcat-kérelem maximális ideje|Ezredmásodpercben|Maximum|Tomcat-kérelem maximális ideje|AppName, Pod|
 |TomcatErrorCount|Tomcat globális hiba|Mennyiség|Összes|Tomcat globális hiba|AppName, Pod|
 |TomcatSessionActiveMaxCount|Tomcat-munkamenet maximális aktív száma|Mennyiség|Összes|Tomcat-munkamenet maximális aktív száma|AppName, Pod|
-|TomcatSessionAliveMaxTime|Tomcat-munkamenet maximális élettartama|Ezredmásodperc|Maximum|Tomcat-munkamenet maximális élettartama|AppName, Pod|
+|TomcatSessionAliveMaxTime|Tomcat-munkamenet maximális élettartama|Ezredmásodpercben|Maximum|Tomcat-munkamenet maximális élettartama|AppName, Pod|
 |TomcatSessionActiveCurrentCount|Tomcat-munkamenet élő száma|Mennyiség|Összes|Tomcat-munkamenet élő száma|AppName, Pod|
 |TomcatSessionCreatedCount|Tomcat-munkamenet létrehozva szám|Mennyiség|Összes|Tomcat-munkamenet létrehozva szám|AppName, Pod|
 |TomcatSessionExpiredCount|A Tomcat-munkamenet lejárt|Mennyiség|Összes|A Tomcat-munkamenet lejárt|AppName, Pod|
@@ -146,16 +146,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft. Automation/automationAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalJob|Feladatok összesen|Mennyiség|Összes|A feladatok teljes száma|Runbook, állapot|
 |TotalUpdateDeploymentRuns|Összes frissítés központi telepítési futtatása|Mennyiség|Összes|Szoftverfrissítés központi telepítésének összes futtatása|SoftwareUpdateConfigurationName, állapot|
 |TotalUpdateDeploymentMachineRuns|Összes frissítés központi telepítési gép futtatása|Mennyiség|Összes|Szoftverfrissítés központi telepítésének teljes futtatása a szoftverfrissítési központi telepítési gépen|SoftwareUpdateConfigurationName, állapot, TargetComputer, SoftwareUpdateConfigurationRunId|
 
 
-## <a name="microsoftbatchbatchaccounts"></a>Microsoft.Batch/batchAccounts
+## <a name="microsoftbatchbatchaccounts"></a>Microsoft. batch/batchAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CoreCount|Dedikált mag száma|Mennyiség|Összes|A Batch-fiókban lévő dedikált magok teljes száma|None|
 |TotalNodeCount|Dedikált csomópontok száma|Mennyiség|Összes|A Batch-fiókban lévő dedikált csomópontok teljes száma|None|
@@ -192,7 +192,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftbatchaiworkspaces"></a>Microsoft. BatchAI/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Feladatok elküldve|Feladatok elküldve|Mennyiség|Összes|Elküldött feladatok száma|Forgatókönyv, ClusterName|
 |A feladatok befejeződtek|A feladatok befejeződtek|Mennyiség|Összes|Befejezett feladatok száma|Forgatókönyv, ClusterName, ResultType|
@@ -212,7 +212,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftblockchainblockchainmembers"></a>Microsoft. Blockchain/blockchainMembers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CpuUsagePercentageInDouble|CPU-használat százaléka|Százalék|Maximum|CPU-használat százaléka|Csomópont|
 |MemoryUsage|Memóriahasználat|Bájt|Átlag|Memóriahasználat|Csomópont|
@@ -234,15 +234,15 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcacheredis"></a>Microsoft. cache/Redis
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|connectedclients|Csatlakozott ügyfelek|Mennyiség|Maximum||ShardId|
+|connectedclients|Csatlakoztatott ügyfelek|Mennyiség|Maximum||ShardId|
 |totalcommandsprocessed|Összes művelet|Mennyiség|Összes||ShardId|
 |cachehits|Gyorsítótár-találatok|Mennyiség|Összes||ShardId|
 |cachemisses|Gyorsítótár-lemaradás|Mennyiség|Összes||ShardId|
 |cachemissrate|Gyorsítótár-kihagyás aránya|Százalék|cachemissrate||ShardId|
 |getcommands|Kap|Mennyiség|Összes||ShardId|
-|setcommands|Készletek|Mennyiség|Összes||ShardId|
+|setcommands|Beállítja|Mennyiség|Összes||ShardId|
 |operationsPerSecond|Műveletek száma másodpercenként|Mennyiség|Maximum||ShardId|
 |evictedkeys|Kizárt kulcsok|Mennyiség|Összes||ShardId|
 |totalkeys|Kulcsok összesen|Mennyiség|Maximum||ShardId|
@@ -421,14 +421,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcdncdnwebapplicationfirewallpolicies"></a>Microsoft. CDN/cdnwebapplicationfirewallpolicies
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |WebApplicationFirewallRequestCount|Webalkalmazási tűzfalra vonatkozó kérelmek száma|Mennyiség|Összes|A webalkalmazási tűzfal által feldolgozott ügyfelek kéréseinek száma|PolicyName, RuleName, művelet|
 
 
 ## <a name="microsoftclassiccomputevirtualmachines"></a>Microsoft. ClassicCompute/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya.|None|
 |Bejövő hálózat|Bejövő hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom).|None|
@@ -441,7 +441,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftclassiccomputedomainnamesslotsroles"></a>Microsoft. ClassicCompute/tartománynév/bővítőhely/szerepkörök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya.|RoleInstanceId|
 |Bejövő hálózat|Bejövő hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom).|RoleInstanceId|
@@ -455,34 +455,34 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftclassicstoragestorageaccounts"></a>Microsoft. ClassicStorage/storageAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |UsedCapacity|Felhasznált kapacitás|Bájt|Átlag|Fiókhoz használt kapacitás|None|
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftclassicstoragestorageaccountsblobservices"></a>Microsoft. ClassicStorage/storageAccounts/blobServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|BlobCapacity|Blob-kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
+|BlobCapacity|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
 |BlobCount|Blobok száma|Mennyiség|Átlag|A Storage-fiók Blob service található Blobok száma.|BlobType, szintű|
-|ContainerCount|Blobtárolók száma|Mennyiség|Átlag|A Storage-fiók Blob service lévő tárolók száma.|None|
-|IndexCapacity|Indexkapacitás|Bájt|Átlag|A ADLS Gen2 (hierarchikus) index által felhasznált tárterület mérete bájtban megadva.|None|
+|ContainerCount|BLOB-tárolók száma|Mennyiség|Átlag|A Storage-fiók Blob service lévő tárolók száma.|None|
+|IndexCapacity|Index kapacitása|Bájt|Átlag|A ADLS Gen2 (hierarchikus) index által felhasznált tárterület mérete bájtban megadva.|None|
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftclassicstoragestorageaccountstableservices"></a>Microsoft. ClassicStorage/storageAccounts/tableServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TableCapacity|Tábla kapacitása|Bájt|Átlag|A Storage-fiók Table service által felhasznált tárterület mérete bájtban kifejezve.|None|
 |TableCount|Táblák száma|Mennyiség|Átlag|A Storage-fiók Table service található tábla száma.|None|
@@ -490,13 +490,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftclassicstoragestorageaccountsfileservices"></a>Microsoft. ClassicStorage/storageAccounts/fileServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |FileCapacity|Fájl kapacitása|Bájt|Átlag|A Storage-fiók Fájlszolgáltatások által felhasznált tárterület mérete bájtban megadva.|Fájlmegosztás|
 |FileCount|Fájlok száma|Mennyiség|Átlag|A Storage-fiók Fájlszolgáltatások szolgáltatásában lévő fájl száma.|Fájlmegosztás|
@@ -507,13 +507,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés, fájlmegosztás|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés, fájlmegosztás|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés, fájlmegosztás|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés, fájlmegosztás|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 
 ## <a name="microsoftclassicstoragestorageaccountsqueueservices"></a>Microsoft. ClassicStorage/storageAccounts/queueServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |QueueCapacity|Várólista kapacitása|Bájt|Átlag|A Storage-fiók Queue szolgáltatás által felhasznált tárterület mérete bájtban kifejezve.|None|
 |QueueCount|Várólista száma|Mennyiség|Átlag|A Storage-fiók Queue szolgáltatás várólistájának száma.|None|
@@ -521,14 +521,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérelem feldolgozásához használt késés ezredmásodpercben. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatáshoz vagy a megadott API-művelethez tartozó sikeres kérések végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft. CognitiveServices/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalCalls|Hívások összesen|Mennyiség|Összes|A hívások száma összesen|ApiName, OperationName, régió|
 |SuccessfulCalls|Sikeres hívások|Mennyiség|Összes|A sikeres hívások száma.|ApiName, OperationName, régió|
@@ -536,8 +536,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |BlockedCalls|Blokkolt hívások|Mennyiség|Összes|Azon hívások száma, amelyek túllépték a sebességet vagy a kvóta korlátját.|ApiName, OperationName, régió|
 |Kiszolgálóhibái|Kiszolgálói hibák|Mennyiség|Összes|A szolgáltatás belső hibája miatti hívások száma (HTTP-válasz kódja 5xx).|ApiName, OperationName, régió|
 |ClientErrors|Ügyfél-hibák|Mennyiség|Összes|Ügyféloldali hibával rendelkező hívások száma (HTTP-válasz kódja 4xx).|ApiName, OperationName, régió|
-|DataIn|Bejövő adatforgalom|Bájt|Összes|A bejövő adat mérete bájtban megadva.|ApiName, OperationName, régió|
-|DataOut|Kimenő adatforgalom|Bájt|Összes|A kimenő adat mérete bájtban kifejezve.|ApiName, OperationName, régió|
+|DataIn|A-ben tárolt adatértékek|Bájt|Összes|A bejövő adat mérete bájtban megadva.|ApiName, OperationName, régió|
+|DataOut|Kimenő adatvesztés|Bájt|Összes|A kimenő adat mérete bájtban kifejezve.|ApiName, OperationName, régió|
 |Késés|Késés|Ezredmásodpercben|Átlag|Késés ezredmásodpercben.|ApiName, OperationName, régió|
 |CharactersTranslated|Lefordított karakterek|Mennyiség|Összes|A bejövő szöveges kérelemben szereplő karakterek teljes száma.|ApiName, OperationName, régió|
 |CharactersTrained|Betanított karakterek|Mennyiség|Összes|A betanított karakterek teljes száma.|ApiName, OperationName, régió|
@@ -547,7 +547,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|None|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|None|
@@ -568,22 +568,22 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Operációs rendszer/lemez olvasási művelet/mp|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (elavult)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |Operációs rendszer/lemez írási műveletei másodpercenként|OPERÁCIÓSRENDSZER-lemez írási művelete/mp (elavult)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |Operációs rendszer/lemez QD|OPERÁCIÓSRENDSZER-lemez QD (elavult)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
-|Adatlemez-olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|LOGIKAI EGYSÉG|
-|Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LOGIKAI EGYSÉG|
-|Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
-|Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
-|Adatlemez várakozási sorának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LOGIKAI EGYSÉG|
+|Adatlemez-olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|LUN|
+|Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LUN|
+|Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LUN|
+|Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről a figyelési időszakban|LUN|
+|Adatlemez várólistájának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN|
 |OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációs rendszer lemezének figyelési időtartama alatt egyetlen lemezről beolvasott bájtok másodpercenkénti száma|None|
 |OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációsrendszer-lemez figyelési időszaka során egy lemezre írt bájtok másodpercenkénti száma|None|
 |OPERÁCIÓSRENDSZER-lemez olvasási művelete/s|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |OPERÁCIÓSRENDSZER-lemez írási műveletei/s|OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
-|OS-lemez várakozási sorának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
-|Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|None|
+|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
+|Bejövő folyamatok|Bejövő folyamatok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|None|
 |Kimenő folyamatok|Kimenő folyamatok|Mennyiség|Átlag|A kimenő folyamatok a kimenő irányú aktuális folyamatok száma (a virtuális gépről érkező forgalom)|None|
 |Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A bejövő folyamatok maximális létrehozásának aránya (a virtuális gépre irányuló forgalom)|None|
 |Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépről kifelé haladó forgalom)|None|
-|Prémium szintű adatlemez-gyorsítótár – olvasási találat|Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási találat|LOGIKAI EGYSÉG|
-|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|LOGIKAI EGYSÉG|
+|Prémium szintű adatlemez-gyorsítótár – olvasási találat|Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási találat|LUN|
+|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|LUN|
 |Prémium operációsrendszer-lemez gyorsítótárának olvasási találata|Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium operációsrendszer-lemez gyorsítótárának olvasási találata|None|
 |Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása|Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió)|Százalék|Átlag|Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása|None|
 |Teljes hálózat|Teljes hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom)|None|
@@ -592,7 +592,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcomputevirtualmachinescalesets"></a>Microsoft.Compute/virtualMachineScaleSets
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|VMName|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|VMName|
@@ -617,13 +617,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LUN, VMName|
 |Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LUN, VMName|
 |Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről a figyelési időszakban|LUN, VMName|
-|Adatlemez várakozási sorának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN, VMName|
+|Adatlemez várólistájának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN, VMName|
 |OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációs rendszer lemezének figyelési időtartama alatt egyetlen lemezről beolvasott bájtok másodpercenkénti száma|VMName|
 |OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációsrendszer-lemez figyelési időszaka során egy lemezre írt bájtok másodpercenkénti száma|VMName|
 |OPERÁCIÓSRENDSZER-lemez olvasási művelete/s|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|VMName|
 |OPERÁCIÓSRENDSZER-lemez írási műveletei/s|OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|VMName|
-|OS-lemez várakozási sorának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|VMName|
-|Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|VMName|
+|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|VMName|
+|Bejövő folyamatok|Bejövő folyamatok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|VMName|
 |Kimenő folyamatok|Kimenő folyamatok|Mennyiség|Átlag|A kimenő folyamatok a kimenő irányú aktuális folyamatok száma (a virtuális gépről érkező forgalom)|VMName|
 |Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A bejövő folyamatok maximális létrehozásának aránya (a virtuális gépre irányuló forgalom)|VMName|
 |Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépről kifelé haladó forgalom)|VMName|
@@ -637,7 +637,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcomputevirtualmachinescalesetsvirtualmachines"></a>Microsoft. számítás/virtualMachineScaleSets/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A virtuális gép (ek) által jelenleg használt lefoglalt számítási egységek százalékos aránya|None|
 |Bejövő hálózat|Számlázandó hálózat (elavult)|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott számlázandó bájtok száma (bejövő forgalom) (elavult)|None|
@@ -658,22 +658,22 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Operációs rendszer/lemez olvasási művelet/mp|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (elavult)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |Operációs rendszer/lemez írási műveletei másodpercenként|OPERÁCIÓSRENDSZER-lemez írási művelete/mp (elavult)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |Operációs rendszer/lemez QD|OPERÁCIÓSRENDSZER-lemez QD (elavult)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
-|Adatlemez-olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|LOGIKAI EGYSÉG|
-|Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LOGIKAI EGYSÉG|
-|Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
-|Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről a figyelési időszakban|LOGIKAI EGYSÉG|
-|Adatlemez várakozási sorának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LOGIKAI EGYSÉG|
+|Adatlemez-olvasási sebesség (bájt/s)|Adatlemez-olvasási sebesség (bájt/mp) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezről beolvasott bájtok másodpercenkénti száma|LUN|
+|Adatlemez-írási sebesség (bájt/s)|Adatlemez-írási sebesség (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|A figyelési időszak során egyetlen lemezre írt bájtok másodpercenkénti száma|LUN|
+|Adatlemez olvasási műveletei (művelet/s)|Adatlemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről a figyelési időszakban|LUN|
+|Adatlemez írási műveletei (művelet/s)|Adatlemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről a figyelési időszakban|LUN|
+|Adatlemez várólistájának mélysége|Adatlemez-várólista mélysége (előzetes verzió)|Mennyiség|Átlag|Adatlemez várólistájának mélysége (vagy várólista hossza)|LUN|
 |OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez olvasási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációs rendszer lemezének figyelési időtartama alatt egyetlen lemezről beolvasott bájtok másodpercenkénti száma|None|
 |OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s)|OPERÁCIÓSRENDSZER-lemez írási sebessége (bájt/s) (előzetes verzió)|CountPerSecond|Átlag|Az operációsrendszer-lemez figyelési időszaka során egy lemezre írt bájtok másodpercenkénti száma|None|
 |OPERÁCIÓSRENDSZER-lemez olvasási művelete/s|OPERÁCIÓSRENDSZER-lemez olvasási művelete/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS beolvasása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
 |OPERÁCIÓSRENDSZER-lemez írási műveletei/s|OPERÁCIÓSRENDSZER-lemez írási műveletei/mp (előzetes verzió)|CountPerSecond|Átlag|IOPS írása egyetlen lemezről az operációsrendszer-lemez figyelési időszakában|None|
-|OS-lemez várakozási sorának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
-|Bejövő forgalomfolyamok|Bejövő forgalomfolyamok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|None|
+|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (előzetes verzió)|Mennyiség|Átlag|OPERÁCIÓSRENDSZER-lemez várólistájának mélysége (vagy várólista hossza)|None|
+|Bejövő folyamatok|Bejövő folyamatok|Mennyiség|Átlag|A bejövő folyamatok a bejövő irány aktuális folyamatainak száma (a virtuális gépre irányuló forgalom)|None|
 |Kimenő folyamatok|Kimenő folyamatok|Mennyiség|Átlag|A kimenő folyamatok a kimenő irányú aktuális folyamatok száma (a virtuális gépről érkező forgalom)|None|
 |Bejövő folyamatok maximális létrehozási aránya|Bejövő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A bejövő folyamatok maximális létrehozásának aránya (a virtuális gépre irányuló forgalom)|None|
 |Kimenő folyamatok maximális létrehozási aránya|Kimenő folyamatok maximális létrehozási aránya (előzetes verzió)|CountPerSecond|Átlag|A kimenő folyamatok maximális létrehozási sebessége (a virtuális gépről kifelé haladó forgalom)|None|
-|Prémium szintű adatlemez-gyorsítótár – olvasási találat|Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási találat|LOGIKAI EGYSÉG|
-|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|LOGIKAI EGYSÉG|
+|Prémium szintű adatlemez-gyorsítótár – olvasási találat|Prémium szintű adatlemez-gyorsítótár olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási találat|LUN|
+|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|Prémium szintű adatlemez-gyorsítótár olvasási lemaradása (előzetes verzió)|Százalék|Átlag|Prémium szintű adatlemez-gyorsítótár – olvasási kihagyás|LUN|
 |Prémium operációsrendszer-lemez gyorsítótárának olvasási találata|Prémium operációsrendszer-lemez gyorsítótárának olvasási találata (előzetes verzió)|Százalék|Átlag|Prémium operációsrendszer-lemez gyorsítótárának olvasási találata|None|
 |Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása|Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása (előzetes verzió)|Százalék|Átlag|Prémium operációsrendszer-lemez gyorsítótárának olvasási kihagyása|None|
 |Teljes hálózat|Teljes hálózat|Bájt|Összes|A virtuális gép (ek) által az összes hálózati adapteren fogadott bájtok száma (bejövő forgalom)|None|
@@ -681,27 +681,27 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcontainerinstancecontainergroups"></a>Microsoft. ContainerInstance/containerGroups
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|CpuUsage|Processzorhasználat|Mennyiség|Átlag|CPU-használat a millicores összes magot illetően.|containerName|
+|CpuUsage|CPU-használat|Mennyiség|Átlag|CPU-használat a millicores összes magot illetően.|containerName|
 |MemoryUsage|Memóriahasználat|Bájt|Átlag|A memória teljes kihasználtsága bájtban.|containerName|
 |NetworkBytesReceivedPerSecond|Másodpercenként fogadott hálózati bájtok száma|Bájt|Átlag|A másodpercenként fogadott hálózati bájtok száma.|None|
 |NetworkBytesTransmittedPerSecond|Másodpercenként továbbított hálózati bájtok száma|Bájt|Átlag|A másodpercenként továbbított hálózati bájtok száma.|None|
 
 ## <a name="microsoftcontainerregistryregistries"></a>Microsoft. ContainerRegistry/nyilvántartók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalPullCount|Lekérések száma összesen|Mennyiség|Átlag|A lekérések száma összesen|None|
 |SuccessfulPullCount|Sikeres lekérések száma|Mennyiség|Átlag|Sikeres Képkeresések száma|None|
 |TotalPushCount|Leküldések száma összesen|Mennyiség|Átlag|Leküldések száma összesen|None|
 |SuccessfulPushCount|Sikeres leküldések száma|Mennyiség|Átlag|Sikeres leküldések száma|None|
-|RunDuration|Futtatás időtartama|Ezredmásodperc|Összes|Futtatás időtartama (ezredmásodpercben)|None|
+|RunDuration|Futtatás időtartama|Ezredmásodpercben|Összes|Futtatás időtartama (ezredmásodpercben)|None|
 
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft. Tárolószolgáltatás/managedClusters
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |kube_node_status_allocatable_cpu_cores|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma|Mennyiség|Átlag|A felügyelt fürtben rendelkezésre álló CPU-magok teljes száma|None|
 |kube_node_status_allocatable_memory_bytes|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége|Bájt|Átlag|A felügyelt fürtben rendelkezésre álló memória teljes mennyisége|None|
@@ -713,14 +713,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftcustomprovidersresourceproviders"></a>Microsoft. CustomProviders/resourceproviders
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfullRequests|Sikeres kérések|Mennyiség|Összes|Az egyéni szolgáltató által kezdeményezett sikeres kérések|HttpMethod, CallPath, StatusCode|
 |FailedRequests|Sikertelen kérelmek|Mennyiség|Összes|A rendelkezésre álló naplók beolvasása egyéni erőforrás-szolgáltatók számára|HttpMethod, CallPath, StatusCode|
 
 ## <a name="microsoftdataboxedgedataboxedgedevices"></a>Microsoft. DataBoxEdge/dataBoxEdgeDevices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |NICReadThroughput|Olvasási sebesség (hálózat)|BytesPerSecond|Átlag|Az eszközön lévő hálózati adapter olvasási átviteli sebessége az átjáró összes kötetének jelentési időszakában.|InstanceName|
 |NICWriteThroughput|Írási átviteli sebesség (hálózat)|BytesPerSecond|Átlag|Az eszközön lévő hálózati adapter írási sebessége az átjáró összes kötetének jelentési időszakában.|InstanceName|
@@ -738,7 +738,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdatafactorydatafactories"></a>Microsoft. DataFactory/datafactories
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |FailedRuns|Sikertelen futtatások|Mennyiség|Összes||pipelineName, activityName|
 |SuccessfulRuns|Sikeres futtatások|Mennyiség|Összes||pipelineName, activityName|
@@ -746,7 +746,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdatafactoryfactories"></a>Microsoft. DataFactory/gyárak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PipelineFailedRuns|Sikertelen folyamat-futtatási metrikák|Mennyiség|Összes||FailureType, név|
 |PipelineSucceededRuns|A folyamat sikeresen futtatja a metrikákat|Mennyiség|Összes||FailureType, név|
@@ -769,7 +769,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdatalakeanalyticsaccounts"></a>Microsoft. DataLakeAnalytics/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |JobEndedSuccess|Sikeres feladatok|Mennyiség|Összes|A sikeres feladatok száma.|None|
 |JobEndedFailure|Sikertelen feladatok|Mennyiség|Összes|Sikertelen feladatok száma.|None|
@@ -781,7 +781,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdatalakestoreaccounts"></a>Microsoft. Data Lake Store/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TotalStorage|Összes tárhely|Bájt|Maximum|A fiókban tárolt adatmennyiség teljes mennyisége.|None|
 |DataWritten|Írt adatértékek|Bájt|Összes|A fiókba írt összes adatmennyiség.|None|
@@ -792,7 +792,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdbformariadbservers"></a>Microsoft. DBforMariaDB/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|None|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|None|
@@ -813,7 +813,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdbformysqlservers"></a>Microsoft. DBforMySQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|None|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|None|
@@ -834,7 +834,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft. DBforPostgreSQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|None|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|None|
@@ -856,7 +856,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdbforpostgresqlserversv2"></a>Microsoft. DBforPostgreSQL/serversv2
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|CPU-százalék|Százalék|Átlag|CPU-százalék|None|
 |memory_percent|Memória százaléka|Százalék|Átlag|Memória százaléka|None|
@@ -873,10 +873,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft. Devices/IotHubs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |D2C. telemetria. beáramló. allProtocol|Telemetria üzenetek küldése|Mennyiség|Összes|Az IoT-hubhoz küldendő eszközről a felhőbe irányuló telemetria-üzenetek száma|None|
-|D2C. telemetria. beáramló. sikeres|Elküldött telemetriai üzenetek|Mennyiség|Összes|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|None|
+|D2C. telemetria. beáramló. sikeres|Telemetria üzenetek elküldése|Mennyiség|Összes|Az IoT hub sikeresen elküldött eszközről a felhőbe irányuló telemetria-üzeneteinek száma|None|
 |C2D. commands. kimenő. Complete. success|C2D-üzenetek kézbesítésének befejezése|Mennyiség|Összes|Az eszköz által sikeresen befejeződött a felhőből az eszközre küldött üzenetek száma|None|
 |C2D. commands. kimenő. elhagyása. sikeres|C2D üzenetek elhagyva|Mennyiség|Összes|Az eszköz által elhagyott felhőből az eszközre irányuló üzenetek száma|None|
 |C2D. commands. kimenő. elutasítás. sikeres|C2D-üzenetek elutasítva|Mennyiség|Összes|Az eszköz által visszautasított felhőből eszközre irányuló üzenetek száma|None|
@@ -889,48 +889,48 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |D2C. telemetria. kimenő. érvénytelen|Útválasztás: Inkompatibilis telemetria-üzenetek|Mennyiség|Összes|Azon időpontok száma IoT Hub az Útválasztás nem tudott kézbesíteni üzeneteket, mert nem kompatibilis a végponttal. Ez az érték nem tartalmazza az újrapróbálkozásokat.|None|
 |D2C. telemetria. kimenő. tartalék|Útválasztás: tartalékként továbbított üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás a tartalék útvonalhoz társított végpontnak küldött üzeneteket.|None|
 |D2C. endpoints. kimenő. eventHubs|Útválasztás: az Event hub számára továbbított üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás sikeresen leküldte az üzeneteket az Event hub-végpontoknak.|None|
-|D2C. endpoints. késleltetés. eventHubs|Útválasztás: Event Hub üzeneteinek késése|Ezredmásodperc|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) az Event hub-végpontba.|None|
+|D2C. endpoints. késleltetés. eventHubs|Útválasztás: az Event hub üzenetének késése|Ezredmásodpercben|Átlag|A IoT Hub és az üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) az Event hub-végpontba.|None|
 |D2C. endpoints. kimenő. serviceBusQueues|Útválasztás: Service Bus üzenetsor számára továbbított üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus üzenetsor-végpontoknak.|None|
-|D2C. endpoints. késleltetés. serviceBusQueues|Útválasztás: Service Bus-üzenetsor üzeneteinek késése|Ezredmásodperc|Átlag|Egy Service Bus üzenetsor-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
+|D2C. endpoints. késleltetés. serviceBusQueues|Útválasztás: Service Bus üzenetsor üzenet-késése|Ezredmásodpercben|Átlag|Egy Service Bus üzenetsor-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
 |D2C. endpoints. kimenő. serviceBusTopics|Útválasztás: Service Bus témakörbe küldött üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket Service Bus témakör-végpontoknak.|None|
-|D2C. endpoints. késleltetés. serviceBusTopics|Útválasztás: Service Bus témakör üzenetének késése|Ezredmásodperc|Átlag|Egy Service Bus témakör-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
+|D2C. endpoints. késleltetés. serviceBusTopics|Útválasztás: Service Bus témakör üzenetének késése|Ezredmásodpercben|Átlag|Egy Service Bus témakör-végpontba beérkező üzenetek közötti átlagos késés (ezredmásodpercben) IoT Hub és telemetria.|None|
 |D2C. endpoints. kimenő. beépített. események|Útválasztás: üzenetek/események küldésére küldött üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a beépített végpontnak (üzenetek/események).|None|
-|D2C. endpoints. késleltetés. beépített. események|Útválasztás: üzenetek/események üzenetének késése|Ezredmásodperc|Átlag|A beérkező üzenetek átlagos késése (ezredmásodpercben), hogy IoT Hub és telemetria üzenetet a beépített végpontba (üzenetek/események).|None|
+|D2C. endpoints. késleltetés. beépített. események|Útválasztás: üzenetek/események üzenetének késése|Ezredmásodpercben|Átlag|A beérkező üzenetek átlagos késése (ezredmásodpercben), hogy IoT Hub és telemetria üzenetet a beépített végpontba (üzenetek/események).|None|
 |D2C. endpoints. kimenő. Storage|Útválasztás: a tárolóba küldött üzenetek|Mennyiség|Összes|Azon időpontok száma, IoT Hub az Útválasztás sikeresen küldött üzeneteket a tárolási végpontoknak.|None|
-|D2C. endpoints. látencia. Storage|Útválasztás: üzenetek késése a tároláshoz|Ezredmásodperc|Átlag|A IoT Hub és telemetria üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) a tárolási végpontba.|None|
-|D2C. endpoints. kimenő. Storage. Bytes|Útválasztás: tárba továbbított adatok|Bájt|Összes|A tárolási végpontoknak továbbított adatmennyiség (bájt) IoT Hub útválasztás.|None|
-|D2C. endpoints. kimenő. Storage. Blobok|Útválasztás: tárba továbbított blobok|Mennyiség|Összes|A Blobok tárolási végpontokra IoT Hub útvonalának száma.|None|
+|D2C. endpoints. látencia. Storage|Útválasztás: üzenetek késése a tároláshoz|Ezredmásodpercben|Átlag|A IoT Hub és telemetria üzenetek bejövő üzenetbe való belépésének átlagos késése (ezredmásodpercben) a tárolási végpontba.|None|
+|D2C. endpoints. kimenő. Storage. Bytes|Útválasztás: a tárolóba szállított adatmennyiség|Bájt|Összes|A tárolási végpontoknak továbbított adatmennyiség (bájt) IoT Hub útválasztás.|None|
+|D2C. endpoints. kimenő. Storage. Blobok|Útválasztás: tárolóba szállított Blobok|Mennyiség|Összes|A Blobok tárolási végpontokra IoT Hub útvonalának száma.|None|
 |EventGridDeliveries|Event Grid kézbesítések (előzetes verzió)|Mennyiség|Összes|A Event Grid közzétett IoT Hub események száma. Használja az eredmény dimenziót a sikeres és sikertelen kérelmek számának megkereséséhez. A EventType-dimenzió megjeleníti az esemény típusát (https://aka.ms/ioteventgrid).|ResourceId, eredmény, EventType|
-|EventGridLatency|Event Grid késés (előzetes verzió)|Ezredmásodperc|Átlag|Az átlagos késés (ezredmásodpercben), amikor az IOT hub-eseményt generálták, amikor az eseményt közzétették Event Grid. Ez a szám az összes eseménytípus közötti átlag. Az EventType dimenzió használatával megtekintheti egy adott típusú esemény késését.|ResourceId, EventType|
+|EventGridLatency|Event Grid késés (előzetes verzió)|Ezredmásodpercben|Átlag|Az átlagos késés (ezredmásodpercben), amikor az IOT hub-eseményt generálták, amikor az eseményt közzétették Event Grid. Ez a szám az összes eseménytípus közötti átlag. Az EventType dimenzió használatával megtekintheti egy adott típusú esemény késését.|ResourceId, EventType|
 |D2C. Twin. Read. success|Sikeres dupla olvasások az eszközökről|Mennyiség|Összes|Az összes sikeres eszköz által kezdeményezett dupla olvasás száma.|None|
-|D2C. Twin. Read. failure|Sikertelen ikerolvasások az eszközökről|Mennyiség|Összes|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|None|
-|D2C. Twin. Read. size|Ikereszköz-olvasások válaszmérete az eszközökből|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla olvasás átlagos, minimális és maximális száma.|None|
+|D2C. Twin. Read. failure|Sikertelen dupla olvasások az eszközökről|Mennyiség|Összes|Az összes sikertelen eszköz által kezdeményezett kettős olvasás száma.|None|
+|D2C. Twin. Read. size|Az eszközökről érkező kettős olvasások válaszának mérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla olvasás átlagos, minimális és maximális száma.|None|
 |D2C. Twin. Update. success|Sikeres dupla frissítések az eszközökről|Mennyiség|Összes|Az eszköz által kezdeményezett két frissítés sikeres száma.|None|
-|D2C. Twin. Update. failure|Sikertelen ikereszköz-frissítések az eszközökből|Mennyiség|Összes|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|None|
+|D2C. Twin. Update. failure|Sikertelen dupla frissítések az eszközökről|Mennyiség|Összes|Az összes sikertelen eszköz által kezdeményezett dupla frissítés száma.|None|
 |D2C. Twin. Update. size|Az eszközökből származó kettős frissítések mérete|Bájt|Átlag|Az összes sikeres eszköz által kezdeményezett dupla frissítés átlagos, minimális és maximális mérete.|None|
 |C2D. Methods. success|Közvetlen metódusok sikeres meghívása|Mennyiség|Összes|Az összes sikeres közvetlen metódus hívásának száma.|None|
-|C2D. Methods. failure|Sikertelen közvetlen metódushívások|Mennyiség|Összes|A sikertelen közvetlen metódusok összes hívásának száma.|None|
-|C2D. Methods. requestSize|Közvetlen metódushívások kérelmeinek mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus-kérelem átlagos, minimális és maximális száma.|None|
-|C2D. Methods. responseSize|Közvetlen metódushívások válaszainak mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus válaszának átlagos, minimális és maximális száma.|None|
+|C2D. Methods. failure|Sikertelen közvetlen metódusok meghívása|Mennyiség|Összes|A sikertelen közvetlen metódusok összes hívásának száma.|None|
+|C2D. Methods. requestSize|A közvetlen metódus meghívásának mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus-kérelem átlagos, minimális és maximális száma.|None|
+|C2D. Methods. responseSize|A közvetlen metódus-meghívások válaszának mérete|Bájt|Átlag|Az összes sikeres közvetlen metódus válaszának átlagos, minimális és maximális száma.|None|
 |C2D. Twin. Read. success|Sikeres dupla olvasások a háttérből|Mennyiség|Összes|Az összes sikeres háttér által kezdeményezett dupla olvasás száma.|None|
-|C2D. Twin. Read. failure|Sikertelen ikerolvasások a háttérrendszerből|Mennyiség|Összes|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|None|
-|C2D. Twin. Read. size|Ikereszköz-olvasások válaszmérete a háttérrendszerből|Bájt|Átlag|Az összes sikeres háttér-kezdeményező dupla olvasás átlagos, minimális és maximális száma.|None|
-|C2D. Twin. Update. success|Sikeres ikereszköz-frissítések a háttérrendszerből|Mennyiség|Összes|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|None|
-|C2D. Twin. Update. failure|Sikertelen ikereszköz-frissítések a háttérrendszerből|Mennyiség|Összes|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|None|
+|C2D. Twin. Read. failure|Sikertelen dupla olvasások a háttérből|Mennyiség|Összes|Az összes sikertelen háttér által kezdeményezett dupla olvasás száma.|None|
+|C2D. Twin. Read. size|Dupla olvasások válaszának mérete a háttérből|Bájt|Átlag|Az összes sikeres háttér-kezdeményező dupla olvasás átlagos, minimális és maximális száma.|None|
+|C2D. Twin. Update. success|Sikeres dupla frissítések a háttérből|Mennyiség|Összes|Az összes sikeres háttér által kezdeményezett dupla frissítés száma.|None|
+|C2D. Twin. Update. failure|Sikertelen dupla frissítések a háttérből|Mennyiség|Összes|Az összes sikertelen háttér által kezdeményezett dupla frissítés száma.|None|
 |C2D. Twin. Update. size|Dupla frissítések mérete a háttérből|Bájt|Átlag|Az összes sikeres háttér-kezdeményező dupla frissítés átlagos, minimális és maximális mérete.|None|
 |twinQueries. success|Sikeres Twin-lekérdezések|Mennyiség|Összes|Az összes sikeres dupla lekérdezés száma.|None|
-|twinQueries. hiba|Sikertelen ikerlekérdezések|Mennyiség|Összes|Az összes sikertelen dupla lekérdezés száma.|None|
+|twinQueries. hiba|Sikertelen dupla lekérdezések|Mennyiség|Összes|Az összes sikertelen dupla lekérdezés száma.|None|
 |twinQueries.resultSize|Dupla lekérdezések eredményének mérete|Bájt|Átlag|Az összes sikeres dupla lekérdezés eredményének átlagos, minimális és maximális mérete.|None|
 |feladatok. createTwinUpdateJob. sikeres|A kettős frissítési feladatok sikeres létrehozása|Mennyiség|Összes|A kettős frissítési feladatok sikeres létrehozásának száma.|None|
-|feladatok. createTwinUpdateJob. hiba|Sikertelen ikereszköz-frissítési feladat-létrehozások|Mennyiség|Összes|A kettős frissítési feladatok sikertelen létrehozásának száma.|None|
+|feladatok. createTwinUpdateJob. hiba|A kettős frissítési feladatok sikertelen létrehozása|Mennyiség|Összes|A kettős frissítési feladatok sikertelen létrehozásának száma.|None|
 |feladatok. createDirectMethodJob. sikeres|Metódus-Meghívási feladatok sikeres létrehozása|Mennyiség|Összes|A közvetlen metódus meghívásával kapcsolatos feladatok sikeres létrehozásának száma.|None|
-|feladatok. createDirectMethodJob. hiba|Sikertelen metódusmeghívási feladat-létrehozások|Mennyiség|Összes|A közvetlen metódus meghívásával kapcsolatos feladatok sikertelen létrehozásának száma.|None|
+|feladatok. createDirectMethodJob. hiba|Nem sikerült létrehozni a metódus Meghívási feladatait|Mennyiség|Összes|A közvetlen metódus meghívásával kapcsolatos feladatok sikertelen létrehozásának száma.|None|
 |feladatok. listJobs. sikeres|Sikeres hívások a feladatok listázásához|Mennyiség|Összes|A feladatok listázására irányuló sikeres hívások száma.|None|
 |feladatok. listJobs. hiba|Sikertelen hívások a feladatok listázásához|Mennyiség|Összes|A feladatokat listázó sikertelen hívások száma.|None|
 |feladatok. cancelJob. sikeres|Sikeres feladatok törlése|Mennyiség|Összes|A feladat megszakítására irányuló sikeres hívások száma.|None|
-|feladatok. cancelJob. hiba|Sikertelen feladatlemondások|Mennyiség|Összes|A feladat megszakítására irányuló sikertelen hívások száma.|None|
+|feladatok. cancelJob. hiba|Sikertelen feladatok megszakítása|Mennyiség|Összes|A feladat megszakítására irányuló sikertelen hívások száma.|None|
 |feladatok. queryJobs. sikeres|Sikeres feladatok lekérdezése|Mennyiség|Összes|A lekérdezési feladatok összes sikeres hívásának száma.|None|
-|feladatok. queryJobs. hiba|Sikertelen feladatlekérdezések|Mennyiség|Összes|A lekérdező feladatok összes sikertelen hívásának száma.|None|
+|feladatok. queryJobs. hiba|Sikertelen feladatok lekérdezése|Mennyiség|Összes|A lekérdező feladatok összes sikertelen hívásának száma.|None|
 |feladatok. kész|Befejezett feladatok|Mennyiség|Összes|Az összes befejezett feladat száma.|None|
 |feladatok. sikertelen|Sikertelen feladatok|Mennyiség|Összes|Az összes sikertelen feladat száma.|None|
 |D2C. telemetria. beáramló. sendThrottle|Szabályozási hibák száma|Mennyiség|Összes|Az eszköz átviteli sebessége miatti szabályozási hibák száma|None|
@@ -939,12 +939,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |deviceDataUsageV2|Az eszköz összes adatfelhasználása (előzetes verzió)|Bájt|Összes|A IotHub-hez csatlakoztatott eszközökről és azokról továbbított bájtok|None|
 |totalDeviceCount|Összes eszköz (előzetes verzió)|Mennyiség|Átlag|Az IoT hub-ban regisztrált eszközök száma|None|
 |connectedDeviceCount|Csatlakoztatott eszközök (előzetes verzió)|Mennyiség|Átlag|Az IoT hub-hoz csatlakoztatott eszközök száma|None|
-|konfigurációk|Konfigurációs metrikák|Mennyiség|Összes|A konfigurációs műveletek metrikái|None|
+|konfigurációk|Konfigurációs mérőszámok|Mennyiség|Összes|A konfigurációs műveletek metrikái|None|
 
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft. Devices/provisioningServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |RegistrationAttempts|Regisztrációs kísérletek|Mennyiség|Összes|A megkísérelt eszközök regisztrációinak száma|ProvisioningServiceName, IotHubName, állapot|
 |DeviceAssignments|Hozzárendelt eszközök|Mennyiség|Összes|Az IoT hubhoz rendelt eszközök száma|ProvisioningServiceName, IotHubName|
@@ -953,7 +953,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftdocumentdbdatabaseaccounts"></a>Microsoft. DocumentDB/databaseAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |AddRegion|Régió hozzáadva|Mennyiség|Mennyiség|Régió hozzáadva|Region (Régió)|
 |AvailableStorage|Rendelkezésre álló tár|Bájt|Összes|5 perces részletességgel jelentett teljes rendelkezésre álló tárterület|CollectionName, DatabaseName, régió|
@@ -989,67 +989,67 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftenterpriseknowledgegraphservices"></a>Microsoft. EnterpriseKnowledgeGraph/szolgáltatások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TransactionCount|Tranzakciók száma|Mennyiség|Mennyiség|Tranzakciók száma összesen|TransactionCount|
 |SuccessCount|Sikeres műveletek száma|Mennyiség|Mennyiség|Sikeres tranzakciók száma|SuccessCount|
-|FailureCount|Hibásak száma|Mennyiség|Mennyiség|Sikertelen tranzakciók száma|FailureCount|
+|FailureCount|Hibák száma|Mennyiség|Mennyiség|Sikertelen tranzakciók száma|FailureCount|
 |SuccessLatency|Sikeres késés|Ezredmásodpercben|Átlag|A sikeres tranzakciók késése|SuccessCount|
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Mennyiség|Összes|A témakörben közzétett összes esemény|Témakör|
 |PublishFailCount|Sikertelen események közzététele|Mennyiség|Összes|A témakörben nem sikerült közzétenni az összes eseményt|Témakör, ErrorType, hiba|
-|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodperc|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
+|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodpercben|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
 |MatchedEventCount|Egyeztetett események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName|
 |DeliveryAttemptFailCount|Sikertelen kézbesítések eseményei|Mennyiség|Összes|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Témakör, EventSubscriptionName, DomainEventSubscriptionName, error, ErrorType|
 |DeliverySuccessCount|Kézbesítési események|Mennyiség|Összes|Az esemény-előfizetésbe küldött összes esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName|
-|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodperc|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|Témakör, EventSubscriptionName, DomainEventSubscriptionName|
+|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodpercben|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|Témakör, EventSubscriptionName, DomainEventSubscriptionName|
 |DroppedEventCount|Eldobott események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes eldobott esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName, DropReason|
 |DeadLetteredCount|Kézbesítetlen levelek eseményei|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Mennyiség|Összes|A témakörben közzétett összes esemény|None|
 |PublishFailCount|Sikertelen események közzététele|Mennyiség|Összes|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
 |UnmatchedEventCount|Páratlan események|Mennyiség|Összes|A témakörben szereplő esemény-előfizetéseknek nem megfelelő események összesen|None|
-|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodperc|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
+|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodpercben|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
 |MatchedEventCount|Egyeztetett események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes esemény|EventSubscriptionName|
 |DeliveryAttemptFailCount|Sikertelen kézbesítések eseményei|Mennyiség|Összes|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType, EventSubscriptionName|
 |DeliverySuccessCount|Kézbesítési események|Mennyiség|Összes|Az esemény-előfizetésbe küldött összes esemény|EventSubscriptionName|
-|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodperc|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|EventSubscriptionName|
+|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodpercben|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|EventSubscriptionName|
 |DroppedEventCount|Eldobott események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes eldobott esemény|DropReason,EventSubscriptionName|
 |DeadLetteredCount|Kézbesítetlen levelek eseményei|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason,EventSubscriptionName|
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |MatchedEventCount|Egyeztetett események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes esemény|None|
 |DeliveryAttemptFailCount|Sikertelen kézbesítések eseményei|Mennyiség|Összes|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType|
 |DeliverySuccessCount|Kézbesítési események|Mennyiség|Összes|Az esemény-előfizetésbe küldött összes esemény|None|
-|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodperc|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|None|
+|DestinationProcessingDurationInMs|Cél feldolgozási időtartama|Ezredmásodpercben|Átlag|Cél feldolgozási időtartama (ezredmásodpercben)|None|
 |DroppedEventCount|Eldobott események|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő összes eldobott esemény|DropReason|
 |DeadLetteredCount|Kézbesítetlen levelek eseményei|Mennyiség|Összes|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason|
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PublishSuccessCount|Közzétett események|Mennyiség|Összes|A témakörben közzétett összes esemény|None|
 |PublishFailCount|Sikertelen események közzététele|Mennyiség|Összes|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
 |UnmatchedEventCount|Páratlan események|Mennyiség|Összes|A témakörben szereplő esemény-előfizetéseknek nem megfelelő események összesen|None|
-|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodperc|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
+|PublishSuccessLatencyInMs|Sikeres közzétételi késés|Ezredmásodpercben|Összes|Sikeres közzétételi késés (ezredmásodpercben)|None|
 
 
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft. EventHub/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Mennyiség|Összes|A Microsoft. EventHub sikeres kérelmeinek száma.|EntityName, Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Mennyiség|Összes|Kiszolgálói hibák a Microsoft. EventHub esetében.|EntityName, Operationresult tevékenységen|
@@ -1088,7 +1088,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsofteventhubclusters"></a>Microsoft. EventHub/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Mennyiség|Összes|A Microsoft. EventHub sikeres kérelmeinek száma.|Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Mennyiség|Összes|Kiszolgálói hibák a Microsoft. EventHub esetében.|Operationresult tevékenységen|
@@ -1112,16 +1112,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsofthdinsightclusters"></a>Microsoft. HDInsight/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |GatewayRequests|Átjáróra vonatkozó kérelmek|Mennyiség|Összes|Az átjáróra vonatkozó kérelmek száma|HttpStatus|
 |CategorizedGatewayRequests|Kategorizált átjáró-kérelmek|Mennyiség|Összes|Az átjáróra vonatkozó kérelmek száma kategóriánként (1xx/2xx/3xx/4xx/5xx)|HttpStatus|
-|NumActiveWorkers|Aktív feldolgozók száma|Mennyiség|Maximum|Aktív feldolgozók száma|MetricName|
+|NumActiveWorkers|Aktív feldolgozók száma|Mennyiség|Maximum|Aktív feldolgozók száma|metricName|
 
 
 ## <a name="microsoftinsightsautoscalesettings"></a>Microsoft. bepillantások/AutoscaleSettings
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ObservedMetricValue|Megfigyelt metrika értéke|Mennyiség|Átlag|Az az érték, amelyet az autoscale kiszámít a végrehajtáskor|MetricTriggerSource|
 |MetricThreshold|Metrika küszöbértéke|Mennyiség|Átlag|A konfigurált autoskálázási küszöbérték az autoscale futtatásakor.|MetricTriggerRule|
@@ -1133,7 +1133,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftinsightscomponents"></a>Microsoft. bepillantások/összetevők
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |availabilityResults/availabilityPercentage|Elérhetőség|Százalék|Átlag|Sikeresen befejezett rendelkezésre állási tesztek százaléka|availabilityResult/név, availabilityResult/hely|
 |availabilityResults/darabszám|Rendelkezésre állási tesztek|Mennyiség|Mennyiség|Rendelkezésre állási tesztek száma|availabilityResult/név, availabilityResult/hely, availabilityResult/sikeres|
@@ -1155,7 +1155,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |performanceCounters/processIOBytesPerSecond|Folyamat i/o-sebessége|BytesPerSecond|Átlag|A fájlok, a hálózat és az eszközök számára másodpercenként olvasott és írt bájtok másodpercenkénti száma.|felhő/roleInstance|
 |performanceCounters/processCpuPercentage|Processzor feldolgozása|Százalék|Átlag|Az eltelt idő százalékos aránya, amelyet az összes feldolgozási szál használ a processzor által az utasítások végrehajtásához. Ez 0 és 100 között változhat. Ez a metrika a W3wp-folyamat teljesítményét mutatja.|felhő/roleInstance|
 |performanceCounters/processorCpuPercentage|Processzoridő|Százalék|Átlag|Az az időtartam, ameddig a processzor a nem üresjárati szálakban költ.|felhő/roleInstance|
-|performanceCounters/memoryAvailableBytes|Igénybe vehető memória|Bájt|Átlag|A fizikai memória azonnal elérhető egy folyamathoz vagy a rendszer általi használatra.|felhő/roleInstance|
+|performanceCounters/memoryAvailableBytes|Rendelkezésre álló memória|Bájt|Átlag|A fizikai memória azonnal elérhető egy folyamathoz vagy a rendszer általi használatra.|felhő/roleInstance|
 |performanceCounters/processPrivateBytes|Saját bájtok feldolgozása|Bájt|Átlag|A memória kizárólag a figyelt alkalmazás folyamataihoz van rendelve.|felhő/roleInstance|
 |kérelmek/időtartam|Kiszolgáló válaszideje|Ezredmásodpercben|Átlag|HTTP-kérelem fogadása és a válasz küldésének befejezése közötti idő.|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
 |kérelmek/darabszám|Kiszolgálói kérelmek|Mennyiség|Mennyiség|A befejezett HTTP-kérelmek száma.|kérelem/performanceBucket, kérelem/resultCode, művelet/szintetikus, felhő/roleInstance, kérelem/siker, felhő/roleName|
@@ -1164,26 +1164,26 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |kivételek/darabszám|Kivételek|Mennyiség|Mennyiség|Az összes nem kezelt kivétel összesített száma.|felhő/roleName, felhő/roleInstance, ügyfél/típus|
 |kivételek/böngésző|Böngészőkivételek|Mennyiség|Mennyiség|A böngészőben fellépő nem kezelt kivételek száma.|ügyfél/isServer, felhő/roleName|
 |kivételek/kiszolgáló|Kiszolgálói kivételek|Mennyiség|Mennyiség|A kiszolgálói alkalmazásban fellépő nem kezelt kivételek száma.|ügyfél/isServer, felhő/roleName, felhő/roleInstance|
-|nyomkövetés/darabszám|Hívásláncok|Mennyiség|Mennyiség|Nyomkövetési dokumentumok száma|nyomkövetés/severityLevel, művelet/szintetikus, felhő/roleName, felhő/roleInstance|
+|nyomkövetés/darabszám|Nyomok|Mennyiség|Mennyiség|Nyomkövetési dokumentumok száma|nyomkövetés/severityLevel, művelet/szintetikus, felhő/roleName, felhő/roleInstance|
 
 
 
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft. kulcstartó/tárolók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ServiceApiHit|Összes szolgáltatási API-találat|Mennyiség|Mennyiség|A Service API összes találatának száma|ActivityType, ActivityName|
-|ServiceApiLatency|Általános szolgáltatás API-késése|Ezredmásodperc|Átlag|A Service API-kérelmek teljes késése|ActivityType, ActivityName, StatusCode, StatusCodeClass|
+|ServiceApiLatency|Általános szolgáltatás API-késése|Ezredmásodpercben|Átlag|A Service API-kérelmek teljes késése|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |ServiceApiResult|Összes szolgáltatás API-eredményei|Mennyiség|Mennyiség|A szolgáltatás API-eredményeinek teljes száma|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 |SaturationShoebox|Tár teljes telítettsége|Százalék|Átlag|Tár kapacitásának használata|ActivityType, ActivityName, TransactionType|
 |Elérhetőség|Tár teljes rendelkezésre állása|Százalék|Átlag|Tár kéréseinek rendelkezésre állása|ActivityType, ActivityName, StatusCode, StatusCodeClass|
 
 ## <a name="microsoftkustoclusters"></a>Microsoft. Kusto/fürtök
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CacheUtilization|Gyorsítótár kihasználtsága|Százalék|Átlag|Kihasználtsági szint a fürt hatókörében|None|
-|QueryDuration|Lekérdezés időtartama|Ezredmásodperc|Átlag|Lekérdezések időtartama másodpercben|QueryStatus|
+|QueryDuration|Lekérdezés időtartama|Ezredmásodpercben|Átlag|Lekérdezések időtartama másodpercben|QueryStatus|
 |IngestionUtilization|Betöltés kihasználtsága|Százalék|Átlag|A használatban lévő betöltési tárolóhelyek aránya a fürtben|None|
 |KeepAlive|Életben tartása|Mennyiség|Átlag|A józan ész-ellenőrzési érték azt jelzi, hogy a fürt válaszol a lekérdezésekre|None|
 |IngestionVolumeInMB|Betöltési mennyiség (MB)|Mennyiség|Összes|A betöltött adatmennyiség teljes mennyisége a fürtön (MB)|Adatbázis|
@@ -1196,7 +1196,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ContinuousExportPendingCount|Folyamatos exportálás függőben lévő darabszáma|Mennyiség|Maximum|A függőben lévő folyamatos exportálási feladatok végrehajtásra kész állapotának száma|None|
 |ContinuousExportMaxLatenessMinutes|Folyamatos exportálás maximális késői percben|Mennyiség|Maximum|Az összes függőben lévő folyamatos exportálás és a végrehajtásra készen álló maximális idő percben|None|
 |ContinuousExportResult|Folyamatos exportálás eredménye|Mennyiség|Mennyiség|Azt jelzi, hogy a folyamatos exportálás sikeres vagy sikertelen volt-e|ContinuousExportName, eredmény, adatbázis|
-|StreamingIngestDuration|Folyamatos átvitel időtartama|Ezredmásodperc|Átlag|Folyamatos átvitel időtartama (ezredmásodperc)|None|
+|StreamingIngestDuration|Folyamatos átvitel időtartama|Ezredmásodpercben|Átlag|Folyamatos átvitel időtartama (ezredmásodperc)|None|
 |StreamingIngestDataRate|Adatforgalom adatátviteli sebessége|Mennyiség|Átlag|Adatforgalom adatátviteli sebessége (MB/s)|None|
 |SteamingIngestRequestRate|Folyamatos átviteli kérelmek gyakorisága|Mennyiség|RateRequestsPerSecond|Folyamatos átviteli kérelmek aránya (kérelmek/másodperc)|None|
 |StreamingIngestResults|Folyamatos átvitel eredménye|Mennyiség|Átlag|Folyamatos átvitel eredménye|Eredmény|
@@ -1208,7 +1208,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft. Logic/munkafolyamatok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |RunsStarted|Elindított futtatások|Mennyiség|Összes|Az elindított munkafolyamat-futtatások száma.|None|
 |RunsCompleted|Befejezett futtatások|Mennyiség|Összes|A befejezett munkafolyamat-futtatások száma.|None|
@@ -1252,7 +1252,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftlogicintegrationserviceenvironments"></a>Microsoft. Logic/integrationServiceEnvironments
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |RunsStarted|Elindított futtatások|Mennyiség|Összes|Az elindított munkafolyamat-futtatások száma.|None|
 |RunsCompleted|Befejezett futtatások|Mennyiség|Összes|A befejezett munkafolyamat-futtatások száma.|None|
@@ -1289,7 +1289,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftmachinelearningservicesworkspaces"></a>Microsoft. MachineLearningServices/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Befejezett futtatások|Befejezett futtatások|Mennyiség|Összes|A munkaterülethez sikeresen befejezett futtatások száma|Forgatókönyv, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
 |Elindított futtatások|Elindított futtatások|Mennyiség|Összes|A munkaterülethez elindított futtatások száma|Forgatókönyv, RunType, PublishedPipelineId, ComputeType, PipelineStepType|
@@ -1318,23 +1318,23 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftmapsaccounts"></a>Microsoft. Maps/fiókok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Használat|Használat|Mennyiség|Mennyiség|API-hívások száma|ApiCategory, ApiName, ResultType, ResponseCode|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|Az API-k rendelkezésre állása|ApiCategory, ApiName|
 
 ## <a name="microsoftmediamediaservicesstreamingendpoints"></a>Microsoft. Media/Mediaservices/streamingEndpoints
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve.|OutputFormat|
-|SuccessE2ELatency|A Befejezés végének késése|Ezredmásodperc|Átlag|A sikeres kérelmek átlagos késése ezredmásodpercben.|OutputFormat|
+|SuccessE2ELatency|A Befejezés végének késése|Ezredmásodpercben|Átlag|A sikeres kérelmek átlagos késése ezredmásodpercben.|OutputFormat|
 |Kérelmek|Kérelmek|Mennyiség|Összes|Továbbítási végpontra irányuló kérelmek.|OutputFormat, HttpStatusCode, ErrorCode|
 
 
 ## <a name="microsoftmediamediaservices"></a>Microsoft. Media/Mediaservices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |AssetQuota|Eszköz kvótája|Mennyiség|Átlag|Hány eszköz engedélyezett a jelenlegi Media Service-fiókhoz|None|
 |AssetCount|Eszközök száma|Mennyiség|Átlag|Az aktuális Media Service-fiókban már létrehozott eszközök száma|None|
@@ -1348,7 +1348,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft. NetApp/netAppAccounts/capacityPools/kötetek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |AverageReadLatency|Olvasási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Olvasási késleltetés átlagos száma ezredmásodpercben/művelet|None|
 |AverageWriteLatency|Írási késleltetés átlagos késése|Ezredmásodpercben|Átlag|Írási késleltetés átlagos száma ezredmásodpercben|None|
@@ -1359,14 +1359,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft. NetApp/netAppAccounts/capacityPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |VolumePoolAllocatedUsed|Lefoglalt kötet-készlet|Bájt|Átlag|A készlet lefoglalt felhasznált mérete|None|
 |VolumePoolTotalLogicalSize|Kötet készletének teljes logikai mérete|Bájt|Átlag|A készlethez tartozó összes kötet logikai méretének összege|None|
 
 ## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft. Network/networkInterfaces
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |BytesSentRate|Eljuttatott bájtok|Bájt|Összes|A hálózati adapter által eljuttatott bájtok száma|None|
 |BytesReceivedRate|Fogadott bájtok száma|Bájt|Összes|A hálózati adapter által fogadott bájtok száma|None|
@@ -1375,7 +1375,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |VipAvailability|Adatelérési út rendelkezésre állása|Mennyiség|Átlag|Az adatelérési út átlagos Load Balancer időtartamának időtartama|FrontendIPAddress,FrontendPort|
 |DipAvailability|Állapot mintavételi állapota|Mennyiség|Átlag|Az állapot átlagos Load Balancer állapotának időtartama időszakonként|ProtocolType, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
@@ -1389,7 +1389,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft. Network/dnszones
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |QueryVolume|Lekérdezési kötet|Mennyiség|Összes|A DNS-zónák számára kiszolgált lekérdezések száma|None|
 |RecordSetCount|Rekordok készletének száma|Mennyiség|Maximum|Rekordhalmazok száma egy DNS-zónában|None|
@@ -1398,11 +1398,11 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkpublicipaddresses"></a>Microsoft.Network/publicIPAddresses
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PacketsInDDoS|Bejövő csomagok DDoS|CountPerSecond|Maximum|Bejövő csomagok DDoS|None|
-|PacketsDroppedDDoS|Eldobott bejövő csomagok DDoS|CountPerSecond|Maximum|Eldobott bejövő csomagok DDoS|None|
-|PacketsForwardedDDoS|Továbbított bejövő csomagok DDoS|CountPerSecond|Maximum|Továbbított bejövő csomagok DDoS|None|
+|PacketsDroppedDDoS|Bejövő csomagok eldobott DDoS|CountPerSecond|Maximum|Bejövő csomagok eldobott DDoS|None|
+|PacketsForwardedDDoS|Bejövő csomagok továbbított DDoS|CountPerSecond|Maximum|Bejövő csomagok továbbított DDoS|None|
 |TCPPacketsInDDoS|Bejövő TCP-csomagok DDoS|CountPerSecond|Maximum|Bejövő TCP-csomagok DDoS|None|
 |TCPPacketsDroppedDDoS|Bejövő TCP-csomagok eldobott DDoS|CountPerSecond|Maximum|Bejövő TCP-csomagok eldobott DDoS|None|
 |TCPPacketsForwardedDDoS|Bejövő TCP-csomagok továbbított DDoS|CountPerSecond|Maximum|Bejövő TCP-csomagok továbbított DDoS|None|
@@ -1410,8 +1410,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |UDPPacketsDroppedDDoS|Bejövő UDP-csomagok eldobott DDoS|CountPerSecond|Maximum|Bejövő UDP-csomagok eldobott DDoS|None|
 |UDPPacketsForwardedDDoS|Bejövő UDP-csomagok továbbított DDoS|CountPerSecond|Maximum|Bejövő UDP-csomagok továbbított DDoS|None|
 |BytesInDDoS|Bejövő bájtok DDoS|BytesPerSecond|Maximum|Bejövő bájtok DDoS|None|
-|BytesDroppedDDoS|Eldobott bejövő bájtok DDoS|BytesPerSecond|Maximum|Eldobott bejövő bájtok DDoS|None|
-|BytesForwardedDDoS|Továbbított bejövő bájtok DDoS|BytesPerSecond|Maximum|Továbbított bejövő bájtok DDoS|None|
+|BytesDroppedDDoS|Bejövő bájtok elvetve DDoS|BytesPerSecond|Maximum|Bejövő bájtok elvetve DDoS|None|
+|BytesForwardedDDoS|Bejövő bájtok továbbított DDoS|BytesPerSecond|Maximum|Bejövő bájtok továbbított DDoS|None|
 |TCPBytesInDDoS|Bejövő TCP-bájtok DDoS|BytesPerSecond|Maximum|Bejövő TCP-bájtok DDoS|None|
 |TCPBytesDroppedDDoS|Bejövő TCP-bájtok elvetve DDoS|BytesPerSecond|Maximum|Bejövő TCP-bájtok elvetve DDoS|None|
 |TCPBytesForwardedDDoS|Bejövő TCP-bájtok továbbított DDoS|BytesPerSecond|Maximum|Bejövő TCP-bájtok továbbított DDoS|None|
@@ -1431,7 +1431,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkvirtualnetworks"></a>Microsoft.Network/virtualNetworks
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |PingMeshAverageRoundtripMs|A pingelések időpontjának kerekítése egy virtuális géphez|Ezredmásodpercben|Átlag|A célként megadott virtuális gépre eljuttatott pingelések menetének időpontja|SourceCustomerAddress,DestinationCustomerAddress|
 |PingMeshProbesFailedPercent|Sikertelen pingelések egy virtuális géphez|Százalék|Átlag|A hibás pingelések száma a cél virtuális gép összes elküldéses pingelésének százalékában|SourceCustomerAddress,DestinationCustomerAddress|
@@ -1439,7 +1439,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkazurefirewalls"></a>Microsoft. Network/azurefirewalls
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ApplicationRuleHit|Alkalmazás-szabályok találatok száma|Mennyiség|Összes|Az alkalmazások szabályainak száma|Állapot, ok, protokoll|
 |NetworkRuleHit|Hálózati szabályok találatok száma|Mennyiség|Összes|A hálózati szabályok számának megtalálása|Állapot, ok, protokoll|
@@ -1450,7 +1450,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkapplicationgateways"></a>Microsoft. Network/applicationGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Adatforgalom|Adatforgalom|BytesPerSecond|Átlag|A Application Gateway által kiszolgált bájtok másodpercenkénti száma|None|
 |UnhealthyHostCount|Nem kifogástalan állapotú gazdagépek száma|Mennyiség|Átlag|Sérült háttérbeli gazdagépek száma|BackendSettingsPool|
@@ -1465,10 +1465,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ComputeUnits|Aktuális számítási egységek|Mennyiség|Átlag|Felhasznált számítási egységek|None|
 |BackendResponseStatus|Háttérbeli válasz állapota|Mennyiség|Összes|A háttérbeli tagok által létrehozott HTTP-válasz kódok száma. Ez nem tartalmazza a Application Gateway által létrehozott válasz-kódokat.|BackendServer, Háttérkészletek, Backendhttpsetting értékre, HttpStatusGroup|
 |TlsProtocol|Ügyfél TLS protokoll|Mennyiség|Összes|Azoknak a TLS-és nem TLS-kérelmeknek a száma, amelyek az ügyfél által kezdeményezett Application Gatewaykal létesített kapcsolatban állnak. A TLS protokoll terjesztésének megtekintéséhez szűrje a Dimension TLS protokollt.|Figyelő, TlsProtocol|
-|BytesSent|Eljuttatott bájtok|Bájt|Összes|A Application Gateway által az ügyfeleknek eljuttatott bájtok teljes száma|Figyelő|
-|BytesReceived|Fogadott bájtok száma|Bájt|Összes|A Application Gateway által az ügyfelektől fogadott bájtok teljes száma|Figyelő|
-|ClientRtt|Ügyfél-RTT|Ezredmásodpercben|Átlag|Az ügyfelek és a Application Gateway közötti átlagos menetidő. Ez a metrika azt jelzi, hogy mennyi időt vesz igénybe a kapcsolatok és a visszaküldési visszaigazolás|Figyelő|
-|ApplicationGatewayTotalTime|Application Gateway teljes idő|Ezredmásodpercben|Átlag|A kérelem feldolgozásának és a válasz elküldésekor elvégezhető átlagos idő. Ez az időszak átlaga, amikor a Application Gateway megkapja egy HTTP-kérelem első bájtját, amikor a válasz küldése művelet befejeződik. Fontos megjegyezni, hogy ez általában a Application Gateway feldolgozási időt, az időpontot, amikor a kérés és a válasz csomagjai a hálózaton keresztül utaznak, valamint a háttér-kiszolgáló válaszának időpontját.|Figyelő|
+|BytesSent|Eljuttatott bájtok|Bájt|Összes|A Application Gateway által az ügyfeleknek eljuttatott bájtok teljes száma|Hallgató|
+|BytesReceived|Fogadott bájtok száma|Bájt|Összes|A Application Gateway által az ügyfelektől fogadott bájtok teljes száma|Hallgató|
+|ClientRtt|Ügyfél-RTT|Ezredmásodpercben|Átlag|Az ügyfelek és a Application Gateway közötti átlagos menetidő. Ez a metrika azt jelzi, hogy mennyi időt vesz igénybe a kapcsolatok és a visszaküldési visszaigazolás|Hallgató|
+|ApplicationGatewayTotalTime|Application Gateway teljes idő|Ezredmásodpercben|Átlag|A kérelem feldolgozásának és a válasz elküldésekor elvégezhető átlagos idő. Ez az időszak átlaga, amikor a Application Gateway megkapja egy HTTP-kérelem első bájtját, amikor a válasz küldése művelet befejeződik. Fontos megjegyezni, hogy ez általában a Application Gateway feldolgozási időt, az időpontot, amikor a kérés és a válasz csomagjai a hálózaton keresztül utaznak, valamint a háttér-kiszolgáló válaszának időpontját.|Hallgató|
 |BackendConnectTime|Háttérbeli kapcsolat ideje|Ezredmásodpercben|Átlag|A háttér-kiszolgálóval létesített kapcsolatok létrehozásához töltött idő|Figyelő, BackendServer, Háttérkészletek, Backendhttpsetting értékre|
 |BackendFirstByteResponseTime|Háttérbeli első bájt válaszideje|Ezredmásodpercben|Átlag|A háttérrendszer-kiszolgálóhoz való kapcsolódás megkezdése és a válasz fejléc első bájtjának fogadása között eltelt idő, a háttér-kiszolgáló feldolgozási idejének megközelítő időpontja|Figyelő, BackendServer, Háttérkészletek, Backendhttpsetting értékre|
 |BackendLastByteResponseTime|Háttérbeli utolsó bájt válaszideje|Ezredmásodpercben|Átlag|A háttérrendszer-kiszolgálóhoz való kapcsolódás megkezdése és a válasz törzse utolsó bájtjának fogadása között eltelt idő|Figyelő, BackendServer, Háttérkészletek, Backendhttpsetting értékre|
@@ -1478,7 +1478,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft. Network/virtualNetworkGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |AverageBandwidth|Átjáró S2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos helyek közötti sávszélessége bájt/másodpercben|None|
 |P2SBandwidth|Átjáró P2S sávszélessége|BytesPerSecond|Átlag|Egy átjáró átlagos pont – hely sávszélessége bájt/másodpercben|None|
@@ -1494,7 +1494,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkexpressrouteports"></a>Microsoft. Network/expressRoutePorts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |RxLightLevel|RxLightLevel|Mennyiség|Átlag|Rx-fény szintje dBm-ben|Hivatkozás, sáv|
 |TxLightLevel|TxLightLevel|Mennyiség|Átlag|TX-fény szintje dBm-ben|Hivatkozás, sáv|
@@ -1505,7 +1505,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft. Network/expressRouteCircuits
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|PeeringType|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|PeeringType|
@@ -1518,28 +1518,28 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft. Network/expressRouteCircuits/társak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|None|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|None|
 
 ## <a name="microsoftnetworkconnections"></a>Microsoft. Network/Connections
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |BitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|None|
 |BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|None|
 
 ## <a name="microsoftnetworkexpressroutegateways"></a>Microsoft. Network/expressRouteGateways
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ErGatewayConnectionBitsInPerSecond|BitsInPerSecond|CountPerSecond|Átlag|BITS ingressing Azure másodpercenként|Kapcsolatnév|
 |ErGatewayConnectionBitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Átlag|BITS egressing Azure másodpercenként|Kapcsolatnév|
 
 ## <a name="microsoftnetworktrafficmanagerprofiles"></a>Microsoft. Network/trafficManagerProfiles
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |QpsByEndpoint|Visszaadott végponti lekérdezések|Mennyiség|Összes|Az adott időkeretben a Traffic Manager-végpontok számának visszaadása|Végpontneve|
 |ProbeAgentCurrentEndpointStateByProfileResourceId|Végponti állapot végpont szerint|Mennyiség|Maximum|1 Ha a végpont mintavételi állapota "enabled" (engedélyezve), 0 más.|Végpontneve|
@@ -1548,7 +1548,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworknetworkwatchersconnectionmonitors"></a>Microsoft. Network/networkWatchers/connectionMonitors
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ProbesFailedPercent|%-Os mintavétel sikertelen|Százalék|Átlag|a kapcsolat figyelési mintavételének%-a meghiúsult|None|
 |AverageRoundtripMs|Átlagos menetidő (MS)|Ezredmásodpercben|Átlag|A forrás és a cél között eljuttatott kapcsolati figyelési mintavételek átlagos hálózati időkorlátja (MS)|None|
@@ -1558,14 +1558,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnetworkfrontdoors"></a>Microsoft. Network/frontdoors
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |RequestCount|Kérelmek száma|Mennyiség|Összes|A HTTP/S proxy által kiszolgált ügyfél-kérelmek száma|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |RequestSize|Kérelem mérete|Bájt|Összes|Az ügyfelek által a HTTP/S proxynak küldött kérelmekként küldött bájtok száma|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |ResponseSize|Válasz mérete|Bájt|Összes|A HTTP/S proxy válaszként küldött bájtok száma az ügyfeleknek|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |BillableResponseSize|Számlázható válasz mérete|Bájt|Összes|A HTTP/S proxy válaszként küldött számlázandó bájtjainak (minimális 2KB) száma az ügyfeleknek.|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |BackendRequestCount|Háttérbeli kérelmek száma|Mennyiség|Összes|A HTTP/S proxyról a háttérre küldött kérések száma|HttpStatus, HttpStatusGroup, háttérrendszer|
-|BackendRequestLatency|Háttérbeli kérelmek késése|Ezredmásodpercben|Átlag|A HTTP/S proxy által a háttérbe való kérelem elküldésekor kiszámított idő, amíg a HTTP/S proxy nem kapta meg a háttér utolsó válaszának bájtját.|Háttérszolgáltatás|
+|BackendRequestLatency|Háttérbeli kérelmek késése|Ezredmásodpercben|Átlag|A HTTP/S proxy által a háttérbe való kérelem elküldésekor kiszámított idő, amíg a HTTP/S proxy nem kapta meg a háttér utolsó válaszának bájtját.|Backend|
 |TotalLatency|Teljes késés|Ezredmásodpercben|Átlag|Az ügyfél által a http/S proxy által fogadott kérelemből kiszámított idő, amíg az ügyfél elismerte a HTTP/S proxy utolsó válaszának bájtját.|HttpStatus,HttpStatusGroup,ClientRegion,ClientCountry|
 |BackendHealthPercentage|Háttér állapotának százalékos aránya|Százalék|Átlag|A HTTP/S proxyról a háttérbe való sikeres állapot-mintavételek százalékos aránya|Háttér, Háttérkészletek|
 |WebApplicationFirewallRequestCount|Webalkalmazási tűzfalra vonatkozó kérelmek száma|Mennyiség|Összes|A webalkalmazási tűzfal által feldolgozott ügyfelek kéréseinek száma|PolicyName, RuleName, művelet|
@@ -1573,7 +1573,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft. NotificationHubs/névterek/NotificationHubs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |regisztráció. All|Regisztrációs műveletek|Mennyiség|Összes|Az összes sikeres regisztrációs művelet (létrehozás, frissítések lekérdezése és törlése) száma. |None|
 |regisztráció. Create|Regisztráció-létrehozási műveletek|Mennyiség|Összes|Az összes sikeres regisztrációs létrehozás száma.|None|
@@ -1640,17 +1640,17 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft. OperationalInsights/munkaterületek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Average_ szabad inode (%)|Szabad inode%-ban|Mennyiség|Átlag|Average_ szabad inode (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ szabad terület (%)|Szabad terület százalékos aránya|Mennyiség|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ szabad terület (%)|Szabad terület (%)|Mennyiség|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ használt inode|Felhasznált inode%-ban|Mennyiség|Átlag|Average_ használt inode|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_ felhasznált terület%-ban|Felhasznált terület (%)|Mennyiség|Átlag|Average_ felhasznált terület%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Olvasási sebesség (bájt/s) Average_Disk|Lemezolvasás sebessége bájt/mp-ben|Mennyiség|Átlag|Olvasási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Olvasási Average_Disk másodpercenként|Lemezolvasások/mp|Mennyiség|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Olvasási sebesség (bájt/s) Average_Disk|Lemez olvasási sebessége (bájt/s)|Mennyiség|Átlag|Olvasási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Olvasási Average_Disk másodpercenként|Olvasási sebesség (lemez/mp)|Mennyiség|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Disk adatátvitel másodpercenként|Lemez átvitele másodpercenként|Mennyiség|Átlag|Average_Disk adatátvitel másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Írási sebesség (bájt/s) Average_Disk|Lemezírás sebessége bájt/mp-ben|Mennyiség|Átlag|Írási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Írás/mp Average_Disk|Lemezírások/mp|Mennyiség|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Írási sebesség (bájt/s) Average_Disk|Lemez írási sebessége (bájt/s)|Mennyiség|Átlag|Írási sebesség (bájt/s) Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Írás/mp Average_Disk|Írási sebesség (írás/mp)|Mennyiség|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free megabájt|Szabad terület (MB)|Mennyiség|Átlag|Average_Free megabájt|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Logical lemez sebessége (bájt/s)|Logikai lemez sebessége (bájt/s)|Mennyiség|Átlag|Average_Logical lemez sebessége (bájt/s)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Rendelkezésre álló memória Average_%-ban|Rendelkezésre álló memória%-ban|Mennyiség|Átlag|Rendelkezésre álló memória Average_%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1659,9 +1659,9 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Average_ felhasznált lapozófájl-terület|Felhasznált swap-terület%-ban|Mennyiség|Átlag|Average_ felhasznált lapozófájl-terület|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Available MB memória|Rendelkezésre álló memória (MB)|Mennyiség|Átlag|Average_Available MB memória|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Available MB-ban való swap|Rendelkezésre álló memória (MB)|Mennyiség|Átlag|Average_Available MB-ban való swap|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Olvasási Average_Page másodpercenként|Olvasott lap/mperc|Mennyiség|Átlag|Olvasási Average_Page másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Írás/mp Average_Page|Írt lap/mperc|Mennyiség|Átlag|Írás/mp Average_Page|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Pages előállított/másodperc|Mozgatott lapok (lap/sec)|Mennyiség|Átlag|Average_Pages előállított/másodperc|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Olvasási Average_Page másodpercenként|Olvasott lap/mp|Mennyiség|Átlag|Olvasási Average_Page másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Írás/mp Average_Page|Írási idő/mp|Mennyiség|Átlag|Írás/mp Average_Page|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Pages előállított/másodperc|Lap/mp|Mennyiség|Átlag|Average_Pages előállított/másodperc|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Used MB-ban felcserélt terület|Felhasznált memória (MB) – lapozófájl|Mennyiség|Átlag|Average_Used MB-ban felcserélt terület|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Used memória MB-ban|Felhasznált memória (MB)|Mennyiség|Átlag|Average_Used memória MB-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Total továbbított bájtok|Továbbított bájtok összesen|Mennyiség|Átlag|Average_Total továbbított bájtok|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
@@ -1672,43 +1672,43 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Rx-hibák Average_Total|Rx-hibák összesen|Mennyiség|Átlag|Rx-hibák Average_Total|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Total TX-hibák|TX-hibák összesen|Mennyiség|Átlag|Average_Total TX-hibák|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Ütközések Average_Total|Ütközések összesen|Mennyiség|Átlag|Ütközések Average_Total|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/olvasás)|Mennyiség|Átlag|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. teljesítmény mp/átvitelben|Átlagos műveleti idő (mp/átvitel)|Mennyiség|Átlag|Average_Avg. teljesítmény mp/átvitelben|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/írás)|Mennyiség|Átlag|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Írási idő (mp/olvasás)|Átlagos írási idő (mp/olvasás)|Mennyiség|Átlag|Average_Avg. Írási idő (mp/olvasás)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Lemez (mp/átvitel)|Átlagos műveleti idő (mp/átvitel)|Mennyiség|Átlag|Average_Avg. Lemez (mp/átvitel)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Írási idő (mp/írás)|Átlagos írási idő (mp/írás)|Mennyiség|Átlag|Average_Avg. Írási idő (mp/írás)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Physical lemez sebessége (bájt/s)|Fizikai lemez sebessége (bájt/s)|Mennyiség|Átlag|Average_Physical lemez sebessége (bájt/s)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Pct emelt szintű idő|PCT rendszerjogosultságú idő|Mennyiség|Átlag|Average_Pct emelt szintű idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Pct felhasználói idő|PCT felhasználói idő|Mennyiség|Átlag|Average_Pct felhasználói idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Used memória kilobájtban|Felhasznált memória (kilobájt)|Mennyiség|Átlag|Average_Used memória kilobájtban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Virtual megosztott memória|Virtuális megosztott memória|Mennyiség|Átlag|Average_Virtual megosztott memória|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_% DPC idő|% DPC idő|Mennyiség|Átlag|Average_% DPC idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ üresjárati idő%-ban|Üresjáratban eltöltött időhányad (%)|Mennyiség|Átlag|Average_ üresjárati idő%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ üresjárati idő%-ban|Üresjárati idő%-ban|Mennyiség|Átlag|Average_ üresjárati idő%-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os megszakítási idő|Megszakítási idő%-ban|Mennyiség|Átlag|Average_%-os megszakítási idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_% IO várakozási idő|I/o várakozási idő%-ban|Mennyiség|Átlag|Average_% IO várakozási idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os szép idő|% Nice idő|Mennyiség|Átlag|Average_%-os szép idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os privilegizált idő|%-Os privilegizált idő|Mennyiség|Átlag|Average_%-os privilegizált idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ processzoridő|A processzor kihasználtsága (%)|Mennyiség|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ processzoridő|Processzoridő (%)|Mennyiség|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os felhasználói idő|Felhasználói idő%-ban|Mennyiség|Átlag|Average_%-os felhasználói idő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Fizikai memória Average_Free|Szabad fizikai memória|Mennyiség|Átlag|Fizikai memória Average_Free|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free lemezterület a Lapozófájlokban|Szabad terület a Lapozófájlokban|Mennyiség|Átlag|Average_Free lemezterület a Lapozófájlokban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free virtuális memória|Szabad virtuális memória|Mennyiség|Átlag|Average_Free virtuális memória|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Processes|Folyamatok|Mennyiség|Átlag|Average_Processes|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Lapozófájlokban tárolt Average_Size|Lapozófájlokban tárolt méret|Mennyiség|Átlag|Lapozófájlokban tárolt Average_Size|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Uptime|Hasznos üzemidő|Mennyiség|Átlag|Average_Uptime|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Uptime|Üzemidő|Mennyiség|Átlag|Average_Uptime|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Users|Felhasználók|Mennyiség|Átlag|Average_Users|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/olvasás)|Mennyiség|Átlag|Average_Avg. olvasási idő (mp/olvasás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Átlagos írási idő (mp/írás)|Mennyiség|Átlag|Average_Avg. írási idő (mp/írás) teljesítményszámlálóhoz.|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Írási idő (mp/olvasás)|Átlagos írási idő (mp/olvasás)|Mennyiség|Átlag|Average_Avg. Írási idő (mp/olvasás)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_Avg. Írási idő (mp/írás)|Átlagos írási idő (mp/írás)|Mennyiség|Átlag|Average_Avg. Írási idő (mp/írás)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Current a lemez várólistájának hossza|Lemez aktuális várólistájának hossza|Mennyiség|Átlag|Average_Current a lemez várólistájának hossza|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Olvasási Average_Disk másodpercenként|Lemezolvasások/mp|Mennyiség|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Olvasási Average_Disk másodpercenként|Olvasási sebesség (lemez/mp)|Mennyiség|Átlag|Olvasási Average_Disk másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Disk adatátvitel másodpercenként|Lemez átvitele másodpercenként|Mennyiség|Átlag|Average_Disk adatátvitel másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Írás/mp Average_Disk|Lemezírások/mp|Mennyiség|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Írás/mp Average_Disk|Írási sebesség (írás/mp)|Mennyiség|Átlag|Írás/mp Average_Disk|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Free megabájt|Szabad terület (MB)|Mennyiség|Átlag|Average_Free megabájt|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ szabad terület (%)|Szabad terület százalékos aránya|Mennyiség|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ szabad terület (%)|Szabad terület (%)|Mennyiség|Átlag|Average_ szabad terület (%)|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Available MB-ban|Rendelkezésre álló memória (MB)|Mennyiség|Átlag|Average_Available MB-ban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_%-os előjegyzett bájtok használatban|Előjegyzett memória%-ban használatban|Mennyiség|Átlag|Average_%-os előjegyzett bájtok használatban|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Fogadott Average_Bytes/mp|Fogadott bájtok/s|Mennyiség|Átlag|Fogadott Average_Bytes/mp|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Küldési Average_Bytes másodpercenként|Küldési sebesség (bájt/s)|Mennyiség|Átlag|Küldési Average_Bytes másodpercenként|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Bytes összesen/mp|Összes bájt/mp|Mennyiség|Átlag|Average_Bytes összesen/mp|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
-|Average_ processzoridő|A processzor kihasználtsága (%)|Mennyiség|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
+|Average_ processzoridő|Processzoridő (%)|Mennyiség|Átlag|Average_ processzoridő|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Average_Processor várólista hossza|Processzor-várólista hossza|Mennyiség|Átlag|Average_Processor várólista hossza|Számítógép, ObjectName, példánynév, CounterPath, SourceSystem|
 |Szívverés|Szívverés|Mennyiség|Összes|Szívverés|Számítógép, OSType, verzió, SourceComputerId|
 |Frissítés|Frissítés|Mennyiség|Átlag|Frissítés|Számítógép, termék, besorolás, UpdateState, nem kötelező, jóváhagyott|
@@ -1716,13 +1716,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftpeeringpeeringservices"></a>Microsoft. peering/peeringServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|PrefixLatency|Előtag-késés|Ezredmásodperc|Átlag|Medián előtag késése|PrefixName|
+|PrefixLatency|Előtag-késés|Ezredmásodpercben|Átlag|Medián előtag késése|PrefixName|
 
 ## <a name="microsoftpeeringpeerings"></a>Microsoft. peering/társaik
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SessionAvailabilityV4|Munkamenet rendelkezésre állása v4|Százalék|Átlag|A v4-munkamenet rendelkezésre állása|connectionId|
 |SessionAvailabilityV6|Munkamenet rendelkezésre állása v6|Százalék|Átlag|A V6-munkamenet rendelkezésre állása|connectionId|
@@ -1731,19 +1731,19 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft. PowerBIDedicated/kapacitások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|QueryDuration|Lekérdezés időtartama|Ezredmásodperc|Átlag|DAX-lekérdezés időtartama az utolsó intervallumban|Nincsenek méretek|
+|QueryDuration|Lekérdezés időtartama|Ezredmásodpercben|Átlag|DAX-lekérdezés időtartama az utolsó intervallumban|Nincsenek méretek|
 |QueryPoolJobQueueLength|Szálak: lekérdezési készlet feladatok várólistájának hossza|Mennyiség|Átlag|A lekérdezési szál készletének várólistájában lévő feladatok száma.|Nincsenek méretek|
-|qpu_high_utilization_metric|QPU magas kihasználtság|Mennyiség|Összes|QPU magas kihasználtsága az elmúlt percben, 1 a magas QPU-kihasználtság érdekében, máskülönben 0|Nincsenek méretek|
-|memory_metric|Memória|Bájt|Átlag|Memory. 0-3 GB-os tartomány a1, 0-5 GB az a2-hez, 0-10 GB az a3-hoz, 0-25 GB a4-hez, 0-50 GB az A5-hez és az A6-os 0-100 GB-hoz|Nincsenek méretek|
-|memory_thrashing_metric|Memóriaakadozás|Százalék|Átlag|Memória átlagos kiverése.|Nincsenek méretek|
+|qpu_high_utilization_metric|QPU magas kihasználtsága|Mennyiség|Összes|QPU magas kihasználtsága az elmúlt percben, 1 a magas QPU-kihasználtság érdekében, máskülönben 0|Nincsenek méretek|
+|memory_metric|Memória|Bájt|Átlag|Memória. 0-3 GB-os tartomány a1, 0-5 GB az a2-hez, 0-10 GB az a3-hoz, 0-25 GB a4-hez, 0-50 GB az A5-hez és az A6-os 0-100 GB-hoz|Nincsenek méretek|
+|memory_thrashing_metric|Memória-Kiverés|Százalék|Átlag|Memória átlagos kiverése.|Nincsenek méretek|
 
 
 
 ## <a name="microsoftrelaynamespaces"></a>Microsoft. Relay/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Figyelőkapcsolatokra – sikeres|Figyelőkapcsolatokra – sikeres|Mennyiség|Összes|A Microsoft. Relay sikeres Figyelőkapcsolatokra.|EntityName, Operationresult tevékenységen|
 |Figyelőkapcsolatokra – vonatkozó ügyfélhibái|Figyelőkapcsolatokra – vonatkozó ügyfélhibái|Mennyiség|Összes|A Microsoft. Relay Figyelőkapcsolatokra vonatkozó ügyfélhibái.|EntityName, Operationresult tevékenységen|
@@ -1762,7 +1762,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsearchsearchservices"></a>Microsoft. Search/searchServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SearchLatency|Keresési késés|másodperc|Átlag|Keresési szolgáltatás átlagos keresési késése|None|
 |SearchQueriesPerSecond|Keresési lekérdezések másodpercenként|CountPerSecond|Átlag|Keresési lekérdezések másodpercenként a keresési szolgáltatáshoz|None|
@@ -1771,7 +1771,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftservicebusnamespaces"></a>Microsoft. ServiceBus/névterek
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SuccessfulRequests|Sikeres kérések|Mennyiség|Összes|Névtér összes sikeres kérelme|EntityName, Operationresult tevékenységen|
 |Kiszolgálóhibái|Kiszolgálói hibák.|Mennyiség|Összes|Kiszolgálói hibák a Microsoft. ServiceBus esetében.|EntityName, Operationresult tevékenységen|
@@ -1796,7 +1796,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftservicefabricmeshapplications"></a>Microsoft. ServiceFabricMesh/alkalmazások
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |AllocatedCpu|AllocatedCpu|Mennyiség|Átlag|A tárolóhoz a Millet magokban lefoglalt CPU|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
 |AllocatedMemory|AllocatedMemory|Bájt|Átlag|A tároló számára lefoglalt memória (MB)|ApplicationName, szolgáltatásnév, CodePackageName, ServiceReplicaName|
@@ -1812,7 +1812,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsignalrservicesignalr"></a>Microsoft. SignalRService/szignáló
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ConnectionCount|Kapcsolatok száma|Mennyiség|Maximum|A felhasználói kapcsolatok mennyisége.|Végpont|
 |MessageCount|Üzenetek száma|Mennyiség|Összes|Az üzenetek teljes mennyisége.|None|
@@ -1827,7 +1827,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft. SQL/kiszolgálók/adatbázisok
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|None|
 |physical_data_read_percent|Adat IO kihasználtsága (%)|Százalék|Átlag|Adat IO kihasználtsága (%)|None|
@@ -1851,8 +1851,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |dwu_used|Használt DWU|Mennyiség|Maximum|DWU használatban. Csak az adattárházak esetében érvényes.|None|
 |cache_hit_percent|Gyorsítótár találati százaléka|Százalék|Maximum|Gyorsítótár találati százaléka Csak az adattárházak esetében érvényes.|None|
 |cache_used_percent|Gyorsítótár használt százaléka|Százalék|Maximum|Gyorsítótárban használt százalék. Csak az adattárházak esetében érvényes.|None|
-|sqlserver_process_core_percent|SQL Server Process Core százalék|Százalék|Maximum|CPU-használat az SQL DB-folyamat százalékaként. Az adattárházak esetében nem alkalmazható.|None|
-|sqlserver_process_memory_percent|SQL Server feldolgozási memória százalékos aránya|Százalék|Maximum|Memóriahasználat az SQL DB-folyamat százalékaként. Az adattárházak esetében nem alkalmazható.|None|
+|sqlserver_process_core_percent|SQL Server Process Core százalék|Százalék|Maximum|A SQL Server folyamat CPU-kihasználtságának százalékos értéke az operációs rendszer által mért érték alapján. Jelenleg csak kiszolgáló nélküli adatbázisok esetében érhető el.|None|
+|sqlserver_process_memory_percent|SQL Server feldolgozási memória százalékos aránya|Százalék|Maximum|A SQL Serveri folyamat memóriahasználat százalékát az operációs rendszer méri. Jelenleg csak kiszolgáló nélküli adatbázisok esetében érhető el.|None|
 |tempdb_data_size|Tempdb adatfájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb az adatfájl mérete kilobájtban. Az adattárházak esetében nem alkalmazható.|None|
 |tempdb_log_size|Tempdb-naplófájl mérete (kilobájt)|Mennyiség|Maximum|Tempdb-naplófájl mérete (kilobájt) Az adattárházak esetében nem alkalmazható.|None|
 |tempdb_log_used_percent|Tempdb százalékos naplója használatban|Százalék|Maximum|A tempdb százalékos naplója használatban van. Az adattárházak esetében nem alkalmazható.|None|
@@ -1869,7 +1869,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsqlserverselasticpools"></a>Microsoft. SQL/kiszolgálók/elasticPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|None|
 |database_cpu_percent|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|DatabaseResourceId|
@@ -1885,7 +1885,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|None|
 |database_sessions_percent|Munkamenetek százalékos aránya|Százalék|Átlag|Munkamenetek százalékos aránya|DatabaseResourceId|
 |eDTU_limit|eDTU korlátja|Mennyiség|Átlag|eDTU korlátja. A DTU-alapú rugalmas készletekre vonatkozik.|None|
-|storage_limit|Adatok maximális mérete|Bájt|Átlag|Adatok maximális mérete|None|
+|storage_limit|Az adatmaximális méret|Bájt|Átlag|Az adatmaximális méret|None|
 |eDTU_used|használt eDTU|Mennyiség|Átlag|eDTU használatban. A DTU-alapú rugalmas készletekre vonatkozik.|None|
 |database_eDTU_used|használt eDTU|Mennyiség|Átlag|használt eDTU|DatabaseResourceId|
 |storage_used|Felhasznált adatterület|Bájt|Átlag|Felhasznált adatterület|None|
@@ -1906,7 +1906,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsqlservers"></a>Microsoft. SQL/kiszolgálók
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|ElasticPoolResourceId|
 |database_dtu_consumption_percent|DTU-kihasználtság (%)|Százalék|Átlag|DTU-kihasználtság (%)|DatabaseResourceId,ElasticPoolResourceId|
@@ -1916,7 +1916,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftsqlmanagedinstances"></a>Microsoft. SQL/managedInstances
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |virtual_core_count|Virtuális mag száma|Mennyiség|Átlag|Virtuális mag száma|None|
 |avg_cpu_percent|Átlagos CPU-százalék|Százalék|Átlag|Átlagos CPU-százalék|None|
@@ -1930,34 +1930,34 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |UsedCapacity|Felhasznált kapacitás|Bájt|Átlag|Fiókhoz használt kapacitás|None|
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft. Storage/storageAccounts/blobServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|BlobCapacity|Blob-kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
+|BlobCapacity|BLOB kapacitása|Bájt|Átlag|A Storage-fiók Blob service által felhasznált tárterület mérete bájtban kifejezve.|BlobType, szintű|
 |BlobCount|Blobok száma|Mennyiség|Átlag|A Storage-fiók Blob service található Blobok száma.|BlobType, szintű|
-|ContainerCount|Blobtárolók száma|Mennyiség|Átlag|A Storage-fiók Blob service lévő tárolók száma.|None|
-|IndexCapacity|Indexkapacitás|Bájt|Átlag|A ADLS Gen2 (hierarchikus) index által felhasznált tárterület mérete bájtban megadva.|None|
+|ContainerCount|BLOB-tárolók száma|Mennyiség|Átlag|A Storage-fiók Blob service lévő tárolók száma.|None|
+|IndexCapacity|Index kapacitása|Bájt|Átlag|A ADLS Gen2 (hierarchikus) index által felhasznált tárterület mérete bájtban megadva.|None|
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft. Storage/storageAccounts/tableServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |TableCapacity|Tábla kapacitása|Bájt|Átlag|A Storage-fiók Table service által felhasznált tárterület mérete bájtban kifejezve.|None|
 |TableCount|Táblák száma|Mennyiség|Átlag|A Storage-fiók Table service található tábla száma.|None|
@@ -1965,13 +1965,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft. Storage/storageAccounts/fileServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |FileCapacity|Fájl kapacitása|Bájt|Átlag|A Storage-fiók Fájlszolgáltatások által felhasznált tárterület mérete bájtban megadva.|Fájlmegosztás|
 |FileCount|Fájlok száma|Mennyiség|Átlag|A Storage-fiók Fájlszolgáltatások szolgáltatásában lévő fájl száma.|Fájlmegosztás|
@@ -1982,13 +1982,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés, fájlmegosztás|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés, fájlmegosztás|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés, fájlmegosztás|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés, fájlmegosztás|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés, fájlmegosztás|
 
 ## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft. Storage/storageAccounts/queueServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |QueueCapacity|Várólista kapacitása|Bájt|Átlag|A Storage-fiók Queue szolgáltatás által felhasznált tárterület mérete bájtban kifejezve.|None|
 |QueueCount|Várólista száma|Mennyiség|Átlag|A Storage-fiók Queue szolgáltatás várólistájának száma.|None|
@@ -1996,8 +1996,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Tranzakciók|Tranzakciók|Mennyiség|Összes|Tárolási szolgáltatás vagy a megadott API-művelet számára elküldött kérések száma. Ez az érték a sikeres és a sikertelen, valamint a hibát eredményező kérelmeket is magában foglalja. Használjon ResponseType dimenziót a különböző típusú válaszok számára.|ResponseType, GeoType, ApiName, hitelesítés|
 |Belépő|Belépő|Bájt|Összes|A bejövő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló bejövő adatait és az Azure-on belüli bejövő adatokat egyaránt magában foglalja.|GeoType, ApiName, hitelesítés|
 |Kimenő forgalom|Kimenő forgalom|Bájt|Összes|A kimenő adatforgalom mennyisége bájtban kifejezve. Ez a szám a külső ügyfél Azure Storage-ba irányuló kimenő adatait és az Azure-on belüli kimenő adatokat egyaránt magában foglalja. Az eredményül kapott szám nem tükrözi a számlázható kimenő forgalmat.|GeoType, ApiName, hitelesítés|
-|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodperc|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
-|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodperc|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
+|SuccessServerLatency|Sikerességi kiszolgáló késése|Ezredmásodpercben|Átlag|Az Azure Storage által a sikeres kérések feldolgozásához használt átlagos késés ezredmásodpercben. Ez az érték nem tartalmazza az AverageE2ELatency paraméterben megadott hálózati késést.|GeoType, ApiName, hitelesítés|
+|SuccessE2ELatency|Sikeres E2E késés|Ezredmásodpercben|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet sikeres kéréseinek átlagos végpontok közötti késése ezredmásodpercben. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|GeoType, ApiName, hitelesítés|
 |Elérhetőség|Elérhetőség|Százalék|Átlag|A tárolási szolgáltatás vagy a megadott API-művelet rendelkezésre állási hányada. A Rendelkezésre állás a TotalBillableRequests érték és a vonatkozó kérelmek számának (a nem várt hibákat eredményező kérelmeket is beleértve) a hányadosa. A nem várt hibák a tárolószolgáltatás vagy a megadott API-művelet rendelkezésre állásának csökkenését eredményezik.|GeoType, ApiName, hitelesítés|
 
 
@@ -2006,10 +2006,10 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragecachecaches"></a>Microsoft. StorageCache/gyorsítótárak
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ClientIOPS|Ügyfél teljes IOPS|Mennyiség|Átlag|A gyorsítótár által feldolgozott ügyféloldali fájlok műveleteinek aránya.|None|
-|ClientLatency|Ügyfél átlagos késése|Ezredmásodperc|Átlag|Az ügyfél-fájl műveleteinek átlagos késése a tárolási gyorsítótárban.|None|
+|ClientLatency|Ügyfél átlagos késése|Ezredmásodpercben|Átlag|Az ügyfél-fájl műveleteinek átlagos késése a tárolási gyorsítótárban.|None|
 |ClientReadIOPS|Ügyfél olvasási IOPS|CountPerSecond|Átlag|Az ügyfél olvasási műveletei másodpercenként.|None|
 |ClientReadThroughput|Gyorsítótár átlagos olvasási átviteli sebessége|BytesPerSecond|Átlag|Az ügyfél olvasási adatátviteli sebessége.|None|
 |ClientWriteIOPS|Ügyfél írási IOPS|CountPerSecond|Átlag|Az ügyfél írási műveletei másodpercenként.|None|
@@ -2018,13 +2018,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |ClientMetadataWriteIOPS|Ügyfél metaadatainak írási IOPS|CountPerSecond|Átlag|A gyorsítótárba küldendő, az adatírásokat nem tartalmazó, az állandó állapotot módosító ügyfél-fájl műveleteinek aránya.|None|
 |ClientLockIOPS|Ügyfél-zárolási IOPS|CountPerSecond|Átlag|Az ügyfél fájljának zárolási műveletei másodpercenként.|None|
 |StorageTargetHealth|Tárolási cél állapota|Mennyiség|Átlag|A kapcsolódási teszt logikai eredményei a gyorsítótár és a tárolási célok között.|None|
-|Hasznos üzemidő|Hasznos üzemidő|Mennyiség|Átlag|A kapcsolódási teszt logikai eredményei a gyorsítótár és a figyelési rendszer között.|None|
+|Üzemidő|Üzemidő|Mennyiség|Átlag|A kapcsolódási teszt logikai eredményei a gyorsítótár és a figyelési rendszer között.|None|
 |StorageTargetIOPS|Összes StorageTarget-IOPS|Mennyiség|Átlag|Az összes fájl műveletének sebessége, amelyet a gyorsítótár küld egy adott StorageTarget.|StorageTarget|
 |StorageTargetWriteIOPS|StorageTarget írási IOPS|Mennyiség|Átlag|A fájl írási műveleteinek sebessége, amelyet a gyorsítótár egy adott StorageTarget küld.|StorageTarget|
 |StorageTargetAsyncWriteThroughput|StorageTarget aszinkron írási átviteli sebesség|BytesPerSecond|Átlag|A gyorsítótárnak az adatokat egy adott StorageTarget való aszinkron módon írási sebessége. Ezek olyan alkalmi írások, amelyek nem okozzák az ügyfelek blokkolását.|StorageTarget|
 |StorageTargetSyncWriteThroughput|StorageTarget szinkron írási sebessége|BytesPerSecond|Átlag|Az a sebesség, ameddig a gyorsítótár szinkron módon ír adatokat egy adott StorageTarget. Ezek az írások, amelyek az ügyfelek blokkolását okozzák.|StorageTarget|
 |StorageTargetTotalWriteThroughput|StorageTarget összes írási sebessége|BytesPerSecond|Átlag|Az a teljes sebesség, ameddig a gyorsítótár adatokat ír egy adott StorageTarget.|StorageTarget|
-|StorageTargetLatency|StorageTarget késés|Ezredmásodperc|Átlag|A gyorsítótár által a partricular-StorageTarget küldött összes fájl műveletének átlagos ciklikus késése.|StorageTarget|
+|StorageTargetLatency|StorageTarget késés|Ezredmásodpercben|Átlag|A gyorsítótár által a partricular-StorageTarget küldött összes fájl műveletének átlagos ciklikus késése.|StorageTarget|
 |StorageTargetMetadataReadIOPS|StorageTarget-metaadatok IOPS olvasása|CountPerSecond|Átlag|A nem állandó állapotot módosító, valamint az olvasási művelet kihagyása után a gyorsítótár egy adott StorageTarget küldi az adatokat.|StorageTarget|
 |StorageTargetMetadataWriteIOPS|StorageTarget-metaadatok írási IOPS|CountPerSecond|Átlag|Az állandó állapotot módosító és az írási műveletet nem tartalmazó, a gyorsítótár által egy adott StorageTarget küldött fájl-műveletek aránya.|StorageTarget|
 |StorageTargetReadIOPS|StorageTarget olvasási IOPS|CountPerSecond|Átlag|A fájl olvasási műveleteinek sebessége, amelyet a gyorsítótár egy adott StorageTarget küld.|StorageTarget|
@@ -2034,7 +2034,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragesyncstoragesyncservices"></a>Microsoft. storagesync/storageSyncServices
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ServerSyncSessionResult|Szinkronizálási munkamenet eredménye|Mennyiség|Átlag|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a kiszolgálói végpont sikeresen befejezte a szinkronizálási munkamenetet a Felhőbeli végponttal|SyncGroupName,ServerEndpointName,SyncDirection|
 |StorageSyncSyncSessionAppliedFilesCount|Szinkronizált fájlok|Mennyiség|Összes|Szinkronizált fájlok száma|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2048,7 +2048,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroups"></a>Microsoft. storagesync/storageSyncServices/syncGroups
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |SyncGroupSyncSessionAppliedFilesCount|Szinkronizált fájlok|Mennyiség|Összes|Szinkronizált fájlok száma|SyncGroupName,ServerEndpointName,SyncDirection|
 |SyncGroupSyncSessionPerItemErrorsCount|Nem szinkronizált fájlok|Mennyiség|Összes|Nem sikerült szinkronizálni a fájlok számát|SyncGroupName,ServerEndpointName,SyncDirection|
@@ -2056,7 +2056,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragesyncstoragesyncservicessyncgroupsserverendpoints"></a>Microsoft. storagesync/storageSyncServices/syncGroups/serverEndpoints
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ServerEndpointSyncSessionAppliedFilesCount|Szinkronizált fájlok|Mennyiség|Összes|Szinkronizált fájlok száma|ServerEndpointName,SyncDirection|
 |ServerEndpointSyncSessionPerItemErrorsCount|Nem szinkronizált fájlok|Mennyiség|Összes|Nem sikerült szinkronizálni a fájlok számát|ServerEndpointName,SyncDirection|
@@ -2064,7 +2064,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstoragesyncstoragesyncservicesregisteredservers"></a>Microsoft. storagesync/storageSyncServices/registeredServers
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ServerHeartbeat|Kiszolgáló online állapota|Mennyiség|Maximum|Metrika, amely minden alkalommal naplózza az 1 értéket, amikor a resigtered-kiszolgáló sikeresen megjegyez egy szívverést a Felhőbeli végponttal|ServerResourceId, ServerName|
 |ServerRecallIOTotalSizeBytes|Felhőbeli rétegek felidézése|Bájt|Összes|A kiszolgáló által visszaadott adatmennyiség teljes mérete|ServerResourceId, ServerName|
@@ -2073,28 +2073,28 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft. StreamAnalytics/streamingjobs
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |ResourceUtilization|SU% kihasználtsága|Százalék|Maximum|SU% kihasználtsága|LogicalName, PartitionId|
 |InputEvents|Bemeneti események|Mennyiség|Összes|Bemeneti események|LogicalName, PartitionId|
-|InputEventBytes|Bemeneti eseménybájtok|Bájt|Összes|Bemeneti eseménybájtok|LogicalName, PartitionId|
+|InputEventBytes|Bemeneti esemény bájtjai|Bájt|Összes|Bemeneti esemény bájtjai|LogicalName, PartitionId|
 |LateInputEvents|Késői bemeneti események|Mennyiség|Összes|Késői bemeneti események|LogicalName, PartitionId|
 |OutputEvents|Kimeneti események|Mennyiség|Összes|Kimeneti események|LogicalName, PartitionId|
 |ConversionErrors|Adatátalakítási hibák|Mennyiség|Összes|Adatátalakítási hibák|LogicalName, PartitionId|
 |Hibák|Futásidejű hibák|Mennyiség|Összes|Futásidejű hibák|LogicalName, PartitionId|
 |DroppedOrAdjustedEvents|Megrendelési események|Mennyiség|Összes|Megrendelési események|LogicalName, PartitionId|
-|AMLCalloutRequests|Függvénykérések|Mennyiség|Összes|Függvénykérések|LogicalName, PartitionId|
-|AMLCalloutFailedRequests|Sikertelen függvénykérések|Mennyiség|Összes|Sikertelen függvénykérések|LogicalName, PartitionId|
-|AMLCalloutInputEvents|Függvényesemények|Mennyiség|Összes|Függvényesemények|LogicalName, PartitionId|
-|DeserializationError|Bemenet-deszerializálási hibák|Mennyiség|Összes|Bemenet-deszerializálási hibák|LogicalName, PartitionId|
+|AMLCalloutRequests|Függvények kérései|Mennyiség|Összes|Függvények kérései|LogicalName, PartitionId|
+|AMLCalloutFailedRequests|Sikertelen függvények kérései|Mennyiség|Összes|Sikertelen függvények kérései|LogicalName, PartitionId|
+|AMLCalloutInputEvents|Függvények eseményei|Mennyiség|Összes|Függvények eseményei|LogicalName, PartitionId|
+|DeserializationError|Bemeneti deszerializálási hibák|Mennyiség|Összes|Bemeneti deszerializálási hibák|LogicalName, PartitionId|
 |EarlyInputEvents|Korai bemeneti események|Mennyiség|Összes|Korai bemeneti események|LogicalName, PartitionId|
 |OutputWatermarkDelaySeconds|Vízjel késleltetése|másodperc|Maximum|Vízjel késleltetése|LogicalName, PartitionId|
-|InputEventsSourcesBacklogged|Várakozó bemeneti események|Mennyiség|Maximum|Várakozó bemeneti események|LogicalName, PartitionId|
+|InputEventsSourcesBacklogged|Várakozó bemeneti eseményei|Mennyiség|Maximum|Várakozó bemeneti eseményei|LogicalName, PartitionId|
 |InputEventsSourcesPerSecond|Fogadott bemeneti források|Mennyiség|Összes|Fogadott bemeneti források|LogicalName, PartitionId|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft. TimeSeriesInsights/Environments
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Bejövő fogadott üzenetek|Mennyiség|Összes|Az összes Event hub-vagy IoT hub-eseményforrás által olvasott üzenetek száma|None|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Mennyiség|Összes|Az összes Event hub-vagy IoT hub-eseményforrás által beolvasott érvénytelen üzenetek száma|None|
@@ -2108,7 +2108,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsofttimeseriesinsightsenvironmentseventsources"></a>Microsoft. TimeSeriesInsights/Environments/eventsources
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |IngressReceivedMessages|Bejövő fogadott üzenetek|Mennyiség|Összes|Az eseményforrás által olvasott üzenetek száma|None|
 |IngressReceivedInvalidMessages|A bejövő forgalom érvénytelen üzeneteket kapott|Mennyiség|Összes|Az eseményforrás által beolvasott érvénytelen üzenetek száma|None|
@@ -2122,7 +2122,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftvmwarecloudsimplevirtualmachines"></a>Microsoft. VMwareCloudSimple/virtualMachines
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |DiskReadBytesPerSecond|Lemez olvasási sebessége (bájt/s)|BytesPerSecond|Átlag|A lemez átlagos átviteli sebessége a mintavételi időszakon belül beolvasási műveletek miatt.|None|
 |DiskWriteBytesPerSecond|Lemez írási sebessége (bájt/s)|BytesPerSecond|Átlag|A lemez átlagos átviteli sebessége írási műveletek miatt a mintavételi időszakon belül.|None|
@@ -2132,8 +2132,8 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |DiskWriteOperations|Lemez írási műveletei|Mennyiség|Összes|Az i/o-írási műveletek száma az előző mintavételi időszakban. Vegye figyelembe, hogy ezek a műveletek változó méretűek lehetnek.|None|
 |Lemez olvasási művelete/mp|Lemez olvasási művelete/mp|CountPerSecond|Átlag|Az i/o-olvasási műveletek átlagos száma az előző mintavételi időszakban. Vegye figyelembe, hogy ezek a műveletek változó méretűek lehetnek.|None|
 |Lemez írási műveletei/mp|Lemez írási műveletei/mp|CountPerSecond|Átlag|Az IO-írási műveletek átlagos száma az előző mintavételi időszakban. Vegye figyelembe, hogy ezek a műveletek változó méretűek lehetnek.|None|
-|DiskReadLatency|Lemez olvasási késése|Ezredmásodperc|Átlag|Olvasási késés összesen Az eszköz és a kernel olvasási késésének összege.|None|
-|DiskWriteLatency|Lemez írási késése|Ezredmásodperc|Átlag|Írási késleltetés összesen Az eszköz és a kernel írási késésének összege.|None|
+|DiskReadLatency|Lemez olvasási késése|Ezredmásodpercben|Átlag|Olvasási késés összesen Az eszköz és a kernel olvasási késésének összege.|None|
+|DiskWriteLatency|Lemez írási késése|Ezredmásodpercben|Átlag|Írási késleltetés összesen Az eszköz és a kernel írási késésének összege.|None|
 |NetworkInBytesPerSecond|Hálózat bájt/mp-ben|BytesPerSecond|Átlag|A fogadott forgalom átlagos hálózati átviteli sebessége.|None|
 |NetworkOutBytesPerSecond|Hálózati kimenő bájtok/s|BytesPerSecond|Átlag|A továbbított forgalom átlagos hálózati átviteli sebessége.|None|
 |Bejövő hálózat|Bejövő hálózat|Bájt|Összes|A fogadott forgalom összes hálózati átviteli sebessége.|None|
@@ -2142,7 +2142,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |MemoryGranted|Megadott memória|Bájt|Átlag|A gazdagép által a virtuális géphez megadott memória mennyisége. A rendszer mindaddig nem kap memóriát a gazdagép számára, amíg egyszer meg nem éri az adott időt, és a memóriában megadhatja a memóriát, ha a VMkernel szüksége van a memóriára.|None|
 |MemoryActive|Memória aktív|Bájt|Átlag|A virtuális gép által az elmúlt kis időszakban használt memória mennyisége. Ez a "true" (igaz) szám, amely szerint a virtuális gépnek mennyi memóriára van szüksége. Előfordulhat, hogy a használaton kívüli memóriát felcserélték, vagy a vendég teljesítményére nincs hatással.|None|
 |Százalékos processzorhasználat|Százalékos processzorhasználat|Százalék|Átlag|A CPU kihasználtsága. Ezt az értéket a rendszer 100%-os jelentéssel jelenti, amely az összes processzor-magot jelképezi a rendszeren. Például egy négy Magos rendszer 50%-át használó 2 irányú virtuális gép teljesen két magot használ.|None|
-|PercentageCpuReady|CPU-készültség százalékos aránya|Ezredmásodperc|Összes|A készenléti idő az az idő, ameddig a processzor (ok) a korábbi frissítési időközben elérhetővé válik.|None|
+|PercentageCpuReady|CPU-készültség százalékos aránya|Ezredmásodpercben|Összes|A készenléti idő az az idő, ameddig a processzor (ok) a korábbi frissítési időközben elérhetővé válik.|None|
 
 
 
@@ -2155,14 +2155,14 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebserverfarms"></a>Microsoft.Web/serverfarms
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CpuPercentage|Processzorhasználat (%)|Százalék|Átlag|Processzorhasználat (%)|Példány|
 |MemoryPercentage|Memória százaléka|Százalék|Átlag|Memória százaléka|Példány|
 |DiskQueueLength|Lemezvezérlő-várólista hossza|Mennyiség|Átlag|Lemezvezérlő-várólista hossza|Példány|
 |HttpQueueLength|Http-várólista hossza|Mennyiség|Átlag|Http-várólista hossza|Példány|
-|BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
-|BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
+|BytesReceived|A-ben tárolt adatértékek|Bájt|Összes|A-ben tárolt adatértékek|Példány|
+|BytesSent|Kimenő adatvesztés|Bájt|Összes|Kimenő adatvesztés|Példány|
 |TcpSynSent|Eljuttatott TCP SYN|Mennyiség|Átlag|Eljuttatott TCP SYN|Példány|
 |TcpSynReceived|TCP SYN kapott|Mennyiség|Átlag|TCP SYN kapott|Példány|
 |TcpEstablished|A TCP létrejött|Mennyiség|Átlag|A TCP létrejött|Példány|
@@ -2175,12 +2175,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebsites-excluding-functions"></a>Microsoft. Web/Sites (a függvények kivételével)
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CpuTime|CPU-idő|másodperc|Összes|CPU-idő|Példány|
 |Kérelmek|Kérelmek|Mennyiség|Összes|Kérelmek|Példány|
-|BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
-|BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
+|BytesReceived|A-ben tárolt adatértékek|Bájt|Összes|A-ben tárolt adatértékek|Példány|
+|BytesSent|Kimenő adatvesztés|Bájt|Összes|Kimenő adatvesztés|Példány|
 |Http101|Http 101|Mennyiség|Összes|Http 101|Példány|
 |Http2xx|Http-2xx|Mennyiség|Összes|Http-2xx|Példány|
 |Http3xx|Http-3xx|Mennyiség|Összes|Http-3xx|Példány|
@@ -2190,13 +2190,13 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Http406|Http 406|Mennyiség|Összes|Http 406|Példány|
 |Http4xx|Http-4xx|Mennyiség|Összes|Http-4xx|Példány|
 |Http5xx|Http-kiszolgálói hibák|Mennyiség|Összes|Http-kiszolgálói hibák|Példány|
-|MemoryWorkingSet|A memória-munkakészlet|Bájt|Átlag|A memória-munkakészlet|Példány|
+|MemoryWorkingSet|Memória munkakészlete|Bájt|Átlag|Memória munkakészlete|Példány|
 |AverageMemoryWorkingSet|Memória átlagos munkakészlete|Bájt|Átlag|Memória átlagos munkakészlete|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
 |AppConnections|Connections (Kapcsolatok)|Mennyiség|Átlag|Connections (Kapcsolatok)|Példány|
-|Kezeli|Leírók száma|Mennyiség|Átlag|Leírók száma|Példány|
-|Témák|Szálak száma|Mennyiség|Átlag|Szálak száma|Példány|
-|PrivateBytes|Saját [nem megosztható] memória (bájt)|Bájt|Átlag|Saját [nem megosztható] memória (bájt)|Példány|
+|Kezeli|Kezelők száma|Mennyiség|Átlag|Kezelők száma|Példány|
+|Szálak|Szálak száma|Mennyiség|Átlag|Szálak száma|Példány|
+|PrivateBytes|Saját bájtok|Bájt|Átlag|Saját bájtok|Példány|
 |IoReadBytesPerSecond|IO olvasási bájtok másodpercenként|BytesPerSecond|Összes|IO olvasási bájtok másodpercenként|Példány|
 |IoWriteBytesPerSecond|IO írási bájtok másodpercenként|BytesPerSecond|Összes|IO írási bájtok másodpercenként|Példány|
 |IoOtherBytesPerSecond|IO – egyéb bájtok másodpercenként|BytesPerSecond|Összes|IO – egyéb bájtok másodpercenként|Példány|
@@ -2215,16 +2215,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebsites-functions"></a>Microsoft. Web/Sites (functions)
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
-|BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
-|BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
+|BytesReceived|A-ben tárolt adatértékek|Bájt|Összes|A-ben tárolt adatértékek|Példány|
+|BytesSent|Kimenő adatvesztés|Bájt|Összes|Kimenő adatvesztés|Példány|
 |Http5xx|Http-kiszolgálói hibák|Mennyiség|Összes|Http-kiszolgálói hibák|Példány|
-|MemoryWorkingSet|A memória-munkakészlet|Bájt|Átlag|A memória-munkakészlet|Példány|
+|MemoryWorkingSet|Memória munkakészlete|Bájt|Átlag|Memória munkakészlete|Példány|
 |AverageMemoryWorkingSet|Memória átlagos munkakészlete|Bájt|Átlag|Memória átlagos munkakészlete|Példány|
 |FunctionExecutionUnits|Függvények végrehajtási egységei|MB/ezredmásodperc|Összes|[Függvények végrehajtási egységei](https://github.com/Azure/Azure-Functions/wiki/Consumption-Plan-Cost-Billing-FAQ#how-can-i-view-graphs-of-execution-count-and-gb-seconds)|Példány|
 |FunctionExecutionCount|Függvény végrehajtásának száma|Mennyiség|Összes|Függvény végrehajtásának száma|Példány|
-|PrivateBytes|Saját [nem megosztható] memória (bájt)|Bájt|Átlag|Saját [nem megosztható] memória (bájt)|Példány|
+|PrivateBytes|Saját bájtok|Bájt|Átlag|Saját bájtok|Példány|
 |IoReadBytesPerSecond|IO olvasási bájtok másodpercenként|BytesPerSecond|Összes|IO olvasási bájtok másodpercenként|Példány|
 |IoWriteBytesPerSecond|IO írási bájtok másodpercenként|BytesPerSecond|Összes|IO írási bájtok másodpercenként|Példány|
 |IoOtherBytesPerSecond|IO – egyéb bájtok másodpercenként|BytesPerSecond|Összes|IO – egyéb bájtok másodpercenként|Példány|
@@ -2244,12 +2244,12 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebsitesslots"></a>Microsoft. Web/Sites/Slots
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |CpuTime|CPU-idő|másodperc|Összes|CPU-idő|Példány|
 |Kérelmek|Kérelmek|Mennyiség|Összes|Kérelmek|Példány|
-|BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
-|BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
+|BytesReceived|A-ben tárolt adatértékek|Bájt|Összes|A-ben tárolt adatértékek|Példány|
+|BytesSent|Kimenő adatvesztés|Bájt|Összes|Kimenő adatvesztés|Példány|
 |Http101|Http 101|Mennyiség|Összes|Http 101|Példány|
 |Http2xx|Http-2xx|Mennyiség|Összes|Http-2xx|Példány|
 |Http3xx|Http-3xx|Mennyiség|Összes|Http-3xx|Példány|
@@ -2259,16 +2259,16 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 |Http406|Http 406|Mennyiség|Összes|Http 406|Példány|
 |Http4xx|Http-4xx|Mennyiség|Összes|Http-4xx|Példány|
 |Http5xx|Http-kiszolgálói hibák|Mennyiség|Összes|Http-kiszolgálói hibák|Példány|
-|MemoryWorkingSet|A memória-munkakészlet|Bájt|Átlag|A memória-munkakészlet|Példány|
+|MemoryWorkingSet|Memória munkakészlete|Bájt|Átlag|Memória munkakészlete|Példány|
 |AverageMemoryWorkingSet|Memória átlagos munkakészlete|Bájt|Átlag|Memória átlagos munkakészlete|Példány|
 |AverageResponseTime|Átlagos válaszidő|másodperc|Átlag|Átlagos válaszidő|Példány|
 |HttpResponseTime|Válaszidő|másodperc|Átlag|Válaszidő|Példány|
 |FunctionExecutionUnits|Függvények végrehajtási egységei|Mennyiség|Összes|Függvények végrehajtási egységei|Példány|
 |FunctionExecutionCount|Függvény végrehajtásának száma|Mennyiség|Összes|Függvény végrehajtásának száma|Példány|
 |AppConnections|Connections (Kapcsolatok)|Mennyiség|Átlag|Connections (Kapcsolatok)|Példány|
-|Kezeli|Leírók száma|Mennyiség|Átlag|Leírók száma|Példány|
-|Témák|Szálak száma|Mennyiség|Átlag|Szálak száma|Példány|
-|PrivateBytes|Saját [nem megosztható] memória (bájt)|Bájt|Átlag|Saját [nem megosztható] memória (bájt)|Példány|
+|Kezeli|Kezelők száma|Mennyiség|Átlag|Kezelők száma|Példány|
+|Szálak|Szálak száma|Mennyiség|Átlag|Szálak száma|Példány|
+|PrivateBytes|Saját bájtok|Bájt|Átlag|Saját bájtok|Példány|
 |IoReadBytesPerSecond|IO olvasási bájtok másodpercenként|BytesPerSecond|Összes|IO olvasási bájtok másodpercenként|Példány|
 |IoWriteBytesPerSecond|IO írási bájtok másodpercenként|BytesPerSecond|Összes|IO írási bájtok másodpercenként|Példány|
 |IoOtherBytesPerSecond|IO – egyéb bájtok másodpercenként|BytesPerSecond|Összes|IO – egyéb bájtok másodpercenként|Példány|
@@ -2287,11 +2287,11 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebhostingenvironmentsmultirolepools"></a>Microsoft. Web/hostingEnvironments/multiRolePools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |Kérelmek|Kérelmek|Mennyiség|Összes|Kérelmek|Példány|
-|BytesReceived|Bejövő adatforgalom|Bájt|Összes|Bejövő adatforgalom|Példány|
-|BytesSent|Kimenő adatforgalom|Bájt|Összes|Kimenő adatforgalom|Példány|
+|BytesReceived|A-ben tárolt adatértékek|Bájt|Összes|A-ben tárolt adatértékek|Példány|
+|BytesSent|Kimenő adatvesztés|Bájt|Összes|Kimenő adatvesztés|Példány|
 |Http101|Http 101|Mennyiség|Összes|Http 101|Példány|
 |Http2xx|Http-2xx|Mennyiség|Összes|Http-2xx|Példány|
 |Http3xx|Http-3xx|Mennyiség|Összes|Http-3xx|Példány|
@@ -2314,7 +2314,7 @@ A Azure Monitor számos lehetőséget kínál a metrikák használatára, péld�
 
 ## <a name="microsoftwebhostingenvironmentsworkerpools"></a>Microsoft. Web/hostingEnvironments/workerPools
 
-|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Metrika megjelenítendő neve|Unit (Egység)|Összesítés típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|
 |WorkersTotal|Alkalmazottak összesen|Mennyiség|Átlag|Alkalmazottak összesen|None|
 |WorkersAvailable|Rendelkezésre álló munkavégzők|Mennyiség|Átlag|Rendelkezésre álló munkavégzők|None|

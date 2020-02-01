@@ -6,12 +6,12 @@ ms.suite: integration
 ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 10/11/2019
-ms.openlocfilehash: 4f8c20534cdd5abdf5ae97bb097238cf508480c7
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 73b8a559eddec51dbc01f1d55f70414360ff2956
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76843548"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898432"
 ---
 # <a name="secure-access-and-data-in-azure-logic-apps"></a>Biztonságos hozzáférés és az adatAzure Logic Apps
 
@@ -324,7 +324,7 @@ Az alábbi [szempontokat érdemes áttekinteni,](#obfuscation-considerations) ha
 
 #### <a name="considerations-when-hiding-inputs-and-outputs"></a>A bemenetek és kimenetek elrejtésével kapcsolatos megfontolások
 
-* Ha a bemeneteket és kimeneteket egy triggerhez vagy művelethez védi, Logic Apps nem küldi el a védett adatokat az Azure Log Analyticsnak. Emellett nem adhat hozzá [nyomon követett tulajdonságokat](logic-apps-monitor-your-logic-apps.md#azure-diagnostics-event-settings-and-details) az adott triggerhez vagy művelethez a figyeléshez.
+* Ha a bemeneteket és kimeneteket egy triggerhez vagy művelethez védi, Logic Apps nem küldi el a védett adatokat az Azure Log Analyticsnak. Emellett nem adhat hozzá [nyomon követett tulajdonságokat](../logic-apps/monitor-logic-apps-log-analytics.md#extend-data) az adott triggerhez vagy művelethez a figyeléshez.
 
 * A [munkafolyamat-előzmények kezelésére szolgáló Logic apps API](https://docs.microsoft.com/rest/api/logic/) nem ad vissza biztonságos kimenetet.
 
@@ -806,7 +806,7 @@ Ha a [felügyelt identitás](../active-directory/managed-identities-azure-resour
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Üzembe helyezés automatizálása Azure Logic Apps](logic-apps-azure-resource-manager-templates-overview.md)  
-* [Logikai alkalmazások figyelése](logic-apps-monitor-your-logic-apps.md)  
-* [Logikai alkalmazások hibáinak és problémáinak diagnosztizálása](logic-apps-diagnosing-failures.md)  
-* [A logikai alkalmazások telepítésének automatizálása](logic-apps-azure-resource-manager-templates-overview.md)
+* [Üzembe helyezés automatizálása Azure Logic Apps](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)  
+* [Logikai alkalmazások figyelése](../logic-apps/monitor-logic-apps-log-analytics.md)  
+* [Logikai alkalmazások hibáinak és problémáinak diagnosztizálása](../logic-apps/logic-apps-diagnosing-failures.md)  
+* [A logikai alkalmazások telepítésének automatizálása](../logic-apps/logic-apps-azure-resource-manager-templates-overview.md)

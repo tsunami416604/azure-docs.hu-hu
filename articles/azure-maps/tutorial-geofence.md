@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: timlt
 ms.custom: mvc
-ms.openlocfilehash: a88f03adab3beaea75ec2fa9a1c6f59b09739025
-ms.sourcegitcommit: 276c1c79b814ecc9d6c1997d92a93d07aed06b84
+ms.openlocfilehash: 932dfb9624177c299997c4f9f184dc5c973d0fa0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76153138"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899213"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: geokerítésen beállítása Azure Maps használatával
 
@@ -174,7 +174,7 @@ Miután telepítette a Poster alkalmazást, kövesse az alábbi lépéseket az �
 
 Ebben a szakaszban egy, az értesítéseket fogadó eseménykezelőt hozunk létre. Az eseménykezelőnek értesítenie kell a Operations Manager az egyes berendezések belépési és kilépési eseményeiről.
 
-Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) -szolgáltatást teszünk elérhetővé az események kezelésére, beírására és kilépésére. A Logic Apps trigger eseményeinél több esemény is aktiválódik a sorozatban. Az a gondolat, hogy a riasztásokat, ebben az esetben e-maileket küld a Operations Manager. Az alábbi ábra bemutatja, hogyan kell létrehozni egy logikai alkalmazást a geokerítésen esemény megadásához. Hasonlóképpen, létrehozhat egy másikat a kilépési eseményhez. További információért tekintse meg az összes [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) .
+Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#logic-apps) szolgáltatást teszünk elérhetővé a belépési és kilépési események kezeléséhez. A Logic Apps trigger eseményeinél több esemény is aktiválódik a sorozatban. Az a gondolat, hogy a riasztásokat, ebben az esetben e-maileket küld a Operations Manager. Az alábbi ábra bemutatja, hogyan kell létrehozni egy logikai alkalmazást a geokerítésen esemény megadásához. Hasonlóképpen, létrehozhat egy másikat a kilépési eseményhez. További információért tekintse meg az összes [támogatott eseménykezelőt](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
 1. Logikai alkalmazás létrehozása Azure Portal
 
@@ -194,7 +194,7 @@ Két [Logic apps](https://docs.microsoft.com/azure/event-grid/event-handlers#log
 
 ## <a name="create-an-azure-maps-events-subscription"></a>Azure Maps esemény-előfizetés létrehozása
 
-A Azure Maps három eseménytípus használatát támogatja. Tekintse meg a Azure Maps támogatott eseménytípus [itt] (https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps. Két különböző esemény-előfizetésre van szükségünk, egyet az ENTER eseményhez és egyet a kilépési eseményekhez.
+A Azure Maps három eseménytípus használatát támogatja. Tekintse meg a Azure Maps támogatott eseménytípus [itt](https://docs.microsoft.com/azure/event-grid/event-schema-azure-maps). Két különböző esemény-előfizetésre van szükségünk, egyet az ENTER eseményhez és egyet a kilépési eseményekhez.
 
 Az alábbi lépéseket követve hozzon létre egy esemény-előfizetést a geokerítésen események beviteléhez. A geokerítésen kilépési eseményeihez hasonló módon fizethet elő.
 

@@ -1,12 +1,13 @@
 ---
-title: Az Azure AD Connect Health és a felhasználói adatok védelme |} A Microsoft Docs
-description: Ez a dokumentum ismerteti a felhasználói adatok védelme az Azure AD Connect Health.
+title: Azure AD Connect Health és felhasználói adatvédelem | Microsoft Docs
+description: Ez a dokumentum ismerteti a felhasználók adatvédelmét a Azure AD Connect Health.
 services: active-directory
 documentationcenter: ''
 author: billmath
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -14,88 +15,88 @@ ms.topic: reference
 ms.date: 04/26/2018
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 27e5ae48a8194c05a19e5164ee2cc6be68967a62
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: 58cddcde71e6e86b9abe07eb4200f13ad55ea659
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60386250"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897090"
 ---
-# <a name="user-privacy-and-azure-ad-connect-health"></a>Felhasználói adatok védelme és az Azure AD Connect Health 
+# <a name="user-privacy-and-azure-ad-connect-health"></a>Felhasználói adatvédelem és Azure AD Connect Health 
 
 [!INCLUDE [Privacy](../../../includes/gdpr-intro-sentence.md)]
 
 >[!NOTE] 
->Ez a cikk az Azure AD Connect Health és a felhasználói adatvédelem foglalkozik.  Az Azure AD Connect és a felhasználó adatvédelmi információkat lásd: a cikk [Itt](reference-connect-user-privacy.md).
+>Ez a cikk a Azure AD Connect Health és a felhasználói adatvédelmet tárgyalja.  A Azure AD Connect és a felhasználói adatok védelméről a cikk [itt](reference-connect-user-privacy.md)található.
 
-## <a name="user-privacy-classification"></a>Felhasználói adatvédelem besorolás
-Az Azure AD Connect Health lép át a **adatfeldolgozó** GDPR besorolási kategóriája. Egy adatfeldolgozó folyamatot, mint a szolgáltatás adatokat feldolgozó szolgáltatásokat nyújt a kulcs partnerek és a végfelhasználók a fogyasztók. Az Azure AD Connect Health nem hozhat létre a felhasználói adatokat, és nincs független vezérléssel rendelkezik, milyen személyes adatokat gyűjteni, és azok felhasználási módjáról. Adatok beolvasása, aggregáció, elemzés és jelentéskészítés az Azure AD Connect Health meglévő helyszíni adatok alapján. 
+## <a name="user-privacy-classification"></a>Felhasználói adatvédelem besorolása
+Azure AD Connect Health a GDPR-besorolás **adatfeldolgozó** kategóriájára esik. Adatfeldolgozó folyamatként a szolgáltatás adatfeldolgozási szolgáltatásokat biztosít a legfontosabb partnerek és a végfelhasználók számára. Azure AD Connect Health nem állít elő felhasználói adatokat, és nincs független vezérlése a személyes adatok gyűjtésének és felhasználásának módjától. A Azure AD Connect Health adatok beolvasása, összesítése, elemzése és jelentéskészítése a meglévő helyszíni adatokon alapul. 
 
 ## <a name="data-retention-policy"></a>Adatmegőrzési szabályzat
-Az Azure AD Connect Health nem jelentések készítése, analitikai vagy tárhat fel összefüggéseket a 30 napos időszak letelte után. Ezért az Azure AD Connect Health nem tárolja, dolgoz fel, vagy megőrizni adatokat 30 napos időszak letelte után. Ez a kialakítás az általános adatvédelmi rendelet előírásainak, a Microsoft adatvédelmi előírásoknak és az adatmegőrzési házirendek az Azure AD megfelelő. 
+Azure AD Connect Health nem készít jelentéseket, elemzéseket hajt végre, vagy 30 napon belül betekintést nyújt. Ezért a Azure AD Connect Health nem tárol, dolgoz fel és nem tart fenn semmilyen, 30 napnál nem régebben tárolt adatát. Ez a kialakítás megfelel a GDPR-szabályozásoknak, a Microsoft adatvédelmi rendelkezéseinek és az Azure AD adatmegőrzési szabályzatának. 
 
-Az aktív kiszolgáló **az állapotfigyelő szolgáltatás adatai nem naprakészek** **hiba** több mint 30 egymást követő napon javasoljuk, hogy nincsenek adatok adott időtartományon elérte a Connect Health vonatkozó riasztásokat. Ezek a kiszolgálók letiltásra kerül, és nem jelenik meg a Connect Health portálon. A kiszolgálók ismételt engedélyezéséhez el kell távolítania és [telepítse újra a health agent](how-to-connect-health-agent-install.md). Vegye figyelembe, hogy ez nem vonatkozik a **figyelmeztetések** az ugyanolyan típusú riasztást. Figyelmeztetés azt jelzi, hogy részleges adatokat a kiszolgálóról, amelyekről riasztást kap a hiányzó. 
+Az aktív állapotfigyelő **szolgáltatás adataival** rendelkező kiszolgálók nem naprakészek a több mint 30 egymást követő napra **vonatkozó riasztások** esetén arra utalnak, hogy az adott időtartományban egyetlen adat sem érte el a kapcsolódási állapotot. Ezek a kiszolgálók le lesznek tiltva, és nem jelennek meg a kapcsolat állapota portálon. A kiszolgálók újbóli engedélyezéséhez el kell távolítania és [újra kell telepítenie az állapotfigyelő ügynököt](how-to-connect-health-agent-install.md). Vegye figyelembe, hogy ez nem vonatkozik a **figyelmeztetésekre** ugyanazzal a riasztási típussal. A figyelmeztetések azt jelzik, hogy a részleges adatok hiányoznak a riasztásban lévő kiszolgálóról. 
  
-## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Tiltsa le az adatgyűjtést és a monitorozás az Azure AD Connect Health
-Az Azure AD Connect Health lehetővé teszi, hogy az egyes figyelt kiszolgálókhoz vagy a figyelt szolgáltatás egy példányának adatgyűjtés leállítása. Például állítsa le az adatgyűjtést az Azure AD Connect Health használatával figyelt egyedi ADFS (Active Directory összevonási szolgáltatások)-kiszolgálókhoz. Adatok gyűjtése a teljes megfigyelés alatt áll az Azure AD Connect Health AD FS-példány is leállíthatja. Ha ezt választja, a hozzájuk tartozó kiszolgálók adatgyűjtés leállítása után az Azure AD Connect Health portálon lesznek törölve. 
+## <a name="disable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Az adatgyűjtési és-figyelési Azure AD Connect Health letiltása
+Azure AD Connect Health lehetővé teszi az adatgyűjtés leállítását minden egyes megfigyelt kiszolgáló vagy egy figyelt szolgáltatás egy példánya számára. Például leállíthatja az adatgyűjtést a Azure AD Connect Health használatával figyelt egyes ADFS-(Active Directory összevonási szolgáltatások (AD FS)-) kiszolgálókon. Az adatgyűjtés a Azure AD Connect Health használatával figyelt teljes ADFS-példányon is leállítható. Ha ezt választja, a rendszer törli a megfelelő kiszolgálókat a Azure AD Connect Health-portálról az adatgyűjtés leállítása után. 
 
 >[!IMPORTANT]
-> Szüksége vagy az Azure AD globális rendszergazdai jogosultsággal, vagy a közreműködő szerepkört az RBAC-ben delete figyelt kiszolgálók az Azure AD Connect Health.
+> A figyelt kiszolgálók Azure AD Connect Healthról való törléséhez Azure AD globális rendszergazdai jogosultságokkal vagy a RBAC közreműködői szerepkörrel kell rendelkeznie.
 >
-> Az Azure AD Connect Health kiszolgáló vagy szolgáltatáspéldány eltávolítása nem vonható vissza a művelet. 
+> Kiszolgáló vagy szolgáltatás példányának Azure AD Connect Healthból való eltávolítása nem visszafordítható művelet. 
 
 ### <a name="what-to-expect"></a>Mi várható?
-Ha leállítja az adatgyűjtést és a figyelt a különálló kiszolgáló vagy egy felügyelt szolgáltatás egy példányának figyelését, vegye figyelembe a következőket:
+Ha leállítja az adatgyűjtést és-figyelést egy adott figyelt kiszolgáló vagy egy figyelt szolgáltatás egy példánya esetében, vegye figyelembe a következőket:
 
-- Ha töröl egy figyelt szolgáltatás egy példányának, a példányt eltávolítjuk az Azure AD Connect Health figyelési szolgáltatás listájához a portálon. 
-- Ha törli a figyelt kiszolgáló vagy egy felügyelt szolgáltatás egy példányának, a Health-ügynök nem eltávolításra vagy eltávolítja a kiszolgálókról. A Health-ügynök nem az, hogy adatokat küldjön az Azure AD Connect Health van konfigurálva. Manuálisan távolítsa el a Health Agent a korábban megfigyelt kiszolgálókon kell.
-- Ez a lépés végrehajtása előtt nem távolította el a Health-ügynököt, hibaesemények a Health Agent kapcsolatos ko jelenhet meg.
-- A figyelt szolgáltatás példányához tartozó összes adat törlődik a Microsoft Azure adatmegőrzési szabályzatának megfelelően.
+- A figyelt szolgáltatás egy példányának törlésekor a rendszer eltávolítja a példányt a portálon a Azure AD Connect Health figyelési szolgáltatás listájáról. 
+- Ha töröl egy figyelt kiszolgálót vagy egy figyelt szolgáltatás egy példányát, a rendszer nem távolítja el és nem távolítja el a kiszolgálóról a rendszerállapot-ügynököt. Az állapotfigyelő szolgáltatás úgy van konfigurálva, hogy ne küldjön adatküldést Azure AD Connect Healthba. Manuálisan kell eltávolítania az állapotfigyelő ügynököt a korábban figyelt kiszolgálókon.
+- Ha a lépés elvégzése előtt nem távolította el az állapotfigyelő ügynököt, akkor az állapotfigyelő ügynökhöz kapcsolódó kiszolgáló (k) ben hibaüzenetek jelenhetnek meg.
+- A figyelt szolgáltatás példányaihoz tartozó összes adatok törlődnek a Microsoft Azure adatmegőrzési házirend szerint.
 
-### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Tiltsa le az adatgyűjtést és a egy figyelt szolgáltatás egy példányának figyelését
-Lásd: [szolgáltatáspéldány eltávolítása az Azure AD Connect Health](how-to-connect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).
+### <a name="disable-data-collection-and-monitoring-for-an-instance-of-a-monitored-service"></a>Az adatgyűjtés és a figyelés letiltása a figyelt szolgáltatás egy példánya esetében
+Tekintse [meg, hogyan távolíthat el egy Service-példányt a Azure ad Connect Healthból](how-to-connect-health-operations.md#delete-a-service-instance-from-azure-ad-connect-health-service).
 
-### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Tiltsa le az adatgyűjtést és a figyelt kiszolgálók figyelése
-Lásd: [kiszolgáló eltávolítása az Azure AD Connect Health](how-to-connect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
+### <a name="disable-data-collection-and-monitoring-for-a-monitored-server"></a>Az adatgyűjtés és a figyelés letiltása a figyelt kiszolgálókon
+Lásd: [kiszolgáló eltávolítása Azure ad Connect Healthról](how-to-connect-health-operations.md#delete-a-server-from-the-azure-ad-connect-health-service).
 
-### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Tiltsa le az adatgyűjtés és az Azure AD Connect Health összes figyelt szolgáltatás figyelése
-Az Azure AD Connect Health is lehetővé teszi, hogy állítsa le az adatgyűjtést, **összes** szolgáltatások regisztrálva a bérlővel. Javasoljuk, hogy alapos megfontolás, és minden globális rendszergazda teljes nyugtázása a műveletek előtt. A folyamat megkezdése után a Connect Health szolgáltatás leáll, fogadását, feldolgozását és jelentéskészítési bármilyen típusú és minden szolgáltatás. Connect Health service-ben meglévő adatok legfeljebb 30 napig lesznek megőrizve.
-Ha szeretné leállítani az adatgyűjtést az adott kiszolgáló, kövesse a lépéseket az egyes kiszolgálók törlését. Tenant-wise adatgyűjtés leállítása, kövesse az alábbi lépések végrehajtásával állítsa le az adatgyűjtést, és törölje a bérlő összes szolgáltatást.
+### <a name="disable-data-collection-and-monitoring-for-all-monitored-services-in-azure-ad-connect-health"></a>Az adatgyűjtési és-figyelés letiltása a Azure AD Connect Health összes figyelt szolgáltatásához
+A Azure AD Connect Health lehetőséget biztosít a bérlő **összes** regisztrált szolgáltatásának adatgyűjtésének leállítására is. Javasoljuk, hogy a művelet végrehajtása előtt körültekintően vegye figyelembe az összes globális rendszergazdát. A folyamat megkezdése után a csatlakoztatott állapotfigyelő szolgáltatás leállítja az összes szolgáltatás adatainak fogadását, feldolgozását és jelentését. A csatlakozási állapotfigyelő szolgáltatásban található meglévő adat 30 napnál nem hosszabb ideig tart.
+Ha le szeretné állítani az adott kiszolgáló adatgyűjtését, kövesse az egyes kiszolgálók törlésének lépéseit. A bérlői Wise-adatgyűjtés leállításához kövesse az alábbi lépéseket az adatgyűjtés leállításához és a bérlő összes szolgáltatásának törléséhez.
 
-1. Kattintson a **általános beállítások** konfigurációja a fő panelen. 
-2. Kattintson a **adatgyűjtés leállítása** gombra a panel felső részén. A többi beállítást a bérlő konfigurációs beállításainak letiltásra kerül, amint a folyamat elindul.  
+1. Kattintson a fő panel konfiguráció területén található **általános beállítások** elemre. 
+2. Kattintson az **adatgyűjtés leállítása** gombra a panel tetején. A bérlői konfigurációs beállítások egyéb beállításai a folyamat elindításakor le lesznek tiltva.  
  
    ![Adatgyűjtés leállítása](./media/reference-connect-health-user-privacy/gdpr4.png)
   
-3. Győződjön meg arról leállítása az adatok gyűjtemények által érintett előkészítve a szolgáltatások listájába. 
-4. Adja meg a pontos bérlő nevét ahhoz, hogy a **törlése** műveletgombként
-5. Kattintson a **törlése** az összes szolgáltatást a törlés aktiválásához. Connect Health fogadása, feldolgozás, az előkészítést szolgáltatások által küldött adatokat reporting le fog állni. A teljes folyamatot, akár 24 órát is igénybe vehet. Figyelje meg, hogy ez a lépés nem vonható vissza. 
-6. A folyamat befejezése után többé nem látják regisztrált a Connect Health szolgáltatások. 
+3. Győződjön meg arról, hogy az adatgyűjtemények leállítása által érintett beépített szolgáltatások listája. 
+4. Adja meg a bérlő pontos nevét, hogy engedélyezze a művelet **törlése** gombot
+5. Kattintson a **delete (Törlés** ) elemre az összes szolgáltatás törlésének elindításához. A kapcsolat állapota leállítja a beérkező szolgáltatásokból érkező adatok fogadását, feldolgozását és jelentéskészítését. A teljes folyamat akár 24 órát is igénybe vehet. Figyelje meg, hogy ez a lépés nem vonható vissza. 
+6. A folyamat befejezése után többé nem jelennek meg a kapcsolati állapotban regisztrált szolgáltatások. 
 
-   ![Miután leállította az adatgyűjtést](./media/reference-connect-health-user-privacy/gdpr5.png)
+   ![Az adatgyűjtés leállítása után](./media/reference-connect-health-user-privacy/gdpr5.png)
 
-## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Engedélyezze újra az adatgyűjtés és -monitorozás az Azure AD Connect Health
-Monitorozás az Azure AD Connect Health for egy korábban törölt figyelt szolgáltatás újbóli engedélyezéséhez el kell távolítania és [telepítse újra a health agent](how-to-connect-health-agent-install.md) az összes kiszolgálón.
+## <a name="re-enable-data-collection-and-monitoring-in-azure-ad-connect-health"></a>Az adatgyűjtés és a figyelés újbóli engedélyezése Azure AD Connect Health
+A korábban törölt figyelt szolgáltatás Azure AD Connect Health figyelésének újbóli engedélyezéséhez el kell távolítania és [újra kell telepítenie az állapotfigyelő ügynököt](how-to-connect-health-agent-install.md) az összes kiszolgálón.
 
-### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>Engedélyezze újra az adatgyűjtés és az összes figyelt szolgáltatás figyelése
+### <a name="re-enable-data-collection-and-monitoring-for-all-monitored-services"></a>Az adatgyűjtés és a figyelés újbóli engedélyezése az összes figyelt szolgáltatáshoz
 
-Az Azure AD Connect Health tenant-Wise adatgyűjtés tudja folytatni. Javasoljuk, hogy alapos megfontolás, és minden globális rendszergazda teljes nyugtázása a műveletek előtt.
+A bérlői Wise-adatgyűjtést Azure AD Connect Health lehet folytatni. Javasoljuk, hogy a művelet végrehajtása előtt körültekintően vegye figyelembe az összes globális rendszergazdát.
 
 >[!IMPORTANT]
-> Az alábbi lépéseket az 24 órányi művelet letiltása után lesz elérhető.
-> Miután engedélyezte az adatgyűjtést, az itt bemutatott insight és a figyelési adatokat a Connect Health nem jelenik meg előtt gyűjtött régi adatokat. 
+> A következő lépések 24 órás letiltási művelet után lesznek elérhetők.
+> Az adatgyűjtés engedélyezése után a kapcsolat állapota című bemutatott betekintési és figyelési adatok nem jelenítik meg a korábban összegyűjtött örökölt adatokat. 
 
-1. Kattintson a **általános beállítások** konfigurációja a fő panelen. 
-2. Kattintson a **engedélyezni az adatgyűjtést** gombra a panel felső részén. 
+1. Kattintson a fő panel konfiguráció területén található **általános beállítások** elemre. 
+2. Kattintson az **adatgyűjtés engedélyezése** gombra a panel tetején. 
  
    ![Az adatgyűjtés engedélyezése](./media/reference-connect-health-user-privacy/gdpr6.png)
  
-3. Adja meg a pontos bérlőneve aktiválása a **engedélyezése** gombra.
-4. Kattintson a **engedélyezése** gombra kattintva adjon engedélyt az adatgyűjtés a Connect Health szolgáltatásban. Hamarosan a módosítás lépnek érvénybe. 
-5. Kövesse a [telepítési folyamat](how-to-connect-health-agent-install.md) újratelepíteni az ügynököt a figyelni a kiszolgálókon és a szolgáltatások lesznek jelen a portálon.  
+3. Adja meg a bérlő pontos nevét az **Engedélyezés** gomb aktiválásához.
+4. Az **Engedélyezés** gombra kattintva engedélyezheti az adatgyűjtés elérését a kapcsolódási állapot szolgáltatásban. A változást hamarosan alkalmazza a rendszer. 
+5. Kövesse a [telepítési folyamatot](how-to-connect-health-agent-install.md) , és telepítse újra az ügynököt a figyelni kívánt kiszolgálókon, és a szolgáltatások jelen lesznek a portálon.  
 
 
-## <a name="next-steps"></a>További lépések
-* [Tekintse át a Microsoft Privacy szabályzat a biztonsági és adatkezelési központ](https://www.microsoft.com/trustcenter)
-* [Az Azure AD Connect és a felhasználói adatok védelme](reference-connect-user-privacy.md)
+## <a name="next-steps"></a>Következő lépések
+* [A Microsoft adatvédelmi szabályzatának áttekintése a megbízhatósági központban](https://www.microsoft.com/trustcenter)
+* [Azure AD Connect és felhasználói adatvédelem](reference-connect-user-privacy.md)
 

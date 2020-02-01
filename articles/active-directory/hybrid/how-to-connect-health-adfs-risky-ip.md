@@ -1,12 +1,13 @@
 ---
-title: Az Azure AD Connect Health használata az AD FS kockázatos IP jelentés |} A Microsoft Docs
-description: Az Azure AD Connect Health AD FS kockázatos IP jelentés ismerteti.
+title: Azure AD Connect Health AD FS kockázatos IP-jelentéssel | Microsoft Docs
+description: Ismerteti a Azure AD Connect Health AD FS kockázatos IP-jelentést.
 services: active-directory
 documentationcenter: ''
 ms.reviewer: zhiweiwangmsft
 author: billmath
 manager: daveba
 ms.service: active-directory
+ms.subservice: hybrid
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
@@ -15,14 +16,14 @@ ms.date: 02/26/2019
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 49b93cb7852692e4dad65fcbd72cd749db1b16fb
-ms.sourcegitcommit: 41ca82b5f95d2e07b0c7f9025b912daf0ab21909
+ms.openlocfilehash: defdf8118f1b07f8d6ddc4d232cda0fc423ef9f6
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/13/2019
-ms.locfileid: "60350559"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76897258"
 ---
-# <a name="risky-ip-report-public-preview"></a>Kockázatos IP jelentés (nyilvános előzetes verzió)
+# <a name="risky-ip-report-public-preview"></a>Kockázatos IP-jelentés (nyilvános előzetes verzió)
 Az AD FS-ügyfelek az interneten elérhetővé tehetnek jelszóalapú hitelesési végpontokat, és ezzel hitelesítési szolgáltatásokat biztosíthatnak a végfelhasználók számára olyan SaaS-alkalmazások eléréséhez, mint az Office 365. Ez lehetőséget ad kártékony elemek számára, hogy megkíséreljenek bejelentkezni az AD FS rendszerbe, és találgatással kiderítsék a végfelhasználó jelszavát az alkalmazás-erőforrások elérése érdekében. A Windows Server 2012 R2-n futó AD FS-től kezdve elérhető zárolási funkció az extranet-fiókokhoz az ilyen típusú támadások elkerülése érdekében. Ha korábbi verziót használ, erősen ajánlott AD FS rendszerét Windows Server 2016-ra frissíteni. <br />
 
 Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentkezni több felhasználó fiókjába. Ilyen esetekben előfordulhat, hogy az egyes felhasználókat érintő kísérletek száma az AD FS fiókzárolási funkcióját aktiváló küszöbérték alatt marad. Az Azure AD Connect Health mostantól elérhető „Kockázatos IP jelentése” észleli az ilyen eseményeket, és értesíti azokról a rendszergazdákat. A jelentés előnyei a következők: 
@@ -37,14 +38,14 @@ Ezenkívül előfordulhat, hogy egy IP-címről többször próbálnak bejelentk
 > Az előzetes verzió eléréséhez globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges.  
 > 
 
-## <a name="what-is-in-the-report"></a>Mi az a jelentés?
-A sikertelen bejelentkezési tevékenység ügyfél IP-címeket a webalkalmazás-Proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. Ez a következő adatokat tartalmazza: ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
+## <a name="what-is-in-the-report"></a>Mi a jelentés?
+A sikertelen bejelentkezési tevékenység ügyfél IP-címei a webalkalmazás-proxy kiszolgálókon keresztül vannak összesítve. A Kockázatos IP jelentés minden eleme összesített adatokat tartalmaz a sikertelen AD FS-bejelentkezési kísérletekről, amelyek túllépték a kijelölt küszöbértéket. A következő információkat tartalmazza: ![Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4a.png)
 
 | Jelentéselem | Leírás |
 | ------- | ----------- |
 | Időbélyegző | Az észlelési időszak kezdetét jelző, az Azure Portal helyi ideje szerinti időbélyegző.<br /> Az összes napi eseményt UTC szerint éjfélkor állítja elő a rendszer. <br />Az óránkénti eseményeknél az időbélyeg az óra kezdetére van kerekítve. Az exportált fájlban a „firstAuditTimestamp” érték mutatja az első tevékenység kezdetét. |
 | Eseményindító típusa | Az észlelési időszak típusa. Az összesítési eseményindítók óránkénti és a napi típusúak lehetnek. Ez hasznos lehet a nagy gyakoriságú találgatásos támadások észlelésére a lassú támadásokkal szemben, ahol a kísérletek eloszlanak egy adott napon belül. |
-| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4 vagy IPv6-címet. |
+| IP-cím | Olyan kockázatos IP-cím, amelyről helytelen jelszót adtak meg, vagy amelyen extranet zárolást eredményező bejelentkezési tevékenység volt tapasztalható. Ez lehet IPv4 vagy IPv6-cím. |
 | Helytelen jelszó típusú hibák száma | Az IP-címről előforduló helytelen jelszó típusú hibák száma az észlelési időszakban. A helytelen jelszó típusú hiba többször is előfordulhat az egyes felhasználók esetében. Fontos: a lejárt jelszó miatti sikertelen bejelentkezések nem tartoznak ide. |
 | Extranet zárolási hibák száma | Az IP-címről előforduló extranet zárolási hibák száma az észlelési időszakban. Extranet zárolási hibák többször is előfordulhatnak az egyes felhasználók esetében. Ez csak akkor jelenik meg, ha az AD FS-ben konfigurálta az extranet zárolást (a 2012 R2-es és újabb verziókban). <b>Megjegyzés:</b> Ha a jelszóalapú extranet bejelentkezés engedélyezve van, erősen ajánlott bekapcsolni ezt a funkciót. |
 | Megkísérelt egyedi felhasználók | Azon egyedi felhasználói fiókok száma, amelyekbe megkíséreltek bejelentkezni az IP-címről az észlelési időszakban. Ez segíthet megkülönböztetni az egy és a több felhasználó elleni támadásokat.  |
@@ -61,10 +62,10 @@ Például az alábbi jelentésben 2018. 02. 28-án 18:00 és 19:00 között a <i
 
 ![Az Azure AD Connect Health portál](./media/how-to-connect-health-adfs/report4c.png)
 
-## <a name="load-balancer-ip-addresses-in-the-list"></a>A terheléselosztó IP-címek listájában
+## <a name="load-balancer-ip-addresses-in-the-list"></a>Terheléselosztó IP-címei a listában
 A terheléselosztó összesítési bejelentkezési tevékenységei meghiúsultak, és elérte a riasztási küszöbértéket. Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 
 
-## <a name="download-risky-ip-report"></a>Kockázatos IP jelentés letöltése 
+## <a name="download-risky-ip-report"></a>Kockázatos IP-jelentés letöltése 
 A **letöltési** funkcióval az összes kockázatos IP-cím listája exportálható a Connect Health portálról az elmúlt 30 napra vonatkozóan. Az exportált listában szerepel az egyes észlelési időszakokban előforduló összes sikertelen AD FS-bejelentkezési tevékenység, így az exportálás után testreszabhatja a szűrési feltételeket. A portálon kiemelt összesítések mellett az exportált lista IP-címekre lebontva további részleteket is tartalmaz a sikertelen bejelentkezési tevékenységekről:
 
 |  Jelentéselem  |  Leírás  | 
@@ -96,25 +97,25 @@ A figyelmeztetési küszöbérték küszöbérték-beállításokban módosítha
 >
 >
 
-## <a name="faq"></a>GYIK
-**Miért jelennek meg magánhálózati IP-címtartományok a jelentésben?**  <br />
+## <a name="faq"></a>Gyakori kérdések
+**Miért látok privát IP-címtartományt a jelentésben?**  <br />
 A magánhálózati IP-címek (<i>10.x.x.x, 172.x.x.x és 192.168.x.x</i>) és az Exchange-IP-címek szűrve vannak, és True értékűként vannak megjelölve az IP-címek engedélyezési listáján. Ha magánhálózati IP-tartományok jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának.
 
-**Miért jelennek meg terheléselosztói IP-címek a jelentésben?**  <br />
+**Miért jelenik meg a terheléselosztó IP-címei a jelentésben?**  <br />
 Ha terheléselosztói IP-címek jelennek meg, nagyon valószínű, hogy a külső terheléselosztó nem küldi el az ügyfél IP-címét, amikor továbbítja a webalkalmazás proxykiszolgálójának. Konfigurálja megfelelően a terheléselosztót a továbbított ügyfél IP-címének továbbítására. 
 
-**Mit tegyek blokkolja az IP-cím?**  <br />
+**Mi a teendő az IP-cím blokkolásához?**  <br />
 Az azonosított kártevő IP-címeket érdemes hozzáadni a tűzfalhoz vagy blokkolni az Exchange-ben.   <br />
 
-**Miért nem jelenik meg egyetlen elem sem ez a jelentés a?** <br />
+**Miért nem látok semmilyen elemet ebben a jelentésben?** <br />
 - A sikertelen bejelentkezési tevékenységek nem érték el a beállított küszöbértéket.
 - Ellenőrizze, hogy nincsen-e aktív „Az állapotszolgáltatás nem naprakész” figyelmeztetés az AD FS-kiszolgálók listáján.  Itt további információkat olvashat [a figyelmeztetés hibaelhárításáról](how-to-connect-health-data-freshness.md).
 - Az AD FS-farmokon nincs engedélyezve a naplózás.
 
-**Miért jelenik meg nem érhető el a jelentést?**  <br />
+**Miért nem látok hozzáférést a jelentéshez?**  <br />
 Globális rendszergazda vagy [biztonsági olvasó](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#security-reader) szerepkörű felhasználói engedély szükséges. Hozzáférésért forduljon a globális rendszergazdához.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Azure AD Connect Health](whatis-hybrid-identity-health.md)
 * [Az Azure AD Connect Health-ügynök telepítése](how-to-connect-health-agent-install.md)

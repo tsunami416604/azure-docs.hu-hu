@@ -7,12 +7,12 @@ ms.date: 11/22/2019
 ms.service: batch
 ms.topic: article
 manager: gwallace
-ms.openlocfilehash: 20fc7844054fc7e05f56105e69ad6bd8a4272ed8
-ms.sourcegitcommit: dbcc4569fde1bebb9df0a3ab6d4d3ff7f806d486
+ms.openlocfilehash: c2acd09df51b942a08a85d96d907e064367377a7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/15/2020
-ms.locfileid: "76026150"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900279"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -152,3 +152,15 @@ Bár ritka, a feladat a számítási csomópont meghibásodása miatt újra pró
 ### <a name="security-isolation"></a>Biztonság elkülönítése
 
 Az elkülönítés érdekében, ha a forgatókönyv megköveteli a feladatok elkülönítését egymástól, akkor el kell különíteni ezeket a feladatokat külön készletekben. A készlet a Batch biztonsági elkülönítési határa, és alapértelmezés szerint a két készlet nem látható, vagy nem tud kommunikálni egymással. Kerülje a különálló batch-fiókok elkülönítésének módját.
+
+## <a name="moving"></a>Mozgó
+
+### <a name="move-batch-account-across-regions"></a>Batch-fiók áthelyezése régiók között 
+
+Különböző helyzetekben érdemes áthelyeznie meglévő batch-fiókját az egyik régióból a másikba. Előfordulhat például, hogy egy másik régióba szeretne áttérni a vész-helyreállítási tervezés részeként.
+
+Azure Batch fiókok nem helyezhetők át egyik régióból a másikba. A Batch-fiók meglévő konfigurációjának exportálásához azonban egy Azure Resource Manager sablont is használhat.  Ezután egy másik régióban is elvégezheti az erőforrást, ha a Batch-fiókot egy sablonba exportálja, módosítja a paramétereket, hogy azok megfeleljenek a célként megadott régiónak, majd üzembe helyezi a sablont az új régióban. Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tanúsítványokat, a feladatok ütemterveit és az alkalmazáscsomag-csomagokat. A módosítások elvégzéséhez és a Batch-fiók áthelyezésének befejezéséhez ne felejtse el törölni az eredeti batch-fiókot vagy erőforráscsoportot.  
+
+A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-quickstart-create-templates-use-the-portal)című témakört.
+
+

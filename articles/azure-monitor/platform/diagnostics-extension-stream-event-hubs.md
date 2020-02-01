@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 07/13/2017
-ms.openlocfilehash: 433d53e09fce6d3f6b2010956da91c4b7cf91d49
-ms.sourcegitcommit: aee08b05a4e72b192a6e62a8fb581a7b08b9c02a
+ms.openlocfilehash: 111fab880887b54b2415d433bda2368c951381bd
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/09/2020
-ms.locfileid: "75770169"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901213"
 ---
 # <a name="streaming-azure-diagnostics-data-in-the-hot-path-by-using-event-hubs"></a>Azure Diagnostics adatok továbbítása a gyors elérési úton a Event Hubs használatával
 A Azure Diagnostics rugalmas módszereket biztosít a Cloud Services virtuális gépekről származó mérőszámok és naplók gyűjtésére, valamint az eredmények Azure Storage-ba történő átvitelére. Az 2016-as (SDK 2,9) időkerettől kezdve a diagnosztika elküldhető az egyéni adatforrásokhoz, és másodpercek alatt átviheti az elérési utat az [Azure Event Hubs](https://azure.microsoft.com/services/event-hubs/)használatával.
@@ -201,7 +201,7 @@ Ebben a példában a fogadó a naplókra van alkalmazva, és csak a hiba szintű
 ## <a name="deploy-and-update-a-cloud-services-application-and-diagnostics-config"></a>Cloud Services alkalmazás és diagnosztika konfigurációjának központi telepítése és frissítése
 A Visual Studio biztosítja az alkalmazás üzembe helyezéséhez és Event Hubs fogadó konfigurációjának legegyszerűbb elérési útját. A fájl megtekintéséhez és szerkesztéséhez nyissa meg a *. wadcfgx* fájlt a Visual Studióban, szerkessze, majd mentse. Az elérési út a **Cloud Service Project** > **roles** >  **(RoleName)**  > **Diagnostics. wadcfgx**.  
 
-Ezen a ponton a Visual Studióban, a Visual Studio Team Systemben, valamint az MSBuild-on alapuló összes központi telepítési és üzembe helyezési frissítési művelet, valamint a **/t: publish** cél a *. wadcfgx* tartalmazza a csomagolási folyamat során. Emellett a központi telepítések és frissítések az Azure-ba helyezik üzembe a fájlt a megfelelő Azure Diagnostics ügynök-bővítmény használatával a virtuális gépeken.
+Ezen a ponton a Visual Studióban, a Visual Studio Team Systemben és az összes központi telepítési és központi telepítési frissítési művelet, valamint az MSBuild-on alapuló összes parancs vagy parancsfájl, valamint a `/t:publish` cél a *. wadcfgx* is tartalmazza a csomagolási folyamat során. Emellett a központi telepítések és frissítések az Azure-ba helyezik üzembe a fájlt a megfelelő Azure Diagnostics ügynök-bővítmény használatával a virtuális gépeken.
 
 Az alkalmazás központi telepítése és a Azure Diagnostics konfigurálása után azonnal megjelenik a tevékenység az Event hub irányítópultján. Ez azt jelzi, hogy készen áll arra, hogy az Ön által választott figyelő-ügyfélen vagy elemzési eszközön megtekintse a gyors elérési út adatait.  
 
@@ -215,13 +215,72 @@ A következő ábrán a Event Hubs irányítópult a diagnosztikai adatok kifog�
 >
 
 ## <a name="view-hot-path-data"></a>A gyors elérési út adatok megtekintése
-Ahogy korábban már említettük, számos felhasználási eset áll rendelkezésre Event Hubs adatainak figyelésére és feldolgozására.
+Ahogy korábban már említettük, számos felhasználási eset áll rendelkezésre Event Hubs adatainak figyelésére és feldolgozására. Egy egyszerű módszer egy kisméretű tesztelési konzolos alkalmazás létrehozása az Event hub figyeléséhez és a kimeneti adatfolyam kinyomtatásához. 
 
-Egy egyszerű módszer egy kisméretű tesztelési konzolos alkalmazás létrehozása az Event hub figyeléséhez és a kimeneti adatfolyam kinyomtatásához. A következő kódot helyezheti el, amely részletesen ismerteti az első [lépések a Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)használatával című részt a konzol alkalmazásban.  
+#### <a name="net-sdk-latest-500-or-latertablatest"></a>[.NET SDK – legújabb (5.0.0 vagy újabb)](#tab/latest)
+A következő kódot helyezheti el, amely részletesen ismerteti az első [lépések a Event Hubs](../../event-hubs/get-started-dotnet-standard-send-v2.md)használatával című részt a konzol alkalmazásban.
 
-Vegye figyelembe, hogy a konzol alkalmazásnak tartalmaznia kell az [Event Processor Host NuGet-csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/).  
+```csharp
+using System;
+using System.Text;
+using System.Threading.Tasks;
+using Azure.Storage.Blobs;
+using Azure.Messaging.EventHubs;
+using Azure.Messaging.EventHubs.Processor;
+namespace Receiver1204
+{
+    class Program
+    {
+        private static readonly string ehubNamespaceConnectionString = "EVENT HUBS NAMESPACE CONNECTION STRING";
+        private static readonly string eventHubName = "EVENT HUB NAME";
+        private static readonly string blobStorageConnectionString = "AZURE STORAGE CONNECTION STRING";
+        private static readonly string blobContainerName = "BLOB CONTAINER NAME";
 
-Ne felejtse el lecserélni az értékeket a **fő** függvény szögletes zárójelei között az erőforrások értékeivel.   
+        static async Task Main()
+        {
+            // Read from the default consumer group: $Default
+            string consumerGroup = EventHubConsumerClient.DefaultConsumerGroupName;
+
+            // Create a blob container client that the event processor will use 
+            BlobContainerClient storageClient = new BlobContainerClient(blobStorageConnectionString, blobContainerName);
+
+            // Create an event processor client to process events in the event hub
+            EventProcessorClientOptions options = new EventProcessorClientOptions { }
+            EventProcessorClient processor = new EventProcessorClient(storageClient, consumerGroup, ehubNamespaceConnectionString, eventHubName);
+
+            // Register handlers for processing events and handling errors
+            processor.ProcessEventAsync += ProcessEventHandler;
+            processor.ProcessErrorAsync += ProcessErrorHandler;
+
+            // Start the processing
+            await processor.StartProcessingAsync();
+
+            // Wait for 10 seconds for the events to be processed
+            await Task.Delay(TimeSpan.FromSeconds(10));
+
+            // Stop the processing
+            await processor.StopProcessingAsync();
+        }
+
+        static Task ProcessEventHandler(ProcessEventArgs eventArgs)
+        {
+            Console.WriteLine("\tRecevied event: {0}", Encoding.UTF8.GetString(eventArgs.Data.Body.ToArray()));
+            return Task.CompletedTask;
+        }
+
+        static Task ProcessErrorHandler(ProcessErrorEventArgs eventArgs)
+        {
+            Console.WriteLine($"\tPartition '{ eventArgs.PartitionId}': an unhandled exception was encountered. This was not expected to happen.");
+            Console.WriteLine(eventArgs.Exception.Message);
+            return Task.CompletedTask;
+        }
+    }
+}
+```
+
+#### <a name="net-sdk-legacy-410-or-earliertablegacy"></a>[.NET SDK örökölt (4.1.0 vagy korábbi)](#tab/legacy)
+
+A következő kódot helyezheti el, amely részletesen ismerteti az első [lépések a Event Hubs](../../event-hubs/event-hubs-dotnet-standard-getstarted-send.md)használatával című részt a konzol alkalmazásban. Vegye figyelembe, hogy a konzol alkalmazásnak tartalmaznia kell az [Event Processor Host Nuget-csomagot](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus.EventProcessorHost/). Ne felejtse el lecserélni az értékeket a **fő** függvény szögletes zárójelei között az erőforrások értékeivel.   
 
 ```csharp
 //Console application code for EventHub test client
@@ -303,6 +362,7 @@ namespace EventHubListener
     }
 }
 ```
+---
 
 ## <a name="troubleshoot-event-hubs-sinks"></a>Event Hubs mosogatók hibáinak megoldása
 * Az Event hub a várt módon nem jeleníti meg a bejövő vagy kimenő események tevékenységeit.

@@ -7,6 +7,7 @@ author: curtand
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
@@ -15,12 +16,12 @@ ms.date: 08/06/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 92ea116414e12cb231fdbaa5ec9ad375d2c0eea9
-ms.sourcegitcommit: 5cfe977783f02cd045023a1645ac42b8d82223bd
+ms.openlocfilehash: 06ceb2d2c98c3f9b6b184b98ddaadea610d525d2
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 11/17/2019
-ms.locfileid: "74144995"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896561"
 ---
 # <a name="activate-an-azure-ad-custom-role-in-privileged-identity-management"></a>Egyéni Azure AD-szerepkör aktiválása Privileged Identity Management
 
@@ -33,7 +34,7 @@ A Azure Active Directory (Azure AD) Privileged Identity Management mostantól t�
 
 Ha egy egyéni Azure AD-szerepkört kell aktiválnia, az aktiválás kéréséhez válassza a saját szerepkörök navigációs lehetőséget a Privileged Identity Management.
 
-1. Jelentkezzen be a [az Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be [a Azure Portalba](https://portal.azure.com).
 1. Nyissa meg az Azure AD [Privileged Identity Management](https://portal.azure.com/?Microsoft_AAD_IAM_enableCustomRoleManagement=true&Microsoft_AAD_IAM_enableCustomRoleAssignment=true&feature.rbacv2roles=true&feature.rbacv2=true&Microsoft_AAD_RegisteredApps=demo#blade/Microsoft_Azure_PIMCommon/CommonMenuBlade/quickStart).
 
 1. Válassza az **Egyéni Azure ad-szerepkörök** lehetőséget a jogosult Azure ad egyéni szerepkör-hozzárendelések listájának megtekintéséhez.
@@ -59,7 +60,7 @@ Ha a szerepkörhöz nem szükséges jóváhagyás, a beállításoknak megfelel�
 
 Ha a szerepkör jóváhagyást igényel az aktiváláshoz, egy Azure-értesítés jelenik meg, amely tájékoztatja arról, hogy a kérelem jóváhagyása függőben van.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni Azure AD-szerepkör kiosztása](azure-ad-custom-roles-assign.md)
 - [Egyéni Azure AD-szerepkör-hozzárendelés eltávolítása vagy frissítése](azure-ad-custom-roles-update-remove.md)

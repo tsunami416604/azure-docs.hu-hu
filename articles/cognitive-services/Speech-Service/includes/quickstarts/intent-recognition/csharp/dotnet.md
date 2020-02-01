@@ -1,28 +1,24 @@
 ---
-title: 'Gyors útmutató: beszédek, szándékok és entitások felismerése, C# beszédfelismerési szolgáltatás'
-titleSuffix: Azure Cognitive Services
-services: cognitive-services
-author: erhopf
-manager: nitinme
+author: IEvangelist
 ms.service: cognitive-services
 ms.subservice: speech-service
-ms.date: 01/02/2020
+ms.date: 01/27/2020
 ms.topic: include
-ms.author: erhopf
+ms.author: dapine
 zone_pivot_groups: programming-languages-set-two
-ms.openlocfilehash: e2cb4f81e3de5e22bae3029e42ec2f67dae55424
-ms.sourcegitcommit: b5d646969d7b665539beb18ed0dc6df87b7ba83d
+ms.openlocfilehash: 353e849332aa04d26774cda22508b6f1c269df7e
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/26/2020
-ms.locfileid: "76761417"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900589"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
 Az első lépések előtt:
 
-* Ha ez az első C# projektje, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">hozzon létre egy üres minta projektet</a>.
-* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Telepítse a fejlesztői környezethez készült SPEECH SDK</a>-t.
+* Ha ez az első C# projektje, az útmutató segítségével <a href="~/articles/cognitive-services/Speech-Service/quickstarts/create-project.md?tabs=dotnet" target="_blank">hozzon létre egy üres minta <span class="docon docon-navigate-external x-hidden-focus"> </span>projektet </a>.
+* <a href="~/articles/cognitive-services/Speech-Service/quickstarts/setup-platform.md?tabs=dotnet" target="_blank">Telepítse a fejlesztői <span class="docon docon-navigate-external x-hidden-focus"> </span>környezethez készült Speech SDK </a>-t.
 
 ## <a name="create-a-luis-app-for-intent-recognition"></a>LUIS-alkalmazás létrehozása a szándék-felismeréshez
 
@@ -92,7 +88,7 @@ A using utasításon belül `RecognizeOnceAsync()`alatt adja hozzá a következ�
 
 ## <a name="check-your-code"></a>A kód megkeresése
 
-Ezen a ponton a kódnak így kell kinéznie:  
+Ezen a ponton a kódnak így kell kinéznie:
 
 > [!NOTE]
 > Ehhez a verzióhoz hozzáadott néhány megjegyzést.
@@ -104,7 +100,7 @@ Ezen a ponton a kódnak így kell kinéznie:
 Most már készen áll az alkalmazás felépítésére és a beszédfelismerési szolgáltatás használatával történő tesztelésre.
 
 1. **Fordítsa le a kódot** – a Visual Studio menüsávján válassza a **Build** > **Build megoldás**elemet.
-2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az **F5**billentyű lenyomása lehetőséget.
+2. **Indítsa el az alkalmazást** – a menüsávban válassza a **hibakeresés** > a **hibakeresés indítása** vagy az <kbd>F5</kbd>billentyű lenyomása lehetőséget.
 3. **Felismerés elindítása** – felszólítja, hogy beszéljen egy angol nyelvű kifejezéssel. A rendszer elküldje a beszédet a beszédfelismerési szolgáltatásnak, amelyet szövegként leír, és a konzolon jeleníti meg.
 
 ## <a name="next-steps"></a>Következő lépések

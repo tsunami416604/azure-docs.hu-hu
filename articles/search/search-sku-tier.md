@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 12/17/2019
-ms.openlocfilehash: 772f6f51fb98b3a9adbd1efe6571842c667e8e8e
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.date: 01/30/2020
+ms.openlocfilehash: 35dbd064a09a96dae58e1b15a6d8889bda45ee0d
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75427035"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899851"
 ---
 # <a name="choose-a-pricing-tier-for-azure-cognitive-search"></a>Válasszon árképzési szintet az Azure Cognitive Search
 
@@ -21,15 +21,20 @@ Azure Cognitive Search szolgáltatás létrehozásakor a rendszer egy [erőforr�
 
 A legtöbb ügyfél az ingyenes szintjével kezdődik, így kiértékelheti a szolgáltatást. Az értékelés után a rendszer közösen létrehoz egy második szolgáltatást a magasabb szintű fejlesztési és éles környezetekben való üzembe helyezéshez.
 
-Bár az összes szinten, beleértve az ingyenes szintet is, általában a szolgáltatás paritását kínálja, a nagyobb méretű munkaterhelések magasabb szintű kapacitást is igénybe vehetnek. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
+## <a name="feature-availability-by-tier"></a>A szolgáltatás rendelkezésre állása rétegek szerint
 
-> [!NOTE] 
-> A szolgáltatás paritásának kivétele [Indexelő](search-indexer-overview.md), amely az S3 HD-ben nem érhető el.
->
+Szinte minden szolgáltatás minden szinten elérhető, beleértve az ingyenes szolgáltatást is, de az erőforrás-igényes funkció vagy munkafolyamat nem működik megfelelően, kivéve, ha elegendő kapacitást biztosít. Például az [AI-dúsítás](cognitive-search-concept-intro.md) olyan hosszan futó képességekkel rendelkezik, amelyek egy ingyenes szolgáltatás esetében időtúllépést mutatnak, kivéve, ha az adatkészlet kicsi.
 
-## <a name="available-tiers"></a>Elérhető szintek
+Az alábbi táblázat a réteggel kapcsolatos szolgáltatások megkötéseit ismerteti.
 
-A rétegek tükrözik a szolgáltatást üzemeltető hardver jellemzőit (a funkciók helyett), és a következőket különböztetik meg:
+| Szolgáltatás | Korlátozások |
+|---------|-------------|
+| [indexelők](search-indexer-overview.md) | Az indexelő nem érhető el az S3 HD-ben. |
+| [Ügyfél által felügyelt titkosítási kulcsok](search-security-manage-encryption-keys.md) | Az ingyenes szinten nem érhető el. |
+
+## <a name="tiers-skus"></a>Rétegek (SKU)
+
+A rétegek a következők szerint különböztethetők meg:
 
 + A létrehozható indexek és indexelő mennyisége
 + Partíciók mérete és sebessége (fizikai tárterület)
@@ -97,9 +102,9 @@ A számlázási díj óradíja/SU. Az egyes szintek fokozatosan magasabb arányb
 
 A legtöbb ügyfél csak egy részét a teljes kapacitás online állapotba helyezi, a többi pedig tartalékban tartja. A számlázáshoz a SU-képlet alapján kiszámított partíciók és replikák száma határozza meg, hogy mit fizet óránként.
 
-## <a name="how-to-manage-and-reduce-costs"></a>A költségek kezelése és csökkentése
+## <a name="how-to-manage-costs"></a>A költségek kezelése
 
-A következő javaslatok mellett látogasson el a [számlázásra és a Cost Managementre](https://docs.microsoft.com/azure/billing/billing-getting-started).
+A következő javaslatok segíthetnek a költségek minimális megtartásában:
 
 - Hozza létre az összes erőforrást ugyanabban a régióban, vagy a lehető legkevesebb régióban, hogy csökkentse vagy eltávolítsa a sávszélességgel kapcsolatos díjakat.
 
@@ -109,7 +114,11 @@ A következő javaslatok mellett látogasson el a [számlázásra és a Cost Man
 
 - Vertikális felskálázás az erőforrás-igényes műveletekhez, például az indexeléshez, majd a rendszeres lekérdezési feladatokhoz tartozó leállások újraigazítása. Az Azure Cognitive Search minimális konfigurációjának megkezdése (egy partícióból és egy replikából álló egy SU), majd a felhasználói tevékenység figyelése olyan használati minták azonosításához, amelyek nagyobb kapacitást jelezhetnek. Ha kiszámítható minta van, lehetséges, hogy szinkronizálni tudja a méretezést a tevékenységgel (ezt a kódot kell írnia az automatizáláshoz).
 
-Nem állíthatja le a keresési szolgáltatást a számla csökkentése érdekében. A dedikált erőforrások mindig működőképesek, és a szolgáltatás élettartama szempontjából kizárólagos használatra vannak kiosztva. A szolgáltatás szempontjából a számla csökkentése egyetlen módja annak, hogy csökkentse a replikákat és a partíciókat olyan szintre, amely továbbra is elfogadható teljesítményt és [SLA-megfelelőséget](https://azure.microsoft.com/support/legal/sla/search/v1_0/)biztosít, vagy egy alacsonyabb szintű szolgáltatást hoz létre (az S1 óradíjak alacsonyabbak, mint az S2 vagy az S3). Feltételezve, hogy kiépíti a szolgáltatást a betöltési kivetítések alsó végére, ha kibővíti a szolgáltatást, létrehozhat egy második nagyobb rétegű szolgáltatást, újraépítheti az indexeket a második szolgáltatásban, majd törölheti az elsőt.
+Emellett megtekintheti a [számlázással és a költséghatékonysággal](https://docs.microsoft.com/azure/billing/billing-getting-started) kapcsolatos beépített eszközöket és szolgáltatásokat.
+
+A keresési szolgáltatás ideiglenes leállítása nem lehetséges. A dedikált erőforrások mindig működőképesek, és a szolgáltatás élettartama szempontjából kizárólagos használatra vannak kiosztva. A szolgáltatás törlése végleges, és a hozzá tartozó adatai is törlődnek.
+
+A szolgáltatás szempontjából a számla csökkentése egyetlen módja annak, hogy csökkentse a replikákat és a partíciókat olyan szintre, amely továbbra is elfogadható teljesítményt és [SLA-megfelelőséget](https://azure.microsoft.com/support/legal/sla/search/v1_0/)biztosít, vagy egy alacsonyabb szintű szolgáltatást hoz létre (az S1 óradíjak alacsonyabbak, mint az S2 vagy az S3). Feltételezve, hogy kiépíti a szolgáltatást a betöltési kivetítések alsó végére, ha kibővíti a szolgáltatást, létrehozhat egy második nagyobb rétegű szolgáltatást, újraépítheti az indexeket a második szolgáltatásban, majd törölheti az elsőt.
 
 ## <a name="how-to-evaluate-capacity-requirements"></a>A kapacitásra vonatkozó követelmények kiértékelése
 

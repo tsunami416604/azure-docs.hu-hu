@@ -5,21 +5,20 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be az A
 services: azure-app-configuration
 documentationcenter: ''
 author: jimmyca
-manager: yegu
 editor: ''
 ms.assetid: ''
 ms.service: azure-app-configuration
 ms.devlang: csharp
 ms.topic: tutorial
 ms.date: 05/30/2019
-ms.author: yegu
+ms.author: lcozzens
 ms.custom: mvc
-ms.openlocfilehash: 4943a64f72191981fc1b655c431cab00f180e503
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 2a80f931f2060d421483b9e26940985091c9bb5c
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75433690"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76899693"
 ---
 # <a name="quickstart-route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Gyors útmutató: Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
 
@@ -35,7 +34,7 @@ Ha a parancssori felület helyi telepítését és használatát választja, akk
 
 Ha nem a Cloud Shellt használja, először be kell jelentkeznie az `az login` paranccsal.
 
-## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
+## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
 
 Az Event Grid-témakörök Azure-erőforrások, amelyeket egy Azure-erőforráscsoportba kell helyezni. Az erőforráscsoport egy olyan logikai gyűjtemény, amelyben a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 

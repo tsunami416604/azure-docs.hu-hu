@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.topic: article
 ms.date: 11/22/2019
 ms.author: apimpm
-ms.openlocfilehash: 81daada7a62da86772d4657a1a8aaff91f27b673
-ms.sourcegitcommit: 05cdbb71b621c4dcc2ae2d92ca8c20f216ec9bc4
+ms.openlocfilehash: 4dd026377d5824853dd713a59a86ed742990bade
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/16/2020
-ms.locfileid: "76045579"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898843"
 ---
 # <a name="azure-api-management-developer-portal-overview"></a>Az Azure API Management fejlesztői portál áttekintése
 
@@ -213,6 +213,18 @@ Ez a hiba akkor jelenik meg, ha a `https://<management-endpoint-hostname>/subscr
 Ha a API Management szolgáltatás VNet található – tekintse meg a fenti VNet-kapcsolat kérdését.
 
 A hívási hibát egy olyan SSL-tanúsítvány is okozhatja, amely egy egyéni tartományhoz van rendelve, és a böngésző nem tartja megbízhatónak. Enyhítő megoldásként eltávolíthatja a felügyeleti végpont egyéni tartományát – API Management a megbízható tanúsítvánnyal rendelkező alapértelmezett végpontra kerül vissza.
+
+### <a name="whats-the-browser-support-for-the-portal"></a>Milyen böngésző-támogatást nyújt a portál?
+
+| Böngésző                     | Támogatott       |
+|-----------------------------|-----------------|
+| Apple Safari                | Igen<sup>1</sup> |
+| Google Chrome               | Igen<sup>1</sup> |
+| Microsoft Edge              | Igen<sup>1</sup> |
+| Microsoft Internet Explorer | Nem              |
+| Mozilla Firefox             | Igen<sup>1</sup> |
+
+ <small><sup>1</sup> támogatott a két legújabb üzemi verzióban.</small>
 
 ## <a name="next-steps"></a>Következő lépések
 

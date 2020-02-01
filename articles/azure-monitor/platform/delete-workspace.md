@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 01/14/2020
-ms.openlocfilehash: fabb2524547bd7837d3644d79f0023311ddccdfc
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: 038cfe04193b734bd26ed0ffd4dec5ae9b267c22
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845550"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76901275"
 ---
 # <a name="delete-and-restore-azure-log-analytics-workspace"></a>Az Azure Log Analytics munkaterület törlése és visszaállítása
 
@@ -23,7 +23,7 @@ Ez a cikk ismerteti az Azure Log Analytics Workspace Soft-delete fogalmát, vala
 Ha töröl egy Log Analytics munkaterületet, a rendszer egy törlési műveletet hajt végre, amely lehetővé teszi a munkaterület helyreállítását 14 napon belül, beleértve az adatmennyiséget és a csatlakoztatott ügynököket is, függetlenül attól, hogy a törlés véletlen vagy szándékos volt-e. A Soft-delete időszak után a munkaterület-erőforrás és az azokhoz tartozó adattárolók nem állíthatók vissza. a rendszer az adatsorokat állandó törlés céljából várólistára helyezi, és 30 napon belül teljesen el lesz távolítva. A munkaterület neve "Released", és használható egy új munkaterület létrehozásához.
 
 > [!NOTE]
-> Ha szeretné felülbírálni a törlési viselkedést és véglegesen törölni a munkaterületet, kövesse az [állandó munkaterület törlésének](#Permanent workspace delete)lépéseit.
+> Ha szeretné felülbírálni a törlési viselkedést és véglegesen törölni a munkaterületet, kövesse az [állandó munkaterület törlésének](#permanent-workspace-delete)lépéseit.
 
 Fontos, hogy körültekintően járjon el, amikor töröl egy munkaterületet, mert olyan fontos adat és konfiguráció lehet, amely negatív hatással lehet a szolgáltatási műveletre. Tekintse át, hogy milyen ügynökök, megoldások és más Azure-szolgáltatások és-források tárolják az adataikat Log Analyticsban, például:
 
@@ -44,7 +44,7 @@ A munkaterület-törlési művelet eltávolítja a munkaterület Resource Manage
 
 A munkaterületeket a [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/remove-azurermoperationalinsightsworkspace?view=azurermps-6.13.0), a [REST API](https://docs.microsoft.com/rest/api/loganalytics/workspaces/delete)vagy a [Azure Portal](https://portal.azure.com)használatával törölheti.
 
-### <a name="azure-portal"></a>Azure portál
+### <a name="azure-portal"></a>Azure Portal
 
 1. A bejelentkezéshez nyissa meg a [Azure Portal](https://portal.azure.com). 
 2. Az Azure Portalon válassza a **Minden szolgáltatás** elemet. Az erőforrások listájába írja be a **Log Analytics** kifejezést. Ahogy elkezd gépelni, a lista a beírtak alapján szűri a lehetőségeket. Válassza **log Analytics munkaterületek**lehetőséget.
@@ -63,7 +63,7 @@ Előfordulhat, hogy a Soft-Delete metódus nem fér el bizonyos helyzetekben, p�
 
 
 > [!IMPORTANT]
-> Körültekintően járjon el, ha véglegesen törli a munkaterületet, mert a művelet visszavonhatatlan, és a munkaterület és az adatai nem állíthatók vissza.
+> Az állandó munkaterület törlési műveletét körültekintően, a visszafordíthatatlan óta használhatja, és nem fogja tudni helyreállítani a munkaterületet és annak adatait.
 
 Az állandó munkaterület törlése jelenleg REST APIon keresztül végezhető el.
 
@@ -80,6 +80,7 @@ A munkaterület végleges törléséhez használja a [munkaterületeket – tör
 > DELETE https://management.azure.com/subscriptions/<subscription-id>/resourcegroups/<resource-group-name>/providers/Microsoft.OperationalInsights/workspaces/<workspace-name>?api-version=2015-11-01-preview&force=true
 > Authorization: Bearer eyJ0eXAiOiJKV1Qi….
 > ```
+Hol "eyJ0eXAiOiJKV1Qi..." a teljes engedélyezési tokent jelöli.
 
 ## <a name="recover-workspace"></a>Munkaterület helyreállítása
 

@@ -4,18 +4,18 @@ description: Kiszolgáló nélküli Python-kód létrehozása és üzembe helyez
 ms.date: 01/15/2020
 ms.topic: quickstart
 ms.custom: mvc
-ms.openlocfilehash: 452c5aeab5d2a1092cb7d338d37e26a82d92396e
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.openlocfilehash: c665f807d78c699423db457bf57dca2f16109913
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76845508"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76898562"
 ---
 # <a name="quickstart-create-an-http-triggered-python-function-in-azure"></a>Gyors útmutató: HTTP által aktivált Python-függvény létrehozása az Azure-ban
 
 Ebben a cikkben parancssori eszközöket használ egy olyan Python-függvény létrehozásához, amely válaszol a HTTP-kérelmekre. A kód helyi tesztelését követően a Azure Functions kiszolgáló nélküli környezetében helyezheti üzembe. A rövid útmutató elvégzésével az Azure-fiókjában néhány USD értékű vagy annál kisebb költséggel jár.
 
-A cikk [Visual Studio Code-alapú verziója](/azure/python/tutorial-vs-code-serverless-python-01) is létezik.
+A cikk [Visual Studio Code-alapú verziója](/azure/azure-functions/functions-create-first-function-vs-code?pivots=programming-language-python) is létezik.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

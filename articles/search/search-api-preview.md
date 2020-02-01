@@ -7,13 +7,13 @@ author: brjohnstmsft
 ms.author: brjohnst
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 01/04/2020
-ms.openlocfilehash: 940ada83aeabf4bf8746ad5f90592e0917f7b403
-ms.sourcegitcommit: 5d6ce6dceaf883dbafeb44517ff3df5cd153f929
+ms.date: 01/15/2020
+ms.openlocfilehash: 71c6879f467823ab01f4c60ac4d9f26cffcd4eea
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/29/2020
-ms.locfileid: "76844445"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896117"
 ---
 # <a name="azure-cognitive-search-service-rest-api-version-2019-05-06-preview"></a>Azure Cognitive Search Service REST API – Version 2019-05-06 – előzetes verzió
 
@@ -22,8 +22,11 @@ Ez a cikk a Search Service REST API `api-version=2019-05-06-Preview` verzióját
 > [!NOTE]
 > Az előzetes verziójú funkciók tesztelésre és kísérletezésre használhatók a visszajelzések összegyűjtésének céljával, és változhatnak. Határozottan javasoljuk, hogy az előzetes verziójú API-kat éles alkalmazásokban használja.
 
+## <a name="features-in-2019-05-06-preview"></a>Szolgáltatások a 2019-05-06-ben – előzetes verzió
 
-## <a name="new-in-2019-05-06-preview"></a>Új a 2019-05-06-ben – előzetes verzió
+Ez a szakasz az előzetes verziójú állapotú szolgáltatásokat sorolja fel. A legtöbb a jelenlegi 2019-05-06-előnézeti API-ban lett hozzáadva, de például `moreLikeThis` a korábbi előzetes verziókból, amelyek a legújabb előzetes verzió API-ba kerültek. 
+
+Ha az előzetes verziójú funkció általánosan elérhetővé válik, a rendszer eltávolítja a listából. Megtekintheti a [szolgáltatások frissítéseit](https://azure.microsoft.com/updates/?product=search) , illetve a hirdetmények [újdonságait](whats-new.md) az általános elérhetőséggel kapcsolatban.
 
 + A [növekményes bővítés (előzetes verzió)](cognitive-search-incremental-indexing-conceptual.md) egy alkoholtartalom-növelési folyamatba helyezi a gyorsítótárazást, lehetővé téve a meglévő kimenet újrafelhasználását, ha egy célként megadott módosítás, például egy készségkészlet vagy egy másik objektum frissítése nem módosítja a tartalmat. A gyorsítótárazás csak a készségkészlet által létrehozott dúsított dokumentumokra vonatkozik.
 
@@ -33,13 +36,11 @@ Ez a cikk a Search Service REST API `api-version=2019-05-06-Preview` verzióját
 
 + A [Knowledge Store](knowledge-store-concept-intro.md) a mesterséges intelligencia-alapú alkoholtartalom-növelési folyamat új célja. A fizikai adatstruktúra létezik az Azure Blob Storage-ban és az Azure Table Storage-ban, és akkor jön létre és töltődik fel, amikor olyan indexelő futtat, amely egy kapcsolódó kognitív készségkészlet rendelkezik. A rendszer egy készségkészlet-definíción belül megadta a Tudásbázis definícióját. A Tudásbázis definícióján belül az adatai fizikai szerkezetét az adatformátumot meghatározó *kivetítési* elemekkel szabályozhatja, hogy az adatokat a Table Storage vagy a blob Storage tárolja-e, és hogy van-e több nézet.
 
-## <a name="earlier-preview-features"></a>Korábbi előzetes funkciók
-
-A korábbi előzetes verziókban bejelentett funkciók még nyilvános előzetes verzióban érhetők el. Ha egy korábbi előzetes verziójú API-verzióval rendelkező API-t hív meg, továbbra is használhatja ezt a verziót, vagy átválthat `2019-05-06-Preview`re a várt viselkedés módosítása nélkül.
-
 + a [moreLikeThis lekérdezési paraméter](search-more-like-this.md) megkeresi az adott dokumentumhoz kapcsolódó dokumentumokat. Ez a funkció korábbi előzetes verziókban található. 
 
-+ A [CSV-blob indexelése](search-howto-index-csv-blobs.md) soronként egy dokumentumot hoz létre, a szöveges Blobok egy dokumentuma helyett.
+## <a name="earlier-preview-features"></a>Korábbi előzetes funkciók
+
+A korábbi előzetes verziókban bejelentett funkciók, ha azok nem az általánosan elérhetővé váltanak, még nyilvános előzetes verzióban érhetők el. Ha egy korábbi előzetes verziójú API-verzióval rendelkező API-t hív meg, továbbra is használhatja ezt a verziót, vagy átválthat `2019-05-06-Preview`re a várt viselkedés módosítása nélkül.
 
 ## <a name="how-to-call-a-preview-api"></a>Előzetes verziójú API meghívása
 

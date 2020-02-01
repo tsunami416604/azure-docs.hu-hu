@@ -6,14 +6,14 @@ ms.author: akshanka
 ms.service: cosmos-db
 ms.subservice: cosmosdb-table
 ms.topic: tutorial
-ms.date: 12/02/2019
+ms.date: 01/30/2020
 ms.reviewer: sngun
-ms.openlocfilehash: 148e17edbb8be566db611216f444fedad514e638
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: 627086bdb13acdd29821af399f90fee8deaae432
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76770586"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900181"
 ---
 # <a name="set-up-azure-cosmos-db-global-distribution-using-the-table-api"></a>Az Azure Cosmos DB globális terjesztésének beállítása a Table API-val
 
@@ -28,19 +28,17 @@ Ez a cikk a következő feladatokat mutatja be:
 
 ## <a name="connecting-to-a-preferred-region-using-the-table-api"></a>Csatlakozás egy kívánt régióhoz a Table API használatával
 
-A [globális terjesztés](distribute-data-globally.md) kihasználása érdekében az ügyfélalkalmazások megadhatják a preferált régiók sorrendbe rendezett listáját a dokumentumokkal kapcsolatos műveletek elvégzéséhez. Ezt a [TableConnectionPolicy.PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations?view=azure-dotnet) tulajdonság beállításával lehet megtenni. Az Azure Cosmos DB Table API SDK a kommunikációhoz az optimális végpontot a fiók konfigurációja, az aktuális régiónkénti rendelkezésre állás és a megadott preferencialista alapján választja ki.
+A [globális terjesztés](distribute-data-globally.md)kihasználása érdekében az ügyfélalkalmazások számára meg kell határozni az aktuális helyet, ahol az alkalmazások futnak. Ezt a `CosmosExecutorConfiguration.CurrentRegion` tulajdonság beállításával teheti meg. A `CurrentRegion` tulajdonságnak egyetlen helyet kell tartalmaznia. Minden egyes ügyfél megadhatja saját régióját az alacsony késésű olvasásokhoz. A régió nevét a [megjelenítendő nevükkel](https://msdn.microsoft.com/library/azure/gg441293.aspx) , például a "West us" névvel kell elnevezni. 
 
-A PreferredLocations tulajdonságnak egy vesszővel elválasztott listát kell tartalmaznia az előnyben részesített (többkiszolgálós) helyekről az olvasásokhoz. Minden ügyfélpéldány a kívánt sorrendben adhatja meg ezen régiók részhalmazát a kis késleltetésű olvasásokhoz. A régiókat a [megjelenített nevükkel](https://msdn.microsoft.com/library/azure/gg441293.aspx) kell elnevezni, például: `West US`.
+A Azure Cosmos DB Table API SDK automatikusan kiválasztja a legjobb végpontot, hogy a fiók konfigurációja és a jelenlegi regionális rendelkezésre állás alapján kommunikáljon. Rangsorolja a legközelebbi régiót, hogy jobb késést biztosítson az ügyfeleknek. Az aktuális `CurrentRegion` tulajdonság beállítása után az olvasási és írási kérelmek a következőképpen lesznek átirányítva:
 
-Az olvasások a PreferredLocations lista első elérhető régiójába lesznek küldve. Ha a kérelem meghiúsul, az ügyfél továbbadja a listát a következő régiónak, és így tovább.
+* **Olvasási kérelmek:** A rendszer minden olvasási kérelmet elküldött a konfigurált `CurrentRegion`ba. A közelség alapján az SDK automatikusan kiválasztja a tartalék földrajzilag replikált régiót a magas rendelkezésre állás érdekében.
 
-Az SDK a PreferredLocations listában szereplő régiókból próbál meg olvasni. Így ha például az adatbázisfiók három régióban érhető el, de az ügyfél csak kettőt ad meg a nem írási régiók közül a PreferredLocations listában, akkor az írási régió nem szolgál ki olvasásokat, még feladatátvétel esetén sem.
+* **Írási kérelmek:** Az SDK automatikusan elküldi az összes írási kérelmet az aktuális írási régióba. Egy több főkiszolgálós fiókban az aktuális régió is az írási kérelmeket fogja szolgálni. A közelség alapján az SDK automatikusan kiválasztja a tartalék földrajzilag replikált régiót a magas rendelkezésre állás érdekében.
 
-Az SDK az összes írást automatikusan az aktuális írási régióba küldi.
+Ha nem ad meg `CurrentRegion` tulajdonságot, az SDK az aktuális írási régiót használja az összes művelethez.
 
-Ha a PreferredLocations tulajdonság nincs beállítva, a kérelmek az aktuális írási régióból lesznek teljesítve.
-
-Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
+Ha például egy Azure Cosmos-fiók "nyugati USA" és "keleti USA" régiókban található. Ha a "West US" az írási régió, és az alkalmazás szerepel az "USA keleti régiójában". Ha a CurrentRegion tulajdonság nincs konfigurálva, az összes olvasási és írási kérelem mindig az "USA nyugati régiója" régiójába lesz irányítva. Ha a CurrentRegion tulajdonság konfigurálva van, az összes olvasási kérelem az "East US" régióból lesz kézbesítve.
 
 ## <a name="next-steps"></a>Következő lépések
 

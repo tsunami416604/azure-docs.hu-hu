@@ -9,21 +9,18 @@ ms.subservice: forms-recognizer
 ms.topic: quickstart
 ms.date: 01/27/2020
 ms.author: pafarley
-ms.openlocfilehash: 14b902014305899260ba7d7d9eb0f13afaf64733
-ms.sourcegitcommit: 984c5b53851be35c7c3148dcd4dfd2a93cebe49f
+ms.openlocfilehash: d5dd1c1271c2b7100b40f6cd0f6410b3c151adc0
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 01/28/2020
-ms.locfileid: "76774153"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76900215"
 ---
 # <a name="quickstart-train-a-form-recognizer-model-and-extract-form-data-by-using-the-rest-api-with-python"></a>Gyors útmutató: űrlap-felismerő modell betanítása és adatok kinyerése a REST API és a Python használatával
 
 Ebben a rövid útmutatóban az Azure űrlap-felismerő REST API a Python használatával betanítási és pontszám-űrlapok segítségével kinyerheti a kulcs-érték párokat és táblákat.
 
 Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
-
-> [!IMPORTANT]
-> Ez a rövid útmutató az űrlap felismerő v 2.0 API-ját használja. Ha az előfizetése nem a `West US 2` vagy `West Europe` régióban található, akkor a v 1.0 API-t kell használnia. Ehelyett kövesse az [1.0](./python-train-extract-v1.md) -s verziót.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

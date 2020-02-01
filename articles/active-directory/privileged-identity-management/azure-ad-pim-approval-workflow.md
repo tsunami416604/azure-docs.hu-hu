@@ -7,21 +7,21 @@ author: curtand
 manager: daveba
 editor: ''
 ms.service: active-directory
+ms.subservice: pim
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.subservice: pim
 ms.date: 11/12/2019
 ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 05e69bad41391be5153eca0fb1930ffc59da453b
-ms.sourcegitcommit: f4f626d6e92174086c530ed9bf3ccbe058639081
+ms.openlocfilehash: 8bc4b518cd2400cf3826b31a590d499c1ad031e7
+ms.sourcegitcommit: 67e9f4cc16f2cc6d8de99239b56cb87f3e9bff41
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 12/25/2019
-ms.locfileid: "75429935"
+ms.lasthandoff: 01/31/2020
+ms.locfileid: "76896533"
 ---
 # <a name="approve-or-deny-requests-for-azure-ad-roles-in-privileged-identity-management"></a>Azure AD-szerepkörökre vonatkozó kérelmek jóváhagyása vagy elutasítása Privileged Identity Management
 
@@ -40,7 +40,7 @@ Kövesse a cikkben ismertetett lépéseket az Azure AD-szerepkörökre vonatkoz�
 
 # <a name="previous-versiontabprevious"></a>[Előző verzió](#tab/previous)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
+## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD-szerepkörre vonatkozó kérelem jóváhagyása függőben van. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
@@ -66,7 +66,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
     ![A kijelölt kérések jóváhagyása a jóváhagyás indoklásával](./media/azure-ad-pim-approval-workflow/pim-approve-selected-requests.png)
 
-1. Kattintson az **Approve** (Jóváhagyás) elemre.
+1. Kattintson a **jóváhagyás**gombra.
 
     Az állapotjelző szimbólumot a rendszer a jóváhagyással frissíti.
 
@@ -88,7 +88,7 @@ Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha egy Azure AD
 
 # <a name="new-versiontabnew"></a>[Új verzió](#tab/new)
 
-## <a name="view-pending-requests"></a>Függőben lévő kérelmek megtekintése
+## <a name="view-pending-requests"></a>Függőben lévő kérések megtekintése
 
 Meghatalmazott jóváhagyóként e-mail-értesítést fog kapni, ha az Azure-erőforrás szerepkörre vonatkozó kérelem jóváhagyásra vár. Ezeket a függőben lévő kérelmeket Privileged Identity Management tekintheti meg.
 
